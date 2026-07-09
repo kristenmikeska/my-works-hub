@@ -8,6 +8,9 @@
 # Audio files (too large / commercial tracks)
 assets/audio/
 
+# Sub-sites (separate repos)
+sites/
+
 # Build/processing scripts
 readers/combine_delicate.py
 readers/process_epub_readers.py
