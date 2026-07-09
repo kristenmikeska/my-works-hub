@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Claude Code dev config
+.claude/
+
+# Audio files (too large / commercial tracks)
+assets/audio/
+
+# Build/processing scripts
+readers/combine_delicate.py
+readers/process_epub_readers.py
+readers/process_readers.py

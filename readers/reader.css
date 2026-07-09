@@ -1,0 +1,493 @@
+/* ── READER.CSS — shared story reader styles ── */
+
+/* ── FRONT MATTER (title + epigraph) ── */
+.reader-frontmatter {
+  text-align: center;
+  padding: 56px 0 72px;
+  margin-bottom: 52px;
+  border-bottom: 1px solid var(--border);
+}
+
+.reader-title {
+  font-size: clamp(3.2rem, 11vw, 6.5rem);
+  font-weight: 400;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin: 0 0 28px;
+  line-height: 1;
+}
+
+.reader-epigraph {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--ink-dim);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+:root {
+  --accent: #888;
+  --ink: rgba(255,249,241,0.88);
+  --ink-dim: rgba(255,249,241,0.58);
+  --ink-muted: rgba(255,249,241,0.35);
+  --border: rgba(255,249,241,0.1);
+  --panel: rgba(255,249,241,0.05);
+  --nav-h: 52px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: calc(var(--nav-h) + 52px) clamp(20px,5vw,48px) 120px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(16px, 1.8vw, 18px);
+  line-height: 1.88;
+  color: var(--ink);
+  background: #0a0810;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); }
+
+/* Hide the old white-background "Back to hub" button from original reader files */
+.reader-home { display: none !important; }
+
+/* ── PER-WORLD BACKGROUNDS ── */
+[data-world="delicate"] {
+  --accent: #e8608a;
+  background: radial-gradient(ellipse at 40% 0%, rgba(220,60,110,0.14) 0%, transparent 55%),
+              linear-gradient(180deg, #120710 0%, #0e0810 100%);
+}
+[data-world="runners"] {
+  --accent: #31d0c3;
+  background: radial-gradient(ellipse at 20% 0%, rgba(49,208,195,0.16) 0%, transparent 55%),
+              linear-gradient(180deg, #061513 0%, #071410 100%);
+}
+[data-world="petal-thorn"] {
+  --accent: #ff4f8b;
+  background: radial-gradient(ellipse at 55% 0%, rgba(255,79,139,0.2) 0%, transparent 55%),
+              linear-gradient(180deg, #130315 0%, #0e031a 100%);
+}
+[data-world="hoax"] {
+  --accent: #a97fff;
+  background: radial-gradient(ellipse at 70% 0%, rgba(157,115,255,0.18) 0%, transparent 55%),
+              linear-gradient(180deg, #0c0918 0%, #0a0815 100%);
+}
+[data-world="havenbrook"] {
+  --accent: #91d36e;
+  background: radial-gradient(ellipse at 25% 0%, rgba(145,211,110,0.14) 0%, transparent 55%),
+              linear-gradient(180deg, #090f07 0%, #070e05 100%);
+}
+[data-world="peace"] {
+  --accent: #b08fff;
+  background: radial-gradient(ellipse at 50% 0%, rgba(157,115,255,0.12) 0%, transparent 55%),
+              linear-gradient(180deg, #0d0a18 0%, #0b0815 100%);
+}
+[data-world="secret"] {
+  --accent: #4ecdc4;
+  background: radial-gradient(ellipse at 60% 0%, rgba(49,208,195,0.13) 0%, transparent 55%),
+              linear-gradient(180deg, #061412 0%, #060f0e 100%);
+}
+[data-world="casual"] {
+  --accent: #ff8a4c;
+  background: radial-gradient(ellipse at 35% 0%, rgba(255,138,76,0.15) 0%, transparent 55%),
+              linear-gradient(180deg, #110803 0%, #0e0702 100%);
+}
+[data-world="recherche"] {
+  --accent: #e8b44a;
+  background: radial-gradient(ellipse at 65% 0%, rgba(242,184,75,0.13) 0%, transparent 55%),
+              linear-gradient(180deg, #110e05 0%, #0d0b03 100%);
+}
+[data-world="go"] {
+  --accent: #e07840;
+  background: radial-gradient(ellipse at 30% 0%, rgba(220,120,60,0.14) 0%, transparent 55%),
+              linear-gradient(180deg, #0e0802 0%, #0b0601 100%);
+}
+[data-world="soul-of-minji"] {
+  --accent: #5ecfca;
+  background: radial-gradient(ellipse at 60% 0%, rgba(49,208,195,0.13) 0%, transparent 55%),
+              linear-gradient(180deg, #040d0d 0%, #050c0c 100%);
+}
+[data-world="saint-of-dead-air"] {
+  --accent: #d4a43a;
+  background: radial-gradient(ellipse at 45% 0%, rgba(212,164,58,0.12) 0%, transparent 55%),
+              linear-gradient(180deg, #0b0902 0%, #090701 100%);
+}
+
+/* ── TOPBAR ── */
+.reader-topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 clamp(14px,3vw,28px);
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+
+.reader-back {
+  flex-shrink: 0;
+  color: var(--ink-dim);
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  transition: border-color 150ms, color 150ms;
+}
+.reader-back:hover { border-color: var(--accent); color: var(--ink); }
+
+.reader-chapter-label {
+  flex: 1;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reader-menu-btn {
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--ink-dim);
+  cursor: pointer;
+  font-size: 1rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 150ms, border-color 150ms;
+}
+.reader-menu-btn:hover { background: rgba(255,255,255,0.1); border-color: var(--accent); color: var(--ink); }
+
+/* ── CHAPTER DRAWER ── */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms;
+}
+.drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+.chapter-drawer {
+  position: fixed;
+  top: 0;
+  right: -340px;
+  width: 320px;
+  height: 100vh;
+  z-index: 200;
+  background: rgba(8,6,14,0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-left: 1px solid var(--border);
+  transition: right 280ms cubic-bezier(0.4,0,0.2,1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.chapter-drawer.open { right: 0; }
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.drawer-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.drawer-close {
+  background: none;
+  border: none;
+  color: var(--ink-muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: color 150ms;
+}
+.drawer-close:hover { color: var(--ink); }
+
+.chapter-list {
+  list-style: none;
+  overflow-y: auto;
+  flex: 1;
+  padding: 10px 0 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.chapter-list-item {
+  display: block;
+  padding: 9px 22px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--ink-dim);
+  text-decoration: none;
+  transition: color 130ms, background 130ms;
+  border-left: 2px solid transparent;
+}
+.chapter-list-item:hover { color: var(--ink); background: rgba(255,249,241,0.04); }
+.chapter-list-item.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: rgba(255,249,241,0.03);
+}
+
+/* ── CONTENT TYPOGRAPHY ──
+   body[data-world] p beats Cocoa-exported p.p1 {color:#000; margin:0}
+   at equal specificity (0,1,1) since reader.css loads after inline <style>.
+*/
+body[data-world] p {
+  margin: 0 0 1.3em;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(16px, 1.8vw, 18px);
+  line-height: 1.88;
+  -webkit-text-stroke: unset;
+}
+body[data-world] p:last-child { margin-bottom: 0; }
+
+/* Chapter headings — .chapter-heading class added by JS to detected elements */
+body[data-world] p.chapter-heading {
+  color: var(--accent);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  font-style: italic;
+  text-align: center;
+  margin: 72px 0 36px;
+  padding-top: 52px;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: calc(var(--nav-h) + 16px);
+  letter-spacing: 0.03em;
+  -webkit-text-stroke: unset;
+}
+body[data-world] p.chapter-heading:first-of-type {
+  margin-top: 12px;
+  border-top: none;
+  padding-top: 0;
+}
+
+/* Part dividers in combined Delicate */
+.part-divider {
+  text-align: center;
+  color: var(--accent);
+  font-family: Georgia, serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin: 96px 0;
+  padding: 32px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  opacity: 0.75;
+}
+
+/* Title section (kept from original files) */
+.reader-title-section {
+  text-align: center;
+  margin-bottom: 72px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Chapter end nav */
+.chapter-end-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 64px 0 0;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--border);
+}
+.chapter-end-nav a {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink-dim);
+  text-decoration: none;
+  transition: color 150ms;
+}
+.chapter-end-nav a:hover { color: var(--accent); }
+.chapter-end-nav .next-ch { color: var(--accent); }
+
+/* ── SOCIAL MEDIA & TEXT EXCHANGE ELEMENTS ── */
+
+/* Invisible dash separators between post blocks */
+.social-sep { display: none; }
+
+/* Post / DM header — "NEW POST @account" or "PRIVATE MESSAGE FROM @x"
+   Specificity (0,1,1) to beat body[data-world] p font override. */
+body[data-world] p.social-header {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  background: rgba(255,255,255,0.04);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 8px 0 0;
+  padding: 10px 16px 6px;
+  margin: 32px 0 0;
+  line-height: 1.5;
+  text-transform: uppercase;
+  -webkit-text-stroke: unset;
+}
+body[data-world] p.social-header b { color: inherit; font-weight: 700; }
+body[data-world] p.social-header i { font-style: normal; color: var(--ink-dim); text-transform: none; letter-spacing: 0; }
+
+/* Social post body — @account: caption and comment threads */
+body[data-world] p.social-content {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--ink-dim);
+  background: rgba(255,255,255,0.03);
+  border-left: 2px solid var(--border);
+  border-radius: 0;
+  padding: 8px 16px;
+  margin: 0;
+  -webkit-text-stroke: unset;
+}
+body[data-world] p.social-content b { color: var(--ink); font-weight: 700; }
+body[data-world] p.social-content i { color: var(--ink-dim); }
+
+/* Bottom rounding — last content in a run */
+body[data-world] p.social-content:not(:has(+ p.social-content)) {
+  border-radius: 0 0 8px 0;
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+/* Group chat / group name header (Hoax all-caps room names) */
+[data-world="hoax"] p.social-header {
+  text-transform: none;
+  letter-spacing: 0.03em;
+}
+
+/* ── READING PROGRESS BAR ── */
+.reader-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 160;
+  background: transparent;
+  pointer-events: none;
+}
+.reader-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  transition: width 120ms linear;
+}
+
+/* ── RESUME TOAST ── */
+.reader-resume {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  z-index: 170;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 12px 12px 18px;
+  background: rgba(18,16,18,0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.55);
+  font: 13.5px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateX(-50%) translateY(16px);
+  transition: opacity 380ms ease, transform 380ms ease;
+  pointer-events: none;
+  max-width: calc(100vw - 32px);
+}
+.reader-resume.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: all;
+}
+.reader-resume-text {
+  color: var(--ink-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.reader-resume-text strong { color: var(--ink); font-weight: 600; }
+.reader-resume-go {
+  flex-shrink: 0;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #14110f;
+  font: 600 12.5px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  cursor: pointer;
+  transition: opacity 120ms;
+}
+.reader-resume-go:hover { opacity: 0.86; }
+.reader-resume-dismiss {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-muted);
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 120ms, color 120ms;
+}
+.reader-resume-dismiss:hover { background: rgba(255,255,255,0.08); color: var(--ink); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  body { padding-left: 16px; padding-right: 16px; }
+  .chapter-drawer { width: 90vw; }
+}

@@ -1,0 +1,1187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Katarina Grande</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    /* ── OVERRIDE MAIN PADDING for full-width bands ── */
+    main { padding-left: 0; padding-right: 0; }
+    .about-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── KEYFRAMES ── */
+    @keyframes shimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: 300% center; }
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes floatA {
+      0%,100% { transform: translateY(0) rotate(-6deg); }
+      50%     { transform: translateY(-10px) rotate(-6deg); }
+    }
+    @keyframes floatB {
+      0%,100% { transform: translateY(0) rotate(4deg); }
+      50%     { transform: translateY(-14px) rotate(4deg); }
+    }
+    @keyframes floatC {
+      0%,100% { transform: translateY(0) rotate(-12deg); }
+      50%     { transform: translateY(-7px) rotate(-12deg); }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes twinkle {
+      0%,100% { opacity: 0.18; transform: scale(1); }
+      50%     { opacity: 0.55; transform: scale(1.4); }
+    }
+    @keyframes pulse-ring {
+      0%,100% { box-shadow: 0 0 0 0 rgba(49,208,195,0.25); }
+      50%     { box-shadow: 0 0 0 6px rgba(49,208,195,0); }
+    }
+
+    /* reveal + cursor-spark now in styles.css */
+
+    /* ══════════════════════════════════
+       HERO
+    ══════════════════════════════════ */
+    .blog-hero {
+      position: relative;
+      padding: calc(var(--nav-h) + 80px) 24px 72px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 18% 40%, rgba(157,115,255,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 82% 40%, rgba(255,79,139,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 90%, rgba(49,208,195,0.07) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* floating stickers */
+    .sticker {
+      position: absolute;
+      pointer-events: none;
+      font-size: 1.4rem;
+      opacity: 0.22;
+      line-height: 1;
+    }
+    .sticker.s1 { top: 18%; left: 9%;  animation: floatA 4.2s ease-in-out infinite; }
+    .sticker.s2 { top: 27%; right: 8%; animation: floatB 5s ease-in-out infinite 0.5s; font-size:1rem; }
+    .sticker.s3 { bottom: 28%; left: 6%; animation: floatC 3.8s ease-in-out infinite 1s; font-size:0.8rem; }
+    .sticker.s4 { top: 14%; left: 40%; animation: floatA 4.6s ease-in-out infinite 0.3s; font-size:0.7rem; }
+    .sticker.s5 { bottom: 32%; right: 7%; animation: floatB 4s ease-in-out infinite 1.4s; font-size:0.75rem; }
+    .sticker.s6 { top: 45%; right: 13%; animation: floatC 5.2s ease-in-out infinite 0.8s; font-size:0.65rem; }
+    .star-spin {
+      position: absolute;
+      top: 20%; right: 20%;
+      font-size: 1.1rem;
+      opacity: 0.15;
+      animation: spin-slow 12s linear infinite;
+    }
+
+    .blog-hero h1 {
+      margin: 0 0 6px;
+      font-size: clamp(3.2rem, 9vw, 6rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+      position: relative;
+      background: linear-gradient(90deg,
+        #fff9f1 0%, #c4a8ff 18%, #fff9f1 35%,
+        #5ee8de 52%, #fff9f1 68%, #ff7aaa 85%, #fff9f1 100%
+      );
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 7s linear infinite;
+    }
+    .blog-hero .hero-sub {
+      font-size: clamp(0.88rem, 2vw, 1rem);
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 440px;
+      margin: 16px auto 0;
+      position: relative;
+    }
+
+    /* blog stats strip */
+    .blog-stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-top: 32px;
+      position: relative;
+    }
+    .blog-stat {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,249,241,0.3);
+      padding: 0 18px;
+      border-right: 1px solid rgba(255,249,241,0.1);
+    }
+    .blog-stat:last-child { border-right: none; }
+    .blog-stat em {
+      font-style: normal;
+      color: rgba(255,249,241,0.55);
+    }
+
+    /* ══════════════════════════════════
+       MARQUEE BANDS
+    ══════════════════════════════════ */
+    .marquee-band {
+      overflow: hidden;
+      padding: 11px 0;
+      border-top: 1px solid rgba(255,249,241,0.07);
+      border-bottom: 1px solid rgba(255,249,241,0.07);
+      margin: 56px 0;
+      white-space: nowrap;
+    }
+    .marquee-inner {
+      display: inline-block;
+      animation: marquee 28s linear infinite;
+      font-size: 0.62rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,249,241,0.18);
+      will-change: transform;
+    }
+    .marquee-band.violet .marquee-inner { color: rgba(157,115,255,0.3); }
+    .marquee-band.pink   .marquee-inner { color: rgba(255,79,139,0.3); }
+    .marquee-band.teal   .marquee-inner { color: rgba(49,208,195,0.3); }
+    .marquee-band.fast  .marquee-inner  { animation-duration: 18s; }
+
+    /* ══════════════════════════════════
+       POST CARD SYSTEM
+    ══════════════════════════════════ */
+    .post-feed {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px 120px;
+    }
+
+    .post-card {
+      border: 1px solid rgba(255,249,241,0.08);
+      border-radius: 22px;
+      overflow: hidden;
+      margin-bottom: 28px;
+      background: rgba(255,249,241,0.018);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .post-card:hover {
+      border-color: rgba(255,249,241,0.15);
+      transform: translateY(-3px);
+    }
+
+    .post-accent-bar { height: 3px; }
+
+    .post-inner { padding: 26px 26px 20px; }
+
+    .post-type-label {
+      font-size: 0.55rem;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,249,241,0.25);
+      margin-bottom: 18px;
+    }
+
+    .post-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 26px 14px;
+      border-top: 1px solid rgba(255,249,241,0.06);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .post-notes {
+      font-size: 0.62rem;
+      color: rgba(255,249,241,0.2);
+      font-weight: 700;
+    }
+    .post-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .post-hash {
+      font-size: 0.58rem;
+      color: rgba(255,249,241,0.2);
+      font-weight: 600;
+    }
+    .post-hash::before { content: '#'; }
+
+    /* ══════════════════════════════════
+       SECTION: SOLAR
+    ══════════════════════════════════ */
+    .solar-post h2 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px;
+      color: #c4a8ff;
+    }
+    .solar-post p {
+      font-size: 0.96rem;
+      line-height: 1.92;
+      color: rgba(255,249,241,0.75);
+      margin: 0 0 18px;
+    }
+    .solar-post p:last-child { margin-bottom: 0; }
+    .pull-quote {
+      border-left: 3px solid #9d73ff;
+      background: rgba(157,115,255,0.05);
+      border-radius: 0 10px 10px 0;
+      margin: 28px 0;
+      padding: 14px 20px;
+    }
+    .pull-quote p {
+      font-size: 1.08rem !important;
+      font-style: italic;
+      line-height: 1.65 !important;
+      color: rgba(255,249,241,0.85) !important;
+      margin: 0 !important;
+    }
+
+    /* ══════════════════════════════════
+       SECTION: REGULARS
+    ══════════════════════════════════ */
+    .regulars-post h2 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px;
+      color: #ff7aaa;
+    }
+    .regulars-intro {
+      font-size: 0.9rem;
+      color: rgba(255,249,241,0.45);
+      line-height: 1.85;
+      margin-bottom: 28px;
+    }
+    .regulars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 580px) { .regulars-grid { grid-template-columns: 1fr; } }
+
+    .regular-card {
+      border-radius: 16px;
+      border: 1px solid rgba(255,249,241,0.07);
+      padding: 24px 16px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s;
+      position: relative;
+    }
+    .regular-card:hover {
+      transform: translateY(-6px) rotate(0.5deg);
+    }
+    .regular-card.jungwon {
+      background: radial-gradient(ellipse at 50% 0%, rgba(157,115,255,0.09) 0%, transparent 65%);
+      border-color: rgba(157,115,255,0.18);
+    }
+    .regular-card.jungwon:hover {
+      border-color: rgba(157,115,255,0.45);
+      box-shadow: 0 12px 40px rgba(157,115,255,0.1);
+    }
+    .regular-card.haechan {
+      background: radial-gradient(ellipse at 50% 0%, rgba(49,208,195,0.09) 0%, transparent 65%);
+      border-color: rgba(49,208,195,0.18);
+    }
+    .regular-card.haechan:hover {
+      border-color: rgba(49,208,195,0.45);
+      box-shadow: 0 12px 40px rgba(49,208,195,0.1);
+    }
+    .regular-card.minji {
+      background: radial-gradient(ellipse at 50% 0%, rgba(255,79,139,0.09) 0%, transparent 65%);
+      border-color: rgba(255,79,139,0.18);
+    }
+    .regular-card.minji:hover {
+      border-color: rgba(255,79,139,0.45);
+      box-shadow: 0 12px 40px rgba(255,79,139,0.1);
+    }
+
+    .regular-bubble-wrap {
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .regular-bubble {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    .regular-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid;
+      z-index: 0;
+    }
+    .regular-ring-2 {
+      position: absolute;
+      inset: -9px;
+      border-radius: 50%;
+      border: 1px solid;
+      opacity: 0.25;
+      z-index: 0;
+    }
+    .jungwon .regular-ring  { border-color: #9d73ff; }
+    .jungwon .regular-ring-2 { border-color: #9d73ff; }
+    .haechan .regular-ring  { border-color: #31d0c3; animation: pulse-ring 2.5s ease-in-out infinite; }
+    .haechan .regular-ring-2 { border-color: #31d0c3; }
+    .minji   .regular-ring  { border-color: #ff4f8b; }
+    .minji   .regular-ring-2 { border-color: #ff4f8b; }
+
+    .regular-card-name {
+      font-size: 0.93rem;
+      font-weight: 800;
+      margin: 0 0 3px;
+    }
+    .jungwon .regular-card-name { color: #c4a8ff; }
+    .haechan .regular-card-name { color: #5ee8de; }
+    .minji   .regular-card-name { color: #ff7aaa; }
+
+    .regular-card-group {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,249,241,0.3);
+      margin: 0 0 12px;
+    }
+    .regular-card-desc {
+      font-size: 0.78rem;
+      line-height: 1.75;
+      color: rgba(255,249,241,0.45);
+      margin: 0 0 14px;
+    }
+    .regular-works {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+    }
+    .regular-work-tag {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid;
+      opacity: 0.55;
+    }
+    .jungwon .regular-work-tag { color: #9d73ff; border-color: #9d73ff; }
+    .haechan .regular-work-tag { color: #31d0c3; border-color: #31d0c3; }
+    .minji   .regular-work-tag { color: #ff4f8b; border-color: #ff4f8b; }
+
+    /* ══════════════════════════════════
+       SECTION: BLURB BUBBLE
+    ══════════════════════════════════ */
+    .blurb-bubble {
+      background: linear-gradient(135deg, #ff4f8b 0%, #c44fd4 52%, #9d73ff 100%);
+      border-radius: 26px;
+      padding: 30px 32px 28px;
+      margin-bottom: 32px;
+      transform: rotate(-1.5deg);
+      box-shadow:
+        0 16px 52px rgba(255, 79, 139, 0.38),
+        0 4px 18px rgba(0, 0, 0, 0.28),
+        inset 0 0 0 2px rgba(255, 255, 255, 0.14);
+      position: relative;
+      overflow: hidden;
+    }
+    .blurb-bubble::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(255,255,255,0.13) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .blurb-label {
+      font-size: 0.5rem;
+      font-weight: 900;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin: 0 0 10px;
+    }
+    .blurb-hi {
+      font-size: clamp(2.6rem, 8vw, 4rem);
+      font-weight: 900;
+      color: #fff;
+      margin: 0 0 16px;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .blurb-text {
+      font-size: 0.9rem;
+      line-height: 1.9;
+      color: rgba(255, 255, 255, 0.91);
+      margin: 0;
+    }
+    .blurb-star {
+      position: absolute;
+      pointer-events: none;
+      color: rgba(255, 255, 255, 0.3);
+      font-style: normal;
+      line-height: 1;
+    }
+    .blurb-socials {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .blurb-socials-label {
+      font-size: 0.52rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-right: 2px;
+    }
+    .blurb-social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.18s, transform 0.18s, border-color 0.18s;
+      flex: 0 0 auto;
+    }
+    .blurb-social-link:hover {
+      background: rgba(255,255,255,0.28);
+      border-color: rgba(255,255,255,0.4);
+      transform: scale(1.12);
+    }
+    .blurb-social-link img {
+      width: 17px;
+      height: 17px;
+      display: block;
+    }
+
+    /* ══════════════════════════════════
+       SECTION: WORKS LABEL
+    ══════════════════════════════════ */
+    .works-section-label {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: rgba(255,249,241,0.88);
+      margin: 0 0 28px;
+    }
+
+    /* ══════════════════════════════════
+       SECTION: STORY POSTS (individual)
+    ══════════════════════════════════ */
+    .story-post .post-title {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+    }
+    .story-post .post-inner p {
+      font-size: 0.92rem;
+      line-height: 1.9;
+      color: rgba(255,249,241,0.58);
+      margin: 0 0 14px;
+    }
+    .story-post .post-inner p:last-child { margin-bottom: 0; }
+
+    /* ══════════════════════════════════
+       SECTION: KPOP
+    ══════════════════════════════════ */
+    .kpop-post h2 {
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px;
+      color: #5ee8de;
+    }
+    .kpop-groups {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .kpop-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 15px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,249,241,0.1);
+      color: rgba(255,249,241,0.38);
+      transition: all 0.18s;
+      cursor: default;
+    }
+    .kpop-tag:hover {
+      border-color: rgba(255,249,241,0.25);
+      color: rgba(255,249,241,0.7);
+    }
+    .kpop-tag.fave {
+      border-color: #31d0c3;
+      color: #31d0c3;
+      background: rgba(49,208,195,0.05);
+    }
+    .kpop-tag.fave:hover {
+      background: rgba(49,208,195,0.12);
+      box-shadow: 0 0 12px rgba(49,208,195,0.2);
+    }
+    .kpop-post p {
+      font-size: 0.93rem;
+      line-height: 1.88;
+      color: rgba(255,249,241,0.65);
+      margin: 0 0 14px;
+    }
+    .kpop-post p:last-child { margin-bottom: 0; }
+
+    /* ══════════════════════════════════
+       SECTION: PLAYLISTS
+    ══════════════════════════════════ */
+    .playlist-post h2 {
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+      color: #f2b84b;
+    }
+    .playlist-post .sub {
+      font-size: 0.85rem;
+      color: rgba(255,249,241,0.35);
+      margin: 0 0 24px;
+      line-height: 1.7;
+    }
+    .playlists-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 520px) { .playlists-grid { grid-template-columns: 1fr; } }
+    .playlist-entry p {
+      font-size: 0.58rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,249,241,0.22);
+      margin: 0 0 6px;
+    }
+    .playlist-entry iframe {
+      display: block;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    /* ══════════════════════════════════
+       TAGS FOOTER
+    ══════════════════════════════════ */
+    .blog-tags-footer {
+      max-width: 680px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .blog-tags-footer p {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: rgba(255,249,241,0.15);
+      line-height: 2.2;
+    }
+    .blog-tags-footer p span {
+      display: inline-block;
+      margin: 0 4px;
+      transition: color 0.15s;
+    }
+    .blog-tags-footer p span::before { content: '#'; }
+    .blog-tags-footer p span:hover { color: rgba(255,249,241,0.45); }
+
+    /* ══════════════════════════════════
+       SECTION: FILE FOLDER
+    ══════════════════════════════════ */
+    @keyframes fileSwish {
+      from { opacity: 0; transform: translateY(-14px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .file-folder {
+      background: rgba(255,249,241,0.022);
+      border: 1px solid rgba(255,249,241,0.1);
+      border-radius: 4px 18px 18px 18px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .folder-label-bar {
+      background: rgba(255,249,241,0.04);
+      padding: 9px 20px;
+      font-size: 0.52rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,249,241,0.22);
+      border-bottom: 1px solid rgba(255,249,241,0.07);
+      text-align: center;
+      user-select: none;
+    }
+
+    .folder-tabs-row {
+      display: flex;
+      border-bottom: 1px solid rgba(255,249,241,0.07);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .folder-tabs-row::-webkit-scrollbar { display: none; }
+
+    .folder-tab {
+      flex: 1;
+      min-width: 0;
+      padding: 12px 8px 14px;
+      background: transparent;
+      border: none;
+      border-right: 1px solid rgba(255,249,241,0.06);
+      color: rgba(255,249,241,0.28);
+      font-family: inherit;
+      font-size: 0.56rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s, transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+      position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .folder-tab:last-child { border-right: none; }
+
+    .folder-tab:hover {
+      color: var(--tab-c, #fff9f1);
+      background: rgba(255,249,241,0.04);
+      transform: translateY(-8px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+
+    .folder-tab.active {
+      color: var(--tab-c, #fff9f1);
+      background: rgba(255,249,241,0.045);
+      box-shadow: inset 0 -2px 0 var(--tab-c, #fff9f1);
+      transform: translateY(-2px);
+    }
+
+    .folder-body { min-height: 260px; }
+
+    .file-panel { display: none; }
+    .file-panel.active {
+      display: block;
+      animation: fileSwish 0.3s cubic-bezier(0.22,0.61,0.36,1) both;
+    }
+    .file-panel .post-inner { padding: 28px 28px 18px; }
+    .file-panel .post-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 28px 18px;
+      border-top: 1px solid rgba(255,249,241,0.06);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- cursor sparkles injected by JS -->
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/brand-avatar.png" alt="">
+      <span class="brand-label">
+        <strong>Katarina Grande</strong>
+        <small>Universe Archive</small>
+      </span>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="index.html#worlds">Archive</a>
+      <a href="vault.html">Vault</a>
+      <a href="about.html" aria-current="page">About</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ══ HERO ══ -->
+    <div class="blog-hero reveal">
+      <span class="sticker s1">✦</span>
+      <span class="sticker s2">♡</span>
+      <span class="sticker s3">★</span>
+      <span class="sticker s4">✿</span>
+      <span class="sticker s5">✦</span>
+      <span class="sticker s6">☆</span>
+      <span class="star-spin">✦</span>
+      <h1>hi, i'm katarina.</h1>
+      <p class="hero-sub">i make a new narrative universe every few weeks when something else in life goes wrong. there's worse coping mechanisms, right? read below to see my yap sesh.</p>
+      <div class="blog-stats-row">
+        <span class="blog-stat"><em>12</em> worlds</span>
+        <span class="blog-stat">writing since <em>2014</em></span>
+        <span class="blog-stat">probably thinking about <em>haechan</em></span>
+        <span class="blog-stat">currently: <em>runners</em></span>
+      </div>
+    </div>
+
+    <!-- ══ MARQUEE 1 ══ -->
+    <div class="marquee-band teal reveal">
+      <div class="marquee-inner">✦ katarina grande ✦ universe archive ✦ 12 original worlds ✦ personal canon ✦ fiction since 2018 ✦ katarina grande ✦ universe archive ✦ 12 original worlds ✦ personal canon ✦ fiction since 2018 ✦ katarina grande ✦ universe archive ✦ 12 original worlds ✦ personal canon ✦ fiction since 2018 &nbsp;</div>
+    </div>
+
+    <div class="post-feed">
+
+      <!-- ══ BLURB BUBBLE ══ -->
+      <div class="blurb-bubble reveal">
+        <p class="blurb-label">✦ introductions ✦</p>
+        <p class="blurb-hi">welcome!</p>
+        <p class="blurb-text">i've been writing fiction as a coping mechanism and trauma response for over a decade now! i'm an '03 liner and became a kpop girlie in 2017. if ur wondering why i decided to insanely code a bunch of websites for seemingly no real reason — i've always enjoyed computers and had to refresh some basic coding skills from hs upon starting my job (i work as essentially a digital communications manager which requires me to do a lot of web development). this is basically just a neurodivergent girlie's hyperfixation nightmare!</p>
+        <div class="blurb-socials">
+          <span class="blurb-socials-label">find me on</span>
+          <a class="blurb-social-link" href="https://www.last.fm/user/katarinagrande" target="_blank" rel="noopener" title="Last.fm">
+            <img src="https://cdn.simpleicons.org/lastfm/ffffff" alt="Last.fm">
+          </a>
+          <a class="blurb-social-link" href="https://letterboxd.com/katarinagrande/" target="_blank" rel="noopener" title="Letterboxd">
+            <img src="https://cdn.simpleicons.org/letterboxd/ffffff" alt="Letterboxd">
+          </a>
+          <a class="blurb-social-link" href="https://steamcommunity.com/id/13cmjinani" target="_blank" rel="noopener" title="Steam">
+            <img src="https://cdn.simpleicons.org/steam/ffffff" alt="Steam">
+          </a>
+        </div>
+        <i class="blurb-star" style="top:18px;right:30px;font-size:1.5rem;">★</i>
+        <i class="blurb-star" style="bottom:20px;right:52px;font-size:0.85rem;">✦</i>
+        <i class="blurb-star" style="top:48px;right:64px;font-size:0.65rem;">★</i>
+        <i class="blurb-star" style="bottom:36px;left:24px;font-size:0.55rem;">✦</i>
+      </div>
+
+      <!-- ══ POST: SOLAR NAME ══ -->
+      <div class="post-card solar-post reveal">
+        <div class="post-accent-bar" style="background: linear-gradient(90deg, #9d73ff, #c4a8ff);"></div>
+        <div class="post-inner">
+          <h2>on the name solar</h2>
+          <p>I always liked names that felt celestial — something that sounded like it existed slightly outside of ordinary things. Solar fit that. But the reason it stuck goes deeper than the sound of it.</p>
+          <p>When I first made Solar in Delicate, I was in a really rough, dark place. That period carries through the novel — it's not exactly a light read, and it wasn't meant to be. But Solar, as a character and as a name, became a source of brightness for me during a time that was otherwise pretty lonely. She became a reason to remember that things could always be worse, technically.</p>
+          <div class="pull-quote">
+            <p>She symbolizes, more than anything, what it means to focus your energy toward something that gives off light rather than takes it.</p>
+          </div>
+          <p>The name holds a genuinely special place in my heart now, because of what it got me through.</p>
+        </div>
+        <div class="post-footer">
+          <span class="post-notes">♡ 2,847 notes</span>
+          <div class="post-tags-row">
+            <span class="post-hash">katarina-grande</span>
+            <span class="post-hash">solar</span>
+            <span class="post-hash">delicate</span>
+            <span class="post-hash">personal</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ POST: THE REGULARS ══ -->
+      <div class="post-card regulars-post reveal">
+        <div class="post-accent-bar" style="background: linear-gradient(90deg, #ff4f8b, #ff7aaa);"></div>
+        <div class="post-inner">
+          <h2>so, who are these people?</h2>
+          <p class="regulars-intro">If you spend enough time in this archive, you'll notice the same names keep appearing.<br>This is entirely intentional and also completely my fault.</p>
+
+          <div class="regulars-grid">
+            <div class="regular-card jungwon reveal d1">
+              <div class="regular-bubble-wrap">
+                <div class="regular-ring-2"></div>
+                <div class="regular-ring"></div>
+                <img class="regular-bubble" src="assets/about/jungwon.jpg" alt="Yang Jungwon">
+              </div>
+              <p class="regular-card-name">Jungwon</p>
+              <p class="regular-card-group">ENHYPEN</p>
+              <p class="regular-card-desc">Obviously my favorite. So versatile he can play literally any role — which makes him irresistible to write. It's hard to not want to constantly write about those dimples, I guess.</p>
+              <div class="regular-works">
+                <span class="regular-work-tag">Hoax ★</span>
+                <span class="regular-work-tag">Petal & Thorn ★</span>
+                <span class="regular-work-tag">SoDA ★</span>
+                <span class="regular-work-tag">Secret</span>
+                <span class="regular-work-tag">Casual</span>
+              </div>
+            </div>
+
+            <div class="regular-card haechan reveal d2">
+              <div class="regular-bubble-wrap">
+                <div class="regular-ring-2"></div>
+                <div class="regular-ring"></div>
+                <img class="regular-bubble" src="assets/about/haechan.jpg" alt="Haechan">
+              </div>
+              <p class="regular-card-name">Haechan</p>
+              <p class="regular-card-group">NCT</p>
+              <p class="regular-card-desc">My first Haechan work was GO in 2018. I then somehow conjured Havenbrook, Runners, and Casual all with him as the main love interest. I am a sucker for a bad boy Haechan moment. Not fixing this.</p>
+              <div class="regular-works">
+                <span class="regular-work-tag">Havenbrook ★</span>
+                <span class="regular-work-tag">Runners ★</span>
+                <span class="regular-work-tag">Casual ★</span>
+                <span class="regular-work-tag">GO ★</span>
+              </div>
+            </div>
+
+            <div class="regular-card minji reveal d3">
+              <div class="regular-bubble-wrap">
+                <div class="regular-ring-2"></div>
+                <div class="regular-ring"></div>
+                <img class="regular-bubble" src="assets/about/minji.jpg" alt="Minji">
+              </div>
+              <p class="regular-card-name">Minji</p>
+              <p class="regular-card-group">NewJeans</p>
+              <p class="regular-card-desc">I feel a little bad she's so often the second love interest. I am still learning to tap into my gay side, okay? She keeps showing up because she deserves to.</p>
+              <div class="regular-works">
+                <span class="regular-work-tag">Secret ★</span>
+                <span class="regular-work-tag">Soul of Minji ★</span>
+                <span class="regular-work-tag">Petal & Thorn</span>
+                <span class="regular-work-tag">Runners</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="post-footer">
+          <span class="post-notes">♡ 12,001 notes</span>
+          <div class="post-tags-row">
+            <span class="post-hash">jungwon</span>
+            <span class="post-hash">haechan</span>
+            <span class="post-hash">minji</span>
+            <span class="post-hash">the-regulars</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /post-feed -->
+
+    <!-- ══ MARQUEE 2 ══ -->
+    <div class="marquee-band pink reveal">
+      <div class="marquee-inner">♡ jungwon ♡ haechan ♡ minji ♡ recurring characters ♡ same six people different worlds ♡ jungwon ♡ haechan ♡ minji ♡ recurring characters ♡ same six people different worlds ♡ jungwon ♡ haechan ♡ minji ♡ recurring characters ♡ same six people different worlds &nbsp;</div>
+    </div>
+
+    <div class="post-feed" style="padding-top: 0;">
+
+      <h2 class="works-section-label">how the worlds came to be</h2>
+
+      <div class="file-folder reveal">
+        <div class="folder-label-bar">★ the worlds ★</div>
+        <div class="folder-tabs-row">
+          <button class="folder-tab active" data-file="delicate" style="--tab-c:#ff4f8b">Delicate</button>
+          <button class="folder-tab" data-file="hoax" style="--tab-c:#9d73ff">Hoax</button>
+          <button class="folder-tab" data-file="runners" style="--tab-c:#31d0c3">Runners</button>
+          <button class="folder-tab" data-file="havenbrook" style="--tab-c:#91d36e">Havenbrook</button>
+          <button class="folder-tab" data-file="casual" style="--tab-c:#ff8a4c">Casual</button>
+          <button class="folder-tab" data-file="secret" style="--tab-c:#5ee8de">Secret</button>
+        </div>
+        <div class="folder-body">
+
+          <div class="file-panel active" data-file="delicate">
+            <div class="post-inner">
+              <p class="post-title" style="color:#ff4f8b;">Delicate</p>
+              <p>It was originally meant to be a lighthearted crack-fic. But my life had other plans, and writing became my only outlet. The story turned into something much darker and deeper than it was ever planned to be. On the outside it may seem like a mess of plotlines and characters — but every minute detail served a greater purpose for me and my mental health at the time. Every word came from a place I had nowhere else to put.</p>
+              <p>Ending it took a very long time. I originally said 80 chapters, then 100, then another 80. None of my friends wanted to read it because it's "too long." Every six months I come back to it — seemingly when things feel heavy again — and it feels electric every time. I carry the attitudes of some of its characters with me every single day.</p>
+            </div>
+            <div class="post-footer">
+              <span class="post-notes">♡ 5,204 notes</span>
+              <div class="post-tags-row">
+                <span class="post-hash">delicate</span>
+                <span class="post-hash">delicate-universe</span>
+                <span class="post-hash">solar</span>
+                <span class="post-hash">long-form</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="file-panel" data-file="hoax">
+            <div class="post-inner">
+              <p class="post-title" style="color:#9d73ff;">Hoax</p>
+              <p>My first real SMAU attempt. I'd become obsessed with the format — the way it mixes lighthearted group chat chaos with genuinely serious written scenes. I had just become an ENHYPEN fan and thought, what better way to try this? I wanted something different from Delicate. Funny, bright, something my friends might actually read. (They didn't, not really.) But writing Hoax became genuinely fun because it let me pour a lot of my own friendships into it. Jihoon and Cherry's dynamic feels so real it's like watching a bunch of dumb best friends in real time. Loud until it isn't.</p>
+            </div>
+            <div class="post-footer">
+              <span class="post-notes">♡ 3,771 notes</span>
+              <div class="post-tags-row">
+                <span class="post-hash">hoax</span>
+                <span class="post-hash">enhypen-au</span>
+                <span class="post-hash">jungwon</span>
+                <span class="post-hash">smau</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="file-panel" data-file="runners">
+            <div class="post-inner">
+              <p class="post-title" style="color:#31d0c3;">Runners</p>
+              <p>A combination of everything I find most compelling in my other works — the sensuality of Delicate, the SMAU elements of Hoax, the gaming world of Petal &amp; Thorn, all thrown together. The last time I wrote a college AU was First Love, which is not something I like to look back on. Runners is my coming-of-age, modernized take on that space. Grown up, more layered, and a lot more me.</p>
+            </div>
+            <div class="post-footer">
+              <span class="post-notes">♡ 4,019 notes</span>
+              <div class="post-tags-row">
+                <span class="post-hash">runners</span>
+                <span class="post-hash">college-au</span>
+                <span class="post-hash">haechan-au</span>
+                <span class="post-hash">smau</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="file-panel" data-file="havenbrook">
+            <div class="post-inner">
+              <p class="post-title" style="color:#91d36e;">Havenbrook</p>
+              <p>A darker take — pulling from the themes of GO (matured) and the gang elements of Recherche and Delicate. Not every person who participates in something dark is inherently bad. Haechan in this world is genuinely good. He still helps people, still wants to keep them safe. It's about two people who love each other but know they can't commit — because one of them is meant for something bigger than a town being slowly consumed by darkness.</p>
+            </div>
+            <div class="post-footer">
+              <span class="post-notes">♡ 2,388 notes</span>
+              <div class="post-tags-row">
+                <span class="post-hash">havenbrook</span>
+                <span class="post-hash">dark-au</span>
+                <span class="post-hash">haechan</span>
+                <span class="post-hash">gang-au</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="file-panel" data-file="casual">
+            <div class="post-inner">
+              <p class="post-title" style="color:#ff8a4c;">Casual</p>
+              <p>Much lighter than Havenbrook. Think of it as a less complex Runners — Haechan isn't a bad boy here at all. Casual is based on the Chappell Roan song of the same name, which might give some context. It's about returning to a place you never fully left, and the different textures that come with that.</p>
+            </div>
+            <div class="post-footer">
+              <span class="post-notes">♡ 1,902 notes</span>
+              <div class="post-tags-row">
+                <span class="post-hash">casual</span>
+                <span class="post-hash">haechan-au</span>
+                <span class="post-hash">chappell-roan</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="file-panel" data-file="secret">
+            <div class="post-inner">
+              <p class="post-title" style="color:#5ee8de;">Secret</p>
+              <p>Secret pulls from real themes still very much present in our world — in that sense it might actually be the darkest work in the archive despite its surface. WLW is different in flavor and feeling from everything else I write. Soorin and Minji are so specific in who they are that I'm genuinely afraid to write them wrong. I wanted to write it because it's a part of myself I want to tap into more and be truer to. It's special because it's not like any of the others.</p>
+            </div>
+            <div class="post-footer">
+              <span class="post-notes">♡ 3,310 notes</span>
+              <div class="post-tags-row">
+                <span class="post-hash">secret</span>
+                <span class="post-hash">wlw</span>
+                <span class="post-hash">minji</span>
+                <span class="post-hash">idol-au</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /folder-body -->
+      </div><!-- /file-folder -->
+
+    </div><!-- /post-feed -->
+
+    <!-- ══ MARQUEE 3 ══ -->
+    <div class="marquee-band violet reveal fast">
+      <div class="marquee-inner">★ delicate ★ hoax ★ runners ★ petal and thorn ★ recherche ★ peace ★ havenbrook ★ casual ★ secret ★ soda ★ soul of minji ★ go ★ delicate ★ hoax ★ runners ★ petal and thorn ★ recherche ★ peace ★ havenbrook ★ casual ★ secret ★ soda ★ soul of minji ★ go &nbsp;</div>
+    </div>
+
+    <div class="post-feed" style="padding-top: 0;">
+
+      <!-- ══ POST: KPOP ══ -->
+      <div class="post-card kpop-post reveal">
+        <div class="post-accent-bar" style="background: linear-gradient(90deg, #31d0c3, #5ee8de);"></div>
+        <div class="post-inner">
+          <h2>the rabbit holes</h2>
+          <div class="kpop-groups">
+            <span class="kpop-tag fave">NCT</span>
+            <span class="kpop-tag fave">ENHYPEN</span>
+            <span class="kpop-tag">LE SSERAFIM</span>
+            <span class="kpop-tag">NewJeans</span>
+            <span class="kpop-tag">iKON</span>
+          </div>
+          <p>This entire archive is, at its core, a Haechan and Jungwon fan letter disguised as a creative writing portfolio.</p>
+          <p>Haechan has three works dedicated to him at this point, which I think says everything. Jungwon is the leader of ENHYPEN and also the reason I have a recurring dimple problem in my prose. LE SSERAFIM and NewJeans are responsible for most of the cast across the idol universe works.</p>
+          <p>I am normal about all of this.</p>
+        </div>
+        <div class="post-footer">
+          <span class="post-notes">♡ 8,444 notes</span>
+          <div class="post-tags-row">
+            <span class="post-hash">nct</span>
+            <span class="post-hash">enhypen</span>
+            <span class="post-hash">kpop</span>
+            <span class="post-hash">haechan-apologist</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ POST: SOUNDTRACK ══ -->
+      <div class="post-card playlist-post reveal">
+        <div class="post-accent-bar" style="background: linear-gradient(90deg, #f2b84b, #ffd080);"></div>
+        <div class="post-inner">
+          <h2>the soundtrack</h2>
+          <p class="sub">Every world has its own playlist. These are the ones I actually listened to while writing — not curated after the fact, just what was on.</p>
+          <div class="playlists-grid">
+            <div class="playlist-entry">
+              <p>Delicate</p>
+              <iframe src="https://open.spotify.com/embed/playlist/5xWqM98vXda7ek8j2hbZM0?utm_source=generator&theme=0" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="playlist-entry">
+              <p>Recherche</p>
+              <iframe src="https://open.spotify.com/embed/playlist/14wmfKK70Po9ZpQuMYREMg?utm_source=generator&theme=0" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="playlist-entry">
+              <p>Peace</p>
+              <iframe src="https://open.spotify.com/embed/playlist/2U32SXQV2MMpEd5QuHXX1L?utm_source=generator&theme=0" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="playlist-entry">
+              <p>Hoax</p>
+              <iframe src="https://open.spotify.com/embed/playlist/0HRLW04MAfqMdhlFH0q5YW?utm_source=generator&theme=0" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="playlist-entry">
+              <p>Runners</p>
+              <iframe src="https://open.spotify.com/embed/playlist/6HCErqqISQCQebvJzKonfc?utm_source=generator&theme=0" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="playlist-entry">
+              <p>Havenbrook</p>
+              <iframe src="https://open.spotify.com/embed/playlist/4TOHIPD42Xqd4azXBR6uBf?utm_source=generator&theme=0" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="playlist-entry" style="grid-column: 1 / -1;">
+              <p>Petal & Thorn</p>
+              <iframe src="https://open.spotify.com/embed/playlist/4tbQXQqDw804t62u5bpoHh?utm_source=generator&theme=0" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="post-footer">
+          <span class="post-notes">♡ 6,177 notes</span>
+          <div class="post-tags-row">
+            <span class="post-hash">spotify</span>
+            <span class="post-hash">writing-playlist</span>
+            <span class="post-hash">soundtrack</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /post-feed -->
+
+    <!-- ══ BLOG TAGS FOOTER ══ -->
+    <div class="blog-tags-footer reveal">
+      <p>
+        <span>katarina-grande</span>
+        <span>universe-archive</span>
+        <span>original-fiction</span>
+        <span>solar</span>
+        <span>delicate</span>
+        <span>hoax</span>
+        <span>runners</span>
+        <span>havenbrook</span>
+        <span>casual</span>
+        <span>secret</span>
+        <span>petal-and-thorn</span>
+        <span>recherche</span>
+        <span>peace</span>
+        <span>kpop-au</span>
+        <span>nct</span>
+        <span>enhypen</span>
+        <span>haechan</span>
+        <span>jungwon</span>
+        <span>minji</span>
+        <span>wlw</span>
+        <span>writing-since-2014</span>
+        <span>i-am-normal-about-this</span>
+      </p>
+    </div>
+
+  </main>
+
+  <script>
+  (function () {
+    function playSwish() {
+      try {
+        var ctx = new (window.AudioContext || window.webkitAudioContext)();
+        var sr = ctx.sampleRate;
+        var len = Math.floor(sr * 0.26);
+        var buf = ctx.createBuffer(1, len, sr);
+        var d = buf.getChannelData(0);
+        for (var i = 0; i < len; i++) {
+          var t = i / sr;
+          d[i] = (Math.random() * 2 - 1) * Math.exp(-t * 18) * 0.45;
+        }
+        var src = ctx.createBufferSource();
+        src.buffer = buf;
+        var flt = ctx.createBiquadFilter();
+        flt.type = 'bandpass';
+        flt.frequency.setValueAtTime(5500, ctx.currentTime);
+        flt.frequency.linearRampToValueAtTime(400, ctx.currentTime + 0.26);
+        flt.Q.value = 0.35;
+        var gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.9, ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.26);
+        src.connect(flt);
+        flt.connect(gain);
+        gain.connect(ctx.destination);
+        src.start();
+      } catch (e) {}
+    }
+
+    document.querySelectorAll('.folder-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var file = this.dataset.file;
+        var folder = this.closest('.file-folder');
+        folder.querySelectorAll('.folder-tab').forEach(function (t) { t.classList.remove('active'); });
+        folder.querySelectorAll('.file-panel').forEach(function (p) { p.classList.remove('active'); });
+        this.classList.add('active');
+        var panel = folder.querySelector('.file-panel[data-file="' + file + '"]');
+        if (panel) {
+          panel.classList.add('active');
+          panel.style.animationName = 'none';
+          panel.offsetHeight;
+          panel.style.animationName = '';
+        }
+        playSwish();
+      });
+    });
+  })();
+  </script>
+
+  <script src="sparkles.js"></script>
+  <script src="transitions.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Vault — Katarina Grande</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .vault-hero {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + 64px) 24px 56px;
+      border-bottom: 1px solid var(--border);
+    }
+    .vault-hero .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 14px;
+    }
+    .vault-hero h1 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+    }
+    .vault-hero p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0;
+    }
+
+    .vault-list {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 52px 24px 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .vault-entry {
+      display: grid;
+      grid-template-columns: 90px 1fr auto;
+      align-items: baseline;
+      gap: 0 24px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.15s;
+    }
+    .vault-entry:first-child { border-top: 1px solid var(--border); }
+    .vault-entry:hover { opacity: 0.75; }
+
+    .vault-entry-date {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .vault-entry-body {}
+
+    .vault-entry-title {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 4px;
+    }
+
+    .vault-entry-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .vault-entry-tag {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 2px 8px;
+      white-space: nowrap;
+      opacity: 0.6;
+    }
+
+    .vault-group-label {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 36px 0 8px;
+      opacity: 0.5;
+    }
+    .vault-group-label:first-child { padding-top: 0; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/brand-avatar.png" alt="">
+      <span class="brand-label">
+        <strong>Katarina Grande</strong>
+        <small>Universe Archive</small>
+      </span>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="index.html#worlds">Archive</a>
+      <a href="vault.html" aria-current="page">Vault</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="vault-hero">
+      <p class="eyebrow">Early Work · 2018 – 2020</p>
+      <h1>The Vault</h1>
+      <p>Everything that came before the archive. Old worlds, fragments, half-finished things — kept here so nothing gets lost. These are the works that existed before Solar had a name, and some of the ones that helped figure out what the name was for.</p>
+    </div>
+
+    <div class="vault-list">
+
+      <p class="vault-group-label">2018</p>
+
+      <a class="vault-entry" href="readers/vault-dead-leaves.html">
+        <span class="vault-entry-date">Jan 2018</span>
+        <span class="vault-entry-body">
+          <p class="vault-entry-title">Dead Leaves</p>
+          <p class="vault-entry-note">Five families move to Ouray, Colorado. A company building goes up. People start dying.</p>
+        </span>
+        <span class="vault-entry-tag">Fragment</span>
+      </a>
+
+      <a class="vault-entry" href="readers/vault-first-love.html">
+        <span class="vault-entry-date">Jan – Aug 2018</span>
+        <span class="vault-entry-body">
+          <p class="vault-entry-title">First Love</p>
+          <p class="vault-entry-note">BTS university AU. A girl who writes songs in secret and the friends who keep showing up anyway. Part 1 of 2.</p>
+        </span>
+        <span class="vault-entry-tag">Prose</span>
+      </a>
+
+      <a class="vault-entry" href="readers/vault-sea.html">
+        <span class="vault-entry-date">2018</span>
+        <span class="vault-entry-body">
+          <p class="vault-entry-title">Sea</p>
+          <p class="vault-entry-note">Katarina's birthday party. Jungkook waiting by the exit. A journal left on a table. Part 2 of First Love.</p>
+        </span>
+        <span class="vault-entry-tag">Prose</span>
+      </a>
+
+      <p class="vault-group-label">Late 2018</p>
+
+      <a class="vault-entry" href="readers/vault-shine.html">
+        <span class="vault-entry-date">Dec 2018</span>
+        <span class="vault-entry-body">
+          <p class="vault-entry-title">Shine</p>
+          <p class="vault-entry-note">A girl accepts tutoring from the wrong person. DMHS, Han Jisung, bad boys with dark clothes and demon eyes.</p>
+        </span>
+        <span class="vault-entry-tag">Fragment</span>
+      </a>
+
+      <a class="vault-entry" href="readers/vault-my-side.html">
+        <span class="vault-entry-date">Dec 2018</span>
+        <span class="vault-entry-body">
+          <p class="vault-entry-title">My Side</p>
+          <p class="vault-entry-note">Mijoo walks to school in the rain. Chan pulls up in an old Toyota and yells at her about it.</p>
+        </span>
+        <span class="vault-entry-tag">Fragment</span>
+      </a>
+
+      <p class="vault-group-label">2019</p>
+
+      <a class="vault-entry" href="readers/vault-only-you.html">
+        <span class="vault-entry-date">Jan 2019</span>
+        <span class="vault-entry-body">
+          <p class="vault-entry-title">Only You</p>
+          <p class="vault-entry-note">Solar wakes up the iKON group chat at 5am for Starbucks. Everyone is furious. Everyone goes.</p>
+        </span>
+        <span class="vault-entry-tag">Group Chat</span>
+      </a>
+
+      <a class="vault-entry" href="readers/vault-smile-flower.html">
+        <span class="vault-entry-date">Mar 2019</span>
+        <span class="vault-entry-body">
+          <p class="vault-entry-title">Smile Flower</p>
+          <p class="vault-entry-note">A girl in a mental hospital who talks to someone only she can see. A nurse who can't reach her. A name she refuses to give up.</p>
+        </span>
+        <span class="vault-entry-tag">Prose</span>
+      </a>
+
+      <a class="vault-entry" href="readers/vault-my-first-and-last.html">
+        <span class="vault-entry-date">Apr 2019</span>
+        <span class="vault-entry-body">
+          <p class="vault-entry-title">My First and Last</p>
+          <p class="vault-entry-note">Yerim does Donghyuck's homework again. Renjun disapproves. Jaemin sees something he shouldn't.</p>
+        </span>
+        <span class="vault-entry-tag">Play Script</span>
+      </a>
+
+      <a class="vault-entry" href="readers/vault-the-last-letters.html">
+        <span class="vault-entry-date">Apr 2019</span>
+        <span class="vault-entry-body">
+          <p class="vault-entry-title">The Last Letters</p>
+          <p class="vault-entry-note">Jinhwan, Jisung, and Haechan write letters to someone they lost. Three versions of grief for the same person.</p>
+        </span>
+        <span class="vault-entry-tag">Epistolary</span>
+      </a>
+
+    </div>
+  </main>
+
+  <script src="sparkles.js"></script>
+  <script src="transitions.js"></script>
+</body>
+</html>

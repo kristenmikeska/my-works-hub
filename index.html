@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Katarina Grande</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/brand-avatar.png" alt="">
+      <span class="brand-label">
+        <strong>Katarina Grande</strong>
+        <small>Universe Archive</small>
+      </span>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="#worlds">Archive</a>
+      <a href="#sites">Coded Sites</a>
+      <a href="vault.html">Vault</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-text">
+<h1>when the real world gets too loud</h1>
+        <p class="hero-sub">original worlds curated by yours truly</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#worlds">Open the archive</a>
+          <a class="btn-ghost" href="#sites">Coded sites</a>
+        </div>
+      </div>
+      <div class="hero-collage" aria-label="Featured worlds">
+        <a class="collage-main collage-card" href="world.html#petal-thorn" aria-label="Open Petal and Thorn">
+          <img src="assets/worlds/petal-editorial.jpg" alt="Petal and Thorn">
+          <span class="collage-overlay">
+            <span class="collage-title">Petal & Thorn</span>
+            <span class="collage-hint">Enter world →</span>
+          </span>
+        </a>
+        <a class="collage-card" href="world.html#runners" aria-label="Open Runners">
+          <img src="assets/worlds/runners-world-new.jpg" alt="Runners">
+          <span class="collage-overlay">
+            <span class="collage-title">Runners</span>
+            <span class="collage-hint">Enter world →</span>
+          </span>
+        </a>
+        <a class="collage-card" href="world.html#delicate" aria-label="Open Delicate">
+          <img src="assets/worlds/delicate-world-new.jpg" alt="Delicate">
+          <span class="collage-overlay">
+            <span class="collage-title">Delicate</span>
+            <span class="collage-hint">Enter world →</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-strip reveal">
+      <div><span class="stat-num" id="statWords">—</span><span class="stat-label">Words</span></div>
+      <div><span class="stat-num" id="statChapters">—</span><span class="stat-label">Chapters</span></div>
+      <div><span class="stat-num">12</span><span class="stat-label">Worlds</span></div>
+      <div><span class="stat-num">3</span><span class="stat-label">Coded Sites</span></div>
+    </div>
+
+    <!-- ARCHIVE -->
+    <section class="catalog" id="worlds">
+      <div class="section-head">
+        <p class="eyebrow">The Archive</p>
+        <h2>Choose a world.</h2>
+      </div>
+
+      <div class="archive-toolbar reveal">
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M21 21l-4.3-4.3M11 18a7 7 0 100-14 7 7 0 000 14z"/>
+          </svg>
+          <input type="search" id="archiveSearch" class="archive-search" placeholder="Search titles, characters, themes…" autocomplete="off">
+          <button class="search-clear" id="searchClear" aria-label="Clear search" hidden>&times;</button>
+        </div>
+        <div class="filter-row">
+          <div class="filter-group" data-group="universe">
+            <button class="filter-chip active" data-value="all">All Worlds</button>
+            <button class="filter-chip" data-value="delicate">Delicate Universe</button>
+            <button class="filter-chip" data-value="standalone">Standalone</button>
+          </div>
+          <div class="filter-group" data-group="status">
+            <button class="filter-chip active" data-value="all">Any status</button>
+            <button class="filter-chip" data-value="Completed">Completed</button>
+            <button class="filter-chip" data-value="Unfinished">In progress</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="universe-block" id="delicateBlock">
+        <h3 class="universe-label">Delicate Universe</h3>
+        <div class="world-grid" id="delicateGrid"></div>
+      </div>
+
+      <div class="universe-block" id="standaloneBlock">
+        <h3 class="universe-label">Standalone Worlds</h3>
+        <div class="world-grid" id="standaloneGrid"></div>
+      </div>
+
+      <p class="archive-empty" id="archiveEmpty" hidden>
+        No worlds match — try a different search or clear the filters.
+      </p>
+    </section>
+
+    <!-- CODED SITES -->
+    <section class="sites" id="sites">
+      <div class="section-head">
+        <p class="eyebrow">Coded Worlds</p>
+        <h2>Open a universe site.</h2>
+      </div>
+      <div class="sites-grid" id="sitesGrid"></div>
+    </section>
+
+  </main>
+
+  <script src="worlds-data.js"></script>
+  <script src="sparkles.js"></script>
+  <script src="app.js"></script>
+  <script src="transitions.js"></script>
+</body>
+</html>
