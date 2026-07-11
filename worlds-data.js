@@ -32,7 +32,7 @@ const worlds = [
     ],
     site: {
       title: "Delicate World",
-      href: `${SITE_ROOT}/Delicate-world/index.html`,
+      href: `https://kristenmikeska.github.io/delicate-world/`,
       status: "Live",
       preview: "assets/worlds/delicate-portrait.jpg",
       description: "Full character, social, timeline, vault, press, and world archive."
