@@ -218,6 +218,32 @@
       font-size: 0.62rem;
       color: rgba(255,249,241,0.2);
       font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s;
+    }
+    .post-notes:hover { color: rgba(255,249,241,0.45); }
+    .post-notes.liked  { color: #ff4f8b; }
+    .note-heart { display: inline-block; }
+    @keyframes heartPop {
+      0%   { transform: scale(1); }
+      35%  { transform: scale(1.6); }
+      65%  { transform: scale(0.85); }
+      100% { transform: scale(1); }
+    }
+    @keyframes noteFly {
+      0%   { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-36px) scale(0.7); }
+    }
+    .note-heart.popping { animation: heartPop 0.42s cubic-bezier(0.34,1.56,0.64,1) both; }
+    .note-fly {
+      position: fixed;
+      pointer-events: none;
+      font-size: 0.7rem;
+      font-weight: 900;
+      color: #ff4f8b;
+      animation: noteFly 0.65s ease-out forwards;
+      z-index: 9999;
     }
     .post-tags-row {
       display: flex;
@@ -1175,6 +1201,67 @@
           panel.style.animationName = '';
         }
         playSwish();
+      });
+    });
+  })();
+  </script>
+
+  <script>
+  (function () {
+    var STORE_KEY = 'about-liked';
+    var liked = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+
+    function fmt(n) { return n.toLocaleString('en-US'); }
+
+    document.querySelectorAll('.post-notes').forEach(function (el, i) {
+      var id = 'n' + i;
+      var raw = el.textContent.trim();
+      var m = raw.match(/([\d,]+)/);
+      if (!m) return;
+
+      var base = parseInt(m[1].replace(/,/g, ''));
+      var count = liked[id] !== undefined ? liked[id] : base;
+      var isLiked = liked[id] !== undefined;
+
+      el.innerHTML = '<span class="note-heart">' + (isLiked ? '♥' : '♡') + '</span> <span class="note-count">' + fmt(count) + '</span> notes';
+      if (isLiked) el.classList.add('liked');
+
+      el.addEventListener('click', function () {
+        var heart = el.querySelector('.note-heart');
+        var countEl = el.querySelector('.note-count');
+        var n = parseInt(countEl.textContent.replace(/,/g, ''));
+        var nowLiked = el.classList.contains('liked');
+
+        if (nowLiked) {
+          el.classList.remove('liked');
+          heart.textContent = '♡';
+          n--;
+          delete liked[id];
+        } else {
+          el.classList.add('liked');
+          heart.textContent = '♥';
+          n++;
+          liked[id] = n;
+
+          var rect = el.getBoundingClientRect();
+          var fly = document.createElement('span');
+          fly.className = 'note-fly';
+          fly.textContent = '+1 ♥';
+          fly.style.left = (rect.left + 2) + 'px';
+          fly.style.top  = (rect.top  - 2) + 'px';
+          document.body.appendChild(fly);
+          setTimeout(function () { fly.remove(); }, 700);
+        }
+
+        countEl.textContent = fmt(n);
+        localStorage.setItem(STORE_KEY, JSON.stringify(liked));
+
+        heart.classList.remove('popping');
+        heart.offsetWidth;
+        heart.classList.add('popping');
+        heart.addEventListener('animationend', function () {
+          heart.classList.remove('popping');
+        }, { once: true });
       });
     });
   })();
