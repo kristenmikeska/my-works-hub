@@ -157,7 +157,7 @@ const worlds = [
     ],
     site: {
       title: "Runners World",
-      href: `${SITE_ROOT}/runners-world/index.html`,
+      href: `https://kristenmikeska.github.io/runners-world/`,
       status: "Live",
       preview: "assets/worlds/runners-alphaphi-new.jpg",
       description: "Campus feed, SUgram, phone threads, people relations, maps, and esports party systems."
