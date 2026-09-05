@@ -136,7 +136,7 @@ const worlds = [
     timeframe: "May 2026 – Present",
     endSort: 202606,
     chapters: 65,
-    words: 251568,
+    words: 259279,
     lead: "Solar Lee",
     loveInterests: ["Haechan", "Minji"],
     cast: ["Solar Lee", "Jaehyun Lee", "Lee Donghyuck", "Mark Lee", "Kim Minji"],
