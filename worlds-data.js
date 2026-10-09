@@ -166,6 +166,7 @@ const worlds = [
   },
   {
     id: "casual",
+    readingPaused: true,
     title: "Casual",
     universe: "Standalone",
     group: "standalone",
@@ -222,6 +223,7 @@ const worlds = [
   },
   {
     id: "havenbrook",
+    readingPaused: true,
     title: "Havenbrook",
     universe: "Standalone",
     group: "standalone",

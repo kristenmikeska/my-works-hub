@@ -1,0 +1,60 @@
+.editing-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 48px 22px;
+}
+
+.editing-notice {
+  width: 100%;
+  max-width: 540px;
+  text-align: center;
+}
+
+.editing-cover {
+  width: 140px;
+  height: 190px;
+  margin: 0 auto 28px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.editing-eyebrow {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.editing-notice h1 {
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  letter-spacing: -0.03em;
+  margin: 12px 0 18px;
+}
+
+.editing-message {
+  color: var(--ink);
+  opacity: 0.8;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0 0 30px;
+}
+
+.editing-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.editing-actions a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editing-actions a { transition: none; }
+}

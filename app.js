@@ -53,7 +53,7 @@ function makeCard(world) {
   content.className = "world-card-content";
 
   const prog = getProgress(world.id);
-  const hasProg = prog && prog.percent >= 1 && prog.percent <= 99;
+  const hasProg = !world.readingPaused && prog && prog.percent >= 1 && prog.percent <= 99;
   const progLabel = hasProg
     ? (prog.title || `Chapter ${prog.idx + 1}`)
     : "";
