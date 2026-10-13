@@ -3,7 +3,7 @@
 window.EntranceSounds = (() => {
   const AC = window.AudioContext || window.webkitAudioContext;
   const rand = (a, b) => a + Math.random() * (b - a);
-  const LEVELS = { strangers: 1, delicate: 1.7, 'petal-thorn': 1.7, runners: 1.5 };
+  const LEVELS = { strangers: 1, delicate: 1.4, 'petal-thorn': 1.7, runners: 1.5 };
 
   function makeNoise(ctx, seconds, color) {
     const len = Math.floor(ctx.sampleRate * seconds);
@@ -103,17 +103,21 @@ window.EntranceSounds = (() => {
       wave(); k.later(flock, 1.6); k.later(foghorn, 9);
     },
 
-    /* Delicate: paparazzi shutters timed to the on-screen flashes, over a muffled city crowd. */
+    /* Delicate: the photo line outside an event in Seoul at night. The show thumps through the walls,
+       the street goes by, and every so often heels cross the carpet and the cameras and fans erupt. */
     delicate(k, dialog, openedAt) {
       const { ctx, out } = k;
       k.chain(k.loop(k.noise('brown', 8)), k.filter('lowpass', 220), k.gain(0.3), out);
       const crowdG = k.gain(0.11);
       k.chain(k.loop(k.noise('pink', 8)), k.filter('bandpass', 650, 0.7), k.filter('lowpass', 1600), crowdG, out);
       const lfo = ctx.createOscillator(); lfo.frequency.value = 0.07; const lfoG = k.gain(0.04); lfo.connect(lfoG); lfoG.connect(crowdG.gain); lfo.start();
-      const shutter = (t, pan) => {
-        k.burst(t, { freq: 2600, q: 1.1, level: 0.32, decay: 0.022, pan });
-        k.burst(t + 0.048, { freq: 3400, q: 1.4, level: 0.24, decay: 0.03, pan });
-        k.tone(t, { freq: 150, to: 90, level: 0.08, decay: 0.05, pan });
+
+      // Camera bodies: shutter + mirror, and now and then the flash recharging.
+      const shutter = (t, pan, level = 1) => {
+        k.burst(t, { freq: 2600, q: 1.1, level: 0.32 * level, decay: 0.022, pan });
+        k.burst(t + 0.048, { freq: 3400, q: 1.4, level: 0.24 * level, decay: 0.03, pan });
+        k.tone(t, { freq: 150, to: 90, level: 0.08 * level, decay: 0.05, pan });
+        if (Math.random() < 0.3) k.tone(t + 0.12, { freq: 2600, to: 8200, glide: 0.75, level: 0.008 * level, attack: 0.05, decay: 0.8, pan });
       };
       const flashes = [...dialog.querySelectorAll('.flash-pop')].map(el => ({
         delay: parseFloat(el.style.getPropertyValue('--d')) || 0,
@@ -140,7 +144,88 @@ window.EntranceSounds = (() => {
         for (let i = 0, n = Math.floor(rand(3, 6)); i < n; i++) { shutter(t, pan); t += rand(0.09, 0.12); }
         k.later(motorDrive, rand(5, 11));
       };
+
+      // The show inside, heard through the walls: kick and bass at 118 bpm.
+      const venue = k.filter('lowpass', 190); k.chain(venue, k.gain(0.3), out);
+      const BEAT = 60 / 118, BASS = [55, 55, 65.4, 49];
+      let nextBeat = ctx.currentTime + 0.1, beatIndex = 0;
+      const pulse = () => {
+        while (nextBeat < ctx.currentTime + 0.35) {
+          const t = nextBeat, kick = ctx.createOscillator(), kg = k.gain(0);
+          kick.frequency.setValueAtTime(115, t); kick.frequency.exponentialRampToValueAtTime(48, t + 0.12);
+          kg.gain.setValueAtTime(0.0001, t); kg.gain.exponentialRampToValueAtTime(0.9, t + 0.005); kg.gain.exponentialRampToValueAtTime(0.0001, t + 0.3);
+          k.chain(kick, kg, venue); kick.start(t); kick.stop(t + 0.32);
+          const bass = ctx.createOscillator(), bg = k.gain(0); bass.type = 'triangle';
+          bass.frequency.value = BASS[Math.floor(beatIndex / 8) % BASS.length];
+          bg.gain.setValueAtTime(0.0001, t + BEAT / 2); bg.gain.exponentialRampToValueAtTime(0.35, t + BEAT / 2 + 0.02); bg.gain.exponentialRampToValueAtTime(0.0001, t + BEAT - 0.02);
+          k.chain(bass, bg, venue); bass.start(t + BEAT / 2); bass.stop(t + BEAT);
+          nextBeat += BEAT; beatIndex++;
+        }
+      };
+
+      // The street: cars passing, a horn somewhere down the block.
+      const passingCar = () => {
+        const t = ctx.currentTime + 0.05, dur = rand(2.6, 4), dir = Math.random() < 0.5 ? 1 : -1;
+        const src = k.loop(k.noise('brown', 8)), bp = k.filter('bandpass', 260, 0.8), g = k.gain(0), pn = k.pan(-0.9 * dir);
+        bp.frequency.setValueAtTime(220, t); bp.frequency.linearRampToValueAtTime(620, t + dur * 0.5); bp.frequency.linearRampToValueAtTime(240, t + dur);
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.5, t + dur * 0.5); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        if (pn.pan) pn.pan.linearRampToValueAtTime(0.9 * dir, t + dur);
+        k.chain(src, bp, g, pn, out); src.stop(t + dur + 0.1);
+        if (Math.random() < 0.35) {
+          const ht = t + rand(0.5, 1.5), lp = k.filter('lowpass', 1300), hg = k.gain(0);
+          const honks = Math.random() < 0.5 ? [[0, 0.22]] : [[0, 0.14], [0.2, 0.3]];
+          for (const [a, b] of honks) { hg.gain.setValueAtTime(0.0001, ht + a); hg.gain.exponentialRampToValueAtTime(0.035, ht + a + 0.015); hg.gain.setValueAtTime(0.035, ht + b - 0.02); hg.gain.exponentialRampToValueAtTime(0.0001, ht + b); }
+          k.chain(lp, hg, k.pan(rand(-0.6, 0.6)), out);
+          for (const f of [392, 466]) { const o = ctx.createOscillator(); o.type = 'square'; o.frequency.value = f; o.connect(lp); o.start(ht); o.stop(ht + 0.35); }
+        }
+        k.later(passingCar, rand(7, 15));
+      };
+
+      // Fans: a swell of screaming voices (sawtooth through vowel formants) over a roar.
+      const scream = (t, pan, level) => {
+        const o = ctx.createOscillator(); o.type = 'sawtooth';
+        const f0 = rand(620, 1050), hold = rand(0.6, 1.3);
+        o.frequency.setValueAtTime(f0 * 0.92, t); o.frequency.linearRampToValueAtTime(f0, t + 0.18); o.frequency.linearRampToValueAtTime(f0 * rand(0.95, 1.08), t + hold);
+        const vib = ctx.createOscillator(), vg = k.gain(f0 * 0.03); vib.frequency.value = rand(5, 7); vib.connect(vg); vg.connect(o.frequency);
+        const mix = k.gain(1);
+        for (const [f, q, l] of [[850, 5, 1], [1250, 6, 0.7], [2900, 8, 0.35]]) { const bp = k.filter('bandpass', f, q), bg = k.gain(l); o.connect(bp); k.chain(bp, bg, mix); }
+        const g = k.gain(0); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(level, t + 0.16); g.gain.setValueAtTime(level, t + hold); g.gain.exponentialRampToValueAtTime(0.0001, t + hold + 0.45);
+        k.chain(mix, g, k.filter('lowpass', 3600), k.pan(pan), out);
+        o.start(t); vib.start(t); o.stop(t + hold + 0.5); vib.stop(t + hold + 0.5);
+      };
+      const fanSwell = (t, center) => {
+        const roar = k.loop(k.noise('pink', 8)), rg = k.gain(0);
+        rg.gain.setValueAtTime(0.0001, t); rg.gain.exponentialRampToValueAtTime(0.3, t + 0.5); rg.gain.setValueAtTime(0.3, t + 1.8); rg.gain.exponentialRampToValueAtTime(0.0001, t + 3.8);
+        k.chain(roar, k.filter('bandpass', 1400, 0.6), rg, k.pan(center * 0.5), out); roar.stop(t + 4);
+        for (let i = 0, n = Math.floor(rand(8, 14)); i < n; i++) scream(t + rand(0, 0.9), Math.max(-0.95, Math.min(0.95, center + rand(-0.6, 0.6))), rand(0.025, 0.055));
+      };
+
+      // The walk: heels crossing the carpet; at the photo line the cameras and fans go off.
+      const heel = (t, pan, level) => {
+        k.burst(t, { freq: 4200, q: 2.2, level: 0.26 * level, decay: 0.01, pan });
+        k.burst(t + 0.006, { freq: 1300, q: 1.2, level: 0.14 * level, decay: 0.035, pan });
+        k.tone(t, { freq: 320, to: 170, level: 0.05 * level, decay: 0.04, pan });
+      };
+      const walk = () => {
+        const steps = Math.floor(rand(16, 22)), dir = Math.random() < 0.5 ? 1 : -1;
+        let t = ctx.currentTime + 0.1;
+        for (let i = 0; i < steps; i++) {
+          const x = i / (steps - 1), pan = (x * 1.7 - 0.85) * dir, near = 1 - Math.abs(x - 0.5) * 1.3;
+          heel(t, pan, Math.max(0.25, near) * (i % 2 ? 0.9 : 1));
+          if (i === Math.floor(steps / 2)) {
+            fanSwell(t, pan);
+            let ft = t + 0.05;
+            for (let j = 0, n = Math.floor(rand(12, 20)); j < n; j++) { shutter(ft, rand(-0.9, 0.9), rand(0.6, 1)); ft += rand(0.05, 0.16); }
+          }
+          t += rand(0.4, 0.47);
+        }
+        k.later(walk, (t - ctx.currentTime) + rand(9, 16));
+      };
+
       plan(); k.every(plan, 0.5); k.later(motorDrive, 2.4);
+      pulse(); k.every(pulse, 0.1);
+      k.later(passingCar, 1.5);
+      k.later(walk, 3.5);
     },
 
     /* Petal & Thorn: 11 p.m. in the dorm. PC hum, a soft pad, mechanical keys, and the queue popping. */
