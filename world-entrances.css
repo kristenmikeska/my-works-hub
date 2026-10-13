@@ -259,3 +259,16 @@
   .bloom-entrance, .bloom-entrance * { animation: none !important; transition: none !important; }
   .bloom-petals, .bloom-pixels { display: none; }
 }
+
+/* Shared: sound toggle beside Skip. Each scene's skip style supplies the look. */
+.entrance-actions { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.entrance-sound-icon { display: inline-block; }
+.entrance-sound[aria-pressed="false"] { animation: entrance-sound-hint 2.2s ease-in-out 1.2s 3; }
+.entrance-sound[aria-pressed="true"] { border-style: dashed; }
+.entrance-sound[aria-pressed="true"] .entrance-sound-icon { animation: entrance-note .9s ease-in-out infinite alternate; }
+@keyframes entrance-sound-hint { 50% { box-shadow: 0 0 0 6px #ffffff22, 0 0 22px #ffffff33; } }
+@keyframes entrance-note { from { transform: translateY(1px) rotate(-8deg); } to { transform: translateY(-2px) rotate(8deg); } }
+.bloom-queue-found { border-color: #5dffa8aa; color: #d8ffe9; box-shadow: 0 0 18px #5dffa855; animation: bloom-found 1.1s ease-in-out infinite alternate; }
+@keyframes bloom-found { to { box-shadow: 0 0 30px #5dffa888; } }
+@media (max-width: 700px) { .entrance-sound-label { display: none; } .entrance-actions { gap: 8px; } }
+@media (prefers-reduced-motion: reduce) { .entrance-sound, .entrance-sound-icon, .bloom-queue-found { animation: none !important; } }

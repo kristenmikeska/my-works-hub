@@ -201,6 +201,7 @@ function initMusicPlayer(world) {
   if (existing) existing.remove();
   if (_musicAudio) { _musicAudio.pause(); _musicAudio.src = ""; _musicAudio = null; }
   if (_musicKeyHandler) { document.removeEventListener("keydown", _musicKeyHandler); _musicKeyHandler = null; }
+  window.WorldMusic = null;
 
   const songs = world.songs;
   if (!songs || songs.length === 0) return;
@@ -291,6 +292,18 @@ function initMusicPlayer(world) {
     saveState();
   }
 
+  let rampToken = 0;
+  function rampVolume(to, seconds, done) {
+    const token = ++rampToken, from = audio.volume, start = performance.now();
+    const step = now => {
+      if (token !== rampToken) return;
+      const k = Math.min(1, (now - start) / (seconds * 1000));
+      audio.volume = from + (to - from) * k;
+      if (k < 1) requestAnimationFrame(step); else if (done) done();
+    };
+    requestAnimationFrame(step);
+  }
+
   function setPlaying(state) {
     playing = state;
     playBtn.innerHTML = playing ? "&#9616;&#9616;" : "&#9654;";
@@ -367,6 +380,7 @@ function initMusicPlayer(world) {
 
   // --- Volume ---
   function applyVol(v) {
+    rampToken++;
     audio.volume = v;
     audio.muted = v === 0;
     vol.value = Math.round(v * 100);
@@ -386,6 +400,7 @@ function initMusicPlayer(world) {
 
   // --- Keyboard shortcuts (world page is short; safe to claim these keys) ---
   _musicKeyHandler = (e) => {
+    if (document.querySelector("dialog[open]")) return;
     const tag = (document.activeElement && document.activeElement.tagName) || "";
     if (/INPUT|TEXTAREA|SELECT/.test(tag)) return;
     const focusedBtn = document.activeElement && document.activeElement.classList.contains("music-btn");
@@ -414,6 +429,22 @@ function initMusicPlayer(world) {
     loadSong(0);
   }
   applyVol(savedVol);
+
+  // Lets the world entrance hand off from its ambient sound to the soundtrack.
+  window.WorldMusic = {
+    isPlaying: () => !audio.paused,
+    fadeIn(seconds = 3) {
+      if (!audio.paused || audio.muted) return;
+      const target = audio.volume || savedVol || 1;
+      audio.volume = 0;
+      audio.play().then(() => rampVolume(target, seconds)).catch(() => { audio.volume = target; });
+    },
+    fadeOut(seconds = 1) {
+      if (audio.paused) return;
+      const restore = audio.volume;
+      rampVolume(0, seconds, () => { audio.pause(); audio.volume = restore; });
+    }
+  };
 
   // Fade in after a short delay
   requestAnimationFrame(() => {

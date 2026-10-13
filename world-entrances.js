@@ -141,14 +141,25 @@ window.WorldEntrances = (() => {
           <div class="bloom-bottomline"><span>23:00 · the others wind down. Solar queues up.</span>${skip}</div>
         </div>`,
       start: dialog => {
+        const queue = dialog.querySelector('.bloom-queue');
         const clock = dialog.querySelector('.bloom-queue-time');
         const began = Date.now();
         const tick = () => { const sec = Math.floor((Date.now() - began) / 1000); clock.textContent = `${String(Math.floor(sec / 60)).padStart(2,'0')}:${String(sec % 60).padStart(2,'0')}`; };
         const timer = setInterval(tick, 1000);
-        return () => clearInterval(timer);
+        const pop = setTimeout(() => {
+          clearInterval(timer); tick();
+          queue.classList.add('bloom-queue-found');
+          queue.firstChild.nextSibling.textContent = ' Match found ';
+          dialog.dispatchEvent(new CustomEvent('entrance:cue', { detail: 'match' }));
+        }, (14 + Math.random() * 8) * 1000);
+        return () => { clearInterval(timer); clearTimeout(pop); };
       }
     }
   };
+
+  const PREF_KEY = 'kg-intro-sound';
+  const readPref = () => { try { return localStorage.getItem(PREF_KEY); } catch { return null; } };
+  const writePref = value => { try { localStorage.setItem(PREF_KEY, value); } catch {} };
 
   function mount(world) {
     const scene = SCENES[world.id];
@@ -170,10 +181,47 @@ window.WorldEntrances = (() => {
       dialog.className = `world-entrance ${p}-entrance`;
       dialog.setAttribute('aria-labelledby', `${p}-entrance-title`);
       dialog.setAttribute('aria-describedby', `${p}-entrance-description`);
-      const skip = `<button class="${p}-skip" type="button">${reducedMotion.matches ? scene.enter : 'Skip intro'} <span aria-hidden="true">↗</span></button>`;
+      const skip = `<span class="entrance-actions"><button class="${p}-skip entrance-sound" type="button" data-entrance="sound" aria-pressed="false" aria-label="Turn intro sound on"><span class="entrance-sound-icon" aria-hidden="true">♪</span> <span class="entrance-sound-label">Sound on</span></button><button class="${p}-skip" type="button" data-entrance="skip">${reducedMotion.matches ? scene.enter : 'Skip intro'} <span aria-hidden="true">↗</span></button></span>`;
       dialog.innerHTML = scene.markup(skip);
       document.body.appendChild(dialog);
       const stopScene = scene.start ? scene.start(dialog) : null;
+      const music = window.WorldMusic;
+      const musicWasPlaying = !!(music && music.isPlaying());
+      if (musicWasPlaying) music.fadeOut(0.8);
+      const engine = window.EntranceSounds ? window.EntranceSounds.create(world.id, dialog) : null;
+      const soundBtn = dialog.querySelector('[data-entrance="sound"]');
+      const syncSound = () => {
+        const on = !!engine && engine.running;
+        soundBtn.setAttribute('aria-pressed', String(on));
+        soundBtn.setAttribute('aria-label', on ? 'Turn intro sound off' : 'Turn intro sound on');
+        soundBtn.querySelector('.entrance-sound-label').textContent = on ? 'Sound off' : 'Sound on';
+      };
+      const turnOn = () => { engine.start(); writePref('on'); };
+      if (!engine) soundBtn.hidden = true;
+      else {
+        engine.onchange = syncSound;
+        soundBtn.addEventListener('click', () => {
+          if (engine.running) { engine.stop(0.6); writePref('off'); }
+          else if (engine.started) engine.resume();
+          else turnOn();
+        });
+        dialog.addEventListener('pointerdown', event => {
+          if (event.target.closest('[data-entrance]')) return;
+          if (engine.started) engine.resume();
+          else if (readPref() !== 'off') turnOn();
+        });
+        dialog.addEventListener('keydown', () => { if (engine.started) engine.resume(); });
+        if (readPref() === 'on') engine.start();
+      }
+      syncSound();
+      const handOff = () => {
+        if (engine && engine.running) {
+          if (music) { engine.stop(3.5); music.fadeIn(4); } else engine.stop(4);
+        } else {
+          if (engine) engine.stop(0);
+          if (musicWasPlaying) music.fadeIn(1.2);
+        }
+      };
       let exitTimer;
       let leaving = false;
       const overflow = document.body.style.overflow;
@@ -189,12 +237,13 @@ window.WorldEntrances = (() => {
       const leave = () => {
         if (leaving) return;
         leaving = true;
+        handOff();
         if (reducedMotion.matches) { release(true); return; }
         dialog.classList.add(`${p}-leaving`);
         exitTimer = setTimeout(() => release(true), 420);
       };
-      disposeEntrance = () => release(false);
-      dialog.querySelector(`.${p}-skip`).addEventListener('click',leave);
+      disposeEntrance = () => { if (engine) engine.stop(0); release(false); };
+      dialog.querySelector('[data-entrance="skip"]').addEventListener('click',leave);
       dialog.addEventListener('cancel',event => { event.preventDefault(); leave(); });
       dialog.showModal();
     }
