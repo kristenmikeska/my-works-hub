@@ -19,7 +19,7 @@ Keep established chapter anchors stable. Peace's previously unnumbered opening u
 
 ## Story entrances
 
-`world-entrances.js` and `world-entrances.css` add Runners' autumn campus entrance. It plays for eight seconds before fading out when opening the story page, with Skip, Escape, and a replay button in the hero. Reduced-motion preferences bypass autoplay and let the replay button open a static scene. Navigation cleans up the overlay and restores scrolling. Other stories currently have no entrance.
+`world-entrances.js` and `world-entrances.css` hold the story entrances (Runners: autumn campus; Strangers: Incheon at low tide; Delicate: Seoul flashbulbs and The Pulse; Petal & Thorn: idol/gamer split with a live queue timer). A scene can define `start(dialog)` returning a cleanup function for anything that runs while it is open. Each scene is an entry in `SCENES` with its own CSS class prefix. An entrance opens with the story page and stays until the reader clicks Skip or presses Escape; a replay button sits in the hero. Reduced-motion preferences bypass autoplay and let the replay button open a static scene. Navigation cleans up the overlay and restores scrolling.
 
 ## Verification
 
