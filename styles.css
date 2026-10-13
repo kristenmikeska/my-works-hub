@@ -848,30 +848,6 @@ a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid
 .passport-world { display: block; margin-bottom: 12px; font: 1.15rem Georgia, serif; color: var(--ink); }
 .passport-world:hover { color: var(--a); }
 .passport-slots { display: flex; gap: 10px; }
-.stamp { width: 66px; height: 66px; flex-shrink: 0; display: grid; place-items: center; align-content: center; gap: 1px; padding: 4px; text-align: center; font-family: ui-sans-serif, system-ui, sans-serif; line-height: 1.1; }
-.stamp small { font-size: 7px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.stamp b { font-size: 12px; font-weight: 900; letter-spacing: .04em; }
-.stamp-empty { border: 1.5px dashed var(--line); border-radius: 50%; color: var(--muted); font-size: 8px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .7; }
-.stamp-circle, .stamp-rect, .stamp-hex, .stamp-seal { position: relative; color: var(--a); transform: rotate(var(--rot)); }
-.stamp-circle { border: 2.5px double var(--a); border-radius: 50%; }
-.stamp-rect { border: 2.5px double var(--a); border-radius: 6px; height: 54px; align-self: center; }
-.stamp-hex { color: #0e0b10; background: var(--a); clip-path: polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0 50%); }
-.stamp-seal { color: #fff; background: radial-gradient(circle at 36% 32%, color-mix(in srgb, var(--a) 60%, #fff), var(--a) 55%, color-mix(in srgb, var(--a) 70%, #000)); border-radius: 50% 46% 52% 48%; box-shadow: inset 0 0 0 4px #00000022, 0 3px 8px #0006; }
-.stamp-keepsake { cursor: pointer; border: 0; font: inherit; }
-.stamp-keepsake.stamp-circle, .stamp-keepsake.stamp-rect { border: 2.5px double var(--a); background: transparent; }
-.stamp-keepsake { box-shadow: 0 0 0 3px color-mix(in srgb, var(--a) 25%, transparent), 0 0 18px color-mix(in srgb, var(--a) 40%, transparent); }
-.stamp-keepsake:hover { transform: rotate(0) scale(1.06); }
-.keepsake { width: min(560px, calc(100vw - 32px)); max-height: calc(100svh - 48px); overflow: auto; padding: 30px 32px 26px; border: 1px solid var(--a); border-radius: 18px; background: linear-gradient(160deg, color-mix(in srgb, var(--a) 12%, #1a1618), #141113); color: var(--ink); box-shadow: 0 0 60px color-mix(in srgb, var(--a) 25%, transparent); }
-.keepsake::backdrop { background: #000a; }
-.keepsake-close { float: right; border: 0; background: none; color: var(--muted); font-size: 22px; cursor: pointer; }
-.keepsake-eyebrow { margin: 0; color: var(--a); font-size: .7rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
-.keepsake h3 { margin: 4px 0 2px; font: 1.8rem Georgia, serif; }
-.keepsake-chapter { margin: 0 0 18px; color: var(--muted); font: italic .9rem Georgia, serif; }
-.keepsake-lines { padding-left: 16px; border-left: 2px solid var(--a); }
-.keepsake-lines p { margin: 0 0 12px; font: 1rem/1.7 Georgia, serif; }
-.keepsake-date { margin: 16px 0 0; color: var(--muted); font-size: .75rem; }
-@keyframes stamp-in { from { opacity: 0; transform: rotate(var(--rot)) scale(1.6); } to { opacity: 1; transform: rotate(var(--rot)) scale(1); } }
-@media (prefers-reduced-motion: reduce) { .stamp-circle, .stamp-rect, .stamp-hex, .stamp-seal { animation: none; } }
 
 /* ── Homepage effects ── */
 /* "loud": the site's sound switch, hiding in the headline. */
@@ -946,3 +922,111 @@ html[data-daypart="dusk"] .stars { opacity: .45; }
   .collage-card { transform: none; }
   .stamp-pending { opacity: 1; }
 }
+
+/* Passport stamps: each world's emblem, inked more at each stage. */
+.passport-slot { display: grid; justify-items: center; gap: 6px; }
+.passport-slot small { color: var(--muted); font-size: .6rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.passport-slot small { text-align: center; line-height: 1.35; }
+.passport-date { font-weight: 500; letter-spacing: .04em; opacity: .75; }
+.passport-slots .passport-slot:nth-child(1) .stamp { --rot: -7deg; }
+.passport-slots .passport-slot:nth-child(2) .stamp { --rot: 5deg; }
+.passport-slots .passport-slot:nth-child(3) .stamp { --rot: -3deg; }
+.stamp { position: relative; width: 64px; height: 64px; padding: 9px; display: grid; place-items: center; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--a) 70%, transparent); outline: 1px solid color-mix(in srgb, var(--a) 35%, transparent); outline-offset: 2px; color: var(--a); background: color-mix(in srgb, var(--a) 6%, transparent); transform: rotate(var(--rot, 0deg)); font: inherit; }
+.stamp-art { position: relative; display: block; width: 100%; height: 100%; }
+.stamp-art svg, .stamp-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.stamp-art svg.ghost { fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; }
+.stamp-art svg.ghost text { fill: none; stroke: currentColor; stroke-width: 1; }
+.stamp-art svg.ink { fill: currentColor; }
+.stamp-art-image img.ghost { filter: grayscale(1) opacity(.45); }
+.stamp-started .ink { clip-path: inset(100% 0 0 0); }
+.stamp-halfway .ink { clip-path: inset(50% 0 0 0); }
+.stamp-finished .ink { clip-path: inset(0 0 0 0); }
+.stamp-finished { border-color: var(--a); background: color-mix(in srgb, var(--a) 14%, transparent); box-shadow: 0 0 16px color-mix(in srgb, var(--a) 35%, transparent); }
+.stamp-empty { border: 1.5px dashed var(--line); outline: 0; background: none; color: var(--muted); opacity: .45; transform: none; }
+.stamp-empty .ink { display: none; }
+.stamp-empty .ghost { opacity: .35; }
+.stamp-keepsake { cursor: pointer; animation: stamp-glow 2.6s ease-in-out infinite alternate; }
+.stamp-keepsake:hover, .stamp-keepsake:focus-visible { transform: rotate(0deg) scale(1.1); }
+.stamp-keepsake:focus-visible { outline: 2px solid var(--a); outline-offset: 4px; }
+@keyframes stamp-glow { from { box-shadow: 0 0 10px color-mix(in srgb, var(--a) 25%, transparent); } to { box-shadow: 0 0 24px color-mix(in srgb, var(--a) 55%, transparent); } }
+
+/* Keepsakes open as an object from each world's intro. */
+.keepsake { width: min(540px, calc(100vw - 28px)); max-height: calc(100svh - 40px); overflow: visible; padding: 0; border: 0; background: none; color: var(--ink); }
+.keepsake::backdrop { background: #000b; backdrop-filter: blur(3px); }
+.keepsake[open] .ks-object { animation: ks-open .55s cubic-bezier(.2, 1.3, .4, 1) both; }
+.keepsake-close { position: absolute; top: -14px; right: -14px; z-index: 5; width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; background: #1a1618; color: var(--ink); font-size: 18px; cursor: pointer; }
+.ks-object { position: relative; max-height: calc(100svh - 40px); overflow: auto; padding: 30px 32px 26px; border-radius: 16px; background: #1a1618; box-shadow: 0 30px 80px #000c; }
+.ks-kicker { margin: 0 0 4px; font: 700 .68rem/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--a); }
+.ks-title { margin: 0; font: 1.8rem/1.15 Georgia, serif; }
+.ks-chapter { margin: 2px 0 18px; font: italic .9rem Georgia, serif; opacity: .7; }
+.ks-lines p { margin: 0 0 12px; font: 1rem/1.7 Georgia, serif; opacity: 0; animation: ks-line .7s ease forwards; animation-delay: calc(.45s + var(--i) * .35s); }
+.ks-date { margin: 16px 0 0; font-size: .75rem; opacity: .6; }
+@keyframes ks-open { from { opacity: 0; transform: translateY(24px) scale(.94) rotate(-1.5deg); } to { opacity: 1; transform: none; } }
+@keyframes ks-line { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.ks-strangers { color: #2f2836; background: #f2ede6; outline: 1px solid #c9bfd4; outline-offset: -12px; padding-top: 56px; text-align: center; }
+.ks-strangers .ks-kicker { color: #7d7187; }
+.ks-strangers .ks-lines p { font-style: italic; }
+.ks-seal { position: absolute; left: 50%; top: -22px; width: 58px; height: 58px; margin-left: -29px; display: grid; place-items: center; border-radius: 50% 46% 52% 48%; background: radial-gradient(circle at 36% 32%, #b6a2cf, #7d6699 70%); color: #efe8f7; font: italic 700 15px Georgia, serif; box-shadow: 0 4px 10px #0006; animation: ks-seal-crack 1s .35s ease forwards; }
+.ks-seal::before, .ks-seal::after { content: ''; position: absolute; top: 0; bottom: 0; width: 2px; left: 50%; background: #5d4878; opacity: 0; animation: ks-crack-line .4s .35s forwards; }
+@keyframes ks-seal-crack { 0% { transform: none; } 30% { transform: rotate(-8deg) scale(1.05); } 100% { transform: translateY(-6px) rotate(10deg); opacity: .9; } }
+@keyframes ks-crack-line { to { opacity: .8; } }
+
+.ks-delicate { color: #241a1c; background: #eee6da; border-radius: 4px; clip-path: polygon(0 1%, 8% 0, 22% 1%, 38% 0, 55% 1%, 70% 0, 86% 1%, 100% 0, 99% 30%, 100% 62%, 99% 100%, 80% 99%, 60% 100%, 40% 99%, 20% 100%, 0 99%, 1% 60%, 0 30%); }
+.ks-delicate .ks-kicker { color: #d4205f; border-bottom: 3px double #241a1c; padding-bottom: 8px; font-size: .8rem; }
+.ks-delicate .ks-title { font: 900 2rem/1.1 'Arial Black', Impact, ui-sans-serif, sans-serif; letter-spacing: .02em; margin-top: 8px; }
+.ks-delicate .ks-lines { columns: 2; column-gap: 22px; }
+.ks-delicate .ks-lines p { font-size: .92rem; line-height: 1.55; break-inside: avoid; }
+
+.ks-petal-thorn { color: #f5f2f0; background: linear-gradient(180deg, #17151c, #0c0b10); border: 1px solid #ff7a1a66; }
+.ks-petal-thorn .ks-kicker { margin: -30px -32px 18px; padding: 10px 32px; background: #ff7a1a; color: #120a04; }
+.ks-petal-thorn .ks-title { font: 800 1.8rem/1.1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.ks-petal-thorn .ks-lines p { padding: 8px 12px; border-radius: 10px; background: #ffffff0d; border-left: 3px solid #ff4f8b; font-size: .95rem; }
+
+.ks-runners { color: #1c1c1f; background: #fff; border-radius: 22px; }
+.ks-runners .ks-kicker { color: #31a89f; }
+.ks-runners .ks-likes { position: absolute; right: 26px; top: 28px; color: #e2337e; font-size: .9rem; }
+
+.ks-peace { color: #2f2a22; background: #d9c9a3; border-radius: 4px 14px 6px 6px; }
+.ks-peace .ks-kicker { color: #6d5b37; }
+.ks-peace .ks-lines p { font: .95rem/1.6 ui-monospace, Menlo, monospace; }
+.ks-peace .ks-stamp { position: absolute; right: 24px; top: 26px; padding: 4px 10px; border: 2px solid #a8323a; color: #a8323a; font: 800 .8rem/1 ui-monospace, Menlo, monospace; letter-spacing: .14em; text-transform: uppercase; transform: rotate(12deg); animation: ks-slam .45s .25s cubic-bezier(.3, 1.8, .5, 1) both; }
+@keyframes ks-slam { from { opacity: 0; transform: rotate(12deg) scale(2.2); } to { opacity: .9; transform: rotate(12deg) scale(1); } }
+
+.ks-recherche { color: #3a2c12; background: #fbf6ea; border: 1px solid #c9a24f; outline: 1px solid #c9a24f; outline-offset: -10px; text-align: center; }
+.ks-recherche .ks-kicker { color: #a07a2c; }
+.ks-recherche .ks-title { font: 400 2rem/1.1 Didot, 'Bodoni 72', Georgia, serif; letter-spacing: .1em; background: linear-gradient(180deg, #b5852f, #6e4a14); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+.ks-secret { color: #e9ecef; background: #121417; border-radius: 26px; box-shadow: 0 30px 80px #000c, 0 0 0 6px #0b0b0f; }
+.ks-secret .ks-kicker { color: #5fe3d6; letter-spacing: .06em; text-transform: none; font-size: .85rem; }
+.ks-secret .ks-title { font: italic 1.7rem Georgia, serif; }
+
+.ks-hoax { color: #f1ecf8; background: #17131f; border-radius: 26px; }
+.ks-hoax .ks-kicker { margin: -30px -32px 18px; padding: 12px; text-align: center; background: #1f1a2a; border-bottom: 1px solid #ffffff14; color: #f1ecf8; }
+.ks-hoax .ks-lines p { width: fit-content; max-width: 88%; padding: 8px 12px; border-radius: 16px 16px 16px 4px; background: #2a2436; font: .95rem/1.45 ui-sans-serif, system-ui, sans-serif; animation-name: ks-pop; }
+.ks-hoax .ks-lines p:nth-child(even) { margin-left: auto; border-radius: 16px 16px 4px 16px; background: #7c4dff; }
+@keyframes ks-pop { from { opacity: 0; transform: translateY(10px) scale(.85); } to { opacity: 1; transform: none; } }
+
+.ks-casual { color: #2d241c; background: repeating-linear-gradient(#fbf8f2 0 29px, #e2d6c6 29px 30px); background-position: 0 14px; }
+.ks-casual .ks-kicker { color: #c66a35; }
+.ks-casual .ks-lines p { font: 1rem/30px Georgia, serif; margin: 0; }
+
+.ks-havenbrook { color: #1f2a1a; background: #f3f1c9; border-left: 8px solid #91d36e; }
+.ks-havenbrook .ks-kicker { color: #4a6b3a; }
+.ks-havenbrook .ks-lines p { font: .95rem/1.6 ui-monospace, Menlo, monospace; }
+
+.ks-soul-of-minji { color: #dffcf8; background: #021412; border: 1px solid #31d0c3; border-radius: 6px; box-shadow: 0 0 40px #31d0c344, inset 0 0 24px #31d0c322; }
+.ks-soul-of-minji .ks-kicker { color: #ffd36e; font-family: ui-monospace, Menlo, monospace; }
+.ks-soul-of-minji .ks-lines p { font: .95rem/1.6 ui-monospace, Menlo, monospace; }
+
+.ks-saint-of-dead-air { color: #1b1a17; background: #f4f1e8; border-radius: 4px; transform-origin: top center; }
+.ks-saint-of-dead-air::before { content: ''; position: absolute; top: 0; left: 36%; width: 28%; height: 16px; background: #e8e8e8cc; box-shadow: 0 1px 3px #0003; }
+.ks-saint-of-dead-air .ks-kicker { color: #8a6a2a; }
+.ks-saint-of-dead-air .ks-lines p { font: 600 1.02rem/1.55 'Marker Felt', 'Chalkboard SE', ui-sans-serif, sans-serif; }
+
+.ks-go { color: #1d2430; background: linear-gradient(180deg, #e8edf2, #d4dce5); }
+.ks-go::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 20% 30%, #9fb3c955 0 6px, transparent 7px), radial-gradient(circle at 72% 18%, #9fb3c944 0 9px, transparent 10px), radial-gradient(circle at 60% 76%, #9fb3c955 0 7px, transparent 8px), radial-gradient(circle at 34% 88%, #9fb3c944 0 5px, transparent 6px); }
+.ks-go .ks-kicker { color: #c8642e; }
+
+@media (max-width: 520px) { .ks-object { padding: 26px 22px 22px; } .ks-delicate .ks-lines { columns: 1; } .ks-petal-thorn .ks-kicker, .ks-hoax .ks-kicker { margin: -26px -22px 16px; } }
+@media (prefers-reduced-motion: reduce) { .keepsake[open] .ks-object, .ks-lines p, .ks-seal, .ks-peace .ks-stamp, .stamp-keepsake { animation: none !important; opacity: 1; } }
