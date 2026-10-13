@@ -3,7 +3,7 @@
 window.EntranceSounds = (() => {
   const AC = window.AudioContext || window.webkitAudioContext;
   const rand = (a, b) => a + Math.random() * (b - a);
-  const LEVELS = { strangers: 1, delicate: 1.4, 'petal-thorn': 1.7, runners: 1.5 };
+  const LEVELS = { strangers: 1, delicate: 1.4, 'petal-thorn': 1.7, runners: 1.5, peace: 3.3, recherche: 1.7, secret: 3.6, hoax: 2.6 };
 
   function makeNoise(ctx, seconds, color) {
     const len = Math.floor(ctx.sampleRate * seconds);
@@ -42,16 +42,21 @@ window.EntranceSounds = (() => {
       later(fn, seconds) { const id = setTimeout(() => { timers.delete(id); fn(); }, seconds * 1000); timers.add(id); },
       on(target, type, fn) { target.addEventListener(type, fn); listeners.push([target, type, fn]); },
       every(fn, seconds) { const id = setInterval(fn, seconds * 1000); timers.add(id); },
-      burst(t, { freq = 3000, q = 1, type = 'bandpass', level = 0.3, decay = 0.02, pan = 0 } = {}) {
+      reverb(seconds = 1.6, decay = 3) {
+        const len = Math.floor(ctx.sampleRate * seconds), ir = ctx.createBuffer(2, len, ctx.sampleRate);
+        for (let ch = 0; ch < 2; ch++) { const d = ir.getChannelData(ch); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, decay); }
+        const c = ctx.createConvolver(); c.buffer = ir; return c;
+      },
+      burst(t, { freq = 3000, q = 1, type = 'bandpass', level = 0.3, decay = 0.02, pan = 0, to } = {}) {
         const s = ctx.createBufferSource(); s.buffer = k.noise('white', 1); s.start(t, rand(0, 0.9), decay * 4 + 0.02);
         const g = k.gain(0); g.gain.setValueAtTime(level, t); g.gain.exponentialRampToValueAtTime(0.0001, t + decay);
-        k.chain(s, k.filter(type, freq, q), g, k.pan(pan), out);
+        k.chain(s, k.filter(type, freq, q), g, k.pan(pan), to || out);
       },
-      tone(t, { freq = 440, to, type = 'sine', level = 0.2, attack = 0.005, decay = 0.4, pan = 0, glide } = {}) {
+      tone(t, { freq = 440, to, type = 'sine', level = 0.2, attack = 0.005, decay = 0.4, pan = 0, glide, dest } = {}) {
         const o = ctx.createOscillator(); o.type = type; o.frequency.setValueAtTime(freq, t);
         if (to) o.frequency.exponentialRampToValueAtTime(to, t + (glide || decay));
         const g = k.gain(0); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(level, t + attack); g.gain.exponentialRampToValueAtTime(0.0001, t + attack + decay);
-        k.chain(o, g, k.pan(pan), out); o.start(t); o.stop(t + attack + decay + 0.05);
+        k.chain(o, g, k.pan(pan), dest || out); o.start(t); o.stop(t + attack + decay + 0.05);
       },
       clear() { timers.forEach(id => { clearTimeout(id); clearInterval(id); }); timers.clear(); listeners.splice(0).forEach(([t, type, fn]) => t.removeEventListener(type, fn)); }
     };
@@ -288,6 +293,174 @@ window.EntranceSounds = (() => {
         k.later(gust, rise + fall - rand(0.5, 1.5));
       };
       gust(); k.every(() => leaves(0.4), 2.2);
+    },
+    /* Peace: the interview room. Her foot on the concrete, the light buzzing, detectives coming and going. */
+    peace(k, dialog, openedAt) {
+      const { ctx, out } = k;
+      const room = k.gain(1), verb = k.reverb(1.8, 2.6), wet = k.gain(0.55);
+      room.connect(out); k.chain(room, verb, wet, out);
+      k.chain(k.loop(k.noise('pink', 8)), k.filter('lowpass', 420), k.gain(0.06), out);
+      const hum = ctx.createOscillator(); hum.type = 'sawtooth'; hum.frequency.value = 120;
+      k.chain(hum, k.filter('bandpass', 240, 2), k.gain(0.014), out); hum.start();
+      const mains = ctx.createOscillator(); mains.frequency.value = 60; k.chain(mains, k.gain(0.02), out); mains.start();
+      const buzz = () => { const t = ctx.currentTime + 0.02; for (let i = 0; i < 6; i++) k.burst(t + i * 0.035, { freq: 2600, type: 'highpass', level: 0.035, decay: 0.02 }); };
+      const flickerAt = 9 * 0.62;
+      const syncFlicker = () => { const el = (performance.now() - openedAt) / 1000, wait = flickerAt - (el % 9); k.later(() => { buzz(); syncFlicker(); }, wait < 0.05 ? wait + 9 : wait); };
+      const tap = (t, level = 1) => {
+        k.tone(t, { freq: 115, to: 58, level: 0.22 * level, decay: 0.09, dest: room });
+        k.burst(t, { freq: 900, q: 1, level: 0.1 * level, decay: 0.03, to: room });
+      };
+      const PATTERNS = [[0, 0.9, 1.8], [0, 0.28, 1.2], [0], [0, 0.9, 1.8, 2.08]];
+      let pattern = 0;
+      const tapping = () => {
+        const t = ctx.currentTime + 0.05, beats = PATTERNS[pattern++ % PATTERNS.length];
+        beats.forEach(b => tap(t + b, rand(0.8, 1)));
+        k.later(tapping, beats[beats.length - 1] + rand(2, 3.6));
+      };
+      const step = (t, pan, level, heel) => heel
+        ? (k.burst(t, { freq: 4000, q: 2, level: 0.18 * level, decay: 0.01, pan, to: room }), k.burst(t + 0.006, { freq: 1300, q: 1.2, level: 0.1 * level, decay: 0.035, pan, to: room }))
+        : (k.tone(t, { freq: 140, to: 80, level: 0.12 * level, decay: 0.06, pan, dest: room }), k.burst(t, { freq: 700, q: 0.8, level: 0.06 * level, decay: 0.05, pan, to: room }));
+      const chair = t => {
+        const o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(380, t); o.frequency.linearRampToValueAtTime(520, t + 0.45);
+        const lfo = ctx.createOscillator(), lg = k.gain(60); lfo.frequency.value = 34; lfo.connect(lg); lg.connect(o.frequency);
+        const g = k.gain(0); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.035, t + 0.05); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.5);
+        k.chain(o, k.filter('bandpass', 1500, 3), g, room); o.start(t); lfo.start(t); o.stop(t + 0.55); lfo.stop(t + 0.55);
+      };
+      const door = (t, slam) => {
+        if (slam) {
+          k.burst(t, { freq: 220, type: 'lowpass', level: 0.55, decay: 0.25, pan: -0.5, to: room });
+          k.tone(t, { freq: 75, to: 38, level: 0.4, decay: 0.35, pan: -0.5, dest: room });
+          k.burst(t + 0.05, { freq: 3000, q: 3, level: 0.08, decay: 0.02, pan: -0.5, to: room });
+        } else {
+          const o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(150, t); o.frequency.linearRampToValueAtTime(95, t + 0.9);
+          const g = k.gain(0); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.03, t + 0.15); g.gain.exponentialRampToValueAtTime(0.0001, t + 1);
+          k.chain(o, k.filter('bandpass', 900, 6), g, k.pan(-0.5), room); o.start(t); o.stop(t + 1.05);
+        }
+      };
+      let leaving = true;
+      const detectives = () => {
+        let t = ctx.currentTime + 0.1;
+        if (leaving) {
+          chair(t); t += 0.9;
+          for (let i = 0; i < 5; i++) { step(t, -0.1 - i * 0.1, 1 - i * 0.12, false); step(t + 0.27, -0.05 - i * 0.1, 0.9 - i * 0.12, true); t += 0.55; }
+          door(t + 0.3, true);
+        } else {
+          door(t, false); t += 1.1;
+          for (let i = 0; i < 6; i++) { step(t, -0.5 + i * 0.09, 0.5 + i * 0.1, true); t += 0.5; }
+          chair(t + 0.2);
+        }
+        leaving = !leaving;
+        k.later(detectives, (t - ctx.currentTime) + rand(9, 14));
+      };
+      k.later(tapping, 0.8); syncFlicker(); k.later(detectives, 7);
+    },
+
+    /* Recherche: inside the Castle at dinner. The clock, the crystal, Manhattan through the glass. */
+    recherche(k) {
+      const { ctx, out } = k;
+      const hall = k.gain(1), verb = k.reverb(2.4, 2.2), wet = k.gain(0.45);
+      hall.connect(out); k.chain(hall, verb, wet, out);
+      k.chain(k.loop(k.noise('brown', 8)), k.filter('lowpass', 330), k.gain(0.2), out);
+      k.chain(k.loop(k.noise('pink', 8)), k.filter('bandpass', 900, 0.7), k.filter('lowpass', 1000), k.gain(0.03), out);
+      const murmurG = k.gain(0.05);
+      k.chain(k.loop(k.noise('pink', 8)), k.filter('bandpass', 460, 0.9), murmurG, hall);
+      const lfo = ctx.createOscillator(); lfo.frequency.value = 0.09; const lfoG = k.gain(0.02); lfo.connect(lfoG); lfoG.connect(murmurG.gain); lfo.start();
+      let nextTick = ctx.currentTime + 0.2, tick = 0;
+      const clock = () => {
+        while (nextTick < ctx.currentTime + 0.4) {
+          k.burst(nextTick, { freq: tick % 2 ? 1500 : 2300, q: 4, level: 0.11, decay: 0.025, pan: -0.35, to: hall });
+          nextTick += 1; tick++;
+        }
+      };
+      const bell = (t, f) => [[1, 0.06, 3.2], [2.76, 0.025, 1.8], [5.4, 0.015, 1.1], [8.93, 0.008, 0.6]].forEach(([r, l, d]) => k.tone(t, { freq: f * r, level: l, attack: 0.004, decay: d, pan: -0.35, dest: hall }));
+      const chime = () => {
+        const t = ctx.currentTime + 0.1;
+        [415.3, 369.99, 329.63, 246.94].forEach((f, i) => bell(t + i * 0.85, f));
+        k.later(chime, rand(26, 34));
+      };
+      const clink = (t, pan) => [2637, 3520, 4186, 5274].forEach(f => k.tone(t, { freq: f * rand(0.98, 1.02), level: rand(0.008, 0.02), attack: 0.002, decay: rand(0.7, 1.3), pan, dest: hall }));
+      const toast = () => {
+        const t = ctx.currentTime + 0.05, pan = rand(-0.4, 0.6);
+        clink(t, pan); if (Math.random() < 0.6) clink(t + rand(0.12, 0.3), pan + 0.1);
+        if (Math.random() < 0.5) k.burst(t + rand(0.6, 1.4), { freq: 4800, type: 'highpass', level: 0.03, decay: 0.03, pan, to: hall });
+        k.later(toast, rand(5, 10));
+      };
+      const siren = () => {
+        const t = ctx.currentTime + 0.05, dur = rand(7, 10);
+        const o = ctx.createOscillator(); o.type = 'triangle'; o.frequency.value = 950;
+        const wail = ctx.createOscillator(), wg = k.gain(330); wail.frequency.value = 0.42; wail.connect(wg); wg.connect(o.frequency);
+        const g = k.gain(0); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.022, t + dur * 0.4); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        k.chain(o, k.filter('lowpass', 1300), g, k.pan(rand(0.3, 0.8)), out); o.start(t); wail.start(t); o.stop(t + dur); wail.stop(t + dur);
+        k.later(siren, rand(22, 36));
+      };
+      clock(); k.every(clock, 0.2); k.later(chime, 5); k.later(toast, 2.2); k.later(siren, 11);
+    },
+
+    /* Secret: the practice room after the festival. The track on repeat, sneakers, the phones lighting up. */
+    secret(k, dialog) {
+      const { ctx, out } = k;
+      k.chain(k.loop(k.noise('pink', 8)), k.filter('lowpass', 300), k.gain(0.07), out);
+      const track = k.filter('lowpass', 2600); k.chain(track, k.gain(0.22), out);
+      const BEAT = 60 / 100; let nextBeat = ctx.currentTime + 0.1, beat = 0;
+      const groove = () => {
+        while (nextBeat < ctx.currentTime + 0.35) {
+          const t = nextBeat;
+          k.tone(t, { freq: 110, to: 46, level: 0.5, decay: 0.22, dest: track });
+          if (beat % 2) k.burst(t, { freq: 1800, q: 0.8, level: 0.3, decay: 0.12, to: track });
+          k.burst(t + BEAT / 2, { freq: 7000, type: 'highpass', level: 0.06, decay: 0.03, to: track });
+          if (beat % 4 === 3) k.tone(t + BEAT * 0.75, { freq: [196, 233.08, 174.61, 220][Math.floor(beat / 4) % 4], type: 'triangle', level: 0.12, decay: 0.3, dest: track });
+          nextBeat += BEAT; beat++;
+        }
+      };
+      const squeak = t => {
+        const o = ctx.createOscillator(); o.type = 'square'; const f = rand(1900, 2700);
+        o.frequency.setValueAtTime(f, t); o.frequency.linearRampToValueAtTime(f * rand(1.15, 1.35), t + 0.09);
+        const lfo = ctx.createOscillator(), lg = k.gain(180); lfo.frequency.value = 45; lfo.connect(lg); lg.connect(o.frequency);
+        const g = k.gain(0); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.018, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + rand(0.08, 0.15));
+        k.chain(o, k.filter('bandpass', 2500, 6), g, k.pan(rand(-0.6, 0.6)), out); o.start(t); lfo.start(t); o.stop(t + 0.2); lfo.stop(t + 0.2);
+      };
+      const dancing = () => { const t = ctx.currentTime + 0.05; for (let i = 0, n = Math.floor(rand(1, 4)); i < n; i++) squeak(t + i * rand(0.15, 0.35)); k.later(dancing, rand(1.8, 4.5)); };
+      const like = () => { const t = ctx.currentTime + 0.02; k.tone(t, { freq: 1568, level: 0.035, decay: 0.22, pan: -0.55 }); k.tone(t + 0.06, { freq: 2349, level: 0.025, decay: 0.28, pan: -0.55 }); };
+      const dm = () => { const t = ctx.currentTime + 0.05; k.tone(t, { freq: 880, to: 1320, glide: 0.08, level: 0.04, decay: 0.18, pan: 0.6 }); k.tone(t + 0.1, { freq: 1760, level: 0.025, decay: 0.3, pan: 0.6 }); k.later(dm, rand(8, 14)); };
+      k.on(dialog, 'entrance:cue', e => { if (e.detail === 'like') like(); });
+      groove(); k.every(groove, 0.1); k.later(dancing, 1.4); k.later(dm, 5);
+    },
+
+    /* Hoax: the hallway before class, and a group chat that will not stop. */
+    hoax(k, dialog) {
+      const { ctx, out } = k;
+      const hall = k.gain(1), verb = k.reverb(1.4, 2.8), wet = k.gain(0.4);
+      hall.connect(out); k.chain(hall, verb, wet, out);
+      const chatter = k.gain(0.09);
+      k.chain(k.loop(k.noise('pink', 8)), k.filter('bandpass', 850, 0.7), chatter, hall);
+      const lfo = ctx.createOscillator(); lfo.frequency.value = 0.15; const lfoG = k.gain(0.035); lfo.connect(lfoG); lfoG.connect(chatter.gain); lfo.start();
+      const bell = () => {
+        const t = ctx.currentTime + 0.05, dur = 2.2, g = k.gain(0);
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.05, t + 0.05); g.gain.setValueAtTime(0.05, t + dur - 0.2); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        const ham = ctx.createOscillator(), hg = k.gain(0.5); ham.type = 'square'; ham.frequency.value = 22; ham.connect(hg);
+        const am = k.gain(0.5); hg.connect(am.gain);
+        k.chain(am, g, k.pan(0.3), hall);
+        for (const f of [930, 1870, 2630]) { const o = ctx.createOscillator(); o.frequency.value = f; o.connect(am); o.start(t); o.stop(t + dur + 0.05); }
+        ham.start(t); ham.stop(t + dur + 0.05);
+        k.later(bell, rand(40, 55));
+      };
+      const locker = () => {
+        const t = ctx.currentTime + 0.05, pan = rand(-0.8, 0.8);
+        k.burst(t, { freq: 650, type: 'lowpass', level: 0.22, decay: 0.08, pan, to: hall });
+        [340, 720, 1210].forEach(f => k.tone(t, { freq: f * rand(0.95, 1.05), level: 0.018, decay: 0.45, pan, dest: hall }));
+        k.burst(t + 0.03, { freq: 3500, q: 3, level: 0.05, decay: 0.015, pan, to: hall });
+        k.later(locker, rand(3.5, 8));
+      };
+      const NOTES = { solarsystem: 1046.5, jihoney: 1318.5, junkyute: 1568, asanoonecares: 880, cherryblossoms: 1174.7, jaehyukkie: 987.8, geniusuk: 1396.9 };
+      const ping = who => {
+        const t = ctx.currentTime + 0.02, f = NOTES[who] || 1200;
+        k.tone(t, { freq: f, level: 0.06, decay: 0.25, pan: 0.5 }); k.tone(t + 0.07, { freq: f * 1.5, level: 0.04, decay: 0.3, pan: 0.5 });
+        const bz = ctx.createOscillator(), bg = k.gain(0); bz.type = 'square'; bz.frequency.value = 160;
+        bg.gain.setValueAtTime(0.0001, t); bg.gain.exponentialRampToValueAtTime(0.015, t + 0.02); bg.gain.setValueAtTime(0.015, t + 0.22); bg.gain.exponentialRampToValueAtTime(0.0001, t + 0.26);
+        k.chain(bz, k.filter('lowpass', 400), bg, k.pan(0.5), out); bz.start(t); bz.stop(t + 0.3);
+      };
+      k.on(dialog, 'entrance:cue', e => { if (NOTES[e.detail]) ping(e.detail); });
+      k.later(bell, 0.6); k.later(locker, 3);
     }
   };
 

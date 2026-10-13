@@ -158,6 +158,188 @@ window.WorldEntrances = (() => {
         }, (14 + Math.random() * 8) * 1000);
         return () => { clearInterval(timer); clearTimeout(pop); };
       }
+    },
+    peace: {
+      prefix: 'still',
+      replay: 'Interview room · go back in',
+      enter: 'Enter Peace',
+      loader: { mark: 'peace', lines: ['the door slams shut.', 'once again, she was alone.'] },
+      markup: skip => `
+        <div class="still-scene">
+          <img class="still-backdrop" src="assets/worlds/peace-new.jpg" alt="" fetchpriority="high">
+          <div class="still-tint" aria-hidden="true"></div>
+          <div class="still-lamp" aria-hidden="true"><span class="still-cord"></span><span class="still-shade"></span><span class="still-cone"></span></div>
+          <div class="still-dust" aria-hidden="true">${Array.from({length:12},(_,i) => `<span style="--dx:${[44,52,47,58,49,55,41,61,50,46,57,53][i]}%;--dy:${[30,46,58,38,70,62,50,54,34,66,44,76][i]}%;--dd:${(i * -1.3).toFixed(1)}s"></span>`).join('')}</div>
+          <div class="still-grain" aria-hidden="true"></div>
+          <div class="still-topline"><span>Seoul · interview room</span><span>After the warehouse</span></div>
+          <div class="still-title-block">
+            <p class="still-eyebrow">The Delicate universe · aftermath</p>
+            <h2 id="still-entrance-title">peace</h2>
+            <p id="still-entrance-description">"Solar Lee, or do you prefer Kim Soomi?"</p>
+            <span class="still-handwriting" aria-hidden="true">how much time had passed?</span>
+          </div>
+          <div class="still-file" aria-hidden="true">
+            <span class="still-file-tab">Case file</span>
+            <span class="still-clip"></span>
+            <img src="assets/worlds/peace-bridge.jpg" alt="">
+            <span class="still-file-row"><b>Subject</b> Lee, Solar (Kim Soomi)</span>
+            <span class="still-file-row"><b>Status</b> Will not speak</span>
+            <span class="still-stamp">Confidential</span>
+          </div>
+          <div class="still-alert" aria-hidden="true">
+            <span class="still-alert-app"><i></i> News · now</span>
+            <b>BREAKING</b>
+            <span>Kim Soomi's whereabouts remain unknown.</span>
+          </div>
+          <div class="still-bottomline"><span>Where do you run if the villain was yourself all along?</span>${skip}</div>
+        </div>`
+    },
+
+    recherche: {
+      prefix: 'gilt',
+      replay: 'Upper East Side · return to the Castle',
+      enter: 'Enter Recherche',
+      loader: { mark: 'recherche', lines: ['dinner is prepared.', 'we have guests.'] },
+      markup: skip => `
+        <div class="gilt-scene">
+          <img class="gilt-backdrop" src="assets/worlds/recherche-night.jpg" alt="" fetchpriority="high">
+          <div class="gilt-tint" aria-hidden="true"></div>
+          <svg class="gilt-frame" aria-hidden="true" viewBox="0 0 1000 600" preserveAspectRatio="none"><rect x="20" y="20" width="960" height="560"/><rect x="34" y="34" width="932" height="532"/><path d="M20 90 L90 20 M910 20 L980 90 M980 510 L910 580 M90 580 L20 510"/></svg>
+          <div class="gilt-motes" aria-hidden="true">${Array.from({length:14},(_,i) => `<span style="--gx:${[8,17,26,35,44,53,62,71,80,89,13,48,67,93][i]}%;--gd:${(i * -0.8).toFixed(1)}s;--gs:${[3,2,4,2,3,5,2,3,4,2,3,2,4,3][i]}px"></span>`).join('')}</div>
+          <div class="gilt-topline"><span>New York · Upper East Side</span><span>2005</span></div>
+          <div class="gilt-title-block">
+            <p class="gilt-eyebrow">The Castle · Lee Industries</p>
+            <h2 id="gilt-entrance-title">recherche</h2>
+            <p id="gilt-entrance-description">Before the fame, there was the fall.</p>
+            <span class="gilt-handwriting" aria-hidden="true">it takes more than fame and money to reside in the Castle.</span>
+          </div>
+          <div class="gilt-clipping" aria-hidden="true">
+            <span class="gilt-masthead">UES LEDGER</span>
+            <span class="gilt-kicker">Society</span>
+            <span class="gilt-headline">Dinner at the Castle: the Lees welcome new partners</span>
+            <span class="gilt-lines"><i></i><i></i><i></i><i></i><i></i></span>
+          </div>
+          <div class="gilt-card" aria-hidden="true">
+            <span class="gilt-card-house">The Lee Residence</span>
+            <span class="gilt-card-name">Miss Solar Lee</span>
+            <span class="gilt-card-note">heir to Lee Industries</span>
+            <svg class="gilt-key" viewBox="0 0 60 24"><circle cx="10" cy="12" r="7"/><path d="M17 12h38M44 12v7M50 12v5"/></svg>
+          </div>
+          <div class="gilt-bottomline"><span>From the outside, privilege. From the inside, a cage.</span>${skip}</div>
+        </div>`
+    },
+
+    secret: {
+      prefix: 'priv',
+      replay: 'Close friends · peek again',
+      enter: 'Enter Secret',
+      loader: { mark: 'secret', lines: ['switching accounts.', 'close friends only.'] },
+      markup: skip => `
+        <div class="priv-scene">
+          <img class="priv-backdrop" src="assets/worlds/secret-nearkiss.jpg" alt="" fetchpriority="high">
+          <div class="priv-tint" aria-hidden="true"></div>
+          <div class="priv-hearts" aria-hidden="true">${Array.from({length:8},(_,i) => `<span style="--hx:${[14,19,24,11,28,16,22,26][i]}%;--hd:${(i * -0.7).toFixed(1)}s">♥</span>`).join('')}</div>
+          <div class="priv-grain" aria-hidden="true"></div>
+          <div class="priv-topline"><span>Seoul · LE SSERAFIM</span><span>After the festival</span></div>
+          <div class="priv-title-block">
+            <p class="priv-eyebrow">On main · on private</p>
+            <h2 id="priv-entrance-title">secret</h2>
+            <p id="priv-entrance-description">Beloved on main. Exhausted on private.</p>
+            <span class="priv-handwriting" aria-hidden="true">when can we go home?!</span>
+          </div>
+          <div class="priv-phone priv-main" aria-hidden="true">
+            <span class="priv-handle">lesoorin <i>✓</i></span>
+            <span class="priv-shot priv-shot-main"></span>
+            <span class="priv-likes">♥ <b class="priv-like-count">48,201</b> likes</span>
+            <span class="priv-caption"><b>lesoorin</b> thank you fearnot for the support at the festival, cant wait to see you again soon! &lt;3</span>
+            <span class="priv-comment"><b>*fan05*</b> as usual ate and left NO CRUMBS</span>
+            <span class="priv-comment"><b>*fan06*</b> our 5th gen it girl MISS SOORIN</span>
+          </div>
+          <div class="priv-phone priv-private" aria-hidden="true">
+            <span class="priv-handle">rinsoos <i>🔒</i></span>
+            <span class="priv-shot priv-shot-private"></span>
+            <span class="priv-caption"><b>rinsoos</b> dont hmu im tired &amp; going to sleep for the rest of my socalled life. goodbye.</span>
+            <span class="priv-comment"><b>chaechae</b> get some sleep then!</span>
+            <span class="priv-comment"><b>jenaissante</b> @rinsoos babe i love u stop</span>
+          </div>
+          <div class="priv-bottomline"><span>What do you do when the world wouldn't accept who you love?</span>${skip}</div>
+        </div>`,
+      start: dialog => {
+        const count = dialog.querySelector('.priv-like-count');
+        let likes = 48201;
+        const timer = setInterval(() => {
+          likes += Math.floor(1 + Math.random() * 9);
+          count.textContent = likes.toLocaleString('en-US');
+          if (Math.random() < 0.45) dialog.dispatchEvent(new CustomEvent('entrance:cue', { detail: 'like' }));
+        }, 900);
+        return () => clearInterval(timer);
+      }
+    },
+
+    hoax: {
+      prefix: 'gc',
+      replay: 'BESTAY CENTRAL · reopen the chat',
+      enter: 'Enter Hoax',
+      loader: { mark: 'hoax', lines: ['BESTAY CENTRAL · 47 unread', "can't wait till school starts."] },
+      markup: skip => `
+        <div class="gc-scene">
+          <img class="gc-backdrop" src="assets/worlds/hoax-rain.jpg" alt="" fetchpriority="high">
+          <div class="gc-tint" aria-hidden="true"></div>
+          <div class="gc-grain" aria-hidden="true"></div>
+          <div class="gc-topline"><span>Sophomore year</span><span>Student council elections</span></div>
+          <div class="gc-title-block">
+            <p class="gc-eyebrow">BESTAY CENTRAL · group chat</p>
+            <h2 id="gc-entrance-title">hoax</h2>
+            <p id="gc-entrance-description">Loud, unserious, and absolutely catastrophic.</p>
+            <span class="gc-handwriting" aria-hidden="true">no one talks about sophomore year.</span>
+          </div>
+          <div class="gc-poster" aria-hidden="true">
+            <span class="gc-tape"></span>
+            <span class="gc-poster-star">★</span>
+            <span class="gc-poster-vote">VOTE</span>
+            <span class="gc-poster-name">SOLAR</span>
+            <span class="gc-poster-for">for Student Council President</span>
+            <span class="gc-poster-star gc-star-2">★</span>
+          </div>
+          <div class="gc-phone" aria-hidden="true">
+            <span class="gc-phone-head"><b>BESTAY CENTRAL</b><i class="gc-unread">0</i></span>
+            <span class="gc-thread"></span>
+          </div>
+          <div class="gc-bottomline"><span>Old habits die hard, especially for these friends.</span>${skip}</div>
+        </div>`,
+      start: dialog => {
+        const MESSAGES = [
+          ['solarsystem', 'i hate my life so much everyone'],
+          ['asanoonecares', 'oh goodie just what i needed'],
+          ['jaehyukkie', 'why are you so unnecessarily rude?'],
+          ['junkyute', 'are u ok solar!!! do u need some ice cream and hugs!!!'],
+          ['solarsystem', 'YES that is exactly what i need'],
+          ['jihoney', 'as her best friend it is RIGHTFULLY MY JOB to bring her ice cream when she is sad'],
+          ['cherryblossoms', 'not jihoon pretending i don’t exist'],
+          ['geniusuk', 'LMAOOOO'],
+          ['junkyute', 'all u do is hog her : ('],
+          ['jihoney', 'all i hear is lack of effort']
+        ];
+        const COLORS = { solarsystem: '#ffb84d', asanoonecares: '#8fb8ff', jaehyukkie: '#9fe0a8', junkyute: '#ff9ec7', jihoney: '#c9a7ff', cherryblossoms: '#ff8a8a', geniusuk: '#7fe3e0' };
+        const thread = dialog.querySelector('.gc-thread'), unread = dialog.querySelector('.gc-unread');
+        let i = 0, timer;
+        const post = () => {
+          const [who, text] = MESSAGES[i];
+          const msg = document.createElement('span');
+          msg.className = 'gc-msg' + (who === 'solarsystem' ? ' gc-mine' : '');
+          msg.style.setProperty('--who', COLORS[who]);
+          const name = document.createElement('b'); name.textContent = who;
+          const body = document.createElement('span'); body.textContent = text;
+          msg.append(name, body); thread.appendChild(msg);
+          while (thread.children.length > 6) thread.firstElementChild.remove();
+          unread.textContent = String(i + 1);
+          dialog.dispatchEvent(new CustomEvent('entrance:cue', { detail: who }));
+          i++;
+          if (i < MESSAGES.length) timer = setTimeout(post, 1400 + Math.random() * 1600);
+        };
+        timer = setTimeout(post, 1200);
+        return () => clearTimeout(timer);
+      }
     }
   };
 
