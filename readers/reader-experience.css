@@ -1,0 +1,35 @@
+/* Loaded last so preferences also apply to older exported manuscripts. */
+body[data-reader-theme] { --reader-surface: #131118; --reader-background: #0d0b12; }
+body[data-reader-theme="sepia"] { --reader-surface: #f2e6d1; --reader-background: #e9dcc4; --ink: #3c3024; --ink-dim: #65533f; --ink-muted: #75624d; --accent: #7b4530; --border: #c7b69c; --panel: #e3d3b8; background: var(--reader-background) !important; color-scheme: light; }
+body[data-reader-theme="light"] { --reader-surface: #fffdfa; --reader-background: #faf8f4; --ink: #29252b; --ink-dim: #625965; --ink-muted: #726675; --accent: #704877; --border: #d8d1d8; --panel: #eee9ef; background: var(--reader-background) !important; color-scheme: light; }
+body[data-reader-theme] { color: var(--ink); font-size: var(--reading-size); line-height: var(--reading-spacing); }
+body[data-reader-theme] .reader-chapter p:not(.chapter-heading),
+body[data-reader-theme] .reader-chapter li,
+body[data-reader-theme] .reader-chapter blockquote { font-size: var(--reading-size) !important; line-height: var(--reading-spacing) !important; color: var(--ink); }
+body[data-reader-theme] .reader-chapter p:not(.chapter-heading) > span { font-size: inherit !important; line-height: inherit !important; color: inherit !important; }
+body[data-reader-theme] [hidden] { display: none !important; }
+body[data-reader-theme] .reader-topbar, body[data-reader-theme] .chapter-drawer, body[data-reader-theme] .reader-resume { background: var(--reader-surface); color: var(--ink); }
+body[data-reader-theme] .chapter-drawer { max-width: 100vw; }
+body[data-reader-theme] .reader-topbar { gap: 8px; }
+body[data-reader-theme] .reader-chapter-label { min-width: 0; }
+body[data-reader-theme] .reader-settings-button { font: 700 14px Georgia, serif; }
+.reader-settings { width: min(440px,calc(100vw - 32px)); max-height: calc(100svh - 48px); overflow: auto; border: 1px solid var(--border); border-radius: 18px; padding: 24px; background: var(--reader-surface); color: var(--ink); font: 15px/1.5 system-ui,sans-serif; }
+.reader-settings::backdrop { background: #0009; }
+.reader-settings-heading { display: flex; align-items: start; gap: 16px; }
+body[data-reader-theme] .reader-settings h2 { font: 24px/1.25 Georgia,serif !important; border: 0; padding: 0; margin: 0 0 22px; text-align: left; color: var(--ink); }
+.reader-settings-heading button { margin-left: auto; }
+.reader-settings label { display: grid; grid-template-columns: 1fr 1.3fr; align-items: center; gap: 14px; margin-bottom: 16px; }
+.reader-settings select, .reader-settings button, .reader-pager button, .reader-pager a { font: inherit; background: var(--panel); color: var(--ink); padding: 10px 12px; border: 1px solid var(--border); border-radius: 9px; cursor: pointer; }
+.reader-settings select { width: 100%; min-width: 0; }
+.reader-settings option { background: var(--reader-surface); color: var(--ink); }
+body[data-reader-theme] .reader-settings p { font: 12px/1.6 system-ui,sans-serif; color: var(--ink-dim); }
+.reader-pager { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; padding-top: 28px; margin-top: 48px; border-top: 1px solid var(--border); font: 14px/1.4 system-ui,sans-serif; }
+.reader-pager a { text-decoration: none; }
+.reader-pager button:disabled { opacity: .4; cursor: default; }
+.reader-page-count { flex-basis: 100%; text-align: center; color: var(--ink-dim); order: -1; }
+body[data-reader-mode="chapters"] .reader-chapter .chapter-heading { margin-top: 12px; padding-top: 12px; border-top: 0; }
+body[data-reader-theme] button:focus-visible, body[data-reader-theme] a:focus-visible, body[data-reader-theme] select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+body[data-reader-theme] .chapter-heading:focus { outline: none; }
+@media (max-width: 480px) { .reader-back { max-width: 115px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .reader-settings label { grid-template-columns: 1fr; gap: 6px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .chapter-drawer, .reader-resume { transition: none; } }
+body[data-reader-theme] .reader-chapter h2.chapter-heading { color: var(--accent); font: italic 400 clamp(1.15rem,2.5vw,1.5rem)/1.6 Georgia,serif; text-align: center; scroll-margin-top: 72px; }

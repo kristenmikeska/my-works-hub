@@ -1,0 +1,58 @@
+/* Runners: a brief autumn arrival, with paper keepsakes and drifting leaves. */
+.campus-replay { display: inline-flex; align-items: center; gap: 9px; margin-top: 22px; padding: 10px 16px; background: #1c211acc; border: 1px solid #dfc59a66; border-radius: 99px; color: #f6e7ce; font: 12px/1.4 ui-sans-serif,system-ui,sans-serif; cursor: pointer; }
+.campus-replay:hover { background: #353a27; border-color: #dfc59a; }
+.campus-replay:focus-visible, .campus-skip:focus-visible { outline: 2px solid #ffe2a7; outline-offset: 5px; }
+.campus-entrance { inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; overflow: hidden; color: #fbf0d9; background: #2d3529; }
+.campus-entrance::backdrop { background: #20261e; }
+.campus-scene { position: relative; isolation: isolate; width: 100%; height: 100%; overflow: hidden; background: #3e4835; }
+.campus-backdrop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; filter: sepia(.42) saturate(.8) brightness(.68); animation: campus-arrive 8.4s ease-out both; z-index: -3; }
+.campus-light { position: absolute; inset: 0; z-index: -2; background: radial-gradient(ellipse at 10% 6%, #e7ba6b77, transparent 65%), linear-gradient(180deg,#18271935,#15201655 40%,#101a14df); }
+.campus-grain { position: absolute; inset: 0; z-index: -1; opacity: .1; background-image: repeating-linear-gradient(0deg,transparent 0 3px,#fff3 3px 4px); pointer-events: none; }
+.campus-topline, .campus-bottomline { position: absolute; left: clamp(22px,5vw,76px); right: clamp(22px,5vw,76px); display: flex; align-items: center; justify-content: space-between; gap: 20px; font: 600 11px/1.5 ui-sans-serif,system-ui,sans-serif; text-transform: uppercase; letter-spacing: .2em; }
+.campus-topline { top: max(28px,env(safe-area-inset-top)); padding-bottom: 17px; border-bottom: 1px solid #f4dfb944; }
+.campus-bottomline { bottom: max(28px,env(safe-area-inset-bottom)); }
+.campus-title-block { position: absolute; top: 27%; left: 10%; width: 80%; text-align: center; animation: campus-title-in .9s .1s both; }
+.campus-eyebrow { font: 500 12px/1.5 ui-sans-serif,system-ui,sans-serif; letter-spacing: .32em; text-transform: uppercase; margin: 0 0 12px; }
+#campus-entrance-title { color: #f7e8cb; margin: 0; font: 900 clamp(58px,12vw,174px)/1 Georgia,'Times New Roman',serif; letter-spacing: -.045em; -webkit-text-stroke: 1px #f7e8cb; text-shadow: 3px 3px #253528,5px 5px #cfb887; }
+#campus-entrance-description { max-width: 470px; margin: 22px auto 0; font: 400 clamp(15px,1.6vw,20px)/1.55 Georgia,serif; }
+.campus-handwriting { display: inline-block; font: italic 22px/1.4 Georgia,serif; color: #ecc287; transform: rotate(-4deg); margin-top: 14px; }
+.campus-polaroid { position: absolute; left: 6%; bottom: 13%; width: clamp(140px,17vw,235px); padding: 12px 12px 18px; margin: 0; background: #efe4cd; color: #4c3d2c; transform: rotate(-10deg); box-shadow: 0 16px 35px #0006; animation: campus-photo-in 1s .25s both; }
+.campus-polaroid::before { content: ''; position: absolute; top: -10px; left: 29%; width: 46%; height: 23px; background: #ccaf7dbb; transform: rotate(4deg); }
+.campus-polaroid img { width: 100%; height: clamp(125px,15vw,200px); object-fit: cover; object-position: center 35%; filter: sepia(.15); }
+.campus-polaroid figcaption { font: italic 12px/1.3 Georgia,serif; text-align: center; margin-top: 12px; }
+.campus-note { position: absolute; right: 6%; bottom: 15%; width: 225px; padding: 20px 24px; color: #384334; background: repeating-linear-gradient(#e9dbc1 0 27px,#bbc0a9 27px 28px); transform: rotate(7deg); box-shadow: 0 16px 35px #0005; font: 13px/28px Georgia,serif; animation: campus-note-in 1s .5s both; }
+.campus-note span { display: block; }
+.campus-note-label { font: 700 9px/28px ui-sans-serif,system-ui,sans-serif; text-transform: uppercase; letter-spacing: .16em; }
+.campus-note i { display: block; margin-top: 6px; color: #985334; }
+.campus-skip { color: #fbf0d9; border: 1px solid #fbf0d977; border-radius: 99px; padding: 12px 18px; background: #16231899; cursor: pointer; font: 500 12px/1.3 ui-sans-serif,system-ui,sans-serif; white-space: nowrap; }
+.campus-skip:hover { background: #fbf0d9; color: #263423; }
+.campus-leaves { position: absolute; inset: 0; pointer-events: none; }
+.campus-leaf { position: absolute; left: var(--leaf-x); top: -100px; width: 34px; color: var(--leaf-color); animation: campus-leaf-fall 5.5s var(--leaf-delay) linear infinite both; opacity: .85; }
+.campus-leaf:nth-child(3n) { width: 24px; filter: blur(1px); }
+.campus-leaf svg { width: 100%; height: auto; }
+.campus-timer { position: absolute; bottom: 0; height: 2px; width: 100%; background: #eac28caa; transform-origin: left; animation: campus-countdown 8s linear both; }
+.campus-leaving { animation: campus-out .42s ease-in both; pointer-events: none; }
+@keyframes campus-arrive { from { transform: scale(1.08); } to { transform: scale(1); } }
+@keyframes campus-title-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes campus-photo-in { from { opacity: 0; transform: translate(-45px,30px) rotate(-18deg); } to { opacity: 1; transform: rotate(-10deg); } }
+@keyframes campus-mobile-photo-in { from { opacity: 0; transform: translateY(20px) rotate(-11deg); } to { opacity: 1; transform: rotate(-7deg); } }
+@keyframes campus-note-in { from { opacity: 0; transform: translate(45px,20px) rotate(14deg); } to { opacity: 1; transform: rotate(7deg); } }
+@keyframes campus-leaf-fall { from { transform: translate3d(0,-60px,0) rotate(0); } to { transform: translate3d(var(--leaf-drift),calc(100vh + 180px),0) rotate(270deg); } }
+@keyframes campus-countdown { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes campus-out { to { opacity: 0; } }
+@media (max-width: 700px) {
+  .campus-title-block { top: 23%; left: 5%; width: 90%; }
+  .campus-note { display: none; }
+  .campus-polaroid { left: 50%; bottom: 15%; width: 135px; transform: rotate(-7deg); animation: campus-mobile-photo-in .8s .25s both; margin-left: -67px; }
+  .campus-polaroid img { height: 130px; }
+  .campus-polaroid figcaption { font-size: 10px; }
+  .campus-handwriting { font-size: 19px; }
+  .campus-bottomline { letter-spacing: .09em; font-size: 9px; }
+  .campus-topline { font-size: 9px; letter-spacing: .12em; }
+  #campus-entrance-description { max-width: 290px; margin-top: 18px; }
+}
+@media (max-height: 650px) { .campus-title-block { top: 22%; } .campus-polaroid, .campus-note { display: none; } .campus-handwriting { margin-top: 10px; } }
+@media (prefers-reduced-motion: reduce) {
+  .campus-entrance, .campus-entrance * { animation: none !important; transition: none !important; }
+  .campus-leaves, .campus-timer { display: none; }
+}

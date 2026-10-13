@@ -3,6 +3,7 @@ const SITE_ROOT = "sites";
 const worlds = [
   {
     id: "delicate",
+    tags: ["Angsty", "Ensemble", "Humorous", "Idol life", "Love triangle"],
     title: "Delicate",
     universe: "Delicate Universe",
     group: "delicate",
@@ -43,6 +44,7 @@ const worlds = [
   },
   {
     id: "recherche",
+    tags: ["Angsty", "Crime romance", "Forbidden love", "School life"],
     title: "Recherche",
     universe: "Delicate Universe",
     group: "delicate",
@@ -71,6 +73,7 @@ const worlds = [
   },
   {
     id: "peace",
+    tags: ["Coming of age", "Love triangle", "Healing", "Idol life"],
     title: "Peace",
     universe: "Delicate Universe",
     group: "delicate",
@@ -100,6 +103,7 @@ const worlds = [
   },
   {
     id: "secret",
+    tags: ["Forbidden love", "WLW", "Ensemble", "Humorous", "Slow burn", "Idol life"],
     title: "Secret",
     universe: "Delicate Universe",
     group: "delicate",
@@ -128,7 +132,34 @@ const worlds = [
     readers: [["Secret", "readers/secret.html"]]
   },
   {
+    id: "strangers",
+    latestUpdate: { date: "2026-10-13", label: "Chapters 23–62 added", chapter: "62: the kimbap woman", idx: 61 },
+    tags: ["Angsty", "Arranged marriage", "Crime romance", "Eerie", "Forbidden love", "Love triangle"],
+    title: "Strangers",
+    universe: "Standalone",
+    group: "standalone",
+    status: "Unfinished",
+    timeframe: "Oct 2026 – Present",
+    endSort: 202610,
+    chapters: 62,
+    words: 975005,
+    lead: "Solar Lee",
+    loveInterests: ["Haechan", "Jungwon"],
+    cast: ["Solar Lee", "Haechan", "Yang Jungwon", "Huh Yunjin", "Park Sunghoon", "Lee Taejoon", "Auntie Song", "Kim Daljoong"],
+    format: "Crime Romance · Arranged Marriage · Forbidden Love · Family Loyalties",
+    mood: "Incheon at low tide, seafood dinners with something underneath, cinnamon gum, stitches after midnight, a room across the hall",
+    tagline: "A wedding to keep the peace. A bodyguard with a history. Nothing stays buried at low tide.",
+    accent: "#c4b4da",
+    worldBg: "radial-gradient(ellipse at 35% 0%, rgba(196,180,218,0.14) 0%, transparent 55%), linear-gradient(180deg, #101016 0%, #090a0e 100%)",
+    image: "assets/worlds/strangers-card.jpg",
+    worldImage: "assets/worlds/strangers-cover.jpg",
+    summary: "At her father's seafood restaurant on the Incheon waterfront, Solar Lee knows how to smile through a dinner, keep a secret, and stitch a wound nobody can take to a hospital. She's spent her life learning which questions not to ask. Then a truce between two families comes with a wedding date, and Solar finds herself promised to Yang Jungwon, the composed young heir of the very people she's been taught to fear. Haechan is assigned to stay beside her until the ceremony, sleeping across the hall, following her everywhere, carrying a history with the Yangs that nobody will explain. Between the man she's supposed to marry and the one entrusted with keeping her alive, the distance she's always known how to keep begins to disappear.",
+    readers: [["Strangers", "readers/strangers.html"]]
+  },
+  {
     id: "runners",
+    latestUpdate: { date: "2026-09-05", label: "Chapters 62–65 added", chapter: "65: interruptions and interventions", idx: 64 },
+    tags: ["Coming of age", "College", "Ensemble", "Esports", "Love triangle", "Slow burn"],
     title: "Runners",
     universe: "Standalone",
     group: "standalone",
@@ -166,6 +197,7 @@ const worlds = [
   },
   {
     id: "casual",
+    tags: ["College", "Healing", "Slow burn"],
     readingPaused: true,
     title: "Casual",
     universe: "Standalone",
@@ -195,6 +227,7 @@ const worlds = [
   },
   {
     id: "hoax",
+    tags: ["Ensemble", "Humorous", "Love triangle", "Playful", "School life", "Slow burn"],
     title: "Hoax",
     universe: "Standalone",
     group: "standalone",
@@ -223,6 +256,7 @@ const worlds = [
   },
   {
     id: "havenbrook",
+    tags: ["Angsty", "Crime romance", "Eerie"],
     readingPaused: true,
     title: "Havenbrook",
     universe: "Standalone",
@@ -253,6 +287,7 @@ const worlds = [
   },
   {
     id: "petal-thorn",
+    tags: ["Forbidden love", "Idol life", "Esports", "Ensemble"],
     title: "Petal & Thorn",
     universe: "Standalone",
     group: "standalone",
@@ -292,6 +327,7 @@ const worlds = [
   },
   {
     id: "soul-of-minji",
+    tags: ["WLW", "Supernatural", "Playful"],
     title: "Soul of Minji",
     universe: "Standalone",
     group: "standalone",
@@ -316,6 +352,7 @@ const worlds = [
   },
   {
     id: "saint-of-dead-air",
+    tags: ["Supernatural", "Eerie"],
     title: "Saint of Dead Air",
     universe: "Standalone",
     group: "standalone",
@@ -340,6 +377,7 @@ const worlds = [
   },
   {
     id: "go",
+    tags: ["School life", "Crime romance", "Angsty"],
     title: "GO",
     universe: "Standalone",
     group: "standalone",

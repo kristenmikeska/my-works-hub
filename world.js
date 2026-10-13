@@ -9,13 +9,15 @@ function getWorldId() {
 
 function getProgress(id) {
   try {
-    return JSON.parse(localStorage.getItem("kg-reading-" + id));
+    const saved = JSON.parse(localStorage.getItem("kg-reading-" + id));
+    return saved && Number.isInteger(saved.idx) && saved.idx >= 0 && Number.isFinite(saved.percent) && saved.percent >= 0 && saved.percent <= 100 ? saved : null;
   } catch (e) {
     return null;
   }
 }
 
 function renderWorld(world) {
+  worldPage.dataset.world = world.id;
   document.title = `${world.title} — My Works`;
 
   if (universeBadge) universeBadge.textContent = world.universe;
@@ -36,7 +38,7 @@ function renderWorld(world) {
         <div class="world-hero-overlay"></div>
       ` : ""}
       <div class="world-hero-content">
-        <p class="world-eyebrow">${world.status} &nbsp;·&nbsp; ${world.timeframe}</p>
+        <p class="world-eyebrow">${world.readingPaused ? "Under revision" : world.status} &nbsp;·&nbsp; ${world.timeframe}</p>
         <h1 class="world-title">${world.title}</h1>
         <p class="world-tagline">"${world.tagline}"</p>
         <div class="world-chips">
@@ -90,6 +92,7 @@ function renderWorld(world) {
         const hasProg = !world.readingPaused && prog && prog.percent >= 1 && prog.percent <= 99;
         const label = hasProg ? (prog.title || `Chapter ${prog.idx + 1}`) : "";
         return `
+      ${world.readingPaused ? `<p class="world-note">This story is currently being edited and is temporarily unavailable to read.</p>` : ""}
       <div class="world-actions">
         <a class="world-btn primary" href="${world.readers[0][1]}">${hasProg ? `Continue reading · ${prog.percent}%` : `Read ${world.title}`}</a>
         ${world.site ? `<a class="world-btn secondary" href="${world.site.href}">Open ${world.site.title} →</a>` : ""}
@@ -97,7 +100,7 @@ function renderWorld(world) {
       ${hasProg ? `
         <div class="world-progress" title="${prog.percent}% read">
           <div class="world-progress-track"><span style="width:${prog.percent}%"></span></div>
-          <span class="world-progress-label">Last read: ${label}</span>
+          <span class="world-progress-label">Last read: ${String(label).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]))}</span>
         </div>
       ` : ""}`;
       })()}
@@ -107,7 +110,7 @@ function renderWorld(world) {
         <div class="read-list">
           ${world.readers.map(([label, href]) => `
             <a class="read-item" href="${href}">
-              <span>${label}</span>
+              <span>${String(label).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]))}</span>
               <span class="read-arrow">Open →</span>
             </a>
           `).join("")}
@@ -445,7 +448,10 @@ function renderNotFound(id) {
   `;
 }
 
+let disposeWorldEntrance = null;
+
 function init() {
+  if (disposeWorldEntrance) { disposeWorldEntrance(); disposeWorldEntrance = null; }
   const id = getWorldId();
   if (!id) {
     window.location.href = "index.html";
@@ -458,6 +464,7 @@ function init() {
   }
   renderWorld(world);
   initMusicPlayer(world);
+  disposeWorldEntrance = window.WorldEntrances?.mount(world);
 }
 
 // Scroll: fade in topbar background

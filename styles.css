@@ -767,3 +767,22 @@ h1 {
 .hero-text .hero-sub { animation: entrance-up 1s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both; }
 .hero-text .hero-actions { animation: entrance-up 1s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both; }
 .hero-collage { animation: entrance-up 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both; }
+
+/* Personal reading shelves and discovery controls */
+[hidden] { display: none !important; }
+.reading-shelf { padding: 36px clamp(18px, 4vw, 52px); }
+.shelf-note { color: var(--muted); margin: -8px 0 20px; font-size: .85rem; }
+.shelf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px; }
+.shelf-card { display: flex; align-items: center; gap: 18px; padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); transition: border-color 150ms; }
+.shelf-card:hover { border-color: var(--accent); }
+.shelf-card img { width: 76px; height: 102px; flex-shrink: 0; border-radius: 8px; }
+.shelf-copy { display: grid; gap: 6px; min-width: 0; }
+.shelf-copy strong { font: 1.4rem Georgia, serif; }
+.shelf-copy time { color: var(--gold); font-size: .72rem; }
+.shelf-detail { color: var(--muted); font-size: .8rem; line-height: 1.5; overflow-wrap: anywhere; }
+.discovery-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 0 0 28px; font-size: .82rem; color: var(--muted); }
+.discovery-row select { max-width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; background: #211c20; color: var(--ink); }
+#resultCount { margin-left: auto; }
+a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.reading-shelf, .catalog { scroll-margin-top: 120px; }

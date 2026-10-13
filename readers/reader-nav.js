@@ -21,6 +21,9 @@
         return /^\d{2,3}:\d{2}\s*\|/.test(el.textContent.trim());
       }
     },
+    'strangers': {
+      detect: el => el.matches('h2') && /^\d+:/.test(el.textContent.trim())
+    },
     'runners': {
       // EPUB export: chapter headings are <h2 class="p1 c1"> not <p>
       detect: el => el.matches('h2') && /^\d+:/.test(el.textContent.trim())
@@ -74,6 +77,7 @@
   /* --- Back link destination + display name --- */
   const WORLD_META = {
     'delicate':          { href: '../world.html#delicate',          name: 'Delicate' },
+    'strangers':         { href: '../world.html#strangers',         name: 'Strangers' },
     'runners':           { href: '../world.html#runners',           name: 'Runners' },
     'casual':            { href: '../world.html#casual',            name: 'Casual' },
     'havenbrook':        { href: '../world.html#havenbrook',        name: 'Havenbrook' },
@@ -100,6 +104,17 @@
         chapters.push(el);
       }
     });
+  }
+
+  // Peace begins with an unnumbered first chapter. Give it its own section while
+  // retaining the existing ch-0...ch-8 anchors for chapters 2–10.
+  if (world === 'peace' && chapters.length) {
+    const opening = document.querySelector('p.p3');
+    if (opening) {
+      const heading = document.createElement('h2');
+      heading.className = 'chapter-heading'; heading.id = 'ch-opening'; heading.textContent = '1';
+      opening.before(heading); chapters.unshift(heading);
+    }
   }
 
   /* --- Mark social media elements --- */
@@ -132,6 +147,13 @@
 
   const drawer = document.createElement('div');
   drawer.className = 'chapter-drawer';
+  drawer.id = 'chapter-drawer';
+  drawer.setAttribute('role', 'dialog');
+  drawer.setAttribute('aria-label', 'Chapters');
+  drawer.setAttribute('aria-modal', 'true');
+  drawer.inert = true;
+  menuBtn.setAttribute('aria-controls', drawer.id);
+  menuBtn.setAttribute('aria-expanded', 'false');
 
   const drawerHead = document.createElement('div');
   drawerHead.className = 'drawer-header';
@@ -154,7 +176,7 @@
     const li = document.createElement('li');
     const a = document.createElement('a');
     a.className = 'chapter-list-item';
-    a.href = '#ch-' + i;
+    a.href = '#' + el.id;
     a.textContent = el.textContent.trim();
     a.dataset.idx = i;
     a.addEventListener('click', () => closeDrawer());
@@ -167,144 +189,45 @@
 
   /* --- Drawer open/close --- */
   function openDrawer() {
+    drawer.inert = false;
+    menuBtn.setAttribute('aria-expanded', 'true');
     drawer.classList.add('open');
     overlay.classList.add('open');
     const active = chList.querySelector('.active');
-    if (active) active.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    if (active) active.scrollIntoView({ block: 'center', behavior: 'instant' });
+    closeBtn.focus({ preventScroll: true });
   }
   function closeDrawer() {
+    const wasOpen = drawer.classList.contains('open');
+    drawer.inert = true;
+    menuBtn.setAttribute('aria-expanded', 'false');
     drawer.classList.remove('open');
     overlay.classList.remove('open');
+    if (wasOpen) menuBtn.focus({ preventScroll: true });
   }
 
+  drawer.addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    const focusable = [closeBtn, ...chList.querySelectorAll('a')];
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  });
   menuBtn.addEventListener('click', openDrawer);
   overlay.addEventListener('click', closeDrawer);
   closeBtn.addEventListener('click', closeDrawer);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
-  /* --- Reading progress bar (works with or without chapters) --- */
-  const PROGRESS_KEY = 'kg-reading-' + (world || 'unknown');
-  const loadTime = Date.now();
-  // We manage scroll position ourselves (resume toast), and we don't want the
-  // browser's scroll restoration firing a load-time scroll that wipes the bookmark.
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-
-  const progressBar = document.createElement('div');
-  progressBar.className = 'reader-progress';
-  progressBar.innerHTML = '<span class="reader-progress-fill"></span>';
-  document.body.appendChild(progressBar);
-  const progressFill = progressBar.querySelector('.reader-progress-fill');
-
-  function scrollPercent() {
-    const h = document.documentElement;
-    const max = h.scrollHeight - h.clientHeight;
-    return max > 0 ? Math.min(1, Math.max(0, h.scrollTop / max)) : 0;
-  }
-
-  /* --- IntersectionObserver: track current chapter --- */
-  if (chapters.length) {
-    let currentIdx = 0;
-    const listItems = Array.from(chList.querySelectorAll('.chapter-list-item'));
-
-    // Capture the saved position up front, before any save can overwrite it.
-    let restoreData = null;
-    try { restoreData = JSON.parse(localStorage.getItem(PROGRESS_KEY)); } catch (e) {}
-
-    function setActive(idx) {
-      if (idx === currentIdx && listItems[idx]?.classList.contains('active')) return;
-      currentIdx = idx;
-      listItems.forEach((a, i) => a.classList.toggle('active', i === idx));
-      chLabel.textContent = chapters[idx].textContent.trim();
-    }
-
-    function saveProgress() {
-      try {
-        localStorage.setItem(PROGRESS_KEY, JSON.stringify({
-          idx: currentIdx,
-          title: chapters[currentIdx]?.textContent.trim() || '',
-          total: chapters.length,
-          percent: Math.round(scrollPercent() * 100),
-          updated: Date.now()
-        }));
-      } catch (e) {}
-    }
-
-    setActive(0);
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const idx = parseInt(entry.target.id.replace('ch-', ''), 10);
-          setActive(idx);
-        }
-      });
-    }, {
-      rootMargin: '-52px 0px -80% 0px',
-      threshold: 0
-    });
-
-    chapters.forEach(el => observer.observe(el));
-
-    /* --- Bar fill + throttled persistence on scroll --- */
-    let ticking = false;
-    let saveTimer = null;
-    function onScroll() {
-      // Bar always tracks the scroll immediately.
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          progressFill.style.width = (scrollPercent() * 100) + '%';
-          ticking = false;
-        });
-        ticking = true;
-      }
-      // Ignore the load-time scroll burst (restoration/layout) so simply
-      // opening a book at the top can't erase an existing bookmark.
-      if (Date.now() - loadTime < 1200) return;
-      clearTimeout(saveTimer);
-      saveTimer = setTimeout(saveProgress, 400);
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    progressFill.style.width = (scrollPercent() * 100) + '%';
-    window.addEventListener('beforeunload', () => {
-      if (Date.now() - loadTime >= 1200) saveProgress();
-    });
-
-    /* --- Resume toast (uses the position captured up front) --- */
-    (function setupResume() {
-      const saved = restoreData;
-      if (!saved || saved.percent < 3 || saved.percent > 96) return;
-      // Skip if the page was opened with a deliberate chapter anchor
-      if (/^#ch-\d+$/.test(location.hash)) return;
-
-      const toast = document.createElement('div');
-      toast.className = 'reader-resume';
-      const label = saved.title || ('Chapter ' + (saved.idx + 1));
-      toast.innerHTML =
-        '<span class="reader-resume-text">Resume <strong></strong></span>' +
-        '<button class="reader-resume-go">Continue →</button>' +
-        '<button class="reader-resume-dismiss" aria-label="Dismiss">&times;</button>';
-      toast.querySelector('strong').textContent = label;
-      document.body.appendChild(toast);
-      requestAnimationFrame(() => setTimeout(() => toast.classList.add('visible'), 450));
-
-      function hide() {
-        toast.classList.remove('visible');
-        setTimeout(() => toast.remove(), 420);
-      }
-      toast.querySelector('.reader-resume-go').addEventListener('click', () => {
-        const target = chapters[Math.min(saved.idx, chapters.length - 1)];
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        hide();
-      });
-      toast.querySelector('.reader-resume-dismiss').addEventListener('click', hide);
-      setTimeout(() => { if (toast.isConnected) hide(); }, 9000);
-    })();
-  } else {
-    /* No chapter config — still drive the bar from scroll */
-    window.addEventListener('scroll', () => {
-      progressFill.style.width = (scrollPercent() * 100) + '%';
-    }, { passive: true });
-  }
+  /* Load the shared reader controls beside this script (also works with file:// previews). */
+  const scriptBase = document.currentScript.src;
+  const experienceStyles = document.createElement('link');
+  experienceStyles.rel = 'stylesheet';
+  experienceStyles.href = new URL('reader-experience.css?v=1', scriptBase).href;
+  document.head.appendChild(experienceStyles);
+  const experienceScript = document.createElement('script');
+  experienceScript.src = new URL('reader-experience.js?v=1', scriptBase).href;
+  experienceScript.onload = () => window.initReaderExperience({ world, chapters, topbar, chLabel, chList, backHref, worldLabel, closeDrawer });
+  document.body.appendChild(experienceScript);
 
   /* ─────────────────────────────────────────────────────────────
      SOCIAL MEDIA ELEMENT MARKING

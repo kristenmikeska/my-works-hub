@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Katarina Grande</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 
@@ -38,10 +38,10 @@
         </div>
       </div>
       <div class="hero-collage" aria-label="Featured worlds">
-        <a class="collage-main collage-card" href="world.html#petal-thorn" aria-label="Open Petal and Thorn">
-          <img src="assets/worlds/petal-editorial.jpg" alt="Petal and Thorn">
+        <a class="collage-main collage-card" href="world.html#strangers" aria-label="Open Strangers">
+          <img src="assets/worlds/strangers-cover.jpg" alt="Strangers">
           <span class="collage-overlay">
-            <span class="collage-title">Petal & Thorn</span>
+            <span class="collage-title">Strangers</span>
             <span class="collage-hint">Enter world →</span>
           </span>
         </a>
@@ -66,9 +66,20 @@
     <div class="stats-strip reveal">
       <div><span class="stat-num" id="statWords">—</span><span class="stat-label">Words</span></div>
       <div><span class="stat-num" id="statChapters">—</span><span class="stat-label">Chapters</span></div>
-      <div><span class="stat-num">12</span><span class="stat-label">Worlds</span></div>
+      <div><span class="stat-num" id="statWorlds">—</span><span class="stat-label">Worlds</span></div>
       <div><span class="stat-num">3</span><span class="stat-label">Coded Sites</span></div>
     </div>
+
+    <section class="reading-shelf" id="continueSection" hidden aria-labelledby="continueHeading">
+      <div class="section-head"><p class="eyebrow">Your bookmarks</p><h2 id="continueHeading">Continue reading.</h2></div>
+      <p class="shelf-note">Saved on this browser. Pick up where you left off.</p>
+      <div class="shelf-grid" id="continueGrid"></div>
+    </section>
+
+    <section class="reading-shelf" id="recentSection" hidden aria-labelledby="recentHeading">
+      <div class="section-head"><p class="eyebrow">From the archive</p><h2 id="recentHeading">Recently updated.</h2></div>
+      <div class="shelf-grid" id="recentGrid"></div>
+    </section>
 
     <!-- ARCHIVE -->
     <section class="catalog" id="worlds">
@@ -99,6 +110,13 @@
         </div>
       </div>
 
+      <div class="discovery-row">
+        <label for="tagFilter">Mood or trope</label>
+        <select id="tagFilter"><option value="all">All moods &amp; tropes</option></select>
+        <button class="filter-chip" id="resetFilters" type="button">Reset filters</button>
+        <span id="resultCount" role="status" aria-live="polite"></span>
+      </div>
+
       <div class="universe-block" id="delicateBlock">
         <h3 class="universe-label">Delicate Universe</h3>
         <div class="world-grid" id="delicateGrid"></div>
@@ -125,9 +143,9 @@
 
   </main>
 
-  <script src="worlds-data.js?v=3"></script>
+  <script src="worlds-data.js?v=5"></script>
   <script src="sparkles.js"></script>
-  <script src="app.js"></script>
+  <script src="app.js?v=3"></script>
   <script src="transitions.js"></script>
 </body>
 </html>
