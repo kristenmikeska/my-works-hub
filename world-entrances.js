@@ -249,7 +249,7 @@ window.WorldEntrances = (() => {
           </div>
           <div class="priv-phone priv-main" aria-hidden="true">
             <span class="priv-handle">lesoorin <i>✓</i></span>
-            <span class="priv-shot priv-shot-main"></span>
+            <span class="priv-shot priv-shot-main"><img src="assets/worlds/secret-post-main.jpg" alt=""></span>
             <span class="priv-likes">♥ <b class="priv-like-count">48,201</b> likes</span>
             <span class="priv-caption"><b>lesoorin</b> thank you fearnot for the support at the festival, cant wait to see you again soon! &lt;3</span>
             <span class="priv-comment"><b>*fan05*</b> as usual ate and left NO CRUMBS</span>
@@ -257,7 +257,7 @@ window.WorldEntrances = (() => {
           </div>
           <div class="priv-phone priv-private" aria-hidden="true">
             <span class="priv-handle">rinsoos <i>🔒</i></span>
-            <span class="priv-shot priv-shot-private"></span>
+            <span class="priv-shot priv-shot-private"><img src="assets/worlds/secret-post-private.jpg" alt=""></span>
             <span class="priv-caption"><b>rinsoos</b> dont hmu im tired &amp; going to sleep for the rest of my socalled life. goodbye.</span>
             <span class="priv-comment"><b>chaechae</b> get some sleep then!</span>
             <span class="priv-comment"><b>jenaissante</b> @rinsoos babe i love u stop</span>

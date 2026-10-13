@@ -424,7 +424,10 @@ body.world-revealed .world-hero-content > :nth-child(n+4) { animation-delay: .24
 .priv-shot { display: block; height: 128px; border-radius: 10px; }
 .priv-shot-main { background: radial-gradient(circle at 30% 30%, #ffffffaa 0 2px, transparent 3px), radial-gradient(circle at 70% 45%, #ffffff88 0 2px, transparent 3px), radial-gradient(ellipse at 50% 120%, #ff8fb8, transparent 60%), radial-gradient(ellipse at 20% 0%, #31d0c3, transparent 60%), linear-gradient(160deg,#1d2b6b,#6b2b6b); }
 .priv-shot-private { background: radial-gradient(ellipse at 50% 60%, #3a3150, transparent 70%), #17151d; position: relative; }
-.priv-shot-private::after { content: 'zzz'; position: absolute; right: 16px; top: 12px; font: italic 700 18px/1 Georgia,serif; color: #8d86a6; }
+.priv-shot { position: relative; overflow: hidden; }
+.priv-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.priv-shot-main img { object-position: 45% 30%; }
+.priv-shot-private img { object-position: 40% 25%; filter: saturate(.85) brightness(.9); }
 .priv-likes { font-weight: 700; }
 .priv-likes b { font-variant-numeric: tabular-nums; }
 .priv-caption b, .priv-comment b { margin-right: 4px; }
