@@ -33,3 +33,9 @@ body[data-reader-theme] .chapter-heading:focus { outline: none; }
 @media (max-width: 480px) { .reader-back { max-width: 115px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .reader-settings label { grid-template-columns: 1fr; gap: 6px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .chapter-drawer, .reader-resume { transition: none; } }
 body[data-reader-theme] .reader-chapter h2.chapter-heading { color: var(--accent); font: italic 400 clamp(1.15rem,2.5vw,1.5rem)/1.6 Georgia,serif; text-align: center; scroll-margin-top: 72px; }
+.reader-stamp-toast { position: fixed; left: 50%; bottom: 22px; z-index: 60; display: flex; align-items: center; gap: 12px; max-width: calc(100vw - 32px); padding: 11px 16px; border: 1px solid var(--accent); border-radius: 99px; background: var(--reader-surface, #131118); color: var(--ink); font: 13px/1.3 system-ui, sans-serif; text-decoration: none; box-shadow: 0 12px 30px #0007; transform: translate(-50%, 30px); opacity: 0; transition: transform .45s cubic-bezier(.2,1.4,.4,1), opacity .3s; }
+.reader-stamp-toast.visible { transform: translate(-50%, 0); opacity: 1; }
+.reader-stamp-mark { color: var(--accent); font-size: 16px; animation: reader-stamp-spin 1.2s ease-out; }
+.reader-stamp-go { color: var(--accent); font-weight: 600; white-space: nowrap; }
+@keyframes reader-stamp-spin { from { transform: rotate(-180deg) scale(.4); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .reader-stamp-toast { transition: none; } .reader-stamp-mark { animation: none; } }

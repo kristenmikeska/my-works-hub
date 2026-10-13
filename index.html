@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Katarina Grande</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 
@@ -132,6 +132,22 @@
       </p>
     </section>
 
+    <section class="passport" id="passport" aria-labelledby="passportHeading">
+      <div class="section-head"><p class="eyebrow">Stamps you've collected</p><h2 id="passportHeading">Your passport.</h2></div>
+      <p class="shelf-note">Read to collect stamps. Reach the last page of a story to keep its closing lines as a keepsake. Saved on this browser.</p>
+      <p class="passport-count" id="passportCount"></p>
+      <div class="passport-grid" id="passportGrid"></div>
+    </section>
+
+    <dialog class="keepsake" id="keepsake" aria-labelledby="keepsakeTitle">
+      <form method="dialog"><button class="keepsake-close" aria-label="Close keepsake">×</button></form>
+      <p class="keepsake-eyebrow">Keepsake</p>
+      <h3 id="keepsakeTitle"></h3>
+      <p class="keepsake-chapter"></p>
+      <div class="keepsake-lines"></div>
+      <p class="keepsake-date"></p>
+    </dialog>
+
     <!-- CODED SITES -->
     <section class="sites" id="sites">
       <div class="section-head">
@@ -145,7 +161,9 @@
 
   <script src="worlds-data.js?v=7"></script>
   <script src="sparkles.js"></script>
-  <script src="app.js?v=3"></script>
+  <script src="entrance-sounds.js?v=11"></script>
+  <script src="card-previews.js?v=2"></script>
+  <script src="app.js?v=5"></script>
   <script src="transitions.js"></script>
 </body>
 </html>

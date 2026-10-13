@@ -50,13 +50,13 @@ window.EntranceSounds = (() => {
       burst(t, { freq = 3000, q = 1, type = 'bandpass', level = 0.3, decay = 0.02, pan = 0, to } = {}) {
         const s = ctx.createBufferSource(); s.buffer = k.noise('white', 1); s.start(t, rand(0, 0.9), decay * 4 + 0.02);
         const g = k.gain(0); g.gain.setValueAtTime(level, t); g.gain.exponentialRampToValueAtTime(0.0001, t + decay);
-        k.chain(s, k.filter(type, freq, q), g, k.pan(pan), to || out);
+        k.chain(s, k.filter(type, freq, q), g, k.pan(pan), to || this.out);
       },
       tone(t, { freq = 440, to, type = 'sine', level = 0.2, attack = 0.005, decay = 0.4, pan = 0, glide, dest } = {}) {
         const o = ctx.createOscillator(); o.type = type; o.frequency.setValueAtTime(freq, t);
         if (to) o.frequency.exponentialRampToValueAtTime(to, t + (glide || decay));
         const g = k.gain(0); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(level, t + attack); g.gain.exponentialRampToValueAtTime(0.0001, t + attack + decay);
-        k.chain(o, g, k.pan(pan), dest || out); o.start(t); o.stop(t + attack + decay + 0.05);
+        k.chain(o, g, k.pan(pan), dest || this.out); o.start(t); o.stop(t + attack + decay + 0.05);
       },
       clear() { timers.forEach(id => { clearTimeout(id); clearInterval(id); }); timers.clear(); listeners.splice(0).forEach(([t, type, fn]) => t.removeEventListener(type, fn)); }
     };
@@ -637,5 +637,60 @@ window.EntranceSounds = (() => {
     return engine;
   }
 
-  return { create };
+  /* Homepage hover previews: a one-second signature of each world, on a shared context. */
+  let previewCtx = null, previewKit = null, previewRoom = null, previewMaster = null;
+  const PREVIEW_LEVELS = { strangers: 0.55, go: 0.5, delicate: 2.4, runners: 2, secret: 2, hoax: 1.6, havenbrook: 3, 'saint-of-dead-air': 4, 'soul-of-minji': 1.2, recherche: 1.2 };
+  const PREVIEWS = {
+    runners(k) { const t = k.ctx.currentTime + 0.02; const src = k.loop(k.noise('pink', 8)), g = k.gain(0); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.35, t + 0.4); g.gain.exponentialRampToValueAtTime(0.0001, t + 1.3); k.chain(src, k.filter('bandpass', 800, 0.6), g, k.out); src.stop(t + 1.4); for (let i = 0; i < 16; i++) k.burst(t + 0.2 + rand(0, 0.8), { freq: rand(3000, 7000), type: 'highpass', level: rand(0.03, 0.08), decay: rand(0.008, 0.025), pan: rand(-0.8, 0.8) }); },
+    strangers(k) {
+      const { ctx, out } = k, t = ctx.currentTime + 0.02, src = k.loop(k.noise('pink', 8)), lp = k.filter('lowpass', 500), g = k.gain(0);
+      g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.7, t + 0.7); g.gain.exponentialRampToValueAtTime(0.0001, t + 1.8); lp.frequency.linearRampToValueAtTime(1500, t + 0.7); lp.frequency.exponentialRampToValueAtTime(400, t + 1.8);
+      k.chain(src, lp, g, out); src.stop(t + 1.9);
+      const o = ctx.createOscillator(); o.type = 'sawtooth'; const gt = t + 0.35; o.frequency.setValueAtTime(1450, gt); o.frequency.linearRampToValueAtTime(2250, gt + 0.07); o.frequency.exponentialRampToValueAtTime(1050, gt + 0.4);
+      const gg = k.gain(0); gg.gain.setValueAtTime(0.0001, gt); gg.gain.exponentialRampToValueAtTime(0.06, gt + 0.04); gg.gain.exponentialRampToValueAtTime(0.0001, gt + 0.44);
+      k.chain(o, k.filter('bandpass', 1750, 3.5), gg, k.pan(0.5), out); o.start(gt); o.stop(gt + 0.5);
+    },
+    delicate(k) { const t = k.ctx.currentTime + 0.02; [0, 0.16].forEach((d, i) => { k.burst(t + d, { freq: 2600, q: 1.1, level: 0.32, decay: 0.022, pan: i ? 0.4 : -0.3 }); k.burst(t + d + 0.048, { freq: 3400, q: 1.4, level: 0.24, decay: 0.03, pan: i ? 0.4 : -0.3 }); }); k.tone(t + 0.3, { freq: 2600, to: 8200, glide: 0.75, level: 0.01, attack: 0.05, decay: 0.8 }); },
+    'petal-thorn'(k) { const t = k.ctx.currentTime + 0.02; for (let i = 0; i < 5; i++) k.burst(t + i * rand(0.07, 0.11), { freq: rand(2300, 4200), q: 0.9, level: rand(0.14, 0.24), decay: 0.014, pan: 0.3 }); [[659.25, 0.55], [987.77, 0.66], [1318.5, 0.77]].forEach(([f, d]) => k.tone(t + d, { freq: f, level: 0.09, decay: 0.9 })); },
+    peace(k) { const t = k.ctx.currentTime + 0.02; [0, 0.55].forEach(d => { k.tone(t + d, { freq: 115, to: 58, level: 0.3, decay: 0.09, dest: previewRoom }); k.burst(t + d, { freq: 900, q: 1, level: 0.14, decay: 0.03, to: previewRoom }); }); },
+    recherche(k) { const t = k.ctx.currentTime + 0.02; [0, 0.18].forEach((d, i) => [2637, 3520, 4186, 5274].forEach(f => k.tone(t + d, { freq: f * rand(0.98, 1.02), level: rand(0.015, 0.035), attack: 0.002, decay: rand(0.8, 1.3), pan: i ? 0.3 : -0.2, dest: previewRoom }))); },
+    secret(k) { const t = k.ctx.currentTime + 0.02; [0, 0.32].forEach(d => { k.tone(t + d, { freq: 1568, level: 0.06, decay: 0.22, pan: -0.3 }); k.tone(t + d + 0.06, { freq: 2349, level: 0.045, decay: 0.28, pan: -0.3 }); }); },
+    hoax(k) { const { ctx, out } = k; [0, 0.3, 0.52].forEach((d, i) => { const t = ctx.currentTime + 0.02 + d, f = [1046.5, 1318.5, 1568][i]; k.tone(t, { freq: f, level: 0.07, decay: 0.25, pan: 0.3 }); k.tone(t + 0.07, { freq: f * 1.5, level: 0.045, decay: 0.3, pan: 0.3 }); }); const t = ctx.currentTime + 0.02, bz = ctx.createOscillator(), bg = k.gain(0); bz.type = 'square'; bz.frequency.value = 160; bg.gain.setValueAtTime(0.0001, t); bg.gain.exponentialRampToValueAtTime(0.02, t + 0.02); bg.gain.setValueAtTime(0.02, t + 0.25); bg.gain.exponentialRampToValueAtTime(0.0001, t + 0.3); k.chain(bz, k.filter('lowpass', 400), bg, out); bz.start(t); bz.stop(t + 0.35); },
+    casual(k) { const { ctx } = k, t = ctx.currentTime + 0.02, o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(95, t); o.frequency.linearRampToValueAtTime(150, t + 0.5); const j = ctx.createOscillator(), jg = k.gain(28); j.frequency.value = 30; j.connect(jg); jg.connect(o.frequency); const g = k.gain(0); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.32, t + 0.1); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.6); k.chain(o, k.filter('bandpass', 620, 7), g, previewRoom); o.start(t); j.start(t); o.stop(t + 0.65); j.stop(t + 0.65); },
+    havenbrook(k) { const t0 = k.ctx.currentTime + 0.02; for (let i = 0; i < 18; i++) { const t = t0 + rand(0, 0.9); k.tone(t, { freq: rand(2200, 5200), level: 0.03, decay: rand(0.05, 0.12), pan: rand(-0.8, 0.8) }); k.burst(t, { freq: 4000, type: 'highpass', level: 0.05, decay: 0.01 }); } for (let i = 0; i < 4; i++) k.burst(t0 + 0.9 + i * 0.04, { freq: 3000, type: 'highpass', level: 0.06, decay: 0.015, pan: 0.6 }); },
+    'soul-of-minji'(k) { const t = k.ctx.currentTime + 0.02; [[523.25, 0], [659.25, 0.12], [783.99, 0.24], [1046.5, 0.36]].forEach(([f, d]) => { k.tone(t + d, { freq: f, level: 0.07, decay: 0.7 }); k.tone(t + d, { freq: f * 2, level: 0.015, decay: 0.4 }); }); },
+    'saint-of-dead-air'(k) { const t = k.ctx.currentTime + 0.02; for (let i = 0; i < 4; i++) k.burst(t + i * 0.24, { freq: i ? 1600 : 2600, q: 6, level: i ? 0.18 : 0.26, decay: 0.012 }); k.tone(t + 1.05, { freq: 7800, level: 0.006, attack: 0.2, decay: 0.8 }); },
+    go(k) { const { ctx, out } = k, t = ctx.currentTime + 0.02, rain = k.loop(k.noise('pink', 8)), rg = k.gain(0); rg.gain.setValueAtTime(0.0001, t); rg.gain.linearRampToValueAtTime(0.4, t + 0.3); rg.gain.exponentialRampToValueAtTime(0.0001, t + 1.8); k.chain(rain, k.filter('highpass', 700), rg, out); rain.stop(t + 1.9); const th = k.loop(k.noise('brown', 8)), tg = k.gain(0); tg.gain.setValueAtTime(0.0001, t + 0.4); tg.gain.exponentialRampToValueAtTime(0.8, t + 0.65); tg.gain.exponentialRampToValueAtTime(0.0001, t + 2); k.chain(th, k.filter('lowpass', 220), tg, out); th.stop(t + 2.1); }
+  };
+  const previewsAllowed = () => { let pref = null; try { pref = localStorage.getItem('kg-intro-sound'); } catch {} return pref !== 'off'; };
+  // Start the shared context on the visitor's first click or key press, so the first hover isn't lost to warm-up.
+  function warm() {
+    if (!AC || !previewsAllowed()) return;
+    if (!previewCtx) {
+      previewCtx = new AC();
+      const comp = previewCtx.createDynamicsCompressor(); comp.threshold.value = -16; comp.ratio.value = 4;
+      previewMaster = previewCtx.createGain(); previewMaster.gain.value = 0.8;
+      previewMaster.connect(comp); comp.connect(previewCtx.destination);
+      previewKit = kit(previewCtx, previewMaster);
+      previewRoom = previewKit.gain(1); previewRoom.connect(previewMaster);
+      const verb = previewKit.reverb(1.4, 2.6), wet = previewKit.gain(0.4); previewKit.chain(previewRoom, verb, wet, previewMaster);
+    }
+    if (previewCtx.state !== 'running') previewCtx.resume().catch(() => {});
+  }
+  function preview(worldId) {
+    const play = PREVIEWS[worldId];
+    if (!play || !AC || !previewsAllowed()) return;
+    if (navigator.userActivation && !navigator.userActivation.hasBeenActive) return;
+    warm();
+    const go = () => {
+      const level = previewCtx.createGain(); level.gain.value = PREVIEW_LEVELS[worldId] || 1; level.connect(previewMaster);
+      const k = Object.create(previewKit); k.out = level;
+      try { play(k); } catch (e) {}
+      setTimeout(() => level.disconnect(), 4000);
+    };
+    if (previewCtx.state === 'running') go(); else previewCtx.resume().then(go).catch(() => {});
+  }
+
+  return { create, preview, warm };
 })();
+

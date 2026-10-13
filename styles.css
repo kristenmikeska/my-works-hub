@@ -786,3 +786,89 @@ h1 {
 a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 .reading-shelf, .catalog { scroll-margin-top: 120px; }
+
+/* Card previews: a taste of each world's entrance, running only while the card is hovered or focused. */
+.cfx { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; opacity: 0; transition: opacity 260ms ease; }
+.cfx i { position: absolute; display: block; font-style: normal; animation-play-state: paused !important; }
+.cfx i * { animation-play-state: paused !important; }
+.world-card:hover .cfx, .world-card:focus-visible .cfx { opacity: 1; }
+.world-card:hover .cfx i, .world-card:focus-visible .cfx i, .world-card:hover .cfx i *, .world-card:focus-visible .cfx i * { animation-play-state: running !important; }
+
+.cfx-leaf { left: var(--x); top: -30px; width: 16px; height: 20px; background: var(--c); clip-path: polygon(50% 0, 64% 28%, 80% 22%, 76% 44%, 100% 50%, 70% 64%, 64% 82%, 50% 74%, 36% 82%, 30% 64%, 0 50%, 24% 44%, 20% 22%, 36% 28%); animation: cfx-fall 3.2s var(--d) linear infinite; }
+.cfx-fog { left: -40%; top: 42%; width: 180%; height: 30%; background: radial-gradient(ellipse at 40% 50%, #c4b4da44, transparent 60%); filter: blur(14px); animation: cfx-drift 5s ease-in-out infinite alternate; }
+.cfx-fog-b { top: 58%; animation-duration: 7s; animation-direction: alternate-reverse; }
+.cfx-tide { left: -10%; right: -10%; bottom: 0; height: 26%; background: linear-gradient(180deg, #1c1a2766, #0d0d14dd); border-radius: 50% 50% 0 0 / 18px 18px 0 0; animation: cfx-tide 4s ease-in-out infinite alternate; }
+.cfx-flash { left: var(--x); top: var(--y); width: 150px; height: 150px; margin: -75px 0 0 -75px; border-radius: 50%; background: radial-gradient(circle, #fff 0 3%, #fff2e4bb 10%, #ffd6e444 32%, transparent 62%); opacity: 0; animation: cfx-flash 1.8s var(--d) ease-out infinite; }
+.cfx-petal { left: var(--x); top: -20px; width: 10px; height: 14px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: #ff8fb8; animation: cfx-fall 3.6s var(--d) linear infinite; }
+.cfx-pixel { left: var(--x); top: var(--y); width: 8px; height: 8px; background: #7fe8ff; box-shadow: 10px 0 #ff4f8b; opacity: 0; animation: cfx-blink 1.4s var(--d) steps(1) infinite; }
+.cfx-cone { left: 50%; top: 0; width: 120%; height: 100%; margin-left: -60%; background: linear-gradient(180deg, #e8ecff33, #e8ecff08 70%, transparent); clip-path: polygon(45% 0, 55% 0, 100% 100%, 0 100%); transform-origin: 50% 0; animation: cfx-sway 3s ease-in-out infinite alternate; }
+.cfx-dust { left: var(--x); top: var(--y); width: 3px; height: 3px; border-radius: 50%; background: #f1efff; opacity: 0; animation: cfx-dust 3.5s var(--d) ease-in-out infinite; }
+.cfx-dust-warm { background: #ffe2c2; }
+.cfx-frame { inset: 10px; border: 1px solid #d9a94a99; outline: 1px solid #d9a94a55; outline-offset: -7px; animation: cfx-glint 2.4s ease-in-out infinite alternate; }
+.cfx-mote { left: var(--x); bottom: -6px; width: 3px; height: 3px; border-radius: 50%; background: #ffd77a; box-shadow: 0 0 6px #ffcf6a; animation: cfx-rise 3.6s var(--d) linear infinite; }
+.cfx-heart { left: var(--x); bottom: 12%; color: #ff6f9a; font-size: 15px; opacity: 0; animation: cfx-heart 2.6s var(--d) ease-out infinite; }
+.cfx-bubble { top: var(--y); left: var(--side); right: var(--side2); padding: 5px 10px; border-radius: 12px; background: #2a2436ee; color: #f1ecf8; font: 600 11px/1.2 ui-sans-serif, system-ui, sans-serif; opacity: 0; animation: cfx-pop 3s var(--d) ease-out infinite; }
+.cfx-bubble:nth-child(2) { background: #7c4dffee; }
+.cfx-beam { top: -10%; left: 4%; width: 26%; height: 130%; background: linear-gradient(180deg, #ffc58a44, transparent); transform: skewX(-18deg); filter: blur(8px); animation: cfx-glint 3s ease-in-out infinite alternate; }
+.cfx-beam-b { left: 36%; width: 18%; animation-delay: -1.5s; }
+.cfx-fence { inset: -10px; opacity: .22; background: repeating-linear-gradient(45deg, transparent 0 14px, #c8d4c0 14px 15px), repeating-linear-gradient(-45deg, transparent 0 14px, #c8d4c0 14px 15px); animation: cfx-drift 3s ease-in-out infinite alternate; }
+.cfx-neon { top: 48px; right: 14px; padding: 4px 8px; border: 1.5px solid #91d36e; border-radius: 6px; color: #c9ffa9; font: 700 10px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: .18em; text-shadow: 0 0 6px #91d36e; box-shadow: 0 0 10px #91d36e88; animation: cfx-neon 2.4s steps(1) infinite; }
+.cfx-wisp { left: var(--x); bottom: -10px; width: 9px; height: 9px; border-radius: 50%; background: radial-gradient(circle, #e9fffc, #31d0c3aa 45%, transparent 70%); animation: cfx-rise 3.4s var(--d) ease-in-out infinite; }
+.cfx-quest { top: 46%; left: 50%; padding: 5px 10px; border: 1px solid #31d0c3; background: #021412dd; color: #dffcf8; font: 600 10px/1 ui-monospace, Menlo, monospace; letter-spacing: .2em; text-transform: uppercase; transform: translateX(-50%); animation: cfx-type 2.4s ease-out infinite; }
+.cfx-onair { top: 48px; right: 14px; padding: 4px 8px; border: 1px solid #ff4d4d88; color: #ffb3b3; font: 700 10px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: .2em; text-transform: uppercase; animation: cfx-blink 1.6s steps(1) infinite; }
+.cfx-meter { left: 50%; top: 40%; width: 110px; height: 46px; margin-left: -55px; display: flex; align-items: flex-end; gap: 3px; }
+.cfx-meter b { flex: 1; height: var(--h); background: linear-gradient(0deg, #5dffa8 0 55%, #ffd36e 55% 80%, #ff5a4d 80%); transform-origin: bottom; animation: cfx-bounce .5s var(--d) ease-in-out infinite alternate; }
+.cfx-rain { inset: -40% -10% 0; opacity: .35; background-image: repeating-linear-gradient(100deg, transparent 0 18px, #cfe0ff77 18px 19px, transparent 19px 41px); background-size: 80px 110px; animation: cfx-rain .4s linear infinite; }
+.cfx-rain-b { opacity: .2; background-size: 140px 190px; animation-duration: .3s; }
+.cfx-lightning { inset: 0; background: #dfe9ff; opacity: 0; animation: cfx-lightning 3.2s .6s ease-out infinite; }
+
+@keyframes cfx-fall { from { transform: translate(0, 0) rotate(0); } to { transform: translate(30px, 460px) rotate(260deg); } }
+@keyframes cfx-drift { from { transform: translateX(-6%); } to { transform: translateX(6%); } }
+@keyframes cfx-tide { from { transform: translateY(0); } to { transform: translateY(45%); } }
+@keyframes cfx-flash { 0%, 100% { opacity: 0; transform: scale(.3); } 6% { opacity: .85; transform: scale(1); } 22% { opacity: 0; transform: scale(1.3); } }
+@keyframes cfx-blink { 0%, 100% { opacity: 0; } 20%, 55% { opacity: .9; } }
+@keyframes cfx-sway { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+@keyframes cfx-dust { 0% { opacity: 0; transform: translate(0, 0); } 40% { opacity: .6; } 100% { opacity: 0; transform: translate(10px, -40px); } }
+@keyframes cfx-glint { from { opacity: .45; } to { opacity: 1; } }
+@keyframes cfx-rise { 0% { opacity: 0; transform: translateY(0); } 20% { opacity: .9; } 100% { opacity: 0; transform: translate(14px, -360px); } }
+@keyframes cfx-heart { 0% { opacity: 0; transform: translateY(0) scale(.6); } 15% { opacity: 1; } 100% { opacity: 0; transform: translateY(-220px) scale(1.2); } }
+@keyframes cfx-pop { 0% { opacity: 0; transform: translateY(8px) scale(.85); } 10%, 70% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes cfx-neon { 0%, 30%, 36%, 100% { opacity: 1; } 31% { opacity: .2; } 33% { opacity: .9; } 34% { opacity: .1; } }
+@keyframes cfx-type { 0% { clip-path: inset(0 100% 0 0); } 45%, 100% { clip-path: inset(0 0 0 0); } }
+@keyframes cfx-bounce { from { transform: scaleY(.3); } to { transform: scaleY(1); } }
+@keyframes cfx-rain { from { background-position: 0 0; } to { background-position: -18px 110px; } }
+@keyframes cfx-lightning { 0%, 100% { opacity: 0; } 3% { opacity: .5; } 8% { opacity: .05; } 11% { opacity: .35; } 30% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .cfx { display: none; } }
+
+/* Reading passport: three stamps per world, collected in the reader. */
+.passport { padding: 36px clamp(18px, 4vw, 52px); scroll-margin-top: 120px; }
+.passport-count { margin: -6px 0 18px; color: var(--gold); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+.passport-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; }
+.passport-page { padding: 14px 16px 16px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(160deg, color-mix(in srgb, var(--a) 10%, var(--panel)), var(--panel)); }
+.passport-world { display: block; margin-bottom: 12px; font: 1.15rem Georgia, serif; color: var(--ink); }
+.passport-world:hover { color: var(--a); }
+.passport-slots { display: flex; gap: 10px; }
+.stamp { width: 66px; height: 66px; flex-shrink: 0; display: grid; place-items: center; align-content: center; gap: 1px; padding: 4px; text-align: center; font-family: ui-sans-serif, system-ui, sans-serif; line-height: 1.1; }
+.stamp small { font-size: 7px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.stamp b { font-size: 12px; font-weight: 900; letter-spacing: .04em; }
+.stamp-empty { border: 1.5px dashed var(--line); border-radius: 50%; color: var(--muted); font-size: 8px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .7; }
+.stamp-circle, .stamp-rect, .stamp-hex, .stamp-seal { color: var(--a); transform: rotate(var(--rot)); animation: stamp-in .5s cubic-bezier(.2, 1.6, .4, 1) both; }
+.stamp-circle { border: 2.5px double var(--a); border-radius: 50%; }
+.stamp-rect { border: 2.5px double var(--a); border-radius: 6px; height: 54px; align-self: center; }
+.stamp-hex { color: #0e0b10; background: var(--a); clip-path: polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0 50%); }
+.stamp-seal { color: #fff; background: radial-gradient(circle at 36% 32%, color-mix(in srgb, var(--a) 60%, #fff), var(--a) 55%, color-mix(in srgb, var(--a) 70%, #000)); border-radius: 50% 46% 52% 48%; box-shadow: inset 0 0 0 4px #00000022, 0 3px 8px #0006; }
+.stamp-keepsake { cursor: pointer; border: 0; font: inherit; }
+.stamp-keepsake.stamp-circle, .stamp-keepsake.stamp-rect { border: 2.5px double var(--a); background: transparent; }
+.stamp-keepsake { box-shadow: 0 0 0 3px color-mix(in srgb, var(--a) 25%, transparent), 0 0 18px color-mix(in srgb, var(--a) 40%, transparent); }
+.stamp-keepsake:hover { transform: rotate(0) scale(1.06); }
+.keepsake { width: min(560px, calc(100vw - 32px)); max-height: calc(100svh - 48px); overflow: auto; padding: 30px 32px 26px; border: 1px solid var(--a); border-radius: 18px; background: linear-gradient(160deg, color-mix(in srgb, var(--a) 12%, #1a1618), #141113); color: var(--ink); box-shadow: 0 0 60px color-mix(in srgb, var(--a) 25%, transparent); }
+.keepsake::backdrop { background: #000a; }
+.keepsake-close { float: right; border: 0; background: none; color: var(--muted); font-size: 22px; cursor: pointer; }
+.keepsake-eyebrow { margin: 0; color: var(--a); font-size: .7rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+.keepsake h3 { margin: 4px 0 2px; font: 1.8rem Georgia, serif; }
+.keepsake-chapter { margin: 0 0 18px; color: var(--muted); font: italic .9rem Georgia, serif; }
+.keepsake-lines { padding-left: 16px; border-left: 2px solid var(--a); }
+.keepsake-lines p { margin: 0 0 12px; font: 1rem/1.7 Georgia, serif; }
+.keepsake-date { margin: 16px 0 0; color: var(--muted); font-size: .75rem; }
+@keyframes stamp-in { from { opacity: 0; transform: rotate(var(--rot)) scale(1.6); } to { opacity: 1; transform: rotate(var(--rot)) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .stamp-circle, .stamp-rect, .stamp-hex, .stamp-seal { animation: none; } }

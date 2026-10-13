@@ -87,6 +87,7 @@ function makeCard(world) {
     </div>
   `;
   a.appendChild(content);
+  window.CardPreviews?.decorate(a, world);
   return a;
 }
 
@@ -264,10 +265,92 @@ function shelfCard(world) {
   copy.appendChild(title); card.append(img, copy); return card;
 }
 
-window.addEventListener("pageshow", () => { renderShelves(); renderGrids(); });
-window.addEventListener("storage", event => { if (!event.key || event.key.startsWith("kg-reading-")) { renderShelves(); renderGrids(); } });
+const STAMP_STYLE = {
+  strangers: { mark: "L·Y", shape: "seal" },
+  delicate: { mark: "PULSE", shape: "rect" },
+  "petal-thorn": { mark: "SF", shape: "hex" },
+  runners: { mark: "SU", shape: "circle" },
+  peace: { mark: "FILED", shape: "rect" },
+  recherche: { mark: "L·I", shape: "circle" },
+  secret: { mark: "rin", shape: "seal" },
+  hoax: { mark: "VOTE", shape: "hex" },
+  casual: { mark: "MERCER", shape: "rect" },
+  havenbrook: { mark: "EAST", shape: "rect" },
+  "soul-of-minji": { mark: "QUEST", shape: "hex" },
+  "saint-of-dead-air": { mark: "ON AIR", shape: "circle" },
+  go: { mark: "DMHS", shape: "circle" }
+};
+
+function readStamps() {
+  try { return JSON.parse(localStorage.getItem("kg-stamps")) || {}; } catch (e) { return {}; }
+}
+
+function renderPassport() {
+  const grid = document.querySelector("#passportGrid");
+  if (!grid) return;
+  const stamps = readStamps();
+  const dateFmt = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
+  let earnedCount = 0;
+  grid.replaceChildren(...worlds.map((world, w) => {
+    const mine = stamps[world.id] || {};
+    const prog = getProgress(world.id);
+    const earned = {
+      started: mine.started || (prog ? true : null),
+      halfway: mine.halfway || (prog && prog.percent >= 50 ? true : null),
+      finished: mine.finished || (prog && prog.percent >= 100 ? true : null)
+    };
+    const style = STAMP_STYLE[world.id] || { mark: world.title.slice(0, 4).toUpperCase(), shape: "circle" };
+    const page = document.createElement("article");
+    page.className = "passport-page";
+    page.style.setProperty("--a", world.accent);
+    const head = document.createElement("a");
+    head.className = "passport-world"; head.href = `world.html#${world.id}`; head.textContent = world.title;
+    const slots = document.createElement("div");
+    slots.className = "passport-slots";
+    [["started", "Started"], ["halfway", "Halfway"], ["finished", world.status === "Completed" ? "Finished" : "Caught up"]].forEach(([key, label], i) => {
+      const when = earned[key];
+      const isKeepsake = key === "finished" && when && mine.keepsake && mine.keepsake.lines && mine.keepsake.lines.length;
+      const el = document.createElement(isKeepsake ? "button" : "span");
+      if (isKeepsake) { el.type = "button"; el.addEventListener("click", () => openKeepsake(world, mine.keepsake)); el.title = "Open keepsake"; }
+      if (when) {
+        earnedCount++;
+        el.className = `stamp stamp-${style.shape}${isKeepsake ? " stamp-keepsake" : ""}`;
+        el.style.setProperty("--rot", `${[-9, 6, -4, 8, -7, 3][(w + i) % 6]}deg`);
+        const top = document.createElement("small"); top.textContent = label;
+        const mark = document.createElement("b"); mark.textContent = style.mark;
+        const date = document.createElement("small"); date.textContent = typeof when === "number" ? dateFmt.format(new Date(when)) : "✦";
+        el.append(top, mark, date);
+        el.setAttribute("aria-label", `${world.title}: ${label} stamp collected${isKeepsake ? ", open keepsake" : ""}`);
+      } else {
+        el.className = "stamp stamp-empty";
+        el.textContent = label;
+        el.setAttribute("aria-label", `${world.title}: ${label} stamp not collected yet`);
+      }
+      slots.appendChild(el);
+    });
+    page.append(head, slots);
+    return page;
+  }));
+  const count = document.querySelector("#passportCount");
+  if (count) count.textContent = `${earnedCount} of ${worlds.length * 3} stamps collected`;
+}
+
+function openKeepsake(world, keepsake) {
+  const dialog = document.querySelector("#keepsake");
+  if (!dialog) return;
+  dialog.style.setProperty("--a", world.accent);
+  dialog.querySelector("#keepsakeTitle").textContent = world.title;
+  dialog.querySelector(".keepsake-chapter").textContent = keepsake.chapter || "";
+  dialog.querySelector(".keepsake-lines").replaceChildren(...keepsake.lines.map(line => { const p = document.createElement("p"); p.textContent = line; return p; }));
+  dialog.querySelector(".keepsake-date").textContent = keepsake.at ? `Kept ${new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric" }).format(new Date(keepsake.at))}` : "";
+  dialog.showModal();
+}
+
+window.addEventListener("pageshow", () => { renderShelves(); renderGrids(); renderPassport(); });
+window.addEventListener("storage", event => { if (!event.key || event.key.startsWith("kg-reading-") || event.key === "kg-stamps") { renderShelves(); renderGrids(); renderPassport(); } });
 updateStats();
 renderShelves();
+renderPassport();
 renderGrids();
 initFilters();
 renderSites();

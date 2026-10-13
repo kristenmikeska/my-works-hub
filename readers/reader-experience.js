@@ -135,7 +135,50 @@ window.initReaderExperience = function ({ world, chapters, topbar, chLabel, chLi
     if (!engaged || !chapters.length) return;
     const fraction = updateProgress();
     const atEnd = current === chapters.length - 1 && position() >= .995;
-    writeStored(PROGRESS_KEY, {version:2, idx:current, anchor:chapters[current].id, title:chapters[current].textContent.trim(), total:chapters.length, offset:position(), percent:atEnd ? 100 : Math.min(99,Math.floor(fraction * 100)), updated:Date.now()});
+    const percent = atEnd ? 100 : Math.min(99,Math.floor(fraction * 100));
+    writeStored(PROGRESS_KEY, {version:2, idx:current, anchor:chapters[current].id, title:chapters[current].textContent.trim(), total:chapters.length, offset:position(), percent, updated:Date.now()});
+    recordStamps(percent, atEnd);
+  }
+
+  // Passport stamps (shown on the homepage). The last-page stamp keeps the closing lines the reader finished on.
+  const STAMPS_KEY = 'kg-stamps';
+  const STAMP_NAMES = { started: 'Started', halfway: 'Halfway', finished: 'The last page' };
+  function closingLines() {
+    const last = sections.at(-1) || document.body;
+    const paras = [...last.querySelectorAll('p')]
+      .filter(p => !p.closest('[class*="social"], .reader-pager, .chapter-heading') && p.textContent.trim().length > 1)
+      .map(p => p.textContent.replace(/\s+/g, ' ').trim());
+    const lines = [];
+    let length = 0;
+    for (let i = paras.length - 1; i >= 0 && lines.length < 4; i--) {
+      if (length + paras[i].length > 700 && lines.length) break;
+      lines.unshift(paras[i]); length += paras[i].length;
+    }
+    return { chapter: chapters.at(-1)?.textContent.trim() || '', lines };
+  }
+  function recordStamps(percent, atEnd) {
+    const all = readStored(STAMPS_KEY) || {};
+    const mine = all[world] || {};
+    const now = Date.now(), earned = [];
+    if (!mine.started) { mine.started = now; earned.push('started'); }
+    if (!mine.halfway && percent >= 50) { mine.halfway = now; earned.push('halfway'); }
+    if (!mine.finished && atEnd) { mine.finished = now; earned.push('finished'); }
+    if (atEnd) mine.keepsake = { ...closingLines(), at: now };
+    if (!earned.length && !atEnd) return;
+    all[world] = mine; writeStored(STAMPS_KEY, all);
+    earned.forEach((name, i) => setTimeout(() => stampToast(name), i * 1600));
+  }
+  function stampToast(name) {
+    const toast = document.createElement('a');
+    toast.className = 'reader-stamp-toast';
+    toast.href = new URL('../index.html#passport', location.href).href;
+    toast.setAttribute('role', 'status');
+    const mark = document.createElement('span'); mark.className = 'reader-stamp-mark'; mark.textContent = '✦';
+    const text = document.createElement('span'); text.textContent = `Stamp collected · ${STAMP_NAMES[name]} · ${worldLabel}`;
+    const go = document.createElement('span'); go.className = 'reader-stamp-go'; go.textContent = 'Passport →';
+    toast.append(mark, text, go); document.body.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add('visible'));
+    setTimeout(() => { toast.classList.remove('visible'); setTimeout(() => toast.remove(), 500); }, 5200);
   }
   function showChapter(index, {offset=0, focus=false, remember=false} = {}) {
     if (!chapters.length) return;

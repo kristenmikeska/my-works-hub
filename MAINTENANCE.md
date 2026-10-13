@@ -26,3 +26,9 @@ Keep established chapter anchors stable. Peace's previously unnumbered opening u
 ## Verification
 
 Run `node --test tests/hub.test.cjs` and `git diff --check`. Preview through a local HTTP server, then check chapter navigation, resume from the homepage, appearance settings, and mobile layout when changing shared reader code.
+
+## Homepage previews and the passport
+
+`card-previews.js` adds a small animated layer (`.cfx-*` in `styles.css`) to each archive card, running only on hover or keyboard focus, and plays a one-second signature from `EntranceSounds.preview()`. Browsers only allow the sound after the visitor's first click or key press on the page; the shared audio context warms up at that moment. Intro sound turned off (`kg-intro-sound = off`) also silences previews. Add a `FX` entry and a `PREVIEWS` entry for new worlds.
+
+The passport (homepage, below the archive) shows three stamps per world: Started, Halfway, and Finished (Completed stories) or Caught up. The reader records them in `kg-stamps` and, on reaching the last page, keeps that page's closing lines as the world's keepsake; the toast in the reader links to the passport. Stamp marks and shapes are in `STAMP_STYLE` in `app.js`. Stamps are browser-local like bookmarks, and readers who had progress before stamps existed get Started/Halfway from their saved position.
