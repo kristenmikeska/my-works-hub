@@ -195,7 +195,7 @@ function fmtTime(s) {
   return `${m}:${sec < 10 ? "0" : ""}${sec}`;
 }
 
-function initMusicPlayer(world) {
+function initMusicPlayer(world, { autoplay = true } = {}) {
   // Clean up any existing player + audio when navigating between worlds
   const existing = document.querySelector(".music-player");
   if (existing) existing.remove();
@@ -297,8 +297,8 @@ function initMusicPlayer(world) {
     const token = ++rampToken, from = audio.volume, start = performance.now();
     const step = now => {
       if (token !== rampToken) return;
-      const k = Math.min(1, (now - start) / (seconds * 1000));
-      audio.volume = from + (to - from) * k;
+      const k = Math.max(0, Math.min(1, (now - start) / (seconds * 1000)));
+      audio.volume = Math.max(0, Math.min(1, from + (to - from) * k));
       if (k < 1) requestAnimationFrame(step); else if (done) done();
     };
     requestAnimationFrame(step);
@@ -451,9 +451,10 @@ function initMusicPlayer(world) {
     setTimeout(() => player.classList.add("visible"), 600);
   });
 
-  // Attempt autoplay; if blocked, start on first interaction.
+  // Attempt autoplay; if blocked, start on first interaction. Worlds with an entrance
+  // skip this: the entrance fades the song in when the reader leaves it.
   // (The 'play'/'pause' events keep the icon in sync, so no manual setPlaying here.)
-  setTimeout(() => {
+  if (autoplay) setTimeout(() => {
     audio.play().catch(() => {
       const startOnInteraction = () => {
         audio.play().catch(() => {});
@@ -494,7 +495,7 @@ function init() {
     return;
   }
   renderWorld(world);
-  initMusicPlayer(world);
+  initMusicPlayer(world, { autoplay: !window.WorldEntrances?.willPlay(world) });
   disposeWorldEntrance = window.WorldEntrances?.mount(world);
 }
 

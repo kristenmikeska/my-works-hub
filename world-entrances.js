@@ -6,6 +6,7 @@ window.WorldEntrances = (() => {
       prefix: 'campus',
       replay: 'Fall semester · revisit campus',
       enter: 'Enter Runners',
+      loader: { mark: 'RUNNERS', lines: ['fall semester is starting.', 'try not to end up on SUgram.'] },
       markup: skip => `
         <div class="campus-scene">
           <img class="campus-backdrop" src="assets/worlds/runners-campus.jpg" alt="" fetchpriority="high">
@@ -39,6 +40,7 @@ window.WorldEntrances = (() => {
       prefix: 'tide',
       replay: 'Low tide · return to Incheon',
       enter: 'Enter Strangers',
+      loader: { mark: 'strangers', lines: ['the tide is going out.', 'mind what it leaves behind.'] },
       markup: skip => `
         <div class="tide-scene">
           <img class="tide-backdrop" src="assets/worlds/strangers-harbor.jpg" alt="" fetchpriority="high">
@@ -75,6 +77,7 @@ window.WorldEntrances = (() => {
       prefix: 'flash',
       replay: 'Seoul · step back into the flashbulbs',
       enter: 'Enter Delicate',
+      loader: { mark: 'delicate', lines: ['entering a new world.', 'things may look a little different here.'] },
       markup: skip => `
         <div class="flash-scene">
           <img class="flash-backdrop" src="assets/worlds/delicate-city.jpg" alt="" fetchpriority="high">
@@ -108,6 +111,7 @@ window.WorldEntrances = (() => {
       prefix: 'bloom',
       replay: 'Seoul ⇄ San Francisco · log back in',
       enter: 'Enter Petal & Thorn',
+      loader: { mark: 'Petal &amp; Thorn', lines: ['logging in.', 'smile, though.'] },
       markup: skip => `
         <div class="bloom-scene">
           <img class="bloom-backdrop" src="assets/worlds/petal-archive-new.jpg" alt="" fetchpriority="high">
@@ -175,7 +179,7 @@ window.WorldEntrances = (() => {
     hero.appendChild(replay);
     let disposeEntrance = null;
 
-    function play() {
+    function play(isReplay = false) {
       if (disposeEntrance) disposeEntrance();
       const dialog = document.createElement('dialog');
       dialog.className = `world-entrance ${p}-entrance`;
@@ -214,20 +218,18 @@ window.WorldEntrances = (() => {
         if (readPref() === 'on') engine.start();
       }
       syncSound();
+      // The soundtrack waits for the reader to leave the entrance, then fades in under the loader.
       const handOff = () => {
-        if (engine && engine.running) {
-          if (music) { engine.stop(3.5); music.fadeIn(4); } else engine.stop(4);
-        } else {
-          if (engine) engine.stop(0);
-          if (musicWasPlaying) music.fadeIn(1.2);
-        }
+        const ambient = !!engine && engine.running;
+        if (engine) engine.stop(ambient ? (music ? 3.5 : 4) : 0);
+        if (music && (!isReplay || musicWasPlaying)) music.fadeIn(ambient ? 4 : 2.5);
       };
-      let exitTimer;
+      let exitTimer, loaderTimer;
       let leaving = false;
       const overflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
       const release = (restoreFocus = false) => {
-        clearTimeout(exitTimer);
+        clearTimeout(exitTimer); clearTimeout(loaderTimer);
         if (stopScene) stopScene();
         dialog.remove();
         document.body.style.overflow = overflow;
@@ -239,8 +241,26 @@ window.WorldEntrances = (() => {
         leaving = true;
         handOff();
         if (reducedMotion.matches) { release(true); return; }
-        dialog.classList.add(`${p}-leaving`);
-        exitTimer = setTimeout(() => release(true), 420);
+        const loader = document.createElement('div');
+        loader.className = `entrance-loader ${p}-loader`;
+        loader.setAttribute('role', 'status');
+        loader.setAttribute('aria-label', `Opening ${world.title}`);
+        loader.innerHTML = `<div class="entrance-loader-inner"><div class="entrance-loader-mark">${scene.loader.mark}</div><div class="entrance-loader-lines">${scene.loader.lines.map(line => `<span class="entrance-loader-line">${line}</span>`).join('')}</div><span class="entrance-loader-bar"><i></i></span></div>`;
+        dialog.firstElementChild.appendChild(loader);
+        let finishing = false;
+        const finish = () => {
+          if (finishing) return;
+          finishing = true;
+          clearTimeout(loaderTimer);
+          dialog.classList.add('entrance-out');
+          exitTimer = setTimeout(() => {
+            release(true);
+            document.body.classList.add('world-revealed');
+            setTimeout(() => document.body.classList.remove('world-revealed'), 1800);
+          }, 850);
+        };
+        loader.addEventListener('click', finish);
+        loaderTimer = setTimeout(finish, 3600);
       };
       disposeEntrance = () => { if (engine) engine.stop(0); release(false); };
       dialog.querySelector('[data-entrance="skip"]').addEventListener('click',leave);
@@ -249,18 +269,16 @@ window.WorldEntrances = (() => {
     }
     const onMotionChange = () => { if (reducedMotion.matches && disposeEntrance) disposeEntrance(); };
     const onPageHide = () => { if (disposeEntrance) disposeEntrance(); };
-    const onVisibility = () => { if (document.hidden) onPageHide(); };
-    replay.addEventListener('click',play);
+    replay.addEventListener('click',() => play(true));
     reducedMotion.addEventListener('change',onMotionChange);
     window.addEventListener('pagehide',onPageHide);
-    document.addEventListener('visibilitychange',onVisibility);
     if (!reducedMotion.matches) play();
     return () => {
       onPageHide(); replay.remove();
       reducedMotion.removeEventListener('change',onMotionChange);
       window.removeEventListener('pagehide',onPageHide);
-      document.removeEventListener('visibilitychange',onVisibility);
     };
   }
-  return {mount};
+  const willPlay = world => !!SCENES[world.id] && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  return {mount, willPlay};
 })();
