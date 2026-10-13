@@ -154,6 +154,11 @@ const worlds = [
     image: "assets/worlds/strangers-card.jpg",
     worldImage: "assets/worlds/strangers-cover.jpg",
     summary: "At her father's seafood restaurant on the Incheon waterfront, Solar Lee knows how to smile through a dinner, keep a secret, and stitch a wound nobody can take to a hospital. She's spent her life learning which questions not to ask. Then a truce between two families comes with a wedding date, and Solar finds herself promised to Yang Jungwon, the composed young heir of the very people she's been taught to fear. Haechan is assigned to stay beside her until the ceremony, sleeping across the hall, following her everywhere, carrying a history with the Yangs that nobody will explain. Between the man she's supposed to marry and the one entrusted with keeping her alive, the distance she's always known how to keep begins to disappear.",
+    songs: [
+      { title: "Strangers", artist: "Ethel Cain", src: "assets/audio/EthelCain-Strangers.mp3" },
+      { title: "Crush", artist: "Ethel Cain", src: "assets/audio/EthelCain-Crush.mp3" },
+      { title: "Sea, Swallow Me", artist: "Cocteau Twins & Harold Budd", src: "assets/audio/CocteauTwins-SeaSwallowMe.mp3" },
+    ],
     readers: [["Strangers", "readers/strangers.html"]]
   },
   {
