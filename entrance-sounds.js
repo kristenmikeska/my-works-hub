@@ -662,10 +662,11 @@ window.EntranceSounds = (() => {
     'saint-of-dead-air'(k) { const t = k.ctx.currentTime + 0.02; for (let i = 0; i < 4; i++) k.burst(t + i * 0.24, { freq: i ? 1600 : 2600, q: 6, level: i ? 0.18 : 0.26, decay: 0.012 }); k.tone(t + 1.05, { freq: 7800, level: 0.006, attack: 0.2, decay: 0.8 }); },
     go(k) { const { ctx, out } = k, t = ctx.currentTime + 0.02, rain = k.loop(k.noise('pink', 8)), rg = k.gain(0); rg.gain.setValueAtTime(0.0001, t); rg.gain.linearRampToValueAtTime(0.4, t + 0.3); rg.gain.exponentialRampToValueAtTime(0.0001, t + 1.8); k.chain(rain, k.filter('highpass', 700), rg, out); rain.stop(t + 1.9); const th = k.loop(k.noise('brown', 8)), tg = k.gain(0); tg.gain.setValueAtTime(0.0001, t + 0.4); tg.gain.exponentialRampToValueAtTime(0.8, t + 0.65); tg.gain.exponentialRampToValueAtTime(0.0001, t + 2); k.chain(th, k.filter('lowpass', 220), tg, out); th.stop(t + 2.1); }
   };
-  const previewsAllowed = () => { let pref = null; try { pref = localStorage.getItem('kg-intro-sound'); } catch {} return pref !== 'off'; };
+  // Homepage sound follows the site-wide setting (the "loud" switch and the intros' Sound on button share kg-intro-sound).
+  const previewsAllowed = () => { let pref = null; try { pref = localStorage.getItem('kg-intro-sound'); } catch {} return pref === 'on'; };
   // Start the shared context on the visitor's first click or key press, so the first hover isn't lost to warm-up.
-  function warm() {
-    if (!AC || !previewsAllowed()) return;
+  function warm(force = false) {
+    if (!AC || (!force && !previewsAllowed())) return;
     if (!previewCtx) {
       previewCtx = new AC();
       const comp = previewCtx.createDynamicsCompressor(); comp.threshold.value = -16; comp.ratio.value = 4;
@@ -691,6 +692,48 @@ window.EntranceSounds = (() => {
     if (previewCtx.state === 'running') go(); else previewCtx.resume().then(go).catch(() => {});
   }
 
-  return { create, preview, warm };
+  /* Homepage moments: the loud switch, counters, passport stamps, secret words. */
+  const HOME = {
+    'loud-on'(k) {
+      const { ctx, out } = k, t = ctx.currentTime + 0.02, src = k.loop(k.noise('pink', 8)), g = k.gain(0), bp = k.filter('bandpass', 700, 0.7);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.5, t + 0.55); g.gain.exponentialRampToValueAtTime(0.0001, t + 1.6);
+      bp.frequency.setValueAtTime(400, t); bp.frequency.exponentialRampToValueAtTime(1600, t + 0.55); bp.frequency.exponentialRampToValueAtTime(700, t + 1.6);
+      const trem = ctx.createOscillator(), tg = k.gain(0.18); trem.frequency.value = 9; trem.connect(tg); tg.connect(g.gain); trem.start(t); trem.stop(t + 1.7);
+      k.chain(src, bp, g, out); src.stop(t + 1.7);
+      k.tone(t, { freq: 70, to: 45, level: 0.25, attack: 0.3, decay: 1 });
+    },
+    'loud-off'(k) {
+      const t = k.ctx.currentTime + 0.02;
+      k.burst(t, { freq: 1800, q: 2, level: 0.12, decay: 0.012 });
+      k.tone(t + 0.02, { freq: 7800, level: 0.004, attack: 0.1, decay: 1.2 });
+    },
+    tick(k) { k.burst(k.ctx.currentTime + 0.01, { freq: rand(2800, 3600), q: 3, level: 0.07, decay: 0.012, pan: rand(-0.3, 0.3) }); },
+    thunk(k) {
+      const t = k.ctx.currentTime + 0.01;
+      k.tone(t, { freq: 130, to: 55, level: 0.35, decay: 0.14 });
+      k.burst(t, { freq: 1100, type: 'lowpass', level: 0.25, decay: 0.05 });
+      k.burst(t + 0.015, { freq: 3500, q: 2, level: 0.05, decay: 0.02 });
+    },
+    solar(k) {
+      const t = k.ctx.currentTime + 0.02;
+      [1046.5, 1318.5, 1568, 2093, 2637].forEach((f, i) => { k.tone(t + i * 0.07, { freq: f, level: 0.05, decay: 1.2, pan: (i - 2) * 0.3 }); k.tone(t + i * 0.07 + 0.02, { freq: f * 2.01, level: 0.012, decay: 0.6, pan: (i - 2) * 0.3 }); });
+    },
+    deadair(k) {
+      const t = k.ctx.currentTime + 0.01;
+      k.burst(t, { freq: 2600, q: 6, level: 0.2, decay: 0.012 });
+      k.tone(t + 0.05, { freq: 7800, level: 0.004, attack: 0.3, decay: 3 });
+    }
+  };
+  function home(name, { force = false } = {}) {
+    const play = HOME[name];
+    if (!play || !AC || (!force && !previewsAllowed())) return;
+    if (navigator.userActivation && !navigator.userActivation.hasBeenActive) return;
+    warm(true);
+    const go = () => { const k = Object.create(previewKit); k.out = previewMaster; try { play(k); } catch (e) {} };
+    if (previewCtx.state === 'running') go(); else previewCtx.resume().then(go).catch(() => {});
+  }
+  const soundOn = previewsAllowed;
+
+  return { create, preview, warm, home, soundOn };
 })();
 

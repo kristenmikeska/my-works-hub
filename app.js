@@ -281,6 +281,10 @@ const STAMP_STYLE = {
   go: { mark: "DMHS", shape: "circle" }
 };
 
+function readSeenStamps() {
+  try { return new Set(JSON.parse(localStorage.getItem("kg-stamps-seen")) || []); } catch (e) { return new Set(); }
+}
+
 function readStamps() {
   try { return JSON.parse(localStorage.getItem("kg-stamps")) || {}; } catch (e) { return {}; }
 }
@@ -289,6 +293,7 @@ function renderPassport() {
   const grid = document.querySelector("#passportGrid");
   if (!grid) return;
   const stamps = readStamps();
+  const seen = readSeenStamps();
   const dateFmt = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
   let earnedCount = 0;
   grid.replaceChildren(...worlds.map((world, w) => {
@@ -314,7 +319,8 @@ function renderPassport() {
       if (isKeepsake) { el.type = "button"; el.addEventListener("click", () => openKeepsake(world, mine.keepsake)); el.title = "Open keepsake"; }
       if (when) {
         earnedCount++;
-        el.className = `stamp stamp-${style.shape}${isKeepsake ? " stamp-keepsake" : ""}`;
+        el.className = `stamp stamp-${style.shape}${isKeepsake ? " stamp-keepsake" : ""}${seen.has(`${world.id}:${key}`) ? "" : " stamp-pending"}`;
+        el.dataset.stamp = `${world.id}:${key}`;
         el.style.setProperty("--rot", `${[-9, 6, -4, 8, -7, 3][(w + i) % 6]}deg`);
         const top = document.createElement("small"); top.textContent = label;
         const mark = document.createElement("b"); mark.textContent = style.mark;

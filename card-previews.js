@@ -28,7 +28,7 @@ window.CardPreviews = (() => {
     fx.className = `cfx cfx-${world.id}`;
     fx.setAttribute('aria-hidden', 'true');
     fx.innerHTML = make();
-    card.insertBefore(fx, card.querySelector('.world-card-content'));
+    card.insertBefore(fx, card.querySelector('.world-card-content, .collage-overlay'));
     let hoverTimer;
     const start = () => {
       if (!canHover.matches) return;
@@ -48,5 +48,7 @@ window.CardPreviews = (() => {
 
   ['pointerdown', 'keydown'].forEach(type => window.addEventListener(type, () => window.EntranceSounds?.warm(), { once: true, capture: true }));
 
-  return { decorate };
+  const markup = id => (FX[id] ? FX[id]() : '');
+
+  return { decorate, markup };
 })();

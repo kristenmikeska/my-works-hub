@@ -32,3 +32,14 @@ Run `node --test tests/hub.test.cjs` and `git diff --check`. Preview through a l
 `card-previews.js` adds a small animated layer (`.cfx-*` in `styles.css`) to each archive card, running only on hover or keyboard focus, and plays a one-second signature from `EntranceSounds.preview()`. Browsers only allow the sound after the visitor's first click or key press on the page; the shared audio context warms up at that moment. Intro sound turned off (`kg-intro-sound = off`) also silences previews. Add a `FX` entry and a `PREVIEWS` entry for new worlds.
 
 The passport (homepage, below the archive) shows three stamps per world: Started, Halfway, and Finished (Completed stories) or Caught up. The reader records them in `kg-stamps` and, on reaching the last page, keeps that page's closing lines as the world's keepsake; the toast in the reader links to the passport. Stamp marks and shapes are in `STAMP_STYLE` in `app.js`. Stamps are browser-local like bookmarks, and readers who had progress before stamps existed get Started/Halfway from their saved position.
+
+## Homepage effects (`home-effects.js`)
+
+- **"loud" in the headline** is the site-wide sound switch (`kg-intro-sound`, shared with the entrances' Sound on button). Homepage sound (card previews, stat ticks, stamp thunks, secret words) plays only while it is on. First-time visitors get a one-time "psst" hint.
+- **Hero collage** tilts toward the cursor and reuses the card previews.
+- **Stats** count up once when they scroll into view (timer-driven, not requestAnimationFrame).
+- **Passport stamps** earned since the visitor's last homepage visit press in with an ink ring and a thunk; seen stamps are remembered in `kg-stamps-seen`.
+- **Secret words**: typing a world's name (or soomi, castle, bestay, mercer, dream, minji, dmhs, rain) sweeps that world's preview effect across the page; "solar" bursts every world's colour; "dead air" greys the page for three seconds. The list is `WORDS` in `home-effects.js`.
+- **Time of day** sets `data-daypart` on `<html>` (dawn, day, golden, dusk, night) for the hero glow, with stars at dusk and night; it re-checks when the visitor returns to the tab.
+
+Avoid long `setInterval`s on the homepage: headless screenshot testing fast-forwards to the next timer.
