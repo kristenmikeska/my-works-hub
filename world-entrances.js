@@ -340,6 +340,208 @@ window.WorldEntrances = (() => {
         timer = setTimeout(post, 1200);
         return () => clearTimeout(timer);
       }
+    },
+    casual: {
+      prefix: 'lease',
+      replay: 'Mercer · walk back in',
+      enter: 'Enter Casual',
+      loader: { mark: 'casual', lines: ["the walls don't know her yet.", 'she signed the lease anyway.'] },
+      markup: skip => `
+        <div class="lease-scene">
+          <img class="lease-backdrop" src="assets/worlds/casual-new.jpg" alt="" fetchpriority="high">
+          <div class="lease-tint" aria-hidden="true"></div>
+          <div class="lease-window" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <div class="lease-dust" aria-hidden="true">${Array.from({length:12},(_,i) => `<span style="--lx:${[30,38,46,54,62,70,34,58,42,66,50,74][i]}%;--ly:${[40,60,48,70,55,64,76,36,82,46,58,72][i]}%;--ld:${(i * -1.1).toFixed(1)}s"></span>`).join('')}</div>
+          <div class="lease-topline"><span>Mercer · the new apartment</span><span>Early fall</span></div>
+          <div class="lease-title-block">
+            <p class="lease-eyebrow">1 · new weather</p>
+            <h2 id="lease-entrance-title">casual</h2>
+            <p id="lease-entrance-description">She walked back into a house, a history, and a set of people she never fully left.</p>
+            <span class="lease-handwriting" aria-hidden="true">okay.</span>
+          </div>
+          <figure class="lease-photo" aria-hidden="true">
+            <img src="assets/worlds/casual-solar.jpg" alt="">
+            <figcaption>new weather</figcaption>
+          </figure>
+          <div class="lease-doc" aria-hidden="true">
+            <span class="lease-doc-head">Residential lease</span>
+            <span class="lease-doc-title">Mercer</span>
+            <span class="lease-doc-row"><b>Tenant</b> Solar Lee</span>
+            <span class="lease-doc-row"><b>Rooms</b> three</span>
+            <span class="lease-doc-lines"><i></i><i></i><i></i></span>
+            <span class="lease-sign">Solar Lee</span>
+            <span class="lease-keys"><i></i><i></i></span>
+          </div>
+          <div class="lease-bottomline"><span>There's the story she tells people, and the one with Mark Lee's name in it.</span>${skip}</div>
+        </div>`
+    },
+
+    havenbrook: {
+      prefix: 'east',
+      replay: 'The east side · cross the line again',
+      enter: 'Enter Havenbrook',
+      loader: { mark: 'havenbrook', lines: ['3:47 p.m., the east entrance.', 'someone has already noticed.'] },
+      markup: skip => `
+        <div class="east-scene">
+          <img class="east-backdrop" src="assets/worlds/havenbrook-night.jpg" alt="" fetchpriority="high">
+          <div class="east-tint" aria-hidden="true"></div>
+          <div class="east-fence" aria-hidden="true"></div>
+          <div class="east-neon" aria-hidden="true">OPEN LATE</div>
+          <div class="east-grain" aria-hidden="true"></div>
+          <div class="east-topline"><span>Havenbrook · the east side</span><span>October</span></div>
+          <div class="east-title-block">
+            <p class="east-eyebrow">Three blocks from the line DREAM drew</p>
+            <h2 id="east-entrance-title">havenbrook</h2>
+            <p id="east-entrance-description">The east side of Havenbrook has its own rules.</p>
+            <span class="east-handwriting" aria-hidden="true">she didn't start anything.</span>
+          </div>
+          <figure class="east-photo" aria-hidden="true">
+            <img src="assets/worlds/havenbrook-new.jpg" alt="">
+            <figcaption>the east side</figcaption>
+          </figure>
+          <div class="east-pass" aria-hidden="true">
+            <span class="east-pass-school">DMHS · hall pass</span>
+            <span class="east-pass-row"><b>Name</b> Lee, Solar</span>
+            <span class="east-pass-row"><b>Exit</b> East entrance</span>
+            <span class="east-pass-row"><b>Time</b> 3:47 p.m.</span>
+            <span class="east-pass-stamp">Tuesday</span>
+          </div>
+          <div class="east-bottomline"><span>Being noticed meant someone had made a decision.</span>${skip}</div>
+        </div>`
+    },
+
+    'soul-of-minji': {
+      prefix: 'quest',
+      replay: 'Main quest · start again',
+      enter: 'Enter Soul of Minji',
+      loader: { mark: 'soul of minji', lines: ['QUEST ACCEPTED', 'locate minji.'] },
+      markup: skip => `
+        <div class="quest-scene">
+          <img class="quest-backdrop" src="assets/worlds/minji-curtain.jpg" alt="" fetchpriority="high">
+          <div class="quest-tint" aria-hidden="true"></div>
+          <div class="quest-wisps" aria-hidden="true">${Array.from({length:10},(_,i) => `<span style="--wx:${[12,24,36,48,60,72,84,18,54,90][i]}%;--wd:${(i * -0.9).toFixed(1)}s"></span>`).join('')}</div>
+          <div class="quest-grain" aria-hidden="true"></div>
+          <div class="quest-topline"><span>Act I · The Spark</span><span>The practice room</span></div>
+          <div class="quest-hud" aria-hidden="true"><span class="quest-hp"><i></i><i></i><i></i></span><span>Soul link <b>?</b></span></div>
+          <div class="quest-title-block">
+            <p class="quest-eyebrow">A mission that behaves like a game objective</p>
+            <h2 id="quest-entrance-title">soul of minji</h2>
+            <p id="quest-entrance-description">A crash, a missing Minji, and two Cherrys.</p>
+            <span class="quest-handwriting" aria-hidden="true">that almost. that maybe.</span>
+          </div>
+          <div class="quest-system" aria-hidden="true"><span class="quest-system-head">System</span><span class="quest-type"></span><span class="quest-caret"></span></div>
+          <div class="quest-objective" aria-hidden="true">
+            <span class="quest-objective-head">Main quest</span>
+            <span class="quest-objective-title">The Soul of Minji</span>
+            <span class="quest-check"><i></i> Find Minji <b>0 / 1</b></span>
+            <span class="quest-check"><i></i> Survive the crash <b class="quest-done">✓</b></span>
+          </div>
+          <div class="quest-bottomline"><span>One soul in the wrong body.</span>${skip}</div>
+        </div>`,
+      start: dialog => {
+        const LINES = ['A soul has entered the wrong body.', 'Main quest unlocked: The Soul of Minji.', 'Objective: find Minji.'];
+        const out = dialog.querySelector('.quest-type');
+        let line = 0, ch = 0, timer;
+        const type = () => {
+          const text = LINES[line];
+          out.textContent = text.slice(0, ++ch);
+          if (text[ch - 1] && text[ch - 1] !== ' ') dialog.dispatchEvent(new CustomEvent('entrance:cue', { detail: 'type' }));
+          if (ch < text.length) timer = setTimeout(type, 42);
+          else { line = (line + 1) % LINES.length; ch = 0; timer = setTimeout(type, 2600); }
+        };
+        timer = setTimeout(type, 1500);
+        return () => clearTimeout(timer);
+      }
+    },
+
+    'saint-of-dead-air': {
+      prefix: 'air',
+      replay: 'Last pass · back to the stage',
+      enter: 'Enter Saint of Dead Air',
+      loader: { mark: 'saint of dead air', lines: ['four bars of count-off.', 'then nothing.'] },
+      markup: skip => `
+        <div class="air-scene">
+          <img class="air-backdrop" src="assets/worlds/soda-backstage.jpg" alt="" fetchpriority="high">
+          <div class="air-tint" aria-hidden="true"></div>
+          <div class="air-led" aria-hidden="true"></div>
+          <div class="air-grain" aria-hidden="true"></div>
+          <div class="air-topline"><span>Arena · last pass</span><span>Soundcheck</span></div>
+          <div class="air-tally" aria-hidden="true"><i></i><span class="air-tally-label">On air</span></div>
+          <div class="air-title-block">
+            <p class="air-eyebrow">Third-person limited · Jungwon</p>
+            <h2 id="air-entrance-title">saint of dead air</h2>
+            <p id="air-entrance-description">Seven seconds of live silence opens the Dead Air.</p>
+            <span class="air-handwriting" aria-hidden="true">rooms lie.</span>
+          </div>
+          <div class="air-meter" aria-hidden="true">${Array.from({length:16},(_,i) => `<i style="--md:${(i * -0.13).toFixed(2)}s;--mh:${[40,62,78,55,90,70,48,84,66,58,92,74,50,68,80,60][i]}%"></i>`).join('')}<span class="air-count">7</span></div>
+          <div class="air-setlist" aria-hidden="true">
+            <span class="air-tape"></span>
+            <span class="air-setlist-head">Last pass, then dinner</span>
+            <span>1 · count-off (4 bars)</span>
+            <span>2 · post-chorus · center X</span>
+            <span>3 · hold</span>
+            <span class="air-rule">rituals steady rooms.</span>
+          </div>
+          <div class="air-bottomline"><span>Keep all six in peripheral. Keep the room honest.</span>${skip}</div>
+        </div>`,
+      start: dialog => {
+        const count = dialog.querySelector('.air-count');
+        let timers = [];
+        const cycle = () => {
+          dialog.classList.add('air-dead');
+          dialog.dispatchEvent(new CustomEvent('entrance:cue', { detail: 'dead-start' }));
+          for (let n = 7; n >= 0; n--) timers.push(setTimeout(() => { count.textContent = String(n); }, (7 - n) * 1000));
+          timers.push(setTimeout(() => {
+            dialog.classList.remove('air-dead');
+            dialog.dispatchEvent(new CustomEvent('entrance:cue', { detail: 'dead-end' }));
+            timers.push(setTimeout(cycle, 14000 + Math.random() * 6000));
+          }, 7000));
+        };
+        timers.push(setTimeout(cycle, 9000));
+        return () => timers.forEach(clearTimeout);
+      }
+    },
+
+    go: {
+      prefix: 'rain',
+      replay: 'DMHS · back into the rain',
+      enter: 'Enter GO',
+      loader: { mark: 'GO', lines: ['drrr. the bell.', 'throw the looks right back.'] },
+      markup: skip => `
+        <div class="rain-scene">
+          <img class="rain-backdrop" src="assets/worlds/go-haechan.jpg" alt="" fetchpriority="high">
+          <div class="rain-tint" aria-hidden="true"></div>
+          <div class="rain-flash" aria-hidden="true"></div>
+          <div class="rain-fall" aria-hidden="true"></div>
+          <div class="rain-fall rain-fall-near" aria-hidden="true"></div>
+          <div class="rain-glass" aria-hidden="true">${Array.from({length:9},(_,i) => `<span style="--rx:${[8,19,31,44,57,66,78,88,95][i]}%;--rd:${(i * -0.9).toFixed(1)}s;--rl:${[38,54,30,62,44,50,36,58,42][i]}%"></span>`).join('')}</div>
+          <div class="rain-topline"><span>DMHS · senior year</span><span>The rain</span></div>
+          <div class="rain-title-block">
+            <p class="rain-eyebrow">Since the incident</p>
+            <h2 id="rain-entrance-title">GO</h2>
+            <p id="rain-entrance-description">A ruined reputation, and Cheng returning changed in the rain.</p>
+            <span class="rain-handwriting" aria-hidden="true">she stopped caring completely.</span>
+          </div>
+          <figure class="rain-photo" aria-hidden="true">
+            <img src="assets/worlds/go-group.jpg" alt="">
+          </figure>
+          <div class="rain-id" aria-hidden="true">
+            <span class="rain-id-school">DMHS · student ID</span>
+            <span class="rain-id-body"><i></i><span><b>Hyeyeon</b><span>Senior · English 4</span></span></span>
+            <span class="rain-id-bar"></span>
+          </div>
+          <div class="rain-bottomline"><span>Soon enough, she'd be graduating.</span>${skip}</div>
+        </div>`,
+      start: dialog => {
+        let timer;
+        const strike = () => {
+          dialog.classList.remove('rain-lightning'); void dialog.offsetWidth; dialog.classList.add('rain-lightning');
+          dialog.dispatchEvent(new CustomEvent('entrance:cue', { detail: 'thunder' }));
+          timer = setTimeout(strike, 13000 + Math.random() * 9000);
+        };
+        timer = setTimeout(strike, 6000);
+        return () => clearTimeout(timer);
+      }
     }
   };
 
