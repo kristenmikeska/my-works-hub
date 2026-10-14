@@ -1,6 +1,6 @@
 /* FEMC mode: type "femc" on any page to switch the site into a pink, P3P-inspired skin.
    Original menu sounds (entrance-sounds.js femc-*), a calendar + moon badge, a "Dark Hour" at midnight,
-   and optional background music listed in assets/femc/bgm.js.
+   a crossing-over intro scored with "A Way of Life", and background music listed in assets/femc/bgm.js.
    Storage: kg-femc ('on'), kg-femc-sound ('off' mutes the menu sounds), kg-femc-bgm ({ on, i, t }). */
 (() => {
   if (window.FemcMode) return;
@@ -70,6 +70,47 @@
     .femc-wipe b small { display: block; margin-top: .25em; font-size: .28em; letter-spacing: .3em; color: #ffe1ee; text-shadow: none; }
     @keyframes femc-band { from { transform: skewX(-18deg) translateX(-110vw); } to { transform: skewX(-18deg) translateX(140vw); } }
     @keyframes femc-word { 0% { opacity: 0; transform: translate(-30%, -50%) skewX(-12deg); } 30%, 72% { opacity: 1; transform: translate(-50%, -50%) skewX(-12deg); } 100% { opacity: 0; transform: translate(-70%, -50%) skewX(-12deg); } }
+    .femc-intro { position: fixed; inset: 0; z-index: 2147483500; overflow: hidden; background: #fd64a8; color: #fff; font-family: "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", sans-serif; animation: fi-in .5s cubic-bezier(.7, 0, .3, 1) both; }
+    .femc-intro.fi-out { animation: fi-out .65s cubic-bezier(.7, 0, .3, 1) forwards; pointer-events: none; }
+    @keyframes fi-in { from { clip-path: polygon(0 0, 0 0, -40% 100%, -40% 100%); } to { clip-path: polygon(0 0, 140% 0, 100% 100%, -40% 100%); } }
+    @keyframes fi-out { from { clip-path: polygon(0 0, 140% 0, 100% 100%, -40% 100%); } to { clip-path: polygon(140% 0, 140% 0, 100% 100%, 100% 100%); } }
+    .fi-stripes { position: absolute; inset: -40% -40% -40% -20%; background: repeating-linear-gradient(-58deg, rgba(255, 255, 255, .1) 0 16px, transparent 16px 64px); animation: fi-drift 9s linear infinite; }
+    @keyframes fi-drift { to { transform: translateX(-302px); } }
+    .femc-intro::before { content: ""; position: absolute; z-index: 1; left: -14%; top: -20%; width: 62%; height: 140%; background: #14070f; transform: skewX(-14deg); animation: fi-band .75s .1s cubic-bezier(.2, 1, .3, 1) both; }
+    @keyframes fi-band { from { transform: skewX(-14deg) translateX(-105%); } }
+    .fi-art { position: absolute; right: 0; bottom: 0; height: 100%; max-width: 64vw; object-fit: cover; object-position: 30% 0; -webkit-mask-image: linear-gradient(to right, transparent, #000 22%); mask-image: linear-gradient(to right, transparent, #000 22%); animation: fi-art 1s .2s cubic-bezier(.2, 1, .3, 1) both; }
+    @keyframes fi-art { from { opacity: 0; transform: translateX(12%); } }
+    .fi-cal { position: absolute; z-index: 2; top: 5vh; right: 4vw; text-align: right; filter: drop-shadow(5px 5px 0 #14070f); }
+    .fi-dayclip { height: 1em; padding: 0 .12em 0 .3em; overflow: hidden; font-size: clamp(54px, 8vw, 96px); line-height: 1; }
+    .fi-days { animation: fi-roll 1.7s .35s cubic-bezier(.6, 0, .3, 1) both; }
+    .fi-days span { display: block; height: 1em; font-style: italic; font-weight: 900; letter-spacing: -.03em; transform: skewX(-8deg); }
+    .fi-days small { margin-left: .15em; font-size: .3em; letter-spacing: .08em; text-transform: uppercase; color: #ffe1ee; }
+    @keyframes fi-roll { 0%, 22% { transform: translateY(0); } 42%, 58% { transform: translateY(-1em); } 80%, 100% { transform: translateY(-2em); } }
+    .fi-when { display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 10px; padding: 7px 14px; background: #14070f; transform: skewX(-14deg); font: italic 800 15px/1.1 \"Avenir Next Condensed\", \"Arial Narrow\", \"Helvetica Neue\", sans-serif; text-transform: uppercase; letter-spacing: .12em; color: #ff8cc0; animation: fi-item .5s 1.9s cubic-bezier(.2, 1.2, .4, 1) both; }
+    .fi-when > * { transform: skewX(14deg); }
+    .fi-when small { display: block; color: #ffe1ee; font-size: 10px; letter-spacing: .16em; }
+    .fi-moon svg { display: block; width: 26px; height: 26px; }
+    .fi-copy { position: absolute; z-index: 2; left: 6vw; top: 50%; max-width: 44vw; transform: translateY(-50%); }
+    .fi-kicker { margin: 0 0 6px; color: #ff8cc0; font: italic 800 13px/1 \"Avenir Next Condensed\", \"Arial Narrow\", \"Helvetica Neue\", sans-serif; letter-spacing: .34em; text-transform: uppercase; animation: fi-item .5s .45s both; }
+    .fi-title { margin: 0; font: italic 900 clamp(64px, 12.5vw, 168px)/.82 \"Avenir Next Condensed\", \"Arial Narrow\", \"Helvetica Neue\", sans-serif; letter-spacing: -.03em; }
+    .fi-title span { display: block; transform: skewX(-10deg); text-shadow: .06em .06em 0 #ff4f9e; animation: fi-slam .55s cubic-bezier(.2, 1.4, .4, 1) both; }
+    .fi-title span:nth-child(1) { animation-delay: .5s; } .fi-title span:nth-child(2) { animation-delay: .62s; color: #ff8cc0; text-shadow: .06em .06em 0 #fff; }
+    @keyframes fi-slam { from { opacity: 0; transform: translateX(-70px) skewX(-10deg); } }
+    .fi-sub { margin: 16px 0 26px; color: #ffd6e8; font: italic 600 clamp(15px, 1.6vw, 19px)/1.3 \"Avenir Next Condensed\", \"Arial Narrow\", \"Helvetica Neue\", sans-serif; animation: fi-item .5s .8s both; }
+    .fi-menu button { position: relative; display: block; min-width: min(300px, 70vw); margin: 0 0 10px; padding: 11px 44px 11px 18px; border: 0; background: rgba(255, 255, 255, .08); color: #fff; font: italic 800 22px/1 \"Avenir Next Condensed\", \"Arial Narrow\", \"Helvetica Neue\", sans-serif; text-align: left; text-transform: uppercase; letter-spacing: .05em; transform: skewX(-14deg); cursor: inherit; animation: fi-item .45s cubic-bezier(.2, 1.2, .4, 1) both; }
+    .fi-menu button:nth-child(1) { animation-delay: .95s; } .fi-menu button:nth-child(2) { animation-delay: 1.05s; font-size: 16px; }
+    .fi-menu button:is(:hover, :focus-visible) { outline: none; background: #fff; color: #14070f; box-shadow: 7px 7px 0 #ff4f9e; }
+    .fi-menu button:is(:hover, :focus-visible)::after { content: "◀"; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #ff4f9e; font-size: .8em; }
+    @keyframes fi-item { from { opacity: 0; transform: translateX(-40px) skewX(-14deg); } }
+    .fi-foot { position: absolute; z-index: 2; left: 6vw; bottom: 4vh; margin: 0; color: #ff8cc0; font: italic 700 12px/1 \"Avenir Next Condensed\", \"Arial Narrow\", \"Helvetica Neue\", sans-serif; letter-spacing: .5em; text-transform: uppercase; opacity: .8; }
+    @media (max-width: 700px) {
+      .femc-intro::before { width: 120%; left: -30%; opacity: .82; }
+      .fi-art { max-width: none; width: 100%; opacity: .6; -webkit-mask-image: none; mask-image: none; }
+      .fi-copy { max-width: 88vw; top: auto; bottom: 12vh; transform: none; }
+      .fi-cal { top: 3vh; right: 6vw; }
+      .fi-dayclip { font-size: 52px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .femc-intro, .femc-intro *, .femc-intro::before { animation: none !important; } .fi-days { transform: translateY(-2em); } }
     @media (prefers-reduced-motion: reduce) { .femc-badge { animation: none; } }
   `;
   document.head.appendChild(style);
@@ -147,20 +188,81 @@
     const el = document.createElement('div');
     el.className = `femc-wipe${on ? '' : ' off'}`;
     el.setAttribute('aria-hidden', 'true');
-    el.innerHTML = `<i style="--d:0s"></i><i style="--d:.07s"></i><i style="--d:.14s"></i><b>FEMC MODE<small>${on ? 'memento mori' : 'see you tomorrow'}</small></b>`;
+    el.innerHTML = `<i style="--d:0s"></i><i style="--d:.07s"></i><i style="--d:.14s"></i><b>FEMC MODE<small>${on ? 'memento mori' : 'back to the idols'}</small></b>`;
     document.body.appendChild(el);
     setTimeout(() => el.remove(), 1500);
   }
+  /* The crossing-over screen: a P3P-style calendar roll and menu, scored with "A Way of Life". */
+  function intro() {
+    const now = new Date(), m = moon(now);
+    const day = back => { const d = new Date(now); d.setDate(now.getDate() - back); return `<span>${d.getMonth() + 1}/${d.getDate()}<small>${DAYS[d.getDay()]}</small></span>`; };
+    const el = document.createElement('div');
+    el.className = 'femc-intro';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-modal', 'true');
+    el.setAttribute('aria-label', 'FEMC mode');
+    el.innerHTML = `<div class="fi-stripes" aria-hidden="true"></div>
+      <img class="fi-art" src="${BASE}assets/femc/img/femc-portrait.jpg" alt="">
+      <div class="fi-cal" aria-hidden="true"><div class="fi-dayclip"><div class="fi-days">${day(2)}${day(1)}${day(0)}</div></div>
+        <div class="fi-when"><span class="fi-moon">${m.svg}</span><span>${daypart(now.getHours())}<small>${m.name}</small></span></div></div>
+      <div class="fi-copy">
+        <p class="fi-kicker">Crossing over</p>
+        <h2 class="fi-title"><span>FEMC</span><span>MODE</span></h2>
+        <p class="fi-sub">Leaving the idol worlds for the game ones.</p>
+        <div class="fi-menu" role="menu"><button type="button" role="menuitem" data-go="enter">Enter</button><button type="button" role="menuitem" data-go="back">Back to the idols</button></div>
+      </div>
+      <p class="fi-foot" aria-hidden="true">Memento mori</p>`;
+    document.body.appendChild(el);
+    const theme = new Audio(BASE + 'assets/femc/music/a-way-of-life.mp3');
+    theme.loop = true;
+    theme.volume = 0;
+    let rise = null;
+    theme.play().then(() => { rise = setInterval(() => { theme.volume = Math.min(0.5, theme.volume + 0.03); if (theme.volume >= 0.5) clearInterval(rise); }, 60); }).catch(() => {});
+    if (!reduced.matches) [750, 1400].forEach(t => setTimeout(() => sfx('femc-hover'), t));
+    const items = [...el.querySelectorAll('.fi-menu button')];
+    setTimeout(() => items[0].focus({ preventScroll: true }), reduced.matches ? 0 : 1000);
+    let closing = false;
+    function finish(go, viaKey) {
+      if (closing) return;
+      closing = true;
+      if (viaKey) sfx(go === 'enter' ? 'femc-click' : 'femc-back');
+      clearInterval(rise);
+      const fall = setInterval(() => { theme.volume = Math.max(0, theme.volume - 0.05); if (theme.volume <= 0) { clearInterval(fall); theme.pause(); } }, 50);
+      document.removeEventListener('keydown', keys, true);
+      el.classList.add('fi-out');
+      setTimeout(() => {
+        el.remove();
+        if (go === 'enter') { music.start(); load('achievements.js?v=4', () => window.Achievements).then(() => window.Achievements?.unlock('femc')); }
+        else toggle(false);
+      }, reduced.matches ? 0 : 650);
+    }
+    function keys(e) {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const i = items.indexOf(document.activeElement);
+        items[(i + (e.key === 'ArrowDown' ? 1 : items.length - 1) + items.length) % items.length].focus();
+        sfx('femc-hover');
+      } else if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); finish('enter', true); }
+    }
+    document.addEventListener('keydown', keys, true);
+    items.forEach(b => b.addEventListener('click', () => finish(b.dataset.go, !b.matches(':hover'))));
+  }
+
   function toggle(on) {
     if (on === isOn()) return;
     set(KEY, on ? 'on' : null);
-    sfx(on ? 'femc-on' : 'femc-off');
-    const apply = () => {
-      root.classList.toggle('femc', on);
-      if (on) { buildBadge(); paintBadge(); music.start(); } else music.stop();
-    };
-    if (reduced.matches) apply(); else { wipe(on); setTimeout(apply, 520); }
-    if (on) load('achievements.js?v=4', () => window.Achievements).then(() => window.Achievements?.unlock('femc'));
+    if (on) {
+      // The intro covers the page while the skin switches on underneath it.
+      sfx('femc-on');
+      root.classList.add('femc');
+      buildBadge();
+      paintBadge();
+      intro();
+      return;
+    }
+    sfx('femc-off');
+    const apply = () => { root.classList.remove('femc'); music.stop(); };
+    if (reduced.matches) apply(); else { wipe(false); setTimeout(apply, 520); }
   }
 
   let typed = '';
@@ -215,7 +317,7 @@
       setTimeout(api.sync, 0);
       return result;
     };
-    const busy = () => [...others].some(a => !a.paused) || !!document.querySelector('dialog.world-entrance[open]');
+    const busy = () => [...others].some(a => !a.paused) || !!document.querySelector('dialog.world-entrance[open], .femc-intro');
     function fade(to, done) {
       clearInterval(fadeTimer);
       fadeTimer = setInterval(() => {
@@ -247,13 +349,14 @@
       } else if (!play && !audio.paused) fade(0, () => audio.pause());
     };
     api.start = () => { ensure(); api.sync(); };
+    api.playing = () => (audio && !audio.paused ? api.tracks[idx].title : null);
     api.stop = () => { if (audio && !audio.paused) fade(0, () => audio.pause()); };
     api.toggle = () => { save({ on: !api.wanted() }); api.start(); };
     return api;
   })();
 
   function boot() {
-    load('assets/femc/bgm.js?v=1', () => window.FEMC_BGM).then(() => {
+    load('assets/femc/bgm.js?v=2', () => window.FEMC_BGM).then(() => {
       music.tracks = (window.FEMC_BGM || []).filter(t => t && t.src);
       if (isOn()) { buildBadge(); music.start(); }
       paintBadge();
@@ -262,5 +365,5 @@
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
 
-  window.FemcMode = { toggle, isOn };
+  window.FemcMode = { toggle, isOn, nowPlaying: () => music.playing() };
 })();
