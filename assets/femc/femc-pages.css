@@ -1,0 +1,21 @@
+/* Shared look for the FEMC-only hidden pages (akihiko.html, compendium.html). */
+:root { color-scheme: dark; --pink: #ff4f9e; --pink-2: #ff8cc0; --ink: #fff4f9; --night: #14070f; --muted: #d9a9c0; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: radial-gradient(ellipse at 100% 0%, rgba(255, 79, 158, .28), transparent 50%), radial-gradient(ellipse at 0% 100%, rgba(255, 79, 158, .16), transparent 45%), #0e050a; color: var(--ink); font: 16px/1.5 "Avenir Next", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: repeating-linear-gradient(-58deg, rgba(255, 79, 158, .06) 0 2px, transparent 2px 26px); }
+.cond { font-family: "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", sans-serif; font-style: italic; font-weight: 900; }
+.fp-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px clamp(16px, 4vw, 48px); }
+.fp-back { padding: 7px 16px; background: rgba(255, 255, 255, .08); color: var(--ink); text-decoration: none; font: italic 800 14px/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; letter-spacing: .06em; text-transform: uppercase; transform: skewX(-14deg); }
+.fp-back:is(:hover, :focus-visible) { background: #fff; color: var(--night); box-shadow: 4px 4px 0 var(--pink); outline: none; }
+.fp-kicker { color: var(--pink-2); font: italic 800 13px/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; letter-spacing: .34em; text-transform: uppercase; }
+.fp-btn { display: inline-block; padding: 12px 26px; border: 0; background: var(--pink); color: #fff; font: italic 900 20px/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; letter-spacing: .05em; text-transform: uppercase; transform: skewX(-14deg); box-shadow: 6px 6px 0 var(--night); cursor: inherit; }
+.fp-btn:is(:hover, :focus-visible):not(:disabled) { background: #fff; color: var(--night); box-shadow: 6px 6px 0 var(--pink); outline: none; }
+.fp-btn:disabled { background: rgba(255, 255, 255, .1); color: var(--muted); box-shadow: none; }
+.fp-music { padding: 7px 14px; border: 1px solid rgba(255, 140, 192, .4); border-radius: 99px; background: none; color: var(--pink-2); font: 600 12px/1 "Avenir Next", sans-serif; cursor: inherit; }
+.fp-music[aria-pressed="false"] { opacity: .55; }
+.fp-locked { display: grid; place-items: center; min-height: 80vh; padding: 24px; text-align: center; }
+.fp-locked h1 { margin: 8px 0; font-size: clamp(40px, 8vw, 84px); line-height: .95; transform: skewX(-8deg); text-shadow: .06em .06em 0 var(--pink); }
+.fp-locked p { color: var(--muted); }
+.fp-locked code { padding: 2px 6px; border-radius: 4px; background: rgba(255, 255, 255, .08); color: var(--pink-2); }
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }

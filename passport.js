@@ -124,7 +124,8 @@ function renderSecretStamps() {
   if (!grid || !window.Achievements) return;
   const got = Achievements.unlocked();
   const dateFmt = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
-  const list = Achievements.list();
+  // Stamps from the other side (FEMC mode) stay hidden until you've crossed over once.
+  const list = Achievements.list().filter(a => !a.side || got.femc);
   grid.replaceChildren(...list.map(a => {
     const when = got[a.id];
     const card = document.createElement("div");

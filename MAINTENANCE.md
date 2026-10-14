@@ -76,3 +76,16 @@ Kat's sorted photos (Desktop/Hoax) are resized into `assets/hoax/roll/` (full, ~
 - **Intro:** turning FEMC mode on opens a P3P-style crossing-over screen (`intro()` in `femc-mode.js`): a calendar roll to today with the moon phase, the FeMC portrait (`assets/femc/img/femc-portrait.jpg`), and an Enter / Back to the idols menu (arrow keys work, Escape enters). It plays `assets/femc/music/a-way-of-life.mp3`; Enter fades it out, starts the background music, and unlocks the stamp. Back to the idols turns the mode off again. Page loads while the mode is already on skip the intro.
 - **Images:** Kat's FeMC/P3P images are in `assets/femc/img/` (portrait, lying, accomplished, fountain, femc-and-mc, akihiko-hug).
 - **Music:** list tracks in `assets/femc/bgm.js` (currently Iwatodai Dorm, then Time) (files in `assets/femc/music/`). They play in order at low volume, resume across pages, pause while a world song or world intro is playing, and start on the first click if the browser blocks autoplay. The ♪ button only appears when the list has tracks.
+
+### FEMC-only Easter eggs
+
+`femc-eggs.js` is loaded by `femc-mode.js` once the mode is on (after the intro's Enter, or on page load if already on). Preview any of them without earning stamps with `?femcpreview=darkhour`, `fullmoon`, `text` or `protein` on any page URL.
+
+- **Akihiko texts you:** a P3P-style message box (lines in `LINES`), at most once every 8 minutes, about 1 in 4 page loads, never in readers. "Go see him" opens `akihiko.html`.
+- **protein** (typed): shakers and beef bowls rain down, "COURAGE ↑", stamp `gains`.
+- **akihiko / compendium** (typed): go to those pages.
+- **Dark Hour:** midnight to 1 a.m. local, once a night (`kg-femc-dh`): green full-screen moment, stamp `dark-hour`.
+- **Full Moon Operation:** on full-moon days (within about a day of full, from `FemcMode.moon()`), a banner; Deploy plays the operation and earns `full-moon` (once per day, `kg-femc-fm`). The badge moon's tooltip shows the next full moon.
+- **`akihiko.html`:** social link page. Rank 1 on first visit, then one rank per new calendar day (`kg-femc-aki`), 10 ranks, a line per rank (`LINES`), the hug photo unblurs at MAX. Plays `tender-feeling.mp3`. Stamps `senpai` (visit) and `max-rank`. Shows a locked screen outside FEMC mode.
+- **`compendium.html`:** Kat's fictional favorites from `assets/femc/compendium.js`; each entry unlocks with a stamp id. Stamp `compendium`. The badge's ❖ button links here.
+- Stamps with `side: 'femc'` (group "The other side") stay hidden in the passport until `femc` is unlocked.

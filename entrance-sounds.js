@@ -764,6 +764,41 @@ window.EntranceSounds = (() => {
       [2349.3, 1975.5, 1568, 1318.5].forEach((f, i) => k.tone(t + i * 0.06, { freq: f, type: 'triangle', level: 0.03, attack: 0.003, decay: 0.4, pan: (1.5 - i) * 0.3 }));
       k.tone(t + 0.2, { freq: 130, to: 60, level: 0.12, attack: 0.01, decay: 0.4 });
     },
+    'femc-text'(k) { k.tone(k.ctx.currentTime + 0.005, { freq: rand(1480, 1620), type: 'square', level: 0.006, attack: 0.002, decay: 0.03 }); },
+    'femc-rankup'(k) {
+      const t = k.ctx.currentTime + 0.02;
+      [783.99, 1046.5, 1318.5, 1568, 2093, 2637].forEach((f, i) => {
+        k.tone(t + i * 0.08, { freq: f, type: 'triangle', level: 0.04, attack: 0.003, decay: 1.1, pan: (i - 2.5) * 0.25 });
+        k.tone(t + i * 0.08, { freq: f * 2.01, level: 0.01, attack: 0.003, decay: 0.7, pan: (i - 2.5) * 0.25 });
+      });
+      k.tone(t + 0.55, { freq: 1568, type: 'triangle', level: 0.03, attack: 0.01, decay: 1.6 });
+      k.tone(t + 0.55, { freq: 2093, type: 'triangle', level: 0.025, attack: 0.01, decay: 1.6 });
+      k.tone(t, { freq: 110, to: 70, level: 0.12, attack: 0.02, decay: 0.6 });
+    },
+    'femc-protein'(k) {
+      const t = k.ctx.currentTime + 0.02;
+      for (let i = 0; i < 8; i++) k.burst(t + i * 0.07, { freq: rand(1800, 2600), q: 1.4, level: 0.12, decay: 0.035, pan: i % 2 ? 0.3 : -0.3 });
+      k.tone(t + 0.65, { freq: 220, to: 330, glide: 0.12, level: 0.08, attack: 0.01, decay: 0.15 });
+      k.tone(t + 0.8, { freq: 220, to: 330, glide: 0.12, level: 0.08, attack: 0.01, decay: 0.15 });
+      [1046.5, 1318.5, 1568, 2093].forEach((f, i) => k.tone(t + 1.05 + i * 0.07, { freq: f, type: 'triangle', level: 0.04, attack: 0.003, decay: 0.5 }));
+    },
+    'femc-darkhour'(k) {
+      const { ctx, out } = k, t = ctx.currentTime + 0.02;
+      [0, 0.5, 1, 1.5].forEach((d, i) => k.burst(t + d, { freq: 2400, q: 6, level: 0.16 - i * 0.03, decay: 0.03 }));
+      const drone = ctx.createOscillator(), dg = k.gain(0);
+      drone.type = 'sawtooth'; drone.frequency.value = 55;
+      dg.gain.setValueAtTime(0.0001, t + 1.9); dg.gain.exponentialRampToValueAtTime(0.05, t + 3); dg.gain.exponentialRampToValueAtTime(0.0001, t + 7);
+      k.chain(drone, k.filter('lowpass', 260, 2), dg, out); drone.start(t + 1.9); drone.stop(t + 7.2);
+      k.tone(t + 2, { freq: 82.4, level: 0.12, attack: 0.6, decay: 4 });
+      k.tone(t + 2, { freq: 123.5, level: 0.05, attack: 0.9, decay: 3.5 });
+      k.tone(t + 2.1, { freq: 2960, level: 0.006, attack: 1, decay: 3 });
+    },
+    'femc-moon'(k) {
+      const t = k.ctx.currentTime + 0.02;
+      k.tone(t, { freq: 65.4, level: 0.14, attack: 0.5, decay: 2.5 });
+      k.tone(t + 0.1, { freq: 98, level: 0.06, attack: 0.6, decay: 2.2 });
+      [[0.4, 1567.98], [0.9, 1396.9], [1.4, 1174.7]].forEach(([d, f]) => { k.tone(t + d, { freq: f, level: 0.035, attack: 0.004, decay: 1.6 }); k.tone(t + d, { freq: f * 2.76, level: 0.008, attack: 0.004, decay: 0.8 }); });
+    },
     /* An old camera flash: the capacitor whine, then the pop. */
     flash(k) {
       const t = k.ctx.currentTime + 0.02;

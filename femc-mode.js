@@ -22,7 +22,7 @@
     s.onload = s.onerror = () => resolve();
     document.head.appendChild(s);
   });
-  const sfx = name => { if (soundOn()) load('entrance-sounds.js?v=17', () => window.EntranceSounds).then(() => window.EntranceSounds?.home(name, { force: true })); };
+  const sfx = name => { if (soundOn()) load('entrance-sounds.js?v=18', () => window.EntranceSounds).then(() => window.EntranceSounds?.home(name, { force: true })); };
 
   /* ── Look ─────────────────────────────────────────────── */
   const arrow = (fill, stroke) => `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'><path d='M3 2l19 9.5l-8.2 2.3L9.6 22z' fill='${fill}' stroke='${stroke}' stroke-width='1.6' stroke-linejoin='round'/></svg>`)}") 3 2`;
@@ -54,6 +54,8 @@
     html.femc-dark-hour .femc-time { color: #6dff9e; }
     .femc-moon { background: #14070f; padding-left: 4px; }
     .femc-moon svg { width: 20px; height: 20px; }
+    .femc-badge .femc-book { background: #14070f; color: #ff8cc0; text-decoration: none; font-size: 15px; }
+    .femc-badge .femc-book:hover, .femc-badge .femc-book:focus-visible { background: #ff8cc0; color: #14070f; }
     .femc-badge button { border: 0; margin: 0; background: #fff; color: #14070f; font: inherit; cursor: inherit; }
     .femc-badge button:hover, .femc-badge button:focus-visible { background: #ff8cc0; }
     .femc-badge button[aria-pressed="false"] span { opacity: .4; text-decoration: line-through; }
@@ -134,7 +136,8 @@
     const lit = p < 0.5
       ? `M10 1A9 9 0 0 1 10 19A${rx} 9 0 0 ${k > 0 ? 0 : 1} 10 1`
       : `M10 1A9 9 0 0 0 10 19A${rx} 9 0 0 ${k > 0 ? 1 : 0} 10 1`;
-    return { name: PHASES[Math.round(p * 8) % 8], svg: `<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#3a1028"/><path d="${lit}" fill="#fff4f9"/></svg>` };
+    const toFull = ((0.5 - p + 1) % 1) * 29.530588853, next = new Date(+date + toFull * 86400000);
+    return { phase: p, full: Math.abs(p - 0.5) < 0.034, next: `${next.getMonth() + 1}/${next.getDate()}`, name: PHASES[Math.round(p * 8) % 8], svg: `<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#3a1028"/><path d="${lit}" fill="#fff4f9"/></svg>` };
   }
   let badge = null;
   function paintBadge() {
@@ -144,7 +147,9 @@
     badge.querySelector('.femc-cal').innerHTML = `<span><b>${now.getMonth() + 1}/${now.getDate()}</b> <small>${DAYS[now.getDay()]}</small></span>`;
     badge.querySelector('.femc-time').innerHTML = `<span>${part}</span>`;
     const mo = badge.querySelector('.femc-moon');
-    mo.innerHTML = `<span>${m.svg}</span>`; mo.title = m.name; mo.setAttribute('aria-label', m.name);
+    mo.innerHTML = `<span>${m.svg}</span>`;
+    mo.title = m.full ? `${m.name} · tonight` : `${m.name} · next full moon ${m.next}`;
+    mo.setAttribute('aria-label', mo.title);
     const snd = badge.querySelector('.femc-sound');
     snd.setAttribute('aria-pressed', String(soundOn()));
     snd.setAttribute('aria-label', soundOn() ? 'Mute FEMC sounds' : 'Unmute FEMC sounds');
@@ -160,6 +165,7 @@
     badge.setAttribute('role', 'group');
     badge.setAttribute('aria-label', 'FEMC mode');
     badge.innerHTML = `<span class="femc-cal"></span><span class="femc-time"></span><span class="femc-moon" role="img"></span>
+      <a class="femc-book" href="${BASE}compendium.html" title="Compendium" aria-label="Compendium"><span>❖</span></a>
       <button class="femc-music" type="button" hidden><span>♪</span></button>
       <button class="femc-sound" type="button" title="FEMC sounds"><span>SFX</span></button>
       <button class="femc-exit" type="button" title="Turn off FEMC mode" aria-label="Turn off FEMC mode"><span>✕</span></button>`;
@@ -232,7 +238,7 @@
       el.classList.add('fi-out');
       setTimeout(() => {
         el.remove();
-        if (go === 'enter') { music.start(); load('achievements.js?v=4', () => window.Achievements).then(() => window.Achievements?.unlock('femc')); }
+        if (go === 'enter') { music.start(); eggs(); load('achievements.js?v=5', () => window.Achievements).then(() => window.Achievements?.unlock('femc')); }
         else toggle(false);
       }, reduced.matches ? 0 : 650);
     }
@@ -261,9 +267,12 @@
       return;
     }
     sfx('femc-off');
-    const apply = () => { root.classList.remove('femc'); music.stop(); };
+    const apply = () => { root.classList.remove('femc'); music.stop(); window.FemcEggs?.stop(); };
     if (reduced.matches) apply(); else { wipe(false); setTimeout(apply, 520); }
   }
+
+  // Easter eggs that only exist on the other side.
+  const eggs = () => load('femc-eggs.js?v=1', () => window.FemcEggs).then(() => { if (isOn()) window.FemcEggs?.start(); });
 
   let typed = '';
   document.addEventListener('keydown', e => {
@@ -358,12 +367,12 @@
   function boot() {
     load('assets/femc/bgm.js?v=2', () => window.FEMC_BGM).then(() => {
       music.tracks = (window.FEMC_BGM || []).filter(t => t && t.src);
-      if (isOn()) { buildBadge(); music.start(); }
+      if (isOn()) { buildBadge(); music.start(); eggs(); }
       paintBadge();
     });
     if (isOn()) buildBadge();
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
 
-  window.FemcMode = { toggle, isOn, nowPlaying: () => music.playing() };
+  window.FemcMode = { toggle, isOn, nowPlaying: () => music.playing(), sfx, moon, daypart, load, base: BASE };
 })();
