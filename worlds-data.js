@@ -250,7 +250,7 @@ const worlds = [
     accent: "#9d73ff",
     worldBg: "radial-gradient(ellipse at 70% 0%, rgba(157,115,255,0.2) 0%, transparent 55%), linear-gradient(180deg, #0c0918 0%, #0a0815 100%)",
     image: "assets/worlds/hoax-new.jpg",
-    worldImage: "assets/worlds/hoax-jungwon.jpg",
+    worldImage: "assets/worlds/hoax-rooftop.jpg",
     summary: "No one talks about sophomore year, not unless it's for a morbid joke. Solar Lee and her friends are seemingly entirely normal high school students with the sole goal of finishing, until one day, her parents urge her to try out for Student Council President. What's the worst that could happen? That is, until she runs into a certain snobby Student Council President that seems to suddenly always appear at the worst of times, much to the dismay of her best friend that's never quite gotten over his deep crush. Old habits die hard, especially for these friends.",
     note: "This is a major example of recurring names not meaning recurring identity.",
     songs: [
