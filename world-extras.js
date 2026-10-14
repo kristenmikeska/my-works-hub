@@ -1,5 +1,5 @@
 /* World-specific extras on story pages. Hoax: a photo booth with Solar's two love interests,
-   hidden until you click the one star in the hero sky that's really a camera flash. */
+   hidden until you click the one star in the hero sky that's really a camera flash. "Hide the booth" puts it away again. */
 window.WorldExtras = (() => {
   const loadRoll = () => window.HOAX_ROLL ? Promise.resolve(window.HOAX_ROLL) : new Promise((resolve, reject) => {
     const s = document.createElement('script');
@@ -15,7 +15,7 @@ window.WorldExtras = (() => {
     if (!body) return null;
     const section = document.createElement('div');
     section.className = 'booth waiting';
-    section.innerHTML = `<h4 class="world-section-title">Photo booth</h4><p class="booth-note">You found the booth. Two strips, two boys. Take another for four new frames.</p><div class="booth-strips"></div>`;
+    section.innerHTML = `<h4 class="world-section-title">Photo booth</h4><p class="booth-note">You found the booth. Two strips, two boys. Take another for four new frames.</p><button class="booth-close" type="button">✕ Hide the booth</button><div class="booth-strips"></div>`;
     const anchor = [...body.querySelectorAll('.world-section-title')].find(h => /related worlds/i.test(h.textContent));
     anchor ? body.insertBefore(section, anchor) : body.appendChild(section);
     loadRoll().then(albums => {
@@ -68,6 +68,20 @@ window.WorldExtras = (() => {
     star.setAttribute('aria-label', 'A star');
     hero.appendChild(star);
     let section = null;
+    // Slide the strips back out, then put the star back in the sky.
+    const hide = () => {
+      if (!section) return;
+      const el = section;
+      section = null;
+      el.classList.remove('arrived');
+      el.classList.add('leaving');
+      if (!calm()) window.EntranceSounds?.home('booth-slide');
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: calm() ? 'auto' : 'smooth' });
+        el.remove();
+        star.classList.remove('spent');
+      }, calm() ? 0 : 950);
+    };
     star.addEventListener('click', () => {
       if (section) { section.scrollIntoView({ behavior: calm() ? 'auto' : 'smooth', block: 'center' }); return; }
       window.EntranceSounds?.home('flash');
@@ -78,6 +92,7 @@ window.WorldExtras = (() => {
       setTimeout(() => flash.remove(), 1400);
       section = photoBooth((el, developers) => {
         window.Achievements?.unlock('say-cheese');
+        el.querySelector('.booth-close').addEventListener('click', hide);
         setTimeout(() => {
           el.scrollIntoView({ behavior: calm() ? 'auto' : 'smooth', block: 'center' });
           // Slide the strips in once the booth is actually on screen (checked while the page scrolls there).

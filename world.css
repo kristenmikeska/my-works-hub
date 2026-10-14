@@ -739,12 +739,22 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .booth-star::after { width: 15px; height: 15px; border-radius: 0; background: linear-gradient(#fff0 47%, #ffffffcc 50%, #fff0 53%), linear-gradient(90deg, #fff0 47%, #ffffffcc 50%, #fff0 53%); opacity: 0; animation: booth-glint 7s ease-in-out infinite; }
 .booth-star:hover::before { box-shadow: 0 0 6px 2px #fff, 0 0 16px 4px #cfe0ffcc; }
 .booth-star:focus-visible { outline: 1px dashed #ffffff80; outline-offset: 2px; border-radius: 50%; }
+.booth-star { transition: opacity 1.4s .3s; }
 .booth-star.spent { pointer-events: none; opacity: 0; transition: opacity 1.2s .4s; }
+.booth-close { display: block; margin: -8px 0 6px; padding: 6px 13px; border: 1px solid #ffffff2e; border-radius: 99px; background: none; color: var(--muted); font: 600 .72rem ui-sans-serif, system-ui, sans-serif; cursor: pointer; transition: color .2s, border-color .2s; }
+.booth-close:hover { color: var(--ink, #fff); border-color: var(--accent); }
+.booth.leaving .booth-strip { animation: booth-slide-out .85s cubic-bezier(.55, 0, .8, .25) var(--delay, 0s) forwards; }
+.booth.leaving .booth-again, .booth.leaving .booth-close { opacity: 0; transition: opacity .3s; pointer-events: none; }
+@keyframes booth-slide-out {
+  from { transform: rotate(var(--tilt)); }
+  25% { transform: translateX(calc(var(--from) * -14px)) rotate(calc(var(--tilt) * -1.6)); }
+  to { transform: translateX(calc(var(--from) * 110vw)) rotate(calc(var(--from) * 28deg)); }
+}
 @keyframes booth-twinkle { 0%, 100% { opacity: .55; } 40% { opacity: .95; } 86% { opacity: .7; } 88% { opacity: 1; transform: translate(-50%, -50%) scale(1.8); } 91% { opacity: .7; transform: translate(-50%, -50%); } }
 @keyframes booth-glint { 0%, 85%, 93%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(.4); } 88% { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
 .booth-screen-flash { position: fixed; inset: 0; z-index: 9999; background: #fff; pointer-events: none; animation: booth-screen-flash 1.3s ease-out .55s both; }
 @keyframes booth-screen-flash { 0% { opacity: 0; } 4% { opacity: .95; } 100% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .booth-frame.developing img, .booth-strip.flashing .booth-flash, .booth.arrived .booth-strip, .booth-star::before, .booth-star::after { animation: none; }
+  .booth-frame.developing img, .booth-strip.flashing .booth-flash, .booth.arrived .booth-strip, .booth.leaving .booth-strip, .booth-star::before, .booth-star::after { animation: none; }
   .booth-screen-flash { display: none; }
 }
