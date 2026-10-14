@@ -46,7 +46,7 @@ Avoid long `setInterval`s on the homepage: headless screenshot testing fast-forw
 
 ## Secret stamps, hidden pages, and the regulars
 
-`achievements.js` (loaded on the homepage, world pages, About, Vault, 404, and hidden pages) holds the 17 secret stamps: id, name, group, riddle, and emblem. `Achievements.unlock(id)` records one in `kg-achievements` and shows a toast; `Achievements.note(set, value, goal, id)` counts multi-step ones (every intro, every regulars card). Reading stamps (The end, World traveler, One hundred) are checked when the passport renders, using `maxIdx` the reader stores in `kg-stamps`. Locked stamps show their riddle in the passport.
+`achievements.js` (loaded on the homepage, world pages, About, Vault, 404, and hidden pages) holds the 20 secret stamps: id, name, group, riddle, and emblem. `Achievements.unlock(id)` records one in `kg-achievements` and shows a toast; `Achievements.note(set, value, goal, id)` counts multi-step ones (every intro, every regulars card). Reading stamps (The end, World traveler, One hundred) are checked when the passport renders, using `maxIdx` the reader stores in `kg-stamps`. Locked stamps show their riddle in the passport.
 
 Hidden pages: `solchan.html` (Solar × Haechan across Runners and Strangers). It's reached from the tiny sun on the back of Haechan's card on the About page, or by typing "solchan" on the homepage, and unlocks the Two suns stamp. Quotes on it are verbatim from the manuscripts with chapter citations; later ones sit behind spoiler toggles.
 
@@ -64,4 +64,4 @@ Kat's sorted photos (Desktop/Hoax) are resized into `assets/hoax/roll/` (full, ~
 
 - `hoax-roll.html` — hidden camera-roll page (Photos-app style, albums, viewer, favourites in `kg-hoax-favorites`). Reached from the tiny camera icon on the phone in the Hoax intro; unlocks "Camera roll"; opening the Nana album (or `#nana`) unlocks "Good boy".
 - Typing "nana" on the homepage sends Nana across the screen (also unlocks "Good boy").
-- `world-extras.js` adds the Hoax photo booth (Solar & Jungwon, Solar & Jihoon strips; "Take another" re-rolls four frames) to the Hoax world page.
+- `world-extras.js` hides the Hoax photo booth (Solar & Jungwon, Solar & Jihoon strips; "Take another" re-rolls four frames) behind a twinkling star in the Hoax hero sky (`.booth-star`, positioned in `world.css`; move it if the hero photo changes). Clicking it plays a flash sound, flashes the screen, unlocks the `say-cheese` stamp, scrolls to the booth, and slides the strips in from opposite sides (`booth-slide` sound) before they develop. The booth is hidden again on every visit.

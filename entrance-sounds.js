@@ -728,6 +728,26 @@ window.EntranceSounds = (() => {
       }
       k.tone(t + 1.6, { freq: 2200, to: 7000, glide: 0.6, level: 0.01, attack: 0.05, decay: 0.7 });
     },
+    /* An old camera flash: the capacitor whine, then the pop. */
+    flash(k) {
+      const t = k.ctx.currentTime + 0.02;
+      k.tone(t, { freq: 1800, to: 9000, glide: 0.5, level: 0.012, attack: 0.3, decay: 0.25 });
+      k.burst(t + 0.55, { freq: 1400, type: 'lowpass', level: 0.4, decay: 0.08 });
+      k.burst(t + 0.55, { freq: 4200, q: 1.2, level: 0.18, decay: 0.05 });
+      k.tone(t + 0.55, { freq: 160, to: 60, level: 0.2, decay: 0.2 });
+    },
+    /* Two strips sliding in, one from each side. */
+    'booth-slide'(k) {
+      const { ctx, out } = k, t0 = ctx.currentTime + 0.02;
+      [[-0.85, 0], [0.85, 0.16]].forEach(([pan, d]) => {
+        const t = t0 + d, src = k.loop(k.noise('pink', 4)), g = k.gain(0), bp = k.filter('bandpass', 500, 0.9);
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.4, t + 0.35); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.8);
+        bp.frequency.setValueAtTime(350, t); bp.frequency.exponentialRampToValueAtTime(2200, t + 0.4); bp.frequency.exponentialRampToValueAtTime(600, t + 0.8);
+        const p = k.pan(pan); p.pan?.linearRampToValueAtTime(pan * 0.2, t + 0.75);
+        k.chain(src, bp, g, p, out); src.stop(t + 0.9);
+        k.burst(t + 0.72, { freq: 900, type: 'lowpass', level: 0.18, decay: 0.05, pan: pan * 0.2 });
+      });
+    },
     nana(k) {
       const t = k.ctx.currentTime + 0.02;
       [0, 0.32, 0.64, 0.96].forEach((d, i) => k.tone(t + d, { freq: 420 + i * 40, to: 760 + i * 60, glide: 0.12, level: 0.06, attack: 0.01, decay: 0.16 }));
