@@ -229,7 +229,7 @@
   experienceScript.onload = () => window.initReaderExperience({ world, chapters, topbar, chLabel, chList, backHref, worldLabel, closeDrawer });
   document.body.appendChild(experienceScript);
   const femcScript = document.createElement('script');
-  femcScript.src = new URL('../femc-mode.js?v=3', scriptBase).href;
+  femcScript.src = new URL('../femc-mode.js?v=4', scriptBase).href;
   document.head.appendChild(femcScript);
 
   /* ─────────────────────────────────────────────────────────────

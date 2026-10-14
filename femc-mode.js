@@ -54,8 +54,14 @@
     html.femc-dark-hour .femc-time { color: #6dff9e; }
     .femc-moon { background: #14070f; padding-left: 4px; }
     .femc-moon svg { width: 20px; height: 20px; }
-    .femc-badge .femc-book { background: #14070f; color: #ff8cc0; text-decoration: none; font-size: 15px; }
-    .femc-badge .femc-book:hover, .femc-badge .femc-book:focus-visible { background: #ff8cc0; color: #14070f; }
+    .femc-badge .femc-menu-btn { background: #14070f; color: #fff; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; box-shadow: inset 0 0 0 2px #ff4f9e; }
+    .femc-badge .femc-menu-btn:hover, .femc-badge .femc-menu-btn:focus-visible { background: #ff4f9e; color: #fff; }
+    .femc-navtab { display: none; align-items: center; gap: 6px; margin-left: -8px; margin-right: auto; padding: 7px 14px; border: 0; background: #ff4f9e; color: #fff; font: italic 900 13px/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; letter-spacing: .1em; transform: skewX(-14deg); box-shadow: 3px 3px 0 #14070f; cursor: inherit; }
+    .femc-navtab > * { transform: skewX(14deg); }
+    html.femc .femc-navtab { display: inline-flex; }
+    html.femc .topbar .passport-tab { margin-right: 0; }
+    .femc-navtab:hover, .femc-navtab:focus-visible { background: #fff; color: #14070f; box-shadow: 3px 3px 0 #ff4f9e; outline: none; }
+    @media (max-width: 600px) { .femc-navtab { position: absolute; top: 16px; right: calc(clamp(18px, 4vw, 52px) + 46px); margin: 0; } }
     .femc-badge button { border: 0; margin: 0; background: #fff; color: #14070f; font: inherit; cursor: inherit; }
     .femc-badge button:hover, .femc-badge button:focus-visible { background: #ff8cc0; }
     .femc-badge button[aria-pressed="false"] span { opacity: .4; text-decoration: line-through; }
@@ -164,15 +170,28 @@
     badge.className = 'femc-badge';
     badge.setAttribute('role', 'group');
     badge.setAttribute('aria-label', 'FEMC mode');
-    badge.innerHTML = `<span class="femc-cal"></span><span class="femc-time"></span><span class="femc-moon" role="img"></span>
-      <a class="femc-book" href="${BASE}compendium.html" title="Compendium" aria-label="Compendium"><span>❖</span></a>
+    badge.innerHTML = `<button class="femc-menu-btn" type="button" title="Open the FEMC menu"><span>◆ Menu</span></button><span class="femc-cal"></span><span class="femc-time"></span><span class="femc-moon" role="img"></span>
       <button class="femc-music" type="button" hidden><span>♪</span></button>
       <button class="femc-sound" type="button" title="FEMC sounds"><span>SFX</span></button>
       <button class="femc-exit" type="button" title="Turn off FEMC mode" aria-label="Turn off FEMC mode"><span>✕</span></button>`;
     badge.querySelector('.femc-sound').addEventListener('click', () => { set(SOUND, soundOn() ? 'off' : null); paintBadge(); sfx('femc-click'); });
     badge.querySelector('.femc-music').addEventListener('click', () => { music.toggle(); paintBadge(); });
     badge.querySelector('.femc-exit').addEventListener('click', () => toggle(false));
+    badge.querySelector('.femc-menu-btn').addEventListener('click', openMenu);
     document.body.appendChild(badge);
+    // A FEMC tab in the top bar too, beside the Passport tab.
+    const bar = document.querySelector('.topbar');
+    if (bar && !bar.querySelector('.femc-navtab')) {
+      const tab = document.createElement('button');
+      tab.type = 'button';
+      tab.className = 'femc-navtab';
+      tab.dataset.femcQuiet = '';
+      tab.innerHTML = '<span>◆</span><span class="femc-navtab-label">FEMC</span>';
+      tab.setAttribute('aria-label', 'Open the FEMC menu');
+      tab.addEventListener('click', openMenu);
+      const after = bar.querySelector('.passport-tab') || bar.querySelector('.brand');
+      after ? after.after(tab) : bar.prepend(tab);
+    }
     paintBadge();
     place();
     new MutationObserver(place).observe(document.body, { childList: true });
@@ -301,7 +320,7 @@
   document.addEventListener('click', e => {
     if (!isOn()) return;
     const el = e.target.closest?.(INTERACTIVE);
-    if (!el || el.closest('.femc-badge')) return;
+    if (!el || el.closest('.femc-badge, [data-femc-quiet]')) return;
     const label = (el.getAttribute('aria-label') || el.title || el.textContent || '').trim();
     sfx(BACK.test(label) ? 'femc-back' : 'femc-click');
   }, true);
@@ -361,6 +380,14 @@
     api.playing = () => (audio && !audio.paused ? api.tracks[idx].title : null);
     api.stop = () => { if (audio && !audio.paused) fade(0, () => audio.pause()); };
     api.toggle = () => { save({ on: !api.wanted() }); api.start(); };
+    api.next = () => {
+      if (!api.tracks.length) return;
+      ensure();
+      idx = (idx + 1) % api.tracks.length;
+      audio.src = BASE + api.tracks[idx].src;
+      save({ i: idx, t: 0, on: true });
+      api.sync();
+    };
     return api;
   })();
 
@@ -374,5 +401,7 @@
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
 
-  window.FemcMode = { toggle, isOn, nowPlaying: () => music.playing(), sfx, moon, daypart, load, base: BASE };
+  function openMenu() { load('femc-menu.js?v=1', () => window.FemcMenu).then(() => window.FemcMenu?.open()); }
+  window.FemcMode = { toggle, isOn, openMenu, nowPlaying: () => music.playing(), sfx, moon, daypart, load, base: BASE,
+    music: { playing: () => music.playing(), toggle: () => { music.toggle(); paintBadge(); }, next: () => music.next(), tracks: () => music.tracks } };
 })();
