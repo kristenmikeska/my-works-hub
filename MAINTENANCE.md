@@ -86,6 +86,6 @@ Kat's sorted photos (Desktop/Hoax) are resized into `assets/hoax/roll/` (full, ~
 - **akihiko / compendium** (typed): go to those pages.
 - **Dark Hour:** midnight to 1 a.m. local, once a night (`kg-femc-dh`): green full-screen moment, stamp `dark-hour`.
 - **Full Moon Operation:** on full-moon days (within about a day of full, from `FemcMode.moon()`), a banner; Deploy plays the operation and earns `full-moon` (once per day, `kg-femc-fm`). The badge moon's tooltip shows the next full moon.
-- **`akihiko.html`:** social link page. Rank 1 on first visit, then one rank per new calendar day (`kg-femc-aki`), 10 ranks, a line per rank (`LINES`), the hug photo unblurs at MAX. Plays `tender-feeling.mp3`. Stamps `senpai` (visit) and `max-rank`. Shows a locked screen outside FEMC mode.
+- **`akihiko.html`:** social link page. Rank 1 on first visit; each "Spend time together" rolls an in-game 2009 calendar to the next scene and ranks up, no real-day wait (`kg-femc-aki`). Ten scenes in `SCENES` (date, time of day, place, his line), Christmas Eve at MAX; the hug photo unblurs at MAX. Plays `tender-feeling.mp3`. Stamps `senpai` (visit) and `max-rank`. Shows a locked screen outside FEMC mode.
 - **`compendium.html`:** Kat's fictional favorites from `assets/femc/compendium.js`; each entry unlocks with a stamp id. Stamp `compendium`. The badge's ❖ button links here.
 - Stamps with `side: 'femc'` (group "The other side") stay hidden in the passport until `femc` is unlocked.

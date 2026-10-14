@@ -28,6 +28,17 @@
     .sl-box > span { display: inline-block; margin-left: 16px; padding: 5px 16px; background: var(--pink); font: italic 900 16px/1 "Avenir Next Condensed", sans-serif; letter-spacing: .05em; text-transform: uppercase; transform: skewX(-14deg); box-shadow: 4px 4px 0 var(--night); }
     .sl-box p { min-height: 5em; margin: -4px 0 0; padding: 18px 22px; border: 2px solid var(--pink-2); border-radius: 4px 22px 4px 22px; background: rgba(20, 7, 15, .9); box-shadow: 6px 6px 0 rgba(255, 79, 158, .45); font-size: 17px; font-weight: 600; }
     .sl-note { margin: 16px 0 0; color: var(--muted); font-size: 14px; }
+    .sl-scene { display: inline-flex; align-items: center; gap: 12px; margin: 4px 0 0; padding: 6px 14px; background: var(--night); transform: skewX(-14deg); box-shadow: 4px 4px 0 rgba(255, 79, 158, .5); }
+    .sl-scene > * { transform: skewX(14deg); }
+    .sl-scene b { font: italic 900 22px/1 "Avenir Next Condensed", sans-serif; letter-spacing: -.01em; }
+    .sl-scene b small { margin-left: 4px; color: var(--pink-2); font-size: 12px; letter-spacing: .08em; }
+    .sl-scene span { color: var(--pink-2); font: italic 800 12px/1.2 "Avenir Next Condensed", sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .sl-time { position: fixed; inset: 0; z-index: 49; display: grid; place-items: center; background: rgba(14, 5, 10, .88); animation: sl-up 1.7s ease both; pointer-events: none; }
+    .sl-time-clip { height: 1em; overflow: hidden; font: italic 900 clamp(70px, 13vw, 150px)/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; transform: skewX(-8deg); text-shadow: .05em .05em 0 var(--pink); }
+    .sl-time-roll span { display: block; height: 1em; }
+    .sl-time-roll small { margin-left: .15em; font-size: .28em; color: var(--pink-2); letter-spacing: .08em; text-transform: uppercase; }
+    .sl-time-roll { animation: sl-roll 1.3s .15s cubic-bezier(.6, 0, .3, 1) both; }
+    @keyframes sl-roll { from { transform: translateY(0); } to { transform: translateY(-1em); } }
     .sl-photo { position: relative; margin: 0; transform: rotate(2deg); }
     .sl-photo img { display: block; width: 100%; border: 10px solid #fff; box-shadow: 14px 14px 0 var(--pink), 0 30px 60px #0009; transition: filter 1.4s ease; }
     .sl-photo.locked img { filter: blur(18px) grayscale(.6) brightness(.6); }
@@ -59,6 +70,7 @@
       <h1 class="cond">Akihiko<br>Sanada</h1>
       <p class="sl-meta">Third year · Gekkoukan High · Boxing club captain</p>
       <div class="sl-rank"><span class="sl-rank-num cond"><small>RANK</small><span id="rank">1</span></span><span class="sl-pips" id="pips"></span></div>
+      <p class="sl-scene" id="scene"><b id="date"></b><span id="place"></span></p>
       <div class="sl-box"><span>Akihiko</span><p id="line"></p></div>
       <button class="fp-btn" id="hang" type="button">Spend time together</button>
       <p class="sl-note" id="note"></p>
@@ -72,23 +84,26 @@
   <script src="achievements.js?v=6"></script>
   <script>
   (function () {
-    // One line per rank. Rank 1 is the day you meet; each later rank takes a new real day.
-    const LINES = [
-      "You're the new transfer student, right? ...You look like you could keep up. Want to go for a run sometime?",
-      "Protein's the key. You'd be surprised what a good bowl of beef can fix.",
-      "Shinji used to say I never know when to stop. ...He wasn't wrong.",
-      "I don't fight to win. I fight so I'm strong enough when it counts.",
-      "Most people get tired of hearing me talk about training. You just... listen.",
-      "I had a little sister. Miki. ...I couldn't do anything that day. I've been trying to be strong enough ever since.",
-      "Funny. I used to come up to the roof to clear my head. Now I come up here hoping you'll show up.",
-      "You don't have to be strong all the time, you know. ...I'm saying that to myself too.",
-      "I'm not good with words, so I'll just say it. I want you around. Not as a teammate.",
-      "I'm going to keep getting stronger. But this time, it's so I can stay next to you."
+    // One scene per rank, on the in-game calendar (2009), like a P3P FeMC playthrough.
+    // Each "Spend time together" moves the calendar to the next scene and ranks up.
+    const SCENES = [
+      { date: [4, 23], time: 'After School', place: 'Gekkoukan High · Hallway', line: "You're the new transfer student, right? ...You look like you could keep up. Want to go for a run sometime?" },
+      { date: [5, 14], time: 'After School', place: 'Hagakure Ramen', line: "Protein's the key. You'd be surprised what a good bowl of beef can fix." },
+      { date: [6, 9], time: 'Evening', place: 'Iwatodai Dorm · Lounge', line: "Shinji used to say I never know when to stop. ...He wasn't wrong." },
+      { date: [7, 2], time: 'After School', place: 'Boxing Club', line: "I don't fight to win. I fight so I'm strong enough when it counts." },
+      { date: [7, 28], time: 'Daytime', place: 'Naganaki Shrine', line: "Most people get tired of hearing me talk about training. You just... listen." },
+      { date: [8, 20], time: 'Evening', place: 'Iwatodai Dorm · Rooftop', line: "I had a little sister. Miki. ...I couldn't do anything that day. I've been trying to be strong enough ever since." },
+      { date: [9, 17], time: 'After School', place: 'Gekkoukan High · Rooftop', line: "Funny. I used to come up to the roof to clear my head. Now I come up here hoping you'll show up." },
+      { date: [10, 22], time: 'Evening', place: 'Paulownia Mall', line: "You don't have to be strong all the time, you know. ...I'm saying that to myself too." },
+      { date: [11, 27], time: 'After School', place: 'Iwatodai Station', line: "I'm not good with words, so I'll just say it. I want you around. Not as a teammate." },
+      { date: [12, 24], time: 'Evening', place: 'Iwatodai Dorm · Christmas Eve', line: "I'm going to keep getting stronger. But this time, it's so I can stay next to you." }
     ];
+    const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const dayName = ([m, d]) => DAYS[new Date(2009, m - 1, d).getDay()];
+    const dateHtml = sc => `${sc.date[0]}/${sc.date[1]}<small>${dayName(sc.date)}</small>`;
     const KEY = 'kg-femc-aki';
     const read = () => { try { return JSON.parse(localStorage.getItem(KEY)) || { rank: 0 }; } catch (e) { return { rank: 0 }; } };
     const write = v => { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} };
-    const today = () => { const d = new Date(); return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`; };
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const $ = id => document.getElementById(id);
     const F = () => window.FemcMode;
@@ -107,15 +122,20 @@
       };
       step();
     }
+    function setScene(rank) {
+      const sc = SCENES[Math.max(1, Math.min(rank, 10)) - 1];
+      $('date').innerHTML = dateHtml(sc);
+      $('place').textContent = `${sc.time} · ${sc.place}`;
+    }
     function paint(newRank) {
       const s = read(), max = s.rank >= 10;
       $('rank').textContent = max ? 'MAX' : s.rank;
       $('pips').replaceChildren(...Array.from({ length: 10 }, (_, i) => { const p = document.createElement('i'); if (i < s.rank) p.className = 'on' + (newRank && i === s.rank - 1 ? ' new' : ''); return p; }));
       $('photo').classList.toggle('locked', !max);
-      const done = s.day === today();
       $('hang').hidden = max;
-      $('hang').disabled = done;
-      $('note').textContent = max ? 'Your bond with him is as strong as it gets.' : done ? 'You already spent today together. See him tomorrow.' : '';
+      $('hang').disabled = busy;
+      $('note').textContent = max ? 'Your bond with him is as strong as it gets.' : `Next time: ${SCENES[s.rank].time.toLowerCase()}, ${SCENES[s.rank].date[0]}/${SCENES[s.rank].date[1]}.`;
+      setScene(s.rank);
     }
     function rankUp(label) {
       sfx('femc-rankup');
@@ -126,14 +146,31 @@
       document.body.appendChild(up);
       setTimeout(() => up.remove(), 2500);
     }
+    // Time passes: the calendar rolls from the last scene to the next one.
+    function timePasses(from, to, done) {
+      if (reduced) return done();
+      const el = document.createElement('div');
+      el.className = 'sl-time';
+      el.innerHTML = `<div class="sl-time-clip"><div class="sl-time-roll"><span>${dateHtml(from)}</span><span>${dateHtml(to)}</span></div></div>`;
+      document.body.appendChild(el);
+      sfx('femc-hover');
+      setTimeout(() => sfx('femc-hover'), 900);
+      setTimeout(() => { el.remove(); done(); }, 1650);
+    }
+    let busy = false;
     function hang() {
       const s = read();
-      if (s.day === today() || s.rank >= 10) return;
-      s.rank += 1; s.day = today(); write(s);
-      paint(true);
-      rankUp(s.rank >= 10 ? 'RANK<br>MAX' : `RANK ${s.rank}<small>your bond grew stronger</small>`);
-      setTimeout(() => say(LINES[s.rank - 1]), reduced ? 0 : 1200);
-      if (s.rank >= 10) window.Achievements?.unlock('max-rank');
+      if (busy || s.rank >= 10) return;
+      busy = true;
+      $('hang').disabled = true;
+      timePasses(SCENES[Math.max(s.rank, 1) - 1], SCENES[s.rank], () => {
+        s.rank += 1; write(s);
+        busy = false;
+        paint(true);
+        rankUp(s.rank >= 10 ? 'RANK<br>MAX' : `RANK ${s.rank}<small>your bond grew stronger</small>`);
+        setTimeout(() => say(SCENES[s.rank - 1].line), reduced ? 0 : 1200);
+        if (s.rank >= 10) window.Achievements?.unlock('max-rank');
+      });
     }
     $('hang').addEventListener('click', hang);
 
@@ -155,8 +192,8 @@
       if (!on) { song.pause(); return; }
       window.Achievements?.unlock('senpai');
       const s = read();
-      if (!s.rank) { s.rank = 1; s.day = today(); write(s); paint(true); rankUp('RANK 1<small>social link established</small>'); setTimeout(() => say(LINES[0]), reduced ? 0 : 1200); }
-      else { paint(false); say(LINES[Math.min(s.rank, 10) - 1]); }
+      if (!s.rank) { s.rank = 1; write(s); paint(true); rankUp('RANK 1<small>social link established</small>'); setTimeout(() => say(SCENES[0].line), reduced ? 0 : 1200); }
+      else { paint(false); say(SCENES[Math.min(s.rank, 10) - 1].line); }
       playSong();
     }
     new MutationObserver(() => { render(); playSong(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
