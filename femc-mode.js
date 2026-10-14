@@ -61,7 +61,8 @@
     html.femc .femc-navtab { display: inline-flex; }
     html.femc .topbar .passport-tab { margin-right: 0; }
     .femc-navtab:hover, .femc-navtab:focus-visible { background: #fff; color: #14070f; box-shadow: 3px 3px 0 #ff4f9e; outline: none; }
-    @media (max-width: 600px) { .femc-navtab { position: absolute; top: 16px; right: calc(clamp(18px, 4vw, 52px) + 46px); margin: 0; } }
+    .world-topbar .femc-navtab { margin-left: 14px; }
+    @media (max-width: 600px) { .topbar .femc-navtab { position: absolute; top: 16px; right: calc(clamp(18px, 4vw, 52px) + 46px); margin: 0; } }
     .femc-badge button { border: 0; margin: 0; background: #fff; color: #14070f; font: inherit; cursor: inherit; }
     .femc-badge button:hover, .femc-badge button:focus-visible { background: #ff8cc0; }
     .femc-badge button[aria-pressed="false"] span { opacity: .4; text-decoration: line-through; }
@@ -179,8 +180,8 @@
     badge.querySelector('.femc-exit').addEventListener('click', () => toggle(false));
     badge.querySelector('.femc-menu-btn').addEventListener('click', openMenu);
     document.body.appendChild(badge);
-    // A FEMC tab in the top bar too, beside the Passport tab.
-    const bar = document.querySelector('.topbar');
+    // A FEMC tab in the top bar too: beside the Passport tab, or after "All Worlds" on world pages.
+    const bar = document.querySelector('.topbar, .world-topbar');
     if (bar && !bar.querySelector('.femc-navtab')) {
       const tab = document.createElement('button');
       tab.type = 'button';
@@ -189,7 +190,7 @@
       tab.innerHTML = '<span>◆</span><span class="femc-navtab-label">FEMC</span>';
       tab.setAttribute('aria-label', 'Open the FEMC menu');
       tab.addEventListener('click', openMenu);
-      const after = bar.querySelector('.passport-tab') || bar.querySelector('.brand');
+      const after = bar.querySelector('.passport-tab') || bar.querySelector('.brand') || bar.querySelector('.back-link');
       after ? after.after(tab) : bar.prepend(tab);
     }
     paintBadge();
