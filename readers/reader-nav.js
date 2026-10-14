@@ -225,7 +225,7 @@
   experienceStyles.href = new URL('reader-experience.css?v=2', scriptBase).href;
   document.head.appendChild(experienceStyles);
   const experienceScript = document.createElement('script');
-  experienceScript.src = new URL('reader-experience.js?v=2', scriptBase).href;
+  experienceScript.src = new URL('reader-experience.js?v=3', scriptBase).href;
   experienceScript.onload = () => window.initReaderExperience({ world, chapters, topbar, chLabel, chList, backHref, worldLabel, closeDrawer });
   document.body.appendChild(experienceScript);
 

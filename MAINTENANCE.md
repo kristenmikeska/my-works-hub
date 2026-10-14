@@ -43,3 +43,11 @@ The passport (homepage, below the archive) shows three stamps per world: Started
 - **Time of day** sets `data-daypart` on `<html>` (dawn, day, golden, dusk, night) for the hero glow, with stars at dusk and night; it re-checks when the visitor returns to the tab.
 
 Avoid long `setInterval`s on the homepage: headless screenshot testing fast-forwards to the next timer.
+
+## Secret stamps, hidden pages, and the regulars
+
+`achievements.js` (loaded on the homepage, world pages, About, Vault, 404, and hidden pages) holds the 17 secret stamps: id, name, group, riddle, and emblem. `Achievements.unlock(id)` records one in `kg-achievements` and shows a toast; `Achievements.note(set, value, goal, id)` counts multi-step ones (every intro, every regulars card). Reading stamps (The end, World traveler, One hundred) are checked when the passport renders, using `maxIdx` the reader stores in `kg-stamps`. Locked stamps show their riddle in the passport.
+
+Hidden pages: `solchan.html` (Solar × Haechan across Runners and Strangers). It's reached from the tiny sun on the back of Haechan's card on the About page, or by typing "solchan" on the homepage, and unlocks the Two suns stamp. Quotes on it are verbatim from the manuscripts with chapter citations; later ones sit behind spoiler toggles.
+
+About page: `about-effects.js` turns the regulars cards into flip cards whose backs list every world each person appears in, read from `worlds-data.js` (cast, love interests, lead).

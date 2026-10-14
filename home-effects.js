@@ -21,7 +21,7 @@
     syncLoud();
     loud.addEventListener('click', () => {
       const turningOn = read(PREF_KEY) !== 'on';
-      if (turningOn) { write(PREF_KEY, 'on'); sound('loud-on'); }
+      if (turningOn) { write(PREF_KEY, 'on'); sound('loud-on'); window.Achievements?.unlock('too-loud'); }
       else { window.EntranceSounds?.home('loud-off', { force: true }); write(PREF_KEY, 'off'); }
       write('kg-loud-hint', 'seen');
       if (hint) hint.hidden = true;
@@ -99,7 +99,7 @@
     ['petal', 'petal-thorn'], ['thorn', 'petal-thorn'], ['peace', 'peace'], ['recherche', 'recherche'], ['castle', 'recherche'],
     ['secret', 'secret'], ['hoax', 'hoax'], ['bestay', 'hoax'], ['casual', 'casual'], ['mercer', 'casual'],
     ['havenbrook', 'havenbrook'], ['dream', 'havenbrook'], ['minji', 'soul-of-minji'], ['deadair', 'saint-of-dead-air'],
-    ['dead air', 'saint-of-dead-air'], ['dmhs', 'go'], ['rain', 'go'], ['solar', 'solar']
+    ['dead air', 'saint-of-dead-air'], ['dmhs', 'go'], ['rain', 'go'], ['solchan', 'solchan'], ['solar', 'solar']
   ];
   let typed = '', busy = false;
   function announce(text, accent) {
@@ -147,6 +147,8 @@
     if (!hit) return;
     typed = ''; busy = true; setTimeout(() => { busy = false; }, 1600);
     if (reduced.matches && hit[1] !== 'saint-of-dead-air') { const w = worldById(hit[1]); announce(`✦ ${w ? w.title : 'Solar'}`, w ? w.accent : '#f2b84b'); return; }
+    if (hit[1] === 'solchan') { window.location.href = 'solchan.html'; return; }
+    window.Achievements?.unlock(hit[1] === 'solar' ? 'every-solar' : 'magic-word');
     if (hit[1] === 'solar') solarBurst();
     else if (hit[1] === 'saint-of-dead-air') deadAir();
     else { const w = worldById(hit[1]); if (w) worldEgg(w); }
@@ -159,6 +161,8 @@
     const h = new Date().getHours();
     const part = h >= 5 && h < 8 ? 'dawn' : h >= 8 && h < 16 ? 'day' : h >= 16 && h < 19 ? 'golden' : h >= 19 && h < 22 ? 'dusk' : 'night';
     document.documentElement.dataset.daypart = part;
+    if (part === 'night') window.Achievements?.unlock('night-owl');
+    if (part === 'golden') window.Achievements?.unlock('golden-hour');
   }
   daypart();
   document.addEventListener('visibilitychange', () => { if (!document.hidden) daypart(); });

@@ -101,6 +101,41 @@ function renderPassport() {
   }));
   const count = document.querySelector("#passportCount");
   if (count) count.textContent = `${earnedCount} of ${worlds.length * 3} stamps collected`;
+  checkReadingStamps(stamps);
+  renderSecretStamps();
+}
+
+function checkReadingStamps(stamps) {
+  const A = window.Achievements;
+  if (!A) return;
+  let chapters = 0, startedAll = true;
+  worlds.forEach(world => {
+    const mine = stamps[world.id] || {}, prog = getProgress(world.id);
+    if (world.status === "Completed" && (mine.finished || (prog && prog.percent >= 100))) A.unlock("the-end");
+    if (!world.readingPaused && !mine.started && !prog) startedAll = false;
+    chapters += Math.max(Number.isInteger(mine.maxIdx) ? mine.maxIdx + 1 : 0, prog ? prog.idx + 1 : 0);
+  });
+  if (startedAll) A.unlock("traveler");
+  if (chapters >= 100) A.unlock("hundred");
+}
+
+function renderSecretStamps() {
+  const grid = document.querySelector("#secretGrid");
+  if (!grid || !window.Achievements) return;
+  const got = Achievements.unlocked();
+  const dateFmt = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
+  const list = Achievements.list();
+  grid.replaceChildren(...list.map(a => {
+    const when = got[a.id];
+    const card = document.createElement("div");
+    card.className = `secret-stamp${when ? " secret-found" : ""}`;
+    card.innerHTML = `<span class="stamp ${when ? "stamp-finished" : "stamp-locked"}"><span class="stamp-art"><svg class="ghost" viewBox="0 0 64 64" aria-hidden="true">${a.svg}</svg><svg class="ink" viewBox="0 0 64 64" aria-hidden="true">${a.svg}</svg></span></span><span class="secret-copy"><b></b><small></small></span>`;
+    card.querySelector("b").textContent = when ? a.name : "???";
+    card.querySelector("small").textContent = when ? `${a.group} · ${dateFmt.format(new Date(when))}` : a.hint;
+    return card;
+  }));
+  const count = document.querySelector("#secretCount");
+  if (count) count.textContent = `${Object.keys(got).filter(id => list.some(a => a.id === id)).length} of ${list.length} found`;
 }
 
 function openKeepsake(world, keepsake) {
@@ -121,4 +156,5 @@ function openKeepsake(world, keepsake) {
   object.querySelector(".ks-date").textContent = keepsake.at ? `Kept ${new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric" }).format(new Date(keepsake.at))}` : "";
   dialog.showModal();
   window.EntranceSounds?.preview(world.id);
+  window.Achievements?.unlock('keepsake');
 }

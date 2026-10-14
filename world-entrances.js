@@ -573,6 +573,8 @@ window.WorldEntrances = (() => {
       dialog.innerHTML = scene.markup(skip);
       document.body.appendChild(dialog);
       const stopScene = scene.start ? scene.start(dialog) : null;
+      window.Achievements?.note('intros', world.id, Object.keys(SCENES).length, 'every-door');
+      dialog.addEventListener('entrance:cue', event => { if (event.detail === 'dead-end') window.Achievements?.unlock('dead-air'); });
       const music = window.WorldMusic;
       const musicWasPlaying = !!(music && music.isPlaying());
       if (musicWasPlaying) music.fadeOut(0.8);
@@ -584,7 +586,7 @@ window.WorldEntrances = (() => {
         soundBtn.setAttribute('aria-label', on ? 'Turn intro sound off' : 'Turn intro sound on');
         soundBtn.querySelector('.entrance-sound-label').textContent = on ? 'Sound off' : 'Sound on';
       };
-      const turnOn = () => { engine.start(); writePref('on'); };
+      const turnOn = () => { engine.start(); writePref('on'); window.Achievements?.unlock('too-loud'); };
       if (!engine) soundBtn.hidden = true;
       else {
         engine.onchange = syncSound;

@@ -344,7 +344,7 @@ function initMusicPlayer(world, { autoplay = true } = {}) {
   playBtn.addEventListener("click", togglePlay);
   nextBtn.addEventListener("click", () => goNext());
   prevBtn.addEventListener("click", goPrev);
-  audio.addEventListener("ended", () => goNext(true));
+  audio.addEventListener("ended", () => { window.Achievements?.unlock("on-repeat"); goNext(true); });
 
   // --- Metadata / time updates ---
   audio.addEventListener("loadedmetadata", () => {

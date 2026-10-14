@@ -1030,3 +1030,45 @@ html[data-daypart="dusk"] .stars { opacity: .45; }
 
 @media (max-width: 520px) { .ks-object { padding: 26px 22px 22px; } .ks-delicate .ks-lines { columns: 1; } .ks-petal-thorn .ks-kicker, .ks-hoax .ks-kicker { margin: -26px -22px 16px; } }
 @media (prefers-reduced-motion: reduce) { .keepsake[open] .ks-object, .ks-lines p, .ks-seal, .ks-peace .ks-stamp, .stamp-keepsake { animation: none !important; opacity: 1; } }
+
+/* Secret stamps: achievements and easter eggs. */
+.secret-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 46px 0 4px; }
+.secret-head h3 { margin: 0; font: 1.6rem Georgia, serif; }
+.secret-head .passport-count { margin: 0; }
+.secret-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 10px; }
+.secret-stamp { --a: #f2b84b; display: flex; align-items: center; gap: 14px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+.secret-stamp .stamp { --rot: -6deg; width: 56px; height: 56px; padding: 9px; flex-shrink: 0; }
+.secret-stamp:nth-child(even) .stamp { --rot: 5deg; }
+.secret-copy { display: grid; gap: 3px; min-width: 0; }
+.secret-copy b { font: 1rem/1.2 Georgia, serif; color: var(--ink); }
+.secret-copy small { color: var(--muted); font-size: .75rem; line-height: 1.4; }
+.secret-stamp:not(.secret-found) .secret-copy small { font-style: italic; }
+.secret-stamp:not(.secret-found) .secret-copy b { letter-spacing: .2em; color: var(--muted); }
+.stamp-locked { border: 1.5px dashed var(--line); outline: 0; background: #0000001a; color: var(--muted); transform: none; }
+.stamp-locked .ink { display: none; }
+.stamp-locked .ghost { opacity: .3; }
+.secret-found { border-color: color-mix(in srgb, var(--a) 40%, var(--line)); background: linear-gradient(160deg, color-mix(in srgb, var(--a) 10%, var(--panel)), var(--panel)); }
+.secret-found .stamp-art svg.ink text, .stamp-art svg.ink text { fill: currentColor; }
+
+/* About: the regulars cards flip to show their record across the archive. */
+.regular-card { cursor: pointer; perspective: 1200px; }
+.regular-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.rc-inner { position: relative; height: 100%; transition: transform .7s cubic-bezier(.3, 1.2, .4, 1); transform-style: preserve-3d; }
+.regular-card.flipped .rc-inner { transform: rotateY(180deg); }
+.rc-front, .rc-back { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.rc-back { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 10px; padding: 4px 2px; overflow: auto; transform: rotateY(180deg); text-align: left; }
+.rc-back-kicker { margin: 0; color: var(--a); font-size: .68rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.rc-back-count { margin: 0; color: var(--muted); font-size: .85rem; }
+.rc-back-count b { color: var(--ink); font: 1.6rem Georgia, serif; margin-right: 4px; }
+.rc-worlds { display: grid; grid-template-columns: 1fr; gap: 5px; }
+.rc-world { display: flex; align-items: center; gap: 8px; padding: 5px 8px 5px 5px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); font-size: .78rem; text-decoration: none; background: color-mix(in srgb, var(--a) 8%, transparent); }
+.rc-world:hover { border-color: var(--a); }
+.rc-world .stamp-art { width: 24px; height: 24px; flex-shrink: 0; color: var(--a); }
+.rc-world .stamp-art .ghost { display: none; }
+.rc-back-hint { margin: auto 0 0; color: var(--muted); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; opacity: .6; }
+.rc-sun { position: absolute; right: 2px; bottom: 0; width: 22px; height: 22px; color: var(--a); opacity: .35; transition: opacity .3s, transform .6s; }
+.rc-sun svg { width: 100%; height: 100%; fill: currentColor; }
+.rc-sun:hover, .rc-sun:focus-visible { opacity: 1; transform: rotate(90deg) scale(1.3); filter: drop-shadow(0 0 6px var(--a)); }
+@media (prefers-reduced-motion: reduce) { .rc-inner { transition: none; } }
+.rc-inner { width: 100%; }
+.rc-front { display: flex; flex-direction: column; align-items: center; }

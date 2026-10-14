@@ -160,6 +160,7 @@ window.initReaderExperience = function ({ world, chapters, topbar, chLabel, chLi
     const all = readStored(STAMPS_KEY) || {};
     const mine = all[world] || {};
     const now = Date.now(), earned = [];
+    if (!Number.isInteger(mine.maxIdx) || current > mine.maxIdx) { mine.maxIdx = current; all[world] = mine; writeStored(STAMPS_KEY, all); }
     if (!mine.started) { mine.started = now; earned.push('started'); }
     if (!mine.halfway && percent >= 50) { mine.halfway = now; earned.push('halfway'); }
     if (!mine.finished && atEnd) { mine.finished = now; earned.push('finished'); }

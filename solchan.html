@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>solchan — Katarina Grande</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=11">
+  <style>
+    body { background: radial-gradient(ellipse at 18% 0%, rgba(49,208,195,.14), transparent 42%), radial-gradient(ellipse at 82% 0%, rgba(196,180,218,.16), transparent 42%), linear-gradient(180deg, #0f1214 0%, #0d0c12 60%, #0b0a0e 100%); }
+    .sc { width: min(1180px, 100%); margin: 0 auto; padding: 0 clamp(18px, 4vw, 48px) 90px; }
+    .sc-hero { position: relative; display: grid; place-items: center; min-height: 440px; text-align: center; overflow: hidden; }
+    .sc-orbit { position: absolute; left: 50%; top: 50%; width: 300px; height: 300px; margin: -150px 0 0 -150px; animation: sc-orbit 18s linear infinite; pointer-events: none; }
+    .sc-sun { position: absolute; width: 84px; height: 84px; border-radius: 50%; filter: blur(.5px); }
+    .sc-sun-a { left: 0; top: 50%; margin-top: -42px; background: radial-gradient(circle, #e9fffc 0 18%, #31d0c3 45%, #31d0c300 70%); box-shadow: 0 0 60px #31d0c3aa; }
+    .sc-sun-b { right: 0; top: 50%; margin-top: -42px; background: radial-gradient(circle, #fbf7ff 0 18%, #c4b4da 45%, #c4b4da00 70%); box-shadow: 0 0 60px #c4b4daaa; }
+    .sc-hero-copy { position: relative; z-index: 1; }
+    .sc-eyebrow { margin: 0 0 10px; color: var(--gold); font-size: .72rem; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; }
+    .sc-title { margin: 0; font: italic 400 clamp(64px, 13vw, 170px)/1 Georgia, serif; letter-spacing: -.02em; background: linear-gradient(90deg, #7ff0e6, #fff9f1 50%, #d9cdea); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; }
+    .sc-sub { margin: 14px 0 0; font: italic 1.25rem Georgia, serif; color: #f3eee6; }
+    .sc-intro { max-width: 640px; margin: 0 auto 46px; color: var(--muted); font-size: 1.02rem; line-height: 1.75; text-align: center; }
+    .sc-split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .sc-world { --a: #31d0c3; position: relative; padding: 26px 26px 24px; border: 1px solid color-mix(in srgb, var(--a) 35%, transparent); border-radius: 20px; background: linear-gradient(170deg, color-mix(in srgb, var(--a) 10%, #131317), #111014 60%); }
+    .sc-world.strangers { --a: #c4b4da; }
+    .sc-world-label { margin: 0; color: var(--a); font-size: .72rem; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; }
+    .sc-world h2 { margin: 6px 0 2px; font: 2.2rem/1.1 Georgia, serif; }
+    .sc-setting { margin: 0 0 20px; color: var(--muted); font-style: italic; }
+    .sc-world h3 { margin: 22px 0 8px; color: var(--a); font-size: .7rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .sc-world p { margin: 0 0 10px; line-height: 1.7; }
+    .sc-who { display: grid; gap: 10px; }
+    .sc-who p { margin: 0; padding: 12px 14px; border-radius: 12px; background: #ffffff08; }
+    .sc-who b { display: block; margin-bottom: 2px; font: 1.05rem Georgia, serif; color: var(--ink); }
+    .sc-quote { margin: 0 0 10px; padding: 4px 0 4px 16px; border-left: 2px solid var(--a); font: italic 1.08rem/1.6 Georgia, serif; color: #f6f1ea; }
+    .sc-quote cite { display: block; margin-top: 4px; color: var(--muted); font: normal .72rem ui-sans-serif, system-ui, sans-serif; letter-spacing: .06em; }
+    .sc-spoiler { margin-top: 16px; border: 1px dashed color-mix(in srgb, var(--a) 45%, transparent); border-radius: 12px; }
+    .sc-spoiler summary { padding: 11px 14px; color: var(--a); font-size: .82rem; font-weight: 700; cursor: pointer; list-style: none; }
+    .sc-spoiler summary::-webkit-details-marker { display: none; }
+    .sc-spoiler summary::before { content: '✦ '; }
+    .sc-spoiler[open] summary { border-bottom: 1px dashed color-mix(in srgb, var(--a) 30%, transparent); }
+    .sc-spoiler > div { padding: 14px; }
+    .sc-play { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding: 10px 14px 10px 10px; border: 1px solid var(--line); border-radius: 99px; background: #0000002a; }
+    .sc-play button { width: 38px; height: 38px; border: 0; border-radius: 50%; background: var(--a); color: #0d0c12; font-size: 14px; cursor: pointer; }
+    .sc-play small { display: block; color: var(--muted); font-size: .72rem; }
+    .sc-read { display: inline-block; margin-top: 16px; color: var(--a); font-weight: 700; font-size: .85rem; }
+    .sc-table-wrap { margin: 46px 0 0; overflow-x: auto; }
+    .sc-table { width: 100%; min-width: 560px; border-collapse: separate; border-spacing: 0; }
+    .sc-table caption { margin-bottom: 14px; text-align: left; font: 1.6rem Georgia, serif; }
+    .sc-table th, .sc-table td { padding: 13px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.5; }
+    .sc-table thead th { font-size: .72rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .sc-table thead th:nth-child(2) { color: #31d0c3; }
+    .sc-table thead th:nth-child(3) { color: #c4b4da; }
+    .sc-table tbody th { color: var(--muted); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+    .sc-foot { margin-top: 50px; text-align: center; color: var(--muted); font-size: .9rem; }
+    .sc-foot a { color: var(--gold); }
+    @keyframes sc-orbit { to { transform: rotate(360deg); } }
+    @media (max-width: 820px) { .sc-split { grid-template-columns: 1fr; } .sc-orbit { width: 220px; height: 220px; margin: -110px 0 0 -110px; } }
+    @media (prefers-reduced-motion: reduce) { .sc-orbit { animation: none; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/brand-avatar.png" alt="">
+      <span class="brand-label"><strong>Katarina Grande</strong><small>Universe Archive</small></span>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="index.html#worlds">Archive</a>
+      <a href="vault.html">Vault</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="sc">
+    <section class="sc-hero">
+      <div class="sc-orbit" aria-hidden="true"><span class="sc-sun sc-sun-a"></span><span class="sc-sun sc-sun-b"></span></div>
+      <div class="sc-hero-copy">
+        <p class="sc-eyebrow">✦ a hidden page · you found it ✦</p>
+        <h1 class="sc-title">solchan</h1>
+        <p class="sc-sub">Solar and Haechan. Two names for the sun.</p>
+      </div>
+    </section>
+
+    <p class="sc-intro">The same two names, two different worlds. In one, they're a campus secret at Syracuse that everyone is one post away from finding out. In the other, she's promised to someone else and he sleeps across the hall. Different people every time, and somehow they still find each other.</p>
+
+    <div class="sc-split">
+      <article class="sc-world runners">
+        <p class="sc-world-label">Runners</p>
+        <h2>the campus secret</h2>
+        <p class="sc-setting">Syracuse · fall semester</p>
+        <div class="sc-who">
+          <p><b>Solar Lee</b>Alpha Phi by name, Grandmaster Kiriko by choice, trying very hard not to become campus content.</p>
+          <p><b>Haechan</b>Sigma Chi, a reputation that walks in before he does, and more music and gaming skill than the campus version of him lets on.</p>
+        </div>
+        <h3>How it starts</h3>
+        <p>Media and Society. Antagonism in public, something quieter and more private underneath it.</p>
+        <h3>In their words</h3>
+        <blockquote class="sc-quote">"This fits you better than that."<cite>Haechan · ch. 16, performing never ends</cite></blockquote>
+        <details class="sc-spoiler">
+          <summary>Tap to reveal · spoilers through ch. 64</summary>
+          <div>
+            <blockquote class="sc-quote">"And don't miss anymore practices… that's yours, remember that."<cite>Haechan · ch. 52, remember that</cite></blockquote>
+            <blockquote class="sc-quote">"I'm not going to be the reason you freeze to death."<cite>Haechan · ch. 59, schedules and shapes</cite></blockquote>
+            <blockquote class="sc-quote">"I'm not going to take it back… it fits you better."<cite>Haechan · ch. 62, next time</cite></blockquote>
+            <blockquote class="sc-quote">"Just don't give yourself away, Donghyuck."<cite>Solar · ch. 64, hot or cold</cite></blockquote>
+          </div>
+        </details>
+        <div class="sc-play"><button type="button" data-song="assets/audio/Camo-Runners.mp3" aria-label="Play Runners by Camo">▶</button><span>Runners<small>Camo · the Runners soundtrack</small></span></div>
+        <a class="sc-read" href="world.html#runners">Enter Runners →</a>
+      </article>
+
+      <article class="sc-world strangers">
+        <p class="sc-world-label">Strangers</p>
+        <h2>the room across the hall</h2>
+        <p class="sc-setting">Incheon · November 2012</p>
+        <div class="sc-who">
+          <p><b>Solar Lee</b>The port family's daughter, who knows how to smile through a dinner, keep a secret, and stitch a wound nobody can take to a hospital.</p>
+          <p><b>Haechan</b>Her father's most reckless dog, assigned to keep her alive until the wedding. He sleeps across the hall.</p>
+        </div>
+        <h3>How it starts</h3>
+        <p>A truce, a wedding date, and a bodyguard with a history nobody will explain. They hate each other. They keep hating each other.</p>
+        <h3>In their words</h3>
+        <blockquote class="sc-quote">"I'm the only one in this whole fucking city you're <em>allowed</em> to hit."<cite>Haechan · ch. 2, funerals and weddings</cite></blockquote>
+        <blockquote class="sc-quote">"I hate you."<br>"Good. Great. That makes two of us, agasshi."<cite>Solar and Haechan · ch. 2, funerals and weddings</cite></blockquote>
+        <details class="sc-spoiler">
+          <summary>Tap to reveal · spoilers through ch. 19</summary>
+          <div>
+            <blockquote class="sc-quote">"If you put your hands on her like that again, where I can see it, I'll break them."<cite>Haechan, to Jungwon · ch. 8, forty seconds</cite></blockquote>
+            <blockquote class="sc-quote">"It's Haechan now. Didn't the Chairman tell you? He gave me a new one. It means full sun… Very bright. Hurts to look at."<cite>Haechan · ch. 19, first dance</cite></blockquote>
+          </div>
+        </details>
+        <div class="sc-play"><button type="button" data-song="assets/audio/EthelCain-Strangers.mp3" aria-label="Play Strangers by Ethel Cain">▶</button><span>Strangers<small>Ethel Cain · the Strangers soundtrack</small></span></div>
+        <a class="sc-read" href="world.html#strangers">Enter Strangers →</a>
+      </article>
+    </div>
+
+    <div class="sc-table-wrap">
+      <table class="sc-table">
+        <caption>Side by side</caption>
+        <thead><tr><th scope="col"></th><th scope="col">Runners</th><th scope="col">Strangers</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Where</th><td>Syracuse, fall semester</td><td>Incheon, November 2012</td></tr>
+          <tr><th scope="row">In the way</th><td>A campus that turns everything into content</td><td>Her engagement to Yang Jungwon</td></tr>
+          <tr><th scope="row">Where it starts</th><td>Media and Society</td><td>A back alley, the night after she stitched him up</td></tr>
+          <tr><th scope="row">Her armour</th><td>A pink hoodie and a gaming headset</td><td>A cream dress her mother chose, and a smile her mother also chose</td></tr>
+          <tr><th scope="row">His name for her</th><td><i>(yours to tell me)</i></td><td>Agasshi. "Solar" from him is the tell.</td></tr>
+          <tr><th scope="row">The colour</th><td>Teal</td><td>Lavender</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="sc-foot">✦ You found a secret stamp. <a href="index.html#passport">See your passport →</a></p>
+  </main>
+
+  <script src="achievements.js?v=1"></script>
+  <script>
+    setTimeout(() => window.Achievements?.unlock('solchan'), 900);
+    (function () {
+      let audio = null, current = null;
+      document.querySelectorAll('.sc-play button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (current === btn && audio && !audio.paused) { audio.pause(); btn.textContent = '▶'; return; }
+          if (audio) audio.pause();
+          document.querySelectorAll('.sc-play button').forEach(b => { b.textContent = '▶'; });
+          audio = new Audio(btn.dataset.song); current = btn;
+          audio.play().then(() => { btn.textContent = '❚❚'; }).catch(() => {});
+          audio.addEventListener('ended', () => { btn.textContent = '▶'; });
+        });
+      });
+    })();
+  </script>
+  <script src="sparkles.js"></script>
+  <script src="transitions.js"></script>
+</body>
+</html>
