@@ -308,37 +308,51 @@ window.WorldEntrances = (() => {
           <div class="gc-bottomline"><span>Old habits die hard, especially for these friends.</span>${skip}</div>
         </div>`,
       start: dialog => {
-        const MESSAGES = [
-          ['solarsystem', 'i hate my life so much everyone'],
-          ['asanoonecares', 'oh goodie just what i needed'],
-          ['jaehyukkie', 'why are you so unnecessarily rude?'],
-          ['junkyute', 'are u ok solar!!! do u need some ice cream and hugs!!!'],
-          ['solarsystem', 'YES that is exactly what i need'],
-          ['jihoney', 'as her best friend it is RIGHTFULLY MY JOB to bring her ice cream when she is sad'],
-          ['cherryblossoms', 'not jihoon pretending i don’t exist'],
-          ['geniusuk', 'LMAOOOO'],
-          ['junkyute', 'all u do is hog her : ('],
-          ['jihoney', 'all i hear is lack of effort']
-        ];
-        const COLORS = { solarsystem: '#ffb84d', asanoonecares: '#8fb8ff', jaehyukkie: '#9fe0a8', junkyute: '#ff9ec7', jihoney: '#c9a7ff', cherryblossoms: '#ff8a8a', geniusuk: '#7fe3e0' };
-        const thread = dialog.querySelector('.gc-thread'), unread = dialog.querySelector('.gc-unread');
-        let i = 0, timer;
-        const post = () => {
-          const [who, text] = MESSAGES[i];
-          const msg = document.createElement('span');
-          msg.className = 'gc-msg' + (who === 'solarsystem' ? ' gc-mine' : '');
-          msg.style.setProperty('--who', COLORS[who]);
-          const name = document.createElement('b'); name.textContent = who;
-          const body = document.createElement('span'); body.textContent = text;
-          msg.append(name, body); thread.appendChild(msg);
-          while (thread.children.length > 6) thread.firstElementChild.remove();
-          unread.textContent = String(i + 1);
-          dialog.dispatchEvent(new CustomEvent('entrance:cue', { detail: who }));
-          i++;
-          if (i < MESSAGES.length) timer = setTimeout(post, 1400 + Math.random() * 1600);
+        const FALLBACK = { name: 'BESTAY CENTRAL', kind: 'group', messages: [
+          ['solarsystem', 'i hate my life so much everyone'], ['asanoonecares', 'oh goodie just what i needed'],
+          ['jaehyukkie', 'why are you so unnecessarily rude?'], ['junkyute', 'speaking of, are u ok solar!!! do u need some ice cream and hugs!!!'],
+          ['solarsystem', 'YES that is exactly what i need'], ['jihoney', "i was literally on my way to your house as soon as i saw that awful shrek meme"],
+          ['geniusuk', 'LMAOOOO'] ] };
+        const COLORS = { solarsystem: '#ffb84d', solarkim: '#ffb84d', jihoney: '#c9a7ff', jihoonie: '#c9a7ff', cherryblossoms: '#ff8a8a', chxrry: '#ff8a8a', geniusuk: '#7fe3e0',
+          asanoonecares: '#8fb8ff', junkyute: '#ff9ec7', jaehyukkie: '#9fe0a8', injangwon: '#5ee8de', jungwongarden: '#5ee8de', rikiniki: '#ffd36e', sunooshine: '#ffc2e2',
+          sunshinesunoo: '#ffc2e2', jbird: '#b8c4ff', heeheeseung: '#a9f0c8', princehoon: '#ff9f6e', jakeys: '#9ad4ff', jakeyy: '#9ad4ff' };
+        const colorOf = who => { if (COLORS[who]) return COLORS[who]; let h = 0; for (const c of who) h = (h * 31 + c.charCodeAt(0)) % 360; return `hsl(${h} 70% 75%)`; };
+        const box = dialog.querySelector('.gc-thread'), unread = dialog.querySelector('.gc-unread'), head = dialog.querySelector('.gc-phone-head b');
+        let timer, stopped = false, data = null, count = 0;
+        const pick = () => {
+          const pool = (data || []).filter(t => t.messages.length >= 8);
+          if (!pool.length) return FALLBACK;
+          const t = pool[Math.floor(Math.random() * pool.length)];
+          const len = Math.min(t.messages.length, 9 + Math.floor(Math.random() * 4));
+          const from = Math.floor(Math.random() * (t.messages.length - len + 1));
+          return { name: t.name, kind: t.kind, from: t.from, messages: t.messages.slice(from, from + len) };
         };
-        timer = setTimeout(post, 1200);
-        return () => clearTimeout(timer);
+        const play = chain => {
+          if (stopped) return;
+          head.textContent = chain.name === 'Private message' && chain.from ? `${chain.from}` : chain.name;
+          box.replaceChildren();
+          let me = null, i = 0;
+          const mine = who => chain.kind === 'dm' ? (me = me || (who !== chain.from ? who : null), who === me) : (who === 'solarsystem' || who === 'solarkim');
+          const post = () => {
+            if (stopped) return;
+            const [who, text] = chain.messages[i];
+            const msg = document.createElement('span');
+            msg.className = 'gc-msg' + (mine(who) ? ' gc-mine' : '');
+            msg.style.setProperty('--who', colorOf(who));
+            const name = document.createElement('b'); name.textContent = who;
+            const body = document.createElement('span'); body.textContent = text;
+            msg.append(name, body); box.appendChild(msg);
+            while (box.children.length > 6) box.firstElementChild.remove();
+            unread.textContent = String(++count);
+            dialog.dispatchEvent(new CustomEvent('entrance:cue', { detail: who }));
+            i++;
+            if (i < chain.messages.length) timer = setTimeout(post, 1300 + Math.min(1800, text.length * 22) + Math.random() * 700);
+            else timer = setTimeout(() => { box.classList.add('gc-fade'); timer = setTimeout(() => { box.classList.remove('gc-fade'); play(pick()); }, 600); }, 4200);
+          };
+          timer = setTimeout(post, 700);
+        };
+        fetch('assets/hoax-chats.json').then(r => r.json()).then(d => { data = d; play(pick()); }).catch(() => play(FALLBACK));
+        return () => { stopped = true; clearTimeout(timer); };
       }
     },
     casual: {

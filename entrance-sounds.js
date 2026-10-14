@@ -452,14 +452,16 @@ window.EntranceSounds = (() => {
         k.later(locker, rand(3.5, 8));
       };
       const NOTES = { solarsystem: 1046.5, jihoney: 1318.5, junkyute: 1568, asanoonecares: 880, cherryblossoms: 1174.7, jaehyukkie: 987.8, geniusuk: 1396.9 };
+      const SCALE = [880, 987.8, 1108.7, 1318.5, 1480, 1760];
+      const noteOf = who => { if (NOTES[who]) return NOTES[who]; let h = 0; for (const c of who) h = (h * 31 + c.charCodeAt(0)) % 997; return SCALE[h % SCALE.length]; };
       const ping = who => {
-        const t = ctx.currentTime + 0.02, f = NOTES[who] || 1200;
+        const t = ctx.currentTime + 0.02, f = noteOf(who);
         k.tone(t, { freq: f, level: 0.06, decay: 0.25, pan: 0.5 }); k.tone(t + 0.07, { freq: f * 1.5, level: 0.04, decay: 0.3, pan: 0.5 });
         const bz = ctx.createOscillator(), bg = k.gain(0); bz.type = 'square'; bz.frequency.value = 160;
         bg.gain.setValueAtTime(0.0001, t); bg.gain.exponentialRampToValueAtTime(0.015, t + 0.02); bg.gain.setValueAtTime(0.015, t + 0.22); bg.gain.exponentialRampToValueAtTime(0.0001, t + 0.26);
         k.chain(bz, k.filter('lowpass', 400), bg, k.pan(0.5), out); bz.start(t); bz.stop(t + 0.3);
       };
-      k.on(dialog, 'entrance:cue', e => { if (NOTES[e.detail]) ping(e.detail); });
+      k.on(dialog, 'entrance:cue', e => { if (typeof e.detail === 'string' && /^[a-z0-9_.\-]+$/.test(e.detail)) ping(e.detail); });
       k.later(bell, 0.6); k.later(locker, 3);
     },
     /* Casual: the new apartment. The bathroom light, old floorboards, a suitcase that keeps catching. */

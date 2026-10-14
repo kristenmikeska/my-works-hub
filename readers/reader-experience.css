@@ -39,3 +39,37 @@ body[data-reader-theme] .reader-chapter h2.chapter-heading { color: var(--accent
 .reader-stamp-go { color: var(--accent); font-weight: 600; white-space: nowrap; }
 @keyframes reader-stamp-spin { from { transform: rotate(-180deg) scale(.4); } to { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .reader-stamp-toast { transition: none; } .reader-stamp-mark { animation: none; } }
+
+/* Chat threads (Hoax): group chats and private messages styled like a messaging app. */
+.chat-thread { --chat-bg: color-mix(in srgb, var(--reader-surface, #131118) 88%, #7c4dff); margin: 30px auto; max-width: 560px; padding: 0 14px 16px; border: 1px solid color-mix(in srgb, var(--ink, #fff) 12%, transparent); border-radius: 26px; background: var(--chat-bg); box-shadow: 0 18px 40px #0004; font: 15px/1.4 ui-sans-serif, system-ui, -apple-system, sans-serif; }
+.chat-head { position: sticky; top: 52px; z-index: 2; display: grid; grid-template-columns: 1fr auto; align-items: center; margin: 0 -14px 12px; padding: 12px 18px; border-bottom: 1px solid color-mix(in srgb, var(--ink, #fff) 10%, transparent); border-radius: 26px 26px 0 0; background: color-mix(in srgb, var(--chat-bg) 92%, #000); backdrop-filter: blur(8px); }
+.chat-head b { font-size: 14px; letter-spacing: .02em; color: var(--ink); }
+.chat-head small { grid-column: 1; color: var(--ink-dim, #aaa); font-size: 11px; }
+.chat-faces { grid-row: 1 / span 2; grid-column: 2; display: flex; }
+.chat-faces i { display: grid; place-items: center; width: 22px; height: 22px; margin-left: -6px; border-radius: 50%; border: 2px solid var(--chat-bg); background: var(--who); color: #1b1524; font: 700 10px/1 ui-sans-serif, system-ui, sans-serif; font-style: normal; }
+.chat-thread[data-kind="dm"] { --chat-bg: color-mix(in srgb, var(--reader-surface, #131118) 88%, #31d0c3); }
+.chat-msg { display: flex; align-items: flex-end; gap: 8px; margin-top: 10px; }
+.chat-msg.cont { margin-top: 3px; }
+.chat-avatar { display: grid; place-items: center; width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%; background: var(--who); color: #1b1524; font: 700 12px/1 ui-sans-serif, system-ui, sans-serif; }
+.chat-avatar-gap { visibility: hidden; }
+.chat-body { display: grid; gap: 2px; max-width: 78%; }
+.chat-name { color: var(--who); font-size: 11px; font-weight: 700; padding-left: 10px; }
+.chat-bubble { width: fit-content; max-width: 100%; padding: 8px 13px; border-radius: 18px 18px 18px 6px; background: color-mix(in srgb, var(--who) 16%, var(--reader-surface, #131118)); color: var(--ink); overflow-wrap: anywhere; }
+.chat-msg.cont .chat-bubble { border-radius: 6px 18px 18px 6px; }
+.chat-msg.mine { flex-direction: row-reverse; }
+.chat-msg.mine .chat-avatar { display: none; }
+.chat-msg.mine .chat-body { justify-items: end; }
+.chat-msg.mine .chat-name { padding: 0 10px 0 0; }
+.chat-msg.mine .chat-bubble { border-radius: 18px 18px 6px 18px; background: #7c4dff; color: #fff; }
+.chat-msg.mine.cont .chat-bubble { border-radius: 18px 6px 6px 18px; }
+.chat-bubble.chat-image { padding: 4px; background: transparent; border: 1px solid color-mix(in srgb, var(--who) 30%, transparent); }
+.chat-msg.mine .chat-bubble.chat-image { background: transparent; }
+.chat-bubble.chat-image img { display: block; width: min(220px, 100%); height: auto; border-radius: 14px; }
+.chat-msg { opacity: 0; transform: translateY(10px) scale(.96); transform-origin: left bottom; transition: opacity .35s ease, transform .45s cubic-bezier(.3, 1.5, .5, 1); }
+.chat-msg.mine { transform-origin: right bottom; }
+.chat-msg.in { opacity: 1; transform: none; }
+body[data-reader-theme="light"] .chat-msg:not(.mine) .chat-bubble, body[data-reader-theme="sepia"] .chat-msg:not(.mine) .chat-bubble { background: color-mix(in srgb, var(--who) 30%, var(--reader-surface)); }
+body[data-reader-theme="light"] .chat-name, body[data-reader-theme="sepia"] .chat-name { color: color-mix(in srgb, var(--who) 55%, #000); }
+p.scene-divider { text-align: center; }
+p.scene-divider img { max-width: 260px; opacity: .7; }
+@media (prefers-reduced-motion: reduce) { .chat-msg { opacity: 1; transform: none; transition: none; } }

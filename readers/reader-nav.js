@@ -222,7 +222,7 @@
   const scriptBase = document.currentScript.src;
   const experienceStyles = document.createElement('link');
   experienceStyles.rel = 'stylesheet';
-  experienceStyles.href = new URL('reader-experience.css?v=2', scriptBase).href;
+  experienceStyles.href = new URL('reader-experience.css?v=3', scriptBase).href;
   document.head.appendChild(experienceStyles);
   const experienceScript = document.createElement('script');
   experienceScript.src = new URL('reader-experience.js?v=3', scriptBase).href;
@@ -522,14 +522,6 @@
         const isPost = prev && /new post/i.test(prev.textContent);
 
         if (!isPost) {
-          if (w === 'hoax') {
-            // Chat meme: hide the duplicate next paragraph (username:<br/>text)
-            const next = nextSig(p);
-            if (next && next.querySelector('br')) {
-              const txt = next.textContent.replace(/\xa0/g, ' ').trim();
-              if (/^[\w.]+:/.test(txt)) next.style.display = 'none';
-            }
-          }
           return; // Not a social post — skip
         }
 
@@ -589,6 +581,168 @@
       p.replaceWith(wrap);
     });
   }
+
+  /* ─────────────────────────────────────────────────────────────
+     CHAT THREADS (Hoax): "handle:<br>message" paragraphs become a messaging app.
+     Group chats and private messages get a header; Solar's own messages sit on the right.
+  ───────────────────────────────────────────────────────────── */
+  const CHAT_COLORS = { solarsystem: '#ffb84d', solarkim: '#ffb84d', jihoney: '#c9a7ff', jihoonie: '#c9a7ff', cherryblossoms: '#ff8a8a', chxrry: '#ff8a8a',
+    geniusuk: '#7fe3e0', asanoonecares: '#8fb8ff', asanooneoncares: '#8fb8ff', junkyute: '#ff9ec7', jaehyukkie: '#9fe0a8', injangwon: '#5ee8de', jungwongarden: '#5ee8de',
+    rikiniki: '#ffd36e', sunooshine: '#ffc2e2', sunshinesunoo: '#ffc2e2', jbird: '#b8c4ff', heeheeseung: '#a9f0c8', heeeseung: '#a9f0c8', princehoon: '#ff9f6e',
+    princesunghoon: '#ff9f6e', jakeys: '#9ad4ff', jakeyy: '#9ad4ff', parkjay: '#b8c4ff', sukhyun: '#e0b0ff' };
+  const MINE = ['solarsystem', 'solarkim'];
+  function chatColor(handle) {
+    if (CHAT_COLORS[handle]) return CHAT_COLORS[handle];
+    let h = 0; for (const c of handle) h = (h * 31 + c.charCodeAt(0)) % 360;
+    return `hsl(${h} 70% 75%)`;
+  }
+  function buildChatThreads(w) {
+    if (w !== 'hoax') return;
+    const HANDLE = /^[A-Za-z0-9_.\-]+:$/;
+    const isDivider = img => /drawing of a sun/i.test(img.getAttribute('alt') || '');
+    const sig = p => p.textContent.replace(/[\s\xa0￼]/g, '');
+    const headingSet = new Set(chapters);
+    function parseMessage(p) {
+      if (p.querySelector('img')) return null;
+      const html = p.innerHTML.replace(/^\s*<br\s*\/?>\s*/i, '');
+      const cut = html.search(/<br\s*\/?>/i);
+      if (cut < 0) return null;
+      const scratch = document.createElement('div');
+      scratch.innerHTML = html.slice(0, cut);
+      const who = scratch.textContent.replace(/\xa0/g, ' ').trim();
+      if (!HANDLE.test(who)) return null;
+      scratch.innerHTML = html.slice(cut).replace(/^<br\s*\/?>/i, '');
+      scratch.querySelectorAll('span').forEach(span => { if (!/c2|italic/.test(span.className)) span.replaceWith(...span.childNodes); });
+      if (!scratch.textContent.trim()) return null;
+      return { who: who.slice(0, -1).toLowerCase(), html: scratch.innerHTML.replace(/<\/span>$/i, '') };
+    }
+    function headerOf(p) {
+      if (!p.querySelector('.underline')) return null;
+      const text = p.textContent.replace(/\xa0/g, ' ').replace(/\s+/g, ' ').trim();
+      if (!text || text.length > 60) return null;
+      const dm = text.match(/^private message from:\s*(\S+)/i);
+      return dm ? { kind: 'dm', from: dm[1].toLowerCase(), name: `Private message` } : { kind: 'group', name: text.replace(/:$/, '') };
+    }
+    let thread = null, last = null;
+    function openThread(before, header) {
+      const el = document.createElement('div');
+      el.className = 'chat-thread';
+      el.dataset.kind = header ? header.kind : 'group';
+      if (header && header.from) el.dataset.from = header.from;
+      const head = document.createElement('div');
+      head.className = 'chat-head';
+      const title = document.createElement('b'); title.textContent = header ? header.name : 'group chat';
+      const sub = document.createElement('small');
+      sub.textContent = header && header.kind === 'dm' ? `from ${header.from}` : 'group chat';
+      const faces = document.createElement('span'); faces.className = 'chat-faces';
+      head.append(title, sub, faces);
+      el.appendChild(head);
+      before.parentNode.insertBefore(el, before);
+      thread = { el, kind: el.dataset.kind, from: header && header.from, members: new Set(), me: null };
+      last = null;
+    }
+    function isMine(who) {
+      if (thread.kind === 'dm') {
+        if (!thread.me && who !== thread.from) thread.me = who;
+        return who === thread.me;
+      }
+      return MINE.includes(who);
+    }
+    function addMessage(who, fill) {
+      const row = document.createElement('div');
+      const mine = isMine(who);
+      const cont = last === who;
+      row.className = `chat-msg${mine ? ' mine' : ''}${cont ? ' cont' : ''}`;
+      row.style.setProperty('--who', chatColor(who));
+      if (!cont) {
+        const face = document.createElement('span'); face.className = 'chat-avatar'; face.textContent = who.charAt(0).toUpperCase();
+        row.appendChild(face);
+      } else row.appendChild(Object.assign(document.createElement('span'), { className: 'chat-avatar chat-avatar-gap' }));
+      const body = document.createElement('div'); body.className = 'chat-body';
+      if (!cont) { const name = document.createElement('span'); name.className = 'chat-name'; name.textContent = who; body.appendChild(name); }
+      const bubble = document.createElement('div'); bubble.className = 'chat-bubble';
+      fill(bubble);
+      body.appendChild(bubble); row.appendChild(body);
+      thread.el.appendChild(row);
+      if (!thread.members.has(who)) {
+        thread.members.add(who);
+        const dot = document.createElement('i'); dot.textContent = who.charAt(0).toUpperCase(); dot.style.setProperty('--who', chatColor(who)); dot.title = who;
+        thread.el.querySelector('.chat-faces').appendChild(dot);
+      }
+      last = who;
+    }
+    const paras = [...document.querySelectorAll('p')];
+    const consumed = new Set();
+    paras.forEach((p, i) => {
+      if (consumed.has(p) || !p.parentNode) return;
+      if (headingSet.has(p)) { thread = null; return; }
+      const img = p.querySelector('img');
+      if (img && isDivider(img)) { p.classList.add('scene-divider'); thread = null; return; }
+      const header = headerOf(p);
+      if (header) { openThread(p, header); p.remove(); return; }
+      const msg = parseMessage(p);
+      if (msg) {
+        if (!thread) openThread(p, null);
+        addMessage(msg.who, bubble => { bubble.innerHTML = msg.html; });
+        p.remove(); return;
+      }
+      const text = p.textContent.replace(/\xa0/g, ' ').trim();
+      if (HANDLE.test(text)) {
+        let j = i + 1; while (j < paras.length && !sig(paras[j]) && !paras[j].querySelector('img')) j++;
+        const next = paras[j];
+        const pic = next && next.querySelector('img');
+        if (pic && !isDivider(pic)) {
+          if (!thread) openThread(p, null);
+          const who = text.slice(0, -1).toLowerCase();
+          addMessage(who, bubble => { bubble.classList.add('chat-image'); const im = document.createElement('img'); im.src = pic.getAttribute('src'); im.alt = ''; im.loading = 'lazy'; bubble.appendChild(im); });
+          for (let k = i + 1; k <= j; k++) consumed.add(paras[k]);
+          p.remove(); next.remove(); return;
+        }
+      }
+      if (!sig(p) && !img) { if (thread) p.remove(); return; }
+      thread = null;
+    });
+    document.querySelectorAll('.chat-thread').forEach(el => {
+      const head = el.querySelector('.chat-head');
+      if (head.querySelector('b').textContent === 'group chat' && el.querySelectorAll('.chat-faces i').length <= 2) {
+        head.querySelector('b').textContent = 'messages';
+        head.querySelector('small').textContent = [...el.querySelectorAll('.chat-faces i')].map(i => i.title).join(' · ');
+      }
+    });
+    revealChats();
+  }
+
+  // Messages pop in as they scroll into view, with a soft ping when site sound is on.
+  function revealChats() {
+    const rows = document.querySelectorAll('.chat-msg');
+    if (!rows.length) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) { rows.forEach(r => r.classList.add('in')); return; }
+    let soundOn = false; try { soundOn = localStorage.getItem('kg-intro-sound') === 'on'; } catch (e) {}
+    let ctx = null, lastPing = 0;
+    const ping = color => {
+      if (!soundOn || !(navigator.userActivation && navigator.userActivation.hasBeenActive)) return;
+      const now = performance.now(); if (now - lastPing < 140) return; lastPing = now;
+      try {
+        ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+        const t = ctx.currentTime + 0.01, o = ctx.createOscillator(), g = ctx.createGain();
+        o.frequency.value = 880 + (parseInt(String(color).replace(/\D/g, '').slice(0, 3) || '0', 10) % 6) * 110;
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.025, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.22);
+        o.connect(g); g.connect(ctx.destination); o.start(t); o.stop(t + 0.25);
+      } catch (e) {}
+    };
+    let queue = 0;
+    const io = new IntersectionObserver(entries => {
+      entries.filter(e => e.isIntersecting).forEach(e => {
+        const row = e.target; io.unobserve(row);
+        const delay = Math.min(queue++, 8) * 90;
+        setTimeout(() => { row.classList.add('in'); ping(row.style.getPropertyValue('--who')); queue = Math.max(0, queue - 1); }, delay);
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    rows.forEach(r => io.observe(r));
+  }
+
+  buildChatThreads(world);
 
   /* --- Wrap EPUB social images in styled cards (must run after all const/let declarations) --- */
   wrapSocialImages(world);

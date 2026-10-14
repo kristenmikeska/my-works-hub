@@ -717,3 +717,5 @@ body.world-revealed .world-hero-content > :nth-child(n+4) { animation-delay: .24
 .entrance-actions .entrance-home { display: inline-grid; place-items: center; width: 42px; height: 42px; padding: 0; border-radius: 50%; text-decoration: none; }
 .entrance-home svg { width: 17px; height: 17px; fill: currentColor; }
 @media (max-width: 700px) { .entrance-actions .entrance-home { width: 38px; height: 38px; } }
+.gc-thread { transition: opacity .5s ease; }
+.gc-thread.gc-fade { opacity: 0; }

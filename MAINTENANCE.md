@@ -51,3 +51,9 @@ Avoid long `setInterval`s on the homepage: headless screenshot testing fast-forw
 Hidden pages: `solchan.html` (Solar × Haechan across Runners and Strangers). It's reached from the tiny sun on the back of Haechan's card on the About page, or by typing "solchan" on the homepage, and unlocks the Two suns stamp. Quotes on it are verbatim from the manuscripts with chapter citations; later ones sit behind spoiler toggles.
 
 About page: `about-effects.js` turns the regulars cards into flip cards whose backs list every world each person appears in, read from `worlds-data.js` (cast, love interests, lead).
+
+## Hoax chats
+
+The Hoax reader turns `handle:<br>message` paragraphs into chat threads at load (`buildChatThreads` in `reader-nav.js`): underlined lines become thread headers (group chat names, or "PRIVATE MESSAGE FROM: handle"), a lone `handle:` line followed by an image becomes an image message, and Solar's handles (`solarsystem`, `solarkim`) sit on the right. Messages pop in on scroll and ping softly when site sound is on. Instagram-style "new post" blocks are still handled by `wrapSocialImages`.
+
+The Hoax intro plays a random run of messages from `assets/hoax-chats.json`, exported from `readers/hoax.html`. Re-export it if Hoax gets new chapters (the extraction logic mirrors `buildChatThreads`; memes are skipped).
