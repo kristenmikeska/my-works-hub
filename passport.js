@@ -35,6 +35,16 @@ const KEEPSAKE_THEMES = {
   go: { kicker: 'DMHS · senior year', decor: '' }
 };
 
+// passport.html has no app.js, so bring its reading-progress reader along.
+if (typeof getProgress !== "function") {
+  window.getProgress = id => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("kg-reading-" + id));
+      return saved && Number.isInteger(saved.idx) && saved.idx >= 0 && Number.isFinite(saved.percent) && saved.percent >= 0 && saved.percent <= 100 ? saved : null;
+    } catch (e) { return null; }
+  };
+}
+
 function readSeenStamps() {
   try { return new Set(JSON.parse(localStorage.getItem("kg-stamps-seen")) || []); } catch (e) { return new Set(); }
 }
@@ -51,6 +61,7 @@ function stampArt(id) {
 }
 
 function renderPassport() {
+  renderTeaser();
   const grid = document.querySelector("#passportGrid");
   if (!grid) return;
   const stamps = readStamps();
@@ -101,8 +112,90 @@ function renderPassport() {
   }));
   const count = document.querySelector("#passportCount");
   if (count) count.textContent = `${earnedCount} of ${worlds.length * 3} stamps collected`;
+  renderHolder(earnedCount);
   checkReadingStamps(stamps);
   renderSecretStamps();
+}
+
+/* Every reading stamp earned so far, newest first: [{ world, key, when }]. */
+function earnedReadingStamps() {
+  const stamps = readStamps(), out = [];
+  worlds.forEach(world => {
+    const mine = stamps[world.id] || {}, prog = getProgress(world.id);
+    const earned = { started: mine.started || (prog ? true : null), halfway: mine.halfway || (prog && prog.percent >= 50 ? true : null), finished: mine.finished || (prog && prog.percent >= 100 ? true : null) };
+    Object.entries(earned).forEach(([key, when]) => { if (when) out.push({ world, key, when: typeof when === "number" ? when : 0 }); });
+  });
+  return out.sort((a, b) => b.when - a.when);
+}
+
+function visibleSecrets() {
+  if (!window.Achievements) return { list: [], got: {} };
+  const got = Achievements.unlocked();
+  return { list: Achievements.list().filter(a => !a.side || got.femc), got };
+}
+
+/* Homepage card: counts, the newest stamps, and a way in to passport.html. */
+function renderTeaser() {
+  const card = document.querySelector("#passportTeaser");
+  if (!card) return;
+  const reading = earnedReadingStamps(), { list, got } = visibleSecrets();
+  const secrets = list.filter(a => got[a.id]).map(a => ({ secret: a, when: got[a.id] }));
+  const recent = [...reading, ...secrets].sort((a, b) => b.when - a.when).slice(0, 7);
+  card.querySelector(".pt-counts").innerHTML = `<span><b>${reading.length}</b> of ${worlds.length * 3} reading stamps</span><span><b>${secrets.length}</b> of ${list.length} secret stamps</span>`;
+  const row = card.querySelector(".pt-stamps");
+  row.replaceChildren(...(recent.length ? recent : [null, null, null]).map((item, i) => {
+    const stamp = document.createElement("span");
+    stamp.style.setProperty("--rot", `${[-7, 5, -3, 6, -5, 4, -2][i]}deg`);
+    if (!item) { stamp.className = "stamp stamp-empty"; stamp.innerHTML = stampArt(""); return stamp; }
+    if (item.secret) {
+      stamp.className = "stamp stamp-finished";
+      stamp.style.setProperty("--a", "#f2b84b");
+      stamp.innerHTML = `<span class="stamp-art"><svg class="ink" viewBox="0 0 64 64" aria-hidden="true">${item.secret.svg}</svg></span>`;
+      stamp.title = item.secret.name;
+    } else {
+      stamp.className = `stamp stamp-${item.key}`;
+      stamp.style.setProperty("--a", item.world.accent);
+      stamp.innerHTML = stampArt(item.world.id);
+      stamp.title = `${item.world.title} · ${item.key}`;
+    }
+    return stamp;
+  }));
+  card.querySelector(".pt-empty").hidden = recent.length > 0;
+}
+
+/* passport.html's holder page: counts and a machine-readable zone made from them. */
+function renderHolder(readingCount) {
+  const holder = document.querySelector("#holder");
+  if (!holder) return;
+  const { list, got } = visibleSecrets();
+  const found = list.filter(a => got[a.id]).length;
+  const dates = [...Object.values(got), ...earnedReadingStamps().map(s => s.when)].filter(n => n > 0);
+  const issued = dates.length ? new Date(Math.min(...dates)) : new Date();
+  const visited = worlds.filter(w => getProgress(w.id) || (readStamps()[w.id] || {}).started).length;
+  const fmt = new Intl.DateTimeFormat("en-US", { day: "2-digit", month: "short", year: "numeric" });
+  holder.querySelector("[data-issued]").textContent = fmt.format(issued).toUpperCase();
+  holder.querySelector("[data-visited]").textContent = `${visited} of ${worlds.length}`;
+  holder.querySelector("[data-reading]").textContent = `${readingCount} of ${worlds.length * 3}`;
+  holder.querySelector("[data-secret]").textContent = `${found} of ${list.length}`;
+  const pad = (v, n) => String(v).padStart(n, "0");
+  const ymd = d => `${pad(d.getFullYear() % 100, 2)}${pad(d.getMonth() + 1, 2)}${pad(d.getDate(), 2)}`;
+  const line1 = `P<KGA<<UNIVERSE<ARCHIVE<<READER`.padEnd(44, "<");
+  const line2 = `${pad(readingCount, 3)}${pad(found, 3)}${pad(visited, 2)}<<${ymd(issued)}<<${ymd(new Date())}<<${worlds.length}WORLDS`.padEnd(44, "<").slice(0, 44);
+  holder.querySelector(".pp-mrz").textContent = `${line1}\n${line2}`;
+}
+
+/* Stamps earned since the last visit press into the pages, one by one. */
+function pressInStamps() {
+  const pending = [...document.querySelectorAll("#passportGrid .stamp-pending")];
+  if (!pending.length) return;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const seen = readSeenStamps();
+  pending.forEach((stamp, i) => {
+    seen.add(stamp.dataset.stamp);
+    const press = () => { stamp.classList.remove("stamp-pending"); if (!reduced) stamp.classList.add("stamp-pressing"); window.EntranceSounds?.home("thunk"); };
+    if (reduced) press(); else setTimeout(press, 500 + i * 450);
+  });
+  try { localStorage.setItem("kg-stamps-seen", JSON.stringify([...seen])); } catch (e) {}
 }
 
 function checkReadingStamps(stamps) {
@@ -125,7 +218,7 @@ function renderSecretStamps() {
   const got = Achievements.unlocked();
   const dateFmt = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
   // Stamps from the other side (FEMC mode) stay hidden until you've crossed over once.
-  const list = Achievements.list().filter(a => !a.side || got.femc);
+  const { list } = visibleSecrets();
   grid.replaceChildren(...list.map(a => {
     const when = got[a.id];
     const card = document.createElement("div");

@@ -3,6 +3,8 @@
    tracks multi-step ones. The passport (passport.js) renders the list with riddles for locked stamps. */
 window.Achievements = (() => {
   const KEY = 'kg-achievements', PROGRESS = 'kg-ach-progress';
+  // The site root, so the toast's passport link works from readers/ too.
+  const HOME = document.currentScript ? new URL('.', document.currentScript.src).href : '';
   const LIST = [
     { id: 'solchan', name: 'Two suns', group: 'Discoveries', hint: 'two names for the sun. one of the regulars knows the way.',
       svg: '<circle cx="24" cy="35" r="11"/><circle cx="42" cy="28" r="10"/><path d="M41 6h2v8h-2zM41 42h2v8h-2zM56 27h8v2h-8zM20 27h-8v2h8zM51 15l5-5l1.4 1.4l-5 5zM31 39l-5 5l1.4 1.4l5-5z"/>' },
@@ -78,7 +80,7 @@ window.Achievements = (() => {
     }
     const el = document.createElement('a');
     el.className = 'ach-toast';
-    el.href = 'index.html#passport';
+    el.href = HOME + 'passport.html';
     el.setAttribute('role', 'status');
     el.innerHTML = `<svg viewBox="0 0 64 64" aria-hidden="true">${a.svg}</svg><span><b>Secret stamp found</b></span>`;
     el.querySelector('span').append(a.name);

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passport — Katarina Grande</title>
+  <script src="femc-mode.js?v=3"></script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=13">
+  <link rel="stylesheet" href="passport.css?v=2">
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/brand-avatar.png" alt="">
+      <span class="brand-label">
+        <strong>Katarina Grande</strong>
+        <small>Universe Archive</small>
+      </span>
+    </a>
+    <a class="passport-tab" href="passport.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h11.5a1.5 1.5 0 0 1 1.5 1.5v16a1.5 1.5 0 0 1-1.5 1.5H6A1.5 1.5 0 0 1 4.5 20V4A1.5 1.5 0 0 1 6 2.5zm6 4.2a4 4 0 1 0 0 8a4 4 0 1 0 0-8zm0 1.4a2.6 2.6 0 1 1 0 5.2a2.6 2.6 0 1 1 0-5.2zM8.5 17.2h7v1.3h-7z"/></svg><span>Passport</span></a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="index.html#worlds">Archive</a>
+      <a href="vault.html">Vault</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="pp">
+    <div class="pp-open">
+      <section class="pp-cover" aria-label="Passport cover">
+        <svg class="pp-crest" viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="54"/><circle cx="60" cy="60" r="46" stroke-dasharray="2 4"/>
+          <circle cx="60" cy="60" r="28"/><ellipse cx="60" cy="60" rx="12" ry="28"/><path d="M32 60h56M36 46h48M36 74h48"/>
+          <path d="M60 12l3 7l7 1l-5 5l1 7l-6-3l-6 3l1-7l-5-5l7-1z" fill="currentColor"/>
+          <path d="M22 96c10-6 24-8 38-8s28 2 38 8" />
+        </svg>
+        <h1>Passport</h1>
+        <p>Universe Archive · Katarina Grande</p>
+      </section>
+
+      <section class="pp-holder" id="holder" aria-label="Holder page">
+        <h2>Holder · Reader</h2>
+        <div class="pp-photo" aria-hidden="true"><svg viewBox="0 0 64 80"><circle cx="32" cy="28" r="15"/><path d="M4 80c0-17 12-28 28-28s28 11 28 28z"/></svg></div>
+        <dl class="pp-fields">
+          <div><dt>Name</dt><dd>You</dd></div>
+          <div><dt>Issued</dt><dd data-issued></dd></div>
+          <div><dt>Worlds visited</dt><dd data-visited></dd></div>
+          <div><dt>Reading stamps</dt><dd data-reading></dd></div>
+          <div><dt>Secret stamps</dt><dd data-secret></dd></div>
+          <div><dt>Valid</dt><dd>As long as you keep reading</dd></div>
+        </dl>
+        <p class="pp-mrz" aria-hidden="true"></p>
+      </section>
+    </div>
+
+    <section class="pp-section" aria-labelledby="visasHeading">
+      <div class="pp-section-head"><h2 id="visasHeading">Visas</h2><p class="passport-count" id="passportCount"></p></div>
+      <p class="pp-note">Read to collect stamps: one when you start a world, one halfway, one at the last page. Reach the end of a story to keep its closing lines as a keepsake. Saved on this browser.</p>
+      <div class="passport-grid" id="passportGrid"></div>
+    </section>
+
+    <section class="pp-section" aria-labelledby="secretHeading">
+      <div class="pp-section-head"><h2 id="secretHeading">Secret stamps</h2><p class="passport-count" id="secretCount"></p></div>
+      <p class="pp-note">Easter eggs and achievements, hidden all over the site. Locked ones come with a riddle.</p>
+      <div class="secret-grid" id="secretGrid"></div>
+    </section>
+
+    <dialog class="keepsake" id="keepsake" aria-labelledby="keepsakeTitle">
+      <form method="dialog"><button class="keepsake-close" aria-label="Close keepsake">×</button></form>
+      <div class="ks-object"></div>
+    </dialog>
+  </main>
+
+  <script src="worlds-data.js?v=8"></script>
+  <script src="sparkles.js"></script>
+  <script src="entrance-sounds.js?v=18"></script>
+  <script src="achievements.js?v=6"></script>
+  <script src="passport.js?v=5"></script>
+  <script>
+    renderPassport();
+    pressInStamps();
+    addEventListener("pageshow", e => { if (e.persisted) renderPassport(); });
+    addEventListener("storage", e => { if (!e.key || e.key.startsWith("kg-reading-") || e.key === "kg-stamps" || e.key === "kg-achievements") renderPassport(); });
+  </script>
+  <script src="transitions.js"></script>
+</body>
+</html>

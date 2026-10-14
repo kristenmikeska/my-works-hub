@@ -172,7 +172,7 @@ window.initReaderExperience = function ({ world, chapters, topbar, chLabel, chLi
   function stampToast(name) {
     const toast = document.createElement('a');
     toast.className = 'reader-stamp-toast';
-    toast.href = new URL('../index.html#passport', location.href).href;
+    toast.href = new URL('../passport.html', location.href).href;
     toast.setAttribute('role', 'status');
     const mark = document.createElement('span'); mark.className = 'reader-stamp-mark'; mark.textContent = '✦';
     const text = document.createElement('span'); text.textContent = `Stamp collected · ${STAMP_NAMES[name]} · ${worldLabel}`;

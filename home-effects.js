@@ -1,5 +1,5 @@
 /* Homepage effects: the "loud" sound switch, a living hero collage, counting stats,
-   passport stamps pressing in, secret words, and light that follows the visitor's time of day. */
+   secret words, and light that follows the visitor's time of day. */
 (function () {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const PREF_KEY = 'kg-intro-sound';
@@ -75,23 +75,6 @@
     counter.observe(stats);
   }
 
-  /* ── 4. Stamps earned since the last visit press into the passport ── */
-  const passport = document.querySelector('#passport');
-  if (passport && 'IntersectionObserver' in window) {
-    const pressIn = new IntersectionObserver(entries => {
-      if (!entries.some(e => e.isIntersecting)) return;
-      const pending = [...passport.querySelectorAll('.stamp-pending')];
-      if (!pending.length) return;
-      let seen; try { seen = new Set(JSON.parse(read('kg-stamps-seen')) || []); } catch (e) { seen = new Set(); }
-      pending.forEach((stamp, i) => {
-        seen.add(stamp.dataset.stamp);
-        const press = () => { stamp.classList.remove('stamp-pending'); if (!reduced.matches) stamp.classList.add('stamp-pressing'); sound('thunk'); };
-        if (reduced.matches) press(); else setTimeout(press, 350 + i * 450);
-      });
-      write('kg-stamps-seen', JSON.stringify([...seen]));
-    }, { threshold: 0.25 });
-    pressIn.observe(passport);
-  }
 
   /* ── 5. Secret words: type a world's name anywhere on the page ── */
   const WORDS = [
