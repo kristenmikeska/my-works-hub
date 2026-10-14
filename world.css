@@ -704,3 +704,24 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     grid-template-columns: 1fr;
   }
 }
+
+/* Hoax photo booth. */
+.booth { margin: 34px 0 10px; }
+.booth-note { margin: -6px 0 18px; color: var(--muted); font-size: .85rem; }
+.booth-strips { display: flex; flex-wrap: wrap; gap: 34px 40px; justify-content: center; padding: 10px 0 64px; }
+.booth-strip { position: relative; width: 168px; margin: 0; padding: 12px 12px 14px; background: #f4f1ea; box-shadow: 0 16px 36px #0008; transform: rotate(var(--tilt)); transition: transform .35s cubic-bezier(.3, 1.4, .5, 1); }
+.booth-strip:hover { transform: rotate(0) scale(1.03); }
+.booth-frames { display: grid; gap: 8px; }
+.booth-frame { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: #222; }
+.booth-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.25) contrast(1.05) sepia(.12); }
+.booth-frame.developing img { animation: booth-develop 1.4s ease-out both; }
+.booth-strip figcaption { display: grid; gap: 2px; margin-top: 10px; text-align: center; color: #2a2230; }
+.booth-strip figcaption b { font: 400 1.05rem 'Marker Felt', 'Chalkboard SE', Georgia, serif; }
+.booth-strip figcaption small { font: 600 .6rem ui-sans-serif, system-ui, sans-serif; letter-spacing: .18em; text-transform: uppercase; color: #8a7f92; }
+.booth-again { position: absolute; left: 50%; bottom: -46px; transform: translateX(-50%) rotate(calc(var(--tilt) * -1)); padding: 7px 14px; border: 1px solid var(--a); border-radius: 99px; background: #14111a; color: var(--ink, #fff); font: 600 .75rem ui-sans-serif, system-ui, sans-serif; white-space: nowrap; cursor: pointer; }
+.booth-again:hover { background: var(--a); color: #14111a; }
+.booth-flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+.booth-strip.flashing .booth-flash { animation: booth-flash 1.6s steps(1) both; }
+@keyframes booth-develop { from { filter: grayscale(1) brightness(2.2) contrast(.6); opacity: .4; } to { filter: grayscale(.25) contrast(1.05) sepia(.12); opacity: 1; } }
+@keyframes booth-flash { 0%, 6%, 24%, 30%, 48%, 54%, 72%, 78% { opacity: .9; } 3%, 9%, 27%, 33%, 51%, 57%, 75%, 81%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .booth-frame.developing img, .booth-strip.flashing .booth-flash { animation: none; } }

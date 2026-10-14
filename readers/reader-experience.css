@@ -73,3 +73,4 @@ body[data-reader-theme="light"] .chat-name, body[data-reader-theme="sepia"] .cha
 p.scene-divider { text-align: center; }
 p.scene-divider img { max-width: 260px; opacity: .7; }
 @media (prefers-reduced-motion: reduce) { .chat-msg { opacity: 1; transform: none; transition: none; } }
+.chat-avatar.has-photo, .chat-faces i.has-photo { background-size: cover; background-position: center; color: transparent; }

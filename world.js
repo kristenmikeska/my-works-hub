@@ -495,6 +495,7 @@ function init() {
     return;
   }
   renderWorld(world);
+  window.WorldExtras?.mount(world);
   initMusicPlayer(world, { autoplay: !window.WorldEntrances?.willPlay(world) });
   disposeWorldEntrance = window.WorldEntrances?.mount(world);
 }

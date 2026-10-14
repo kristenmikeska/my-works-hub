@@ -302,7 +302,7 @@ window.WorldEntrances = (() => {
             <span class="gc-poster-star gc-star-2">★</span>
           </div>
           <div class="gc-phone" aria-hidden="true">
-            <span class="gc-phone-head"><b>BESTAY CENTRAL</b><i class="gc-unread">0</i></span>
+            <span class="gc-phone-head"><b>BESTAY CENTRAL</b><i class="gc-unread">0</i><a class="gc-roll" href="hoax-roll.html" data-entrance="roll" title="camera roll" aria-label="Open camera roll"><svg viewBox="0 0 64 64" aria-hidden="true"><path fill-rule="evenodd" d="M22 12h20l4 7h8a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4V23a4 4 0 0 1 4-4h8z M32 25a9 9 0 1 0 0 18a9 9 0 1 0 0-18z"/></svg></a></span>
             <span class="gc-thread"></span>
           </div>
           <div class="gc-bottomline"><span>Old habits die hard, especially for these friends.</span>${skip}</div>
@@ -316,6 +316,7 @@ window.WorldEntrances = (() => {
         const COLORS = { solarsystem: '#ffb84d', solarkim: '#ffb84d', jihoney: '#c9a7ff', jihoonie: '#c9a7ff', cherryblossoms: '#ff8a8a', chxrry: '#ff8a8a', geniusuk: '#7fe3e0',
           asanoonecares: '#8fb8ff', junkyute: '#ff9ec7', jaehyukkie: '#9fe0a8', injangwon: '#5ee8de', jungwongarden: '#5ee8de', rikiniki: '#ffd36e', sunooshine: '#ffc2e2',
           sunshinesunoo: '#ffc2e2', jbird: '#b8c4ff', heeheeseung: '#a9f0c8', princehoon: '#ff9f6e', jakeys: '#9ad4ff', jakeyy: '#9ad4ff' };
+        const PHOTOS = { solarsystem: 'assets/hoax/avatar-solar.jpg', solarkim: 'assets/hoax/avatar-solar.jpg', injangwon: 'assets/hoax/avatar-jungwon.jpg', jungwongarden: 'assets/hoax/avatar-jungwon.jpg' };
         const colorOf = who => { if (COLORS[who]) return COLORS[who]; let h = 0; for (const c of who) h = (h * 31 + c.charCodeAt(0)) % 360; return `hsl(${h} 70% 75%)`; };
         const box = dialog.querySelector('.gc-thread'), unread = dialog.querySelector('.gc-unread'), head = dialog.querySelector('.gc-phone-head b');
         let timer, stopped = false, data = null, count = 0;
@@ -340,6 +341,7 @@ window.WorldEntrances = (() => {
             msg.className = 'gc-msg' + (mine(who) ? ' gc-mine' : '');
             msg.style.setProperty('--who', colorOf(who));
             const name = document.createElement('b'); name.textContent = who;
+            if (PHOTOS[who]) { const ava = document.createElement('i'); ava.className = 'gc-ava'; ava.style.backgroundImage = `url("${PHOTOS[who]}")`; name.prepend(ava); }
             const body = document.createElement('span'); body.textContent = text;
             msg.append(name, body); box.appendChild(msg);
             while (box.children.length > 6) box.firstElementChild.remove();
@@ -664,7 +666,7 @@ window.WorldEntrances = (() => {
       };
       disposeEntrance = () => { if (engine) engine.stop(0); release(false); };
       dialog.querySelector('[data-entrance="skip"]').addEventListener('click',leave);
-      dialog.querySelector('[data-entrance="home"]').addEventListener('click', () => { if (engine) engine.stop(0.25); });
+      dialog.querySelectorAll('[data-entrance="home"], [data-entrance="roll"]').forEach(link => link.addEventListener('click', () => { if (engine) engine.stop(0.25); }));
       dialog.addEventListener('cancel',event => { event.preventDefault(); leave(); });
       dialog.showModal();
     }

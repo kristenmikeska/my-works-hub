@@ -720,6 +720,19 @@ window.EntranceSounds = (() => {
       const t = k.ctx.currentTime + 0.02;
       [1046.5, 1318.5, 1568, 2093, 2637].forEach((f, i) => { k.tone(t + i * 0.07, { freq: f, level: 0.05, decay: 1.2, pan: (i - 2) * 0.3 }); k.tone(t + i * 0.07 + 0.02, { freq: f * 2.01, level: 0.012, decay: 0.6, pan: (i - 2) * 0.3 }); });
     },
+    booth(k) {
+      const t = k.ctx.currentTime + 0.02;
+      for (let i = 0; i < 4; i++) {
+        k.burst(t + i * 0.38, { freq: 2600, q: 1.1, level: 0.3, decay: 0.022 });
+        k.burst(t + i * 0.38 + 0.05, { freq: 3400, q: 1.4, level: 0.22, decay: 0.03 });
+      }
+      k.tone(t + 1.6, { freq: 2200, to: 7000, glide: 0.6, level: 0.01, attack: 0.05, decay: 0.7 });
+    },
+    nana(k) {
+      const t = k.ctx.currentTime + 0.02;
+      [0, 0.32, 0.64, 0.96].forEach((d, i) => k.tone(t + d, { freq: 420 + i * 40, to: 760 + i * 60, glide: 0.12, level: 0.06, attack: 0.01, decay: 0.16 }));
+      k.tone(t + 1.35, { freq: 1046.5, level: 0.05, decay: 0.5 }); k.tone(t + 1.45, { freq: 1568, level: 0.04, decay: 0.6 });
+    },
     deadair(k) {
       const t = k.ctx.currentTime + 0.01;
       k.burst(t, { freq: 2600, q: 6, level: 0.2, decay: 0.012 });

@@ -1072,3 +1072,15 @@ html[data-daypart="dusk"] .stars { opacity: .45; }
 @media (prefers-reduced-motion: reduce) { .rc-inner { transition: none; } }
 .rc-inner { width: 100%; }
 .rc-front { display: flex; flex-direction: column; align-items: center; }
+
+/* Nana, Solar's samoyed, bounds across the homepage. */
+.egg-nana { position: fixed; left: 0; right: 0; bottom: 18px; height: 150px; z-index: 9991; pointer-events: none; }
+.egg-nana-dog { position: absolute; left: -140px; bottom: 0; display: block; width: 110px; animation: nana-run 3.8s linear forwards; }
+.egg-nana-dog img { display: block; width: 110px; height: 110px; object-fit: cover; border: 4px solid #fff; border-radius: 50%; box-shadow: 0 10px 24px #0007; animation: nana-hop .32s ease-in-out infinite alternate; }
+.egg-nana-dog b { position: absolute; left: 70px; top: -26px; padding: 6px 12px; border-radius: 16px 16px 16px 4px; background: #fff; color: #2a1846; font: 800 .85rem/1 ui-sans-serif, system-ui, sans-serif; white-space: nowrap; animation: nana-bubble 3.8s ease forwards; }
+.egg-nana i { position: absolute; left: var(--px); bottom: 4px; font-style: normal; font-size: 16px; opacity: 0; animation: nana-paw 2.4s var(--pd) ease-out forwards; }
+@keyframes nana-run { from { transform: translateX(0); } to { transform: translateX(calc(100vw + 300px)); } }
+@keyframes nana-hop { from { transform: translateY(0) rotate(-4deg); } to { transform: translateY(-26px) rotate(5deg); } }
+@keyframes nana-bubble { 0%, 12% { opacity: 0; transform: scale(.6); } 20%, 85% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes nana-paw { 0% { opacity: 0; } 15% { opacity: .75; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .egg-nana-dog { left: 50%; margin-left: -55px; animation: none; } .egg-nana-dog img { animation: none; } .egg-nana i { display: none; } }

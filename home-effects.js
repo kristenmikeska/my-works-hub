@@ -99,7 +99,7 @@
     ['petal', 'petal-thorn'], ['thorn', 'petal-thorn'], ['peace', 'peace'], ['recherche', 'recherche'], ['castle', 'recherche'],
     ['secret', 'secret'], ['hoax', 'hoax'], ['bestay', 'hoax'], ['casual', 'casual'], ['mercer', 'casual'],
     ['havenbrook', 'havenbrook'], ['dream', 'havenbrook'], ['minji', 'soul-of-minji'], ['deadair', 'saint-of-dead-air'],
-    ['dead air', 'saint-of-dead-air'], ['dmhs', 'go'], ['rain', 'go'], ['solchan', 'solchan'], ['solar', 'solar']
+    ['dead air', 'saint-of-dead-air'], ['dmhs', 'go'], ['rain', 'go'], ['solchan', 'solchan'], ['nana', 'nana'], ['solar', 'solar']
   ];
   let typed = '', busy = false;
   function announce(text, accent) {
@@ -117,6 +117,19 @@
     announce('✦ every world has a Solar', '#f2b84b');
     setTimeout(() => layer.remove(), 2600);
   }
+  function nanaRun() {
+    window.Achievements?.unlock('good-boy');
+    sound('nana');
+    const shot = `assets/hoax/thumbs/nana-${String(1 + Math.floor(Math.random() * 10)).padStart(2, '0')}.jpg`;
+    const run = document.createElement('div');
+    run.className = 'egg-nana';
+    run.setAttribute('aria-hidden', 'true');
+    run.innerHTML = `<span class="egg-nana-dog"><img src="${shot}" alt=""><b>Good boy!</b></span>` + Array.from({ length: 9 }, (_, i) => `<i style="--px:${8 + i * 10.5}%;--pd:${(0.25 + i * 0.32).toFixed(2)}s">🐾</i>`).join('');
+    document.body.appendChild(run);
+    announce('✦ Nana', '#ffc2e2');
+    setTimeout(() => run.remove(), reduced.matches ? 2500 : 4400);
+  }
+
   function deadAir() {
     document.documentElement.classList.add('egg-deadair');
     const count = document.createElement('div'); count.className = 'egg-deadair-count'; count.setAttribute('aria-hidden', 'true');
@@ -148,6 +161,7 @@
     typed = ''; busy = true; setTimeout(() => { busy = false; }, 1600);
     if (reduced.matches && hit[1] !== 'saint-of-dead-air') { const w = worldById(hit[1]); announce(`✦ ${w ? w.title : 'Solar'}`, w ? w.accent : '#f2b84b'); return; }
     if (hit[1] === 'solchan') { window.location.href = 'solchan.html'; return; }
+    if (hit[1] === 'nana') { nanaRun(); return; }
     window.Achievements?.unlock(hit[1] === 'solar' ? 'every-solar' : 'magic-word');
     if (hit[1] === 'solar') solarBurst();
     else if (hit[1] === 'saint-of-dead-air') deadAir();

@@ -222,7 +222,7 @@
   const scriptBase = document.currentScript.src;
   const experienceStyles = document.createElement('link');
   experienceStyles.rel = 'stylesheet';
-  experienceStyles.href = new URL('reader-experience.css?v=3', scriptBase).href;
+  experienceStyles.href = new URL('reader-experience.css?v=4', scriptBase).href;
   document.head.appendChild(experienceStyles);
   const experienceScript = document.createElement('script');
   experienceScript.src = new URL('reader-experience.js?v=3', scriptBase).href;
@@ -591,6 +591,8 @@
     rikiniki: '#ffd36e', sunooshine: '#ffc2e2', sunshinesunoo: '#ffc2e2', jbird: '#b8c4ff', heeheeseung: '#a9f0c8', heeeseung: '#a9f0c8', princehoon: '#ff9f6e',
     princesunghoon: '#ff9f6e', jakeys: '#9ad4ff', jakeyy: '#9ad4ff', parkjay: '#b8c4ff', sukhyun: '#e0b0ff' };
   const MINE = ['solarsystem', 'solarkim'];
+  const CHAT_PHOTOS = { solarsystem: '../assets/hoax/avatar-solar.jpg', solarkim: '../assets/hoax/avatar-solar.jpg', injangwon: '../assets/hoax/avatar-jungwon.jpg', jungwongarden: '../assets/hoax/avatar-jungwon.jpg' };
+  const withPhoto = (el, who) => { if (CHAT_PHOTOS[who]) { el.style.backgroundImage = `url("${CHAT_PHOTOS[who]}")`; el.classList.add('has-photo'); } return el; };
   function chatColor(handle) {
     if (CHAT_COLORS[handle]) return CHAT_COLORS[handle];
     let h = 0; for (const c of handle) h = (h * 31 + c.charCodeAt(0)) % 360;
@@ -656,7 +658,7 @@
       row.style.setProperty('--who', chatColor(who));
       if (!cont) {
         const face = document.createElement('span'); face.className = 'chat-avatar'; face.textContent = who.charAt(0).toUpperCase();
-        row.appendChild(face);
+        row.appendChild(withPhoto(face, who));
       } else row.appendChild(Object.assign(document.createElement('span'), { className: 'chat-avatar chat-avatar-gap' }));
       const body = document.createElement('div'); body.className = 'chat-body';
       if (!cont) { const name = document.createElement('span'); name.className = 'chat-name'; name.textContent = who; body.appendChild(name); }
@@ -667,7 +669,7 @@
       if (!thread.members.has(who)) {
         thread.members.add(who);
         const dot = document.createElement('i'); dot.textContent = who.charAt(0).toUpperCase(); dot.style.setProperty('--who', chatColor(who)); dot.title = who;
-        thread.el.querySelector('.chat-faces').appendChild(dot);
+        thread.el.querySelector('.chat-faces').appendChild(withPhoto(dot, who));
       }
       last = who;
     }

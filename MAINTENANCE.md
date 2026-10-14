@@ -57,3 +57,11 @@ About page: `about-effects.js` turns the regulars cards into flip cards whose ba
 The Hoax reader turns `handle:<br>message` paragraphs into chat threads at load (`buildChatThreads` in `reader-nav.js`): underlined lines become thread headers (group chat names, or "PRIVATE MESSAGE FROM: handle"), a lone `handle:` line followed by an image becomes an image message, and Solar's handles (`solarsystem`, `solarkim`) sit on the right. Messages pop in on scroll and ping softly when site sound is on. Instagram-style "new post" blocks are still handled by `wrapSocialImages`.
 
 The Hoax intro plays a random run of messages from `assets/hoax-chats.json`, exported from `readers/hoax.html`. Re-export it if Hoax gets new chapters (the extraction logic mirrors `buildChatThreads`; memes are skipped).
+
+## Hoax photos
+
+Kat's sorted photos (Desktop/Hoax) are resized into `assets/hoax/roll/` (full, ~1100px) and `assets/hoax/thumbs/` (360px), listed by album in `assets/hoax/roll.js` (`window.HOAX_ROLL`). Albums map to her folders: Selfies (solar), Nana (Solar's samoyed), w/ Cherry, w/ Jihoon, w/ Jungwon, Jungwon, Friends, Memes. Avatars for Solar's and Jungwon's handles are `assets/hoax/avatar-solar.jpg` and `avatar-jungwon.jpg` (used in the Hoax reader chats and the intro phone).
+
+- `hoax-roll.html` — hidden camera-roll page (Photos-app style, albums, viewer, favourites in `kg-hoax-favorites`). Reached from the tiny camera icon on the phone in the Hoax intro; unlocks "Camera roll"; opening the Nana album (or `#nana`) unlocks "Good boy".
+- Typing "nana" on the homepage sends Nana across the screen (also unlocks "Good boy").
+- `world-extras.js` adds the Hoax photo booth (Solar & Jungwon, Solar & Jihoon strips; "Take another" re-rolls four frames) to the Hoax world page.
