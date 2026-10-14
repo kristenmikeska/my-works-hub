@@ -316,7 +316,13 @@ window.WorldEntrances = (() => {
         const COLORS = { solarsystem: '#ffb84d', solarkim: '#ffb84d', jihoney: '#c9a7ff', jihoonie: '#c9a7ff', cherryblossoms: '#ff8a8a', chxrry: '#ff8a8a', geniusuk: '#7fe3e0',
           asanoonecares: '#8fb8ff', junkyute: '#ff9ec7', jaehyukkie: '#9fe0a8', injangwon: '#5ee8de', jungwongarden: '#5ee8de', rikiniki: '#ffd36e', sunooshine: '#ffc2e2',
           sunshinesunoo: '#ffc2e2', jbird: '#b8c4ff', heeheeseung: '#a9f0c8', princehoon: '#ff9f6e', jakeys: '#9ad4ff', jakeyy: '#9ad4ff' };
-        const PHOTOS = { solarsystem: 'assets/hoax/avatar-solar.jpg', solarkim: 'assets/hoax/avatar-solar.jpg', injangwon: 'assets/hoax/avatar-jungwon.jpg', jungwongarden: 'assets/hoax/avatar-jungwon.jpg' };
+        const PHOTOS = Object.fromEntries(Object.entries({
+          'solar-solsystem-gc': 'solarsystem', 'solar-solarkim-instagram': 'solarkim', 'jungwon-injangwon-gc': 'injangwon', 'jungwon-instagram': 'jungwongarden',
+          'jihoon-jihoney': 'jihoney', 'jihoon-instagram': 'jihoonie', 'cherry-cherryblossoms-gc': 'cherryblossoms', 'cherry-instagram': 'chxrry',
+          'asahi-asanoonecares': 'asanoonecares asanooneoncares asahihi', 'hyunsuk-geniusuk': 'geniusuk sukhyun sunhyuk', 'jaehyuk-jaehyukkie': 'jaehyukkie jaehyuk__',
+          'junkyu-junkyute': 'junkyute junkyuuu', niki: 'rikiniki', jake: 'jakeys jakeyy', jay: 'jbird parkjay', heeseung: 'heeheeseung heeeseung',
+          sunghoon: 'princehoon princesunghoon', sunoo: 'sunooshine sunshinesunoo'
+        }).flatMap(([file, handles]) => handles.split(' ').map(h => [h, `assets/hoax/pfp/${file}.jpg`])));
         const colorOf = who => { if (COLORS[who]) return COLORS[who]; let h = 0; for (const c of who) h = (h * 31 + c.charCodeAt(0)) % 360; return `hsl(${h} 70% 75%)`; };
         const box = dialog.querySelector('.gc-thread'), unread = dialog.querySelector('.gc-unread'), head = dialog.querySelector('.gc-phone-head b');
         let timer, stopped = false, data = null, count = 0;

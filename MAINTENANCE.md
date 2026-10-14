@@ -60,7 +60,7 @@ The Hoax intro plays a random run of messages from `assets/hoax-chats.json`, exp
 
 ## Hoax photos
 
-Kat's sorted photos (Desktop/Hoax) are resized into `assets/hoax/roll/` (full, ~1100px) and `assets/hoax/thumbs/` (360px), listed by album in `assets/hoax/roll.js` (`window.HOAX_ROLL`). Albums map to her folders: Selfies (solar), Nana (Solar's samoyed), w/ Cherry, w/ Jihoon, w/ Jungwon, Jungwon, Friends, Memes. Avatars for Solar's and Jungwon's handles are `assets/hoax/avatar-solar.jpg` and `avatar-jungwon.jpg` (used in the Hoax reader chats and the intro phone).
+Kat's sorted photos (Desktop/Hoax) are resized into `assets/hoax/roll/` (full, ~1100px) and `assets/hoax/thumbs/` (360px), listed by album in `assets/hoax/roll.js` (`window.HOAX_ROLL`). Albums map to her folders: Selfies (solar), Nana (Solar's samoyed), w/ Cherry, w/ Jihoon, w/ Jungwon, Jungwon, Friends, Memes. Profile pictures come from Kat's `Desktop/Hoax/profile pics` folder, cropped to 200px squares in `assets/hoax/pfp/`. Group-chat and Instagram handles can have different pictures (e.g. `solarsystem` vs `solarkim`). The handle → file map is `HOAX_PFP` in `readers/reader-nav.js`, used by chat bubbles, thread headers, post cards and comment lines. It is mirrored as `PHOTOS` in the Hoax scene of `world-entrances.js` for the intro phone, so update both when adding a handle. `sukhyun`/`sunhyuk` are mapped to Hyunsuk.
 
 - `hoax-roll.html` — hidden camera-roll page (Photos-app style, albums, viewer, favourites in `kg-hoax-favorites`). Reached from the tiny camera icon on the phone in the Hoax intro; unlocks "Camera roll"; opening the Nana album (or `#nana`) unlocks "Good boy".
 - Typing "nana" on the homepage sends Nana across the screen (also unlocks "Good boy").

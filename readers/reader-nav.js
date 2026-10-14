@@ -222,7 +222,7 @@
   const scriptBase = document.currentScript.src;
   const experienceStyles = document.createElement('link');
   experienceStyles.rel = 'stylesheet';
-  experienceStyles.href = new URL('reader-experience.css?v=4', scriptBase).href;
+  experienceStyles.href = new URL('reader-experience.css?v=5', scriptBase).href;
   document.head.appendChild(experienceStyles);
   const experienceScript = document.createElement('script');
   experienceScript.src = new URL('reader-experience.js?v=3', scriptBase).href;
@@ -339,11 +339,32 @@
     return { type: 'art' };
   }
 
+  /* Hoax profile pictures, keyed by handle (group-chat and Instagram handles can differ). */
+  const HOAX_PFP = (() => {
+    const map = {
+      'solar-solsystem-gc': ['solarsystem'], 'solar-solarkim-instagram': ['solarkim'],
+      'jungwon-injangwon-gc': ['injangwon'], 'jungwon-instagram': ['jungwongarden'],
+      'jihoon-jihoney': ['jihoney'], 'jihoon-instagram': ['jihoonie'],
+      'cherry-cherryblossoms-gc': ['cherryblossoms'], 'cherry-instagram': ['chxrry'],
+      'asahi-asanoonecares': ['asanoonecares', 'asanooneoncares', 'asahihi'],
+      'hyunsuk-geniusuk': ['geniusuk', 'sukhyun', 'sunhyuk'],
+      'jaehyuk-jaehyukkie': ['jaehyukkie', 'jaehyuk__'], 'junkyu-junkyute': ['junkyute', 'junkyuuu'],
+      niki: ['rikiniki'], jake: ['jakeys', 'jakeyy'], jay: ['jbird', 'parkjay'],
+      heeseung: ['heeheeseung', 'heeeseung'], sunghoon: ['princehoon', 'princesunghoon'], sunoo: ['sunooshine', 'sunshinesunoo']
+    };
+    const out = {};
+    Object.entries(map).forEach(([file, handles]) => handles.forEach(h => { out[h] = `../assets/hoax/pfp/${file}.jpg`; }));
+    return out;
+  })();
+  const pfpFor = user => world === 'hoax' ? HOAX_PFP[String(user).replace(/^@/, '').toLowerCase()] : null;
+
   function avatar(user) {
     const el = document.createElement('div');
     el.className = 'sc-avatar';
     el.style.background = hashColor(user);
     el.textContent = user[0].toUpperCase();
+    const photo = pfpFor(user);
+    if (photo) { el.style.background = `${hashColor(user)} url("${photo}") center / cover`; el.classList.add('has-photo'); }
     return el;
   }
 
@@ -394,6 +415,8 @@
             const cm = line.match(/^\*?([\w.]+)\*?:\s*(.*)/);
             if (cm) {
               d.innerHTML = `<span class="sc-cap-user">@${cm[1]}</span> ${cm[2]}`;
+              const face = pfpFor(cm[1]);
+              if (face) { const i = document.createElement('i'); i.className = 'sc-comment-face'; i.style.backgroundImage = `url("${face}")`; d.prepend(i); }
             } else if (line) {
               d.textContent = line;
             }
@@ -591,8 +614,7 @@
     rikiniki: '#ffd36e', sunooshine: '#ffc2e2', sunshinesunoo: '#ffc2e2', jbird: '#b8c4ff', heeheeseung: '#a9f0c8', heeeseung: '#a9f0c8', princehoon: '#ff9f6e',
     princesunghoon: '#ff9f6e', jakeys: '#9ad4ff', jakeyy: '#9ad4ff', parkjay: '#b8c4ff', sukhyun: '#e0b0ff' };
   const MINE = ['solarsystem', 'solarkim'];
-  const CHAT_PHOTOS = { solarsystem: '../assets/hoax/avatar-solar.jpg', solarkim: '../assets/hoax/avatar-solar.jpg', injangwon: '../assets/hoax/avatar-jungwon.jpg', jungwongarden: '../assets/hoax/avatar-jungwon.jpg' };
-  const withPhoto = (el, who) => { if (CHAT_PHOTOS[who]) { el.style.backgroundImage = `url("${CHAT_PHOTOS[who]}")`; el.classList.add('has-photo'); } return el; };
+  const withPhoto = (el, who) => { const photo = pfpFor(who); if (photo) { el.style.backgroundImage = `url("${photo}")`; el.classList.add('has-photo'); } return el; };
   function chatColor(handle) {
     if (CHAT_COLORS[handle]) return CHAT_COLORS[handle];
     let h = 0; for (const c of handle) h = (h * 31 + c.charCodeAt(0)) % 360;
