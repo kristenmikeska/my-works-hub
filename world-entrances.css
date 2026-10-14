@@ -712,3 +712,8 @@ body.world-revealed .world-hero-content > :nth-child(n+4) { animation-delay: .24
   .lease-entrance *, .east-entrance *, .quest-entrance *, .air-entrance *, .rain-entrance * { animation: none !important; transition: none !important; }
   .lease-dust, .quest-wisps, .rain-fall, .rain-glass, .rain-flash { display: none; }
 }
+
+/* Home button beside Sound and Skip. Each scene's skip style supplies the colours. */
+.entrance-actions .entrance-home { display: inline-grid; place-items: center; width: 42px; height: 42px; padding: 0; border-radius: 50%; text-decoration: none; }
+.entrance-home svg { width: 17px; height: 17px; fill: currentColor; }
+@media (max-width: 700px) { .entrance-actions .entrance-home { width: 38px; height: 38px; } }

@@ -569,7 +569,7 @@ window.WorldEntrances = (() => {
       dialog.className = `world-entrance ${p}-entrance`;
       dialog.setAttribute('aria-labelledby', `${p}-entrance-title`);
       dialog.setAttribute('aria-describedby', `${p}-entrance-description`);
-      const skip = `<span class="entrance-actions"><button class="${p}-skip entrance-sound" type="button" data-entrance="sound" aria-pressed="false" aria-label="Turn intro sound on"><span class="entrance-sound-icon" aria-hidden="true">♪</span> <span class="entrance-sound-label">Sound on</span></button><button class="${p}-skip" type="button" data-entrance="skip">${reducedMotion.matches ? scene.enter : 'Skip intro'} <span aria-hidden="true">↗</span></button></span>`;
+      const skip = `<span class="entrance-actions"><a class="${p}-skip entrance-home" href="index.html" data-entrance="home" aria-label="Back to all worlds" title="All worlds"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 3.8l8.5 7.4V20.2h-5.6v-5.4H9.1v5.4H3.5z"/></svg></a><button class="${p}-skip entrance-sound" type="button" data-entrance="sound" aria-pressed="false" aria-label="Turn intro sound on"><span class="entrance-sound-icon" aria-hidden="true">♪</span> <span class="entrance-sound-label">Sound on</span></button><button class="${p}-skip" type="button" data-entrance="skip" autofocus>${reducedMotion.matches ? scene.enter : 'Skip intro'} <span aria-hidden="true">↗</span></button></span>`;
       dialog.innerHTML = scene.markup(skip);
       document.body.appendChild(dialog);
       const stopScene = scene.start ? scene.start(dialog) : null;
@@ -648,6 +648,7 @@ window.WorldEntrances = (() => {
       };
       disposeEntrance = () => { if (engine) engine.stop(0); release(false); };
       dialog.querySelector('[data-entrance="skip"]').addEventListener('click',leave);
+      dialog.querySelector('[data-entrance="home"]').addEventListener('click', () => { if (engine) engine.stop(0.25); });
       dialog.addEventListener('cancel',event => { event.preventDefault(); leave(); });
       dialog.showModal();
     }
