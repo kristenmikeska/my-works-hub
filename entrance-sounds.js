@@ -728,6 +728,42 @@ window.EntranceSounds = (() => {
       }
       k.tone(t + 1.6, { freq: 2200, to: 7000, glide: 0.6, level: 0.01, attack: 0.05, decay: 0.7 });
     },
+    /* FEMC mode: original menu sounds in the spirit of a certain pink handheld RPG. */
+    'femc-hover'(k) {
+      const t = k.ctx.currentTime + 0.005;
+      k.tone(t, { freq: 2637, level: 0.022, attack: 0.002, decay: 0.07 });
+      k.tone(t, { freq: 3951, level: 0.008, attack: 0.002, decay: 0.05 });
+      k.burst(t, { freq: 6000, q: 2, level: 0.03, decay: 0.008 });
+    },
+    'femc-click'(k) {
+      const t = k.ctx.currentTime + 0.005;
+      k.burst(t, { freq: 5200, q: 1.5, level: 0.06, decay: 0.012 });
+      k.tone(t, { freq: 1318.5, type: 'triangle', level: 0.045, attack: 0.003, decay: 0.12 });
+      k.tone(t + 0.055, { freq: 1975.5, type: 'triangle', level: 0.045, attack: 0.003, decay: 0.3 });
+      k.tone(t + 0.055, { freq: 3951, level: 0.01, attack: 0.003, decay: 0.25 });
+    },
+    'femc-back'(k) {
+      const t = k.ctx.currentTime + 0.005;
+      k.tone(t, { freq: 1174.7, type: 'triangle', level: 0.04, attack: 0.003, decay: 0.08 });
+      k.tone(t + 0.06, { freq: 880, type: 'triangle', level: 0.035, attack: 0.003, decay: 0.18 });
+    },
+    'femc-on'(k) {
+      const { ctx, out } = k, t = ctx.currentTime + 0.02;
+      const src = k.loop(k.noise('pink', 4)), g = k.gain(0), bp = k.filter('bandpass', 600, 1.2);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.22, t + 0.35); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.9);
+      bp.frequency.setValueAtTime(500, t); bp.frequency.exponentialRampToValueAtTime(6000, t + 0.6);
+      k.chain(src, bp, g, out); src.stop(t + 1);
+      [1046.5, 1318.5, 1568, 1975.5, 2349.3, 3136].forEach((f, i) => {
+        k.tone(t + 0.25 + i * 0.055, { freq: f, type: 'triangle', level: 0.035, attack: 0.003, decay: 0.9, pan: (i - 2.5) * 0.25 });
+        k.tone(t + 0.25 + i * 0.055, { freq: f * 2, level: 0.008, attack: 0.003, decay: 0.5, pan: (i - 2.5) * 0.25 });
+      });
+      k.tone(t + 0.2, { freq: 98, to: 65, level: 0.16, attack: 0.02, decay: 0.7 });
+    },
+    'femc-off'(k) {
+      const t = k.ctx.currentTime + 0.02;
+      [2349.3, 1975.5, 1568, 1318.5].forEach((f, i) => k.tone(t + i * 0.06, { freq: f, type: 'triangle', level: 0.03, attack: 0.003, decay: 0.4, pan: (1.5 - i) * 0.3 }));
+      k.tone(t + 0.2, { freq: 130, to: 60, level: 0.12, attack: 0.01, decay: 0.4 });
+    },
     /* An old camera flash: the capacitor whine, then the pop. */
     flash(k) {
       const t = k.ctx.currentTime + 0.02;

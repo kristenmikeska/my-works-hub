@@ -228,6 +228,9 @@
   experienceScript.src = new URL('reader-experience.js?v=3', scriptBase).href;
   experienceScript.onload = () => window.initReaderExperience({ world, chapters, topbar, chLabel, chList, backHref, worldLabel, closeDrawer });
   document.body.appendChild(experienceScript);
+  const femcScript = document.createElement('script');
+  femcScript.src = new URL('../femc-mode.js?v=1', scriptBase).href;
+  document.head.appendChild(femcScript);
 
   /* ─────────────────────────────────────────────────────────────
      SOCIAL MEDIA ELEMENT MARKING

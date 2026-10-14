@@ -46,7 +46,7 @@ Avoid long `setInterval`s on the homepage: headless screenshot testing fast-forw
 
 ## Secret stamps, hidden pages, and the regulars
 
-`achievements.js` (loaded on the homepage, world pages, About, Vault, 404, and hidden pages) holds the 20 secret stamps: id, name, group, riddle, and emblem. `Achievements.unlock(id)` records one in `kg-achievements` and shows a toast; `Achievements.note(set, value, goal, id)` counts multi-step ones (every intro, every regulars card). Reading stamps (The end, World traveler, One hundred) are checked when the passport renders, using `maxIdx` the reader stores in `kg-stamps`. Locked stamps show their riddle in the passport.
+`achievements.js` (loaded on the homepage, world pages, About, Vault, 404, and hidden pages) holds the 21 secret stamps: id, name, group, riddle, and emblem. `Achievements.unlock(id)` records one in `kg-achievements` and shows a toast; `Achievements.note(set, value, goal, id)` counts multi-step ones (every intro, every regulars card). Reading stamps (The end, World traveler, One hundred) are checked when the passport renders, using `maxIdx` the reader stores in `kg-stamps`. Locked stamps show their riddle in the passport.
 
 Hidden pages: `solchan.html` (Solar × Haechan across Runners and Strangers). It's reached from the tiny sun on the back of Haechan's card on the About page, or by typing "solchan" on the homepage, and unlocks the Two suns stamp. Quotes on it are verbatim from the manuscripts with chapter citations; later ones sit behind spoiler toggles.
 
@@ -65,3 +65,12 @@ Kat's sorted photos (Desktop/Hoax) are resized into `assets/hoax/roll/` (full, ~
 - `hoax-roll.html` — hidden camera-roll page (Photos-app style, albums, viewer, favourites in `kg-hoax-favorites`). Reached from the tiny camera icon on the phone in the Hoax intro; unlocks "Camera roll"; opening the Nana album (or `#nana`) unlocks "Good boy".
 - Typing "nana" on the homepage sends Nana across the screen (also unlocks "Good boy").
 - `world-extras.js` hides the Hoax photo booth (Solar & Jungwon, Solar & Jihoon strips; "Take another" re-rolls four frames) behind a twinkling star in the Hoax hero sky (`.booth-star`, positioned in `world.css`; move it if the hero photo changes). Clicking it plays a flash sound, flashes the screen, unlocks the `say-cheese` stamp, scrolls to the booth, and slides the strips in from opposite sides (`booth-slide` sound) before they develop. "✕ Hide the booth" slides the strips back out, scrolls to the top, and puts the star back. The booth is hidden again on every visit.
+
+## FEMC mode (hidden skin)
+
+`femc-mode.js` is loaded in the `<head>` of every hub page (index, world, about, vault, 404, solchan, hoax-roll) and by `readers/reader-nav.js` for the readers. Typing `femc` anywhere toggles it (`kg-femc = 'on'`); the first time unlocks the `femc` stamp ("Memento mori").
+
+- **Look:** `html.femc` swaps every page accent to pink (`#ff4f9e`), adds pink diagonal stripes and offset heading shadows (not in readers, `html.femc-reader`), pink arrow cursors, and Persona-style offset shadows on card and chip hovers. The CSS lives inside `femc-mode.js`.
+- **Badge:** bottom-left calendar (date, P3P-style time of day, real moon phase) with SFX mute (`kg-femc-sound`), a ♪ music toggle, and ✕ to switch off. It moves above the world music player when they'd overlap. From midnight to 1 a.m. it reads "Dark Hour" and the stripes turn green.
+- **Sounds:** original P3P-inspired menu sounds in `entrance-sounds.js` (`femc-hover`, `femc-click`, `femc-back`, `femc-on`, `femc-off`). They play while FEMC mode is on regardless of the site's loud switch, unless muted from the badge.
+- **Music:** list tracks in `assets/femc/bgm.js` (files in `assets/femc/music/`). They play in order at low volume, resume across pages, pause while a world song or world intro is playing, and start on the first click if the browser blocks autoplay. The ♪ button only appears when the list has tracks.
