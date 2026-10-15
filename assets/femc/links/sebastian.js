@@ -150,7 +150,7 @@ FemcSocial.define({
       { s: 'sebastian', t: "...They've never liked a new player before. Ever. You're like, the first." }
     ] },
 
-    { after: '7/28', title: '4: the basement', place: 'Iwatodai · Riverside', scene: [
+    { after: '7/28', title: '4: the basement', music: 'tender', place: 'Iwatodai · Riverside', scene: [
       { n: "He'd asked to walk. Not at the arcade. Somewhere quiet. They ended up by the river in the evening, the heat starting to lift off the water, cicadas going, a few joggers passing. One of them was Akihiko, who waved and kept running." },
       { s: 'sebastian', t: "Back home I live in my mom's basement. She's a carpenter. She built the whole house." },
       { s: 'sebastian', t: "My stepdad's a scientist. He's fine, I guess. My half-sister Maru's a genius. Everyone loves her. She's good at everything, and she's nice, and she's always home for dinner." },
@@ -168,7 +168,7 @@ FemcSocial.define({
       { n: "He laughed at himself, quietly, and kicked a pebble into the river. Solar didn't say anything. She bumped his shoulder with hers. He bumped back." }
     ] },
 
-    { after: '8/18', title: '5: motorcycle', place: 'Port Island · Coastal Road', scene: [
+    { after: '8/18', title: '5: motorcycle', music: 'sun', place: 'Port Island · Coastal Road', scene: [
       { n: "He'd found a motorcycle. Or, he'd found the bones of one, rusting behind a repair shop near the port, and he'd been working on it for three weeks with borrowed tools, and tonight it ran." },
       { s: 'sebastian', t: "Get on. I've got a spare helmet. It's terrible. It's the only one." },
       { choose: [
@@ -210,7 +210,7 @@ FemcSocial.define({
       { n: "When she looked up, he was sitting on the floor against the couch with his hood up, watching her play the whole time. He'd seen every choice she made." }
     ] },
 
-    { after: '9/29', title: '7: moonlight jellies', place: 'Port Island · Pier', scene: [
+    { after: '9/29', title: '7: moonlight jellies', music: 'tender', place: 'Port Island · Pier', scene: [
       { n: "There was a night every year in Pelican Town, he told her, when the moonlight jellies came. The whole town went down to the beach, and somebody put a candle on a boat, and the jellyfish came up from the deep water, hundreds of them, glowing blue and green, all passing by the shore at once on their way somewhere else." },
       { s: 'sebastian', t: "I've gone every year. I never told anyone I like it. I just stand at the back." },
       { n: "They were on the pier at the edge of Port Island. Late September, warm still, the water black. And then, just past the end of the pier, something glowed." },
@@ -225,7 +225,7 @@ FemcSocial.define({
       { n: "The jellies kept coming. Blue and green, lighting up the underside of the pier, lighting up his face, which was doing something very soft and very unguarded that he clearly didn't know it was doing." }
     ] },
 
-    { after: '10/20', title: '8: wanting to stay', place: 'Paulownia Mall · Game Panic', scene: [
+    { after: '10/20', title: '8: wanting to stay', music: 'tender', place: 'Paulownia Mall · Game Panic', scene: [
       { n: "October rain, cold this time. The awning. The arcade lights flickering. Sebastian was already there, the way he always was, hood up, but he wasn't watching the rain. He was looking at the ground." },
       { s: 'sebastian', t: "Elizabeth told me. The green hour ends at the end of January. Everyone goes home." },
       { s: 'sebastian', t: "I spent my whole life wanting to leave home. And now I get to go back, and the only thing I can think about is that I don't want to." },

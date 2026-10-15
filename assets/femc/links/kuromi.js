@@ -179,7 +179,7 @@ FemcSocial.define({
       ] }
     ] },
 
-    { after: '8/17', title: '6: under the eyeliner', place: 'Iwatodai Dorm · Rooftop', scene: [
+    { after: '8/17', title: '6: under the eyeliner', music: 'tender', place: 'Iwatodai Dorm · Rooftop', scene: [
       { n: "The dorm roof, at night. Kuromi had claimed it as her territory on the first night and had decorated it with skull stickers on the water tank, which Mitsuru was pretending not to know about." },
       { n: "She was sitting on the edge with her feet dangling over the street, which was not allowed, and looking at the stars, which were faint and blurry over the city." },
       { s: 'kuromi', t: "In Mariland you can see all of them. The stars. Millions." },

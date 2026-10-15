@@ -226,7 +226,7 @@ FemcSocial.define({
       { n: "She went home after. She slept for fourteen hours. The night nurse texted Solar a single thumbs-up emoji at midnight, which Solar chose to read as a medal." }
     ] },
 
-    { after: '9/10', title: '7: wings', place: 'Port Island · Seaside Park', scene: [
+    { after: '9/10', title: '7: wings', music: 'sun', place: 'Port Island · Seaside Park', scene: [
       { n: "September, after a storm. The sky over the bay was scrubbed clean, a deep cold blue, and the seaside park was empty except for the gulls and the two of them, sitting on the seawall with their feet over the water." },
       { n: "Angela had her wings folded in her lap, unclasped from the suit. Up close they were more machine than miracle, segments and joints and fine gold filaments, and she ran her thumb along an edge like someone touching an old scar." },
       { s: 'mercy', f: 'neutral', t: "Elizabeth told me something, you know. The strange woman with the book." },
@@ -249,7 +249,7 @@ FemcSocial.define({
       ] }
     ] },
 
-    { after: '9/24', title: '8: apathy', place: 'Tatsumi Memorial Hospital · 3F Ward', scene: [
+    { after: '9/24', title: '8: apathy', music: 'tender', place: 'Tatsumi Memorial Hospital · 3F Ward', scene: [
       { n: "Angela had figured it out. Solar could tell by the way she was standing in the third-floor ward, very still, with her arms crossed and a stack of charts against her chest and the expression of a doctor who has finally found the thing she'd been looking for and hates it." },
       { s: 'mercy', f: 'serious', t: "It's the shadows. Isn't it. The ones in the green hour. They're feeding on these people." },
       { n: "Solar had never told her. She'd never told anyone outside the dorm. But Angela had been on that roof, and Angela had charts, and Angela was the kind of person who would stare at a problem until it confessed." },

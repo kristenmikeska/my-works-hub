@@ -10,12 +10,13 @@
      { ifRoute: 'romance'|'friend', then: [...] }   lines only on that route
      { ifRank: { kiriko: 8 }, then: [...], else: [...] }   branch on another link's rank
      { register: id }                      "Registered to the Compendium"
+     { music: 'tender' }                   switch the scene music (joy, school, sun, tender, mystery, night, velvet);
+                                           a rank can also take music: 'tender' beside its title
    {name} becomes "Solar". */
 FemcSocial.define({
   id: 'akihiko', name: 'Akihiko Sanada', short: 'Akihiko', arcana: 'Star', numeral: 'XVII', from: 'Persona 3',
   home: { place: 'Gekkoukan High · Boxing Club', slot: 0, days: [1, 2, 3, 4, 5, 6], hint: 'After school, Monday to Saturday, at the boxing club.' },
   romance: true,
-  music: 'assets/femc/music/tender-feeling.mp3',
   cast: { junpei: 'Junpei', mitsuru: 'Mitsuru', yukari: 'Yukari', shinjiro: 'Shinjiro' },
   stamps: { 1: ['senpai'], 10: ['max-rank'] },
   threads: {
@@ -571,7 +572,7 @@ FemcSocial.define({
       { n: "On the way home, the cicadas finally hit their stride, loud enough to drown everything out. She found she didn't need her headphones at all." }
     ] },
 
-    { after: '8/10', title: '6: miki', place: 'Iwatodai Dorm · Rooftop', scene: [
+    { after: '8/10', title: '6: miki', music: 'tender', place: 'Iwatodai Dorm · Rooftop', scene: [
       { n: "August had a way of making the evenings feel like they'd never end. The sun went down over the bay so slowly you could watch it happen, and the heat stayed behind after it was gone, rising off the dorm roof in waves you could feel through your shoes." },
       { n: "Akihiko had been quiet all afternoon. Not his normal quiet, the coiled, about-to-go-for-a-run quiet. A different one. Heavier. He'd skipped the gym. He'd skipped dinner. And now he was up here, on the roof, sitting with his back against the water tank and his arms on his knees, watching the sky like it owed him something." },
       { n: "She hadn't been invited. She came up anyway, and sat down a few feet away, and he didn't tell her to leave." },
@@ -654,7 +655,7 @@ FemcSocial.define({
       { n: "He took the stairs two at a time. She followed slower, one hand on the railing, her face hot, deciding very firmly that it was the wind." }
     ] },
 
-    { after: '10/10', title: '8: october', place: 'Iwatodai Dorm · Hallway', scene: [
+    { after: '10/10', title: '8: october', music: 'tender', place: 'Iwatodai Dorm · Hallway', scene: [
       { n: "The cold came in October all at once, the way it does by the water. One morning the air was soft and the next it had teeth, and the trees along the river went yellow overnight like they'd gotten bad news." },
       { n: "For six days, there had been no text at five-twelve." },
       { n: "Solar noticed it the first morning and told herself it was nothing. She noticed the second morning and told herself he needed sleep. By the sixth she was awake at five every day anyway, out of habit, staring at her ceiling in the dark, listening to the dorm not make the sounds it used to make." },

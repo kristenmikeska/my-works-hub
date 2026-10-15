@@ -258,7 +258,7 @@ FemcSocial.define({
       { n: "The curry was the best thing she'd ever made, which was to say it was the best thing he'd ever made with her standing next to him. He let her take credit for it at the table anyway, and when Junpei said this is amazing, Solar, he just ate his dinner and said nothing at all." }
     ] },
 
-    { after: '8/28', title: '6: the doorway', place: 'Iwatodai Dorm · Lounge', scene: [
+    { after: '8/28', title: '6: the doorway', music: 'tender', place: 'Iwatodai Dorm · Lounge', scene: [
       { n: "It was a slow, hot Friday evening, the sky going purple outside the windows, and the lounge was full in a lazy, end-of-summer way. Junpei and Yukari were arguing about a TV show. Koromaru was asleep on Solar's feet. Shinjiro was in the armchair with a magazine he wasn't reading." },
       { n: "Ken Amada came down the stairs." },
       { register: 'ken' },
@@ -293,7 +293,7 @@ FemcSocial.define({
       { n: "It wasn't hate, exactly. It was something that had been waiting." }
     ] },
 
-    { after: '9/8', title: '7: orange bottle', place: 'Iwatodai Dorm · Kitchen', scene: [
+    { after: '9/8', title: '7: orange bottle', music: 'tender', place: 'Iwatodai Dorm · Kitchen', scene: [
       { n: "September rain, the steady kind, the kind that came in at an angle and found every gap in the windows. The kitchen smelled like rice and the dish soap he insisted on buying because the other kind was garbage." },
       { n: "She came down late for a glass of water and found him at the counter with his back to her, shaking something out of a small orange bottle into his palm." },
       { n: "He heard her. He closed his hand. He didn't turn around for a long second, long enough that she knew he was deciding something." },
@@ -328,7 +328,7 @@ FemcSocial.define({
       { n: "She went. On the stairs she looked back. He was standing at the counter with his head bowed and both hands flat on the steel, like he was holding the whole kitchen down." }
     ] },
 
-    { after: '9/20', title: '8: two years ago', place: 'Iwatodai Dorm · Rooftop', scene: [
+    { after: '9/20', title: '8: two years ago', music: 'tender', place: 'Iwatodai Dorm · Rooftop', scene: [
       { n: "The night was clear and cool, the first truly cool night of the year, and the moon over the bay was getting fat. She knew what that meant now. Everyone in the dorm did. They'd all started glancing at the sky the way farmers did." },
       { n: "He was on the roof, smoking nothing, his hands in his coat, watching the moon like it was an opponent." },
       { s: 'shinjiro', f: 'neutral', t: "...Figured you'd find me." },

@@ -155,7 +155,7 @@ FemcSocial.define({
       { n: "When Solar finally left, Ann was still sitting on the fountain, but she wasn't staring at her phone anymore. She was watching people go by, a little less like a ghost, a little more like someone deciding where to start." }
     ] },
 
-    { after: '5/23', title: '2: crepes', place: 'Paulownia Mall · Crepe Stand', scene: [
+    { after: '5/23', title: '2: crepes', music: 'sun', place: 'Paulownia Mall · Crepe Stand', scene: [
       { n: "Ann had found the only crepe stand in Paulownia Mall within forty-eight hours of arriving, which Solar was beginning to understand was simply a law of nature, like gravity, or Akihiko waking up at five." },
       { n: "It was tucked between a phone repair place and a shop that sold nothing but socks, and it smelled like butter and burnt sugar, and Ann ordered without looking at the menu, rattling off a combination of strawberries and cream and chocolate and something called a brownie crumble with the confidence of a professional." },
       { s: 'ann', f: 'happy', t: "You have to get the custard one. Trust me. I would never lie to you about custard." },
@@ -270,7 +270,7 @@ FemcSocial.define({
       { n: "He was gone in the morning. Ann texted Solar at six a.m. Solar was already awake. She'd learned to be." }
     ] },
 
-    { after: '7/11', title: '5: shiho', place: 'Port Island · Seaside Park', scene: [
+    { after: '7/11', title: '5: shiho', music: 'tender', place: 'Port Island · Seaside Park', scene: [
       { n: "July, and the heat was back for good. The seaside park on Port Island had a long promenade along the water, and in the evenings it filled up with joggers and couples and old men fishing off the rail, and the breeze off the bay was the only thing in the whole city that felt cool." },
       { n: "Ann had been quiet since Ryuji left. Still bright, still funny, still ordering three crepes. But there were gaps now. Moments where she'd stop mid-sentence and look at the water like she was waiting for someone to come walking up out of it." },
       { s: 'ann', f: 'neutral', t: "Can I show you something?" },

@@ -65,7 +65,7 @@ FemcSocial.define({
     ] }
   ],
   ranks: [
-    { after: '8/8', title: '1: the pier', place: 'Port Island · Pier', scene: [
+    { after: '8/8', title: '1: the pier', music: 'sun', place: 'Port Island · Pier', scene: [
       { n: "At the very end of the Port Island pier, where the old men usually fished, there was a boy asleep." },
       { n: "He was sitting with his back against a post and a fishing rod propped between his knees, line in the water, head tipped back, completely unconscious. Spiky black hair. A black jacket with silver at the collar, too expensive and too formal for a pier. A faint, regal stillness to him, even asleep, like somebody had painted him into the scene." },
       { n: "The line jerked. Something had bitten. He didn't wake up." },
@@ -93,7 +93,7 @@ FemcSocial.define({
       { n: "She sat down next to him on the end of the pier. He handed her the spare rod without asking. They fished until sunset and caught nothing, and he didn't seem to mind at all, and she found she didn't either." }
     ] },
 
-    { after: '8/22', title: '2: prompto', place: 'Port Island · Pier', scene: [
+    { after: '8/22', title: '2: prompto', music: 'sun', place: 'Port Island · Pier', scene: [
       { n: "There was a second boy on the pier now. Blond hair swept up, freckles, a camera on a strap around his neck, taking photographs of absolutely everything with the joy of someone who had never seen a seagull before." },
       { register: 'prompto' },
       { s: 'prompto', t: "Noct! Noct, look at that bird! Look at it! It's HUGE!" },
@@ -154,7 +154,7 @@ FemcSocial.define({
       ] }
     ] },
 
-    { after: '10/3', title: '5: dad', place: 'Port Island · Pier', scene: [
+    { after: '10/3', title: '5: dad', music: 'tender', place: 'Port Island · Pier', scene: [
       { n: "October, and the pier was cold in the mornings now. Noctis had brought a thermos of something Ignis made and was sharing it with Solar, the steam rising off the cups into the gray air." },
       { s: 'noctis', t: "My dad's the king. Regis. He's... tired. All the time. He's been holding up a wall around our city for years. With magic. It's killing him." },
       { s: 'noctis', t: "When I was a kid I thought he just didn't want to spend time with me. He was always busy. Always somewhere else." },
@@ -167,7 +167,7 @@ FemcSocial.define({
       { n: "They drank the rest of the thermos in silence. A gull landed on the railing next to them and stared at Noctis's sandwich. He gave it half. Then the other half. He said his dad used to feed the birds in the palace gardens, when he thought nobody was watching." }
     ] },
 
-    { after: '10/17', title: '6: luna', place: 'Paulownia Mall · Rooftop Garden', scene: [
+    { after: '10/17', title: '6: luna', music: 'tender', place: 'Paulownia Mall · Rooftop Garden', scene: [
       { n: "Haru's garden on the Gekkoukan roof had a sister now, a tiny one on top of Paulownia Mall, and Noctis had found it and liked it because nobody else was ever there." },
       { n: "There was a single white flower growing in one of the planters, a delicate thing with long petals. He'd been staring at it for a while." },
       { s: 'noctis', t: "Sylleblossoms. Or something like them. There's a girl back home who loves these. Luna." },
@@ -200,7 +200,7 @@ FemcSocial.define({
       { n: "He sounded surprised. Like he'd expected, all his life, to be let go of eventually." }
     ] },
 
-    { after: '11/21', title: '8: what\'s coming', place: 'Port Island · Pier', scene: [
+    { after: '11/21', title: '8: what\'s coming', music: 'tender', place: 'Port Island · Pier', scene: [
       { n: "Late November. The pier was almost empty, the water gray and choppy, the wind cold. Noctis had stopped fishing. He was just sitting at the end with his knees pulled up, looking at the horizon." },
       { s: 'noctis', t: "Elizabeth told me something. About what's waiting for me. Back home." },
       { s: 'noctis', t: "She didn't say all of it. She didn't have to. I sort of already knew. There's a reason my dad looks at me like that." },

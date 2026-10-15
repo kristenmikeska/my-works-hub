@@ -62,7 +62,7 @@ FemcSocial.define({
     ] }
   ],
   ranks: [
-    { after: '10/5', title: '1: the bridge', place: 'Moonlight Bridge', scene: [
+    { after: '10/5', title: '1: the bridge', music: 'tender', place: 'Moonlight Bridge', scene: [
       { n: "The night after, Solar couldn't stay in the dorm. She walked until her legs stopped asking where she was going, and they stopped at Moonlight Bridge, all white cables and lights doubled in the black water, the wind off the bay cold enough to make her eyes sting, which was convenient." },
       { ifRank: { kiriko: 8 }, then: [
         { n: "The woman was up there again, the one from that night with Kiriko, standing on a cable forty meters above the road as if it were a sidewalk. Purple skin. A long braid of dark hair. A rifle as long as a person. She looked down before Solar was halfway across, the way she always seemed to know." },
@@ -117,7 +117,7 @@ FemcSocial.define({
       { n: "Kiriko had told Solar once that in the other world, people dressed up as Widowmaker for Halloween. Solar didn't tell her. She had a feeling Widowmaker would find it either very funny or not funny at all, and she wasn't sure which, and she wanted to keep tonight exactly as it was." }
     ] },
 
-    { after: '11/9', title: '4: amélie', place: 'Moonlight Bridge', scene: [
+    { after: '11/9', title: '4: amélie', music: 'tender', place: 'Moonlight Bridge', scene: [
       { n: "Cold now. November. Widowmaker didn't feel it, she said. She didn't feel much of anything. But she'd started coming down off the cables when Solar came, to sit on the railing at Solar's height, which Solar noticed and didn't mention." },
       { s: 'widowmaker', t: "My name was Amélie. Amélie Lacroix. You may know that, but you may not use it." },
       { s: 'widowmaker', t: "I had a husband. Gérard. I am told that I killed him." },
@@ -148,7 +148,7 @@ FemcSocial.define({
       { n: "They sat on the railing in the wind. Widowmaker's hand came up, every few minutes, to touch the scarf, as though checking it was still there. She didn't seem to notice she was doing it." }
     ] },
 
-    { after: '12/2', title: '6: princesse', place: 'Moonlight Bridge · The Cables', scene: [
+    { after: '12/2', title: '6: princesse', music: 'mystery', place: 'Moonlight Bridge · The Cables', scene: [
       { n: "December. The first really cold night, the bay black and glittering, the wind sharp enough to cut. They were up on the cables again, watching the city lights, and Solar was cold and stubborn about it and had refused to go home, and Widowmaker was watching her be stubborn the way you'd watch a kitten fight a shoelace." },
       { s: 'widowmaker', t: "Go home, princesse. You are shivering." },
       { n: "She said it without thinking. Then she stopped. Her whole body stopped, the way it did before a shot." },
@@ -177,7 +177,7 @@ FemcSocial.define({
       { s: 'widowmaker', t: "...Do not tell anyone. Especially not the fox." }
     ] },
 
-    { after: '12/23', title: '8: talon', place: 'Moonlight Bridge', scene: [
+    { after: '12/23', title: '8: talon', music: 'tender', place: 'Moonlight Bridge', scene: [
       { n: "There was something wrong with her tonight. She was up on the very top of the tower, not watching the city. Watching nothing. Her visor was down. She didn't come down when Solar called her name, so Solar climbed all the way up, freezing, furious, and sat down next to her." },
       { s: 'widowmaker', t: "When I go back, they will find me. Talon. They always find me." },
       { s: 'widowmaker', t: "They will put me back in the chair. And they will take out whatever has grown back. The dancing. The scarf. This bridge. You." },
@@ -193,7 +193,7 @@ FemcSocial.define({
       { n: "Mercy came to the bridge the next night, Solar heard later. Just stood at the bottom of the tower and looked up. Widowmaker looked down. Neither of them said anything, and then Mercy left, and Widowmaker told Solar she didn't know what that had been about, in a voice that meant she knew exactly." }
     ] },
 
-    { after: '1/8', title: '9: ninety-two', place: 'Moonlight Bridge', scene: [
+    { after: '1/8', title: '9: ninety-two', music: 'tender', place: 'Moonlight Bridge', scene: [
       { n: "January, and the snow on the bridge, and the whole bay white and silver under a thin cold moon. Widowmaker was waiting on the railing. She had the scarf on. She always had it on now." },
       { n: "Kiriko had come too. She'd climbed halfway up the tower before deciding she didn't love heights and come down again, and she was sitting on the bridge with her back against a support beam, eating something from a bag, and Widowmaker was pretending to be annoyed by her." },
       { s: 'kiriko', t: "Fortune. For you. I'm not asking." },

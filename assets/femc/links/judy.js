@@ -138,7 +138,7 @@ FemcSocial.define({
       { n: "They didn't shake hands. But the next week, when the dorm's ancient hot water heater broke, Judy fixed it for free, and Mitsuru left a thank-you note on her workbench in perfect handwriting. Judy kept it." }
     ] },
 
-    { after: '9/19', title: '4: evelyn', place: 'Iwatodai · Junkyard', scene: [
+    { after: '9/19', title: '4: evelyn', music: 'tender', place: 'Iwatodai · Junkyard', scene: [
       { n: "Judy had been quiet all week. Not the focused quiet of building something. A heavier one. She'd stopped coming to Club Escapade. She'd stopped fixing things." },
       { n: "Solar found her at the junkyard at dusk, sitting on the hood of a rusted car with the BD helmet in her lap, not wearing it. Just holding it." },
       { s: 'judy', t: "There was someone. Back home. Evelyn." },
@@ -156,7 +156,7 @@ FemcSocial.define({
       { n: "She put the helmet back on the workbench. She didn't build anything that night. But the next day she came back to Club Escapade, and the day after that she started on the rig again, and Solar decided that counted as something." }
     ] },
 
-    { after: '10/3', title: '5: panam', place: 'Port Island · Coastal Road', scene: [
+    { after: '10/3', title: '5: panam', music: 'sun', place: 'Port Island · Coastal Road', scene: [
       { n: "The car came through the green hour at a hundred and forty kilometers an hour, landed on the coastal road in a shower of sparks, spun twice, and stopped dead in front of the junkyard with its engine roaring." },
       { register: 'panam' },
       { n: "A woman climbed out. Long dark hair, nomad leathers, tattoos, and an expression of absolute fury, which changed instantly when she saw Judy." },
@@ -172,7 +172,7 @@ FemcSocial.define({
       { n: "Panam faded at dawn, the way the visitors did. Before she went, she told Judy, gruffly, \"Don't you dare give up on that rig,\" and told Solar, more gruffly, \"Look after her. She cares too hard.\" Then she got back in her car and drove into the sunrise and was gone." }
     ] },
 
-    { after: '10/24', title: '6: the dive', place: 'Port Island · Harbor', scene: [
+    { after: '10/24', title: '6: the dive', music: 'tender', place: 'Port Island · Harbor', scene: [
       { n: "Judy had found scuba gear. Solar wasn't sure how. She didn't ask." },
       { s: 'judy', t: "Where I grew up, there was a town called Laguna Bend. They built a dam and flooded the whole thing. Houses, streets, the church. My grandma's house." },
       { s: 'judy', t: "I used to dive down to it. See it all under the water. Like a memory you can swim through." },

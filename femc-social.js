@@ -235,6 +235,45 @@ window.FemcSocial = (() => {
     setTimeout(() => el.remove(), 3500);
   }
 
+  /* ── Scene music, chosen by mood the way Persona does ── */
+  // A rank (or a scene line) can name a mood with `music`; otherwise the place decides.
+  const SCENE_MUSIC = {
+    joy: 'joy', school: 'after-school', sun: 'sun', tender: 'tender-feeling',
+    mystery: 'this-mysterious-feeling', night: 'tranquility', velvet: 'poem-for-everyones-souls'
+  };
+  function moodFor(link, rank, r, place = rank.place || '') {
+    if (rank.music) return rank.music;
+    if (link.theme === 'velvet' || /Velvet Room/.test(place)) return 'velvet';
+    if (/Dark Hour|Tartarus/.test(place)) return 'night';
+    if (r === 9) return 'tender';
+    if (/^Gekkoukan High/.test(place)) return 'school';
+    return link.music || 'joy';
+  }
+  function sceneMusic() {
+    const VOLUME = 0.32;
+    let cur = null, key = null;
+    const fade = (a, to, done) => {
+      clearInterval(a._fade);
+      a._fade = setInterval(() => {
+        const v = a.volume + (to > a.volume ? 0.03 : -0.03);
+        if (Math.abs(to - a.volume) <= 0.03) { a.volume = to; clearInterval(a._fade); done && done(); } else a.volume = Math.max(0, Math.min(1, v));
+      }, 50);
+    };
+    return {
+      set(mood) {
+        const k = SCENE_MUSIC[mood] ? mood : 'joy';
+        if (k === key) return;
+        key = k;
+        const old = cur;
+        cur = new Audio(`${F().base}assets/femc/music/${SCENE_MUSIC[k]}.mp3`);
+        cur.loop = true; cur.volume = 0;
+        cur.play().then(() => fade(cur, VOLUME)).catch(() => {});
+        if (old) fade(old, 0, () => old.pause());
+      },
+      stop() { if (cur) { const a = cur; fade(a, 0, () => a.pause()); } cur = null; key = null; }
+    };
+  }
+
   /* ── Scene player ────────────────────────────────── */
   // Plays rank `r` (0-based) of a link. opts.replay skips progress, stamps and the rank-up.
   function play(link, r, opts = {}) {
@@ -257,8 +296,8 @@ window.FemcSocial = (() => {
     document.body.appendChild(el);
     const img = el.querySelector('.vn-portrait'), nameEl = el.querySelector('.vn-name'), textEl = el.querySelector('.vn-text'), choices = el.querySelector('.vn-choices');
     let currentFace = null;
-    let music = null;
-    if (link.music) { music = new Audio(F().base + link.music); music.loop = true; music.volume = 0.32; music.play().catch(() => {}); }
+    const music = sceneMusic();
+    music.set(moodFor(link, rank, r));
 
     // Flatten the scene into a queue we can push branches onto.
     const queue = [...rank.scene];
@@ -382,12 +421,13 @@ window.FemcSocial = (() => {
       if (!el.isConnected) return;
       const line = queue.shift();
       if (!line) return end(true);
-      if (line.place) return sceneBreak(line);
+      if (line.place) { music.set(line.music || moodFor(link, rank, r, line.place)); return sceneBreak(line); }
+      if (line.music) { music.set(line.music); return next(); }
       if (line.naming) return naming();
       if (line.phone) return phone(line);
       if (line.register) { if (!opts.replay) register(line.register); return next(); }
       if (line.choose) return ask(line.choose);
-      if (line.route) return ask(line.route);
+      if (line.route) { music.set('tender'); return ask(line.route); }
       if (line.ifRank) { const ok = Object.entries(line.ifRank).every(([id, r]) => progress(id).rank >= r); queue.unshift(...((ok ? line.then : line.else) || [])); return next(); }
       if (line.ifRoute) { if ((opts.route || p.route) === line.ifRoute) queue.unshift(...line.then); return next(); }
       if (line.n) {
@@ -442,7 +482,7 @@ window.FemcSocial = (() => {
 
     function close() {
       document.removeEventListener('keydown', keys, true);
-      if (music) { const m = music; const fade = setInterval(() => { m.volume = Math.max(0, m.volume - 0.04); if (m.volume <= 0) { clearInterval(fade); m.pause(); } }, 50); }
+      music.stop();
       el.classList.add('out');
       setTimeout(() => el.remove(), 350);
     }
@@ -692,7 +732,7 @@ window.FemcSocial = (() => {
     if (ready) return ready;
     const L = F().load;
     ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
-      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=23`, () => links[id]))))
+      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=25`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
   }

@@ -113,7 +113,7 @@ FemcSocial.define({
       ] }
     ] },
 
-    { after: '8/8', title: '3: matchmaking', place: 'Paulownia Mall · Fountain', scene: [
+    { after: '8/8', title: '3: matchmaking', music: 'sun', place: 'Paulownia Mall · Fountain', scene: [
       { n: "Aphrodite had decided that the girls of Iwatodai Dorm were tragically under-loved, and that this was a problem she was personally qualified to fix." },
       { n: "Her first target was Yukari." },
       { register: 'yukari' },
@@ -184,7 +184,7 @@ FemcSocial.define({
       ] }
     ] },
 
-    { after: '9/26', title: '6: loved by everyone', place: 'Iwatodai · Riverside', scene: [
+    { after: '9/26', title: '6: loved by everyone', music: 'tender', place: 'Iwatodai · Riverside', scene: [
       { n: "September, the evening going purple over the river. Aphrodite had wanted to see where Solar ran in the mornings, with the silver-haired boy, and so they'd walked the whole route slowly, the goddess in a borrowed coat over her gown, stopping to look at everything." },
       { s: 'aphrodite', t: "Little sun. Can I tell you something that a goddess shouldn't say?" },
       { s: 'aphrodite', t: "Everyone has always loved me. Gods. Mortals. Everyone. They can't help it. It's what I am." },

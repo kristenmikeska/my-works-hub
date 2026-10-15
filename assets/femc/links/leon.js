@@ -120,7 +120,7 @@ FemcSocial.define({
       { s: 'ashley', t: "...It's also kind of the only reason I'm alive. Don't tell him I said that." }
     ] },
 
-    { after: '10/6', title: '3: raccoon city', place: 'Iwatodai Dorm · Front Steps', scene: [
+    { after: '10/6', title: '3: raccoon city', music: 'tender', place: 'Iwatodai Dorm · Front Steps', scene: [
       { n: "The day after, the dorm was very quiet. Nobody cooked. Nobody turned on the television. The kitchen was clean in a way that hurt to look at, everything put away exactly where one person had always put it." },
       { n: "Solar was sitting on the front steps in the cold, not doing anything, not feeling much of anything, which was its own kind of feeling. She didn't notice Leon until he sat down one step below her, a convenience store bag in his hand." },
       { s: 'leon', t: "Akihiko told me. I'm sorry." },
@@ -138,7 +138,7 @@ FemcSocial.define({
       { n: "He stayed until the streetlights came on. When he left, he put his jacket around her shoulders without saying anything about it, and it smelled like gunpowder and cold air and something like cedar, and she wore it until she went inside." }
     ] },
 
-    { after: '10/20', title: '4: what\'re ya buyin\'', place: 'Port Island Station · Back Alley', scene: [
+    { after: '10/20', title: '4: what\'re ya buyin\'', music: 'mystery', place: 'Port Island Station · Back Alley', scene: [
       { n: "There was a man in the back alley behind Port Island Station who had not been there yesterday. A long dark cloak. A hood. A bandana over his face. Eyes that glowed, faintly, in a way that was not normal for a human person. He opened his coat as they passed, and the inside of it was lined with guns." },
       { s: 'merchant', t: "What're ya buyin'?" },
       { s: 'leon', t: "...You've got to be kidding me." },
@@ -215,7 +215,7 @@ FemcSocial.define({
       { n: "Junpei said it was the coolest thing he'd ever seen in his life. Akihiko asked Leon to teach him that kick. Mitsuru said nothing, but on the way down she quietly handed Leon a towel, which Solar had never once seen her do for anyone." }
     ] },
 
-    { after: '12/10', title: '8: the bar', place: 'Paulownia Mall · Club Escapade', scene: [
+    { after: '12/10', title: '8: the bar', music: 'tender', place: 'Paulownia Mall · Club Escapade', scene: [
       { n: "He was at the bar of Club Escapade on a Thursday night, alone, a glass of something brown in front of him, and he hadn't touched it. He'd just been looking at it. He did that, sometimes, she'd noticed. Ordered one and looked at it." },
       { s: 'leon', t: "Hey, rookie. You're too young for this place." },
       { s: 'solar', t: "So are you, by the look of it." },

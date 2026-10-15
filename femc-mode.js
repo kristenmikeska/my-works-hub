@@ -393,7 +393,7 @@
   })();
 
   function boot() {
-    load('assets/femc/bgm.js?v=2', () => window.FEMC_BGM).then(() => {
+    load('assets/femc/bgm.js?v=3', () => window.FEMC_BGM).then(() => {
       music.tracks = (window.FEMC_BGM || []).filter(t => t && t.src);
       if (isOn()) { buildBadge(); music.start(); eggs(); }
       paintBadge();

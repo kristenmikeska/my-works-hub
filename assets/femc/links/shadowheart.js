@@ -86,7 +86,7 @@ FemcSocial.define({
       { n: "Solar left an hour later. Shadowheart didn't say goodbye. But when Solar reached the bottom of the steps and looked back, the woman was standing at the top, a dark shape against the lanterns, watching to make sure she got down safely." }
     ] },
 
-    { after: '8/21', title: '2: what she can\'t remember', place: 'Naganaki Shrine · Night', scene: [
+    { after: '8/21', title: '2: what she can\'t remember', music: 'mystery', place: 'Naganaki Shrine · Night', scene: [
       { n: "It was too hot to sleep, and so Solar had started going up to the shrine on weeknights, and Shadowheart had started, without discussion, being there." },
       { n: "Tonight she was sitting on the edge of the porch with her boots off and her feet in the stone water basin, which Solar was fairly sure was a sacrilege in at least two religions, and staring up at the sky." },
       { s: 'shadowheart', f: 'neutral', t: "Sunshine. That's what I'm calling you, by the way. Your name is Solar. I'm a cleric of the Lady of Loss and Darkness. It's funny." },
@@ -175,7 +175,7 @@ FemcSocial.define({
       ] }
     ] },
 
-    { after: '10/16', title: '6: her parents', place: 'Naganaki Shrine · Night', scene: [
+    { after: '10/16', title: '6: her parents', music: 'tender', place: 'Naganaki Shrine · Night', scene: [
       { n: "She'd remembered something. Solar could see it as soon as she reached the top of the steps. Shadowheart was sitting very still on the porch with the artifact in her lap and her eyes wide open, like she'd just woken from a dream and the dream had followed her." },
       { s: 'shadowheart', f: 'neutral', t: "My parents. I remembered my parents." },
       { s: 'shadowheart', f: 'neutral', t: "A house. A garden. My mother laughing at something my father said. A wolf, a silly old wolf, they kept as a pet. Night orchids in the garden, white ones." },
@@ -211,7 +211,7 @@ FemcSocial.define({
       { n: "She looked at her hand. She looked at Solar. She sat down hard on the gravel and laughed, shaking, crying, in the green light, and Solar knelt and held her until the hour ended." }
     ] },
 
-    { after: '11/13', title: '8: unbraided', place: 'Naganaki Shrine · Night', scene: [
+    { after: '11/13', title: '8: unbraided', music: 'tender', place: 'Naganaki Shrine · Night', scene: [
       { n: "Solar almost didn't recognize her." },
       { n: "Shadowheart was standing at the top of the steps in the lantern light with her hair down. Not braided. Not pulled back. Loose around her shoulders, dark, with a single streak of silver at the temple that hadn't been there before, like moonlight caught in it." },
       { s: 'shadowheart', f: 'neutral', t: "...Don't stare. It's rude." },

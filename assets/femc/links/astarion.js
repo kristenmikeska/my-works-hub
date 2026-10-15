@@ -98,7 +98,7 @@ FemcSocial.define({
       { n: "He left the drink. Solar did not check what was in it." }
     ] },
 
-    { after: '7/20', title: '2: reflection', place: 'Paulownia Mall · Shop Windows', scene: [
+    { after: '7/20', title: '2: reflection', music: 'tender', place: 'Paulownia Mall · Shop Windows', scene: [
       { n: "He found her again, the way he'd apparently decided he would. It was after nine and the mall was half-closed, shutters down on most of the shops, the lights in the walkways dimmed to a warm, sleepy yellow." },
       { n: "He was standing in front of a clothing store window, very still. The window was lit from inside. The mannequins wore summer dresses. Solar could see herself in the glass, faintly, and the shop behind it, and the walkway behind her." },
       { n: "She could not see him. He was standing right next to her, and the glass showed nothing where he stood. Just the dresses, and the dark." },
@@ -145,7 +145,7 @@ FemcSocial.define({
       { n: "He said it so plainly that Solar felt the floor of the night drop out under her, a long cold fall into something she didn't know the bottom of." }
     ] },
 
-    { after: '8/17', title: '4: long nights', place: 'Port Island · Seaside Park', scene: [
+    { after: '8/17', title: '4: long nights', music: 'tender', place: 'Port Island · Seaside Park', scene: [
       { n: "He loved the summer nights. He told her so constantly. In his old life, summer meant short nights, a few miserable hours of dark before the sun came back to burn him. Here, in Iwatodai, in August, the nights were long and soft and warm and full of people." },
       { n: "They walked the seaside promenade at midnight, minus the green hour, when the city was still awake and the bay was black and full of the reflections of lights. He bought her an ice cream from a vending machine and watched her eat it with total fascination." },
       { s: 'astarion', f: 'happy', t: "I haven't eaten anything in two hundred years that didn't scream first. Tell me what it tastes like." },

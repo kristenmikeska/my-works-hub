@@ -85,7 +85,7 @@ FemcSocial.define({
     ] }
   ],
   ranks: [
-    { title: '1: the laundry room', place: 'Iwatodai Dorm · Laundry Room', scene: [
+    { title: '1: the laundry room', music: 'mystery', place: 'Iwatodai Dorm · Laundry Room', scene: [
       { n: "Solar couldn't sleep. That wasn't new. What was new was the sound coming from the laundry room at seven minutes past three in the morning, the slow, heavy tumble of a dryer that nobody in the dorm should have been running." },
       { n: "She went down in her socks. The hallway was cold. The laundry room door was half open and the light inside was that terrible flickering fluorescent that made everybody look a little sick." },
       { n: "There was a boy sitting on the dryer." },
@@ -124,7 +124,7 @@ FemcSocial.define({
       { n: "They stayed in the laundry room until the dryer buzzed. He handed her laundry back, folded. She hadn't seen him fold it. He went somewhere when she turned around to put it in her basket, and when she turned back the room was empty, and the light was still flickering, and her heart had not slowed down at all." }
     ] },
 
-    { after: '11/8', title: '2: princess', place: 'Iwatodai Dorm · Rooftop', scene: [
+    { after: '11/8', title: '2: princess', music: 'mystery', place: 'Iwatodai Dorm · Rooftop', scene: [
       { n: "He was on the roof the next night. Of course he was. Leaning on the railing with his hood up against the November wind, looking out at the bay like it was a song he was trying to learn." },
       { s: 'haechan', t: "Hey, prin—" },
       { n: "He stopped. Frowned. Like a word had come out of the wrong drawer." },
@@ -267,7 +267,7 @@ FemcSocial.define({
       { n: "She told herself it was nothing. She told herself all the way to breakfast. She'd been telling herself things her whole life, in every world, apparently. She had a feeling she'd never once been right." }
     ] },
 
-    { after: '12/8', title: '7: full sun', place: 'Iwatodai Dorm · Rooftop', scene: [
+    { after: '12/8', title: '7: full sun', music: 'sun', place: 'Iwatodai Dorm · Rooftop', scene: [
       { n: "December came in clear and cold. He was on the roof again, where he always was when he wasn't in the laundry room, the city lights below him and his breath showing in the dark." },
       { n: "She'd brought two cans of hot coffee from the vending machine. He took one without saying thank you, which she'd come to understand was how he said thank you." },
       { s: 'haechan', t: "Did you know your name means sun? Solar." },
@@ -295,7 +295,7 @@ FemcSocial.define({
       { n: "They stayed out until the coffee went cold and their fingers went numb. He walked her to her door, across the hall from his, and stood there for a long moment like he was going to say something. Then he just said goodnight. Then he went into his room, and she went into hers, and she lay in bed listening to him not sleep." }
     ] },
 
-    { after: '12/16', title: '8: say it again', place: 'Iwatodai Dorm · Laundry Room', scene: [
+    { after: '12/16', title: '8: say it again', music: 'tender', place: 'Iwatodai Dorm · Laundry Room', scene: [
       { n: "Three in the morning. The laundry room. The same flickering light. He was sitting on the dryer again, but this time he wasn't waiting for anything. He was just there, because she was going to be there." },
       { s: 'haechan', t: "Can't sleep?" },
       { n: "She didn't answer. She sat on the other dryer. Their knees almost touched across the gap." },

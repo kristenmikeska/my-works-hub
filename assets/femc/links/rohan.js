@@ -115,7 +115,7 @@ FemcSocial.define({
       { n: "Koichi sat with them the rest of the afternoon and told Solar stories about their town, Morioh, a little seaside place where strange things happened all the time, and every story somehow ended with Rohan being insufferable and also, quietly, at the last minute, brave. Rohan pretended not to listen. His pen stopped every time Koichi said something nice about him." }
     ] },
 
-    { after: '10/13', title: '3: heaven\'s door', place: 'Iwatodai Strip · Bookworms', scene: [
+    { after: '10/13', title: '3: heaven\'s door', music: 'mystery', place: 'Iwatodai Strip · Bookworms', scene: [
       { n: "It was Rohan's power. He'd been very careful not to explain it, the way he was careful about all the things he actually cared about. He called it Heaven's Door." },
       { s: 'rohan', t: "I can read people. Literally. They become books. Their memories, their secrets, everything they've ever done, written down on pages in their face." },
       { s: 'rohan', t: "I want to read you. I've wanted to since the day you blocked my light. I'm asking because Koichi says I'm supposed to ask now." },
@@ -212,7 +212,7 @@ FemcSocial.define({
       ] }
     ] },
 
-    { after: '12/15', title: '8: the alley', place: 'Iwatodai Strip · Back Alley', scene: [
+    { after: '12/15', title: '8: the alley', music: 'tender', place: 'Iwatodai Strip · Back Alley', scene: [
       { n: "There was an alley behind the Iwatodai strip that Rohan would not walk down. He'd walk around the whole block to avoid it. Solar had noticed weeks ago and had never asked. Tonight, in the cold, he stopped at the mouth of it and stood there." },
       { s: 'rohan', t: "There's an alley in my town too. A ghost lives in it. A girl called Reimi." },
       { s: 'rohan', t: "When I was four, a man broke into the house I was staying in. Reimi was babysitting me. She pushed me out the window. She saved my life. She didn't save her own." },

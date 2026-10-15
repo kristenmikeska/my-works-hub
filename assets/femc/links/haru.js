@@ -147,7 +147,7 @@ FemcSocial.define({
       ] }
     ] },
 
-    { after: '7/22', title: '4: the engagement', place: 'Gekkoukan High · Rooftop', scene: [
+    { after: '7/22', title: '4: the engagement', music: 'tender', place: 'Gekkoukan High · Rooftop', scene: [
       { n: "The tomatoes had come in. Small and hard and green, but there, a dozen of them, hanging off vines that had been dead brown sticks a month ago. Haru was sitting on the concrete next to them with her knees drawn up, not looking at them." },
       { n: "She'd been quiet all week. Not her normal quiet, the soft, contented hum of someone happy to be busy. A different one. Heavy." },
       { s: 'haru', f: 'sad', t: "Solar-chan. May I tell you something unpleasant?" },
@@ -172,7 +172,7 @@ FemcSocial.define({
       { n: "She picked one of the small green tomatoes, too early, and held it in her palm, and laughed at herself for picking it. Then she gave it to Solar, solemnly, like a ring." }
     ] },
 
-    { after: '8/12', title: '5: crepes with ann', place: 'Paulownia Mall · Crepe Stand', scene: [
+    { after: '8/12', title: '5: crepes with ann', music: 'sun', place: 'Paulownia Mall · Crepe Stand', scene: [
       { n: "Ann had insisted. Ann, upon learning that there was another Phantom Thief in Iwatodai, a whole other girl from home, had made a sound like a kettle and demanded an immediate summit at the crepe stand." },
       { s: 'ann', f: 'happy', t: "HARU! Oh my god! You're here too!" },
       { s: 'haru', f: 'happy', t: "Ann-chan! Oh, I'm so glad! I thought I was the only one!" },
@@ -195,7 +195,7 @@ FemcSocial.define({
       ] }
     ] },
 
-    { after: '9/2', title: '6: father', place: 'Gekkoukan High · Rooftop', scene: [
+    { after: '9/2', title: '6: father', music: 'tender', place: 'Gekkoukan High · Rooftop', scene: [
       { n: "September. The tomatoes were red now. Haru picked them one at a time and set them in a basket and didn't say anything for a long while. The wind off the bay was cooler than it had been. Summer was turning." },
       { s: 'haru', f: 'sad', t: "Before I fell through, my father died." },
       { n: "She said it to the basket. Plainly. Like reading it off a card." },

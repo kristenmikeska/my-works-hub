@@ -113,7 +113,7 @@ FemcSocial.define({
       ] }
     ] },
 
-    { after: '9/30', title: '3: my sister', place: 'Gekkoukan High · Gym · After Hours', scene: [
+    { after: '9/30', title: '3: my sister', music: 'tender', place: 'Gekkoukan High · Gym · After Hours', scene: [
       { n: "The gym after hours was dim and echoing. Kasumi was sitting in the middle of the mat with her ribbon pooled in her lap, not practicing, just holding it." },
       { s: 'kasumi', f: 'neutral', t: "Senpai. I had a sister. A twin. Sumire." },
       { s: 'kasumi', f: 'sad', t: "We did gymnastics together, our whole lives. She was always a little behind me. She always thought I was better. I wasn't. She just didn't believe in herself." },
@@ -131,7 +131,7 @@ FemcSocial.define({
       { n: "It was strange. Solar filed it away, the way she filed everything, in the place where she kept things she'd come back to." }
     ] },
 
-    { after: '10/12', title: '4: maruki', place: 'Gekkoukan High · Counseling Room', scene: [
+    { after: '10/12', title: '4: maruki', music: 'mystery', place: 'Gekkoukan High · Counseling Room', scene: [
       { n: "There was a counselor at Gekkoukan who hadn't been there in September." },
       { n: "Nobody seemed to find this strange. That was how Solar knew he'd come through. A tall, soft-spoken man with messy dark hair and glasses and a cardigan, sitting in the empty counseling room with a cup of tea and an expression of gentle, endless interest." },
       { register: 'maruki' },
@@ -190,7 +190,7 @@ FemcSocial.define({
       { n: "Solar thought of Elizabeth in the elevator, saying, in every world there is someone called Solar. She thought of mirrors. She thought she understood, a little, what it was like to look at yourself and see a different girl." }
     ] },
 
-    { after: '11/23', title: '7: sumire', place: 'Gekkoukan High · Rooftop', scene: [
+    { after: '11/23', title: '7: sumire', music: 'mystery', place: 'Gekkoukan High · Rooftop', scene: [
       { n: "She came to the roof in glasses." },
       { n: "Her hair was down. The red bow was in her hand, not her hair. She was wearing a sweater too big for her, and she stood at the railing in the November wind and didn't look like a gymnast, or a first-year, or a girl who bounced on her toes. She looked like someone who'd just woken up from a very long dream." },
       { s: 'kasumi', f: 'sad', t: "I'm Sumire. I've always been Sumire." },
@@ -210,7 +210,7 @@ FemcSocial.define({
       { n: "The wind pulled at her hair. The red bow fluttered in her hand like it wanted to go somewhere." }
     ] },
 
-    { after: '12/7', title: '8: me', place: 'Gekkoukan High · Counseling Room', scene: [
+    { after: '12/7', title: '8: me', music: 'tender', place: 'Gekkoukan High · Counseling Room', scene: [
       { n: "Maruki was waiting for her. Of course he was. In the counseling room, with tea, with that gentle face, with his hands folded on the desk like a man about to give very good news." },
       { s: 'maruki', t: "Sumire. You don't have to hurt like this. I can give her back to you. You can be her. You'll never remember that you weren't." },
       { s: 'maruki', t: "Isn't that what you want? A world where she's still here, in you?" },

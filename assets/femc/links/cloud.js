@@ -145,7 +145,7 @@ FemcSocial.define({
       { n: "Koromaru, satisfied with his inspection, lay down on Cloud's boots and fell asleep. Cloud stayed very still for the rest of the afternoon so he wouldn't wake him." }
     ] },
 
-    { after: '9/3', title: '5: zack', place: 'Iwatodai Station · Platform', scene: [
+    { after: '9/3', title: '5: zack', music: 'tender', place: 'Iwatodai Station · Platform', scene: [
       { n: "The headaches were getting worse. Solar found him on the station platform at dusk with his back against a pillar and his eyes squeezed shut and his hand pressed hard to his temple." },
       { s: 'cloud', t: "...There's a guy. In my head. Black hair. A big sword. My sword. He's laughing." },
       { s: 'cloud', t: "He says, embrace your dreams. And then he's gone. And I'm carrying his sword." },
@@ -163,7 +163,7 @@ FemcSocial.define({
       { n: "A train came in. People got off. People got on. Cloud didn't move. He just sat down on the bench and put his head in his hands, and Solar sat next to him until the next train, and the one after that." }
     ] },
 
-    { after: '9/24', title: '6: aerith', place: 'Paulownia Mall · Flower Stall', scene: [
+    { after: '9/24', title: '6: aerith', music: 'tender', place: 'Paulownia Mall · Flower Stall', scene: [
       { n: "There was a new flower stall in Paulownia Mall. A small wooden cart with buckets of flowers, yellow and white and pink, and behind it a girl with light brown hair in a long braid tied with a big pink ribbon, humming." },
       { register: 'aerith' },
       { n: "Cloud stopped dead in the walkway when he saw her. Solar walked into his back." },

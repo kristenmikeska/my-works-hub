@@ -153,7 +153,7 @@ FemcSocial.define({
       { n: "Solar looked up. The first stars were coming out over the bay. Kiriko was right. So was the fortune. She was starting to think the fortunes were always right." }
     ] },
 
-    { after: '7/5', title: '4: a girl who plays as me', place: 'Naganaki Shrine · Steps', scene: [
+    { after: '7/5', title: '4: a girl who plays as me', music: 'mystery', place: 'Naganaki Shrine · Steps', scene: [
       { n: "July, and the shrine steps were too hot to sit on until the sun went behind the trees. They sat on them anyway, on folded towels, eating popsicles that melted faster than they could eat them." },
       { n: "Kiriko had been quiet all afternoon. Not sad. Thinking. She kept looking at Solar sideways, the way you look at a word you're sure you know but can't quite place." },
       { s: 'kiriko', t: "Sol-chan. Can I tell you something weird?" },
@@ -206,7 +206,7 @@ FemcSocial.define({
       { s: 'mercy', f: 'happy', t: "...I'm putting that one on the wall." }
     ] },
 
-    { after: '8/2', title: '6: kanezaka', place: 'Naganaki Shrine', scene: [
+    { after: '8/2', title: '6: kanezaka', music: 'tender', place: 'Naganaki Shrine', scene: [
       { n: "August, and the heat was a lid on the city. Kiriko was lying on the shrine's wooden porch with her arms flung out, staring at the rafters, too hot to sweep, too hot to move." },
       { s: 'kiriko', t: "In Kanezaka right now, there's a ramen shop that does cold noodles in summer. With yuzu. You sit by the river and eat them and your feet in the water." },
       { s: 'kiriko', t: "And the festival's coming. Lanterns all down the main street. My grandmother makes the best taiyaki in the whole town. She makes me eat three." },
@@ -231,7 +231,7 @@ FemcSocial.define({
       { n: "She read it twice. Then she looked at Solar, and her eyes were wet, and she said, \"Sol-chan,\" just to hear it." }
     ] },
 
-    { after: '8/20', title: '7: festival', place: 'Naganaki Shrine · Summer Festival', scene: [
+    { after: '8/20', title: '7: festival', music: 'sun', place: 'Naganaki Shrine · Summer Festival', scene: [
       { n: "The Naganaki summer festival came on a humid night at the end of August, and the whole shrine was transformed. Paper lanterns strung from every tree. Stalls lining the path selling takoyaki and cotton candy and goldfish in plastic bags. The air thick with smoke and sugar and the sound of a drum somewhere up the hill." },
       { n: "Kiriko had borrowed a yukata from somewhere, purple with white foxes printed on it, and she'd done her hair up with a flower, and she grabbed Solar's wrist at the bottom of the steps and didn't let go the entire night." },
       { s: 'kiriko', t: "Taiyaki! They have taiyaki! It's not as good as Grandma's, but they HAVE it!" },
@@ -260,7 +260,7 @@ FemcSocial.define({
       { n: "Solar thought, yes. She thought, I already do." }
     ] },
 
-    { after: '10/10', title: '8: support and sniper', place: 'Moonlight Bridge', scene: [
+    { after: '10/10', title: '8: support and sniper', music: 'mystery', place: 'Moonlight Bridge', scene: [
       { n: "October, after dark. Kiriko had heard about the woman on Moonlight Bridge from three different people at the shrine. A tall woman. Purple skin. A rifle as long as a person. She stood on the bridge cables at night, they said, perfectly still, looking at nothing." },
       { s: 'kiriko', t: "I know who that is. I don't want to know who that is. But I do." },
       { n: "They went at dusk, when the bridge lights came on. The woman was there. She was standing on the railing as if it were a sidewalk, coat snapping in the wind off the water, and she turned her head before they were within a hundred meters, like she'd heard them breathing." },
