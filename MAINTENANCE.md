@@ -110,7 +110,7 @@ Kat's sorted photos (Desktop/Hoax) are resized into `assets/hoax/roll/` (full, ~
 - Aphrodite: 10 chapters and 8 texts (plus Elizabeth's 7/7 arrival text). Kat's Easter egg: Kat mains Aphrodite in Smite (mid and solo, 20+ stars, 5–7 KDA); Aphrodite feels it through the Soul Partner link in rank 5. Typing "love birds" once she's met releases her doves (`femc-doves` sound) and unlocks `mid-lane-goddess`.
 - Shadowheart: 10 chapters and 7 texts (plus Elizabeth's 8/6 arrival text); evenings at the shrine after Kiriko leaves; Astarion roast in rank 5.
 - Kasumi: 10 chapters and 8 texts (plus Elizabeth's 9/5 arrival text); contains P5R's Kasumi/Sumire twist; Maruki registers in rank 4.
-- Kuromi: 10 chapters and 8 texts; romance is a playful crush, written to work for either mascot or Persona-girl portraits; her birthday (10/31, her real Sanrio birthday) is rank 8.
+- Kuromi: 10 chapters and 8 texts; romance is a playful crush, written as a human girl to match Kat's portraits (My Melody is a girl in a pink bunny hood too); her birthday (10/31, her real Sanrio birthday) is rank 8.
 - Sebastian: 10 chapters and 9 texts, including the "solarion chronicles" group chat with Abigail and Sam; Noctis cameo while fishing in rank 5.
 - Cloud: 10 chapters and 7 texts; the Wall Market dress scene is rank 8 (makeup by Aphrodite).
 - Judy: 10 chapters and 9 texts; Evelyn is mentioned carefully, without detail; Mitsuru and the Kirijo Group in rank 3.
