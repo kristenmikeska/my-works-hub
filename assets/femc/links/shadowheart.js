@@ -3,6 +3,8 @@ FemcSocial.define({
   id: 'shadowheart', name: 'Shadowheart', short: 'Shadowheart', arcana: 'Priestess', numeral: 'II', from: "Baldur's Gate 3",
   arrives: '8/6',
   home: { place: 'Naganaki Shrine · Night', slot: 1, days: [1, 2, 3, 4, 5], hint: 'Evenings on weekdays, at Naganaki Shrine after Kiriko has gone home.' },
+  approach: "Someone is at the shrine after dark: a dark-haired woman with a silver circlet, standing very still, one hand resting on a weapon.",
+  invite: { ask: ["Are you free? The shrine is quiet tonight.", "Come. Bring tea.", "I could use the company. Don't make it a thing."], ok: "Good. Don't be late, Sunshine.", no: "Fine. Another night." },
   romance: true,
   cast: { astarion: 'Astarion', kiriko: 'Kiriko' },
   threads: { elizabeth: { name: 'Elizabeth', members: ['elizabeth'] } },

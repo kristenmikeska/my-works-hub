@@ -5,6 +5,8 @@ FemcSocial.define({
   arrives: '5/9',
   closes: '11/3',
   home: { place: 'Paulownia Mall', slot: 0, days: [1, 3, 5, 6], hint: 'After school on Mondays, Wednesdays, Fridays and Saturdays, somewhere in Paulownia Mall.' },
+  approach: "A blonde girl in a red jacket is standing by the fountain, glaring at a man with a camera and very visibly deciding whether to throw her crepe at him.",
+  invite: { ask: ["SOLAR. crepes. now??", "free?? i need a second opinion on an outfit 🙏", "come hang!!! i'm so bored"], ok: "YAY see u soon ❤️", no: "noooo ok next time!!" },
   romance: true,
   cast: { ryuji: 'Ryuji', shiho: 'Shiho', futaba: 'Futaba', makoto: 'Makoto', mitsuru: 'Mitsuru' },
   threads: {

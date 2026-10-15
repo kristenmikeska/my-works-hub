@@ -5,6 +5,8 @@ FemcSocial.define({
   id: 'kiriko', name: 'Kiriko', short: 'Kiriko', arcana: 'Fortune', numeral: 'X', from: 'Overwatch',
   arrives: '5/9',
   home: { place: 'Naganaki Shrine', slot: 0, days: [0, 2, 4, 6], hint: 'Daytime on Sundays, Tuesdays, Thursdays and Saturdays, at Naganaki Shrine.' },
+  approach: "A girl in a shrine maiden's outfit is sitting on the offering box with her legs crossed, eating something she definitely shouldn't be eating at a shrine.",
+  invite: { ask: ["come to the shrine. i have snacks. dont tell anyone", "u free? fortune time 🦊", "bored. come hang"], ok: "yay 🦊 hurry", no: "boo. ok" },
   romance: false,
   cast: { koromaru: 'Koromaru', mercy: 'Mercy', genji: 'Genji', widowmaker: 'Widowmaker' },
   texts: [

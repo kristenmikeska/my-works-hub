@@ -8,6 +8,8 @@ FemcSocial.define({
   id: 'haechan', name: 'Haechan', short: 'Haechan', arcana: 'Universe', numeral: '∞', from: 'Runners · strangers',
   unlock: { stamps: ['solchan'], links: { kiriko: 8 }, after: '11/4' },
   home: { place: 'Iwatodai Dorm · Laundry Room', slot: 1, days: [0, 1, 2, 3, 4, 5, 6], hint: 'Late, in the evenings. Wherever nobody else is awake.' },
+  approach: "Someone's in the laundry room at an hour nobody does laundry, sitting on top of a dryer with headphones on. He looks up like he heard his name.",
+  invite: { ask: ["you up?", "free? come here", "bored. you around"], ok: "k. door's open", no: "ok. night" },
   romance: true,
   stamps: { 10: ['every-universe'] },
   cast: { elizabeth: 'Elizabeth', junpei: 'Junpei' },

@@ -4,6 +4,8 @@ FemcSocial.define({
   id: 'noctis', name: 'Noctis Lucis Caelum', short: 'Noctis', arcana: 'Emperor', numeral: 'IV', from: 'Final Fantasy XV',
   arrives: '8/6',
   home: { place: 'Port Island · Pier', slot: 0, days: [0, 2, 3, 6], hint: 'Daytime on Sundays, Tuesdays, Wednesdays and Saturdays, at the end of the Port Island pier with a fishing rod.' },
+  approach: "At the very end of the pier, someone in an expensive black jacket is asleep with a fishing rod between his knees. The line is twitching.",
+  invite: { ask: ["fishing?", "u free. pier", "bored. come fish"], ok: "nice", no: "ok. more fish for me" },
   romance: true,
   cast: { prompto: 'Prompto', ignis: 'Ignis', shinjiro: 'Shinjiro', haru: 'Haru', cloud: 'Cloud' },
   threads: { chocobros: { name: 'chocobros + sol', members: ['noctis', 'prompto', 'ignis'] } },

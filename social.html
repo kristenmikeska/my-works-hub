@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <script src="femc-mode.js?v=11"></script>
+  <script src="femc-mode.js?v=12"></script>
   <title>Social Links</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/femc/femc-pages.css?v=2">
@@ -52,6 +52,25 @@
     .memories button:is(:hover, :focus-visible) { background: var(--pink); border-color: var(--pink); outline: none; }
     .big-portrait { width: 100%; max-height: 72vh; object-fit: contain; object-position: bottom; filter: drop-shadow(12px 12px 0 rgba(255, 79, 158, .4)); -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 98%); mask-image: linear-gradient(to bottom, #000 78%, transparent 98%); }
     .back-to-list { display: inline-block; margin-bottom: 8px; color: var(--pink-2); font: italic 800 14px/1 "Avenir Next Condensed", sans-serif; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; }
+    .sl-tabs { display: flex; gap: 10px; margin: 0 0 22px; }
+    .sl-tabs a { padding: 8px 20px; background: rgba(255, 255, 255, .08); color: var(--ink); font: italic 900 16px/1 "Avenir Next Condensed", sans-serif; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; transform: skewX(-14deg); }
+    .sl-tabs a.on { background: var(--pink); box-shadow: 4px 4px 0 #fff; }
+    .sl-tabs a:not(.on):is(:hover, :focus-visible) { background: #fff; color: var(--night); outline: none; }
+    .map { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 18px; margin-top: 22px; }
+    .area { padding: 16px 18px 18px; border: 1px solid rgba(255, 140, 192, .3); background: linear-gradient(160deg, rgba(255, 79, 158, .1), rgba(20, 7, 15, .85)); }
+    .area.busy { border-color: var(--pink-2); box-shadow: 6px 6px 0 rgba(255, 79, 158, .45); }
+    .area h2 { margin: 0 0 12px; font: italic 900 24px/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; transform: skewX(-6deg); }
+    .area .quiet, .area .usual { margin: 0; color: var(--muted); font-size: 13.5px; }
+    .area .usual { margin-top: 10px; }
+    .who { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 12px; align-items: center; width: 100%; margin: 0 0 8px; padding: 8px 10px; border: 0; background: rgba(20, 7, 15, .9); color: var(--ink); text-align: left; transform: skewX(-8deg); box-shadow: 4px 4px 0 rgba(255, 79, 158, .5); cursor: inherit; }
+    .who > * { transform: skewX(8deg); }
+    .who i { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; overflow: hidden; background: var(--pink); font: italic 900 22px/1 "Avenir Next Condensed", sans-serif; font-style: normal; }
+    .who i img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; transform: scale(1.6); transform-origin: 50% 12%; background: #3a1028; }
+    .who b { display: block; font: italic 900 19px/1.1 "Avenir Next Condensed", sans-serif; }
+    .who small { display: block; color: var(--pink-2); font-size: 12.5px; }
+    .who:is(:hover, :focus-visible) { background: #fff; color: var(--night); outline: none; box-shadow: 6px 6px 0 var(--pink); }
+    .who:is(:hover, :focus-visible) small { color: #7a0b3e; }
+    .spent-note { margin: 0 0 6px; padding: 12px 16px; border-left: 4px solid var(--pink); background: rgba(20, 7, 15, .8); }
     @media (max-width: 820px) { .detail { grid-template-columns: 1fr; } .big-portrait { max-height: 50vh; } .cal-btns { margin-left: 0; } }
   </style>
 </head>
@@ -72,7 +91,7 @@
   </main>
 
   <script src="achievements.js?v=9"></script>
-  <script src="femc-social.js?v=34"></script>
+  <script src="femc-social.js?v=37"></script>
   <script>
   (function () {
     const $ = id => document.getElementById(id);
@@ -91,10 +110,39 @@
       $('nextday').addEventListener('click', () => { X.nextDay(); F().sfx('femc-hover'); });
     }
 
+    const tabs = on => `<nav class="sl-tabs" aria-label="Social links views"><a href="#"${on === 'map' ? ' class="on" aria-current="page"' : ''}>Go out</a><a href="#links"${on === 'links' ? ' class="on" aria-current="page"' : ''}>Social links</a></nav>`;
+
+    // Go out: pick a place for this time of day, and whoever is free there shows up.
+    const AREAS = ['Gekkoukan High', 'Iwatodai Dorm', 'Iwatodai Station', 'Iwatodai Strip', 'Paulownia Mall', 'Port Island Station', 'Port Island', 'Naganaki Shrine', 'Tatsumi Memorial Hospital', 'Moonlight Bridge'];
+    const areaOf = place => place.split(' · ')[0];
+    function map() {
+      const n = X.now();
+      const known = Object.values(X.links).filter(l => !l.hidden && (X.isMet(l.id) || X.status(l).reason !== 'away'));
+      const areas = [...new Set([...AREAS, ...known.map(l => areaOf(l.home.place))])].filter(a => known.some(l => areaOf(l.home.place) === a));
+      const spent = !X.state().free && X.state().spent[`${n.d}-${n.slot}`];
+      $('view').innerHTML = `${tabs('map')}<p class="fp-kicker">Iwatodai · 2009</p><h1 class="page-title cond">Go out</h1>
+        <p class="cal-free">Where do you want to spend this ${esc(n.time.toLowerCase())}? People keep their own schedules.</p>
+        ${spent ? `<p class="spent-note">You've already spent this ${esc(n.time.toLowerCase())} with someone. <b>Wait ▸</b> to move on.</p>` : ''}
+        <div class="map">${areas.map(a => {
+          const here = known.filter(l => areaOf(l.home.place) === a);
+          const free = here.filter(l => X.status(l).ok);
+          const usual = here.filter(l => X.isMet(l.id) && !free.includes(l));
+          return `<section class="area${free.length ? ' busy' : ''}"><h2>${esc(a)}</h2>
+            ${free.map(l => {
+              const met = X.isMet(l.id), p = X.progress(l.id), pic = met ? X.portrait(l.id, 'neutral') : null;
+              const spot = l.home.place.split(' · ').slice(1).join(' · ');
+              return `<button class="who" type="button" data-go="${l.id}"><i>${pic ? `<img src="${pic}" alt="">` : (met ? esc(l.short[0]) : '?')}</i>
+                <span><b>${met ? esc(l.short) : 'Someone new'}</b><small>${met ? `Rank ${p.rank} · ` : ''}${esc(spot || a)}</small></span></button>`;
+            }).join('') || '<p class="quiet">Nobody you know is around right now.</p>'}
+            ${usual.length ? `<p class="usual">Usually here: ${usual.map(l => esc(l.short)).join(', ')}</p>` : ''}</section>`;
+        }).join('')}</div>`;
+      $('view').querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => { const l = X.links[b.dataset.go]; X.play(l, X.progress(l.id).rank, { onDone: render }); }));
+    }
+
     function list() {
       const all = Object.values(X.links).filter(l => !l.hidden);
       const shown = all.filter(l => X.isMet(l.id) || X.status(l).reason !== 'away');
-      $('view').innerHTML = `<p class="fp-kicker">Iwatodai · 2009</p><h1 class="page-title cond">Social Links</h1>
+      $('view').innerHTML = `${tabs('links')}<p class="fp-kicker">Iwatodai · 2009</p><h1 class="page-title cond">Social Links</h1>
         <p class="cal-free">Bonds you've made on the other side. Someone new may be waiting where you least expect.</p>
         <div class="grid">${shown.map(l => {
           const met = X.isMet(l.id), p = X.progress(l.id), st = X.status(l);
@@ -119,7 +167,7 @@
       const p = X.progress(l.id), st = X.status(l), met = X.isMet(l.id);
       const face = p.rank >= 9 && p.route === 'romance' ? 'blushing' : p.rank ? 'happy' : 'neutral';
       const pic = met ? X.portrait(l.id, face) : null;
-      $('view').innerHTML = `<a class="back-to-list" href="#">‹ All social links</a>
+      $('view').innerHTML = `<a class="back-to-list" href="#links">‹ All social links</a>
         <div class="detail"><section>
           <span class="arc" style="width:auto;height:auto;padding:8px 18px;display:inline-grid;transform:skewX(-14deg)"><b style="transform:skewX(14deg)">${met ? `${l.numeral} · ${l.arcana}` : '???'}</b></span>
           <h1 class="cond">${esc(X.nameFor(l))}</h1>
@@ -142,7 +190,8 @@
       cal();
       const id = location.hash.slice(1);
       const l = X.links[id];
-      l && !l.hidden && (X.isMet(id) || X.status(l).reason !== 'away') ? detail(l) : list();
+      if (l && !l.hidden && (X.isMet(id) || X.status(l).reason !== 'away')) detail(l); else if (id === 'links') list(); else map();
+      setTimeout(() => X.offerApproach(render), 500);
     }
     X.load().then(() => {
       render();

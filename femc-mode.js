@@ -402,7 +402,7 @@
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
 
-  function openMenu() { load('femc-menu.js?v=4', () => window.FemcMenu).then(() => window.FemcMenu?.open()); }
+  function openMenu() { load('femc-menu.js?v=5', () => window.FemcMenu).then(() => window.FemcMenu?.open()); }
   window.FemcMode = { toggle, isOn, openMenu, nowPlaying: () => music.playing(), sfx, moon, daypart, load, base: BASE,
     music: { playing: () => music.playing(), toggle: () => { music.toggle(); paintBadge(); }, next: () => music.next(), tracks: () => music.tracks } };
 })();

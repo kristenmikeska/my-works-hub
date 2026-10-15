@@ -3,6 +3,8 @@ FemcSocial.define({
   id: 'sebastian', name: 'Sebastian', short: 'Sebastian', arcana: 'Hermit', numeral: 'IX', from: 'Stardew Valley',
   arrives: '6/8',
   home: { place: 'Paulownia Mall · Game Panic', slot: 1, days: [2, 4, 6], hint: 'Evenings on Tuesdays, Thursdays and Saturdays, under the Game Panic awning. Especially if it is raining.' },
+  approach: "A guy in a black hoodie is losing at an arcade machine in the back of Game Panic, with the air of someone who would rather be in a basement.",
+  invite: { ask: ["hey. you free?", "want to hang out? no pressure", "got a new campaign idea. come over?"], ok: "cool. see you soon", no: "no worries" },
   romance: true,
   cast: { abigail: 'Abigail', sam: 'Sam', junpei: 'Junpei', noctis: 'Noctis' },
   threads: { solarion: { name: 'solarion chronicles', members: ['sebastian', 'abigail', 'sam'] } },

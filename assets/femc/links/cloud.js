@@ -4,6 +4,8 @@ FemcSocial.define({
   id: 'cloud', name: 'Cloud Strife', short: 'Cloud', arcana: 'Hanged Man', numeral: 'XII', from: 'Final Fantasy VII',
   arrives: '7/7',
   home: { place: 'Iwatodai Station', slot: 0, days: [0, 1, 3, 5], hint: 'Daytime on Sundays, Mondays, Wednesdays and Fridays, around Iwatodai Station.' },
+  approach: "A blond guy with a sword the size of a door is standing at the station, staring at the train map like it personally offended him.",
+  invite: { ask: ["You free?", "Got a job. Could use backup.", "...Want to get food."], ok: "Okay.", no: "...Fine." },
   romance: true,
   cast: { tifa: 'Tifa', aerith: 'Aerith', aphrodite: 'Aphrodite', koromaru: 'Koromaru' },
   texts: [

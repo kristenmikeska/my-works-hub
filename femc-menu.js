@@ -79,14 +79,14 @@ window.FemcMenu = (() => {
     const stamps = otherSideStamps(), comp = compendiumCount();
     const m = F.music;
     return [
-      { id: 'social', label: 'Social Link', sub: met.length ? `${met.length} ${met.length === 1 ? 'bond' : 'bonds'}` : 'No bonds yet', href: 'social.html', name: 'Social Link',
+      { id: 'social', label: 'Social Link', sub: met.length ? `${met.length} ${met.length === 1 ? 'bond' : 'bonds'}` : 'No bonds yet', href: 'social.html#links', name: 'Social Link',
         desc: () => `<p>${met.length ? met.map(l => `${l.short} · ${X.progress(l.id).rank >= 10 ? 'MAX' : `Rank ${X.progress(l.id).rank}`}`).join('<br>') : 'Nobody here knows you yet. Someone at the dorm might.'}</p><p class="fm-dim">${free.length ? `Free right now: ${free.map(l => X.nameFor(l)).join(', ')}.` : 'Nobody you know is free right now.'}</p>` },
       { id: 'phone', label: 'Phone', sub: X && X.unread() ? `${X.unread()} new` : 'Messages', name: 'Phone',
         desc: () => `<p>${X && X.unread() ? `You have <b>${X.unread()}</b> unread ${X.unread() === 1 ? 'message' : 'messages'}.` : 'Your messages. People text when time passes between hangouts.'}</p><p class="fm-dim">Some texts are waiting for an answer.</p>` },
       { id: 'compendium', label: 'Compendium', sub: `${comp.found} of ${comp.total}`, href: 'compendium.html', name: 'Compendium',
         desc: () => `<p>Characters from the worlds I didn't write. Entries register as you find things on the other side.</p><p class="fm-dim">${comp.found} of ${comp.total} registered.</p>` },
-      { id: 'calendar', label: 'Calendar', sub: game ? `${game.md} ${game.day} · ${game.time}` : '', href: 'social.html', name: 'Calendar',
-        desc: () => `<p>${game ? `In Iwatodai it's <b>${game.md} ${game.day}</b>, ${game.time.toLowerCase()}.` : ''} Spending time with someone moves the day forward.</p><p class="fm-dim"><span class="fm-moon">${moon.svg}</span>Out here: ${moon.name}${moon.full ? ', a full moon tonight.' : `, next full moon ${moon.next}.`} ${untilDarkHour(now)}</p>` },
+      { id: 'calendar', label: 'Go Out', sub: game ? `${game.md} ${game.day} · ${game.time}` : '', href: 'social.html', name: 'Go Out',
+        desc: () => `<p>${game ? `In Iwatodai it's <b>${game.md} ${game.day}</b>, ${game.time.toLowerCase()}.` : ''} Pick a place and see who's around. Spending time with someone moves the day forward.</p><p class="fm-dim"><span class="fm-moon">${moon.svg}</span>Out here: ${moon.name}${moon.full ? ', a full moon tonight.' : `, next full moon ${moon.next}.`} ${untilDarkHour(now)}</p>` },
       { id: 'music', label: 'Music', sub: m.tracks().length ? (m.playing() || 'Paused') : 'None', name: 'Music',
         desc: () => m.tracks().length ? `<p>${m.playing() ? `Now playing: <b>${m.playing()}</b>` : 'The music is paused.'}</p><div class="fm-ctrls"><button type="button" data-music="toggle">${m.playing() ? '❚❚ Pause' : '▶ Play'}</button>${m.tracks().length > 1 ? '<button type="button" data-music="next">⏭ Next track</button>' : ''}</div>` : '<p>No music yet.</p>' },
       { id: 'stamps', label: 'Stamps', sub: stamps ? `${stamps.found} of ${stamps.total}` : 'Passport', href: 'passport.html#secretHeading', name: 'Stamps',
@@ -174,7 +174,7 @@ window.FemcMenu = (() => {
     refresh(page === 'compendium' ? 'compendium' : page === 'akihiko' ? 'social' : null);
     // Counts for the compendium and stamps load in the background, then the list redraws.
     Promise.all([F.load('achievements.js?v=9', () => window.Achievements), F.load('assets/femc/compendium.js?v=3', () => window.FEMC_COMPENDIUM),
-      F.load('femc-social.js?v=34', () => window.FemcSocial).then(() => window.FemcSocial?.load())])
+      F.load('femc-social.js?v=37', () => window.FemcSocial).then(() => window.FemcSocial?.load())])
       .then(() => { if (el) refresh(document.activeElement?.dataset?.id); });
   }
   return { open, close };

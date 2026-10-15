@@ -3,6 +3,8 @@
 FemcSocial.define({
   id: 'shinjiro', name: 'Shinjiro Aragaki', short: 'Shinjiro', arcana: 'Moon', numeral: 'XVIII', from: 'Persona 3',
   home: { place: 'Port Island Station · Back Alley', slot: 1, days: [0, 1, 2, 3, 4, 5, 6], hint: 'Evenings. Before he comes back to the dorm, he can usually be found in the back alley behind Port Island Station.' },
+  approach: "A tall guy in a long maroon coat is leaning against the alley wall, watching you like you're the one who doesn't belong here.",
+  invite: { ask: ["you eat yet", "need someone to carry groceries. you're free. come on.", "made too much. kitchen. now"], ok: "yeah. don't take forever", no: "whatever. more for me" },
   romance: true,
   closes: '10/4',
   cast: { koromaru: 'Koromaru', ken: 'Ken', akihiko: 'Akihiko' },

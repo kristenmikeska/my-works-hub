@@ -4,6 +4,8 @@ FemcSocial.define({
   id: 'mercy', name: 'Mercy', short: 'Mercy', arcana: 'Temperance', numeral: 'XIV', from: 'Overwatch',
   arrives: '6/8',
   home: { place: 'Tatsumi Memorial Hospital', slot: 0, days: [0, 2, 4], hint: 'Daytime on Tuesdays, Thursdays and Sundays, at Tatsumi Memorial Hospital.' },
+  approach: "A woman in a white coat with a halo of blonde hair is doing rounds on a ward she clearly doesn't work on. She smiles at you like she already knows your name.",
+  invite: { ask: ["Are you free? I have a break and far too much coffee.", "Come visit? Doctor's orders. 😊", "Free for a little while? I could use the company."], ok: "Wunderbar! See you soon.", no: "Of course. Rest well." },
   romance: true,
   cast: { genji: 'Genji', ana: 'Ana', kiriko: 'Kiriko' },
   stamps: {},

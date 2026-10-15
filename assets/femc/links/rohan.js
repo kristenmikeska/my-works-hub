@@ -5,6 +5,8 @@ FemcSocial.define({
   id: 'rohan', name: 'Rohan Kishibe', short: 'Rohan', arcana: 'Magician', numeral: 'I', from: 'JoJo\'s Bizarre Adventure',
   arrives: '9/5',
   home: { place: 'Iwatodai Strip · Bookworms', slot: 0, days: [0, 3, 4, 6], hint: 'Daytime on Sundays, Wednesdays, Thursdays and Saturdays, at the back table of Bookworms, drawing.' },
+  approach: "At the back table of Bookworms, a man in a green headband is drawing so fast the pen sounds like rain.",
+  invite: { ask: ["Are you available? I need a reference model.", "Come to Bookworms. Now. It's for research.", "I have new pages. You may look at them."], ok: "Good. Don't dawdle.", no: "Unacceptable. ...Fine." },
   romance: true,
   cast: { koichi: 'Koichi', josuke: 'Josuke', jotaro: 'Jotaro', kuromi: 'Kuromi' },
   threads: { morioh: { name: 'morioh (do not add rohan)', members: ['rohan', 'koichi', 'josuke'] } },

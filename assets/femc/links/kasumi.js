@@ -5,6 +5,8 @@ FemcSocial.define({
   id: 'kasumi', name: 'Kasumi Yoshizawa', short: 'Kasumi', arcana: 'Faith', numeral: '✦', from: 'Persona 5 Royal',
   arrives: '9/5',
   home: { place: 'Gekkoukan High · Gym', slot: 0, days: [1, 3, 5], hint: 'After school on Mondays, Wednesdays and Fridays, in the Gekkoukan gym.' },
+  approach: "A red-haired girl is running the same routine over and over in the empty gym, and her red ribbon keeps drifting your way.",
+  invite: { ask: ["Senpai! Are you free? 🎀", "Senpai, would you watch my routine today?", "Want to get something sweet after practice?"], ok: "Yay! I'll be waiting!", no: "That's okay! Next time! 🎀" },
   romance: true,
   cast: { akihiko: 'Akihiko', maruki: 'Maruki', elizabeth: 'Elizabeth' },
   threads: { elizabeth: { name: 'Elizabeth', members: ['elizabeth'] } },

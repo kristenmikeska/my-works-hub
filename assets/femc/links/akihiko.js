@@ -12,10 +12,14 @@
      { register: id }                      "Registered to the Compendium"
      { music: 'tender' }                   switch the scene music (joy, school, sun, tender, mystery, night, velvet);
                                            a rank can also take music: 'tender' beside its title
+   Link fields: approach: the line shown when a stranger finds Solar for the first meeting;
+   invite: { ask: [texts], ok, no } for "free right now?" invitations between ranks.
    {name} becomes "Solar". */
 FemcSocial.define({
   id: 'akihiko', name: 'Akihiko Sanada', short: 'Akihiko', arcana: 'Star', numeral: 'XVII', from: 'Persona 3',
   home: { place: 'Gekkoukan High · Boxing Club', slot: 0, days: [1, 2, 3, 4, 5, 6], hint: 'After school, Monday to Saturday, at the boxing club.' },
+  approach: "A silver-haired guy in a red vest is jogging laps of the second-floor hallway between classes, and he slows down a little every time he passes you.",
+  invite: { ask: ["you free? gym. now.", "want to go for a run? i'll go easy on you. probably.", "hagakure? my treat. i need protein."], ok: "great. meet you out front.", no: "next time then. i'm holding you to it." },
   romance: true,
   cast: { junpei: 'Junpei', mitsuru: 'Mitsuru', yukari: 'Yukari', shinjiro: 'Shinjiro' },
   stamps: { 1: ['senpai'], 10: ['max-rank'] },

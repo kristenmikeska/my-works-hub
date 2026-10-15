@@ -5,6 +5,8 @@ FemcSocial.define({
   id: 'aphrodite', name: 'Aphrodite', short: 'Aphrodite', arcana: 'Sun', numeral: 'XIX', from: 'Smite',
   arrives: '7/7',
   home: { place: 'Port Island Station', slot: 0, days: [0, 6], hint: 'Daytime on weekends, wherever there is shopping near Port Island Station.' },
+  approach: "The whole concourse has gone strangely quiet around a woman in white and gold, and she is looking straight at you.",
+  invite: { ask: ["Little sun. Your goddess requests your presence.", "I am bored and beautiful. Come fix the first one.", "Come. I have something to show you."], ok: "Of course you said yes. They always do.", no: "...No one says no to me. How novel." },
   romance: true,
   cast: { yukari: 'Yukari', ares: 'Ares' },
   threads: { elizabeth: { name: 'Elizabeth', members: ['elizabeth'] } },

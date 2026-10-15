@@ -5,6 +5,8 @@ FemcSocial.define({
   id: 'widowmaker', name: 'Widowmaker', short: 'Widowmaker', arcana: 'Death', numeral: 'XIII', from: 'Overwatch',
   arrives: '10/4',
   home: { place: 'Moonlight Bridge', slot: 1, days: [0, 2, 4, 6], hint: 'Evenings on Sundays, Tuesdays, Thursdays and Saturdays, somewhere up in the cables of Moonlight Bridge.' },
+  approach: "High up in the cables of Moonlight Bridge there's a shape that wasn't there yesterday. It's watching you.",
+  invite: { ask: ["Come to the bridge.", "Are you free.", "The city is quiet tonight. Come."], ok: "Bien.", no: "Hm. Another night, then." },
   romance: false,
   cast: { kiriko: 'Kiriko', mercy: 'Mercy' },
   threads: { sniper: { name: 'support & sniper', members: ['widowmaker', 'kiriko'] } },

@@ -4,6 +4,8 @@ FemcSocial.define({
   id: 'astarion', name: 'Astarion', short: 'Astarion', arcana: 'Devil', numeral: 'XV', from: "Baldur's Gate 3",
   arrives: '7/7',
   home: { place: 'Paulownia Mall · Chagall Café', slot: 1, days: [0, 1, 3, 5, 6], hint: 'Evenings only (the sun is a problem), most nights of the week, at Chagall Café.' },
+  approach: "A pale man with white curls is sitting alone at Chagall with a cup he hasn't touched, watching everyone who walks in like they're on a menu.",
+  invite: { ask: ["Darling. I'm bored. Come amuse me.", "Free tonight? I've found somewhere terribly interesting.", "Come keep me company. That's not a request."], ok: "Marvelous. Don't keep me waiting.", no: "Cruel. Utterly cruel. Fine." },
   romance: true,
   cast: { cazador: 'Cazador', karlach: 'Karlach', akihiko: 'Akihiko' },
   texts: [

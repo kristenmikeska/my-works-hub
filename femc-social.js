@@ -12,9 +12,11 @@ window.FemcSocial = (() => {
   const CAST = {};                               // speaker id -> display name, for side characters
 
   /* ── State ───────────────────────────────────────── */
-  const fresh = () => ({ d: 0, slot: 0, spent: {}, links: {}, met: [], registered: [], free: false, phone: { log: {}, done: [], unread: {}, pending: {} } });
+  const fresh = () => ({ d: 0, slot: 0, spent: {}, links: {}, met: [], registered: [], free: false, approached: [], phone: { log: {}, done: [], unread: {}, pending: {}, invited: {} } });
   let S = (() => { try { return { ...fresh(), ...JSON.parse(localStorage.getItem(KEY)) }; } catch (e) { return fresh(); } })();
   S.phone ||= fresh().phone;
+  S.approached ||= [];
+  S.phone.invited ||= {};
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} listeners.forEach(fn => fn()); };
   const listeners = [];
   const onChange = fn => listeners.push(fn);
@@ -157,6 +159,11 @@ window.FemcSocial = (() => {
     .vn-velvet .vn-portrait { filter: drop-shadow(10px 10px 0 rgba(60, 110, 255, .35)); }
     .vn-velvet .vn-choices button { box-shadow: 5px 5px 0 rgba(60, 110, 255, .5); }
     .vn-velvet .vn-choices button:is(:hover, :focus-visible) { box-shadow: 7px 7px 0 #2f5bd8; }
+    .vn-approach { display: grid; place-items: center; z-index: 2147483250; }
+    .vn-approach-inner { position: relative; z-index: 2; display: grid; gap: 18px; width: min(680px, calc(100vw - 40px)); }
+    .vn-approach-kicker { margin: 0; color: #ff8cc0; font: italic 800 14px/1 ${COND}; letter-spacing: .3em; text-transform: uppercase; }
+    .vn-approach-text { margin: 0; padding: 22px 26px; border: 2px solid #ff8cc0; border-radius: 4px 26px 4px 26px; background: rgba(20, 7, 15, .93); box-shadow: 8px 8px 0 rgba(255, 79, 158, .45); font: italic 500 clamp(17px, 1.8vw, 21px)/1.55 "Avenir Next", "Helvetica Neue", sans-serif; color: #f5d9e7; }
+    .vn-approach .vn-choices { position: static; }
     .vn-naming { position: absolute; left: 50%; top: 42%; z-index: 7; display: grid; gap: 16px; justify-items: center; width: min(460px, calc(100vw - 40px)); padding: 26px; transform: translate(-50%, -50%); background: rgba(5, 11, 38, .96); border: 2px solid #8fb0ff; box-shadow: 10px 10px 0 rgba(60, 110, 255, .5); }
     .vn-naming p { margin: 0; font: italic 800 18px/1 ${COND}; letter-spacing: .12em; text-transform: uppercase; color: #9fb8ff; }
     .vn-name-field { display: flex; align-items: center; min-width: 240px; padding: 10px 16px; border-bottom: 3px solid #fff; font: italic 900 34px/1 ${COND}; letter-spacing: .06em; }
@@ -562,8 +569,11 @@ window.FemcSocial = (() => {
     return true;
   }
   function deliver() {
+    expireInvites();
     const t = TEXTS.find(eligible);
-    if (!t) return;
+    if (t) send(t); else invite();
+  }
+  function send(t) {
     const P = ph();
     P.done.push(t.id);
     const log = (P.log[t.thread] ||= []);
@@ -574,6 +584,38 @@ window.FemcSocial = (() => {
     const first = t.msgs.find(m => !m.sys);
     setTimeout(() => notify(t.thread, first), 300);
   }
+  /* ── Invitations: "free right now?" ── */
+  // A friend texts to hang out when everything's ready for their next rank but they aren't at their usual spot.
+  // At most one invite a day, never two days running, once per rank. It expires when the time of day moves on.
+  const slotKey = () => `${S.d}-${S.slot}`;
+  function invite() {
+    const P = ph();
+    if (S.free || (P.lastInvite != null && S.d - P.lastInvite < 2)) return;
+    const ready = Object.values(links).filter(l => {
+      if (l.hidden || !l.invite || !isMet(l.id) || P.pending[l.id]) return false;
+      const p = progress(l.id);
+      return status(l).reason === 'elsewhere' && P.invited[l.id] !== p.rank && S.d - ((p.rankDay || {})[p.rank] ?? -99) >= 3;
+    });
+    if (!ready.length) return;
+    const l = ready[S.d % ready.length];
+    const msg = l.invite.ask[S.d % l.invite.ask.length];
+    P.invited[l.id] = progress(l.id).rank;
+    P.lastInvite = S.d;
+    (P.log[l.id] ||= []).push({ from: l.id, t: msg, d: S.d });
+    P.unread[l.id] = (P.unread[l.id] || 0) + 1;
+    P.pending[l.id] = `invite:${l.id}:${slotKey()}`;
+    setTimeout(() => notify(l.id, { from: l.id, t: msg }), 300);
+  }
+  const isInvite = v => typeof v === 'string' && v.startsWith('invite:');
+  function expireInvites() {
+    const P = ph();
+    Object.entries(P.pending).forEach(([thread, v]) => {
+      if (!isInvite(v) || v.split(':')[2] === slotKey()) return;
+      delete P.pending[thread];
+      (P.log[thread] ||= []).push({ sys: 'Missed invitation', d: S.d });
+    });
+  }
+
   const threadName = id => (ph().names || {})[id] || (THREADS[id] || {}).name || CAST[id] || id;
   const sender = id => id === 'solar' ? 'Solar' : (CAST[id] || id);
   function avatar(id) {
@@ -654,6 +696,7 @@ window.FemcSocial = (() => {
       body.scrollTop = body.scrollHeight;
       const replyBox = phoneEl.querySelector('.ph-reply');
       replyBox.replaceChildren();
+      if (isInvite(P.pending[id])) return inviteReply(id, P.pending[id].split(':')[1]);
       const t = TEXTS.find(x => x.id === P.pending[id]);
       if (!t) return;
       t.reply.forEach(o => {
@@ -693,6 +736,70 @@ window.FemcSocial = (() => {
         replyBox.appendChild(b);
       });
     }
+    // An invitation: say yes and the hangout starts right away.
+    function inviteReply(id, linkId) {
+      const P = ph(), l = links[linkId];
+      const body = phoneEl.querySelector('.ph-body'), replyBox = phoneEl.querySelector('.ph-reply');
+      [['On my way!', true], ["Can't right now, sorry.", false]].forEach(([text, yes]) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = text;
+        b.addEventListener('click', () => {
+          replyBox.replaceChildren();
+          delete P.pending[id];
+          P.log[id].push({ from: 'solar', t: text, d: S.d });
+          save();
+          body.appendChild(bubble({ from: 'solar', t: text }));
+          F().sfx('femc-text');
+          body.scrollTop = body.scrollHeight;
+          const answer = yes ? l.invite.ok : l.invite.no;
+          setTimeout(() => {
+            if (answer) { P.log[id].push({ from: linkId, t: answer, d: S.d }); save(); body.appendChild(bubble({ from: linkId, t: answer })); body.scrollTop = body.scrollHeight; F().sfx('femc-text'); }
+            if (yes) setTimeout(() => { close(); play(l, progress(linkId).rank); }, reduced.matches ? 0 : 1100);
+          }, reduced.matches ? 0 : 900);
+        });
+        replyBox.appendChild(b);
+      });
+    }
+  }
+
+  /* ── First meetings that happen to you ───────────── */
+  // When someone new is free where Solar happens to be, they find her: once per link, at most once per time of day.
+  let approachEl = null;
+  function offerApproach(onDone) {
+    if (S.free || !S.intro || approachEl || S.approachAt === slotKey() || document.querySelector('.vn, .ph')) return false;
+    const l = Object.values(links).find(x => !x.hidden && x.approach && !isMet(x.id) && !S.approached.includes(x.id) && status(x).ok);
+    if (!l) return false;
+    approachEl = document.createElement('div');
+    approachEl.className = 'vn vn-approach';
+    approachEl.setAttribute('role', 'dialog');
+    approachEl.setAttribute('aria-modal', 'true');
+    approachEl.setAttribute('aria-label', 'Someone is waiting');
+    approachEl.innerHTML = `<div class="vn-place"><b>${now().md}<small>${now().day}</small></b><span></span></div>
+      <div class="vn-approach-inner"><p class="vn-approach-kicker">Someone is waiting</p><p class="vn-approach-text"></p>
+      <div class="vn-choices"><button type="button" data-go><span>Go over</span></button><button type="button"><span>Not now</span></button></div></div>`;
+    approachEl.querySelector('.vn-place span').textContent = `${now().time} · ${l.ranks[0].place}`;
+    approachEl.querySelector('.vn-approach-text').textContent = l.approach;
+    S.approached.push(l.id);
+    S.approachAt = slotKey();
+    document.body.appendChild(approachEl);
+    save();
+    F().sfx('femc-buzz');
+    const el = approachEl;
+    const close = go => {
+      document.removeEventListener('keydown', key, true);
+      F().sfx(go ? 'femc-click' : 'femc-back');
+      el.classList.add('out');
+      setTimeout(() => { el.remove(); if (approachEl === el) approachEl = null; if (go) play(l, 0, { onDone }); }, 300);
+    };
+    const key = e => { if (e.key === 'Escape') { e.preventDefault(); close(false); } };
+    document.addEventListener('keydown', key, true);
+    el.querySelectorAll('.vn-choices button').forEach(b => {
+      b.addEventListener('mouseenter', () => F().sfx('femc-hover'));
+      b.addEventListener('click', () => close(b.hasAttribute('data-go')));
+    });
+    el.querySelector('[data-go]').focus({ preventScroll: true });
+    return true;
   }
 
   /* ── Kat's test panel (?femctest) ─────────────────── */
@@ -738,7 +845,7 @@ window.FemcSocial = (() => {
     if (ready) return ready;
     const L = F().load;
     ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
-      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=25`, () => links[id]))))
+      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=27`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
   }
@@ -750,5 +857,5 @@ window.FemcSocial = (() => {
     play(l, 0, { frame: true, onDone: () => { S.intro = true; save(); onDone?.(); } });
     return true;
   }
-  return { playIntro, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
+  return { playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
 })();

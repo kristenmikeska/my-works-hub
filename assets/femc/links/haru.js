@@ -4,6 +4,8 @@ FemcSocial.define({
   id: 'haru', name: 'Haru Okumura', short: 'Haru', arcana: 'Empress', numeral: 'III', from: 'Persona 5',
   arrives: '6/8',
   home: { place: 'Gekkoukan High · Rooftop Garden', slot: 0, days: [1, 2, 4, 5], hint: 'After school on Mondays, Tuesdays, Thursdays and Fridays, on the Gekkoukan roof.' },
+  approach: "A girl with soft brown hair is kneeling among the rooftop planters, speaking to a tomato plant very seriously and very kindly.",
+  invite: { ask: ["Are you free? I baked far too much! 🌸", "Would you like to help in the garden today?", "I just roasted a new blend. Come taste it?"], ok: "Wonderful! I'll put the kettle on.", no: "Next time, then! 🌸" },
   romance: true,
   cast: { ann: 'Ann', makoto: 'Makoto', shinjiro: 'Shinjiro', akihiko: 'Akihiko' },
   texts: [

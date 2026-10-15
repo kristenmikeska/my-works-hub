@@ -4,6 +4,8 @@ FemcSocial.define({
   id: 'leon', name: 'Leon S. Kennedy', short: 'Leon', arcana: 'Chariot', numeral: 'VII', from: 'Resident Evil 4',
   arrives: '9/5',
   home: { place: 'Paulownia Mall · Police Box', slot: 1, days: [1, 2, 4, 5], hint: 'Evenings on Mondays, Tuesdays, Thursdays and Fridays, leaning on the counter of Officer Kurosawa\'s police box.' },
+  approach: "A man in a fur-collared leather jacket is leaning on Officer Kurosawa's counter, very politely losing an argument.",
+  invite: { ask: ["You free?", "Ashley wants to go shopping. Save me.", "Got time to grab food?"], ok: "Copy that.", no: "Roger. Another time." },
   romance: true,
   cast: { ashley: 'Ashley', ada: 'Ada', kurosawa: 'Officer Kurosawa', merchant: 'Merchant', akihiko: 'Akihiko' },
   threads: { ashley: { name: 'leon\'s babysitting service', members: ['leon', 'ashley'] } },

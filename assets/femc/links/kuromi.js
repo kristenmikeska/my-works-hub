@@ -4,6 +4,8 @@ FemcSocial.define({
   id: 'kuromi', name: 'Kuromi', short: 'Kuromi', arcana: 'Tower', numeral: 'XVI', from: 'Sanrio',
   arrives: '5/9',
   home: { place: 'Iwatodai Dorm · Lounge', slot: 1, days: [0, 1, 2, 3, 4, 5, 6], hint: 'Evenings, in the dorm lounge, usually causing trouble.' },
+  approach: "Something small in a black jester hood is standing on the lounge couch with a marker, and Junpei is asleep. This is about to be a crime.",
+  invite: { ask: ["RIVAL. come here. now.", "i need an accomplice. dont ask questions", "r u free. its important (its not important)"], ok: "heh. perfect 💀", no: "UGH. fine. traitor" },
   romance: true,
   cast: { junpei: 'Junpei', mymelody: 'My Melody', koromaru: 'Koromaru', rohan: 'Rohan', yukari: 'Yukari' },
   texts: [
