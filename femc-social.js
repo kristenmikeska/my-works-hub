@@ -61,7 +61,7 @@ window.FemcSocial = (() => {
   function portrait(id, face) {
     const have = (window.FEMC_PORTRAITS || {})[id] || [];
     const pick = [face, face && face.replace(/-\d+$/, ''), 'neutral', have[0]].find(f => f && have.includes(f));
-    return pick ? `${F().base}assets/femc/portraits/${id}/${pick}.webp` : null;
+    return pick ? `${F().base}assets/femc/portraits/${id}/${pick}.webp?v=3` : null;
   }
 
   /* ── Styles ──────────────────────────────────────── */
@@ -76,7 +76,7 @@ window.FemcSocial = (() => {
     .vn-place b { font: italic 900 24px/1 ${COND}; }
     .vn-place b small { margin-left: 4px; color: #ff8cc0; font-size: 12px; letter-spacing: .08em; }
     .vn-place span { color: #ff8cc0; font: italic 800 12px/1.2 ${COND}; letter-spacing: .12em; text-transform: uppercase; }
-    .vn-portrait { position: absolute; right: 4vw; bottom: 0; height: min(86vh, 900px); max-width: 60vw; object-fit: contain; object-position: bottom; filter: drop-shadow(10px 10px 0 rgba(255, 79, 158, .35)); transition: opacity .25s, transform .25s, filter .25s; }
+    .vn-portrait { position: absolute; right: 4vw; bottom: 0; height: min(86vh, 900px); max-width: 60vw; object-fit: contain; object-position: bottom; filter: drop-shadow(10px 10px 0 rgba(255, 79, 158, .35)); transition: opacity .25s, transform .25s, filter .25s; -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 98%); mask-image: linear-gradient(to bottom, #000 80%, transparent 98%); }
     .vn-portrait.dim { filter: brightness(.55) drop-shadow(10px 10px 0 rgba(255, 79, 158, .2)); }
     .vn-portrait.swap { opacity: 0; transform: translateX(30px); }
     .vn-silhouette { position: absolute; right: 8vw; bottom: 0; width: min(46vw, 520px); height: min(76vh, 760px); background: linear-gradient(#000, #000) center bottom / 70% 52% no-repeat, radial-gradient(circle at 50% 30%, #000 0 22%, transparent 23%); opacity: .55; }
@@ -334,7 +334,7 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = F().load;
-    ready = Promise.all([L('assets/femc/portraits/index.js?v=1', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=1', () => window.FEMC_LINK_FILES)])
+    ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=1', () => window.FEMC_LINK_FILES)])
       .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=1`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
