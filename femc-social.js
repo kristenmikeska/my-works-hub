@@ -107,6 +107,29 @@ window.FemcSocial = (() => {
     .vn-reg img, .vn-reg .ph { width: 52px; height: 52px; object-fit: cover; object-position: top; border-radius: 50%; background: #3a1028; }
     .vn-reg b { display: block; font: italic 900 13px/1 ${COND}; letter-spacing: .2em; color: #ff8cc0; text-transform: uppercase; }
     .vn-reg span { font: italic 900 22px/1.1 ${COND}; }
+    .vn.vn-break::after { content: ""; position: absolute; inset: 0; z-index: 7; background: #0c0309; animation: vn-break .7s ease both; pointer-events: none; }
+    .vn-title { position: absolute; inset: 0; z-index: 9; display: grid; place-items: center; background: rgba(12, 3, 9, .94); cursor: pointer; animation: vn-in .5s ease both; }
+    .vn-title.out { animation: vn-in .5s ease reverse forwards; }
+    .vn-title p { margin: 0; text-align: center; transform: skewX(-8deg); }
+    .vn-title small { display: block; margin-bottom: 14px; color: #ff8cc0; font: italic 800 14px/1 ${COND}; letter-spacing: .34em; text-transform: uppercase; }
+    .vn-title span { font: italic 600 clamp(34px, 6vw, 72px)/1 Georgia, "Times New Roman", serif; text-shadow: .05em .05em 0 #ff4f9e; }
+    .vn-phone { position: absolute; left: 50%; top: 50%; z-index: 7; width: min(340px, calc(100vw - 40px)); height: min(560px, 70vh); display: grid; grid-template-rows: auto 1fr auto; transform: translate(-50%, -54%); border: 10px solid #1b0b15; border-radius: 34px; background: #f7f2f5; box-shadow: 10px 10px 0 rgba(255, 79, 158, .5); overflow: hidden; color: #1b0b15; animation: vn-phone .4s cubic-bezier(.2, 1.3, .4, 1) both; cursor: pointer; }
+    .vn.phoning .vn-box, .vn.phoning .vn-portrait { opacity: 0; }
+    .vn-phone-head { padding: 14px; background: #fff; border-bottom: 1px solid #eadde4; text-align: center; font: 700 15px/1 -apple-system, "Helvetica Neue", sans-serif; }
+    .vn-phone-thread { display: flex; flex-direction: column; gap: 8px; padding: 14px; overflow-y: auto; }
+    .vn-msg { max-width: 80%; margin: 0; padding: 8px 12px; border-radius: 16px; font: 15px/1.35 -apple-system, "Helvetica Neue", sans-serif; animation: vn-in .25s ease both; }
+    .vn-msg b { display: block; margin-bottom: 2px; font-size: 11px; opacity: .6; }
+    .vn-msg.them { align-self: flex-start; background: #e7dde3; }
+    .vn-msg.me { align-self: flex-end; background: #ff4f9e; color: #fff; }
+    .vn-phone-hint { margin: 0; padding: 8px; text-align: center; font: 600 11px/1 -apple-system, sans-serif; letter-spacing: .1em; text-transform: uppercase; opacity: .45; }
+    .vn-log { position: absolute; inset: 0; z-index: 9; display: grid; grid-template-rows: 1fr auto; gap: 12px; padding: 70px max(16px, 8vw) 24px; background: rgba(12, 3, 9, .95); }
+    .vn-log-inner { overflow-y: auto; max-width: 760px; width: 100%; margin: 0 auto; }
+    .vn-log p { margin: 0 0 14px; font-size: 16px; line-height: 1.55; }
+    .vn-log p b { display: block; color: #ff8cc0; font: italic 900 14px/1.3 ${COND}; letter-spacing: .08em; text-transform: uppercase; }
+    .vn-log p.n { font-style: italic; color: #e9c9d8; }
+    .vn-log > button { justify-self: center; padding: 9px 20px; border: 0; background: #ff4f9e; color: #fff; font: italic 900 14px/1 ${COND}; letter-spacing: .08em; text-transform: uppercase; transform: skewX(-14deg); cursor: inherit; }
+    @keyframes vn-break { 0% { opacity: 0; } 35%, 55% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes vn-phone { from { opacity: 0; transform: translate(-50%, -40%); } }
     @keyframes vn-in { from { opacity: 0; } }
     @keyframes vn-blink { 50% { opacity: 0; } }
     @keyframes vn-choice { from { opacity: 0; transform: translateX(-40px) skewX(-14deg); } }
@@ -158,7 +181,8 @@ window.FemcSocial = (() => {
     const when = opts.replay ? '' : `${now().md}<small>${now().day}</small>`;
     el.innerHTML = `<div class="vn-place"><b>${when}</b><span></span></div>
       <img class="vn-portrait" alt="">
-      <div class="vn-tools"><button type="button" data-t="skip">Skip ▸▸</button><button type="button" data-t="leave">Leave</button></div>
+      <div class="vn-tools"><button type="button" data-t="log">Log</button><button type="button" data-t="skip">Skip ▸▸</button><button type="button" data-t="leave">Leave</button></div>
+      <div class="vn-log" hidden><div class="vn-log-inner"></div><button type="button" data-t="log-close">Close log</button></div>
       <div class="vn-choices"></div>
       <div class="vn-box" aria-live="polite"><span class="vn-name"></span><p class="vn-text"></p></div>`;
     el.querySelector('.vn-place span').textContent = `${opts.replay ? 'Memory · ' : (now().time + ' · ')}${rank.place}`;
@@ -221,17 +245,62 @@ window.FemcSocial = (() => {
           F().sfx('femc-click');
           if (o.route) { p.route = o.route; save(); }
           notes(o.notes || 0);
-          queue.unshift(...(o.then || []));
+          // Solar says what you chose, unless the choice is an action in parentheses.
+          const spoken = o.say || (o.t.trim().startsWith('(') ? null : o.t);
+          queue.unshift(...(spoken ? [{ s: 'solar', t: spoken }] : []), ...(o.then || []));
           next();
         });
         return b;
       }));
       choices.querySelector('button')?.focus({ preventScroll: true });
     }
+    const log = [];
+    function setPlace(place, time) {
+      const span = el.querySelector('.vn-place span');
+      span.textContent = `${opts.replay ? 'Memory' : (time || now().time)} · ${place}`;
+    }
+    // A scene break: the screen dips, the place banner changes, and nobody is on screen until they speak.
+    function sceneBreak(line) {
+      currentFace = null;
+      img.hidden = true;
+      el.classList.add('vn-break');
+      setTimeout(() => el.classList.remove('vn-break'), 700);
+      setPlace(line.place, line.time);
+      log.push({ name: '', text: '—' });
+      setTimeout(next, reduced.matches || skipping ? 0 : 450);
+    }
+    // A text conversation on Solar's phone, one message per click.
+    function phone(line) {
+      const box = document.createElement('div');
+      box.className = 'vn-phone';
+      box.innerHTML = `<div class="vn-phone-head">${line.contact || ''}</div><div class="vn-phone-thread"></div><p class="vn-phone-hint">tap to continue</p>`;
+      el.appendChild(box);
+      const thread = box.querySelector('.vn-phone-thread');
+      let i = 0;
+      const reveal = () => {
+        const m = line.phone[i++];
+        if (!m) { box.remove(); el.classList.remove('phoning'); waiting = null; return next(); }
+        const bubble = document.createElement('p');
+        bubble.className = `vn-msg ${m.from === 'solar' ? 'me' : 'them'}`;
+        bubble.innerHTML = `<b></b><span></span>`;
+        bubble.querySelector('b').textContent = m.from === 'solar' ? (line.me || 'solar') : (line.handle || m.from);
+        bubble.querySelector('span').textContent = sub(m.t);
+        thread.appendChild(bubble);
+        thread.scrollTop = thread.scrollHeight;
+        log.push({ name: m.from === 'solar' ? 'Solar' : (CAST[m.from] || m.from), text: `[text] ${sub(m.t)}` });
+        F().sfx('femc-text');
+        waiting = reveal;
+        if (skipping) setTimeout(() => { if (waiting === reveal) advanceClick(); }, 40);
+      };
+      el.classList.add('ready', 'phoning');
+      reveal();
+    }
     function next() {
       if (!el.isConnected) return;
       const line = queue.shift();
       if (!line) return end(true);
+      if (line.place) return sceneBreak(line);
+      if (line.phone) return phone(line);
       if (line.register) { if (!opts.replay) register(line.register); return next(); }
       if (line.choose) return ask(line.choose);
       if (line.route) return ask(line.route);
@@ -240,15 +309,22 @@ window.FemcSocial = (() => {
         nameEl.textContent = '';
         textEl.classList.add('narration');
         img.classList.add('dim');
+        log.push({ name: '', text: sub(line.n) });
         return say(line.n, next);
       }
       textEl.classList.remove('narration');
-      nameEl.textContent = CAST[line.s] || line.s;
-      showPortrait(line.s, line.f);
+      if (line.s === 'solar') {
+        nameEl.textContent = 'Solar';
+        img.classList.add('dim');
+      } else {
+        nameEl.textContent = CAST[line.s] || line.s;
+        showPortrait(line.s, line.f);
+      }
+      log.push({ name: nameEl.textContent, text: sub(line.t) });
       say(line.t, next);
     }
     function advanceClick() { if (choices.children.length) return; const w = waiting; waiting = null; if (w) w(); }
-    el.addEventListener('click', e => { if (e.target.closest('.vn-tools, .vn-choices, .vn-rank')) return; advanceClick(); });
+    el.addEventListener('click', e => { if (e.target.closest('.vn-tools, .vn-choices, .vn-rank, .vn-log, .vn-title')) return; advanceClick(); });
     const keys = e => {
       if (!el.isConnected) return document.removeEventListener('keydown', keys, true);
       if (e.key === ' ' || e.key === 'Enter') { if (!choices.children.length && !e.target.closest?.('button')) { e.preventDefault(); advanceClick(); } }
@@ -257,6 +333,13 @@ window.FemcSocial = (() => {
     document.addEventListener('keydown', keys, true);
     el.querySelector('[data-t="skip"]').addEventListener('click', () => { skipping = true; advanceClick(); const run = () => { if (skipping && waiting && !choices.children.length) { advanceClick(); setTimeout(run, 60); } }; setTimeout(run, 60); });
     el.querySelector('[data-t="leave"]').addEventListener('click', () => end(false));
+    const logBox = el.querySelector('.vn-log');
+    el.querySelector('[data-t="log"]').addEventListener('click', () => {
+      logBox.querySelector('.vn-log-inner').replaceChildren(...log.map(l => { const p = document.createElement('p'); if (l.name) { const b = document.createElement('b'); b.textContent = l.name; p.append(b); } else p.className = 'n'; p.append(l.text); return p; }));
+      logBox.hidden = false;
+      const inner = logBox.querySelector('.vn-log-inner'); inner.scrollTop = inner.scrollHeight;
+    });
+    el.querySelector('[data-t="log-close"]').addEventListener('click', () => { logBox.hidden = true; });
 
     function close() {
       document.removeEventListener('keydown', keys, true);
@@ -296,7 +379,19 @@ window.FemcSocial = (() => {
       box.addEventListener('click', finish);
       document.addEventListener('keydown', onKey, true);
     }
-    next();
+    // Each rank opens like a chapter: "1: rookie".
+    if (rank.title && !reduced.matches) {
+      const card = document.createElement('div');
+      card.className = 'vn-title';
+      card.innerHTML = `<p><small></small><span></span></p>`;
+      card.querySelector('small').textContent = `${link.short} · Rank ${r + 1}`;
+      card.querySelector('span').textContent = rank.title;
+      el.appendChild(card);
+      let gone = false;
+      const go = () => { if (gone) return; gone = true; card.classList.add('out'); setTimeout(() => card.remove(), 500); next(); };
+      card.addEventListener('click', go);
+      setTimeout(go, 2600);
+    } else next();
   }
 
   /* ── Kat's test panel (?femctest) ─────────────────── */
@@ -335,7 +430,7 @@ window.FemcSocial = (() => {
     if (ready) return ready;
     const L = F().load;
     ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=1', () => window.FEMC_LINK_FILES)])
-      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=1`, () => links[id]))))
+      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=2`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
   }
