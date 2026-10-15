@@ -174,7 +174,7 @@ window.FemcMenu = (() => {
     refresh(page === 'compendium' ? 'compendium' : page === 'akihiko' ? 'social' : null);
     // Counts for the compendium and stamps load in the background, then the list redraws.
     Promise.all([F.load('achievements.js?v=9', () => window.Achievements), F.load('assets/femc/compendium.js?v=3', () => window.FEMC_COMPENDIUM),
-      F.load('femc-social.js?v=40', () => window.FemcSocial).then(() => window.FemcSocial?.load())])
+      F.load('femc-social.js?v=41', () => window.FemcSocial).then(() => window.FemcSocial?.load())])
       .then(() => { if (el) refresh(document.activeElement?.dataset?.id); });
   }
   return { open, close };
