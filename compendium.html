@@ -55,12 +55,12 @@
 
   <script src="achievements.js?v=9"></script>
   <script src="assets/femc/compendium.js?v=3"></script>
-  <script src="assets/femc/portraits/index.js?v=4"></script>
+  <script src="assets/femc/portraits/index.js?v=5"></script>
   <script>
   (function () {
     const ENTRIES = (window.FEMC_COMPENDIUM || []).filter(e => !e.secret || window.femcCompendiumOpen(e));
     // Anyone with a neutral portrait in assets/femc/portraits gets it here automatically.
-    ENTRIES.forEach(e => { if (!e.img && (window.FEMC_PORTRAITS?.[e.id] || []).includes('neutral')) e.img = `assets/femc/portraits/${e.id}/neutral.webp?v=4`; });
+    ENTRIES.forEach(e => { if (!e.img && (window.FEMC_PORTRAITS?.[e.id] || []).includes('neutral')) e.img = `assets/femc/portraits/${e.id}/neutral.webp?v=5`; });
     const $ = id => document.getElementById(id);
     const F = () => window.FemcMode;
     const isOpen = e => window.femcCompendiumOpen(e);

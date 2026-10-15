@@ -83,7 +83,7 @@ window.FemcSocial = (() => {
     const base = face && face.replace(/-\d+$/, '');
     const alias = { blushing: 'flustered', flustered: 'blushing' }[base];
     const pick = [face, base, alias, 'neutral', have[0]].find(f => f && have.includes(f));
-    return pick ? `${F().base}assets/femc/portraits/${id}/${pick}.webp?v=4` : null;
+    return pick ? `${F().base}assets/femc/portraits/${id}/${pick}.webp?v=5` : null;
   }
 
   /* ── Styles ──────────────────────────────────────── */
@@ -98,18 +98,21 @@ window.FemcSocial = (() => {
     .vn-place b { font: italic 900 24px/1 ${COND}; }
     .vn-place b small { margin-left: 4px; color: #ff8cc0; font-size: 12px; letter-spacing: .08em; }
     .vn-place span { color: #ff8cc0; font: italic 800 12px/1.2 ${COND}; letter-spacing: .12em; text-transform: uppercase; }
-    .vn-portrait { position: absolute; right: 4vw; bottom: 0; height: min(86vh, 900px); max-width: 60vw; object-fit: contain; object-position: bottom; filter: drop-shadow(10px 10px 0 rgba(255, 79, 158, .35)); transition: opacity .25s, transform .25s, filter .25s; -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 98%); mask-image: linear-gradient(to bottom, #000 80%, transparent 98%); }
-    .vn-portrait.dim { filter: brightness(.55) drop-shadow(10px 10px 0 rgba(255, 79, 158, .2)); }
-    .vn-portrait.swap { opacity: 0; transform: translateX(30px); }
-    .vn-silhouette { position: absolute; right: 8vw; bottom: 0; width: min(46vw, 520px); height: min(76vh, 760px); background: linear-gradient(#000, #000) center bottom / 70% 52% no-repeat, radial-gradient(circle at 50% 30%, #000 0 22%, transparent 23%); opacity: .55; }
-    .vn-box { position: absolute; left: 50%; bottom: 4vh; z-index: 4; width: min(980px, calc(100vw - 32px)); transform: translateX(-50%); cursor: pointer; }
+    /* P3R layout: the speaker stands on the left, cut off by the bottom edge; the dialogue box sits to the right and points at them. */
+    .vn-portrait { position: absolute; left: max(1vw, 8px); bottom: 0; height: min(88vh, 940px); max-width: 40vw; object-fit: contain; object-position: left bottom; filter: drop-shadow(10px 0 0 rgba(255, 79, 158, .35)); transition: opacity .25s, transform .25s, filter .25s; }
+    .vn-portrait.dim { filter: brightness(.55) drop-shadow(10px 0 0 rgba(255, 79, 158, .2)); }
+    .vn-portrait.swap { opacity: 0; transform: translateX(-30px); }
+    .vn-silhouette { position: absolute; left: 6vw; bottom: 0; width: min(46vw, 520px); height: min(76vh, 760px); background: linear-gradient(#000, #000) center bottom / 70% 52% no-repeat, radial-gradient(circle at 50% 30%, #000 0 22%, transparent 23%); opacity: .55; }
+    .vn-box { position: absolute; left: 41vw; right: max(3vw, 16px); bottom: 4vh; z-index: 4; max-width: 980px; cursor: pointer; }
     .vn-name { display: inline-block; min-height: 30px; margin-left: 22px; padding: 6px 20px; background: #ff4f9e; font: italic 900 18px/1 ${COND}; letter-spacing: .06em; text-transform: uppercase; transform: skewX(-14deg); box-shadow: 4px 4px 0 #14070f; }
     .vn-name:empty { visibility: hidden; }
     .vn-text { position: relative; min-height: 7.2em; margin: -4px 0 0; padding: 22px 28px 26px; border: 2px solid #ff8cc0; border-radius: 4px 26px 4px 26px; background: rgba(20, 7, 15, .93); box-shadow: 8px 8px 0 rgba(255, 79, 158, .45); font-size: clamp(16px, 1.6vw, 19px); line-height: 1.5; font-weight: 600; }
     .vn-text.narration { font-style: italic; color: #f5d9e7; font-weight: 500; }
+    .vn-text::before { content: ""; position: absolute; left: -40px; top: 26px; border: 16px solid transparent; border-right: 38px solid #ff8cc0; border-left: 0; filter: drop-shadow(0 6px 0 rgba(255, 79, 158, .45)); }
+    .vn-text.narration::before, .vn-portrait.dim ~ .vn-box .vn-text::before, .vn-portrait[hidden] ~ .vn-box .vn-text::before { display: none; }
     .vn-text::after { content: "▼"; position: absolute; right: 22px; bottom: 12px; color: #ff4f9e; font-size: 12px; opacity: 0; }
     .vn.ready .vn-text::after { opacity: 1; animation: vn-blink 1s steps(2) infinite; }
-    .vn-choices { position: absolute; left: max(5vw, 16px); bottom: calc(4vh + 200px); z-index: 5; display: grid; gap: 10px; justify-items: start; max-width: min(560px, calc(100vw - 32px)); }
+    .vn-choices { position: absolute; right: max(3vw, 16px); bottom: calc(4vh + 200px); z-index: 5; display: grid; gap: 10px; justify-items: end; max-width: min(560px, calc(100vw - 32px)); }
     .vn-choices button { padding: 11px 26px; border: 0; background: rgba(20, 7, 15, .92); color: #fff; font: italic 800 clamp(15px, 1.5vw, 18px)/1.25 ${COND}; letter-spacing: .02em; text-align: left; transform: skewX(-14deg); box-shadow: 5px 5px 0 rgba(255, 79, 158, .5); cursor: inherit; animation: vn-choice .35s cubic-bezier(.2, 1.2, .4, 1) both; }
     .vn-choices button > span { display: inline-block; transform: skewX(14deg); }
     .vn-choices button:is(:hover, :focus-visible) { background: #fff; color: #14070f; outline: none; box-shadow: 7px 7px 0 #ff4f9e; }
@@ -210,16 +213,19 @@ window.FemcSocial = (() => {
     @keyframes ph-toast { from { opacity: 0; transform: translateY(-30px); } }
     @keyframes vn-in { from { opacity: 0; } }
     @keyframes vn-blink { 50% { opacity: 0; } }
-    @keyframes vn-choice { from { opacity: 0; transform: translateX(-40px) skewX(-14deg); } }
+    @keyframes vn-choice { from { opacity: 0; transform: translateX(40px) skewX(-14deg); } }
     @keyframes vn-note { 0% { opacity: 0; transform: translateY(30px) scale(.5); } 25% { opacity: 1; transform: translateY(0) scale(1.1); } 80% { opacity: 1; } 100% { opacity: 0; transform: translateY(-40px); } }
     @keyframes vn-card { 0% { transform: rotateY(180deg) scale(.6); opacity: 0; } 60% { transform: rotateY(-10deg) scale(1.05); opacity: 1; } 100% { transform: none; } }
     @keyframes vn-slam { from { opacity: 0; transform: skewX(-8deg) scale(1.8); } }
     @keyframes vn-reg { 0% { opacity: 0; transform: translate(-50%, -30px); } 10%, 85% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; transform: translate(-50%, -20px); } }
     @media (max-width: 700px) {
-      .vn-portrait { right: 50%; transform: translateX(50%); max-width: 92vw; height: 62vh; bottom: 150px; }
-      .vn-portrait.swap { transform: translateX(50%) translateY(20px); }
-      .vn-text { min-height: 8em; padding: 18px 18px 24px; }
-      .vn-choices { bottom: 240px; left: 16px; right: 16px; justify-items: stretch; }
+      /* Phones: the bust rests on top of the dialogue box (fixed height, so it never bobs). */
+      .vn-portrait { left: 50%; transform: translateX(-50%); max-width: 96vw; height: min(54vh, calc(100vh - var(--boxh, 220px) - 4vh - 70px)); bottom: calc(4vh + var(--boxh, 220px) - 6px); object-position: center bottom; }
+      .vn-portrait.swap { transform: translateX(-50%) translateY(20px); }
+      .vn-box { left: 16px; right: 16px; }
+      .vn-text { height: 10.5em; min-height: 0; overflow-y: auto; padding: 18px 18px 24px; }
+      .vn-text::before { display: none; }
+      .vn-choices { bottom: calc(4vh + var(--boxh, 220px) + 14px); left: 16px; right: 16px; justify-items: stretch; }
       .vn-choices button { text-align: left; }
       .vn-place { left: 12px; top: 12px; }
       .vn-place b { font-size: 18px; }
@@ -312,6 +318,9 @@ window.FemcSocial = (() => {
     document.body.appendChild(el);
     const img = el.querySelector('.vn-portrait'), nameEl = el.querySelector('.vn-name'), textEl = el.querySelector('.vn-text'), choices = el.querySelector('.vn-choices');
     let currentFace = null;
+    const boxEl = el.querySelector('.vn-box');
+    const fit = () => el.style.setProperty('--boxh', `${boxEl.offsetHeight}px`);
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(boxEl); else fit();
     const music = sceneMusic();
     music.set(moodFor(link, rank, r));
 
@@ -847,7 +856,7 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = F().load;
-    ready = Promise.all([L('assets/femc/portraits/index.js?v=4', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
+    ready = Promise.all([L('assets/femc/portraits/index.js?v=5', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
       .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=28`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;

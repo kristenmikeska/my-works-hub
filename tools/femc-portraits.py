@@ -36,6 +36,18 @@ def count(m):
     return m.histogram()[255]
 
 
+def body_bottom(im):
+    """The lowest row where the figure is still wide (ignores a tie tip or a stray strand hanging lower)."""
+    a = im.getchannel('A').point(lambda v: 255 if v > 128 else 0)
+    widths = []
+    for y in range(im.height):
+        box = a.crop((0, y, im.width, y + 1)).getbbox()
+        widths.append(box[2] - box[0] if box else 0)
+    widest = max(widths) or 1
+    rows = [y for y, w in enumerate(widths) if w >= widest * 0.4]
+    return (rows[-1] + 1) if rows else im.height
+
+
 def match(ref_m, cand, region):
     """Best (score, scale, dx, dy) placing cand's silhouette over the reference silhouette."""
     rw, rh = ref_m.size
@@ -113,7 +125,9 @@ def process(folder, cid):
     x0 = min(x for _, x, _, _, _ in placed)
     y0 = min(y for _, _, y, _, _ in placed)
     W = max(x + im.width for im, x, _, _, _ in placed) - x0
-    H = max(y + im.height for im, _, y, _, _ in placed) - y0
+    # Every expression must reach the bottom edge, or it floats in a scene: cut the shared canvas
+    # at the highest place any expression's body ends.
+    H = min(y + body_bottom(im) for im, _, y, _, _ in placed) - y0
     out_dir = os.path.join(DST, cid)
     os.makedirs(out_dir, exist_ok=True)
     for old in os.listdir(out_dir):
