@@ -8,6 +8,7 @@
      { choose: [{ t, notes, then: [...] }] }   a dialogue choice; notes = ♪ earned (0–3)
      { route: [{ t, route: 'romance'|'friend', notes, then }] }  the friendship/romance turn
      { ifRoute: 'romance'|'friend', then: [...] }   lines only on that route
+     { ifRank: { kiriko: 8 }, then: [...], else: [...] }   branch on another link's rank
      { register: id }                      "Registered to the Compendium"
    {name} becomes "Solar". */
 FemcSocial.define({

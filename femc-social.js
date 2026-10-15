@@ -388,6 +388,7 @@ window.FemcSocial = (() => {
       if (line.register) { if (!opts.replay) register(line.register); return next(); }
       if (line.choose) return ask(line.choose);
       if (line.route) return ask(line.route);
+      if (line.ifRank) { const ok = Object.entries(line.ifRank).every(([id, r]) => progress(id).rank >= r); queue.unshift(...((ok ? line.then : line.else) || [])); return next(); }
       if (line.ifRoute) { if ((opts.route || p.route) === line.ifRoute) queue.unshift(...line.then); return next(); }
       if (line.n) {
         nameEl.textContent = '';
@@ -683,8 +684,8 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = F().load;
-    ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=17', () => window.FEMC_LINK_FILES)])
-      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=19`, () => links[id]))))
+    ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=18', () => window.FEMC_LINK_FILES)])
+      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=20`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
   }
