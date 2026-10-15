@@ -7,6 +7,7 @@ shared canvas. Swapping expressions in a scene then never makes the character ju
 
 Run: python3 tools/femc-portraits.py [name ...]   (no names = everyone; takes a minute or two)
 Source: ~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits/<Name>/<Name>-<Emotion>[-N].png|webp
+        (the name prefix is optional: plain <emotion>.png works too, e.g. Kiriko/smiling.png)
 Output: assets/femc/portraits/<id>/<emotion>.webp and assets/femc/portraits/index.js
 """
 import os, re, sys, json
@@ -14,7 +15,7 @@ from PIL import Image, ImageChops
 
 SRC = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits')
 DST = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets/femc/portraits')
-EMO = {'mad': 'serious', 'angry': 'serious', 'embarrassed': 'flustered'}
+EMO = {'mad': 'serious', 'angry': 'serious', 'embarrassed': 'flustered', 'smiling': 'happy', 'smile': 'happy'}
 TARGET_H = 860      # height of the reference portrait on the canvas
 WORK_H = 140        # matching happens on small silhouettes this tall
 HEAD = 0.55         # only the top part of the reference (head and hair) is compared
@@ -75,9 +76,14 @@ def match(ref_m, cand, region):
 def entries(folder):
     for f in sorted(os.listdir(folder)):
         stem, ext = os.path.splitext(f)
-        if ext.lower() not in ('.png', '.webp', '.jpg', '.jpeg') or '-' not in stem:
+        if ext.lower() not in ('.png', '.webp', '.jpg', '.jpeg'):
             continue
-        rest = stem.split('-', 1)[1].lower()
+        # "Aki-Mad-3", "Kiriko-Happy" or just "smiling": drop a leading name if there is one.
+        parts = stem.lower().split('-')
+        known = set(EMO) | {'neutral', 'happy', 'sad', 'surprised', 'blushing', 'serious', 'flustered'}
+        if len(parts) > 1 and not any(x in known for x in re.split(r'[:/_]', parts[0])):
+            parts = parts[1:]
+        rest = '-'.join(parts)
         variant = ''
         m = re.match(r'(.+?)-(\d+)$', rest)
         if m:

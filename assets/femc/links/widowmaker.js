@@ -198,8 +198,8 @@ FemcSocial.define({
     { after: '1/8', title: '9: ninety-two', music: 'tender', place: 'Moonlight Bridge', scene: [
       { n: "January, and the snow on the bridge, and the whole bay white and silver under a thin cold moon. Widowmaker was waiting on the railing. She had the scarf on. She always had it on now." },
       { n: "Kiriko had come too. She'd climbed halfway up the tower before deciding she didn't love heights and come down again, and she was sitting on the bridge with her back against a support beam, eating something from a bag, and Widowmaker was pretending to be annoyed by her." },
-      { s: 'kiriko', t: "Fortune. For you. I'm not asking." },
-      { s: 'kiriko', t: "Dai-kichi. 'The cold heart thaws in the company of fools.'" },
+      { s: 'kiriko', f: 'neutral', t: "Fortune. For you. I'm not asking." },
+      { s: 'kiriko', f: 'happy', t: "Dai-kichi. 'The cold heart thaws in the company of fools.'" },
       { s: 'widowmaker', t: "...I'm insulted by that. And by how accurate it is." },
       { n: "Later, when Kiriko had gone, Widowmaker stood on the railing with her fingers pressed to her own throat again, and she was very quiet, and then she said something Solar didn't expect." },
       { s: 'widowmaker', t: "Ninety-two. My heart. Right now. It is supposed to be thirty." },

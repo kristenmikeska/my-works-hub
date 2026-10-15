@@ -211,10 +211,10 @@ FemcSocial.define({
 
     { after: '11/5', title: '8: wall market', place: 'Paulownia Mall · Club Escapade', scene: [
       { n: "It started because Club Escapade was having a costume night, and the bouncer Cloud occasionally stood in for had challenged him to come as something nobody would expect, and Aphrodite, who happened to be passing, overheard." },
-      { s: 'aphrodite', t: "Oh, I KNOW what nobody would expect." },
+      { s: 'aphrodite', f: 'happy', t: "Oh, I KNOW what nobody would expect." },
       { n: "Two hours later Cloud Strife was sitting in front of a vanity mirror in the dorm in a long violet dress, with his spiky hair arranged into something softer and a goddess of love doing his eyeliner with an expression of total, sacred concentration." },
       { s: 'cloud', t: "...I've done this before. I don't know when. But I've done this before." },
-      { s: 'aphrodite', t: "Stop moving your face, darling, I'm creating a masterpiece." },
+      { s: 'aphrodite', f: 'serious', t: "Stop moving your face, darling, I'm creating a masterpiece." },
       { choose: [
         { t: "You look incredible, Cloud.", notes: 3, then: [
           { s: 'cloud', t: '...' },

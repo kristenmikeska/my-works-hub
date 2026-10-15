@@ -79,8 +79,11 @@ window.FemcSocial = (() => {
   /* ── Portraits ───────────────────────────────────── */
   function portrait(id, face) {
     const have = (window.FEMC_PORTRAITS || {})[id] || [];
-    const pick = [face, face && face.replace(/-\d+$/, ''), 'neutral', have[0]].find(f => f && have.includes(f));
-    return pick ? `${F().base}assets/femc/portraits/${id}/${pick}.webp?v=3` : null;
+    // Blushing and flustered stand in for each other (some sets only have "embarrassed").
+    const base = face && face.replace(/-\d+$/, '');
+    const alias = { blushing: 'flustered', flustered: 'blushing' }[base];
+    const pick = [face, base, alias, 'neutral', have[0]].find(f => f && have.includes(f));
+    return pick ? `${F().base}assets/femc/portraits/${id}/${pick}.webp?v=4` : null;
   }
 
   /* ── Styles ──────────────────────────────────────── */
@@ -844,8 +847,8 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = F().load;
-    ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
-      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=27`, () => links[id]))))
+    ready = Promise.all([L('assets/femc/portraits/index.js?v=4', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
+      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=28`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
   }
