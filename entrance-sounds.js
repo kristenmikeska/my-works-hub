@@ -764,6 +764,16 @@ window.EntranceSounds = (() => {
       [2349.3, 1975.5, 1568, 1318.5].forEach((f, i) => k.tone(t + i * 0.06, { freq: f, type: 'triangle', level: 0.03, attack: 0.003, decay: 0.4, pan: (1.5 - i) * 0.3 }));
       k.tone(t + 0.2, { freq: 130, to: 60, level: 0.12, attack: 0.01, decay: 0.4 });
     },
+    'femc-note'(k) {
+      const t = k.ctx.currentTime + 0.01;
+      [1568, 2093, 2637].forEach((f, i) => k.tone(t + i * 0.06, { freq: f, type: 'triangle', level: 0.035, attack: 0.003, decay: 0.35, pan: (i - 1) * 0.3 }));
+    },
+    'femc-register'(k) {
+      const t = k.ctx.currentTime + 0.02;
+      k.burst(t, { freq: 3000, q: 1.2, level: 0.08, decay: 0.03 });
+      [880, 1318.5, 1760, 2637].forEach((f, i) => { k.tone(t + 0.05 + i * 0.05, { freq: f, type: 'triangle', level: 0.03, attack: 0.003, decay: 0.7 }); });
+      k.tone(t + 0.3, { freq: 3520, level: 0.008, attack: 0.05, decay: 1 });
+    },
     'femc-text'(k) { k.tone(k.ctx.currentTime + 0.005, { freq: rand(1480, 1620), type: 'square', level: 0.006, attack: 0.002, decay: 0.03 }); },
     'femc-rankup'(k) {
       const t = k.ctx.currentTime + 0.02;

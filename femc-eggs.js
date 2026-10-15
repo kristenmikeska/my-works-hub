@@ -1,5 +1,5 @@
 /* Easter eggs that only exist on the other side (FEMC mode). femc-mode.js loads this once the mode is on.
-   - Akihiko texts you now and then (P3P-style message box) and links to akihiko.html.
+   - Akihiko texts you now and then (P3P-style message box) and links to his social link.
    - Type "protein": shakers and beef bowls rain down ("Gains" stamp).
    - Type "akihiko" or "compendium" to visit the hidden pages.
    - Midnight to 1 a.m.: the Dark Hour ("The Dark Hour" stamp, once a night).
@@ -90,7 +90,7 @@ window.FemcEggs = (() => {
     const box = document.createElement('div');
     box.className = 'femc-msg';
     box.setAttribute('role', 'status');
-    box.innerHTML = `<span class="femc-msg-name"><span>Akihiko</span></span><div class="femc-msg-box"><p class="femc-msg-text"></p><div class="femc-msg-actions"><a href="${BASE}akihiko.html">Go see him</a><button type="button">Later</button></div></div>`;
+    box.innerHTML = `<span class="femc-msg-name"><span>Akihiko</span></span><div class="femc-msg-box"><p class="femc-msg-text"></p><div class="femc-msg-actions"><a href="${BASE}social.html#akihiko">Go see him</a><button type="button">Later</button></div></div>`;
     document.body.appendChild(box);
     const line = LINES[Math.floor(Math.random() * LINES.length)];
     const text = box.querySelector('.femc-msg-text');
@@ -108,7 +108,7 @@ window.FemcEggs = (() => {
     if (!force) set('kg-femc-text', String(Date.now()));
   }
   function maybeText() {
-    if (reader || /^(akihiko|compendium)$/.test(page)) return;
+    if (reader || /^(akihiko|compendium|social)$/.test(page)) return;
     const last = Number(get('kg-femc-text')) || 0;
     if (Date.now() - last < 8 * 60 * 1000 || Math.random() > 0.25) return;
     later(() => { if (F.isOn()) textFromAkihiko(); }, 7000 + Math.random() * 7000);
@@ -195,7 +195,7 @@ window.FemcEggs = (() => {
     if (e.target.closest && e.target.closest('input, textarea, select, [contenteditable]')) return;
     typed = (typed + e.key.toLowerCase()).slice(-12);
     if (typed.endsWith('protein')) { typed = ''; protein(); }
-    else if (typed.endsWith('akihiko') && page !== 'akihiko') { typed = ''; F.sfx('femc-click'); location.href = BASE + 'akihiko.html'; }
+    else if (typed.endsWith('akihiko') && page !== 'akihiko') { typed = ''; F.sfx('femc-click'); location.href = BASE + 'social.html#akihiko'; }
     else if (typed.endsWith('compendium') && page !== 'compendium') { typed = ''; F.sfx('femc-click'); location.href = BASE + 'compendium.html'; }
   });
 

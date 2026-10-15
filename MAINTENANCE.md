@@ -87,6 +87,16 @@ Kat's sorted photos (Desktop/Hoax) are resized into `assets/hoax/roll/` (full, ~
 - **akihiko / compendium** (typed): go to those pages.
 - **Dark Hour:** midnight to 1 a.m. local, once a night (`kg-femc-dh`): green full-screen moment, stamp `dark-hour`.
 - **Full Moon Operation:** on full-moon days (within about a day of full, from `FemcMode.moon()`), a banner; Deploy plays the operation and earns `full-moon` (once per day, `kg-femc-fm`). The badge moon's tooltip shows the next full moon.
-- **`akihiko.html`:** social link page. Rank 1 on first visit; each "Spend time together" rolls an in-game 2009 calendar to the next scene and ranks up, no real-day wait (`kg-femc-aki`). Ten scenes in `SCENES` (date, time of day, place, his line), Christmas Eve at MAX; the hug photo unblurs at MAX. Plays `tender-feeling.mp3`. Stamps `senpai` (visit) and `max-rank`. Shows a locked screen outside FEMC mode.
+- **`akihiko.html`:** now just redirects to `social.html#akihiko`.
 - **`compendium.html`:** Kat's fictional favorites from `assets/femc/compendium.js`; each entry unlocks with a stamp id. Stamp `compendium`. The badge's ❖ button links here.
 - Stamps with `side: 'femc'` (group "The other side") stay hidden in the passport until `femc` is unlocked.
+
+### Social links (`femc-social.js`, `social.html`)
+
+- **Data:** one file per link in `assets/femc/links/<id>.js`, listed in `assets/femc/links/index.js`. Each calls `FemcSocial.define({...})` with the link's arcana, home (place, time slot, weekdays), optional `arrives` date, `music`, side-character `cast`, `stamps` per rank, and ten `ranks`. The format is documented at the top of `akihiko.js`: lines, narration, choices with ♪ notes, the friendship/romance `route` choice, `ifRoute` branches and `register` (compendium popups).
+- **Calendar:** one shared in-game year from 4/7/2009 to 1/31/2010, with After School (Daytime on weekends) and Evening slots. A hangout uses up the slot. Each rank has an `after` date. `social.html` has Wait and Next day buttons. State is in `kg-femc-game`.
+- **Portraits:** `assets/femc/portraits/<id>/<emotion>.webp`, generated from Kat's Character Portraits folder (trimmed, 860px tall, "Mad"/"Angry" become `serious`, numbered variants like `sad-2` kept). `assets/femc/portraits/index.js` lists what exists, and missing faces fall back to neutral. Re-run the portrait script after she adds images.
+- **Pages:** `social.html` is the Social Links screen (cards by arcana, "Free now" tags) and `social.html#<id>` is a link's page (rank, status, Spend time together, Memories to replay finished ranks). The FEMC menu's Social Link and Calendar items go there.
+- **Compendium:** `assets/femc/compendium.js` lists all 49 characters. Social links unlock when met (`met:<id>`), supporting characters when a scene registers them (`reg:<id>`).
+- **Test panel:** add `?femctest` to `social.html` (before the `#`): jump to any date, step time, set ranks, make everyone free and ungated, or reset all progress.
+- **Written so far:** Akihiko (10 ranks, both routes). Junpei has no portrait yet, so his lines show text only.

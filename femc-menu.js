@@ -66,22 +66,25 @@ window.FemcMenu = (() => {
     return { found: list.filter(a => got[a.id]).length, total: list.length };
   }
   function compendiumCount() {
-    const list = window.FEMC_COMPENDIUM || [], got = window.Achievements ? Achievements.unlocked() : {};
-    return { found: list.filter(e => e.unlock === 'always' || got[e.unlock]).length, total: list.length };
+    const list = window.FEMC_COMPENDIUM || [];
+    return { found: window.femcCompendiumOpen ? list.filter(window.femcCompendiumOpen).length : 0, total: list.length };
   }
 
   function items() {
-    const rank = (read('kg-femc-aki', {}) || {}).rank || 0;
-    const now = new Date(), moon = F.moon(now), part = F.daypart(now.getHours());
+    const X = window.FemcSocial;
+    const met = X ? Object.values(X.links).filter(l => X.isMet(l.id)) : [];
+    const free = X ? X.freeNow() : [];
+    const game = X ? X.now() : null;
+    const now = new Date(), moon = F.moon(now);
     const stamps = otherSideStamps(), comp = compendiumCount();
     const m = F.music;
     return [
-      { id: 'social', label: 'Social Link', sub: rank >= 10 ? 'Akihiko · MAX' : rank ? `Akihiko · Rank ${rank}` : 'Akihiko · ???', href: 'akihiko.html', name: 'Social Link',
-        desc: () => `<p>${rank ? 'Spend time with Akihiko. Each hangout moves the calendar forward.' : "Someone at the dorm wants to train with you."}</p><p class="fm-dim">${rank >= 10 ? 'Your bond is as strong as it gets.' : rank ? `Rank ${rank} of 10.` : 'Social link not established yet.'}</p>` },
+      { id: 'social', label: 'Social Link', sub: met.length ? `${met.length} ${met.length === 1 ? 'bond' : 'bonds'}` : 'No bonds yet', href: 'social.html', name: 'Social Link',
+        desc: () => `<p>${met.length ? met.map(l => `${l.short} · ${X.progress(l.id).rank >= 10 ? 'MAX' : `Rank ${X.progress(l.id).rank}`}`).join('<br>') : 'Nobody here knows you yet. Someone at the dorm might.'}</p><p class="fm-dim">${free.length ? `Free right now: ${free.map(l => X.nameFor(l)).join(', ')}.` : 'Nobody you know is free right now.'}</p>` },
       { id: 'compendium', label: 'Compendium', sub: `${comp.found} of ${comp.total}`, href: 'compendium.html', name: 'Compendium',
         desc: () => `<p>Characters from the worlds I didn't write. Entries register as you find things on the other side.</p><p class="fm-dim">${comp.found} of ${comp.total} registered.</p>` },
-      { id: 'calendar', label: 'Calendar', sub: `${now.getMonth() + 1}/${now.getDate()} ${DAYS[now.getDay()]} · ${part}`, name: 'Calendar',
-        desc: () => `<p><span class="fm-moon">${moon.svg}</span>${moon.name}${moon.full ? ' · tonight is a full moon.' : ` · next full moon ${moon.next}.`}</p><p>${untilDarkHour(now)}</p><p class="fm-dim">Some things only happen at certain times.</p>` },
+      { id: 'calendar', label: 'Calendar', sub: game ? `${game.md} ${game.day} · ${game.time}` : '', href: 'social.html', name: 'Calendar',
+        desc: () => `<p>${game ? `In Iwatodai it's <b>${game.md} ${game.day}</b>, ${game.time.toLowerCase()}.` : ''} Spending time with someone moves the day forward.</p><p class="fm-dim"><span class="fm-moon">${moon.svg}</span>Out here: ${moon.name}${moon.full ? ', a full moon tonight.' : `, next full moon ${moon.next}.`} ${untilDarkHour(now)}</p>` },
       { id: 'music', label: 'Music', sub: m.tracks().length ? (m.playing() || 'Paused') : 'None', name: 'Music',
         desc: () => m.tracks().length ? `<p>${m.playing() ? `Now playing: <b>${m.playing()}</b>` : 'The music is paused.'}</p><div class="fm-ctrls"><button type="button" data-music="toggle">${m.playing() ? '❚❚ Pause' : '▶ Play'}</button>${m.tracks().length > 1 ? '<button type="button" data-music="next">⏭ Next track</button>' : ''}</div>` : '<p>No music yet.</p>' },
       { id: 'stamps', label: 'Stamps', sub: stamps ? `${stamps.found} of ${stamps.total}` : 'Passport', href: 'passport.html#secretHeading', name: 'Stamps',
@@ -128,8 +131,7 @@ window.FemcMenu = (() => {
       node.addEventListener('click', e => {
         if (item.id === 'return') { close(); F.toggle(false); }
         else if (item.id === 'music') { F.music.toggle(); setTimeout(() => refresh('music'), 250); }
-        else if (item.id === 'calendar') describe(item);
-        else if (item.href && page === item.href.replace(/\.html.*/, '') && !item.href.includes('#')) { e.preventDefault(); close(); }
+                else if (item.href && page === item.href.replace(/\.html.*/, '') && !item.href.includes('#')) { e.preventDefault(); close(); }
       });
       li.appendChild(node);
       return li;
@@ -168,7 +170,8 @@ window.FemcMenu = (() => {
     F.sfx('femc-click');
     refresh(page === 'compendium' ? 'compendium' : page === 'akihiko' ? 'social' : null);
     // Counts for the compendium and stamps load in the background, then the list redraws.
-    Promise.all([F.load('achievements.js?v=6', () => window.Achievements), F.load('assets/femc/compendium.js?v=1', () => window.FEMC_COMPENDIUM)])
+    Promise.all([F.load('achievements.js?v=6', () => window.Achievements), F.load('assets/femc/compendium.js?v=2', () => window.FEMC_COMPENDIUM),
+      F.load('femc-social.js?v=3', () => window.FemcSocial).then(() => window.FemcSocial?.load())])
       .then(() => { if (el) refresh(document.activeElement?.dataset?.id); });
   }
   return { open, close };
