@@ -14,7 +14,7 @@ window.FemcEggs = (() => {
   const reader = document.documentElement.classList.contains('femc-reader');
   const page = (location.pathname.split('/').pop() || 'index.html').replace('.html', '');
   const preview = new URLSearchParams(location.search).get('femcpreview');
-  const unlock = id => { if (!preview) F.load('achievements.js?v=8', () => window.Achievements).then(() => window.Achievements?.unlock(id)); };
+  const unlock = id => { if (!preview) F.load('achievements.js?v=9', () => window.Achievements).then(() => window.Achievements?.unlock(id)); };
   const dayKey = d => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
   let started = false;
   const timers = [];
@@ -78,10 +78,16 @@ window.FemcEggs = (() => {
     .femc-rez .wings.l { right: 51%; transform-origin: right center; }
     .femc-rez .wings.l svg { transform: scaleX(-1); }
     .femc-rez b { position: relative; margin-top: 30vh; color: #fff; font: italic 900 clamp(36px, 7vw, 84px)/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; text-shadow: 0 0 24px #ffb800, .05em .05em 0 #b37a00; transform: skewX(-8deg); }
+    .femc-doves { position: fixed; inset: 0; z-index: 2147483300; pointer-events: none; overflow: hidden; display: grid; place-items: center; background: radial-gradient(circle at 50% 50%, rgba(255, 150, 200, .35), transparent 65%); animation: femc-rez 3.6s ease both; }
+    .femc-doves i { position: absolute; left: -12vw; top: var(--y); width: calc(9vmin * var(--s)); fill: var(--c); filter: drop-shadow(0 0 10px #ff8cc0); animation: femc-dove 2.6s cubic-bezier(.3, 0, .6, 1) var(--d) both; }
+    .femc-doves i svg { display: block; width: 100%; }
+    .femc-doves b { color: #fff; text-align: center; font: italic 900 clamp(34px, 7vw, 82px)/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; text-shadow: 0 0 24px #ff4f9e, .05em .05em 0 #b3125e; transform: skewX(-8deg); }
+    .femc-doves b small { display: block; margin-top: 10px; font-size: .26em; letter-spacing: .2em; text-transform: uppercase; }
+    @keyframes femc-dove { 0% { transform: translateX(0) translateY(0); } 50% { transform: translateX(65vw) translateY(-6vh); } 100% { transform: translateX(130vw) translateY(-14vh); } }
     @keyframes femc-rez { 0% { opacity: 0; } 10%, 80% { opacity: 1; } 100% { opacity: 0; } }
     @keyframes femc-halo { from { transform: translateY(-40vh) scale(.6); } 40% { transform: none; } }
     @keyframes femc-wing { from { opacity: 0; transform: scaleX(0); } 45% { opacity: 1; transform: none; } }
-    @media (prefers-reduced-motion: reduce) { .femc-rez, .femc-rez *, .femc-msg, .femc-rain i, .femc-stat, .femc-dh, .femc-dh time, .femc-op, .femc-opfull { animation: none !important; } .femc-rain { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .femc-doves, .femc-doves *, .femc-rez, .femc-rez *, .femc-msg, .femc-rain i, .femc-stat, .femc-dh, .femc-dh time, .femc-op, .femc-opfull { animation: none !important; } .femc-rain { display: none; } }
   `;
   document.head.appendChild(style);
 
@@ -213,6 +219,20 @@ window.FemcEggs = (() => {
     unlock('heroes-never-die');
   }
 
+  /* ── Love birds (only once Solar has met Aphrodite) ── */
+  const met = id => { try { return (JSON.parse(localStorage.getItem('kg-femc-game')) || {}).met?.includes(id); } catch (e) { return false; } };
+  function loveBirds() {
+    F.sfx('femc-doves');
+    const el = document.createElement('div');
+    el.className = 'femc-doves';
+    el.setAttribute('role', 'status');
+    const dove = '<svg viewBox="0 0 64 40" aria-hidden="true"><path d="M4 22c8-2 14 0 20 4c4-8 14-18 30-20c-6 6-10 12-12 18c6 0 12 2 18 6c-10 2-20 2-28 0c-6 4-14 6-22 4c4-2 6-5 6-8c-4 0-8-2-12-4z"/></svg>';
+    el.innerHTML = Array.from({ length: 16 }, (_, i) => `<i style="--y:${(8 + Math.random() * 70).toFixed(1)}vh;--d:${(Math.random() * 0.9).toFixed(2)}s;--s:${(0.7 + Math.random() * 0.9).toFixed(2)};--c:${i % 3 ? '#ffffff' : '#ffb3d1'}">${dove}</i>`).join('') + '<b>MID LANE GODDESS<small>20+ ★ · KDA 5–7 · solo and mid</small></b>';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 3600);
+    unlock('mid-lane-goddess');
+  }
+
   /* ── Typed words ─────────────────────────────────── */
   let typed = '';
   document.addEventListener('keydown', e => {
@@ -220,6 +240,7 @@ window.FemcEggs = (() => {
     if (e.target.closest && e.target.closest('input, textarea, select, [contenteditable]')) return;
     typed = (typed + e.key.toLowerCase()).slice(-20);
     if (typed.endsWith('heroes never die') && metMercy()) { typed = ''; heroesNeverDie(); return; }
+    if (typed.endsWith('love birds') && met('aphrodite')) { typed = ''; loveBirds(); return; }
     if (typed.endsWith('protein')) { typed = ''; protein(); }
     else if (typed.endsWith('akihiko') && page !== 'akihiko') { typed = ''; F.sfx('femc-click'); location.href = BASE + 'social.html#akihiko'; }
     else if (typed.endsWith('compendium') && page !== 'compendium') { typed = ''; F.sfx('femc-click'); location.href = BASE + 'compendium.html'; }

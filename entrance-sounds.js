@@ -764,6 +764,12 @@ window.EntranceSounds = (() => {
       [2349.3, 1975.5, 1568, 1318.5].forEach((f, i) => k.tone(t + i * 0.06, { freq: f, type: 'triangle', level: 0.03, attack: 0.003, decay: 0.4, pan: (1.5 - i) * 0.3 }));
       k.tone(t + 0.2, { freq: 130, to: 60, level: 0.12, attack: 0.01, decay: 0.4 });
     },
+    // Aphrodite's doves: wingbeats and a sparkle.
+    'femc-doves'(k) {
+      const t = k.ctx.currentTime + 0.02;
+      for (let i = 0; i < 14; i++) k.burst(t + i * 0.06 + rand(0, 0.03), { freq: rand(900, 1600), type: 'bandpass', q: 0.8, level: 0.06, decay: 0.05, pan: rand(-0.8, 0.8) });
+      [1318.5, 1568, 1975.5, 2637, 3136].forEach((f, i) => k.tone(t + 0.5 + i * 0.07, { freq: f, type: 'triangle', level: 0.03, attack: 0.004, decay: 0.8, pan: (i - 2) * 0.3 }));
+    },
     // Mercy's resurrection: a rising, angelic chord.
     'femc-rez'(k) {
       const t = k.ctx.currentTime + 0.02;
