@@ -686,7 +686,7 @@ FemcSocial.define({
       { choose: [
         { t: "You don't have to be strong all the time.", notes: 3, then: [
           { s: 'akihiko', f: 'sad-4', t: '...' },
-          { s: 'akihiko', f: 'sad-3', t: "Funny. That's exactly what Shinji would have said." }
+          { s: 'akihiko', f: 'sad-3', t: "Funny. That's exactly what Shinji would say. If he could." }
         ] },
         { t: "Then let's go hit something.", notes: 2, then: [
           { s: 'akihiko', f: 'surprised', t: '...Ha.' },
@@ -732,7 +732,7 @@ FemcSocial.define({
         { t: 'My best friend.', route: 'friend', notes: 3, then: [
           { s: 'akihiko', f: 'happy', t: "Yeah. Yeah, that's it exactly." },
           { n: "Something in his face settled, the way a held breath settles, relieved to finally have somewhere to go." },
-          { s: 'akihiko', f: 'happy', t: "Best friend. I haven't had one of those since Shinji. ...He'd have liked you." },
+          { s: 'akihiko', f: 'happy', t: "Best friend. I haven't had one of those since Shinji. ...He'd like you. When he wakes up, I'm introducing you properly." },
           { n: "He bumped her shoulder with his, hard enough to make her stumble into the commuter next to her, who glared at both of them. It was the most Akihiko thing he could possibly have done." },
           { n: "The monorail pulled in. He stole one of her chestnuts on the way through the doors. She let him." }
         ] }

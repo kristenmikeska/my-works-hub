@@ -53,6 +53,7 @@ window.FemcSocial = (() => {
     const p = progress(link.id);
     if (p.rank >= link.ranks.length) return { ok: false, reason: 'max' };
     if (!arrived(link)) return { ok: false, reason: 'away' };
+    if (link.closes && S.d >= dayOf(link.closes) && !S.free) return { ok: false, reason: 'closed' };
     if (S.free) return { ok: true };
     if (S.spent[`${S.d}-${S.slot}`]) return { ok: false, reason: 'spent' };
     const next = link.ranks[p.rank];
@@ -638,8 +639,8 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = F().load;
-    ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=1', () => window.FEMC_LINK_FILES)])
-      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=4`, () => links[id]))))
+    ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=2', () => window.FEMC_LINK_FILES)])
+      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=5`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
   }

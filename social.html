@@ -72,7 +72,7 @@
   </main>
 
   <script src="achievements.js?v=6"></script>
-  <script src="femc-social.js?v=10"></script>
+  <script src="femc-social.js?v=11"></script>
   <script>
   (function () {
     const $ = id => document.getElementById(id);
@@ -109,6 +109,7 @@
       const p = X.progress(l.id);
       if (p.rank >= 10) return 'Your bond is as strong as it gets.';
       if (st.ok) return `<b>${esc(X.nameFor(l))} is free right now.</b> ${p.rank ? '' : 'You haven\'t met yet.'}`;
+      if (st.reason === 'closed') return `The ${esc(l.arcana)} has gone quiet. Some bonds only have so much time.`;
       if (st.reason === 'spent') return "You've already spent this time with someone. Wait for the next part of the day.";
       if (st.reason === 'later') return `Not yet. Something about the timing feels wrong. Try again after <b>${st.when}</b>.`;
       return `Busy right now. ${esc(l.home.hint || '')}`;
