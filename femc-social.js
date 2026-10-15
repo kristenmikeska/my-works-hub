@@ -653,10 +653,16 @@ window.FemcSocial = (() => {
   function testPanel() {
     if (!new URLSearchParams(location.search).has('femctest')) return;
     const box = document.createElement('div');
-    box.style.cssText = 'position:fixed;left:12px;top:12px;z-index:2147483600;width:260px;padding:12px;background:#000d;border:2px solid #8ee3b0;color:#fff;font:13px/1.5 ui-monospace,Menlo,monospace';
+    box.style.cssText = 'position:fixed;left:12px;top:12px;z-index:2147483600;width:260px;max-height:calc(100vh - 24px);overflow-y:auto;padding:12px;background:#000d;border:2px solid #8ee3b0;color:#fff;font:13px/1.5 ui-monospace,Menlo,monospace';
+    // Collapsed state is remembered so the panel stays out of the way of dialogue choices.
+    let hidden = false;
+    try { hidden = localStorage.getItem('kg-femc-testpanel') === 'hidden'; } catch (e) {}
     const render = () => {
       const n = now();
-      box.innerHTML = `<b style="color:#8ee3b0">TEST PANEL</b><br>${n.md} ${n.day} · ${n.time}<br>
+      box.style.width = hidden ? 'auto' : '260px';
+      box.style.padding = hidden ? '4px 8px' : '12px';
+      if (hidden) { box.innerHTML = `<button data-a="toggle" title="Show the test panel">TEST ▸</button>`; return; }
+      box.innerHTML = `<b style="color:#8ee3b0">TEST PANEL</b> <button data-a="toggle" title="Hide the test panel" style="float:right">✕ hide</button><br>${n.md} ${n.day} · ${n.time}<br>
         <label>Date <input id="tpDate" size="5" value="${n.md}"></label> <button data-a="go">Go</button><br>
         <button data-a="slot">Next slot</button> <button data-a="day">Next day</button><br>
         <label><input type="checkbox" id="tpFree" ${S.free ? 'checked' : ''}> Everyone free, no gates</label><br>
@@ -665,6 +671,7 @@ window.FemcSocial = (() => {
     };
     box.addEventListener('click', e => {
       const a = e.target.dataset?.a;
+      if (a === 'toggle') { hidden = !hidden; try { localStorage.setItem('kg-femc-testpanel', hidden ? 'hidden' : 'shown'); } catch (err) {} render(); }
       if (a === 'go') { const v = box.querySelector('#tpDate').value.trim(); if (/^\d{1,2}\/\d{1,2}$/.test(v)) { S.d = Math.max(0, Math.min(END_DAY, dayOf(v))); S.slot = 0; save(); } }
       if (a === 'slot') advance();
       if (a === 'day') nextDay();
