@@ -124,7 +124,7 @@ FemcSocial.define({
       { n: "Koromaru, healed, licked her face. She didn't push him away. Her hand was bleeding through the handkerchief and she was letting a dog lick her face in the rain." },
       { choose: [
         { t: "Then your Lady's wrong about you.", notes: 3, then: [
-          { s: 'shadowheart', f: 'surprised', t: '...You can't say that.' },
+          { s: 'shadowheart', f: 'surprised', t: "...You can't say that." },
           { s: 'shadowheart', f: 'neutral', t: "...But thank you for saying it. Nobody ever has." }
         ] },
         { t: "You healed him anyway.", notes: 3, then: [{ s: 'shadowheart', f: 'neutral', t: "Of course I did. Look at him. What was I supposed to do, let him limp?" }] }
@@ -216,7 +216,7 @@ FemcSocial.define({
       { s: 'shadowheart', f: 'neutral', t: "...Don't stare. It's rude." },
       { choose: [
         { t: "You look like yourself.", notes: 3, then: [
-          { s: 'shadowheart', f: 'blushing', t: '...I don't know who that is yet.' },
+          { s: 'shadowheart', f: 'blushing', t: "...I don't know who that is yet." },
           { s: 'shadowheart', f: 'happy', t: "But I'd like to find out." }
         ] },
         { t: "The silver suits you.", notes: 3, then: [{ s: 'shadowheart', f: 'blushing', t: "It appeared overnight. I think the moon is trying to tell me something. It's very unsubtle." }] }
