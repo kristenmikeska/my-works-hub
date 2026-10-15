@@ -46,7 +46,16 @@ window.FemcSocial = (() => {
     THREADS[link.id] ||= { name: link.name, members: [link.id] };
     (link.texts || []).forEach(t => TEXTS.push({ link: link.id, thread: link.id, ...t }));
   }
-  const arrived = link => S.free || !link.arrives || S.d >= dayOf(link.arrives);
+  // Secret links (and their texts) need every condition in `unlock`: { stamps: [ids], links: { id: rank }, after: 'M/D' }.
+  function unlockMet(u) {
+    if (!u) return true;
+    const got = window.Achievements ? Achievements.unlocked() : {};
+    if ((u.stamps || []).some(id => !got[id])) return false;
+    if (Object.entries(u.links || {}).some(([id, r]) => progress(id).rank < r)) return false;
+    if (u.after && S.d < dayOf(u.after)) return false;
+    return true;
+  }
+  const arrived = link => S.free || ((!link.arrives || S.d >= dayOf(link.arrives)) && unlockMet(link.unlock));
   const isMet = id => S.met.includes(id);
   // Why a link can or can't be seen right now: { ok, reason }.
   function status(link) {
@@ -447,7 +456,7 @@ window.FemcSocial = (() => {
       if (!S.met.includes(link.id)) S.met.push(link.id);
       if (!S.free) S.spent[`${S.d}-${S.slot}`] = link.id;
       save();
-      (link.stamps?.[p.rank] || []).forEach(id => F().load('achievements.js?v=7', () => window.Achievements).then(() => window.Achievements?.unlock(id)));
+      (link.stamps?.[p.rank] || []).forEach(id => F().load('achievements.js?v=8', () => window.Achievements).then(() => window.Achievements?.unlock(id)));
       rankUp(link, p.rank, () => { close(); if (!S.free) advance(); opts.onDone?.(true); });
     }
     function rankUp(link, n, done) {
@@ -502,6 +511,7 @@ window.FemcSocial = (() => {
     if (t.slot !== undefined && t.slot !== S.slot) return false;
     if (t.date && S.d < dayOf(t.date)) return false;
     if (t.route && progress(t.link).route !== t.route) return false;
+    if (!unlockMet(t.unlock ?? links[t.link]?.unlock)) return false;
     return true;
   }
   function deliver() {
@@ -673,8 +683,8 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = F().load;
-    ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=6', () => window.FEMC_LINK_FILES)])
-      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=8`, () => links[id]))))
+    ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=7', () => window.FEMC_LINK_FILES)])
+      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=9`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
   }

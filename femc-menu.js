@@ -66,7 +66,7 @@ window.FemcMenu = (() => {
     return { found: list.filter(a => got[a.id]).length, total: list.length };
   }
   function compendiumCount() {
-    const list = window.FEMC_COMPENDIUM || [];
+    const list = (window.FEMC_COMPENDIUM || []).filter(e => !e.secret || (window.femcCompendiumOpen && window.femcCompendiumOpen(e)));
     return { found: window.femcCompendiumOpen ? list.filter(window.femcCompendiumOpen).length : 0, total: list.length };
   }
 
@@ -173,8 +173,8 @@ window.FemcMenu = (() => {
     F.sfx('femc-click');
     refresh(page === 'compendium' ? 'compendium' : page === 'akihiko' ? 'social' : null);
     // Counts for the compendium and stamps load in the background, then the list redraws.
-    Promise.all([F.load('achievements.js?v=7', () => window.Achievements), F.load('assets/femc/compendium.js?v=2', () => window.FEMC_COMPENDIUM),
-      F.load('femc-social.js?v=15', () => window.FemcSocial).then(() => window.FemcSocial?.load())])
+    Promise.all([F.load('achievements.js?v=8', () => window.Achievements), F.load('assets/femc/compendium.js?v=3', () => window.FEMC_COMPENDIUM),
+      F.load('femc-social.js?v=16', () => window.FemcSocial).then(() => window.FemcSocial?.load())])
       .then(() => { if (el) refresh(document.activeElement?.dataset?.id); });
   }
   return { open, close };

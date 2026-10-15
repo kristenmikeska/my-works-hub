@@ -3,6 +3,17 @@
    img is a portrait path; entries without one show a silhouette. Locked entries never show their notes. */
 window.FEMC_COMPENDIUM = [
  {
+  "id": "haechan",
+  "name": "Haechan",
+  "from": "Runners · strangers",
+  "img": null,
+  "unlock": "met:haechan",
+  "note": "He wasn't pulled through like the others. He came looking.",
+  "arcana": "∞ · Universe",
+  "link": "social.html#haechan",
+  "secret": true
+ },
+ {
   "id": "femc",
   "name": "FeMC",
   "from": "Persona 3 Portable",

@@ -258,7 +258,7 @@
       el.classList.add('fi-out');
       setTimeout(() => {
         el.remove();
-        if (go === 'enter') { music.start(); eggs(); load('achievements.js?v=7', () => window.Achievements).then(() => window.Achievements?.unlock('femc')); }
+        if (go === 'enter') { music.start(); eggs(); load('achievements.js?v=8', () => window.Achievements).then(() => window.Achievements?.unlock('femc')); }
         else toggle(false);
       }, reduced.matches ? 0 : 650);
     }
@@ -292,7 +292,7 @@
   }
 
   // Easter eggs that only exist on the other side.
-  const eggs = () => load('femc-eggs.js?v=4', () => window.FemcEggs).then(() => { if (isOn()) window.FemcEggs?.start(); });
+  const eggs = () => load('femc-eggs.js?v=5', () => window.FemcEggs).then(() => { if (isOn()) window.FemcEggs?.start(); });
 
   let typed = '';
   document.addEventListener('keydown', e => {
@@ -402,7 +402,7 @@
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
 
-  function openMenu() { load('femc-menu.js?v=3', () => window.FemcMenu).then(() => window.FemcMenu?.open()); }
+  function openMenu() { load('femc-menu.js?v=4', () => window.FemcMenu).then(() => window.FemcMenu?.open()); }
   window.FemcMode = { toggle, isOn, openMenu, nowPlaying: () => music.playing(), sfx, moon, daypart, load, base: BASE,
     music: { playing: () => music.playing(), toggle: () => { music.toggle(); paintBadge(); }, next: () => music.next(), tracks: () => music.tracks } };
 })();
