@@ -87,8 +87,8 @@ window.FemcSocial = (() => {
     .vn-text.narration { font-style: italic; color: #f5d9e7; font-weight: 500; }
     .vn-text::after { content: "▼"; position: absolute; right: 22px; bottom: 12px; color: #ff4f9e; font-size: 12px; opacity: 0; }
     .vn.ready .vn-text::after { opacity: 1; animation: vn-blink 1s steps(2) infinite; }
-    .vn-choices { position: absolute; right: max(4vw, 16px); bottom: calc(4vh + 190px); z-index: 5; display: grid; gap: 8px; justify-items: end; max-width: min(560px, calc(100vw - 32px)); }
-    .vn-choices button { padding: 11px 26px; border: 0; background: rgba(20, 7, 15, .92); color: #fff; font: italic 800 clamp(15px, 1.5vw, 18px)/1.25 ${COND}; letter-spacing: .02em; text-align: right; transform: skewX(-14deg); box-shadow: 5px 5px 0 rgba(255, 79, 158, .5); cursor: inherit; animation: vn-choice .35s cubic-bezier(.2, 1.2, .4, 1) both; }
+    .vn-choices { position: absolute; left: max(5vw, 16px); bottom: calc(4vh + 200px); z-index: 5; display: grid; gap: 10px; justify-items: start; max-width: min(560px, calc(100vw - 32px)); }
+    .vn-choices button { padding: 11px 26px; border: 0; background: rgba(20, 7, 15, .92); color: #fff; font: italic 800 clamp(15px, 1.5vw, 18px)/1.25 ${COND}; letter-spacing: .02em; text-align: left; transform: skewX(-14deg); box-shadow: 5px 5px 0 rgba(255, 79, 158, .5); cursor: inherit; animation: vn-choice .35s cubic-bezier(.2, 1.2, .4, 1) both; }
     .vn-choices button > span { display: inline-block; transform: skewX(14deg); }
     .vn-choices button:is(:hover, :focus-visible) { background: #fff; color: #14070f; outline: none; box-shadow: 7px 7px 0 #ff4f9e; }
     .vn-notes { position: absolute; right: 18vw; top: 26vh; z-index: 6; display: flex; gap: 6px; pointer-events: none; }
@@ -109,7 +109,7 @@ window.FemcSocial = (() => {
     .vn-reg span { font: italic 900 22px/1.1 ${COND}; }
     @keyframes vn-in { from { opacity: 0; } }
     @keyframes vn-blink { 50% { opacity: 0; } }
-    @keyframes vn-choice { from { opacity: 0; transform: translateX(40px) skewX(-14deg); } }
+    @keyframes vn-choice { from { opacity: 0; transform: translateX(-40px) skewX(-14deg); } }
     @keyframes vn-note { 0% { opacity: 0; transform: translateY(30px) scale(.5); } 25% { opacity: 1; transform: translateY(0) scale(1.1); } 80% { opacity: 1; } 100% { opacity: 0; transform: translateY(-40px); } }
     @keyframes vn-card { 0% { transform: rotateY(180deg) scale(.6); opacity: 0; } 60% { transform: rotateY(-10deg) scale(1.05); opacity: 1; } 100% { transform: none; } }
     @keyframes vn-slam { from { opacity: 0; transform: skewX(-8deg) scale(1.8); } }
