@@ -62,7 +62,7 @@ window.FemcSocial = (() => {
     if (h.slot !== S.slot || !h.days.includes(dateOf(S.d).getDay())) return { ok: false, reason: 'elsewhere' };
     return { ok: true };
   }
-  const freeNow = () => Object.values(links).filter(l => status(l).ok);
+  const freeNow = () => Object.values(links).filter(l => !l.hidden && status(l).ok);
   const nameFor = link => (isMet(link.id) ? link.name : '???');
 
   /* ── Portraits ───────────────────────────────────── */
@@ -136,6 +136,25 @@ window.FemcSocial = (() => {
     .vn-log p b { display: block; color: #ff8cc0; font: italic 900 14px/1.3 ${COND}; letter-spacing: .08em; text-transform: uppercase; }
     .vn-log p.n { font-style: italic; color: #e9c9d8; }
     .vn-log > button { justify-self: center; padding: 9px 20px; border: 0; background: #ff4f9e; color: #fff; font: italic 900 14px/1 ${COND}; letter-spacing: .08em; text-transform: uppercase; transform: skewX(-14deg); cursor: inherit; }
+    .vn.vn-velvet { background: radial-gradient(ellipse at 60% 30%, #1b3a8a, #050b26 70%); }
+    .vn.vn-velvet::before { background: repeating-linear-gradient(0deg, rgba(120, 160, 255, .05) 0 2px, transparent 2px 22px); }
+    .vn-velvet .vn-name, .vn-velvet .vn-title small { background: #2f5bd8; color: #fff; }
+    .vn-velvet .vn-title small { background: none; color: #9fb8ff; }
+    .vn-velvet .vn-text { border-color: #8fb0ff; box-shadow: 8px 8px 0 rgba(60, 110, 255, .45); background: rgba(5, 11, 38, .93); }
+    .vn-velvet .vn-text::after, .vn-velvet .vn-title span { color: #8fb0ff; }
+    .vn-velvet .vn-title span { color: #fff; text-shadow: .05em .05em 0 #2f5bd8; }
+    .vn-velvet .vn-place { box-shadow: 5px 5px 0 rgba(60, 110, 255, .55); background: #050b26; }
+    .vn-velvet .vn-place span { color: #9fb8ff; }
+    .vn-velvet .vn-portrait { filter: drop-shadow(10px 10px 0 rgba(60, 110, 255, .35)); }
+    .vn-velvet .vn-choices button { box-shadow: 5px 5px 0 rgba(60, 110, 255, .5); }
+    .vn-velvet .vn-choices button:is(:hover, :focus-visible) { box-shadow: 7px 7px 0 #2f5bd8; }
+    .vn-naming { position: absolute; left: 50%; top: 42%; z-index: 7; display: grid; gap: 16px; justify-items: center; width: min(460px, calc(100vw - 40px)); padding: 26px; transform: translate(-50%, -50%); background: rgba(5, 11, 38, .96); border: 2px solid #8fb0ff; box-shadow: 10px 10px 0 rgba(60, 110, 255, .5); }
+    .vn-naming p { margin: 0; font: italic 800 18px/1 ${COND}; letter-spacing: .12em; text-transform: uppercase; color: #9fb8ff; }
+    .vn-name-field { display: flex; align-items: center; min-width: 240px; padding: 10px 16px; border-bottom: 3px solid #fff; font: italic 900 34px/1 ${COND}; letter-spacing: .06em; }
+    .vn-name-field i { width: 3px; height: 1em; margin-left: 4px; background: #fff; animation: vn-blink 1s steps(2) infinite; }
+    .vn-naming button { padding: 9px 26px; border: 0; background: #2f5bd8; color: #fff; font: italic 900 16px/1 ${COND}; letter-spacing: .1em; text-transform: uppercase; transform: skewX(-14deg); cursor: inherit; }
+    .vn-naming button:disabled { opacity: .35; }
+    .vn-naming button:not(:disabled):is(:hover, :focus-visible) { background: #fff; color: #050b26; outline: none; }
     @keyframes vn-break { 0% { opacity: 0; } 35%, 55% { opacity: 1; } 100% { opacity: 0; } }
     @keyframes vn-phone { from { opacity: 0; transform: translate(-50%, -40%); } }
     .ph { position: fixed; inset: 0; z-index: 2147483350; display: grid; place-items: center; background: rgba(12, 3, 9, .7); backdrop-filter: blur(4px); animation: vn-in .25s ease both; }
@@ -214,18 +233,18 @@ window.FemcSocial = (() => {
     const p = progress(link.id);
     let gained = 0;
     const el = document.createElement('div');
-    el.className = 'vn';
+    el.className = `vn${link.theme ? ` vn-${link.theme}` : ''}`;
     el.setAttribute('role', 'dialog');
     el.setAttribute('aria-modal', 'true');
     el.setAttribute('aria-label', `${link.name}, rank ${r + 1}`);
-    const when = opts.replay ? '' : `${now().md}<small>${now().day}</small>`;
+    const when = opts.replay || opts.frame ? '' : `${now().md}<small>${now().day}</small>`;
     el.innerHTML = `<div class="vn-place"><b>${when}</b><span></span></div>
       <img class="vn-portrait" alt="">
       <div class="vn-tools"><button type="button" data-t="log">Log</button><button type="button" data-t="skip">Skip ▸▸</button><button type="button" data-t="leave">Leave</button></div>
       <div class="vn-log" hidden><div class="vn-log-inner"></div><button type="button" data-t="log-close">Close log</button></div>
       <div class="vn-choices"></div>
       <div class="vn-box" aria-live="polite"><span class="vn-name"></span><p class="vn-text"></p></div>`;
-    el.querySelector('.vn-place span').textContent = `${opts.replay ? 'Memory · ' : (now().time + ' · ')}${rank.place}`;
+    el.querySelector('.vn-place span').textContent = opts.frame ? rank.place : `${opts.replay ? 'Memory · ' : (now().time + ' · ')}${rank.place}`;
     document.body.appendChild(el);
     const img = el.querySelector('.vn-portrait'), nameEl = el.querySelector('.vn-name'), textEl = el.querySelector('.vn-text'), choices = el.querySelector('.vn-choices');
     let currentFace = null;
@@ -336,11 +355,26 @@ window.FemcSocial = (() => {
       el.classList.add('ready', 'phoning');
       reveal();
     }
+    // P3P's naming screen. The name is already decided.
+    function naming() {
+      const box = document.createElement('div');
+      box.className = 'vn-naming';
+      box.innerHTML = `<p>Please enter your name.</p><div class="vn-name-field"><span></span><i></i></div><button type="button" disabled>Confirm</button>`;
+      el.appendChild(box);
+      const field = box.querySelector('span'), btn = box.querySelector('button');
+      const name = 'Solar';
+      let i = 0;
+      const type = () => { field.textContent = name.slice(0, ++i); F().sfx('femc-hover'); if (i < name.length) setTimeout(type, 260); else { btn.disabled = false; btn.focus({ preventScroll: true }); } };
+      setTimeout(type, reduced.matches ? 0 : 500);
+      btn.addEventListener('click', e => { e.stopPropagation(); F().sfx('femc-click'); box.remove(); waiting = null; next(); });
+      waiting = null;
+    }
     function next() {
       if (!el.isConnected) return;
       const line = queue.shift();
       if (!line) return end(true);
       if (line.place) return sceneBreak(line);
+      if (line.naming) return naming();
       if (line.phone) return phone(line);
       if (line.register) { if (!opts.replay) register(line.register); return next(); }
       if (line.choose) return ask(line.choose);
@@ -404,7 +438,7 @@ window.FemcSocial = (() => {
     }
     function end(finished) {
       clearTimeout(typing);
-      if (!finished || opts.replay) { close(); opts.onDone?.(false); return; }
+      if (!finished || opts.replay || opts.frame) { close(); opts.onDone?.(finished); return; }
       // Progress, then the rank-up.
       p.rank = r + 1;
       (p.rankDay ||= {})[p.rank] = S.d;
@@ -639,11 +673,18 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = F().load;
-    ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=2', () => window.FEMC_LINK_FILES)])
+    ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=3', () => window.FEMC_LINK_FILES)])
       .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=5`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
   }
 
-  return { define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
+  // Elizabeth's Velvet Room opening, shown the first time Solar opens her social links.
+  function playIntro(onDone) {
+    const l = links.elizabeth;
+    if (!l || S.intro) return false;
+    play(l, 0, { frame: true, onDone: () => { S.intro = true; save(); onDone?.(); } });
+    return true;
+  }
+  return { playIntro, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
 })();
