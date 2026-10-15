@@ -14,7 +14,7 @@ window.FemcEggs = (() => {
   const reader = document.documentElement.classList.contains('femc-reader');
   const page = (location.pathname.split('/').pop() || 'index.html').replace('.html', '');
   const preview = new URLSearchParams(location.search).get('femcpreview');
-  const unlock = id => { if (!preview) F.load('achievements.js?v=6', () => window.Achievements).then(() => window.Achievements?.unlock(id)); };
+  const unlock = id => { if (!preview) F.load('achievements.js?v=7', () => window.Achievements).then(() => window.Achievements?.unlock(id)); };
   const dayKey = d => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
   let started = false;
   const timers = [];
@@ -70,7 +70,18 @@ window.FemcEggs = (() => {
     .femc-opfull.out { animation: femc-dh-out .8s ease-in forwards; }
     .femc-opfull b { display: block; margin-top: 44vh; font: italic 900 clamp(40px, 9vw, 104px)/.9 "Avenir Next Condensed", "Arial Narrow", sans-serif; text-shadow: .06em .06em 0 #c0123f; transform: skewX(-10deg); }
     .femc-opfull small { display: block; margin-top: 12px; font: 600 15px/1.4 "Avenir Next", sans-serif; opacity: .85; }
-    @media (prefers-reduced-motion: reduce) { .femc-msg, .femc-rain i, .femc-stat, .femc-dh, .femc-dh time, .femc-op, .femc-opfull { animation: none !important; } .femc-rain { display: none; } }
+    .femc-rez { position: fixed; inset: 0; z-index: 2147483300; display: grid; place-items: center; pointer-events: none; background: radial-gradient(circle at 50% 45%, rgba(255, 236, 170, .55), rgba(255, 220, 140, .15) 40%, transparent 70%); animation: femc-rez 3.4s ease both; }
+    .femc-rez .halo { position: absolute; left: 50%; top: 32%; width: 160px; height: 40px; margin-left: -80px; border: 6px solid #ffe28a; border-radius: 50%; box-shadow: 0 0 30px #ffd34d, inset 0 0 18px #ffd34d; animation: femc-halo 3.4s cubic-bezier(.2, 1, .3, 1) both; }
+    .femc-rez .wings { position: absolute; top: 30%; width: 30vmin; filter: drop-shadow(0 0 16px #ffd34d); animation: femc-wing 3.4s cubic-bezier(.2, 1, .3, 1) both; }
+    .femc-rez .wings svg { display: block; width: 100%; }
+    .femc-rez .wings.r { left: 51%; transform-origin: left center; }
+    .femc-rez .wings.l { right: 51%; transform-origin: right center; }
+    .femc-rez .wings.l svg { transform: scaleX(-1); }
+    .femc-rez b { position: relative; margin-top: 30vh; color: #fff; font: italic 900 clamp(36px, 7vw, 84px)/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; text-shadow: 0 0 24px #ffb800, .05em .05em 0 #b37a00; transform: skewX(-8deg); }
+    @keyframes femc-rez { 0% { opacity: 0; } 10%, 80% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes femc-halo { from { transform: translateY(-40vh) scale(.6); } 40% { transform: none; } }
+    @keyframes femc-wing { from { opacity: 0; transform: scaleX(0); } 45% { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .femc-rez, .femc-rez *, .femc-msg, .femc-rain i, .femc-stat, .femc-dh, .femc-dh time, .femc-op, .femc-opfull { animation: none !important; } .femc-rain { display: none; } }
   `;
   document.head.appendChild(style);
 
@@ -188,12 +199,27 @@ window.FemcEggs = (() => {
     });
   }
 
+  /* ── Heroes never die (only once Solar has met Mercy) ── */
+  const metMercy = () => { try { return (JSON.parse(localStorage.getItem('kg-femc-game')) || {}).met?.includes('mercy'); } catch (e) { return false; } };
+  function heroesNeverDie() {
+    F.sfx('femc-rez');
+    const el = document.createElement('div');
+    el.className = 'femc-rez';
+    el.setAttribute('role', 'status');
+    const wing = '<svg class="wing" viewBox="0 0 170 120" aria-hidden="true"><defs><linearGradient id="fg" x1="0" x2="1"><stop offset="0" stop-color="#fffbe8"/><stop offset="1" stop-color="#ffd56a"/></linearGradient></defs><g fill="url(#fg)"><rect x="12" y="54" width="150" height="13" rx="6.5" transform="rotate(-40 12 60)"/><rect x="12" y="54" width="130" height="13" rx="6.5" transform="rotate(-25 12 60)"/><rect x="12" y="54" width="110" height="13" rx="6.5" transform="rotate(-10 12 60)"/><rect x="12" y="54" width="90" height="13" rx="6.5" transform="rotate(5 12 60)"/><rect x="12" y="54" width="70" height="13" rx="6.5" transform="rotate(20 12 60)"/><rect x="12" y="54" width="50" height="13" rx="6.5" transform="rotate(35 12 60)"/></g></svg>';
+    el.innerHTML = `<i class="halo" aria-hidden="true"></i><span class="wings l">${wing}</span><span class="wings r">${wing}</span><b>HEROES NEVER DIE!</b>`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 3400);
+    unlock('heroes-never-die');
+  }
+
   /* ── Typed words ─────────────────────────────────── */
   let typed = '';
   document.addEventListener('keydown', e => {
     if (!F.isOn() || e.metaKey || e.ctrlKey || e.altKey || e.key.length !== 1) return;
     if (e.target.closest && e.target.closest('input, textarea, select, [contenteditable]')) return;
-    typed = (typed + e.key.toLowerCase()).slice(-12);
+    typed = (typed + e.key.toLowerCase()).slice(-20);
+    if (typed.endsWith('heroes never die') && metMercy()) { typed = ''; heroesNeverDie(); return; }
     if (typed.endsWith('protein')) { typed = ''; protein(); }
     else if (typed.endsWith('akihiko') && page !== 'akihiko') { typed = ''; F.sfx('femc-click'); location.href = BASE + 'social.html#akihiko'; }
     else if (typed.endsWith('compendium') && page !== 'compendium') { typed = ''; F.sfx('femc-click'); location.href = BASE + 'compendium.html'; }

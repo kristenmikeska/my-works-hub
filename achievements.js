@@ -32,6 +32,8 @@ window.Achievements = (() => {
       svg: '<path fill-rule="evenodd" d="M32 10a22 22 0 1 0 0 44a22 22 0 1 0 0-44z M24 21a4 4 0 1 0 0 8a4 4 0 1 0 0-8z M39 33a6 6 0 1 0 0 12a6 6 0 1 0 0-12z"/>' },
     { id: 'compendium', side: 'femc', name: 'Compendium', group: 'The other side', hint: 'open the book.',
       svg: '<path d="M8 12h19c3 0 5 2 5 5v36c0-2-2-4-5-4H8z M56 12H37c-3 0-5 2-5 5v36c0-2 2-4 5-4h19z"/>' },
+    { id: 'heroes-never-die', side: 'femc', name: 'Heroes Never Die', group: 'The other side', hint: 'once you know her, say what she says when she brings someone back.',
+      svg: '<path d="M32 6c9 0 16 3 16 6s-7 6-16 6s-16-3-16-6s7-6 16-6zM32 10c-6 0-11 1-11 2s5 2 11 2s11-1 11-2s-5-2-11-2z"/><path d="M30 22h4v34h-4z"/><path d="M28 26c-6-6-16-6-22 0c4 1 8 4 10 8c3-3 8-5 12-4zM36 26c6-6 16-6 22 0c-4 1-8 4-10 8c-3-3-8-5-12-4z"/>' },
     { id: 'good-boy', name: 'Good boy', group: 'Discoveries', hint: "who's a good boy? say his name.",
       svg: '<ellipse cx="32" cy="42" rx="12" ry="10"/><ellipse cx="17" cy="28" rx="5" ry="7"/><ellipse cx="27" cy="19" rx="5" ry="7"/><ellipse cx="37" cy="19" rx="5" ry="7"/><ellipse cx="47" cy="28" rx="5" ry="7"/>' },
     { id: 'keepsake', name: 'Keepsake', group: 'Reading', hint: 'reach a last page, then open what you kept.',

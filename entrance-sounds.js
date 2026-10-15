@@ -764,6 +764,15 @@ window.EntranceSounds = (() => {
       [2349.3, 1975.5, 1568, 1318.5].forEach((f, i) => k.tone(t + i * 0.06, { freq: f, type: 'triangle', level: 0.03, attack: 0.003, decay: 0.4, pan: (1.5 - i) * 0.3 }));
       k.tone(t + 0.2, { freq: 130, to: 60, level: 0.12, attack: 0.01, decay: 0.4 });
     },
+    // Mercy's resurrection: a rising, angelic chord.
+    'femc-rez'(k) {
+      const t = k.ctx.currentTime + 0.02;
+      [523.25, 659.25, 783.99, 1046.5, 1318.5, 1568, 2093].forEach((f, i) => {
+        k.tone(t + i * 0.09, { freq: f, type: 'sine', level: 0.035, attack: 0.08, decay: 1.8, pan: (i - 3) * 0.2 });
+        k.tone(t + i * 0.09, { freq: f * 2, type: 'triangle', level: 0.008, attack: 0.1, decay: 1.2, pan: (i - 3) * 0.2 });
+      });
+      k.tone(t + 0.7, { freq: 3136, level: 0.01, attack: 0.3, decay: 2 });
+    },
     // Advancing a line of dialogue: a short, bright page-turn tick.
     'femc-advance'(k) {
       const t = k.ctx.currentTime + 0.005;

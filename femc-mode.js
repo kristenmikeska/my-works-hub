@@ -22,7 +22,7 @@
     s.onload = s.onerror = () => resolve();
     document.head.appendChild(s);
   });
-  const sfx = name => { if (soundOn()) load('entrance-sounds.js?v=20', () => window.EntranceSounds).then(() => window.EntranceSounds?.home(name, { force: true })); };
+  const sfx = name => { if (soundOn()) load('entrance-sounds.js?v=21', () => window.EntranceSounds).then(() => window.EntranceSounds?.home(name, { force: true })); };
 
   /* ── Look ─────────────────────────────────────────────── */
   const arrow = (fill, stroke) => `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'><path d='M3 2l19 9.5l-8.2 2.3L9.6 22z' fill='${fill}' stroke='${stroke}' stroke-width='1.6' stroke-linejoin='round'/></svg>`)}") 3 2`;
@@ -258,7 +258,7 @@
       el.classList.add('fi-out');
       setTimeout(() => {
         el.remove();
-        if (go === 'enter') { music.start(); eggs(); load('achievements.js?v=6', () => window.Achievements).then(() => window.Achievements?.unlock('femc')); }
+        if (go === 'enter') { music.start(); eggs(); load('achievements.js?v=7', () => window.Achievements).then(() => window.Achievements?.unlock('femc')); }
         else toggle(false);
       }, reduced.matches ? 0 : 650);
     }
@@ -292,7 +292,7 @@
   }
 
   // Easter eggs that only exist on the other side.
-  const eggs = () => load('femc-eggs.js?v=2', () => window.FemcEggs).then(() => { if (isOn()) window.FemcEggs?.start(); });
+  const eggs = () => load('femc-eggs.js?v=4', () => window.FemcEggs).then(() => { if (isOn()) window.FemcEggs?.start(); });
 
   let typed = '';
   document.addEventListener('keydown', e => {
@@ -402,7 +402,7 @@
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
 
-  function openMenu() { load('femc-menu.js?v=2', () => window.FemcMenu).then(() => window.FemcMenu?.open()); }
+  function openMenu() { load('femc-menu.js?v=3', () => window.FemcMenu).then(() => window.FemcMenu?.open()); }
   window.FemcMode = { toggle, isOn, openMenu, nowPlaying: () => music.playing(), sfx, moon, daypart, load, base: BASE,
     music: { playing: () => music.playing(), toggle: () => { music.toggle(); paintBadge(); }, next: () => music.next(), tracks: () => music.tracks } };
 })();
