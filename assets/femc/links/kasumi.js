@@ -11,7 +11,8 @@ FemcSocial.define({
   texts: [
     { id: 'eliz-9-5', thread: 'elizabeth', rank: 0, before: 99, days: 0, date: '9/5', slot: 1, msgs: [
       { from: 'elizabeth', t: 'The September moon has brought new guests, Solar.' },
-      { from: 'elizabeth', t: 'One of them is a gymnast. There is something about her I cannot quite read. As if her page in my compendium had been written twice.' }
+      { from: 'elizabeth', t: 'One of them is a gymnast. There is something about her I cannot quite read. As if her page in my compendium had been written twice.' },
+      { from: 'elizabeth', t: 'Also: an American agent who keeps asking the police where to buy ammunition, and a manga artist who has claimed the back table at Bookworms. I suspect they will both find you before you find them.' }
     ] },
     { id: 'kas-1a', rank: 1, days: 1, slot: 1, msgs: [
       { from: 'kasumi', t: 'Senpai! Thank you for watching my routine today!' },

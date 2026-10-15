@@ -9,6 +9,11 @@ FemcSocial.define({
   cast: { kiriko: 'Kiriko', mercy: 'Mercy' },
   threads: { sniper: { name: 'support & sniper', members: ['widowmaker', 'kiriko'] } },
   texts: [
+    { id: 'eliz-10-4', thread: 'elizabeth', rank: 0, before: 99, days: 0, date: '10/4', slot: 1, msgs: [
+      { from: 'elizabeth', t: 'I am sorry, Solar. I know what tonight has cost you.' },
+      { from: 'elizabeth', t: 'Death has drawn one more guest through. A woman who stands very high on Moonlight Bridge and says she feels nothing.' },
+      { from: 'elizabeth', t: 'I do not believe her. I think she simply has not been asked.' }
+    ] },
     { id: 'widow-1a', rank: 1, days: 1, slot: 1, msgs: [
       { from: 'widowmaker', t: 'The coffee was acceptable.' },
       { from: 'widowmaker', t: 'Do not bring it every time. I will begin to expect it.' }

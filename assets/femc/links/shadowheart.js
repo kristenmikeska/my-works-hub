@@ -10,7 +10,8 @@ FemcSocial.define({
     { id: 'eliz-8-6', thread: 'elizabeth', rank: 0, before: 99, days: 0, date: '8/6', slot: 1, msgs: [
       { from: 'elizabeth', t: 'Another full moon, another handful of guests.' },
       { from: 'elizabeth', t: 'One of them is a priestess who does not trust me. I find that very sensible of her.' },
-      { from: 'elizabeth', t: 'She has taken up residence at the shrine after dark. The fox girl has been very gracious about it.' }
+      { from: 'elizabeth', t: 'She has taken up residence at the shrine after dark. The fox girl has been very gracious about it.' },
+      { from: 'elizabeth', t: 'And a prince has fallen asleep at the end of the Port Island pier. He appears to be fishing. I have not been able to confirm that he is awake.' }
     ] },
     { id: 'sh-1a', rank: 1, days: 1, slot: 1, msgs: [
       { from: 'shadowheart', t: "I don't know how to use this. The fox girl gave it to me and said 'text Sol-chan.'" },
