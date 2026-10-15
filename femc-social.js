@@ -452,7 +452,7 @@ window.FemcSocial = (() => {
 
   /* ── Phone: texts between hangouts ───────────────── */
   // A text event (in a link file's `texts`) arrives the first time the calendar moves while its conditions hold:
-  //   rank: the link is at least this rank; before: and still below this rank (default rank + 1);
+  //   rank: the link is at least this rank; before: and still below this rank (default rank + 1); route: only on that route;
   //   days: at least this many days since reaching that rank (default 1); slot: 0 daytime, 1 evening (default any).
   // msgs: [{ from, t } | { sys }]; reply: [{ t, notes, then: [{ from, t }] }] lets Solar answer for ♪.
   const ph = () => S.phone;
@@ -466,6 +466,7 @@ window.FemcSocial = (() => {
     if (since < (t.days ?? 1)) return false;
     if (t.slot !== undefined && t.slot !== S.slot) return false;
     if (t.date && S.d < dayOf(t.date)) return false;
+    if (t.route && progress(t.link).route !== t.route) return false;
     return true;
   }
   function deliver() {
@@ -638,7 +639,7 @@ window.FemcSocial = (() => {
     if (ready) return ready;
     const L = F().load;
     ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=1', () => window.FEMC_LINK_FILES)])
-      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=3`, () => links[id]))))
+      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=4`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
   }
