@@ -12,12 +12,13 @@ window.FemcSocial = (() => {
   const CAST = {};                               // speaker id -> display name, for side characters
 
   /* ── State ───────────────────────────────────────── */
-  const fresh = () => ({ d: 0, slot: 0, spent: {}, links: {}, met: [], registered: [], free: false });
+  const fresh = () => ({ d: 0, slot: 0, spent: {}, links: {}, met: [], registered: [], free: false, phone: { log: {}, done: [], unread: {}, pending: {} } });
   let S = (() => { try { return { ...fresh(), ...JSON.parse(localStorage.getItem(KEY)) }; } catch (e) { return fresh(); } })();
+  S.phone ||= fresh().phone;
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} listeners.forEach(fn => fn()); };
   const listeners = [];
   const onChange = fn => listeners.push(fn);
-  const progress = id => (S.links[id] ||= { rank: 0, notes: 0, route: null, seen: [] });
+  const progress = id => (S.links[id] ||= { rank: 0, notes: 0, route: null, seen: [], rankDay: {} });
 
   /* ── Calendar ────────────────────────────────────── */
   const dateOf = d => new Date(2009, 3, 7 + d);
@@ -29,15 +30,21 @@ window.FemcSocial = (() => {
   }
   function advance() {
     if (S.slot === 0) S.slot = 1; else if (S.d < END_DAY) { S.d += 1; S.slot = 0; }
+    deliver();
     save();
   }
-  function nextDay() { if (S.d < END_DAY) { S.d += 1; S.slot = 0; save(); } }
+  function nextDay() { if (S.d < END_DAY) { S.d += 1; S.slot = 0; deliver(); save(); } }
 
   /* ── Links ───────────────────────────────────────── */
+  const TEXTS = [];
+  const THREADS = {};
   function define(link) {
     links[link.id] = link;
     Object.assign(CAST, link.cast || {});
     CAST[link.id] = link.short || link.name;
+    Object.assign(THREADS, link.threads || {});
+    THREADS[link.id] ||= { name: link.name, members: [link.id] };
+    (link.texts || []).forEach(t => TEXTS.push({ link: link.id, thread: link.id, ...t }));
   }
   const arrived = link => S.free || !link.arrives || S.d >= dayOf(link.arrives);
   const isMet = id => S.met.includes(id);
@@ -130,6 +137,38 @@ window.FemcSocial = (() => {
     .vn-log > button { justify-self: center; padding: 9px 20px; border: 0; background: #ff4f9e; color: #fff; font: italic 900 14px/1 ${COND}; letter-spacing: .08em; text-transform: uppercase; transform: skewX(-14deg); cursor: inherit; }
     @keyframes vn-break { 0% { opacity: 0; } 35%, 55% { opacity: 1; } 100% { opacity: 0; } }
     @keyframes vn-phone { from { opacity: 0; transform: translate(-50%, -40%); } }
+    .ph { position: fixed; inset: 0; z-index: 2147483350; display: grid; place-items: center; background: rgba(12, 3, 9, .7); backdrop-filter: blur(4px); animation: vn-in .25s ease both; }
+    .ph-device { display: grid; grid-template-rows: auto 1fr auto; width: min(380px, calc(100vw - 28px)); height: min(680px, calc(100vh - 40px)); border: 11px solid #1b0b15; border-radius: 38px; background: #f7f2f5; color: #1b0b15; box-shadow: 12px 12px 0 rgba(255, 79, 158, .55); overflow: hidden; font-family: -apple-system, "Helvetica Neue", sans-serif; animation: vn-phone .35s cubic-bezier(.2, 1.3, .4, 1) both; }
+    .ph-top { display: grid; grid-template-columns: 40px 1fr 40px; align-items: center; padding: 12px 10px; background: #fff; border-bottom: 1px solid #eadde4; }
+    .ph-top b { text-align: center; font-size: 15px; }
+    .ph-top button { border: 0; background: none; color: #ff4f9e; font-size: 22px; cursor: inherit; }
+    .ph-top .ph-back[hidden] { display: block; visibility: hidden; }
+    .ph-body { display: flex; flex-direction: column; gap: 8px; padding: 14px; overflow-y: auto; }
+    .ph-empty { margin: auto; text-align: center; color: #8a7080; font-size: 14px; }
+    .ph-row { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto auto; gap: 10px; align-items: center; width: 100%; padding: 8px; border: 0; border-radius: 14px; background: none; color: inherit; text-align: left; cursor: inherit; }
+    .ph-row:hover, .ph-row:focus-visible { background: #f0e4ea; outline: none; }
+    .ph-row i, .ph-toast i { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; overflow: hidden; background: #ff4f9e; color: #fff; font: italic 900 20px/1 "Avenir Next Condensed", sans-serif; }
+    .ph-row i img, .ph-toast i img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; transform: scale(1.6); transform-origin: 50% 12%; background: #3a1028; }
+    .ph-row b { display: block; font-size: 15px; }
+    .ph-row small { display: block; overflow: hidden; color: #8a7080; font-size: 13px; white-space: nowrap; text-overflow: ellipsis; }
+    .ph-row em { padding: 3px 8px; border-radius: 99px; background: #ff4f9e; color: #fff; font: 700 11px/1.2 -apple-system, sans-serif; font-style: normal; }
+    .ph-row em.re { background: #1b0b15; }
+    .ph-msg { max-width: 80%; margin: 0; padding: 8px 12px; border-radius: 18px; font-size: 15px; line-height: 1.35; animation: vn-in .2s ease both; }
+    .ph-msg b { display: block; font-size: 11px; opacity: .6; }
+    .ph-msg.them { align-self: flex-start; background: #e7dde3; }
+    .ph-msg.me { align-self: flex-end; background: #ff4f9e; color: #fff; }
+    .ph-typing { letter-spacing: .1em; color: #8a7080; }
+    .ph-sys { align-self: center; margin: 4px 0; color: #8a7080; font-size: 12px; text-align: center; }
+    .ph-notes { align-self: flex-end; margin: -4px 4px 0; color: #ff4f9e; font-size: 18px; }
+    .ph-reply { display: grid; gap: 6px; padding: 0 12px; }
+    .ph-reply:not(:empty) { padding: 10px 12px 14px; border-top: 1px solid #eadde4; background: #fff; }
+    .ph-reply button { padding: 9px 14px; border: 1.5px solid #ff4f9e; border-radius: 18px; background: #fff; color: #1b0b15; font: 600 14px/1.3 -apple-system, sans-serif; text-align: left; cursor: inherit; }
+    .ph-reply button:hover, .ph-reply button:focus-visible { background: #ff4f9e; color: #fff; outline: none; }
+    .ph-toast { position: fixed; top: 16px; right: 16px; z-index: 2147483360; display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 10px; align-items: center; width: min(340px, calc(100vw - 32px)); padding: 10px 14px 10px 10px; border: 0; border-radius: 18px; background: rgba(255, 255, 255, .96); color: #1b0b15; box-shadow: 8px 8px 0 rgba(255, 79, 158, .5); text-align: left; font-family: -apple-system, "Helvetica Neue", sans-serif; cursor: pointer; animation: ph-toast .5s cubic-bezier(.2, 1.3, .4, 1) both; }
+    .ph-toast.out { transition: opacity .5s, transform .5s; opacity: 0; transform: translateY(-20px); }
+    .ph-toast b { display: block; font-size: 14px; }
+    .ph-toast small { display: block; overflow: hidden; color: #6a5060; font-size: 13px; white-space: nowrap; text-overflow: ellipsis; }
+    @keyframes ph-toast { from { opacity: 0; transform: translateY(-30px); } }
     @keyframes vn-in { from { opacity: 0; } }
     @keyframes vn-blink { 50% { opacity: 0; } }
     @keyframes vn-choice { from { opacity: 0; transform: translateX(-40px) skewX(-14deg); } }
@@ -253,6 +292,7 @@ window.FemcSocial = (() => {
         return b;
       }));
       choices.querySelector('button')?.focus({ preventScroll: true });
+      F().sfx('femc-hover');
     }
     const log = [];
     function setPlace(place, time) {
@@ -323,12 +363,26 @@ window.FemcSocial = (() => {
       log.push({ name: nameEl.textContent, text: sub(line.t) });
       say(line.t, next);
     }
-    function advanceClick() { if (choices.children.length) return; const w = waiting; waiting = null; if (w) w(); }
+    function advanceClick() {
+      if (choices.children.length) return;
+      const w = waiting; waiting = null;
+      if (!w) return;
+      if (!typing && !skipping) F().sfx('femc-advance');
+      w();
+    }
     el.addEventListener('click', e => { if (e.target.closest('.vn-tools, .vn-choices, .vn-rank, .vn-log, .vn-title')) return; advanceClick(); });
     const keys = e => {
       if (!el.isConnected) return document.removeEventListener('keydown', keys, true);
       if (e.key === ' ' || e.key === 'Enter') { if (!choices.children.length && !e.target.closest?.('button')) { e.preventDefault(); advanceClick(); } }
       if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); }
+      // Arrow keys move the cursor through dialogue choices, P3P style.
+      if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && choices.children.length) {
+        e.preventDefault();
+        const all = [...choices.querySelectorAll('button')];
+        const i = all.indexOf(document.activeElement);
+        all[(i + (e.key === 'ArrowDown' ? 1 : all.length - 1) + all.length) % all.length].focus({ preventScroll: true });
+        F().sfx('femc-hover');
+      }
     };
     document.addEventListener('keydown', keys, true);
     el.querySelector('[data-t="skip"]').addEventListener('click', () => { skipping = true; advanceClick(); const run = () => { if (skipping && waiting && !choices.children.length) { advanceClick(); setTimeout(run, 60); } }; setTimeout(run, 60); });
@@ -352,6 +406,7 @@ window.FemcSocial = (() => {
       if (!finished || opts.replay) { close(); opts.onDone?.(false); return; }
       // Progress, then the rank-up.
       p.rank = r + 1;
+      (p.rankDay ||= {})[p.rank] = S.d;
       p.notes += gained;
       if (!p.seen.includes(r)) p.seen.push(r);
       if (!S.met.includes(link.id)) S.met.push(link.id);
@@ -394,6 +449,159 @@ window.FemcSocial = (() => {
     } else next();
   }
 
+
+  /* ── Phone: texts between hangouts ───────────────── */
+  // A text event (in a link file's `texts`) arrives the first time the calendar moves while its conditions hold:
+  //   rank: the link is at least this rank; before: and still below this rank (default rank + 1);
+  //   days: at least this many days since reaching that rank (default 1); slot: 0 daytime, 1 evening (default any).
+  // msgs: [{ from, t } | { sys }]; reply: [{ t, notes, then: [{ from, t }] }] lets Solar answer for ♪.
+  const ph = () => S.phone;
+  const unread = () => Object.values(ph().unread).reduce((a, b) => a + b, 0);
+  function eligible(t) {
+    if (ph().done.includes(t.id)) return false;
+    const p = progress(t.link);
+    const before = t.before ?? (t.rank + 1);
+    if (p.rank < t.rank || p.rank >= before) return false;
+    const since = S.d - ((p.rankDay || {})[t.rank] ?? -999);
+    if (since < (t.days ?? 1)) return false;
+    if (t.slot !== undefined && t.slot !== S.slot) return false;
+    if (t.date && S.d < dayOf(t.date)) return false;
+    return true;
+  }
+  function deliver() {
+    const t = TEXTS.find(eligible);
+    if (!t) return;
+    const P = ph();
+    P.done.push(t.id);
+    const log = (P.log[t.thread] ||= []);
+    t.msgs.forEach(m => log.push({ ...m, d: S.d }));
+    if (t.rename) THREADS[t.thread] && (P.names = { ...(P.names || {}), [t.thread]: t.rename });
+    P.unread[t.thread] = (P.unread[t.thread] || 0) + t.msgs.filter(m => !m.sys).length;
+    if (t.reply) P.pending[t.thread] = t.id;
+    const first = t.msgs.find(m => !m.sys);
+    setTimeout(() => notify(t.thread, first), 300);
+  }
+  const threadName = id => (ph().names || {})[id] || (THREADS[id] || {}).name || CAST[id] || id;
+  const sender = id => id === 'solar' ? 'Solar' : (CAST[id] || id);
+  function avatar(id) {
+    const pic = THREADS[id]?.members?.length === 1 ? portrait(THREADS[id].members[0], 'neutral') : null;
+    return pic ? `<img src="${pic}" alt="">` : `<span>${threadName(id).replace(/[^\p{L}\p{N}]/gu, '').slice(0, 1).toUpperCase() || '#'}</span>`;
+  }
+  function notify(thread, m) {
+    if (!m || !document.body) return;
+    const el = document.createElement('button');
+    el.type = 'button';
+    el.className = 'ph-toast';
+    el.innerHTML = `<i>${avatar(thread)}</i><span><b></b><small></small></span>`;
+    el.querySelector('b').textContent = threadName(thread);
+    el.querySelector('small').textContent = `${THREADS[thread]?.members?.length > 1 ? sender(m.from) + ': ' : ''}${m.t}`;
+    el.addEventListener('click', () => { el.remove(); openPhone(thread); });
+    document.body.appendChild(el);
+    F().sfx('femc-buzz');
+    setTimeout(() => el.classList.add('out'), 4600);
+    setTimeout(() => el.remove(), 5200);
+  }
+
+  let phoneEl = null;
+  function openPhone(thread) {
+    phoneEl?.remove();
+    phoneEl = document.createElement('div');
+    phoneEl.className = 'ph';
+    phoneEl.setAttribute('role', 'dialog');
+    phoneEl.setAttribute('aria-modal', 'true');
+    phoneEl.setAttribute('aria-label', 'Phone');
+    phoneEl.innerHTML = `<div class="ph-device"><div class="ph-top"><button type="button" class="ph-back" hidden>‹</button><b class="ph-title">Messages</b><button type="button" class="ph-close" aria-label="Close phone">✕</button></div><div class="ph-body"></div><div class="ph-reply"></div></div>`;
+    document.body.appendChild(phoneEl);
+    const close = () => { phoneEl?.remove(); phoneEl = null; document.removeEventListener('keydown', esc, true); };
+    const esc = e => { if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); close(); } };
+    document.addEventListener('keydown', esc, true);
+    phoneEl.addEventListener('click', e => { if (e.target === phoneEl) close(); });
+    phoneEl.querySelector('.ph-close').addEventListener('click', close);
+    phoneEl.querySelector('.ph-back').addEventListener('click', () => list());
+    F().sfx('femc-click');
+    thread ? open(thread) : list();
+
+    function list() {
+      phoneEl.querySelector('.ph-back').hidden = true;
+      phoneEl.querySelector('.ph-title').textContent = 'Messages';
+      phoneEl.querySelector('.ph-reply').replaceChildren();
+      const P = ph();
+      const ids = Object.keys(P.log).sort((a, b) => (P.log[b].at(-1)?.d ?? 0) - (P.log[a].at(-1)?.d ?? 0));
+      const body = phoneEl.querySelector('.ph-body');
+      if (!ids.length) { body.innerHTML = '<p class="ph-empty">No messages yet. Get to know people, and they might text you.</p>'; return; }
+      body.innerHTML = '';
+      ids.forEach(id => {
+        const last = [...P.log[id]].reverse().find(m => !m.sys) || {};
+        const row = document.createElement('button');
+        row.type = 'button';
+        row.className = 'ph-row';
+        row.innerHTML = `<i>${avatar(id)}</i><span><b></b><small></small></span>${P.unread[id] ? `<em>${P.unread[id]}</em>` : ''}${P.pending[id] ? '<em class="re">reply</em>' : ''}`;
+        row.querySelector('b').textContent = threadName(id);
+        row.querySelector('small').textContent = last.t ? `${last.from === 'solar' ? 'You: ' : ''}${last.t}` : '';
+        row.addEventListener('click', () => { F().sfx('femc-hover'); open(id); });
+        body.appendChild(row);
+      });
+    }
+    function bubble(m, group) {
+      const p = document.createElement('p');
+      if (m.sys) { p.className = 'ph-sys'; p.textContent = m.sys; return p; }
+      p.className = `ph-msg ${m.from === 'solar' ? 'me' : 'them'}`;
+      if (group && m.from !== 'solar') { const b = document.createElement('b'); b.textContent = sender(m.from); p.append(b); }
+      p.append(m.t);
+      return p;
+    }
+    function open(id) {
+      const P = ph();
+      P.unread[id] = 0; save();
+      phoneEl.querySelector('.ph-back').hidden = false;
+      phoneEl.querySelector('.ph-title').textContent = threadName(id);
+      const group = (THREADS[id]?.members?.length || 1) > 1;
+      const body = phoneEl.querySelector('.ph-body');
+      body.replaceChildren(...(P.log[id] || []).map(m => bubble(m, group)));
+      body.scrollTop = body.scrollHeight;
+      const replyBox = phoneEl.querySelector('.ph-reply');
+      replyBox.replaceChildren();
+      const t = TEXTS.find(x => x.id === P.pending[id]);
+      if (!t) return;
+      t.reply.forEach(o => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = o.t;
+        b.addEventListener('click', () => {
+          replyBox.replaceChildren();
+          delete P.pending[id];
+          const log = P.log[id];
+          log.push({ from: 'solar', t: o.t, d: S.d });
+          if (o.notes) { progress(t.link).notes += o.notes; }
+          save();
+          body.appendChild(bubble({ from: 'solar', t: o.t }, group));
+          if (o.notes) { const n = document.createElement('p'); n.className = 'ph-notes'; n.textContent = '♪'.repeat(o.notes); body.appendChild(n); F().sfx('femc-note'); }
+          F().sfx('femc-text');
+          body.scrollTop = body.scrollHeight;
+          // Their answers arrive one at a time, with a typing indicator.
+          let i = 0;
+          const nextMsg = () => {
+            const m = (o.then || [])[i++];
+            if (!m) return;
+            const dots = document.createElement('p');
+            dots.className = 'ph-msg them ph-typing';
+            dots.textContent = '• • •';
+            body.appendChild(dots); body.scrollTop = body.scrollHeight;
+            setTimeout(() => {
+              dots.remove();
+              log.push({ ...m, d: S.d }); save();
+              body.appendChild(bubble(m, group)); body.scrollTop = body.scrollHeight;
+              F().sfx('femc-text');
+              nextMsg();
+            }, reduced.matches ? 0 : 900);
+          };
+          setTimeout(nextMsg, 500);
+        });
+        replyBox.appendChild(b);
+      });
+    }
+  }
+
   /* ── Kat's test panel (?femctest) ─────────────────── */
   function testPanel() {
     if (!new URLSearchParams(location.search).has('femctest')) return;
@@ -430,10 +638,10 @@ window.FemcSocial = (() => {
     if (ready) return ready;
     const L = F().load;
     ready = Promise.all([L('assets/femc/portraits/index.js?v=3', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=1', () => window.FEMC_LINK_FILES)])
-      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=2`, () => links[id]))))
+      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=3`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
   }
 
-  return { define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS };
+  return { define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
 })();

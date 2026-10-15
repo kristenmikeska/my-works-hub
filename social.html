@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <script src="femc-mode.js?v=6"></script>
+  <script src="femc-mode.js?v=7"></script>
   <title>Social Links</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/femc/femc-pages.css?v=2">
@@ -19,6 +19,7 @@
     .cal-free b { color: var(--ink); }
     .cal-btns { display: flex; gap: 8px; margin-left: auto; }
     .cal-btns button { padding: 8px 16px; border: 0; background: rgba(255, 255, 255, .1); color: var(--ink); font: italic 800 14px/1 "Avenir Next Condensed", sans-serif; letter-spacing: .06em; text-transform: uppercase; transform: skewX(-14deg); cursor: inherit; }
+    .cal-btns em { display: inline-block; margin-left: 4px; padding: 1px 6px; border-radius: 99px; background: var(--pink); color: #fff; font-style: normal; transform: skewX(14deg); }
     .cal-btns button:is(:hover, :focus-visible) { background: #fff; color: var(--night); outline: none; box-shadow: 4px 4px 0 var(--pink); }
     .page-title { margin: 0 0 6px; font-size: clamp(52px, 9vw, 104px); line-height: .85; transform: skewX(-8deg); text-shadow: .055em .055em 0 var(--pink); }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 18px; margin-top: 26px; }
@@ -71,7 +72,7 @@
   </main>
 
   <script src="achievements.js?v=6"></script>
-  <script src="femc-social.js?v=8"></script>
+  <script src="femc-social.js?v=10"></script>
   <script>
   (function () {
     const $ = id => document.getElementById(id);
@@ -84,7 +85,8 @@
       const n = X.now(), free = X.freeNow();
       $('cal').innerHTML = `<div class="cal-date"><b>${n.md}</b><small>${n.day} · ${n.time}</small></div>
         <p class="cal-free">${free.length ? `Free right now: <b>${free.map(l => esc(X.nameFor(l))).join(', ')}</b>` : 'Nobody you know is free right now.'}</p>
-        <div class="cal-btns"><button type="button" id="wait">Wait ▸</button><button type="button" id="nextday">Next day ▸▸</button></div>`;
+        <div class="cal-btns"><button type="button" id="phoneBtn">Phone${X.unread() ? ` <em>${X.unread()}</em>` : ''}</button><button type="button" id="wait">Wait ▸</button><button type="button" id="nextday">Next day ▸▸</button></div>`;
+      $('phoneBtn').addEventListener('click', () => X.openPhone());
       $('wait').addEventListener('click', () => { X.advance(); F().sfx('femc-hover'); });
       $('nextday').addEventListener('click', () => { X.nextDay(); F().sfx('femc-hover'); });
     }

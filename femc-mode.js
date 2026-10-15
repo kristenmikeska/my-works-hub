@@ -22,7 +22,7 @@
     s.onload = s.onerror = () => resolve();
     document.head.appendChild(s);
   });
-  const sfx = name => { if (soundOn()) load('entrance-sounds.js?v=19', () => window.EntranceSounds).then(() => window.EntranceSounds?.home(name, { force: true })); };
+  const sfx = name => { if (soundOn()) load('entrance-sounds.js?v=20', () => window.EntranceSounds).then(() => window.EntranceSounds?.home(name, { force: true })); };
 
   /* ── Look ─────────────────────────────────────────────── */
   const arrow = (fill, stroke) => `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'><path d='M3 2l19 9.5l-8.2 2.3L9.6 22z' fill='${fill}' stroke='${stroke}' stroke-width='1.6' stroke-linejoin='round'/></svg>`)}") 3 2`;

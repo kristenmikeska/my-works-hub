@@ -81,6 +81,8 @@ window.FemcMenu = (() => {
     return [
       { id: 'social', label: 'Social Link', sub: met.length ? `${met.length} ${met.length === 1 ? 'bond' : 'bonds'}` : 'No bonds yet', href: 'social.html', name: 'Social Link',
         desc: () => `<p>${met.length ? met.map(l => `${l.short} · ${X.progress(l.id).rank >= 10 ? 'MAX' : `Rank ${X.progress(l.id).rank}`}`).join('<br>') : 'Nobody here knows you yet. Someone at the dorm might.'}</p><p class="fm-dim">${free.length ? `Free right now: ${free.map(l => X.nameFor(l)).join(', ')}.` : 'Nobody you know is free right now.'}</p>` },
+      { id: 'phone', label: 'Phone', sub: X && X.unread() ? `${X.unread()} new` : 'Messages', name: 'Phone',
+        desc: () => `<p>${X && X.unread() ? `You have <b>${X.unread()}</b> unread ${X.unread() === 1 ? 'message' : 'messages'}.` : 'Your messages. People text when time passes between hangouts.'}</p><p class="fm-dim">Some texts are waiting for an answer.</p>` },
       { id: 'compendium', label: 'Compendium', sub: `${comp.found} of ${comp.total}`, href: 'compendium.html', name: 'Compendium',
         desc: () => `<p>Characters from the worlds I didn't write. Entries register as you find things on the other side.</p><p class="fm-dim">${comp.found} of ${comp.total} registered.</p>` },
       { id: 'calendar', label: 'Calendar', sub: game ? `${game.md} ${game.day} · ${game.time}` : '', href: 'social.html', name: 'Calendar',
@@ -130,6 +132,7 @@ window.FemcMenu = (() => {
       node.addEventListener('focus', () => describe(item));
       node.addEventListener('click', e => {
         if (item.id === 'return') { close(); F.toggle(false); }
+        else if (item.id === 'phone') { close(); window.FemcSocial?.openPhone(); }
         else if (item.id === 'music') { F.music.toggle(); setTimeout(() => refresh('music'), 250); }
                 else if (item.href && page === item.href.replace(/\.html.*/, '') && !item.href.includes('#')) { e.preventDefault(); close(); }
       });
@@ -171,7 +174,7 @@ window.FemcMenu = (() => {
     refresh(page === 'compendium' ? 'compendium' : page === 'akihiko' ? 'social' : null);
     // Counts for the compendium and stamps load in the background, then the list redraws.
     Promise.all([F.load('achievements.js?v=6', () => window.Achievements), F.load('assets/femc/compendium.js?v=2', () => window.FEMC_COMPENDIUM),
-      F.load('femc-social.js?v=8', () => window.FemcSocial).then(() => window.FemcSocial?.load())])
+      F.load('femc-social.js?v=10', () => window.FemcSocial).then(() => window.FemcSocial?.load())])
       .then(() => { if (el) refresh(document.activeElement?.dataset?.id); });
   }
   return { open, close };

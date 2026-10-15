@@ -17,6 +17,67 @@ FemcSocial.define({
   music: 'assets/femc/music/tender-feeling.mp3',
   cast: { junpei: 'Junpei', mitsuru: 'Mitsuru', yukari: 'Yukari' },
   stamps: { 1: ['senpai'], 10: ['max-rank'] },
+  threads: {
+    sees: { name: 'dorm squad 🔥', members: ['junpei', 'yukari', 'mitsuru', 'akihiko'] },
+    yukari: { name: 'Yukari Takeba', members: ['yukari'] }
+  },
+  // Texts between hangouts. rank = Akihiko's rank when it can arrive; days = days after reaching it; slot 1 = evening.
+  texts: [
+    { id: 'aki-2a', rank: 2, days: 1, slot: 1, msgs: [
+      { from: 'akihiko', t: 'you were slow today' },
+      { from: 'akihiko', t: 'good though' },
+      { from: 'akihiko', t: 'slow but good' }
+    ], reply: [
+      { t: "I'll be faster tomorrow.", notes: 3, then: [{ from: 'akihiko', t: "that's the spirit" }] },
+      { t: "I'll be asleep tomorrow.", notes: 2, then: [{ from: 'akihiko', t: "no you won't" }, { from: 'akihiko', t: '5:12' }] }
+    ] },
+    { id: 'sees-2b', thread: 'sees', rank: 2, days: 2, msgs: [
+      { sys: 'Junpei added you to "dorm squad 🔥"' },
+      { from: 'junpei', t: 'ok welcome to the squad' },
+      { from: 'yukari', t: 'why am i in this' },
+      { from: 'junpei', t: 'cuz ur the squad yuka-tan' },
+      { from: 'akihiko', t: 'is this for training schedules' },
+      { from: 'junpei', t: 'NO' },
+      { from: 'mitsuru', t: 'I would appreciate it if this channel were reserved for official communication.' },
+      { from: 'junpei', t: 'she found it' },
+      { from: 'junpei', t: 'how did she find it' }
+    ], reply: [
+      { t: 'lol', then: [{ from: 'junpei', t: 'SOLAR GETS IT' }] },
+      { t: 'Who added Mitsuru-senpai?', then: [{ from: 'junpei', t: 'NOT ME' }, { from: 'yukari', t: 'it was literally you' }, { from: 'mitsuru', t: 'It was Iori.' }] }
+    ] },
+    { id: 'sees-2c', thread: 'sees', rank: 2, days: 4, rename: 'S.E.E.S.', msgs: [
+      { sys: 'Mitsuru Kirijo renamed the group "S.E.E.S."' },
+      { from: 'junpei', t: 'noooooo' },
+      { from: 'junpei', t: 'my beautiful group name' },
+      { from: 'akihiko', t: 'this one is better' }
+    ] },
+    { id: 'yuk-3a', thread: 'yukari', rank: 3, days: 1, msgs: [
+      { from: 'yukari', t: 'ok so is the coffee table thing a regular occurrence' },
+      { from: 'yukari', t: 'asking for my sanity' }
+    ], reply: [
+      { t: 'Every day.', then: [{ from: 'yukari', t: "i'm moving out" }] },
+      { t: 'Only when something is bothering him.', then: [{ from: 'yukari', t: '...oh' }, { from: 'yukari', t: "ok that's actually kind of sad" }, { from: 'yukari', t: "i'll buy him a yoga mat or something" }] }
+    ] },
+    { id: 'aki-3b', rank: 3, days: 2, slot: 1, msgs: [
+      { from: 'akihiko', t: 'hey' },
+      { from: 'akihiko', t: 'thanks for the other day' },
+      { from: 'akihiko', t: 'for listening' }
+    ], reply: [
+      { t: 'Anytime.', notes: 3, then: [{ from: 'akihiko', t: 'careful' }, { from: 'akihiko', t: "i'm going to hold you to that" }] },
+      { t: 'You owe me ramen.', notes: 2, then: [{ from: 'akihiko', t: 'deal' }, { from: 'akihiko', t: 'extra egg' }] }
+    ] },
+    { id: 'sees-3c', thread: 'sees', rank: 3, days: 4, msgs: [
+      { from: 'junpei', t: 'who ate my cup ramen' },
+      { from: 'akihiko', t: 'it had protein in it' },
+      { from: 'junpei', t: 'IT WAS RAMEN' },
+      { from: 'yukari', t: "senpai it says 'beef flavor' that's not protein" },
+      { from: 'akihiko', t: "it's protein adjacent" },
+      { from: 'mitsuru', t: 'Please stop.' }
+    ], reply: [
+      { t: '🍜', then: [{ from: 'junpei', t: 'SOLAR' }, { from: 'junpei', t: 'how could you' }] },
+      { t: "I'll buy you a new one, Junpei.", then: [{ from: 'junpei', t: 'finally someone with a heart in this dorm' }] }
+    ] }
+  ],
   ranks: [
     { after: '4/20', title: '1: rookie', place: 'Gekkoukan High · 2F Hallway', scene: [
       { n: "April in Iwatodai didn't know what it wanted to be. It had rained at lunch, a thin, undecided drizzle that gave up halfway through fifth period, and now the light coming through the second-floor windows was the washed-out gold of something trying to make up for it." },

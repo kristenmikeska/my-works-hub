@@ -764,6 +764,25 @@ window.EntranceSounds = (() => {
       [2349.3, 1975.5, 1568, 1318.5].forEach((f, i) => k.tone(t + i * 0.06, { freq: f, type: 'triangle', level: 0.03, attack: 0.003, decay: 0.4, pan: (1.5 - i) * 0.3 }));
       k.tone(t + 0.2, { freq: 130, to: 60, level: 0.12, attack: 0.01, decay: 0.4 });
     },
+    // Advancing a line of dialogue: a short, bright page-turn tick.
+    'femc-advance'(k) {
+      const t = k.ctx.currentTime + 0.005;
+      k.burst(t, { freq: 4200, q: 2.5, level: 0.05, decay: 0.012 });
+      k.tone(t, { freq: 1975.5, type: 'triangle', level: 0.018, attack: 0.002, decay: 0.06 });
+      k.tone(t + 0.035, { freq: 2637, type: 'triangle', level: 0.012, attack: 0.002, decay: 0.08 });
+    },
+    // A phone vibrating on a desk: two short buzzes.
+    'femc-buzz'(k) {
+      const { ctx, out } = k, t0 = ctx.currentTime + 0.02;
+      [0, 0.24].forEach(d => {
+        const t = t0 + d, o = ctx.createOscillator(), g = k.gain(0);
+        o.type = 'square'; o.frequency.value = 160;
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.05, t + 0.02); g.gain.setValueAtTime(0.05, t + 0.14); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.17);
+        k.chain(o, k.filter('lowpass', 420, 1), g, out); o.start(t); o.stop(t + 0.2);
+      });
+      k.tone(t0 + 0.5, { freq: 1568, type: 'triangle', level: 0.03, attack: 0.003, decay: 0.25 });
+      k.tone(t0 + 0.58, { freq: 2093, type: 'triangle', level: 0.03, attack: 0.003, decay: 0.35 });
+    },
     'femc-note'(k) {
       const t = k.ctx.currentTime + 0.01;
       [1568, 2093, 2637].forEach((f, i) => k.tone(t + i * 0.06, { freq: f, type: 'triangle', level: 0.035, attack: 0.003, decay: 0.35, pan: (i - 1) * 0.3 }));
