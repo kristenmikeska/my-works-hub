@@ -267,7 +267,13 @@ window.FemcSocial = (() => {
         const old = cur;
         cur = new Audio(`${F().base}assets/femc/music/${SCENE_MUSIC[k]}.mp3`);
         cur.loop = true; cur.volume = 0;
-        cur.play().then(() => fade(cur, VOLUME)).catch(() => {});
+        const a = cur;
+        const start = () => a.play().then(() => fade(a, VOLUME));
+        // Autoplay blocked (a scene that opens on page load, like Elizabeth's): start on the first click or key press.
+        start().catch(() => {
+          const go = () => { removeEventListener('pointerdown', go, true); removeEventListener('keydown', go, true); if (cur === a) start().catch(() => {}); };
+          addEventListener('pointerdown', go, true); addEventListener('keydown', go, true);
+        });
         if (old) fade(old, 0, () => old.pause());
       },
       stop() { if (cur) { const a = cur; fade(a, 0, () => a.pause()); } cur = null; key = null; }
