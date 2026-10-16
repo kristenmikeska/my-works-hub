@@ -312,13 +312,13 @@ FemcSocial.define({
       { n: "The car came through the green hour at a hundred and forty kilometers an hour, landed on the coastal road in a shower of sparks, spun twice, and stopped dead in front of the junkyard with its engine roaring." },
       { register: 'panam' },
       { n: "A woman climbed out. Long dark hair, nomad leathers, tattoos, and an expression of absolute fury, which changed instantly when she saw Judy." },
-      { s: 'panam', t: "Judy? JUDY? What the hell are you doing in... wherever this is?" },
+      { s: 'panam', f: 'surprised', t: "Judy? JUDY? What the hell are you doing in... wherever this is?" },
       { s: 'judy', f: 'happy', t: "Panam! Oh, thank god, a face I know!" },
       { n: "Panam Palmer, it turned out, had been driving across the Badlands at night and had driven straight into a wall of green light. She was extremely annoyed about it. She was even more annoyed that her car had a cracked axle." },
-      { s: 'panam', t: "And who's this? You make a friend, Judy?" },
+      { s: 'panam', f: 'neutral', t: "And who's this? You make a friend, Judy?" },
       { choose: [
-        { t: "Solar. Nice car.", notes: 3, then: [{ s: 'panam', t: "...She knows cars. Alright. You're alright." }] },
-        { t: "I'm her friend. Want help with the axle?", notes: 3, then: [{ s: 'panam', t: "Judy, I like this one. Keep her." }] }
+        { t: "Solar. Nice car.", notes: 3, then: [{ s: 'panam', f: 'happy', t: "...She knows cars. Alright. You're alright." }] },
+        { t: "I'm her friend. Want help with the axle?", notes: 3, then: [{ s: 'panam', f: 'happy', t: "Judy, I like this one. Keep her." }] }
       ] },
       { n: "They fixed the axle together, all three of them, in the junkyard at night with headlamps. Then Panam drove them up and down the coastal road at speeds that made Solar grip the door handle and Judy shriek with laughter. The car smelled like engine oil and dust. The radio played something Panam's people sang around fires." },
       { n: "Panam faded at dawn, the way the visitors did. Before she went, she told Judy, gruffly, \"Don't you dare give up on that rig,\" and told Solar, more gruffly, \"Look after her. She cares too hard.\" Then she got back in her car and drove into the sunrise and was gone." }

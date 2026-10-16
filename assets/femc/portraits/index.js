@@ -291,5 +291,11 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "sad",
   "serious"
+ ],
+ "panam": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
  ]
 };
