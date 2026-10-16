@@ -420,7 +420,7 @@
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
 
-  function openMenu() { load('femc-menu.js?v=7', () => window.FemcMenu).then(() => window.FemcMenu?.open()); }
+  function openMenu() { load('femc-menu.js?v=8', () => window.FemcMenu).then(() => window.FemcMenu?.open()); }
   window.FemcMode = { fullscreen, isFullscreen: isFull, canFullscreen: canFull, toggle, isOn, openMenu, nowPlaying: () => music.playing(), sfx, moon, daypart, load, base: BASE,
     music: { playing: () => music.playing(), toggle: () => { music.toggle(); paintBadge(); }, next: () => music.next(), tracks: () => music.tracks } };
 })();
