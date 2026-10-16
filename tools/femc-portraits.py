@@ -11,7 +11,7 @@ Source: ~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits/<Nam
 Output: assets/femc/portraits/<id>/<emotion>.webp and assets/femc/portraits/index.js
 """
 import os, re, sys, json
-from PIL import Image, ImageChops
+from PIL import Image, ImageChops, ImageFilter, ImageStat
 
 SRC = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits')
 DST = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets/femc/portraits')
@@ -104,6 +104,45 @@ def entries(folder):
         yield os.path.join(folder, f), [e + (f'-{variant}' if variant and variant != '1' else '') for e in emotions]
 
 
+FINE_H = 300       # the second pass compares the actual drawing (eyes, face outline) at this height
+
+
+def flat(im, h):
+    """The drawing as blurred grayscale on mid-gray, h pixels tall."""
+    w = max(1, round(im.width * h / im.height))
+    bg = Image.new('RGBA', (w, h), (128, 128, 128, 255))
+    bg.alpha_composite(im.resize((w, h), Image.BILINEAR))
+    return bg.convert('L').filter(ImageFilter.GaussianBlur(1.5))
+
+
+def refine(ref, cand, s0, x0, y0):
+    """Silhouettes line up hair, which moves between expressions. Nudge scale and position until the
+    faces themselves line up. Starts from the silhouette match (work pixels) and returns it in work pixels."""
+    f = FINE_H / WORK_H
+    ref_f = flat(ref, FINE_H)
+    region = (0, 0, ref_f.width, round(FINE_H * HEAD))
+    ref_r = ref_f.crop(region)
+    best = (1e9, s0, x0 * f, y0 * f)
+
+    def search(scales, xs, ys):
+        nonlocal best
+        for s in scales:
+            c = flat(cand, round(FINE_H * s))
+            for x in xs:
+                for y in ys:
+                    canvas = Image.new('L', ref_f.size, 128)
+                    canvas.paste(c, (round(x), round(y)))
+                    d = ImageStat.Stat(ImageChops.difference(canvas.crop(region), ref_r)).mean[0]
+                    if d < best[0]:
+                        best = (d, s, x, y)
+
+    _, s1, x1, y1 = best
+    search([s0 * (1 + 0.015 * i) for i in range(-6, 7)], [x1 + 3 * i for i in range(-5, 6)], [y1 + 3 * i for i in range(-5, 6)])
+    _, s1, x1, y1 = best
+    search([s1 * (1 + 0.005 * i) for i in range(-2, 3)], [x1 + i for i in range(-2, 3)], [y1 + i for i in range(-2, 3)])
+    return best[1], best[2] / f, best[3] / f
+
+
 def process(folder, cid):
     items = [(trimmed(p), names) for p, names in entries(folder)]
     if not items:
@@ -119,6 +158,7 @@ def process(folder, cid):
             sc, s, dx, dy = 1, 1, 0, 0
         else:
             sc, s, dx, dy = match(ref_m, im, region)
+            s, dx, dy = refine(ref, im, s, dx, dy)
         h = round(TARGET_H * s)
         out = im.resize((round(im.width * h / im.height), h), Image.LANCZOS)
         placed.append((out, round(dx * k), round(dy * k), names, sc))

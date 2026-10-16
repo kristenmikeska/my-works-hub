@@ -120,7 +120,7 @@ window.FemcSocial = (() => {
     /* P3R layout: the speaker stands on the left, cut off by the bottom edge; the dialogue box sits to the right and points at them. */
     /* Every portrait is sized by height (times its --ps from portraits/scale.js) and wide art is trimmed at the sides,
        so faces come out the same size whatever shape the source image is. */
-    .vn-portrait { position: absolute; left: max(1vw, 8px); bottom: 0; height: calc(min(88vh, 940px) * var(--ps, 1)); width: calc(min(40vw, 760px) * var(--ps, 1)); max-width: none; object-fit: cover; object-position: center bottom; filter: drop-shadow(10px 0 0 rgba(255, 79, 158, .35)); -webkit-mask-image: linear-gradient(to right, #000 95%, transparent), linear-gradient(transparent, #000 4%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, #000 95%, transparent), linear-gradient(transparent, #000 4%); mask-composite: intersect; transition: opacity .25s, transform .25s, filter .25s; }
+    .vn-portrait { position: absolute; left: max(1vw, 8px); bottom: 0; height: calc(min(80vh, 850px) * var(--ps, 1)); width: auto; max-width: calc(min(40vw, 760px) * var(--ps, 1)); object-fit: cover; object-position: center bottom; filter: drop-shadow(10px 0 0 rgba(255, 79, 158, .35)); -webkit-mask-image: linear-gradient(to right, #000 95%, transparent), linear-gradient(transparent, #000 4%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, #000 95%, transparent), linear-gradient(transparent, #000 4%); mask-composite: intersect; transition: opacity .25s, transform .25s, filter .25s; }
     .vn-portrait.dim { filter: brightness(.55) drop-shadow(10px 0 0 rgba(255, 79, 158, .2)); }
     .vn-portrait.swap { opacity: 0; transform: translateX(-30px); }
     .vn-silhouette { position: absolute; left: 6vw; bottom: 0; width: min(46vw, 520px); height: min(76vh, 760px); background: linear-gradient(#000, #000) center bottom / 70% 52% no-repeat, radial-gradient(circle at 50% 30%, #000 0 22%, transparent 23%); opacity: .55; }
@@ -263,7 +263,7 @@ window.FemcSocial = (() => {
     @keyframes vn-reg { 0% { opacity: 0; transform: translate(-50%, -30px); } 10%, 85% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; transform: translate(-50%, -20px); } }
     @media (max-width: 700px) {
       /* Phones: the bust rests on top of the dialogue box (fixed height, so it never bobs). */
-      .vn-portrait { left: 50%; transform: translateX(-50%); width: calc(min(96vw, 520px) * var(--ps, 1)); height: calc(min(54vh, calc(100vh - var(--boxh, 220px) - 4vh - 70px)) * var(--ps, 1)); bottom: calc(4vh + var(--boxh, 220px) - 6px); object-position: center bottom; }
+      .vn-portrait { left: 50%; transform: translateX(-50%); width: auto; max-width: calc(min(96vw, 520px) * var(--ps, 1)); height: calc(min(54vh, calc(100vh - var(--boxh, 220px) - 4vh - 70px)) * var(--ps, 1)); bottom: calc(4vh + var(--boxh, 220px) - 6px); object-position: center bottom; }
       .vn-portrait.swap { transform: translateX(-50%) translateY(20px); }
       .vn-box { left: 16px; right: 16px; }
       .vn-text { height: 10.5em; min-height: 0; overflow-y: auto; padding: 18px 18px 24px; }
