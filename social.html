@@ -184,7 +184,7 @@
 
     function reasonText(l, st) {
       const p = X.progress(l.id);
-      if (p.rank >= 10) return 'Your bond is as strong as it gets.';
+      if (p.rank >= 10) return st.ok ? `<b>Your bond is as strong as it gets.</b> ${p.route === 'romance' && l.dates?.length ? `${esc(l.short)} is free for a date.` : `${esc(l.short)} is around if you want to hang out.`}` : 'Your bond is as strong as it gets.';
       if (st.ok) return `<b>${esc(X.nameFor(l))} is free right now.</b> ${p.rank ? (p.ready === p.rank ? 'You\'re close to something new. Hang out to fill the meter.' : '') : 'You haven\'t met yet.'}`;
       if (st.reason === 'closed') return `The ${esc(l.arcana)} has gone quiet. Some bonds only have so much time.`;
       if (st.reason === 'spent') return "You've already spent this time with someone. Wait for the next part of the day.";
@@ -214,7 +214,7 @@
           <div class="rankrow"><span class="num cond"><small>RANK</small>${p.rank >= 10 ? 'MAX' : p.rank}</span><span class="pips">${pips(p.rank)}</span></div>
           ${meter(l, p)}
           <p class="status">${reasonText(l, st)}</p>
-          ${st.ok ? `<button class="fp-btn" id="hang" type="button">${p.rank ? 'Spend time together' : 'Introduce yourself'}</button>` : ''}
+          ${st.ok ? `<button class="fp-btn" id="hang" type="button">${!p.rank ? 'Introduce yourself' : p.rank >= l.ranks.length ? (p.route === 'romance' && l.dates?.length ? 'Go on a date' : 'Hang out') : 'Spend time together'}</button>` : ''}
           ${p.seen.length ? `<div class="memories"><h2>Memories</h2><div>${p.seen.slice().sort((a, b) => a - b).map(r => `<button type="button" data-r="${r}">Rank ${r + 1} · ${esc(l.ranks[r].place)}</button>`).join('')}</div></div>` : ''}
         </section>
         <div>${pic ? `<img class="big-portrait" src="${pic}" alt="${esc(l.name)}">` : ''}</div></div>`;
