@@ -459,8 +459,8 @@ FemcSocial.define({
       { n: "Her name tag said HASEGAWA, library committee, in the same round handwriting as the jar. When Solar left, she said thank you for coming, very quietly, as if Solar had been a guest in her house. The girls by the magazines were still whispering. Solar looked back at the desk from the doorway and the girl was watching her go, and looked away fast, and knocked over the stamp." }
     ] },
 
-    { after: '5/18', title: '2: rumors', place: 'Gekkoukan High · Classroom 2-F', scene: [
-      { n: "Lunch, and Junpei had a rumor, which was like saying the sky had weather. He leaned across two desks with his yakisoba bread and lowered his voice in the way he thought was discreet and which could be heard in the hallway." },
+    { after: '5/18', title: '2: rumors', place: 'Gekkoukan High · Rooftop', scene: [
+      { n: "Lunch, and Junpei had a rumor, which was like saying the sky had weather. He leaned across the rooftop bench with his yakisoba bread and lowered his voice in the way he thought was discreet and which could be heard in the hallway." },
       { s: 'junpei', f: 'happy', t: "Okay, so you know the library girl? Hasegawa? Word is she's got a guy. Like, an older guy. A salaryman. Picks her up in a car outside the gate, once a month, like clockwork." },
       { s: 'yukari', f: 'serious', t: "Junpei. Gross. Who told you that?" },
       { s: 'junpei', f: 'flustered', t: "Everybody! It's not, like, my rumor. I'm just the messenger here." },

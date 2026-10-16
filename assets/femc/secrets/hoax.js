@@ -105,7 +105,7 @@ FemcSocial.secrets({
       ] },
       { from: 'hx-jaehyuk', t: "Where are you from, if you don't mind me asking?" },
       { ask: [
-        { t: "Iwatodai. I'm a second-year at Gekkoukan.", then: [
+        { t: "Iwatodai. I'm a third-year at Gekkoukan.", then: [
           { from: 'hx-jaehyuk', t: "I've never heard of it." },
           { from: 'hx-hyunsuk', t: "sounds made up" },
           { from: 'hx-junkyu', t: "sounds pretty!!!" }

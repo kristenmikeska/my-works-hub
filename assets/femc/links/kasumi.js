@@ -365,7 +365,7 @@ FemcSocial.define({
         ] },
         { t: "You're not from Gekkoukan, are you?", notes: 2, then: [{ s: 'kasumi', f: 'sad', t: "No. I go to Shujin Academy. In Tokyo. I woke up here two nights ago in the middle of something green and horrible. The mats were the first normal thing I found." }] }
       ] },
-      { s: 'kasumi', f: 'happy', t: "I'm Kasumi Yoshizawa! First-year. Rhythmic gymnast. And you must be a second-year. Can I call you Senpai?" },
+      { s: 'kasumi', f: 'happy', t: "I'm Kasumi Yoshizawa! First-year. Rhythmic gymnast. And you must be a third-year. Can I call you Senpai?" },
       { n: "She said it so earnestly, so brightly, bouncing a little on her toes, that Solar couldn't have said no if she'd wanted to." },
       { choose: [
         { t: "Sure. Senpai's fine.", notes: 3, then: [{ s: 'kasumi', f: 'happy', t: "Senpai! I'll do my best to make you proud!" }] },
