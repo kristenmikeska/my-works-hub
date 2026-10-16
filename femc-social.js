@@ -188,6 +188,12 @@ window.FemcSocial = (() => {
     .vn-velvet .vn-portrait { filter: drop-shadow(10px 10px 0 rgba(60, 110, 255, .35)); }
     .vn-velvet .vn-choices button { box-shadow: 5px 5px 0 rgba(60, 110, 255, .5); }
     .vn-velvet .vn-choices button:is(:hover, :focus-visible) { box-shadow: 7px 7px 0 #2f5bd8; }
+    .vn-act { display: grid; place-items: center; z-index: 2147483300; background: radial-gradient(ellipse at 50% 40%, #2a0d22, #07030a 75%); cursor: pointer; }
+    .vn-act-inner { position: relative; z-index: 2; display: grid; justify-items: center; gap: 10px; padding: 16px; text-align: center; }
+    .vn-act-num { margin: 0; color: #ff8cc0; font: italic 800 clamp(16px, 2vw, 22px)/1 ${COND}; letter-spacing: .5em; text-transform: uppercase; animation: vn-in 1s .2s ease both; }
+    .vn-act-title { margin: 0; font: italic 900 clamp(52px, 11vw, 140px)/.9 ${COND}; letter-spacing: -.01em; text-shadow: .05em .05em 0 #ff4f9e; transform: skewX(-8deg); animation: vn-slam .9s .5s cubic-bezier(.2, 1.4, .4, 1) both; }
+    .vn-act-date { margin: 8px 0 0; color: #f5d9e7; font: italic 700 18px/1 ${COND}; letter-spacing: .2em; animation: vn-in 1s 1.2s ease both; }
+    .vn-act-hint { margin: 26px 0 0; color: #c99ab3; font: 600 11px/1 "Avenir Next", sans-serif; letter-spacing: .3em; text-transform: uppercase; animation: vn-blink 1.6s 2s steps(2) infinite both; }
     .vn-approach { display: grid; place-items: center; z-index: 2147483250; }
     .vn-approach-inner { position: relative; z-index: 2; display: grid; gap: 18px; width: min(680px, calc(100vw - 40px)); }
     .vn-approach-kicker { margin: 0; color: #ff8cc0; font: italic 800 14px/1 ${COND}; letter-spacing: .3em; text-transform: uppercase; }
@@ -668,7 +674,7 @@ window.FemcSocial = (() => {
       const card = document.createElement('div');
       card.className = 'vn-title';
       card.innerHTML = `<p><small></small><span></span></p>`;
-      card.querySelector('small').textContent = `${link.short} · Rank ${r + 1}`;
+      card.querySelector('small').textContent = opts.label || `${link.short} · Rank ${r + 1}`;
       card.querySelector('span').textContent = rank.title;
       el.appendChild(card);
       let gone = false;
@@ -985,6 +991,7 @@ window.FemcSocial = (() => {
         <button data-a="slot">Next slot</button> <button data-a="day">Next day</button><br>
         <label><input type="checkbox" id="tpFree" ${S.free ? 'checked' : ''}> Everyone free, no gates</label><br>
         ${Object.values(links).map(l => `${l.short}: rank <input data-rank="${l.id}" size="2" value="${progress(l.id).rank}"> ${progress(l.id).route || ''}`).join('<br>')}<br>
+        <button data-a="story">Play next story event</button> <span style="color:#c99ab3">${(S.story?.seen || []).length}/${STORY.events.length} seen</span><br>
         <button data-a="reset" style="color:#ff8c8c">Reset all FEMC progress</button>`;
     };
     box.addEventListener('click', e => {
@@ -994,6 +1001,7 @@ window.FemcSocial = (() => {
       if (a === 'slot') advance();
       if (a === 'day') nextDay();
       if (a === 'reset') { S = fresh(); save(); }
+      if (a === 'story') { const e = STORY.events.find(x => !storyState().seen.includes(x.id)); if (e) playEvent(e); }
     });
     box.addEventListener('change', e => {
       if (e.target.id === 'tpFree') { S.free = e.target.checked; save(); }
@@ -1009,11 +1017,65 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = (path, isReady) => F().load(`${path}?v=${F().v}`, isReady);   // FEMC_ASSET_VERSION in femc-mode.js
-    ready = Promise.all([L('assets/femc/portraits/index.js', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js', () => window.FEMC_BG), L('assets/femc/tarot/index.js', () => window.FEMC_TAROT), L('assets/femc/profile/index.js', () => window.FEMC_PROFILE), L('assets/femc/links/index.js', () => window.FEMC_LINK_FILES)])
+    ready = Promise.all([L('assets/femc/portraits/index.js', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js', () => window.FEMC_BG), L('assets/femc/tarot/index.js', () => window.FEMC_TAROT), L('assets/femc/profile/index.js', () => window.FEMC_PROFILE), L('assets/femc/links/index.js', () => window.FEMC_LINK_FILES), L('assets/femc/story.js', () => STORY.acts.length)])
       .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
   }
+
+  /* ── The main story: acts and the events between them (assets/femc/story.js) ── */
+  // story({ cast, acts: [{ id, numeral, title, from }], events: [{ id, act, date, slot?, title, place, music?, scene }] })
+  // An event plays by itself on Solar's social links once its date (and time of day, if set) arrives, one at a time,
+  // in order. The first event of each act opens with that act's title card. Finished events can be replayed.
+  const STORY = { acts: [], events: [] };
+  function story(data) {
+    Object.assign(CAST, data.cast || {});
+    STORY.acts = data.acts || [];
+    STORY.events = data.events || [];
+  }
+  const storyState = () => (S.story ||= { seen: [], act: null });
+  const storyLink = { id: 'story', name: '', short: '', arcana: '', numeral: '', ranks: [], home: { place: '', slot: 0, days: [] } };
+  function dueEvent() {
+    const st = storyState();
+    return STORY.events.find(e => !st.seen.includes(e.id) && S.d >= dayOf(e.date) && (e.slot === undefined || e.slot === S.slot) && unlockMet(e.unlock));
+  }
+  function playEvent(e, opts = {}) {
+    const act = STORY.acts.find(a => a.id === e.act);
+    const run = () => play({ ...storyLink, ranks: [e], theme: e.theme }, 0, {
+      frame: true, label: act ? `Act ${act.numeral} · ${act.title}` : 'Story', replay: opts.replay,
+      onDone: finished => {
+        if (finished && !opts.replay) { const st = storyState(); if (!st.seen.includes(e.id)) st.seen.push(e.id); save(); }
+        opts.onDone?.(finished);
+      }
+    });
+    if (act && !opts.replay && storyState().act !== act.id) { storyState().act = act.id; save(); actCard(act, run); } else run();
+  }
+  // A full-screen act title, P3P chapter style.
+  function actCard(act, done) {
+    const el = document.createElement('div');
+    el.className = 'vn vn-act';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-label', `Act ${act.numeral}: ${act.title}`);
+    el.innerHTML = `<div class="vn-act-inner"><p class="vn-act-num">Act ${act.numeral}</p><p class="vn-act-title"></p><p class="vn-act-date">${now().md} ${now().day}</p><p class="vn-act-hint">click to continue</p></div>`;
+    el.querySelector('.vn-act-title').textContent = act.title;
+    document.body.appendChild(el);
+    F().sfx('femc-darkhour');
+    let ready = false, gone = false;
+    setTimeout(() => { ready = true; }, reduced.matches ? 0 : 1600);
+    const go = () => { if (!ready || gone) return; gone = true; document.removeEventListener('keydown', key, true); el.classList.add('out'); setTimeout(() => { el.remove(); done(); }, 400); };
+    const key = e => { if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') { e.preventDefault(); go(); } };
+    el.addEventListener('click', go);
+    document.addEventListener('keydown', key, true);
+  }
+  // Called after Solar's social links render: plays the next story event if one is due.
+  function offerStory(onDone) {
+    if (S.free || !S.intro || document.querySelector('.vn, .ph')) return false;
+    const e = dueEvent();
+    if (!e) return false;
+    playEvent(e, { onDone });
+    return true;
+  }
+  const storySeen = () => STORY.events.filter(e => storyState().seen.includes(e.id));
 
   // Elizabeth's Velvet Room opening, shown the first time Solar opens her social links.
   function playIntro(onDone) {
@@ -1022,5 +1084,5 @@ window.FemcSocial = (() => {
     play(l, 0, { frame: true, onDone: () => { S.intro = true; save(); onDone?.(); } });
     return true;
   }
-  return { profile, tarot, background, areaBackground, need, playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
+  return { story, offerStory, playEvent, storySeen, storyActs: () => STORY.acts, storyEvents: () => STORY.events, profile, tarot, background, areaBackground, need, playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
 })();

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <script src="femc-mode.js?v=32"></script>
+  <script src="femc-mode.js?v=35"></script>
   <title>Social Links</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/femc/femc-pages.css?v=2">
@@ -102,7 +102,7 @@
   </main>
 
   <script src="achievements.js?v=9"></script>
-  <script src="femc-social.js?v=68"></script>
+  <script src="femc-social.js?v=69"></script>
   <script>
   (function () {
     const $ = id => document.getElementById(id);
@@ -121,7 +121,7 @@
       $('nextday').addEventListener('click', () => { X.nextDay(); F().sfx('femc-hover'); });
     }
 
-    const tabs = on => `<nav class="sl-tabs" aria-label="Social links views"><a href="#"${on === 'map' ? ' class="on" aria-current="page"' : ''}>Go out</a><a href="#links"${on === 'links' ? ' class="on" aria-current="page"' : ''}>Social links</a></nav>`;
+    const tabs = on => `<nav class="sl-tabs" aria-label="Social links views"><a href="#"${on === 'map' ? ' class="on" aria-current="page"' : ''}>Go out</a><a href="#links"${on === 'links' ? ' class="on" aria-current="page"' : ''}>Social links</a>${X.storySeen().length ? `<a href="#story"${on === 'story' ? ' class="on" aria-current="page"' : ''}>Story</a>` : ''}</nav>`;
 
     // Go out: pick a place for this time of day, and whoever is free there shows up.
     const AREAS = ['Gekkoukan High', 'Iwatodai Dorm', 'Iwatodai Station', 'Iwatodai Strip', 'Paulownia Mall', 'Port Island Station', 'Port Island', 'Naganaki Shrine', 'Tatsumi Memorial Hospital', 'Moonlight Bridge'];
@@ -149,6 +149,16 @@
             ${usual.length ? `<p class="usual">Usually here: ${usual.map(l => esc(l.short)).join(', ')}</p>` : ''}</section>`;
         }).join('')}</div>`;
       $('view').querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => { const l = X.links[b.dataset.go]; X.play(l, X.progress(l.id).rank, { onDone: render }); }));
+    }
+
+    // The main story so far: every act Solar has reached, with the events she has seen, to replay.
+    function storyPage() {
+      const seen = X.storySeen();
+      const acts = X.storyActs().filter(a => seen.some(e => e.act === a.id));
+      $('view').innerHTML = `${tabs('story')}<p class="fp-kicker">Iwatodai · 2009</p><h1 class="page-title cond">Story</h1>
+        <p class="cal-free">Everything that has happened so far, beyond your bonds.</p>
+        ${acts.map(a => `<section class="memories"><h2>Act ${esc(a.numeral)} · ${esc(a.title)}</h2><div>${seen.filter(e => e.act === a.id).map(e => `<button type="button" data-ev="${e.id}">${esc(e.title)}</button>`).join('')}</div></section>`).join('')}`;
+      $('view').querySelectorAll('[data-ev]').forEach(b => b.addEventListener('click', () => X.playEvent(X.storyEvents().find(e => e.id === b.dataset.ev), { replay: true })));
     }
 
     function list() {
@@ -213,8 +223,9 @@
       cal();
       const id = location.hash.slice(1);
       const l = X.links[id];
-      if (l && !l.hidden && (X.isMet(id) || X.status(l).reason !== 'away')) detail(l); else if (id === 'links') list(); else map();
-      setTimeout(() => X.offerApproach(render), 500);
+      if (l && !l.hidden && (X.isMet(id) || X.status(l).reason !== 'away')) detail(l); else if (id === 'links') list(); else if (id === 'story' && X.storySeen().length) storyPage(); else map();
+      // The main story comes first; someone new waiting comes after.
+      setTimeout(() => { if (!X.offerStory(render)) X.offerApproach(render); }, 500);
     }
     X.load().then(() => {
       render();
