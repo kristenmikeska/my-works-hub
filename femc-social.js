@@ -93,6 +93,12 @@ window.FemcSocial = (() => {
     .vn { position: fixed; inset: 0; z-index: 2147483200; overflow: hidden; color: #fff; font-family: "Avenir Next", "Helvetica Neue", sans-serif; background: radial-gradient(ellipse at 70% 30%, #3a1430, #12060e 70%); animation: vn-in .4s ease both; }
     .vn::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(-58deg, rgba(255, 79, 158, .06) 0 2px, transparent 2px 26px); }
     .vn.out { animation: vn-in .35s ease reverse forwards; pointer-events: none; }
+    .vn-bg { position: absolute; inset: 0; background: center / cover no-repeat; opacity: 0; transition: opacity .6s ease, filter .6s ease; }
+    .vn-bg.on { opacity: 1; }
+    .vn-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14, 5, 10, .18), rgba(14, 5, 10, .42) 55%, rgba(14, 5, 10, .78)), repeating-linear-gradient(-58deg, rgba(255, 79, 158, .05) 0 2px, transparent 2px 26px); }
+    .vn-bg.night { filter: brightness(.5) saturate(.75) hue-rotate(-12deg); }
+    .vn-bg.night::after { background: linear-gradient(180deg, rgba(20, 24, 70, .35), rgba(14, 5, 20, .55) 55%, rgba(14, 5, 10, .82)); }
+    .vn-bg.dusk { filter: brightness(.75) saturate(1.05) sepia(.25); }
     .vn-place { position: absolute; top: 22px; left: 26px; display: flex; align-items: center; gap: 14px; padding: 8px 18px; background: #14070f; transform: skewX(-14deg); box-shadow: 5px 5px 0 rgba(255, 79, 158, .55); z-index: 3; }
     .vn-place > * { transform: skewX(14deg); }
     .vn-place b { font: italic 900 24px/1 ${COND}; }
@@ -172,6 +178,7 @@ window.FemcSocial = (() => {
     .vn-velvet .vn-title small { background: none; color: #9fb8ff; }
     .vn-velvet .vn-text { border-color: #8fb0ff; box-shadow: 8px 8px 0 rgba(60, 110, 255, .45); background: rgba(5, 11, 38, .93); }
     .vn-velvet .vn-text::after, .vn-velvet .vn-title span { color: #8fb0ff; }
+    .vn-velvet .vn-text::before { border-right-color: #8fb0ff; filter: drop-shadow(0 6px 0 rgba(60, 110, 255, .45)); }
     .vn-velvet .vn-title span { color: #fff; text-shadow: .05em .05em 0 #2f5bd8; }
     .vn-velvet .vn-place { box-shadow: 5px 5px 0 rgba(60, 110, 255, .55); background: #050b26; }
     .vn-velvet .vn-place span { color: #9fb8ff; }
@@ -264,6 +271,20 @@ window.FemcSocial = (() => {
     setTimeout(() => el.remove(), 3500);
   }
 
+  /* ── Backgrounds by place (assets/femc/backgrounds.js) ── */
+  // Returns { url, mood } for a place: mood 'night' or 'dusk' dims a daytime image; Dark Hour and Velvet images stay as they are.
+  function background(place = '', time) {
+    const rule = (window.FEMC_BG || []).find(([at]) => at[0] === '*' ? place.includes(at.slice(1)) : place.startsWith(at));
+    if (!rule) return null;
+    const [, day, evening] = rule;
+    const late = time === 'Evening' || /\bNight\b|Evening/.test(place);
+    const dusk = /\bDusk\b/.test(place);
+    const special = /Dark Hour|Velvet|Tartarus/.test(place);
+    const img = late && evening ? evening : day;
+    return { url: `${F().base}assets/femc/bg/${img}.webp?v=2`, mood: special || (late && evening) ? '' : late ? 'night' : dusk ? 'dusk' : '' };
+  }
+  const areaBackground = area => { const img = (window.FEMC_AREA_BG || {})[area]; return img ? `${F().base}assets/femc/bg/${img}.webp?v=2` : null; };
+
   /* ── Bond meter ────────────────────────────────────── */
   // Every rank after the first needs ♪ to reach. A rank's story scene always plays once; if its choices
   // didn't earn enough, shorter hangouts (the link's `hangouts`) fill the meter until the rank-up.
@@ -351,13 +372,14 @@ window.FemcSocial = (() => {
     el.setAttribute('aria-modal', 'true');
     el.setAttribute('aria-label', `${link.name}, rank ${r + 1}`);
     const when = opts.replay || opts.frame ? '' : `${now().md}<small>${now().day}</small>`;
-    el.innerHTML = `<div class="vn-place"><b>${when}</b><span></span></div>
+    el.innerHTML = `<div class="vn-bg"></div><div class="vn-place"><b>${when}</b><span></span></div>
       <img class="vn-portrait" alt="">
       <div class="vn-tools"><button type="button" data-t="log">Log</button><button type="button" data-t="skip">Skip ▸▸</button><button type="button" data-t="leave">Leave</button></div>
       <div class="vn-log" hidden><div class="vn-log-inner"></div><button type="button" data-t="log-close">Close log</button></div>
       <div class="vn-choices"></div>
       <div class="vn-box" aria-live="polite"><span class="vn-name"></span><p class="vn-text"></p></div>`;
     el.querySelector('.vn-place span').textContent = opts.frame ? rank.place : `${opts.replay ? 'Memory · ' : (now().time + ' · ')}${rank.place}`;
+    paint(rank.place, opts.replay || opts.frame ? '' : now().time);
     document.body.appendChild(el);
     const img = el.querySelector('.vn-portrait'), nameEl = el.querySelector('.vn-name'), textEl = el.querySelector('.vn-text'), choices = el.querySelector('.vn-choices');
     let currentFace = null;
@@ -434,6 +456,13 @@ window.FemcSocial = (() => {
     function setPlace(place, time) {
       const span = el.querySelector('.vn-place span');
       span.textContent = `${opts.replay ? 'Memory' : (time || now().time)} · ${place}`;
+      paint(place, time || (opts.replay || opts.frame ? '' : now().time));
+    }
+    // The backdrop for wherever the scene is.
+    function paint(place, time) {
+      const bg = el.querySelector('.vn-bg'), b = background(place, time);
+      bg.className = `vn-bg${b ? ' on' : ''}${b && b.mood ? ` ${b.mood}` : ''}`;
+      bg.style.backgroundImage = b ? `url("${b.url}")` : '';
     }
     // A scene break: the screen dips, the place banner changes, and nobody is on screen until they speak.
     function sceneBreak(line) {
@@ -894,11 +923,13 @@ window.FemcSocial = (() => {
     approachEl.setAttribute('role', 'dialog');
     approachEl.setAttribute('aria-modal', 'true');
     approachEl.setAttribute('aria-label', 'Someone is waiting');
-    approachEl.innerHTML = `<div class="vn-place"><b>${now().md}<small>${now().day}</small></b><span></span></div>
+    approachEl.innerHTML = `<div class="vn-bg"></div><div class="vn-place"><b>${now().md}<small>${now().day}</small></b><span></span></div>
       <div class="vn-approach-inner"><p class="vn-approach-kicker">Someone is waiting</p><p class="vn-approach-text"></p>
       <div class="vn-choices"><button type="button" data-go><span>Go over</span></button><button type="button"><span>Not now</span></button></div></div>`;
     approachEl.querySelector('.vn-place span').textContent = `${now().time} · ${l.ranks[0].place}`;
     approachEl.querySelector('.vn-approach-text').textContent = l.approach;
+    const abg = background(l.ranks[0].place, now().time), abgEl = approachEl.querySelector('.vn-bg');
+    if (abg) { abgEl.style.backgroundImage = `url("${abg.url}")`; abgEl.className = `vn-bg on${abg.mood ? ` ${abg.mood}` : ''}`; }
     S.approached.push(l.id);
     S.approachAt = slotKey();
     document.body.appendChild(approachEl);
@@ -963,7 +994,7 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = F().load;
-    ready = Promise.all([L('assets/femc/portraits/index.js?v=7', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
+    ready = Promise.all([L('assets/femc/portraits/index.js?v=7', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js?v=2', () => window.FEMC_BG), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
       .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=32`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
@@ -976,5 +1007,5 @@ window.FemcSocial = (() => {
     play(l, 0, { frame: true, onDone: () => { S.intro = true; save(); onDone?.(); } });
     return true;
   }
-  return { need, playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
+  return { background, areaBackground, need, playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
 })();
