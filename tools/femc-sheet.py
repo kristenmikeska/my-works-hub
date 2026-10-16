@@ -74,6 +74,20 @@ def cut_background(im, tol=26):
                 q.append((nx, ny))
     # Pockets of background boxed in by hair, collars and shoulders: any other patch of background color
     # big enough not to be a stray highlight goes too.
+    # A real gap between hair and shoulder is ringed by the black lineart; a matching patch of fabric
+    # (camo, a gray stripe) is surrounded by other fabric colors and must stay.
+    def outlined(region):
+        inside = set(region)
+        dark = total = 0
+        for x, y in region[::max(1, len(region) // 400)]:
+            for dx, dy in ((3, 0), (-3, 0), (0, 3), (0, -3)):
+                nx, ny = x + dx, y + dy
+                if (nx, ny) in inside or not (0 <= nx < w and 0 <= ny < h) or mk[nx, ny]:
+                    continue
+                total += 1
+                dark += min(px[nx, ny][:3]) < 90
+        return total == 0 or dark / total > 0.45
+
     seen = Image.new('L', (w, h), 0)
     sk = seen.load()
     for y0 in range(h):
@@ -89,7 +103,7 @@ def cut_background(im, tol=26):
                     if 0 <= nx < w and 0 <= ny < h and not sk[nx, ny] and not mk[nx, ny] and pocket(px[nx, ny]):
                         sk[nx, ny] = 1
                         q.append((nx, ny))
-            if len(region) >= max(60, w * h // 4000):
+            if len(region) >= max(60, w * h // 4000) and outlined(region):
                 for x, y in region:
                     mk[x, y] = 255
     alpha = m.filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.GaussianBlur(1)).point(lambda v: 255 - v)

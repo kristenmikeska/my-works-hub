@@ -394,24 +394,24 @@ FemcSocial.define({
     { after: '7/23', title: '4: ana', place: 'Tatsumi Memorial Hospital · Staff Lounge', scene: [
       { n: "The staff lounge had a broken air conditioner and a fridge full of other people's lunches, and on this particular afternoon it had an old woman in it, sitting in Angela's chair, drinking Angela's tea, with an eye patch and a sniper rifle leaned casually against the vending machine." },
       { register: 'ana' },
-      { s: 'ana', t: "So this is the girl. Habibti, she's younger than you said." },
+      { s: 'ana', f: 'happy', t: "So this is the girl. Habibti, she's younger than you said." },
       { s: 'mercy', f: 'surprised', t: "Ana! I didn't say anything about her!" },
-      { s: 'ana', t: "You didn't have to. You keep looking at the door." },
+      { s: 'ana', f: 'neutral', t: "You didn't have to. You keep looking at the door." },
       { n: "Ana Amari looked at Solar the way grandmothers look at people their grandchildren bring home, which was to say thoroughly, skeptically, and with the clear understanding that she had seen a great deal and would not be easily impressed." },
-      { s: 'ana', t: "And do you take care of her? Or does she take care of you?" },
+      { s: 'ana', f: 'neutral', t: "And do you take care of her? Or does she take care of you?" },
       { choose: [
-        { t: "Both, I think.", notes: 3, then: [{ s: 'ana', t: "Good answer. The only right one." }] },
+        { t: "Both, I think.", notes: 3, then: [{ s: 'ana', f: 'happy', t: "Good answer. The only right one." }] },
         { t: "Nobody takes care of Angela. She won't let them.", notes: 3, then: [
-          { s: 'ana', t: "Ha! She knows you." },
+          { s: 'ana', f: 'happy', t: "Ha! She knows you." },
           { s: 'mercy', f: 'flustered', t: "I am standing right here." }
         ] }
       ] },
-      { s: 'ana', t: "She was the youngest of us, back then. Overwatch. All those heroes, and she was the one who stayed up every night patching them back together." },
-      { s: 'ana', t: "And when it all fell apart, she was the one who still tried to save everybody. Even the ones who didn't deserve it." },
+      { s: 'ana', f: 'sad', t: "She was the youngest of us, back then. Overwatch. All those heroes, and she was the one who stayed up every night patching them back together." },
+      { s: 'ana', f: 'sad', t: "And when it all fell apart, she was the one who still tried to save everybody. Even the ones who didn't deserve it." },
       { s: 'mercy', f: 'sad', t: "...Ana." },
-      { s: 'ana', t: "I'm only saying what's true. Someone should." },
+      { s: 'ana', f: 'serious', t: "I'm only saying what's true. Someone should." },
       { n: "When Ana left, fading at the edges like the others, she patted Angela's cheek with a hand that had pulled a thousand triggers, and Solar watched the doctor lean into it for a second like a much younger woman." },
-      { s: 'ana', t: "Make her sleep, little one. That's an order." }
+      { s: 'ana', f: 'happy', t: "Make her sleep, little one. That's an order." }
     ] },
 
     { after: '8/6', title: '5: guardian angel', place: 'Tatsumi Memorial Hospital · Rooftop', scene: [
