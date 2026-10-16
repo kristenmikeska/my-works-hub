@@ -95,6 +95,202 @@ FemcSocial.define({
       { n: "She ran it again. Solar judged it again. Neither of them noticed the light going orange in the high windows until the janitor came in to turn it off." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate).
+  // By now she is Sumire: glasses, hair down, no red bow. Her speaker id stays 'kasumi'.
+  dates: [
+    { title: 'frames', place: 'Paulownia Mall · Optician', music: 'joy', scene: [
+      { n: "Sumire had been wearing the same glasses since the roof in November. They were the old ones, the ones from before, from a drawer she hadn't opened in a year, and they were a little too small now and pinched behind her ears, and she pushed them up her nose roughly every forty seconds, which Solar knew because she had started, without meaning to, to count." },
+      { s: 'kasumi', f: 'neutral', t: "Senpai. Would you help me choose new ones? I've never chosen anything for my own face before. Kasumi always said I looked best in whatever I already had on." },
+      { n: "The optician on the second floor of Paulownia had a wall of frames that went all the way to the ceiling, hundreds of them on little clear pegs, and a saleswoman who took one look at the two of them and wisely retreated behind the counter." },
+      { n: "Sumire tried on round ones and square ones. She tried on an enormous tortoiseshell pair that made her look like a professor of something very ancient, and laughed at herself in the mirror, a quick bright sound she seemed surprised to hear coming out of her." },
+      { choose: [
+        { t: "(Hand her the most ridiculous pair on the wall. Pink. Star-shaped.)", notes: 3, then: [
+          { n: "She put them on with total seriousness. She turned to the mirror. She turned to Solar. She struck the final pose of her floor routine, arms up, chin high, glittering pink stars on her face." },
+          { s: 'kasumi', f: 'happy', t: "Senpai! I'm perfect! I'm a ten!" },
+          { n: "Behind the counter, the saleswoman made a small noise into her sleeve." }
+        ] },
+        { t: "(Try a pair on yourself.)", notes: 2, then: [
+          { n: "Solar tried on a pair of thin gold wire frames. Sumire looked at her for a second too long, and then looked down, and went pink, and said that those were fine, they were very fine, she didn't need to try on any more, actually, Senpai, please take them off." }
+        ] }
+      ] },
+      { n: "In the end she stood in front of the wall for a long time with one pair in each hand. Red, thin and bright, the exact red of a ribbon. And a soft, clear blue, almost no color at all, that she kept picking up and putting back and picking up again." },
+      { s: 'kasumi', f: 'sad', t: "The red ones are prettier. Everyone would say so." },
+      { choose: [
+        { t: "Which ones would Sumire choose?", notes: 3, then: [
+          { s: 'kasumi', f: 'surprised', t: "..." },
+          { n: "She put the red ones back on their peg. Gently. The way you'd lay something down at a grave." },
+          { s: 'kasumi', f: 'blushing', t: "These. Sumire would choose these." }
+        ] },
+        { t: "You don't have to choose the pretty ones. Just yours.", notes: 3, then: [
+          { s: 'kasumi', f: 'neutral', t: "...Mine." },
+          { n: "She said it the way she'd said her own name on the roof, testing it, like a step she wasn't sure would hold her weight. Then she held up the blue ones." }
+        ] }
+      ] },
+      { n: "They took forty minutes to make. Sumire spent the forty minutes at the crepe stand downstairs working steadily through a strawberry crepe, a chocolate banana crepe and half of Solar's, with total focus, because choosing things, she said, was extremely hard work, and gymnasts needed fuel." },
+      { n: "When she put the new glasses on she went still in front of the little mirror on the counter. Then she turned around, slowly, and looked at Solar through them, clear and blue, and her eyes behind the lenses were wet." },
+      { s: 'kasumi', f: 'blushing', t: "I can see you so much better, Senpai. Is that silly? I didn't know how blurry everything was until now." },
+      { s: 'solar', t: "It's not silly." },
+      { s: 'kasumi', f: 'happy', t: "Then I'm going to look at you all the way home." },
+      { n: "She did. She walked into two people and a pillar. She didn't seem to mind at all." }
+    ] },
+    { title: 'the cut', place: 'Iwatodai Dorm · Laundry Room', music: 'joy', scene: [
+      { n: "Sumire came to the dorm on Sunday afternoon with a towel over her arm and a pair of hair-cutting scissors in a little leather case, and an expression of grim athletic resolve, like she was about to attempt a dismount she had never once landed." },
+      { s: 'kasumi', f: 'serious', t: "Senpai. I need you to cut my bangs." },
+      { s: 'solar', t: "I have never cut anyone's hair in my life." },
+      { s: 'kasumi', f: 'serious', t: "That's why it has to be you. Every haircut I had this year was hers. Kasumi's style. I want one that nobody planned." },
+      { n: "The laundry room was the only place in the dorm with a mirror and a floor nobody would mind getting hair on. Sumire sat up on the dryer with the towel around her shoulders and her glasses folded in her lap and her face tipped up, eyes closed, like she was waiting to be knighted. The machine beside her was tumbling somebody's gym clothes. It was warm and close and smelled of detergent." },
+      { n: "Solar stood between her knees with the scissors and a comb and realized, with an unpleasant lurch, how close she was. Close enough to count her eyelashes. Close enough that Sumire's breath, slow and careful, moved the fine hair on Solar's wrist." },
+      { choose: [
+        { t: "(Comb her bangs down with your fingers first. Slowly.)", notes: 3, then: [
+          { n: "She combed them down with her fingers, slowly, because she needed a second, and Sumire's breath caught, and then let go, and her eyes stayed shut, and the tips of her ears went pink, and Solar's own face went hot enough that she was grateful, briefly and intensely, that Sumire couldn't see a thing." }
+        ] },
+        { t: "If I mess this up, you have to tell everyone it was on purpose.", notes: 2, then: [
+          { s: 'kasumi', f: 'happy', t: "Fufu. I promise. I'll say it's very avant-garde." }
+        ] }
+      ] },
+      { n: "She cut. A small snip. Then another. Then she stepped back to look and saw, with a horror so complete it felt almost peaceful, that the left side was a full centimeter shorter than the right." },
+      { n: "She evened it out. Now the right side was shorter. She evened that out. Somewhere around the fifth evening-out Sumire's bangs had become a short, choppy, determinedly crooked fringe that stopped well above her eyebrows, and Solar set the scissors down on the dryer very gently, the way you'd put down a weapon at a crime scene." },
+      { s: 'kasumi', f: 'neutral', t: "...Senpai? You've gone quiet." },
+      { n: "Sumire unfolded her glasses and put them on and turned around to the mirror over the sink, and looked, for a long and terrible moment." },
+      { s: 'kasumi', f: 'surprised', t: "Oh." },
+      { s: 'kasumi', f: 'surprised', t: "Oh, Senpai." },
+      { choose: [
+        { t: "I can fix it. I can't fix it. I'm so sorry.", notes: 2, then: [
+          { n: "Sumire's shoulders started to shake. Solar's stomach dropped, and then Sumire turned around with both hands over her mouth and tears in her eyes, laughing so hard no sound was coming out." }
+        ] },
+        { t: "It's very avant-garde.", notes: 3, then: [
+          { n: "Sumire stared at her. Then she folded over on the dryer, laughing so hard the towel slid off her shoulders and her glasses fogged and she had to hang on to Solar's sleeve to keep from sliding onto the floor." }
+        ] }
+      ] },
+      { s: 'kasumi', f: 'happy', t: "It's terrible! It's the worst haircut I have ever had!" },
+      { s: 'kasumi', f: 'blushing', t: "And it's the first one that's mine. Kasumi would never. Nobody would ever. Only me." },
+      { n: "She pulled Solar in by the front of her sweater, still laughing, and kissed her right there on top of the warm dryer, little bits of hair all over both of them, and the dryer buzzed at the end of its cycle, and neither of them moved to get it." },
+      { n: "Junpei saw the haircut at dinner and opened his mouth, and Sumire looked at him over her new glasses with great serenity and said avant-garde, and he closed it again." }
+    ] },
+    { title: 'ema', place: 'Naganaki Shrine', scene: [
+      { n: "Naganaki Shrine in the snow was very quiet. The trees were bare and black against a sky the color of a pearl, the stone steps had been swept that morning by someone careful, and the fox statues wore little caps of white as though they'd dressed for the weather." },
+      { n: "Sumire had been quiet the whole way up. She stopped in front of the rack of ema by the main hall, hundreds of little wooden plaques hanging on their red strings and knocking softly against each other in the wind, wishes for exams and babies and love, and stood there with her hands in her coat pockets for a long time." },
+      { s: 'kasumi', f: 'neutral', t: "I never said goodbye to her, Senpai. At the funeral I was... I was already her. I stood at the front, and everyone said Kasumi, Kasumi, we're so glad you're all right. And I said thank you." },
+      { s: 'kasumi', f: 'sad', t: "I went to my own funeral. And I said thank you." },
+      { n: "She bought a plaque at the little office with a hundred-yen coin, and the old priest lent her a pen, and she stood at the writing shelf under the eaves with the pen over the wood and didn't write anything. Snow fell past the lantern. Her breath fogged her glasses and cleared and fogged again." },
+      { choose: [
+        { t: "(Stand beside her. Close enough to touch.)", notes: 3, then: [
+          { n: "Solar stood beside her, shoulder to shoulder, not saying anything. After a while Sumire leaned, very slightly, the way you'd lean on a railing to see if it would hold. It held." }
+        ] },
+        { t: "You don't have to write all of it. Start with her name.", notes: 3, then: [
+          { s: 'kasumi', f: 'sad', t: "...Her name." },
+          { n: "She wrote it. Kasumi. Then she looked at it for a long time, like it might answer." }
+        ] }
+      ] },
+      { n: "She wrote for a long time after that, small, filling the whole back of the plaque, and Solar didn't look, and Sumire didn't hide it. When she was done she held it in both hands." },
+      { s: 'kasumi', f: 'sad', t: "Thank you for pushing me out of the way. I'm sorry I made you carry me for a whole year after. I'm going to be Sumire now. As hard as I can. Please be proud." },
+      { s: 'kasumi', f: 'sad', t: "...That's what I wrote. Mostly. There's more. But it's mostly that." },
+      { n: "She tied it to the rack herself with cold fingers, a careful double knot, a gymnast's knot. It hung there among the others, knocking gently against a wish for a good harvest and a wish to pass the bar exam, and Sumire stepped back to look at it, and her face came apart all at once, quietly, the way snow comes off a branch." },
+      { choose: [
+        { t: "(Hold her.)", notes: 3, then: [
+          { n: "Solar held her. Sumire turned her face into Solar's coat and cried the way she hadn't at the funeral, the way she hadn't on the roof, the way she maybe hadn't since she was very small, great heaving breaths with her glasses crushed crooked against Solar's collarbone, and Solar held on and watched the snow and said nothing at all, for as long as it took. It took a long time." }
+        ] },
+        { t: "She'd be proud. She'd be so proud of you, Sumire.", notes: 3, then: [
+          { s: 'kasumi', f: 'sad', t: "...You can't know that, Senpai." },
+          { s: 'solar', t: "She pushed you out of the way of a truck. I think she was always going to be proud of you." },
+          { n: "Sumire made a sound like something breaking cleanly, and put her forehead against Solar's shoulder, and let go." }
+        ] }
+      ] },
+      { n: "It was dark by the time they came down the steps. The lanterns had come on. Sumire held Solar's hand the whole way down, and at the bottom, under the torii, she stopped and turned and looked back up at the shrine, at the little rack of plaques, too far away now to see." },
+      { s: 'kasumi', f: 'neutral', t: "I feel lighter. Is that terrible? I feel like I just put her down." },
+      { s: 'solar', t: "Not down. Somewhere safe. You can visit." },
+      { s: 'kasumi', f: 'blushing', t: "...Will you come with me? When I visit?" },
+      { s: 'solar', t: "Every time." },
+      { n: "She kissed Solar's cold cheek under the torii, quick and shy, her glasses fogging, and then took her hand again and didn't let go until the station." }
+    ] },
+    { title: 'a perfect ten', place: 'Gekkoukan High · Gym', music: 'joy', scene: [
+      { n: "The gym after school, empty, so cold that the heaters along the wall clanked and lost. Sumire had brought the blue ribbon, and the old score cards Solar had judged with in the autumn, one to ten in thick marker on the backs of handouts, gone soft at the corners now." },
+      { s: 'kasumi', f: 'happy', t: "Today we switch. I'm the judge. You perform." },
+      { s: 'solar', t: "Absolutely not." },
+      { s: 'kasumi', f: 'serious', t: "Real judges are never nice, Senpai. I'm going to be very real." },
+      { n: "She pressed the ribbon stick into Solar's hand and went and sat on the bleachers with the cards in her lap and her legs crossed and her chin up, glasses flashing under the lights, the very picture of a stern international official, if stern international officials had crooked fringes and couldn't stop grinning." },
+      { choose: [
+        { t: "(Commit. The whole routine. Every move you've watched her do.)", notes: 3, then: [
+          { n: "Solar committed. She had watched Sumire's routine perhaps a hundred times, and her body, it turned out, had been paying attention, the way bodies do. The leap was not a leap. The turn was not a turn. The ribbon wrapped twice around her own neck and once around her ankle and she finished on the mat on one knee, arms up, tied like a parcel, gasping." },
+          { n: "There was a silence from the bleachers. Then Sumire held up a card. It was a ten. She was crying with laughter so hard she couldn't hold it straight." }
+        ] },
+        { t: "(Do one spin. Just one. With great dignity.)", notes: 2, then: [
+          { n: "She did one spin, with great dignity. The ribbon drew a beautiful blue spiral in the air and then came down over her head like a veil. Sumire held up a seven, and thought about it, and held up the eight as well, and then the nine." }
+        ] }
+      ] },
+      { s: 'kasumi', f: 'happy', t: "Senpai! You were watching! All this time, you were really watching!" },
+      { n: "She came down the bleachers two at a time and onto the mat and started untangling her, laughing, the ribbon going round and round between them, until somehow it was around both of them, Sumire's back against Solar's front, Solar's arms caught in it across Sumire's waist." },
+      { s: 'kasumi', f: 'blushing', t: "...Oh. I don't think I did that on purpose." },
+      { s: 'kasumi', f: 'blushing', t: "...I don't think I mind." },
+      { n: "She put her hands over Solar's hands and lifted them, slowly, and the ribbon rose with them, and she moved, and Solar moved because she was holding on, the two of them turning together in the middle of the empty gym, slow, the blue ribbon trailing in a long loose circle that wasn't any routine at all. The heaters clanked. Their shadows went round on the floor." },
+      { s: 'kasumi', f: 'neutral', t: "This is what it feels like from the inside, Senpai. When it's right. I wanted you to know." },
+      { choose: [
+        { t: "It feels like flying.", notes: 3, then: [
+          { s: 'kasumi', f: 'happy', t: "Yes! Yes, exactly. Nobody ever says it right. That's exactly right." }
+        ] },
+        { t: "It feels like you.", notes: 3, then: [
+          { s: 'kasumi', f: 'surprised', t: "..." },
+          { n: "She stopped turning. She stood very still inside the loop of ribbon with her back against Solar, and Solar felt her breathe in, and hold it, and let it go." },
+          { s: 'kasumi', f: 'blushing', t: "...That's the best score anyone has ever given me." }
+        ] }
+      ] },
+      { n: "They came down onto the mat eventually, more or less on purpose, still half tied together, and lay on their backs looking up at the gym ceiling the way they had in the autumn, when Solar had refused to stretch and the girl beside her, who was still calling herself Kasumi then, had lain down too, in solidarity." },
+      { n: "The lights hummed. Sumire found Solar's hand on the mat between them and laced their fingers together, ribbon and all." },
+      { s: 'kasumi', f: 'happy', t: "Ten, Senpai. For the whole day. A perfect ten." },
+      { s: 'solar', t: "Real judges are never nice." },
+      { s: 'kasumi', f: 'blushing', t: "I'm not being nice. I'm being accurate." }
+    ] }
+  ],
+  // P3's Christmas Eve: on 12/24 evening, if Solar is romancing several people (rank 9+), she picks one; this plays.
+  // She can only be rank 9 here (rank 10 comes after 1/11): she is Sumire, but hasn't performed her own routine yet.
+  christmas: { place: 'Paulownia Mall · Central Atrium', scene: [
+    { n: "The tree in the central atrium of Paulownia Mall went up three floors, white and gold and absurd, and every railing on every floor was crowded with couples leaning over to photograph it, because Christmas Eve here was for couples, and the whole mall seemed to know it." },
+    { n: "Sumire was standing at the foot of the tree, looking up. Hair down, glasses on, a big soft coat that came to her knees, and she wasn't bouncing on her toes. She stood very still with her hands clasped in front of her, and when she saw Solar coming through the crowd she didn't wave. She just smiled, slowly, as if she'd been afraid this part might not happen." },
+    { s: 'kasumi', f: 'blushing', t: "Senpai. You came. I rehearsed what to say for an hour and I've forgotten all of it." },
+    { s: 'kasumi', f: 'neutral', t: "Last Christmas everyone said Merry Christmas, Kasumi. My parents. My coach. I said thank you every time. And every time, something in me flinched, and I didn't know why." },
+    { s: 'kasumi', f: 'sad', t: "I think this is my first Christmas in a year. Isn't that strange? I was somebody else for the whole of the last one." },
+    { choose: [
+      { t: "Merry Christmas, Sumire.", notes: 3, then: [
+        { s: 'kasumi', f: 'surprised', t: "..." },
+        { n: "She pressed her lips together. She took her glasses off and wiped them on her scarf even though they didn't need it, which Solar had learned was what she did when she needed not to be seen for a second." },
+        { s: 'kasumi', f: 'blushing', t: "...Merry Christmas, Senpai. Oh, I'm going to cry under a three-story tree." }
+      ] },
+      { t: "(Take her hand. Her fingers are freezing.)", notes: 3, then: [
+        { n: "Her fingers were freezing. She'd been waiting by the doors much longer than she'd said. Solar held them between both her hands and blew on them, and Sumire watched her do it with an expression of pure, helpless astonishment, and then went red to the roots of her hair." }
+      ] }
+    ] },
+    { place: 'Port Island · Pier', time: 'Night', music: 'tender' },
+    { n: "They walked out to the end of the pier because it was the only place in Port Island that night without a carol playing on it. The snow had started while they were inside, coming in sideways off the bay, catching on Sumire's lenses until she gave up and laughed and looked at Solar over the top of them." },
+    { n: "She had a present. It was in a paper bag, and she'd clearly wrapped it herself, and she held it out in both hands with her eyes screwed shut, as if she were presenting it to a panel of judges." },
+    { s: 'kasumi', f: 'blushing', t: "Don't laugh. Please. I mean, you can laugh. But laugh kindly." },
+    { n: "Mittens. Hand-knitted, in a soft dark blue. The left one was noticeably bigger than the right. The right one had a hole near the thumb where a stitch had dropped and run, and someone had tried to mend it, and the mend had its own small hole." },
+    { s: 'kasumi', f: 'blushing', t: "I learned to knit this month. From a book. Kasumi never knit. She thought it was boring. So these are the first thing I've ever made that's only... me." },
+    { s: 'kasumi', f: 'sad', t: "They're terrible. I know they are. I'm not good at things right away, Senpai. I never was. She was the one who was good at things right away." },
+    { choose: [
+      { t: "(Put them on. Right now. Both of them.)", notes: 3, then: [
+        { n: "Solar put them on. They were warm at once, the way only wool someone has sat up with for weeks is warm. The left one swallowed her whole hand. The right one let her thumb peek out through the hole like it was checking the weather." },
+        { s: 'solar', t: "They're perfect." },
+        { s: 'kasumi', f: 'happy', t: "They're not! They're really not! ...But you look so happy in them." }
+      ] },
+      { t: "Being good at things slowly is still being good at things.", notes: 3, then: [
+        { s: 'kasumi', f: 'surprised', t: "...Slowly still counts?" },
+        { s: 'solar', t: "Slowly counts more. You can see where every stitch went." },
+        { n: "Sumire looked down at the lumpy mittens in Solar's hands, at every place she had gone wrong and kept going, and her face did something soft and enormous." }
+      ] }
+    ] },
+    { n: "Solar's gift was small and hard and wrapped in paper with gymnasts on it, because she had gone to four stores to find paper with gymnasts on it. Inside was a glasses case, deep blue, the kind that snapped shut. On the lid, in neat silver letters she'd paid the shop to stamp, it said SUMIRE." },
+    { n: "Sumire didn't say anything. She ran her thumb over the letters one at a time, the way you'd read braille, S, U, M, I, R, E, and then did it again." },
+    { s: 'kasumi', f: 'sad', t: "It's my name. You wrote my name on something. So it would stay." },
+    { s: 'kasumi', f: 'blushing', t: "I'm going to put my glasses in it every night and see my name before I go to sleep. Every night. Until I'm used to it." },
+    { s: 'solar', t: "Then I'll say it every day. So you never get used to it." },
+    { n: "She made a small sound, and stepped in, and put both arms around Solar's neck, glasses case and all. Her glasses bumped Solar's cheek. Her hair was cold and smelled like snow." },
+    { s: 'kasumi', f: 'blushing', t: "Promise me. Say it every day. Even when I'm good at being me. Especially then." },
+    { s: 'solar', t: "Sumire." },
+    { s: 'kasumi', f: 'blushing', t: "...Again." },
+    { s: 'solar', t: "Sumire." },
+    { n: "She kissed her at the end of the pier, in the snow, softly, a little clumsily, the way she did everything for the first time now, as herself. Her glasses fogged. She didn't take them off. Out on the black water a ferry went by lit gold from end to end and sounded its horn once, long and low, and Sumire laughed against Solar's mouth and said it sounded like applause." },
+    { n: "They walked back with Sumire's hand inside Solar's lumpy left mitten, both their hands in the one mitten, which it was easily big enough for. Sumire said that was probably why she'd made it that size. Solar said she didn't believe that for a second. Sumire said, very solemnly, that it was a choice." }
+  ] },
   romance: true,
   cast: { akihiko: 'Akihiko', maruki: 'Maruki', elizabeth: 'Elizabeth' },
   threads: { elizabeth: { name: 'Elizabeth', members: ['elizabeth'] } },

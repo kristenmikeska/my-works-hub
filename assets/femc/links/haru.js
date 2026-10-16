@@ -88,6 +88,202 @@ FemcSocial.define({
       { n: "When they were finished the markers stood in the soil in a crooked little row, like students lined up for a class photo, and Haru photographed every single one." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate).
+  dates: [
+    { title: 'reservations', place: 'Port Island Station · Hotel Restaurant', music: 'joy', scene: [
+      { n: "Haru planned their first real date with the quiet, ruthless competence of a girl who had been raised to seat ambassadors. She told Solar to wear something warm, and to be at Port Island Station at six, and not, under any circumstances, to eat lunch." },
+      { n: "The restaurant was on the top floor of the hotel across from the station, the kind of place with a doorman and a name in gold script and a menu in a glass case by the elevator that had no prices on it, which Solar had always understood to be the most frightening thing a menu could do." },
+      { s: 'haru', f: 'happy', t: "I telephoned yesterday. I said Okumura, table for two, by the window. They were very polite." },
+      { n: "It was only once they were seated, the city glittering below and a waiter laying a napkin across Solar's lap like a blessing, that Haru opened the menu to its right-hand side and went very, very still." },
+      { s: 'haru', f: 'surprised', t: "...Solar-chan. I have made an error." },
+      { s: 'haru', f: 'surprised', t: "At home I simply signed for things. I've never once looked at this side of a menu. I have four thousand two hundred yen. I earned it selling cucumbers to the man at Hagakure." },
+      { choose: [
+        { t: "(Look at the prices. Try very hard not to laugh.)", notes: 2, then: [
+          { n: "The soup alone was four thousand five hundred. She tried not to laugh. She failed so completely that the couple at the next table turned around, and then Haru failed too, behind her napkin, shoulders shaking, eyes streaming, a girl who had sat through a hundred dinners exactly like this one and never once laughed at any of them." }
+        ] },
+        { t: "We could split one bread roll. Slowly.", notes: 3, then: [
+          { s: 'haru', f: 'happy', t: "Fufu... One roll. Very slowly. With enormous ceremony." },
+          { n: "She said it with such dignity that the waiter, passing, very nearly brought them one." }
+        ] },
+        { t: "Haru. I know a place.", notes: 3, then: [
+          { s: 'haru', f: 'surprised', t: "...Do you mean what I think you mean?" },
+          { s: 'solar', t: "For research." }
+        ] }
+      ] },
+      { place: 'Port Island Station · Wild-Duck Burger', time: 'Evening', music: 'joy' },
+      { n: "Wild-Duck Burger was loud and bright and smelled of fryer oil and was full of students in damp coats, and Haru Okumura walked through the door in her good dress and her pearl earrings like she was arriving at the opera." },
+      { s: 'haru', f: 'happy', t: "Two Mallard Mountains, please. And two of the large fries. And... Solar-chan, what is the very biggest drink?" },
+      { n: "It came to two thousand eight hundred yen. Haru paid for it herself, counting the coins out one at a time onto the little tray with enormous care, and when the girl behind the counter gave her the change Haru thanked her so sincerely that the girl blushed." },
+      { s: 'haru', f: 'blushing', t: "I paid for our date. With money I grew. Do you understand? Nobody signed anything." },
+      { n: "She started on her burger with a knife and fork. Solar ate hers with her hands. Halfway through, Haru put her cutlery down, looked at Solar's hands, looked at her own, and picked the whole thing up, and took a bite so big she had to cover her mouth, and her eyes over her fingers were enormous and delighted and a little shocked at herself." },
+      { choose: [
+        { t: "(Wipe the sauce off her chin with your thumb.)", notes: 3, then: [
+          { n: "There was sauce on her chin. Solar reached across the table and wiped it away with her thumb without thinking about it, and then thought about it a great deal, all at once, because Haru had gone completely pink and was looking at her mouth." },
+          { s: 'haru', f: 'blushing', t: "...That was much better than the restaurant would have been." }
+        ] },
+        { t: "Sugimura would be horrified.", notes: 3, then: [
+          { s: 'haru', f: 'happy', t: "Fufu. Wouldn't he?" },
+          { n: "She took another enormous bite, looking Solar right in the eye while she did it, like a toast." }
+        ] }
+      ] },
+      { n: "They shared the fries. They shared the enormous drink, two straws, their foreheads nearly touching over the lid. On the way out Haru stopped at the counter and asked, very seriously, for a copy of the menu to keep, and the manager, bewildered, gave her one, and she carried it home against her chest like a diploma." }
+    ] },
+    { title: 'bulbs', place: 'Gekkoukan High · Rooftop Garden', scene: [
+      { n: "The garden on the roof was asleep. Haru had tucked every bed under straw in November, and now there was a skin of old snow over the straw, and the planters sat in a row along the fence like children who had been put to bed and were pretending very hard not to be awake." },
+      { n: "Haru was kneeling at the end of the last bed with a paper bag and a trowel and her pink scarf wound up to her nose. She'd cleared one small square of straw down to the dark earth. Her breath went up in little clouds while she worked." },
+      { s: 'haru', f: 'happy', t: "Tulips. They go in now, in the cold. They have to sleep through the winter or they won't come up at all. Isn't that strange? They need the cold." },
+      { n: "She tipped the bag into her palm. The bulbs were papery and brown and unpromising, like small onions that had given up, and she held them out to Solar in her cupped gloves as if they were eggs." },
+      { choose: [
+        { t: "(Kneel down and plant them with her.)", notes: 3, then: [
+          { n: "Solar knelt in the cold beside her. The ground was so cold it hurt through her tights. Haru showed her, pointed end up, twice as deep as the bulb is tall, and their hands kept meeting in the little hole, gloved and clumsy, and neither of them made any effort at all to stop that from happening." }
+        ] },
+        { t: "What color will they be?", notes: 2, then: [
+          { s: 'haru', f: 'blushing', t: "The shop said mixed. I asked for red. The man said mixed. I'm hoping. Fufu." }
+        ] }
+      ] },
+      { n: "They planted twelve. Haru pressed the earth down over each one with the flat of her palm, gently, and said something to every single one, too quietly for Solar to hear. Then she sat back on her heels and looked at the little square of dirt for a long time." },
+      { s: 'haru', f: 'sad', t: "They'll come up in April." },
+      { n: "She didn't say the rest of it. She didn't have to. The green hour would close at the end of winter, and the way home with it, and Haru would go through, and in April the tulips would come up on a roof in a world she wasn't in." },
+      { s: 'solar', t: "Haru. Why plant something you won't see?" },
+      { s: 'haru', f: 'neutral', t: "Because you'll see it." },
+      { s: 'haru', f: 'blushing', t: "I wanted to leave you something that keeps coming back. Every spring. Without my having to be here to make it." },
+      { choose: [
+        { t: "(Take her cold hands and hold them against your face.)", notes: 3, then: [
+          { n: "Her gloves were wet with earth. Solar took her hands anyway and held them against her own cheeks, cold and gritty, and Haru's eyes filled, and she laughed, and didn't pull away." },
+          { s: 'haru', f: 'blushing', t: "You'll have dirt on your face, Solar-chan." },
+          { s: 'solar', t: "Good." }
+        ] },
+        { t: "I'll talk to them. Every day. The way you do.", notes: 3, then: [
+          { s: 'haru', f: 'surprised', t: "...You will?" },
+          { s: 'solar', t: "Mostly encouragement. And a little bit about you." },
+          { n: "It was what Haru had texted her in June, the very first night, about the tomatoes. Haru recognized it. Her face crumpled and then cleared, like weather passing over the bay." }
+        ] }
+      ] },
+      { n: "Haru took the thermos out of her bag after that, and the two porcelain cups wrapped in their tea towel, and they sat with their backs against the stairwell wall under a blanket she had also, somehow, fit in the bag, and drank coffee and watched the sky go pink over the water." },
+      { n: "When the cups were empty Haru tucked the blanket in around Solar's knees, carefully, all the way along, the way she'd tucked the straw over the beds. Then she tucked herself in beside her. Then she put her head on Solar's shoulder and announced, very seriously, that she was keeping Solar warm, the way the straw kept the soil warm, so that something would come up in spring." },
+      { s: 'haru', f: 'blushing', t: "Fufu. That was a little forward. I've been practicing being forward." },
+      { s: 'solar', t: "How's it going?" },
+      { s: 'haru', f: 'happy', t: "Very well, I think." }
+    ] },
+    { title: 'high score', place: 'Paulownia Mall · Game Panic', music: 'joy', scene: [
+      { n: "Haru had never been inside an arcade. She stood just inside the doors of Game Panic in her coat and her pink scarf with her hands clasped under her chin while the noise rolled over her, a hundred machines singing a hundred different songs, lights strobing, somebody shrieking at the racing game, and her face did the thing it had done at the burger counter in June, wide-eyed, reverent, like a pilgrim." },
+      { s: 'haru', f: 'happy', t: "Oh, it's so loud! Solar-chan, it's wonderful. Everything is trying so hard." },
+      { n: "She lost four hundred yen to the claw machine with perfect serenity. She lost at the rhythm game, badly, apologizing to the screen every time she missed a note. She was not, Solar thought fondly, built for this." },
+      { n: "Then she saw the punching machine." },
+      { n: "It stood in the back corner, a tall red cabinet with a padded bag that swung down on a hinge and a scoreboard at the top, where one high score had been sitting for so long the digits were burned into the screen. 978. Under it, in blinking letters, a set of initials. AKI." },
+      { s: 'haru', f: 'serious', t: "...Is that Akihiko-senpai?" },
+      { choose: [
+        { t: "It's been up there since summer. Nobody can touch it.", notes: 3, then: [
+          { s: 'haru', f: 'serious', t: "I see." },
+          { n: "She took off her coat. She folded it, neatly, and handed it to Solar. She took off her scarf and folded that too. She rolled the sleeves of her sweater up two turns each, exactly even, and fed a hundred-yen coin into the machine with the face of a woman about to settle an old and very personal grievance." }
+        ] },
+        { t: "Haru. Please don't.", notes: 2, then: [
+          { s: 'haru', f: 'happy', t: "Don't what, Solar-chan? I'm only looking." },
+          { n: "She was not only looking. She was already taking off her coat." }
+        ] }
+      ] },
+      { n: "She didn't punch it, exactly. She swung. Two-handed, from the hip, the way she'd swung the axe on the roof in September, as if the bag were a shadow that wanted her garden. The sound it made was not a sound an arcade machine should make. The whole cabinet rocked back on its feet. The screen went white, and then it said 1140, and then it started playing a fanfare." },
+      { n: "Every head in Game Panic turned. A boy at the racing game took his hands off the wheel and crashed and didn't notice. The attendant came out from behind the prize counter, looked at the machine, looked at Haru, standing there flushed and pleased in her sweater with her hair in her eyes, and very slowly went back behind the prize counter." },
+      { s: 'haru', f: 'blushing', t: "Was that too much? I think that was too much." },
+      { choose: [
+        { t: "You're terrifying. I love it.", notes: 3, then: [
+          { s: 'haru', f: 'blushing', t: "Both at once. Fufu. You keep saying that, and I keep believing you." },
+          { n: "She came and took her coat back and then didn't put it on, just stood very close with it over her arm, still breathing a little fast, looking at Solar's mouth like she was considering a second high score." }
+        ] },
+        { t: "(Enter her initials. Change the middle one.)", notes: 3, then: [
+          { n: "The machine wanted three letters. Solar put in an H. Then she scrolled past every letter of the alphabet to the little heart at the very end. Then an S. Haru looked at the screen, and worked it out, and went pink all the way down into her collar." },
+          { s: 'haru', f: 'blushing', t: "...Is that allowed? Two people?" },
+          { s: 'solar', t: "It is now." }
+        ] }
+      ] },
+      { n: "Akihiko found out on Monday. Someone from the boxing club had seen it. He went to Game Panic after practice and stood in front of the machine for a long time, and then texted Solar a photograph of the scoreboard with no caption, and then, four minutes later, rematch." },
+      { n: "Haru, when Solar showed her the text, smiled the sweet, gentle, pleasant smile of a girl from a very good family, and said Fufu, of course, whenever he likes, and the hair on Solar's arms stood up, and she was so in love with her she could barely see." }
+    ] },
+    { title: 'the letter', place: 'Iwatodai Dorm · Lounge', scene: [
+      { n: "Haru stayed after dinner on Thursdays now. Everyone had drifted upstairs one by one, Junpei last, with a plate of leftovers and a look over his shoulder that Solar pretended not to see, and the lounge had gone quiet and warm, the lamps low, the radiator ticking, the window black with cold." },
+      { n: "Haru had a letter. She'd had it all evening, folded small in the pocket of her cardigan, and she kept touching it through the wool the way you'd touch a bruise to see if it still hurt." },
+      { s: 'haru', f: 'sad', t: "When I go home, the first thing I have to do is end my engagement." },
+      { s: 'haru', f: 'sad', t: "I've written down what I'm going to say. To Sugimura, and his father, and the board. I've written it eleven times. It still sounds like an apology." },
+      { choose: [
+        { t: "Read it to me.", notes: 3, then: [
+          { n: "She unfolded it. Her hands weren't steady. She read it in her soft, careful voice, and it was polite and gracious and thanked everyone for their consideration, and regretted any inconvenience, and hoped the two families would remain on good terms, and Solar listened to every word of it and felt something in her chest go tight and hot." }
+        ] },
+        { t: "You don't owe him an apology. Not one word of one.", notes: 3, then: [
+          { s: 'haru', f: 'surprised', t: "...Not one word?" },
+          { s: 'solar', t: "Not one." },
+          { n: "Haru looked down at the letter in her lap, eleven drafts' worth of courtesy, as though it belonged to someone else." }
+        ] }
+      ] },
+      { s: 'haru', f: 'sad', t: "I don't know how to say it any other way. I was raised to be pleasant. I was raised to smile while they decided things. It's in my mouth, Solar-chan. I can't get it out." },
+      { s: 'solar', t: "You got it out on the roof. In September. With an axe." },
+      { s: 'haru', f: 'sad', t: "That was a shadow. This is a room full of people in suits who've known me since I was six." },
+      { n: "She folded the letter again, and again, smaller and smaller, until it couldn't be folded anymore, and sat holding it in her fist. Solar took the pen off the coffee table and tore a page from the back of Junpei's abandoned math workbook and set both in front of her." },
+      { s: 'solar', t: "Write it again. The real one. Not for them. For you." },
+      { n: "It took a long time. Haru wrote and crossed out and wrote again, her round, apologetic handwriting going harder and straighter as she went, while the kitchen clock ticked toward eleven. At the end there were four lines. She read them out loud without looking up." },
+      { s: 'haru', f: 'serious', t: "I will not marry Sugimura. I did not choose him, and I never will. I have chosen someone else, in another world, and I am not sorry. That is all." },
+      { n: "The radiator ticked. Haru stared at the page like it had been written by a stranger she admired." },
+      { choose: [
+        { t: "That's the one.", notes: 3, then: [
+          { s: 'haru', f: 'blushing', t: "...It is, isn't it. It doesn't apologize once." },
+          { s: 'haru', f: 'happy', t: "I want to read it to them. I want to see their faces. Oh, Solar-chan, I think I'm going to enjoy it." }
+        ] },
+        { t: "(Kiss the back of her ink-stained hand.)", notes: 3, then: [
+          { n: "There was ink along the side of her hand from dragging it through the wet lines. Solar lifted it and kissed it there, on the smudge, and Haru made a very small sound and put her other hand over her mouth." },
+          { s: 'haru', f: 'blushing', t: "...I'm going to think about that in the boardroom. That's going to help enormously." }
+        ] }
+      ] },
+      { n: "She threw the old letter, all eleven drafts of it folded into one hard little square, into the wastebasket by the couch without looking. It went in clean. The new one went into her cardigan pocket, over her heart." },
+      { n: "Then she leaned into Solar's side and let her head drop onto her shoulder and stayed there, warm and heavy, her breathing slowing by degrees, until the lamps in the lounge clicked off on their timer and neither of them got up to turn them back on." }
+    ] }
+  ],
+  // P3's Christmas Eve: on 12/24 evening, if Solar is romancing several people (rank 9+), she picks one; this plays.
+  christmas: { place: 'Paulownia Mall · Rooftop Garden', scene: [
+    { n: "Paulownia Mall had put lights in its rooftop garden for the holidays, white ones, thousands of them, wound through the bare trees and along the railings and over the empty planters, so that the whole roof looked dusted with something that glowed. Couples everywhere. Christmas Eve here was for couples. Haru had read about this in a magazine, she said, very seriously, in preparation." },
+    { n: "She was waiting by the biggest tree in a cream coat with her pink scarf and a small fur hat, holding a paper shopping bag in both hands in front of her knees, and when she saw Solar coming across the roof she lit up so completely that the couple next to her turned to see who it was for." },
+    { s: 'haru', f: 'happy', t: "Solar-chan! You came! I mean. Of course you came. I've been here for forty minutes. Fufu." },
+    { n: "It had started to snow on the walk over, the small dry kind that didn't settle, only drifted through the lights and caught in Haru's hair and the fur of her hat like sugar." },
+    { s: 'haru', f: 'blushing', t: "I've been to a great many Christmas parties. My father gave one every year. Two hundred people. A string quartet. Sugimura always stood beside me, so the photographers could get us both." },
+    { s: 'haru', f: 'neutral', t: "This is my first Christmas Eve that's a date. The first one that's mine." },
+    { n: "She held out the bag. Inside, wrapped in tissue and tied with garden twine, was a pair of gardening gloves, good leather, already soft, as if someone had worn them in for her. On the cuff of the right one, in pink thread, in careful and slightly crooked stitches, it said SOLAR." },
+    { s: 'haru', f: 'blushing', t: "I embroidered them myself. I'm not very good. I unpicked the R four times. Look inside the left one." },
+    { n: "Inside the left cuff, much smaller, so small that only the person wearing the glove would ever see it, it said, my own choice." },
+    { s: 'haru', f: 'neutral', t: "So you can keep the garden. After. And every time you put them on, you'll know." },
+    { choose: [
+      { t: "(Give her a packet of tomato seeds. You labeled it yourself.)", notes: 3, then: [
+        { n: "It was the cheap kind from the hardware store by the station, but Solar had written on the back of the packet in her best block capitals. HARU. PLANT IN SPRING. ANY WORLD." },
+        { s: 'haru', f: 'surprised', t: "...Any world." },
+        { n: "Haru held the little packet in both hands like a ring box, and her eyes filled, and she laughed, and said the seeds would be very confused about which world was theirs, and that she would explain it to them, gently, as many times as it took." }
+      ] },
+      { t: "(Give her a new trowel. Red handle. A very good edge.)", notes: 3, then: [
+        { s: 'haru', f: 'happy', t: "Oh! Oh, it's beautiful. Look at the edge on it, Solar-chan." },
+        { n: "She ran a gloved thumb along it with the same expert, alarming tenderness she had once shown a battle axe, and then hugged the trowel to her chest, and then hugged Solar, trowel and all, carefully, from slightly to one side." }
+      ] },
+      { t: "(Give her a Wild-Duck Burger gift card. Ten thousand yen.)", notes: 2, then: [
+        { s: 'haru', f: 'happy', t: "Ten thousand! That's so much research! Fufu. I'll need a research partner." },
+        { s: 'solar', t: "I'm available." }
+      ] }
+    ] },
+    { n: "They found a bench at the far end of the roof, away from the tree and the couples and the speakers playing carols, where the lights gave out into the dark and you could see the whole bay, black and glittering, and the bridge strung across it like a necklace." },
+    { s: 'haru', f: 'neutral', t: "When I woke up on that roof in June, I thought I'd been punished. Thrown away somewhere. I thought, well, at least there are plants." },
+    { s: 'haru', f: 'blushing', t: "And then a girl came through the door and knelt down in the dirt with me without asking why. And I've been choosing things ever since. Burgers. Coffee. Axes. You." },
+    { choose: [
+      { t: "You saved me too, you know. I just hadn't noticed I needed it.", notes: 3, then: [
+        { s: 'haru', f: 'surprised', t: "...I did?" },
+        { s: 'solar', t: "I hadn't had dirt under my nails or a reason to smile in years. You gave me both on the first day." },
+        { s: 'haru', f: 'blushing', t: "Fufu... I'll take credit for the dirt." }
+      ] },
+      { t: "(Don't say anything. Just take her hand.)", notes: 3, then: [
+        { n: "Solar took her hand. Haru looked down at it, and then at Solar, and then out at the bay, and held on with a grip much, much stronger than anyone who had only ever seen her smile would have guessed." }
+      ] }
+    ] },
+    { s: 'haru', f: 'serious', t: "Solar-chan. I'm going home when the green hour closes. I can't change that. But I want to promise you something, and I want you to hold me to it." },
+    { s: 'haru', f: 'blushing', t: "In every world, I'll choose you. Every time. Even in the ones where we haven't met yet. Especially those." },
+    { s: 'solar', t: "Every time?" },
+    { s: 'haru', f: 'happy', t: "Every time. It's the only decision I've never had to think about." },
+    { n: "She took Solar's face in her gloved hands, the way she had on the roof in November, carefully, like something rare from the garden, and kissed her under the last of the lights with the snow coming down around them, soft and slow and so sure of itself that Solar forgot, for a long time, that there was any such thing as a world that ended." },
+    { n: "When they drew apart there was snow on Haru's eyelashes and her hat had gone crooked and she was smiling, not the pleasant, practiced smile from the dinner parties but the other one, the real one, a little wild." },
+    { s: 'haru', f: 'happy', t: "Merry Christmas, Solar-chan. That's the first time I've ever meant it." }
+  ] },
   romance: true,
   cast: { ann: 'Ann', makoto: 'Makoto', shinjiro: 'Shinjiro', akihiko: 'Akihiko' },
   texts: [

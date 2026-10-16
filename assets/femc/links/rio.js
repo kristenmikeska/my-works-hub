@@ -109,6 +109,222 @@ FemcSocial.define({
       { n: "They played until Solar hit three. It took forty minutes. When the third one landed Rio cheered so loudly it echoed off the ceiling, and then looked around the empty gym to make sure nobody had heard her." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate).
+  dates: [
+    { title: 'four frames', place: 'Paulownia Mall · Photo Booth', music: 'joy', scene: [
+      { n: "Rio had never been on a date, and she prepared for it the only way she knew how, which was to treat it like an away match. She arrived twenty minutes early. She had clearly stretched. Her ponytail was so high and so tight it looked like it was holding her face on." },
+      { s: 'rio', f: 'serious', t: "Okay. I looked it up. Couples go to the mall. They walk around. They get crepes. They take sticker pictures. In that order." },
+      { s: 'rio', f: 'flustered', t: "...I didn't look it up. Hina told me. Hina made me a list. Don't look at the list." },
+      { n: "The list was in her coat pocket, folded into a tiny hard square. Solar did not look at the list. She did, however, see the corner of it sticking out, which said in Hina's round handwriting HOLD HER HAND!!!! and had been underlined so many times the pen had gone through." },
+      { n: "They walked around. They got crepes. Rio finished hers in four bites, efficiently, and then watched Solar eat hers with such intense concentration that Solar asked if she wanted some, and Rio said no, and then said yes, and then leaned in and took a bite straight out of Solar's hand and turned so red she had to go and stare into a shop window for a full minute." },
+      { n: "The photo booth was at the back of the second floor between the arcade and the stairs, pink and plastered with pictures of girls making peace signs. Rio stood in front of it the way she stood at the service line." },
+      { s: 'rio', f: 'serious', t: "I'm bad at pictures. My face does a thing. Everybody says I look like I'm about to fight the camera." },
+      { choose: [
+        { t: "Then fight it. Glare at it. I'll do the peace sign.", notes: 3, then: [
+          { s: 'rio', f: 'happy', t: "...Okay. Okay, that I can do." }
+        ] },
+        { t: "Just look at me instead of the camera.", notes: 3, then: [
+          { s: 'rio', f: 'flustered', t: "That's worse. That's so much worse. You don't understand what you're asking." },
+          { n: "She got in the booth anyway." }
+        ] }
+      ] },
+      { n: "The booth was very small. There was a curtain and a bench and a screen with a cartoon rabbit on it that counted down from three in a high, cheerful voice, and Rio sat down beside her so stiffly that their shoulders bumped and then stayed bumped." },
+      { n: "The first frame flashed. Rio glared at the camera like it had served into the net. The second frame flashed. Rio glared at it like it had served into the net twice. On the third, at the last second, she turned her head to check whether Solar was doing it right, so that what the camera caught was the side of her face, close, mid-turn, ponytail swinging, looking at Solar like she'd forgotten there was a camera at all." },
+      { n: "On the fourth, the rabbit said three, and two, and Rio leaned over and kissed her on the cheek, fast and hard, like a spike, and the flash went off, and the rabbit said wonderful!" },
+      { s: 'rio', f: 'flustered', t: "...Hina's list said to. Number nine. It's not my fault. It's the list." },
+      { choose: [
+        { t: "What's number ten?", notes: 3, then: [
+          { s: 'rio', f: 'flustered', t: "There is no number ten." },
+          { s: 'rio', f: 'flustered', t: "...I wrote a number ten. In pencil. On the train." },
+          { n: "She didn't say what it was. She didn't have to. She did it, right there in the booth after the rabbit had stopped talking, slower than the cheek, much slower, one hand braced on the bench beside Solar's knee and the curtain swaying behind her, until somebody outside cleared their throat because they'd been waiting for the booth for five minutes." }
+        ] },
+        { t: "(Kiss her back. On the cheek. Fair's fair.)", notes: 3, then: [
+          { n: "Fair was fair. Solar kissed her cheek back, and Rio made a sound like a kettle and covered her whole face with both hands and stayed like that, while the booth printed their pictures with a cheerful whirr into the silence." }
+        ] }
+      ] },
+      { n: "The strip came out of the slot still warm. Four frames. Glare, glare, the turn, the kiss. Rio looked at it for a long time, at the third one especially, at her own face in it." },
+      { s: 'rio', f: 'neutral', t: "Huh. I don't look like I want to fight anyone in that one." },
+      { s: 'solar', t: "You look like you like me." },
+      { s: 'rio', f: 'flustered', t: "That's because I do. Obviously. Shut up." },
+      { n: "She tore the strip down the middle, carefully, two frames each. She kept the glares and gave Solar the turn and the kiss, and then at the station, without a word of explanation, took the kiss back and gave her a glare instead, and kept the kiss in her phone case, where Hina would find it eventually and scream." }
+    ] },
+    { title: 'chaperones', place: 'Hagakure Ramen', music: 'joy', scene: [
+      { n: "Rio had sworn in June that she would pay for the next ramen, fast and without warning, and she'd been trying to make good on it ever since, which was how they came to be walking into Hagakure on a Saturday night with Rio half a step ahead and her wallet already in her hand, like she meant to slap it on the counter the second they were through the door." },
+      { n: "She came through the door. She stopped. Solar walked into her back." },
+      { n: "At the counter, on two stools, eating ramen with the elaborate innocence of people who had been eating ramen for exactly as long as it took to see somebody come through a door, sat Hina Okabe and Ayane Moriguchi." },
+      { s: 'hina', f: 'happy', t: "RIO! Oh my gosh! What a coincidence! We had no idea you'd be here! At seven! On a Saturday!" },
+      { s: 'ayane', f: 'neutral', t: "Hina checked her watch four times." },
+      { s: 'rio', f: 'serious', t: "How did you know." },
+      { s: 'ayane', f: 'neutral', t: "You asked the team chat which ramen place was the most romantic. Then you deleted it. Then you asked again with romantic spelled wrong, as though that would help." },
+      { choose: [
+        { t: "Hi, Hina. Hi, Ayane. Scoot over.", notes: 3, then: [
+          { s: 'hina', f: 'happy', t: "YES. Manager's orders!" },
+          { s: 'rio', f: 'flustered', t: "Do NOT scoot over. Do not. This is a. This is a closed practice." },
+          { n: "They scooted over. Rio sat down at the far end of the four stools, next to Solar, with her arms folded and her ears the color of the chili oil." }
+        ] },
+        { t: "(Take Rio's hand. In front of both of them.)", notes: 3, then: [
+          { n: "Solar took Rio's hand, there in the doorway, in front of both of them, and Rio went rigid, and then, very slowly, laced her fingers through Solar's and held on, and glared at her teammates over the top of it like she was daring them." },
+          { s: 'hina', f: 'surprised', t: "..." },
+          { n: "Hina put both hands over her mouth. Her eyes filled up instantly, like a faucet had been turned." }
+        ] }
+      ] },
+      { n: "It was a disaster. Hina narrated everything in a whisper she believed was quiet. Ayane produced an English notebook from her coat and opened it to a back page covered in tally marks, and added a new one, without comment, every time Rio looked at Solar. The man behind the counter, who knew Rio, who had watched her eat three bowls alone after every lost match since first year, brought them all free gyoza and wouldn't say why." },
+      { s: 'ayane', f: 'neutral', t: "Forty-one. She's at forty-one since we sat down." },
+      { s: 'rio', f: 'serious', t: "Ayane, I will serve at your face." },
+      { s: 'ayane', f: 'neutral', t: "Forty-two." },
+      { n: "And Rio, in the middle of all of it, kept forgetting to be furious. Solar watched it happen. She'd start to snap, and then Hina would laugh, or Ayane would say something drier than the gyoza, and the snap would come out of her as a laugh instead, short and surprised, and she'd glance at Solar sideways like she was checking whether that was allowed." },
+      { choose: [
+        { t: "(Steal her egg.)", notes: 3, then: [
+          { n: "Solar reached over with her chopsticks and took the egg out of Rio's bowl. Rio looked at her. Hina gasped. Ayane put down her pen." },
+          { s: 'rio', f: 'surprised', t: "...You stole my egg." },
+          { s: 'rio', f: 'happy', t: "Nobody's ever stolen my egg. Nobody would dare." },
+          { n: "She said it like it was the most romantic thing that had ever happened to her, and from the look on her face, it might have been." }
+        ] },
+        { t: "They love you, you know. That's why they came.", notes: 2, then: [
+          { s: 'rio', f: 'flustered', t: "...I know. I know. That's the worst part. I can't even be mad properly." }
+        ] }
+      ] },
+      { n: "When the bill came, Rio's hand shot out for it like a spike. Ayane's was faster. She'd been a libero for six years. She said it was on the team, and also for being right about the ponytail, and Rio could pay next time, and next time they would not be there, probably." },
+      { s: 'hina', f: 'happy', t: "PROBABLY." },
+      { n: "Outside in the cold Hina hugged both of them at once and ran off down the street, still crying a little, waving, and Ayane followed with a short nod that Solar was fairly sure was a blessing. Rio stood under the awning with her hands jammed in her pockets and watched them go." },
+      { s: 'rio', f: 'flustered', t: "That was the worst date in the history of dating." },
+      { s: 'rio', f: 'happy', t: "...Can we do it again. Without them. And also a little bit with them." }
+    ] },
+    { title: 'off-season', place: 'Port Island · Seaside Park', scene: [
+      { n: "The sand court at the end of Seaside Park was closed for the winter. Someone had taken the net down and rolled it up and chained it to one of the poles, and the sand had frozen into hard ridges under a thin skin of snow, and the wind came in off the bay with nothing in its way." },
+      { n: "Rio stood at the edge of it anyway, in her big coat and a knitted hat someone had obviously made her wear, hands deep in her pockets, looking at the court the way you'd visit somebody in the hospital." },
+      { s: 'rio', f: 'neutral', t: "I come out here sometimes in winter. Just to look. Nobody else does." },
+      { s: 'rio', f: 'neutral', t: "It's the only time I ever stop. When there's nothing to practice on." },
+      { n: "They sat on the seawall with their legs hanging over the frozen sand. Solar had bought two cans of hot corn soup from the machine at the park entrance, and they held them in their gloves without opening them, just held them, for the warmth." },
+      { choose: [
+        { t: "What do you think about? When you stop.", notes: 3, then: [
+          { s: 'rio', f: 'sad', t: "...After. What happens after." },
+          { s: 'rio', f: 'sad', t: "Third year's the last one. Then there's no more tournaments. No more Hina setting for me. I've never once thought about what I am when there isn't a next match." }
+        ] },
+        { t: "(Bump her shoulder with yours, the way she bumps Hina's.)", notes: 2, then: [
+          { n: "Solar bumped her shoulder. Rio bumped back, harder, automatically, and then left her shoulder where it was against Solar's, and let out a long breath that went white and blew away." }
+        ] }
+      ] },
+      { s: 'rio', f: 'sad', t: "Everyone else has a plan. Hina wants to be a nurse. Ayane's taking over the shop. I just have volleyball, and volleyball runs out." },
+      { s: 'rio', f: 'neutral', t: "That's not a sad thing. I'm not being sad. I'm being accurate." },
+      { n: "She was being a little sad. Solar could hear it under the accurate, the way you could hear the sea under the wind. She opened her can of soup and handed it to Rio, and took Rio's unopened one and opened that too, so that both of them had something hot, and Rio watched her do it and didn't say anything." },
+      { s: 'solar', t: "You don't have to know yet. You're seventeen." },
+      { s: 'rio', f: 'flustered', t: "I like knowing. I'm bad at things I don't have a name for. You know that. You were one of them." },
+      { choose: [
+        { t: "You named me pretty fast, in the end.", notes: 3, then: [
+          { s: 'rio', f: 'flustered', t: "In the end. It took me eight months and I said it all in one breath like an idiot." },
+          { s: 'solar', t: "It was a good breath." },
+          { s: 'rio', f: 'happy', t: "...It was a pretty good breath." }
+        ] },
+        { t: "Then figure out the after with me. We've got time.", notes: 3, then: [
+          { s: 'rio', f: 'surprised', t: "...With you." },
+          { n: "She said it like a word in a language she'd only just found out she spoke." }
+        ] }
+      ] },
+      { n: "Her hands were cold. They were always cold, even in the gym, even in summer, which she said was poor circulation and Solar suspected was just that Rio never held still long enough to warm up. Rio looked down at them, and then, without asking, without a word, pulled off her gloves and pushed both her bare hands into the pockets of Solar's coat, where Solar's own hands already were, and held on." },
+      { n: "It was the most forward thing Rio had ever done, and she did it looking straight ahead at the bay with her face set, like she was serving at match point." },
+      { s: 'rio', f: 'flustered', t: "Don't make it a thing." },
+      { s: 'solar', t: "It's not a thing." },
+      { s: 'rio', f: 'flustered', t: "It's a little bit a thing." },
+      { n: "They stayed until the soup was cold and the sky over the bay had gone dark blue and the lights had come on along the far shore. At some point Rio's head ended up on Solar's shoulder, hat and all, and at some point after that she said, very quietly, that the sand court was the best place in the world, and had been since August, and that this was not, she said, a coincidence." }
+    ] },
+    { title: 'too much', place: 'Iwatodai Dorm · Front Door', scene: [
+      { phone: [
+        { from: 'rio', t: 'are you awake' },
+        { from: 'rio', t: "don't come out. i'm not outside your dorm" },
+        { from: 'rio', t: "i'm a little bit outside your dorm" }
+      ], contact: 'Rio Iwasaki · 10:41 PM', handle: 'rio', me: 'solar' },
+      { n: "She was sitting on the front steps in her tracksuit with her coat hanging open and her ponytail half out, like she'd started pulling the tie loose on the walk over and forgotten to finish, and she looked up when the door opened with a face so tired and so braced that Solar sat down beside her without saying anything at all." },
+      { n: "The street was empty. The cold came up off the concrete through Solar's pajama pants. Somewhere down the block a vending machine hummed to itself, the only light besides the porch." },
+      { s: 'rio', f: 'sad', t: "I yelled at a first-year today. Tomo. The one who hit the winner in October." },
+      { s: 'rio', f: 'sad', t: "She shanked three receives in a row and I heard it come out of me. If you're not going to try. Like the last nine months didn't happen. Like I'm still her." },
+      { choose: [
+        { t: "Did you apologize?", notes: 2, then: [
+          { s: 'rio', f: 'neutral', t: "Right away. In front of everyone. She said it was fine. She said it like it was fine." },
+          { s: 'rio', f: 'sad', t: "That's not the point. The point is it's still in there." }
+        ] },
+        { t: "You heard it. That's the part that's different.", notes: 3, then: [
+          { s: 'rio', f: 'surprised', t: "..." },
+          { s: 'rio', f: 'sad', t: "...I heard it. And I stopped. I stopped halfway through the sentence." },
+          { s: 'solar', t: "In April you'd have finished it." }
+        ] }
+      ] },
+      { s: 'rio', f: 'sad', t: "I'm going to be too much for you. That's what I came here to say. I'm going to be too much, because I'm too much for everybody, eventually. I want things too hard. I say them too fast." },
+      { s: 'rio', f: 'flustered', t: "So when it happens. When I'm too much. I need you to tell me. Don't just go quiet and leave. Everybody goes quiet first. Tell me." },
+      { n: "She said it to the street, not to Solar, jaw tight, the way she'd said it to the ball cart on the very first night. Solar looked at the side of her face in the porch light, the tired eyes and the stubborn mouth and the half-fallen ponytail, and thought that she had never in her life been looked at as hard as Rio looked at things, and that she would not trade it for anything quieter." },
+      { choose: [
+        { t: "You're not too much. You're exactly the amount I want.", notes: 3, then: [
+          { s: 'rio', f: 'flustered', t: "That's not a real amount." },
+          { s: 'solar', t: "It's my amount. I get to decide it." },
+          { s: 'rio', f: 'flustered', t: "...That's very annoying. I can't argue with that. That's so annoying." }
+        ] },
+        { t: "I promise. I'll tell you. And I won't leave.", notes: 3, then: [
+          { s: 'rio', f: 'surprised', t: "...Both?" },
+          { s: 'solar', t: "Both. Those are two different things. You keep making them the same thing." },
+          { n: "It was what Rio had said about herself in the dark gym in June, and Rio heard it, and let out a breath like she'd been holding it since then." }
+        ] }
+      ] },
+      { n: "The ponytail was still half out. Solar reached up and slid the tie the rest of the way, and all that black hair came down over Rio's shoulders in the cold, and Rio didn't move, didn't flinch, only closed her eyes." },
+      { s: 'solar', t: "Turn around." },
+      { n: "Rio turned around on the step. Solar gathered her hair in both hands, heavy and cool and smelling faintly of the gym and some sharp green shampoo, and divided it into three, and began to braid it, slowly, the way her mother had braided hers a long time ago, when she was small enough to sit on a step and be braided, before the car and the bridge." },
+      { n: "Rio's shoulders came down, inch by inch. Her breathing slowed. By the end of the braid she was leaning back against Solar's knees with her eyes shut, completely still, the stillest Solar had ever seen her. A girl who never stopped, stopped." },
+      { s: 'rio', f: 'neutral', t: "Nobody's done that since I was little." },
+      { s: 'rio', f: 'flustered', t: "...You have to do it again. Before every match. That's the rule now. I just made it." },
+      { n: "Solar tied it off with Rio's own hair tie and kissed the back of her neck, once, just above the collar of her coat, and felt the shiver go all the way through her." },
+      { n: "Rio sat there a long time after that, very red, very quiet, the braid over her shoulder, and then said she should go, and didn't, and said it again, and didn't, until Mitsuru opened a window somewhere above them and observed, pleasantly, that the front door would be locked in five minutes regardless of who was on which side of it." }
+    ] }
+  ],
+  // P3's Christmas Eve: on 12/24 evening, if Solar is romancing several people (rank 9+), she picks one; this plays.
+  christmas: { place: 'Port Island Station', scene: [
+    { n: "Port Island Station had put up its illuminations, a tunnel of white lights running the whole length of the plaza out front, and every couple in the city seemed to be walking through it slowly, arm in arm, stopping every three steps for a picture. Christmas Eve was a date night. Everybody knew that. Rio had looked it up anyway, in case there were rules." },
+    { n: "She was waiting at the near end of the tunnel in her big coat, scowling at the lights like they'd been put up specifically to inconvenience her, a shoebox tucked under one arm, and when she saw Solar she stopped scowling so fast it was almost a sound." },
+    { s: 'rio', f: 'flustered', t: "You're late. You're not late. I'm early. I've been here since six. It's fine. Merry Christmas." },
+    { s: 'rio', f: 'serious', t: "I'm going to be honest. I don't care about the lights. I've never cared about the lights. I care about whether you're cold." },
+    { s: 'solar', t: "I'm a little cold." },
+    { s: 'rio', f: 'serious', t: "Then we're walking fast." },
+    { n: "They did not walk fast. They walked through the whole tunnel slower than any couple in it, because halfway through, Rio took Solar's hand in her coat pocket and then seemed to forget how walking worked." },
+    { place: 'Port Island · Coastal Road', time: 'Night', music: 'tender' },
+    { n: "Past the station, past the lights, the road ran along the seawall in the dark, and it had started to snow, fine and steady, blowing in off the bay in long slants under the streetlamps. Nobody else was out here. The water was black and loud on the rocks below." },
+    { n: "Rio stopped under a streetlamp and held out the shoebox in both hands, stiffly, at arm's length, the way she'd once held out her bento on the roof." },
+    { s: 'rio', f: 'flustered', t: "Open it. Don't say anything until you've opened it." },
+    { n: "Volleyball shoes. White and navy, the good brand, the one the whole team wore, in exactly her size. Solar looked at them, and then at Rio." },
+    { s: 'rio', f: 'flustered', t: "You've been playing in your gym shoes since April. They're terrible. They have no grip. Your feet deserve better." },
+    { s: 'rio', f: 'flustered', t: "...I checked your shoe locker for the size. That sounds bad. Hina said it sounded bad. I did it anyway." },
+    { choose: [
+      { t: "(Give her a framed photo. The team, the tournament, every wrist with a 7.)", notes: 3, then: [
+        { n: "Yukari had taken it in October, from the third row, without telling anyone. The whole Gekkoukan team in a heap on the bench, crying, laughing, nine wrists with a smudged black 7, and in the middle of all of it, crushed and soaked and grinning, Rio." },
+        { s: 'rio', f: 'surprised', t: "..." },
+        { n: "Rio looked at it under the streetlamp for a long time. Snow landed on the glass. She wiped it off with her sleeve, carefully, and then held the frame against her chest with both arms and didn't say anything, because, Solar understood, she couldn't." }
+      ] },
+      { t: "(Give her a pack of black hair ties. And one red one.)", notes: 3, then: [
+        { s: 'rio', f: 'neutral', t: "Forty black ones. I go through these like nothing. That's actually useful." },
+        { s: 'rio', f: 'surprised', t: "...What's the red one for?" },
+        { s: 'solar', t: "Special occasions. Finals. Dates." },
+        { n: "Rio pulled the tie she was wearing out with her teeth, right there in the snow, gathered all her hair up in both hands, twisted it once, and snapped the red one into place, high and tight, without once taking her eyes off Solar's face." }
+      ] }
+    ] },
+    { s: 'rio', f: 'neutral', t: "In April I was alone in a gym with a cart. I thought that was what it took. Being alone with it. Wanting it more than everybody, so nobody could take it away." },
+    { s: 'rio', f: 'neutral', t: "Then you picked up the balls. You didn't even ask. You just started picking them up." },
+    { s: 'rio', f: 'flustered', t: "This whole year started with you picking up the balls, and I don't know how to say what that did, so I'm going to try, and you're not allowed to interrupt. I said I'd say things slower. So." },
+    { n: "She took a breath. Solar watched her take it, watched her square her shoulders the way she did at the service line, toss and step, and then, for once in her life, not rush the jump." },
+    { s: 'rio', f: 'flustered', t: "I. Love. You." },
+    { s: 'rio', f: 'flustered', t: "...That was slow. That was very slow. That counts as slow." },
+    { choose: [
+      { t: "I love you too. Fast, slow, any speed.", notes: 3, then: [
+        { s: 'rio', f: 'surprised', t: "...Any speed." },
+        { s: 'rio', f: 'happy', t: "Okay. Good. Good. Okay." }
+      ] },
+      { t: "Say it again. Faster this time. Like you mean it.", notes: 3, then: [
+        { s: 'rio', f: 'flustered', t: "IloveyouIloveyouIloveyou. Happy?" },
+        { s: 'solar', t: "Very." }
+      ] }
+    ] },
+    { n: "She kissed her under the streetlamp, in the snow, all at once, no wasted motion, the way she did everything, and then pulled back half an inch and did it again, slower, like she was correcting her own form. Snow was melting in her hair. Her nose was freezing against Solar's cheek. Out on the bay a ship went by, lit up, and its horn sounded once, long and low, and Rio didn't even look." },
+    { s: 'rio', f: 'neutral', t: "Next year. Every match. I want you in the stands, in those shoes." },
+    { s: 'rio', f: 'happy', t: "And before every match you toss for me. Ten, at least. To the left. For luck." },
+    { s: 'solar', t: "For luck." },
+    { n: "They walked the long way home along the water with the shoebox under Solar's arm, and Rio talked the whole way about drills and rotations and the Tatsumi setter's quicks, and somewhere around the third streetlight she stopped talking and just held Solar's hand in her pocket, and that, Solar thought, was the most Rio had ever said." }
+  ] },
   romance: true,
   cast: { hina: 'Hina', ayane: 'Ayane', junpei: 'Junpei', yukari: 'Yukari' },
   threads: { volley: { name: 'gkk girls volleyball 🏐', members: ['hina', 'ayane', 'rio'] } },

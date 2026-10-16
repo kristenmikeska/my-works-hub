@@ -124,6 +124,245 @@ FemcSocial.define({
       { n: "They went until her arms shook and the light through the high windows lay long and gold across the mats. On the way out he bought two drinks from the machine by the pool, and for once, by some miracle, neither of them was protein." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate).
+  dates: [
+    { title: 'the plan', place: 'Paulownia Mall · Chagall Café', music: 'joy', scene: [
+      { n: "Akihiko asked her on a date the way he asked her to do anything, which was by text at 5:12 in the morning, as if the hour were a formality he couldn't skip. The text said saturday. 1pm. chagall. Eleven seconds later it said it's a date. Eleven seconds after that it said a real one." },
+      { n: "He was there before her, at a table by the window, sitting very straight in a jacket she had never seen him wear, the sleeves already shoved up to the elbow because he could not, on principle, leave a sleeve alone. In front of him was a small notebook, open. It had times in it." },
+      { s: 'akihiko', f: 'blushing', t: "You came. Good. Sit. We're four minutes ahead." },
+      { n: "She read the notebook upside down, a skill she'd picked up in a great many school offices. 1:00 café. 1:40 walk. 2:10 arcade (claw machine?). 3:00 crepes. And at the very bottom, underlined twice, with nothing written after it at all, 4:30. When she asked, he closed the notebook and laid his hand flat on top of it, like it might get up and tell her itself, and said that part was classified." },
+      { n: "He ordered black coffee and the biggest slice of cake under the glass, and then asked the waitress, in a low and serious voice, whether it had any protein in it. She said it had eggs. He said that would do." },
+      { n: "The plan held for nearly an hour. The walk ran to schedule. Then the claw machine at the arcade took four hundred yen and gave nothing back, and Akihiko stood in front of it with his jaw set like it had said something about Shinji, and fed it another hundred, and another, and she understood with slow and total certainty that he was going to win her something or die trying, here, under the fluorescent lights, next to the racing game." },
+      { choose: [
+        { t: "(Put your hand over his on the joystick.)", notes: 3, then: [
+          { n: "She put her hand over his. All of him went still under it, the way he had on the shrine steps the first time their fingers touched, except that this time he didn't take his hand back." },
+          { n: "They steered it together, slowly, and the claw came down over a small, ugly, deeply lovable stuffed dog with one ear inside out, and closed, and lifted, and did not let go." },
+          { s: 'akihiko', f: 'surprised', t: "...It worked." },
+          { s: 'akihiko', f: 'happy', t: "Teamwork. That's what the plan was missing." }
+        ] },
+        { t: "Aki. It's rigged. Walk away.", notes: 2, then: [
+          { s: 'akihiko', f: 'serious', t: "Nothing's rigged if you hit it enough times." },
+          { n: "It was, though. He walked away eventually, with the dignity of a man leaving the ring on his own feet, and bought her a can of hot cocoa from the machine by the door instead, and held it between his own hands for a second to check it before he gave it to her." }
+        ] },
+        { t: "(Let him keep going. For science.)", notes: 1, then: [
+          { n: "Twelve hundred yen later it gave him a keychain shaped like a rice ball. He presented it to her with both hands, like a championship belt." }
+        ] }
+      ] },
+      { place: 'Paulownia Mall · Rooftop Garden', time: 'Evening', music: 'tender' },
+      { n: "At four twenty-eight he took her up to the roof of the mall, where there was a small garden nobody visited in winter, bare planters and one bench and the whole of Port Island laid out below, gray and gold, the sky already giving up on the day." },
+      { n: "At four-thirty he checked his watch. At four thirty-one the streetlights came on along the bay, all at once, every one of them, a long bright string running out toward the bridge like someone had pulled it tight." },
+      { s: 'akihiko', f: 'neutral', t: "I see that every day on the way back from the gym. Nobody ever looks up. I wanted someone to look up with me." },
+      { s: 'akihiko', f: 'blushing', t: "That's it. That was four-thirty. I didn't know how to write it down." },
+      { choose: [
+        { t: "(Look up with him.)", notes: 3, then: [
+          { n: "She looked up. He didn't. She could feel him not looking at the lights, the side of her face going warm in the cold, and when she finally turned to catch him at it he didn't look away the way he used to. He just smiled, crooked and caught, and kissed her, quick and a little off-center, like a punch thrown before he'd quite finished deciding to throw it." },
+          { s: 'akihiko', f: 'blushing', t: "...That wasn't in the plan either." }
+        ] },
+        { t: "You could have just said that, you know.", notes: 2, then: [
+          { s: 'akihiko', f: 'happy', t: "Ha. No. Some things you have to do live." },
+          { n: "He took her cold hand and put it in his jacket pocket with his own, and left it there, and looked at the lights like that had been the plan all along." }
+        ] }
+      ] },
+      { n: "They stayed until the plan ran out and a long while after, on the cold bench, her hand in his pocket, the notebook forgotten on the seat between them. It had fallen open to the back page. She only saw it later, on the walk home, when he wasn't looking. It said Solar, in his blunt square handwriting, and nothing after it, because that was the one part he hadn't known how to plan." }
+    ] },
+    { title: 'curry', place: 'Iwatodai Dorm · Kitchen', music: 'joy', scene: [
+      { n: "It was a Sunday, and the dorm kitchen smelled of onions, and Akihiko Sanada was standing at the stove in Shinji's old gray apron with the expression of a man about to step into the ring against someone two weight classes up." },
+      { n: "He had a recipe. It was written on the back of a supermarket receipt in handwriting that wasn't his, small and slanted and cramped, and he had smoothed it out on the counter so carefully that she knew without asking whose it was, and where he'd found it, and how long he'd stood in that empty room holding it before he decided to do this." },
+      { s: 'akihiko', f: 'serious-3', t: "Shinji's curry. It was in his desk. I asked Mitsuru first." },
+      { s: 'akihiko', f: 'serious', t: "When we were kids he decided somebody had to cook. So now I'm deciding." },
+      { choose: [
+        { t: "Then I'm your sous-chef.", notes: 3, then: [
+          { s: 'akihiko', f: 'happy', t: "Good. I don't know what that is. You're hired." }
+        ] },
+        { t: "Aki. Do you know how to cook?", notes: 2, then: [
+          { s: 'akihiko', f: 'neutral', t: "I know how to eat. It's the same thing backwards." },
+          { n: "It was not, it would turn out, the same thing backwards." }
+        ] },
+        { t: "(Retie his apron. He's knotted it like a hand wrap.)", notes: 3, then: [
+          { n: "He had tied it in a tight square knot at the small of his back, the way he finished off his tape. She stood behind him and picked it loose and tied a bow instead, and he held perfectly still while she did it, his ears going red above the collar, and said nothing at all, which from Akihiko was practically a sonnet." }
+        ] }
+      ] },
+      { n: "The recipe said one onion, finely. Akihiko cut the onion the way he worked the heavy bag, fast and rhythmic and with total commitment, and the pieces came out in every size that exists. The recipe said brown the meat. He browned it. He kept browning it, well past the point where browning was still a thing that could happen to it." },
+      { n: "At the bottom of the receipt, under the last step, in the same cramped hand, it said and don't rush it, Aki. He read that out loud. Then he turned the heat all the way up." },
+      { s: 'solar', t: "Aki." },
+      { s: 'akihiko', f: 'serious', t: "It's faster." },
+      { n: "The smoke alarm went off at 6:14. Junpei came down the stairs at a run in a towel and one slipper. Yukari came down behind him and opened every window in the lounge with the face of a woman who had predicted this in writing. Koromaru barked at the ceiling, helpfully." },
+      { s: 'junpei', f: 'surprised', t: "Yo, is the curry on fire? Senpai, did you set the curry on fire?" },
+      { s: 'akihiko', f: 'serious', t: "It's not on fire. It's browning." },
+      { s: 'yukari', f: 'serious', t: "It's BLACK, senpai." },
+      { choose: [
+        { t: "It's a family recipe. Show some respect.", notes: 3, then: [
+          { s: 'junpei', f: 'sad', t: "...Oh. Oh, wait, is it? Okay. Respect. Total respect." },
+          { s: 'junpei', f: 'neutral', t: "...Can I still open a window, though." }
+        ] },
+        { t: "(Fan the smoke alarm with a dish towel, with enormous dignity.)", notes: 2, then: [
+          { n: "She fanned it with enormous dignity. It kept screaming. Akihiko came and stood beside her and fanned it with a cutting board, also with enormous dignity, and between the two of them they made it stop out of what she could only assume was embarrassment." }
+        ] }
+      ] },
+      { music: 'tender' },
+      { n: "They started over. A new pot. A new onion, cut slower, his big hands careful on the knife now, her hand on his wrist for the first few strokes until he found the rhythm. Low heat. He stood over it for an hour without touching anything, which she knew cost him more than any set of intervals he'd ever run." },
+      { n: "It was ready at nine. He tasted it first. Then he put the spoon down on the counter and stood there looking at the pot, and the kitchen got very quiet." },
+      { s: 'akihiko', f: 'sad-3', t: "It's not right. It doesn't taste like his." },
+      { n: "She tasted it. He was right. It was too salty and a little scorched at the edges and the potatoes had given up entirely, and it was, she thought, the best thing anyone had cooked in that kitchen since October." },
+      { s: 'solar', t: "You told me he burned everything for a year. And you ate it anyway." },
+      { s: 'akihiko', f: 'surprised', t: "...You remember that?" },
+      { n: "She remembered everything he had ever told her. She didn't say that. She just took a second bowl." },
+      { n: "They ate it standing up at the counter, too late at night, with the windows still open and the cold coming in. Junpei came back for seconds and called it honestly not bad, for a crime scene, and Akihiko laughed so hard he had to put his spoon down. Afterward, drying the pot, he folded the receipt back up along its old creases and put it in his shirt pocket, on the left." },
+      { n: "He kissed her by the sink with his hands still wet. It tasted like curry and smoke. It was perfect, and she was never going to tell him so, because then he would make it again." }
+    ] },
+    { title: 'properly', place: 'Tatsumi Memorial Hospital · 3F Ward', scene: [
+      { n: "Visiting hours at Tatsumi Memorial ended at eight. Akihiko had been coming twice a week since October, and the night nurse on the third floor knew him well enough now that she just lifted her pen and pointed down the hall without looking up." },
+      { n: "Shinjiro looked smaller in the bed than he had ever looked standing up. That was the first thing. The second was the beanie, folded neatly on the side table next to a cup of wilting flowers, and the third was the way Akihiko pulled the chair to the bedside and sat in it, one easy movement, like a man sitting down at his own kitchen table." },
+      { s: 'akihiko', f: 'neutral', t: "Hey. It's me. Junpei failed a chemistry quiz. Mitsuru made him retake it in the lounge. Ken has a cold. Koro ate a sock." },
+      { n: "He gave the report like that, quick and flat and thorough, round by round. Then he stopped, and looked at his hands, and looked at Solar, standing at the foot of the bed with her coat still on." },
+      { s: 'akihiko', f: 'blushing', t: "And. I brought someone. You've met her. I kept saying I'd bring her properly, so. This is properly." },
+      { s: 'akihiko', f: 'blushing', t: "She's my girlfriend, Shinji. That's the first time I've said it out loud to anybody who isn't her." },
+      { choose: [
+        { t: "(Bow to him, the way you'd bow to someone's family.)", notes: 3, then: [
+          { n: "She bowed, low and properly, the way you bow to someone's family, because he was. When she straightened up Akihiko was looking hard at the window, and it took him a while to stop." }
+        ] },
+        { t: "Hi, Shinjiro-senpai. He talks about you every day.", notes: 3, then: [
+          { s: 'akihiko', f: 'surprised', t: "...I don't talk about him every day." },
+          { s: 'solar', t: "Every day." },
+          { s: 'akihiko', f: 'sad-2', t: "...Yeah. Okay. Every day." }
+        ] },
+        { t: "(Move the beanie closer to his hand.)", notes: 2, then: [
+          { n: "She slid it a few centimeters across the table until it sat right by his fingers, where he'd find it first. Akihiko watched her do it and didn't say anything, and didn't need to." }
+        ] }
+      ] },
+      { s: 'akihiko', f: 'sad-3', t: "He'd say you're too good for me. He wouldn't say it to you. He'd say it to me, in the hallway, and then he'd go and make you dinner." },
+      { n: "The monitor kept time. Somewhere down the corridor a cart went by with one squeaking wheel. At seven fifty-five the nurse put her head in, and Akihiko stood and laid two fingers on the back of Shinji's hand, once, like a boxer touching gloves before a round." },
+      { place: "Iwatodai Dorm · Akihiko's Room", time: 'Night', music: 'tender' },
+      { n: "His room was exactly what she'd imagined and nothing like it. Trophies on the shelf, a whole row of them, dusty and turned slightly away like he was embarrassed to be seen with them. A jump rope hanging on the doorknob. And taped to the wall above his desk, one photograph, soft at the corners, three small kids on the steps of a building that didn't exist anymore." },
+      { n: "He'd been fine at the hospital. He was always fine at the hospital. It was afterward. He sat on the edge of his bed with his elbows on his knees and his hands hanging, and stared at the floor between his feet like it had moved." },
+      { s: 'akihiko', f: 'sad-4', t: "Every time I leave I think, this is the one. The last time. And I just walk out. Every time, I get up and walk out the door." },
+      { choose: [
+        { t: "(Sit beside him and put your hand flat on his back.)", notes: 3, then: [
+          { n: "She sat beside him and laid her hand flat between his shoulder blades. She felt him breathe, once, ragged, and then again, slower, like he was matching something. Like her hand was a count he could follow." }
+        ] },
+        { t: "You walk out because you're coming back. That's different.", notes: 3, then: [
+          { s: 'akihiko', f: 'sad-2', t: "...Is it?" },
+          { s: 'solar', t: "It's the whole difference." }
+        ] }
+      ] },
+      { s: 'akihiko', f: 'sad-3', t: "Miki used to steal my egg. At dinner, at the home. Every night. She thought I didn't notice." },
+      { s: 'akihiko', f: 'sad-2', t: "I always noticed. I just let her." },
+      { n: "Solar thought about a bowl of ramen in May, at Hagakure, and an egg sliding into it without a word, and understood all at once, the way you understand some things once and then for the rest of your life, that it had never been about protein." },
+      { n: "They talked until the dorm went quiet around them, and then a while after. At some point she put her head on his shoulder because it was there. At some point after that she stopped hearing the words and heard only the shape of his voice, low, going on and on, like the sea under a bridge." },
+      { n: "She woke at 5:11 with a blanket over both of them that she didn't remember, and his arm gone completely numb around her, and him awake, watching the window go gray. He hadn't moved all night. When she asked, he said he'd been training." },
+      { n: "At 5:12 his alarm went off. He reached over and turned it off without looking. And for the first time since she had known him, he didn't get up." }
+    ] },
+    { title: 'five-twelve', place: 'Iwatodai · Riverside', music: 'sun', scene: [
+      { phone: [
+        { from: 'solar', t: 'you up' },
+        { from: 'akihiko', t: "it's 5:03" },
+        { from: 'solar', t: 'i know' },
+        { from: 'akihiko', t: 'who is this' },
+        { from: 'solar', t: 'your girlfriend. front door. you have 9 minutes' },
+        { from: 'akihiko', t: '...' },
+        { from: 'akihiko', t: '2' }
+      ], contact: 'Akihiko Sanada · 5:03 AM', handle: 'akihiko', me: 'solar' },
+      { n: "He came out of the dorm in ninety seconds with his hoodie on inside out and his laces trailing, and stopped dead on the step, because she was already there, stretching against the railing in the dark like she'd been awake for an hour and enjoyed every minute of it." },
+      { s: 'akihiko', f: 'surprised', t: "...You're early." },
+      { s: 'solar', t: "You're late. Rookie." },
+      { n: "He laughed, a real one, loud enough to wake the whole second floor, and then clapped a hand over his own mouth and kept laughing into it, and she thought she would get up in the dark a great many more times to hear that again." },
+      { n: "It had snowed in the night. Not much, a thin white skin over everything that their shoes broke through with a sound like paper tearing. The river was black and slow and steaming faintly in the cold, and they had the whole path to themselves, the streetlights still on, the city asleep on the other side of the water." },
+      { n: "She set the pace. He let her. She noticed him letting her for the first kilometer, and then somewhere in the second she noticed that he wasn't, that he was working, breathing hard beside her, keeping up." },
+      { s: 'akihiko', f: 'serious', t: "When did you get fast?" },
+      { choose: [
+        { t: "Sometime around June. You were busy watching my form.", notes: 3, then: [
+          { s: 'akihiko', f: 'blushing', t: "I was watching your form." },
+          { s: 'solar', t: "Sure." },
+          { s: 'akihiko', f: 'blushing', t: "...Mostly your form." }
+        ] },
+        { t: "Race you to the bridge.", notes: 3, then: [
+          { s: 'akihiko', f: 'happy', t: "Ha! You're on." },
+          { n: "She lost by a stride, maybe two. He turned around at the railing with both arms up, and then saw how close it had been, and lowered them slowly, and looked at her the way he looked at an opponent he respected, which from him was very nearly a proposal." }
+        ] },
+        { t: "(Save your breath and just run.)", notes: 2, then: [
+          { n: "She saved her breath. He looked over at her, twice, three times, and grinned at the path ahead like it had told him a good joke." }
+        ] }
+      ] },
+      { n: "They stopped on the bridge, the same one as in May, and leaned on the same railing, and the sky over the bay did the thing it did, gray to silver to a gold too bright to look at, all at once, the way it only ever happens over water." },
+      { n: "He handed her his water bottle without saying anything. She drank and handed it back. He drank after her without wiping it, and she noticed, and he noticed her noticing, and neither of them said anything about that either." },
+      { s: 'akihiko', f: 'neutral', t: "You used to run like you were trying to get away from something." },
+      { s: 'akihiko', f: 'happy', t: "You don't anymore." },
+      { choose: [
+        { t: "What do I run like now?", notes: 3, then: [
+          { s: 'akihiko', f: 'blushing', t: "Like you're going somewhere." },
+          { s: 'akihiko', f: 'blushing', t: "...Like you're going home." }
+        ] },
+        { t: "I think I stopped needing to.", notes: 3, then: [
+          { s: 'akihiko', f: 'surprised', t: "..." },
+          { s: 'akihiko', f: 'happy', t: "Yeah. I think that's what happened to me too." }
+        ] }
+      ] },
+      { s: 'solar', t: "I like this part. Before anyone's awake." },
+      { n: "She said it to the water, the way he'd said it to her in May, and felt him go still beside her as he recognized it." },
+      { s: 'akihiko', f: 'neutral', t: "Nobody needs anything from you yet." },
+      { s: 'solar', t: "You do." },
+      { s: 'akihiko', f: 'blushing', t: "...Yeah. I do." },
+      { n: "He kissed her on the bridge with the sun coming up behind him, both of them cold and red-cheeked and still breathing hard, his hand warm at the back of her neck. When he pulled away there was frost on his eyelashes. She told him. He said that was impossible. She showed him on her phone, and he looked at himself for a long, astonished moment, and then took another picture, of the two of them, the bay behind, gold." },
+      { n: "It was the first photo of them together. He made it his lock screen before they reached the end of the bridge, and ran the whole way back with the phone in his hand so he could keep looking at it, which, for Akihiko Sanada, was very bad form." }
+    ] }
+  ],
+  // P3's Christmas Eve: on 12/24 evening, if Solar is romancing several people (rank 9+), she picks one; this plays.
+  christmas: { place: 'Iwatodai Dorm · Hallway', scene: [
+    { n: "He was at her door. Not the front door. Her door, on the third floor, the girls' floor, where he was not allowed to be under a rule Mitsuru had written down in April and then laminated, knocking with one knuckle so softly it was barely a knock at all, as if the sound might carry two floors down and wake her." },
+    { n: "There was snow in his hair. He had clearly already been outside, and come back in, and climbed the stairs, and stood here for a while working up to the knocking. Her coat was folded over his arm, and her scarf, and her gloves, all of it, like a waiter with a towel." },
+    { s: 'akihiko', f: 'blushing', t: "I know. I know. Mitsuru. Come on, before she hears." },
+    { s: 'akihiko', f: 'blushing', t: "Merry Christmas Eve." },
+    { n: "They went down the stairs like burglars. In the lounge Junpei and Yukari were watching a movie under one blanket from opposite ends of the couch, and both of them looked up, and Yukari elbowed Junpei in the ribs so hard before he could open his mouth that all he managed was a small wounded sound, and a thumbs up." },
+    { place: 'Moonlight Bridge', time: 'Night', music: 'tender' },
+    { n: "The snow had been falling since dusk and showed no sign of stopping. It came down slow and fat through the streetlights and settled on the railings and on the shoulders of his coat and in the empty lanes of the bridge, the whole city gone soft and hushed and strange, like a room after a party, like the world had been put away for the night." },
+    { n: "He walked her to the middle of the bridge, where the view was best, and then stood there with his hands jammed in his pockets saying nothing for long enough that she began to worry, and then pulled out a box wrapped in the sports section of the newspaper with so much tape on it that it was mostly tape." },
+    { s: 'akihiko', f: 'blushing', t: "Don't look at the wrapping. I did it eight times." },
+    { n: "Inside was a scarf. Red, soft, very good wool, and long. Absurdly long. It kept coming out of the box, and coming out, until she was standing there holding an armful of it and laughing and he was red to the ears." },
+    { s: 'akihiko', f: 'blushing', t: "The lady at the shop asked how long. I said long. She took me seriously." },
+    { n: "He took it from her and wound it around her neck, once, twice, carefully, his knuckles cold against her jaw, tucking the ends like he was wrapping her hands before a round. There was still a great deal of scarf left. He looked at it, considering, and then looped the rest around his own neck, so that they stood in the middle of Moonlight Bridge tied together by eleven feet of red wool." },
+    { s: 'akihiko', f: 'happy', t: "There. Now it's the right length." },
+    { choose: [
+      { t: "(Give him the cookbook. One page is folded down. Curry.)", notes: 3, then: [
+        { n: "It was a beginner's cookbook, the kind with a photograph for every step, and she had folded down the corner of exactly one page. He opened it right to it, and looked at the picture of the curry for a long time, snow landing on the page and melting." },
+        { s: 'akihiko', f: 'sad-2', t: "...Somebody has to." },
+        { s: 'akihiko', f: 'happy', t: "Shinji's going to be so mad when he wakes up and I can cook." }
+      ] },
+      { t: "(Give him new hand wraps. You wrote something inside the cuff.)", notes: 3, then: [
+        { n: "Red, to match nothing, because she'd liked them. Inside the cuff of the left one, in small careful marker, she had written 5:12." },
+        { s: 'akihiko', f: 'surprised', t: "..." },
+        { s: 'akihiko', f: 'blushing', t: "I'm never using these. ...I'm using these every day." }
+      ] },
+      { t: "(Give him a tub of protein powder with a bow on it.)", notes: 2, then: [
+        { s: 'akihiko', f: 'happy', t: "Is this the matcha one? It's the matcha one. Solar." },
+        { n: "He hugged the tub to his chest, and then hugged her with it still in his arms, which was uncomfortable for everyone, especially the tub." }
+      ] }
+    ] },
+    { n: "They leaned on the railing, tied together, and watched the snow fall into the black water and vanish, one flake after another, without a sound." },
+    { s: 'akihiko', f: 'neutral', t: "In April you walked past me in that hallway like you were already halfway out of the building. I thought, that one's going to bolt." },
+    { s: 'akihiko', f: 'serious-3', t: "I wanted to see if I could keep up." },
+    { n: "She thought about the hallway, and the girls by the window, and the performance she'd been giving that day, polite and present and unremarkable, the girl nobody asked about. She thought about how many towns she had left before anyone got close enough to notice she was going. She had never once stayed anywhere long enough for a Christmas to mean anything." },
+    { choose: [
+      { t: "This is the first year I didn't count the days until I'd leave.", notes: 3, then: [
+        { s: 'akihiko', f: 'sad-2', t: "...You used to count?" },
+        { s: 'solar', t: "Every year. Every town. I stopped sometime in May. I didn't even notice." },
+        { s: 'akihiko', f: 'blushing', t: "May. The bridge." },
+        { s: 'solar', t: "The bridge." }
+      ] },
+      { t: "You kept up.", notes: 3, then: [
+        { s: 'akihiko', f: 'blushing', t: "Barely." },
+        { s: 'solar', t: "Barely still counts." },
+        { n: "It was his line, from the very first morning, and he recognized it, and his whole face went soft and helpless in the cold." }
+      ] }
+    ] },
+    { s: 'akihiko', f: 'serious-3', t: "I graduate in March. I don't know where I'll end up after that. Somewhere I'm useful." },
+    { s: 'akihiko', f: 'blushing', t: "But wherever it is, I'm running back. You're getting a text at 5:12 for the rest of your life. I'm warning you now." },
+    { s: 'solar', t: "Is that a promise or a threat?" },
+    { s: 'akihiko', f: 'happy', t: "Yes." },
+    { n: "He kissed her then, in the middle of the bridge, in the middle of the snow, the red scarf pulling them closer every time either of them moved, so that there was nowhere to go but in. His hands were cold on her face. His mouth wasn't. Snow caught in his eyelashes and melted against her cheek, and somewhere across the water a bell began to ring in Port Island, ten slow strokes, and neither of them counted." },
+    { s: 'solar', t: "Merry Christmas, Aki." },
+    { s: 'akihiko', f: 'blushing', t: "...Say it again tomorrow." },
+    { n: "She did. And the day after that, too, just to watch his ears go red, which they did, every single time, all the way into the new year." }
+  ] },
   romance: true,
   cast: { junpei: 'Junpei', mitsuru: 'Mitsuru', yukari: 'Yukari', shinjiro: 'Shinjiro' },
   stamps: { 1: ['senpai'], 10: ['max-rank'] },

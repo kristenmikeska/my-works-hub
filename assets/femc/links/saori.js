@@ -102,6 +102,215 @@ FemcSocial.define({
       ] }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate).
+  // The game never closes her link, so every date is set in the weeks before Sendai, with the move still ahead.
+  dates: [
+    { title: 'the breakwater', place: 'Port Island · Harbor', scene: [
+      { n: "There was a lighthouse at the end of the Port Island breakwater. Not a real one, not anymore, not a keeper's lighthouse, only a small white concrete tower with a red light on top that blinked every four seconds for the ferries, and Saori had lived in this city for three years and had never once walked out to it." },
+      { s: 'saori', f: 'flustered', t: "I've read about forty lighthouses. I've never touched one. I was always afraid it would be... smaller. Than in books. And then I'd have to know that." },
+      { n: "The breakwater ran a long way out into the bay, a concrete path with a rail on one side and open water on the other, and it was cold out there the way only the sea is cold, a wet cold that came through your coat and settled in your bones. Saori had her cardigan on under her coat and her scarf up to her nose and her hand in Solar's pocket, where it had been since the station, where neither of them had said a word about it." },
+      { n: "The tower got bigger as they walked. It did not get very big." },
+      { choose: [
+        { t: "It's smaller than in books.", notes: 2, then: [
+          { s: 'saori', f: 'sad', t: "...It is. It's a lot smaller." },
+          { n: "She stood looking at it with her scarf pulled up, and for one awful second Solar thought she'd ruined it. Then Saori laughed into the scarf, small and helpless." },
+          { s: 'saori', f: 'happy', t: "It's so small. It's doing its best. Look at it blinking. Oh, I love it." }
+        ] },
+        { t: "(Let go of her hand. Let her walk the last part alone.)", notes: 3, then: [
+          { n: "Solar slowed and let go, and Saori looked back once, uncertain, and then walked the last twenty meters on her own and laid her bare palm flat against the white concrete and stood there like that, very still, with the red light going on and off above her every four seconds." },
+          { n: "When she came back her eyes were bright and her hand was red with cold, and she put it straight back into Solar's pocket like it lived there." }
+        ] }
+      ] },
+      { s: 'saori', f: 'neutral', t: "There's a line in A Year of Small Weather. When she finally sees his lighthouse from the cliff, she writes, It is only a light. I had built it a whole person." },
+      { s: 'saori', f: 'sad', t: "I always thought that was the saddest line in the book. That she was disappointed." },
+      { s: 'saori', f: 'happy', t: "But I think now she wasn't. I think she was relieved. That it was only a light. That it was real enough to touch." },
+      { n: "They sat at the very end of the breakwater with their backs against the little tower, the concrete cold through their coats, and watched the evening ferry go out to the mainland lit up gold, while the red light blinked above their heads, patient, every four seconds, like someone taking a pulse." },
+      { s: 'saori', f: 'flustered', t: "Can I tell you something? It's very embarrassing." },
+      { s: 'saori', f: 'flustered', t: "In May I thought you were someone I'd made up. Someone I'd read. You sat down at my table, and I went home and thought, that didn't happen. People don't do that." },
+      { choose: [
+        { t: "And now?", notes: 3, then: [
+          { s: 'saori', f: 'neutral', t: "Now you're real enough to touch." },
+          { n: "She reached up with her cold hand, slowly, the way she'd reach for a book on a high shelf, and touched Solar's face, her cheek, the line of her jaw, as if she were checking, and then kissed her, carefully, against the side of the little lighthouse, with the red light going on and off above them like it was keeping watch." }
+        ] },
+        { t: "I'm only a light, Saori.", notes: 3, then: [
+          { s: 'saori', f: 'surprised', t: "..." },
+          { s: 'saori', f: 'happy', t: "...No. You're the whole person. I checked." },
+          { n: "She kissed her then, quick, startled at herself, and then again more slowly, her cold fingers on Solar's jaw, while the red light blinked over them every four seconds, like it was keeping count." }
+        ] }
+      ] },
+      { n: "Walking back, Saori counted the blinks out loud until they were too far away to see. She got to three hundred and twelve. Then she wrote the number down in the little notebook she kept in her coat, under the date, and under that, very small, she wrote something else, and covered it with her hand when Solar tried to look." }
+    ] },
+    { title: 'locked in', place: 'Gekkoukan High · Library', music: 'joy', scene: [
+      { n: "Ms. Ozawa had asked Saori to come in for one last inventory, and Saori had asked Solar, and that was how they came to be in the Gekkoukan library on a gray afternoon with the heating turned down to its holiday setting and the whole building empty around them, counting the 800s." },
+      { n: "Ms. Ozawa left at four. She said lock up when you're done, dear, and put the big brass key into Saori's hand, and went, and the door swung shut behind her, and in the quiet that came after it they both heard, very clearly, the bolt slide home on its own." },
+      { s: 'saori', f: 'surprised', t: "...Oh no." },
+      { n: "The key went in. The key did not turn. The key, as it had every single day for eight months, stuck, and this time, with the cold in the building, it stuck all the way. Saori tried it gently. She tried it firmly. She tried it with both hands and one foot braced against the door, which Solar had not known she was capable of." },
+      { s: 'saori', f: 'sad', t: "This is it. This is the bad luck. It waited for the very end. It's been saving up." },
+      { choose: [
+        { t: "Saori. We're locked in a library. This is the best thing that's ever happened to you.", notes: 3, then: [
+          { s: 'saori', f: 'surprised', t: "..." },
+          { n: "She looked at the door. She looked at the stacks behind them, rows and rows going back into the gray dark, ten thousand books and nobody to stop them." },
+          { s: 'saori', f: 'happy', t: "...Oh. Oh, it is, isn't it." }
+        ] },
+        { t: "(Call the janitor. Then sit down on the floor with her.)", notes: 2, then: [
+          { n: "The janitor said an hour, maybe two, he was across town. Solar sat down on the floor with her back against the circulation desk, and after a moment Saori sat down next to her and pulled her cardigan sleeves over her hands and said that two hours wasn't so bad, really. Not with company." }
+        ] }
+      ] },
+      { music: 'tender' },
+      { n: "The stack lights were on a timer, and the timer had gone with Ms. Ozawa, so the only light left was the green lamp on the evening desk. They sat in its circle. Outside the windows over the 900s the sky went from gray to dark blue to black, and it began, softly, to snow." },
+      { n: "Saori went and fetched the returns cart, because of course she did. She wheeled it into the lamplight and took the first book off and opened it and read the first line out loud, very softly, to the empty room, like saying hello to someone on their way home." },
+      { s: 'saori', f: 'neutral', t: "\"Nobody in the village could remember who had planted the orchard.\" ...That one's nice. Your turn." },
+      { n: "They went through the whole cart that way, taking turns, first lines only. A cookbook. A history of salt. A detective novel that began with a body and a romance that began with a train. Somewhere around the twentieth book Solar realized that Saori had stopped reading the lines to the room and had started reading them to her, looking up after every one, to see." },
+      { n: "Somewhere around the thirtieth, they had moved closer on the floor without either of them deciding to, until Saori's shoulder was against hers and the cardigan sleeve lay against the back of her hand, light as a page, the way it had on the shrine steps in August." },
+      { s: 'saori', f: 'flustered', t: "Here's one. \"She had read about it a hundred times, and still she was not ready.\"" },
+      { s: 'saori', f: 'flustered', t: "...That's not actually the first line of anything. I made it up. Sorry. I'm not sorry." },
+      { choose: [
+        { t: "What's the second line?", notes: 3, then: [
+          { s: 'saori', f: 'flustered', t: "I don't know yet. I didn't... I didn't write that far." },
+          { s: 'solar', t: "Then let's find out." },
+          { n: "Saori set the book down on the cart without looking, and it slid off and hit the floor with a flat clap that echoed through the whole empty library, and neither of them so much as flinched. Not even Saori. She was busy." }
+        ] },
+        { t: "(Kiss her before she can apologize again.)", notes: 3, then: [
+          { n: "Solar kissed her before she could apologize again. Saori made a small, surprised sound into it, and dropped the book, which hit the floor with a flat clap that echoed through the whole empty library, and for once in her life she did not flinch at a sound." }
+        ] }
+      ] },
+      { n: "The janitor came at seven. He found them sitting on the floor in the green lamplight a very long way apart, extremely interested in a returns cart. He opened the door with one hard shove of his shoulder and said this lock's been sticking since 1987, and Saori laughed so hard she had to hold on to the desk." },
+      { n: "On the steps outside, in the snow, she said it was the best bad luck she had ever had. Then she said it was possible it hadn't been bad luck at all. That some doors stick so you'll stay." }
+    ] },
+    { title: 'the dorm full of boys', place: 'Iwatodai Dorm · Lounge', music: 'joy', scene: [
+      { n: "Saori had never been inside the dorm. She had heard about it, the way the whole school had heard about it, mostly from Ōmori, mostly in the tone people used for haunted houses. The dorm full of boys. The girl who came home at strange hours. She stood on the front step now in her good coat with a box of cakes from the bakery by the station held out in both hands like a shield, or a peace offering, or both." },
+      { s: 'saori', f: 'flustered', t: "Is this too many cakes? I didn't know how many people. I got twelve. Is twelve strange? I can go back." },
+      { n: "Inside, the lounge was warm and loud and smelled of somebody's instant noodles, and the first person to see them was Junpei, who was lying upside down on the couch with his feet over the back, and who looked at Saori, and sat up so fast he fell off it." },
+      { s: 'junpei', f: 'surprised', t: "Whoa. Hasegawa. Hi. Hey. Hi." },
+      { n: "He got up. He stood there. He took his cap off, which Solar had never once seen him do indoors, and held it against his chest, and his ears went red." },
+      { s: 'junpei', f: 'sad', t: "Hey, so. Back in May. The stuff I said. About the car and the guy. I was just passing it on, but that's, like. That's still saying it. So. I'm really sorry." },
+      { choose: [
+        { t: "(Let Saori answer.)", notes: 3, then: [
+          { n: "Solar didn't say anything. She looked at Saori, and Saori looked at Junpei for a long moment, holding the cake box, with an expression Solar had last seen on her at the committee table in October." },
+          { s: 'saori', f: 'neutral', t: "Thank you, Iori-kun. It was my father. He brings me a book every month." },
+          { s: 'saori', f: 'happy', t: "...Would you like a cake? There are twelve." },
+          { s: 'junpei', f: 'happy', t: "Dude. Yes. Thank you. You're, like, a good person." }
+        ] },
+        { t: "Took you long enough, Junpei.", notes: 2, then: [
+          { s: 'junpei', f: 'sad', t: "I know, I know. I'm slow. I'm a slow guy. Ask anyone." },
+          { s: 'saori', f: 'happy', t: "...It's all right. Would you like a cake? I brought twelve." }
+        ] }
+      ] },
+      { n: "Yukari came downstairs at the sound of the word cake, saw Saori, said Saori!, and hugged her, which made Saori go stiff as a board and then, slowly, pink and pleased. They talked about the book club for twenty minutes. Yukari confessed she'd finished A Year of Small Weather. Saori asked, with deep suspicion, in what order. Yukari said in order. Saori looked at her for a long time and decided to believe her." },
+      { s: 'yukari', f: 'neutral', t: "Okay, you two, go. Go upstairs. I'll guard the cakes from Junpei." },
+      { place: "Iwatodai Dorm · Solar's Room", time: 'Evening', music: 'tender' },
+      { n: "Solar's room was small and very neat, because it had always been small and very neat, in every town. Saori stood in the doorway with her hands in her sleeves and looked at it for a long time, and Solar watched her see it. The one suitcase in the corner that had never quite been unpacked. The bare walls. The single shelf with nine books on it." },
+      { s: 'saori', f: 'sad', t: "You only have nine books." },
+      { s: 'solar', t: "I move a lot. Books are heavy." },
+      { choose: [
+        { t: "I used to leave them behind. In every town. In the school library, on my last day.", notes: 3, then: [
+          { s: 'saori', f: 'sad', t: "...So you were someone's tin. Someone found your books, and you were holding their place, and you never knew." },
+          { n: "She said it so gently that Solar had to look at the window for a while." }
+        ] },
+        { t: "Go on. Judge them. I know you want to.", notes: 2, then: [
+          { s: 'saori', f: 'happy', t: "I would never. ...The swimmer one is very good. The romance is terrible. You know it's terrible." },
+          { s: 'solar', t: "I know." }
+        ] }
+      ] },
+      { n: "Saori took off her coat and sat on the end of the bed, carefully, as if it were a pew. Then she took a book out of her bag. Then another. Then a third. She lined them up on Solar's shelf beside the nine, spines out, straightening them with one finger until they were exact." },
+      { s: 'saori', f: 'flustered', t: "Three of mine. Not to borrow. To keep. So when I'm in Sendai there'll be something of mine on your shelf, and you'll have twelve, and twelve is a much better number than nine." },
+      { s: 'saori', f: 'flustered', t: "Twelve's the number of cakes. I didn't plan that. I'm only noticing it now." },
+      { n: "They read on the bed for the rest of the evening, side by side against the wall with their shoulders touching, a book each, not talking. Downstairs Junpei was laughing at something on the television. The radiator ticked. At some point Saori's head tipped onto Solar's shoulder, and at some point after that Solar realized she hadn't turned a page in twenty minutes, because she was listening to Saori breathe." },
+      { n: "When it was time to go, Saori stood in the doorway again and looked back at the shelf, at the twelve books, at the room, which looked, Solar thought, very slightly less like somewhere she was about to leave." },
+      { s: 'saori', f: 'happy', t: "It isn't a haunted house at all. It's just a house, with you in it." }
+    ] },
+    { title: 'once a month', place: 'Port Island Station · Family Restaurant', scene: [
+      { n: "The silver car came once a month, the way it always had, and parked exactly where it always parked, by the school gate, and Mr. Kōno stood beside it in his gray suit holding a paper bag from a bookstore in both hands, and this time, when he saw Saori come through the gate holding Solar's hand, he didn't look surprised at all." },
+      { s: 'saori', f: 'flustered', t: "I asked if you could come. To dinner. It's the last one before Sendai. He said yes before I'd finished asking." },
+      { n: "The family restaurant was the kind with laminated menus and a drink bar and a call bell on every table, warm and bright and loud with children, and Mr. Kōno ordered the hamburg steak without looking, and so did Saori, and Solar understood that they had been ordering the same thing at this table once a month for years." },
+      { n: "He gave Saori the book. It was about the lighthouses of the Tōhoku coast, the ones near Sendai, with photographs. She held it in both hands and didn't open it for a while." },
+      { s: 'kono', t: "So you'll have somewhere to visit. Up there. I don't know if I got it right." },
+      { s: 'saori', f: 'sad', t: "...You got it right." },
+      { n: "They didn't talk much, the two of them. Solar saw that it had never been about talking. He asked about her classes. She asked about his work. He refilled her melon soda from the drink bar without asking, twice, and she let him, and that was the conversation." },
+      { choose: [
+        { t: "(Tell him about the committee. The way she stood up in October.)", notes: 3, then: [
+          { n: "She told him about the committee meeting, the long table, Ōmori, Saori standing up. She told it well. Mr. Kōno put his fork down halfway through and didn't pick it up again, and when she reached the part where the whole room went silent, he looked across the table at his daughter like he'd never seen her before, and had been waiting to." },
+          { s: 'kono', t: "...You did that?" },
+          { s: 'saori', f: 'flustered', t: "I was shaking for an hour after." },
+          { s: 'kono', t: "So was I, every time I ever stood up for anything. That's how you know it counted." }
+        ] },
+        { t: "(Let them have the quiet. Eat your hamburg steak.)", notes: 2, then: [
+          { n: "She ate her hamburg steak. It was very good, in the way only family restaurant hamburg steak is good, and the quiet at the table was not an empty quiet. It was full of something that had been there for a long time and didn't need her to fill it." }
+        ] }
+      ] },
+      { n: "At the end, while he was paying, Saori sat very straight in the booth with her hands in her lap, and Solar watched her take a breath and hold it, rehearsed, worn smooth." },
+      { s: 'saori', f: 'serious', t: "Father. Solar isn't my friend." },
+      { n: "Mr. Kōno looked up from his wallet. Saori's hands were white in her lap and her ears were scarlet, and she didn't look away." },
+      { s: 'saori', f: 'serious', t: "I mean she is. But she's more. I'm in love with her. I wanted you to know. From me. So that it's mine, and not anybody else's." },
+      { n: "The restaurant went on being loud around them. A bell rang at another table. A child cried and was hushed. Mr. Kōno stood there with his wallet open for a very long moment, and then he put it away, and looked at Solar, and bowed, low, the way you bow to someone's family." },
+      { s: 'kono', t: "Then please take care of her. From here, and after. She's very easy to love. I was only ever very bad at showing it." },
+      { place: 'Iwatodai Station', time: 'Night', music: 'tender' },
+      { n: "He dropped them at Iwatodai Station because Saori asked to walk the last part. It was snowing, wet and heavy, the kind that turned to slush the moment it landed, and Solar put up her umbrella, the same black ordinary one from June, not quite big enough for one person, let alone two." },
+      { n: "Saori stepped in under it. She didn't step out. Not an inch, not once, the whole way. She held Solar's arm in both hands and walked so close that they had to match steps, and both their shoulders stayed dry, which Solar would have said was impossible with that umbrella." },
+      { choose: [
+        { t: "You told him.", notes: 3, then: [
+          { s: 'saori', f: 'surprised', t: "I told him. I did that. In a family restaurant." },
+          { s: 'saori', f: 'happy', t: "...Nothing went wrong. I keep waiting for it to and it keeps not happening." }
+        ] },
+        { t: "(Don't say anything. Just walk.)", notes: 3, then: [
+          { n: "They didn't say anything. The snow ticked on the umbrella. At the laundromat the warm clean air came breathing out into the cold, and Saori stopped under the awning, the way she had in June, and turned, and looked at Solar a second longer than she looked at anything." }
+        ] }
+      ] },
+      { s: 'saori', f: 'neutral', t: "In June I kept stepping out from under this. So you'd have more room." },
+      { s: 'saori', f: 'happy', t: "I don't want more room anymore." },
+      { n: "She kissed her under the laundromat awning with the umbrella still up and the snow coming down all around, and the umbrella tipped back, and snow got into both their hair, and Saori laughed against Solar's mouth and didn't let go of her arm. Then she went inside, and stopped on the stairs, and came back down, and kissed her again, quickly, and went up for real, and didn't look back, and then did." }
+    ] }
+  ],
+  // P3's Christmas Eve: on 12/24 evening, if Solar is romancing several people (rank 9+), she picks one; this plays.
+  christmas: { place: 'Iwatodai Strip · Bookworms', scene: [
+    { n: "The old couple at Bookworms closed early on Christmas Eve, the wife said, because her husband liked to be asleep by eight on holidays, and asleep in his own bed, not behind the counter. But she left the light on. She left the heater on. She set the key on the counter beside a plate with two small Christmas cakes on it, strawberries on top, and said lock up when you're done, girls, and went upstairs, and her husband followed her, waving, half asleep already." },
+    { n: "So they had it to themselves. The whole small shop, the narrow aisles going back into the warm dark, old paper and dust and the kerosene heater ticking, the bell over the door that rang once when Saori shut it behind them and then went quiet. Outside the front window it was snowing on the Iwatodai Strip, big slow flakes coming down through the shop lights and the paper lanterns someone had strung along the street." },
+    { s: 'saori', f: 'flustered', t: "I asked her if we could. I've never asked anyone for anything like that. She said she'd been waiting all year for one of us to ask." },
+    { n: "They sat at the back table by the art books, where a man with a pen like rain had once drawn them without asking. Saori had her soft old copy of A Year of Small Weather on the table in front of her, closed, and she kept laying her hand flat on the cover as if she were keeping it warm." },
+    { s: 'saori', f: 'neutral', t: "I want to give you your present first, before I lose my nerve. I have very little nerve. I've been using it all month." },
+    { n: "It was a fountain pen. Dark green, like the lamp on the evening desk, in a narrow box lined with cream silk. It was obviously, terrifyingly expensive, and she had obviously saved for it, and when Solar opened the box Saori put both hands over her face." },
+    { s: 'saori', f: 'flustered', t: "In the book, he never writes back. The keeper. For three hundred pages. I always wanted to give him a pen." },
+    { s: 'saori', f: 'flustered', t: "So. You have no excuse. That's all. That's the whole present." },
+    { choose: [
+      { t: "(Give her a box of envelopes. Fifty-two. Already addressed to you, already stamped.)", notes: 3, then: [
+        { n: "Saori lifted the lid and went very still. Fifty-two envelopes, one for every week of a year, each addressed in Solar's handwriting to Solar at the dorm, each stamped in the corner, ready." },
+        { s: 'saori', f: 'surprised', t: "...So I have no excuse either." },
+        { s: 'solar', t: "So neither of us gets to be a lighthouse." },
+        { n: "Saori counted them. All fifty-two. Then she put the lid back on very carefully, the way she closed the tin behind the library desk, as though it had just become the most valuable thing she owned." }
+      ] },
+      { t: "(Give her an umbrella. A big one. For two.)", notes: 3, then: [
+        { n: "It was enormous. Navy blue, with a wooden handle, and when Saori put it up in the middle of the narrow aisle it filled the aisle from shelf to shelf and she had to duck under the art books." },
+        { s: 'saori', f: 'happy', t: "It fits two people. It fits four people. Solar, it's bad luck to open an umbrella indoors." },
+        { s: 'solar', t: "Nothing's going to go wrong." },
+        { s: 'saori', f: 'happy', t: "...No. I don't think it is." }
+      ] }
+    ] },
+    { n: "Then Saori opened A Year of Small Weather to the very last page. Solar had never seen her do that. Nobody had. She had stopped Yukari, in writing, from doing exactly this. She sat with the book open on the table between them and one finger on the page, and the heater ticked, and the snow came down outside." },
+    { s: 'saori', f: 'neutral', t: "Some things you're only allowed to know in order. That's what I always said. I think we're in order now. I think we've reached it." },
+    { s: 'saori', f: 'flustered', t: "Can I read it to you? The end? I've never read it out loud to anyone." },
+    { choose: [
+      { t: "Read it to me.", notes: 3, then: [
+        { n: "She read it. Her voice was low and steady and only shook once." },
+        { s: 'saori', f: 'neutral', t: "\"The reply, when it came, was one line long. I have read every one, it said. I kept the light on.\"" },
+        { n: "She closed the book. She didn't look up. Her ears were scarlet and her hand was flat on the cover, and when Solar laid hers over it, Saori turned her palm up underneath and held on." }
+      ] },
+      { t: "Don't read it. Tell me.", notes: 3, then: [
+        { s: 'saori', f: 'surprised', t: "...Tell you?" },
+        { s: 'solar', t: "Like it's yours." },
+        { n: "Saori closed the book and looked at her across the table and said it without the page, because she had known it by heart since she was thirteen." },
+        { s: 'saori', f: 'neutral', t: "He writes back. One line. He says, I have read every one. I kept the light on." }
+      ] }
+    ] },
+    { s: 'saori', f: 'sad', t: "This year I thought I was writing to nobody. For so long. Sitting at the desk, waiting for someone to come, and nobody coming. And then you brought back a book three weeks late." },
+    { s: 'saori', f: 'happy', t: "You read every one. You kept the light on. I don't know how else to say it. That's what this year was." },
+    { n: "Solar thought about the year. The towers book under her flashlight in May. The coffins in the street. The nights she'd come home at one in the morning with her hands shaking, and the chair by the window that was always empty, with a book on it, waiting." },
+    { s: 'solar', t: "You kept a chair for me. Every day. Before I ever said I'd come." },
+    { s: 'saori', f: 'flustered', t: "...I'm going to keep one in Sendai, too. By the window. With a book on it. Wherever I live, for the rest of my life, there's going to be a chair that's yours." },
+    { s: 'saori', f: 'flustered', t: "That's a promise. I don't make very many. I'm told I'm very good at keeping them." },
+    { n: "She kissed her at the back of Bookworms, between the art books and the window, with the snow coming down outside on the paper lanterns and the heater ticking and the two little cakes forgotten on the counter. Her hand caught in the front of Solar's coat and held on. When they broke apart she rested her forehead against Solar's and laughed, small and astonished, like a girl reading the last line of a book she'd been afraid to finish, and finding it was kind." },
+    { s: 'saori', f: 'happy', t: "Merry Christmas. Nothing went wrong." },
+    { s: 'solar', t: "Merry Christmas, Saori. Nothing's going to." }
+  ] },
   romance: true,
   cast: { junpei: 'Junpei', yukari: 'Yukari', rohan: 'Rohan', kono: 'Mr. Kōno', omori: 'Ōmori', ozawa: 'Ms. Ozawa' },
   threads: { bookclub: { name: 'two-person book club', members: ['saori', 'yukari'] } },
