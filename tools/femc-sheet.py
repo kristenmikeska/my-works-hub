@@ -15,6 +15,39 @@ DEFAULTS = {(2, 2): 'neutral,happy,sad,angry', (2, 1): 'embarrassed,surprised', 
             (2, 3): 'neutral,happy,sad,angry,embarrassed,surprised', (3, 1): 'neutral,happy,sad'}
 
 
+def drop_specks(alpha, step=4):
+    """Removes tiny opaque islands (stray sparkles, dust) that aren't attached to the character."""
+    w, h = alpha.size
+    small = alpha.resize((w // step, h // step)).point(lambda v: 255 if v > 40 else 0)
+    sw, sh = small.size
+    sp = small.load()
+    seen = set()
+    comps = []
+    for y0 in range(sh):
+        for x0 in range(sw):
+            if not sp[x0, y0] or (x0, y0) in seen:
+                continue
+            comp, q = [], deque([(x0, y0)])
+            seen.add((x0, y0))
+            while q:
+                x, y = q.popleft()
+                comp.append((x, y))
+                for nx in (x - 1, x, x + 1):
+                    for ny in (y - 1, y, y + 1):
+                        if 0 <= nx < sw and 0 <= ny < sh and sp[nx, ny] and (nx, ny) not in seen:
+                            seen.add((nx, ny)); q.append((nx, ny))
+            comps.append(comp)
+    if len(comps) < 2:
+        return alpha
+    biggest = max(len(c) for c in comps)
+    out = alpha.copy()
+    for comp in comps:
+        if len(comp) < biggest * 0.004:
+            for x, y in comp:
+                out.paste(0, (x * step - step, y * step - step, x * step + 2 * step, y * step + 2 * step))
+    return out
+
+
 def cut_background(im, tol=26):
     """Flood-fills the background in from the cell's edges (anything close to the corner colors) and makes it transparent."""
     im = im.convert('RGBA')
@@ -60,6 +93,7 @@ def cut_background(im, tol=26):
                 for x, y in region:
                     mk[x, y] = 255
     alpha = m.filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.GaussianBlur(1)).point(lambda v: 255 - v)
+    alpha = drop_specks(alpha)
     im.putalpha(alpha)
     box = alpha.point(lambda v: 255 if v > 8 else 0).getbbox()
     return im.crop(box) if box else im

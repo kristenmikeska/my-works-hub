@@ -219,5 +219,17 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "sad",
   "serious"
+ ],
+ "maruki": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
+ ],
+ "shiho": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
  ]
 };

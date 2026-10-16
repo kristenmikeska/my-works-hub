@@ -225,16 +225,16 @@ FemcSocial.define({
       { n: "There was a counselor at Gekkoukan who hadn't been there in September." },
       { n: "Nobody seemed to find this strange. That was how Solar knew he'd come through. A tall, soft-spoken man with messy dark hair and glasses and a cardigan, sitting in the empty counseling room with a cup of tea and an expression of gentle, endless interest." },
       { register: 'maruki' },
-      { s: 'maruki', t: "Ah, you're Yoshizawa-san's friend. Please, sit. I'm Takuto Maruki. I was her counselor, back home. I seem to have followed her here. Funny how these things work." },
+      { s: 'maruki', f: 'happy', t: "Ah, you're Yoshizawa-san's friend. Please, sit. I'm Takuto Maruki. I was her counselor, back home. I seem to have followed her here. Funny how these things work." },
       { n: "Kasumi was sitting in the chair across from him, smiling, relaxed, more relaxed than Solar had ever seen her. Maruki had that effect, apparently. He had a voice like a warm bath." },
-      { s: 'maruki', t: "I only want everyone to be happy, you know. That's all I've ever wanted. For people to stop hurting." },
-      { s: 'maruki', t: "Wouldn't that be wonderful? A world without any pain at all?" },
+      { s: 'maruki', f: 'neutral', t: "I only want everyone to be happy, you know. That's all I've ever wanted. For people to stop hurting." },
+      { s: 'maruki', f: 'happy', t: "Wouldn't that be wonderful? A world without any pain at all?" },
       { choose: [
         { t: "Pain's part of being real.", notes: 3, then: [
-          { s: 'maruki', t: "...That's a very wise thing to say for someone so young." },
+          { s: 'maruki', f: 'surprised', t: "...That's a very wise thing to say for someone so young." },
           { n: "He smiled when he said it. The smile was very kind. Something behind it went very still, like a man realizing a chess piece had moved somewhere he hadn't planned." }
         ] },
-        { t: "That does sound wonderful.", notes: 1, then: [{ s: 'maruki', t: "Doesn't it? I'm so glad you agree." }] }
+        { t: "That does sound wonderful.", notes: 1, then: [{ s: 'maruki', f: 'happy', t: "Doesn't it? I'm so glad you agree." }] }
       ] },
       { n: "On the way out, Elizabeth was waiting in the hallway, which she never did, standing very straight with her book against her chest, looking past Solar at the counseling room door." },
       { s: 'elizabeth', f: 'serious', t: "Be careful with that man, Solar. His kindness has a very particular shape. Like a key cut to fit a lock it has no business opening." },
@@ -302,8 +302,8 @@ FemcSocial.define({
 
     { after: '12/7', title: '8: me', music: 'tender', place: 'Gekkoukan High · Counseling Room', scene: [
       { n: "Maruki was waiting for her. Of course he was. In the counseling room, with tea, with that gentle face, with his hands folded on the desk like a man about to give very good news." },
-      { s: 'maruki', t: "Sumire. You don't have to hurt like this. I can give her back to you. You can be her. You'll never remember that you weren't." },
-      { s: 'maruki', t: "Isn't that what you want? A world where she's still here, in you?" },
+      { s: 'maruki', f: 'sad', t: "Sumire. You don't have to hurt like this. I can give her back to you. You can be her. You'll never remember that you weren't." },
+      { s: 'maruki', f: 'neutral', t: "Isn't that what you want? A world where she's still here, in you?" },
       { n: "Sumire stood in the doorway. Solar stood behind her. Not in front of her. Not making the choice. Just there." },
       { choose: [
         { t: "It's your choice, Sumire. Not his. Not mine.", notes: 3, then: [{ s: 'kasumi', f: 'serious', t: '...My choice.' }] },
@@ -311,9 +311,9 @@ FemcSocial.define({
       ] },
       { s: 'kasumi', f: 'serious', t: "No, Doctor. Thank you. I know you mean it kindly. But no." },
       { s: 'kasumi', f: 'serious', t: "Kasumi died saving me. If I become her, I throw that away. She saved me. Me. Sumire. So I'm going to live as Sumire. Even if it hurts." },
-      { s: 'maruki', t: '...' },
+      { s: 'maruki', f: 'sad', t: '...' },
       { n: "Maruki looked at her for a long time. Then he smiled, sadly, and took off his glasses and cleaned them on his cardigan, the way people do when they need a second to not look at something." },
-      { s: 'maruki', t: "...She'd be very proud of you, I think. I'm proud of you." },
+      { s: 'maruki', f: 'happy', t: "...She'd be very proud of you, I think. I'm proud of you." },
       { n: "He faded that night. Elizabeth told Solar the next morning. She said he'd gone back, wherever back was, and that his page in her compendium had a very gentle final line." }
     ] },
 
