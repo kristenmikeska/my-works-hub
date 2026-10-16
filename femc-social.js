@@ -387,7 +387,7 @@ window.FemcSocial = (() => {
     const when = opts.replay || opts.frame ? '' : `${now().md}<small>${now().day}</small>`;
     el.innerHTML = `<div class="vn-bg"></div><div class="vn-place"><b>${when}</b><span></span></div>
       <img class="vn-portrait" alt="">
-      <div class="vn-tools"><button type="button" data-t="log">Log</button><button type="button" data-t="skip">Skip ▸▸</button><button type="button" data-t="leave">Leave</button></div>
+      <div class="vn-tools">${F().canFullscreen?.() ? `<button type="button" data-t="full" aria-label="Fullscreen" title="Fullscreen (F)">⛶</button>` : ''}<button type="button" data-t="log">Log</button><button type="button" data-t="skip">Skip ▸▸</button><button type="button" data-t="leave">Leave</button></div>
       <div class="vn-log" hidden><div class="vn-log-inner"></div><button type="button" data-t="log-close">Close log</button></div>
       <div class="vn-choices"></div>
       <div class="vn-box" aria-live="polite"><span class="vn-name"></span><p class="vn-text"></p></div>`;
@@ -570,6 +570,7 @@ window.FemcSocial = (() => {
       if (!el.isConnected) return document.removeEventListener('keydown', keys, true);
       if (e.key === ' ' || e.key === 'Enter') { if (!choices.children.length && !e.target.closest?.('button')) { e.preventDefault(); advanceClick(); } }
       if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); }
+      if ((e.key === 'f' || e.key === 'F') && !e.metaKey && !e.ctrlKey && !e.altKey && F().canFullscreen?.()) { e.preventDefault(); e.stopPropagation(); F().fullscreen(); }
       // Arrow keys move the cursor through dialogue choices, P3P style.
       if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && choices.children.length) {
         e.preventDefault();
@@ -582,6 +583,7 @@ window.FemcSocial = (() => {
     document.addEventListener('keydown', keys, true);
     el.querySelector('[data-t="skip"]').addEventListener('click', () => { skipping = true; advanceClick(); const run = () => { if (skipping && waiting && !choices.children.length) { advanceClick(); setTimeout(run, 60); } }; setTimeout(run, 60); });
     el.querySelector('[data-t="leave"]').addEventListener('click', () => end(false));
+    el.querySelector('[data-t="full"]')?.addEventListener('click', () => F().fullscreen());
     const logBox = el.querySelector('.vn-log');
     el.querySelector('[data-t="log"]').addEventListener('click', () => {
       logBox.querySelector('.vn-log-inner').replaceChildren(...log.map(l => { const p = document.createElement('p'); if (l.name) { const b = document.createElement('b'); b.textContent = l.name; p.append(b); } else p.className = 'n'; p.append(l.text); return p; }));

@@ -65,7 +65,8 @@
     @media (max-width: 600px) { .topbar .femc-navtab { position: absolute; top: 16px; right: calc(clamp(18px, 4vw, 52px) + 46px); margin: 0; } }
     .femc-badge button { border: 0; margin: 0; background: #fff; color: #14070f; font: inherit; cursor: inherit; }
     .femc-badge button:hover, .femc-badge button:focus-visible { background: #ff8cc0; }
-    .femc-badge button[aria-pressed="false"] span { opacity: .4; text-decoration: line-through; }
+    .femc-badge button[aria-pressed="false"]:not(.femc-full) span { opacity: .4; text-decoration: line-through; }
+    .femc-badge .femc-full span { font-style: normal; font-size: 15px; }
     .femc-badge .femc-exit { background: #ff4f9e; color: #fff; }
     @keyframes femc-badge-in { from { transform: translateX(-130%); } }
     @media (max-width: 640px) { .femc-time { display: none; } }
@@ -147,8 +148,23 @@
     return { phase: p, full: Math.abs(p - 0.5) < 0.034, next: `${next.getMonth() + 1}/${next.getDate()}`, name: PHASES[Math.round(p * 8) % 8], svg: `<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#3a1028"/><path d="${lit}" fill="#fff4f9"/></svg>` };
   }
   let badge = null;
+  // Fullscreen (browsers drop it when you go to another page; iPhone Safari doesn't allow it at all).
+  const canFull = () => !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+  const isFull = () => !!(document.fullscreenElement || document.webkitFullscreenElement);
+  function fullscreen(on = !isFull()) {
+    const el = document.documentElement;
+    const call = on ? (el.requestFullscreen || el.webkitRequestFullscreen) : (document.exitFullscreen || document.webkitExitFullscreen);
+    try { call?.call(on ? el : document)?.catch?.(() => {}); } catch (e) {}
+  }
+  ['fullscreenchange', 'webkitfullscreenchange'].forEach(ev => document.addEventListener(ev, () => paintBadge()));
+
   function paintBadge() {
     if (!badge) return;
+    const full = badge.querySelector('.femc-full');
+    full.hidden = !canFull();
+    full.setAttribute('aria-pressed', String(isFull()));
+    full.setAttribute('aria-label', isFull() ? 'Exit fullscreen' : 'Fullscreen');
+    full.title = isFull() ? 'Exit fullscreen' : 'Fullscreen';
     const now = new Date(), part = daypart(now.getHours()), m = moon(now);
     root.classList.toggle('femc-dark-hour', part === 'Dark Hour');
     badge.querySelector('.femc-cal').innerHTML = `<span><b>${now.getMonth() + 1}/${now.getDate()}</b> <small>${DAYS[now.getDay()]}</small></span>`;
@@ -174,9 +190,11 @@
     badge.innerHTML = `<button class="femc-menu-btn" type="button" title="Open the FEMC menu"><span>◆ Menu</span></button><span class="femc-cal"></span><span class="femc-time"></span><span class="femc-moon" role="img"></span>
       <button class="femc-music" type="button" hidden><span>♪</span></button>
       <button class="femc-sound" type="button" title="FEMC sounds"><span>SFX</span></button>
+      <button class="femc-full" type="button" hidden><span>⛶</span></button>
       <button class="femc-exit" type="button" title="Turn off FEMC mode" aria-label="Turn off FEMC mode"><span>✕</span></button>`;
     badge.querySelector('.femc-sound').addEventListener('click', () => { set(SOUND, soundOn() ? 'off' : null); paintBadge(); sfx('femc-click'); });
     badge.querySelector('.femc-music').addEventListener('click', () => { music.toggle(); paintBadge(); });
+    badge.querySelector('.femc-full').addEventListener('click', () => { fullscreen(); sfx('femc-click'); });
     badge.querySelector('.femc-exit').addEventListener('click', () => toggle(false));
     badge.querySelector('.femc-menu-btn').addEventListener('click', openMenu);
     document.body.appendChild(badge);
@@ -402,7 +420,7 @@
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
 
-  function openMenu() { load('femc-menu.js?v=6', () => window.FemcMenu).then(() => window.FemcMenu?.open()); }
-  window.FemcMode = { toggle, isOn, openMenu, nowPlaying: () => music.playing(), sfx, moon, daypart, load, base: BASE,
+  function openMenu() { load('femc-menu.js?v=7', () => window.FemcMenu).then(() => window.FemcMenu?.open()); }
+  window.FemcMode = { fullscreen, isFullscreen: isFull, canFullscreen: canFull, toggle, isOn, openMenu, nowPlaying: () => music.playing(), sfx, moon, daypart, load, base: BASE,
     music: { playing: () => music.playing(), toggle: () => { music.toggle(); paintBadge(); }, next: () => music.next(), tracks: () => music.tracks } };
 })();
