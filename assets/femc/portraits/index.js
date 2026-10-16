@@ -321,5 +321,17 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "sad",
   "serious"
+ ],
+ "josuke": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
+ ],
+ "koichi": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
  ]
 };

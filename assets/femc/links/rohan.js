@@ -65,7 +65,7 @@ FemcSocial.define({
     [
       { n: "Koichi had brought snacks, a whole bag of them, rice crackers and chocolate and a carton of strawberry milk, and was trying to set them down on the back table. Rohan was trying to stop him with his entire body." },
       { s: 'rohan', f: 'serious', t: "Not near the paper. Koichi. Not near the paper." },
-      { s: 'koichi', t: "Rohan, there's nowhere that isn't near the paper! You covered the whole table!" },
+      { s: 'koichi', f: 'serious', t: "Rohan, there's nowhere that isn't near the paper! You covered the whole table!" },
       { choose: [
         { t: "Rohan, eat a cracker. Think of it as research.", notes: 3, then: [
           { s: 'rohan', f: 'neutral', t: '...' },
@@ -73,7 +73,7 @@ FemcSocial.define({
           { n: "He ate the cracker holding it at arm's length from the drawing, leaning sideways in his chair like a man eating over a bomb. Koichi looked at Solar like she'd performed a miracle." }
         ] },
         { t: "(Hold the snacks on your lap.)", notes: 2, then: [
-          { s: 'koichi', t: "Solar! You're a genius!" },
+          { s: 'koichi', f: 'happy', t: "Solar! You're a genius!" },
           { s: 'rohan', f: 'neutral', t: "She's a coat rack with opinions. Fine. Hand me a cracker." }
         ] },
         { t: "Koichi, let's eat outside.", notes: 1, then: [
@@ -244,15 +244,15 @@ FemcSocial.define({
       ] },
       { n: "There was a small boy at the back table today, very small, with silver hair cut short and a serious, kind, anxious face, and Rohan was looking at him with something Solar had never seen on Rohan's face before. Something like fondness." },
       { register: 'koichi' },
-      { s: 'koichi', t: "You must be Solar! I'm Koichi. Hirose Koichi. I'm so sorry about Rohan." },
+      { s: 'koichi', f: 'happy', t: "You must be Solar! I'm Koichi. Hirose Koichi. I'm so sorry about Rohan." },
       { s: 'rohan', f: 'serious', t: "Why are you apologizing for me?" },
-      { s: 'koichi', t: "Because you never do it yourself!" },
+      { s: 'koichi', f: 'serious', t: "Because you never do it yourself!" },
       { n: "Koichi had come through two days before, looking for Rohan, because when someone from his town went missing, he said, the first thing you did was check if they'd been kidnapped by something supernatural, and the second thing you did was check if Rohan had done something weird to it first." },
-      { s: 'koichi', t: "He used to be awful. Like, really awful. He tried to make me into a manga." },
+      { s: 'koichi', f: 'sad', t: "He used to be awful. Like, really awful. He tried to make me into a manga." },
       { s: 'rohan', f: 'happy', t: "That was years ago. And it would have been an excellent manga." },
       { choose: [
         { t: "You two are friends?", notes: 3, then: [
-          { s: 'koichi', t: "Yeah. He's actually my best friend. Don't tell him." },
+          { s: 'koichi', f: 'happy', t: "Yeah. He's actually my best friend. Don't tell him." },
           { s: 'rohan', f: 'serious', t: "I'm sitting right here, Koichi." }
         ] },
         { t: "Rohan, did you make anyone else into a manga?", notes: 2, then: [{ s: 'rohan', f: 'happy', t: "Define 'make.'" }] }
@@ -284,20 +284,20 @@ FemcSocial.define({
     { after: '10/27', title: '4: josuke', place: 'Iwatodai Strip', scene: [
       { n: "Josuke Higashikata arrived the way he did everything, loudly, with an enormous pompadour that added roughly a foot to his height and a school uniform jacket covered in heart and peace-sign pins." },
       { register: 'josuke' },
-      { s: 'josuke', t: "Koichi! There you are! And, ugh. Rohan." },
+      { s: 'josuke', f: 'happy', t: "Koichi! There you are! And, ugh. Rohan." },
       { s: 'rohan', f: 'happy', t: "Josuke. You look exactly as stupid as I remember." },
       { n: "They hated each other. That was immediately clear. They hated each other with a deep, complete, comfortable hatred that had obviously been going on for years and that neither of them would ever give up, because what else would they do with their afternoons." },
-      { s: 'josuke', t: "Solar, right? Koichi says you're cool. Anybody who can stand Rohan for a whole month deserves a medal." },
+      { s: 'josuke', f: 'happy', t: "Solar, right? Koichi says you're cool. Anybody who can stand Rohan for a whole month deserves a medal." },
       { choose: [
         { t: "I like your hair.", notes: 3, then: [
-          { s: 'josuke', t: "...You. I like YOU." },
+          { s: 'josuke', f: 'happy', t: "...You. I like YOU." },
           { s: 'rohan', f: 'serious', t: "Don't encourage him. If you insult it he loses his mind, so if you praise it he'll never leave." }
         ] },
-        { t: "Rohan's not that bad.", notes: 2, then: [{ s: 'josuke', t: "He's EXACTLY that bad." }] }
+        { t: "Rohan's not that bad.", notes: 2, then: [{ s: 'josuke', f: 'serious', t: "He's EXACTLY that bad." }] }
       ] },
       { n: "They played dice that evening on the steps outside the shop, a gambling game from Josuke's town, for nothing but pride. Rohan lost four rounds in a row and then won eleven, and Josuke accused him of cheating with his Stand, and Rohan said he'd simply been creative with the rules, and then Josuke's Stand, a big pink-and-teal fighter, punched the dice into dust." },
       { n: "And then it rebuilt them. Exactly as they'd been. Every grain back in place. Solar stared." },
-      { s: 'josuke', t: "Crazy Diamond. I fix stuff. Not myself, though. Everybody else." },
+      { s: 'josuke', f: 'neutral', t: "Crazy Diamond. I fix stuff. Not myself, though. Everybody else." },
       { n: "He said it like it was nothing. Rohan, for the first time all night, said nothing at all." }
     ] },
 
