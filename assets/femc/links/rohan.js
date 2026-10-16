@@ -323,18 +323,18 @@ FemcSocial.define({
       { n: "There was a very tall man standing at the end of the pier in a long white coat and a white hat, looking at the water, and Rohan stopped walking so suddenly that Solar walked into his back." },
       { register: 'jotaro' },
       { s: 'rohan', f: 'surprised', t: "...Jotaro-san." },
-      { s: 'jotaro', t: "Rohan. Koichi said you were here." },
+      { s: 'jotaro', f: 'neutral', t: "Rohan. Koichi said you were here." },
       { n: "Jotaro Kujo was enormous, and stoic, and spoke the way glaciers moved. He'd come through, he said, because a door had opened somewhere in his hotel in Morioh and he had walked through it to see what was on the other side, which was, apparently, a thing he just did. He was a marine biologist. He'd been looking at the starfish under the pier." },
-      { s: 'jotaro', t: "You're the girl with the Persona." },
-      { s: 'jotaro', t: "This hour. This tower. The moon. You're fighting something that wants to end the world. And you're a high school student." },
+      { s: 'jotaro', f: 'neutral', t: "You're the girl with the Persona." },
+      { s: 'jotaro', f: 'serious', t: "This hour. This tower. The moon. You're fighting something that wants to end the world. And you're a high school student." },
       { n: "He wasn't asking. He was looking at her the way adults looked at things that should not be on children's shoulders and somehow always were." },
       { choose: [
         { t: "Somebody has to.", notes: 3, then: [
-          { s: 'jotaro', t: '...' },
-          { s: 'jotaro', t: "Yeah. I said that too. When I was your age." },
-          { s: 'jotaro', t: "Yare yare. ...Be careful." }
+          { s: 'jotaro', f: 'sad', t: '...' },
+          { s: 'jotaro', f: 'sad', t: "Yeah. I said that too. When I was your age." },
+          { s: 'jotaro', f: 'neutral', t: "Yare yare. ...Be careful." }
         ] },
-        { t: "I'm not doing it alone.", notes: 3, then: [{ s: 'jotaro', t: "Good. Don't. That's the only way any of us made it out." }] }
+        { t: "I'm not doing it alone.", notes: 3, then: [{ s: 'jotaro', f: 'happy', t: "Good. Don't. That's the only way any of us made it out." }] }
       ] },
       { n: "He left without saying goodbye. Rohan watched him go for a long time. He said, very quietly, that Jotaro was the only person in the world he'd never once wanted to read, because he already knew he'd find something heavy in there, something Jotaro had carried by himself for a very long time." },
       { s: 'rohan', f: 'sad', t: "I'd rather draw him. Drawings are kinder. You get to leave things out." }

@@ -333,5 +333,19 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "sad",
   "serious"
+ ],
+ "jotaro": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
+ ],
+ "mymelody": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
  ]
 };

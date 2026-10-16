@@ -284,11 +284,11 @@ FemcSocial.define({
       { s: 'yukari', f: 'surprised', t: "Um. There's a... a girl? In a pink bunny hood? Asking for Kuromi?" },
       { register: 'yukari' },
       { register: 'mymelody' },
-      { s: 'mymelody', t: "Hello! I'm My Melody! I've come to visit my friend Kuromi! I brought almond pound cake!" },
-      { n: "She was a soft, round-faced girl in a pink hood with bunny ears and a little flower, holding a cake box in both hands and smiling with the bottomless, impenetrable sweetness of someone who had never once in her life considered that anyone might not be happy to see her." },
+      { s: 'mymelody', f: 'happy', t: "Hello! I'm My Melody! I've come to visit my friend Kuromi! I brought almond pound cake!" },
+      { n: "She was a soft, round-faced girl with long pink braids, a pink bunny-eared hood and a big blue bow, holding a cake box in both hands and smiling with the bottomless, impenetrable sweetness of someone who had never once in her life considered that anyone might not be happy to see her." },
       { n: "Upstairs, a door crashed open." },
       { s: 'kuromi', f: 'surprised', t: "MY MELODY!!!" },
-      { s: 'mymelody', t: "Kuromi! My mama always said, when you're far from home, find a friend! So I found you!" },
+      { s: 'mymelody', f: 'happy', t: "Kuromi! My mama always said, when you're far from home, find a friend! So I found you!" },
       { s: 'kuromi', f: 'serious', t: "I am NOT your FRIEND. I am your RIVAL. Your ARCH-RIVAL." },
       { choose: [
         { t: "Kuromi, she brought cake.", notes: 2, then: [{ s: 'kuromi', f: 'neutral', t: "...What kind of cake." }] },
@@ -296,7 +296,7 @@ FemcSocial.define({
           { n: "Solar sat on the stairs and watched. It was, in its way, magnificent. Kuromi shouted. My Melody agreed with everything she said, cheerfully, which made Kuromi shout louder. It went on for twenty minutes and ended with both of them eating cake on the lounge floor, Kuromi still muttering, My Melody humming." }
         ] }
       ] },
-      { s: 'mymelody', t: "My mama always said, a rival is just a friend who doesn't know it yet!" },
+      { s: 'mymelody', f: 'happy', t: "My mama always said, a rival is just a friend who doesn't know it yet!" },
       { s: 'kuromi', f: 'serious', t: "Your MAMA doesn't know ANYTHING." },
       { n: "My Melody faded at the end of the night, like the others did. She waved at Kuromi from the front door, still smiling. Kuromi didn't wave back. But when the door closed, she went and sat on the step where My Melody had been, and stayed there for a long time." }
     ] },
