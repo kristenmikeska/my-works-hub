@@ -243,10 +243,10 @@ FemcSocial.story({
       { s: 'mitsuru', f: 'neutral', t: "Sit down, please. This isn't a reprimand." },
       { n: "It was going to be a reprimand." },
       { s: 'mitsuru', f: 'neutral', t: "Since Yamagishi joined us, we've been able to do something the sensors never could. She can listen to the hour." },
-      { s: 'fuuka', t: "It's not really listening. I don't know how else to say it. Lucia hears everything that's awake. The Shadows sound like static. All of you sound like heartbeats." },
-      { s: 'fuuka', t: "And then there are the others. They sound like radios, tuned to stations very, very far away. I counted thirty-one." },
+      { s: 'fuuka', f: 'neutral', t: "It's not really listening. I don't know how else to say it. Lucia hears everything that's awake. The Shadows sound like static. All of you sound like heartbeats." },
+      { s: 'fuuka', f: 'neutral', t: "And then there are the others. They sound like radios, tuned to stations very, very far away. I counted thirty-one." },
       { s: 'junpei', f: 'surprised', t: "Thirty-one GHOSTS?" },
-      { s: 'fuuka', t: "Thirty-two. Sorry. One of them sounds like a bell, so I wasn't sure if it counted." },
+      { s: 'fuuka', f: 'sad', t: "Thirty-two. Sorry. One of them sounds like a bell, so I wasn't sure if it counted." },
       { n: "Solar thought about a fox on the shrine steps with its tails curled around its feet, and kept her face very still." },
       { ifRank: { kuromi: 1 }, then: [
         { s: 'mitsuru', f: 'neutral', t: "One of whom, I'm aware, is currently living under this roof." },
@@ -255,7 +255,7 @@ FemcSocial.story({
       { n: "Mitsuru slid a printout across the table. A long gray trace of the night of the eighth, the station, eleven minutes before the hour ended. Solar found herself in it immediately, a steady bright mark, irritatingly easy to identify. Beside it was a second mark so faint it was barely a pencil line, flickering in and out like a bad bulb." },
       { n: "And beside that, nothing. Not a blank stretch. A gap, clean-edged, as if the machine had blinked at exactly that spot and only that spot." },
       { s: 'mitsuru', f: 'neutral', t: "That's you. I don't know what that is. And this, the sensors read as nothing at all. Something stood on that platform that the most expensive equipment in Japan believes isn't there." },
-      { s: 'fuuka', t: "I heard it on the recording. It doesn't sound like anything. It sounds like the moment after a song ends, before anyone claps." },
+      { s: 'fuuka', f: 'neutral', t: "I heard it on the recording. It doesn't sound like anything. It sounds like the moment after a song ends, before anyone claps." },
       { s: 'mitsuru', f: 'neutral', t: "I'd like you to tell me what you know." },
       { choose: [
         { t: "They're not from here. They're lost, and they can't get home.", notes: 0, then: [
@@ -303,7 +303,7 @@ FemcSocial.story({
       { n: "Fuuka had volunteered to make the broth. Everyone had let her, out of kindness, and was now quietly afraid." },
       { n: "Akihiko tasted it first, because somebody had to and he considered courage a muscle. He chewed for a long time." },
       { s: 'akihiko', f: 'neutral', t: "...There's a lot of protein in it." },
-      { s: 'fuuka', t: "Is that good?" },
+      { s: 'fuuka', f: 'happy', t: "Is that good?" },
       { s: 'akihiko', f: 'happy', t: "It's not bad." },
       { n: "Yukari looked at Solar across the table. Solar looked at her bowl. Neither of them was brave enough to be the one who laughed first, and so nobody did, and it was one of the best moments she'd had all year." },
       { n: "Mitsuru had set out extra bowls. Six of them, stacked white and unused at the far end of the table, and she hadn't explained them and nobody had asked, and Solar had looked at them and felt, uncomfortably, like they were addressed to her." },
@@ -315,7 +315,7 @@ FemcSocial.story({
       ] },
       { ifRank: { haru: 1 }, then: [
         { n: "Haru arrived at six with a basket of vegetables from the roof garden, took one look into Fuuka's pot, said oh, how brave, in a voice of pure sympathy, and within ten minutes had taken over the kitchen so gently that nobody, least of all Fuuka, quite saw it happen." },
-        { s: 'fuuka', t: "She's very nice. She's very nice, and she poured my broth down the sink." }
+        { s: 'fuuka', f: 'sad', t: "She's very nice. She's very nice, and she poured my broth down the sink." }
       ] },
       { ifRank: { ann: 1 }, then: [
         { s: 'ann', f: 'happy', t: "Okay, I brought crepes for after. Also, can somebody explain why there's a GUN on your coffee table?" },
@@ -488,7 +488,7 @@ FemcSocial.story({
       { n: "Wren always waited on full moons. That was the rule they'd made in June without ever saying it out loud. Bench, platform, the last few minutes of the hour, so that nothing would find her alone." },
       { n: "The bench was empty." },
       { n: "The station was green and swollen with moonlight and silent, the departures board dead, the vending machines dark, and on the bench where Wren always sat there was nothing but her ticket, lying face up. Solar picked it up. Her hands knew before she did. There was a hole in it, small and round and neat, right through the looping script of the destination. It had been punched." },
-      { s: 'fuuka', t: "Solar? I can hear her. Your friend. She's moving. She's moving very fast. She's..." },
+      { s: 'fuuka', f: 'surprised', t: "Solar? I can hear her. Your friend. She's moving. She's moving very fast. She's..." },
       { n: "And then a sound that had never once happened in the Dark Hour, not in all the nights Solar had stood in it. A whistle. A long, low one, rising out of the tunnel and rolling over the platform and away, the one for when the line's clear all the way to the next valley." },
       { music: 'mystery' },
       { n: "The train came out of the dark without a light on its front. It was old, older than anything on the Iwatodai line, long and black-green like the hour itself, and it made no sound on the rails at all. Its windows glowed a soft paper white, like lanterns. Inside each one, a person sat asleep." },
@@ -508,7 +508,7 @@ FemcSocial.story({
         ] }
       ] },
       { n: "The train moved off. Not into the tunnel. At the end of the platform the rails simply lifted, curving up off the ground and into the green sky like a ribbon somebody was pulling, and the train climbed them without a sound, car after lit car, toward the tower that the school became at midnight." },
-      { s: 'fuuka', t: "It's going into Tartarus. Mitsuru-senpai, there's a train, there's a train going into the tower, how is there a..." },
+      { s: 'fuuka', f: 'surprised', t: "It's going into Tartarus. Mitsuru-senpai, there's a train, there's a train going into the tower, how is there a..." },
       { s: 'mitsuru', f: 'neutral', t: "I see it. Solar. Come home. That's an order." },
       { n: "She did not come home. She stood on the platform with a punched ticket in her fist until the hour ended and the lights buzzed on and the vending machines woke up humming, and the board above her blinked back to life and told her, politely, that the next train wouldn't be for five hours." },
       { place: 'The Velvet Room', time: 'Later' },
@@ -554,7 +554,7 @@ FemcSocial.story({
         { n: "A small gold light shot past them along the platform edge, many-tailed, and ran the length of the train as it came round, and stopped, dead, beside one car, ears flat." },
         { s: 'kiriko', f: 'serious', t: "Fourth car! The fox says fourth car!" }
       ], else: [
-        { s: 'fuuka', t: "Fourth car. Solar, she's in the fourth car. I can hear her." }
+        { s: 'fuuka', f: 'neutral', t: "Fourth car. Solar, she's in the fourth car. I can hear her." }
       ] },
       { ifRank: { cloud: 1 }, then: [
         { s: 'cloud', f: 'serious', t: "She told me which train went to Port Island. First week. When I didn't know anything." },

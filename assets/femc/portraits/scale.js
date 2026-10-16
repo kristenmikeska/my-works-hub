@@ -17,6 +17,7 @@ window.FEMC_PORTRAIT_SCALE = {
   cloud: 1.17,
   elizabeth: 1.19,
   evelyn: 1.2,
+  fuuka: 1.08,
   futaba: 1.12,
   genji: 0.97,
   haechan: 0.97,

@@ -377,5 +377,11 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "sad",
   "serious"
+ ],
+ "fuuka": [
+  "happy",
+  "neutral",
+  "sad",
+  "surprised"
  ]
 };
