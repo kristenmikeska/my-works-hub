@@ -371,5 +371,11 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "sad",
   "serious"
+ ],
+ "merchant": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
  ]
 };

@@ -277,24 +277,24 @@ FemcSocial.define({
 
     { after: '10/20', title: '4: what\'re ya buyin\'', music: 'mystery', place: 'Port Island Station · Back Alley', scene: [
       { n: "There was a man in the back alley behind Port Island Station who had not been there yesterday. A long dark cloak. A hood. A bandana over his face. Eyes that glowed, faintly, in a way that was not normal for a human person. He opened his coat as they passed, and the inside of it was lined with guns." },
-      { s: 'merchant', t: "What're ya buyin'?" },
+      { s: 'merchant', f: 'neutral', t: "What're ya buyin'?" },
       { s: 'leon', f: 'surprised', t: "...You've got to be kidding me." },
-      { s: 'merchant', t: "Ahhh, stranger. Fancy seeing you here. Got some rare things on sale, stranger." },
+      { s: 'merchant', f: 'neutral', t: "Ahhh, stranger. Fancy seeing you here. Got some rare things on sale, stranger." },
       { n: "Leon looked at Solar. Solar looked at Leon. Leon put his face in his hands." },
       { s: 'leon', f: 'neutral', t: "He was in Spain. In the castle. On the island. Everywhere I went, he was there. I never once asked how." },
       { s: 'leon', f: 'neutral', t: "I'm not going to ask now either." },
       { choose: [
         { t: "Buy him something.", notes: 3, then: [
-          { s: 'merchant', t: "Heh heh heh. Thank you." },
+          { s: 'merchant', f: 'happy', t: "Heh heh heh. Thank you." },
           { n: "She bought him an attaché case. A good one, black, with more slots than it should have had. Leon looked at it for a long second, and then spent forty minutes arranging the few things he owned into it, rotating every item until it fit perfectly." },
           { s: 'leon', f: 'happy', t: "...Best present I ever got. Don't tell Ashley." }
         ] },
         { t: "Do you take yen?", notes: 2, then: [
-          { s: 'merchant', t: "Stranger, I take everything." },
+          { s: 'merchant', f: 'happy', t: "Stranger, I take everything." },
           { s: 'leon', f: 'neutral', t: "That's what I'm afraid of." }
         ] }
       ] },
-      { s: 'merchant', t: "Come back anytime." },
+      { s: 'merchant', f: 'neutral', t: "Come back anytime." },
       { n: "When they looked back from the end of the alley, he was gone. There was only a little blue torch, burning in the dark where he'd stood, and then that was gone too." }
     ] },
 
