@@ -308,19 +308,19 @@ FemcSocial.define({
       { n: "He came through on a hot night in late August. Solar heard about it from three different people before she saw him: a giant in black armor, wrapped in chains, eyes like coals, stalking through the back streets of Port Island asking every person he passed where the goddess of love was." },
       { n: "He found them behind the station. Aphrodite went very still when she saw him, the way the air goes still before a storm." },
       { register: 'ares' },
-      { s: 'ares', t: "There you are. You left the battlefield." },
+      { s: 'ares', f: 'neutral', t: "There you are. You left the battlefield." },
       { s: 'aphrodite', f: 'serious', t: "I didn't leave anything, darling. I was taken. There's a difference." },
-      { s: 'ares', t: "Come back. The war needs you. I need you." },
+      { s: 'ares', f: 'sad', t: "Come back. The war needs you. I need you." },
       { n: "He said I need you like a command, the way he'd say charge or hold the line. Aphrodite looked at him with an expression Solar had never seen on her face before. Tired. Old. Very, very old." },
       { s: 'aphrodite', f: 'sad', t: "You need me the way you need a sword. Something lovely to hold while you break things." },
       { choose: [
         { t: "(Stand beside Aphrodite.)", notes: 3, then: [
           { n: "Solar stepped up next to her. She didn't say anything. She didn't need to. Ares looked down at her, all eight feet of armor and fury, and Solar looked back, and something passed over his face that might have been surprise." },
-          { s: 'ares', t: "...A mortal. Standing next to you." },
+          { s: 'ares', f: 'surprised', t: "...A mortal. Standing next to you." },
           { s: 'aphrodite', f: 'happy', t: "Yes. She does that. Isn't it extraordinary?" }
         ] },
         { t: "She doesn't want to go.", notes: 3, then: [
-          { s: 'ares', t: "She doesn't get to decide." },
+          { s: 'ares', f: 'serious', t: "She doesn't get to decide." },
           { s: 'aphrodite', f: 'serious', t: "...Actually, darling, I think I do. For once." }
         ] }
       ] },

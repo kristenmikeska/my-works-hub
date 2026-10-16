@@ -53,9 +53,14 @@ def cut_background(im, tol=26):
     im = im.convert('RGBA')
     w, h = im.size
     px = im.load()
-    # The background is the commonest corner color that isn't the white gutter between panels.
-    corners = [px[x, y][:3] for x, y in ((12, 12), (w - 13, 12), (12, h - 13), (w - 13, h - 13), (w // 2, 12))]
-    gray = max(set(c for c in corners if min(c) < 240) or set(corners), key=corners.count)
+    # The background is the commonest flat gray along the cell's border (ignoring the white gutter and
+    # anything colorful, like a plume or armor that reaches the edge).
+    from collections import Counter
+    border = [px[x, y][:3] for x in range(0, w, 3) for y in (8, h - 9)] + [px[x, y][:3] for y in range(0, h, 3) for x in (8, w - 9)]
+    flat = [c for c in border if max(c) - min(c) < 18 and min(c) < 240]
+    counts = Counter((c[0] // 6, c[1] // 6, c[2] // 6) for c in flat or border)
+    q = counts.most_common(1)[0][0]
+    gray = tuple(sum(c[i] for c in flat or border if (c[0] // 6, c[1] // 6, c[2] // 6) == q) // counts[q] for i in range(3))
     diff = lambda p, c: sum(abs(a - b) for a, b in zip(p[:3], c))
     # From the edges: the background or gutter white. Inside the figure: only the exact background gray,
     # so eye whites and highlights are never touched.

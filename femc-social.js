@@ -83,7 +83,7 @@ window.FemcSocial = (() => {
     const base = face && face.replace(/-\d+$/, '');
     const CLOSE = { blushing: ['flustered', 'happy'], flustered: ['blushing', 'happy'], serious: ['sad'], surprised: [], sad: [] };
     const pick = [face, base, ...(CLOSE[base] || []), 'neutral', have[0]].find(f => f && have.includes(f));
-    return pick ? `${F().base}assets/femc/portraits/${id}/${pick}.webp?v=15` : null;
+    return pick ? `${F().base}assets/femc/portraits/${id}/${pick}.webp?v=16` : null;
   }
 
   /* ── Styles ──────────────────────────────────────── */
@@ -1009,7 +1009,7 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = F().load;
-    ready = Promise.all([L('assets/femc/portraits/index.js?v=20', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js?v=4', () => window.FEMC_BG), L('assets/femc/tarot/index.js?v=2', () => window.FEMC_TAROT), L('assets/femc/profile/index.js?v=1', () => window.FEMC_PROFILE), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
+    ready = Promise.all([L('assets/femc/portraits/index.js?v=21', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js?v=4', () => window.FEMC_BG), L('assets/femc/tarot/index.js?v=2', () => window.FEMC_TAROT), L('assets/femc/profile/index.js?v=1', () => window.FEMC_PROFILE), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
       .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=37`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
