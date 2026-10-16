@@ -14,7 +14,7 @@ FemcSocial.define({
     [
       { n: "Evening, the mall lights coming on one by one, and Leon was at the police box again, leaning on Officer Kurosawa's counter with his chin in his hand, reading the wanted posters on the wall with the expression of a man reviewing someone else's work." },
       { s: 'leon', f: 'neutral', t: "This guy's not in Iwatodai. Wrong shoes for it." },
-      { s: 'kurosawa', t: "Nobody asked you." },
+      { s: 'kurosawa', f: 'neutral', t: "Nobody asked you." },
       { choose: [
         { t: "What shoes should he be wearing?", notes: 3, then: [
           { s: 'leon', f: 'happy', t: "Something he can run in. Look at his face. That's a guy who runs." },
@@ -68,7 +68,7 @@ FemcSocial.define({
     [
       { n: "Leon had decided to learn Japanese. His method was to point at things on Officer Kurosawa's desk and say their names in English, loudly, until Kurosawa gave up and said them in Japanese." },
       { s: 'leon', f: 'neutral', t: "Stapler." },
-      { s: 'kurosawa', t: "...Hotchkiss." },
+      { s: 'kurosawa', f: 'sad', t: "...Hotchkiss." },
       { s: 'leon', f: 'surprised', t: "That's not Japanese. That's a guy's name." },
       { choose: [
         { t: "(Teach him how to order ramen instead.)", notes: 3, then: [
@@ -76,7 +76,7 @@ FemcSocial.define({
           { s: 'leon', f: 'happy', t: "Okay. That's the only sentence I need. I'm fluent." }
         ] },
         { t: "It really is Hotchkiss. Long story.", notes: 2, then: [{ s: 'leon', f: 'neutral', t: "This country's going to get me before the monsters do." }] },
-        { t: "Ask him how to say 'go home.'", notes: 1, then: [{ s: 'kurosawa', t: "I'll teach him that one for free." }] }
+        { t: "Ask him how to say 'go home.'", notes: 1, then: [{ s: 'kurosawa', f: 'happy', t: "I'll teach him that one for free." }] }
       ] },
       { n: "He practiced it under his breath the whole way to the noodle stand. When they got there he said it perfectly, and the cook nodded and served him, and Leon looked prouder than she'd ever seen him look about anything." }
     ],
@@ -208,13 +208,13 @@ FemcSocial.define({
   ranks: [
     { after: '9/7', title: '1: where\'s everyone going', place: 'Paulownia Mall · Police Box', scene: [
       { n: "Officer Kurosawa had a problem, and the problem was leaning on his counter in a leather jacket with a fur collar, asking very politely where a man might buy ammunition in this city." },
-      { s: 'kurosawa', t: "You can't. That's the point of Japan." },
+      { s: 'kurosawa', f: 'neutral', t: "You can't. That's the point of Japan." },
       { s: 'leon', f: 'neutral', t: "Okay. What about a knife?" },
-      { s: 'kurosawa', t: "Sir." },
+      { s: 'kurosawa', f: 'serious', t: "Sir." },
       { n: "He was good-looking in an exhausting way, the kind of good-looking that looked like it hadn't slept since about 1998, with a curtain of hair falling over one eye that he kept pushing back and that kept falling anyway. American. A holster under the jacket, empty. He had the posture of someone who was always, on some level, waiting for the ceiling to collapse." },
       { n: "Solar had only come in because Kurosawa sometimes had things in the back room for people who knew to ask, and she knew to ask, and now she was watching a stranger lose an argument to the least movable man in Port Island." },
-      { s: 'kurosawa', t: "He came in at midnight. Covered in green slime. Said he'd shot something with too many arms on the monorail." },
-      { s: 'kurosawa', t: "You're from that dorm. You know what he's talking about. Vouch for him or I'm calling somebody." },
+      { s: 'kurosawa', f: 'neutral', t: "He came in at midnight. Covered in green slime. Said he'd shot something with too many arms on the monorail." },
+      { s: 'kurosawa', f: 'serious', t: "You're from that dorm. You know what he's talking about. Vouch for him or I'm calling somebody." },
       { choose: [
         { t: "He's with me.", notes: 3, then: [
           { s: 'leon', f: 'surprised', t: "...I am?" },
@@ -223,7 +223,7 @@ FemcSocial.define({
         ] },
         { t: "You shot it? With what?", notes: 2, then: [
           { s: 'leon', f: 'neutral', t: "My last six rounds. Then a kick. Then I suplexed it. Didn't love that part." },
-          { s: 'kurosawa', t: "He's yours. Take him." }
+          { s: 'kurosawa', f: 'happy', t: "He's yours. Take him." }
         ] }
       ] },
       { n: "Outside the police box, under the fountain lights, he introduced himself. Leon. Leon Kennedy. A federal agent. He'd been on a job, he said, somewhere in rural Spain, a village full of people who didn't act like people anymore, and the last thing he remembered was a door, and then a monorail full of coffins under a green moon." },
@@ -394,7 +394,7 @@ FemcSocial.define({
 
     { after: '12/29', title: '10: rookie', place: 'Paulownia Mall · Police Box', scene: [
       { n: "The last days of the year, the snow coming down in soft slow flakes on Paulownia Mall, and Leon was back at the police box, where it had started, leaning on the counter while Officer Kurosawa pretended to ignore him." },
-      { s: 'kurosawa', t: "He's been here since four. Waiting for you. Take him." },
+      { s: 'kurosawa', f: 'happy', t: "He's been here since four. Waiting for you. Take him." },
       { n: "Leon walked her out to the fountain and stopped, and took something out of his jacket pocket. A badge. Old, scratched, a little bent at one corner. Raccoon City Police Department." },
       { s: 'leon', f: 'sad', t: "My first badge. From my first day. The worst day of my life." },
       { s: 'leon', f: 'happy', t: "I kept it because I thought I should remember it. Turns out I don't need it anymore to remember. I've got better days now." },

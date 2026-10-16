@@ -349,5 +349,11 @@ window.FEMC_PORTRAITS = {
   "sad",
   "serious",
   "surprised"
+ ],
+ "kurosawa": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
  ]
 };
