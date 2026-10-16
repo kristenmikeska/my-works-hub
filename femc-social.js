@@ -98,6 +98,7 @@ window.FemcSocial = (() => {
     .vn-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14, 5, 10, .18), rgba(14, 5, 10, .42) 55%, rgba(14, 5, 10, .78)), repeating-linear-gradient(-58deg, rgba(255, 79, 158, .05) 0 2px, transparent 2px 26px); }
     .vn-bg.night { filter: brightness(.5) saturate(.75) hue-rotate(-12deg); }
     .vn-bg.night::after { background: linear-gradient(180deg, rgba(20, 24, 70, .35), rgba(14, 5, 20, .55) 55%, rgba(14, 5, 10, .82)); }
+    .vn-bg.nightblue { filter: hue-rotate(125deg) saturate(.45) brightness(.78); }
     .vn-bg.dusk { filter: brightness(.75) saturate(1.05) sepia(.25); }
     .vn-place { position: absolute; top: 22px; left: 26px; display: flex; align-items: center; gap: 14px; padding: 8px 18px; background: #14070f; transform: skewX(-14deg); box-shadow: 5px 5px 0 rgba(255, 79, 158, .55); z-index: 3; }
     .vn-place > * { transform: skewX(14deg); }
@@ -276,14 +277,14 @@ window.FemcSocial = (() => {
   function background(place = '', time) {
     const rule = (window.FEMC_BG || []).find(([at]) => at[0] === '*' ? place.includes(at.slice(1)) : place.startsWith(at));
     if (!rule) return null;
-    const [, day, evening] = rule;
+    const [, day, evening, look] = rule;
     const late = time === 'Evening' || /\bNight\b|Evening/.test(place);
     const dusk = /\bDusk\b/.test(place);
     const special = /Dark Hour|Velvet|Tartarus/.test(place);
     const img = late && evening ? evening : day;
-    return { url: `${F().base}assets/femc/bg/${img}.webp?v=2`, mood: special || (late && evening) ? '' : late ? 'night' : dusk ? 'dusk' : '' };
+    return { url: `${F().base}assets/femc/bg/${img}.webp?v=3`, mood: look || (special || (late && evening) ? '' : late ? 'night' : dusk ? 'dusk' : '') };
   }
-  const areaBackground = area => { const img = (window.FEMC_AREA_BG || {})[area]; return img ? `${F().base}assets/femc/bg/${img}.webp?v=2` : null; };
+  const areaBackground = area => { const img = (window.FEMC_AREA_BG || {})[area]; return img ? `${F().base}assets/femc/bg/${img}.webp?v=3` : null; };
 
   /* ── Bond meter ────────────────────────────────────── */
   // Every rank after the first needs ♪ to reach. A rank's story scene always plays once; if its choices
@@ -994,7 +995,7 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = F().load;
-    ready = Promise.all([L('assets/femc/portraits/index.js?v=7', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js?v=2', () => window.FEMC_BG), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
+    ready = Promise.all([L('assets/femc/portraits/index.js?v=7', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js?v=3', () => window.FEMC_BG), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
       .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=32`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
