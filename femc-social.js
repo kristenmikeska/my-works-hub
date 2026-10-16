@@ -125,6 +125,19 @@ window.FemcSocial = (() => {
     .vn-rank-inner { display: grid; justify-items: center; gap: 18px; text-align: center; padding: 16px; }
     .vn-card { width: 150px; height: 230px; display: grid; place-content: center; gap: 8px; border: 3px solid #ff8cc0; border-radius: 10px; background: linear-gradient(160deg, #ff4f9e, #7a0b3e); box-shadow: 0 0 40px rgba(255, 79, 158, .6); font: italic 900 46px/1 ${COND}; animation: vn-card 1.1s cubic-bezier(.2, 1.2, .4, 1) both; }
     .vn-card small { font-size: 15px; letter-spacing: .2em; text-transform: uppercase; }
+    .vn-meter-inner { display: flex; align-items: center; gap: clamp(18px, 4vw, 40px); width: min(680px, calc(100vw - 40px)); padding: 16px; }
+    .vn-card-sm { flex: none; width: 110px; height: 168px; font-size: 34px; }
+    .vn-card-sm small { font-size: 12px; }
+    .vn-meter-info { flex: 1; min-width: 0; display: grid; gap: 12px; }
+    .vn-meter-name { margin: 0; font: italic 900 clamp(30px, 5vw, 46px)/1 ${COND}; transform: skewX(-8deg); text-shadow: .06em .06em 0 #ff4f9e; }
+    .vn-meter-name small { display: block; margin-top: 6px; color: #ff8cc0; font-size: 14px; letter-spacing: .24em; text-transform: uppercase; text-shadow: none; }
+    .vn-bar { position: relative; height: 22px; border: 2px solid #ff8cc0; background: #14070f; transform: skewX(-18deg); overflow: hidden; box-shadow: 5px 5px 0 rgba(255, 79, 158, .45); }
+    .vn-bar i { position: absolute; inset: 0 auto 0 0; width: 0; background: linear-gradient(90deg, #ff4f9e, #ffb3d6); transition: width .15s ease-out; }
+    .vn-meter.full .vn-bar i { background: #fff; box-shadow: 0 0 18px #ff4f9e; }
+    .vn-meter-notes { margin: 0; font: italic 800 16px/1 ${COND}; letter-spacing: .08em; color: #ffd6e8; }
+    .vn-meter-notes b { margin-right: 10px; color: #ff4f9e; font-size: 20px; }
+    .vn-meter-msg { min-height: 2.8em; margin: 0; font: italic 600 16px/1.45 Georgia, serif; color: #ffd6e8; }
+    @media (max-width: 560px) { .vn-meter-inner { flex-direction: column; text-align: center; } }
     .vn-thou { min-height: 3.2em; margin: 0; font: italic 600 18px/1.6 Georgia, serif; color: #ffd6e8; }
     .vn-ranknum { margin: 0; font: italic 900 clamp(56px, 10vw, 110px)/.9 ${COND}; text-shadow: .06em .06em 0 #ff4f9e; transform: skewX(-8deg); animation: vn-slam .7s 1.2s cubic-bezier(.2, 1.5, .4, 1) both; }
     .vn-ranknum small { display: block; font-size: .2em; letter-spacing: .3em; }
@@ -251,6 +264,34 @@ window.FemcSocial = (() => {
     setTimeout(() => el.remove(), 3500);
   }
 
+  /* ── Bond meter ────────────────────────────────────── */
+  // Every rank after the first needs ♪ to reach. A rank's story scene always plays once; if its choices
+  // didn't earn enough, shorter hangouts (the link's `hangouts`) fill the meter until the rank-up.
+  // The bar fills from about 80% of the ♪ the story scene can give, so the best answers rank up right away.
+  function maxNotes(lines) {
+    return (lines || []).reduce((sum, l) => {
+      const opts = l.choose || l.route;
+      if (opts) return sum + Math.max(...opts.map(o => (o.notes || 0) + maxNotes(o.then)));
+      if (l.ifRoute) return sum + maxNotes(l.then);
+      if (l.ifRank) return sum + Math.max(maxNotes(l.then), maxNotes(l.else));
+      return sum;
+    }, 0);
+  }
+  function need(link, r) {
+    if (r <= 0 || !link.ranks[r]) return 0;
+    return Math.max(4, Math.round(maxNotes(link.ranks[r].scene) * 0.8));
+  }
+  // A short, story-free hangout for topping up the meter. Kat's vignettes rotate; there's a plain fallback.
+  function hangoutScene(link, p) {
+    const pool = link.hangouts || [];
+    const scene = pool.length ? pool[(p.hung || 0) % pool.length] : [
+      { n: `Solar spent the ${now().time === 'Evening' ? 'evening' : 'afternoon'} with ${link.short}. They talked about nothing in particular, which turned out to be the point.` },
+      { choose: [{ t: '(Mostly listen.)', notes: 2 }, { t: '(Tell them about your week.)', notes: 3 }, { t: '(Tease them a little.)', notes: 1 }] },
+      { n: `${link.short} seemed to have a good time.` }
+    ];
+    return { place: link.home.place, scene, music: link.music || (/^Gekkoukan High/.test(link.home.place) ? 'school' : 'joy') };
+  }
+
   /* ── Scene music, chosen by mood the way Persona does ── */
   // A rank (or a scene line) can name a mood with `music`; otherwise the place decides.
   const SCENE_MUSIC = {
@@ -299,8 +340,10 @@ window.FemcSocial = (() => {
   /* ── Scene player ────────────────────────────────── */
   // Plays rank `r` (0-based) of a link. opts.replay skips progress, stamps and the rank-up.
   function play(link, r, opts = {}) {
-    const rank = link.ranks[r];
     const p = progress(link.id);
+    // The story for this rank already played but the meter isn't full: a hangout instead.
+    const filler = !opts.replay && !opts.frame && !S.free && p.ready === r && r > 0;
+    const rank = filler ? hangoutScene(link, p) : link.ranks[r];
     let gained = 0;
     const el = document.createElement('div');
     el.className = `vn${link.theme ? ` vn-${link.theme}` : ''}`;
@@ -514,16 +557,48 @@ window.FemcSocial = (() => {
     function end(finished) {
       clearTimeout(typing);
       if (!finished || opts.replay || opts.frame) { close(); opts.onDone?.(finished); return; }
-      // Progress, then the rank-up.
-      p.rank = r + 1;
-      (p.rankDay ||= {})[p.rank] = S.d;
+      // Progress: ♪ go into the bond meter, and the rank goes up only when it's full.
+      const req = S.free ? 0 : need(link, r);
+      const from = Math.min(p.xp || 0, req);
       p.notes += gained;
-      if (!p.seen.includes(r)) p.seen.push(r);
+      p.xp = (p.xp || 0) + gained;
+      p.lastDay = S.d;
+      if (filler) p.hung = (p.hung || 0) + 1;
+      else if (!p.seen.includes(r)) p.seen.push(r);
       if (!S.met.includes(link.id)) S.met.push(link.id);
       if (!S.free) S.spent[`${S.d}-${S.slot}`] = link.id;
+      const up = p.xp >= req;
+      if (up) { p.rank = r + 1; (p.rankDay ||= {})[p.rank] = S.d; p.xp = 0; delete p.ready; } else p.ready = r;
       save();
-      (link.stamps?.[p.rank] || []).forEach(id => F().load('achievements.js?v=9', () => window.Achievements).then(() => window.Achievements?.unlock(id)));
-      rankUp(link, p.rank, () => { close(); if (!S.free) advance(); opts.onDone?.(true); });
+      if (up) (link.stamps?.[p.rank] || []).forEach(id => F().load('achievements.js?v=9', () => window.Achievements).then(() => window.Achievements?.unlock(id)));
+      const done = () => { close(); if (!S.free) advance(); opts.onDone?.(true); };
+      const after = () => (up ? rankUp(link, p.rank, done) : done());
+      req ? meter(link, r, from, Math.min(from + gained, req), req, up, after) : after();
+    }
+    // P3R's bond meter: the ♪ from this hangout pour into the bar toward the next rank.
+    function meter(link, r, from, to, req, up, done) {
+      const box = document.createElement('div');
+      box.className = 'vn-rank vn-meter';
+      box.innerHTML = `<div class="vn-meter-inner"><div class="vn-card vn-card-sm"><span>${link.numeral || '✦'}</span><small>${link.arcana}</small></div>
+        <div class="vn-meter-info"><p class="vn-meter-name">${link.short}<small>Rank ${r} ▸ ${r + 1 >= link.ranks.length ? 'MAX' : r + 1}</small></p>
+        <div class="vn-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${req}" aria-valuenow="${to}"><i></i></div>
+        <p class="vn-meter-notes"><b>+${to - from} ♪</b> <span>${from}</span> / ${req}</p><p class="vn-meter-msg"></p></div></div>`;
+      el.appendChild(box);
+      const fill = box.querySelector('.vn-bar i'), count = box.querySelector('.vn-meter-notes span'), msg = box.querySelector('.vn-meter-msg');
+      const pct = v => `${Math.min(100, (v / req) * 100)}%`;
+      fill.style.width = pct(from);
+      const steps = to - from, gap = reduced.matches ? 0 : 160;
+      for (let k = 1; k <= steps; k++) setTimeout(() => { fill.style.width = pct(from + k); count.textContent = from + k; F().sfx('femc-note'); }, 500 + k * gap);
+      let ready = false, finished = false;
+      setTimeout(() => {
+        ready = true;
+        msg.textContent = up ? 'The meter is full. Something is about to change...' : `Your bond with ${link.short} grew. Spend more time together to reach the next rank.`;
+        if (up) box.classList.add('full');
+      }, 600 + steps * gap);
+      const finish = () => { if (!ready || finished) return; finished = true; document.removeEventListener('keydown', onKey, true); box.remove(); done(); };
+      const onKey = e => { if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') { e.preventDefault(); finish(); } };
+      box.addEventListener('click', finish);
+      document.addEventListener('keydown', onKey, true);
     }
     function rankUp(link, n, done) {
       const max = n >= link.ranks.length;
@@ -568,7 +643,7 @@ window.FemcSocial = (() => {
   const ph = () => S.phone;
   const unread = () => Object.values(ph().unread).reduce((a, b) => a + b, 0);
   function eligible(t) {
-    if (ph().done.includes(t.id)) return false;
+    if (ph().done.includes(t.id) || ph().pending[t.thread]) return false;
     const p = progress(t.link);
     const before = t.before ?? (t.rank + 1);
     if (p.rank < t.rank || p.rank >= before) return false;
@@ -589,11 +664,15 @@ window.FemcSocial = (() => {
     const P = ph();
     P.done.push(t.id);
     const log = (P.log[t.thread] ||= []);
-    t.msgs.forEach(m => log.push({ ...m, d: S.d }));
+    // Longer chats pause at each { ask: [...] } for Solar's answer; the rest arrives after she replies.
+    const cut = t.msgs.findIndex(m => m.ask);
+    const shown = cut < 0 ? t.msgs : t.msgs.slice(0, cut);
+    shown.forEach(m => log.push({ ...m, d: S.d }));
     if (t.rename) THREADS[t.thread] && (P.names = { ...(P.names || {}), [t.thread]: t.rename });
-    P.unread[t.thread] = (P.unread[t.thread] || 0) + t.msgs.filter(m => !m.sys).length;
-    if (t.reply) P.pending[t.thread] = t.id;
-    const first = t.msgs.find(m => !m.sys);
+    P.unread[t.thread] = (P.unread[t.thread] || 0) + shown.filter(m => !m.sys).length;
+    if (cut >= 0) P.pending[t.thread] = { id: t.id, ask: t.msgs[cut].ask, rest: t.msgs.slice(cut + 1).concat(t.reply ? [{ ask: t.reply }] : []) };
+    else if (t.reply) P.pending[t.thread] = t.id;
+    const first = shown.find(m => !m.sys);
     setTimeout(() => notify(t.thread, first), 300);
   }
   /* ── Invitations: "free right now?" ── */
@@ -606,17 +685,29 @@ window.FemcSocial = (() => {
     const ready = Object.values(links).filter(l => {
       if (l.hidden || !l.invite || !isMet(l.id) || P.pending[l.id]) return false;
       const p = progress(l.id);
-      return status(l).reason === 'elsewhere' && P.invited[l.id] !== p.rank && S.d - ((p.rankDay || {})[p.rank] ?? -99) >= 3;
+      return status(l).reason === 'elsewhere' && P.invited[l.id] !== inviteKey(p) && S.d - (p.lastDay ?? (p.rankDay || {})[p.rank] ?? -99) >= 2;
     });
     if (!ready.length) return;
-    const l = ready[S.d % ready.length];
-    const msg = l.invite.ask[S.d % l.invite.ask.length];
-    P.invited[l.id] = progress(l.id).rank;
+    const l = ready[Math.floor(Math.random() * ready.length)];
+    const msg = pickFresh(l.id, 'ask', l.invite.ask);
+    P.invited[l.id] = inviteKey(progress(l.id));
     P.lastInvite = S.d;
     (P.log[l.id] ||= []).push({ from: l.id, t: msg, d: S.d });
     P.unread[l.id] = (P.unread[l.id] || 0) + 1;
     P.pending[l.id] = `invite:${l.id}:${slotKey()}`;
     setTimeout(() => notify(l.id, { from: l.id, t: msg }), 300);
+  }
+  // Once per rank, and once more after each hangout that didn't rank up.
+  const inviteKey = p => `${p.rank}:${p.hung || 0}`;
+  // A random line from a pool, never the same as the last few used for this link.
+  function pickFresh(id, kind, pool) {
+    if (!Array.isArray(pool)) return pool;
+    const P = ph(), seen = ((P.recent ||= {})[`${id}:${kind}`] ||= []);
+    const fresh = pool.map((_, i) => i).filter(i => !seen.includes(i));
+    const i = (fresh.length ? fresh : pool.map((_, j) => j))[Math.floor(Math.random() * (fresh.length || pool.length))];
+    seen.push(i);
+    while (seen.length > Math.min(4, pool.length - 1)) seen.shift();
+    return pool[i];
   }
   const isInvite = v => typeof v === 'string' && v.startsWith('invite:');
   function expireInvites() {
@@ -709,50 +800,60 @@ window.FemcSocial = (() => {
       const replyBox = phoneEl.querySelector('.ph-reply');
       replyBox.replaceChildren();
       if (isInvite(P.pending[id])) return inviteReply(id, P.pending[id].split(':')[1]);
-      const t = TEXTS.find(x => x.id === P.pending[id]);
+      const pend = P.pending[id];
+      const t = TEXTS.find(x => x.id === (pend?.id ?? pend));
       if (!t) return;
-      t.reply.forEach(o => {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.textContent = o.t;
-        b.addEventListener('click', () => {
-          replyBox.replaceChildren();
-          delete P.pending[id];
-          const log = P.log[id];
-          log.push({ from: 'solar', t: o.t, d: S.d });
-          if (o.notes) { progress(t.link).notes += o.notes; }
-          save();
-          body.appendChild(bubble({ from: 'solar', t: o.t }, group));
-          if (o.notes) { const n = document.createElement('p'); n.className = 'ph-notes'; n.textContent = '♪'.repeat(o.notes); body.appendChild(n); F().sfx('femc-note'); }
-          F().sfx('femc-text');
-          body.scrollTop = body.scrollHeight;
-          // Their answers arrive one at a time, with a typing indicator.
-          let i = 0;
-          const nextMsg = () => {
-            const m = (o.then || [])[i++];
-            if (!m) return;
-            const dots = document.createElement('p');
-            dots.className = 'ph-msg them ph-typing';
-            dots.textContent = '• • •';
-            body.appendChild(dots); body.scrollTop = body.scrollHeight;
-            setTimeout(() => {
-              dots.remove();
-              log.push({ ...m, d: S.d }); save();
-              body.appendChild(bubble(m, group)); body.scrollTop = body.scrollHeight;
-              F().sfx('femc-text');
-              nextMsg();
-            }, reduced.matches ? 0 : 900);
-          };
-          setTimeout(nextMsg, 500);
+      offer(pend?.ask ?? t.reply, pend?.rest ?? []);
+      // Solar's answer options; picking one plays the replies, then the rest of the chat until the next question.
+      function offer(ask, rest) {
+        replyBox.replaceChildren();
+        ask.forEach(o => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.textContent = o.t;
+          b.addEventListener('click', () => {
+            replyBox.replaceChildren();
+            delete P.pending[id];
+            const log = P.log[id];
+            log.push({ from: 'solar', t: o.t, d: S.d });
+            if (o.notes) { const lp = progress(t.link); lp.notes += o.notes; if (lp.rank < (links[t.link]?.ranks.length || 10)) lp.xp = (lp.xp || 0) + o.notes; }
+            save();
+            body.appendChild(bubble({ from: 'solar', t: o.t }, group));
+            if (o.notes) { const n = document.createElement('p'); n.className = 'ph-notes'; n.textContent = '♪'.repeat(o.notes); body.appendChild(n); F().sfx('femc-note'); }
+            F().sfx('femc-text');
+            body.scrollTop = body.scrollHeight;
+            // Their answers arrive one at a time, with a typing indicator.
+            const queue = [...(o.then || []), ...rest];
+            const nextMsg = () => {
+              const m = queue.shift();
+              if (!m) return;
+              if (m.ask) { P.pending[id] = { id: t.id, ask: m.ask, rest: queue }; save(); return offer(m.ask, queue); }
+              if (m.sys) { log.push({ ...m, d: S.d }); save(); body.appendChild(bubble(m, group)); body.scrollTop = body.scrollHeight; return nextMsg(); }
+              const dots = document.createElement('p');
+              dots.className = 'ph-msg them ph-typing';
+              dots.textContent = '• • •';
+              body.appendChild(dots); body.scrollTop = body.scrollHeight;
+              setTimeout(() => {
+                dots.remove();
+                log.push({ ...m, d: S.d }); save();
+                body.appendChild(bubble(m, group)); body.scrollTop = body.scrollHeight;
+                F().sfx('femc-text');
+                nextMsg();
+              }, reduced.matches ? 0 : 900);
+            };
+            setTimeout(nextMsg, 500);
+          });
+          replyBox.appendChild(b);
         });
-        replyBox.appendChild(b);
-      });
+      }
     }
     // An invitation: say yes and the hangout starts right away.
     function inviteReply(id, linkId) {
       const P = ph(), l = links[linkId];
       const body = phoneEl.querySelector('.ph-body'), replyBox = phoneEl.querySelector('.ph-reply');
-      [['On my way!', true], ["Can't right now, sorry.", false]].forEach(([text, yes]) => {
+      const YES = ['On my way!', 'Be there in ten.', 'Yes!! Where?', 'Say less.', 'omw 🏃‍♀️', 'Leaving now.'];
+      const NO = ["Can't right now, sorry.", 'Rain check?', "Not today, I'm wiped.", 'Next time, promise.', "Ugh, I can't. Sorry!"];
+      [[pickFresh('solar', 'yes', YES), true], [pickFresh('solar', 'no', NO), false]].forEach(([text, yes]) => {
         const b = document.createElement('button');
         b.type = 'button';
         b.textContent = text;
@@ -764,7 +865,7 @@ window.FemcSocial = (() => {
           body.appendChild(bubble({ from: 'solar', t: text }));
           F().sfx('femc-text');
           body.scrollTop = body.scrollHeight;
-          const answer = yes ? l.invite.ok : l.invite.no;
+          const answer = pickFresh(linkId, yes ? 'ok' : 'no', yes ? l.invite.ok : l.invite.no);
           setTimeout(() => {
             if (answer) { P.log[id].push({ from: linkId, t: answer, d: S.d }); save(); body.appendChild(bubble({ from: linkId, t: answer })); body.scrollTop = body.scrollHeight; F().sfx('femc-text'); }
             if (yes) setTimeout(() => { close(); play(l, progress(linkId).rank); }, reduced.matches ? 0 : 1100);
@@ -869,5 +970,5 @@ window.FemcSocial = (() => {
     play(l, 0, { frame: true, onDone: () => { S.intro = true; save(); onDone?.(); } });
     return true;
   }
-  return { playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
+  return { need, playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
 })();
