@@ -699,7 +699,8 @@ window.FemcSocial = (() => {
   const ph = () => S.phone;
   const unread = () => Object.values(ph().unread).reduce((a, b) => a + b, 0);
   function eligible(t) {
-    if (ph().done.includes(t.id) || ph().pending[t.thread]) return false;
+    // A chat waiting on Solar holds back its link's later texts; a dated secret thread moves on without her.
+    if (ph().done.includes(t.id) || (ph().pending[t.thread] && t.link !== 'story')) return false;
     const p = progress(t.link);
     const before = t.before ?? (t.rank + 1);
     if (p.rank < t.rank || p.rank >= before) return false;
@@ -721,6 +722,7 @@ window.FemcSocial = (() => {
   function send(t) {
     const P = ph();
     P.done.push(t.id);
+    if (P.pending[t.thread] && !isInvite(P.pending[t.thread])) delete P.pending[t.thread];   // the chat moved on
     stamp(t.stamp);
     const log = (P.log[t.thread] ||= []);
     // Longer chats pause at each { ask: [...] } for Solar's answer; the rest arrives after she replies.
