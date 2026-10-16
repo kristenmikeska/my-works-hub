@@ -231,5 +231,17 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "sad",
   "serious"
+ ],
+ "genji": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
+ ],
+ "karlach": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
  ]
 };

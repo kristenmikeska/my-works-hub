@@ -445,20 +445,20 @@ FemcSocial.define({
       { n: "Karlach came through at the beginning of October, during the green hour, landing in the middle of Port Island Station like a meteor, literally steaming, and immediately punched a shadow so hard it exploded." },
       { register: 'karlach' },
       { n: "By the next evening she was in the dorm lounge, all red skin and horns and enormous laughing grin, the engine in her chest glowing orange through her shirt, eating an entire pot of rice with a serving spoon." },
-      { s: 'karlach', t: "Fangs! FANGS! You're here! Oh, I knew you'd be somewhere! You always land on your feet, you smug little nightmare!" },
+      { s: 'karlach', f: 'happy', t: "Fangs! FANGS! You're here! Oh, I knew you'd be somewhere! You always land on your feet, you smug little nightmare!" },
       { s: 'astarion', f: 'serious', t: "Hello, Karlach. Please don't touch me. You're running very hot." },
       { n: "She touched him. She hugged him, hard, lifting him off the ground. He made a sound like an offended cat. He did not, Solar noticed, try very hard to get away." },
-      { s: 'karlach', t: "And you must be Solar! Fangs hasn't shut up about you. Well, he hasn't said anything about you. But he's thought really loudly." },
+      { s: 'karlach', f: 'happy', t: "And you must be Solar! Fangs hasn't shut up about you. Well, he hasn't said anything about you. But he's thought really loudly." },
       { choose: [
         { t: "He thinks about me?", notes: 3, then: [
           { s: 'astarion', f: 'blushing', t: "I do not. Karlach, I will end you." },
-          { s: 'karlach', t: "You absolutely will not, you love me." }
+          { s: 'karlach', f: 'happy', t: "You absolutely will not, you love me." }
         ] },
-        { t: "It's nice to meet you, Karlach.", notes: 2, then: [{ s: 'karlach', t: "Nice to meet YOU! You've got a good grip. You lift?" }] }
+        { t: "It's nice to meet you, Karlach.", notes: 2, then: [{ s: 'karlach', f: 'happy', t: "Nice to meet YOU! You've got a good grip. You lift?" }] }
       ] },
       { n: "Akihiko came downstairs, saw Karlach, saw her arms, and immediately challenged her to an arm-wrestling match. She accepted with enormous delight. She won in three seconds. He asked for a rematch. She won in two." },
       { s: 'akihiko', f: 'surprised', t: "...How?" },
-      { s: 'karlach', t: "Engine in my chest, buddy! Infernal. Runs hot. Very motivating." },
+      { s: 'karlach', f: 'neutral', t: "Engine in my chest, buddy! Infernal. Runs hot. Very motivating." },
       { n: "Later, when the lounge had quieted down, Solar found Astarion standing by the window watching Karlach teach Akihiko a terrible infernal drinking song. He wasn't smiling. Not on the outside." },
       { s: 'astarion', f: 'neutral', t: "...Don't tell her I'm glad she's here." },
       { choose: [

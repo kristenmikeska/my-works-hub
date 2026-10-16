@@ -376,18 +376,18 @@ FemcSocial.define({
       { n: "Nobody else seemed to find this strange. Solar assumed it was the same thing that made people walk past the coffins in the green hour, the city's quiet agreement not to see what it couldn't explain. But she saw him: silver and white plating, a green glow at the seams, a visor where a face should be, perfectly still in the July heat." },
       { register: 'genji' },
       { s: 'mercy', f: 'happy', t: "Genji! You're here. You're actually here." },
-      { s: 'genji', t: "Angela. I followed a feeling. My master would say the universe is less tidy than we think." },
+      { s: 'genji', f: 'neutral', t: "Angela. I followed a feeling. My master would say the universe is less tidy than we think." },
       { n: "His voice was calm, a little mechanical at the edges, warm underneath. He stood and bowed to Solar, a small, precise bow." },
-      { s: 'genji', t: "You must be the one who keeps her from working herself into the floor. Thank you." },
+      { s: 'genji', f: 'happy', t: "You must be the one who keeps her from working herself into the floor. Thank you." },
       { choose: [
-        { t: "I try. She doesn't listen.", notes: 3, then: [{ s: 'genji', t: "She never has. That is why she is still alive. And why we all are." }] },
+        { t: "I try. She doesn't listen.", notes: 3, then: [{ s: 'genji', f: 'happy', t: "She never has. That is why she is still alive. And why we all are." }] },
         { t: "How do you two know each other?", notes: 2, then: [{ s: 'mercy', f: 'sad', t: "I rebuilt him. A long time ago. When he didn't want to be rebuilt." }] }
       ] },
       { n: "They talked in the shade for an hour. Genji spoke about anger, and how long it had taken him to set it down. Angela spoke about the operating table, and how she'd kept going when he'd asked her to stop. Neither of them said sorry. It sounded like they'd both said it a long time ago and had been forgiven." },
       { s: 'mercy', f: 'neutral', t: "He hated me for years, you know. For saving him." },
-      { s: 'genji', t: "And then I didn't. Healing is not only for the body, Solar. She taught me that, without meaning to." },
+      { s: 'genji', f: 'sad', t: "And then I didn't. Healing is not only for the body, Solar. She taught me that, without meaning to." },
       { n: "By evening Genji was fading at the edges, the way the visitors always did when the world remembered they didn't belong to it. He bowed again before he went." },
-      { s: 'genji', t: "Look after her. She will not do it herself." },
+      { s: 'genji', f: 'serious', t: "Look after her. She will not do it herself." },
       { n: "Angela didn't cry. She just held her coffee in both hands for a long time, after, looking at the place under the tree where he'd been sitting." }
     ] },
 
