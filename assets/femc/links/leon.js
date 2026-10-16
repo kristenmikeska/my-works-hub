@@ -5,7 +5,96 @@ FemcSocial.define({
   arrives: '9/5',
   home: { place: 'Paulownia Mall · Police Box', slot: 1, days: [1, 2, 4, 5], hint: 'Evenings on Mondays, Tuesdays, Thursdays and Fridays, leaning on the counter of Officer Kurosawa\'s police box.' },
   approach: "A man in a fur-collared leather jacket is leaning on Officer Kurosawa's counter, very politely losing an argument.",
-  invite: { ask: ["You free?", "Ashley wants to go shopping. Save me.", "Got time to grab food?"], ok: "Copy that.", no: "Roger. Another time." },
+  invite: {
+    ask: ["You free?", "Kurosawa is ignoring me again. Come keep me company.", "Got time to grab food?", "Police box. Kurosawa won't talk to me. Come be a buffer.", "Found a ramen place that doesn't ask questions. You in?", "Mall's quiet. Too quiet. Want to walk?", "Need a translator. Long story.", "Kurosawa says I'm loitering. Come loiter with me."],
+    ok: ["Copy that.", "Good. Police box.", "Roger. I'll be the one in the jacket."],
+    no: ["Roger. Another time.", "Copy. Stay safe.", "Understood. Rain check."]
+  },
+  hangouts: [
+    [
+      { n: "Evening, the mall lights coming on one by one, and Leon was at the police box again, leaning on Officer Kurosawa's counter with his chin in his hand, reading the wanted posters on the wall with the expression of a man reviewing someone else's work." },
+      { s: 'leon', f: 'neutral', t: "This guy's not in Iwatodai. Wrong shoes for it." },
+      { s: 'kurosawa', t: "Nobody asked you." },
+      { choose: [
+        { t: "What shoes should he be wearing?", notes: 3, then: [
+          { s: 'leon', f: 'happy', t: "Something he can run in. Look at his face. That's a guy who runs." },
+          { n: "Kurosawa, very slowly, without comment, looked at the poster. Then he wrote something down." }
+        ] },
+        { t: "Leon, let the man do his job.", notes: 2, then: [{ s: 'leon', f: 'neutral', t: "I am letting him. I'm just also doing it." }] },
+        { t: "(Read the posters too.)", notes: 1, then: [{ n: "She read them. They were mostly about bicycle theft. Leon nodded at every one like they were international fugitives." }] }
+      ] },
+      { n: "Kurosawa didn't thank him. But when they left there were two cans of hot tea on the counter that hadn't been there before, and nobody said anything about them, which was apparently how things were done at the police box." }
+    ],
+    [
+      { n: "Leon's idea of dinner was a convenience-store bento eaten standing up beside the police box, facing the mall, back to the wall. He did it every night, Kurosawa said. Like a horse." },
+      { s: 'leon', f: 'neutral', t: "Habit. You always face the door." },
+      { s: 'solar', t: "There's no door. It's a mall." },
+      { s: 'leon', f: 'neutral', t: "Everything's a door if you're unlucky enough." },
+      { choose: [
+        { t: "(Sit on the bench and pat the spot beside you.)", notes: 3, then: [{ n: "He looked at the bench. Then at the mall. Then at her. Then he sat, and kept his eyes on the escalators the whole time, and ate the rest of his bento like a normal human being, and admitted at the end that his knees had been killing him." }] },
+        { t: "(Stand beside him and face the mall too.)", notes: 2, then: [
+          { n: "She put her back to the wall next to his and ate her rice ball facing the mall. He glanced sideways at her, and the corner of his mouth went up." },
+          { s: 'leon', f: 'happy', t: "Look at you. Natural." }
+        ] },
+        { t: "That's the saddest thing I've ever heard.", notes: 1, then: [
+          { s: 'leon', f: 'neutral', t: "You should hear the rest of my résumé." },
+          { n: "He said it lightly. She didn't push." }
+        ] }
+      ] },
+      { n: "A kid ran past with a balloon and Leon tracked him all the way to the escalator without moving his head, then went back to his pickled plum like nothing had happened. It was a strange way to live, she thought, and a lonely one, and he was weirdly good company inside it." }
+    ],
+    [
+      { n: "Ashley was sitting on the police box counter again, which Kurosawa had stopped fighting, eating a crepe the size of her head and dripping strawberry sauce onto the incident log." },
+      { s: 'ashley', t: "Solar! Tell Leon the photo sticker booth is not a security risk." },
+      { s: 'leon', f: 'serious', t: "It's a small enclosed space with one exit and a curtain." },
+      { s: 'ashley', t: "It has GLITTER FRAMES, Leon." },
+      { choose: [
+        { t: "(Drag him into the booth.)", notes: 3, then: [
+          { n: "It took both of them. The booth was very small and Leon was not, and there were three of them in it and a great many elbows. The machine counted down in a cheerful voice. Ashley made a peace sign. Solar made a face. Leon, at the last second, out of pure reflex, checked the exit." },
+          { s: 'ashley', t: "Oh my god. He's looking at the curtain in every single one." },
+          { s: 'leon', f: 'happy', t: "Somebody has to." }
+        ] },
+        { t: "Leon can stand guard outside the curtain.", notes: 2, then: [
+          { s: 'leon', f: 'neutral', t: "...That's acceptable." },
+          { s: 'ashley', t: "NO. He has to be IN it. That's the whole point." }
+        ] },
+        { t: "It's a little bit of a security risk.", notes: 1, then: [
+          { s: 'leon', f: 'happy', t: "Thank you." },
+          { s: 'ashley', t: "TRAITOR." }
+        ] }
+      ] },
+      { n: "Ashley stuck one of the stickers on the police box counter, right next to the incident log. Kurosawa saw it. He left it there." }
+    ],
+    [
+      { n: "Leon had decided to learn Japanese. His method was to point at things on Officer Kurosawa's desk and say their names in English, loudly, until Kurosawa gave up and said them in Japanese." },
+      { s: 'leon', f: 'neutral', t: "Stapler." },
+      { s: 'kurosawa', t: "...Hotchkiss." },
+      { s: 'leon', f: 'surprised', t: "That's not Japanese. That's a guy's name." },
+      { choose: [
+        { t: "(Teach him how to order ramen instead.)", notes: 3, then: [
+          { n: "She wrote it out for him on the back of a lost-property form, phonetically, and made him say it back three times. He got it on the third try, very seriously, with an accent that made Kurosawa turn around in his chair." },
+          { s: 'leon', f: 'happy', t: "Okay. That's the only sentence I need. I'm fluent." }
+        ] },
+        { t: "It really is Hotchkiss. Long story.", notes: 2, then: [{ s: 'leon', f: 'neutral', t: "This country's going to get me before the monsters do." }] },
+        { t: "Ask him how to say 'go home.'", notes: 1, then: [{ s: 'kurosawa', t: "I'll teach him that one for free." }] }
+      ] },
+      { n: "He practiced it under his breath the whole way to the noodle stand. When they got there he said it perfectly, and the cook nodded and served him, and Leon looked prouder than she'd ever seen him look about anything." }
+    ],
+    [
+      { n: "There was a little girl at the police box when Solar got there, maybe five, in a yellow raincoat, sitting on the counter very calmly and holding on to Leon's sleeve. She'd lost her father somewhere between the shoe store and the fountain. Kurosawa was on the radio. Leon was on duty." },
+      { s: 'leon', f: 'serious', t: "Okay. Here's the situation. Your dad's out there. We're in here. We hold this position till he shows. Copy?" },
+      { n: "The girl, who did not speak a word of English, nodded seriously, like she'd understood all of it." },
+      { choose: [
+        { t: "(Buy her a juice from the vending machine.)", notes: 3, then: [
+          { n: "She came back with an apple juice. Leon stuck the straw in and handed it over with the gravity of a man passing out rations, and the girl drank it holding his sleeve with her other hand, and never once let go." },
+          { s: 'leon', f: 'happy', t: "Good call. Morale's important." }
+        ] },
+        { t: "(Translate for her.)", notes: 2, then: [{ n: "Solar translated. The girl listened, nodded again, and saluted. Leon saluted back without a flicker of irony." }] },
+        { t: "You're good with kids.", notes: 1, then: [{ s: 'leon', f: 'neutral', t: "Kids are easy. They complain less than Ashley." }] }
+      ] },
+      { n: "Her father came running across the mall twenty minutes later, white as paper, and scooped her up, and bowed to Kurosawa four times and to Leon five. Leon told him it was nothing. Then he stood at the counter for a long while after they'd gone, looking at the place where they'd disappeared into the crowd, with an expression Solar wouldn't have known how to name." }
+    ]
+  ],
   romance: true,
   cast: { ashley: 'Ashley', ada: 'Ada', kurosawa: 'Officer Kurosawa', merchant: 'Merchant', akihiko: 'Akihiko' },
   threads: { ashley: { name: 'leon\'s babysitting service', members: ['leon', 'ashley'] } },
@@ -34,6 +123,52 @@ FemcSocial.define({
     ], reply: [
       { t: 'Not really.', notes: 3, then: [{ from: 'leon', t: 'Okay. I\'m bringing ramen. Don\'t argue.' }] },
       { t: "I'm okay. Really.", notes: 2, then: [{ from: 'leon', t: 'Sure.' }, { from: 'leon', t: 'Bringing ramen anyway.' }] }
+    ] },
+    { id: 'ash-4long', thread: 'ashley', rank: 4, before: 7, days: 3, rename: "leon's babysitting service 👍", msgs: [
+      { from: 'ashley', t: 'ok BIG news' },
+      { from: 'ashley', t: 'there is a karaoke place on the second floor of the mall' },
+      { from: 'ashley', t: 'and i booked a room. for three. friday' },
+      { from: 'leon', t: 'No.' },
+      { from: 'ashley', t: 'its already paid for leon' },
+      { from: 'leon', t: 'With what money.' },
+      { from: 'ashley', t: 'dont worry about it' },
+      { from: 'leon', t: 'I am extremely worried about it.' },
+      { ask: [
+        { t: "I'm in. Leon, you're singing.", notes: 3, then: [
+          { from: 'ashley', t: 'YESSSS 💛' },
+          { from: 'leon', t: "I'm security. Security doesn't sing." },
+          { from: 'ashley', t: 'security DOES sing actually i checked' }
+        ] },
+        { t: 'Ashley. Where did the money come from?', notes: 2, then: [
+          { from: 'ashley', t: 'kurosawa' },
+          { from: 'leon', t: 'Ashley.' },
+          { from: 'ashley', t: 'he OFFERED. he said anything to get leon out of his police box for one night' },
+          { from: 'leon', t: "...That's fair." }
+        ] }
+      ] },
+      { from: 'ashley', t: 'ok song requests for leon. go' },
+      { from: 'leon', t: "I don't know any songs from this decade." },
+      { from: 'ashley', t: 'you dont know any songs from ANY decade' },
+      { from: 'leon', t: 'I know one.' },
+      { from: 'ashley', t: 'is it the one you hum when youre sharpening your knife' },
+      { from: 'leon', t: 'No comment.' },
+      { ask: [
+        { t: "Something sad and dramatic. He'd nail it.", notes: 3, then: [{ from: 'ashley', t: 'OMG yes. a power ballad. he has the hair for it' }, { from: 'leon', t: 'Leave the hair out of this.' }] },
+        { t: 'Let him pick. He has a secret favorite. I can tell.', notes: 2, then: [{ from: 'leon', t: "I don't." }, { from: 'leon', t: "It's a very good song, though." }] },
+        { t: 'A duet. Leon and Ashley.', notes: 1, then: [{ from: 'ashley', t: 'ew' }, { from: 'leon', t: 'Absolutely not.' }, { from: 'ashley', t: 'first thing we have agreed on all year' }] }
+      ] },
+      { from: 'ashley', t: 'ALSO i taught leon emoji today' },
+      { from: 'ashley', t: 'show her leon' },
+      { from: 'leon', t: '👍' },
+      { from: 'ashley', t: 'thats the only one he learned' },
+      { from: 'leon', t: 'It covers everything.' },
+      { sys: 'ashley renamed the group "leon\'s babysitting service 👍"' },
+      { ask: [
+        { t: '👍', notes: 3, then: [{ from: 'leon', t: 'See. She gets it.' }, { from: 'ashley', t: 'i hate it here' }] },
+        { t: 'Leon, try a different one.', notes: 2, then: [{ from: 'leon', t: '🔪' }, { from: 'ashley', t: 'NOT THAT ONE' }] }
+      ] },
+      { from: 'leon', t: "Friday. 1900. Don't be late." },
+      { from: 'ashley', t: 'he means 7pm. he thinks hes in the army' }
     ] },
     { id: 'leon-5a', rank: 5, days: 1, slot: 1, msgs: [
       { from: 'leon', t: 'About tonight. Ada.' },

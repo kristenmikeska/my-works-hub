@@ -6,9 +6,85 @@ FemcSocial.define({
   closes: '11/3',
   home: { place: 'Paulownia Mall', slot: 0, days: [1, 3, 5, 6], hint: 'After school on Mondays, Wednesdays, Fridays and Saturdays, somewhere in Paulownia Mall.' },
   approach: "A blonde girl in a red jacket is standing by the fountain, glaring at a man with a camera and very visibly deciding whether to throw her crepe at him.",
-  invite: { ask: ["SOLAR. crepes. now??", "free?? i need a second opinion on an outfit 🙏", "come hang!!! i'm so bored"], ok: "YAY see u soon ❤️", no: "noooo ok next time!!" },
+  invite: {
+    ask: [
+      "SOLAR. crepes. now??",
+      "free?? i need a second opinion on an outfit 🙏",
+      "come hang!!! i'm so bored",
+      "sunflare!!! the crepe lady has a new flavor and i can't face it alone",
+      "r u busy?? i'm at the fountain doing nothing and it's way more fun with u",
+      "emergency (not a real emergency) (there's a sale)",
+      "the photo booth has cat ear frames now. this is not a drill 🐱",
+      "i'm at the mall. u should also be at the mall. just saying 👀"
+    ],
+    ok: ["YAY see u soon ❤️", "omg yes!! fountain, 10 min!!", "ur the best. hurry 🐆"],
+    no: ["noooo ok next time!!", "ok but u owe me a crepe 😤", "boo. ok!! go do ur thing ❤️"]
+  },
+  hangouts: [
+    [
+      { n: "Ann had steered Solar into the accessory shop on the second floor, the one with the mirrored pillars and the music turned up a little too loud, and was now holding earrings up to Solar's ears two pairs at a time, with the grave concentration of an eye doctor." },
+      { s: 'ann', f: 'serious', t: "Left or right. Don't think. Thinking ruins it." },
+      { choose: [
+        { t: "Left.", notes: 2, then: [{ s: 'ann', f: 'happy', t: "Wrong, but confidently wrong. I respect it." }] },
+        { t: "Which ones would you wear?", notes: 3, then: [
+          { s: 'ann', f: 'surprised', t: "...Me? Oh. The red ones. Obviously the red ones." },
+          { n: "She held them up to her own ears in the mirror for a second, and her face went quiet and pleased, like she'd forgotten she was allowed to want things too." }
+        ] },
+        { t: "(Point at a pair of enormous plastic strawberries.)", notes: 1, then: [{ s: 'ann', f: 'flustered', t: "Sunflare. No. I'm revoking your accessory privileges." }] }
+      ] },
+      { n: "They left with nothing, which Ann said was the whole point of window shopping. Then she went back for the red ones while Solar pretended to be very interested in a rack of socks." }
+    ],
+    [
+      { n: "The fountain was Ann's favorite place to do nothing. She sat on the rim with her knees pulled up and narrated the mall in a hushed voice, like a nature documentary, while people went past with shopping bags and no idea they were being studied." },
+      { s: 'ann', f: 'happy', t: "Okay. Him. Briefcase, cake box, walking way too fast. Go." },
+      { choose: [
+        { t: "He forgot his anniversary. That's an apology cake.", notes: 3, then: [{ s: 'ann', f: 'happy', t: "Oh, that is SO an apology cake. Look at his walk. That's a man who's sleeping on the couch tonight." }] },
+        { t: "The cake is a decoy. He's a Phantom Thief.", notes: 2, then: [{ s: 'ann', f: 'surprised', t: "...Okay, now I'm actually worried about him." }] },
+        { t: "He's just a guy with a cake.", notes: 1, then: [{ s: 'ann', f: 'neutral', t: "Boo. Nobody is just a guy with a cake, Sunflare." }] }
+      ] },
+      { n: "They kept it up for forty minutes. By the end Ann had given the cake man a wife, two kids, a dog called Butter and a tragic secret involving a karaoke bar, and Solar was invested in every one of them." }
+    ],
+    [
+      { n: "There was a photo sticker booth by the arcade with a curtain covered in cartoon rabbits, and Ann went into it the way other people went into church." },
+      { n: "She knew every setting. She knew which frame made your eyes huge and which one made you look like a ghost, and she fed in the coins without looking, and the countdown started, and Solar realized far too late that she had no idea what to do with her face." },
+      { s: 'ann', f: 'happy', t: "Three seconds! Do something! Anything!" },
+      { choose: [
+        { t: "(Make the worst face you can.)", notes: 3, then: [{ n: "Solar crossed her eyes and stuck out her tongue. Ann looked over, shrieked, and the camera caught them both mid-collapse, which was, Ann announced afterward, the best photo she had ever been in, and she had been in magazines." }] },
+        { t: "(Copy whatever Ann does.)", notes: 2, then: [{ n: "Ann threw up a peace sign. Solar threw up a peace sign half a second later, so that in every single frame she looked like a very polite echo." }] },
+        { t: "(Stand very still and hope.)", notes: 1, then: [{ s: 'ann', f: 'flustered', t: "You look like a hostage! Sunflare! Smile!" }] }
+      ] },
+      { n: "Ann cut the sticker sheet in half with the little scissors on a chain and stuck her half on the back of her phone right away, like it was urgent." }
+    ],
+    [
+      { n: "The crepe lady had started on Ann's usual the moment she saw her coming up the escalator, which Ann found deeply moving and Solar found a little concerning." },
+      { s: 'ann', f: 'serious', t: "Today I'm trying something new. I've decided. I'm a new woman." },
+      { n: "She stared at the menu for a long time. The crepe lady waited, ladle in hand, batter going cold." },
+      { choose: [
+        { t: "Get two. One new, one usual.", notes: 3, then: [{ s: 'ann', f: 'happy', t: "That's genius. That's actually genius. Why is nobody else saying this?" }] },
+        { t: "Get your usual. You'll be happier.", notes: 2, then: [
+          { s: 'ann', f: 'sad', t: "...I would be happier." },
+          { n: "She got her usual. She was happier." }
+        ] },
+        { t: "(Order for her. Banana and red bean.)", notes: 1, then: [{ n: "Ann ate it with an expression of polite, wounded betrayal, and finished every bite, and said nothing, which was somehow worse." }] }
+      ] },
+      { n: "They ate on the bench by the escalator, hip to hip, and Ann reviewed every mouthful out loud as though it was going to print." }
+    ],
+    [
+      { n: "The claw machine by the arcade entrance had a black cat plush wedged in the back corner, just out of reach, and Ann had already fed it six hundred yen with the calm of someone who did not intend to lose." },
+      { s: 'ann', f: 'serious', t: "It's looking at me. It wants to come home with me. You can see it in its little face." },
+      { choose: [
+        { t: "One more try. I'll call it from the side.", notes: 3, then: [
+          { n: "Solar crouched at the side of the glass and called the angle, left, left, stop, and Ann dropped the claw on her word, and the cat came up by its tail, swinging, triumphant." },
+          { s: 'ann', f: 'happy', t: "TEAMWORK! Sunflare! We're unstoppable!" }
+        ] },
+        { t: "(Take over the controls.)", notes: 2, then: [{ n: "Solar dropped the claw dead center. It closed on the cat's ear, lifted it a heroic two centimeters, and let go. Ann screamed quietly into her own sleeve." }] },
+        { t: "It's rigged, Ann.", notes: 1, then: [{ s: 'ann', f: 'serious', t: "I know it's rigged. That's what makes it personal." }] }
+      ] },
+      { n: "On the way out Ann told the machine, very sincerely, that she would be back. Solar believed her. So, she suspected, did the machine." }
+    ]
+  ],
   romance: true,
-  cast: { ryuji: 'Ryuji', shiho: 'Shiho', futaba: 'Futaba', makoto: 'Makoto', mitsuru: 'Mitsuru' },
+  cast: { ryuji: 'Ryuji', shiho: 'Shiho', futaba: 'Futaba', makoto: 'Makoto', mitsuru: 'Mitsuru', haru: 'Haru' },
   threads: {
     elizabeth: { name: 'Elizabeth', members: ['elizabeth'] },
     thieves: { name: 'phantom thieves (temp)', members: ['ann', 'futaba'] }
@@ -71,12 +147,89 @@ FemcSocial.define({
       { t: 'Run the world, probably.', notes: 3, then: [{ from: 'ann', t: 'LOL' }, { from: 'ann', t: 'we would all be so well organized' }] },
       { t: 'Can they even text between worlds?', notes: 2, then: [{ from: 'ann', t: 'futaba says no' }, { from: 'ann', t: 'futaba also says "not yet"' }] }
     ] },
+    // Longer Phantom Thieves group chats: Futaba patches people through for a few minutes at a time.
+    { id: 'thieves-7-long', thread: 'thieves', rank: 7, before: 10, days: 3, slot: 1, msgs: [
+      { from: 'futaba', t: 'ok. remember when i said "not yet"' },
+      { from: 'futaba', t: 'it is now yet. for like ten minutes' },
+      { sys: 'futaba added Ryuji Sakamoto' },
+      { from: 'ryuji', t: 'YO' },
+      { from: 'ryuji', t: 'IS THIS WORKING. ANN. SUNFLARE. CAN U SEE THIS' },
+      { from: 'ann', t: 'RYUJI' },
+      { from: 'ann', t: 'why are you yelling' },
+      { from: 'ryuji', t: 'CAPS LOCK IS STUCK' },
+      { from: 'futaba', t: 'it is not stuck. i can see his keyboard' },
+      { ask: [
+        { t: 'Strong gale says hello.', notes: 3, then: [{ from: 'ryuji', t: "DON'T" }, { from: 'ryuji', t: 'i told EVERYONE about that' }, { from: 'futaba', t: 'he made a slideshow. it had transitions' }] },
+        { t: 'Hi, Skull.', notes: 2, then: [{ from: 'ryuji', t: 'SHE REMEMBERED' }, { from: 'ann', t: 'it is literally a skull ryuji. it is not hard to remember' }] },
+        { t: 'Futaba, how can you see his keyboard?', notes: 1, then: [{ from: 'futaba', t: "don't worry about it" }, { from: 'ryuji', t: 'wait' }, { from: 'ryuji', t: 'FUTABA HOW CAN U SEE MY KEYBOARD' }] }
+      ] },
+      { from: 'ryuji', t: 'ok ok real talk. how is she' },
+      { from: 'ann', t: "i'm RIGHT HERE" },
+      { from: 'ryuji', t: 'ya but ur gonna say "fine." sunflare tell me the truth' },
+      { ask: [
+        { t: 'She ate three crepes yesterday. She is thriving.', notes: 3, then: [{ from: 'ryuji', t: 'LMAO ok she good' }, { from: 'ann', t: 'it was TWO AND A HALF' }, { from: 'futaba', t: 'two and a half crepes is three crepes in the eyes of the law' }] },
+        { t: 'She misses you guys. A lot.', notes: 2, then: [{ from: 'ann', t: 'sunflare 😭' }, { from: 'ryuji', t: '...' }, { from: 'ryuji', t: 'we miss her too. like a LOT a lot' }] },
+        { t: 'Fine.', notes: 1, then: [{ from: 'ryuji', t: 'NOT U TOO' }] }
+      ] },
+      { sys: 'Ryuji Sakamoto renamed the group "SKULL AND FRIENDS"' },
+      { sys: 'futaba renamed the group "phantom thieves (temp)"' },
+      { from: 'ryuji', t: 'aw c\'mon' },
+      { from: 'futaba', t: 'connection is wobbling. say bye before you get turned into lasagna' },
+      { ask: [
+        { t: 'Bye, Ryuji. Come back sometime.', notes: 3, then: [{ from: 'ryuji', t: 'count on it' }, { from: 'ryuji', t: 'and next time I BEAT THAT PUNCHING MACHINE' }, { from: 'ann', t: 'you will not' }] },
+        { t: 'Look after Futaba for us.', notes: 2, then: [{ from: 'ryuji', t: 'bro she looks after ME' }, { from: 'futaba', t: 'correct' }] }
+      ] },
+      { sys: 'Ryuji Sakamoto lost connection' },
+      { from: 'ann', t: 'futaba' },
+      { from: 'ann', t: 'thank you' },
+      { from: 'futaba', t: '👍' }
+    ] },
     { id: 'ann-8a', rank: 8, days: 1, slot: 1, msgs: [
       { from: 'ann', t: 'can i say something dumb' },
       { from: 'ann', t: "part of me hopes futaba doesn't figure it out too fast" }
     ], reply: [
       { t: "That's not dumb.", notes: 3, then: [{ from: 'ann', t: '...ok' }, { from: 'ann', t: 'goodnight sunflare' }] },
       { t: 'Part of me hopes that too.', notes: 3, then: [{ from: 'ann', t: '😳' }, { from: 'ann', t: 'ok goodnight' }, { from: 'ann', t: 'GOODNIGHT' }] }
+    ] },
+    { id: 'thieves-8-long', thread: 'thieves', rank: 8, before: 10, days: 3, slot: 1, msgs: [
+      { sys: 'futaba added Makoto Niijima and Ryuji Sakamoto' },
+      { from: 'makoto', t: 'Thank you, Futaba. Is everyone here?' },
+      { from: 'ryuji', t: 'PRESENT' },
+      { from: 'ann', t: 'here!!' },
+      { from: 'futaba', t: 'i am the here' },
+      { from: 'makoto', t: 'Good. I have an agenda.' },
+      { from: 'ryuji', t: 'oh no' },
+      { from: 'makoto', t: "1. Status of the crossing. 2. Ann's wellbeing. 3. Any other business." },
+      { from: 'futaba', t: "item 1: it's complicated. i made a graph" },
+      { from: 'futaba', t: '📈🍝' },
+      { from: 'futaba', t: 'the pasta is load bearing' },
+      { from: 'makoto', t: "Thank you, Futaba. Item 2. Sunflare, you're the closest thing we have to a field report." },
+      { ask: [
+        { t: 'Ann, do you want to answer this one?', notes: 3, then: [{ from: 'ann', t: '...' }, { from: 'ann', t: "i'm good. i promise. i have a crepe lady and a sunflare" }, { from: 'makoto', t: 'Noted.' }, { from: 'futaba', t: 'minutes: ann has a crepe lady and a sunflare' }] },
+        { t: "She's okay. Better than okay, most days.", notes: 2, then: [{ from: 'makoto', t: 'That is very good to hear.' }, { from: 'ryuji', t: 'MOST days??' }, { from: 'ann', t: 'ryuji.' }] },
+        { t: 'Is this a real meeting?', notes: 1, then: [{ from: 'makoto', t: 'Every meeting is a real meeting.' }, { from: 'futaba', t: 'she means it. she owns a gavel. i have seen the gavel' }] }
+      ] },
+      { from: 'makoto', t: 'Item 3. Ryuji, you said you had business.' },
+      { from: 'ryuji', t: 'ok so makoto said the scary student council lady there has a MOTORCYCLE' },
+      { from: 'makoto', t: 'I said "Kirijo-san," Ryuji.' },
+      { from: 'ryuji', t: 'and she ALSO said the lady talks about EXECUTING people' },
+      { from: 'makoto', t: 'Executing a plan. She executes plans.' },
+      { from: 'futaba', t: 'two student council presidents. two motorcycles. this is a crossover event' },
+      { ask: [
+        { t: 'Makoto, do you miss her?', notes: 3, then: [{ from: 'makoto', t: '...' }, { from: 'makoto', t: 'It is rare to meet someone who understands the job.' }, { from: 'makoto', t: 'Please tell her the rotation she suggested worked. She will know what that means.' }, { from: 'ryuji', t: 'aww' }, { from: 'makoto', t: 'Do not "aww," Ryuji.' }] },
+        { t: "I'll tell Mitsuru-senpai you said hi, Ryuji.", notes: 2, then: [{ from: 'ryuji', t: 'NO' }, { from: 'ryuji', t: "DON'T" }, { from: 'ryuji', t: 'SUNFLARE I HAVE A FAMILY' }] },
+        { t: 'Nobody is riding her motorcycle, Ryuji.', notes: 1, then: [{ from: 'ryuji', t: "i didn't even ASK yet" }, { from: 'ann', t: 'you were going to' }] }
+      ] },
+      { from: 'futaba', t: 'lasagna is cooling. wrap it up' },
+      { from: 'makoto', t: 'Meeting adjourned. Ann, eat a vegetable.' },
+      { from: 'ann', t: 'crepes have strawberries in them' },
+      { from: 'makoto', t: 'Ann.' },
+      { ask: [
+        { t: "I'll make sure she eats one.", notes: 3, then: [{ from: 'ann', t: 'TRAITOR' }, { from: 'makoto', t: 'Thank you, Sunflare. I knew I could count on you.' }] },
+        { t: 'Strawberries count.', notes: 2, then: [{ from: 'makoto', t: 'They do not.' }, { from: 'ann', t: 'they DO' }, { from: 'futaba', t: 'technically strawberries are not even berries. bananas are berries. goodnight' }] }
+      ] },
+      { from: 'ryuji', t: 'BYE SUNFLARE. STRONG GALE FOREVER' },
+      { sys: 'Makoto Niijima and Ryuji Sakamoto lost connection' }
     ] },
     { id: 'ann-9r', rank: 9, route: 'romance', days: 1, slot: 1, msgs: [
       { from: 'ann', t: 'i keep smiling at my phone' },
@@ -92,6 +245,43 @@ FemcSocial.define({
     ], reply: [
       { t: "I'll bring the crepes.", notes: 3, then: [{ from: 'ann', t: 'this is why ur my best friend' }] },
       { t: 'Non-negotiable accepted.', notes: 3, then: [{ from: 'ann', t: 'phantom thief best friends 🫶' }] }
+    ] },
+    { id: 'thieves-9-long', thread: 'thieves', rank: 9, before: 10, days: 2, rename: 'phantom thieves', unlock: { links: { haru: 5 } }, msgs: [
+      { sys: 'futaba renamed the group "phantom thieves"' },
+      { from: 'ann', t: 'wait. where did the (temp) go' },
+      { from: 'futaba', t: "deleted it. this chat stays. even after. i'll keep the lasagna open" },
+      { from: 'ann', t: 'futaba 😭' },
+      { sys: 'futaba added Haru Okumura, Makoto Niijima and Ryuji Sakamoto' },
+      { from: 'haru', t: 'Hello, everyone! 🌸 Thank you for adding me, Futa-chan.' },
+      { from: 'ryuji', t: 'HARU??' },
+      { from: 'ryuji', t: "UR THERE TOO??? SINCE WHEN" },
+      { from: 'makoto', t: 'Futaba told me, Ryuji. I told you. Twice.' },
+      { ask: [
+        { t: 'Haru grew a whole garden on my school roof.', notes: 3, then: [{ from: 'ryuji', t: 'SHE WHAT' }, { from: 'haru', t: 'Fufu. The tomatoes are very good this year.' }, { from: 'makoto', t: 'Of course she did.' }] },
+        { t: 'Welcome to the chat, Haru.', notes: 2, then: [{ from: 'haru', t: 'Thank you, Solar-chan! It is very lively. 🌷' }, { from: 'futaba', t: 'it is never this lively. ryuji is a weather event' }] }
+      ] },
+      { from: 'makoto', t: 'All right. The crossing. Futaba?' },
+      { from: 'futaba', t: 'end of the month. the station. green hour. that\'s when the tide is out' },
+      { from: 'futaba', t: 'ann you can bring one bag. ONE. physics is very strict about this' },
+      { from: 'ann', t: 'can i bring sunflare' },
+      { from: 'futaba', t: 'no' },
+      { from: 'futaba', t: 'i checked. i actually checked' },
+      { ask: [
+        { t: 'I would fit in a bag.', notes: 3, then: [{ from: 'futaba', t: 'you would not. i ran the numbers' }, { from: 'ann', t: 'she would if i folded her' }, { from: 'makoto', t: 'Nobody is folding anybody.' }] },
+        { t: 'Pack as many crepes as physics allows.', notes: 2, then: [{ from: 'ann', t: 'physics allows SO many crepes' }, { from: 'futaba', t: 'crepes are exempt from physics. this is known' }] },
+        { t: '😭', notes: 1, then: [{ from: 'haru', t: 'Oh, Solar-chan. 🌸' }, { from: 'ryuji', t: 'dude same' }] }
+      ] },
+      { from: 'ryuji', t: 'OK BUT. party. when ann gets back. leblanc. boss already said yes' },
+      { from: 'haru', t: "I'll bake for it! ...Oh. I won't be home yet." },
+      { from: 'ann', t: "then we throw u one too haru. you're next" },
+      { from: 'ryuji', t: 'sunflare u gotta be there' },
+      { from: 'futaba', t: 'i can MAYBE do a video call. four minutes. very pixelated' },
+      { ask: [
+        { t: "I'll be there. Pixelated.", notes: 3, then: [{ from: 'ryuji', t: "FOUR MINUTES IS PLENTY" }, { from: 'ann', t: "i'm going to cry the whole four minutes" }, { from: 'makoto', t: 'We will schedule them carefully.' }] },
+        { t: 'Save me a plate of curry.', notes: 2, then: [{ from: 'ryuji', t: "boss's curry. i'll guard it with my LIFE" }, { from: 'futaba', t: 'he will eat it' }, { from: 'ryuji', t: 'i will not EAT it' }] }
+      ] },
+      { from: 'ann', t: 'ok everyone stop making me cry in a hotel lobby' },
+      { from: 'haru', t: 'Goodnight, everyone. 🌙' }
     ] }
   ],
   ranks: [

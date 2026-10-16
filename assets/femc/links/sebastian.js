@@ -4,7 +4,78 @@ FemcSocial.define({
   arrives: '6/8',
   home: { place: 'Paulownia Mall · Game Panic', slot: 1, days: [2, 4, 6], hint: 'Evenings on Tuesdays, Thursdays and Saturdays, under the Game Panic awning. Especially if it is raining.' },
   approach: "A guy in a black hoodie is losing at an arcade machine in the back of Game Panic, with the air of someone who would rather be in a basement.",
-  invite: { ask: ["hey. you free?", "want to hang out? no pressure", "got a new campaign idea. come over?"], ok: "cool. see you soon", no: "no worries" },
+  invite: {
+    ask: ["hey. you free?", "want to hang out? no pressure", "got a new campaign idea. come over?", "its raining. awning?", "game panic. the cabinet in the back is free for once", "found a frog. unrelated. you around?", "bored. want to beat me at something", "arcade? i have like 40 coins and nobody to lose them to"],
+    ok: ["cool. see you soon", "ok. ill be under the awning", "nice. ill save you the good stool"],
+    no: ["no worries", "ok. another time", "thats fine. the rain will still be here"]
+  },
+  hangouts: [
+    [
+      { n: "Rain again, steady and warm, the awning ticking like a clock. Sebastian was leaning on the wall with his hood up, watching the street go silver, and he moved over about four inches when she ducked in, which for him was practically a speech." },
+      { s: 'sebastian', f: 'neutral', t: "Rain smells different here. Like metal. And fried food. And bus." },
+      { choose: [
+        { t: "What does it smell like at home?", notes: 3, then: [
+          { s: 'sebastian', f: 'neutral', t: "Mud. Pine trees. The lake. The mountain, if the wind's coming down off it." },
+          { s: 'sebastian', f: 'happy', t: "...I didn't know I knew that until just now." }
+        ] },
+        { t: "Bus is a smell?", notes: 2, then: [{ s: 'sebastian', f: 'happy', t: "Bus is the strongest smell. Bus is winning." }] },
+        { t: "I hadn't noticed.", notes: 1, then: [{ s: 'sebastian', f: 'neutral', t: "Yeah. You live here. You stop noticing." }] }
+      ] },
+      { n: "They stood there until the gutters stopped running. Across the street a takoyaki stall pulled its shutter halfway down, and for a minute the whole street smelled exactly the way he'd said." }
+    ],
+    [
+      { n: "Inside Game Panic it was all noise and blue light and the smell of hot plastic. Sebastian had claimed the fighting cabinet in the back corner, the one nobody used because the stick stuck, and was losing to the computer with total, silent dignity." },
+      { s: 'sebastian', f: 'neutral', t: "The stick sticks. That's my excuse. Want to play?" },
+      { n: "He slid a coin across the control panel without looking at her." },
+      { choose: [
+        { t: "(Play to win.)", notes: 3, then: [
+          { n: "She won. Twice. The second time with a combo she was fairly sure was an accident." },
+          { s: 'sebastian', f: 'happy', t: "...Okay. Okay. Again. I'm not mad. I'm learning." }
+        ] },
+        { t: "(Let him win.)", notes: 1, then: [{ s: 'sebastian', f: 'serious', t: "You stopped blocking. I saw that. Don't do that. That's worse than losing." }] },
+        { t: "Show me how the stick sticks.", notes: 2, then: [{ s: 'sebastian', f: 'neutral', t: "You have to pull it like it owes you money. Here." }] }
+      ] },
+      { n: "They played until the coins ran out, and then stood behind a pair of middle schoolers for a while, not saying anything, silently judging their technique, which turned out to be better than theirs." }
+    ],
+    [
+      { n: "The rain had stopped, and Sebastian wasn't under the awning. He was crouched by the gutter behind the mall with his hood down and his phone held out as a flashlight, very, very still." },
+      { s: 'sebastian', f: 'serious', t: "Don't step there. There's one by your shoe." },
+      { n: "There was. A tiny brown frog, no bigger than a coin, sitting in a puddle like it had paid rent on it." },
+      { choose: [
+        { t: "How many so far?", notes: 3, then: [
+          { s: 'sebastian', f: 'happy', t: "Five. Maybe four. One of them might be the same guy twice. He moves around a lot." },
+          { n: "He said it with the gravity of a scientist reporting results. Solar crouched down beside him and helped count. They got to seven." }
+        ] },
+        { t: "(Crouch down and look.)", notes: 2, then: [{ n: "She crouched beside him. The frog looked at both of them and did absolutely nothing, magnificently. Sebastian made a small, pleased sound through his nose." }] },
+        { t: "Do frogs bite?", notes: 1, then: [{ s: 'sebastian', f: 'neutral', t: "No. They're the most polite animal there is. Unlike geese." }] }
+      ] },
+      { s: 'sebastian', f: 'neutral', t: "...You're the first person who hasn't asked me why." },
+      { n: "It hadn't occurred to her that there was anything to ask. That, apparently, had been the right answer." }
+    ],
+    [
+      { n: "He had a notebook open on his knee under the awning and was filling a page with small, cramped handwriting and a drawing of something with too many teeth. A campaign, he said without looking up, for his friends back home. For whenever." },
+      { s: 'sebastian', f: 'neutral', t: "I need a name for this guy. He's a lich. Undead wizard. Very old, very evil. Everything I come up with sounds like a metal band." },
+      { choose: [
+        { t: "Gerald.", notes: 3, then: [
+          { s: 'sebastian', f: 'surprised', t: "...Gerald." },
+          { s: 'sebastian', f: 'happy', t: "A lich called Gerald. That's horrifying. That's the most horrifying thing I've ever heard. I'm using it." }
+        ] },
+        { t: "Something with a lot of Xs.", notes: 2, then: [{ s: 'sebastian', f: 'neutral', t: "Xaxxoth. Yeah. See, that's a metal band. Thanks, though." }] },
+        { t: "Lord Frog.", notes: 1, then: [{ s: 'sebastian', f: 'serious', t: "No. Frogs are never the villain. That's a rule." }] }
+      ] },
+      { n: "He wrote something down. Then he drew a tiny cardigan on the thing with too many teeth and tilted the notebook so she could see, and the corner of his mouth was doing the thing it did when he was trying very hard not to look pleased." }
+    ],
+    [
+      { n: "A whole middle-school club had poured into Game Panic at once, in matching windbreakers, shrieking, and by the time Solar got there the arcade was a wall of noise and elbows. Sebastian was outside under the awning with his hood all the way up and both hands jammed in his pocket, looking like a cat somebody had put in a bath." },
+      { s: 'sebastian', f: 'neutral', t: "There were twenty of them. One asked if I was a high schooler. I didn't know what to say. I said no." },
+      { choose: [
+        { t: "(Lean on the wall next to him and say nothing.)", notes: 3, then: [{ n: "She leaned on the wall. He leaned on the wall. Inside, a twelve-year-old screamed in victory. Out here the evening was blue and cool and nobody needed anything from anybody, and after a while his shoulders came down from around his ears." }] },
+        { t: "Want to go somewhere quieter?", notes: 2, then: [{ s: 'sebastian', f: 'neutral', t: "This is quieter. This is fine. Just... stay out here a minute." }] },
+        { t: "They're just kids.", notes: 1, then: [{ s: 'sebastian', f: 'serious', t: "Kids are the worst kind of crowd. They ask follow-up questions." }] }
+      ] },
+      { n: "When the club finally filed out, he went back in, put a coin in the fighting cabinet, and stepped aside to let her play first. It was, she was starting to understand, his version of thank you." }
+    ]
+  ],
   romance: true,
   cast: { abigail: 'Abigail', sam: 'Sam', junpei: 'Junpei', noctis: 'Noctis' },
   threads: { solarion: { name: 'solarion chronicles', members: ['sebastian', 'abigail', 'sam'] } },
@@ -41,6 +112,83 @@ FemcSocial.define({
       { t: "You didn't unload. You shared.", notes: 3, then: [{ from: 'sebastian', t: '...ok' }, { from: 'sebastian', t: 'thanks' }] },
       { t: 'Anytime, Seb.', notes: 2, then: [{ from: 'sebastian', t: '🐸' }] }
     ] },
+    { id: 'solarion-4', thread: 'solarion', rank: 4, before: 7, days: 2, slot: 1, msgs: [
+      { from: 'sam', t: 'ok SESSION TWO. by text. seb says it counts' },
+      { from: 'abigail', t: 'it counts if the dm says it counts. thats the law' },
+      { from: 'sebastian', t: 'it counts' },
+      { from: 'sebastian', t: 'last time you all made it out of the dragon cave. you walk three days through the swamp of ash. its raining' },
+      { from: 'abigail', t: 'its always raining with u' },
+      { from: 'sam', t: 'my bard plays a song about how wet he is 🎸' },
+      { from: 'sebastian', t: 'nobody can hear it over the rain' },
+      { from: 'sebastian', t: 'you reach a bridge. a troll lives under it. he wants a toll. 3 gold each' },
+      { from: 'abigail', t: 'i have 2 gold and a cool rock' },
+      { from: 'sebastian', t: 'solarion. what do you do' },
+      { ask: [
+        { t: 'Solarion challenges the troll to a riddle contest.', notes: 3, then: [
+          { from: 'sebastian', t: 'oh no' },
+          { from: 'sebastian', t: 'nobody ever does riddles. hold on' },
+          { from: 'sebastian', t: 'the troll asks. what has a neck but no head' },
+          { from: 'abigail', t: 'A BOTTLE' },
+          { from: 'sebastian', t: 'abby its not your turn' },
+          { from: 'sebastian', t: 'rolled int for you. 18. solarion gets it instantly. the troll weeps with joy and lets everyone cross. he gives you his hat' },
+          { from: 'sam', t: 'SOLARION GETS THE HAT' }
+        ] },
+        { t: "Solarion pays for everyone.", notes: 2, then: [
+          { from: 'sebastian', t: 'the troll takes 9 gold. he is now the richest troll in the swamp' },
+          { from: 'abigail', t: 'shes so generous 🥺' },
+          { from: 'sam', t: 'shes so BROKE now' }
+        ] },
+        { t: 'Solarion kicks the troll off the bridge.', notes: 1, then: [
+          { from: 'sebastian', t: 'rolled for you. 3' },
+          { from: 'sebastian', t: 'the troll does not move. the troll is offended. the troll writes your name down in a little book' },
+          { from: 'sam', t: 'LMAOOO' },
+          { from: 'abigail', t: 'that troll is coming back. i can feel it' }
+        ] }
+      ] },
+      { from: 'sebastian', t: 'past the bridge is a clearing. in the middle sits a frog the size of a horse. he is wearing a crown' },
+      { from: 'sam', t: 'seb' },
+      { from: 'abigail', t: 'SEB' },
+      { from: 'sebastian', t: 'what' },
+      { from: 'sam', t: 'its always a frog with u' },
+      { from: 'sebastian', t: 'the frog king regards solarion with ancient eyes' },
+      { ask: [
+        { t: 'Solarion bows to the frog king.', notes: 3, then: [
+          { from: 'sebastian', t: 'the frog king is moved. no one has bowed to him in 400 years' },
+          { from: 'abigail', t: 'she BOWED. hes going to be unbearable about this for a week' },
+          { from: 'sebastian', t: 'i will be normal about it' }
+        ] },
+        { t: 'Solarion asks the frog king for directions.', notes: 2, then: [
+          { from: 'sebastian', t: 'the frog king points north with one long finger. then he says ribbit. which is a blessing' }
+        ] },
+        { t: "Solarion tries on the frog king's crown.", notes: 1, then: [
+          { from: 'sebastian', t: 'the crown is extremely slimy. the frog king is not angry. just disappointed' },
+          { from: 'sam', t: 'thats worse' }
+        ] }
+      ] },
+      { sys: 'sam renamed the group "frog king fan club 🐸"' },
+      { from: 'sebastian', t: 'no' },
+      { sys: 'sebastian renamed the group "solarion chronicles"' },
+      { from: 'sebastian', t: 'the frog king offers solarion one gift for the road. a sword. a map of the swamp. or one of his sons, a very small frog, as a companion' },
+      { ask: [
+        { t: 'The very small frog.', notes: 3, then: [
+          { from: 'sebastian', t: '...' },
+          { from: 'sebastian', t: 'correct answer' },
+          { from: 'sebastian', t: 'the small frog climbs onto solarions shoulder. he has 1 hp and infinite loyalty' },
+          { from: 'abigail', t: 'seb is SMILING right now. i know it' },
+          { from: 'sebastian', t: 'session over. same time next week' }
+        ] },
+        { t: 'The sword.', notes: 2, then: [
+          { from: 'abigail', t: 'a WOMAN of TASTE' },
+          { from: 'sebastian', t: 'the sword hums faintly when its near frogs. no reason' },
+          { from: 'sebastian', t: 'session over. same time next week' }
+        ] },
+        { t: 'The map.', notes: 2, then: [
+          { from: 'sebastian', t: 'practical. solarion would' },
+          { from: 'sam', t: 'boooo take the frog' },
+          { from: 'sebastian', t: 'session over. same time next week' }
+        ] }
+      ] }
+    ] },
     { id: 'seb-5a', rank: 5, days: 1, slot: 1, msgs: [
       { from: 'sebastian', t: 'you held on really tight' },
       { from: 'sebastian', t: 'on the bike' },
@@ -56,6 +204,79 @@ FemcSocial.define({
     ], reply: [
       { t: 'The frog ending?', notes: 3, then: [{ from: 'sebastian', t: 'YES' }, { from: 'sebastian', t: 'nobody ever finds the frog ending' }] },
       { t: "There's a secret ending?", notes: 2, then: [{ from: 'sebastian', t: 'talk to the frog. three times' }] }
+    ] },
+    { id: 'solarion-7', thread: 'solarion', rank: 7, before: 10, days: 2, slot: 1, msgs: [
+      { from: 'abigail', t: 'ok i need to talk to solar without seb' },
+      { from: 'sebastian', t: 'im literally in the chat' },
+      { from: 'abigail', t: 'without seb EMOTIONALLY' },
+      { from: 'sam', t: 'solar is it true. he made you a GAME' },
+      { from: 'sebastian', t: 'its not a game its a text adventure' },
+      { from: 'sam', t: 'thats a GAME seb' },
+      { from: 'abigail', t: 'ive known him since we were kids and he has never made me a game. not once' },
+      { ask: [
+        { t: 'It has a secret frog ending.', notes: 3, then: [
+          { from: 'sam', t: 'OF COURSE IT DOES' },
+          { from: 'abigail', t: 'wait you FOUND it?? nobody ever finds his secret stuff' },
+          { from: 'sebastian', t: 'she found it' }
+        ] },
+        { t: "It's really good. He's really good at this.", notes: 3, then: [
+          { from: 'sebastian', t: '...' },
+          { from: 'sebastian', t: 'ok stop' },
+          { from: 'abigail', t: 'hes typing and deleting. i can SEE it' }
+        ] },
+        { t: 'Maybe he just likes me better.', notes: 2, then: [
+          { from: 'abigail', t: 'WOW' },
+          { from: 'sam', t: 'she went for the THROAT' },
+          { from: 'sebastian', t: 'i like everyone equally. which is not much' }
+        ] }
+      ] },
+      { from: 'sam', t: 'ALSO. abby says you fixed a MOTORCYCLE' },
+      { from: 'sam', t: 'you said youd fix your bike for like three years' },
+      { from: 'sebastian', t: 'different bike' },
+      { from: 'sebastian', t: 'and i had motivation' },
+      { from: 'abigail', t: 'what motivation' },
+      { from: 'sebastian', t: 'roads. empty ones' },
+      { from: 'abigail', t: 'mhm' },
+      { ask: [
+        { t: 'He drives like a maniac.', notes: 2, then: [
+          { from: 'sam', t: 'HE DOES' },
+          { from: 'abigail', t: 'he went through my moms flower bed once. she still brings it up' }
+        ] },
+        { t: 'He drives fine. I held on.', notes: 3, then: [
+          { from: 'abigail', t: 'you HELD ON' },
+          { from: 'sam', t: '👀' },
+          { from: 'sebastian', t: 'its a motorcycle. thats how motorcycles work' },
+          { from: 'abigail', t: 'mhm. mhm.' }
+        ] },
+        { t: '🐸', notes: 1, then: [
+          { from: 'sebastian', t: '🐸' },
+          { from: 'sam', t: 'what does that MEAN' },
+          { from: 'abigail', t: 'theyre speaking frog now. weve lost them' }
+        ] }
+      ] },
+      { sys: 'abigail renamed the group "seb has a heart (confirmed)"' },
+      { from: 'sebastian', t: 'im leaving this chat' },
+      { from: 'sam', t: 'you wont' },
+      { from: 'sebastian', t: 'i wont' },
+      { sys: 'sebastian renamed the group "solarion chronicles"' },
+      { from: 'abigail', t: 'ok real question. next time we fall through. what are we playing' },
+      { ask: [
+        { t: 'Seb runs the City of Coffins. All of us.', notes: 3, then: [
+          { from: 'sebastian', t: 'yeah ok. i can do that' },
+          { from: 'sebastian', t: 'ill write a goblin part for junpei' },
+          { from: 'abigail', t: 'THE GOBLIN RETURNS' },
+          { from: 'sam', t: 'bring snacks solar. real ones. not the weird jelly ones' }
+        ] },
+        { t: 'Rematch with the frog king.', notes: 2, then: [
+          { from: 'sebastian', t: 'the frog king is not a boss fight. hes a friend' },
+          { from: 'sam', t: 'seb has a whole frog lore bible. this is known' }
+        ] },
+        { t: "Something where Seb's character has to talk about his feelings.", notes: 1, then: [
+          { from: 'sebastian', t: 'no' },
+          { from: 'abigail', t: 'YES' },
+          { from: 'sam', t: 'campaign of the CENTURY' }
+        ] }
+      ] }
     ] },
     { id: 'seb-8a', rank: 8, days: 1, slot: 1, msgs: [
       { from: 'sebastian', t: "i don't know how to go back to the basement after this" },

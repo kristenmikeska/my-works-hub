@@ -5,7 +5,96 @@ FemcSocial.define({
   arrives: '8/6',
   home: { place: 'Port Island · Pier', slot: 0, days: [0, 2, 3, 6], hint: 'Daytime on Sundays, Tuesdays, Wednesdays and Saturdays, at the end of the Port Island pier with a fishing rod.' },
   approach: "At the very end of the pier, someone in an expensive black jacket is asleep with a fishing rod between his knees. The line is twitching.",
-  invite: { ask: ["fishing?", "u free. pier", "bored. come fish"], ok: "nice", no: "ok. more fish for me" },
+  invite: {
+    ask: ["fishing?", "u free. pier", "bored. come fish", "im awake. this is rare. come fish", "u bring snacks i bring rods", "fish are biting. probably", "pier. the good spot. hurry before an old guy takes it", "need someone to hold the rod while i nap"],
+    ok: ["nice", "cool. end of the pier", "ok. no vegetables in the snacks pls"],
+    no: ["ok. more fish for me", "ok. nap instead", "fine. the fish will miss u"]
+  },
+  hangouts: [
+    [
+      { n: "She'd brought sandwiches from the convenience store by the monorail, the egg salad ones, because she'd learned that much about him. What she hadn't checked was the second packet, which turned out to have lettuce in it. Noctis looked at the lettuce like it had insulted his family." },
+      { s: 'noctis', f: 'neutral', t: "...Why is it green." },
+      { choose: [
+        { t: "(Pick the lettuce out for him.)", notes: 3, then: [
+          { n: "She picked out every leaf and ate them herself, one at a time, while he watched with the solemn gratitude of a man whose life had just been saved." },
+          { s: 'noctis', f: 'happy', t: "You're a hero. Nobody will ever know." }
+        ] },
+        { t: "It's lettuce. It barely counts.", notes: 2, then: [{ s: 'noctis', f: 'neutral', t: "That's what they want you to think." }] },
+        { t: "Eat it. It's good for you.", notes: 1, then: [
+          { s: 'noctis', f: 'sad', t: "...You sound like someone I know." },
+          { n: "He ate it. He chewed for a very long time, staring out at the water, like a man composing his will." }
+        ] }
+      ] },
+      { n: "A gull landed on the railing and watched them eat. He gave it his crust, and said gulls were the only reasonable creatures in this world, and was asleep against the post twenty minutes later." }
+    ],
+    [
+      { n: "He was asleep when she got there. Of course he was. Rod between his knees, chin on his chest, jacket collar turned up against the wind off the bay, breathing slow and even, like the pier had been built for exactly this." },
+      { n: "A gull had landed two feet away and was eyeing the open bag of chips beside him with real criminal intent." },
+      { choose: [
+        { t: "(Sit down and guard the chips.)", notes: 3, then: [
+          { n: "She sat down between the gull and the chips and stared it out. It took four minutes. The gull left in disgrace, and Noctis, who apparently hadn't been as asleep as he looked, smiled without opening his eyes." },
+          { s: 'noctis', f: 'happy', t: "...My hero." }
+        ] },
+        { t: "(Wake him up.)", notes: 2, then: [
+          { s: 'noctis', f: 'neutral', t: "...Five more minutes." },
+          { n: "He ate a chip without opening his eyes, which she would have said was impossible, and held the bag out to her." }
+        ] },
+        { t: "(Let the gull have them.)", notes: 1, then: [
+          { n: "The gull took the whole bag and flapped off with it, crinkling, triumphant. Noctis woke at the sound." },
+          { s: 'noctis', f: 'surprised', t: "...Were those mine?" }
+        ] }
+      ] },
+      { n: "She fished with his spare rod while he slept. She caught nothing. When he woke up an hour later he asked if she'd caught anything, and she said no, and he said great, so it's not just me, and went back to sleep." }
+    ],
+    [
+      { n: "Noctis, it turned out, had a teaching style, and the teaching style was to hand her the rod, say \"just kind of flick it,\" and lie back down." },
+      { s: 'noctis', f: 'neutral', t: "You're overthinking it. Don't think. Be the line." },
+      { choose: [
+        { t: "(Flick it.)", notes: 3, then: [
+          { n: "She flicked it. The lure sailed out over the water in a long clean arc and landed with a tiny plop, perfectly, beautifully, by complete accident." },
+          { s: 'noctis', f: 'surprised', t: "...Okay. Show-off." }
+        ] },
+        { t: "Can you show me properly?", notes: 2, then: [
+          { n: "He sighed like he'd been asked to carry a piano, got up, and fixed her grip with two fingers. Then he cast once, slowly, so she could see, and it was the most awake she had ever seen him." },
+          { s: 'noctis', f: 'happy', t: "Like that. See? Easy." }
+        ] },
+        { t: "(Overthink it.)", notes: 1, then: [
+          { n: "She overthought it. The hook caught the back of his jacket. He didn't move. He just lay there, hooked, looking at the sky." },
+          { s: 'noctis', f: 'neutral', t: "...I'll allow it." }
+        ] }
+      ] },
+      { n: "They didn't catch anything. That didn't seem to be the point, and she was starting to suspect it never had been." }
+    ],
+    [
+      { n: "It was drizzling, a fine gray mist that beaded on everything, and the old men who usually fished the pier had all gone home. Noctis had not. He'd wedged a cheap convenience-store umbrella between two boards so it leaned over him like a tiny roof." },
+      { s: 'noctis', f: 'happy', t: "Fish bite more in the rain. That's a fact. I read it somewhere. Probably." },
+      { choose: [
+        { t: "(Squeeze in under the umbrella.)", notes: 3, then: [
+          { n: "There was not room under the umbrella for two people. They made room anyway, his rod and her knees and the bag of snacks all crammed under one circle of clear plastic while the rain ticked on it." },
+          { s: 'noctis', f: 'neutral', t: "...Cozy." }
+        ] },
+        { t: "Is that actually true?", notes: 2, then: [{ s: 'noctis', f: 'neutral', t: "If we catch something, it's true." }] },
+        { t: "We should go inside.", notes: 1, then: [{ s: 'noctis', f: 'sad', t: "Inside doesn't have fish." }] }
+      ] },
+      { n: "They caught nothing. It rained harder. He said, very seriously, that this was data, and wrote nothing down." }
+    ],
+    [
+      { n: "Prompto was on the pier when she arrived, crouched at the very edge with his camera pointed at the water, trying to photograph a jellyfish that refused to hold still. Noctis sat behind him, fishing, pointedly not posing." },
+      { s: 'prompto', t: "Sol! Perfect! Sit next to Noct! Do a fishing face!" },
+      { s: 'noctis', f: 'neutral', t: "There's no such thing as a fishing face." },
+      { choose: [
+        { t: "(Do Noctis's fishing face.)", notes: 3, then: [
+          { n: "She leaned back against the post, let her mouth fall open, and closed her eyes." },
+          { s: 'prompto', t: "OH my god. That's it. That's him exactly." },
+          { s: 'noctis', f: 'flustered', t: "...I don't look like that." },
+          { s: 'prompto', t: "You look EXACTLY like that, buddy." }
+        ] },
+        { t: "(Do a fishing face.)", notes: 2, then: [{ n: "She did a fishing face. She hadn't known what one was until she did it, and then she knew, and Prompto laughed so hard he nearly went in after the jellyfish." }] },
+        { t: "No pictures, please.", notes: 1, then: [{ s: 'prompto', t: "Aw. Okay. Just one. Of the back of your head. For mystery." }] }
+      ] },
+      { n: "Prompto took thirty photographs anyway. In every single one Noctis was looking at the water like a man who had absolutely not posed, and in every single one, if you looked closely, he was very slightly smiling." }
+    ]
+  ],
   romance: true,
   cast: { prompto: 'Prompto', ignis: 'Ignis', shinjiro: 'Shinjiro', haru: 'Haru', cloud: 'Cloud' },
   threads: { chocobros: { name: 'chocobros + sol', members: ['noctis', 'prompto', 'ignis'] } },
@@ -43,6 +132,51 @@ FemcSocial.define({
     ], reply: [
       { t: "You can, with me.", notes: 3, then: [{ from: 'noctis', t: 'yeah. i think i can' }] },
       { t: "He sounds like he loved you.", notes: 3, then: [{ from: 'noctis', t: 'he did. i didnt always see it' }] }
+    ] },
+    { id: 'choco-5long', thread: 'chocobros', rank: 5, before: 8, days: 2, rename: 'chocobros + sol (+ gladio in spirit)', msgs: [
+      { from: 'prompto', t: 'ok emergency' },
+      { from: 'prompto', t: 'noct is asleep on the pier and a gull is standing on his chest' },
+      { from: 'ignis', t: 'Is he injured?' },
+      { from: 'prompto', t: 'no hes snoring' },
+      { from: 'prompto', t: 'the gull looks very comfortable' },
+      { ask: [
+        { t: 'Leave them. They look happy.', notes: 3, then: [{ from: 'ignis', t: 'A generous view. I share it, reluctantly.' }] },
+        { t: 'Take a picture. For the album.', notes: 2, then: [{ from: 'prompto', t: 'already took 9' }, { from: 'prompto', t: 'its called "the king and his subject"' }] },
+        { t: 'Wake him before it steals his lunch.', notes: 1, then: [{ from: 'prompto', t: 'too late' }, { from: 'prompto', t: 'rip sandwich' }] }
+      ] },
+      { from: 'noctis', t: 'im awake' },
+      { from: 'noctis', t: 'the bird is my friend now' },
+      { from: 'ignis', t: 'Speaking of lunch. The sandwich I packed you contained spinach.' },
+      { from: 'ignis', t: 'The gull did not eat the spinach. Who ate the spinach?' },
+      { from: 'noctis', t: 'the ocean' },
+      { from: 'prompto', t: 'he threw it in the ocean' },
+      { from: 'noctis', t: 'snitch' },
+      { ask: [
+        { t: "I'll eat his vegetables next time. Problem solved.", notes: 3, then: [{ from: 'noctis', t: 'sol. hero of the people' }, { from: 'ignis', t: 'That is not solving the problem. That is relocating it.' }] },
+        { t: 'Ignis, hide it in something he likes.', notes: 2, then: [{ from: 'ignis', t: 'I have been hiding it for years.' }, { from: 'ignis', t: 'He finds it every time.' }, { from: 'noctis', t: 'its a gift' }] },
+        { t: 'Spinach is good for you, Noctis.', notes: 0, then: [{ from: 'noctis', t: 'et tu' }] }
+      ] },
+      { from: 'prompto', t: 'gladio would make him do 100 pushups for that' },
+      { from: 'prompto', t: 'one per leaf' },
+      { from: 'noctis', t: 'good thing gladio isnt here' },
+      { from: 'noctis', t: '...' },
+      { from: 'noctis', t: 'its weird that hes not here' },
+      { from: 'ignis', t: 'He would despise this world. There is nowhere to camp.' },
+      { ask: [
+        { t: 'Tell me about Gladio.', notes: 3, then: [
+          { from: 'prompto', t: 'big. loud. reads novels and thinks we dont know' },
+          { from: 'noctis', t: 'my shield. hes supposed to be right next to me' },
+          { from: 'noctis', t: 'hes gonna be so mad he missed this' }
+        ] },
+        { t: "Maybe he'll fall through too.", notes: 2, then: [
+          { from: 'noctis', t: 'maybe' },
+          { from: 'ignis', t: 'If he does, I imagine he will land somewhere dramatic.' },
+          { from: 'prompto', t: 'shirtless. he will land shirtless' }
+        ] }
+      ] },
+      { sys: 'prompto renamed the group "chocobros + sol (+ gladio in spirit)"' },
+      { from: 'ignis', t: 'Noct. Dinner is at seven. There will be carrots.' },
+      { from: 'noctis', t: 'going back to sleep' }
     ] },
     { id: 'noct-7a', rank: 7, days: 1, slot: 1, msgs: [
       { from: 'noctis', t: 'you held on the whole time' },

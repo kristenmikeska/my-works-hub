@@ -6,10 +6,104 @@ FemcSocial.define({
   arrives: '7/7',
   home: { place: 'Port Island Station', slot: 0, days: [0, 6], hint: 'Daytime on weekends, wherever there is shopping near Port Island Station.' },
   approach: "The whole concourse has gone strangely quiet around a woman in white and gold, and she is looking straight at you.",
-  invite: { ask: ["Little sun. Your goddess requests your presence.", "I am bored and beautiful. Come fix the first one.", "Come. I have something to show you."], ok: "Of course you said yes. They always do.", no: "...No one says no to me. How novel." },
+  invite: {
+    ask: ["Little sun. Your goddess requests your presence.", "I am bored and beautiful. Come fix the first one.", "Come. I have something to show you.",
+      "Little sun. The station is full of people who do not appreciate me. Come and appreciate me.",
+      "I have found a shop that sells only pink things. I require a witness.",
+      "Your goddess is at the station. Your goddess is waiting. Your goddess is becoming impatient.",
+      "There is a new flavor in the vending machine. We must investigate it together.",
+      "Come out, little sun. The weather is beautiful. I made it so. (I did not. But it is.)"],
+    ok: ["Of course you said yes. They always do.", "Wonderful. I will be by the ticket gates, being radiant.", "Good. Hurry. I am being stared at and I want you to see it."],
+    no: ["...No one says no to me. How novel.", "Very well. I shall be adored by strangers instead. It is not the same.", "Hmph. I forgive you. Eventually. Possibly by dinner."]
+  },
+  hangouts: [
+    [
+      { n: "The pigeons outside Port Island Station had found Aphrodite within a week, the way pigeons found anyone who sat still near food, and on weekend afternoons she held court on the bench by the bus stop with a bag of bread crusts and an expression of profound disappointment." },
+      { s: 'aphrodite', f: 'serious', t: "Little sun, look at them. Gray. Lumpy. Grumbling. This is what your world has instead of doves." },
+      { s: 'aphrodite', f: 'neutral', t: "My doves are as white as sea foam. My doves do not fight over a crust like drunk sailors." },
+      { choose: [
+        { t: "They're doing their best.", notes: 3, then: [
+          { s: 'aphrodite', f: 'sad', t: "...They are, aren't they. Poor lumpy things." },
+          { n: "She emptied the whole bag in one generous swoop, and a hundred pigeons came down on the bus stop at once, and an old woman waiting for the 4:15 told them both off." }
+        ] },
+        { t: "That one's kind of pretty.", notes: 2, then: [{ s: 'aphrodite', f: 'surprised', t: "The one with the green neck? ...Hm. Yes. Iridescent. I'll allow it. You may be my favorite, sir." }] },
+        { t: "They're rats with wings.", notes: 1, then: [{ s: 'aphrodite', f: 'serious', t: "Don't say that. They can hear you. Every bird is a little bit mine, little sun, even the ugly ones." }] }
+      ] },
+      { n: "When they got up to leave, one green-necked pigeon followed them as far as the ticket gates, and Aphrodite told everybody in earshot that she had a new admirer." }
+    ],
+    [
+      { n: "There was a perfume counter on the ground floor of the department store by the station, all glass and gold trim and saleswomen in white gloves, and Aphrodite had decided it was the closest thing in Iwatodai to a proper temple." },
+      { s: 'aphrodite', f: 'happy', t: "Smell this one. No, this one. No, give it back, that one's for heartbreak, you're too young." },
+      { s: 'aphrodite', f: 'neutral', t: "Every bottle is a promise, little sun. This one promises you'll be remembered. This one promises you'll be forgiven. This one promises a man named Hiroshi will finally call. It's lying." },
+      { choose: [
+        { t: "Which one would you pick for me?", notes: 3, then: [
+          { s: 'aphrodite', f: 'happy', t: "Oh, I have been waiting for you to ask." },
+          { n: "She went through eleven bottles, sniffing her own wrist and then Solar's, frowning, discarding, and in the end she chose none of them, and announced that Solar already smelled like sunlight and clean laundry and that nobody in the building could improve on it." }
+        ] },
+        { t: "Which one's yours?", notes: 2, then: [{ s: 'aphrodite', f: 'serious', t: "None of them, darling. I don't wear perfume. I am the perfume." }] },
+        { t: "(Sneeze.)", notes: 1, then: [
+          { n: "Solar sneezed, enormously, three times, and a saleswoman handed her a tissue with the expression of someone who saw this every day." },
+          { s: 'aphrodite', f: 'happy', t: "Bless you. Literally. That one was from me." }
+        ] }
+      ] },
+      { n: "They left with a handful of tiny sample vials the saleswomen kept pressing into Aphrodite's hands, for reasons none of them could have explained." }
+    ],
+    [
+      { n: "A boy with an acoustic guitar had set up by the east exit, singing love songs in a thin, earnest voice to an open case with three coins in it, and Aphrodite had stopped dead in front of him like she'd been summoned." },
+      { s: 'aphrodite', f: 'serious', t: "His second verse is a lie. Nobody waits forever. They wait about eight months and then they get a cat." },
+      { s: 'aphrodite', f: 'neutral', t: "But the chorus. Little sun, the chorus is true. He's singing it to someone." },
+      { choose: [
+        { t: "Who's he singing it to?", notes: 3, then: [
+          { s: 'aphrodite', f: 'happy', t: "A girl from his cram school. Ponytail. She has no idea. Isn't it wonderful? One kiss on his forehead and I could fix the whole thing." },
+          { n: "Solar talked her out of it. It took the entire song." }
+        ] },
+        { t: "(Put a coin in the case.)", notes: 2, then: [{ n: "Solar dropped in a hundred yen. Aphrodite had nothing to drop in, so she leaned down and told the boy his chorus was perfect instead, and he turned the color of a stoplight and forgot the words." }] },
+        { t: "Tell him about the second verse.", notes: 1, then: [{ s: 'aphrodite', f: 'happy', t: "I couldn't possibly. He's so young. Let him find out about the cat on his own." }] }
+      ] },
+      { n: "By the time they left, the case had nine coins in it and a crepe someone had set there for no reason at all, and the boy was singing the chorus twice." }
+    ],
+    [
+      { n: "It was raining, the hard, straight-down kind of rain that turned the plaza outside Port Island Station into a shallow lake, and Aphrodite was standing just inside the doors with her arms folded, refusing to go out in it." },
+      { s: 'aphrodite', f: 'serious', t: "I don't get wet. It isn't done. In four thousand years I have never once been rained on." },
+      { s: 'aphrodite', f: 'neutral', t: "Somebody always brings an umbrella. Or a cloak. Or a small army to hold up a canopy." },
+      { choose: [
+        { t: "(Hold your umbrella over her.)", notes: 3, then: [
+          { n: "Solar opened her umbrella, a cheap clear plastic one from the convenience store, and held it up over the goddess, which meant holding it very high, and getting most of her own left side soaked in the process." },
+          { s: 'aphrodite', f: 'happy', t: "A canopy. Of sorts. Oh, this is perfectly adequate, little sun. Higher." }
+        ] },
+        { t: "We could wait it out.", notes: 2, then: [
+          { s: 'aphrodite', f: 'neutral', t: "Yes. We'll wait. I am extremely good at waiting to be served." },
+          { n: "They watched the rain from the doors for half an hour while she reviewed the umbrellas of passers-by like gowns at a ball." }
+        ] },
+        { t: "Just run for it.", notes: 1, then: [
+          { s: 'aphrodite', f: 'surprised', t: "RUN? In THIS?" },
+          { n: "She did not run for it." }
+        ] }
+      ] },
+      { n: "Afterward, buying peach juice at the machine by the gates, she found a single raindrop on her sleeve and studied it with an expression of scandalized wonder, like it was a souvenir." }
+    ],
+    [
+      { n: "There was a row of capsule toy machines by the south exit, twenty of them, blinking and rattling, and Aphrodite had discovered that for two hundred yen a machine would give you a small plastic egg with a mystery inside. Solar's coins had been funding the research." },
+      { s: 'aphrodite', f: 'happy', t: "You pay. You turn. You hope. Sometimes you get the cat in the little hat and sometimes you get the same frog three times. That's love, little sun." },
+      { s: 'aphrodite', f: 'serious', t: "I have gotten the frog three times." },
+      { choose: [
+        { t: "(Turn the crank yourself.)", notes: 3, then: [
+          { n: "Solar turned the crank. The capsule rolled out. It was the cat in the little hat, a pink hat, and Aphrodite shrieked loudly enough that a station attendant came over to check on them." },
+          { s: 'aphrodite', f: 'happy', t: "You BLESSED child. I knew there was a reason I kept you." }
+        ] },
+        { t: "Trade the frogs with someone.", notes: 2, then: [{ s: 'aphrodite', f: 'neutral', t: "Trade? Give away a gift from fate? ...How many frogs do they want for one cat." }] },
+        { t: "Maybe you're meant to have the frog.", notes: 1, then: [{ s: 'aphrodite', f: 'serious', t: "Don't. Don't make it a lesson." }] }
+      ] },
+      { n: "One way or another, by the end of the afternoon the cat in the little hat was swinging from the strap of Aphrodite's bag. The three frogs went home with Solar, who was told to love them. It was phrased as an order." }
+    ]
+  ],
   romance: true,
   cast: { yukari: 'Yukari', ares: 'Ares' },
-  threads: { elizabeth: { name: 'Elizabeth', members: ['elizabeth'] } },
+  // Olympus: Aphrodite's group chat with Yukari, from rank 5 (after Ares has come and gone at rank 4).
+  threads: {
+    elizabeth: { name: 'Elizabeth', members: ['elizabeth'] },
+    olympus: { name: 'OLYMPUS 💕', members: ['aphrodite', 'yukari'] }
+  },
   texts: [
     { id: 'eliz-7-7', thread: 'elizabeth', rank: 0, before: 99, days: 0, date: '7/7', slot: 1, msgs: [
       { from: 'elizabeth', t: 'Good evening, Solar. Tonight the moon has brought several guests at once.' },
@@ -37,6 +131,76 @@ FemcSocial.define({
     ], reply: [
       { t: 'I had a very good goddess.', notes: 3, then: [{ from: 'aphrodite', t: 'Yes. You did. Obviously.' }, { from: 'aphrodite', t: 'Thank you, little sun. 💕' }] },
       { t: 'Five to seven KDA, I think.', notes: 3, then: [{ from: 'aphrodite', t: 'OBSCENE. I am so proud I could start a war.' }] }
+    ] },
+    { id: 'olympus-1', thread: 'olympus', rank: 5, before: 8, days: 3, slot: 1, msgs: [
+      { sys: 'Aphrodite created the group "OLYMPUS 💕"' },
+      { from: 'aphrodite', t: 'Welcome to Olympus. It is smaller than I remember.' },
+      { from: 'yukari', t: 'why am i here' },
+      { from: 'aphrodite', t: 'Because you are the only mortal who has ever told me no, little archer. I require your expertise.' },
+      { from: 'yukari', t: "ok that's kind of flattering" },
+      { from: 'yukari', t: 'expertise in what' },
+      { from: 'aphrodite', t: 'Saying no to a god of war.' },
+      { ask: [
+        { t: 'Is this about Ares?', notes: 3, then: [
+          { from: 'aphrodite', t: 'It is ALWAYS about Ares. It has been about Ares since the Bronze Age.' },
+          { from: 'yukari', t: 'wait the giant in armor?? junpei said there was a giant in armor behind the station' },
+          { from: 'aphrodite', t: 'Yes. Large. Chains. Emotionally, a catapult.' }
+        ] },
+        { t: 'Hi Yukari.', notes: 1, then: [
+          { from: 'yukari', t: 'hi solar. do you know what this is' },
+          { from: 'aphrodite', t: 'It is about Ares. Keep up, both of you.' }
+        ] },
+        { t: '💕', notes: 2, then: [
+          { from: 'aphrodite', t: 'Thank you, little sun. The correct response. Now. Ares.' }
+        ] }
+      ] },
+      { from: 'aphrodite', t: 'I have been composing what I will say to him if he ever comes back.' },
+      { from: 'aphrodite', t: 'Draft one. "Darling, I have outgrown you, the way a girl outgrows a pony."' },
+      { from: 'yukari', t: 'oh my god' },
+      { from: 'aphrodite', t: 'Draft two. "You are a sword with a mustache and I deserve a poet."' },
+      { from: 'yukari', t: 'does he have a mustache' },
+      { from: 'aphrodite', t: 'Spiritually.' },
+      { from: 'aphrodite', t: 'Little sun. Which draft.' },
+      { ask: [
+        { t: 'Neither. You already said no. I was there.', notes: 3, then: [
+          { from: 'aphrodite', t: '...' },
+          { from: 'aphrodite', t: "I did, didn't I." },
+          { from: 'yukari', t: 'wait you ALREADY dumped him??' },
+          { from: 'aphrodite', t: 'In an alley. Behind the station. It was very dignified. I sat on a crate.' },
+          { from: 'yukari', t: 'iconic honestly' }
+        ] },
+        { t: 'Draft one. The pony is devastating.', notes: 2, then: [
+          { from: 'aphrodite', t: 'It IS devastating. I wept while writing it. Beautifully.' }
+        ] },
+        { t: 'Draft two. Poets are better.', notes: 2, then: [
+          { from: 'aphrodite', t: 'Poets ARE better. They write things down. Ares signs his name with an axe.' }
+        ] }
+      ] },
+      { sys: 'Aphrodite added "Ares ⚔️" to the group' },
+      { sys: 'Ares ⚔️ could not be added. This number is not in service.' },
+      { from: 'aphrodite', t: '...Ah.' },
+      { from: 'aphrodite', t: 'Of course. He is a world away. For a moment I forgot.' },
+      { from: 'yukari', t: 'are you ok?' },
+      { from: 'aphrodite', t: 'I am a goddess. I am always ok. I am simply, at this moment, also lying face down on a bench at the station.' },
+      { ask: [
+        { t: "I'm coming to the station.", notes: 3, then: [
+          { from: 'aphrodite', t: 'You do not have to.' },
+          { from: 'aphrodite', t: 'Bring peach juice.' },
+          { from: 'yukari', t: "i'm coming too. this is the most interesting thing that's happened all week" }
+        ] },
+        { t: 'You already did the hard part.', notes: 3, then: [
+          { from: 'aphrodite', t: 'The hard part was supposed to be beautiful. It was mostly a crate.' },
+          { from: 'yukari', t: 'the crate was the beautiful part' }
+        ] },
+        { t: 'Yukari, say something encouraging.', notes: 1, then: [
+          { from: 'yukari', t: 'uhh' },
+          { from: 'yukari', t: "you look really pretty when you're sad?" },
+          { from: 'aphrodite', t: 'I KNOW. Thank you, little archer.' }
+        ] }
+      ] },
+      { from: 'aphrodite', t: 'This was a very good meeting of Olympus. Far better than the real ones. Nobody threw a thunderbolt.' },
+      { from: 'yukari', t: 'is that normal for you guys' },
+      { from: 'aphrodite', t: 'Tuesdays.' }
     ] },
     { id: 'aph-6a', rank: 6, days: 1, slot: 1, msgs: [
       { from: 'aphrodite', t: 'I said too much today.' },

@@ -573,16 +573,16 @@ window.FemcSocial = (() => {
       if (up) (link.stamps?.[p.rank] || []).forEach(id => F().load('achievements.js?v=9', () => window.Achievements).then(() => window.Achievements?.unlock(id)));
       const done = () => { close(); if (!S.free) advance(); opts.onDone?.(true); };
       const after = () => (up ? rankUp(link, p.rank, done) : done());
-      req ? meter(link, r, from, Math.min(from + gained, req), req, up, after) : after();
+      req ? meter(link, r, from, Math.min(from + gained, req), req, up, after, gained) : after();
     }
     // P3R's bond meter: the ♪ from this hangout pour into the bar toward the next rank.
-    function meter(link, r, from, to, req, up, done) {
+    function meter(link, r, from, to, req, up, done, gained = to - from) {
       const box = document.createElement('div');
       box.className = 'vn-rank vn-meter';
       box.innerHTML = `<div class="vn-meter-inner"><div class="vn-card vn-card-sm"><span>${link.numeral || '✦'}</span><small>${link.arcana}</small></div>
         <div class="vn-meter-info"><p class="vn-meter-name">${link.short}<small>Rank ${r} ▸ ${r + 1 >= link.ranks.length ? 'MAX' : r + 1}</small></p>
         <div class="vn-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${req}" aria-valuenow="${to}"><i></i></div>
-        <p class="vn-meter-notes"><b>+${to - from} ♪</b> <span>${from}</span> / ${req}</p><p class="vn-meter-msg"></p></div></div>`;
+        <p class="vn-meter-notes"><b>+${gained} ♪</b> <span>${from}</span> / ${req}</p><p class="vn-meter-msg"></p></div></div>`;
       el.appendChild(box);
       const fill = box.querySelector('.vn-bar i'), count = box.querySelector('.vn-meter-notes span'), msg = box.querySelector('.vn-meter-msg');
       const pct = v => `${Math.min(100, (v / req) * 100)}%`;
@@ -639,6 +639,7 @@ window.FemcSocial = (() => {
   // A text event (in a link file's `texts`) arrives the first time the calendar moves while its conditions hold:
   //   rank: the link is at least this rank; before: and still below this rank (default rank + 1); route: only on that route;
   //   days: at least this many days since reaching that rank (default 1); slot: 0 daytime, 1 evening (default any).
+  //   date: not before M/D; until: not on or after M/D (so a joke chat can't land after something sad).
   // msgs: [{ from, t } | { sys }]; reply: [{ t, notes, then: [{ from, t }] }] lets Solar answer for ♪.
   const ph = () => S.phone;
   const unread = () => Object.values(ph().unread).reduce((a, b) => a + b, 0);
@@ -651,6 +652,7 @@ window.FemcSocial = (() => {
     if (since < (t.days ?? 1)) return false;
     if (t.slot !== undefined && t.slot !== S.slot) return false;
     if (t.date && S.d < dayOf(t.date)) return false;
+    if (t.until && S.d >= dayOf(t.until)) return false;
     if (t.route && progress(t.link).route !== t.route) return false;
     if (!unlockMet(t.unlock ?? links[t.link]?.unlock)) return false;
     return true;
@@ -668,7 +670,8 @@ window.FemcSocial = (() => {
     const cut = t.msgs.findIndex(m => m.ask);
     const shown = cut < 0 ? t.msgs : t.msgs.slice(0, cut);
     shown.forEach(m => log.push({ ...m, d: S.d }));
-    if (t.rename) THREADS[t.thread] && (P.names = { ...(P.names || {}), [t.thread]: t.rename });
+    // A chat that pauses for answers takes its new group name when the conversation ends.
+    if (t.rename && cut < 0) THREADS[t.thread] && (P.names = { ...(P.names || {}), [t.thread]: t.rename });
     P.unread[t.thread] = (P.unread[t.thread] || 0) + shown.filter(m => !m.sys).length;
     if (cut >= 0) P.pending[t.thread] = { id: t.id, ask: t.msgs[cut].ask, rest: t.msgs.slice(cut + 1).concat(t.reply ? [{ ask: t.reply }] : []) };
     else if (t.reply) P.pending[t.thread] = t.id;
@@ -826,7 +829,10 @@ window.FemcSocial = (() => {
             const queue = [...(o.then || []), ...rest];
             const nextMsg = () => {
               const m = queue.shift();
-              if (!m) return;
+              if (!m) {
+                if (t.rename && !P.pending[id] && (P.names || {})[id] !== t.rename) { P.names = { ...(P.names || {}), [id]: t.rename }; save(); phoneEl.querySelector('.ph-title').textContent = threadName(id); }
+                return;
+              }
               if (m.ask) { P.pending[id] = { id: t.id, ask: m.ask, rest: queue }; save(); return offer(m.ask, queue); }
               if (m.sys) { log.push({ ...m, d: S.d }); save(); body.appendChild(bubble(m, group)); body.scrollTop = body.scrollHeight; return nextMsg(); }
               const dots = document.createElement('p');
@@ -958,7 +964,7 @@ window.FemcSocial = (() => {
     if (ready) return ready;
     const L = F().load;
     ready = Promise.all([L('assets/femc/portraits/index.js?v=7', () => window.FEMC_PORTRAITS), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
-      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=31`, () => links[id]))))
+      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=32`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
   }

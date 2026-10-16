@@ -13,13 +13,117 @@
      { music: 'tender' }                   switch the scene music (joy, school, sun, tender, mystery, night, velvet);
                                            a rank can also take music: 'tender' beside its title
    Link fields: approach: the line shown when a stranger finds Solar for the first meeting;
-   invite: { ask: [texts], ok, no } for "free right now?" invitations between ranks.
+   invite: { ask: [texts], ok: [replies], no: [replies] } for "free right now?" invitations (picked without repeats);
+   hangouts: [[scene lines], ...] short story-free hangouts that fill the bond meter when a rank's story fell short.
+   Texts: msgs can pause for Solar's answer with { ask: [{ t, notes, then: [...] }] } as many times as a chat needs;
+   until: 'M/D' stops a text arriving on or after that date.
    {name} becomes "Solar". */
 FemcSocial.define({
   id: 'akihiko', name: 'Akihiko Sanada', short: 'Akihiko', arcana: 'Star', numeral: 'XVII', from: 'Persona 3',
   home: { place: 'Gekkoukan High · Boxing Club', slot: 0, days: [1, 2, 3, 4, 5, 6], hint: 'After school, Monday to Saturday, at the boxing club.' },
   approach: "A silver-haired guy in a red vest is jogging laps of the second-floor hallway between classes, and he slows down a little every time he passes you.",
-  invite: { ask: ["you free? gym. now.", "want to go for a run? i'll go easy on you. probably.", "hagakure? my treat. i need protein."], ok: "great. meet you out front.", no: "next time then. i'm holding you to it." },
+  invite: {
+    ask: ["you free? gym. now.", "want to go for a run? i'll go easy on you. probably.", "hagakure? my treat. i need protein.", "rookie. gym. you have 20 minutes", "found a new drill. you're going to hate it. come", "need someone to hold the bag. you're the only one who doesn't let go", "jump rope. 10 min. nobody says no to jump rope", "you busy? i've been hitting the bag alone for an hour. it's not talking back"],
+    ok: ["great. meet you out front.", "good. bring water", "knew you'd say yes"],
+    no: ["next time then. i'm holding you to it.", "fine. i'll do your reps for you", "ok. tomorrow then. no excuses"]
+  },
+  hangouts: [
+    [
+      { n: "The boxing club smelled the way it always did, tape and rubber mats and the specific sourness of effort, and Akihiko had decided, with no input from anyone, that today was jump rope." },
+      { n: "He did it the way he did everything, too fast and without any visible effort, the rope a gray blur that hissed against the floor in a rhythm so even you could have set a clock by it. He talked the whole time. He did not sound winded. It was rude." },
+      { s: 'akihiko', f: 'happy', t: "Footwork's everything. Your feet decide where the punch comes from. Here. Your turn." },
+      { choose: [
+        { t: "(Try a double-under.)", notes: 3, then: [
+          { n: "She got the rope around twice exactly once, by what could only be described as an act of God, then caught it on her ankle on the next jump and nearly went into the bench." },
+          { s: 'akihiko', f: 'surprised', t: "...You got one, though. I saw it." },
+          { s: 'akihiko', f: 'happy', t: "Again." }
+        ] },
+        { t: "Show-off.", notes: 2, then: [
+          { s: 'akihiko', f: 'happy', t: "It's not showing off if it's information." },
+          { n: "He did a crossover then, purely as information." }
+        ] },
+        { t: "Is there a version of this with less rope?", notes: 1, then: [
+          { s: 'akihiko', f: 'neutral', t: "That's just jumping." },
+          { s: 'akihiko', f: 'serious', t: "...Which is also good for you. Fine. Jump." }
+        ] }
+      ] },
+      { n: "By the end of the hour her calves had opinions and the rope had left a thin pink line across her shin. He looked at it and said that'll be gone by Thursday, with the authority of a man who had collected a great many thin pink lines." }
+    ],
+    [
+      { n: "Before she was allowed anywhere near the heavy bag, he said, she had to learn to wrap her hands, because people who didn't wrap their hands broke them, and people who broke their hands didn't get to hit anything for six weeks, and in his voice that sounded like the worst thing that could happen to a person." },
+      { n: "He did his own first, slowly, so she could see. Around the wrist. Between the fingers. Across the knuckles. The tape went on in the same pattern every time, like a prayer he'd stopped needing to think about." },
+      { s: 'akihiko', f: 'neutral', t: "Thumb out. Spread your fingers. If it's too loose you'll feel it in your wrist by the third round." },
+      { choose: [
+        { t: "Tighter.", notes: 3, then: [
+          { s: 'akihiko', f: 'surprised', t: "...Most people say it's too tight." },
+          { s: 'akihiko', f: 'happy', t: "Tighter it is." }
+        ] },
+        { t: "This is a lot of ceremony for one punch.", notes: 2, then: [
+          { s: 'akihiko', f: 'happy', t: "It's never one punch." }
+        ] },
+        { t: "(Let him finish without talking.)", notes: 2, then: [
+          { n: "He finished without talking, too. It was the quietest she had ever seen him, both of them watching his hands go around and around hers while the old gym ticked and creaked." }
+        ] }
+      ] },
+      { n: "When he was done she made a fist, and it felt like someone else's, solid and certain. He knocked his knuckles against hers, once, like a stamp on a letter." },
+      { s: 'akihiko', f: 'happy', t: "Now you're dangerous." }
+    ],
+    [
+      { n: "Akihiko had a new tub of protein powder and the expression of a man who had found religion. The label said matcha. The contents, shaken up with cold water and offered to her across the bench with both hands, were a green that did not occur anywhere in nature." },
+      { s: 'akihiko', f: 'happy', t: "Limited edition. Try it. Be honest." },
+      { choose: [
+        { t: "It tastes like a lawn.", notes: 3, then: [
+          { s: 'akihiko', f: 'happy', t: "Ha! It does, doesn't it?" },
+          { n: "He drank the rest of it anyway, all of it, in one go, and then looked at the empty bottle with deep respect." }
+        ] },
+        { t: "It's delicious.", notes: 1, then: [
+          { s: 'akihiko', f: 'serious', t: "You're lying. Your face is doing a thing." },
+          { n: "Her face was, in fact, doing a thing. She had not given it permission." }
+        ] },
+        { t: "(Pour half of it into his bottle when he isn't looking.)", notes: 2, then: [
+          { n: "He noticed. Of course he noticed. He noticed and said nothing and drank it, which was somehow worse." }
+        ] }
+      ] },
+      { s: 'junpei', t: "Yo, is that grass? Are you guys drinking grass now?" },
+      { n: "Junpei had stuck his head through the door on his way to somewhere else, and he left again before anyone could offer him any, which was the smartest thing Solar had ever seen him do." }
+    ],
+    [
+      { n: "The club's stopwatch was older than both of them and had a crack across the face, and Akihiko handed it over like a family heirloom. Three-minute rounds on the bag, one minute rest. Call it loud, he said, because once he started he wouldn't hear anything else, and he was right." },
+      { n: "She watched the second hand and the bag in turns. The bag jumped. The chain rattled. At the far end of the gym, two first-years stopped pretending to stretch and just watched." },
+      { choose: [
+        { t: "Thirty seconds. You're dropping your left.", notes: 3, then: [
+          { n: "He brought his left up. He didn't look at her. The last thirty seconds were the fastest of the round." },
+          { s: 'akihiko', f: 'happy', t: "...You were watching my hands." }
+        ] },
+        { t: "(Call time right on three minutes.)", notes: 2, then: [
+          { s: 'akihiko', f: 'neutral', t: "Good. Right on it. Again." }
+        ] },
+        { t: "(Call time a little early so he'll rest.)", notes: 1, then: [
+          { s: 'akihiko', f: 'serious', t: "That was two-forty." },
+          { n: "He had not been looking at a clock. He just knew. She decided not to try that again." }
+        ] }
+      ] },
+      { n: "Six rounds. Afterward he sat on the floor with his back against the wall and his gloves still on, breathing hard and grinning at nothing, and asked her to undo the laces because he couldn't. She did." }
+    ],
+    [
+      { n: "He wore the focus mitts like they were an honor, holding them up at her face height with his elbows soft, and told her to hit them. So she hit them. It made a small, apologetic sound." },
+      { s: 'akihiko', f: 'serious', t: "From your feet. Turn your hip. Pretend it owes you money." },
+      { choose: [
+        { t: "(Hit it as hard as you can.)", notes: 3, then: [
+          { n: "It made a real sound that time, flat and sharp, and the jolt went up into her shoulder and all the way down to her heels." },
+          { s: 'akihiko', f: 'happy', t: "There it is! That's the one. Remember how that felt." }
+        ] },
+        { t: "(Hit it exactly the way he showed you.)", notes: 2, then: [
+          { s: 'akihiko', f: 'neutral', t: "Good form. Now mean it." }
+        ] },
+        { t: "Do you ever take a day off?", notes: 1, then: [
+          { s: 'akihiko', f: 'neutral', t: "I took one once." },
+          { s: 'akihiko', f: 'serious', t: "Didn't like it." }
+        ] }
+      ] },
+      { n: "They went until her arms shook and the light through the high windows lay long and gold across the mats. On the way out he bought two drinks from the machine by the pool, and for once, by some miracle, neither of them was protein." }
+    ]
+  ],
   romance: true,
   cast: { junpei: 'Junpei', mitsuru: 'Mitsuru', yukari: 'Yukari', shinjiro: 'Shinjiro' },
   stamps: { 1: ['senpai'], 10: ['max-rank'] },
@@ -204,6 +308,125 @@ FemcSocial.define({
     ], reply: [
       { t: "It's Christmas.", notes: 2, then: [{ from: 'akihiko', t: '5:13 then' }] },
       { t: 'Wouldn\'t miss it.', notes: 3, then: [{ from: 'akihiko', t: "that's my best friend" }] }
+    ] },
+    // Longer S.E.E.S. group chats (three answers each). Shinjiro stays out of them so none can land wrong after 10/4.
+    { id: 'sees-aki-3', thread: 'sees', rank: 3, before: 6, days: 6, rename: 'S.E.E.S.', msgs: [
+      { from: 'yukari', t: 'ok who broke the coffee table' },
+      { from: 'yukari', t: 'it LEANS now. it leans' },
+      { from: 'junpei', t: 'not me i have an alibi. i was at hagakure' },
+      { from: 'akihiko', t: "it's not broken" },
+      { from: 'akihiko', t: "it's broken in" },
+      { from: 'yukari', t: 'SENPAI' },
+      { from: 'junpei', t: 'wait was it the pushups' },
+      { from: 'junpei', t: 'yuka-tan told me about the pushups' },
+      { ask: [
+        { t: 'Forty-one of them.', notes: 3, then: [{ from: 'akihiko', t: 'forty-two' }, { from: 'yukari', t: 'you were COUNTING??' }, { from: 'akihiko', t: 'she has a good eye' }] },
+        { t: 'In my defense, it was very impressive.', notes: 2, then: [{ from: 'akihiko', t: 'thank you' }, { from: 'yukari', t: 'do NOT encourage him' }] },
+        { t: 'I tried to stop him.', notes: 1, then: [{ from: 'yukari', t: 'no you did not' }, { from: 'akihiko', t: 'she did not' }] }
+      ] },
+      { from: 'mitsuru', t: 'I have been informed that a piece of dormitory furniture is leaning.' },
+      { from: 'junpei', t: 'informed by who' },
+      { from: 'mitsuru', t: 'Takeba. In person. At some length.' },
+      { from: 'yukari', t: "it's a nice table!!! it's from a catalog!!!" },
+      { sys: 'Junpei renamed the group "coffee table memorial 🕯️"' },
+      { from: 'junpei', t: 'gone but not forgotten' },
+      { from: 'akihiko', t: "it's not dead. it's leaning" },
+      { ask: [
+        { t: 'Put a book under the short leg.', notes: 2, then: [{ from: 'junpei', t: 'which book' }, { from: 'yukari', t: 'literally any of yours junpei. you never open them' }, { from: 'junpei', t: 'wow. WOW' }] },
+        { t: 'Senpai should do pushups on the other side to even it out.', notes: 3, then: [{ from: 'akihiko', t: "that's actually smart" }, { from: 'yukari', t: 'SOLAR NO' }, { from: 'junpei', t: 'lmaooooo' }] },
+        { t: '🕯️', notes: 1, then: [{ from: 'junpei', t: 'thank u for ur respect solar' }] }
+      ] },
+      { from: 'mitsuru', t: 'I have ordered a replacement. It is solid oak.' },
+      { from: 'mitsuru', t: 'It is rated for four hundred kilograms.' },
+      { from: 'akihiko', t: 'perfect' },
+      { from: 'yukari', t: "that's not a challenge senpai" },
+      { from: 'akihiko', t: 'everything is a challenge' },
+      { sys: 'Mitsuru Kirijo renamed the group "S.E.E.S."' },
+      { ask: [
+        { t: 'Can we keep the old one? For pushups only.', notes: 3, then: [{ from: 'akihiko', t: 'yes' }, { from: 'mitsuru', t: 'No.' }, { from: 'akihiko', t: '...no' }] },
+        { t: 'Thank you, Mitsuru-senpai.', notes: 1, then: [{ from: 'mitsuru', t: 'You are welcome. Someone in this dormitory should say so.' }] }
+      ] },
+      { from: 'junpei', t: 'rip coffee table. u leaned so we could stand' }
+    ] },
+    { id: 'sees-aki-5', until: '10/4', thread: 'sees', rank: 5, before: 8, days: 3, rename: 'S.E.E.S.', msgs: [
+      { from: 'junpei', t: 'ok nobody panic' },
+      { from: 'junpei', t: 'but i bought a watermelon' },
+      { from: 'yukari', t: 'why would anyone panic about a watermelon' },
+      { from: 'junpei', t: "it's really big" },
+      { from: 'junpei', t: "like doesn't fit in the fridge big" },
+      { from: 'junpei', t: 'like i carried it home like a baby big' },
+      { from: 'akihiko', t: 'how heavy' },
+      { from: 'yukari', t: "don't" },
+      { from: 'akihiko', t: "i'm just asking how heavy" },
+      { ask: [
+        { t: 'Weigh it on the bathroom scale.', notes: 2, then: [{ from: 'junpei', t: '11 kilos' }, { from: 'akihiko', t: 'nice' }, { from: 'yukari', t: 'why is that nice. why are you saying nice' }] },
+        { t: "Senpai, it's not a kettlebell.", notes: 3, then: [{ from: 'akihiko', t: 'it could be' }, { from: 'akihiko', t: 'anything is a kettlebell if you believe' }, { from: 'yukari', t: 'oh my god' }] },
+        { t: 'Is it ripe?', notes: 1, then: [{ from: 'junpei', t: 'i knocked on it and it knocked back' }, { from: 'yukari', t: "that's not how that works" }] }
+      ] },
+      { sys: 'Junpei renamed the group "suika squad 🍉"' },
+      { from: 'junpei', t: 'SUIKA-WARI. tonight. behind the dorm' },
+      { from: 'junpei', t: 'blindfold. stick. glory' },
+      { from: 'mitsuru', t: 'I am familiar with the concept. I have never participated.' },
+      { from: 'junpei', t: 'WHAT' },
+      { from: 'yukari', t: 'wait seriously senpai??' },
+      { from: 'mitsuru', t: 'At home, watermelon arrived already sliced.' },
+      { from: 'mitsuru', t: 'On a plate.' },
+      { ask: [
+        { t: 'Then Mitsuru-senpai goes first.', notes: 2, then: [{ from: 'junpei', t: 'YES' }, { from: 'mitsuru', t: '...Very well.' }, { from: 'mitsuru', t: 'I will require the rules in writing.' }] },
+        { t: "Akihiko-senpai can't play. He'll punch it into the bay.", notes: 3, then: [{ from: 'akihiko', t: 'i would not' }, { from: 'akihiko', t: 'i would use the stick' }, { from: 'akihiko', t: '...mostly' }] },
+        { t: "I'll bring a tarp.", notes: 1, then: [{ from: 'yukari', t: 'thank you. a voice of reason' }] }
+      ] },
+      { from: 'akihiko', t: "fine. but i'm spinning whoever's blindfolded" },
+      { from: 'yukari', t: "no you're not. you'll spin them into next week" },
+      { from: 'junpei', t: '7pm. bring napkins. and a towel. and maybe a helmet' },
+      { from: 'mitsuru', t: 'I have emailed everyone the rules.' },
+      { from: 'junpei', t: 'there are RULES??' },
+      { from: 'mitsuru', t: 'There are now eleven.' },
+      { ask: [
+        { t: 'I read them. Rule six is very specific.', notes: 2, then: [{ from: 'mitsuru', t: 'Rule six exists because of Iori.' }, { from: 'junpei', t: "I HAVEN'T EVEN DONE ANYTHING YET" }] },
+        { t: "Who's bringing the stick?", notes: 3, then: [{ from: 'akihiko', t: 'i have a bokken' }, { from: 'yukari', t: 'WHY do you have a bokken' }, { from: 'akihiko', t: 'cross training' }] }
+      ] },
+      { sys: 'Yukari Takeba renamed the group "S.E.E.S."' },
+      { from: 'yukari', t: '7 then. senpai leave the bokken upstairs' },
+      { from: 'akihiko', t: '...' }
+    ] },
+    { id: 'sees-aki-7', until: '10/4', thread: 'sees', rank: 7, before: 8, days: 2, rename: 'S.E.E.S.', msgs: [
+      { from: 'junpei', t: 'quick question. hypothetically' },
+      { from: 'junpei', t: "if someone didn't do ANY of the summer homework" },
+      { from: 'yukari', t: 'junpei it was due on the first' },
+      { from: 'junpei', t: 'HYPOTHETICALLY' },
+      { from: 'junpei', t: 'and ekoda gave that someone until friday' },
+      { from: 'akihiko', t: 'i finished mine in july' },
+      { from: 'akihiko', t: 'before my run. 4am' },
+      { from: 'junpei', t: 'nobody asked u senpai' },
+      { from: 'junpei', t: 'ok solar. my friend. my partner. my fearless leader' },
+      { ask: [
+        { t: 'No.', notes: 2, then: [{ from: 'junpei', t: "i didn't even ask yet" }, { from: 'yukari', t: 'she knows junpei. we all know' }] },
+        { t: 'You can copy mine if you do the shrine steps with Akihiko-senpai tomorrow.', notes: 3, then: [{ from: 'akihiko', t: '112 steps. ten sets' }, { from: 'junpei', t: 'what is WRONG with u two' }, { from: 'akihiko', t: "that's the deal" }] },
+        { t: "I'll help you. Not copy. Help.", notes: 1, then: [{ from: 'junpei', t: 'help is just copying with extra steps' }, { from: 'yukari', t: 'no it is NOT' }] }
+      ] },
+      { sys: 'Junpei renamed the group "HOMEWORK HELP 🆘🆘🆘"' },
+      { from: 'mitsuru', t: 'Iori.' },
+      { from: 'junpei', t: 'oh no' },
+      { from: 'mitsuru', t: 'As student council president, I cannot condone copying.' },
+      { from: 'mitsuru', t: 'I will hold a study session in the lounge at eight. Attendance is not optional.' },
+      { from: 'junpei', t: 'is it optional' },
+      { from: 'mitsuru', t: 'I have just said that it is not.' },
+      { from: 'akihiko', t: "i'll come. i'll quiz you" },
+      { from: 'junpei', t: 'on WHAT. u did ur homework at 4am' },
+      { ask: [
+        { t: "I'll bring snacks.", notes: 2, then: [{ from: 'junpei', t: 'SOLAR. AN ANGEL' }, { from: 'akihiko', t: 'bring protein bars' }, { from: 'yukari', t: 'bring REAL snacks' }] },
+        { t: "Akihiko-senpai, you're on flashcard duty.", notes: 3, then: [{ from: 'akihiko', t: 'on it' }, { from: 'akihiko', t: "i'm going to time him" }, { from: 'junpei', t: 'why would u TIME me' }] }
+      ] },
+      { from: 'yukari', t: "i'm coming too. someone has to supervise the supervisors" },
+      { from: 'junpei', t: "this is the worst group chat i've ever been in" },
+      { from: 'yukari', t: 'you made it' },
+      { ask: [
+        { t: 'And renamed it. Several times.', notes: 2, then: [{ from: 'junpei', t: "and i'll do it again" }] },
+        { t: 'See you at eight, Junpei. Bring a pencil.', notes: 3, then: [{ from: 'junpei', t: 'a PENCIL. who do u think i am' }, { from: 'junpei', t: '...can someone lend me a pencil' }] }
+      ] },
+      { sys: 'Mitsuru Kirijo renamed the group "S.E.E.S."' },
+      { from: 'mitsuru', t: "Eight o'clock. All of you." }
     ] }
   ],
   ranks: [

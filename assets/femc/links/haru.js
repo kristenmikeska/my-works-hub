@@ -5,7 +5,89 @@ FemcSocial.define({
   arrives: '6/8',
   home: { place: 'Gekkoukan High · Rooftop Garden', slot: 0, days: [1, 2, 4, 5], hint: 'After school on Mondays, Tuesdays, Thursdays and Fridays, on the Gekkoukan roof.' },
   approach: "A girl with soft brown hair is kneeling among the rooftop planters, speaking to a tomato plant very seriously and very kindly.",
-  invite: { ask: ["Are you free? I baked far too much! 🌸", "Would you like to help in the garden today?", "I just roasted a new blend. Come taste it?"], ok: "Wonderful! I'll put the kettle on.", no: "Next time, then! 🌸" },
+  invite: {
+    ask: [
+      "Are you free? I baked far too much! 🌸",
+      "Would you like to help in the garden today?",
+      "I just roasted a new blend. Come taste it?",
+      "Solar-chan! The basil would like a second opinion. Are you free? 🌱",
+      "I'm on the roof with a thermos and two cups. One of them is yours, if you'd like it.",
+      "Are you busy? I bought a new trowel and I would very much like someone to admire it. Fufu.",
+      "There is a shop in Paulownia that sells beans by weight. Would you come and smell all of them with me?",
+      "It's such a lovely afternoon. It seems a waste to spend it alone. Are you free? 🌷"
+    ],
+    ok: ["Wonderful! I'll put the kettle on.", "Oh, I'm so glad! I'll save you the good cup. 🌸", "Lovely! Come up whenever you're ready."],
+    no: ["Next time, then! 🌸", "That's quite all right! The plants and I will miss you. 🌱", "Of course! Another day. Fufu."]
+  },
+  hangouts: [
+    [
+      { n: "Haru had a rule about weeds, which was that most of them weren't. She knelt at the end of the south planters with her sleeves pushed up and a trowel in one hand and explained, very gently, which of the small green arrivals were thieves and which were only guests who had come without an invitation." },
+      { s: 'haru', f: 'happy', t: "This one is clover. It feeds the soil. It may stay." },
+      { s: 'haru', f: 'serious', t: "This one is a thief. It drinks everything and gives nothing back. Out, please." },
+      { choose: [
+        { t: "(Ease the thief out by the root, the way she showed you.)", notes: 3, then: [
+          { n: "It came up whole, a long pale root curled like a question mark, and Haru clapped once, softly, the way you'd applaud at a piano recital." },
+          { s: 'haru', f: 'happy', t: "The whole root! Solar-chan, you're a natural." }
+        ] },
+        { t: "How do you tell them apart?", notes: 2, then: [{ s: 'haru', f: 'happy', t: "You sit with them long enough. Like people, I suppose. Fufu." }] },
+        { t: "They all look the same to me.", notes: 1, then: [{ s: 'haru', f: 'neutral', t: "That's all right. They looked the same to me once, too." }] }
+      ] },
+      { n: "By the time the bell rang below them the planter was tidy, and the clover was still there, and Haru told it quietly that it had done very well." }
+    ],
+    [
+      { n: "Haru had carried a thermos up to the roof, and two small porcelain cups wrapped in a tea towel, because she did not believe in drinking coffee out of a thermos lid and had said so, firmly, the one time Solar suggested it." },
+      { s: 'haru', f: 'happy', t: "Taste it first. Then tell me what you taste. There are no wrong answers. Well. There are a few." },
+      { choose: [
+        { t: "Chocolate. And something like cherries?", notes: 3, then: [{ s: 'haru', f: 'surprised', t: "...Cherries! Yes! Solar-chan, that's exactly right. I think I might cry a little." }] },
+        { t: "(Drink it too fast and burn your tongue.)", notes: 2, then: [{ n: "Haru was so apologetic that she held the second cup for a full minute, blowing across the top of it, before she would let Solar have it back." }] },
+        { t: "It tastes like coffee.", notes: 1, then: [{ s: 'haru', f: 'happy', t: "Fufu. That is technically correct. We'll keep practicing." }] }
+      ] },
+      { n: "They drank the rest sitting with their backs against the stairwell wall, the concrete warm through their uniforms, the city laid out below them. The coffee was very good. So was not talking." }
+    ],
+    [
+      { n: "Haru found an earthworm in the east planter and reacted the way other girls reacted to puppies." },
+      { s: 'haru', f: 'happy', t: "Oh! Oh, look at him. Solar-chan, do you know what this means? The soil is alive. He chose us." },
+      { n: "She held him in her cupped palm, pink and indignant and coiling, and looked up at Solar with shining eyes, clearly waiting for the correct response." },
+      { choose: [
+        { t: "Welcome to the garden, worm.", notes: 3, then: [
+          { s: 'haru', f: 'happy', t: "He says thank you. He's going to work very hard." },
+          { n: "She lowered him back into the dark soil like she was tucking him into bed." }
+        ] },
+        { t: "He should have a name.", notes: 2, then: [{ s: 'haru', f: 'happy', t: "Then he is the Professor. He looks very wise. Don't you think he looks wise?" }] },
+        { t: "(Take one small step back.)", notes: 1, then: [
+          { s: 'haru', f: 'surprised', t: "Oh! I'm sorry. Not everyone loves worms. I always forget." },
+          { n: "She put him back. She still looked delighted about it. She waved at the soil." }
+        ] }
+      ] },
+      { n: "For the rest of the afternoon Haru checked on that corner of the planter every few minutes, the way you'd look in on someone sleeping." }
+    ],
+    [
+      { n: "The rain came in fast off the bay the way it sometimes did, a gray wall walking across the water, and by the time it reached the roof Haru was already running between the planters with a stack of saucers, sliding them under the pots so the soil wouldn't wash away." },
+      { s: 'haru', f: 'serious', t: "Solar-chan! The little ones! On the end! Quickly, please!" },
+      { choose: [
+        { t: "(Grab a stack of saucers and run.)", notes: 3, then: [{ n: "Solar ran. She got the little ones on the end. She also got completely soaked, and so did Haru, and they ended up under the overhang by the stairwell door, dripping and out of breath and laughing at nothing at all." }] },
+        { t: "Haru, we should go inside!", notes: 1, then: [
+          { s: 'haru', f: 'serious', t: "In a minute! They need us!" },
+          { n: "It was a good deal more than a minute. Solar helped anyway." }
+        ] }
+      ] },
+      { s: 'haru', f: 'happy', t: "They'll be so happy. Rain is the best thing in the world for them. ...Not for us. But for them." },
+      { n: "She wrung the water out of the end of her scarf over the nearest planter, so as not to waste it." }
+    ],
+    [
+      { n: "Haru had bought a packet of wooden plant markers from the hardware store by the station, and a paint pen, and had decided that today was the day every planter on the roof would finally learn its own name." },
+      { s: 'haru', f: 'happy', t: "Would you write them? My handwriting is too round. It looks like it's apologizing." },
+      { choose: [
+        { t: "(Draw a little face on each one.)", notes: 3, then: [
+          { s: 'haru', f: 'surprised', t: "...Solar-chan. They have faces." },
+          { s: 'haru', f: 'happy', t: "Oh, they're perfect. Now they'll know we see them." }
+        ] },
+        { t: "(Print them neatly, in your best block capitals.)", notes: 2, then: [{ n: "Solar wrote BASIL and SHISO and MINT in careful capitals. Haru held each one up to the light like a diploma." }] },
+        { t: "Your handwriting is nice, Haru.", notes: 2, then: [{ s: 'haru', f: 'flustered', t: "...Do you think so? Then we'll take turns. One each." }] }
+      ] },
+      { n: "When they were finished the markers stood in the soil in a crooked little row, like students lined up for a class photo, and Haru photographed every single one." }
+    ]
+  ],
   romance: true,
   cast: { ann: 'Ann', makoto: 'Makoto', shinjiro: 'Shinjiro', akihiko: 'Akihiko' },
   texts: [

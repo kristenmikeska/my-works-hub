@@ -4,7 +4,110 @@ FemcSocial.define({
   id: 'shinjiro', name: 'Shinjiro Aragaki', short: 'Shinjiro', arcana: 'Moon', numeral: 'XVIII', from: 'Persona 3',
   home: { place: 'Port Island Station · Back Alley', slot: 1, days: [0, 1, 2, 3, 4, 5, 6], hint: 'Evenings. Before he comes back to the dorm, he can usually be found in the back alley behind Port Island Station.' },
   approach: "A tall guy in a long maroon coat is leaning against the alley wall, watching you like you're the one who doesn't belong here.",
-  invite: { ask: ["you eat yet", "need someone to carry groceries. you're free. come on.", "made too much. kitchen. now"], ok: "yeah. don't take forever", no: "whatever. more for me" },
+  invite: {
+    ask: ["you eat yet", "need someone to carry groceries. you're free. come on.", "made too much. kitchen. now", "you busy", "come taste something. it's not poison", "back of the station. if you want", "got extra. come get it before it's cold", "alley. bring an appetite"],
+    ok: ["yeah. don't take forever", "fine. hurry up", "good. it's getting cold"],
+    no: ["whatever. more for me", "tch. fine", "eat something at least"]
+  },
+  hangouts: [
+    [
+      { n: "The back alley behind the station was its usual self, damp concrete and the hum of the vending machine and a radio somewhere upstairs playing a song nobody had chosen. Shinjiro was leaning on the wall where he always leaned, like the wall had been put there for him." },
+      { n: "He didn't say hello. He took a plastic container out of his coat and held it out, and inside was rice and something braised, dark and glossy and still warm, with a pair of disposable chopsticks balanced on top like an afterthought." },
+      { s: 'shinjiro', f: 'neutral', t: "Tried something different with the sauce. Tell me if it's too salty." },
+      { choose: [
+        { t: "It could use a little less salt.", notes: 3, then: [
+          { n: "He took the chopsticks out of her hand, tried a piece himself, and chewed, frowning at the middle distance." },
+          { s: 'shinjiro', f: 'neutral', t: "...Yeah. It could." },
+          { n: "He looked almost pleased about it. Nobody, she suspected, had told him the truth about his food in a long time." }
+        ] },
+        { t: "It's perfect.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "Nothing's perfect. Eat." }
+        ] },
+        { t: "Did you make this for me?", notes: 1, then: [
+          { s: 'shinjiro', f: 'neutral', t: "No." },
+          { n: "There had only ever been one container, and he'd been holding it inside his coat to keep it warm. She let him have the lie." }
+        ] }
+      ] },
+      { n: "She ate the whole thing standing up in an alley, which was not how she had pictured her evening, and he watched the mouth of the street the entire time like he was keeping a lookout. Somewhere around the last bite she realized that he was." }
+    ],
+    [
+      { n: "Koromaru found the alley before she did. She heard his tags first, a small bright jingle bouncing off the concrete, and then he trotted past her ankles with his tail up and went straight to Shinjiro like he was reporting for duty." },
+      { s: 'shinjiro', f: 'neutral', t: "...You followed her here? Tch. You're supposed to be home." },
+      { n: "He said it in the voice people used for scolding dogs they had no intention of scolding. Koromaru sat down on his boot." },
+      { choose: [
+        { t: "(Pretend not to see him slip the dog a piece of meat.)", notes: 3, then: [
+          { n: "She studied the vending machine with enormous interest. Behind her there was the quiet rustle of a container lid, and then the wet, grateful sound of a dog getting away with something." },
+          { s: 'shinjiro', f: 'neutral', t: "...You didn't see that." }
+        ] },
+        { t: "I think he followed you, actually.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "He follows whoever's got food." },
+          { n: "Koromaru, who had followed her and not any food, leaned his whole weight against Shinjiro's leg in quiet protest." }
+        ] },
+        { t: "He's a good boy.", notes: 2, then: [
+          { s: 'shinjiro', f: 'happy', t: "...Yeah. He is." }
+        ] }
+      ] },
+      { n: "They walked him home together, or he walked them, his white tail going ahead through the evening crowd like a little flag. Shinjiro kept one hand in his pocket and the other loose at his side, where Koromaru could bump it with his head every few steps. He did. Every time, Shinjiro pretended not to notice." }
+    ],
+    [
+      { n: "He was crouched by the vending machine when she found him, frowning at the convenience store bag in her hand like it had said something rude to him." },
+      { s: 'shinjiro', f: 'neutral', t: "What's in the bag." },
+      { n: "A rice ball and a carton of milk tea. She told him so. He closed his eyes briefly, like a man in pain." },
+      { s: 'shinjiro', f: 'neutral', t: "Rice. Pot. How much water." },
+      { choose: [
+        { t: "Up to the first knuckle.", notes: 3, then: [
+          { s: 'shinjiro', f: 'surprised', t: "...Huh. Who taught you that?" },
+          { n: "She didn't know. Someone, once, in a kitchen she couldn't picture anymore. She shrugged. He looked at her a second longer than he needed to, and then let it go, which she was grateful for." }
+        ] },
+        { t: "Whatever the line on the cooker says.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "The line's for people who've given up." },
+          { s: 'shinjiro', f: 'neutral', t: "...It's fine. Use the line." }
+        ] },
+        { t: "Rice comes in a triangle, Shinjiro.", notes: 1, then: [
+          { s: 'shinjiro', f: 'neutral', t: "Tch." },
+          { n: "He took the rice ball out of her bag and unwrapped it with practiced fingers so the seaweed came out whole, which she had never once managed, and handed it back without a word." }
+        ] }
+      ] },
+      { n: "He talked her through it anyway. Wash it till the water runs clear. Let it sit. Don't lift the lid. Don't lift the lid. He said that part twice, the way other people said be careful." }
+    ],
+    [
+      { n: "It started raining the moment she reached the alley, a thin sideways rain that made the neon from the main street run down the wet concrete in long smeared stripes. Shinjiro was standing under the awning of the ramen counter with the broken sign, and he moved over without a word to make room." },
+      { n: "The gutter above them leaked. It dripped on whoever stood at the left end of the awning. He stood at the left end of the awning. He very obviously did not want her to notice, so she noticed quietly." },
+      { s: 'shinjiro', f: 'neutral', t: "...They use powder for the broth here. You can smell it." },
+      { choose: [
+        { t: "Could you make it better?", notes: 3, then: [
+          { s: 'shinjiro', f: 'neutral', t: "...Yeah." },
+          { n: "He said it without any pride at all, which was how she knew it was true. Then he told her how, for eleven minutes, in more detail than she had ever heard him say anything, while the rain came down and the broken sign buzzed overhead." }
+        ] },
+        { t: "It still smells pretty good.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "Hungry people think everything smells good." },
+          { s: 'shinjiro', f: 'neutral', t: "...When'd you last eat?" }
+        ] },
+        { t: "You're a food snob.", notes: 2, then: [
+          { s: 'shinjiro', f: 'happy', t: "Somebody's got to be." }
+        ] }
+      ] },
+      { n: "He waited until the rain had stopped completely before he stepped out from under the awning, and then waited again for her. The whole left shoulder of his coat was soaked through. Neither of them said a word about it." }
+    ],
+    [
+      { n: "He was sitting on an overturned crate by the back door of the karaoke place with his coat across his knees, and it took her a second to understand what he was doing, because it was the last thing she would have guessed. He was sewing on a button." },
+      { n: "A tiny hotel sewing kit lay open on the crate beside him, and he was holding the needle up to the streetlight and squinting at it with the same total focus he gave to onions." },
+      { s: 'shinjiro', f: 'neutral', t: "Don't say anything." },
+      { choose: [
+        { t: "(Hold the coat steady for him.)", notes: 3, then: [
+          { n: "She sat on the edge of the crate and held the heavy wool flat in both hands. He didn't thank her. He just got faster, the needle going in and out in small neat stitches, and when his knuckles brushed her fingers neither of them made anything of it." }
+        ] },
+        { t: "I can do that for you.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "Can you." },
+          { n: "She could not. She found that out in about forty seconds. He took it back without a word and fixed the knot she'd made." }
+        ] },
+        { t: "You sew, too?", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "Buttons don't sew themselves." }
+        ] }
+      ] },
+      { n: "He bit off the thread, put the kit back in his pocket and shrugged the coat on. The button sat exactly where it should, a little tighter than the others. Then he told her to go home before it got dark, as if it hadn't been dark for an hour." }
+    ]
+  ],
   romance: true,
   closes: '10/4',
   cast: { koromaru: 'Koromaru', ken: 'Ken', akihiko: 'Akihiko' },

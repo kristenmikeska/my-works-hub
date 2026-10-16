@@ -5,9 +5,85 @@ FemcSocial.define({
   arrives: '7/7',
   home: { place: 'Paulownia Mall · Chagall Café', slot: 1, days: [0, 1, 3, 5, 6], hint: 'Evenings only (the sun is a problem), most nights of the week, at Chagall Café.' },
   approach: "A pale man with white curls is sitting alone at Chagall with a cup he hasn't touched, watching everyone who walks in like they're on a menu.",
-  invite: { ask: ["Darling. I'm bored. Come amuse me.", "Free tonight? I've found somewhere terribly interesting.", "Come keep me company. That's not a request."], ok: "Marvelous. Don't keep me waiting.", no: "Cruel. Utterly cruel. Fine." },
+  invite: {
+    ask: ["Darling. I'm bored. Come amuse me.", "Free tonight? I've found somewhere terribly interesting.", "Come keep me company. That's not a request.",
+      "I'm at Chagall. The jazz is atrocious. Rescue me.",
+      "There is a man at the next table proposing. Badly. You have to see this.",
+      "I have been sitting here for an hour looking mysterious and it is completely wasted on these people. Come.",
+      "The café has a new cake. I can't eat it. You can. Come and tell me about it.",
+      "The night is young and so, technically, am I. Come out."],
+    ok: ["Marvelous. Don't keep me waiting.", "Splendid. I'll save you the good chair.", "Wonderful. I'll pretend I wasn't waiting."],
+    no: ["Cruel. Utterly cruel. Fine.", "Rejected. By a mortal. I'll survive. Barely.", "Hm. Then I shall brood alone. It's much less fun."]
+  },
+  hangouts: [
+    [
+      { n: "Chagall at eight on a weeknight was mostly couples and one exhausted salaryman eating cheesecake like it had personally wronged him, and Astarion had claimed the window table again, the one with the best view of the room, which he said was for the ambience and was very obviously for the surveillance." },
+      { s: 'astarion', f: 'happy', t: "The couple by the piano. Third date. He's lying about his job, she knows, and she's decided she doesn't mind. Your turn, darling." },
+      { choose: [
+        { t: "The salaryman. That's a divorce cheesecake.", notes: 3, then: [{ s: 'astarion', f: 'happy', t: "Oh, that's vicious. That's beautiful. A divorce cheesecake. I'm going to think about that all night." }] },
+        { t: "Maybe they're just on a date.", notes: 1, then: [{ s: 'astarion', f: 'neutral', t: "Nobody is ever just anything. That's the first rule of watching people. The second rule is that I'm always right." }] },
+        { t: "(Point out the waiter, who has been staring at him all night.)", notes: 2, then: [
+          { s: 'astarion', f: 'surprised', t: "...Has he?" },
+          { n: "He spent the next ten minutes pretending not to check, and checked, and was insufferably pleased with himself." }
+        ] }
+      ] },
+      { n: "The salaryman finished his cheesecake, paid, and left a tip so large the waitress chased him halfway across the mall to give it back. Astarion declared this conclusive. Solar did not argue." }
+    ],
+    [
+      { n: "There was a new menu card propped against the sugar bowl, a little folded thing with drawings of bread on it, and Astarion had been reading it with the expression of a man reading his own obituary." },
+      { s: 'astarion', f: 'serious', t: "Garlic toast. Garlic. In a café, darling. Printed right next to the cake, as if it belonged there." },
+      { s: 'astarion', f: 'neutral', t: "I want you to know I've moved tables twice tonight because someone near me ordered it." },
+      { choose: [
+        { t: "I'll ask them to take the card away.", notes: 3, then: [
+          { n: "Solar flagged down the waitress and asked, very politely, whether they had a menu without the garlic toast on it. The waitress looked at Astarion. Astarion looked tragic. The card was removed." },
+          { s: 'astarion', f: 'happy', t: "My hero. Truly. Someone write a ballad." }
+        ] },
+        { t: "Does garlic actually hurt you?", notes: 2, then: [{ s: 'astarion', f: 'neutral', t: "It doesn't hurt. It's just rude. Like someone shouting in a library." }] },
+        { t: "(Order the garlic toast.)", notes: 1, then: [
+          { s: 'astarion', f: 'surprised', t: "...You monster." },
+          { n: "He moved to the far end of the table and watched her eat every bite with the betrayed fascination of a cat watching someone take a bath." }
+        ] }
+      ] },
+      { n: "For the rest of the evening he flinched, theatrically, every time the kitchen door swung open, and every time he checked to see whether she'd noticed." }
+    ],
+    [
+      { n: "Someone had left an English-language newspaper on the next table, folded open to the crossword, and Astarion had taken it the way he took everything, without asking, and was filling it in with a borrowed pen and an air of terrible confidence." },
+      { s: 'astarion', f: 'happy', t: "Nine letters, 'a formal dance.' Cotillion. I've been to dozens. I was invited to all of them for my legs." },
+      { s: 'astarion', f: 'serious', t: "Three letters, 'video game console.' What on earth is a console? It isn't consolation. I tried consolation. It doesn't fit." },
+      { choose: [
+        { t: "Wii.", notes: 2, then: [{ s: 'astarion', f: 'serious', t: "That isn't a word, darling. That's a noise a child makes on a staircase." }] },
+        { t: "You do the old clues. I'll do the new ones.", notes: 3, then: [{ s: 'astarion', f: 'happy', t: "Finally, a sensible strategy. You take the century you understand and I'll take the ones I've survived." }] },
+        { t: "(Take the pen.)", notes: 1, then: [{ s: 'astarion', f: 'neutral', t: "Absolutely not. Hold the newspaper. Hold it nicely. That's your job." }] }
+      ] },
+      { n: "They finished it by ten, his half all ball gowns and archaic weaponry, hers all pop stars and electronics, and he folded it up afterward and tucked it inside his coat like a trophy." }
+    ],
+    [
+      { n: "Some evenings Chagall had a pianist, an old man in a cardigan with a tip jar, who played the same twelve jazz standards in the same order and smiled at nobody, and everyone talked straight over him like he was the air conditioning." },
+      { s: 'astarion', f: 'neutral', t: "He's very good, you know. Wasted here." },
+      { s: 'astarion', f: 'happy', t: "In my day you'd have hired him for a ball and everyone would still have talked over him. Some things never change. It's almost comforting." },
+      { choose: [
+        { t: "(Put a request in the tip jar.)", notes: 3, then: [{ n: "Solar wrote the only jazz standard she knew the name of on a napkin and dropped it in the jar with a hundred-yen coin. The old man read it, raised his eyebrows at her, and played it next. Astarion watched him the whole way through with his chin on his hand, perfectly still, not performing anything at all. He was just listening." }] },
+        { t: "You can tell he's good?", notes: 2, then: [{ s: 'astarion', f: 'neutral', t: "Darling, I've had two hundred years of nights to fill. I can tell when someone's good at something. It's rarer than you'd think." }] },
+        { t: "Do you dance?", notes: 1, then: [{ s: 'astarion', f: 'happy', t: "Exquisitely. Not here. The floor's sticky and nobody in this room deserves it." }] }
+      ] },
+      { n: "When the pianist packed up, Astarion put a folded bill in the jar on the way out. He wouldn't say how much, or where he'd got it. He told her not to make it a thing. She didn't." }
+    ],
+    [
+      { n: "The barista at Chagall had stopped asking what Astarion wanted. She brought him a tomato juice, no ice, in a wine glass, and set it down in front of him with the grave courtesy of someone who had decided a long time ago not to ask questions." },
+      { s: 'astarion', f: 'happy', t: "She thinks I'm an actor. Something experimental, at a little theater. I haven't corrected her. It's the most flattering thing anyone in this city believes about me." },
+      { choose: [
+        { t: "What would your stage name be?", notes: 3, then: [{ s: 'astarion', f: 'happy', t: "Astarion. Just Astarion. One name, like all the great ones. The posters would be mostly profile." }] },
+        { t: "You'd make a good actor.", notes: 2, then: [{ s: 'astarion', f: 'neutral', t: "I'd make a magnificent actor, darling. That's rather the problem." }] },
+        { t: "(Order a tomato juice too, in solidarity.)", notes: 2, then: [{ n: "The barista brought it in a wine glass without being asked. Solar got about halfway down it before admitting it was terrible, and Astarion laughed so hard the couple at the next table moved." }] }
+      ] },
+      { n: "When they left, the barista said goodnight to him by name, and he bowed to her like she was a duchess, and walked out into the dark looking enormously pleased with himself." }
+    ]
+  ],
   romance: true,
   cast: { cazador: 'Cazador', karlach: 'Karlach', akihiko: 'Akihiko' },
+  // The camp: Karlach's group chat. It needs Karlach (Astarion rank 7) and the Shadowheart reunion (Shadowheart rank 5),
+  // and Karlach fades about a week after she arrives, so both chats stop at Astarion rank 8.
+  threads: { camp: { name: 'the camp (tav-less)', members: ['karlach', 'astarion', 'shadowheart'] } },
   texts: [
     { id: 'ast-1a', rank: 1, days: 1, slot: 1, msgs: [
       { from: 'astarion', t: 'Darling. I have discovered that this device can send messages to you at any hour of the night.' },
@@ -66,6 +142,154 @@ FemcSocial.define({
     ], reply: [
       { t: 'Limited edition.', notes: 3, then: [{ from: 'astarion', t: 'Then I shall treasure you appropriately. With sarcasm.' }] },
       { t: "You deserve one.", notes: 3, then: [{ from: 'astarion', t: '...Goodnight, darling.' }] }
+    ] },
+    { id: 'camp-1', thread: 'camp', rank: 7, before: 8, days: 2, slot: 1, unlock: { links: { shadowheart: 5 } }, msgs: [
+      { sys: 'Karlach added you to "the camp (tav-less)"' },
+      { from: 'karlach', t: 'CAMP!!!!! 🔥🔥🔥' },
+      { from: 'karlach', t: 'ok so we dont have a tav anymore but we have SOLAR so it basically counts' },
+      { from: 'astarion', t: 'Karlach. Who gave you a phone.' },
+      { from: 'karlach', t: 'the fox girl!! this is my third one. the first two kind of melted' },
+      { from: 'shadowheart', t: 'Kiriko is going to run out of phones.' },
+      { from: 'karlach', t: 'she has a whole BOX of them. she said "for emergencies" and i said "karlach IS an emergency" and she laughed so hard she fell over' },
+      { ask: [
+        { t: 'Happy to be the new Tav.', notes: 2, then: [
+          { from: 'astarion', t: 'Darling, please. Tav once licked a mysterious rock because a voice told them to.' },
+          { from: 'shadowheart', t: 'Twice.' },
+          { from: 'karlach', t: 'SOLAR WOULD NEVER. solar is SMART' }
+        ] },
+        { t: 'Karlach please put the phone down before it catches fire', notes: 3, then: [
+          { from: 'karlach', t: 'its FINE its only a little warm' },
+          { from: 'karlach', t: 'ok its quite warm' },
+          { from: 'shadowheart', t: 'Put it in the fountain.' }
+        ] },
+        { t: 'Who is Tav?', notes: 1, then: [
+          { from: 'shadowheart', t: 'Someone who made a great many questionable decisions and dragged us along for all of them.' },
+          { from: 'astarion', t: 'Our fearless leader. Emphasis on the less.' }
+        ] }
+      ] },
+      { from: 'astarion', t: 'I would like it on record that I did not consent to this group.' },
+      { from: 'karlach', t: 'noted!! ❤️' },
+      { sys: 'Astarion renamed the group "please leave me alone"' },
+      { sys: 'Karlach renamed the group "the camp (tav-less)"' },
+      { from: 'astarion', t: 'Unbelievable.' },
+      { from: 'shadowheart', t: "I'm muting this." },
+      { from: 'karlach', t: 'you cant mute it, i asked kiriko and she said you dont know how' },
+      { from: 'shadowheart', t: '...' },
+      { from: 'karlach', t: 'ok REAL QUESTION. solar. which one of us is your favorite' },
+      { ask: [
+        { t: 'Koromaru.', notes: 3, then: [
+          { from: 'shadowheart', t: 'Correct.' },
+          { from: 'astarion', t: 'The dog. She picked the dog.' },
+          { from: 'karlach', t: 'honestly?? FAIR' }
+        ] },
+        { t: 'Karlach, obviously.', notes: 2, then: [
+          { from: 'karlach', t: 'YESSSS 🔥🔥🔥' },
+          { from: 'astarion', t: 'She is lying to spare your feelings.' },
+          { from: 'karlach', t: 'shes lying to spare YOURS fangs' }
+        ] },
+        { t: "I'm not answering that.", notes: 2, then: [
+          { from: 'shadowheart', t: 'Wise.' },
+          { from: 'astarion', t: 'Cowardly. But wise.' }
+        ] }
+      ] },
+      { from: 'karlach', t: 'next order of business. CAMPFIRE. this weekend. dorm roof' },
+      { from: 'shadowheart', t: "You can't light a fire on a roof." },
+      { from: 'karlach', t: 'i dont need to light anything. i AM the fire' },
+      { from: 'astarion', t: 'She is, unfortunately, correct.' },
+      { ask: [
+        { t: "I'll bring marshmallows.", notes: 3, then: [
+          { from: 'karlach', t: 'MARSHMALLOWS!!! i dont know what they are but i love them already' },
+          { from: 'astarion', t: 'Sugar pillows, Karlach. You hold them over the fire until they scream.' },
+          { from: 'shadowheart', t: 'They do not scream.' },
+          { from: 'astarion', t: 'Mine do.' }
+        ] },
+        { t: 'Mitsuru-senpai is going to kill us.', notes: 2, then: [
+          { from: 'karlach', t: 'the red haired one?? shes SCARY. i love her' },
+          { from: 'shadowheart', t: 'It was nice knowing all of you.' }
+        ] },
+        { t: 'Can Akihiko come?', notes: 1, then: [
+          { from: 'karlach', t: 'YES. ROOFTOP REMATCH' },
+          { from: 'astarion', t: 'Do not let them arm-wrestle near the edge.' }
+        ] }
+      ] },
+      { from: 'astarion', t: 'Fine. I will attend. For the ambience.' },
+      { from: 'karlach', t: 'HE LOVES US' },
+      { from: 'astarion', t: 'I am leaving.' },
+      { from: 'shadowheart', t: 'Goodnight.' },
+      { from: 'karlach', t: 'NIGHT CAMP ❤️🔥' }
+    ] },
+    { id: 'camp-2', thread: 'camp', rank: 7, before: 8, days: 4, slot: 1, unlock: { links: { shadowheart: 5 } }, rename: 'the camp (tav-less) 🎤🔥', msgs: [
+      { from: 'karlach', t: 'GUYS' },
+      { from: 'karlach', t: 'GUYS' },
+      { from: 'karlach', t: 'there is a place in the mall where you go in a tiny room and SING and nobody stops you' },
+      { from: 'astarion', t: "Yes. It's called karaoke. It's a crime against the night." },
+      { sys: 'Karlach renamed the group "the camp (tav-less) 🎤🔥"' },
+      { from: 'shadowheart', t: 'No.' },
+      { from: 'karlach', t: 'i havent even asked yet!!' },
+      { from: 'shadowheart', t: 'I know. No.' },
+      { from: 'karlach', t: 'solar back me up' },
+      { ask: [
+        { t: "Karaoke's great. I'm in.", notes: 3, then: [
+          { from: 'karlach', t: 'YES!!!! SOLAR 🔥🔥' },
+          { from: 'karlach', t: 'thats two. fangs makes three' },
+          { from: 'astarion', t: 'Fangs makes nothing. Fangs is busy.' }
+        ] },
+        { t: "Shadowheart, you'd be good at it.", notes: 2, then: [
+          { from: 'shadowheart', t: 'I would not.' },
+          { from: 'astarion', t: 'She hums. At the shrine. When she thinks nobody is listening.' },
+          { from: 'shadowheart', t: 'How would you possibly know that.' },
+          { from: 'astarion', t: 'Excellent hearing. No shame.' }
+        ] },
+        { t: "Astarion, you'd be good at it.", notes: 2, then: [
+          { from: 'astarion', t: "I would be magnificent. That isn't the point." },
+          { from: 'karlach', t: 'whats the point' },
+          { from: 'astarion', t: 'The point is that the microphones are sticky.' }
+        ] }
+      ] },
+      { from: 'karlach', t: 'ok what songs do people even sing. i only know the one' },
+      { from: 'astarion', t: 'Do NOT sing the one.' },
+      { from: 'karlach', t: '🎵 OH THE HELLS ARE HOT AND THE ALE IS COLD 🎵' },
+      { from: 'astarion', t: "Your boxer friend has been singing that in the lounge for three days, by the way. Solar's entire dorm knows the words." },
+      { from: 'karlach', t: 'GOOD' },
+      { from: 'karlach', t: 'solar whats a good song. one everybody knows' },
+      { ask: [
+        { t: 'Something sad and dramatic. Astarion would love it.', notes: 3, then: [
+          { from: 'astarion', t: 'I would. I would weep openly. Book the room.' },
+          { from: 'karlach', t: 'HE SAID BOOK THE ROOM' },
+          { from: 'astarion', t: 'That was a figure of speech.' },
+          { from: 'karlach', t: 'TOO LATE' }
+        ] },
+        { t: 'A duet. Karlach and Shadowheart.', notes: 2, then: [
+          { from: 'karlach', t: 'OMG' },
+          { from: 'shadowheart', t: 'Solar.' },
+          { from: 'shadowheart', t: 'Why would you do this to me.' }
+        ] },
+        { t: 'Anything, if you scream it loud enough.', notes: 2, then: [
+          { from: 'karlach', t: 'MY KIND OF MUSIC 🤘' },
+          { from: 'shadowheart', t: 'Gods help the neighbors.' }
+        ] }
+      ] },
+      { from: 'shadowheart', t: 'Fine. I will come. I will sit in the corner. I will not sing.' },
+      { from: 'karlach', t: "SHE'S COMING" },
+      { from: 'astarion', t: "If she's going, I'm going. Somebody has to witness it." },
+      { from: 'karlach', t: 'last thing. solar can you make sure they dont run away at the door' },
+      { ask: [
+        { t: "I'll hold the door.", notes: 3, then: [
+          { from: 'karlach', t: 'MY HERO' },
+          { from: 'astarion', t: 'Betrayed. By the one person I trusted.' },
+          { from: 'shadowheart', t: 'You trust no one.' },
+          { from: 'astarion', t: 'Exactly. And look where it got me.' }
+        ] },
+        { t: "No promises. They're fast.", notes: 1, then: [
+          { from: 'karlach', t: 'then ill carry them' },
+          { from: 'shadowheart', t: 'You will not.' },
+          { from: 'karlach', t: 'ill carry them GENTLY' }
+        ] }
+      ] },
+      { from: 'karlach', t: 'best camp ever. i love you all so much' },
+      { from: 'astarion', t: "Don't." },
+      { from: 'karlach', t: 'too late!!! ❤️❤️❤️' },
+      { from: 'shadowheart', t: '...Goodnight, Karlach.' }
     ] }
   ],
   ranks: [

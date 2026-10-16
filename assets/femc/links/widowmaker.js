@@ -6,7 +6,103 @@ FemcSocial.define({
   arrives: '10/4',
   home: { place: 'Moonlight Bridge', slot: 1, days: [0, 2, 4, 6], hint: 'Evenings on Sundays, Tuesdays, Thursdays and Saturdays, somewhere up in the cables of Moonlight Bridge.' },
   approach: "High up in the cables of Moonlight Bridge there's a shape that wasn't there yesterday. It's watching you.",
-  invite: { ask: ["Come to the bridge.", "Are you free.", "The city is quiet tonight. Come."], ok: "Bien.", no: "Hm. Another night, then." },
+  invite: {
+    ask: [
+      "Come to the bridge.",
+      "Are you free.",
+      "The city is quiet tonight. Come.",
+      "The bridge. Tonight.",
+      "I am bored. Come and fix it.",
+      "The wind has dropped. You will complain less. Come.",
+      "I am on the north tower. You know the way.",
+      "Bring coffee. Black."
+    ],
+    ok: ["Bien.", "Good. Do not be late.", "I will see you before you see me."],
+    no: ["Hm. Another night, then.", "Fine.", "No matter. I will be here. I am always here."]
+  },
+  hangouts: [
+    [
+      { n: "From the railing of Moonlight Bridge you could see the whole pedestrian walkway below, a strip of yellow light with people moving along it in ones and twos, and Widowmaker was watching them the way other people watched television, with total attention and no visible enjoyment." },
+      { s: 'widowmaker', f: 'neutral', t: "The man in the grey coat. He is late for something. He has checked his watch four times in thirty meters." },
+      { s: 'widowmaker', f: 'neutral', t: "The woman with the bag. Her shoes hurt. She will take them off at the end of the bridge." },
+      { choose: [
+        { t: "The kid with the headphones?", notes: 3, then: [
+          { s: 'widowmaker', f: 'neutral', t: "Hm. Sixteen. Avoiding home. Walking the long way on purpose." },
+          { s: 'widowmaker', f: 'neutral', t: "...You do the same thing. You think I have not noticed." }
+        ] },
+        { t: "You could be wrong.", notes: 2, then: [
+          { s: 'widowmaker', f: 'neutral', t: "I could. I am not." },
+          { n: "At the end of the bridge the woman stopped, leaned on the railing, and took off her shoes. Widowmaker said nothing. She didn't need to." }
+        ] },
+        { t: "What do you see when you look at me?", notes: 1, then: [{ s: 'widowmaker', f: 'serious', t: "A girl who asks questions she does not want answered. Pick someone else." }] }
+      ] },
+      { n: "They watched the walkway until the last commuters thinned out, the water black and slow below, the wind steady off the bay. It was a very strange way to spend an evening, and there was nowhere else she wanted to be." }
+    ],
+    [
+      { n: "There was a vending machine at the foot of the bridge tower, lit up white in the dark like a small shrine to caffeine, and Solar came up the access stairs with two hot cans of black coffee pressed to her chest because her fingers had stopped working somewhere around the third flight." },
+      { n: "Widowmaker took one, read the label, turned it over, and read the other side." },
+      { s: 'widowmaker', f: 'neutral', t: "This country puts coffee in a can and heats it in a machine. On the street. For anyone." },
+      { s: 'widowmaker', f: 'serious', t: "In Paris this would be a crime." },
+      { choose: [
+        { t: "Is it bad?", notes: 2, then: [
+          { s: 'widowmaker', f: 'neutral', t: "It is terrible." },
+          { n: "She drank the whole thing without stopping and set the empty can on the railing very precisely, label facing out, like a trophy from a minor war." }
+        ] },
+        { t: "(Hold the can against your cheek and say nothing.)", notes: 3, then: [
+          { n: "Widowmaker watched her do it. A long pause. Then she did the same thing, very seriously, the hot can pressed to her cheek, staring out at the city as though the two of them were on a stakeout." },
+          { s: 'widowmaker', f: 'neutral', t: "I am told this is warm." }
+        ] }
+      ] },
+      { n: "The two empty cans stood side by side on the railing until a gust took one of them, and Widowmaker caught it without looking, and set it back." }
+    ],
+    [
+      { n: "A seagull had landed on the railing about a meter from Widowmaker, and the two of them were having what could only be called a standoff, the gull with its head cocked and one yellow eye fixed on her, Widowmaker perfectly motionless with her own eyes fixed on it, each of them clearly waiting for the other to blink." },
+      { s: 'widowmaker', f: 'serious', t: "Do not move. It thinks it is winning." },
+      { choose: [
+        { t: "(Don't move.)", notes: 3, then: [
+          { n: "Solar didn't move. Thirty seconds. A minute. The wind picked up and the gull's feathers ruffled and Widowmaker's braid lifted and neither of them so much as twitched. Then the gull, with tremendous dignity, turned around and stepped off the railing into the air." },
+          { s: 'widowmaker', f: 'happy', t: "Hm. Good. That is how it is done." }
+        ] },
+        { t: "Are you seriously fighting a bird?", notes: 1, then: [
+          { n: "The gull, startled by her voice, flapped off over the water screaming, and Widowmaker turned and gave Solar a long, flat look of professional disappointment." },
+          { s: 'widowmaker', f: 'neutral', t: "I had it." }
+        ] },
+        { t: "Two thousand yen on the bird.", notes: 2, then: [
+          { s: 'widowmaker', f: 'neutral', t: "Then you will lose two thousand yen." },
+          { n: "The gull blinked first. Widowmaker did not gloat. She didn't need to. Her whole posture gloated for her." }
+        ] }
+      ] },
+      { n: "For the rest of the evening, whenever a gull flew past, her eyes followed it, just slightly, the way you'd keep track of an old rival." }
+    ],
+    [
+      { n: "Solar had brought her physics homework, because it was due tomorrow and the bridge was quieter than the dorm, and she was sitting on the walkway with her back against the railing and the worksheet on her knee, losing a fight with a cannonball." },
+      { n: "A shadow fell across the page. Widowmaker was reading over her shoulder from the cable above, upside down, hanging from one hooked foot like a bat with a rifle." },
+      { s: 'widowmaker', f: 'neutral', t: "Number four is wrong. You have forgotten the wind." },
+      { s: 'solar', t: "There's no wind in the question." },
+      { s: 'widowmaker', f: 'serious', t: "There is always wind." },
+      { choose: [
+        { t: "Okay. Then show me.", notes: 3, then: [
+          { n: "She dropped down beside Solar, took the pencil, and solved number four in the margin in about nine seconds, small exact numbers in a hand like a typewriter, then five and six, and then, apparently unable to stop, sketched the arc of the cannonball and where it would have landed in Iwatodai, which was Hagakure." },
+          { s: 'widowmaker', f: 'neutral', t: "Show your work. Teachers like that. Do not show them mine." }
+        ] },
+        { t: "I'm putting no wind. That's the answer they want.", notes: 2, then: [{ s: 'widowmaker', f: 'neutral', t: "Then you will be correct on paper and wrong in the world. Like most people." }] }
+      ] },
+      { n: "Solar got number four right the next day. She left out the wind. She did, privately, keep thinking about it." }
+    ],
+    [
+      { n: "Widowmaker didn't like to talk much, and she liked being talked at even less, so some evenings they just stood on the bridge and let the city do the talking, the cars on the deck below, the hollow boom of the wind in the cables, the monorail sliding across the dark toward Port Island like a lit-up zipper." },
+      { s: 'widowmaker', f: 'neutral', t: "Nine forty-two. Exactly on time. It is always exactly on time." },
+      { s: 'widowmaker', f: 'neutral', t: "I do not trust it." },
+      { choose: [
+        { t: "Trains here are never late.", notes: 2, then: [{ s: 'widowmaker', f: 'serious', t: "Everything is late eventually. It is a question of patience." }] },
+        { t: "(Stay quiet and watch it go.)", notes: 3, then: [
+          { n: "Solar said nothing. They watched the train out of sight together, the lights shrinking to a thread and then to nothing, and when it was gone Widowmaker let out a breath that might have been approval, or might have been the wind." }
+        ] },
+        { t: "You'd make a terrible commuter.", notes: 2, then: [{ s: 'widowmaker', f: 'happy', t: "I would make an excellent commuter. No one would sit next to me." }] }
+      ] },
+      { n: "The next train came at nine fifty-four. Widowmaker checked. It was on time. She seemed to take it personally." }
+    ]
+  ],
   romance: false,
   cast: { kiriko: 'Kiriko', mercy: 'Mercy' },
   threads: { sniper: { name: 'support & sniper', members: ['widowmaker', 'kiriko'] } },
@@ -32,6 +128,79 @@ FemcSocial.define({
     ], reply: [
       { t: 'Support and sniper. I love it.', then: [{ from: 'kiriko', t: 'opposites cover each others blind spots 🦊' }, { from: 'widowmaker', t: 'I have no blind spots.' }] },
       { t: 'What did the pigeon get?', then: [{ from: 'widowmaker', t: 'Kichi. It seemed satisfied.' }] }
+    ] },
+    { id: 'sniper-6', thread: 'sniper', rank: 6, before: 9, unlock: { links: { kiriko: 8 } }, days: 2, slot: 1, rename: 'support & sniper & cake', msgs: [
+      { from: 'kiriko', t: 'emergency' },
+      { from: 'kiriko', t: 'not a real one' },
+      { from: 'kiriko', t: 'i saw widowmaker on the ROOF of paulownia mall today' },
+      { from: 'kiriko', t: 'just standing there. watching the fountain' },
+      { from: 'widowmaker', t: 'I was surveilling.' },
+      { from: 'kiriko', t: 'the fountain???' },
+      { from: 'widowmaker', t: 'It is a very suspicious fountain.' },
+      { from: 'kiriko', t: 'also she had a RED SCARF on. since when does she own colors' },
+      { from: 'widowmaker', t: 'It was a gift. I am told it is rude to refuse those.' },
+      { ask: [
+        { t: 'It looks good on her.', notes: 3, then: [
+          { from: 'widowmaker', t: 'It does.' },
+          { from: 'kiriko', t: 'humble' },
+          { from: 'kiriko', t: 'wait. solar did u give her the scarf' },
+          { from: 'widowmaker', t: 'Move on, fox.' }
+        ] },
+        { t: 'Was it a nice fountain?', notes: 2, then: [
+          { from: 'widowmaker', t: 'It was adequate. The pigeons there are very organized. Someone should be told.' },
+          { from: 'kiriko', t: 'she LIKED it 🦊' }
+        ] },
+        { t: 'Kiriko, why were YOU at the mall?', notes: 2, then: [
+          { from: 'kiriko', t: 'irrelevant' },
+          { from: 'widowmaker', t: 'She was eating crepes. Three. I counted.' },
+          { from: 'kiriko', t: 'STOP SURVEILLING ME' }
+        ] }
+      ] },
+      { from: 'widowmaker', t: 'While we are speaking of surveillance.' },
+      { from: 'widowmaker', t: 'There is a piece of paper in my coat. It has writing on it and it smells of incense.' },
+      { from: 'kiriko', t: 'no there isnt' },
+      { from: 'widowmaker', t: 'It has been there since the night you read me a fortune.' },
+      { from: 'kiriko', t: 'how long have u known' },
+      { from: 'widowmaker', t: 'Since that night.' },
+      { ask: [
+        { t: 'Why did you keep it?', notes: 3, then: [
+          { from: 'widowmaker', t: 'It was not in the way.' },
+          { from: 'kiriko', t: 'thats sniper for "i love it"' },
+          { from: 'widowmaker', t: 'It is sniper for "it was not in the way."' }
+        ] },
+        { t: 'She notices everything, Kiriko.', notes: 2, then: [
+          { from: 'kiriko', t: 'i KNOW that NOW' },
+          { from: 'widowmaker', t: 'You knew it before. You hoped.' }
+        ] },
+        { t: 'What does it say?', notes: 2, then: [
+          { from: 'kiriko', t: 'protection. its a protection one' },
+          { from: 'widowmaker', t: 'From what?' },
+          { from: 'kiriko', t: 'everything. its a very good one' }
+        ] }
+      ] },
+      { from: 'kiriko', t: 'ok since we are all being honest' },
+      { from: 'kiriko', t: 'i want to do a stakeout. the three of us. on the bridge. with snacks' },
+      { from: 'widowmaker', t: 'That is not what a stakeout is.' },
+      { from: 'kiriko', t: 'there will be cake' },
+      { from: 'widowmaker', t: '...What kind of cake.' },
+      { sys: 'kiriko renamed the group "support & sniper & cake"' },
+      { ask: [
+        { t: "I'll bring strawberry shortcake.", notes: 3, then: [
+          { from: 'widowmaker', t: 'Fine. Not too sweet.' },
+          { from: 'kiriko', t: 'she said FINE' },
+          { from: 'kiriko', t: 'screenshotting this' }
+        ] },
+        { t: 'And coffee. Black.', notes: 3, then: [
+          { from: 'widowmaker', t: 'No sugar.' },
+          { from: 'widowmaker', t: '...Then I suppose I will be there.' }
+        ] },
+        { t: 'A bridge at night sounds cold.', notes: 1, then: [
+          { from: 'widowmaker', t: 'I do not feel the cold.' },
+          { from: 'kiriko', t: 'i DO. im bringing a blanket. and the kotatsu if i can carry it' }
+        ] }
+      ] },
+      { from: 'widowmaker', t: 'Do not bring the pigeon.' },
+      { from: 'kiriko', t: 'the pigeon is coming' }
     ] },
     { id: 'widow-4a', rank: 4, days: 1, slot: 1, msgs: [
       { from: 'widowmaker', t: 'You did not ask about him. After I told you.' },

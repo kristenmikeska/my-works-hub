@@ -9,7 +9,109 @@ FemcSocial.define({
   unlock: { stamps: ['solchan'], links: { kiriko: 8 }, after: '11/4' },
   home: { place: 'Iwatodai Dorm · Laundry Room', slot: 1, days: [0, 1, 2, 3, 4, 5, 6], hint: 'Late, in the evenings. Wherever nobody else is awake.' },
   approach: "Someone's in the laundry room at an hour nobody does laundry, sitting on top of a dryer with headphones on. He looks up like he heard his name.",
-  invite: { ask: ["you up?", "free? come here", "bored. you around"], ok: "k. door's open", no: "ok. night" },
+  invite: {
+    ask: ["you up?", "free? come here", "bored. you around", "laundry room. bring coins", "dryer's warm. come sit", "can't sleep. you can't either. i can tell", "a sock is missing. i need a witness", "you awake? don't lie"],
+    ok: ["k. door's open", "k. hurry", "knew it"],
+    no: ["ok. night", "ok. try to sleep then", "fine. i'll talk to the dryer"]
+  },
+  hangouts: [
+    [
+      { n: "Three in the morning, and the laundry room light was doing its usual dying flicker. Haechan was sitting cross-legged on the folding table with a basket of somebody else's towels, folding them into perfect identical squares, one after another, like a machine built for exactly this and nothing else." },
+      { s: 'haechan', f: 'neutral', t: "These are Junpei's. Don't tell him. He'll start leaving them here on purpose." },
+      { choose: [
+        { t: "(Fold one badly on purpose.)", notes: 3, then: [
+          { n: "She folded a towel into something that was technically a shape and set it on top of his stack. He looked at it. He looked at her." },
+          { s: 'haechan', f: 'happy', t: "...Wow. You did that to hurt me." },
+          { n: "He refolded it. Then he shook it out and put it back the way she'd done it, crooked, on top, like he wanted to keep it that way." }
+        ] },
+        { t: "Who taught you to fold like that?", notes: 2, then: [
+          { s: 'haechan', f: 'neutral', t: "No idea. Somebody with opinions about corners." },
+          { s: 'haechan', f: 'sad', t: "...I can hear them sometimes. Not the words. Just the opinions." }
+        ] },
+        { t: "You could just go to sleep, you know.", notes: 1, then: [
+          { s: 'haechan', f: 'neutral', t: "Could I?" },
+          { n: "He asked it like a real question, and kept folding." }
+        ] }
+      ] },
+      { n: "When the basket was empty he started on hers. She let him. It was faster than arguing and he was better at it, and there was something about watching someone take that much care with your socks at three in the morning that made the room feel less like a laundry room." }
+    ],
+    [
+      { n: "He'd brought two cans down from the vending machine by the stairs and set one on the dryer next to her before she'd even sat down. It was her drink. The specific one, the peach one nobody else in the dorm bought, from the bottom row where the machine always jammed." },
+      { n: "She hadn't told him. She hadn't told anyone. It wasn't the kind of thing you told people." },
+      { s: 'haechan', f: 'neutral', t: "...What. You're looking at me like I did a magic trick." },
+      { choose: [
+        { t: "(Drink it, and don't ask.)", notes: 3, then: [
+          { n: "She drank it. He drank his. The dryer turned. It was the most comfortable silence she had sat in all year, and that was the strangest part." },
+          { s: 'haechan', f: 'happy', t: "See? Not a magic trick. Just a drink." }
+        ] },
+        { t: "How did you know?", notes: 2, then: [
+          { s: 'haechan', f: 'serious', t: "Lucky guess." },
+          { n: "It wasn't. They both knew it wasn't. He looked at the can in his hand like it might explain itself." }
+        ] },
+        { t: "I actually hate this flavor.", notes: 1, then: [
+          { s: 'haechan', f: 'neutral', t: "No, you don't." },
+          { n: "He said it without looking up, the way you'd correct someone about the day of the week. She drank it anyway. It was perfect." }
+        ] }
+      ] },
+      { n: "On her way back upstairs she passed the machine. The little light under the peach can was red. Sold out. He'd gotten the last one." }
+    ],
+    [
+      { n: "Two dryers running, hers and someone else's, the round windows turning like slow eyes. Haechan was lying on his back on the folding table with his headphones around his neck and one arm over his face, and he said, without moving it, that he had a theory." },
+      { s: 'haechan', f: 'neutral', t: "Something in this room eats socks. Only one from each pair. It's very disciplined." },
+      { s: 'haechan', f: 'serious', t: "Bet you a can of coffee yours comes out one short." },
+      { choose: [
+        { t: "You're on.", notes: 3, then: [
+          { n: "The dryer buzzed. She counted. She counted again. One short. A gray one, gone." },
+          { s: 'haechan', f: 'happy', t: "Disciplined. Told you." },
+          { n: "He found it ten minutes later, stuck to the inside of his own sleeve, and handed it back with enormous dignity, and still made her buy the coffee." }
+        ] },
+        { t: "It's static. Socks stick to things.", notes: 2, then: [
+          { s: 'haechan', f: 'neutral', t: "That's what it wants you to think." }
+        ] },
+        { t: "(Check his hoodie pocket.)", notes: 2, then: [
+          { s: 'haechan', f: 'surprised', t: "Hey. Rude. Unbelievable." },
+          { n: "There was no sock. There was only a folded sticky note in his handwriting that said don't forget, and nothing after it. He took it back and frowned at it, like it was news to him too." }
+        ] }
+      ] },
+      { n: "They never solved it. The room ate one more sock before the night was over, a white one, and he declared it a hostage situation and sat guard on top of the machine until dawn or until she went to bed, whichever came first. She suspected the second." }
+    ],
+    [
+      { n: "The dryer had been going for twenty minutes when he asked her, out of nowhere, staring up at the flickering tube, whether she liked parties." },
+      { s: 'haechan', f: 'neutral', t: "Big ones. Loud. Too many people on the stairs. Somebody's always crying in a bathroom." },
+      { choose: [
+        { t: "I'm usually the one who leaves early.", notes: 3, then: [
+          { s: 'haechan', f: 'happy', t: "Yeah. Figured." },
+          { s: 'haechan', f: 'neutral', t: "...I'm usually the one who notices." },
+          { n: "He didn't explain it. He looked like he couldn't have if he'd tried." }
+        ] },
+        { t: "I don't really go to parties.", notes: 2, then: [
+          { s: 'haechan', f: 'surprised', t: "Huh. Really? I could've sworn..." },
+          { s: 'haechan', f: 'neutral', t: "Never mind. Wrong— never mind." }
+        ] },
+        { t: "Why, are you throwing one?", notes: 1, then: [
+          { s: 'haechan', f: 'neutral', t: "In here? Sure. Bring the dryer a hat." }
+        ] }
+      ] },
+      { n: "He went quiet after that, the good kind of quiet, and she sat on the cold machine and tried to picture a staircase full of people and couldn't, and could, both at once, the way you can almost remember a dream before breakfast eats it." }
+    ],
+    [
+      { n: "Some nights there was nothing to say, and that was fine too. The light flickered. The dryer thumped. Somewhere above them a pipe knocked twice and went quiet. She was so tired her eyes hurt and so awake her hands wouldn't stay still." },
+      { s: 'haechan', f: 'neutral', t: "You look like your brain's running laps." },
+      { choose: [
+        { t: "Talk to me about something boring.", notes: 3, then: [
+          { s: 'haechan', f: 'serious', t: "Okay. Detergent." },
+          { n: "He talked about detergent for fifteen minutes in that flat, unhurried voice, powder versus liquid, a deeply held grudge against fabric softener, and somewhere around the fabric softener she laughed, and something in her chest that had been knotted all day came loose." }
+        ] },
+        { t: "(Lean your head against the wall and close your eyes.)", notes: 2, then: [
+          { n: "She closed her eyes. He didn't say anything. She could hear him not saying anything, which was different from silence, and a little warmer." }
+        ] },
+        { t: "Don't you ever get tired?", notes: 2, then: [
+          { s: 'haechan', f: 'sad', t: "All the time. Just not sleepy. It's different." }
+        ] }
+      ] },
+      { n: "When the dryer buzzed she was almost asleep sitting up, and he didn't wake her. He took her laundry out and folded it, quietly, piece by piece, and left the pile beside her where she'd find it." }
+    ]
+  ],
   romance: true,
   stamps: { 10: ['every-universe'] },
   cast: { elizabeth: 'Elizabeth', junpei: 'Junpei' },

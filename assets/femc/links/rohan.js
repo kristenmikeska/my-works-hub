@@ -6,7 +6,100 @@ FemcSocial.define({
   arrives: '9/5',
   home: { place: 'Iwatodai Strip · Bookworms', slot: 0, days: [0, 3, 4, 6], hint: 'Daytime on Sundays, Wednesdays, Thursdays and Saturdays, at the back table of Bookworms, drawing.' },
   approach: "At the back table of Bookworms, a man in a green headband is drawing so fast the pen sounds like rain.",
-  invite: { ask: ["Are you available? I need a reference model.", "Come to Bookworms. Now. It's for research.", "I have new pages. You may look at them."], ok: "Good. Don't dawdle.", no: "Unacceptable. ...Fine." },
+  invite: {
+    ask: ["Are you available? I need a reference model.", "Come to Bookworms. Now. It's for research.", "I have new pages. You may look at them.", "I need to draw hands. Yours will do.", "The light at the back table is perfect today. Get here before it changes.", "You're late. I didn't tell you to come, but you're late.", "Come and look at something. Don't ask what.", "I have a question about your school's bread. It can't wait."],
+    ok: ["Good. Don't dawdle.", "Obviously.", "Back table. I've saved you a chair. Don't make it a thing."],
+    no: ["Unacceptable. ...Fine.", "Your loss. It was going to be a very good drawing.", "Fine. I'll draw the old man instead. He holds still."]
+  },
+  hangouts: [
+    [
+      { n: "Rohan had decided, sometime that morning, that he couldn't draw hands. This was a lie. He could draw hands better than anyone alive. He'd simply decided he couldn't draw her hands, specifically, which meant she had to sit at the back table of Bookworms with both of them flat on the wood while he glared at them." },
+      { s: 'rohan', t: "Don't move. Your knuckles have a story. I want it." },
+      { choose: [
+        { t: "What story do my knuckles have?", notes: 3, then: [
+          { s: 'rohan', t: "You hold your pen too tight. There's a callus here, from writing. And you bite this nail when you think nobody's looking." },
+          { s: 'rohan', t: "...See? Story." },
+          { n: "He was right. She didn't tell him so. He could tell anyway, and was insufferable about it for the rest of the afternoon." }
+        ] },
+        { t: "(Hold perfectly still.)", notes: 2, then: [
+          { n: "She held perfectly still for forty minutes. Her nose itched for thirty-eight of them. He drew fourteen hands and threw away eleven." },
+          { s: 'rohan', t: "Adequate. You're a decent model. Don't let it go to your head." }
+        ] },
+        { t: "(Wiggle your fingers.)", notes: 1, then: [{ s: 'rohan', t: "Wonderful. Now I'm drawing an octopus." }] }
+      ] },
+      { n: "When she finally got up her hands had gone stiff, and the old woman at the counter brought them both tea without being asked. Rohan said thank you to her, which he never said to anyone, and Solar decided not to point it out. He'd have stopped." }
+    ],
+    [
+      { n: "The old man who ran Bookworms was asleep at the counter again, glasses pushed up on his head, mouth slightly open, a paperback face-down on his chest. Rohan was drawing him with enormous, focused tenderness, the way some people lit candles." },
+      { s: 'rohan', t: "He's perfect. He's held exactly that position for nine minutes. Do you know how rare that is? Professional models can't do that." },
+      { n: "The old man woke up. He blinked at them. Then, very slowly, he held out his hand for the sketchbook." },
+      { choose: [
+        { t: "(Nudge Rohan to show him.)", notes: 3, then: [
+          { n: "Rohan hesitated, which she had never once seen him do, and then handed it over. The old man looked at himself for a long time, the soft line of his jaw, the book rising and falling on his chest, the window light across the counter." },
+          { n: "Then he laughed, delighted, and called his wife over, and the two of them stood at the back table looking at it together, and Rohan sat very straight in his chair while his ears went slowly pink." }
+        ] },
+        { t: "(Wait and see what Rohan does.)", notes: 2, then: [{ n: "Rohan tore the page out neatly along the edge and handed it over without a word. The old man folded it into his paperback like a bookmark and went back to sleep." }] },
+        { t: "He's going to be mad you drew him sleeping.", notes: 1, then: [
+          { s: 'rohan', t: "He's going to be honored. There's a difference." },
+          { n: "He was honored. He asked for a copy." }
+        ] }
+      ] },
+      { n: "On the way out, Solar saw that the drawing had been pinned up behind the register. Rohan saw it too. He walked past it three times before he left." }
+    ],
+    [
+      { n: "There was a stack of manga on the back table that Rohan had pulled from the shelves himself, popular ones, shiny covers, the kind with anime adaptations, and he was going through them one by one with a red pencil, which nobody had given him permission to do." },
+      { s: 'rohan', t: "This panel. Look at it. He's throwing a punch and his shoulder isn't even engaged. Has this artist ever been punched?" },
+      { choose: [
+        { t: "Have you ever been punched?", notes: 3, then: [
+          { s: 'rohan', t: "Yes. Several times. For research." },
+          { s: 'rohan', t: "...Not all of it was for research." }
+        ] },
+        { t: "I like that one, actually.", notes: 2, then: [
+          { s: 'rohan', t: "...Why?" },
+          { n: "He asked it like he really wanted to know. She told him. He listened to all of it, said she was wrong, and then quietly put that volume back on the shelf without a single red mark in it." }
+        ] },
+        { t: "(Read over his shoulder.)", notes: 1, then: [{ s: 'rohan', t: "You're breathing on my margin." }] }
+      ] },
+      { n: "The old woman came over eventually and confiscated the red pencil. Rohan surrendered it without a word, the way a cat gives up a mouse it was going to drop anyway, and took a blue one out of his jacket." }
+    ],
+    [
+      { n: "Koichi had brought snacks, a whole bag of them, rice crackers and chocolate and a carton of strawberry milk, and was trying to set them down on the back table. Rohan was trying to stop him with his entire body." },
+      { s: 'rohan', t: "Not near the paper. Koichi. Not near the paper." },
+      { s: 'koichi', t: "Rohan, there's nowhere that isn't near the paper! You covered the whole table!" },
+      { choose: [
+        { t: "Rohan, eat a cracker. Think of it as research.", notes: 3, then: [
+          { s: 'rohan', t: '...' },
+          { s: 'rohan', t: "...Fine. For research." },
+          { n: "He ate the cracker holding it at arm's length from the drawing, leaning sideways in his chair like a man eating over a bomb. Koichi looked at Solar like she'd performed a miracle." }
+        ] },
+        { t: "(Hold the snacks on your lap.)", notes: 2, then: [
+          { s: 'koichi', t: "Solar! You're a genius!" },
+          { s: 'rohan', t: "She's a coat rack with opinions. Fine. Hand me a cracker." }
+        ] },
+        { t: "Koichi, let's eat outside.", notes: 1, then: [
+          { s: 'rohan', t: "Fine. Leave. See if I care." },
+          { n: "He cared. Five minutes later he came out onto the steps with his sketchbook and sat one step above them, drawing the crackers." }
+        ] }
+      ] },
+      { n: "While Rohan was in the bathroom, Koichi told her he'd never let anyone eat at that table before, not once, not even him. Then Rohan came back, and Koichi went very innocent, and Solar went very innocent, and Rohan looked between the two of them with deep suspicion and didn't ask." }
+    ],
+    [
+      { n: "Rohan had a question for her, he announced, before she'd even sat down. A research question. It had been bothering him all morning and he could not draw the next page until it was answered." },
+      { s: 'rohan', t: "The bread they sell at your school. The yakisoba one. What does it actually taste like? Not 'good.' I'll leave if you say 'good.'" },
+      { choose: [
+        { t: "(Describe it in exact, loving detail.)", notes: 3, then: [
+          { n: "She told him about the soft cheap roll and the noodles that were always a little cold, the pickled ginger, the mayonnaise you could never see but always tasted, the way the sauce soaked through the bottom if you saved it until fifth period. He wrote it all down without once looking up." },
+          { s: 'rohan', t: "...That's very good. That's very, very good. You'd make a decent writer." }
+        ] },
+        { t: "Carbs inside carbs.", notes: 2, then: [{ s: 'rohan', t: "Hm. Crude. Accurate. I'll take it." }] },
+        { t: "Good.", notes: 1, then: [
+          { s: 'rohan', t: '...' },
+          { n: "He did not leave. But he looked at her for a long time like she'd personally burned down a library." }
+        ] }
+      ] },
+      { n: "A week later he showed her a single panel in his sketchbook. A girl on a school rooftop, eating yakisoba bread, sauce on her thumb. It was the most accurate drawing of lunch she had ever seen." }
+    ]
+  ],
   romance: true,
   cast: { koichi: 'Koichi', josuke: 'Josuke', jotaro: 'Jotaro', kuromi: 'Kuromi' },
   threads: { morioh: { name: 'morioh (do not add rohan)', members: ['rohan', 'koichi', 'josuke'] } },
@@ -46,6 +139,56 @@ FemcSocial.define({
     ], reply: [
       { t: 'Rohan cheated.', then: [{ from: 'josuke', t: 'THANK U' }, { from: 'rohan', t: 'I will remember this.' }] },
       { t: 'Josuke, your hair looked great today.', then: [{ from: 'josuke', t: '...ok im not even mad anymore' }, { from: 'rohan', t: 'Coward\'s move. Well played.' }] }
+    ] },
+    { id: 'mor-5long', thread: 'morioh', rank: 5, before: 8, days: 2, rename: 'morioh (rohan got added anyway)', msgs: [
+      { from: 'koichi', t: 'um. josuke. you are not going to believe this' },
+      { from: 'josuke', t: 'is rohan dead' },
+      { from: 'rohan', t: "I'm in this chat, Josuke." },
+      { from: 'josuke', t: 'damn' },
+      { from: 'koichi', t: 'rohan showed solar a chapter. an UNFINISHED one' },
+      { from: 'koichi', t: 'he doesnt show ANYONE unfinished pages. not even his editor' },
+      { from: 'josuke', t: 'no way' },
+      { from: 'josuke', t: 'solar did he threaten u' },
+      { ask: [
+        { t: 'He made me say something about it. That was the threat.', notes: 3, then: [
+          { from: 'rohan', t: "And you said something worth hearing. Don't ruin it." },
+          { from: 'koichi', t: 'hes been in a good mood for two days. its scary' }
+        ] },
+        { t: 'It was really good, Josuke.', notes: 2, then: [{ from: 'josuke', t: 'ugh. i know. thats the worst part about him' }, { from: 'rohan', t: 'Saving that.' }] },
+        { t: 'Only a little.', notes: 1, then: [{ from: 'rohan', t: 'I was extremely polite.' }, { from: 'koichi', t: 'he was not' }] }
+      ] },
+      { from: 'josuke', t: 'wait so ur IN pink dark boy now' },
+      { from: 'josuke', t: 'do u get a stand' },
+      { from: 'rohan', t: "She has something better than a Stand. You wouldn't understand. It requires reading." },
+      { from: 'josuke', t: 'i can READ rohan' },
+      { from: 'rohan', t: 'Name one book.' },
+      { from: 'josuke', t: '...' },
+      { from: 'koichi', t: 'josuke has read every volume of pink dark boy. he just doesnt want to say it' },
+      { from: 'josuke', t: 'KOICHI' },
+      { ask: [
+        { t: 'Josuke, which volume is your favorite?', notes: 3, then: [
+          { from: 'josuke', t: '...' },
+          { from: 'josuke', t: 'the one with the train' },
+          { from: 'rohan', t: 'Correct answer.' },
+          { from: 'rohan', t: "I hate that it's correct." }
+        ] },
+        { t: 'Leave him alone, Koichi. Everybody has secrets.', notes: 1, then: [{ from: 'josuke', t: 'THANK u' }, { from: 'rohan', t: 'Not from me they don\'t.' }] }
+      ] },
+      { sys: 'josuke renamed the group "morioh (rohan got added anyway)"' },
+      { from: 'rohan', t: 'Change it back.' },
+      { from: 'josuke', t: 'no' },
+      { from: 'koichi', t: 'i kind of like it' },
+      { ask: [
+        { t: 'Rohan, you could just leave the chat.', notes: 3, then: [
+          { from: 'rohan', t: 'And let the three of you talk about me unsupervised? No.' },
+          { from: 'josuke', t: 'he LIKES us' },
+          { from: 'rohan', t: 'I like material. You are material. Barely.' }
+        ] },
+        { t: 'I like it too.', notes: 2, then: [{ from: 'rohan', t: 'Betrayed by my own reference model.' }] }
+      ] },
+      { from: 'koichi', t: 'dice on the steps saturday?' },
+      { from: 'josuke', t: 'only if rohan doesnt get creative' },
+      { from: 'rohan', t: 'No promises.' }
     ] },
     { id: 'rohan-6a', rank: 6, days: 1, slot: 1, msgs: [
       { from: 'rohan', t: 'Jotaro said you answered him the way an adult would.' },

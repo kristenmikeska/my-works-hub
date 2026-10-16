@@ -5,9 +5,86 @@ FemcSocial.define({
   arrives: '8/6',
   home: { place: 'Paulownia Mall · Club Escapade', slot: 1, days: [3, 5, 6], hint: 'Evenings on Wednesdays, Fridays and Saturdays, at Club Escapade.' },
   approach: "A woman with dyed hair and a toolkit is half inside the club's sound system, swearing at it under her breath.",
-  invite: { ask: ["hey. you free? could use a hand", "wanna hang? got somethin cool to show you", "come by? i'm bored outta my skull"], ok: "nice. see ya in a bit", no: "no prob. another time" },
+  invite: {
+    ask: ["hey. you free? could use a hand", "wanna hang? got somethin cool to show you", "come by? i'm bored outta my skull", "escapade's dead tonight. come keep me company?", "jukebox is actin up again. wanna watch me yell at it", "need a second pair of hands. steady ones", "choom. u free? its a preem night for doin nothin", "got two drinks n nobody for the second one. its juice. u in?"],
+    ok: ["nice. see ya in a bit", "preem. i'll be by the jukebox", "hell yeah. door's open. kinda"],
+    no: ["no prob. another time", "all good choom. rain check", "np. i'll bug u tomorrow then"]
+  },
+  hangouts: [
+    [
+      { n: "Club Escapade on a slow night, half the tables empty, the bass turned down to something you only felt in your knees. Judy was up a ladder behind the DJ booth with a screwdriver in her teeth, and the strobe over the dance floor was blinking about half a second behind the music, which was apparently a crime." },
+      { s: 'judy', f: 'serious', t: "Choom. Get on the floor. Tell me when it hits on the beat. Can't see it from up here." },
+      { choose: [
+        { t: "(Dance, badly, for science.)", notes: 3, then: [
+          { n: "Solar danced. It was not good dancing. Two salarymen at the bar applauded anyway. Up on the ladder, Judy laughed so hard she had to grab the rail, and the screwdriver fell out of her mouth." },
+          { s: 'judy', f: 'happy', t: "Okay. Okay, that's on the beat. Or you are. Can't tell. Keep going." }
+        ] },
+        { t: "Now. It's on the beat now.", notes: 2, then: [{ s: 'judy', f: 'happy', t: "Preem. Locking it in." }] },
+        { t: "My eyes hurt.", notes: 1, then: [{ s: 'judy', f: 'neutral', t: "Yeah, that's strobes. That's kinda the whole point of 'em." }] }
+      ] },
+      { n: "When she climbed down, the light pulsed in perfect time over an empty floor, and she stood under it with her arms crossed and watched it for a full minute, satisfied, the way other people watched sunsets." }
+    ],
+    [
+      { n: "Judy had bought a phone from a pawn shop on the strip, a scratched silver flip phone a few years old, and she'd opened it up on the bar like a frog in biology class, its tiny guts laid out on a napkin." },
+      { s: 'judy', f: 'surprised', t: "There's nothing in here. Like, nothing. Where's the rest of it? How does this thing even know where you are?" },
+      { choose: [
+        { t: "Can you make it better?", notes: 3, then: [
+          { s: 'judy', f: 'happy', t: "Can I. Choom. Gimme a week and this thing'll make toast." },
+          { n: "She started immediately, rewiring something with a pair of tweezers and a concentration so total that the bartender set a glass of water by her elbow and she drank the whole thing without noticing it was there." }
+        ] },
+        { t: "It doesn't. That's kind of nice.", notes: 2, then: [{ s: 'judy', f: 'neutral', t: "...Huh. Back home everything knows where you are. Never thought of not bein' findable as a feature." }] },
+        { t: "That's a pretty new phone, actually.", notes: 1, then: [{ s: 'judy', f: 'surprised', t: "This is NEW? Oh, you poor things." }] }
+      ] },
+      { n: "By closing time she'd put it back together, and when she flipped it open it played the first three seconds of one of her twelve jukebox songs, tinny and furious, and then crashed. She called it a win." }
+    ],
+    [
+      { n: "Late, the club winding down, and Judy was sitting on the edge of the stage with her boots swinging and a glass of something orange, watching the last few dancers the way she watched everything, like she was framing a shot." },
+      { s: 'judy', f: 'neutral', t: "Occupational hazard. Every time something's good, I think, I could record that. Cut the boring bits. Keep it forever." },
+      { s: 'judy', f: 'neutral', t: "So. You. One moment you could step back into whenever you want. What's the one?" },
+      { choose: [
+        { t: "Ramen on a rainy night. Hot bowl, cold hands.", notes: 3, then: [
+          { s: 'judy', f: 'happy', t: "Ohh. Yeah. That's a good one. That's sensory. That's real. You'd make a decent editor." },
+          { n: "She closed her eyes for a second like she was trying it on. Then she opened them and announced that she was starving now, and that it was Solar's fault." }
+        ] },
+        { t: "I'd rather not keep it. I'd rather it just happen.", notes: 2, then: [{ s: 'judy', f: 'neutral', t: "...Huh. A purist. Can't argue with that. Some stuff's better raw." }] },
+        { t: "Junpei falling off the couch last week.", notes: 2, then: [{ s: 'judy', f: 'happy', t: "Ha! Okay, that's a comedy BD. I'd watch it. I'd watch it twice." }] }
+      ] },
+      { n: "The jukebox rolled over to one of her songs, and she set her glass down and tapped the beat out on the edge of the stage and didn't say anything else for a while, which, with Judy, meant she was having a good time." }
+    ],
+    [
+      { n: "Judy had never had a Japanese convenience-store snack, which Solar found out by accident and could not, in good conscience, leave alone. She came back from the konbini with a plastic bag full of them and tipped it out across the bar like a heist haul." },
+      { s: 'judy', f: 'happy', t: "Okay. Okay. Walk me through it. What's first?" },
+      { choose: [
+        { t: "(Hand her a melon pan.)", notes: 3, then: [
+          { s: 'judy', f: 'surprised', t: "...Where's the melon? There's no melon. Why's it so good if there's no melon?" },
+          { n: "She ate it in five bites and then looked at the empty wrapper with deep suspicion, like it had lied to her and she respected it for that." }
+        ] },
+        { t: "(Hand her the wasabi peas.)", notes: 2, then: [
+          { s: 'judy', f: 'surprised', t: "Oh, that's... oh, that's in my nose. That's IN my NOSE." },
+          { s: 'judy', f: 'happy', t: "...Gimme another one." }
+        ] },
+        { t: "(Hand her a rice ball, wrapper and all.)", notes: 1, then: [{ s: 'judy', f: 'serious', t: "How do I open this? There's numbers on it. Why are there numbers. Solar. SOLAR." }] }
+      ] },
+      { n: "By the end of the night there was a ranking on a napkin in her messy capitals, wasabi peas at the top, the rice ball at the bottom with a note that said GOOD. HOSTILE PACKAGING. She folded it up and put it in the chest pocket of her overalls like a schematic." }
+    ],
+    [
+      { n: "A Friday, the club packed, too loud to talk unless you leaned in. Judy had found the one quiet spot, a booth by the fire exit where the speakers didn't reach, and she was people-watching with the focus of someone reading a circuit diagram." },
+      { s: 'judy', f: 'neutral', t: "Game. Pick somebody. Gimme their whole story. Editor's rules: no boring bits." },
+      { n: "She nodded at a salaryman alone at the end of the bar, tie loosened, nursing a beer like it was the last one in the world." },
+      { choose: [
+        { t: "Retired assassin. That's his first beer in thirty years.", notes: 3, then: [
+          { s: 'judy', f: 'happy', t: "YES. And the bartender's his old handler. Look at 'em. They haven't made eye contact once. That's on purpose." },
+          { n: "It went on for an hour. By the end, half the club had secret identities, the DJ was a defector from a rival club, and the salaryman was still at the bar, entirely unaware that he was the hero of a three-act thriller." }
+        ] },
+        { t: "He just got dumped. He's working up to calling her.", notes: 2, then: [{ s: 'judy', f: 'neutral', t: "Oof. Yeah. Look at him check that phone. You're cold, choom. Accurate. But cold." }] },
+        { t: "He's just tired.", notes: 1, then: [{ s: 'judy', f: 'neutral', t: "Boo. Too real. That's a documentary. Nobody watches documentaries." }] }
+      ] },
+      { n: "When they finally left, Judy saluted the salaryman on the way past, two fingers off her brow, very solemn. He looked deeply confused, and saluted back." }
+    ]
+  ],
   romance: true,
   cast: { mitsuru: 'Mitsuru', evelyn: 'Evelyn', panam: 'Panam' },
+  threads: { nomads: { name: 'nomad net 🤘', members: ['judy', 'panam'] } },
   texts: [
     { id: 'judy-1a', rank: 1, days: 1, slot: 1, msgs: [
       { from: 'judy', t: 'hey choom. its judy' },
@@ -45,6 +122,79 @@ FemcSocial.define({
     ], reply: [
       { t: 'Tell her I said she\'s alright too.', notes: 3, then: [{ from: 'judy', t: 'lol she already faded. ill tell her in my dreams' }] },
       { t: 'She drives terrifyingly.', notes: 2, then: [{ from: 'judy', t: 'thats how u know she likes u. she drives faster' }] }
+    ] },
+    { id: 'nomads-5', thread: 'nomads', rank: 5, before: 8, days: 2, slot: 1, msgs: [
+      { sys: 'Judy added you to "nomad net 🤘"' },
+      { from: 'judy', t: 'ok it WORKS' },
+      { from: 'judy', t: 'rigged a relay off panams car radio. dont ask how. its mostly gum' },
+      { from: 'panam', t: 'Judy. Why is my radio beeping at me.' },
+      { from: 'judy', t: 'its not beeping its TEXTING' },
+      { from: 'panam', t: 'It beeps every time while I drive.' },
+      { from: 'judy', t: 'so stop driving' },
+      { from: 'panam', t: 'No.' },
+      { from: 'panam', t: 'Is the girl from the junkyard in here.' },
+      { ask: [
+        { t: "Hi, Panam. How's the axle?", notes: 3, then: [
+          { from: 'panam', t: 'Holding. Because you tightened the bolt Judy forgot.' },
+          { from: 'judy', t: 'i did NOT forget it' },
+          { from: 'panam', t: 'You forgot it.' }
+        ] },
+        { t: "I'm here. My hands still hurt from that drive.", notes: 2, then: [
+          { from: 'panam', t: 'That was me going slow.' },
+          { from: 'judy', t: 'she was NOT goin slow' },
+          { from: 'judy', t: 'i saw god on the second curve' }
+        ] },
+        { t: 'Hi. Please only text while parked.', notes: 1, then: [
+          { from: 'panam', t: 'I always text while parked.' },
+          { from: 'panam', t: 'Except now.' }
+        ] }
+      ] },
+      { from: 'panam', t: 'Good. I have a job for you.' },
+      { from: 'panam', t: 'Report. Is she eating.' },
+      { from: 'judy', t: 'panam' },
+      { from: 'panam', t: 'Is she sleeping.' },
+      { from: 'judy', t: 'PANAM' },
+      { from: 'judy', t: 'im a grown woman. i have a fridge. kinda' },
+      { ask: [
+        { t: 'She ate a whole melon pan yesterday.', notes: 3, then: [
+          { from: 'panam', t: 'What is a melon pan.' },
+          { from: 'judy', t: 'bread. but sweet. and theres no melon in it' },
+          { from: 'panam', t: 'This world is insane.' },
+          { from: 'panam', t: 'Good. Keep feeding her.' }
+        ] },
+        { t: 'She lives on vending machine coffee.', notes: 2, then: [
+          { from: 'panam', t: 'Thought so.' },
+          { from: 'judy', t: 'SNITCH' },
+          { from: 'judy', t: 'u get ONE snitch. that was it' }
+        ] },
+        { t: "I'm not a spy, Panam.", notes: 1, then: [
+          { from: 'panam', t: 'Everyone is a spy. Some are just bad at it.' }
+        ] }
+      ] },
+      { sys: 'Panam renamed the group "aldecaldos (honorary)"' },
+      { from: 'judy', t: 'HONORARY?? we fixed ur AXLE' },
+      { from: 'panam', t: 'That is why you are honorary. Otherwise you would be nothing.' },
+      { from: 'panam', t: 'Solar. Pick a song. My radio plays whatever your phone sends it now. Judy built it wrong.' },
+      { from: 'judy', t: 'i built it PERFECT' },
+      { ask: [
+        { t: 'Something loud and angry.', notes: 3, then: [
+          { from: 'judy', t: 'THATS MY CHOOM. sendin one of my twelve' },
+          { from: 'panam', t: 'Fine.' },
+          { from: 'panam', t: '...This is good. Do not tell her I said it.' },
+          { from: 'judy', t: 'im IN the CHAT' }
+        ] },
+        { t: 'Whatever your people sing around the fire.', notes: 2, then: [
+          { from: 'panam', t: '...' },
+          { from: 'panam', t: 'You remember that.' },
+          { from: 'panam', t: 'Alright. Alright.' }
+        ] },
+        { t: 'Something calm. For the road.', notes: 1, then: [
+          { from: 'panam', t: 'Calm is for people who are not driving.' },
+          { from: 'judy', t: 'lol' }
+        ] }
+      ] },
+      { from: 'panam', t: 'Going dark. Road gets rough here.' },
+      { from: 'judy', t: 'drive safe. or at least drive' }
     ] },
     { id: 'judy-6a', rank: 6, days: 1, slot: 1, msgs: [
       { from: 'judy', t: 'still feel like im underwater' },

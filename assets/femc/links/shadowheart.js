@@ -4,7 +4,87 @@ FemcSocial.define({
   arrives: '8/6',
   home: { place: 'Naganaki Shrine · Night', slot: 1, days: [1, 2, 3, 4, 5], hint: 'Evenings on weekdays, at Naganaki Shrine after Kiriko has gone home.' },
   approach: "Someone is at the shrine after dark: a dark-haired woman with a silver circlet, standing very still, one hand resting on a weapon.",
-  invite: { ask: ["Are you free? The shrine is quiet tonight.", "Come. Bring tea.", "I could use the company. Don't make it a thing."], ok: "Good. Don't be late, Sunshine.", no: "Fine. Another night." },
+  invite: {
+    ask: ["Are you free? The shrine is quiet tonight.", "Come. Bring tea.", "I could use the company. Don't make it a thing.",
+      "The lanterns are lit. Come up, if you like.",
+      "The dog is here. He's asking for you. I'm only passing it on.",
+      "Kiriko left far too many rice balls. Help me with them.",
+      "It's quiet. Too quiet. Come and ruin it.",
+      "Are you busy? Don't answer that. Come up."],
+    ok: ["Good. Don't be late, Sunshine.", "Good. Mind the steps in the dark.", "Fine. I'll find the good cups."],
+    no: ["Fine. Another night.", "Hm. The dog will be disappointed. Not me. The dog.", "Suit yourself."]
+  },
+  hangouts: [
+    [
+      { n: "Kiriko had left the fortune box unlocked again, which Shadowheart claimed to disapprove of, and when Solar came up the steps in the dark the priestess was standing in front of it with a little rolled slip of paper, reading it by lantern light with deep suspicion." },
+      { s: 'shadowheart', f: 'serious', t: "'Great misfortune. Avoid travel. Your lost item will not be found.' It's very rude, your paper." },
+      { s: 'shadowheart', f: 'neutral', t: "Kiriko says you tie the bad ones to that rack and leave them for the gods to deal with. Which gods? Nobody can tell me which gods." },
+      { choose: [
+        { t: "Tie it up. Let them sort it out.", notes: 3, then: [
+          { s: 'shadowheart', f: 'happy', t: "...Fine. Let them. They've handed me worse." },
+          { n: "She tied it to the rack with a knot that was much too complicated and much too tight, the knot of someone who had been taught to secure things properly or else." }
+        ] },
+        { t: "(Draw one too.)", notes: 2, then: [{ n: "Solar shook the box and drew a small blessing, which was, Shadowheart pointed out, also ominous, because why only small." }] },
+        { t: "Fortunes aren't real.", notes: 1, then: [{ s: 'shadowheart', f: 'serious', t: "I've met gods. I'm not taking chances with paper." }] }
+      ] },
+      { n: "Koromaru came over and sniffed the rack, approved of it, and lay down underneath it like a guard." }
+    ],
+    [
+      { n: "Solar had brought two cans of hot barley tea from the vending machine at the bottom of the steps and, as an afterthought, two convenience-store puddings, and Shadowheart had ignored the tea entirely and was holding a pudding up to the lantern, studying it like it might be cursed." },
+      { s: 'shadowheart', f: 'serious', t: "It's shaking. Why is it shaking." },
+      { choose: [
+        { t: "(Show her the tab that flips it out onto the lid.)", notes: 3, then: [
+          { n: "Solar showed her the trick: the little plastic tab, the soft pop, the pudding sliding out whole onto the lid with its cap of caramel on top. Shadowheart stared at it. Then she did the second one herself, very carefully, with her tongue between her teeth." },
+          { s: 'shadowheart', f: 'happy', t: "...That's the best thing in your world. I'm sorry. It is." }
+        ] },
+        { t: "It's supposed to do that.", notes: 2, then: [{ s: 'shadowheart', f: 'serious', t: "Nothing is supposed to do that." }] },
+        { t: "It's dessert. Just try it.", notes: 1, then: [{ n: "She tried it. Her face did nothing at all. Then she finished it in four bites and asked, without looking at Solar, whether there was another one." }] }
+      ] },
+      { n: "She kept the empty cup. Solar found it a few nights later on the shrine porch with a candle stub in it, which was either very resourceful or the start of a new and very small religion." }
+    ],
+    [
+      { n: "Koromaru had found a stick. It was, by any measure, too much stick, half a branch off the old camphor tree, and he was dragging it across the courtyard toward the porch with the solemn determination of a dog who had decided that Shadowheart was going to throw it." },
+      { s: 'shadowheart', f: 'serious', t: "No. Absolutely not. I'm not a stick-throwing sort of person." },
+      { n: "Koromaru set the stick down at her feet and sat, and looked at her. The silence went on for a long time." },
+      { choose: [
+        { t: "(Wait.)", notes: 3, then: [
+          { n: "Solar said nothing. She sat on the step and waited, and so did the dog, and it took about forty seconds before Shadowheart sighed like a woman walking to her own execution and threw the stick." },
+          { s: 'shadowheart', f: 'happy', t: "...Once. I'm throwing it once." }
+        ] },
+        { t: "He's not going to give up.", notes: 2, then: [
+          { s: 'shadowheart', f: 'neutral', t: "Neither am I. I was trained by people far more stubborn than a dog." },
+          { n: "She threw it eleven seconds later." }
+        ] },
+        { t: "I'll throw it.", notes: 1, then: [{ n: "Solar threw it. Koromaru watched it sail across the courtyard, then turned back to Shadowheart and went on staring, because apparently that was not the point." }] }
+      ] },
+      { n: "She threw it twenty-three more times. Solar counted. Shadowheart maintained afterward that it had been five." }
+    ],
+    [
+      { n: "The sky over Iwatodai was a dull orange most nights, the city's light thrown up against the clouds, and Shadowheart had been lying flat on her back on the shrine porch for twenty minutes trying to find something in it." },
+      { s: 'shadowheart', f: 'neutral', t: "Four. I've counted four stars. Where I come from there are so many you can read by them." },
+      { s: 'shadowheart', f: 'serious', t: "Your city has eaten its sky. I'd be furious about it, if I were you." },
+      { choose: [
+        { t: "(Lie down and count with her.)", notes: 3, then: [{ n: "Solar lay down on the boards beside her, a careful foot of space between them, and they counted together. Solar found a fifth. Shadowheart said it was a plane. It was a plane." }] },
+        { t: "One of those is a plane.", notes: 2, then: [{ s: 'shadowheart', f: 'serious', t: "...Three, then. Your city ate its sky and put machines in it instead." }] },
+        { t: "You can see more from the beach.", notes: 1, then: [{ s: 'shadowheart', f: 'neutral', t: "Then why are we here? ...Don't answer that. The dog is here." }] }
+      ] },
+      { n: "They got to six before the clouds came over. Shadowheart said six was respectable, for a city that didn't deserve any." }
+    ],
+    [
+      { n: "Somebody came up the steps at half past nine, a salaryman with his tie pulled loose, and Shadowheart moved so fast Solar didn't see her do it, from the porch to the deep shadow behind the offering box, silent as a cat going under a car." },
+      { n: "The man didn't see either of them. He threw a coin in the box, rang the bell, clapped twice, bowed, and stood with his head down for a long minute, and then went back down the steps a little lighter than he'd come up." },
+      { s: 'shadowheart', f: 'neutral', t: "...That's it? A coin and a clap? No vigil? No reciting the litany until your knees give out?" },
+      { choose: [
+        { t: "That's it. You ask, and you go home.", notes: 3, then: [
+          { s: 'shadowheart', f: 'surprised', t: "...And the gods here don't mind? That you just ask?" },
+          { n: "Solar said she didn't think they minded. Shadowheart looked at the offering box for a long time, the way you'd look at a door someone had left unlocked." }
+        ] },
+        { t: "What did you think he'd do?", notes: 2, then: [{ s: 'shadowheart', f: 'serious', t: "Something that cost him. Faith is supposed to cost you something." }] },
+        { t: "Did you just hide from a salaryman?", notes: 1, then: [{ s: 'shadowheart', f: 'serious', t: "I took cover from an unknown arrival in the dark. It's called training. You'd last a week where I'm from." }] }
+      ] },
+      { n: "She didn't try the bell herself. But when Solar was halfway down the steps that night, she heard it ring once behind her, very softly, like someone testing whether it would bite." }
+    ]
+  ],
   romance: true,
   cast: { astarion: 'Astarion', kiriko: 'Kiriko' },
   threads: { elizabeth: { name: 'Elizabeth', members: ['elizabeth'] } },

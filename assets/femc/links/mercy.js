@@ -5,11 +5,116 @@ FemcSocial.define({
   arrives: '6/8',
   home: { place: 'Tatsumi Memorial Hospital', slot: 0, days: [0, 2, 4], hint: 'Daytime on Tuesdays, Thursdays and Sundays, at Tatsumi Memorial Hospital.' },
   approach: "A woman in a white coat with a halo of blonde hair is doing rounds on a ward she clearly doesn't work on. She smiles at you like she already knows your name.",
-  invite: { ask: ["Are you free? I have a break and far too much coffee.", "Come visit? Doctor's orders. 😊", "Free for a little while? I could use the company."], ok: "Wunderbar! See you soon.", no: "Of course. Rest well." },
+  invite: {
+    ask: [
+      "Are you free? I have a break and far too much coffee.",
+      "Come visit? Doctor's orders. 😊",
+      "Free for a little while? I could use the company.",
+      "I have twenty minutes and a vending machine that owes me money. Come and keep me honest.",
+      "The roof is empty and the sun is out. That is a prescription, Solar.",
+      "Are you nearby? I have been talking to charts all morning. They are poor conversationalists.",
+      "I am taking a break. A real one. I need a witness.",
+      "The cafeteria has pudding today and I cannot be trusted alone with it. Come?"
+    ],
+    ok: ["Wunderbar! See you soon.", "Good. I will save you the chair that does not squeak.", "Wonderful. Bring nothing. Well. Perhaps a pastry. 😊"],
+    no: ["Of course. Rest well.", "Another time, then. Drink some water for me.", "That is all right. I will try to take the break anyway. Try."]
+  },
+  hangouts: [
+    [
+      { n: "The vending machine on the second floor of Tatsumi Memorial had eleven kinds of coffee and Dr. Ziegler had an opinion about every one of them, which she delivered standing in front of it in her white coat at two in the afternoon like she was presenting at a conference." },
+      { s: 'mercy', f: 'happy', t: "The blue can is bitter but honest. The gold can is lying to you about being coffee. The one with the cartoon cow is a dessert, and I respect it as a dessert." },
+      { s: 'mercy', f: 'neutral', t: "Choose. My treat. I have a great many hundred-yen coins and nothing else to spend them on." },
+      { choose: [
+        { t: "The cow one. I want dessert.", notes: 3, then: [
+          { s: 'mercy', f: 'happy', t: "A woman who knows what she wants. Wunderbar." },
+          { n: "She bought two. She finished hers in about four seconds and then looked at the empty can with a small, private grief." }
+        ] },
+        { t: "Whatever you're having.", notes: 2, then: [{ s: 'mercy', f: 'neutral', t: "I am having my fifth blue can. I would not recommend following my example in anything." }] },
+        { t: "Water. You should have one too.", notes: 2, then: [
+          { s: 'mercy', f: 'surprised', t: "...You are very bossy for a visitor." },
+          { n: "She bought two waters anyway, and drank all of hers, watching Solar over the bottle like a doctor who'd been caught by a stricter one." }
+        ] }
+      ] },
+      { n: "They stood by the machine until her pager went, the hum of the refrigeration filling the quiet, the hallway smelling of floor wax and canned coffee. It was a strange place to spend a break. It was the only kind of break she seemed to know how to take." }
+    ],
+    [
+      { n: "The staff lounge was empty except for the broken air conditioner, a fridge humming over somebody's labeled yogurt, and Dr. Ziegler, asleep sitting up at the table with a pen still in her hand and a chart open under her elbow, her head tipped back against the wall at an angle that would hurt later." },
+      { n: "She had clearly sat down for one minute. The clock on the wall suggested it had been forty." },
+      { choose: [
+        { t: "(Take the pen out of her hand and let her sleep.)", notes: 3, then: [
+          { n: "Solar eased the pen free and capped it and sat across from her doing nothing, which was harder than it sounded, for twenty minutes, until the doctor woke with a small start and looked at the pen in Solar's hand like it was evidence." },
+          { s: 'mercy', f: 'flustered', t: "...I was resting my eyes." },
+          { s: 'mercy', f: 'happy', t: "Thank you. Don't tell anyone. Half of them already think I'm a ghost." }
+        ] },
+        { t: "Doctor. Your neck is going to hate you.", notes: 2, then: [
+          { s: 'mercy', f: 'surprised', t: "Hm? I'm awake. I was reviewing." },
+          { s: 'mercy', f: 'neutral', t: "...With my eyes closed. Which is a technique." }
+        ] },
+        { t: "(Sneak a look at the chart.)", notes: 1, then: [
+          { n: "It was in German. Solar understood exactly one word, and the word was Kaffee, scribbled in the margin and underlined twice." },
+          { s: 'mercy', f: 'flustered', t: "That is confidential. Also, it is a reminder." }
+        ] }
+      ] },
+      { n: "She went back to the ward with her hair a little flat on one side. Nobody told her. Solar decided that was a kindness." }
+    ],
+    [
+      { n: "The hospital roof in the afternoon was all wind and laundry, rows of white sheets snapping on lines the staff weren't technically supposed to use, and Dr. Ziegler sat on an upturned crate between them with a pocket dictionary that was already losing its spine." },
+      { s: 'mercy', f: 'neutral', t: "I am learning. Slowly. The nurses are very patient, and I have only apologized to one man for being a tomato." },
+      { s: 'mercy', f: 'happy', t: "Teach me something useful. Not medical. Something people actually say." },
+      { choose: [
+        { t: "Otsukaresama. It means you worked hard.", notes: 3, then: [
+          { s: 'mercy', f: 'happy', t: "O-tsu-ka-re-sa-ma. ...That is a beautiful thing to have a word for." },
+          { s: 'mercy', f: 'neutral', t: "We should all be told that more often. I will say it to the night shift." }
+        ] },
+        { t: "Mendokusai. It's too much trouble.", notes: 2, then: [{ s: 'mercy', f: 'happy', t: "Ha! I know a dozen soldiers who would say that about everything. I will save it for paperwork." }] },
+        { t: "Itadakimasu. You say it before you eat.", notes: 2, then: [{ s: 'mercy', f: 'flustered', t: "Before I eat. Yes. When I remember to." }] }
+      ] },
+      { n: "She wrote it on the inside cover of the dictionary in careful block letters, under a list of other words that ran down the page in different pens, and Solar realized she'd been collecting them for a while, one patient and one nurse at a time." }
+    ],
+    [
+      { n: "There was a girl of about six in the children's ward who had come in with a broken arm and decided, at some point during her stay, that Dr. Ziegler was her personal physician, and also her rabbit's." },
+      { n: "The rabbit was grey and one-eared and had seen things. It lay on the bed with a tongue depressor taped to its leg, and the doctor was examining it with a perfectly straight face." },
+      { s: 'mercy', f: 'serious', t: "Hm. Hm. A fracture, I think. Nurse Solar, what do you recommend?" },
+      { choose: [
+        { t: "Bed rest and a lot of hugs.", notes: 3, then: [
+          { s: 'mercy', f: 'happy', t: "Exactly my diagnosis. You have a gift." },
+          { n: "The girl hugged the rabbit with the grim dedication of someone following doctor's orders. Dr. Ziegler wrote it out on a real prescription pad and tore off the page, and the girl held it in both hands like a medal." }
+        ] },
+        { t: "Surgery. Immediately.", notes: 1, then: [
+          { n: "The girl's face crumpled. The doctor shot Solar a look of pure professional betrayal." },
+          { s: 'mercy', f: 'neutral', t: "...A second opinion says no surgery. Only rest. Nurse Solar is very new." }
+        ] },
+        { t: "(Tape a second tongue depressor to the other leg, for balance.)", notes: 2, then: [
+          { s: 'mercy', f: 'happy', t: "Bilateral support. Very thorough." },
+          { n: "The girl inspected the work and nodded, satisfied, like a foreman." }
+        ] }
+      ] },
+      { n: "On the way out the doctor was smiling to herself, the tired lines of her face gone briefly soft. Solar didn't say anything about it. Some things you let a person keep." }
+    ],
+    [
+      { n: "Dr. Ziegler had a way of asking questions on her break that made it very clear she was not, in any meaningful sense, on her break. They were on a bench in the hospital courtyard in the thin afternoon light, and she had already asked how Solar was sleeping, and was now looking at her with an expression Solar recognized from every nurse she'd ever met." },
+      { s: 'mercy', f: 'serious', t: "And when did you last drink a glass of water? An honest answer. I will know." },
+      { choose: [
+        { t: "...Yesterday. I think.", notes: 3, then: [
+          { s: 'mercy', f: 'serious', t: "Thank you for being honest. That is terrible." },
+          { n: "She produced a bottle of water from her coat pocket like a magician, put it in Solar's hand, and watched her drink half of it before she looked satisfied." }
+        ] },
+        { t: "When did YOU last drink a glass of water?", notes: 3, then: [
+          { s: 'mercy', f: 'flustered', t: "That is not how this works. I am the doctor." },
+          { n: "A long pause. She took the bottle back out of her pocket and drank from it herself, pointedly, without looking at Solar." }
+        ] },
+        { t: "This morning. Lots. Gallons.", notes: 1, then: [{ s: 'mercy', f: 'neutral', t: "Gallons. Of course. And I am the Queen of Switzerland." }] }
+      ] },
+      { n: "A sparrow landed on the end of the bench, assessed them both, and left. The doctor watched it go with a face that said she'd have checked it for dehydration too, given half a chance." }
+    ]
+  ],
   romance: true,
   cast: { genji: 'Genji', ana: 'Ana', kiriko: 'Kiriko' },
   stamps: {},
-  threads: { elizabeth: { name: 'Elizabeth', members: ['elizabeth'] } },
+  threads: {
+    elizabeth: { name: 'Elizabeth', members: ['elizabeth'] },
+    watchpoint: { name: 'the watchpoint (unofficial)', members: ['mercy', 'kiriko', 'genji'] }
+  },
   texts: [
     { id: 'eliz-6-8', thread: 'elizabeth', rank: 0, before: 99, days: 0, date: '6/8', slot: 1, msgs: [
       { from: 'elizabeth', t: 'The moon is full again tonight, Solar.' },
@@ -74,6 +179,138 @@ FemcSocial.define({
     ], reply: [
       { t: 'Doctor\'s orders.', notes: 3, then: [{ from: 'mercy', t: 'Exactly. You are a very good patient.' }] },
       { t: 'You too, Angela.', notes: 3, then: [{ from: 'mercy', t: '...Thank you, Solar.' }] }
+    ] },
+    // The watchpoint: Mercy, Kiriko and Genji. Needs Kiriko 6, so Kiriko has met both of them in her own ranks (5 and 6).
+    { id: 'watchpoint-4', thread: 'watchpoint', rank: 4, before: 7, days: 2, slot: 1, unlock: { links: { kiriko: 6 } }, rename: 'the watchpoint (unofficial)', msgs: [
+      { sys: 'Mercy created "Daily Wellness Check-In"' },
+      { from: 'mercy', t: 'Good evening, everyone! 😊' },
+      { from: 'mercy', t: "Since we are all far from home, or in Solar's case far from a sensible bedtime, I thought we could check in once a day." },
+      { from: 'mercy', t: 'Hours slept. Glasses of water. One meal that did not come out of a vending machine.' },
+      { from: 'kiriko', t: 'mercy-sensei it is 11pm' },
+      { from: 'kiriko', t: 'ur still at the hospital arent u' },
+      { from: 'mercy', t: 'That is not relevant to the check-in.' },
+      { from: 'genji', t: 'Good evening, Angela. I am honored to be included.' },
+      { from: 'genji', t: 'I should mention that I no longer have most of the organs on this list.' },
+      { from: 'mercy', t: 'You have a stomach, Genji. I put it there.' },
+      { from: 'kiriko', t: 'ok thats the scariest text ive ever read' },
+      { ask: [
+        { t: '7 hours, 2 glasses, one onigiri.', notes: 3, then: [
+          { from: 'mercy', t: 'Wunderbar! A model patient.' },
+          { from: 'kiriko', t: 'teachers pet 🙄' },
+          { from: 'kiriko', t: 'was it one of MY onigiri' }
+        ] },
+        { t: 'Angela, how many hours did YOU sleep?', notes: 2, then: [
+          { from: 'mercy', t: '...' },
+          { from: 'genji', t: 'The silence is its own answer.' },
+          { from: 'kiriko', t: 'LMAO' }
+        ] },
+        { t: 'Is this mandatory?', notes: 1, then: [
+          { from: 'mercy', t: 'Nothing is mandatory. It is strongly, medically encouraged.' },
+          { from: 'genji', t: 'That means yes.' }
+        ] }
+      ] },
+      { from: 'kiriko', t: 'ok my turn. 9 hours. 0 water. 4 melon pan' },
+      { from: 'mercy', t: 'Kiriko.' },
+      { from: 'kiriko', t: 'melon pan has water in it probably' },
+      { from: 'genji', t: 'Six hours of meditation. I am told that counts double.' },
+      { from: 'mercy', t: 'It does not count at all.' },
+      { from: 'genji', t: 'My master would disagree.' },
+      { from: 'mercy', t: 'Your master is not in this group chat.' },
+      { ask: [
+        { t: 'Meditation counts. I have decided.', notes: 2, then: [
+          { from: 'genji', t: 'Thank you, Solar. Balance is restored.' },
+          { from: 'mercy', t: 'Two of you now. Wonderful.' }
+        ] },
+        { t: 'Genji, where are you right now?', notes: 3, then: [
+          { from: 'genji', t: 'On the roof of the shrine. The signal is better here.' },
+          { from: 'kiriko', t: 'GET OFF MY ROOF' },
+          { from: 'genji', t: 'It is a very peaceful roof.' },
+          { from: 'kiriko', t: 'i KNOW. thats why its MINE' }
+        ] },
+        { t: 'Kiriko, melon pan is not water.', notes: 1, then: [{ from: 'kiriko', t: 'wow. ok. i see whose side ur on' }] }
+      ] },
+      { sys: 'kiriko renamed the group "the watchpoint (unofficial)"' },
+      { from: 'mercy', t: 'Kiriko, why.' },
+      { from: 'kiriko', t: 'bc u two are a whole tiny overwatch now. watching over me. against my will' },
+      { from: 'genji', t: 'It has a certain ring to it.' },
+      { ask: [
+        { t: "I'm keeping it.", notes: 2, then: [
+          { from: 'kiriko', t: 'SOLAR VOTES YES. 2 vs 1' },
+          { from: 'genji', t: 'I abstain. Peacefully.' },
+          { from: 'mercy', t: 'Fine. But the check-ins stay.' }
+        ] },
+        { t: 'So who watches over Angela?', notes: 3, then: [
+          { from: 'genji', t: 'That has always been the question.' },
+          { from: 'kiriko', t: 'us. obviously. thats the whole point of the name' },
+          { from: 'mercy', t: '...I am going home now. Not because you said so.' }
+        ] },
+        { t: '👍', notes: 1, then: [{ from: 'kiriko', t: 'a thumbs up. ok grandma' }] }
+      ] },
+      { from: 'mercy', t: 'Goodnight, all of you. Drink some water. 😊' },
+      { from: 'kiriko', t: 'goodnight sensei. go HOME' }
+    ] },
+    { id: 'watchpoint-7', thread: 'watchpoint', rank: 7, before: 10, days: 3, slot: 1, unlock: { links: { kiriko: 6 } }, rename: 'mandatory picnic (sensei is scary)', msgs: [
+      { from: 'kiriko', t: 'question for the group' },
+      { from: 'kiriko', t: 'why did a little bird tell me solar made mercy-sensei a BENTO' },
+      { from: 'kiriko', t: 'with TAMAGOYAKI' },
+      { from: 'mercy', t: 'Which little bird?' },
+      { from: 'genji', t: 'I am not a bird.' },
+      { from: 'kiriko', t: 'genji told me' },
+      { from: 'genji', t: 'Angela mentioned it. Twice. And I do not lie to foxes.' },
+      { from: 'mercy', t: 'It was an intervention. It was medically necessary.' },
+      { from: 'kiriko', t: 'i ALSO need an intervention. i have eaten rice balls for nine days straight' },
+      { ask: [
+        { t: "I'll make you one too.", notes: 3, then: [
+          { from: 'kiriko', t: 'YES' },
+          { from: 'kiriko', t: 'with the egg. the egg is non negotiable 🦊' },
+          { from: 'mercy', t: 'And vegetables. I will be checking.' }
+        ] },
+        { t: 'Nine days is honestly impressive.', notes: 2, then: [
+          { from: 'kiriko', t: 'thank u. its a lifestyle' },
+          { from: 'mercy', t: 'It is scurvy. Slowly.' }
+        ] },
+        { t: 'Angela needed it more.', notes: 1, then: [
+          { from: 'kiriko', t: 'ok thats fair. she looks like a ghost who works nights' },
+          { from: 'mercy', t: 'I am right here.' }
+        ] }
+      ] },
+      { from: 'genji', t: 'I would also like a bento.' },
+      { from: 'mercy', t: 'Genji, you barely eat.' },
+      { from: 'genji', t: 'I would like to be asked. It is about the gesture.' },
+      { from: 'kiriko', t: 'the cyborg has feelings 😭' },
+      { from: 'mercy', t: "Then it is settled. Sunday. The hospital courtyard. Everyone brings something, and everyone eats it. Doctor's orders." },
+      { sys: 'kiriko renamed the group "mandatory picnic (sensei is scary)"' },
+      { ask: [
+        { t: "I'll bring the tamagoyaki.", notes: 3, then: [
+          { from: 'mercy', t: 'Wunderbar. Bring extra. Genji will pretend he does not want any.' },
+          { from: 'genji', t: 'I will want some. I will say nothing.' }
+        ] },
+        { t: 'What is Kiriko bringing?', notes: 2, then: [
+          { from: 'kiriko', t: 'vibes' },
+          { from: 'kiriko', t: 'and rice balls' },
+          { from: 'mercy', t: 'Kiriko.' },
+          { from: 'kiriko', t: 'FINE. and a fruit' }
+        ] },
+        { t: 'Will Angela actually take a break?', notes: 2, then: [
+          { from: 'genji', t: 'Twenty minutes. I will time her.' },
+          { from: 'mercy', t: 'Forty. I am not a monster.' }
+        ] }
+      ] },
+      { from: 'genji', t: 'If I fade before Sunday, save me a seat under the ginkgo.' },
+      { from: 'mercy', t: 'We will. We always do.' },
+      { from: 'kiriko', t: 'ok this got sad. new rule. no fading before sunday' },
+      { ask: [
+        { t: 'Seconded. No fading.', notes: 3, then: [
+          { from: 'genji', t: 'Two votes. I will do my best.' },
+          { from: 'mercy', t: '😊' }
+        ] },
+        { t: 'Genji, what does the fading feel like?', notes: 2, then: [
+          { from: 'genji', t: 'Like falling asleep in a warm room. Not frightening. Only quiet.' },
+          { from: 'kiriko', t: 'ok that actually helped' }
+        ] },
+        { t: 'Angela, go to bed.', notes: 1, then: [{ from: 'mercy', t: 'It is nine o\'clock.' }, { from: 'kiriko', t: 'solar said what we were all thinking' }] }
+      ] },
+      { from: 'kiriko', t: 'sunday. 12. bring the egg 🦊' }
     ] }
   ],
   ranks: [

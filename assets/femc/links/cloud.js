@@ -5,9 +5,100 @@ FemcSocial.define({
   arrives: '7/7',
   home: { place: 'Iwatodai Station', slot: 0, days: [0, 1, 3, 5], hint: 'Daytime on Sundays, Mondays, Wednesdays and Fridays, around Iwatodai Station.' },
   approach: "A blond guy with a sword the size of a door is standing at the station, staring at the train map like it personally offended him.",
-  invite: { ask: ["You free?", "Got a job. Could use backup.", "...Want to get food."], ok: "Okay.", no: "...Fine." },
+  invite: {
+    ask: ["You free?", "Got a job. Could use backup.", "...Want to get food.", "Station. If you're around.", "Moving a fridge. Need someone to hold the door.", "Lost cat. Could use another pair of eyes.", "Got paid in rice balls. Too many rice balls.", "Taxi stand. Slow day."],
+    ok: ["Okay.", "Good. Taxi stand.", "...See you there."],
+    no: ["...Fine.", "Okay. Another time.", "Understood."]
+  },
+  hangouts: [
+    [
+      { n: "The station kiosk lady had hired Cloud to carry forty crates of bottled tea from the delivery van to her stockroom, and he was doing it the way he did everything, silently, efficiently, two crates at a time, like the tea had asked him for a favor and he'd decided not to make it weird." },
+      { s: 'cloud', f: 'neutral', t: "Twelve left. You can watch." },
+      { choose: [
+        { t: "(Pick up a crate.)", notes: 3, then: [
+          { n: "It was heavier than it looked. Everything near Cloud was. She got it to the stockroom anyway, arms shaking, and set it on top of his stack with all the dignity she had left." },
+          { s: 'cloud', f: 'happy', t: "...Not bad." }
+        ] },
+        { t: "What's she paying you?", notes: 2, then: [
+          { s: 'cloud', f: 'neutral', t: "Tea." },
+          { n: "He said it like it was obvious. In fairness, it was." }
+        ] },
+        { t: "(Sit on the bench and supervise.)", notes: 1, then: [{ s: 'cloud', f: 'serious', t: "You're a terrible foreman." }] }
+      ] },
+      { n: "When the van was empty the kiosk lady pressed two cold bottles into his hands. He gave one to Solar without looking at her, and they drank them on the bench by the ticket gates while the trains came and went, and neither of them said anything, and it was nice." }
+    ],
+    [
+      { n: "Cloud was standing in front of the train map again. He did this when there was no work, she'd noticed, planting himself in front of the great colored tangle of rail lines with his arms crossed, like if he glared at it long enough it would surrender." },
+      { s: 'cloud', f: 'serious', t: "Too many lines. Midgar had one train. It went in a circle." },
+      { s: 'cloud', f: 'neutral', t: "This one goes everywhere. Nobody needs to go everywhere." },
+      { choose: [
+        { t: "(Show him how to read it.)", notes: 3, then: [
+          { n: "She traced it out for him with one finger, the loop line, the transfer to the monorail, the way the colors meant something if you let them. He watched her finger the whole time instead of the map, frowning, very seriously, the way some people listened to a briefing." },
+          { s: 'cloud', f: 'neutral', t: "...Okay. Green to blue. Got it." }
+        ] },
+        { t: "You could just ask someone.", notes: 2, then: [
+          { s: 'cloud', f: 'neutral', t: "I'm asking you." },
+          { n: "Which, she realized a second too late, was the point." }
+        ] },
+        { t: "Where do you want to go?", notes: 2, then: [
+          { s: 'cloud', f: 'neutral', t: '...' },
+          { s: 'cloud', f: 'sad', t: "Nowhere. Just like knowing I could." }
+        ] }
+      ] },
+      { n: "He didn't take a train anywhere. But on the way out he stopped at the ticket machine and bought the cheapest ticket it sold, and put it in his pocket, and didn't explain." }
+    ],
+    [
+      { n: "It rained all afternoon, a gray, sideways, unglamorous rain that turned the taxi stand into a lake and drove every customer Cloud might have had indoors. He stood under the awning anyway. His sword dripped. He didn't seem to notice." },
+      { n: "Solar got two canned coffees from the vending machine and came back and held them both out." },
+      { s: 'cloud', f: 'neutral', t: "...Which one's hot." },
+      { choose: [
+        { t: "Both. I'm not a monster.", notes: 3, then: [
+          { s: 'cloud', f: 'happy', t: "...Good." },
+          { n: "He held the can in both hands for a long time before he opened it, the way people do when they've been cold more often than they've been warm." }
+        ] },
+        { t: "Guess.", notes: 2, then: [{ n: "He took the cold one. He didn't complain. He drank the whole thing standing in the wet wind with the face of a man who had made his choice and would live with it." }] },
+        { t: "(Keep the hot one.)", notes: 1, then: [{ s: 'cloud', f: 'serious', t: "...I see how it is." }] }
+      ] },
+      { n: "The rain didn't stop. They stood under the awning until it got dark, listening to it drum on the roofs of the taxis, and once, out of nowhere, he said he liked the sound, and then looked like he wished he hadn't said anything at all." }
+    ],
+    [
+      { n: "A boy of about six had been staring at Cloud's sword for ten minutes from the bus stop, holding his mother's hand, with the reverence of a pilgrim. When she turned away to check the timetable he let go, walked straight up to the pillar, and pointed." },
+      { n: "\"Is it real,\" the boy said. It wasn't a question. It was a test." },
+      { s: 'cloud', f: 'neutral', t: "...Yes." },
+      { choose: [
+        { t: "He uses it to help people.", notes: 3, then: [
+          { s: 'cloud', f: 'flustered', t: "...Mostly to move furniture." },
+          { n: "The boy nodded gravely, like this was the most heroic thing he had ever heard." }
+        ] },
+        { t: "Cloud, let him touch the handle.", notes: 2, then: [
+          { n: "Cloud looked at her, then at the boy, then crouched and let him put one small hand on the wrapped grip for exactly one second, his own hand flat on the blade the whole time." },
+          { s: 'cloud', f: 'serious', t: "That's enough. It's heavy." }
+        ] },
+        { t: "(Stay out of it.)", notes: 1, then: [{ n: "The boy and Cloud stared at each other in total silence until the bus came. It was, by some measure, a conversation." }] }
+      ] },
+      { n: "His mother hauled him onto the bus. He waved from the back window all the way down the street. Cloud waved back once, a small stiff movement at hip height, as if somebody might write him up for it." }
+    ],
+    [
+      { n: "Someone had paid Cloud to hand out flyers for a karaoke bar. This was, Solar felt, a mistake on their part." },
+      { n: "He stood at the exit gates holding the stack like a shield, and every time someone came through he held one out without a word, without a smile, with the energy of a man serving a summons. People took them. People took them very fast and walked away even faster." },
+      { s: 'cloud', f: 'neutral', t: "Forty down. It's working." },
+      { choose: [
+        { t: "Try smiling.", notes: 1, then: [
+          { s: 'cloud', f: 'happy', t: '...' },
+          { n: "He tried. It was worse. A salaryman took a flyer and apologized to him." }
+        ] },
+        { t: "(Take half the stack.)", notes: 3, then: [
+          { n: "She took half and stood at the other side of the gates and smiled at people, and between the two of them, the warm one and the frightening one, the stack was gone in twenty minutes." },
+          { s: 'cloud', f: 'neutral', t: "...Good teamwork." }
+        ] },
+        { t: "It's definitely working.", notes: 2, then: [{ s: 'cloud', f: 'neutral', t: "I know." }] }
+      ] },
+      { n: "The karaoke bar paid him in a coupon for one free hour. He gave it to her. He said he didn't sing. She said she'd figured." }
+    ]
+  ],
   romance: true,
-  cast: { tifa: 'Tifa', aerith: 'Aerith', aphrodite: 'Aphrodite', koromaru: 'Koromaru' },
+  cast: { tifa: 'Tifa', aerith: 'Aerith', aphrodite: 'Aphrodite', koromaru: 'Koromaru', noctis: 'Noctis', leon: 'Leon' },
+  threads: { lostandfound: { name: 'lost & found (other worlds)', members: ['cloud', 'noctis', 'leon'] } },
   texts: [
     { id: 'cloud-1a', rank: 1, days: 1, slot: 1, msgs: [
       { from: 'cloud', t: 'Solar. This is Cloud.' },
@@ -23,6 +114,56 @@ FemcSocial.define({
     ], reply: [
       { t: 'You definitely do.', notes: 3, then: [{ from: 'cloud', t: '...Maybe a little.' }] },
       { t: "Tifa's very perceptive.", notes: 2, then: [{ from: 'cloud', t: 'She always was.' }] }
+    ] },
+    { id: 'lost-1', thread: 'lostandfound', rank: 4, before: 7, days: 3, unlock: { links: { noctis: 2, leon: 2 } }, msgs: [
+      { sys: 'Cloud created "other worlds" and added you, Noctis and Leon' },
+      { from: 'cloud', t: 'This is for information.' },
+      { from: 'cloud', t: 'Not a social chat.' },
+      { from: 'noctis', t: 'who is everyone' },
+      { from: 'cloud', t: 'Cloud.' },
+      { from: 'leon', t: 'Leon. Came through a door. You?' },
+      { from: 'noctis', t: 'noctis. fell asleep in a car' },
+      { from: 'noctis', t: 'oh wait. sword guy' },
+      { ask: [
+        { t: 'Cloud, why the group chat?', notes: 3, then: [
+          { from: 'cloud', t: 'Three of us. Same problem.' },
+          { from: 'cloud', t: 'Should compare.' },
+          { from: 'leon', t: "That's the most I've ever seen him type." }
+        ] },
+        { t: "They're good guys. Be nice.", notes: 2, then: [{ from: 'leon', t: 'I am always nice.' }, { from: 'cloud', t: 'Fine.' }] },
+        { t: 'Is this a support group?', notes: 1, then: [{ from: 'cloud', t: 'No.' }, { from: 'noctis', t: 'kind of' }, { from: 'leon', t: 'Little bit.' }] }
+      ] },
+      { from: 'cloud', t: 'Weapons.' },
+      { from: 'leon', t: "Got here with six rounds. Spent them the first night. This country won't sell me more." },
+      { from: 'cloud', t: 'Get a sword.' },
+      { from: 'noctis', t: 'i have like twelve. want one' },
+      { from: 'leon', t: 'I have a knife.' },
+      { from: 'leon', t: 'A sword is a knife with a superiority complex.' },
+      { ask: [
+        { t: 'Swords. Obviously.', notes: 3, then: [{ from: 'cloud', t: 'Correct.' }, { from: 'noctis', t: 'correct' }, { from: 'leon', t: 'Outnumbered. Story of my life.' }] },
+        { t: 'Depends who is holding it.', notes: 2, then: [{ from: 'leon', t: 'Diplomatic.' }, { from: 'cloud', t: 'Hm.' }] },
+        { t: "Leon's right. That sword is compensating.", notes: 1, then: [{ from: 'cloud', t: "It's the right size." }, { from: 'leon', t: 'Sure it is.' }] }
+      ] },
+      { from: 'cloud', t: 'Food.' },
+      { from: 'leon', t: 'Kurosawa feeds me if I promise to leave.' },
+      { from: 'cloud', t: 'Noctis.' },
+      { from: 'cloud', t: 'Noctis.' },
+      { from: 'leon', t: "He's asleep." },
+      { ask: [
+        { t: '🐟', notes: 3, then: [{ from: 'noctis', t: 'where' }, { from: 'leon', t: 'Incredible.' }, { from: 'cloud', t: '...Noted.' }] },
+        { t: "He's on the pier with his mouth open. Guaranteed.", notes: 2, then: [{ from: 'leon', t: 'Called it.' }, { from: 'noctis', t: 'slander' }, { from: 'noctis', t: 'accurate slander' }] },
+        { t: 'Let him sleep.', notes: 1, then: [{ from: 'cloud', t: "He hasn't done anything." }, { from: 'leon', t: 'Sleeping counts. Ask any cop.' }] }
+      ] },
+      { from: 'noctis', t: 'ok im up. meat. no vegetables. next question' },
+      { from: 'cloud', t: 'Home. Anyone know the way back?' },
+      { from: 'leon', t: 'Negative.' },
+      { from: 'noctis', t: 'no. not in a hurry tbh' },
+      { ask: [
+        { t: "Then you're stuck with us for now.", notes: 3, then: [{ from: 'leon', t: 'Worse places to be stuck.' }, { from: 'cloud', t: '...Yeah.' }] },
+        { t: "I'll ask around. Someone has to know something.", notes: 2, then: [{ from: 'cloud', t: 'Thanks, Solar.' }, { from: 'noctis', t: 'no rush' }] }
+      ] },
+      { sys: 'Leon renamed the group "lost & found (other worlds)"' },
+      { from: 'cloud', t: '...Fine.' }
     ] },
     { id: 'cloud-5a', rank: 5, days: 1, slot: 1, msgs: [
       { from: 'cloud', t: "I couldn't sleep." },

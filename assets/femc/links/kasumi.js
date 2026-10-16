@@ -6,7 +6,95 @@ FemcSocial.define({
   arrives: '9/5',
   home: { place: 'Gekkoukan High · Gym', slot: 0, days: [1, 3, 5], hint: 'After school on Mondays, Wednesdays and Fridays, in the Gekkoukan gym.' },
   approach: "A red-haired girl is running the same routine over and over in the empty gym, and her red ribbon keeps drifting your way.",
-  invite: { ask: ["Senpai! Are you free? 🎀", "Senpai, would you watch my routine today?", "Want to get something sweet after practice?"], ok: "Yay! I'll be waiting!", no: "That's okay! Next time! 🎀" },
+  invite: {
+    ask: [
+      "Senpai! Are you free? 🎀",
+      "Senpai, would you watch my routine today?",
+      "Want to get something sweet after practice?",
+      "Senpai! I made score cards. I need a judge! 🎀",
+      "Are you busy? The gym is empty and it echoes so nicely today!",
+      "I have two cream buns and only one stomach. ...Okay, I could eat both. But I would rather share!",
+      "Senpai, I'm stretching. Come stretch with me! It's good for you, I promise. 💪",
+      "Practice is so much better with an audience. Are you free, Senpai?"
+    ],
+    ok: ["Yay! I'll be waiting!", "Senpai! I'll warm up while you walk over! 🎀", "Hooray! I'll save you a spot on the bleachers!"],
+    no: ["That's okay! Next time! 🎀", "Okay! I'll practice extra hard so it's even better next time!", "No problem, Senpai! Rest well! 💪"]
+  },
+  hangouts: [
+    [
+      { n: "Kasumi had decided that Solar's hamstrings were a personal project. She sat on the mat across from her with the soles of their feet pressed together, holding both of Solar's hands, and pulled, gently, with the relentless kindness of a coach who had already decided you could do it." },
+      { s: 'kasumi', f: 'happy', t: "Breathe out, Senpai! Everything gets longer when you breathe out." },
+      { choose: [
+        { t: "(Breathe out and lean in.)", notes: 3, then: [
+          { n: "Solar breathed out. Something at the back of her legs filed a formal complaint. She leaned another two centimeters anyway, and Kasumi lit up like she'd been handed a medal." },
+          { s: 'kasumi', f: 'happy', t: "Two whole centimeters! Senpai! That's huge!" }
+        ] },
+        { t: "Everything is getting longer except my patience.", notes: 2, then: [{ s: 'kasumi', f: 'happy', t: "Fufu! Patience stretches too, if you practice." }] },
+        { t: "(Lie down flat and refuse.)", notes: 1, then: [
+          { s: 'kasumi', f: 'surprised', t: "Senpai! You can't just lie down!" },
+          { n: "Solar could, it turned out. After a moment Kasumi lay down beside her in solidarity, and they looked at the gym ceiling together for a while." }
+        ] }
+      ] },
+      { n: "The lights hummed. Somewhere outside, the volleyball team was being yelled at by its captain, and in here it was quiet and warm and smelled like mats and floor polish, and Solar's hamstrings were going to hate her tomorrow." }
+    ],
+    [
+      { n: "After practice Kasumi ate like it was a second event. She sat cross-legged on the bleachers with a paper bag from the school store in her lap and worked through a melon bread, a cream bun and a small, apologetic carton of strawberry milk, in that order, with total focus." },
+      { s: 'kasumi', f: 'flustered', t: "Don't watch, Senpai! Gymnasts need fuel! It's science!" },
+      { choose: [
+        { t: "(Hand her your melon bread too.)", notes: 3, then: [
+          { s: 'kasumi', f: 'surprised', t: "...For me? Are you sure?" },
+          { n: "She was already unwrapping it. She finished it in three determined bites and thanked Solar so sincerely in between that it felt like being knighted." }
+        ] },
+        { t: "I'm not judging. I'm impressed.", notes: 2, then: [{ s: 'kasumi', f: 'happy', t: "Fufu. Thank you! I'm impressive in a lot of categories." }] },
+        { t: "Save some room for dinner.", notes: 1, then: [{ s: 'kasumi', f: 'neutral', t: "This is dinner, Senpai. Part one." }] }
+      ] },
+      { n: "The gym emptied out around them. The bag got lighter. When it was finally empty Kasumi folded it into a neat little square, because even her trash had good form." }
+    ],
+    [
+      { n: "Kasumi had asked, very politely, whether Solar had ever done a cartwheel, and Solar had made the mistake of saying probably, once, when she was six." },
+      { s: 'kasumi', f: 'serious', t: "Hands here, Senpai. Then here. Then your legs just follow. They want to follow! You only have to let them." },
+      { choose: [
+        { t: "(Try it. Commit.)", notes: 3, then: [
+          { n: "Solar's legs did not want to follow. They went up, briefly, in a shape that was less a cartwheel than a strong opinion about cartwheels, and she came down sideways on the mat. Kasumi applauded with both hands over her head." },
+          { s: 'kasumi', f: 'happy', t: "That was a real attempt! That counts!" }
+        ] },
+        { t: "Show me one more time first.", notes: 2, then: [{ n: "Kasumi showed her. Then again. Then four more, faster, wheeling down the whole length of the mat and back, laughing, until she'd clearly forgotten she was supposed to be teaching." }] },
+        { t: "My legs and I have agreed not to.", notes: 1, then: [{ s: 'kasumi', f: 'happy', t: "Senpai! That's what everyone says right before their first one!" }] }
+      ] },
+      { n: "Nobody else saw. Kasumi swore she would never tell a soul, hand over her heart, in a voice that made it sound like a very serious oath." }
+    ],
+    [
+      { n: "Putting the big mats away was a two-person job, and since there was nobody else in the gym after hours but Kasumi, the second person was Solar." },
+      { n: "The mats were blue and enormous and smelled like every gym class Solar had ever sat out of. Kasumi took her end like it weighed nothing." },
+      { s: 'kasumi', f: 'happy', t: "On three, Senpai! One, two..." },
+      { choose: [
+        { t: "Wait. Is it on three, or after three?", notes: 3, then: [
+          { s: 'kasumi', f: 'surprised', t: "...Oh no. I don't know. I've never known." },
+          { n: "They laughed so hard they had to put the mat down halfway across the gym, and then sat on it, and decided it lived there now." }
+        ] },
+        { t: "(Lift on three.)", notes: 2, then: [{ n: "They lifted on three and walked it to the storage room in perfect step, like a parade, and Kasumi said \"good form\" under her breath at the end, to nobody in particular." }] },
+        { t: "(Lift on two, to be safe.)", notes: 1, then: [{ n: "The mat tipped sideways. Kasumi caught it, and then caught Solar, more or less at the same time, apologizing the whole way through for something that wasn't her fault." }] }
+      ] },
+      { n: "When they were done the gym was big and empty and clean, the floor shining under the high windows, and Kasumi looked around it like a room she'd made herself." }
+    ],
+    [
+      { n: "Kasumi had made score cards out of the backs of old handouts, one to ten in thick marker, and pressed them into Solar's hands before practice with the solemnity of a coronation." },
+      { s: 'kasumi', f: 'serious', t: "Be honest, Senpai. Real judges are never nice. You have to be a real judge." },
+      { n: "Then she ran her floor routine, the whole thing, the ribbon tracing loops through the air with the gym lights catching it, and landed, and turned, and stood with her chin up, waiting." },
+      { choose: [
+        { t: "(Hold up a nine, and mime the ribbon brushing the floor.)", notes: 3, then: [
+          { s: 'kasumi', f: 'surprised', t: "...It touched. On the last loop. You saw that?" },
+          { s: 'kasumi', f: 'happy', t: "You're a real judge! Okay. Again!" }
+        ] },
+        { t: "(Hold up the ten.)", notes: 2, then: [
+          { s: 'kasumi', f: 'flustered', t: "Senpai! I told you to be a real judge!" },
+          { n: "She was grinning so hard it plainly didn't matter." }
+        ] },
+        { t: "(Hold up all the cards at once.)", notes: 1, then: [{ s: 'kasumi', f: 'happy', t: "That's... fifty-five? Out of ten? I'll take it!" }] }
+      ] },
+      { n: "She ran it again. Solar judged it again. Neither of them noticed the light going orange in the high windows until the janitor came in to turn it off." }
+    ]
+  ],
   romance: true,
   cast: { akihiko: 'Akihiko', maruki: 'Maruki', elizabeth: 'Elizabeth' },
   threads: { elizabeth: { name: 'Elizabeth', members: ['elizabeth'] } },

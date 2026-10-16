@@ -6,7 +6,108 @@ FemcSocial.define({
   arrives: '5/9',
   home: { place: 'Naganaki Shrine', slot: 0, days: [0, 2, 4, 6], hint: 'Daytime on Sundays, Tuesdays, Thursdays and Saturdays, at Naganaki Shrine.' },
   approach: "A girl in a shrine maiden's outfit is sitting on the offering box with her legs crossed, eating something she definitely shouldn't be eating at a shrine.",
-  invite: { ask: ["come to the shrine. i have snacks. dont tell anyone", "u free? fortune time 🦊", "bored. come hang"], ok: "yay 🦊 hurry", no: "boo. ok" },
+  invite: {
+    ask: [
+      "come to the shrine. i have snacks. dont tell anyone",
+      "u free? fortune time 🦊",
+      "bored. come hang",
+      "i drew ur fortune already. come get it before the dog eats it",
+      "the shrine is SO clean today. come look at it. admire my work",
+      "i have two melon pan and one stomach. help",
+      "emergency. not a real emergency. a snack emergency 🦊",
+      "the fox statues are lonely. come say hi to them. and me"
+    ],
+    ok: ["yay 🦊 hurry", "yesss. ill save u the good step", "ok ok ok come up the stairs. all of them lol"],
+    no: ["boo. ok", "fine. ur fortune will wait. its very patient", "ok 😔 next time"]
+  },
+  hangouts: [
+    [
+      { n: "Kiriko was sweeping again. She swept the shrine the way some people played music, with her whole body, humming, the broom going in long confident arcs across the gravel while the crows on the torii watched her like disappointed critics." },
+      { s: 'kiriko', f: 'happy', t: "Oh, good, you're here. Grab the other broom. It's behind the offering box. It's the bad one, sorry, I keep the good one for me." },
+      { choose: [
+        { t: "(Grab the bad broom and get to work.)", notes: 3, then: [
+          { n: "The bad broom was missing half its bristles and shed the rest as Solar swept, so that mostly she was redistributing the leaves in a more organized way. Kiriko watched her for a minute and then traded brooms without a word, which was, Solar understood, the highest honor the shrine had to give." }
+        ] },
+        { t: "I'll supervise.", notes: 2, then: [
+          { s: 'kiriko', f: 'neutral', t: "Wow. Okay. Management." },
+          { n: "Solar supervised from the steps. Kiriko swept a perfect spiral around her, on purpose, so she ended up sitting in the middle of it like a stone in a raked garden." }
+        ] }
+      ] },
+      { s: 'kiriko', f: 'happy', t: "Done! Fortune for the labor. Shrine rules." },
+      { s: 'kiriko', f: 'neutral', t: "Sho-kichi. Small blessing. \"Tend the small things and the big things will follow.\" ...Huh. I think that one's for me." },
+      { n: "The gravel lay in neat lines behind them, and the crows, for once, had nothing to say." }
+    ],
+    [
+      { n: "Kiriko shook the fortune box, slid out the stick, checked the number, pulled the paper from its drawer, and made a noise like a stepped-on cat." },
+      { s: 'kiriko', f: 'surprised', t: "Kyo. Bad luck. For YOU. On MY shrine." },
+      { s: 'kiriko', f: 'serious', t: "\"Lost things stay lost. Travel is unwise. Your wish will not be granted.\" Wow. Rude. Who even writes these?" },
+      { choose: [
+        { t: "Tie it to the tree. That's what you do with bad ones, right?", notes: 3, then: [
+          { s: 'kiriko', f: 'happy', t: "Yes! You leave the bad luck at the shrine and the gods deal with it. That's the whole system. You know the system!" },
+          { n: "She tied it to the low branch of the pine by the water basin, among a dozen other little white knots, with a fierce double knot, like she was tying up a prisoner." }
+        ] },
+        { t: "Can I draw again?", notes: 2, then: [
+          { s: 'kiriko', f: 'flustered', t: "That's... technically cheating. Do it anyway. I'm not looking." },
+          { n: "Kichi. Blessing. Kiriko announced it with the enormous relief of someone who had, in every possible sense, been looking." }
+        ] },
+        { t: "I've had worse.", notes: 1, then: [{ s: 'kiriko', f: 'sad', t: "Don't say it like that. Now I have to worry about you all day." }] }
+      ] },
+      { n: "On the way down the steps Solar looked back. Kiriko was standing by the pine with her arms crossed, glaring at the knot, as though the bad luck might try something the moment she turned her back." }
+    ],
+    [
+      { n: "Kiriko was sitting on the offering box again, which Solar was fairly sure was some kind of sacrilege, eating a melon pan out of a convenience store bag while the white dog sat at her feet in an attitude of total, focused hope." },
+      { s: 'kiriko', f: 'happy', t: "Don't look at me like that. Either of you. I bought two. One's yours." },
+      { s: 'kiriko', f: 'neutral', t: "He's had three bites of mine already. He does a thing with his eyes. It's a technique. It's extremely effective." },
+      { choose: [
+        { t: "(Split yours three ways.)", notes: 3, then: [
+          { n: "Solar tore her melon pan into three uneven pieces and gave the biggest one to the dog, and Kiriko stared at her like she'd done something holy." },
+          { s: 'kiriko', f: 'happy', t: "Okay. You're a shrine regular now. That's the initiation. Sharing with the boss." }
+        ] },
+        { t: "He's a dog. You're supposed to be stronger than him.", notes: 2, then: [
+          { s: 'kiriko', f: 'serious', t: "Have you SEEN him? Nobody's stronger than him." },
+          { n: "The dog, hearing himself discussed, put one paw on Solar's knee. She lasted about four seconds." }
+        ] }
+      ] },
+      { s: 'kiriko', f: 'neutral', t: "Snack fortune. Chu-kichi. Middle blessing. \"Something sweet, shared, becomes sweeter.\" Ugh. Okay. Fine. The gods are watching." },
+      { n: "The crumbs went to the sparrows. The sparrows, Kiriko said, were also technically shrine staff." }
+    ],
+    [
+      { n: "The stone foxes on either side of the shrine path wore red bibs, and the bibs had faded in the sun, and Kiriko had bought new ones and was crouched in front of the left fox retying its bib with the concentration of someone dressing a small child for a wedding." },
+      { s: 'kiriko', f: 'neutral', t: "This one's grumpy. That one's nice. Don't tell them I said that. They can hear." },
+      { s: 'kiriko', f: 'happy', t: "You do the nice one. Bow first. You always bow first." },
+      { choose: [
+        { t: "(Bow to the fox and introduce yourself.)", notes: 3, then: [
+          { n: "Solar bowed and told the stone fox her name and her school and, after a moment's thought, her blood type, since it seemed like the kind of fox who would want to know. Kiriko made a small strangled sound of joy." },
+          { s: 'kiriko', f: 'happy', t: "Okay, that's the most polite thing I've ever seen. He's going to love you forever now." }
+        ] },
+        { t: "(Just tie the bib.)", notes: 1, then: [
+          { s: 'kiriko', f: 'surprised', t: "You didn't bow! Oh no. Okay. Bow now. Quick, before he notices." },
+          { n: "Solar bowed, late, to a stone fox, and felt, genuinely, forgiven." }
+        ] },
+        { t: "Why is that one grumpy?", notes: 2, then: [{ s: 'kiriko', f: 'neutral', t: "He's been guarding this shrine for a hundred years and nobody brought him anything. Wouldn't you be?" }] }
+      ] },
+      { s: 'kiriko', f: 'happy', t: "Fortune for good manners. Kichi. Blessing. \"Respect the old guardians, and they will keep you.\"" },
+      { n: "When they were done both foxes stood gleaming in their new red bibs, and Solar could have sworn the grumpy one looked very slightly less grumpy." }
+    ],
+    [
+      { n: "The ema rack by the shrine office was hung with little wooden plaques, wishes written in marker on the back, and Kiriko was reading them one by one with the deep investment of someone catching up on a television drama." },
+      { s: 'kiriko', f: 'happy', t: "Listen to this. \"Please let me pass the entrance exam.\" Good luck, buddy. \"Please let my cat come home.\" Oh no. \"Please make Tanaka notice me.\" TANAKA. NOTICE HER." },
+      { s: 'kiriko', f: 'neutral', t: "I can't grant any of these. I'm not that kind of shrine girl. But I can root for them." },
+      { choose: [
+        { t: "Which one are you rooting for most?", notes: 3, then: [
+          { s: 'kiriko', f: 'serious', t: "The cat. Obviously. I'm making flyers." },
+          { n: "She was not joking. By the end of the afternoon there were six hand-drawn flyers drying on the shrine steps, each with a cat on it that looked a little like a fox." }
+        ] },
+        { t: "(Write one of your own and hang it up.)", notes: 2, then: [
+          { s: 'kiriko', f: 'flustered', t: "Hey! You covered it with your hand! I can't root for it if I can't read it!" },
+          { n: "Solar didn't let her read it. Kiriko spent the next ten minutes pretending not to try." }
+        ] },
+        { t: "Tanaka is never going to notice her.", notes: 1, then: [{ s: 'kiriko', f: 'surprised', t: "Not with that attitude he won't!" }] }
+      ] },
+      { s: 'kiriko', f: 'neutral', t: "Fortune for the wishers. Sue-kichi. Future blessing. \"What you hope for is on its way. It is walking, not running.\"" },
+      { n: "She hung the fortune on the rack among the ema, right in the middle, where everyone would see it." }
+    ]
+  ],
   romance: false,
   cast: { koromaru: 'Koromaru', mercy: 'Mercy', genji: 'Genji', widowmaker: 'Widowmaker' },
   texts: [

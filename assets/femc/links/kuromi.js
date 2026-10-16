@@ -6,9 +6,94 @@ FemcSocial.define({
   arrives: '5/9',
   home: { place: 'Iwatodai Dorm · Lounge', slot: 1, days: [0, 1, 2, 3, 4, 5, 6], hint: 'Evenings, in the dorm lounge, usually causing trouble.' },
   approach: "A girl in a black jester hat, pink streaks in her hair, is crouched on the lounge couch with a marker, and Junpei is asleep. This is about to be a crime.",
-  invite: { ask: ["RIVAL. come here. now.", "i need an accomplice. dont ask questions", "r u free. its important (its not important)"], ok: "heh. perfect 💀", no: "UGH. fine. traitor" },
+  invite: {
+    ask: ["RIVAL. come here. now.", "i need an accomplice. dont ask questions", "r u free. its important (its not important)", "lounge. NOW. bring snacks", "junpei is asleep on the couch again. this is NOT a drill 💀", "im bored and its ur fault somehow. come fix it", "rival meeting. downstairs. attendance is MANDATORY", "do u have a marker. asking for evil reasons"],
+    ok: ["heh. perfect 💀", "GOOD. dont be late or ur disqualified", "finally. ur rival is waiting 🖤"],
+    no: ["UGH. fine. traitor", "boooo. ur on the list now", "fine. ill cause chaos ALONE. hope ur happy"]
+  },
+  hangouts: [
+    [
+      { n: "Junpei's cap had been missing for forty minutes, and he had searched the lounge three times, louder each round, while Kuromi lay on the couch with a magazine held upside down in front of her face and her boots crossed at the ankle, the picture of a girl with nothing on her conscience. It was a very bad picture." },
+      { s: 'junpei', t: "Solar. Solar, you've seen my hat. Tell me you've seen my hat." },
+      { s: 'kuromi', f: 'serious', t: "Nobody's seen your stupid hat. Go cry somewhere else." },
+      { choose: [
+        { t: "(Get a drink from the fridge. Close it again, very calmly.)", notes: 3, then: [
+          { n: "The cap was on the middle shelf, between the milk and a carton of eggs, folded neatly around one of Akihiko's protein drinks like it was keeping it warm. Solar took out a can of tea and shut the door. Behind the magazine, Kuromi made a small, strangled sound of pure joy." }
+        ] },
+        { t: "Kuromi, your magazine is upside down.", notes: 2, then: [{ s: 'kuromi', f: 'flustered', t: "It's a STYLE. Punks read upside down. Look it up." }] },
+        { t: "Check the fridge, Junpei.", notes: 1, then: [
+          { s: 'kuromi', f: 'surprised', t: "TRAITOR!" },
+          { n: "Junpei found it. It was cold. He put it on anyway, out of principle, and shivered at the TV for the rest of the night while Kuromi glared at Solar over the top of the magazine, which was still upside down." }
+        ] }
+      ] },
+      { n: "By the time the lounge emptied out, Kuromi was already planning the next one, out loud, in a whisper that carried all the way to the second floor." }
+    ],
+    [
+      { n: "The lounge fridge had a system. Everyone wrote their name on their food in marker, and everyone respected it, and the system had worked perfectly for years right up until it met Kuromi, who had found the marker." },
+      { n: "She was sitting on the counter with a cup of pudding in one hand, crossing out YUKARI on the lid in long, satisfied strokes and writing KUROMI underneath in letters twice the size." },
+      { s: 'kuromi', f: 'happy', t: "It's a tax. Yukari has four puddings. Nobody needs four puddings. I'm redistributing." },
+      { choose: [
+        { t: "(Hand her a spoon.)", notes: 3, then: [
+          { s: 'kuromi', f: 'surprised', t: "...Oh, you're GOOD." },
+          { n: "She took the spoon. Then, after a long and very visible struggle with herself, she took a second one out of the drawer and held it out. Rivals, apparently, split the spoils." }
+        ] },
+        { t: "That's Yukari's.", notes: 1, then: [{ s: 'kuromi', f: 'serious', t: "It SAYS Kuromi. Can't you read? Wow. Sad." }] },
+        { t: "Which flavor did you take?", notes: 2, then: [{ s: 'kuromi', f: 'serious', t: "Caramel. Obviously. I'm not a MONSTER. Well. I am. But not about pudding." }] }
+      ] },
+      { s: 'yukari', f: 'serious', t: "Has anyone seen my pudding?" },
+      { n: "The voice came from the top of the stairs. Kuromi ate the rest in one enormous spoonful, pressed the empty cup into Solar's hand, and looked up at the ceiling with wide, innocent, deeply criminal eyes." }
+    ],
+    [
+      { n: "Late, the lounge dark except for the TV, rain ticking on the windows. Kuromi had found a horror movie on a channel that only seemed to exist after eleven, something grainy about a girl and a well, and announced that she was going to watch the whole thing without blinking, because she was a punk, and punks were not scared of wells." },
+      { n: "Twenty minutes in, she had Solar's sleeve in her fist. She didn't seem to know she was holding it." },
+      { s: 'kuromi', f: 'serious', t: "This is BORING. Nothing's even happening. I'm basically asleep." },
+      { choose: [
+        { t: "(Say nothing about the sleeve.)", notes: 3, then: [{ n: "Solar kept watching. The girl on the screen climbed out of the well. Kuromi's grip went white, and then, when nothing worse happened, loosened, and stayed." }] },
+        { t: "Want me to change the channel?", notes: 2, then: [{ s: 'kuromi', f: 'serious', t: "NO. If you change it, it WINS." }] },
+        { t: "You're holding my sleeve.", notes: 1, then: [
+          { s: 'kuromi', f: 'flustered', t: "I'm CHECKING the FABRIC. For SCIENCE." },
+          { n: "She let go. Thirty seconds later she was holding it again." }
+        ] }
+      ] },
+      { n: "When the credits rolled she stood up, stretched, said \"Lame,\" and went upstairs. Ten minutes later Solar heard her come back down for a glass of water with every single light in the hallway switched on." }
+    ],
+    [
+      { n: "Junpei was slumped in the armchair with a handheld game, tongue between his teeth, deep in a boss fight and blind to the world, which was exactly how Kuromi liked her targets." },
+      { s: 'kuromi', f: 'happy', t: "Rival duel. Sixty seconds. We both draw him. Best drawing wins. Loser does whatever the winner says." },
+      { n: "She slapped a sheet of paper and a pen down in front of Solar and started counting before Solar had the cap off." },
+      { choose: [
+        { t: "(Draw Junpei as a gorilla in a baseball cap.)", notes: 3, then: [
+          { s: 'kuromi', f: 'surprised', t: "...That's. That's a really good gorilla." },
+          { s: 'kuromi', f: 'serious', t: "Fine. FINE. A tie. Rivals are allowed to tie. It's in the rules." }
+        ] },
+        { t: "(Draw Kuromi instead.)", notes: 2, then: [{ s: 'kuromi', f: 'flustered', t: "That's not the TARGET. Why is my hat so BIG. ...Can I keep it?" }] },
+        { t: "(Draw badly on purpose, so she wins.)", notes: 1, then: [{ s: 'kuromi', f: 'serious', t: "You LET me win. That's the most insulting thing that's ever happened to me. Again. Right now. For real this time." }] }
+      ] },
+      { s: 'junpei', t: "Are you guys drawing me? Lemme see." },
+      { n: "They both said no at the same time. Kuromi taped both drawings to the inside of the snack cupboard, where Junpei, who had never once put anything away, would never think to look." }
+    ],
+    [
+      { n: "Every cushion in the lounge was gone. Solar found them heaped behind the couch, built into something with walls and a roof made of a bedsheet, and a sign taped to the front in pink marker that said HQ. KEEP OUT. THIS MEANS YOU." },
+      { n: "A boot stuck out of the entrance. The boot wiggled when she came closer." },
+      { s: 'kuromi', f: 'serious', t: "Password." },
+      { choose: [
+        { t: "Junpei is a loser.", notes: 3, then: [
+          { s: 'kuromi', f: 'surprised', t: "...That's the actual password. How did you KNOW." },
+          { n: "The bedsheet lifted. Inside it was surprisingly roomy, lit by a flashlight and stocked with chips and a comic book, and Kuromi shuffled over to make room with the grudging air of a general admitting a promising recruit." }
+        ] },
+        { t: "Please?", notes: 1, then: [
+          { s: 'kuromi', f: 'serious', t: "Wrong. Polite people can't come in. It's a PUNK fort." },
+          { s: 'kuromi', f: 'neutral', t: "...Fine. Probation. Get in before somebody sees." }
+        ] },
+        { t: "(Crawl in anyway.)", notes: 2, then: [{ s: 'kuromi', f: 'happy', t: "HEY. Breaking and entering. ...Respect, honestly. Sit there. Don't touch the chips." }] }
+      ] },
+      { s: 'junpei', t: "Okay, who took the cushions? I just wanna SIT." },
+      { n: "Kuromi switched off the flashlight. In the dark, under the bedsheet, she put a finger to her lips, and they stayed perfectly silent while Junpei sat down on the bare couch frame and swore at the ceiling." }
+    ]
+  ],
   romance: true,
   cast: { junpei: 'Junpei', mymelody: 'My Melody', koromaru: 'Koromaru', rohan: 'Rohan', yukari: 'Yukari' },
+  threads: { rivals: { name: 'ARCH RIVALS 💀', members: ['kuromi', 'mymelody'] } },
   texts: [
     { id: 'kur-1a', rank: 1, days: 1, slot: 1, msgs: [
       { from: 'kuromi', t: 'THIS IS KUROMI' },
@@ -33,6 +118,80 @@ FemcSocial.define({
     ], reply: [
       { t: 'Did you eat the cake?', notes: 3, then: [{ from: 'kuromi', t: '...' }, { from: 'kuromi', t: 'ALL OF IT. thats not the point' }] },
       { t: 'She sounds nice.', notes: 1, then: [{ from: 'kuromi', t: 'BETRAYAL' }] }
+    ] },
+    { id: 'rivals-3', thread: 'rivals', rank: 3, before: 6, days: 2, slot: 1, msgs: [
+      { sys: 'Kuromi added you to "ARCH RIVALS 💀"' },
+      { from: 'kuromi', t: 'ok. this is the official ARCH RIVAL chat' },
+      { from: 'kuromi', t: 'u are here as a WITNESS' },
+      { from: 'mymelody', t: 'Hello Solar! Hello Kuromi! 🌸 My mama gave me a phone so I can text my friends!' },
+      { from: 'kuromi', t: 'RIVALS. NOT FRIENDS. read the GROUP NAME' },
+      { from: 'mymelody', t: 'I read it! I think it is a very cute name 💕' },
+      { from: 'kuromi', t: 'ITS NOT CUTE ITS MENACING' },
+      { ask: [
+        { t: 'Very menacing.', notes: 3, then: [
+          { from: 'kuromi', t: 'THANK YOU. finally someone with TASTE 💀' },
+          { from: 'mymelody', t: 'Menacing and cute! Just like Kuromi! 🎀' },
+          { from: 'kuromi', t: '...' }
+        ] },
+        { t: "It's a little cute.", notes: 1, then: [
+          { from: 'kuromi', t: 'U ARE ALSO MY RIVAL NOW. DOUBLE RIVAL' },
+          { from: 'mymelody', t: 'Thank you Solar! 🌸' }
+        ] },
+        { t: 'What exactly am I witnessing?', notes: 2, then: [
+          { from: 'kuromi', t: 'MY VICTORY. obviously' },
+          { from: 'kuromi', t: 'i am going to prove ONCE AND FOR ALL that she is my rival and not my friend' }
+        ] }
+      ] },
+      { from: 'mymelody', t: 'Kuromi, did you like the almond pound cake? 🍰' },
+      { from: 'kuromi', t: 'no' },
+      { from: 'kuromi', t: 'it was fine' },
+      { from: 'kuromi', t: 'it was too small actually. thats a complaint' },
+      { from: 'mymelody', t: "Oh no! I'll bake a bigger one! My mama always said, if a friend is still hungry, bake twice! 🍰🍰" },
+      { from: 'kuromi', t: 'STOP SAYING FRIEND' },
+      { ask: [
+        { t: 'She ate the whole thing, Melody.', notes: 3, then: [
+          { from: 'kuromi', t: 'SOLAR' },
+          { from: 'kuromi', t: 'u were supposed to be a WITNESS not a SNITCH' },
+          { from: 'mymelody', t: 'Yay!! That makes me so happy 💕💕💕' }
+        ] },
+        { t: 'Kuromi. Say thank you.', notes: 2, then: [
+          { from: 'kuromi', t: '...' },
+          { from: 'kuromi', t: 'thanks. FOR NOTHING' },
+          { from: 'mymelody', t: "You're welcome Kuromi! 🌸" }
+        ] },
+        { t: 'Make it chocolate next time.', notes: 1, then: [
+          { from: 'mymelody', t: 'Okay! Chocolate! I wrote it down 🎀' },
+          { from: 'kuromi', t: 'dont place ORDERS in MY war chat' }
+        ] }
+      ] },
+      { sys: 'My Melody renamed the group "best friends 🌸🎀💕"' },
+      { from: 'kuromi', t: 'NO' },
+      { from: 'kuromi', t: 'HOW DID U EVEN DO THAT' },
+      { from: 'mymelody', t: 'I pressed the little pencil! 🌸' },
+      { sys: 'Kuromi renamed the group "ARCH RIVALS 💀"' },
+      { sys: 'My Melody renamed the group "best friends 🌸🎀💕"' },
+      { from: 'kuromi', t: 'IM GOING TO SCREAM' },
+      { from: 'mymelody', t: 'My mama always said, when you feel like screaming, have a nice glass of warm milk! 🥛' },
+      { sys: 'Kuromi renamed the group "ARCH RIVALS 💀"' },
+      { from: 'kuromi', t: 'ok. WITNESS. u decide. what is this chat' },
+      { ask: [
+        { t: 'Arch rivals.', notes: 3, then: [
+          { from: 'kuromi', t: 'HA 💀 the witness has SPOKEN' },
+          { from: 'mymelody', t: 'Okay! Arch rivals is nice too! Good night, arch rivals! 💕' },
+          { from: 'kuromi', t: 'u cant say good night to RIVALS' },
+          { from: 'kuromi', t: '...good night' }
+        ] },
+        { t: 'Rivals who share cake.', notes: 2, then: [
+          { from: 'mymelody', t: "My mama always said, a rival is just a friend who doesn't know it yet! 🌸" },
+          { from: 'kuromi', t: 'UR MAMA DOESNT KNOW ANYTHING' },
+          { from: 'kuromi', t: '...the cake part is acceptable' }
+        ] },
+        { t: 'Best friends.', notes: 1, then: [
+          { from: 'kuromi', t: '...' },
+          { from: 'kuromi', t: 'u are dead to me. for one day' },
+          { from: 'mymelody', t: 'Yay!! 🎀💕🌸' }
+        ] }
+      ] }
     ] },
     { id: 'kur-5a', rank: 5, days: 1, slot: 1, msgs: [
       { from: 'kuromi', t: 'i finished volume 3' },
