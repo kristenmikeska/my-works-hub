@@ -15,6 +15,7 @@ DST = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
 ALIASES = {
     '496e2dba76276478fa8e6a7508ebcafb': 'akihiko',
     '6707ba39d2939b71f74dddad39840d14': 'yukari',
+    'shinjiart': 'shinjiro',
 }
 
 
