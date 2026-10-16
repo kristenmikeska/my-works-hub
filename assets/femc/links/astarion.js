@@ -402,7 +402,7 @@ FemcSocial.define({
       { n: "The green hour came, and with it, something that wore a face he knew." },
       { n: "It came out of the dark between the shuttered shops of Paulownia, tall and thin and elegant, in an old-fashioned coat, with hair slicked back and red eyes and a smile like a cut. Solar knew immediately it wasn't real. It was a shadow, wearing a shape. But the shape was exact, and Astarion, beside her, made a sound she had never heard a person make." },
       { register: 'cazador' },
-      { s: 'cazador', t: "My boy. My wayward boy. You've strayed so far from home." },
+      { s: 'cazador', f: 'happy', t: "My boy. My wayward boy. You've strayed so far from home." },
       { n: "Astarion didn't move. He was standing completely still, the way prey stands, his face gone gray, his hands at his sides like they'd forgotten they were hands." },
       { s: 'astarion', f: 'sad', t: "...Cazador." },
       { choose: [

@@ -353,7 +353,7 @@ FemcSocial.define({
       { n: "They came through on a Tuesday, during the green hour, landing in the middle of the dorm's front garden in a tangle of limbs and complaining. A girl with bright purple hair and a sword. A guy with spiky blond hair and a skateboard. Sebastian, apparently, had told them about the game." },
       { register: 'abigail' },
       { register: 'sam' },
-      { s: 'abigail', t: "Seb! We found you! I told you he'd be somewhere with a basement, Sam." },
+      { s: 'abigail', f: 'happy', t: "Seb! We found you! I told you he'd be somewhere with a basement, Sam." },
       { s: 'sam', f: 'surprised', t: "There's no basement! He's just in a dorm! Seb, you're living in a DORM?" },
       { n: "So game night happened in the lounge. Sebastian sat at the head of the coffee table with a notebook full of maps he'd drawn from memory. Abigail and Sam played their usual characters. Solar played Solarion. And Junpei, who had wandered downstairs for a snack, sat down, demanded a character, and was assigned a goblin." },
       { s: 'junpei', f: 'surprised', t: "Why am I a goblin?" },
@@ -365,7 +365,7 @@ FemcSocial.define({
         ] },
         { t: "(Roll to befriend the dragon.)", notes: 3, then: [
           { n: "She rolled a nineteen. The dragon, Sebastian decided after a long pause, became her loyal companion and was named Frog." },
-          { s: 'abigail', t: "SEB. You've never let ANYONE befriend the dragon." },
+          { s: 'abigail', f: 'surprised', t: "SEB. You've never let ANYONE befriend the dragon." },
           { s: 'sebastian', f: 'neutral', t: "Nobody's ever tried." }
         ] }
       ] },

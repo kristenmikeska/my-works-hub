@@ -376,7 +376,7 @@ FemcSocial.define({
       ] },
       { n: "It escalated quickly. Kuromi filled Rohan's pen box with glitter. Rohan sent Junpei a manga page of himself 'defeating' Kuromi in single combat. Kuromi drew on Junpei's face again, because Junpei was, she said, a legitimate military target. Rohan used his power on a pigeon and made it follow Kuromi around for a day." },
       { n: "It ended at Bookworms, at midnight, with both of them exhausted and covered in ink and glitter, glaring at each other across the counter while the elderly owners slept upstairs." },
-      { s: 'rohan', t: "...You're a worthy adversary. I refuse to admit it publicly." },
+      { s: 'rohan', f: 'serious', t: "...You're a worthy adversary. I refuse to admit it publicly." },
       { s: 'kuromi', f: 'happy', t: "Same. Truce. Until I get bored." },
       { n: "They shook on it. Kuromi drew a tiny skull on his hand while she was shaking it. He let her. Solar had never seen two people more delighted to hate each other." }
     ] },

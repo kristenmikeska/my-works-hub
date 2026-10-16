@@ -310,19 +310,19 @@ FemcSocial.define({
       { n: "There was a new flower stall in Paulownia Mall. A small wooden cart with buckets of flowers, yellow and white and pink, and behind it a girl with light brown hair in a long braid tied with a big pink ribbon, humming." },
       { register: 'aerith' },
       { n: "Cloud stopped dead in the walkway when he saw her. Solar walked into his back." },
-      { s: 'aerith', t: "Oh! Hello again. Want to buy a flower? They're only one gil." },
+      { s: 'aerith', f: 'happy', t: "Oh! Hello again. Want to buy a flower? They're only one gil." },
       { s: 'cloud', f: 'surprised', t: "...Aerith." },
-      { s: 'aerith', t: "You remembered! I'm so flattered." },
+      { s: 'aerith', f: 'happy', t: "You remembered! I'm so flattered." },
       { n: "She smiled at him like the sun coming out, and then turned that smile on Solar, and Solar understood immediately and completely why Cloud had stopped walking." },
-      { s: 'aerith', t: "And you must be the bodyguard's bodyguard. Somebody has to keep him out of trouble." },
+      { s: 'aerith', f: 'happy', t: "And you must be the bodyguard's bodyguard. Somebody has to keep him out of trouble." },
       { choose: [
-        { t: "It's a full-time job.", notes: 3, then: [{ s: 'aerith', t: "Oh, I know. I tried it for a while. He's exhausting. In a sweet way." }] },
-        { t: "How do you know Cloud?", notes: 2, then: [{ s: 'aerith', t: "He fell through my church roof once. Into my flowers. We've been friends ever since." }] }
+        { t: "It's a full-time job.", notes: 3, then: [{ s: 'aerith', f: 'happy', t: "Oh, I know. I tried it for a while. He's exhausting. In a sweet way." }] },
+        { t: "How do you know Cloud?", notes: 2, then: [{ s: 'aerith', f: 'happy', t: "He fell through my church roof once. Into my flowers. We've been friends ever since." }] }
       ] },
       { n: "She sold flowers in the mall for two weeks. People bought them without knowing why. Cloud came by every day and stood near the cart, saying very little, and Aerith teased him, and he let her." },
       { n: "On the last day, before she faded, she pressed a yellow flower into Solar's hands." },
-      { s: 'aerith', t: "Take care of him, okay? He's carrying so much. More than he knows." },
-      { s: 'aerith', t: "And take care of you, too. You're carrying a lot as well. I can tell. It's in your shoulders." },
+      { s: 'aerith', f: 'sad', t: "Take care of him, okay? He's carrying so much. More than he knows." },
+      { s: 'aerith', f: 'neutral', t: "And take care of you, too. You're carrying a lot as well. I can tell. It's in your shoulders." },
       { n: "Solar didn't know what to say. Aerith smiled and squeezed her hand and was gone by morning, and the cart was gone, and the only thing left in the walkway was one yellow petal." }
     ] },
 
