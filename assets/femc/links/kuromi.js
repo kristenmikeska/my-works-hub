@@ -314,6 +314,7 @@ FemcSocial.define({
         ] }
       ] },
       { n: "Koromaru woke up eventually, stretched, and climbed directly into Kuromi's lap without asking. She froze. Her whole face went pink, right up to the bandage on her nose. And then she put her arms around the dog very carefully, like he was made of glass, and didn't move for an hour." },
+      { s: 'koromaru', f: 'happy', t: "Arf." },
       { s: 'kuromi', f: 'flustered', t: "...Don't tell anyone about this." },
       { n: "Solar promised. Koromaru, asleep again, snored." }
     ] },

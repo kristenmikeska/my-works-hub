@@ -34,6 +34,7 @@ FemcSocial.define({
       { n: "Koromaru found the alley before she did. She heard his tags first, a small bright jingle bouncing off the concrete, and then he trotted past her ankles with his tail up and went straight to Shinjiro like he was reporting for duty." },
       { s: 'shinjiro', f: 'neutral', t: "...You followed her here? Tch. You're supposed to be home." },
       { n: "He said it in the voice people used for scolding dogs they had no intention of scolding. Koromaru sat down on his boot." },
+      { s: 'koromaru', f: 'happy', t: "Woof!" },
       { choose: [
         { t: "(Pretend not to see him slip the dog a piece of meat.)", notes: 3, then: [
           { n: "She studied the vending machine with enormous interest. Behind her there was the quiet rustle of a container lid, and then the wet, grateful sound of a dog getting away with something." },
@@ -369,7 +370,10 @@ FemcSocial.define({
       { register: 'ken' },
       { n: "He was ten, small for it, polite to the point of formality, the youngest person in the dorm by years. He was always careful with everyone. He said thank you for things nobody else thanked anyone for." },
       { n: "He stopped in the doorway when he saw Shinjiro, and his face did something that didn't belong on a child's face." },
-      { n: "It was only for a second. Then he smiled, and said good evening, and went to get a glass of water, and the room went on as if nothing had happened. Junpei didn't notice. Yukari didn't notice." },
+      { s: 'ken', f: 'serious', t: '...' },
+      { n: "It was only for a second. Then he smiled." },
+      { s: 'ken', f: 'happy', t: "Good evening, everyone. Don't mind me." },
+      { n: "He went to get a glass of water, and the room went on as if nothing had happened. Junpei didn't notice. Yukari didn't notice." },
       { n: "Shinjiro noticed. Solar watched him notice. She watched the color go out of him, all at once, the magazine going still in his hands, his whole body going quiet the way an animal's does when it hears something in the dark." },
       { n: "He got up a minute later, said nothing to anyone, and went out the front door into the evening." },
       { choose: [

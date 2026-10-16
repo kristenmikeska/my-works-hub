@@ -46,6 +46,7 @@ FemcSocial.define({
       { n: "Koromaru had found a stick. It was, by any measure, too much stick, half a branch off the old camphor tree, and he was dragging it across the courtyard toward the porch with the solemn determination of a dog who had decided that Shadowheart was going to throw it." },
       { s: 'shadowheart', f: 'serious', t: "No. Absolutely not. I'm not a stick-throwing sort of person." },
       { n: "Koromaru set the stick down at her feet and sat, and looked at her. The silence went on for a long time." },
+      { s: 'koromaru', f: 'happy', t: "Woof!" },
       { choose: [
         { t: "(Wait.)", notes: 3, then: [
           { n: "Solar said nothing. She sat on the step and waited, and so did the dog, and it took about forty seconds before Shadowheart sighed like a woman walking to her own execution and threw the stick." },
@@ -205,6 +206,7 @@ FemcSocial.define({
       ] },
       { s: 'shadowheart', f: 'neutral', t: "It's a punishment. Or a reminder. When I'm too soft. My Lady doesn't approve of softness." },
       { n: "Koromaru, healed, licked her face. She didn't push him away. Her hand was bleeding through the handkerchief and she was letting a dog lick her face in the rain." },
+      { s: 'koromaru', f: 'happy', t: "Arf!" },
       { choose: [
         { t: "Then your Lady's wrong about you.", notes: 3, then: [
           { s: 'shadowheart', f: 'surprised', t: "...You can't say that." },

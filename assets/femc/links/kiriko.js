@@ -214,6 +214,7 @@ FemcSocial.define({
       { n: "Kiriko held out her hand, palm up, and whistled, low and soft." },
       { n: "Something answered. A shape stepped out of the rain at the edge of the porch, made of light and air, long and lean, with a tail like a brushstroke and eyes like two coins. A fox. A huge, glowing, translucent fox, looking at Solar with an expression of polite curiosity." },
       { n: "Koromaru sat bolt upright. The fox looked at him. Koromaru, after a long, tense second, lay back down." },
+      { s: 'koromaru', f: 'neutral', t: "...Arf." },
       { s: 'kiriko', f: 'neutral', t: "She's my kitsune. She's been with my family forever. She protects people." },
       { s: 'kiriko', f: 'sad', t: "She was the only thing that came with me. Everything else stayed in Kanezaka." },
       { choose: [

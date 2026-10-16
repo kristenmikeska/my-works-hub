@@ -277,6 +277,7 @@ FemcSocial.define({
     { after: '8/20', title: '4: koromaru', place: 'Naganaki Shrine', scene: [
       { n: "She'd brought him to the shrine because Kiriko said it was a good place to think, and he looked like he needed to think. He'd been getting headaches. He said it was nothing. He kept pressing his hand to his temple when he thought she wasn't looking." },
       { n: "Koromaru came trotting out to meet them, white tail going, red eyes curious. He sniffed Cloud's boots. Cloud crouched down without thinking and scratched behind his ears." },
+      { s: 'koromaru', f: 'happy', t: "Woof!" },
       { s: 'cloud', f: 'surprised', t: "...I've done this before. With a dog. Or something like a dog." },
       { s: 'cloud', f: 'sad', t: "There was a big yellow bird. A chocobo. I used to ride one. Or someone did. With black hair. He laughed a lot." },
       { n: "He frowned at Koromaru like the dog was holding a memory hostage." },
