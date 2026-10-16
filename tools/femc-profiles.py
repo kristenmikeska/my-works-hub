@@ -16,7 +16,11 @@ ALIASES = {
     '496e2dba76276478fa8e6a7508ebcafb': 'akihiko',
     '6707ba39d2939b71f74dddad39840d14': 'yukari',
     'shinjiart': 'shinjiro',
+    'P5RAnnTakamaki': 'ann',
+    'An_takamaki': None,          # the other Ann option, not used
 }
+# Keep only the top part of tall full-length art, so the figure isn't tiny on the page (fraction of the height).
+CROP_TOP = {'ann': 0.625}
 
 
 def cut_background(im):
@@ -51,7 +55,13 @@ for f in sorted(os.listdir(SRC)):
     if ext.lower() not in ('.jpg', '.jpeg', '.png', '.webp', '.avif'):
         continue
     cid = ALIASES.get(stem, re.sub(r'[^a-z0-9]', '', stem.lower()))
+    if cid is None:
+        continue
     im = cut_background(Image.open(os.path.join(SRC, f)))
+    if cid in CROP_TOP:
+        im = im.crop((0, 0, im.width, round(im.height * CROP_TOP[cid])))
+        box = im.getchannel('A').point(lambda v: 255 if v > 8 else 0).getbbox()
+        im = im.crop(box) if box else im
     if im.height > 1400:
         im = im.resize((round(im.width * 1400 / im.height), 1400), Image.LANCZOS)
     im.save(os.path.join(DST, cid + '.webp'), 'WEBP', quality=88, method=5)
