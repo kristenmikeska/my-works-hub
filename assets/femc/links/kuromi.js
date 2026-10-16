@@ -14,7 +14,7 @@ FemcSocial.define({
   hangouts: [
     [
       { n: "Junpei's cap had been missing for forty minutes, and he had searched the lounge three times, louder each round, while Kuromi lay on the couch with a magazine held upside down in front of her face and her boots crossed at the ankle, the picture of a girl with nothing on her conscience. It was a very bad picture." },
-      { s: 'junpei', t: "Solar. Solar, you've seen my hat. Tell me you've seen my hat." },
+      { s: 'junpei', f: 'sad', t: "Solar. Solar, you've seen my hat. Tell me you've seen my hat." },
       { s: 'kuromi', f: 'serious', t: "Nobody's seen your stupid hat. Go cry somewhere else." },
       { choose: [
         { t: "(Get a drink from the fridge. Close it again, very calmly.)", notes: 3, then: [
@@ -69,7 +69,7 @@ FemcSocial.define({
         { t: "(Draw Kuromi instead.)", notes: 2, then: [{ s: 'kuromi', f: 'flustered', t: "That's not the TARGET. Why is my hat so BIG. ...Can I keep it?" }] },
         { t: "(Draw badly on purpose, so she wins.)", notes: 1, then: [{ s: 'kuromi', f: 'serious', t: "You LET me win. That's the most insulting thing that's ever happened to me. Again. Right now. For real this time." }] }
       ] },
-      { s: 'junpei', t: "Are you guys drawing me? Lemme see." },
+      { s: 'junpei', f: 'happy', t: "Are you guys drawing me? Lemme see." },
       { n: "They both said no at the same time. Kuromi taped both drawings to the inside of the snack cupboard, where Junpei, who had never once put anything away, would never think to look." }
     ],
     [
@@ -87,7 +87,7 @@ FemcSocial.define({
         ] },
         { t: "(Crawl in anyway.)", notes: 2, then: [{ s: 'kuromi', f: 'happy', t: "HEY. Breaking and entering. ...Respect, honestly. Sit there. Don't touch the chips." }] }
       ] },
-      { s: 'junpei', t: "Okay, who took the cushions? I just wanna SIT." },
+      { s: 'junpei', f: 'serious', t: "Okay, who took the cushions? I just wanna SIT." },
       { n: "Kuromi switched off the flashlight. In the dark, under the bedsheet, she put a finger to her lips, and they stayed perfectly silent while Junpei sat down on the bare couch frame and swore at the ceiling." }
     ]
   ],

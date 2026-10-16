@@ -84,7 +84,7 @@ FemcSocial.define({
           { n: "He noticed. Of course he noticed. He noticed and said nothing and drank it, which was somehow worse." }
         ] }
       ] },
-      { s: 'junpei', t: "Yo, is that grass? Are you guys drinking grass now?" },
+      { s: 'junpei', f: 'surprised', t: "Yo, is that grass? Are you guys drinking grass now?" },
       { n: "Junpei had stuck his head through the door on his way to somewhere else, and he left again before anyone could offer him any, which was the smartest thing Solar had ever seen him do." }
     ],
     [
@@ -557,31 +557,31 @@ FemcSocial.define({
       { place: 'Hagakure Ramen', time: 'After School' },
       { n: "By the afternoon her legs had filed a formal complaint, and the rain had come back, soft and steady against the window of the ramen shop. Hagakure smelled like pork broth and wet umbrellas and the deep fryer in the back that had clearly been running since before she was born." },
       { s: 'akihiko', f: 'happy', t: "Best ramen in Iwatodai. I'm not exaggerating. I've done the research." },
-      { s: 'junpei', t: "\"The research.\" He means he's eaten here like four hundred times." },
+      { s: 'junpei', f: 'happy', t: "\"The research.\" He means he's eaten here like four hundred times." },
       { register: 'junpei' },
       { n: 'Junpei Iori had attached himself to them at the school gates with the confidence of a man who had never once in his life waited to be invited, and was now sliding into the booth next to Solar with his cap on backwards and a grin like a dare.' },
       { s: 'akihiko', f: 'neutral', t: 'Junpei. Nobody invited you.' },
-      { s: 'junpei', t: "Bro, I invite myself. It's a gift. Yo, Solar, did he give you the protein speech yet? It's like forty minutes." },
+      { s: 'junpei', f: 'happy', t: "Bro, I invite myself. It's a gift. Yo, Solar, did he give you the protein speech yet? It's like forty minutes." },
       { s: 'akihiko', f: 'serious', t: "It's not a speech. It's information." },
       { choose: [
         { t: "I'd like to hear it.", notes: 3, then: [
           { s: 'akihiko', f: 'surprised', t: '...Really?' },
           { s: 'akihiko', f: 'happy', t: 'Okay. So. Muscle recovery depends on three things, and the first one is—' },
-          { s: 'junpei', t: "Oh no. Oh no, you've done it now." },
+          { s: 'junpei', f: 'surprised', t: "Oh no. Oh no, you've done it now." },
           { n: "It was, in fact, about forty minutes. She found out more about amino acids than she had ever planned to know, and Akihiko's whole face changed while he explained it, like a light had come on somewhere behind it." }
         ] },
         { t: 'Maybe the short version.', notes: 2, then: [
           { s: 'akihiko', f: 'happy', t: "Eat more meat. Sleep. Don't skip leg day. That's the short version." },
-          { s: 'junpei', t: "Honestly that's the long version too." }
+          { s: 'junpei', f: 'happy', t: "Honestly that's the long version too." }
         ] },
         { t: 'Pass.', notes: 0, then: [
           { s: 'akihiko', f: 'sad-2', t: '...Fine. Your loss.' },
           { n: 'He sulked for exactly as long as it took the ramen to arrive, which was not very long.' }
         ] }
       ] },
-      { s: 'junpei', t: 'Hey, speaking of weird. Anyone else seen the girl up at Naganaki Shrine? Fox ears? Sweeping like she owns the place?' },
+      { s: 'junpei', f: 'neutral', t: 'Hey, speaking of weird. Anyone else seen the girl up at Naganaki Shrine? Fox ears? Sweeping like she owns the place?' },
       { s: 'akihiko', f: 'neutral', t: 'Fox ears.' },
-      { s: 'junpei', t: "I'm just sayin'! Iwatodai's been getting weird lately. You feel it, right, Solar?" },
+      { s: 'junpei', f: 'sad', t: "I'm just sayin'! Iwatodai's been getting weird lately. You feel it, right, Solar?" },
       { n: "She thought about the roof, and the green light that came at midnight, and the coffins standing in the street where people should have been. Weird was one word for it." },
       { s: 'akihiko', f: 'serious-3', t: '...Weirder than usual, you mean.' },
       { n: "He ordered a second bowl with extra pork without looking at the menu, and when it came he pushed the egg from it into Solar's bowl without asking, like it was the most obvious thing in the world." },
