@@ -133,6 +133,8 @@ window.FemcSocial = (() => {
     .vn-card { width: 150px; height: 230px; display: grid; place-content: center; gap: 8px; border: 3px solid #ff8cc0; border-radius: 10px; background: linear-gradient(160deg, #ff4f9e, #7a0b3e); box-shadow: 0 0 40px rgba(255, 79, 158, .6); font: italic 900 46px/1 ${COND}; animation: vn-card 1.1s cubic-bezier(.2, 1.2, .4, 1) both; }
     .vn-card small { font-size: 15px; letter-spacing: .2em; text-transform: uppercase; }
     .vn-meter-inner { display: flex; align-items: center; gap: clamp(18px, 4vw, 40px); width: min(680px, calc(100vw - 40px)); padding: 16px; }
+    .vn-card.art { background: center / cover no-repeat; border: 0; border-radius: 8px; }
+    .vn-card.art > * { visibility: hidden; }
     .vn-card-sm { flex: none; width: 110px; height: 168px; font-size: 34px; }
     .vn-card-sm small { font-size: 12px; }
     .vn-meter-info { flex: 1; min-width: 0; display: grid; gap: 12px; }
@@ -271,6 +273,14 @@ window.FemcSocial = (() => {
     F().sfx('femc-register');
     setTimeout(() => el.remove(), 3500);
   }
+
+  /* ── Tarot card art (assets/femc/tarot) ── */
+  // A link's card image, or null when there's no art for its arcana yet (the plain pink card is drawn instead).
+  function tarot(link) {
+    const key = String(link?.arcana || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    return (window.FEMC_TAROT || []).includes(key) ? `${F().base}assets/femc/tarot/${key}.webp?v=1` : null;
+  }
+  const cardFace = link => { const art = tarot(link); return art ? ` art" style="background-image:url('${art}')` : ''; };
 
   /* ── Backgrounds by place (assets/femc/backgrounds.js) ── */
   // Returns { url, mood } for a place: mood 'night' or 'dusk' dims a daytime image; Dark Hour and Velvet images stay as they are.
@@ -609,7 +619,7 @@ window.FemcSocial = (() => {
     function meter(link, r, from, to, req, up, done, gained = to - from) {
       const box = document.createElement('div');
       box.className = 'vn-rank vn-meter';
-      box.innerHTML = `<div class="vn-meter-inner"><div class="vn-card vn-card-sm"><span>${link.numeral || '✦'}</span><small>${link.arcana}</small></div>
+      box.innerHTML = `<div class="vn-meter-inner"><div class="vn-card vn-card-sm${cardFace(link)}" aria-label="${link.arcana}"><span>${link.numeral || '✦'}</span><small>${link.arcana}</small></div>
         <div class="vn-meter-info"><p class="vn-meter-name">${link.short}<small>Rank ${r} ▸ ${r + 1 >= link.ranks.length ? 'MAX' : r + 1}</small></p>
         <div class="vn-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${req}" aria-valuenow="${to}"><i></i></div>
         <p class="vn-meter-notes"><b>+${gained} ♪</b> <span>${from}</span> / ${req}</p><p class="vn-meter-msg"></p></div></div>`;
@@ -634,7 +644,7 @@ window.FemcSocial = (() => {
       const max = n >= link.ranks.length;
       const box = document.createElement('div');
       box.className = 'vn-rank';
-      box.innerHTML = `<div class="vn-rank-inner"><div class="vn-card"><span>${link.numeral || '✦'}</span><small>${link.arcana}</small></div><p class="vn-thou"></p><p class="vn-ranknum">${max ? 'RANK MAX' : `RANK ${n}`}<small>${link.short || link.name}</small></p></div>`;
+      box.innerHTML = `<div class="vn-rank-inner"><div class="vn-card${cardFace(link)}" aria-label="${link.arcana}"><span>${link.numeral || '✦'}</span><small>${link.arcana}</small></div><p class="vn-thou"></p><p class="vn-ranknum">${max ? 'RANK MAX' : `RANK ${n}`}<small>${link.short || link.name}</small></p></div>`;
       el.appendChild(box);
       F().sfx('femc-rankup');
       const lines = n === 1 ? ['Thou art I... and I am thou...', 'Thou hast established a new bond.'] : max ? ['Thou art I... and I am thou...', `The bond with ${link.short} has reached its fullest.`] : ['Thou art I... and I am thou...', `Thy bond with ${link.short} grows stronger.`];
@@ -995,8 +1005,8 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = F().load;
-    ready = Promise.all([L('assets/femc/portraits/index.js?v=7', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js?v=4', () => window.FEMC_BG), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
-      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=32`, () => links[id]))))
+    ready = Promise.all([L('assets/femc/portraits/index.js?v=7', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js?v=4', () => window.FEMC_BG), L('assets/femc/tarot/index.js?v=1', () => window.FEMC_TAROT), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
+      .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=33`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
   }
@@ -1008,5 +1018,5 @@ window.FemcSocial = (() => {
     play(l, 0, { frame: true, onDone: () => { S.intro = true; save(); onDone?.(); } });
     return true;
   }
-  return { background, areaBackground, need, playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
+  return { tarot, background, areaBackground, need, playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
 })();

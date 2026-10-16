@@ -116,7 +116,7 @@ window.FEMC_COMPENDIUM = [
   "img": null,
   "unlock": "met:judy",
   "note": "A braindance tech who never stops fighting for her people.",
-  "arcana": "XI · Justice",
+  "arcana": "VIII · Justice",
   "link": "social.html#judy"
  },
  {

@@ -1,7 +1,7 @@
 /* Judy Alvarez · XI Justice. Arrives on the 8/6 full moon. Evenings. Format notes are at the top of akihiko.js.
    Evelyn's story is handled carefully and without detail. */
 FemcSocial.define({
-  id: 'judy', name: 'Judy Alvarez', short: 'Judy', arcana: 'Justice', numeral: 'XI', from: 'Cyberpunk 2077',
+  id: 'judy', name: 'Judy Alvarez', short: 'Judy', arcana: 'Justice', numeral: 'VIII', from: 'Cyberpunk 2077',
   arrives: '8/6',
   home: { place: 'Paulownia Mall · Club Escapade', slot: 1, days: [3, 5, 6], hint: 'Evenings on Wednesdays, Fridays and Saturdays, at Club Escapade.' },
   approach: "A woman with dyed hair and a toolkit is half inside the club's sound system, swearing at it under her breath.",
