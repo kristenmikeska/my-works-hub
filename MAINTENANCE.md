@@ -68,7 +68,7 @@ Kat's sorted photos (Desktop/Hoax) are resized into `assets/hoax/roll/` (full, ~
 
 ## FEMC mode (hidden skin)
 
-`femc-mode.js` is loaded in the `<head>` of every hub page (index, world, about, vault, 404, solchan, hoax-roll) and by `readers/reader-nav.js` for the readers. Typing `femc` anywhere toggles it (`kg-femc = 'on'`); the first time unlocks the `femc` stamp ("Memento mori").
+`femc-mode.js` is loaded in the `<head>` of every hub page (index, world, about, vault, 404, solchan, hoax-roll) and by `readers/reader-nav.js` for the readers. Typing `femc` anywhere toggles it (`kg-femc = 'on'`); the first time unlocks the `femc` stamp ("Memento mori"). Phones can't type it, so adding `?femc` (or `?femc=on`) to any hub page URL switches it on and `?femc=off` switches it off (`fromLink()` in `femc-mode.js`; the parameter is removed from the address bar). Opened from a link, the intro theme starts on the first tap if the browser blocked autoplay.
 
 - **Look:** `html.femc` swaps every page accent to pink (`#ff4f9e`), adds pink diagonal stripes and offset heading shadows (not in readers, `html.femc-reader`), pink arrow cursors, and Persona-style offset shadows on card and chip hovers. The CSS lives inside `femc-mode.js`.
 - **Badge:** bottom-left ◆ MENU button, calendar (date, P3P-style time of day, real moon phase), SFX mute (`kg-femc-sound`), a ♪ music toggle, a ⛶ fullscreen toggle (hidden where the browser can't, e.g. iPhone; browsers leave fullscreen on page changes), and ✕ to switch off. Scenes have a ⛶ button too, and F toggles it.

@@ -264,7 +264,9 @@
     theme.loop = true;
     theme.volume = 0;
     let rise = null;
-    theme.play().then(() => { rise = setInterval(() => { theme.volume = Math.min(0.5, theme.volume + 0.03); if (theme.volume >= 0.5) clearInterval(rise); }, 60); }).catch(() => {});
+    const fadeIn = () => { rise = setInterval(() => { theme.volume = Math.min(0.5, theme.volume + 0.03); if (theme.volume >= 0.5) clearInterval(rise); }, 60); };
+    // Opened from a ?femc link there's been no tap yet, so the browser may block the theme; start it on the first tap.
+    theme.play().then(fadeIn).catch(() => el.addEventListener('pointerdown', () => { if (!closing) theme.play().then(fadeIn).catch(() => {}); }, { once: true }));
     if (!reduced.matches) [750, 1400].forEach(t => setTimeout(() => sfx('femc-hover'), t));
     const items = [...el.querySelectorAll('.fi-menu button')];
     setTimeout(() => items[0].focus({ preventScroll: true }), reduced.matches ? 0 : 1000);
@@ -413,11 +415,25 @@
     return api;
   })();
 
+  // Phones can't type "femc", so a link does it: ?femc (or ?femc=on) switches the mode on, ?femc=off switches it off.
+  // The parameter is removed from the address bar so reloading or sharing the page doesn't repeat it.
+  function fromLink() {
+    let url;
+    try { url = new URL(location.href); } catch (e) { return null; }
+    if (!url.searchParams.has('femc')) return null;
+    const want = url.searchParams.get('femc').toLowerCase() !== 'off';
+    url.searchParams.delete('femc');
+    try { history.replaceState(history.state, '', url.pathname + url.search + url.hash); } catch (e) {}
+    return want;
+  }
+
   function boot() {
+    const want = fromLink();
     load(`assets/femc/bgm.js?v=${FEMC_ASSET_VERSION}`, () => window.FEMC_BGM).then(() => {
       music.tracks = (window.FEMC_BGM || []).filter(t => t && t.src);
       if (isOn()) { buildBadge(); music.start(); eggs(); }
       paintBadge();
+      if (want !== null) toggle(want);
     });
     if (isOn()) buildBadge();
   }
