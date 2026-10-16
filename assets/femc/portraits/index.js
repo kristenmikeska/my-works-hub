@@ -245,10 +245,12 @@ window.FEMC_PORTRAITS = {
   "serious"
  ],
  "rio": [
+  "flustered",
   "happy",
   "neutral",
   "sad",
-  "serious"
+  "serious",
+  "surprised"
  ],
  "rohan": [
   "happy",
