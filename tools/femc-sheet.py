@@ -20,8 +20,14 @@ def cut_background(im, tol=26):
     im = im.convert('RGBA')
     w, h = im.size
     px = im.load()
-    corners = [px[x, y][:3] for x, y in ((2, 2), (w - 3, 2), (2, h - 3), (w - 3, h - 3))]
-    near = lambda p: any(sum(abs(a - b) for a, b in zip(p[:3], c)) < tol for c in corners)
+    # The background is the commonest corner color that isn't the white gutter between panels.
+    corners = [px[x, y][:3] for x, y in ((12, 12), (w - 13, 12), (12, h - 13), (w - 13, h - 13), (w // 2, 12))]
+    gray = max(set(c for c in corners if min(c) < 240) or set(corners), key=corners.count)
+    diff = lambda p, c: sum(abs(a - b) for a, b in zip(p[:3], c))
+    # From the edges: the background or gutter white. Inside the figure: only the exact background gray,
+    # so eye whites and highlights are never touched.
+    near = lambda p: diff(p, gray) < tol or min(p[:3]) > 244
+    pocket = lambda p: diff(p, gray) < 14
     m = Image.new('L', (w, h), 0)
     mk = m.load()
     q = deque([(x, 0) for x in range(w)] + [(x, h - 1) for x in range(w)] + [(0, y) for y in range(h)] + [(w - 1, y) for y in range(h)])
@@ -33,6 +39,26 @@ def cut_background(im, tol=26):
         for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
             if 0 <= nx < w and 0 <= ny < h and not mk[nx, ny]:
                 q.append((nx, ny))
+    # Pockets of background boxed in by hair, collars and shoulders: any other patch of background color
+    # big enough not to be a stray highlight goes too.
+    seen = Image.new('L', (w, h), 0)
+    sk = seen.load()
+    for y0 in range(h):
+        for x0 in range(w):
+            if mk[x0, y0] or sk[x0, y0] or not pocket(px[x0, y0]):
+                continue
+            region, q = [], deque([(x0, y0)])
+            sk[x0, y0] = 1
+            while q:
+                x, y = q.popleft()
+                region.append((x, y))
+                for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                    if 0 <= nx < w and 0 <= ny < h and not sk[nx, ny] and not mk[nx, ny] and pocket(px[nx, ny]):
+                        sk[nx, ny] = 1
+                        q.append((nx, ny))
+            if len(region) >= max(60, w * h // 4000):
+                for x, y in region:
+                    mk[x, y] = 255
     alpha = m.filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.GaussianBlur(1)).point(lambda v: 255 - v)
     im.putalpha(alpha)
     box = alpha.point(lambda v: 255 if v > 8 else 0).getbbox()
