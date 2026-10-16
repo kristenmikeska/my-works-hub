@@ -357,5 +357,13 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "sad",
   "serious"
+ ],
+ "hina": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
  ]
 };

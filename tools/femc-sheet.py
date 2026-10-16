@@ -48,7 +48,7 @@ def drop_specks(alpha, step=4):
     return out
 
 
-def cut_background(im, tol=26):
+def cut_background(im, tol=26, checker=False):
     """Flood-fills the background in from the cell's edges (anything close to the corner colors) and makes it transparent."""
     im = im.convert('RGBA')
     w, h = im.size
@@ -65,10 +65,16 @@ def cut_background(im, tol=26):
     # From the edges: the background or gutter white. Inside the figure: only the exact background gray,
     # so eye whites and highlights are never touched.
     near = lambda p: diff(p, gray) < tol or min(p[:3]) > 244
+    if checker:
+        # A fake transparency checkerboard (gray and white squares, sometimes in odd bands): any flat light
+        # gray or white reachable from the edge is background. The figure's black outline stops the fill.
+        near = lambda p: max(p[:3]) - min(p[:3]) < 14 and min(p[:3]) > 150
     pocket = lambda p: diff(p, gray) < 14
     m = Image.new('L', (w, h), 0)
     mk = m.load()
-    q = deque([(x, 0) for x in range(w)] + [(x, h - 1) for x in range(w)] + [(0, y) for y in range(h)] + [(w - 1, y) for y in range(h)])
+    # The figure is cut off at the bottom of the panel, so in checker mode the fill never starts there
+    # (a white shirt touching the bottom edge would otherwise be taken for background).
+    q = deque([(x, 0) for x in range(w)] + ([] if checker else [(x, h - 1) for x in range(w)]) + [(0, y) for y in range(h)] + [(w - 1, y) for y in range(h)])
     while q:
         x, y = q.popleft()
         if mk[x, y] or not near(px[x, y]):
@@ -123,6 +129,7 @@ ap.add_argument('sheet'); ap.add_argument('name')
 ap.add_argument('--grid', default='2x2', help='columns x rows')
 ap.add_argument('--emotions')
 ap.add_argument('--force', action='store_true')
+ap.add_argument('--checker', action='store_true', help='the sheet has a fake transparency checkerboard drawn in')
 a = ap.parse_args()
 cols, rows = map(int, a.grid.lower().split('x'))
 emotions = (a.emotions or DEFAULTS.get((cols, rows), '')).split(',')
@@ -139,5 +146,5 @@ for i, emo in enumerate(emotions):
     path = os.path.join(out, f'{a.name}-{emo.strip().capitalize()}.png')
     if os.path.exists(path) and not a.force:
         print(f'skip   {path} (exists; --force to replace)'); continue
-    cut_background(cell).save(path)
+    cut_background(cell, checker=a.checker).save(path)
     print(f'wrote  {path}')

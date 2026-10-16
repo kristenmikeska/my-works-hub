@@ -266,9 +266,9 @@ FemcSocial.define({
     { after: '5/12', title: '2: the team', place: 'Gekkoukan High · Gym', scene: [
       { n: "Gekkoukan's girls' volleyball team, Solar discovered, was nine girls, two working ball pumps, and one Rio Iwasaki, and the nine girls and the one Rio Iwasaki did not appear to be playing the same sport." },
       { n: "Hina Okabe, the setter, was sitting cross-legged on top of the ball cart eating a melon pan. She had a round face and a short bob clipped back with three pink barrettes and the bright, unbothered energy of somebody who had never once in her life been late and felt bad about it." },
-      { s: 'hina', t: "Oh! You're the toss girl! Rio talked about you!" },
+      { s: 'hina', f: 'happy', t: "Oh! You're the toss girl! Rio talked about you!" },
       { s: 'rio', f: 'serious', t: "I said one sentence." },
-      { s: 'hina', t: "She said one sentence, and then she was nice to everyone for an entire practice, which has never happened, so we all had to know." },
+      { s: 'hina', f: 'happy', t: "She said one sentence, and then she was nice to everyone for an entire practice, which has never happened, so we all had to know." },
       { n: "On the floor by the bench, lying flat on her back with her knees up, was Ayane Moriguchi, the libero, in a different-colored shirt from everyone else. Rangy and quiet, with a deadpan you could have cut glass on. She raised one hand at Solar without sitting up." },
       { s: 'ayane', t: "Hello. I'm stretching." },
       { s: 'rio', f: 'serious', t: "You're lying down." },
@@ -281,7 +281,7 @@ FemcSocial.define({
       { n: "Then everyone was looking at Solar, because Solar was the only person in the room who didn't belong to either side, and she could feel it settle on her, the way a ball settles on your arms before you decide where it goes." },
       { choose: [
         { t: "Everyone take five. Hina, can I have a bite of that?", notes: 3, then: [
-          { s: 'hina', t: "...Yes! Yes. Of course. It's the good kind, from the bakery by the station." },
+          { s: 'hina', f: 'flustered', t: "...Yes! Yes. Of course. It's the good kind, from the bakery by the station." },
           { n: "The first-years sat down. Ayane, after a moment, sat down too, on the end of the bench with her bag in her lap. Rio stood in the middle of the court alone for ten very long seconds, and then came over and sat down next to Solar, stiffly, like her knees had made the decision without her." }
         ] },
         { t: "(Pick up a ball and toss for Rio.)", notes: 2, then: [
@@ -315,7 +315,7 @@ FemcSocial.define({
       { choose: [
         { t: "Ramen. My treat. Right now.", notes: 3, then: [
           { s: 'rio', f: 'surprised', t: "...Right now? Practice isn't over." },
-          { s: 'hina', t: "It's over! It's so over! Go! Feed the bear!" }
+          { s: 'hina', f: 'happy', t: "It's over! It's so over! Go! Feed the bear!" }
         ] },
         { t: "When did you last eat?", notes: 2, then: [
           { s: 'rio', f: 'neutral', t: "Lunch. Some of lunch. A rice ball. Half a rice ball." },
@@ -362,9 +362,9 @@ FemcSocial.define({
       { s: 'rio', f: 'serious', t: "If your family's vegetable stand matters more than this, then go stack cabbages, and give your spot to someone who actually cares. Nobody here would even notice you were gone." },
       { n: "The gym went silent in a way Solar had never heard a gym go silent. Even the other team stopped bouncing their balls." },
       { n: "Ayane didn't say anything. She just looked at Rio, steadily, for one long second, and then she took off her knee pads, one and then the other, and set them on the bench side by side." },
-      { s: 'hina', t: "...Rio. That's enough." },
+      { s: 'hina', f: 'serious', t: "...Rio. That's enough." },
       { s: 'rio', f: 'serious', t: "Hina, you of all people..." },
-      { s: 'hina', t: "No. That's enough." },
+      { s: 'hina', f: 'serious', t: "No. That's enough." },
       { n: "Hina picked up her bag. Then one of the first-years did. Then all of them, quietly, one by one, until it was only Rio standing on her side of the net, and the Tatsumi captain came over, awkward and polite, to ask if they were forfeiting." },
       { s: 'rio', f: 'neutral', t: "...Yes. We forfeit." },
       { place: 'Gekkoukan High · Gym · After Hours', time: 'Evening' },
@@ -519,7 +519,7 @@ FemcSocial.define({
       { n: "Yukari had come with Solar. She hadn't meant to stay. She was on her third box of popcorn." },
       { s: 'yukari', f: 'surprised', t: "Okay, I get it now. I get the volleyball thing. Why is everybody so intense? I'm so stressed. I love it." },
       { n: "Before the first serve Hina ran to the bench and took Rio's wrist and drew on it with a black marker, a big lopsided 7, Rio's number. Then she held up her own wrist. And Ayane's. And every girl on the court had a 7 inked on the inside of her wrist, black and smudged, and they were all looking at the bench." },
-      { s: 'hina', t: "You're playing. You're just playing from there today." },
+      { s: 'hina', f: 'happy', t: "You're playing. You're just playing from there today." },
       { s: 'rio', f: 'surprised', t: "..." },
       { n: "Rio didn't say anything. She looked down at her wrist for a long time. Solar, in the third row, watched her press her thumb against it like she was checking it was real." },
       { n: "They lost the first set. Twenty-five to nineteen, and Solar saw Rio's whole body flinch at the number, and at the timeout she was on her feet on one leg with the clipboard, gripping it so hard it bent. She looked up into the bleachers. She found Solar. Her face asked a question." },
