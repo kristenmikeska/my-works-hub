@@ -266,24 +266,24 @@ FemcSocial.define({
       { n: "October, after dark. Kiriko had heard about the woman on Moonlight Bridge from three different people at the shrine. A tall woman. Purple skin. A rifle as long as a person. She stood on the bridge cables at night, they said, perfectly still, looking at nothing." },
       { s: 'kiriko', f: 'serious', t: "I know who that is. I don't want to know who that is. But I do." },
       { n: "They went at dusk, when the bridge lights came on. The woman was there. She was standing on the railing as if it were a sidewalk, coat snapping in the wind off the water, and she turned her head before they were within a hundred meters, like she'd heard them breathing." },
-      { s: 'widowmaker', t: "The fox girl. And a stranger." },
+      { s: 'widowmaker', f: 'neutral', t: "The fox girl. And a stranger." },
       { s: 'kiriko', f: 'serious', t: "Widowmaker. Of course it's you. Of course the creepiest person from home fell through too." },
       { n: "Widowmaker looked at Kiriko the way you'd look at a mildly interesting insect. Then she looked at Solar. Then, for a strange, held second, she looked at Solar a little longer." },
-      { s: 'widowmaker', t: "...Hm. You feel familiar, chérie. Like a support who always stands where I can see her." },
+      { s: 'widowmaker', f: 'surprised', t: "...Hm. You feel familiar, chérie. Like a support who always stands where I can see her." },
       { choose: [
-        { t: "I get that a lot lately.", notes: 3, then: [{ s: 'widowmaker', t: "I imagine you do." }] },
+        { t: "I get that a lot lately.", notes: 3, then: [{ s: 'widowmaker', f: 'happy', t: "I imagine you do." }] },
         { t: "Kiriko, is she dangerous?", notes: 2, then: [
           { s: 'kiriko', f: 'surprised', t: "Extremely. Don't make eye contact. Too late. You made eye contact." },
-          { s: 'widowmaker', t: "I am not working tonight. You may relax, little fox." }
+          { s: 'widowmaker', f: 'happy', t: "I am not working tonight. You may relax, little fox." }
         ] }
       ] },
       { n: "They stood on the bridge for a while, the three of them, a healer and a sniper and a girl from the dorm, watching the city lights double in the black water. Nobody said much. It was strange how much that felt like company." },
       { s: 'kiriko', f: 'neutral', t: "You know, in some other world, there are people who play as us. Together. A support and a sniper. Every match." },
-      { s: 'widowmaker', t: "...A boy. Who hides. And a girl who protects everyone. Yes. I have felt him too." },
+      { s: 'widowmaker', f: 'sad', t: "...A boy. Who hides. And a girl who protects everyone. Yes. I have felt him too." },
       { n: "Solar's heart did something very specific and unexplainable. She didn't know the boy. She'd never know the boy. But she could almost see him, somewhere under bright lights, choosing the purple sniper, again and again, beside a girl who chose the fox." },
       { s: 'kiriko', f: 'happy', t: "Fortune. For all three of us." },
       { s: 'kiriko', f: 'neutral', t: "Sue-kichi. Future blessing. \"Opposites cover each other's blind spots.\"" },
-      { s: 'widowmaker', t: "...That is the first fortune I have ever received. It is acceptable." }
+      { s: 'widowmaker', f: 'flustered', t: "...That is the first fortune I have ever received. It is acceptable." }
     ] },
 
     { after: '11/7', title: '9: the shrine in the dark hour', place: 'Naganaki Shrine · The Dark Hour', scene: [
