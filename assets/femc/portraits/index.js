@@ -202,6 +202,8 @@ window.FEMC_PORTRAITS = {
  ],
  "cazador": [
   "happy",
-  "neutral"
+  "neutral",
+  "sad",
+  "serious"
  ]
 };
