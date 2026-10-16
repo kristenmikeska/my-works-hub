@@ -80,17 +80,17 @@ FemcSocial.define({
     ],
     [
       { n: "Prompto was on the pier when she arrived, crouched at the very edge with his camera pointed at the water, trying to photograph a jellyfish that refused to hold still. Noctis sat behind him, fishing, pointedly not posing." },
-      { s: 'prompto', t: "Sol! Perfect! Sit next to Noct! Do a fishing face!" },
+      { s: 'prompto', f: 'happy', t: "Sol! Perfect! Sit next to Noct! Do a fishing face!" },
       { s: 'noctis', f: 'neutral', t: "There's no such thing as a fishing face." },
       { choose: [
         { t: "(Do Noctis's fishing face.)", notes: 3, then: [
           { n: "She leaned back against the post, let her mouth fall open, and closed her eyes." },
-          { s: 'prompto', t: "OH my god. That's it. That's him exactly." },
+          { s: 'prompto', f: 'happy', t: "OH my god. That's it. That's him exactly." },
           { s: 'noctis', f: 'flustered', t: "...I don't look like that." },
-          { s: 'prompto', t: "You look EXACTLY like that, buddy." }
+          { s: 'prompto', f: 'happy', t: "You look EXACTLY like that, buddy." }
         ] },
         { t: "(Do a fishing face.)", notes: 2, then: [{ n: "She did a fishing face. She hadn't known what one was until she did it, and then she knew, and Prompto laughed so hard he nearly went in after the jellyfish." }] },
-        { t: "No pictures, please.", notes: 1, then: [{ s: 'prompto', t: "Aw. Okay. Just one. Of the back of your head. For mystery." }] }
+        { t: "No pictures, please.", notes: 1, then: [{ s: 'prompto', f: 'sad', t: "Aw. Okay. Just one. Of the back of your head. For mystery." }] }
       ] },
       { n: "Prompto took thirty photographs anyway. In every single one Noctis was looking at the water like a man who had absolutely not posed, and in every single one, if you looked closely, he was very slightly smiling." }
     ]
@@ -232,17 +232,17 @@ FemcSocial.define({
     { after: '8/22', title: '2: prompto', music: 'sun', place: 'Port Island · Pier', scene: [
       { n: "There was a second boy on the pier now. Blond hair swept up, freckles, a camera on a strap around his neck, taking photographs of absolutely everything with the joy of someone who had never seen a seagull before." },
       { register: 'prompto' },
-      { s: 'prompto', t: "Noct! Noct, look at that bird! Look at it! It's HUGE!" },
+      { s: 'prompto', f: 'surprised', t: "Noct! Noct, look at that bird! Look at it! It's HUGE!" },
       { s: 'noctis', f: 'neutral', t: "It's a gull, Prompto." },
-      { s: 'prompto', t: "It's a MAJESTIC gull." },
+      { s: 'prompto', f: 'happy', t: "It's a MAJESTIC gull." },
       { n: "Prompto Argentum had come through two nights ago, landing in Paulownia Mall's fountain, camera held above his head to keep it dry. He'd found Noctis by asking everyone in Iwatodai if they'd seen 'a sleepy guy who looks like royalty.' Several people had." },
-      { s: 'prompto', t: "And YOU must be Sol! Noct talks about you! Well, he said 'there's a girl who lost my fish,' but in Noct, that's basically a sonnet." },
+      { s: 'prompto', f: 'happy', t: "And YOU must be Sol! Noct talks about you! Well, he said 'there's a girl who lost my fish,' but in Noct, that's basically a sonnet." },
       { choose: [
-        { t: "I'm the fish thief.", notes: 3, then: [{ s: 'prompto', t: "LEGENDARY. Can I take your picture? For the album? I'm calling it 'Noct's Weird Vacation.'" }] },
-        { t: "Nice to meet you, Prompto.", notes: 2, then: [{ s: 'prompto', t: "Nice to meet YOU! Smile! Oh, wait, you're already smiling. Perfect." }] }
+        { t: "I'm the fish thief.", notes: 3, then: [{ s: 'prompto', f: 'happy', t: "LEGENDARY. Can I take your picture? For the album? I'm calling it 'Noct's Weird Vacation.'" }] },
+        { t: "Nice to meet you, Prompto.", notes: 2, then: [{ s: 'prompto', f: 'happy', t: "Nice to meet YOU! Smile! Oh, wait, you're already smiling. Perfect." }] }
       ] },
       { n: "He took four hundred photos that afternoon. Of the pier, the water, the gulls, the boats, the fishing line, Noctis asleep, Noctis asleep from a different angle, Solar laughing at Noctis asleep. He showed her every single one on the little camera screen, narrating each with total sincerity." },
-      { s: 'prompto', t: "Back home, I take pictures of our trip. The four of us. So we remember it. So that if anything happens... we still have it, you know?" },
+      { s: 'prompto', f: 'sad', t: "Back home, I take pictures of our trip. The four of us. So we remember it. So that if anything happens... we still have it, you know?" },
       { n: "He said it lightly. Noctis, half-asleep against his post, opened his eyes and looked at Prompto for a second with an expression that wasn't sleepy at all." }
     ] },
 

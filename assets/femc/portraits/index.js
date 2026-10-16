@@ -297,5 +297,11 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "sad",
   "serious"
+ ],
+ "prompto": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
  ]
 };
