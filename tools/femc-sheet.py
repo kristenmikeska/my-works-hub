@@ -1,8 +1,8 @@
 """Splits a grid of expressions (one AI generation, e.g. 2x2 or 3x2) into separate portrait files.
 
 Run: python3 tools/femc-sheet.py SHEET.png Name [--grid 2x2] [--emotions neutral,happy,serious,surprised] [--force]
-  Cells are read left to right, top to bottom, and named by --emotions (defaults: 2x2 = neutral, happy, angry,
-  surprised; 3x2 = neutral, happy, sad, angry, embarrassed, surprised). The plain background is cut out.
+  Cells are read left to right, top to bottom, and named by --emotions (defaults: 2x2 = neutral, happy, sad,
+  angry; 2x1 = embarrassed, surprised; 3x2 = neutral, happy, sad, angry, embarrassed, surprised). The plain background is cut out.
 Output: ~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits/<Name>/<Name>-<Emotion>.png
 Then run python3 tools/femc-portraits.py <name> to align them and add them to the site.
 """
@@ -11,7 +11,7 @@ from collections import deque
 from PIL import Image, ImageFilter
 
 DST = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits')
-DEFAULTS = {(2, 2): 'neutral,happy,angry,surprised', (3, 2): 'neutral,happy,sad,angry,embarrassed,surprised',
+DEFAULTS = {(2, 2): 'neutral,happy,sad,angry', (2, 1): 'embarrassed,surprised', (3, 2): 'neutral,happy,sad,angry,embarrassed,surprised',
             (2, 3): 'neutral,happy,sad,angry,embarrassed,surprised', (3, 1): 'neutral,happy,sad'}
 
 

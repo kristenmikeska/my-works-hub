@@ -185,5 +185,11 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "serious",
   "surprised"
+ ],
+ "aerith": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
  ]
 };
