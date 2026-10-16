@@ -79,6 +79,26 @@ window.FEMC_COMPENDIUM = [
   "arcana": "VI · Lovers",
   "link": "social.html#ann"
  },
+{
+ "id": "rio",
+ "name": "Rio Iwasaki",
+ "from": "Persona 3 Portable",
+ "img": null,
+ "unlock": "met:rio",
+ "note": "The volleyball team's ace, who never once let herself stop before the ball did.",
+ "arcana": "VII · Chariot",
+ "link": "social.html#rio"
+},
+{
+ "id": "saori",
+ "name": "Saori Hasegawa",
+ "from": "Persona 3 Portable",
+ "img": null,
+ "unlock": "met:saori",
+ "note": "A library committee girl everyone whispers about, and nobody bothered to know.",
+ "arcana": "IX · Hermit",
+ "link": "social.html#saori"
+},
  {
   "id": "leon",
   "name": "Leon S. Kennedy",
