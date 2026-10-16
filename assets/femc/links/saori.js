@@ -103,7 +103,7 @@ FemcSocial.define({
     ]
   ],
   romance: true,
-  cast: { junpei: 'Junpei', yukari: 'Yukari', rohan: 'Rohan', kono: 'Mr. Kōno', omori: 'Ōmori', ozawa: 'Ms. Ozawa', firstyear: 'First-Year' },
+  cast: { junpei: 'Junpei', yukari: 'Yukari', rohan: 'Rohan', kono: 'Mr. Kōno', omori: 'Ōmori', ozawa: 'Ms. Ozawa' },
   threads: { bookclub: { name: 'two-person book club', members: ['saori', 'yukari'] } },
   texts: [
     { id: 'saori-1a', rank: 1, days: 1, slot: 1, msgs: [
@@ -289,7 +289,7 @@ FemcSocial.define({
       { choose: [
         { t: "Want me to start a worse rumor about me? Spread the load.", notes: 3, then: [
           { s: 'saori', f: 'happy', t: "...What would it be?" },
-          { s: 'solar', t: "I live in a dorm with three boys and I come home at strange hours. Half of it's already true." },
+          { s: 'solar', t: "I live in a dorm with boys in it and I come home at strange hours. Half of it's already true." },
           { s: 'saori', f: 'surprised', t: "Is it?" },
           { s: 'solar', t: "The boring half." },
           { n: "She laughed again, into the sleeve, and this time she didn't look around first." }
@@ -316,7 +316,7 @@ FemcSocial.define({
         ] },
         { t: "The printer was probably just old.", notes: 2, then: [
           { s: 'saori', f: 'neutral', t: "It was very old. It had a name. The teachers called it Grandpa." },
-          { s: 'saori', f: 'sad', t: "Nobody's ever asked me to name anything since." }
+          { s: 'saori', f: 'sad', t: "I liked Grandpa. I was there for that, too." }
         ] },
         { t: "Maybe stay away from goldfish.", notes: 1, then: [
           { s: 'saori', f: 'sad', t: "...I do. Now." }
@@ -594,7 +594,7 @@ FemcSocial.define({
           { n: "It said, I think I have been in love with you since you sat down at my table and let the whole library look at us. It said, I know that is not a thing people say in libraries. It said, things go wrong around me, but you have not gone wrong once, and I have been waiting since May, and I have stopped waiting for it to." },
           { n: "At the bottom it said, You don't have to answer. You can just return the book." },
           { s: 'saori', f: 'flustered', t: "...You're still reading it. Why are you still reading it. You've read it. I can see your eyes at the bottom." },
-          { n: "Solar took the pen out of Saori's blazer pocket, wrote one word under the last line, folded the note, put it back in the book, and handed the book to her across the desk. Overdue." },
+          { n: "Solar took the pen out of Saori's blazer pocket, wrote two words under the last line, folded the note, put it back in the book, and handed the book to her across the desk. Returned, with a note of its own. Me too." },
           { n: "Saori opened it. Read it. Shut it. Opened it again. Then she put her forehead down on the cover and stayed there, and her ears were scarlet, and she reached out blindly across the desk until she found Solar's hand." }
         ] },
         { t: "The first one. I want to be the first real one.", route: 'friend', notes: 3, then: [
@@ -602,7 +602,7 @@ FemcSocial.define({
           { s: 'saori', f: 'surprised', t: "...You picked the first one." },
           { s: 'solar', t: "It's the one I already knew was true. I wanted to see it written down." },
           { s: 'saori', f: 'happy', t: "It's true. It's been true since the umbrella. I just had to write it three times to believe it." },
-          { n: "She took the second note out of the back of the book and, without looking at it, folded it very small and put it in her own pocket. Neither of them said anything about it. They didn't need to. Some things, the book said, you're only allowed to know in order." }
+          { n: "She took the second note out of the back of the book and, without looking at it, folded it very small and put it in her own pocket. Neither of them said anything about it. They didn't need to. Some things, as a girl on a cold coast once wrote to a lighthouse, you are only allowed to know in order." }
         ] }
       ] }
     ] },
@@ -665,7 +665,7 @@ FemcSocial.define({
         { s: 'saori', f: 'happy', t: "I'll write to you. Every week. Sundays. Things always go wrong on Mondays, so I'll want something to have gone right the day before." },
         { s: 'saori', f: 'neutral', t: "And unlike some lighthouse keepers, you'll write back." },
         { s: 'solar', t: "Every week." },
-        { n: "She locked the door for the last time and the key stuck, and she laughed, and held Solar's hand all the way down the stairs and out into the snow, past the gate where the silver car used to wait, and didn't let go once, not even when a group of first-years walked by and stared. Especially not then." }
+        { n: "She locked the door for the last time and the key stuck, and she laughed, and held Solar's hand all the way down the stairs and out into the snow, past the gate where the silver car waited once a month, and didn't let go once, not even when a group of first-years walked by and stared. Especially not then." }
       ] }
     ] }
   ]

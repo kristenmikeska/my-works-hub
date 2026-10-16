@@ -57,17 +57,17 @@
 
   <script src="achievements.js?v=9"></script>
   <script src="assets/femc/compendium.js?v=5"></script>
-  <script src="assets/femc/portraits/index.js?v=21"></script>
+  <script src="assets/femc/portraits/index.js?v=22"></script>
   <script src="assets/femc/profile/index.js?v=1"></script>
   <script>
   (function () {
     const ENTRIES = (window.FEMC_COMPENDIUM || []).filter(e => !e.secret || window.femcCompendiumOpen(e));
     // Anyone with a neutral portrait in assets/femc/portraits gets it here automatically.
     // Hand-set portrait paths get the current image version so regenerated portraits show up.
-    ENTRIES.forEach(e => { if (e.img && e.img.startsWith('assets/femc/portraits/') && !e.img.includes('?')) e.img += "?v=16"; });
+    ENTRIES.forEach(e => { if (e.img && e.img.startsWith('assets/femc/portraits/') && !e.img.includes('?')) e.img += "?v=17"; });
     // Full-body art (assets/femc/profile) wins over everything else.
     ENTRIES.forEach(e => { if ((window.FEMC_PROFILE || []).includes(e.id)) { e.img = `assets/femc/profile/${e.id}.webp?v=1`; e.profile = true; } });
-    ENTRIES.forEach(e => { if (!e.img && (window.FEMC_PORTRAITS?.[e.id] || []).includes('neutral')) e.img = `assets/femc/portraits/${e.id}/neutral.webp?v=16`; });
+    ENTRIES.forEach(e => { if (!e.img && (window.FEMC_PORTRAITS?.[e.id] || []).includes('neutral')) e.img = `assets/femc/portraits/${e.id}/neutral.webp?v=17`; });
     const $ = id => document.getElementById(id);
     const F = () => window.FemcMode;
     const isOpen = e => window.femcCompendiumOpen(e);
