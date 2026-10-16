@@ -34,6 +34,7 @@ FemcSocial.define({
       { s: 'elizabeth', f: 'neutral', t: 'Before we go any further, the contract requires your name.' },
       { naming: true },
       { s: 'elizabeth', f: 'happy', t: '...Solar. A fitting name.' },
+      { s: 'elizabeth', f: 'neutral', t: 'Eighteen years old, a third-year at Gekkoukan High, newly moved into the dormitory by the station. The contract is satisfied.' },
       { s: 'elizabeth', f: 'neutral', t: 'How curious. In every world I have peered into, there is someone by that name.' },
       { choose: [
         { t: 'Every world?', notes: 0, then: [

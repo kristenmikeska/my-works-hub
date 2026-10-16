@@ -324,8 +324,8 @@ FemcSocial.define({
       { s: 'solar', t: "It's an Evoker. It's not a real gun." },
       { s: 'leon', f: 'serious', t: "It looks like a real gun." },
       { s: 'solar', t: "You point it at your head and pull the trigger and your Persona comes out. That's how it works." },
-      { n: "She said it plainly, because it was plain, to her, after seven months. She'd forgotten what it looked like from outside. She watched him remember for her, watched it land on his face, a man who had pulled a hundred people out of hell watching a teenage girl calmly describe holding a gun to her own temple." },
-      { s: 'leon', f: 'serious', t: "...Who decided that? Who decided kids should do that?" },
+      { n: "She said it plainly, because it was plain, to her, after seven months. She'd forgotten what it looked like from outside. She watched him remember for her, watched it land on his face, a man who had pulled a hundred people out of hell watching an eighteen-year-old calmly describe holding a gun to her own temple." },
+      { s: 'leon', f: 'serious', t: "...Who decided that? Who decided students should do that?" },
       { choose: [
         { t: "Nobody decided. It's just how it works here.", notes: 2, then: [{ s: 'leon', f: 'serious', t: "Somebody always decided. That's how it works everywhere." }] },
         { t: "It helps, actually. It's like... facing it.", notes: 3, then: [
@@ -359,7 +359,7 @@ FemcSocial.define({
       { s: 'leon', f: 'neutral', t: "...Fair." },
       { n: "She sat down beside him. He pushed the glass an inch away, and then another inch, and then he talked, more than he'd ever talked, about the years between Raccoon City and now. The government that found him after. The jobs they gave him. The things he'd seen that he didn't have words for and didn't want words for. How every time he thought he could stop, somebody else needed getting out." },
       { s: 'leon', f: 'sad', t: "Some nights the drink's the only thing that turns it off. I know that's not good. I'm working on it." },
-      { s: 'leon', f: 'serious', t: "Here's the thing. Your Dark Hour ends in January. Everybody says so. And then what? You just go back to being a kid?" },
+      { s: 'leon', f: 'serious', t: "Here's the thing. Your Dark Hour ends in January. Everybody says so. And then what? You just go back to being a normal student?" },
       { s: 'leon', f: 'sad', t: "Because I never got to. And I'd really like one of us to." },
       { choose: [
         { t: "Then come with me. We'll both try.", notes: 3, then: [

@@ -327,7 +327,7 @@ FemcSocial.define({
       { n: "Jotaro Kujo was enormous, and stoic, and spoke the way glaciers moved. He'd come through, he said, because a door had opened somewhere in his hotel in Morioh and he had walked through it to see what was on the other side, which was, apparently, a thing he just did. He was a marine biologist. He'd been looking at the starfish under the pier." },
       { s: 'jotaro', f: 'neutral', t: "You're the girl with the Persona." },
       { s: 'jotaro', f: 'serious', t: "This hour. This tower. The moon. You're fighting something that wants to end the world. And you're a high school student." },
-      { n: "He wasn't asking. He was looking at her the way adults looked at things that should not be on children's shoulders and somehow always were." },
+      { n: "He wasn't asking. He was looking at her the way people looked at things that should not be on anyone still in school and somehow always were." },
       { choose: [
         { t: "Somebody has to.", notes: 3, then: [
           { s: 'jotaro', f: 'sad', t: '...' },
