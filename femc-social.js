@@ -56,6 +56,7 @@ window.FemcSocial = (() => {
     if (Object.entries(u.links || {}).some(([id, r]) => progress(id).rank < r)) return false;
     if (u.after && S.d < dayOf(u.after)) return false;
     if ((u.met || []).some(id => !S.met.includes(id))) return false;
+    if ((u.romance || []).some(id => progress(id).route !== 'romance')) return false;
     if ((u.codes || []).some(c => !typedCodes().includes(c))) return false;
     if ((u.seen || []).some(id => !(S.story?.seen || []).includes(id))) return false;
     return true;
@@ -67,16 +68,22 @@ window.FemcSocial = (() => {
   // Why a link can or can't be seen right now: { ok, reason }.
   function status(link) {
     const p = progress(link.id);
-    if (p.rank >= link.ranks.length) return { ok: false, reason: 'max' };
+    if (p.rank >= link.ranks.length && !afterMax(link, p)) return { ok: false, reason: 'max' };
     if (!arrived(link)) return { ok: false, reason: 'away' };
     if (link.closes && S.d >= dayOf(link.closes) && !S.free) return { ok: false, reason: 'closed' };
     if (S.free) return { ok: true };
     if (S.spent[`${S.d}-${S.slot}`]) return { ok: false, reason: 'spent' };
     const next = link.ranks[p.rank];
-    if (next.after && S.d < dayOf(next.after)) return { ok: false, reason: 'later', when: next.after };
+    if (next?.after && S.d < dayOf(next.after)) return { ok: false, reason: 'later', when: next.after };
     const h = link.home;
     if (h.slot !== S.slot || !h.days.includes(dateOf(S.d).getDay())) return { ok: false, reason: 'elsewhere' };
     return { ok: true };
+  }
+  // After MAX, a link keeps going: romance gets `dates` (in order, then rotating), friends get `afterMax` scenes,
+  // falling back to the link's `hangouts`. They play without the bond meter.
+  function afterMax(link, p = progress(link.id)) {
+    const pool = (p.route === 'romance' && link.dates?.length) ? link.dates : (link.afterMax?.length ? link.afterMax : link.hangouts);
+    return pool?.length ? pool : null;
   }
   const freeNow = () => Object.values(links).filter(l => !l.hidden && status(l).ok);
   const nameFor = link => (isMet(link.id) ? link.name : '???');
@@ -327,6 +334,13 @@ window.FemcSocial = (() => {
     return Math.max(4, Math.round(maxNotes(link.ranks[r].scene) * 0.8));
   }
   // A short, story-free hangout for topping up the meter. Kat's vignettes rotate; there's a plain fallback.
+  function maxScene(link, p) {
+    const pool = afterMax(link, p), romance = p.route === 'romance' && link.dates?.length;
+    const i = p.dated || 0;
+    const pick = pool[romance && i < pool.length ? i : i % pool.length];
+    const scene = Array.isArray(pick) ? pick : pick.scene;
+    return { place: pick.place || link.home.place, scene, title: pick.title, music: pick.music || (romance ? 'tender' : undefined) };
+  }
   function hangoutScene(link, p) {
     const pool = link.hangouts || [];
     const scene = pool.length ? pool[(p.hung || 0) % pool.length] : [
@@ -387,8 +401,9 @@ window.FemcSocial = (() => {
   function play(link, r, opts = {}) {
     const p = progress(link.id);
     // The story for this rank already played but the meter isn't full: a hangout instead.
-    const filler = !opts.replay && !opts.frame && !S.free && p.ready === r && r > 0;
-    const rank = filler ? hangoutScene(link, p) : link.ranks[r];
+    const maxed = !opts.replay && !opts.frame && r >= link.ranks.length;
+    const filler = !maxed && !opts.replay && !opts.frame && !S.free && p.ready === r && r > 0;
+    const rank = maxed ? maxScene(link, p) : filler ? hangoutScene(link, p) : (opts.scene || link.ranks[r]);
     let gained = 0;
     const el = document.createElement('div');
     el.className = `vn${link.theme ? ` vn-${link.theme}` : ''}`;
@@ -544,6 +559,12 @@ window.FemcSocial = (() => {
       if (!line) return end(true);
       if (line.place) { music.set(line.music || moodFor(link, rank, r, line.place)); return sceneBreak(line); }
       if (line.music) { music.set(line.music); return next(); }
+      if (line.go) {
+        const l = links[line.go], st = storyState();
+        st.christmas = l.id; S.spent[`${S.d}-${S.slot}`] = l.id; save();
+        close();
+        return setTimeout(() => play(l, 0, { frame: true, label: `${l.short} · Christmas Eve`, scene: { place: l.christmas.place || l.home.place, scene: l.christmas.scene || l.christmas, music: 'tender' }, onDone: () => { if (!S.free) advance(); opts.onDone?.(true); } }), 400);
+      }
       if (line.naming) return naming();
       if (line.phone) return phone(line);
       if (line.register) { if (!opts.replay) register(line.register); return next(); }
@@ -613,6 +634,11 @@ window.FemcSocial = (() => {
       clearTimeout(typing);
       if (!finished || opts.replay || opts.frame) { close(); opts.onDone?.(finished); return; }
       // Progress: ♪ go into the bond meter, and the rank goes up only when it's full.
+      if (maxed) {
+        p.dated = (p.dated || 0) + 1; p.notes += gained; p.lastDay = S.d;
+        if (!S.free) S.spent[`${S.d}-${S.slot}`] = link.id;
+        save(); close(); if (!S.free) advance(); opts.onDone?.(true); return;
+      }
       const req = S.free ? 0 : need(link, r);
       const from = Math.min(p.xp || 0, req);
       p.notes += gained;
@@ -679,7 +705,7 @@ window.FemcSocial = (() => {
       const card = document.createElement('div');
       card.className = 'vn-title';
       card.innerHTML = `<p><small></small><span></span></p>`;
-      card.querySelector('small').textContent = opts.label || `${link.short} · Rank ${r + 1}`;
+      card.querySelector('small').textContent = opts.label || (maxed ? `${link.short} · ${p.route === 'romance' && link.dates?.length ? 'Date' : 'Rank MAX'}` : `${link.short} · Rank ${r + 1}`);
       card.querySelector('span').textContent = rank.title;
       el.appendChild(card);
       let gone = false;
@@ -1104,8 +1130,24 @@ window.FemcSocial = (() => {
     document.addEventListener('keydown', key, true);
   }
   // Called after Solar's social links render: plays the next story event if one is due.
+  // P3's Christmas Eve: on the evening of 12/24, if Solar is romancing anyone, she chooses who to spend it with.
+  function christmasEve(onDone) {
+    const st = storyState();
+    if (st.christmas || now().md !== '12/24' || S.slot !== 1) return false;
+    const loves = Object.values(links).filter(l => !l.hidden && l.christmas && progress(l.id).route === 'romance' && progress(l.id).rank >= 9);
+    if (!loves.length) return false;
+    st.christmas = 'pending'; save();
+    const pickScene = [
+      { n: loves.length > 1 ? "Christmas Eve. Her phone had buzzed more than once that afternoon, and she had read each message twice, and now it was evening, and she could only be in one place." : "Christmas Eve, and her phone buzzed once, and she already knew who it was before she looked." },
+      { choose: [...loves.map(l => ({ t: `(Spend Christmas Eve with ${l.short}.)`, then: [{ go: l.id }] })), { t: '(Spend it alone, this year.)', then: [{ n: "She turned her phone face down on the desk and watched the snow, and told herself that was a choice too." }] }] }
+    ];
+    play({ ...storyLink, ranks: [{ place: 'Iwatodai Dorm · Lounge', scene: pickScene }] }, 0, { frame: true, label: 'Christmas Eve', onDone: f => { st.christmas = st.christmas === 'pending' ? 'alone' : st.christmas; save(); onDone?.(f); } });
+    return true;
+  }
+
   function offerStory(onDone) {
     if (S.free || !S.intro || document.querySelector('.vn, .ph')) return false;
+    if (christmasEve(onDone)) return true;
     const e = dueEvent();
     if (!e) return false;
     playEvent(e, { onDone });
