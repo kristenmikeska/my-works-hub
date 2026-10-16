@@ -1,6 +1,6 @@
-/* Sebastian · IX The Hermit. Arrives on the 6/8 full moon. Format notes are at the top of akihiko.js. */
+/* Sebastian · 0 The Fool. Arrives on the 6/8 full moon. Format notes are at the top of akihiko.js. */
 FemcSocial.define({
-  id: 'sebastian', name: 'Sebastian', short: 'Sebastian', arcana: 'Hermit', numeral: 'IX', from: 'Stardew Valley',
+  id: 'sebastian', name: 'Sebastian', short: 'Sebastian', arcana: 'Fool', numeral: '0', from: 'Stardew Valley',
   arrives: '6/8',
   home: { place: 'Paulownia Mall · Game Panic', slot: 1, days: [2, 4, 6], hint: 'Evenings on Tuesdays, Thursdays and Saturdays, under the Game Panic awning. Especially if it is raining.' },
   approach: "A guy in a black hoodie is losing at an arcade machine in the back of Game Panic, with the air of someone who would rather be in a basement.",
@@ -354,7 +354,7 @@ FemcSocial.define({
       { register: 'abigail' },
       { register: 'sam' },
       { s: 'abigail', t: "Seb! We found you! I told you he'd be somewhere with a basement, Sam." },
-      { s: 'sam', t: "There's no basement! He's just in a dorm! Seb, you're living in a DORM?" },
+      { s: 'sam', f: 'surprised', t: "There's no basement! He's just in a dorm! Seb, you're living in a DORM?" },
       { n: "So game night happened in the lounge. Sebastian sat at the head of the coffee table with a notebook full of maps he'd drawn from memory. Abigail and Sam played their usual characters. Solar played Solarion. And Junpei, who had wandered downstairs for a snack, sat down, demanded a character, and was assigned a goblin." },
       { s: 'junpei', f: 'surprised', t: "Why am I a goblin?" },
       { s: 'sebastian', f: 'neutral', t: "You have goblin energy." },

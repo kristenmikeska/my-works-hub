@@ -253,22 +253,22 @@ FemcSocial.define({
       { n: "The full moon in August brought Tifa Lockhart down onto the riverside path in the middle of the green hour, landing in a fighting stance with her fists already up." },
       { register: 'tifa' },
       { n: "By the next afternoon she'd found Cloud, the way, he said, she always found him. She was sitting next to him on a bench by the water when Solar arrived, long dark hair, warm red-brown eyes, and a calm about her that made the whole bench feel steadier." },
-      { s: 'tifa', t: "You must be Solar. Cloud's mentioned you." },
+      { s: 'tifa', f: 'happy', t: "You must be Solar. Cloud's mentioned you." },
       { s: 'cloud', f: 'flustered', t: "...Once." },
-      { s: 'tifa', t: "Four times. Today." },
+      { s: 'tifa', f: 'happy', t: "Four times. Today." },
       { choose: [
         { t: "Four times?", notes: 3, then: [
           { s: 'cloud', f: 'flustered', t: "She's exaggerating." },
-          { s: 'tifa', t: "I'm really not." }
+          { s: 'tifa', f: 'happy', t: "I'm really not." }
         ] },
-        { t: "It's nice to meet you, Tifa.", notes: 2, then: [{ s: 'tifa', t: "You too. Thank you for looking after him. He's terrible at letting people." }] }
+        { t: "It's nice to meet you, Tifa.", notes: 2, then: [{ s: 'tifa', f: 'happy', t: "You too. Thank you for looking after him. He's terrible at letting people." }] }
       ] },
-      { s: 'tifa', t: "We grew up together. In a little town called Nibelheim. In the mountains." },
-      { s: 'tifa', t: "When we were kids, we made a promise at the water tower. Under the stars. If I was ever in trouble, he'd come and save me." },
+      { s: 'tifa', f: 'neutral', t: "We grew up together. In a little town called Nibelheim. In the mountains." },
+      { s: 'tifa', f: 'sad', t: "When we were kids, we made a promise at the water tower. Under the stars. If I was ever in trouble, he'd come and save me." },
       { s: 'cloud', f: 'sad', t: "...I remember the stars." },
       { n: "He said it oddly. Like the stars were the only part he was sure of. Tifa looked at him for a moment with an expression Solar couldn't quite read, gentle and careful and a little sad, like someone watching a friend try to remember the words to a song." },
       { choose: [
-        { t: "That's a beautiful promise.", notes: 3, then: [{ s: 'tifa', t: "He kept it. More than once. Even when he didn't remember making it." }] },
+        { t: "That's a beautiful promise.", notes: 3, then: [{ s: 'tifa', f: 'happy', t: "He kept it. More than once. Even when he didn't remember making it." }] },
         { t: "(Notice the way Tifa looks at him.)", notes: 3, then: [{ n: "Solar noticed. She noticed, too, that Cloud didn't, and that Tifa had clearly made her peace with that a long time ago, and that making peace with it had cost her something." }] }
       ] },
       { n: "Tifa stayed for three days and faded on the fourth, at sunrise, on the same bench. Cloud sat there for an hour after she was gone, not moving, holding the water bottle she'd left behind." }

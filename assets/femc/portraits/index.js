@@ -255,5 +255,23 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "sad",
   "serious"
+ ],
+ "sam": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
+ ],
+ "saori": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
+ ],
+ "tifa": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
  ]
 };

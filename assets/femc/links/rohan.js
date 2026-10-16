@@ -14,24 +14,24 @@ FemcSocial.define({
   hangouts: [
     [
       { n: "Rohan had decided, sometime that morning, that he couldn't draw hands. This was a lie. He could draw hands better than anyone alive. He'd simply decided he couldn't draw her hands, specifically, which meant she had to sit at the back table of Bookworms with both of them flat on the wood while he glared at them." },
-      { s: 'rohan', t: "Don't move. Your knuckles have a story. I want it." },
+      { s: 'rohan', f: 'serious', t: "Don't move. Your knuckles have a story. I want it." },
       { choose: [
         { t: "What story do my knuckles have?", notes: 3, then: [
-          { s: 'rohan', t: "You hold your pen too tight. There's a callus here, from writing. And you bite this nail when you think nobody's looking." },
-          { s: 'rohan', t: "...See? Story." },
+          { s: 'rohan', f: 'neutral', t: "You hold your pen too tight. There's a callus here, from writing. And you bite this nail when you think nobody's looking." },
+          { s: 'rohan', f: 'happy', t: "...See? Story." },
           { n: "He was right. She didn't tell him so. He could tell anyway, and was insufferable about it for the rest of the afternoon." }
         ] },
         { t: "(Hold perfectly still.)", notes: 2, then: [
           { n: "She held perfectly still for forty minutes. Her nose itched for thirty-eight of them. He drew fourteen hands and threw away eleven." },
-          { s: 'rohan', t: "Adequate. You're a decent model. Don't let it go to your head." }
+          { s: 'rohan', f: 'neutral', t: "Adequate. You're a decent model. Don't let it go to your head." }
         ] },
-        { t: "(Wiggle your fingers.)", notes: 1, then: [{ s: 'rohan', t: "Wonderful. Now I'm drawing an octopus." }] }
+        { t: "(Wiggle your fingers.)", notes: 1, then: [{ s: 'rohan', f: 'serious', t: "Wonderful. Now I'm drawing an octopus." }] }
       ] },
       { n: "When she finally got up her hands had gone stiff, and the old woman at the counter brought them both tea without being asked. Rohan said thank you to her, which he never said to anyone, and Solar decided not to point it out. He'd have stopped." }
     ],
     [
       { n: "The old man who ran Bookworms was asleep at the counter again, glasses pushed up on his head, mouth slightly open, a paperback face-down on his chest. Rohan was drawing him with enormous, focused tenderness, the way some people lit candles." },
-      { s: 'rohan', t: "He's perfect. He's held exactly that position for nine minutes. Do you know how rare that is? Professional models can't do that." },
+      { s: 'rohan', f: 'happy', t: "He's perfect. He's held exactly that position for nine minutes. Do you know how rare that is? Professional models can't do that." },
       { n: "The old man woke up. He blinked at them. Then, very slowly, he held out his hand for the sketchbook." },
       { choose: [
         { t: "(Nudge Rohan to show him.)", notes: 3, then: [
@@ -40,7 +40,7 @@ FemcSocial.define({
         ] },
         { t: "(Wait and see what Rohan does.)", notes: 2, then: [{ n: "Rohan tore the page out neatly along the edge and handed it over without a word. The old man folded it into his paperback like a bookmark and went back to sleep." }] },
         { t: "He's going to be mad you drew him sleeping.", notes: 1, then: [
-          { s: 'rohan', t: "He's going to be honored. There's a difference." },
+          { s: 'rohan', f: 'happy', t: "He's going to be honored. There's a difference." },
           { n: "He was honored. He asked for a copy." }
         ] }
       ] },
@@ -48,36 +48,36 @@ FemcSocial.define({
     ],
     [
       { n: "There was a stack of manga on the back table that Rohan had pulled from the shelves himself, popular ones, shiny covers, the kind with anime adaptations, and he was going through them one by one with a red pencil, which nobody had given him permission to do." },
-      { s: 'rohan', t: "This panel. Look at it. He's throwing a punch and his shoulder isn't even engaged. Has this artist ever been punched?" },
+      { s: 'rohan', f: 'serious', t: "This panel. Look at it. He's throwing a punch and his shoulder isn't even engaged. Has this artist ever been punched?" },
       { choose: [
         { t: "Have you ever been punched?", notes: 3, then: [
-          { s: 'rohan', t: "Yes. Several times. For research." },
-          { s: 'rohan', t: "...Not all of it was for research." }
+          { s: 'rohan', f: 'neutral', t: "Yes. Several times. For research." },
+          { s: 'rohan', f: 'serious', t: "...Not all of it was for research." }
         ] },
         { t: "I like that one, actually.", notes: 2, then: [
-          { s: 'rohan', t: "...Why?" },
+          { s: 'rohan', f: 'surprised', t: "...Why?" },
           { n: "He asked it like he really wanted to know. She told him. He listened to all of it, said she was wrong, and then quietly put that volume back on the shelf without a single red mark in it." }
         ] },
-        { t: "(Read over his shoulder.)", notes: 1, then: [{ s: 'rohan', t: "You're breathing on my margin." }] }
+        { t: "(Read over his shoulder.)", notes: 1, then: [{ s: 'rohan', f: 'serious', t: "You're breathing on my margin." }] }
       ] },
       { n: "The old woman came over eventually and confiscated the red pencil. Rohan surrendered it without a word, the way a cat gives up a mouse it was going to drop anyway, and took a blue one out of his jacket." }
     ],
     [
       { n: "Koichi had brought snacks, a whole bag of them, rice crackers and chocolate and a carton of strawberry milk, and was trying to set them down on the back table. Rohan was trying to stop him with his entire body." },
-      { s: 'rohan', t: "Not near the paper. Koichi. Not near the paper." },
+      { s: 'rohan', f: 'serious', t: "Not near the paper. Koichi. Not near the paper." },
       { s: 'koichi', t: "Rohan, there's nowhere that isn't near the paper! You covered the whole table!" },
       { choose: [
         { t: "Rohan, eat a cracker. Think of it as research.", notes: 3, then: [
-          { s: 'rohan', t: '...' },
-          { s: 'rohan', t: "...Fine. For research." },
+          { s: 'rohan', f: 'neutral', t: '...' },
+          { s: 'rohan', f: 'neutral', t: "...Fine. For research." },
           { n: "He ate the cracker holding it at arm's length from the drawing, leaning sideways in his chair like a man eating over a bomb. Koichi looked at Solar like she'd performed a miracle." }
         ] },
         { t: "(Hold the snacks on your lap.)", notes: 2, then: [
           { s: 'koichi', t: "Solar! You're a genius!" },
-          { s: 'rohan', t: "She's a coat rack with opinions. Fine. Hand me a cracker." }
+          { s: 'rohan', f: 'neutral', t: "She's a coat rack with opinions. Fine. Hand me a cracker." }
         ] },
         { t: "Koichi, let's eat outside.", notes: 1, then: [
-          { s: 'rohan', t: "Fine. Leave. See if I care." },
+          { s: 'rohan', f: 'serious', t: "Fine. Leave. See if I care." },
           { n: "He cared. Five minutes later he came out onto the steps with his sketchbook and sat one step above them, drawing the crackers." }
         ] }
       ] },
@@ -85,15 +85,15 @@ FemcSocial.define({
     ],
     [
       { n: "Rohan had a question for her, he announced, before she'd even sat down. A research question. It had been bothering him all morning and he could not draw the next page until it was answered." },
-      { s: 'rohan', t: "The bread they sell at your school. The yakisoba one. What does it actually taste like? Not 'good.' I'll leave if you say 'good.'" },
+      { s: 'rohan', f: 'serious', t: "The bread they sell at your school. The yakisoba one. What does it actually taste like? Not 'good.' I'll leave if you say 'good.'" },
       { choose: [
         { t: "(Describe it in exact, loving detail.)", notes: 3, then: [
           { n: "She told him about the soft cheap roll and the noodles that were always a little cold, the pickled ginger, the mayonnaise you could never see but always tasted, the way the sauce soaked through the bottom if you saved it until fifth period. He wrote it all down without once looking up." },
-          { s: 'rohan', t: "...That's very good. That's very, very good. You'd make a decent writer." }
+          { s: 'rohan', f: 'happy', t: "...That's very good. That's very, very good. You'd make a decent writer." }
         ] },
-        { t: "Carbs inside carbs.", notes: 2, then: [{ s: 'rohan', t: "Hm. Crude. Accurate. I'll take it." }] },
+        { t: "Carbs inside carbs.", notes: 2, then: [{ s: 'rohan', f: 'neutral', t: "Hm. Crude. Accurate. I'll take it." }] },
         { t: "Good.", notes: 1, then: [
-          { s: 'rohan', t: '...' },
+          { s: 'rohan', f: 'serious', t: '...' },
           { n: "He did not leave. But he looked at her for a long time like she'd personally burned down a library." }
         ] }
       ] },
@@ -223,17 +223,17 @@ FemcSocial.define({
     { after: '9/8', title: '1: material', place: 'Iwatodai Strip · Bookworms', scene: [
       { n: "Bookworms had a new regular, and he had taken the back table, the good one by the window, and covered it entirely in paper." },
       { n: "He was sharp in every direction. Green headband, earrings shaped like fountain pens, an expensive cropped jacket, a face that looked like it was always about to be disappointed by you. He was drawing the old couple who ran the shop, the husband dozing at the counter, the wife reading, and he was drawing them so fast and so well that Solar stopped in the aisle without meaning to and just watched the pen move." },
-      { s: 'rohan', t: "Don't stand there. You're blocking the light." },
-      { s: 'rohan', t: "...Actually, no. Stand there. Your shadow's better than the light was." },
+      { s: 'rohan', f: 'serious', t: "Don't stand there. You're blocking the light." },
+      { s: 'rohan', f: 'surprised', t: "...Actually, no. Stand there. Your shadow's better than the light was." },
       { n: "Rohan Kishibe, he informed her, without looking up. A manga artist. Pink Dark Boy. He said the title like she should have heard of it and was faintly offended she hadn't. He'd woken up three weeks ago on a bench in Iwatodai Station in the middle of the night, surrounded by coffins, and his first thought, he said, had been that it would make an incredible chapter." },
-      { s: 'rohan', t: "And you. You're one of the ones who walks around during the green hour. I've seen you. Carrying that silver thing." },
-      { s: 'rohan', t: "I want to know everything about it. Everything you know. For reference." },
+      { s: 'rohan', f: 'neutral', t: "And you. You're one of the ones who walks around during the green hour. I've seen you. Carrying that silver thing." },
+      { s: 'rohan', f: 'serious', t: "I want to know everything about it. Everything you know. For reference." },
       { choose: [
         { t: "What do I get?", notes: 3, then: [
-          { s: 'rohan', t: '...' },
-          { s: 'rohan', t: "Good. A negotiator. I'll draw you. In the next chapter. You'll be the only real person who's ever appeared in Pink Dark Boy." }
+          { s: 'rohan', f: 'surprised', t: '...' },
+          { s: 'rohan', f: 'happy', t: "Good. A negotiator. I'll draw you. In the next chapter. You'll be the only real person who's ever appeared in Pink Dark Boy." }
         ] },
-        { t: "That's kind of a lot to ask a stranger.", notes: 2, then: [{ s: 'rohan', t: "Everyone's a stranger until they're material. Sit down." }] }
+        { t: "That's kind of a lot to ask a stranger.", notes: 2, then: [{ s: 'rohan', f: 'neutral', t: "Everyone's a stranger until they're material. Sit down." }] }
       ] },
       { n: "She sat down. He drew her while she talked, without asking, which she should have minded and didn't, and when she left two hours later, he hadn't once said thank you, but he'd bought her tea, and he'd drawn her the way she wished she looked, and she wasn't sure he'd done that on purpose." }
     ] },
@@ -245,53 +245,53 @@ FemcSocial.define({
       { n: "There was a small boy at the back table today, very small, with silver hair cut short and a serious, kind, anxious face, and Rohan was looking at him with something Solar had never seen on Rohan's face before. Something like fondness." },
       { register: 'koichi' },
       { s: 'koichi', t: "You must be Solar! I'm Koichi. Hirose Koichi. I'm so sorry about Rohan." },
-      { s: 'rohan', t: "Why are you apologizing for me?" },
+      { s: 'rohan', f: 'serious', t: "Why are you apologizing for me?" },
       { s: 'koichi', t: "Because you never do it yourself!" },
       { n: "Koichi had come through two days before, looking for Rohan, because when someone from his town went missing, he said, the first thing you did was check if they'd been kidnapped by something supernatural, and the second thing you did was check if Rohan had done something weird to it first." },
       { s: 'koichi', t: "He used to be awful. Like, really awful. He tried to make me into a manga." },
-      { s: 'rohan', t: "That was years ago. And it would have been an excellent manga." },
+      { s: 'rohan', f: 'happy', t: "That was years ago. And it would have been an excellent manga." },
       { choose: [
         { t: "You two are friends?", notes: 3, then: [
           { s: 'koichi', t: "Yeah. He's actually my best friend. Don't tell him." },
-          { s: 'rohan', t: "I'm sitting right here, Koichi." }
+          { s: 'rohan', f: 'serious', t: "I'm sitting right here, Koichi." }
         ] },
-        { t: "Rohan, did you make anyone else into a manga?", notes: 2, then: [{ s: 'rohan', t: "Define 'make.'" }] }
+        { t: "Rohan, did you make anyone else into a manga?", notes: 2, then: [{ s: 'rohan', f: 'happy', t: "Define 'make.'" }] }
       ] },
       { n: "Koichi sat with them the rest of the afternoon and told Solar stories about their town, Morioh, a little seaside place where strange things happened all the time, and every story somehow ended with Rohan being insufferable and also, quietly, at the last minute, brave. Rohan pretended not to listen. His pen stopped every time Koichi said something nice about him." }
     ] },
 
     { after: '10/13', title: '3: heaven\'s door', music: 'mystery', place: 'Iwatodai Strip · Bookworms', scene: [
       { n: "It was Rohan's power. He'd been very careful not to explain it, the way he was careful about all the things he actually cared about. He called it Heaven's Door." },
-      { s: 'rohan', t: "I can read people. Literally. They become books. Their memories, their secrets, everything they've ever done, written down on pages in their face." },
-      { s: 'rohan', t: "I want to read you. I've wanted to since the day you blocked my light. I'm asking because Koichi says I'm supposed to ask now." },
+      { s: 'rohan', f: 'serious', t: "I can read people. Literally. They become books. Their memories, their secrets, everything they've ever done, written down on pages in their face." },
+      { s: 'rohan', f: 'neutral', t: "I want to read you. I've wanted to since the day you blocked my light. I'm asking because Koichi says I'm supposed to ask now." },
       { choose: [
-        { t: "Okay. Read me.", notes: 3, then: [{ s: 'rohan', t: "...Really? Just like that? Most people run." }] },
-        { t: "Only if you tell me what you find.", notes: 3, then: [{ s: 'rohan', t: "Deal. I'd want to anyway. It's the only fun part." }] }
+        { t: "Okay. Read me.", notes: 3, then: [{ s: 'rohan', f: 'surprised', t: "...Really? Just like that? Most people run." }] },
+        { t: "Only if you tell me what you find.", notes: 3, then: [{ s: 'rohan', f: 'happy', t: "Deal. I'd want to anyway. It's the only fun part." }] }
       ] },
       { n: "He drew a single line in the air with his pen, and a little figure appeared, like a cartoon boy in a hat, and touched her forehead, and her face came apart into pages." },
       { n: "It didn't hurt. It felt like being opened, like a window in winter. She could see the pages fluttering at the edge of her vision. He leaned in close and started reading, and his face went very still." },
-      { s: 'rohan', t: "...This isn't right. This is you, but it isn't. A girl on a sidewalk on the Upper East Side, with a suitcase. She turned down Harvard. Everyone on her campus thinks they already know her." },
-      { s: 'rohan', t: "And here. A different you. A seafood restaurant on the water, in Incheon, at low tide. She knows how to stitch a wound nobody can take to a hospital. There's a wedding date." },
-      { s: 'rohan', t: "And here. Another one. High school. A student council campaign. A group chat that will not stop buzzing." },
-      { s: 'rohan', t: "You're not one person. You're... a whole shelf." },
+      { s: 'rohan', f: 'surprised', t: "...This isn't right. This is you, but it isn't. A girl on a sidewalk on the Upper East Side, with a suitcase. She turned down Harvard. Everyone on her campus thinks they already know her." },
+      { s: 'rohan', f: 'serious', t: "And here. A different you. A seafood restaurant on the water, in Incheon, at low tide. She knows how to stitch a wound nobody can take to a hospital. There's a wedding date." },
+      { s: 'rohan', f: 'serious', t: "And here. Another one. High school. A student council campaign. A group chat that will not stop buzzing." },
+      { s: 'rohan', f: 'surprised', t: "You're not one person. You're... a whole shelf." },
       { n: "He turned another page. Then another. And then he frowned, and she felt it, a strange pressure behind her eyes." },
-      { s: 'rohan', t: "There's a boy. In almost every one. I can't read his face. It's smudged. Every time. Like whoever wrote you kept going back and touching it." },
-      { s: 'rohan', t: "...Hm. I've never seen anything like that. Not once." },
+      { s: 'rohan', f: 'serious', t: "There's a boy. In almost every one. I can't read his face. It's smudged. Every time. Like whoever wrote you kept going back and touching it." },
+      { s: 'rohan', f: 'surprised', t: "...Hm. I've never seen anything like that. Not once." },
       { n: "He closed her pages carefully, the way you'd close a book you meant to come back to, and her face was her face again, and the bookshop was very quiet, and somewhere in her chest something ached for a reason she couldn't place." },
-      { s: 'rohan', t: "I didn't write anything in you. I want you to know that. I could have. I didn't." }
+      { s: 'rohan', f: 'serious', t: "I didn't write anything in you. I want you to know that. I could have. I didn't." }
     ] },
 
     { after: '10/27', title: '4: josuke', place: 'Iwatodai Strip', scene: [
       { n: "Josuke Higashikata arrived the way he did everything, loudly, with an enormous pompadour that added roughly a foot to his height and a school uniform jacket covered in heart and peace-sign pins." },
       { register: 'josuke' },
       { s: 'josuke', t: "Koichi! There you are! And, ugh. Rohan." },
-      { s: 'rohan', t: "Josuke. You look exactly as stupid as I remember." },
+      { s: 'rohan', f: 'happy', t: "Josuke. You look exactly as stupid as I remember." },
       { n: "They hated each other. That was immediately clear. They hated each other with a deep, complete, comfortable hatred that had obviously been going on for years and that neither of them would ever give up, because what else would they do with their afternoons." },
       { s: 'josuke', t: "Solar, right? Koichi says you're cool. Anybody who can stand Rohan for a whole month deserves a medal." },
       { choose: [
         { t: "I like your hair.", notes: 3, then: [
           { s: 'josuke', t: "...You. I like YOU." },
-          { s: 'rohan', t: "Don't encourage him. If you insult it he loses his mind, so if you praise it he'll never leave." }
+          { s: 'rohan', f: 'serious', t: "Don't encourage him. If you insult it he loses his mind, so if you praise it he'll never leave." }
         ] },
         { t: "Rohan's not that bad.", notes: 2, then: [{ s: 'josuke', t: "He's EXACTLY that bad." }] }
       ] },
@@ -304,25 +304,25 @@ FemcSocial.define({
     { after: '11/10', title: '5: pink dark boy', place: 'Iwatodai Strip · Bookworms', scene: [
       { n: "Rohan showed her the chapter. It wasn't finished. He never showed anyone things that weren't finished, Koichi said later, in a hushed voice, like he was describing a solar eclipse." },
       { n: "There she was. A girl in a red armband on a rooftop under a green moon, the city full of coffins below her, a silver gun pressed to her own temple, a great figure made of light and glass rising out of her back. Every line exact. Every shadow right. Better than she was. Exactly like her." },
-      { s: 'rohan', t: "Well? Say something. I hate it when people don't say anything." },
+      { s: 'rohan', f: 'serious', t: "Well? Say something. I hate it when people don't say anything." },
       { choose: [
-        { t: "It's beautiful. I don't know what else to say.", notes: 3, then: [{ s: 'rohan', t: "...That's acceptable." }] },
+        { t: "It's beautiful. I don't know what else to say.", notes: 3, then: [{ s: 'rohan', f: 'happy', t: "...That's acceptable." }] },
         { t: "Why do you draw manga, Rohan?", notes: 3, then: [
-          { s: 'rohan', t: "Because I want people to read it. That's all. Not for money. Not to be famous." },
-          { s: 'rohan', t: "I want someone, somewhere, to turn the page and feel something they didn't before. That's the whole reason." }
+          { s: 'rohan', f: 'serious', t: "Because I want people to read it. That's all. Not for money. Not to be famous." },
+          { s: 'rohan', f: 'happy', t: "I want someone, somewhere, to turn the page and feel something they didn't before. That's the whole reason." }
         ] }
       ] },
-      { s: 'rohan', t: "Most people think art is about imagination. It isn't. It's about reality. You have to go and find the real thing and look at it until it gives up its secrets." },
-      { s: 'rohan', t: "I licked a spider once. To know what it tasted like. For a chapter." },
+      { s: 'rohan', f: 'serious', t: "Most people think art is about imagination. It isn't. It's about reality. You have to go and find the real thing and look at it until it gives up its secrets." },
+      { s: 'rohan', f: 'serious', t: "I licked a spider once. To know what it tasted like. For a chapter." },
       { s: 'solar', t: "...Rohan." },
-      { s: 'rohan', t: "It tasted like nothing. Very disappointing. Accurate, though." },
+      { s: 'rohan', f: 'neutral', t: "It tasted like nothing. Very disappointing. Accurate, though." },
       { n: "She laughed so hard she had to hold onto the table. He looked deeply offended for a full minute. Then he smiled, very slightly, at his drawing, and started inking her eyes." }
     ] },
 
     { after: '11/24', title: '6: jotaro', place: 'Port Island · Pier', scene: [
       { n: "There was a very tall man standing at the end of the pier in a long white coat and a white hat, looking at the water, and Rohan stopped walking so suddenly that Solar walked into his back." },
       { register: 'jotaro' },
-      { s: 'rohan', t: "...Jotaro-san." },
+      { s: 'rohan', f: 'surprised', t: "...Jotaro-san." },
       { s: 'jotaro', t: "Rohan. Koichi said you were here." },
       { n: "Jotaro Kujo was enormous, and stoic, and spoke the way glaciers moved. He'd come through, he said, because a door had opened somewhere in his hotel in Morioh and he had walked through it to see what was on the other side, which was, apparently, a thing he just did. He was a marine biologist. He'd been looking at the starfish under the pier." },
       { s: 'jotaro', t: "You're the girl with the Persona." },
@@ -337,38 +337,38 @@ FemcSocial.define({
         { t: "I'm not doing it alone.", notes: 3, then: [{ s: 'jotaro', t: "Good. Don't. That's the only way any of us made it out." }] }
       ] },
       { n: "He left without saying goodbye. Rohan watched him go for a long time. He said, very quietly, that Jotaro was the only person in the world he'd never once wanted to read, because he already knew he'd find something heavy in there, something Jotaro had carried by himself for a very long time." },
-      { s: 'rohan', t: "I'd rather draw him. Drawings are kinder. You get to leave things out." }
+      { s: 'rohan', f: 'sad', t: "I'd rather draw him. Drawings are kinder. You get to leave things out." }
     ] },
 
     { after: '12/3', title: '7: tartarus', place: 'Tartarus · The Dark Hour', scene: [
       { n: "Rohan had absolutely insisted. He needed, he said, to see it with his own eyes. Reference. Mitsuru had looked at him for a long second and said if he died she was not responsible. Rohan said that was completely fair." },
       { n: "He sketched the whole way up. Checkerboard floors, bloody walls, staircases that moved when you weren't watching them. He sketched the shadows. He sketched Junpei falling down. He was having, by any measure, the time of his life." },
       { n: "And then a shadow got past her. A huge, black, laughing thing with a mask for a face, and it went straight for him, and Solar was too far away, and she screamed his name." },
-      { s: 'rohan', t: "Heaven's Door." },
+      { s: 'rohan', f: 'serious', t: "Heaven's Door." },
       { n: "The shadow froze. Its mask split into pages, black pages, written in a language that shouldn't exist. Rohan, perfectly calm, uncapped his pen and wrote one line across the top." },
-      { s: 'rohan', t: "'Cannot attack Rohan Kishibe or anyone standing with him.'" },
+      { s: 'rohan', f: 'neutral', t: "'Cannot attack Rohan Kishibe or anyone standing with him.'" },
       { n: "The shadow stopped. It turned around, confused, and wandered off into the dark, and Rohan capped his pen and went back to sketching." },
       { choose: [
         { t: "You could have died.", notes: 3, then: [
-          { s: 'rohan', t: "I could have. Then I wouldn't have gotten this drawing. Look at the angle. Look at it." },
-          { s: 'rohan', t: "...You screamed my name. I've never had anyone scream my name like that. I'm drawing that too." }
+          { s: 'rohan', f: 'happy', t: "I could have. Then I wouldn't have gotten this drawing. Look at the angle. Look at it." },
+          { s: 'rohan', f: 'surprised', t: "...You screamed my name. I've never had anyone scream my name like that. I'm drawing that too." }
         ] },
-        { t: "Okay, that was incredible.", notes: 3, then: [{ s: 'rohan', t: "Obviously. Write it down. It'll be in the next chapter anyway." }] }
+        { t: "Okay, that was incredible.", notes: 3, then: [{ s: 'rohan', f: 'happy', t: "Obviously. Write it down. It'll be in the next chapter anyway." }] }
       ] }
     ] },
 
     { after: '12/15', title: '8: the alley', music: 'tender', place: 'Iwatodai Strip · Back Alley', scene: [
       { n: "There was an alley behind the Iwatodai strip that Rohan would not walk down. He'd walk around the whole block to avoid it. Solar had noticed weeks ago and had never asked. Tonight, in the cold, he stopped at the mouth of it and stood there." },
-      { s: 'rohan', t: "There's an alley in my town too. A ghost lives in it. A girl called Reimi." },
-      { s: 'rohan', t: "When I was four, a man broke into the house I was staying in. Reimi was babysitting me. She pushed me out the window. She saved my life. She didn't save her own." },
-      { s: 'rohan', t: "I didn't remember. Not until I was twenty. My own memory just... closed that page. Kept it from me." },
-      { s: 'rohan', t: "Imagine that. I can read anyone's life except the part of my own that mattered most." },
+      { s: 'rohan', f: 'sad', t: "There's an alley in my town too. A ghost lives in it. A girl called Reimi." },
+      { s: 'rohan', f: 'sad', t: "When I was four, a man broke into the house I was staying in. Reimi was babysitting me. She pushed me out the window. She saved my life. She didn't save her own." },
+      { s: 'rohan', f: 'serious', t: "I didn't remember. Not until I was twenty. My own memory just... closed that page. Kept it from me." },
+      { s: 'rohan', f: 'sad', t: "Imagine that. I can read anyone's life except the part of my own that mattered most." },
       { n: "It was cold, the kind of cold that got into your hands first. She thought about the dorm kitchen, the way grief closed things up, the way you could walk past a room every day and never once go in." },
       { choose: [
-        { t: "She'd be proud of you, I think.", notes: 3, then: [{ s: 'rohan', t: "...She'd tell me to be nicer to Josuke. She'd be right. I won't do it." }] },
+        { t: "She'd be proud of you, I think.", notes: 3, then: [{ s: 'rohan', f: 'sad', t: "...She'd tell me to be nicer to Josuke. She'd be right. I won't do it." }] },
         { t: "(Walk down the alley with him.)", notes: 3, then: [
           { n: "She took his hand, which he allowed, and walked into the alley, which he allowed, and they walked all the way to the other end of it together, slowly, and didn't look back, and when they came out into the light on the other side he let out a breath he'd been holding for years." },
-          { s: 'rohan', t: "...That was the first time I've done that since I was four." }
+          { s: 'rohan', f: 'sad', t: "...That was the first time I've done that since I was four." }
         ] }
       ] },
       { n: "He never told anyone else. She never made it into a story. She thought that was the most important thing she'd ever been trusted with, and she was right." }
@@ -376,46 +376,46 @@ FemcSocial.define({
 
     { after: '12/22', title: '9: what are we', place: 'Iwatodai Strip · Bookworms', scene: [
       { n: "The shop was closed. The old couple had given Rohan a key, which was a thing he'd mentioned eleven separate times. He was at the back table, and there were drawings of her covering the whole surface, dozens of them, from every day since September." },
-      { s: 'rohan', t: "I've drawn you a hundred and four times. I counted." },
-      { s: 'rohan', t: "I've never drawn anyone a hundred and four times. Not Koichi. Not myself." },
-      { s: 'rohan', t: "I need to know what this is. I'm a researcher. I need accurate information." },
+      { s: 'rohan', f: 'neutral', t: "I've drawn you a hundred and four times. I counted." },
+      { s: 'rohan', f: 'serious', t: "I've never drawn anyone a hundred and four times. Not Koichi. Not myself." },
+      { s: 'rohan', f: 'serious', t: "I need to know what this is. I'm a researcher. I need accurate information." },
       { route: [
         { t: "I'm in love with you, Rohan.", route: 'romance', notes: 3, then: [
-          { s: 'rohan', t: '...' },
-          { s: 'rohan', t: "...That's accurate. That's correct information. Yes." },
+          { s: 'rohan', f: 'surprised', t: '...' },
+          { s: 'rohan', f: 'happy', t: "...That's accurate. That's correct information. Yes." },
           { n: "He kissed her among the drawings, very carefully, like she was the only thing in the world he'd ever been afraid to get wrong, and afterward he immediately drew her face, and wouldn't show her, and said it was the hundred and fifth and the best." }
         ] },
         { t: "You're my best friend, Rohan. My favorite artist.", route: 'friend', notes: 3, then: [
-          { s: 'rohan', t: "...Favorite artist. Obviously. There's no competition." },
-          { s: 'rohan', t: "Best friend, though. That's... new information. I'll need time to draw it." }
+          { s: 'rohan', f: 'happy', t: "...Favorite artist. Obviously. There's no competition." },
+          { s: 'rohan', f: 'surprised', t: "Best friend, though. That's... new information. I'll need time to draw it." }
         ] }
       ] }
     ] },
 
     { after: '12/30', title: '10: the last page', place: 'Iwatodai Strip · Bookworms', scene: [
       { n: "He gave her a manga. One volume, hand-bound, with a cover he'd painted himself. A girl in a red armband with headphones around her neck, under a green moon. The title was just her name." },
-      { s: 'rohan', t: "It's yours. Every page. Every time I drew you. In order." },
+      { s: 'rohan', f: 'neutral', t: "It's yours. Every page. Every time I drew you. In order." },
       { n: "She turned the pages slowly, there in the closed shop with the snow coming down outside. The dorm, the shrine, the pier, the rooftops. Kuromi drawing on Junpei. Koichi laughing. Josuke's hair. The alley. All of it. Her year, here, in this world, drawn by someone who had looked at it until it gave up its secrets." },
       { n: "The last page was blank." },
-      { s: 'rohan', t: "That's yours too. I can't write that page. Nobody can. I could read your whole life and I'd still never know what you're going to do next." },
-      { s: 'rohan', t: "That's the best thing about you. You don't let anyone write you. Not even me." },
+      { s: 'rohan', f: 'serious', t: "That's yours too. I can't write that page. Nobody can. I could read your whole life and I'd still never know what you're going to do next." },
+      { s: 'rohan', f: 'happy', t: "That's the best thing about you. You don't let anyone write you. Not even me." },
       { ifRoute: 'friend', then: [
         { choose: [
-          { t: "Then draw me again next year.", notes: 3, then: [{ s: 'rohan', t: "I'll draw you every year. I'll draw you when you're old and boring. I'll still find something." }] },
-          { t: "Thank you, Rohan. Really.", notes: 3, then: [{ s: 'rohan', t: "...Don't thank me. Just let me keep drawing you. That's enough." }] }
+          { t: "Then draw me again next year.", notes: 3, then: [{ s: 'rohan', f: 'happy', t: "I'll draw you every year. I'll draw you when you're old and boring. I'll still find something." }] },
+          { t: "Thank you, Rohan. Really.", notes: 3, then: [{ s: 'rohan', f: 'neutral', t: "...Don't thank me. Just let me keep drawing you. That's enough." }] }
         ] },
         { n: "Koichi and Josuke came by with snacks and fought over the heater. Rohan insulted Josuke's hair once, just to start a fight, and Josuke rebuilt the heater after he punched it, and Solar sat in the middle of it with her manga in her lap, and drew, on the last page, in pencil, very small, the three of them." }
       ] },
       { ifRoute: 'romance', then: [
-        { s: 'rohan', t: "But... if you wanted. I could write one line. In you. Only if you said yes." },
+        { s: 'rohan', f: 'serious', t: "But... if you wanted. I could write one line. In you. Only if you said yes." },
         { choose: [
           { t: "(Hand him the pen.)", notes: 3, then: [
             { n: "He opened her, gently, the pages fluttering. He wrote one line, very carefully, in his neat, exact hand. When she was herself again she asked him what it said, and he wouldn't tell her. He'd only say it wasn't a command. It was a fact." },
-            { s: 'rohan', t: "It says what I already know. That's all. You can read it someday. If you ask nicely." }
+            { s: 'rohan', f: 'happy', t: "It says what I already know. That's all. You can read it someday. If you ask nicely." }
           ] },
           { t: "Write it on the last page instead.", notes: 3, then: [
-            { s: 'rohan', t: '...' },
-            { s: 'rohan', t: "Yes. That's better. That's much better. You're a better writer than me." },
+            { s: 'rohan', f: 'surprised', t: '...' },
+            { s: 'rohan', f: 'happy', t: "Yes. That's better. That's much better. You're a better writer than me." },
             { n: "He wrote one word on the blank page. It said: Together. And then, underneath it, in smaller letters, so she almost missed it: to be continued." }
           ] }
         ] }

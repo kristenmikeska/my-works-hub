@@ -86,7 +86,7 @@ window.FEMC_COMPENDIUM = [
   "img": null,
   "unlock": "met:leon",
   "note": "A government agent with a dry one-liner for every situation.",
-  "arcana": "VII · Chariot",
+  "arcana": "XI · Strength",
   "link": "social.html#leon"
  },
  {
@@ -96,7 +96,7 @@ window.FEMC_COMPENDIUM = [
   "img": null,
   "unlock": "met:sebastian",
   "note": "A quiet programmer who likes rainy days and being left alone.",
-  "arcana": "IX · Hermit",
+  "arcana": "0 · Fool",
   "link": "social.html#sebastian"
  },
  {

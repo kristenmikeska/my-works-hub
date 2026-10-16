@@ -1,7 +1,7 @@
-/* Leon S. Kennedy · VII The Chariot. Arrives 9/5. Format notes are at the top of akihiko.js.
+/* Leon S. Kennedy · XI Strength. Arrives 9/5. Format notes are at the top of akihiko.js.
    Rank 3 sits the day after Shinjiro's death (10/4), so it's written quietly; rank 6 is the Evoker. */
 FemcSocial.define({
-  id: 'leon', name: 'Leon S. Kennedy', short: 'Leon', arcana: 'Chariot', numeral: 'VII', from: 'Resident Evil 4',
+  id: 'leon', name: 'Leon S. Kennedy', short: 'Leon', arcana: 'Strength', numeral: 'XI', from: 'Resident Evil 4',
   arrives: '9/5',
   home: { place: 'Paulownia Mall · Police Box', slot: 1, days: [1, 2, 4, 5], hint: 'Evenings on Mondays, Tuesdays, Thursdays and Fridays, leaning on the counter of Officer Kurosawa\'s police box.' },
   approach: "A man in a fur-collared leather jacket is leaning on Officer Kurosawa's counter, very politely losing an argument.",
