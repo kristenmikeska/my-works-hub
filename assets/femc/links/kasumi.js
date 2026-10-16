@@ -237,7 +237,7 @@ FemcSocial.define({
         { t: "That does sound wonderful.", notes: 1, then: [{ s: 'maruki', t: "Doesn't it? I'm so glad you agree." }] }
       ] },
       { n: "On the way out, Elizabeth was waiting in the hallway, which she never did, standing very straight with her book against her chest, looking past Solar at the counseling room door." },
-      { s: 'elizabeth', f: 'sad', t: "Be careful with that man, Solar. His kindness has a very particular shape. Like a key cut to fit a lock it has no business opening." },
+      { s: 'elizabeth', f: 'serious', t: "Be careful with that man, Solar. His kindness has a very particular shape. Like a key cut to fit a lock it has no business opening." },
       { n: "She left before Solar could ask what she meant." }
     ] },
 

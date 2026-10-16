@@ -31,7 +31,9 @@ window.FEMC_PORTRAITS = {
  ],
  "elizabeth": [
   "happy",
-  "sad"
+  "neutral",
+  "sad",
+  "serious"
  ],
  "futaba": [
   "happy",
