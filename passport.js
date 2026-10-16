@@ -219,17 +219,26 @@ function renderSecretStamps() {
   const dateFmt = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
   // Stamps from the other side (FEMC mode) stay hidden until you've crossed over once.
   const { list } = visibleSecrets();
-  grid.replaceChildren(...list.map(a => {
+  const card = a => {
     const when = got[a.id];
-    const card = document.createElement("div");
-    card.className = `secret-stamp${when ? " secret-found" : ""}`;
-    card.innerHTML = `<span class="stamp ${when ? "stamp-finished" : "stamp-locked"}"><span class="stamp-art"><svg class="ghost" viewBox="0 0 64 64" aria-hidden="true">${a.svg}</svg><svg class="ink" viewBox="0 0 64 64" aria-hidden="true">${a.svg}</svg></span></span><span class="secret-copy"><b></b><small></small></span>`;
-    card.querySelector("b").textContent = when ? a.name : "???";
-    card.querySelector("small").textContent = when ? `${a.group} · ${dateFmt.format(new Date(when))}` : a.hint;
-    return card;
-  }));
-  const count = document.querySelector("#secretCount");
-  if (count) count.textContent = `${Object.keys(got).filter(id => list.some(a => a.id === id)).length} of ${list.length} found`;
+    const el = document.createElement("div");
+    el.className = `secret-stamp${when ? " secret-found" : ""}`;
+    el.innerHTML = `<span class="stamp ${when ? "stamp-finished" : "stamp-locked"}"><span class="stamp-art"><svg class="ghost" viewBox="0 0 64 64" aria-hidden="true">${a.svg}</svg><svg class="ink" viewBox="0 0 64 64" aria-hidden="true">${a.svg}</svg></span></span><span class="secret-copy"><b></b><small></small></span>`;
+    el.querySelector("b").textContent = when ? a.name : "???";
+    el.querySelector("small").textContent = when ? `${a.group} · ${dateFmt.format(new Date(when))}` : a.hint;
+    return el;
+  };
+  const fill = (gridEl, countEl, items) => {
+    gridEl.replaceChildren(...items.map(card));
+    if (countEl) countEl.textContent = `${items.filter(a => got[a.id]).length} of ${items.length} found`;
+  };
+  // Crossovers (the novels leaking into FEMC mode) get their own page section.
+  fill(grid, document.querySelector("#secretCount"), list.filter(a => a.group !== "Crossovers"));
+  const cross = list.filter(a => a.group === "Crossovers"), section = document.querySelector("#crossSection");
+  if (section) {
+    section.hidden = !cross.length;
+    if (cross.length) fill(document.querySelector("#crossGrid"), document.querySelector("#crossCount"), cross);
+  }
 }
 
 function openKeepsake(world, keepsake) {
