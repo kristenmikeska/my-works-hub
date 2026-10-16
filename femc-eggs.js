@@ -102,6 +102,47 @@ window.FemcEggs = (() => {
     "You've been working hard. Take a break. With me, I mean.",
     "I'm heading to the gym. ...You could come watch. If you want."
   ];
+  // A P3P-style message box from anyone: used by Akihiko's texts and by typed secret codes.
+  function message(name, line, link) {
+    if (document.querySelector('.femc-msg')) document.querySelector('.femc-msg').remove();
+    const box = document.createElement('div');
+    box.className = 'femc-msg';
+    box.setAttribute('role', 'status');
+    box.innerHTML = `<span class="femc-msg-name"><span></span></span><div class="femc-msg-box"><p class="femc-msg-text"></p><div class="femc-msg-actions">${link ? `<a href="${BASE}${link.href}"></a>` : ''}<button type="button">Close</button></div></div>`;
+    box.querySelector('.femc-msg-name span').textContent = name;
+    if (link) box.querySelector('a').textContent = link.text;
+    document.body.appendChild(box);
+    const text = box.querySelector('.femc-msg-text');
+    let i = 0;
+    const type = () => {
+      if (!box.isConnected) return;
+      text.textContent = line.slice(0, ++i);
+      if (i % 3 === 1 && line[i - 1] !== ' ') F.sfx('femc-text');
+      if (i < line.length) setTimeout(type, line[i - 1] === '.' ? 140 : 32); else box.classList.add('done');
+    };
+    reduced.matches ? (text.textContent = line, box.classList.add('done')) : type();
+    const close = () => { box.classList.add('out'); setTimeout(() => box.remove(), 320); };
+    box.querySelector('button').addEventListener('click', close);
+    later(() => { if (box.isConnected && !box.matches(':hover')) close(); }, 22000);
+  }
+
+  /* ── Secret codes (assets/femc/codes.js) ─────────── */
+  // Typing a code in FEMC mode shows a message, unlocks its stamp, and remembers it (kg-femc-codes) so
+  // secret scenes can require it (unlock: { codes: [...] }).
+  F.load(`assets/femc/codes.js?v=${F.v}`, () => window.FEMC_CODES);
+  function tryCode() {
+    const c = (window.FEMC_CODES || []).find(x => typed.endsWith(x.code) && (x.needs?.met || []).every(met));
+    if (!c) return false;
+    typed = '';
+    let got = [];
+    try { got = JSON.parse(get('kg-femc-codes')) || []; } catch (e) {}
+    if (!got.includes(c.code)) { got.push(c.code); set('kg-femc-codes', JSON.stringify(got)); }
+    F.sfx(c.sound || 'femc-buzz');
+    message(c.from || '???', c.lines[Math.floor(Math.random() * c.lines.length)], c.link);
+    if (c.stamp) unlock(c.stamp);
+    return true;
+  }
+
   function textFromAkihiko(force) {
     if (document.querySelector('.femc-msg')) return;
     const box = document.createElement('div');
@@ -238,7 +279,8 @@ window.FemcEggs = (() => {
   document.addEventListener('keydown', e => {
     if (!F.isOn() || e.metaKey || e.ctrlKey || e.altKey || e.key.length !== 1) return;
     if (e.target.closest && e.target.closest('input, textarea, select, [contenteditable]')) return;
-    typed = (typed + e.key.toLowerCase()).slice(-20);
+    typed = (typed + e.key.toLowerCase()).slice(-40);
+    if (tryCode()) return;
     if (typed.endsWith('heroes never die') && metMercy()) { typed = ''; heroesNeverDie(); return; }
     if (typed.endsWith('love birds') && met('aphrodite')) { typed = ''; loveBirds(); return; }
     if (typed.endsWith('protein')) { typed = ''; protein(); }

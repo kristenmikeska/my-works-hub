@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <script src="femc-mode.js?v=43"></script>
+  <script src="femc-mode.js?v=44"></script>
   <title>Social Links</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/femc/femc-pages.css?v=2">
@@ -69,6 +69,10 @@
     .area.pic { background: linear-gradient(180deg, rgba(20, 7, 15, .35), rgba(20, 7, 15, .9) 70%), var(--pic) center / cover no-repeat; }
     .area.pic.late { background: linear-gradient(180deg, rgba(16, 18, 52, .6), rgba(20, 7, 15, .92) 70%), var(--pic) center / cover no-repeat; }
     .area h2 { text-shadow: 3px 3px 0 rgba(20, 7, 15, .8); }
+    .area.secret { border-color: #8fb0ff; background: radial-gradient(ellipse at 30% 0%, rgba(120, 160, 255, .28), transparent 70%), linear-gradient(160deg, #0b1236, #14070f); box-shadow: 0 0 24px rgba(120, 160, 255, .35); animation: secret-glow 2.4s ease-in-out infinite alternate; }
+    .area.secret .who i { background: #2f5bd8; font-style: normal; }
+    @keyframes secret-glow { to { box-shadow: 0 0 40px rgba(120, 160, 255, .6); } }
+    @media (prefers-reduced-motion: reduce) { .area.secret { animation: none; } }
     .area.busy { border-color: var(--pink-2); box-shadow: 6px 6px 0 rgba(255, 79, 158, .45); }
     .area h2 { margin: 0 0 12px; font: italic 900 24px/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; transform: skewX(-6deg); }
     .area .quiet, .area .usual { margin: 0; color: var(--muted); font-size: 13.5px; }
@@ -102,7 +106,7 @@
   </main>
 
   <script src="achievements.js?v=9"></script>
-  <script src="femc-social.js?v=69"></script>
+  <script src="femc-social.js?v=70"></script>
   <script>
   (function () {
     const $ = id => document.getElementById(id);
@@ -134,7 +138,8 @@
       $('view').innerHTML = `${tabs('map')}<p class="fp-kicker">Iwatodai · 2009</p><h1 class="page-title cond">Go out</h1>
         <p class="cal-free">Where do you want to spend this ${esc(n.time.toLowerCase())}? People keep their own schedules.</p>
         ${spent ? `<p class="spent-note">You've already spent this ${esc(n.time.toLowerCase())} with someone. <b>Wait ▸</b> to move on.</p>` : ''}
-        <div class="map">${areas.map(a => {
+        <div class="map">${X.secretPlaces().map(pl => `<section class="area busy secret"><h2>${esc(pl.area)}</h2><p class="usual">${esc(pl.hint || "You don't remember this being here.")}</p>
+            <button class="who" type="button" data-secret="${pl.id}"><i>✦</i><span><b>${esc(pl.title)}</b><small>Tonight only</small></span></button></section>`).join('')}${areas.map(a => {
           const here = known.filter(l => areaOf(l.home.place) === a);
           const free = here.filter(l => X.status(l).ok);
           const usual = here.filter(l => X.isMet(l.id) && !free.includes(l));
@@ -148,16 +153,18 @@
             }).join('') || '<p class="quiet">Nobody you know is around right now.</p>'}
             ${usual.length ? `<p class="usual">Usually here: ${usual.map(l => esc(l.short)).join(', ')}</p>` : ''}</section>`;
         }).join('')}</div>`;
+      $('view').querySelectorAll('[data-secret]').forEach(b => b.addEventListener('click', () => X.visitPlace(b.dataset.secret, render)));
       $('view').querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => { const l = X.links[b.dataset.go]; X.play(l, X.progress(l.id).rank, { onDone: render }); }));
     }
 
     // The main story so far: every act Solar has reached, with the events she has seen, to replay.
     function storyPage() {
       const seen = X.storySeen();
-      const acts = X.storyActs().filter(a => seen.some(e => e.act === a.id));
+      const acts = X.storyActs().filter(a => seen.some(e => e.act === a.id && !e.secret));
       $('view').innerHTML = `${tabs('story')}<p class="fp-kicker">Iwatodai · 2009</p><h1 class="page-title cond">Story</h1>
         <p class="cal-free">Everything that has happened so far, beyond your bonds.</p>
-        ${acts.map(a => `<section class="memories"><h2>Act ${esc(a.numeral)} · ${esc(a.title)}</h2><div>${seen.filter(e => e.act === a.id).map(e => `<button type="button" data-ev="${e.id}">${esc(e.title)}</button>`).join('')}</div></section>`).join('')}`;
+        ${acts.map(a => `<section class="memories"><h2>Act ${esc(a.numeral)} · ${esc(a.title)}</h2><div>${seen.filter(e => e.act === a.id && !e.secret).map(e => `<button type="button" data-ev="${e.id}">${esc(e.title)}</button>`).join('')}</div></section>`).join('')}
+        ${seen.some(e => e.secret) ? `<section class="memories"><h2>Secrets</h2><div>${seen.filter(e => e.secret).map(e => `<button type="button" data-ev="${e.id}">${esc(e.title)}</button>`).join('')}</div></section>` : ''}`;
       $('view').querySelectorAll('[data-ev]').forEach(b => b.addEventListener('click', () => X.playEvent(X.storyEvents().find(e => e.id === b.dataset.ev), { replay: true })));
     }
 

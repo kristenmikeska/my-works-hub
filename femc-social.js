@@ -55,8 +55,13 @@ window.FemcSocial = (() => {
     if ((u.stamps || []).some(id => !got[id])) return false;
     if (Object.entries(u.links || {}).some(([id, r]) => progress(id).rank < r)) return false;
     if (u.after && S.d < dayOf(u.after)) return false;
+    if ((u.met || []).some(id => !S.met.includes(id))) return false;
+    if ((u.codes || []).some(c => !typedCodes().includes(c))) return false;
+    if ((u.seen || []).some(id => !(S.story?.seen || []).includes(id))) return false;
     return true;
   }
+  // Codes typed in FEMC mode (femc-eggs.js keeps them in their own key so the two scripts never overwrite each other).
+  const typedCodes = () => { try { return JSON.parse(localStorage.getItem('kg-femc-codes')) || []; } catch (e) { return []; } };
   const arrived = link => S.free || ((!link.arrives || S.d >= dayOf(link.arrives)) && unlockMet(link.unlock));
   const isMet = id => S.met.includes(id);
   // Why a link can or can't be seen right now: { ok, reason }.
@@ -702,6 +707,7 @@ window.FemcSocial = (() => {
     if (since < (t.days ?? 1)) return false;
     if (t.slot !== undefined && t.slot !== S.slot) return false;
     if (t.date && S.d < dayOf(t.date)) return false;
+    if (t.date && t.link === 'story' && S.d > dayOf(t.date) + (t.window ?? 3)) return false;   // a dated secret only lands near its day
     if (t.until && S.d >= dayOf(t.until)) return false;
     if (t.route && progress(t.link).route !== t.route) return false;
     if (!unlockMet(t.unlock ?? links[t.link]?.unlock)) return false;
@@ -709,12 +715,13 @@ window.FemcSocial = (() => {
   }
   function deliver() {
     expireInvites();
-    const t = TEXTS.find(eligible);
+    const t = TEXTS.find(x => x.priority && eligible(x)) || TEXTS.find(eligible);
     if (t) send(t); else invite();
   }
   function send(t) {
     const P = ph();
     P.done.push(t.id);
+    stamp(t.stamp);
     const log = (P.log[t.thread] ||= []);
     // Longer chats pause at each { ask: [...] } for Solar's answer; the rest arrives after she replies.
     const cut = t.msgs.findIndex(m => m.ask);
@@ -1017,7 +1024,8 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = (path, isReady) => F().load(`${path}?v=${F().v}`, isReady);   // FEMC_ASSET_VERSION in femc-mode.js
-    ready = Promise.all([L('assets/femc/portraits/index.js', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js', () => window.FEMC_BG), L('assets/femc/tarot/index.js', () => window.FEMC_TAROT), L('assets/femc/profile/index.js', () => window.FEMC_PROFILE), L('assets/femc/links/index.js', () => window.FEMC_LINK_FILES), L('assets/femc/story.js', () => STORY.acts.length)])
+    ready = Promise.all([L('assets/femc/portraits/index.js', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js', () => window.FEMC_BG), L('assets/femc/tarot/index.js', () => window.FEMC_TAROT), L('assets/femc/profile/index.js', () => window.FEMC_PROFILE), L('assets/femc/links/index.js', () => window.FEMC_LINK_FILES), L('assets/femc/story.js', () => STORY.acts.length), L('assets/femc/secrets/index.js', () => window.FEMC_SECRET_FILES)])
+      .then(() => Promise.all((window.FEMC_SECRET_FILES || []).map(id => L(`assets/femc/secrets/${id}.js`, () => (window.FEMC_SECRETS_LOADED || []).includes(id)))))
       .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
@@ -1031,8 +1039,34 @@ window.FemcSocial = (() => {
   function story(data) {
     Object.assign(CAST, data.cast || {});
     STORY.acts = data.acts || [];
-    STORY.events = data.events || [];
+    STORY.events = [...(data.events || []), ...STORY.events.filter(e => e.secret)];
   }
+  /* ── Secrets (assets/femc/secrets.js): wrong-number texts, dated moments, group scenes, hidden places ── */
+  // Each file in assets/femc/secrets/ (listed in its index.js) calls secrets({ id, cast, threads, texts, moments, places })
+  //   texts: like a link's texts but on their own: { id, thread, date?, until?, slot?, unlock?, msgs, reply?, stamp? }
+  //   moments: short scenes that play by themselves when due: { id, date?, slot?, unlock?, label, title, place, scene, stamp? }
+  //   places: hidden Go Out spots: { id, area, title, dates: ['M/D', ...], slot?, unlock?, place, scene, stamp? }
+  // `stamp` unlocks a passport stamp (defined in achievements.js) when the text arrives or the scene is finished.
+  const SECRETS = { places: [] };
+  function secrets(data) {
+    (window.FEMC_SECRETS_LOADED ||= []).push(data.id);
+    Object.assign(CAST, data.cast || {});
+    Object.assign(THREADS, data.threads || {});
+    (data.texts || []).forEach(t => TEXTS.push({ link: 'story', rank: 0, before: 99, days: 0, priority: !!t.date, ...t }));
+    STORY.events.push(...(data.moments || []).map(m => ({ date: '4/7', ...m, secret: true })));
+    SECRETS.places.push(...(data.places || []));
+  }
+  const stamp = id => id && F().load('achievements.js?v=9', () => window.Achievements).then(() => window.Achievements?.unlock(id));
+  // Hidden places open on the Go Out map tonight, not yet visited.
+  function secretPlaces() {
+    const md = now().md;
+    return SECRETS.places.filter(pl => !storyState().seen.includes(pl.id) && (pl.dates || []).includes(md) && (pl.slot === undefined || pl.slot === S.slot) && unlockMet(pl.unlock));
+  }
+  function visitPlace(id, onDone) {
+    const pl = SECRETS.places.find(x => x.id === id);
+    if (pl) playEvent({ ...pl, secret: true, label: pl.label || pl.area }, { onDone });
+  }
+
   const storyState = () => (S.story ||= { seen: [], act: null });
   const storyLink = { id: 'story', name: '', short: '', arcana: '', numeral: '', ranks: [], home: { place: '', slot: 0, days: [] } };
   function dueEvent() {
@@ -1040,11 +1074,11 @@ window.FemcSocial = (() => {
     return STORY.events.find(e => !st.seen.includes(e.id) && S.d >= dayOf(e.date) && (e.slot === undefined || e.slot === S.slot) && unlockMet(e.unlock));
   }
   function playEvent(e, opts = {}) {
-    const act = STORY.acts.find(a => a.id === e.act);
+    const act = e.secret ? null : STORY.acts.find(a => a.id === e.act);
     const run = () => play({ ...storyLink, ranks: [e], theme: e.theme }, 0, {
-      frame: true, label: act ? `Act ${act.numeral} · ${act.title}` : 'Story', replay: opts.replay,
+      frame: true, label: act ? `Act ${act.numeral} · ${act.title}` : (e.label || 'Story'), replay: opts.replay,
       onDone: finished => {
-        if (finished && !opts.replay) { const st = storyState(); if (!st.seen.includes(e.id)) st.seen.push(e.id); save(); }
+        if (finished && !opts.replay) { const st = storyState(); if (!st.seen.includes(e.id)) st.seen.push(e.id); save(); stamp(e.stamp); }
         opts.onDone?.(finished);
       }
     });
@@ -1084,5 +1118,5 @@ window.FemcSocial = (() => {
     play(l, 0, { frame: true, onDone: () => { S.intro = true; save(); onDone?.(); } });
     return true;
   }
-  return { story, offerStory, playEvent, storySeen, storyActs: () => STORY.acts, storyEvents: () => STORY.events, profile, tarot, background, areaBackground, need, playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
+  return { secrets, secretPlaces, visitPlace, story, offerStory, playEvent, storySeen, storyActs: () => STORY.acts, storyEvents: () => STORY.events, profile, tarot, background, areaBackground, need, playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
 })();
