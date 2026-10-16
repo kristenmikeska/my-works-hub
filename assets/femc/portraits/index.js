@@ -303,5 +303,11 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "sad",
   "serious"
+ ],
+ "ada": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
  ]
 };

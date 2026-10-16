@@ -300,18 +300,18 @@ FemcSocial.define({
 
     { after: '11/3', title: '5: the woman in red', place: 'Iwatodai · Rooftops · The Dark Hour', scene: [
       { n: "The Dark Hour, and they were on a rooftop above the strip because Leon had seen a light up there where no light should be. The city below was coffins and green. The moon was a big pale coin." },
-      { n: "There was a woman standing at the edge of the roof. Red dress. Short black hair. Sunglasses, at midnight, in the Dark Hour, which was a choice. She was holding a little glowing sample case and looking at Leon like he was a joke she'd heard before and still liked." },
+      { n: "There was a woman standing at the edge of the roof. Red turtleneck under a black harness. A sleek black bob. Red lipstick, at midnight, in the Dark Hour, which was a choice. She was holding a little glowing sample case and looking at Leon like he was a joke she'd heard before and still liked." },
       { register: 'ada' },
-      { s: 'ada', t: "Leon. You look tired." },
+      { s: 'ada', f: 'happy', t: "Leon. You look tired." },
       { s: 'leon', f: 'flustered', t: "Ada." },
       { n: "That was all he said. Just her name. But Solar had been reading people her whole life, and there was a whole history in the way he said it, years of it, rooftops and helicopters and a woman who always left first." },
-      { s: 'ada', t: "And who's this? You're collecting strays again." },
+      { s: 'ada', f: 'happy', t: "And who's this? You're collecting strays again." },
       { choose: [
-        { t: "I'm the one who keeps him fed.", notes: 3, then: [{ s: 'ada', t: "Hm. Somebody should." }] },
-        { t: "(Say nothing. Watch her.)", notes: 2, then: [{ s: 'ada', t: "Oh, I like her. She watches. You never watch, Leon." }] }
+        { t: "I'm the one who keeps him fed.", notes: 3, then: [{ s: 'ada', f: 'neutral', t: "Hm. Somebody should." }] },
+        { t: "(Say nothing. Watch her.)", notes: 2, then: [{ s: 'ada', f: 'happy', t: "Oh, I like her. She watches. You never watch, Leon." }] }
       ] },
       { s: 'leon', f: 'serious', t: "What are you doing here?" },
-      { s: 'ada', t: "Same thing as always. Picking up something that doesn't belong to me." },
+      { s: 'ada', f: 'happy', t: "Same thing as always. Picking up something that doesn't belong to me." },
       { n: "She held up the case, and Leon realized at the same moment Solar did that it was the thing from his jacket pocket, the one he'd been carrying since Spain, and he hadn't felt her take it. She smiled. Then she fired a grappling hook into the dark and was gone, a flash of red against the green moon." },
       { s: 'leon', f: 'happy', t: "...Every single time." },
       { n: "He didn't sound angry. He sounded like a man who'd been robbed by the same person for ten years and had stopped being sure he minded. Solar didn't know why that made her chest feel tight. She decided not to know." }
