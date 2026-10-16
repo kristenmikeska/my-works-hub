@@ -45,22 +45,22 @@ FemcSocial.define({
     ],
     [
       { n: "Ashley was sitting on the police box counter again, which Kurosawa had stopped fighting, eating a crepe the size of her head and dripping strawberry sauce onto the incident log." },
-      { s: 'ashley', t: "Solar! Tell Leon the photo sticker booth is not a security risk." },
+      { s: 'ashley', f: 'happy', t: "Solar! Tell Leon the photo sticker booth is not a security risk." },
       { s: 'leon', f: 'serious', t: "It's a small enclosed space with one exit and a curtain." },
-      { s: 'ashley', t: "It has GLITTER FRAMES, Leon." },
+      { s: 'ashley', f: 'serious', t: "It has GLITTER FRAMES, Leon." },
       { choose: [
         { t: "(Drag him into the booth.)", notes: 3, then: [
           { n: "It took both of them. The booth was very small and Leon was not, and there were three of them in it and a great many elbows. The machine counted down in a cheerful voice. Ashley made a peace sign. Solar made a face. Leon, at the last second, out of pure reflex, checked the exit." },
-          { s: 'ashley', t: "Oh my god. He's looking at the curtain in every single one." },
+          { s: 'ashley', f: 'happy', t: "Oh my god. He's looking at the curtain in every single one." },
           { s: 'leon', f: 'happy', t: "Somebody has to." }
         ] },
         { t: "Leon can stand guard outside the curtain.", notes: 2, then: [
           { s: 'leon', f: 'neutral', t: "...That's acceptable." },
-          { s: 'ashley', t: "NO. He has to be IN it. That's the whole point." }
+          { s: 'ashley', f: 'serious', t: "NO. He has to be IN it. That's the whole point." }
         ] },
         { t: "It's a little bit of a security risk.", notes: 1, then: [
           { s: 'leon', f: 'happy', t: "Thank you." },
-          { s: 'ashley', t: "TRAITOR." }
+          { s: 'ashley', f: 'serious', t: "TRAITOR." }
         ] }
       ] },
       { n: "Ashley stuck one of the stickers on the police box counter, right next to the incident log. Kurosawa saw it. He left it there." }
@@ -236,25 +236,25 @@ FemcSocial.define({
     { after: '9/21', title: '2: ashley', place: 'Paulownia Mall', scene: [
       { n: "The second time she found Leon at the police box, there was a girl sitting on the counter swinging her legs, blonde bob, orange sweater, plaid skirt, eating a crepe and complaining." },
       { register: 'ashley' },
-      { s: 'ashley', t: "LEON. There is a MALL. A real one. With clothes. And you won't let me go in it." },
+      { s: 'ashley', f: 'serious', t: "LEON. There is a MALL. A real one. With clothes. And you won't let me go in it." },
       { s: 'leon', f: 'serious', t: "Last time I let you go somewhere you got kidnapped by a cult." },
-      { s: 'ashley', t: "That was ONE TIME." },
+      { s: 'ashley', f: 'serious', t: "That was ONE TIME." },
       { s: 'leon', f: 'neutral', t: "It was four times, Ashley." },
       { n: "Ashley Graham. The president's daughter, Leon explained, with the face of a man who had explained this to a lot of people. She'd come through the same door he had, and he was, technically, still on the job. She was his job. She was always his job." },
       { choose: [
         { t: "I'll take her shopping. You can follow us.", notes: 3, then: [
-          { s: 'ashley', t: "OH MY GOD. I love you. Who are you. I love you." },
+          { s: 'ashley', f: 'happy', t: "OH MY GOD. I love you. Who are you. I love you." },
           { s: 'leon', f: 'happy', t: "...Fine. But I'm carrying the bags. Bags are cover." }
         ] },
         { t: "Leon, let the girl have a crepe in peace.", notes: 2, then: [
-          { s: 'ashley', t: "THANK you. Someone with SENSE." },
+          { s: 'ashley', f: 'happy', t: "THANK you. Someone with SENSE." },
           { s: 'leon', f: 'neutral', t: "She's had three crepes." }
         ] }
       ] },
       { n: "They went through every store in Paulownia Mall. Ashley tried on everything. Solar told her the truth about all of it, which Ashley said nobody ever did, because everyone was always too scared of her father. Leon trailed three steps behind them the entire afternoon, carrying twelve bags, including a lamp, scanning every exit." },
       { n: "At one point a man bumped into Ashley by accident and Leon was between them before Solar saw him move. The man apologized four times and fled. Leon went back to carrying the lamp as if nothing had happened." },
-      { s: 'ashley', t: "He does that. It's annoying." },
-      { s: 'ashley', t: "...It's also kind of the only reason I'm alive. Don't tell him I said that." }
+      { s: 'ashley', f: 'neutral', t: "He does that. It's annoying." },
+      { s: 'ashley', f: 'sad', t: "...It's also kind of the only reason I'm alive. Don't tell him I said that." }
     ] },
 
     { after: '10/6', title: '3: raccoon city', music: 'tender', place: 'Iwatodai Dorm · Front Steps', scene: [
