@@ -250,22 +250,22 @@ FemcSocial.define({
       { n: "Ignis Scientia came through and immediately reorganized the dorm kitchen." },
       { register: 'ignis' },
       { n: "He'd arrived the night before in an immaculate black shirt and glasses, found Noctis by following the smell of a convenience-store onigiri he'd judged inadequate, and was now standing in the dorm kitchen at seven a.m. with his sleeves rolled up and an expression of profound, professional disappointment." },
-      { s: 'ignis', t: "The spices are alphabetized. Incorrectly. And someone has been storing rice next to the oven." },
+      { s: 'ignis', f: 'serious', t: "The spices are alphabetized. Incorrectly. And someone has been storing rice next to the oven." },
       { n: "Shinjiro came downstairs, saw a stranger in his kitchen, and stopped dead. Haru, behind him with her coffee setup, peered around his shoulder." },
       { s: 'shinjiro', f: 'neutral', t: "...Who the hell are you." },
-      { s: 'ignis', t: "Ignis Scientia. Advisor to the prince, and his cook. I see this is your kitchen. My apologies. It's a very good kitchen. Your broth is exceptional." },
+      { s: 'ignis', f: 'neutral', t: "Ignis Scientia. Advisor to the prince, and his cook. I see this is your kitchen. My apologies. It's a very good kitchen. Your broth is exceptional." },
       { s: 'shinjiro', f: 'surprised', t: '...' },
       { s: 'shinjiro', f: 'neutral', t: "...Yeah. It is." },
       { choose: [
         { t: "You three should cook together.", notes: 3, then: [
           { s: 'haru', f: 'happy', t: "Oh! Yes! A collaboration!" },
           { s: 'shinjiro', f: 'neutral', t: "...Fine. But I'm on the broth." },
-          { s: 'ignis', t: "I wouldn't dream of touching your broth." }
+          { s: 'ignis', f: 'happy', t: "I wouldn't dream of touching your broth." }
         ] },
         { t: "Noctis, you never said you had a personal chef.", notes: 2, then: [{ s: 'noctis', f: 'happy', t: "He's not a chef. He's Specs. He just cooks better than chefs." }] }
       ] },
       { n: "It was the greatest breakfast in the history of Iwatodai Dorm. Ignis made something with eggs and herbs that made Junpei weep. Shinjiro made rice that Ignis praised for a full minute. Haru made coffee that made Ignis take his glasses off and clean them very slowly." },
-      { s: 'ignis', t: "...I believe I've come up with a new recipe." },
+      { s: 'ignis', f: 'happy', t: "...I believe I've come up with a new recipe." },
       { s: 'noctis', f: 'neutral', t: "Here we go." },
       { n: "Noctis ate three helpings and pushed every vegetable to the edge of his plate. Ignis noticed. Ignis always noticed. He said nothing, and put the vegetables back on the plate, and Noctis sighed like a man condemned." }
     ] },

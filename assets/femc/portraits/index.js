@@ -309,5 +309,11 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "sad",
   "serious"
+ ],
+ "ignis": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
  ]
 };
