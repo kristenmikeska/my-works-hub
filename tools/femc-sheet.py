@@ -72,9 +72,9 @@ def cut_background(im, tol=26, checker=False):
     pocket = lambda p: diff(p, gray) < 14
     m = Image.new('L', (w, h), 0)
     mk = m.load()
-    # The figure is cut off at the bottom of the panel, so in checker mode the fill never starts there
-    # (a white shirt touching the bottom edge would otherwise be taken for background).
-    q = deque([(x, 0) for x in range(w)] + ([] if checker else [(x, h - 1) for x in range(w)]) + [(0, y) for y in range(h)] + [(w - 1, y) for y in range(h)])
+    # The figure is always cut off at the bottom of the panel, so the fill never starts there
+    # (a white shirt or white lettering touching the bottom edge would otherwise be taken for background).
+    q = deque([(x, 0) for x in range(w)] + [(0, y) for y in range(h)] + [(w - 1, y) for y in range(h)])
     while q:
         x, y = q.popleft()
         if mk[x, y] or not near(px[x, y]):

@@ -270,14 +270,14 @@ FemcSocial.define({
       { s: 'rio', f: 'serious', t: "I said one sentence." },
       { s: 'hina', f: 'happy', t: "She said one sentence, and then she was nice to everyone for an entire practice, which has never happened, so we all had to know." },
       { n: "On the floor by the bench, lying flat on her back with her knees up, was Ayane Moriguchi, the libero, in a different-colored shirt from everyone else. Rangy and quiet, with a deadpan you could have cut glass on. She raised one hand at Solar without sitting up." },
-      { s: 'ayane', t: "Hello. I'm stretching." },
+      { s: 'ayane', f: 'neutral', t: "Hello. I'm stretching." },
       { s: 'rio', f: 'serious', t: "You're lying down." },
-      { s: 'ayane', t: "Horizontally stretching." },
+      { s: 'ayane', f: 'neutral', t: "Horizontally stretching." },
       { n: "Rio ran a receiving drill that nobody did properly. She ran it again. Hina laughed at something one of the first-years whispered, and missed her ball, and laughed harder, and Solar watched the back of Rio's neck go red one degree at a time, like a thermometer." },
       { s: 'rio', f: 'serious', t: "If this is a joke to you, there's the door. Some of us want to actually win a match this year." },
       { n: "The gym went quiet. Hina put her hand over her mouth. At five-thirty exactly Ayane stood up, picked up her bag, and said she had to go." },
       { s: 'rio', f: 'serious', t: "You always have to go." },
-      { s: 'ayane', t: "Yes. I always do." },
+      { s: 'ayane', f: 'neutral', t: "Yes. I always do." },
       { n: "Then everyone was looking at Solar, because Solar was the only person in the room who didn't belong to either side, and she could feel it settle on her, the way a ball settles on your arms before you decide where it goes." },
       { choose: [
         { t: "Everyone take five. Hina, can I have a bite of that?", notes: 3, then: [
@@ -311,7 +311,7 @@ FemcSocial.define({
       { n: "In the middle of the last drill of the day, at the top of her jump, Rio's stomach growled so loudly that Hina dropped the ball." },
       { n: "It echoed. It actually echoed. The first-years looked at the ceiling as if it had come from there." },
       { s: 'rio', f: 'flustered', t: "That wasn't me." },
-      { s: 'ayane', t: "It was a bear. There is a bear in the gym." },
+      { s: 'ayane', f: 'neutral', t: "It was a bear. There is a bear in the gym." },
       { choose: [
         { t: "Ramen. My treat. Right now.", notes: 3, then: [
           { s: 'rio', f: 'surprised', t: "...Right now? Practice isn't over." },
@@ -358,7 +358,7 @@ FemcSocial.define({
       { n: "Ayane arrived at three fifty-two. She was still in her school shoes. She said sorry, the shop, a delivery came late, and went to change, and in warm-ups she shanked the first serve that came to her off the side of her arm and into the bleachers." },
       { n: "The other team was watching. Their whole bench was watching." },
       { s: 'rio', f: 'serious', t: "Are you even trying?" },
-      { s: 'ayane', t: "I told you. A delivery came..." },
+      { s: 'ayane', f: 'sad', t: "I told you. A delivery came..." },
       { s: 'rio', f: 'serious', t: "If your family's vegetable stand matters more than this, then go stack cabbages, and give your spot to someone who actually cares. Nobody here would even notice you were gone." },
       { n: "The gym went silent in a way Solar had never heard a gym go silent. Even the other team stopped bouncing their balls." },
       { n: "Ayane didn't say anything. She just looked at Rio, steadily, for one long second, and then she took off her knee pads, one and then the other, and set them on the bench side by side." },
@@ -429,10 +429,10 @@ FemcSocial.define({
       { s: 'rio', f: 'sad', t: "You're the best receiver I've ever played with. You do all this and you still show up. I'd notice if you were gone. I'd notice every single point." },
       { s: 'rio', f: 'sad', t: "I'm sorry. That's all. I don't have a conclusion." },
       { n: "Ayane looked at her for a long time. Then she held out the box cutter, handle first." },
-      { s: 'ayane', t: "There are forty boxes. If you break down twenty, I'll come back Thursday." },
-      { s: 'ayane', t: "Also you have to say all that again to Hina. And Hina will cry. And you have to let her hug you for as long as she wants." },
+      { s: 'ayane', f: 'neutral', t: "There are forty boxes. If you break down twenty, I'll come back Thursday." },
+      { s: 'ayane', f: 'neutral', t: "Also you have to say all that again to Hina. And Hina will cry. And you have to let her hug you for as long as she wants." },
       { s: 'rio', f: 'surprised', t: "...As long as she wants?" },
-      { s: 'ayane', t: "I'd budget ten minutes." },
+      { s: 'ayane', f: 'happy', t: "I'd budget ten minutes." },
       { n: "Rio broke down twenty-two boxes. Solar did nine. Ayane did the rest, and at some point, without anybody announcing it, the three of them started talking about the Tatsumi setter's terrible habit of telegraphing her quicks, and it was nearly dark before anyone noticed." }
     ] },
 
