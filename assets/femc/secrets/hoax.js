@@ -473,18 +473,18 @@ FemcSocial.secrets({
       { s: 'hx-tall', t: "Please leave the girl alone, Sunghoon." },
       { n: "The bell dinged again. A boy came in fast, books under one arm, tie loosened like he'd been fighting it all day and had only just won, and Sunoo lit up." },
       { s: 'hx-sunoo', t: "Jungwon! Did you ever eat lunch?" },
-      { s: 'hx-jungwon', t: "When would I have had time to do that." },
+      { s: 'hx-jungwon', f: 'neutral', t: "When would I have had time to do that." },
       { choose: [
         { t: "(Offer him your croissant.)", then: [
           { n: "He looked at it, and then at her, like a deer in headlights, like nobody had ever just handed him something before without wanting a vote for it." },
-          { s: 'hx-jungwon', t: "Oh, that's... really nice. Thank you." }
+          { s: 'hx-jungwon', f: 'flustered', t: "Oh, that's... really nice. Thank you." }
         ] },
         { t: "(Mind your own business.)", then: [
           { n: "She minded her own business. Sunoo didn't. He put a croissant in front of the boy and folded his arms and stood there until he took a bite." }
         ] }
       ] },
       { n: "He glanced at her then, properly, and two deep dimples showed for half a second and went away again." },
-      { s: 'hx-jungwon', t: "Sorry. You look like someone." },
+      { s: 'hx-jungwon', f: 'surprised', t: "Sorry. You look like someone." },
       { s: 'solar', t: "I get that a lot." },
       { n: "When she left, the bell dinged behind her, and she turned to say goodnight and the strip was just the strip, a dark shopfront, a gap where warm light had been." },
       { n: "There was a receipt in her pocket. One croissant, one coffee, a smiley face in gel pen and come back soon!!! in Sunoo's handwriting. The date at the top was in a year that hadn't happened yet." }

@@ -27,6 +27,7 @@ window.FEMC_PORTRAIT_SCALE = {
   josuke: 1.03,
   jotaro: 0.93,
   judy: 1.03,
+  jungwon: 1.12,
   junpei: 0.97,
   karlach: 1.03,
   kasumi: 0.88,
