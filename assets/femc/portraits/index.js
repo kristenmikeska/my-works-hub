@@ -207,5 +207,17 @@ window.FEMC_PORTRAITS = {
   "neutral",
   "sad",
   "serious"
+ ],
+ "ken": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
+ ],
+ "koromaru": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious"
  ]
 };
