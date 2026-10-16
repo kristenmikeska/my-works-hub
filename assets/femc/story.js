@@ -75,38 +75,38 @@ FemcSocial.story({
       { n: "She was watching the place where the train had gone, the way you'd watch a door someone had just walked out of." },
       { choose: [
         { t: "That was the last one, you know.", notes: 0, then: [
-          { s: 'porter', t: "I know." },
-          { s: 'porter', t: "I was meant to be on it. I'm always meant to be on it." }
+          { s: 'porter', f: 'sad', t: "I know." },
+          { s: 'porter', f: 'sad', t: "I was meant to be on it. I'm always meant to be on it." }
         ] },
         { t: "(Sit down at the other end of the bench.)", notes: 0, then: [
           { n: "The girl glanced at her, then back at the tracks, and shifted a polite inch over, as if the bench were very crowded." },
-          { s: 'porter', t: "It's gone, if you were waiting. The last one. I watched it go." }
+          { s: 'porter', f: 'neutral', t: "It's gone, if you were waiting. The last one. I watched it go." }
         ] }
       ] },
-      { s: 'porter', t: "Your trains are too quiet. That's the thing I can't get used to." },
-      { s: 'porter', t: "Where I'm from, they sing. There's a whistle for leaving and a whistle for arriving and a long low one for when the line's clear all the way to the next valley, and you can hear them from your bed. Yours just... sigh. Like they're sorry about something." },
+      { s: 'porter', f: 'neutral', t: "Your trains are too quiet. That's the thing I can't get used to." },
+      { s: 'porter', f: 'happy', t: "Where I'm from, they sing. There's a whistle for leaving and a whistle for arriving and a long low one for when the line's clear all the way to the next valley, and you can hear them from your bed. Yours just... sigh. Like they're sorry about something." },
       { choose: [
         { t: "Where are you from?", notes: 0, then: [
-          { s: 'porter', t: "Further down the line than you'd think." },
+          { s: 'porter', f: 'neutral', t: "Further down the line than you'd think." },
           { n: "She said it lightly, the way people say things they've decided not to be sad about yet." }
         ] },
         { t: "They're probably sorry about the fares.", notes: 0, then: [
           { n: "The girl laughed, startled, one short bright sound that bounced off the empty platform, and put her sleeve over her mouth like she'd been caught at something." },
-          { s: 'porter', t: "Oh, that's awful. That's very good." }
+          { s: 'porter', f: 'happy', t: "Oh, that's awful. That's very good." }
         ] }
       ] },
-      { s: 'wren', t: "I'm Wren. I should have said that first. My mother would be appalled." },
+      { s: 'wren', f: 'flustered', t: "I'm Wren. I should have said that first. My mother would be appalled." },
       { n: "Solar told her her name. Wren repeated it under her breath, once, carefully, like she was writing it down somewhere." },
       { n: "She turned the ticket over in her fingers. It was thick cream card, the corners gone soft from handling, printed with a destination in a looping script Solar couldn't read. It had never been punched." },
-      { s: 'wren', t: "Can I ask you something odd?" },
-      { s: 'wren', t: "What happens to people who stay somewhere they don't belong? Do they start belonging, eventually? Or do they just... stay?" },
+      { s: 'wren', f: 'neutral', t: "Can I ask you something odd?" },
+      { s: 'wren', f: 'sad', t: "What happens to people who stay somewhere they don't belong? Do they start belonging, eventually? Or do they just... stay?" },
       { choose: [
         { t: "I think you start to belong. Slowly.", notes: 0, then: [
-          { s: 'wren', t: "Slowly. Yes. I'd like slowly." },
+          { s: 'wren', f: 'happy', t: "Slowly. Yes. I'd like slowly." },
           { n: "She didn't sound convinced. She sounded like someone trying the word on to see if it fit." }
         ] },
         { t: "I'll let you know. I've been here ten days.", notes: 0, then: [
-          { s: 'wren', t: "Oh! Then we're both new. That's a comfort, actually." },
+          { s: 'wren', f: 'happy', t: "Oh! Then we're both new. That's a comfort, actually." },
           { n: "She smiled at the tracks. It didn't quite reach the hand holding the ticket, which was holding it much too tightly." }
         ] }
       ] },
@@ -116,8 +116,8 @@ FemcSocial.story({
       { n: "Solar's hand went to her bag before she thought about it, to the cold weight inside that she did not carry for decoration. Then she looked at the bench." },
       { n: "Wren was still sitting there. Still awake. Still holding her ticket, looking around at the green and the coffin and the swollen moon with the wide, careful eyes of someone who had seen all of this before and hadn't liked it then, either." },
       { n: "Then she looked at Solar. At Solar standing there, breathing, a person and not a coffin. Her face did something complicated." },
-      { s: 'wren', t: "Oh." },
-      { s: 'wren', t: "You too?" },
+      { s: 'wren', f: 'surprised', t: "Oh." },
+      { s: 'wren', f: 'surprised', t: "You too?" },
       { n: "Solar didn't have an answer for that. She sat back down on the bench instead, a little closer this time, and they waited out the hour together without saying much, two girls on a platform where no trains were coming, which was its own kind of answer." }
     ] },
 
@@ -204,7 +204,7 @@ FemcSocial.story({
       { s: 'lacuna', t: "You're so tired. I know. You've been tired for such a long time." },
       { n: "Its voice was soft. That was the worst part. Soft and warm and kind, and for one dizzy second it sounded like someone Solar had loved and couldn't place, and then like someone else entirely, and she understood without wanting to that it sounded like whoever was listening needed it to." },
       { s: 'lacuna', t: "There's a train that never has to arrive, Wren. It just goes. Through the green, forever, and nobody ever asks you to get off. Nothing is waiting at the end of it, because there isn't one." },
-      { s: 'wren', t: "...Never?" },
+      { s: 'wren', f: 'surprised', t: "...Never?" },
       { s: 'lacuna', t: "Never. Isn't that kind? You'd never have to be afraid of the last stop again." },
       { n: "Wren's hand was out. Solar didn't think she even knew it. The sleeve of that enormous coat had fallen back from her wrist and her fingers were open, reaching, an inch from the blank pages, and her ticket was fluttering down to the platform at her feet." },
       { choose: [
@@ -227,8 +227,8 @@ FemcSocial.story({
       { n: "Not violently. It simply stopped being one thing and started being many, the pages lifting off it one by one and then all at once, peeling away into a wind that wasn't blowing, and they went spiraling up past the departures board and out over the tracks and into the green dark, a flock of loose paper, rustling, until there was nothing left on the platform but the two of them and Wren's ticket, face down by the yellow line." },
       { music: 'tender' },
       { n: "Wren was holding her sleeve. Both hands, fists knotted in the fabric, the way a little kid holds on in a crowd." },
-      { s: 'wren', t: "I wasn't going to go." },
-      { s: 'wren', t: "I wasn't. I don't think. It just sounded so..." },
+      { s: 'wren', f: 'sad', t: "I wasn't going to go." },
+      { s: 'wren', f: 'sad', t: "I wasn't. I don't think. It just sounded so..." },
       { n: "She didn't finish. Solar didn't make her. She bent down and picked up the ticket and pressed it back into Wren's cold hand, and they stood at the edge of the platform until the lights came back on and the vending machines hummed awake and somewhere far down the line a train sighed, like it was sorry about something." },
       { place: 'The Velvet Room', time: 'Later' },
       { n: "She told Elizabeth all of it. Elizabeth listened without interrupting once, which was how Solar knew it was bad." },
@@ -379,11 +379,11 @@ FemcSocial.story({
       ] },
       { place: 'Iwatodai Dorm · Front', time: 'Night', music: 'tender' },
       { n: "The heat hadn't broken. It sat on the street like a held breath, cicadas grinding away somewhere in the dark, the asphalt still giving back the day. And across the road, at the far end, under the same streetlight where in April a small figure had stood looking up at the moon, Wren was standing with her arms wrapped around herself in that enormous coat, in thirty-one degrees, watching the lit windows of the lounge." },
-      { s: 'wren', t: "Oh. Hello. I got as far as the light." },
-      { s: 'wren', t: "I've been watching through the window. It looked very loud. I liked it." },
+      { s: 'wren', f: 'flustered', t: "Oh. Hello. I got as far as the light." },
+      { s: 'wren', f: 'happy', t: "I've been watching through the window. It looked very loud. I liked it." },
       { choose: [
         { t: "Come in. There's room.", notes: 0, then: [
-          { s: 'wren', t: "Next time. I think I'd like to be a bit more of a person first. Does that make sense?" },
+          { s: 'wren', f: 'flustered', t: "Next time. I think I'd like to be a bit more of a person first. Does that make sense?" },
           { n: "It made more sense than Solar wanted it to." }
         ] },
         { t: "(Sit down on the curb and hand her the bowl.)", notes: 0, then: [
@@ -397,12 +397,12 @@ FemcSocial.story({
     { id: 'a2-end-of-the-line', act: '2', date: '7/30', slot: 0, title: 'the end of the line', place: 'Port Island · Seaside Park', music: 'sun', scene: [
       { n: "Wren had never been anywhere in daylight. Solar realized it at noon on the Iwatodai platform, watching her come up the stairs from wherever it was she went when it was light out, squinting into the white July sun like it was someone who'd recognized her across a room and she couldn't place them." },
       { n: "She rode the train to Port Island standing up, one hand on the strap and the other flat against the window, counting the stops under her breath. She read each name aloud as it came up on the board, like she was checking it against a list. When the doors opened at the right one, she let go of a breath Solar hadn't noticed she was holding." },
-      { s: 'wren', t: "It arrived. Exactly where it said it would." },
+      { s: 'wren', f: 'happy', t: "It arrived. Exactly where it said it would." },
       { n: "She said it the way other people said it was a miracle." },
       { n: "The beach was white and blinding and smelled like salt and sunscreen and fried squid from the stand by the steps, the sand so hot it squeaked, gulls screaming over the water like they'd been personally wronged. Families. Radios. A little boy burying his father to the neck. And Wren, in a heavy wool porter's coat with brass buttons, sweating with total dignity." },
       { choose: [
         { t: "You're going to die in that coat.", notes: 0, then: [
-          { s: 'wren', t: "Porters don't take off their coats. It's a whole thing. There's a rule." },
+          { s: 'wren', f: 'serious', t: "Porters don't take off their coats. It's a whole thing. There's a rule." },
           { n: "She took it off four minutes later." }
         ] },
         { t: "(Hold out your hand for it.)", notes: 0, then: [
@@ -411,31 +411,31 @@ FemcSocial.story({
       ] },
       { n: "Without it she was smaller than Solar had thought. Thin wrists. A white shirt with an ink stain on one cuff. And on the sand beside her, faint as pencil but unmistakable, a shadow, keeping perfect time with her when she moved." },
       { n: "She walked down to the waterline and stopped there, right at the edge of the wet sand, the way you'd stop at the yellow line on a platform." },
-      { s: 'wren', t: "Our line doesn't go to the sea. Nothing does. The sea is where the land runs out, so it's where the line runs out." },
-      { s: 'wren', t: "My grandmother used to say the last train goes to the coast. That's why nobody ever comes back on it. There's nowhere to go after, only water." },
+      { s: 'wren', f: 'neutral', t: "Our line doesn't go to the sea. Nothing does. The sea is where the land runs out, so it's where the line runs out." },
+      { s: 'wren', f: 'sad', t: "My grandmother used to say the last train goes to the coast. That's why nobody ever comes back on it. There's nowhere to go after, only water." },
       femcMetAny(['kuromi', 'ann', 'kiriko', 'mercy', 'haru', 'sebastian', 'astarion', 'aphrodite', 'cloud'], [
-        { s: 'wren', t: "Your friends from the dinner aren't from here either, are they. I could tell through the window. They all keep looking at doors." }
+        { s: 'wren', f: 'neutral', t: "Your friends from the dinner aren't from here either, are they. I could tell through the window. They all keep looking at doors." }
       ]),
       { choose: [
         { t: "Do you want to go in?", notes: 0, then: [
-          { s: 'wren', t: "...Yes. I think so. Stay close?" }
+          { s: 'wren', f: 'flustered', t: "...Yes. I think so. Stay close?" }
         ] },
         { t: "It's just water.", notes: 0, then: [
-          { s: 'wren', t: "It's a great deal of water. For just water." },
+          { s: 'wren', f: 'surprised', t: "It's a great deal of water. For just water." },
           { n: "She went in anyway." }
         ] }
       ] },
       { n: "She went in to her ankles first, and yelped at the cold, and then to her knees, holding her skirt up in both fists, the waves breaking around her shins and pulling back and dragging the sand out from under her heels so that she sank a little every time, and laughed, every time, like it was a trick being played just on her. The water bent around her legs the way water bends around anything that's really there." },
-      { s: 'wren', t: "So this is what's at the end." },
-      { s: 'wren', t: "It isn't quiet at all. I always thought it would be quiet." },
+      { s: 'wren', f: 'neutral', t: "So this is what's at the end." },
+      { s: 'wren', f: 'surprised', t: "It isn't quiet at all. I always thought it would be quiet." },
       { n: "She stood there a long time, looking out at the place where the water met the sky and neither of them stopped. Then she turned around." },
-      { s: 'wren', t: "If you had a ticket. If there were a last train, and it was yours. Would you get on?" },
+      { s: 'wren', f: 'neutral', t: "If you had a ticket. If there were a last train, and it was yours. Would you get on?" },
       { choose: [
         { t: "Not yet.", notes: 0, then: [
-          { s: 'wren', t: "Not yet. That's a good answer. I think that's the best answer there is." }
+          { s: 'wren', f: 'happy', t: "Not yet. That's a good answer. I think that's the best answer there is." }
         ] },
         { t: "I'd want somebody to see me off.", notes: 0, then: [
-          { s: 'wren', t: "I'd see you off. I'd wave so hard. You'd be mortified." },
+          { s: 'wren', f: 'happy', t: "I'd see you off. I'd wave so hard. You'd be mortified." },
           { n: "She said it lightly. Neither of them laughed." }
         ] }
       ] },
@@ -582,19 +582,19 @@ FemcSocial.story({
         { s: 'haru', f: 'sad', t: "They look so peaceful. That's what frightens me. I know that face. I've worn it." }
       ] },
       { n: "Wren was in her window seat with the coat folded in her lap. She looked up at Solar like she'd been expecting her for a long time, and wasn't sure if she was glad." },
-      { s: 'wren', t: "Oh. You came all this way. It's so quiet here. Nobody ever has to get off. Isn't that... isn't it nice?" },
+      { s: 'wren', f: 'neutral', t: "Oh. You came all this way. It's so quiet here. Nobody ever has to get off. Isn't that... isn't it nice?" },
       { choose: [
         { t: "Get off anyway. With me.", notes: 0, then: [
-          { s: 'wren', t: "...With you." },
+          { s: 'wren', f: 'sad', t: "...With you." },
           { n: "She said it slowly, like it was a station name she'd never heard called before." }
         ] },
         { t: "You still owe me a dinner. Inside, this time.", notes: 0, then: [
           { n: "Wren stared at her. Then she laughed, one short startled sound, and put her sleeve over her mouth, and her eyes filled up." },
-          { s: 'wren', t: "I do, don't I. Oh, that's awful. That's very good." }
+          { s: 'wren', f: 'happy', t: "I do, don't I. Oh, that's awful. That's very good." }
         ] },
         { t: "(Sit down next to her.)", notes: 0, then: [
           { n: "Solar sat. The seat was soft. The train was warm. It would have been so easy. And Wren looked at her sitting there, a person with a whole life outside the windows, settling in, and her face did the complicated thing again." },
-          { s: 'wren', t: "No. No, you can't stay here. Get up. You have to get up." }
+          { s: 'wren', f: 'serious', t: "No. No, you can't stay here. Get up. You have to get up." }
         ] }
       ] },
       { n: "Wren stood. She picked up the coat and put it on, button by brass button, and took Solar's hand, and her hand was cold and much, much too light, and Solar held it hard enough to hurt them both." },
@@ -614,8 +614,8 @@ FemcSocial.story({
         { n: "Then Mercy fell asleep sitting up in the armchair with two fingers still resting on Wren's wrist, like she'd forgotten to take them back." }
       ] },
       { n: "Wren was awake. She had the ticket in her hands, turning it over and over, and when she saw Solar watching she held it up to the light. The destination was gone. Where the looping script had been there was only cream card, clean and blank as a new page, with a small neat hole punched right through the middle of nothing." },
-      { s: 'wren', t: "Isn't that strange. I can't remember where it goes." },
-      { s: 'wren', t: "I'm not frightened of it anymore. I can't remember what I was frightened of." },
+      { s: 'wren', f: 'neutral', t: "Isn't that strange. I can't remember where it goes." },
+      { s: 'wren', f: 'sad', t: "I'm not frightened of it anymore. I can't remember what I was frightened of." },
       { n: "She smiled. It was a real smile, easy and unafraid, the kind Solar had wanted for her since April, and Solar's stomach dropped through the floor." },
       { ifRank: { rio: 1 }, then: [
         { n: "Her phone buzzed on the coffee table. Rio, asking if she was still coming to practice at nine, with a volleyball emoji, like it was any other Saturday in the world." }

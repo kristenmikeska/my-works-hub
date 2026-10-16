@@ -89,7 +89,10 @@ window.FemcSocial = (() => {
   const nameFor = link => (isMet(link.id) ? link.name : '???');
 
   /* ── Portraits ───────────────────────────────────── */
+  // Characters drawn with someone else's portraits (the girl on the bench is Wren before she has a name).
+  const SAME_FACE = { porter: 'wren' };
   function portrait(id, face) {
+    id = SAME_FACE[id] || id;
     const have = (window.FEMC_PORTRAITS || {})[id] || [];
     // A missing expression falls back to the closest one the set has (many sets have three or four faces).
     const base = face && face.replace(/-\d+$/, '');
@@ -440,7 +443,7 @@ window.FemcSocial = (() => {
       if (key === currentFace) { img.classList.remove('dim'); return; }
       const swap = currentFace && currentFace.split('/')[0] !== who;
       currentFace = key;
-      const apply = () => { img.style.setProperty('--ps', (window.FEMC_PORTRAIT_SCALE || {})[who] || 1); if (src) { img.src = src; img.hidden = false; } else img.hidden = true; img.alt = CAST[who] || ''; img.classList.remove('swap', 'dim'); };
+      const apply = () => { img.style.setProperty('--ps', (window.FEMC_PORTRAIT_SCALE || {})[SAME_FACE[who] || who] || 1); if (src) { img.src = src; img.hidden = false; } else img.hidden = true; img.alt = CAST[who] || ''; img.classList.remove('swap', 'dim'); };
       if (swap && !reduced.matches) { img.classList.add('swap'); setTimeout(apply, 200); } else apply();
     }
     function say(text, done) {
