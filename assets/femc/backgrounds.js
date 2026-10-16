@@ -25,6 +25,13 @@ window.FEMC_BG = [
   ['Iwatodai Dorm · Kitchen', 'iwatodaidorm-kitchen'],
   ['Iwatodai Dorm · Laundry Room', 'iwatodaidorm-laundryroom'],
   ['Iwatodai Dorm · Command Room', 'iwatodaidorm-commandroom'],
+  ['Iwatodai Dorm · Hallway', 'iwatodaidorm-hallway'],
+  ['Iwatodai Dorm · 2F Hallway', 'iwatodaidorm-hallway'],
+  ['Iwatodai Dorm · His Room', 'haechan-bedroom'],
+  // Bedrooms, ready for scenes set there (no current scene uses them yet)
+  ["Iwatodai Dorm · Solar's Room", 'pink-bedroom-2'],
+  ["Iwatodai Dorm · Akihiko's Room", 'akihiko-bedroom'],
+  ["Iwatodai Dorm · Kuromi's Room", 'kuromi-bedroom'],
   ['Iwatodai Dorm · Rooftop', 'rooftop-citynight'],
   ['Iwatodai Dorm · Front', 'outside-daytime-neighborhood'],
 
@@ -59,6 +66,10 @@ window.FEMC_BG = [
   ['Port Island · Seaside Park', 'park-2'],
   ['Port Island · Pier', 'park-2', 'outside-night'],
   ['Port Island · Coastal Road', 'outside-night'],
+  ['Port Island · Harbor', 'harbor'],
+  ['Iwatodai · Junkyard', 'junkyard-scene'],
+  ["Ann's Hotel · Lobby", 'hotel-lobby'],
+  ["Ann's Hotel", 'hotel-outside'],
 
   // Tatsumi Memorial Hospital
   ['Tatsumi Memorial Hospital · 3F Ward', 'hospital-room'],
