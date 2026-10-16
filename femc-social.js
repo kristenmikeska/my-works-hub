@@ -118,7 +118,9 @@ window.FemcSocial = (() => {
     .vn-place b small { margin-left: 4px; color: #ff8cc0; font-size: 12px; letter-spacing: .08em; }
     .vn-place span { color: #ff8cc0; font: italic 800 12px/1.2 ${COND}; letter-spacing: .12em; text-transform: uppercase; }
     /* P3R layout: the speaker stands on the left, cut off by the bottom edge; the dialogue box sits to the right and points at them. */
-    .vn-portrait { position: absolute; left: max(1vw, 8px); bottom: 0; height: min(88vh, 940px); max-width: 40vw; object-fit: contain; object-position: left bottom; filter: drop-shadow(10px 0 0 rgba(255, 79, 158, .35)); transition: opacity .25s, transform .25s, filter .25s; }
+    /* Every portrait is sized by height (times its --ps from portraits/scale.js) and wide art is trimmed at the sides,
+       so faces come out the same size whatever shape the source image is. */
+    .vn-portrait { position: absolute; left: max(1vw, 8px); bottom: 0; height: calc(min(88vh, 940px) * var(--ps, 1)); width: calc(min(40vw, 760px) * var(--ps, 1)); max-width: none; object-fit: cover; object-position: center bottom; filter: drop-shadow(10px 0 0 rgba(255, 79, 158, .35)); transition: opacity .25s, transform .25s, filter .25s; }
     .vn-portrait.dim { filter: brightness(.55) drop-shadow(10px 0 0 rgba(255, 79, 158, .2)); }
     .vn-portrait.swap { opacity: 0; transform: translateX(-30px); }
     .vn-silhouette { position: absolute; left: 6vw; bottom: 0; width: min(46vw, 520px); height: min(76vh, 760px); background: linear-gradient(#000, #000) center bottom / 70% 52% no-repeat, radial-gradient(circle at 50% 30%, #000 0 22%, transparent 23%); opacity: .55; }
@@ -261,7 +263,7 @@ window.FemcSocial = (() => {
     @keyframes vn-reg { 0% { opacity: 0; transform: translate(-50%, -30px); } 10%, 85% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; transform: translate(-50%, -20px); } }
     @media (max-width: 700px) {
       /* Phones: the bust rests on top of the dialogue box (fixed height, so it never bobs). */
-      .vn-portrait { left: 50%; transform: translateX(-50%); max-width: 96vw; height: min(54vh, calc(100vh - var(--boxh, 220px) - 4vh - 70px)); bottom: calc(4vh + var(--boxh, 220px) - 6px); object-position: center bottom; }
+      .vn-portrait { left: 50%; transform: translateX(-50%); width: calc(min(96vw, 520px) * var(--ps, 1)); height: calc(min(54vh, calc(100vh - var(--boxh, 220px) - 4vh - 70px)) * var(--ps, 1)); bottom: calc(4vh + var(--boxh, 220px) - 6px); object-position: center bottom; }
       .vn-portrait.swap { transform: translateX(-50%) translateY(20px); }
       .vn-box { left: 16px; right: 16px; }
       .vn-text { height: 10.5em; min-height: 0; overflow-y: auto; padding: 18px 18px 24px; }
@@ -438,7 +440,7 @@ window.FemcSocial = (() => {
       if (key === currentFace) { img.classList.remove('dim'); return; }
       const swap = currentFace && currentFace.split('/')[0] !== who;
       currentFace = key;
-      const apply = () => { if (src) { img.src = src; img.hidden = false; } else img.hidden = true; img.alt = CAST[who] || ''; img.classList.remove('swap', 'dim'); };
+      const apply = () => { img.style.setProperty('--ps', (window.FEMC_PORTRAIT_SCALE || {})[who] || 1); if (src) { img.src = src; img.hidden = false; } else img.hidden = true; img.alt = CAST[who] || ''; img.classList.remove('swap', 'dim'); };
       if (swap && !reduced.matches) { img.classList.add('swap'); setTimeout(apply, 200); } else apply();
     }
     function say(text, done) {
@@ -1052,7 +1054,7 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = (path, isReady) => F().load(`${path}?v=${F().v}`, isReady);   // FEMC_ASSET_VERSION in femc-mode.js
-    ready = Promise.all([L('assets/femc/portraits/index.js', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js', () => window.FEMC_BG), L('assets/femc/tarot/index.js', () => window.FEMC_TAROT), L('assets/femc/profile/index.js', () => window.FEMC_PROFILE), L('assets/femc/links/index.js', () => window.FEMC_LINK_FILES), L('assets/femc/story.js', () => STORY.acts.length), L('assets/femc/secrets/index.js', () => window.FEMC_SECRET_FILES)])
+    ready = Promise.all([L('assets/femc/portraits/index.js', () => window.FEMC_PORTRAITS), L('assets/femc/portraits/scale.js', () => window.FEMC_PORTRAIT_SCALE), L('assets/femc/backgrounds.js', () => window.FEMC_BG), L('assets/femc/tarot/index.js', () => window.FEMC_TAROT), L('assets/femc/profile/index.js', () => window.FEMC_PROFILE), L('assets/femc/links/index.js', () => window.FEMC_LINK_FILES), L('assets/femc/story.js', () => STORY.acts.length), L('assets/femc/secrets/index.js', () => window.FEMC_SECRET_FILES)])
       .then(() => Promise.all((window.FEMC_SECRET_FILES || []).map(id => L(`assets/femc/secrets/${id}.js`, () => (window.FEMC_SECRETS_LOADED || []).includes(id)))))
       .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
