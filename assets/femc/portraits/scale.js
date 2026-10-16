@@ -15,7 +15,7 @@ window.FEMC_PORTRAIT_SCALE = {
   ayane: 0.91,
   cazador: 0.85,
   cloud: 1.17,
-  elizabeth: 1.19,
+  elizabeth: 0.98,
   evelyn: 1.2,
   fuuka: 1.08,
   futaba: 1.12,
