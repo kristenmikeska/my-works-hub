@@ -279,7 +279,7 @@
       el.classList.add('fi-out');
       setTimeout(() => {
         el.remove();
-        if (go === 'enter') { music.start(); eggs(); load('achievements.js?v=11', () => window.Achievements).then(() => window.Achievements?.unlock('femc')); }
+        if (go === 'enter') { music.start(); eggs(); load('achievements.js?v=12', () => window.Achievements).then(() => window.Achievements?.unlock('femc')); }
         else toggle(false);
       }, reduced.matches ? 0 : 650);
     }
