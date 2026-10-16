@@ -265,10 +265,12 @@ window.FEMC_PORTRAITS = {
   "serious"
  ],
  "saori": [
+  "flustered",
   "happy",
   "neutral",
   "sad",
-  "serious"
+  "serious",
+  "surprised"
  ],
  "tifa": [
   "happy",
