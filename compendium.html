@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <script src="femc-mode.js?v=26"></script>
+  <script src="femc-mode.js?v=27"></script>
   <title>Compendium</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/femc/femc-pages.css?v=1">
@@ -56,69 +56,72 @@
   </main>
 
   <script src="achievements.js?v=9"></script>
-  <script src="assets/femc/compendium.js?v=5"></script>
-  <script src="assets/femc/portraits/index.js?v=23"></script>
-  <script src="assets/femc/profile/index.js?v=1"></script>
   <script>
   (function () {
-    const ENTRIES = (window.FEMC_COMPENDIUM || []).filter(e => !e.secret || window.femcCompendiumOpen(e));
-    // Anyone with a neutral portrait in assets/femc/portraits gets it here automatically.
-    // Hand-set portrait paths get the current image version so regenerated portraits show up.
-    ENTRIES.forEach(e => { if (e.img && e.img.startsWith('assets/femc/portraits/') && !e.img.includes('?')) e.img += "?v=18"; });
-    // Full-body art (assets/femc/profile) wins over everything else.
-    ENTRIES.forEach(e => { if ((window.FEMC_PROFILE || []).includes(e.id)) { e.img = `assets/femc/profile/${e.id}.webp?v=1`; e.profile = true; } });
-    ENTRIES.forEach(e => { if (!e.img && (window.FEMC_PORTRAITS?.[e.id] || []).includes('neutral')) e.img = `assets/femc/portraits/${e.id}/neutral.webp?v=18`; });
-    const $ = id => document.getElementById(id);
-    const F = () => window.FemcMode;
-    const isOpen = e => window.femcCompendiumOpen(e);
-    const hintFor = e => e.unlock.startsWith('met:') ? 'someone you haven\'t met yet.' : e.unlock.startsWith('reg:') ? 'they turn up in someone else\'s story.' : (window.Achievements?.list().find(a => a.id === e.unlock) || {}).hint || 'keep exploring the other side.';
-    let current = 0;
+    // FEMC data files carry FemcMode.v (FEMC_ASSET_VERSION in femc-mode.js), like every FEMC image below.
+    const F = () => window.FemcMode, v = F().v;
+    Promise.all([F().load(`assets/femc/compendium.js?v=${v}`, () => window.FEMC_COMPENDIUM), F().load(`assets/femc/portraits/index.js?v=${v}`, () => window.FEMC_PORTRAITS),
+      F().load(`assets/femc/profile/index.js?v=${v}`, () => window.FEMC_PROFILE)]).then(start);
 
-    function show(i) {
-      current = i;
-      const e = ENTRIES[i], open = isOpen(e), card = $('card');
-      [...$('list').children].forEach((li, j) => li.firstChild.setAttribute('aria-selected', String(j === i)));
-      card.className = `cp-card${open ? '' : ' locked'}${e.profile ? ' has-profile' : ''}`;
-      card.innerHTML = `${e.img ? '<img alt="">' : '<div class="cp-sil" aria-hidden="true"></div>'}<div class="cp-info"><p class="fp-kicker"></p><h2 class="cond"></h2><p class="from"></p><p class="note"></p></div>`;
-      if (e.img) { card.querySelector('img').src = e.img; card.querySelector('img').alt = open ? e.name : ''; }
-      card.querySelector('.fp-kicker').textContent = `No. ${String(i + 1).padStart(3, '0')}${open && e.arcana ? ` · ${e.arcana}` : ''}`;
-      card.querySelector('h2').textContent = open ? e.name : '???';
-      card.querySelector('.from').textContent = open ? e.from : 'Not yet registered';
-      card.querySelector('.note').textContent = open ? e.note : `Hint: ${hintFor(e)}`;
-      if (open && e.link) {
-        const a = document.createElement('a');
-        a.className = 'fp-btn'; a.href = e.link; a.textContent = 'Social Link';
-        card.querySelector('.cp-info').appendChild(a);
+    function start() {
+      const ENTRIES = (window.FEMC_COMPENDIUM || []).filter(e => !e.secret || window.femcCompendiumOpen(e));
+      // Anyone with a neutral portrait in assets/femc/portraits gets it here automatically.
+      // Hand-set portrait paths get the current image version so regenerated portraits show up.
+      ENTRIES.forEach(e => { if (e.img && e.img.startsWith('assets/femc/portraits/') && !e.img.includes('?')) e.img += `?v=${v}`; });
+      // Full-body art (assets/femc/profile) wins over everything else.
+      ENTRIES.forEach(e => { if ((window.FEMC_PROFILE || []).includes(e.id)) { e.img = `assets/femc/profile/${e.id}.webp?v=${v}`; e.profile = true; } });
+      ENTRIES.forEach(e => { if (!e.img && (window.FEMC_PORTRAITS?.[e.id] || []).includes('neutral')) e.img = `assets/femc/portraits/${e.id}/neutral.webp?v=${v}`; });
+      const $ = id => document.getElementById(id);
+      const isOpen = e => window.femcCompendiumOpen(e);
+      const hintFor = e => e.unlock.startsWith('met:') ? 'someone you haven\'t met yet.' : e.unlock.startsWith('reg:') ? 'they turn up in someone else\'s story.' : (window.Achievements?.list().find(a => a.id === e.unlock) || {}).hint || 'keep exploring the other side.';
+      let current = 0;
+
+      function show(i) {
+        current = i;
+        const e = ENTRIES[i], open = isOpen(e), card = $('card');
+        [...$('list').children].forEach((li, j) => li.firstChild.setAttribute('aria-selected', String(j === i)));
+        card.className = `cp-card${open ? '' : ' locked'}${e.profile ? ' has-profile' : ''}`;
+        card.innerHTML = `${e.img ? '<img alt="">' : '<div class="cp-sil" aria-hidden="true"></div>'}<div class="cp-info"><p class="fp-kicker"></p><h2 class="cond"></h2><p class="from"></p><p class="note"></p></div>`;
+        if (e.img) { card.querySelector('img').src = e.img; card.querySelector('img').alt = open ? e.name : ''; }
+        card.querySelector('.fp-kicker').textContent = `No. ${String(i + 1).padStart(3, '0')}${open && e.arcana ? ` · ${e.arcana}` : ''}`;
+        card.querySelector('h2').textContent = open ? e.name : '???';
+        card.querySelector('.from').textContent = open ? e.from : 'Not yet registered';
+        card.querySelector('.note').textContent = open ? e.note : `Hint: ${hintFor(e)}`;
+        if (open && e.link) {
+          const a = document.createElement('a');
+          a.className = 'fp-btn'; a.href = e.link; a.textContent = 'Social Link';
+          card.querySelector('.cp-info').appendChild(a);
+        }
       }
-    }
-    function list() {
-      $('list').replaceChildren(...ENTRIES.map((e, i) => {
-        const li = document.createElement('li');
-        const b = document.createElement('button');
-        b.type = 'button'; b.setAttribute('role', 'option');
-        b.className = isOpen(e) ? '' : 'locked';
-        b.innerHTML = `<small>${String(i + 1).padStart(3, '0')}</small><b></b>`;
-        b.querySelector('b').textContent = isOpen(e) ? e.name : '???';
-        b.addEventListener('click', () => show(i));
-        li.appendChild(b);
-        return li;
-      }));
-      $('count').textContent = `${ENTRIES.filter(isOpen).length} of ${ENTRIES.length} registered`;
-      show(current);
-    }
+      function list() {
+        $('list').replaceChildren(...ENTRIES.map((e, i) => {
+          const li = document.createElement('li');
+          const b = document.createElement('button');
+          b.type = 'button'; b.setAttribute('role', 'option');
+          b.className = isOpen(e) ? '' : 'locked';
+          b.innerHTML = `<small>${String(i + 1).padStart(3, '0')}</small><b></b>`;
+          b.querySelector('b').textContent = isOpen(e) ? e.name : '???';
+          b.addEventListener('click', () => show(i));
+          li.appendChild(b);
+          return li;
+        }));
+        $('count').textContent = `${ENTRIES.filter(isOpen).length} of ${ENTRIES.length} registered`;
+        show(current);
+      }
 
-    let shown = null;
-    function render() {
-      const on = !!F()?.isOn();
-      if (on === shown) return;
-      shown = on;
-      $('locked').hidden = on; $('open').hidden = !on;
-      if (!on) return;
-      window.Achievements?.unlock('compendium');
-      list();
+      let shown = null;
+      function render() {
+        const on = !!F()?.isOn();
+        if (on === shown) return;
+        shown = on;
+        $('locked').hidden = on; $('open').hidden = !on;
+        if (!on) return;
+        window.Achievements?.unlock('compendium');
+        list();
+      }
+      new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      render();
     }
-    new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    render();
   })();
   </script>
 </body>
