@@ -280,6 +280,8 @@ window.FemcSocial = (() => {
     const key = String(link?.arcana || '').toLowerCase().replace(/[^a-z0-9]/g, '');
     return (window.FEMC_TAROT || []).includes(key) ? `${F().base}assets/femc/tarot/${key}.webp?v=2` : null;
   }
+  // Full-body art for the link page and compendium (assets/femc/profile), or null.
+  const profile = id => ((window.FEMC_PROFILE || []).includes(id) ? `${F().base}assets/femc/profile/${id}.webp?v=1` : null);
   const cardFace = link => { const art = tarot(link); return art ? ` art" style="background-image:url('${art}')` : ''; };
 
   /* ── Backgrounds by place (assets/femc/backgrounds.js) ── */
@@ -1005,7 +1007,7 @@ window.FemcSocial = (() => {
   function load() {
     if (ready) return ready;
     const L = F().load;
-    ready = Promise.all([L('assets/femc/portraits/index.js?v=7', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js?v=4', () => window.FEMC_BG), L('assets/femc/tarot/index.js?v=2', () => window.FEMC_TAROT), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
+    ready = Promise.all([L('assets/femc/portraits/index.js?v=7', () => window.FEMC_PORTRAITS), L('assets/femc/backgrounds.js?v=4', () => window.FEMC_BG), L('assets/femc/tarot/index.js?v=2', () => window.FEMC_TAROT), L('assets/femc/profile/index.js?v=1', () => window.FEMC_PROFILE), L('assets/femc/links/index.js?v=20', () => window.FEMC_LINK_FILES)])
       .then(() => Promise.all((window.FEMC_LINK_FILES || []).map(id => L(`assets/femc/links/${id}.js?v=33`, () => links[id]))))
       .then(() => { if (document.body) testPanel(); else addEventListener('DOMContentLoaded', testPanel); return links; });
     return ready;
@@ -1018,5 +1020,5 @@ window.FemcSocial = (() => {
     play(l, 0, { frame: true, onDone: () => { S.intro = true; save(); onDone?.(); } });
     return true;
   }
-  return { tarot, background, areaBackground, need, playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
+  return { profile, tarot, background, areaBackground, need, playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
 })();
