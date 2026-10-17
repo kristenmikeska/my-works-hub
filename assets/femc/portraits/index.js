@@ -447,5 +447,12 @@ window.FEMC_PORTRAITS = {
   "sad",
   "serious",
   "surprised"
+ ],
+ "sunghoon": [
+  "flustered",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
  ]
 };

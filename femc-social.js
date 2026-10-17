@@ -140,13 +140,17 @@ window.FemcSocial = (() => {
     .vn-name:empty { visibility: hidden; }
     .vn-text { position: relative; min-height: 7.2em; margin: -4px 0 0; padding: 22px 28px 26px; border: 2px solid #ff8cc0; border-radius: 4px 26px 4px 26px; background: rgba(20, 7, 15, .93); box-shadow: 8px 8px 0 rgba(255, 79, 158, .45); font-size: clamp(16px, 1.6vw, 19px); line-height: 1.5; font-weight: 600; }
     .vn-text.narration { font-style: italic; color: #f5d9e7; font-weight: 500; }
-    /* Solar's own face, P3R/P5 style, inside the box while she talks. */
-    .vn-me { position: absolute; z-index: 1; left: 18px; top: 44px; width: 112px; height: 112px; border: 2px solid #ff8cc0; border-radius: 4px 18px 4px 18px; background: #3a1028 no-repeat 42% 30% / 250% auto; box-shadow: 4px 4px 0 rgba(255, 79, 158, .45); pointer-events: none; }
-    .vn-me[hidden] { display: none; }
-    .vn.me-talking .vn-text { padding-left: 150px; }
-    .vn-velvet .vn-me { border-color: #8fb0ff; background-color: #0d1840; box-shadow: 4px 4px 0 rgba(60, 110, 255, .45); }
+    /* Solar (the player) stands on the RIGHT while she talks; the box shifts left and points at her. */
+    .vn-solar { position: absolute; right: max(1vw, 8px); bottom: 0; height: calc(min(80vh, 850px) * var(--ps, 1)); width: auto; max-width: calc(min(40vw, 760px) * var(--ps, 1)); object-fit: cover; object-position: center bottom; filter: drop-shadow(-10px 0 0 rgba(255, 79, 158, .35)); -webkit-mask-image: linear-gradient(to left, #000 95%, transparent), linear-gradient(transparent, #000 4%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to left, #000 95%, transparent), linear-gradient(transparent, #000 4%); mask-composite: intersect; opacity: 0; transform: translateX(30px); transition: opacity .25s, transform .25s; pointer-events: none; }
+    .vn.me-talking .vn-solar { opacity: 1; transform: none; }
+    .vn.me-talking .vn-box { left: max(3vw, 16px); right: 41vw; text-align: right; }
+    .vn.me-talking .vn-name { margin: 0 22px 0 0; }
+    .vn.me-talking .vn-text { text-align: left; }
+    .vn-velvet .vn-solar { filter: drop-shadow(-10px 10px 0 rgba(60, 110, 255, .35)); }
     .vn-text::before { content: ""; position: absolute; left: -40px; top: 26px; border: 16px solid transparent; border-right: 38px solid #ff8cc0; border-left: 0; filter: drop-shadow(0 6px 0 rgba(255, 79, 158, .45)); }
     .vn-text.narration::before, .vn-portrait.dim ~ .vn-box .vn-text::before, .vn-portrait[hidden] ~ .vn-box .vn-text::before { display: none; }
+    .vn.me-talking .vn-box .vn-text::before { display: block; left: auto; right: -40px; border-right: 0; border-left: 38px solid #ff8cc0; }
+    .vn-velvet.me-talking .vn-box .vn-text::before { border-left-color: #8fb0ff; }
     .vn-text::after { content: "▼"; position: absolute; right: 22px; bottom: 12px; color: #ff4f9e; font-size: 12px; opacity: 0; }
     .vn.ready .vn-text::after { opacity: 1; animation: vn-blink 1s steps(2) infinite; }
     .vn-choices { position: absolute; right: max(3vw, 16px); bottom: calc(4vh + 200px); z-index: 5; display: grid; gap: 10px; justify-items: end; max-width: min(560px, calc(100vw - 32px)); }
@@ -191,7 +195,7 @@ window.FemcSocial = (() => {
     .vn-title small { display: block; margin-bottom: 14px; color: #ff8cc0; font: italic 800 14px/1 ${COND}; letter-spacing: .34em; text-transform: uppercase; }
     .vn-title span { font: italic 600 clamp(34px, 6vw, 72px)/1 Georgia, "Times New Roman", serif; text-shadow: .05em .05em 0 #ff4f9e; }
     .vn-phone { position: absolute; left: 50%; top: 50%; z-index: 7; width: min(340px, calc(100vw - 40px)); height: min(560px, 70vh); display: grid; grid-template-rows: auto 1fr auto; transform: translate(-50%, -54%); border: 10px solid #1b0b15; border-radius: 34px; background: #f7f2f5; box-shadow: 10px 10px 0 rgba(255, 79, 158, .5); overflow: hidden; color: #1b0b15; animation: vn-phone .4s cubic-bezier(.2, 1.3, .4, 1) both; cursor: pointer; }
-    .vn.phoning .vn-box, .vn.phoning .vn-portrait { opacity: 0; }
+    .vn.phoning .vn-box, .vn.phoning .vn-portrait, .vn.phoning .vn-solar { opacity: 0; }
     .vn-phone-head { padding: 14px; background: #fff; border-bottom: 1px solid #eadde4; text-align: center; font: 700 15px/1 -apple-system, "Helvetica Neue", sans-serif; }
     .vn-phone-thread { display: flex; flex-direction: column; gap: 8px; padding: 14px; overflow-y: auto; }
     .vn-msg { max-width: 80%; margin: 0; padding: 8px 12px; border-radius: 16px; font: 15px/1.35 -apple-system, "Helvetica Neue", sans-serif; animation: vn-in .25s ease both; }
@@ -284,8 +288,11 @@ window.FemcSocial = (() => {
       .vn-box { left: 16px; right: 16px; }
       .vn-text { height: 10.5em; min-height: 0; overflow-y: auto; padding: 18px 18px 24px; }
       .vn-text::before { display: none; }
-      .vn-me { width: 76px; height: 76px; left: 12px; top: 42px; }
-      .vn.me-talking .vn-text { padding-left: 100px; }
+      .vn-solar { right: auto; left: 50%; transform: translateX(-50%) translateY(20px); max-width: calc(min(96vw, 520px) * var(--ps, 1)); height: calc(min(54vh, calc(100vh - var(--boxh, 220px) - 4vh - 70px)) * var(--ps, 1)); bottom: calc(4vh + var(--boxh, 220px) - 6px); }
+      .vn.me-talking .vn-solar { transform: translateX(-50%); }
+      .vn.me-talking .vn-portrait { opacity: 0; }
+      .vn.me-talking .vn-box { left: 16px; right: 16px; }
+      .vn.me-talking .vn-box .vn-text::before { display: none; }
       .vn-choices { bottom: calc(4vh + var(--boxh, 220px) + 14px); left: 16px; right: 16px; justify-items: stretch; }
       .vn-choices button { text-align: left; }
       .vn-place { left: 12px; top: 12px; }
@@ -436,19 +443,21 @@ window.FemcSocial = (() => {
     const when = opts.replay || opts.frame ? '' : `${now().md}<small>${now().day}</small>`;
     el.innerHTML = `<div class="vn-bg"></div><div class="vn-place"><b>${when}</b><span></span></div>
       <img class="vn-portrait" alt="">
+      <img class="vn-solar" alt="" hidden>
       <div class="vn-tools">${F().canFullscreen?.() ? `<button type="button" data-t="full" aria-label="Fullscreen" title="Fullscreen (F)">⛶</button>` : ''}<button type="button" data-t="log">Log</button><button type="button" data-t="skip">Skip ▸▸</button><button type="button" data-t="leave">Leave</button></div>
       <div class="vn-log" hidden><div class="vn-log-inner"></div><button type="button" data-t="log-close">Close log</button></div>
       <div class="vn-choices"></div>
-      <div class="vn-box" aria-live="polite"><span class="vn-name"></span><div class="vn-me" hidden></div><p class="vn-text"></p></div>`;
+      <div class="vn-box" aria-live="polite"><span class="vn-name"></span><p class="vn-text"></p></div>`;
     el.querySelector('.vn-place span').textContent = opts.frame ? rank.place : `${opts.replay ? 'Memory · ' : (now().time + ' · ')}${rank.place}`;
     paint(rank.place, opts.replay || opts.frame ? '' : now().time);
     document.body.appendChild(el);
     const img = el.querySelector('.vn-portrait'), nameEl = el.querySelector('.vn-name'), textEl = el.querySelector('.vn-text'), choices = el.querySelector('.vn-choices');
-    const meEl = el.querySelector('.vn-me');
+    const meEl = el.querySelector('.vn-solar');
+    // Solar on the right while she talks (null hides her).
     const showMe = face => {
       const src = face !== null && portrait('solar', face || 'neutral');
-      meEl.hidden = !src; el.classList.toggle('me-talking', !!src);
-      if (src) meEl.style.backgroundImage = `url("${src}")`;
+      if (src) { meEl.style.setProperty('--ps', (window.FEMC_PORTRAIT_SCALE || {}).solar || 1); if (meEl.getAttribute('src') !== src) meEl.src = src; meEl.hidden = false; }
+      el.classList.toggle('me-talking', !!src);
     };
     let currentFace = null;
     const boxEl = el.querySelector('.vn-box');
@@ -496,6 +505,7 @@ window.FemcSocial = (() => {
     }
     function ask(options) {
       skipping = false;
+      showMe(null);
       el.classList.remove('ready');
       waiting = null;
       choices.replaceChildren(...options.map((o, i) => {

@@ -58,6 +58,8 @@ window.FEMC_PORTRAIT_SCALE = {
   shadowheart: 0.97,
   shiho: 1.07,
   shinjiro: 1.1,
+  solar: 0.9,
+  sunghoon: 0.95,
   sunoo: 1.0,
   tifa: 1.03,
   widowmaker: 1.18,
