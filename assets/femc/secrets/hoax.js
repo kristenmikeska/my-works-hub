@@ -468,9 +468,9 @@ FemcSocial.secrets({
         ] }
       ] },
       { n: "A booth in the back was full of boys in two different kinds of uniform, all talking at once. One of them got up as she passed, plucked a flower out of the vase on the table, and bowed so deeply it was almost a threat." },
-      { s: 'hx-flower', t: "Why hello." },
-      { s: 'hx-jacket', t: "Dude. Pack it up already." },
-      { s: 'hx-tall', t: "Please leave the girl alone, Sunghoon." },
+      { s: 'hx-flower', f: 'flustered', t: "Why hello." },
+      { s: 'hx-jacket', f: 'serious', t: "Dude. Pack it up already." },
+      { s: 'hx-tall', f: 'neutral', t: "Please leave the girl alone, Sunghoon." },
       { n: "The bell dinged again. A boy came in fast, books under one arm, tie loosened like he'd been fighting it all day and had only just won, and Sunoo lit up." },
       { s: 'hx-sunoo', f: 'surprised', t: "Jungwon! Did you ever eat lunch?" },
       { s: 'hx-jungwon', f: 'neutral', t: "When would I have had time to do that." },
