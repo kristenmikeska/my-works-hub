@@ -5,6 +5,7 @@ window.FEMC_PORTRAIT_SCALE = {
   abigail: 1.04,
   ada: 1.1,
   aerith: 0.97,
+  aigis: 1.0,
   akihiko: 1.11,
   ana: 0.97,
   ann: 0.97,

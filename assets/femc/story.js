@@ -550,7 +550,7 @@ FemcSocial.story({
       { n: "She opened the book to the stub where Wren had been, and held it up, and the thin line of light in the gutter widened and widened until it was the height of a door, and then it was a door, and through it, impossibly, came the smell of rain on iron." },
       { place: 'Tartarus · The Platform Between', time: 'Midnight', music: 'mystery' },
       { n: "It was a station. It went on forever. A platform running away in both directions under a sky the color of the hour, timetables hanging every few meters with nothing written on any of them, and a single track, and on it the train going around and around, endlessly, slow, every window lit. Inside, people slept. Dozens of them. More. People from more worlds than Solar had words for, curled in their seats in armor and robes and clothes she didn't have names for, their faces soft and peaceful, pages drifting around their feet. None of them looked frightened. That was what made her want to scream." },
-      { s: 'aigis', t: "These people are not hostile. These people are asleep. Their vital signs indicate... contentment." },
+      { s: 'aigis', f: 'surprised', t: "These people are not hostile. These people are asleep. Their vital signs indicate... contentment." },
       { ifRank: { sebastian: 1 }, then: [
         { s: 'sebastian', f: 'serious', t: "It's a loop. Same cars, same order, every time. It's not going anywhere. It's just running." },
         { s: 'sebastian', f: 'neutral', t: "That's not a train. That's a screensaver." }
@@ -1028,7 +1028,7 @@ FemcSocial.story({
       { s: 'ken', f: 'serious', t: "Then I'll take one. I'll find them and learn their name. That's all it takes, right? Somebody has to know your name?" },
       { s: 'koromaru', f: 'serious', t: "Woof!" },
       { s: 'junpei', f: 'happy', t: "Koro's in. I'm in. I'm gonna make a friend so hard, dude. They're not gonna know what hit 'em." },
-      { s: 'aigis', t: "I will take two. I have excellent grip strength." },
+      { s: 'aigis', f: 'neutral', t: "I will take two. I have excellent grip strength." },
       femcMetAny(['kuromi', 'kiriko', 'mercy', 'haru', 'sebastian', 'astarion', 'aphrodite', 'cloud', 'noctis', 'judy', 'shadowheart', 'kasumi', 'leon', 'rohan', 'widowmaker'], [
         { n: "And then her strangers, one after another, putting their hands up like it was a class. Taking names off Fuuka's list. Taking two, some of them. People who had arrived in this city lost and frightened, volunteering to go and be found by someone else who was lost and frightened, because someone had once done it for them." },
         { ifRank: { kiriko: 1 }, then: [
@@ -1564,7 +1564,7 @@ FemcSocial.story({
       { s: 'elizabeth', f: 'happy', t: "I am saying grab a ghost, Mister Iori. By its pages. Every one of them, all at once, so that there is nothing left of it that nobody is holding. It cannot take what is held. Not even from itself." },
       { s: 'akihiko', f: 'serious', t: "So we use more hands." },
       { s: 'elizabeth', f: 'happy', t: "So you use more hands. Yes. Exactly that. You said it first, Mister Sanada, in October. I have been meaning to thank you for it." },
-      { s: 'aigis', t: "I will hold two. My grip strength remains excellent." },
+      { s: 'aigis', f: 'serious', t: "I will hold two. My grip strength remains excellent." },
       { s: 'koromaru', f: 'serious', t: "Woof!" },
       { ifRank: { kiriko: 1 }, then: [
         { s: 'kiriko', f: 'happy', t: "Six. The fox does six. I already told it. It's been practicing on the shrine's prayer slips all week and the priest is very confused." }
@@ -1761,7 +1761,7 @@ FemcSocial.story({
       { s: 'akihiko', f: 'serious', t: "It came to me too, you know. In November. It said Shinji could be awake. At a stove. Scowling at a pot." },
       { s: 'akihiko', f: 'serious', t: "He's going to wake up on his own. I'm going to be there when he does. Not at some table that's lying to me." },
       { n: "He closed one taped fist on a page and the page stopped fighting. Just like that. It went still in his hand like it had been waiting a long time for somebody to do exactly that." },
-      { s: 'aigis', t: "Two. As promised." },
+      { s: 'aigis', f: 'happy', t: "Two. As promised." },
       { n: "Koromaru jumped, higher than a dog should be able to, and came down with a page in his teeth, and sat on the platform holding it very gently, like he'd been asked to carry an egg." },
       { n: "Mitsuru took one. She looked at it in her hand for a long second, a blank page with nothing on it that someone had once not wanted to read, and then she folded it once, neatly, and held it flat against her chest, over her heart, the way she'd held her hand over the gap on the printout in June." },
       { n: "And then the turnstiles clattered, frozen open as they were, and people came up the stairs." },

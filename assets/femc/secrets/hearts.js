@@ -178,17 +178,17 @@
         ]),
         { s: 'ken', f: 'serious', t: "They're both from people who like you. I'm not stupid. I just wasn't going to say anything." },
         { n: "Aigis was sitting very straight at the end of the couch. She had been watching Koromaru with total attention for what Solar suspected was a long time." },
-        { s: 'aigis', t: "Koromaru has asked me to translate. He would like it understood that the first treat is crunchier." },
+        { s: 'aigis', f: 'neutral', t: "Koromaru has asked me to translate. He would like it understood that the first treat is crunchier." },
         { s: 'koromaru', f: 'happy', t: "Arf!" },
-        { s: 'aigis', t: "And that the second came with a better scratch behind the ears. He does not wish to rank them. He says that is how a dog loses treats." },
+        { s: 'aigis', f: 'neutral', t: "And that the second came with a better scratch behind the ears. He does not wish to rank them. He says that is how a dog loses treats." },
         { s: 'ken', f: 'neutral', t: "...That's actually really smart." },
         { choose: [
           { t: "(Scratch Koromaru behind the ears.)", notes: 0, then: [
             { n: "She knelt and scratched him behind the ears, and he leaned his whole weight into her hand and sighed through his nose, long and contented and completely unbothered." },
-            { s: 'aigis', t: "He says you are also acceptable." }
+            { s: 'aigis', f: 'happy', t: "He says you are also acceptable." }
           ] },
           { t: "Which one does he like better? Really.", notes: 0, then: [
-            { s: 'aigis', t: "He says, and I am quoting, why would I tell you that." },
+            { s: 'aigis', f: 'neutral', t: "He says, and I am quoting, why would I tell you that." },
             { s: 'koromaru', f: 'serious', t: "Woof." }
           ] },
           { t: "Ken, you can't tell anyone.", notes: 0, then: [
@@ -197,7 +197,7 @@
           ] }
         ] },
         { n: "In the end Koromaru ate both treats, one after the other, in the order they'd been given, without any visible guilt, and then went to sleep on Solar's foot." },
-        { s: 'aigis', t: "I believe he has resolved the matter. I find his approach efficient." },
+        { s: 'aigis', f: 'happy', t: "I believe he has resolved the matter. I find his approach efficient." },
         { n: "Solar sat very still so as not to wake him, and thought that if anyone in the dorm had worked out how to live, it was probably the dog." }
       ] },
 
