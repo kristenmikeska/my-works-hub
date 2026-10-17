@@ -162,6 +162,7 @@ window.FemcSocial = (() => {
     .vn-tools { position: absolute; top: 22px; right: 22px; z-index: 6; display: flex; gap: 8px; }
     .vn-tools button { padding: 7px 14px; border: 0; background: #14070f; color: #fff; font: italic 900 13px/1 ${COND}; letter-spacing: .1em; text-transform: uppercase; transform: skewX(-14deg); box-shadow: 3px 3px 0 #ff4f9e; cursor: inherit; }
     .vn-tools button:is(:hover, :focus-visible) { background: #fff; color: #14070f; outline: none; }
+    .vn-tools button[aria-pressed="true"] { background: #ff4f9e; color: #14070f; box-shadow: 3px 3px 0 #fff; }
     .vn-rank { position: absolute; inset: 0; z-index: 8; display: grid; place-items: center; background: rgba(14, 5, 10, .9); cursor: pointer; animation: vn-in .4s ease both; }
     .vn-rank-inner { display: grid; justify-items: center; gap: 18px; text-align: center; padding: 16px; }
     .vn-card { width: 150px; height: 230px; display: grid; place-content: center; gap: 8px; border: 3px solid #ff8cc0; border-radius: 10px; background: linear-gradient(160deg, #ff4f9e, #7a0b3e); box-shadow: 0 0 40px rgba(255, 79, 158, .6); font: italic 900 46px/1 ${COND}; animation: vn-card 1.1s cubic-bezier(.2, 1.2, .4, 1) both; }
@@ -444,7 +445,7 @@ window.FemcSocial = (() => {
     el.innerHTML = `<div class="vn-bg"></div><div class="vn-place"><b>${when}</b><span></span></div>
       <img class="vn-portrait" alt="">
       <img class="vn-solar" alt="" hidden>
-      <div class="vn-tools">${F().canFullscreen?.() ? `<button type="button" data-t="full" aria-label="Fullscreen" title="Fullscreen (F)">⛶</button>` : ''}<button type="button" data-t="log">Log</button><button type="button" data-t="skip">Skip ▸▸</button><button type="button" data-t="leave">Leave</button></div>
+      <div class="vn-tools">${F().canFullscreen?.() ? `<button type="button" data-t="full" aria-label="Fullscreen" title="Fullscreen (F)">⛶</button>` : ''}<button type="button" data-t="log">Log</button><button type="button" data-t="auto" aria-pressed="false" title="Auto (A)">Auto ▸</button><button type="button" data-t="skip">Skip ▸▸</button><button type="button" data-t="leave">Leave</button></div>
       <div class="vn-log" hidden><div class="vn-log-inner"></div><button type="button" data-t="log-close">Close log</button></div>
       <div class="vn-choices"></div>
       <div class="vn-box" aria-live="polite"><span class="vn-name"></span><p class="vn-text"></p></div>`;
@@ -647,6 +648,7 @@ window.FemcSocial = (() => {
       if (!el.isConnected) return document.removeEventListener('keydown', keys, true);
       if (e.key === ' ' || e.key === 'Enter') { if (!choices.children.length && !e.target.closest?.('button')) { e.preventDefault(); advanceClick(); } }
       if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); }
+      if ((e.key === 'a' || e.key === 'A') && !e.metaKey && !e.ctrlKey && !e.altKey && !e.target.closest?.('input, textarea') && !el.querySelector('.vn-naming')) { e.preventDefault(); e.stopPropagation(); el.querySelector('[data-t="auto"]').click(); }
       if ((e.key === 'f' || e.key === 'F') && !e.metaKey && !e.ctrlKey && !e.altKey && F().canFullscreen?.()) { e.preventDefault(); e.stopPropagation(); F().fullscreen(); }
       // Arrow keys move the cursor through dialogue choices, P3P style.
       if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && choices.children.length) {
@@ -660,6 +662,22 @@ window.FemcSocial = (() => {
     document.addEventListener('keydown', keys, true);
     el.querySelector('[data-t="skip"]').addEventListener('click', () => { skipping = true; advanceClick(); const run = () => { if (skipping && waiting && !choices.children.length) { advanceClick(); setTimeout(run, 60); } }; setTimeout(run, 60); });
     el.querySelector('[data-t="leave"]').addEventListener('click', () => end(false));
+    // Auto: once a line has finished typing, wait long enough to read it, then go on. Stops at choices, the bond
+    // meter and title cards; remembered between scenes.
+    const autoBtn = el.querySelector('[data-t="auto"]');
+    let auto = false, readyAt = 0;
+    try { auto = localStorage.getItem('kg-femc-auto') === 'on'; } catch (e) {}
+    const setAuto = on => { auto = on; readyAt = 0; autoBtn.setAttribute('aria-pressed', String(on)); try { localStorage.setItem('kg-femc-auto', on ? 'on' : 'off'); } catch (e) {} };
+    setAuto(auto);
+    autoBtn.addEventListener('click', () => setAuto(!auto));
+    const autoTick = setInterval(() => {
+      if (!el.isConnected) return clearInterval(autoTick);
+      const can = auto && !skipping && waiting && !typing && !choices.children.length && el.querySelector('.vn-log').hidden && !el.querySelector('.vn-title, .vn-rank, .vn-naming');
+      if (!can) { readyAt = 0; return; }
+      if (!readyAt) readyAt = Date.now();
+      const wait = el.classList.contains('phoning') ? 1400 : Math.min(7000, 1100 + textEl.textContent.length * 38);
+      if (Date.now() - readyAt >= wait) { readyAt = 0; advanceClick(); }
+    }, 200);
     el.querySelector('[data-t="full"]')?.addEventListener('click', () => F().fullscreen());
     const logBox = el.querySelector('.vn-log');
     el.querySelector('[data-t="log"]').addEventListener('click', () => {
