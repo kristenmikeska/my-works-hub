@@ -76,6 +76,237 @@ FemcSocial.define({
       { n: "When the club finally filed out, he went back in, put a coin in the fighting cabinet, and stepped aside to let her play first. It was, she was starting to understand, his version of thank you." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate).
+  dates: [
+    { title: 'sashimi', place: 'Port Island Station', music: 'joy', scene: [
+      { n: "Back in Pelican Town, Sebastian had told her once under the awning, sashimi was his favorite food in the world. You got it at the saloon. Gus made it out of whatever Willy had caught that morning, sliced thick and laid on a plate with a sprig of something, and it was always good, and it was always, very slightly, carp." },
+      { n: "Solar had looked at him for a long moment and then informed him that he was currently living in Japan." },
+      { n: "So on a cold gray afternoon they were standing outside a conveyor-belt sushi place by Port Island Station, the kind with a long counter shaped like a racetrack and little colored plates going around and around under domed plastic lids, and Sebastian had his hood up and both hands in his hoodie pocket and was looking through the window like it was a dungeon he hadn't rolled high enough to enter." },
+      { s: 'sebastian', f: 'neutral', t: "It moves. The food moves. Nobody told me the food was going to move." },
+      { n: "Inside it was warm and loud, steam and vinegar and the hiss of the tea taps at every seat, and the chef behind the counter shouted a welcome at them so loudly and so cheerfully that Sebastian physically flinched and then, for the rest of the meal, sat with his shoulder turned very slightly toward him, like a man keeping an eye on a large friendly dog." },
+      { choose: [
+        { t: "(Order for him, so he doesn't have to talk to the chef.)", notes: 3, then: [
+          { n: "She ordered for both of them, tuna, salmon, yellowtail, mackerel, and he sat beside her in silent and enormous gratitude, which in Sebastian looked like his knee pressing against hers under the counter and staying there." }
+        ] },
+        { t: "(Make him order. He can do this.)", notes: 2, then: [
+          { n: "He ordered. It took him three tries to get the chef's attention and he said tuna, please, to the counter rather than to the chef, and the chef roared HAI in response, and Sebastian jumped so hard he hit his knee." },
+          { s: 'sebastian', f: 'flustered', t: "...Okay. That was a lot. But I did it. I'm counting it." }
+        ] },
+        { t: "(Grab plates off the belt for him as they go by.)", notes: 2, then: [
+          { n: "She grabbed plates off the belt as they passed. He watched her do it with the respect of a man watching somebody else land a perfect combo on the sticky cabinet." }
+        ] }
+      ] },
+      { n: "He ate the first piece of tuna and went completely still. He didn't say anything. He just sat there chewing with his eyes fixed on the conveyor belt, slowly, very slowly, and she understood that he was having some kind of experience and that it would be rude to interrupt." },
+      { s: 'sebastian', f: 'surprised', t: "...Oh." },
+      { s: 'sebastian', f: 'happy', t: "This is it. This is what it was supposed to be. Gus has been lying to me my entire life." },
+      { n: "He ate fourteen plates. He stacked them neatly beside him in a tower, color-coded, and kept glancing at the tower with quiet pride, like it was a high score. When the bill came he wouldn't let her touch it. He'd been working at the repair shop near the port where he'd found the bike, cash, a few hours a week, and he counted it out onto the counter coin by coin while the chef watched with enormous patience." },
+      { n: "There was one piece left, on the last plate, salmon, glistening. They both looked at it. They both reached for it at the same time and stopped." },
+      { choose: [
+        { t: "(Pick it up and feed it to him.)", notes: 3, then: [
+          { n: "She held it out on her chopsticks. He looked at it. He looked at her. His ears went red under his hair, and he leaned in and took it, and then sat there chewing with his face doing several things at once, none of which he had any control over." },
+          { s: 'sebastian', f: 'flustered', t: "...Okay. Okay. That's. Okay. Cool." }
+        ] },
+        { t: "Rock, paper, scissors.", notes: 2, then: [
+          { n: "He threw rock. She threw paper. He looked at his own fist like it had betrayed him personally, and then pushed the plate toward her anyway, because, he said, a deal was a deal, and also because he wanted her to have it." }
+        ] },
+        { t: "(Let him have it.)", notes: 2, then: [
+          { s: 'sebastian', f: 'serious', t: "No. You found this place. You get the last one. That's a rule." },
+          { s: 'solar', t: "Since when?" },
+          { s: 'sebastian', f: 'happy', t: "Since now. I'm the DM. I make the rules." }
+        ] }
+      ] },
+      { n: "They walked back toward the monorail in the cold, the sky already going dark at five, the station lights coming on one by one. He walked on the outside, by the road. She noticed. He pretended it was an accident for the whole length of the street." },
+      { s: 'sebastian', f: 'happy', t: "I'm going to tell Gus about this. When I get back. He's going to be so mad." },
+      { s: 'solar', t: "You can't tell Gus about Port Island." },
+      { s: 'sebastian', f: 'neutral', t: "I'll say it was a dream. A really good dream. With moving food. And you." }
+    ] },
+    { title: 'the rogue', place: 'Iwatodai Dorm · Lounge', music: 'joy', scene: [
+      { n: "A one-shot, he'd called it. Just the two of them, one evening, a side quest off the main Solarion campaign, because Abigail and Sam were stuck in Pelican Town and he had, he said, some material he wanted to test. He said test the way somebody says it when they mean something else." },
+      { n: "He'd taken over the lounge coffee table. Notebook, maps, a pencil worn down to a stub, the twenty-sided die, and a little cardboard screen he'd folded out of a cereal box so she couldn't see his notes. He sat behind it with his hood down for once and his hair falling in his eyes, and when she sat down across from him he cleared his throat, which he never did." },
+      { s: 'sebastian', f: 'neutral', t: "Solarion. You're in a city. Rain, obviously. Night. For three days now somebody's been following you. Every street, every tavern. In a hood." },
+      { s: 'sebastian', f: 'serious', t: "Tonight you finally corner him in an alley. He's a rogue. He's sort of... lurking. What do you do?" },
+      { n: "She looked at the boy behind the cereal box. He looked very hard at his notes." },
+      { choose: [
+        { t: "Solarion pulls back the rogue's hood.", notes: 3, then: [
+          { s: 'sebastian', f: 'flustered', t: "...Roll for it." },
+          { n: "She rolled a twenty. He looked at the die for a long time." },
+          { s: 'sebastian', f: 'flustered', t: "The rogue has... dark hair. In his eyes. He looks like he hasn't slept in a while. He's sort of relieved you caught him. He's been trying to work up the nerve to say something for three days." }
+        ] },
+        { t: "Solarion asks him why he's been following her.", notes: 3, then: [
+          { s: 'sebastian', f: 'neutral', t: "He says he wasn't following you. He was going the same way. Every day. For three days." },
+          { s: 'sebastian', f: 'flustered', t: "...That's a lie. Roll insight. Actually don't. It's a lie. You know it's a lie." }
+        ] },
+        { t: "Solarion offers him some of her bread.", notes: 2, then: [
+          { s: 'sebastian', f: 'surprised', t: "...Nobody ever does that." },
+          { s: 'sebastian', f: 'happy', t: "He takes it. He's been hungry for a while. He's not great at asking for things." }
+        ] }
+      ] },
+      { n: "His phone had started buzzing about ten minutes in. It was face-down on the table. It kept buzzing. He kept ignoring it with the same set jaw he used on the sticky arcade stick, until she reached over and turned it face-up." },
+      { phone: [
+        { from: 'abigail', t: 'is it happening' },
+        { from: 'abigail', t: 'seb is it happening RIGHT NOW' },
+        { from: 'sam', t: 'is he doing the rogue' },
+        { from: 'abigail', t: 'HES DOING THE ROGUE' },
+        { from: 'sam', t: 'the rogue is SEB. the rogue has ALWAYS been seb' },
+        { from: 'sebastian', t: 'im turning my phone off' },
+        { from: 'abigail', t: 'solar if ur reading this. make him roll charisma. he has a 6' }
+      ], contact: 'solarion chronicles' },
+      { s: 'sebastian', f: 'flustered', t: "...I'm turning my phone off. I'm doing it. Watch me." },
+      { n: "He did not turn his phone off. He put it under a cushion, which was not the same, and which they both knew, and went back behind the cereal box with his ears burning." },
+      { s: 'sebastian', f: 'serious', t: "The rogue asks if he can travel with you. Permanently. He's not good in a fight. He's okay with locks. He knows a lot about frogs." },
+      { choose: [
+        { t: "Solarion says yes. Obviously.", notes: 3, then: [
+          { s: 'sebastian', f: 'surprised', t: "...You don't want to roll for it?" },
+          { s: 'solar', t: "No roll needed." },
+          { n: "He recognized it. She watched him recognize it, November coming back across the coffee table at him, and his whole face went soft and helpless, and he put the pencil down." }
+        ] },
+        { t: "Solarion makes him roll for it.", notes: 2, then: [
+          { n: "He rolled. It came up one. He stared at it, stricken." },
+          { s: 'sebastian', f: 'sad', t: "...The rogue trips. In the alley. On nothing." },
+          { s: 'solar', t: "Solarion catches him." },
+          { s: 'sebastian', f: 'flustered', t: "That's not in the rules. ...Okay. Okay. She catches him." }
+        ] }
+      ] },
+      { n: "He folded the cereal-box screen flat, and closed the notebook, and came around the coffee table, and sat down on the floor beside her with his back against the couch and his shoulder against hers, and leaned his head on her, heavy and warm, his hair tickling her neck." },
+      { s: 'sebastian', f: 'happy', t: "...Session over. Same time next week." },
+      { n: "Under the cushion, the phone kept buzzing for a long time. Neither of them got it." }
+    ] },
+    { title: 'breakdown', place: 'Port Island · Coastal Road', music: 'night', scene: [
+      { n: "The bike died on the coastal road at a quarter past seven, three kilometers past the last streetlight, with a cough and a shudder and a smell of hot metal, and rolled to a stop on the shoulder with the bay black and endless on one side and the dark hill on the other." },
+      { n: "Sebastian sat on it for a long moment without moving. Then he took off his helmet and said a word she'd never heard him say, very calmly, to the sky." },
+      { s: 'sebastian', f: 'serious', t: "It's the carburetor. It's always the carburetor. I knew it was going to be the carburetor." },
+      { s: 'sebastian', f: 'neutral', t: "Hold your phone up. I need light. Over here. Lower. Okay." },
+      { n: "It was cold. The real cold, the coastal kind that came up off the water and through every layer she had on, and she stood beside the bike with her phone held out like a flashlight while he crouched down with the borrowed tools spread on a rag, his breath steaming, his fingers going stiff and slow and black with grease." },
+      { choose: [
+        { t: "(Hold the light steady. Don't say anything.)", notes: 3, then: [
+          { n: "She held the light steady and didn't say anything, for twenty minutes, while he worked. Every so often he said a little more, lower, there, and she moved it, and she realized after a while that this was the most at ease she had ever seen him, crouched in the cold in the dark with his hands inside a machine, saying almost nothing." }
+        ] },
+        { t: "Do you actually know what you're doing?", notes: 2, then: [
+          { s: 'sebastian', f: 'neutral', t: "Mostly. My mom built a whole house. I can build half a motorcycle. It's genetic." },
+          { s: 'sebastian', f: 'serious', t: "...The other half is guessing." }
+        ] },
+        { t: "(Pull a hairpin out of your hair and hand it to him.)", notes: 3, then: [
+          { s: 'sebastian', f: 'surprised', t: "...That's exactly what I needed. How did you know that's what I needed?" },
+          { s: 'solar', t: "You were staring at my hair." },
+          { s: 'sebastian', f: 'flustered', t: "That's... a separate thing. But yes. Give it." }
+        ] }
+      ] },
+      { n: "It still wouldn't start. He said it needed to cool down, and there was nothing to do but wait, so they sat on the guardrail with their backs to the road and their feet hanging over the slope down to the water, and there was a vending machine, impossibly, glowing by a bus stop thirty meters back, and she bought two cans of hot corn soup." },
+      { n: "He looked at the can with deep suspicion. Soup, in a can, hot, out of a machine. Then he drank it and his entire posture changed, like a cat in front of a heater, and he finished it and shook the can to get the last kernels out and looked at her with the betrayed expression of a man who has been denied something wonderful for his entire life." },
+      { s: 'sebastian', f: 'happy', t: "Your world has hot soup in vending machines. And you just... live here. Like it's normal." },
+      { n: "Then he went quiet. He turned the empty can in his black fingers and looked down at the bike, standing on the shoulder in the dark." },
+      { s: 'sebastian', f: 'sad', t: "I can't take it with me. In January. I'll leave it at the shop. The old guy said he'd keep it running." },
+      { s: 'sebastian', f: 'sad', t: "I finally fix something, and I don't get to keep it." },
+      { choose: [
+        { t: "You get to keep that you fixed it.", notes: 3, then: [
+          { s: 'sebastian', f: 'surprised', t: "..." },
+          { s: 'sebastian', f: 'neutral', t: "Yeah. I guess I do. I'm going to fix mine. When I get home. The one in the garage. I've been saying I would for three years." },
+          { s: 'sebastian', f: 'happy', t: "Sam's going to lose his mind." }
+        ] },
+        { t: "(Kiss him. His nose is cold.)", notes: 3, then: [
+          { n: "She kissed him on the guardrail. His nose was freezing against her cheek and he tasted of corn soup and he made a small, startled sound and then put his hand, very carefully, on the side of her face, which left, she discovered later, a thumbprint of engine grease on her jaw that she didn't wash off until morning." },
+          { s: 'sebastian', f: 'flustered', t: "...That's the best thing that's ever happened on the side of a road." }
+        ] }
+      ] },
+      { n: "The engine caught on the fourth try, roaring in the dark, and he whooped, actually whooped, a sound she'd never heard come out of him, and it echoed off the hill. They rode back slowly. She held on. The lights of the city came up ahead of them across the water, and she pressed her cheek against the back of his jacket and felt him laughing, still, all the way home." }
+    ] },
+    { title: 'hibernation', place: 'Paulownia Mall', music: 'tender', scene: [
+      { n: "He wasn't under the awning. She found him behind the mall, at the canal, where he'd let the first frog go in June. He was lying on his stomach on the cold concrete at the edge of the water with his chin on his folded arms, looking at the mud." },
+      { s: 'sebastian', f: 'neutral', t: "They're down there. In the mud. Under the leaves. They don't freeze. Their hearts almost stop and they just... wait." },
+      { s: 'sebastian', f: 'neutral', t: "Some of them stop breathing completely. For months. Then it gets warm and they wake up like nothing happened." },
+      { n: "He said it with the solemn care of somebody reporting the results of an experiment. The canal was gray and still, a skin of ice at the edges, a single dead leaf turning slowly on the surface. There was nothing to see at all. He'd been looking at it, he admitted, for about forty minutes." },
+      { choose: [
+        { t: "(Lie down next to him on the cold concrete.)", notes: 3, then: [
+          { n: "She lay down next to him, on her stomach, chin on her arms, the cold coming up through her coat at once. He didn't say anything about it. He moved over, about four inches, the way he had under the awning the very first time, and then, after a while, back again, until their shoulders touched." }
+        ] },
+        { t: "Seb, you're going to get pneumonia.", notes: 2, then: [
+          { s: 'sebastian', f: 'neutral', t: "Frogs don't get pneumonia. I'm being a frog." },
+          { n: "She looked at him. He looked at the mud. After a minute she lay down too, because it was that or stand over him like a disappointed parent, and she had a strong feeling he'd had enough of those." }
+        ] }
+      ] },
+      { s: 'sebastian', f: 'sad', t: "I won't see them wake up. In spring. I'll be gone." },
+      { s: 'sebastian', f: 'sad', t: "It's the first winter I know exactly where spring's going to happen. And it's going to happen without me." },
+      { n: "He said it to the water, the way he said all the true things, the way he'd said the green hour ends at the end of January under the awning in October, to the puddles. She looked at the side of his face, pale with the cold, his hair falling in his eyes, the tip of his nose going pink." },
+      { choose: [
+        { t: "I'll come check on them in March. I'll text you.", notes: 3, then: [
+          { s: 'sebastian', f: 'surprised', t: "...You'd do that? Through the crystal thing?" },
+          { s: 'solar', t: "Every week. Until they wake up." },
+          { s: 'sebastian', f: 'happy', t: "Send pictures. Even if it's just mud. Especially if it's just mud." }
+        ] },
+        { t: "Then we name them now. So they're ours.", notes: 3, then: [
+          { s: 'sebastian', f: 'happy', t: "...Okay. That one by the drain is Gerald." },
+          { s: 'solar', t: "You can't see any of them." },
+          { s: 'sebastian', f: 'serious', t: "I know where Gerald is. Gerald is under that leaf. The one next to Gerald is also Gerald. It's a family name." }
+        ] }
+      ] },
+      { n: "They named eleven frogs they couldn't see. It got dark. The mall's back lights came on, flat and orange, and somewhere on the other side of the wall the arcade was going, faint music and a fanfare when somebody won, and her elbows had gone numb on the concrete a long time ago." },
+      { n: "He rolled onto his side, finally, facing her, his head on his arm, and looked at her for a while in the orange light without saying anything. It was the look he gave the rain. The look she'd seen on his face in June, before he knew her name." },
+      { s: 'sebastian', f: 'neutral', t: "I used to hate winter. Back home. Nothing to do. Everybody inside. Everybody in everybody's business." },
+      { s: 'sebastian', f: 'happy', t: "I like the winter here." },
+      { n: "He kissed her there, lying on the cold concrete by the canal, carefully, his cold hand finding hers between them. When they finally got up her coat was ruined, and his hoodie was ruined, and somewhere under the mud eleven frogs were very slowly not breathing, waiting, with their hearts almost stopped, for something warm." }
+    ] }
+  ],
+  // P3's Christmas Eve: on 12/24 evening, if Solar is romancing several people (rank 9+), she picks one; this plays.
+  christmas: { place: 'Paulownia Mall · Game Panic', scene: [
+    { n: "It wasn't raining. That was the first thing. For the first time since June she ducked under the Game Panic awning and the street beyond it was not silver and running but white, snow coming down slow and fat in the light from the arcade sign, the pavement already soft with it, the whole street muffled and strange." },
+    { n: "Sebastian was there, of course, in his usual spot against the wall, hood up, a small flat box held against his chest under his arm to keep it dry. He was watching the snow the way he watched the rain. When she came in, he didn't move over four inches. He moved over all the way, so there was a space against the wall exactly her size, already warm." },
+    { s: 'sebastian', f: 'neutral', t: "It's not raining." },
+    { s: 'solar', t: "I noticed." },
+    { s: 'sebastian', f: 'happy', t: "I think I like this more. Don't tell the rain." },
+    { n: "In Pelican Town, he told her, the twenty-fifth of winter was the Feast of the Winter Star. The whole town went to the square and ate too much, and everybody drew a name a week before and bought that person a secret present, and he'd gone every single year since he was a kid and drawn somebody he barely talked to, and bought them something safe from the general store, and stood at the back." },
+    { s: 'sebastian', f: 'serious', t: "This is the first year I didn't draw a name. I just knew who." },
+    { s: 'sebastian', f: 'flustered', t: "It's not very good. Open it anyway." },
+    { n: "It was a frog. Carved out of a single piece of pale wood, about the size of her palm, sitting the way the first frog had sat in his cupped hands in June, a little hunched, a little surprised. One of its eyes was very slightly bigger than the other. It had been sanded so smooth it felt warm." },
+    { s: 'sebastian', f: 'sad', t: "My mom's a carpenter. I watched her do this my whole life and never once asked her to show me. I borrowed a knife from the guy at the bike shop. It took eleven tries. There are ten bad frogs in a bag in my room." },
+    { s: 'sebastian', f: 'neutral', t: "I'm going to ask her. When I get back. To show me properly." },
+    { choose: [
+      { t: "(Give him an umbrella. Clear plastic, with green frogs printed on it.)", notes: 3, then: [
+        { n: "He opened it right there under the awning, which you weren't supposed to do, and looked up through the clear dome at all the little green frogs printed on it, with the snow landing on top and sliding off." },
+        { s: 'sebastian', f: 'happy', t: "So I can stand out in it on purpose. Instead of under things." },
+        { s: 'sebastian', f: 'flustered', t: "...That's the nicest thing anybody's ever thought about me." }
+      ] },
+      { t: "(Give him a smooth black stone from the gem shop. Obsidian.)", notes: 3, then: [
+        { s: 'sebastian', f: 'surprised', t: "...How did you know that? That's my favorite. I've never told anybody that. Not even Abby." },
+        { s: 'solar', t: "You stop at that shop window every time we walk past." },
+        { n: "He turned it over and over in his fingers, the black glass catching the arcade light. Then he put it in his hoodie pocket, and kept his hand in there with it, and she could tell from the shape of his fist that he was holding it." }
+      ] },
+      { t: "(Give him a twenty-sided die. Clear, with a tiny green frog set inside it.)", notes: 2, then: [
+        { s: 'sebastian', f: 'happy', t: "There's a frog in it. There's a frog in the die. I'm going to roll only with this one. Abby's going to say it's cursed." },
+        { s: 'sebastian', f: 'neutral', t: "It's not cursed. It's blessed. By Gerald." }
+      ] }
+    ] },
+    { n: "His phone buzzed. And again. He sighed, a long, put-upon sigh from somewhere deep in the hoodie, and turned it so she could see." },
+    { phone: [
+      { from: 'abigail', t: 'MERRY WINTER STAR' },
+      { from: 'sam', t: 'merry winter star from the saloon 🎸 gus says hi. well. gus says who are u texting' },
+      { from: 'abigail', t: 'did he give it to u yet. the frog. did he give u the frog' },
+      { from: 'abigail', t: 'he made TEN BAD ONES. he showed me the bad ones. one has no face' },
+      { from: 'sebastian', t: 'go away' },
+      { from: 'sam', t: 'merry winter star solar!! take care of him' },
+      { from: 'abigail', t: 'shes not taking care of him. hes taking care of her. hes been practicing' }
+    ], contact: 'solarion chronicles' },
+    { s: 'sebastian', f: 'flustered', t: "...I didn't practice. I don't know what she's talking about." },
+    { n: "They stood under the awning and watched the snow fill up the street. A couple went past holding a cake box between them. The arcade doors slid open and shut, letting out blue light and noise and a gust of warm air that smelled of hot plastic, the same as it always had, every Tuesday and Thursday and Saturday since June." },
+    { s: 'sebastian', f: 'sad', t: "I stood at the back of everything my whole life. The beach, with the jellies. The feast. Every room. I thought that was just who I was." },
+    { s: 'sebastian', f: 'neutral', t: "And then I fell through the floor of the universe and the first person I met stood under this awning with me and didn't ask me anything." },
+    { choose: [
+      { t: "I'll stand anywhere you want. Front, back, under the awning.", notes: 3, then: [
+        { s: 'sebastian', f: 'happy', t: "...Front. With you. I'd stand at the front." },
+        { s: 'sebastian', f: 'flustered', t: "That's the scariest thing I've ever said. I'm going to need a minute." }
+      ] },
+      { t: "You moved over four inches. That was a lot, for you.", notes: 3, then: [
+        { s: 'sebastian', f: 'surprised', t: "...You noticed that?" },
+        { s: 'solar', t: "I noticed everything." },
+        { s: 'sebastian', f: 'happy', t: "It was a lot. It was basically a speech. I'm glad somebody heard it." }
+      ] }
+    ] },
+    { n: "He pulled his hood down. He looked at her, close, the snow behind him and the arcade sign blinking pink and blue over both of them, his hair falling in his eyes the way it always did, and for once he didn't look away, at the street, at the puddles, at anything." },
+    { n: "He kissed her under the awning, slow and careful and a little clumsy, her carved frog held between them in both their hands, the snow coming down beyond the edge of the canvas in a soft white curtain so that for a moment there was nothing outside it at all, no street, no city, no other world waiting at the end of January. Just the awning. Just the two of them under it, out of the weather." },
+    { s: 'sebastian', f: 'happy', t: "...Merry Winter Star, Solar." },
+    { s: 'solar', t: "You like the snow here." },
+    { s: 'sebastian', f: 'flustered', t: "I like everything here. That's the problem." },
+    { n: "He kissed her again, quicker, like he'd decided the problem could wait, and then pulled his hood back up, and moved over to make room for her against the warm wall, and they stood there until the arcade closed, watching the street go white, not saying anything, which with Sebastian had always been the most anyone could ask for." }
+  ] },
   romance: true,
   cast: { abigail: 'Abigail', sam: 'Sam', junpei: 'Junpei', noctis: 'Noctis' },
   threads: { solarion: { name: 'solarion chronicles', members: ['sebastian', 'abigail', 'sam'] } },

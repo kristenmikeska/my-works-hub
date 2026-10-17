@@ -95,6 +95,219 @@ FemcSocial.define({
       { n: "Prompto took thirty photographs anyway. In every single one Noctis was looking at the water like a man who had absolutely not posed, and in every single one, if you looked closely, he was very slightly smiling." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate).
+  dates: [
+    { title: 'the big one', place: 'Paulownia Mall · Arcade', music: 'joy', scene: [
+      { n: "Noctis had been unbearable since the twenty-sixth. Not loudly. Noctis didn't do anything loudly. He was unbearable the way a cat is unbearable after it's caught something, sleepily and completely, with a kind of private glow, and every time fish came up in conversation, which with Noctis was always, he went quiet and looked down at his hands like the line was still in them." },
+      { n: "So when Prompto texted that the arcade in Paulownia Mall had a fishing game, a real cabinet with a plastic rod and a reel you had to crank, Solar did the only reasonable thing, which was to say nothing at all until they were standing in front of it." },
+      { s: 'noctis', f: 'surprised', t: "...There's a rod." },
+      { s: 'noctis', f: 'neutral', t: "Why is there a rod. Who made this. I need to meet them." },
+      { n: "He put in a hundred yen with the gravity of a man laying a wreath. The screen showed a lake, very blue, very fake, full of bass with enormous cartoon mouths. Noctis cast with one smooth, beautiful flick of the wrist, the most awake she'd seen him since the pier, and then waited, patiently, the way he'd taught her, the way you were supposed to." },
+      { n: "The game did not want patience. The game wanted violence. The bass got bored and left, and the screen said TIME UP in red letters, and Noctis stood there holding the plastic rod with the expression of someone who has been personally lied to by a lake." },
+      { s: 'noctis', f: 'serious', t: "That's not how fish work." },
+      { s: 'noctis', f: 'neutral', t: "...You try." },
+      { choose: [
+        { t: "(Play it the way he taught you. Flick it. Be the line.)", notes: 3, then: [
+          { n: "She flicked it. She was the line. The game, for reasons known only to itself, gave her a bass the size of a car, and the cabinet played a fanfare loud enough that two middle schoolers came over to look, and the high score board asked for her initials." },
+          { s: 'noctis', f: 'neutral', t: "...Okay. Show-off." },
+          { s: 'noctis', f: 'happy', t: "Put mine next to yours. I taught you. That's basically my fish." }
+        ] },
+        { t: "(Crank the reel like your life depends on it.)", notes: 2, then: [
+          { n: "She cranked like her life depended on it, and the game loved her for it, and pulled up a bass the size of a sofa while Noctis watched with deep, wounded betrayal." },
+          { s: 'noctis', f: 'serious', t: "That's not fishing. That's violence. ...Do it again." }
+        ] },
+        { t: "(Hand him another hundred yen.)", notes: 2, then: [
+          { n: "He lost three more times, each time more outraged, and on the fourth he gave up on patience and cranked with his whole arm, and caught something enormous, and then looked at it on the screen with no joy at all." },
+          { s: 'noctis', f: 'sad', t: "...It's not the same. You weren't holding the rod." }
+        ] }
+      ] },
+      { place: 'Paulownia Mall · Photo Booth', time: 'Afternoon', music: 'joy' },
+      { n: "There was a photo booth by the arcade's back wall, the kind with a curtain and a stool and a voice that counted down in a cheerful, threatening falsetto. Noctis had never been inside one. He looked at it the way he looked at lettuce." },
+      { s: 'noctis', f: 'neutral', t: "Prompto would die if he knew I did this without him." },
+      { s: 'solar', t: "So we won't tell him." },
+      { s: 'noctis', f: 'happy', t: "We're definitely going to tell him." },
+      { n: "The stool was built for one person. They made it work anyway, his shoulder pressed against hers, the curtain swinging shut behind them. In the first picture he was stiff as a prince on a stamp. In the second he was looking at her instead of the camera. In the third she was laughing at him for it, and he was smiling, small and caught, at nothing in particular." },
+      { choose: [
+        { t: "(Kiss his cheek on the last countdown.)", notes: 3, then: [
+          { n: "Three, two, one, and she turned and kissed his cheek, and the flash went off, and when the strip slid out of the slot the fourth picture was Noctis Lucis Caelum with his eyes squeezed shut and his ears scarlet, looking like a man who had just been hit by something wonderful and heavy." },
+          { s: 'noctis', f: 'flustered', t: "...I blinked. That's a blink." },
+          { s: 'solar', t: "Sure." },
+          { s: 'noctis', f: 'flustered', t: "It's a really long blink." }
+        ] },
+        { t: "(Do his fishing face for the last one.)", notes: 2, then: [
+          { n: "She leaned back, let her mouth fall open, and closed her eyes. After a second of silent suffering, he did it too. The fourth picture was the two of them asleep on a stool, mouths open, perfectly matched, like a pair of very tired statues." },
+          { s: 'noctis', f: 'happy', t: "...Okay. I get why Prompto likes that one now." }
+        ] }
+      ] },
+      { n: "The machine gave them two strips. He tore his carefully along the perforation and tucked it into his wallet, behind the photo of the four of them on the road that Prompto had printed for him, where he kept the things he couldn't afford to lose. Prompto found out by eight o'clock. Prompto demanded a copy by eight-oh-one." }
+    ] },
+    { title: 'the carrot', place: 'Iwatodai Dorm · Kitchen', music: 'joy', scene: [
+      { n: "Ignis had asked to see her alone, which was how Solar came to be standing in the dorm kitchen at four in the afternoon in a borrowed apron, holding a peeler, being briefed like a soldier before a landing." },
+      { s: 'ignis', f: 'serious', t: "Noct will eat things you make him. I've observed it. He has eaten things in your company that he has refused from me for twenty years. I keep a list." },
+      { s: 'ignis', f: 'neutral', t: "I'm not proud. I'm a strategist. Tonight, we use it." },
+      { n: "The target was carrots. Glazed, Ignis said, with butter and a little honey, the way Noct's father's cook used to make them in the palace, a dish Noct had pushed to the edge of his plate every night of his childhood with the quiet, total commitment of a hunger strike." },
+      { choose: [
+        { t: "(Cut the carrots into little fish.)", notes: 3, then: [
+          { n: "She cut them into little fish, with tails and a notch for an eye. It took forty minutes. Ignis watched the first one come off the knife, and then took off his glasses, and cleaned them, slowly." },
+          { s: 'ignis', f: 'happy', t: "...Diabolical. I'm genuinely proud of you." }
+        ] },
+        { t: "(Hide them under the meat.)", notes: 2, then: [
+          { s: 'ignis', f: 'sad', t: "He'll find them. He always finds them. He found one inside a meatball when he was nine." },
+          { s: 'ignis', f: 'neutral', t: "But it's tradition. We do it anyway." }
+        ] },
+        { t: "(Put them on the plate in plain sight. Honesty.)", notes: 2, then: [
+          { s: 'ignis', f: 'neutral', t: "...Bold. Reckless. I've never once had the nerve." }
+        ] }
+      ] },
+      { n: "Noctis came in at six, sniffing the air like a hound, and stopped in the kitchen doorway. He looked at the plate. He looked at Solar, in the apron. He looked at Ignis, standing with his hands folded behind his back and his face arranged into an expression of perfect neutrality." },
+      { s: 'noctis', f: 'serious', t: "...This is a setup." },
+      { s: 'ignis', f: 'neutral', t: "I have no idea what you mean. Sit down. It's getting cold." },
+      { n: "He sat down. He ate the meat first, slowly, the way a man reads a contract. Then, while the kitchen went completely silent, he picked up one piece of carrot with his chopsticks, looked at it for a long time, glanced up at Solar, and ate it." },
+      { n: "Then he ate the next one. Then all of them. Ignis took his glasses off again and cleaned them again, slowly, for a very long time, and Solar realized that he was not cleaning his glasses." },
+      { place: 'Iwatodai Dorm · Front', time: 'Evening', music: 'tender' },
+      { n: "They sat on the dorm's front step afterward, in the cold, with the door shut behind them and the street dark and quiet, the windows of the houses opposite glowing yellow. He had his hands jammed in his jacket pockets. He'd eaten every carrot. He seemed, for once, to be thinking about it." },
+      { s: 'noctis', f: 'neutral', t: "I ate them because you made them. Don't tell Specs. He already knows." },
+      { s: 'noctis', f: 'sad', t: "When I was a kid I was sick for a long time. Couldn't eat much. Specs was like, ten. He learned to cook so I'd eat something. He used to cut stuff into shapes." },
+      { s: 'noctis', f: 'sad', t: "I never said thanks. Not once. Twenty years of vegetables." },
+      { choose: [
+        { t: "Tell him. Tonight.", notes: 3, then: [
+          { s: 'noctis', f: 'neutral', t: "...Yeah. Maybe." },
+          { s: 'noctis', f: 'happy', t: "Tomorrow. Tonight he's busy pretending he didn't cry." }
+        ] },
+        { t: "(Lean on his shoulder.)", notes: 3, then: [
+          { n: "She leaned on his shoulder. He let out a long breath that went white in the air, and leaned back, the way he leaned against the pier post when he fell asleep, except that he didn't fall asleep. He just stayed." }
+        ] }
+      ] },
+      { n: "He kissed her on the front step, a little shy about it, and he tasted, faintly but undeniably, of honey and carrot. She told him so. He said that was slander. Through the lounge window behind them, Ignis was very visibly not watching, polishing a perfectly clean glass." }
+    ] },
+    { title: 'fortune', place: 'Naganaki Shrine', scene: [
+      { n: "The shrine was quiet in the cold, the gravel frozen into ridges and the big tree by the gate bare and black against a white sky. Noctis had never seen a shrine. He stood at the bottom of the stone steps with his hands in his pockets and looked up at the gate like it was a door he was not sure he was allowed through." },
+      { s: 'noctis', f: 'neutral', t: "So you just... walk in. Anyone can." },
+      { s: 'solar', t: "Anyone can." },
+      { s: 'noctis', f: 'happy', t: "Huh. Nice." },
+      { n: "She showed him the wooden box of fortunes by the offering hall. A hundred yen in the slot, a shake of the hexagonal box until a stick came out of the hole in the bottom, and a number on the stick, and a drawer with that number, and a slip of paper inside. He shook it like a dice cup, very seriously, with both hands." },
+      { n: "Hers said great blessing. His, he read, and didn't say anything at all. He folded it in half, and then in half again, and stood looking at the bare tree with the paper held between two fingers like something that might go off." },
+      { s: 'noctis', f: 'sad', t: "...Not great." },
+      { choose: [
+        { t: "Trade with me.", notes: 3, then: [
+          { s: 'noctis', f: 'surprised', t: "That's not how it works." },
+          { s: 'solar', t: "It is now." },
+          { n: "She took his folded paper out of his fingers and put hers in its place. He looked down at it, great blessing, sitting in his palm where the bad one had been, and his mouth did something complicated." }
+        ] },
+        { t: "The bad ones you tie to the tree. You leave them here.", notes: 3, then: [
+          { s: 'noctis', f: 'neutral', t: "You just... leave it?" },
+          { n: "They tied it together, on a low branch, his clumsy cold fingers and her quick ones, until it hung there like a small white bird. He stood back and looked at it for a while." },
+          { s: 'noctis', f: 'happy', t: "...I like that. Leaving something somewhere and walking away." }
+        ] },
+        { t: "What does it actually say?", notes: 2, then: [
+          { s: 'noctis', f: 'neutral', t: "Travel, delayed. Lost things, found late. The person you're waiting for will come." },
+          { s: 'noctis', f: 'happy', t: "...That last one's fine, actually." }
+        ] }
+      ] },
+      { n: "They sat on the shrine steps afterward with two cans of hot tea from the machine by the gate. It started to snow, the dry, light kind, the flakes sitting on his dark hair without melting." },
+      { s: 'noctis', f: 'neutral', t: "Back home, everybody's got a fate. The gods pick it. Then you spend your whole life walking toward it." },
+      { s: 'noctis', f: 'happy', t: "Here you just get a new one for a hundred yen. That's a way better system." },
+      { choose: [
+        { t: "(Put in another hundred yen.)", notes: 2, then: [
+          { n: "She put in another hundred yen and handed him the box. He shook it, and drew, and read it, and burst out laughing, real and loud enough to startle a crow off the roof." },
+          { s: 'noctis', f: 'happy', t: "Small blessing. Ha. I'll take it. I'll take a small one." }
+        ] },
+        { t: "(Brush the snow out of his hair.)", notes: 3, then: [
+          { n: "She brushed the snow out of his hair, slowly, and he held still for it with his eyes half shut, the way he held still in the sun at the end of the pier, and when she was done he caught her hand and kept it, and put both of them, hers and his, in his lap, out of the snow." }
+        ] }
+      ] },
+      { n: "Going down the steps, he took her hand and said, without looking at her, that the paper had said the person you're waiting for will come. He said he figured that one had already happened. He said it to the steps, quickly, like it had to be said before it could be stopped, and then didn't say anything else until the bottom, and didn't let go there either." }
+    ] },
+    { title: 'the city awake', place: 'Iwatodai · Rooftops', music: 'night', scene: [
+      { n: "He took her up on a Tuesday, at nine at night, with the lights on." },
+      { n: "They'd been walking home along the strip, and he'd stopped at the mouth of the alley beside the station, where nobody was, and looked up at the rooftops, and held out his hand, palm up, the way he had in November on the roof of the station with the green sky over them." },
+      { s: 'noctis', f: 'neutral', t: "I've only ever seen it from up there green. Everything stopped. Coffins." },
+      { s: 'noctis', f: 'happy', t: "I wanted to see it with the lights on. With you." },
+      { n: "She took his hand. A sword appeared in his other one, glowing blue, and he threw it, and then they were wherever the sword was, a flash and a lurch and her stomach somewhere back on the pavement, the cold air hitting her face all at once." },
+      { n: "It was different with the lights on. The city wasn't frozen. It moved. Trains slid along their tracks underneath them like strings of beads, cars poured over Moonlight Bridge in two bright rivers, a thousand windows were lit, and in every one somebody was eating dinner or arguing or asleep in front of the television, alive, all of it, alive." },
+      { n: "They went roof to roof to roof, up and up, blue flash after blue flash, until they were standing on the water tower on top of the tallest building in Iwatodai, eleven stories and a ladder above the street, the wind pulling at their coats." },
+      { s: 'noctis', f: 'surprised', t: "...You're still holding on." },
+      { choose: [
+        { t: "(Let go of his jacket. Take his hand instead.)", notes: 3, then: [
+          { s: 'noctis', f: 'surprised', t: "You let go." },
+          { s: 'solar', t: "I'm still holding on. Different way." },
+          { n: "He looked down at their hands for a long moment, the way he'd looked at the big fish in the gray water in December, like something he'd waited a very long time for and still could not quite believe had come up out of the dark." }
+        ] },
+        { t: "Again. Do it again.", notes: 3, then: [
+          { s: 'noctis', f: 'happy', t: "Ha. Okay. Hold on." },
+          { n: "He threw the sword out over the street to the roof of the department store, and they went, and came back, and went again, laughing, both of them, so hard that on the fourth landing he nearly put them in a satellite dish." }
+        ] }
+      ] },
+      { n: "They sat on the edge of the water tower with their legs hanging over the city. It was so cold their breath froze on their scarves. He was quiet for a long while." },
+      { s: 'noctis', f: 'sad', t: "Elizabeth says end of January. Then I'm back in the car, I guess. With the guys. Everything's waiting." },
+      { s: 'noctis', f: 'serious', t: "There's a lot I'm going to have to do. I'm going to have to be awake for all of it." },
+      { s: 'noctis', f: 'neutral', t: "So I'm going to remember this. Being up here. Awake, on purpose. Because I wanted to be." },
+      { choose: [
+        { t: "I'll remember it too. The whole city, awake.", notes: 3, then: [
+          { s: 'noctis', f: 'happy', t: "...Yeah. Good. Then it's in two places. Harder to lose." }
+        ] },
+        { t: "(Say nothing. Hold his hand tighter.)", notes: 3, then: [
+          { n: "She held on tighter. He squeezed back, once, the way you'd answer a question you'd been asked in a language without words for it." }
+        ] }
+      ] },
+      { n: "He kissed her on the water tower with the whole of Iwatodai lit up underneath them, his nose cold against her cheek, slow and unhurried, like there was nowhere in any world he was supposed to be next." },
+      { n: "And then, about four minutes after announcing that he was going to stay awake for the rest of his life, Noctis Lucis Caelum fell asleep on her shoulder, eleven stories up, in the wind." },
+      { n: "It occurred to Solar, somewhere around the twentieth minute, that she was sitting on a water tower on top of the tallest building in Iwatodai, that there was no staircase, and that the only way down was snoring gently into her scarf. She let him sleep anyway. The trains went by below. The city stayed awake for both of them." }
+    ] }
+  ],
+  // P3's Christmas Eve: on 12/24 evening, if Solar is romancing several people (rank 9+), she picks one; this plays.
+  christmas: { place: 'Paulownia Mall', scene: [
+    { n: "Christmas Eve, and Paulownia Mall had lost its mind. There were lights strung from every railing and a tree in the atrium three floors tall, and every couple in Port Island seemed to have decided to walk around the fountain at exactly the same slow speed, holding hands, in matching scarves, like a parade nobody had organized." },
+    { n: "Noctis was standing by the fountain in a dark coat she hadn't seen before, with a long flat package under his arm wrapped in newspaper, looking at the couples with the polite, faintly horrified expression of a man who has been dropped into a foreign festival and told to participate." },
+    { s: 'noctis', f: 'neutral', t: "Prompto explained it. Christmas Eve. It's like... a date day? The whole country agrees to go on a date at the same time?" },
+    { s: 'solar', t: "Pretty much." },
+    { s: 'noctis', f: 'flustered', t: "That's a lot of pressure to put on one day." },
+    { n: "He'd also, it turned out, been briefed by Ignis, who had discovered the Japanese Christmas cake two weeks earlier and had made one every night since, perfecting it, so that there were currently four strawberry shortcakes in the dorm fridge and a fifth on the way, and Junpei had begun to refer to Ignis, with real reverence, as Santa." },
+    { s: 'noctis', f: 'happy', t: "He wanted me to bring you one. I said it'd get crushed. He said then I'd better not crush it." },
+    { s: 'noctis', f: 'neutral', t: "...I crushed it. It's in my pocket. It's fine. It's mostly fine." },
+    { place: 'Port Island · Pier', time: 'Night', music: 'tender' },
+    { n: "The end of the pier, where everything had started. The old men had all gone home to their families. The water was black and still, and it had begun, quietly, to snow, the flakes vanishing the moment they touched the surface, and one lamp at the end of the boards made a small gold room in the dark for the two of them." },
+    { n: "He sat down on the boards with his back against the post, his post, and patted the wood beside him, and she sat, and he handed her the long flat package without ceremony, the way he handed her the spare rod every time she came." },
+    { n: "It was a fishing rod. Not a spare. Hers. Light and dark blue, the reel still with the shop's sticker on it, and on the handle, scratched carefully into the cork with something sharp, a small, lopsided crown." },
+    { s: 'noctis', f: 'flustered', t: "I worked for it. Don't tell anyone. Two weeks, carrying crates at the harbor for the fishing guys. Five in the morning." },
+    { s: 'noctis', f: 'neutral', t: "Prompto has pictures. He says they're proof I can be awake before noon. He's going to use them against me forever." },
+    { choose: [
+      { t: "(Give him a pillow for the pier post. There's a fish on it.)", notes: 3, then: [
+        { n: "It was small and square and blue, with a stitched fish on the front, and she'd gotten the fish slightly wrong, so it looked surprised. He held it like it was made of glass. Then he wedged it between his head and the post, and closed his eyes, and sighed the sigh of a man who had found his purpose." },
+        { s: 'noctis', f: 'happy', t: "...This is the best thing anyone has ever given me. I'm not even kidding. Don't tell Specs." }
+      ] },
+      { t: "(Give him a bento. Every vegetable in it is cut into a fish.)", notes: 3, then: [
+        { s: 'noctis', f: 'surprised', t: "...There are carrots in here." },
+        { s: 'solar', t: "They're fish." },
+        { s: 'noctis', f: 'flustered', t: "...I can't not eat fish. That's evil. You're evil. Thank you." }
+      ] },
+      { t: "(Give him a thermos of his own, so he stops borrowing Ignis's.)", notes: 2, then: [
+        { s: 'noctis', f: 'happy', t: "Specs is going to be so relieved. He's lost like, four thermoses to me. One's at the bottom of this bay." }
+      ] }
+    ] },
+    { n: "They sat with their shoulders together and the new rod across both their laps and watched the snow fall into the water. He ate the crushed cake out of its box with his fingers. It was, he said, mostly fine." },
+    { s: 'noctis', f: 'sad', t: "Sometimes I wake up and think I'm still in the back of the car. With the guys. Gladio's elbow in my face. And then I'm not. I'm here." },
+    { s: 'noctis', f: 'neutral', t: "And I'm not sad about it. And then I feel bad that I'm not sad about it." },
+    { choose: [
+      { t: "You're allowed to like it here.", notes: 3, then: [
+        { s: 'noctis', f: 'sad', t: "...Am I?" },
+        { s: 'solar', t: "You're allowed to like it here and miss them. Both. At the same time." },
+        { s: 'noctis', f: 'happy', t: "Both. Okay. I can do both. I'm good at doing two things. Fishing and sleeping. Both at once." }
+      ] },
+      { t: "I'm glad you fell asleep in the wrong world.", notes: 3, then: [
+        { s: 'noctis', f: 'flustered', t: "...That's my line. I said that." },
+        { s: 'solar', t: "I know. I kept it." }
+      ] }
+    ] },
+    { n: "He turned to look at her, very close, the snow in his eyelashes, and she watched him start to lean in, and then stop, and think about it, something careful and serious moving behind his face, and decide it differently." },
+    { s: 'noctis', f: 'flustered', t: "Not in the dark. I'd fall asleep after. I want to do it right. With the sun coming up. On a good day." },
+    { n: "So instead he kissed her hair, just at the temple, quick and warm through the cold, and then went red to the collar and looked out at the water like it had done it." },
+    { s: 'noctis', f: 'neutral', t: "...The big one's out there. I can feel it. It's been circling since August." },
+    { s: 'noctis', f: 'happy', t: "When it bites, I'm calling you. Whatever time it is. Even if it's five in the morning." },
+    { s: 'solar', t: "You've never been awake at five in the morning in your life." },
+    { s: 'noctis', f: 'happy', t: "For that fish? I'd be awake. For that fish and you." },
+    { n: "They stayed on the pier until the snow had covered the boards around them in a thin white sheet, everywhere except the small dry patch where they sat. Walking back, he carried both rods, and she carried the pillow with the surprised fish on it, and at the end of the pier he turned around once and said goodnight, very seriously, to the water. She didn't ask. She had a feeling it had said goodnight back." }
+  ] },
   romance: true,
   cast: { prompto: 'Prompto', ignis: 'Ignis', shinjiro: 'Shinjiro', haru: 'Haru', cloud: 'Cloud' },
   threads: { chocobros: { name: 'chocobros + sol', members: ['noctis', 'prompto', 'ignis'] } },

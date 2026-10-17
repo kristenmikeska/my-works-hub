@@ -108,6 +108,215 @@ FemcSocial.define({
       { n: "A sparrow landed on the end of the bench, assessed them both, and left. The doctor watched it go with a face that said she'd have checked it for dehydration too, given half a chance." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate).
+  dates: [
+    { title: 'the day off', place: 'Paulownia Mall', music: 'joy', scene: [
+      { n: "Dr. Ziegler had not taken a day off since June. Solar knew this because the night nurse had told her, and because Kiriko had told her, and because Genji had mentioned it once in the group chat with a kind of serene despair, and finally because Angela herself, asked directly, had started counting on her fingers and given up somewhere around August." },
+      { n: "So Solar had taken one for her. She'd gone to the head nurse on the third floor with a bento as a bribe and a schedule printed out at the convenience store, and the head nurse, who had been waiting six months for somebody to try, signed it without reading it." },
+      { n: "Angela met her by the fountain at ten in the morning in a camel coat Solar had never seen and the ugly knitted scarf, which she had clearly decided went with everything, and her hand drifted to her hip, where the pager usually lived, three times in the first minute." },
+      { s: 'mercy', f: 'neutral', t: "I left it with Nurse Hayashi. She looked at me as if I'd handed her a baby. I gave her four numbers to call." },
+      { s: 'mercy', f: 'serious', t: "Five. I gave her five." },
+      { choose: [
+        { t: "Then for the next eight hours, you're my patient.", notes: 3, then: [
+          { s: 'mercy', f: 'surprised', t: "...That is a reversal I did not consent to." },
+          { s: 'mercy', f: 'happy', t: "Fine. Fine. What is the treatment, Doctor?" },
+          { s: 'solar', t: "Walking. Slowly. Looking at things you don't need." }
+        ] },
+        { t: "(Hold out your hand for the pager she doesn't have.)", notes: 3, then: [
+          { n: "Angela looked at the open palm, and then down at her own empty hip, and laughed, a little helplessly, and put her hand in Solar's instead, which had been the point all along." }
+        ] }
+      ] },
+      { n: "The treatment was harder than it sounded. Angela did not know how to look at things she didn't need. She stopped in front of shop windows the way she stopped at the foot of a bed, reading them, and Solar watched her try to diagnose a display of winter boots before she remembered she was allowed to simply like them." },
+      { n: "In a little import shop at the end of the second floor, between the Italian olive oil and a shelf of British biscuits nobody ever bought, there was a single row of Swiss chocolate, red wrappers and gold letters, and Angela went so still in front of it that a man behind them said excuse me twice." },
+      { s: 'mercy', f: 'sad', t: "My mother kept this in her coat pocket. For the children at the clinic. And for me, when I'd been very good, or very tired." },
+      { s: 'mercy', f: 'neutral', t: "I haven't seen it since... before Overwatch. Before a great many things." },
+      { choose: [
+        { t: "(Buy two bars. Give her one.)", notes: 3, then: [
+          { n: "She bought two. Angela held hers at the register in both hands, the way she held a chart that had good news on it, carefully, like it might change its mind." }
+        ] },
+        { t: "Tell me about her.", notes: 3, then: [
+          { s: 'mercy', f: 'happy', t: "She hummed when she stitched. Very badly. By the end of a week, every patient knew the same three songs." },
+          { s: 'mercy', f: 'sad', t: "I hum when I stitch too. I didn't notice until a nurse here asked me to stop." }
+        ] }
+      ] },
+      { n: "They ate it on a bench outside the cinema with the cold pressing at the glass doors. Angela broke hers into perfectly even squares without seeming to know she was doing it, and gave Solar every second square, also without seeming to know." },
+      { n: "At one-fifteen her hand went to her hip again. At one-sixteen she noticed, and took it away, and set it down on the bench in Solar's instead, and left it there like a dog that had been told to stay." },
+      { s: 'mercy', f: 'blushing', t: "I keep thinking somebody needs me. Somewhere in that building there is a person who needs me, and I am eating chocolate." },
+      { s: 'solar', t: "Somebody does need you. She's sitting right here, eating your chocolate." },
+      { s: 'mercy', f: 'happy', t: "...Every second square. I saw that. I'm not as tired as you think, Liebling." },
+      { n: "In the afternoon Solar took her to a movie, a loud American one with a great many explosions, and Angela was asleep before the trailers ended, her head on Solar's shoulder and the ugly scarf tickling Solar's chin, breathing the slow, heavy breaths of a woman who had been owed this particular sleep since June." },
+      { n: "Solar watched the whole film alone. She couldn't have told anyone afterward what happened in it. Something blew up. Somebody got saved. Her arm went numb around the forty-minute mark and she decided, with the specific stubbornness of the very fond, that it could stay numb." },
+      { s: 'mercy', f: 'blushing', t: "...How did it end?" },
+      { s: 'solar', t: "Everybody lived." },
+      { s: 'mercy', f: 'happy', t: "Wunderbar. My favorite kind." },
+      { n: "Nurse Hayashi called once, at six, to report that nothing had happened, absolutely nothing, and that the doctor should please stop texting her. Angela kissed Solar outside the mall, quick and careful, the way she'd press down a bandage, and went home, and slept eleven hours. At midnight the night nurse sent Solar a single thumbs-up, which she had long since learned to read as a medal." }
+    ] },
+    { title: 'night shift', place: 'Tatsumi Memorial Hospital', music: 'night', scene: [
+      { n: "Visiting hours ended at eight. The night shift started at nine. In between, Solar had discovered, there was a window of about forty minutes when nobody at Tatsumi Memorial was entirely sure who was supposed to be where, and if you walked in with a paper bag that smelled of curry and the face of a tired relative, the guard at the desk just nodded at you." },
+      { n: "Angela was at the third-floor station, writing. She didn't look up. She said she could smell curry, and that it was a violation of at least three policies, and held out her hand for the bag without looking, and then did look, and saw who it was, and her whole face changed so fast it was very nearly funny." },
+      { s: 'mercy', f: 'surprised', t: "Solar. It's nine o'clock at night. You have school tomorrow." },
+      { s: 'solar', t: "You have a twelve-hour shift and no dinner." },
+      { s: 'mercy', f: 'serious', t: "...That is not an argument. That is a diagnosis." },
+      { n: "She ate standing up at the station in about four minutes, the way doctors eat, the spoon going steadily and her eyes on the monitors the whole time, and then she handed back the empty container and said, in the voice she used on residents, that if Solar was going to stay she was going to be useful." },
+      { n: "Being useful meant rounds. The ward at night was a different country, blue and humming, every bed a small island of machine light, and Angela moved through it slowly, checking lines and turning shoulders and talking, always talking, low and even, to people who did not answer, so they wouldn't forget what a voice sounded like." },
+      { s: 'mercy', f: 'neutral', t: "Bed nine. Her name is Mrs. Okabe. She ran a dry cleaner's for thirty years. Talk to her while I check her line. About anything. She won't mind." },
+      { choose: [
+        { t: "(Tell her about your day. All of it, in boring detail.)", notes: 3, then: [
+          { n: "Solar told her about first period, and the vending machine that ate her coin, and the exact color of the sky over the station at four-thirty, and Junpei's opinion on melon bread, which was long. Angela worked quietly at the other side of the bed, and when Solar glanced up, the doctor was smiling at the IV line like it had said something sweet." }
+        ] },
+        { t: "(Read her the weather forecast from the evening paper.)", notes: 2, then: [
+          { s: 'mercy', f: 'happy', t: "Excellent. Everybody wants to know the weather. Even here." },
+          { n: "Solar read her the whole week. Cloudy, then clear, then cold. It felt absurd for about a minute and then it didn't." }
+        ] }
+      ] },
+      { place: 'Tatsumi Memorial Hospital · Staff Lounge', time: '2:00 AM', music: 'tender' },
+      { n: "At two in the morning the staff lounge smelled of instant coffee and somebody's labeled yogurt, and the vending machine hummed to itself in the corner. Angela bought two cans of the one with the cartoon cow and set one down in front of Solar with the solemnity of a prescription." },
+      { n: "Solar didn't remember lying down on the lounge couch. She remembered the warm can and the tick of the broken air conditioner and the scratch of Angela's pen across a chart, and then she remembered nothing at all, and then it was four, and there was a white coat over her, still warm, still smelling faintly of antiseptic and of Angela." },
+      { n: "Angela was at the table, writing, the way she must have been the whole time. Every few lines she glanced up at the couch, quickly, and then back down. It took Solar a long, drowsy moment to understand that she was being checked, the way you'd check a monitor." },
+      { s: 'mercy', f: 'neutral', t: "You talk in your sleep, you know." },
+      { s: 'solar', t: "...What did I say?" },
+      { s: 'mercy', f: 'blushing', t: "Something about a payload. And then, very confidently, I'm on you, don't die." },
+      { s: 'mercy', f: 'neutral', t: "We used to say that. On missions. I don't know how you know it." },
+      { choose: [
+        { t: "(Pretend to be asleep again.)", notes: 2, then: [
+          { n: "She closed her eyes. Angela laughed under her breath, low and fond, and said that was the least convincing performance she had ever seen, and she had worked with Genji, and pulled the coat back up over Solar's shoulder anyway." }
+        ] },
+        { t: "Did you stay up the whole time?", notes: 3, then: [
+          { s: 'mercy', f: 'blushing', t: "I was working. And you were here. Both of those things are true." },
+          { s: 'mercy', f: 'happy', t: "It's a very strange feeling, keeping watch over somebody who isn't hurt. I think I could get used to it." }
+        ] }
+      ] },
+      { n: "She walked Solar to the entrance at five for the first train, past the sleeping guard, under the sign that said Emergency in two languages. The sky over the car park was going gray at the edges. Angela pressed a bottle of water into her hand, and kissed her, quickly, in the doorway, with the automatic doors sighing open and shut behind them, confused about whether anyone was leaving." },
+      { s: 'mercy', f: 'happy', t: "Drink that on the train. All of it. I will know." }
+    ] },
+    { title: 'guardian angel', place: 'Port Island · Seaside Park', music: 'night', scene: [
+      { n: "Seaside Park after dark in winter belonged to nobody. The vending machines hummed to themselves. The seawall ran out into the black bay with a single lamp at the end of it, and Angela had chosen this spot, she said, because she'd done the arithmetic of who could see it from where, and the answer was one man on a container ship, and nobody would believe him." },
+      { n: "She had the wings on under her coat. Solar could tell from the way she stood, a little straighter, shoulders braced for a weight that wasn't there, and from the hum, high and faint, that Solar was beginning to feel in her back teeth from fifty meters away." },
+      { s: 'mercy', f: 'happy', t: "You told me once that you dream about flying. I want to test something. Go to the end of the seawall and call me." },
+      { s: 'solar', t: "Call you what?" },
+      { s: 'mercy', f: 'neutral', t: "Whatever you'd say. In the other world. Don't think about it, that's the important part." },
+      { n: "Solar walked out to the lamp with the wind coming hard off the water, salt and diesel and cold enough to sting, and turned around, and Angela was a pale shape far back by the vending machines. She opened her mouth to say her name, and something else came out instead, quick and flat and certain, in a voice she'd only heard once before, on a seawall in September, for about a second." },
+      { choose: [
+        { t: "Mercy. On me.", notes: 3, then: [
+          { n: "It wasn't loud. It didn't need to be. The wings opened, gold against the dark, and Angela came down the length of the seawall in one long bright line, not running and not quite flying, pulled, the way a thread is pulled through a needle, and landed close enough that the hem of her coat brushed Solar's knees." },
+          { s: 'mercy', f: 'surprised', t: "...That's what my team used to say. Exactly that. In exactly that voice." }
+        ] },
+        { t: "Angela. I need you.", notes: 3, then: [
+          { n: "The wings opened, gold against the dark, and Angela came down the length of the seawall in one long bright line, pulled, the way a thread is pulled through a needle, and landed close enough that her coat brushed Solar's knees, and she was laughing before her feet touched the stone." },
+          { s: 'mercy', f: 'blushing', t: "You're not supposed to say it like that in combat. Nobody would ever get anything done." }
+        ] }
+      ] },
+      { n: "She didn't step back. She looked at Solar for a moment the way she had on the hospital roof in August, like an X-ray of something that shouldn't be possible, and then, instead of saying anything about it, she held out her arms." },
+      { s: 'mercy', f: 'happy', t: "Hold on. And don't kick. I've dropped exactly one person in my career, and it was Reinhardt, and he landed on his feet, and he has never let me forget it." },
+      { music: 'sun' },
+      { n: "Then the seawall was gone from under her. Not far, not high, just enough, the black water sliding by a few meters below, the lights of the container ship sliding by, the cold so sharp it emptied her head of everything. Angela's arms were locked around her ribs and Solar could feel her heartbeat through two coats, fast, faster than the flying could explain." },
+      { n: "They went out over the bay in a long slow curve and the city opened up behind them, every window lit, Port Island and Iwatodai and the bridge strung between them like a necklace somebody had laid down carefully on black velvet. It wasn't like a dream. In the dreams she was always alone." },
+      { n: "They came down on the far end of the seawall, soft as a step off a curb. Angela's hair had come out of its ponytail entirely. She didn't let go." },
+      { s: 'mercy', f: 'sad', t: "Every time I've flown to someone, it's been because they were hurt. Every single time. I've never once flown to somebody just because they called me." },
+      { s: 'mercy', f: 'blushing', t: "That was the first. I thought you should know that." },
+      { choose: [
+        { t: "Then I'll call you for no reason. Constantly.", notes: 3, then: [
+          { s: 'mercy', f: 'happy', t: "Please. Interrupt my rounds. Interrupt my surgeries. I'll put the scalpel down." },
+          { s: 'mercy', f: 'serious', t: "...Not during surgeries." }
+        ] },
+        { t: "(Lean back into her and watch the lights.)", notes: 3, then: [
+          { n: "Solar leaned back into her, and felt Angela settle, chin coming down to rest on her shoulder, the hum of the wings fading as they folded, until all that was left was two people on a seawall breathing the same cold air, and the water, and the lights." }
+        ] }
+      ] },
+      { n: "They walked back along the seawall holding hands. Somewhere around the vending machines Solar noticed that the feather in her coat pocket was humming, very faintly, and that the wings were humming back, the same note, like two instruments that had found each other in a crowded room. Angela heard it too. Neither of them mentioned it. Neither of them let go." }
+    ] },
+    { title: "roll it, don't fold it", place: 'Iwatodai Dorm · Kitchen', music: 'joy', scene: [
+      { n: "It was Angela's idea, which was the first surprise. She announced it in the watchpoint group chat on a Thursday at eleven at night, which was the second, and on Sunday morning she was standing in the dorm kitchen with her coat off and her sleeves pushed past the elbow and her hair tied back in the tight ponytail she wore for surgery, which was the third, and the most alarming." },
+      { s: 'mercy', f: 'serious', t: "I want to learn the egg. I have eaten your tamagoyaki fourteen times. I can't keep only being given it. It isn't fair." },
+      { s: 'mercy', f: 'neutral', t: "I've operated in the back of a moving dropship. How hard can an egg be?" },
+      { n: "She had brought a kitchen scale. She had brought it from the hospital, where Solar did not want to know what it was usually used for, and she weighed the sugar to the gram, and checked the heat of the square pan by holding the back of her hand above it with her eyes half closed, like she was feeling for a fever." },
+      { n: "Kiriko arrived at ten-fifteen with her fox mask pushed up on her head and the specific energy of a girl who had been promised egg." },
+      { s: 'kiriko', f: 'surprised', t: "Wait. Mercy-sensei is cooking? Actually cooking? With fire?" },
+      { s: 'kiriko', f: 'happy', t: "Okay, I'm staying. I'm going to remember this for the rest of my life." },
+      { n: "The first layer went into the pan and set, thin and gold, and Angela took up the chopsticks like surgical forceps, perfectly steady, and then froze, the way she never froze over a patient, because the egg was setting faster than she'd planned for and it had no vital signs to read." },
+      { choose: [
+        { t: "Roll it. Don't fold it.", notes: 3, then: [
+          { n: "It came out in exactly Shinjiro's voice, the grumble and all, without Solar meaning it to, the way it had been said to her at this same stove in August. Angela rolled it. It held." },
+          { s: 'mercy', f: 'surprised', t: "...It held." },
+          { s: 'mercy', f: 'happy', t: "Kiriko! Kiriko, look. It held!" }
+        ] },
+        { t: "(Put your hands over hers on the chopsticks.)", notes: 3, then: [
+          { n: "Solar stood behind her and put her hands over Angela's, and Angela's hands went completely still under them, which they never did, not even in the third-floor ward at two in the morning. Then they rolled it together, slowly, and it held, and the back of Angela's neck had gone pink above the collar." },
+          { s: 'kiriko', f: 'neutral', t: "I'm literally standing right here." }
+        ] },
+        { t: "Faster, Doctor. It's not a heart.", notes: 2, then: [
+          { s: 'mercy', f: 'serious', t: "Everything is a heart if you care about it enough." },
+          { n: "The egg tore down the middle. Angela looked at it with real grief. Kiriko ate it out of the pan with her fingers and said it was the best tragedy she'd ever tasted." }
+        ] }
+      ] },
+      { n: "The second one burned. The third one came out shaped like Shikoku. Kiriko ate both, with enormous dedication, and gave each of them a score out of ten, and the scores were sevens, because Kiriko was a kind girl under all the attitude, and also hungry." },
+      { n: "The fourth one was right. Not perfect. Right. Angela cut it with a long knife into perfectly even slices, every one the same width to the millimeter, and then she took out a small bento box that Solar had never seen before, a plain blue one, clearly new, and laid the best three slices in it next to the rice, and closed the lid, and held it out." },
+      { s: 'mercy', f: 'blushing', t: "There. It's for you. Now the count is fourteen to one. I'll catch up." },
+      { n: "Something closed in Solar's throat. She knew the shape of it. Nobody has made me lunch since I was a little girl, Angela had said in August, over this same egg, and Solar had felt it then on Angela's behalf and had not, at the time, thought to feel it on her own." },
+      { choose: [
+        { t: "(Eat a slice right there, standing up, while she watches.)", notes: 3, then: [
+          { n: "It was too sweet. Angela had weighed the sugar perfectly and then, Solar suspected, added a little more when nobody was looking. It was the best thing she had eaten in a very long time." },
+          { s: 'mercy', f: 'happy', t: "Your face did something. I'm a doctor. I'm writing that down." }
+        ] },
+        { t: "I'm saving it for lunch tomorrow.", notes: 2, then: [
+          { s: 'mercy', f: 'happy', t: "Eat it today. I'll make you another. I know how now. That's the frightening part." }
+        ] }
+      ] },
+      { n: "Kiriko took a photo of the bento and sent it to the watchpoint, and Genji replied within a minute that he was proud of Angela, and then, a minute later, that he would like some. Angela washed every dish. Solar dried. In the half second Kiriko spent looking down at her phone, Angela kissed her by the sink, quick, with soap still on her wrists." },
+      { s: 'kiriko', f: 'neutral', t: "I saw that. I see everything. I'm a fox." }
+    ] }
+  ],
+  // P3's Christmas Eve: on 12/24 evening, if Solar is romancing several people (rank 9+), she picks one; this plays.
+  christmas: { place: 'Tatsumi Memorial Hospital', scene: [
+    { n: "Of course she was working. Solar had known she would be from the moment she'd seen the date circled on the duty board in November, and had decided not to argue with it, and had come to the hospital at six on Christmas Eve with a box under her arm and snow melting in her hair." },
+    { n: "The children's ward had a party. Somebody had taped paper snowflakes to every window and somebody else had hung tinsel off the IV poles, and there was a cake from the convenience store with a plastic Santa on top, and Dr. Ziegler was sitting on a too-small chair in the middle of it all in a red felt Santa hat, reading aloud from a picture book in careful, accented Japanese to nine children who were correcting her pronunciation with tremendous joy." },
+    { n: "A girl of about six in the front row had a gray one-eared rabbit in her lap. The rabbit also had a Santa hat. It also, Solar noticed, had a tongue depressor taped to one leg, though it had been months." },
+    { s: 'mercy', f: 'happy', t: "Ah. Everyone, this is Nurse Solar. She's very new. Be kind to her." },
+    { n: "Nine children turned to look at her with deep suspicion. Angela did not take off the hat. She did not take off the hat for the rest of the party, through the cake and the singing and a small boy crying because his balloon had popped, and she looked, sitting in that tiny chair with the felt bobble hanging over one eye, as rested as Solar had ever seen her." },
+    { place: 'Tatsumi Memorial Hospital · Rooftop', time: 'Night', music: 'tender' },
+    { n: "At ten her shift ended. She'd asked for that, she said on the stairs, the first time in her life she had ever asked anyone for a holiday, and the head nurse had looked at her for a long moment and then filled in the form herself, as if she was worried Angela might change her mind halfway down the page." },
+    { n: "The roof was white. It had been snowing since afternoon and nobody had been up to clear it, so the snow lay smooth and untouched from the stairwell door to the railing, and the laundry lines hung empty with snow along the top of them like frosting, and the city below was muffled and soft and lit up gold in every window." },
+    { n: "Angela still had the hat on. Solar didn't tell her. She'd decided somewhere around the cake that she was never going to tell her." },
+    { s: 'mercy', f: 'blushing', t: "I have something for you. Open it first. I'm too nervous to watch you open it second." },
+    { n: "It was the pocket dictionary. The one from the roof in the summer, the spine taped twice now, the inside cover crowded with Japanese words in a dozen different pens, otsukaresama and itadakimasu and all the rest. Solar didn't understand, and then she turned it over and opened it from the back." },
+    { n: "The back pages were full too. German, this time, in Angela's neat block capitals, one word to a line, with the meaning written beside it in English. Wasser, water, drink it. Feierabend, the end of the working day, when you finally go home. Heimweh, the ache for home. Liebling, which had no translation beside it at all, only a small drawn heart, slightly lopsided, like the egg." },
+    { n: "The last word on the last page said Schutzengel. Guardian angel. The ink was newer. She'd written it today." },
+    { s: 'mercy', f: 'neutral', t: "So you'll have the words. When I go home, at the end of January. So there's a dictionary for me, in this world, the way there's one for you in mine." },
+    { choose: [
+      { t: "(Give her a water bottle. You've marked the hours down the side in pen.)", notes: 3, then: [
+        { n: "Eight in the morning, ten, noon, two, all the way down to midnight, a little line at every one. Angela turned it over in her hands and read every hour, slowly, and then laughed, a wet, surprised sound, and pressed the back of her wrist to her eyes." },
+        { s: 'mercy', f: 'happy', t: "This is the most romantic thing I've ever been given, and it's a bottle. I'm going to cry in front of a laundry line." }
+      ] },
+      { t: "(Give her a new scarf. Soft, gray, plain.)", notes: 3, then: [
+        { n: "She wound it on right there, over the ugly one, because she would not take the ugly one off, she said, a patient had knitted it and the patient would know. So she stood there on the roof in two scarves and a Santa hat, enormously padded, beaming." },
+        { s: 'mercy', f: 'happy', t: "I'm warm. Do you understand? I'm warm in December. That's never happened before." }
+      ] },
+      { t: "(Give her a box of Swiss chocolate. The import shop's entire stock.)", notes: 2, then: [
+        { s: 'mercy', f: 'surprised', t: "...This is all of it. You bought all of it. Solar, there's nothing left for the other Swiss people." },
+        { s: 'solar', t: "You're the only one." },
+        { s: 'mercy', f: 'happy', t: "...Then it's correct. It's all correct." }
+      ] }
+    ] },
+    { n: "They stood at the railing in the snow. The bobble of the Santa hat had gone soggy and Angela had stopped noticing it, and Solar had stopped noticing the cold, and below them a train went by, all lit up, carrying people home." },
+    { s: 'mercy', f: 'neutral', t: "I woke up in bed four in June, and the first thing I thought was that someone must need me here. That's always the first thing I think." },
+    { s: 'mercy', f: 'blushing', t: "And then a girl came onto my ward carrying somebody else's forms, and hated the smell of the hallway, and forgot her umbrella. And it turned out someone did need me here. It was me. I needed to be here." },
+    { choose: [
+      { t: "I needed you here too.", notes: 3, then: [
+        { s: 'mercy', f: 'sad', t: "...I know. I knew from the first day. You stood at the foot of that bed like you'd stood at the foot of one before." },
+        { s: 'mercy', f: 'blushing', t: "I'm glad it was me you came to, Liebling. Out of every doctor in this city." }
+      ] },
+      { t: "You kept my umbrella for two weeks.", notes: 3, then: [
+        { s: 'mercy', f: 'happy', t: "It was raining. It was a medical decision." },
+        { s: 'mercy', f: 'blushing', t: "...I didn't want to give it back. I wanted a reason for you to come again. I'm a terrible thief and a worse liar." }
+      ] }
+    ] },
+    { s: 'mercy', f: 'serious', t: "When I go home, I'm going to take a day off. A real one. Once a month. I'm going to put it in writing." },
+    { s: 'solar', t: "Who's going to make sure you do?" },
+    { s: 'mercy', f: 'happy', t: "You are. Every world. You have the feather. I'll feel it hum when you're angry with me." },
+    { n: "She kissed her then, in the snow, on the white roof, both of her cold hands on Solar's face and the soggy bobble of the hat bumping against Solar's forehead, and Solar laughed into it, and Angela laughed too, and didn't stop kissing her, which made it worse, and better." },
+    { n: "At midnight the pager went off. Angela took it out of her coat and looked at it. Then, while Solar watched, she pressed the button on the side and held it down until the little screen went dark, and put it back in her pocket, and Solar understood that she had never once, in all the months she'd known her, seen her do that." },
+    { s: 'mercy', f: 'blushing', t: "Feierabend. Merry Christmas, Liebling." }
+  ] },
   romance: true,
   cast: { genji: 'Genji', ana: 'Ana', kiriko: 'Kiriko' },
   stamps: {},

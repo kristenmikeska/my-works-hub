@@ -100,6 +100,217 @@ FemcSocial.define({
       { n: "A week later he showed her a single panel in his sketchbook. A girl on a school rooftop, eating yakisoba bread, sauce on her thumb. It was the most accurate drawing of lunch she had ever seen." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate).
+  dates: [
+    { title: 'research', place: 'Paulownia Mall · Chagall Café', music: 'joy', scene: [
+      { n: "Rohan had explained, by text, at length, that this was not a date. Pink Dark Boy needed a date chapter, and he had never in his life drawn a date he believed, and he refused to start now by making one up, so he required a reference, and she was the obvious reference, and that was all this was. Research. He had underlined the word, somehow, in a text message." },
+      { n: "He was at a corner table in Chagall when she arrived, with his back to the wall so he could see the whole room, a sketchbook open, two pens uncapped, and a list. The list had headings. One of them was Arrival (her). He watched her walk across the café with the cold, terrible focus of a man memorizing a crime scene." },
+      { s: 'rohan', f: 'serious', t: "Stop. Go back to the door and do that again. You smiled when you saw me and then you hid it. I need to see where it went." },
+      { s: 'solar', t: "Rohan." },
+      { s: 'rohan', f: 'neutral', t: "...Fine. I got most of it. Sit." },
+      { n: "He interrogated the latte art. He interrogated the waiter, a nervous university student who had never been asked why he poured the milk from that particular height. He spent eleven minutes drawing the couple two tables over, who were holding hands under the table and thought nobody could see, and turned the sketchbook around to show her, and he'd been right, it was exactly what holding hands under a table looked like." },
+      { s: 'rohan', f: 'serious', t: "Now. Describe the feeling. A first date. Not good. Not nervous. I'll leave if you say nervous." },
+      { choose: [
+        { t: "Rohan. This is a date. You're on one.", notes: 3, then: [
+          { s: 'rohan', f: 'serious', t: "...I'm aware." },
+          { s: 'rohan', f: 'neutral', t: "I'm researching it from the inside. It's a method. I licked a spider. This is less dangerous." },
+          { n: "He didn't look up from the page. The tips of his ears had gone pink under the headband, though, which she noted, and which he noticed her noting, and which he chose, with tremendous dignity, not to address." }
+        ] },
+        { t: "(Steal his pen.)", notes: 3, then: [
+          { n: "She plucked the pen out of his fingers mid-line and capped it. He looked at his empty hand. He looked at the second pen, and she took that too. For a long moment Rohan Kishibe sat in a café with nothing to draw with, which she suspected had not happened to him since he was four." },
+          { s: 'rohan', f: 'serious', t: "...Give those back." },
+          { s: 'solar', t: "Just look at me. No notes." },
+          { n: "He looked at her. It went on for some time. He was, she discovered, much worse at it without the pen, which is to say that he forgot to look anywhere else." }
+        ] },
+        { t: "(Play along. Ask him for the next stage direction.)", notes: 2, then: [
+          { s: 'rohan', f: 'neutral', t: "Good. Cooperation. Hold my hand across the table. Not like that. Like you mean it." },
+          { n: "She held it like she meant it. He stopped writing. He did not, she noticed, start again for a while." }
+        ] }
+      ] },
+      { place: 'Paulownia Mall · Flower Stall', time: 'Afternoon', music: 'joy' },
+      { n: "On the way out they passed the flower stall by the escalators, buckets of winter roses and something white she didn't know the name of, and Rohan stopped dead in front of them, the way he did in front of anything with a structure worth stealing." },
+      { n: "He bought one white flower, he said, to see how the petals folded at the base, because he had been drawing them wrong for six years. He turned it over in his long fingers, examining it, and then held it out to her without looking at her at all." },
+      { choose: [
+        { t: "Is this for reference too?", notes: 3, then: [
+          { s: 'rohan', f: 'serious', t: "Obviously." },
+          { s: 'rohan', f: 'neutral', t: "...No." }
+        ] },
+        { t: "(Take it and say nothing.)", notes: 2, then: [
+          { n: "She took it and said nothing. He nodded, once, like a contract had been signed, and walked on ahead of her, very fast, toward the doors." }
+        ] }
+      ] },
+      { n: "A week later he showed her the date chapter. It was twenty-two pages long and he had thrown out twenty-one of them. The one he kept was a single panel, no dialogue, two hands holding each other across a café table, one of them with ink on the side of the middle finger. Everything else, he said, had been inaccurate." }
+    ] },
+    { title: 'the secret recipe', place: 'Hagakure', music: 'joy', scene: [
+      { n: "Rohan had heard about the Hagakure bowl. He would not say from whom. He'd heard it was the best ramen in Iwatodai, that people came from three stations away for it, and that the chef would not give the recipe to anyone, not for money, not for flattery, not ever, and Solar had watched the word not ever go into Rohan's ear and settle there like a seed." },
+      { n: "The shop was all steam and noise, the windows fogged gold, salarymen shoulder to shoulder at the counter, the smell of pork bone and soy so thick you could have leaned on it. Rohan sat down on a stool, looked at the bowl when it came, inhaled, and closed his eyes." },
+      { s: 'rohan', f: 'happy', t: "...Oh. Oh, that's very good. That's unacceptable. I need to know what's in it." },
+      { n: "He asked the chef. The chef, a broad man with a towel around his head, said it was a secret. Rohan asked again, more precisely. The chef said it was still a secret. Rohan nodded slowly, thoughtfully, and reached into his jacket, and took out his pen, and Solar knew that look, the particular calm of a man who had already made his decision and was only waiting for the world to catch up." },
+      { choose: [
+        { t: "Rohan. Koichi says you ask now.", notes: 3, then: [
+          { s: 'rohan', f: 'serious', t: "I did ask. Twice." },
+          { s: 'solar', t: "And he said no." },
+          { s: 'rohan', f: 'neutral', t: "...Which is an answer. Yes. I know. I hate it." },
+          { n: "He put the pen away, slowly, with the enormous dignity of a cat stepping back from a fish tank." }
+        ] },
+        { t: "(Put your hand over his pen.)", notes: 3, then: [
+          { n: "She put her hand over his, over the pen, on the counter. He looked down at it. He did not fight it. After a moment his fingers loosened around the pen and turned, without his seeming to decide it, to hold hers instead." },
+          { s: 'rohan', f: 'neutral', t: "...That was cheating. I'll allow it." }
+        ] },
+        { t: "(Let him. For science.)", notes: 1, then: [
+          { n: "He looked at her. He looked at the chef. He looked at the pen in his hand for a long moment, and then put it back in his jacket." },
+          { s: 'rohan', f: 'serious', t: "You were supposed to stop me. That was a test. You failed it. I passed it, somehow. I don't like how that feels." }
+        ] }
+      ] },
+      { n: "The chef had watched all of this with his arms folded. Then he laughed, a big belly laugh that rattled the ladles, and leaned across the counter and told Rohan the secret, which was that he made it every single morning at four, and had for twenty years, and that was all, there wasn't anything else, and anybody could do it if they'd just get up." },
+      { s: 'rohan', f: 'serious', t: "...That's the most infuriating thing I've ever heard. It's also correct. It's the same with drawing." },
+      { n: "He ate the whole bowl, describing it to her as he went with the same exactness she had once used on a yakisoba bun, the fat on the surface, the char on the pork, the egg that had been soaked overnight until the yolk turned to jam. She listened to all of it. She told him he'd make a decent food critic. He looked up, broth on his lip." },
+      { s: 'rohan', f: 'happy', t: "You're quoting me to me. That's unforgivable. Keep doing it." },
+      { n: "Then he got broth on his jacket, the expensive cropped one, a dark spot spreading on the cuff, and stared at it with an expression of pure tragedy, like a man watching a ship go down." },
+      { choose: [
+        { t: "It's got a story now. The jacket has a story.", notes: 3, then: [
+          { s: 'rohan', f: 'neutral', t: "...That's my line. From the hands. You remembered it." },
+          { s: 'solar', t: "I remember everything you say. It's very annoying." },
+          { s: 'rohan', f: 'happy', t: "Good. Then I'll say better things." }
+        ] },
+        { t: "(Clean it off for him with a napkin dipped in water.)", notes: 3, then: [
+          { n: "She dipped a napkin in her water glass and took his wrist and dabbed at the cuff, carefully, and he let her, his whole arm held perfectly still on the counter, watching her work with the frank, startled attention of somebody who had never once in his adult life let anybody fix anything for him." }
+        ] }
+      ] },
+      { n: "On the walk home along the strip he held her hand, and explained, unprompted, that it was purely for warmth, and presented his other hand as evidence, and it was in fact freezing. She held that one too, for a minute, to be fair to it." }
+    ] },
+    { title: 'the bench', place: 'Iwatodai Station · Platform', music: 'night', scene: [
+      { n: "Iwatodai Station after eleven was almost empty. A drunk salaryman asleep upright on the far bench, a station attendant in white gloves, the long fluorescent tubes buzzing over the yellow line, and Rohan at the near end of the platform on a bench he had chosen very specifically, drawing the tracks." },
+      { n: "It was the bench. She knew it before he said so. She knew it from the way he sat on it, not quite relaxed, the way you'd sit in a chair in a house where something had happened to you once." },
+      { s: 'rohan', f: 'neutral', t: "September. I opened my eyes here. Everything was green and there were coffins on the platform and the clock had stopped." },
+      { s: 'rohan', f: 'happy', t: "My first thought was, what an incredible chapter. My second thought was that nobody would ever believe me, which made it even better." },
+      { s: 'rohan', f: 'serious', t: "I came back to draw it before I go. End of January. I want it right. The real one, not the green one." },
+      { n: "His pen moved over the page in long sure lines, the tracks running away into the dark, the station clock, the vending machine glowing at the end of the platform. He didn't look up. He talked to the page." },
+      { s: 'rohan', f: 'sad', t: "I don't trust my memory. You know why. It closed a page on me once and didn't tell me for sixteen years." },
+      { s: 'rohan', f: 'serious', t: "So I draw everything. If it's on paper, it can't hide." },
+      { choose: [
+        { t: "Will you come back?", notes: 3, then: [
+          { s: 'rohan', f: 'neutral', t: "I don't know how. Nobody does. Not even the woman with the book." },
+          { s: 'rohan', f: 'happy', t: "But I'm very good at finding out things I'm not supposed to know. It's a professional skill." }
+        ] },
+        { t: "Put me in Pink Dark Boy. Then I'm in Morioh too.", notes: 3, then: [
+          { s: 'rohan', f: 'neutral', t: "You've been in it since October." },
+          { s: 'rohan', f: 'serious', t: "My editor is going to ask who you are. I'm going to say you're fictional. It'll be the only lie I've ever told in my work." }
+        ] }
+      ] },
+      { n: "He turned to a fresh page. Then he did something she had never seen him do. He closed his eyes." },
+      { s: 'rohan', f: 'serious', t: "Hold still. I'm going to draw you without looking. If I can, then I won't lose it. If I can't, I'll know." },
+      { choose: [
+        { t: "(Hold perfectly still while he draws.)", notes: 3, then: [
+          { n: "She held perfectly still. The pen moved in the quiet, scratch and pause and scratch, his eyes shut, his face calm in a way it almost never was, the face of somebody listening to music he knew very well. A train went through without stopping, and the wind of it lifted his hair, and he didn't open his eyes." }
+        ] },
+        { t: "Open your eyes. Cheat. I won't tell.", notes: 2, then: [
+          { s: 'rohan', f: 'serious', t: "Absolutely not. If I cheat now I'll cheat in February, and in February you won't be on the bench." },
+          { n: "He kept them shut. The pen moved. She stopped arguing." }
+        ] }
+      ] },
+      { n: "When he opened his eyes and turned the sketchbook around, it was her. Not the her she wished she looked like, the way he'd drawn her in September. Her. The tired line under her eyes, the scarf crooked, her mouth doing the thing it did when she was trying not to smile at him, which, he pointed out, it was doing now." },
+      { s: 'rohan', f: 'happy', t: "...There. I won't forget. I checked." },
+      { n: "The last train came in, doors opening with a sigh, the car bright and empty. Neither of them got up. The doors closed. It pulled away, and the wind of it pushed her hair across her face, and he reached over and moved it back with one ink-stained finger, and kissed her on the bench where he'd woken up in a world that wasn't his, slowly, like he was getting it right for the drawing." },
+      { n: "They walked home along the tracks. It took an hour. Neither of them minded. At the dorm gate he tore the page out and gave it to her, and kept the one he'd drawn with his eyes open, and said that was fair, and it was." }
+    ] },
+    { title: 'crazy diamond', place: 'Iwatodai Strip · Bookworms', music: 'joy', scene: [
+      { n: "Saturday was dice on the steps of Bookworms, a standing arrangement, though nobody had ever agreed to it out loud. Koichi brought snacks. Josuke brought his hair. Rohan brought nothing and complained about everything and had not missed a single Saturday since October." },
+      { n: "Today Josuke had the look of a man who'd been waiting all week to say something. He held it in for nearly three rounds, which Koichi said afterward was a personal best." },
+      { s: 'josuke', f: 'happy', t: "So. You're dating Rohan." },
+      { s: 'josuke', f: 'serious', t: "Solar. Look at me. Blink twice if you need help." },
+      { choose: [
+        { t: "(Blink twice.)", notes: 3, then: [
+          { n: "She blinked twice, slowly, holding Josuke's eyes. Josuke laughed so hard he fell sideways off the step into Koichi, and Koichi laughed so hard he dropped the rice crackers, and Rohan sat perfectly upright through all of it like a man posing for his own statue." },
+          { s: 'rohan', f: 'serious', t: "Traitor. I'll remember this. I'm drawing it." }
+        ] },
+        { t: "He's actually very sweet.", notes: 3, then: [
+          { s: 'josuke', f: 'serious', t: "He's WHAT?" },
+          { s: 'koichi', f: 'happy', t: "I knew it. I knew it! He bought her a flower, Josuke. I saw the receipt!" },
+          { s: 'rohan', f: 'serious', t: "Don't tell them things. They use them. They're like crows." }
+        ] },
+        { t: "Josuke, your hair looks great today.", notes: 2, then: [
+          { s: 'josuke', f: 'happy', t: "...Okay. I'm not even mad anymore. What were we talking about?" },
+          { s: 'rohan', f: 'neutral', t: "Coward's move. Well played." }
+        ] }
+      ] },
+      { n: "It was only later, in a lull, that she noticed the waste bin by the door. It was full of a single drawing, torn into very small pieces. She knew his paper. She'd have known it anywhere." },
+      { s: 'rohan', f: 'serious', t: "Don't. It was wrong. I drew you laughing yesterday and the mouth was wrong. I've drawn you a hundred and eleven times. The hundred and eleventh is wrong. It's in the bin, where it belongs." },
+      { n: "Josuke looked at the bin. Then, without asking anybody, he reached in and scooped out a double handful of torn paper and dropped it on the step, and a big pink-and-teal shape flickered up behind him like a heat haze and laid one hand over the pile." },
+      { s: 'josuke', f: 'neutral', t: "Crazy Diamond." },
+      { n: "The pieces slid back together. Every ragged edge found its edge. The tears sealed like they'd never been there, and the page lay whole on the cold stone step in the winter light, and it was her, laughing, head tipped back, eyes squeezed half shut, and the mouth was exactly right. It had always been exactly right." },
+      { s: 'josuke', f: 'happy', t: "Looks fine to me, man." },
+      { n: "Rohan looked at it for a long time. Nobody said anything. Koichi held his breath like he was watching a bomb disposal." },
+      { choose: [
+        { t: "It was good the whole time, Rohan.", notes: 3, then: [
+          { s: 'rohan', f: 'sad', t: "...It was. I was looking at it wrong. I was looking for a mouth I'd made up." },
+          { s: 'rohan', f: 'neutral', t: "This is the one you actually make. At me. It's better. It's much better." }
+        ] },
+        { t: "Say thank you to Josuke.", notes: 3, then: [
+          { s: 'rohan', f: 'serious', t: "..." },
+          { s: 'rohan', f: 'neutral', t: "...Thank you, Josuke." },
+          { n: "Josuke was so stunned he lost the next four rounds of dice in a row and didn't even accuse anybody of cheating. Koichi wrote the date down in his phone. He said he'd want to know it later, for history." }
+        ] }
+      ] },
+      { n: "Rohan put the drawing inside his sketchbook, flat, between two clean sheets, and didn't say another word about it. But he held her hand for the rest of the afternoon on the steps, under the edge of his jacket where he apparently believed Josuke couldn't see, and rolled the dice left-handed, and lost, and didn't seem to mind." },
+      { s: 'josuke', f: 'happy', t: "I can see that, by the way. We can all see that." },
+      { s: 'rohan', f: 'serious', t: "Roll the dice, Josuke." }
+    ] }
+  ],
+  // P3's Christmas Eve: on 12/24 evening, if Solar is romancing several people (rank 9+), she picks one; this plays.
+  christmas: { place: 'Iwatodai Strip', scene: [
+    { n: "Rohan had informed her, several times, that Christmas was a marketing event invented by department stores to sell cake. He had informed her of this on the twenty-second and again on the twenty-third, and had then texted her at four in the afternoon on the twenty-fourth to say that he happened to be on the strip, for reference, and that the light was interesting, and that she could come and look at it if she wanted, which she should." },
+    { n: "The strip had put up lights, strings of warm white bulbs zigzagging over the street from shop to shop, and it was snowing, lightly, the flakes catching gold under every bulb on the way down. He was standing under them in the middle of the street with his sketchbook, drawing the lights, people walking around him like water around a rock." },
+    { s: 'rohan', f: 'neutral', t: "You're here. Good. Stand there. No, there. Under the third string. The light falls better on you than it does on the shoe shop." },
+    { n: "She stood there. He drew her under the lights for twenty minutes with snow collecting on the shoulders of his jacket, and then he closed the sketchbook and said that was enough research, and offered her his arm, stiffly, like a man in a period drama who had only read about arms." },
+    { s: 'rohan', f: 'serious', t: "I'm told this is what you do. On the twenty-fourth. You walk. Slowly." },
+    { s: 'solar', t: "Who told you that?" },
+    { s: 'rohan', f: 'neutral', t: "Koichi. He was very insistent. He made me practice. Josuke watched. It was humiliating for everyone." },
+    { place: 'Iwatodai Strip · Bookworms', time: 'Night', music: 'tender' },
+    { n: "Bookworms was closed, the old couple gone to their daughter's for Christmas, and Rohan had the key, which he had now mentioned fourteen separate times. He turned on just the one lamp over the back table and the shop was warm and dim and smelled of paper and old wood, the snow drifting past the window." },
+    { n: "There was a cake on the back table. A small Christmas cake from the bakery on the corner, strawberries and cream, with a note under the box in the old woman's handwriting. Rohan read it, and went faintly pink, and put it in his pocket without letting her see." },
+    { s: 'rohan', f: 'serious', t: "She thinks she's funny. She isn't. Sit down." },
+    { n: "He gave her his gift first, because, he said, he'd wrapped it himself and the wrapping was very good and he didn't want it sitting there being looked at. It was very good. The paper was plain brown and he'd drawn on it, all over, in fine black ink, the whole strip in the snow, every shop, every string of lights, and her, small, under the third one." },
+    { n: "Inside was a fountain pen. Black, plain, heavy in her hand. The nib, he said, he'd ground down himself, at the back table, over three nights, to suit the way she held a pen too tightly." },
+    { s: 'rohan', f: 'neutral', t: "For writing. Whatever you think of. You describe things better than anyone I've ever met and you never write any of it down. It's a waste. It offends me." },
+    { s: 'rohan', f: 'serious', t: "Don't show me. ...Show me some of it." },
+    { choose: [
+      { t: "(Give him a pen box. Black lacquer, his initials on the lid.)", notes: 3, then: [
+        { n: "He opened it, and closed it, and opened it again, and ran his thumb along the initials, R.K., the gold leaf a little uneven where the man at the shop had done them by hand." },
+        { s: 'rohan', f: 'neutral', t: "...The old one has a dent in the corner. From Josuke. I'll keep that one too. For the dent." },
+        { s: 'rohan', f: 'happy', t: "This one's for the pens I like." }
+      ] },
+      { t: "(Give him a notebook. Every exact thing you've described for him, written down.)", notes: 3, then: [
+        { n: "The yakisoba bread was page one. Then the smell of the hospital, the exact sound of the dorm's front door, the way the light hit the water under Moonlight Bridge at six, the way Koichi laughed. Forty pages. He read them in order, without speaking, for a long time." },
+        { s: 'rohan', f: 'sad', t: "...You did this for me." },
+        { s: 'rohan', f: 'happy', t: "It's material. It's the best material I've ever been given. I'm going to steal all of it." }
+      ] },
+      { t: "(Give him a green headband. Exactly like his.)", notes: 2, then: [
+        { s: 'rohan', f: 'serious', t: "This is identical to mine." },
+        { s: 'solar', t: "In case you lose yours in another world." },
+        { s: 'rohan', f: 'neutral', t: "...That's absurdly practical. I hate that I'm moved by it." },
+        { n: "He folded it into his breast pocket, carefully, like a letter he'd read later." }
+      ] }
+    ] },
+    { n: "They ate the cake with two forks from the shop's tiny kitchen, straight from the box, because Rohan said cutting it would ruin the structure. The lamp hummed. The snow kept coming down outside, past the window, past the shoe shop, past the strings of light." },
+    { s: 'rohan', f: 'neutral', t: "I came here for material. That's all I wanted. A world with a green hour and coffins and a tower. It was the best material I'd ever seen." },
+    { s: 'rohan', f: 'serious', t: "And then I spent four months drawing a girl in a bookshop. The tower's in two panels. You're in a hundred and five." },
+    { choose: [
+      { t: "Is that a complaint?", notes: 3, then: [
+        { s: 'rohan', f: 'serious', t: "It's a finding." },
+        { s: 'rohan', f: 'happy', t: "I've never been wrong about what my best material was. I was wrong this time. It was you. It was always going to be you." }
+      ] },
+      { t: "You can draw me a hundred and six times, if you want.", notes: 3, then: [
+        { s: 'rohan', f: 'neutral', t: "I already have. On the strip. Under the lights. You weren't paying attention." },
+        { s: 'rohan', f: 'happy', t: "You never pay attention when I'm drawing you. That's why they're good." }
+      ] }
+    ] },
+    { n: "He had kissed her once already, among a hundred and four drawings, like she was the only thing he'd ever been afraid of getting wrong. He was still careful now, but less. He brushed snow off her hair that had melted ages ago, which was not, she was fairly sure, a real reason to touch her hair, and then he leaned in across the back table and kissed her, slow, tasting of cream and strawberries, the lamp humming over both of them." },
+    { s: 'rohan', f: 'neutral', t: "...Merry Christmas. That's what one says. I've been told." },
+    { s: 'solar', t: "You've been told it's a marketing event." },
+    { s: 'rohan', f: 'happy', t: "I've revised my position. New information." },
+    { n: "Later, she found the old woman's note in his jacket pocket when he gave her the jacket to wear home through the snow. She didn't mean to read it. It was very short. It said that the cake was for two, and that in forty years of running a bookshop she had never seen anyone at the back table draw one person so many times, and Merry Christmas to both of them, and to please, for once, use a plate." }
+  ] },
   romance: true,
   cast: { koichi: 'Koichi', josuke: 'Josuke', jotaro: 'Jotaro', kuromi: 'Kuromi' },
   threads: { morioh: { name: 'morioh (do not add rohan)', members: ['rohan', 'koichi', 'josuke'] } },
