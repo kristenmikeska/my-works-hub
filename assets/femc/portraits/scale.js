@@ -14,6 +14,7 @@ window.FEMC_PORTRAIT_SCALE = {
   astarion: 0.97,
   ayane: 0.91,
   cazador: 0.85,
+  cherry: 0.9,
   cloud: 1.17,
   elizabeth: 0.98,
   evelyn: 1.2,

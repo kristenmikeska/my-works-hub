@@ -423,5 +423,13 @@ window.FEMC_PORTRAITS = {
   "sad",
   "serious",
   "surprised"
+ ],
+ "cherry": [
+  "happy",
+  "happy-2",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
  ]
 };
