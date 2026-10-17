@@ -45,6 +45,7 @@ window.FEMC_PORTRAIT_SCALE = {
   mercy: 0.96,
   mitsuru: 0.96,
   mymelody: 1.1,
+  niki: 1.08,
   noctis: 0.91,
   panam: 0.91,
   prompto: 1.09,
