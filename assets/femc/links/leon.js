@@ -95,6 +95,200 @@ FemcSocial.define({
       { n: "Her father came running across the mall twenty minutes later, white as paper, and scooped her up, and bowed to Kurosawa four times and to Leon five. Leon told him it was nothing. Then he stood at the counter for a long while after they'd gone, looking at the place where they'd disappeared into the crowd, with an expression Solar wouldn't have known how to name." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate). January, before he goes home.
+  dates: [
+    { title: 'the second question', place: 'Hagakure Ramen', music: 'city', scene: [
+      { n: "Leon had been practicing. She could tell because he'd been doing it under his breath the whole walk from the station, the one sentence he'd been collecting since September, which meant, roughly, one ramen please, and which he had learned in four slightly different versions from Officer Kurosawa, Ashley, Solar, and a laminated card taped to a noodle stand. Every few steps his lips moved and his eyebrows came down, like he was defusing something." },
+      { s: 'leon', f: 'serious', t: "I'm doing it. Don't help me. Whatever happens in there, you don't help me." },
+      { s: 'solar', t: "It's ramen, Leon." },
+      { s: 'leon', f: 'serious', t: "It's a mission. I've been briefed." },
+      { n: "Hagakure was hot and loud and smelled of pork bone and sesame and wet wool, the windows fogged solid white, and the man behind the counter looked up when the door opened and saw a tall American in a fur-collared jacket stop dead on the threshold and visibly count the exits." },
+      { n: "Leon sat. Leon cleared his throat. Leon said the sentence, slowly, with an accent that made a salaryman at the far end of the counter put down his chopsticks." },
+      { n: "It was perfect. The man nodded. Then the man asked him something. Quick, friendly, a completely ordinary follow-up about the firmness of the noodles and the richness of the broth, the kind of question every person in Iwatodai had answered a thousand times without thinking." },
+      { n: "Leon's face did not move. Solar watched it not move. She had seen this man run up the arm of a shadow the size of a house and kick it in the face, and she had never once seen him look like this, a man who had prepared for every contingency except the second question." },
+      { s: 'leon', f: 'surprised', t: "..." },
+      { s: 'leon', f: 'neutral', t: "...Yes." },
+      { choose: [
+        { t: "(Don't help him. He said not to.)", notes: 3, then: [
+          { n: "She didn't help him. She sat on her hands, which was hard, and watched, which was harder, while the man waited and Leon held his ground with the stillness of someone who'd talked down worse." },
+          { s: 'leon', f: 'serious', t: "...Normal." },
+          { n: "It was, by enormous good luck, one of the right answers. The man nodded and turned to his pots, and Leon let out a breath he'd apparently been holding since the station, and didn't look at her, and the back of his neck went red under his hair." }
+        ] },
+        { t: "(Lean over and whisper the answer.)", notes: 2, then: [
+          { n: "She leaned over and whispered it, and he repeated it word for word, completely flat, and the man nodded and turned to his pots, and Leon turned and looked at her." },
+          { s: 'leon', f: 'happy', t: "That's a violation of mission parameters." },
+          { s: 'solar', t: "You're welcome." },
+          { s: 'leon', f: 'happy', t: "...Thank you." }
+        ] }
+      ] },
+      { n: "The ramen came. He ate it the way he ate everything, fast and efficient, but he did it sitting down, at a counter, with his back to the door, which Solar noticed and decided not to mention. Somewhere between the egg and the bottom of the bowl he stopped watching the door in the reflection of the napkin dispenser. She didn't mention that either." },
+      { s: 'leon', f: 'neutral', t: "Spain didn't have this. Spain had a guy who sold me a rocket launcher out of his coat." },
+      { s: 'leon', f: 'happy', t: "...This is better. Don't tell him I said that. He has feelings. I think." },
+      { choose: [
+        { t: "Next time, order for me too.", notes: 3, then: [
+          { s: 'leon', f: 'serious', t: "Two of them. That's a different sentence." },
+          { s: 'leon', f: 'happy', t: "...I'll learn it. Give me a week. I learn fast when it's important." }
+        ] },
+        { t: "You did good, rookie.", notes: 3, then: [
+          { s: 'leon', f: 'flustered', t: "Don't call me rookie in front of the ramen guy." },
+          { n: "The ramen guy, who did not speak a word of English, looked at Leon, and then at her, and gave him a thumbs-up across the counter. Leon gave one back. It was, Solar was fairly sure, the only emoji he had ever needed." }
+        ] }
+      ] }
+    ] },
+    { title: 'thumb side', place: 'Gekkoukan High · Boxing Club', music: 'joy', scene: [
+      { n: "Akihiko had been asking Leon to teach him the kick since November, in the way Akihiko asked for things, which was constantly, and Leon had finally said yes, on the condition that Solar came too and learned something useful instead of something showy." },
+      { s: 'leon', f: 'serious', t: "The kick's showy. You don't need the kick. You need to get out of a grip and run." },
+      { s: 'akihiko', f: 'happy', t: "I need the kick." },
+      { s: 'leon', f: 'neutral', t: "You'll get the kick. Hold the bag." },
+      { n: "The boxing club after hours smelled the way Akihiko always swore it would, tape and rubber mats and old effort, and the lights over the ring buzzed, and Leon stood in the middle of the mats in a T-shirt with his jacket folded very precisely on a bench, which made him look younger, and somehow more tired." },
+      { s: 'leon', f: 'serious', t: "Okay. Grab my wrist. Like you mean it. Like you don't want me to leave." },
+      { n: "She grabbed his wrist. He turned it, once, toward her thumb, and was out before she understood what had happened, his hand just gone from hers like water." },
+      { s: 'leon', f: 'neutral', t: "Thumb's the weak side. Always. Doesn't matter how big they are. Your turn." },
+      { n: "He took her wrist. His grip was careful, she noticed. Firm enough to be real and not one ounce more, like he'd worked it out in advance, and his eyes were on her face the whole time and not on her arm, checking." },
+      { choose: [
+        { t: "(Turn toward the thumb. Get out.)", notes: 3, then: [
+          { n: "She turned toward the thumb. It didn't work the first time, or the second. The third time she felt it, the give, and she was out, and stumbled back a step from the surprise of it." },
+          { s: 'leon', f: 'happy', t: "There it is. Again. Faster." },
+          { n: "They did it until she could do it without thinking, which was, he said, the whole point. You don't think in a grip. You've already thought." }
+        ] },
+        { t: "What if I don't want to get out?", notes: 2, then: [
+          { s: 'leon', f: 'flustered', t: "..." },
+          { s: 'leon', f: 'flustered', t: "...Then that's a different lesson, and Akihiko's in the room." },
+          { s: 'akihiko', f: 'surprised', t: "I'm in the room." }
+        ] }
+      ] },
+      { n: "Then Akihiko got his kick. It took an hour. Leon broke it into pieces, slowly, the pivot and the chamber and the snap, and Akihiko threw it at the heavy bag about two hundred times with the joy of a man who had found religion, and at the end of the hour he threw one that rattled the chain, and turned around with his whole face shining." },
+      { s: 'akihiko', f: 'happy', t: "Did you see that? Solar, did you SEE that?" },
+      { s: 'leon', f: 'happy', t: "...Not bad. Don't do it to anything with a face." },
+      { n: "Akihiko went to shower, and came back to announce that he was running home, and ran home. The club was very quiet after that. Leon sat on the edge of the ring with a towel around his neck and his elbows on his knees, and she sat down beside him, and their shoulders were almost touching, and then they were." },
+      { s: 'leon', f: 'sad', t: "I taught Ashley that. The wrist. She was terrible at it. Got out of a grip exactly once when it counted." },
+      { s: 'leon', f: 'serious', t: "Once is all it takes. I need you to remember it after I'm gone. Promise me." },
+      { choose: [
+        { t: "I promise.", notes: 3, then: [
+          { s: 'leon', f: 'neutral', t: "Okay." },
+          { n: "He nodded, once, like he was filing it somewhere. Then he took her hand, not a grip, just a hand, and held it on the canvas between them, and she didn't get out. She didn't want to. He seemed to understand that without having to ask." }
+        ] },
+        { t: "You could just stay and keep reminding me.", notes: 3, then: [
+          { s: 'leon', f: 'sad', t: "...I'd like that. You know I would." },
+          { s: 'leon', f: 'neutral', t: "Promise me anyway. Humor me." },
+          { n: "She promised. He held on to her hand afterward a while longer than the promise needed, looking at the empty ring, saying nothing." }
+        ] }
+      ] }
+    ] },
+    { title: 'one song', place: 'Paulownia Mall · Karaoke', scene: [
+      { n: "Ashley had booked a karaoke room on the second floor of the mall, for three, for two hours, with money whose origins nobody was prepared to discuss, and then at the door she had looked at her phone, gasped very loudly, and announced that there was a shoe emergency and that she would be back in exactly two hours and not one minute before." },
+      { s: 'ashley', f: 'happy', t: "Have FUN. Leon, you have to SING. Solar, make him. Bye!" },
+      { s: 'solar', t: "She did that on purpose." },
+      { s: 'leon', f: 'neutral', t: "She does everything on purpose. That's the scary part." },
+      { n: "The room was tiny and dark and purple, with a vinyl couch and a tambourine and a television the size of a door playing a music video of a girl running through a field in slow motion. Leon checked the room. Of course he did. He stood in the middle of it and turned a full circle, the door, the vent, the window that wasn't a window, only a poster of a beach, and then sat at the very end of the couch nearest the exit with his arms folded." },
+      { s: 'leon', f: 'serious', t: "I'm security. Security doesn't sing." },
+      { s: 'solar', t: "You know one song. Ashley told me." },
+      { s: 'leon', f: 'flustered', t: "Ashley talks too much." },
+      { choose: [
+        { t: "(Sing first. Badly. To make it fair.)", notes: 3, then: [
+          { n: "She sang first. She picked the most dramatic thing in the book, a power ballad with a key change, and sang it badly and with total commitment, standing up, one hand pressed to her heart, and somewhere around the key change she heard him laugh, the real one, low and surprised, and when she sat down he was looking at her like she'd done something brave." },
+          { s: 'leon', f: 'happy', t: "...Okay. Okay. That's fair. That's a fair trade." }
+        ] },
+        { t: "(Hand him the microphone. Say nothing.)", notes: 2, then: [
+          { n: "She held out the microphone and said nothing. He looked at it the way he'd looked into the merchant's coat in the alley, like it was a terrible idea he was going to go along with anyway." }
+        ] }
+      ] },
+      { n: "He found it in the book in about four seconds, which told her he'd known exactly where it was all along. He didn't stand. He sat on the edge of the couch with his elbows on his knees and the microphone loose in both hands, and when the music started, something slow and old, a guitar and not much else, he didn't look at the screen once. He knew all the words." },
+      { n: "His voice was low and rough and out of practice, and he wasn't good, exactly, and it didn't matter. He sang it the way he did everything that counted, carefully, like he was carrying something full to the brim across a room, and she sat there in the purple dark with the tambourine forgotten in her lap and her face going hot, and had no idea where to put her hands." },
+      { n: "When it ended there was a silence. The screen went back to the girl in the field." },
+      { s: 'leon', f: 'flustered', t: "...It was on the radio a lot. Before. I don't know why it stuck. Most things from before didn't." },
+      { choose: [
+        { t: "Sing it again.", notes: 3, then: [
+          { s: 'leon', f: 'surprised', t: "..." },
+          { s: 'leon', f: 'happy', t: "...Once. Then you're doing the key change one again. That's the deal." }
+        ] },
+        { t: "(Move closer on the couch.)", notes: 3, then: [
+          { n: "She moved closer. Not much. Enough that her shoulder was against his arm, and after a second his arm came up along the back of the couch behind her and stayed there, and he picked the next song without letting go of the microphone, or of her." }
+        ] }
+      ] },
+      { n: "Ashley came back in exactly two hours and not one minute before, with no shoes, and took one look at the two of them on the couch, at Leon's arm and the tambourine on the floor and Solar's red face, and said yes, very quietly, for Ashley, and then made Leon sing it a third time just for her. He did." }
+    ] },
+    { title: 'kitchen duty', place: 'Iwatodai Dorm · Kitchen', music: 'tender', scene: [
+      { n: "Solar had been feeding Leon since September. Rice balls at the police box. Konbini bentos on the bench by the fountain. A crepe, once, that Ashley had abandoned halfway. He'd kept count, it turned out. He said so, standing in the dorm kitchen in a T-shirt with his sleeves pushed up, like he was settling an outstanding debt." },
+      { s: 'leon', f: 'serious', t: "Thirty-eight meals. I'm going to square one of them. Sit down." },
+      { n: "He'd asked Akihiko first, before he touched a thing. She knew because she'd seen them in the doorway that afternoon, Akihiko pointing at cupboards, quietly, this one, that one, the big pot lives there, and Leon nodding at each one like he was memorizing a building plan. The kitchen had been kept a certain way since October. Everybody in the dorm knew it. Nobody had ever said so out loud." },
+      { n: "He cooked like he fought, in short efficient movements with nothing wasted, and he wiped down every surface as soon as he was done with it, and every time he used something, the pan, the whisk, the ladle, he washed it and dried it and put it back exactly where Akihiko had shown him, exactly, turned the way it had been turned." },
+      { s: 'leon', f: 'neutral', t: "It's the only thing I can make. Don't get excited." },
+      { n: "Pancakes. At eight at night. Stacked, slightly uneven, with butter and a bottle of syrup from the import shop at the mall that he'd carried home like evidence. The kitchen smelled sweet and warm, like somebody's Saturday morning a very long way from here." },
+      { choose: [
+        { t: "Where did you learn to make pancakes?", notes: 2, then: [
+          { s: 'leon', f: 'sad', t: "Diner. Back home. Watched the cook through the window a lot of nights." },
+          { s: 'leon', f: 'happy', t: "Never actually made them till tonight. Don't tell anyone. First op, no rehearsal." }
+        ] },
+        { t: "(Steal one before he sits down.)", notes: 3, then: [
+          { n: "She ate one standing up, off the plate, with her fingers, before he'd even turned off the stove. He turned around and caught her, and his whole face changed, the tired lines going soft, like she'd answered a question he'd been afraid to ask." },
+          { s: 'leon', f: 'happy', t: "...Good?" },
+          { s: 'solar', t: "Really good." },
+          { s: 'leon', f: 'flustered', t: "Okay. Okay. Sit down before I make a speech." }
+        ] }
+      ] },
+      { n: "They ate at the counter side by side. Akihiko came in halfway through, looked at the pancakes, and then at the kitchen, at the ladle back on its hook and the pan back in its cupboard, and stood there a second longer than he needed to." },
+      { s: 'akihiko', f: 'sad', t: "...You put everything back." },
+      { s: 'leon', f: 'neutral', t: "You told me where it goes." },
+      { n: "Akihiko nodded, once. He took a pancake off the stack with his fingers and ate it standing up, and said it could use protein, and left. Neither of them said anything for a while after that. Leon's hand found hers on the counter, beside the syrup bottle, and stayed." },
+      { s: 'leon', f: 'sad', t: "I don't get to do this back home. Sit down. Eat something somebody made on purpose. There's always a plane." },
+      { s: 'leon', f: 'serious', t: "End of the month there's a plane again. Some kind of plane. I don't know what it looks like this time." },
+      { choose: [
+        { t: "Then we do this every night until it comes.", notes: 3, then: [
+          { s: 'leon', f: 'happy', t: "That's a lot of pancakes." },
+          { s: 'solar', t: "Learn a second thing." },
+          { s: 'leon', f: 'flustered', t: "...I'll learn a second thing. Give me a day." }
+        ] },
+        { t: "(Lean your head on his shoulder.)", notes: 3, then: [
+          { n: "She leaned her head on his shoulder. He went still, the way he always did, a man who'd spent years needing to know exactly what was touching him, and then he didn't. He let his cheek rest against her hair and breathed out, and the kitchen ticked and hummed around them, everything in its place." }
+        ] }
+      ] },
+      { n: "He washed the last plate himself. He dried it and put it on the shelf where it lived, and before he turned off the light he stood in the doorway a moment and looked back at the kitchen, all of it clean and put away, the way you'd look at a room you'd been trusted with." }
+    ] }
+  ],
+  // P3's Christmas Eve: two days after rank 9 (12/22), before rank 10 (12/29).
+  christmas: { place: 'Iwatodai Dorm · Front Steps', scene: [
+    { n: "Officer Kurosawa had informed Leon, with no expression at all, that in Japan you ate Christmas cake on Christmas Eve, with someone you cared about, and that if you didn't, the cake was considered wasted and the shame fell on your whole family. Leon had believed every word. Solar found this out at seven o'clock, when she opened the dorm's front door and found him on the steps in the snow with a cake box on his knees, sitting very straight, guarding it." },
+    { s: 'leon', f: 'serious', t: "Kurosawa says if we don't eat this tonight it's a disgrace. I don't fully trust him. I'm not taking the chance." },
+    { s: 'solar', t: "He was messing with you." },
+    { s: 'leon', f: 'neutral', t: "...Yeah. Figured that out around the second block. Bought it anyway." },
+    { n: "A strawberry shortcake from the bakery on the strip, white and round, with a little chocolate plaque that said MERRY CHRISTMAS in piped icing and a plastic Santa standing on it with both arms up like he'd just won something. Leon had bought two forks and no plates. He'd also brought a thermos of hot tea, the same thermos, she was nearly sure, that he'd brought to these same steps in October, the day after, with two cups of terrible instant ramen." },
+    { choose: [
+      { t: "(Sit down on the step below him.)", notes: 3, then: [
+        { n: "She sat on the step below him, the way he had sat below her in October, and he looked at where she'd chosen to sit and understood it, she saw, and didn't say anything, and handed her a fork." }
+      ] },
+      { t: "Ashley's not coming?", notes: 2, then: [
+        { s: 'leon', f: 'neutral', t: "Ashley's at a party. With people her own age. Supervised. By Kurosawa." },
+        { s: 'leon', f: 'happy', t: "He volunteered. Still not sure what I did to deserve it." }
+      ] }
+    ] },
+    { n: "They ate the cake straight out of the box, the snow coming down slow and soft under the porch light and landing on the cream, and it was too sweet and very cold and perfect. Leon gave her the Santa. He said she'd earned it." },
+    { s: 'leon', f: 'neutral', t: "Christmas Eve, usually I'm on a job. Somewhere with no windows. Eating something out of a tin, standing up." },
+    { s: 'leon', f: 'happy', t: "This is the first one in a while with stairs." },
+    { s: 'leon', f: 'flustered', t: "Got you something. Ashley wrapped it. I'm sorry about the bow." },
+    { n: "The bow was enormous. It was gold and roughly the size of the present, which was soft and flat, and inside was a scarf, charcoal wool, plain and warm and clearly not cheap, the kind of thing a person buys after going into four shops and standing in each one too long." },
+    { s: 'leon', f: 'serious', t: "You never wear one. I've noticed. You go out in the Dark Hour with your neck exposed. It's January in a week." },
+    { s: 'leon', f: 'flustered', t: "...That's not why. That's part of why." },
+    { choose: [
+      { t: "(Give him a pocket phrasebook. You've tabbed forty pages.)", notes: 3, then: [
+        { n: "A pocket Japanese phrasebook for tourists with a cartoon Mount Fuji on the cover, and inside it she'd marked forty pages with little paper tabs and written in the margins in English. How to order two of something. How to ask where the station is. How to thank a police officer like you mean it." },
+        { s: 'leon', f: 'surprised', t: "..." },
+        { n: "He went through every single tab, there on the steps in the snow, reading every note, and on the inside of the back cover she'd written one more line, in English, with the Japanese underneath. Come home safe. He stopped there, and stayed on that page for a long time." }
+      ] },
+      { t: "(Give him a pair of lined leather gloves.)", notes: 3, then: [
+        { s: 'leon', f: 'neutral', t: "Leather. Lined. These are good gloves." },
+        { s: 'solar', t: "Your hands are always cold at the police box. I've noticed." },
+        { n: "The corner of his mouth went up. He put them on and flexed his fingers, and then took the right one straight back off and held her hand with his bare one instead." },
+        { s: 'leon', f: 'happy', t: "...Saving it. For when you're not around." }
+      ] }
+    ] },
+    { n: "The snow kept coming. Down the street someone's television was playing a Christmas special, faint laughter rising and falling through a window. He wound the scarf around her neck himself, twice, slowly, tucking the end in, his knuckles cold against her jaw, and then didn't take his hands away." },
+    { s: 'leon', f: 'sad', t: "Every Christmas I've had in a long time, I've been somewhere I was waiting to leave." },
+    { s: 'leon', f: 'happy', t: "First time I'm somewhere I don't want to." },
+    { n: "He kissed her on the steps under the porch light, gently, like a question he already knew the answer to, and he tasted like strawberries and cold, and when he pulled back he kept his forehead against hers a long moment with his eyes closed." },
+    { s: 'leon', f: 'happy', t: "Merry Christmas, Solar." },
+    { n: "Somewhere across town, she was fairly sure, a police officer at a teenager's party was laughing at his own joke." }
+  ] },
   romance: true,
   cast: { ashley: 'Ashley', ada: 'Ada', kurosawa: 'Officer Kurosawa', merchant: 'Merchant', akihiko: 'Akihiko' },
   threads: { ashley: { name: 'leon\'s babysitting service', members: ['leon', 'ashley'] } },

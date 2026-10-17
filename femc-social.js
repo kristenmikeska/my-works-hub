@@ -1152,7 +1152,8 @@ window.FemcSocial = (() => {
   function christmasEve(onDone) {
     const st = storyState();
     if (st.christmas || now().md !== '12/24' || S.slot !== 1) return false;
-    const loves = Object.values(links).filter(l => !l.hidden && l.christmas && progress(l.id).route === 'romance' && progress(l.id).rank >= 9);
+    // `christmas.early: N` lets a link whose rank 9 comes after Christmas (Haechan) be chosen from rank N, before any route is set.
+    const loves = Object.values(links).filter(l => !l.hidden && l.christmas && ((progress(l.id).route === 'romance' && progress(l.id).rank >= 9) || (l.christmas.early && isMet(l.id) && progress(l.id).rank >= l.christmas.early && progress(l.id).route !== 'friend')));
     if (!loves.length) return false;
     st.christmas = 'pending'; save();
     const pickScene = [

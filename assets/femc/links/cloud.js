@@ -96,6 +96,237 @@ FemcSocial.define({
       { n: "The karaoke bar paid him in a coupon for one free hour. He gave it to her. He said he didn't sing. She said she'd figured." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate).
+  dates: [
+    { title: 'free hour', place: 'Paulownia Mall · Mandragora', music: 'joy', scene: [
+      { n: "The coupon had been in Solar's wallet since the summer. FREE 1 HOUR, it said, MANDRAGORA KARAOKE, in big pink letters, with a cartoon microphone giving a thumbs up, and it expired at the end of the year, and Cloud had given it to her at the station after an afternoon of handing out flyers and said he didn't sing, and she'd said she'd figured." },
+      { n: "She brought it to the taxi stand on a Sunday and held it up. He looked at it for a long time, the way he looked at the train map." },
+      { s: 'cloud', f: 'neutral', t: "...That was for you." },
+      { s: 'solar', t: "It's for one room. One hour. A room holds two people." },
+      { s: 'cloud', f: 'serious', t: "I don't sing." },
+      { s: 'solar', t: "You don't have to sing. You have to come." },
+      { n: "He came. He came the way he went to everything, hands in his pockets and face set, like the karaoke box was a reactor he'd been hired to take down. The room was small and dark and smelled of air freshener and old fries, with a vinyl couch and a glitter ball that turned too slowly and a song catalogue the size of a phone book. He sat at the far end of the couch. He picked the tambourine up off the table and held it on his knee without shaking it, the way you'd hold a weapon you'd been issued and had concerns about." },
+      { choose: [
+        { t: "(Sing something loud and terrible. Commit.)", notes: 3, then: [
+          { n: "She picked the loudest song in the book, an idol song with a dance break, and committed, completely, and somewhere around the second chorus she heard a sound and looked over, and Cloud was shaking the tambourine. Once. Exactly on the beat. Then he looked down at it, betrayed, as if it had done it on its own." }
+        ] },
+        { t: "(Pick a slow one. Something quiet.)", notes: 2, then: [
+          { n: "She picked a ballad, the kind that played in convenience stores, and sang it at about half volume, not well, and he listened to the whole thing with his elbows on his knees, frowning at the screen like a man watching a briefing, and when it was over he said, very seriously, that it was good, and she believed him, because he had never once said anything he didn't mean." }
+        ] }
+      ] },
+      { n: "Forty minutes. She sang nine songs. He held the tambourine through all of them and, by the end, shook it more often than not. Then she held out the microphone." },
+      { s: 'cloud', f: 'serious', t: "No." },
+      { s: 'solar', t: "One line." },
+      { s: 'cloud', f: 'neutral', t: "...Not interested." },
+      { n: "But he was looking at the catalogue, and he kept looking, turning the pages slowly past song after song, and then he stopped on one, and his face did something, a small involuntary tightening, the way it did at the station when his head hurt." },
+      { s: 'cloud', f: 'sad', t: "...I know this one. I don't know how I know it." },
+      { n: "It was old, older than either of them, a slow plain song about somebody coming home, nothing she had ever heard, from somewhere she couldn't place. He keyed it in before he could change his mind. The music started. He held the mic down at his chest, too far from his mouth, like he meant to hand it back any second." },
+      { choose: [
+        { t: "(Sing it with him.)", notes: 2, then: [
+          { n: "She didn't know the words. She read them off the screen half a beat late, and that was enough, apparently, because about a verse in, underneath her voice, she heard his. Low. Rough. A little flat. Very careful, every word set down like a foot on ice." }
+        ] },
+        { t: "(Turn off the lights. Leave just the glitter ball.)", notes: 3, then: [
+          { n: "She got up and flicked the switch so the room went dark except for the screen and the slow wheel of light from the glitter ball, and sat back down with her eyes on the screen and not on him. It took him a whole verse. Then, in the dark, where nobody could watch him do it, he sang." }
+        ] }
+      ] },
+      { n: "He wasn't good. He wasn't bad, either. He sang like someone carrying something heavy up a staircase, steadily, without looking down, and on the last line his voice went somewhere it hadn't gone before and held there, and Solar sat very still on the vinyl couch and didn't breathe in case it made him stop." },
+      { n: "The phone on the wall rang to tell them their hour was up. He set the mic down on the table like he was disarming it." },
+      { s: 'cloud', f: 'flustered', t: "...You didn't hear that." },
+      { s: 'solar', t: "I didn't hear anything." },
+      { s: 'cloud', f: 'neutral', t: "Good." },
+      { s: 'cloud', f: 'happy', t: "...The tambourine was okay, though. I'd do the tambourine again." }
+    ] },
+    { title: 'the list', place: 'Iwatodai Strip · Wild-Duck Burger', scene: [
+      { n: "Wild-Duck Burger was loud on a Wednesday after school, full of Gekkoukan uniforms and a television in the corner showing baseball nobody was watching, and Cloud had ordered four burgers, which he said was normal, and the girl at the register had looked at the sword and decided it was." },
+      { n: "He'd put his notebook on the tray. He hadn't meant to. It came out of his pocket with his wallet, a small black one with an elastic band, the kind the station kiosk sold for two hundred yen, the corners already gone soft, and when he reached for a burger his elbow caught it and it fell open on the tray between them." },
+      { n: "Every page was a date and a list. His handwriting, square and neat, the cardboard-sign handwriting. The same names in the same order, morning after morning, all the way through. And at the top of every single page, first, on its own line, underlined once, SOLAR." },
+      { s: 'cloud', f: 'flustered', t: "...Don't read that." },
+      { choose: [
+        { t: "(Close it. Slide it back to him.)", notes: 2, then: [
+          { n: "She closed it and slid it back across the tray. He looked at it. He looked at her. Then, after a long time, he opened it again himself to today's page and turned it around so it faced her." },
+          { s: 'cloud', f: 'neutral', t: "...It's fine. You can. It's mostly about you anyway." }
+        ] },
+        { t: "Can I? I'll be careful.", notes: 3, then: [
+          { s: 'cloud', f: 'neutral', t: "...Yeah. You're the only one who could." }
+        ] }
+      ] },
+      { n: "SOLAR. Then TIFA, and under it, smaller, water tower, stars. AERITH, and under that, yellow flowers, 1 gil. KOROMARU, white dog, shrine. AKIHIKO, who had been written in on some morning in October and had stayed. JUNPEI, who had a note beside him, has a picture, find it, crossed out and written again and crossed out again. APHRODITE, eyeliner. And near the bottom, on every page, a line with no name on it at all. Just black hair, sword, laughs a lot." },
+      { n: "Solar looked at that line for a long time. He watched her look at it." },
+      { s: 'cloud', f: 'sad', t: "I write him every day. I never get the name. I keep thinking if I write the rest enough times, one morning it'll just be there." },
+      { choose: [
+        { t: "It will be. One morning.", notes: 3, then: [
+          { s: 'cloud', f: 'neutral', t: "...You don't know that." },
+          { s: 'solar', t: "No." },
+          { s: 'cloud', f: 'happy', t: "...Okay. Thanks for saying it anyway." }
+        ] },
+        { t: "You're keeping him. Even without the name. That counts.", notes: 3, then: [
+          { s: 'cloud', f: 'surprised', t: "..." },
+          { s: 'cloud', f: 'sad', t: "...Yeah. I guess I am." },
+          { n: "He touched the line with one finger, the way you'd touch the shoulder of somebody asleep." }
+        ] }
+      ] },
+      { n: "Then he did something she didn't expect. He slid the pen out from under the elastic and held it out to her across the tray, over the four burgers." },
+      { s: 'cloud', f: 'neutral', t: "Write something. In yours. Your handwriting." },
+      { s: 'cloud', f: 'serious', t: "If one morning it's all fuzzy, I want something in here I didn't write. So I know it's real." },
+      { choose: [
+        { t: "(Write your name under his. Just the name.)", notes: 3, then: [
+          { n: "She wrote it under his, in her own hand, rounder, smaller, slanting a little. Solar. Just that. It looked strange there under his square capitals, two versions of the same word. He looked at it for a long time." },
+          { s: 'cloud', f: 'happy', t: "...Two of you now. Can't lose both." }
+        ] },
+        { t: "(Write his name. And under it, you're real.)", notes: 3, then: [
+          { n: "She wrote it at the bottom of the page in her own handwriting, rounder than his, slanted. CLOUD STRIFE. And under it, smaller, you're real, and her initial. He read it. He read it again. Then he shut the notebook and put it in the inside pocket of his uniform and kept his hand flat on top of it for a moment, like he was checking it was still there." },
+          { s: 'cloud', f: 'flustered', t: "...That's cheating. You can't put me on my own list." },
+          { s: 'solar', t: "Why not?" },
+          { s: 'cloud', f: 'happy', t: "...Don't know. Never thought of it." }
+        ] }
+      ] },
+      { n: "He ate all four burgers. She ate one and most of her fries, and he ate the rest of her fries, which he'd been doing since September and had never once asked about. On the television somebody hit a home run and the whole restaurant ignored it. When they left he held the door and said, \"See you, Solar,\" the way he always did. Like he was writing it down." }
+    ] },
+    { title: 'two wheels', place: 'Port Island · Back Streets', music: 'sun', scene: [
+      { n: "There was a motorcycle repair shop in the back streets of Port Island, a narrow concrete box with a roller shutter and a hand-painted sign and an old man in it who had hired Cloud in October to carry engines, and in November to carry more engines, and in December, after watching him strip a carburetor and put it back together faster than he could, to stop carrying things and fix them." },
+      { n: "In the back of the shop, under a tarp, there had been a bike. Old, big, black, a model the old man said nobody made anymore, which had belonged to his son, who had moved to Osaka and never come back for it. It hadn't run in nine years. Cloud had been working on it after hours, without anybody asking him to, for six weeks." },
+      { n: "On a Friday, it ran." },
+      { s: 'cloud', f: 'neutral', t: "He says I can take it out. Once. Coast road and back." },
+      { s: 'cloud', f: 'flustered', t: "...I've got two helmets." },
+      { choose: [
+        { t: "I've never been on a motorcycle.", notes: 2, then: [
+          { s: 'cloud', f: 'neutral', t: "I've been on a lot. I think. My hands know it, anyway." },
+          { s: 'cloud', f: 'serious', t: "Hold on. Don't fight the turns. Lean with me. That's all." }
+        ] },
+        { t: "(Take the helmet. Don't ask questions.)", notes: 3, then: [
+          { s: 'cloud', f: 'happy', t: "...Good." },
+          { n: "He did the strap under her chin himself, frowning, gloves off, tugging it twice to make sure, his knuckles brushing her jaw, and then rapped the top of the helmet once with one knuckle, like knocking on a door to say he was home." }
+        ] }
+      ] },
+      { place: 'Port Island · Coastal Road', time: 'Afternoon', music: 'sun' },
+      { n: "The first ten seconds were terrible. Then they weren't. The bike moved under them like a large animal deciding to cooperate, and the back streets fell away, and the road opened along the water, empty on a winter weekday, the bay flat and silver on the right and the cold coming at her so hard it felt solid, a wall she was being pushed through at sixty kilometers an hour, and she held on around his waist with both arms and her helmet against the back of his shoulder and could feel, through his coat, through the noise, that he was laughing." },
+      { n: "She'd never heard Cloud laugh like that. She wasn't sure she was hearing it now. She felt it, mostly, his back shaking against her, the sound thrown away behind them in the wind." },
+      { n: "He pulled in at a lookout at the far end of the island, a gravel turnout with a rusted railing and a vending machine and nothing else, where the road stopped and there was only the bay and the gray hills on the far side and the sun going down orange behind them. He took off his helmet. His hair sprang back up immediately and completely, as if the helmet had never happened. She'd wondered about that for months." },
+      { s: 'cloud', f: 'neutral', t: "I had one. Back home. Bigger than this. I think it was mine." },
+      { s: 'cloud', f: 'sad', t: "I remember the road better than almost anything. Riding out of a city that was always dark. Nowhere to be. Just going." },
+      { choose: [
+        { t: "Where were you going?", notes: 2, then: [
+          { s: 'cloud', f: 'sad', t: "...Away, mostly. I was always going away." },
+          { s: 'cloud', f: 'happy', t: "This is the first time I wanted to turn around and come back." }
+        ] },
+        { t: "(Stand next to him. Watch the sun go down. Don't say anything.)", notes: 3, then: [
+          { n: "She stood next to him at the railing, close enough that their sleeves touched, and they watched the sun drop behind the hills in the quiet the engine had left, the bay going from orange to pink to gray, and somewhere in the middle of it he took her gloved hand in his bare one, and didn't look at her, and didn't let go." }
+        ] }
+      ] },
+      { n: "She bought two cans of coffee from the machine. Both hot. He held his in both hands, the way he had in the rain at the taxi stand, and drank it slowly, and looked at her over the top of the can." },
+      { s: 'cloud', f: 'flustered', t: "...You were holding on really tight." },
+      { s: 'solar', t: "You were going really fast." },
+      { s: 'cloud', f: 'happy', t: "I was doing sixty. I could've gone faster." },
+      { s: 'cloud', f: 'flustered', t: "...Didn't want to. I liked it. You holding on." },
+      { n: "He rode back slower. Much slower. Slow enough that a boy on a bicycle passed them on the coast road and looked back, baffled, at the huge black bike doing forty with two people on it, the one in back with her arms wrapped around the one in front, as if neither of them had anywhere at all they needed to be." }
+    ] },
+    { title: 'end of the line', place: 'Iwatodai Station · Ticket Gates', scene: [
+      { n: "He still had the ticket. The cheapest one the machine sold, from that afternoon at the train map in the summer. He'd kept it in his wallet for months, folded once, the magnetic strip on the back worn pale, and he took it out at the ticket gates on a Monday morning in winter and showed it to her like a passport." },
+      { s: 'cloud', f: 'neutral', t: "One stop. It goes one stop." },
+      { s: 'cloud', f: 'serious', t: "I want to go to the end. Of the line. Not for anything. Just to see where it stops." },
+      { choose: [
+        { t: "The fare machine will charge you the difference.", notes: 1, then: [
+          { s: 'cloud', f: 'neutral', t: "...I know. I'll pay it. I've got rice ball money." }
+        ] },
+        { t: "Let's go.", notes: 3, then: [
+          { s: 'cloud', f: 'happy', t: "...Okay." },
+          { n: "He said it like she'd agreed to something much bigger, and maybe she had." }
+        ] }
+      ] },
+      { place: 'The Last Stop · Seaside Station', time: 'Late Morning' },
+      { n: "It took an hour and forty minutes and two changes. The city thinned out and then stopped, and the train ran along the coast past bare fields and greenhouses and little towns that were only a station and a vending machine and a shrine, and he sat by the window with the sword across his knees and his forehead almost on the glass, watching all of it go past, every pole, like he was counting them." },
+      { n: "The last stop was a single platform in a seaside town nobody had heard of, with a wooden station house and one elderly attendant who took Cloud's worn ticket, looked at it, looked at the sword, looked at Cloud, and charged him eight hundred and forty yen in difference without a flicker of curiosity, which Solar thought was the most Iwatodai thing that had happened all day, even out here." },
+      { n: "There was a beach. Of course there was. A gray winter one, empty, with a breakwater of concrete blocks and a fishing boat pulled up on the sand and gulls arguing over something dead. They bought soba from the stand by the station and ate it standing up with steam in their faces, and then walked down to the water and sat on the breakwater with their legs hanging over." },
+      { s: 'cloud', f: 'neutral', t: "This is it. The end." },
+      { s: 'cloud', f: 'neutral', t: "...It's just a beach." },
+      { choose: [
+        { t: "What did you think it would be?", notes: 2, then: [
+          { s: 'cloud', f: 'sad', t: "Don't know. Somewhere I'd stop needing to go anywhere." },
+          { s: 'cloud', f: 'neutral', t: "...It's just a beach, though. Turns out." },
+          { n: "He didn't sound disappointed. He sounded like someone setting down something he'd carried a long way and finding it lighter than he remembered." }
+        ] },
+        { t: "You came all this way to know you could.", notes: 3, then: [
+          { s: 'cloud', f: 'surprised', t: "...Yeah." },
+          { s: 'cloud', f: 'happy', t: "Yeah. That's it exactly. You always get it." }
+        ] }
+      ] },
+      { n: "The wind came in off the water and the gulls went on arguing, and he was quiet for a long time, looking at the line where the gray sea went into the gray sky, and then he said, without turning his head, without changing his voice at all, the way he said everything that mattered, like it was information." },
+      { s: 'cloud', f: 'sad', t: "I don't know how long I've got here. Nobody does. Tifa didn't. Aerith didn't. One morning I'll wake up and it'll be a different platform." },
+      { s: 'cloud', f: 'serious', t: "I used to think that'd be fine. Waking up somewhere else. I've done it before. I'm good at it." },
+      { s: 'cloud', f: 'flustered', t: "...I don't want to be good at it anymore." },
+      { choose: [
+        { t: "Then write it down. This beach. Today. Put it on the list.", notes: 3, then: [
+          { n: "He took out the notebook and the pen and wrote, on today's page, under SOLAR, in his square capitals, END OF THE LINE. JUST A BEACH. Then he looked at it, and added, smaller, with her. And held it out so she could see, and didn't say anything, which was the loudest thing he could have done." }
+        ] },
+        { t: "(Lean against him. Put your hand in his coat pocket with his.)", notes: 3, then: [
+          { n: "She leaned into his shoulder, hard and cold under the uniform, and put her hand into the pocket of his coat where his hand already was, and his fingers closed around hers in the dark of the pocket and held on, the way you'd hold a ticket you didn't want to lose." }
+        ] }
+      ] },
+      { n: "They caught the train back at two. He fell asleep twenty minutes out, which she had never once seen him do, sitting bolt upright with the sword across his knees and his head tipping slowly sideways until it reached her shoulder and stopped there, and stayed, all the way back, through both changes, which she managed without waking him, which she was fairly sure was impossible, and did anyway." },
+      { n: "At Iwatodai she shook him awake. He opened his eyes and looked around the carriage and then at her, and for one second there was nothing in his face at all, no name, no place, just a man waking up on a train. Then it came back. She watched it come." },
+      { s: 'cloud', f: 'neutral', t: "...Solar." },
+      { s: 'cloud', f: 'happy', t: "Yeah. Okay. We're home." }
+    ] }
+  ],
+  // P3's Christmas Eve: on 12/24 evening, if Solar is romancing several people (rank 9+), she picks one; this plays.
+  christmas: { place: 'Iwatodai Strip · Bakery', scene: [
+    { n: "Christmas cake in Japan was a sponge with whipped cream and strawberries, and it had to be sold by the twenty-fifth or not at all, and the bakery on the Strip had made three hundred of them, and at six o'clock on Christmas Eve there were still forty-one left, and the owner, in desperation, had hired the most frightening man in Iwatodai to stand outside in a red Santa hat and sell them." },
+    { n: "Solar found him at a folding table in front of the shop under the strings of lights, in the snow, with the hat sitting on top of his hair, which had not flattened under it in the slightest, so that the hat perched on the spikes like a small red tent on a mountain. He was holding a cake box out to every couple who passed, without a word, without a smile, with the energy of a man serving a summons. They were buying them. They were buying them very fast and walking away even faster." },
+    { s: 'cloud', f: 'neutral', t: "Twenty-nine left. It's working." },
+    { s: 'cloud', f: 'flustered', t: "...Don't look at the hat." },
+    { choose: [
+      { t: "(Get behind the table with him. Smile at people.)", notes: 3, then: [
+        { n: "She got behind the folding table beside him, the warm one and the frightening one, and smiled at people, and he held out the boxes, and between the two of them the cakes were gone in forty minutes, couples and salarymen and a grandmother who bought two and told Cloud he had a good strong face." },
+        { s: 'cloud', f: 'neutral', t: "...Good teamwork." }
+      ] },
+      { t: "The hat's perfect. Don't take it off.", notes: 2, then: [
+        { s: 'cloud', f: 'serious', t: "It's part of the job." },
+        { s: 'cloud', f: 'flustered', t: "...It comes off at seven. Exactly at seven." }
+      ] }
+    ] },
+    { n: "At seven the owner came out and bowed to Cloud several times and paid him in an envelope and a cake, the last one, the one whose top strawberry had slid a little sideways in the box, and said something about next year that Cloud nodded at as if he understood it." },
+    { n: "The hat stayed on. Neither of them mentioned it." },
+    { place: 'Iwatodai Station · Taxi Stand', time: 'Night', music: 'tender' },
+    { n: "They ate it at the taxi stand, because that was where he went when he didn't know where else to go, side by side on the bench by his pillar with the box open between them and two plastic forks, in the snow. The station was quiet. Everybody who had somewhere to be on Christmas Eve was already there." },
+    { ifRank: { cloud: 10 }, then: [
+      { n: "The materia was in her coat pocket, a faint green warmth against her hip. She'd carried it every day since the snow at this same stand. She had caught him once or twice glancing at the pocket, checking it was still there." }
+    ] },
+    { s: 'cloud', f: 'flustered', t: "...Got you something. It's not much." },
+    { n: "It was a pair of gloves. Dark red wool, plain, thick, the good kind from the department store, and inside the cuff of the left one, on a little cloth label, in his square, careful, cardboard-sign handwriting, in marker, SOLAR." },
+    { s: 'cloud', f: 'neutral', t: "Your hands are always cold. At the stand. Every time." },
+    { s: 'cloud', f: 'flustered', t: "...Nobody's hands are cold in July. Yours were. I noticed." },
+    { s: 'cloud', f: 'serious', t: "Wrote your name in them. So if you lose them, somebody brings them back." },
+    { choose: [
+      { t: "(Give him a new notebook. Leather. Your name already on the first page.)", notes: 3, then: [
+        { n: "Black leather with an elastic band, from the stationery shop in Paulownia, about ten times better than the two-hundred-yen one from the kiosk. On the first page, in her rounder handwriting, she had already written tomorrow's date, and under it, SOLAR, so he wouldn't have to." },
+        { s: 'cloud', f: 'surprised', t: "..." },
+        { s: 'cloud', f: 'happy', t: "...You did the first one for me." },
+        { n: "He turned the page, and the next, all blank, and she watched him look at them, at all those mornings, with an expression she'd never seen on him before, like a man looking down a long straight road." }
+      ] },
+      { t: "(Give him a round yellow bird. A plush, from the claw machine at Game Panic.)", notes: 3, then: [
+        { n: "It was big and round and yellow, vaguely a chick, vaguely something else, with a little orange beak and small useless wings, and it had cost her twelve hundred yen in the claw machine and most of a Saturday's dignity." },
+        { s: 'cloud', f: 'surprised', t: "..." },
+        { s: 'cloud', f: 'happy', t: "...It looks like one. A chocobo. A little. Around the eyes." },
+        { n: "He held it on his knee in the snow, the way he had held the tambourine, very seriously, and did not put it down for the rest of the night." }
+      ] },
+      { t: "(Give him two cans of coffee. Both hot.)", notes: 2, then: [
+        { s: 'cloud', f: 'happy', t: "...Both hot." },
+        { n: "He held one in each hand for the warmth and didn't open either, and she understood it was the best present he'd had in a long time, possibly the only one he could remember." }
+      ] }
+    ] },
+    { s: 'cloud', f: 'neutral', t: "Merry Christmas, Solar." },
+    { n: "He said her name the way he always did, carefully, like he was writing it down somewhere inside his head in ink. Then he did something he'd never done before. He said it again, quieter, for no reason, just to say it." },
+    { s: 'cloud', f: 'flustered', t: "...Solar." },
+    { choose: [
+      { t: "Cloud.", notes: 3, then: [
+        { n: "She said his back, just as quietly, just to say it. He looked at her with snow in his ridiculous hair and the Santa hat crooked on top of it, and leaned in and kissed her, carefully, a little crooked, like someone who had practiced it in his head a great deal since the last time and was determined to get it right, and got it right." }
+      ] },
+      { t: "(Fix his hat. Then kiss him.)", notes: 3, then: [
+        { n: "She reached up and straightened the Santa hat, which had slid most of the way down one spike, and then left her hands there, on either side of his face, cold even in the new gloves, and kissed him. He went still for a second, the way he always did, like he was making sure. Then he kissed her back, and the hat fell off into the snow, and neither of them picked it up." }
+      ] }
+    ] },
+    { n: "A taxi pulled up to the stand, hopeful. The driver looked at them, and at the sword, and at the Santa hat in the snow, and pulled away again." }
+  ] },
   romance: true,
   cast: { tifa: 'Tifa', aerith: 'Aerith', aphrodite: 'Aphrodite', koromaru: 'Koromaru', noctis: 'Noctis', leon: 'Leon' },
   threads: { lostandfound: { name: 'lost & found (other worlds)', members: ['cloud', 'noctis', 'leon'] } },

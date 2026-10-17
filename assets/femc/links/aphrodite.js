@@ -97,6 +97,214 @@ FemcSocial.define({
       { n: "One way or another, by the end of the afternoon the cat in the little hat was swinging from the strap of Aphrodite's bag. The three frogs went home with Solar, who was told to love them. It was phrased as an order." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate).
+  // MAX lands just before Christmas, so the dates run through the winter, December into January.
+  dates: [
+    { title: 'a thousand yen', place: 'Port Island Station · Central Concourse', music: 'joy', scene: [
+      { n: "The perfume counter in the department store by the station had hired Aphrodite for three weekends in December, to stand at the end of the glass in a white blouse and hand out samples, and in three weekends they had sold more perfume than in the whole of the year before, and nobody in the store could explain it, and the manager had cried a little when she handed over the envelope." },
+      { n: "There was a thousand yen in it. One bill. Aphrodite had been carrying it around for a week like a relic, taking it out to look at it, holding it up to the light. Her name was misspelled on the front of the envelope, one katakana wrong. She'd kept the envelope too." },
+      { s: 'aphrodite', f: 'serious', t: "Little sun. Today I am taking you on a date. A mortal one. With my wages." },
+      { s: 'aphrodite', f: 'neutral', t: "In four thousand years nobody has ever paid me for anything. They gave me things. Temples. Wars. Doves. Never once a single bill in an envelope with my name spelled wrong on the front." },
+      { s: 'aphrodite', f: 'happy', t: "I am going to spend every yen of it on you. It will be extremely romantic and I will not be taking criticism." },
+      { choose: [
+        { t: "Every yen? You should save some.", notes: 1, then: [
+          { s: 'aphrodite', f: 'serious', t: "Save it? For what? For WHAT, little sun? I'm immortal. Saving is for people with deadlines." }
+        ] },
+        { t: "I accept. Spend it on me.", notes: 3, then: [
+          { s: 'aphrodite', f: 'happy', t: "Finally. Someone who knows how to receive. You have no idea how rare it is." }
+        ] }
+      ] },
+      { n: "The first hundred and twenty went into the vending machine by the ticket gates, which gave up a can of peach juice, the pink one, and she presented it to Solar with both hands and a small bow, the exact bow Solar had given her in July, copied perfectly, like she'd practiced it in a mirror. She probably had. She could see herself in mirrors." },
+      { n: "Two hundred went into the capsule toy machines by the south exit. She was hunting the frog. She said Solar's three frogs needed a fourth, for balance, that a family of three frogs was a tragedy waiting to happen, and she turned the crank with her eyes shut and her lips moving, and the capsule rolled out, and it was the cat in the little hat, a blue hat this time, and she looked at it with deep betrayal." },
+      { s: 'aphrodite', f: 'surprised', t: "Fate is mocking me. I have been mocked by fate. I wanted the frog." },
+      { choose: [
+        { t: "Keep the cat. Now yours has a friend.", notes: 3, then: [
+          { s: 'aphrodite', f: 'happy', t: "...A friend. Two cats in two little hats." },
+          { n: "She clipped the blue one to her bag strap beside the pink one, and stood back to look at them, and adjusted their hats, which did not adjust." }
+        ] },
+        { t: "(Spend your own two hundred. Get her the frog.)", notes: 2, then: [
+          { n: "Solar fed in her own coins and turned. It was the frog. Of course it was the frog. Aphrodite took it from her with an expression of profound suspicion and then, slowly, delight." },
+          { s: 'aphrodite', f: 'flustered', t: "You're not supposed to pay. This is MY date. ...Thank you. Don't do it again." }
+        ] }
+      ] },
+      { n: "The boy with the guitar was at the east exit, still singing the same chorus. She dropped three hundred yen into his case, one coin at a time so that they clinked, and told him the second verse was getting better, which it was not. He went red to the ears. He'd been singing the chorus twice since September. He sang it three times now." },
+      { n: "That left three hundred and eighty yen. She counted it twice on her palm, frowning, her gold nails very bright against the dull coins, and then marched Solar to the takoyaki stand outside the station and bought a box of six for three hundred and fifty, and stood in the cold plaza holding it with an air of sacred responsibility." },
+      { s: 'aphrodite', f: 'serious', t: "Thirty yen. I am down to thirty yen. So this is poverty. It's thrilling." },
+      { n: "She ate one, to see, and declared octopus a sea creature of questionable intentions, and then fed the other five to Solar one at a time, blowing on each of them first, much too hard, with total concentration, holding the toothpick like a quill, while commuters went around them both and stared." },
+      { choose: [
+        { t: "You have to have another one.", notes: 2, then: [
+          { s: 'aphrodite', f: 'neutral', t: "I had one. An octopus looked at me. Once was enough." }
+        ] },
+        { t: "(Feed the last one to her.)", notes: 3, then: [
+          { n: "Solar took the toothpick and held the last one out, and Aphrodite looked at it, and at her, and leaned down and took it, and chewed with great dignity, and then discovered, in horror, that it was still extremely hot inside, and fanned her own mouth with one hand for a full minute while Solar laughed so hard she had to hold on to the railing." },
+          { s: 'aphrodite', f: 'flustered', t: "You did that on purpose. That's a crime against a deity. I'll forgive you by dinner." }
+        ] }
+      ] },
+      { n: "At the gates she stopped and opened her hand and looked at what was left on her palm, three ten-yen coins, dull and brown, and then closed Solar's fingers over them, one by one, as though she were handing over something with a royal crest on it." },
+      { s: 'aphrodite', f: 'happy', t: "There. All of it. Every yen. I've given you everything I own, little sun. Do you understand how romantic that is? Mortals do it all the time. I had no idea." }
+    ] },
+    { title: 'mid lane', place: 'Paulownia Mall · Game Panic', music: 'joy', scene: [
+      { n: "Yukari had brought her. That was the first thing Solar learned, walking into Game Panic on a Sunday afternoon past the claw machines and the crowd around the dance game, and finding the goddess of love at a fighting game cabinet in the back with her hair tied up and her sleeves pushed to the elbow, and Yukari standing behind her with her arms folded and the face of a girl who had made a monster and was only now beginning to understand it." },
+      { s: 'yukari', f: 'serious', t: "I showed her the game. Once. To kill time. Forty minutes ago." },
+      { s: 'yukari', f: 'neutral', t: "She's beaten everyone in the building. There's a boy from another school who's been in the bathroom for ten minutes." },
+      { s: 'aphrodite', f: 'happy', t: "Little sun! Come and watch. They see the pink and they think I'm a pushover. They are wrong. They are being wrong in a very satisfying way." },
+      { n: "She was playing the smallest, pinkest character on the roster, a girl in a frilled dress with a parasol, and she was playing her like a war crime. She didn't mash buttons. She waited. She stood in the corner of the screen doing nothing at all, smiling, while the other player grew more and more confident, and then, all at once, in one long beautiful string of inputs, she took him apart." },
+      { choose: [
+        { t: "That's how you fight in the other world. Wait, then everything at once.", notes: 3, then: [
+          { s: 'aphrodite', f: 'surprised', t: "...You know how I fight?" },
+          { s: 'solar', t: "You told me. Mid and solo." },
+          { s: 'aphrodite', f: 'flustered', t: "Don't say it in public, I'll start glowing, I'll blind the little archer." },
+          { s: 'yukari', f: 'neutral', t: "Too late." }
+        ] },
+        { t: "Yukari, what does she win?", notes: 2, then: [
+          { s: 'yukari', f: 'neutral', t: "Nothing. You don't win anything. You just win." },
+          { s: 'aphrodite', f: 'happy', t: "Which is the purest form, little archer. Nobody hands you a golden apple. You just stand there being right." }
+        ] }
+      ] },
+      { n: "Then she stood up, and pressed the coin she'd been saving into Solar's hand, and pointed across the aisle. A light-gun game, two plastic pistols on curly cables, zombies, a logo dripping something red. Two players." },
+      { s: 'aphrodite', f: 'serious', t: "No more fighting each other. Today I play beside you. In the other world you played me. Now I play with you. Your lane, little sun." },
+      { n: "She was terrible at it. Spectacularly terrible. She held the plastic gun like a bouquet and fired at the ceiling to reload and screamed every single time a zombie came around a corner, which was every four seconds, and Solar, laughing, keeping them both alive, felt an odd old familiarity in her hands, like a habit from somewhere else, the habit of guarding someone who was all power and no defense." },
+      { choose: [
+        { t: "(Cover her. Take every zombie on her side too.)", notes: 3, then: [
+          { n: "Solar shot everything on both halves of the screen. Aphrodite stopped shooting entirely and just stood behind her with the gun lowered, watching her, glowing very faintly, with an expression that made a boy at the next cabinet lose a life without noticing." },
+          { s: 'aphrodite', f: 'flustered', t: "Soul Partner. You do it here too. Without any link at all." }
+        ] },
+        { t: "Yukari. Take her gun.", notes: 2, then: [
+          { s: 'yukari', f: 'surprised', t: "...Me?" },
+          { n: "Yukari took it. Yukari, it turned out, was archery club, and did not miss. They got all the way to the last stage with the goddess cheering behind them like a stadium." },
+          { s: 'aphrodite', f: 'happy', t: "My archer and my little sun. I have never been so well defended in my life. Ares should see this." }
+        ] }
+      ] },
+      { n: "They lost to the final boss. Nobody minded. Yukari went to the machine and came back with three cans of peach juice without being asked, which Aphrodite noticed, and was moved by, and said so, at length, until Yukari went pink and told her to just drink it." },
+      { s: 'yukari', f: 'blushing', t: "It's a drink. It's not an offering. Stop looking at me like that." },
+      { n: "On the way out Aphrodite stopped at the fighting game one more time. The high score table had seven places and every one of them read APH, three letters, all the machine allowed, which she had been very upset about. The boy from the other school was standing in front of it with his hands in his pockets, studying it, the way you'd study a scar." }
+    ] },
+    { title: 'the competition', place: 'Naganaki Shrine', scene: [
+      { n: "Naganaki Shrine was quiet on weekday afternoons in winter. A gravel path, a red gate, an offering box worn smooth at the edges, a great old tree with a rope tied around its middle and paper lightning bolts hanging from the rope, and a small sign in English that Aphrodite read out loud, slowly, and then stood in front of with her arms folded." },
+      { s: 'aphrodite', f: 'serious', t: "So this is the competition." },
+      { n: "She had asked to come. She'd asked the way she asked for everything, by announcing it, but there had been something careful underneath, like a cat approaching another cat's yard." },
+      { s: 'aphrodite', f: 'neutral', t: "Who lives here? What do they do? Are they beautiful? Be honest, little sun. I can take it." },
+      { choose: [
+        { t: "A kami. A local god. Nobody's completely sure which.", notes: 3, then: [
+          { s: 'aphrodite', f: 'surprised', t: "Nobody's SURE? They built a whole house for someone and they don't know who?" },
+          { s: 'aphrodite', f: 'neutral', t: "...That's very romantic, actually. That's love without the details." }
+        ] },
+        { t: "Kiriko says it's a fox god. It likes fried tofu.", notes: 2, then: [
+          { s: 'aphrodite', f: 'neutral', t: "Fried tofu. That's all it asks? How undemanding. I'm almost jealous. Nobody has ever satisfied me with tofu." }
+        ] }
+      ] },
+      { n: "She did everything wrong, beautifully. She clapped before she bowed and bowed before she rang the bell and rang the bell so hard it clanged like a ship in fog, and an old woman sweeping the steps stopped sweeping to watch. She threw her five-yen coin into the box like a dart. Then she stood at the front of the shrine with her hands together and her eyes closed for so long that Solar began to wonder whether a goddess could fall asleep praying to another god." },
+      { s: 'aphrodite', f: 'neutral', t: "I told them I was here. It's polite. Professional courtesy." },
+      { s: 'aphrodite', f: 'happy', t: "And I told them to look after you while I'm on their ground. I was very clear. I said please. I never say please." },
+      { n: "The wooden prayer plaques hung on a rack beside the main hall, a whole wall of them clacking softly in the wind, and she found them the way she found anything to do with love, instantly, like a dowsing rod. She read them all. Out loud. In a whisper Solar suspected she believed was discreet." },
+      { s: 'aphrodite', f: 'happy', t: "Pass the entrance exam. Pass the entrance exam. Let Mother's surgery go well. Pass the... oh. Oh, this one. Please let Nao-kun notice me before graduation." },
+      { s: 'aphrodite', f: 'serious', t: "I could do this in an afternoon. One kiss on Nao-kun's forehead." },
+      { choose: [
+        { t: "Don't. Let her do it herself. Like Yukari.", notes: 3, then: [
+          { s: 'aphrodite', f: 'sad', t: "...Like the little archer." },
+          { n: "She looked at the plaque for a long time, at the careful handwriting, at the small heart in the corner that had been rubbed out and drawn again. Then she touched it, very lightly, with one finger, not a kiss, nothing, just a touch, the way you'd touch a sleeping animal." },
+          { s: 'aphrodite', f: 'neutral', t: "Fine. Courage, then. Only courage. The rest she does herself." }
+        ] },
+        { t: "Is that allowed? It's their shrine.", notes: 2, then: [
+          { s: 'aphrodite', f: 'serious', t: "Hm. Jurisdiction. You're right. It would be like walking into someone's temple and moving their furniture." },
+          { n: "She looked at the plaque with real longing, and left it alone, and Solar was fairly sure it cost her more than the whole fight on the bridge." }
+        ] }
+      ] },
+      { n: "Solar bought them each a fortune from the box by the counter, a hundred yen, the paper rolled tight. Hers said small blessing. Aphrodite unrolled hers and read it and went completely, terribly still." },
+      { s: 'aphrodite', f: 'surprised', t: "Great curse." },
+      { s: 'aphrodite', f: 'serious', t: "It says great curse. Under love it says do not expect it this year. Under travel it says delays. I am going to burn this building to the ground." },
+      { n: "Solar showed her where you tie the bad ones, on the wire rack by the tree, so that the god keeps the bad luck and you don't have to carry it home, and Aphrodite tied hers in a knot so vicious and so elaborate that it looked like a small declaration of war." },
+      { s: 'aphrodite', f: 'flustered', t: "Do not expect love this year. Ha. Too late, little shrine. Much too late. It's standing right here holding my bag." },
+      { n: "Before they left she bought a plaque of her own, and wrote on it with the felt pen on its string, in that old alphabet with all the little triangles, and hung it on the very front of the rack in the middle, where it would be the first thing anyone saw. Solar couldn't read a word of it. She was fairly sure that was the point. As they walked away the letters seemed to shift a little in the wind, like they were rearranging themselves into something, and Aphrodite took her hand and pulled her down the steps before she could see what." }
+    ] },
+    { title: 'sea foam', place: 'Port Island · Seaside Park', music: 'tender', scene: [
+      { n: "It was January, and the sea off Port Island was the color of a filing cabinet. A tanker sat out in the bay doing nothing. The wind came in flat and steady, smelling of diesel and salt, and the strip of beach below the promenade, the one nobody used after September, had frozen into gray ridges, with a crust of old foam along the line where the tide had given up." },
+      { n: "Aphrodite stood at the edge of it in her borrowed coat and looked at the foam for a long time." },
+      { s: 'aphrodite', f: 'neutral', t: "That's where I'm from. Did you know? Not this sea. A warmer one. But that. The foam." },
+      { s: 'aphrodite', f: 'neutral', t: "I wasn't born, exactly. I just stood up out of it one morning, fully grown, already beautiful, already everything. There was a scallop shell. It's a long story and most of it is unsuitable." },
+      { choose: [
+        { t: "So nobody ever held you. When you were small.", notes: 3, then: [
+          { s: 'aphrodite', f: 'surprised', t: "..." },
+          { s: 'aphrodite', f: 'sad', t: "...I was never small. I came out finished. Everyone who ever touched me was already in love with me. Nobody ever held me just because I was theirs." },
+          { n: "She said it the way she'd said it by the river in September, plainly, without any glow, and then looked shocked, as though she'd only now heard it out loud." }
+        ] },
+        { t: "Do you miss it? The warm sea?", notes: 2, then: [
+          { s: 'aphrodite', f: 'neutral', t: "I don't miss things. I'm a goddess." },
+          { s: 'aphrodite', f: 'sad', t: "...I miss the color. The blue of a vein in a wrist. You'd like it. You'd still be cold, though. You're always cold." }
+        ] }
+      ] },
+      { n: "She was always telling Solar she was cold. She was usually right. Solar's hands were in her pockets and her nose had gone numb and the wind was finding the gap between her scarf and her collar, and the goddess, who did not feel weather, who had never once been rained on, noticed this the way she noticed everything about her, all at once." },
+      { n: "She unwound her own scarf, pink, a gift from a shopkeeper who hadn't known why, and wound it twice around Solar's neck on top of Solar's own, and tucked the ends in, and then left her hands there on either side of Solar's throat. Warm. Very warm. Warmer than a person." },
+      { s: 'aphrodite', f: 'sad', t: "Little sun. Since the link, I can feel things in you. Not thoughts. Weather. There's a cold place in you. Very old. There's a bridge in it." },
+      { n: "Solar didn't move. The tanker didn't move. Somewhere behind them on the promenade a man was walking a dog and talking to it in a high, happy voice, and Solar listened to him very carefully, for a long time, because it was easier than the other thing." },
+      { choose: [
+        { t: "My parents. I was little. I don't really talk about it.", notes: 3, then: [
+          { s: 'aphrodite', f: 'neutral', t: "Then don't. I don't need you to talk. I only wanted you to know that I know." },
+          { s: 'aphrodite', f: 'sad', t: "Everyone I touch is warm. You were the first one who was cold. I didn't know what to do with that. I still don't. I just keep putting scarves on it." }
+        ] },
+        { t: "(Lean into her hands.)", notes: 3, then: [
+          { n: "Solar leaned forward, only slightly, until her forehead rested against the goddess's collarbone, and the warm hands slid around to the back of her neck and stayed there. Aphrodite went completely still, the way you go still when a bird lands on you, and didn't say anything, and didn't glow, and held her." }
+        ] }
+      ] },
+      { n: "When she finally let go, there was a shell on the sand at their feet that hadn't been there before. A scallop, small and white and ribbed, completely out of place on a gray Japanese beach in January, with a little sea foam drying in its curve." },
+      { s: 'aphrodite', f: 'flustered', t: "Don't look at me like that. I didn't do it on purpose. It happens when I get emotional. It's mortifying. Pick it up." },
+      { n: "Solar picked it up. It was warm, too." },
+      { s: 'aphrodite', f: 'neutral', t: "There. Now you have one. Something to stand up out of. For whenever you need to start again." }
+    ] }
+  ],
+  // P3's Christmas Eve: on 12/24 evening, if Solar is romancing several people (rank 9+), she picks one; this plays.
+  christmas: { place: 'Port Island Station · Central Concourse', scene: [
+    { n: "Christmas Eve in Japan, Aphrodite had discovered, was not a family holiday. It wasn't a religious one either, not in any way she recognized. It was a night for lovers. The whole country had simply decided, at some point, without consulting her, that one night a year belonged to couples, and then strung up the lights and booked the restaurants and lit the station like a jewelry box." },
+    { s: 'aphrodite', f: 'happy', t: "Little sun. They made me a holiday. An entire nation. It's the temple I asked for. It only took them five months, and it's made of fried chicken." },
+    { n: "She'd been standing in the concourse since four, apparently, watching. Couples came through the gates in pairs, holding hands in each other's coat pockets, carrying cake boxes, and every one of them that passed her slowed a little without knowing why, leaned a little closer to whoever they were with, and kept walking. She didn't seem to be doing it on purpose. It just came off her, on this night, like heat off a stove." },
+    { choose: [
+      { t: "You're making them all fall in love again.", notes: 2, then: [
+        { s: 'aphrodite', f: 'neutral', t: "Not again. Still. I'm reminding them they already are. It's different. I learned that from tea." }
+      ] },
+      { t: "Are you working tonight?", notes: 3, then: [
+        { s: 'aphrodite', f: 'surprised', t: "...Working?" },
+        { s: 'aphrodite', f: 'flustered', t: "Oh. Oh, I suppose I am. I didn't mean to. It's a reflex. It's my night." },
+        { n: "She took a breath and, visibly, the way you'd turn down a stove, stopped. The couple nearest the gate, who had been leaning toward each other, straightened up and looked puzzled, and then laughed and leaned in again anyway, on their own." },
+        { s: 'aphrodite', f: 'happy', t: "Look at that. They didn't need me. Tonight I'm off duty. Tonight I'm only yours." }
+      ] }
+    ] },
+    { place: 'Iwatodai · Riverside', time: 'Night', music: 'tender' },
+    { n: "It had started to snow. They walked the river path, the same route as September, the one the silver-haired boy ran in the mornings, and it was dark and empty and the snow came down slowly through the lamps and landed on the black water and vanished, and Aphrodite kept stopping to look up into it, with snow catching in her hair and on her eyelashes and an expression of scandalized delight." },
+    { s: 'aphrodite', f: 'surprised', t: "It's landing on me. It's landing directly on me. Four thousand years and nobody has ever dared." },
+    { choose: [
+      { t: "(Give her the umbrella. Pink. You've been carrying it all night.)", notes: 3, then: [
+        { n: "It was pink and sheer with a ruffle around the edge, the most ridiculous umbrella in the shop on the second floor of Paulownia, and Solar had been carrying it furled all evening like a sword, and now she opened it and held it out." },
+        { s: 'aphrodite', f: 'surprised', t: "..." },
+        { s: 'aphrodite', f: 'flustered', t: "A canopy. My own canopy. You remembered. The rain, in the summer." },
+        { n: "She took it in both hands and held it over herself, and then, after a moment, tilted it so it covered them both, which meant holding it very low, and letting her own shoulder fill up with snow, which she didn't seem to notice at all." }
+      ] },
+      { t: "(Give her a dove. A small glass one, for a tree.)", notes: 3, then: [
+        { s: 'aphrodite', f: 'happy', t: "Oh. Oh, it's white. Properly white. Not gray. Not lumpy. Sea foam white." },
+        { n: "She held it up to a streetlamp so the light came through it and threw a small white shape across her face, and she looked at it the way she had once looked at a can of peach juice." },
+        { s: 'aphrodite', f: 'neutral', t: "I'll put it somewhere the pigeons can see it. As an example." }
+      ] }
+    ] },
+    { ifRank: { aphrodite: 10 }, then: [
+      { n: "A few days ago she had given Solar a golden apple with writing on it that rearranged itself, the most famous piece of fruit in history. That had been the grand gesture." },
+      { s: 'aphrodite', f: 'flustered', t: "This is the small one. Don't laugh." }
+    ], else: [
+      { s: 'aphrodite', f: 'flustered', t: "Now mine. Don't laugh." }
+    ] },
+    { n: "It was a scarf. Pink, obviously. Hand-knitted, badly, in a stitch that changed its mind about halfway along, with one end noticeably wider than the other and a small hole near the middle that had been sewn shut with a different pink. It was the ugliest thing Solar had ever seen a goddess hold." },
+    { s: 'aphrodite', f: 'neutral', t: "The little archer taught me. Three weeks. I'm not good at things I can't simply be. It turns out you have to do them. Over and over. With your hands. It's very humbling. I hated it." },
+    { s: 'aphrodite', f: 'sad', t: "I made it anyway. I wanted to give you something I made, and not something I am." },
+    { choose: [
+      { t: "It's perfect.", notes: 2, then: [
+        { s: 'aphrodite', f: 'serious', t: "It is absolutely not perfect, little sun. There's a hole. I'm aware of the hole." },
+        { s: 'aphrodite', f: 'happy', t: "...But say it again." }
+      ] },
+      { t: "(Put it on. Right now. Over the scarf you're already wearing.)", notes: 3, then: [
+        { n: "Solar wound it around her neck on top of everything else she had on, so that she was now mostly scarf, and the goddess watched her do it and laughed, the real laugh, not the radiant one, with a small honk at the end that she would have been mortified to know about." }
+      ] }
+    ] },
+    { n: "They stood on the riverbank with the snow coming down around them. Across the water the lights of Port Island were soft and gold, and a train went over the bridge, and the goddess of love, on her own night, in her own temple of fried chicken and illuminated stations, did not make a single stranger fall in love with anybody. She only kissed Solar, once, slowly, with snow on her lips and her warm hands on Solar's cold face, like it was the only spell she'd ever learned." },
+    { s: 'aphrodite', f: 'happy', t: "Merry Christmas, little sun. Happy lovers' night. I'm told it's a holiday." }
+  ] },
   romance: true,
   cast: { yukari: 'Yukari', ares: 'Ares' },
   // Olympus: Aphrodite's group chat with Yukari, from rank 5 (after Ares has come and gone at rank 4).

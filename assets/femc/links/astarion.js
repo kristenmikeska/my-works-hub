@@ -79,6 +79,199 @@ FemcSocial.define({
       { n: "When they left, the barista said goodnight to him by name, and he bowed to her like she was a duchess, and walked out into the dark looking enormously pleased with himself." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate). All of them after dark.
+  dates: [
+    { title: 'the late show', place: 'Port Island · Cinema', music: 'night', scene: [
+      { n: "There was a cinema behind Port Island Station that showed old films on Friday nights to an audience of about nine people, most of them asleep, and this Friday, according to the hand-lettered sign by the ticket window, it was a vampire picture from 1958, in English, with subtitles, and Astarion had been standing in front of the sign for three minutes with his hands clasped behind his back like a man at a gallery." },
+      { s: 'astarion', f: 'happy', t: "Darling. Darling. They've made a play about me. With moving pictures. I have to see what they got wrong. It's a professional obligation." },
+      { s: 'astarion', f: 'serious', t: "Also, this is a date. A real one. I'm told mortals go to the cinema to sit in the dark and not look at each other. It's the most vampiric courtship ritual I've ever heard of. I'm thrilled." },
+      { n: "He bought the tickets. He bought a bucket of popcorn the size of a small child, which he could not eat, and carried it to their seats in the very back row, center, with the reverence of an altar boy, and held it on his lap for her the entire film, at exactly the angle her hand would find it in the dark without looking." },
+      { n: "The film was very old and very red. The vampire was tall and wore a cape and had a widow's peak like an arrow pointing at his own forehead, and the moment he came on screen Astarion leaned over, close, so that his whisper went straight into her ear and nowhere else." },
+      { s: 'astarion', f: 'serious', t: "Absolutely not. The cape. Nobody wears a cape indoors. You'd catch it in every door you ever walked through." },
+      { choose: [
+        { t: "Shh. Let the man live.", notes: 2, then: [
+          { s: 'astarion', f: 'happy', t: "He isn't alive, darling. That's rather the point. Neither am I. We're colleagues." },
+          { n: "He was quiet after that. For almost four minutes." }
+        ] },
+        { t: "What else did they get wrong?", notes: 3, then: [
+          { n: "It was a mistake. It was the best mistake she'd made all year. He went through all of it, the mirrors, which he said were correct and he resented it, the garlic, which he said was correct and he resented it more, the coffin, which he said was a matter of personal taste and he personally preferred a decent bed, and the bat, which he said, with tremendous dignity, he had never once managed and was not bitter about. His breath was cool and kept stirring the hair by her ear. A man two rows down turned around and shushed them both." }
+        ] }
+      ] },
+      { n: "And then the ending. The castle, the long table, the hero running its whole length and tearing down the curtains, and the morning light pouring in across the floor, and the vampire caught in it and coming apart, slowly, in that old unconvincing way, from the feet up, into dust." },
+      { n: "Astarion stopped talking." },
+      { n: "Solar felt it more than saw it. The arm against hers went still. The popcorn on his lap went still. On the screen the light kept coming, gold and terrible, and beside her in the dark he wasn't watching a film anymore. He was watching something he'd seen happen to someone. Or had been promised would happen to him. Or both." },
+      { choose: [
+        { t: "(Take his hand. Don't say anything.)", notes: 3, then: [
+          { n: "She found it in the dark, cold, resting on the rim of the bucket, and laced her fingers through his, and he gripped back so hard her knuckles ached. He didn't look at her. He held on through the dust, and the credits, and the house lights, and the man two rows down standing up and stretching and leaving, until it was only the two of them in the back row of an empty cinema with a bucket of cold popcorn between them." }
+        ] },
+        { t: "(Lean your head on his shoulder. Block the screen.)", notes: 3, then: [
+          { n: "She put her head on his shoulder so that the side of her face blocked his view of the screen, deliberately, obviously. He made a small sound, half a laugh. Then his cheek came down on top of her head and stayed there, and they listened to the hero's footsteps on the stone, and the music swell, and didn't watch any of it." }
+        ] }
+      ] },
+      { s: 'astarion', f: 'neutral', t: "...Terrible film. Two stars. The cape alone." },
+      { s: 'astarion', f: 'blushing', t: "Can we come back next Friday? They're showing the sequel. I want to see if he comes back. They always come back, you know. That's the one thing they got right." }
+    ] },
+    { title: 'fourteen hours', place: 'Paulownia Mall · Chagall Café', music: 'night', scene: [
+      { n: "In winter the nights in Iwatodai ran to fourteen hours. He had counted. He'd timed it with a borrowed watch, from the moment the last light left the top of the Port Island towers in the late afternoon to the moment it touched them again in the morning, and it came to fourteen hours and change, and he announced this at Chagall with the air of a man announcing an inheritance." },
+      { s: 'astarion', f: 'happy', t: "Fourteen hours, darling. Where I'm from, summer nights were five. Five miserable hours, and you spent the last of them running for a cellar. I have never in two hundred years had this much dark to spend." },
+      { s: 'astarion', f: 'happy', t: "So tonight I'm spending all of it. On you. Every minute. I've made an itinerary." },
+      { n: "Solar looked at the itinerary. It was on a napkin. It ran until seven-fifteen in the morning." },
+      { choose: [
+        { t: "I have a curfew. Eleven. Mitsuru-senpai locks the door.", notes: 3, then: [
+          { s: 'astarion', f: 'surprised', t: "...Eleven." },
+          { s: 'astarion', f: 'serious', t: "The longest nights of the year and you turn into a pumpkin at eleven. Darling. That isn't a curfew. That's a tragedy. That's a Greek tragedy." },
+          { n: "He looked at the napkin for a long time, at all the hours past eleven, and then folded it in half, and in half again, and began to laugh, helplessly, with his face in his hand." }
+        ] },
+        { t: "(Don't mention the curfew. Not yet.)", notes: 2, then: [
+          { n: "She didn't mention the curfew. She would deal with it at ten-forty, the way she dealt with most things, at the last possible moment and with a straight face." }
+        ] }
+      ] },
+      { n: "So they had five hours, and he spent them like a man spending a fortune he'd only just found out he had, extravagantly, in the wrong order. They walked the Strip while the shops closed, one shutter at a time, rolling down like a slow drumroll. They stood on the footbridge over the tracks and watched the trains go under, all lit up, full of tired people going home, and he waved at every one. He bought her a can of hot corn soup and a can of hot cocoa and a can of hot milk tea and held all three while she chose, and then went on holding the other two, for the warmth, he said, though he didn't feel warmth, though she suspected he liked the weight." },
+      { place: 'Iwatodai Dorm · Front Steps', time: 'Night' },
+      { n: "At 10:52 they were at the dorm. The lounge lights were on. Somebody was watching television too loudly. He stood at the bottom of the steps in his burgundy coat with his hands in his pockets, and there was frost on the railing, and his breath, Solar noticed, didn't fog in the cold the way hers did, and never had, and she had never once mentioned it." },
+      { s: 'astarion', f: 'neutral', t: "Nine hours left. Nine hours of the best dark in the world. Do you know what I'm going to do with them?" },
+      { s: 'astarion', f: 'blushing', t: "Absolutely nothing. I'm going to sit in my room with the curtains taped shut and think about the soup. Isn't that ridiculous? Two hundred years starving for the night, and I'm going to waste nine hours of it on you." },
+      { choose: [
+        { t: "Text me. In July I said not at four in the morning. I take it back.", notes: 3, then: [
+          { s: 'astarion', f: 'surprised', t: "...You'll be asleep." },
+          { s: 'solar', t: "I'll read them when I wake up. All of them." },
+          { s: 'astarion', f: 'happy', t: "All of them. Darling, you've made a terrible mistake. There's going to be a novel." }
+        ] },
+        { t: "It's not wasted.", notes: 3, then: [
+          { s: 'astarion', f: 'sad', t: "...No. I don't suppose it is." },
+          { n: "He looked up at her window on the third floor, which he must have worked out was hers some time ago and never mentioned, and then back at her, and the crease came, between his brows, right on schedule." }
+        ] }
+      ] },
+      { n: "At 10:58 he kissed her at the bottom of the steps, quickly, one cold hand on the railing, and stepped back out of the porch light as neatly as a stage exit. At 10:59 the door opened behind her and Mitsuru said her name, once, in the voice of someone who had been watching from the lounge window and had chosen, generously, to give it two minutes." },
+      { n: "The first text came at 1:14. The last came at 7:16, a minute after sunrise. There were forty-one in between. Most of them were about the soup." }
+    ] },
+    { title: 'spin cycle', place: 'Iwatodai Strip · Coin Laundry', scene: [
+      { n: "Astarion had one coat. It was burgundy and embroidered, two hundred years old in style and at least some of that in fact, and it had survived a vampire lord, a crossing between worlds, a shadow wearing his master's face and five months of Chagall's tomato juice. It had not survived a man at the next table knocking an entire pot of coffee into his lap." },
+      { n: "So at ten o'clock on a Tuesday night they were sitting on the plastic bench of the coin laundry on the Strip, under a flickering tube light, watching the coat go around. It was the most domestic thing Solar had ever seen him do. He was wearing a gray sweatshirt from the dorm's lost-and-found box that said GEKKOUKAN SWIM CLUB in peeling letters, and in it he looked like an extremely beautiful ghost who had wandered into a gym." },
+      { s: 'astarion', f: 'serious', t: "I'd like it known that I have never washed anything in my life. Somebody else did it. Or nobody did. Mostly nobody did." },
+      { s: 'astarion', f: 'neutral', t: "It's a ritual, isn't it. You feed coins to a white box and it spins your sins out. Your people are more religious than they think." },
+      { choose: [
+        { t: "It's going to come out a different color.", notes: 1, then: [
+          { s: 'astarion', f: 'surprised', t: "Don't. Don't even say it. I'll burn this establishment to the ground." }
+        ] },
+        { t: "You look good in that sweatshirt.", notes: 3, then: [
+          { s: 'astarion', f: 'blushing', t: "I look like a third-year who's given up. Which, I'm told, is a look." },
+          { s: 'astarion', f: 'happy', t: "...Say it again, though." }
+        ] }
+      ] },
+      { n: "The machine's door was a round glass porthole, and the laundry was bright and the street outside was dark, so the glass did what glass does at night and showed the room back to itself. Solar could see herself in it. The bench. The rows of machines behind her. The poster about lost socks. And an empty space on the bench beside her where a person was sitting with his knee against hers." },
+      { n: "He was looking at it too. At her, in the porthole, going around with the coat behind her, red and gold and dark." },
+      { s: 'astarion', f: 'neutral', t: "In July you told me my face. In front of a shop window. Nobody had ever done that for me." },
+      { s: 'astarion', f: 'neutral', t: "I've never done it back. I keep meaning to. I'm going to do it now, while you can see it and I can't. It seems fair." },
+      { choose: [
+        { t: "You don't have to.", notes: 2, then: [
+          { s: 'astarion', f: 'serious', t: "I know. That's why I'm going to." }
+        ] },
+        { t: "(Look at the glass. Let him.)", notes: 3, then: [
+          { n: "She looked at the glass. She looked at herself, which she mostly avoided doing, and waited, and felt his attention settle on the side of her face the way it settled on anything he thought was worth watching, completely." }
+        ] }
+      ] },
+      { n: "He told her. He told her the way she'd told him, slowly, specifically, the way only someone who'd had two hundred years to practice looking at people could. The hair falling into her eyes that she pushed back with her wrist and never her fingers. The polite face, the one she used on teachers and shopkeepers and Mitsuru, and the exact place at the corner of her mouth where it stopped being polite when she was trying not to laugh. The headphones she wore around her neck even when nothing was playing, like a door she could close. The way she held any can or cup in both hands, like somebody might come and take it. The way she looked at the floor before she said anything true, every time, as if checking it would hold." },
+      { s: 'astarion', f: 'blushing', t: "And you have a crease, darling. Just here. Between the eyebrows. You have it right now." },
+      { n: "She did. She could see it in the glass. She put her hand over her face, the way he had in July, and he laughed, the real one, and leaned his shoulder into hers, and behind them both the coat went around and around in the porthole, catching the light." },
+      { choose: [
+        { t: "You're a menace. An absolute menace.", notes: 3, then: [
+          { s: 'astarion', f: 'happy', t: "Oh, I've been waiting months for you to say that back. I'll think about it for a century." }
+        ] },
+        { t: "(Kiss him. He can't see it in the glass. You can.)", notes: 3, then: [
+          { n: "She turned and kissed him, and in the dark porthole across from them a girl in a scarf kissed nobody at all, leaning into empty air with her eyes shut, and Solar watched it out of the corner of her eye and thought it looked like a girl kissing the dark, and that it was the truest picture of the two of them she would ever see." }
+        ] }
+      ] },
+      { n: "The coat came out the right color. He held it up to the light like a newborn. He fed the dryer two hundred yen and sat back down and asked, very casually, how long it took, and when she said forty minutes he said good, and laid his arm along the back of the bench behind her, and didn't move it for any of them." }
+    ] },
+    { title: 'a waltz', place: 'Paulownia Mall · Chagall Café', music: 'tender', scene: [
+      { n: "Chagall closed at eleven. At five past, the barista turned the sign on the door and dimmed the lights and did not, as she would have on any other night, ask them to leave. She stacked the chairs on every table except theirs. She pushed the tables back against the wall. Then she went behind the counter and began, slowly, with enormous concentration, to polish a single glass, like a woman who had been asked to stay and witness something and had decided to make herself useful." },
+      { n: "The old pianist was at the piano. Still in the cardigan. He had been paid. Astarion wouldn't say how much, or where he'd got it, and had told Solar on the way in not to make it a thing." },
+      { s: 'astarion', f: 'neutral', t: "Months ago you asked me whether I dance. I said exquisitely, and not here, because the floor was sticky and nobody in the room deserved it." },
+      { s: 'astarion', f: 'happy', t: "I had the floor cleaned. And there's only one person in the room." },
+      { n: "He nodded at the pianist. The pianist, who had played the same twelve jazz standards in the same order every night since Solar first walked into Chagall, played something that wasn't any of them. Something old. Three beats to the bar, slow, the kind of music that belonged to the kind of room he must have stood in once, two hundred years ago, by candlelight, in a coat a lot like this one." },
+      { choose: [
+        { t: "I don't know how to waltz.", notes: 3, then: [
+          { s: 'astarion', f: 'happy', t: "Of course you don't. Nobody does anymore. That's what makes it romantic." },
+          { s: 'astarion', f: 'neutral', t: "Give me your hand. No, the other one. There. Now you know how." }
+        ] },
+        { t: "(Curtsy. Badly.)", notes: 2, then: [
+          { s: 'astarion', f: 'happy', t: "Oh, that's dreadful. That's the worst curtsy I've seen in two centuries. I'll remember it on my deathbed. Come here." }
+        ] }
+      ] },
+      { n: "He was exquisite. He hadn't been lying. He moved like the music was something he'd been carrying around in his body for two hundred years with nowhere to set it down, and he steered her through it with one cold hand flat against her back and the other holding hers at shoulder height, and she stepped on his feet four times in the first minute, and he didn't flinch once." },
+      { s: 'astarion', f: 'neutral', t: "One, two, three. One, two, three. Don't watch your feet. Your feet are a lost cause. Watch me." },
+      { n: "So she watched him. That was the trick of it, it turned out. When she watched her feet she fell over them. When she watched his face, close, the red eyes and the white curls and the crease coming and going, she stopped counting, and the floor simply happened underneath her, the way stairs happen in a house you know." },
+      { s: 'astarion', f: 'sad', t: "The last time I danced, it was for him. At a ball. To bring someone home who wouldn't be leaving again. Every step was a lie. I was very good at it." },
+      { choose: [
+        { t: "Is this one a lie?", notes: 3, then: [
+          { s: 'astarion', f: 'surprised', t: "..." },
+          { s: 'astarion', f: 'blushing', t: "No. No, darling. This is the first one in two hundred years that isn't." },
+          { n: "He missed a step saying it. Just one, the only one all night. She stepped on his foot straight afterward, on purpose, so they'd be even, and he laughed out loud in the empty café." }
+        ] },
+        { t: "(Hold on tighter. Don't let him go back there.)", notes: 3, then: [
+          { n: "She closed her hand on his shoulder and drew herself in until there was no room between them at all, until the waltz had to get smaller to fit, until they were mostly swaying in one place on Chagall's clean floor with her cheek against his collar. He didn't say anything. His hand on her back spread its fingers, slowly, like something settling." }
+        ] }
+      ] },
+      { n: "The pianist played it twice. Then, without being asked, a third time, slower. The barista had stopped polishing the glass a long while ago and was just watching, chin on her hand, with the look of someone who had been told her favorite customer was an actor and was now completely certain of it." },
+      { n: "At the end he stepped back and bowed to Solar, low, from the waist, the old way, one hand over his heart, as if she were a duchess. Then he turned and bowed to the pianist, and to the barista, who went pink to the roots of her hair, and then he took Solar's hand and walked her out into the cold, humming it, one, two, three, all the way to the station." }
+    ] }
+  ],
+  // P3's Christmas Eve: on 12/24 evening, if Solar is romancing several people (rank 9+), she picks one; this plays.
+  christmas: { place: 'Paulownia Mall · Chagall Café', scene: [
+    { n: "Every table at Chagall on Christmas Eve had been booked since the first of December. There was a waiting list. There was a waiting list for the waiting list. Couples stood outside the window in their good coats looking in at the candles like children at a sweetshop, and the window table, the best one, the one with the view of the whole room, had a small folded card on it that read, in the barista's careful English, RESERVED. ASTARION. JUST ASTARION." },
+    { s: 'astarion', f: 'happy', t: "I booked it in November. I told them I was an actor. It's the first time that lie has ever been used for anything that mattered." },
+    { s: 'astarion', f: 'happy', t: "Merry Christmas, darling. I'm told this is the holiday where mortals eat cake and fried chicken and kiss under lights. I've done extensive research. I've watched four hundred couples do it from this exact seat." },
+    { n: "She had the chocolate cake. He had tomato juice in a wine glass, and the barista had tucked a small sprig of holly against the rim of it without saying anything, which he found so moving he had to look out of the window for a while." },
+    { ifRank: { astarion: 10 }, then: [
+      { choose: [
+        { t: "(Give him an instant camera. It fits in a coat pocket.)", notes: 3, then: [
+          { n: "It was secondhand, from the camera shop by Port Island Station, boxy and white, with a strap and two packs of film, and he turned it over in his hands like a relic, and then like a weapon, and then he worked out which end was which." },
+          { s: 'astarion', f: 'surprised', t: "...Whenever I like. I can see myself whenever I like." },
+          { s: 'astarion', f: 'blushing', t: "Darling. Do you understand what you've done? I'm going to be unbearable." },
+          { n: "He took the first one immediately, of both of them, at arm's length across the candle, and they watched it come up together out of the gray, slowly, his face arriving in it like someone walking out of fog." }
+        ] },
+        { t: "(Give him a scarf. He doesn't get cold. You remember the jacket.)", notes: 3, then: [
+          { n: "Black cashmere, very soft, because she had thought about what he'd pick for himself, and then about what he'd never let himself pick." },
+          { s: 'astarion', f: 'neutral', t: "...I don't get cold, darling. You know that." },
+          { s: 'solar', t: "You kept my jacket. In September. All night." },
+          { s: 'astarion', f: 'blushing', t: "...It's on the chair in my room. I never gave it back. I hoped you'd never ask." },
+          { n: "He put the scarf on there at the table and kept it on for the rest of the night, in a heated café, with the air of a man who had never been so warm in his life." }
+        ] }
+      ] }
+    ], else: [
+      { choose: [
+        { t: "(Give him a scarf. He doesn't get cold. You remember the jacket.)", notes: 3, then: [
+          { n: "Black cashmere, very soft, because she had thought about what he'd pick for himself, and then about what he'd never let himself pick." },
+          { s: 'astarion', f: 'neutral', t: "...I don't get cold, darling. You know that." },
+          { s: 'solar', t: "You kept my jacket. In September. All night." },
+          { s: 'astarion', f: 'blushing', t: "...It's on the chair in my room. I never gave it back. I hoped you'd never ask." },
+          { n: "He put the scarf on there at the table and kept it on for the rest of the night, in a heated café, with the air of a man who had never been so warm in his life." }
+        ] },
+        { t: "(Give him a bottle of very expensive tomato juice. It has a ribbon.)", notes: 2, then: [
+          { s: 'astarion', f: 'happy', t: "Oh, that's vintage. That's from a farm. Somebody has drawn a little tomato on the label, with a face." },
+          { s: 'astarion', f: 'happy', t: "I'll never open it. I'll keep it on a shelf and tell people it's wine." }
+        ] }
+      ] }
+    ] },
+    { n: "Then it was his turn, and he went quiet, and took a small box out of his coat and set it on the tablecloth between them, and didn't push it across. He just left it there, as if it were hers to reach for, or not." },
+    { n: "Inside was a pendant on a thin gold chain. A sun. Small and flat, old gold, the tips of its rays worn soft as though it had been carried in a pocket for a very long time." },
+    { s: 'astarion', f: 'neutral', t: "An antique shop on the Strip. The old man said it came off a ship, a hundred years ago. I said I'd take it before he finished the sentence." },
+    { s: 'astarion', f: 'sad', t: "The sun's the one thing I can't look at. Two hundred years and I've never once been able to look straight at it." },
+    { s: 'astarion', f: 'blushing', t: "Except you. Solar. I noticed in the first five minutes. I said it was ironic. It wasn't ironic, darling. It was a warning, and I ignored it, and look at me now." },
+    { choose: [
+      { t: "Put it on me.", notes: 3, then: [
+        { n: "She lifted her hair. He came around the table, and his cold fingers fumbled the clasp twice, which they never did with anything, not daggers, not locks, not the buttons on that ridiculous coat, and on the third try it caught, and he left his hands where they were, on her shoulders, a moment longer than the clasp needed." }
+      ] },
+      { t: "You can look at me whenever you like.", notes: 3, then: [
+        { s: 'astarion', f: 'blushing', t: "...I know. I do. Constantly. It's rather a problem. Everyone in this café has noticed." },
+        { n: "Everyone in the café had noticed. The couple at the next table had been noticing for twenty minutes." }
+      ] }
+    ] },
+    { n: "They walked out into the snow at closing. The Strip was all lights, white and gold strung back and forth over the street, and the snow came down through them, and he stopped under the biggest string, outside the antique shop, where couples were taking pictures of each other, and pulled her in by the ends of her scarf." },
+    { s: 'astarion', f: 'happy', t: "This is the part, I'm told. Under the lights. I've watched four hundred couples. I know my blocking." },
+    { n: "He kissed her under the lights, slowly, snow in his white curls, one hand at the back of her neck over the thin gold chain, and somewhere behind them a stranger's camera went off, a flash, two girls giggling, and he didn't flinch at the light at all." }
+  ] },
   romance: true,
   cast: { cazador: 'Cazador', karlach: 'Karlach', akihiko: 'Akihiko' },
   // The camp: Karlach's group chat. It needs Karlach (Astarion rank 7) and the Shadowheart reunion (Shadowheart rank 5),

@@ -91,6 +91,211 @@ FemcSocial.define({
       { n: "Kuromi switched off the flashlight. In the dark, under the bedsheet, she put a finger to her lips, and they stayed perfectly silent while Junpei sat down on the bare couch frame and swore at the ceiling." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate). January, before Mariland.
+  dates: [
+    { title: 'great curse', place: 'Naganaki Shrine', music: 'joy', scene: [
+      { n: "January at Naganaki Shrine meant the New Year crowds had thinned to a trickle, a few old women and a family with a baby zipped into a puffy suit, and the stalls were packed away, and the gravel was frozen hard underfoot. Kuromi had insisted. It was in volume six. The two leads went to a shrine for the New Year and drew their fortunes and he gave her his good one. It was, she said, extremely stupid. She had read it four times." },
+      { n: "Koromaru came too, because the shrine had been his before it was anybody's, and he went up the steps ahead of them with his tail going like a metronome while Kuromi held his leash in one mittened hand and pretended she wasn't holding it." },
+      { s: 'kuromi', f: 'serious', t: "Okay. Rules. We each get one fortune. Best fortune wins. Loser carries the winner's bag. I don't have a bag. It's still a punishment." },
+      { n: "The fortune box was a wooden hexagon with a hole in one end, and you shook it until a numbered stick fell out, and the number told the attendant which little drawer to give you a slip from. Kuromi shook hers like she was trying to kill it." },
+      { n: "She unrolled the slip. She read it. Her whole face lit up like a lantern." },
+      { s: 'kuromi', f: 'happy', t: "GREAT CURSE. The WORST one! I got the WORST ONE!" },
+      { s: 'kuromi', f: 'happy', t: "Lost things will not be found. Travel is unlucky. The person you wait for will not come. Oh, this is AMAZING. This is the most punk thing that has ever happened to me." },
+      { n: "Solar shook hers. Great blessing. Of course. Everything good, in tidy little characters, like the universe had taken one look at the pair of them and decided to balance the books." },
+      { s: 'kuromi', f: 'serious', t: "...Of course you did. Goody-two-shoes. Even the BOX thinks you're nice." },
+      { choose: [
+        { t: "Trade?", notes: 3, then: [
+          { s: 'kuromi', f: 'surprised', t: "...What?" },
+          { s: 'solar', t: "Yours is cooler. I want the curse." },
+          { n: "Kuromi stared at her. Then at the two slips. Then, slowly, she held hers out, and they swapped there in the cold, and Kuromi read Solar's great blessing with a face like she'd been handed something hot, and folded it into a tiny square and tucked it up inside her jester hat, against her head, where it would be safe." },
+          { s: 'kuromi', f: 'flustered', t: "This is exactly what happens in volume six. EXACTLY. I think I'm going to throw up." }
+        ] },
+        { t: "You're supposed to tie the bad one to the tree. So it stays here.", notes: 2, then: [
+          { s: 'kuromi', f: 'serious', t: "NO. It's MINE. I EARNED it." },
+          { n: "She tied it to the tree anyway, after a long glare, because rules were rules even for punks, in a knot so complicated she said no god would ever get it undone, and stood back from it looking deeply satisfied." }
+        ] }
+      ] },
+      { n: "On the way down Koromaru found a stick roughly the size of a small tree and carried it the whole way with enormous dignity, and Kuromi said he'd gotten the best fortune of all of them, obviously, because he had a stick, and nobody could argue with that." },
+      { s: 'kuromi', f: 'neutral', t: "The person you wait for will not come." },
+      { n: "She said it at the bottom of the steps, looking back up at the shrine, quieter than anything she'd said all day." },
+      { s: 'kuromi', f: 'serious', t: "...That's dumb. That's a dumb fortune. You came. You always come. You come when I don't even ask." },
+      { choose: [
+        { t: "Then the fortune's wrong.", notes: 3, then: [
+          { s: 'kuromi', f: 'happy', t: "The fortune's WRONG. Ha! Take THAT, shrine." },
+          { n: "She said it loudly enough that an old woman at the top of the steps turned around. Then she grabbed Solar's hand, mitten and all, and didn't let go of it the whole way back to the dorm, and talked about volume six the entire time so that neither of them would have to mention it." }
+        ] },
+        { t: "(Take her hand.)", notes: 3, then: [
+          { n: "Solar took her hand. Kuromi made a noise like a stepped-on squeaky toy and stared straight ahead and held on so hard her mitten nearly came off." },
+          { s: 'kuromi', f: 'flustered', t: "...This is the BAD LUCK. It's already working. I'm DOOMED." }
+        ] }
+      ] }
+    ] },
+    { title: 'baku two', place: 'Paulownia Mall · Game Panic', music: 'city', scene: [
+      { n: "There was a crane game at the front of Game Panic, by the door, full of plush animals heaped up like the aftermath of something, and Kuromi had walked past it four times on the way in and four times on the way out, and on the fifth time she stopped, and put both hands flat on the glass, and went very still." },
+      { n: "In the back corner, half buried under a pile of pastel rabbits, was a fat purple plush with a long snout and small sleepy eyes and an expression of total, comprehensive uselessness." },
+      { s: 'kuromi', f: 'surprised', t: "...Baku." },
+      { s: 'kuromi', f: 'serious', t: "It's not Baku. Obviously. It's a tapir or whatever. A cheap one. It's not even the right purple." },
+      { s: 'kuromi', f: 'sad', t: "...It's a little bit the right purple." },
+      { n: "She put in a coin. The claw went down, wobbled, closed on nothing, and went back up with the bored air of a machine that had been doing this for years and knew exactly how it ended. She put in another coin. Then another. By the tenth she had stopped talking. By the fifteenth she had taken her mittens off." },
+      { s: 'kuromi', f: 'serious', t: "It's RIGGED. The claw is WEAK. This machine is EVIL and not in the good way." },
+      { choose: [
+        { t: "(Watch the claw. Figure out the trick.)", notes: 3, then: [
+          { n: "Solar watched. The claw swung a little to the left on the way down, every single time, like it had a bad knee. You had to aim right of where you meant. You had to aim for where it was going to be, not where it was." },
+          { s: 'solar', t: "Let me try. One coin." }
+        ] },
+        { t: "Want me to try?", notes: 2, then: [
+          { s: 'kuromi', f: 'flustered', t: "NO. Yes. NO. ...One coin. If you miss you're DISQUALIFIED from being my rival." }
+        ] }
+      ] },
+      { n: "One coin. Solar lined it up a little right of where it should go, and held her breath, and pressed the button. The claw went down, swung its little bad-kneed swing to the left, and closed on the purple plush right around the middle, and lifted it, and carried it, wobbling, the whole impossible way to the chute, and let go." },
+      { n: "The machine played a tinny fanfare. Kuromi didn't move." },
+      { n: "Solar reached into the flap and pulled it out and held it out to her, the fat purple useless thing, and Kuromi took it in both hands and looked at it for a long time, and then put her face in it, all at once, and stood like that in the middle of Game Panic with her jester hat bent sideways against the glass." },
+      { s: 'kuromi', f: 'sad', t: "...He's so useless. He's so useless, Solar. I miss him so much." },
+      { choose: [
+        { t: "You'll see him soon. End of the month.", notes: 3, then: [
+          { s: 'kuromi', f: 'sad', t: "I know. I KNOW. That's the stupid part." },
+          { s: 'kuromi', f: 'flustered', t: "I want to go home AND I want to stay here and that's not ALLOWED, you can't want two places at once, it's not in ANY of the rules." }
+        ] },
+        { t: "(Put your arm around her, plush and all.)", notes: 3, then: [
+          { n: "Solar put an arm around her, plush and all. Kuromi leaned into it without a word, which was so unlike her that a middle schooler at the next machine turned to look, and Kuromi glared at him over the top of the plush until he turned back around." }
+        ] }
+      ] },
+      { n: "She named it Baku Two on the walk home. She said it was a placeholder. She said it was only until she was back with the real one, and then she'd give it back so Solar would have something useless to remember her by, which was, she explained, a huge honor, the highest one she had." },
+      { s: 'kuromi', f: 'happy', t: "Baku Two says thank you. Baku Two says you have a weird claw-game brain and it's kind of scary." },
+      { s: 'kuromi', f: 'flustered', t: "...Baku Two also says you're his favorite. Baku Two has no taste." }
+    ] },
+    { title: 'the grabbing tactic', place: 'Port Island Station · Cinema', music: 'mystery', scene: [
+      { n: "There was a horror movie on at the little cinema by Port Island Station, the sequel to one about a girl in a well, and Kuromi had bought two tickets the day it opened and then not mentioned it for a week, and then mentioned it at a rate of roughly four times an hour." },
+      { s: 'kuromi', f: 'serious', t: "It's a DATE. An evil one. Couples go to scary movies so they can grab each other. I read about it. It's a TACTIC." },
+      { s: 'kuromi', f: 'serious', t: "I won't be grabbing. Obviously. You'll be grabbing. I'm doing this for you. You're welcome." },
+      { n: "She bought the biggest popcorn they had and a soda so big it needed both hands, and sat in the exact center of the exact center row, because that was where a punk sat, and the lights went down." },
+      { n: "Eleven minutes in, she had Solar's hand. Not the sleeve. The hand. She didn't seem to know she was holding it. Her other hand was in the popcorn, frozen there, not eating, just holding a fistful, while the girl on the screen walked very slowly down a hallway toward a door that every single person in the cinema knew she should not open." },
+      { s: 'kuromi', f: 'serious', t: "This is boring. She should just open it. Open it. Coward." },
+      { n: "The girl opened it." },
+      { n: "Kuromi screamed, and the popcorn went up, all of it, a whole bucket's worth, into the air over the center of the center row, and came down over both of them and the two rows in front like snow." },
+      { choose: [
+        { t: "(Don't laugh. Don't laugh. Don't.)", notes: 3, then: [
+          { n: "Solar didn't laugh. She held it in with everything she had, shaking, in the dark, with popcorn down her collar, while Kuromi sat rigid beside her with her eyes squeezed shut and Solar's hand crushed in hers and one single kernel balanced perfectly on top of her jester hat." },
+          { s: 'kuromi', f: 'flustered', t: "...You're laughing. I can feel you laughing. Through the HAND." }
+        ] },
+        { t: "(Squeeze her hand back.)", notes: 3, then: [
+          { n: "Solar squeezed back. Kuromi's eyes came open, slowly. She looked down at their hands, at what she'd done, and at the popcorn, and Solar watched her decide, visibly, in the blue light of the screen, not to let go." }
+        ] }
+      ] },
+      { n: "The man in front of them turned around with popcorn in his hair. Kuromi looked him dead in the eye." },
+      { s: 'kuromi', f: 'serious', t: "It was HER. She's scared. I'm protecting her." },
+      { n: "She held Solar's hand for the rest of the movie. Through the second door and the third and the well and the credits and the lights coming up on the wreckage of the popcorn. She didn't let go until they were outside under the station lights, and then only because she needed both hands to point at the poster and explain, at length, why it had been boring." },
+      { s: 'kuromi', f: 'flustered', t: "...Okay. The grabbing tactic. It's possible I did some of the grabbing." },
+      { choose: [
+        { t: "You did all of the grabbing.", notes: 2, then: [
+          { s: 'kuromi', f: 'flustered', t: "LIES. Slander. I'm writing it in my diary and in my diary YOU grabbed ME." }
+        ] },
+        { t: "Next time I'll grab first.", notes: 3, then: [
+          { s: 'kuromi', f: 'surprised', t: "..." },
+          { s: 'kuromi', f: 'flustered', t: "...Next time. Okay. There's a part three. I checked. In spring. That's. You'd. Okay." },
+          { n: "She didn't finish any of it. She'd be gone by spring, and they both knew it. She held out her hand anyway, palm up, under the station lights, and Solar grabbed first." }
+        ] }
+      ] }
+    ] },
+    { title: 'three tiny things', place: 'Iwatodai Dorm · Rooftop', music: 'tender', scene: [
+      { n: "The roof in January was colder than it had any right to be, which Kuromi took personally. She was sitting on the edge anyway, which wasn't allowed, in her pink hoodie with the polka-dot scarf wound up to her nose and Baku Two wedged under one arm, looking up." },
+      { s: 'kuromi', f: 'neutral', t: "There's one. Look. One star. Over the bay." },
+      { s: 'kuromi', f: 'serious', t: "In Mariland you get millions. Here you get ONE. It's an outrage. I'm filing a complaint." },
+      { n: "It was a very small star, and possibly a plane. Solar didn't say so. She sat down beside Kuromi on the edge with her feet hanging over nothing, and the cold came straight up through her jeans from the concrete." },
+      { s: 'kuromi', f: 'neutral', t: "In Mariland, when you wish on a star, you have to say it out loud. Otherwise it doesn't count. That's the rule." },
+      { s: 'kuromi', f: 'flustered', t: "...I made the rule. Just now. It's still a rule." },
+      { choose: [
+        { t: "You first.", notes: 3, then: [
+          { s: 'kuromi', f: 'serious', t: "...Fine. FINE." },
+          { n: "She took a breath, a big one, like before going underwater, and pulled her scarf down off her mouth." }
+        ] },
+        { t: "I wish Junpei would find his hat.", notes: 2, then: [
+          { s: 'kuromi', f: 'happy', t: "Wasted. Totally wasted wish. It's in the freezer. He'll never find it." },
+          { s: 'kuromi', f: 'serious', t: "...My turn. Don't look at me." }
+        ] }
+      ] },
+      { s: 'kuromi', f: 'sad', t: "I wish that when I go home, you don't forget me. Even the dumb stuff. ESPECIALLY the dumb stuff." },
+      { s: 'kuromi', f: 'flustered', t: "And I wish you'd be a little bit mean sometimes. When I'm gone. Just a little. Draw on somebody. So there's still some evil here to remember me by." },
+      { n: "She said it fast, all in one breath, to the star, the way she used to say her wishes on the roof of her hideout in Mariland, she'd told Solar once, back in August, when the city had been warm and the end of anything had been a long way off. Then she pulled the scarf back up over her mouth and glared at the bay like it was the bay's fault." },
+      { choose: [
+        { t: "I wish you'd write to me. From Mariland. Somehow.", notes: 3, then: [
+          { s: 'kuromi', f: 'surprised', t: "...There's no post office. Between. Worlds." },
+          { s: 'solar', t: "Write it in the diary, then. I'll know." },
+          { s: 'kuromi', f: 'flustered', t: "...That's not how it works. That's not how ANY of it works." },
+          { s: 'kuromi', f: 'flustered', t: "...I'm going to do it anyway. Every night. You'd better know." }
+        ] },
+        { t: "I wish for one more of these. And one more after that.", notes: 3, then: [
+          { s: 'kuromi', f: 'sad', t: "That's cheating. That's infinite wishes. You can't wish for more wishes, everybody knows that." },
+          { s: 'kuromi', f: 'neutral', t: "...Allowed. This once. Because the star's small and it doesn't know the rules." }
+        ] }
+      ] },
+      { n: "She took a marker out of her hoodie pocket. Of course she had a marker. She took Solar's hand and turned it over, and on the back of it, very carefully, with the tip of her tongue between her teeth, she drew three tiny things in a row." },
+      { n: "A skull. A heart. And a sun, lopsided, with little lines coming off it, the way kids draw them." },
+      { s: 'kuromi', f: 'flustered', t: "That's permanent. Like, actually permanent. It's going to be there for a WEEK." },
+      { s: 'kuromi', f: 'happy', t: "...Evil. Told you. I'm still evil. Don't wash it." },
+      { n: "Solar didn't wash it. It took nine days to fade. Junpei asked about it on the third day and Solar told him it was a curse, a great one, from the shrine, and Junpei believed her completely and wouldn't sit next to her at dinner." }
+    ] }
+  ],
+  // P3's Christmas Eve: between rank 9 (11/21) and rank 10 (12/26). No kiss yet; rank 10 has the first one.
+  christmas: { place: 'Iwatodai Dorm · Lounge', scene: [
+    { n: "Kuromi had announced at breakfast that Christmas was cancelled. Too cute. Too pink. Too many happy people being happy at each other. A punk did not do Christmas. A punk did ANTI-Christmas, and anti-Christmas was at seven, in HQ, attendance mandatory, bring snacks." },
+    { n: "HQ was behind the lounge couch, where it had been on and off since the summer, every cushion in the building and a bedsheet for a roof, and the sign on the front said ANTI-CHRISTMAS. NO JOY ALLOWED. in black marker, which somebody, almost certainly Kuromi, had then gone over very carefully in red and green glitter." },
+    { n: "Inside, by flashlight, there was a Christmas tree. A small plastic one from the hundred-yen shop, decorated entirely in black, black tinsel, black paper chains, a skull on top where the star should be, and underneath it, wrapped in newspaper with the comics page facing out, two presents." },
+    { s: 'kuromi', f: 'serious', t: "It's an ANTI-tree. It's evil. Look at it. Look how evil it is." },
+    { s: 'kuromi', f: 'flustered', t: "...Stop smiling at it. You're not supposed to like it. It's ANTI." },
+    { choose: [
+      { t: "It's the best tree I've ever seen.", notes: 3, then: [
+        { s: 'kuromi', f: 'flustered', t: "It's NOT a tree. It's an ANTI-tree. You keep saying it wrong on purpose." },
+        { n: "She nudged the skull on top a tiny bit to the left anyway, so it would be straight for Solar to look at." }
+      ] },
+      { t: "Where did you get black tinsel?", notes: 2, then: [
+        { s: 'kuromi', f: 'happy', t: "I DYED it. In the bathroom sink. Yukari's going to find out on Tuesday. It's going to be AMAZING." }
+      ] }
+    ] },
+    { n: "They ate snacks in the fort with the flashlight propped on a cushion. Upstairs the dorm was having an actual Christmas, loud and warm, and every so often a laugh came down through the ceiling, and every time it did Kuromi said boo, quietly, without much conviction." },
+    { s: 'kuromi', f: 'neutral', t: "Okay. Anti-presents. You go first. Mine's bad. I mean evil. I mean bad." },
+    { choose: [
+      { t: "(Give her the last volume of Under the Cherry Blossoms.)", notes: 3, then: [
+        { n: "The final volume, the one Bookworms didn't have, the one Solar had ordered from a shop across the city and taken the train to pick up. Kuromi saw the cover and went completely silent." },
+        { s: 'kuromi', f: 'surprised', t: "...They don't HAVE the last one. I ASKED. I asked like nine times." },
+        { s: 'kuromi', f: 'flustered', t: "If they don't end up together I'm going to burn down Japan." }
+      ] },
+      { t: "(Give her a box of glitter pens. Every color.)", notes: 3, then: [
+        { n: "Twelve of them in a clear plastic case from the stationery shop at Paulownia Mall. Kuromi opened the case and looked at them in the flashlight, all twelve glittering, and touched the pink one with one finger." },
+        { s: 'kuromi', f: 'flustered', t: "...My old one's almost out. How did you know that. You didn't read my diary. You DIDN'T. I know you didn't." },
+        { s: 'solar', t: "I didn't. You shake it every time before you write. Really hard." },
+        { s: 'kuromi', f: 'flustered', t: "...That's worse. That's so much worse. You WATCH me." }
+      ] }
+    ] },
+    { n: "Hers was soft, and lumpy, and wrapped so tightly in newspaper that it took Solar a full minute to get into it, while Kuromi sat with her knees pulled up and her face mostly hidden in them." },
+    { n: "A scarf. Black and pink polka dots, almost the same as hers. Hand-knitted, and badly, so badly, with holes where stitches had escaped and one end distinctly wider than the other, and at the end, embroidered in pink thread, a single lopsided grinning skull." },
+    { s: 'kuromi', f: 'flustered', t: "I got a book from Bookworms. The old lady showed me. Twice. I dropped like a thousand stitches. That end's wider on PURPOSE. It's a punk scarf." },
+    { s: 'kuromi', f: 'serious', t: "Now we match. So people know you're my rival. From a distance. It's a WARNING." },
+    { choose: [
+      { t: "(Put it on. Wear it all night.)", notes: 3, then: [
+        { n: "Solar wound it around her neck twice. It smelled like the fort, cushions and flashlight batteries and the sharp sweet smell of Kuromi's shampoo, and it was warm, and Kuromi looked at her in it for a long moment by the flashlight and then pulled her own scarf up over her nose so only her eyes showed." },
+        { s: 'kuromi', f: 'flustered', t: "...It looks okay. On you. It looks FINE. Stop being cute in my HQ." }
+      ] },
+      { t: "You made this. With your hands.", notes: 3, then: [
+        { s: 'kuromi', f: 'flustered', t: "NO. A machine made it. An evil machine. Which is me. Shut UP." }
+      ] }
+    ] },
+    { n: "When they finally crawled out of the fort it was nearly eleven, and the lounge was empty, and the party upstairs had gone quiet, and someone, almost certainly Junpei, had taped a sprig of plastic mistletoe to the top of the lounge doorway, low, exactly where you'd have to walk under it to get to the stairs." },
+    { n: "Kuromi saw it. Kuromi stopped dead." },
+    { s: 'kuromi', f: 'surprised', t: "...That's a TRAP. That's a trap, that's Junpei, he did that, that's an AMBUSH." },
+    { choose: [
+      { t: "We could go around.", notes: 2, then: [
+        { s: 'kuromi', f: 'flustered', t: "There IS no around. It's a DOOR. That's how doors WORK." },
+        { n: "She stood at the edge of the doorway with her scarf up to her eyes for a very long time." }
+      ] },
+      { t: "(Wait. Let her decide.)", notes: 3, then: [
+        { n: "Solar waited. She didn't move toward it and she didn't move away. Kuromi looked up at the mistletoe, and at Solar, and back at the mistletoe, her whole face going pink above the scarf, right up to the bandage on her nose." }
+      ] }
+    ] },
+    { n: "In the end she grabbed Solar's hand, hard, and walked them both under it at a near-run, eyes shut, like going through a car wash, and didn't stop until the foot of the stairs, where she let go and spun around and pointed back up at it, breathing hard." },
+    { s: 'kuromi', f: 'flustered', t: "There. We walked under it. Holding hands. That counts. That's the punk version. It COUNTS." },
+    { s: 'kuromi', f: 'flustered', t: "...Merry anti-Christmas, Solar. Don't you DARE tell Junpei it worked." }
+  ] },
   romance: true,
   cast: { junpei: 'Junpei', mymelody: 'My Melody', koromaru: 'Koromaru', rohan: 'Rohan', yukari: 'Yukari' },
   threads: { rivals: { name: 'ARCH RIVALS 💀', members: ['kuromi', 'mymelody'] } },

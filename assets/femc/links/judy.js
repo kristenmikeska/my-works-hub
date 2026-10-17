@@ -82,6 +82,217 @@ FemcSocial.define({
       { n: "When they finally left, Judy saluted the salaryman on the way past, two fingers off her brow, very solemn. He looked deeply confused, and saluted back." }
     ]
   ],
+  // After rank MAX on the romance route, each visit plays the next date in order (then they rotate). January, before she goes home.
+  dates: [
+    { title: 'no retakes', place: 'Paulownia Mall', music: 'city', scene: [
+      { n: "Judy had found the disposable cameras at the konbini by the station, in a wire rack between the batteries and the umbrellas, and had stood in front of them for so long that the clerk leaned over and asked Solar, in a whisper, whether her friend was all right." },
+      { s: 'judy', f: 'surprised', t: "You can't see the pictures. Choom. You can't SEE them. You press the button and you just. Hope?" },
+      { s: 'solar', t: "You take it to a shop and they print them. It takes an hour." },
+      { s: 'judy', f: 'serious', t: "An hour. And you can't fix 'em. No retakes, no cuts, no editing out the guy picking his nose in the back." },
+      { s: 'judy', f: 'happy', t: "That's insane. That's the most insane thing I've seen in this whole world, and I've seen the green hour. Gimme two." },
+      { n: "Twenty-seven exposures each. Judy counted hers down on the little wheel like somebody rationing bullets." },
+      { n: "They shot their way across Port Island in the January cold, the fountain, the crepe stand, Officer Kurosawa's police box, where Kurosawa declined to be photographed and was photographed anyway, mid-refusal, one hand up. Judy shot like an editor, which was to say she spent four minutes framing everything and then took the picture at the exact moment something went wrong. A pigeon. A gust of wind. Solar's face, halfway through a sentence." },
+      { s: 'judy', f: 'flustered', t: "Stop doin' that. Stop doin' the face. I'm wasting film on the face." },
+      { s: 'solar', t: "What face?" },
+      { s: 'judy', f: 'flustered', t: "The one where you're about to laugh at me. It's every frame. I got like nine of it." },
+      { choose: [
+        { t: "(Steal her camera and take one of her.)", notes: 3, then: [
+          { n: "Solar took it right out of her hands and turned it around and pressed the button before Judy could get an arm up, and the flash went off in her face, the undercut and the tattoos and the orange overalls and a mouth wide open mid-protest." },
+          { s: 'judy', f: 'surprised', t: "Hey! That's. You can't. I wasn't ready." },
+          { s: 'solar', t: "That's the point. No retakes." },
+          { s: 'judy', f: 'happy', t: "...Oh, you little gonk. Okay. Okay, I earned that." }
+        ] },
+        { t: "Then take the tenth one.", notes: 2, then: [
+          { s: 'judy', f: 'neutral', t: "Hold still. Do the face." },
+          { n: "She took the tenth one. Then an eleventh, by accident, which would turn out to be the best one." }
+        ] }
+      ] },
+      { place: 'Iwatodai Strip · Photo Counter', time: 'Evening', music: 'tender' },
+      { n: "The one-hour photo place on the strip was a counter at the back of the pharmacy, run by a man so old he might have developed the first photograph, and Judy spent the hour sitting on the curb outside with her knee bouncing like she was waiting on test results." },
+      { n: "The envelope was still warm. She opened it right there on the curb, under the streetlight, breath going white, and went through them one at a time, slowly, the way she'd touched the handlebars of that bicycle at the bottom of the harbor." },
+      { n: "Half of them were blurry. Three were of her own thumb. One was just the sky, gray, for no reason anyone would ever remember. And the rest were Solar, mostly, about to laugh, and Kurosawa's hand, and the pigeon, and the one of Judy herself shouting, the flash bleaching her face so white that only her eyes and her mouth were left." },
+      { s: 'judy', f: 'sad', t: "...Huh." },
+      { s: 'judy', f: 'neutral', t: "Back home I cut everything. Every BD. Take out the bad frames, the shaky bits, smooth it all down so nobody feels the seams. Thought that was the job. Make it perfect so it hurts less." },
+      { s: 'judy', f: 'happy', t: "These are all seams. And they're the best thing I ever saw." },
+      { choose: [
+        { t: "Keep the thumb ones.", notes: 3, then: [
+          { s: 'judy', f: 'happy', t: "Keepin' the thumb ones. The thumb ones are art. I'm framin' the thumb." }
+        ] },
+        { t: "No editing. Just us.", notes: 3, then: [
+          { s: 'judy', f: 'flustered', t: "...Yeah. Just us. Seams and all." }
+        ] }
+      ] },
+      { n: "She dealt the stack out on the curb like cards, one for you, one for me, all the way down. She gave Solar the one of herself shouting. She kept the eleventh, the accident, Solar laughing at nothing with the whole of Paulownia Mall gone to gold blur behind her, and slid it into the chest pocket of her overalls, where she kept the things she meant to keep." }
+    ] },
+    { title: 'last train', place: 'Port Island · Monorail', music: 'night', scene: [
+      { n: "Judy had been riding the monorail every night for a week, it turned out, for no reason at all, just around and around the loop over the bay until the last train, and when Solar asked why, she said it was the quietest place on the island and also it had no ads, which she seemed to find almost unbearably moving." },
+      { s: 'judy', f: 'neutral', t: "Back home the trains talk at you. Buy this. Upgrade that. Your own face on a screen tellin' you what you're missin'." },
+      { s: 'judy', f: 'happy', t: "This one just says the name of the next station. Real polite. Come ride it with me." },
+      { n: "So they rode it. They sat in the last car with their boots up on the seat in front, which you weren't supposed to do, and the windows were black mirrors with the city sliding through them, and the car swayed on the curves in a way that pushed Judy's shoulder into hers every time, and then took it away again, and then gave it back." },
+      { s: 'judy', f: 'neutral', t: "Okay. Game. Editor's rules. No boring bits." },
+      { n: "She tipped her head down the car at an old woman with a cloth-wrapped bundle on her lap, sitting very upright, eyes closed, lips moving." },
+      { choose: [
+        { t: "She's going to meet someone she hasn't seen in forty years.", notes: 3, then: [
+          { s: 'judy', f: 'sad', t: "Oh, that's mean. That's mean, you can't just open with that." },
+          { s: 'judy', f: 'happy', t: "...What's in the bundle?" },
+          { s: 'solar', t: "Rice crackers. His favorite. She remembered." },
+          { n: "Judy pressed her fist against her mouth and looked out the window very hard for a while." }
+        ] },
+        { t: "She's rehearsing a speech. Her own retirement party.", notes: 2, then: [
+          { s: 'judy', f: 'happy', t: "Yeah. She's gonna roast every single person in that office. Look at her. She's got material." }
+        ] }
+      ] },
+      { n: "It went on for six stops. A boy with a guitar case was running away from home, but only for the night, to prove he could. Two salarymen asleep against each other were brothers who didn't know it yet. A girl in a Gekkoukan uniform was definitely, absolutely going to confess to somebody tomorrow, look at her hands." },
+      { n: "Then the car emptied out, station by station, until it was only the two of them and the hum of the track and the bay going by underneath, black and enormous, with the lights of the far shore laid across it in broken lines." },
+      { s: 'judy', f: 'neutral', t: "Your turn. Do me." },
+      { s: 'solar', t: "You?" },
+      { s: 'judy', f: 'flustered', t: "Yeah. Like I'm some lady on a train. Who is she. Where's she goin'. Editor's rules." },
+      { choose: [
+        { t: "She came from somewhere loud. She's going somewhere she gets to choose.", notes: 3, then: [
+          { s: 'judy', f: 'surprised', t: "..." },
+          { s: 'judy', f: 'sad', t: "...And who's she sittin' next to?" },
+          { s: 'solar', t: "Someone who's going to remember her." },
+          { n: "Judy didn't say anything. She reached over without looking and found Solar's hand on the seat between them and held it, hard, with her rough fingers and the chipped black polish, and kept her eyes on the window like she was checking the view for continuity errors." }
+        ] },
+        { t: "She fixes things nobody asked her to fix. Mostly people.", notes: 3, then: [
+          { s: 'judy', f: 'flustered', t: "That's not a story, that's a callout." },
+          { s: 'judy', f: 'happy', t: "...Accurate, though. Keep goin'." }
+        ] }
+      ] },
+      { n: "The announcement came on, polite as ever, the soft recorded voice telling them this was the last train and thanking them for riding. Judy closed her eyes and listened to the whole thing like it was a song." },
+      { s: 'judy', f: 'happy', t: "Didn't record a second of that. On purpose. Wanted it to just happen." },
+      { s: 'judy', f: 'flustered', t: "...Don't tell anybody a BD editor said that. They'll take my license." }
+    ] },
+    { title: 'thirty kilometers', place: 'Iwatodai · Junkyard', music: 'joy', scene: [
+      { n: "There had been a scooter in the junkyard since August, under a tarp behind the car with no doors, a dented cream-colored thing with one mirror and no seat, and Judy had looked at it every time they walked past with the expression of someone being patient with a stray animal." },
+      { n: "It had a seat now. It had two mirrors, one of them off a bicycle. It had a new headlight held on with what looked like a hair tie and a great deal of conviction, and when Judy kicked it over it coughed, twice, and then started, and settled into a putter so small and so cheerful that Solar laughed out loud." },
+      { s: 'judy', f: 'happy', t: "Don't laugh at her. She's been through a lot. She's doin' her best." },
+      { s: 'judy', f: 'neutral', t: "Fifty cc. Top speed, like, thirty-five. Downhill. With a tailwind. If she believes in herself." },
+      { n: "She held out a helmet, a real one, white and scuffed, with a sticker on the back of the junkyard cat that she had very obviously drawn herself." },
+      { s: 'judy', f: 'serious', t: "Helmet first. Not negotiable. I've seen what roads do to people. You're not gettin' on anything with me without one." },
+      { choose: [
+        { t: "(Put it on and let her check the strap.)", notes: 3, then: [
+          { n: "Solar put it on. Judy did the strap herself, the way she'd checked the seals before the dive, her knuckles cold against Solar's jaw, tugging once to make sure it held, and then she knocked twice on the top of the helmet like it was a door." },
+          { s: 'judy', f: 'happy', t: "Preem. Now you're road-legal. Ish." }
+        ] },
+        { t: "Where's yours?", notes: 2, then: [
+          { s: 'judy', f: 'neutral', t: "Right here." },
+          { n: "She pulled out a second one, black, with a lightning bolt hand-painted down the side, and put it on, and looked so pleased with herself in it that Solar had to look somewhere else." }
+        ] }
+      ] },
+      { place: 'Port Island · Coastal Road', time: 'Evening', music: 'joy' },
+      { n: "The coastal road was the one Panam had taken them down in October at a speed that had made Judy shriek with laughter and Solar grip the door. Nobody shrieked this time. What they saw, at a top speed Solar was fairly sure was twenty-eight kilometers an hour, was the whole bay going orange, and the long gray line of the seawall, and a man walking a dog, who overtook them, briefly, on a hill." },
+      { n: "Solar sat behind her with her arms around Judy's waist, holding on to the canvas of her overalls, and the wind came off the water cold enough to make her eyes run, and she could feel Judy laughing through her back every time the scooter made a noise it shouldn't have." },
+      { s: 'judy', f: 'happy', t: "Hold on! We're about to hit thirty! Brace for thirty!" },
+      { choose: [
+        { t: "(Hold on tighter.)", notes: 3, then: [
+          { n: "She held on tighter. Judy went quiet in front of her, the kind of quiet Solar could feel more than hear, her shoulders easing down under the jacket, one gloved hand coming off the handlebar for a second to press over both of Solar's where they were laced at her middle, and then going back, because she was a responsible driver. Mostly." }
+        ] },
+        { t: "Panam would be so ashamed of us.", notes: 2, then: [
+          { s: 'judy', f: 'happy', t: "Panam would ride this thing straight into the sea outta pure disgust. Don't tell her. She'll know. She always knows." }
+        ] }
+      ] },
+      { n: "At the end of the road there was a lookout, a gravel turnout with a vending machine and the whole bay laid out in front of it, and they stopped there and sat sideways on the scooter with their helmets off and two cans of hot milk tea, and watched the lights come on across the water, on Moonlight Bridge and the far shore and the ships." },
+      { s: 'judy', f: 'sad', t: "I'm gonna leave her here. The scooter. When I go. Can't exactly ride her through the green." },
+      { s: 'judy', f: 'neutral', t: "So she's yours. Paperwork's a napkin. I'll draw you the wiring so you can fix her when she coughs. She's gonna cough. She's a cougher." },
+      { choose: [
+        { t: "I'll keep her running.", notes: 3, then: [
+          { s: 'judy', f: 'happy', t: "I know you will. You got steady hands. I clocked that ages ago." }
+        ] },
+        { t: "I don't know how to ride a scooter.", notes: 2, then: [
+          { s: 'judy', f: 'happy', t: "Then that's next week. Lesson one. Don't laugh at her." }
+        ] }
+      ] },
+      { n: "She drove them home slower than she needed to. Solar didn't say anything about it. Neither of them did." }
+    ] },
+    { title: 'static', place: 'Iwatodai · Junkyard', scene: [
+      { n: "The junkyard cat had a name now. It hadn't had one for five months, on principle, because Judy said you didn't name a thing you were going to leave, and then sometime in January she had started calling it Static, and then she had stopped pretending she hadn't." },
+      { n: "Static was sitting on the workbench in the snow when Solar got there, on top of the BD rig, because the rig was warm and Static had standards, and Judy was sitting on an oil drum in front of her with her elbows on her knees, looking at the cat the way she'd looked at the rig back in September, like a problem she hadn't worked out how to fix." },
+      { s: 'judy', f: 'sad', t: "End of the month. Then I'm gone. And she's out here. In the snow. With nothin' warm to sit on." },
+      { s: 'judy', f: 'serious', t: "So I got a plan. It's a bad plan. I need you for it." },
+      { choose: [
+        { t: "I'm in. What's the plan?", notes: 3, then: [
+          { s: 'judy', f: 'neutral', t: "We ask the ice queen." },
+          { s: 'solar', t: "Mitsuru?" },
+          { s: 'judy', f: 'flustered', t: "Yeah. Your dorm's got a dog. Big building. Corpo money. I'm gonna ask a Kirijo for a favor and I'm gonna hate every second of it." }
+        ] },
+        { t: "You could just ask Mitsuru.", notes: 2, then: [
+          { s: 'judy', f: 'flustered', t: "That's the bad plan. That's exactly the bad plan. Get the box." }
+        ] }
+      ] },
+      { place: 'Iwatodai Dorm · Lounge', time: 'Evening', music: 'tender' },
+      { n: "Getting Static into a cardboard box took two people, twenty minutes, and a plaster on Judy's wrist. Getting her across Iwatodai in the box took a further forty, because the box had opinions. By the time they came through the dorm's front door Judy had snow in her hair and a scratch on her chin and was holding the box out in front of her at arm's length, like something she'd been asked to deliver to an embassy." },
+      { n: "Mitsuru was on the couch with a book. She looked up. She looked at the box, which yowled." },
+      { s: 'mitsuru', f: 'surprised', t: "...Alvarez." },
+      { s: 'judy', f: 'serious', t: "Okay. Hear me out. I fixed your water heater for free. And the lounge TV. And the front door, which nobody even knew was broken. I'm callin' it in." },
+      { s: 'judy', f: 'sad', t: "She's a good cat. She's mean, but she's good. She just needs somewhere warm to sit when I'm gone." },
+      { n: "Mitsuru set the book down. She looked at the box for a long moment, and then at Judy, the snow melting in her hair, the plaster, the scratch, the way she was holding the box against her chest now instead of out in front of her, both arms around it." },
+      { choose: [
+        { t: "(Say nothing. Let Judy ask.)", notes: 3, then: [
+          { n: "Solar said nothing. It wasn't hers to ask, and Judy, she understood, needed to be the one, needed to stand in a corpo's living room and ask for something with her own mouth and have it not cost her anything. The lounge was very quiet. Koromaru came and sat at Judy's feet and regarded the box with polite interest." }
+        ] },
+        { t: "Please, Mitsuru.", notes: 2, then: [
+          { n: "Mitsuru glanced at her, briefly, and something in her face went soft at the edges, and then her eyes went back to Judy, because it was Judy she needed to hear it from." }
+        ] }
+      ] },
+      { s: 'mitsuru', f: 'neutral', t: "Koromaru will need to agree." },
+      { n: "Koromaru put his nose to the side of the box. The box hissed. Koromaru sneezed, considered this, and lay down beside it with his chin on his paws, which in the dorm's long experience of Koromaru was a yes." },
+      { s: 'mitsuru', f: 'neutral', t: "Then she stays. I'll have a bed brought in. And her name put on the paperwork, if you'll tell me what it is." },
+      { s: 'judy', f: 'surprised', t: "...Static. Her name's Static." },
+      { s: 'judy', f: 'flustered', t: "...Thanks. Kirijo. Mitsuru. Thanks. I mean it. Don't make it a thing." },
+      { s: 'mitsuru', f: 'neutral', t: "I wouldn't dream of it." },
+      { n: "She picked her book back up. She did not turn a page for the next ten minutes, Solar noticed, while Judy sat on the lounge floor with the box open and the cat sitting up in it like a queen, glaring at everyone, staying." },
+      { n: "Later, out on the front steps in the cold, Judy put her head on Solar's shoulder, which she didn't do often, because she liked to see what was coming." },
+      { s: 'judy', f: 'sad', t: "Couldn't save a lot of people back home. Couldn't save Ev." },
+      { s: 'judy', f: 'neutral', t: "But I got one cat somewhere warm. Before I go. That counts. Right? Tell me that counts." },
+      { choose: [
+        { t: "It counts.", notes: 3, then: [
+          { s: 'judy', f: 'sad', t: "...Yeah." },
+          { n: "She didn't say anything else. Solar felt her breathe out, long and slow, the way you breathe out at the end of a dive when you finally break the surface." }
+        ] },
+        { t: "And there'll be more, somewhere warm. When you're home.", notes: 3, then: [
+          { s: 'judy', f: 'surprised', t: "..." },
+          { s: 'judy', f: 'happy', t: "Choosin' where to fight from. Yeah. Yeah, there will." }
+        ] }
+      ] }
+    ] }
+  ],
+  // P3's Christmas Eve: between rank 9 (12/5) and rank 10 (12/26).
+  christmas: { place: 'Iwatodai Strip', scene: [
+    { n: "Junpei had told Judy, with enormous seriousness, that in Japan the traditional Christmas Eve dinner was a bucket of fried chicken, and she had assumed he was messing with her, right up until she saw the line." },
+    { n: "It ran out the door of the fried chicken place by the station and around the corner and halfway down the block, couples and families and one man alone holding a reservation slip in both hands like a prayer, all of them in the snow, in the dark, waiting very politely for chicken." },
+    { s: 'judy', f: 'surprised', t: "...He wasn't kiddin'. Choom. He wasn't KIDDING." },
+    { s: 'judy', f: 'happy', t: "This is the best country. This is the best country in any dimension. We're gettin' in that line." },
+    { n: "They got in the line. It took fifty minutes. Judy spent all fifty of them people-watching with her chin on Solar's shoulder, narrating, and by the time they reached the counter she'd given everyone ahead of them a secret identity and was personally invested in at least three of their marriages." },
+    { n: "Then the cake, because there had to be a cake, a strawberry shortcake from the bakery on the strip in a white box with a plastic sprig of holly on the lid, which Judy carried the rest of the way like an organ for transplant." },
+    { place: 'Iwatodai · Junkyard', time: 'Night', music: 'tender' },
+    { n: "The junkyard in the snow looked like somewhere else, all the hard rusted edges gone soft and white, and Judy had strung lights along the top of the chain-link fence, colored ones, salvaged, half of them blinking out of sync in a way she said she'd fix and very clearly wasn't going to. The space heater was running off the car battery. The cat was asleep on top of it." },
+    { n: "They ate the chicken on the hood of the rusted car out of the bucket, with their fingers, and it was hot and salty and the best thing Solar had eaten all month. They ate the cake straight out of the box with two plastic forks, from opposite ends, until they met in the middle at the last strawberry, and Judy looked at it, and at Solar, and pushed it to her side with the fork without a word." },
+    { s: 'judy', f: 'neutral', t: "Christmas back home's all ads. Corpo holiday. Buy, buy, buy, some gonk in a Santa hat on every screen screamin' at you to upgrade your chrome." },
+    { s: 'judy', f: 'sad', t: "Ev and me used to skip it. Lock the door, turn everything off, eat noodles on the floor. Pretend the city wasn't out there." },
+    { n: "She said it lightly. It wasn't light. Solar didn't say anything stupid, which by now she was good at, and after a second Judy leaned her shoulder into hers on the cold hood of the car, and left it there." },
+    { s: 'judy', f: 'flustered', t: "Okay. Present. I made it. Obviously I made it. Don't laugh." },
+    { n: "It was a cassette player. A real one, old, with the big clunky buttons, scavenged and cleaned with a new belt inside and the battery door held shut by a strip of bright pink tape, and in it was a tape labeled, in her capitals, 12 + 1." },
+    { s: 'judy', f: 'neutral', t: "My twelve. The jukebox ones. So you still got 'em when the jukebox goes back to bein' boring." },
+    { s: 'judy', f: 'flustered', t: "Thirteenth one's blank. That one's yours. Put whatever you want on it. Don't tell me what. I'll find out in my dreams." },
+    { choose: [
+      { t: "(Give her a tool roll, her name stitched on the flap.)", notes: 3, then: [
+        { n: "Dark green canvas, a pocket for every tool she owned and a few she didn't yet, and across the flap, in white thread that had taken Solar three evenings and most of one fingertip, JUDY." },
+        { s: 'judy', f: 'surprised', t: "..." },
+        { n: "Judy ran her thumb over the stitching letter by letter, slowly, like checking a scar had healed. Then she unrolled it on the hood of the car and moved every single tool from her overalls into it, one by one, in order, and rolled it back up and held it against her chest and didn't say anything at all." }
+      ] },
+      { t: "(Give her a waterproof watch. For the next dive.)", notes: 3, then: [
+        { s: 'judy', f: 'neutral', t: "Rated to a hundred meters. Choom, the pier's eight." },
+        { s: 'solar', t: "It's for Laguna Bend. When you go back down." },
+        { s: 'judy', f: 'sad', t: "..." },
+        { n: "She put it on. She held her wrist up to the colored lights and watched the second hand go all the way round, once, and then pulled her sleeve down over it like she was keeping it out of the cold." }
+      ] }
+    ] },
+    { s: 'judy', f: 'happy', t: "Hey you." },
+    { s: 'solar', t: "Hey you." },
+    { n: "The lights on the fence blinked out of time. The heater ticked. Judy kissed her on the hood of a rusted car in the snow with grease on her fingers and powdered sugar on her mouth, slow and unhurried, like she'd finally found a moment she didn't feel the need to cut anything out of." },
+    { s: 'judy', f: 'happy', t: "Merry Christmas, Solar. Best one I ever had. Not even close." }
+  ] },
   romance: true,
   cast: { mitsuru: 'Mitsuru', evelyn: 'Evelyn', panam: 'Panam' },
   threads: { nomads: { name: 'nomad net 🤘', members: ['judy', 'panam'] } },
