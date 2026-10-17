@@ -22,6 +22,7 @@ window.FEMC_PORTRAIT_SCALE = {
   fuuka: 1.08,
   genji: 0.97,
   haechan: 0.88,
+  hanni: 0.9,
   haru: 1.1,
   heeseung: 1.0,
   hina: 0.97,
