@@ -24,6 +24,7 @@ window.FEMC_PORTRAIT_SCALE = {
   haru: 1.1,
   hina: 0.97,
   ignis: 1.03,
+  jake: 1.0,
   jihoon: 1.05,
   josuke: 1.03,
   jotaro: 0.93,
