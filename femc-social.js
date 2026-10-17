@@ -720,7 +720,7 @@ window.FemcSocial = (() => {
       const up = p.xp >= req;
       if (up) { p.rank = r + 1; (p.rankDay ||= {})[p.rank] = S.d; p.xp = 0; delete p.ready; } else p.ready = r;
       save();
-      if (up) (link.stamps?.[p.rank] || []).forEach(id => F().load('achievements.js?v=18', () => window.Achievements).then(() => window.Achievements?.unlock(id)));
+      if (up) (link.stamps?.[p.rank] || []).forEach(id => F().load('achievements.js?v=19', () => window.Achievements).then(() => window.Achievements?.unlock(id)));
       const done = () => { close(); if (!S.free) advance(); opts.onDone?.(true); };
       const after = () => (up ? rankUp(link, p.rank, done) : done());
       req ? meter(link, r, from, Math.min(from + gained, req), req, up, after, gained) : after();
@@ -1154,7 +1154,7 @@ window.FemcSocial = (() => {
     STORY.events.push(...(data.moments || []).map(m => ({ date: '4/7', ...m, secret: true })));
     SECRETS.places.push(...(data.places || []));
   }
-  const stamp = id => id && F().load('achievements.js?v=18', () => window.Achievements).then(() => window.Achievements?.unlock(id));
+  const stamp = id => id && F().load('achievements.js?v=19', () => window.Achievements).then(() => window.Achievements?.unlock(id));
   // Hidden places open on the Go Out map tonight, not yet visited.
   function secretPlaces() {
     const md = now().md;

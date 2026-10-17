@@ -200,5 +200,38 @@ window.FEMC_CODES = [
    "href": "readers/runners.html",
    "text": "Read Runners"
   }
+ },
+ {
+  "code": "may the best candidate win",
+  "needs": {
+   "met": [
+    "jungwon"
+   ]
+  },
+  "from": "injangwon",
+  "stamp": "hx-best-candidate",
+  "lines": [
+   "where did you hear that",
+   "...i say it every year. i never mean the other person.",
+   "this year i might. dont tell sunoo"
+  ],
+  "link": {
+   "href": "social.html#jungwon",
+   "text": "Go see him"
+  }
+ },
+ {
+  "code": "ice cream and hugs",
+  "from": "junkyute",
+  "stamp": "hx-ice-cream",
+  "lines": [
+   "SOL!!!! thats the cure for everything!!!",
+   "i'm bringing both. strawberry. and a hug. non-negotiable",
+   "jihoon says he doesn't need a hug. jihoon is lying"
+  ],
+  "link": {
+   "href": "readers/hoax.html",
+   "text": "Read Hoax"
+  }
  }
 ];
