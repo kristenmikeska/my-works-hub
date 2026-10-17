@@ -14,7 +14,7 @@ function femcMetAny(ids, then, otherwise) {
   return ids.reduceRight((rest, id) => [{ ifRank: { [id]: 1 }, then, else: rest }], otherwise || [])[0];
 }
 FemcSocial.story({
-  cast: { wren: 'Wren', porter: 'Girl on the Bench', lacuna: '???', mitsuru: 'Mitsuru', yukari: 'Yukari', junpei: 'Junpei', akihiko: 'Akihiko', elizabeth: 'Elizabeth', fuuka: 'Fuuka', aigis: 'Aigis', ken: 'Ken', koromaru: 'Koromaru' },
+  cast: { wren: 'Wren', porter: 'Girl on the Bench', lacuna: '???', mitsuru: 'Mitsuru', yukari: 'Yukari', junpei: 'Junpei', akihiko: 'Akihiko', elizabeth: 'Elizabeth', fuuka: 'Fuuka', aigis: 'Aigis', ken: 'Ken', koromaru: 'Koromaru', thelacuna: 'The Lacuna', bluecoat: 'Woman in a Blue Coat' },
   acts: [
     { id: '1', numeral: 'I', title: 'Arrivals' },
     { id: '2', numeral: 'II', title: 'Summer of Strangers' },
@@ -626,6 +626,604 @@ FemcSocial.story({
       { s: 'elizabeth', f: 'serious', t: "A lacuna. That is what we are dealing with. It is not keeping them anymore, Solar. It is taking the endings out of them." },
       { n: "Solar went to the window. Outside, the street was ordinary and bright, a woman walking her dog, a salaryman heading for the station with his jacket over his arm. And for one heartbeat, the length of a blink, he was a coffin, tall and black and standing in the full summer sun, and then he was a man again, checking his watch, and nobody on the street had noticed." },
       { n: "She knew exactly what she'd seen. She'd deal with it in September." }
+    ] },
+
+    /* ── Act III · The Thinning ── */
+    { id: 'a3-twelve-oclock', act: '3', date: '9/1', slot: 1, title: "twelve o'clock", place: 'Gekkoukan High · Rooftop', music: 'school', scene: [
+      { n: "The first day of the second term was hot in the way only the first of September could be, summer refusing to read the calendar, the roof of Gekkoukan baking up through the soles of her indoor shoes. Somebody's radio down in the courtyard was playing the same three songs it had played all August. The bay was one long sheet of white glare. Solar had a melon pan in her lap that she wasn't eating and her back against the warm railing, and that was, as far as she was concerned, the whole plan for the term." },
+      { n: "Junpei was lying flat on the concrete with his cap over his face, narrating his own death by heatstroke. Yukari was reading a fashion magazine with the dedicated contempt of someone who had already bought half of what was in it. Fuuka had made her own bento and was eating it slowly and bravely, and nobody had asked to try any." },
+      { s: 'junpei', f: 'sad', t: "Tell my mom I died doing what I loved. Which is nothing. On a roof." },
+      { s: 'yukari', f: 'neutral', t: "You can't die. You owe me eight hundred yen." },
+      { n: "Solar laughed in the right place. She'd been doing a lot of that since August, laughing in the right places, sleeping the right number of hours, saying fine when people asked, and it mostly worked, the way a coat mostly works in the rain." },
+      { n: "The noon bell went. Down below, the whole school poured out of its doors at once, a flood of white shirts across the courtyard, the line at the bread stand already doubling back on itself, somebody's laugh carrying all the way up to the roof, high and bright." },
+      { music: 'mystery' },
+      { n: "And then it didn't." },
+      { n: "It happened between one breath and the next. The sky went the color of old pond water. The sun was still up there, white and enormous, and it was the wrong sun, flat and sick and staring, and every single person in the courtyard was a coffin. Hundreds of them. Tall and black and standing in neat little clusters on the bright grass, in the line at the bread stand, at the bottom of the steps, one with a dropped bento box at its feet and the lid still spinning on the concrete." },
+      { n: "The radio had stopped mid-word. The cicadas had stopped. Her heart had stopped too, or felt like it, a fist closing somewhere under her ribs and holding on." },
+      { n: "Then the sky was blue again. The radio finished its word. The bento lid wobbled to a stop, and a girl knelt to pick it up, laughing at herself, and the noise of three hundred people having lunch came back up over the railing as if it had never gone anywhere at all." },
+      { n: "Less than a second. Solar's melon pan was on the ground. She didn't remember dropping it." },
+      { s: 'junpei', f: 'surprised', t: "...Dude." },
+      { s: 'junpei', f: 'surprised', t: "Dude. Tell me you saw that. Tell me that was the heat." },
+      { s: 'yukari', f: 'surprised', t: "It's noon. It's twelve o'clock in the afternoon. That doesn't happen at noon." },
+      { s: 'fuuka', f: 'sad', t: "I heard it. Only for a second. Like somebody opened a door on it and closed it again." },
+      { choose: [
+        { t: "(Look at the courtyard again.)", notes: 0, then: [
+          { n: "White shirts. The bread line. The girl with the bento box, eating now, perfectly ordinary. Solar watched for a full minute anyway, the way you keep watching a dark window after something has moved behind it." }
+        ] },
+        { t: "It's the heat, Junpei.", notes: 0, then: [
+          { s: 'junpei', f: 'neutral', t: "Okay. Cool. I'm gonna believe you, even though you're lying, because I want to." }
+        ] },
+        { t: "It's leaking.", notes: 0, then: [
+          { s: 'fuuka', f: 'sad', t: "...Leaking. Yes. That's what it sounded like." },
+          { n: "Yukari looked at the two of them like she wanted very badly for somebody to laugh. Nobody did." }
+        ] }
+      ] },
+      { ifRank: { rio: 1 }, then: [
+        { phone: [
+          { from: 'rio', t: 'weird question' },
+          { from: 'rio', t: 'did your watch just skip' },
+          { from: 'rio', t: 'mine went 12:00 to 12:00. whole gym went quiet for a sec' },
+          { from: 'solar', t: 'probably the heat' },
+          { from: 'rio', t: 'yeah' },
+          { from: 'rio', t: 'felt like missing a step on the stairs though' }
+        ], contact: 'Rio · 12:01 PM', handle: 'rio', me: 'solar' },
+        { n: "It was the second time in five minutes she'd said the heat. It wasn't getting any truer." }
+      ] },
+
+      { place: 'Iwatodai Dorm · Lounge', time: 'Evening', music: 'mystery' },
+      { n: "Mitsuru had the folder again. She sat in the armchair facing all of them with it closed on her knee, which meant she already knew what was in it and didn't like any of it." },
+      { s: 'mitsuru', f: 'neutral', t: "The Group's sensors have recorded fourteen events like today's since the eighth of August. All in daylight. All less than a second long. Today's was the longest." },
+      { s: 'akihiko', f: 'serious', t: "In daylight." },
+      { s: 'mitsuru', f: 'neutral', t: "In daylight, over the whole city at once." },
+      { s: 'ken', f: 'serious', t: "Is it the Shadows? Is it something we did?" },
+      { s: 'fuuka', f: 'neutral', t: "I don't think it's anything anybody did. It's more like the hour's wearing thin. Like a sheet that's been washed too many times, so you can see the light through it. It used to stop at the edges. Now it doesn't, quite." },
+      { s: 'junpei', f: 'neutral', t: "So is there, like, a guy we can punch about this? Asking for me." },
+      { s: 'yukari', f: 'serious', t: "Senpai. What did you tell the Group?" },
+      { s: 'mitsuru', f: 'neutral', t: "That it was residue from the full moon operations. That it would settle." },
+      { s: 'yukari', f: 'serious', t: "Is it?" },
+      { s: 'mitsuru', f: 'sad', t: "No." },
+      { n: "Solar sat with her knees pulled up on the end of the couch and thought about a platform that went on forever, and a voice like someone you'd loved saying the hour is only so wide. For now. She'd been not thinking about it for three weeks. She'd gotten very good at it." },
+      { choose: [
+        { t: "(Tell them what it said in August.)", notes: 0, then: [
+          { n: "She told them. The hour is only so wide. For now. She said it flatly, the way you'd read out a license plate, and still nobody spoke for a while after." },
+          { s: 'akihiko', f: 'serious', t: "So it's making it wider." },
+          { s: 'mitsuru', f: 'neutral', t: "...Thank you. I'd rather have heard that in August. But thank you." }
+        ] },
+        { t: "(Keep it to yourself. For now.)", notes: 0, then: [
+          { n: "She kept it. It sat in her chest for the rest of the meeting like something swallowed wrong, and when Mitsuru looked over at her, once, she gave her the bright face, the one for teachers, and felt a little gross about it." }
+        ] }
+      ] },
+      { s: 'mitsuru', f: 'neutral', t: "Until we know more, nobody goes out alone during the hour. And if your friends are feeling this too, I want to know." },
+      femcMetAny(['kuromi', 'ann', 'kiriko', 'mercy', 'haru', 'sebastian', 'astarion', 'aphrodite', 'cloud', 'noctis', 'judy', 'shadowheart'], [
+        { n: "They were. Her phone had been going since lunch, one after another, each of her strangers in their own words asking her the same question. Did you feel that. Was that you. Is it supposed to do that." }
+      ], [
+        { n: "Somewhere out in the city, Solar thought, every one of Fuuka's far-off radios had just skipped a beat. She hoped someone had been standing next to each of them." }
+      ]),
+      { ifRank: { kuromi: 1 }, then: [
+        { s: 'kuromi', f: 'serious', t: "For the record, I went see-through at lunch. In front of a vending machine. In front of a CHILD." },
+        { s: 'kuromi', f: 'flustered', t: "It was humiliating. Somebody's getting a prank for it. I just haven't decided who yet." }
+      ] },
+      { n: "Then the kitchen door opened and Wren came in with a stack of plates." },
+      { n: "She'd been living on the second floor since August, in the empty room at the end of the hall that Mitsuru had made up for her without a word, the way Mitsuru did everything she actually cared about. For the first two weeks Wren had slept fourteen hours a day, like something healing. Now she came down for meals. Tonight she'd come down early and asked if she could make the rice." },
+      { n: "She set the table. She pulled out a chair between Junpei and Ken and sat down in it as if she had been doing that her whole life, and passed the rice to the left." },
+      { s: 'wren', f: 'happy', t: "I've never made rice before. I think it's either very good or a crime. Somebody be honest." },
+      { s: 'junpei', f: 'happy', t: "It's a crime. I love it. I'd do time for this rice." },
+      { n: "Everyone laughed. Wren laughed with them, easily, and reached for the pickles, and that was when Solar noticed it, the thing that had been bothering her since Wren walked in, the way you notice a clock has stopped only once you've been in the room a while." },
+      { n: "In July she had stood under a streetlight across the road and said she'd like to be a bit more of a person first. In July she had looked at every door. All the visitors did. It was how you could pick them out on a crowded platform, the eyes always going to the exits, and Wren had looked at them hardest of all." },
+      { n: "She hadn't looked at the door once tonight. She hadn't looked at anything like she was afraid of it." },
+      { choose: [
+        { t: "You came in.", notes: 0, then: [
+          { s: 'wren', f: 'happy', t: "Of course I did. You asked me to, ages ago. Didn't you?" },
+          { n: "She frowned, very slightly, the way you'd frown at a station name you were sure you knew." },
+          { s: 'wren', f: 'neutral', t: "I'm sure you did. It doesn't matter. I'm here now." }
+        ] },
+        { t: "(Pass her the soy sauce.)", notes: 0, then: [
+          { n: "Wren took it and said thank you and used far too much, cheerfully, and Solar watched her do it and couldn't have said why it made her throat hurt." }
+        ] }
+      ] },
+      { s: 'ken', f: 'neutral', t: "Wren-san, did you see the thing at lunch? The green?" },
+      { s: 'wren', f: 'neutral', t: "Oh, yes. I was at the station. Everyone went to sleep standing up, just for a moment." },
+      { s: 'wren', f: 'happy', t: "It was rather pretty, actually. The light. I don't know why I never noticed before." },
+      { n: "The table went quiet in the particular way a table goes quiet when everyone at it is deciding not to say something. Koromaru, under it, put his chin on Solar's foot and left it there." },
+
+      { place: 'Iwatodai Dorm · 2F Hallway · The Dark Hour', time: 'Midnight', music: 'night' },
+      { n: "She was awake when it came. She always was, lately. The clock stopped, the lamp died, the street outside went green and still, and Solar lay there for a minute listening to the dorm not breathe before she got up and went out into the hall." },
+      { n: "Wren was at the window at the end of it, awake, of course. Visitors didn't become coffins. In April she had stood in the green with her arms wrapped around herself. Now she was leaning on the sill with her chin in her hand, watching the swollen moon over the rooftops the way people watch fireworks." },
+      { s: 'wren', f: 'neutral', t: "Hello. Couldn't sleep either?" },
+      { s: 'wren', f: 'neutral', t: "Do you know, I used to hate this. I remember that I hated it. I just can't remember why." },
+      { s: 'wren', f: 'happy', t: "It's like a word on the tip of your tongue. Except I don't mind not finding it." },
+      { choose: [
+        { t: "You were afraid of it.", notes: 0, then: [
+          { s: 'wren', f: 'happy', t: "Was I? How silly of me." },
+          { n: "She smiled. Solar's stomach went somewhere it didn't come back from for a while." }
+        ] },
+        { t: "(Stand next to her.)", notes: 0, then: [
+          { n: "She stood next to her. After a while Wren leaned her head on Solar's shoulder, warm, solid, heavier than she had been in June, and Solar held very still, as if she were the one who might come apart." }
+        ] }
+      ] },
+      { n: "Wren took the ticket out of her coat pocket. She still carried it everywhere, out of habit, she said. Cream card, soft at the corners, a small neat hole punched through the middle of nothing." },
+      { s: 'wren', f: 'neutral', t: "It doesn't go anywhere now. That's a relief, I think." },
+      { s: 'wren', f: 'neutral', t: "Is it a relief? You'd know. You're better at this than me." },
+      { n: "Solar didn't have an answer. She looked down at the street instead, at the coffins standing in their pools of green, and at the far end of it, under the streetlight where once a small figure had stood looking up at the moon, a single sheet of paper was turning over and over in the gutter, in a wind that wasn't blowing." },
+      { n: "She watched it until the hour ended. She went back to bed. She didn't sleep, and somewhere around three she realized she'd been lying there listening for a train whistle, and that she had been listening for one every night since August." }
+    ] },
+
+    { id: 'a3-nobodys-name', act: '3', date: '9/5', slot: 1, title: "nobody's name", place: 'Port Island Station · The Dark Hour', scene: [
+      { n: "The operation ended at twelve thirty-one by Fuuka's count, which was the only count that meant anything in the hour, and everyone was alive, and nobody was badly hurt, and Junpei had only been sick once, quietly, behind a pillar, which for a full moon was a personal best." },
+      { n: "They came out of the station into the green with the slow, jelly-legged swagger of people who had survived something and wanted it noticed, except there was nobody to notice. There never was. Just the coffins, and the moon, and the dark puddles shining along the gutters." },
+      { s: 'fuuka', f: 'happy', t: "Everyone did so well. There's twenty-nine minutes left in the hour. Please come straight home." },
+      { n: "They walked. Past Paulownia, past the shuttered arcade, the long way round to the bridge. And the city, Solar slowly understood, was busier than it had any right to be." },
+      { n: "A red ribbon came down out of the green sky over the school side of the bay like a dropped streamer, and someone came down with it, turning over once in the air and landing on the roof of the gym with both arms up, perfectly, as if there were judges." },
+      { n: "In the Paulownia fountain, a man in a leather jacket sat up out of the water, soaked to the collar, reached under his arm for something that wasn't there, looked around at the coffins, and said a single word in English that Solar's teachers would not have approved of." },
+      { n: "Nobody else saw. Junpei was doing his impression of the Shadow. Yukari was telling him it wasn't funny, and laughing. Solar walked at the back and counted, and didn't say anything, which was getting to be her main skill." },
+      { ifRank: { kiriko: 1 }, then: [
+        { n: "Kiriko's fox came trotting out to meet them at the foot of the bridge, the way it did on full moons now, a small gold light with its tails up. Halfway to Solar it stuttered like a bulb about to go. There, not there, there. It sat down hard on the asphalt and looked at its own paws, deeply offended." }
+      ] },
+      femcMetAny(['kuromi', 'ann', 'mercy', 'haru', 'sebastian', 'astarion', 'aphrodite', 'cloud', 'noctis', 'judy', 'shadowheart'], [
+        { n: "Her phone was dead in the hour, the way everything was, but she knew. She knew the way you know someone's calling before it rings. Somewhere in the city every one of her strangers was flickering tonight, a little, at the edges, and none of them were going to tell her how much." }
+      ]),
+      { n: "At five to one, Fuuka stopped talking in the middle of a sentence." },
+      { s: 'fuuka', f: 'surprised', t: "...It's one o'clock. Mitsuru-senpai, it's one o'clock. It should be ending. It isn't ending." },
+      { s: 'mitsuru', f: 'neutral', t: "Stay together. Keep walking. Yamagishi, keep counting." },
+      { n: "They kept walking. The moon didn't move. The coffins didn't move. One-oh-four. One-oh-six. It was like being kept after class by a teacher who wouldn't say why." },
+      { place: 'Iwatodai Station · The Dark Hour', time: 'One-oh-nine' },
+      { n: "On a bench outside Iwatodai Station, a man in a green headband had just woken up, and instead of panicking he had taken out a pen and was drawing the nearest coffin as fast as his hand would go, with an expression of pure delight." },
+      { n: "And on the other bench, the one by the taxi stand, there was a woman in a long blue coat." },
+      { n: "Solar knew her. That was the first awful thing. Not her name. Her. Twice in July she'd seen her on the station steps, playing a viola to nobody, the case open at her feet with nothing in it, the music thin and lovely and going nowhere. Both times Solar had meant to stop. Both times she'd been late for something." },
+      { n: "The woman wasn't playing now. The viola was in its case on her knees, and she was looking up, very calmly, at the tall bowed shape made of pages that stood in front of her with its blank face tipped down toward her like a doctor at a bedside." },
+      { music: 'battle' },
+      { choose: [
+        { t: "(Run.)", notes: 0, then: [
+          { n: "She ran. Across the plaza, past the frozen taxis, her shoes loud on the stone and her bag banging against her hip, and the distance didn't close the way it should have, as if the hour had more room in it than the plaza did." }
+        ] },
+        { t: "Wait! Stop!", notes: 0, then: [
+          { n: "It came out raw and much too loud, ringing off the dead shop fronts. The woman heard it. She turned her head toward Solar, mildly, the way you'd turn toward a car alarm in another street." }
+        ] },
+        { t: "What's your name?", notes: 0, then: [
+          { n: "She shouted it across the plaza, and the woman looked at her, surprised, really surprised, and opened her mouth to answer." },
+          { n: "Too late. Solar watched her decide it was too late. It was the kindest look anyone had ever given her, and she would think about it for weeks." }
+        ] }
+      ] },
+      { music: 'mystery' },
+      { s: 'bluecoat', t: "It's all right. I'm so tired. And nobody here knows my name anyway." },
+      { n: "She folded her hands on the viola case and closed her eyes, and smiled, and went." },
+      { n: "There wasn't any other word for it. She went the way a breath goes off a cold window, from the edges in, until the bench was just a bench and the coat was just a shape in the green and then wasn't even that, and the viola case went last of all, and where she had been there was a single blank page, settling onto the slats like a leaf." },
+      { s: 'thelacuna', t: "Don't be frightened. It didn't hurt her. It didn't hurt at all." },
+      { s: 'thelacuna', t: "You didn't know her name. Nobody did. That's why it was so easy. Nobody was holding on." },
+      { choose: [
+        { t: "Give her back.", notes: 0, then: [
+          { s: 'thelacuna', t: "Back to what? There was nobody waiting. I looked." }
+        ] },
+        { t: "That isn't fair. That's just easy.", notes: 0, then: [
+          { s: 'thelacuna', t: "Is there a difference? You're very young." }
+        ] },
+        { t: "(Pick up the page.)", notes: 0, then: [
+          { n: "It was warm. Not paper-warm. Warm like a seat someone has only just stood up from." }
+        ] }
+      ] },
+      { s: 'thelacuna', t: "I only take the ones nobody holds. You'd think you of all people would understand. You've seen what a page looks like when nobody holds it." },
+      { s: 'thelacuna', t: "The hour is wider tonight. Did you notice? It's so much easier, when there's room." },
+      { n: "Then it came apart the way it always did, unhurried, into a drift of loose paper that lifted off the plaza and went away over the rooftops toward the tower, and left her standing in front of an empty bench in the green with a blank page in one hand." },
+      { s: 'fuuka', f: 'sad', t: "Solar? I'm sorry. One of the radios just stopped." },
+      { s: 'fuuka', f: 'sad', t: "There were forty-one tonight. With the new ones. Now there's forty." },
+      { music: 'night' },
+      { n: "The hour ended at eleven minutes past one. Seventy-one minutes, Mitsuru said, very quietly, over the radio, and nobody answered her, and Akihiko, who had come back for Solar at a dead run, stood beside her at the bench breathing hard and didn't say anything either, which from Akihiko was a lot." },
+      { place: 'Iwatodai Dorm · Rooftop', time: 'Night', music: 'tender' },
+      { n: "She couldn't go to bed. She went up to the roof instead and sat with her back against the water tank, and the ordinary night came back around her, sodium light and a car somewhere and the cold coming up off the bay." },
+      { n: "The page was still in her hand." },
+      { n: "That was the thing she kept coming back to. A page out of the hour, lying in her palm in the plain orange light of the real world, where nothing from the hour was supposed to last a second. Blank on both sides. Soft, like it had been handled a lot. Faintly warm, still." },
+      { ifRank: { kuromi: 1 }, then: [
+        { n: "Kuromi found her there around two. She didn't ask. She sat down on the other side of the water tank where Solar couldn't see her, like that made it not count, and stayed until Solar's hands stopped shaking, and then said she'd only come up because it was her roof." }
+      ] },
+      { n: "Forty. Solar had never even heard her play long enough to know whether she was any good. She put the page inside her student handbook, between the school rules and the bell schedule, flat, the way you'd press a flower, and went downstairs, and lay awake doing the arithmetic of July." }
+    ] },
+
+    { id: 'a3-the-last-line', act: '3', date: '9/26', slot: 1, title: 'the last line', place: 'Iwatodai Station · Platform', music: 'tender', scene: [
+      { n: "Saturday afternoon, the first cool one, the kind of September day that smelled like somebody somewhere was burning leaves. Solar found Wren on the Iwatodai platform where she always was now, in the porter's coat with the brass buttons, on the bench under the timetable." },
+      { n: "She'd been riding the Port Island line, she said. Back and forth. All day, actually. Thirty-one times." },
+      { s: 'wren', f: 'happy', t: "I don't count the stops anymore. I used to, didn't I. I used to read them all out like a list." },
+      { s: 'wren', f: 'neutral', t: "I can't think why. They always come. Whichever train it is, it always goes somewhere, and then it comes back. It doesn't matter which." },
+      { n: "In July she'd stepped off at Port Island and said it arrived exactly where it said it would, the way other people said it was a miracle. Solar sat down on the bench beside her and didn't say that. She didn't know how to say it without it sounding like an accusation." },
+      { choose: [
+        { t: "Doesn't it matter where you're going?", notes: 0, then: [
+          { s: 'wren', f: 'neutral', t: "It used to. I'm almost certain it used to." },
+          { s: 'wren', f: 'happy', t: "Isn't it nice that it doesn't now?" }
+        ] },
+        { t: "(Ride it with her once.)", notes: 0, then: [
+          { n: "They rode to Port Island and back. Wren didn't look out of the window once. She told Solar a long story about a cat she'd seen on the platform at Tatsumi, and laughed at the end of it, and when the doors opened at Iwatodai she didn't notice until Solar touched her arm." }
+        ] }
+      ] },
+      { n: "The four-fifteen pulled in. And as the doors opened, the platform went green." },
+      { n: "Two seconds this time. Solar counted them. The commuters stepping off the train were coffins, a whole carriage of them, tall and black on the yellow line, and the sky through the roof was sick and swollen, and the train sat there with its doors open and nothing breathing in it." },
+      { n: "And on the bench beside Wren, for those two seconds, someone was sitting. Tall, bowed, folded down small to fit on a bench, made of pages. Its hand was resting on her knee. Lightly. The way you'd rest your hand on someone's knee in a waiting room, to let them know you were still there." },
+      { n: "Then it was afternoon again. Commuters. Announcements. The train. The bench beside Wren was empty, and Solar was on her feet and didn't remember standing." },
+      { s: 'wren', f: 'neutral', t: "Oh, it does that. It sits with me sometimes." },
+      { s: 'wren', f: 'neutral', t: "It never says anything. I think it's checking I'm all right. The way you'd look in on someone after an operation." },
+      { choose: [
+        { t: "Wren. It took you.", notes: 0, then: [
+          { s: 'wren', f: 'neutral', t: "Did it? You came and got me. I remember that part. I remember the train stopping." },
+          { s: 'wren', f: 'happy', t: "I don't remember anything being taken. Wouldn't I notice?" }
+        ] },
+        { t: "Next time it does, come and find me.", notes: 0, then: [
+          { s: 'wren', f: 'neutral', t: "All right. If you like. I don't think it means any harm, you know." },
+          { n: "She said it gently, like Solar was the one who needed looking after." }
+        ] }
+      ] },
+
+      { place: 'The Velvet Room', time: 'Night', music: 'velvet' },
+      { n: "Blue, and the hum, and the numbers climbing past floors that weren't there. She'd fallen asleep with the handbook open on her desk, and she knew before she looked down that the page from the bench was in her hand." },
+      { n: "Elizabeth took it from her very carefully, in both gloves, the way you'd take a bird someone had found on a doorstep." },
+      { s: 'elizabeth', f: 'sad', t: "Her name was Hanne." },
+      { s: 'elizabeth', f: 'sad', t: "She played the viola in a city where it was always the last night of the festival. Every night, lanterns, music in every square. She did not want the festival to end. Few people do. She came through on the July moon, and she spent eight weeks on the station steps playing for people who were all, every one of them, on their way somewhere else." },
+      { s: 'elizabeth', f: 'neutral', t: "Now someone in this world has heard her name. I thought you should be the one." },
+      { n: "Solar said it back, once, under her breath. Hanne. It sat in her mouth like a stone she'd been handed and couldn't put down." },
+      { n: "Elizabeth turned the compendium around. The stubs had multiplied since August. Solar stopped counting at nine." },
+      { s: 'elizabeth', f: 'neutral', t: "And this. Which I have been waiting to show you, and dreading." },
+      { n: "It was Wren's page. It was back." },
+      { n: "Whole and dark and certain, the ink as sure as it had been in August. The coat, the bench, the line of track. The sea, and a girl standing in the shallows holding her skirt up in both fists. A small figure with headphones beside her on the bench. It was the most beautiful page in the book, and Solar knew it the way you know your own handwriting." },
+      { n: "And at the bottom, where the writing should have gone on, it stopped. Not torn. Not faded. The last lines simply weren't there, the way a word isn't there in an old letter where the damp has gotten in. Clean paper, where an ending ought to be." },
+      { s: 'elizabeth', f: 'serious', t: "Every page in this book is a door. You know that. A door has to open onto somewhere. Hers opens onto nothing at all." },
+      { s: 'elizabeth', f: 'sad', t: "She cannot go home through it. And she does not want to. Those are not two problems, Solar. That is one problem, seen from both sides." },
+      { choose: [
+        { t: "Where did it go? Her ending.", notes: 0, then: [
+          { s: 'elizabeth', f: 'serious', t: "I have been reading it, you know. The thing. As it reads me. It is only fair." },
+          { s: 'elizabeth', f: 'serious', t: "Every page it wears was someone's last page. It lifts the words off and keeps the paper. Hers is in there somewhere. With Hanne's. With all of them." }
+        ] },
+        { t: "Can you write it back in?", notes: 0, then: [
+          { s: 'elizabeth', f: 'sad', t: "I have tried. The ink will not take. It is not mine to write. It never was." },
+          { s: 'elizabeth', f: 'serious', t: "It is not gone, though. I have been reading the thing that took it. Every page it wears was someone's last page, with the words lifted off. Hers is in there somewhere." }
+        ] }
+      ] },
+      { s: 'elizabeth', f: 'neutral', t: "There is something else you should know, and I have put off telling you for longer than is polite." },
+      { s: 'elizabeth', f: 'neutral', t: "The hour closes. It was always going to. At the end of January, when the year has turned and the last of the cold comes, it will shut, and every door in this book will shut with it. Every guest goes home through their own page, or not at all." },
+      { s: 'elizabeth', f: 'serious', t: "It said to you that the hour was only so wide. It is stretching it. Daylight, a second at a time. If the hour never closes, no one ever has to go home. No one ever has to read their last page." },
+      { s: 'elizabeth', f: 'sad', t: "Some of your friends will thank it." },
+      { choose: [
+        { t: "Then we stop it.", notes: 0, then: [
+          { s: 'elizabeth', f: 'neutral', t: "Yes. I hoped you would say it first. It is easier to be brave second." }
+        ] },
+        { t: "Would that be so bad?", notes: 0, then: [
+          { n: "Elizabeth didn't answer straight away. She closed the book over her finger, keeping the place, and looked at Solar for a long time with those golden eyes." },
+          { s: 'elizabeth', f: 'sad', t: "I have asked myself the same question every night this month. That is how I know it is a dangerous one." }
+        ] }
+      ] },
+      { n: "She woke at her desk. The handbook was open to the bell schedule, and the page was gone from it, and her hand was cold." },
+      { n: "Down the hall Wren's door was ajar. She was asleep on top of the covers with the porter's coat folded on the chair in thirds, the proper way, and the ticket on the nightstand, blank, catching a stripe of streetlight. Solar stood in the doorway longer than she should have. Then she pulled the door to, gently, so it wouldn't click, and went back to bed and didn't sleep." }
+    ] },
+
+    { id: 'a3-visiting-hours', act: '3', date: '10/5', slot: 0, title: 'visiting hours', place: 'Tatsumi Memorial Hospital · Hallway', music: 'tender', scene: [
+      { n: "The hallway on the third floor smelled like floor polish and something sweet underneath it that nobody wanted to name. The vending machine at the end of it hummed. The light through the window was the thin, clean gold of an October afternoon, the kind of light that makes everything look like it's already a memory." },
+      { n: "Nobody was talking. Junpei had his cap in his hands and was turning it around and around by the brim. Yukari sat with her arms crossed so tight it looked like it hurt. Ken stood very straight by the window and didn't sit when Fuuka offered him the chair, and didn't look at anyone. Mitsuru was at the far end on the phone to the Group, saying yes, quietly, over and over, in a voice that sounded like a door being held shut." },
+      { n: "Koromaru wasn't allowed in. He was lying across the hospital's front steps with his chin on his paws, and he had been there since they arrived, and he would be there when they left." },
+      { n: "Akihiko was inside. He had been inside for two hours. Through the narrow window in the door Solar could see the back of his head, bowed, and the bed, and the shape in the bed that was Shinjiro and wasn't, in the way that sleeping people never quite are." },
+      { n: "Wren had come too. She'd asked to. She'd never been inside a hospital, she said, and then she'd stopped, and said, I mean, I'd like to come, and Solar had understood that she was trying to say the right thing and wasn't certain what it was." },
+      { n: "She stood at the door now and looked through the little window for a long time." },
+      { s: 'wren', f: 'neutral', t: "He looks like the people on the train." },
+      { n: "It went into Solar like cold water. Her whole body heard it before she did. Her hands, her stomach, the backs of her knees." },
+      { n: "Wren turned and saw her face, and her own face changed. Not much. The way you'd look up from a book in a language you used to speak and realize someone has asked you a question." },
+      { s: 'wren', f: 'sad', t: "That was wrong. Wasn't it. I can tell it was wrong from how you look." },
+      { s: 'wren', f: 'sad', t: "I know this is meant to hurt. I can see it hurting all of you. It's like watching rain through a window. I remember rain. I remember being cold. I just can't get wet anymore." },
+      { choose: [
+        { t: "It's supposed to hurt. That's how you know he mattered.", notes: 0, then: [
+          { s: 'wren', f: 'sad', t: "...Then I'd like it to hurt. I think. I'd like to know he mattered." },
+          { n: "She said it carefully, the way she'd once said Solar's name on a platform, like she was writing it down somewhere so she could find it later." }
+        ] },
+        { t: "(Take her hand.)", notes: 0, then: [
+          { n: "Her hand was warm. It was a good, solid, ordinary hand, and it held on back, and that was somehow the worst part. Solar didn't let go until the nurse came." }
+        ] }
+      ] },
+      { n: "When the nurse came to say visiting hours were nearly over, Akihiko came out. He looked the way people look when they have been holding something heavy at arm's length for a long time and only just put it down, and haven't yet noticed their arms are shaking." },
+      { s: 'akihiko', f: 'sad-3', t: "He's stable. That's the word they keep using. Stable." },
+      { s: 'akihiko', f: 'serious', t: "He'll wake up. He's too stubborn not to. He's never once done what anybody told him." },
+      { choose: [
+        { t: "He'll wake up.", notes: 0, then: [
+          { s: 'akihiko', f: 'sad-2', t: "...Yeah." },
+          { n: "He said it like a man agreeing to something he had already decided to believe whatever anyone said." }
+        ] },
+        { t: "(Walk out with him. Don't say anything.)", notes: 0, then: [
+          { n: "She walked out with him. They went down three flights of stairs side by side without a word, and at the bottom he pushed the door open for her, the way he always did, and stood there holding it a second too long." }
+        ] }
+      ] },
+
+      { place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'tender' },
+      { n: "Nobody cooked. The kitchen was dark when they got home and it stayed dark. Somebody had left the rice cooker on, and it had been keeping nothing warm all day, its little orange light the only one on in the room." },
+      { n: "Koromaru had walked home beside Ken, and now he lay down in the front hall facing the door, and nobody had the heart to call him away from it." },
+      { ifRank: { shinjiro: 10 }, then: [
+        { n: "Solar opened the fridge. Somebody had asked her, once, sitting on this counter in the moonlight, to feed the dog. Real food. Not the canned stuff." },
+        { n: "So she did. Rice, and the end of the chicken, and a little broth, warmed in his old pan on his old burner. She set the bowl down in the hall next to Koromaru without a word, and he looked at it, and looked at her, and ate it slowly, still facing the door." }
+      ], else: [
+        { n: "Ken made Koromaru a bowl of rice and chicken, standing on a chair to reach the pan, very carefully, because he said it was what Shinjiro-san would have done. Nobody corrected the tense. Nobody wanted to be the one who noticed it." }
+      ] },
+      { n: "Wren sat at the kitchen table in the dark with her coat on, very upright, her hands folded, like she was waiting for a train she couldn't remember the name of. When Solar passed her on the way to the stairs she looked up." },
+      { s: 'wren', f: 'neutral', t: "I'll stay down here. In case somebody needs something. I'm not sad, so I might as well be useful." },
+      { n: "It was the kindest thing anyone said all day. Solar would think so afterward, and hate that she thought so." },
+      { n: "She couldn't stay in. The dorm was too full of people being quiet. She put her shoes on in the hall, stepping carefully around the dog, and went out into the cold without telling anyone where, which was fine, because she didn't know either." }
+    ] },
+
+    { id: 'a3-more-hands', act: '3', date: '10/22', slot: 1, title: 'more hands', place: 'Iwatodai Dorm · Lounge', music: 'mystery', scene: [
+      { n: "On Tuesday at ten past three in the afternoon, Port Island Station had been coffins for eleven seconds." },
+      { n: "Eleven. A man on the down escalator had been one step from the bottom when it started, and when it ended he stumbled, and three people caught him, and they all laughed about it, and went on with their day. Fuuka had cried in the command room afterward, very quietly, with her headphones still on, and said she was sorry, she was fine, it was only that the static had sounded so close." },
+      { n: "So Mitsuru called everyone into the lounge, and this time everyone meant everyone." },
+      femcMetAny(['kuromi', 'ann', 'kiriko', 'mercy', 'haru', 'sebastian', 'astarion', 'aphrodite', 'cloud', 'noctis', 'judy', 'shadowheart', 'kasumi', 'leon', 'rohan', 'widowmaker'], [
+        { n: "They came. Solar's strangers, in ones and twos, out of the cold October dark, the doorbell going until Junpei propped the front door open with a shoe. There weren't enough chairs. There were never enough chairs. Somebody sat on the stairs. Somebody sat on the kitchen counter, which Mitsuru allowed, which was how Solar knew it was serious." }
+      ], [
+        { n: "It was only S.E.E.S., in the end, around the coffee table, with a map of the city spread across it held down at the corners by mugs. Mitsuru had set out extra chairs. Nobody mentioned them." }
+      ]),
+      { ifRank: { haru: 8 }, then: [
+        { n: "Haru had cooked. She'd been cooking since the middle of the month, in a gray apron nobody mentioned, and there was a pot on the table and steam going up off it into the lamplight, and the kitchen had stopped being a dark room." }
+      ] },
+      { n: "Fuuka had marked the map in pencil. Every night for three weeks Lucia had tracked the gap, the place in the hour that sounded like the moment after a song ends, and every night it had moved. A dot here. A dot there. The bridge. The shrine. The back streets behind the station. The pier." },
+      { s: 'fuuka', f: 'neutral', t: "It doesn't wander. It goes somewhere and it stops. Ten minutes. Twenty. And then it goes on to the next place." },
+      { s: 'fuuka', f: 'sad', t: "And every place it stops, there's a radio. One of them. One of the visitors." },
+      { ifRank: { mercy: 1 }, then: [
+        { s: 'mercy', f: 'serious', t: "It's doing rounds." },
+        { n: "Everyone looked at her. She was standing behind the couch with her coat still on, straight from the ward, and she looked at the map with the face of a doctor reading a chart she'd seen too many times." },
+        { s: 'mercy', f: 'serious', t: "Bed to bed. Checking on them. That's what it's doing. It's doing rounds." }
+      ], else: [
+        { s: 'akihiko', f: 'serious', t: "It's making rounds. Like a doctor." },
+        { n: "He meant it as a joke, mostly. Nobody laughed, and he looked down at the map like it had hit him." }
+      ] },
+      { s: 'mitsuru', f: 'neutral', t: "Has it spoken to any of you?" },
+      { n: "A pause. The particular kind of pause that happens when a room full of people discovers they have all been keeping the same secret separately." },
+      { ifRank: { astarion: 8 }, then: [
+        { s: 'astarion', f: 'neutral', t: "Moonlight Bridge, the other night. It offered me the world, darling, and I don't mean that poetically. I said no." },
+        { s: 'astarion', f: 'happy', t: "I'd like a medal. Something gaudy." }
+      ] },
+      { ifRank: { cloud: 7 }, then: [
+        { s: 'cloud', f: 'serious', t: "The back streets. The night I couldn't get him out of my head." },
+        { s: 'cloud', f: 'neutral', t: "Next night it came back. Not him. Something softer. Said I didn't have to remember anything. Said I could just stop trying." },
+        { s: 'cloud', f: 'sad', t: "...He never offers anything. That's how I knew it wasn't him." }
+      ] },
+      { ifRank: { noctis: 1 }, then: [
+        { s: 'noctis', f: 'neutral', t: "It asked if I was tired. I'm always tired. It said I could sleep. Like, for good. Nothing to get up for." },
+        { s: 'noctis', f: 'flustered', t: "Honestly I almost said yes just so it'd stop talking. Then I thought about who'd finish my fish." }
+      ] },
+      { ifRank: { sebastian: 8 }, then: [
+        { s: 'sebastian', f: 'sad', t: "It didn't offer me anything. It just asked if I wanted to stay." },
+        { s: 'sebastian', f: 'sad', t: "...I didn't answer fast enough. That's all. I didn't say yes. I just didn't say no fast enough." }
+      ] },
+      { ifRank: { kasumi: 4 }, then: [
+        { s: 'kasumi', f: 'serious', t: "It sounds like Dr. Maruki. Not the voice. The idea. Everyone happy. Nobody ever has to hurt again." },
+        { s: 'kasumi', f: 'sad', t: "He'd like it, I think. That's what frightens me." }
+      ] },
+      { ifRank: { aphrodite: 1 }, then: [
+        { s: 'aphrodite', f: 'serious', t: "It came to me too. It told me love could last forever if nothing ever had to change." },
+        { s: 'aphrodite', f: 'neutral', t: "I'm the goddess of love, darling. Nobody knows better than I do that it doesn't. That's the whole point of it." }
+      ] },
+      { ifRank: { kuromi: 1 }, then: [
+        { s: 'kuromi', f: 'serious', t: "It came to MY roof. Nobody comes to my roof. I told it the toll is one compliment and it didn't have one." }
+      ] },
+      femcMetAny(['kuromi', 'ann', 'kiriko', 'mercy', 'haru', 'sebastian', 'astarion', 'aphrodite', 'cloud', 'noctis', 'judy', 'shadowheart', 'kasumi', 'leon', 'rohan', 'widowmaker'], [
+        { n: "And then the rest of them, one after another, in their own words. A world where the next mission never came. A garden where it was always spring. A table where nobody ever got up. It had offered each of them something different, and it had offered all of them the same thing." }
+      ]),
+      { n: "Solar listened to all of it with her hands wrapped around a mug she wasn't drinking from, and somewhere in the middle of it she understood something, the way you understand a step isn't there when your weight is already on it." },
+      { choose: [
+        { t: "It can't take them. It has to ask.", notes: 0, then: [
+          { s: 'mitsuru', f: 'surprised', t: "...Go on." },
+          { n: "So she went on. Hanne, on the bench, whom nobody had held, gone in a breath without a word. And everyone in this room, who it had to stand in front of, night after night, and ask, and wait. Wren, on the train, who had asked it where it went." },
+          { s: 'akihiko', f: 'serious', t: "So it only gets the ones who say yes. Or the ones nobody's holding." }
+        ] },
+        { t: "(Look at Wren.)", notes: 0, then: [
+          { n: "Wren was on the arm of the couch, listening politely, like someone at a lecture on a subject she didn't take. Solar looked at her and thought about the train, and the question Wren had asked it, and Hanne on the bench, and it came together all at once." },
+          { s: 'solar', t: "It can't just take them. Not if somebody's holding on. It has to ask." },
+          { s: 'akihiko', f: 'serious', t: "So it only gets the ones who say yes. Or the ones nobody's holding." }
+        ] }
+      ] },
+      { s: 'wren', f: 'neutral', t: "It sits with me, you know. In the daytime, sometimes. It doesn't ask me anything anymore." },
+      { s: 'wren', f: 'happy', t: "I suppose there's nothing left to ask." },
+      { n: "Nobody had anything to say to that. Ken looked at his shoes. Aigis, at the window, turned her head and studied Wren for a long, unblinking moment, the way she studied things she meant to remember." },
+      { s: 'mitsuru', f: 'sad', t: "My father asked me about the readings this morning. I told him it was residue from the full moons. That's the second time." },
+      { s: 'mitsuru', f: 'sad', t: "I have never lied to my father twice about the same thing. I find I am not very good at it." },
+      { s: 'yukari', f: 'serious', t: "So what do we do? We can't fight it. You can't hit paper. Well. You can. It doesn't care." },
+      { n: "It was Akihiko who said it. He was sitting forward with his elbows on his knees, looking at the pencil dots on the map, and he said it slowly, like he was working it out with his hands." },
+      { s: 'akihiko', f: 'serious', t: "It told you you can't hold all of them. That your hands aren't big enough." },
+      { s: 'akihiko', f: 'neutral', t: "Fine. So we use more hands." },
+      { s: 'fuuka', f: 'surprised', t: "...Oh." },
+      { s: 'fuuka', f: 'happy', t: "I can hear them. All the radios. The quiet ones. The ones nobody's met. I could tell you where they are." },
+      { s: 'ken', f: 'serious', t: "Then I'll take one. I'll find them and learn their name. That's all it takes, right? Somebody has to know your name?" },
+      { s: 'koromaru', f: 'serious', t: "Woof!" },
+      { s: 'junpei', f: 'happy', t: "Koro's in. I'm in. I'm gonna make a friend so hard, dude. They're not gonna know what hit 'em." },
+      { s: 'aigis', t: "I will take two. I have excellent grip strength." },
+      femcMetAny(['kuromi', 'kiriko', 'mercy', 'haru', 'sebastian', 'astarion', 'aphrodite', 'cloud', 'noctis', 'judy', 'shadowheart', 'kasumi', 'leon', 'rohan', 'widowmaker'], [
+        { n: "And then her strangers, one after another, putting their hands up like it was a class. Taking names off Fuuka's list. Taking two, some of them. People who had arrived in this city lost and frightened, volunteering to go and be found by someone else who was lost and frightened, because someone had once done it for them." },
+        { ifRank: { kiriko: 1 }, then: [
+          { s: 'kiriko', f: 'happy', t: "Six! Give me six. The fox can do a whole neighborhood. I'm not even joking. It loves a project." }
+        ] }
+      ]),
+      { s: 'mitsuru', f: 'neutral', t: "Names, then. Bring me names." },
+      { s: 'mitsuru', f: 'neutral', t: "I'd rather know their faces than their readings. I said that in June. I find I meant it more than I knew." },
+      { choose: [
+        { t: "Give me the one at the station.", notes: 0, then: [
+          { s: 'fuuka', f: 'neutral', t: "There's one on the steps. Every night. He doesn't move much. It sounds like... like a clock, ticking very slowly." },
+          { n: "Of course it was the station steps. Solar nodded, and wrote it down, and didn't let herself think about violas." }
+        ] },
+        { t: "(Take whoever Fuuka reads out next.)", notes: 0, then: [
+          { s: 'fuuka', f: 'neutral', t: "The riverside. Under the bridge. She sounds like birds. A lot of small birds, all at once." },
+          { n: "Solar wrote it on her hand in ballpoint, the riverside, birds, so that she would see it every time she looked down." }
+        ] }
+      ] },
+      { n: "By the end of the week Fuuka had stopped saying forty. She'd started saying names instead, one at a time, in the command room, reading them off the list in her soft voice like a roll call, and every time she got to the end of it, it was a little longer." }
+    ] },
+
+    { id: 'a3-the-whole-shelf', act: '3', date: '11/3', slot: 1, title: 'the whole shelf', place: 'Moonlight Bridge · The Dark Hour', music: 'battle', scene: [
+      { n: "The operation was the big one. Mitsuru had been quiet about it all week, which was how they'd known. It went on and on, the way the big ones did, until Solar couldn't feel her arms and Junpei had stopped making jokes and the Evoker was slick in her hand, and then all at once it was over, the way they always were, and everyone was standing, and the moon was just the moon." },
+      { n: "They came off the bridge in a ragged line, holding each other up, giddy and wrecked, Junpei leaning his whole weight on Akihiko and Yukari laughing at nothing with tears on her face. Fuuka's voice in their ears, telling them well done, well done, come home." },
+      { music: 'night' },
+      { n: "And then the hour ended." },
+      { n: "For them." },
+      { n: "Solar saw it happen. The streetlights came back on over Junpei's head and his face went orange in them, and the cars on the bridge started moving, and the coffins became people, and the night was a night again, cold and loud and ordinary, three steps in front of her." },
+      { n: "She was still green." },
+      { n: "She was standing in the hour, and they were standing in the night, three steps apart, and she said Junpei's name and he didn't turn around. Yukari didn't. Nobody did. They walked on toward the station under the ordinary lights, and the space between her and them didn't close no matter how fast she walked, and after a while Junpei stopped, and looked back over his shoulder at exactly the place where she was standing, frowning." },
+      { s: 'junpei', f: 'surprised', t: "...Solar? Yo. She was right behind me." },
+      { n: "He looked straight through her. Then they were gone, around the corner, and she was alone on Moonlight Bridge in a green that belonged to nobody else." },
+      { n: "She knew where to go. She'd always known. She walked, and the bridge was longer than it should have been, and the streets were quieter, and when she came up the stairs onto the Iwatodai platform she wasn't even surprised." },
+      { place: 'Iwatodai Station · Platform · The Dark Hour', time: 'An hour that does not count', music: 'mystery' },
+      { n: "It was sitting on Wren's bench." },
+      { n: "It had made itself small to do it. The long arms folded, the bowed head lowered, pages settled around it like a coat. It sat the way a person sits on a bench to wait for someone they are fond of, and when she came up the stairs it turned its blank face toward her, and she felt it again, after all these months, the hand laid flat on her chest. Not pushing. Just checking she was still breathing." },
+      { s: 'thelacuna', t: "There you are. I made you an hour of your own. Nobody will miss it. It doesn't count." },
+      { s: 'thelacuna', t: "Sit down. You look so tired. You've looked so tired since August." },
+      { choose: [
+        { t: "(Stay standing.)", notes: 0, then: [
+          { n: "She stayed standing. It didn't seem to mind. It had the patience of something that had never once been in a hurry, because it had never once had anywhere to be." }
+        ] },
+        { t: "(Sit at the far end of the bench.)", notes: 0, then: [
+          { n: "She sat at the far end, the way she'd sat in April beside a girl in a coat too big for her. It shifted a polite inch over, as if the bench were very crowded. She hated that it knew to do that." }
+        ] }
+      ] },
+      { s: 'thelacuna', t: "I'd like to show you something. Only to show you. You don't have to take anything." },
+      { n: "It opened. There was no other word. The pages of its chest parted down the middle like a book laid open on a desk, and they weren't blank anymore." },
+      { n: "A girl on a sidewalk on the Upper East Side, a suitcase rolling behind her, who had turned down Harvard and would never quite explain why. A college town buried in snow, a party she didn't want to be at, and a boy across the room she was trying very hard to look at less than she did." },
+      { n: "A seafood restaurant on the water in Incheon at low tide, the mud flats shining. A needle and thread under a bare bulb, a wound nobody could take to a hospital. A wedding date she hadn't picked, circled on someone else's calendar." },
+      { n: "A student council campaign. Glitter on every surface of a bedroom. A group chat that would not stop buzzing, and a rival across a table she would have died before admitting she liked arguing with." },
+      { n: "They were all her. She knew it the way you know your own face in a shop window before you've decided it's you." },
+      { ifRank: { rohan: 3 }, then: [
+        { n: "She'd seen them before. In a bookshop in October, with a man in a green headband reading her face like a novel and saying, with real surprise, that she wasn't one person. That she was a whole shelf." }
+      ] },
+      { s: 'thelacuna', t: "In every one of them, you have to choose. The school or the other thing. Him or the family. Win or lose. Every one of them ends. I've read them all the way to the back." },
+      { s: 'thelacuna', t: "You don't have to. Not here. Look." },
+      { n: "The next page was this one." },
+      { n: "It was the dorm lounge, on a night like hot pot night, every lamp on and the windows steamed up, and the table was long. Longer than the room. It went on past the walls, out into somewhere warm, and everyone was at it." },
+      { n: "Shinjiro was at the stove in his gray apron, awake, scowling at a pot like it had said something about his mother." },
+      { ifRank: { akihiko: 6 }, then: [
+        { n: "Akihiko was at the head of the table, and beside him, swinging her legs on a chair too tall for her, was a little girl with his eyes, who had never been anywhere near a fire." }
+      ] },
+      { ifRank: { astarion: 1 }, then: [
+        { n: "Astarion was in the window seat in full afternoon sun, eyes closed, face tipped up into it like a cat, and nothing about him was burning." }
+      ] },
+      { ifRank: { noctis: 1 }, then: [
+        { n: "Noctis was asleep at the end of the table with a fishing rod across his knees, and there was no crown anywhere, and there never would be." }
+      ] },
+      { ifRank: { cloud: 1 }, then: [
+        { n: "Cloud was by the door with a girl in pink and a basket of flowers, and he was laughing. Solar had never once heard him laugh." }
+      ] },
+      { ifRank: { haru: 6 }, then: [
+        { n: "Haru was out on a roof garden with a heavy man in a good suit, her father, who was looking at her tomatoes like they were worth something." }
+      ] },
+      { ifRank: { kasumi: 3 }, then: [
+        { n: "Two girls with the same face and the same red ribbon sat side by side, sharing a plate, and neither of them was the one who had been left behind." }
+      ] },
+      { ifRank: { kuromi: 1 }, then: [
+        { n: "Kuromi was wearing a crown, a real one, and everyone was bowing to her, and she looked absolutely insufferable about it, and happy." }
+      ] },
+      { ifRank: { ann: 10 }, then: [
+        { n: "There was one empty chair. Red cushion. A crepe on the plate in front of it, untouched." },
+        { s: 'thelacuna', t: "Not her. She went home on the thin night. She was holding on to you so tightly I couldn't get a finger in." },
+        { n: "It said it the way you'd mention a draft. It was the first time Solar had ever heard it sound like anything but kind." }
+      ], else: [
+        { ifRank: { ann: 1 }, then: [
+          { n: "Ann was there in her red jacket with a crepe in each hand, and nobody was ever going to text her from home to say it was time." }
+        ] }
+      ] },
+      femcMetAny(['kiriko', 'mercy', 'sebastian', 'aphrodite', 'judy', 'shadowheart', 'leon', 'rohan', 'widowmaker'], [
+        { n: "And all the rest of them, every stranger she had ever sat with on a bench or a pier or a shrine step, at the long table that went on forever, passing things to each other. Nobody looking at the door. There wasn't a door." }
+      ]),
+      { n: "And at the near end of the table there was an empty place with a bowl already set out, and the chair pulled back a little, the way you pull one back for someone you know is coming." },
+      { s: 'thelacuna', t: "No January. No last train. Nobody you have to see off at a platform and wave at until your arm hurts." },
+      { s: 'thelacuna', t: "You'd never have to choose between any of them. You'd never lose a single one. Not here. Not anywhere." },
+      { s: 'thelacuna', t: "I'm not cruel, Solar. I've never been cruel. I only want everyone to stop being afraid." },
+      { n: "Her hand was moving. She didn't know when it had started. It was out in front of her, open, the way Wren's had been in June, an inch from the warm lit page, and she could see the steam coming off the bowls, and she could smell the broth, and she could see her own fingertips, very slightly, going pale at the ends." },
+      { choose: [
+        { t: "It's a good table.", notes: 0, then: [
+          { s: 'thelacuna', t: "It is. It's yours. It always was." }
+        ] },
+        { t: "Where's the door?", notes: 0, then: [
+          { s: 'thelacuna', t: "There isn't one. That's the gift." }
+        ] },
+        { t: "(Say nothing.)", notes: 0, then: [
+          { n: "She said nothing for a long time, which was its own answer, and they both heard which one." }
+        ] }
+      ] },
+      { n: "Footsteps on the stairs." },
+      { n: "Unhurried ones. Solar knew them before she turned, the way she knew the bench and the coat and the brass buttons, and she turned anyway, because she couldn't not." },
+      { n: "Wren came up onto the platform in the green. Of course the hour let her in. Of course it did. There was nothing left in her for it to keep out." },
+      { s: 'wren', f: 'neutral', t: "Hello. I thought I'd find you here. You're always here when something's wrong." },
+      { s: 'wren', f: 'neutral', t: "And hello to you. You've been sitting with me. I know it's you." },
+      { n: "She said that to the thing on the bench, politely, the way you'd greet a neighbor. Then she crossed the platform and took a handful of Solar's sleeve in her fist and held on, the way a little kid holds on in a crowd, the way Solar had felt her hold on once, in June, on this exact spot." },
+      { s: 'wren', f: 'serious', t: "Don't." },
+      { s: 'wren', f: 'sad', t: "I can't remember what I was afraid of. You saw me at the hospital. I can't get wet. I'm fine, and I'm warm, and I'm here, and I can't feel any of it, and I can see on your face every day that it's the worst thing that's ever happened to you." },
+      { s: 'wren', f: 'serious', t: "I'd like you to keep yours. Your ending. Even if it's awful. Especially if it's awful. Please. You can't give me mine back, so keep yours." },
+      { choose: [
+        { t: "No.", notes: 0, then: [
+          { n: "It came out quiet. It didn't need to be loud. She pulled her hand back, and her fingertips were her own color again, and her heart was going so hard she could feel it in her teeth." }
+        ] },
+        { t: "I'd rather see them off.", notes: 0, then: [
+          { s: 'wren', f: 'happy', t: "...Oh. That's the best answer. I'm almost sure I told you that once." }
+        ] },
+        { t: "(Take Wren's hand.)", notes: 0, then: [
+          { n: "She took Wren's hand off her sleeve and held it instead, properly, fingers through fingers, and held it hard enough that it hurt them both, and that was the answer, and it was the only one she had." }
+        ] }
+      ] },
+      { n: "The page closed. The table and the steam and the lamplight folded away into its chest, and the empty chair with them, and it was only a tall thing made of blank paper sitting on a bench again." },
+      { s: 'thelacuna', t: "All right." },
+      { s: 'thelacuna', t: "I'll keep the seat. You'll come back to it. Everyone does, eventually. And January is very close, Solar. You'll be standing on a platform in January watching every one of them go, and you'll remember this table." },
+      { s: 'thelacuna', t: "Ask me again then." },
+      { n: "It came apart. Slowly this time, almost gently, a page at a time, lifting off into the green and drifting away over the tracks toward the tower. Wren watched it go with an expression Solar couldn't read, and didn't let go of her hand." },
+      { n: "One page didn't go." },
+      { n: "It came down instead, turning over and over, and landed in Solar's free hand as if it had been aimed there. Blank. Except, near the top, a smudge. Gray, soft, worn, like someone had pressed a thumb to the same place over and over, trying to keep a face from fading, and the face had faded anyway." },
+      { music: 'tender' },
+      { n: "Then the lights came on. The vending machines woke up humming. A train sighed somewhere far down the line, like it was sorry about something. And Junpei was coming up the stairs three at a time, shouting her name, with the others behind him." },
+      { s: 'junpei', f: 'surprised', t: "SOLAR! Where did you GO? You were right behind me! You were right there and then you just...!" },
+      { s: 'fuuka', f: 'sad', t: "Eleven minutes. You were gone for eleven minutes. Lucia couldn't hear you anywhere. I thought..." },
+      { n: "Eleven minutes. She had stood on this platform for a whole life. Several." },
+      { n: "Mitsuru didn't say anything. She came up the last stair and looked at Solar, and at Wren holding her hand, and at the page, and she took off her own coat and put it around Solar's shoulders, and only then did Solar notice that she was shaking." },
+      { n: "She put the page inside her handbook, between the school rules and the bell schedule, where the other one had been. And she went home with the others, and let Junpei tell the story of the operation for the third time, with new sound effects, and laughed in the right places, and didn't look back at the bench, which took nearly everything she had." }
+    ] },
+
+    { id: 'a3-whats-waiting', act: '3', date: '11/8', slot: 1, title: "what's waiting", place: 'The Velvet Room', theme: 'velvet', scene: [
+      { n: "The dorm had been very quiet since Wednesday, for reasons of its own, reasons that had nothing to do with pages and that she wasn't going to think about in here. She fell asleep on top of her covers in her uniform, and woke in blue." },
+      { n: "Elizabeth wasn't reading. That was the first thing. The compendium was closed on the seat beside her and her gloved hands were folded on top of it, and she was simply sitting, looking at the door, the way people sit in hospital hallways." },
+      { s: 'elizabeth', f: 'neutral', t: "Good evening. You have something of mine, I think. Or something you would like me to tell you is mine." },
+      { n: "Solar held out the page. The smudge looked worse under the blue light. More like a face. Less like one." },
+      { n: "Elizabeth looked at it for a long time without touching it." },
+      { s: 'elizabeth', f: 'serious', t: "That is not from my book." },
+      { s: 'elizabeth', f: 'neutral', t: "And it is not from the thing, either, though it was carrying it. It is not any paper I know. Someone wrote that, Solar, and it was not me." },
+      { choose: [
+        { t: "Then whose is it?", notes: 0, then: [
+          { s: 'elizabeth', f: 'neutral', t: "I could not say. I would very much like to read the rest of it." }
+        ] },
+        { t: "(Put it back in the handbook.)", notes: 0, then: [
+          { n: "She slid it back between the school rules and the bell schedule. Elizabeth watched her do it with an odd look, as though she'd just watched someone pocket a key without knowing what door it opened." }
+        ] }
+      ] },
+      { s: 'elizabeth', f: 'neutral', t: "Keep it. Whatever it is, it came to you. Things do, this year." },
+      { n: "Then she opened the compendium, and turned it around, and Solar braced for stubs." },
+      { ifRank: { ann: 10 }, then: [
+        { n: "It was Ann's page. Red and bright and finished, every line of it, and the door of it closed, properly closed, the edges sealed flat like a letter. In the bottom corner, very small, there was a girl with headphones around her neck holding a red mask." },
+        { s: 'elizabeth', f: 'happy', t: "That is what it looks like when someone goes home held. I wanted you to see one. I have been looking at it every night. It is warm, if you touch it. It shines." }
+      ], else: [
+        { n: "It was the list. All of Fuuka's names, the radios nobody had met, and next to each one, faintly, in a hand that wasn't Elizabeth's, the ink was coming back. Pages that had been gray in October were dark now. Some of them had small figures drawn beside them on benches and steps. Junpei was easy to spot. He had somehow managed to be making a peace sign in every one." },
+        { s: 'elizabeth', f: 'happy', t: "Your friends have been busy. I have not lost a page in two weeks. I had forgotten what a book feels like when it is getting heavier." }
+      ] },
+      { s: 'elizabeth', f: 'serious', t: "Now. I have been thinking about what it does. Not how. What." },
+      { s: 'elizabeth', f: 'serious', t: "It offers them blanks. A blank last page. Nothing written, nothing waiting, nothing to be afraid of. And a blank page is so very easy to give away, because you cannot fear what you have not read. You can only dread it." },
+      { s: 'elizabeth', f: 'neutral', t: "So I am going to let them read." },
+      { n: "Solar looked at her. Elizabeth looked back, very calm, the way you look at someone when you have already done the hard part of deciding and only the hard part of doing it is left." },
+      { s: 'elizabeth', f: 'neutral', t: "I know how their stories go. I have read every one, sitting up at night with the book open, which is how all of this began. I am going to tell them. One at a time. Each guest, what waits for them at the other end of their door. Not all of it. Enough." },
+      { choose: [
+        { t: "That's cruel.", notes: 0, then: [
+          { s: 'elizabeth', f: 'sad', t: "Yes. And it is brave, for them, not for me. Most true things are both." }
+        ] },
+        { t: "That's brave.", notes: 0, then: [
+          { s: 'elizabeth', f: 'sad', t: "It is cruel, too. I would like you to say that part as well, so that I do not forget it." }
+        ] }
+      ] },
+      { s: 'elizabeth', f: 'neutral', t: "Some of them will hate me. Some of them will go home anyway. That is the point, Solar. They will go home knowing. Then it is theirs. A thing you know, you can carry. A blank, you can only hand to someone." },
+      { s: 'elizabeth', f: 'serious', t: "And the girl on the bench. Her ending is in it. It is wearing her last line the way it wears all of them. If we want to give it back to her, we will have to take it out of the thing that is wearing it." },
+      { s: 'elizabeth', f: 'serious', t: "In January. When the hour is widest, and closing. That is the only time it will be all in one place." },
+      { choose: [
+        { t: "It said I can't hold all of them.", notes: 0, then: [
+          { s: 'elizabeth', f: 'happy', t: "It is right. You cannot. You have very ordinary hands." },
+          { s: 'elizabeth', f: 'happy', t: "But you have made a great many friends this year, and all of them have hands. We will need every one. Every bond in this book. I am going to ask for all of them." }
+        ] },
+        { t: "And if Wren doesn't want it back?", notes: 0, then: [
+          { s: 'elizabeth', f: 'sad', t: "Then that will be her choice, and she will make it knowing. That is all I want for any of them. That is all I have ever wanted, I think. I simply did not know it until something offered them the opposite." }
+        ] }
+      ] },
+      { n: "Elizabeth closed the book. She held it against her chest with both hands, and for a moment she looked again like a girl holding a book, and not like a woman holding a door." },
+      { s: 'elizabeth', f: 'neutral', t: "Seven weeks until the year ends. Twelve until the hour closes. I counted them for you. Twice. In case I had it wrong." },
+      { s: 'elizabeth', f: 'happy', t: "I did not have it wrong. I so rarely do. It is one of my least attractive qualities." },
+      { n: "She woke at her desk. It was the first properly cold night of the year, and the window had fogged at the corners, and the handbook was under her cheek, open to the bell schedule, and the page with the smudge was still in it." },
+      { n: "Down the hall Wren was asleep with her coat folded on the chair in thirds and her ticket on the nightstand, blank, waiting for someone to write on it. Solar stood in the doorway a while. Twelve weeks. She counted them again, in case." }
     ] }
   ]
 });
