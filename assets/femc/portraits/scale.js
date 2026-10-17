@@ -67,5 +67,6 @@ window.FEMC_PORTRAIT_SCALE = {
   tifa: 1.03,
   widowmaker: 1.18,
   wren: 1.2,
-  yukari: 1.1
+  yukari: 1.1,
+  yunjin: 1.0
 };
