@@ -454,5 +454,28 @@ window.FEMC_PORTRAITS = {
   "sad",
   "serious",
   "surprised"
+ ],
+ "heeseung": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "jay": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "mark": [
+  "flustered",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
  ]
 };
