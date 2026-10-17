@@ -25,6 +25,7 @@ window.FEMC_PORTRAIT_SCALE = {
   haru: 1.1,
   heeseung: 1.0,
   hina: 0.97,
+  hyein: 0.95,
   ignis: 1.03,
   jake: 1.0,
   jay: 0.95,
