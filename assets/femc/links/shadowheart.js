@@ -86,6 +86,216 @@ FemcSocial.define({
       { n: "She didn't try the bell herself. But when Solar was halfway down the steps that night, she heard it ring once behind her, very softly, like someone testing whether it would bite." }
     ]
   ],
+  // After MAX on the romance route (rank 10 is 12/11 or later): four dates, then they rotate. She goes home at the end of January.
+  dates: [
+    { title: 'night orchids', place: 'Paulownia Mall · Flower Stall', scene: [
+      { n: "Shadowheart had never been to Paulownia Mall, on the grounds that it was loud and bright and full of people and she had spent twenty years being trained to distrust all three, so naturally that was where Solar took her, on a Saturday evening in December when it was at its loudest and brightest and fullest, every pillar wrapped in fairy lights and a song about bells coming out of every shop at once, none of them in time with each other." },
+      { n: "She walked through it like a scout through hostile country. Solar watched her clock every exit, every security guard, every child with a balloon. A man in a reindeer sweater held out a packet of tissues with an advert on it, and she looked at it for so long that he took it back." },
+      { s: 'shadowheart', f: 'serious', t: "Everyone here is looking at everyone. How does anyone stand it?" },
+      { choose: [
+        { t: "(Take her hand.)", notes: 3, then: [
+          { n: "Solar took her hand, the left one, the one that didn't bleed anymore. Shadowheart's whole arm went stiff, and then, slowly, by stages, the way ice goes, it didn't." },
+          { s: 'shadowheart', f: 'blushing', t: "...In public. You're holding my hand in public. Where anyone could see." },
+          { s: 'solar', t: "That's sort of the point." },
+          { s: 'shadowheart', f: 'blushing', t: "...Fine. Don't let go. I'd get lost. In the crowd. Obviously." }
+        ] },
+        { t: "Nobody's looking at you. Okay, some people are looking at you.", notes: 2, then: [
+          { s: 'shadowheart', f: 'serious', t: "It's the armor, isn't it." },
+          { s: 'solar', t: "It's the armor." },
+          { n: "She looked down at herself, dark plate and silver circlet in the middle of a shopping mall, under a banner advertising a winter sale on rice cookers, and one corner of her mouth moved, very slightly, which for Shadowheart was practically falling over laughing." }
+        ] }
+      ] },
+      { n: "The flower stall was at the far end of the ground floor, past the fountain, where it had been in October when Solar had stood in front of it for twenty minutes doing sums about a white orchid in a pot. The florist recognized her. Florists, it turned out, remembered anyone who had taken that long to decide. She looked from Solar to Shadowheart and back, and then at their hands, and became very busy with a roll of ribbon." },
+      { n: "There were six of them on the top shelf, white and strange and a little alien under the shop lights, and Shadowheart stood in front of them with her face doing something Solar had seen it do only once, in the green hour at the shrine, when she had looked down at her own palm and found it had stopped bleeding." },
+      { s: 'shadowheart', f: 'surprised', t: "...These are the same. The night orchids. You found them here? In this place?" },
+      { s: 'shadowheart', f: 'neutral', t: "I'd like to buy one. For you. So you have one after. When I've gone." },
+      { n: "She took a small leather pouch from her belt and shook something out of it onto the counter with enormous dignity. It was a gold coin, heavy and worn and stamped with a face nobody in this country had ever seen, and the florist looked at it, and looked at Shadowheart, and looked at Solar with an expression of silent appeal." },
+      { choose: [
+        { t: "(Ask the florist, very politely, if she'll take it.)", notes: 3, then: [
+          { n: "The florist turned the coin over in her fingers and studied the face on it for a long moment, and said, in the careful voice of someone making an exception she'd think about later, that she'd never seen one of those before, and she'd always wanted something nobody else had." },
+          { s: 'shadowheart', f: 'happy', t: "...That's the first honest trade I've made in your world." },
+          { n: "Weeks later, walking past, Solar saw it through the glass, propped against the till where the florist could see it, catching the light." }
+        ] },
+        { t: "(Pay. Let her keep the coin.)", notes: 2, then: [
+          { n: "Solar paid. Shadowheart objected in a low, furious voice all the way to the fountain, and then stopped objecting, and slipped the coin into Solar's coat pocket when she thought Solar wasn't looking. Solar let her think so." }
+        ] }
+      ] },
+      { n: "They sat on the edge of the fountain with the orchid between them in its paper sleeve, and the mall went on being loud around them, and Shadowheart didn't clock a single exit. Solar noticed. She didn't say. She kept that one for herself." },
+      { s: 'shadowheart', f: 'blushing', t: "...It's less awful with you. The light. I thought I'd hate being looked at." },
+      { s: 'shadowheart', f: 'neutral', t: "I think I only hated being looked at by the wrong people." }
+    ] },
+    { title: 'the real thing', place: 'Paulownia Mall · Chagall Café', scene: [
+      { n: "Solar had made a mistake months ago, and had been paying for it ever since, and the mistake was showing Shadowheart the little tab on the bottom of a convenience-store pudding." },
+      { n: "It had become, without anybody deciding it, a rite. Two puddings, two cans of barley tea, the soft pop on the porch, Shadowheart flipping hers out onto the lid with the concentration of someone defusing a bomb. Solar had once brought a chocolate one instead and been looked at like she'd committed a sacrilege, which, given the company, was really saying something." },
+      { n: "So she'd decided it was time for the real thing. Chagall Café did a custard pudding in a little glass dish, made by hand every morning, with a burnt-sugar top and a sprig of mint and a price that made Solar wince quietly at the menu, and she had been saving up for weeks to see Shadowheart's face when she tasted it." },
+      { n: "Shadowheart sat very straight at a table in the corner, back to the wall, and looked at the pudding when it arrived the way she'd once looked at a fortune that said great misfortune. Suspicious. A little hurt." },
+      { s: 'shadowheart', f: 'serious', t: "It doesn't shake." },
+      { s: 'solar', t: "It's a good one. It's homemade." },
+      { s: 'shadowheart', f: 'serious', t: "It's supposed to shake." },
+      { n: "She ate it anyway, slowly, all of it, with the little spoon, in total silence, while Solar watched her face and could read absolutely nothing in it, which was new, because by now she could read most things in it." },
+      { s: 'shadowheart', f: 'neutral', t: "...It's very good." },
+      { s: 'shadowheart', f: 'neutral', t: "It's not the same." },
+      { choose: [
+        { t: "The other one's better. Isn't it.", notes: 3, then: [
+          { s: 'shadowheart', f: 'happy', t: "...Yes. I'm sorry. It is." },
+          { s: 'shadowheart', f: 'blushing', t: "It isn't the pudding. The other one comes with the porch. And the dog. And the lanterns. And you, being smug about the tab." },
+          { s: 'solar', t: "I'm not smug about the tab." },
+          { s: 'shadowheart', f: 'happy', t: "You're unbearably smug about the tab, Sunshine." }
+        ] },
+        { t: "I saved up for that, you know.", notes: 2, then: [
+          { s: 'shadowheart', f: 'surprised', t: "...You did? For me?" },
+          { n: "She looked at the empty dish again, differently, like it had turned out to be something else, and then ate the sprig of mint, which nobody ever ate, solemnly, as if to make sure that nothing went to waste." }
+        ] }
+      ] },
+      { place: 'Naganaki Shrine · Night', time: 'Night', music: 'tender' },
+      { n: "Later, on the porch, there were two convenience-store puddings and two cans of barley tea, because of course there were. Solar had stopped at the machine at the bottom of the steps without either of them saying a word about it." },
+      { n: "Shadowheart flipped hers out onto the lid. Pop. Perfect, like always. Then she held the lid up to the lantern and watched it shake, and laughed, very quietly, at nothing, at a pudding." },
+      { s: 'shadowheart', f: 'blushing', t: "That's the real thing." },
+      { n: "She kissed Solar on the porch, briefly, tasting of caramel, as if checking something, and then sat back and finished her pudding as though nothing had happened. Koromaru came out from behind the offering box to see what the noise was. There hadn't been any noise." }
+    ] },
+    { title: 'a coin and a clap', place: 'Naganaki Shrine', music: 'sun', scene: [
+      { n: "Shadowheart came up to the shrine in daylight, which she never did, because daylight was Kiriko's shift and she was very serious about not trespassing on another priestess's hours, and she stood at the top of the hundred and twelve steps blinking in the thin winter sun like something that had been woken from hibernation and resented it." },
+      { n: "Kiriko was sweeping. She saw Shadowheart and stopped, and looked at Solar, and looked at Shadowheart, and leaned on her broom with an expression of enormous, unholy delight." },
+      { s: 'kiriko', f: 'happy', t: "Day shift! She's on day shift! Sol-chan, she's on DAY SHIFT." },
+      { s: 'shadowheart', f: 'serious', t: "I'm not on any shift. I'd like to ask your gods something. Properly. Sunshine says you just ask." },
+      { s: 'kiriko', f: 'surprised', t: "...Oh." },
+      { s: 'kiriko', f: 'happy', t: "Oh, okay, yes. Coin, bell, two bows, two claps, one bow. I'll be over there. Not looking. Extremely not looking." },
+      { n: "She went and stood by the stone foxes with her back turned and swept the same square meter of gravel with ferocious attention, which was how Solar knew she was listening to every word." },
+      { n: "Shadowheart held the coin for a long time. It was a five-yen piece, because Solar had told her that was the lucky one, and it had a hole in the middle, and she kept looking through it at the offering box and the rope and the bell, like she was taking aim." },
+      { s: 'shadowheart', f: 'neutral', t: "Where I'm from, you don't ask a goddess for things. You give, and you give, and maybe she notices you. Usually she doesn't. If she does, it costs." },
+      { s: 'shadowheart', f: 'serious', t: "I don't know how to ask for something I want. I never have. Not once. Not out loud." },
+      { choose: [
+        { t: "Then don't say it out loud. That's allowed too.", notes: 3, then: [
+          { s: 'shadowheart', f: 'surprised', t: "...It is?" },
+          { s: 'solar', t: "Most people don't. It's between you and them." },
+          { n: "Shadowheart considered this the way she considered everything in this world, as if it might be a trap, and then, slowly, as if it might not be." }
+        ] },
+        { t: "(Go first. Show her.)", notes: 3, then: [
+          { n: "Solar went first. Coin. The rope, rough and thick and cold, and the bell, louder than she remembered, a big flat clang that went out over the trees. Two bows. Two claps. She closed her eyes and asked for something and didn't let herself think about what until it was done." },
+          { n: "When she opened her eyes Shadowheart was watching her, not the shrine, with the expression of someone memorizing a route." }
+        ] },
+        { t: "What would you ask for?", notes: 1, then: [
+          { s: 'shadowheart', f: 'serious', t: "If I told you, it would be a different thing. It would be a request. Of you." },
+          { n: "She said it like that settled the matter, and Solar, who didn't entirely follow, decided not to push." }
+        ] }
+      ] },
+      { n: "Shadowheart threw the coin. It went in clean, dead center, with a sound like a small door closing. She took the rope in both hands and rang the bell once, loud, the way she'd rung it once before, in the dark, when she thought nobody could hear. Two bows. Two claps, sharp, a little too hard. Her eyes closed." },
+      { n: "She stood there a long time. Longer than any salaryman, longer than anyone Solar had ever seen at that box, long enough that Kiriko stopped sweeping. The wind came through the cedars and the paper fortunes on the rack all moved together like they were breathing." },
+      { n: "Then one bow, and she opened her eyes and turned around, and her face was very calm and a little pink, and she didn't look at Solar at all, which was how Solar knew." },
+      { s: 'shadowheart', f: 'blushing', t: "Don't ask." },
+      { choose: [
+        { t: "I wasn't going to.", notes: 3, then: [
+          { s: 'shadowheart', f: 'happy', t: "...Good. You'd only be smug about it." }
+        ] },
+        { t: "Was it about me?", notes: 2, then: [
+          { s: 'shadowheart', f: 'blushing', t: "Sunshine. I said don't ask." },
+          { n: "She didn't say no. Over by the foxes, Kiriko made a small noise like a kettle coming to the boil and swept very hard in the opposite direction." }
+        ] }
+      ] },
+      { s: 'kiriko', f: 'happy', t: "Fortune! Everybody who prays gets one. Shrine rules. Today's rules." },
+      { s: 'kiriko', f: 'neutral', t: "Kichi. Blessing. \"What is asked for freely is heard.\"" },
+      { s: 'shadowheart', f: 'surprised', t: "...That's very specific." },
+      { s: 'kiriko', f: 'happy', t: "They always are. People just don't notice until later." },
+      { n: "Shadowheart didn't tie it to the rack. She folded it small and tucked it inside her glove, flat against her palm, where the wound used to be." }
+    ] },
+    { title: 'three strands', place: 'Naganaki Shrine · Dusk', music: 'tender', scene: [
+      { n: "She'd worn it loose since November, and the wind at the shrine had opinions about that. By the end of every evening her hair was everywhere, across her face, in her tea, once memorably caught in the rope of the bell, and she endured all of it with the grim patience of a woman who had made a decision and was going to live with it if it killed her." },
+      { n: "Tonight she was sitting on the top step with a comb in her lap, a cheap plastic one from the hundred-yen shop, turning it over and over, and when Solar sat down she held it out without looking at her." },
+      { s: 'shadowheart', f: 'neutral', t: "Would you braid it. Not tight. Not the way they used to." },
+      { s: 'shadowheart', f: 'serious', t: "They did it every morning at the temple. So tight you had a headache by noon. Not one hair out of place. A hair out of place meant your mind was out of place." },
+      { n: "Solar took the comb. Shadowheart turned on the step and went very still, and Solar understood that the stillness was old and trained and had nothing to do with her, and started very gently anyway." },
+      { n: "Her hair was heavy and cold from the wind and smelled of incense and cedar and, faintly, barley tea, and the silver streak at her temple slid through Solar's fingers like a different thing altogether, finer, like it had come from somewhere else. She combed it out slowly, from the ends up, the way you were supposed to, the way somebody must have done it for her once, before." },
+      { choose: [
+        { t: "(Braid it loose. Leave a few strands out on purpose.)", notes: 3, then: [
+          { n: "She braided it loose, three strands, easy, nothing that pulled, and left some of the silver out on purpose, falling free by Shadowheart's face, and tied the end with the hair tie off her own wrist, which was pink and had a small plastic strawberry on it, which Shadowheart was going to find out about later." },
+          { s: 'shadowheart', f: 'surprised', t: "...There's hair out. I can feel it." },
+          { s: 'solar', t: "I know. I left it." },
+          { n: "Shadowheart's hand went up to the loose strands, and touched them, and stayed there, and came down again. She didn't fix it." }
+        ] },
+        { t: "(Ask who braided it, before the temple.)", notes: 3, then: [
+          { s: 'shadowheart', f: 'neutral', t: "...My mother." },
+          { n: "She said it at once, and then went very still, as if she'd surprised herself." },
+          { s: 'shadowheart', f: 'surprised', t: "I didn't know that. I didn't know it until you asked. She'd hum. Something about the moon. I can't remember the words. I can remember her humming it, right behind my head." },
+          { n: "Solar kept braiding, slowly, saying nothing, because it seemed like the kind of memory you didn't want to startle, and after a while, very quietly and not quite in tune, Shadowheart started to hum." }
+        ] }
+      ] },
+      { n: "When it was done she sat with her back to Solar a while longer, looking out at the city going blue in the dusk, the first lights coming on down by the bay." },
+      { s: 'shadowheart', f: 'blushing', t: "No one's touched my hair since I was a child. Not kindly. I'd forgotten it could be kind." },
+      { choose: [
+        { t: "(Rest your chin on her shoulder.)", notes: 3, then: [
+          { n: "Solar rested her chin on her shoulder from behind, and Shadowheart leaned back into her by a fraction, and then by more than a fraction, until they were sitting on the top step like one person with too many knees, watching the lanterns come on." }
+        ] },
+        { t: "I'll do it again tomorrow.", notes: 3, then: [
+          { s: 'shadowheart', f: 'happy', t: "...Every day, then. Until..." },
+          { n: "She didn't finish. She didn't need to. They both knew what came at the end of January, and they let the sentence stay where she'd left it, and watched the lanterns come on." }
+        ] }
+      ] },
+      { n: "The braid was coming loose by the time Solar went down the steps. Shadowheart hadn't touched it. She stood at the top the way she had on the very first night, watching to make sure Solar got down safely, and the wind pulled the silver out across her face, and she let it." }
+    ] }
+  ],
+  christmas: { place: 'Naganaki Shrine · Night', scene: [
+    { n: "Kiriko had explained Christmas to Shadowheart at length, with diagrams, and Shadowheart had come away from the explanation believing it was a festival for couples involving a fat man, a chicken and a cake, in no particular order, and had announced that she would not be participating. Then, at four in the afternoon on the twenty-fourth, she'd texted." },
+    { phone: [
+      { from: 'shadowheart', t: 'Come up tonight.' },
+      { from: 'shadowheart', t: "I've done something. Don't laugh." }
+    ], contact: 'Shadowheart', handle: 'shadowheart', me: 'solar' },
+    { n: "The shrine was dark when Solar reached the top of the steps, dark except for the moon behind thin cloud and the snow giving back what little light there was, and for a second she thought Shadowheart had changed her mind." },
+    { n: "Then she saw the porch." },
+    { n: "Shadowheart had hung lanterns. Every lantern from the shrine office, and a string of fairy lights Solar was fairly sure had come off a pillar in Paulownia Mall without anybody's permission, all of it along the eaves, unlit, and Shadowheart standing in front of it in her armor and a borrowed scarf of Kiriko's with a box of matches in her hand, looking like she'd been caught." },
+    { s: 'shadowheart', f: 'blushing', t: "You're early. You're going to laugh." },
+    { s: 'solar', t: "I'm not laughing." },
+    { s: 'shadowheart', f: 'serious', t: "You're about to." },
+    { n: "She lit them one by one. It took a long time, because the wind kept getting at the matches and she wouldn't let Solar help, and every time one caught she stood back and checked it with total seriousness, as if it might try something. She didn't know how to turn the fairy lights on. Solar found the switch. Shadowheart looked at it for a long moment, deeply betrayed by how simple it was." },
+    { n: "Then it was done, and the porch glowed, gold and warm and uneven against the snow, and Shadowheart stood with her back to it and swallowed." },
+    { s: 'shadowheart', f: 'neutral', t: "In my world we light lamps for Selûne on the long nights. So she can find her way back. Your festival is in the dark, in the middle of winter. So is mine. I thought I could do both." },
+    { s: 'shadowheart', f: 'blushing', t: "Kiriko says yours is for people who are in love. I'm told I qualify." },
+    { choose: [
+      { t: "You qualify.", notes: 3, then: [
+        { s: 'shadowheart', f: 'happy', t: "...Good. I'd have been very embarrassed about the lanterns otherwise." }
+      ] },
+      { t: "(Kiss her, under the stolen fairy lights.)", notes: 3, then: [
+        { n: "Solar kissed her under the stolen fairy lights, quickly, her cold nose against Shadowheart's cheek, and pulled back to find her looking astonished and slightly offended, like someone who'd had a speech prepared and been robbed of it." },
+        { s: 'shadowheart', f: 'blushing', t: "...I had more to say." },
+        { s: 'solar', t: "Say it." },
+        { s: 'shadowheart', f: 'blushing', t: "I've forgotten it. That's your fault." }
+      ] }
+    ] },
+    { n: "They sat on the porch under the lanterns with the snow coming down past the eaves. Koromaru, who had come up the steps on his own as if he'd been invited, lay across both their feet and sighed. Shadowheart produced two convenience-store puddings from somewhere inside her armor, which explained a great deal about the armor." },
+    { n: "Solar had brought her a present. She'd been thinking about it since a night on this porch, the two of them flat on their backs, counting to six in a sky the city had eaten." },
+    { choose: [
+      { t: "(Give her glow-in-the-dark stars, for the ceiling where she sleeps.)", notes: 3, then: [
+        { n: "It was a packet of glow-in-the-dark stars from the stationery shop, the plastic kind children stick to their bedroom ceilings, a hundred and twenty of them and one small moon." },
+        { s: 'shadowheart', f: 'surprised', t: "...These are stars." },
+        { s: 'solar', t: "For the ceiling. So you've got more than six." },
+        { n: "Shadowheart held the packet up to the lantern light and looked at it for so long that Solar started to worry, and then she set it down on the step very carefully, as if it might break, and put her hand over her mouth and kept it there." },
+        { s: 'shadowheart', f: 'blushing', t: "...We're putting them up tonight. All of them. I don't care how long it takes." }
+      ] },
+      { t: "(Give her a hair tie with a little silver moon on it.)", notes: 3, then: [
+        { n: "It was a plain black hair tie with a tiny silver moon on it, from the accessories stall by the station. It had cost almost nothing. She had looked at forty of them." },
+        { s: 'shadowheart', f: 'blushing', t: "...For when the wind gets it." },
+        { s: 'solar', t: "For when the wind gets it." },
+        { n: "Shadowheart pulled her hair over one shoulder and handed Solar the tie and turned on the step and waited, very still, and it was a different stillness from any Solar had seen in her, softer, not trained at all." }
+      ] }
+    ] },
+    { n: "Then Shadowheart took something out of her glove." },
+    { n: "It was the handkerchief. Solar's, from September, from the storm under the eaves, the one she'd wrapped around a bleeding palm the way Angela had shown her and never got back. It had been washed, many times by the look of it, by hand, in cold water. And in one corner, in silver thread, someone had sewn a small and very lopsided sun, and overlapping it, a smaller and even more lopsided moon." },
+    { s: 'shadowheart', f: 'blushing', t: "I don't know how to sew. Kiriko showed me. I bled on it twice. Not the old way. Just the needle. It was rather nice, actually, bleeding for something stupid." },
+    { s: 'shadowheart', f: 'neutral', t: "It was the first thing anyone ever gave me that wasn't an order. I kept it because I couldn't stand to give it back. Now I want you to have it. Because I'm going, and I want you to have something I kept." },
+    { n: "Solar held it. The silver thread caught the lantern light. The stitches were huge and uneven, pulled tight in some places and loose in others, the stitches of someone who'd been taught to do everything precisely or else and had decided, just this once, not to." },
+    { choose: [
+      { t: "It's perfect.", notes: 3, then: [
+        { s: 'shadowheart', f: 'happy', t: "Nothing's perfect, Sunshine. ...It's good, though. Isn't it. It's good." }
+      ] },
+      { t: "(Fold it and put it inside your coat, over your heart.)", notes: 3, then: [
+        { n: "She folded it in half and in half again and put it in the inside pocket of her coat, on the left, flat, and kept her hand over it, and Shadowheart watched her do it with an expression she very clearly didn't know she was making." }
+      ] }
+    ] },
+    { n: "Down in the city, bells started ringing in Port Island, faint across the water. Shadowheart tipped her head back against the pillar and looked up past the lanterns at the sky, which was full of cloud and snow and not one single star." },
+    { s: 'shadowheart', f: 'happy', t: "Zero. Your city is a disgrace." },
+    { s: 'solar', t: "You're not even counting." },
+    { s: 'shadowheart', f: 'blushing', t: "No. I've got the sun right here. I can manage without the rest." },
+    { n: "She'd claim afterward that she had meant it as a joke. She went very pink when she claimed it, though, and she didn't let go of Solar's hand until the last lantern guttered out somewhere after midnight, with the snow still falling and the dog asleep on their feet." }
+  ] },
   romance: true,
   cast: { astarion: 'Astarion', kiriko: 'Kiriko' },
   threads: { elizabeth: { name: 'Elizabeth', members: ['elizabeth'] } },

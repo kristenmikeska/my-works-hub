@@ -103,6 +103,147 @@ FemcSocial.define({
       { n: "The next train came at nine fifty-four. Widowmaker checked. It was on time. She seemed to take it personally." }
     ]
   ],
+  // After MAX (rank 10 is 1/24 or later, her last week): four friend scenes, then they rotate. Nothing here is a goodbye; rank 10 and the story do that.
+  afterMax: [
+    { title: 'nine forty-two', place: 'Iwatodai Station · Platform', music: 'night', scene: [
+      { n: "Widowmaker had watched the monorail cross the bay every night since October, from forty meters up, and had taken its punctuality as a personal insult every single time, and had never once been on it. Solar found this out by accident and could not let it go." },
+      { n: "So at nine thirty-eight on a cold weeknight they were standing on the platform at Iwatodai Station under the fluorescent lights, between a vending machine and a man asleep upright on a bench in his coat, and Widowmaker was holding a ticket between two fingers like a piece of evidence." },
+      { s: 'widowmaker', f: 'neutral', t: "Four minutes. It will be late. I can feel it." },
+      { n: "It was not late. It came in at nine forty-two exactly, smooth and white and humming, the doors sighing open in front of them, and Widowmaker looked at it for a long second with the expression of a woman who had been proved wrong by a machine in public." },
+      { n: "She got on. She sat down. And nobody sat next to her." },
+      { n: "Not because of the rifle, which she had left on the bridge in some arrangement Solar didn't want to know about. Not because of her skin, which in the yellow carriage light looked almost gray, almost ordinary. Just because. Something in the way she sat. People got on at the next stop and looked at the empty seat beside her and kept walking, and she watched every one of them do it and looked, Solar thought, very slightly pleased." },
+      { s: 'widowmaker', f: 'happy', t: "I told you. An excellent commuter." },
+      { choose: [
+        { t: "(Sit next to her.)", notes: 3, then: [
+          { n: "Solar sat next to her. Widowmaker turned and gave her the long flat sniper look, and then turned back to the window, and her shoulder stayed exactly where it was, which was against Solar's, which was a choice." }
+        ] },
+        { t: "(Sit across from her, so you can watch her watch.)", notes: 2, then: [
+          { n: "Solar sat across from her so she could watch her watch, and it was worth it. Widowmaker studied every person in the carriage the way she studied the walkway from above, cataloguing, late, tired, avoiding home, except that she was doing it from a meter away now, close enough to smell the man's cigarettes and see that the woman's shoes were new." }
+        ] }
+      ] },
+      { n: "The train went out onto the bridge. It ran right past her tower, the one she stood on every night, and Widowmaker turned in her seat and pressed two fingers to the glass and looked up at the cables going by in the dark, at the place where she would have been standing, at nothing." },
+      { s: 'widowmaker', f: 'neutral', t: "Hm. So that is what it looks like from in here." },
+      { s: 'widowmaker', f: 'sad', t: "It is very small. The place where I stand. I thought it was the whole sky." },
+      { choose: [
+        { t: "You said watching isn't the same as being in it.", notes: 3, then: [
+          { s: 'widowmaker', f: 'neutral', t: "I did. On the tower. With the scope." },
+          { s: 'widowmaker', f: 'happy', t: "...I am in it now. On a train. Beside a man who smells of mackerel. It is terrible." },
+          { s: 'widowmaker', f: 'happy', t: "I do not want to get off." }
+        ] },
+        { t: "Want to go round again?", notes: 3, then: [
+          { s: 'widowmaker', f: 'surprised', t: "...Again?" },
+          { s: 'solar', t: "It's a loop. It just goes round." },
+          { n: "Widowmaker looked at her as if she'd suggested something wildly decadent, and then settled back into the seat, and crossed her legs, and folded her hands on her knee, and didn't get off at Port Island, or at Iwatodai, or the time after that." }
+        ] }
+      ] },
+      { n: "They rode until the last train. Widowmaker checked the time at every station. It was on time at every station. She said nothing about it. On the walk back she announced, out of nowhere, that she had been wrong about the trains here and would like it never to be mentioned again, and Solar mentioned it the very next day, and was looked at." }
+    ] },
+    { title: 'stakeout', place: 'Moonlight Bridge', scene: [
+      { n: "The stakeout had been Kiriko's idea, months ago, and Kiriko did not let ideas go. She'd decided that if it didn't happen this week it was never going to happen, and had said so, in capitals, eleven times." },
+      { n: "She brought a blanket and a thermos and half a kotatsu, the quilt and the little table without the heater, because she hadn't been able to get the heater up the access stairs and had left it with a very confused security guard. Solar brought strawberry shortcake, not too sweet, which had taken three bakeries. And coffee. Black." },
+      { n: "Widowmaker brought nothing, and sat at the far end of the kotatsu with the blanket over knees that couldn't feel it, eating shortcake with a plastic fork in small exact bites, as though dismantling it." },
+      { s: 'widowmaker', f: 'neutral', t: "This is not a stakeout. Nobody is being watched." },
+      { s: 'kiriko', f: 'happy', t: "We're watching the city! It's a city stakeout!" },
+      { s: 'widowmaker', f: 'neutral', t: "That is called looking." },
+      { s: 'kiriko', f: 'serious', t: "And the pigeon. We're watching the pigeon." },
+      { n: "The pigeon had come. Nobody had invited it. It sat on the railing a careful meter from the shortcake with its head on one side, and Widowmaker had been watching it since it landed, without blinking, in a way that made Solar think of a gull, and an old rivalry, and a widening of the field." },
+      { choose: [
+        { t: "(Hold your coffee to your cheek and stare the pigeon down too.)", notes: 3, then: [
+          { n: "Solar did it. Widowmaker saw her out of the corner of her eye and, without a word, put her own can to her cheek, and then Kiriko did too, and the three of them sat in a row at a kotatsu with no heater, cans pressed to their faces, staring down a pigeon on Moonlight Bridge, until the pigeon, after a long and dignified pause, left." },
+          { s: 'widowmaker', f: 'happy', t: "Hm. Good. That is how it is done." }
+        ] },
+        { t: "(Give the pigeon a crumb.)", notes: 2, then: [
+          { s: 'widowmaker', f: 'serious', t: "Do not. It will tell the others." },
+          { n: "It told the others. By nine there were four of them in a row on the railing, like a jury, and Widowmaker spent the rest of the evening glaring at them with such concentrated hostility that Kiriko had to put her face in the blanket to laugh." }
+        ] }
+      ] },
+      { s: 'kiriko', f: 'happy', t: "Stakeout fortune! For the sniper. I'm not asking." },
+      { s: 'kiriko', f: 'neutral', t: "Kichi. Blessing. \"Those who keep watch are also watched over.\"" },
+      { s: 'widowmaker', f: 'flustered', t: "...Your fortunes are very pointed, little fox." },
+      { n: "Later, with the cake gone and the thermos empty and the bay black and glittering below, Kiriko fell asleep sitting up against Solar's shoulder with her mouth open, the way she did after a whole day on the roofs, and her fox curled up glowing in her lap like a cat." },
+      { n: "Widowmaker looked at her for a long time. Then she took off the red scarf, which she had not taken off since November, not once, and leaned across the kotatsu and wound it around Kiriko's neck, once, twice, carefully, tucking in the ends." },
+      { s: 'widowmaker', f: 'neutral', t: "She feels the cold. She complains about it constantly. It is very tiring." },
+      { choose: [
+        { t: "(Say nothing. Pull the blanket up over Kiriko's knees.)", notes: 3, then: [
+          { n: "Solar said nothing and pulled the blanket up over Kiriko's knees, and Widowmaker watched her do it, and something in her face, which by now Solar could almost read, went very quiet and very still, the way it went before a shot, except there wasn't one." }
+        ] },
+        { t: "That's nice of you.", notes: 2, then: [
+          { s: 'widowmaker', f: 'serious', t: "It is practical. If she shivers she will wake up, and talk." }
+        ] }
+      ] },
+      { n: "At eleven Kiriko woke up wearing a red scarf she didn't remember putting on, and looked at it, and looked at Widowmaker, who was studying the horizon with intense professional interest, and opened her mouth, and Solar shook her head, just slightly." },
+      { n: "Kiriko closed her mouth. She kept the scarf on to the end of the bridge. Then she took it off and handed it back without a word, and Widowmaker took it without a word and put it on, and it was, Solar thought, the loudest conversation either of them had ever had." }
+    ] },
+    { title: 'there is always wind', place: 'Moonlight Bridge', scene: [
+      { n: "Solar came up the access stairs with her physics test folded in her coat and handed it over without saying anything, and Widowmaker unfolded it on the railing and found question six in about half a second, because it had a large red cross on it and a note in the margin in the teacher's handwriting, which said no wind given in question, see me." },
+      { n: "Solar had put in the wind. She had done it on purpose. She had sat in the exam with her pencil over the answer for a full minute, thinking about a woman who had once told her, upside down from a cable, that there is always wind, and then put it in anyway." },
+      { s: 'widowmaker', f: 'serious', t: "He has marked you wrong." },
+      { s: 'solar', t: "She. And I am wrong. On paper." },
+      { s: 'widowmaker', f: 'serious', t: "Give me her name." },
+      { choose: [
+        { t: "Absolutely not.", notes: 3, then: [
+          { s: 'widowmaker', f: 'neutral', t: "I would only talk to her." },
+          { s: 'solar', t: "From where?" },
+          { s: 'widowmaker', f: 'neutral', t: "...From a reasonable distance." }
+        ] },
+        { t: "You told me there's always wind. I picked the world over the mark.", notes: 3, then: [
+          { s: 'widowmaker', f: 'surprised', t: "...I did not think you would choose the world. Most people want the mark." },
+          { n: "She looked at the red cross a while longer, and then folded the test back along its creases and handed it over very carefully, like something worth keeping, which Solar supposed it now was." }
+        ] }
+      ] },
+      { n: "Then she stepped up onto the railing and held out her hand." },
+      { s: 'widowmaker', f: 'neutral', t: "Come. If you are going to put in the wind, you should at least know how to read it." },
+      { n: "So she taught her. Solar on the walkway, because she wasn't going up the cables in January for anybody, and Widowmaker beside her on the railing, pointing. The flag on the customs building across the water, which way it lay and how hard. The steam from a vent on a roof in Port Island, bending. The way the light on the black water broke into lines when the wind ran over it, and how far apart the lines were, and what that meant. The sound of the monorail, how it reached you early or late depending on which way the air was going." },
+      { s: 'widowmaker', f: 'neutral', t: "Now. Close your eyes. Which way." },
+      { choose: [
+        { t: "(Close your eyes. Feel it on your face.)", notes: 3, then: [
+          { n: "Solar closed her eyes. The cold came at her from the left, off the bay, steady, with something underneath it, a lift, like the air was being drawn up the side of the bridge. Her hair went across her mouth. She pointed." },
+          { s: 'widowmaker', f: 'happy', t: "...Hm. Yes. And it will turn in a quarter of an hour. Feel the edge of it." },
+          { n: "Solar couldn't feel the edge of it. Fifteen minutes later the wind turned and came from the other side, and Widowmaker didn't say anything at all, because she didn't need to." }
+        ] },
+        { t: "(Lick a finger and hold it up.)", notes: 1, then: [
+          { s: 'widowmaker', f: 'serious', t: "That is a children's trick." },
+          { s: 'solar', t: "Is it wrong?" },
+          { s: 'widowmaker', f: 'neutral', t: "...No. It is a children's trick that works. I hate those." }
+        ] }
+      ] },
+      { s: 'widowmaker', f: 'neutral', t: "There is wind in every question, petite. Every one. Even when they do not write it down. Especially then." },
+      { s: 'widowmaker', f: 'sad', t: "When I am gone, and you are on some bridge in some other year, and you feel it come from the left, I would like you to know which way it is going. That is all. That is the whole lesson." },
+      { n: "Solar kept the test. She put it at the back of her desk drawer with the red cross facing up. On every bridge she ever stood on after that, she knew which way the wind was going without having to think about it, the way you hear your own name across a crowded room." }
+    ] },
+    { title: 'four frames', place: 'Paulownia Mall · Photo Booth', music: 'city', scene: [
+      { n: "There was a photo booth on the second floor of Paulownia Mall, the purikura kind, pink and white and plastered with pictures of girls with enormous eyes making peace signs, and it played a little song whenever you walked past it, and every time they walked past it Widowmaker looked at it for exactly half a second longer than she looked at anything else." },
+      { n: "Solar had noticed. Solar had been noticing for a week. So late one weeknight she stopped in front of it and fed it four hundred yen before Widowmaker could say anything, and the machine said something extremely cheerful in a very high voice, and Widowmaker looked at it like it had pulled a gun." },
+      { s: 'widowmaker', f: 'serious', t: "No." },
+      { s: 'solar', t: "It's four pictures. You don't have to smile." },
+      { s: 'widowmaker', f: 'serious', t: "I am never photographed. In my profession a photograph is a death sentence. For somebody." },
+      { s: 'solar', t: "It makes your eyes really big." },
+      { s: 'widowmaker', f: 'neutral', t: "...How big." },
+      { n: "Inside it was tiny and bright and very hot, the light coming from everywhere at once, flat and white, the kind of light that makes you feel caught at something, and Widowmaker stood in it with her back very straight and her arms folded and the red scarf around her neck, squinting slightly, like a woman being interrogated." },
+      { n: "The machine counted down from three in its high cheerful voice. Flash." },
+      { choose: [
+        { t: "(Make a peace sign. Commit.)", notes: 3, then: [
+          { n: "Solar made a peace sign, the full thing, head tilted, the way the girls on the posters did, and in the second frame Widowmaker, very slowly and with an expression of profound reluctance, raised two fingers beside her own face and held them there, perfectly level, perfectly still, like she was sighting along them." }
+        ] },
+        { t: "(Lean your head on her shoulder.)", notes: 3, then: [
+          { n: "In the second frame Solar leaned her head on her shoulder. She felt Widowmaker go still, the shot-stillness, and then, between the second flash and the third, felt her not move away, and in the third frame Widowmaker's head was tipped, very slightly, toward hers." }
+        ] }
+      ] },
+      { n: "By the fourth frame something had gone wrong with her face. It had started doing something at the corners she clearly hadn't authorized, and she was fighting it, and losing, and the flash went off right in the middle of the fight." },
+      { n: "Afterward there was a little screen where you were supposed to decorate the pictures with a plastic pen, hearts and sparkles and English words that didn't mean anything. Widowmaker held the pen like a scalpel. She did not draw hearts. She considered the whole menu with complete seriousness and then wrote, very small, in the corner of the last frame, in her neat typewriter numbers, 92." },
+      { choose: [
+        { t: "That's your heart rate.", notes: 3, then: [
+          { s: 'widowmaker', f: 'flustered', t: "It was ninety-two. In the booth. Do not tell the fox." }
+        ] },
+        { t: "(Say nothing. Let it stay.)", notes: 3, then: [
+          { n: "Solar didn't say anything. She just looked at it, the small precise number in the corner of the frame where Widowmaker's face was losing its fight, and felt her own heart do something she didn't bother to count." }
+        ] }
+      ] },
+      { n: "The machine printed two strips. They came out warm. Widowmaker held hers under the mall lights for a long time, the woman with the big eyes and the red scarf and the face that had lost, and then folded it once and put it inside her coat, in the pocket where Kiriko's ofuda was, and did up the button." },
+      { s: 'widowmaker', f: 'neutral', t: "It was not in the way." },
+      { n: "Solar kept hers in her phone case with the fourth frame facing out. Anyone who looked at her phone after that saw a purple woman losing a fight with her own mouth, and asked who that was, and Solar said a friend, and it was the simplest true thing she had ever said." }
+    ] }
+  ],
   romance: false,
   cast: { kiriko: 'Kiriko', mercy: 'Mercy' },
   threads: { sniper: { name: 'support & sniper', members: ['widowmaker', 'kiriko'] } },

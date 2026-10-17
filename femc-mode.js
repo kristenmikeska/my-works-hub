@@ -7,7 +7,7 @@
   const BASE = new URL('.', document.currentScript.src).href;
   // Cache-busting version for every FEMC data file and image under assets/femc/ (portraits, backgrounds, tarot,
   // profile art, link files, compendium, bgm). Bump it whenever any of them change; see MAINTENANCE.md.
-  const FEMC_ASSET_VERSION = 101;
+  const FEMC_ASSET_VERSION = 102;
   const KEY = 'kg-femc', SOUND = 'kg-femc-sound', BGM = 'kg-femc-bgm';
   const get = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   const set = (k, v) => { try { v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -281,7 +281,7 @@
       el.classList.add('fi-out');
       setTimeout(() => {
         el.remove();
-        if (go === 'enter') { music.start(); eggs(); load('achievements.js?v=13', () => window.Achievements).then(() => window.Achievements?.unlock('femc')); }
+        if (go === 'enter') { music.start(); eggs(); load('achievements.js?v=14', () => window.Achievements).then(() => window.Achievements?.unlock('femc')); }
         else toggle(false);
       }, reduced.matches ? 0 : 650);
     }

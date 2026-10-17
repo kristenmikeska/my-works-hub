@@ -109,6 +109,199 @@ FemcSocial.define({
       { n: "He bit off the thread, put the kit back in his pocket and shrugged the coat on. The button sat exactly where it should, a little tighter than the others. Then he told her to go home before it got dark, as if it hadn't been dark for an hour." }
     ]
   ],
+  // After MAX: he's at Tatsumi Memorial from 10/4 and doesn't wake in the main story, so every date is a visit and he never speaks.
+  // The link closes on 10/4, so in normal play only the Christmas scene is reachable (christmasEve doesn't check `closes`); the dates play in free mode.
+  dates: [
+    { title: 'the beanie', place: 'Tatsumi Memorial Hospital · 3F Ward', music: 'tender', scene: [
+      { n: "The first time she went alone it was a Tuesday in the middle of October, one of those afternoons that couldn't decide whether it was still autumn or already something colder, and she rode the monorail to Tatsumi with his beanie folded in her coat pocket and her hand on it the whole way, like it might get off at the wrong stop without her." },
+      { n: "The third floor smelled the way it had on the fifth, floor polish and something sweet underneath that nobody wanted to name. The day nurse was a small brisk woman with her reading glasses on a chain, and she looked at Solar's uniform, and at her face, and at the visitors' book, where the name Sanada appeared in the same blunt square handwriting every few days, and didn't ask anything at all." },
+      { n: "He looked smaller lying down. She had known he would, and it still went into her like a step that wasn't there. Somebody had brushed his hair without knowing which way it went. His hands lay on top of the blanket where a nurse had arranged them, the scarred knuckles gone pale and soft, like they'd been put away for the winter." },
+      { n: "The chair was pulled close to the bed at an angle she recognized, because Akihiko sat in every chair like that, like the chair had asked him a question. She sat in it. The monitor kept time. She had practiced things to say on the train, and every one of them left the second she sat down." },
+      { choose: [
+        { t: "(Tell him about the dorm.)", notes: 3, then: [
+          { n: "So she told him about the dorm, in order, the way he did things. Junpei had tried to make rice and used the line on the cooker, and it had come out fine, and he'd been unbearable about it for two days. Yukari had bought the dish soap he liked and hadn't said why. Koromaru still slept in the front hall, facing the door. Nobody had used his pan, and nobody had said they weren't using it. It was just on the hook where he'd left it." },
+          { n: "She heard her own voice going on, flat and thorough, a report, round by round, and realized halfway through that she'd learned to do that from Akihiko, and that Akihiko had almost certainly learned it from him." }
+        ] },
+        { t: "(Read him the recipe card.)", notes: 3, then: [
+          { n: "She took the card out of her pocket, already soft at the corners from being touched, and read it to him from the top, every measurement, in the order he did it, keeping her voice low the way you do in a room where someone is sleeping." },
+          { n: "At the bottom she stopped. Stop poking it, underlined twice. She read that part twice too, the way he'd said don't lift the lid, the way other people said be careful." }
+        ] },
+        { t: "(Say nothing. Just sit.)", notes: 2, then: [
+          { n: "She said nothing. She sat with her coat on and her hands in her lap and listened to the monitor, and to a cart going by in the hallway with one bad wheel, and it was the most like the alley it had felt in weeks, the two of them not talking, him keeping watch over nothing, her letting him." }
+        ] }
+      ] },
+      { n: "Before she went she took the beanie out. She'd slept in it every night since the third, which nobody knew and which she would have denied under oath. It still smelled like him, a little, soy and cold air and that dish soap. It was going to stop smelling like him eventually. She had decided somewhere around Port Island Station that she'd rather it stopped here." },
+      { choose: [
+        { t: "(Fold it and leave it on the side table, by his hand.)", notes: 3, then: [
+          { n: "She folded it in half and in half again, neatly, the way he'd laid his coat over the crate in the alley, and set it on the side table right beside his hand. Close. Where he'd find it first." }
+        ] },
+        { t: "(Put it on his head. Badly.)", notes: 2, then: [
+          { n: "She put it on his head. It went on crooked, low over one eyebrow, and for one awful, wonderful second he looked exactly like himself, like he was about to tell her to get lost." },
+          { n: "The nurse came in a minute later, took it off him without comment, folded it, and put it on the side table by his hand. Solar let her. It was probably where it belonged." }
+        ] }
+      ] },
+      { n: "At the door she stopped and looked back, and felt the old instinct come up in her like a reflex, the one from every town and every school and every last day, to memorize the room so she'd have it later." },
+      { n: "She didn't. She was coming back Thursday. You only memorized the places you were leaving." }
+    ] },
+    { title: 'stop poking it', place: 'Iwatodai Dorm · Kitchen', music: 'tender', scene: [
+      { n: "Sunday, and the kitchen, and the card propped against the rice cooker where she could see it, and Solar standing in front of his burner holding his pan for a long time before she put it on the flame." },
+      { n: "Nobody had cooked in it since October. Yukari had washed it once, very carefully, and hung it back on its hook, and that had been the extent of it, a whole dorm walking around a frying pan like it was a grave." },
+      { n: "She was cutting the onion, thin, thinner, when she noticed Ken in the doorway. He had his hands behind his back and his slippers lined up exactly on the line where the hallway floor turned into kitchen tile, like it was a border he needed permission to cross." },
+      { s: 'ken', f: 'neutral', t: "Is that Shinjiro-san's recipe?" },
+      { choose: [
+        { t: "It is. Want to help?", notes: 3, then: [
+          { s: 'ken', f: 'happy', t: "...Can I?" },
+          { n: "He washed his hands for a full minute, both sides and between the fingers, the way they taught you at school, and then stood at her elbow and did exactly what the card said, in order, reading it under his breath. When the pork went into the pan he flinched at the hiss, and then leaned in closer instead of back." }
+        ] },
+        { t: "It is. You can watch.", notes: 2, then: [
+          { s: 'ken', f: 'neutral', t: "I'll watch." },
+          { n: "He stood at the border and watched. After ten minutes he took one step over it. After twenty he was holding the card for her because she had sauce on her fingers, and neither of them said anything about the step." }
+        ] },
+        { t: "(Hand him the card without a word.)", notes: 3, then: [
+          { n: "He took it in both hands, the way you take a certificate at an assembly, and read it all the way to the bottom, where it said stop poking it, and his mouth did something small and complicated." },
+          { s: 'ken', f: 'sad', t: "...He wrote the way he talked." }
+        ] }
+      ] },
+      { n: "The pork took an hour. She did not lift the lid. It cost her something every single minute, and Ken watched her not lift it with total concentration, the way you'd watch someone hold their breath underwater." },
+      { s: 'ken', f: 'serious', t: "I'm still angry. I want you to know that. I don't think I'm supposed to say it." },
+      { s: 'ken', f: 'sad', t: "I also want him to wake up. Both. I don't know if you're allowed to want both." },
+      { choose: [
+        { t: "You're allowed.", notes: 3, then: [
+          { s: 'ken', f: 'neutral', t: "...Okay." },
+          { n: "He said it the way he said thank you for things nobody else thanked anyone for, carefully, like he was putting it on a shelf where he'd be able to find it again." }
+        ] },
+        { t: "I think he'd tell you to stop poking it.", notes: 2, then: [
+          { s: 'ken', f: 'happy', t: "...That's not what it means." },
+          { s: 'solar', t: "Isn't it?" },
+          { s: 'ken', f: 'neutral', t: "...Maybe it is." }
+        ] }
+      ] },
+      { place: 'Tatsumi Memorial Hospital · 3F Ward', time: 'Evening', music: 'tender' },
+      { n: "She took it to him in a plastic container inside her coat, to keep it warm, and it wasn't until she was on the monorail with her hand pressed flat over it that she understood whose move that was. The alley. Every time. Her face went hot. She kept the container where it was." },
+      { n: "He couldn't eat it. She knew that. She opened the lid anyway and set it on the side table beside the beanie, and the room filled up with soy and ginger and the slow dark smell of something that had been left alone long enough to be good, and the night nurse, passing the door, stopped, and sniffed, and said oh, in a completely different voice, and kept walking." },
+      { choose: [
+        { t: "(Eat it at his bedside, so the room smells like his kitchen.)", notes: 3, then: [
+          { n: "She ate it at his bedside with disposable chopsticks, slowly, the way he'd watched her eat on the shrine steps in May. It was too salty. She'd known it would be. She could hear exactly how he'd say it, and since he wasn't going to, she did." },
+          { s: 'solar', t: "It could use a little less salt." },
+          { n: "Nothing answered. She finished it anyway, which was what you did with food somebody had made for you, even when the somebody was you, even when it was wrong." }
+        ] },
+        { t: "(Tell him Ken helped.)", notes: 3, then: [
+          { n: "She told him Ken helped. She told him Ken had washed his hands for a whole minute and read the card under his breath and hadn't stepped back when the pan hissed. She told him Ken had said both." },
+          { n: "She didn't explain what both meant. She had a feeling he'd know." }
+        ] }
+      ] },
+      { n: "When she got home and went to wash the container out, the card was still propped against the rice cooker, except somebody had smoothed it flat. In pencil, very small and very neat, in the margin beside the line about the water, somebody had added up to the first knuckle." },
+      { n: "It was Ken's handwriting. She left it there." }
+    ] },
+    { title: 'the window', place: 'Tatsumi Memorial Hospital · 3F Ward', music: 'tender', scene: [
+      { n: "Koromaru had not been inside Tatsumi Memorial since October, because dogs weren't allowed, and he had been informed of the policy several times by several people and had accepted none of them." },
+      { n: "So Akihiko had a plan. Akihiko always had a plan, and the plan was always slightly worse than the problem, and this one involved Solar upstairs at the window of the ward and him downstairs in the courtyard with the dog, and a phone call, and a great deal of faith in the third floor's blinds." },
+      { phone: [
+        { from: 'akihiko', t: 'in position' },
+        { from: 'akihiko', t: 'which window' },
+        { from: 'solar', t: 'the one with a girl waving in it' },
+        { from: 'akihiko', t: 'there are three girls waving' },
+        { from: 'akihiko', t: 'why are there three' }
+      ], contact: 'Akihiko Sanada', handle: 'akihiko', me: 'solar' },
+      { n: "Two of them were nurses. They had heard about the plan at the station and had opinions on it, and now they stood at the next window along with their arms folded, pretending not to be invested." },
+      { n: "Solar pulled the blind all the way up. The afternoon came in thin and gold across the bed and the blanket and his hands, and down in the courtyard, on the brown winter grass by the benches, Akihiko lifted a white dog over his head with both arms like a championship belt." },
+      { n: "Koromaru looked extremely dignified about this. His tail was going so hard that his whole back end went with it." },
+      { choose: [
+        { t: "(Turn Shinjiro's face toward the window.)", notes: 3, then: [
+          { n: "She did it the way the nurses did, one hand under his head, gently, so it rolled a little on the pillow toward the light. It was the closest she'd been to his face since the kitchen on the third. She made herself not think about that, and thought about it." },
+          { n: "Down below, Koromaru barked, once, up at the third floor, at a window nobody on the ground could see into, and then sat down on Akihiko's foot and stayed there, looking up." }
+        ] },
+        { t: "(Hold the phone to his ear.)", notes: 3, then: [
+          { n: "She called Akihiko back and held the phone to Shinjiro's ear, and down in the courtyard Akihiko crouched and held his phone to the dog, and for a second there was nothing, just wind across the receiver, and then Koromaru barked, short and bright, the bark he did in the front hall when a key turned in the lock." },
+          { n: "She kept the phone there a long time after. Nothing changed. She hadn't really thought it would. She kept it there anyway." }
+        ] },
+        { t: "(Wave back. Both arms. Like an idiot.)", notes: 2, then: [
+          { n: "She waved with both arms like an idiot, and Akihiko waved the dog back at her, and the nurses at the next window waved too, for no reason at all, and the whole thing was so stupid that she started laughing and couldn't stop and had to sit down on the end of his bed." },
+          { n: "He didn't mind, because he couldn't. She told him he would have minded, a lot, and that made it so much worse." }
+        ] }
+      ] },
+      { n: "Afterward Akihiko came up with grass on his knees and white hair all down the front of his jacket, and sat in the chair, his chair, and looked at Shinji for a while without saying anything." },
+      { s: 'akihiko', f: 'sad-2', t: "He'd say it was a stupid plan." },
+      { choose: [
+        { t: "It was a stupid plan.", notes: 3, then: [
+          { s: 'akihiko', f: 'happy', t: "...Yeah. It was a great stupid plan." }
+        ] },
+        { t: "He'd say it, and then he'd come down to the courtyard.", notes: 3, then: [
+          { s: 'akihiko', f: 'sad-3', t: "...Every time. Complaining the whole way down the stairs." },
+          { n: "He said it to his hands. Then he laughed, short and surprised, like a cough, and it was so much like somebody else's laugh that neither of them said anything for a while." }
+        ] }
+      ] },
+      { n: "When they left, the blind was still up. She'd meant to pull it down. She left it, so the afternoon could keep coming in without asking anyone's permission." }
+    ] },
+    { title: 'the last sense', place: 'Tatsumi Memorial Hospital · 3F Ward', music: 'tender', scene: [
+      { n: "It had snowed in the night, and the city had that held-breath quiet the morning after, everything muffled, the monorail crawling over a white bay, and she got to Tatsumi with snow in her hair and her fingers too cold to work the zip on her coat." },
+      { n: "The night nurse was on, the one who knew Akihiko well enough to point down the hall with her pen. She knew Solar now too. She pointed with her pen. Then, without looking up from her clipboard, she said that people in his condition could sometimes hear, that it was the last sense to go and the first to come back, that nobody really knew, but that she talked to all of hers, just in case." },
+      { n: "Solar thanked her. She went down the hall thinking about everything she'd said in that room since October on the assumption that nobody was listening, and her face went hot, and then cold, and then she decided it was fine. It had mostly been about rice." },
+      { n: "His hand was on top of the blanket where it always was. She took it without asking, because there was nobody to ask." },
+      { n: "It was cold. Not the cold of the street, a slower one, the particular cold of a hand nobody had been holding. She put it between both of hers and held on and waited, and it warmed, slowly, the way a room does when the heating finally comes on, and she understood perfectly well that the warmth was only hers coming back to her, and held on anyway." },
+      { choose: [
+        { t: "(Tell him the thing you've never told anyone.)", notes: 3, then: [
+          { n: "So she told him about the towns. All of them, in order. Every school, every last day, the boxes, the way you learned by the third move to stop unpacking and just live out of the suitcase, the way you learned to count the days down from the first morning so the last one couldn't surprise you." },
+          { n: "She told him she'd stopped counting. Sometime in the summer. Sometime around a supermarket and two cups of instant ramen and a man putting them back on the shelf like stolen goods." },
+          { n: "She'd never said any of it out loud. It was easier to say to a room that might not be listening. She suspected that was cheating. She did it anyway." }
+        ] },
+        { t: "(Say it again, in case he missed it in September.)", notes: 3, then: [
+          { s: 'solar', t: "I fell for you, Shinji. Don't make it weird." },
+          { n: "It came out in his voice, almost, the flat way he'd said thanks for listening on the roof, and she heard it and nearly laughed, and didn't, because her throat had closed around the end of it like a fist." }
+        ] },
+        { t: "(Just hold on.)", notes: 2, then: [
+          { n: "She just held on. The snow came down past the window, thick and slow, and the monitor kept its count, and she matched her breathing to it without meaning to, the way you fall into step with someone walking beside you." }
+        ] }
+      ] },
+      { n: "Before she left she did the one thing she'd wanted to do since the first visit and hadn't, because it had felt like taking something. She leaned down and kissed his forehead, quickly, under the hair somebody kept brushing the wrong way. His skin was warm now. She had done that." },
+      { n: "On her way out she fixed his hair. The right way. She knew which way it went." }
+    ] }
+  ],
+  // Christmas Eve at the ward. Akihiko's text is the buzz from the pick scene.
+  christmas: { place: 'Tatsumi Memorial Hospital · 3F Ward', scene: [
+    { phone: [
+      { from: 'akihiko', t: "ward's letting people stay late tonight. christmas eve. i asked" },
+      { from: 'akihiko', t: 'go' },
+      { from: 'akihiko', t: "i'll go tomorrow. tonight's yours" },
+      { from: 'solar', t: 'aki' },
+      { from: 'akihiko', t: "don't make it a thing" }
+    ], contact: 'Akihiko Sanada', handle: 'akihiko', me: 'solar' },
+    { n: "Tatsumi Memorial did Christmas the way hospitals did, earnestly and on a budget. There was a paper chain across the nurses' station. There was a tree on the counter about the height of a rice cooker, with one string of lights blinking in a pattern somebody had clearly chosen on purpose and then come to regret. Someone had put a Santa hat on the hand sanitizer." },
+    { n: "The night nurse looked at Solar's face when she came out of the elevator, and at the box in her hands, and at the snow melting on her shoulders, and lifted her pen and pointed down the hall, and said without looking up that visiting hours were whatever she said they were tonight." },
+    { n: "Outside his window the city was doing what it did on Christmas Eve, every couple in Iwatodai out at once under the lights, holding hands in the cold like it was the law. On the third floor it was quiet, and warm, and smelled of floor polish, and of him, a little, still, from the beanie on the side table." },
+    { n: "She had brought a cake. Of course she had. It was the convenience-store kind, one slice of strawberry shortcake in a plastic triangle with a single strawberry on top looking deeply sorry for itself, because that was what you did on Christmas Eve in this country, and she had decided at the register that he was getting the full experience whether he liked it or not." },
+    { s: 'solar', t: "Merry Christmas, Shinji. Before you say anything, I know. The cream's from a can." },
+    { n: "He didn't say anything. She could hear exactly what he would have said, though. She could hear the tch. She ate half of it with the little plastic fork and left the other half, and the strawberry, on the side table beside the beanie, which was ridiculous, and which she did anyway." },
+    { n: "Then she took out the other thing." },
+    { n: "It was an index card, plain and white and a little bent from her pocket, and she'd written on it in her own handwriting, which was nothing like his, round where his was blocky, careless where his was careful, because it had taken her three cards and most of an evening and she'd given up on neat somewhere around the second." },
+    { n: "It was a recipe. Hers. The first one she'd ever worked out without somebody standing behind her with a hand over hers on the knife. Rice and egg and the end of Sunday's pork and a little broth, the thing she'd been making for Koromaru since October, which he ate every night facing the door, and which was probably only good because dogs had no standards. Every step. Every measurement. In the order she did it." },
+    { n: "At the bottom she'd left a space. She'd been carrying a pen around all week." },
+    { choose: [
+      { t: "(Write: so you can make it, when you're back.)", notes: 3, then: [
+        { n: "So you can make it, when you're back. She wrote it slowly, against her knee. It was his line from September turned inside out, and she knew it, and wrote it anyway, and underlined it twice, because that was how you told someone it was the important part." }
+      ] },
+      { t: "(Write: stop poking it.)", notes: 3, then: [
+        { n: "Stop poking it. She underlined it twice, the way he had. It was the only line on his card she'd never once needed to read, and the only one she couldn't stop reading, and it seemed only fair to give it back." }
+      ] },
+      { t: "(Write: don't take forever.)", notes: 3, then: [
+        { n: "Don't take forever. It was what he'd texted every single time she said she was on her way, yeah, don't take forever, like someone who'd been kept waiting his whole life and had decided not to hold it against anybody. She underlined it twice. She meant it more than anything she'd ever written down." }
+      ] }
+    ] },
+    { n: "She slid the card under his hand on the blanket, carefully, so his fingers lay across it. Where he'd find it first." },
+    { n: "Somewhere across the bay a bell started ringing in Port Island, slow and late, the way it did every Christmas Eve. She didn't count the strokes. She'd stopped counting things." },
+    { choose: [
+      { t: "(Lay your head on the edge of the bed, beside his hand.)", notes: 3, then: [
+        { n: "She folded her arms on the edge of the mattress and put her head down on them, next to his hand, close enough that if he moved at all, even one finger, she'd feel it. He didn't. She stayed like that anyway, for a long time, while the little tree at the nurses' station blinked its regrettable pattern down the hall and his hand was warm by her face." },
+        { n: "It was, she would think later, in spite of everything, a good Christmas. It was the first one she had ever spent somewhere she meant to stay." }
+      ] },
+      { t: "(Kiss him goodnight.)", notes: 3, then: [
+        { n: "She leaned over and kissed him once, gently, at the corner of his mouth, the way you'd leave a note on someone's door at night so it was the first thing they saw in the morning. He was very still. She hadn't expected anything else." },
+        { n: "She had been saving that, she realized, since the kitchen and the moon on the window and the beanie coming down over her ears. It would keep. She decided it would keep fine." }
+      ] }
+    ] },
+    { n: "At eleven the nurse came by and didn't tell her to go. She put a blanket over Solar's shoulders instead, the thin hospital kind, and switched off the overhead light, and left the door open a crack so the hallway could come in." },
+    { n: "Solar fell asleep in the chair. She woke once, near two, and didn't know where she was, and then did, the monitor and the snow and the shape of him in the dark. She went back to sleep with her hand beside his on the blanket. Not holding it. Just near. The way you leave a light on for somebody who's coming home late." }
+  ] },
   romance: true,
   closes: '10/4',
   cast: { koromaru: 'Koromaru', ken: 'Ken', akihiko: 'Akihiko' },
