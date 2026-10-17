@@ -445,7 +445,7 @@ window.FemcSocial = (() => {
     el.innerHTML = `<div class="vn-bg"></div><div class="vn-place"><b>${when}</b><span></span></div>
       <img class="vn-portrait" alt="">
       <img class="vn-solar" alt="" hidden>
-      <div class="vn-tools">${F().canFullscreen?.() ? `<button type="button" data-t="full" aria-label="Fullscreen" title="Fullscreen (F)">⛶</button>` : ''}<button type="button" data-t="log">Log</button><button type="button" data-t="auto" aria-pressed="false" title="Auto (A)">Auto ▸</button><button type="button" data-t="skip">Skip ▸▸</button><button type="button" data-t="leave">Leave</button></div>
+      <div class="vn-tools">${F().canFullscreen?.() ? `<button type="button" data-t="full" aria-label="Fullscreen" title="Fullscreen (F)">⛶</button>` : ''}<button type="button" data-t="log">Log</button><button type="button" data-t="auto" aria-pressed="false" title="Auto: off (A)">Auto</button><button type="button" data-t="skip">Skip ▸▸</button><button type="button" data-t="leave">Leave</button></div>
       <div class="vn-log" hidden><div class="vn-log-inner"></div><button type="button" data-t="log-close">Close log</button></div>
       <div class="vn-choices"></div>
       <div class="vn-box" aria-live="polite"><span class="vn-name"></span><p class="vn-text"></p></div>`;
@@ -663,19 +663,25 @@ window.FemcSocial = (() => {
     el.querySelector('[data-t="skip"]').addEventListener('click', () => { skipping = true; advanceClick(); const run = () => { if (skipping && waiting && !choices.children.length) { advanceClick(); setTimeout(run, 60); } }; setTimeout(run, 60); });
     el.querySelector('[data-t="leave"]').addEventListener('click', () => end(false));
     // Auto: once a line has finished typing, wait long enough to read it, then go on. Stops at choices, the bond
-    // meter and title cards; remembered between scenes.
+    // meter and title cards. Clicking cycles off → normal → fast → slow → off; remembered between scenes.
     const autoBtn = el.querySelector('[data-t="auto"]');
-    let auto = false, readyAt = 0;
-    try { auto = localStorage.getItem('kg-femc-auto') === 'on'; } catch (e) {}
-    const setAuto = on => { auto = on; readyAt = 0; autoBtn.setAttribute('aria-pressed', String(on)); try { localStorage.setItem('kg-femc-auto', on ? 'on' : 'off'); } catch (e) {} };
-    setAuto(auto);
-    autoBtn.addEventListener('click', () => setAuto(!auto));
+    const AUTO = { off: { label: 'Auto', pace: 0 }, normal: { label: 'Auto ▸', pace: 1 }, fast: { label: 'Auto ▸▸', pace: 0.55 }, slow: { label: 'Auto ·', pace: 1.7 } };
+    const ORDER = ['off', 'normal', 'fast', 'slow'];
+    let mode = 'off', readyAt = 0;
+    try { mode = localStorage.getItem('kg-femc-auto') || 'off'; if (mode === 'on') mode = 'normal'; if (!AUTO[mode]) mode = 'off'; } catch (e) {}
+    const setAuto = m => {
+      mode = m; readyAt = 0;
+      autoBtn.textContent = AUTO[m].label; autoBtn.title = `Auto: ${m} (A)`; autoBtn.setAttribute('aria-pressed', String(m !== 'off'));
+      try { localStorage.setItem('kg-femc-auto', m); } catch (e) {}
+    };
+    setAuto(mode);
+    autoBtn.addEventListener('click', () => setAuto(ORDER[(ORDER.indexOf(mode) + 1) % ORDER.length]));
     const autoTick = setInterval(() => {
       if (!el.isConnected) return clearInterval(autoTick);
-      const can = auto && !skipping && waiting && !typing && !choices.children.length && el.querySelector('.vn-log').hidden && !el.querySelector('.vn-title, .vn-rank, .vn-naming');
+      const can = mode !== 'off' && !skipping && waiting && !typing && !choices.children.length && el.querySelector('.vn-log').hidden && !el.querySelector('.vn-title, .vn-rank, .vn-naming');
       if (!can) { readyAt = 0; return; }
       if (!readyAt) readyAt = Date.now();
-      const wait = el.classList.contains('phoning') ? 1400 : Math.min(7000, 1100 + textEl.textContent.length * 38);
+      const wait = AUTO[mode].pace * (el.classList.contains('phoning') ? 1400 : Math.min(7000, 1100 + textEl.textContent.length * 38));
       if (Date.now() - readyAt >= wait) { readyAt = 0; advanceClick(); }
     }, 200);
     el.querySelector('[data-t="full"]')?.addEventListener('click', () => F().fullscreen());
