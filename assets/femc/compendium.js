@@ -14,6 +14,17 @@ window.FEMC_COMPENDIUM = [
   "secret": true
  },
  {
+  "id": "jungwon",
+  "name": "Yang Jungwon",
+  "from": "Hoax",
+  "img": null,
+  "unlock": "met:jungwon",
+  "note": "Student council president of a school nobody here has heard of. He keeps saying you look like someone.",
+  "arcana": "V · Hierophant",
+  "link": "social.html#jungwon",
+  "secret": true
+ },
+ {
   "id": "femc",
   "name": "FeMC",
   "from": "Persona 3 Portable",

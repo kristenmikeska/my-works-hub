@@ -456,15 +456,15 @@ FemcSocial.secrets({
       place: "Iwatodai Strip · Yeobo's Cafe", stamp: 'yeobos-cafe', scene: [
       { n: "There was a cafe on the strip that had not been there yesterday, wedged between the shuttered pachinko place and the ramen shop like it had always been there and resented being asked. Warm windows. A hand-lettered sign. YEOBO'S." },
       { n: "The bell above the door dinged when she pushed it open, and inside it smelled like butter and espresso and somebody's homework, and it was so cozy it was almost rude about it." },
-      { s: 'hx-sunoo', t: "Hello, welcome to the cafe!" },
+      { s: 'hx-sunoo', f: 'happy', t: "Hello, welcome to the cafe!" },
       { n: "The boy behind the counter had soft hair falling in his eyes and a smile that seemed to cost him nothing at all. SUNOO, said his nametag, with a star drawn next to it in gel pen." },
-      { s: 'hx-sunoo', t: "What can I get you?" },
+      { s: 'hx-sunoo', f: 'neutral', t: "What can I get you?" },
       { choose: [
         { t: "What do you recommend?", then: [
-          { s: 'hx-sunoo', t: "The croissants! If my friends haven't eaten them all. They do that." }
+          { s: 'hx-sunoo', f: 'happy', t: "The croissants! If my friends haven't eaten them all. They do that." }
         ] },
         { t: "Just a coffee, please.", then: [
-          { s: 'hx-sunoo', t: "Just a coffee! Okay. I'm putting a croissant on the tray anyway. You look like you've had a day." }
+          { s: 'hx-sunoo', f: 'happy', t: "Just a coffee! Okay. I'm putting a croissant on the tray anyway. You look like you've had a day." }
         ] }
       ] },
       { n: "A booth in the back was full of boys in two different kinds of uniform, all talking at once. One of them got up as she passed, plucked a flower out of the vase on the table, and bowed so deeply it was almost a threat." },
@@ -472,7 +472,7 @@ FemcSocial.secrets({
       { s: 'hx-jacket', t: "Dude. Pack it up already." },
       { s: 'hx-tall', t: "Please leave the girl alone, Sunghoon." },
       { n: "The bell dinged again. A boy came in fast, books under one arm, tie loosened like he'd been fighting it all day and had only just won, and Sunoo lit up." },
-      { s: 'hx-sunoo', t: "Jungwon! Did you ever eat lunch?" },
+      { s: 'hx-sunoo', f: 'surprised', t: "Jungwon! Did you ever eat lunch?" },
       { s: 'hx-jungwon', f: 'neutral', t: "When would I have had time to do that." },
       { choose: [
         { t: "(Offer him your croissant.)", then: [

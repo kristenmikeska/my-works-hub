@@ -399,5 +399,21 @@ window.FEMC_PORTRAITS = {
   "sad",
   "serious",
   "surprised"
+ ],
+ "sunoo": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "jihoon": [
+  "happy",
+  "happy-2",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
  ]
 };

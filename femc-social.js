@@ -90,7 +90,7 @@ window.FemcSocial = (() => {
 
   /* ── Portraits ───────────────────────────────────── */
   // Characters drawn with someone else's portraits (the girl on the bench is Wren before she has a name).
-  const SAME_FACE = { porter: 'wren' };
+  const SAME_FACE = { porter: 'wren', 'hx-flower': 'sunghoon' };
   // Cameos in secret scenes have ids like 'hx-jungwon'; they use that person's portraits ('jungwon') when there are some.
   const faceId = id => SAME_FACE[id] || ((window.FEMC_PORTRAITS || {})[id] ? id : (id || '').replace(/^[a-z0-9]+-/, ''));
   function portrait(id, face) {
@@ -658,7 +658,7 @@ window.FemcSocial = (() => {
       const up = p.xp >= req;
       if (up) { p.rank = r + 1; (p.rankDay ||= {})[p.rank] = S.d; p.xp = 0; delete p.ready; } else p.ready = r;
       save();
-      if (up) (link.stamps?.[p.rank] || []).forEach(id => F().load('achievements.js?v=12', () => window.Achievements).then(() => window.Achievements?.unlock(id)));
+      if (up) (link.stamps?.[p.rank] || []).forEach(id => F().load('achievements.js?v=13', () => window.Achievements).then(() => window.Achievements?.unlock(id)));
       const done = () => { close(); if (!S.free) advance(); opts.onDone?.(true); };
       const after = () => (up ? rankUp(link, p.rank, done) : done());
       req ? meter(link, r, from, Math.min(from + gained, req), req, up, after, gained) : after();
@@ -1091,7 +1091,7 @@ window.FemcSocial = (() => {
     STORY.events.push(...(data.moments || []).map(m => ({ date: '4/7', ...m, secret: true })));
     SECRETS.places.push(...(data.places || []));
   }
-  const stamp = id => id && F().load('achievements.js?v=12', () => window.Achievements).then(() => window.Achievements?.unlock(id));
+  const stamp = id => id && F().load('achievements.js?v=13', () => window.Achievements).then(() => window.Achievements?.unlock(id));
   // Hidden places open on the Go Out map tonight, not yet visited.
   function secretPlaces() {
     const md = now().md;
