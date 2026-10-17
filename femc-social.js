@@ -346,7 +346,7 @@ window.FemcSocial = (() => {
     const i = p.dated || 0;
     const pick = pool[romance && i < pool.length ? i : i % pool.length];
     const scene = Array.isArray(pick) ? pick : pick.scene;
-    return { place: pick.place || link.home.place, scene, title: pick.title, music: pick.music || (romance ? 'tender' : undefined) };
+    return { place: pick.place || link.home.place, scene, title: pick.title, music: pick.music || (romance ? 'date' : undefined) };
   }
   function hangoutScene(link, p) {
     const pool = link.hangouts || [];
@@ -355,21 +355,24 @@ window.FemcSocial = (() => {
       { choose: [{ t: '(Mostly listen.)', notes: 2 }, { t: '(Tell them about your week.)', notes: 3 }, { t: '(Tease them a little.)', notes: 1 }] },
       { n: `${link.short} seemed to have a good time.` }
     ];
-    return { place: link.home.place, scene, music: link.music || (/^Gekkoukan High/.test(link.home.place) ? 'school' : 'joy') };
+    return { place: link.home.place, scene, music: link.music || (/^Gekkoukan High/.test(link.home.place) ? 'school' : CITY.test(link.home.place) ? 'city' : 'joy') };
   }
 
   /* ── Scene music, chosen by mood the way Persona does ── */
   // A rank (or a scene line) can name a mood with `music`; otherwise the place decides.
   const SCENE_MUSIC = {
     joy: 'joy', school: 'after-school', sun: 'sun', tender: 'tender-feeling',
-    mystery: 'this-mysterious-feeling', night: 'tranquility', velvet: 'poem-for-everyones-souls'
+    mystery: 'this-mysterious-feeling', night: 'tranquility', velvet: 'poem-for-everyones-souls',
+    date: 'heartbeat-heartbreak', city: 'paulownia-mall', battle: 'mass-destruction'
   };
+  const CITY = /^(Paulownia Mall|Iwatodai Strip|Port Island Station)/;
   function moodFor(link, rank, r, place = rank.place || '') {
     if (rank.music) return rank.music;
     if (link.theme === 'velvet' || /Velvet Room/.test(place)) return 'velvet';
     if (/Dark Hour|Tartarus/.test(place)) return 'night';
     if (r === 9) return 'tender';
     if (/^Gekkoukan High/.test(place)) return 'school';
+    if (CITY.test(place)) return 'city';
     return link.music || 'joy';
   }
   function sceneMusic() {
