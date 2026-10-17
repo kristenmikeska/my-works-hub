@@ -31,6 +31,7 @@ window.FEMC_PORTRAIT_SCALE = {
   hyein: 0.95,
   hyunsuk: 1.1,
   ignis: 1.03,
+  jaehyuk: 1.0,
   jaehyun: 1.0,
   jake: 1.0,
   jay: 0.95,

@@ -75,7 +75,7 @@ FemcSocial.secrets({
       { s: 'hxp-cherry', f: 'serious', t: "And don't even think about it. You know what happened last time." },
       { n: "Solar did not know what had happened last time. She decided, looking at Cherry's face, that she was better off not finding out." },
       { n: "Someone else came in out of the rain then, a boy in the same navy blazer with an umbrella folded very neatly under one arm and a folder held to his chest like it had been entrusted to him by the government, apologizing to the token machine as he edged past it." },
-      { s: 'hxp-jaehyuk', t: "Sorry I'm late. The committee meeting ran over. The president wanted to go through the budget again. Twice." },
+      { s: 'hxp-jaehyuk', f: 'sad', t: "Sorry I'm late. The committee meeting ran over. The president wanted to go through the budget again. Twice." },
       { s: 'hxp-jihoon', f: 'serious', t: "Of course he did. Yang would put the sun on an agenda if he could get somebody to second it." },
       { n: "He said the name the way some people step on a crack in the sidewalk, on purpose, with a little bit of satisfaction." },
       { ifRank: { jungwon: 1 }, then: [
@@ -109,7 +109,7 @@ FemcSocial.secrets({
         { s: 'hxp-junkyu', f: 'neutral', t: "You said it first, though." },
         { s: 'hxp-jihoon', f: 'serious', t: "I'm allowed." }
       ] },
-      { s: 'hxp-jaehyuk', t: "...Good evening, Solar. You look very well rested." },
+      { s: 'hxp-jaehyuk', f: 'happy', t: "...Good evening, Solar. You look very well rested." },
       { s: 'hxp-asahi', f: 'happy', t: "That's the scariest thing anyone's ever said to her." },
       { n: "It took Jihoon six more tries. On the sixth the claw caught the plush dog by its crooked ear and held on out of what looked like pure spite, and carried it all the way across, swaying, and dropped it down the chute, and the machine played a tinny little fanfare that nobody in the corner said anything over. He fished the dog out and shoved it at her without looking at her face." },
       { s: 'hxp-jihoon', f: 'neutral', t: "For Nana. Not for you. Don't make it weird." },
