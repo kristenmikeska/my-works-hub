@@ -49,6 +49,7 @@ window.FemcSocial = (() => {
     (link.texts || []).forEach(t => TEXTS.push({ link: link.id, thread: link.id, ...t }));
   }
   // Secret links (and their texts) need every condition in `unlock`: { stamps: [ids], links: { id: rank }, after: 'M/D' }.
+  // Also: met, romance: [ids] (all on the romance route), romances: N (dating at least N people), codes, seen.
   function unlockMet(u) {
     if (!u) return true;
     const got = window.Achievements ? Achievements.unlocked() : {};
@@ -59,8 +60,11 @@ window.FemcSocial = (() => {
     if ((u.romance || []).some(id => progress(id).route !== 'romance')) return false;
     if ((u.codes || []).some(c => !typedCodes().includes(c))) return false;
     if ((u.seen || []).some(id => !(S.story?.seen || []).includes(id))) return false;
+    if (u.romances && loves().length < u.romances) return false;
     return true;
   }
+  // Everyone Solar is dating (romance route, met), closest first. Scenes can name them with {love1}, {love2}, {love3}.
+  const loves = () => Object.values(links).filter(l => isMet(l.id) && progress(l.id).route === 'romance').sort((a, b) => progress(b.id).rank - progress(a.id).rank || a.id.localeCompare(b.id));
   // Codes typed in FEMC mode (femc-eggs.js keeps them in their own key so the two scripts never overwrite each other).
   const typedCodes = () => { try { return JSON.parse(localStorage.getItem('kg-femc-codes')) || []; } catch (e) { return []; } };
   const arrived = link => S.free || ((!link.arrives || S.d >= dayOf(link.arrives)) && unlockMet(link.unlock));
@@ -443,7 +447,7 @@ window.FemcSocial = (() => {
     // Flatten the scene into a queue we can push branches onto.
     const queue = [...rank.scene];
     let typing = null, full = '', waiting = null, skipping = false;
-    const sub = text => text.replace(/\{name\}/g, 'Solar');
+    const sub = text => text.replace(/\{name\}/g, 'Solar').replace(/\{love([1-3])\}/g, (m, i) => loves()[i - 1]?.short || 'someone');
     function showPortrait(who, face) {
       const src = portrait(who, face || 'neutral');
       const key = `${who}/${src}`;
