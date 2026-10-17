@@ -26,11 +26,11 @@ window.FEMC_COMPENDIUM = [
  },
  {
   "id": "femc",
-  "name": "FeMC",
-  "from": "Persona 3 Portable",
-  "img": "assets/femc/img/femc-portrait.jpg",
+  "name": "Solar",
+  "from": "Gekkoukan High · S.E.E.S.",
+  "img": "assets/femc/portraits/solar/neutral.webp",
   "unlock": "femc",
-  "note": "The girl with the XXII hairclips. On this side of the site, she is you."
+  "note": "Third-year. Transfer student. Headphones on, armband on. On this side of the site, she is you."
  },
  {
   "id": "elizabeth",

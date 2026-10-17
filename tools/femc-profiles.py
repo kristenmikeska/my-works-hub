@@ -18,9 +18,10 @@ ALIASES = {
     'shinjiart': 'shinjiro',
     'P5RAnnTakamaki': 'ann',
     'An_takamaki': None,          # the other Ann option, not used
+    'Solar': 'femc',              # the player (the compendium's "femc" entry)
 }
 # Keep only the top part of tall full-length art, so the figure isn't tiny on the page (fraction of the height).
-CROP_TOP = {'ann': 0.625, 'mercy': 0.6, 'kiriko': 0.6, 'haechan': 0.6, 'haru': 0.56, 'kasumi': 0.6, 'astarion': 0.6, 'aphrodite': 0.6, 'shadowheart': 0.6, 'kuromi': 0.6, 'sebastian': 0.6, 'cloud': 0.6, 'judy': 0.6, 'noctis': 0.6, 'leon': 0.6, 'rio': 0.6, 'saori': 0.6}
+CROP_TOP = {'ann': 0.625, 'mercy': 0.6, 'kiriko': 0.6, 'haechan': 0.6, 'haru': 0.56, 'kasumi': 0.6, 'astarion': 0.6, 'aphrodite': 0.6, 'shadowheart': 0.6, 'kuromi': 0.6, 'sebastian': 0.6, 'cloud': 0.6, 'judy': 0.6, 'noctis': 0.6, 'leon': 0.6, 'rio': 0.6, 'saori': 0.6, 'femc': 0.6}
 
 
 def cut_background(im):

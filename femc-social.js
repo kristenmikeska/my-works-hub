@@ -140,6 +140,11 @@ window.FemcSocial = (() => {
     .vn-name:empty { visibility: hidden; }
     .vn-text { position: relative; min-height: 7.2em; margin: -4px 0 0; padding: 22px 28px 26px; border: 2px solid #ff8cc0; border-radius: 4px 26px 4px 26px; background: rgba(20, 7, 15, .93); box-shadow: 8px 8px 0 rgba(255, 79, 158, .45); font-size: clamp(16px, 1.6vw, 19px); line-height: 1.5; font-weight: 600; }
     .vn-text.narration { font-style: italic; color: #f5d9e7; font-weight: 500; }
+    /* Solar's own face, P3R/P5 style, inside the box while she talks. */
+    .vn-me { position: absolute; z-index: 1; left: 18px; top: 44px; width: 112px; height: 112px; border: 2px solid #ff8cc0; border-radius: 4px 18px 4px 18px; background: #3a1028 no-repeat 42% 30% / 250% auto; box-shadow: 4px 4px 0 rgba(255, 79, 158, .45); pointer-events: none; }
+    .vn-me[hidden] { display: none; }
+    .vn.me-talking .vn-text { padding-left: 150px; }
+    .vn-velvet .vn-me { border-color: #8fb0ff; background-color: #0d1840; box-shadow: 4px 4px 0 rgba(60, 110, 255, .45); }
     .vn-text::before { content: ""; position: absolute; left: -40px; top: 26px; border: 16px solid transparent; border-right: 38px solid #ff8cc0; border-left: 0; filter: drop-shadow(0 6px 0 rgba(255, 79, 158, .45)); }
     .vn-text.narration::before, .vn-portrait.dim ~ .vn-box .vn-text::before, .vn-portrait[hidden] ~ .vn-box .vn-text::before { display: none; }
     .vn-text::after { content: "▼"; position: absolute; right: 22px; bottom: 12px; color: #ff4f9e; font-size: 12px; opacity: 0; }
@@ -279,6 +284,8 @@ window.FemcSocial = (() => {
       .vn-box { left: 16px; right: 16px; }
       .vn-text { height: 10.5em; min-height: 0; overflow-y: auto; padding: 18px 18px 24px; }
       .vn-text::before { display: none; }
+      .vn-me { width: 76px; height: 76px; left: 12px; top: 42px; }
+      .vn.me-talking .vn-text { padding-left: 100px; }
       .vn-choices { bottom: calc(4vh + var(--boxh, 220px) + 14px); left: 16px; right: 16px; justify-items: stretch; }
       .vn-choices button { text-align: left; }
       .vn-place { left: 12px; top: 12px; }
@@ -432,11 +439,17 @@ window.FemcSocial = (() => {
       <div class="vn-tools">${F().canFullscreen?.() ? `<button type="button" data-t="full" aria-label="Fullscreen" title="Fullscreen (F)">⛶</button>` : ''}<button type="button" data-t="log">Log</button><button type="button" data-t="skip">Skip ▸▸</button><button type="button" data-t="leave">Leave</button></div>
       <div class="vn-log" hidden><div class="vn-log-inner"></div><button type="button" data-t="log-close">Close log</button></div>
       <div class="vn-choices"></div>
-      <div class="vn-box" aria-live="polite"><span class="vn-name"></span><p class="vn-text"></p></div>`;
+      <div class="vn-box" aria-live="polite"><span class="vn-name"></span><div class="vn-me" hidden></div><p class="vn-text"></p></div>`;
     el.querySelector('.vn-place span').textContent = opts.frame ? rank.place : `${opts.replay ? 'Memory · ' : (now().time + ' · ')}${rank.place}`;
     paint(rank.place, opts.replay || opts.frame ? '' : now().time);
     document.body.appendChild(el);
     const img = el.querySelector('.vn-portrait'), nameEl = el.querySelector('.vn-name'), textEl = el.querySelector('.vn-text'), choices = el.querySelector('.vn-choices');
+    const meEl = el.querySelector('.vn-me');
+    const showMe = face => {
+      const src = face !== null && portrait('solar', face || 'neutral');
+      meEl.hidden = !src; el.classList.toggle('me-talking', !!src);
+      if (src) meEl.style.backgroundImage = `url("${src}")`;
+    };
     let currentFace = null;
     const boxEl = el.querySelector('.vn-box');
     const fit = () => el.style.setProperty('--boxh', `${boxEl.offsetHeight}px`);
@@ -596,15 +609,18 @@ window.FemcSocial = (() => {
         textEl.classList.add('narration');
         img.classList.add('dim');
         log.push({ name: '', text: sub(line.n) });
+        showMe(null);
         return say(line.n, next);
       }
       textEl.classList.remove('narration');
       if (line.s === 'solar') {
         nameEl.textContent = 'Solar';
         img.classList.add('dim');
+        showMe(line.f);
       } else {
         nameEl.textContent = CAST[line.s] || line.s;
         showPortrait(line.s, line.f);
+        showMe(null);
       }
       log.push({ name: nameEl.textContent, text: sub(line.t) });
       say(line.t, next);
