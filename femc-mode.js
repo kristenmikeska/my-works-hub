@@ -7,7 +7,7 @@
   const BASE = new URL('.', document.currentScript.src).href;
   // Cache-busting version for every FEMC data file and image under assets/femc/ (portraits, backgrounds, tarot,
   // profile art, link files, compendium, bgm). Bump it whenever any of them change; see MAINTENANCE.md.
-  const FEMC_ASSET_VERSION = 117;
+  const FEMC_ASSET_VERSION = 118;
   const KEY = 'kg-femc', SOUND = 'kg-femc-sound', BGM = 'kg-femc-bgm';
   const get = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   const set = (k, v) => { try { v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -281,7 +281,7 @@
       el.classList.add('fi-out');
       setTimeout(() => {
         el.remove();
-        if (go === 'enter') { music.start(); eggs(); load('achievements.js?v=17', () => window.Achievements).then(() => window.Achievements?.unlock('femc')); }
+        if (go === 'enter') { music.start(); eggs(); load('achievements.js?v=18', () => window.Achievements).then(() => window.Achievements?.unlock('femc')); }
         else toggle(false);
       }, reduced.matches ? 0 : 650);
     }
@@ -315,7 +315,7 @@
   }
 
   // Easter eggs that only exist on the other side.
-  const eggs = () => load('femc-eggs.js?v=15', () => window.FemcEggs).then(() => { if (isOn()) window.FemcEggs?.start(); });
+  const eggs = () => load('femc-eggs.js?v=16', () => window.FemcEggs).then(() => { if (isOn()) window.FemcEggs?.start(); });
 
   let typed = '';
   document.addEventListener('keydown', e => {
@@ -439,7 +439,7 @@
   }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
 
-  function openMenu() { load('femc-menu.js?v=37', () => window.FemcMenu).then(() => window.FemcMenu?.open()); }
+  function openMenu() { load('femc-menu.js?v=38', () => window.FemcMenu).then(() => window.FemcMenu?.open()); }
   window.FemcMode = { fullscreen, isFullscreen: isFull, canFullscreen: canFull, toggle, isOn, openMenu, nowPlaying: () => music.playing(), sfx, moon, daypart, load, base: BASE, v: FEMC_ASSET_VERSION,
     music: { playing: () => music.playing(), toggle: () => { music.toggle(); paintBadge(); }, next: () => music.next(), tracks: () => music.tracks } };
 })();

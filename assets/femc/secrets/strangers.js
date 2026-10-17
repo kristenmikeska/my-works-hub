@@ -226,11 +226,11 @@ FemcSocial.secrets({
 
     // 1/27 · nobody. She stays.
     { id: 'str-wn-7', thread: 'str-yunjin', date: '1/27', window: 3, slot: 1, rename: 'yunjin 🦋 (incheon)', stamp: 'spare-sol', msgs: [
-      { from: 'str-yunjin', t: "ok so my cousin minjae fixes phones at yongsan" },
-      { from: 'str-yunjin', t: "i made him look up ur number with his little magnifying light" },
-      { from: 'str-yunjin', t: "he says it doesnt exist" },
+      { from: 'str-yunjin', t: "ok so i went to yongsan. the lady two stalls down from where minjae used to be" },
+      { from: 'str-yunjin', t: "i made her look up ur number with his little magnifying light. she kept it" },
+      { from: 'str-yunjin', t: "she says it doesnt exist" },
       { from: 'str-yunjin', t: "32 is incheon. a landline. and the rest isnt assigned to anybody. its not a phone" },
-      { from: 'str-yunjin', t: "he says im texting nobody" },
+      { from: 'str-yunjin', t: "she says im texting nobody" },
       { ask: [
         { t: "Hi. It's nobody.", then: [
           { from: 'str-yunjin', t: "lol" },

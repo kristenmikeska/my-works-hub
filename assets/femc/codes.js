@@ -172,5 +172,33 @@ window.FEMC_CODES = [
    "href": "social.html#ann",
    "text": "Go see her"
   }
+ },
+ {
+  "code": "mudflats",
+  "from": "010-4700-1126",
+  "stamp": "mudflats",
+  "lines": [
+   "eight across. you got it before i finished reading the clue.",
+   "nobody your age knows that word. agasshi did.",
+   "...go to sleep. the tide comes back whether you watch it or not."
+  ],
+  "link": {
+   "href": "readers/strangers.html",
+   "text": "Read strangers"
+  }
+ },
+ {
+  "code": "small wings forever",
+  "from": "@hyein",
+  "stamp": "rn-wing-policy",
+  "lines": [
+   "SMALL WINGS FOREVER. ok who told u that. was it hanni. it was hanni",
+   "two solars. one wing policy. this is binding btw",
+   "im getting it tattooed (im not) (i might)"
+  ],
+  "link": {
+   "href": "readers/runners.html",
+   "text": "Read Runners"
+  }
  }
 ];
