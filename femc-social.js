@@ -584,6 +584,8 @@ window.FemcSocial = (() => {
       if (line.naming) return naming();
       if (line.phone) return phone(line);
       if (line.register) { if (!opts.replay) register(line.register); return next(); }
+      // { stamp: 'id' } unlocks a passport stamp when the scene reaches it (replays too, so every ending can be collected).
+      if (line.stamp) { stamp(line.stamp); if (line.n === undefined && line.t === undefined) return next(); }
       if (line.choose) return ask(line.choose);
       if (line.route) { music.set('tender'); return ask(line.route); }
       if (line.ifRank) { const ok = Object.entries(line.ifRank).every(([id, r]) => progress(id).rank >= r); queue.unshift(...((ok ? line.then : line.else) || [])); return next(); }
@@ -668,7 +670,7 @@ window.FemcSocial = (() => {
       const up = p.xp >= req;
       if (up) { p.rank = r + 1; (p.rankDay ||= {})[p.rank] = S.d; p.xp = 0; delete p.ready; } else p.ready = r;
       save();
-      if (up) (link.stamps?.[p.rank] || []).forEach(id => F().load('achievements.js?v=14', () => window.Achievements).then(() => window.Achievements?.unlock(id)));
+      if (up) (link.stamps?.[p.rank] || []).forEach(id => F().load('achievements.js?v=15', () => window.Achievements).then(() => window.Achievements?.unlock(id)));
       const done = () => { close(); if (!S.free) advance(); opts.onDone?.(true); };
       const after = () => (up ? rankUp(link, p.rank, done) : done());
       req ? meter(link, r, from, Math.min(from + gained, req), req, up, after, gained) : after();
@@ -1102,7 +1104,7 @@ window.FemcSocial = (() => {
     STORY.events.push(...(data.moments || []).map(m => ({ date: '4/7', ...m, secret: true })));
     SECRETS.places.push(...(data.places || []));
   }
-  const stamp = id => id && F().load('achievements.js?v=14', () => window.Achievements).then(() => window.Achievements?.unlock(id));
+  const stamp = id => id && F().load('achievements.js?v=15', () => window.Achievements).then(() => window.Achievements?.unlock(id));
   // Hidden places open on the Go Out map tonight, not yet visited.
   function secretPlaces() {
     const md = now().md;

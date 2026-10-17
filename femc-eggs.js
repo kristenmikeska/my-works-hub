@@ -14,7 +14,7 @@ window.FemcEggs = (() => {
   const reader = document.documentElement.classList.contains('femc-reader');
   const page = (location.pathname.split('/').pop() || 'index.html').replace('.html', '');
   const preview = new URLSearchParams(location.search).get('femcpreview');
-  const unlock = id => { if (!preview) F.load('achievements.js?v=14', () => window.Achievements).then(() => window.Achievements?.unlock(id)); };
+  const unlock = id => { if (!preview) F.load('achievements.js?v=15', () => window.Achievements).then(() => window.Achievements?.unlock(id)); };
   const dayKey = d => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
   let started = false;
   const timers = [];

@@ -12,7 +12,9 @@
    and `else` if she has met none of them (ifRank on its own needs all of them).
    { ifRomance: 'id', then, else } branches on whether Solar is on that link's romance route.
    An event can wait for another with unlock: { seen: ['event-id'] }; `ending: true` marks the last one (after it,
-   the final day stays open: everyone Solar has met is free, as often as she likes). */
+   the final day stays open: everyone Solar has met is free, as often as she likes).
+   `secret: true` keeps an event out of the act titles (it shows under Secrets in the Story tab, framed by `label`),
+   and a scene line { stamp: 'id' } unlocks a passport stamp when the scene reaches it (replays included). */
 function femcMetAny(ids, then, otherwise) {
   return ids.reduceRight((rest, id) => [{ ifRank: { [id]: 1 }, then, else: rest }], otherwise || [])[0];
 }
@@ -2232,6 +2234,238 @@ FemcSocial.story({
       { n: "Solar went last. She stopped in the hall and put her hands in her coat pockets, and they were full." },
       { n: "She had very ordinary hands. She had brought every one she'd ever held." },
       { n: "She went out into the night with the others, and down the steps, and somewhere far down the line, past the station, past the tunnel, out toward wherever it went, a train sighed. For once it didn't sound sorry about anything." }
+    ] },
+
+    /* ── Secret ending (after the epilogue): Haechan at MAX on the romance route. The hour is closing and he has no door,
+       so he offers to walk her home, and she chooses which home: Runners (Syracuse), strangers (Incheon), or here, for now.
+       Each branch ends on its own `stamp` line (engine) and an ENDING card. Plot notes in DO-NOT-OPEN-femc-story.md. ── */
+    { id: 'a4-across', act: '4', date: '1/31', secret: true, label: 'Secret Ending', unlock: { seen: ['a4-the-first-morning'], links: { haechan: 10 }, romance: ['haechan'] }, title: 'up to you', place: 'Iwatodai Dorm · Laundry Room', music: 'tender', scene: [
+      { place: 'Iwatodai Dorm · Laundry Room', time: 'The last of the hour', music: 'tender' },
+      { n: "Afterward, they came home the long way, all of them, through a city that was still green for a little while longer, and nobody said what had happened out there, at the top of everything. Nobody had to. Not even Junpei tried. They went up the stairs one at a time, and the doors closed one at a time along the halls, softly, the way doors close in a house where everyone has decided to be very kind to each other for as long as they can manage it." },
+      { n: "Solar didn't go up. Of course she didn't." },
+      { n: "She was still in the black hoodie, his, hers, the sleeves down past her knuckles; she'd worn it under her coat to the last operation and hadn't taken it off. She went down the hall in her socks, the way she had in November, past the dark kitchen and the rice cooker with its little orange light out, because nothing was on, not in the hour. The laundry room door was half open. The light inside wasn't flickering. For once in its life, it couldn't." },
+      { n: "He was sitting on the dryer." },
+      { n: "The same one. Her last load was still in it, stopped mid-turn when the hour came, a sleeve pressed flat to the round window like a hand. He had his headphones around his neck and a coat on she'd never seen, black, buttoned all the way to the throat, the way the others had all dressed on Saturday for wherever they were going, and he looked up when she pushed the door open exactly the way he had the very first night, like he'd heard his name." },
+      { s: 'haechan', f: 'neutral', t: "...There you are." },
+      { n: "Flat, almost. The same three words, and the floor moving under them the same way, like a train going by underneath." },
+      { choose: [
+        { t: "You're dressed to go somewhere.", notes: 0, then: [
+          { s: 'haechan', f: 'neutral', t: "Yeah." },
+          { s: 'haechan', f: 'serious', t: "Everybody else got a door. Figured I should at least wear a coat." }
+        ] },
+        { t: "(Climb up on the other dryer.)", notes: 0, then: [
+          { n: "She climbed up on the other dryer. It was cold through her jeans, the way the other one always was. He watched her do it and didn't say anything, and the corner of his mouth moved, the small move he never gave permission to." }
+        ] },
+        { t: "I thought you'd finally be asleep.", notes: 0, then: [
+          { s: 'haechan', f: 'neutral', t: "Did that already. This morning. Once." },
+          { s: 'haechan', f: 'happy', t: "Didn't like it. Too quiet. Couldn't hear you not sleeping." }
+        ] }
+      ] },
+      { s: 'haechan', f: 'serious', t: "Hour's closing. Can you feel it?" },
+      { n: "She could. She'd felt it the whole way home and thought it was her own body coming down off the night, the shaking finally running out, but it wasn't. It was the hour. The green was going out of the window over the sink the way water goes out of a harbor, slowly and then not slowly at all, and the moon sat in it smaller than it had been all year, as if it were already a long way off." },
+      { s: 'haechan', f: 'neutral', t: "Elizabeth says every door shuts with it. Everyone else had one." },
+      { s: 'haechan', f: 'neutral', t: "I walked. So I'm walking." },
+      { choose: [
+        { t: "Walking where?", notes: 0, then: [
+          { s: 'haechan', f: 'sad', t: "Not back. There's no back. I didn't come from anywhere, really. I came from looking." },
+          { s: 'haechan', f: 'serious', t: "So wherever the looking ends up." }
+        ] },
+        { t: "Then I'm coming with you.", notes: 0, then: [
+          { s: 'haechan', f: 'surprised', t: "..." },
+          { s: 'haechan', f: 'flustered', t: "Let me get to the part where I ask. I practiced it. On the dryer." }
+        ] },
+        { t: "(Hold on to the edge of the dryer.)", notes: 0, then: [
+          { n: "She held on to the edge of the dryer with both hands, hard, the way you hold a railing on a ferry when the deck starts to move, and he watched her do it, and didn't say anything about it, and his own hands didn't move off his knees." }
+        ] }
+      ] },
+      { s: 'haechan', f: 'serious', t: "You're not from here either, Solar." },
+      { n: "Her hands went cold first. Then her face. She opened her mouth to tell him of course she was, she had a room upstairs and a handbook that didn't close and a seat at the table, and went looking for something to say it with, for the morning she'd arrived. The train. The station. The weather. Anything." },
+      { n: "There was nothing there. She could remember a bench, ten days later, and a girl in a coat too big for her. She could not remember the first of those ten days at all, not one thing, as if somebody had opened the book of her somewhere in the middle and started reading from there." },
+      { n: "Oh, Wren had said, on that bench, in April, looking at her in the green. You too?" },
+      { s: 'haechan', f: 'neutral', t: "The song. You had it on repeat since summer. Before you ever met me." },
+      { s: 'haechan', f: 'serious', t: "Nobody here wrote it. I did. Somewhere else. Songs don't go anywhere they haven't been." },
+      { s: 'haechan', f: 'sad', t: "It went to you. So you've been there." },
+      { n: "He reached over without looking and tapped the round window of the dryer under him, twice, flat, the way he knocked on doors. Then he tapped the one under her." },
+      { n: "Her shirts weren't in the glass anymore. Behind the window of his, where the drum should have been, snow was coming down on a street of old brick under a lamppost that flickered more than it ought to, and somewhere past it, a floor down and a long way off, there was bass, and a staircase with too many people on it." },
+      { n: "Behind hers there was a harbor with the water gone out of it. Gray mud all the way to the dark, sodium lights, the long neck of a crane, and up on a hill above a street of red lanterns, a house behind a high wall, with one small window lit at the top of the back stairs." },
+      { n: "She'd seen them both before. In November, on the platform, in the pages a thing on a bench had held up one at a time as reasons to sit down and never choose. He was holding them up as doors." },
+      { n: "She knew both of them the way you know a song before you know the words. She knew one of them the way you know your own front step in the dark." },
+      { s: 'solar', t: "You know which one." },
+      { s: 'haechan', f: 'neutral', t: "Yeah. Since the first night. You stopped on the line in that doorway like you'd stopped there before." },
+      { s: 'solar', t: "Then tell me." },
+      { s: 'haechan', f: 'serious', t: "No." },
+      { n: "He said it flat, and kindly, and absolutely, like a door he was holding open and refusing to walk her through." },
+      { s: 'haechan', f: 'serious', t: "Everybody in every one of them decides things for you. Your father. Your brother. Some man in a suit. Me, sometimes. I'm bad for it." },
+      { s: 'haechan', f: 'neutral', t: "Not here. Not this one." },
+      { s: 'haechan', f: 'neutral', t: "I can take you home. That's the offer. Or I go by myself and you stay, and that's allowed. That's a whole real answer." },
+      { s: 'haechan', f: 'happy', t: "Up to you, princess." },
+      { n: "Princess. On purpose. The way you'd put a key in somebody's hand and not look at them while you did it." },
+      { choose: [
+        /* ── Runners: Syracuse, a cold morning. Kept undated and plot-free on purpose (Runners canon stands at Ch 66, Nov 8). ── */
+        { t: "(The window with the snow.)", notes: 0, then: [
+          { s: 'haechan', f: 'neutral', t: "...Yeah." },
+          { n: "The corner of his mouth went. He didn't look surprised. He looked like somebody who'd put money on a thing a long time ago and had just been told, quietly, that he'd won." },
+          { s: 'haechan', f: 'happy', t: "Figured. You always leave the party early." },
+          { n: "She wrote a note first. She had to. She found a pen in the kitchen drawer by the last of the green and tore a blank page out of the back of her handbook, past the bell schedule, and wrote it standing at the counter, and put it under the rice cooker, where somebody would find it in the morning, the way somebody had taught her to." },
+          { n: "Gone home. Held the whole way. Somebody feed Koromaru. S." },
+          { n: "He put one side of his headphones over her ear and kept the other, the way he had the night she first sat in his doorway, and pressed play, and it was the song, the finished one. Then he took her hand, his fingers cold and certain, and opened the laundry room door." },
+          { n: "The hall on the other side wasn't the one she'd come down. It went on longer than the dorm did. The green went out of it a door at a time, the way lights go out along an office building at night, and the cold changed under her socks, the wet salt cold of the bay going dry and sharp and inland, the kind that makes snow squeak, and the air smelled of radiator dust and, somewhere, faintly, vanilla. The bass got closer. Then it was right under her feet." },
+          { n: "He stopped at a door that had nothing on it at all." },
+          { s: 'haechan', f: 'neutral', t: "This is me. I come in a different way, over there." },
+          { s: 'haechan', f: 'serious', t: "Some party. Too many people on the stairs. Somebody crying in a bathroom." },
+          { s: 'haechan', f: 'happy', t: "You'll leave early. I'll notice. That's how it goes." },
+          { choose: [
+            { t: "Find me fast.", notes: 0, then: [
+              { s: 'haechan', f: 'neutral', t: "Don't have to try. I just do. It's annoying." }
+            ] },
+            { t: "Donghyuck.", notes: 0, then: [
+              { s: 'haechan', f: 'surprised', t: "..." },
+              { s: 'haechan', f: 'flustered', t: "Say that over there. Then I'll know it's you." }
+            ] },
+            { t: "(Kiss him.)", notes: 0, then: [
+              { n: "She kissed him, in the doorway, on the line. His mouth was cold. He made the small sound he always made, like something being set down after it had been carried a long way, and then he kissed her back like he fully meant to pick it up again on the other side." }
+            ] }
+          ] },
+          { n: "He let go of her hand. Not all at once. One finger at a time, the way you'd set down something you were coming back for. The song went on in her ear after he'd taken the other side away, and went on, and she walked into it." },
+
+          { place: 'Syracuse · Alpha Phi House · Her Room', time: 'Morning', music: 'sun' },
+          { n: "She woke to a thin line of light through the curtains and a radiator ticking like it was counting something, and for one long second she didn't know which ceiling it was." },
+          { n: "Then she did, the way you do, and the other one went, the way a dream goes before breakfast gets to it. A green moon. A girl on a bench. A dryer. She held on to the edges of it and it went anyway, slowly, the way water goes out." },
+          { n: "It was cold. Not wet cold. Syracuse cold, dry and enormous, coming straight through the old window frame, and there was snow on the sill outside the glass, a clean inch of it, and the quad past it was white and blue and nobody had walked on it yet. Down the hall somebody's hairdryer was going, and somebody else was yelling at it to stop, and it was Hyein, and she knew that without having to think about it, which was its own kind of strange." },
+          { n: "Her hand went looking for a sleeve that came down past her knuckles. It found her own pajamas. She lay there and looked at her hand for a while." },
+          { n: "On the desk her monitor had gone to sleep. She nudged the mouse on her way past and it woke on the hero select screen, where she'd left it, a fox-masked girl idling with her little bells and a small gold fox curled at her shoulder, and something rang at the very back of Solar's head, small and clear, a sound from the steps of a shrine in a city that wasn't on any map she owned." },
+          { n: "On the nightstand there was a can of Monster Pink Punch, opened, half gone, flat. Her mind supplied, helpfully, a peach drink, bottom row, the one where the machine always jams. Then it didn't, and it was just a can." },
+          { n: "Her phone was face down on the blanket. Two threads." },
+          { phone: [
+            { from: '@hyein', t: "ok update on other solar" },
+            { from: '@hyein', t: "her number is gone. like NOT IN SERVICE gone" },
+            { from: '@hanni', t: "i tried too!! it doesnt even ring" },
+            { from: '@hanni', t: "do u think shes ok???" },
+            { from: 'solar', t: "she's ok" },
+            { from: '@hyein', t: "how would u know" }
+          ], contact: 'hanni, hyein · 9:02 AM', me: '@solar' },
+          { n: "She didn't answer that. She didn't know how she knew. She knew it the way your foot knows a step is there in the dark, before you've thought about it." },
+          { phone: [
+            { from: 'haechan', t: "you up" },
+            { from: 'haechan', t: "don't lie" },
+            { from: 'solar', t: "debatable" },
+            { from: 'haechan', t: "you're smiling at your phone right now" },
+            { from: 'haechan', t: "weird dream last night" },
+            { from: 'haechan', t: "you were folding laundry. badly" },
+            { from: 'solar', t: "i fold perfectly" },
+            { from: 'haechan', t: "sure, princess" },
+            { from: 'haechan', t: "its 19 degrees. wear the jacket" }
+          ], contact: 'haechanah · 9:04 AM', handle: 'haechanah', me: 'sollee' },
+          { n: "She was, in fact, smiling at her phone. She put it face down again, which didn't help." },
+          { n: "The jacket was at the back of her closet, where she'd put it so nobody would ask, behind the dresses with the tags still on. She put it on over her pajamas. It came down past her hands. It smelled like vanilla and cold air and the both of them, and somebody had told her once that it fit her better, and she could hear him say it in two places at once, at a station in the rain and at the edge of a tree line in the dark, and couldn't have told anyone which had come first." },
+          { n: "She stood at the window with the snow coming down over the quad and hummed it under her breath, start to finish. The song. The finished one, the version nobody in this world had finished yet, with a long quiet part in the middle like a room at three in the morning, and one held note at the end." },
+          { n: "She knew exactly how it ended." },
+          { stamp: 'where-it-begins' },
+          { n: "ENDING · where it begins" }
+        ] },
+
+        /* ── strangers: the Lee house above Chinatown, before light, low tide. Undated and plot-free (the book stands at Ch 64). ── */
+        { t: "(The window with the tide out.)", notes: 0, then: [
+          { s: 'haechan', f: 'neutral', t: "...Yeah." },
+          { n: "His jaw went, once. That was all. He didn't look surprised. He looked like somebody who had known the answer to a question for a very long time, and had been hoping, a little, against it, and was glad anyway." },
+          { s: 'haechan', f: 'neutral', t: "Figured. You count things. You counted the dryers the first night." },
+          { s: 'haechan', f: 'happy', t: "There's two. In case you were wondering." },
+          { s: 'haechan', f: 'serious', t: "It's not nice there." },
+          { s: 'haechan', f: 'sad', t: "I'm not nice there." },
+          { choose: [
+            { t: "I know.", notes: 0, then: [
+              { n: "She did. She didn't know how. She knew it the way you know a stove is hot before you've touched it, and she wanted to go anyway, which she supposed was the whole problem with her. In every universe, apparently." }
+            ] },
+            { t: "Neither am I.", notes: 0, then: [
+              { s: 'haechan', f: 'happy', t: "...Yeah. That's the part I remember best." }
+            ] }
+          ] },
+          { n: "She wrote a note first. She had to. She found a pen in the kitchen drawer by the last of the green and tore a blank page out of the back of her handbook, past the bell schedule, and wrote it standing at the counter, and put it under the rice cooker, where somebody would find it in the morning, the way somebody had taught her to." },
+          { n: "Gone home. Held the whole way. Somebody feed Koromaru. S." },
+          { n: "He put one side of his headphones over her ear and kept the other, the way he had the night she first sat in his doorway, and pressed play, and it was the song, the finished one. Then he took her hand, his fingers cold and certain, and opened the laundry room door." },
+          { n: "The hall on the other side wasn't the one she'd come down. It went on longer than the dorm did, and the green went out of it a door at a time, and the cold changed under her socks, wet and black and salt, coming up through the floor, and the floor tilted, a little, like a deck. Somewhere ahead a ship's horn went, long and low, in a channel. Diesel. Iron. And close by, from his coat, from nowhere, cinnamon." },
+          { n: "He stopped at a door with frost on the inside of the glass." },
+          { s: 'haechan', f: 'neutral', t: "This is me. I come in a different way, over there. Off a boat. At dawn." },
+          { s: 'haechan', f: 'sad', t: "Somebody gave me my name, that morning. I remember who, now." },
+          { s: 'haechan', f: 'serious', t: "Don't be nice to me over there. I won't know what to do with it." },
+          { choose: [
+            { t: "I'll hate you the whole time.", notes: 0, then: [
+              { s: 'haechan', f: 'happy', t: "Good. Great." }
+            ] },
+            { t: "(Kiss him.)", notes: 0, then: [
+              { n: "She kissed him at the door, quickly, hard, like somebody getting a thing done before anyone could stop her, and he held the back of her neck for exactly one second, the way he had at a crosswalk once, and let go first." }
+            ] }
+          ] },
+          { n: "He let go of her hand. Not all at once. One finger at a time, the way you'd set down something you were coming back for. The song went on in her ear after he'd taken the other side away, and the tide went on going out under it, and she walked into it." },
+
+          { place: 'Incheon · The Lee House · Upstairs', time: 'Before light', music: 'night' },
+          { n: "The tide was out. She knew it before she opened her eyes. She always knew. She couldn't sleep at low tide, she never had been able to, and she knew the tables by heart without remembering ever having learned them, the way you know your own phone number." },
+          { n: "For one long second she didn't know which ceiling it was. Then she did, and the other one went, a green moon, a girl on a bench, a dryer, going out of her like water out of a harbor, slowly and then not slowly at all." },
+          { n: "Wind off the sea at the window, salt and diesel, the glass ticking in its frame. A ship's horn in the channel. Downstairs, faintly, barley tea, because there was always barley tea on the stove in this house, at every hour, as if someone in it might need some." },
+          { n: "Her hair was down. She turned the ring on her right hand, jade, cold, and counted nothing in particular, just to have something to count. Her thumb went to her left palm in the dark and found the thin white line across it, from a fish knife, at eleven, the way you find a light switch in your own house." },
+          { n: "Her hands weren't ordinary here. She found she didn't mind." },
+          { n: "She got up. Pink socks, gray rabbits. The hall was cold. Across it, at the top of the back stairs, the old sewing room's door was open, the way it had to be at night, and the room inside was dark except for a little light that wasn't a lamp." },
+          { n: "He was on the floor with his back against the bed, in the black jacket, awake, with a battered Discman in his lap, the one with the cracked lid that he'd had since he was fifteen and never used and couldn't throw away. One earphone in. The other hanging loose. Something was coming out of it, small and tinny, into the dark." },
+          { n: "Not trot. Not anything the radio played. A beat and a melody and a lot of space, like the outline of a room at three in the morning." },
+          { s: 'haechan', f: 'neutral', t: "Agasshi." },
+          { s: 'haechan', f: 'neutral', t: "Tide's out. Can't sleep?" },
+          { n: "He tipped the Discman so she could see. The little window in the lid was empty." },
+          { s: 'haechan', f: 'serious', t: "There's no disc in it. Woke up and it was playing." },
+          { s: 'haechan', f: 'neutral', t: "Don't ask me. I don't know the words." },
+          { n: "She did. She didn't know how. She stood in his doorway with her arms folded over her chest and hummed the next part under her breath, before it came, and it came, exactly the way she'd hummed it, and he went very still, which in this house meant he was afraid of something." },
+          { choose: [
+            { t: "I hate you.", notes: 0, then: [
+              { s: 'haechan', f: 'neutral', t: "I know, agasshi." },
+              { s: 'haechan', f: 'happy', t: "I'm right across the hall. I'll hear you not sleeping." }
+            ] },
+            { t: "(Sit down in the doorway. On the line.)", notes: 0, then: [
+              { n: "She sat down in his doorway, on the line, where the cold of the hall met the cold of the room, and didn't go in, and didn't go away. He watched her do it. Then he took the earphone out and held it out to her across the gap, without a word, the way you'd hand somebody a coat they'd forgotten." }
+            ] }
+          ] },
+          { s: 'haechan', f: 'sad', t: "...Solar." },
+          { n: "Just that. Her name, in his mouth, which he almost never used, which was the tell. She heard him hear himself say it." },
+          { n: "Outside, the sea was a long way out and already coming back, the way it always did here, giving up whatever it had kept. The song went round to the start again. She stayed where she was, on the line, in the cold, and didn't hate him nearly enough." },
+          { stamp: 'low-tide' },
+          { n: "ENDING · low tide" }
+        ] },
+
+        /* ── Stay: the hour closes, he may or may not be here in the morning. The post-game ribbon on 1/31 still holds. ── */
+        { t: "Neither. Here. For now.", notes: 0, then: [
+          { n: "It came out quiet. She looked at the two round windows, the snow and the tide, and then at the room around them. The folding table. The light that couldn't flicker. The drain in the floor where, she was nearly sure, every missing sock in the history of the dorm had gone. Upstairs, a whole house asleep and kind, with her bowl still in the rack from the morning." },
+          { n: "Not yet. She'd said it to the thing on the bench, on Saturday, and meant it one way. She meant it another way now. She was surprised to find that both were true." },
+          { s: 'haechan', f: 'neutral', t: "Okay." },
+          { n: "He didn't argue. He didn't look surprised, either, which she would think about later, for years." },
+          { s: 'haechan', f: 'sad', t: "Hour's closing. I don't know if I get to stay when it does. Nobody knows. Elizabeth doesn't." },
+          { s: 'haechan', f: 'neutral', t: "So if I'm not here in the morning." },
+          { s: 'haechan', f: 'serious', t: "Then I'll find you again." },
+          { s: 'haechan', f: 'happy', t: "I always do. Some laundry room. It's always a laundry room, somehow." },
+          { choose: [
+            { t: "Stay till it closes.", notes: 0, then: [
+              { s: 'haechan', f: 'neutral', t: "Yeah. Obviously. Move over." },
+              { n: "He slid off his dryer and got up on hers, which was barely big enough for one person, and they sat on the cold machine with their shoulders pressed together and their knees bumping, the way they had on a hundred nights that winter, in this room, at this hour, with nothing in the drum." }
+            ] },
+            { t: "(Put your head on his shoulder.)", notes: 0, then: [
+              { n: "She leaned across the gap and put her head on his shoulder. He went still for the first second, the way he always did, like his body had to check it was allowed. Then he tipped his cheek down onto her hair and stayed there." }
+            ] },
+            { t: "Say it again.", notes: 0, then: [
+              { s: 'haechan', f: 'happy', t: "...Solar." },
+              { n: "That one. Here, at least. In this universe. For now." }
+            ] }
+          ] },
+          { n: "The green went out of the window over the sink. Slowly, and then not slowly at all. The last of it slid off the edge of the moon like a sheet coming off a bed, and the moon was just the moon, white and ordinary and very far away, and somewhere down the line, past the station, past the tunnel, the hour shut for good, the way a door shuts on a house where everyone is finally asleep." },
+          { n: "The light overhead came on, and flickered, the sick terrible flicker she'd have known anywhere. The dryer under them shuddered and woke and went on turning from exactly where it had stopped, warm, with her shirts in it." },
+          { n: "She fell asleep sitting up. She didn't mean to. She never did." },
+          { n: "When she woke, the dryer had buzzed and gone quiet, and the room was cold, and she was alone on top of the machine with a stiff neck and his coat over her knees. Her laundry was folded beside her, every corner squared, like somebody was going to come along later and check. On top of the stack was one shirt folded badly. Crooked. A lump, really. Left that way on purpose." },
+          { n: "On top of that was a sticky note, folded small, in his handwriting." },
+          { n: "don't forget" },
+          { n: "And under it, newer, in the same flat small letters, as if he'd finally worked out the end of the sentence." },
+          { n: "laundry room. any of them. i'll be the one on the dryer." },
+          { n: "She put it in her handbook, between the school rules and the bell schedule, next to his face. Then she went up the stairs in her socks with her laundry in her arms and his coat around her shoulders, and down the hall, past his door, which was open a hand's width, the way it always was." },
+          { n: "She didn't look in. She didn't need to. She'd gotten good at waiting this year, and for the first time in her life it didn't feel like waiting at all." },
+          { stamp: 'for-now' },
+          { n: "ENDING · for now" }
+        ] }
+      ] }
     ] }
   ]
 });
