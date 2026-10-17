@@ -72,11 +72,13 @@ window.FemcSocial = (() => {
     if (!arrived(link)) return { ok: false, reason: 'away' };
     if (link.closes && S.d >= dayOf(link.closes) && !S.free) return { ok: false, reason: 'closed' };
     if (S.free) return { ok: true };
-    if (S.spent[`${S.d}-${S.slot}`]) return { ok: false, reason: 'spent' };
+    // After the main story's ending, the last day stays open: everyone Solar has met is free, as often as she likes.
+    const after = storyState().ended && S.d >= END_DAY && isMet(link.id);
+    if (S.spent[`${S.d}-${S.slot}`] && !after) return { ok: false, reason: 'spent' };
     const next = link.ranks[p.rank];
     if (next?.after && S.d < dayOf(next.after)) return { ok: false, reason: 'later', when: next.after };
     const h = link.home;
-    if (h.slot !== S.slot || !h.days.includes(dateOf(S.d).getDay())) return { ok: false, reason: 'elsewhere' };
+    if (!after && (h.slot !== S.slot || !h.days.includes(dateOf(S.d).getDay()))) return { ok: false, reason: 'elsewhere' };
     return { ok: true };
   }
   // After MAX, a link keeps going: romance gets `dates` (in order, then rotating), friends get `afterMax` scenes,
@@ -332,7 +334,7 @@ window.FemcSocial = (() => {
       const opts = l.choose || l.route;
       if (opts) return sum + Math.max(...opts.map(o => (o.notes || 0) + maxNotes(o.then)));
       if (l.ifRoute) return sum + maxNotes(l.then);
-      if (l.ifRank) return sum + Math.max(maxNotes(l.then), maxNotes(l.else));
+      if (l.ifRank || l.ifRomance) return sum + Math.max(maxNotes(l.then), maxNotes(l.else));
       return sum;
     }, 0);
   }
@@ -582,6 +584,7 @@ window.FemcSocial = (() => {
       if (line.route) { music.set('tender'); return ask(line.route); }
       if (line.ifRank) { const ok = Object.entries(line.ifRank).every(([id, r]) => progress(id).rank >= r); queue.unshift(...((ok ? line.then : line.else) || [])); return next(); }
       if (line.ifRoute) { if ((opts.route || p.route) === line.ifRoute) queue.unshift(...line.then); return next(); }
+      if (line.ifRomance) { const ok = progress(line.ifRomance).route === 'romance'; queue.unshift(...((ok ? line.then : line.else) || [])); return next(); }
       if (line.n) {
         nameEl.textContent = '';
         textEl.classList.add('narration');
@@ -1070,7 +1073,8 @@ window.FemcSocial = (() => {
   }
 
   /* ── The main story: acts and the events between them (assets/femc/story.js) ── */
-  // story({ cast, acts: [{ id, numeral, title, from }], events: [{ id, act, date, slot?, title, place, music?, scene }] })
+  // story({ cast, acts: [{ id, numeral, title, from }], events: [{ id, act, date, slot?, unlock?, ending?, title, place, music?, scene }] })
+  // `ending: true` marks the story's last event: once it's finished, status() keeps the final day open (see `after`).
   // An event plays by itself on Solar's social links once its date (and time of day, if set) arrives, one at a time,
   // in order. The first event of each act opens with that act's title card. Finished events can be replayed.
   const STORY = { acts: [], events: [] };
@@ -1116,7 +1120,7 @@ window.FemcSocial = (() => {
     const run = () => play({ ...storyLink, ranks: [e], theme: e.theme }, 0, {
       frame: true, label: act ? `Act ${act.numeral} · ${act.title}` : (e.label || 'Story'), replay: opts.replay,
       onDone: finished => {
-        if (finished && !opts.replay) { const st = storyState(); if (!st.seen.includes(e.id)) st.seen.push(e.id); save(); stamp(e.stamp); }
+        if (finished && !opts.replay) { const st = storyState(); if (!st.seen.includes(e.id)) st.seen.push(e.id); if (e.ending) st.ended = true; save(); stamp(e.stamp); }
         opts.onDone?.(finished);
       }
     });

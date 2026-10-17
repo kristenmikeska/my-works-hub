@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <script src="femc-mode.js?v=78"></script>
+  <script src="femc-mode.js?v=79"></script>
   <title>Social Links</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/femc/femc-pages.css?v=2">
@@ -106,7 +106,7 @@
   </main>
 
   <script src="achievements.js?v=13"></script>
-  <script src="femc-social.js?v=82"></script>
+  <script src="femc-social.js?v=83"></script>
   <script>
   (function () {
     const $ = id => document.getElementById(id);
@@ -134,7 +134,7 @@
       const n = X.now();
       const known = Object.values(X.links).filter(l => !l.hidden && (X.isMet(l.id) || X.status(l).reason !== 'away'));
       const areas = [...new Set([...AREAS, ...known.map(l => areaOf(l.home.place))])].filter(a => known.some(l => areaOf(l.home.place) === a));
-      const spent = !X.state().free && X.state().spent[`${n.d}-${n.slot}`];
+      const spent = !X.state().free && X.state().spent[`${n.d}-${n.slot}`] && !(X.state().story?.ended && n.last);
       $('view').innerHTML = `${tabs('map')}<p class="fp-kicker">Iwatodai · 2009</p><h1 class="page-title cond">Go out</h1>
         <p class="cal-free">Where do you want to spend this ${esc(n.time.toLowerCase())}? People keep their own schedules.</p>
         ${spent ? `<p class="spent-note">You've already spent this ${esc(n.time.toLowerCase())} with someone. <b>Wait ▸</b> to move on.</p>` : ''}
