@@ -359,7 +359,8 @@ window.FemcSocial = (() => {
   }
   function need(link, r) {
     if (r <= 0 || !link.ranks[r]) return 0;
-    return Math.max(4, Math.round(maxNotes(link.ranks[r].scene) * 0.8));
+    // New Game+ (S.ngp): bonds come a little easier the second time around, like P3's carried-over stats.
+    return Math.max(S.ngp ? 3 : 4, Math.round(maxNotes(link.ranks[r].scene) * 0.8 * (S.ngp ? 0.8 : 1)));
   }
   // A short, story-free hangout for topping up the meter. Kat's vignettes rotate; there's a plain fallback.
   function maxScene(link, p) {
@@ -1224,7 +1225,20 @@ window.FemcSocial = (() => {
     playEvent(e, { onDone });
     return true;
   }
-  const storySeen = () => STORY.events.filter(e => storyState().seen.includes(e.id));
+  // Includes events seen in earlier playthroughs (New Game+ keeps them in S.past), so they stay replayable.
+  const storySeen = () => STORY.events.filter(e => storyState().seen.includes(e.id) || (S.past?.seen || []).includes(e.id));
+  // New Game+: after the ending, start a fresh year on 4/7. Links, the calendar, texts and the story start over;
+  // passport stamps and typed codes live in their own storage and are untouched. Everyone ever met stays in the
+  // compendium (S.past), past story events stay replayable, and bonds fill a little faster (see need()).
+  function newGamePlus() {
+    if (!S.story?.ended) return false;
+    const u = (a, b) => [...new Set([...(a || []), ...(b || [])])];
+    const past = S.past || {};
+    const keep = { ngp: (S.ngp || 0) + 1, intro: true, past: { met: u(past.met, S.met), registered: u(past.registered, S.registered), seen: u(past.seen, S.story?.seen) } };
+    S = { ...fresh(), ...keep };
+    save();
+    return true;
+  }
 
   // Elizabeth's Velvet Room opening, shown the first time Solar opens her social links.
   function playIntro(onDone) {
@@ -1233,5 +1247,5 @@ window.FemcSocial = (() => {
     play(l, 0, { frame: true, onDone: () => { S.intro = true; save(); onDone?.(); } });
     return true;
   }
-  return { secrets, secretPlaces, visitPlace, story, offerStory, playEvent, storySeen, storyActs: () => STORY.acts, storyEvents: () => STORY.events, profile, tarot, background, areaBackground, need, playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
+  return { newGamePlus, secrets, secretPlaces, visitPlace, story, offerStory, playEvent, storySeen, storyActs: () => STORY.acts, storyEvents: () => STORY.events, profile, tarot, background, areaBackground, need, playIntro, offerApproach, define, load, links, now, advance, nextDay, status, freeNow, progress, isMet, nameFor, portrait, play, register, onChange, dayOf, state: () => S, DAYS, openPhone, unread };
 })();

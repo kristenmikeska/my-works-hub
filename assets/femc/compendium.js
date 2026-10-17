@@ -479,7 +479,8 @@ window.femcCompendiumOpen = e => {
   try { game = JSON.parse(localStorage.getItem('kg-femc-game')) || {}; } catch (err) {}
   const got = window.Achievements ? Achievements.unlocked() : {};
   if (e.unlock === 'always') return true;
-  if (e.unlock.startsWith('met:')) return (game.met || []).includes(e.unlock.slice(4));
-  if (e.unlock.startsWith('reg:')) return (game.registered || []).includes(e.unlock.slice(4));
+  // New Game+ keeps everyone from earlier playthroughs in game.past.
+  if (e.unlock.startsWith('met:')) return [...(game.met || []), ...(game.past?.met || [])].includes(e.unlock.slice(4));
+  if (e.unlock.startsWith('reg:')) return [...(game.registered || []), ...(game.past?.registered || [])].includes(e.unlock.slice(4));
   return !!got[e.unlock];
 };
