@@ -18,7 +18,7 @@ Full-screen 16:9 illustrations for big moments, the way P3R and P5R show a paint
 - [ ] Elizabeth showing Solar her blank page in the compendium
 - [ ] Solar meeting Wren on the station bench
 - [ ] The first text from a number she doesn't know: Solar in bed, phone glow
-- [ ] Hanni and Hyein finding her, a tearful "SOL?!" at Paulownia Mall *(draft saved: `Event CGs/searchers-hanni-hyein-find-solar-draft.webp`; style is right, but the signs are duplicated. Redo in ChatGPT with the sign list: Chagall Café, Be Blue V, Game Panic, Mandragora, Escapade, Aohige Pharmacy, plus the blue Velvet Room door.)*
+- [x] Hanni and Hyein finding her (`Event CGs/searchers-hanni-hyein-find-solar.webp`), a tearful "SOL?!" at Paulownia Mall *(draft saved: `Event CGs/searchers-hanni-hyein-find-solar-draft.webp`; style is right, but the signs are duplicated. Redo in ChatGPT with the sign list: Chagall Café, Be Blue V, Game Panic, Mandragora, Escapade, Aohige Pharmacy, plus the blue Velvet Room door.)*
 - [ ] Jaehyun finding his sister
 - [ ] Haechan finding her (his first look at her, flat and stunned)
 - [ ] Jungwon finding her
@@ -36,7 +36,7 @@ Full-screen 16:9 illustrations for big moments, the way P3R and P5R show a paint
 **Romances** (one or two each)
 - [ ] Akihiko: boxing gym after hours, wrapping her hands; the rooftop; Christmas
 - [ ] Shinjiro: the kitchen, cooking together (before 10/4)
-- [ ] Haechan: the laundry room, him on the dryer
+- [x] Haechan: the laundry room, him on the dryer (`Event CGs/romance-haechan-laundry.webp`)
 - [ ] Jungwon: the student council room late at night, the croissant
 - [ ] Jihoon: the arcade crane game
 - [ ] Minji: filming Solar under a streetlamp
