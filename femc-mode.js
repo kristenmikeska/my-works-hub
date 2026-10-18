@@ -315,7 +315,7 @@
   }
 
   // Easter eggs that only exist on the other side.
-  const eggs = () => load('femc-eggs.js?v=17', () => window.FemcEggs).then(() => { if (isOn()) window.FemcEggs?.start(); });
+  const eggs = () => load('femc-eggs.js?v=18', () => window.FemcEggs).then(() => { if (isOn()) window.FemcEggs?.start(); });
 
   let typed = '';
   document.addEventListener('keydown', e => {

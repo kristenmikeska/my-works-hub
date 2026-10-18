@@ -1,10 +1,9 @@
 /* Easter eggs that only exist on the other side (FEMC mode). femc-mode.js loads this once the mode is on.
-   - Akihiko texts you now and then (P3P-style message box) and links to his social link.
    - Type "protein": shakers and beef bowls rain down ("Gains" stamp).
    - Type "akihiko" or "compendium" to visit the hidden pages.
    - Midnight to 1 a.m.: the Dark Hour ("The Dark Hour" stamp, once a night).
    - Full-moon days: a Full Moon Operation banner ("Full Moon Operation" stamp).
-   Preview without stamps: add ?femcpreview=darkhour, fullmoon, text or protein to any page URL. */
+   Preview without stamps: add ?femcpreview=darkhour, fullmoon or protein to any page URL. */
 window.FemcEggs = (() => {
   const F = window.FemcMode;
   const BASE = F.base;
@@ -91,17 +90,6 @@ window.FemcEggs = (() => {
   `;
   document.head.appendChild(style);
 
-  /* ── Akihiko texts you ─────────────────────────────── */
-  const LINES = [
-    "Hey. You up for a run tonight? ...I'll wait by the dorm.",
-    "Got two tickets to the boxing match this weekend. You in?",
-    "Hagakure after training? My treat. ...Don't tell Junpei.",
-    "You skipped breakfast again, didn't you. I can tell.",
-    "Be careful tonight, alright? I'd rather you didn't go out alone.",
-    "I found a new protein flavor. It's... not great. Want to try it?",
-    "You've been working hard. Take a break. With me, I mean.",
-    "I'm heading to the gym. ...You could come watch. If you want."
-  ];
   // A P3P-style message box from anyone: used by Akihiko's texts and by typed secret codes.
   function message(name, line, link) {
     if (document.querySelector('.femc-msg')) document.querySelector('.femc-msg').remove();
@@ -141,35 +129,6 @@ window.FemcEggs = (() => {
     message(c.from || '???', c.lines[Math.floor(Math.random() * c.lines.length)], c.link);
     if (c.stamp) unlock(c.stamp);
     return true;
-  }
-
-  function textFromAkihiko(force) {
-    if (document.querySelector('.femc-msg')) return;
-    const box = document.createElement('div');
-    box.className = 'femc-msg';
-    box.setAttribute('role', 'status');
-    box.innerHTML = `<span class="femc-msg-name"><span>Akihiko</span></span><div class="femc-msg-box"><p class="femc-msg-text"></p><div class="femc-msg-actions"><a href="${BASE}social.html#akihiko">Go see him</a><button type="button">Later</button></div></div>`;
-    document.body.appendChild(box);
-    const line = LINES[Math.floor(Math.random() * LINES.length)];
-    const text = box.querySelector('.femc-msg-text');
-    let i = 0;
-    const type = () => {
-      if (!box.isConnected) return;
-      text.textContent = line.slice(0, ++i);
-      if (i % 3 === 1 && line[i - 1] !== ' ') F.sfx('femc-text');
-      if (i < line.length) setTimeout(type, line[i - 1] === '.' ? 140 : 32); else box.classList.add('done');
-    };
-    reduced.matches ? (text.textContent = line, box.classList.add('done')) : type();
-    const close = () => { box.classList.add('out'); setTimeout(() => box.remove(), 320); };
-    box.querySelector('button').addEventListener('click', close);
-    later(() => { if (box.isConnected && !box.matches(':hover')) close(); }, 22000);
-    if (!force) set('kg-femc-text', String(Date.now()));
-  }
-  function maybeText() {
-    if (reader || /^(akihiko|compendium|social)$/.test(page)) return;
-    const last = Number(get('kg-femc-text')) || 0;
-    if (Date.now() - last < 8 * 60 * 1000 || Math.random() > 0.25) return;
-    later(() => { if (F.isOn()) textFromAkihiko(); }, 7000 + Math.random() * 7000);
   }
 
   /* ── Protein ──────────────────────────────────────── */
@@ -292,13 +251,12 @@ window.FemcEggs = (() => {
     if (started) return;
     started = true;
     if (preview) {
-      const show = { darkhour: () => darkHour(true), fullmoon: () => fullMoon(true), text: () => textFromAkihiko(true), protein }[preview];
+      const show = { darkhour: () => darkHour(true), fullmoon: () => fullMoon(true), protein }[preview];
       if (show) later(show, 600);
       return;
     }
     darkHour();
     later(() => fullMoon(), 1200);
-    maybeText();
   }
   function stop() {
     started = false;
@@ -306,5 +264,5 @@ window.FemcEggs = (() => {
     document.querySelectorAll('.femc-msg, .femc-op').forEach(el => el.remove());
   }
   document.addEventListener('visibilitychange', () => { if (!document.hidden && started && F.isOn()) darkHour(); });
-  return { start, stop, text: textFromAkihiko };
+  return { start, stop };
 })();

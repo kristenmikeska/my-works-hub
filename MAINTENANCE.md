@@ -96,7 +96,6 @@ Browsers cache everything hard, so changed files need a new `?v=` number in the 
 
 `femc-eggs.js` is loaded by `femc-mode.js` once the mode is on (after the intro's Enter, or on page load if already on). Preview any of them without earning stamps with `?femcpreview=darkhour`, `fullmoon`, `text` or `protein` on any page URL.
 
-- **Akihiko texts you:** a P3P-style message box (lines in `LINES`), at most once every 8 minutes, about 1 in 4 page loads, never in readers. "Go see him" opens `akihiko.html`.
 - **protein** (typed): shakers and beef bowls rain down, "COURAGE ↑", stamp `gains`.
 - **akihiko / compendium** (typed): go to those pages.
 - **Dark Hour:** midnight to 1 a.m. local, once a night (`kg-femc-dh`): green full-screen moment, stamp `dark-hour`.
