@@ -147,6 +147,19 @@ Once they cross into the Dark Hour, people from her novels can **awaken Personas
 - **Memory fragments:** a journal of déjà-vu moments (first 12 cards done in `assets/femc/memories/`, four per world). Following them shapes her route.
 - **Kept from v1, reworked:** social links, the bond meter, texts, the Go Out map, stamps, the compendium, New Game+, music, portraits and the art.
 
+## Kat's rulings (2026-10-18)
+- **Time back home:** unclear on purpose. Never stated; the searchers themselves can't agree on how long she's been gone.
+- **Haechan and Jungwon:** one person carrying two lives each (like Solar).
+- **Language:** Solar's narration may curse occasionally, in Kat's style, when her composure breaks. Never constant.
+- **Bad ending:** yes, one P5R-style bad ending for giving up at the crucial moment.
+- **Searchers who fight:** the romance leads, **Haechan, Jungwon, Jihoon and Minji**. The others don't awaken Personas.
+- **Hanni and Hyein:** two separate social links that appear in each other's scenes.
+- **Ryoji / Pharos:** offstage. P3's plot stays in the background.
+- **S.E.E.S. social links:** all of them (Yukari, Junpei, Mitsuru, Fuuka, Ken, Aigis, Koromaru), as on P3P's FeMC route, alongside Akihiko and Shinjiro.
+
 ## Open questions for Kat
 
 1. **Which game visitors stay** in the revamp, and does anyone new come in?
+2. **Shinjiro on 10/4:** P3P's link rule, or something else?
+3. **Memory fragments per world:** 8, 9 or 10? (The plot draft uses 9.)
+4. **The revamp's title.**
