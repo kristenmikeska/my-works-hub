@@ -3,6 +3,9 @@
    - prefers-reduced-motion: spells become a single soft flash, no ash, no shatter.
    - Particles are capped (lower on phones), DPR is capped, and requestAnimationFrame only runs while something is on screen.
    - Time is scaled by the battle speed, so 2x battles get 2x effects.
+   - Adaptive quality: while effects run, the real frame time is measured; if it averages over ~20ms the canvas DPR and the
+     particle budget step down (and back up when frames are fast again). setQuality('low') pins it low (Performance mode).
+   - One requestAnimationFrame loop drives everything, including the glass shatter (via loop hooks).
    battle.js: FemcFX.attach(root, { speed }) after building a battle, then FemcFX.play(kind, at, opts),
    FemcFX.ash(rect, img), FemcFX.snapshot(root, extras) + FemcFX.shatter(layer, snap, point). */
 window.FemcFX = (() => {
@@ -24,9 +27,13 @@ window.FemcFX = (() => {
 
   let host = null, cv = null, ctx = null, W = 0, H = 0, DPR = 1;
   let effects = [], parts = [], raf = 0, last = 0, paused = false, speedFn = () => 1;
-  let held = []; // frame loops waiting for resume()
   let ticking = false; // inside tick(): emit()/add() must not start a second loop
-  const cap = () => (phone() ? 240 : 600);
+  const hooks = new Set(); // extra per-frame work (the glass shatter) sharing this loop: fn(now, dt) → keep going?
+  /* Quality: level 0 = full, 1 = reduced (DPR ≤ 1.25, 60% particles), 2 = low (DPR 1, 35% particles). */
+  const LEVELS = [{ dpr: 2, n: 1 }, { dpr: 1.25, n: 0.6 }, { dpr: 1, n: 0.35 }];
+  let level = 0, pinned = null, ftAvg = 16, fastFrames = 0;
+  const Q = () => LEVELS[pinned != null ? pinned : level];
+  const cap = () => Math.round((phone() ? 240 : 600) * Q().n);
   /* Next frame: requestAnimationFrame, or a timer if rAF is late (throttled iframes, headless test runs). */
   function frameAfter(fn) {
     let done = false;
@@ -75,11 +82,11 @@ window.FemcFX = (() => {
     ctx = cv.getContext('2d');
     resize();
   }
-  function detach() { if (raf) raf(); raf = 0; effects = []; parts = []; if (cv) cv.remove(); cv = ctx = host = null; }
+  function detach() { if (raf) raf(); raf = 0; effects = []; parts = []; if (cv) cv.remove(); cv = ctx = host = null; if (hooks.size) kick(); }
   function resize() {
     if (!cv || !host) return;
     const r = host.getBoundingClientRect();
-    DPR = Math.min(window.devicePixelRatio || 1, phone() ? 1.5 : 2);
+    DPR = Math.min(window.devicePixelRatio || 1, phone() ? 1.5 : 2, Q().dpr);
     W = r.width; H = r.height;
     cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
   }
@@ -95,12 +102,25 @@ window.FemcFX = (() => {
     kick();
     return p;
   }
-  function kick() { if (!raf && !ticking && !paused && ctx) { last = performance.now(); raf = frameAfter(tick); } }
+  function kick() { if (!raf && !ticking && !paused && (ctx || hooks.size)) { last = performance.now(); raf = frameAfter(tick); } }
+  /* Adaptive quality from the real frame time (only while something is animating). */
+  function measure(ms) {
+    if (pinned != null || ms <= 0 || ms > 250) return;
+    ftAvg = ftAvg * 0.9 + ms * 0.1;
+    if (ftAvg > 20 && level < LEVELS.length - 1) { level++; ftAvg = 16; fastFrames = 0; resize(); }
+    else if (ftAvg < 13 && level > 0) { if (++fastFrames > 150) { level--; fastFrames = 0; resize(); } }
+    else fastFrames = 0;
+  }
   function tick(now) {
     raf = 0;
-    if (!ctx || paused) return;
+    if (paused) return;
+    measure(now - last);
     const dt = Math.min(0.05, Math.max(0, now - last) / 1000) * speedFn();
     last = now;
+    ticking = true;
+    hooks.forEach(h => { if (!h(now, dt)) hooks.delete(h); });
+    ticking = false;
+    if (!ctx) { if (hooks.size) raf = frameAfter(tick); return; }
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     ctx.clearRect(0, 0, W, H);
     ticking = true;
@@ -120,7 +140,7 @@ window.FemcFX = (() => {
     ticking = false;
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 1;
-    if (effects.length || parts.length) raf = frameAfter(tick);
+    if (effects.length || parts.length || hooks.size) raf = frameAfter(tick);
     else ctx.clearRect(0, 0, W, H);
   }
 
@@ -218,7 +238,7 @@ window.FemcFX = (() => {
       emit(Object.assign({ x, y, vx: Math.cos(an) * sp, vy: Math.sin(an) * sp, life: rnd(0.25, 0.5), size: rnd(1.5, 3), shape: 'spark', color: o.color || '#fff', drag: 3 }, o.p || {}));
     }
   }
-  const scaleN = n => Math.max(1, Math.round(n * (phone() ? 0.55 : 1)));
+  const scaleN = n => Math.max(1, Math.round(n * (phone() ? 0.55 : 1) * Q().n));
 
   /* ── Drawing helpers ────────────────────────────── */
   function radial(c, x, y, r, color, a, blend = 'lighter') {
@@ -832,7 +852,7 @@ window.FemcFX = (() => {
   /* Draws the battle (background, Shadows, party cards) plus extra layers into a canvas.
      extras: [{ el, clip: [[x%, y%]...] }]: an element whose <img> children are drawn clipped to a polygon in the element's box. */
   function snapshot(root, { bg, extras = [] } = {}) {
-    const R = root.getBoundingClientRect(), k = Math.min(window.devicePixelRatio || 1, phone() ? 1 : 1.5);
+    const R = root.getBoundingClientRect(), k = 1; // DPR 1: the snapshot only lives as motion-blurred shards
     const c = mk(R.width * k, R.height * k), g = c.getContext('2d');
     g.scale(k, k);
     const box = el => { const r = el.getBoundingClientRect(); return { x: r.left - R.left, y: r.top - R.top, w: r.width, h: r.height }; };
@@ -886,7 +906,8 @@ window.FemcFX = (() => {
     return new Promise(resolve => {
       if (!snap || reduced()) { resolve(); return; }
       const R = layer.getBoundingClientRect(), Wl = R.width, Hl = R.height, k = snap.width / Wl;
-      const cvs = mk(Wl * Math.min(k, DPR || 1), Hl * Math.min(k, DPR || 1)), g = cvs.getContext('2d'), dk = cvs.width / Wl;
+      const cvs = mk(Wl, Hl), g = cvs.getContext('2d'), dk = 1; // DPR 1 (shards are motion-blurred anyway)
+      void k;
       cvs.className = 'bt-glass';
       layer.appendChild(cvs);
       // Radial cracks + jittered rings make the cells.
@@ -919,22 +940,25 @@ window.FemcFX = (() => {
       // Crack lines grow out from the impact before the glass lets go.
       const cracks = [];
       for (let i = 0; i < rays; i++) for (let r = 0; r < ringsF.length - 1; r++) { cracks.push({ a: V(i, r), b: V(i, r + 1), d: ringsF[r] }); if (r > 0) cracks.push({ a: V(i, r), b: V(i + 1, r), d: ringsF[r] + 0.02 }); }
+      // Pre-build the crack paths: one Path2D per ring, cumulative, so a frame strokes a single path.
+      const levels = [...new Set(cracks.map(c => c.d))].sort((x, y) => x - y);
+      const paths = levels.map(lv => { const p = new Path2D(); cracks.forEach(cr => { if (cr.d <= lv) { p.moveTo(cr.a[0], cr.a[1]); p.lineTo(cr.b[0], cr.b[1]); } }); return p; });
       const TC = 0.14, TF = 0.9;
-      let t = 0, lastT = performance.now(), flew = false;
-      const frame = now => {
-        const dt = Math.min(0.05, Math.max(0, now - lastT) / 1000) * speedFn(); lastT = now;
-        if (!paused) t += dt;
+      let t = 0, flew = false;
+      const glints = !phone() && level === 0 && pinned == null;
+      // Runs inside the shared loop (tick → hooks). Returns false when the last shard is gone.
+      const frame = (now, dt) => {
+        t += dt;
         g.setTransform(dk, 0, 0, dk, 0, 0); g.clearRect(0, 0, Wl, Hl);
         if (t < TC) {
           g.drawImage(snap, 0, 0, Wl, Hl);
           const p = E.out(t / TC);
-          g.lineCap = 'round';
-          cracks.forEach(cr => {
-            if (cr.d > p) return;
-            g.globalAlpha = 0.9; g.strokeStyle = '#ffffff'; g.lineWidth = 1.6;
-            g.beginPath(); g.moveTo(cr.a[0], cr.a[1]); g.lineTo(cr.b[0], cr.b[1]); g.stroke();
-            g.globalAlpha = 0.25; g.lineWidth = 6; g.strokeStyle = '#bfe0ff'; g.stroke();
-          });
+          let li = -1; levels.forEach((lv, i) => { if (lv <= p) li = i; });
+          if (li >= 0) {
+            g.lineCap = 'round';
+            g.globalAlpha = 0.25; g.lineWidth = 6; g.strokeStyle = '#bfe0ff'; g.stroke(paths[li]);
+            g.globalAlpha = 0.9; g.lineWidth = 1.6; g.strokeStyle = '#ffffff'; g.stroke(paths[li]);
+          }
           g.globalAlpha = Math.max(0, 1 - t / 0.07); g.fillStyle = '#fff'; g.fillRect(0, 0, Wl, Hl);
           g.globalAlpha = 1;
         } else {
@@ -947,21 +971,23 @@ window.FemcFX = (() => {
             if (a <= 0) return;
             g.save(); g.globalAlpha = a; g.translate(x, y); g.rotate(s.vr * tt); g.scale(sc, sc);
             g.drawImage(s.c, s.x0 - s.ox, s.y0 - s.oy, s.c.width / dk, s.c.height / dk);
-            if (!phone()) { const gl = Math.max(0, Math.sin(s.vr * tt * 2 + s.glint)); if (gl > 0.6) { g.globalCompositeOperation = 'lighter'; g.globalAlpha = a * (gl - 0.6) * 0.9; g.drawImage(s.c, s.x0 - s.ox, s.y0 - s.oy, s.c.width / dk, s.c.height / dk); } }
+            if (glints) { const gl = Math.max(0, Math.sin(s.vr * tt * 2 + s.glint)); if (gl > 0.6) { g.globalCompositeOperation = 'lighter'; g.globalAlpha = a * (gl - 0.6) * 0.9; g.drawImage(s.c, s.x0 - s.ox, s.y0 - s.oy, s.c.width / dk, s.c.height / dk); } }
             g.restore();
           });
         }
-        if (paused) held.push(() => { lastT = performance.now(); frameAfter(frame); });
-        else if (t < TC + TF) frameAfter(frame);
-        else { cvs.remove(); resolve(); }
+        if (t < TC + TF) return true;
+        cvs.remove(); resolve();
+        return false;
       };
-      frameAfter(frame);
+      hooks.add(frame);
+      kick();
     });
   }
 
   return {
     attach, detach, resize, play, setSpeed(fn) { speedFn = fn; }, ash, snapshot, shatter, preload, reduced,
-    pause() { paused = true; }, resume() { paused = false; const h = held; held = []; h.forEach(f => f()); kick(); }, get paused() { return paused; },
+    pause() { paused = true; }, resume() { paused = false; last = performance.now(); kick(); }, get paused() { return paused; },
+    setQuality(q) { pinned = q === 'low' ? LEVELS.length - 1 : null; resize(); }, quality: () => ['full', 'reduced', 'low'][pinned != null ? pinned : level],
     get count() { return parts.length; }
   };
 })();
