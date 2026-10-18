@@ -157,6 +157,9 @@ Once they cross into the Dark Hour, people from her novels can **awaken Personas
 - **Ryoji / Pharos:** offstage. P3's plot stays in the background.
 - **S.E.E.S. social links:** all of them (Yukari, Junpei, Mitsuru, Fuuka, Ken, Aigis, Koromaru), as on P3P's FeMC route, alongside Akihiko and Shinjiro.
 
+- **Arcana:** links may share an arcana. There are too many characters for 22. Later we might add new arcana or alternate tarot art for shared ones.
+- **Pushing:** hold all revamp work for one big push when everything is ready, with the hidden plot files kept private.
+
 ## Open questions for Kat
 
 1. **Which game visitors stay** in the revamp, and does anyone new come in?
