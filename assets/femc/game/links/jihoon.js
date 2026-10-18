@@ -144,6 +144,19 @@
       { s: 'jihoon', f: 'neutral', t: "He looks at you like you're a stopwatch he's scared he'll drop. I don't trust that in a guy." },
       { s: 'solar', f: 'neutral', t: "How does a guy look at me usually?" },
       { s: 'jihoon', f: 'serious', t: "Like you're going to steal their fries. Which you are. Which you do." },
+      { n: "Afterward, when Akihiko had gone down to shower and Junpei had gone down to tell everyone, at length, what they'd missed, Jihoon lay flat on his back on the mat in the cold with his arms out like a starfish and looked at the sky." },
+      { s: 'jihoon', f: 'neutral', t: "I haven't done it since I got here. Pilates. Three weeks. I do it every morning at home. Every single morning. Ask anyone. Ask the group chat. They're sick of hearing about it." },
+      { s: 'jihoon', f: 'sad', t: "And then I got here and I just. Didn't. I lay in the guesthouse bed every morning and looked at the ceiling. It felt stupid. Keeping my core a temple when you didn't know my name." },
+      { choose: [
+        { t: "Your core's still a temple.", notes: 3, then: [
+          { s: 'jihoon', f: 'happy', t: "IT IS. Thank you. Somebody gets it. Somebody finally respects the temple." },
+          { n: "He sat up so fast the mat slid. He looked, for a second, exactly like himself, which she knew without knowing how she knew." }
+        ] },
+        { t: "Do it tomorrow morning. I'll time you.", notes: 3, then: [
+          { s: 'jihoon', f: 'surprised', t: "..." },
+          { s: 'jihoon', f: 'neutral', t: "Six-thirty. On the roof. You'll be late. You're always late to my things. Be late anyway. Just come." }
+        ] }
+      ] },
       { n: "He drank half the protein shake and made a face and gave her the other half without asking if she wanted it, and she drank it, and it was disgusting, and it was the second time in a week someone had handed her the rest of something like it was obviously hers." },
       { s: 'jihoon', f: 'neutral', t: "Rematch Wednesday. Tell him. I'll be ready. I'll have trained in my mind." }
     ] },
@@ -240,6 +253,17 @@
       { n: "He took his arm off his face. His eyes were red. He looked at the ceiling." },
       { s: 'jihoon', f: 'serious', t: "And I thought, absolutely not. Who's going to bring you ice cream? Junkyu? Junkyu doesn't even have a car." },
       { s: 'jihoon', f: 'neutral', t: "As your best friend it is rightfully my job. To remember you. That's the job. Somebody's got to do the job, and it's me, it's always been me, I'm number one, Cherry can fight me." },
+      { s: 'jihoon', f: 'neutral', t: "...Did I look cool, though. Be honest. When the thing came up. Be completely honest." },
+      { choose: [
+        { t: "You looked terrifying.", notes: 3, then: [
+          { s: 'jihoon', f: 'happy', t: "Terrifying is cool. Terrifying is the coolest kind of cool. Thank you. I can sleep now." }
+        ] },
+        { t: "You looked like you.", notes: 3, then: [
+          { s: 'jihoon', f: 'neutral', t: "...What does that mean." },
+          { s: 'solar', f: 'neutral', t: "Loud. Laughing. Not letting go of something you'd decided was yours." },
+          { s: 'jihoon', f: 'sad', t: "...Yeah. Yeah, okay. That's me. That's literally me. You've known me for one month and you've got me exactly." }
+        ] }
+      ] },
       { choose: [
         { t: "You're number one.", notes: 3, then: [
           { s: 'jihoon', f: 'surprised', t: "..." },
@@ -276,6 +300,11 @@
         ] }
       ] },
       { n: "Jungwon won. Seven to six. He laid his mallet on the table very neatly and thanked Jihoon for the game, and Jihoon said a word to him that Mitsuru would have confiscated, and Jungwon smiled like he'd been given a compliment and went off to buy everyone a drink." },
+      { n: "He came back with three cans from the vending machine by the door. He held one out to Solar first, and one to Jihoon second, without a word, and stood there with his own, waiting, the way you'd wait for a rival to shake your hand after a match." },
+      { n: "Jihoon looked at the can. He looked at it for a long time. Then he took it." },
+      { s: 'jihoon', f: 'neutral', t: "...Thanks, Yang." },
+      { s: 'jungwon', f: 'happy', t: "You're very welcome, Park." },
+      { s: 'jihoon', f: 'serious', t: "Don't. Don't do the dimples. I said thanks. That's the most you get. That's the most anyone's ever gotten." },
       { s: 'jihoon', f: 'neutral', t: "He's fine." },
       { s: 'jihoon', f: 'serious', t: "I hate him. He's fine. He's fine and I hate him. Both. That's legal." },
       { s: 'solar', f: 'neutral', t: "Why do you hate him?" },
@@ -336,6 +365,9 @@
       { s: 'solar', f: 'neutral', t: "For what?" },
       { s: 'jihoon', f: 'serious', t: "For me to say whatever I was going to say when I got to your house. That night. Before the street went green." },
       { n: "He didn't look at her. He scraped the spoon across the top of the ice cream very carefully, like he was trying to write something on it." },
+      { s: 'jihoon', f: 'neutral', t: "You know what I said in the group chat. Before school started. When you were sad about something and wouldn't say what." },
+      { s: 'jihoon', f: 'neutral', t: "*I am the fucking light of your disgusting life.* In the chat. In front of everybody. Asahi screenshotted it. It's his lock screen. He thinks it's a joke." },
+      { s: 'jihoon', f: 'sad', t: "Everybody thinks it's a joke. I wrote it at one in the morning in my car outside your house and deleted it four times before I sent it." },
       { s: 'jihoon', f: 'neutral', t: "Here's the thing about me, Sol. Here's my whole thing. I say everything loud. Everything. I say I'm the light of your life. I say I'm your number one. I say I'm the father of your dog. I say it all so loud, all the time, in front of everyone, that nobody ever thinks I mean any of it." },
       { s: 'jihoon', f: 'serious', t: "That's the trick. If you say the quiet part loud enough, it stops being a part at all. It's just a bit. It's just Jihoon." },
       { s: 'jihoon', f: 'sad', t: "And then you didn't know me, and I didn't have a bit anymore. And it turns out I meant all of it. Every single dumb thing. I meant it since we were like eight." },
@@ -381,6 +413,9 @@
         ] }
       ] },
       { n: "On the way out they passed the window of Be Blue V, all silver and glass and little velvet boxes, and he slowed down, which he never did, and looked in, and kept walking, and then stopped and came back and looked again." },
+      { n: "Junkyu had tagged along, because Junkyu always tagged along, and he was holding the coat bag like a baby, and had already asked twice if he could be Nana's godfather, and been told twice by Jihoon that the position was filled, by Jihoon, who was also the father, and that it was a very exclusive family." },
+      { s: 'junkyu', f: 'sad', t: "Can I at least be the uncle?" },
+      { s: 'jihoon', f: 'neutral', t: "...Fine. Uncle. Probationary uncle. Cherry's also applied. It's competitive." },
       { s: 'jihoon', f: 'neutral', t: "When we're home. I'm going to buy you something stupid for Christmas. Like I always do. And you're going to buy me something stupid. Like you always do. And then we're going to argue about whose was stupider." },
       { s: 'jihoon', f: 'serious', t: "And everybody's going to ask you things. What you want. Who you're going to be. What you're going to do next year." },
       { s: 'jihoon', f: 'neutral', t: "I'm not going to ask you anything. I just want you to know that. Everybody else wants the candidate. I'll take whoever's in the car." },

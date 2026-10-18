@@ -135,6 +135,16 @@
         ] }
       ] },
       { n: "They played. Minji took the long shots, calm, unhurried, the way she held a camera, picking off the far end of the screen. Solar kept her alive. She didn't know how. She'd see Minji's little health bar dip and her hand would already be moving, already throwing a small bright spark across the map to land on her a half-second before she needed it, like a hand on a shoulder." },
+      { s: 'minji', f: 'neutral', t: "It's weird without the team. At home there's five of us. Chenle on tank, he talks about rotations like a professor. Olivia screams the entire time, even when we're winning, especially when we're winning. Haerin's the other support. She giggles maybe once a semester. When she does, the whole lab goes quiet like church." },
+      { s: 'minji', f: 'happy', t: "And Doyoung. Coach. Clipboard. Six years coaching. He said one of your plays was the best he's ever seen in person. He doesn't say that. He doesn't say anything." },
+      { choose: [
+        { t: "Which play?", notes: 3, then: [
+          { s: 'minji', f: 'neutral', t: "I'm not telling you. You'll make it again and it won't be the same. It was the same because you didn't know anyone was looking." }
+        ] },
+        { t: "I miss them. I don't know them and I miss them.", notes: 3, then: [
+          { s: 'minji', f: 'sad', t: "...Yeah. That's the worst kind. I know. I've got it too. About you." }
+        ] }
+      ] },
       { s: 'minji', f: 'neutral', t: "Nice." },
       { s: 'minji', f: 'neutral', t: "...Nice. Nice. Sol, your timing is perfect. It's always perfect. It's so annoying." },
       { n: "She said *nice* the way other people said *thank you*. Solar felt it land somewhere under her ribs and stay, warm, like something she'd been waiting all day to be given." },
@@ -202,6 +212,7 @@
       { s: 'minji', f: 'neutral', t: "That's beautiful. Can I use that? I'll credit you. I'll give you a credit in big letters." },
       { s: 'fuuka', f: 'happy', t: "Oh, you don't have to— okay. Yes. Big letters." },
       { n: "When Fuuka had gone back to the dorm, Minji sat on the seawall beside Solar and scrolled back through the footage with the sound off, and she slowed down on one clip, and played it twice." },
+      { n: "She'd held the camera on Fuuka the whole time, steady, a respectful distance, and Fuuka had forgotten about it in about two minutes and talked with her whole face, and Solar, watching from the wall, had understood something about how Minji worked. She didn't hide the camera. She just waited, patiently, until you forgot it, and then she was very quiet, and very still, and took exactly what you'd given her and not a frame more." },
       { n: "It was the lounge. Last Sunday. Solar on the sofa between Junpei and Yukari, the TV on, Junpei saying something stupid with his hands, and Solar laughing. Not the polite one. The real one, the one that came out of her like something knocked off a shelf, her head tipped back against the cushion and her eyes shut." },
       { s: 'minji', f: 'neutral', t: "You look happy there." },
       { s: 'minji', f: 'neutral', t: "I wanted you to see it. You never see yourself like that. You only ever see yourself in mirrors, and in mirrors you're checking." },
@@ -237,6 +248,8 @@
       { s: 'minji', f: 'neutral', t: "I'm not filming today. It's too windy. The audio's going to be all wind. I'd have to strip it out and put something in instead and then it's not real." },
       { s: 'minji', f: 'serious', t: "Also I wanted to just. Be here. Without it. For once." },
       { n: "They walked to the end of the pier, where the old men fished with their backs to the city and their buckets full of nothing, and leaned on the rail, and watched a container ship go out under the bridge so slowly it seemed to be standing still while the city moved." },
+      { s: 'minji', f: 'neutral', t: "Do you know what I do, at home, when it's windy like this? I go up to the roof of the honors dorm and lie on my back and film the clouds going over. Upside down. It looks like the sky's falling the wrong way." },
+      { s: 'minji', f: 'happy', t: "I showed you once. You said it made you seasick. You watched the whole thing anyway. Twice." },
       { s: 'solar', f: 'neutral', t: "Junpei said you called me your muse. When you first came. In the lounge." },
       { s: 'minji', f: 'flustered', t: "Junpei has a big mouth. Junpei has the biggest mouth in two universes." },
       { s: 'minji', f: 'neutral', t: "...Yeah. I did. I posted it, once. At home. With a picture of you, with your permission. *Going to ace this project thanks to my new muse.* You liked it. You liked the post. I screenshotted the notification." },
@@ -316,6 +329,18 @@
         ] }
       ] },
       { n: "On the way back to the station they passed the dorm, and on the front steps, sitting in the gold light with his headphones around his neck and a can of coffee he was glaring at, was Haechan. He looked up when they passed. His eyes went to Solar, and stayed there, flat and unreadable and absolutely certain, and then went to Minji, and to the camera." },
+      { n: "They sat on the seawall afterward while the gold went out of the light, and Minji scrolled through the walk with the sound off, frame by frame, and stopped every few seconds to show Solar her own shoulders, up by her ears, her chin at the angle it went to when someone was taking a picture of her, her hand going to her hair." },
+      { s: 'minji', f: 'neutral', t: "See? There. And there. You're checking. You check the camera like it's a mirror. You're making sure you're the right version." },
+      { s: 'minji', f: 'serious', t: "I'm not saying it to be mean. I'm saying it because nobody's ever let you see it. You've been looked at your whole life and nobody's ever shown you the footage." },
+      { choose: [
+        { t: "Show me the rest.", notes: 3, then: [
+          { n: "She showed her the rest. All four minutes of it. Solar watched herself perform for a lens for four minutes and felt sick, and then, at the very end, felt something else, small and clean, like a window cracked open in a hot room." }
+        ] },
+        { t: "I don't want to see it.", notes: 2, then: [
+          { s: 'minji', f: 'neutral', t: "Okay." },
+          { n: "She turned the screen off. She didn't argue. She put the camera in her lap and kept her hand on it, and they watched the water instead." }
+        ] }
+      ] },
       { n: "Minji nodded to him. Just a nod. Polite, small, the nod of one person to another across a crowded room at a party where they both knew the host. He nodded back. Neither of them said anything. Neither of them needed to." },
       { s: 'minji', f: 'neutral', t: "He looks at you like a song he's mixing." },
       { s: 'minji', f: 'neutral', t: "Like you're the only thing in the track and he's scared to touch the fader." },
@@ -339,6 +364,9 @@
       { n: "The dorm roof at night in late November was cold enough to make your teeth ache, and the whole city was laid out under it in orange and black, and Minji had set up a tripod at the railing and pointed the camera at the bay and pressed record and then walked away from it, which Solar had never once seen her do." },
       { s: 'minji', f: 'neutral', t: "It's a fixed shot. It doesn't need me. I just wanted it running. I like knowing something's paying attention." },
       { n: "They sat on the cold concrete with their backs to the water tank. Minji had brought a thermos of something that tasted like hot chocolate somebody had heard about secondhand, and they passed the lid back and forth, and for a while there was only the hum of the city and the tiny red light of the camera at the railing, blinking." },
+      { s: 'minji', f: 'neutral', t: "You know the lamppost at home? Outside the honors dorm? The one that flickers?" },
+      { s: 'minji', f: 'neutral', t: "We walked home under it. A lot. After practice. In the dark. You'd stop under it every time, without noticing, and look up, like you were waiting for it to decide something." },
+      { s: 'minji', f: 'sad', t: "Those were the easiest walks of my whole life. I'd have walked under that lamp with you every night forever and never said a single thing that mattered. I'd have been fine." },
       { s: 'minji', f: 'serious', t: "Can I say something? And you don't have to do anything with it?" },
       { s: 'minji', f: 'neutral', t: "At home I'm— I've been in love with you for a while. You know that. Over there, you know that. I told you. Not in those words. In a lot of other words, and some of them were bad ones, at bad times." },
       { s: 'minji', f: 'neutral', t: "And I decided a long time ago I'd rather be your friend and point a camera at you forever than be the thing you reach for when you're scared. I won't be that. I won't be somewhere you go to feel better about somewhere else." },
@@ -386,6 +414,10 @@
         ] }
       ] },
       { n: "They watched it back on the little screen with their heads together, the snow filling the frame like static, and the lamp, and Minji under it, looking up." },
+      { s: 'minji', f: 'neutral', t: "...Wait. Go back. There." },
+      { n: "She took the camera back and scrubbed through it frame by frame, and stopped on one. Near the end, when she'd laughed and tipped her head back, the camera had wobbled, just slightly, because Solar's hands had moved, because Solar had laughed too, and in the frame for one wobbling instant you could see the edge of Solar's sleeve, and her thumb on the lens, and the fact of someone holding the camera who loved what she was filming." },
+      { s: 'minji', f: 'surprised', t: "...Oh. That's what it looks like. From the other side. When somebody's—" },
+      { n: "She didn't finish. She didn't have to." },
       { s: 'minji', f: 'surprised', t: "...Oh." },
       { s: 'minji', f: 'neutral', t: "Is that what I look like?" },
       { s: 'solar', f: 'neutral', t: "When nobody's watching." },
