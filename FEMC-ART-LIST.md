@@ -18,7 +18,7 @@ Full-screen 16:9 illustrations for big moments, the way P3R and P5R show a paint
 - [ ] Elizabeth showing Solar her blank page in the compendium
 - [ ] Solar meeting Wren on the station bench
 - [ ] The first text from a number she doesn't know: Solar in bed, phone glow
-- [ ] Hanni and Hyein finding her, a tearful "SOL?!" at Paulownia Mall
+- [ ] Hanni and Hyein finding her, a tearful "SOL?!" at Paulownia Mall *(draft saved: `Event CGs/searchers-hanni-hyein-find-solar-draft.webp`; style is right, but the signs are duplicated. Redo in ChatGPT with the sign list: Chagall Café, Be Blue V, Game Panic, Mandragora, Escapade, Aohige Pharmacy, plus the blue Velvet Room door.)*
 - [ ] Jaehyun finding his sister
 - [ ] Haechan finding her (his first look at her, flat and stunned)
 - [ ] Jungwon finding her
