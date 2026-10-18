@@ -48,7 +48,7 @@ From the Korean tale of the sister who became the sun: she was afraid of being l
 - *Runners*: **Sunna**, the runner under stage lights (art done: `Personas/Haenim-Sunna.png`).
 - *strangers*: **Mazu**, the sea goddess who protects the people waiting on the docks (art done: `Personas/Haenim-Harbor.png`).
 - *Hoax*: **Nike**, winged Victory (art done: `Personas/Haenim-Nike.png`).
-- **True ending:** Haenim with the veil off, the sun you *can* look at.
+- **True ending:** Haenim with the veil off, the sun you *can* look at (art done: `Personas/Haenim-Unveiled.png`).
 
 ## Who arrives, and why (in this order)
 
