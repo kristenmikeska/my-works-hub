@@ -22,7 +22,8 @@
   const STAT_SHORT = { atk: 'ATK', def: 'DEF', agi: 'AGI' };
 
   /* ── Save ─────────────────────────────────────────── */
-  const fresh = () => ({ v: 1, lvl: D.progression.startLevel, exp: 0, pts: 0, nodes: [], known: {}, clears: 0, runs: 0, music: null, sfx: true, speed: 1 });
+  // reached: the furthest floor (index into D.floors) Solar has made it to, like P3's access points.
+  const fresh = () => ({ v: 1, lvl: D.progression.startLevel, exp: 0, pts: 0, nodes: [], known: {}, clears: 0, runs: 0, reached: 0, music: null, sfx: true, speed: 1 });
   function loadSave() {
     try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s && s.v === 1) return Object.assign(fresh(), s); } catch (e) {}
     return fresh();
@@ -232,7 +233,8 @@
         <p class="bt-kicker">FEMC · Battle prototype</p>
         <h1>TARTARUS<small>Full Moon Operation</small></h1>
         <div class="bt-hub-menu">
-          <button type="button" class="bt-btn pink" data-go="run"><span>Enter Tartarus</span><small>${save.clears ? `Cleared ×${save.clears}` : '4 floors'}</small></button>
+          ${save.reached > 0 && save.reached < D.floors.length ? `<button type="button" class="bt-btn pink" data-go="cont"><span>Continue from ${esc(D.floors[save.reached].label)}</span><small>Access point · ${esc(D.floors[save.reached].block)}</small></button>` : ''}
+          <button type="button" class="bt-btn${save.reached > 0 && save.reached < D.floors.length ? '' : ' pink'}" data-go="run"><span>${save.reached > 0 && save.reached < D.floors.length ? 'Start from the bottom' : 'Enter Tartarus'}</span><small>${save.clears ? `Cleared ×${save.clears}` : `${D.floors.length} floors`}</small></button>
           <button type="button" class="bt-btn" data-go="tree"><span>Haenim’s Tree</span><small>${save.pts} SP</small></button>
           <button type="button" class="bt-btn" data-go="personas"><span>Personas</span><small>S.E.E.S.</small></button>
           <button type="button" class="bt-btn danger" data-go="reset"><span>${resetArmed ? 'Really reset? Press again' : 'Reset battle save'}</span></button>
@@ -256,7 +258,8 @@
     el.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => {
       const go = b.dataset.go;
       if (go !== 'reset') resetArmed = false;
-      if (go === 'run') { sfx('ok'); startRun(); }
+      if (go === 'run') { sfx('ok'); startRun(0); }
+      else if (go === 'cont') { sfx('ok'); startRun(save.reached); }
       else if (go === 'tree') { sfx('ok'); treeScreen(hub); }
       else if (go === 'personas') { sfx('ok'); personaScreen(hub); }
       else if (go === 'reset') {
@@ -277,8 +280,8 @@
      RUN FLOW
      ════════════════════════════════════════════════════ */
   let run = null;
-  async function startRun() {
-    run = { floor: 0, carry: null, items: Object.assign({}, D.startItems), clocked: false, groups: {} };
+  async function startRun(from = 0) {
+    run = { floor: from, carry: null, items: Object.assign({}, D.startItems), clocked: false, groups: {} };
     save.runs++;
     persist();
     while (run.floor < D.floors.length) {
@@ -286,14 +289,20 @@
       if (f.clock && !run.clocked) { await clockScreen(); run.carry = null; run.clocked = true; }
       const snap = JSON.stringify({ carry: run.carry, items: run.items });
       const out = await battle(f);
-      if (out.result === 'win') { await results(f, out); run.floor++; }
-      else if (out.result === 'escaped') { await message('ESCAPED', 'You slipped past the Shadows. No EXP this floor.'); run.floor++; }
+      if (out.result === 'win') {
+        const go = await results(f, out);
+        run.floor++;
+        if (run.floor < D.floors.length) { save.reached = Math.max(save.reached, run.floor); persist(); }
+        if (go === 'leave') { hub(); return; }
+      }
+      else if (out.result === 'escaped') { await message('ESCAPED', 'You slipped past the Shadows. No EXP this floor.'); run.floor++; if (run.floor < D.floors.length) { save.reached = Math.max(save.reached, run.floor); persist(); } }
       else {
         const choice = await gameOver();
         if (choice === 'retry') { const s = JSON.parse(snap); run.carry = s.carry; run.items = s.items; continue; }
         hub(); return;
       }
     }
+    save.reached = 0; persist();
     await complete();
     hub();
   }
@@ -1100,7 +1109,7 @@
       const go = await resultsScreen(floor, out, g, bonus, loot, first);
       first = false;
       if (go === 'tree') { await new Promise(r => treeScreen(r)); continue; }
-      return;
+      return go;
     }
   }
   function resultsScreen(floor, out, g, bonus, loot, first) {
@@ -1129,6 +1138,7 @@
           <div class="bt-res-btns">
             <button type="button" class="bt-btn pink" data-go="next"><span>${last ? 'Finish ›' : 'Next floor ›'}</span></button>
             <button type="button" class="bt-btn" data-go="tree"><span>Haenim’s Tree</span><small>${save.pts} SP</small></button>
+            ${last ? '' : `<button type="button" class="bt-btn" data-go="leave"><span>Leave Tartarus</span><small>Progress saved · continue from ${esc(D.floors[run.floor + 1].label)}</small></button>`}
           </div></div>
         <div class="bt-res-list">${rows}</div></div>`, 'bt-results');
       el.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => { sfx('ok'); res(b.dataset.go); }));
