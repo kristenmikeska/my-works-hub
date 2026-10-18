@@ -12,3 +12,6 @@ sites/
 readers/combine_delicate.py
 readers/process_epub_readers.py
 readers/process_readers.py
+
+# Hidden plot files (for Claude only; never published)
+DO-NOT-OPEN-*
