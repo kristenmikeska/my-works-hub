@@ -4,7 +4,7 @@ No characters, so Gemini handles all of these. Every prompt is complete, so past
 **📎 = attach a reference.** All references are in `Femc Mode Images/Background Images/` unless noted.
 Ask for the **largest 16:9 size** for backgrounds and **square** for memory cards.
 
-✅ Done: Dark Hour street, Dark Hour Gekkoukan gate.
+✅ Done: Dark Hour street, Dark Hour Gekkoukan gate, Dark Hour monorail (#2).
 
 ---
 
