@@ -17,7 +17,7 @@ She wakes up in **Tartarus** with no memory of who she is or where she came from
 
 **Solar is FeMC.** There was no FeMC in this world before her. Every trace of "the protagonist" in P3 starts the night she arrives.
 
-**She wakes up already in a Gekkoukan uniform** (no armband yet). Nothing from any of her three lives is on her, so no single world claims her. The eerie part is that this world made a place for her before she arrived.
+**She wakes up already in a Gekkoukan uniform** (no armband yet). Nothing from any of her three lives is on her, so no single world claims her. **(Kat:)** the black hoodie she sleeps in later (the unknown-text CG) is on purpose: a quiet echo, not a clue that picks a world. The eerie part is that this world made a place for her before she arrived.
 
 ## Why she's here: her Shadow
 
