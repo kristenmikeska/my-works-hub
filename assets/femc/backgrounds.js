@@ -34,7 +34,7 @@ window.FEMC_BG = [
   ["Iwatodai Dorm · Solar's Room", 'pink-bedroom-2'],
   ["Iwatodai Dorm · Akihiko's Room", 'akihiko-bedroom'],
   ["Iwatodai Dorm · Kuromi's Room", 'kuromi-bedroom'],
-  ['Iwatodai Dorm · Rooftop', 'rooftop-citynight'],
+  ['Iwatodai Dorm · Rooftop', 'iwatodaidorm-roof-night'],
   ['Iwatodai Dorm · Front', 'iwotodaidorm-outside'],
 
   // Iwatodai
