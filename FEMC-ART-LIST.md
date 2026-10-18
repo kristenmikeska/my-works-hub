@@ -11,11 +11,11 @@ Things Claude can't draw or animate. Claude handles the code side: animation, ef
 Full-screen 16:9 illustrations for big moments, the way P3R and P5R show a painted still at key scenes. They're the biggest visual upgrade to the story.
 
 **Story**
-- [ ] Prologue: Solar waking in Tartarus, alone, green moonlight, an Evoker on the floor beside her
+- [x] Prologue: Solar waking in Tartarus, alone, green moonlight, an Evoker on the floor beside her
 - [x] Akihiko finding her (`Event CGs/prologue-akihiko-finds-solar.png`)
-- [ ] The first night at the dorm: S.E.E.S. in the lounge staring at the new girl
-- [ ] Solar's first day at Gekkoukan, at the gate with cherry blossoms
-- [ ] Elizabeth showing Solar her blank page in the compendium
+- [x] The first night at the dorm: S.E.E.S. in the lounge staring at the new girl
+- [x] Solar's first day at Gekkoukan, at the gate with cherry blossoms
+- [x] Elizabeth showing Solar her blank page in the compendium
 - [ ] Solar meeting Wren on the station bench
 - [ ] The first text from a number she doesn't know: Solar in bed, phone glow
 - [x] Hanni and Hyein finding her (`Event CGs/searchers-hanni-hyein-find-solar.webp`), a tearful "SOL?!" at Paulownia Mall *(draft saved: `Event CGs/searchers-hanni-hyein-find-solar-draft.webp`; style is right, but the signs are duplicated. Redo in ChatGPT with the sign list: Chagall Café, Be Blue V, Game Panic, Mandragora, Escapade, Aohige Pharmacy, plus the blue Velvet Room door.)*
