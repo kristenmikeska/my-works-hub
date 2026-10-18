@@ -40,10 +40,12 @@ From the Korean tale of the sister who became the sun: she was afraid of being l
 
 **Look (art done: `Femc Mode Images/Personas/Haenim.png`):** blush-pink and gold hanbok-inspired gown, sun crown of ribbons and gold pins, a sheer pink veil with a gold sun over her eyes, a white fox mask pushed aside, porcelain doll joints. She carries charms from her three lives: a gold bell (Kiriko and *Runners*), a jade ring on a red cord (*strangers*), a star pin (the *Hoax* campaign), and headphones. She fights with the golden rope from the myth.
 
+**Theurgy:** "Rise and Shine": she lifts her veil and the sun pours out (cut-in done).
+
 **Growth:** she starts veiled and mismatched, and her name glitches when she's summoned. Each route has its own final form:
 - *Runners*: **Sunna**, the runner under stage lights.
-- *strangers*: a harbor goddess such as Mazu.
-- *Hoax*: Nike, winged Victory.
+- *strangers*: **Mazu**, the sea goddess who protects the people waiting on the docks (art done: `Personas/Haenim-Harbor.png`).
+- *Hoax*: **Nike**, winged Victory (art done: `Personas/Haenim-Nike.png`).
 - **True ending:** Haenim with the veil off, the sun you *can* look at.
 
 ## Who arrives, and why (in this order)
@@ -124,7 +126,7 @@ Once they cross into the Dark Hour, people from her novels can **awaken Personas
 - **Tartarus:** floors to climb, Shadows, treasure, and full-moon bosses.
 - **Growth:** leveling, skill trees, upgrades and equipment. Her Persona's skills unlock through memory fragments of her three lives.
 - **Social stats:** Academics, Charm, Courage and more. They gate links and choices. There are also exams and part-time jobs.
-- **Memory fragments:** a journal of déjà-vu moments. Following them shapes her route.
+- **Memory fragments:** a journal of déjà-vu moments (first 12 cards done in `assets/femc/memories/`, four per world). Following them shapes her route.
 - **Kept from v1, reworked:** social links, the bond meter, texts, the Go Out map, stamps, the compendium, New Game+, music, portraits and the art.
 
 ## Open questions for Kat
