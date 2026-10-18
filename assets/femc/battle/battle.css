@@ -130,7 +130,10 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-enemy.veiled { z-index: 0; isolation: isolate; }
 @keyframes bt-veilspin { to { transform: translate(-50%, -50%) rotate(360deg); } }
 .bt-ehp { width: min(120px, 80%); height: 7px; margin-top: 6px; border: 1.5px solid rgba(255, 255, 255, .7); background: rgba(0, 0, 0, .6); transform: skewX(-20deg); overflow: hidden; opacity: .85; }
-.bt-ehp i { display: block; height: 100%; background: linear-gradient(90deg, #ff3b6b, #ff8cc0); transition: width .5s cubic-bezier(.2, .8, .3, 1); }
+.bt-ehp { position: relative; }
+.bt-ehp i { position: absolute; inset: 0; transform-origin: 0 50%; background: linear-gradient(90deg, #ff3b6b, #ff8cc0); transition: transform .35s cubic-bezier(.2, .8, .3, 1); }
+.bt-ehp i.g { background: #fff; opacity: .75; transition: transform .6s cubic-bezier(.4, 0, .2, 1) .45s; }
+.bt-ehp i.g.now { transition: none; }
 .bt-plate { position: absolute; bottom: calc(100% + 40px); left: 50%; z-index: 3; min-width: 180px; padding: 8px 14px 10px; background: rgba(20, 7, 15, .94); border: 2px solid var(--pink-2); transform: translateX(-50%) skewX(-10deg); box-shadow: 5px 5px 0 rgba(255, 79, 158, .5); pointer-events: none; white-space: nowrap; animation: bt-pop .2s ease both; }
 .bt-plate > * { transform: skewX(10deg); }
 .bt-plate b { display: block; font: italic 900 18px/1.1 var(--cond); letter-spacing: .03em; }
@@ -152,11 +155,14 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-card .nm { display: flex; align-items: baseline; gap: 6px; font: italic 900 19px/1 var(--cond); letter-spacing: .03em; text-transform: uppercase; }
 .bt-card .nm small { color: var(--pink-2); font-size: 11px; letter-spacing: .12em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bt-bar { position: relative; display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; align-items: center; gap: 6px; margin-top: 6px; font: italic 900 12px/1 var(--cond); letter-spacing: .06em; }
-.bt-bar .track { height: 7px; background: rgba(255, 255, 255, .14); overflow: hidden; }
-.bt-bar .track i { display: block; height: 100%; transition: width .45s cubic-bezier(.2, .8, .3, 1); }
-.bt-bar.hp .track i { background: linear-gradient(90deg, #47e6a0, var(--hp)); }
-.bt-bar.hp.low .track i { background: linear-gradient(90deg, #ff3b3b, #ff9a6b); }
-.bt-bar.sp .track i { background: linear-gradient(90deg, var(--pink), var(--sp)); }
+.bt-bar .track { position: relative; height: 7px; background: rgba(255, 255, 255, .14); overflow: hidden; }
+/* HP/SP: the fill (.f) and a lagging ghost (.g) behind it. transform only, so it stays cheap. */
+.bt-bar .track i { position: absolute; inset: 0; transform-origin: 0 50%; transition: transform .3s cubic-bezier(.2, .8, .3, 1); }
+.bt-bar .track i.g { background: #fff4f9; opacity: .72; transition: transform .6s cubic-bezier(.4, 0, .2, 1) .45s; }
+.bt-bar .track i.g.now { transition: none; }
+.bt-bar.hp .track i.f { background: linear-gradient(90deg, #47e6a0, var(--hp)); }
+.bt-bar.hp.low .track i.f { background: linear-gradient(90deg, #ff3b3b, #ff9a6b); }
+.bt-bar.sp .track i.f { background: linear-gradient(90deg, var(--pink), var(--sp)); }
 .bt-bar b { min-width: 30px; font-size: 18px; text-align: right; }
 .bt-bar.sp b { font-size: 14px; color: var(--pink-3); }
 .bt-card .st { position: absolute; top: -14px; right: 8px; display: flex; gap: 4px; }
@@ -656,7 +662,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-bench span.up b { color: var(--gold); }
 
 /* ── Phones ───────────────────────────────────────── */
-@media (max-width: 760px) {
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
   .bt-top { top: 10px; left: 10px; right: 10px; gap: 8px; }
   .bt-floorlabel { padding: 5px 12px; gap: 8px; }
   .bt-floorlabel b { font-size: 18px; }
@@ -818,7 +824,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
   .bt-hub-party img { width: 28px; height: 28px; }
 }
 @keyframes bt-card-in-m { 0%, 35% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); } 100% { clip-path: polygon(0 0, 130% 0, 100% 100%, -30% 100%); } }
-@media (max-width: 760px) and (max-height: 700px) { .bt-field { bottom: 340px; } }
+@media (max-width: 760px) and (max-height: 700px), (max-width: 1100px) and (max-aspect-ratio: 4/5) and (max-height: 700px) { .bt-field { bottom: 340px; } }
 @media (prefers-reduced-motion: reduce) {
   .sh *, .bt-bg, .bt-tree-art { animation: none !important; }
   .bt-enemy.down .sh, .bt-enemy[data-ail] .sh, .bt-enemy.hit .sh { animation: none !important; }
@@ -958,7 +964,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 
 /* ── Battle: Theurgy gauge on cards, tags ───────────── */
 .bt-card .bt-th { position: absolute; left: 92px; right: 14px; bottom: 5px; height: 3px; background: rgba(255, 255, 255, .1); overflow: hidden; }
-.bt-card .bt-th i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #ffd36b, #fff2b0); transition: width .5s; }
+.bt-card .bt-th i { display: block; height: 100%; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, #ffd36b, #fff2b0); transition: transform .5s; }
 .bt-card .bt-th.full { height: 5px; box-shadow: 0 0 8px var(--gold); }
 .bt-card.th-ready { box-shadow: 5px 5px 0 var(--gold); }
 .bt-card .st i.tired { background: #ffb36b; color: var(--night); }
@@ -1201,7 +1207,7 @@ html.bt-perf .bt-speedlines, html.bt-perf .bt-evk-light::after, html.bt-perf .th
 html.bt-perf .bt-enemy .sh-pic img { filter: none; }
 html.bt-perf .bt-dust .cloud.ol i { box-shadow: 0 0 0 4px #14070f; }
 
-@media (max-width: 760px) {
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
   .bt-hub-menu > :nth-child(n) { margin-left: 0 !important; }
   .bt-hub-menu .bt-hub-row { width: 100%; }
   .bt-map { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr) auto auto; gap: 8px; padding: 10px 10px 12px; }
@@ -1253,3 +1259,280 @@ html.bt-perf .bt-dust .cloud.ol i { box-shadow: 0 0 0 4px #14070f; }
 @media (prefers-reduced-motion: reduce) {
   .bt-map-bg, .bt-room-bg, .bt-ops-bg, .bt-evx-rays, .bt-mapsvg .e.live, .bt-mapsvg .node.opt .ring { animation: none !important; }
 }
+
+/* ════════════════════════════════════════════════════
+   BATCH 3: quality of life. Settings, help, battle log, tips, Rush, controller prompts, HUD polish, save data,
+   and the responsive hub (Solar's full-body status screen).
+   ════════════════════════════════════════════════════ */
+/* FEMC's corner badge never covers a panel or the controller prompts. */
+html.bt-ov-open .femc-badge, html.bt-pad .femc-badge { display: none !important; }
+
+/* ── Hub: title and menu, Solar standing at the right, her status card ── */
+.bt-hub { grid-template-columns: minmax(0, 1fr) minmax(330px, clamp(400px, 25vw, 480px)) minmax(240px, 27vw); grid-template-areas: "copy card fig"; align-items: center; gap: clamp(14px, 2.4vw, 40px); padding: clamp(56px, 8vh, 90px) clamp(16px, 4vw, 70px) 72px; overflow-x: hidden; overflow-y: auto; }
+.bt-hub-copy { grid-area: copy; min-width: 0; }
+.bt-hub .bt-solar { grid-area: card; display: block; z-index: 2; padding: 20px 22px; }
+.bt-hub-fig { grid-area: fig; position: relative; align-self: stretch; z-index: 1; min-height: 0; pointer-events: none; }
+.bt-hub-fig img { position: absolute; left: 50%; bottom: -72px; height: calc(100% + 72px + clamp(20px, 6vh, 80px)); max-height: 1000px; width: auto; max-width: none; transform: translateX(-50%); filter: drop-shadow(10px 8px 0 rgba(255, 79, 158, .5)); animation: bt-fig-in .7s cubic-bezier(.2, 1.1, .4, 1) .1s both; }
+.bt-hub-fig .band { position: absolute; left: -10%; right: -40%; top: 18%; height: 46%; background: linear-gradient(100deg, rgba(255, 79, 158, .55), rgba(255, 79, 158, .1)); transform: skewY(-12deg); box-shadow: 0 0 0 2px rgba(255, 140, 192, .4); }
+@keyframes bt-fig-in { from { opacity: 0; transform: translateX(-30%); } }
+.bt-hub h1 { font-size: clamp(52px, 6.6vw, 140px); }
+.bt-hub-menu { margin-top: clamp(16px, 3.4vh, 34px); gap: clamp(8px, 1.3vh, 12px); }
+.bt-hub-menu .bt-btn { min-width: min(360px, 100%); }
+.bt-hub-menu .bt-hub-row { width: min(400px, 100%); }
+.bt-hub-menu .bt-hub-row .bt-btn { padding: 12px 14px; gap: 8px; }
+.bt-hub-menu .bt-hub-row .bt-btn small { flex: none; }
+.bt-hub-hint { margin-top: 18px; }
+.bt-stats { grid-template-columns: repeat(7, minmax(0, auto)); gap: 2px 12px; }
+.bt-hub .bt-solar h2 { font-size: clamp(34px, 3vw, 44px); }
+.bt-diff { display: inline-block; margin-left: 10px; padding: 2px 7px; background: rgba(255, 255, 255, .1); color: var(--pink-3); letter-spacing: .14em; }
+.bt-diff.d-story { color: var(--hp); } .bt-diff.d-hard { color: #ff6b6b; }
+/* Mid-width and tall windows: menu over the card, Solar to the right. */
+@media (max-width: 1240px), (max-aspect-ratio: 5/4) {
+  .bt-hub { grid-template-columns: minmax(0, 1fr) minmax(200px, 36%); grid-template-rows: auto auto; grid-template-areas: "copy fig" "card fig"; align-content: center; align-items: start; }
+  .bt-hub .bt-solar { max-width: 560px; }
+  .bt-hub .bt-hub-hint { display: none; }
+  .bt-hub .bt-solar .bt-chips { max-height: 58px; overflow: hidden; }
+  .bt-hub-fig img { bottom: -72px; height: min(calc(100% + 72px + 40px), 100vh); }
+}
+/* Mid-width but short (1024x768): menu left, the card at the bottom right with Solar standing behind it. */
+@media (min-width: 761px) and (max-width: 1240px) and (min-aspect-ratio: 5/4) and (max-height: 860px) {
+  .bt-hub { grid-template-columns: minmax(0, 1fr) minmax(300px, 380px); grid-template-rows: 1fr; grid-template-areas: "copy card"; align-items: center; }
+  .bt-hub .bt-solar { align-self: end; margin-bottom: -20px; background: rgba(20, 7, 15, .93); }
+  .bt-hub-fig { grid-area: card; align-self: stretch; margin: -60px -30px 0 0; }
+  .bt-hub-fig img { left: 58%; }
+}
+@media (max-width: 760px) {
+  .bt-hub { grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "card"; padding: 58px 16px 84px; align-content: start; }
+  .bt-hub-fig { position: absolute; top: 34px; right: -54px; width: 230px; height: 470px; opacity: .9; z-index: 0; }
+  .bt-hub-fig img { bottom: 0; height: 100%; }
+  .bt-hub-fig .band { display: none; }
+  .bt-hub-copy { z-index: 1; }
+  .bt-hub h1 { font-size: 64px; }
+  .bt-hub-menu .bt-btn, .bt-hub-menu .bt-hub-row { width: 100%; min-width: 0; }
+  .bt-stats { grid-template-columns: repeat(4, auto); }
+}
+
+/* ── Tool buttons ── */
+.bt-gear { width: 15px; height: 15px; vertical-align: -3px; }
+.bt-tool .bt-gear { display: inline-block; }
+.bt-tool.bt-rushbtn[aria-pressed="false"] { opacity: 1; text-decoration: none; }
+.bt-tool.bt-rushbtn[aria-pressed="true"] { background: var(--gold); color: var(--night); box-shadow: 3px 3px 0 var(--pink); }
+.bt-tool.bt-rushbtn.na { opacity: .45; }
+.bt-battle.rushing::after { content: ""; position: absolute; inset: 0; z-index: 29; border: 3px solid var(--gold); pointer-events: none; box-shadow: inset 0 0 40px rgba(255, 211, 107, .25); }
+.bt-rushtag { position: absolute; left: 18px; bottom: 150px; z-index: 27; display: none; align-items: center; gap: 8px; padding: 5px 14px; background: var(--gold); color: var(--night); font: italic 900 18px/1 var(--cond); letter-spacing: .1em; transform: skewX(-14deg); box-shadow: 4px 4px 0 var(--night); pointer-events: none; }
+.bt-rushtag > * { transform: skewX(14deg); }
+.bt-rushtag span { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+.bt-battle.rushing .bt-rushtag { display: flex; animation: bt-pulse .9s ease-in-out infinite alternate; }
+html.bt-pad .bt-rushtag span { display: none; }
+
+/* ── Menu affinity tags and disabled reasons ── */
+.mk { display: inline-block; margin-right: 8px; padding: 2px 7px; background: rgba(255, 255, 255, .12); color: #fff; font: italic 900 13px/1.05 var(--cond); letter-spacing: .08em; transform: skewX(-10deg); vertical-align: 1px; }
+.mk.weak { background: #ffe14d; color: var(--night); } .mk.resist { background: #6a7cff; } .mk.null { background: #555; } .mk.drain { background: #3fd28c; color: var(--night); } .mk.repel { background: #c07bff; }
+.mk.unk { background: transparent; color: var(--muted); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35); }
+.bt-mi.sel .mk.unk { color: #8a6a7a; box-shadow: inset 0 0 0 1px #b9a0ac; }
+.bt-mi .why { margin-right: 8px; color: #ff9a9a; font: italic 900 12px/1 var(--cond); letter-spacing: .1em; }
+.bt-mi.sel .why { color: #b0303a; }
+.bt-mi.off .r { color: rgba(255, 214, 232, .4); }
+.bt-desc .why { display: block; margin-top: 4px; color: #ff9a9a; font-style: normal; }
+.bt-desc .vs { color: #fff; white-space: nowrap; }
+.bt-mtitle .vs { margin-left: 6px; color: #fff; }
+.bt-mtitle .vs i { font-style: normal; color: var(--pink-2); letter-spacing: 0; }
+.bt-enemy.focus .bt-plate { border-color: var(--gold); }
+
+/* ── HUD: low-HP danger pulse (opacity only) ── */
+.bt-card > .pulse { position: absolute; inset: 0; z-index: -1; transform: none; pointer-events: none; background: linear-gradient(110deg, rgba(255, 40, 70, .7), rgba(255, 40, 70, 0) 75%); opacity: 0; }
+.bt-card.danger > .pulse { animation: bt-danger 1s ease-in-out infinite alternate; }
+.bt-card.dead > .pulse { display: none; }
+@keyframes bt-danger { from { opacity: .05; } to { opacity: 1; } }
+
+/* ── Reduce flashes, screen shake off ── */
+html.bt-calm .bt-flash.go { animation-name: bt-flash-calm; }
+@keyframes bt-flash-calm { 0% { opacity: .16; } 100% { opacity: 0; } }
+html.bt-calm .bt-evoke.broke .bt-evk-light { animation-name: bt-evk-light-calm; }
+@keyframes bt-evk-light-calm { 0% { opacity: 0; } 30% { opacity: .4; } 100% { opacity: .4; } }
+html.bt-calm .bt-theurgy .th-burst { animation-name: th-burst-calm; }
+@keyframes th-burst-calm { 0% { opacity: 0; transform: scale(.1); } 18% { opacity: .28; transform: scale(1); } 45% { opacity: .22; transform: scale(2.6); } 100% { opacity: 0; transform: scale(4.2); } }
+html.bt-calm .bt-evx-burst { animation-name: evx-burst-calm; }
+@keyframes evx-burst-calm { 0% { opacity: 0; } 15% { opacity: .28; } 100% { opacity: 0; } }
+html.bt-noshake .bt-battle.shake, html.bt-noshake .bt-battle.shake-big { animation: none; }
+
+/* ── Panels: Settings, battle log, help ── */
+.bt-ov { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 16px; background: rgba(8, 2, 6, .84); color: var(--ink); animation: bt-in .2s ease both; }
+.bt-ov-card { position: relative; display: flex; flex-direction: column; width: min(720px, 100%); max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); padding: clamp(14px, 2.4vw, 22px) clamp(14px, 2.6vw, 26px); border: 2px solid var(--pink-2); border-radius: 4px 26px 4px 26px; background: rgba(20, 7, 15, .97); box-shadow: 10px 10px 0 var(--pink); }
+.bt-ov-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.bt-ov-head h2 { margin: 0; font: italic 900 clamp(30px, 4vw, 42px)/1 var(--cond); transform: skewX(-8deg); text-shadow: .06em .06em 0 var(--pink); }
+.bt-ov-head h2 small { display: block; margin-bottom: 6px; color: var(--pink-2); font-size: 12px; letter-spacing: .3em; text-shadow: none; }
+.bt-ov .bt-hint { display: block; margin: 10px 0 0; }
+.bt-ov-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 12px; }
+.bt-ov-foot .bt-hint { margin: 0; }
+.bt-set-list { flex: 1 1 auto; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; margin: 0 -12px 0 0; padding: 2px 14px 6px 4px; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
+.bt-set-row { flex: none; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 42px; padding: 4px 8px 4px 16px; background: rgba(255, 255, 255, .05); transform: skewX(-10deg); cursor: pointer; }
+.bt-set-row > * { transform: skewX(10deg); }
+.bt-set-row .k { font: italic 900 19px/1.05 var(--cond); letter-spacing: .04em; text-transform: uppercase; }
+.bt-set-row .v { display: flex; align-items: center; gap: 6px; }
+.bt-set-row .v b { min-width: 124px; text-align: center; color: var(--pink-3); font: italic 900 17px/1 var(--cond); letter-spacing: .06em; text-transform: uppercase; }
+.bt-set-row .ar { width: 30px; height: 30px; border: 0; background: rgba(255, 255, 255, .08); color: #fff; font: 900 18px/1 var(--cond); cursor: pointer; }
+.bt-set-row .ar:hover { background: var(--pink); color: #fff; }
+.bt-set-row input[type="range"] { width: clamp(90px, 14vw, 150px); margin: 0; accent-color: var(--pink); cursor: pointer; }
+.bt-set-row .v input + b { min-width: 46px; }
+.bt-set-row:hover { background: rgba(255, 255, 255, .1); }
+.bt-set-row.sel { background: #fff; color: var(--night); box-shadow: 6px 6px 0 var(--pink); }
+.bt-set-row.sel .v b { color: var(--pink); }
+.bt-set-row.sel .ar { background: rgba(20, 7, 15, .1); color: var(--night); }
+.bt-set-desc { min-height: 3.2em; margin: 12px 0 0; padding: 9px 14px; background: rgba(12, 4, 9, .9); border-left: 4px solid var(--pink); color: var(--pink-3); font-size: 14px; line-height: 1.4; }
+.bt-set-desc b { margin-right: 8px; color: #fff; font: italic 900 14px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; }
+.bt-logp .bt-ov-card { width: min(640px, 100%); min-height: min(380px, calc(100dvh - 32px)); max-height: min(680px, calc(100dvh - 32px)); }
+.bt-loglist { flex: 1 1 auto; min-height: 0; overflow-y: auto; display: grid; gap: 2px; align-content: start; margin: 0; padding: 0 8px 0 0; list-style: none; font-size: 14.5px; line-height: 1.35; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
+.bt-loglist li { padding: 3px 10px; border-left: 3px solid rgba(255, 255, 255, .14); color: var(--pink-3); }
+.bt-loglist li.pf, .bt-loglist li.pu { border-color: var(--pink); color: #fff; }
+.bt-loglist li.ef, .bt-loglist li.eu { border-color: #7fb6ff; color: #dcebff; }
+.bt-loglist li.heal { border-color: var(--hp); color: #c8ffe6; }
+.bt-loglist li.miss { color: var(--muted); }
+.bt-loglist li.sys { border-color: var(--gold); color: var(--gold); }
+.bt-loglist li.buff { border-color: #6ab0ff; } .bt-loglist li.debuff { border-color: #ff5a7a; }
+.bt-loglist li.round { margin-top: 6px; border: 0; padding: 4px 0 2px; }
+.bt-loglist li.round b { color: var(--pink-2); font: italic 900 13px/1 var(--cond); letter-spacing: .3em; text-transform: uppercase; }
+.bt-helpp .bt-ov-card { width: min(880px, 100%); height: min(640px, calc(100dvh - 32px)); }
+.bt-help-in { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: minmax(170px, 230px) minmax(0, 1fr); gap: 18px; }
+.bt-help-list { display: grid; gap: 4px; align-content: start; margin: 0; padding: 2px 8px 6px 4px; list-style: none; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
+.bt-help-list button { width: 100%; padding: 8px 14px; border: 0; background: rgba(255, 255, 255, .06); color: #fff; text-align: left; font: italic 900 16px/1.05 var(--cond); letter-spacing: .06em; text-transform: uppercase; transform: skewX(-10deg); cursor: pointer; }
+.bt-help-list button:hover { background: rgba(255, 255, 255, .14); }
+.bt-help-list button.sel { background: #fff; color: var(--night); box-shadow: 4px 4px 0 var(--pink); }
+.bt-help-body { min-height: 0; overflow-y: auto; padding-right: 8px; }
+.bt-help-body h3 { margin: 0 0 10px; color: #fff; font: italic 900 32px/1 var(--cond); transform: skewX(-8deg); text-shadow: .06em .06em 0 var(--pink); }
+.bt-help-body p { margin: 0 0 12px; color: var(--pink-3); font-size: 16px; line-height: 1.5; }
+.bt-help-body dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px 16px; margin: 0; }
+.bt-help-body dt { color: var(--c, var(--pink-2)); font: italic 900 15px/1.35 var(--cond); letter-spacing: .06em; text-transform: uppercase; }
+.bt-help-body dd { margin: 0; color: var(--pink-3); font-size: 14.5px; line-height: 1.4; }
+.bt-help-body dl.keys dt { color: #fff; }
+
+/* ── Fuuka's tips ── */
+.bt-tip { position: fixed; left: 18px; top: 70px; z-index: 150; display: flex; align-items: center; max-width: min(410px, calc(100vw - 36px)); color: var(--ink); animation: bt-tip-in .35s cubic-bezier(.2, 1.2, .4, 1) both; }
+.bt-tip.out { animation: bt-tip-out .25s ease forwards; }
+.bt-tip .pic { flex: none; z-index: 1; width: 58px; height: 58px; overflow: hidden; border: 3px solid #fff; border-radius: 50%; background: #1a3a40; box-shadow: 3px 3px 0 var(--gold); }
+.bt-tip .pic img { width: 170%; margin: -6% 0 0 -38%; }
+.bt-tip .tx { margin-left: -14px; padding: 9px 14px 9px 24px; background: rgba(20, 7, 15, .96); border: 2px solid var(--gold); border-radius: 4px 18px 4px 18px; font-size: 14px; line-height: 1.35; }
+.bt-tip .tx b { display: block; margin-bottom: 3px; color: var(--gold); font: italic 900 12px/1 var(--cond); letter-spacing: .2em; text-transform: uppercase; }
+.bt-tip .tx span { display: block; min-height: 2.7em; }
+.bt-tip .acts { display: flex; justify-content: flex-end; gap: 6px; margin-top: 6px; }
+.bt-tip .acts button { padding: 5px 11px; border: 0; background: rgba(255, 255, 255, .1); color: #fff; font: italic 900 12px/1 var(--cond); letter-spacing: .1em; text-transform: uppercase; transform: skewX(-12deg); cursor: pointer; }
+.bt-tip .acts button:hover { background: var(--gold); color: var(--night); }
+@keyframes bt-tip-in { from { opacity: 0; transform: translateX(-40px); } }
+@keyframes bt-tip-out { to { opacity: 0; transform: translateX(-40px); } }
+
+/* ── Controller prompts (only while a controller is the last input) ── */
+.bt-padbar { position: fixed; left: 50%; bottom: 6px; z-index: 180; display: flex; gap: 14px; max-width: calc(100vw - 12px); overflow: hidden; padding: 5px 16px; background: rgba(12, 4, 9, .9); color: #fff; font: italic 900 13px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; transform: translateX(-50%) skewX(-12deg); box-shadow: 3px 3px 0 var(--pink); pointer-events: none; }
+.bt-padbar[hidden] { display: none; }
+html:not(.bt-pad) .bt-padbar { display: none; }
+.bt-padbar > span { display: inline-flex; align-items: center; gap: 5px; transform: skewX(12deg); }
+.bt-padbar .g { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; background: #444; color: #fff; font: normal 900 11px/1 "Helvetica Neue", Arial, sans-serif; letter-spacing: 0; }
+.bt-padbar .g-a { background: #3fb34f; } .bt-padbar .g-b { background: #d8353a; } .bt-padbar .g-x { background: #2e6fd8; } .bt-padbar .g-y { background: #e8b62a; color: var(--night); }
+.bt-padbar .g-lb, .bt-padbar .g-rb, .bt-padbar .g-rt, .bt-padbar .g-start, .bt-padbar .g-select, .bt-padbar .g-dpad { border-radius: 4px; background: #5a4a55; }
+html.bt-pad-ps .bt-padbar .g-a, html.bt-pad-ps .bt-padbar .g-b, html.bt-pad-ps .bt-padbar .g-x, html.bt-pad-ps .bt-padbar .g-y { background: #1d1d24; font-size: 13px; }
+html.bt-pad-ps .bt-padbar .g-a { color: #8ab4ff; } html.bt-pad-ps .bt-padbar .g-b { color: #ff6b6b; } html.bt-pad-ps .bt-padbar .g-x { color: #ff8cc0; } html.bt-pad-ps .bt-padbar .g-y { color: #5fe0b0; }
+html.bt-pad .bt-hint:not(.bt-mtitle), html.bt-pad .bt-hub-hint { display: none; }
+html.bt-pad .bt-battle .bt-party { bottom: 40px; }
+html.bt-pad .bt-battle .bt-cmd { bottom: 50px; }
+
+/* ── Save data ── */
+.bt-slots { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 14px; align-content: start; padding: 10px clamp(16px, 4vw, 60px); overflow-y: auto; }
+.bt-slot { display: grid; align-content: start; gap: 8px; padding: 14px 18px; border: 2px solid rgba(255, 140, 192, .45); border-radius: 4px 20px 4px 20px; background: rgba(20, 7, 15, .9); }
+.bt-slot.auto { border-color: var(--hp); }
+.bt-slot.empty { border-style: dashed; }
+.bt-slot.wide { grid-column: 1 / -1; }
+.bt-slot h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin: 0; font: italic 900 24px/1 var(--cond); letter-spacing: .04em; text-transform: uppercase; }
+.bt-slot h3 small { color: var(--muted); font-size: 13px; letter-spacing: .1em; }
+.bt-slot p { margin: 0; color: var(--pink-3); font-size: 14.5px; }
+.bt-slot p.sub { color: var(--muted); font-size: 13px; }
+.bt-slot .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.bt-slot .row .bt-btn { padding: 9px 18px; font-size: 16px; }
+.bt-code { width: 100%; min-height: 84px; max-height: 26vh; resize: vertical; padding: 10px 12px; border: 2px solid rgba(255, 140, 192, .5); background: #0c0409; color: var(--pink-3); font: 12px/1.4 ui-monospace, Menlo, monospace; word-break: break-all; }
+.bt-code:focus { outline: none; border-color: #fff; }
+.bt-slot-msg { position: relative; z-index: 2; margin: 0; padding: 8px clamp(16px, 4vw, 60px) 16px; color: var(--pink-2); font: italic 800 14px/1.3 var(--cond); letter-spacing: .08em; text-transform: uppercase; }
+
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-tools { gap: 5px; }
+  .bt-battle .bt-floorlabel { max-width: 44vw; overflow: hidden; }
+  .bt-battle .bt-tool { padding: 6px 8px; }
+  .bt-rushtag { left: auto; right: 10px; top: 52px; bottom: auto; font-size: 14px; }
+  .bt-set-row { gap: 8px; min-height: 40px; padding: 4px 6px 4px 12px; }
+  .bt-set-row .k { font-size: 15px; }
+  .bt-set-row .v { gap: 4px; }
+  .bt-set-row .v b { min-width: 84px; font-size: 14px; }
+  .bt-set-row .ar { width: 26px; height: 28px; }
+  .bt-set-row input[type="range"] { width: 64px; }
+  .bt-set-row .v input + b { min-width: 40px; }
+  .bt-help-in { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); gap: 10px; }
+  .bt-help-list { display: flex; overflow-x: auto; overflow-y: hidden; padding-bottom: 8px; }
+  .bt-help-list li { flex: none; }
+  .bt-help-list button { white-space: nowrap; font-size: 14px; padding: 7px 12px; }
+  .bt-help-body dl { grid-template-columns: 1fr; gap: 2px; }
+  .bt-help-body dd { margin-bottom: 6px; }
+  .bt-tip { left: 10px; right: 10px; top: 54px; max-width: none; }
+  .bt-tip .pic { width: 44px; height: 44px; }
+  .bt-cmd .bt-mtitle { display: block; margin: 0 0 6px !important; font-size: 10px; }
+  .bt-padbar { gap: 8px; font-size: 11px; padding: 4px 10px; }
+  .mk { font-size: 11px; padding: 2px 5px; margin-right: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bt-card.danger > .pulse { animation: none; opacity: .6; }
+  .bt-battle.rushing .bt-rushtag { animation: none; }
+  .bt-hub-fig img { animation: none; }
+}
+
+/* ── Responsive pass (batch 3) ── */
+/* Tree: node spacing follows the window height so all five nodes fit. */
+.bt-branch { --ng: clamp(10px, 3.2vh, 30px); }
+.bt-node { padding: clamp(7px, 1.5vh, 13px) 14px; }
+.bt-node + .bt-node { margin-top: var(--ng); }
+.bt-node + .bt-node::before { top: calc(-2px - var(--ng)); height: var(--ng); }
+.bt-branch-h { min-height: clamp(62px, 10vh, 92px); margin-bottom: clamp(8px, 1.6vh, 14px); }
+@media (max-height: 760px) and (min-width: 761px) { .bt-branch-h span + span { display: none; } .bt-tree-head h1 { font-size: clamp(40px, 5vw, 64px); } }
+/* Personas: forms shrink on short windows; one column when the window is tall and narrow. */
+.bt-form img { height: clamp(52px, 9vh, 86px); }
+@media (min-width: 761px) and (max-aspect-ratio: 1/1) {
+  .bt-pview { grid-template-columns: minmax(0, 1fr); gap: 12px; align-content: start; }
+  .bt-pv-art img { max-height: 34vh; }
+  .bt-pview .bt-card-lg { width: min(680px, 100%); justify-self: center; }
+}
+/* Equipment: narrower windows get a member strip on top. */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .bt-equip { grid-template-columns: minmax(0, 1fr) minmax(300px, 380px); grid-template-rows: auto minmax(0, 1fr); overflow-y: auto; }
+  .bt-eq-mates { grid-column: 1 / -1; grid-template-columns: repeat(9, minmax(0, 1fr)); overflow: visible; }
+  .bt-eq-mates button { grid-template-columns: 1fr; justify-items: center; padding: 3px; }
+  .bt-eq-mates b { font-size: 12px; text-align: center; } .bt-eq-mates b small { display: none; }
+  .bt-eq-mates img { width: 100%; height: 44px; }
+  .bt-eq-who { min-height: 320px; }
+}
+/* Operations: list under the boss on tall narrow windows. */
+@media (min-width: 761px) and (max-width: 940px) {
+  .bt-ops { display: flex; flex-direction: column; gap: 14px; }
+  .bt-op-detail { order: -1; display: block; flex: none; } .bt-op-art { min-height: 180px; margin-bottom: 8px; } .bt-op-art img { max-height: 26vh; }
+  .bt-ops-list { flex: none; }
+}
+.bt-slots { grid-template-columns: repeat(auto-fit, minmax(min(100%, 228px), 1fr)); }
+
+/* Big screens (1080p and up): the battle HUD and menus grow a little, P3R-style. */
+@media (min-width: 1700px) and (min-height: 950px) {
+  .bt-battle .bt-cmd { width: min(26vw, 460px); }
+  .bt-battle .bt-mi { min-height: 52px; font-size: 29px; }
+  .bt-battle .bt-menu.small .bt-mi { min-height: 44px; font-size: 22px; }
+  .bt-battle .bt-desc { font-size: 16px; }
+  .bt-battle .bt-who { height: 160px; } .bt-battle .bt-who img { height: 230px; }
+  .bt-battle .bt-card { max-width: 300px; height: 112px; padding-left: 104px; }
+  .bt-battle .bt-card .face { width: 110px; height: 128px; }
+  .bt-battle .bt-card .nm { font-size: 22px; }
+  .bt-battle .bt-bar b { font-size: 21px; }
+  .bt-battle .bt-party { right: calc(min(26vw, 460px) + clamp(16px, 2.6vw, 44px) + 34px); }
+  .bt-tool { font-size: 15px; padding: 9px 15px; }
+  .bt-floorlabel b { font-size: 28px; }
+  .bt-nav p { font-size: 17px; }
+  .bt-log { font-size: 17px; }
+}
+/* Tablets held upright: the menu is taller, so the Shadows sit higher. */
+@media (min-width: 600px) and (max-width: 1100px) and (max-aspect-ratio: 4/5) { .bt-field { bottom: 50vh; } }
+/* Results grow on big screens. */
+@media (min-width: 1700px) and (min-height: 950px) { .bt-results .bt-res { zoom: 1.3; } }
+.bt-cmd .bt-mtitle { font-size: 12px; letter-spacing: .1em; }
+.bt-cmd .bt-mtitle .vs i { font-size: 1.15em; }
+@media (min-width: 1700px) and (min-height: 950px) { .bt-hub-copy, .bt-hub .bt-solar { zoom: 1.15; } }

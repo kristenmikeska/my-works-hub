@@ -833,7 +833,53 @@ window.FEMC_BATTLE_DATA = (() => {
     barrier: ['The way up is sealed. A full-moon Shadow is waiting at the top of this block.', 'surprised'],
     barrierOpen: ['The barrier’s open. We beat this one already.', 'happy'],
     memory: ['Solar…? Haenim’s charm is ringing.', 'surprised'],
-    empty: [['Nothing here.', 'Just an empty corridor.'], 'neutral']
+    empty: [['Nothing here.', 'Just an empty corridor.'], 'neutral'],
+    // Rush (auto-battle)
+    rushOn: ['Rush! I’ll keep an eye on everyone’s HP.', 'happy'],
+    rushStop: ['{name} is hurt! I’m taking you off Rush.', 'surprised'],
+    rushBoss: ['This one’s too dangerous to rush. You take it from here.', 'surprised'],
+    rushNo: ['Rush is off for this kind of fight. You can change that in Settings.', 'neutral']
+  };
+
+  /* Difficulty (Settings). pdmg: party damage, edmg: Shadow damage, heal: party healing, reaper: the Reaper hunts you on the
+     node map, strong: how much more often Strong Shadow rooms appear. Changeable any time. */
+  const difficulty = {
+    story: { name: 'Story', pdmg: 1.3, edmg: 0.6, heal: 1, reaper: false, strong: 1, desc: 'For the story. You hit 30% harder, Shadows hit 40% softer, and the Reaper never comes.' },
+    normal: { name: 'Normal', pdmg: 1, edmg: 1, heal: 1, reaper: true, strong: 1, desc: 'The intended balance.' },
+    hard: { name: 'Hard', pdmg: 1, edmg: 1.4, heal: 0.75, reaper: true, strong: 2, desc: 'Shadows hit 40% harder, healing is 25% weaker, and Strong rooms turn up twice as often.' }
+  };
+
+  /* The "?" glossary (help panel) and Fuuka's one-time tips. Statuses and tactics are listed from ailments/tactics. */
+  const glossary = [
+    { id: 'down', name: 'Down', text: 'Hit a Shadow’s weakness, or land a critical, and it falls Down. A Downed foe can’t act until it gets back up on its next turn. Guarding cancels a weakness.' },
+    { id: 'onemore', name: 'One More', text: 'Knock a foe Down and you get One More: another action right away. Chain weaknesses to keep the turn going.' },
+    { id: 'shift', name: 'Shift', text: 'During a One More you can pass the turn to someone who hasn’t gone yet in this chain. They hit harder (×1.25, more with Haenim’s Star branch). Use it to reach a weakness the current member can’t hit.' },
+    { id: 'allout', name: 'All-Out Attack', text: 'When every Shadow is Down, the whole party piles in. Big damage to all foes, and the finish card of whoever started it. You can say “Not yet” to keep your One More instead.' },
+    { id: 'theurgy', name: 'Theurgy', text: 'Each member’s gold gauge fills from hitting weaknesses, landing crits, healing, buffing and taking hits. When it’s full, Theurgy appears at the top of their menu: an ultimate move that doesn’t cost SP. The gauge carries between fights.' },
+    { id: 'status', name: 'Statuses', list: 'ailments', text: 'Ailments wear off on their own after a few turns. Patra Gems and Patra cure most of them; Dis-Poison cures poison.' },
+    { id: 'tactics', name: 'Tactics', list: 'tactics', text: 'Choose how each member fights: Direct lets you pick every action; the others act on their own using only affinities you’ve learned. Change them from the Party screen or the battle menu (free action).' },
+    { id: 'fatigue', name: 'Fatigue', text: 'Fight six times in a row and a member gets Tired: weaker stats and the odd lost turn. A Clock room, the clock before a full moon, or leaving Tartarus fixes it.' },
+    { id: 'reaper', name: 'The Reaper', text: 'Linger too long on one floor and the Reaper comes, and it hunts you room by room. It’s far stronger than anything else here. Find the stairs, or run if it catches you. Story difficulty keeps it away.' },
+    { id: 'access', name: 'Access points', text: 'Green terminals that save your progress. Next time you can start from the highest one you’ve touched, and you can leave Tartarus from any of them.' },
+    { id: 'evolutions', name: 'Evolutions', text: 'Some Personas evolve when their user reaches a level, or after a full moon: Polydeuces into Caesar, Io into Isis, and more. An evolved Persona is stronger and learns new skills.' },
+    { id: 'forms', name: 'Haenim’s forms', text: 'Master a whole branch of Haenim’s tree to unlock one of her forms (Sunna, Mazu, Nike), each with its own affinities and a signature skill. Master all three and clear a full moon for the unveiled form. Switch forms on the Personas screen.' },
+    { id: 'analyze', name: 'Analyze', text: 'A free action: Fuuka reveals a Shadow’s affinities and status. What you learn (by Analyze or by hitting it) is remembered, and the skill list marks each skill WEAK, RESIST, NULL, DRAIN or REPEL against the selected Shadow; “?” means you haven’t found out yet.' },
+    { id: 'rush', name: 'Rush', text: 'Auto-battle for easy fights: everyone attacks (members with a Tactic follow it) at double speed. It stops by itself when someone gets hurt or on fights it isn’t allowed in (see Settings). Press R or the Rush button.' }
+  ];
+  const tips = {
+    down: ['down', 'It’s Down! Hit a weakness or land a crit and they fall over. You get One More!'],
+    onemore: ['onemore', 'One More means another action, right now. Keep chaining weaknesses!'],
+    shift: ['shift', 'You can Shift! Pass your One More to someone who hasn’t gone yet. They hit harder.'],
+    allout: ['allout', 'They’re all Down! Time for an All-Out Attack!'],
+    theurgy: ['theurgy', 'A Theurgy gauge is full! It’s at the top of their menu, and it costs no SP.'],
+    status: ['status', 'Ailments! Check the ? panel for what each one does. Patra Gems cure most of them.'],
+    tactics: ['tactics', 'You can give orders with Tactics, from the menu or the Party screen. Direct means you choose.'],
+    fatigue: ['fatigue', 'Someone’s Tired. A Clock room or a trip home will fix it.'],
+    reaper: ['reaper', 'The Reaper hunts anyone who lingers. Don’t stay on one floor too long!'],
+    access: ['access', 'Access points save your progress. You can start from here next time.'],
+    evolutions: ['evolutions', 'A Persona evolved! Evolved Personas are stronger and learn new skills.'],
+    forms: ['forms', 'A new form for Haenim! You can switch forms on the Personas screen.'],
+    rush: ['rush', 'Easy fight? Press R (or the Rush button) and the party fights on its own.']
   };
 
   /* Haenim's tree: three charms, three worlds. Each node needs the one above it. effect keys are read by engine.js (treeFx).
@@ -886,5 +932,5 @@ window.FEMC_BATTLE_DATA = (() => {
   };
 
   return { portraits: P, elements, affinityOrder, skills, ailments, tactics, attack, personas, party, defaultParty, theurgyGain, items, startItems, startYen, materials,
-    gear, startGear, shops, enemies, blocks, floors, ops, map, events, memories, music, clips, navigator, nav, tree, progression };
+    gear, startGear, shops, enemies, blocks, floors, ops, map, events, memories, music, clips, navigator, nav, tree, progression, difficulty, glossary, tips };
 })();

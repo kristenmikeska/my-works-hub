@@ -154,9 +154,12 @@ window.FemcBattleEngine = (() => {
     };
   }
 
-  /* setup: { party: [unit], enemies: [kind], mods, known, rand, items, heat, ctx } */
+  /* setup: { party: [unit], enemies: [kind], mods, known, rand, items, heat, ctx, diff }
+     diff: a function returning { pdmg, edmg, heal } (data.difficulty); read on every hit, so a change in Settings applies at once. */
+  const NO_DIFF = { pdmg: 1, edmg: 1, heal: 1 };
   function create(setup) {
     const R = setup.rand || Math.random;
+    const diff = () => (setup.diff && setup.diff()) || NO_DIFF;
     const D = DATA();
     const mods = Object.assign({ crit: 0, critMult: 1.6, weakMult: 1, healMult: 1, bind: 0, ropeCrit: 0, shiftMult: 1.25, shiftSp: 0, alloutMult: 1, regen: 0 }, setup.mods || {});
     const S = {
@@ -207,6 +210,7 @@ window.FemcBattleEngine = (() => {
       d /= 1 + (tgt.en + (tgt.def || 0) / 4) / 20;
       d *= 0.92 + R() * 0.16;
       d *= src.boost || 1;
+      d *= src.side === 'party' ? diff().pdmg : diff().edmg;
       if (src.side === 'enemy') {
         d *= 1.18; // Shadows hit a little harder than the formula alone
         if (src.empower) d *= 1 + 0.15 * src.empower;
@@ -402,6 +406,7 @@ window.FemcBattleEngine = (() => {
     function flushDeaths(ev) { while (S.deaths.length) { const u = S.deaths.shift(); G(u, 'death')(u, ev); } }
     function heal(src, tgt, amount, ev, sp = 0) {
       const before = tgt.hp;
+      if (tgt.side === 'party') amount *= diff().heal;
       tgt.hp = Math.min(tgt.maxHp, tgt.hp + Math.round(amount));
       if (sp) tgt.sp = Math.min(tgt.maxSp, tgt.sp + sp);
       ev.push({ t: 'heal', src: src && src.id, tgt: tgt.id, amount: tgt.hp - before, sp, hp: tgt.hp, maxHp: tgt.maxHp, spNow: tgt.sp });
@@ -708,7 +713,7 @@ window.FemcBattleEngine = (() => {
       const hitsOut = [];
       alive(foes()).forEach(f => {
         let d = parts.reduce((s, p) => s + (p.st + p.lvl * 0.5 + 6) * 2.3 * (1 + 0.25 * p.buffs.atk), 0);
-        d *= (0.9 + R() * 0.2) * mods.alloutMult * (D.enemies[f.kind].alloutResist || 1);
+        d *= (0.9 + R() * 0.2) * mods.alloutMult * (D.enemies[f.kind].alloutResist || 1) * diff().pdmg;
         d /= 1 + f.en / 40;
         if (shieldUp(f)) d = 0;
         const amount = Math.round(d);

@@ -9,6 +9,7 @@ What's next for the battle prototype (`femc-battle.html`). **Claude** = code, **
 ---
 
 ## 1. Quality of life (Claude)
+*Batch 3 built all of this: remembered cursors, WEAK/RESIST/NULL/DRAIN/REPEL/? skill marks, Rush (R), a Settings panel (P, or Esc on the entrance), the battle log (L), controllers, Story/Normal/Hard, a help glossary (H) with Fuuka’s one-time tips, ghost HP/SP bars, and Save data (3 slots plus a backup code).*
 - **Remember my cursor:** each member's menu reopens on their last skill and target, like P3R.
 - **Smarter targeting:** once a weakness is known, the target menu shows WEAK, RESIST or NULL next to each skill, and the skill list marks what will hit hard.
 - **Rush / auto-battle** for easy fights, plus **Tactics** for party members (Act Freely, Heal/Support, Conserve SP, Direct Command).
@@ -47,7 +48,7 @@ What's next for the battle prototype (`femc-battle.html`). **Claude** = code, **
 - [ ] Haenim's route forms: Sunna, the harbor goddess, Nike, unveiled Haenim
 - [ ] Tartarus exploration art, depending on the map style chosen
 - [x] Decisions: node map; Theurgy yes; direct control with optional Tactics (P3P-style)
-- [ ] Decision still open: difficulty modes
+- [x] Difficulty modes: Story / Normal / Hard, changeable any time in Settings
 
 ## 5. Life sim: Kat's ideas (collecting for the game-loop batch)
 - **Part-time jobs at places from Solar's worlds, unlocked later in the game** once those worlds start bleeding through:

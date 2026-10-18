@@ -15,10 +15,14 @@
   const pimg = (id, face) => `${D.portraits}${id}/${face}.webp?v=${V()}`;
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const member = mid => D.party.find(m => m.id === mid);
-  const phone = () => matchMedia('(max-width: 760px)').matches;
+  const phone = () => matchMedia('(max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5)').matches; // phones, and tablets held upright
   const pickOne = a => Array.isArray(a) ? a[Math.floor(Math.random() * a.length)] : a;
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
+  /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
+  const ART_V = 3;
+  const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
+  Object.values(D.personas).forEach(p => { if (p.art && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
   const FINISH_DIR = 'assets/femc/battle/art/finish/', SUMMON_DIR = 'assets/femc/battle/art/summon/';
   const AWAKEN = ['solar-01-resolve', 'solar-02-focus', 'solar-03-awakening', 'solar-04-manifestation', 'solar-05-command', 'solar-06-summoned'];
   /* A stylized Evoker for members without their own Evoker art (muzzle on the left, at the temple). */
@@ -33,7 +37,12 @@
   // v2 added: party (up to 3 ids beside Solar), mem (each member's own level and EXP), tactics, cutins, awakened.
   // v3 adds: yen, items (now kept between runs), gear { owned, eq }, mats, memories, evo (evolved Personas), form + forms (Haenim),
   //          ops { cleared } (Full Moon Operations), cycle (full climbs to the top; makes Tartarus harder), th (Theurgy gauges), perf.
-  const fresh = () => ({ v: 3, lvl: D.progression.startLevel, exp: 0, pts: 0, nodes: [], known: {}, clears: 0, cycle: 0, runs: 0, reached: null, music: null, sfx: true, speed: 1,
+  // v4 adds: settings (see SETTINGS), tipsSeen (Fuuka's one-time tips), cursor (each member's last command, skill and item).
+  //          speed may now be 3. Older saves are copied to KEY + '-backup-v<old>' once, before the upgrade is written.
+  const SETTINGS = { textSpeed: 'normal', musicVol: 100, sfxVol: 100, remember: true, rushWhere: 'normal', rushStop: 30, difficulty: 'normal', shake: true, calm: false, numbers: true, pad: 'auto', tips: true };
+  const SETTING_OK = { textSpeed: ['slow', 'normal', 'fast', 'instant'], rushWhere: ['normal', 'strong', 'all'], rushStop: [30, 50], difficulty: ['story', 'normal', 'hard'], pad: ['auto', 'xbox', 'ps'] };
+  const PREFS = ['settings', 'tipsSeen', 'cursor', 'music', 'sfx', 'speed', 'cutins', 'perf']; // device preferences: kept when a slot or backup is loaded
+  const fresh = () => ({ v: 4, settings: Object.assign({}, SETTINGS), tipsSeen: [], cursor: {}, lvl: D.progression.startLevel, exp: 0, pts: 0, nodes: [], known: {}, clears: 0, cycle: 0, runs: 0, reached: null, music: null, sfx: true, speed: 1,
     party: D.defaultParty.slice(), mem: {}, tactics: {}, cutins: 'first', awakened: false,
     yen: D.startYen, items: Object.assign({}, D.startItems), gear: { owned: {}, eq: {} }, mats: {}, memories: [], evo: {}, form: 'haenim', forms: [], ops: { cleared: [] }, th: {}, perf: false });
   /* Fills in anything missing, so v1/v2 saves (and hand-edited ones) load cleanly. Members who were already fighting
@@ -80,11 +89,38 @@
     if (!s.form || !E.formUnlocked(s, s.form)) s.form = 'haenim';
     if (!s.th || typeof s.th !== 'object') s.th = {};
     s.perf = !!s.perf;
-    s.v = 3;
+    // v4: settings, tips, remembered cursors.
+    const st = s.settings && typeof s.settings === 'object' ? s.settings : {};
+    s.settings = Object.assign({}, SETTINGS);
+    Object.keys(SETTINGS).forEach(k => {
+      const v = st[k];
+      if (SETTING_OK[k]) { if (SETTING_OK[k].includes(v)) s.settings[k] = v; }
+      else if (typeof SETTINGS[k] === 'boolean') { if (typeof v === 'boolean') s.settings[k] = v; }
+      else if (typeof v === 'number' && v >= 0 && v <= 100) s.settings[k] = Math.round(v);
+    });
+    if (![1, 2, 3].includes(s.speed)) s.speed = 1;
+    if (!Array.isArray(s.tipsSeen)) s.tipsSeen = [];
+    s.tipsSeen = s.tipsSeen.filter(k => D.tips[k]);
+    if (!s.cursor || typeof s.cursor !== 'object') s.cursor = {};
+    Object.keys(s.cursor).forEach(k => { if (!member(k) || !s.cursor[k] || typeof s.cursor[k] !== 'object') delete s.cursor[k]; });
+    s.v = 4;
     return s;
   }
+  /* Any object that looks like a save (from storage, a slot or a pasted backup) → a clean v4 save, or null. */
+  function fromRaw(s) {
+    if (!s || typeof s !== 'object' || Array.isArray(s) || !(s.lvl >= 1)) return null;
+    const v = [1, 2, 3, 4].includes(s.v) ? s.v : 1;
+    return normalize(Object.assign(fresh(), JSON.parse(JSON.stringify(s)), { v }));
+  }
   function loadSave() {
-    try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s && [1, 2, 3].includes(s.v)) return normalize(Object.assign(fresh(), s, { v: s.v })); } catch (e) {}
+    try {
+      const raw = localStorage.getItem(KEY), s = JSON.parse(raw || 'null');
+      if (s && [1, 2, 3, 4].includes(s.v)) {
+        // Keep a copy of a pre-v4 save before upgrading it (once per old version).
+        if (s.v < 4) { const bk = `${KEY}-backup-v${s.v}`; if (!localStorage.getItem(bk)) localStorage.setItem(bk, raw); }
+        return fromRaw(s);
+      }
+    } catch (e) {}
     return normalize(fresh());
   }
   let save = loadSave();
@@ -94,18 +130,47 @@
   const femcMusicWanted = () => { try { return (JSON.parse(lsGet('kg-femc-bgm') || '{}') || {}).on !== false; } catch (e) { return true; } };
   const musicOn = () => (save.music == null ? femcMusicWanted() : save.music);
   const sfxOn = () => save.sfx !== false && lsGet('kg-femc-sound') !== 'off';
-  const speed = () => testSpeed || save.speed || 1;
+  const ST = () => save.settings;
+  /* Rush doubles the battle speed (and skips cut-ins) while it's running. */
+  const speed = () => (testSpeed || save.speed || 1) * (rushActive() ? 2 : 1);
+  const diff = () => D.difficulty[ST().difficulty] || D.difficulty.normal;
+  /* Text speed: how fast Fuuka's lines type out (chars/second, 0 = at once) and how long lines stay up. */
+  const textHold = () => ({ slow: 1.6, normal: 1, fast: 0.65, instant: 0.5 })[ST().textSpeed] || 1;
+  const typeCps = () => (FX && FX.reduced() ? 0 : ({ slow: 28, normal: 55, fast: 120, instant: 0 })[ST().textSpeed] || 0);
+  function typeInto(el, text) {
+    if (!el) return 0;
+    clearInterval(el._type);
+    const cps = typeCps();
+    if (!cps || frozen) { el.textContent = text; return 0; }
+    let n = 0;
+    el.textContent = '';
+    const per = Math.max(1, Math.round(cps / 30));
+    el._type = setInterval(() => { n = Math.min(text.length, n + per); el.textContent = text.slice(0, n); if (n >= text.length) clearInterval(el._type); }, 1000 / 30);
+    return text.length / cps * 1000;
+  }
   /* Performance mode: no glass shatter, no ash, fewer particles, no background drift, the small video. */
   const lowEnd = () => (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) || (navigator.deviceMemory && navigator.deviceMemory <= 4);
   const perf = () => !!save.perf;
-  const applyPerf = () => { root.classList.toggle('bt-perf', perf()); if (FX && FX.setQuality) FX.setQuality(perf() ? 'low' : 'auto'); };
+  const applyPerf = () => {
+    root.classList.toggle('bt-perf', perf());
+    root.classList.toggle('bt-calm', !!ST().calm);
+    root.classList.toggle('bt-noshake', !ST().shake);
+    if (FX && FX.setQuality) FX.setQuality(perf() ? 'low' : 'auto');
+    if (FX && FX.setCalm) FX.setCalm(ST().calm);
+  };
   applyPerf();
 
   /* ── Timing, freeze (for screenshots) and marks (for tests) ── */
   let frozen = false;
   const marks = {};
   function mark(name) { marks[name] = (marks[name] || 0) + 1; const f = window.__btFreezeAt; if (f === name || f === `${name}#${marks[name]}`) frozen = true; }
-  const sleep = ms => new Promise(r => setTimeout(function go() { if (!frozen) r(); }, ms / speed()));
+  // paused: a panel (Settings, the log, help) is open over a battle; the battle waits.
+  let paused = 0;
+  /* Battle-wide UI state: Rush (stays on between fights until it stops or you turn it off), the current battle's spec,
+     its log (last 60 lines), each member's last target, and the Shadow the skill list is marking against. */
+  const RUSH = '__rush__';
+  let rushOn = false, curSpec = null, menuAbort = null, blog = [], lastTgt = {}, focusId = null, listIdx = 0;
+  const sleep = ms => new Promise(r => setTimeout(function go() { if (frozen) return; if (paused) { setTimeout(go, 120); return; } r(); }, ms / speed()));
 
   /* ── Stills and clips: decode before showing (kept in a cache so the decoded image stays warm) ── */
   const stillCache = new Map();
@@ -149,7 +214,7 @@
 
   /* ── Music: one track per screen (data.music); "off" keeps the track muted so FEMC's own BGM stays paused here too ── */
   const music = (() => {
-    const VOL = 0.42, pool = {}, fades = new Map();
+    const VOL = () => 0.42 * Math.max(0, Math.min(100, ST().musicVol)) / 100, pool = {}, fades = new Map();
     let cur = null, key = null, pending = false;
     const get = src => pool[src] || (pool[src] = Object.assign(new Audio(src), { loop: true, preload: 'auto' }));
     function fade(a, to, ms, done) {
@@ -173,22 +238,24 @@
       if (restart) { try { a.currentTime = 0; } catch (e) {} }
       a.volume = 0;
       const p = a.play();
-      const ok = () => { pending = false; fade(a, VOL, 700); };
+      const ok = () => { pending = false; fade(a, VOL(), 700); };
       if (p && p.then) p.then(ok).catch(() => { pending = true; }); else ok();
     }
     function stop() { if (cur) { const old = cur; fade(old, 0, 400, () => old.pause()); cur = null; } }
     const retry = () => { if (pending && key) { const k = key; key = null; cur = null; play(k); } };
     addEventListener('pointerdown', retry, true);
     addEventListener('keydown', retry, true);
-    return { play, stop, refresh: () => { if (cur) cur.muted = !musicOn(); else if (key) play(key); }, key: () => key };
+    // refresh(): after the Music toggle or the volume slider changed.
+    return { play, stop, refresh: () => { if (cur) { cur.muted = !musicOn(); clearInterval(fades.get(cur)); cur.volume = VOL(); } else if (key) play(key); }, key: () => key };
   })();
 
   /* ── Sound effects: FEMC's menu sounds when available, otherwise small Web Audio synths ── */
   const sfx = (() => {
-    let ctx = null;
+    let ctx = null, master = null;
     const ac = () => {
-      if (!ctx) { const C = window.AudioContext || window.webkitAudioContext; if (!C) return null; try { ctx = new C(); } catch (e) { return null; } }
+      if (!ctx) { const C = window.AudioContext || window.webkitAudioContext; if (!C) return null; try { ctx = new C(); master = ctx.createGain(); master.connect(ctx.destination); } catch (e) { return null; } }
       if (ctx.state === 'suspended') ctx.resume().catch(() => {});
+      master.gain.value = Math.max(0, Math.min(100, ST().sfxVol)) / 100;
       return ctx;
     };
     function tone(f, d, { type = 'square', v = 0.05, to = null, at = 0 } = {}) {
@@ -196,7 +263,7 @@
       const t = c.currentTime + at, o = c.createOscillator(), g = c.createGain();
       o.type = type; o.frequency.setValueAtTime(f, t); if (to) o.frequency.exponentialRampToValueAtTime(to, t + d);
       g.gain.setValueAtTime(v, t); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
-      o.connect(g).connect(c.destination); o.start(t); o.stop(t + d + 0.03);
+      o.connect(g).connect(master); o.start(t); o.stop(t + d + 0.03);
     }
     function noise(d, { v = 0.2, f = 1200, q = 0.8, at = 0, type = 'bandpass' } = {}) {
       const c = ac(); if (!c) return;
@@ -204,9 +271,10 @@
       for (let i = 0; i < n; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / n);
       const s = c.createBufferSource(), fl = c.createBiquadFilter(), g = c.createGain();
       s.buffer = b; fl.type = type; fl.frequency.value = f; fl.Q.value = q; g.gain.value = v;
-      s.connect(fl).connect(g).connect(c.destination); s.start(t);
+      s.connect(fl).connect(g).connect(master); s.start(t);
     }
-    const femc = name => { if (window.FemcMode && window.FemcMode.sfx) { window.FemcMode.sfx(name); return true; } return false; };
+    // FEMC's own menu sounds have no volume control: below 100% SFX volume the synth versions play instead.
+    const femc = name => { if (ST().sfxVol >= 100 && window.FemcMode && window.FemcMode.sfx) { window.FemcMode.sfx(name); return true; } return false; };
     const S = {
       move: () => femc('femc-hover') || tone(1300, 0.035, { v: 0.025 }),
       ok: () => femc('femc-click') || tone(880, 0.08, { v: 0.04, to: 1320 }),
@@ -246,7 +314,7 @@
       shatter: () => { noise(0.3, { v: 0.3, f: 5000, q: 0.5 }); [0, 0.05, 0.11].forEach(at => tone(4200, 0.05, { type: 'triangle', v: 0.04, at })); },
       dissolve: () => noise(0.7, { v: 0.12, f: 700, q: 0.4 })
     };
-    return name => { if (!sfxOn() || !S[name]) return; try { S[name](); } catch (e) {} };
+    return name => { if (!sfxOn() || !S[name] || ST().sfxVol <= 0) return; try { S[name](); } catch (e) {} };
   })();
 
   /* ── Party, levels and Haenim's tree (the math lives in engine.js) ── */
@@ -289,42 +357,79 @@
   const spare = id => (D.gear[id] && D.gear[id].tier === 0 ? 99 : (save.gear.owned[id] || 0) - equippedCount(id));
 
   /* ── Keyboard / pointer controller ────────────────── */
+  // Keys: arrows move, Enter/Space/Z choose, Esc/Backspace/X back. Anywhere: P settings, H or ? help. In battle: R Rush, L log,
+  // Y Analyze. [ and ] are the shoulder buttons (switch branch, tab, member or the skill list's target). pad.js turns a
+  // gamepad into these same keys.
   let ctl = null, screen = 'boot';
-  document.addEventListener('keydown', e => {
-    if (e.metaKey || e.ctrlKey || e.altKey || !ctl) return;
+  const typing = t => !!t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && !['range', 'checkbox', 'button', 'radio'].includes(t.type)));
+  const OVERLAYS = ['settings', 'log', 'help'];
+  function hotkey(e) {
+    const k = e.key, kind = ctl && ctl.kind, over = OVERLAYS.includes(kind);
+    if (kind === 'cinematic') return false;
+    if (k === 'p' || k === 'P') { if (kind === 'settings') ctl.back(); else if (!over) openSettings(); return true; }
+    if (k === 'h' || k === 'H' || k === '?') { if (kind === 'help') ctl.back(); else if (!over) openHelp(); return true; }
+    if (over || screen !== 'battle' || !BT) return false;
+    if (k === 'l' || k === 'L') { openLog(); return true; }
+    if (k === 'r' || k === 'R') { toggleRush(); return true; }
+    return false;
+  }
+  function onKey(e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (typing(e.target)) { if (e.key === 'Escape') e.target.blur(); return; }
+    if (hotkey(e)) { e.preventDefault(); return; }
+    if (!ctl) return;
     const k = e.key;
     if (ctl.key && ctl.key(e)) { e.preventDefault(); return; }
     const g = ctl.grid || 1;
-    if (k === 'ArrowUp') { e.preventDefault(); ctl.move(-g); }
+    if (k === '[' || k === ']') {
+      e.preventDefault();
+      const d = k === '[' ? -1 : 1;
+      if (ctl.shoulder) ctl.shoulder(d);
+      else if (!(ctl.key && ctl.key({ key: d < 0 ? 'ArrowLeft' : 'ArrowRight', preventDefault() {} }))) ctl.move(d);
+    } else if (k === 'y' || k === 'Y') {
+      e.preventDefault();
+      if (ctl.kind === 'menu' && ctl.items && ctl.items.some(it => it.v === 'analyze')) ctl.pickValue('analyze');
+      else if (ctl.kind === 'map' && ctl.key) ctl.key({ key: 's', preventDefault() {} });
+    }
+    else if (k === 'ArrowUp') { e.preventDefault(); ctl.move(-g); }
     else if (k === 'ArrowDown') { e.preventDefault(); ctl.move(g); }
     else if (k === 'ArrowLeft') { e.preventDefault(); ctl.move(-1); }
     else if (k === 'ArrowRight') { e.preventDefault(); ctl.move(1); }
     else if (k === 'Enter' || k === ' ' || k === 'z' || k === 'Z') { e.preventDefault(); ctl.pick(); }
     else if (k === 'Escape' || k === 'Backspace' || k === 'x' || k === 'X') { e.preventDefault(); if (ctl.back) ctl.back(); }
-  });
+  }
+  document.addEventListener('keydown', onKey);
   /* Arrow/Enter navigation over a screen's .bt-btn buttons. */
   function buttonNav(container, { back = null, start = 0 } = {}) {
     const btns = [...container.querySelectorAll('.bt-btn:not(:disabled)')];
     let i = Math.min(start, btns.length - 1);
     const show = () => { btns.forEach((b, j) => b.classList.toggle('on', j === i)); if (btns[i]) btns[i].focus({ preventScroll: true }); };
     btns.forEach((b, j) => b.addEventListener('pointerenter', () => { i = j; show(); }));
-    ctl = { kind: 'buttons', move(d) { if (!btns.length) return; i = (i + d + btns.length) % btns.length; sfx('move'); show(); }, pick() { if (btns[i]) btns[i].click(); }, back };
+    ctl = { kind: 'buttons', move(d) { if (!btns.length) return; i = (i + d + btns.length) % btns.length; sfx('move'); show(); if (btns[i] && btns[i].scrollIntoView) btns[i].scrollIntoView({ block: 'nearest' }); }, pick() { if (btns[i]) btns[i].click(); }, back };
     show();
   }
-  const CUT_LABEL = { always: 'Always', first: '1st only', off: 'Off' };
-  const tools = () => `<button type="button" class="bt-tool" data-tool="cut" title="Persona cut-ins: always, the first time per battle, or off"><span>Cut-ins<em>:</em> ${CUT_LABEL[save.cutins]}</span></button><button type="button" class="bt-tool" data-tool="music" aria-pressed="${musicOn()}" title="Music" aria-label="Music"><span>♪<em> Music</em></span></button><button type="button" class="bt-tool" data-tool="sfx" aria-pressed="${save.sfx !== false}" title="Sound effects"><span>SFX</span></button><button type="button" class="bt-tool" data-tool="perf" aria-pressed="${perf()}" title="Performance mode: no glass shatter or ash, fewer particles, a lighter video. Try it if battles feel slow."><span>Perf<em> mode</em></span></button>`;
+  const GEAR_SVG = '<svg class="bt-gear" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10.3 2h3.4l.5 2.6c.6.2 1.2.5 1.7.9l2.5-.9 1.7 2.9-2 1.8c.1.6.1 1.2 0 1.8l2 1.8-1.7 2.9-2.5-.9c-.5.4-1.1.7-1.7.9l-.5 2.6h-3.4l-.5-2.6c-.6-.2-1.2-.5-1.7-.9l-2.5.9-1.7-2.9 2-1.8a6 6 0 0 1 0-1.8l-2-1.8 1.7-2.9 2.5.9c.5-.4 1.1-.7 1.7-.9zM12 8.6a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8z"/></svg>';
+  /* The corner tool buttons. Battle: Rush, log, speed, help, settings. Elsewhere: help, settings, music, SFX. */
+  const tools = (where = 'hub') => {
+    const common = `<button type="button" class="bt-tool" data-tool="help" title="Help and glossary (H)" aria-label="Help"><span>?</span></button><button type="button" class="bt-tool" data-tool="settings" title="Settings (P)" aria-label="Settings"><span>${GEAR_SVG}<em> Settings</em></span></button>`;
+    if (where === 'battle') return `<button type="button" class="bt-tool bt-rushbtn" data-tool="rush" aria-pressed="false" title="Rush: auto-battle (R)"><span>Rush</span></button><button type="button" class="bt-tool" data-tool="log" title="Battle log (L)"><span>Log</span></button><button type="button" class="bt-tool" data-tool="speed" title="Battle speed"><span>▶▶ ${save.speed || 1}x</span></button>${common}`;
+    return `${common}<button type="button" class="bt-tool" data-tool="music" aria-pressed="${musicOn()}" title="Music" aria-label="Music"><span>♪<em> Music</em></span></button><button type="button" class="bt-tool" data-tool="sfx" aria-pressed="${save.sfx !== false}" title="Sound effects"><span>SFX</span></button>`;
+  };
   function wireTools(el) {
     el.querySelectorAll('[data-tool]').forEach(b => b.addEventListener('click', () => {
       const t = b.dataset.tool;
+      b.blur();
+      if (t === 'settings') { openSettings(); return; }
+      if (t === 'help') { openHelp(); return; }
+      if (t === 'log') { openLog(); return; }
+      if (t === 'rush') { toggleRush(); return; }
       if (t === 'music') { save.music = !musicOn(); music.refresh(); b.setAttribute('aria-pressed', String(musicOn())); }
       if (t === 'sfx') { save.sfx = save.sfx === false; b.setAttribute('aria-pressed', String(save.sfx)); sfx('ok'); }
-      if (t === 'cut') { const o = ['always', 'first', 'off']; save.cutins = o[(o.indexOf(save.cutins) + 1) % 3]; b.querySelector('span').innerHTML = `Cut-ins<em>:</em> ${CUT_LABEL[save.cutins]}`; sfx('move'); mark('cutins-' + save.cutins); }
-      if (t === 'speed') { save.speed = save.speed === 2 ? 1 : 2; b.querySelector('span').textContent = `▶▶ ${save.speed}x`; }
-      if (t === 'perf') { save.perf = !save.perf; applyPerf(); b.setAttribute('aria-pressed', String(save.perf)); sfx('move'); mark('perf-' + (save.perf ? 'on' : 'off')); }
+      if (t === 'speed') { save.speed = (save.speed || 1) % 3 + 1; paintSpeed(); sfx('move'); mark('speed-' + save.speed); }
       persist();
-      b.blur();
     }));
   }
+  const paintSpeed = () => document.querySelectorAll('[data-tool="speed"] span').forEach(sp => { sp.textContent = `▶▶ ${save.speed || 1}x`; });
   const show = (html, cls) => {
     if (FX) FX.detach();
     // The FEMC badge (bottom-left) stays on the entrance screen; elsewhere this page's own corners are busy.
@@ -334,9 +439,250 @@
   };
 
   /* ════════════════════════════════════════════════════
+     PANELS over any screen: Settings, the battle log, help. They pause a battle while open.
+     ════════════════════════════════════════════════════ */
+  function overlay({ cls, html, kind, key = null, move = null, pick = null, onClose = null }) {
+    const prev = ctl;
+    const el = document.createElement('div');
+    el.className = `bt-ov ${cls}`;
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-modal', 'true');
+    el.innerHTML = html;
+    document.body.appendChild(el);
+    root.classList.add('bt-ov-open'); // hides FEMC's corner badge so it can't cover the panel
+    paused++;
+    let open = true;
+    const me = { kind, key, move: move || (() => {}), pick: pick || (() => {}), back: () => close() };
+    function close(silent) {
+      if (!open) return;
+      open = false;
+      paused = Math.max(0, paused - 1);
+      el.remove();
+      if (!document.querySelector('.bt-ov')) root.classList.remove('bt-ov-open');
+      if (ctl === me) ctl = prev;
+      if (!silent) sfx('back');
+      if (onClose) onClose();
+    }
+    me.close = close;
+    ctl = me;
+    el.addEventListener('click', ev => { if (ev.target === el) close(); });
+    el.querySelectorAll('[data-x]').forEach(b => b.addEventListener('click', () => close()));
+    mark('overlay-' + kind);
+    return { el, close, ctl: me };
+  }
+
+  /* ── Settings ─────────────────────────────────────── */
+  const ON_OFF = [[true, 'On'], [false, 'Off']], OFF_ON = [[false, 'Off'], [true, 'On']];
+  const RUSH_WHERE = { normal: 'Rush runs in normal Shadow rooms only. It turns itself off for Strong rooms, the Reaper and full moons.', strong: 'Rush runs in normal and Strong Shadow rooms, never against the Reaper or a full moon.', all: 'Rush runs anywhere, even the Reaper and full moons. Careful.' };
+  const settingRows = () => [
+    { k: 'difficulty', label: 'Difficulty', opts: Object.keys(D.difficulty).map(id => [id, D.difficulty[id].name]), desc: v => D.difficulty[v].desc },
+    { k: 'speed', top: true, label: 'Battle speed', opts: [[1, '1x'], [2, '2x'], [3, '3x']], desc: () => 'How fast battle animations play. Rush doubles it.' },
+    { k: 'textSpeed', label: 'Text speed', opts: [['slow', 'Slow'], ['normal', 'Normal'], ['fast', 'Fast'], ['instant', 'Instant']], desc: () => 'How fast Fuuka’s lines type out, and how long lines stay on screen.' },
+    { k: 'cutins', top: true, label: 'Persona cut-ins', opts: [['always', 'Always'], ['first', '1st per battle'], ['off', 'Off']], desc: () => 'The Evoker summon before a Persona skill: every time, the first time per member each battle, or never.' },
+    { k: 'music', label: 'Music', opts: ON_OFF, get: () => musicOn(), set: v => { save.music = v; }, desc: () => 'The same switch as the ♪ button.' },
+    { k: 'musicVol', label: 'Music volume', range: true, desc: () => (musicOn() ? 'Music volume.' : 'Music volume (music is switched off).') },
+    { k: 'sfx', label: 'Sound effects', opts: ON_OFF, get: () => save.sfx !== false, set: v => { save.sfx = v; }, desc: () => (lsGet('kg-femc-sound') === 'off' ? 'Sound effects (FEMC’s sound switch is off, so they stay quiet).' : 'The same switch as the SFX button.') },
+    { k: 'sfxVol', label: 'SFX volume', range: true, desc: () => 'Sound effect volume. Below 100% the menu sounds use the softer built-in versions.' },
+    { k: 'remember', label: 'Remember cursor', opts: ON_OFF, desc: () => 'Each member’s menu reopens on their last command, skill, item and target (if it’s still standing).' },
+    { k: 'rushWhere', label: 'Rush allowed in', opts: [['normal', 'Normal rooms'], ['strong', '+ Strong rooms'], ['all', 'Every fight']], desc: v => RUSH_WHERE[v] },
+    { k: 'rushStop', label: 'Rush stops below', opts: [[30, '30% HP'], [50, '50% HP']], desc: v => `Rush hands control back when anyone drops below ${v}% HP, or Solar below 50%.` },
+    { k: 'shake', label: 'Screen shake', opts: ON_OFF, desc: () => 'The screen shakes on criticals, weaknesses and All-Out Attacks.' },
+    { k: 'calm', label: 'Reduce flashes', opts: OFF_ON, desc: () => 'Softens white flashes and bursts (Evoker, Theurgy, lightning, criticals).' },
+    { k: 'numbers', label: 'Damage numbers', opts: ON_OFF, desc: () => 'Damage and healing numbers. WEAK, CRITICAL and the rest still show.' },
+    { k: 'perf', top: true, label: 'Performance mode', opts: OFF_ON, desc: () => 'No glass shatter or ash, fewer particles, a lighter video. Try it if battles feel slow.' },
+    { k: 'tips', label: 'Fuuka’s tips', opts: ON_OFF, desc: () => `A small tip the first time each mechanic shows up (${save.tipsSeen.length} of ${Object.keys(D.tips).length} seen). Everything is also in Help (?).` },
+    { k: 'pad', label: 'Controller buttons', opts: [['auto', 'Auto'], ['xbox', 'Xbox'], ['ps', 'PlayStation']], desc: () => 'Which button prompts to show while you play with a controller. Auto reads the controller’s name.' }
+  ];
+  const getSet = r => (r.get ? r.get() : r.top ? save[r.k] : ST()[r.k]);
+  function putSet(r, v) {
+    if (r.set) r.set(v); else if (r.top) save[r.k] = v; else ST()[r.k] = v;
+    if (r.k === 'music' || r.k === 'musicVol') music.refresh();
+    if (r.k === 'speed') paintSpeed();
+    if (r.k === 'rushWhere' || r.k === 'rushStop') paintRush();
+    applyPerf();
+    persist();
+    mark('set-' + r.k);
+  }
+  function openSettings(startKey = null) {
+    if (ctl && ctl.kind === 'settings') return;
+    const rows = settingRows();
+    let i = Math.max(0, rows.findIndex(r => r.k === startKey));
+    const valText = r => { const v = getSet(r); if (r.range) return `${v}%`; const o = r.opts.find(x => x[0] === v); return o ? o[1] : String(v); };
+    const rowHtml = (r, j) => `<div class="bt-set-row${j === i ? ' sel' : ''}" data-r="${j}"><span class="k">${esc(r.label)}</span><span class="v">${r.range
+      ? `<button type="button" class="ar" data-d="-1" aria-label="Lower">‹</button><input type="range" min="0" max="100" step="5" value="${getSet(r)}" aria-label="${esc(r.label)}"><b>${valText(r)}</b><button type="button" class="ar" data-d="1" aria-label="Higher">›</button>`
+      : `<button type="button" class="ar" data-d="-1" aria-label="Previous">‹</button><b>${esc(valText(r))}</b><button type="button" class="ar" data-d="1" aria-label="Next">›</button>`}</span></div>`;
+    const o = overlay({
+      cls: 'bt-setp', kind: 'settings',
+      html: `<div class="bt-ov-card"><div class="bt-ov-head"><h2><small>${screen === 'battle' ? 'Paused' : 'FEMC · Battle prototype'}</small>SETTINGS</h2><button type="button" class="bt-tool" data-x><span>Close</span></button></div>
+        <div class="bt-set-list">${rows.map(rowHtml).join('')}</div><p class="bt-set-desc"></p>
+        <div class="bt-ov-foot"><button type="button" class="bt-tool" data-help><span>? Help</span></button><span class="bt-hint">↑↓ choose · ←→ change · Esc close</span></div></div>`,
+      key(e) {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { change(i, e.key === 'ArrowLeft' ? -1 : 1); return true; }
+        return false;
+      },
+      move(d) { i = (i + (d > 0 ? 1 : -1) + rows.length) % rows.length; sfx('move'); paint(); },
+      pick() { change(i, 1); },
+      onClose() { if (screen === 'hub' && !ctlBusy()) hub(); }
+    });
+    const list = o.el.querySelector('.bt-set-list'), desc = o.el.querySelector('.bt-set-desc');
+    function change(j, d) {
+      const r = rows[j];
+      if (r.range) putSet(r, Math.max(0, Math.min(100, getSet(r) + d * 10)));
+      else { const k = r.opts.findIndex(x => x[0] === getSet(r)); putSet(r, r.opts[(k + d + r.opts.length) % r.opts.length][0]); }
+      i = j;
+      sfx('move');
+      paint(true);
+    }
+    function paint(vals) {
+      list.querySelectorAll('.bt-set-row').forEach((el, j) => {
+        el.classList.toggle('sel', j === i);
+        if (vals && j === i) { const r = rows[j]; el.querySelector('b').textContent = valText(r); const rg = el.querySelector('input'); if (rg) rg.value = getSet(r); }
+      });
+      const r = rows[i], v = getSet(r);
+      desc.innerHTML = `<b>${esc(r.label)}</b>${esc(r.desc ? r.desc(v) : '')}`;
+      const el = list.querySelector(`[data-r="${i}"]`);
+      if (el) { if (el.offsetTop < list.scrollTop) list.scrollTop = el.offsetTop - 6; else if (el.offsetTop + el.offsetHeight > list.scrollTop + list.clientHeight) list.scrollTop = el.offsetTop + el.offsetHeight - list.clientHeight + 6; }
+    }
+    list.querySelectorAll('.bt-set-row').forEach(el => {
+      const j = +el.dataset.r;
+      el.addEventListener('click', ev => { if (ev.target.closest('input')) return; const d = ev.target.closest('[data-d]'); if (d) change(j, +d.dataset.d); else if (j === i) change(j, 1); else { i = j; paint(); } });
+      const rg = el.querySelector('input');
+      if (rg) rg.addEventListener('input', () => { i = j; putSet(rows[j], +rg.value); el.querySelector('b').textContent = `${rg.value}%`; paint(); });
+    });
+    o.el.querySelector('[data-help]').addEventListener('click', () => { o.close(true); openHelp(); });
+    paint();
+    sfx('ok');
+  }
+  /* The hub re-renders after Settings close, unless something else took over the screen meanwhile. */
+  const ctlBusy = () => !!(ctl && OVERLAYS.includes(ctl.kind));
+
+  /* ── The battle log ───────────────────────────────── */
+  function blogAdd(t, c = '') { blog.push({ r: B ? B.S.round : 0, t, c }); if (blog.length > 60) blog.shift(); }
+  function openLog() {
+    if (!BT || !B || (ctl && OVERLAYS.includes(ctl.kind))) return;
+    const rows = blog.map(x => `<li class="${x.c}">${x.c === 'round' ? `<b>${esc(x.t)}</b>` : esc(x.t)}</li>`).join('') || '<li class="sys">Nothing yet.</li>';
+    let list = null;
+    const o = overlay({
+      cls: 'bt-logp', kind: 'log',
+      html: `<div class="bt-ov-card"><div class="bt-ov-head"><h2><small>${esc(curSpec ? curSpec.label : '')} · Round ${B.S.round} · last ${blog.length}</small>BATTLE LOG</h2><button type="button" class="bt-tool" data-x><span>Close</span></button></div>
+        <ol class="bt-loglist">${rows}</ol><p class="bt-hint">↑↓ scroll · L or Esc close</p></div>`,
+      key(e) { if (e.key === 'l' || e.key === 'L') { o.close(); return true; } return false; },
+      move(d) { list.scrollTop += d * 64; }
+    });
+    list = o.el.querySelector('.bt-loglist');
+    list.scrollTop = list.scrollHeight;
+    sfx('ok');
+  }
+
+  /* ── Help and glossary ────────────────────────────── */
+  const CONTROLS = { id: 'controls', name: 'Controls', text: '' };
+  function helpBody(g) {
+    let extra = '';
+    if (g.list === 'ailments') extra = `<dl>${Object.values(D.ailments).map(a => `<dt style="--c:${a.color}">${esc(a.name)}</dt><dd>${esc(a.desc)}</dd>`).join('')}</dl>`;
+    if (g.list === 'tactics') extra = `<dl>${Object.values(D.tactics).map(t => `<dt>${esc(t.name)}</dt><dd>${esc(t.desc)}</dd>`).join('')}</dl>`;
+    if (g.id === 'difficulty') extra = `<dl>${Object.values(D.difficulty).map(t => `<dt>${esc(t.name)}${t === diff() ? ' · now' : ''}</dt><dd>${esc(t.desc)}</dd>`).join('')}</dl>`;
+    if (g.id === 'controls') return `<h3>Controls</h3><dl class="keys">
+      <dt>Arrows · D-pad · stick</dt><dd>Move</dd><dt>Enter · Z · A / ✕</dt><dd>Choose</dd><dt>Esc · X · B / ○</dt><dd>Back (on the entrance: Settings)</dd>
+      <dt>Y · Y / △</dt><dd>Analyze in battle, Fuuka’s scan on the map</dd><dt>R · RT / R2</dt><dd>Rush (auto-battle)</dd><dt>L · X / □</dt><dd>Battle log</dd>
+      <dt>[ ] · LB RB / L1 R1</dt><dd>Switch branch, tab or member; in the skill list, the Shadow it marks against</dd><dt>P · Start / Options</dt><dd>Settings</dd><dt>H · ? · Select / Share</dt><dd>This help</dd></dl>`;
+    return `<h3>${esc(g.name)}</h3><p>${esc(g.text)}</p>${extra}`;
+  }
+  function openHelp(topic = null) {
+    if (ctl && OVERLAYS.includes(ctl.kind)) return;
+    const G = D.glossary.concat([{ id: 'difficulty', name: 'Difficulty', text: 'Change it any time in Settings. It only changes damage, healing, the Reaper and Strong rooms; rewards stay the same.' }, CONTROLS]);
+    let i = Math.max(0, G.findIndex(g => g.id === topic));
+    const o = overlay({
+      cls: 'bt-helpp', kind: 'help',
+      html: `<div class="bt-ov-card"><div class="bt-ov-head"><h2><small>Fuuka’s notes</small>HELP</h2><button type="button" class="bt-tool" data-x><span>Close</span></button></div>
+        <div class="bt-help-in"><ul class="bt-help-list">${G.map((g, j) => `<li><button type="button" data-j="${j}">${esc(g.name)}</button></li>`).join('')}</ul><div class="bt-help-body"></div></div>
+        <p class="bt-hint">↑↓ topic · Esc close</p></div>`,
+      move(d) { i = (i + (d > 0 ? 1 : -1) + G.length) % G.length; sfx('move'); paint(); },
+      key(e) { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { this.move(e.key === 'ArrowLeft' ? -1 : 1); return true; } return false; }
+    });
+    const body = o.el.querySelector('.bt-help-body'), btns = [...o.el.querySelectorAll('[data-j]')];
+    function paint() {
+      btns.forEach((b, j) => b.classList.toggle('sel', j === i));
+      body.innerHTML = helpBody(G[i]);
+      const b = btns[i]; if (b && b.scrollIntoView) b.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      mark('help-' + G[i].id);
+    }
+    btns.forEach((b, j) => b.addEventListener('click', () => { i = j; sfx('move'); paint(); }));
+    paint();
+    sfx('ok');
+  }
+
+  /* ── Fuuka's one-time tips ────────────────────────── */
+  const tipQ = [];
+  let tipEl = null;
+  function tip(id) {
+    if (!ST().tips || !D.tips[id] || save.tipsSeen.includes(id)) return;
+    save.tipsSeen.push(id);
+    persist();
+    tipQ.push(id);
+    if (!tipEl) nextTip();
+  }
+  function nextTip() {
+    const id = tipQ.shift();
+    if (!id) { tipEl = null; return; }
+    const [topic, text] = D.tips[id], g = D.glossary.find(x => x.id === topic);
+    const el = tipEl = document.createElement('div');
+    el.className = 'bt-tip';
+    el.setAttribute('role', 'status');
+    el.innerHTML = `<div class="pic"><img src="${pimg('fuuka', 'happy')}" alt=""></div><div class="tx"><b>Tip · ${esc(g ? g.name : 'Fuuka')}</b><span></span><div class="acts"><button type="button" data-more>More</button><button type="button" data-ok>Got it</button></div></div>`;
+    document.body.appendChild(el);
+    typeInto(el.querySelector('span'), text);
+    let gone = false;
+    const hide = () => { if (gone) return; gone = true; el.classList.add('out'); setTimeout(() => { el.remove(); nextTip(); }, 260); };
+    el.querySelector('[data-ok]').addEventListener('click', hide);
+    el.querySelector('[data-more]').addEventListener('click', () => { hide(); openHelp(topic); });
+    setTimeout(hide, (5600 + text.length * 30) * textHold());
+    mark('tip'); mark('tip-' + id);
+  }
+
+  /* ── Rush (auto-battle) ───────────────────────────── */
+  function rushAllowed(spec = curSpec) {
+    if (!spec) return false;
+    const w = ST().rushWhere;
+    if (spec.boss || spec.reaper) return w === 'all';
+    if (spec.strong) return w !== 'normal';
+    return true;
+  }
+  function rushActive() { return !!(rushOn && B && BT && screen === 'battle' && rushAllowed()); }
+  /* Who's too hurt to keep rushing: Solar under 50%, or anyone under the Settings threshold (a KO counts). */
+  function rushDanger() {
+    const L = B.leader();
+    if (L.hp / L.maxHp < 0.5) return L;
+    return B.party().find(p => p.hp / p.maxHp < ST().rushStop / 100) || null;
+  }
+  function paintRush() {
+    if (!BT) return;
+    const b = BT.root.querySelector('[data-tool="rush"]'), on = rushActive();
+    if (b) { b.setAttribute('aria-pressed', String(on)); b.classList.toggle('na', !rushAllowed()); }
+    BT.root.classList.toggle('rushing', on);
+  }
+  function stopRush(key, vars) { rushOn = false; paintRush(); if (key) nav(key, vars); banner('Rush off'); blogAdd('Rush off.', 'sys'); mark('rush-stop'); }
+  function toggleRush() {
+    if (!BT || !B || B.outcome()) return;
+    if (rushOn && rushActive()) { rushOn = false; sfx('back'); paintRush(); blogAdd('Rush off.', 'sys'); mark('rush-off'); return; }
+    if (!rushAllowed()) { rushOn = false; sfx('back'); paintRush(); nav(curSpec && (curSpec.boss || curSpec.reaper) ? 'rushBoss' : 'rushNo'); mark('rush-denied'); return; }
+    const d = rushDanger();
+    if (d) { sfx('back'); nav('rushStop', { name: d.name }); mark('rush-denied'); return; }
+    rushOn = true;
+    sfx('ok'); paintRush(); nav('rushOn'); blogAdd('Rush on.', 'sys'); mark('rush-on');
+    if (menuAbort) menuAbort(RUSH);
+  }
+  function rushGuard() { if (!rushActive()) return; const d = rushDanger(); if (d) stopRush('rushStop', { name: d.name }); }
+  /* A Direct member in Rush: a plain attack on the best known target (a weakness to the weapon first, else the weakest foe). */
+  function rushAttack(u) {
+    const score = f => { const k = B.known(f.kind)[u.weapon], a = k ? (f.aff[u.weapon] || 'normal') : 'unknown'; return { weak: f.down ? 1.2 : 3, normal: 1, unknown: 1, resist: 0.3, null: -1, repel: -2, drain: -2 }[a]; };
+    const pool = B.foes().filter(f => !f.dead && !f.hidden && !B.shieldUp(f)).map(f => ({ f, s: score(f) })).filter(x => x.s > 0).sort((a, b) => b.s - a.s || a.f.hp - b.f.hp);
+    return pool.length ? { type: 'attack', target: pool[0].f.id } : { type: 'guard' };
+  }
+  const rushAction = u => (tacticOf(u) !== 'direct' ? B.autoAction(u, tacticOf(u)) : rushAttack(u));
+
+  /* ════════════════════════════════════════════════════
      HUB
      ════════════════════════════════════════════════════ */
-  let resetArmed = false;
   function hub() {
     // Evolutions that came due (an old save, or levels from the bench) play before the hub opens.
     if (!evolving && E.evolutionsDue(save, lvOf).length) { ctl = null; pendingEvolutions().then(hub); return; }
@@ -348,7 +694,7 @@
     const cont = save.reached && D.floors.find(f => f.id === save.reached);
     const opsDone = save.ops.cleared.length, per = perOf('solar');
     const el = show(`<div class="bt-hub-copy">
-        <p class="bt-kicker">FEMC · Battle prototype</p>
+        <p class="bt-kicker">FEMC · Battle prototype<span class="bt-diff d-${esc(ST().difficulty)}" title="Difficulty (change it in Settings)">${esc(diff().name)}</span></p>
         <h1>TARTARUS<small>Full Moon Operation</small></h1>
         <div class="bt-hub-menu">
           ${cont ? `<button type="button" class="bt-btn pink" data-go="cont"><span>Continue from ${esc(cont.label)}</span><small>Access point · ${esc(cont.block)}</small></button>` : ''}
@@ -357,12 +703,12 @@
           <button type="button" class="bt-btn" data-go="mall"><span>Paulownia Mall</span><small>${yen(save.yen)}</small></button>
           <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="party"><span>Party</span><small>${save.party.length + 1} / 4</small></button><button type="button" class="bt-btn" data-go="equip"><span>Equip</span></button></div>
           <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="tree"><span>Haenim’s Tree</span><small>${save.pts} SP</small></button><button type="button" class="bt-btn" data-go="personas"><span>Personas</span></button></div>
-          <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="memories"><span>Memories</span><small>${save.memories.length} / ${D.memories.length}</small></button><button type="button" class="bt-btn danger" data-go="reset"><span>${resetArmed ? 'Really reset? Press again' : 'Reset save'}</span></button></div>
+          <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="memories"><span>Memories</span><small>${save.memories.length} / ${D.memories.length}</small></button><button type="button" class="bt-btn" data-go="slots"><span>Save data</span></button></div>
         </div>
-        <p class="bt-hub-hint">↑↓←→ move · Enter choose · Esc back · mouse and touch work too</p>
+        <p class="bt-hub-hint">↑↓←→ move · Enter choose · Esc settings · H help · mouse, touch and controllers work too</p>
       </div>
+      <div class="bt-hub-fig" aria-hidden="true"><i class="band"></i><img src="assets/femc/profile/femc.webp?v=${V()}" alt=""></div>
       <div class="bt-solar">
-        <div class="bt-solar-art"><img src="${pimg('solar', 'serious')}" alt=""></div>
         <div>
           <h2>Solar<small>Lv ${save.lvl}</small></h2>
           <p class="persona">Persona · ${esc(per.name)}${per.form ? '' : ' · 해님'}</p>
@@ -378,7 +724,6 @@
     wireTools(el);
     el.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => {
       const go = b.dataset.go;
-      if (go !== 'reset') resetArmed = false;
       if (go === 'run') { sfx('ok'); startRun(null); }
       else if (go === 'cont') { sfx('ok'); startRun(save.reached); }
       else if (go === 'tree') { sfx('ok'); treeScreen(hub); }
@@ -388,16 +733,9 @@
       else if (go === 'mall') { sfx('ok'); mallScreen(hub); }
       else if (go === 'equip') { sfx('ok'); equipScreen(hub); }
       else if (go === 'memories') { sfx('ok'); memoriesScreen(hub); }
-      else if (go === 'reset') {
-        if (!resetArmed) { resetArmed = true; sfx('move'); hub(); ctlFocus('[data-go="reset"]'); return; }
-        resetArmed = false;
-        try { localStorage.removeItem(KEY); } catch (e) {}
-        save = fresh(); persist(); applyPerf();
-        sfx('back');
-        hub();
-      }
+      else if (go === 'slots') { sfx('ok'); slotsScreen(hub); }
     }));
-    buttonNav(el);
+    buttonNav(el, { back: () => openSettings() });
     mark('hub');
   }
   function ctlFocus(sel) { const b = app.querySelector(sel); if (!b || !ctl) return; for (let i = 0; i < 8; i++) { if (document.activeElement === b) break; ctl.move(1); } }
@@ -481,7 +819,7 @@
     for (;;) {
       const floor = D.floors[run.fi];
       // Test hook: window.__btMap forces a seed for the floor's layout.
-      run.map = MAP.generate(floor, { rand });
+      run.map = MAP.generate(floor, { rand, strongChance: D.map.strongChance * diff().strong });
       const r = await explore(floor);
       if (r !== 'up') { run = null; hub(); return; }
       if (floor.top) {
@@ -556,7 +894,7 @@
   async function fight(floor, { group, strong = false, reaper = false }) {
     for (;;) {
       const snap = JSON.stringify({ carry: run.carry, items: save.items, th: save.th, fights: run.fights, tired: run.tired });
-      const out = await battle({ group, bg: floor.bg, label: floor.label, block: floor.block, boss: reaper, reaper, music: reaper ? 'boss' : 'battle', nav: reaper ? 'reaper' : floor.nav, heat: reaper ? 0 : save.cycle * D.progression.heat });
+      const out = await battle({ group, bg: floor.bg, label: floor.label, block: floor.block, boss: reaper, reaper, strong, music: reaper ? 'boss' : 'battle', nav: reaper ? 'reaper' : floor.nav, heat: reaper ? 0 : save.cycle * D.progression.heat });
       if (out.result === 'win') {
         await afterWin(out, { title: `${floor.label} · ${floor.block}`, strong, reaper, back: 'Back to the map' });
         return 'win';
@@ -605,6 +943,7 @@
       if (run.fights[m.id] >= D.progression.tiredAfter && !run.tired[m.id]) { run.tired[m.id] = true; nowTired.push(m.id); }
     });
     persist();
+    if (nowTired.length) tip('fatigue');
     await results({ title, out, rew, bonus, nowTired, op, reaper, back });
     await pendingEvolutions();
     const forms = checkForms();
@@ -631,7 +970,7 @@
     stairs: { name: 'Stairs', icon: 'room-stairs', color: '#ff4f9e' }, event: { name: 'Something here', icon: 'room-event', color: '#ff8cc0' }, empty: { name: 'Corridor', icon: 'room-empty', color: '#8a7a9a' }
   };
   const hasJuno = () => !!save.evo.fuuka;
-  let mapLine = null;
+  let mapLine = null, mapTyped = null;
   function explore(floor) {
     return new Promise(resolve => {
       const map = run.map;
@@ -664,6 +1003,7 @@
           go: id => go(id)
         };
         paintSel(el, opts, sel);
+        if (mapLine && mapLine !== mapTyped) { mapTyped = mapLine; typeInto(el.querySelector('.bt-map-nav .tx'), mapLine[0]); }
         const pm = el.querySelector('.party-mark');
         if (pm && pm.dataset.to) requestAnimationFrame(() => requestAnimationFrame(() => { pm.style.transform = pm.dataset.to; }));
         mark('map');
@@ -686,14 +1026,14 @@
         if (busy || done) return;
         busy = true;
         const from = map.pos;
-        const res = MAP.move(map, id);
+        const res = MAP.move(map, id, { noReaper: !diff().reaper });
         if (!res.ok) { busy = false; return; }
         sfx('move'); mark('map-move');
         animFrom = from;
         render();
         await sleep(320);
-        if (res.warn) { say('reaperNear'); mark('reaper-warn'); }
-        if (res.spawned) { say('reaperCame'); sfx('ko'); mark('reaper-spawn'); render(); await sleep(500); }
+        if (res.warn) { say('reaperNear'); mark('reaper-warn'); tip('reaper'); }
+        if (res.spawned) { say('reaperCame'); sfx('ko'); mark('reaper-spawn'); tip('reaper'); render(); await sleep(500); }
         if (res.caught) {
           mark('reaper-fight');
           const r = await fight(floor, { group: ['reaper'], reaper: true });
@@ -739,7 +1079,8 @@
   /* Party status for the map panel (HP/SP as they'll start the next fight). */
   function fieldUnits() { return buildParty(run.carry); }
   function mapHtml(floor, map, opts, sel, animFrom) {
-    const vert = phone();
+    // Portrait-ish windows draw the floor bottom-to-top so it fills the space.
+    const vert = phone() || innerWidth / innerHeight < 1.2;
     const W = vert ? 400 : 1000, H = vert ? 520 : 560, padX = vert ? 46 : 70, padY = vert ? 40 : 56;
     const pos = n => vert ? { x: padX + n.y * (W - padX * 2), y: H - padY - n.x * (H - padY * 2) } : { x: padX + n.x * (W - padX * 2), y: padY + n.y * (H - padY * 2) };
     const nodes = map.nodes.filter(n => n.seen);
@@ -772,13 +1113,13 @@
     let reaper = '';
     if (map.reaper) {
       const rn = MAP.get(map, map.reaper.node), rp = pos(rn);
-      reaper = `<g class="reaper-mark" transform="translate(${rp.x} ${rp.y})"><circle r="${S + 12}" class="rm-aura"/><image href="${SHADOW_DIR}reaper.webp" x="-${S + 6}" y="-${S + 22}" width="${(S + 6) * 2}" height="${(S + 6) * 2.4}" preserveAspectRatio="xMidYMid meet"/><text y="${S + 22}" class="lbl reaper">THE REAPER</text></g>`;
+      reaper = `<g class="reaper-mark" transform="translate(${rp.x} ${rp.y})"><circle r="${S + 12}" class="rm-aura"/><image href="${sart('reaper')}" x="-${S + 6}" y="-${S + 22}" width="${(S + 6) * 2}" height="${(S + 6) * 2.4}" preserveAspectRatio="xMidYMid meet"/><text y="${S + 22}" class="lbl reaper">THE REAPER</text></g>`;
     }
     const svg = `<svg class="bt-mapsvg${vert ? ' vert' : ''}" viewBox="0 0 ${W} ${H}" role="group" aria-label="${esc(floor.label)} map">
       <defs><pattern id="mgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(125,255,192,.07)" stroke-width="1"/></pattern></defs>
       <rect width="${W}" height="${H}" fill="url(#mgrid)"/>
       ${edges.join('')}${nodes.map(nodeSvg).join('')}${reaper}${marker}</svg>`;
-    const R = D.map.reaperSteps, steps = map.steps, danger = map.reaperGone ? 0 : Math.min(1, steps / R);
+    const R = D.map.reaperSteps, steps = map.steps, calmFloor = !diff().reaper && !map.reaper, danger = map.reaperGone || calmFloor ? 0 : Math.min(1, steps / R);
     const units = fieldUnits();
     const partyHtml = units.map(u => {
       const m = member(u.mid);
@@ -790,7 +1131,7 @@
     return `<div class="bt-map-bg" style="background-image:url('${floor.bg}')"></div><div class="bt-map-shade" style="--bc:${floor.color}"></div>
       <header class="bt-top bt-map-top">
         <div class="bt-floorlabel"><b>${esc(floor.label)}</b><span>${esc(floor.block)}<em><br>Tartarus${floor.top ? ' · block top' : ''}</em></span></div>
-        <div class="bt-steps${map.reaper ? ' hunted' : danger > 0.75 ? ' near' : ''}" title="Linger too long and the Reaper comes."><span>Steps <b>${steps}</b></span><i style="--p:${danger}"></i><em>${map.reaper ? 'THE REAPER IS HERE' : map.reaperGone ? 'The Reaper is gone' : danger > 0.75 ? 'Something is coming…' : 'Quiet'}</em></div>
+        <div class="bt-steps${map.reaper ? ' hunted' : danger > 0.75 ? ' near' : ''}" title="Linger too long and the Reaper comes."><span>Steps <b>${steps}</b></span><i style="--p:${danger}"></i><em>${map.reaper ? (diff().reaper ? 'THE REAPER IS HERE' : 'The Reaper isn’t chasing') : map.reaperGone ? 'The Reaper is gone' : calmFloor ? 'Story · no Reaper' : danger > 0.75 ? 'Something is coming…' : 'Quiet'}</em></div>
         <div class="bt-tools"><span class="bt-yen">${ICON.svg('yen')}${yen(save.yen)}</span>${tools()}</div>
       </header>
       <div class="bt-map-stage">${svg}</div>
@@ -803,7 +1144,7 @@
         </div>
         <p class="bt-hint">${phone() ? 'Tap a lit room to move' : '←→ pick a room · Enter move · S scan · I items'}</p>
       </aside>
-      <div class="bt-map-nav"><div class="pic"><img src="${pimg('fuuka', line[1])}" alt=""></div><p><b>Fuuka</b>${esc(line[0])}</p></div>`;
+      <div class="bt-map-nav"><div class="pic"><img src="${pimg('fuuka', line[1])}" alt=""></div><p><b>Fuuka</b><span class="tx">${esc(line[0])}</span></p></div>`;
   }
 
   /* A full-screen room panel (chest, access point, clock, stairs, events). Resolves with the chosen button's value. */
@@ -864,6 +1205,7 @@
       return null;
     }
     if (n.type === 'access') {
+      tip('access');
       const firstTouch = save.reached !== floor.id;
       const better = !save.reached || D.floors.findIndex(f => f.id === save.reached) <= run.fi;
       if (better) { save.reached = floor.id; persist(); }
@@ -971,8 +1313,10 @@
     const group = (window.__btGroup && !spec.boss) ? window.__btGroup.slice() : spec.group.slice();
     const kinds = group.map(k => k.split('@')[0]);
     if (fx.autoAnalyze) kinds.forEach(k => { if (D.enemies[k].gimmick) return; const kn = save.known[k] || (save.known[k] = {}); D.affinityOrder.forEach(el => { kn[el] = true; }); });
-    B = E.create({ party: buildParty(run && run.carry), enemies: group, mods: fx.mods, known: save.known, rand, items: save.items, heat: spec.heat || 0, ctx: { op: spec.op && spec.op.id } });
+    B = E.create({ party: buildParty(run && run.carry), enemies: group, mods: fx.mods, known: save.known, rand, items: save.items, heat: spec.heat || 0, ctx: { op: spec.op && spec.op.id }, diff });
     navSaid = new Set(); summoned = new Set();
+    curSpec = spec; blog = []; lastTgt = {}; focusId = null;
+    blogAdd(`${spec.label} · ${spec.block}${spec.boss && !spec.reaper ? ' · Full Moon' : spec.reaper ? ' · The Reaper' : spec.strong ? ' · Strong Shadows' : ''} · ${diff().name}`, 'sys');
     buildBattle(spec);
     root.classList.add('bt-in-battle');
     music.play(spec.music || 'battle', { restart: true });
@@ -981,6 +1325,11 @@
     if (fx.openBuff) await play(B.openBuff(fx.openBuff));
     nav(spec.nav);
     B.party().forEach(p => { if (p.tired) nav('tired', { name: p.name }, { once: true }); });
+    // Rush turns itself off for fights it isn't allowed in (bosses by default).
+    if (rushOn && !rushAllowed(spec)) stopRush(spec.boss || spec.reaper ? 'rushBoss' : 'rushNo');
+    paintRush();
+    if (B.party().length > 1) tip('tactics');
+    if ((marks['battle-start'] || 0) >= 2 && rushAllowed(spec) && !rushOn) tip('rush');
     mark('battle-start');
     if (spec.op) mark('boss-' + spec.op.id);
     let guard = 0;
@@ -996,9 +1345,11 @@
         do { await sleep(n ? 250 : 380); await play(turn.forced && !n ? B.forcedAct() : B.enemyAct()); n++; } while (B.S.oneMore && !B.outcome() && !u.dead && n < 3);
       } else await partyTurn(u, turn.forced);
       dangerCheck();
+      rushGuard();
       syncAll();
     }
     const result = B.outcome() || 'lose';
+    blogAdd(result === 'win' ? 'Victory!' : result === 'escaped' ? 'Got away.' : 'Solar has fallen…', 'sys');
     setActive(null);
     hideMenu();
     B.party().forEach(p => { save.th[p.mid] = Math.round(p.th); });
@@ -1020,13 +1371,14 @@
       <header class="bt-top">
         <div class="bt-floorlabel"><b>${esc(floor.label)}</b><span>${esc(floor.block)}<em><br>${floor.boss && !floor.reaper ? 'Full Moon Operation' : 'Tartarus'}</em></span></div>
         <ol class="bt-order" aria-label="Turn order"></ol>
-        <div class="bt-tools"><button type="button" class="bt-tool" data-tool="speed" title="Battle speed"><span>▶▶ ${save.speed || 1}x</span></button>${tools()}</div>
+        <div class="bt-tools">${tools('battle')}</div>
       </header>
       <div class="bt-field" role="group" aria-label="Shadows"></div>
       <div class="bt-party" role="group" aria-label="Party"></div>
       <div class="bt-cmd" hidden><div class="bt-who"><img alt=""><div class="tag"><b></b><span></span></div></div><div class="bt-cmd-body"></div></div>
       <div class="bt-log" role="status" aria-live="polite"></div>
       <div class="bt-nav" hidden></div>
+      <div class="bt-rushtag" aria-hidden="true"><b>RUSH</b><span>R to stop</span></div>
       <div class="bt-fx"></div><div class="bt-cut"></div><div class="bt-flash"></div><div class="bt-dim"></div>`, `bt-battle${floor.boss ? ' boss' : ''}${floor.reaper ? ' reaper' : ''}`);
     BT = {
       root: el, field: el.querySelector('.bt-field'), party: el.querySelector('.bt-party'), cmd: el.querySelector('.bt-cmd'),
@@ -1048,8 +1400,8 @@
       c.dataset.id = u.id;
       c.innerHTML = `<span class="face"><img src="${pimg(u.mid, m.faces.idle)}" alt="" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"></span>
         <span class="nm">${esc(u.name)} <small>${esc(u.persona)}</small></span>
-        <span class="bt-bar hp"><span>HP</span><span class="track"><i></i></span><b></b></span>
-        <span class="bt-bar sp"><span>SP</span><span class="track"><i></i></span><b></b></span><span class="bt-th" title="Theurgy"><i></i></span><span class="st"></span>`;
+        <span class="bt-bar hp"><span>HP</span><span class="track"><i class="g"></i><i class="f"></i></span><b></b></span>
+        <span class="bt-bar sp"><span>SP</span><span class="track"><i class="g"></i><i class="f"></i></span><b></b></span><span class="bt-th" title="Theurgy"><i></i></span><span class="st"></span><span class="pulse" aria-hidden="true"></span>`;
       c.addEventListener('mousedown', e => e.preventDefault());
       c.addEventListener('click', () => { if (ctl && ctl.pickValue) ctl.pickValue(u.id); });
       c.addEventListener('pointerenter', () => { if (ctl && ctl.hoverValue) ctl.hoverValue(u.id); });
@@ -1070,7 +1422,7 @@
       const h = d.h || 220;
       el.style.setProperty('--w', `${Math.round(h * art.w / art.h)}px`);
       if (art.small) el.classList.add('soft');
-      const src = `${SHADOW_DIR}${d.img}.webp?v=${V()}`;
+      const src = sart(d.img);
       body = `<div class="sh sh-pic idle-${d.idle || 'breathe'}"><img src="${src}" alt="${esc(u.name)}" draggable="false" width="${art.w}" height="${art.h}"><i class="flash" style="--src:url('${src}')"></i></div>`;
     } else {
       const sv = ART.shadow(d.svg);
@@ -1078,7 +1430,7 @@
       body = `<svg class="sh" viewBox="${sv.vb}" role="img" aria-label="${esc(u.name)}">${sv.svg}</svg>`;
     }
     if (d.veil) el.classList.add('veiled');
-    el.innerHTML = `${d.veil ? '<div class="bt-veil"></div>' : ''}<div class="bt-tags"></div>${body}<div class="bt-ehp"><i style="width:100%"></i></div>`;
+    el.innerHTML = `${d.veil ? '<div class="bt-veil"></div>' : ''}<div class="bt-tags"></div>${body}<div class="bt-ehp"><i class="g"></i><i class="f"></i></div>`;
     el.addEventListener('click', () => { if (ctl && ctl.pickValue) ctl.pickValue(u.id); });
     el.addEventListener('pointerenter', () => { if (ctl && ctl.hoverValue) ctl.hoverValue(u.id); });
     BT.field.appendChild(el);
@@ -1097,7 +1449,7 @@
   function paintEnemy(u, o = {}) {
     const el = BT.enemies.get(u.id); if (!el) return;
     const hp = o.hp != null ? o.hp : u.hp;
-    el.querySelector('.bt-ehp i').style.width = `${Math.max(0, hp / u.maxHp * 100)}%`;
+    setBar(el.querySelector('.bt-ehp'), hp / u.maxHp);
     el.classList.toggle('down', !!u.down && !u.dead);
     el.classList.toggle('bound', !!(u.ail && u.ail.id === 'bind') && !u.dead);
     el.dataset.ail = u.ail && !u.dead ? u.ail.id : '';
@@ -1119,18 +1471,29 @@
     ['atk', 'def'].forEach(s => { if (u.buffs[s]) tags.push(`<span class="bt-tag">${STAT_SHORT[s]} ${u.buffs[s] > 0 ? '↑' : '↓'}</span>`); });
     el.querySelector('.bt-tags').innerHTML = tags.join('');
   }
+  /* An HP/SP bar: the fill (.f) moves at once, the ghost (.g) lingers behind a loss, then drains to meet it (transform only).
+     On a gain the ghost jumps ahead and the fill grows into it. */
+  function setBar(track, p) {
+    if (!track) return;
+    p = Math.max(0, Math.min(1, p || 0));
+    const prev = track._p == null ? p : track._p, f = track.querySelector('.f'), g = track.querySelector('.g');
+    track._p = p;
+    if (f) f.style.transform = `scaleX(${p})`;
+    if (g) { g.classList.toggle('now', p >= prev); g.style.transform = `scaleX(${p})`; }
+  }
   const ailTag = a => { const d = D.ailments[a.id]; return `<span class="bt-tag ail" style="--c:${d.color}" title="${esc(d.desc)}">${ART.icon(a.id)}<span>${esc(d.name)}</span><em>${a.t}</em></span>`; };
   function paintCard(u, o = {}) {
     const c = BT.cards.get(u.id); if (!c) return;
     const hp = o.hp != null ? o.hp : u.hp, sp = o.sp != null ? o.sp : u.sp, dead = o.dead != null ? o.dead : u.dead;
     const [h, s] = c.querySelectorAll('.bt-bar');
-    h.querySelector('i').style.width = `${hp / u.maxHp * 100}%`;
+    setBar(h.querySelector('.track'), hp / u.maxHp);
     h.querySelector('b').textContent = hp;
     h.classList.toggle('low', hp / u.maxHp < 0.3);
-    s.querySelector('i').style.width = `${sp / u.maxSp * 100}%`;
+    c.classList.toggle('danger', !dead && hp / u.maxHp < 0.3);
+    setBar(s.querySelector('.track'), sp / u.maxSp);
     s.querySelector('b').textContent = sp;
     const th = c.querySelector('.bt-th');
-    if (th) { th.querySelector('i').style.width = `${Math.min(100, u.th || 0)}%`; th.classList.toggle('full', (u.th || 0) >= 100 && !dead); c.classList.toggle('th-ready', (u.th || 0) >= 100 && !dead); }
+    if (th) { th.querySelector('i').style.transform = `scaleX(${Math.min(100, u.th || 0) / 100})`; th.classList.toggle('full', (u.th || 0) >= 100 && !dead); c.classList.toggle('th-ready', (u.th || 0) >= 100 && !dead); }
     c.classList.toggle('dead', !!dead);
     c.classList.toggle('boosted', u.boost > 1);
     c.dataset.boost = u.boost;
@@ -1169,7 +1532,7 @@
     if (u && u.side === 'party') BT.cards.get(u.id).classList.add('active');
     paintOrder();
   }
-  function log(text) { BT.log.textContent = text; clearTimeout(log.t); log.t = setTimeout(() => { if (BT) BT.log.textContent = ''; }, 2200 / Math.min(speed(), 2)); }
+  function log(text, cls = '') { if (cls !== 'say') blogAdd(text, cls); BT.log.textContent = text; clearTimeout(log.t); log.t = setTimeout(() => { if (BT) BT.log.textContent = ''; }, 2200 * textHold() / Math.min(speed(), 2)); }
 
   /* ── Fuuka ────────────────────────────────────────── */
   function nav(key, vars = {}, { once = false } = {}) {
@@ -1178,14 +1541,15 @@
     if (once && navSaid.has(key)) return;
     navSaid.add(key);
     const text = String(pickOne(line[0])).replace(/\{(\w+)\}/g, (_, k) => (vars[k] != null ? vars[k] : ''));
-    BT.nav.innerHTML = `<div class="pic"><img src="${pimg('fuuka', line[1] || 'neutral')}" alt=""></div><p><b>Fuuka</b>${esc(text)}</p>`;
+    BT.nav.innerHTML = `<div class="pic"><img src="${pimg('fuuka', line[1] || 'neutral')}" alt=""></div><p><b>Fuuka</b><span></span></p>`;
+    const typed = typeInto(BT.nav.querySelector('p span'), text);
     BT.nav.hidden = false;
     BT.nav.classList.remove('out');
     void BT.nav.offsetWidth;
     BT.nav.style.animation = 'none'; void BT.nav.offsetWidth; BT.nav.style.animation = '';
     clearTimeout(navTimer);
     const nv = BT.nav;
-    navTimer = setTimeout(() => { nv.classList.add('out'); setTimeout(() => { if (nv.classList.contains('out')) nv.hidden = true; }, 300); }, 2900 / Math.min(speed(), 3));
+    navTimer = setTimeout(() => { nv.classList.add('out'); setTimeout(() => { if (nv.classList.contains('out')) nv.hidden = true; }, 300); }, (2900 * textHold() + typed) / Math.min(speed(), 3));
     mark('nav-' + key);
   }
   function dangerCheck() {
@@ -1205,6 +1569,7 @@
   }
   const popCount = new Map();
   function popup(id, { n = null, label = '', cls = '', lcls = '', style = '' }) {
+    if (!ST().numbers) { n = null; if (!label) return; }
     const p = anchor(id), k = popCount.get(id) || 0;
     popCount.set(id, k + 1);
     setTimeout(() => popCount.set(id, Math.max(0, (popCount.get(id) || 1) - 1)), 700);
@@ -1268,6 +1633,7 @@
     BT.flash.classList.remove('go'); void BT.flash.offsetWidth; BT.flash.classList.add('go');
   }
   function shake(big) {
+    if (!ST().shake) return;
     const r = BT.root, c = big ? 'shake-big' : 'shake';
     r.classList.remove('shake', 'shake-big'); void r.offsetWidth; r.classList.add(c);
     setTimeout(() => r.classList.remove(c), 750);
@@ -1301,7 +1667,7 @@
       await awakening(BT.root, sleep);
       return;
     }
-    const mode = save.cutins || 'first';
+    const mode = rushActive() ? 'off' : (save.cutins || 'first');
     if (mode === 'off' || (mode === 'first' && !first)) { sfx('summon'); flash(true); await sleep(180); return; }
     await evoker(u, skillName);
   }
@@ -1495,7 +1861,8 @@
     BT.root.classList.add('evoking');
     sfx('summon');
     setTimeout(() => sfx(e.look === 'sun' || e.look === 'light' ? 'light' : 'almighty'), 500 / speed());
-    log(`${u.name}: “${m.lines.theurgy || m.lines.finish}”`);
+    log(`${u.name}: “${m.lines.theurgy || m.lines.finish}”`, 'say');
+    blogAdd(`${u.name}: Theurgy · ${e.name}!`, 'pf');
     await sleep(img ? 2700 : 1900);
     flash(e.look !== 'sun');
     w.classList.add('out');
@@ -1544,6 +1911,20 @@
     setTimeout(() => w.remove(), 300);
   }
 
+  /* One line of the battle log for a hit event. */
+  function hitLine(e, t, src) {
+    const who = src && src !== t && !e.quiet ? `${src.name} → ` : '';
+    if (e.quiet) return `${t.name} succumbed to poison.`;
+    if (e.self) return `${t.name} fell over!`;
+    if (e.shield) return `${who}${t.name}: shielded`;
+    if (e.aff === 'repel' && !e.reflected) return `${who}${t.name}: REPEL`;
+    if (e.insta) return `${who}${t.name}: ${e.killed ? 'instant kill!' : t.boss ? 'immune' : 'NULL'}`;
+    if (e.aff === 'null') return `${who}${t.name}: NULL`;
+    if (e.aff === 'drain') return `${who}${t.name} drained ${e.amount}`;
+    const tags = [e.aff === 'weak' ? 'WEAK' : e.aff === 'resist' ? 'resist' : '', e.crit ? 'CRITICAL' : '', e.reflected ? 'reflected' : '', e.downed ? 'Down' : '', e.killed ? (t.side === 'enemy' ? 'defeated' : 'KO') : ''].filter(Boolean);
+    return `${who}${t.name} −${e.amount}${tags.length ? ` · ${tags.join(' · ')}` : ''}`;
+  }
+
   /* ── Event playback ───────────────────────────────── */
   async function play(evs) {
     for (let i = 0; i < evs.length; i++) await playOne(evs[i], evs[i + 1]);
@@ -1552,21 +1933,21 @@
   async function playOne(e, next) {
     const U = id => B.U(id);
     switch (e.t) {
-      case 'round': paintOrder(); break;
+      case 'round': paintOrder(); blogAdd(`Round ${e.n}`, 'round'); break;
       case 'use': {
         const u = U(e.src);
         mark('use-' + e.skill);
         if (u.side === 'enemy') {
           const el = BT.enemies.get(u.id); if (el) { el.classList.remove('acting'); void el.offsetWidth; el.classList.add('acting'); }
           banner(e.name, { el: e.el, enemy: true, sub: u.name });
-          log(`${u.name} used ${e.name}.`);
+          log(`${u.name} used ${e.name}.`, 'eu');
           await sleep(e.skill === 'tremble' ? 500 : 650);
         } else {
           paintCard(u);
           if (e.summon && !e.charmed) { await summonCut(u, e.name); banner(e.name, { el: e.el, sub: u.persona }); }
           else if (e.charmed) { banner(e.name, { el: 'charm', sub: `${u.name} · Charmed` }); await sleep(300); }
           else { const c = BT.cards.get(u.id); c.classList.remove('hit'); banner('Attack', { el: e.el, sub: u.name }); await sleep(260); }
-          log(`${u.name}: ${e.name}`);
+          log(`${u.name}: ${e.name}`, 'pu');
         }
         if (D.ailments[e.el]) sfx('ail');
         if (D.elements[e.el] && e.tgts.length) sfx(E.PHYS.has(e.el) ? 'hit' : (['fire', 'ice', 'elec', 'wind', 'light', 'almighty'].includes(e.el) ? e.el : 'hit'));
@@ -1574,6 +1955,7 @@
       }
       case 'hit': {
         const t = U(e.tgt), onEnemy = t.side === 'enemy', src = U(e.src);
+        blogAdd(hitLine(e, t, src), onEnemy ? 'pf' : 'ef');
         if (e.quiet) { if (onEnemy) { paintEnemy(t, { hp: 0 }); deathFx(e.tgt); mark('kill'); } await sleep(500); break; }
         if (e.self) { popup(e.tgt, { label: 'FALL!', lcls: 'weak' }); paintEnemy(t); sfx('down'); mark('fortune-fall'); await sleep(600); break; }
         if (e.shield) { fxPlay('miss', e.tgt); popup(e.tgt, { label: 'SHIELDED', lcls: 'null' }); nav('shielded', {}, { once: true }); sfx('miss'); mark('shielded'); await sleep(420); break; }
@@ -1597,7 +1979,7 @@
         if (e.crit) { shake(true); flash(); sfx('crit'); }
         else if (e.aff === 'weak') { shake(false); flash(true); sfx('weak'); }
         else if (e.amount) sfx('hit');
-        if (e.downed) { sfx('down'); if (onEnemy) { const en = BT.enemies.get(e.tgt); en.classList.add('down'); } }
+        if (e.downed) { sfx('down'); if (onEnemy) { const en = BT.enemies.get(e.tgt); en.classList.add('down'); tip('down'); } }
         if (e.shatter) { popup(e.tgt, { label: 'SHATTER!', lcls: 'crit' }); fxPlay('shatter', e.tgt); sfx('shatter'); nav('shatter'); mark('shatter'); }
         if (src && src.side === 'party' && onEnemy) {
           if (e.crit) nav('crit'); else if (e.aff === 'weak') { nav('weak'); mark('weak'); }
@@ -1612,13 +1994,14 @@
         break;
       }
       case 'miss':
+        blogAdd(`${U(e.tgt).name}: ${e.hidden ? 'can’t be seen' : e.immune ? 'immune' : e.ail && e.has ? 'no effect' : 'miss'}`, 'miss');
         if (e.hidden) { popup(e.tgt, { label: 'CAN’T SEE IT', lcls: 'miss' }); nav('hidden', {}, { once: true }); sfx('miss'); mark('hidden-miss'); await sleep(420); break; }
         popup(e.tgt, { label: e.immune ? 'IMMUNE' : e.ail ? (e.has ? 'NO EFFECT' : 'MISS') : 'MISS', lcls: 'miss' }); sfx('miss'); if (e.insta) mark('insta-miss'); await sleep(420); break;
-      case 'thReady': { const t = U(e.tgt); paintCard(t); if (!navSaid.has('th-' + t.id)) { navSaid.add('th-' + t.id); nav('theurgyReady', { name: t.name }); sfx('onemore'); } mark('th-ready'); break; }
+      case 'thReady': { const t = U(e.tgt); paintCard(t); tip('theurgy'); blogAdd(`${t.name}’s Theurgy is ready.`, 'sys'); if (!navSaid.has('th-' + t.id)) { navSaid.add('th-' + t.id); nav('theurgyReady', { name: t.name }); sfx('onemore'); } mark('th-ready'); break; }
       case 'theurgy': await theurgyCut(e); break;
       case 'orgia': popup(e.tgt, { label: 'ORGIA MODE', lcls: 'buff' }); paintCard(U(e.tgt)); await sleep(300); break;
       case 'orgiaEnd': popup(e.tgt, { label: 'ORGIA OFF', lcls: 'debuff' }); paintCard(U(e.tgt)); break;
-      case 'tiredSkip': { const t = U(e.tgt); popup(e.tgt, { label: 'TIRED…', lcls: 'miss' }); log(`${t.name} is too tired to move…`); mark('tired-skip'); await sleep(520); break; }
+      case 'tiredSkip': { const t = U(e.tgt); tip('fatigue'); popup(e.tgt, { label: 'TIRED…', lcls: 'miss' }); log(`${t.name} is too tired to move…`); mark('tired-skip'); await sleep(520); break; }
       case 'gate': { const t = U(e.tgt); paintEnemy(t); nav('gate', { el: D.elements[e.el].name }); mark('gate-found'); await sleep(300); break; }
       case 'gateShift': { const t = U(e.tgt); paintEnemy(t); popup(e.tgt, { label: 'SHIFT!', lcls: 'ail', style: '--c:#ff8cc0' }); nav('gateShift'); mark('gate-shift'); await sleep(450); break; }
       case 'shiftWeak': { const t = U(e.tgt); paintEnemy(t); popup(e.tgt, { label: 'WEAKNESS SHIFTED', lcls: 'ail', style: '--c:#ffd36b' }); nav('emperorShift'); mark('emperor-shift'); await sleep(450); break; }
@@ -1637,6 +2020,7 @@
         const t = U(e.tgt), d = D.ailments[e.id];
         fxPlay(e.id === 'bind' ? 'bind' : e.id, e.tgt);
         popup(e.tgt, { label: d.name.toUpperCase() + '!', lcls: 'ail', style: `--c:${d.color}` });
+        tip('status');
         if (t.side === 'party') paintCard(t); else paintEnemy(t);
         sfx('ail');
         if (e.back) nav('shockBack', { name: t.name });
@@ -1678,6 +2062,7 @@
       case 'charmAct': { const t = U(e.src); popup(e.src, { label: 'CHARMED', lcls: 'ail', style: `--c:${D.ailments.charm.color}` }); fxPlay('charm', e.src); log(`${t.name} is charmed!`); mark('charm-act'); await sleep(420); break; }
       case 'heal': {
         const t = U(e.tgt);
+        if (e.amount > 0 || e.sp) blogAdd(`${t.name} ${e.amount > 0 ? `+${e.amount} HP` : ''}${e.amount > 0 && e.sp ? ' ' : ''}${e.sp ? `+${e.sp} SP` : ''}`, 'heal');
         if (e.amount > 0) { popup(e.tgt, { n: e.amount, cls: 'heal' + (t.side === 'party' ? ' party' : '') }); if (!(next && next.t === 'heal' && next.tgt === e.tgt)) fxPlay('heal', e.tgt); }
         if (e.sp) popup(e.tgt, { n: `+${e.sp} SP`, cls: 'sp' });
         if (t.side === 'party') paintCard(t, { hp: e.hp, sp: e.spNow != null ? e.spNow : undefined, dead: false }); else paintEnemy(t, { hp: e.hp });
@@ -1685,9 +2070,10 @@
         await sleep(next && next.t === 'heal' ? 160 : 420);
         break;
       }
-      case 'revive': { const t = U(e.tgt); const c = BT.cards.get(t.id); fxPlay('revive', e.tgt); c.classList.remove('dead'); c.querySelector('.face img').src = pimg(t.mid, member(t.mid).faces.idle); popup(e.tgt, { label: 'REVIVED', lcls: 'buff' }); mark('revive'); await sleep(300); break; }
+      case 'revive': { const t = U(e.tgt); blogAdd(`${t.name} is back up!`, 'heal'); const c = BT.cards.get(t.id); fxPlay('revive', e.tgt); c.classList.remove('dead'); c.querySelector('.face img').src = pimg(t.mid, member(t.mid).faces.idle); popup(e.tgt, { label: 'REVIVED', lcls: 'buff' }); mark('revive'); await sleep(300); break; }
       case 'buff': {
         const t = U(e.tgt);
+        blogAdd(`${t.name}: ${STAT_SHORT[e.stat]} ${e.dir > 0 ? 'up' : 'down'}`, e.dir > 0 ? 'buff' : 'debuff');
         popup(e.tgt, { label: `${STAT_SHORT[e.stat]} ${e.dir > 0 ? '↑' : '↓'}`, lcls: e.dir > 0 ? 'buff' : 'debuff' });
         fxPlay('buff', e.tgt, { dir: e.dir, stat: e.stat });
         if (t.side === 'party') paintCard(t); else paintEnemy(t);
@@ -1700,25 +2086,25 @@
       case 'onemore': {
         const u = U(e.src);
         sfx('onemore');
-        if (u.side === 'party') { await bigWord('1 MORE!', { band: pimg(u.mid, member(u.mid).faces.idle), ms: 950 }); log(`${u.name}: “${member(u.mid).lines.onemore}”`); mark('onemore'); }
-        else { banner('1 More', { enemy: true, sub: u.name }); await sleep(500); }
+        if (u.side === 'party') { tip('onemore'); await bigWord('1 MORE!', { band: pimg(u.mid, member(u.mid).faces.idle), ms: 950 }); log(`${u.name}: “${member(u.mid).lines.onemore}”`, 'say'); blogAdd(`${u.name} gets One More!`, 'pf'); mark('onemore'); }
+        else { blogAdd(`${u.name} gets One More.`, 'ef'); banner('1 More', { enemy: true, sub: u.name }); await sleep(500); }
         break;
       }
-      case 'alloutReady': nav('allDown'); sfx('onemore'); await bigWord('ALL DOWN', { sub: 'They’re wide open', ms: 900 }); break;
+      case 'alloutReady': tip('allout'); blogAdd('All foes are Down!', 'sys'); nav('allDown'); sfx('onemore'); await bigWord('ALL DOWN', { sub: 'They’re wide open', ms: 900 }); break;
       case 'allout': await allOutSequence(e); break;
       case 'shift': {
         const a = U(e.src), b = U(e.tgt);
         sfx('summon');
         await bigWord('SHIFT', { sub: `${a.name} → ${b.name} · ×${e.boost} power`, gold: true, band: pimg(b.mid, member(b.mid).faces.idle), ms: 900 });
         if (e.sp) popup(e.tgt, { n: `+${e.sp} SP`, cls: 'sp' });
-        log(`${a.name}: “${member(a.mid).lines.shift}”`);
+        log(`${a.name}: “${member(a.mid).lines.shift}”`, 'say'); blogAdd(`Shift: ${a.name} → ${b.name}`, 'pf');
         nav('shift');
         mark('shift');
         break;
       }
-      case 'guard': { const u = U(e.src); paintCard(u); popup(e.src, { label: 'GUARD', lcls: 'buff' }); sfx('guard'); await sleep(360); break; }
+      case 'guard': { const u = U(e.src); log(`${u.name} guards.`); paintCard(u); popup(e.src, { label: 'GUARD', lcls: 'buff' }); sfx('guard'); await sleep(360); break; }
       case 'item': { const u = U(e.src); banner(e.name, { el: 'item', sub: u.name }); log(`${u.name} used ${e.name}.`); await sleep(420); break; }
-      case 'escape': if (e.ok) { sfx('escape'); nav('escape'); await bigWord('ESCAPED', { ms: 800 }); } else { nav('escapeFail'); log('Couldn’t escape!'); await sleep(500); } break;
+      case 'escape': if (e.ok) { blogAdd('Escaped!', 'sys'); sfx('escape'); nav('escape'); await bigWord('ESCAPED', { ms: 800 }); } else { nav('escapeFail'); log('Couldn’t escape!'); await sleep(500); } break;
       case 'telegraph': { const u = U(e.src); paintEnemy(u); BT.enemies.get(u.id).classList.add('charging'); nav(e.charge ? 'charge' : 'telegraph'); log(e.charge ? `${u.name} is powering up…` : `${u.name} is gathering moonlight…`); sfx('summon'); await sleep(900); mark('telegraph'); break; }
       case 'veil': {
         const u = U(e.tgt);
@@ -1737,8 +2123,8 @@
         await sleep(500);
         break;
       }
-      case 'standup': { const u = U(e.tgt); if (u.side === 'enemy') { paintEnemy(u); log(`${u.name} got back up.`); await sleep(380); } else paintCard(u); break; }
-      case 'msg': log(e.text); await sleep(e.src ? 500 : 200); break;
+      case 'standup': { const u = U(e.tgt); if (u.side === 'enemy') { paintEnemy(u); log(`${u.name} got back up.`); await sleep(380); } else { paintCard(u); blogAdd(`${u.name} got back up.`); } break; }
+      case 'msg': log(e.text, 'sys'); await sleep(e.src ? 500 : 200); break;
       case 'analyze': break;
       default: break;
     }
@@ -1782,6 +2168,7 @@
     mark('allout-finish');
     await sleep(1500);
     wrap.remove();
+    blogAdd(`All-Out Attack! ${e.hits.map(h => `${B.U(h.tgt).name} −${h.amount}${h.killed ? ' (defeated)' : ''}`).join(', ')}`, 'pf');
     e.hits.forEach((h, i) => setTimeout(() => {
       const t = B.U(h.tgt);
       fxPlay('strike', h.tgt, { crit: true });
@@ -1814,37 +2201,44 @@
     BT.cmd.hidden = false;
     BT.root.classList.add('menu-open');
   }
-  /* A slanted list in the command panel. items: { v, label, icon, right, rcls, desc, off, offWhy, cls, wide } */
-  function listMenu({ items, cls = '', back = false, title = '', start = 0, onSel = null, name = 'list' }) {
+  /* A slanted list in the command panel. items: { v, label, icon, right, rcls, tag: [text, cls], why, desc, off, offWhy, cls, wide }
+     onKey(e, item): return a value to resolve with (e.g. the skill list's ←→ target switch). onOther(v): a click on something that
+     isn't in the list (a Shadow, in the skill list); return a value to resolve with. A Rush toggle resolves any open menu with RUSH. */
+  const tagHtml = t => (t ? `<em class="mk ${t[1]}">${t[0]}</em>` : '');
+  function listMenu({ items, cls = '', back = false, title = '', start = 0, onSel = null, name = 'list', onKey = null, onOther = null }) {
     return new Promise(resolve => {
-      BT.body.innerHTML = `${title ? `<p class="bt-hint" style="margin:0 0 8px">${title}</p>` : ''}<ul class="bt-menu ${cls}">${items.map((it, i) => `<li style="--i:${i}" class="${it.wide ? 'wide' : ''}"><button type="button" class="bt-mi ${it.cls || ''}${it.off ? ' off' : ''}" data-v="${esc(it.v)}">${it.icon ? ART.icon(it.icon) : ''}<span>${esc(it.label)}</span>${it.right ? `<span class="r ${it.rcls || ''}">${it.right}</span>` : ''}</button></li>`).join('')}</ul>
+      BT.body.innerHTML = `${title ? `<p class="bt-hint bt-mtitle">${title}</p>` : ''}<ul class="bt-menu ${cls}">${items.map((it, i) => `<li style="--i:${i}" class="${it.wide ? 'wide' : ''}"><button type="button" class="bt-mi ${it.cls || ''}${it.off ? ' off' : ''}" data-v="${esc(it.v)}"${it.off ? ' aria-disabled="true"' : ''}>${it.icon ? ART.icon(it.icon) : ''}<span>${esc(it.label)}</span>${it.right || it.tag || it.why ? `<span class="r ${it.rcls || ''}">${it.why ? `<em class="why">${esc(it.why)}</em>` : tagHtml(it.tag)}${it.right || ''}</span>` : ''}</button></li>`).join('')}</ul>
         <p class="bt-desc"></p>${back ? '<button type="button" class="bt-back" data-back>‹ Back</button>' : ''}<p class="bt-hint">↑↓ choose · Enter confirm${back ? ' · Esc back' : ''}</p>`;
       const ul = BT.body.querySelector('.bt-menu'), btns = [...ul.querySelectorAll('.bt-mi')], desc = BT.body.querySelector('.bt-desc');
       let i = Math.max(0, Math.min(start, items.length - 1));
       const paint = () => {
+        listIdx = i;
         btns.forEach((b, j) => b.classList.toggle('sel', j === i));
         desc.innerHTML = items[i].desc || '';
         const b = btns[i], li = b.parentElement;
         if (ul.scrollHeight > ul.clientHeight) { if (li.offsetTop < ul.scrollTop) ul.scrollTop = li.offsetTop - 4; else if (li.offsetTop + li.offsetHeight > ul.scrollTop + ul.clientHeight) ul.scrollTop = li.offsetTop + li.offsetHeight - ul.clientHeight + 8; }
         if (onSel) onSel(items[i]);
       };
-      const done = v => { ctl = null; resolve(v); };
+      const done = v => { if (ctl === me) ctl = null; if (menuAbort === abort) menuAbort = null; resolve(v); };
+      const abort = v => done(v);
       const grid = cls.includes('root') && phone() ? 2 : 1;
-      ctl = {
+      const me = ctl = {
         kind: 'menu', grid, items,
         move(d) { i = (i + d + items.length * 4) % items.length; sfx('move'); paint(); },
         pick() { const it = items[i]; if (it.off) { sfx('back'); desc.innerHTML = `<b>Can’t</b>${esc(it.offWhy || 'Not now.')}`; return; } sfx('ok'); done(it.v); },
         back: back ? () => { sfx('back'); done(null); } : null,
-        pickValue(v) { const j = items.findIndex(it => it.v === v); if (j < 0) return; i = j; paint(); this.pick(); },
+        key: onKey ? e => { const v = onKey(e, items[i]); if (v === undefined) return false; done(v); return true; } : null,
+        pickValue(v) { const j = items.findIndex(it => it.v === v); if (j < 0) { const r = onOther && onOther(v); if (r !== undefined) done(r); return; } i = j; paint(); this.pick(); },
         hoverValue(v) { const j = items.findIndex(it => it.v === v); if (j < 0 || j === i) return; i = j; paint(); }
       };
+      menuAbort = abort;
       btns.forEach((b, j) => {
         b.addEventListener('mousedown', ev => ev.preventDefault());
-        b.addEventListener('pointerenter', () => { if (i !== j && ctl && ctl.items === items) { i = j; paint(); } });
-        b.addEventListener('click', () => { if (ctl && ctl.items === items) { i = j; paint(); ctl.pick(); } });
+        b.addEventListener('pointerenter', () => { if (i !== j && ctl === me) { i = j; paint(); } });
+        b.addEventListener('click', () => { if (ctl === me) { i = j; paint(); ctl.pick(); } });
       });
       const bb = BT.body.querySelector('[data-back]');
-      if (bb) { bb.addEventListener('mousedown', ev => ev.preventDefault()); bb.addEventListener('click', () => { if (ctl && ctl.items === items && ctl.back) ctl.back(); }); }
+      if (bb) { bb.addEventListener('mousedown', ev => ev.preventDefault()); bb.addEventListener('click', () => { if (ctl === me && ctl.back) ctl.back(); }); }
       paint();
       mark('menu');
       mark('menu-' + name);
@@ -1856,12 +2250,26 @@
     if (sk.cost.sp) return `${sk.cost.sp} SP`;
     return `${Math.round(u.maxHp * sk.cost.hp / 100)} HP`;
   }
-  function affOn(enemy, el) {
-    if (!el || !D.elements[el] || el === 'almighty') return '';
-    const k = B.known(enemy.kind);
-    if (!k[el]) return '?';
-    const a = enemy.aff[el] || 'normal';
-    return a === 'normal' ? '' : AFF_SHORT[a];
+  /* What the party knows about element el on foe f (only from Analyze or from hitting it, like P3R): a tag
+     ['WEAK', 'weak'] … ['?', 'unk'], or null for a normal hit or a non-elemental skill. */
+  const AFF_TAG = { weak: ['WEAK', 'weak'], resist: ['RESIST', 'resist'], null: ['NULL', 'null'], drain: ['DRAIN', 'drain'], repel: ['REPEL', 'repel'] };
+  function affTag(f, el) {
+    if (!f || !el || !D.elements[el] || el === 'almighty') return null;
+    if (B.shieldUp(f)) return ['SHIELD', 'null'];
+    if (!B.known(f.kind)[el]) return ['?', 'unk'];
+    return AFF_TAG[f.aff[el] || 'normal'] || null;
+  }
+  /* The Shadow the skill list marks against: the one picked with ←→ (or tapped), else this member's last target, else the first. */
+  const markable = f => !f.dead && !f.hidden;
+  function focusFoe(u) {
+    const pool = B.foes().filter(markable);
+    return pool.find(f => f.id === focusId) || pool.find(f => f.id === lastTgt[u.mid]) || pool[0] || null;
+  }
+  function showFocus(f, el) {
+    clearTargets();
+    if (!f || !el) return;
+    const en = BT.enemies.get(f.id);
+    if (en) { en.classList.add('targeted', 'focus'); en.insertAdjacentHTML('beforeend', plate(f, el)); }
   }
   function plate(u, el) {
     const k = B.known(u.kind);
@@ -1879,26 +2287,30 @@
     return out;
   };
 
-  /* Choose a target. spec.target: one | all | ally | allies | dead | self | shift | scan. Resolves with an id, 'all', or null (back). */
+  /* Choose a target. spec.target: one | all | ally | allies | dead | self | shift | scan. Resolves with an id, 'all', null (back)
+     or RUSH. With Remember cursor on, it opens on this member's last target if it's still there. */
   function pickTarget(u, spec, title) {
     const t = spec.target;
     if (t === 'self') return Promise.resolve(u.id);
     let items = [];
     const L = letters();
     const foeItem = f => {
-      const a = affOn(f, spec.el);
-      return { v: f.id, label: f.name + L[f.id], icon: null, right: a ? (a === 'WK' ? 'WEAK' : a) : '', rcls: a === 'WK' ? 'hp' : '', desc: `<b>${esc(f.name)}</b>${f.down ? 'Down. ' : ''}${f.ail ? esc(D.ailments[f.ail.id].name) + '. ' : ''}HP ${Math.round(f.hp / f.maxHp * 100)}%` };
+      const tg = affTag(f, spec.el);
+      return { v: f.id, label: f.name + L[f.id], icon: null, tag: tg, desc: `<b>${esc(f.name + L[f.id])}</b>${f.down ? 'Down. ' : ''}${f.ail ? esc(D.ailments[f.ail.id].name) + '. ' : ''}HP ${Math.round(f.hp / f.maxHp * 100)}%${tg ? ` · ${esc(D.elements[spec.el].name)}: ${tagHtml(tg)}` : ''}` };
     };
     const allyItem = p => ({ v: p.id, label: p.name, right: p.dead ? 'KO' : `${p.ail ? D.ailments[p.ail.id].name.toUpperCase() + ' · ' : ''}${p.hp}/${p.maxHp}`, rcls: 'hp', desc: `<b>${esc(p.name)}</b>${esc(p.persona)} · SP ${p.sp}/${p.maxSp}${p.ail ? ' · ' + esc(D.ailments[p.ail.id].name) : ''}` });
     const aliveFoes = B.foes().filter(f => !f.dead), party = B.party();
+    const allDesc = () => aliveFoes.map(f => { const tg = affTag(f, spec.el); return `${esc(f.name + L[f.id])}${tg ? ` ${tagHtml(tg)}` : ''}`; }).join(' · ');
     if (t === 'one') items = aliveFoes.map(foeItem);
-    else if (t === 'scan') items = aliveFoes.map(foeItem).concat(party.map(p => Object.assign(allyItem(p), { right: 'Persona', rcls: '' })));
-    else if (t === 'all' || t === 'rand') items = [{ v: 'all', label: t === 'rand' ? 'Random foes' : 'All foes', desc: aliveFoes.map(f => f.name).join(', ') }];
+    else if (t === 'scan') items = aliveFoes.map(f => Object.assign(foeItem(f), { tag: null })).concat(party.map(p => Object.assign(allyItem(p), { right: 'Persona', rcls: '' })));
+    else if (t === 'all' || t === 'rand') items = [{ v: 'all', label: t === 'rand' ? 'Random foes' : 'All foes', desc: `<b>${t === 'rand' ? 'Random foes' : 'All foes'}</b>${allDesc()}` }];
     else if (t === 'allies') items = [{ v: 'all', label: 'Whole party', desc: party.filter(p => !p.dead).map(p => p.name).join(', ') }];
     else if (t === 'ally') items = party.filter(p => !p.dead).map(allyItem);
     else if (t === 'dead') items = party.filter(p => p.dead).map(allyItem);
     else if (t === 'shift') items = party.filter(p => B.canShiftTo(p)).map(p => Object.assign(allyItem(p), { desc: `<b>${esc(p.name)}</b>takes the One More with ×${B.S.mods.shiftMult} power.` }));
     if (!items.length) return Promise.resolve(null);
+    const memo = ['one', 'scan'].includes(t) ? u.mid : ['ally', 'dead'].includes(t) ? u.mid + ':ally' : null;
+    const start = memo && ST().remember ? Math.max(0, items.findIndex(x => x.v === lastTgt[memo])) : 0;
     const highlight = it => {
       clearTargets();
       const set = it.v === 'all' ? (t === 'all' || t === 'rand' ? aliveFoes.map(f => f.id) : party.filter(p => !p.dead).map(p => p.id)) : [it.v];
@@ -1909,42 +2321,54 @@
         if (c) c.classList.add('targeted');
       });
     };
-    return listMenu({ items, back: true, cls: 'small', title: title || 'Choose a target', onSel: highlight, name: 'target' }).then(v => { clearTargets(); return v; });
+    return listMenu({ items, back: true, cls: 'small', title: title || 'Choose a target', start, onSel: highlight, name: 'target' }).then(v => {
+      clearTargets();
+      if (memo && v && v !== RUSH && v !== 'all') { lastTgt[memo] = v; if (memo === u.mid) focusId = null; }
+      return v;
+    });
   }
 
   function rootItems(u) {
     const it = [];
     const canShift = B.S.oneMore && B.party().some(p => B.canShiftTo(p));
+    const foe = focusFoe(u), wt = affTag(foe, u.weapon);
     if (B.canTheurgy(u)) { const T = B.theurgyDef(u); it.push({ v: 'theurgy', label: 'Theurgy', icon: 'allout', cls: 'theurgy', wide: true, right: esc(T.name), desc: `<b>${esc(T.name)}</b>${esc(T.desc)}${T.unveiled ? ' Unveiled: stronger, always knocks Down, and heals the party.' : ''}` }); }
     if (canShift) it.push({ v: 'shift', label: 'Shift', icon: 'shift', cls: 'shift', wide: true, desc: `<b>Shift</b>Pass the One More to someone who hasn’t gone yet. They hit ×${B.S.mods.shiftMult} harder.` });
+    const usable = Object.keys(B.S.items).filter(k => B.S.items[k] > 0 && D.items[k].use !== 'field');
     it.push(
-      { v: 'attack', label: 'Attack', icon: u.weapon, desc: `<b>Attack</b>${D.elements[u.weapon].name} attack with your weapon (power ${u.atk}${u.whits ? `, ${u.whits[0]} hits` : ''}).${E.PHYS.has(u.weapon) ? ' Can crit.' : ''}` },
+      { v: 'attack', label: 'Attack', icon: u.weapon, tag: wt && wt[1] !== 'unk' ? wt : null, desc: `<b>Attack</b>${D.elements[u.weapon].name} attack with your weapon (power ${u.atk}${u.whits ? `, ${u.whits[0]} hits` : ''}).${E.PHYS.has(u.weapon) ? ' Can crit.' : ''}${wt && foe ? ` vs ${esc(foe.name)}: ${tagHtml(wt)}` : ''}` },
       { v: 'skill', label: 'Skill', icon: 'skill', desc: `<b>${esc(u.persona)}</b>Use a Persona skill. Magic costs SP, physical skills cost HP.` },
-      { v: 'item', label: 'Item', icon: 'item', desc: '<b>Item</b>' + (Object.keys(B.S.items).filter(k => B.S.items[k] > 0 && D.items[k].use !== 'field').map(k => `${D.items[k].name} ×${B.S.items[k]}`).join(' · ') || 'Nothing usable.') },
+      { v: 'item', label: 'Item', icon: 'item', off: !usable.length, why: usable.length ? '' : 'NONE', offWhy: 'You have no items you can use in battle.', desc: '<b>Item</b>' + (usable.map(k => `${D.items[k].name} ×${B.S.items[k]}`).join(' · ') || 'Nothing usable.') },
       { v: 'guard', label: 'Guard', icon: 'guard', desc: '<b>Guard</b>Halve damage and cover your weakness until your next turn.' },
       { v: 'analyze', label: 'Analyze', icon: 'analyze', desc: '<b>Analyze</b>Fuuka scans a Shadow’s affinities and status, or check an ally’s Persona. Free action.' },
-      { v: 'tactics', label: 'Tactics', icon: 'tactics', off: B.party().length < 2, offWhy: 'No one else to give orders to.', desc: '<b>Tactics</b>' + (B.party().filter(p => p.mid !== 'solar').map(p => `${esc(p.name)}: ${esc(D.tactics[tacticOf(p)].short)}`).join(' · ') || 'Solar is alone.') + '. Free action.' },
-      { v: 'escape', label: 'Escape', icon: 'escape', wide: true, off: B.S.boss && !B.S.reaper, offWhy: 'There’s no escape from the full moon!', desc: B.S.reaper ? '<b>Escape</b>Run from the Reaper. It’s hard to get away, but it’s your best chance.' : B.S.boss ? '<b>Escape</b>There’s no escape from the full moon!' : '<b>Escape</b>Try to run. Easier when Shadows are Down.' }
+      { v: 'tactics', label: 'Tactics', icon: 'tactics', off: B.party().length < 2, why: B.party().length < 2 ? 'ALONE' : '', offWhy: 'No one else to give orders to.', desc: '<b>Tactics</b>' + (B.party().filter(p => p.mid !== 'solar').map(p => `${esc(p.name)}: ${esc(D.tactics[tacticOf(p)].short)}`).join(' · ') || 'Solar is alone.') + '. Free action.' },
+      { v: 'escape', label: 'Escape', icon: 'escape', wide: true, off: B.S.boss && !B.S.reaper, why: B.S.boss && !B.S.reaper ? 'FULL MOON' : '', offWhy: 'There’s no escape from the full moon!', desc: B.S.reaper ? '<b>Escape</b>Run from the Reaper. It’s hard to get away, but it’s your best chance.' : B.S.boss ? '<b>Escape</b>There’s no escape from the full moon!' : '<b>Escape</b>Try to run. Easier when Shadows are Down.' }
     );
     return it;
   }
+  const cursorOf = u => save.cursor[u.mid] || (save.cursor[u.mid] = {});
+  const startAt = (items, v) => Math.max(0, items.findIndex(x => x.v === v));
   async function commandMenu(u) {
-    let start = 0;
+    const cur = cursorOf(u);
+    let last = ST().remember ? cur.root : null;
     for (;;) {
       showWho(u, B.S.oneMore ? '1 MORE!' : '');
       mark('command');
       const items = rootItems(u);
-      const c = await listMenu({ items, cls: 'root', start });
-      start = items.findIndex(x => x.v === c);
+      if (items.some(x => x.v === 'shift')) tip('shift');
+      const c = await listMenu({ items, cls: 'root', start: startAt(items, last) });
+      if (c === RUSH) return RUSH;
+      last = c;
+      if (c !== 'theurgy' && c !== 'shift') cur.root = c;
       if (c === 'theurgy') return { type: 'theurgy' };
-      if (c === 'attack') { const t = await pickTarget(u, { target: 'one', el: u.weapon }, 'Attack → choose a Shadow'); if (t) return { type: 'attack', target: t }; }
+      if (c === 'attack') { const t = await pickTarget(u, { target: 'one', el: u.weapon }, 'Attack → choose a Shadow'); if (t === RUSH) return RUSH; if (t) return { type: 'attack', target: t }; }
       else if (c === 'skill') { const r = await skillMenu(u); if (r) return r; }
       else if (c === 'item') { const r = await itemMenu(u); if (r) return r; }
       else if (c === 'guard') return { type: 'guard' };
       else if (c === 'escape') return { type: 'escape' };
-      else if (c === 'shift') { const t = await pickTarget(u, { target: 'shift' }, 'Shift → pass the turn'); if (t) return { type: 'shift', to: t }; }
-      else if (c === 'analyze') { const t = await pickTarget(u, { target: 'scan' }, 'Analyze → choose'); if (t) { const ev = await analyzePanel(t); if (ev && ev.length) await play(ev); } }
-      else if (c === 'tactics') { await tacticsMenu(); if (tacticOf(u) !== 'direct') return null; }
+      else if (c === 'shift') { const t = await pickTarget(u, { target: 'shift' }, 'Shift → pass the turn'); if (t === RUSH) return RUSH; if (t) return { type: 'shift', to: t }; }
+      else if (c === 'analyze') { const t = await pickTarget(u, { target: 'scan' }, 'Analyze → choose'); if (t === RUSH) return RUSH; if (t) { const ev = await analyzePanel(t); if (ev && ev.length) await play(ev); } }
+      else if (c === 'tactics') { const r = await tacticsMenu(); if (r === RUSH) return RUSH; if (tacticOf(u) !== 'direct') return null; }
     }
   }
   /* Tactics: pick a member, then their tactic. A free action; if the current member stops being Direct they act at once. */
@@ -1952,52 +2376,80 @@
     let start = 0;
     for (;;) {
       const mates = B.party().filter(p => p.mid !== 'solar');
-      if (!mates.length) return;
+      if (!mates.length) return null;
       const items = mates.map(p => ({ v: p.mid, label: p.name, right: esc(D.tactics[tacticOf(p)].short), rcls: tacticOf(p) === 'direct' ? '' : 'hp', desc: `<b>${esc(p.name)}</b>${esc(D.tactics[tacticOf(p)].name)}: ${esc(D.tactics[tacticOf(p)].desc)}` }));
       const who = await listMenu({ items, back: true, cls: 'small', title: 'Tactics → who?', start, name: 'tactics' });
-      if (who == null) return;
+      if (who === RUSH) return RUSH;
+      if (who == null) return null;
       start = items.findIndex(x => x.v === who);
       const cur = save.tactics[who] || 'direct';
       const titems = TACTIC_ORDER.map(k => ({ v: k, label: D.tactics[k].name, icon: 'tactics', right: k === cur ? '✓' : '', desc: `<b>${esc(D.tactics[k].name)}</b>${esc(D.tactics[k].desc)}` }));
       const pickT = await listMenu({ items: titems, back: true, cls: 'small', title: `${esc(member(who).name)} → tactic`, start: TACTIC_ORDER.indexOf(cur), name: 'tactic' });
+      if (pickT === RUSH) return RUSH;
       if (pickT) {
         if (pickT === 'direct') delete save.tactics[who]; else save.tactics[who] = pickT;
         persist();
         B.party().forEach(p => paintCard(p));
         nav('tactics');
-        log(`${member(who).name}: ${D.tactics[pickT].name}.`);
+        log(`${member(who).name}: ${D.tactics[pickT].name}.`, 'sys');
         mark('tactic-set'); mark('tactic-' + pickT);
       }
     }
   }
+  /* Skills, each marked against the selected Shadow with what the party knows (WEAK / RESIST / NULL / DRAIN / REPEL / ?).
+     ←→ (or LB/RB, or tapping a Shadow) changes which Shadow; its affinity plate shows the highlighted skill's element. */
   async function skillMenu(u) {
-    let start = 0;
+    const cur = cursorOf(u);
+    let last = ST().remember ? cur.skill : null;
     for (;;) {
-      const deadCount = B.party().filter(p => p.dead).length;
+      const deadCount = B.party().filter(p => p.dead).length, foe = focusFoe(u), foes = B.foes().filter(markable), L = letters();
       const items = u.skills.map(id => {
         const sk = D.skills[id], pay = B.canPay(u, sk), noDead = sk.target === 'dead' && !deadCount;
-        return { v: id, label: sk.name, icon: sk.el, right: costText(u, sk), rcls: sk.cost && sk.cost.hp ? 'hp' : '', off: !pay || noDead, offWhy: noDead ? 'No one needs reviving.' : `Not enough ${sk.cost && sk.cost.hp ? 'HP' : 'SP'}.`, desc: `<b>${esc(sk.name)}</b>${esc(sk.desc)}` };
+        const hostile = ['one', 'all', 'rand'].includes(sk.target) && ['dmg', 'insta'].includes(sk.type);
+        const tg = hostile ? affTag(foe, sk.el) : null, need = sk.cost && sk.cost.hp ? 'HP' : 'SP';
+        const offWhy = noDead ? 'No one needs reviving.' : !pay ? `Not enough ${need}: it costs ${costText(u, sk)} and ${u.name} has ${need === 'HP' ? u.hp : u.sp}.` : '';
+        return { v: id, label: sk.name, icon: sk.el, tag: tg, right: costText(u, sk), rcls: sk.cost && sk.cost.hp ? 'hp' : '', off: !pay || noDead, why: noDead ? 'NO KO' : !pay ? `LOW ${need}` : '', offWhy, el: hostile ? sk.el : null,
+          desc: `<b>${esc(sk.name)}</b>${esc(sk.desc)}${tg && foe ? ` <span class="vs">vs ${esc(foe.name + L[foe.id])}: ${tagHtml(tg)}</span>` : ''}${offWhy ? ` <em class="why">${esc(offWhy)}</em>` : ''}` };
       });
-      const s = await listMenu({ items, back: true, cls: 'small scroll', title: `${esc(u.persona)} · SP ${u.sp}/${u.maxSp}`, start, name: 'skill' });
+      const title = `${esc(u.persona)} · SP ${u.sp}/${u.maxSp}${foe ? ` <span class="vs">vs <b>${esc(foe.name + L[foe.id])}</b>${foes.length > 1 ? ' <i>‹ ›</i>' : ''}</span>` : ''}`;
+      const s = await listMenu({
+        items, back: true, cls: 'small scroll', title, start: startAt(items, last), name: 'skill',
+        onSel: it => showFocus(foe, it.el),
+        onKey: e => {
+          if ((e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') || foes.length < 2) return undefined;
+          const j = foes.indexOf(foe);
+          return { focus: foes[(j + (e.key === 'ArrowLeft' ? -1 : 1) + foes.length) % foes.length].id };
+        },
+        onOther: v => (foes.some(f => f.id === v) ? { focus: v } : undefined)
+      });
+      clearTargets();
+      if (s === RUSH) return RUSH;
+      if (s && s.focus) { focusId = s.focus; last = items[listIdx] && items[listIdx].v; sfx('move'); mark('skill-focus'); continue; }
       if (s == null) return null;
-      start = items.findIndex(x => x.v === s);
+      last = s; cur.skill = s;
       const sk = D.skills[s];
       const t = await pickTarget(u, sk, `${sk.name} → choose`);
+      if (t === RUSH) return RUSH;
       if (t != null) return { type: 'skill', skill: s, target: t };
     }
   }
   async function itemMenu(u) {
+    const cur = cursorOf(u);
+    let last = ST().remember ? cur.item : null;
     for (;;) {
       const deadCount = B.party().filter(p => p.dead).length;
       const items = Object.keys(D.items).filter(id => D.items[id].use !== 'field' && (B.S.items[id] > 0 || D.startItems[id] != null)).map(id => {
         const it = D.items[id], n = B.S.items[id] || 0, noDead = it.target === 'dead' && !deadCount;
-        return { v: id, label: it.name, icon: 'item', right: `×${n}`, off: !n || noDead, offWhy: !n ? 'None left.' : 'No one needs reviving.', desc: `<b>${esc(it.name)}</b>${esc(it.desc)}` };
+        return { v: id, label: it.name, icon: 'item', right: `×${n}`, off: !n || noDead, why: !n ? 'NONE' : noDead ? 'NO KO' : '', offWhy: !n ? 'None left.' : 'No one needs reviving.', desc: `<b>${esc(it.name)}</b>${esc(it.desc)}${!n ? ' <em class="why">None left.</em>' : noDead ? ' <em class="why">No one needs reviving.</em>' : ''}` };
       });
       if (!items.length) return null;
-      const v = await listMenu({ items, back: true, cls: 'small scroll', title: 'Items', name: 'items' });
+      const v = await listMenu({ items, back: true, cls: 'small scroll', title: 'Items', start: startAt(items, last), name: 'items' });
+      if (v === RUSH) return RUSH;
       if (v == null) return null;
+      last = v; cur.item = v;
       const tt = D.items[v].target;
       const t = await pickTarget(u, { target: tt === 'foes' ? 'all' : tt }, `${D.items[v].name} → choose`);
+      if (t === RUSH) return RUSH;
       if (t != null) return { type: 'item', item: v, target: t };
     }
   }
@@ -2012,6 +2464,7 @@
       let evs = [];
       if (u.side === 'enemy') {
         evs = B.analyze(id);
+        blogAdd(`Fuuka analyzed ${u.name}.`, 'sys');
         nav('analyze');
         mark('analyze');
         if (u.ail) mark('analyze-status');
@@ -2070,16 +2523,26 @@
     for (let n = 0; n < 12; n++) {
       setActive(u);
       paintCard(u);
+      rushGuard();
       let tac = tacticOf(u), action = null;
-      if (tac === 'direct') {
-        if (!said) { log(`${u.name}: “${member(u.mid).lines.turn}”`); said = true; }
+      if (tac === 'direct' && !rushActive()) {
+        if (!said) { log(`${u.name}: “${member(u.mid).lines.turn}”`, 'say'); said = true; }
         action = await commandMenu(u);
         hideMenu();
+        if (action === RUSH) action = null;
         tac = tacticOf(u);
       }
-      if (!action) {
+      if (!action && rushActive()) {
+        // Rush: everyone (Solar too) follows their Tactic, or just attacks.
+        action = rushAction(u);
+        showWho(u, tac === 'direct' ? 'Rush' : `Rush · ${D.tactics[tac].short}`);
+        BT.body.innerHTML = '';
+        await sleep(160);
+        hideMenu();
+        mark('rush-act'); mark('rush-act-' + u.mid);
+      } else if (!action) {
         // Tactics: the member acts on their own.
-        action = B.autoAction(u, tac);
+        action = B.autoAction(u, tac === 'direct' ? 'free' : tac);
         showWho(u, D.tactics[tac].name);
         BT.body.innerHTML = '';
         await sleep(420);
@@ -2090,11 +2553,11 @@
       await play(evs);
       if (B.outcome()) return;
       if (B.S.alloutReady) {
-        const go = await alloutPrompt(u);
+        const go = rushActive() ? true : await alloutPrompt(u);
         if (go) { await play(B.allOut()); return; }
         await play(B.declineAllOut());
       }
-      if (B.S.shifted) { B.S.shifted = false; u = B.S.cur; log(`${u.name}: “${member(u.mid).lines.turn}”`); continue; }
+      if (B.S.shifted) { B.S.shifted = false; u = B.S.cur; log(`${u.name}: “${member(u.mid).lines.turn}”`, 'say'); continue; }
       if (B.S.oneMore && B.S.cur === u && !u.dead) continue;
       return;
     }
@@ -2368,6 +2831,7 @@
       el.style.setProperty('--spd', speed());
       sfx('summon');
       mark('evolution'); mark('evolution-' + e.to);
+      tip('evolutions');
       const tm = [setTimeout(() => { sfx('evoker'); flash2(el); mark('evolution-burst'); }, 2100 / speed()), setTimeout(() => { sfx('unlock'); el.classList.add('named'); mark('evolution-named'); }, 2700 / speed())];
       const done = () => { tm.forEach(clearTimeout); ctl = prevCtl; screen = prevScreen; resolve(); };
       el.querySelector('.bt-evx-txt .bt-btn').addEventListener('click', () => { sfx('ok'); done(); });
@@ -2389,6 +2853,7 @@
           <ul class="bt-chips"><li><span>${esc(p.theme)}</span></li>${p.sig ? `<li>${ART.icon(D.skills[p.sig].el)}<span>${esc(D.skills[p.sig].name)}</span></li>` : ''}</ul>
           <div class="row"><button type="button" class="bt-btn pink" data-v="use"><span>Use this form</span></button><button type="button" class="bt-btn" data-v="later"><span>Later</span></button></div></div>`, 'bt-evx named form');
       sfx('unlock'); mark('form-unlocked'); mark('form-unlocked-' + f);
+      tip('forms');
       const done = v => { if (v === 'use') { save.form = f; persist(); mark('form-' + f); } ctl = null; resolve(); };
       el.querySelectorAll('[data-v]').forEach(b => b.addEventListener('click', () => { sfx('ok'); done(b.dataset.v); }));
       buttonNav(el, { back: () => done('later') });
@@ -2415,7 +2880,7 @@
           <ol class="bt-ops-list">${D.ops.map((o, j) => { const u = opUnlocked(j), c = opCleared(o.id); return `<li><button type="button" class="bt-op${j === opsSel ? ' sel' : ''}${c ? ' done' : ''}${u ? '' : ' lock'}" data-i="${j}">
             <span class="moon">${c ? '✓' : u ? j + 1 : ICON.svg('room-locked', '#5a4a6a')}</span><b>${esc(u ? o.name : '???')}<small>${esc(u ? o.place : 'Clear the one before it')}</small></b><em>Lv ${o.lvl}</em></button></li>`; }).join('')}</ol>
           <div class="bt-op-detail${ok ? '' : ' lock'}">
-            <div class="bt-op-art">${ok ? bosses.map((d, j) => { const a = (window.FEMC_SHADOW_ART || {})[d.img]; return a ? `<img src="${SHADOW_DIR}${d.img}.webp" alt="${esc(d.name)}" style="--j:${j}">` : ''; }).join('') : '<span class="q">?</span>'}</div>
+            <div class="bt-op-art">${ok ? bosses.map((d, j) => { const a = (window.FEMC_SHADOW_ART || {})[d.img]; return a ? `<img src="${sart(d.img)}" alt="${esc(d.name)}" style="--j:${j}">` : ''; }).join('') : '<span class="q">?</span>'}</div>
             <div class="bt-card-lg"><h2><small>${esc(op.arcana)} · ${esc(op.place)}</small>${esc(ok ? op.name : 'Sealed')}</h2>
               <p class="note">${esc(ok ? op.brief : 'Clear the previous operation to learn what waits here.')}</p>
               <p class="bt-op-meta"><span>Recommended Lv <b>${op.lvl}</b></span><span>Your party Lv <b class="${avg >= op.lvl ? 'ok' : avg >= op.lvl - 3 ? 'meh' : 'bad'}">${avg}</b></span>${done ? '<span class="ok">Cleared · replayable</span>' : ''}</p>
@@ -2684,6 +3149,86 @@
     mark('memories');
   }
 
+  /* ════════════════════════════════════════════════════
+     SAVE DATA: the autosave (KEY, written after every change), three manual slots (KEY-slot1..3) and a backup code.
+     Loading a slot or a code replaces progress only; this device's settings stay (PREFS).
+     ════════════════════════════════════════════════════ */
+  const SLOT_KEY = n => `${KEY}-slot${n}`;
+  const withPrefs = s => { PREFS.forEach(k => { if (save[k] !== undefined) s[k] = JSON.parse(JSON.stringify(save[k])); }); return s; };
+  function readSlot(n) {
+    try { const x = JSON.parse(localStorage.getItem(SLOT_KEY(n)) || 'null'); return x && x.save && fromRaw(x.save) ? x : null; } catch (e) { return null; }
+  }
+  const saveLine = s => {
+    const f = s.reached && D.floors.find(x => x.id === s.reached), ops = ((s.ops || {}).cleared || []).length;
+    return `Lv ${s.lvl} · ${f ? `${f.label} (${f.block})` : 'From the bottom'} · ${ops} full moon${ops === 1 ? '' : 's'} · ${yen(s.yen || 0)}`;
+  };
+  const when = t => { try { return new Date(t).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }); } catch (e) { return ''; } };
+  const exportCode = () => 'FEMCBT4.' + btoa(unescape(encodeURIComponent(JSON.stringify(save))));
+  /* A pasted backup: our code (FEMCBT<v>.<base64>) or plain save JSON. → a clean save, or null. */
+  function parseCode(text) {
+    const t = String(text || '').trim();
+    if (!t) return null;
+    let json = t;
+    if (!t.startsWith('{')) { try { json = decodeURIComponent(escape(atob(t.replace(/^FEMCBT\d*\./, '').replace(/\s+/g, '')))); } catch (e) { return null; } }
+    try { return fromRaw(JSON.parse(json)); } catch (e) { return null; }
+  }
+  function adopt(s) { save = withPrefs(s); normalize(save); persist(); applyPerf(); }
+  function slotsScreen(onClose) {
+    screen = 'slots';
+    root.classList.remove('bt-in-battle');
+    let armed = null, msg = '', code = '';
+    const render = (focus = null) => {
+      screen = 'slots';
+      const slots = [1, 2, 3].map(readSlot);
+      const btn = (act, label, { pink = false, off = false, small = '' } = {}) => `<button type="button" class="bt-btn${pink ? ' pink' : ''}${act === 'reset' ? ' danger' : ''}" data-act="${act}"${off ? ' disabled' : ''}><span>${armed === act ? 'Press again to confirm' : label}</span>${small ? `<small>${small}</small>` : ''}</button>`;
+      const el = show(`<div class="bt-tree-head"><button type="button" class="bt-tool" data-act="back"><span>‹ Back</span></button><h1>SAVE DATA<small>Autosave · 3 slots · backup</small></h1></div>
+        <div class="bt-slots">
+          <section class="bt-slot auto"><h3>Autosave<small>Saved after every change</small></h3><p>${esc(saveLine(save))}</p><p class="sub">${save.runs} run${save.runs === 1 ? '' : 's'} · ${save.memories.length} memories · ${esc(diff().name)}</p></section>
+          ${slots.map((x, j) => `<section class="bt-slot${x ? '' : ' empty'}"><h3>Slot ${j + 1}<small>${x ? esc(when(x.at)) : 'Empty'}</small></h3><p>${x ? esc(saveLine(x.save)) : 'Nothing saved here yet.'}</p>
+            <div class="row">${btn('save' + (j + 1), x ? 'Overwrite' : 'Save here', { pink: !x })}${btn('load' + (j + 1), 'Load', { off: !x })}</div></section>`).join('')}
+          <section class="bt-slot wide"><h3>Backup code<small>Copy it somewhere safe. Paste one here to restore it.</small></h3>
+            <textarea class="bt-code" spellcheck="false" autocomplete="off" aria-label="Backup code" placeholder="Press “Show my code”, or paste a code here">${esc(code)}</textarea>
+            <div class="row">${btn('export', 'Show my code')}${btn('copy', 'Copy', { off: !code })}${btn('import', 'Load this code')}${btn('reset', 'Reset save')}</div></section>
+        </div>
+        <p class="bt-slot-msg" role="status">${msg ? esc(msg) : 'Loading a slot or a code replaces your progress. Settings stay as they are on this device.'}</p>`, 'bt-tree bt-slotscr');
+      const ta = el.querySelector('.bt-code');
+      ta.addEventListener('input', () => { code = ta.value; armed = null; const c = el.querySelector('[data-act="copy"]'); if (c) c.disabled = !code; });
+      el.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => act(b.dataset.act)));
+      const btns = [...el.querySelectorAll('.bt-btn:not(:disabled)')];
+      buttonNav(el, { back: close, start: Math.max(0, btns.findIndex(b => b.dataset.act === focus)) });
+      mark('slots');
+    };
+    function act(a) {
+      if (a === 'back') { close(); return; }
+      const confirmFirst = /^(save[1-3]|load[1-3]|import|reset)$/.test(a) && !(a.startsWith('save') && !readSlot(+a.slice(4)));
+      if (confirmFirst && armed !== a) { armed = a; msg = ''; sfx('move'); render(a); return; }
+      armed = null;
+      if (a.startsWith('save')) {
+        const n = +a.slice(4);
+        try { localStorage.setItem(SLOT_KEY(n), JSON.stringify({ at: Date.now(), save })); msg = `Saved to slot ${n}.`; sfx('unlock'); mark('slot-save'); }
+        catch (e) { msg = 'Couldn’t save: the browser’s storage is full or blocked.'; sfx('back'); }
+      } else if (a.startsWith('load')) {
+        const n = +a.slice(4), x = readSlot(n);
+        if (x) { adopt(fromRaw(x.save)); msg = `Loaded slot ${n}: ${saveLine(save)}.`; sfx('unlock'); mark('slot-load'); }
+      } else if (a === 'export') { code = exportCode(); msg = 'This is your whole save as text. Copy it somewhere safe.'; sfx('ok'); mark('slot-export'); }
+      else if (a === 'copy') {
+        const done = ok => { msg = ok ? 'Copied.' : 'Couldn’t copy automatically: select the code and copy it.'; render('copy'); if (!ok) { const ta = app.querySelector('.bt-code'); if (ta) { ta.focus(); ta.select(); } } };
+        try { navigator.clipboard.writeText(code).then(() => done(true), () => done(false)); } catch (e) { done(false); }
+        mark('slot-copy');
+        return;
+      } else if (a === 'import') {
+        const s2 = parseCode(code);
+        if (!s2) { msg = 'That code didn’t work. Make sure you pasted all of it.'; sfx('back'); mark('slot-import-bad'); }
+        else { adopt(s2); msg = `Backup loaded: ${saveLine(save)}.`; sfx('unlock'); mark('slot-import'); }
+      } else if (a === 'reset') {
+        adopt(fresh()); msg = 'Save reset. Slots and settings are untouched.'; sfx('back'); mark('reset');
+      }
+      render(a);
+    }
+    function close() { sfx('back'); ctl = null; onClose(); }
+    render();
+  }
+
   /* ── FPS meter (?fps=1) ───────────────────────────── */
   if (params.get('fps') === '1') {
     const m = document.createElement('div');
@@ -2697,6 +3242,8 @@
   /* ── Boot ─────────────────────────────────────────── */
   window.FemcBattle = {
     get B() { return B; }, get save() { return save; }, get run() { return run; }, get ctl() { return ctl; },
+    get settings() { return save.settings; }, get blog() { return blog; }, get rushOn() { return rushActive(); }, get paused() { return paused; },
+    openSettings: k => openSettings(k), openHelp: t => openHelp(t), openLog, toggleRush, exportCode, parseCode, diff,
     screen: () => screen, marks, freeze() { frozen = true; if (FX) FX.pause(); }, unfreeze() { frozen = false; if (FX) FX.resume(); },
     awakening: () => awakening(app.firstElementChild || app),
     reloadSave() { save = loadSave(); }

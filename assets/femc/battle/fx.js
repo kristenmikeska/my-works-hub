@@ -10,7 +10,7 @@
    FemcFX.ash(rect, img), FemcFX.snapshot(root, extras) + FemcFX.shatter(layer, snap, point). */
 window.FemcFX = (() => {
   const RM = matchMedia('(prefers-reduced-motion: reduce)');
-  const phone = () => matchMedia('(max-width: 760px)').matches;
+  const phone = () => matchMedia('(max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5)').matches; // phones, and tablets held upright
   const TAU = Math.PI * 2;
   const rnd = (a, b) => a + Math.random() * (b - a);
   const pick = a => a[Math.floor(Math.random() * a.length)];
@@ -42,6 +42,8 @@ window.FemcFX = (() => {
     return () => { done = true; cancelAnimationFrame(r); clearTimeout(tm); };
   }
   const reduced = () => RM.matches;
+  let calm = false; // Settings → Reduce flashes: full-screen flashes drop to a fifth
+  const flashK = () => (calm ? 0.2 : 1);
 
   /* Soft round sprites, one per color, drawn once. */
   const sprites = new Map();
@@ -408,7 +410,7 @@ window.FemcFX = (() => {
       const decay = t > 0.36 ? 1 - (t - 0.36) / 0.19 : 1;
       const flick = [1, 0.55, 1, 0.7, 0.9][step];
       // Screen flash
-      const fa = Math.max(0, 0.42 - t * 4) + (t > 0.15 && t < 0.22 ? 0.18 : 0);
+      const fa = (Math.max(0, 0.42 - t * 4) + (t > 0.15 && t < 0.22 ? 0.18 : 0)) * flashK();
       if (fa > 0) { c.globalCompositeOperation = 'lighter'; c.globalAlpha = fa; c.fillStyle = '#fff6c8'; c.fillRect(0, 0, W, H); }
       strokeBolts(c, e.bolts, flick * decay);
       radial(c, at.x, at.y, R * 1.5 * flick, '#ffe14d', 0.6 * decay);
@@ -532,7 +534,7 @@ window.FemcFX = (() => {
   function almighty(at) {
     const R = sizeOf(at);
     add({ dur: 0.85, draw(c, t) {
-      if (t < 0.12) { c.globalCompositeOperation = 'lighter'; c.globalAlpha = 0.3 * (1 - t / 0.12); c.fillStyle = '#ffd6e8'; c.fillRect(0, 0, W, H); }
+      if (t < 0.12) { c.globalCompositeOperation = 'lighter'; c.globalAlpha = 0.3 * (1 - t / 0.12) * flashK(); c.fillStyle = '#ffd6e8'; c.fillRect(0, 0, W, H); }
       radial(c, at.x, at.y, R * 1.8 * (1 - c01(t / 0.5)) + R * 0.4, '#ffb3d6', 1 - c01(t / 0.5));
       [0, 0.12].forEach((d, i) => {
         const u = c01((t - d) / 0.6);
@@ -987,6 +989,7 @@ window.FemcFX = (() => {
   return {
     attach, detach, resize, play, setSpeed(fn) { speedFn = fn; }, ash, snapshot, shatter, preload, reduced,
     pause() { paused = true; }, resume() { paused = false; last = performance.now(); kick(); }, get paused() { return paused; },
+    setCalm(b) { calm = !!b; },
     setQuality(q) { pinned = q === 'low' ? LEVELS.length - 1 : null; resize(); }, quality: () => ['full', 'reduced', 'low'][pinned != null ? pinned : level],
     get count() { return parts.length; }
   };

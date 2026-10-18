@@ -33,8 +33,8 @@ window.FemcTartarusMap = (() => {
     return { yen: Math.round((a + R() * (b - a)) / 10) * 10 };
   }
 
-  /* Build a floor. floor: an entry of data.floors. opts: { rand, pool override } */
-  function generate(floor, { rand = Math.random } = {}) {
+  /* Build a floor. floor: an entry of data.floors. opts: { rand, strongChance (difficulty override) } */
+  function generate(floor, { rand = Math.random, strongChance = null } = {}) {
     const R = rand, M = D().map, L = floor.layers || 5;
     const nodes = [], byLayer = [];
     let uid = 0;
@@ -95,7 +95,7 @@ window.FemcTartarusMap = (() => {
     nodes.forEach(n => {
       delete n.fixed;
       if (n.type === 'shadow') {
-        n.strong = !!(floor.strong && floor.strong.length && R() < M.strongChance);
+        n.strong = !!(floor.strong && floor.strong.length && R() < (strongChance != null ? strongChance : M.strongChance));
         n.group = (n.strong ? pick(R, floor.strong) : pick(R, floor.pool)).slice();
       }
       if (n.type === 'chest') n.chest = rollChest(R, bi, false);
@@ -136,8 +136,9 @@ window.FemcTartarusMap = (() => {
     const { prev } = bfs(map, to); // path from `from` back toward `to`
     return prev[from] || from;
   };
-  /* Move the party to an adjacent room. Returns what happened: { ok, caught, spawned, warn, reaperMoved }. */
-  function move(map, to, { reaperSteps = D().map.reaperSteps, warnAt = D().map.reaperWarn } = {}) {
+  /* Move the party to an adjacent room. Returns what happened: { ok, caught, spawned, warn, reaperMoved }.
+     noReaper (Story difficulty): the Reaper never comes, and one that's already here stops chasing. */
+  function move(map, to, { reaperSteps = D().map.reaperSteps, warnAt = D().map.reaperWarn, noReaper = false } = {}) {
     const here = get(map, map.pos);
     if (!here.links.includes(to)) return { ok: false };
     map.prev = map.pos;
@@ -146,6 +147,7 @@ window.FemcTartarusMap = (() => {
     visit(map, to);
     const out = { ok: true };
     if (map.reaper && map.reaper.node === to) { out.caught = true; return out; }
+    if (noReaper) return out;
     if (!map.reaper && !map.reaperGone && map.steps >= reaperSteps) {
       const { dist } = bfs(map, to);
       const far = map.nodes.filter(n => n.id !== to && n.type !== 'start').sort((a, b) => (dist[b.id] || 0) - (dist[a.id] || 0))[0];
