@@ -21,13 +21,13 @@ Full-screen 16:9 illustrations for big moments, the way P3R and P5R show a paint
 - [x] Hanni and Hyein finding her (`Event CGs/searchers-hanni-hyein-find-solar.webp`), a tearful "SOL?!" at Paulownia Mall *(draft saved: `Event CGs/searchers-hanni-hyein-find-solar-draft.webp`; style is right, but the signs are duplicated. Redo in ChatGPT with the sign list: Chagall Café, Be Blue V, Game Panic, Mandragora, Escapade, Aohige Pharmacy, plus the blue Velvet Room door.)*
 - [x] Jaehyun finding his sister
 - [x] Haechan finding her (his first look at her, flat and stunned)
-- [ ] Jungwon finding her
+- [x] Jungwon finding her
 - [ ] A searcher awakening their Persona (one per searcher who fights)
 - [x] Facing Wren's Shadow: Solar small, the Last Train enormous
 - [ ] Wren's cap falling, her hair coming down
 
 **Endings**
-- [ ] Runners: Syracuse in snow, Haechan and the girls
+- [x] Runners: Syracuse in snow, Haechan and the girls
 - [ ] strangers: the Lee house at low tide
 - [ ] Hoax: Hamlim on the night of the count
 - [ ] Stay: S.E.E.S. and Akihiko on the dorm roof at dawn
