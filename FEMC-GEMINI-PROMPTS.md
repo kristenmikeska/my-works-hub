@@ -4,7 +4,7 @@ No characters, so Gemini handles all of these. Every prompt is complete, so past
 **📎 = attach a reference.** All references are in `Femc Mode Images/Background Images/` unless noted.
 Ask for the **largest 16:9 size** for backgrounds and **square** for memory cards.
 
-✅ Done: Dark Hour street, Dark Hour Gekkoukan gate, Dark Hour monorail (#2).
+✅ Done: everything in sections A–C (Dark Hour street, gate, monorail, dorm lounge, train car, station platform, Wren's bench at night, boxing club, student council room, nurse's office, school rooftop at night, shrine at night, summer festival, Port Island Christmas, Yakushima, the Velvet door, Yabbashah, Tziah, access point, treasure room) and memory cards 19–24 and 26–29. **Still to make: #25 barley tea and #30 ballot box.**
 
 ---
 

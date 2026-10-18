@@ -15,10 +15,18 @@ window.FEMC_BG = [
   ['Moonlight Bridge · The Dark Hour', 'moonlightbridge'],
   ['Port Island Station · The Dark Hour', 'tartarus-coffins'],
   ['Paulownia Mall · The Dark Hour', 'tartarus-coffins'],
+  ['Iwatodai Station · Platform · The Dark Hour', 'darkhour-station-platform'],
+  ['Iwatodai Dorm · Lounge · The Dark Hour', 'darkhour-dorm-lounge'],
+  ['Gekkoukan High · The Dark Hour', 'darkhour-gekkoukan-gate'],
+  ['Iwatodai · The Dark Hour', 'darkhour-iwatodai-street'],
   ['*The Dark Hour', 'tartarus-scene'],
 
   // Gekkoukan High
-  ['Gekkoukan High · Rooftop', 'rooftop-day', 'rooftop-evening'],
+  ['Gekkoukan High · Rooftop Garden', 'rooftop-day', 'rooftop-evening'],
+  ['Gekkoukan High · Rooftop', 'rooftop-day', 'gekkoukan-rooftop-night'],
+  ['Gekkoukan High · Boxing Club', 'gekkoukan-boxing-club'],
+  ['Gekkoukan High · Student Council Room', 'gekkoukan-student-council'],
+  ["Gekkoukan High · Nurse's Office", 'gekkoukan-nurse-office'],
   ['Gekkoukan High · 2F Hallway', 'school-hallwaysecondfloor'],
   ['Gekkoukan High · Library', 'school-library'],
   ['Gekkoukan High · Gym · After Hours', 'school-entryhallway'],
@@ -42,7 +50,7 @@ window.FEMC_BG = [
   ['Iwatodai Dorm · Front', 'iwotodaidorm-outside'],
 
   // Iwatodai
-  ['Iwatodai Station · Platform', 'subway'],
+  ['Iwatodai Station · Platform', 'subway', 'station-platform-night'],
   ['Iwatodai Station · Vending Machines', 'subway'],
   ['Iwatodai Station · Taxi Stand', 'city'],
   ['Iwatodai Station', '0d489c888283c69d5c7848eb84174bc6'],
@@ -91,7 +99,9 @@ window.FEMC_BG = [
   ['Moonlight Bridge', 'moonlightbridge', null, 'nightblue'],
 
   // Naganaki Shrine
-  ['Naganaki Shrine', 'outside-shrine-day']
+  ['Naganaki Shrine · Summer Festival', 'naganaki-shrine-festival'],
+  ['Naganaki Shrine · Night', 'naganaki-shrine-night'],
+  ['Naganaki Shrine', 'outside-shrine-day', 'naganaki-shrine-night']
 ];
 
 // The Go Out map's area cards: area name → image.
