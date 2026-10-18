@@ -1,24 +1,30 @@
-"""Turns Kat's Shadow (and Persona) art into battle-ready images.
+"""Turns Kat's Shadow art into battle-ready images.
 
 Source: ~/Documents/UniverseHub-Images/Femc Mode Images/Shadows/   (any png/webp/jpg; wiki names like
         "240px-P3R_Priestess_Shadow_Model.png" are cleaned up to "priestess-shadow")
 Output: assets/femc/battle/art/shadows/<slug>.webp (transparent, trimmed) and assets/femc/battle/art/shadows/index.js
         (window.FEMC_SHADOW_ART = { slug: { w, h, small } }).
-Images without transparency are cut out with tools/femc-lift.swift (macOS Vision). Anything under 300px on its longest
-side is flagged `small` (it will look soft in battle; worth replacing with a bigger render).
+Every image goes through the cleanup in tools/femc-artclean.py: Vision cut-out when there's no transparency,
+speck and fringe cleanup, a gentle tone nudge, and the thin dark rim all Shadows share. `small` means the SOURCE
+was small (under 300px on its longest side): those are upscaled (Real-ESRGAN + LANCZOS) to about 640px tall, and
+the battle still gives them the `.soft` look. A bigger render of the same Shadow in the folder always wins.
 
-Run: python3 tools/femc-shadows.py          (only new or changed files)
-     python3 tools/femc-shadows.py --all    (redo everything)
+Run: python3 tools/femc-shadows.py                 (only new or changed files)
+     python3 tools/femc-shadows.py --all           (redo everything, e.g. after changing femc-artclean.py)
+     python3 tools/femc-shadows.py --only a,b      (just these slugs)    --dst DIR  (write somewhere else to try things)
+Needs: pip3 install --user numpy scipy realesrgan-ncnn-py   (see femc-artclean.py)
 """
-import os, re, sys, json, subprocess, tempfile
+import os, re, sys, json, importlib.util
 from PIL import Image
 
-SRC = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Shadows')
 HERE = os.path.dirname(os.path.abspath(__file__))
+_spec = importlib.util.spec_from_file_location('femc_artclean', os.path.join(HERE, 'femc-artclean.py'))
+ac = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(ac)
+
+SRC = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Shadows')
 DST = os.path.join(os.path.dirname(HERE), 'assets/femc/battle/art/shadows')
-LIFT = os.path.join(HERE, 'femc-lift.swift')
-MAX = 900
-SMALL = 300
+SMALL = ac.SMALL
 
 
 def slug(name):
@@ -30,22 +36,23 @@ def slug(name):
     return re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
 
 
-def has_alpha(im):
-    if im.mode != 'RGBA':
-        return False
-    small = im.getchannel('A').resize((64, 64))
-    return sum(1 for v in small.getdata() if v < 10) > 64 * 64 * 0.05
+def opt(name):
+    return sys.argv[sys.argv.index(name) + 1] if name in sys.argv else None
 
 
 def main():
     redo = '--all' in sys.argv
-    os.makedirs(DST, exist_ok=True)
-    index_path = os.path.join(DST, 'index.js')
+    only = set((opt('--only') or '').split(',')) - {''}
+    dst = opt('--dst') or DST
+    os.makedirs(dst, exist_ok=True)
+    index_path = os.path.join(dst, 'index.js')
     index = {}
-    if os.path.exists(index_path):
-        m = re.search(r'=\s*(\{.*\});', open(index_path).read(), re.S)
-        if m:
-            index = json.loads(m.group(1))
+    for p in (index_path, os.path.join(DST, 'index.js')):
+        if os.path.exists(p):
+            m = re.search(r'=\s*(\{.*\});', open(p).read(), re.S)
+            if m:
+                index = json.loads(m.group(1))
+                break
     # When the same Shadow is in the folder twice (a small wiki thumbnail and a bigger render), use the biggest.
     best = {}
     for f in sorted(os.listdir(SRC)):
@@ -57,26 +64,27 @@ def main():
         if slug(f) not in best or size > best[slug(f)][0]:
             best[slug(f)] = (size, path)
     for sid, (_, src) in sorted(best.items()):
-        out = os.path.join(DST, sid + '.webp')
-        if not redo and os.path.exists(out) and os.path.getmtime(out) >= os.path.getmtime(src):
+        if only and sid not in only:
             continue
-        im = Image.open(src).convert('RGBA')
-        if not has_alpha(im):
-            tmp = tempfile.NamedTemporaryFile(suffix='.png', delete=False).name
-            r = subprocess.run(['swift', LIFT, src, tmp], capture_output=True, text=True)
-            if r.returncode == 0:
-                im = Image.open(tmp).convert('RGBA')
-            os.remove(tmp)
-        box = im.getchannel('A').point(lambda v: 255 if v > 8 else 0).getbbox()
-        if box:
-            im = im.crop(box)
-        w, h = im.size
-        im.thumbnail((MAX, MAX), Image.LANCZOS)
-        im.save(out, 'WEBP', quality=88, method=5)
-        index[sid] = {'w': im.width, 'h': im.height, 'small': max(w, h) < SMALL}
-        print(f'  {sid:28} {im.width}x{im.height}{"  (small source)" if max(w, h) < SMALL else ""}')
+        o = ac.OVERRIDES.get(sid, {})
+        out = os.path.join(dst, sid + '.webp')
+        if o.get('keep') and os.path.exists(out):
+            continue
+        if not redo and not only and os.path.exists(out) and os.path.getmtime(out) >= os.path.getmtime(src):
+            continue
+        im = ac.load(src)
+        w, h = ac.trim(im).size
+        small = max(w, h) < SMALL
+        log = []
+        res = ac.clean(im, small=small, do_tone=o.get('tone', True), do_rim=o.get('rim', True),
+                       do_upscale=o.get('upscale', True), log=log)
+        ac.save(res, out)
+        index[sid] = {'w': res.width, 'h': res.height, 'small': small}
+        print(f'  {sid:28} {res.width}x{res.height}{"  (small source " + str(w) + "x" + str(h) + ", upscaled)" if small else ""}'
+              f'{"  " + " ".join(log) if log else ""}')
     with open(index_path, 'w') as fh:
-        fh.write('/* Generated by tools/femc-shadows.py: battle art in assets/femc/battle/art/shadows/<slug>.webp. */\n')
+        fh.write('/* Generated by tools/femc-shadows.py: battle art in assets/femc/battle/art/shadows/<slug>.webp.\n'
+                 '   small: the source was under 300px (upscaled; the battle gives it the .soft look). */\n')
         fh.write('window.FEMC_SHADOW_ART = ' + json.dumps(index, indent=1, sort_keys=True) + ';\n')
 
 
