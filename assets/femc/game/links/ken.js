@@ -154,7 +154,7 @@
       { n: "The four-year-old in the shop had gone from crying to screaming. Ken watched him through the glass with an expression of deep, private sympathy that he tried, and failed, to make look like disapproval." },
       { choose: [
         { t: "I'll buy it. For me. I love Featherman.", notes: 3, then: [
-          { s: 'ken', f: 'surprised', t: "...You do?" },
+          { s: 'ken', f: 'serious', t: "...You do?" },
           { s: 'solar', f: 'happy', t: "Huge fan. Wait here." },
           { n: "She went in. She did not know anything about Featherman. She found she didn't need to. She walked up to the counter with the complete set in her arms and told the clerk, warmly, at length, that she'd been waiting for this all summer, that the red one was her favorite, that she was eighteen and had no shame about it whatsoever, and her face did it all on its own, bright and easy and utterly convincing, a whole person put on like a coat, and she watched herself do it from somewhere slightly behind her own eyes and thought, *oh, I'm good at this*, and didn't like how good." }
         ] },
@@ -179,7 +179,7 @@
           { n: "He said it with the total seriousness of a theologian, and Solar nodded, and filed it, without knowing yet what she was filing it under." }
         ] },
         { t: "Can I watch it with you on Sunday?", notes: 2, then: [
-          { s: 'ken', f: 'surprised', t: "You'd have to be up at seven." },
+          { s: 'ken', f: 'serious', t: "You'd have to be up at seven." },
           { s: 'solar', f: 'neutral', t: "I'm up at five. Akihiko." },
           { s: 'ken', f: 'happy', t: "...Okay. You can sit on the left. The right is my side." }
         ] },
@@ -247,7 +247,7 @@
       { s: 'ken', f: 'neutral', t: "What about your family, Solar-san? What would you write?" },
       { choose: [
         { t: "I don't remember them. My page would be blank too.", notes: 3, then: [
-          { s: 'ken', f: 'surprised', t: "Blank?" },
+          { s: 'ken', f: 'serious', t: "Blank?" },
           { s: 'solar', f: 'neutral', t: "All four hundred squares." },
           { n: "She thought of a book in a blue room, and a page with nothing on it, and a woman in blue holding it up to a lamp. She didn't tell Ken about that. He looked at his own sheet, and then at her, and something in his face changed, as if he'd found out they were in the same class." },
           { s: 'ken', f: 'neutral', t: "...Then we both have a blank page." }
@@ -321,7 +321,7 @@
       ] },
       { choose: [
         { t: "I think I might be angry at someone I can't remember.", notes: 3, then: [
-          { s: 'ken', f: 'surprised', t: "...Someone who did something to you?" },
+          { s: 'ken', f: 'serious', t: "...Someone who did something to you?" },
           { s: 'solar', f: 'neutral', t: "Someone took everything I had and left me on a floor. I don't know who. Sometimes I'm so angry I can't breathe, and I don't even know where to point it." },
           { n: "It came out of her before she could check it, which was rare, and Ken looked at her with his mouth slightly open, and then nodded, very slowly, like she'd just shown him a scar that matched his." },
           { s: 'ken', f: 'neutral', t: "That's worse. Not knowing where to point it." }
@@ -578,7 +578,7 @@
       { s: 'ken', f: 'neutral', t: "Good afternoon, Solar-san. I changed my practice. Akihiko-san showed me some of it. The rest I made up." },
       { choose: [
         { t: "You're guarding now. Not attacking.", notes: 3, then: [
-          { s: 'ken', f: 'surprised', t: "...You saw that? Nobody's noticed. Akihiko-san thought I was just doing it wrong." },
+          { s: 'ken', f: 'serious', t: "...You saw that? Nobody's noticed. Akihiko-san thought I was just doing it wrong." },
           { n: "He looked at the pole in his hands, and then at her, with the quick surprised respect of a kid who'd been seen exactly." }
         ] },
         { t: "Show me.", notes: 2, then: [
@@ -621,7 +621,7 @@
           { n: "He turned it over, the way he turned everything over, and Solar watched him put it somewhere and close the lid on it, carefully, like something he meant to come back to." }
         ] },
         { t: "I feel two things at once about almost everything.", notes: 2, then: [
-          { s: 'ken', f: 'surprised', t: "Really? Even you?" },
+          { s: 'ken', f: 'serious', t: "Really? Even you?" },
           { s: 'solar', f: 'neutral', t: "Especially me." },
           { n: "He seemed to find that enormously comforting, which she found she didn't mind being." }
         ] },
@@ -658,7 +658,7 @@
         ] }
       ] },
       { n: "He stepped away from the frame and turned around to look. The new line was above the August line by a clear finger's width." },
-      { s: 'ken', f: 'surprised', t: "Two centimeters. That's two centimeters since summer." },
+      { s: 'ken', f: 'serious', t: "Two centimeters. That's two centimeters since summer." },
       { s: 'ken', f: 'neutral', t: "My mother used to do this. On the kitchen pillar in our old apartment. She did it every birthday. Someone else lives there now. They probably painted over it." },
       { n: "He wrote the date next to the line, very small, and then stood looking at the four marks, the low one and the three above it, a little ladder going up the frame. From the dining room came a burst of laughter, a girl's voice saying something in a language Solar's ear almost caught, and Ken's eyes went toward it, and then to Solar, and stayed on her." },
       { s: 'ken', f: 'neutral', t: "Solar-san. Those people. They look at you like you're someone they lost." },
@@ -814,6 +814,5 @@
       ] },
       { n: "The next-episode preview came on, for a season that wouldn't start until spring, and Ken watched every second of it, and then turned the television off, and the lounge was quiet. Somewhere upstairs, someone's alarm went off and was hit. The radiator ticked. Ken didn't get up. Solar didn't either. They sat under the one blanket in the cold gray light with the black screen in front of them reflecting the two of them back, small and side by side, a boy and his senpai on a Sunday, and stayed there, by mutual and unspoken agreement, until somebody came down and asked what they were doing, and they both said, at exactly the same time, nothing." }
     ] }
-  ]
   ]
 });
