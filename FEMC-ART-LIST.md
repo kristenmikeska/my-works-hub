@@ -23,7 +23,7 @@ Full-screen 16:9 illustrations for big moments, the way P3R and P5R show a paint
 - [x] Haechan finding her (his first look at her, flat and stunned)
 - [ ] Jungwon finding her
 - [ ] A searcher awakening their Persona (one per searcher who fights)
-- [ ] Facing Wren's Shadow: Solar small, the Last Train enormous
+- [x] Facing Wren's Shadow: Solar small, the Last Train enormous
 - [ ] Wren's cap falling, her hair coming down
 
 **Endings**
