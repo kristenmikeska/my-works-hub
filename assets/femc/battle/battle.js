@@ -20,7 +20,7 @@
   const FINISH_DIR = 'assets/femc/battle/art/finish/', SUMMON_DIR = 'assets/femc/battle/art/summon/';
   const AWAKEN = ['solar-01-resolve', 'solar-02-focus', 'solar-03-awakening', 'solar-04-manifestation', 'solar-05-command', 'solar-06-summoned'];
   /* A stylized Evoker for members without their own Evoker art (muzzle on the left, at the temple). */
-  const EVOKER_SVG = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 96"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#b9c2d3"/><stop offset="1" stop-color="#5a6376"/></linearGradient></defs><path d="M6 24h104l10 7v15H92l-5 7H74l-6-7H6z" fill="url(#g)" stroke="#161a24" stroke-width="3.5" stroke-linejoin="round"/><rect x="6" y="20" width="12" height="30" rx="2" fill="url(#g)" stroke="#161a24" stroke-width="3"/><path d="M90 46h30l20 44h-30z" fill="url(#g)" stroke="#161a24" stroke-width="3.5" stroke-linejoin="round"/><path d="M72 46q0 18 18 18" fill="none" stroke="#161a24" stroke-width="5"/><rect x="24" y="30" width="58" height="5" fill="#ff4f9e"/><circle cx="102" cy="34" r="4" fill="#161a24"/></svg>`);
+  const EVOKER_SVG = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 110"><defs><linearGradient id="m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f9ff"/><stop offset=".35" stop-color="#c9d0dc"/><stop offset=".7" stop-color="#8a93a6"/><stop offset="1" stop-color="#4b5263"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a404e"/><stop offset="1" stop-color="#14171f"/></linearGradient></defs><path d="M214 30H70l-10 5v22h34l6 7h20l7-7h87z" fill="url(#m)" stroke="#12151c" stroke-width="3" stroke-linejoin="round"/><path d="M214 30v27" stroke="#12151c" stroke-width="5"/><path d="M78 36h126" stroke="#fff" stroke-opacity=".85" stroke-width="2"/><path d="M84 44h120M84 50h120" stroke="#5a6274" stroke-width="1.2"/><path d="M62 57h32l-16 48H38z" fill="url(#g)" stroke="#0b0d12" stroke-width="3" stroke-linejoin="round"/><path d="M50 70h30M46 80h30M42 90h30" stroke="#5a6274" stroke-width="1.5"/><path d="M98 57q-2 18 16 18h6" fill="none" stroke="#12151c" stroke-width="4"/><path d="M104 60l4 10" stroke="#12151c" stroke-width="3"/><rect x="150" y="40" width="40" height="4" rx="1" fill="#ff4f9e"/></svg>`);
   const tacticOf = u => (u.mid === 'solar' ? 'direct' : (save.tactics[u.mid] || 'direct'));
   const AFF_SHORT = { normal: '–', weak: 'WK', resist: 'RS', null: 'NU', drain: 'DR', repel: 'RP' };
   const AFF_WORD = { weak: 'WEAK!', resist: 'RESIST', null: 'NULL', drain: 'DRAIN', repel: 'REPEL' };
@@ -340,8 +340,9 @@
         const per = D.personas[m.persona], slot = save.party.indexOf(m.id), tac = save.tactics[m.id] || 'direct';
         return `<div class="bt-pm${slot >= 0 ? ' in' : ''}${k === i ? ' sel' : ''}" data-k="${k}" style="--c:${m.color}">
           <button type="button" class="bt-pm-main" data-act="toggle" data-id="${m.id}" aria-pressed="${slot >= 0}">
-            <span class="pic"><img src="${pimg(m.id, m.faces.idle)}" alt="" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"><img class="per" src="${per.art}" alt=""></span>
+            <span class="pic"><img src="${pimg(m.id, m.faces.idle)}" alt="" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"></span>
             <span class="info"><b>${esc(m.name)}<small>Lv ${lvOf(m.id)}</small></b><span class="per-n">${esc(per.name)} · ${esc(per.arcana)}</span><span class="role">${esc(m.role || '')}</span><span class="bt-affs">${affChips(per)}</span></span>
+            <span class="per-art"><img src="${per.art}" alt="${esc(per.name)}"></span>
             <span class="slot">${slot >= 0 ? `IN · ${slot + 2}` : 'Bench'}</span>
           </button>
           <button type="button" class="bt-pm-tac" data-act="tac" data-id="${m.id}" title="${esc(D.tactics[tac].desc)}">${ART.icon('tactics')}<span>${esc(D.tactics[tac].name)}</span></button>
@@ -351,12 +352,12 @@
       const el = show(`<div class="bt-tree-head"><button type="button" class="bt-tool" data-act="back"><span>‹ Back</span></button>
           <h1>PARTY<small>S.E.E.S.</small></h1><div class="bt-pts"><span><small>Members</small>${save.party.length + 1} / 4</span></div></div>
         <div class="bt-party-grid">
-          <div class="bt-pm in leader" style="--c:${solar.color}"><div class="bt-pm-main"><span class="pic"><img src="${pimg('solar', 'serious')}" alt="" style="--fx:${solar.face[0]}%;--fy:${solar.face[1]}%"><img class="per" src="${sp.art}" alt=""></span>
-            <span class="info"><b>Solar<small>Lv ${save.lvl}</small></b><span class="per-n">Haenim · Fool</span><span class="role">${esc(solar.role)}</span><span class="bt-affs">${affChips(sp)}</span></span><span class="slot">Leader · 1</span></div>
+          <div class="bt-pm in leader" style="--c:${solar.color}"><div class="bt-pm-main"><span class="pic"><img src="${pimg('solar', 'serious')}" alt="" style="--fx:${solar.face[0]}%;--fy:${solar.face[1]}%"></span>
+            <span class="info"><b>Solar<small>Lv ${save.lvl}</small></b><span class="per-n">Haenim · Fool</span><span class="role">${esc(solar.role)}</span><span class="bt-affs">${affChips(sp)}</span></span><span class="per-art"><img src="${sp.art}" alt="Haenim"></span><span class="slot">Leader · 1</span></div>
             <div class="bt-pm-tac fixed">${ART.icon('tactics')}<span>Always Direct</span></div></div>
           ${list.map(card).join('')}
         </div>
-        <div class="bt-party-foot"><p>${msg ? `<b>${esc(msg)}</b>` : `<b>Pick up to 3.</b>`} Members on the bench still earn ${Math.round(D.progression.benchShare * 100)}% of the EXP. Tactics: Direct lets you choose; the others act on their own.</p>
+        <div class="bt-party-foot"><p>${msg ? `<b>${esc(msg)}</b>` : `<b>Pick up to 3.</b>`} Members on the bench still earn ${Math.round(D.progression.benchShare * 100)}% of the EXP.<span> Tactics: Direct lets you choose; the others act on their own. Enter picks, T changes tactic.</span></p>
           <button type="button" class="bt-btn pink" data-act="done"><span>Done</span></button></div>`, 'bt-tree bt-partyscr');
       el.querySelectorAll('[data-act="toggle"]').forEach(b => b.addEventListener('click', () => { i = list.findIndex(m => m.id === b.dataset.id); toggle(); }));
       el.querySelectorAll('[data-act="tac"]').forEach(b => b.addEventListener('click', () => { i = list.findIndex(m => m.id === b.dataset.id); cycle(); }));
@@ -726,8 +727,9 @@
   }
   /* Play a spell/hit effect; returns ms (at 1x) until it lands. */
   function fxPlay(kind, id, o = {}) {
+    mark('fx-' + kind);
     if (!FX) { strikeFx(id, kind); return 0; }
-    return FX.play(kind, fxAt(id), o) || 0;
+    return FX.play(kind, fxAt(id), Object.assign({ track: () => { if (!BT || !(BT.enemies.has(id) || BT.cards.has(id))) return null; const b = fxAt(id); return b.w > 0 ? b : null; } }, o)) || 0;
   }
   function fxHit(e) {
     const src = B.U(e.src), el = e.el, o = { crit: e.crit, color: (D.elements[el] || {}).color };
@@ -807,6 +809,7 @@
     BT.root.classList.add('evoking');
     sfx('click');
     mark('evoke');
+    mark('evoke-' + u.mid);
     await sleep(reduced ? 140 : 320);
     const sh = wrap.querySelector('.bt-evk-shot, .bt-evk-band');
     sfx('evoker');
@@ -816,11 +819,11 @@
       let cx, cy, extras;
       if (solar) {
         const im = sh.querySelector('img'), cb = coverBox(im);
-        cx = cb.x + cb.w * 0.745; cy = cb.y + cb.h * 0.125; // the Evoker's muzzle at her temple
+        cx = cb.x + cb.w * 0.515; cy = cb.y + cb.h * 0.18; // the Evoker's muzzle at her temple
         extras = [{ el: sh, clip: [[0, 6], [100, 0], [100, 94], [0, 100]], fill: '#05060c', cover: true }];
       } else {
         const g = sh.querySelector('.gun').getBoundingClientRect();
-        cx = g.left - R.left + g.width * 0.05; cy = g.top - R.top + g.height * 0.36;
+        cx = g.right - R.left - g.width * 0.02; cy = g.top - R.top + g.height * 0.32;
         extras = [{ el: sh, clip: [[0, 18], [100, 0], [100, 82], [0, 100]], fill: '#14070f', edge: m.color }];
       }
       const snap = FX.snapshot(BT.root, { bg: BT.bg, extras });

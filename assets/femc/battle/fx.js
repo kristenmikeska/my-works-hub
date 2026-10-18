@@ -24,7 +24,8 @@ window.FemcFX = (() => {
 
   let host = null, cv = null, ctx = null, W = 0, H = 0, DPR = 1;
   let effects = [], parts = [], raf = 0, last = 0, paused = false, speedFn = () => 1;
-  const dbg = { ticks: 0, glass: 0, glassT: 0 };
+  let held = []; // frame loops waiting for resume()
+  let ticking = false; // inside tick(): emit()/add() must not start a second loop
   const cap = () => (phone() ? 240 : 600);
   /* Next frame: requestAnimationFrame, or a timer if rAF is late (throttled iframes, headless test runs). */
   function frameAfter(fn) {
@@ -94,16 +95,18 @@ window.FemcFX = (() => {
     kick();
     return p;
   }
-  function kick() { if (!raf && !paused && ctx) { last = performance.now(); raf = frameAfter(tick); } }
+  function kick() { if (!raf && !ticking && !paused && ctx) { last = performance.now(); raf = frameAfter(tick); } }
   function tick(now) {
     raf = 0;
-    dbg.ticks++;
     if (!ctx || paused) return;
     const dt = Math.min(0.05, Math.max(0, now - last) / 1000) * speedFn();
     last = now;
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     ctx.clearRect(0, 0, W, H);
-    effects = effects.filter(e => {
+    ticking = true;
+    const cur = effects;
+    effects = []; // effects added while drawing (e.g. ice's burst ring) land here and are kept
+    const kept = cur.filter(e => {
       e.age += dt;
       const t = e.age - e.delay;
       if (t < 0) return true;
@@ -112,7 +115,9 @@ window.FemcFX = (() => {
       ctx.restore();
       return t < e.dur;
     });
+    effects = kept.concat(effects);
     parts = parts.filter(p => stepPart(p, dt));
+    ticking = false;
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 1;
     if (effects.length || parts.length) raf = frameAfter(tick);
@@ -141,7 +146,7 @@ window.FemcFX = (() => {
       case 'flame': {
         const col = p.ramp[Math.min(p.ramp.length - 1, Math.floor(u * p.ramp.length))];
         const sp = glow(col), fl = 0.85 + 0.3 * Math.sin(p.age * 38 + p.x);
-        c.drawImage(sp, p.x - s * 0.5 * fl, p.y - s * 0.9, s * fl, s * 1.6);
+        c.drawImage(sp, p.x - s * 0.45 * fl, p.y - s * 1.3, s * 0.9 * fl, s * 2.2);
         break;
       }
       case 'spark': {
@@ -298,19 +303,19 @@ window.FemcFX = (() => {
 
   function fire(at, o = {}) {
     const R = sizeOf(at) * (o.small ? 0.6 : 1), baseY = at.y + R * 0.55;
-    const ramp = ['#fff7c2', '#ffd060', '#ff9a2e', '#ff5a1f', '#c42810', '#6a1208'];
+    const ramp = ['#ffe9a0', '#ffb03a', '#ff7a22', '#ff4a14', '#c42810', '#6a1208'];
     radial(ctx, 0, 0, 0, '#fff', 0);
     add({ dur: 1.0, acc: 0, draw(c, t, dt, e) {
       const k = t < 0.7 ? c01(t / 0.08) : 1 - (t - 0.7) / 0.3;
       const fl = 0.8 + 0.2 * Math.sin(t * 41) * Math.sin(t * 23);
       radial(c, at.x, baseY - R * 0.2, R * 2.1 * fl, '#ff6a1f', 0.5 * k);
-      radial(c, at.x, baseY, R * 1.1 * fl, '#ffc060', 0.55 * k);
+      radial(c, at.x, baseY, R * 1.1 * fl, '#ffa040', 0.4 * k);
       if (t < 0.62) {
-        e.acc += dt * (phone() ? 120 : 220);
+        e.acc += dt * (phone() ? 150 : 280);
         while (e.acc >= 1) {
           e.acc--;
-          const x = at.x + gauss() * R * 0.75;
-          emit({ shape: 'flame', ramp, x, y: baseY + rnd(-8, 12), vx: (at.x - x) * 0.9 + rnd(-20, 20), vy: rnd(-300, -170) * (R / 100), ay: -180, life: rnd(0.4, 0.75), size: rnd(0.45, 0.8) * R, size1: R * 0.12, alpha: 0.85 });
+          const x = at.x + gauss() * R * 0.95;
+          emit({ shape: 'flame', ramp, x, y: baseY + rnd(-8, 12), vx: (at.x - x) * 0.45 + rnd(-24, 24), vy: rnd(-400, -230) * (R / 100), ay: -260, life: rnd(0.45, 0.8), size: rnd(0.42, 0.75) * R, size1: R * 0.08, alpha: 0.55 });
           if (Math.random() < 0.12) emit({ shape: 'spark', x, y: baseY, vx: rnd(-60, 60), vy: rnd(-520, -300), ay: 160, life: rnd(0.4, 0.8), size: rnd(1.4, 2.4), color: '#ffd27a', streak: 0.02 });
         }
       }
@@ -394,17 +399,19 @@ window.FemcFX = (() => {
 
   function wind(at, o = {}) {
     const R = sizeOf(at) * (o.small ? 0.6 : 1);
-    const cres = Array.from({ length: phone() ? 4 : 5 }, (_, i) => ({ th: (i / 5) * TAU + rnd(-0.3, 0.3), w: rnd(8, 11), delay: i * 0.05, rise: rnd(0.2, 0.6), tilt: rnd(0.45, 0.62) }));
+    const n = phone() ? 5 : 7;
+    const cres = Array.from({ length: n }, (_, i) => ({ th: (i / n) * TAU + rnd(-0.3, 0.3), w: rnd(8, 11), delay: i * 0.045, rise: rnd(0.1, 0.9), tilt: rnd(0.4, 0.62), k: rnd(0.8, 1.15) }));
     add({ dur: 0.85, acc: 0, draw(c, t, dt, e) {
+      radial(c, at.x, at.y, R * 1.6, '#5dffa0', 0.28 * Math.sin(Math.PI * c01(t / 0.85)));
       c.globalCompositeOperation = 'lighter';
       cres.forEach(k => {
         const u = c01((t - k.delay) / 0.72);
         if (u <= 0 || u >= 1) return;
-        const r = R * (0.25 + 1.05 * E.out(u)), a = Math.sin(Math.PI * u);
-        c.save(); c.translate(at.x, at.y - R * k.rise * u); c.scale(1, k.tilt);
+        const r = R * k.k * (0.35 + 1.25 * E.out(u)), a = Math.sin(Math.PI * u);
+        c.save(); c.translate(at.x, at.y + R * 0.3 - R * k.rise * u * 1.2); c.scale(1, k.tilt);
         const a0 = k.th + k.w * t;
-        c.globalAlpha = a * 0.6; crescent(c, 0, 0, r, a0, a0 + 1.9, R * 0.3 * (1 - u * 0.4), 'rgba(140,255,200,.75)');
-        c.globalAlpha = a; crescent(c, 0, 0, r, a0 + 0.2, a0 + 1.7, R * 0.09, 'rgba(240,255,248,1)', null);
+        c.globalAlpha = a * 0.7; crescent(c, 0, 0, r, a0, a0 + 2.3, R * 0.42 * (1 - u * 0.4), 'rgba(120,255,190,.8)');
+        c.globalAlpha = a; crescent(c, 0, 0, r, a0 + 0.25, a0 + 2.0, R * 0.12, 'rgba(240,255,248,1)', null);
         c.restore();
       });
       if (t < 0.6) {
@@ -462,33 +469,37 @@ window.FemcFX = (() => {
     const R = sizeOf(at) * (o.small ? 0.55 : 1);
     const n = phone() ? 5 : 8, dur = o.small ? 0.8 : 1.0;
     const tend = Array.from({ length: n }, (_, i) => {
-      const an = Math.PI / 2 + ((i / (n - 1)) - 0.5) * 3.6 + rnd(-0.2, 0.2);
-      return { bx: at.x + Math.cos(an) * R * 1.6, by: at.y + Math.sin(an) * R * 1.0 + R * 0.4, cx: at.x + Math.cos(an + rnd(-1, 1)) * R * 1.1, cy: at.y + Math.sin(an) * R * 0.2 - R * rnd(0.2, 0.7), tx: at.x + rnd(-R * 0.2, R * 0.2), ty: at.y + rnd(-R * 0.25, R * 0.15), ph: rnd(0, TAU), w: R * rnd(0.11, 0.17), delay: rnd(0, 0.12) };
+      // Rooted on a ring around the target, curling in like ink pulled down a drain.
+      const an = (i / n) * TAU + rnd(-0.25, 0.25), sw = (i % 2 ? 1 : -1) * rnd(0.9, 1.4), r0 = R * rnd(1.35, 1.75);
+      return { bx: at.x + Math.cos(an) * r0, by: at.y + Math.sin(an) * r0 * 0.6 + R * 0.25, cx: at.x + Math.cos(an + sw) * R * 1.05, cy: at.y + Math.sin(an + sw) * R * 0.7, tx: at.x + rnd(-R * 0.12, R * 0.12), ty: at.y + rnd(-R * 0.15, R * 0.1), ph: rnd(0, TAU), w: R * rnd(0.055, 0.09), delay: rnd(0, 0.14) };
     });
     add({ dur, draw(c, t) {
       const core = Math.sin(Math.PI * c01(t / dur));
       c.globalCompositeOperation = 'source-over';
-      c.globalAlpha = 0.7 * core;
-      c.drawImage(soft('#0a0010'), at.x - R * 1.3, at.y - R * 1.3, R * 2.6, R * 2.6);
+      c.globalAlpha = 0.85 * core;
+      c.drawImage(soft('#05000a'), at.x - R * 1.1, at.y - R * 0.9, R * 2.2, R * 1.8);
       radial(c, at.x, at.y, R * 1.2 * core, '#7a2bd0', 0.35 * core);
       tend.forEach(k => {
         const tt = t - k.delay;
         let g = E.out(c01(tt / 0.35));
         if (tt > dur * 0.62) g *= 1 - E.inOut(c01((tt - dur * 0.62) / (dur * 0.33)));
         if (g <= 0.02) return;
-        const N = 18, L = [], Rr = [];
+        // Stamp soft ink along the curve: thin at the root, thickest in the middle, a glowing tip.
+        const N = 26, pts = [];
         for (let i = 0; i <= N; i++) {
           const u = (i / N) * g, iu = 1 - u;
           const x = iu * iu * k.bx + 2 * iu * u * k.cx + u * u * k.tx, y = iu * iu * k.by + 2 * iu * u * k.cy + u * u * k.ty;
           const dx = 2 * iu * (k.cx - k.bx) + 2 * u * (k.tx - k.cx), dy = 2 * iu * (k.cy - k.by) + 2 * u * (k.ty - k.cy), l = Math.hypot(dx, dy) || 1;
-          const wob = Math.sin(u * 7 + tt * 13 + k.ph) * R * 0.13 * u;
-          const px = x - (dy / l) * wob, py = y + (dx / l) * wob, w = k.w * (1 - (i / N) * 0.92);
-          L.push([px - (dy / l) * w, py + (dx / l) * w]); Rr.push([px + (dy / l) * w, py - (dx / l) * w]);
+          const wob = Math.sin(u * 9 + tt * 15 + k.ph) * R * 0.16 * u * (1 - u * 0.5);
+          pts.push([x - (dy / l) * wob, y + (dx / l) * wob, i / N]);
         }
-        const path = L.concat(Rr.reverse());
-        c.globalCompositeOperation = 'source-over'; c.globalAlpha = 0.95;
-        polyline(c, path); c.closePath(); c.fillStyle = '#12031c'; c.fill();
-        c.globalCompositeOperation = 'lighter'; c.globalAlpha = 0.75; c.lineWidth = 1.6; c.strokeStyle = '#b77bff'; c.stroke();
+        const ink = soft('#0c0214');
+        c.globalCompositeOperation = 'source-over';
+        pts.forEach(([x, y, v]) => { const r = k.w * (0.35 + 1.1 * Math.sin(Math.PI * Math.min(1, v * 0.9 + 0.1))); c.globalAlpha = 0.55 + 0.4 * v; c.drawImage(ink, x - r * 1.6, y - r * 1.6, r * 3.2, r * 3.2); });
+        c.globalCompositeOperation = 'lighter'; c.globalAlpha = 0.5; c.lineWidth = 1.2; c.strokeStyle = '#b06bff';
+        polyline(c, pts.filter((p, i) => i > N * 0.3)); c.stroke();
+        const tip = pts[pts.length - 1];
+        if (tip) radial(c, tip[0], tip[1], k.w * 2.4, '#9a4bff', 0.55);
       });
       if (t < dur * 0.7 && Math.random() < 0.5) {
         const an = rnd(0, TAU), r = R * rnd(0.8, 1.4);
@@ -595,10 +606,12 @@ window.FemcFX = (() => {
     const R = sizeOf(at);
     const P0 = o.from || { x: W * 0.12, y: H * 0.85 };
     const T1 = 0.3, T2 = 0.62, T3 = 0.9, dur = 1.15;
-    const rx = Math.max(R * 0.7, (at.w || 200) * 0.36), ry = rx * 0.26, cxw = at.x, cyw = at.y + R * 0.05, tilt = -0.16;
+    // The coil: two turns around the Shadow's middle, each a little lower, seen slightly from above.
+    const rx = Math.max(R * 0.7, (at.w || 200) * 0.36), ry = rx * 0.34, tilt = -0.1, TURNS = 2;
     const loopAt = (phi, k) => {
-      const lx = Math.cos(phi) * rx * k, ly = Math.sin(phi) * ry * k + (phi + Math.PI / 2) / TAU * R * 0.24;
-      return [cxw + lx * Math.cos(tilt) - ly * Math.sin(tilt), cyw - R * 0.12 + lx * Math.sin(tilt) + ly * Math.cos(tilt)];
+      const cxw = at.x, cyw = at.y - R * 0.18; // live: the target may move
+      const lx = Math.cos(phi) * rx * k, ly = Math.sin(phi) * ry * k + (phi + Math.PI / 2) / TAU * R * 0.3;
+      return [cxw + lx * Math.cos(tilt) - ly * Math.sin(tilt), cyw + lx * Math.sin(tilt) + ly * Math.cos(tilt)];
     };
     const ribbon = (c, pts, a, wBase) => {
       // Glow pass
@@ -624,7 +637,7 @@ window.FemcFX = (() => {
       const tight = E.back(c01((t - T2) / (T3 - T2)));
       const k = 1 - 0.13 * tight;
       const fade = t > T3 ? 1 - (t - T3) / (dur - T3) : 1;
-      const phi0 = -Math.PI / 2, phiEnd = phi0 + wrapU * 2.15 * TAU;
+      const phi0 = -Math.PI / 2, phiEnd = phi0 + wrapU * TURNS * TAU;
       const start = loopAt(phi0, k);
       // The line from Solar: an arc that straightens as it pulls tight.
       const tens = c01((t - T1 * 0.6) / 0.4);
@@ -641,13 +654,15 @@ window.FemcFX = (() => {
         pts.push([x + wave * 0.6, y + wave, u, false]);
       }
       const loops = [];
-      if (wrapU > 0) for (let i = 0; i <= 60 * wrapU; i++) { const ph = phi0 + (phiEnd - phi0) * (i / Math.max(1, 60 * wrapU)); const [x, y] = loopAt(ph, k); loops.push([x, y, 0.5 + ph / 20, Math.sin(ph) < 0]); }
-      const w = Math.max(7, R * 0.11);
+      if (wrapU > 0) { const NL = Math.max(2, Math.round(72 * wrapU)); for (let i = 0; i <= NL; i++) { const ph = phi0 + (phiEnd - phi0) * (i / NL); const [x, y] = loopAt(ph, k); loops.push([x, y, 0.5 + ph / 20, Math.sin(ph) < 0]); } }
+      const w = Math.max(6, R * 0.085);
       ribbon(c, pts, fade, w);
       if (loops.length > 1) {
-        ribbon(c, loops.filter(p => p[3]), fade, w * 0.85);
-        ribbon(c, loops, fade * 0.55, w);
-        ribbon(c, loops.filter(p => !p[3]), fade, w);
+        // Back half (behind the Shadow) dim and thin, front half bright: drawn as separate runs so they don't join up.
+        const runs = [];
+        loops.forEach(p => { const last = runs[runs.length - 1]; if (last && last.back === p[3]) last.pts.push(p); else runs.push({ back: p[3], pts: last ? [last.pts[last.pts.length - 1], p] : [p] }); });
+        runs.filter(r => r.back).forEach(r => ribbon(c, r.pts, fade * 0.5, w * 0.8));
+        runs.filter(r => !r.back).forEach(r => ribbon(c, r.pts, fade, w));
       }
       // Head glint while flying, knot glint when tight
       const head = t < T1 ? pts[pts.length - 1] : loops[loops.length - 1] || start;
@@ -655,7 +670,7 @@ window.FemcFX = (() => {
       if (t > T2 && !flashed) {
         flashed = true;
         burst(head[0], head[1], scaleN(18), { color: '#ffe48a', min: 150, max: 420, p: { size: 2 } });
-        emit({ shape: 'star', x: cxw + rx * 0.55, y: cyw - R * 0.05, life: 0.5, size: R * 0.5, size1: R * 0.1, color: '#fff6d6', vr: 4, rot: 0, vx: 0, vy: 0 });
+        emit({ shape: 'star', x: at.x + rx * 0.55, y: at.y - R * 0.23, life: 0.5, size: R * 0.5, size1: R * 0.1, color: '#fff6d6', vr: 4, rot: 0, vx: 0, vy: 0 });
       }
       const all = pts.concat(loops);
       if (all.length && Math.random() < 0.85) { const p = pick(all); emit({ shape: Math.random() < 0.35 ? 'star' : 'glow', x: p[0], y: p[1], vx: rnd(-30, 30), vy: rnd(-60, 10), life: rnd(0.35, 0.6), size: rnd(2, 4.5), color: pick(['#ffd36b', '#fff2b0', '#ff9ac8']), rot: rnd(0, TAU) }); }
@@ -691,7 +706,7 @@ window.FemcFX = (() => {
 
   function charm(at) {
     const R = sizeOf(at) * 0.8;
-    for (let i = 0; i < scaleN(10); i++) emit({ shape: 'heart', x: at.x + rnd(-R * 0.8, R * 0.8), y: at.y + rnd(-R * 0.2, R * 0.4), vx: 0, vy: rnd(-110, -60), life: rnd(0.8, 1.1), size: rnd(12, 20), color: pick(['#ff7ac8', '#ff4f9e', '#ffb3d6']), ph: rnd(0, TAU), delay: rnd(0, 0.25), blend: 'source-over', hold: 0.6, fadeIn: 0.1 });
+    for (let i = 0; i < scaleN(10); i++) emit({ shape: 'heart', x: at.x + rnd(-R * 0.8, R * 0.8), y: at.y + rnd(-R * 0.2, R * 0.4), vx: 0, vy: rnd(-110, -60), life: rnd(0.8, 1.1), size: rnd(20, 32), color: pick(['#ff7ac8', '#ff4f9e', '#ffb3d6']), ph: rnd(0, TAU), delay: rnd(0, 0.25), blend: 'source-over', hold: 0.6, fadeIn: 0.1 });
     add({ dur: 0.8, draw(c, t) { radial(c, at.x, at.y, R * 1.4, '#ff7ac8', 0.45 * Math.sin(Math.PI * t / 0.8)); } });
     return 0;
   }
@@ -730,6 +745,8 @@ window.FemcFX = (() => {
   /* play(kind, at, opts) → milliseconds (at 1x) until the effect "lands", so the battle can time its damage numbers. */
   function play(kind, at, o = {}) {
     if (!ctx || !at) return 0;
+    // o.track(): a fresh box for the target each frame, so long effects follow a Shadow if the field shifts.
+    if (o.track && !reduced()) { at = Object.assign({}, at); const tr = o.track; add({ dur: 1.3, draw() { const b = tr(); if (b) { const dx = b.x - at.x, dy = b.y - at.y; at.x = b.x; at.y = b.y; if (at.shift) at.shift(dx, dy); } } }); }
     if (reduced()) return simple(at, COLORS[kind] || '#fff');
     switch (kind) {
       case 'fire': return fire(at, o);
@@ -873,8 +890,8 @@ window.FemcFX = (() => {
       cvs.className = 'bt-glass';
       layer.appendChild(cvs);
       // Radial cracks + jittered rings make the cells.
-      const rays = phone() ? 11 : 15, maxD = Math.hypot(Math.max(cx, Wl - cx), Math.max(cy, Hl - cy));
-      const ringsF = [0, 0.05, 0.13, 0.26, 0.44, 0.68, 1.02];
+      const rays = phone() ? 12 : 19, maxD = Math.hypot(Math.max(cx, Wl - cx), Math.max(cy, Hl - cy));
+      const ringsF = phone() ? [0, 0.05, 0.12, 0.22, 0.36, 0.54, 0.76, 1.02] : [0, 0.04, 0.09, 0.16, 0.25, 0.36, 0.5, 0.67, 0.84, 1.02];
       const angs = Array.from({ length: rays }, (_, i) => (i / rays) * TAU + rnd(-0.18, 0.18)).sort((a, b) => a - b);
       const V = (i, r) => { const a = angs[(i + rays) % rays], j = r === 0 ? 0 : 1 + Math.sin(i * 12.9898 + r * 78.233) * 0.16; return [cx + Math.cos(a) * ringsF[r] * maxD * j, cy + Math.sin(a) * ringsF[r] * maxD * j]; };
       const cells = [];
@@ -907,7 +924,6 @@ window.FemcFX = (() => {
       const frame = now => {
         const dt = Math.min(0.05, Math.max(0, now - lastT) / 1000) * speedFn(); lastT = now;
         if (!paused) t += dt;
-        dbg.glass++; dbg.glassT = t;
         g.setTransform(dk, 0, 0, dk, 0, 0); g.clearRect(0, 0, Wl, Hl);
         if (t < TC) {
           g.drawImage(snap, 0, 0, Wl, Hl);
@@ -935,7 +951,8 @@ window.FemcFX = (() => {
             g.restore();
           });
         }
-        if (t < TC + TF) frameAfter(frame);
+        if (paused) held.push(() => { lastT = performance.now(); frameAfter(frame); });
+        else if (t < TC + TF) frameAfter(frame);
         else { cvs.remove(); resolve(); }
       };
       frameAfter(frame);
@@ -944,7 +961,7 @@ window.FemcFX = (() => {
 
   return {
     attach, detach, resize, play, setSpeed(fn) { speedFn = fn; }, ash, snapshot, shatter, preload, reduced,
-    pause() { paused = true; }, resume() { paused = false; kick(); }, get paused() { return paused; },
-    get count() { return parts.length; }, dbg
+    pause() { paused = true; }, resume() { paused = false; const h = held; held = []; h.forEach(f => f()); kick(); }, get paused() { return paused; },
+    get count() { return parts.length; }
   };
 })();

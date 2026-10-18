@@ -159,7 +159,7 @@ window.FEMC_BATTLE_DATA = (() => {
       lines: { turn: 'Woof!', onemore: 'Arf arf!', shift: '*nudges you*', finish: 'Awoooo!' } },
     { id: 'shinjiro', name: 'Shinjiro', persona: 'castor', weapon: 'strike', color: '#c43b3b', acc: -6,
       base: { hp: 124, sp: 34, st: 15, ma: 5, en: 10, ag: 5, lu: 5 }, growth: { hp: 10, sp: 2, st: 1.3, ma: 0.4, en: 0.9, ag: 0.4, lu: 0.4 },
-      skills: ['assault_dive', 'fatal_end'], face: [52, 33], role: 'Heavy strike · Low accuracy', faces: { idle: 'neutral', win: 'happy', hurt: 'surprised', ko: 'sad' },
+      skills: ['assault_dive', 'fatal_end'], face: [52, 42], role: 'Heavy strike · Low accuracy', faces: { idle: 'neutral', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Tch. Fine.', onemore: 'Stay down.', shift: 'Your turn.', finish: 'Heh. Not bad.' } }
   ];
   /* The party before anyone picks one (and for old saves): Solar plus these three. */
@@ -230,7 +230,7 @@ window.FEMC_BATTLE_DATA = (() => {
     { id: 'f1', label: '2F', block: 'Thebel', bg: 'assets/femc/bg/tartarus-scene.webp', pool: [['maya', 'maya', 'maya'], ['maya', 'slime', 'maya']], nav: 'f1', loot: { medicine: 1 } },
     { id: 'f2', label: '5F', block: 'Arqa', bg: 'assets/femc/bg/arya.webp', pool: [['hand', 'beetle', 'hand'], ['snake', 'beetle', 'slime']], nav: 'f2', loot: { snuff_soul: 1, dis_poison: 1 } },
     { id: 'f3', label: '9F', block: 'Harabah', bg: 'assets/femc/bg/harabah.webp', pool: [['venus', 'table', 'hand'], ['cupid', 'magus', 'twins']], nav: 'f3', loot: { medicine: 1, revival_bead: 1, patra_gem: 1 } },
-    { id: 'boss', label: 'Full Moon', block: 'Moonlight Bridge', bg: 'assets/femc/bg/moonlightbridge.webp', pool: [['priestess']], nav: 'boss', boss: true, clock: true, music: 'boss' }
+    { id: 'boss', label: 'Full Moon', block: 'The Monorail', bg: 'assets/femc/bg/darkhour-monorail.webp', pool: [['priestess']], nav: 'boss', boss: true, clock: true, music: 'boss' }
   ];
   /* Music per screen. A floor can override `battle` with its own `music` key. Swap files here. */
   const M = 'assets/femc/music/';
