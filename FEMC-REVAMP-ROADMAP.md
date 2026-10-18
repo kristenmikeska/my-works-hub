@@ -48,3 +48,9 @@ What's next for the battle prototype (`femc-battle.html`). **Claude** = code, **
 - [ ] Tartarus exploration art, depending on the map style chosen
 - [x] Decisions: node map; Theurgy yes; direct control with optional Tactics (P3P-style)
 - [ ] Decision still open: difficulty modes
+
+## 5. Life sim: Kat's ideas (collecting for the game-loop batch)
+- **Part-time jobs at places from Solar's worlds, unlocked later in the game** once those worlds start bleeding through:
+  - **Yeobo's Cafe** (*Hoax*): shifts with Sunoo and the ENHYPEN boys dropping in. Jungwon studying in a booth? Jihoon's crew starting trouble?
+  - *Ideas to confirm with Kat:* a campus-style coffee bar or esports café (*Runners*), a harbor fish market or the Lee family's restaurant (*strangers*).
+- **Jobs pay yen and raise social stats.** The world-specific ones also trigger memory fragments and searcher scenes, so they can nudge routes.
