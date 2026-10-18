@@ -18,6 +18,7 @@ window.FEMC_BG = [
   ['Gekkoukan High · 2F Hallway', 'school-hallwaysecondfloor'],
   ['Gekkoukan High · Library', 'school-library'],
   ['Gekkoukan High · Gym · After Hours', 'school-entryhallway'],
+  ['Gekkoukan High · Front Gate', 'gekkoukanhigh'],
   ['Gekkoukan High', 'school-hallway'],
 
   // Iwatodai Dorm
@@ -33,7 +34,7 @@ window.FEMC_BG = [
   ["Iwatodai Dorm · Akihiko's Room", 'akihiko-bedroom'],
   ["Iwatodai Dorm · Kuromi's Room", 'kuromi-bedroom'],
   ['Iwatodai Dorm · Rooftop', 'rooftop-citynight'],
-  ['Iwatodai Dorm · Front', 'outside-daytime-neighborhood'],
+  ['Iwatodai Dorm · Front', 'iwotodaidorm-outside'],
 
   // Iwatodai
   ['Iwatodai Station · Platform', 'subway'],
@@ -41,18 +42,21 @@ window.FEMC_BG = [
   ['Iwatodai Station · Taxi Stand', 'city'],
   ['Iwatodai Station', '0d489c888283c69d5c7848eb84174bc6'],
   ['Iwatodai Strip · Back Alley', 'outside-nightdistrict'],
+  ['Iwatodai Strip · Wild-Duck Burger', 'wilduckburger'],
   ['Iwatodai Strip · Bookworms', 'shopping-street'],
   ['Iwatodai Strip', 'location-2'],
   ['Iwatodai · Riverside', 'park-2'],
   ['Iwatodai · Rooftops', 'rooftop-citynight'],
-  ['Hagakure', 'ramen-shop'],
+  ['Hagakure', 'hagakureramen'],
 
   // Paulownia Mall
   ['Paulownia Mall · Rooftop Garden', 'rooftop-day', 'rooftop-evening'],
   ['Paulownia Mall · Chagall Café', 'lablanc'],
   ['Paulownia Mall · Shop Windows', 'clothing-store'],
   ['Paulownia Mall · Flower Stall', 'shopping-street'],
-  ['Paulownia Mall · Game Panic', 'inside-mall'],
+  ['Paulownia Mall · Game Panic', 'gameparade-outside'],
+  ['Paulownia Mall · Club Escapade', 'clubescapade'],
+  ['Paulownia Mall · Police Box', 'policestation-outside'],
   ['Paulownia Mall · Arcade', 'inside-mall'],
   ['Paulownia Mall · Photo Booth', 'inside-mall'],
   ['Paulownia Mall · Central Atrium', 'inside-mall'],
@@ -60,6 +64,7 @@ window.FEMC_BG = [
 
   // Port Island
   ['Port Island Station · Back Alley', 'outside-nightdistrict'],
+  ['Port Island Station · Wild-Duck Burger', 'wilduckburger'],
   ['Port Island Station · Central Concourse', '0d489c888283c69d5c7848eb84174bc6'],
   ['Port Island Station', 'location-1'],
   ['Port Island · Back Streets', 'outside-nightdistrict'],
