@@ -8,9 +8,20 @@
      { bg } { music } { cg } { cg: null } { dark: true|false }   backdrop changes
      { phone: [{ from, t }], contact }        a text conversation
      { stat } { yen } { flag } { tally } { fragment } { register } { join } { unlock } { setDate }   effects (via the game)
-     { ifRank } { ifStat } { ifFlag } { ifMet } { ifRoute } -> then / else
-     { battle: { id, op, kind, desc, forced } }   hand off to the battle game, then carry on
-     { summon: 'haenim', glitch }   the Evoker and the Persona card
+     { ifRank } { ifStat } { ifFlag } { ifMet } { ifRoute } { ifRomance } -> then / else
+     { ifAfter: 'M/D', then, else }   today is on or after M/D (same rule as a rank's `after`)
+     { ifBefore: 'M/D', then, else }  today is strictly before M/D (so ifBefore X is exactly ifAfter X's else)
+     { flag: { id: true } }           sets flags; { flag: 'id' } and { flag: ['a', 'b'] } set them to true. Works in story
+                                      events, link scenes and choices alike.
+     { battle: { id, op, kind, script, segment, title, desc, notes, forced } }   hand off to the battle game, then carry on
+                                      kind: 'operation' (op = a full-moon id), 'scripted' (script + segment), 'tartarus'.
+                                      A scripted segment can end early on purpose (outcome 'interrupt'); the scene picks up
+                                      on the next line either way.
+     { summon: 'haenim', glitch }   the Evoker and the Persona card. Forms: 'haenim-sunna' (Sunna), 'haenim-harbor' (Mazu),
+                                    'haenim-nike' (Nike), 'haenim-unveiled'; name / sub override the card's two lines
+     { end: 'id' }                  stops the calendar: the game goes to the last night (1/31), where the endings play
+     { ifReversed: 'linkId' }       -> then / else, when that link is reversed (the flag reversed-<id> mirrors it)
+     choices may carry link: 'id' (whose bond reverse / route apply to); in story events a reverse that reaches 2 turns it now
      { act: { numeral, title } }    an act title card
    G (the game) supplies portraits, names, backgrounds, settings and effects. */
 window.FemcScene = (() => {
@@ -181,7 +192,7 @@ window.FemcScene = (() => {
           if (lock) return;
           choices.replaceChildren();
           G.sfx('femc-click');
-          G.applyChoice(o, opts.link);
+          G.applyChoice(o, opts.link, opts.event);
           notes(o.notes || 0);
           const spoken = o.say || (o.t.trim().startsWith('(') ? null : o.t);
           queue.unshift(...(spoken ? [{ s: 'solar', t: spoken }] : []), ...(o.then || []));
@@ -237,10 +248,13 @@ window.FemcScene = (() => {
       const fx = document.createElement('div');
       fx.className = `gs-summon${line.glitch ? ' glitch' : ''}`;
       const shards = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI * 2 + (k % 3) * 0.2; return `<i style="--x:${Math.cos(a).toFixed(2)};--y:${Math.sin(a).toFixed(2)};--r:${(k * 47) % 360}deg;--d:${(k % 4) * 0.03}s"></i>`; }).join('');
-      const names = line.glitch ? ['해—', 'HAE—', 'LADY S—', 'H̷A̵E̶N̸I̷M̵', 'HAENIM'] : ['HAENIM'];
+      // { summon: 'haenim' | 'haenim-sunna' | 'haenim-harbor' (Mazu) | 'haenim-nike' | 'haenim-unveiled', name?, sub? }
+      const FORMS = { haenim: ['HAENIM', 'Lady Sun'], 'haenim-sunna': ['SUNNA', 'The runner under stage lights'], 'haenim-harbor': ['MAZU', 'She who keeps the docks'], 'haenim-mazu': ['MAZU', 'She who keeps the docks'], 'haenim-nike': ['NIKE', 'Winged Victory'], 'haenim-unveiled': ['HAENIM', 'Unveiled'] };
+      const form = FORMS[line.summon] || FORMS.haenim, title = line.name || form[0], sub = line.sub || form[1];
+      const names = line.glitch ? ['해—', 'HAE—', 'LADY S—', 'H̷A̵E̶N̸I̷M̵', title] : [title];
       fx.innerHTML = `<div class="gs-summon-flash"></div><div class="gs-shards">${shards}</div>
-        <img class="gs-summon-art" alt="" src="${G.base}assets/femc/battle/art/personas/${line.summon || 'haenim'}.webp">
-        <div class="gs-summon-card"><small>Persona</small><b>${esc(names[0])}</b><span>Lady Sun</span></div><p class="gs-summon-hint">tap to continue</p>`;
+        <img class="gs-summon-art" alt="" src="${G.base}assets/femc/battle/art/personas/${line.summon === 'haenim-mazu' ? 'haenim-harbor' : (line.summon && line.summon !== true ? line.summon : 'haenim')}.webp">
+        <div class="gs-summon-card"><small>Persona</small><b>${esc(names[0])}</b><span>${esc(sub)}</span></div><p class="gs-summon-hint">tap to continue</p>`;
       el.appendChild(fx);
       G.sfx('femc-rankup');
       const nameB = fx.querySelector('.gs-summon-card b');

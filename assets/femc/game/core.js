@@ -1,7 +1,19 @@
 /* FEMC revamp: game state and rules (calendar, stats, links, jobs, exams, the battle handoff, saves).
    No content lives here; it reads the data files in assets/femc/game/data and links/.
    Save: localStorage 'kg-femc-revamp' (autosave) + 'kg-femc-revamp-slot1..3'. Settings: 'kg-femc-revamp-settings'.
-   Battle handoff: 'kg-femc-handoff' (contract in FEMC-GAME-HANDOFF.md). v1's 'kg-femc-game' is never touched. */
+   Battle handoff: 'kg-femc-handoff' (contract in FEMC-GAME-HANDOFF.md). v1's 'kg-femc-game' is never touched.
+     Beyond the contract, the request also carries `run` (this playthrough's id, S.runId: the battle game keeps one battle
+     save per playthrough), `carryFrom` (New Game+: the previous playthrough's id), `route` (route.choices.solstice),
+     `routeFlags` (which of route-R/S/H/stay/true/bad, true-final, true-fallback are set: the finale's lantern lock) and
+     `trueReady` (true-final or true-path). A result may also carry `flags` ({ id: true }, applied like a scene's { flag }) and `choice` (saved as
+     route.choices['fight.<op or script>'], e.g. the finale's 'hand' or 'defeat').
+   Story events (data/story-*.js, window.FEMC_GAME_EVENTS): { id, date, slot, title, place, time, flag (only if set), link
+     (whose bond the event's `reverse` choices push), consumes, unlock (see unlockMet: fragments / flags / ranks, then it plays on
+     the first matching slot on or after `date`), scene }. Door scenes (FEMC_GAME_FLAGS.doorScenes, story-act5.js) play one a
+     night in the late slot once due (route.doorsDue → route.doorsSeen). The bad ending (flag route-bad) or a scene's { end }
+     jumps to 1/31 late, where 'end-ending' plays; then the end screen (credits, endings seen in 'kg-femc-revamp-clears',
+     New Game+: stats, half the yen, Compendium and books carry over; S.ngFrom tells the battle game whose levels to copy).
+   Debug: femc-game.html?debug=1 keeps the Simulate buttons on fight cards (remembered for the tab's session). */
 window.FemcGame = (() => {
   const KEY = 'kg-femc-revamp', SETTINGS_KEY = 'kg-femc-revamp-settings', HANDOFF_KEY = 'kg-femc-handoff';
   const SLOT_KEY = n => `${KEY}-slot${n}`;
@@ -80,17 +92,18 @@ window.FemcGame = (() => {
     fragments: [], inventory: {}, gear: [], books: { owned: [], reading: null, progress: {}, done: [] },
     jobs: {}, events: [], spent: {}, exams: {}, classSeen: [], phone: { threads: {}, unread: {}, done: [], pending: {}, invite: null, lastInvite: -9 },
     tartarus: { nights: 0, maxFloor: 0, bosses: [], lastParty: null }, battle: { exp: {}, levels: {} },
-    pending: null, handoffId: null, playMinutes: 0, savedAt: null
+    pending: null, handoffId: null, runId: null, playMinutes: 0, savedAt: null
   });
+  const newRunId = () => `r${Date.now().toString(36)}${Math.floor(Math.random() * 1296).toString(36)}`;
   let S = load() || fresh();
   function load() {
     try { const s = JSON.parse(lsGet(KEY) || 'null'); return s && s.v ? migrate(s) : null; } catch (e) { return null; }
   }
-  function migrate(s) { const f = fresh(); return { ...f, ...s, route: { ...f.route, ...(s.route || {}) }, phone: { ...f.phone, ...(s.phone || {}) }, books: { ...f.books, ...(s.books || {}) }, tartarus: { ...f.tartarus, ...(s.tartarus || {}) }, battle: { ...f.battle, ...(s.battle || {}) } }; }
+  function migrate(s) { const f = fresh(); if (!s.runId) s.runId = newRunId(); return { ...f, ...s, route: { ...f.route, ...(s.route || {}) }, phone: { ...f.phone, ...(s.phone || {}) }, books: { ...f.books, ...(s.books || {}) }, tartarus: { ...f.tartarus, ...(s.tartarus || {}) }, battle: { ...f.battle, ...(s.battle || {}) } }; }
   const listeners = [];
   const onChange = fn => listeners.push(fn);
   function save() { S.savedAt = Date.now(); lsSet(KEY, JSON.stringify(S)); listeners.forEach(fn => { try { fn(); } catch (e) { console.error(e); } }); }
-  function newGame() { S = fresh(); S.started = true; S.phase = 'prologue'; save(); }
+  function newGame() { S = fresh(); S.started = true; S.phase = 'prologue'; S.runId = newRunId(); save(); }
 
   /* ── Settings ── */
   const DEFAULTS = { text: 'normal', music: 60, sfx: true, auto: 'off', dateCard: true, battles: 'ask', quickClass: false };
@@ -138,6 +151,29 @@ window.FemcGame = (() => {
        ranks: 10 entries, each { after: 'M/D', title: '1: rookie', place, time, music, scene: [lines] } or { todo: '…' }
        forced: [rank numbers] that play as story on their `after` date (no meter); reversible: true allows reversal
        status: 'stub' for links that exist but aren't written (links/stubs.js).
+       afterMax: [{ place, time, music, scene }, ...]  what spending time together plays after rank 10. They play in order, then
+         rotate, at the link's usual spot (no meter, no rank-up; ifRoute still works). The entry's place/time are the scene's.
+         A link that has *left* (see leavesAtMax / closes) can't be met any more; its afterMax become **traces**: from the day
+         after `closes`, each entry shows up once, in order, as something to look at in the area its `place` names (e.g.
+         'Paulownia Mall · Fountain' → Paulownia Mall; 'Iwatodai Dorm · …' → the dorm's evening menu), at the slot its `time`
+         suggests (Evening / Night / Late → evening, anything else → after school / daytime). Each trace plays once.
+       leavesAtMax: true | false  the link's rank 10 is its goodbye. Default: true when `closes` is 21 days or less after
+         rank 10's `after` date (Ann: rank 10 10/23, closes 11/3; Shinjiro: 10/3, 10/4), so afterMax only plays as traces.
+         Links that stay a while after MAX (Haru: 12/4 → 1/30) play afterMax normally until `closes`, then nothing.
+       christmas: { place, time, music, scene, rank, early }  the Christmas Eve date (12/24 evening). The partner pick lists every
+         met link with `christmas` that is on its romance route (route 'romance') at rank 8+ (the earliest romance turn; a
+         link that has closed by 12/24, like Shinjiro, needs rank 10). `rank: n` overrides the rank; `early: n` lets a link be
+         picked from rank n before any route is set (v1's field, unless the route is 'friend'). The pick is saved as
+         route.choices.xmas = link id | 'alone' (plus the flag xmas-<id>) for the endings' variant. It never sets a route.
+       summerHome / winterHome: { area, spot, slot, days, hint }  where the link is during Summer Break / Winter Break (calendar
+         `breaks` ids). Links whose home is at school (a schoolOnly area like Gekkoukan) and have no break home are
+         unreachable in person on breaks and holidays, so on those days they text "free right now?" invites more often
+         (every day instead of every other day, and most days rather than about half).
+       ranks[n].gate: { R|S|H: n } or { total: n }  memory fragments needed before that rank can play (Wren's 7, 8, 10).
+       repair: [[lines], …] or [{ place, time, scene }]  a reversed link's own make-up scenes (in turn), instead of the generic one.
+       farewell: [lines]  plays (early morning) the day after `closes` if the bond never reached rank 10. Without it the game
+         plays a short generic goodbye so a link never vanishes silently (a text from visitors and searchers, narration
+         for everyone else).
      Scene lines: see scene.js. Choices give ♪ with `notes` (0-3); `reverse: 1` pushes a reversible link. */
   const LINKS = {};
   const CAST = { solar: 'Solar', 'mitsuru-radio': 'Mitsuru · Radio', porter: '???', clerk: 'Clerk', ikutsuki: 'Ikutsuki', teacher: 'Teacher', fuuka: 'Fuuka', koromaru: 'Koromaru', ken: 'Ken', aigis: 'Aigis', elizabeth: 'Elizabeth', wren: 'Wren', kurosawa: 'Officer Kurosawa' };
@@ -154,25 +190,55 @@ window.FemcGame = (() => {
   const isMet = id => S.met.includes(id);
   const written = l => (l.ranks || []).filter(r => r && r.scene).length;
   const linkName = l => (isMet(l.id) ? l.name : '???');
-  function fragGateMet(gate) { return Object.entries(gate || {}).every(([w, n]) => (S.route.frags[w] || 0) >= n); }
+  // { R|S|H: n } per world, { total: n } across all three (S.route.frags counts what each world has found).
+  function fragGateMet(gate) {
+    return Object.entries(gate || {}).every(([w, n]) => (w === 'total' ? Object.values(S.route.frags).reduce((a, b) => a + (b || 0), 0) : (S.route.frags[w] || 0)) >= n);
+  }
+  // Where a link spends its free time today: summerHome / winterHome on those breaks, otherwise home.
+  function homeOf(l, d = S.day) {
+    const brk = D.cal.breaks.find(b => inRange(d, b.from, b.to));
+    if (brk?.id === 'summer' && l.summerHome) return l.summerHome;
+    if (brk?.id === 'winter' && l.winterHome) return l.winterHome;
+    return l.home || {};
+  }
+  // A link whose rank 10 is its goodbye (see leavesAtMax in the header).
+  function leavesAtMax(l) {
+    if (typeof l.leavesAtMax === 'boolean') return l.leavesAtMax;
+    const r10 = l.ranks?.[9]?.after;
+    return !!(l.closes && r10 && dayOf(l.closes) - dayOf(r10) <= 21);
+  }
+  // Home-slot check shared by ranks, hangouts and afterMax.
+  function atHome(l, d, slot) {
+    const h = homeOf(l, d), info = dayInfo(d);
+    const hs = h.slot === 'evening' ? 'evening' : 'after';
+    if (hs !== slot || !(h.days || []).includes(info.dow)) return false;
+    if (h.slot !== 'evening' && h.areaSchoolOnly !== false && areaById(h.area)?.schoolOnly && info.type !== 'school') return false;
+    return true;
+  }
   function linkStatus(l, d = S.day, slot = S.slot) {
     const p = progress(l.id);
     if (l.hidden || l.status === 'stub' || !l.ranks?.[0]?.scene) return { ok: false, reason: 'unwritten' };
-    if (p.rank >= 10) return { ok: false, reason: 'max' };
+    if (p.rank >= 10) {
+      // After MAX: afterMax scenes with the person, unless they've left (then they're traces, see tracesAt).
+      if (!(l.afterMax || []).length || leavesAtMax(l)) return { ok: false, reason: 'max' };
+      if (l.closes && d >= dayOf(l.closes)) return { ok: false, reason: 'closed' };
+      if (S.spent[`${d}-${slot}`]) return { ok: false, reason: 'spent' };
+      if (!atHome(l, d, slot)) return { ok: false, reason: 'elsewhere' };
+      return { ok: true, after: true };
+    }
     const next = l.ranks[p.rank];
     if (!next?.scene) return { ok: false, reason: 'unwritten' };
     if (d < dayOf(l.starts || '4/8') || !fragGateMet(l.gate)) return { ok: false, reason: 'away' };
     if (l.closes && d >= dayOf(l.closes)) return { ok: false, reason: 'closed' };
+    // A rank's own `gate` (memory fragments, e.g. Wren's { total: 12 }) holds it back until they're found.
+    if (next.gate && !fragGateMet(next.gate)) return { ok: false, reason: 'later', gate: next.gate };
     // Story ranks play on their date (dueEvent); before that, time together is a hangout.
     if (l.forced?.includes(p.rank + 1) && next.after && d >= dayOf(next.after)) return { ok: false, reason: 'story' };
     if (l.forced?.includes(p.rank + 1) && !(l.hangouts || []).length) return { ok: false, reason: 'later' };
     if (p.rank === 0 && l.needs && lacking(l.needs)) return { ok: false, reason: 'needs', needs: lacking(l.needs) };
     if (S.spent[`${d}-${slot}`]) return { ok: false, reason: 'spent' };
     if (next.after && d < dayOf(next.after) && !l.forced?.includes(p.rank + 1)) return { ok: false, reason: 'later', when: next.after };
-    const h = l.home || {}, info = dayInfo(d);
-    const hs = h.slot === 'evening' ? 'evening' : 'after';
-    if (hs !== slot || !(h.days || []).includes(info.dow)) return { ok: false, reason: 'elsewhere' };
-    if (h.slot !== 'evening' && h.areaSchoolOnly !== false && areaById(h.area)?.schoolOnly && info.type !== 'school') return { ok: false, reason: 'elsewhere' };
+    if (!atHome(l, d, slot)) return { ok: false, reason: 'elsewhere' };
     return { ok: true };
   }
   function maxNotes(lines) {
@@ -186,13 +252,38 @@ window.FemcGame = (() => {
   const need = (l, r) => (r <= 0 || !l.ranks[r]?.scene ? 0 : Math.max(4, Math.round(maxNotes(l.ranks[r].scene) * 0.8)));
   // Link homes name an area id or an area's display name.
   const areaById = id => D.places.areas.find(a => a.id === id || a.name === id);
-  const linkPlace = l => { const a = areaById(l.home?.area); return `${a ? a.name : (l.home?.area || '')}${l.home?.spot ? ` · ${l.home.spot}` : ''}`; };
-  const linksAt = (areaId, slot = S.slot) => Object.values(LINKS).filter(l => areaById(l.home?.area)?.id === areaId && !['unwritten', 'away', 'closed', 'max'].includes(linkStatus(l, S.day, slot).reason) && (linkStatus(l, S.day, slot).ok || ['spent', 'later', 'needs'].includes(linkStatus(l, S.day, slot).reason) && isHome(l, slot)));
-  function isHome(l, slot = S.slot) { const h = l.home || {}, info = dayInfo(); return (h.slot === 'evening' ? 'evening' : 'after') === slot && (h.days || []).includes(info.dow); }
-  // What to play when Solar spends time with a link: { kind: 'rank'|'hangout'|'repair', r, scene, place, title }
-  function linkScene(l) {
+  const linkPlace = l => { const h = homeOf(l), a = areaById(h.area); return `${a ? a.name : (h.area || '')}${h.spot ? ` · ${h.spot}` : ''}`; };
+  const linksAt = (areaId, slot = S.slot) => Object.values(LINKS).filter(l => areaById(homeOf(l).area)?.id === areaId && !['unwritten', 'away', 'closed', 'max'].includes(linkStatus(l, S.day, slot).reason) && (linkStatus(l, S.day, slot).ok || ['spent', 'later', 'needs'].includes(linkStatus(l, S.day, slot).reason) && isHome(l, slot)));
+  function isHome(l, slot = S.slot) { const h = homeOf(l), info = dayInfo(); return (h.slot === 'evening' ? 'evening' : 'after') === slot && (h.days || []).includes(info.dow); }
+  // An afterMax entry's area (longest area name its place starts with) and slot.
+  function areaOfPlace(place, fallback) {
+    const hit = D.places.areas.filter(a => String(place || '').startsWith(a.name)).sort((a, b) => b.name.length - a.name.length)[0];
+    return hit || areaById(fallback) || null;
+  }
+  const slotOfTime = t => (/Evening|Night|Late|Dark Hour/i.test(t || '') ? 'evening' : 'after');
+  // Traces: afterMax scenes of a link that has left. The next one (in order, each once) waits in its area from the day after `closes`.
+  function nextTrace(l, d = S.day) {
+    const p = progress(l.id), list = l.afterMax || [];
+    if (p.rank < 10 || !list.length || !leavesAtMax(l)) return null;
+    const from = l.closes ? dayOf(l.closes) + 1 : (p.rankDay[10] ?? d) + 1;
+    if (d < from || (p.after || 0) >= list.length) return null;
+    const e = list[p.after || 0], a = areaOfPlace(e.place, l.home?.area);
+    return a ? { link: l, i: p.after || 0, entry: e, area: a.id, slot: a.id === 'dorm' ? 'evening' : slotOfTime(e.time) } : null;
+  }
+  function tracesAt(areaId, slot = S.slot) {
+    if (S.spent[`${S.day}-${slot}`]) return [];
+    return Object.values(LINKS).map(l => nextTrace(l)).filter(t => t && t.area === areaId && t.slot === slot && (areaId === 'dorm' || D.places.areas.find(a => a.id === areaId)?.slots.includes(slot)));
+  }
+  // What to play when Solar spends time with a link: { kind: 'rank'|'hangout'|'repair'|'after'|'trace', r, scene, place, title }
+  function linkScene(l, trace) {
     const p = progress(l.id), r = p.rank;
     const hang = () => { const pool = l.hangouts || []; return pool.length ? pool[(p.hung || 0) % pool.length] : [{ n: `Solar spent a while with ${l.short}. They talked about nothing in particular, which turned out to be the point.` }, { choose: [{ t: '(Mostly listen.)', notes: 2 }, { t: '(Tell them about your week.)', notes: 3 }, { t: '(Tease them a little.)', notes: 1 }] }]; };
+    if (trace) return { kind: 'trace', r, scene: trace.entry.scene || [], place: trace.entry.place || linkPlace(l), time: trace.entry.time, music: trace.entry.music, title: trace.entry.title };
+    if (r >= 10 && (l.afterMax || []).length) {
+      const e = l.afterMax[(p.after || 0) % l.afterMax.length];
+      return { kind: 'after', r, scene: e.scene || [], place: e.place || linkPlace(l), time: e.time, music: e.music, title: e.title };
+    }
+    if (p.reversed && (l.repair || []).length) { const e = l.repair[(p.repairs || 0) % l.repair.length]; return { kind: 'repair', r, scene: Array.isArray(e) ? e : e.scene || [], place: (!Array.isArray(e) && e.place) || linkPlace(l), time: !Array.isArray(e) ? e.time : undefined }; }
     if (p.reversed) return { kind: 'repair', r, scene: [{ n: `${l.short} didn't quite look at her at first. Solar stayed anyway, and said the thing she should have said last time, and after a while the silence between them stopped being the bad kind.` }], place: linkPlace(l) };
     if ((p.ready === r && r > 0) || (l.forced?.includes(r + 1) && r > 0 && !(l.ranks[r]?.after && S.day >= dayOf(l.ranks[r].after)))) return { kind: 'hangout', r, scene: hang(), place: linkPlace(l), story: l.forced?.includes(r + 1) };
     const rank = l.ranks[r];
@@ -205,8 +296,9 @@ window.FemcGame = (() => {
     if (!S.registered.includes(l.id)) S.registered.push(l.id);
     S.spent[`${S.day}-${S.slot}`] = l.id;
     p.lastDay = S.day;
-    if (kind === 'repair') { p.reversed = false; p.push = 0; save(); return { repaired: true }; }
-    if (p.push >= 2 && l.reversible && !p.reversed) { p.reversed = true; delete p.ready; save(); return { reversed: true, rank: p.rank }; }
+    if (kind === 'repair') { p.reversed = false; p.push = 0; p.repairs = (p.repairs || 0) + 1; S.flags[`reversed-${l.id}`] = false; save(); return { repaired: true }; }
+    if (kind === 'after' || kind === 'trace') { p.after = (p.after || 0) + 1; save(); return { after: true }; }
+    if (p.push >= 2 && l.reversible && !p.reversed) { p.reversed = true; S.flags[`reversed-${l.id}`] = true; delete p.ready; save(); return { reversed: true, rank: p.rank }; }
     const story = l.ranks[r]?.story || l.forced?.includes(r + 1);
     if (story && kind === 'hangout') { p.hung = (p.hung || 0) + 1; p.xp = (p.xp || 0) + gained; save(); return { up: false, req: 0 }; }
     const req = story ? 0 : need(l, r);
@@ -221,6 +313,12 @@ window.FemcGame = (() => {
 
   /* ── Effects and branches used by scenes ── */
   const flag = id => !!S.flags[id];
+  // { flag: { id: true } } (the usual form), or { flag: 'id' } / { flag: ['a', 'b'] } to set flags to true.
+  function setFlags(v) {
+    if (typeof v === 'string') S.flags[v] = true;
+    else if (Array.isArray(v)) v.forEach(k => { if (typeof k === 'string') S.flags[k] = true; });
+    else if (v && typeof v === 'object') Object.assign(S.flags, v);
+  }
   function tally(obj) {
     for (const [k, v] of Object.entries(obj || {})) {
       if (typeof v === 'number') S.route.tally[k] = (S.route.tally[k] || 0) + v; else S.route.choices[k] = v;
@@ -244,12 +342,13 @@ window.FemcGame = (() => {
     let did = false;
     if (line.stat) { addStats(line.stat); did = true; }
     if (line.yen) { addYen(line.yen); did = true; }
-    if (line.flag) { Object.assign(S.flags, line.flag); did = true; }
+    if (line.flag) { setFlags(line.flag); did = true; }
     if (line.tally) { tally(line.tally); did = true; }
     if (line.fragment) { addFragment(line.fragment); did = true; }
     if (line.item) { Object.entries(line.item).forEach(([k, v]) => addItem(k, v)); did = true; }
     if (line.register) { if (!S.registered.includes(line.register)) { S.registered.push(line.register); if (!line.quiet) toast('register', `Registered to the Compendium: ${CAST[line.register] || line.register}`); } did = true; }
     if (line.join) { if (!S.joined.includes(line.join)) { S.joined.push(line.join); S.flags[`joined-${line.join}`] = true; toast('join', `${CAST[line.join] || line.join} joined S.E.E.S.`); } did = true; }
+    if (line.end) { S.flags['the-end'] = line.end; did = true; }
     if (line.unlock) { S.unlocked[line.unlock] = true; if (line.unlock === 'tartarus') toast('unlock', 'Tartarus is open at night.'); did = true; }
     if (did) save();
     return did;
@@ -262,15 +361,27 @@ window.FemcGame = (() => {
     else if (line.ifMet) ok = [].concat(line.ifMet).every(isMet);
     else if (line.ifRoute) ok = linkId && progress(linkId).route === line.ifRoute;
     else if (line.ifRomance) ok = progress(line.ifRomance).route === 'romance';
+    else if (line.ifReversed) ok = [].concat(line.ifReversed).every(id => !!progress(id).reversed);
+    // Dates: ifAfter is "on or after" (like a rank's `after`), ifBefore is "strictly before"; they're each other's else.
+    else if (line.ifAfter) ok = S.day >= dayOf(line.ifAfter);
+    else if (line.ifBefore) ok = S.day < dayOf(line.ifBefore);
     if (ok === null) return null;
     return (ok ? line.then : line.else) || [];
   }
-  function applyChoice(o, linkId) {
-    if (o.flag) Object.assign(S.flags, o.flag);
+  // A choice can name its link (o.link). In a story event (now = true) a push that reaches 2 reverses the link at once;
+  // in a link's own scene the reversal is settled when the scene ends (finishLink).
+  function applyChoice(o, linkId, now) {
+    now = now || !!o.link;
+    linkId = o.link || linkId;
+    if (o.flag) setFlags(o.flag);
     if (o.tally) tally(o.tally);
     if (o.stat) addStats(o.stat);
     if (typeof o.route === 'string' && linkId) progress(linkId).route = o.route;
-    if (o.reverse && linkId) progress(linkId).push = (progress(linkId).push || 0) + o.reverse;
+    if (o.reverse && linkId) {
+      const p = progress(linkId), l = LINKS[linkId];
+      p.push = (p.push || 0) + o.reverse;
+      if (now && l?.reversible && p.push >= 2 && !p.reversed) { p.reversed = true; S.flags[`reversed-${linkId}`] = true; delete p.ready; toast('reverse', `Your bond with ${l.short} has turned…`); }
+    }
     save();
   }
 
@@ -419,8 +530,11 @@ window.FemcGame = (() => {
   function hasBattle(lines) { return (lines || []).some(l => l.battle || hasBattle(l.then) || hasBattle(l.else) || (l.choose || []).some(o => hasBattle(o.then))); }
   function dueEvent(slot = S.slot, d = S.day) {
     const md = mdOf(d);
-    const ev = D.events.find(e => e.date === md && SLOT_FOR[e.slot || 'evening'] === slot && !S.events.includes(e.id) && (!e.flag || flag(e.flag)));
+    const ev = D.events.find(e => (e.unlock ? d >= dayOf(e.date) && unlockMet(e.unlock, d) : e.date === md) && SLOT_FOR[e.slot || 'evening'] === slot && !S.events.includes(e.id) && (!e.flag || flag(e.flag)));
     if (ev) return { kind: 'event', ev };
+    // Door scenes (data/flags.js doorScenes, written in story-act5.js): one a night, late, once a world's 3rd/6th/9th
+    // memory fragment has made it due.
+    if (slot === 'late' && S.phase === 'play') { const key = doorDue(d); if (key) return { kind: 'door', key }; }
     // Full-moon operations with no event of their own.
     const opTonight = D.cal.ops.some(o => o.date === md && !S.tartarus.bosses.includes(o.op) && !S.flags[`op-${o.op}`]);
     if (slot === 'evening') {
@@ -428,17 +542,101 @@ window.FemcGame = (() => {
       const covered = D.events.some(e => e.date === md && hasBattle(e.scene));
       if (ops.length && !covered) return { kind: 'op', ops };
     }
+    // Christmas Eve: the partner pick (12/24 evening; on the late slot if a story event took the evening).
+    if (md === XMAS && ['evening', 'late'].includes(slot) && !S.route.choices.xmas && S.phase === 'play' && (slot === 'evening' || S.spent[`${d}-evening`])) return { kind: 'christmas' };
+    // A link that closed before rank 10 says goodbye the morning after (see `farewell`).
+    if (slot === 'early') { const l = farewellDue(d); if (l) return { kind: 'farewell', link: l }; }
     // Story ranks that happen on a date (a link's `forced`).
     for (const l of Object.values(LINKS)) {
       const p = progress(l.id);
       if (!l.forced?.includes(p.rank + 1)) continue;
       const rank = l.ranks[p.rank];
       if (opTonight) continue;
-      if (rank?.scene && rank.after && d >= dayOf(rank.after) && (l.home?.slot === 'evening' ? 'evening' : 'after') === slot) return { kind: 'link', link: l };
+      if (rank?.scene && rank.after && d >= dayOf(rank.after) && fragGateMet(rank.gate) && (l.home?.slot === 'evening' ? 'evening' : 'after') === slot) return { kind: 'link', link: l };
     }
     return null;
   }
   const markEvent = id => { if (!S.events.includes(id)) S.events.push(id); save(); };
+  // An event's `unlock` holds it until a condition is met, then it plays on the first matching slot on or after its `date`:
+  //   unlock: { fragments: { R: 3 } | { total: 12 }, flags: ['id', …], ranks: { linkId: n }, until: 'M/D' }
+  function unlockMet(u, d = S.day) {
+    if (u.until && d > dayOf(u.until)) return false;
+    if (u.fragments && !fragGateMet(u.fragments)) return false;
+    if (u.flags && ![].concat(u.flags).every(flag)) return false;
+    if (u.ranks && !Object.entries(u.ranks).every(([id, r]) => progress(id).rank >= r)) return false;
+    return true;
+  }
+  function doorDue(d = S.day) {
+    const scenes = D.flags.doorScenes || {};
+    if (S.route.doorNight === d) return null;
+    return S.route.doorsDue.find(k => scenes[k] && !S.route.doorsSeen.includes(k)) || null;
+  }
+  function markDoor(key) { if (!S.route.doorsSeen.includes(key)) S.route.doorsSeen.push(key); S.route.doorNight = S.day; save(); }
+  /* ── The end of the year ── */
+  // { end: 'id' } in a scene (or the solstice's route-bad flag) stops the calendar: the game jumps to the last night (1/31,
+  // late), where the endings event plays, then the end screen.
+  const endingDue = () => !!(S.flags['the-end'] || S.flags['route-bad']) && S.day < END();
+  function jumpToEnd() { S.day = END(); S.slot = 'late'; S.tonight = null; save(); }
+  function endingName() {
+    const f = S.flags;
+    return f['route-bad'] ? 'the last stop' : f['true-final'] ? 'I am thou' : f['route-R'] ? 'where it begins' : f['route-S'] ? 'low tide' : f['route-H'] ? 'the count' : 'here';
+  }
+  const CLEARS_KEY = 'kg-femc-revamp-clears';
+  function recordClear() {
+    let list = []; try { list = JSON.parse(lsGet(CLEARS_KEY) || '[]') || []; } catch (e) {}
+    if (!list.some(x => x.run === S.runId)) { list.push({ run: S.runId, ending: endingName(), xmas: S.route.choices.xmas || null, at: Date.now(), ngp: S.ngp || 0 }); lsSet(CLEARS_KEY, JSON.stringify(list)); }
+    return list;
+  }
+  // New Game+: a fresh year that keeps Solar's social stats, half her yen, the Compendium and the books she owns. The battle
+  // game copies this playthrough's levels, tree and gear into the new one on its first fight (request.carryFrom).
+  function newGamePlus() {
+    const old = S;
+    S = fresh(); S.started = true; S.phase = 'prologue'; S.runId = newRunId();
+    S.stats = { ...old.stats }; S.yen = Math.max(D.stats.startYen, Math.round(old.yen / 2)); S.registered = [...old.registered];
+    S.books.owned = [...old.books.owned]; S.books.done = [...old.books.done]; S.ngp = (old.ngp || 0) + 1; S.ngFrom = old.runId; S.flags.ngplus = true;
+    save();
+  }
+
+  /* ── Goodbyes and Christmas Eve ── */
+  function farewellDue(d = S.day) {
+    return Object.values(LINKS).find(l => {
+      if (!l.closes || d <= dayOf(l.closes) || l.status === 'stub' || !isMet(l.id)) return false;
+      const p = progress(l.id);
+      return p.rank > 0 && p.rank < 10 && !p.farewell;
+    }) || null;
+  }
+  // The scene for a link that closed before rank 10: its own `farewell`, or a generic goodbye (no plot).
+  function farewellScene(l) {
+    const p = progress(l.id);
+    p.farewell = S.day; save();
+    if (Array.isArray(l.farewell) && l.farewell.length) return l.farewell;
+    const spot = homeOf(l).spot ? `${homeOf(l).spot.toLowerCase()}` : 'usual spot';
+    const lines = [{ n: `${l.short} wasn't at the ${spot} anymore. Solar noticed it the way you notice a clock that has stopped, late and all at once.` }];
+    if (['visitor', 'searcher'].includes(l.kind)) lines.push({ phone: [{ from: l.id, t: 'hey. i had to go. i wanted to say it properly and i didn\u2019t get the chance' }, { from: l.id, t: 'thank you for the time we had. really. take care of yourself' }], contact: l.name });
+    lines.push({ n: 'Whatever the two of them had been building stopped where it stopped. She kept what there was of it.' });
+    return lines;
+  }
+  const XMAS = '12/24';
+  // Who can be picked on Christmas Eve (see `christmas` in the header): romance route, the rank it needs, not reversed.
+  function christmasOptions(d = S.day) {
+    return Object.values(LINKS).filter(l => {
+      const c = l.christmas; if (!c || !isMet(l.id) || l.status === 'stub') return false;
+      const p = progress(l.id); if (p.reversed) return false;
+      const closed = l.closes && dayOf(l.closes) <= d;
+      const need = c.rank ?? (closed ? 10 : 8);
+      if (p.route === 'romance' && p.rank >= need) return true;
+      return !!(c.early && p.rank >= c.early && !p.route);
+    });
+  }
+  // Records the pick. id = a link id, or null / 'alone'. Sets the endings' variant only; never a route (plot rule).
+  function pickChristmas(id) {
+    const who = id && LINKS[id] ? id : 'alone';
+    S.route.choices.xmas = who;
+    if (who !== 'alone') S.flags[`xmas-${who}`] = true;
+    S.spent[`${S.day}-evening`] = `xmas:${who}`;
+    save();
+    return who === 'alone' ? null : LINKS[who];
+  }
 
   /* ── Class and exams ── */
   function classQuestion() {
@@ -526,11 +724,17 @@ window.FemcGame = (() => {
     save();
   }
   // "Free right now?": a met friend whose next rank is ready but who isn't at their usual spot.
+  // On breaks and holidays, links whose home is at school (and who have no break home) are stranded: they ask more often.
+  function stranded(l, d = S.day) { const h = homeOf(l, d); return h.slot !== 'evening' && !!areaById(h.area)?.schoolOnly; }
   function maybeInvite() {
-    if (!['after', 'evening'].includes(S.slot) || S.day - S.phone.lastInvite < 2 || S.phone.invite) return;
+    if (!['after', 'evening'].includes(S.slot) || S.phone.invite) return;
+    const info = dayInfo(), holiday = info.type === 'off' && !!(info.brk || info.holiday);
     const ready = Object.values(LINKS).filter(l => l.invite && isMet(l.id) && !progress(l.id).reversed && linkStatus(l).reason === 'elsewhere');
-    if (!ready.length || seeded(S.day * 7 + S.slot.length) < 0.45) return;
-    const l = ready[Math.floor(seeded(S.day * 13) * ready.length)];
+    const away = holiday ? ready.filter(l => stranded(l)) : [];
+    if (away.length) { if (S.day - S.phone.lastInvite < 1 || seeded(S.day * 7 + S.slot.length) < 0.2) return; }
+    else if (S.day - S.phone.lastInvite < 2 || !ready.length || seeded(S.day * 7 + S.slot.length) < 0.45) return;
+    const pool = away.length ? away : ready;
+    const l = pool[Math.floor(seeded(S.day * 13 + S.slot.length) * pool.length)];
     const ask = l.invite.ask[Math.floor(seeded(S.day) * l.invite.ask.length)];
     S.phone.invite = { link: l.id, d: S.day, slot: S.slot };
     S.phone.lastInvite = S.day;
@@ -610,6 +814,8 @@ window.FemcGame = (() => {
         yen: S.yen, items: { ...S.inventory }, gear: [...S.gear],
         maxFloor: floorCap(), bestFloor: S.tartarus.maxFloor, bossesCleared: [...S.tartarus.bosses],
         fragments: [...S.fragments], fragmentsOpen: S.day >= dayOf(D.cal.fragmentsFrom || '5/16'),
+        run: S.runId, carryFrom: S.ngFrom || null, route: S.route.choices.solstice ?? null, trueReady: !!(S.flags['true-final'] || S.flags['true-path']),
+        routeFlags: ['route-R', 'route-S', 'route-H', 'route-stay', 'route-true', 'route-bad', 'true-final', 'true-fallback'].filter(flag),
         social: { stats: { ...S.stats }, ranks: Object.fromEntries(Object.entries(S.links).filter(([, p]) => p.rank > 0).map(([k, p]) => [k, p.rank])) },
         difficulty: null
       },
@@ -660,6 +866,9 @@ window.FemcGame = (() => {
     if (h.kind === 'tartarus') { S.tartarus.nights += 1; S.tonight = 'tartarus-done'; }
     if (r.fatigue) { S.condition = r.fatigue; S.tonightFatigue = r.fatigue; }
     if (h.kind === 'tartarus' || (h.kind === 'operation' && r.fatigue)) S.tonight = 'battled';
+    // Extras the battle game may send from story fights (the finale): flags to set, and the choice made in the fight.
+    if (r.flags) setFlags(r.flags);
+    if (r.choice && (h.request.op || h.request.script)) S.route.choices[`fight.${h.request.op || h.request.script}`] = r.choice;
     save();
     return sum;
   }
@@ -688,11 +897,12 @@ window.FemcGame = (() => {
     dayOf, dateOf, mdOf, dayInfo, slotsFor, slotName, weather, moon, END, SLOT_ORDER,
     statRank, statRankName, statProgress, addStat, addStats, lacking, addYen, takeToasts, toast,
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
+    homeOf, leavesAtMax, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas,
     flag, effect, branch, applyChoice, addFragment, fragmentInfo, worldOf,
     portrait, scale, name, silhouette, tarot, background, moodFor, sub, setDate, dateLabel,
     activityOk, doActivity, shopStock, buy, bookById, readTonight,
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift,
-    dueEvent, markEvent, hasBattle,
+    dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, answerInvite, unread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, simulate, applyResult,

@@ -2,10 +2,35 @@
    Full Moon Operations, Persona evolutions and Haenim's forms.
    Rules live in engine.js (battles, growth) and map.js (node maps), content in data.js, art in shadows.js / icons.js, effects in fx.js.
    Save: localStorage 'kg-femc-battle-proto' only (never the main game's kg-femc-game).
+   Handoff mode (the life sim, FEMC-GAME-HANDOFF.md): femc-battle.html?from=game with a pending 'kg-femc-handoff' plays the
+   requested fight (a Tartarus night, a full-moon operation or a scripted story fight), writes `result` + status 'done' and
+   goes back to `returnTo`. It never reads or writes the prototype's save: it keeps 'kg-femc-revamp-battle' instead,
+   { v: 1, runs: { <request.run>: { at, day, save } } }: one battle save (levels, EXP, Haenim's tree, Personas, equipment,
+   materials, access point) per life-sim playthrough, the 4 most recent kept. A playthrough's first fight seeds it from the
+   game's date (a level a little under that month's full moon, the matching skill points; device settings are copied from
+   the prototype's save if there is one, read only), or, on New Game+, from the playthrough named in request.carryFrom. On every handoff the life sim's party, items, yen, gear, date, floor cap,
+   cleared operations, memory fragments and Solar's condition replace the battle save's own (the life sim is the source of
+   truth for those); levels, the tree and equipment stay the battle game's. See the HANDOFF section near the end.
+   Without ?from=game (or with no pending handoff) the page is the prototype exactly as before. A handoff that is already
+   'done' sends the page straight back to the game.
    Test hooks: ?seed=N (repeatable fights), ?speed=N (animation speed), ?fps=1 (frame meter), window.FemcBattle (state + freeze for screenshots). */
 (() => {
   const D = window.FEMC_BATTLE_DATA, E = window.FemcBattleEngine, ART = window.FemcBattleArt, FX = window.FemcFX, MAP = window.FemcTartarusMap, ICON = window.FemcIcons;
-  const KEY = 'kg-femc-battle-proto';
+  const HANDOFF_KEY = 'kg-femc-handoff', REVAMP_KEY = 'kg-femc-revamp-battle', PROTO_KEY = 'kg-femc-battle-proto';
+  const HO = (() => {
+    if (!/[?&]from=game\b/.test(location.search)) return null;
+    try { const h = JSON.parse(localStorage.getItem(HANDOFF_KEY) || 'null'); return h && h.request && ['pending', 'done'].includes(h.status) ? h : null; } catch (e) { return null; }
+  })();
+  if (HO && HO.status === 'done') { location.replace(HO.returnTo || 'femc-game.html?from=battle'); return; }
+  const KEY = HO ? REVAMP_KEY : PROTO_KEY;
+  // Memory cards without art yet: swap in a placeholder card (data.js memoryPlaceholder) the moment the image fails to load.
+  document.addEventListener('error', e => {
+    const t = e.target, m = t && t.tagName === 'IMG' && !t.dataset.ph && /memories\/([a-z0-9-]+?)(-wide)?\.webp/.exec(t.getAttribute('src') || '');
+    if (m && D.memoryPlaceholder) { t.dataset.ph = '1'; t.src = D.memoryPlaceholder(m[1]); return; }
+    // No finish-card art for a member (the searchers, so far): their portrait stands in.
+    const f = t && t.tagName === 'IMG' && !t.dataset.ph && /art\/finish\/([a-z]+)\.webp/.exec(t.getAttribute('src') || '');
+    if (f && D.party.some(x => x.id === f[1])) { t.dataset.ph = '1'; t.src = `${D.portraits}${f[1]}/serious.webp`; }
+  }, true);
   const params = new URLSearchParams(location.search);
   const app = document.getElementById('bt-app');
   const root = document.documentElement;
@@ -15,6 +40,8 @@
   const pimg = (id, face) => `${D.portraits}${id}/${face}.webp?v=${V()}`;
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const member = mid => D.party.find(m => m.id === mid);
+  // Who this page deals with: the prototype leaves the searchers out (they only fight in the life sim, once awake).
+  const usable = m => (HO ? hoAvail().includes(m.id) : !m.searcher);
   /* Portrait crops. An <img class="fc"> inside a box with class "fcb" is scaled and placed from the face-focus table (data.js
      faceFocus) so the eyes sit on the box's eye line and the whole face shows; each box sets its framing in CSS (--zy, --zk). */
   const focusOf = (id, face) => { const f = D.faceFocus[id] || { x: 50, y: 40, s: 25, ar: 1.1 }, a = f.alt && f.alt[face]; return a ? Object.assign({}, f, a) : f; };
@@ -28,12 +55,17 @@
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
   const ART_V = 3;
   const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
-  Object.values(D.personas).forEach(p => { if (p.art && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
+  Object.values(D.personas).forEach(p => { if (p.art && !p.art.startsWith('data:') && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
   const FINISH_DIR = 'assets/femc/battle/art/finish/', SUMMON_DIR = 'assets/femc/battle/art/summon/';
+  // The searchers have no finish-card art yet: their portrait stands in.
+  const finishArt = mid => ((member(mid) || {}).searcher ? pimg(mid, 'serious') : FINISH_DIR + mid + '.webp');
   const AWAKEN = ['solar-01-resolve', 'solar-02-focus', 'solar-03-awakening', 'solar-04-manifestation', 'solar-05-command', 'solar-06-summoned'];
   /* A stylized Evoker for members without their own Evoker art (muzzle on the left, at the temple). */
   const EVOKER_SVG = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 110"><defs><linearGradient id="m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f9ff"/><stop offset=".35" stop-color="#c9d0dc"/><stop offset=".7" stop-color="#8a93a6"/><stop offset="1" stop-color="#4b5263"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a404e"/><stop offset="1" stop-color="#14171f"/></linearGradient></defs><path d="M214 30H70l-10 5v22h34l6 7h20l7-7h87z" fill="url(#m)" stroke="#12151c" stroke-width="3" stroke-linejoin="round"/><path d="M214 30v27" stroke="#12151c" stroke-width="5"/><path d="M78 36h126" stroke="#fff" stroke-opacity=".85" stroke-width="2"/><path d="M84 44h120M84 50h120" stroke="#5a6274" stroke-width="1.2"/><path d="M62 57h32l-16 48H38z" fill="url(#g)" stroke="#0b0d12" stroke-width="3" stroke-linejoin="round"/><path d="M50 70h30M46 80h30M42 90h30" stroke="#5a6274" stroke-width="1.5"/><path d="M98 57q-2 18 16 18h6" fill="none" stroke="#12151c" stroke-width="4"/><path d="M104 60l4 10" stroke="#12151c" stroke-width="3"/><rect x="150" y="40" width="40" height="4" rx="1" fill="#ff4f9e"/></svg>`);
   const tacticOf = u => (u.mid === 'solar' ? 'direct' : (save.tactics[u.mid] || 'direct'));
+  /* The navigator: Fuuka, or Mitsuru before Fuuka joins (handoff request.navigator). Mitsuru has no 'happy' face. */
+  const NAVI = HO && HO.request.navigator === 'mitsuru' ? { id: 'mitsuru', name: 'Mitsuru' } : { id: 'fuuka', name: 'Fuuka' };
+  const navFace = f => (NAVI.id === 'fuuka' ? f : ({ happy: 'neutral' }[f] || f || 'neutral'));
   const AFF_SHORT = { normal: '–', weak: 'WK', resist: 'RS', null: 'NU', drain: 'DR', repel: 'RP' };
   const AFF_WORD = { weak: 'WEAK!', resist: 'RESIST', null: 'NULL', drain: 'DRAIN', repel: 'REPEL' };
   const STAT_SHORT = { atk: 'ATK', def: 'DEF', agi: 'AGI' };
@@ -119,6 +151,7 @@
     return normalize(Object.assign(fresh(), JSON.parse(JSON.stringify(s)), { v }));
   }
   function loadSave() {
+    if (HO) return loadRevamp();
     try {
       const raw = localStorage.getItem(KEY), s = JSON.parse(raw || 'null');
       if (s && [1, 2, 3, 4].includes(s.v)) {
@@ -129,8 +162,42 @@
     } catch (e) {}
     return normalize(fresh());
   }
+  /* Handoff mode's battle save ('kg-femc-revamp-battle', see the header): one per life-sim playthrough. */
+  const HO_RUN = HO ? String(HO.request.run || 'default') : null;
+  function readRevamp() { try { const c = JSON.parse(localStorage.getItem(REVAMP_KEY) || 'null'); return c && c.v === 1 && c.runs && typeof c.runs === 'object' ? c : { v: 1, runs: {} }; } catch (e) { return { v: 1, runs: {} }; } }
+  function writeRevamp() {
+    const c = readRevamp();
+    c.runs[HO_RUN] = { at: Date.now(), day: HO.date ? HO.date.day : null, save };
+    c.runs = Object.fromEntries(Object.entries(c.runs).sort((a, b) => b[1].at - a[1].at).slice(0, 4));
+    localStorage.setItem(REVAMP_KEY, JSON.stringify(c));
+  }
+  function loadRevamp() {
+    const c = readRevamp(), x = c.runs[HO_RUN];
+    if (x && fromRaw(x.save)) return fromRaw(x.save);
+    // New Game+: the life sim names the playthrough it came from; its levels, tree, Personas and gear come along.
+    const from = HO.request.carryFrom && c.runs[HO.request.carryFrom];
+    const old = from && fromRaw(from.save);
+    if (old) { old.reached = null; old.ops = { cleared: [] }; old.memories = []; old.ngp = (old.ngp || 0) + 1; return old; }
+    return seedRevamp();
+  }
+  // Solar's level by the game's day (0 = 4/6): a little under each full moon's recommended level (data.js ops: Priestess 10
+  // on 5/9, Empress 15 on 6/8 … Hanged Man 43 on 11/3), so a playthrough that starts using the battle game late isn't stuck at 5.
+  const SEED_CURVE = [[0, 5], [33, 9], [63, 14], [92, 21], [122, 28], [152, 33], [181, 37], [211, 41], [240, 46], [270, 50], [300, 54]];
+  function seedLevel(day) {
+    let i = 0; while (i < SEED_CURVE.length - 2 && day > SEED_CURVE[i + 1][0]) i++;
+    const [d0, l0] = SEED_CURVE[i], [d1, l1] = SEED_CURVE[i + 1];
+    return Math.max(D.progression.startLevel, Math.round(l0 + (l1 - l0) * Math.min(1, Math.max(0, (day - d0) / (d1 - d0)))));
+  }
+  function seedRevamp() {
+    const s = fresh(), day = (HO.date && HO.date.day) || 0, L = seedLevel(day);
+    try { const p = JSON.parse(localStorage.getItem(PROTO_KEY) || 'null'); if (p && typeof p === 'object') PREFS.forEach(k => { if (p[k] !== undefined) s[k] = JSON.parse(JSON.stringify(p[k])); }); } catch (e) {}
+    s.lvl = L; s.pts = (L - D.progression.startLevel) * D.progression.pointsPerLevel; s.awakened = day > 3;
+    s.party = []; s.items = {}; s.yen = 0; s.mem = {};
+    s.seeded = { day, lvl: L };
+    return normalize(s);
+  }
   let save = loadSave();
-  const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(save)); } catch (e) {} };
+  const persist = () => { try { if (HO) writeRevamp(); else localStorage.setItem(KEY, JSON.stringify(save)); } catch (e) {} };
   persist();
   const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   const femcMusicWanted = () => { try { return (JSON.parse(lsGet('kg-femc-bgm') || '{}') || {}).on !== false; } catch (e) { return true; } };
@@ -642,7 +709,7 @@
     const el = tipEl = document.createElement('div');
     el.className = 'bt-tip';
     el.setAttribute('role', 'status');
-    el.innerHTML = `<div class="pic fcb">${fimg('fuuka', 'happy')}</div><div class="tx"><b>Tip · ${esc(g ? g.name : 'Fuuka')}</b><span></span><div class="acts"><button type="button" data-more>More</button><button type="button" data-ok>Got it</button></div></div>`;
+    el.innerHTML = `<div class="pic fcb">${fimg(NAVI.id, navFace('happy'))}</div><div class="tx"><b>Tip · ${esc(g ? g.name : 'Fuuka')}</b><span></span><div class="acts"><button type="button" data-more>More</button><button type="button" data-ok>Got it</button></div></div>`;
     document.body.appendChild(el);
     typeInto(el.querySelector('span'), text);
     let gone = false;
@@ -655,7 +722,7 @@
 
   /* ── Rush (auto-battle) ───────────────────────────── */
   function rushAllowed(spec = curSpec) {
-    if (!spec) return false;
+    if (!spec || spec.rules) return false;
     const w = ST().rushWhere;
     if (spec.boss || spec.reaper) return w === 'all';
     if (spec.strong) return w !== 'normal';
@@ -697,9 +764,27 @@
   /* ════════════════════════════════════════════════════
      HUB
      ════════════════════════════════════════════════════ */
+  /* Solar's panel on the hub (also the handoff hub). meta: the line of small print under the party. */
+  function hubSolar(meta) {
+    const fx = treeFx(), m = D.party[0], s = memberStats(m, save.lvl, fx), skills = solarSkills(fx);
+    const pct = Math.round(save.exp / need(save.lvl) * 100), per = perOf('solar');
+    return `<div class="bt-solar">
+        <div>
+          <h2>Solar<small>Lv ${save.lvl}</small></h2>
+          <p class="persona">Persona · ${esc(per.name)}${per.form ? '' : ' · 해님'}</p>
+          <div class="bt-expbar"><i style="width:${pct}%"></i></div>
+          <div class="bt-explabel"><span>EXP ${save.exp} / ${need(save.lvl)}</span><span>${save.pts} skill pts</span></div>
+          <div class="bt-stats">${['hp', 'sp', 'st', 'ma', 'en', 'ag', 'lu'].map(k => `<div><span>${k.toUpperCase()}</span><b>${s[k]}</b></div>`).join('')}</div>
+          <ul class="bt-chips">${skills.map(id => `<li>${ART.icon(D.skills[id].el)}<span>${esc(D.skills[id].name)}</span></li>`).join('')}</ul>
+          <div class="bt-hub-party" aria-label="Party">${roster().slice(1).map(m => `<span title="${esc(m.name)}"><i class="av fcb">${fimg(m.id, m.faces.idle)}</i><b>${esc(m.name)}<small>Lv ${lvOf(m.id)}${tacticOf({ mid: m.id }) !== 'direct' ? ` · ${esc(D.tactics[tacticOf({ mid: m.id })].short)}` : ''}</small></b></span>`).join('') || '<em>Solar fights alone</em>'}</div>
+          ${meta}
+        </div>
+      </div>`;
+  }
   function hub() {
     // Evolutions that came due (an old save, or levels from the bench) play before the hub opens.
     if (!evolving && E.evolutionsDue(save, lvOf).length) { ctl = null; pendingEvolutions().then(hub); return; }
+    if (HO) return hoHub();
     screen = 'hub';
     root.classList.remove('bt-in-battle');
     music.play('title');
@@ -722,18 +807,7 @@
         <p class="bt-hub-hint">↑↓←→ move · Enter choose · Esc settings · H help · mouse, touch and controllers work too</p>
       </div>
       <div class="bt-hub-fig" aria-hidden="true"><i class="band"></i><img src="assets/femc/profile/femc.webp?v=${V()}" alt=""></div>
-      <div class="bt-solar">
-        <div>
-          <h2>Solar<small>Lv ${save.lvl}</small></h2>
-          <p class="persona">Persona · ${esc(per.name)}${per.form ? '' : ' · 해님'}</p>
-          <div class="bt-expbar"><i style="width:${pct}%"></i></div>
-          <div class="bt-explabel"><span>EXP ${save.exp} / ${need(save.lvl)}</span><span>${save.pts} skill pts</span></div>
-          <div class="bt-stats">${['hp', 'sp', 'st', 'ma', 'en', 'ag', 'lu'].map(k => `<div><span>${k.toUpperCase()}</span><b>${s[k]}</b></div>`).join('')}</div>
-          <ul class="bt-chips">${skills.map(id => `<li>${ART.icon(D.skills[id].el)}<span>${esc(D.skills[id].name)}</span></li>`).join('')}</ul>
-          <div class="bt-hub-party" aria-label="Party">${roster().slice(1).map(m => `<span title="${esc(m.name)}"><i class="av fcb">${fimg(m.id, m.faces.idle)}</i><b>${esc(m.name)}<small>Lv ${lvOf(m.id)}${tacticOf({ mid: m.id }) !== 'direct' ? ` · ${esc(D.tactics[tacticOf({ mid: m.id })].short)}` : ''}</small></b></span>`).join('') || '<em>Solar fights alone</em>'}</div>
-          <p class="bt-meta"><span class="bt-yen">${ICON.svg('yen')}${yen(save.yen)}</span> · ${save.runs} run${save.runs === 1 ? '' : 's'} · ${opsDone} full moon${opsDone === 1 ? '' : 's'} cleared${save.cycle ? ` · Tartarus is stronger (climb ${save.cycle + 1})` : ''}</p>
-        </div>
-      </div>
+      ${hubSolar(`<p class="bt-meta"><span class="bt-yen">${ICON.svg('yen')}${yen(save.yen)}</span> · ${save.runs} run${save.runs === 1 ? '' : 's'} · ${opsDone} full moon${opsDone === 1 ? '' : 's'} cleared${save.cycle ? ` · Tartarus is stronger (climb ${save.cycle + 1})` : ''}</p>`)}
       <div class="bt-top" style="justify-content:flex-end"><a class="bt-tool" href="social.html"><span>‹ Back to the game</span></a><div class="bt-tools" style="margin-left:8px">${tools()}</div></div>`, 'bt-hub');
     wireTools(el);
     el.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => {
@@ -762,7 +836,8 @@
   function partyScreen(onClose) {
     screen = 'party';
     root.classList.remove('bt-in-battle');
-    const list = D.party.slice(1);
+    const list = D.party.slice(1).filter(usable);
+    if (!list.length) { onClose(); return; }
     let i = 0, msg = '';
     const cols = () => (phone() ? 2 : 4);
     const render = () => {
@@ -827,26 +902,27 @@
   const newRun = (o = {}) => Object.assign({ fi: 0, carry: null, fights: {}, tired: {}, map: null }, o);
   async function startRun(fromId) {
     const fi = fromId ? Math.max(0, D.floors.findIndex(f => f.id === fromId)) : 0;
-    run = newRun({ fi });
+    run = newRun({ fi, tired: HO ? hoTired() : {} });
     save.runs++;
     persist();
     for (;;) {
       const floor = D.floors[run.fi];
+      if (HS) { HS.entered = true; HS.floor = Math.max(HS.floor, floor.gameFloor || 0); }
       // Test hook: window.__btMap forces a seed for the floor's layout.
       run.map = MAP.generate(floor, { rand, strongChance: D.map.strongChance * diff().strong });
       const r = await explore(floor);
-      if (r !== 'up') { run = null; hub(); return; }
+      if (r !== 'up') { run = null; if (HO) return hoFinish(r === 'over' ? 'lose' : 'win'); hub(); return; }
       if (floor.top) {
         const op = D.ops.find(o => o.id === floor.op);
         if (!opCleared(op.id) || run.refight) {
           run.refight = false;
           const res = await fullMoon(op, { climb: true });
-          if (res !== 'win') { run = null; hub(); return; }
+          if (res !== 'win') { run = null; if (HO) return hoFinish('lose'); hub(); return; }
         }
         if (run.fi >= D.floors.length - 1) {
           save.cycle++; save.reached = null; persist();
           await complete('top');
-          run = null; hub(); return;
+          run = null; if (HO) return hoFinish('win'); hub(); return;
         }
       }
       run.fi++;
@@ -872,7 +948,7 @@
     return new Promise(res => {
       const el = show(`<div class="bt-clock-bg" style="background-image:url('${op.arena}')"></div><div class="bt-clock-in"><p class="bt-kicker">Before the full moon · ${esc(op.arcana)}</p><h1>THE CLOCK</h1><p>A clock chimes somewhere in the dark. Everyone’s HP and SP are fully restored, and no one is tired anymore.</p>
         <div class="bt-brief"><b>${esc(op.name)} · ${esc(op.place)}</b>${esc(op.brief)}<small>Recommended level ${op.lvl}</small></div>
-        <div class="bt-navline"><div class="bt-nav bt-room-nav"><div class="pic fcb">${fimg('fuuka', 'happy')}</div><p><b>Fuuka</b>${esc(D.nav.clock[0])}</p></div></div>
+        <div class="bt-navline"><div class="bt-nav bt-room-nav"><div class="pic fcb">${fimg(NAVI.id, navFace('happy'))}</div><p><b>${esc(NAVI.name)}</b>${esc(D.nav.clock[0])}</p></div></div>
         <div class="row"><button type="button" class="bt-btn pink"><span>To the full moon ›</span></button></div></div>`, 'bt-over bt-clock');
       el.querySelector('button').addEventListener('click', () => { sfx('ok'); res(); });
       buttonNav(el);
@@ -885,7 +961,7 @@
     music.play(D.music.gameover ? 'gameover' : null);
     return new Promise(res => {
       const el = show(`<div><p class="bt-kicker">Solar has fallen</p><h1>GAME OVER</h1><p>The Dark Hour closes over S.E.E.S. … but the clock can turn back.</p>
-        <div class="row"><button type="button" class="bt-btn pink" data-v="retry"><span>Retry the battle</span></button><button type="button" class="bt-btn" data-v="hub"><span>Return to the entrance</span></button></div></div>`, 'bt-over');
+        <div class="row"><button type="button" class="bt-btn pink" data-v="retry"><span>Retry the battle</span></button><button type="button" class="bt-btn" data-v="hub"><span>${HO ? 'Return to the dorm' : 'Return to the entrance'}</span></button></div></div>`, 'bt-over');
       el.querySelectorAll('[data-v]').forEach(b => b.addEventListener('click', () => { sfx('ok'); res(b.dataset.v); }));
       buttonNav(el);
       mark('gameover');
@@ -932,7 +1008,7 @@
           const first = !opCleared(op.id);
           if (first) save.ops.cleared.push(op.id);
           save.clears++;
-          await afterWin(out, { title: `Full Moon · ${op.name}`, op, first, back: climb ? 'Onward ›' : 'Back to Operations' });
+          await afterWin(out, { title: `Full Moon · ${op.name}`, op, first, back: climb ? 'Onward ›' : HO ? 'Continue' : 'Back to Operations' });
           return 'win';
         }
         const c = await gameOver();
@@ -1161,7 +1237,7 @@
         </div>
         <p class="bt-hint">${phone() ? 'Tap a lit room to move' : '←→ pick a room · Enter move · S scan · I items'}</p>
       </aside>
-      <div class="bt-map-nav"><div class="pic fcb">${fimg('fuuka', line[1])}</div><p><b>Fuuka</b><span class="tx">${esc(line[0])}</span></p></div>`;
+      <div class="bt-map-nav"><div class="pic fcb">${fimg(NAVI.id, navFace(line[1]))}</div><p><b>${esc(NAVI.name)}</b><span class="tx">${esc(line[0])}</span></p></div>`;
   }
 
   /* A full-screen room panel (chest, access point, clock, stairs, events). Resolves with the chosen button's value. */
@@ -1171,7 +1247,7 @@
     return new Promise(res => {
       const el = show(`<div class="bt-room-bg" style="background-image:url('${bg}')"></div><div class="bt-room-shade"></div>
         <div class="bt-room-in">${kicker ? `<p class="bt-kicker">${esc(kicker)}</p>` : ''}<h1>${title}</h1><div class="bt-room-body">${body}</div>
-        ${fuuka ? `<div class="bt-nav bt-room-nav"><div class="pic fcb">${fimg('fuuka', fuuka[1] || 'neutral')}</div><p><b>Fuuka</b>${esc(fuuka[0])}</p></div>` : ''}
+        ${fuuka ? `<div class="bt-nav bt-room-nav"><div class="pic fcb">${fimg(NAVI.id, navFace(fuuka[1] || 'neutral'))}</div><p><b>${esc(NAVI.name)}</b>${esc(fuuka[0])}</p></div>` : ''}
         <div class="row">${buttons.map(b => `<button type="button" class="bt-btn${b.pink ? ' pink' : ''}" data-v="${esc(b.v)}"${b.off ? ' disabled' : ''}><span>${esc(b.label)}</span>${b.small ? `<small>${esc(b.small)}</small>` : ''}</button>`).join('')}</div></div>`, `bt-room ${cls}`);
       el.querySelectorAll('[data-v]').forEach(b => b.addEventListener('click', () => { sfx('ok'); res(b.dataset.v); }));
       buttonNav(el, { back: () => { sfx('back'); res(buttons[buttons.length - 1].v); } });
@@ -1240,6 +1316,16 @@
       }
     }
     if (n.type === 'stairs') {
+      if (floor.top && HO) {
+        // The life sim decides when blocks open: a full moon has to happen on its night, and higher blocks wait for their date.
+        const op = D.ops.find(o => o.id === floor.op), done = opCleared(op.id), open = done && floor.bi < hoBlockCap();
+        const v = await roomPanel({ bg: op.arena, cls: 'barrier', kicker: `Top of ${floor.block}`, title: open ? 'THE BARRIER IS OPEN' : 'THE BARRIER', name: 'barrier',
+          body: `<p>${open ? 'The way up is open.' : done ? 'The way up is sealed. Tartarus hasn’t opened any higher yet.' : `The way up is sealed. Something waits on the other side for the full moon.`}</p>`,
+          buttons: open ? [{ v: 'up', label: 'Go up', pink: true }, { v: 'no', label: 'Not yet' }] : [{ v: 'leave', label: 'Leave Tartarus' }, { v: 'no', label: 'Back to the map', pink: true }],
+          fuuka: navLine(open ? 'barrierOpen' : 'barrier') });
+        if (v === 'leave') { mark('leave'); return 'leave'; }
+        return v === 'up' ? 'up' : null;
+      }
       if (floor.top) {
         const op = D.ops.find(o => o.id === floor.op), done = opCleared(op.id);
         const v = await roomPanel({ bg: op.arena, cls: 'barrier', kicker: `Top of ${floor.block}`, title: done ? 'THE BARRIER IS OPEN' : 'THE BARRIER', name: 'barrier',
@@ -1257,8 +1343,8 @@
     }
     if (n.type === 'event' && !n.used) {
       n.used = true;
-      const left = D.memories.filter(m => !save.memories.includes(m.id));
-      if (left.length && rand() < D.events.memoryChance) { await memoryFound(left[Math.floor(rand() * left.length)]); return null; }
+      const left = D.memories.filter(m => !save.memories.includes(m.id) && !(HO && (HO.request.fragments || []).includes(m.id)));
+      if ((!HO || HO.request.fragmentsOpen) && left.length && rand() < D.events.memoryChance) { await memoryFound(left[Math.floor(rand() * left.length)]); return null; }
       const l = D.events.lines[Math.floor(rand() * D.events.lines.length)];
       mark('event-line');
       await roomPanel({ bg: floor.bg, cls: 'event', kicker: `${floor.label} · ${floor.block}`, title: '…', body: '', fuuka: l, name: 'event' });
@@ -1308,11 +1394,13 @@
   /* A memory fragment: the card, the charm that rings, and a skill point for Haenim's tree. */
   async function memoryFound(m) {
     save.memories.push(m.id);
+    if (HS) HS.frags.push(m.id);
     save.pts += D.progression.memoryPoints;
     persist();
     sfx('unlock'); mark('memory'); mark('memory-' + m.id);
     const charm = { Runners: 'bell', strangers: 'jade', Hoax: 'star' }[m.world];
-    await roomPanel({ bg: m.wide || m.img, cls: 'memory', kicker: `Memory fragment · ${m.world}`, title: esc(m.title).toUpperCase(), name: 'memory',
+    const bg = await new Promise(r => { const i = new Image(); i.onload = () => r(m.wide || m.img); i.onerror = () => r(D.memoryPlaceholder ? D.memoryPlaceholder(m.id) : ''); i.src = m.img; });
+    await roomPanel({ bg, cls: 'memory', kicker: `Memory fragment · ${m.world}`, title: esc(m.title).toUpperCase(), name: 'memory',
       body: `<div class="bt-memcard"><img src="${m.img}" alt="${esc(m.title)}"></div><p class="bt-memtext">${esc(m.text)}</p><p class="bt-memcharm">${ART.charm(charm)}<span>Haenim’s ${esc(charm)} rings. <b>+${D.progression.memoryPoints} skill point</b></span></p>`,
       fuuka: navLine('memory') });
   }
@@ -1323,7 +1411,22 @@
   let B = null, BT = null, navSaid = new Set(), navTimer = null, summoned = new Set();
   const freshAff = new Set(), discovered = new Set(); // affinities just learned (their plate cell flips once); weaknesses announced this session
 
-  /* spec: { group, bg, label, block, boss, reaper, music, nav, heat, op } */
+  /* Story-fight rules (handoff mode; spec.rules). interruptAt: end with 'interrupt' when this round starts. interruptHp: when
+     Solar drops below this share of her HP. interruptFoeHp: when any Shadow does. interruptOnKill: when any Shadow falls.
+     roundsMax: end with 'phase' after this many rounds (the finale's Last Call). */
+  function ruleEnd(spec, at) {
+    const R = spec.rules;
+    if (!R || !B) return null;
+    if (R.interruptAt && B.S.round >= R.interruptAt) return 'interrupt';
+    if (R.roundsMax && B.S.round > R.roundsMax) return 'phase';
+    if (at !== 'act') return null;
+    const solar = B.party()[0];
+    if (R.interruptHp && solar && solar.hp < solar.maxHp * R.interruptHp) return 'interrupt';
+    if (R.interruptFoeHp && B.foes().some(f => !f.dead && f.hp < f.maxHp * R.interruptFoeHp)) return 'interrupt';
+    if (R.interruptOnKill && B.foes().some(f => f.dead)) return 'interrupt';
+    return null;
+  }
+  /* spec: { group, bg, label, block, boss, reaper, music, nav, heat, op, solo (Solar alone), rules (story fights, above) } */
   async function battle(spec) {
     screen = 'battle';
     const fx = treeFx();
@@ -1331,7 +1434,11 @@
     const group = (window.__btGroup && !spec.boss) ? window.__btGroup.slice() : spec.group.slice();
     const kinds = group.map(k => k.split('@')[0]);
     if (fx.autoAnalyze) kinds.forEach(k => { if (D.enemies[k].gimmick) return; const kn = save.known[k] || (save.known[k] = {}); D.affinityOrder.forEach(el => { kn[el] = true; }); });
-    B = E.create({ party: buildParty(run && run.carry), enemies: group, mods: fx.mods, known: save.known, rand, items: save.items, heat: spec.heat || 0, ctx: { op: spec.op && spec.op.id }, diff });
+    const RL = spec.rules || null;
+    const partyUnits = buildParty(run && run.carry);
+    B = E.create({ party: spec.solo ? partyUnits.slice(0, 1) : partyUnits, enemies: group, mods: fx.mods, known: save.known, rand, items: save.items, heat: spec.heat || 0, ctx: { op: spec.op && spec.op.id },
+      diff: RL && RL.edmg ? () => Object.assign({}, diff(), { edmg: diff().edmg * RL.edmg }) : diff, protect: !!(RL && RL.protect) });
+    if (RL && RL.setup) RL.setup(B);
     navSaid = new Set(); summoned = new Set();
     curSpec = spec; blog = []; lastTgt = {}; focusId = null;
     blogAdd(`${spec.label} · ${spec.block}${spec.boss && !spec.reaper ? ' · Full Moon' : spec.reaper ? ' · The Reaper' : spec.strong ? ' · Strong Shadows' : ''} · ${diff().name}`, 'sys');
@@ -1350,13 +1457,14 @@
     if ((marks['battle-start'] || 0) >= 2 && rushAllowed(spec) && !rushOn) tip('rush');
     mark('battle-start');
     if (spec.op) mark('boss-' + spec.op.id);
-    let guard = 0;
+    let guard = 0, ended = null;
     while (!B.outcome() && guard++ < 800) {
       const turn = B.nextTurn();
+      if ((ended = ruleEnd(spec, 'turn'))) break;
       const u = B.U(turn.actor);
       setActive(u);
       await play(turn.events);
-      if (B.outcome()) break;
+      if ((ended = ruleEnd(spec, 'act')) || B.outcome()) break;
       if (!turn.canAct) { await sleep(300); continue; }
       if (u.side === 'enemy') {
         let n = 0;
@@ -1365,6 +1473,18 @@
       dangerCheck();
       rushGuard();
       syncAll();
+      if ((ended = ruleEnd(spec, 'act'))) break;
+    }
+    if (ended) {
+      // A story fight that ends on its own terms (an interrupt, or a phase of the finale running out).
+      blogAdd(ended === 'interrupt' ? 'The fight stops.' : 'Something changes.', 'sys');
+      setActive(null); hideMenu();
+      B.party().forEach(p => { save.th[p.mid] = Math.round(p.th); });
+      if (run) run.carry = Object.fromEntries(B.party().map(p => [p.mid, { hp: p.dead ? 1 : p.hp, sp: p.sp, th: p.th }]));
+      persist();
+      mark('rule-' + ended);
+      await sleep(900);
+      return { result: ended, rew: null, boss: !!spec.boss };
     }
     const result = B.outcome() || 'lose';
     blogAdd(result === 'win' ? 'Victory!' : result === 'escaped' ? 'Got away.' : 'Solar has fallen…', 'sys');
@@ -1379,7 +1499,7 @@
       await sleep(1300);
     } else if (result === 'lose') { nav('solarDown'); sfx('ko'); await sleep(1500); }
     else await sleep(700);
-    if (result === 'win' && spec.boss && !spec.reaper) await navCard();
+    if (result === 'win' && spec.boss && !spec.reaper && !(RL && RL.noNav)) await navCard();
     return { result, rew: result === 'win' ? E.rewards(B, rand) : null, boss: !!spec.boss };
   }
 
@@ -1407,7 +1527,7 @@
     wireTools(el);
     if (FX) { FX.attach(el, { speed }); FX.preload(floor.bg); }
     // Decode every still this battle might show now, so cut-ins never hitch on first show.
-    stills([SUMMON_DIR + 'solar-evoker.webp'].concat(B.party().map(p => FINISH_DIR + p.mid + '.webp'), B.party().map(p => D.personas[p.personaId].art), theurgyStills()), 0);
+    stills([SUMMON_DIR + 'solar-evoker.webp'].concat(B.party().map(p => finishArt(p.mid)), B.party().map(p => D.personas[p.personaId].art), theurgyStills()), 0);
     // Every mood a card or the results can switch to, so a face never pops in blank.
     stills(B.party().flatMap(p => Object.values(member(p.mid).faces).map(f => pimg(p.mid, f))), 0);
     if (!save.awakened) { stills(AWAKEN.map(f => SUMMON_DIR + f + '.webp'), 0); prepClip('awakening'); }
@@ -1432,6 +1552,8 @@
     syncAll();
     sizeField();
   }
+  // The hit flash's mask lives in a CSS variable, which resolves against battle.css, not the page: give it an absolute URL.
+  const absUrl = u => { try { return new URL(u, document.baseURI).href; } catch (e) { return u; } };
   function addEnemy(u) {
     const d = D.enemies[u.kind];
     const el = document.createElement('div');
@@ -1439,12 +1561,20 @@
     el.dataset.id = u.id;
     let body;
     const art = d.img && (window.FEMC_SHADOW_ART || {})[d.img];
-    if (art) {
+    if (d.pic) {
+      // Story fights: a portrait or a memory card instead of Shadow art (the finale's Wren and lanterns).
+      const h = d.h || 220;
+      el.style.setProperty('--w', `${Math.round(h * (d.picW || 1) / (d.picH || 1))}px`);
+      el.classList.add('pic');
+      if (d.capfall) el.classList.add('capfall');
+      if (d.gimmick === 'lantern') el.classList.add('lantern');
+      body = `<div class="sh sh-pic idle-${d.idle || 'breathe'}"><img src="${d.pic}" alt="${esc(u.name)}" draggable="false" width="${d.picW || 1}" height="${d.picH || 1}"><i class="flash" style="--src:url('${absUrl(d.pic)}')"></i></div>`;
+    } else if (art) {
       const h = d.h || 220;
       el.style.setProperty('--w', `${Math.round(h * art.w / art.h)}px`);
       if (art.small) el.classList.add('soft');
       const src = sart(d.img);
-      body = `<div class="sh sh-pic idle-${d.idle || 'breathe'}"><img src="${src}" alt="${esc(u.name)}" draggable="false" width="${art.w}" height="${art.h}"><i class="flash" style="--src:url('${src}')"></i></div>`;
+      body = `<div class="sh sh-pic idle-${d.idle || 'breathe'}"><img src="${src}" alt="${esc(u.name)}" draggable="false" width="${art.w}" height="${art.h}"><i class="flash" style="--src:url('${absUrl(src)}')"></i></div>`;
     } else {
       const sv = ART.shadow(d.svg);
       el.style.setProperty('--w', `${sv.w * (d.size || 1)}px`);
@@ -1489,6 +1619,8 @@
     if (u.empower && !u.dead) tags.push(`<span class="bt-tag drive">Drive ×${u.empower}</span>`);
     if (u.hidden && !u.dead) tags.push('<span class="bt-tag">Hidden</span>');
     if (shield) tags.push('<span class="bt-tag shield">Shielded</span>');
+    el.classList.toggle('unreachable', !!u.unreachable && !u.dead);
+    if (u.unreachable && !u.dead) tags.push('<span class="bt-tag">Out of reach</span>');
     ['atk', 'def'].forEach(s => { if (u.buffs[s]) tags.push(`<span class="bt-tag">${STAT_SHORT[s]} ${u.buffs[s] > 0 ? '↑' : '↓'}</span>`); });
     el.querySelector('.bt-tags').innerHTML = tags.join('');
   }
@@ -1558,10 +1690,11 @@
   function nav(key, vars = {}, { once = false } = {}) {
     const line = D.nav[key];
     if (!line || !BT) return;
+    if (curSpec && curSpec.rules && curSpec.rules.noNav) return;
     if (once && navSaid.has(key)) return;
     navSaid.add(key);
     const text = String(pickOne(line[0])).replace(/\{(\w+)\}/g, (_, k) => (vars[k] != null ? vars[k] : ''));
-    BT.nav.innerHTML = `<div class="pic fcb">${fimg('fuuka', line[1] || 'neutral')}</div><p><b>Fuuka</b><span></span></p>`;
+    BT.nav.innerHTML = `<div class="pic fcb">${fimg(NAVI.id, navFace(line[1] || 'neutral'))}</div><p><b>${esc(NAVI.name)}</b><span></span></p>`;
     const typed = typeInto(BT.nav.querySelector('p span'), text);
     BT.nav.hidden = false;
     BT.nav.classList.remove('out');
@@ -1914,8 +2047,8 @@
   async function navCard() {
     const w = document.createElement('div');
     w.className = 'bt-allout';
-    await stills([FINISH_DIR + 'fuuka.webp'], 900);
-    w.innerHTML = `<div class="bt-finish card nav"><div class="bk" style="background-image:url('${softBg(FINISH_DIR + 'fuuka.webp')}')"></div><img src="${FINISH_DIR}fuuka.webp" alt="Fuuka"></div>`;
+    await stills([FINISH_DIR + NAVI.id + '.webp'], 900);
+    w.innerHTML = `<div class="bt-finish card nav"><div class="bk" style="background-image:url('${softBg(FINISH_DIR + NAVI.id + '.webp')}')"></div><img src="${FINISH_DIR}${NAVI.id}.webp" alt="${esc(NAVI.name)}"></div>`;
     BT.cut.appendChild(w);
     mark('navcard');
     await sleep(1500);
@@ -2176,7 +2309,7 @@
 
   async function allOutSequence(e) {
     const actor = B.U(e.src);
-    await stills([FINISH_DIR + actor.mid + '.webp'], 600);
+    await stills([finishArt(actor.mid)], 600);
     hideMenu();
     const parts = e.parts.map(B.U);
     const wrap = document.createElement('div');
@@ -2205,7 +2338,7 @@
     const fin = document.createElement('div');
     fin.className = 'bt-finish card';
     fin.style.setProperty('--spd', speed());
-    const card = `${FINISH_DIR}${actor.mid}.webp`;
+    const card = finishArt(actor.mid);
     fin.innerHTML = `<div class="bk" style="background-image:url('${softBg(card)}')"></div><i class="wipe"></i><i class="wipe w2"></i><img src="${card}" alt="${esc(actor.name)}: All-Out Attack finish">`;
     wrap.appendChild(fin);
     flash();
@@ -2400,6 +2533,7 @@
     const foe = focusFoe(u), wt = affTag(foe, u.weapon);
     if (B.canTheurgy(u)) { const T = B.theurgyDef(u); it.push({ v: 'theurgy', label: 'Theurgy', icon: 'allout', cls: 'theurgy', wide: true, right: esc(T.name), desc: `<b>${esc(T.name)}</b>${esc(T.desc)}${T.unveiled ? ' Unveiled: stronger, always knocks Down, and heals the party.' : ''}` }); }
     if (canShift) it.push({ v: 'shift', label: 'Shift', icon: 'shift', cls: 'shift', wide: true, desc: `<b>Shift</b>Pass the One More to someone who hasn’t gone yet. They hit ×${B.S.mods.shiftMult} harder.` });
+
     const usable = Object.keys(B.S.items).filter(k => B.S.items[k] > 0 && D.items[k].use !== 'field');
     it.push(
       { v: 'attack', label: 'Attack', icon: u.weapon, tag: wt && wt[1] !== 'unk' ? wt : null, desc: `<b>Attack</b>${D.elements[u.weapon].name} attack with your weapon (power ${u.atk}${u.whits ? `, ${u.whits[0]} hits` : ''}).${E.PHYS.has(u.weapon) ? ' Can crit.' : ''}${wt && foe ? ` vs ${esc(foe.name)}: ${tagHtml(wt)}` : ''}` },
@@ -2410,6 +2544,10 @@
       { v: 'tactics', label: 'Tactics', icon: 'tactics', off: B.party().length < 2, why: B.party().length < 2 ? 'ALONE' : '', offWhy: 'No one else to give orders to.', desc: '<b>Tactics</b>' + (B.party().filter(p => p.mid !== 'solar').map(p => `${esc(p.name)}: ${esc(D.tactics[tacticOf(p)].short)}`).join(' · ') || 'Solar is alone.') + '. Free action.' },
       { v: 'escape', label: 'Escape', icon: 'escape', wide: true, off: B.S.boss && !B.S.reaper, why: B.S.boss && !B.S.reaper ? 'FULL MOON' : '', offWhy: 'There’s no escape from the full moon!', desc: B.S.reaper ? '<b>Escape</b>Run from the Reaper. It’s hard to get away, but it’s your best chance.' : B.S.boss ? '<b>Escape</b>There’s no escape from the full moon!' : '<b>Escape</b>Try to run. Easier when Shadows are Down.' }
     );
+    // Story fights (handoff mode) can limit the commands (the prologue: Attack and Guard only) and rename them (the finale's Hold).
+    const R = curSpec && curSpec.rules;
+    if (R) return it.filter(x => (!R.cmds || R.cmds.includes(x.v)) && !(R.noEscape && x.v === 'escape'))
+      .map(x => (R.labels && R.labels[x.v] ? Object.assign({}, x, { label: R.labels[x.v], desc: String(x.desc || '').replace(/^<b>[^<]*<\/b>/, `<b>${R.labels[x.v]}</b>`) }) : x));
     return it;
   }
   const cursorOf = u => save.cursor[u.mid] || (save.cursor[u.mid] = {});
@@ -2663,7 +2801,7 @@
   /* Everyone in the party gets the full EXP; the bench gets a share so nobody falls behind. Solar's level-ups give skill points. */
   function gainExp(n) {
     const fx = treeFx(), share = D.progression.benchShare;
-    const rows = D.party.map(m => {
+    const rows = D.party.filter(usable).map(m => {
       const inP = m.id === 'solar' || save.party.includes(m.id);
       const rec = m.id === 'solar' ? save : save.mem[m.id];
       const before = { lvl: rec.lvl, stats: memberStats(m, rec.lvl, fx) };
@@ -2674,6 +2812,7 @@
       return { m, inP, got, ups, before, after: memberStats(m, rec.lvl, fx), lvl: rec.lvl, exp: rec.exp };
     });
     const ups = rows[0].ups;
+    if (HS) rows.forEach(r => { if (r.inP && r.got) HS.exp[r.m.id] = (HS.exp[r.m.id] || 0) + r.got; });
     return { rows, ups, any: rows.some(r => r.ups), pts: ups * D.progression.pointsPerLevel };
   }
   /* Results: EXP and level-ups, yen and drops, fatigue. Loops through the tree / party / equipment screens until Continue. */
@@ -2814,7 +2953,7 @@
     screen = 'personas';
     root.classList.remove('bt-in-battle');
     // One page per user: Haenim first, then S.E.E.S., then Fuuka's navigator.
-    const list = Object.entries(D.personas).filter(([, p]) => !p.form && !Object.values(D.personas).some(q => q.evolves && D.personas[q.evolves] === p));
+    const list = Object.entries(D.personas).filter(([, p]) => !p.form && !Object.values(D.personas).some(q => q.evolves && D.personas[q.evolves] === p) && !(member(p.user) && !usable(member(p.user))));
     let i = Math.min(start, list.length - 1), fi = Math.max(0, ['haenim'].concat(E.formsList()).indexOf(save.form));
     const forms = ['haenim'].concat(E.formsList());
     const render = () => {
@@ -3011,7 +3150,7 @@
   }
   const priceOf = id => (D.items[id] || D.gear[id] || D.materials[id] || {}).price || 0;
   const nameOf = id => (D.items[id] || D.gear[id] || D.materials[id] || {}).name || id;
-  const whoCan = id => { const g = D.gear[id]; if (!g) return []; return D.party.filter(m => g.slot !== 'weapon' || g.wtype === m.wtype); };
+  const whoCan = id => { const g = D.gear[id]; if (!g) return []; return D.party.filter(m => usable(m) && (g.slot !== 'weapon' || g.wtype === m.wtype)); };
   function shopScreen(id, onClose) {
     const shop = D.shops[id];
     screen = 'shop';
@@ -3019,7 +3158,7 @@
     music.play('shop');
     let tab = 'buy', i = 0, who = 0, line = pickOne(shop.lines.hi), mood = 'neutral', entered = false;
     const keeper = shop.portrait;
-    const members = D.party.filter(m => m.id === 'solar' || save.party.includes(m.id) || true);
+    const members = D.party.filter(usable);
     const buyList = () => {
       const t = shopTier();
       if (shop.stock) return shop.stock.filter(x => (D.items[x] ? D.items[x].tier : D.gear[x].tier) <= t);
@@ -3121,7 +3260,7 @@
   function equipScreen(onClose, startMid = null) {
     screen = 'equip';
     root.classList.remove('bt-in-battle');
-    const mates = D.party.slice().sort((a, b) => ((b.id === 'solar' || save.party.includes(b.id)) - (a.id === 'solar' || save.party.includes(a.id))));
+    const mates = D.party.filter(usable).sort((a, b) => ((b.id === 'solar' || save.party.includes(b.id)) - (a.id === 'solar' || save.party.includes(a.id))));
     let mi = Math.max(0, mates.findIndex(m => m.id === startMid)), si = 0, mode = 'slot', li = 0;
     const cands = (mid, slot) => {
       const m = member(mid), cur = eqOf(mid)[slot];
@@ -3295,6 +3434,282 @@
     render();
   }
 
+  /* ════════════════════════════════════════════════════
+     HANDOFF MODE: fights the life sim (femc-game.html) hands over (FEMC-GAME-HANDOFF.md)
+     kind 'tartarus': a hub with only what makes sense tonight (no operations list, no mall, no save slots), the climb
+       starting at the newest open block, the life sim's floor cap respected, "Return to the dorm" at the hub or any access
+       point. kind 'operation': that full moon, straight away. kind 'scripted': the story fights in SCRIPTS below.
+     Floors show the life sim's numbers (calendar.js floorCaps: Thebel up to 16F, Arqa up to 36F, …), so "best floor" agrees.
+     ════════════════════════════════════════════════════ */
+  let HS = null; // this handoff: what Solar brought in, and what changed since
+  const hoAvail = () => (HO ? ['solar'].concat((HO.request.available || []).filter(id => id !== 'solar' && member(id))) : D.party.filter(m => !m.searcher).map(m => m.id));
+  const hoTired = () => (HO && ['tired', 'sick'].includes(HO.request.condition) ? { solar: true } : {});
+  // calendar.js floorCaps, in order; block b of the prototype's Tartarus opens with the b-th cap.
+  const HO_CAPS = [16, 36, 64, 92, 118, 144, 172];
+  function hoBlockCap() { const mf = +(HO && HO.request.maxFloor) || 0; let b = 0; HO_CAPS.forEach((c, i) => { if (mf >= c) b = i; }); return Math.min(b, D.blocks.length - 1); }
+  // The entrance of the newest block that's open: its date has come and the full moon below it is cleared.
+  function hoStartFi() {
+    let b = 0;
+    for (let k = 1; k <= hoBlockCap(); k++) if (opCleared(D.blocks[k - 1].op)) b = k; else break;
+    return Math.max(0, D.floors.findIndex(f => f.bi === b));
+  }
+  function hoBegin() {
+    const R = HO.request;
+    D.floors.forEach(f => {
+      const lo = f.bi === 0 ? 1 : HO_CAPS[f.bi - 1] || HO_CAPS[HO_CAPS.length - 1], hi = HO_CAPS[f.bi] || lo + 30;
+      f.gameFloor = Math.round(lo + (f.fi + 1) * (hi - lo) / 3);
+      f.label = `${f.gameFloor}F`;
+    });
+    // The life sim owns the party, money, items, gear, operations and fragments. Unknown ids are skipped.
+    const avail = hoAvail();
+    save.party = (R.party || []).filter(id => id !== 'solar' && member(id) && avail.includes(id)).slice(0, 3);
+    save.items = {};
+    Object.entries(R.items || {}).forEach(([k, n]) => { if (D.items[k] && n > 0) save.items[k] = Math.floor(n); });
+    if (typeof R.yen === 'number') save.yen = Math.max(0, Math.round(R.yen));
+    (R.gear || []).forEach(g => { if (D.gear[g] && !(save.gear.owned[g] > 0)) save.gear.owned[g] = 1; });
+    save.ops.cleared = (R.bossesCleared || []).filter(id => D.ops.some(o => o.id === id));
+    // Fragments Solar found in the life sim feed Haenim's tree here too (a skill point each, once).
+    (R.fragments || []).forEach(f => { if (D.memories.some(m => m.id === f) && !save.memories.includes(f)) { save.memories.push(f); save.pts += D.progression.memoryPoints; } });
+    delete save.forceForm;
+    if (save.reached) { const i = D.floors.findIndex(f => f.id === save.reached); if (i < 0 || D.floors[i].bi > hoBlockCap()) save.reached = null; }
+    E.formsList().forEach(f => { if (!save.forms.includes(f) && E.formUnlocked(Object.assign({}, save, { forms: [] }), f)) save.forms.push(f); });
+    HS = { items0: Object.assign({}, save.items), yen0: save.yen, exp: {}, frags: [], bosses: [], floor: 0, entered: false, scripted: false, finished: false };
+    persist();
+    mark('handoff-' + HO.kind);
+  }
+  function hoHub() {
+    screen = 'hub';
+    root.classList.remove('bt-in-battle');
+    music.play('title');
+    const R = HO.request, start = D.floors[hoStartFi()];
+    const cont = save.reached && D.floors.findIndex(f => f.id === save.reached) > hoStartFi() && D.floors.find(f => f.id === save.reached);
+    const top = D.floors.filter(f => f.bi === hoBlockCap()).pop();
+    const mates = hoAvail().length > 1;
+    const el = show(`<div class="bt-hub-copy">
+        <p class="bt-kicker">${esc(HO.date ? `${HO.date.md} ${HO.date.weekday || ''}` : '')} · The Dark Hour<span class="bt-diff d-${esc(ST().difficulty)}" title="Difficulty (change it in Settings)">${esc(diff().name)}</span></p>
+        <h1>TARTARUS<small>${esc(R.title && R.title !== 'Tartarus' ? R.title : 'Tonight’s climb')}</small></h1>
+        <div class="bt-hub-menu">
+          ${cont ? `<button type="button" class="bt-btn pink" data-go="cont"><span>Continue from ${esc(cont.label)}</span><small>Access point · ${esc(cont.block)}</small></button>` : ''}
+          <button type="button" class="bt-btn${cont ? '' : ' pink'}" data-go="run"><span>${start.fi === 0 && start.bi === 0 ? 'Enter Tartarus' : `Enter at ${esc(start.label)}`}</span><small>${esc(start.block)} · open up to ${esc(top.label)}</small></button>
+          <div class="bt-hub-row">${mates ? `<button type="button" class="bt-btn" data-go="party"><span>Party</span><small>${save.party.length + 1} / 4</small></button>` : ''}<button type="button" class="bt-btn" data-go="equip"><span>Equip</span></button></div>
+          <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="tree"><span>Haenim’s Tree</span><small>${save.pts} SP</small></button><button type="button" class="bt-btn" data-go="personas"><span>Personas</span></button></div>
+          <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="memories"><span>Memories</span><small>${save.memories.length} / ${D.memories.length}</small></button><button type="button" class="bt-btn" data-go="dorm"><span>Return to the dorm</span><small>Not tonight</small></button></div>
+        </div>
+        <p class="bt-hub-hint">${esc(NAVI.name)} is navigating. ${R.condition === 'tired' || R.condition === 'sick' ? 'Solar is already tired; she’ll fight below her best tonight.' : 'Climb as far as you like, then leave at an access point.'}</p>
+      </div>
+      <div class="bt-hub-fig" aria-hidden="true"><i class="band"></i><img src="assets/femc/profile/femc.webp?v=${V()}" alt=""></div>
+      ${hubSolar(`<p class="bt-meta"><span class="bt-yen">${ICON.svg('yen')}${yen(save.yen)}</span> · best ${esc(R.bestFloor ? `${R.bestFloor}F` : 'none yet')} · ${save.ops.cleared.length} full moon${save.ops.cleared.length === 1 ? '' : 's'} cleared</p>`)}
+      <div class="bt-top" style="justify-content:flex-end"><button type="button" class="bt-tool" data-go="dorm"><span>‹ Return to the dorm</span></button><div class="bt-tools" style="margin-left:8px">${tools()}</div></div>`, 'bt-hub bt-hub-ho');
+    wireTools(el);
+    el.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => {
+      const go = b.dataset.go;
+      if (go === 'run') { sfx('ok'); startRun(start.id); }
+      else if (go === 'cont') { sfx('ok'); startRun(save.reached); }
+      else if (go === 'tree') { sfx('ok'); treeScreen(hub); }
+      else if (go === 'party') { sfx('ok'); partyScreen(hub); }
+      else if (go === 'personas') { sfx('ok'); personaScreen(hub); }
+      else if (go === 'equip') { sfx('ok'); equipScreen(hub); }
+      else if (go === 'memories') { sfx('ok'); memoriesScreen(hub); }
+      else if (go === 'dorm') { sfx('back'); hoFinish(HS.entered ? 'win' : 'retreat'); }
+    }));
+    buttonNav(el, { back: () => openSettings() });
+    mark('hub'); mark('hub-ho');
+  }
+  /* The result for the life sim (FEMC-GAME-HANDOFF.md `result`). */
+  function hoResult(outcome, extra = {}) {
+    const R = HO.request;
+    const r = { outcome, exp: {}, levels: {}, yenDelta: Math.round(save.yen - HS.yen0), items: {}, gear: [], fragments: HS.frags.slice(), bossesCleared: HS.bosses.slice() };
+    if (outcome !== 'interrupt') Object.entries(HS.exp).forEach(([k, n]) => { if (n > 0) r.exp[k] = n; });
+    hoAvail().forEach(id => { r.levels[id] = lvOf(id); });
+    new Set(Object.keys(HS.items0).concat(Object.keys(save.items))).forEach(k => { const d = (save.items[k] || 0) - (HS.items0[k] || 0); if (d) r.items[k] = d; });
+    r.gear = [...new Set((R.gear || []).concat(Object.keys(save.gear.owned).filter(k => save.gear.owned[k] > 0 && D.gear[k] && D.gear[k].tier > 0)))];
+    if (HO.kind === 'tartarus') {
+      r.fatigue = HS.entered ? (['tired', 'sick'].includes(R.condition) ? 'sick' : 'tired') : (R.condition || 'good');
+      r.floorsReached = HS.floor || 0;
+    } else if (HO.kind === 'operation' && !HS.scripted && outcome !== 'interrupt') r.fatigue = R.condition === 'sick' ? 'sick' : 'tired';
+    return Object.assign(r, extra);
+  }
+  function hoFinish(outcome, extra = {}) {
+    if (!HS || HS.finished) return;
+    HS.finished = true;
+    ctl = null;
+    persist();
+    const result = hoResult(outcome, extra);
+    let h = null;
+    try { h = JSON.parse(localStorage.getItem(HANDOFF_KEY) || 'null'); } catch (e) {}
+    if (h && h.id === HO.id && h.status === 'pending') {
+      h.result = result; h.status = 'done'; h.doneAt = new Date().toISOString();
+      try { localStorage.setItem(HANDOFF_KEY, JSON.stringify(h)); } catch (e) {}
+    }
+    window.__hoResult = result;
+    mark('handoff-done');
+    screen = 'handoff';
+    root.classList.remove('bt-in-battle');
+    music.play(null);
+    const word = { win: HO.kind === 'tartarus' ? 'Back to the dorm' : 'The moon is quiet', lose: 'The hour closes', retreat: 'Not tonight', interrupt: '…' }[outcome] || 'Back to the dorm';
+    show(`<div><p class="bt-kicker">${esc(HO.date ? HO.date.md : '')} · The Dark Hour</p><h1>${esc(word.toUpperCase())}</h1><p>Returning to the dorm…</p></div>`, 'bt-over bt-ho-done');
+    setTimeout(() => { if (!window.__hoStay) location.href = HO.returnTo || 'femc-game.html?from=battle'; }, Math.round(1100 / Math.min(speed(), 4)));
+  }
+
+  /* ── Scripted story fights. Each entry → a list of battle specs, run in order (game over: retry, or back to the dorm).
+     A spec can add `join: [ids]` (a searcher who has just awakened is put in the party for that fight). Segment 1 of a
+     two-part memory floor ends with 'interrupt' (the scene then plays the awakening) and can't be lost. ── */
+  const BGP = 'assets/femc/bg/';
+  const TBG = i => D.blocks[Math.min(i, D.blocks.length - 1)].bg;
+  const SEG1 = (at, foeHp = 0.5) => ({ protect: true, noEscape: true, interruptAt: at, interruptFoeHp: foeHp, interruptHp: 0.35 });
+  // A memory floor: one boss, two segments when someone awakens mid-fight (seg 1 interrupts, seg 2 has them in the party).
+  const memoryFloor = (boss, bg, block, who, at = 4) => R => (R.segment === 1
+    ? [{ group: [boss], bg, label: 'Tartarus', block, boss: true, music: 'boss', noResults: true, title: R.title || block, rules: SEG1(at) }]
+    : [{ group: [boss], bg, label: 'Tartarus', block, boss: true, music: 'boss', title: R.title || block, join: who ? [who] : [], rules: { noEscape: true, startHp: R.segment === 2 ? 0.5 : 1 } }]);
+  const SCRIPTS = {
+    // 4/6, the prologue. Segment 1: two Maya, Attack and Guard only; ends 'interrupt' when round 3 starts, when Solar drops
+    // below half her HP, or when a Maya falls. Segment 2: the Evoker works, the second Maya is weak to Light, Solar can't lose.
+    'prologue-1': R => (R.segment === 2
+      ? [{ group: ['maya_lost'], bg: BGP + 'tartarus-scene.webp', label: 'Tartarus', block: 'First Floor', solo: true, title: 'Tartarus · First Floor',
+          rules: { protect: true, noNav: true, noEscape: true, cmds: ['attack', 'skill', 'guard', 'item', 'theurgy'] } }]
+      : [{ group: ['maya', 'maya_lost'], bg: BGP + 'tartarus-scene.webp', label: 'Tartarus', block: 'First Floor', solo: true, noResults: true,
+          rules: { protect: true, noNav: true, cmds: ['attack', 'guard'], interruptAt: 3, interruptHp: 0.5, interruptOnKill: true } }]),
+    // 4/9: the first fight on purpose, on the dorm roof.
+    magician: () => [{ group: ['magician'], bg: BGP + 'iwatodaidorm-roof-night.webp', label: 'Full Moon', block: 'Iwatodai Dorm · Roof', boss: true, music: 'boss',
+      op: { id: 'magician', name: 'The Magician', arcana: 'I · Magician' }, title: 'Full Moon · The Magician', rules: { noEscape: true } }],
+    // 12/2: no P3 boss. The train runs through the tower and can't be targeted; its guards can. Beat the guards.
+    'tartarus-memory': () => [{ group: ['memory_car', 'seeker@42', 'knight@43'], bg: TBG(6), label: 'Full Moon', block: 'Tartarus · A Floor That Isn’t There', boss: true, music: 'boss',
+      op: { id: 'tartarus-memory', name: 'The Sleeper Car', arcana: 'XVIII · Moon' }, title: 'Full Moon · Tartarus',
+      rules: { noEscape: true, setup: b => b.foes().forEach(f => { if (f.kind === 'memory_car') { f.unreachable = true; f.scenery = true; } }) } }],
+    // Memory floors (story-act4/5). Simplified: one boss each; the awakening's segment 2 has the searcher in the party.
+    'memory-hoax': memoryFloor('ballot_box', BGP + 'tartarus-lobby.webp', 'A Gym That Isn’t Here', 'jihoon', 4),
+    'memory-runners': memoryFloor('flash_shadow', TBG(5), 'A Hallway at 3 A.M.', 'minji', 3),
+    'memory-strangers': memoryFloor('tide_shadow', BGP + 'tartarus-coffins.webp', 'The Last Ferry', null),
+    'memory-runners-2': memoryFloor('party_shadow', TBG(4), 'The First Party', null),
+    'memory-jungwon': memoryFloor('veil_poster', TBG(6), 'Two Floors at Once', 'jungwon', 3),
+    'memory-haechan': memoryFloor('fox_shadow', TBG(6), 'Mirror Match', 'haechan', 3)
+  };
+  // Story fights the battle game doesn't know yet: a Shadow group from the newest open block. The scene's designer notes can
+  // ask for an interrupt ("interrupt … turn N", "half HP"); segment 1 can't be lost.
+  function genericScript(R) {
+    const b = D.blocks[hoBlockCap()], notes = String(R.notes || '');
+    const wantsInterrupt = /interrupt/i.test(notes) && R.segment !== 2;
+    const turn = notes.match(/turn (\d+)/i);
+    return [{ group: (b.strong[0] || b.pool[0]).slice(), bg: b.bg, label: R.title || 'Tartarus', block: b.name, boss: false, music: 'boss', title: R.title || b.name,
+      rules: wantsInterrupt ? SEG1(turn ? +turn[1] + 1 : 4, /half/i.test(notes) ? 0.5 : 0) : { noEscape: true } }];
+  }
+  /* One story battle with game over handling. Returns 'win' | 'interrupt' | 'phase' | 'escaped' | 'lose'. */
+  async function hoFight(spec) {
+    if (spec.join && spec.join.length) save.party = [...new Set(spec.join.filter(id => member(id)).concat(save.party))].slice(0, 3);
+    if (spec.rules && spec.rules.startHp && spec.rules.startHp < 1 && run && !run.carry) {
+      // The second half of an interrupted fight: the Shadow picks up where it was (it starts hurt).
+      spec = Object.assign({}, spec, { rules: Object.assign({}, spec.rules, { setup: b => b.foes().forEach(f => { f.hp = Math.round(f.maxHp * spec.rules.startHp); }) }) });
+    }
+    for (;;) {
+      const snap = JSON.stringify({ items: save.items, th: save.th, carry: run && run.carry });
+      const out = await battle(Object.assign({ heat: 0, nav: 'boss' }, spec));
+      if (out.result === 'win') {
+        if (!spec.noResults) await afterWin(out, { title: spec.title || spec.block, back: 'Continue' });
+        else if (out.rew && out.rew.exp) { gainExp(out.rew.exp); save.yen += out.rew.yen || 0; persist(); }
+        return 'win';
+      }
+      if (out.result !== 'lose') return out.result;
+      const c = await gameOver();
+      if (c === 'retry') { const s2 = JSON.parse(snap); save.items = s2.items; save.th = s2.th; if (run) run.carry = s2.carry; persist(); continue; }
+      return 'lose';
+    }
+  }
+  async function hoScripted() {
+    const R = HO.request, id = R.op === 'finale' || R.script === 'finale' ? 'finale' : (R.op && SCRIPTS[R.op]) ? R.op : R.script || R.op;
+    HS.scripted = true;
+    run = newRun({ ops: true });
+    mark('script-' + id + (R.segment ? '-' + R.segment : ''));
+    if (id === 'finale') return hoFinale();
+    const specs = (SCRIPTS[id] || genericScript)(R);
+    let out = 'win';
+    for (const spec of specs) { out = await hoFight(spec); if (out !== 'win') break; }
+    const opId = specs[0] && specs[0].op && specs[0].op.id;
+    if (out === 'win' && opId) HS.bosses.push(opId);
+    run = null;
+    hoFinish(out === 'phase' || out === 'escaped' ? 'win' : out);
+  }
+  /* 1/30, Wren's Shadow: the Last Train (story-act6 hands it over in three segments; with no segment all three play).
+     1. Last Call: Wren never attacks; every turn she asks (Charm, Fear, Distress). Hold (Guard) and answer, or strike her:
+        striking shortens the phase and isn't punished. It ends when her resolve breaks (four rounds) or she falls.
+     2. No Stops: the train and three lantern windows, one sleeping Solar in each. Only the lanterns of the locked route can
+        be broken (the segment's notes "route lock RUNNERS/STRANGERS/HOAX/STAY" or "route TRUE", else request.routeFlags
+        route-R/S/H/stay/true, else request.route). Each one broken weakens the train; Stay can break none (the hardest).
+     3. End of the Line: Solar alone, in her route's form (Sunna / Mazu / Nike, Haenim on Stay); Wren takes no actions and
+        Solar can't lose. With no segment, (Take her hand.) is offered when request.trueReady.
+     result.flags: { 'wren-struck-first': true } in a full (no-segment) run if Wren was struck; in segments the scene records it.
+     result.choice: 'hand' | 'defeat' (full run only). */
+  function finaleRoute() {
+    const R = HO.request, notes = String(R.notes || '');
+    const m = /route lock (RUNNERS|STRANGERS|HOAX|STAY)|route (TRUE)/i.exec(notes);
+    if (m) return { RUNNERS: 'R', STRANGERS: 'S', HOAX: 'H', STAY: 'stay', TRUE: 'true' }[(m[1] || m[2]).toUpperCase()];
+    const f = R.routeFlags || [];
+    for (const [flag, r] of [['route-true', 'true'], ['route-R', 'R'], ['route-S', 'S'], ['route-H', 'H'], ['route-stay', 'stay']]) if (f.includes(flag)) return r;
+    const r = String(R.route || '').toLowerCase();
+    return { r: 'R', runners: 'R', s: 'S', strangers: 'S', h: 'H', hoax: 'H', stay: 'stay', true: 'true' }[r] || 'true';
+  }
+  async function hoFinale() {
+    const R = HO.request, seg = +R.segment || 0, bg = BGP + 'darkhour-station-platform.webp', block = 'Iwatodai Station · Platform';
+    const route = finaleRoute();
+    const open = { R: ['lantern_r'], S: ['lantern_s'], H: ['lantern_h'], stay: [] }[route] || ['lantern_r', 'lantern_s', 'lantern_h'];
+    const flags = {};
+    const done = (outcome, extra = {}) => { run = null; return hoFinish(outcome, Object.assign(Object.keys(flags).length ? { flags } : {}, extra)); };
+    if (!seg || seg === 1) {
+      if (!seg) await message('LAST CALL', 'Wren is on the bench with her ticket in both hands. Midnight is a minute away and so is the train. She doesn’t want to fight you. She wants you to stay.');
+      const p1 = await hoFight({ group: ['wren_call'], bg, label: 'Last Call', block, boss: true, music: 'boss', noResults: true, op: { id: 'finale', name: 'Last Call', arcana: 'Jester' },
+        rules: { protect: true, noNav: true, noEscape: true, labels: { guard: 'Hold' }, roundsMax: 4 } });
+      const w = B && B.foes().find(f => f.kind === 'wren_call');
+      // In segments, the scene records its own choice (story-act6); only a full run reports it.
+      if (!seg && w && w.hp < w.maxHp) flags['wren-struck-first'] = true;
+      if (p1 === 'lose') return done('lose');
+      if (seg === 1) return done('win');
+      await message('NO STOPS', 'The train comes in with no lights in the lead car. Three windows glow along its side, and in each one a girl who looks like you is asleep.');
+    }
+    if (!seg || seg === 2) {
+      const p2 = await hoFight({ group: ['last_train', 'lantern_r', 'lantern_s', 'lantern_h'], bg, label: 'No Stops', block, boss: true, music: 'boss', title: 'The Last Train',
+        op: { id: 'finale', name: 'The Last Train', arcana: 'XVIII · Moon' },
+        rules: { noEscape: true, setup: b => b.foes().forEach(f => { if (/^lantern_/.test(f.kind) && !open.includes(f.kind)) { f.unreachable = true; f.aff = Object.fromEntries(D.affinityOrder.map(el => [el, 'null'])); } }) } });
+      mark('finale-route-' + route);
+      if (p2 !== 'win') return done('lose');
+      if (seg === 2) return done('win');
+    }
+    let choice = null;
+    if (!seg) {
+      const hand = !!R.trueReady || route === 'true';
+      const v = await roomPanel({ bg, cls: 'event finale', kicker: 'End of the Line', title: 'WREN', name: 'finale-choice',
+        body: '<p>The cap falls. Her hair comes down, long and black, and she is small and scared and she is you. The others fade out of the green. It’s just the two of you on the platform.</p>',
+        buttons: (hand ? [{ v: 'hand', label: '(Take her hand.)', pink: true }] : []).concat([{ v: 'end', label: 'End it.', pink: !hand }]) });
+      if (v === 'hand') { mark('finale-hand'); HS.bosses.push('finale'); return done('win', { choice: 'hand' }); }
+      choice = 'defeat';
+    }
+    // Phase 3 in the route's form of Haenim (only for this fight; the battle save's chosen form comes back after).
+    const form = { R: 'haenim-sunna', S: 'haenim-mazu', H: 'haenim-nike' }[route] || 'haenim';
+    save.forceForm = form;
+    const p3 = await hoFight({ group: ['wren_last'], bg, label: 'End of the Line', block, boss: true, music: 'boss', solo: true, noResults: true, op: { id: 'finale', name: 'End of the Line', arcana: 'Jester' },
+      rules: { protect: true, noNav: true, noEscape: true, cmds: ['attack', 'skill', 'theurgy'] } });
+    delete save.forceForm; persist();
+    if (p3 === 'win') HS.bosses.push('finale');
+    return done(p3 === 'win' ? 'win' : 'lose', choice ? { choice } : {});
+  }
+  async function hoOperation() {
+    const R = HO.request, ids = [].concat(R.ops || R.op || []);
+    if (ids.some(id => SCRIPTS[id] || id === 'finale') || !ids.some(id => D.ops.some(o => o.id === id))) return hoScripted();
+    let out = 'win';
+    for (const id of ids) {
+      const op = D.ops.find(o => o.id === id);
+      if (!op) continue;
+      const r = await fullMoon(op);
+      if (r !== 'win') { out = 'lose'; break; }
+      HS.bosses.push(op.id);
+    }
+    hoFinish(out);
+  }
+  function hoStart() {
+    hoBegin();
+    if (HO.kind === 'operation') return hoOperation();
+    if (HO.kind === 'scripted') return hoScripted();
+    hub();
+  }
+
   /* ── FPS meter (?fps=1) ───────────────────────────── */
   if (params.get('fps') === '1') {
     const m = document.createElement('div');
@@ -3312,8 +3727,9 @@
     openSettings: k => openSettings(k), openHelp: t => openHelp(t), openLog, toggleRush, exportCode, parseCode, diff,
     screen: () => screen, marks, freeze() { frozen = true; if (FX) FX.pause(); }, unfreeze() { frozen = false; if (FX) FX.resume(); },
     awakening: () => awakening(app.firstElementChild || app),
+    get handoff() { return HO; }, get hs() { return HS; }, hoFinish: (o, x) => hoFinish(o, x),
     reloadSave() { save = loadSave(); }
   };
   if (FX) FX.setSpeed(speed);
-  hub();
+  if (HO) hoStart(); else hub();
 })();

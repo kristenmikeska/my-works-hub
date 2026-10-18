@@ -1,6 +1,7 @@
 /* The in-game year for femc-game.html: 4/6/2009 (the first Dark Hour) to 1/31/2010.
    Dates are 'M/D' (April to December are 2009, January is 2010). Everything here is data; core.js reads it.
-   - School runs Monday to Saturday, as in P3. Sundays, `holidays` and `breaks` are days off.
+   - School runs Monday to Saturday, as in P3. Sundays, `holidays` and `breaks` are days off. A break's `id` ('summer',
+     'winter') picks a link's summerHome / winterHome (core.js).
    - `exams`: test days (morning exam, no Tartarus that night); `results` is the day the ranking board goes up.
    - `fullMoons`: the moon phase shown in the HUD counts between these. `ops` are the forced Dark Hour operations
      (handed to the battle game, see FEMC-GAME-HANDOFF.md). An op whose date has a story event with a battle line
@@ -28,8 +29,8 @@ window.FEMC_GAME_CALENDAR = {
     '1/1': "New Year's Day", '1/11': 'Coming of Age Day'
   },
   breaks: [
-    { from: '7/21', to: '8/31', name: 'Summer Break' },
-    { from: '12/24', to: '1/7', name: 'Winter Break' }
+    { id: 'summer', from: '7/21', to: '8/31', name: 'Summer Break' },
+    { id: 'winter', from: '12/24', to: '1/7', name: 'Winter Break' }
   ],
   // Named school days and seasons (shown under the date; some change the day's flow).
   events: {

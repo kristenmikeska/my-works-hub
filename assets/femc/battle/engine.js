@@ -1,7 +1,10 @@
 /* FEMC battle engine: rules only, no DOM. battle.js builds the units, calls these functions, and plays the events they return.
    Events are plain objects { t: 'hit' | 'heal' | ... } so a future renderer (or a test, or the balance sim) can consume the same stream.
    Also here: how a party member is built from the save (levels, Haenim's tree, Persona evolutions and forms, equipment, fatigue),
-   and battle rewards. Boss gimmicks live in GIMMICKS below. */
+   and battle rewards. Boss gimmicks live in GIMMICKS below.
+   Story fights (the life sim's handoff, battle.js) add: setup.protect (Solar can't drop below 1 HP), units with
+   `unreachable` (every hit on them is nulled: the finale's locked lanterns), the gimmicks train / lantern / wren, and the AIs
+   wren_ask / still / lantern. None of these appear in the prototype's own Tartarus or operations. */
 window.FemcBattleEngine = (() => {
   const DATA = () => window.FEMC_BATTLE_DATA;
   const PHYS = new Set(['slash', 'strike', 'pierce']);
@@ -51,6 +54,8 @@ window.FemcBattleEngine = (() => {
   /* Which Persona a member is using right now. */
   function personaId(mid, save) {
     const m = member(mid);
+    // forceForm: a story fight (the finale's last phase) puts Solar in her route's form for one battle.
+    if (mid === 'solar' && save.forceForm && DATA().personas[save.forceForm]) return save.forceForm;
     if (mid === 'solar') return save.form && save.form !== 'haenim' && formUnlocked(save, save.form) ? save.form : 'haenim';
     const p = DATA().personas[m.persona];
     return p.evolves && (save.evo || {})[mid] ? p.evolves : m.persona;
@@ -306,12 +311,33 @@ window.FemcBattleEngine = (() => {
       },
       fortune: {},
       strength: {},
+      // The finale (story fight). Breaking a lantern weakens the train; when the train stops, every lantern goes out.
+      wren: {},
+      train: {
+        death(u, ev) {
+          alive(foes()).filter(f => f.gimmick === 'lantern').forEach(f => { f.woke = true; kill(f, ev); ev.push({ t: 'hit', src: f.id, tgt: f.id, el: 'none', aff: 'normal', amount: 0, hp: 0, maxHp: f.maxHp, killed: true, quiet: true }); });
+          ev.push({ t: 'msg', text: 'The train stops. In the rear cars, the sleepers wake.' });
+        }
+      },
+      lantern: {
+        death(u, ev) {
+          const t = alive(foes()).find(f => f.gimmick === 'train');
+          if (!t || u.woke) return;
+          t.en *= 0.75;
+          const cut = Math.round(t.maxHp * 0.12);
+          t.hp = Math.max(1, t.hp - cut);
+          ev.push({ t: 'msg', text: `${u.name} goes dark. Somewhere, a life wakes up, and the train shudders.` });
+          ev.push({ t: 'hit', src: u.id, tgt: t.id, el: 'none', aff: 'normal', amount: cut, hp: t.hp, maxHp: t.maxHp, quiet: true });
+        }
+      },
       hanged: {
         init(u) { u.effT = 0; summonAdds(u, null); },
         turn(u) { if (!alive(foes()).some(f => f.effigy)) u.effT = (u.effT || 0) + 1; else u.effT = 0; }
       }
     };
     const G = (u, hook) => u.gimmick && GIMMICKS[u.gimmick] && GIMMICKS[u.gimmick][hook];
+    // setup.protect: story fights Solar can't lose (her HP stops at 1).
+    function guarded(u) { return !!setup.protect && u.side === 'party' && u === leader(); }
     function summonAdds(u, ev) {
       const added = (D.enemies[u.kind].summon || []).map(k => { const e = makeEnemy(k, 'e' + S.uid++, u.boss ? 0 : S.heat); S.units.push(e); return e.id; });
       if (ev) ev.push({ t: 'summon', src: u.id, ids: added, kind: u.kind });
@@ -320,6 +346,11 @@ window.FemcBattleEngine = (() => {
 
     /* Resolve one damaging hit. Returns whether it newly knocked the target down. */
     function strike(src, tgt, sk, ev, { spread = false } = {}) {
+      if (tgt.unreachable && src.side === 'party') {
+        ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff: 'null', amount: 0, hp: tgt.hp, maxHp: tgt.maxHp });
+        if (!tgt.toldOut) { tgt.toldOut = true; ev.push({ t: 'msg', text: 'You can’t reach this one.' }); }
+        return false;
+      }
       // The Hermit hides: single-target attacks can't find it; spread (all/random) attacks flush it out.
       if (tgt.hidden && src.side === 'party') {
         if (!spread) { ev.push({ t: 'miss', src: src.id, tgt: tgt.id, hidden: true }); return false; }
@@ -336,6 +367,7 @@ window.FemcBattleEngine = (() => {
         const d = Math.max(1, Math.round(rawDamage(src, src, sk) * (src.aff[sk.el] === 'resist' ? 0.5 : 1)));
         const back = (src.aff[sk.el] === 'null' || src.aff[sk.el] === 'repel') ? 0 : d;
         src.hp = Math.max(0, src.hp - back);
+        if (src.hp <= 0 && guarded(src)) src.hp = 1;
         if (src.hp <= 0) kill(src, ev);
         ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff: 'repel', amount: 0 });
         ev.push({ t: 'hit', src: tgt.id, tgt: src.id, el: sk.el, aff: back ? 'normal' : 'null', amount: back, hp: src.hp, maxHp: src.maxHp, killed: src.dead, reflected: true });
@@ -358,6 +390,7 @@ window.FemcBattleEngine = (() => {
       if (crit) d *= mods.critMult;
       const amount = Math.max(1, Math.round(d));
       tgt.hp = Math.max(0, tgt.hp - amount);
+      if (tgt.hp <= 0 && guarded(tgt)) tgt.hp = 1;
       let downed = false, killed = false;
       if (tgt.hp <= 0) { kill(tgt, ev); killed = true; }
       else if ((aff === 'weak' || crit) && !tgt.down && !tgt.guard) { tgt.down = true; downed = true; }
@@ -383,7 +416,7 @@ window.FemcBattleEngine = (() => {
       const a = tgt.aff[sk.el] || 'normal';
       if (src.side === 'party' && learn(tgt, sk.el)) ev.push({ t: 'reveal', tgt: tgt.id, kind: tgt.kind, el: sk.el, aff: a });
       if (tgt.hidden && src.side === 'party') { ev.push({ t: 'miss', src: src.id, tgt: tgt.id, hidden: true }); return false; }
-      if (tgt.boss || ['null', 'repel', 'drain'].includes(a)) { ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff: 'null', amount: 0, hp: tgt.hp, maxHp: tgt.maxHp, insta: true }); return false; }
+      if (tgt.boss || tgt.unreachable || guarded(tgt) || ['null', 'repel', 'drain'].includes(a)) { ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff: 'null', amount: 0, hp: tgt.hp, maxHp: tgt.maxHp, insta: true }); return false; }
       let ch = sk.chance + src.lu * 0.5;
       if (a === 'weak') ch = ch * 2 + 15;
       if (a === 'resist') ch *= 0.4;
@@ -613,7 +646,7 @@ window.FemcBattleEngine = (() => {
       if (u.side === 'party') {
         if (downs > 0) {
           S.chain.add(u.id);
-          if (alive(foes()).every(f => f.down)) { S.alloutReady = true; S.oneMore = true; ev.push({ t: 'alloutReady', src: u.id }); }
+          if (alive(foes()).filter(f => !f.unreachable).every(f => f.down)) { S.alloutReady = true; S.oneMore = true; ev.push({ t: 'alloutReady', src: u.id }); }
           else { S.oneMore = true; ev.push({ t: 'onemore', src: u.id }); }
         } else endTurn(u, ev);
       } else if (downs > 0 && !S.extraUsed) {
@@ -621,7 +654,8 @@ window.FemcBattleEngine = (() => {
       } else S.oneMore = false;
     }
     function check() {
-      if (!alive(foes()).length) S.outcome = 'win';
+      // `scenery` foes (story fights: a train that can't be targeted) don't have to fall for the fight to be won.
+      if (!alive(foes()).filter(f => !f.scenery).length) S.outcome = 'win';
       else if (leader().dead || !alive(party()).length) S.outcome = 'lose';
       return S.outcome;
     }
@@ -715,7 +749,7 @@ window.FemcBattleEngine = (() => {
         let d = parts.reduce((s, p) => s + (p.st + p.lvl * 0.5 + 6) * 2.3 * (1 + 0.25 * p.buffs.atk), 0);
         d *= (0.9 + R() * 0.2) * mods.alloutMult * (D.enemies[f.kind].alloutResist || 1) * diff().pdmg;
         d /= 1 + f.en / 40;
-        if (shieldUp(f)) d = 0;
+        if (shieldUp(f) || f.unreachable) d = 0;
         const amount = Math.round(d);
         f.hp = Math.max(0, f.hp - amount);
         if (f.hp <= 0) kill(f, ev);
@@ -756,6 +790,19 @@ window.FemcBattleEngine = (() => {
         const st = strongest();
         if (deb && st && R() < 0.25) return { skill: deb, target: st.id };
         return { skill: pick(dmgMoves(u)), target: lowest(alive(party())).id };
+      },
+      // Story fights: Wren asks (an ailment on someone, never damage); `still` does nothing; a lantern mends the train or flickers.
+      wren_ask(u) {
+        const asks = u.skills.filter(id => skillOf(id).type === 'ailment'), clean = alive(party()).filter(p => !p.ail);
+        return { skill: pick(asks), target: pick(clean.length ? clean : alive(party())).id };
+      },
+      still() { return { skill: 'still' }; },
+      // A story fight's untouchable scenery (the 12/2 train): mostly passes, sometimes lashes out.
+      carriage(u) { const dm = dmgMoves(u); return dm.length && R() < 0.35 ? { skill: pick(dm), target: pick(alive(party())).id } : { skill: 'still' }; },
+      lantern(u) {
+        const t = alive(foes()).find(f => f.gimmick === 'train');
+        if (t && t.hp < t.maxHp * 0.85 && R() < 0.35 && u.skills.includes('e_dia')) return { skill: 'e_dia', target: t.id };
+        return { skill: 'still' };
       },
       buffer(u) {
         const b = u.skills.find(id => skillOf(id).type === 'buff');
@@ -911,6 +958,7 @@ window.FemcBattleEngine = (() => {
         if (move.skill === 'call_effigies') { u.effT = 0; summonAdds(u, ev); }
         if (move.skill === 'judgment') { const c = kindAlive('chariot'); if (c) { c.empower = Math.min(6, (c.empower || 0) + 1); ev.push({ t: 'empower', tgt: c.id, n: c.empower, judgment: true }); } }
         if (move.skill === 'wheel') { const downs = spinWheel(u, ev); afterAction(u, downs, ev); check(); }
+        if (move.skill === 'still') { const line = D.enemies[u.kind].still; if (line) ev.push({ t: 'msg', text: line, src: u.id }); }
         return ev;
       }
       const downs = useSkill(u, move.skill, move.target, ev);
@@ -927,7 +975,7 @@ window.FemcBattleEngine = (() => {
     /* ── Party tactics (P3P) ───────────────────────────
        Returns the action a member would choose on their own. Uses only the affinities the party knows. */
     function autoAction(u, tactic = 'free') {
-      const foesA = alive(foes()), allies = alive(party()), dead = party().filter(p => p.dead);
+      const foesA = alive(foes()).filter(f => !f.unreachable), allies = alive(party()), dead = party().filter(p => p.dead);
       if (!foesA.length) return { type: 'guard' };
       const sk = id => skillOf(id), can = id => canPay(u, sk(id));
       const hasT = type => u.skills.filter(id => sk(id).type === type && can(id));

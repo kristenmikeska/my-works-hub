@@ -189,7 +189,12 @@ window.FEMC_BATTLE_DATA = (() => {
     call_effigies: { name: 'Hang the Effigies', el: 'none', type: 'special', target: 'self', desc: '' },
     power_charge: { name: 'Power Charge', el: 'none', type: 'special', target: 'self', desc: '' },
     shift_weak: { name: 'Shift', el: 'none', type: 'special', target: 'self', desc: '' },
-    chains: { name: 'Rattling Chains', el: 'none', type: 'special', target: 'self', desc: '' }
+    chains: { name: 'Rattling Chains', el: 'none', type: 'special', target: 'self', desc: '' },
+    // Story fights for the life sim (handoff mode only): Wren asks instead of attacking; `still` is a turn spent doing nothing.
+    w_stay: { name: '“Stay with me.”', el: 'charm', type: 'ailment', target: 'one', ail: { id: 'charm', chance: 0.5 }, desc: '' },
+    w_wait: { name: '“Wait for the next one.”', el: 'fear', type: 'ailment', target: 'one', ail: { id: 'fear', chance: 0.5 }, desc: '' },
+    w_choose: { name: '“You don’t have to choose.”', el: 'distress', type: 'ailment', target: 'one', ail: { id: 'distress', chance: 0.55 }, desc: '' },
+    still: { name: '…', el: 'none', type: 'special', target: 'self', desc: '' }
   };
 
   /* Status ailments (one at a time per unit, like P3). turns: [min, max] of the afflicted unit's own turns.
@@ -220,6 +225,8 @@ window.FEMC_BATTLE_DATA = (() => {
      `evolves`. bonus: stats the evolved form adds. learn: [level, skill, replaces?] once that Persona is the active one.
      Haenim's route forms (form: true) are a prototype preview: unlock, aff, lean (stat bonuses) and sig (signature skill). */
   const A = 'assets/femc/battle/art/personas/';
+  /* The searchers' Personas aren't designed yet (Kat): a veiled silhouette in the member's color stands in for the art. */
+  const unnamedArt = color => 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><defs><radialGradient id="g" cx="50%" cy="38%" r="55%"><stop offset="0" stop-color="${color}" stop-opacity=".55"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></radialGradient></defs><ellipse cx="200" cy="250" rx="190" ry="250" fill="url(#g)"/><path d="M200 70c-38 0-64 30-64 70 0 28 12 50 30 62-58 18-96 72-106 150l-16 190h312l-16-190c-10-78-48-132-106-150 18-12 30-34 30-62 0-40-26-70-64-70z" fill="#140812" stroke="${color}" stroke-width="5" stroke-opacity=".8"/><text x="200" y="400" fill="${color}" font-family="Georgia, serif" font-size="120" text-anchor="middle" opacity=".7">?</text></svg>`);
   const personas = {
     haenim: { name: 'Haenim', ko: '해님', arcana: 'Fool', art: A + 'haenim.webp', aff: { light: 'resist', dark: 'weak' }, user: 'solar',
       blurb: 'Lady Sun. A girl who hides by shining. She carries a bell, a jade ring and a star pin from three lives Solar can’t remember.' },
@@ -257,6 +264,11 @@ window.FEMC_BATTLE_DATA = (() => {
     athena: { name: 'Athena', arcana: 'Chariot', art: A + 'athena.webp', aff: { pierce: 'null', strike: 'resist', elec: 'weak' }, user: 'aigis', bonus: { st: 3, en: 3, hp: 30 },
       learn: [[28, 'myriad_shots', 'arrow_rain'], [31, 'marakukaja']], blurb: 'Aigis’s awakened Persona.' },
     lucia: { name: 'Lucia', arcana: 'Priestess', art: A + 'lucia.webp', aff: {}, user: 'fuuka', evolves: 'juno', evolve: { op: 'lovers' }, blurb: 'Fuuka’s navigator Persona. She sees every Shadow’s heart.' },
+    // Searchers who awaken (Act IV–V). Persona names and art are Kat's to design; placeholders until then.
+    'p-jihoon': { name: 'Persona (unnamed)', arcana: 'Hoax', art: unnamedArt('#7dd3ff'), aff: { wind: 'resist', elec: 'weak' }, user: 'jihoon', placeholder: true, blurb: 'Jihoon’s Persona. Huge, loud, laughing. Its name is still being written.' },
+    'p-minji': { name: 'Persona (unnamed)', arcana: 'Runners', art: unnamedArt('#ffe6a8'), aff: { light: 'resist', dark: 'weak' }, user: 'minji', placeholder: true, blurb: 'Minji’s Persona. It came out of a flash. Its name is still being written.' },
+    'p-jungwon': { name: 'Persona (unnamed)', arcana: 'strangers · Hoax', art: unnamedArt('#9fe8ff'), aff: { ice: 'resist', fire: 'weak' }, user: 'jungwon', placeholder: true, blurb: 'Jungwon’s Persona. Very still, very exact. Its name is still being written.' },
+    'p-haechan': { name: 'Persona (unnamed)', arcana: 'Runners · strangers', art: unnamedArt('#ff9a3d'), aff: { elec: 'resist', ice: 'weak' }, user: 'haechan', placeholder: true, blurb: 'Haechan’s Persona. It refuses to lose. Its name is still being written.' },
     juno: { name: 'Juno', arcana: 'Priestess', art: A + 'juno.webp', aff: {}, user: 'fuuka', blurb: 'Fuuka’s awakened Persona. Her scans now map a whole Tartarus floor at once.' }
   };
 
@@ -324,6 +336,34 @@ window.FEMC_BATTLE_DATA = (() => {
       role: 'Heavy strike · Low accuracy', faces: { idle: 'neutral', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Tch. Fine.', onemore: 'Stay down.', shift: 'Your turn.', finish: 'Heh. Not bad.', theurgy: 'Get outta my way.' } }
   ];
+  /* Searchers who fight (life sim only, after they awaken: searcher: true keeps them out of the prototype's own screens).
+     Personas pending Kat's design: placeholder stats and skills, no finish art (their portrait stands in). */
+  party.push(
+    { id: 'jihoon', name: 'Jihoon', persona: 'p-jihoon', weapon: 'strike', wtype: 'gloves', color: '#7dd3ff', searcher: true,
+      base: { hp: 104, sp: 46, st: 11, ma: 8, en: 9, ag: 9, lu: 8 }, growth: { hp: 8, sp: 3.5, st: 1, ma: 0.7, en: 0.8, ag: 0.8, lu: 0.7 },
+      skills: ['garu', 'sonic_punch', 'tarukaja'], learn: [[24, 'garula', 'garu'], [28, 'magaru'], [32, 'kill_rush']], sig: ['sonic_punch', 'garula'], th: { buff: 1.4, hurt: 1.3 },
+      theurgy: { name: 'Light of Your Life', type: 'dmg', el: 'wind', look: 'wind', target: 'all', power: 150, down: 0.4, desc: 'Loud, vain and enormous. Heavy Wind damage to all foes.' },
+      role: 'Wind · Strike · Buffs', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
+      lines: { turn: 'Watch me. Everybody watch me.', onemore: 'Again! I’m on fire!', shift: 'Sol, you’re up!', finish: 'Light of your life, baby!', theurgy: 'Look at me. LOOK AT ME.' } },
+    { id: 'minji', name: 'Minji', persona: 'p-minji', weapon: 'pierce', wtype: 'bow', color: '#ffe6a8', searcher: true,
+      base: { hp: 84, sp: 68, st: 7, ma: 11, en: 7, ag: 10, lu: 10 }, growth: { hp: 6, sp: 5.5, st: 0.6, ma: 1, en: 0.6, ag: 0.9, lu: 0.9 },
+      skills: ['hama', 'dia', 'tarunda'], learn: [[26, 'media'], [30, 'diarama', 'dia'], [34, 'hamaon', 'hama']], sig: ['hama', 'dia'], th: { heal: 1.4 },
+      theurgy: { name: 'Final Cut', type: 'dmg', el: 'light', look: 'light', target: 'all', power: 140, down: 0.45, heal: 0.25, desc: 'One perfect frame. Heavy Light damage to all foes, and the party heals 25%.' },
+      role: 'Light · Healer', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
+      lines: { turn: 'I’ve got you in frame.', onemore: 'Rolling!', shift: 'Your shot.', finish: 'Cut. Print.', theurgy: 'Look at the camera.' } },
+    { id: 'jungwon', name: 'Jungwon', persona: 'p-jungwon', weapon: 'pierce', wtype: 'rapier', color: '#9fe8ff', searcher: true,
+      base: { hp: 92, sp: 60, st: 9, ma: 11, en: 8, ag: 11, lu: 8 }, growth: { hp: 7, sp: 4.5, st: 0.8, ma: 1, en: 0.7, ag: 1, lu: 0.7 },
+      skills: ['bufu', 'rakunda', 'rakukaja'], learn: [[30, 'bufula', 'bufu'], [34, 'mabufu']], sig: ['bufu', 'bufula'], th: { ail: 1.3, crit: 1.3 },
+      theurgy: { name: 'Perfect Composure', type: 'dmg', el: 'ice', look: 'ice', target: 'all', power: 150, down: 0.4, ail: { id: 'freeze', chance: 0.3 }, desc: 'The angrier he gets, the more polite. Heavy Ice damage to all foes; may Freeze.' },
+      role: 'Ice · Precision · Debuffs', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
+      lines: { turn: 'Excuse me.', onemore: 'Pardon me. Again.', shift: 'After you.', finish: 'Thank you for your patience.', theurgy: 'Please. Stay down.' } },
+    { id: 'haechan', name: 'Haechan', persona: 'p-haechan', weapon: 'slash', wtype: 'knife', color: '#ff9a3d', searcher: true,
+      base: { hp: 96, sp: 52, st: 11, ma: 9, en: 8, ag: 12, lu: 9 }, growth: { hp: 7.5, sp: 4, st: 1, ma: 0.8, en: 0.7, ag: 1.1, lu: 0.8 },
+      skills: ['zio', 'cleave', 'rakunda'], learn: [[38, 'zionga', 'zio'], [42, 'mazio'], [44, 'power_slash', 'cleave']], sig: ['cleave', 'zionga'], th: { crit: 1.4, kill: 1.3 },
+      theurgy: { name: 'Every Universe', type: 'dmg', el: 'elec', look: 'elec', target: 'all', power: 155, down: 0.45, ail: { id: 'shock', chance: 0.3 }, desc: 'He doesn’t lose. Heavy Elec damage to all foes; may Shock.' },
+      role: 'Elec · Slash · Speed', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
+      lines: { turn: 'Yeah, yeah. I got it.', onemore: 'Again. Obviously.', shift: 'Go, princess.', finish: 'Told you.', theurgy: 'Every single universe.' } }
+  );
   /* The party before anyone picks one (and for old saves): Solar plus these three. */
   const defaultParty = ['akihiko', 'yukari', 'junpei'];
 
@@ -619,7 +659,69 @@ window.FEMC_BATTLE_DATA = (() => {
       note: 'Hung from a halo of wings. While any of its effigies are standing, nothing can touch it. Knock them all Down (or out), then strike.' }),
     effigy: Object.assign(S(38, { hp: 1.5, en: 1.1 }), { name: 'Hanging Effigy', arcana: 'Hanged Man',
       aff: { fire: 'weak', strike: 'weak', dark: 'null', light: 'resist' }, skills: ['bash', 'e_agilao', 'e_rakunda'], ai: 'random', exp: 300, img: 'corrupt-tower', h: 200, idle: 'sway', svg: 'maiden', effigy: true,
-      note: 'A puppet of the Hanged Man. While it stands, it shields its master.' })
+      note: 'A puppet of the Hanged Man. While it stands, it shields its master.' }),
+
+    // ── Story fights for the life sim (femc-game.html hands them over; battle.js handoff mode). Not in any Tartarus pool or op.
+    // pic: a full image path instead of a Shadow slug (picW/picH: its size), for fights that use portraits or memory cards.
+    // still: what the log says when the unit spends its turn doing nothing (skill `still`).
+    maya_lost: { name: 'Cowardly Maya', arcana: 'Magician', lvl: 3, hp: 54, st: 7, ma: 5, en: 4, ag: 6, lu: 4, story: true,
+      aff: { light: 'weak', fire: 'weak', dark: 'resist' }, skills: ['bash', 'tremble'], ai: 'coward', exp: 60, img: 'maya', h: 150, idle: 'breathe', svg: 'maya',
+      note: 'The one that hung back. It flinches from light.' },
+    magician: Object.assign(S(7, { hp: 3.2, ma: 1.1 }), { name: 'Arcana Magician', arcana: 'Magician', boss: true, story: true,
+      aff: { light: 'weak', dark: 'null', fire: 'resist' }, skills: ['lunge', 'e_agi', 'e_maragi', 'e_tarunda'], ai: 'random', exp: 520, yen: 1200,
+      img: 'magical-magus', h: 300, idle: 'float', svg: 'priestess', alloutResist: 0.7, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'],
+      note: 'The first full moon. It climbed the dorm wall and it is waiting on the roof.' }),
+    memory_car: Object.assign(S(44, { hp: 6.4 }), { name: 'The Sleeper Car', arcana: 'Moon', boss: true, story: true,
+      aff: { light: 'weak', dark: 'null', ice: 'resist', strike: 'resist' }, skills: ['e_mabufula', 'e_mazionga', 'still'], ai: 'carriage', exp: 0, yen: 0,
+      still: 'The train runs past without touching the floor. Every window has someone asleep in it.',
+      img: 'rampage-drive', h: 300, idle: 'sway', svg: 'priestess', alloutResist: 0.6, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'],
+      note: 'A carriage that runs through the tower where there are no rails. It can’t be reached; its guards can.' }),
+    // Memory floors (Act IV–V). Mechanics are kept simple; see SCRIPTS in battle.js.
+    ballot_box: Object.assign(S(37, { hp: 6, ma: 1.2, en: 1.2 }), { name: 'The Ballot Box', arcana: 'Hoax', boss: true, story: true,
+      aff: { fire: 'weak', strike: 'resist', dark: 'null' }, skills: ['e_mazionga', 'e_agilao', 'e_ominous', 'e_tarunda'], ai: 'random', exp: 4200, yen: 5000,
+      img: 'laughing-table', h: 300, idle: 'sway', svg: 'priestess', alloutResist: 0.6, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'],
+      note: 'A ballot box the size of a car, swallowing every memory anyone has of her.' }),
+    flash_shadow: Object.assign(S(39, { hp: 5.6, ma: 1.25, ag: 1.2 }), { name: 'The Flash', arcana: 'Runners', boss: true, story: true,
+      aff: { dark: 'weak', light: 'drain', elec: 'resist' }, skills: ['e_zionga', 'e_evil_touch', 'e_evil_smile', 'e_mazionga'], ai: 'random', exp: 4600, yen: 5200,
+      img: 'nice-guy', h: 300, idle: 'float', svg: 'priestess', alloutResist: 0.6, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'],
+      note: 'A hallway at three in the morning, and a camera flash that won’t stop going off.' }),
+    tide_shadow: Object.assign(S(42, { hp: 6.4, ma: 1.25, en: 1.2 }), { name: 'The Tide', arcana: 'strangers', boss: true, story: true,
+      aff: { elec: 'weak', ice: 'drain', fire: 'resist' }, skills: ['e_bufudyne', 'e_mabufula', 'e_rakunda'], ai: 'random', exp: 5200, yen: 6000,
+      img: 'calm-pesce', h: 280, idle: 'sway', svg: 'priestess', alloutResist: 0.6, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'],
+      note: 'The deck of the last ferry, tilting. The water wants her.' }),
+    party_shadow: Object.assign(S(43, { hp: 6, st: 1.2, ma: 1.2 }), { name: 'The First Party', arcana: 'Runners', boss: true, story: true,
+      aff: { wind: 'weak', fire: 'resist', dark: 'null' }, skills: ['e_maragion', 'e_sexy_dance', 'e_power_slash', 'e_tarunda'], ai: 'random', exp: 5400, yen: 6200,
+      img: 'soul-dancer', h: 300, idle: 'sway', svg: 'priestess', alloutResist: 0.6, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'],
+      note: 'Music through a wall, and a Shadow that goes for her guests.' }),
+    veil_poster: Object.assign(S(44, { hp: 6.2, ma: 1.25 }), { name: 'Veil and Poster', arcana: 'strangers · Hoax', boss: true, story: true, gimmick: 'emperor',
+      aff: {}, shifts: ['fire', 'ice', 'elec', 'wind', 'light'], skills: ['e_bufula', 'e_agilao', 'e_marin_karin', 'e_mabufula'], ai: 'random', exp: 5600, yen: 6400,
+      img: 'trance-twins', h: 300, idle: 'float', svg: 'priestess', alloutResist: 0.6, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'],
+      note: 'Two floors at once. Its weakness swaps every turn.' }),
+    fox_shadow: Object.assign(S(46, { hp: 5.8, ma: 1.2, ag: 1.3 }), { name: 'The Mirror Fox', arcana: 'Runners · strangers', boss: true, story: true,
+      aff: { light: 'weak', dark: 'resist' }, skills: ['e_zionga', 'e_agilao', 'e_dia', 'e_tarukaja'], ai: 'random', exp: 6000, yen: 7000,
+      img: 'nekomata', h: 260, idle: 'sway', svg: 'priestess', alloutResist: 0.6, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'],
+      note: 'It moves the way she moves, a beat early.' }),
+    wren_call: Object.assign(S(50, { hp: 2.2 }), { name: 'Wren', arcana: 'Jester', boss: true, story: true, gimmick: 'wren',
+      aff: {}, skills: ['w_stay', 'w_wait', 'w_choose'], ai: 'wren_ask', exp: 0, yen: 0,
+      pic: 'assets/femc/portraits/wren/sad.webp', picW: 887, picH: 828, h: 360, idle: 'breathe', svg: 'maya', alloutResist: 0.5, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock', 'poison', 'distress'],
+      note: 'She doesn’t attack. She asks. Hold, and answer her, or don’t.' }),
+    last_train: Object.assign(S(52, { hp: 7, ma: 1.2, st: 1.2, en: 1.15 }), { name: 'The Last Train', arcana: 'Moon', boss: true, acts: 2, story: true, gimmick: 'train',
+      aff: { light: 'weak', dark: 'drain' }, skills: ['e_megidola', 'e_mabufula', 'e_mazionga', 'e_heat_wave', 'e_evil_smile'], ai: 'random', exp: 14000, yen: 0,
+      img: 'wren-shadow-last-train', h: 390, idle: 'float', svg: 'priestess', alloutResist: 0.6, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'],
+      note: 'No stops. Three lantern windows, three sleeping lives. Break a lantern and the train weakens.' }),
+    lantern_r: Object.assign(S(50, { hp: 1.3, en: 1.1 }), { name: 'Lantern · Runners', arcana: 'Sun', boss: true, story: true, gimmick: 'lantern', world: 'R',
+      aff: { light: 'weak', dark: 'null' }, skills: ['e_dia', 'still'], ai: 'lantern', exp: 0, yen: 0, still: 'In the lantern, a sleeping Solar turns over. Snow on a campus somewhere.',
+      pic: 'assets/femc/memories/runners-campus.webp', picW: 560, picH: 560, h: 150, idle: 'float', svg: 'maya', alloutResist: 0.8, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock', 'poison', 'distress'] }),
+    lantern_s: Object.assign(S(50, { hp: 1.3, en: 1.1 }), { name: 'Lantern · strangers', arcana: 'Sun', boss: true, story: true, gimmick: 'lantern', world: 'S',
+      aff: { light: 'weak', dark: 'null' }, skills: ['e_dia', 'still'], ai: 'lantern', exp: 0, yen: 0, still: 'In the lantern, a sleeping Solar turns over. Salt air, a harbor at low tide.',
+      pic: 'assets/femc/memories/strangers-harbor.webp', picW: 560, picH: 560, h: 150, idle: 'float', svg: 'maya', alloutResist: 0.8, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock', 'poison', 'distress'] }),
+    lantern_h: Object.assign(S(50, { hp: 1.3, en: 1.1 }), { name: 'Lantern · Hoax', arcana: 'Sun', boss: true, story: true, gimmick: 'lantern', world: 'H',
+      aff: { light: 'weak', dark: 'null' }, skills: ['e_dia', 'still'], ai: 'lantern', exp: 0, yen: 0, still: 'In the lantern, a sleeping Solar turns over. A pin on a blazer, a count still going.',
+      pic: 'assets/femc/memories/hoax-president-pin.webp', picW: 560, picH: 560, h: 150, idle: 'float', svg: 'maya', alloutResist: 0.8, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock', 'poison', 'distress'] }),
+    wren_last: Object.assign(S(50, { hp: 0.9 }), { name: 'Wren', arcana: 'Jester', boss: true, story: true, capfall: true,
+      aff: {}, skills: ['still'], ai: 'still', exp: 0, yen: 0, still: 'Wren doesn’t fight back.',
+      pic: 'assets/femc/portraits/wren/serious.webp', picW: 887, picH: 828, h: 380, idle: 'breathe', svg: 'maya', alloutResist: 1, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock', 'poison', 'distress'],
+      note: 'The cap is gone. Her hair is down. She looks like you.' })
   };
 
   /* ── Tartarus: seven blocks, three floors each, a full moon at the top of each block.
@@ -732,8 +834,29 @@ window.FEMC_BATTLE_DATA = (() => {
     ['hoax-poster', 'Hoax', 'A Campaign Poster', 'Her own face, smiling a smile she had to practice.'],
     ['hoax-debate-stage', 'Hoax', 'The Debate Stage', 'Bright lights, a podium, and the person everyone needs her to be.', true],
     ['hoax-president-pin', 'Hoax', 'A President’s Pin', 'Small and heavy. She wasn’t sure she wanted to win.', true],
-    ['hoax-crane-game', 'Hoax', 'A Crane Game', 'The claw slips again. Someone beside her keeps feeding it coins anyway.', true]
+    ['hoax-crane-game', 'Hoax', 'A Crane Game', 'The claw slips again. Someone beside her keeps feeding it coins anyway.', true],
+    // Awarded by searcher links (life sim). No art yet: battle.js / the game's journal draw a placeholder card from the title
+    // until assets/femc/memories/<id>.webp exists, then the real card shows up on its own.
+    ['runners-rooftop', 'Runners', 'A Rooftop', 'Gravel under her shoes, the whole city lit up below, and someone who followed her up the stairs.'],
+    ['strangers-suture-kit', 'strangers', 'A Suture Kit', 'Curved needles, small scissors. Her hands know what to do before she does.'],
+    ['strangers-low-tide', 'strangers', 'Low Tide', 'Mud to the horizon under sodium lights. Bad coffee in a car, waiting for it to turn.'],
+    ['hoax-group-chat', 'Hoax', 'A Group Chat', 'Two in the morning, a name changed to something stupid, and everyone still awake for her.'],
+    ['hoax-math-homework', 'Hoax', 'Math Homework', 'Neat working in somebody else’s handwriting, explained twice, patiently.']
   ].map(([id, world, title, text, wide]) => ({ id, world, title, text, img: MEM + id + '.webp', wide: wide ? MEM + id + '-wide.webp' : null }));
+  /* A stand-in card for a memory whose art doesn't exist yet (an SVG data URL with the title, in the world's colors).
+     battle.js and the game's journal swap it in when a memory image fails to load. */
+  const memoryPlaceholder = id => {
+    const m = memories.find(x => x.id === id) || { title: String(id || '').replace(/^[a-z]+-/, '').replace(/-/g, ' '), world: '' };
+    const c = { Runners: ['#2a0d1e', '#ff8cc0'], strangers: ['#0d1f26', '#7fd6c9'], Hoax: ['#1c1530', '#ffd36b'] }[m.world] || ['#1a1020', '#fff4f9'];
+    const x = t => String(t).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+    const words = String(m.title).split(' '), lines = [];
+    words.forEach(w => { const l = lines[lines.length - 1]; if (l && (l + ' ' + w).length <= 14) lines[lines.length - 1] = l + ' ' + w; else lines.push(w); });
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 560"><rect width="560" height="560" fill="${c[0]}"/><rect x="22" y="22" width="516" height="516" fill="none" stroke="${c[1]}" stroke-width="3" opacity=".6"/>`
+      + `<text x="280" y="120" fill="${c[1]}" font-family="Georgia, serif" font-size="26" letter-spacing="6" text-anchor="middle" opacity=".8">${x(String(m.world).toUpperCase())}</text>`
+      + lines.map((l, i) => `<text x="280" y="${300 - (lines.length - 1) * 30 + i * 60}" fill="#fff4f9" font-family="Georgia, serif" font-style="italic" font-size="50" text-anchor="middle">${x(l)}</text>`).join('')
+      + `<text x="280" y="470" fill="${c[1]}" font-family="Georgia, serif" font-size="22" text-anchor="middle" opacity=".7">memory fragment</text></svg>`;
+    return 'data:image/svg+xml,' + encodeURIComponent(svg);
+  };
 
   /* Music per screen. A floor can override `battle` with its own `music` key. Swap files here. */
   const M = 'assets/femc/music/';
@@ -951,5 +1074,5 @@ window.FEMC_BATTLE_DATA = (() => {
   };
 
   return { portraits: P, faceFocus, elements, affinityOrder, skills, ailments, tactics, attack, personas, party, defaultParty, theurgyGain, items, startItems, startYen, materials,
-    gear, startGear, shops, enemies, blocks, floors, ops, map, events, memories, music, clips, navigator, nav, tree, progression, difficulty, glossary, tips };
+    gear, startGear, shops, enemies, blocks, floors, ops, map, events, memories, memoryPlaceholder, music, clips, navigator, nav, tree, progression, difficulty, glossary, tips };
 })();

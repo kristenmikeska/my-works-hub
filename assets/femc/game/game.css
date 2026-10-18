@@ -178,6 +178,20 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
 .g-battle h2 { text-shadow: .06em .06em 0 #1d6b4a; }
 .g-battle-desc { color: #e8fff0; font-size: 16px; }
 .g-battle-note { color: var(--muted); font-size: 13.5px; }
+/* The beat before the battle game takes over (normal play), and traces a link left behind, and the Christmas Eve pick. */
+.g-battle-go { text-align: center; animation: g-battle-go .9s ease both; }
+@keyframes g-battle-go { from { opacity: 0; transform: scale(1.06); letter-spacing: .1em; } to { opacity: 1; transform: none; } }
+.g-who.trace { background: linear-gradient(120deg, rgba(60, 40, 90, .55), rgba(20, 7, 15, .95) 65%); box-shadow: 4px 4px 0 rgba(190, 160, 255, .45); }
+.g-who.trace i img { filter: grayscale(.85) brightness(.9); }
+.g-night.trace { background: linear-gradient(120deg, rgba(60, 40, 90, .55), rgba(20, 7, 15, .95) 60%); box-shadow: 4px 4px 0 rgba(190, 160, 255, .45); }
+.g-xmas .g-night.who { grid-template-columns: 56px minmax(0, 1fr); column-gap: 14px; }
+.g-xmas .g-night.who > :not(i) { grid-column: 2; }
+.g-xmas-pic { grid-row: 1 / span 2; display: block; width: 56px; height: 56px; border-radius: 50%; overflow: hidden; background: #3a1028; }
+.g-end-name { font: italic 900 clamp(26px, 5vw, 44px)/1.1 var(--cond); letter-spacing: .03em; margin: 0 0 8px; }
+.g-credits { margin-top: 18px; color: var(--muted, #e8dce4); font-size: 14px; line-height: 1.7; }
+.g-credits p { margin: 0; }
+.g-credits b { font: italic 900 18px/1 var(--cond); margin-right: 8px; }
+.g-xmas-pic img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; transform: scale(1.6); transform-origin: 50% 12%; }
 .g-tt-ov .g-panel { border-color: #8fffc0; }
 .g-party { display: flex; flex-wrap: wrap; margin: 12px 0; }
 .g-chip.lock { opacity: .85; }

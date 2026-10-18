@@ -8,6 +8,8 @@
   const $ = (s, r = document) => r.querySelector(s);
   const app = document.getElementById('g-app');
   const BATTLE_PAGE = 'femc-battle.html?from=game';
+  // ?debug=1 keeps the Simulate buttons on fight cards (remembered for this tab's session, so it survives the round trip).
+  const DEBUG = (() => { try { if (/[?&]debug=1\b/.test(location.search)) sessionStorage.setItem('kg-femc-debug', '1'); if (/[?&]debug=0\b/.test(location.search)) sessionStorage.removeItem('kg-femc-debug'); return sessionStorage.getItem('kg-femc-debug') === '1'; } catch (e) { return /[?&]debug=1\b/.test(location.search); } })();
 
   /* ── Small drawings (weather, moon, icons) ── */
   const ICON = {
@@ -23,6 +25,11 @@
     return `<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#3a1028"/><path d="${lit}" fill="#fff4f9"/></svg>`;
   }
   const bgUrl = slug => `${G.base}assets/femc/bg/${slug}.webp`;
+  // Memory cards without art yet (new fragment ids): the battle data's placeholder card stands in until the .webp exists.
+  document.addEventListener('error', e => {
+    const t = e.target, m = t && t.tagName === 'IMG' && !t.dataset.ph && /memories\/([a-z0-9-]+?)\.webp/.exec(t.getAttribute('src') || '');
+    if (m && G.D.battle.memoryPlaceholder) { t.dataset.ph = '1'; t.src = G.D.battle.memoryPlaceholder(m[1]); }
+  }, true);
 
   /* ── Music by screen ── */
   const screenMusic = key => { const mood = G.D.places.screens[key]; if (mood) SC.Music.set(mood); };
@@ -136,7 +143,8 @@
   // ctx: { type: 'prologue' } | { type: 'event', id } | { type: 'op', md } | { type: 'link', id, kind, r } | { type: 'job', id } | { type: 'tartarus' }
   function sceneFor(ctx) {
     if (ctx.type === 'prologue') return { scene: window.FEMC_GAME_PROLOGUE.scene, label: 'Prologue', title: null };
-    if (ctx.type === 'event') { const e = G.D.events.find(x => x.id === ctx.id); return { scene: e.scene, place: e.place, time: e.time, title: e.title, label: G.dayInfo().md, cast: e.cast }; }
+    if (ctx.type === 'event') { const e = G.D.events.find(x => x.id === ctx.id); return { scene: e.scene, place: e.place, time: e.time, title: e.title, label: G.dayInfo().md, cast: e.cast, link: e.link, event: true }; }
+    if (ctx.type === 'door') { const d = (G.D.flags.doorScenes || {})[ctx.key] || {}; return { scene: d.scene || [], place: d.place, time: d.time, title: d.title, label: 'Memory', event: true }; }
     if (ctx.type === 'op') return { scene: opScene(ctx.md), place: 'Iwatodai Dorm · Command Room', time: 'The Dark Hour', title: 'full moon', label: 'Operation' };
     return null;
   }
@@ -151,23 +159,37 @@
   function playCtx(ctx, opts = {}, resume) {
     const sc = sceneFor(ctx);
     return SC.play({
-      scene: sc.scene, place: sc.place, time: sc.time, title: resume ? null : sc.title, label: sc.label, music: opts.music, resume,
+      scene: sc.scene, place: sc.place, time: sc.time, title: resume ? null : sc.title, label: sc.label, music: opts.music, resume, link: sc.link, event: sc.event,
       onBattle: (battle, snap, cont) => battleCard(battle, { ctx, snap }, cont),
       onDone: r => { S().pending = null; G.save(); opts.onDone?.(r); }
     });
   }
 
-  /* ── Battle handoff card (placeholder until the battle game reads handoffs) ── */
+  /* ── Battle handoff: fights go to the battle game (femc-battle.html). With ?debug=1 a card offers Simulate instead. ── */
+  function goBattle(kind, req, resumeInfo) {
+    S().pending = resumeInfo ? { ctx: resumeInfo.ctx, snap: resumeInfo.snap } : { ctx: { type: kind }, snap: null };
+    G.makeHandoff(kind, req);
+    G.save();
+    location.href = BATTLE_PAGE;
+  }
   function battleCard(battle, resumeInfo, cont, kind) {
     kind = kind || battle.kind || (battle.script ? 'scripted' : battle.op ? 'operation' : 'tartarus');
     const title = battle.title || (kind === 'tartarus' ? 'Tartarus' : battle.op ? 'Full Moon Operation' : 'Battle');
     const req = { op: battle.op, ops: battle.ops, script: battle.script, segment: battle.segment, title, desc: battle.desc, notes: battle.notes || null, forced: battle.forced !== false && kind !== 'tartarus', party: battle.party };
     const seg1 = battle.script && battle.segment === 1;
+    if (!DEBUG) {
+      // A beat of the fight's title, then the battle game takes over.
+      const o = overlay(`<div class="g-battle g-battle-go"><p class="g-kicker">${kind === 'tartarus' ? 'The Dark Hour' : 'Battle'}</p><h2>${esc(title)}</h2>${battle.desc ? `<p class="g-battle-desc">${esc(battle.desc)}</p>` : ''}</div>`, 'g-battle-ov');
+      o.el.dataset.locked = '1';
+      screenMusic(kind === 'tartarus' ? 'tartarus' : 'fullmoon');
+      setTimeout(() => goBattle(kind, req, resumeInfo), reduced.matches ? 150 : 900);
+      return;
+    }
     const o = overlay(`<div class="g-battle">
         <p class="g-kicker">${kind === 'tartarus' ? 'The Dark Hour' : 'Battle'} · handoff</p>
         <h2>Battle<small>${esc(title)}</small></h2>
         <p class="g-battle-desc">${esc(battle.desc || '')}</p>
-        <p class="g-battle-note">The battle game will take this fight from here. Until it reads handoffs, you can simulate the result.</p>
+        <p class="g-battle-note">Debug: simulate the result here, or play the fight in the battle game.</p>
         <div class="g-row"><button type="button" class="g-btn pink" data-b="sim">${seg1 ? 'Simulate (until the Evoker)' : 'Simulate win'}</button>
         ${kind === 'tartarus' || !req.forced ? '<button type="button" class="g-btn" data-b="lose">Simulate retreat</button>' : ''}
         <button type="button" class="g-btn" data-b="go">Go to the battle game ▸</button></div></div>`, 'g-battle-ov');
@@ -177,13 +199,7 @@
     o.el.addEventListener('click', e => {
       const b = e.target.closest('[data-b]'); if (!b || used) return;
       used = true;
-      if (b.dataset.b === 'go') {
-        S().pending = resumeInfo ? { ctx: resumeInfo.ctx, snap: resumeInfo.snap } : { ctx: { type: kind }, snap: null };
-        G.makeHandoff(kind, req);
-        G.save();
-        location.href = BATTLE_PAGE;
-        return;
-      }
+      if (b.dataset.b === 'go') return goBattle(kind, req, resumeInfo);
       const h = G.makeHandoff(kind, req);
       const r = G.simulate(h, b.dataset.b === 'lose' ? 'retreat' : (seg1 ? 'interrupt' : 'win'));
       if (seg1) r.outcome = 'interrupt';
@@ -198,9 +214,9 @@
     const exp = Object.entries(sum.exp || {});
     const o = overlay(`<div class="g-results">
       <p class="g-kicker">${h.kind === 'tartarus' ? 'Back from Tartarus' : 'Operation'}${sum.simulated ? ' · simulated' : ''}</p>
-      <h2>${sum.outcome === 'win' ? 'Victory' : sum.outcome === 'interrupt' ? 'Interrupted' : 'Retreated'}</h2>
+      <h2>${sum.outcome === 'win' ? (h.kind === 'tartarus' ? 'Back safe' : 'Victory') : sum.outcome === 'interrupt' ? 'Interrupted' : sum.outcome === 'lose' ? 'Defeated' : 'Retreated'}</h2>
       ${exp.length ? `<ul class="g-exp">${exp.map(([m, x]) => `<li><b>${esc(G.name(m))}</b><span>+${x} EXP</span></li>`).join('')}</ul>` : ''}
-      <ul class="g-gains">${sum.yen ? `<li>¥${sum.yen.toLocaleString()}</li>` : ''}${sum.items.map(([k, n]) => `<li>${esc(G.D.battle.items?.[k]?.name || k)} ×${n}</li>`).join('')}${sum.bosses.length ? `<li>Cleared: ${sum.bosses.map(esc).join(', ')}</li>` : ''}${sum.fragments.map(f => `<li class="frag">Memory fragment: ${esc(G.fragmentInfo(f).title)}</li>`).join('')}${S().tartarus.maxFloor ? `<li>Best floor: ${S().tartarus.maxFloor}F</li>` : ''}</ul>
+      <ul class="g-gains">${sum.yen ? `<li>¥${sum.yen.toLocaleString()}</li>` : ''}${sum.items.map(([k, n]) => `<li>${esc(G.D.battle.items?.[k]?.name || k)} ${n > 0 ? `×${n}` : `used ×${-n}`}</li>`).join('')}${sum.bosses.length ? `<li>Cleared: ${sum.bosses.map(esc).join(', ')}</li>` : ''}${sum.fragments.map(f => `<li class="frag">Memory fragment: ${esc(G.fragmentInfo(f).title)}</li>`).join('')}${S().tartarus.maxFloor ? `<li>Best floor: ${S().tartarus.maxFloor}F</li>` : ''}</ul>
       <button type="button" class="g-btn pink" data-close>Continue</button></div>`, 'g-results-ov', done);
     return o;
   }
@@ -216,7 +232,7 @@
     }
     const o = overlay(`<div class="g-results"><p class="g-kicker">Handoff</p><h2>The fight didn't report back</h2>
       <p>The battle game hasn't sent a result for this ${esc(h.kind)} yet.</p>
-      <div class="g-row"><button type="button" class="g-btn pink" data-r="sim">Simulate the result</button><button type="button" class="g-btn" data-r="go">Back to the battle game</button>${h.request.forced ? '' : '<button type="button" class="g-btn" data-r="cancel">Call it off</button>'}</div></div>`);
+      <div class="g-row">${DEBUG ? '<button type="button" class="g-btn" data-r="sim">Simulate the result</button>' : ''}<button type="button" class="g-btn pink" data-r="go">Back to the battle game</button>${h.request.forced ? '' : '<button type="button" class="g-btn" data-r="cancel">Call it off</button>'}</div></div>`);
     o.el.dataset.locked = '1';
     let used = false;
     o.el.addEventListener('click', e => {
@@ -241,6 +257,7 @@
   }
   function afterCtx(ctx) {
     if (ctx.type === 'prologue') return endPrologue();
+    if (ctx.type === 'door') { G.markDoor(ctx.key); return run(); }
     if (ctx.type === 'event') { G.markEvent(ctx.id); return afterEvent(ctx.id); }
     if (ctx.type === 'op') { const i = G.dayInfo(); i.ops.forEach(o => { S().flags[`op-${o.op}`] = true; }); S().spent[`${S().day}-evening`] = 'op'; G.save(); return advance(); }
     run();
@@ -262,6 +279,8 @@
     if (s.phase === 'prologue') return startPrologue();
     paintHud();
     if (s.pending) return resumePending();
+    // The bad ending (route-bad) or a scene's { end } stops the calendar: on to the last night.
+    if (G.endingDue()) { G.jumpToEnd(); cardDay = S().day; }
     const info = G.dayInfo();
     if (s.slot === 'early' && cardDay !== s.day) { cardDay = s.day; show('', 'is-card'); return dateCard(run); }
     const due = G.dueEvent();
@@ -281,6 +300,30 @@
     if (due.kind === 'event') { S().pending = null; return playCtx({ type: 'event', id: due.ev.id }, { onDone: () => { G.markEvent(due.ev.id); afterEvent(due.ev.id); } }); }
     if (due.kind === 'link') return playLink(due.link, true);
     if (due.kind === 'op') return playCtx({ type: 'op', md: G.dayInfo().md }, { onDone: () => afterCtx({ type: 'op' }) });
+    if (due.kind === 'christmas') return christmasEve();
+    if (due.kind === 'door') return playCtx({ type: 'door', key: due.key }, { onDone: () => { G.markDoor(due.key); run(); } });
+    if (due.kind === 'farewell') return SC.play({ scene: G.farewellScene(due.link), place: G.linkPlace(due.link), time: 'Early Morning', label: due.link.short, link: due.link.id, onDone: () => run() });
+  }
+
+  /* ── Christmas Eve (P3P): who will you spend it with? ── */
+  function christmasEve() {
+    const opts = G.christmasOptions();
+    const alone = () => SC.play({ scene: [{ n: 'Christmas Eve. The lounge had a paper tree, a cake that leaned, and a CD that skipped, and Solar spent the evening there with whoever wandered through, which was most of them, and that was its own kind of present.' }], place: 'Iwatodai Dorm · Lounge', time: 'Evening', music: 'tender', onDone: () => advance() });
+    if (!opts.length) { G.pickChristmas(null); return alone(); }
+    setBg('iwatodaidorm-livingroom-night');
+    screenMusic('dorm');
+    show(`<section class="g-dorm g-xmas"><div class="g-map-head"><p class="g-kicker">12/24 · Christmas Eve</p><h1>Who will you spend Christmas Eve with?</h1>
+      <p class="g-map-sub">Snow on the windows. Your phone has been buzzing all afternoon.</p></div>
+      <div class="g-nights">${opts.map(l => { const pic = G.portrait(l.id, 'happy'); return `<button type="button" class="g-night who" data-x="${l.id}">${pic ? `<i class="g-xmas-pic"><img src="${pic}" alt=""></i>` : ''}<b>${esc(l.short)}</b><small>${esc(l.arcana)}</small></button>`; }).join('')}
+        <button type="button" class="g-night" data-x="alone"><b>Spend it alone</b><small>Stay in. The lounge is warm.</small></button></div></section>`, 'is-dorm');
+    main.querySelector('[data-x]')?.focus({ preventScroll: true });
+    main.querySelectorAll('[data-x]').forEach(b => b.addEventListener('click', () => {
+      const l = G.pickChristmas(b.dataset.x === 'alone' ? null : b.dataset.x);
+      G.sfx('femc-click');
+      if (!l) return alone();
+      const c = l.christmas;
+      SC.play({ scene: c.scene || [], place: c.place || G.linkPlace(l), time: c.time || 'Evening', music: c.music || 'tender', title: 'Christmas Eve', label: l.short, link: l.id, onDone: () => advance() });
+    }));
   }
 
   /* ── Title ── */
@@ -392,11 +435,21 @@
     const text = t === 'battled' ? 'Back from the tower, she fell into bed with her boots half off. Her body felt every floor.' : t === 'rest' ? 'She was asleep before her head finished settling into the pillow.' : info.moon.full ? 'The moon outside was enormous. She lay awake for a while and listened to the dorm be quiet.' : 'The dorm settled around her. Somewhere down the hall, a door, and then nothing.';
     segment({ slot: 'late', bg: 'solar-dormroom-night', place: "Solar's Room", text, button: 'Sleep', next: () => { const r = G.sleep(); if (r.end) return endScreen(); run(); } });
   }
+  // The end of the year: the ending's name, credits, and New Game+ (social stats, half the yen, the Compendium and books carry
+  // over; the battle game carries levels and the tree into the new playthrough).
   function endScreen() {
     hud.hidden = true;
     setBg('iwatodaidorm-roof-night', 'night');
-    show(`<section class="g-seg"><p class="g-kicker">1/31</p><div class="g-seg-box"><p class="g-seg-text">The year ends here for now. The rest of it hasn’t been written yet.</p></div><div class="g-row"><button type="button" class="g-btn pink" data-t>Back to title</button></div></section>`, 'is-seg');
-    main.querySelector('[data-t]').addEventListener('click', () => { S().phase = 'title'; G.save(); run(); });
+    screenMusic('title');
+    const name = G.endingName(), clears = G.recordClear(), seen = [...new Set(clears.map(c => c.ending))];
+    const met = S().met.length, frags = S().fragments.length, maxed = Object.values(G.LINKS).filter(l => G.progress(l.id).rank >= 10).length;
+    show(`<section class="g-seg g-end"><p class="g-kicker">1/31 · the last minutes of the last Dark Hour</p>
+      <div class="g-seg-box"><p class="g-end-name">ENDING · ${esc(name)}</p>
+        <p class="g-seg-sub">${frags} memory fragment${frags === 1 ? '' : 's'} · ${maxed} bond${maxed === 1 ? '' : 's'} at MAX · ${met} people met${S().ngp ? ` · New Game+ ${S().ngp}` : ''}</p>
+        <div class="g-credits"><p><b>FEMC</b> a year that made a place for her</p><p>Story, characters and worlds · Kat</p><p>Persona 3 · ATLUS (the year it borrows)</p><p>Endings seen · ${seen.map(esc).join(' · ')}</p></div></div>
+      <div class="g-row"><button type="button" class="g-btn pink" data-t="ngp">New Game+</button><button type="button" class="g-btn" data-t="title">Back to title</button></div></section>`, 'is-seg');
+    main.querySelector('[data-t=ngp]').addEventListener('click', () => { G.newGamePlus(); cardDay = null; run(); });
+    main.querySelector('[data-t=title]').addEventListener('click', () => { S().phase = 'title'; G.save(); run(); });
   }
 
   /* ── Exams ── */
@@ -443,7 +496,7 @@
       <p class="g-map-sub">${slot === 'evening' ? 'Where to tonight?' : 'Where do you want to spend this time?'} People keep their own schedules.</p>${slot === 'evening' ? '<button type="button" class="g-btn small" data-back>‹ Back to the dorm</button>' : ''}</div>
       <div class="g-areas">${areas.map(a => {
         const people = G.linksAt(a.id, slot).filter(l => G.linkStatus(l, S().day, slot).ok);
-        const n = people.length;
+        const n = people.length + G.tracesAt(a.id, slot).length;
         const img = slot === 'evening' && a.bgEvening ? a.bgEvening : a.bg;
         return `<button type="button" class="g-area${n ? ' busy' : ''}${a.home ? ' home' : ''}${slot === 'evening' ? ' late' : ''}" data-area="${a.id}" style="--pic:url('${bgUrl(img)}')">
           <b>${esc(a.name)}</b><small>${esc(a.blurb)}</small>${n ? `<em>${n} ${n === 1 ? 'person' : 'people'}</em>` : ''}</button>`;
@@ -458,15 +511,17 @@
   function areaView(slot, a) {
     const info = G.dayInfo();
     setBg(slot === 'evening' && a.bgEvening ? a.bgEvening : a.bg, slot === 'evening' && !a.bgEvening ? 'night' : '');
-    const people = G.linksAt(a.id, slot);
+    const people = G.linksAt(a.id, slot), traces = G.tracesAt(a.id, slot);
     const acts = G.D.places.activities.filter(x => x.area === a.id && x.slots.includes(slot));
     const jobs = G.D.jobs.filter(j => j.area === a.id && G.jobVisible(j) && j.slot === slot);
     const personRow = l => {
       const st = G.linkStatus(l, S().day, slot), met = G.isMet(l.id), p = G.progress(l.id);
       const pic = met ? G.portrait(l.id, 'neutral') : null;
-      const note = st.ok ? (met ? (p.ready === p.rank && p.rank > 0 ? 'Hang out' : `Rank ${p.rank} ▸ ${p.rank + 1}`) : 'Someone you haven’t met') : st.reason === 'needs' ? `Needs ${st.needs}` : st.reason === 'later' ? 'Busy today' : 'Busy right now';
+      const note = st.ok ? (met ? (st.after ? 'MAX · Spend time together' : p.ready === p.rank && p.rank > 0 ? 'Hang out' : `Rank ${p.rank} ▸ ${p.rank + 1}`) : 'Someone you haven’t met') : st.reason === 'needs' ? `Needs ${st.needs}` : st.reason === 'later' ? 'Busy today' : 'Busy right now';
       return `<button type="button" class="g-who" data-link="${l.id}"${st.ok ? '' : ' disabled'}><i>${pic ? `<img src="${pic}" alt="">` : '?'}</i><span><b>${esc(G.linkName(l))}</b><small>${esc(met ? `${l.arcana} · ${note}` : (st.ok && l.approach ? l.approach : note))}</small></span></button>`;
     };
+    // Something a link who has left behind (afterMax traces).
+    const traceRow = t => { const pic = G.portrait(t.link.id, 'neutral'); return `<button type="button" class="g-who trace" data-trace="${t.link.id}"${G.freeSlotSpent(slot) ? ' disabled' : ''}><i>${pic ? `<img src="${pic}" alt="">` : '✦'}</i><span><b>${esc(t.entry.place ? t.entry.place.split(' · ').pop() : t.link.short)}</b><small>${esc(`Something of ${t.link.short}'s is still here.`)}</small></span></button>`; };
     const actRow = x => {
       const ok = G.activityOk(x, slot);
       const cost = x.cost ? `¥${x.cost.toLocaleString()}` : x.shop ? 'Shop' : 'Free';
@@ -481,13 +536,14 @@
     show(`<section class="g-areaview"><div class="g-map-head"><button type="button" class="g-btn small" data-back>‹ Map</button><p class="g-kicker">${esc(G.slotName(slot, info))}</p><h1>${esc(a.name)}</h1></div>
       ${spent ? '<p class="g-note">You’ve already spent this time.</p>' : ''}
       <div class="g-cols">
-        ${people.length ? `<div class="g-col"><h2>People</h2>${people.map(personRow).join('')}</div>` : ''}
+        ${people.length || traces.length ? `<div class="g-col"><h2>People</h2>${people.map(personRow).join('')}${traces.map(traceRow).join('')}</div>` : ''}
         ${acts.length ? `<div class="g-col"><h2>Things to do</h2>${acts.map(actRow).join('')}</div>` : ''}
         ${jobs.length ? `<div class="g-col"><h2>Work</h2>${jobs.map(jobRow).join('')}</div>` : ''}
-        ${!people.length && !acts.length && !jobs.length ? '<p class="g-note">Nothing much going on here right now.</p>' : ''}
+        ${!people.length && !traces.length && !acts.length && !jobs.length ? '<p class="g-note">Nothing much going on here right now.</p>' : ''}
       </div></section>`, 'is-area');
     main.querySelector('[data-back]').addEventListener('click', () => goOut(slot));
     main.querySelectorAll('[data-link]').forEach(b => b.addEventListener('click', () => playLink(G.LINKS[b.dataset.link])));
+    main.querySelectorAll('[data-trace]').forEach(b => b.addEventListener('click', () => playLink(G.LINKS[b.dataset.trace], false, G.nextTrace(G.LINKS[b.dataset.trace]))));
     main.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => doActivity(G.D.places.activities.find(x => x.id === b.dataset.act), slot, a)));
     main.querySelectorAll('[data-job]').forEach(b => b.addEventListener('click', () => jobFlow(G.D.jobs.find(x => x.id === b.dataset.job), slot, a)));
   }
@@ -512,21 +568,21 @@
   }
 
   /* ── Links ── */
-  function playLink(l, forcedStory) {
+  function playLink(l, forcedStory, trace) {
     const p = G.progress(l.id);
-    const pick = G.linkScene(l);
+    const pick = G.linkScene(l, trace);
     const r = pick.r;
     const rank = l.ranks[r] || {};
     SC.play({
-      scene: pick.scene, place: pick.place, time: rank.time || (S().slot === 'evening' ? 'Evening' : G.slotName(S().slot)),
-      title: pick.kind === 'rank' ? pick.title : null, label: pick.kind === 'rank' ? `${l.short} · Rank ${r + 1}` : l.short, link: l.id,
-      music: pick.music || (pick.kind === 'rank' && r === 0 ? null : null),
+      scene: pick.scene, place: pick.place, time: pick.time || rank.time || (S().slot === 'evening' ? 'Evening' : G.slotName(S().slot)),
+      title: pick.kind === 'rank' || pick.kind === 'after' || pick.kind === 'trace' ? pick.title || null : null, label: pick.kind === 'rank' ? `${l.short} · Rank ${r + 1}` : pick.kind === 'after' ? `${l.short} · MAX` : l.short, link: l.id,
+      music: pick.music || null,
       onBattle: (b, snap, cont) => battleCard(b, null, cont),
       onDone: res => {
         const out = G.finishLink(l, pick.kind, r, res.gained);
         const done = () => { G.save(); advance(); };
         if (out.reversed) return SC.rankUp(l, out.rank, done, true);
-        if (out.repaired) return done();
+        if (out.repaired || out.after) return done();
         const after = () => (out.up ? SC.rankUp(l, out.rank, done) : done());
         if (out.req) SC.meter(l, r, out.from, out.to, out.req, out.up, after); else after();
         void p; void forcedStory;
@@ -540,7 +596,8 @@
     setBg('iwatodaidorm-livingroom-night');
     const s = S();
     const tt = G.tartarusOk();
-    const homeLinks = Object.values(G.LINKS).filter(l => G.areaById(l.home?.area)?.id === 'dorm' || /^Iwatodai Dorm/.test(l.home?.area || '')).filter(l => G.linkStatus(l, s.day, 'evening').ok);
+    const homeLinks = Object.values(G.LINKS).filter(l => G.areaById(G.homeOf(l).area)?.id === 'dorm' || /^Iwatodai Dorm/.test(G.homeOf(l).area || '')).filter(l => G.linkStatus(l, s.day, 'evening').ok);
+    const traces = G.tracesAt('dorm', 'evening');
     const book = s.books.owned.find(b => !s.books.done.includes(b));
     const jobs = G.D.jobs.filter(j => G.jobState(j.id).hired && j.slot === 'evening');
     const opt = (id, label, sub, ok = true, cls = '') => `<button type="button" class="g-night ${cls}" data-n="${id}"${ok ? '' : ' disabled'}><b>${label}</b><small>${esc(sub)}</small></button>`;
@@ -552,7 +609,8 @@
         ${book ? opt('read', 'Read', G.bookById(book)?.name || 'A book') : ''}
         ${opt('rest', 'Rest', s.condition === 'good' || s.condition === 'great' ? 'Go to bed early.' : 'Shake off being ' + G.D.stats.conditions[s.condition].name.toLowerCase() + '.')}
         ${jobs.map(j => { const ok = G.jobOk(j, 'evening'); return opt(`job:${j.id}`, `Work · ${esc(j.name)}`, ok.ok ? `¥${j.pay.toLocaleString()}` : ok.why, ok.ok); }).join('')}
-        ${homeLinks.map(l => opt(`link:${l.id}`, `${esc(G.linkName(l))}`, `${l.arcana} · in the lounge`, true, 'who')).join('')}
+        ${homeLinks.map(l => opt(`link:${l.id}`, `${esc(G.linkName(l))}`, `${l.arcana} · ${G.homeOf(l).spot ? G.homeOf(l).spot.toLowerCase() : 'in the lounge'}`, true, 'who')).join('')}
+        ${traces.map(t => opt(`trace:${t.link.id}`, esc(t.entry.place ? t.entry.place.split(' · ').pop() : t.link.short), `Something of ${t.link.short}'s is still here.`, true, 'who trace')).join('')}
         ${opt('out', 'Go out', 'Iwatodai at night')}
       </div></section>`, 'is-dorm');
     main.querySelectorAll('[data-n]').forEach(b => b.addEventListener('click', () => nightChoice(b.dataset.n, info)));
@@ -571,6 +629,7 @@
     if (n === 'out') return goOut('evening');
     if (n.startsWith('job:')) return jobFlow(G.D.jobs.find(j => j.id === n.slice(4)), 'evening', G.areaById(G.D.jobs.find(j => j.id === n.slice(4)).area));
     if (n.startsWith('link:')) return playLink(G.LINKS[n.slice(5)]);
+    if (n.startsWith('trace:')) return playLink(G.LINKS[n.slice(6)], false, G.nextTrace(G.LINKS[n.slice(6)]));
     if (n === 'tartarus') return tartarusPrompt();
   }
   function tartarusPrompt() {
@@ -617,7 +676,7 @@
       }
       if (tab === 'links') {
         const met = Object.values(G.LINKS).filter(l => G.isMet(l.id));
-        body = met.length ? `<div class="g-st-links">${met.map(l => { const p = G.progress(l.id), art = G.tarot(l); return `<div class="g-st-link${p.reversed ? ' rev' : ''}"><div class="g-tarot"${art ? ` style="background-image:url('${art}')"` : ''}><span>${esc(l.numeral || '✦')}</span></div><div><b>${esc(l.short)}</b><small>${esc(l.arcana)}${p.reversed ? ' · Reversed' : ''}</small><p class="g-pips">${Array.from({ length: 10 }, (_, i) => `<i class="${i < p.rank ? 'on' : ''}"></i>`).join('')}</p><small class="g-hint">${esc(p.rank >= 10 ? 'MAX' : l.home?.hint || '')}</small></div></div>`; }).join('')}</div>` : '<p class="g-note">No bonds yet. Go out after school and meet people.</p>';
+        body = met.length ? `<div class="g-st-links">${met.map(l => { const p = G.progress(l.id), art = G.tarot(l); return `<div class="g-st-link${p.reversed ? ' rev' : ''}"><div class="g-tarot"${art ? ` style="background-image:url('${art}')"` : ''}><span>${esc(l.numeral || '✦')}</span></div><div><b>${esc(l.short)}</b><small>${esc(l.arcana)}${p.reversed ? ' · Reversed' : ''}</small><p class="g-pips">${Array.from({ length: 10 }, (_, i) => `<i class="${i < p.rank ? 'on' : ''}"></i>`).join('')}</p><small class="g-hint">${esc(p.rank >= 10 ? 'MAX' : l.closes && S().day > G.dayOf(l.closes) ? 'Gone' : G.homeOf(l).hint || '')}</small></div></div>`; }).join('')}</div>` : '<p class="g-note">No bonds yet. Go out after school and meet people.</p>';
       }
       if (tab === 'journal') {
         const fr = s.fragments.map(G.fragmentInfo);

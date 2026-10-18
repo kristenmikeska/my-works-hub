@@ -5,7 +5,11 @@
      game only records that one is due (save.route.doorsDue).
    - counters: plain numbers scene choices can add to with { tally: { name: n } }.
    - choices: one-off answers recorded with { tally: { name: 'value' } }.
-   - hooks: flags reserved for later systems (set with { flag: { id: true } }). */
+   - hooks: flags reserved for later systems (set with { flag: { id: true } }, { flag: 'id' } or { flag: ['a', 'b'] }).
+     Story events set them the same way scenes do, e.g. the 10/4 event's { flag: { 'shinjiro-coma': true } }.
+     'wren-struck-first' can also come back from the battle game (the finale's result.flags).
+   - choices.xmas: the Christmas Eve pick (12/24 evening, core.js christmasOptions): a link id or 'alone'. Also sets the flag
+     xmas-<id>. It only picks the ending's variant inside whatever route the solstice locked; it never sets or locks a route. */
 window.FEMC_GAME_FLAGS = {
   worlds: {
     R: { prefix: 'runners-', charm: 'bell' },
@@ -14,10 +18,10 @@ window.FEMC_GAME_FLAGS = {
   },
   fragmentsPerWorld: 9,
   doors: [3, 6, 9],
-  doorScenes: {},                      // e.g. 'R3': { place, scene } (TODO, written later)
+  doorScenes: {},                      // filled by story-act5.js; core.js plays each due one late at night (one a night)
   counters: ['here', 'home.R', 'home.S', 'home.H', 'lean.R', 'lean.S', 'lean.H', 'haechan.R', 'haechan.S', 'jungwon.H', 'jungwon.S'],
   choices: ['solstice', 'xmas', 'crossroad1', 'crossroad2', 'crossroad3'],
-  hooks: ['bad-ending', 'true-path', 'wren-struck-first'],
+  hooks: ['bad-ending', 'true-path', 'wren-struck-first', 'shinjiro-coma'],
   // Cosmetic flags from the prologue (callbacks later).
   cosmetic: ['pro-hair-up', 'pro-told-porter']
 };
