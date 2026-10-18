@@ -1,161 +1,162 @@
-# CG and character art prompts
+# CG and art prompts (refreshed)
 
-Everything left on the art list except the two in progress (Hanni & Hyein at the mall, Haechan in the laundry room).
+Everything still to make, in one place: the earlier art list plus the new scenes the story added.
 
-**Which tool:**
-- **ChatGPT** for anything with characters or text (better faces and lettering).
-- **Gemini** for scenes with no faces, or wide shots where faces are tiny.
-
-**References** (📎):
-- Attach the **Akihiko CG first** as the style reference, then each character's portrait or sheet. Portraits are in `Character Portraits/<Name>/`.
-- For Solar, the cleanest reference is `solarportrait.png`.
-
-**Paste this style block at the start of every prompt:**
-> *Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, moody lighting with one dominant color. Use the other attached images only for the characters' faces, hair and clothes. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition.*
-
-**Solar's look:** very long straight black hair, black Gekkoukan High uniform, red bow, white earbuds around her neck. She gets her **red S.E.E.S. armband** only after she joins, so leave it off in the prologue scenes.
+**Done so far (19):** Akihiko finds her · waking in Tartarus · first night at the dorm · first day at Gekkoukan · Elizabeth's blank page · the unknown text · Hanni & Hyein find her · Jaehyun · Haechan · Jungwon · Haechan's laundry room · facing Wren's Shadow · Akihiko hand wraps / rooftop / Christmas · Runners, strangers, Hoax and Stay endings.
 
 ---
 
-## 1. Story
+## How to use these
+- **Tool:** use **ChatGPT** for anything with faces or text, and **Gemini** for scenes without faces.
+- **Style reference:** always attach `Event CGs/prologue-akihiko-finds-solar.png` **first**. Then attach each character's portrait (📎). Portraits are in `Character Portraits/<Name>/`, and Solar's cleanest one is `solarportrait.png`.
+- **Saving:** drop finished images in Downloads and tell me the scene name.
 
-**1. Waking alone in Tartarus** (📎 Solar)
-> Solar lies on a cold stone floor deep inside Tartarus, just opening her eyes: long black hair spread around her, Gekkoukan uniform with no armband, one hand limp near an ornate silver Evoker. Towering twisted architecture and coffin-shaped silhouettes rise into green darkness above her, a sickly green full moon far overhead. Low camera angle, her small in the frame, eerie and lonely.
+**Style block: paste this at the start of every CG prompt.**
+> *Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, moody lighting with one dominant color. Use the other attached images only for the characters' faces, hair and clothes. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition.*
 
-**2. The first night at the dorm** (📎 Solar, Mitsuru, Yukari, Junpei)
-> Iwatodai Dorm lounge at night, warm lamp light. Solar sits stiffly on the edge of a couch, wrapped in a borrowed blanket, no armband. Across from her: Mitsuru (long red hair, white blouse) seated with composed authority, Yukari (short brown hair, pink cardigan) watching her warily, Junpei (blue cap, goatee) leaning over the back of a chair, openly curious. Everyone is looking at her; she looks at her own hands. Awkward, tense, a little warm.
+**Solar's look:** very long straight black hair, black Gekkoukan High uniform, red bow, white earbuds around her neck, white knee socks, and a red S.E.E.S. armband (from mid-April on).
 
-**3. First day at Gekkoukan** (📎 Solar)
-> The front gate of Gekkoukan High on a spring morning, cherry blossoms drifting, students walking past in pairs. Solar (no armband) stops alone just inside the gate, books held to her chest, looking up at the school like she's trying to remember something. Bright pink and blue morning light.
+**The Dark Hour:** *"everything tinted sickly green-yellow, a huge yellow-green full moon, upright black coffins where people should be, dark red stains on the ground."*
 
-**4. Elizabeth and the blank page** (📎 Solar, Elizabeth)
-> The Velvet Room, a blue velvet elevator rising endlessly. Elizabeth (silver-blond hair, blue attendant uniform and hat) holds an enormous open book toward Solar. One page is completely blank, faintly glowing. Elizabeth's usual serene smile is replaced by real confusion, head tilted. Solar sits on the velvet bench, staring at the empty page. Blue light with gold accents.
+---
 
-**5. Solar meets Wren on the bench** (📎 Solar, Wren's new sheet)
-> An empty Japanese train station platform late at night after the last train, warm yellow platform lights, light rain on the tracks. On a wooden bench under a timetable sits Wren (navy porter's cap hiding her hair, oversized navy porter's coat with brass buttons, collar up, a train ticket tied with a pink ribbon in her hands). Solar stands a few steps away, looking at her. Their faces are noticeably alike, but neither of them sees it. Quiet, sad, a little eerie.
+## 0. Quick fixes to finished art
+1. **Elizabeth's blank page:** edit `prologue-elizabeth-blank-page`.
+   > *Edit this image, keeping everything else the same: remove the red armband from the black-haired girl's left arm.*
+2. **Wren's bench:** edit `wren-meets-solar-bench-v1`.
+   > *Edit this image, keeping everything else the same: change the black-haired girl's black thigh-high socks to white knee-high socks, and make her skirt plain black with no red stripe.*
 
-**6. A text from someone she doesn't know** (📎 Solar) *(Gemini can do this one too)*
-> Solar's small, bare dorm room at night. She lies on her side in bed, face lit blue by her phone screen, eyes wide and confused. The rest of the room is dark; through the window, the moon. Intimate, lonely, uneasy.
+---
 
-**7. Jaehyun finds his sister** (📎 Solar with armband, Jaehyun)
-> A rainy street in Iwatodai at dusk, umbrellas and neon. Jaehyun (attached reference), soaked, has stopped dead on the sidewalk, staring at Solar with an expression of disbelief and relief so strong it hurts. Solar, under her umbrella, looks back at him politely, not recognizing her own brother. Cool blue rain light with warm neon.
+## 1. Romance (from the earlier list)
+**1. Shinjiro: cooking together** · 📎 Solar, Shinjiro
+> The dorm kitchen at night, steam rising from a pot, one warm light over the stove. Shinjiro Aragaki (black beanie, long maroon coat set aside on a chair, sleeves rolled up) stands at the stove showing Solar how to stir, his hand over hers on the wooden spoon, gruff but careful, not quite looking at her. She's looking at him instead of the pot. Warm yellow light, quiet, intimate.
 
-**8. Haechan finds her** (📎 Solar with armband, Haechan)
-> Moonlight Bridge at night, cars streaking past in light trails. Haechan (tan skin, choppy black hair falling into his eyes, black jacket) stands still in the middle of the walkway, finally finding the person he's been searching every world for. His face barely moves: flat, stunned, eyes locked on her. Solar, a few steps away, has turned to look at him and feels like she should know him. Deep blue night, red bridge lights.
+**2. Jungwon: the croissant** · 📎 Solar, Jungwon
+> A Japanese school's student council room late at night, stacks of papers, a single desk lamp. Jungwon (attached reference, navy Hamlim school blazer) has fallen asleep sitting up over his notes, pen still in his hand, glasses pushed up. Solar sets a croissant on a napkin beside his elbow, smiling softly. Warm lamplight, deep blue night through the window.
 
-**9. Jungwon finds her** (📎 Solar with armband, Jungwon)
-> Gekkoukan High's student council room at dusk, papers on a long table. Jungwon (attached reference, school uniform) has frozen in the doorway with a stack of documents, staring at Solar, who sits at the table holding a pen. His composure is visibly cracking. Golden sunset light through the window.
+**3. Jihoon: the crane game** · 📎 Solar, Jihoon
+> A game arcade at night, crane machines glowing pink and blue. Jihoon (attached reference, bleached blond hair, black leather jacket) leans on a crane game, smug, holding out a lopsided plush dog he just won to Solar. She raises an eyebrow but takes it. Neon reflections on the floor, playful.
 
-**10. A searcher awakens** *(template; swap the name)* (📎 the character)
-> **[NAME]** (attached reference) stands in the middle of a green-lit Dark Hour street, coffins all around, one hand pressed to their chest as blue light and shattering glass explode outward from them. Behind them, the faint outline of their Persona is beginning to form. Their face is a mix of terror and certainty. Sickly green with blue glass light.
+**4. Minji: under the streetlamp** · 📎 Solar, Minji
+> A quiet riverside path at night under a single flickering amber streetlamp. Minji (attached reference, long black hair) holds up a camera, filming Solar, who has turned toward the lens mid-laugh, hair caught in the wind. Soft lamp glow, deep blue night, the river behind them. Tender and cinematic, like a still from Minji's own film.
 
-**11. Facing Wren's Shadow** (📎 Solar with armband, `Shadows/Wren-Shadow-Last-Train.png`)
-> Solar stands alone on a vast dark platform, Evoker in hand, small in the frame. Before her towers Wren's Shadow (attached reference): a colossal dark goddess fused with a steam locomotive, a cracked station clock for a face, three glowing lantern windows. Green moonlight, torn pages blowing like snow, an enormous sense of scale. Epic and heartbreaking.
+**5. Side romances** (optional, one each) · 📎 Solar plus the character
+> **[NAME]** and Solar **[moment]**, **[place]**, **[light/mood]**.
+- **Ann:** sharing a crepe at a stand in Paulownia Mall, golden afternoon
+- **Kasumi:** a ribbon-gymnastics twirl on the school rooftop at sunset while Solar claps
+- **Judy:** fixing a scooter together in a junkyard at night, sparks and neon
+- **Rio:** on the tennis court at dusk, Rio tossing Solar a racket
+- **Saori:** between library shelves, two hands reaching for the same book
 
-**12. Wren's cap falls** (📎 Solar with armband, Wren's sheet)
-> Close-up, Wren on her knees on a dark platform, her porter's cap tumbling away and her very long straight black hair spilling down for the first time. She is unmistakably Solar's double: same face, frightened and crying. Torn pages drift around her in green light. Solar stands over her, reaching out. Devastating, quiet.
+## 2. Friendship and matchmaking (from the earlier list)
+**6. Leon and Ada** · 📎 Solar, Leon, Ada
+> A rainy rooftop bar at night, city lights blurred behind glass. Leon S. Kennedy (leather jacket) and Ada Wong (red dress) stand at the railing an arm's length apart, both pretending not to look at each other. In the background, half hidden behind a pillar, Solar gives a tiny thumbs-up. Moody blue with a warm red accent, funny.
 
-## 2. Endings
-**13. Runners: home** (📎 Solar, Haechan, Hanni, Hyein)
-> A snowy American college campus at night, old brick buildings and a flickering lamppost. Solar (winter coat, scarf, long black hair) walks through fresh snow toward three people waiting under the lamp: Haechan (tan, black hair, black jacket, hands in pockets, almost smiling) and Hanni and Hyein, waving wildly, in tears. Warm amber lamplight in a deep blue night. Joyful and bittersweet.
+**7. Mercy and Aphrodite doing Solar's hair** · 📎 Solar, Mercy, Aphrodite
+> A cozy dorm bedroom, makeup and brushes on a vanity, string lights. Solar sits facing a mirror while Aphrodite (golden, glamorous) curls her long black hair and Mercy (blond, kind, in casual clothes) holds up a hair ribbon. Both are fussing like big sisters, and Solar laughs. Warm pink light.
 
-**14. strangers: home** (📎 Solar, Haechan, Yunjin)
-> A walled Korean house on a hill above a harbor at low tide, at dawn, red lanterns still glowing along the wall. Solar, in a soft sweater and pink rabbit socks, stands at the open gate as Yunjin (long red hair) runs toward her. Behind, Haechan leans in the doorway, watching. Pink-grey dawn, red lanterns.
+**8. Cloud, Tifa and Aerith** · 📎 Solar, Cloud, Tifa, Aerith
+> A sunny park bench at Port Island. Cloud Strife sits rigidly between Tifa and Aerith, who are both talking to him at once. He looks over at Solar, standing nearby with two drinks, for help. She is trying very hard not to laugh. Bright afternoon light.
 
-**15. Hoax: home** (📎 Solar, Jungwon, Sunoo, Jihoon)
-> A Korean high school gym at night, decorated with blue and silver streamers and string lights, a ballot box on a table. Solar stands in the doorway in a school blazer as Cherry (her best friend) throws her arms around her. Jungwon and Jihoon both stand nearby, one at each side of the room, both looking at her. Sparkly, emotional, warm.
+**9. The dorm dinner** · 📎 S.E.E.S. sheets plus a few visitors (Gemini can handle this one; faces are small)
+> A long crowded table in a dorm lounge at night, a hot pot steaming in the center, too many people squeezed together laughing: students in school uniforms, a girl in a white coat, a pale vampire-looking man, a fox-masked girl, a white dog. Solar sits at the center holding chopsticks, smiling in a way that looks like she's surprised to be happy. Warm yellow light, chaotic, cozy.
 
-**16. Stay** (📎 Solar with armband, Akihiko, S.E.E.S. members)
-> The dorm rooftop at dawn, the city below, pink and gold sky with the moon fading. S.E.E.S. stands at the railing watching the sunrise; Solar sits on the bench with Akihiko, her head on his shoulder, his arm around her. Peaceful, a little sad, home.
+## 3. ⚠️ New story scenes (mild spoilers in this section)
+**10. The Last Train on Moonlight Bridge** · Gemini is fine (no faces)
+> Moonlight Bridge at midnight during the Dark Hour: cars stopped dead in both lanes, coffins at the wheels, every streetlight out, suspension cables rising into a green sky, a huge yellow-green moon low over the far tower. An old black-green steam train glides along the bridge a hand's width above rails that aren't there, its windows glowing like paper lanterns, sleepers visible inside. One window shows a woman in a blue coat with her eyes closed. A tiny figure in a school uniform runs after it, far too late. Eerie, sorrowful, epic.
 
-**17. True ending: taking Wren's hand** (📎 Solar with armband, Wren's sheet, Haenim Unveiled)
-> On an empty platform at sunrise, light pouring in, Solar holds out her hand and Wren (cap off, long black hair loose, her porter's coat) reaches back. Their fingertips are about to touch. Behind Solar, Haenim Unveiled (attached) glows like the sun, eyes open. Golden, overwhelming, hopeful.
+**11. Jihoon arrives** · 📎 Solar, Jihoon, Hanni, Hyein
+> A green Dark Hour street with stopped cars and coffins. Down the middle of the road walks Jihoon (attached reference): tall, wind-wrecked dark hair, gray sweatpants, t-shirt and slides, clutching an enormous tub of ice cream against his chest like a baby, mid-rant. On the sidewalk, Solar stares; Hanni and Hyein (Hyein in an oversized black hoodie) cover their mouths. Absurd and emotional at once.
 
-## 3. Romance
-**18. Akihiko: hand wraps** (📎 Solar with armband, Akihiko)
-> A Gekkoukan boxing club after hours, one light over the ring. Akihiko kneels in front of Solar where she sits on the edge of the ring, carefully wrapping tape around her hand, focused and gentle. She watches his face instead of her hand. Warm light, intimate.
+**12. Minji's arrival under the lamp** · 📎 Solar, Minji
+> A riverside path at midnight in the Dark Hour: the river frozen mid-ripple, every lamp dead except one flickering amber streetlamp, and Solar standing under it alone. Across the path, Minji (attached reference) has just appeared out of the green dark with a camera in her hands, lowering it slowly, staring at Solar like she can't believe the frame. Green and amber.
 
-**19. Akihiko: the rooftop** (📎 Solar with armband, Akihiko)
-> The school rooftop at sunset, wind in their hair. Akihiko leans on the railing next to Solar, both looking at the city, their hands almost touching on the rail. Orange and pink sky.
+**13. Yunjin at low tide** · 📎 Yunjin (Solar optional, small, on the harbor wall)
+> A harbor during the Dark Hour at an impossible low tide: the sea gone, gray shining mudflats ribbed by the tide stretching out under a green moon, boats lying on their sides, bare black pilings. Far out on the mud, a girl with long red hair in a highlighter-yellow puffer jacket marches away from the harbor wall, sinking to the ankle, a car key in her fist, shouting. Small figures watch from the wall. Bleak and funny.
 
-**20. Akihiko: Christmas** (📎 Solar, Akihiko)
-> Port Island on Christmas Eve, snow falling, a tall tree with gold lights. Akihiko, in a dark coat and scarf, holds out a small wrapped gift to Solar, looking away, embarrassed. She covers her mouth, smiling. Romantic, snowy, warm gold light.
+**14–17. Four awakenings** · 📎 the searcher, plus Solar (reuse this template)
+> **[NAME]** (attached reference) stands in **[place]** during the Dark Hour, one hand pressed to their chest as blue light and shattering glass explode outward from them. Behind them, the faint outline of their Persona is beginning to form (leave it a glowing silhouette). Their face is a mix of terror and certainty. Solar is nearby, reaching toward them. Sickly green with blue glass light.
+- **Jihoon:** a Tartarus floor that looks like a school hallway at night, a borrowed baseball bat at his feet, hoodie and slides
+- **Minji:** a Tartarus floor that looks like a college house party, colored lights on a staircase
+- **Jungwon:** a Tartarus floor where a harbor and a school stage overlap, a stopped watch on his wrist
+- **Haechan:** a Tartarus floor that's half gaming lab (RGB-lit computer desks) and half laundry room (a dryer, a flashlight on the floor). He stands in the doorway between them.
 
-**21. Shinjiro: cooking together** (📎 Solar with armband, Shinjiro)
-> The dorm kitchen at night, steam rising from a pot. Shinjiro (beanie, long coat set aside, sleeves rolled up) stands at the stove showing Solar how to stir, his hand over hers on the spoon, gruff but careful. Warm yellow light.
+**18. Wren under the handless clock** · 📎 Solar, Wren (sheet)
+> A small train station platform on the longest night of winter, frost on the rails, plastic holly, a sad little Christmas tree by the gate, and the Dark Hour's green just coming down over everything. Under a big iron-armed station clock with no hands, Wren (navy porter's cap hiding her hair, oversized porter's coat, a train ticket with a pink ribbon held in one bare hand) stands very straight, waiting, while Solar sits on the bench beside her. Quiet, cold, inevitable.
 
-**22. Jungwon: the croissant** (📎 Solar with armband, Jungwon)
-> The student council room late at night, stacks of papers. Jungwon has fallen asleep sitting up over his notes, pen still in his hand. Solar sets a croissant on a napkin beside his elbow, smiling softly. A desk lamp is the only light.
+**19. Wren's cap falling** · 📎 Solar, Wren
+> Close-up: Wren on her knees on a dark platform, her porter's cap tumbling away and her very long straight black hair spilling down for the first time. She is unmistakably Solar's double, same face, frightened and crying. Torn pages drift around her in green light. Solar stands over her, reaching out. Devastating, quiet.
 
-**23. Jihoon: the crane game** (📎 Solar with armband, Jihoon)
-> An arcade at night, colorful machine lights. Jihoon (bleached blond hair, black leather jacket) leans on a crane game, smug, holding out a lopsided plush dog he just won, to Solar. She raises an eyebrow but takes it. Neon pink and blue.
+**20. True ending: taking Wren's hand** · 📎 Solar, Wren, `Personas/Haenim-Unveiled.png`
+> An empty station platform at sunrise, gold light pouring in. Solar holds out her hand and Wren (cap off, long black hair loose, in her porter's coat) reaches back; their fingertips are about to touch. Behind Solar, Haenim Unveiled (attached) glows like the sun, eyes open. Golden, overwhelming, hopeful.
 
-**24. Minji: under the streetlamp** (📎 Solar with armband, Minji)
-> A quiet riverside path at night under a single streetlamp. Minji (long black hair, blue top) holds up a camera, filming Solar, who has turned toward the lens mid-laugh. Through the camera's eye, she's the most beautiful thing in the world. Soft lamp glow, cinematic.
+**21. The bad ending** · 📎 Solar, Wren
+> Inside the old black-green train at night, paper-lantern windows glowing, rows of passengers asleep. Solar sits by a window beside Wren, her head on Wren's shoulder, eyes closing, a punched ticket loose in her hand. Through the glass, the green city slides away and disappears. Peaceful in a way that's terrible. Muted green and lantern gold.
 
-**Side romances (optional, one each, same template):**
-> **[NAME]** and Solar **[a moment from their link]**, **[place]**, **[mood/light]**.
+**22. (Optional) The city of the awake** · Gemini
+> A Dark Hour city street seen from above: coffins everywhere, and scattered among them a handful of people who are not coffins, a knight in armor, a girl with a fox spirit, a woman in a white coat, all looking up at the green moon, confused. Wide, eerie, wondrous.
 
-Ann at a crepe stand · Kasumi doing a gymnastics stretch on the school rooftop · Judy fixing a scooter in a junkyard · Rio on the tennis court at dusk · Saori in the library stacks.
+**23. (Optional) The train through Tartarus** · Gemini
+> Inside Tartarus: the black-green steam train tears straight up through the tower's twisting floors on rails made of light, lantern windows streaking, while a small group of fighters with Evokers watch it pass from a broken landing. Epic, green and gold.
 
-## 4. Friendship and matchmaking
-**25. Leon and Ada** (📎 Solar with armband, Leon, Ada)
-> A rainy rooftop bar at night with city lights. Leon (leather jacket) and Ada (red dress) stand at the railing an arm's length apart, both pretending not to look at each other. Solar, in the background behind a pillar, gives a tiny thumbs-up. Moody and funny.
+**24. (Optional) New Year's at the shrine** · 📎 Solar, plus any 3–4 friends
+> Naganaki Shrine on New Year's Day, a cold bright morning, a crowd of twenty-odd friends in coats and borrowed yukata climbing the steps together, coins flying toward the offering box. Solar at the front with her hands together and her eyes closed, everyone else laughing behind her. Warm, crowded, found-family.
 
-**26. Mercy and Aphrodite doing Solar's hair** (📎 Solar, Mercy, Aphrodite)
-> A cozy dorm bedroom, makeup and brushes on a vanity. Solar sits in a chair facing a mirror while Aphrodite (golden, glamorous) curls her hair and Mercy (blond, kind) holds up a hair ribbon, both fussing like big sisters. Solar laughs. Warm pink light.
+## 4. Wren's Shadow phases (battle)
+**25. Phase 1, "Last Call"** · 📎 Wren
+> Wren sits alone on a station bench in green Dark Hour light, porter's cap pulled low, crying into her too-long sleeves, a train ticket with a pink ribbon in her lap. Behind her, rails curl impossibly upward into the dark. Full body, transparent or dark background.
 
-**27. Cloud, Tifa and Aerith** (📎 Solar with armband, Cloud, Tifa, Aerith)
-> A sunny park bench. Cloud sits rigidly between Tifa and Aerith, who are both talking to him at once, while he looks to Solar, standing nearby, for help. Solar is trying not to laugh. Bright afternoon light.
+**26. Phase 3, "End of the Line"** · 📎 Wren, Solar
+> Wren kneeling, cap gone, very long straight black hair loose. She is unmistakably Solar's double, small and terrified, clutching her porter's coat around herself, torn pages falling around her. Full body, transparent or dark background.
 
-**28. The dorm dinner** *(Gemini can handle this; faces are small)* (📎 S.E.E.S. and a few visitors)
-> A long crowded table in the dorm lounge, hot pot steaming in the middle, S.E.E.S. and a mix of strange guests squeezed together laughing (a knight, a fox-masked girl, a man in a leather jacket). Solar sits at the center. Warm yellow light, chaotic and happy.
+## 5. Memory fragment cards (square, no reference)
+Start each with: *"Soft painterly anime vignette, square, dreamy and slightly faded like a half-remembered memory, light film grain, vignetted edges, no faces."* Then add one of these:
+- **runners-rooftop:** a college dorm rooftop at night, a guitar case and two drinks left by the ledge, campus lights below, snow on the railing
+- **hoax-math-homework:** a math worksheet covered in neat red-pen corrections, a pencil and croissant crumbs on a school desk
+- **strangers-suture-kit:** an open first-aid suture kit on a wooden table, curved needle and thread, folded gauze, warm lamplight
+- **strangers-low-tide:** a vast mudflat at low tide at dawn, small boats lying on their sides, a line of footprints leading out toward the water
+- **hoax-group-chat:** a flip phone glowing on a desk at night, its screen full of message bubbles, a cartoon dog sticker on the back
 
-## 5. Battle art
-**29. S.E.E.S. battle poses** *(template; one per member)* (📎 the member's portrait or full body)
-> Full-body character art of **[NAME]** in a dynamic battle-ready stance, holding their weapon (**[weapon]**), Evoker holstered at their hip, red S.E.E.S. armband, Gekkoukan uniform, determined expression. Persona 3 Reload official character art style, transparent background.
+## 6. Battle art (from the earlier list)
+**27. S.E.E.S. battle poses** (one per member) · 📎 the member
+> Full-body character art of **[NAME]** in a dynamic battle-ready stance, holding their weapon (**[weapon]**), Evoker holstered at the hip, red S.E.E.S. armband, Gekkoukan uniform, determined expression. Persona 3 Reload official character art style, transparent background.
 
-Weapons: Solar naginata · Akihiko boxing gloves · Yukari bow · Junpei two-handed sword · Mitsuru rapier · Aigis built-in arm guns · Ken spear · Koromaru knife held in his mouth · Shinjiro battle axe.
+Weapons: Solar naginata · Akihiko boxing gloves · Yukari bow · Junpei two-handed sword · Mitsuru rapier · Aigis arm guns · Ken spear · Koromaru knife in his mouth · Shinjiro battle axe. Add the four searcher fighters once their Personas exist.
 
-**30. Evoker poses** *(template; one per member)* (📎 the member)
-> Close-up of **[NAME]** raising an ornate silver Evoker to their temple, **[expression]**, hair lifting in a rush of blue wind, glowing blue glass shards around them, a huge full moon behind. Persona 3 Reload style, 16:9.
+**28. Evoker poses** (one per member) · 📎 the member
+> Close-up of **[NAME]** raising an ornate silver Evoker to their temple, **[expression]**, hair lifting in a rush of blue wind, glowing glass shards around them, a huge full moon behind. Persona 3 Reload style, 16:9.
 
-Expressions: Akihiko fierce grin · Yukari eyes squeezed shut, steeling herself · Junpei cocky · Mitsuru icy calm · Ken trying to look brave · Shinjiro reluctant.
+Expressions: Akihiko fierce grin · Yukari eyes squeezed shut · Junpei cocky · Mitsuru icy calm · Ken trying to look brave · Shinjiro reluctant · Aigis expressionless.
 
-**31. Aigis finish card** (📎 the Akihiko All-Out card for layout, Aigis)
+**29. Aigis finish card** · 📎 another finish card (layout reference), Aigis
 > Persona 3 Reload All-Out Attack finish card, bold graphic layout like the first reference: Aigis (blonde, headphone-like ears, red bow, metal arms) in a confident pose against a bright yellow background with huge black stylized letters "TARGET NEUTRALIZED." 16:9.
 
-**32. Wren's Shadow, phase 1, "Last Call"** (📎 Wren's sheet)
-> Wren sits alone on a station bench in green Dark Hour light, porter's cap pulled low, crying into her too-long sleeves, a train ticket with a pink ribbon in her lap. Behind her, the platform stretches into darkness and rails curl impossibly upward. Full body, isolated on a transparent or dark background.
-
-**33. Wren's Shadow, phase 3, "End of the Line"** (📎 Wren's sheet, Solar)
-> Wren kneeling, cap gone, very long straight black hair loose: unmistakably Solar's double, small and terrified, clutching her porter's coat around herself. Torn pages fall around her. Full body, transparent or dark background.
-
-## 6. Original Shadows from Solar's worlds
-*(Gemini; transparent background; each one in the style of a Persona 3 Shadow, with the blue mask)*
-> Persona 3 style Shadow monster design, full body, transparent background, a black liquid body wearing the iconic blue Persona 3 Shadow mask. **[DESIGN]**.
-
+## 7. Original Shadows from Solar's worlds (Gemini, transparent background)
+Start each with: *"Persona 3 style Shadow monster design, full body, transparent background, a black liquid body wearing the iconic blue Persona 3 Shadow mask."* Then add one of these:
 - **Runners:**
-  - *Paparazzi:* a cluster of black camera bodies with flashing lenses for eyes.
-  - *Kegstand:* a hulking shadow made of red party cups and a keg.
-  - *Grandmaster:* a fox-masked shade wrapped in glowing esports headset cables.
+  - *Paparazzi:* a cluster of black camera bodies with flashing lenses for eyes
+  - *Kegstand:* a hulking shadow made of red party cups and a keg
+  - *Grandmaster:* a fox-masked shade wrapped in glowing headset cables
 - **strangers:**
-  - *Low Tide:* a creeping mudflat creature with boat hulls on its back.
-  - *Bride:* a floating wedding veil with nothing inside.
-  - *Fishmonger:* a stack of ice crates with knife-like fins.
+  - *Low Tide:* a creeping mudflat creature with boat hulls on its back
+  - *Bride:* a floating wedding veil with nothing inside
+  - *Fishmonger:* a stack of ice crates with knife-like fins
 - **Hoax:**
-  - *Ballot Box:* a box-shaped shadow that spits folded ballots.
-  - *Glitter Poster:* a torn campaign poster that peels off the wall.
-  - *Group Chat:* a swarm of glowing message bubbles with teeth.
+  - *Ballot Box:* a box-shaped shadow spitting folded ballots
+  - *Glitter Poster:* a torn campaign poster peeling off a wall
+  - *Group Chat:* a swarm of glowing message bubbles with teeth
 
-## 7. Characters
-**34. Searcher full-body compendium art** *(template)* (📎 the character's sheet)
+## 8. Characters
+**30. Searcher full bodies** (one each) · 📎 the character's sheet
 > Full-body character art of **[NAME]**, standing in a relaxed signature pose, outfit matching the attached reference, Persona 3 Reload official character art style, transparent background.
 
-Hanni · Hyein · Minji · Mark · Jaehyun · Yunjin · Jungwon · Jihoon · Sunoo · Sunghoon · Jay · Jake · Heeseung · Niki · Cherry · Junkyu · Asahi · Hyunsuk · Jaehyuk.
+Hanni · Hyein · Minji · Mark · Jaehyun · Yunjin · Jungwon · Jihoon · Cherry · Sunoo · Junkyu (the rest of ENHYPEN and Jihoon's crew are optional).
 
-**35. Wren, full body** (📎 Wren's sheet)
-> Full-body character art of Wren standing on a station platform's edge, oversized navy porter's coat swallowing her hands, porter's cap pulled low, a train ticket with a pink ribbon held to her chest, shy posture. Persona 3 Reload official character art style, transparent background.
+**31. Wren full body** · 📎 Wren's sheet
+> Full-body character art of Wren standing at a station platform's edge, oversized navy porter's coat swallowing her hands, porter's cap pulled low, a train ticket with a pink ribbon held to her chest, shy posture. Persona 3 Reload official character art style, transparent background.
 
-## 8. UI
-**36. Title logo**: this needs the revamp's name first. Do you have one in mind?
+**32. Searcher Personas.** These get designed together first, the way Haenim was, for Haechan, Jungwon, Jihoon and Minji. Ask me when you're ready.
+
+## 9. UI
+**33. Title logo.** This needs the revamp's name first.

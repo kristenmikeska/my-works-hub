@@ -160,11 +160,18 @@ window.FemcGame = (() => {
        leavesAtMax: true | false  the link's rank 10 is its goodbye. Default: true when `closes` is 21 days or less after
          rank 10's `after` date (Ann: rank 10 10/23, closes 11/3; Shinjiro: 10/3, 10/4), so afterMax only plays as traces.
          Links that stay a while after MAX (Haru: 12/4 → 1/30) play afterMax normally until `closes`, then nothing.
-       christmas: { place, time, music, scene, rank, early }  the Christmas Eve date (12/24 evening). The partner pick lists every
+       christmas: { place, time, music, scene, rank, early }  the Christmas Eve date (12/24 evening). christmasOptions() lists every
          met link with `christmas` that is on its romance route (route 'romance') at rank 8+ (the earliest romance turn; a
          link that has closed by 12/24, like Shinjiro, needs rank 10). `rank: n` overrides the rank; `early: n` lets a link be
          picked from rank n before any route is set (v1's field, unless the route is 'friend'). The pick is saved as
-         route.choices.xmas = link id | 'alone' (plus the flag xmas-<id>) for the endings' variant. It never sets a route.
+         route.choices.xmas = link id | 'alone' | 'friends' (plus the flag xmas-<id>) for the endings' variant. It never sets a route.
+         There is ONE picker: the story event on 12/24 (story-act6.js 'a6-christmas-eve'). Its choice list has the route
+         partners' written beats, then a { christmasOptions: true } entry that scene.js expands (christmasChoices) into one
+         "(Text <short>.)" option per christmasOptions() link the list doesn't already offer (an option that sets the flag
+         xmas-<id> offers <id>). Picking one runs pickChristmas(id) and plays that link's own `christmas` scene (christmasLines:
+         its place/time/music, in the link's context so ifRoute works). A route partner picked from the written beats plays only
+         the story beat, never also their link scene (no double dates). The engine picker (ui.js christmasEve, dueEvent kind
+         'christmas') is only a fallback for a 12/24 with no playable story event, and never fires once route.choices.xmas is set.
        summerHome / winterHome: { area, spot, slot, days, hint }  where the link is during Summer Break / Winter Break (calendar
          `breaks` ids). Links whose home is at school (a schoolOnly area like Gekkoukan) and have no break home are
          unreachable in person on breaks and holidays, so on those days they text "free right now?" invites more often
@@ -373,6 +380,7 @@ window.FemcGame = (() => {
   function applyChoice(o, linkId, now) {
     now = now || !!o.link;
     linkId = o.link || linkId;
+    if (o.christmas) pickChristmas(o.christmas);
     if (o.flag) setFlags(o.flag);
     if (o.tally) tally(o.tally);
     if (o.stat) addStats(o.stat);
@@ -542,8 +550,10 @@ window.FemcGame = (() => {
       const covered = D.events.some(e => e.date === md && hasBattle(e.scene));
       if (ops.length && !covered) return { kind: 'op', ops };
     }
-    // Christmas Eve: the partner pick (12/24 evening; on the late slot if a story event took the evening).
-    if (md === XMAS && ['evening', 'late'].includes(slot) && !S.route.choices.xmas && S.phase === 'play' && (slot === 'evening' || S.spent[`${d}-evening`])) return { kind: 'christmas' };
+    // Christmas Eve: the story event on 12/24 is the picker (see `christmas` in the header). This engine pick is the fallback
+    // for a 12/24 with no playable story event (12/24 evening; on the late slot if something else took the evening).
+    if (md === XMAS && ['evening', 'late'].includes(slot) && !S.route.choices.xmas && S.phase === 'play' && (slot === 'evening' || S.spent[`${d}-evening`])
+      && !D.events.some(e => e.date === XMAS && (!e.flag || flag(e.flag)))) return { kind: 'christmas' };
     // A link that closed before rank 10 says goodbye the morning after (see `farewell`).
     if (slot === 'early') { const l = farewellDue(d); if (l) return { kind: 'farewell', link: l }; }
     // Story ranks that happen on a date (a link's `forced`).
@@ -636,6 +646,17 @@ window.FemcGame = (() => {
     S.spent[`${S.day}-evening`] = `xmas:${who}`;
     save();
     return who === 'alone' ? null : LINKS[who];
+  }
+  // The story picker's { christmasOptions: true } entry: one option per christmasOptions() link not already offered.
+  function christmasChoices(offered = []) {
+    return christmasOptions().filter(l => !offered.includes(l.id)).map(l => ({ t: `(Text ${l.short}.)`, christmas: l.id }));
+  }
+  // What a { christmas: id } option plays: the link's own Christmas scene (scene break with its place/time/music, then the
+  // scene in that link's context, so its ifRoute lines read that link's route).
+  function christmasLines(id) {
+    const l = LINKS[id], c = l?.christmas;
+    if (!c) return [];
+    return [{ place: c.place || linkPlace(l), time: c.time || 'Evening', music: c.music || 'tender' }, { asLink: id }, ...(c.scene || []), { asLink: null }];
   }
 
   /* ── Class and exams ── */
@@ -897,7 +918,7 @@ window.FemcGame = (() => {
     dayOf, dateOf, mdOf, dayInfo, slotsFor, slotName, weather, moon, END, SLOT_ORDER,
     statRank, statRankName, statProgress, addStat, addStats, lacking, addYen, takeToasts, toast,
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
-    homeOf, leavesAtMax, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas,
+    homeOf, leavesAtMax, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,
     flag, effect, branch, applyChoice, addFragment, fragmentInfo, worldOf,
     portrait, scale, name, silhouette, tarot, background, moodFor, sub, setDate, dateLabel,
     activityOk, doActivity, shopStock, buy, bookById, readTonight,

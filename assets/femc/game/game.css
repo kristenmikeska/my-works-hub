@@ -361,7 +361,9 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
 .gs.me-talking .gs-box .gs-text::before { display: block; left: auto; right: -40px; border-right: 0; border-left: 38px solid var(--pink-2); }
 .gs-text::after { content: "▼"; position: absolute; right: 22px; bottom: 10px; color: var(--pink); font-size: 12px; opacity: 0; }
 .gs.ready .gs-text::after { opacity: 1; animation: g-blink 1s steps(2) infinite; }
-.gs-choices { position: absolute; right: max(3vw, 16px); bottom: calc(4vh + var(--boxh, 190px) + 16px); z-index: 5; display: grid; gap: 10px; justify-items: end; max-width: min(560px, calc(100vw - 32px)); }
+.gs-choices { position: absolute; right: max(3vw, 16px); bottom: calc(4vh + var(--boxh, 190px) + 16px); z-index: 5; display: grid; gap: 10px; justify-items: end; max-width: min(560px, calc(100vw - 32px));
+  /* A long list (the Christmas Eve picker) never runs up under the Log/Auto/Skip bar: it scrolls instead. */
+  max-height: calc(100% - 4vh - var(--boxh, 190px) - 16px - 64px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; padding: 2px 10px 8px 14px; margin-right: -10px; }
 .gs-choices button { padding: 11px 26px; border: 0; background: rgba(20, 7, 15, .94); color: #fff; font: italic 800 clamp(15px, 1.5vw, 18px)/1.25 var(--cond); letter-spacing: .02em; text-align: left; transform: skewX(-14deg); box-shadow: 5px 5px 0 rgba(255, 79, 158, .5); animation: gs-choice .35s cubic-bezier(.2, 1.2, .4, 1) both; }
 .gs-choices button > * { display: inline-block; transform: skewX(14deg); }
 .gs-choices button small { display: block; color: var(--gold); font-size: 12px; letter-spacing: .1em; }
@@ -489,7 +491,7 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
   .gs.me-talking .gs-solar { transform: translateX(-50%); }
   .gs.me-talking .gs-portrait { opacity: 0; }
   .gs.me-talking .gs-name { margin: 0 0 0 22px; }
-  .gs-choices { left: 12px; right: 12px; bottom: calc(3vh + var(--boxh, 220px) + 12px); justify-items: stretch; }
+  .gs-choices { left: 12px; right: 12px; bottom: calc(3vh + var(--boxh, 220px) + 12px); justify-items: stretch; max-height: calc(100% - 3vh - var(--boxh, 220px) - 12px - 100px); margin-right: 0; }
   .gs-place { left: 10px; top: 10px; max-width: calc(100vw - 20px); padding: 6px 14px; }
   .gs-place b { font-size: 18px; }
   .gs-tools { top: 56px; right: 10px; }
@@ -504,6 +506,8 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
   .gs-choices { left: max(12px, calc(50% - 470px)); right: max(12px, calc(50% - 470px)); }
 }
 @media (max-height: 760px) and (min-width: 701px) {
+  .gs-choices { gap: 7px; }
+  .gs-choices button { padding: 8px 22px; font-size: 15px; }
   .gs-text { min-height: 6em; padding: 16px 24px 20px; font-size: 16px; }
   .gs-portrait, .gs-solar { height: calc(min(84vh, 850px) * var(--ps, 1)); }
   .g-hud { padding: 6px var(--pad); }

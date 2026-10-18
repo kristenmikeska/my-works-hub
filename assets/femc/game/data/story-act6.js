@@ -93,7 +93,9 @@
     { dark: false }
   ] },
 
-  { id: 'a6-christmas-eve', date: '12/24', slot: 'evening', flag: 'year-goes-on', title: 'christmas eve', place: 'Iwatodai Dorm · Lounge', time: 'Evening', scene: [
+  // The single Christmas Eve picker (core.js christmasOptions): the route partners' written beats below, then every other
+  // link with its own `christmas` scene ({ christmasOptions: true } expands into those, see scene.js), then everyone.
+  { id: 'a6-christmas-eve', date: '12/24', slot: 'evening', flag: 'year-goes-on', title: 'christmas eve', place: 'Iwatodai Dorm · Lounge', time: 'Evening', consumes: true, scene: [
     { music: 'date' },
     // Who fits this route (route partners on their romance route; Stay: Akihiko, or Shinjiro's bedside).
     ...window.FEMC_STORY_KIT.anyOf('rt-RS', [['route-R'], ['route-S'], ['route-true']]),
@@ -184,6 +186,7 @@
         { n: "Under her hand, on the blanket, his fingers moved. Once. Very slightly. Like someone turning over in their sleep to get comfortable." },
         { n: "She didn't call the nurse. She didn't move. She sat there with her hand under his until visiting hours were over, and then for a while after, because the nurse on duty had looked in, and seen them, and gone away again, and closed the door." }
       ] },
+      { christmasOptions: true },
       { t: "(Spend it with everyone.)", flag: { 'xmas-friends': true }, tally: { xmas: 'friends' }, then: [
         { place: 'Paulownia Mall', time: 'Evening', music: 'joy' },
         { n: "She didn't text anyone. She went to the mall, where the lights were, and found them all anyway, the way you find people in a crowd when they've been looking for you. Hanni and Hyein first, by the big tree, arguing about whether you could wear white in winter. Then Jihoon and Cherry, arguing about nothing. Then Yunjin, who joined in on both sides. By nine there were fifteen of them, taking up an entire section of Chagall Café, being too loud, and the staff had given up." },

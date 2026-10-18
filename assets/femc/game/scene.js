@@ -4,6 +4,12 @@
      { s, f, t }                 a spoken line: speaker id, portrait face, text ('solar' stands on the right)
      { choose: [{ t, notes, then, say, flag, tally, stat, needs, reverse, route }] }
                                  a choice; "(...)" options aren't spoken; needs: { stat: rank } locks an option
+       { christmasOptions: true }  an entry in a choice list (the 12/24 story picker) that expands into one "(Text <name>.)"
+                                 option per G.christmasChoices(): links whose own `christmas` scene is open (core.js) and
+                                 that no shown option already offers (an option setting the flag xmas-<id> offers <id>).
+                                 Picking one records the pick (G.pickChristmas) and plays G.christmasLines(id).
+     { asLink: 'id' | null }     the lines after it read that link's route/bond (ifRoute, choice reverse/route), until the
+                                 next asLink (null = back to the scene's own link)
      { place, time, bg, music, date, soft }   a scene break (soft: no fade to black)
      { bg } { music } { cg } { cg: null } { dark: true|false }   backdrop changes
      { phone: [{ from, t }], contact }        a text conversation
@@ -107,6 +113,8 @@ window.FemcScene = (() => {
     if (window.ResizeObserver) new ResizeObserver(fit).observe(boxEl); else fit();
     const queue = opts.resume?.queue ? [...opts.resume.queue] : [...opts.scene];
     let typing = null, waiting = null, skipping = false, currentFace = null, closed = false;
+    // The link whose route/bond the lines read (asLink switches it, e.g. a link's Christmas scene inside the story event).
+    let curLink = opts.resume?.vis?.link || opts.link;
     const log = [];
 
     function paintVis() {
@@ -178,7 +186,9 @@ window.FemcScene = (() => {
       showMe(null);
       el.classList.remove('ready');
       waiting = null;
-      const list = options.filter(o => !o.ifFlag || G.flag(o.ifFlag));
+      const shown = options.filter(o => !o.ifFlag || G.flag(o.ifFlag));
+      const offered = shown.flatMap(o => (o.flag && typeof o.flag === 'object' && !Array.isArray(o.flag) ? Object.keys(o.flag) : []).map(k => /^xmas-(.+)$/.exec(k)?.[1]).filter(Boolean));
+      const list = shown.flatMap(o => (o.christmasOptions ? G.christmasChoices(offered) : [o]));
       choices.replaceChildren(...list.map((o, i) => {
         const b = document.createElement('button');
         b.type = 'button';
@@ -192,10 +202,10 @@ window.FemcScene = (() => {
           if (lock) return;
           choices.replaceChildren();
           G.sfx('femc-click');
-          G.applyChoice(o, opts.link, opts.event);
+          G.applyChoice(o, curLink, opts.event);
           notes(o.notes || 0);
           const spoken = o.say || (o.t.trim().startsWith('(') ? null : o.t);
-          queue.unshift(...(spoken ? [{ s: 'solar', t: spoken }] : []), ...(o.then || []));
+          queue.unshift(...(spoken ? [{ s: 'solar', t: spoken }] : []), ...(o.christmas ? G.christmasLines(o.christmas) : []), ...(o.then || []));
           next();
         });
         return b;
@@ -275,7 +285,7 @@ window.FemcScene = (() => {
     function battle(line) {
       waiting = null; skipping = false;
       textEl.replaceChildren(); nameEl.textContent = '';
-      const snapshot = { queue: [...queue], vis: { ...vis }, gained };
+      const snapshot = { queue: [...queue], vis: { ...vis, link: curLink }, gained };
       opts.onBattle ? opts.onBattle(line.battle, snapshot, () => next()) : next();
     }
     function next() {
@@ -288,13 +298,14 @@ window.FemcScene = (() => {
       if ('cg' in line) { vis.cg = line.cg; if (line.cg) { img.hidden = true; sil.hidden = true; currentFace = null; showMe(null); } paintVis(); return next(); }
       if ('dark' in line) { vis.dark = !!line.dark; paintVis(); return next(); }
       if (line.setDate) { G.setDate(line.setDate); paintVis(); return next(); }
+      if ('asLink' in line) { curLink = line.asLink || opts.link; return next(); }
       if (line.phone) return phone(line);
       if (line.summon) return summon(line);
       if (line.act) return actCard(line);
       if (line.battle) return battle(line);
       if (line.choose) return ask(line.choose);
       if (line.route) return ask(line.route);
-      const branch = G.branch(line, opts.link);
+      const branch = G.branch(line, curLink);
       if (branch !== null) { queue.unshift(...(branch || [])); return next(); }
       if (G.effect(line)) return next();
       if (line.n !== undefined) {
