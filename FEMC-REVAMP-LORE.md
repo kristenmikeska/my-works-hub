@@ -17,6 +17,8 @@ She wakes up in **Tartarus** with no memory of who she is or where she came from
 
 **Solar is FeMC.** There was no FeMC in this world before her. Every trace of "the protagonist" in P3 starts the night she arrives.
 
+**She wakes up already in a Gekkoukan uniform** (no armband yet). Nothing from any of her three lives is on her, so no single world claims her. The eerie part is that this world made a place for her before she arrived.
+
 ## Why she's here: her Shadow
 
 In all three lives, Solar is being pushed toward an ending she didn't choose:
