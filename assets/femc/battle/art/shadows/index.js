@@ -615,6 +615,11 @@ window.FEMC_SHADOW_ART = {
   "small": true,
   "w": 240
  },
+ "wren-shadow-last-train": {
+  "h": 900,
+  "small": false,
+  "w": 602
+ },
  "yaksini": {
   "h": 694,
   "small": false,

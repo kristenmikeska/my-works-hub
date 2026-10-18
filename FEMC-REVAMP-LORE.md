@@ -32,9 +32,9 @@ The Shadow isn't cruel. It's the part of her that is tired. It keeps offering to
 
 Wren is the first friendly face Solar meets: a gentle, frightened girl in a porter's coat that's too big for her, who keeps missing the last train because she's scared of where it goes. **Later we learn Wren is what Solar's Shadow looks like before Solar can face it:** the scared girl inside her, afraid of every ending. (Twist; keep it a surprise in play.)
 
-**Wren's look (redesign):** Solar's face, softer and more tired, with her long black hair always hidden under a porter's cap. She wears a too-big navy porter's coat, collar up, in muted rain colors, and holds a ticket tied with one small pink ribbon. Players shouldn't clock it right away. **Reveal:** in the final phase her cap falls and her hair comes down. She's Solar.
+**Wren's look (redesign; portraits done):** Solar's face, softer and more tired, with her long black hair always hidden under a porter's cap. She wears a too-big navy porter's coat, collar up, in muted rain colors, and holds a ticket tied with one small pink ribbon. Players shouldn't clock it right away. **Reveal:** in the final phase her cap falls and her hair comes down. She's Solar.
 
-**Wren's Shadow (final boss):** the Last Train fused with a dark mirror of Haenim, the moon to Solar's sun.
+**Wren's Shadow (final boss)** (art done: `Shadows/Wren-Shadow-Last-Train.png`): the Last Train fused with a dark mirror of Haenim, the moon to Solar's sun.
 - **Look:** a midnight-navy and tarnished-silver gown soaked like rain, the porter's coat worn as a shroud, a moon crown of signal lamps, and a black veil she never lifts with a cracked station clock for a face. Her charms are broken: a cracked bell, a split jade ring, a bent star pin, headphones with the cord cut.
 - **Lower half:** a steam locomotive on rails that loop forever.
 - **The three lives:** three lantern windows, each holding a sleeping Solar from one world.

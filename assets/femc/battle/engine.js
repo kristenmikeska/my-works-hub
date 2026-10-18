@@ -19,7 +19,7 @@ window.FemcBattleEngine = (() => {
       hp: Math.round(d.hp * k), maxHp: Math.round(d.hp * k), sp: 999, maxSp: 999,
       st: d.st * (1 + heat * 0.6), ma: d.ma * (1 + heat * 0.6), en: d.en, ag: d.ag, lu: d.lu,
       aff: { ...d.aff }, baseAff: { ...d.aff }, skills: d.skills.slice(), ai: d.ai, exp: Math.round(d.exp * (1 + heat * 1.3)),
-      down: false, guard: false, bound: 0, dead: false, buffs: { atk: 0, def: 0, agi: 0 }, buffT: { atk: 0, def: 0, agi: 0 }, boost: 1, turns: 0
+      down: false, guard: false, ail: null, dead: false, buffs: { atk: 0, def: 0, agi: 0 }, buffT: { atk: 0, def: 0, agi: 0 }, boost: 1, turns: 0
     };
   }
 
@@ -32,7 +32,7 @@ window.FemcBattleEngine = (() => {
       units: [], round: 0, queue: [], cur: null, oneMore: false, chain: new Set(), alloutReady: false, outcome: null,
       mods, known: setup.known || {}, items: setup.items || {}, heat: setup.heat || 0, extraUsed: false, uid: 0, boss: false, log: []
     };
-    setup.party.forEach((p, i) => S.units.push(Object.assign({ id: 'p' + i, side: 'party', down: false, guard: false, bound: 0, dead: p.hp <= 0, buffs: { atk: 0, def: 0, agi: 0 }, buffT: { atk: 0, def: 0, agi: 0 }, boost: 1, turns: 0 }, p)));
+    setup.party.forEach((p, i) => S.units.push(Object.assign({ id: 'p' + i, side: 'party', down: false, guard: false, ail: null, dead: p.hp <= 0, buffs: { atk: 0, def: 0, agi: 0 }, buffT: { atk: 0, def: 0, agi: 0 }, boost: 1, turns: 0 }, p)));
     setup.enemies.forEach(kind => { const e = makeEnemy(kind, 'e' + S.uid++, S.heat); S.units.push(e); if (e.boss) S.boss = true; });
 
     const U = id => S.units.find(u => u.id === id);
@@ -68,18 +68,41 @@ window.FemcBattleEngine = (() => {
       if (tgt.guard) d *= 0.5;
       return d;
     }
+    const helpless = u => !!(u.down || (u.ail && D.ailments[u.ail.id].noAct));
     function hits(src, tgt, sk) {
-      if (sk.sure || tgt.down || tgt.bound) return true;
-      const base = sk.acc || (PHYS.has(sk.el) ? 93 : 97);
+      if (sk.sure || helpless(tgt)) return true;
+      const base = (sk.acc || (PHYS.has(sk.el) ? 93 : 97)) + (src.acc || 0);
       const chance = base + (src.ag - tgt.ag) * 0.8 + 8 * (src.buffs.agi - tgt.buffs.agi);
-      return R() * 100 < Math.max(60, chance);
+      return R() * 100 < Math.max(sk.acc ? 50 : 60, chance);
     }
     function critChance(src, tgt, sk) {
       if (!PHYS.has(sk.el) || tgt.guard) return 0;
       let c = 3 + src.lu * 0.6 + (sk.crit || 0);
       if (src.side === 'party') c += mods.crit + (sk === skillOf('golden_rope') ? mods.ropeCrit : 0);
       else c *= 0.5;
+      if (tgt.ail && tgt.ail.id === 'distress') c += 40;
       return c;
+    }
+
+    /* ── Ailments ─────────────────────────────────────── */
+    const ailImmune = (u, id) => u.side === 'enemy' && (DATA().enemies[u.kind].ailImmune || []).includes(id);
+    function inflict(src, tgt, ail, ev, mult = 1) {
+      if (!ail || tgt.dead || tgt.ail || ailImmune(tgt, ail.id)) return false;
+      let ch = ail.chance * mult;
+      if (ail.rope && src.side === 'party') ch += mods.bind;
+      if (tgt.guard) ch *= 0.5;
+      if (R() >= ch) return false;
+      const T = D.ailments[ail.id].turns;
+      tgt.ail = { id: ail.id, t: T[0] + Math.floor(R() * (T[1] - T[0] + 1)) };
+      ev.push({ t: 'ail', src: src.id, tgt: tgt.id, id: ail.id, turns: tgt.ail.t });
+      return true;
+    }
+    function cure(tgt, ids, ev, src) {
+      if (!tgt.ail || !ids.includes(tgt.ail.id)) return false;
+      const id = tgt.ail.id;
+      tgt.ail = null;
+      ev.push({ t: 'ailEnd', tgt: tgt.id, id, cured: true, src: src && src.id });
+      return true;
     }
 
     /* Resolve one damaging hit. Returns the event and whether it newly knocked the target down. */
@@ -105,7 +128,9 @@ window.FemcBattleEngine = (() => {
         ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff, amount: amt, hp: tgt.hp, maxHp: tgt.maxHp });
         return false;
       }
-      const crit = R() * 100 < critChance(src, tgt, sk);
+      // Frozen: the next physical hit is a sure critical and shatters the ice.
+      const shatter = PHYS.has(sk.el) && tgt.ail && tgt.ail.id === 'freeze';
+      const crit = shatter || R() * 100 < critChance(src, tgt, sk);
       if (aff === 'weak') d *= 1.5 * (src.side === 'party' ? mods.weakMult : 1);
       if (aff === 'resist') d *= 0.5;
       if (crit) d *= mods.critMult;
@@ -114,13 +139,34 @@ window.FemcBattleEngine = (() => {
       let downed = false, killed = false;
       if (tgt.hp <= 0) { kill(tgt); killed = true; }
       else if ((aff === 'weak' || crit) && !tgt.down && !tgt.guard) { tgt.down = true; downed = true; }
-      let bound = false;
-      if (!killed && sk.bind && tgt.side === 'enemy' && !DATA().enemies[tgt.kind].bindImmune && R() < sk.bind + (src.side === 'party' ? mods.bind : 0)) { tgt.bound = 1; bound = true; }
-      ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff, crit, amount, hp: tgt.hp, maxHp: tgt.maxHp, killed, downed, bound });
+      ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff, crit, amount, hp: tgt.hp, maxHp: tgt.maxHp, killed, downed, shatter, skill: sk.id });
+      if (shatter && !killed) { tgt.ail = null; ev.push({ t: 'ailEnd', tgt: tgt.id, id: 'freeze', shatter: true }); }
+      // Shocked: touching it with a physical attack may shock the attacker.
+      if (!killed && PHYS.has(sk.el) && tgt.ail && tgt.ail.id === 'shock' && !src.ail && !src.dead && !ailImmune(src, 'shock') && R() < 0.4) {
+        src.ail = { id: 'shock', t: 1 };
+        ev.push({ t: 'ail', src: tgt.id, tgt: src.id, id: 'shock', turns: 1, back: true });
+      }
+      if (!killed && sk.ail) inflict(src, tgt, sk.ail, ev, aff === 'weak' ? 1.5 : aff === 'resist' ? 0.5 : 1);
       return downed;
     }
+    /* Hama / Mudo: all or nothing. Bosses are immune. Fear makes Dark nearly certain. */
+    function instaKill(src, tgt, sk, ev) {
+      const a = tgt.aff[sk.el] || 'normal';
+      if (src.side === 'party' && learn(tgt, sk.el)) ev.push({ t: 'reveal', tgt: tgt.id, kind: tgt.kind, el: sk.el, aff: a });
+      if (tgt.boss || ['null', 'repel', 'drain'].includes(a)) { ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff: 'null', amount: 0, hp: tgt.hp, maxHp: tgt.maxHp, insta: true }); return false; }
+      let ch = sk.chance + src.lu * 0.5;
+      if (a === 'weak') ch = ch * 2 + 15;
+      if (a === 'resist') ch *= 0.4;
+      if (sk.el === 'dark' && tgt.ail && tgt.ail.id === 'fear') ch += 55;
+      if (tgt.down) ch += 10;
+      if (R() * 100 >= ch) { ev.push({ t: 'miss', src: src.id, tgt: tgt.id, insta: true }); return false; }
+      const amount = tgt.hp;
+      kill(tgt);
+      ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff: a === 'weak' ? 'weak' : 'normal', amount, hp: 0, maxHp: tgt.maxHp, killed: true, insta: true });
+      return false;
+    }
     function kill(u) {
-      u.dead = true; u.hp = 0; u.down = false; u.bound = 0; u.guard = false;
+      u.dead = true; u.hp = 0; u.down = false; u.ail = null; u.guard = false;
       u.buffs = { atk: 0, def: 0, agi: 0 }; u.buffT = { atk: 0, def: 0, agi: 0 };
     }
     function heal(src, tgt, amount, ev, sp = 0) {
@@ -137,11 +183,11 @@ window.FemcBattleEngine = (() => {
     }
 
     /* ── Using a skill (party or enemy) ───────────────── */
-    function targetsFor(src, sk, target) {
-      const same = ['ally', 'allies', 'dead', 'self'].includes(sk.target);
+    function targetsFor(src, sk, target, flip = false) {
+      const same = ['ally', 'allies', 'dead', 'self'].includes(sk.target) !== flip;
       const pool = sideOf(src, same);
       if (sk.target === 'self') return [src];
-      if (sk.target === 'all' || sk.target === 'allies') return alive(pool);
+      if (sk.target === 'all' || sk.target === 'allies' || sk.target === 'rand') return alive(pool);
       if (sk.target === 'dead') { const t = U(target); return t && t.dead ? [t] : []; }
       let t = U(target);
       if (!t || t.dead) t = alive(pool)[0];
@@ -158,13 +204,21 @@ window.FemcBattleEngine = (() => {
       if (sk.cost.hp) return u.hp > Math.round(u.maxHp * sk.cost.hp / 100);
       return true;
     }
-    function useSkill(src, skId, target, ev) {
-      const sk = skId === 'attack' ? Object.assign({}, D.attack, { el: src.weapon || 'strike' }) : skillOf(skId);
+    function useSkill(src, skId, target, ev, { flip = false } = {}) {
+      const sk = skId === 'attack' ? Object.assign({ id: 'attack' }, D.attack, { el: src.weapon || 'strike' }) : Object.assign({ id: skId }, skillOf(skId));
       payCost(src, sk);
-      const tgts = targetsFor(src, sk, target);
-      ev.push({ t: 'use', src: src.id, skill: skId, name: sk.name, el: sk.el, tgts: tgts.map(u => u.id), summon: skId !== 'attack' && src.side === 'party', cost: sk.cost || null, hp: src.hp, sp: src.sp });
+      const tgts = targetsFor(src, sk, target, flip);
+      ev.push({ t: 'use', src: src.id, skill: skId, name: sk.name, el: sk.el, tgts: tgts.map(u => u.id), summon: skId !== 'attack' && src.side === 'party', cost: sk.cost || null, hp: src.hp, sp: src.sp, charmed: flip });
       let downs = 0;
-      if (sk.type === 'dmg') tgts.forEach(t => { if (!t.dead && strike(src, t, sk, ev)) downs++; });
+      const n = sk.multi ? sk.multi[0] + Math.floor(R() * (sk.multi[1] - sk.multi[0] + 1)) : 1;
+      if (sk.type === 'dmg' && sk.target === 'rand') {
+        for (let i = 0; i < n; i++) { const pool = tgts.filter(t => !t.dead); if (!pool.length) break; const t = pick(pool); if (strike(src, t, sk, ev)) downs++; }
+      } else if (sk.type === 'dmg') tgts.forEach(t => { for (let i = 0; i < n && !t.dead; i++) if (strike(src, t, sk, ev)) downs++; });
+      else if (sk.type === 'insta') tgts.forEach(t => { if (!t.dead && hits(src, t, sk)) instaKill(src, t, sk, ev); else if (!t.dead) ev.push({ t: 'miss', src: src.id, tgt: t.id }); });
+      else if (sk.type === 'ailment') tgts.forEach(t => {
+        if (t.dead) return;
+        if (t.ail || ailImmune(t, sk.ail.id) || !inflict(src, t, sk.ail, ev)) ev.push({ t: 'miss', src: src.id, tgt: t.id, ail: sk.ail.id, immune: ailImmune(t, sk.ail.id), has: !!t.ail });
+      });
       else if (sk.type === 'heal') tgts.forEach(t => heal(src, t, power(src, sk) * (src.side === 'party' ? (src.healMult || 1) : 1), ev));
       else if (sk.type === 'revive') tgts.forEach(t => { t.dead = false; t.hp = 0; ev.push({ t: 'revive', tgt: t.id }); heal(src, t, t.maxHp * sk.power / 100, ev); });
       else if (sk.type === 'buff') tgts.forEach(t => { [].concat(sk.stat).forEach(s => buff(t, s, 1, ev)); if (sk.sp) heal(null, t, 0, ev, sk.sp); });
@@ -205,8 +259,50 @@ window.FemcBattleEngine = (() => {
         ev.push({ t: 'veil', tgt: u.id, el: u.veil });
       }
       if (u.down) { u.down = false; ev.push({ t: 'standup', tgt: u.id }); if (u.side === 'enemy') canAct = false; }
-      if (canAct && u.bound > 0) { u.bound--; ev.push({ t: 'bound', tgt: u.id }); canAct = false; }
-      return { actor: u.id, canAct, events: ev };
+      let forced = null;
+      if (u.ail) {
+        const a = u.ail, def = D.ailments[a.id];
+        if (a.id === 'poison') {
+          const amt = Math.max(1, Math.round(u.maxHp * 0.08));
+          u.hp = Math.max(u.side === 'party' ? 1 : 0, u.hp - amt);
+          ev.push({ t: 'ailTick', tgt: u.id, id: 'poison', amount: amt, hp: u.hp, maxHp: u.maxHp });
+          if (u.hp <= 0) { kill(u); ev.push({ t: 'hit', src: u.id, tgt: u.id, el: 'poison', aff: 'normal', amount: 0, hp: 0, maxHp: u.maxHp, killed: true, quiet: true }); check(); return { actor: u.id, canAct: false, events: ev }; }
+        }
+        if (def.noAct) { if (canAct) ev.push({ t: 'ailSkip', tgt: u.id, id: a.id }); canAct = false; }
+        else if (canAct && a.id === 'fear') {
+          const r = R();
+          if (u.side === 'enemy' && !u.boss && r < 0.12) {
+            u.fled = true; kill(u); ev.push({ t: 'flee', tgt: u.id }); check();
+            return { actor: u.id, canAct: false, events: ev };
+          }
+          if (r < 0.45) { ev.push({ t: 'ailSkip', tgt: u.id, id: 'fear' }); canAct = false; }
+        } else if (canAct && a.id === 'charm') forced = 'charm';
+        // Count the turn. A charmed unit recovers after its charmed action (forcedAct); the rest right away.
+        if (--a.t <= 0 && u.ail) {
+          if (forced) a.endAfter = true;
+          else { u.ail = null; ev.push({ t: 'ailEnd', tgt: u.id, id: a.id }); }
+        }
+      }
+      return { actor: u.id, canAct, forced, events: ev };
+    }
+    /* A charmed unit's turn: hit someone on its own side, or heal the other side. */
+    function forcedAct() {
+      const u = S.cur, ev = [];
+      if (!u || u.dead || S.outcome) return ev;
+      S.oneMore = false;
+      const mates = alive(sideOf(u, true)).filter(x => x !== u), others = alive(sideOf(u, false));
+      const healId = u.skills.find(id => skillOf(id).type === 'heal' && skillOf(id).target === 'ally' && canPay(u, skillOf(id)));
+      const hurt = others.filter(o => o.hp < o.maxHp).sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp)[0];
+      ev.push({ t: 'charmAct', src: u.id });
+      if (healId && hurt && (R() < 0.5 || !mates.length)) useSkill(u, healId, hurt.id, ev, { flip: true });
+      else if (mates.length) {
+        const dm = u.side === 'enemy' ? dmgMoves(u).filter(id => skillOf(id).target === 'one') : [];
+        useSkill(u, dm.length && R() < 0.5 ? pick(dm) : 'attack', pick(mates).id, ev);
+      } else ev.push({ t: 'msg', text: `${u.name} is lost in a daze…`, src: u.id });
+      if (u.ail && u.ail.endAfter && !u.dead) { u.ail = null; ev.push({ t: 'ailEnd', tgt: u.id, id: 'charm' }); }
+      check();
+      if (!S.outcome) endTurn(u, ev);
+      return ev;
     }
     function endTurn(u, ev) {
       if (u.side === 'party' && u === leader() && mods.regen && !u.dead) alive(party()).forEach(p => { if (p.hp < p.maxHp) heal(null, p, p.maxHp * mods.regen, ev); });
@@ -258,6 +354,7 @@ window.FemcBattleEngine = (() => {
         ev.push({ t: 'item', src: u.id, item: action.item, name: it.name, tgt: t && t.id });
         if (it.type === 'heal' && t && !t.dead) heal(u, t, it.hp, ev);
         else if (it.type === 'sp' && t && !t.dead) heal(u, t, 0, ev, it.sp);
+        else if (it.type === 'cure' && t && !t.dead) { if (!cure(t, it.cures, ev, u)) ev.push({ t: 'msg', text: 'It had no effect.' }); }
         else if (it.type === 'revive' && t && t.dead) { t.dead = false; t.hp = 0; ev.push({ t: 'revive', tgt: t.id }); heal(u, t, t.maxHp * it.hp, ev); }
         endTurn(u, ev);
       } else if (action.type === 'escape') {
@@ -319,6 +416,14 @@ window.FemcBattleEngine = (() => {
     /* ── Shadow AI ────────────────────────────────────── */
     const lowest = list => list.slice().sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp)[0];
     const dmgMoves = u => u.skills.filter(id => skillOf(id).type === 'dmg' && id !== 'lunar_tide');
+    /* Shadows with ailment skills use them now and then on someone who doesn't have one yet. */
+    function ailMove(u) {
+      const ids = u.skills.filter(id => skillOf(id).type === 'ailment');
+      if (!ids.length || R() >= 0.3) return null;
+      const id = pick(ids), clean = alive(party()).filter(p => !p.ail);
+      if (!clean.length) return null;
+      return { skill: id, target: pick(clean).id };
+    }
     const AI = {
       random(u) { const s = pick(dmgMoves(u)); return { skill: s, target: pick(alive(party())).id }; },
       coward(u) {
@@ -365,7 +470,7 @@ window.FemcBattleEngine = (() => {
       const u = S.cur, ev = [];
       if (!u || u.dead || S.outcome) return ev;
       S.oneMore = false;
-      const move = (AI[u.ai] || AI.random)(u);
+      const move = (u.ai !== 'priestess' && ailMove(u)) || (AI[u.ai] || AI.random)(u);
       const sk = skillOf(move.skill);
       if (sk.type === 'special') {
         ev.push({ t: 'use', src: u.id, skill: move.skill, name: sk.name, el: 'none', tgts: [] });
@@ -382,8 +487,94 @@ window.FemcBattleEngine = (() => {
       return ev;
     }
 
+    /* ── Party tactics (P3P) ───────────────────────────
+       Returns the action a member would choose on their own. Uses only the affinities the party knows. */
+    function autoAction(u, tactic = 'free') {
+      const foesA = alive(foes()), allies = alive(party()), dead = party().filter(p => p.dead);
+      if (!foesA.length) return { type: 'guard' };
+      const sk = id => skillOf(id), can = id => canPay(u, sk(id));
+      const has = type => u.skills.filter(id => sk(id).type === type && can(id));
+      const affOf = (f, el) => (el === 'almighty' ? 'normal' : (S.known[f.kind] || {})[el] ? (f.aff[el] || 'normal') : 'unknown');
+      const MULT = { weak: 1.6, normal: 1, unknown: 0.95, resist: 0.45, null: 0, repel: -1, drain: -1 };
+      const conserve = tactic === 'conserve';
+      const spOk = id => !sk(id).cost || !sk(id).cost.sp || !conserve;
+      const hpOk = id => !sk(id).cost || !sk(id).cost.hp || u.hp / u.maxHp > (tactic === 'assault' ? 0.3 : 0.45);
+      // Heal first, at a threshold that depends on the tactic.
+      const healAt = { free: 0.45, heal: 0.7, assault: 0.25, conserve: 0.3 }[tactic] || 0.45;
+      const hurt = allies.filter(p => p.hp / p.maxHp < healAt).sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp);
+      if (tactic !== 'conserve' || hurt.some(p => p.hp / p.maxHp < 0.25)) {
+        const revive = has('revive')[0];
+        if (revive && dead.length && (tactic === 'heal' || tactic === 'free')) return { type: 'skill', skill: revive, target: dead[0].id };
+        const group = has('heal').find(id => sk(id).target === 'allies');
+        const single = has('heal').find(id => sk(id).target === 'ally');
+        if (hurt.length > 1 && group) return { type: 'skill', skill: group, target: 'all' };
+        if (hurt.length && single) return { type: 'skill', skill: single, target: hurt[0].id };
+      }
+      const bossUp = foesA.some(f => f.boss);
+      // Support: buffs and debuffs.
+      if (tactic === 'heal' || (tactic === 'free' && bossUp && R() < 0.35)) {
+        const buffId = has('buff').find(id => spOk(id));
+        if (buffId) {
+          const st = [].concat(sk(buffId).stat)[0];
+          const pool = sk(buffId).target === 'allies' ? (allies.some(p => p.buffs[st] < 1) ? ['all'] : []) : allies.filter(p => p.buffs[st] < 1).sort((a, b) => b.st - a.st).map(p => p.id);
+          if (pool.length) return { type: 'skill', skill: buffId, target: pool[0] };
+        }
+        const deb = has('debuff').find(id => spOk(id));
+        const strong = foesA.filter(f => f.buffs[sk(deb || 'tarunda').stat || 'atk'] > -1).sort((a, b) => (b.boss - a.boss) || b.st - a.st)[0];
+        if (deb && strong && (bossUp || tactic === 'heal')) return { type: 'skill', skill: deb, target: strong.id };
+      }
+      // Charm a healthy, dangerous foe now and then.
+      const ailId = has('ailment').find(id => spOk(id));
+      if (ailId && (tactic === 'free' || tactic === 'heal') && R() < 0.3) {
+        const t = foesA.filter(f => !f.ail && !ailImmune(f, sk(ailId).ail.id) && f.hp / f.maxHp > 0.5).sort((a, b) => b.hp - a.hp)[0];
+        if (t) return { type: 'skill', skill: ailId, target: t.id };
+      }
+      // Damage: score every option against every foe.
+      let best = null;
+      const consider = (score, action) => { if (!best || score > best.score) best = { score, action }; };
+      const atk = Object.assign({}, D.attack, { el: u.weapon });
+      const opts = [{ id: 'attack', s: atk }].concat(has('dmg').concat(has('insta')).filter(id => spOk(id) && hpOk(id)).map(id => ({ id, s: sk(id) })));
+      opts.forEach(({ id, s }) => {
+        const cost = s.cost && s.cost.sp ? s.cost.sp : 0;
+        const costPen = tactic === 'assault' ? 0 : cost * (tactic === 'heal' ? 3 : 1.2);
+        const n = s.multi ? (s.multi[0] + s.multi[1]) / 2 : 1;
+        const est = f => rawDamageEst(u, f, s) * n;
+        if (s.type === 'insta') {
+          if (tactic === 'heal') return;
+          foesA.forEach(f => {
+            const a = affOf(f, s.el);
+            if (f.boss || ['null', 'repel', 'drain', 'resist'].includes(a)) return;
+            const ch = (s.chance + (a === 'weak' ? s.chance + 15 : 0) + (s.el === 'dark' && f.ail && f.ail.id === 'fear' ? 55 : 0)) / 100;
+            consider(Math.min(0.95, ch) * f.hp * 0.9 - costPen + (a === 'weak' ? 25 : 0), { type: 'skill', skill: id, target: f.id });
+          });
+          return;
+        }
+        if (s.target === 'all' || s.target === 'rand') {
+          let sc = 0;
+          foesA.forEach(f => { const m = MULT[affOf(f, s.el)]; sc += Math.min(f.hp, est(f) * Math.max(0, m)) * (s.target === 'rand' ? 1 / foesA.length : 1) + (m < 0 ? -80 : 0); });
+          consider(sc - costPen, { type: 'skill', skill: id, target: 'all' });
+          return;
+        }
+        foesA.forEach(f => {
+          const a = affOf(f, s.el), m = MULT[a];
+          if (m <= 0 && a !== 'unknown') return;
+          const frozen = f.ail && f.ail.id === 'freeze' && PHYS.has(s.el);
+          let sc = Math.min(f.hp + 10, est(f) * m * (frozen ? 1.6 : 1));
+          if ((a === 'weak' || frozen) && !f.down) sc += 45;       // a Down means One More
+          if (est(f) * m >= f.hp) sc += 30;                        // finish it
+          if (f.ail && f.ail.id === 'shock' && PHYS.has(s.el)) sc -= 25;
+          consider(sc - costPen, id === 'attack' ? { type: 'attack', target: f.id } : { type: 'skill', skill: id, target: f.id });
+        });
+      });
+      return best ? best.action : { type: 'attack', target: foesA[0].id };
+    }
+    function rawDamageEst(src, tgt, sk) {
+      let d = power(src, sk) * (1 + 0.25 * src.buffs.atk) * (1 - 0.2 * tgt.buffs.def) / (1 + tgt.en / 20);
+      return d * (src.boost || 1);
+    }
+
     return {
-      S, U, party, foes, alive, leader, act, openBuff, analyze, allOut, declineAllOut, enemyAct, nextTurn, upcoming, canPay, canShiftTo,
+      S, U, party, foes, alive, leader, act, openBuff, autoAction, forcedAct, helpless, analyze, allOut, declineAllOut, enemyAct, nextTurn, upcoming, canPay, canShiftTo,
       outcome: () => S.outcome || check(), skillOf, known: kind => S.known[kind] || {}
     };
   }

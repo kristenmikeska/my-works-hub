@@ -3,7 +3,7 @@
    Save: localStorage 'kg-femc-battle-proto' only (never the main game's kg-femc-game).
    Test hooks: ?seed=N (repeatable fights), ?speed=N (animation speed), window.FemcBattle (state + freeze for screenshots). */
 (() => {
-  const D = window.FEMC_BATTLE_DATA, E = window.FemcBattleEngine, ART = window.FemcBattleArt;
+  const D = window.FEMC_BATTLE_DATA, E = window.FemcBattleEngine, ART = window.FemcBattleArt, FX = window.FemcFX;
   const KEY = 'kg-femc-battle-proto';
   const params = new URLSearchParams(location.search);
   const app = document.getElementById('bt-app');
@@ -17,16 +17,41 @@
   const phone = () => matchMedia('(max-width: 760px)').matches;
   const pickOne = a => Array.isArray(a) ? a[Math.floor(Math.random() * a.length)] : a;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
+  const FINISH_DIR = 'assets/femc/battle/art/finish/', SUMMON_DIR = 'assets/femc/battle/art/summon/';
+  const AWAKEN = ['solar-01-resolve', 'solar-02-focus', 'solar-03-awakening', 'solar-04-manifestation', 'solar-05-command', 'solar-06-summoned'];
+  /* A stylized Evoker for members without their own Evoker art (muzzle on the left, at the temple). */
+  const EVOKER_SVG = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 96"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#b9c2d3"/><stop offset="1" stop-color="#5a6376"/></linearGradient></defs><path d="M6 24h104l10 7v15H92l-5 7H74l-6-7H6z" fill="url(#g)" stroke="#161a24" stroke-width="3.5" stroke-linejoin="round"/><rect x="6" y="20" width="12" height="30" rx="2" fill="url(#g)" stroke="#161a24" stroke-width="3"/><path d="M90 46h30l20 44h-30z" fill="url(#g)" stroke="#161a24" stroke-width="3.5" stroke-linejoin="round"/><path d="M72 46q0 18 18 18" fill="none" stroke="#161a24" stroke-width="5"/><rect x="24" y="30" width="58" height="5" fill="#ff4f9e"/><circle cx="102" cy="34" r="4" fill="#161a24"/></svg>`);
+  const tacticOf = u => (u.mid === 'solar' ? 'direct' : (save.tactics[u.mid] || 'direct'));
   const AFF_SHORT = { normal: '–', weak: 'WK', resist: 'RS', null: 'NU', drain: 'DR', repel: 'RP' };
   const AFF_WORD = { weak: 'WEAK!', resist: 'RESIST', null: 'NULL', drain: 'DRAIN', repel: 'REPEL' };
   const STAT_SHORT = { atk: 'ATK', def: 'DEF', agi: 'AGI' };
 
   /* ── Save ─────────────────────────────────────────── */
   // reached: the furthest floor (index into D.floors) Solar has made it to, like P3's access points.
-  const fresh = () => ({ v: 1, lvl: D.progression.startLevel, exp: 0, pts: 0, nodes: [], known: {}, clears: 0, runs: 0, reached: 0, music: null, sfx: true, speed: 1 });
+  // v2 adds: party (up to 3 ids beside Solar), mem (each member's own level and EXP), tactics, cutins, awakened.
+  const fresh = () => ({ v: 2, lvl: D.progression.startLevel, exp: 0, pts: 0, nodes: [], known: {}, clears: 0, runs: 0, reached: 0, music: null, sfx: true, speed: 1,
+    party: D.defaultParty.slice(), mem: {}, tactics: {}, cutins: 'first', awakened: false });
+  /* Fills in anything missing, so v1 saves (and hand-edited ones) load cleanly. Members who were already fighting
+     keep Solar's level; new recruits join one level behind her. */
+  function normalize(s) {
+    s.v = 2;
+    if (!Array.isArray(s.party)) s.party = D.defaultParty.slice();
+    s.party = [...new Set(s.party)].filter(id => id !== 'solar' && member(id)).slice(0, 3);
+    if (!s.mem || typeof s.mem !== 'object') s.mem = {};
+    D.party.forEach(m => {
+      if (m.id === 'solar') return;
+      const e = s.mem[m.id];
+      if (!e || !(e.lvl >= 1)) s.mem[m.id] = { lvl: D.defaultParty.includes(m.id) ? s.lvl : Math.max(D.progression.startLevel, s.lvl - 1), exp: 0 };
+      else if (!(e.exp >= 0)) e.exp = 0;
+    });
+    if (!s.tactics || typeof s.tactics !== 'object') s.tactics = {};
+    Object.keys(s.tactics).forEach(k => { if (!D.tactics[s.tactics[k]]) delete s.tactics[k]; });
+    if (!['always', 'first', 'off'].includes(s.cutins)) s.cutins = 'first';
+    return s;
+  }
   function loadSave() {
-    try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s && s.v === 1) return Object.assign(fresh(), s); } catch (e) {}
-    return fresh();
+    try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s && (s.v === 1 || s.v === 2)) return normalize(Object.assign(fresh(), s)); } catch (e) {}
+    return normalize(fresh());
   }
   let save = loadSave();
   const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(save)); } catch (e) {} };
@@ -93,12 +118,12 @@
       g.gain.setValueAtTime(v, t); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
       o.connect(g).connect(c.destination); o.start(t); o.stop(t + d + 0.03);
     }
-    function noise(d, { v = 0.2, f = 1200, q = 0.8, at = 0 } = {}) {
+    function noise(d, { v = 0.2, f = 1200, q = 0.8, at = 0, type = 'bandpass' } = {}) {
       const c = ac(); if (!c) return;
       const t = c.currentTime + at, n = Math.floor(c.sampleRate * d), b = c.createBuffer(1, n, c.sampleRate), ch = b.getChannelData(0);
       for (let i = 0; i < n; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / n);
       const s = c.createBufferSource(), fl = c.createBiquadFilter(), g = c.createGain();
-      s.buffer = b; fl.type = 'bandpass'; fl.frequency.value = f; fl.Q.value = q; g.gain.value = v;
+      s.buffer = b; fl.type = type; fl.frequency.value = f; fl.Q.value = q; g.gain.value = v;
       s.connect(fl).connect(g).connect(c.destination); s.start(t);
     }
     const femc = name => { if (window.FemcMode && window.FemcMode.sfx) { window.FemcMode.sfx(name); return true; } return false; };
@@ -126,7 +151,20 @@
       guard: () => tone(320, 0.14, { type: 'square', v: 0.04, to: 360 }),
       level: () => [523, 659, 784, 1046].forEach((f, i) => tone(f, 0.18, { type: 'triangle', v: 0.06, at: i * 0.09 })),
       unlock: () => [784, 988, 1175, 1568].forEach((f, i) => tone(f, 0.22, { type: 'triangle', v: 0.06, at: i * 0.07 })),
-      escape: () => noise(0.5, { v: 0.2, f: 1800, q: 0.4 })
+      escape: () => noise(0.5, { v: 0.2, f: 1800, q: 0.4 }),
+      // The Evoker: a dry gunshot crack, a low thump, then glass.
+      evoker: () => {
+        noise(0.045, { v: 1, f: 2500, q: 0.3, type: 'highpass' });
+        tone(110, 0.25, { type: 'sine', v: 0.55, to: 34 });
+        noise(0.4, { v: 0.16, f: 1400, q: 0.5, at: 0.02 });
+        [0.06, 0.1, 0.15, 0.21, 0.28, 0.36, 0.45].forEach((at, i) => tone(3200 + ((i * 1777) % 3100), 0.07, { type: 'triangle', v: 0.03, at, to: 2600 + ((i * 911) % 2000) }));
+        noise(0.5, { v: 0.07, f: 6000, q: 0.7, at: 0.05 });
+      },
+      click: () => { tone(2400, 0.02, { type: 'square', v: 0.03 }); tone(1600, 0.03, { type: 'square', v: 0.025, at: 0.03 }); },
+      ail: () => { tone(520, 0.18, { type: 'sine', v: 0.05, to: 340 }); tone(780, 0.14, { type: 'triangle', v: 0.03, at: 0.05, to: 520 }); },
+      cure: () => [880, 1175, 1568].forEach((f, i) => tone(f, 0.14, { type: 'sine', v: 0.05, at: i * 0.05 })),
+      shatter: () => { noise(0.3, { v: 0.3, f: 5000, q: 0.5 }); [0, 0.05, 0.11].forEach(at => tone(4200, 0.05, { type: 'triangle', v: 0.04, at })); },
+      dissolve: () => noise(0.7, { v: 0.12, f: 700, q: 0.4 })
     };
     return name => { if (!sfxOn() || !S[name]) return; try { S[name](); } catch (e) {} };
   })();
@@ -160,12 +198,15 @@
     fx.upgrade.forEach(([a, b]) => { list = list.map(x => (x === a ? b : x)); });
     return [...new Set(list)];
   }
+  /* Each member's own level (Solar's is the save's). */
+  const lvOf = id => (id === 'solar' ? save.lvl : ((save.mem[id] || {}).lvl || save.lvl));
+  const roster = () => [D.party[0]].concat(save.party.map(member).filter(Boolean));
   function buildParty(carry) {
     const fx = treeFx();
-    return D.party.map(m => {
-      const s = memberStats(m, save.lvl, fx), per = D.personas[m.persona], c = carry && carry[m.id];
+    return roster().map(m => {
+      const L = lvOf(m.id), s = memberStats(m, L, fx), per = D.personas[m.persona], c = carry && carry[m.id];
       return {
-        mid: m.id, name: m.name, persona: per.name, personaId: m.persona, lvl: save.lvl, maxHp: s.hp, maxSp: s.sp,
+        mid: m.id, name: m.name, persona: per.name, personaId: m.persona, lvl: L, maxHp: s.hp, maxSp: s.sp, acc: m.acc || 0,
         hp: c ? Math.max(1, Math.min(c.hp, s.hp)) : s.hp, sp: c ? Math.min(c.sp, s.sp) : s.sp,
         st: s.st, ma: s.ma, en: s.en, ag: s.ag, lu: s.lu, aff: Object.assign({}, per.aff), weapon: m.weapon,
         skills: m.id === 'solar' ? solarSkills(fx) : m.skills.slice(), healMult: m.id === 'solar' ? fx.healMult : 1
@@ -201,18 +242,21 @@
     ctl = { kind: 'buttons', move(d) { if (!btns.length) return; i = (i + d + btns.length) % btns.length; sfx('move'); show(); }, pick() { if (btns[i]) btns[i].click(); }, back };
     show();
   }
-  const tools = () => `<button type="button" class="bt-tool" data-tool="music" aria-pressed="${musicOn()}" title="Music" aria-label="Music"><span>♪<em> Music</em></span></button><button type="button" class="bt-tool" data-tool="sfx" aria-pressed="${save.sfx !== false}" title="Sound effects"><span>SFX</span></button>`;
+  const CUT_LABEL = { always: 'Always', first: '1st only', off: 'Off' };
+  const tools = () => `<button type="button" class="bt-tool" data-tool="cut" title="Persona cut-ins: always, the first time per battle, or off"><span>Cut-ins<em>:</em> ${CUT_LABEL[save.cutins]}</span></button><button type="button" class="bt-tool" data-tool="music" aria-pressed="${musicOn()}" title="Music" aria-label="Music"><span>♪<em> Music</em></span></button><button type="button" class="bt-tool" data-tool="sfx" aria-pressed="${save.sfx !== false}" title="Sound effects"><span>SFX</span></button>`;
   function wireTools(el) {
     el.querySelectorAll('[data-tool]').forEach(b => b.addEventListener('click', () => {
       const t = b.dataset.tool;
       if (t === 'music') { save.music = !musicOn(); music.refresh(); b.setAttribute('aria-pressed', String(musicOn())); }
       if (t === 'sfx') { save.sfx = save.sfx === false; b.setAttribute('aria-pressed', String(save.sfx)); sfx('ok'); }
+      if (t === 'cut') { const o = ['always', 'first', 'off']; save.cutins = o[(o.indexOf(save.cutins) + 1) % 3]; b.querySelector('span').innerHTML = `Cut-ins<em>:</em> ${CUT_LABEL[save.cutins]}`; sfx('move'); mark('cutins-' + save.cutins); }
       if (t === 'speed') { save.speed = save.speed === 2 ? 1 : 2; b.querySelector('span').textContent = `▶▶ ${save.speed}x`; }
       persist();
       b.blur();
     }));
   }
   const show = (html, cls) => {
+    if (FX) FX.detach();
     // The FEMC badge (bottom-left) stays on the entrance screen; elsewhere this page's own corners are busy.
     root.classList.toggle('bt-in-battle', !/bt-hub/.test(cls));
     app.innerHTML = `<div class="bt-screen ${cls}" data-femc-quiet>${html}</div>`;
@@ -235,6 +279,7 @@
         <div class="bt-hub-menu">
           ${save.reached > 0 && save.reached < D.floors.length ? `<button type="button" class="bt-btn pink" data-go="cont"><span>Continue from ${esc(D.floors[save.reached].label)}</span><small>Access point · ${esc(D.floors[save.reached].block)}</small></button>` : ''}
           <button type="button" class="bt-btn${save.reached > 0 && save.reached < D.floors.length ? '' : ' pink'}" data-go="run"><span>${save.reached > 0 && save.reached < D.floors.length ? 'Start from the bottom' : 'Enter Tartarus'}</span><small>${save.clears ? `Cleared ×${save.clears}` : `${D.floors.length} floors`}</small></button>
+          <button type="button" class="bt-btn" data-go="party"><span>Party</span><small>${save.party.length + 1} / 4</small></button>
           <button type="button" class="bt-btn" data-go="tree"><span>Haenim’s Tree</span><small>${save.pts} SP</small></button>
           <button type="button" class="bt-btn" data-go="personas"><span>Personas</span><small>S.E.E.S.</small></button>
           <button type="button" class="bt-btn danger" data-go="reset"><span>${resetArmed ? 'Really reset? Press again' : 'Reset battle save'}</span></button>
@@ -250,6 +295,7 @@
           <div class="bt-explabel"><span>EXP ${save.exp} / ${need(save.lvl)}</span><span>${save.pts} skill pts</span></div>
           <div class="bt-stats">${['hp', 'sp', 'st', 'ma', 'en', 'ag', 'lu'].map(k => `<div><span>${k.toUpperCase()}</span><b>${s[k]}</b></div>`).join('')}</div>
           <ul class="bt-chips">${skills.map(id => `<li>${ART.icon(D.skills[id].el)}<span>${esc(D.skills[id].name)}</span></li>`).join('')}</ul>
+          <div class="bt-hub-party" aria-label="Party">${roster().slice(1).map(m => `<span title="${esc(m.name)}"><img src="${pimg(m.id, m.faces.idle)}" alt="" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"><b>${esc(m.name)}<small>Lv ${lvOf(m.id)}${tacticOf({ mid: m.id }) !== 'direct' ? ` · ${esc(D.tactics[tacticOf({ mid: m.id })].short)}` : ''}</small></b></span>`).join('') || '<em>Solar fights alone</em>'}</div>
           <p class="bt-meta">${save.runs} run${save.runs === 1 ? '' : 's'} · full moon cleared ${save.clears}×${save.clears ? ' · Shadows grow stronger each clear' : ''}</p>
         </div>
       </div>
@@ -261,6 +307,7 @@
       if (go === 'run') { sfx('ok'); startRun(0); }
       else if (go === 'cont') { sfx('ok'); startRun(save.reached); }
       else if (go === 'tree') { sfx('ok'); treeScreen(hub); }
+      else if (go === 'party') { sfx('ok'); partyScreen(hub); }
       else if (go === 'personas') { sfx('ok'); personaScreen(hub); }
       else if (go === 'reset') {
         if (!resetArmed) { resetArmed = true; sfx('move'); hub(); ctlFocus('[data-go="reset"]'); return; }
@@ -275,6 +322,70 @@
     mark('hub');
   }
   function ctlFocus(sel) { const b = app.querySelector(sel); if (!b || !ctl) return; for (let i = 0; i < 8; i++) { if (document.activeElement === b) break; ctl.move(1); } }
+
+  /* ════════════════════════════════════════════════════
+     PARTY: Solar plus up to three, each with a Tactic
+     ════════════════════════════════════════════════════ */
+  const TACTIC_ORDER = Object.keys(D.tactics);
+  const affChips = per => D.affinityOrder.filter(x => per.aff[x]).map(x => `<span class="bt-aff ${per.aff[x]}">${ART.icon(x)}<em>${AFF_SHORT[per.aff[x]]}</em></span>`).join('') || '<span class="bt-aff"><em>–</em></span>';
+  function partyScreen(onClose) {
+    screen = 'party';
+    root.classList.remove('bt-in-battle');
+    const list = D.party.slice(1);
+    let i = 0, msg = '';
+    const cols = () => (phone() ? 2 : 4);
+    const render = () => {
+      const solar = D.party[0];
+      const card = (m, k) => {
+        const per = D.personas[m.persona], slot = save.party.indexOf(m.id), tac = save.tactics[m.id] || 'direct';
+        return `<div class="bt-pm${slot >= 0 ? ' in' : ''}${k === i ? ' sel' : ''}" data-k="${k}" style="--c:${m.color}">
+          <button type="button" class="bt-pm-main" data-act="toggle" data-id="${m.id}" aria-pressed="${slot >= 0}">
+            <span class="pic"><img src="${pimg(m.id, m.faces.idle)}" alt="" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"><img class="per" src="${per.art}" alt=""></span>
+            <span class="info"><b>${esc(m.name)}<small>Lv ${lvOf(m.id)}</small></b><span class="per-n">${esc(per.name)} · ${esc(per.arcana)}</span><span class="role">${esc(m.role || '')}</span><span class="bt-affs">${affChips(per)}</span></span>
+            <span class="slot">${slot >= 0 ? `IN · ${slot + 2}` : 'Bench'}</span>
+          </button>
+          <button type="button" class="bt-pm-tac" data-act="tac" data-id="${m.id}" title="${esc(D.tactics[tac].desc)}">${ART.icon('tactics')}<span>${esc(D.tactics[tac].name)}</span></button>
+        </div>`;
+      };
+      const sp = D.personas.haenim;
+      const el = show(`<div class="bt-tree-head"><button type="button" class="bt-tool" data-act="back"><span>‹ Back</span></button>
+          <h1>PARTY<small>S.E.E.S.</small></h1><div class="bt-pts"><span><small>Members</small>${save.party.length + 1} / 4</span></div></div>
+        <div class="bt-party-grid">
+          <div class="bt-pm in leader" style="--c:${solar.color}"><div class="bt-pm-main"><span class="pic"><img src="${pimg('solar', 'serious')}" alt="" style="--fx:${solar.face[0]}%;--fy:${solar.face[1]}%"><img class="per" src="${sp.art}" alt=""></span>
+            <span class="info"><b>Solar<small>Lv ${save.lvl}</small></b><span class="per-n">Haenim · Fool</span><span class="role">${esc(solar.role)}</span><span class="bt-affs">${affChips(sp)}</span></span><span class="slot">Leader · 1</span></div>
+            <div class="bt-pm-tac fixed">${ART.icon('tactics')}<span>Always Direct</span></div></div>
+          ${list.map(card).join('')}
+        </div>
+        <div class="bt-party-foot"><p>${msg ? `<b>${esc(msg)}</b>` : `<b>Pick up to 3.</b>`} Members on the bench still earn ${Math.round(D.progression.benchShare * 100)}% of the EXP. Tactics: Direct lets you choose; the others act on their own.</p>
+          <button type="button" class="bt-btn pink" data-act="done"><span>Done</span></button></div>`, 'bt-tree bt-partyscr');
+      el.querySelectorAll('[data-act="toggle"]').forEach(b => b.addEventListener('click', () => { i = list.findIndex(m => m.id === b.dataset.id); toggle(); }));
+      el.querySelectorAll('[data-act="tac"]').forEach(b => b.addEventListener('click', () => { i = list.findIndex(m => m.id === b.dataset.id); cycle(); }));
+      el.querySelector('[data-act="back"]').addEventListener('click', close);
+      el.querySelector('[data-act="done"]').addEventListener('click', close);
+      ctl = {
+        kind: 'party',
+        key(e) { if (e.key === 't' || e.key === 'T' || e.key === 'Tab') { cycle(); return true; } return false; },
+        move(d) { i = (i + d + list.length) % list.length; sfx('move'); msg = ''; render(); },
+        grid: cols(), pick: toggle, back: close
+      };
+      const sel = el.querySelector('.bt-pm.sel'); if (sel && sel.scrollIntoView) sel.scrollIntoView({ block: 'nearest' });
+      mark('party');
+    };
+    function toggle() {
+      const id = list[i].id, at = save.party.indexOf(id);
+      if (at >= 0) { save.party.splice(at, 1); sfx('back'); msg = ''; }
+      else if (save.party.length >= 3) { sfx('back'); msg = 'The party is full. Bench someone first.'; }
+      else { save.party.push(id); sfx('ok'); msg = ''; mark('party-add'); }
+      persist(); render();
+    }
+    function cycle() {
+      const id = list[i].id, cur = save.tactics[id] || 'direct', nx = TACTIC_ORDER[(TACTIC_ORDER.indexOf(cur) + 1) % TACTIC_ORDER.length];
+      if (nx === 'direct') delete save.tactics[id]; else save.tactics[id] = nx;
+      persist(); sfx('move'); mark('tactic-set'); render();
+    }
+    function close() { sfx('back'); ctl = null; onClose(); }
+    render();
+  }
 
   /* ════════════════════════════════════════════════════
      RUN FLOW
@@ -362,7 +473,9 @@
     screen = 'battle';
     const fx = treeFx();
     const heat = save.clears * D.progression.heat;
-    const group = run.groups[floor.id] || (run.groups[floor.id] = floor.pool[Math.floor(rand() * floor.pool.length)]);
+    // Test hook: window.__btPool forces that enemy group on every floor that has it.
+    const forcedPool = window.__btPool != null && floor.pool[window.__btPool];
+    const group = run.groups[floor.id] || (run.groups[floor.id] = forcedPool || floor.pool[Math.floor(rand() * floor.pool.length)]);
     if (fx.autoAnalyze) group.forEach(k => { const kn = save.known[k] || (save.known[k] = {}); D.affinityOrder.forEach(el => { kn[el] = true; }); });
     B = E.create({ party: buildParty(run.carry), enemies: group, mods: fx.mods, known: save.known, rand, items: run.items, heat });
     navSaid = new Set(); summoned = new Set();
@@ -383,8 +496,8 @@
       if (!turn.canAct) { await sleep(300); continue; }
       if (u.side === 'enemy') {
         let n = 0;
-        do { await sleep(n ? 250 : 380); await play(B.enemyAct()); n++; } while (B.S.oneMore && !B.outcome() && !u.dead && n < 3);
-      } else await partyTurn(u);
+        do { await sleep(n ? 250 : 380); await play(turn.forced && !n ? B.forcedAct() : B.enemyAct()); n++; } while (B.S.oneMore && !B.outcome() && !u.dead && n < 3);
+      } else await partyTurn(u, turn.forced);
       dangerCheck();
       syncAll();
     }
@@ -399,7 +512,8 @@
       await sleep(1300);
     } else if (result === 'lose') { nav('solarDown'); sfx('ko'); await sleep(1500); }
     else await sleep(700);
-    const exp = B.foes().filter(f => f.dead).reduce((s, f) => s + f.exp, 0);
+    if (result === 'win' && floor.boss) await navCard();
+    const exp = B.foes().filter(f => f.dead && !f.fled).reduce((s, f) => s + f.exp, 0);
     return { result, exp, boss: !!floor.boss };
   }
 
@@ -421,9 +535,15 @@
       root: el, field: el.querySelector('.bt-field'), party: el.querySelector('.bt-party'), cmd: el.querySelector('.bt-cmd'),
       body: el.querySelector('.bt-cmd-body'), who: el.querySelector('.bt-who'), log: el.querySelector('.bt-log'), nav: el.querySelector('.bt-nav'),
       fx: el.querySelector('.bt-fx'), cut: el.querySelector('.bt-cut'), flash: el.querySelector('.bt-flash'), order: el.querySelector('.bt-order'),
-      enemies: new Map(), cards: new Map()
+      enemies: new Map(), cards: new Map(), bg: floor.bg
     };
     wireTools(el);
+    if (FX) {
+      FX.attach(el, { speed });
+      FX.preload(floor.bg);
+      [SUMMON_DIR + 'solar-evoker.webp'].concat(B.party().map(p => FINISH_DIR + p.mid + '.webp')).forEach(src => FX.preload(src));
+      if (!save.awakened) AWAKEN.forEach(f => FX.preload(SUMMON_DIR + f + '.webp'));
+    }
     B.foes().forEach(u => addEnemy(u));
     B.party().forEach(u => {
       const m = member(u.mid);
@@ -483,16 +603,18 @@
     const hp = o.hp != null ? o.hp : u.hp;
     el.querySelector('.bt-ehp i').style.width = `${Math.max(0, hp / u.maxHp * 100)}%`;
     el.classList.toggle('down', !!u.down && !u.dead);
-    el.classList.toggle('bound', !!u.bound && !u.dead);
+    el.classList.toggle('bound', !!(u.ail && u.ail.id === 'bind') && !u.dead);
+    el.dataset.ail = u.ail && !u.dead ? u.ail.id : '';
     el.classList.toggle('charging', !!u.charge && !u.dead);
     if (u.veil) el.style.setProperty('--veil', D.elements[u.veil].color);
     const tags = [];
     if (u.down && !u.dead) tags.push('<span class="bt-tag down">Down</span>');
-    if (u.bound && !u.dead) tags.push('<span class="bt-tag bind">Bind</span>');
+    if (u.ail && !u.dead) tags.push(ailTag(u.ail));
     if (u.veil && !u.dead) tags.push(`<span class="bt-tag veil" style="--veil:${D.elements[u.veil].color}">Veil · ${D.elements[u.veil].name}</span>`);
     ['atk', 'def'].forEach(s => { if (u.buffs[s]) tags.push(`<span class="bt-tag">${STAT_SHORT[s]} ${u.buffs[s] > 0 ? '↑' : '↓'}</span>`); });
     el.querySelector('.bt-tags').innerHTML = tags.join('');
   }
+  const ailTag = a => { const d = D.ailments[a.id]; return `<span class="bt-tag ail" style="--c:${d.color}" title="${esc(d.desc)}">${ART.icon(a.id)}<span>${esc(d.name)}</span><em>${a.t}</em></span>`; };
   function paintCard(u, o = {}) {
     const c = BT.cards.get(u.id); if (!c) return;
     const hp = o.hp != null ? o.hp : u.hp, sp = o.sp != null ? o.sp : u.sp, dead = o.dead != null ? o.dead : u.dead;
@@ -508,9 +630,14 @@
     const st = [];
     if (u.down && !dead) st.push('<i class="dw">DOWN</i>');
     if (u.guard) st.push('<i class="gd">GUARD</i>');
+    if (u.ail && !dead) { const d = D.ailments[u.ail.id]; st.push(`<i class="ail" style="--c:${d.color}" title="${esc(d.name)}">${ART.icon(u.ail.id)}${esc(d.name.toUpperCase())}</i>`); }
+    const tac = tacticOf(u);
+    if (tac !== 'direct' && !dead) st.push(`<i class="tc" title="${esc(D.tactics[tac].name)}">${esc(D.tactics[tac].short.toUpperCase())}</i>`);
     ['atk', 'def', 'agi'].forEach(k => { if (u.buffs[k]) st.push(`<i class="${u.buffs[k] > 0 ? 'up' : 'dn'}">${STAT_SHORT[k]}${u.buffs[k] > 0 ? '↑' : '↓'}</i>`); });
     c.querySelector('.st').innerHTML = st.join('');
-    c.setAttribute('aria-label', `${u.name}: HP ${hp} of ${u.maxHp}, SP ${sp} of ${u.maxSp}${dead ? ', knocked out' : ''}`);
+    c.classList.toggle('ailing', !!(u.ail && !dead));
+    c.dataset.ail = u.ail && !dead ? u.ail.id : '';
+    c.setAttribute('aria-label', `${u.name}: HP ${hp} of ${u.maxHp}, SP ${sp} of ${u.maxSp}${dead ? ', knocked out' : ''}${u.ail && !dead ? ', ' + D.ailments[u.ail.id].name : ''}`);
   }
   function syncAll() {
     if (!BT) return;
@@ -568,7 +695,7 @@
     return BT.enemies.has(id) ? { x: r.left + r.width / 2 - R.left, y: r.top + r.height * 0.45 - R.top } : { x: r.left + r.width / 2 - R.left, y: r.top - R.top + 6 };
   }
   const popCount = new Map();
-  function popup(id, { n = null, label = '', cls = '', lcls = '' }) {
+  function popup(id, { n = null, label = '', cls = '', lcls = '', style = '' }) {
     const p = anchor(id), k = popCount.get(id) || 0;
     popCount.set(id, k + 1);
     setTimeout(() => popCount.set(id, Math.max(0, (popCount.get(id) || 1) - 1)), 700);
@@ -576,7 +703,7 @@
     el.className = `bt-pop ${cls}`;
     el.style.left = `${p.x + (k % 2 ? 26 : -10) * Math.min(k, 3)}px`;
     el.style.top = `${p.y - k * 30}px`;
-    el.innerHTML = `${label ? `<span class="l ${lcls}">${label}</span>` : ''}${n != null ? `<span class="n">${n}</span>` : ''}`;
+    el.innerHTML = `${label ? `<span class="l ${lcls}"${style ? ` style="${style}"` : ''}>${label}</span>` : ''}${n != null ? `<span class="n">${n}</span>` : ''}`;
     BT.fx.appendChild(el);
     setTimeout(() => el.remove(), 1300 / Math.min(speed(), 2));
   }
@@ -588,6 +715,42 @@
     fx.style.cssText = `left:${p.x}px;top:${p.y}px;--c:${c}`;
     BT.fx.appendChild(fx);
     setTimeout(() => fx.remove(), 700);
+  }
+  /* Box of a unit for the canvas effects: a Shadow's art, or a party card. */
+  function fxAt(id) {
+    const R = BT.root.getBoundingClientRect(), en = BT.enemies.get(id), c = BT.cards.get(id);
+    const el = en ? (en.querySelector('.sh') || en) : c;
+    if (!el) return { x: R.width / 2, y: R.height / 2, w: 200, h: 200 };
+    const r = el.getBoundingClientRect();
+    return en ? { x: r.left + r.width / 2 - R.left, y: r.top + r.height * 0.5 - R.top, w: r.width, h: r.height } : { x: r.left + r.width * 0.55 - R.left, y: r.top + r.height * 0.4 - R.top, w: r.width * 0.7, h: r.height };
+  }
+  /* Play a spell/hit effect; returns ms (at 1x) until it lands. */
+  function fxPlay(kind, id, o = {}) {
+    if (!FX) { strikeFx(id, kind); return 0; }
+    return FX.play(kind, fxAt(id), o) || 0;
+  }
+  function fxHit(e) {
+    const src = B.U(e.src), el = e.el, o = { crit: e.crit, color: (D.elements[el] || {}).color };
+    if (e.skill === 'golden_rope') { const c = BT.cards.get(e.src), R = BT.root.getBoundingClientRect(); if (c) { const r = c.getBoundingClientRect(); o.from = { x: r.left + r.width * 0.4 - R.left, y: r.top - R.top }; } return fxPlay('rope', e.tgt, o); }
+    if (e.insta) return fxPlay(el === 'light' ? 'light' : 'dark', e.tgt, Object.assign(o, { holy: el === 'light' }));
+    if (e.skill === 'daybreak' || el === 'light') return fxPlay('light', e.tgt, o);
+    if (src && src.side === 'enemy' && el === 'almighty') return fxPlay('almighty', e.tgt, o);
+    return fxPlay(D.elements[el] ? el : 'strike', e.tgt, o);
+  }
+  /* Shadow death: dissolve into ash (canvas) while a CSS mask wipes the art away; the mask falls last. */
+  function deathFx(id) {
+    const en = BT.enemies.get(id);
+    if (!en || en.classList.contains('dead')) return;
+    en.classList.remove('down', 'charging', 'hit', 'targeted');
+    let ms = 0;
+    const sh = en.querySelector('.sh');
+    if (FX && sh) {
+      const r = sh.getBoundingClientRect(), R = BT.root.getBoundingClientRect();
+      ms = FX.ash({ x: r.left - R.left, y: r.top - R.top, w: r.width, h: r.height }, en.querySelector('.sh-pic img'));
+    }
+    if (ms) { en.style.setProperty('--ash', `${Math.round(ms / speed())}ms`); en.classList.add('ash'); sfx('dissolve'); mark('ash'); }
+    en.classList.add('dead');
+    setTimeout(() => { en.classList.add('gone'); sizeField(); }, Math.max(900, ms + 300) / speed());
   }
   function flash(pink) {
     BT.flash.classList.toggle('pink', !!pink);
@@ -607,28 +770,138 @@
     BT.root.appendChild(b);
     setTimeout(() => b.remove(), 1100 / Math.min(speed(), 2));
   }
-  /* Persona summon: the Persona's art sweeps in with the user's eyes on a band. Haenim's name glitches (lore). */
+  /* Persona summon (P3's Evoker): a beat of stillness on the Evoker, a gunshot crack, the screen shatters into glass,
+     then blue/pink light and the Persona rising. Solar uses Kat's close-up; others get their portrait and a drawn Evoker.
+     Cut-in setting: always / the first time per member per battle / off. Haenim's name glitches (lore). */
+  function coverBox(img) { // where an object-fit: cover image actually lands, relative to the battle root
+    const R = BT.root.getBoundingClientRect(), r = img.getBoundingClientRect(), nw = img.naturalWidth || 16, nh = img.naturalHeight || 9;
+    const k = Math.max(r.width / nw, r.height / nh), cs = getComputedStyle(img).objectPosition.split(' ').map(v => parseFloat(v) / 100);
+    const w = nw * k, h = nh * k;
+    return { x: r.left - R.left + (r.width - w) * (isNaN(cs[0]) ? 0.5 : cs[0]), y: r.top - R.top + (r.height - h) * (isNaN(cs[1]) ? 0.5 : cs[1]), w, h };
+  }
+  const glitchName = (pn, sp = speed()) => ['H̷A̵E̶N̸I̴M', '해░▒NIM', 'HAE▓█M', '해님', 'HAENIM'].forEach((t, i) => setTimeout(() => { pn.textContent = t; }, (i * 110) / sp));
   async function summonCut(u, skillName) {
-    const m = member(u.mid), per = D.personas[m.persona];
     const first = !summoned.has(u.id);
     summoned.add(u.id);
-    const wrap = document.createElement('div');
-    wrap.className = 'bt-summon';
-    const dur = first ? 1150 : 720;
-    wrap.style.animationDuration = `${dur / speed()}ms`;
-    wrap.innerHTML = `<div class="bt-band" style="animation-duration:${dur / speed()}ms"><img src="${pimg(u.mid, m.faces.idle)}" alt="" style="animation-duration:${dur / speed()}ms"></div>
-      <img class="per" src="${per.art}" alt="" style="animation-duration:${dur / speed()}ms">
-      <b style="animation-duration:${dur / speed()}ms"><span class="pn">${esc(per.name.toUpperCase())}</span><small>${esc(skillName)}</small></b>`;
-    BT.cut.appendChild(wrap);
-    sfx('summon');
-    if (u.mid === 'solar') {
-      const pn = wrap.querySelector('.pn'), g = ['H̷A̵E̶N̸I̴M', '해░▒NIM', 'HAE▓█M', '해님', 'HAENIM'];
-      g.forEach((t, i) => setTimeout(() => { pn.textContent = t; }, (i * 110) / speed()));
-    }
     mark('summon');
     mark('summon-' + u.mid);
-    await sleep(first ? 900 : 560);
-    setTimeout(() => wrap.remove(), 400);
+    if (u.mid === 'solar' && !save.awakened) {
+      save.awakened = true; persist();
+      await awakening(BT.root, sleep);
+      return;
+    }
+    const mode = save.cutins || 'first';
+    if (mode === 'off' || (mode === 'first' && !first)) { sfx('summon'); flash(true); await sleep(180); return; }
+    await evoker(u, skillName);
+  }
+  async function evoker(u, skillName) {
+    const m = member(u.mid), per = D.personas[m.persona], reduced = !FX || FX.reduced(), solar = u.mid === 'solar';
+    const wrap = document.createElement('div');
+    wrap.className = `bt-evoke${solar ? ' solar' : ''}`;
+    wrap.style.setProperty('--spd', speed());
+    const shot = solar
+      ? `<div class="bt-evk-shot"><img src="${SUMMON_DIR}solar-evoker.webp" alt=""></div>`
+      : `<div class="bt-evk-band" style="--c:${m.color}"><img class="face" src="${pimg(u.mid, m.faces.idle)}" alt="" style="--fx:${m.face[0]}%"><img class="gun" src="${EVOKER_SVG}" alt=""></div>`;
+    wrap.innerHTML = `<div class="bt-evk-light"></div><img class="per" src="${per.art}" alt=""><b class="bt-evk-name"><span class="pn">${esc(per.name.toUpperCase())}</span><small>${esc(skillName)}</small></b>${shot}`;
+    BT.cut.appendChild(wrap);
+    BT.root.classList.add('evoking');
+    sfx('click');
+    mark('evoke');
+    await sleep(reduced ? 140 : 320);
+    const sh = wrap.querySelector('.bt-evk-shot, .bt-evk-band');
+    sfx('evoker');
+    mark('evoke-crack');
+    if (!reduced) {
+      const R = BT.root.getBoundingClientRect();
+      let cx, cy, extras;
+      if (solar) {
+        const im = sh.querySelector('img'), cb = coverBox(im);
+        cx = cb.x + cb.w * 0.745; cy = cb.y + cb.h * 0.125; // the Evoker's muzzle at her temple
+        extras = [{ el: sh, clip: [[0, 6], [100, 0], [100, 94], [0, 100]], fill: '#05060c', cover: true }];
+      } else {
+        const g = sh.querySelector('.gun').getBoundingClientRect();
+        cx = g.left - R.left + g.width * 0.05; cy = g.top - R.top + g.height * 0.36;
+        extras = [{ el: sh, clip: [[0, 18], [100, 0], [100, 82], [0, 100]], fill: '#14070f', edge: m.color }];
+      }
+      const snap = FX.snapshot(BT.root, { bg: BT.bg, extras });
+      sh.remove();
+      wrap.classList.add('broke');
+      FX.shatter(wrap, snap, { cx, cy });
+      mark('evoke-shatter');
+    } else { sh.remove(); wrap.classList.add('broke'); flash(); }
+    if (solar) glitchName(wrap.querySelector('.pn'));
+    await sleep(reduced ? 600 : 900);
+    wrap.classList.add('out');
+    BT.root.classList.remove('evoking');
+    await sleep(200);
+    wrap.remove();
+  }
+
+  /* The one-time cinematic: Solar's Persona awakening, six storyboard frames with Ken Burns crossfades,
+     the glass breaking between 03 and 04, and Haenim's name glitching in. Skip with the button, Enter or Esc.
+     host: where to draw it; wait: a sleep that respects battle speed (and the screenshot freeze). */
+  function awakening(host, wait = ms => new Promise(r => setTimeout(r, ms / speed()))) {
+    const reduced = !FX || FX.reduced();
+    const prevCtl = ctl;
+    return new Promise(resolve => {
+      let done = false;
+      const el = document.createElement('div');
+      el.className = `bt-awaken${reduced ? ' reduced' : ''}`;
+      el.style.setProperty('--spd', speed());
+      const caps = ['', '', 'I am thou…', '…thou art I.', '', ''];
+      el.innerHTML = AWAKEN.map((f, i) => `<div class="bt-awk-f" data-i="${i}"><img src="${SUMMON_DIR}${f}.webp" alt=""></div>`).join('') +
+        `<p class="bt-awk-cap"></p><b class="bt-awk-name"><span class="pn">H̷A̵E̶N̸I̴M</span><small>해님 · Lady Sun</small></b>
+         <button type="button" class="bt-tool bt-awk-skip"><span>Skip ›</span></button>`;
+      host.appendChild(el);
+      const frames = [...el.querySelectorAll('.bt-awk-f')], cap = el.querySelector('.bt-awk-cap');
+      const finish = () => { if (done) return; done = true; el.classList.add('out'); ctl = prevCtl; setTimeout(() => el.remove(), 350); mark('awaken-done'); resolve(); };
+      el.querySelector('.bt-awk-skip').addEventListener('click', () => { sfx('back'); mark('awaken-skip'); finish(); });
+      ctl = { kind: 'cinematic', move() {}, pick: () => { mark('awaken-skip'); finish(); }, back: () => { mark('awaken-skip'); finish(); } };
+      mark('awaken');
+      const showFrame = i => {
+        frames.forEach((f, j) => f.classList.toggle('on', j === i));
+        frames[i].classList.add('kb' + (i % 2));
+        cap.textContent = caps[i]; cap.classList.toggle('on', !!caps[i]);
+        mark('awaken-' + (i + 1));
+      };
+      (async () => {
+        sfx('summon');
+        for (let i = 0; i < AWAKEN.length && !done; i++) {
+          if (i === 3 && !reduced) {
+            // 03 → 04: the glass breaks over frame 03 and frame 04 is behind it.
+            const im = frames[2].querySelector('img'), r = el.getBoundingClientRect();
+            const snap = document.createElement('canvas'), k = Math.min(window.devicePixelRatio || 1, phone() ? 1 : 1.5);
+            snap.width = Math.round(r.width * k); snap.height = Math.round(r.height * k);
+            const g = snap.getContext('2d'), ib = im.getBoundingClientRect();
+            g.scale(k, k);
+            if (im.complete && im.naturalWidth) { const kk = Math.max(ib.width / im.naturalWidth, ib.height / im.naturalHeight); g.drawImage(im, ib.left - r.left + (ib.width - im.naturalWidth * kk) / 2, ib.top - r.top + (ib.height - im.naturalHeight * kk) / 2, im.naturalWidth * kk, im.naturalHeight * kk); }
+            sfx('evoker');
+            frames[2].classList.remove('on');
+            frames[2].style.visibility = 'hidden';
+            showFrame(3);
+            frames[3].classList.add('snap');
+            FX.shatter(el, snap, { cx: r.width * 0.5, cy: r.height * 0.32 });
+            mark('awaken-shatter');
+            await wait(1500);
+            continue;
+          }
+          showFrame(i);
+          if (i === 5) { el.classList.add('named'); glitchName(el.querySelector('.pn')); }
+          await wait(i === 5 ? 2000 : 1250);
+        }
+        finish();
+      })();
+    });
+  }
+  /* Fuuka's card: a navigator moment after the full-moon boss. */
+  async function navCard() {
+    const w = document.createElement('div');
+    w.className = 'bt-allout';
+    w.innerHTML = `<div class="bt-finish card nav"><div class="bk" style="background-image:url('${FINISH_DIR}fuuka.webp')"></div><img src="${FINISH_DIR}fuuka.webp" alt="Fuuka"></div>`;
+    BT.cut.appendChild(w);
+    mark('navcard');
+    await sleep(1500);
+    w.remove();
   }
   async function bigWord(text, { sub = '', gold = false, band = null, ms = 900 } = {}) {
     const w = document.createElement('div');
@@ -651,6 +924,7 @@
       case 'round': paintOrder(); break;
       case 'use': {
         const u = U(e.src);
+        mark('use-' + e.skill);
         if (u.side === 'enemy') {
           const el = BT.enemies.get(u.id); if (el) { el.classList.remove('acting'); void el.offsetWidth; el.classList.add('acting'); }
           banner(e.name, { el: e.el, enemy: true, sub: u.name });
@@ -658,17 +932,27 @@
           await sleep(e.skill === 'tremble' ? 500 : 650);
         } else {
           paintCard(u);
-          if (e.summon) { await summonCut(u, e.name); banner(e.name, { el: e.el, sub: u.persona }); }
+          if (e.summon && !e.charmed) { await summonCut(u, e.name); banner(e.name, { el: e.el, sub: u.persona }); }
+          else if (e.charmed) { banner(e.name, { el: 'charm', sub: `${u.name} · Charmed` }); await sleep(300); }
           else { const c = BT.cards.get(u.id); c.classList.remove('hit'); banner('Attack', { el: e.el, sub: u.name }); await sleep(260); }
           log(`${u.name}: ${e.name}`);
         }
+        if (D.ailments[e.el]) sfx('ail');
         if (D.elements[e.el] && e.tgts.length) sfx(E.PHYS.has(e.el) ? 'hit' : (['fire', 'ice', 'elec', 'wind', 'light', 'almighty'].includes(e.el) ? e.el : 'hit'));
         break;
       }
       case 'hit': {
         const t = U(e.tgt), onEnemy = t.side === 'enemy', src = U(e.src);
-        if (e.aff === 'repel' && !e.reflected) { strikeFx(e.tgt, e.el); popup(e.tgt, { label: 'REPEL', lcls: 'repel' }); if (src.side === 'party') nav('repel', {}, { once: true }); sfx('miss'); await sleep(420); break; }
-        strikeFx(e.tgt, e.el);
+        if (e.quiet) { if (onEnemy) { paintEnemy(t, { hp: 0 }); deathFx(e.tgt); mark('kill'); } await sleep(500); break; }
+        if (e.aff === 'repel' && !e.reflected) { fxPlay(e.el, e.tgt, { small: true }); popup(e.tgt, { label: 'REPEL', lcls: 'repel' }); if (src.side === 'party') nav('repel', {}, { once: true }); sfx('miss'); await sleep(420); break; }
+        const lead = e.aff === 'null' ? fxPlay('miss', e.tgt) : fxHit(e);
+        if (lead > 40) await sleep(lead);
+        if (e.insta) {
+          if (e.killed) { popup(e.tgt, { label: e.el === 'light' ? 'BANISHED!' : 'INSTANT KILL!', lcls: 'weak' }); flash(e.el !== 'light'); shake(true); sfx('crit'); nav('insta'); mark('insta'); paintEnemy(t, { hp: 0 }); deathFx(e.tgt); mark('kill'); }
+          else { popup(e.tgt, { label: t.boss ? 'IMMUNE' : 'NULL', lcls: 'null' }); sfx('miss'); }
+          await sleep(650);
+          break;
+        }
         const el = onEnemy ? BT.enemies.get(e.tgt) : BT.cards.get(e.tgt);
         if (el && e.amount > 0 && e.aff !== 'drain') { el.classList.remove('hit'); void el.offsetWidth; el.classList.add('hit'); setTimeout(() => el.classList.remove('hit'), 420); }
         const label = e.crit ? 'CRITICAL!' : (AFF_WORD[e.aff] || '');
@@ -681,33 +965,77 @@
         else if (e.aff === 'weak') { shake(false); flash(true); sfx('weak'); }
         else if (e.amount) sfx('hit');
         if (e.downed) { sfx('down'); if (onEnemy) { const en = BT.enemies.get(e.tgt); en.classList.add('down'); } }
-        if (e.bound) { nav('bind'); }
+        if (e.shatter) { popup(e.tgt, { label: 'SHATTER!', lcls: 'crit' }); fxPlay('shatter', e.tgt); sfx('shatter'); nav('shatter'); mark('shatter'); }
         if (src && src.side === 'party' && onEnemy) {
           if (e.crit) nav('crit'); else if (e.aff === 'weak') { nav('weak'); mark('weak'); }
           else if (['null', 'drain', 'resist'].includes(e.aff)) nav(e.aff, {}, { once: true });
         }
         if (!onEnemy && e.aff === 'weak') { nav('hurt', { name: t.name }); const img = BT.cards.get(t.id).querySelector('.face img'); img.src = pimg(t.mid, member(t.mid).faces.hurt); setTimeout(() => { if (!t.dead) img.src = pimg(t.mid, member(t.mid).faces.idle); }, 1600); }
         if (e.killed) {
-          if (onEnemy) { const en = BT.enemies.get(e.tgt); en.classList.remove('down', 'charging'); en.classList.add('dead'); setTimeout(() => { en.classList.add('gone'); sizeField(); }, 900); mark('kill'); }
+          if (onEnemy) { deathFx(e.tgt); mark('kill'); }
           else { sfx('ko'); const img = BT.cards.get(t.id).querySelector('.face img'); img.src = pimg(t.mid, member(t.mid).faces.ko); if (t !== B.leader()) nav('ko', { name: t.name }); log(`${t.name} was knocked out!`); }
         }
         await sleep(next && next.t === 'hit' && !e.crit ? 240 : (e.aff === 'weak' || e.crit ? 700 : 460));
         break;
       }
-      case 'miss': popup(e.tgt, { label: 'MISS', lcls: 'miss' }); sfx('miss'); await sleep(420); break;
+      case 'miss': popup(e.tgt, { label: e.immune ? 'IMMUNE' : e.ail ? (e.has ? 'NO EFFECT' : 'MISS') : 'MISS', lcls: 'miss' }); sfx('miss'); if (e.insta) mark('insta-miss'); await sleep(420); break;
+      case 'ail': {
+        const t = U(e.tgt), d = D.ailments[e.id];
+        fxPlay(e.id === 'bind' ? 'bind' : e.id, e.tgt);
+        popup(e.tgt, { label: d.name.toUpperCase() + '!', lcls: 'ail', style: `--c:${d.color}` });
+        if (t.side === 'party') paintCard(t); else paintEnemy(t);
+        sfx('ail');
+        if (e.back) nav('shockBack', { name: t.name });
+        else if (e.id === 'bind') nav('bind');
+        else nav((t.side === 'party' ? 'ally_' : 'foe_') + e.id, { name: t.name });
+        log(`${t.name} ${e.id === 'bind' ? 'is bound by the golden rope' : 'is afflicted with ' + d.name}!`);
+        mark('ail'); mark('ail-' + e.id); mark((t.side === 'party' ? 'ally-ail-' : 'foe-ail-') + e.id);
+        if (t.side === 'party') { const img = BT.cards.get(t.id).querySelector('.face img'); img.src = pimg(t.mid, member(t.mid).faces.hurt); setTimeout(() => { if (!t.dead) img.src = pimg(t.mid, member(t.mid).faces.idle); }, 1400); }
+        await sleep(560);
+        break;
+      }
+      case 'ailEnd': {
+        const t = U(e.tgt);
+        if (t.side === 'party') paintCard(t); else paintEnemy(t);
+        if (e.shatter) break; // shown with the hit
+        if (e.cured) { fxPlay('cure', e.tgt); popup(e.tgt, { label: 'CURED', lcls: 'buff' }); sfx('cure'); nav('cured'); mark('cure'); mark('cure-' + e.id); await sleep(420); }
+        else { popup(e.tgt, { label: 'RECOVERED', lcls: 'buff' }); log(`${t.name} recovered from ${D.ailments[e.id].name}.`); mark('recover'); await sleep(300); }
+        break;
+      }
+      case 'ailSkip': {
+        const t = U(e.tgt), words = { freeze: 'FROZEN', shock: 'SHOCKED', bind: 'BOUND', fear: 'COWERING' };
+        if (e.id === 'shock') fxPlay('shock', e.tgt); else if (e.id === 'freeze') fxPlay('freeze', e.tgt); else if (e.id === 'fear') fxPlay('fear', e.tgt);
+        popup(e.tgt, { label: words[e.id] || 'STUCK', lcls: 'ail', style: `--c:${D.ailments[e.id].color}` });
+        log(e.id === 'fear' ? `${t.name} is cowering in fear…` : e.id === 'bind' ? `${t.name} is bound by the golden rope!` : `${t.name} can’t move!`);
+        mark('ail-skip');
+        await sleep(520);
+        break;
+      }
+      case 'ailTick': {
+        const t = U(e.tgt);
+        fxPlay('poison', e.tgt);
+        popup(e.tgt, { n: e.amount, cls: 'poison' + (t.side === 'party' ? ' party' : ''), label: 'POISON', lcls: 'ail', style: `--c:${D.ailments.poison.color}` });
+        if (t.side === 'party') paintCard(t, { hp: e.hp }); else paintEnemy(t, { hp: e.hp });
+        mark('poison-tick');
+        await sleep(480);
+        break;
+      }
+      case 'flee': { const t = U(e.tgt), en = BT.enemies.get(e.tgt); if (en) { en.classList.add('fled'); setTimeout(() => { en.classList.add('gone'); sizeField(); }, 700 / speed()); } nav('fled'); log(`${t.name} ran away in fear!`); mark('flee'); await sleep(600); break; }
+      case 'charmAct': { const t = U(e.src); popup(e.src, { label: 'CHARMED', lcls: 'ail', style: `--c:${D.ailments.charm.color}` }); fxPlay('charm', e.src); log(`${t.name} is charmed!`); mark('charm-act'); await sleep(420); break; }
       case 'heal': {
         const t = U(e.tgt);
-        if (e.amount > 0) popup(e.tgt, { n: e.amount, cls: 'heal' + (t.side === 'party' ? ' party' : '') });
+        if (e.amount > 0) { popup(e.tgt, { n: e.amount, cls: 'heal' + (t.side === 'party' ? ' party' : '') }); if (!(next && next.t === 'heal' && next.tgt === e.tgt)) fxPlay('heal', e.tgt); }
         if (e.sp) popup(e.tgt, { n: `+${e.sp} SP`, cls: 'sp' });
         if (t.side === 'party') paintCard(t, { hp: e.hp, sp: e.spNow != null ? e.spNow : undefined, dead: false }); else paintEnemy(t, { hp: e.hp });
         sfx('heal');
         await sleep(next && next.t === 'heal' ? 160 : 420);
         break;
       }
-      case 'revive': { const t = U(e.tgt); const c = BT.cards.get(t.id); c.classList.remove('dead'); c.querySelector('.face img').src = pimg(t.mid, member(t.mid).faces.idle); popup(e.tgt, { label: 'REVIVED', lcls: 'buff' }); mark('revive'); await sleep(300); break; }
+      case 'revive': { const t = U(e.tgt); const c = BT.cards.get(t.id); fxPlay('revive', e.tgt); c.classList.remove('dead'); c.querySelector('.face img').src = pimg(t.mid, member(t.mid).faces.idle); popup(e.tgt, { label: 'REVIVED', lcls: 'buff' }); mark('revive'); await sleep(300); break; }
       case 'buff': {
         const t = U(e.tgt);
         popup(e.tgt, { label: `${STAT_SHORT[e.stat]} ${e.dir > 0 ? '↑' : '↓'}`, lcls: e.dir > 0 ? 'buff' : 'debuff' });
+        fxPlay('buff', e.tgt, { dir: e.dir, stat: e.stat });
         if (t.side === 'party') paintCard(t); else paintEnemy(t);
         sfx('buff');
         await sleep(next && next.t === 'buff' ? 120 : 380);
@@ -756,7 +1084,6 @@
         break;
       }
       case 'standup': { const u = U(e.tgt); if (u.side === 'enemy') { paintEnemy(u); log(`${u.name} got back up.`); await sleep(380); } else paintCard(u); break; }
-      case 'bound': { const u = U(e.tgt); popup(e.tgt, { label: 'BOUND', lcls: 'buff' }); log(`${u.name} is bound by the golden rope!`); paintEnemy(u); await sleep(500); break; }
       case 'msg': log(e.text); await sleep(e.src ? 500 : 200); break;
       case 'analyze': break;
       default: break;
@@ -789,10 +1116,12 @@
     mark('allout-dust');
     await sleep(500); shake(true); await sleep(500); shake(true); await sleep(500);
     wrap.innerHTML = '';
-    const m = member(actor.mid);
+    // P3R finish card of whoever triggered it (the line is in Kat's art), wiped in full screen.
     const fin = document.createElement('div');
-    fin.className = 'bt-finish';
-    fin.innerHTML = `<img src="${pimg(actor.mid, m.faces.win)}" alt=""><h2><span>ALL-OUT</span><span>ATTACK!</span></h2><p>“${esc(m.lines.finish || m.lines.allout || 'Take that!')}”</p>`;
+    fin.className = 'bt-finish card';
+    fin.style.setProperty('--spd', speed());
+    const card = `${FINISH_DIR}${actor.mid}.webp`;
+    fin.innerHTML = `<div class="bk" style="background-image:url('${card}')"></div><i class="wipe"></i><i class="wipe w2"></i><img src="${card}" alt="${esc(actor.name)}: All-Out Attack finish">`;
     wrap.appendChild(fin);
     flash();
     mark('allout-finish');
@@ -800,12 +1129,12 @@
     wrap.remove();
     e.hits.forEach((h, i) => setTimeout(() => {
       const t = B.U(h.tgt);
-      strikeFx(h.tgt, 'almighty');
+      fxPlay('strike', h.tgt, { crit: true });
       popup(h.tgt, { n: h.amount, cls: 'big crit' });
       paintEnemy(t, { hp: h.hp });
       const en = BT.enemies.get(h.tgt);
       en.classList.remove('down');
-      if (h.killed) { en.classList.add('dead'); setTimeout(() => en.classList.add('gone'), 900); }
+      if (h.killed) deathFx(h.tgt);
     }, i * 140 / speed()));
     shake(true);
     sfx('crit');
@@ -903,13 +1232,13 @@
     const L = letters();
     const foeItem = f => {
       const a = affOn(f, spec.el);
-      return { v: f.id, label: f.name + L[f.id], icon: null, right: a ? (a === 'WK' ? 'WEAK' : a) : '', rcls: a === 'WK' ? 'hp' : '', desc: `<b>${esc(f.name)}</b>${f.down ? 'Down. ' : ''}${f.bound ? 'Bound. ' : ''}HP ${Math.round(f.hp / f.maxHp * 100)}%` };
+      return { v: f.id, label: f.name + L[f.id], icon: null, right: a ? (a === 'WK' ? 'WEAK' : a) : '', rcls: a === 'WK' ? 'hp' : '', desc: `<b>${esc(f.name)}</b>${f.down ? 'Down. ' : ''}${f.ail ? esc(D.ailments[f.ail.id].name) + '. ' : ''}HP ${Math.round(f.hp / f.maxHp * 100)}%` };
     };
-    const allyItem = p => ({ v: p.id, label: p.name, right: p.dead ? 'KO' : `${p.hp}/${p.maxHp}`, rcls: 'hp', desc: `<b>${esc(p.name)}</b>${esc(p.persona)} · SP ${p.sp}/${p.maxSp}` });
+    const allyItem = p => ({ v: p.id, label: p.name, right: p.dead ? 'KO' : `${p.ail ? D.ailments[p.ail.id].name.toUpperCase() + ' · ' : ''}${p.hp}/${p.maxHp}`, rcls: 'hp', desc: `<b>${esc(p.name)}</b>${esc(p.persona)} · SP ${p.sp}/${p.maxSp}${p.ail ? ' · ' + esc(D.ailments[p.ail.id].name) : ''}` });
     const aliveFoes = B.foes().filter(f => !f.dead), party = B.party();
     if (t === 'one') items = aliveFoes.map(foeItem);
     else if (t === 'scan') items = aliveFoes.map(foeItem).concat(party.map(p => Object.assign(allyItem(p), { right: 'Persona', rcls: '' })));
-    else if (t === 'all') items = [{ v: 'all', label: 'All foes', desc: aliveFoes.map(f => f.name).join(', ') }];
+    else if (t === 'all' || t === 'rand') items = [{ v: 'all', label: t === 'rand' ? 'Random foes' : 'All foes', desc: aliveFoes.map(f => f.name).join(', ') }];
     else if (t === 'allies') items = [{ v: 'all', label: 'Whole party', desc: party.filter(p => !p.dead).map(p => p.name).join(', ') }];
     else if (t === 'ally') items = party.filter(p => !p.dead).map(allyItem);
     else if (t === 'dead') items = party.filter(p => p.dead).map(allyItem);
@@ -917,7 +1246,7 @@
     if (!items.length) return Promise.resolve(null);
     const highlight = it => {
       clearTargets();
-      const set = it.v === 'all' ? (t === 'all' ? aliveFoes.map(f => f.id) : party.filter(p => !p.dead).map(p => p.id)) : [it.v];
+      const set = it.v === 'all' ? (t === 'all' || t === 'rand' ? aliveFoes.map(f => f.id) : party.filter(p => !p.dead).map(p => p.id)) : [it.v];
       items.forEach(x => { const el = BT.enemies.get(x.v) || BT.cards.get(x.v); if (el) el.classList.add('targetable'); });
       set.forEach(id => {
         const en = BT.enemies.get(id), c = BT.cards.get(id);
@@ -937,8 +1266,9 @@
       { v: 'skill', label: 'Skill', icon: 'skill', desc: `<b>${esc(u.persona)}</b>Use a Persona skill. Magic costs SP, physical skills cost HP.` },
       { v: 'item', label: 'Item', icon: 'item', desc: '<b>Item</b>' + Object.keys(D.items).map(k => `${D.items[k].name} ×${B.S.items[k] || 0}`).join(' · ') },
       { v: 'guard', label: 'Guard', icon: 'guard', desc: '<b>Guard</b>Halve damage and cover your weakness until your next turn.' },
-      { v: 'analyze', label: 'Analyze', icon: 'analyze', desc: '<b>Analyze</b>Fuuka scans a Shadow’s affinities, or check an ally’s Persona. Free action.' },
-      { v: 'escape', label: 'Escape', icon: 'escape', off: B.S.boss, offWhy: 'There’s no escape from the full moon!', desc: B.S.boss ? '<b>Escape</b>There’s no escape from the full moon!' : '<b>Escape</b>Try to run. Easier when Shadows are Down.' }
+      { v: 'analyze', label: 'Analyze', icon: 'analyze', desc: '<b>Analyze</b>Fuuka scans a Shadow’s affinities and status, or check an ally’s Persona. Free action.' },
+      { v: 'tactics', label: 'Tactics', icon: 'tactics', off: B.party().length < 2, offWhy: 'No one else to give orders to.', desc: '<b>Tactics</b>' + (B.party().filter(p => p.mid !== 'solar').map(p => `${esc(p.name)}: ${esc(D.tactics[tacticOf(p)].short)}`).join(' · ') || 'Solar is alone.') + '. Free action.' },
+      { v: 'escape', label: 'Escape', icon: 'escape', wide: true, off: B.S.boss, offWhy: 'There’s no escape from the full moon!', desc: B.S.boss ? '<b>Escape</b>There’s no escape from the full moon!' : '<b>Escape</b>Try to run. Easier when Shadows are Down.' }
     );
     return it;
   }
@@ -957,6 +1287,30 @@
       else if (c === 'escape') return { type: 'escape' };
       else if (c === 'shift') { const t = await pickTarget(u, { target: 'shift' }, 'Shift → pass the turn'); if (t) return { type: 'shift', to: t }; }
       else if (c === 'analyze') { const t = await pickTarget(u, { target: 'scan' }, 'Analyze → choose'); if (t) await analyzePanel(t); }
+      else if (c === 'tactics') { await tacticsMenu(); if (tacticOf(u) !== 'direct') return null; }
+    }
+  }
+  /* Tactics: pick a member, then their tactic. A free action; if the current member stops being Direct they act at once. */
+  async function tacticsMenu() {
+    let start = 0;
+    for (;;) {
+      const mates = B.party().filter(p => p.mid !== 'solar');
+      if (!mates.length) return;
+      const items = mates.map(p => ({ v: p.mid, label: p.name, right: esc(D.tactics[tacticOf(p)].short), rcls: tacticOf(p) === 'direct' ? '' : 'hp', desc: `<b>${esc(p.name)}</b>${esc(D.tactics[tacticOf(p)].name)}: ${esc(D.tactics[tacticOf(p)].desc)}` }));
+      const who = await listMenu({ items, back: true, cls: 'small', title: 'Tactics → who?', start, name: 'tactics' });
+      if (who == null) return;
+      start = items.findIndex(x => x.v === who);
+      const cur = save.tactics[who] || 'direct';
+      const titems = TACTIC_ORDER.map(k => ({ v: k, label: D.tactics[k].name, icon: 'tactics', right: k === cur ? '✓' : '', desc: `<b>${esc(D.tactics[k].name)}</b>${esc(D.tactics[k].desc)}` }));
+      const pickT = await listMenu({ items: titems, back: true, cls: 'small', title: `${esc(member(who).name)} → tactic`, start: TACTIC_ORDER.indexOf(cur), name: 'tactic' });
+      if (pickT) {
+        if (pickT === 'direct') delete save.tactics[who]; else save.tactics[who] = pickT;
+        persist();
+        B.party().forEach(p => paintCard(p));
+        nav('tactics');
+        log(`${member(who).name}: ${D.tactics[pickT].name}.`);
+        mark('tactic-set'); mark('tactic-' + pickT);
+      }
     }
   }
   async function skillMenu(u) {
@@ -988,6 +1342,10 @@
       if (t != null) return { type: 'item', item: v, target: t };
     }
   }
+  function statusLine(u, immune) {
+    const a = u.ail && D.ailments[u.ail.id];
+    return `<div class="bt-status">${a ? `<span class="bt-tag ail" style="--c:${a.color}">${ART.icon(u.ail.id)}<span>${esc(a.name)}</span><em>${u.ail.t}</em></span><p>${esc(a.desc)} ${u.ail.t} turn${u.ail.t === 1 ? '' : 's'} left.</p>` : '<p><b>Status</b> No ailments.</p>'}${immune && immune.length ? `<p class="imm">Immune to ${immune.map(x => esc(D.ailments[x].name)).join(', ')}.</p>` : ''}</div>`;
+  }
   function analyzePanel(id) {
     const u = B.U(id);
     return new Promise(res => {
@@ -996,11 +1354,13 @@
         B.analyze(id);
         nav('analyze');
         mark('analyze');
+        if (u.ail) mark('analyze-status');
         const d = D.enemies[u.kind];
         const k = B.known(u.kind);
         html = `<h2><small>Analyze · ${esc(d.arcana)} · Lv ${u.lvl}</small>${esc(u.name)}</h2>
           <div class="bt-expbar" style="margin:12px 0 4px"><i style="width:${u.hp / u.maxHp * 100}%;background:linear-gradient(90deg,#ff3b6b,#ff8cc0)"></i></div>
           <div class="bt-explabel"><span>HP ${Math.round(u.hp / u.maxHp * 100)}%</span><span>${u.down ? 'Down' : ''}${u.veil ? ` · Veil: ${D.elements[u.veil].name}` : ''}</span></div>
+          ${statusLine(u, d.ailImmune)}
           <div class="bt-affs">${D.affinityOrder.map(x => { const a = k[x] ? (u.aff[x] || 'normal') : null; return `<span class="bt-aff ${a ? (a === 'normal' ? '' : a) : 'unk'}">${ART.icon(x)}<em>${a ? AFF_SHORT[a] : '?'}</em>${D.elements[x].name}</span>`; }).join('')}</div>
           <p class="note">${esc(d.note)}</p>`;
       } else {
@@ -1011,6 +1371,7 @@
           <div class="bt-affs">${D.affinityOrder.map(x => { const a = per.aff[x] || 'normal'; return `<span class="bt-aff ${a === 'normal' ? '' : a}">${ART.icon(x)}<em>${AFF_SHORT[a]}</em>${D.elements[x].name}</span>`; }).join('')}</div>
           <ul class="bt-chips">${u.skills.map(s => `<li>${ART.icon(D.skills[s].el)}<span>${esc(D.skills[s].name)}</span></li>`).join('')}</ul>
           <p class="note">${esc(per.blurb || '')}</p>
+          ${statusLine(u)}
           <p class="note">St ${u.st} · Ma ${u.ma} · En ${u.en} · Ag ${u.ag} · Lu ${u.lu}</p></div></div>`;
       }
       const p = document.createElement('div');
@@ -1043,13 +1404,28 @@
     });
   }
 
-  async function partyTurn(u) {
-    log(`${u.name}: “${member(u.mid).lines.turn}”`);
+  async function partyTurn(u, forced) {
+    if (forced === 'charm') { setActive(u); await sleep(300); await play(B.forcedAct()); return; }
+    let said = false;
     for (let n = 0; n < 12; n++) {
       setActive(u);
       paintCard(u);
-      const action = await commandMenu(u);
-      hideMenu();
+      let tac = tacticOf(u), action = null;
+      if (tac === 'direct') {
+        if (!said) { log(`${u.name}: “${member(u.mid).lines.turn}”`); said = true; }
+        action = await commandMenu(u);
+        hideMenu();
+        tac = tacticOf(u);
+      }
+      if (!action) {
+        // Tactics: the member acts on their own.
+        action = B.autoAction(u, tac);
+        showWho(u, D.tactics[tac].name);
+        BT.body.innerHTML = '';
+        await sleep(420);
+        hideMenu();
+        mark('auto'); mark('auto-' + tac); mark('auto-' + u.mid);
+      }
       const evs = B.act(action);
       await play(evs);
       if (B.outcome()) return;
@@ -1087,14 +1463,21 @@
   /* ════════════════════════════════════════════════════
      RESULTS + LEVEL UP
      ════════════════════════════════════════════════════ */
+  /* Everyone in the party gets the full EXP; the bench gets a share so nobody falls behind. Solar's level-ups give skill points. */
   function gainExp(n) {
-    const fx = treeFx();
-    const before = { lvl: save.lvl, exp: save.exp, stats: D.party.map(m => memberStats(m, save.lvl, fx)) };
-    save.exp += n;
-    let ups = 0;
-    while (save.exp >= need(save.lvl)) { save.exp -= need(save.lvl); save.lvl++; ups++; save.pts += D.progression.pointsPerLevel; }
-    const after = D.party.map(m => memberStats(m, save.lvl, fx));
-    return { ups, before, after, pts: ups * D.progression.pointsPerLevel };
+    const fx = treeFx(), share = D.progression.benchShare;
+    const rows = D.party.map(m => {
+      const inP = m.id === 'solar' || save.party.includes(m.id);
+      const rec = m.id === 'solar' ? save : save.mem[m.id];
+      const before = { lvl: rec.lvl, stats: memberStats(m, rec.lvl, fx) };
+      const got = inP ? n : Math.round(n * share);
+      rec.exp += got;
+      let ups = 0;
+      while (rec.exp >= need(rec.lvl)) { rec.exp -= need(rec.lvl); rec.lvl++; ups++; if (m.id === 'solar') save.pts += D.progression.pointsPerLevel; }
+      return { m, inP, got, ups, before, after: memberStats(m, rec.lvl, fx), lvl: rec.lvl, exp: rec.exp };
+    });
+    const ups = rows[0].ups;
+    return { rows, ups, any: rows.some(r => r.ups), pts: ups * D.progression.pointsPerLevel };
   }
   async function results(floor, out) {
     const g = gainExp(out.exp);
@@ -1103,12 +1486,13 @@
     const loot = floor.loot || {};
     Object.keys(loot).forEach(k => { run.items[k] = (run.items[k] || 0) + loot[k]; });
     persist();
-    if (g.ups) mark('levelup');
+    if (g.any) mark('levelup');
     let first = true;
     for (;;) {
       const go = await resultsScreen(floor, out, g, bonus, loot, first);
       first = false;
       if (go === 'tree') { await new Promise(r => treeScreen(r)); continue; }
+      if (go === 'party') { await new Promise(r => partyScreen(r)); continue; }
       return go;
     }
   }
@@ -1116,16 +1500,15 @@
     screen = 'results';
     root.classList.remove('bt-in-battle');
     music.play('floor');
-    if (first && g.ups) setTimeout(() => sfx('level'), 500);
+    if (first && g.any) setTimeout(() => sfx('level'), 500);
     return new Promise(res => {
-      const pct = Math.round(save.exp / need(save.lvl) * 100);
-      const rows = D.party.map((m, i) => {
-        const b = g.before.stats[i], a = g.after[i];
-        const gains = g.ups ? ['hp', 'sp', 'st', 'ma', 'en', 'ag', 'lu'].filter(k => a[k] > b[k]).map(k => `<span>${k.toUpperCase()} <b>+${a[k] - b[k]}</b></span>`).join('') : '';
+      const rows = g.rows.filter(r => r.inP).map((r, i) => {
+        const m = r.m, b = r.before.stats, a = r.after, pct = Math.round(r.exp / need(r.lvl) * 100);
+        const gains = r.ups ? ['hp', 'sp', 'st', 'ma', 'en', 'ag', 'lu'].filter(k => a[k] > b[k]).map(k => `<span>${k.toUpperCase()} <b>+${a[k] - b[k]}</b></span>`).join('') : '';
         return `<div class="bt-res-row" style="animation-delay:${0.15 + i * 0.08}s"><div class="pic"><img src="${pimg(m.id, m.faces.win)}" alt="" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"></div>
-          <div><b>${esc(m.name)}<small>Lv ${save.lvl}</small></b>${g.ups ? '<span class="bt-lvup">LEVEL UP!</span>' : ''}
+          <div><b>${esc(m.name)}<small>Lv ${r.lvl}</small></b>${r.ups ? '<span class="bt-lvup">LEVEL UP!</span>' : ''}
           <div class="bt-expbar"><i style="width:${pct}%"></i></div>${gains ? `<div class="bt-gains">${gains}</div>` : ''}</div></div>`;
-      }).join('');
+      }).join('') + (g.rows.some(r => !r.inP) ? `<div class="bt-bench"><small>Bench · +${g.rows.find(r => !r.inP).got} EXP</small>${g.rows.filter(r => !r.inP).map(r => `<span${r.ups ? ' class="up"' : ''}><img src="${pimg(r.m.id, r.m.faces.idle)}" alt="" style="--fx:${r.m.face[0]}%;--fy:${r.m.face[1]}%">${esc(r.m.name)} <b>Lv ${r.lvl}${r.ups ? ' ↑' : ''}</b></span>`).join('')}</div>` : '');
       const extra = [];
       if (g.pts) extra.push(`<span class="pts">+${g.pts} Skill Points</span>`);
       if (bonus) extra.push(`<span class="pts">+${bonus} Full-moon bonus</span>`);
@@ -1138,6 +1521,7 @@
           <div class="bt-res-btns">
             <button type="button" class="bt-btn pink" data-go="next"><span>${last ? 'Finish ›' : 'Next floor ›'}</span></button>
             <button type="button" class="bt-btn" data-go="tree"><span>Haenim’s Tree</span><small>${save.pts} SP</small></button>
+            <button type="button" class="bt-btn" data-go="party"><span>Party</span><small>${save.party.length + 1} / 4</small></button>
             ${last ? '' : `<button type="button" class="bt-btn" data-go="leave"><span>Leave Tartarus</span><small>Progress saved · continue from ${esc(D.floors[run.floor + 1].label)}</small></button>`}
           </div></div>
         <div class="bt-res-list">${rows}</div></div>`, 'bt-results');
@@ -1224,7 +1608,7 @@
     const render = () => {
       const [id, p] = list[i];
       const ev = p.evolves && D.personas[p.evolves];
-      const inParty = D.party.some(m => m.persona === id);
+      const inParty = roster().some(m => m.persona === id);
       const el = show(`<div class="bt-tree-head"><button type="button" class="bt-tool" data-act="back"><span>‹ Back</span></button><h1>PERSONAS<small>${i + 1} / ${list.length}</small></h1></div>
         <div class="bt-pview">
           <div class="bt-pv-art"><img src="${p.art}" alt="${esc(p.name)}"></div>
@@ -1232,11 +1616,13 @@
             <div class="bt-affs">${D.affinityOrder.map(x => { const a = p.aff[x] || 'normal'; return `<span class="bt-aff ${a === 'normal' ? '' : a}">${ART.icon(x)}<em>${AFF_SHORT[a]}</em>${D.elements[x].name}</span>`; }).join('')}</div>
             <p class="note">${esc(p.blurb || '')}</p>
             ${ev ? `<div class="bt-evo"><img src="${ev.art}" alt=""><p><b>Evolves into ${esc(ev.name)}</b>${esc(ev.blurb || '')}</p></div>` : ''}
-            <div class="bt-res-btns"><button type="button" class="bt-btn" data-act="prev"><span>‹ Prev</span></button><button type="button" class="bt-btn pink" data-act="next"><span>Next ›</span></button></div>
+            <div class="bt-res-btns"><button type="button" class="bt-btn" data-act="prev"><span>‹ Prev</span></button><button type="button" class="bt-btn pink" data-act="next"><span>Next ›</span></button>${id === 'haenim' ? '<button type="button" class="bt-btn" data-act="awaken"><span>Replay awakening</span></button>' : ''}</div>
           </div></div>`, 'bt-tree bt-personas');
       el.querySelector('[data-act="back"]').addEventListener('click', close);
       el.querySelector('[data-act="prev"]').addEventListener('click', () => step(-1));
       el.querySelector('[data-act="next"]').addEventListener('click', () => step(1));
+      const aw = el.querySelector('[data-act="awaken"]');
+      if (aw) aw.addEventListener('click', async () => { sfx('ok'); if (FX) FX.setSpeed(speed); await awakening(el); render(); });
       ctl = { kind: 'personas', move: d => step(d), pick: () => step(1), back: close };
       mark('personas');
     };
@@ -1248,8 +1634,10 @@
   /* ── Boot ─────────────────────────────────────────── */
   window.FemcBattle = {
     get B() { return B; }, get save() { return save; }, get run() { return run; }, get ctl() { return ctl; },
-    screen: () => screen, marks, freeze() { frozen = true; }, unfreeze() { frozen = false; },
+    screen: () => screen, marks, freeze() { frozen = true; if (FX) FX.pause(); }, unfreeze() { frozen = false; if (FX) FX.resume(); },
+    awakening: () => awakening(app.firstElementChild || app),
     reloadSave() { save = loadSave(); }
   };
+  if (FX) FX.setSpeed(speed);
   hub();
 })();
