@@ -35,7 +35,7 @@ Full-screen 16:9 illustrations for big moments, the way P3R and P5R show a paint
 
 **Romances** (one or two each)
 - [x] Akihiko: boxing gym after hours, wrapping her hands; the rooftop
-- [ ] Akihiko: Christmas
+- [x] Akihiko: Christmas
 - [ ] Shinjiro: the kitchen, cooking together (before 10/4)
 - [x] Haechan: the laundry room, him on the dryer (`Event CGs/romance-haechan-laundry.webp`)
 - [ ] Jungwon: the student council room late at night, the croissant
