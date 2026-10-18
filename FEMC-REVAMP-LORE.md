@@ -5,6 +5,8 @@ The current game is preserved as `femc-v1` (git tag + branch, zip in Documents/F
 
 ---
 
+**Key art / title screen:** `Background Images/screen.png` (in the site at `assets/femc/title/keyart.webp`).
+
 ## The premise
 
 **Solar is the same girl in three worlds.** She is Solar Lee in *Runners*, the Solar of *strangers*, and Solar Kim in *Hoax*, all at once. She is one person living three lives.
@@ -43,7 +45,7 @@ From the Korean tale of the sister who became the sun: she was afraid of being l
 **Theurgy:** "Rise and Shine": she lifts her veil and the sun pours out (cut-in done).
 
 **Growth:** she starts veiled and mismatched, and her name glitches when she's summoned. Each route has its own final form:
-- *Runners*: **Sunna**, the runner under stage lights.
+- *Runners*: **Sunna**, the runner under stage lights (art done: `Personas/Haenim-Sunna.png`).
 - *strangers*: **Mazu**, the sea goddess who protects the people waiting on the docks (art done: `Personas/Haenim-Harbor.png`).
 - *Hoax*: **Nike**, winged Victory (art done: `Personas/Haenim-Nike.png`).
 - **True ending:** Haenim with the veil off, the sun you *can* look at.
