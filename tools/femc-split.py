@@ -9,9 +9,10 @@ Writes ~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits/<Name
 then run: python3 tools/femc-portraits.py <name>
 """
 import os, sys, argparse
+from femc_images import IMAGES as IMAGES_DIR
 from PIL import Image
 
-SRC = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits')
+SRC = os.path.join(IMAGES_DIR, 'Character Portraits')
 
 ap = argparse.ArgumentParser()
 ap.add_argument('sheet'); ap.add_argument('name'); ap.add_argument('emotions')

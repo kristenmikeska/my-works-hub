@@ -23,6 +23,7 @@ Needs:  pip3 install --user numpy scipy realesrgan-ncnn-py   (realesrgan-ncnn-py
 Per-image exceptions (skip tone, skip rim, keep the old file) go in OVERRIDES below.
 """
 import os, re, sys, glob, subprocess, tempfile
+from femc_images import IMAGES as IMAGES_DIR
 import numpy as np
 from PIL import Image, ImageFilter, ImageDraw, ImageFont
 from scipy import ndimage
@@ -30,7 +31,7 @@ from scipy import ndimage
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 LIFT = os.path.join(HERE, 'femc-lift.swift')
-IMAGES = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images')
+IMAGES = IMAGES_DIR
 PERSONA_SRC = os.path.join(IMAGES, 'Personas')
 PERSONA_DST = os.path.join(ROOT, 'assets/femc/battle/art/personas')
 

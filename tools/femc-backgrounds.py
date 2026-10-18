@@ -6,9 +6,10 @@ Output: assets/femc/bg/<name>.webp (lowercased, spaces and underscores become hy
 Which place uses which background is set by hand in assets/femc/backgrounds.js.
 """
 import os, re
+from femc_images import IMAGES as IMAGES_DIR
 from PIL import Image
 
-SRC = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Background Images')
+SRC = os.path.join(IMAGES_DIR, 'Background Images')
 DST = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets/femc/bg')
 os.makedirs(DST, exist_ok=True)
 

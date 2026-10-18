@@ -11,9 +11,10 @@ Source: ~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits/<Nam
 Output: assets/femc/portraits/<id>/<emotion>.webp and assets/femc/portraits/index.js
 """
 import os, re, sys, json
+from femc_images import IMAGES as IMAGES_DIR
 from PIL import Image, ImageChops, ImageFilter, ImageStat
 
-SRC = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits')
+SRC = os.path.join(IMAGES_DIR, 'Character Portraits')
 DST = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets/femc/portraits')
 EMO = {'mad': 'serious', 'angry': 'serious', 'embarrassed': 'flustered', 'smiling': 'happy', 'smile': 'happy'}
 TARGET_H = 860      # height of the reference portrait on the canvas
