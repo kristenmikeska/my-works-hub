@@ -15,6 +15,12 @@
   const pimg = (id, face) => `${D.portraits}${id}/${face}.webp?v=${V()}`;
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const member = mid => D.party.find(m => m.id === mid);
+  /* Portrait crops. An <img class="fc"> inside a box with class "fcb" is scaled and placed from the face-focus table (data.js
+     faceFocus) so the eyes sit on the box's eye line and the whole face shows; each box sets its framing in CSS (--zy, --zk). */
+  const focusOf = (id, face) => { const f = D.faceFocus[id] || { x: 50, y: 40, s: 25, ar: 1.1 }, a = f.alt && f.alt[face]; return a ? Object.assign({}, f, a) : f; };
+  const fvars = (id, face) => { const f = focusOf(id, face); return `--fx:${f.x};--fy:${f.y};--fs:${(f.s / 100).toFixed(3)};--ar:${f.ar}`; };
+  const fimg = (id, face, alt = '', cls = '') => `<img class="fc${cls ? ' ' + cls : ''}" src="${pimg(id, face)}" alt="${esc(alt)}" style="${fvars(id, face)}" draggable="false">`;
+  const setFace = (img, id, face) => { if (!img) return; img.src = pimg(id, face); img.style.cssText = fvars(id, face); };
   const phone = () => matchMedia('(max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5)').matches; // phones, and tablets held upright
   const pickOne = a => Array.isArray(a) ? a[Math.floor(Math.random() * a.length)] : a;
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
@@ -293,6 +299,8 @@
       down: () => tone(220, 0.25, { type: 'square', v: 0.05, to: 80 }),
       miss: () => tone(420, 0.12, { type: 'sine', v: 0.05, to: 300 }),
       onemore: () => { tone(880, 0.08, { v: 0.05 }); tone(1320, 0.16, { v: 0.05, at: 0.08 }); },
+      // Theurgy ready: a quick rising shimmer and a bell.
+      thready: () => { [1046, 1318, 1568, 2093].forEach((f, i) => tone(f, 0.12, { type: 'triangle', v: 0.045, at: i * 0.045 })); tone(2637, 0.7, { type: 'sine', v: 0.05, at: 0.18 }); tone(3951, 0.45, { type: 'sine', v: 0.02, at: 0.2 }); },
       summon: () => { tone(220, 0.6, { type: 'sawtooth', v: 0.03, to: 880 }); noise(0.5, { v: 0.1, f: 4000, q: 0.3 }); },
       allout: () => { noise(1.1, { v: 0.32, f: 500, q: 0.4 }); [0, 0.18, 0.36, 0.54, 0.72].forEach(at => { noise(0.1, { v: 0.4, f: 900, at }); tone(110, 0.12, { type: 'sine', v: 0.3, to: 50, at }); }); },
       ko: () => tone(300, 0.6, { type: 'sawtooth', v: 0.05, to: 60 }),
@@ -430,12 +438,18 @@
     }));
   }
   const paintSpeed = () => document.querySelectorAll('[data-tool="speed"] span').forEach(sp => { sp.textContent = `▶▶ ${save.speed || 1}x`; });
+  /* Lists that keep their scroll when a screen re-renders itself (a click in the shop, the tree, equipment…), so a row never
+     jumps out from under the pointer. */
+  const KEEP_SCROLL = '.bt-shop, .bt-shop-list, .bt-equip, .bt-eq-slots, .bt-eq-mates, .bt-branches, .bt-party-grid, .bt-ops, .bt-mems, .bt-slots, .bt-pview';
   const show = (html, cls) => {
     if (FX) FX.detach();
     // The FEMC badge (bottom-left) stays on the entrance screen; elsewhere this page's own corners are busy.
     root.classList.toggle('bt-in-battle', !/bt-hub/.test(cls));
-    app.innerHTML = `<div class="bt-screen ${cls}" data-femc-quiet>${html}</div>`;
-    return app.firstElementChild;
+    const prev = app.firstElementChild, tops = prev && prev.dataset.cls === cls ? [...prev.querySelectorAll(KEEP_SCROLL)].map(e => e.scrollTop) : null;
+    app.innerHTML = `<div class="bt-screen ${cls}" data-cls="${esc(cls)}" data-femc-quiet>${html}</div>`;
+    const el = app.firstElementChild;
+    if (tops) el.querySelectorAll(KEEP_SCROLL).forEach((e, i) => { if (tops[i]) e.scrollTop = tops[i]; });
+    return el;
   };
 
   /* ════════════════════════════════════════════════════
@@ -628,7 +642,7 @@
     const el = tipEl = document.createElement('div');
     el.className = 'bt-tip';
     el.setAttribute('role', 'status');
-    el.innerHTML = `<div class="pic"><img src="${pimg('fuuka', 'happy')}" alt=""></div><div class="tx"><b>Tip · ${esc(g ? g.name : 'Fuuka')}</b><span></span><div class="acts"><button type="button" data-more>More</button><button type="button" data-ok>Got it</button></div></div>`;
+    el.innerHTML = `<div class="pic fcb">${fimg('fuuka', 'happy')}</div><div class="tx"><b>Tip · ${esc(g ? g.name : 'Fuuka')}</b><span></span><div class="acts"><button type="button" data-more>More</button><button type="button" data-ok>Got it</button></div></div>`;
     document.body.appendChild(el);
     typeInto(el.querySelector('span'), text);
     let gone = false;
@@ -716,7 +730,7 @@
           <div class="bt-explabel"><span>EXP ${save.exp} / ${need(save.lvl)}</span><span>${save.pts} skill pts</span></div>
           <div class="bt-stats">${['hp', 'sp', 'st', 'ma', 'en', 'ag', 'lu'].map(k => `<div><span>${k.toUpperCase()}</span><b>${s[k]}</b></div>`).join('')}</div>
           <ul class="bt-chips">${skills.map(id => `<li>${ART.icon(D.skills[id].el)}<span>${esc(D.skills[id].name)}</span></li>`).join('')}</ul>
-          <div class="bt-hub-party" aria-label="Party">${roster().slice(1).map(m => `<span title="${esc(m.name)}"><img src="${pimg(m.id, m.faces.idle)}" alt="" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"><b>${esc(m.name)}<small>Lv ${lvOf(m.id)}${tacticOf({ mid: m.id }) !== 'direct' ? ` · ${esc(D.tactics[tacticOf({ mid: m.id })].short)}` : ''}</small></b></span>`).join('') || '<em>Solar fights alone</em>'}</div>
+          <div class="bt-hub-party" aria-label="Party">${roster().slice(1).map(m => `<span title="${esc(m.name)}"><i class="av fcb">${fimg(m.id, m.faces.idle)}</i><b>${esc(m.name)}<small>Lv ${lvOf(m.id)}${tacticOf({ mid: m.id }) !== 'direct' ? ` · ${esc(D.tactics[tacticOf({ mid: m.id })].short)}` : ''}</small></b></span>`).join('') || '<em>Solar fights alone</em>'}</div>
           <p class="bt-meta"><span class="bt-yen">${ICON.svg('yen')}${yen(save.yen)}</span> · ${save.runs} run${save.runs === 1 ? '' : 's'} · ${opsDone} full moon${opsDone === 1 ? '' : 's'} cleared${save.cycle ? ` · Tartarus is stronger (climb ${save.cycle + 1})` : ''}</p>
         </div>
       </div>
@@ -757,7 +771,7 @@
         const per = perOf(m.id), slot = save.party.indexOf(m.id), tac = save.tactics[m.id] || 'direct';
         return `<div class="bt-pm${slot >= 0 ? ' in' : ''}${k === i ? ' sel' : ''}" data-k="${k}" style="--c:${m.color}">
           <button type="button" class="bt-pm-main" data-act="toggle" data-id="${m.id}" aria-pressed="${slot >= 0}">
-            <span class="pic"><img src="${pimg(m.id, m.faces.idle)}" alt="" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"></span>
+            <span class="pic fcb">${fimg(m.id, m.faces.idle)}</span>
             <span class="info"><b>${esc(m.name)}<small>Lv ${lvOf(m.id)}</small></b><span class="per-n">${esc(per.name)} · ${esc(per.arcana)}</span><span class="role">${esc(m.role || '')}</span><span class="bt-affs">${affChips(per)}</span></span>
             <span class="per-art"><img src="${per.art}" alt="${esc(per.name)}"></span>
             <span class="slot">${slot >= 0 ? `IN · ${slot + 2}` : 'Bench'}</span>
@@ -769,7 +783,7 @@
       const el = show(`<div class="bt-tree-head"><button type="button" class="bt-tool" data-act="back"><span>‹ Back</span></button>
           <h1>PARTY<small>S.E.E.S.</small></h1><div class="bt-pts"><span><small>Members</small>${save.party.length + 1} / 4</span></div></div>
         <div class="bt-party-grid">
-          <div class="bt-pm in leader" style="--c:${solar.color}"><div class="bt-pm-main"><span class="pic"><img src="${pimg('solar', 'serious')}" alt="" style="--fx:${solar.face[0]}%;--fy:${solar.face[1]}%"></span>
+          <div class="bt-pm in leader" style="--c:${solar.color}"><div class="bt-pm-main"><span class="pic fcb">${fimg('solar', 'serious')}</span>
             <span class="info"><b>Solar<small>Lv ${save.lvl}</small></b><span class="per-n">${esc(sp.name)} · Fool</span><span class="role">${esc(solar.role)}</span><span class="bt-affs">${affChips(sp)}</span></span><span class="per-art"><img src="${sp.art}" alt="Haenim"></span><span class="slot">Leader · 1</span></div>
             <div class="bt-pm-tac fixed">${ART.icon('tactics')}<span>Always Direct</span></div></div>
           ${list.map(card).join('')}
@@ -858,7 +872,7 @@
     return new Promise(res => {
       const el = show(`<div class="bt-clock-bg" style="background-image:url('${op.arena}')"></div><div class="bt-clock-in"><p class="bt-kicker">Before the full moon · ${esc(op.arcana)}</p><h1>THE CLOCK</h1><p>A clock chimes somewhere in the dark. Everyone’s HP and SP are fully restored, and no one is tired anymore.</p>
         <div class="bt-brief"><b>${esc(op.name)} · ${esc(op.place)}</b>${esc(op.brief)}<small>Recommended level ${op.lvl}</small></div>
-        <div class="bt-navline"><div class="bt-nav" style="position:relative;top:auto;right:auto;margin:18px auto 0"><div class="pic"><img src="${pimg('fuuka', 'happy')}" alt=""></div><p><b>Fuuka</b>${esc(D.nav.clock[0])}</p></div></div>
+        <div class="bt-navline"><div class="bt-nav bt-room-nav"><div class="pic fcb">${fimg('fuuka', 'happy')}</div><p><b>Fuuka</b>${esc(D.nav.clock[0])}</p></div></div>
         <div class="row"><button type="button" class="bt-btn pink"><span>To the full moon ›</span></button></div></div>`, 'bt-over bt-clock');
       el.querySelector('button').addEventListener('click', () => { sfx('ok'); res(); });
       buttonNav(el);
@@ -1094,22 +1108,25 @@
       const pa = pos(a), pb = pos(b), walked = a.visited && b.visited, live = (a.id === map.pos && optIds.includes(b.id)) || (b.id === map.pos && optIds.includes(a.id));
       edges.push(`<line x1="${pa.x}" y1="${pa.y}" x2="${pb.x}" y2="${pb.y}" class="e${walked ? ' walked' : ''}${live ? ' live' : ''}${a.known && b.known ? '' : ' fog'}"/>`);
     }));
-    const S = vert ? 21 : 25;
+    const S = vert ? 22 : 27;
     const nodeSvg = n => {
       const p = pos(n), r = ROOM[n.type] || ROOM.empty, opt = optIds.includes(n.id), cur = n.id === map.pos;
       const known = n.known, icon = !known ? 'room-unknown' : n.type === 'shadow' && n.cleared ? 'room-empty' : r.icon;
       const col = !known ? '#3a2a3a' : n.type === 'shadow' && n.strong && !n.cleared ? '#ff3b6b' : (r.color || '#8a7a9a');
       const cls = ['node', `t-${known ? n.type : 'unknown'}`, n.visited ? 'visited' : '', cur ? 'cur' : '', opt ? 'opt' : '', (n.cleared || n.opened || n.used) ? 'done' : '', n.strong && !n.cleared && known ? 'strong' : ''].join(' ');
       const label = !known ? '???' : n.type === 'shadow' ? (n.cleared ? 'Cleared' : n.strong ? 'Strong' : 'Shadow') : r.name;
-      const ic = ICON.svg(icon, known && n.type === 'shadow' && n.strong && !n.cleared ? '#ff3b6b' : null).replace('<svg class="bt-icon ', `<svg x="${p.x - S * 0.62}" y="${p.y - S * 0.62}" width="${S * 1.24}" height="${S * 1.24}" class="bt-icon `);
+      const IS = S * (n.type === 'empty' && known ? 0.9 : 1.42);
+      const ic = ICON.svg(icon, known && n.type === 'shadow' && n.strong && !n.cleared ? '#ff3b6b' : null, 'glyph').replace('<svg class="bt-icon ', `<svg x="${p.x - IS / 2}" y="${p.y - IS / 2}" width="${IS}" height="${IS}" class="bt-icon `);
       return `<g class="${cls}" ${opt ? `data-node="${n.id}" role="button" tabindex="-1" aria-label="${esc(label)}"` : ''} style="--c:${col}">
         ${opt ? `<polygon class="ring" points="${p.x},${p.y - S - 9} ${p.x + S + 9},${p.y} ${p.x},${p.y + S + 9} ${p.x - S - 9},${p.y}"/>` : ''}
-        <polygon class="tile" points="${p.x},${p.y - S} ${p.x + S},${p.y} ${p.x},${p.y + S} ${p.x - S},${p.y}"/>${ic}
+        <g class="nt" style="transform-origin:${p.x}px ${p.y}px"><polygon class="tile" points="${p.x},${p.y - S} ${p.x + S},${p.y} ${p.x},${p.y + S} ${p.x - S},${p.y}"/><polygon class="tile-in" points="${p.x},${p.y - S + 6} ${p.x + S - 6},${p.y} ${p.x},${p.y + S - 6} ${p.x - S + 6},${p.y}"/>${ic}</g>
         <text x="${p.x}" y="${p.y + S + (vert ? 15 : 19)}" class="lbl">${esc(label.toUpperCase())}</text></g>`;
     };
-    const hp = pos(here), lift = S + (vert ? 26 : 32), fromN = animFrom && MAP.get(map, animFrom), fp = fromN ? pos(fromN) : hp;
+    const hp = pos(here), lift = S + (vert ? 28 : 36), fromN = animFrom && MAP.get(map, animFrom), fp = fromN ? pos(fromN) : hp;
     const tf = p => `translate(${p.x}px, ${p.y - lift}px)`;
-    const marker = `<g class="party-mark" style="transform:${tf(fp)}"${fromN ? ` data-to="${tf(hp)}"` : ''}><circle r="${vert ? 17 : 21}" class="pm-ring"/><clipPath id="pmclip"><circle r="${vert ? 15 : 19}"/></clipPath><image href="${pimg('solar', 'serious')}" x="${vert ? -22 : -27}" y="${vert ? -17 : -21}" width="${vert ? 44 : 54}" height="${vert ? 70 : 86}" clip-path="url(#pmclip)" preserveAspectRatio="xMidYMin slice"/><path d="M-7 ${vert ? 17 : 21}h14l-7 9z" class="pm-tip"/></g>`;
+    // Solar's marker: a face crop (from the face-focus table) in a pink ring with a pointer down to her room.
+    const mr = vert ? 19 : 24, mc = mr - 4, ff = focusOf('solar', 'serious'), iw = mc * 0.7 / (ff.s / 100), ih = iw * ff.ar;
+    const marker = `<g class="party-mark" style="transform:${tf(fp)}"${fromN ? ` data-to="${tf(hp)}"` : ''}><path d="M-8 ${mr - 3}h16l-8 ${vert ? 11 : 13}z" class="pm-tip"/><circle r="${mr}" class="pm-ring"/><clipPath id="pmclip"><circle r="${mc}"/></clipPath><circle r="${mc}" class="pm-bg"/><image href="${pimg('solar', 'serious')}" x="${(-ff.x / 100 * iw).toFixed(1)}" y="${(-mc * 0.2 - ff.y / 100 * ih).toFixed(1)}" width="${iw.toFixed(1)}" height="${ih.toFixed(1)}" clip-path="url(#pmclip)" preserveAspectRatio="none"/><circle r="${mc}" class="pm-in"/></g>`;
     let reaper = '';
     if (map.reaper) {
       const rn = MAP.get(map, map.reaper.node), rp = pos(rn);
@@ -1123,7 +1140,7 @@
     const units = fieldUnits();
     const partyHtml = units.map(u => {
       const m = member(u.mid);
-      return `<div class="bt-mp${run.tired[u.mid] ? ' tired' : ''}" style="--c:${m.color}"><img src="${pimg(u.mid, m.faces.idle)}" alt="" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"><div><b>${esc(u.name)}<small>Lv ${u.lvl}${run.tired[u.mid] ? ' · <em>Tired</em>' : ''}</small></b>
+      return `<div class="bt-mp${run.tired[u.mid] ? ' tired' : ''}" style="--c:${m.color}"><i class="av fcb">${fimg(u.mid, m.faces.idle)}</i><div><b>${esc(u.name)}<small>Lv ${u.lvl}${run.tired[u.mid] ? ' · <em>Tired</em>' : ''}</small></b>
         <span class="bar hp"><i style="width:${u.hp / u.maxHp * 100}%"></i></span><span class="bar sp"><i style="width:${u.sp / u.maxSp * 100}%"></i></span><span class="bar th${u.th >= 100 ? ' full' : ''}"><i style="width:${u.th}%"></i></span></div></div>`;
     }).join('');
     const line = mapLine || ['…', 'neutral'];
@@ -1144,7 +1161,7 @@
         </div>
         <p class="bt-hint">${phone() ? 'Tap a lit room to move' : '←→ pick a room · Enter move · S scan · I items'}</p>
       </aside>
-      <div class="bt-map-nav"><div class="pic"><img src="${pimg('fuuka', line[1])}" alt=""></div><p><b>Fuuka</b><span class="tx">${esc(line[0])}</span></p></div>`;
+      <div class="bt-map-nav"><div class="pic fcb">${fimg('fuuka', line[1])}</div><p><b>Fuuka</b><span class="tx">${esc(line[0])}</span></p></div>`;
   }
 
   /* A full-screen room panel (chest, access point, clock, stairs, events). Resolves with the chosen button's value. */
@@ -1154,7 +1171,7 @@
     return new Promise(res => {
       const el = show(`<div class="bt-room-bg" style="background-image:url('${bg}')"></div><div class="bt-room-shade"></div>
         <div class="bt-room-in">${kicker ? `<p class="bt-kicker">${esc(kicker)}</p>` : ''}<h1>${title}</h1><div class="bt-room-body">${body}</div>
-        ${fuuka ? `<div class="bt-nav bt-room-nav"><div class="pic"><img src="${pimg('fuuka', fuuka[1] || 'neutral')}" alt=""></div><p><b>Fuuka</b>${esc(fuuka[0])}</p></div>` : ''}
+        ${fuuka ? `<div class="bt-nav bt-room-nav"><div class="pic fcb">${fimg('fuuka', fuuka[1] || 'neutral')}</div><p><b>Fuuka</b>${esc(fuuka[0])}</p></div>` : ''}
         <div class="row">${buttons.map(b => `<button type="button" class="bt-btn${b.pink ? ' pink' : ''}" data-v="${esc(b.v)}"${b.off ? ' disabled' : ''}><span>${esc(b.label)}</span>${b.small ? `<small>${esc(b.small)}</small>` : ''}</button>`).join('')}</div></div>`, `bt-room ${cls}`);
       el.querySelectorAll('[data-v]').forEach(b => b.addEventListener('click', () => { sfx('ok'); res(b.dataset.v); }));
       buttonNav(el, { back: () => { sfx('back'); res(buttons[buttons.length - 1].v); } });
@@ -1257,7 +1274,7 @@
       const ids = Object.keys(save.items).filter(k => save.items[k] > 0 && D.items[k].use !== 'battle' && D.items[k].type !== 'key');
       const v = await roomPanel({ bg: D.floors[run.fi].bg, cls: 'items', kicker: 'Items', title: 'ITEMS', name: 'items',
         body: `<div class="bt-itemlist">${ids.length ? ids.map(k => `<button type="button" class="bt-btn bt-itemrow" data-v="item:${k}">${ICON.of(k)}<b>${esc(D.items[k].name)}</b><span>${esc(D.items[k].desc)}</span><em>×${save.items[k]}</em></button>`).join('') : '<p>Nothing you can use here.</p>'}</div>
-          <div class="bt-map-party small">${units.map(u => `<div class="bt-mp"><img src="${pimg(u.mid, member(u.mid).faces.idle)}" alt="" style="--fx:${member(u.mid).face[0]}%;--fy:${member(u.mid).face[1]}%"><div><b>${esc(u.name)}<small>${u.hp}/${u.maxHp} HP · ${u.sp}/${u.maxSp} SP</small></b><span class="bar hp"><i style="width:${u.hp / u.maxHp * 100}%"></i></span><span class="bar sp"><i style="width:${u.sp / u.maxSp * 100}%"></i></span></div></div>`).join('')}</div>`,
+          <div class="bt-map-party small">${units.map(u => `<div class="bt-mp"><i class="av fcb">${fimg(u.mid, member(u.mid).faces.idle)}</i><div><b>${esc(u.name)}<small>${u.hp}/${u.maxHp} HP · ${u.sp}/${u.maxSp} SP</small></b><span class="bar hp"><i style="width:${u.hp / u.maxHp * 100}%"></i></span><span class="bar sp"><i style="width:${u.sp / u.maxSp * 100}%"></i></span></div></div>`).join('')}</div>`,
         buttons: [{ v: 'back', label: 'Back to the map', pink: true }] });
       if (!v || v === 'back' || !v.startsWith('item:')) return null;
       const id = v.slice(5), it = D.items[id];
@@ -1304,6 +1321,7 @@
      BATTLE
      ════════════════════════════════════════════════════ */
   let B = null, BT = null, navSaid = new Set(), navTimer = null, summoned = new Set();
+  const freshAff = new Set(), discovered = new Set(); // affinities just learned (their plate cell flips once); weaknesses announced this session
 
   /* spec: { group, bg, label, block, boss, reaper, music, nav, heat, op } */
   async function battle(spec) {
@@ -1357,7 +1375,7 @@
     persist();
     if (result === 'win') {
       nav(spec.reaper ? 'reaperWin' : spec.boss ? 'bossWin' : 'win');
-      B.party().filter(p => !p.dead).forEach(p => { const c = BT.cards.get(p.id); const img = c && c.querySelector('.face img'); if (img) img.src = pimg(p.mid, member(p.mid).faces.win); });
+      B.party().filter(p => !p.dead).forEach(p => { const c = BT.cards.get(p.id); if (c) setFace(c.querySelector('.face img'), p.mid, member(p.mid).faces.win); });
       await sleep(1300);
     } else if (result === 'lose') { nav('solarDown'); sfx('ko'); await sleep(1500); }
     else await sleep(700);
@@ -1390,6 +1408,8 @@
     if (FX) { FX.attach(el, { speed }); FX.preload(floor.bg); }
     // Decode every still this battle might show now, so cut-ins never hitch on first show.
     stills([SUMMON_DIR + 'solar-evoker.webp'].concat(B.party().map(p => FINISH_DIR + p.mid + '.webp'), B.party().map(p => D.personas[p.personaId].art), theurgyStills()), 0);
+    // Every mood a card or the results can switch to, so a face never pops in blank.
+    stills(B.party().flatMap(p => Object.values(member(p.mid).faces).map(f => pimg(p.mid, f))), 0);
     if (!save.awakened) { stills(AWAKEN.map(f => SUMMON_DIR + f + '.webp'), 0); prepClip('awakening'); }
     B.foes().forEach(u => addEnemy(u));
     B.party().forEach(u => {
@@ -1398,10 +1418,11 @@
       c.type = 'button';
       c.className = 'bt-card';
       c.dataset.id = u.id;
-      c.innerHTML = `<span class="face"><img src="${pimg(u.mid, m.faces.idle)}" alt="" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"></span>
-        <span class="nm">${esc(u.name)} <small>${esc(u.persona)}</small></span>
+      c.style.setProperty('--mc', m.color);
+      c.innerHTML = `<span class="face fcb">${fimg(u.mid, m.faces.idle)}</span>
+        <span class="nm"><span>${esc(u.name)}</span><small${u.persona.length > 9 ? ' class="long"' : ''}>${esc(u.persona)}</small></span>
         <span class="bt-bar hp"><span>HP</span><span class="track"><i class="g"></i><i class="f"></i></span><b></b></span>
-        <span class="bt-bar sp"><span>SP</span><span class="track"><i class="g"></i><i class="f"></i></span><b></b></span><span class="bt-th" title="Theurgy"><i></i></span><span class="st"></span><span class="pulse" aria-hidden="true"></span>`;
+        <span class="bt-bar sp"><span>SP</span><span class="track"><i class="g"></i><i class="f"></i></span><b></b></span><span class="bt-th" title="Theurgy"><i></i></span><span class="st"></span><span class="pulse" aria-hidden="true"></span><span class="aura" aria-hidden="true"><b></b><i></i><i></i><i></i><i></i><i></i></span><span class="thtag" aria-hidden="true">Theurgy ready</span>`;
       c.addEventListener('mousedown', e => e.preventDefault());
       c.addEventListener('click', () => { if (ctl && ctl.pickValue) ctl.pickValue(u.id); });
       c.addEventListener('pointerenter', () => { if (ctl && ctl.hoverValue) ctl.hoverValue(u.id); });
@@ -1522,8 +1543,7 @@
     const ids = [cur && cur.id].concat(B.upcoming(7)).filter(Boolean);
     BT.order.innerHTML = ids.map((id, i) => {
       const u = B.U(id); if (!u) return '';
-      const st = u.side === 'party' ? ` style="background-image:url('${pimg(u.mid, member(u.mid).faces.idle)}')"` : '';
-      return `<li class="${u.side === 'enemy' ? 'enemy' : 'party'}${i === 0 ? ' now' : ''}${u.down ? ' down' : ''}" title="${esc(u.name)}"${st}></li>`;
+      return `<li class="${u.side === 'enemy' ? 'enemy' : 'party fcb'}${i === 0 ? ' now' : ''}${u.down ? ' down' : ''}${u.side === 'party' && (u.th || 0) >= 100 && !u.dead ? ' th' : ''}" title="${esc(u.name)}">${u.side === 'party' ? fimg(u.mid, member(u.mid).faces.idle) : ''}</li>`;
     }).join('');
   }
   function setActive(u) {
@@ -1541,7 +1561,7 @@
     if (once && navSaid.has(key)) return;
     navSaid.add(key);
     const text = String(pickOne(line[0])).replace(/\{(\w+)\}/g, (_, k) => (vars[k] != null ? vars[k] : ''));
-    BT.nav.innerHTML = `<div class="pic"><img src="${pimg('fuuka', line[1] || 'neutral')}" alt=""></div><p><b>Fuuka</b><span></span></p>`;
+    BT.nav.innerHTML = `<div class="pic fcb">${fimg('fuuka', line[1] || 'neutral')}</div><p><b>Fuuka</b><span></span></p>`;
     const typed = typeInto(BT.nav.querySelector('p span'), text);
     BT.nav.hidden = false;
     BT.nav.classList.remove('out');
@@ -1682,7 +1702,7 @@
     const useS = sclip && await sclip.ready(250);
     const shot = solar
       ? `<div class="bt-evk-shot">${useS ? '' : `<img src="${SUMMON_DIR}solar-evoker.webp" alt="">`}</div>`
-      : `<div class="bt-evk-band" style="--c:${m.color}"><img class="face" src="${pimg(u.mid, m.faces.idle)}" alt="" style="--fx:${m.face[0]}%"><img class="gun" src="${EVOKER_SVG}" alt=""></div>`;
+      : `<div class="bt-evk-band" style="--c:${m.color}">${fimg(u.mid, m.faces.idle, '', 'face')}<img class="gun" src="${EVOKER_SVG}" alt=""></div>`;
     wrap.innerHTML = `<div class="bt-evk-light"></div><img class="per" src="${per.art}" alt=""><b class="bt-evk-name"><span class="pn">${esc(per.name.toUpperCase())}</span><small>${esc(skillName)}</small></b>${shot}`;
     if (useS) { const v = sclip.v; v.className = 'bt-evk-video'; try { v.currentTime = 0; } catch (err) {} wrap.querySelector('.bt-evk-shot').appendChild(v); v.play().catch(() => {}); mark('evoke-clip'); }
     BT.cut.appendChild(wrap);
@@ -1855,7 +1875,7 @@
     w.style.setProperty('--spd', speed());
     const name = `<b class="th-name"><small>Theurgy${per.form ? ' · ' + esc(per.name) : ''}</small>${esc(e.name.toUpperCase())}</b><p class="th-line">“${esc(m.lines.theurgy || m.lines.finish)}”</p>`;
     if (img || useClip) w.innerHTML = `<div class="th-still">${useClip ? '' : `<img src="${img}" alt="">`}</div><div class="th-burst"></div><div class="th-rays"></div><div class="th-sweep"></div>${name}`;
-    else w.innerHTML = `<div class="th-bg"></div><div class="th-lines"></div><img class="th-per" src="${per.art}" alt=""><div class="th-band"><img class="th-face" src="${pimg(u.mid, m.faces.idle)}" alt="" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"></div>${name}`;
+    else w.innerHTML = `<div class="th-bg"></div><div class="th-lines"></div><img class="th-per" src="${per.art}" alt=""><div class="th-band fcb">${fimg(u.mid, m.faces.idle, '', 'th-face')}</div>${name}`;
     if (useClip) { const v = clip.v; v.className = 'th-video'; try { v.currentTime = 0; } catch (err) {} w.querySelector('.th-still').appendChild(v); v.play().catch(() => {}); }
     BT.cut.appendChild(w);
     BT.root.classList.add('evoking');
@@ -1904,7 +1924,7 @@
   async function bigWord(text, { sub = '', gold = false, band = null, ms = 900 } = {}) {
     const w = document.createElement('div');
     w.className = 'bt-onemore';
-    w.innerHTML = `${band ? `<div class="bt-band"><img src="${band}" alt=""></div>` : ''}<div class="bt-big${gold ? ' gold' : ''}">${text}${sub ? `<small>${esc(sub)}</small>` : ''}</div>`;
+    w.innerHTML = `${band ? `<div class="bt-band fcb">${fimg(band[0], band[1])}</div>` : ''}<div class="bt-big${gold ? ' gold' : ''}">${text}${sub ? `<small>${esc(sub)}</small>` : ''}</div>`;
     w.querySelectorAll('.bt-band, .bt-band img, .bt-big').forEach(x => { x.style.animationDuration = `${ms / speed()}ms`; });
     BT.cut.appendChild(w);
     await sleep(ms * 0.85);
@@ -1969,6 +1989,12 @@
           break;
         }
         const el = onEnemy ? BT.enemies.get(e.tgt) : BT.cards.get(e.tgt);
+        if (el && onEnemy && e.aff === 'weak' && e.amount > 0) {
+          // Weakness: a yellow ring bursts off the Shadow and the moment holds for a beat (hit-stop).
+          el.insertAdjacentHTML('beforeend', '<i class="bt-wburst" aria-hidden="true"></i>');
+          const wb = el.lastElementChild; setTimeout(() => wb.remove(), 700);
+          el.classList.add('hitstop'); await sleep(85); el.classList.remove('hitstop');
+        }
         if (el && e.amount > 0 && e.aff !== 'drain') { el.classList.remove('hit'); void el.offsetWidth; el.classList.add('hit'); setTimeout(() => el.classList.remove('hit'), 420); }
         const label = e.crit ? 'CRITICAL!' : (AFF_WORD[e.aff] || '');
         const lcls = e.crit ? 'crit' : e.aff;
@@ -1985,10 +2011,10 @@
           if (e.crit) nav('crit'); else if (e.aff === 'weak') { nav('weak'); mark('weak'); }
           else if (['null', 'drain', 'resist'].includes(e.aff)) nav(e.aff, {}, { once: true });
         }
-        if (!onEnemy && e.aff === 'weak') { nav('hurt', { name: t.name }); const img = BT.cards.get(t.id).querySelector('.face img'); img.src = pimg(t.mid, member(t.mid).faces.hurt); setTimeout(() => { if (!t.dead) img.src = pimg(t.mid, member(t.mid).faces.idle); }, 1600); }
+        if (!onEnemy && e.aff === 'weak') { nav('hurt', { name: t.name }); const img = BT.cards.get(t.id).querySelector('.face img'); setFace(img, t.mid, member(t.mid).faces.hurt); setTimeout(() => { if (!t.dead) setFace(img, t.mid, member(t.mid).faces.idle); }, 1600); }
         if (e.killed) {
           if (onEnemy) { deathFx(e.tgt); mark('kill'); }
-          else { sfx('ko'); const img = BT.cards.get(t.id).querySelector('.face img'); img.src = pimg(t.mid, member(t.mid).faces.ko); if (t !== B.leader()) nav('ko', { name: t.name }); log(`${t.name} was knocked out!`); }
+          else { sfx('ko'); setFace(BT.cards.get(t.id).querySelector('.face img'), t.mid, member(t.mid).faces.ko); if (t !== B.leader()) nav('ko', { name: t.name }); log(`${t.name} was knocked out!`); }
         }
         await sleep(next && next.t === 'hit' && !e.crit ? 240 : (e.aff === 'weak' || e.crit ? 700 : 460));
         break;
@@ -1997,7 +2023,14 @@
         blogAdd(`${U(e.tgt).name}: ${e.hidden ? 'can’t be seen' : e.immune ? 'immune' : e.ail && e.has ? 'no effect' : 'miss'}`, 'miss');
         if (e.hidden) { popup(e.tgt, { label: 'CAN’T SEE IT', lcls: 'miss' }); nav('hidden', {}, { once: true }); sfx('miss'); mark('hidden-miss'); await sleep(420); break; }
         popup(e.tgt, { label: e.immune ? 'IMMUNE' : e.ail ? (e.has ? 'NO EFFECT' : 'MISS') : 'MISS', lcls: 'miss' }); sfx('miss'); if (e.insta) mark('insta-miss'); await sleep(420); break;
-      case 'thReady': { const t = U(e.tgt); paintCard(t); tip('theurgy'); blogAdd(`${t.name}’s Theurgy is ready.`, 'sys'); if (!navSaid.has('th-' + t.id)) { navSaid.add('th-' + t.id); nav('theurgyReady', { name: t.name }); sfx('onemore'); } mark('th-ready'); break; }
+      case 'thReady': {
+        // The gauge just filled: a gold sweep and a chime on the card (once), Fuuka's line the first time in a battle.
+        const t = U(e.tgt), c = BT.cards.get(t.id);
+        paintCard(t); tip('theurgy'); blogAdd(`${t.name}’s Theurgy is ready.`, 'sys'); sfx('thready');
+        if (c) { c.classList.remove('th-flash'); void c.offsetWidth; c.classList.add('th-flash'); setTimeout(() => c.classList.remove('th-flash'), 1300); }
+        if (!navSaid.has('th-first')) { navSaid.add('th-first'); nav('theurgyReady', { name: t.name }); }
+        mark('th-ready'); break;
+      }
       case 'theurgy': await theurgyCut(e); break;
       case 'orgia': popup(e.tgt, { label: 'ORGIA MODE', lcls: 'buff' }); paintCard(U(e.tgt)); await sleep(300); break;
       case 'orgiaEnd': popup(e.tgt, { label: 'ORGIA OFF', lcls: 'debuff' }); paintCard(U(e.tgt)); break;
@@ -2028,7 +2061,7 @@
         else nav((t.side === 'party' ? 'ally_' : 'foe_') + e.id, { name: t.name });
         log(`${t.name} ${e.id === 'bind' ? 'is bound by the golden rope' : 'is afflicted with ' + d.name}!`);
         mark('ail'); mark('ail-' + e.id); mark((t.side === 'party' ? 'ally-ail-' : 'foe-ail-') + e.id);
-        if (t.side === 'party') { const img = BT.cards.get(t.id).querySelector('.face img'); img.src = pimg(t.mid, member(t.mid).faces.hurt); setTimeout(() => { if (!t.dead) img.src = pimg(t.mid, member(t.mid).faces.idle); }, 1400); }
+        if (t.side === 'party') { const img = BT.cards.get(t.id).querySelector('.face img'); setFace(img, t.mid, member(t.mid).faces.hurt); setTimeout(() => { if (!t.dead) setFace(img, t.mid, member(t.mid).faces.idle); }, 1400); }
         await sleep(560);
         break;
       }
@@ -2070,7 +2103,7 @@
         await sleep(next && next.t === 'heal' ? 160 : 420);
         break;
       }
-      case 'revive': { const t = U(e.tgt); blogAdd(`${t.name} is back up!`, 'heal'); const c = BT.cards.get(t.id); fxPlay('revive', e.tgt); c.classList.remove('dead'); c.querySelector('.face img').src = pimg(t.mid, member(t.mid).faces.idle); popup(e.tgt, { label: 'REVIVED', lcls: 'buff' }); mark('revive'); await sleep(300); break; }
+      case 'revive': { const t = U(e.tgt); blogAdd(`${t.name} is back up!`, 'heal'); const c = BT.cards.get(t.id); fxPlay('revive', e.tgt); c.classList.remove('dead'); setFace(c.querySelector('.face img'), t.mid, member(t.mid).faces.idle); popup(e.tgt, { label: 'REVIVED', lcls: 'buff' }); mark('revive'); await sleep(300); break; }
       case 'buff': {
         const t = U(e.tgt);
         blogAdd(`${t.name}: ${STAT_SHORT[e.stat]} ${e.dir > 0 ? 'up' : 'down'}`, e.dir > 0 ? 'buff' : 'debuff');
@@ -2082,11 +2115,22 @@
         break;
       }
       case 'buffEnd': break;
-      case 'reveal': break;
+      case 'reveal': {
+        // A weakness found by hitting it: a small banner now, and the cell flips over the next time its plate shows.
+        freshAff.add(e.kind + ':' + e.el);
+        if (e.aff === 'weak' && !discovered.has(e.kind + ':' + e.el)) {
+          discovered.add(e.kind + ':' + e.el);
+          const d = document.createElement('div');
+          d.className = 'bt-disc';
+          d.innerHTML = `<span>${ART.icon(e.el)}<b>Weakness discovered!</b><small>${esc(D.enemies[e.kind] ? D.enemies[e.kind].name : '')} · ${esc(D.elements[e.el].name)}</small></span>`;
+          BT.cut.appendChild(d); setTimeout(() => d.remove(), 1700 / Math.min(speed(), 2)); mark('weak-found');
+        }
+        break;
+      }
       case 'onemore': {
         const u = U(e.src);
         sfx('onemore');
-        if (u.side === 'party') { tip('onemore'); await bigWord('1 MORE!', { band: pimg(u.mid, member(u.mid).faces.idle), ms: 950 }); log(`${u.name}: “${member(u.mid).lines.onemore}”`, 'say'); blogAdd(`${u.name} gets One More!`, 'pf'); mark('onemore'); }
+        if (u.side === 'party') { tip('onemore'); await bigWord('1 MORE!', { band: [u.mid, member(u.mid).faces.idle], ms: 950 }); log(`${u.name}: “${member(u.mid).lines.onemore}”`, 'say'); blogAdd(`${u.name} gets One More!`, 'pf'); mark('onemore'); }
         else { blogAdd(`${u.name} gets One More.`, 'ef'); banner('1 More', { enemy: true, sub: u.name }); await sleep(500); }
         break;
       }
@@ -2095,7 +2139,7 @@
       case 'shift': {
         const a = U(e.src), b = U(e.tgt);
         sfx('summon');
-        await bigWord('SHIFT', { sub: `${a.name} → ${b.name} · ×${e.boost} power`, gold: true, band: pimg(b.mid, member(b.mid).faces.idle), ms: 900 });
+        await bigWord('SHIFT', { sub: `${a.name} → ${b.name} · ×${e.boost} power`, gold: true, band: [b.mid, member(b.mid).faces.idle], ms: 900 });
         if (e.sp) popup(e.tgt, { n: `+${e.sp} SP`, cls: 'sp' });
         log(`${a.name}: “${member(a.mid).lines.shift}”`, 'say'); blogAdd(`Shift: ${a.name} → ${b.name}`, 'pf');
         nav('shift');
@@ -2188,8 +2232,27 @@
   /* ── Menus ────────────────────────────────────────── */
   function hideMenu() { if (!BT) return; BT.cmd.hidden = true; BT.root.classList.remove('menu-open'); clearTargets(); }
   function clearTargets() {
-    BT.enemies.forEach(el => { el.classList.remove('targeted', 'targetable'); const p = el.querySelector('.bt-plate'); if (p) p.remove(); });
+    BT.enemies.forEach(el => { el.classList.remove('targeted', 'targetable', 'focus'); const p = el.querySelector('.bt-plate'); if (p) p.remove(); });
     BT.cards.forEach(c => c.classList.remove('targeted', 'targetable'));
+    markField(null);
+  }
+  /* Affinity markers on the field for the highlighted skill's element (P3R-style): a bouncing WEAK tag and a ground ring on a
+     known weakness, a colored tag and a dimmed Shadow on a bad target, "?" where it's unknown. Only what the party has learned. */
+  const AMK_CLS = ['amk-weak', 'amk-bad', 'amk-unk'];
+  function markField(el) {
+    if (!BT) return;
+    const mult = Math.round(1.5 * ((B && B.S.mods && B.S.mods.weakMult) || 1) * 100) / 100;
+    BT.enemies.forEach((en, id) => {
+      en.classList.remove(...AMK_CLS);
+      en.querySelectorAll('.bt-amk, .bt-amk-ring').forEach(x => x.remove());
+      const f = el && B && B.U(id);
+      if (!f || !markable(f)) return;
+      const tg = affTag(f, el);
+      if (!tg) return;
+      const k = tg[1], cls = k === 'weak' ? 'amk-weak' : k === 'unk' ? 'amk-unk' : 'amk-bad';
+      en.classList.add(cls);
+      en.insertAdjacentHTML('beforeend', `<div class="bt-amk k-${k}" aria-hidden="true"><b>${tg[0]}${k === 'weak' ? `<small> ×${mult}</small>` : ''}</b></div>${k === 'weak' ? '<i class="bt-amk-ring" aria-hidden="true"></i>' : ''}`);
+    });
   }
   function showWho(u, extra = '') {
     const m = member(u.mid);
@@ -2211,12 +2274,13 @@
         <p class="bt-desc"></p>${back ? '<button type="button" class="bt-back" data-back>‹ Back</button>' : ''}<p class="bt-hint">↑↓ choose · Enter confirm${back ? ' · Esc back' : ''}</p>`;
       const ul = BT.body.querySelector('.bt-menu'), btns = [...ul.querySelectorAll('.bt-mi')], desc = BT.body.querySelector('.bt-desc');
       let i = Math.max(0, Math.min(start, items.length - 1));
-      const paint = () => {
+      // scroll: keep the pick in view (keys, pad). A mouse hover never scrolls, so nothing moves under the pointer.
+      const paint = (scroll = true) => {
         listIdx = i;
         btns.forEach((b, j) => b.classList.toggle('sel', j === i));
         desc.innerHTML = items[i].desc || '';
         const b = btns[i], li = b.parentElement;
-        if (ul.scrollHeight > ul.clientHeight) { if (li.offsetTop < ul.scrollTop) ul.scrollTop = li.offsetTop - 4; else if (li.offsetTop + li.offsetHeight > ul.scrollTop + ul.clientHeight) ul.scrollTop = li.offsetTop + li.offsetHeight - ul.clientHeight + 8; }
+        if (scroll && ul.scrollHeight > ul.clientHeight) { if (li.offsetTop < ul.scrollTop) ul.scrollTop = li.offsetTop - 4; else if (li.offsetTop + li.offsetHeight > ul.scrollTop + ul.clientHeight) ul.scrollTop = li.offsetTop + li.offsetHeight - ul.clientHeight + 8; }
         if (onSel) onSel(items[i]);
       };
       const done = v => { if (ctl === me) ctl = null; if (menuAbort === abort) menuAbort = null; resolve(v); };
@@ -2229,13 +2293,13 @@
         back: back ? () => { sfx('back'); done(null); } : null,
         key: onKey ? e => { const v = onKey(e, items[i]); if (v === undefined) return false; done(v); return true; } : null,
         pickValue(v) { const j = items.findIndex(it => it.v === v); if (j < 0) { const r = onOther && onOther(v); if (r !== undefined) done(r); return; } i = j; paint(); this.pick(); },
-        hoverValue(v) { const j = items.findIndex(it => it.v === v); if (j < 0 || j === i) return; i = j; paint(); }
+        hoverValue(v) { const j = items.findIndex(it => it.v === v); if (j < 0 || j === i) return; i = j; paint(false); }
       };
       menuAbort = abort;
       btns.forEach((b, j) => {
         b.addEventListener('mousedown', ev => ev.preventDefault());
-        b.addEventListener('pointerenter', () => { if (i !== j && ctl === me) { i = j; paint(); } });
-        b.addEventListener('click', () => { if (ctl === me) { i = j; paint(); ctl.pick(); } });
+        b.addEventListener('pointerenter', () => { if (i !== j && ctl === me) { i = j; paint(false); } });
+        b.addEventListener('click', () => { if (ctl === me) { i = j; paint(false); ctl.pick(); } });
       });
       const bb = BT.body.querySelector('[data-back]');
       if (bb) { bb.addEventListener('mousedown', ev => ev.preventDefault()); bb.addEventListener('click', () => { if (ctl === me && ctl.back) ctl.back(); }); }
@@ -2268,14 +2332,15 @@
   function showFocus(f, el) {
     clearTargets();
     if (!f || !el) return;
+    markField(el);
     const en = BT.enemies.get(f.id);
     if (en) { en.classList.add('targeted', 'focus'); en.insertAdjacentHTML('beforeend', plate(f, el)); }
   }
   function plate(u, el) {
     const k = B.known(u.kind);
     const affs = D.affinityOrder.map(x => {
-      const a = k[x] ? (u.aff[x] || 'normal') : null;
-      return `<span class="bt-aff ${a ? (a === 'normal' ? '' : a) : 'unk'}${x === el ? ' cur' : ''}" title="${D.elements[x].name}">${ART.icon(x)}<em>${a ? AFF_SHORT[a] : '?'}</em></span>`;
+      const a = k[x] ? (u.aff[x] || 'normal') : null, fresh = a && freshAff.delete(u.kind + ':' + x);
+      return `<span class="bt-aff ${a ? (a === 'normal' ? '' : a) : 'unk'}${x === el ? ' cur' : ''}${fresh ? ' flip' : ''}" title="${D.elements[x].name}">${ART.icon(x)}<em>${a ? AFF_SHORT[a] : '?'}</em></span>`;
     }).join('');
     return `<div class="bt-plate"><b>${esc(u.name)}<small>Lv ${u.lvl}</small></b><div class="bt-affs">${affs}</div></div>`;
   }
@@ -2313,6 +2378,7 @@
     const start = memo && ST().remember ? Math.max(0, items.findIndex(x => x.v === lastTgt[memo])) : 0;
     const highlight = it => {
       clearTargets();
+      if (['one', 'all', 'rand'].includes(t) && ['dmg', 'insta'].includes(spec.type)) markField(spec.el);
       const set = it.v === 'all' ? (t === 'all' || t === 'rand' ? aliveFoes.map(f => f.id) : party.filter(p => !p.dead).map(p => p.id)) : [it.v];
       items.forEach(x => { const el = BT.enemies.get(x.v) || BT.cards.get(x.v); if (el) el.classList.add('targetable'); });
       set.forEach(id => {
@@ -2489,7 +2555,7 @@
       }
       const p = document.createElement('div');
       p.className = 'bt-panel';
-      p.innerHTML = `<div class="bt-card-lg">${html}<div style="margin-top:14px"><button type="button" class="bt-btn pink"><span>Close</span></button></div></div>`;
+      p.innerHTML = `<div class="bt-card-lg">${html}<div class="bt-actbar"><button type="button" class="bt-btn pink"><span>Close</span></button></div></div>`;
       BT.root.appendChild(p);
       const close = () => { p.remove(); res(evs); };
       p.querySelector('button').addEventListener('click', () => { sfx('back'); close(); });
@@ -2503,7 +2569,7 @@
       const parts = B.party().filter(p => !p.dead);
       const p = document.createElement('div');
       p.className = 'bt-prompt';
-      p.innerHTML = `<div class="bt-prompt-inner"><div class="bt-faces">${parts.map(x => `<div><img src="${pimg(x.mid, member(x.mid).faces.idle)}" alt="" style="--fx:${member(x.mid).face[0]}%"></div>`).join('')}</div>
+      p.innerHTML = `<div class="bt-prompt-inner"><div class="bt-faces">${parts.map(x => `<div class="fcb">${fimg(x.mid, member(x.mid).faces.idle)}</div>`).join('')}</div>
         <h2><small>They’re all down</small>ALL-OUT ATTACK?</h2>
         <div class="row"><button type="button" class="bt-btn pink on" data-v="1"><span>Go!</span></button><button type="button" class="bt-btn" data-v="0"><span>Not yet</span></button></div></div>`;
       BT.root.appendChild(p);
@@ -2636,10 +2702,10 @@
         const gains = r.ups ? ['hp', 'sp', 'st', 'ma', 'en', 'ag', 'lu'].filter(k => a[k] > b[k]).map(k => `<span>${k.toUpperCase()} <b>+${a[k] - b[k]}</b></span>`).join('') : '';
         const learned = r.ups ? E.skillsFor(m.id, save, r.lvl).filter(x => !E.skillsFor(m.id, save, r.before.lvl).includes(x)) : [];
         const tired = run && run.tired && run.tired[m.id];
-        return `<div class="bt-res-row${tired ? ' tired' : ''}" style="animation-delay:${0.15 + i * 0.08}s"><div class="pic"><img src="${pimg(m.id, tired ? m.faces.ko : m.faces.win)}" alt="" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"></div>
+        return `<div class="bt-res-row${tired ? ' tired' : ''}" style="animation-delay:${0.15 + i * 0.08}s"><div class="pic fcb">${fimg(m.id, tired ? m.faces.ko : m.faces.win)}</div>
           <div><b>${esc(m.name)}<small>Lv ${r.lvl}</small></b>${r.ups ? '<span class="bt-lvup">LEVEL UP!</span>' : ''}${(o.nowTired || []).includes(m.id) ? '<span class="bt-tiredtag">TIRED</span>' : ''}
           <div class="bt-expbar"><i style="width:${pct}%"></i></div>${gains ? `<div class="bt-gains">${gains}</div>` : ''}${learned.length ? `<div class="bt-gains learn">Learned ${learned.map(x => `<b>${esc(D.skills[x].name)}</b>`).join(', ')}</div>` : ''}</div></div>`;
-      }).join('') + (g.rows.some(r => !r.inP) ? `<div class="bt-bench"><small>Bench · +${g.rows.find(r => !r.inP).got} EXP</small>${g.rows.filter(r => !r.inP).map(r => `<span${r.ups ? ' class="up"' : ''}><img src="${pimg(r.m.id, r.m.faces.idle)}" alt="" style="--fx:${r.m.face[0]}%;--fy:${r.m.face[1]}%">${esc(r.m.name)} <b>Lv ${r.lvl}${r.ups ? ' ↑' : ''}</b></span>`).join('')}</div>` : '');
+      }).join('') + (g.rows.some(r => !r.inP) ? `<div class="bt-bench"><small>Bench · +${g.rows.find(r => !r.inP).got} EXP</small>${g.rows.filter(r => !r.inP).map(r => `<span${r.ups ? ' class="up"' : ''}><i class="av fcb">${fimg(r.m.id, r.m.faces.idle)}</i>${esc(r.m.name)} <b>Lv ${r.lvl}${r.ups ? ' ↑' : ''}</b></span>`).join('')}</div>` : '');
       const extra = [];
       if (o.rew.yen) extra.push(`<span class="yen">${ICON.svg('yen')}+${yen(o.rew.yen)}</span>`);
       Object.entries(o.rew.drops || {}).forEach(([k, n]) => extra.push(`<span class="drop">${ICON.of(k)}${esc(D.materials[k].name)}${n > 1 ? ` ×${n}` : ''}</span>`));
@@ -2981,7 +3047,7 @@
             const k = g.slot === 'weapon' ? 'atk' : g.slot === 'armor' ? 'def' : null;
             const d = k && now ? g[k] - now[k] : null;
             const inP = m.id === 'solar' || save.party.includes(m.id);
-            return `<span class="${inP ? 'in' : ''}"><img src="${pimg(m.id, m.faces.idle)}" alt="" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"><b>${esc(m.name)}</b>${d != null ? `<em class="${d > 0 ? 'up' : d < 0 ? 'dn' : ''}">${d > 0 ? '+' : ''}${d} ${k.toUpperCase()}</em>` : `<em>${nowId ? esc(D.gear[nowId].name) : 'empty'}</em>`}</span>`;
+            return `<span class="${inP ? 'in' : ''}"><i class="av fcb">${fimg(m.id, m.faces.idle)}</i><b>${esc(m.name)}</b>${d != null ? `<em class="${d > 0 ? 'up' : d < 0 ? 'dn' : ''}">${d > 0 ? '+' : ''}${d} ${k.toUpperCase()}</em>` : `<em>${nowId ? esc(D.gear[nowId].name) : 'empty'}</em>`}</span>`;
           }).join('')}</div>`;
         }
         const desc = D.items[cur] ? D.items[cur].desc : D.materials[cur] ? D.materials[cur].desc : gearLine(cur);
@@ -2997,7 +3063,7 @@
           </div>
           <div class="bt-shop-main">
             <div class="bt-shop-tabs">${shop.buys ? `<button type="button" class="bt-tool${tab === 'buy' ? ' on' : ''}" data-tab="buy"><span>Buy</span></button><button type="button" class="bt-tool${tab === 'sell' ? ' on' : ''}" data-tab="sell"><span>Sell</span></button>` : ''}
-              ${shop.sells.includes('weapon') && tab === 'buy' ? `<div class="bt-shop-who">${members.map((m, j) => `<button type="button" class="${j === who ? 'on' : ''}${m.id === 'solar' || save.party.includes(m.id) ? ' in' : ''}" data-who="${j}" title="${esc(m.name)}"><img src="${pimg(m.id, m.faces.idle)}" alt="${esc(m.name)}" style="--fx:${m.face[0]}%;--fy:${m.face[1]}%"></button>`).join('')}</div>` : ''}</div>
+              ${shop.sells.includes('weapon') && tab === 'buy' ? `<div class="bt-shop-who">${members.map((m, j) => `<button type="button" class="${j === who ? 'on' : ''}${m.id === 'solar' || save.party.includes(m.id) ? ' in' : ''}" data-who="${j}" title="${esc(m.name)}"><i class="av fcb">${fimg(m.id, m.faces.idle, m.name)}</i></button>`).join('')}</div>` : ''}</div>
             <ul class="bt-shop-list">${list.map((x, j) => `<li><button type="button" class="bt-shop-row${j === i ? ' sel' : ''}" data-j="${j}">${ICON.of(x)}<b>${esc(nameOf(x))}<small>${esc(D.gear[x] ? gearLine(x) : '')}</small></b><em>${tab === 'buy' ? yen(priceOf(x)) : yen(sellPrice(x))}</em><span class="own">${tab === 'buy' ? `Have ${owned(x)}` : `×${D.gear[x] ? spare(x) : owned(x)}`}</span></button></li>`).join('')}</ul>
             ${detail}
             <div class="bt-shop-btns"><button type="button" class="bt-btn pink" data-act="deal"${cur ? '' : ' disabled'}><span>${tab === 'buy' ? (cur ? `Buy · ${yen(priceOf(cur))}` : 'Buy') : (cur ? `Sell · ${yen(sellPrice(cur))}` : 'Sell')}</span></button>${tab === 'sell' && cur && D.materials[cur] && save.mats[cur] > 1 ? `<button type="button" class="bt-btn" data-act="dealall"><span>Sell all ×${save.mats[cur]}</span></button>` : ''}
@@ -3077,7 +3143,7 @@
       const affNow = Object.entries(prev.aff).filter(([, a]) => a !== 'normal');
       const el = show(`<div class="bt-tree-head"><button type="button" class="bt-tool" data-act="back"><span>‹ Back</span></button><h1>EQUIPMENT<small>${esc(m.name)}</small></h1><div class="bt-pts"><span><small>Money</small>${yen(save.yen)}</span></div></div>
         <div class="bt-equip" style="--c:${m.color}">
-          <ul class="bt-eq-mates">${mates.map((x, j) => `<li><button type="button" class="${j === mi ? 'on' : ''}${x.id === 'solar' || save.party.includes(x.id) ? ' in' : ''}" data-m="${j}"><img src="${pimg(x.id, x.faces.idle)}" alt="" style="--fx:${x.face[0]}%;--fy:${x.face[1]}%"><b>${esc(x.name)}<small>Lv ${lvOf(x.id)}</small></b></button></li>`).join('')}</ul>
+          <ul class="bt-eq-mates">${mates.map((x, j) => `<li><button type="button" class="${j === mi ? 'on' : ''}${x.id === 'solar' || save.party.includes(x.id) ? ' in' : ''}" data-m="${j}"><i class="av fcb">${fimg(x.id, x.faces.idle)}</i><b>${esc(x.name)}<small>Lv ${lvOf(x.id)}</small></b></button></li>`).join('')}</ul>
           <div class="bt-eq-who"><img class="port" src="${pimg(mid, m.faces.idle)}" alt=""><img class="per" src="${perOf(mid).art}" alt="">
             <div class="bt-eq-stats">${stat('maxHp', 'HP')}${stat('maxSp', 'SP')}${stat('st', 'St')}${stat('ma', 'Ma')}${stat('en', 'En')}${stat('ag', 'Ag')}${stat('lu', 'Lu')}${stat('atk', 'ATK')}${stat('def', 'DEF')}</div>
             <div class="bt-eq-aff">${affNow.map(([el, a]) => `<span class="bt-aff ${a}">${ART.icon(el)}<em>${AFF_SHORT[a]}</em></span>`).join('')}${prev.nullAil.length ? `<span class="imm">No ${prev.nullAil.map(a => D.ailments[a].name).join(', ')}</span>` : ''}</div></div>
@@ -3136,7 +3202,7 @@
       sfx('ok');
       const p = document.createElement('div');
       p.className = 'bt-panel bt-memview';
-      p.innerHTML = `<div class="bt-card-lg"><img src="${m.wide || m.img}" alt=""><h2><small>${esc(m.world)}</small>${esc(m.title)}</h2><p class="note">${esc(m.text)}</p><button type="button" class="bt-btn pink"><span>Close</span></button></div>`;
+      p.innerHTML = `<div class="bt-card-lg"><img src="${m.wide || m.img}" alt=""><h2><small>${esc(m.world)}</small>${esc(m.title)}</h2><p class="note">${esc(m.text)}</p><div class="bt-actbar"><button type="button" class="bt-btn pink"><span>Close</span></button></div></div>`;
       el.appendChild(p);
       const prev = ctl;
       const close = () => { p.remove(); ctl = prev; };

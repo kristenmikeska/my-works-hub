@@ -16,6 +16,25 @@ window.FEMC_BATTLE_DATA = (() => {
   const P = 'assets/femc/portraits/';
   const BG = 'assets/femc/bg/';
 
+  /* Face focus for every portrait the battle UI crops (measured on the art, all moods share one framing unless noted).
+     x: centre of the face, % of the image width. y: the eye line, % of the image height. s: eyes-to-chin, % of the image width
+     (the zoom: a crop scales the art so this distance fills a set share of the frame). ar: image height / width.
+     alt: a mood drawn with a different framing. battle.js turns these into CSS vars (--fx --fy --fs --ar) for .fc images. */
+  const faceFocus = {
+    solar: { x: 45.8, y: 41.4, s: 22.3, ar: 0.946 },
+    akihiko: { x: 29, y: 44.6, s: 25.4, ar: 1.018 },
+    yukari: { x: 39, y: 42.9, s: 25, ar: 1.132 },
+    junpei: { x: 62, y: 44, s: 24, ar: 1.094 },
+    mitsuru: { x: 49, y: 37.6, s: 24.5, ar: 1.007 },
+    aigis: { x: 39.7, y: 39.9, s: 23.5, ar: 1.023 },
+    ken: { x: 47, y: 42.1, s: 24.8, ar: 1.096 },
+    koromaru: { x: 34, y: 36, s: 27, ar: 1.064 },
+    shinjiro: { x: 65.6, y: 48.4, s: 26, ar: 1.047, alt: { sad: { x: 64, y: 33, s: 27 } } },
+    fuuka: { x: 35, y: 38, s: 33, ar: 1.593 },
+    kurosawa: { x: 34.5, y: 38.7, s: 27.7, ar: 1.007 },
+    elizabeth: { x: 72, y: 47.8, s: 25, ar: 1.218 }
+  };
+
   /* Elements in P3R order. `phys` ones cost HP and can crit. */
   const elements = {
     slash: { name: 'Slash', phys: true, color: '#e8e8f0' },
@@ -245,7 +264,7 @@ window.FEMC_BATTLE_DATA = (() => {
      Members without img get a stylized cut-in made from their portrait and Persona art. */
   const TH = 'assets/femc/battle/art/theurgy/';
 
-  /* Party at level 5. Growth is added per level above 5. face: [x%, y%] focus point for the HUD crop.
+  /* Party at level 5. Growth is added per level above 5. (Portrait crops: faceFocus above.)
      wtype: weapon type (gear.js below). learn: [level, skill, replaces?] for the base Persona.
      theurgy: the ultimate move (type: dmg | support | orgia). th: what fills this member's gauge faster (multipliers). sig: signature skills. */
   const party = [
@@ -254,55 +273,55 @@ window.FEMC_BATTLE_DATA = (() => {
       skills: ['agi', 'daybreak', 'golden_rope', 'dia'], learn: [[14, 'agilao', 'agi'], [20, 'diarama', 'dia'], [26, 'maragion']], sig: ['golden_rope', 'daybreak'],
       theurgy: { name: 'Rise and Shine', type: 'dmg', el: 'almighty', weakEl: 'light', look: 'sun', target: 'all', power: 175, down: 0.55, img: TH + 'solar-rise-and-shine.webp', video: 'theurgy_solar',
         desc: 'Haenim lifts her veil and the sun pours out. Massive Light/Almighty damage to all foes; it may knock them Down (a Light weakness always does).' },
-      face: [52, 26], role: 'Leader · Light · Golden Rope', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
+      role: 'Leader · Light · Golden Rope', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Let’s go, Haenim.', onemore: 'Again.', shift: 'Your turn!', allout: 'Now. Everyone!', finish: 'Rise and shine.', theurgy: 'Look at me. Rise and shine.' } },
     { id: 'akihiko', name: 'Akihiko', persona: 'polydeuces', weapon: 'strike', wtype: 'gloves', color: '#ff9a3d',
       base: { hp: 100, sp: 44, st: 11, ma: 7, en: 8, ag: 12, lu: 6 }, growth: { hp: 8, sp: 3, st: 1, ma: 0.6, en: 0.8, ag: 1, lu: 0.5 },
       skills: ['zio', 'sonic_punch'], learn: [[8, 'tarunda'], [12, 'zionga', 'zio'], [16, 'kill_rush'], [19, 'mazio'], [21, 'rakunda']], sig: ['sonic_punch', 'kill_rush', 'tarunda'], th: { ail: 1.5, buff: 1.4 },
       theurgy: { name: 'Lightning Cadenza', type: 'dmg', el: 'elec', look: 'elec', target: 'one', power: 58, multi: [5, 5], down: 0.35, ail: { id: 'shock', chance: 0.35 }, desc: 'A five-punch flurry wrapped in lightning. Heavy Elec damage to one foe; may Shock it.' },
-      face: [42, 26], role: 'Elec · Strike · Fast', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
+      role: 'Elec · Strike · Fast', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Let’s see what you’ve got.', onemore: 'Not done yet!', shift: 'Over to you!', finish: 'That’s how it’s done!', theurgy: 'Here’s my full power!' } },
     { id: 'yukari', name: 'Yukari', persona: 'io', weapon: 'pierce', wtype: 'bow', color: '#ff8cc0',
       base: { hp: 84, sp: 70, st: 6, ma: 11, en: 6, ag: 10, lu: 9 }, growth: { hp: 6, sp: 6, st: 0.5, ma: 1, en: 0.6, ag: 0.9, lu: 0.8 },
       skills: ['garu', 'dia', 'media'], learn: [[8, 'patra'], [12, 'garula', 'garu'], [15, 'dekunda'], [18, 'magaru'], [20, 'recarm']], sig: ['media', 'dia'], th: { heal: 1.6 },
       theurgy: { name: 'Cadenza', type: 'support', heal: 1, cure: true, buffs: ['agi', 'def'], look: 'heal', desc: 'Isis’s song. Fully heals the party, cures ailments, and raises agility and defense.' },
-      face: [48, 34], role: 'Wind · Healer', faces: { idle: 'serious', win: 'neutral', hurt: 'surprised', ko: 'sad' },
+      role: 'Wind · Healer', faces: { idle: 'serious', win: 'neutral', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'I’ve got your back.', onemore: 'One more!', shift: 'Take it!', finish: 'Hmph. Serves you right!', theurgy: 'Everyone, hold on!' } },
     { id: 'junpei', name: 'Junpei', persona: 'hermes', weapon: 'slash', wtype: 'greatsword', color: '#7fb6ff',
       base: { hp: 110, sp: 40, st: 12, ma: 7, en: 9, ag: 7, lu: 7 }, growth: { hp: 9, sp: 3, st: 1, ma: 0.5, en: 0.9, ag: 0.6, lu: 0.6 },
       skills: ['agi', 'cleave'], learn: [[9, 'rakukaja'], [12, 'agilao', 'agi'], [15, 'power_slash', 'cleave'], [19, 'maragi']], sig: ['cleave', 'power_slash'], th: { crit: 1.6 },
       theurgy: { name: 'Brave Blade', type: 'dmg', el: 'slash', look: 'slash', target: 'one', power: 300, crit: 100, sure: true, down: 0.5, desc: 'One huge swing. Severe Slash damage to one foe; always a critical hit.' },
-      face: [52, 36], role: 'Fire · Slash · Tank', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
+      role: 'Fire · Slash · Tank', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Watch this!', onemore: 'Heh, too easy!', shift: 'Go for it!', finish: 'Clutch hitter, baby!', theurgy: 'Home run, baby!' } },
     { id: 'mitsuru', name: 'Mitsuru', persona: 'penthesilea', weapon: 'pierce', wtype: 'rapier', color: '#ff5b5b',
       base: { hp: 90, sp: 68, st: 8, ma: 12, en: 7, ag: 10, lu: 7 }, growth: { hp: 7, sp: 5, st: 0.7, ma: 1.1, en: 0.7, ag: 0.9, lu: 0.6 },
       skills: ['bufu', 'marin_karin', 'tarukaja'], learn: [[12, 'bufula', 'bufu'], [15, 'dekaja'], [17, 'mabufu'], [20, 'me_patra']], sig: ['marin_karin', 'bufu', 'bufula'], th: { ail: 1.6 },
       theurgy: { name: 'Bufudyne Execution', type: 'dmg', el: 'ice', look: 'ice', target: 'all', power: 150, down: 0.4, ail: { id: 'freeze', chance: 0.35 }, desc: 'Artemisia’s judgment. Heavy Ice damage to all foes; may Freeze them.' },
-      face: [50, 28], role: 'Ice · Charm · Support', faces: { idle: 'neutral', win: 'neutral', hurt: 'surprised', ko: 'sad' },
+      role: 'Ice · Charm · Support', faces: { idle: 'neutral', win: 'neutral', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Leave it to me.', onemore: 'Excellent.', shift: 'Your opening.', finish: 'Execution!', theurgy: 'Bow before the ice.' } },
     { id: 'aigis', name: 'Aigis', persona: 'palladion', weapon: 'pierce', wtype: 'gun', color: '#ffd36b',
       base: { hp: 112, sp: 40, st: 12, ma: 6, en: 11, ag: 8, lu: 6 }, growth: { hp: 9, sp: 3, st: 1, ma: 0.5, en: 1, ag: 0.7, lu: 0.5 },
       skills: ['twin_shot', 'cleave', 'tarunda'], learn: [[12, 'rakukaja'], [16, 'arrow_rain'], [20, 'matarunda', 'tarunda']], sig: ['twin_shot', 'arrow_rain'],
       theurgy: { name: 'Orgia Mode', type: 'orgia', el: 'pierce', look: 'pierce', target: 'rand', power: 46, multi: [4, 6], turns: 3, desc: 'Limiters off. A storm of fire to random foes, then for 3 turns her attacks hit twice and her attack is up.' },
-      face: [40, 29], role: 'Gunfire · Pierce · Debuff', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
+      role: 'Gunfire · Pierce · Debuff', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Engaging the enemy.', onemore: 'Target is down.', shift: 'Handing over.', finish: 'Hostiles eliminated.', theurgy: 'Orgia Mode, activate.' } },
     { id: 'ken', name: 'Ken', persona: 'nemesis', weapon: 'pierce', wtype: 'spear', color: '#ffb36b',
       base: { hp: 80, sp: 64, st: 7, ma: 11, en: 6, ag: 9, lu: 10 }, growth: { hp: 6, sp: 5, st: 0.6, ma: 1, en: 0.6, ag: 0.8, lu: 0.9 },
       skills: ['zio', 'hama', 'dia'], learn: [[12, 'zionga', 'zio'], [14, 'media'], [17, 'hamaon', 'hama'], [20, 'rakukaja']], sig: ['hama', 'hamaon', 'dia'], th: { heal: 1.3 },
       theurgy: { name: 'Kala’s Judgment', type: 'dmg', el: 'light', look: 'light', target: 'all', power: 140, down: 0.4, heal: 0.3, desc: 'The spear of retribution. Heavy Light damage to all foes, and the party heals 30%.' },
-      face: [50, 32], role: 'Elec · Light · Healer', faces: { idle: 'serious', win: 'happy', hurt: 'sad', ko: 'sad' },
+      role: 'Elec · Light · Healer', faces: { idle: 'serious', win: 'happy', hurt: 'sad', ko: 'sad' },
       lines: { turn: 'I can do this!', onemore: 'Got it!', shift: 'Go ahead!', finish: 'Did you see that?!', theurgy: 'This is my justice!' } },
     { id: 'koromaru', name: 'Koromaru', persona: 'cerberus', weapon: 'slash', wtype: 'knife', color: '#e8e8f0',
       base: { hp: 88, sp: 52, st: 10, ma: 9, en: 7, ag: 13, lu: 9 }, growth: { hp: 7, sp: 4, st: 0.9, ma: 0.8, en: 0.7, ag: 1.1, lu: 0.8 },
       skills: ['agi', 'mudo', 'rampage'], learn: [[12, 'agilao', 'agi'], [15, 'double_fangs'], [18, 'mudoon', 'mudo'], [21, 'maragion']], sig: ['mudo', 'mudoon', 'rampage'], th: { kill: 1.6 },
       theurgy: { name: 'Hellfire Howl', type: 'dmg', el: 'fire', look: 'fire', target: 'all', power: 150, down: 0.4, ail: { id: 'fear', chance: 0.35 }, desc: 'Cerberus’s three-headed howl. Heavy Fire damage to all foes; may terrify them.' },
-      face: [40, 25], role: 'Fire · Dark · Speed', faces: { idle: 'serious', win: 'happy', hurt: 'sad', ko: 'sad' },
+      role: 'Fire · Dark · Speed', faces: { idle: 'serious', win: 'happy', hurt: 'sad', ko: 'sad' },
       lines: { turn: 'Woof!', onemore: 'Arf arf!', shift: '*nudges you*', finish: 'Awoooo!', theurgy: 'AWOOOOO!' } },
     { id: 'shinjiro', name: 'Shinjiro', persona: 'castor', weapon: 'strike', wtype: 'axe', color: '#c43b3b', acc: -6,
       base: { hp: 124, sp: 34, st: 15, ma: 5, en: 10, ag: 5, lu: 5 }, growth: { hp: 10, sp: 2, st: 1.3, ma: 0.4, en: 0.9, ag: 0.4, lu: 0.4 },
       skills: ['assault_dive', 'fatal_end'], learn: [[14, 'rakunda'], [18, 'heat_wave']], sig: ['fatal_end', 'assault_dive'], th: { hurt: 2 },
       theurgy: { name: 'Castor’s Charge', type: 'dmg', el: 'strike', look: 'strike', target: 'one', power: 340, sure: true, crit: 30, down: 0.6, desc: 'Castor runs it down. Colossal Strike damage to one foe; it never misses.' },
-      face: [52, 42], role: 'Heavy strike · Low accuracy', faces: { idle: 'neutral', win: 'happy', hurt: 'surprised', ko: 'sad' },
+      role: 'Heavy strike · Low accuracy', faces: { idle: 'neutral', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Tch. Fine.', onemore: 'Stay down.', shift: 'Your turn.', finish: 'Heh. Not bad.', theurgy: 'Get outta my way.' } }
   ];
   /* The party before anyone picks one (and for old saves): Solar plus these three. */
@@ -800,7 +819,7 @@ window.FEMC_BATTLE_DATA = (() => {
     analyze: ['Scan complete! Here’s what I found.', 'neutral'],
     clock: ['The clock’s chime... everyone’s fully healed.', 'happy'],
     tired: ['{name} looks exhausted… a Clock or a trip home would help.', 'sad'],
-    theurgyReady: ['{name}’s Theurgy is ready!', 'happy'],
+    theurgyReady: ['{name}’s ready! Let it rip!', 'happy'],
     // Status ailments. foe_* when a Shadow is afflicted, ally_* when one of us is.
     foe_charm: ['It’s charmed! It might turn on its friends!', 'happy'],
     foe_fear: ['It’s terrified! Mudo should finish it!', 'happy'],
@@ -931,6 +950,6 @@ window.FEMC_BATTLE_DATA = (() => {
     sellRate: 0.5 // shops buy gear back at half price (Mayoido only)
   };
 
-  return { portraits: P, elements, affinityOrder, skills, ailments, tactics, attack, personas, party, defaultParty, theurgyGain, items, startItems, startYen, materials,
+  return { portraits: P, faceFocus, elements, affinityOrder, skills, ailments, tactics, attack, personas, party, defaultParty, theurgyGain, items, startItems, startYen, materials,
     gear, startGear, shops, enemies, blocks, floors, ops, map, events, memories, music, clips, navigator, nav, tree, progression, difficulty, glossary, tips };
 })();

@@ -21,6 +21,22 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-ico { width: 1em; height: 1em; flex: none; vertical-align: -.12em; }
 .cond { font-family: var(--cond); font-style: italic; font-weight: 900; }
 
+/* Portrait crops (battle.js fimg): the box (.fcb) sets the framing, the image brings its face focus (--fx/--fy/--fs/--ar).
+   --zy: where the eye line sits in the box. --zk: eyes-to-chin as a share of the box height. --zx: the face's centre (default 50%).
+   The image is kept covering the box (the clamps) so no edge of the art shows. --zsk/--zsky undo a slanted box's skew. */
+.fcb { container-type: size; overflow: hidden; }
+.pic.fcb, .av.fcb, .bt-faces .fcb, .bt-order li.fcb { position: relative; }
+.av { display: block; flex: none; }
+.fc { --iw: calc(var(--zk, .32) * 100cqh / var(--fs, .25)); --ih: calc(var(--iw) * var(--ar, 1.1));
+  position: absolute; display: block; width: var(--iw); height: auto; max-width: none; max-height: none; margin: 0;
+  left: clamp(calc(100% - (100 - var(--fx, 50)) * var(--iw) / 100), var(--zx, 50%), calc(var(--fx, 50) * var(--iw) / 100));
+  top: clamp(calc(100% - (100 - var(--fy, 40)) * var(--ih) / 100), var(--zy, 40%), calc(var(--fy, 40) * var(--ih) / 100));
+  transform-origin: calc(var(--fx, 50) * 1%) calc(var(--fy, 40) * 1%);
+  transform: translate(calc(var(--fx, 50) * -1%), calc(var(--fy, 40) * -1%)) skew(var(--zsk, 0deg), var(--zsky, 0deg));
+  user-select: none; -webkit-user-drag: none; pointer-events: none; }
+/* Wide bands (cut-ins): the face stays where the band puts it. */
+.bt-band .fc, .bt-evk-band .fc, .th-band .fc { left: var(--zx, 50%); top: var(--zy, 40%); }
+
 /* Shared slanted button */
 .bt-btn { position: relative; display: inline-flex; align-items: center; gap: 10px; padding: 12px 26px; border: 0; background: rgba(20, 7, 15, .92); color: #fff; font: italic 900 20px/1 var(--cond); letter-spacing: .05em; text-transform: uppercase; text-decoration: none; transform: skewX(-14deg); box-shadow: 5px 5px 0 rgba(255, 79, 158, .5); cursor: pointer; transition: transform .12s, box-shadow .12s, background .12s; }
 .bt-btn > * { transform: skewX(14deg); }
@@ -90,7 +106,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-floorlabel b { font: italic 900 24px/1 var(--cond); white-space: nowrap; }
 .bt-floorlabel span { color: var(--pink-2); font: italic 800 12px/1.15 var(--cond); letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
 .bt-order { display: flex; align-items: center; gap: 4px; margin: 4px 0 0; padding: 0; list-style: none; }
-.bt-order li { width: 34px; height: 34px; border: 2px solid rgba(255, 255, 255, .5); background: #1c0d18 center 22% / 260% no-repeat; transform: skewX(-12deg); overflow: hidden; opacity: .8; transition: all .25s; }
+.bt-order li { --zsk: 12deg; --zy: 44%; --zk: .36; position: relative; width: 34px; height: 34px; border: 2px solid rgba(255, 255, 255, .5); background: #1c0d18; transform: skewX(-12deg); overflow: hidden; opacity: .8; transition: all .25s; }
 .bt-order li.enemy { background: linear-gradient(160deg, #2b62d9, #0b1a5a); border-color: rgba(127, 182, 255, .7); }
 .bt-order li.enemy::after { content: ""; display: block; width: 70%; height: 60%; margin: 22% auto 0; border-radius: 40% 40% 50% 50%; background: radial-gradient(circle at 32% 45%, #06102a 0 12%, transparent 14%), radial-gradient(circle at 68% 45%, #06102a 0 12%, transparent 14%), #a6dcff; }
 .bt-order li.now { width: 44px; height: 44px; border-color: #fff; opacity: 1; box-shadow: 3px 3px 0 var(--pink); }
@@ -150,10 +166,10 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-party { position: absolute; left: 18px; right: calc(min(26vw, 380px) + clamp(16px, 2.6vw, 44px) + 34px); bottom: 16px; z-index: 20; display: flex; align-items: flex-end; gap: 12px; }
 .bt-card { position: relative; flex: 1 1 0; max-width: 250px; min-width: 0; height: 96px; padding: 10px 14px 10px 92px; border: 0; background: linear-gradient(110deg, rgba(20, 7, 15, .96) 60%, rgba(58, 16, 40, .96)); color: #fff; text-align: left; transform: skewX(-12deg); box-shadow: 5px 5px 0 rgba(255, 79, 158, .45); transition: transform .25s cubic-bezier(.2, 1.3, .4, 1), box-shadow .25s, background .25s, filter .3s; overflow: visible; cursor: default; }
 .bt-card > * { transform: skewX(12deg); }
-.bt-card .face { position: absolute; left: -6px; bottom: 0; width: 96px; height: 112px; transform: skewX(12deg); overflow: hidden; -webkit-mask-image: linear-gradient(to right, #000 75%, transparent); mask-image: linear-gradient(to right, #000 75%, transparent); }
-.bt-card .face img { position: absolute; left: 50%; top: 0; width: 210%; max-width: none; transform: translate(calc(-1 * var(--fx, 50%)), calc(-1 * var(--fy, 30%) + 40px)); }
-.bt-card .nm { display: flex; align-items: baseline; gap: 6px; font: italic 900 19px/1 var(--cond); letter-spacing: .03em; text-transform: uppercase; }
-.bt-card .nm small { color: var(--pink-2); font-size: 11px; letter-spacing: .12em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bt-card .face { position: absolute; left: 0; top: 0; bottom: 0; width: 84px; transform: none; background: radial-gradient(ellipse at 50% 30%, color-mix(in srgb, var(--mc, #ff4f9e) 30%, #2a0c1e), #12060e 75%); box-shadow: inset -3px 0 0 var(--mc, var(--pink)); --zsk: 12deg; --zy: 40%; --zk: .33; }
+.bt-card .nm { display: grid; gap: 1px; font: italic 900 19px/1 var(--cond); letter-spacing: .03em; text-transform: uppercase; }
+.bt-card .nm > span { white-space: nowrap; overflow: hidden; text-overflow: clip; }
+.bt-card .nm small { color: var(--pink-2); font-size: 10.5px; line-height: 1.05; letter-spacing: .08em; overflow-wrap: anywhere; }
 .bt-bar { position: relative; display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; align-items: center; gap: 6px; margin-top: 6px; font: italic 900 12px/1 var(--cond); letter-spacing: .06em; }
 .bt-bar .track { position: relative; height: 7px; background: rgba(255, 255, 255, .14); overflow: hidden; }
 /* HP/SP: the fill (.f) and a lagging ghost (.g) behind it. transform only, so it stays cheap. */
@@ -220,8 +236,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-banner .bt-ico { width: 24px; height: 24px; }
 .bt-nav { position: absolute; top: 64px; right: 18px; z-index: 34; display: flex; align-items: center; gap: 0; max-width: min(460px, calc(100vw - 36px)); pointer-events: none; animation: bt-nav-in .35s cubic-bezier(.2, 1.2, .4, 1) both; }
 .bt-nav.out { animation: bt-nav-out .3s ease forwards; }
-.bt-nav .pic { flex: none; width: 72px; height: 72px; border: 3px solid #fff; border-radius: 50%; background: #1a3a40; overflow: hidden; box-shadow: 4px 4px 0 var(--pink); z-index: 1; }
-.bt-nav .pic img { width: 170%; margin: -6% 0 0 -38%; }
+.bt-nav .pic { flex: none; width: 72px; height: 72px; border: 3px solid #fff; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #2f6e74, #12303a); overflow: hidden; box-shadow: 4px 4px 0 var(--pink); z-index: 1; --zy: 42%; --zk: .31; }
 .bt-nav p { margin: 0 0 0 -16px; padding: 10px 18px 10px 28px; background: rgba(20, 7, 15, .95); border: 2px solid #7fe3d0; border-radius: 4px 20px 4px 20px; font-size: 15px; font-weight: 600; line-height: 1.35; }
 .bt-nav p b { display: block; color: #7fe3d0; font: italic 900 12px/1 var(--cond); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 3px; }
 .bt-log { position: absolute; left: 50%; bottom: 130px; z-index: 28; max-width: min(560px, calc(100vw - 32px)); padding: 6px 16px; background: rgba(12, 4, 9, .85); transform: translateX(-50%); font: italic 700 15px/1.3 var(--cond); letter-spacing: .04em; text-align: center; pointer-events: none; transition: opacity .3s; }
@@ -251,7 +266,8 @@ html.bt-in-battle .femc-badge { display: none !important; }
 /* Cut-ins */
 .bt-cut { position: absolute; inset: 0; z-index: 38; pointer-events: none; overflow: hidden; }
 .bt-band { position: absolute; left: -10%; right: -10%; top: 30%; height: 150px; background: var(--night); border-top: 5px solid var(--pink); border-bottom: 5px solid #fff; transform: skewY(-6deg); overflow: hidden; animation: bt-band .8s cubic-bezier(.7, 0, .3, 1) both; }
-.bt-band img { position: absolute; left: 50%; top: 0; width: 640px; max-width: none; transform: translate(-50%, -24%); animation: bt-band-img .8s linear both; filter: drop-shadow(8px 0 0 var(--pink)); }
+.bt-band { --zy: 56%; --zk: .72; --zsky: 6deg; }
+.bt-band img { animation: bt-band-img .8s linear both; filter: drop-shadow(8px 0 0 var(--pink)); }
 .bt-band b { position: absolute; right: 12%; bottom: 18px; font: italic 900 42px/1 var(--cond); letter-spacing: .02em; text-shadow: 4px 4px 0 var(--pink); transform: skewY(6deg); }
 .bt-band b small { display: block; color: var(--pink-2); font-size: 14px; letter-spacing: .3em; text-shadow: none; }
 .bt-big { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%) skewX(-10deg); font: italic 900 clamp(64px, 11vw, 150px)/.9 var(--cond); letter-spacing: -.02em; white-space: nowrap; color: #fff; text-shadow: .06em .06em 0 var(--pink), -.02em -.02em 0 var(--night); animation: bt-bigword 1s cubic-bezier(.2, 1.3, .4, 1) both; }
@@ -264,9 +280,8 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-prompt { position: absolute; inset: 0; z-index: 44; display: grid; place-items: center; background: radial-gradient(ellipse at 50% 50%, rgba(255, 79, 158, .25), rgba(8, 2, 6, .82) 70%); animation: bt-in .25s ease both; }
 .bt-prompt-inner { display: grid; justify-items: center; gap: 20px; padding: 16px; }
 .bt-faces { display: flex; gap: 10px; }
-.bt-faces div { width: clamp(64px, 10vw, 130px); height: clamp(84px, 13vw, 170px); border: 3px solid #fff; background: #1c0d18; transform: skewX(-10deg); overflow: hidden; box-shadow: 5px 5px 0 var(--pink); animation: bt-face-in .4s cubic-bezier(.2, 1.4, .4, 1) both; }
+.bt-faces div { --zsk: 10deg; --zy: 37%; --zk: .27; width: clamp(64px, min(10vw, 17vh), 130px); height: clamp(84px, min(13vw, 22vh), 170px); border: 3px solid #fff; background: #1c0d18; transform: skewX(-10deg); overflow: hidden; box-shadow: 5px 5px 0 var(--pink); animation: bt-face-in .4s cubic-bezier(.2, 1.4, .4, 1) both; }
 .bt-faces div:nth-child(2) { animation-delay: .07s; } .bt-faces div:nth-child(3) { animation-delay: .14s; } .bt-faces div:nth-child(4) { animation-delay: .21s; }
-.bt-faces img { width: 230%; max-width: none; margin-left: calc(-1 * var(--fx, 50%) * 2.3 + 50%); margin-top: -8%; transform: skewX(10deg); }
 .bt-prompt h2 { margin: 0; font: italic 900 clamp(46px, 8vw, 104px)/.9 var(--cond); transform: skewX(-8deg); text-shadow: .06em .06em 0 var(--pink); text-align: center; animation: bt-slam .5s cubic-bezier(.2, 1.4, .4, 1) both; }
 .bt-prompt h2 small { display: block; margin-bottom: 8px; color: var(--pink-2); font-size: .2em; letter-spacing: .4em; text-shadow: none; }
 .bt-prompt .row { display: flex; gap: 18px; }
@@ -322,9 +337,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-res-list { display: grid; gap: 12px; }
 .bt-res-row { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 14px; align-items: center; padding: 10px 16px 10px 10px; background: rgba(20, 7, 15, .93); transform: skewX(-10deg); box-shadow: 5px 5px 0 rgba(255, 79, 158, .45); animation: bt-item .4s cubic-bezier(.2, 1.2, .4, 1) both; }
 .bt-res-row > * { transform: skewX(10deg); }
-.bt-res-row .pic { width: 84px; height: 64px; overflow: hidden; }
-.bt-res-row .pic { position: relative; }
-.bt-res-row .pic img { position: absolute; left: 50%; top: 0; width: 200%; max-width: none; transform: translate(calc(-1 * var(--fx, 50%)), calc(-1 * var(--fy, 30%) + 22px)); }
+.bt-res-row .pic { width: 84px; height: 64px; background: #24091a; --zy: 42%; --zk: .36; }
 .bt-res-row b { font: italic 900 22px/1 var(--cond); text-transform: uppercase; }
 .bt-res-row b small { margin-left: 8px; color: var(--pink-2); font-size: 14px; letter-spacing: .12em; }
 .bt-lvup { display: inline-block; margin-left: 10px; padding: 3px 10px; background: var(--gold); color: var(--night); font: italic 900 15px/1 var(--cond); letter-spacing: .1em; animation: bt-pulse .7s ease-in-out infinite alternate; }
@@ -483,7 +496,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 @keyframes bt-slash { 0% { transform: rotate(var(--r, -35deg)) scaleX(0); opacity: 1; } 60% { transform: rotate(var(--r, -35deg)) scaleX(1); opacity: 1; } 100% { transform: rotate(var(--r, -35deg)) scaleX(1.1); opacity: 0; } }
 @keyframes bt-burst { 0% { transform: scale(.2); opacity: 1; } 100% { transform: scale(1.2); opacity: 0; } }
 @keyframes bt-band { 0% { transform: skewY(-6deg) scaleY(0); } 15%, 85% { transform: skewY(-6deg) scaleY(1); } 100% { transform: skewY(-6deg) scaleY(0); } }
-@keyframes bt-band-img { from { transform: translate(-42%, -24%); } to { transform: translate(-58%, -24%); } }
+@keyframes bt-band-img { from { translate: 6% 0; } to { translate: -6% 0; } }
 @keyframes bt-persona { 0% { opacity: 0; transform: translateX(14%) scale(1.1); } 30% { opacity: 1; transform: translateX(0) scale(1); } 85% { opacity: 1; } 100% { opacity: 0; transform: translateX(-4%); } }
 @keyframes bt-glitch { 0% { opacity: 0; } 8% { opacity: 1; transform: skewX(-10deg) translateX(6px); clip-path: inset(0 0 60% 0); } 12% { transform: skewX(-10deg) translateX(-8px); clip-path: inset(40% 0 0 0); } 16% { transform: skewX(-10deg); clip-path: none; } 50% { transform: skewX(-10deg) translateX(3px); color: var(--gold); } 53% { transform: skewX(-10deg); color: #fff; } 90% { opacity: 1; } 100% { opacity: 0; } }
 @keyframes bt-bigword { 0% { opacity: 0; transform: translate(-50%, -50%) skewX(-10deg) scale(2.4); } 18% { opacity: 1; transform: translate(-50%, -50%) skewX(-10deg) scale(1); } 80% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -50%) skewX(-10deg) scale(1.05); } }
@@ -571,7 +584,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 /* Everyone else: a band with their eyes and an Evoker at the temple. */
 .bt-evk-band { --c: var(--pink); position: absolute; left: 0; right: 0; top: 28%; height: 200px; z-index: 8; clip-path: polygon(0 18%, 100% 0, 100% 82%, 0 100%); background: linear-gradient(90deg, #14070f, #2a0c1e 50%, #14070f); animation: bt-evk-in calc(160ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; }
 .bt-evk-band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 30%, rgba(255, 255, 255, .06) 50%, transparent 70%); }
-.bt-evk-band .face { position: absolute; left: 50%; top: 50%; width: 760px; max-width: none; transform: translate(calc(-1 * var(--fx, 50%)), -38%); }
+.bt-evk-band { --zy: 58%; --zk: .85; }
 .bt-evk-band .gun { position: absolute; right: calc(50% + 112px); top: 30%; width: 250px; height: auto; transform: rotate(-6deg); transform-origin: 100% 40%; filter: drop-shadow(4px 5px 0 rgba(0, 0, 0, .55)) drop-shadow(0 0 10px rgba(160, 200, 255, .35)); animation: bt-evk-gun calc(320ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; }
 @keyframes bt-evk-in { from { clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%); } }
 @keyframes bt-evk-push { from { transform: scale(1.08); } to { transform: scale(1.02); } }
@@ -617,7 +630,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-hub-party { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; }
 .bt-hub-party span { display: inline-flex; align-items: center; gap: 8px; padding: 3px 12px 3px 3px; background: rgba(255, 255, 255, .07); transform: skewX(-10deg); }
 .bt-hub-party span > * { transform: skewX(10deg); }
-.bt-hub-party img { width: 34px; height: 34px; object-fit: cover; object-position: var(--fx, 50%) calc(var(--fy, 30%) - 6%); border: 2px solid rgba(255, 255, 255, .5); }
+.bt-hub-party .av { width: 34px; height: 34px; border: 2px solid rgba(255, 255, 255, .5); background: #2a0c1e; }
 .bt-hub-party b { font: italic 900 14px/1 var(--cond); text-transform: uppercase; letter-spacing: .04em; }
 .bt-hub-party b small { display: block; margin-top: 2px; color: var(--pink-2); font-size: 10.5px; letter-spacing: .12em; }
 .bt-hub-party em { color: var(--muted); font-size: 13px; }
@@ -630,11 +643,10 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-pm.leader { border-style: solid; }
 .bt-pm-main { position: relative; display: grid; grid-template-columns: 112px minmax(0, 1fr) 92px; gap: 12px; align-items: center; width: 100%; min-height: 150px; padding: 10px 8px 10px 0; border: 0; background: none; color: #fff; text-align: left; cursor: pointer; }
 .bt-pm.leader .bt-pm-main { cursor: default; }
-.bt-pm .pic { position: relative; align-self: stretch; overflow: hidden; }
+.bt-pm .pic { position: relative; align-self: stretch; overflow: hidden; --zy: 36%; --zk: .25; -webkit-mask-image: linear-gradient(to right, #000 72%, transparent); mask-image: linear-gradient(to right, #000 72%, transparent); }
 .bt-pm .per-art { align-self: stretch; display: grid; place-items: center; }
 .bt-pm .per-art img { width: 100%; height: 130px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(255, 211, 107, .45)); opacity: .95; }
 .bt-pm:not(.in) .per-art img { filter: grayscale(.6) brightness(.7); }
-.bt-pm .pic img:first-child { position: absolute; left: 50%; top: 0; width: 240%; max-width: none; transform: translate(calc(-1 * var(--fx, 50%)), calc(-1 * var(--fy, 30%) + 46px)); -webkit-mask-image: linear-gradient(to right, #000 70%, transparent); mask-image: linear-gradient(to right, #000 70%, transparent); }
 
 .bt-pm .info { display: grid; gap: 3px; min-width: 0; }
 .bt-pm .info b { font: italic 900 26px/1 var(--cond); text-transform: uppercase; letter-spacing: .03em; white-space: nowrap; }
@@ -657,7 +669,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-bench > * { transform: skewX(10deg); }
 .bt-bench small { width: 100%; color: var(--pink-2); font: italic 800 12px/1 var(--cond); letter-spacing: .16em; text-transform: uppercase; }
 .bt-bench span { display: inline-flex; align-items: center; gap: 6px; font: italic 800 13px/1 var(--cond); letter-spacing: .04em; text-transform: uppercase; color: var(--pink-3); }
-.bt-bench span img { width: 26px; height: 26px; object-fit: cover; object-position: var(--fx, 50%) calc(var(--fy, 30%) - 6%); border: 1.5px solid rgba(255, 255, 255, .4); }
+.bt-bench span .av { width: 26px; height: 26px; border: 1.5px solid rgba(255, 255, 255, .4); }
 .bt-bench span b { color: #fff; }
 .bt-bench span.up b { color: var(--gold); }
 
@@ -687,8 +699,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
   .bt-party { left: 8px; right: 8px; bottom: 8px; gap: 6px; }
   .bt-card { height: 78px; padding: 40px 6px 6px 8px; transform: skewX(-6deg); max-width: none; }
   .bt-card > * { transform: skewX(6deg); }
-  .bt-card .face { left: 0; top: 0; bottom: auto; width: 100%; height: 40px; transform: skewX(6deg); -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
-  .bt-card .face img { width: 130%; left: 50%; transform: translate(calc(-1 * var(--fx, 50%)), calc(-1 * var(--fy, 30%) + 10px)); }
+  .bt-card .face { left: 0; top: 0; bottom: auto; width: 100%; height: 40px; --zsk: 6deg; --zy: 52%; --zk: .5; box-shadow: inset 0 -2px 0 var(--mc, var(--pink)); -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
   .bt-card .nm { position: absolute; top: 4px; left: 6px; font-size: 13px; text-shadow: 1px 1px 0 #000, 0 0 4px #000; }
   .bt-card .nm small { display: none; }
   .bt-bar { grid-template-columns: minmax(0, 1fr) auto; gap: 3px; margin-top: 2px; }
@@ -730,7 +741,6 @@ html.bt-in-battle .femc-badge { display: none !important; }
   .bt-pop.party .n { font-size: 26px; }
   .bt-pop .l { font-size: 16px; } .bt-pop .l.weak { font-size: 20px; } .bt-pop .l.crit { font-size: 19px; }
   .bt-band { height: 100px; top: 26%; }
-  .bt-band img { width: 420px; }
   .bt-band b { font-size: 26px; right: 6%; bottom: 10px; }
   .bt-finish img { right: -16vw; height: 74vh; max-width: none; }
   .bt-finish h2 { top: 9vh; font-size: 64px; }
@@ -755,7 +765,6 @@ html.bt-in-battle .femc-badge { display: none !important; }
   .bt-res-exp { font-size: 24px; margin-top: 10px; }
   .bt-res-row { grid-template-columns: 60px minmax(0, 1fr); padding: 8px 12px 8px 8px; }
   .bt-res-row .pic { width: 60px; height: 48px; }
-  .bt-res-row .pic img { transform: translate(calc(-1 * var(--fx, 50%)), calc(-1 * var(--fy, 30%) + 16px)); }
   .bt-res-row b { font-size: 18px; }
 
   .bt-tree-head { padding: 12px 12px 2px; gap: 8px 12px; }
@@ -797,7 +806,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
   .bt-pm-main { grid-template-columns: 1fr; min-height: 0; padding: 0 0 8px; gap: 6px; }
   .bt-party-foot p span { display: none; }
   .bt-pm .pic { height: 74px; }
-  .bt-pm .pic img:first-child { width: 150%; transform: translate(calc(-1 * var(--fx, 50%)), calc(-1 * var(--fy, 30%) + 22px)); -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
+  .bt-pm .pic { --zy: 44%; --zk: .34; -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
   .bt-pm .per-art { display: none; }
   .bt-pm .info { padding: 0 8px; }
   .bt-pm .info b { font-size: 18px; }
@@ -809,7 +818,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
   .bt-party-foot { margin: 0 8px 8px; padding: 10px 12px; gap: 10px; }
   .bt-party-foot p { font-size: 12px; }
   .bt-evk-band { top: 24%; height: 150px; }
-  .bt-evk-band .face { width: 520px; }
+  .bt-evk-band { --zk: .78; }
   .bt-evk-band .gun { right: calc(50% + 34px); width: 130px; top: 34%; }
   .bt-evk-shot { top: 14%; bottom: 30%; }
   .bt-evk-shot img { object-position: 66% 20%; }
@@ -876,26 +885,38 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-mapsvg .e.walked { stroke: var(--pink); stroke-width: 4; stroke-dasharray: none; opacity: .85; }
 .bt-mapsvg .e.live { stroke: #fff; stroke-width: 3.5; stroke-dasharray: 10 6; animation: bt-dash .8s linear infinite; opacity: .9; }
 @keyframes bt-dash { to { stroke-dashoffset: -32; } }
-.bt-mapsvg .node .tile { fill: rgba(14, 6, 12, .92); stroke: var(--c); stroke-width: 3; }
-.bt-mapsvg .node.t-unknown .tile { fill: rgba(14, 6, 12, .7); stroke: rgba(255, 255, 255, .22); stroke-dasharray: 4 4; }
-.bt-mapsvg .node.visited .tile { fill: rgba(40, 14, 30, .95); }
+.bt-mapsvg .node .tile { fill: rgba(12, 5, 12, .94); stroke: var(--c); stroke-width: 3; filter: drop-shadow(0 0 7px color-mix(in srgb, var(--c) 55%, transparent)); transition: fill .15s, stroke .15s; }
+.bt-mapsvg .node .tile-in { fill: color-mix(in srgb, var(--c) 16%, transparent); stroke: color-mix(in srgb, var(--c) 55%, transparent); stroke-width: 1.2; }
+.bt-mapsvg .node .nt { transition: transform .16s cubic-bezier(.2, 1.4, .4, 1); }
+.bt-mapsvg .node .glyph { overflow: visible; filter: drop-shadow(2px 2px 0 rgba(5, 2, 8, .7)); }
+.bt-mapsvg .node.t-unknown .tile { fill: rgba(14, 6, 12, .7); stroke: rgba(255, 255, 255, .26); stroke-dasharray: 4 4; filter: none; }
+.bt-mapsvg .node.t-unknown .tile-in { fill: none; stroke: none; }
+.bt-mapsvg .node.t-unknown .glyph { opacity: .7; }
+.bt-mapsvg .node.visited .tile { fill: rgba(40, 14, 30, .96); }
 .bt-mapsvg .node.done { opacity: .55; }
+.bt-mapsvg .node.done .glyph { filter: grayscale(.6); }
 .bt-mapsvg .node.done.cur { opacity: 1; }
-.bt-mapsvg .node.strong .tile { stroke-width: 4; filter: drop-shadow(0 0 6px #ff3b6b); }
-.bt-mapsvg .node.t-stairs .tile { stroke-width: 4; fill: rgba(60, 10, 36, .95); }
+.bt-mapsvg .node.strong .tile { stroke-width: 4; filter: drop-shadow(0 0 9px #ff3b6b); }
+.bt-mapsvg .node.t-stairs .tile { stroke-width: 4; fill: rgba(60, 10, 36, .96); filter: drop-shadow(0 0 12px color-mix(in srgb, var(--c) 75%, transparent)); }
+.bt-mapsvg .node.t-access .tile { filter: drop-shadow(0 0 12px rgba(95, 224, 176, .7)); }
 .bt-mapsvg .node .lbl { fill: #fff; font: italic 900 12px/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; letter-spacing: .1em; text-anchor: middle; paint-order: stroke; stroke: #05060c; stroke-width: 4px; }
 .bt-mapsvg.vert .node .lbl { font-size: 10px; }
 .bt-mapsvg .node.t-unknown .lbl { fill: var(--muted); }
-.bt-mapsvg .node.opt { cursor: pointer; }
+.bt-mapsvg .node.opt { cursor: pointer; outline: none; }
 .bt-mapsvg .node .ring { fill: none; stroke: #fff; stroke-width: 2; opacity: .45; }
 .bt-mapsvg .node.opt .ring { animation: bt-ring 1.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+/* Hover / keyboard focus: the tile lifts, lights up white and glows in its room color. */
+.bt-mapsvg .node.opt:is(:hover, :focus-visible, .sel) .nt { transform: scale(1.14); }
+.bt-mapsvg .node.opt:is(:hover, :focus-visible) .tile { stroke: #fff; }
 .bt-mapsvg .node.sel .ring { stroke: var(--pink); stroke-width: 4; opacity: 1; }
-.bt-mapsvg .node.sel .tile { fill: rgba(255, 79, 158, .28); }
-.bt-mapsvg .node.sel .lbl { fill: var(--pink-2); }
+.bt-mapsvg .node.sel .tile { fill: color-mix(in srgb, var(--c) 30%, #14070f); stroke: #fff; stroke-width: 3.5; filter: drop-shadow(0 0 10px var(--c)) drop-shadow(0 0 3px #fff); }
+.bt-mapsvg .node.sel .lbl, .bt-mapsvg .node.opt:hover .lbl { fill: var(--pink-2); }
 @keyframes bt-ring { 50% { transform: scale(1.1); opacity: .9; } }
-.bt-mapsvg .party-mark { transition: transform .3s cubic-bezier(.3, 1.2, .4, 1); pointer-events: none; }
-.bt-mapsvg .pm-ring { fill: var(--night); stroke: var(--pink); stroke-width: 4; }
-.bt-mapsvg .pm-tip { fill: var(--pink); }
+.bt-mapsvg .party-mark { transition: transform .3s cubic-bezier(.3, 1.2, .4, 1); pointer-events: none; filter: drop-shadow(0 0 6px rgba(255, 79, 158, .8)) drop-shadow(3px 3px 0 rgba(5, 2, 8, .8)); }
+.bt-mapsvg .pm-ring { fill: #fff; stroke: var(--pink); stroke-width: 3; }
+.bt-mapsvg .pm-bg { fill: #3a1430; }
+.bt-mapsvg .pm-in { fill: none; stroke: var(--night); stroke-width: 1.5; }
+.bt-mapsvg .pm-tip { fill: var(--pink); stroke: #fff; stroke-width: 2; stroke-linejoin: round; }
 .bt-mapsvg .reaper-mark .rm-aura { fill: rgba(255, 30, 60, .2); stroke: #ff3b3b; stroke-width: 2; stroke-dasharray: 5 4; animation: bt-ring .7s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
 .bt-mapsvg .lbl.reaper { fill: #ff6b6b; font: italic 900 13px/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; letter-spacing: .14em; text-anchor: middle; paint-order: stroke; stroke: #05060c; stroke-width: 4px; }
 .bt-map-side { grid-column: 2; grid-row: 2 / 4; display: grid; align-content: start; gap: 14px; min-height: 0; overflow-y: auto; padding: 6px 4px 6px 0; }
@@ -906,7 +927,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-map-party { display: grid; gap: 8px; }
 .bt-mp { --c: var(--pink); display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 10px; align-items: center; padding: 6px 12px 6px 6px; background: rgba(14, 5, 10, .9); border-left: 4px solid var(--c); transform: skewX(-8deg); }
 .bt-mp > * { transform: skewX(8deg); }
-.bt-mp img { width: 52px; height: 52px; object-fit: cover; object-position: var(--fx, 50%) var(--fy, 25%); background: #2a0c1e; }
+.bt-mp .av { width: 52px; height: 52px; background: #2a0c1e; }
 .bt-mp b { display: block; font: italic 900 16px/1 var(--cond); letter-spacing: .04em; }
 .bt-mp b small { margin-left: 6px; color: var(--pink-2); font-size: 11px; letter-spacing: .1em; }
 .bt-mp b em { color: #ffb36b; font-style: normal; }
@@ -916,12 +937,11 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-mp .bar.th i { background: linear-gradient(90deg, #ffd36b, #fff2b0); }
 .bt-mp .bar.th { height: 3px; }
 .bt-mp .bar.th.full { box-shadow: 0 0 8px var(--gold); }
-.bt-mp.tired { border-left-color: #ffb36b; } .bt-mp.tired img { filter: grayscale(.5) brightness(.8); }
+.bt-mp.tired { border-left-color: #ffb36b; } .bt-mp.tired .fc { filter: grayscale(.5) brightness(.8); }
 .bt-map-acts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .bt-map-acts .bt-btn { justify-content: center; flex-direction: column; gap: 4px; padding: 10px 12px; font-size: 17px; }
 .bt-map-nav { grid-column: 1; grid-row: 3; display: flex; align-items: center; max-width: 720px; margin-top: 8px; }
-.bt-map-nav .pic { flex: none; width: 70px; height: 70px; overflow: hidden; background: var(--night); border: 2px solid #7dffc0; transform: skewX(-10deg); }
-.bt-map-nav .pic img { width: 140%; margin: -6% 0 0 -20%; transform: skewX(10deg); }
+.bt-map-nav .pic { flex: none; width: 70px; height: 70px; overflow: hidden; background: radial-gradient(circle at 50% 35%, #2f6e74, #12303a); border: 2px solid #7dffc0; transform: skewX(-10deg); --zsk: 10deg; --zy: 42%; --zk: .31; }
 .bt-map-nav p { margin: 0; padding: 10px 18px; background: rgba(12, 4, 9, .92); border-left: 4px solid #7dffc0; font-size: 15px; line-height: 1.35; }
 .bt-map-nav b { display: block; color: #7dffc0; font: italic 900 13px/1 var(--cond); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 4px; }
 
@@ -1004,7 +1024,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-theurgy.styl .th-per { position: absolute; right: 2vw; bottom: -6vh; height: 112vh; width: auto; max-width: 70vw; object-fit: contain; filter: drop-shadow(0 0 40px color-mix(in srgb, var(--c) 70%, transparent)); animation: th-per calc(1900ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; will-change: transform, opacity; }
 @keyframes th-per { 0% { opacity: 0; transform: translateX(16%) scale(1.15); } 25% { opacity: 1; transform: none; } 100% { opacity: 1; transform: translateX(-3%) scale(1.03); } }
 .bt-theurgy.styl .th-band { position: absolute; left: -5%; right: 35%; top: 22%; height: 26vh; overflow: hidden; background: var(--night); border-top: 5px solid var(--c); border-bottom: 5px solid #fff; transform: skewY(-6deg); animation: th-band calc(700ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; }
-.bt-theurgy.styl .th-face { position: absolute; left: 30%; top: 50%; width: 120%; transform: translate(-30%, -36%) skewY(6deg); object-fit: cover; }
+.bt-theurgy.styl .th-band { --zx: 32%; --zy: 52%; --zk: .62; --zsky: 6deg; }
 @keyframes th-band { from { transform: skewY(-6deg) translateX(-110%); } }
 .bt-theurgy.look-ice .th-lines { background: repeating-linear-gradient(-24deg, rgba(127, 227, 255, .35) 0 3px, transparent 3px 34px); }
 .bt-theurgy.unveiled .th-burst { animation-duration: calc(3200ms / var(--spd)); }
@@ -1080,7 +1100,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-shop-who button { width: 48px; height: 48px; padding: 0; border: 2px solid rgba(255, 255, 255, .15); background: #1c0d18; transform: skewX(-10deg); overflow: hidden; cursor: pointer; opacity: .55; }
 .bt-shop-who button.in { opacity: .85; }
 .bt-shop-who button.on { opacity: 1; border-color: var(--c); box-shadow: 3px 3px 0 var(--c); }
-.bt-shop-who img { width: 130%; height: 130%; margin: -10% 0 0 -15%; object-fit: cover; object-position: var(--fx, 50%) var(--fy, 25%); transform: skewX(10deg); }
+.bt-shop-who .av { width: 100%; height: 100%; --zsk: 10deg; }
 .bt-shop-list { display: grid; align-content: start; gap: 5px; margin: 0; padding: 4px 6px 4px 0; list-style: none; overflow-y: auto; min-height: 0; }
 .bt-shop-row { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto 70px; gap: 12px; align-items: center; width: 100%; padding: 6px 14px; border: 0; background: rgba(12, 4, 9, .9); color: #fff; text-align: left; transform: skewX(-10deg); cursor: pointer; }
 .bt-shop-row > * { transform: skewX(10deg); }
@@ -1097,7 +1117,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-cmp { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .bt-cmp span { display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px 3px 3px; background: rgba(255, 255, 255, .06); font: italic 800 12px/1 var(--cond); letter-spacing: .06em; opacity: .7; }
 .bt-cmp span.in { opacity: 1; }
-.bt-cmp img { width: 24px; height: 24px; object-fit: cover; object-position: var(--fx, 50%) var(--fy, 25%); }
+.bt-cmp .av { width: 24px; height: 24px; }
 .bt-cmp em { font-style: normal; color: var(--muted); } .bt-cmp em.up { color: #7dffc0; } .bt-cmp em.dn { color: #ff6b6b; }
 .bt-shop-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 
@@ -1109,7 +1129,7 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-eq-mates button > * { transform: skewX(10deg); }
 .bt-eq-mates button.in { opacity: .9; }
 .bt-eq-mates button.on { opacity: 1; background: #fff; color: var(--night); box-shadow: 4px 4px 0 var(--c); }
-.bt-eq-mates img { width: 40px; height: 40px; object-fit: cover; object-position: var(--fx, 50%) var(--fy, 25%); }
+.bt-eq-mates .av { width: 40px; height: 40px; background: #2a0c1e; }
 .bt-eq-mates b { font: italic 900 16px/1 var(--cond); } .bt-eq-mates b small { display: block; font-size: 11px; color: var(--muted); letter-spacing: .1em; }
 .bt-eq-who { position: relative; display: grid; align-content: end; min-height: 0; overflow: hidden; }
 .bt-eq-who .per { position: absolute; right: -10%; top: 0; height: 92%; width: auto; opacity: .28; filter: drop-shadow(0 0 30px rgba(255, 79, 158, .4)); }
@@ -1220,7 +1240,7 @@ html.bt-perf .bt-dust .cloud.ol i { box-shadow: 0 0 0 4px #14070f; }
   .bt-map-info { min-height: 0; padding: 8px 12px; } .bt-map-info b { font-size: 17px; } .bt-map-info span { font-size: 12px; }
   .bt-map-party { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
   .bt-map-party .bt-mp { grid-template-columns: 1fr; padding: 4px; gap: 2px; }
-  .bt-map-party .bt-mp img { width: 100%; height: 34px; }
+  .bt-map-party .bt-mp .av { width: 100%; height: 34px; --zk: .4; }
   .bt-map-party .bt-mp b { font-size: 11px; } .bt-map-party .bt-mp b small { display: none; }
   .bt-map-party.small .bt-mp b small { display: inline; }
   .bt-map-acts .bt-btn { font-size: 14px; padding: 7px 10px; }
@@ -1244,7 +1264,7 @@ html.bt-perf .bt-dust .cloud.ol i { box-shadow: 0 0 0 4px #14070f; }
   .bt-shop-who button { width: 38px; height: 38px; }
   .bt-equip { grid-template-columns: 1fr; overflow-y: auto; }
   .bt-eq-mates { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .bt-eq-mates button { grid-template-columns: 1fr; padding: 2px; } .bt-eq-mates b { display: none; } .bt-eq-mates img { width: 100%; height: 40px; }
+  .bt-eq-mates button { grid-template-columns: 1fr; padding: 2px; } .bt-eq-mates b { display: none; } .bt-eq-mates .av { width: 100%; height: 40px; }
   .bt-eq-who { min-height: 0; } .bt-eq-who .port, .bt-eq-who .per { display: none; }
   .bt-forms-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .bt-theurgy .th-name { font-size: 46px; bottom: 16vh; }
@@ -1409,8 +1429,7 @@ html.bt-noshake .bt-battle.shake, html.bt-noshake .bt-battle.shake-big { animati
 /* ── Fuuka's tips ── */
 .bt-tip { position: fixed; left: 18px; top: 70px; z-index: 150; display: flex; align-items: center; max-width: min(410px, calc(100vw - 36px)); color: var(--ink); animation: bt-tip-in .35s cubic-bezier(.2, 1.2, .4, 1) both; }
 .bt-tip.out { animation: bt-tip-out .25s ease forwards; }
-.bt-tip .pic { flex: none; z-index: 1; width: 58px; height: 58px; overflow: hidden; border: 3px solid #fff; border-radius: 50%; background: #1a3a40; box-shadow: 3px 3px 0 var(--gold); }
-.bt-tip .pic img { width: 170%; margin: -6% 0 0 -38%; }
+.bt-tip .pic { flex: none; z-index: 1; width: 58px; height: 58px; overflow: hidden; border: 3px solid #fff; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #2f6e74, #12303a); box-shadow: 3px 3px 0 var(--gold); --zy: 42%; --zk: .31; }
 .bt-tip .tx { margin-left: -14px; padding: 9px 14px 9px 24px; background: rgba(20, 7, 15, .96); border: 2px solid var(--gold); border-radius: 4px 18px 4px 18px; font-size: 14px; line-height: 1.35; }
 .bt-tip .tx b { display: block; margin-bottom: 3px; color: var(--gold); font: italic 900 12px/1 var(--cond); letter-spacing: .2em; text-transform: uppercase; }
 .bt-tip .tx span { display: block; min-height: 2.7em; }
@@ -1501,7 +1520,7 @@ html.bt-pad .bt-battle .bt-cmd { bottom: 50px; }
   .bt-eq-mates { grid-column: 1 / -1; grid-template-columns: repeat(9, minmax(0, 1fr)); overflow: visible; }
   .bt-eq-mates button { grid-template-columns: 1fr; justify-items: center; padding: 3px; }
   .bt-eq-mates b { font-size: 12px; text-align: center; } .bt-eq-mates b small { display: none; }
-  .bt-eq-mates img { width: 100%; height: 44px; }
+  .bt-eq-mates .av { width: 100%; height: 44px; }
   .bt-eq-who { min-height: 320px; }
 }
 /* Operations: list under the boss on tall narrow windows. */
@@ -1520,7 +1539,7 @@ html.bt-pad .bt-battle .bt-cmd { bottom: 50px; }
   .bt-battle .bt-desc { font-size: 16px; }
   .bt-battle .bt-who { height: 160px; } .bt-battle .bt-who img { height: 230px; }
   .bt-battle .bt-card { max-width: 300px; height: 112px; padding-left: 104px; }
-  .bt-battle .bt-card .face { width: 110px; height: 128px; }
+  .bt-battle .bt-card .face { width: 98px; }
   .bt-battle .bt-card .nm { font-size: 22px; }
   .bt-battle .bt-bar b { font-size: 21px; }
   .bt-battle .bt-party { right: calc(min(26vw, 460px) + clamp(16px, 2.6vw, 44px) + 34px); }
@@ -1536,3 +1555,349 @@ html.bt-pad .bt-battle .bt-cmd { bottom: 50px; }
 .bt-cmd .bt-mtitle { font-size: 12px; letter-spacing: .1em; }
 .bt-cmd .bt-mtitle .vs i { font-size: 1.15em; }
 @media (min-width: 1700px) and (min-height: 950px) { .bt-hub-copy, .bt-hub .bt-solar { zoom: 1.15; } }
+
+/* ════════════════════════════════════════════════════
+   BATCH 4: playtest fixes. Short windows (primary buttons always on screen), portrait crops, steady menus, Theurgy ready.
+   ════════════════════════════════════════════════════ */
+/* ── Big display type follows the window height too ── */
+.bt-over h1 { font-size: clamp(40px, min(12vw, 16vh), 170px); }
+.bt-room-in h1 { font-size: clamp(36px, min(8vw, 13vh), 104px); }
+.bt-res-title { font-size: clamp(52px, min(11vw, 19vh), 160px); }
+.bt-tree-head h1 { font-size: clamp(32px, min(6vw, 10vh), 76px); }
+.bt-prompt h2 { font-size: clamp(38px, min(8vw, 13vh), 104px); }
+.bt-big { font-size: clamp(48px, min(11vw, 20vh), 150px); }
+.bt-intro b, .bt-moon h2 { font-size: clamp(40px, min(10vw, 18vh), 130px); }
+.bt-finish h2 { font-size: clamp(48px, min(10vw, 19vh), 156px); }
+.bt-evk-name { font-size: clamp(44px, min(9.5vw, 18vh), 138px); }
+.bt-awk-name { font-size: clamp(48px, min(11vw, 20vh), 168px); }
+.bt-theurgy .th-name { font-size: clamp(42px, min(9vw, 17vh), 140px); }
+.bt-evx-txt h1 { font-size: clamp(44px, min(10vw, 17vh), 150px); }
+.bt-wheel .wt { font-size: clamp(36px, min(7vw, 13vh), 96px); }
+.bt-hub h1 { font-size: clamp(40px, min(6.6vw, 12vh), 140px); }
+
+/* ── Sticky action bars: a screen's main button stays in view even when its content has to scroll ── */
+.bt-over > div { max-height: 100%; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
+.bt-over > .bt-clock-bg { max-width: none; max-height: none; overflow: hidden; }
+.bt-over .row, .bt-room-in .row { position: sticky; bottom: 0; z-index: 3; padding: 10px 0 4px; background: linear-gradient(to top, rgba(8, 3, 8, .9) 60%, rgba(8, 3, 8, 0)); box-shadow: 0 16px 0 rgba(8, 3, 8, .9); }
+.bt-room-in { max-height: 100%; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
+.bt-actbar { position: sticky; bottom: 0; z-index: 3; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; padding: 10px 0 2px; background: rgba(20, 7, 15, .97); box-shadow: 0 22px 0 rgba(20, 7, 15, .97); }
+.bt-memview .bt-card-lg > img { max-height: min(60vh, calc(100vh - 230px)); }
+/* Fuuka's bubble keeps its own type inside the full-screen notices. */
+.bt-over .bt-nav p { font: 600 15px/1.35 "Avenir Next", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif; color: var(--ink); text-align: left; animation: none; margin: 0 0 0 -16px; }
+.bt-over .bt-nav { max-width: min(520px, 100%); }
+.bt-clock .bt-navline { display: flex; justify-content: center; }
+.bt-nav.bt-room-nav { position: relative; top: auto; right: auto; bottom: auto; left: auto; }
+
+/* ── Battle menus: the description box has one fixed height, so the list never moves when the pick changes ── */
+.bt-desc { height: calc(4 * 1.4em + 18px); min-height: 0; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
+.bt-cmd .bt-mtitle { position: relative; z-index: 1; margin: 0 0 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.3; }
+.bt-menu.scroll { margin-top: 0; padding-top: 6px; }
+.bt-set-desc { height: calc(2 * 1.4em + 18px); min-height: 0; overflow-y: auto; }
+.bt-map-info { height: 82px; min-height: 0; overflow: hidden; }
+.bt-tree-foot p { min-height: 2.8em; }
+.bt-shop-detail { height: 112px; min-height: 0; overflow-y: auto; }
+
+/* ── Party cards: the face sits in the slanted card; the name and Persona are two lines (no "…") ── */
+.bt-card { padding-left: 94px; }
+.bt-card .face::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 70%, rgba(10, 3, 8, .55)); pointer-events: none; }
+.bt-card.active .face { box-shadow: inset -3px 0 0 #fff; }
+.bt-card .nm small { display: block; max-width: 100%; }
+/* Names size to the card (narrow windows get four narrow cards); long Persona names get tighter type instead of "…". */
+.bt-card { container-type: inline-size; }
+.bt-card .nm { font-size: clamp(12px, 9cqi, 19px); }
+.bt-card .nm small { font-size: clamp(8.5px, 5.8cqi, 11px); }
+.bt-card .nm small.long { letter-spacing: .02em; font-size: clamp(8px, 5.2cqi, 10.5px); }
+.bt-card .bt-bar { margin-top: 4px; }
+.bt-card .bt-th { left: 94px; }
+@media (min-width: 1700px) and (min-height: 950px) { .bt-battle .bt-card { padding-left: 108px; } .bt-battle .bt-card .bt-th { left: 108px; } .bt-card .nm small { font-size: 12px; } }
+
+/* ── Map: Solar's marker and node glyphs read at small sizes ── */
+.bt-mapsvg .node .lbl { font-size: 13px; }
+
+/* ── Theurgy ready: a gold aura on the card, rising sparks, a shimmering gauge, a gold ring in the turn order ── */
+.bt-card .aura, .bt-card .thtag { display: none; }
+.bt-card.th-ready { box-shadow: 5px 5px 0 var(--gold); }
+.bt-card.th-ready .aura { display: block; position: absolute; inset: -5px; z-index: -1; transform: none; pointer-events: none; }
+.bt-card.th-ready .aura::before { content: ""; position: absolute; inset: 0; border: 2px solid #ffe08a; box-shadow: 0 0 16px 3px rgba(255, 211, 107, .75), inset 0 0 14px rgba(255, 211, 107, .45); opacity: .55; animation: bt-aura 1.4s ease-in-out infinite alternate; will-change: opacity; }
+.bt-card.th-ready .aura i { position: absolute; bottom: 4px; width: 4px; height: 4px; border-radius: 50%; background: #fff2b0; box-shadow: 0 0 6px 2px rgba(255, 211, 107, .9); opacity: 0; animation: bt-spark 2.4s ease-out infinite; will-change: transform, opacity; }
+.bt-card.th-ready .aura i:nth-of-type(1) { left: 14%; animation-delay: 0s; } .bt-card.th-ready .aura i:nth-of-type(2) { left: 34%; animation-delay: .5s; }
+.bt-card.th-ready .aura i:nth-of-type(3) { left: 55%; animation-delay: 1s; } .bt-card.th-ready .aura i:nth-of-type(4) { left: 74%; animation-delay: 1.5s; } .bt-card.th-ready .aura i:nth-of-type(5) { left: 90%; animation-delay: 1.9s; }
+.bt-card .aura b { position: absolute; top: 0; bottom: 0; left: 0; width: 40%; background: linear-gradient(100deg, transparent, rgba(255, 246, 200, .85) 45%, #fff 50%, rgba(255, 246, 200, .85) 55%, transparent); opacity: 0; transform: translateX(-120%); }
+.bt-card.th-flash .aura { z-index: 2; }
+.bt-card.th-flash .aura b { animation: bt-thsweep .9s cubic-bezier(.5, 0, .3, 1) both; }
+.bt-card.th-ready .thtag { display: block; position: absolute; top: -17px; left: 4px; z-index: 3; padding: 2px 8px; background: var(--gold); color: var(--night); font: italic 900 11px/1.1 var(--cond); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; transform: skewX(12deg); box-shadow: 2px 2px 0 var(--night); }
+.bt-card.th-flash .thtag { animation: bt-thtag .5s cubic-bezier(.2, 1.5, .4, 1) both; }
+.bt-card .bt-th.full { overflow: hidden; }
+.bt-card .bt-th.full::after { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 35%; background: linear-gradient(90deg, transparent, #fff 50%, transparent); transform: translateX(-100%); animation: bt-thsheen 1.6s linear infinite; will-change: transform; }
+.bt-mp .bar.th.full { position: relative; overflow: hidden; }
+.bt-mp .bar.th.full::after { content: ""; position: absolute; inset: 0 auto 0 0; width: 35%; background: linear-gradient(90deg, transparent, #fff 50%, transparent); transform: translateX(-100%); animation: bt-thsheen 1.6s linear infinite; }
+.bt-order li.th { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold), 0 0 10px rgba(255, 211, 107, .8); opacity: 1; }
+.bt-mi.theurgy::before { content: ""; position: absolute; inset: -3px; border: 2px solid #fff2b0; box-shadow: 0 0 14px 2px rgba(255, 211, 107, .8); opacity: .5; animation: bt-aura 1.1s ease-in-out infinite alternate; pointer-events: none; will-change: opacity; }
+@keyframes bt-aura { from { opacity: .35; } to { opacity: 1; } }
+@keyframes bt-spark { 0% { opacity: 0; transform: translateY(0) scale(.6); } 15% { opacity: 1; } 100% { opacity: 0; transform: translateY(-70px) scale(1.1); } }
+@keyframes bt-thsweep { 0% { opacity: 1; transform: translateX(-120%); } 100% { opacity: 1; transform: translateX(280%); } }
+@keyframes bt-thtag { from { opacity: 0; transform: skewX(12deg) translateY(8px) scale(1.4); } }
+@keyframes bt-thsheen { to { transform: translateX(300%); } }
+/* Several ready at once stay calm: the sparks thin out on every card after the first. */
+.bt-card.th-ready ~ .bt-card.th-ready .aura i:nth-of-type(odd) { display: none; }
+html.bt-perf .bt-card .aura i, html.bt-perf .bt-card .aura b, html.bt-perf .bt-card .bt-th.full::after, html.bt-perf .bt-mp .bar.th.full::after { display: none; }
+html.bt-perf .bt-card.th-ready .aura::before, html.bt-perf .bt-mi.theurgy::before { animation: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .bt-card .aura i, .bt-card .aura b, .bt-card .bt-th.full::after, .bt-mp .bar.th.full::after { display: none; }
+  .bt-card.th-ready .aura::before, .bt-mi.theurgy::before { animation: none; opacity: 1; }
+  .bt-card.th-flash .thtag { animation: none; }
+}
+
+/* ── Short windows (laptops with the browser chrome, 1000×486 and up) ── */
+@media (max-height: 760px) and (min-width: 761px) {
+  /* Battle: the command panel loses the big portrait and tightens so the whole menu fits above the party. */
+  .bt-battle .bt-who { height: 66px; }
+  .bt-battle .bt-who img { height: 120px; right: 0; }
+  .bt-battle .bt-who .tag { bottom: 4px; }
+  .bt-mi { min-height: 38px; font-size: 22px; }
+  .bt-menu { gap: 6px; }
+  .bt-menu.small .bt-mi { min-height: 34px; font-size: 18px; }
+  .bt-menu.scroll { max-height: min(40vh, 330px); }
+  .bt-desc { margin-top: 8px; padding: 7px 12px; font-size: 13px; }
+  .bt-back { margin-top: 6px; }
+  .bt-hint { margin-top: 5px; }
+  .bt-field { top: 64px; bottom: 140px; }
+  .bt-battle .bt-nav { top: 56px; }
+  .bt-nav .pic { width: 60px; height: 60px; }
+  .bt-nav p { font-size: 14px; padding: 8px 14px 8px 26px; }
+  /* Map: compact party rows; the scan and items buttons stay pinned at the bottom of the side panel. */
+  .bt-map { padding-top: 10px; padding-bottom: 10px; }
+  .bt-map-side { gap: 8px; }
+  .bt-map-info { height: 70px; padding: 8px 14px; } .bt-map-info b { font-size: 19px; } .bt-map-info span { font-size: 13px; }
+  .bt-map-party { gap: 5px; }
+  .bt-mp { grid-template-columns: 40px minmax(0, 1fr); padding: 4px 10px 4px 4px; }
+  .bt-mp .av { width: 40px; height: 40px; }
+  .bt-mp .bar { margin-top: 3px; }
+  .bt-map-acts { position: sticky; bottom: 0; z-index: 2; padding: 6px 0 2px; background: linear-gradient(to top, rgba(8, 3, 10, .95) 70%, transparent); }
+  .bt-map-acts .bt-btn { padding: 8px 10px; font-size: 16px; }
+  .bt-map-nav .pic { width: 56px; height: 56px; }
+  .bt-map-nav p { font-size: 14px; padding: 8px 14px; }
+  /* Hub */
+  .bt-hub { padding-top: 52px; padding-bottom: 60px; }
+  .bt-hub-menu { margin-top: 12px; gap: 7px; }
+  .bt-hub-menu .bt-btn { padding: 9px 22px; font-size: 18px; }
+  .bt-hub-menu .bt-hub-row .bt-btn { padding: 9px 14px; font-size: 16px; }
+  .bt-hub-hint { display: none; }
+  /* Operations: the boss art gives way so the briefing and Start button fit. */
+  .bt-op-detail { grid-template-rows: minmax(0, 1fr) auto; }
+  .bt-op-art { min-height: 0; }
+  .bt-op-art img { max-height: 100%; }
+  .bt-op { padding-top: 6px; padding-bottom: 6px; }
+  .bt-ops-list { gap: 6px; }
+  /* Results */
+  .bt-res-exp { margin-top: 10px; font-size: 28px; }
+  .bt-res-btns { margin-top: 12px; gap: 10px; }
+  .bt-res-list { gap: 8px; }
+  .bt-res-row { padding-top: 6px; padding-bottom: 6px; }
+}
+@media (max-height: 620px) and (min-width: 761px) {
+  .bt-battle .bt-who { height: 40px; margin-bottom: 6px; }
+  .bt-battle .bt-who img { display: none; }
+  .bt-battle .bt-who .tag { bottom: 0; grid-auto-flow: column; align-items: center; justify-content: start; }
+  .bt-battle .bt-who .tag b { font-size: 18px; padding: 5px 12px; }
+  .bt-mi { min-height: 32px; font-size: 19px; padding: 4px 16px; }
+  .bt-mi .bt-ico { width: 18px; height: 18px; }
+  .bt-mi .r { font-size: 13px; }
+  .bt-menu { gap: 5px; }
+  .bt-menu.small .bt-mi { min-height: 30px; font-size: 16px; }
+  .bt-menu.scroll { max-height: min(34vh, 260px); }
+  .bt-desc { height: calc(3 * 1.35em + 14px); line-height: 1.35; padding: 5px 10px; font-size: 12.5px; }
+  .bt-cmd { bottom: 14px; }
+  .bt-cmd .bt-hint:not(.bt-mtitle) { display: none; }
+  .bt-back { margin-top: 5px; padding: 5px 14px; }
+  .bt-party { bottom: 10px; }
+  .bt-card { height: 84px; padding-top: 7px; padding-bottom: 7px; }
+  .bt-card .face { width: 78px; }
+  .bt-card { padding-left: 86px; }
+  .bt-card .bt-th { left: 86px; }
+  .bt-card .nm { font-size: clamp(12px, 8.6cqi, 17px); }
+  .bt-bar b { font-size: 16px; }
+  .bt-bar.sp b { font-size: 12.5px; }
+  .bt-field { top: 56px; bottom: 112px; padding-bottom: 2vh; }
+  .bt-plate { bottom: calc(100% + 26px); }
+  .bt-log { bottom: 104px; }
+  .bt-rushtag { bottom: 104px; }
+  .bt-nav .pic { width: 50px; height: 50px; }
+  .bt-nav p { font-size: 13px; }
+  .bt-banner { top: 56px; font-size: 21px; padding: 7px 22px; }
+  .bt-order li { width: 28px; height: 28px; } .bt-order li.now { width: 36px; height: 36px; }
+  .bt-tool { padding: 6px 10px; font-size: 12px; }
+  .bt-floorlabel b { font-size: 20px; }
+  .bt-evk-band { height: 150px; --zk: .8; }
+  /* Full-screen notices (clock, game over, complete) */
+  .bt-over > div { padding: 10px 16px; }
+  .bt-over .bt-kicker { margin-bottom: 6px; }
+  .bt-over p { margin: 6px 0; font-size: 15.5px; line-height: 1.35; }
+  .bt-over .row { margin-top: 6px; }
+  .bt-clock .bt-brief { margin-top: 6px; padding: 8px 14px; font-size: 13.5px; line-height: 1.35; }
+  .bt-over .bt-navline .bt-nav { margin-top: 8px; }
+  .bt-over .bt-nav p { font-size: 13.5px; padding: 7px 14px 7px 24px; }
+  .bt-room-in { gap: 8px; padding: 12px 16px; }
+  .bt-room-body > p { font-size: 15px; padding: 8px 14px; }
+  .bt-memcard { width: min(220px, 40vh); }
+  .bt-loot { padding: 10px 18px; } .bt-loot .bt-icon { width: 46px; height: 46px; }
+  .bt-btn { padding: 10px 22px; font-size: 18px; }
+  /* Map */
+  .bt-map-top .bt-floorlabel { padding: 5px 14px; }
+  .bt-steps { padding: 5px 14px; }
+  .bt-map-info { height: 64px; padding: 6px 12px; } .bt-map-info b { font-size: 17px; } .bt-map-info span { font-size: 12px; margin-top: 2px; }
+  .bt-mp { grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 3px 8px 3px 3px; }
+  .bt-mp .av { width: 32px; height: 32px; }
+  .bt-mp b { font-size: 14px; }
+  .bt-mp .bar { height: 4px; margin-top: 2px; }
+  .bt-map-side .bt-hint { display: none; }
+  .bt-map-nav { margin-top: 4px; }
+  .bt-map-nav .pic { width: 46px; height: 46px; }
+  .bt-map-nav p { font-size: 13px; padding: 6px 12px; }
+  .bt-map-nav b { margin-bottom: 2px; font-size: 11px; }
+  /* Hub */
+  .bt-hub { padding-top: 48px; padding-bottom: 56px; gap: 14px; }
+  .bt-hub h1 small { margin-top: 6px; }
+  .bt-kicker { margin-bottom: 5px; }
+  .bt-hub-menu { margin-top: 8px; gap: 5px; }
+  .bt-hub-menu .bt-btn { padding: 7px 20px; font-size: 16.5px; }
+  .bt-hub-menu .bt-hub-row .bt-btn { padding: 7px 12px; font-size: 15px; }
+  .bt-hub .bt-solar { padding: 14px 16px; }
+  .bt-hub .bt-solar h2 { font-size: 30px; }
+  .bt-solar .persona { margin-bottom: 6px; }
+  .bt-stats { margin-top: 6px; } .bt-stats b { font-size: 17px; }
+  .bt-hub .bt-solar .bt-chips { max-height: 52px; overflow: hidden; }
+  .bt-hub-party { margin-top: 8px; gap: 6px; }
+  .bt-hub-party .av { width: 28px; height: 28px; }
+  .bt-meta { margin-top: 8px; }
+  /* Screens with a head bar */
+  .bt-tree-head { padding-top: 10px; gap: 8px 16px; }
+  .bt-pts { font-size: 18px; padding: 6px 14px; }
+  .bt-tree-foot { padding: 10px 18px; margin-bottom: 10px; }
+  .bt-tree-foot h3 { font-size: 20px; }
+  .bt-tree-foot p { font-size: 13.5px; }
+  .bt-tree-skills { display: none; }
+  .bt-party-foot { padding: 8px 16px; margin-bottom: 10px; }
+  .bt-op-detail .bt-card-lg { padding: 14px 18px; }
+  .bt-op-detail .bt-card-lg h2 { font-size: 30px; }
+  .bt-op-detail .note { margin: 6px 0; font-size: 14px; }
+  .bt-op-meta { margin-top: 6px; }
+  .bt-op-detail .bt-res-btns { margin-top: 10px; }
+  .bt-op-detail .bt-res-btns .bt-btn { padding: 9px 16px; font-size: 16px; }
+  .bt-res-title small { margin-bottom: 6px; }
+  .bt-res-extra span { padding: 5px 12px; font-size: 14px; }
+  .bt-res-btns .bt-btn { padding: 9px 18px; font-size: 17px; }
+  .bt-res-row .pic { width: 70px; height: 52px; }
+  .bt-res-row { grid-template-columns: 70px minmax(0, 1fr); }
+  .bt-res-row b { font-size: 19px; }
+  .bt-gains { margin-top: 3px; font-size: 12px; }
+  .bt-evx-old, .bt-evx-new { height: 58vh; top: 3vh; }
+  .bt-evx-txt { bottom: 2vh; gap: 5px; }
+  .bt-evx-txt .sub { font-size: 15px; padding: 4px 14px; }
+  .bt-prompt-inner { gap: 12px; }
+  /* Panels */
+  .bt-card-lg { padding: 16px 20px; }
+  .bt-card-lg h2 { font-size: 30px; }
+  .bt-ov-card { padding: 12px 18px; }
+  .bt-ov-head { margin-bottom: 8px; }
+  .bt-set-row { min-height: 36px; }
+  .bt-tip { top: 54px; }
+}
+@media (max-height: 520px) and (min-width: 761px) {
+  .bt-mi { min-height: 29px; font-size: 18px; }
+  .bt-menu { gap: 4px; }
+  .bt-menu.small .bt-mi { min-height: 28px; font-size: 15.5px; }
+  .bt-menu.scroll { max-height: min(32vh, 220px); }
+  .bt-card { height: 78px; }
+  .bt-card .face { width: 72px; }
+  .bt-card { padding-left: 80px; }
+  .bt-card .bt-th { left: 80px; }
+  .bt-card .nm { font-size: clamp(12px, 8.4cqi, 16px); }
+  .bt-bar { margin-top: 3px; }
+  .bt-bar b { font-size: 15px; }
+  .bt-field { bottom: 100px; }
+  .bt-log, .bt-rushtag { bottom: 94px; }
+  .bt-over p { font-size: 14.5px; }
+  .bt-over .bt-nav .pic { width: 46px; height: 46px; }
+  .bt-hub { padding-top: 46px; }
+  .bt-hub-menu .bt-btn { padding: 6px 18px; font-size: 15.5px; }
+  .bt-hub-menu .bt-hub-row .bt-btn { padding: 6px 12px; font-size: 14.5px; }
+  .bt-hub .bt-solar .bt-chips { display: none; }
+  .bt-mp .bar.th { display: none; }
+}
+
+/* The Theurgy tag sits above the face; with a Shift tag there too, it stacks above it. */
+.bt-card.boosted.th-ready .thtag { top: -34px; }
+.bt-map-info span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+/* Operations (side-by-side layout): the list scrolls on its own and the briefing card, with its Start button, always shows. */
+@media (min-width: 941px) {
+  .bt-ops { grid-template-rows: minmax(0, 1fr); overflow: hidden; }
+  .bt-ops-list { min-height: 0; overflow-y: auto; padding: 2px 8px 8px 2px; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
+  .bt-op-detail { display: flex; flex-direction: column; min-height: 0; }
+  .bt-op-art { flex: 1 1 0; min-height: 0; }
+  .bt-op-art img { max-height: 100%; }
+  .bt-op-detail .bt-card-lg { flex: 0 1 auto; min-height: 0; max-height: none; overflow-y: auto; }
+  .bt-op-detail .bt-res-btns { position: sticky; bottom: 0; z-index: 2; padding-top: 8px; background: rgba(20, 7, 15, .97); box-shadow: 0 22px 0 rgba(20, 7, 15, .97); }
+}
+/* Phones keep their own card layout (face strip on top, name over it). */
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-card { padding-left: 8px; }
+  .bt-card .bt-th { left: 10px; right: 10px; }
+  .bt-card .nm small { display: none; }
+  .bt-card .nm { display: block; }
+  .bt-card .face::after { display: none; }
+  .bt-card.th-ready .thtag { top: -15px; font-size: 9px; padding: 1px 5px; }
+  .bt-desc { height: calc(2 * 1.35em + 12px); line-height: 1.35; }
+}
+
+/* ── Affinity markers on the field (skill list and target step), P3R yellow and black ── */
+.bt-amk { position: absolute; left: 50%; bottom: calc(100% + 4px); z-index: 4; pointer-events: none; transform: translateX(-50%); }
+/* With a marker, the marker is the cursor: the arrow steps aside and the Analyze plate sits above the marker. */
+.bt-enemy.targeted:is(.amk-weak, .amk-bad, .amk-unk)::before { display: none; }
+.bt-enemy:is(.amk-weak, .amk-bad, .amk-unk) .bt-plate { bottom: calc(100% + 50px); }
+.bt-amk b { display: block; padding: 3px 12px; background: var(--night); color: #fff; font: italic 900 16px/1 var(--cond); letter-spacing: .1em; white-space: nowrap; transform: skewX(-14deg); box-shadow: 3px 3px 0 rgba(255, 255, 255, .85); }
+.bt-amk b small { display: none; font-size: .78em; letter-spacing: .04em; }
+.bt-amk.k-weak b { padding: 5px 16px; background: #ffe14d; color: var(--night); font-size: 24px; box-shadow: 4px 4px 0 var(--night), 0 0 0 2px var(--night); }
+.bt-amk.k-weak { animation: bt-amk-bob .62s cubic-bezier(.3, 0, .4, 1) infinite alternate; will-change: transform; }
+.bt-amk.k-resist b { background: #6a7cff; } .bt-amk.k-null b { background: #555; } .bt-amk.k-drain b { background: #3fd28c; color: var(--night); } .bt-amk.k-repel b { background: #c07bff; }
+.bt-amk.k-unk b { background: rgba(20, 7, 15, .85); color: var(--muted); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .45); font-size: 18px; }
+.bt-enemy.targeted .bt-amk.k-weak b small { display: inline; }
+.bt-enemy.targeted.amk-weak::before { border-top-color: #ffe14d; filter: drop-shadow(3px 3px 0 var(--night)); }
+.bt-enemy.targeted .bt-amk.k-weak b { box-shadow: 4px 4px 0 var(--night), 0 0 0 2px var(--night), 0 0 18px 4px rgba(255, 225, 77, .75); }
+.bt-amk-ring { position: absolute; left: 8%; right: 8%; bottom: 10px; z-index: -1; height: 16%; min-height: 18px; border: 3px solid #ffe14d; border-radius: 50%; box-shadow: 0 0 14px rgba(255, 225, 77, .8), inset 0 0 10px rgba(255, 225, 77, .5); pointer-events: none; animation: bt-amk-ring 1s ease-in-out infinite alternate; will-change: transform, opacity; }
+.bt-enemy.amk-weak:not(.dead):not(.fled):not(.hit):not(.down):not(.charging) .sh-pic, .bt-enemy.amk-weak:not(.dead):not(.hit):not(.down):not(.charging) > svg.sh { animation: bt-amk-flinch 1.3s steps(1) infinite; }
+.bt-enemy.amk-bad .sh, .bt-enemy.amk-bad .sh-pic { opacity: .45; transition: opacity .15s; }
+@keyframes bt-amk-bob { from { transform: translateX(-50%) translateY(0); } to { transform: translateX(-50%) translateY(-9px); } }
+@keyframes bt-amk-ring { from { transform: scale(.92); opacity: .55; } to { transform: scale(1.06); opacity: 1; } }
+@keyframes bt-amk-flinch { 0%, 70%, 100% { transform: none; } 74% { transform: translateX(-3px); } 80% { transform: translateX(3px); } 86% { transform: translateX(-2px); } }
+/* A weakness hit: a yellow ring bursts off the Shadow; hit-stop freezes it for a beat. */
+.bt-wburst { position: absolute; left: 50%; top: 50%; z-index: 5; width: 160px; height: 160px; margin: -80px 0 0 -80px; border: 6px solid #ffe14d; border-radius: 50%; box-shadow: 0 0 20px #ffe14d, inset 0 0 16px rgba(255, 225, 77, .7); pointer-events: none; animation: bt-wburst .55s cubic-bezier(.2, .8, .3, 1) forwards; }
+@keyframes bt-wburst { from { transform: scale(.25); opacity: 1; } to { transform: scale(1.7); opacity: 0; } }
+.bt-enemy.hitstop .sh, .bt-enemy.hitstop .sh *, .bt-enemy.hitstop .sh-pic img { animation-play-state: paused !important; }
+/* "Weakness discovered!" and the Analyze cell that flips when it's learned. */
+.bt-disc { position: absolute; left: 50%; top: 18%; z-index: 33; pointer-events: none; transform: translateX(-50%); animation: bt-disc 1.6s ease both; }
+.bt-disc > span { display: flex; align-items: center; gap: 10px; padding: 7px 18px; background: #ffe14d; color: var(--night); transform: skewX(-14deg); box-shadow: 5px 5px 0 var(--night), 0 0 0 2px var(--night); white-space: nowrap; }
+.bt-disc > span > * { transform: skewX(14deg); }
+.bt-disc b { font: italic 900 22px/1 var(--cond); letter-spacing: .06em; text-transform: uppercase; }
+.bt-disc small { font: italic 800 12px/1 var(--cond); letter-spacing: .14em; text-transform: uppercase; }
+.bt-disc .bt-ico { width: 22px; height: 22px; }
+@keyframes bt-disc { 0% { opacity: 0; transform: translateX(-50%) translateY(14px) scale(.8); } 12% { opacity: 1; transform: translateX(-50%) scale(1.06); } 20%, 82% { opacity: 1; transform: translateX(-50%); } 100% { opacity: 0; transform: translateX(-50%) translateY(-10px); } }
+.bt-aff.flip em { animation: bt-flip .6s cubic-bezier(.3, 1.4, .5, 1) both; }
+@keyframes bt-flip { 0% { transform: perspective(80px) rotateY(90deg); } 100% { transform: perspective(80px) rotateY(0); } }
+html.bt-perf .bt-amk.k-weak, html.bt-perf .bt-amk-ring, html.bt-perf .bt-enemy.amk-weak .sh-pic, html.bt-perf .bt-enemy.amk-weak > svg.sh { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .bt-amk.k-weak, .bt-amk-ring, .bt-enemy.amk-weak .sh-pic, .bt-enemy.amk-weak > svg.sh, .bt-aff.flip em { animation: none !important; }
+  .bt-wburst { display: none; }
+  .bt-disc { animation-name: bt-in; }
+}
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-amk b { font-size: 12px; padding: 2px 8px; } .bt-amk.k-weak b { font-size: 16px; padding: 3px 10px; }
+  .bt-disc b { font-size: 16px; }
+}
+
+/* Results: bigger face crops in the rows and the bench. */
+.bt-res-row { grid-template-columns: 96px minmax(0, 1fr); }
+.bt-res-row .pic { width: 96px; height: 76px; }
+.bt-bench span .av { width: 32px; height: 32px; }
+@media (max-height: 620px) and (min-width: 761px) { .bt-res-row { grid-template-columns: 76px minmax(0, 1fr); } .bt-res-row .pic { width: 76px; height: 58px; } .bt-bench span .av { width: 26px; height: 26px; } }
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) { .bt-res-row { grid-template-columns: 64px minmax(0, 1fr); } .bt-res-row .pic { width: 64px; height: 52px; } }
