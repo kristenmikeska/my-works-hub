@@ -242,6 +242,20 @@
       { n: "Aphrodite stood there for a long moment. Then she sat down on an overturned crate, in her impossible gold, among the bins." },
       { s: 'aphrodite', f: 'sad', t: "Four thousand years. And I've never once told him no." },
       { s: 'aphrodite', f: 'sad', t: "The worst part, little sun, is that I didn't want him to go." },
+      { choose: [
+        { t: "Then he'll come back. He stopped at the corner.", notes: 3, then: [
+          { s: 'aphrodite', f: 'surprised', t: "He did? He stopped?" },
+          { s: 'solar', f: 'neutral', t: "Hand on the wall. Like he was going to turn around." },
+          { s: 'aphrodite', f: 'neutral', t: "...Ares has never once in his life stopped at a corner. He goes through corners. He goes through walls." }
+        ] },
+        { t: "You can not want him to go and still say no.", notes: 3, then: [
+          { s: 'aphrodite', f: 'neutral', t: "Can you? Is that allowed? Both at once?" },
+          { s: 'solar', f: 'neutral', t: "I think it's most of what people do." }
+        ] },
+        { t: "He's terrifying.", notes: 1, then: [
+          { s: 'aphrodite', f: 'happy', t: "Isn't he? It's his best feature. Don't tell him I said so." }
+        ] }
+      ] },
       { n: "Solar sat on the crate next to her. Neither of them said anything for a while. A train went over somewhere above them, shaking dust down from the girders, and the goddess flinched, very slightly, and Solar put a hand on her back, between her shoulder blades, and left it there, and felt her breathing, and felt it slowly, slowly, come back down." }
     ] },
 
