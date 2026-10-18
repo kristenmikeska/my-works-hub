@@ -4,7 +4,8 @@
    dim the day image instead. Places with no rule keep the plain pink backdrop. */
 window.FEMC_BG = [
   // Other worlds, and the Dark Hour (the school itself becomes Tartarus)
-  ['The Velvet Room', 'velvetroom-1'],
+  ['The Velvet Room', 'velvetroom-elevator'],
+  ['Tartarus · Lobby', 'tartarus-lobby'],
   ['Tartarus', 'tartarus-entrance'],
   ['Gekkoukan High · Rooftop · The Dark Hour', 'tartarus-fromadistance'],
   ['Gekkoukan High · Gym · The Dark Hour', 'tartarus-fromadistance'],

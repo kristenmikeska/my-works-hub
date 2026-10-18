@@ -66,7 +66,8 @@ Tartarus could have blocks shaped by her memories, with Shadows built from each 
 
 ## 4. Backgrounds
 - [x] Tartarus blocks, dorm exterior, Gekkoukan gate, shops
-- [ ] Velvet Room (the P3 elevator version), Tartarus lobby, the dorm roof at night
+- [x] Velvet Room elevator, Tartarus lobby
+- [ ] The dorm roof at night
 - [ ] Gekkoukan classroom, Solar's dorm room in the revamp
 - [ ] Flashback locations, in a dreamy, washed-out style:
   - Syracuse quad, Alpha Phi house, Sigma Chi house (Runners)
