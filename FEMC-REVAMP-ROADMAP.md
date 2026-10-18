@@ -55,3 +55,14 @@ What's next for the battle prototype (`femc-battle.html`). **Claude** = code, **
   - **Yeobo's Cafe** (*Hoax*): shifts with Sunoo and the ENHYPEN boys dropping in. Jungwon studying in a booth? Jihoon's crew starting trouble?
   - *Ideas to confirm with Kat:* a campus-style coffee bar or esports café (*Runners*), a harbor fish market or the Lee family's restaurant (*strangers*).
 - **Jobs pay yen and raise social stats.** The world-specific ones also trigger memory fragments and searcher scenes, so they can nudge routes.
+
+## 6. Skill system: Kat's picks (2026-10-18)
+- **8 skill slots per Persona, P3-style.** Learning a 9th asks which skill to forget.
+- **Skills upgrade in place.** Agi → Agilao → Agidyne stays in the same slot, so the list never bloats.
+- **Haenim's tree has branches plus route keystones:**
+  - a core trunk, then offense, healing, support and passive branches
+  - one keystone for each route form (Sunna, Mazu, Nike, Unveiled)
+  - nodes that memory fragments unlock
+  - respec allowed
+- **Party members get small trees opened by link rank.** Levels give points, link ranks open new branches, and each member has a final upgraded skill.
+- The tree lives in the shared game menu's Skills tab, built after the life sim and battle are merged into one game.
