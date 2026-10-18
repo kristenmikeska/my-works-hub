@@ -12,7 +12,7 @@ Full-screen 16:9 illustrations for big moments, the way P3R and P5R show a paint
 
 **Story**
 - [ ] Prologue: Solar waking in Tartarus, alone, green moonlight, an Evoker on the floor beside her
-- [ ] Akihiko finding her, reaching a hand down to pull her up
+- [x] Akihiko finding her (`Event CGs/prologue-akihiko-finds-solar.png`)
 - [ ] The first night at the dorm: S.E.E.S. in the lounge staring at the new girl
 - [ ] Solar's first day at Gekkoukan, at the gate with cherry blossoms
 - [ ] Elizabeth showing Solar her blank page in the compendium
