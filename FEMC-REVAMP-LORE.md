@@ -126,6 +126,8 @@ P3 keeps happening, lightly:
 
 **Side romances** (P5R-style, outside canon): Ann, Kasumi, Judy, Rio, Saori.
 
+**(Kat:)** in *Hoax*, **Cherry is Solar's best friend**. She's the one who runs to her in the Hoax ending, so treat her as a key Hoax person.
+
 **New social links from her own worlds** (searchers, arriving later): Hanni, Hyein, Yunjin, Mark, Jaehyun, Minji, Sunoo, Cherry, Junkyu and more, alongside the canon romances above.
 
 **Everyone else is a friendship.** Some links become something more than "just friends":
