@@ -68,8 +68,8 @@ Tartarus could have blocks shaped by her memories, with Shadows built from each 
 - [x] Tartarus blocks, dorm exterior, Gekkoukan gate, shops
 - [x] Velvet Room elevator, Tartarus lobby
 - [x] The dorm roof at night
-- [ ] Gekkoukan classroom, Solar's dorm room in the revamp
-- [ ] Flashback locations, in a dreamy, washed-out style:
+- [x] Gekkoukan classroom (day and evening), Solar's dorm room (day and night), dorm roof at sunset
+- [x] Flashback locations, in a dreamy, washed-out style (all 9 done):
   - Syracuse quad, Alpha Phi house, Sigma Chi house (Runners)
   - Incheon harbor, the Lee house, the fish market (strangers)
   - Hamlim hallway, the gym, Yeobo's Cafe (Hoax)

@@ -5,6 +5,9 @@
 window.FEMC_BG = [
   // Other worlds, and the Dark Hour (the school itself becomes Tartarus)
   ['The Velvet Room', 'velvetroom-elevator'],
+  // Solar's other worlds (Haechan's secret endings now; flashbacks in the revamp)
+  ['Syracuse', 'flashback-syracuse-quad'],
+  ['Incheon', 'flashback-lee-house'],
   ['Tartarus · Lobby', 'tartarus-lobby'],
   ['Tartarus', 'tartarus-entrance'],
   ['Gekkoukan High · Rooftop · The Dark Hour', 'tartarus-fromadistance'],
@@ -20,6 +23,7 @@ window.FEMC_BG = [
   ['Gekkoukan High · Library', 'school-library'],
   ['Gekkoukan High · Gym · After Hours', 'school-entryhallway'],
   ['Gekkoukan High · Front Gate', 'gekkoukanhigh'],
+  ['Gekkoukan High · Classroom', 'gekkoukan-classroom-day', 'gekkoukan-classroom-evening'],
   ['Gekkoukan High', 'school-hallway'],
 
   // Iwatodai Dorm
@@ -34,7 +38,7 @@ window.FEMC_BG = [
   ["Iwatodai Dorm · Solar's Room", 'pink-bedroom-2'],
   ["Iwatodai Dorm · Akihiko's Room", 'akihiko-bedroom'],
   ["Iwatodai Dorm · Kuromi's Room", 'kuromi-bedroom'],
-  ['Iwatodai Dorm · Rooftop', 'iwatodaidorm-roof-night'],
+  ['Iwatodai Dorm · Rooftop', 'iwatodaidorm-roof-evening', 'iwatodaidorm-roof-night'],
   ['Iwatodai Dorm · Front', 'iwotodaidorm-outside'],
 
   // Iwatodai
