@@ -63,7 +63,7 @@ Everything left on the art list except the two in progress (Hanni & Hyein at the
 > A walled Korean house on a hill above a harbor at low tide, at dawn, red lanterns still glowing along the wall. Solar, in a soft sweater and pink rabbit socks, stands at the open gate as Yunjin (long red hair) runs toward her. Behind, Haechan leans in the doorway, watching. Pink-grey dawn, red lanterns.
 
 **15. Hoax: home** (📎 Solar, Jungwon, Sunoo, Jihoon)
-> A Korean high school gym at night, decorated with blue and silver streamers and string lights, a ballot box on a table. Solar stands in the doorway in a school blazer as Sunoo throws his arms around her. Jungwon and Jihoon both stand nearby, one at each side of the room, both looking at her. Sparkly, emotional, warm.
+> A Korean high school gym at night, decorated with blue and silver streamers and string lights, a ballot box on a table. Solar stands in the doorway in a school blazer as Cherry (her best friend) throws her arms around her. Jungwon and Jihoon both stand nearby, one at each side of the room, both looking at her. Sparkly, emotional, warm.
 
 **16. Stay** (📎 Solar with armband, Akihiko, S.E.E.S. members)
 > The dorm rooftop at dawn, the city below, pink and gold sky with the moon fading. S.E.E.S. stands at the railing watching the sunrise; Solar sits on the bench with Akihiko, her head on his shoulder, his arm around her. Peaceful, a little sad, home.

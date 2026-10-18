@@ -28,8 +28,8 @@ Full-screen 16:9 illustrations for big moments, the way P3R and P5R show a paint
 
 **Endings**
 - [x] Runners: Syracuse in snow, Haechan and the girls
-- [ ] strangers: the Lee house at low tide
-- [ ] Hoax: Hamlim on the night of the count
+- [x] strangers: the Lee house at low tide
+- [x] Hoax: Hamlim on the night of the count (Cherry, not Sunoo: she's Solar's best friend in Hoax)
 - [ ] Stay: S.E.E.S. and Akihiko on the dorm roof at dawn
 - [ ] True ending: Solar taking Wren's hand
 
