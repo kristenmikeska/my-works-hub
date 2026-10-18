@@ -19,8 +19,8 @@ Full-screen 16:9 illustrations for big moments, the way P3R and P5R show a paint
 - [ ] Solar meeting Wren on the station bench
 - [x] The first text from a number she doesn't know (`Event CGs/story-unknown-text.webp`): Solar in bed, phone glow
 - [x] Hanni and Hyein finding her (`Event CGs/searchers-hanni-hyein-find-solar.webp`), a tearful "SOL?!" at Paulownia Mall *(draft saved: `Event CGs/searchers-hanni-hyein-find-solar-draft.webp`; style is right, but the signs are duplicated. Redo in ChatGPT with the sign list: Chagall Café, Be Blue V, Game Panic, Mandragora, Escapade, Aohige Pharmacy, plus the blue Velvet Room door.)*
-- [ ] Jaehyun finding his sister
-- [ ] Haechan finding her (his first look at her, flat and stunned)
+- [x] Jaehyun finding his sister
+- [x] Haechan finding her (his first look at her, flat and stunned)
 - [ ] Jungwon finding her
 - [ ] A searcher awakening their Persona (one per searcher who fights)
 - [ ] Facing Wren's Shadow: Solar small, the Last Train enormous

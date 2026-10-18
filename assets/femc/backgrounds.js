@@ -12,7 +12,7 @@ window.FEMC_BG = [
   ['Tartarus', 'tartarus-entrance'],
   ['Gekkoukan High · Rooftop · The Dark Hour', 'tartarus-fromadistance'],
   ['Gekkoukan High · Gym · The Dark Hour', 'tartarus-fromadistance'],
-  ['Moonlight Bridge · The Dark Hour', 'moonlightbridge'],
+  ['Moonlight Bridge · The Dark Hour', 'darkhour-moonlight-bridge'],
   ['Port Island Station · The Dark Hour', 'tartarus-coffins'],
   ['Paulownia Mall · The Dark Hour', 'tartarus-coffins'],
   ['Iwatodai Station · Platform · The Dark Hour', 'darkhour-station-platform'],
