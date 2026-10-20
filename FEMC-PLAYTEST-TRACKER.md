@@ -19,13 +19,23 @@ These are playtest observations, questions, canon corrections and design ideas. 
 | 59 | Minji’s Junpei wording corrected; no implied second-world Junpei. |
 | 61 | Junkyu’s friend descriptions and homecoming history corrected to Kat’s ruling. |
 | 62 | Older-memory versus disappearance-night distinction clarified. |
-| 64 | Explicit household introductions and an in-world encounter added; related lodging callback corrected. |
+| 64 | Explicit household introductions and an in-world encounter added; related lodging callback corrected. Story pass: Haechan's first in-world meetings with every searcher who knows him (and Jungwon's with his) now play on screen, after each person has arrived. |
+| 54, 65, 75 | Housing ruling applied to the story and daily life: Haechan moves into the dorm after arriving and keeps his distance at first; Jihoon lives at the guesthouse; dorm/guesthouse references corrected throughout the story files. |
+| 57 | Breakfast at the dorm is shown as a visit (visitors' list, guests leave by eight); the routine that sets up the later breakfast callback now exists. |
+| 62 | Re-verified in the story pass: the older memory is clearly distinguished from the disappearance. |
+| 66 | Each searcher awakening now has its own trigger, setting and stakes; Haechan's is a high-stakes scene tied to both his worlds; Jungwon acknowledges carrying two lives. Battle hooks unchanged. |
+| 77 | Solar's own texts and phone choices use her novel texting voice everywhere; friends react to what she says rather than how she types. |
+| 78, 53 (story side) | Hoax canon state (election over) reflected in the story and the Hoax ending; Jihoon's story-scene voice revised toward HOAX. Link-side Jihoon work is tracked by its own writer. |
 
 ## Partly addressed; broader request remains
 
 | Entries | Coverage and remaining work |
 |---|---|
-| 1, 44, 49 | Five arrival-aware routines added for Hanni/Hyein/Jihoon. Broader daily variety, daytime texts and explicit cross-world conversations remain. |
+| 1, 44, 49 | Story pass: eighteen arrival-aware routines (walks to school, visits, meetings, late nights) and a new story event where searchers from different worlds compare what they know of Solar. Further variety beyond the searchers remains open. |
+| 2, 38, 71 | Story pass: story-aware daytime texts and three searcher group chats added, plus the unopenable campus-gossip notifications Kat proposed (with concerned friends glimpsed). Link-specific texts belong to the link files. |
+| 45, 50, 60, 76 | Story pass: the come-home asks and several routines acknowledge her love lives back home, naturally and not in every scene. Link-level coverage continues in the link files. |
+| 74 | Story side ready: readable lean flags exist for the link writer; the settling arc itself lives in Haechan's link. |
+| 42, 43 (story side) | The arrival-day introduction now responds to the player's actual answer and no longer uses the repeated restart wording. |
 | 42, 43 | Early dialogue/callback corrections completed. Whole-link repetition and later branches still need review. |
 | 52 | Minji’s guesthouse room is now established. Broader story integration remains. |
 | 57 | Junkyu/Asahi/Hyunsuk/Jaehyuk stay at the guesthouse. Breakfast at the dorm is a visit, not enrollment or residency. Clarify this in the narrative if needed. |
@@ -52,6 +62,6 @@ These are playtest observations, questions, canon corrections and design ideas. 
 
 ## Other unresolved notes
 
-Entries 2, 5, 21, 23–25, 27, 29, 32, 36–40, 45–46, 48, 50–51 and 53 remain pending beyond any existing baseline features. In particular, the Akihiko/Shinjiro wording and relationship continuity, Jihoon’s deeper characterization, broader messaging, battle presentation, Rush behavior and Tartarus menu work are not complete. Entry 51 overlaps the separately parked combined-game work; do not report that integration as finished.
+Entries 5, 21, 23–25, 27, 29, 32, 36–37, 39–40, 46, 48 and 51 remain pending beyond any existing baseline features (2, 38, 45, 50 and 53 are partly addressed above). In particular, the Akihiko/Shinjiro wording and relationship continuity, Jihoon’s deeper characterization, broader messaging, battle presentation, Rush behavior and Tartarus menu work are not complete. Entry 51 overlaps the separately parked combined-game work; do not report that integration as finished.
 
 Next small batches: entry 60 and the broader home-relationship/knowledge review, alongside the remaining later-rank character audit. Entries 58/59/61/62 and the introduction gap in 64 are complete locally. Entry 63 has been reviewed without rewriting its ambiguity. Read the newly updated Runners skill and installed local Strangers skill before that narrative work. Keep the novel/game continuities distinct and preserve the approved Mark rank-nine dialogue.
