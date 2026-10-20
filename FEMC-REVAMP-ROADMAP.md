@@ -98,3 +98,10 @@ Batches, in order, after the story/character pass:
   - **Gacha, both kinds:** a capsule machine at the mall (yen or Tartarus tickets; accessories, cosmetics, cast keychains, rare items) and Velvet Room draws from Elizabeth (skill cards, rare gear).
 - **E. Visitors:** the Persona cast belongs to this world; Kuromi and My Melody as exchange students (My Melody as a hidden link); deeper Mercy, Kiriko and Sebastian links; Kasumi's timeline.
 - **Social stats become five P5-style ones:** Knowledge, Courage, Proficiency, Charm, Kindness. They gate links, choices, jobs and clubs.
+
+### New Adds still to wire in (after the merge lands)
+- **SolarWeapons.png (12 naginatas):** each is a REAL weapon with its own stats and a bonus that suits its look (snowflake → ice, fox → crits, and so on), earned from shops, chests, bosses, links and achievements. Cut files are in `assets/femc/battle/art/weapons/`.
+- **ChatGPT Image Oct 18, 2026, 02_44_02 AM.png** (the Last Train with the veiled lantern figure and Solar facing it) **replaces** the current "facing Wren's Shadow" CG. The 02_44_45 file is an identical copy.
+- **GroupChatShadow.png and fishmongerShadow.png:** new Shadows on the Hoax and strangers memory floors, animated like the others.
+- **PossibleUses/** (Aigis, Koromaru, Mitsuru full bodies): compendium and party-menu art.
+- **Skip** the Shinjiro close-up (05_05_25 PM). Kat is regenerating it with an Evoker.
