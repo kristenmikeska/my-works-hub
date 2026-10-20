@@ -508,10 +508,12 @@
       { s: 'solar', f: 'neutral', t: "And I am thou." },
       { n: "She held on. Wren held on back. And the girl in the porter's coat didn't fade, and didn't vanish, and didn't go anywhere at all. She came in. The way warmth comes into cold hands. Into Solar's palm, and up her arm, and into her chest, and settled there, small and frightened and hers, the way a bird settles into a hand that's been held out long enough." },
       { summon: 'haenim-unveiled' },
+      { cg: 'story-haenim-unveiled' },
       { n: "And Haenim rose up out of her over the platform, gold and pink and enormous, and lifted her veil." },
       { n: "There was no blinding light. That was the thing. Everyone on that platform would remember it, afterward, for as long as they remembered anything. All year the Persona had shone so bright you couldn't look at her, a sun you had to look away from. Now she lifted the veil and the light that came out was warm and gold and bearable. A sun you could look at. A face under it. Tired, and kind, and frightened, and unhidden." },
       { n: "Her face. Solar's. Just hers." },
-      { n: "On the sash, all three charms rang at once. Not over each other. Together. In tune. The bell and the jade and the star, the chord she'd heard at the solstice, and it went out over the platform and the city and the bay and further, much further, into three places at once, and in all three of them, somewhere, at the same moment, a girl asleep in a lantern opened her eyes." }
+      { n: "On the sash, all three charms rang at once. Not over each other. Together. In tune. The bell and the jade and the star, the chord she'd heard at the solstice, and it went out over the platform and the city and the bay and further, much further, into three places at once, and in all three of them, somewhere, at the same moment, a girl asleep in a lantern opened her eyes." },
+      { cg: null }
     ], else: [
       { n: "She raised the Evoker." },
       { n: "Wren didn't fight back. She knelt on the platform with her hair down and her face bare and looked up at the gun at Solar's temple without flinching, the way you'd look up at a train you'd finally decided to let leave without you." },

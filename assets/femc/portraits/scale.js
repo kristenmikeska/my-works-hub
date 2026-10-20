@@ -2,6 +2,7 @@
    differently. 1 = default; below 1 shows the character smaller, above 1 bigger. Calibrated by eye from each
    neutral portrait's eye-to-chin height in a real scene. Adjust a number if someone still looks too big or small. */
 window.FEMC_PORTRAIT_SCALE = {
+  ikutsuki: 0.82,
   abigail: 1.04,
   ada: 1.1,
   aerith: 0.97,

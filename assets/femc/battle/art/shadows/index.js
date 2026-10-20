@@ -311,6 +311,280 @@ window.FEMC_SHADOW_ART = {
   "small": false,
   "w": 427
  },
+ "memory-ballot-box": {
+  "h": 640,
+  "poses": {
+   "frames": [
+    "memory-ballot-box-pose-0",
+    "memory-ballot-box-pose-1",
+    "memory-ballot-box-pose-2",
+    "memory-ballot-box-pose-3",
+    "memory-ballot-box-pose-4",
+    "memory-ballot-box-pose-5"
+   ],
+   "scale": 1.3793,
+   "states": {
+    "attack": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "cast": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   }
+  },
+  "small": false,
+  "w": 640
+ },
+ "memory-flash": {
+  "h": 640,
+  "poses": {
+   "frames": [
+    "memory-flash-pose-0",
+    "memory-flash-pose-1",
+    "memory-flash-pose-2",
+    "memory-flash-pose-3",
+    "memory-flash-pose-4",
+    "memory-flash-pose-5"
+   ],
+   "scale": 1.3588,
+   "states": {
+    "attack": [
+     1,
+     3,
+     4
+    ],
+    "cast": [
+     1,
+     2,
+     5
+    ],
+    "defeat": [
+     4
+    ],
+    "down": [
+     4
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 640
+ },
+ "memory-mirror-fox": {
+  "h": 640,
+  "poses": {
+   "frames": [
+    "memory-mirror-fox-pose-0",
+    "memory-mirror-fox-pose-1",
+    "memory-mirror-fox-pose-2",
+    "memory-mirror-fox-pose-3",
+    "memory-mirror-fox-pose-4",
+    "memory-mirror-fox-pose-5"
+   ],
+   "scale": 1.28,
+   "states": {
+    "attack": [
+     1,
+     2,
+     4
+    ],
+    "cast": [
+     1,
+     3,
+     5
+    ]
+   }
+  },
+  "small": false,
+  "w": 640
+ },
+ "memory-party": {
+  "h": 640,
+  "poses": {
+   "frames": [
+    "memory-party-pose-0",
+    "memory-party-pose-1",
+    "memory-party-pose-2",
+    "memory-party-pose-3",
+    "memory-party-pose-4",
+    "memory-party-pose-5"
+   ],
+   "scale": 1.2673,
+   "states": {
+    "attack": [
+     1,
+     2,
+     3,
+     5
+    ],
+    "cast": [
+     1,
+     2,
+     4,
+     5
+    ]
+   }
+  },
+  "small": false,
+  "w": 640
+ },
+ "memory-poster": {
+  "h": 640,
+  "poses": {
+   "frames": [
+    "memory-poster-pose-0",
+    "memory-poster-pose-1",
+    "memory-poster-pose-2",
+    "memory-poster-pose-3",
+    "memory-poster-pose-4",
+    "memory-poster-pose-5"
+   ],
+   "scale": 1.2724,
+   "states": {
+    "attack": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "cast": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   }
+  },
+  "small": false,
+  "w": 640
+ },
+ "memory-tide": {
+  "h": 640,
+  "poses": {
+   "frames": [
+    "memory-tide-pose-0",
+    "memory-tide-pose-1",
+    "memory-tide-pose-2",
+    "memory-tide-pose-3",
+    "memory-tide-pose-4",
+    "memory-tide-pose-5"
+   ],
+   "scale": 1.5311,
+   "states": {
+    "attack": [
+     1,
+     2,
+     3,
+     5
+    ],
+    "cast": [
+     2,
+     4,
+     5
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     5
+    ]
+   }
+  },
+  "small": false,
+  "w": 640
+ },
+ "memory-veil": {
+  "h": 640,
+  "poses": {
+   "frames": [
+    "memory-veil-pose-0",
+    "memory-veil-pose-1",
+    "memory-veil-pose-2",
+    "memory-veil-pose-3",
+    "memory-veil-pose-4",
+    "memory-veil-pose-5"
+   ],
+   "scale": 1.3793,
+   "states": {
+    "attack": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "cast": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   }
+  },
+  "small": false,
+  "w": 640
+ },
+ "memory-veil-poster": {
+  "h": 640,
+  "poses": {
+   "frames": [
+    "memory-veil-pose-0",
+    "memory-veil-pose-1",
+    "memory-veil-pose-2",
+    "memory-veil-pose-3",
+    "memory-veil-pose-4",
+    "memory-veil-pose-5",
+    "memory-poster-pose-0",
+    "memory-poster-pose-1",
+    "memory-poster-pose-2",
+    "memory-poster-pose-3",
+    "memory-poster-pose-4",
+    "memory-poster-pose-5"
+   ],
+   "scale": 1.3793,
+   "states": {
+    "attack": [
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "cast": [
+     1,
+     2,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     3,
+     4,
+     5
+    ]
+   }
+  },
+  "small": false,
+  "w": 640
+ },
  "mercurius": {
   "h": 671,
   "small": false,

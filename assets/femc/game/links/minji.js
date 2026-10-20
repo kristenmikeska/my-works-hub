@@ -69,8 +69,8 @@
   ],
   ranks: [
     { after: '9/27', title: '1: permission', place: 'Iwatodai · Riverside', time: 'After School', music: 'tender', scene: [
-      { n: "The lamppost at the bottom of the river path was flickering the way it always flickered, a tired, stuttering amber nobody from the city had ever come to fix, and Minji was sitting on the bench beside it with the camera in her lap and the lens cap on, which Solar had only known her for a day and still understood was the same thing as a white flag." },
-      { n: "She'd come through right here. Two nights ago, at midnight, with the camera up, filming the dark for a girl who wasn't in it, and then she had been. Solar had been standing under this lamp in the green with Fuuka's voice in her ear saying *there's someone, she's right in front of you,* and the girl had lowered the camera, and looked at her, and Solar had said, politely, *hello, are you lost?*" },
+      { n: "The lamppost at the bottom of the river path was flickering the way it always flickered, a tired, stuttering amber nobody from the city had ever come to fix, and Minji was sitting on the bench beside it with the camera in her lap and the lens cap on, which Solar already understood was the same thing as a white flag." },
+      { n: "She'd come through right here, at midnight, with the camera up, filming the place where Solar had then stepped into the light. When she'd lowered it, she'd looked straight at Solar and understood, before anyone explained, that Solar didn't know her." },
       { n: "She'd watched the girl's face take that. It hadn't crumpled. It had gone very calm, the way still water goes calm when something big has gone under it." },
       { register: 'minji' },
       { s: 'minji', f: 'neutral', t: "Hi. You came back." },
@@ -251,7 +251,7 @@
       { s: 'minji', f: 'neutral', t: "Do you know what I do, at home, when it's windy like this? I go up to the roof of the honors dorm and lie on my back and film the clouds going over. Upside down. It looks like the sky's falling the wrong way." },
       { s: 'minji', f: 'happy', t: "I showed you once. You said it made you seasick. You watched the whole thing anyway. Twice." },
       { s: 'solar', f: 'neutral', t: "Junpei said you called me your muse. When you first came. In the lounge." },
-      { s: 'minji', f: 'flustered', t: "Junpei has a big mouth. Junpei has the biggest mouth in two universes." },
+      { s: 'minji', f: 'flustered', t: "Junpei has a big mouth. I say one thing in the lounge and he gives you the whole report." },
       { s: 'minji', f: 'neutral', t: "...Yeah. I did. I posted it, once. At home. With a picture of you, with your permission. *Going to ace this project thanks to my new muse.* You liked it. You liked the post. I screenshotted the notification." },
       { choose: [
         { t: "What does it mean? Muse.", notes: 3, then: [
@@ -313,8 +313,8 @@
       { n: "The lamp flickered on its own stubborn rhythm. Somewhere across the river, someone was setting off leftover Halloween fireworks, small and badly timed, and each one lit the water for a second and went out, and neither of them flinched at any of them." }
     ] },
 
-    { after: '11/12', title: '7: what the lens sees', place: 'Port Island · Seaside Park', time: 'After School', scene: [
-      { n: "The light was doing the thing it did in November, low and gold and coming in sideways under everything, so every person in Seaside Park had a shadow three times their own length and the water looked like it had been poured from a pan." },
+    { after: '11/12', title: '7: what the lens sees', place: 'Port Island · Seaside Park', time: 'Night', scene: [
+      { n: "By the time they reached the river path behind Seaside Park, the lamps were on and the water had gone dark between the long strips of light from the opposite bank. Minji stopped under one of the lamps and looked from it to Solar, and back again, very pleased with something she hadn't explained yet." },
       { n: "Minji had the camera up. She'd asked. She'd asked twice, actually, because the first time Solar had said *sure* without looking, and Minji had lowered it and waited until she did look, and asked again." },
       { s: 'minji', f: 'neutral', t: "Walk to the end of the wall and back. Don't do anything. Don't look at me. Pretend I'm a seagull." },
       { n: "Solar walked to the end of the wall and back. She did not pretend Minji was a seagull. She couldn't. She could feel the lens on her the whole way like the sun on the back of her neck, warm and patient, not grabbing at anything, just there." },
@@ -356,8 +356,10 @@
           { s: 'minji', f: 'happy', t: "I hope he's careful with it. I called you my muse first, though. I have the post. It's timestamped." }
         ] }
       ] },
+      { cg: 'link-minji-camera-lamp' },
       { n: "At the station she played back the walk along the wall. Solar braced herself for her own shoulders, her own careful face. There was a second, near the end, where a gull had come down too close and Solar had flinched and laughed and forgotten, completely, that anyone was watching. Minji had kept that second. She'd slowed it down." },
-      { s: 'minji', f: 'happy', t: "There. That's you. Two seconds. I'll take two seconds." }
+      { s: 'minji', f: 'happy', t: "There. That's you. Two seconds. I'll take two seconds." },
+      { cg: null }
     ] },
 
     { after: '11/26', title: '8: the thing you look at', place: 'Iwatodai Dorm · Rooftop', time: 'Night', music: 'night', scene: [

@@ -165,7 +165,12 @@ window.FEMC_GAME_PLACES = {
   /* CG focus: which part of each CG (assets/femc/cg) to keep in view when a tall, narrow window has to crop it. */
   cgFocus: {
     'prologue-waking-in-tartarus': '24% 70%', 'prologue-akihiko-finds-solar': '42% 55%', 'prologue-first-night-dorm': '55% 45%',
-    'prologue-elizabeth-blank-page': '58% 45%', 'prologue-first-day-gekkoukan': '24% 40%'
+    'prologue-elizabeth-blank-page': '58% 45%', 'prologue-first-day-gekkoukan': '24% 40%',
+    'searchers-jihoon-arrives': '35% 35%', 'searchers-yunjin-low-tide': '65% 45%',
+    'searchers-jihoon-awakening': '77% 35%', 'searchers-minji-awakening': '62% 35%',
+    'searchers-jungwon-awakening': '37% 35%', 'searchers-haechan-awakening': '39% 35%',
+    'link-jihoon-crane': '45% 40%', 'link-jungwon-croissant': '67% 45%', 'link-minji-camera-lamp': '68% 40%', 'link-shinjiro-cooking': '50% 40%',
+    'story-moonlight-train': '55% 35%', 'story-city-of-the-awake': '50% 40%', 'ending-last-stop': '40% 35%', 'story-haenim-unveiled': '50% 35%'
   },
   /* Music (assets/femc/music/<file>.mp3) by mood. Scenes pick a mood; screens use the `screens` map. */
   music: {

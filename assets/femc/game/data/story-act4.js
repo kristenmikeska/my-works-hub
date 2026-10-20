@@ -364,7 +364,7 @@
     { n: "They looked at each other again, and neither of them was sure, and Solar watched it frighten them in a way nothing else had." },
     { s: 'solar', f: 'neutral', t: "I've been here since April. Five months." },
     { n: "Nobody said anything for a long time. Hyein picked up her phone and turned it so they could all see. The clock on the screen said twelve oh one. It had said twelve oh one all night. Hanni held out her wrist. Her watch said the same, the second hand stopped dead, quivering slightly, like it wanted to go on and couldn't remember how." },
-    { s: 'mitsuru', f: 'neutral', t: "Then it doesn't matter how long. You're here now. You'll stay here, both of you. There are rooms on the second floor nobody uses." },
+    { s: 'mitsuru', f: 'neutral', t: "Then it doesn't matter how long. You're here now. You'll stay here, both of you. There are rooms on the second floor nobody uses. One for each of you. I’ll have keys brought down." },
     { s: 'hanni', f: 'neutral', t: "We can't just..." },
     { s: 'mitsuru', f: 'neutral', t: "You can. I'll arrange it. That isn't an offer. I'm informing you." },
     { n: "Hyein looked at Mitsuru the way you look at someone who has just done something you didn't think people did. Then she laughed, wet and surprised, and wiped her nose on Fuuka's pajama sleeve, and said sorry, and Fuuka said it was fine, really, she had others." },
@@ -396,9 +396,11 @@
     { dark: true },
     { n: "She didn't run this time. She walked. Fast, but walking, with Hanni and Hyein on either side of her because they'd refused to stay behind, Hyein in Solar's black hoodie, because she'd said it was cold and taken it off the back of Solar's chair without asking, like she'd done it a hundred times. Akihiko a few steps back. The strip was green and dead and full of coffins, the ramen shop's lantern hanging perfectly still, the pharmacy's sign dark." },
     { n: "And down the middle of the road, between the stopped cars, a boy was walking like he was late for something. Tall, broad in the shoulders, dark hair wrecked by wind that wasn't blowing, gray sweatpants and a t-shirt and slides, like he'd left the house in a hurry. In the crook of his arm, held against his chest like a baby, a tub of ice cream so large it looked like a joke." },
+    { cg: 'searchers-jihoon-arrives' },
     { n: "He was talking to himself. Loudly." },
     { s: 'jihoon', f: 'neutral', t: "...left at the light, right at the thing, I KNOW where her house is, I've been going to her house since I was FOUR, why is everything green, why is everybody in a box..." },
     { n: "Hyein made a noise. A small, high, completely involuntary noise." },
+    { cg: null },
     { n: "He looked up. He saw Hanni and Hyein first, and his face did nothing at all, two strangers. Then his eyes slid past them and found Solar, and stopped, and his whole body stopped with them, mid-step, one slide still in the air." },
     { s: 'jihoon', f: 'surprised', t: "SOL?" },
     { s: 'jihoon', f: 'happy', t: "Oh my God. Oh my GOD. There you are. Do you know how long I've been walking? Do you know how many traffic lights there are in this place? None of them work! None of them! Everyone's in a BOX!" },
@@ -432,9 +434,10 @@
     { dark: false },
     { n: "The hour ended. The strip came back on all at once, noise and neon and a taxi honking at the four of them standing in the road, and Jihoon didn't move out of the way of it, and Akihiko took him by the arm, gently, and moved him." },
     { place: 'Iwatodai Dorm · Front', time: 'Night', music: 'tender', soft: true },
-    { n: "He treated it as a bit for one whole day. Sunday. He followed her around the dorm saying things like ok but do you remember THIS, and naming a place, a song, a dog called Nana, a teacher, a time she'd thrown up on a ferris wheel, and every time she said no, sorry, he said ok very funny Sol, and moved on to the next one." },
-    { n: "On Sunday evening he sat down on the dorm's front steps with the empty ice-cream tub between his feet, and didn't say anything for an hour." },
-    { n: "Hyein told her later that for Jihoon, an hour of not saying anything was a medical event. Solar didn't know that. She only knew that she had stood at the window of the lounge for the whole hour, watching the back of his head, and hadn't been able to make herself go out, and hadn't been able to make herself walk away either." }
+    { n: "Mitsuru took him inside before Solar could think of anything to say. Hanni picked up the ice-cream tub and followed, and Hyein stayed by the door with Solar, holding it open while Akihiko went back for the bags. From the lounge came Jihoon's voice, asking somebody, very loudly, what year it was." },
+    { s: 'mitsuru', f: 'neutral', t: "There's a spare room upstairs. I'll show you. We'll find you some clothes in the morning." },
+    { n: "Jihoon looked from her to the stairs, and then back to Solar, and for once didn't argue. Mitsuru took a key from the hook behind the desk and waited for him to follow." },
+    { n: "Solar could have gone upstairs. Her room was there, her books were there, and in the morning the monorail would still be running. She stayed by the open door until Hyein nudged her inside." }
   ] },
 
   { id: 'a4-lamppost', date: '9/26', slot: 'late', title: 'in the frame', place: 'Iwatodai · Riverside', time: 'The Dark Hour', scene: [
@@ -488,7 +491,8 @@
     ] },
     { dark: false },
     { n: "The hour ended. The river started again with a small slap against the wall below them, and the lamps along the path came on one after another, and the flickering one at the bottom went on flickering, like it had only ever been waiting for the others to catch up." },
-    { n: "They walked back to the dorm together. Minji didn't ask a single question on the way. She didn't ask Solar to remember anything. She walked half a step behind and to the side, the way you walk behind someone when you're watching how the light falls on them, and every so often Solar felt it, the being looked at, and found, to her own surprise, that she didn't mind it at all." }
+    { n: "They walked back to the dorm together. Minji didn't ask a single question on the way. She didn't ask Solar to remember anything. She walked half a step behind and to the side, the way you walk behind someone when you're watching how the light falls on them, and every so often Solar felt it, the being looked at, and found, to her own surprise, that she didn't mind it at all." },
+    { n: "At the dorm, Mitsuru arranged a room for Minji at the Kirijo guesthouse by the station. Minji wrote the address on the back of a receipt and folded it into her camera bag." }
   ] },
 
   { id: 'a4-fortune', date: '10/4', slot: 'evening', title: 'october', place: 'Iwatodai Dorm · Command Room', time: 'Evening', scene: [
@@ -583,9 +587,11 @@
     { n: "She knew before Fuuka finished. She knew the way she knew the tide tables. The spring tides. The sea gone so far out you could walk on the bottom of it." },
     { place: 'Port Island · Harbor · The Dark Hour', time: 'The Dark Hour', bg: 'harbor' },
     { dark: true },
+    { cg: 'searchers-yunjin-low-tide' },
     { n: "The sea was gone. That was the first thing. The harbor wall went down and down, past the line of green weed and the crust of barnacles, past where the water should have been, and kept going, and at the bottom there was mud. Gray, wet, shining mud, ribbed by the tide into long low ripples, going out and out under the green moon toward a sea that was only a silver line very far away, frozen, not coming back." },
     { n: "Boats lay on their sides on it like tired dogs. The pilings stood up out of it bare and black. And out in the middle of all that gray, small and bright and absurd, a girl in a highlighter-yellow puffer jacket was walking away from the harbor wall with a car key in her fist, sinking to the ankle with every step, shouting." },
     { s: 'yunjin', t: "SOL! Sol! SOLAR LEE, I swear to God, I drove all the way down here, I am in the MUD, I am RUINING these, babe, answer me!" },
+    { cg: null },
     { n: "Solar's whole body locked at the top of the harbor steps. Her hand was on the rail. Her feet would not go down. The mud was not the sea, she knew that, she knew it the way you know a stove is off, and her body didn't care, her body could smell the water out there under the green, black and cold and waiting, and it would not go down the steps." },
     { choose: [
       { t: "(Go down anyway.)", then: [
@@ -623,7 +629,8 @@
     { n: "Solar looked down. At the mud. At the silver line of the sea, very far off, waiting. Her knees, all at once, remembered what they were standing on, and went." },
     { dark: false },
     { n: "The hour ended as she sat down in the mud. The sea didn't come rushing back, the way she'd been sure it would. It stayed where it was, a mile out, ordinary, a low tide on an ordinary October night, and the lights of the harbor came on all along the wall, and the boats on their sides creaked, and somewhere up on the road a car alarm started going off for no reason. Yunjin sat down in the mud beside her, in the Prada, and put her head on Solar's shoulder, and said she'd left Solar's house an hour ago, maybe less, she'd just been driving, she'd just wanted to see the water, and then the water was gone." },
-    { n: "Solar didn't say she'd been gone six months. She didn't say anything. They sat on the bottom of the sea until Akihiko found them, and Yunjin looked up at him, all the way up, and said, oh, hello, okay, is HE in the cult, because I'm in." }
+    { n: "Solar didn't say she'd been gone six months. She didn't say anything. They sat on the bottom of the sea until Akihiko found them, and Yunjin looked up at him, all the way up, and said, oh, hello, okay, is HE in the cult, because I'm in." },
+    { n: "Back at the dorm, Mitsuru found Yunjin a room upstairs and handed her a key and a clean towel. Yunjin took both, then asked where she could leave the shoes so nobody would have to smell them." }
   ] },
 
   { id: 'a4-poster', date: '10/13', slot: 'lunch', title: 'vote solar kim', place: 'Gekkoukan High · 2F Hallway', time: 'Lunchtime', scene: [
@@ -710,14 +717,14 @@
     { s: 'jungwon', f: 'neutral', t: "I'd like to stay, if that's possible. I don't need much. I can be useful. I'm very good at minutes." },
     { choose: [
       { t: "Stay.", then: [
-        { n: "He bowed. A real one, from the waist, formal and old-fashioned and completely unironic, to her and not to Mitsuru, and when he straightened up there was a dimple in his cheek that had nothing to do with being polite." }
+        { n: "He bowed. A real one, from the waist, formal and old-fashioned and completely unironic, to her and not to Mitsuru, and when he straightened up his face had gone still again. His hands relaxed at his sides." }
       ] },
       { t: "That's not my decision.", then: [
         { s: 'jungwon', f: 'neutral', t: "No. Of course not. It never is, is it." },
         { n: "He said it so gently that it took her a second to feel it go in. Then it was in, and she couldn't get it out, and he'd already turned to Mitsuru to ask, with great courtesy, where he might find a pencil sharpener." }
       ] }
     ] },
-    { n: "Mitsuru found him a room in the Kirijo guesthouse by the station that night, next to the one where Jihoon was sleeping. Jihoon, informed, said a word that made Fuuka go pink, and went out on the dorm steps, and came back in, and said it again." },
+    { n: "Mitsuru found him a room in the Kirijo guesthouse by the station that night, while Jihoon kept his room at the dorm. Jihoon, informed, said a word that made Fuuka go pink, and went out on the dorm steps, and came back in, and said it again." },
     { n: "Solar walked home along the river with her bag on her shoulder and the glitter still on her fingers from the day before. She didn't remember him. But she remembered, very clearly, without wanting to, that on the walk to school some mornings she had been in the habit of being annoyed with someone. A specific someone. Daily, and on purpose, and with enormous energy. It had been one of the best parts of her day." }
   ] },
 
@@ -754,7 +761,7 @@
     { music: 'tartarus' },
     { n: "Mitsuru had said no. She'd said it to all of them, the searchers, every one, in the lounge, in the voice that wasn't for discussing. They weren't trained. They didn't have Evokers. They didn't have Personas. Tartarus was not a place you went to keep somebody company." },
     { n: "Jihoon had said ok, totally, makes sense, and was found at the foot of the tower at twelve-oh-two, in a hoodie and slides, holding a bat he'd taken out of Junpei's room." },
-    { s: 'jihoon', f: 'neutral', t: "Before you say anything. She's going in there. Every night. To fight MONSTERS. And I'm supposed to sit in a hotel room eating vending-machine cup noodles and wait?" },
+    { s: 'jihoon', f: 'neutral', t: "Before you say anything. She's going in there. Every night. To fight MONSTERS. And I'm supposed to sit in the dorm eating vending-machine cup noodles and wait?" },
     { s: 'jihoon', f: 'serious', t: "I've never waited for her in my life. I've been early for her since we were four. I'm not starting now." },
     { s: 'mitsuru', f: 'neutral', t: "...Stay behind Akihiko. Do exactly what he says. If you do anything else, I'll send you home myself, and I'll find a way." },
     { s: 'jihoon', f: 'happy', t: "Deal. Love that. You're scary. She'd love you." },
@@ -779,8 +786,10 @@
     { s: 'jihoon', f: 'serious', t: "No." },
     { s: 'jihoon', f: 'serious', t: "No, you don't get those. Those are MINE. I don't care if it hurts. I don't care if she never remembers a single one of them. I'd rather remember." },
     { s: 'jihoon', f: 'serious', t: "I'd rather remember her than not. Every time. Every single time." },
+    { cg: 'searchers-jihoon-awakening' },
     { n: "Something came up out of him." },
     { n: "Not out of a gun. Not out of anything. It tore up out of him like a shout, all at once, huge and loud and laughing, a shape the size of the gym's whole back wall, all grin and bluster and noise, and every one of the glowing slips that had been drifting toward the box turned in the air and went flying back into him like birds coming home to roost. Jihoon was on his feet. Jihoon was laughing. The thing above him was laughing too, the same laugh, his laugh, enormous, and it had a name, and Solar heard him say it, and she didn't catch it, because the ballot box was screaming." },
+    { cg: null },
     { flag: { 'awake-jihoon': true } },
     { join: 'jihoon' },
     { battle: { id: 'memory-hoax', kind: 'scripted', script: 'memory-hoax', segment: 2, title: 'Tartarus · A Gym That Isn’t Here', desc: 'Jihoon has a Persona. The box is still hungry. Finish it.', notes: 'Segment 2: Jihoon joins the party (party id jihoon). His Persona is pending design with Kat; use placeholder skills. Win to continue.', forced: true } },
@@ -951,7 +960,9 @@
     { s: 'minji', f: 'serious', t: "No. Not those. You don't get those." },
     { s: 'minji', f: 'serious', t: "Everybody else on that campus took her face without asking. Every single one of you. I'm the only one who asked." },
     { s: 'minji', f: 'serious', t: "I'd rather remember. Even if she never knows who I am. I'd rather remember her the way I saw her than have you." },
+    { cg: 'searchers-minji-awakening' },
     { n: "Light came up out of her. Not a flash. The opposite. A long, soft, steady light, like a lamp that had finally decided to stop flickering, and in it a shape, tall and quiet and patient, a figure that held everything it had ever seen in its arms and wouldn't let any of it go. Every clip that had been drifting toward the crowd turned and went back into the camera like a reel rewinding, and the hundred flashing lenses of the Shadow went dark, one after another, as if somebody had finally told them no." },
+    { cg: null },
     { flag: { 'awake-minji': true } },
     { join: 'minji' },
     { battle: { id: 'memory-runners', kind: 'scripted', script: 'memory-runners', segment: 2, title: 'Tartarus · A Hallway at 3 A.M.', desc: 'Minji has a Persona. The cameras are still there. Finish it.', notes: 'Segment 2: Minji joins the party (party id minji). Her Persona is pending design with Kat; use placeholder skills.', forced: true } },
@@ -1127,6 +1138,27 @@
       ] }
     ] },
     { n: "He didn't say anything about it. He didn't ask her which one was hers. He leaned his head back against the dryer and shut his eyes again and stayed there, a hand's width away, until it was light, and she stayed too, and neither of them said his name, because she didn't know it, and he wasn't going to make her ask." }
+  ] },
+
+  { id: 'a4-household-introductions', date: '11/5', slot: 'early', title: 'a place at the table', place: 'Iwatodai Dorm · Lounge', time: 'Early Morning', scene: [
+    { place: 'Iwatodai Dorm · Lounge', time: 'Early Morning', music: 'joy', soft: true },
+    { n: "By breakfast Junpei was at the table with his hair sticking up, Fuuka was trying to find an empty patch of table for another bowl, and Mitsuru had the guesthouse envelope beside her tea. The boy from the dryer stood behind an empty chair until Junpei pushed it out with his foot." },
+    { s: 'junpei', f: 'neutral', t: "Hey. You're the guy I let back in. I'm Junpei, by the way." },
+    { s: 'haechan', f: 'neutral', t: "Haechan." },
+    { s: 'yukari', f: 'neutral', t: "Yukari. You've met Mitsuru. That's Fuuka, and that's Akihiko." },
+    { n: "He looked at each of them as Yukari named them, a small nod for each. Akihiko nodded back and moved his bag off the chair beside Solar." },
+    { s: 'mitsuru', f: 'neutral', t: "Your room is at the guesthouse. You're welcome to visit here. Use the front door, please. Someone will let you in." },
+    { s: 'fuuka', f: 'neutral', t: "Where are you from? If you don't mind." },
+    { s: 'haechan', f: 'neutral', t: "Two places." },
+    { n: "Fuuka paused over her notebook, then wrote it down. The front door opened behind them, and Jungwon came in carrying a folder for Mitsuru. He stopped when he saw who was standing at the table." },
+    { s: 'jungwon', f: 'neutral', t: "Donghyuck." },
+    { s: 'haechan', f: 'neutral', t: "Yang." },
+    { n: "Neither moved toward the other. Junpei looked from one to the other with his spoon halfway to his mouth." },
+    { s: 'junpei', f: 'neutral', t: "You guys know each other?" },
+    { s: 'jungwon', f: 'neutral', t: "We do." },
+    { s: 'haechan', f: 'neutral', t: "Lucky us." },
+    { s: 'mitsuru', f: 'neutral', t: "The folder, Jungwon. You can both save the rest for later." },
+    { n: "Jungwon brought her the folder. Fuuka set the bowl in front of Haechan before he could find somewhere else to stand, and he sat, and Junpei passed him the chopsticks, and Solar found she could pick up her own spoon again." }
   ] },
 
   { id: 'a4-yeobos', date: '11/7', slot: 'after', title: "yeobo's", place: "Iwatodai Strip · Yeobo's Cafe", time: 'Daytime', cast: { heeseung: 'Heeseung', sunghoon: 'Sunghoon', jay: 'Jay', jake: 'Jake', niki: 'Niki' }, scene: [
@@ -1343,6 +1375,8 @@
     { n: "Fuuka found the floor near the top of what they could reach. A living room. A big one, too big, in a house, wood floors sticky underfoot, a beer pong table, a couch nobody should ever sit on, string lights, a flag on the wall with a cross on it, and so many red cups. Music so loud it had a shape. And a staircase going up, and a hallway at the top of it, and a door." },
     { n: "Hyein stopped dead in the doorway." },
     { s: 'hyein', f: 'surprised', t: "That's the Sigma house. That's... Hanni. That's the first party. That's the first one. We left her. We LEFT her here..." },
+    { s: 'hanni', f: 'serious', t: "The first one. We saw her after this, Hyein. This isn't the night she disappeared." },
+    { s: 'hyein', f: 'sad', t: "I know. I know that. I still left her here." },
     { n: "The party stood up. Not the people. There were no people. The party itself. The noise and the cups and the lights and the smell of it, all pulling together into one shape, huge, grinning, a body made of a crowd that wasn't paying attention to you, a crowd that laughed and moved and didn't notice when one girl wasn't with her friends anymore. It turned toward them. It turned toward Hyein." },
     { battle: { id: 'memory-runners-2', kind: 'scripted', script: 'memory-runners-2', title: 'Tartarus · The First Party', desc: 'A Shadow made of a party that never noticed who was missing. It goes for whoever is easiest to separate.', notes: 'Memory floor (Runners). Hanni and Hyein are present as non-combatants (no Personas, per Kat). The Shadow targets a guest each turn; Solar can Cover. Win to continue.', forced: true } },
     { n: "Near the end it went for Hyein. A great arm of noise and elbows and spilled drink, reaching, the way a crowd reaches for a girl at a party and pulls her off into it, away from her friends, into a hallway, into a room." },
@@ -1364,7 +1398,7 @@
         { n: "She did it without deciding. Both of them, one arm each, and pulled them in, and held on, and the two of them came into it like they'd been waiting for it every night since the mall, and the three of them stood in the middle of a dead party in a tower in the green, holding on, until the floor faded under them." }
       ] },
       { t: "Nobody left me. I'm right here.", then: [
-        { s: 'hyein', f: 'sad', t: "We did, though. That night. We lost you at the party. And then we lost you for real." },
+        { s: 'hyein', f: 'sad', t: "We did, though. That party. We lost you in the house. And later, when you disappeared, I kept thinking about it." },
         { s: 'hanni', f: 'neutral', t: "But we found you. Twice now. So." },
         { n: "So. Hanni said it like a full sentence. Maybe it was." }
       ] }

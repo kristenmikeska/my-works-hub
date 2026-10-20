@@ -1910,3 +1910,20 @@ html.bt-perf .bt-amk.k-weak, html.bt-perf .bt-amk-ring, html.bt-perf .bt-enemy.a
 .bt-enemy.unreachable .sh-pic img { filter: grayscale(1) brightness(.5) blur(.6px); opacity: .7; }
 .bt-hub-ho .bt-hub-menu .bt-btn[data-go="dorm"] small { opacity: .7; }
 .bt-ho-done h1 { letter-spacing: .04em; }
+
+/* Supplied full-body weapon poses share the battlefield with the Shadows. */
+.bt-fighter { flex: 0 1 24%; width: 24%; min-width: 0; max-width: 240px; align-self: flex-end; pointer-events: none; }
+.bt-fighter[hidden] { display: none; }
+.bt-fighter img { display: block; width: 100%; height: min(38vh, 330px); object-fit: contain; object-position: center bottom; filter: drop-shadow(0 10px 8px rgba(0, 0, 0, .5)); }
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-fighter { flex-basis: 28%; width: 28%; }
+  .bt-fighter img { height: min(23vh, 180px); }
+}
+
+.bt-preparation .bt-room-body { max-height: min(55vh, 480px); overflow-y: auto; }
+.bt-prep-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 0; margin: 16px 0 0; list-style: none; text-align: left; }
+.bt-prep-list li { padding: 10px 12px; border-left: 3px solid var(--pink); background: rgba(255, 255, 255, .06); }
+.bt-prep-list b { display: block; font: italic 900 20px/1.2 var(--cond); }
+.bt-prep-list small { color: var(--pink-2); font-size: 13px; }
+.bt-prep-list span { display: block; margin-top: 5px; font-size: 13px; line-height: 1.4; }
+@media (max-width: 760px) { .bt-prep-list { grid-template-columns: 1fr; } .bt-preparation .bt-room-in { gap: 12px; } }

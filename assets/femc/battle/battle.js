@@ -53,12 +53,15 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 3;
+  const ART_V = 9;
   const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
   Object.values(D.personas).forEach(p => { if (p.art && !p.art.startsWith('data:') && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
   const FINISH_DIR = 'assets/femc/battle/art/finish/', SUMMON_DIR = 'assets/femc/battle/art/summon/';
   // The searchers have no finish-card art yet: their portrait stands in.
   const finishArt = mid => ((member(mid) || {}).searcher ? pimg(mid, 'serious') : FINISH_DIR + mid + '.webp');
+  // Full-body weapon stances belong on the battlefield, separate from face crops and finish cards.
+  const FIELD_POSES = new Set(['solar', 'akihiko', 'junpei', 'yukari', 'aigis', 'mitsuru', 'shinjiro', 'koromaru']);
+  const fieldPose = mid => `assets/femc/battle/art/poses/${mid}.webp?v=${ART_V}`;
   const AWAKEN = ['solar-01-resolve', 'solar-02-focus', 'solar-03-awakening', 'solar-04-manifestation', 'solar-05-command', 'solar-06-summoned'];
   /* A stylized Evoker for members without their own Evoker art (muzzle on the left, at the temple). */
   const EVOKER_SVG = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 110"><defs><linearGradient id="m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f9ff"/><stop offset=".35" stop-color="#c9d0dc"/><stop offset=".7" stop-color="#8a93a6"/><stop offset="1" stop-color="#4b5263"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a404e"/><stop offset="1" stop-color="#14171f"/></linearGradient></defs><path d="M214 30H70l-10 5v22h34l6 7h20l7-7h87z" fill="url(#m)" stroke="#12151c" stroke-width="3" stroke-linejoin="round"/><path d="M214 30v27" stroke="#12151c" stroke-width="5"/><path d="M78 36h126" stroke="#fff" stroke-opacity=".85" stroke-width="2"/><path d="M84 44h120M84 50h120" stroke="#5a6274" stroke-width="1.2"/><path d="M62 57h32l-16 48H38z" fill="url(#g)" stroke="#0b0d12" stroke-width="3" stroke-linejoin="round"/><path d="M50 70h30M46 80h30M42 90h30" stroke="#5a6274" stroke-width="1.5"/><path d="M98 57q-2 18 16 18h6" fill="none" stroke="#12151c" stroke-width="4"/><path d="M104 60l4 10" stroke="#12151c" stroke-width="3"/><rect x="150" y="40" width="40" height="4" rx="1" fill="#ff4f9e"/></svg>`);
@@ -85,6 +88,21 @@
     yen: D.startYen, items: Object.assign({}, D.startItems), gear: { owned: {}, eq: {} }, mats: {}, memories: [], evo: {}, form: 'haenim', forms: [], ops: { cleared: [] }, th: {}, perf: false });
   /* Fills in anything missing, so v1/v2 saves (and hand-edited ones) load cleanly. Members who were already fighting
      keep Solar's level; new recruits join one level behind her. */
+  // Records exist before recruitment. Catch up each new member once, including old saves,
+  // without repeatedly scaling benched members or discarding their earned EXP.
+  function catchUpRecruits(s, ids, phase, encounterLevel = 0) {
+    const done = new Set(Array.isArray(s.recruitmentChecks) ? s.recruitmentChecks : []);
+    const floor = Math.max(D.progression.startLevel, s.lvl - 1, encounterLevel);
+    for (const mid of ids) {
+      if (mid === 'solar' || !member(mid) || D.defaultParty.includes(mid)) continue;
+      const key = `${phase}:${mid}`;
+      if (done.has(key)) continue;
+      const rec = s.mem[mid] || (s.mem[mid] = { lvl: floor, exp: 0 });
+      rec.lvl = Math.max(rec.lvl || D.progression.startLevel, floor);
+      done.add(key);
+    }
+    s.recruitmentChecks = [...done];
+  }
   const OLD_FLOORS = ['f2', 'f4', 'f6']; // batch-1 floors 2F/5F/9F → the first three floors of Thebel
   function normalize(s) {
     const was = s.v || 1;
@@ -833,10 +851,10 @@
      ════════════════════════════════════════════════════ */
   const TACTIC_ORDER = Object.keys(D.tactics);
   const affChips = per => D.affinityOrder.filter(x => per.aff[x]).map(x => `<span class="bt-aff ${per.aff[x]}">${ART.icon(x)}<em>${AFF_SHORT[per.aff[x]]}</em></span>`).join('') || '<span class="bt-aff"><em>–</em></span>';
-  function partyScreen(onClose) {
+  function partyScreen(onClose, { required = [] } = {}) {
     screen = 'party';
     root.classList.remove('bt-in-battle');
-    const list = D.party.slice(1).filter(usable);
+    const list = D.party.slice(1).filter(m => usable(m) || required.includes(m.id));
     if (!list.length) { onClose(); return; }
     let i = 0, msg = '';
     const cols = () => (phone() ? 2 : 4);
@@ -849,7 +867,7 @@
             <span class="pic fcb">${fimg(m.id, m.faces.idle)}</span>
             <span class="info"><b>${esc(m.name)}<small>Lv ${lvOf(m.id)}</small></b><span class="per-n">${esc(per.name)} · ${esc(per.arcana)}</span><span class="role">${esc(m.role || '')}</span><span class="bt-affs">${affChips(per)}</span></span>
             <span class="per-art"><img src="${per.art}" alt="${esc(per.name)}"></span>
-            <span class="slot">${slot >= 0 ? `IN · ${slot + 2}` : 'Bench'}</span>
+            <span class="slot">${required.includes(m.id) ? 'Required' : slot >= 0 ? `IN · ${slot + 2}` : 'Bench'}</span>
           </button>
           <button type="button" class="bt-pm-tac" data-act="tac" data-id="${m.id}" title="${esc(D.tactics[tac].desc)}">${ART.icon('tactics')}<span>${esc(D.tactics[tac].name)}</span></button>
         </div>`;
@@ -880,6 +898,7 @@
     };
     function toggle() {
       const id = list[i].id, at = save.party.indexOf(id);
+      if (required.includes(id)) { sfx('back'); msg = `${member(id).name} must take part in this fight.`; render(); return; }
       if (at >= 0) { save.party.splice(at, 1); sfx('back'); msg = ''; }
       else if (save.party.length >= 3) { sfx('back'); msg = 'The party is full. Bench someone first.'; }
       else { save.party.push(id); sfx('ok'); msg = ''; mark('party-add'); }
@@ -1002,6 +1021,7 @@
     try {
       for (;;) {
         await clockScreen(op);
+        await prepareBattle({ group: op.group, bg: op.arena, title: op.name });
         const snap = JSON.stringify({ items: save.items, th: save.th });
         const out = await battle({ group: op.group, bg: op.arena, label: 'Full Moon', block: op.place, boss: true, music: 'boss', nav: D.nav[op.id] ? op.id : 'boss', heat: 0, op });
         if (out.result === 'win') {
@@ -1511,7 +1531,7 @@
         <ol class="bt-order" aria-label="Turn order"></ol>
         <div class="bt-tools">${tools('battle')}</div>
       </header>
-      <div class="bt-field" role="group" aria-label="Shadows"></div>
+      <div class="bt-field" role="group" aria-label="Battlefield"><div class="bt-fighter" hidden><img alt="" draggable="false"></div></div>
       <div class="bt-party" role="group" aria-label="Party"></div>
       <div class="bt-cmd" hidden><div class="bt-who"><img alt=""><div class="tag"><b></b><span></span></div></div><div class="bt-cmd-body"></div></div>
       <div class="bt-log" role="status" aria-live="polite"></div>
@@ -1519,7 +1539,7 @@
       <div class="bt-rushtag" aria-hidden="true"><b>RUSH</b><span>R to stop</span></div>
       <div class="bt-fx"></div><div class="bt-cut"></div><div class="bt-flash"></div><div class="bt-dim"></div>`, `bt-battle${floor.boss ? ' boss' : ''}${floor.reaper ? ' reaper' : ''}`);
     BT = {
-      root: el, field: el.querySelector('.bt-field'), party: el.querySelector('.bt-party'), cmd: el.querySelector('.bt-cmd'),
+      root: el, field: el.querySelector('.bt-field'), fighter: el.querySelector('.bt-fighter'), party: el.querySelector('.bt-party'), cmd: el.querySelector('.bt-cmd'),
       body: el.querySelector('.bt-cmd-body'), who: el.querySelector('.bt-who'), log: el.querySelector('.bt-log'), nav: el.querySelector('.bt-nav'),
       fx: el.querySelector('.bt-fx'), cut: el.querySelector('.bt-cut'), flash: el.querySelector('.bt-flash'), order: el.querySelector('.bt-order'),
       enemies: new Map(), cards: new Map(), bg: floor.bg
@@ -1531,6 +1551,7 @@
     // Every mood a card or the results can switch to, so a face never pops in blank.
     stills(B.party().flatMap(p => Object.values(member(p.mid).faces).map(f => pimg(p.mid, f))), 0);
     if (!save.awakened) { stills(AWAKEN.map(f => SUMMON_DIR + f + '.webp'), 0); prepClip('awakening'); }
+    stills(B.party().filter(p => FIELD_POSES.has(p.mid)).map(p => fieldPose(p.mid)), 0);
     B.foes().forEach(u => addEnemy(u));
     B.party().forEach(u => {
       const m = member(u.mid);
@@ -1554,6 +1575,38 @@
   }
   // The hit flash's mask lives in a CSS variable, which resolves against battle.css, not the page: give it an absolute URL.
   const absUrl = u => { try { return new URL(u, document.baseURI).href; } catch (e) { return u; } };
+  // Pose sheets use equal canvases so changing an action never changes the field layout.
+  const shadowFrames = new Map();
+  function setShadowFrame(el, n) {
+    const frames = el._shadowPoses?.frames, slug = frames && frames[n];
+    if (!slug) return;
+    const loaded = shadowFrames.get(slug);
+    if (!loaded?.complete || !loaded.naturalWidth) return; // Keep the last frame while slow art loads.
+    const src = sart(slug), img = el.querySelector('.sh-pic img');
+    if (!img) return;
+    img.src = src;
+    el.dataset.pose = String(n);
+    el.querySelector('.flash')?.style.setProperty('--src', `url('${absUrl(src)}')`);
+  }
+  function restShadow(el) {
+    if (!el._shadowPoses || el._shadowAction) return;
+    const states = el._shadowPoses.states;
+    const state = el.classList.contains('dead') ? 'defeat' : el.classList.contains('down') ? 'down' : 'idle';
+    setShadowFrame(el, (states[state] || [0])[0]);
+  }
+  async function animateShadow(el, state, ms) {
+    const poses = el?._shadowPoses, sequence = poses?.states[state];
+    if (!sequence?.length) return;
+    const token = (el._shadowToken || 0) + 1;
+    el._shadowToken = token; el._shadowAction = true;
+    const frames = FX?.reduced() || perf() ? [sequence[sequence.length - 1]] : sequence;
+    for (const frame of frames) {
+      if (el._shadowToken !== token || !el.isConnected || el.classList.contains('dead')) return;
+      setShadowFrame(el, frame);
+      await sleep(ms / frames.length);
+    }
+    if (el._shadowToken === token) { el._shadowAction = false; restShadow(el); }
+  }
   function addEnemy(u) {
     const d = D.enemies[u.kind];
     const el = document.createElement('div');
@@ -1570,10 +1623,16 @@
       if (d.gimmick === 'lantern') el.classList.add('lantern');
       body = `<div class="sh sh-pic idle-${d.idle || 'breathe'}"><img src="${d.pic}" alt="${esc(u.name)}" draggable="false" width="${d.picW || 1}" height="${d.picH || 1}"><i class="flash" style="--src:url('${absUrl(d.pic)}')"></i></div>`;
     } else if (art) {
-      const h = d.h || 220;
+      const h = (d.h || 220) * (art.poses?.scale || 1);
       el.style.setProperty('--w', `${Math.round(h * art.w / art.h)}px`);
       if (art.small) el.classList.add('soft');
-      const src = sart(d.img);
+      if (art.poses) {
+        el._shadowPoses = art.poses;
+        art.poses.frames.forEach(slug => {
+          if (!shadowFrames.has(slug)) { const img = new Image(); img.src = sart(slug); shadowFrames.set(slug, img); }
+        });
+      }
+      const src = sart(art.poses ? art.poses.frames[0] : d.img);
       body = `<div class="sh sh-pic idle-${d.idle || 'breathe'}"><img src="${src}" alt="${esc(u.name)}" draggable="false" width="${art.w}" height="${art.h}"><i class="flash" style="--src:url('${absUrl(src)}')"></i></div>`;
     } else {
       const sv = ART.shadow(d.svg);
@@ -1623,6 +1682,7 @@
     if (u.unreachable && !u.dead) tags.push('<span class="bt-tag">Out of reach</span>');
     ['atk', 'def'].forEach(s => { if (u.buffs[s]) tags.push(`<span class="bt-tag">${STAT_SHORT[s]} ${u.buffs[s] > 0 ? '↑' : '↓'}</span>`); });
     el.querySelector('.bt-tags').innerHTML = tags.join('');
+    restShadow(el);
   }
   /* An HP/SP bar: the fill (.f) moves at once, the ghost (.g) lingers behind a loss, then drains to meet it (transform only).
      On a gain the ghost jumps ahead and the fill grows into it. */
@@ -1668,6 +1728,7 @@
     if (!BT) return;
     B.foes().forEach(u => { if (!BT.enemies.has(u.id)) addEnemy(u); paintEnemy(u); const el = BT.enemies.get(u.id); if (u.dead && !el.classList.contains('dead')) el.classList.add('dead', 'gone'); });
     B.party().forEach(u => paintCard(u));
+    paintFighter();
     paintOrder();
   }
   function paintOrder() {
@@ -1682,7 +1743,24 @@
     BT.cards.forEach(c => c.classList.remove('active'));
     BT.enemies.forEach(e => e.classList.remove('acting'));
     if (u && u.side === 'party') BT.cards.get(u.id).classList.add('active');
+    if (!u || u.side === 'party') BT.fighter.dataset.id = u?.id || '';
+    paintFighter();
     paintOrder();
+  }
+  function paintFighter() {
+    const box = BT.fighter, u = B.U(box.dataset.id);
+    const visible = !!u && FIELD_POSES.has(u.mid) && !u.dead && !u.down;
+    box.hidden = !visible;
+    if (!visible) return;
+    const img = box.querySelector('img');
+    if (img.dataset.mid !== u.mid) {
+      img.dataset.mid = u.mid;
+      img.style.visibility = 'hidden';
+      img.onload = () => { img.style.visibility = 'visible'; };
+      img.onerror = () => { img.style.visibility = 'hidden'; };
+      img.alt = `${u.name}, battle stance`;
+      img.src = fieldPose(u.mid);
+    }
   }
   function log(text, cls = '') { if (cls !== 'say') blogAdd(text, cls); BT.log.textContent = text; clearTimeout(log.t); log.t = setTimeout(() => { if (BT) BT.log.textContent = ''; }, 2200 * textHold() / Math.min(speed(), 2)); }
 
@@ -1771,6 +1849,9 @@
     const en = BT.enemies.get(id);
     if (!en || en.classList.contains('dead')) return;
     en.classList.remove('down', 'charging', 'hit', 'targeted');
+    en._shadowToken = (en._shadowToken || 0) + 1;
+    en._shadowAction = false;
+    setShadowFrame(en, (en._shadowPoses?.states.defeat || [0])[0]);
     let ms = 0;
     const sh = en.querySelector('.sh');
     if (FX && sh) {
@@ -2094,7 +2175,8 @@
           const el = BT.enemies.get(u.id); if (el) { el.classList.remove('acting'); void el.offsetWidth; el.classList.add('acting'); }
           banner(e.name, { el: e.el, enemy: true, sub: u.name });
           log(`${u.name} used ${e.name}.`, 'eu');
-          await sleep(e.skill === 'tremble' ? 500 : 650);
+          const ms = e.skill === 'tremble' ? 500 : 650;
+          await Promise.all([sleep(ms), animateShadow(el, E.PHYS.has(e.el) ? 'attack' : 'cast', ms)]);
         } else {
           paintCard(u);
           if (e.summon && !e.charmed) { await summonCut(u, e.name); banner(e.name, { el: e.el, sub: u.persona }); }
@@ -2128,7 +2210,7 @@
           const wb = el.lastElementChild; setTimeout(() => wb.remove(), 700);
           el.classList.add('hitstop'); await sleep(85); el.classList.remove('hitstop');
         }
-        if (el && e.amount > 0 && e.aff !== 'drain') { el.classList.remove('hit'); void el.offsetWidth; el.classList.add('hit'); setTimeout(() => el.classList.remove('hit'), 420); }
+        if (el && e.amount > 0 && e.aff !== 'drain') { el.classList.remove('hit'); void el.offsetWidth; el.classList.add('hit'); if (onEnemy) animateShadow(el, 'hurt', 360); setTimeout(() => el.classList.remove('hit'), 420); }
         const label = e.crit ? 'CRITICAL!' : (AFF_WORD[e.aff] || '');
         const lcls = e.crit ? 'crit' : e.aff;
         if (e.aff === 'null') popup(e.tgt, { label: 'NULL', lcls: 'null' });
@@ -3257,10 +3339,10 @@
      EQUIPMENT: weapon, armor and accessory per member
      ════════════════════════════════════════════════════ */
   const SLOTS = [['weapon', 'Weapon'], ['armor', 'Armor'], ['acc', 'Accessory']];
-  function equipScreen(onClose, startMid = null) {
+  function equipScreen(onClose, startMid = null, { extra = [], solo = false } = {}) {
     screen = 'equip';
     root.classList.remove('bt-in-battle');
-    const mates = D.party.filter(usable).sort((a, b) => ((b.id === 'solar' || save.party.includes(b.id)) - (a.id === 'solar' || save.party.includes(a.id))));
+    const mates = D.party.filter(m => solo ? m.id === 'solar' : usable(m) || extra.includes(m.id)).sort((a, b) => ((b.id === 'solar' || save.party.includes(b.id)) - (a.id === 'solar' || save.party.includes(a.id))));
     let mi = Math.max(0, mates.findIndex(m => m.id === startMid)), si = 0, mode = 'slot', li = 0;
     const cands = (mid, slot) => {
       const m = member(mid), cur = eqOf(mid)[slot];
@@ -3462,7 +3544,9 @@
     });
     // The life sim owns the party, money, items, gear, operations and fragments. Unknown ids are skipped.
     const avail = hoAvail();
-    save.party = (R.party || []).filter(id => id !== 'solar' && member(id) && avail.includes(id)).slice(0, 3);
+    catchUpRecruits(save, avail, 'available');
+    const chosen = save.preparation?.handoff === HO.id ? save.party : R.party;
+    save.party = (chosen || []).filter(id => id !== 'solar' && member(id) && avail.includes(id)).slice(0, 3);
     save.items = {};
     Object.entries(R.items || {}).forEach(([k, n]) => { if (D.items[k] && n > 0) save.items[k] = Math.floor(n); });
     if (typeof R.yen === 'number') save.yen = Math.max(0, Math.round(R.yen));
@@ -3533,6 +3617,7 @@
     if (!HS || HS.finished) return;
     HS.finished = true;
     ctl = null;
+    delete save.preparation;
     persist();
     const result = hoResult(outcome, extra);
     let h = null;
@@ -3593,14 +3678,47 @@
     return [{ group: (b.strong[0] || b.pool[0]).slice(), bg: b.bg, label: R.title || 'Tartarus', block: b.name, boss: false, music: 'boss', title: R.title || b.name,
       rules: wantsInterrupt ? SEG1(turn ? +turn[1] + 1 : 4, /half/i.test(notes) ? 0.5 : 0) : { noEscape: true } }];
   }
+  // Preparation is deliberately separate from battle(): nothing can take a turn before Begin.
+  function prepareBattle(spec) {
+    const required = spec.join || [], level = Math.max(...spec.group.map(kind => E.enemyBase(kind).lvl));
+    if (HO) { save.preparation = { handoff: HO.id }; persist(); }
+    return new Promise(resolve => {
+      let started = false;
+      const render = () => {
+        screen = 'preparation'; root.classList.remove('bt-in-battle');
+        const members = spec.solo ? [D.party[0]] : roster();
+        const el = show(`<div class="bt-room-bg" style="background-image:url('${spec.bg}')"></div><div class="bt-room-shade"></div>
+          <div class="bt-room-in"><p class="bt-kicker">Battle preparation</p><h1>GET READY</h1>
+          <div class="bt-room-body"><p>${esc(spec.title || spec.block || spec.label)} · Recommended level ${level}</p>
+          <p>${spec.solo ? 'Solar fights alone. You can review her equipment before starting.' : 'Review your party and equipment before starting.'}</p>
+          <ul class="bt-prep-list">${members.map(m => { const eq = eqOf(m.id); return `<li><b>${esc(m.name)} <small>Lv ${lvOf(m.id)}${required.includes(m.id) ? ' · Required' : ''}</small></b><span>${esc(D.gear[eq.weapon]?.name || '—')} · ${esc(D.gear[eq.armor]?.name || '—')}</span></li>`; }).join('')}</ul></div>
+          <div class="row">${spec.solo ? '' : '<button type="button" class="bt-btn" data-prep="party"><span>Party</span></button>'}
+          <button type="button" class="bt-btn" data-prep="equip"><span>Equipment</span></button>
+          <button type="button" class="bt-btn pink" data-prep="begin"><span>Begin battle</span></button></div></div>`, 'bt-room bt-preparation');
+        el.querySelector('[data-prep="party"]')?.addEventListener('click', () => { if (!started) partyScreen(render, { required }); });
+        el.querySelector('[data-prep="equip"]').addEventListener('click', () => { if (!started) equipScreen(render, 'solar', { extra: required, solo: !!spec.solo }); });
+        el.querySelector('[data-prep="begin"]').addEventListener('click', () => { if (started) return; started = true; ctl = null; persist(); sfx('ok'); resolve(); });
+        buttonNav(el);
+        mark('preparation');
+      };
+      render();
+    });
+  }
   /* One story battle with game over handling. Returns 'win' | 'interrupt' | 'phase' | 'escaped' | 'lose'. */
   async function hoFight(spec) {
-    if (spec.join && spec.join.length) save.party = [...new Set(spec.join.filter(id => member(id)).concat(save.party))].slice(0, 3);
+    if (spec.join && spec.join.length) {
+      const joining = spec.join.filter(id => member(id));
+      const level = Math.max(...spec.group.map(kind => E.enemyBase(kind).lvl));
+      catchUpRecruits(save, joining, 'awakening', level);
+      save.party = [...new Set(joining.concat(save.party))].slice(0, 3);
+      persist();
+    }
     if (spec.rules && spec.rules.startHp && spec.rules.startHp < 1 && run && !run.carry) {
       // The second half of an interrupted fight: the Shadow picks up where it was (it starts hurt).
       spec = Object.assign({}, spec, { rules: Object.assign({}, spec.rules, { setup: b => b.foes().forEach(f => { f.hp = Math.round(f.maxHp * spec.rules.startHp); }) }) });
     }
     for (;;) {
+      if (spec.boss || spec.join?.length) await prepareBattle(spec);
       const snap = JSON.stringify({ items: save.items, th: save.th, carry: run && run.carry });
       const out = await battle(Object.assign({ heat: 0, nav: 'boss' }, spec));
       if (out.result === 'win') {

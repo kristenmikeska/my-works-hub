@@ -42,12 +42,17 @@
       { n: "They finished at six. Every binder balanced except the occult club's, which was off by exactly six hundred and sixty-six yen, and he looked at it for a long moment and then wrote, in very small letters in the margin, *no.*" }
     ],
     [
-      { n: "She'd started bringing food. It wasn't a decision, per se. It was more that she kept finding herself at the bakery by the station with two melon pans in a paper bag and no memory of deciding on the second one." },
-      { n: "He took it without looking up, the way he took every paper anyone handed him, and set it on the corner of the table, where it would sit, she knew from experience, until it was a fossil." },
+      { n: "She'd started bringing food. It wasn't a decision, per se. It was more that she kept finding herself at the bakery by the station with two croissants in a paper bag and no memory of deciding on the second one." },
+      { place: 'Gekkoukan High · Student Council Room', time: 'Evening' },
+      { cg: 'link-jungwon-croissant' },
+      { n: "Tonight the windows were blue by the time she got there, and he had fallen asleep over the budget with his cheek in his hand and his pen still touching the page. The desk lamp was on. She took the croissant out of the bag and set it beside his wrist, carefully, where he'd find it before the next column of figures." },
+      { cg: null },
+      { n: "The paper rustled. He opened his eyes, looked at the pastry without quite lifting his head, and picked his pen up again." },
       { s: 'jungwon', f: 'neutral', t: "Thank you. After this page." },
+      { n: "Three pages later the croissant was still there." },
       { choose: [
         { t: "(Take the pen out of his hand.)", notes: 3, then: [
-          { n: "She took the pen. He looked at his empty hand like it had defected, and then at her, and then, with enormous dignity, at the melon pan." },
+          { n: "She took the pen. He looked at his empty hand like it had defected, and then at her, and then, with enormous dignity, at the croissant." },
           { s: 'jungwon', f: 'flustered', t: "Fine. Fine. You're worse than Sunoo. You're worse than Sunoo at home and you're worse than Sunoo here." },
           { n: "He ate it in four bites. She gave the pen back. He didn't pick it up again for almost a whole minute, which she decided to count." }
         ] },
@@ -149,15 +154,15 @@
     ] },
 
     { after: '10/24', title: '2: two presidents', place: 'Gekkoukan High · Student Council Room', time: 'After School', scene: [
-      { n: "It was the Saturday after midterms, and the school had the tired, scrubbed feeling of a building that had just been made to sit a test itself. Mitsuru was in the council room when Solar got there, which happened about as often as a solar eclipse, standing at the window with a folder held against her chest, and across the table from her, standing too, because she was standing, was Jungwon." },
+      { n: "Midterms were over, and the school had the tired, scrubbed feeling of a building that had just been made to sit a test itself. Mitsuru was in the council room when Solar got there, which happened about as often as a solar eclipse, standing at the window with a folder held against her chest, and across the table from her, standing too, because she was standing, was Jungwon." },
       { n: "They were talking about the athletic budget. They were talking about it the way two people play a game of chess at a park table while the old men watch, slowly, courteously, each of them giving the other just enough room to make a mistake." },
       { s: 'mitsuru', f: 'neutral', t: "Your revisions are thorough. Thorough enough that I'm going to have to explain to the kendo club why their new bogu came out of the photography club's film budget." },
       { s: 'jungwon', f: 'happy', t: "The photography club hasn't bought film since March. They use their phones. I checked their receipts. They were very happy to show me." },
       { s: 'mitsuru', f: 'neutral', t: "...I see." },
       { n: "Mitsuru looked at Solar in the doorway with an expression that might, in someone less disciplined, have been the beginning of an eye-roll, and then looked back at Jungwon with something else entirely, something cool and level and almost kind." },
       { s: 'mitsuru', f: 'neutral', t: "Were you elected? Where you're from?" },
-      { s: 'jungwon', f: 'neutral', t: "Twice. Unopposed, the first time." },
-      { s: 'jungwon', f: 'neutral', t: "Not the second." },
+      { s: 'jungwon', f: 'neutral', t: "Once. Unopposed." },
+      { s: 'jungwon', f: 'neutral', t: "This time, someone decided to run against me." },
       { n: "His eyes moved to Solar and away so fast she might have imagined it. Mitsuru didn't imagine it. Mitsuru, Solar was fairly sure, had never imagined anything in her life." },
       { s: 'mitsuru', f: 'neutral', t: "And the other thing? You're someone's heir. It's in how you stand." },
       { n: "The room got very quiet. Jungwon smiled, and the dimples came back, sweet and deep and empty, and he bowed his head very slightly to her the way you'd bow to someone at a funeral." },
@@ -191,7 +196,7 @@
         { t: "You're both somebody's heir.", notes: 3, tally: { 'jungwon.S': 1 }, then: [
           { s: 'jungwon', f: 'neutral', t: "Somebody's what's left, in my case." },
           { n: "He touched the watch. The second hand sat on the eleven." },
-          { s: 'jungwon', f: 'happy', t: "I'm sorry. That's not a conversation for a Saturday. Would you like some tea? The kettle in here is terrible. I've grown fond of it." }
+          { s: 'jungwon', f: 'happy', t: "I'm sorry. That's not a conversation to have over committee minutes. Would you like some tea? The kettle in here is terrible. I've grown fond of it." }
         ] }
       ] },
       { n: "He made the tea in the terrible kettle, and it was terrible, and they drank it anyway, and he showed her how to read the athletic budget in a way that made it look less like a wall of numbers and more like a map of who in the school wanted what and why. It was the most useful thing anyone had taught her since April. She didn't tell him that. She had a feeling she'd told him things like that before, and that he'd kept them somewhere." }
@@ -201,7 +206,7 @@
       { n: "He was sitting with his phone face-up on the table in front of him, not touching it, the way you'd sit with a letter you couldn't make yourself open, and every few minutes it buzzed, once, and lit up, and he looked at it without moving his head." },
       { s: 'jungwon', f: 'neutral', t: "They keep coming in." },
       { s: 'jungwon', f: 'neutral', t: "All from the same night. All stamped within the same hour. Eleven fifty-eight. Twelve-oh-three. Twelve forty-one. Today one came in stamped with a date I've never seen. Not wrong. Just one I don't recognize." },
-      { s: 'jungwon', f: 'serious', t: "Sunoo thinks I've been gone an hour. Heeseung thinks it's been a night. Niki thinks I've been gone a week and he's taken my seat at lunch." },
+      { s: 'jungwon', f: 'serious', t: "In these messages, Sunoo thinks I've been gone an hour. Heeseung thinks it's been a night. Niki thinks I've been gone a week and he's taken my seat at lunch." },
       { s: 'jungwon', f: 'neutral', t: "I don't know who's right. I've stopped asking my watch." },
       { n: "He turned the phone around so she could see. A group chat. Its name made her laugh out loud before she could stop it." },
       { phone: [

@@ -15,6 +15,7 @@
      { phone: [{ from, t }], contact }        a text conversation
      { stat } { yen } { flag } { tally } { fragment } { register } { join } { unlock } { setDate }   effects (via the game)
      { ifRank } { ifStat } { ifFlag } { ifMet } { ifRoute } { ifRomance } -> then / else
+     { ifEvent: 'event-id' }     -> then / else, only if that story event is recorded in the save
      { ifAfter: 'M/D', then, else }   today is on or after M/D (same rule as a rank's `after`)
      { ifBefore: 'M/D', then, else }  today is strictly before M/D (so ifBefore X is exactly ifAfter X's else)
      { flag: { id: true } }           sets flags; { flag: 'id' } and { flag: ['a', 'b'] } set them to true. Works in story
@@ -106,6 +107,9 @@ window.FemcScene = (() => {
       <div class="gs-choices"></div>
       <div class="gs-box" aria-live="polite"><span class="gs-name"></span><p class="gs-text"></p></div>`;
     document.body.appendChild(el);
+    // The launcher must stop receiving Enter/Space once its scene is open.
+    el.tabIndex = -1;
+    el.focus({ preventScroll: true });
     document.documentElement.classList.add('g-in-scene');
     const $ = s => el.querySelector(s);
     const img = $('.gs-portrait'), sil = $('.gs-silhouette'), meEl = $('.gs-solar'), nameEl = $('.gs-name'), textEl = $('.gs-text'), choices = $('.gs-choices'), boxEl = $('.gs-box'), cgEl = $('.gs-cg');
@@ -113,6 +117,7 @@ window.FemcScene = (() => {
     if (window.ResizeObserver) new ResizeObserver(fit).observe(boxEl); else fit();
     const queue = opts.resume?.queue ? [...opts.resume.queue] : [...opts.scene];
     let typing = null, waiting = null, skipping = false, currentFace = null, closed = false;
+    let titleGo = null, titleTimer = null;
     // The link whose route/bond the lines read (asLink switches it, e.g. a link's Christmas scene inside the story event).
     let curLink = opts.resume?.vis?.link || opts.link;
     const log = [];
@@ -336,9 +341,17 @@ window.FemcScene = (() => {
     }
     el.addEventListener('click', e => { if (e.target.closest('.gs-tools, .gs-choices, .gs-log, .gs-summon, .g-card')) return; advanceClick(); });
     const keys = e => {
-      if (!el.isConnected) return document.removeEventListener('keydown', keys, true);
+      if (closed || !el.isConnected) return document.removeEventListener('keydown', keys, true);
       if (document.querySelector('.g-overlay')) return;
-      if (e.key === ' ' || e.key === 'Enter') { if (!choices.children.length && !e.target.closest?.('button')) { e.preventDefault(); advanceClick(); } }
+      if (e.key === ' ' || e.key === 'Enter') {
+        if (e.repeat) { e.preventDefault(); e.stopPropagation(); return; }
+        if (titleGo) { e.preventDefault(); e.stopPropagation(); titleGo(); return; }
+        const sceneButton = el.contains(e.target) && e.target.closest?.('button');
+        if (!sceneButton) {
+          e.preventDefault(); e.stopPropagation();
+          if (!choices.children.length) advanceClick();
+        }
+      }
       if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && choices.children.length) {
         e.preventDefault();
         const all = [...choices.querySelectorAll('button:not(:disabled)')];
@@ -376,11 +389,13 @@ window.FemcScene = (() => {
 
     function close() {
       closed = true;
+      clearTimeout(titleTimer); titleGo = null;
       document.removeEventListener('keydown', keys, true);
       el.classList.add('out');
       setTimeout(() => { el.remove(); if (!document.querySelector('.gs')) document.documentElement.classList.remove('g-in-scene'); }, 320);
     }
     function end(finished) {
+      if (closed) return;
       clearTimeout(typing);
       close();
       opts.onDone?.({ finished, gained });
@@ -394,9 +409,10 @@ window.FemcScene = (() => {
       card.querySelector('span').textContent = opts.title;
       el.appendChild(card);
       let gone = false;
-      const go = e => { e?.stopPropagation?.(); if (gone) return; gone = true; card.classList.add('out'); setTimeout(() => card.remove(), 450); next(); };
+      const go = e => { e?.stopPropagation?.(); if (gone || closed) return; gone = true; titleGo = null; clearTimeout(titleTimer); card.classList.add('out'); setTimeout(() => card.remove(), 450); next(); };
+      titleGo = go;
       card.addEventListener('click', go);
-      setTimeout(go, 2400);
+      titleTimer = setTimeout(go, 2400);
     } else next();
     return { el, close: () => end(false) };
   }

@@ -138,6 +138,19 @@ P3 keeps happening, lightly:
 
 Once they cross into the Dark Hour, people from her novels can **awaken Personas of their own** and join the party late in the game. Their Personas get designed with Kat, the way Haenim was.
 
+## Searcher housing (continuity ruling, 2026-10-20)
+
+The dorm and Kirijo guesthouse are separate homes. Visiting the dorm, eating there or waiting in the lounge does not mean a character lives there.
+
+| Home | Novel characters |
+|---|---|
+| Iwatodai dorm | Hanni, Hyein, Jihoon, Yunjin |
+| Kirijo guesthouse by the station | Minji, Jungwon, Haechan, Jaehyun, Mark, Cherry |
+| Kirijo guesthouse by the station | Junkyu, Asahi, Hyunsuk, Jaehyuk |
+| Kirijo guesthouse by the station | Sunoo, Heeseung, Sunghoon, Jay, Jake, Niki |
+
+Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve this split to keep the dorm cast manageable. The others follow their existing room references. Hanni and Hyein have separate rooms. No new Gekkoukan enrollment is implied by lodging or a school visit.
+
 ## Game systems (planned)
 
 - **Battle:** a real Persona-style system. Turn-based, with weaknesses, One More, All-Out Attacks, and an S.E.E.S. party.

@@ -173,10 +173,10 @@
     { after: '11/8', title: '1: name for the order', place: "Iwatodai Strip · Yeobo's Cafe", time: 'After School', music: 'tender', scene: [
       { n: "Nobody could agree on when the café had arrived. Junpei swore it hadn't been there on Friday. Fuuka said she'd felt it at midnight, in the Dark Hour, a whole building tuning in like a radio station, warm and full of voices, and then six signals stepping out of it into the green one after the other, the last one dragging his feet. And on Saturday there it was, wedged between the ramen shop and the shuttered pachinko place, with its windows fogged gold and its hand-lettered sign in a language half the Strip couldn't read." },
       { n: "By the time anyone thought to go and look, one of the boys was already behind the counter in a flowered apron, turning on the coffee machine. That was what Mitsuru kept repeating, later, in the lounge, with real respect. *The building fell through the floor of the world and the first thing he did was open for business.*" },
-      { n: "Solar came back on Sunday afternoon, alone, without Jungwon walking her anywhere, and stood across the street for longer than she'd admit to, half expecting it to be gone. It wasn't. The bell over the door went. The boy behind the counter looked up, and his whole face lit like a shop sign switched on at dusk." },
+      { n: "Solar came back in the afternoon, alone, without Jungwon walking her anywhere, and stood across the street for longer than she'd admit to, half expecting it to be gone. It wasn't. The bell over the door went. The boy behind the counter looked up, and his whole face lit like a shop sign switched on at dusk." },
       { s: 'sunoo', f: 'happy', t: "Hello, welcome to the café! What can I get for you today?" },
       { n: "He said it in a voice with its customer polish on, bright and practiced. And then he heard himself say it to her, and his face did something under the brightness, a small quick fold, like a napkin going crooked." },
-      { s: 'sunoo', f: 'sad', t: "...Sorry. Habit. You were here yesterday and I still said it like you were new." },
+      { s: 'sunoo', f: 'sad', t: "...Sorry. Habit. You came in with Jungwon and I still said it like you were new." },
       { s: 'sunoo', f: 'happy', t: "You're not new! You're totally not new. It's fine! What would you like?" },
       { choose: [
         { t: "What do you recommend?", notes: 3, flag: { 'sunoo-recommend': true }, then: [
@@ -423,7 +423,7 @@
         { t: "Where are you?", notes: 3, then: [
           { s: 'sunoo', f: 'surprised', t: "Oh! I took it. I'm always taking it." },
           { s: 'sunoo', f: 'sad', t: "...I'm never in any of them, actually. Huh. I never noticed that." },
-          { n: "He scrolled back to check. Back and back. The six of them at a table, at a game, at a festival with paper lanterns. Five of them. Always five. He kept scrolling for a while after the point had been made." }
+          { n: "He scrolled back to check. Back and back. The six of them at a table, at a game, at a festival with paper lanterns. Six of them. Always six. He kept scrolling for a while after the point had been made." }
         ] },
         { t: "You all look happy.", notes: 2, then: [
           { s: 'sunoo', f: 'happy', t: "We were. We are. Mostly. Being friends with someone who works too hard is like being friends with a very polite storm." }

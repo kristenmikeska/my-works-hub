@@ -154,7 +154,7 @@
   ranks: [
     { after: '11/15', title: "1: who's really in first", place: 'Iwatodai Strip · Wild-Duck Burger', time: 'Afternoon', music: 'city', scene: [
       { n: "It was raining on the Strip, the thin November kind that didn't fall so much as hang in the air and wait for you to walk into it, and the windows of Wild-Duck Burger had fogged from the inside so that the whole place glowed like a fish tank somebody had left the light on in." },
-      { n: "Two nights ago a girl had come out of booth seven at the karaoke place in the middle of the Dark Hour with one arm already pointing, yelling Jihoon's name into the green. Since then she had eaten Jihoon's emergency ramen, fallen asleep face down on the dorm kitchen table in his hoodie, been driven to the Kirijo guesthouse by the station by a Mitsuru who had not said one word the entire way, and, according to Junkyu, who had followed her around most of Saturday like a duckling, insulted every single thing on the Strip except Wild-Duck, which she had walked into, looked around, and declared the only honest business in Japan." },
+      { n: "The night she arrived, Cherry had come out of booth seven at the karaoke place in the middle of the Dark Hour with one arm already pointing, yelling Jihoon's name into the green. Since then she had eaten Jihoon's emergency ramen, fallen asleep face down on the dorm kitchen table in his hoodie, been driven to the Kirijo guesthouse by the station by a Mitsuru who had not said one word the entire way, and, according to Junkyu, who had followed her around the Strip like a duckling, insulted every single thing on the Strip except Wild-Duck, which she had walked into, looked around, and declared the only honest business in Japan." },
       { n: "She maintained, to anyone who asked, that she had not cried at the karaoke place. There had been mascara all the way down her face. She maintained that it was the smoke machine. There had not been a smoke machine." },
       { n: "She was in the corner booth now with two large fries and a cola and her arms folded so tightly it looked structural, and when Solar came in out of the rain, shaking it off her sleeves, she didn't wave. She pointed at the seat." },
       { register: 'cherry' },
@@ -551,7 +551,7 @@
         ] }
       ] },
       { ifFlag: 'call-H', then: [
-        { s: 'cherry', f: 'neutral', t: "Jihoon sleeps with that dog. The crane game dog. I saw it in his room at the guesthouse. Face on the pillow. Tucked in." },
+        { s: 'cherry', f: 'neutral', t: "Jihoon sleeps with that dog. The crane game dog. I saw it in his room at the dorm. Face on the pillow. Tucked in." },
         { s: 'cherry', f: 'happy', t: "Don't tell him I told you. Tell everyone else." }
       ] },
       { n: "Her phone lit up on the floor beside the futon, face down, a white line of light around its edges on the tatami, and buzzed once. She didn't look at it. It buzzed again." },
@@ -681,7 +681,7 @@
           { n: "There was a silence. Then Cherry said the dog was valid, actually, and Jihoon said the dog had been there for her, honestly, and the two of them got down on the floor on either side of Koromaru and argued about which of them he liked better instead, which, Solar thought, watching from the sofa, was the whole point. It had always been the whole point." }
         ] }
       ] },
-      { n: "Later, when Jihoon had gone back to the guesthouse through the snow, still talking, and the lounge had emptied out, Cherry stayed on the sofa with her boots on the table and the television murmuring, and said, without looking away from it, that she'd never actually wanted to win." },
+      { n: "Later, when Jihoon had finally gone upstairs, still talking, and the lounge had emptied out, Cherry stayed on the sofa with her boots on the table and the television murmuring, and said, without looking away from it, that she'd never actually wanted to win." },
       { s: 'cherry', f: 'neutral', t: "The first thing. I mean I do. I want to win everything. But I don't need it. Him and me fighting about it, that's the thing. That's how we say it. You know that, right? Everybody knows that." },
       { s: 'cherry', f: 'sad', t: "If we ever stop fighting about who's first, that's when you should worry. That means one of us isn't there anymore." },
       { choose: [

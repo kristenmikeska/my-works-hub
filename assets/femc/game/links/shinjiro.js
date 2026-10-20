@@ -555,7 +555,10 @@
         { t: "Show me.", notes: 3, then: [
           { n: "He stepped in behind her and put his hand over hers on the knife, slowly, carefully, the way you reach for something that might startle, his chest not quite touching her back. The blade went down through the onion in one clean thin slice and the board knocked once under it. His hand was warm and dry and rough across the knuckles, and he smelled of soy and cold air and the dish soap he insisted on buying, and she did not, at all, in any way, think about any of it." },
           { s: 'shinjiro', f: 'neutral', t: "Like that. Let the knife do the work." },
-          { n: "He stepped back. She cut the next one by herself and it was thinner, and neither of them mentioned that her ears had gone red, which might have been the onions." }
+          { n: "He stepped back. She cut the next one by herself and it was thinner, and neither of them mentioned that her ears had gone red, which might have been the onions." },
+          { cg: 'link-shinjiro-cooking' },
+          { n: "At the stove, the soup was catching at the bottom. She took the spoon, and he reached around her to turn her hand a little, his knuckles against hers, slow circles along the base of the pot. Steam came up between them. She looked up to ask if that was right and forgot the question for a second, and he kept watching the soup as if it required all of his attention." },
+          { cg: null }
         ] },
         { t: "It's an onion. It's going to get cooked.", notes: 1, then: [
           { s: 'shinjiro', f: 'neutral', t: "Everything's gonna get cooked. Doesn't mean you get to be sloppy about it." }

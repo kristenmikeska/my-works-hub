@@ -8,6 +8,7 @@
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'wren', name: 'Wren', short: 'Wren', arcana: 'Jester', numeral: '0', from: '???',
   kind: 'frame',
+  storyOnly: true,
   romance: null,
   starts: '4/16',
   reversible: true,

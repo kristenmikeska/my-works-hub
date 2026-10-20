@@ -166,7 +166,7 @@
   ],
   ranks: [
     { after: '9/14', title: '1: iced coffee', place: 'Paulownia Mall · Chagall Café', time: 'After School', music: 'tender', scene: [
-      { n: "On Saturday night a girl in black with hoops in her ears had dropped every bag she was carrying in the middle of Paulownia Mall, in the last second of the Dark Hour, and stood there with tissue paper around her feet, saying Solar's name like it was the answer to a question she'd been asked a hundred times. Solar had said, carefully, kindly, in the voice she used for shopkeepers, that she was very sorry, and asked if they'd met." },
+      { n: "On Saturday night a girl in black with hoops in her ears had dropped every bag she was carrying in the middle of Paulownia Mall, in the last second of the Dark Hour, and stood there with tissue paper around her feet, saying Solar's name like it was the answer to a question she'd been asked a hundred times. Solar had stood in front of her without knowing who she was." },
       { n: "She would think about the girl's face for a long time. Not because it had crumpled. Because it hadn't, not right away. Because it had done everything at once, all of it right there on the surface, hope and shock and something going out like a light, and then, on top of all of that, so fast it almost didn't show, the girl had smiled at her. Like Solar was the one who needed to be made to feel better." },
       { n: "Her name was Hanni. She'd found the café on Sunday morning, on the walk Mitsuru had told her she was allowed to take, and claimed the window table, and as far as Solar could tell she'd been sitting at it, on and off, ever since, the way you keep sitting by a phone." },
       { register: 'hanni' },
@@ -187,8 +187,8 @@
           { s: 'hanni', f: 'neutral', t: "That was the worst part. Not that you didn't know me. That you looked at me like I might want something from you. You've never once looked at me like that. Not even the first day." }
         ] }
       ] },
-      { s: 'hanni', f: 'neutral', t: "Okay. So. You heard Hyein. In the lounge. The sister thing. From scratch. We decided it in the bathroom at four in the morning in Fuuka's pajamas, which are very soft, by the way, I think they're nicer than anything I own." },
-      { s: 'hanni', f: 'serious', t: "But I made one more rule. Just me. Hyein doesn't know about it yet, she'll argue." },
+      { s: 'hanni', f: 'neutral', t: "I couldn't sleep last night. I kept thinking of things to tell you. I was going to make a list. In Fuuka's pajamas, which are very soft, by the way. I think they're nicer than anything I own." },
+      { s: 'hanni', f: 'serious', t: "And then I decided something. Just me. Hyein doesn't know about it yet, she'll argue." },
       { s: 'hanni', f: 'neutral', t: "I'm not going to quiz you. No *do you remember this.* No photos. No crying at you. Well. I might cry. I cry at commercials. That's not your fault and it's not about you, I promise, I cried at a commercial for rice yesterday." },
       { choose: [
         { t: "Why not? It might help.", notes: 2, then: [
@@ -249,10 +249,14 @@
       ], contact: 'hanni, hyein 🩷' },
       { n: "*@solar.* Lowercase. Three question marks. *omg what a joke.* It was her. It was her in a voice she had never once used out loud in this city, a quick dry careless voice that swore at things and didn't capitalize and assumed everyone else was the strange one." },
       { s: 'solar', f: 'surprised', t: "...I type like that?" },
-      { s: 'hyein', f: 'serious', t: "You TALK like that. That's the problem. You've been talking like a hotel since we got here." },
-      { s: 'hyein', f: 'neutral', t: "*Thank you, Hyein. That's very kind, Hyein.* Who are you? What did they do to you?" },
+      { s: 'hyein', f: 'serious', t: "You TALK like that too. Or you did. You never let me get away with anything." },
+      { ifFlag: 'hyein-menace', then: [
+        { s: 'hyein', f: 'happy', t: "You called me annoying at the mall. I don't think I've ever been so pleased to be insulted." }
+      ], else: [
+        { s: 'hyein', f: 'neutral', t: "I keep waiting for you to argue with me. Over absolutely nothing. Just because you can." }
+      ] },
       { s: 'hanni', f: 'neutral', t: "Hyein." },
-      { s: 'hyein', f: 'sad', t: "...Sorry. I'm sorry. I'm just. Why are you talking like that, Sol." },
+      { s: 'hyein', f: 'sad', t: "...Sorry. You don't have to. I'm just used to you." },
       { choose: [
         { t: "I don't know how else to talk to you yet.", notes: 3, then: [
           { s: 'hyein', f: 'sad', t: "...Okay." },

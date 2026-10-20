@@ -166,8 +166,8 @@
   ],
   ranks: [
     { after: '11/1', title: '1: ice cream and hugs', place: 'Paulownia Mall · Arcade', time: 'Evening', music: 'joy', scene: [
-      { n: "The night before had ended in Game Panic with the shutter halfway up and the hour holding on one minute longer than it should have, four boys in navy blazers standing in the middle of the dead cabinets arguing about a wall, and the softest-faced one turning around and seeing her and saying her name with three exclamation points. She'd heard them. She could still hear them." },
-      { n: "Then the phone at two in the morning, an old chat going off like a smoke alarm. Then not sleeping. Then breakfast, where the four of them had sat at the far end of the dorm's table in yesterday's blazers eating Fuuka's rice with the focused, slightly frightened gratitude of boys in somebody else's house, and the round-faced one had looked up every time she moved, like a dog listening for its name, and not said anything, because every time he opened his mouth Jihoon kicked him under the table." },
+      { n: "Their arrival had ended in Game Panic with the shutter halfway up and the hour holding on one minute longer than it should have, four boys in navy blazers standing in the middle of the dead cabinets arguing about a wall, and the softest-faced one turning around and seeing her and saying her name with three exclamation points. She'd heard them. She could still hear them." },
+      { n: "Then the phone at two in the morning, an old chat going off like a smoke alarm. Then not sleeping. At their first breakfast here, the four of them had sat at the far end of the dorm's table in the same blazers eating Fuuka's rice with the focused, slightly frightened gratitude of boys in somebody else's house, and the round-faced one had looked up every time she moved, like a dog listening for its name, and not said anything, because every time he opened his mouth Jihoon kicked him under the table." },
       { n: "He was in the arcade tonight. The lights were all on and every cabinet was yelling its own song over every other cabinet's song, and he was losing to a ten-year-old at a dance game and cheering for the ten-year-old, and when he saw Solar come in he jumped off the platform mid-song and the machine booed him and he didn't care." },
       { register: 'junkyu' },
       { s: 'junkyu', f: 'happy', t: "SOL! Sol, hi! Are you okay? Do you need ice cream and hugs?" },
@@ -202,7 +202,7 @@
       { choose: [
         { t: "You're already really nice.", notes: 3, then: [
           { s: 'junkyu', f: 'surprised', t: "..." },
-          { s: 'junkyu', f: 'sad', t: "Oh no. I'm going to cry. That's so nice. You've only known me one day and you're already being nice to me." },
+          { s: 'junkyu', f: 'sad', t: "Oh no. I'm going to cry. That's so nice. You barely know me and you're already being nice to me." },
           { s: 'asahi', f: 'neutral', t: "Told you." }
         ] },
         { t: "Your ice cream's melting.", notes: 2, then: [
@@ -299,12 +299,12 @@
       { n: "Junkyu was explaining his friends. He did it the way you'd explain a family to someone who'd married into it, at length, with love, with a running commentary on everyone's flaws, while the friends in question sat within earshot pretending not to listen." },
       { s: 'junkyu', f: 'happy', t: "Okay. Asahi. He's mean. He's the meanest. His name in the chat is *asanoonecares.* He called you a dumb bitch in the group chat before school even started this year. He's never once missed hanging out after. Not once." },
       { s: 'asahi', f: 'neutral', t: "I can hear you." },
-      { s: 'junkyu', f: 'happy', t: "He can hear me! Hyunsuk. He's the smart one. *geniusuk.* He's also mean, but funnier. He laughs at everything Asahi says. Even when it's about him." },
+      { s: 'junkyu', f: 'happy', t: "He can hear me! Hyunsuk. *geniusuk.* He picked that one himself. He wants us to think he's the smart one. He's also mean, but funnier. He laughs at everything Asahi says. Even when it's about him." },
       { s: 'hyunsuk', f: 'happy', t: "It's a talent." },
-      { s: 'junkyu', f: 'neutral', t: "And he asked a girl to homecoming with signs. In the cafeteria. We all held one. She laughed for like a whole minute." },
+      { s: 'junkyu', f: 'neutral', t: "And he asked Cherry to homecoming with signs. In the cafeteria. We all held one. She laughed for like a whole minute. They had a thing, before she started seeing Sunghoon." },
       { s: 'hyunsuk', f: 'flustered', t: "She said yes, Junkyu. Tell the part where she said yes." },
       { s: 'asahi', f: 'neutral', t: "Eventually." },
-      { s: 'junkyu', f: 'neutral', t: "Jaehyuk. He's the nice one. Not like me nice. Polite nice. He's on student council. He uses capital letters. In the chat. Full stops. Everyone's scared of him a little." },
+      { s: 'junkyu', f: 'neutral', t: "Jaehyuk. He's the actual smart one. And the nice one. Not like me nice. Polite nice. He's on student council. He uses capital letters. In the chat. Full stops. Everyone's scared of him a little." },
       { s: 'jaehyuk', f: 'neutral', t: "Nobody is scared of me, Junkyu." },
       { s: 'asahi', f: 'neutral', t: "I'm scared of you." },
       { s: 'hyunsuk', f: 'happy', t: "LMAO." },
