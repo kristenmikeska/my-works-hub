@@ -191,3 +191,5 @@ Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve th
 - **Solar texts like herself in every world,** even without knowing why. Her texting style is engraved in her.
 - **The Akihiko/Shinjiro triangle** should be felt before Shinjiro's coma, leaning Akihiko. Shinjiro's last link scene could nod to Solar and Akihiko. If links go past rank 10, Shinjiro's final rank could be him waking from the coma.
 - **Awakenings** shouldn't be copy-paste. Haechan's (the Universe link, her destiny across two worlds) must be epic and high-stakes, tied to both his worlds, with him saving the day. Jungwon's should matter more too, and he should acknowledge carrying two lives the way Haechan does.
+- **Current canon everywhere (2026-10-20):** every novel character, in every world, is based on the CURRENT canon of their novel, meaning where each manuscript leaves off now. Searchers remember up to that point. When a novel moves forward, the game's references should be brought up to date. Yunjin gets updated to current strangers canon first.
+- **Jihoon telling Solar on 12/16 that Jungwon is her boyfriend back home:** approved. Kat loves it.
