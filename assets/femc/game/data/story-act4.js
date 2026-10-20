@@ -64,33 +64,34 @@
     ], contact: 'hanni, hyein' },
     { n: "She sat on the rug with her back against the bed and read them in the dark. A party. Leaving her behind. *Stinky.* None of it meant anything. All of it hit her somewhere under the ribs, low, like a laugh she'd had since she was small, the kind you have with people who've seen you cry in a bathroom." },
     { choose: [
-      { t: "(Type: Who is this?)", then: [
+      { t: "(Type: wait who is this??)", then: [
         { phone: [
-          { from: 'solar', t: "Who is this?" },
+          { from: 'solar', t: "wait who is this??" },
           { from: 'hyein', t: "hyein: its US" },
           { from: 'hyein', t: "hyein: ur sorority sisters??" },
           { from: 'hanni', t: "hanni: hanni and hyein!!! did you hit your head??" }
         ], contact: 'hanni, hyein' }
       ] },
-      { t: "(Type: I'm okay. What party?)", then: [
+      { t: "(Type: im ok?? what party)", then: [
         { phone: [
-          { from: 'solar', t: "I'm okay. What party?" },
+          { from: 'solar', t: "im ok?? what party" },
           { from: 'hyein', t: "hyein: WHAT PARTY" },
           { from: 'hyein', t: "hyein: the sigma party solar. the STINKY one" },
           { from: 'hanni', t: "hanni: oh no she hit her head" }
         ], contact: 'hanni, hyein' }
       ] },
-      { t: "(Type: I'm fine. Thank you for worrying about me.)", then: [
+      { t: "(Type: ugh im fine tho guys)", then: [
         { phone: [
-          { from: 'solar', t: "I'm fine. Thank you for worrying about me." },
-          { from: 'hanni', t: "hanni: of course!!! thats what sisters are for" },
-          { from: 'hyein', t: "hyein: wait why r u typing like that" },
-          { from: 'hyein', t: "hyein: with the capital letters and the punctuation" },
-          { from: 'hyein', t: "hyein: solar is NEVER polite before noon" }
+          { from: 'solar', t: "ugh im fine tho guys" },
+          { from: 'hanni', t: "hanni: ok good!!! thats all we wanted" },
+          { from: 'hyein', t: "hyein: she said ur fine" },
+          { from: 'hyein', t: "hyein: hanni she said it. she said the thing" },
+          { from: 'hyein', t: "hyein: solar is NEVER fine before noon" }
         ], contact: 'hanni, hyein' }
       ] }
     ] },
-    { n: "It wasn't before noon. It was nearly midnight. But the screen said the messages had been sent at a quarter to ten in the morning, on a day with dashes where the year should be, and somewhere a girl called Hyein was eating breakfast and deciding her friend was being weird, and Solar laughed, out loud, alone on the rug, and then put her hand over her mouth, and then didn't know what to do with her face at all." },
+    { n: "She hadn't decided how to type it. Her thumbs had, lowercase and lazy and a little rude, the way they'd typed every message she'd sent since April to people who'd never once asked why she wrote like that. It looked right in there. It looked like it lived there." },
+    { n: "It wasn't before noon. It was nearly midnight. But the screen said the messages had been sent at a quarter to ten in the morning, on a day with dashes where the year should be, and somewhere a girl called Hyein was eating breakfast and rolling her eyes at a friend who always said the same thing, and Solar laughed, out loud, alone on the rug, and then put her hand over her mouth, and then didn't know what to do with her face at all." },
     { phone: [
       { from: 'hanni', t: "hanni: okay well as long as youre safe!!!" },
       { from: 'hyein', t: "hyein: drink water. ttyl" }
@@ -152,20 +153,20 @@
     { n: "She sat down on the edge of the bed with one arm still caught in the hoodie and read it all twice. It went on. It went on for a long time. Somebody was studying. Somebody else thought that was insane. Somebody called Cherry wanted someone called Jihoon thrown out of the chat, at length, with feeling. Somebody did pilates, apparently, and everybody knew about it, and everybody was sick of it." },
     { n: "Her own name was in there. *solarsystem*. Her own name, as a joke, said all in one breath, typing things in capital letters at people who typed back in capital letters, and she hadn't written any of it, and she had written all of it." },
     { choose: [
-      { t: "(Type: who's bringing the ice cream)", then: [
+      { t: "(Type: OK BUT WHOS BRINGING THE ICE CREAM)", then: [
         { phone: [
-          { from: 'solar', t: "who's bringing the ice cream" },
+          { from: 'solar', t: "OK BUT WHOS BRINGING THE ICE CREAM" },
           { from: 'jihoon', t: "jihoney: ME. obviously. the light of your disgusting life" },
           { from: 'cherry', t: "cherryblossoms: fking projectile vomiting imagine liking anything abt park jihoon" },
-          { from: 'junkyu', t: "junkyute: sol ur typing normal again!!! :D" }
+          { from: 'junkyu', t: "junkyute: SOL IS ALIVE!!! :D" }
         ], contact: 'PARK JIHOON HATE CLUB' },
-        { n: "Typing normal. She looked at what she'd typed. All lowercase, no full stop, the way her thumbs had wanted to do it. She hadn't typed like that once since April." }
+        { n: "She looked at what she'd typed. Capital letters, no full stop, shouted into a room full of people shouting back. Her thumbs had done it on their own, the way they'd done every message since April, and for the first time it didn't look strange on the screen. It looked like it had finally found the room it was for." }
       ] },
-      { t: "(Type: I think I'm in the wrong chat.)", then: [
+      { t: "(Type: im in the wrong chat lol)", then: [
         { phone: [
-          { from: 'solar', t: "I think I'm in the wrong chat." },
+          { from: 'solar', t: "im in the wrong chat lol" },
           { from: 'asahi', t: "asanoonecares: lmao she wishes" },
-          { from: 'jihoon', t: "jihoney: sol why r u typing like my grandmother" },
+          { from: 'jihoon', t: "jihoney: sol what are u on" },
           { from: 'jihoon', t: "jihoney: im getting the large tub. this is a large tub situation" }
         ], contact: 'PARK JIHOON HATE CLUB' }
       ] },
@@ -213,12 +214,12 @@
     { n: "Four words. No full stop. It was stamped eleven fifty-eight at night, and the date beside it didn't match anything. Not today. Not any day she could find. It wasn't like the others, the slow old ones that came in tired from a long way off. This one was fresh. This one had been typed by someone in a hurry, someone frightened, someone standing somewhere at two minutes to midnight with the phone shaking in their hand." },
     { n: "Tonight, she thought. Wherever they were, whenever they were, this one was from *tonight*." },
     { choose: [
-      { t: "(Type: I'm here.)", then: [
-        { phone: [{ from: 'solar', t: "I'm here." }], contact: 'Unknown number' },
+      { t: "(Type: im here)", then: [
+        { phone: [{ from: 'solar', t: "im here" }], contact: 'Unknown number' },
         { n: "It didn't send. The little clock beside it went round and round and round. She held the phone until her hand ached and it was still going round when she fell asleep." }
       ] },
-      { t: "(Type: Where are YOU?)", then: [
-        { phone: [{ from: 'solar', t: "Where are you?" }], contact: 'Unknown number' },
+      { t: "(Type: where are U??)", then: [
+        { phone: [{ from: 'solar', t: "where are U??" }], contact: 'Unknown number' },
         { n: "It didn't send. It sat there with its little clock spinning, like a letter left on a hall table, waiting for somebody to come and take it to the post." }
       ] },
       { t: "(Hold the phone. Don't answer yet.)", then: [
@@ -239,17 +240,17 @@
     ], contact: 'Unknown number' },
     { n: "The wall. She could see it. Gray stone, old, with a line of something sharp along the top. A gate in it, small and green, behind a row of big clay jars, that you'd only know about if you'd found the key when you were fifteen." },
     { choose: [
-      { t: "(Type: I'm home. I'm fine.)", then: [
+      { t: "(Type: im home. im fine)", then: [
         { phone: [
-          { from: 'solar', t: "I'm home. I'm fine." },
-          { from: 'yunjin', t: "OK WHY ARE U TYPING LIKE A LETTER" },
-          { from: 'yunjin', t: "capital letters. periods. who did this to u" },
-          { from: 'yunjin', t: "did ur mom take ur phone. is this ur mom. hello madam" }
+          { from: 'solar', t: "im home. im fine" },
+          { from: 'yunjin', t: "ok ur fine" },
+          { from: 'yunjin', t: "babe u only say ur fine when ur about to do something stupid" },
+          { from: 'yunjin', t: "is ur mom standing behind u. blink twice. hello madam" }
         ], contact: 'Unknown number' }
       ] },
-      { t: "(Type: Who is this?)", then: [
+      { t: "(Type: who is this)", then: [
         { phone: [
-          { from: 'solar', t: "Who is this?" },
+          { from: 'solar', t: "who is this" },
           { from: 'yunjin', t: "ur WIFE???" },
           { from: 'yunjin', t: "oh" },
           { from: 'yunjin', t: "omg is this the burner. ok. very mysterious. i respect it" }
@@ -278,6 +279,7 @@
   ] },
 
   { id: 'a4-mall', date: '9/12', slot: 'late', title: 'sol?!', place: 'Paulownia Mall', time: 'The Dark Hour', scene: [
+    { flag: { 'arrived-hanni': true, 'arrived-hyein': true } },
     { music: 'mystery' },
     { n: "Saturday. The week had been quiet, too quiet, the phone silent since the low-tide messages, and Solar had started carrying it in her hand everywhere like a kid with a new toy, and Yukari had stopped teasing her about it because her face, apparently, did something when she looked at it that made teasing feel unkind." },
     { n: "At eleven fifty-nine Fuuka knocked on her door so hard it rattled." },
@@ -340,7 +342,7 @@
     { s: 'solar', f: 'neutral', t: "Solar. I don't... that's all I've got. Just Solar." },
     { n: "Hyein made a sound like she'd been hit." },
     { s: 'hyein', f: 'sad', t: "Why are you talking like that?" },
-    { s: 'hyein', f: 'sad', t: "Why are you TALKING like that. All careful. Like we're your teachers. You never talk like that to us. You've never once in your life talked like that to us." },
+    { s: 'hyein', f: 'sad', t: "Why are you TALKING like that. All careful. Like we're your teachers. I watched you text Yukari at breakfast. *omg ur so annoying lol.* That's YOU. That's exactly you. So why do you text like you and talk like that?" },
     { choose: [
       { t: "I'm sorry. I don't know how I used to talk.", then: [
         { s: 'hyein', f: 'sad', t: "Like a menace. You talked like a menace. And you were mean about my hair and you stole my dry shampoo and you..." },
@@ -389,6 +391,7 @@
   ] },
 
   { id: 'a4-ice-cream', date: '9/19', slot: 'late', title: 'a large tub', place: 'Iwatodai Strip', time: 'The Dark Hour', scene: [
+    { flag: { 'arrived-jihoon': true } },
     { music: 'mystery' },
     { s: 'fuuka', f: 'neutral', t: "One. On the strip. Solar, he's... he's walking. Really fast. Like he's late for something." },
     { s: 'fuuka', f: 'surprised', t: "And he's holding something cold. Really cold. I don't know how I know that. It's like it's the only cold thing in the whole hour." },
@@ -398,20 +401,20 @@
     { n: "And down the middle of the road, between the stopped cars, a boy was walking like he was late for something. Tall, broad in the shoulders, dark hair wrecked by wind that wasn't blowing, gray sweatpants and a t-shirt and slides, like he'd left the house in a hurry. In the crook of his arm, held against his chest like a baby, a tub of ice cream so large it looked like a joke." },
     { cg: 'searchers-jihoon-arrives' },
     { n: "He was talking to himself. Loudly." },
-    { s: 'jihoon', f: 'neutral', t: "...left at the light, right at the thing, I KNOW where her house is, I've been going to her house since I was FOUR, why is everything green, why is everybody in a box..." },
+    { s: 'jihoon', f: 'neutral', t: "...left at the light, right at the thing, I KNOW where her house is, I've been going to her house since I was FOUR, why is everything green, why is everybody in a box, is this a flash mob, I swear to God if this is a flash mob..." },
     { n: "Hyein made a noise. A small, high, completely involuntary noise." },
     { cg: null },
     { n: "He looked up. He saw Hanni and Hyein first, and his face did nothing at all, two strangers. Then his eyes slid past them and found Solar, and stopped, and his whole body stopped with them, mid-step, one slide still in the air." },
     { s: 'jihoon', f: 'surprised', t: "SOL?" },
-    { s: 'jihoon', f: 'happy', t: "Oh my God. Oh my GOD. There you are. Do you know how long I've been walking? Do you know how many traffic lights there are in this place? None of them work! None of them! Everyone's in a BOX!" },
+    { s: 'jihoon', f: 'happy', t: "Oh my God. Oh my GOD. There you are. Do you know how long I've been walking? In SLIDES? Do you know what this is doing to my calves? I do pilates for these. None of the traffic lights work! Everyone's in a BOX!" },
     { n: "He came at her across the road. Not a hug, quite. He came right up to her and stopped, very close, and held the tub out at her like a cop holding up a badge." },
-    { s: 'jihoon', f: 'neutral', t: "I got the large tub. I was on my way to your house. As your best friend it is rightfully MY job, I don't care what Junkyu says, and then I took a wrong turn somewhere and everything went green, and now I'm here, and you're here, and..." },
+    { s: 'jihoon', f: 'neutral', t: "I got the large tub. Don't make it weird. I know I haven't done the ice cream thing in a while, whatever, I was on my way to your house. As your best friend it is rightfully MY job, I don't care what Junkyu says, and then I took a wrong turn somewhere and everything went green, and now I'm here, and you're here, and..." },
     { s: 'jihoon', f: 'neutral', t: "...why are you wearing that?" },
     { n: "The tub was so cold it smoked faintly in the green. Solar could see frost on the outside of it, crisp and white. In the hour, where nothing moved and nothing changed, where the water in the fountains hung in the air and the steam over the ramen pots stood still, it was the only thing that was exactly as it should be. It wasn't melting. It hadn't melted all the way here. It was going to stay that cold forever if he held it long enough." },
     { choose: [
       { t: "I'm sorry. Who are you?", then: [
         { n: "He laughed. A big, easy, delighted laugh, the laugh of a boy who has known a girl since he was four and knows exactly how she does a bit." },
-        { s: 'jihoon', f: 'happy', t: "Ok very funny, Sol. Very funny. Ten out of ten. Pilates instructors HATE her." },
+        { s: 'jihoon', f: 'happy', t: "Okay, very funny, Sol. Ten out of ten. You practiced that in the mirror, didn't you, you absolute freak. You practiced the face." },
         { n: "Nobody else laughed. He looked around at them. At Hanni's face, and Hyein's. At Akihiko, who had come up very quietly behind Solar's shoulder. He looked back at Solar, and waited for her to break, the way she always broke, and she didn't, and she watched him watch her not break." }
       ] },
       { t: "(Take the ice cream.)", then: [
@@ -421,26 +424,31 @@
       ] },
       { t: "Jihoon?", then: [
         { n: "It came out of her like a hiccup. She had no idea where it came from. It was just there, in her mouth, a name, and his face lit up so fast and so bright it was like watching a building's lights come on all at once." },
-        { s: 'jihoon', f: 'happy', t: "YES. Jihoon. Ur Jihoon. Thank God, I thought you were doing a bit." },
+        { s: 'jihoon', f: 'happy', t: "YES. Jihoon. Your Jihoon. The best thing that's ever happened to you. Thank God, I thought you were doing a bit." },
         { s: 'solar', f: 'neutral', t: "I don't... I'm sorry. I don't know why I said that. I don't know you." },
         { n: "The lights went out again, one floor at a time." }
       ] }
     ] },
     { s: 'hanni', f: 'sad', t: "She doesn't remember. Us either. She doesn't remember anyone." },
     { s: 'jihoon', f: 'neutral', t: "...What?" },
-    { s: 'jihoon', f: 'neutral', t: "Who are you? Sol, who are these people? Why are they... no. No, she knows me. She's known me since preschool. She's known me since before she could SPELL." },
+    { s: 'jihoon', f: 'neutral', t: "Who are you? Sol, who are these people? Why are they... no. No, she knows me. She's known me since preschool. She's known me since before she could SPELL. Nobody forgets this face. Look at it. Nobody's ever managed it." },
     { n: "He was looking at Solar the whole time he said it. Waiting. And she could see the exact second it stopped being a bit to him. It wasn't when Hanni said it. It was a second later, when he looked at Solar's face for the joke, the one she always made with her eyes when she was making one with her mouth, and it wasn't there." },
     { n: "His face. She would remember his face." },
     { dark: false },
     { n: "The hour ended. The strip came back on all at once, noise and neon and a taxi honking at the four of them standing in the road, and Jihoon didn't move out of the way of it, and Akihiko took him by the arm, gently, and moved him." },
     { place: 'Iwatodai Dorm · Front', time: 'Night', music: 'tender', soft: true },
-    { n: "Mitsuru took him inside before Solar could think of anything to say. Hanni picked up the ice-cream tub and followed, and Hyein stayed by the door with Solar, holding it open while Akihiko went back for the bags. From the lounge came Jihoon's voice, asking somebody, very loudly, what year it was." },
-    { s: 'mitsuru', f: 'neutral', t: "There's a spare room upstairs. I'll show you. We'll find you some clothes in the morning." },
-    { n: "Jihoon looked from her to the stairs, and then back to Solar, and for once didn't argue. Mitsuru took a key from the hook behind the desk and waited for him to follow." },
-    { n: "Solar could have gone upstairs. Her room was there, her books were there, and in the morning the monorail would still be running. She stayed by the open door until Hyein nudged her inside." }
+    { n: "Mitsuru brought him inside for long enough to sit him down and put a cup of tea in his hands. Hanni put the ice-cream tub in the freezer, where it went on not melting. From the lounge came Jihoon's voice, asking somebody, very loudly, what year it was, and then, when Junpei told him, asking who had let that happen." },
+    { s: 'mitsuru', f: 'neutral', t: "There's a Kirijo guesthouse by the station. I've had a room made up for you there. It's quieter than this building, and it has a lock you'll be glad of. We'll find you some clothes in the morning." },
+    { s: 'jihoon', f: 'neutral', t: "A guesthouse. You're putting me in a hotel. She lives here, and you're putting me in a hotel." },
+    { s: 'mitsuru', f: 'neutral', t: "Yes." },
+    { n: "Jihoon looked from her to the stairs, where Solar's room was, and then at Solar, and for once didn't argue, which Hanni would say later was how she knew something was really wrong with him. Mitsuru took a key from the hook behind the desk and held the front door open, and waited." },
+    { n: "Solar walked them as far as the gate. At the gate Jihoon turned round, walking backward up the street behind Mitsuru with his hands in his pockets and the green gone out of the sky behind him, and pointed at her." },
+    { s: 'jihoon', f: 'serious', t: "I'm coming back at seven. For breakfast. Don't argue. I'm a guest, apparently. Guests get breakfast." },
+    { n: "Hyein, beside her, said she didn't like him. Hanni said nobody had asked her to. Solar stood at the gate until he'd turned the corner, and didn't know why, and went up to bed, and lay awake with her hand on the phone." }
   ] },
 
   { id: 'a4-lamppost', date: '9/26', slot: 'late', title: 'in the frame', place: 'Iwatodai · Riverside', time: 'The Dark Hour', scene: [
+    { flag: { 'arrived-minji': true } },
     { music: 'mystery' },
     { n: "The streetlamp at the bottom of the river path had been flickering since April, a tired stuttering amber nobody from the city had ever come to fix, and Solar had picked up the habit of stopping under it on the way home without ever deciding to, the way some people touch a doorframe for luck." },
     { n: "On Saturday night she went down there on her own at a quarter to midnight. She didn't tell anyone. Fuuka had said, at dinner, in a small voice, that she thought there might be someone else soon, by the river, she couldn't be sure, it was like hearing a song on a radio three rooms away. Solar hadn't said anything. She'd finished her rice. She'd put her shoes on at eleven-thirty." },
@@ -581,6 +589,7 @@
   ] },
 
   { id: 'a4-low-tide', date: '10/10', slot: 'late', title: "it's jin", place: 'Port Island · Harbor', time: 'The Dark Hour', scene: [
+    { flag: { 'arrived-yunjin': true } },
     { music: 'mystery' },
     { s: 'fuuka', f: 'surprised', t: "Solar? There's one at the harbor. On Port Island. She's... she's standing in the sea. No. Not in it. Where it should be." },
     { s: 'fuuka', f: 'neutral', t: "She's walking out across the mud. Calling something. I can't hear what. It sounds like a nickname." },
@@ -675,6 +684,7 @@
   ] },
 
   { id: 'a4-council-room', date: '10/14', slot: 'after', title: "it's you", place: 'Gekkoukan High · Student Council Room', time: 'After School', cast: {}, scene: [
+    { flag: { 'arrived-jungwon': true } },
     { music: 'tender' },
     { n: "Mitsuru caught her at the shoe lockers after school with an expression Solar had only ever seen on her before a full moon." },
     { s: 'mitsuru', f: 'neutral', t: "Would you come up to the council room? Now, if you can. There's someone in it." },
@@ -857,6 +867,7 @@
   ] },
 
   { id: 'a4-knock', date: '10/24', slot: 'late', title: 'hard to reach', place: 'Iwatodai Dorm · Front', time: 'The Dark Hour', scene: [
+    { flag: { 'arrived-jaehyun': true } },
     { music: 'mystery' },
     { n: "It rained all evening. Hard, cold, the first real autumn storm, rain going sideways past the lounge windows and the gutters choking and the whole dorm smelling of wet shoes, and at eleven fifty-eight Solar was still awake, sitting on the stairs in the dark for no reason she could name, when the green came up, and the rain stopped in the air, and someone knocked on the front door." },
     { n: "Three times. Measured. Not loud. The knock of someone who had never in his life needed to knock twice." },
@@ -987,6 +998,7 @@
   ] },
 
   { id: 'a4-crew', date: '10/31', slot: 'late', title: 'the group chat', place: 'Paulownia Mall · Game Panic', time: 'The Dark Hour', cast: { asahi: 'Asahi', hyunsuk: 'Hyunsuk', jaehyuk: 'Jaehyuk' }, scene: [
+    { flag: { 'arrived-crew': true } },
     { music: 'city' },
     { n: "It wasn't over. They'd come down out of the tower at one, exhausted, Minji floating, Jihoon walking backward in front of her telling her his Persona was bigger, and halfway across Paulownia Mall the hour should have ended and didn't. It held. One more minute of green. And in that minute, Game Panic, which was dark, which was closed, which was coffins and dead cabinets, started to make noise." },
     { n: "Not machine noise. People. Too loud. Arguing. Four voices at once at a volume that should have been illegal at one in the morning, coming out of a closed arcade in the Dark Hour." },
@@ -1066,6 +1078,7 @@
   ] },
 
   { id: 'a4-there-you-are', date: '11/4', slot: 'late', title: 'there you are', place: 'Moonlight Bridge', time: 'The Dark Hour', scene: [
+    { flag: { 'arrived-haechan': true } },
     { music: 'mystery' },
     { n: "She couldn't sleep. Nobody in the dorm could, that night, the night after the last one, but everybody else was pretending in their rooms and Solar couldn't stand to pretend in hers. At a quarter to twelve she was walking. She didn't decide where. Her feet took her down to the water and along it and up onto Moonlight Bridge, into the wind, with her coat open and her hair coming loose, and she was halfway across when the hour came." },
     { place: 'Moonlight Bridge · The Dark Hour', time: 'The Dark Hour', bg: 'darkhour-moonlight-bridge' },
@@ -1162,6 +1175,7 @@
   ] },
 
   { id: 'a4-yeobos', date: '11/7', slot: 'after', title: "yeobo's", place: "Iwatodai Strip · Yeobo's Cafe", time: 'Daytime', cast: { heeseung: 'Heeseung', sunghoon: 'Sunghoon', jay: 'Jay', jake: 'Jake', niki: 'Niki' }, scene: [
+    { flag: { 'arrived-sunoo': true } },
     { music: 'joy' },
     { n: "There was a cafe on the strip that had not been there yesterday. It was wedged between the shuttered pachinko place and the ramen shop like it had always been there and resented being asked, warm windows, a hand-lettered sign, YEOBO'S, a little bell over the door." },
     { n: "Jungwon stopped dead on the pavement in front of it. He'd been walking her to the bookshop because she'd said she needed a math workbook and he'd said, with great courtesy, that she needed several." },
@@ -1240,6 +1254,7 @@
   ] },
 
   { id: 'a4-cherry', date: '11/13', slot: 'late', title: 'number one', place: 'Paulownia Mall · Karaoke', time: 'The Dark Hour', scene: [
+    { flag: { 'arrived-cherry': true } },
     { music: 'city' },
     { s: 'fuuka', f: 'surprised', t: "One more. In the mall. In the karaoke place. She's..." },
     { s: 'fuuka', f: 'neutral', t: "She's very loud. She's the loudest one yet. She's yelling a name that isn't yours. Solar, she's yelling Jihoon." },
@@ -1327,6 +1342,7 @@
   ] },
 
   { id: 'a4-mark', date: '11/18', slot: 'late', title: 'four notes', place: 'Port Island Station · Central Concourse', time: 'The Dark Hour', flag: 'door-R6', scene: [
+    { flag: { 'arrived-mark': true } },
     { music: 'mystery' },
     { n: "She heard it from the street. A piano, in the Dark Hour, where nothing played and nothing moved. Coming from Port Island Station, from the concourse, from the old upright painted with fat cartoon seagulls and a laminated sign that said PLEASE PLAY in four languages, which in all her months here she had only ever heard play three songs, badly, by children." },
     { place: 'Port Island Station · Central Concourse · The Dark Hour', time: 'The Dark Hour', bg: 'darkhour-iwatodai-street' },

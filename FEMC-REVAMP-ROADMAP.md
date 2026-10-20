@@ -72,7 +72,13 @@ Batches, in order, after the story/character pass:
 - **A. Merge + battle systems:**
   - Finish the one-game merge (fixes the old Tartarus menu).
   - Skill tree. Kat's skill ideas: Protective Suzu, Kunai Flick and Kitsune Rush for the Bell branch; Public Veneer and Call the Bluff for the Star branch; Off Angle Flank as a passive; Duo Cohesion as a link perk.
-  - Link perks in battle (Minji r3/r8 and Haechan r2/r7 are her examples), and romance battle and Tartarus dialogue.
+  - **Link perks for EVERY social link** (Kat: like Persona 5 Phantom X). Each link unlocks named perks as it ranks up, about 4 per link, covering:
+    - battle: follow-ups, protect, revive, crits, Duo Cohesion-style combos
+    - Tartarus: healing between floors, map reveals, better drops
+    - daily life: stat boosts, shop discounts, job pay, extra time
+    - a skill or passive for Solar at MAX
+
+    Kat's examples: Minji r3 Crosshair Sync, r8 Behind the Lens; Haechan r2 Cut the Fluff, r7 Bait and Punish. Draft the full perk list for Kat to review before building. Also romance battle and Tartarus dialogue.
   - Buffs stack to a limit.
   - Smarter Rush (heals when needed, rebuffs, hits weaknesses, uses Theurgy).
   - Remove the post-battle All-Out flashes.
@@ -98,3 +104,10 @@ Batches, in order, after the story/character pass:
   - **Gacha, both kinds:** a capsule machine at the mall (yen or Tartarus tickets; accessories, cosmetics, cast keychains, rare items) and Velvet Room draws from Elizabeth (skill cards, rare gear).
 - **E. Visitors:** the Persona cast belongs to this world; Kuromi and My Melody as exchange students (My Melody as a hidden link); deeper Mercy, Kiriko and Sebastian links; Kasumi's timeline.
 - **Social stats become five P5-style ones:** Knowledge, Courage, Proficiency, Charm, Kindness. They gate links, choices, jobs and clubs.
+
+### New Adds still to wire in (after the merge lands)
+- **SolarWeapons.png (12 naginatas):** each is a REAL weapon with its own stats and a bonus that suits its look (snowflake → ice, fox → crits, and so on), earned from shops, chests, bosses, links and achievements. Cut files are in `assets/femc/battle/art/weapons/`.
+- **ChatGPT Image Oct 18, 2026, 02_44_02 AM.png** (the Last Train with the veiled lantern figure and Solar facing it) **replaces** the current "facing Wren's Shadow" CG. The 02_44_45 file is an identical copy.
+- **GroupChatShadow.png and fishmongerShadow.png:** new Shadows on the Hoax and strangers memory floors, animated like the others.
+- **PossibleUses/** (Aigis, Koromaru, Mitsuru full bodies): compendium and party-menu art.
+- **Skip** the Shinjiro close-up (05_05_25 PM). Kat is regenerating it with an Evoker.
