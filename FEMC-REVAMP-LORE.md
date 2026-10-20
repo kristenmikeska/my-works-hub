@@ -193,3 +193,5 @@ Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve th
 - **Awakenings** shouldn't be copy-paste. Haechan's (the Universe link, her destiny across two worlds) must be epic and high-stakes, tied to both his worlds, with him saving the day. Jungwon's should matter more too, and he should acknowledge carrying two lives the way Haechan does.
 - **Current canon everywhere (2026-10-20):** every novel character, in every world, is based on the CURRENT canon of their novel, meaning where each manuscript leaves off now. Searchers remember up to that point. When a novel moves forward, the game's references should be brought up to date. Yunjin gets updated to current strangers canon first.
 - **Jihoon telling Solar on 12/16 that Jungwon is her boyfriend back home:** approved. Kat loves it.
+- **Yunjin's puffer is yellow** in the game, matching the art. She owns more than one color. Don't "fix" it to orange.
+- **Memory fragments may be half-remembered** (e.g. the HOAX ladder memory shows Solar caught, though in the book she fell). Her memory being slightly off is intentional, so don't correct those against canon.
