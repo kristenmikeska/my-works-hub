@@ -179,3 +179,15 @@ Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve th
 2. **Shinjiro on 10/4:** P3P's link rule, or something else?
 3. **Memory fragments per world:** 8, 9 or 10? (The plot draft uses 9.)
 4. **The revamp's title.**
+
+## Kat's rulings (2026-10-20, from her playtest notes)
+- **Housing:** only Haechan moves into the dorm (the destiny pull), keeping his distance at first. Jungwon, Jihoon, Minji and the other searchers stay at the guesthouse and visit often.
+- **Haechan settles into one world.** As his link grows and the ending nears, he becomes more like the Haechan of the world Solar is leaning toward (Runners or strangers), with a sweet scene when he's sure. He keeps the memories of both lives.
+- **Characters from other Persona games belong to the Persona world.** They aren't visitors pulled in from elsewhere: no delayed texts, nobody missing them back home. Kuromi and My Melody become exchange students here, moved into the dorm for a reason the story gives. My Melody may be a hidden, skippable link.
+- **Buffs and debuffs stack** up to a limit (P5-style), so casting twice matters.
+- **The searchers remember Solar's love lives back home** and should acknowledge them naturally, though not every link is about romance. Hyein nearly saying something about Haechan and Hanni shutting her up is the kind of beat she wants. The girls know about the secret, unlabelled thing with Haechan from where Runners currently leaves off. Yunjin knows Haechan and Jungwon from strangers. Hoax: Jihoon has had a crush on Solar forever (everyone knew except her), they had a small fling, and she ultimately starts dating Jungwon.
+- **Hoax canon state:** the election has already happened. Jungwon won and chose Solar as his Vice President, and Jihoon has fallen back into old habits.
+- **Jihoon** is cockier, wittier and meaner than the game currently writes him, and more full of himself.
+- **Solar texts like herself in every world,** even without knowing why. Her texting style is engraved in her.
+- **The Akihiko/Shinjiro triangle** should be felt before Shinjiro's coma, leaning Akihiko. Shinjiro's last link scene could nod to Solar and Akihiko. If links go past rank 10, Shinjiro's final rank could be him waking from the coma.
+- **Awakenings** shouldn't be copy-paste. Haechan's (the Universe link, her destiny across two worlds) must be epic and high-stakes, tied to both his worlds, with him saving the day. Jungwon's should matter more too, and he should acknowledge carrying two lives the way Haechan does.
