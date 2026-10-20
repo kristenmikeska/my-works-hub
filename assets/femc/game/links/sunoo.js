@@ -9,12 +9,14 @@
    "do you think I would be wasting my time?" / "go for it, even if you don't win", the late-night texts ("hey solar its ok!
    i am always here to talk!", "as his friend and yours"), Jungwon fainting, the hallway text, "niki, cut it out already",
    "it would be really quiet if it wasnt for this group of friends", Sunoo wanting to run once and being too shy to give the
-   speech, helping her with posters and the speech, sending her shopping with Jungwon on purpose. Nothing here decides Hoax's
-   election, homecoming or romances; time back home stays unclear (Kat's ruling).
+   speech, helping her with posters and the speech, sending her shopping with Jungwon on purpose. Nothing here invents Hoax
+   events past the manuscript (Ch 99); time back home stays unclear (Kat's ruling).
    Link-local flags (all optional flavor, read only inside this file): sunoo-recommend (r1), sunoo-asked-need (r3),
    sunoo-five-am (r4), sunoo-photo (r5), sunoo-no-smile and sunoo-speech (r6), sunoo-crime (hangout). The last afterMax reads
    the solstice's route-H / route-true flags. Rank dates 8–10 sit earlier than the first draft (12/29, 1/9, 1/17) so the
    after-MAX scenes have room to play before the end of January.
+   Hoax canon as of Ch 99 (hoax skill): Jungwon won and made Solar his VP (firing Heeseung); Solar and Jungwon are official since
+   the bake sale, whose equation hunt Sunoo and Jake ran; Cherry is seeing Sunghoon. Sunoo's friends live at the Kirijo guesthouse.
    Texting voice: sunooshine, lowercase, "!!!", "dw", ":)". Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'sunoo', name: 'Kim Sunoo', short: 'Sunoo', arcana: '?', numeral: '', from: 'Hoax',
@@ -145,8 +147,8 @@
           { n: "They tipped four hundred yen, which was three hundred and eighty more than they'd ever tipped, and Sunghoon put it in the jar with the satisfaction of a man proving a point, and Sunoo let him, which was its own concession." }
         ] },
         { t: "Sunghoon. Does the flower thing ever work?", notes: 1, then: [
-          { s: 'sunghoon', f: 'serious', t: "Every time but once. And the once was your friend, who threatened me with furniture." },
-          { s: 'sunoo', f: 'happy', t: "It's never worked. Not one time. He keeps a list. The list is empty." }
+          { s: 'sunghoon', f: 'serious', t: "Every time. Including your friend. She threatened me with furniture first. It's part of the process." },
+          { s: 'sunoo', f: 'happy', t: "It worked one time. On Cherry. He hasn't stopped talking about it since. I've heard it forty times. I could do the voice." }
         ] }
       ] }
     ],
@@ -252,8 +254,8 @@
         { t: "Shove it somewhere unpleasant.", notes: 3, then: [
           { s: 'sunghoon', f: 'surprised', t: "..." },
           { n: "The whole table went silent. Then the boy in the letterman jacket put his head down on the table and laughed so hard his shoulders shook." },
-          { s: 'jay', f: 'happy', t: "That's what her friend said! The first time! Almost word for word! She doesn't even remember and she still said it!" },
-          { s: 'sunghoon', f: 'neutral', t: "...I do like them feisty." },
+          { s: 'jay', f: 'happy', t: "That's what her friend said! The first time! Almost word for word! And now her friend rides around in his passenger seat! She doesn't even remember and she still said it!" },
+          { s: 'sunghoon', f: 'neutral', t: "...I'm a taken man, for the record. Mostly. Pending. That was a tribute flower." },
           { s: 'heeseung', f: 'serious', t: "SIT DOWN." }
         ] },
         { t: "(Put it back in the vase for him.)", notes: 2, then: [
@@ -263,13 +265,14 @@
       ] },
       { n: "The youngest had already found her. He leaned on the counter beside her on his elbows, long-limbed and grinning, with the expression of someone who'd been saving something up all week and had decided this was the moment." },
       { s: 'niki', f: 'happy-2', t: "So. Solar. Is Jungwon coming today, or is he too busy being nervous about seeing you." },
-      { s: 'niki', f: 'happy', t: "At home we called you Jungwon's girl. In the chat. Before you even knew who he was. I made that up. I'm very proud of it." },
+      { s: 'niki', f: 'happy', t: "At home we called you Jungwon's girl. In the chat. Before you even knew who he was. I made that up. I'm very proud of it. And now it's not even a joke. Jake made a ship name. It's so bad." },
       { s: 'sunoo', f: 'serious', t: "Niki. Cut it out already." },
       { n: "He said it without looking up from the milk he was steaming, in the voice of somebody who'd been saying it since they were all children, mild and automatic and absolutely final, and Niki, astonishingly, cut it out, and went back to the table, and stole Jake's croissant instead." },
       { choose: [
         { t: "Jungwon's girl?", notes: 2, then: [
           { s: 'sunoo', f: 'flustered', t: "That's— he— Niki thought it was funny because Jungwon yelled at you about a dog. On the first day. Before anybody knew anybody. It's a long story. It's a bad story. Jungwon comes off really bad." },
-          { s: 'sunoo', f: 'neutral', t: "He's not like that. He was like that that morning. He was tired. I'm not making excuses. I'm making a little excuse." }
+          { s: 'sunoo', f: 'neutral', t: "He's not like that. He was like that that morning. He was tired. I'm not making excuses. I'm making a little excuse." },
+          { s: 'sunoo', f: 'flustered', t: "And then... a lot happened. You two are together now. At home. Officially. Since the bake sale. I helped. I'm sorry. I'm not sorry. He'd tell you himself, probably with a chart." }
         ] },
         { t: "You're the only one he listens to.", notes: 3, then: [
           { s: 'sunoo', f: 'happy', t: "He listens to Jay! When Jay hits him. And to Heeseung-hyung when hyung uses his dad voice." },
@@ -334,6 +337,7 @@
         { from: 'sunoo', t: "he barely eats anymore and he's fainted multiple times" },
         { from: 'sunoo', t: "so as his friend and yours i think you should run for pres, solar" }
       ], contact: 'solarsystem · late' },
+      { s: 'sunoo', f: 'neutral', t: "You lost, of course. Nobody beats Jungwon. And then he fired Heeseung-hyung to make you his vice president. Hyung still says it breaks his heart. Hyung's fine. He brings Jungwon lunch now instead of minutes." },
       { s: 'sunoo', f: 'sad', t: "As his friend and yours. That's what I said. And then I felt bad. Because I didn't really ask what *you* needed. I just thought about what he needed, and I made it sound like it was for you." },
       { choose: [
         { t: "You were looking out for both of us.", notes: 3, then: [
@@ -416,8 +420,8 @@
 
     { after: '12/6', title: '5: the photographer', place: "Iwatodai Strip · Yeobo's Cafe", time: 'After School', scene: [
       { n: "Sunoo had a photo on his phone that he showed to everyone. Six boys on the steps of a school she'd never seen, in navy blazers, in the sun, arms around each other's necks, and in the middle, very straight, not quite smiling, a boy who was the only one with his blazer buttoned." },
-      { s: 'sunoo', f: 'happy', t: "That's us! Heeseung-hyung, he's the vice president, he's the dad. Jay, he plays football, he's the other dad but meaner. Jake, he's the nice one, you've met Layla's whole photo album. Sunghoon. You've met Sunghoon. I'm so sorry about Sunghoon." },
-      { s: 'sunoo', f: 'neutral', t: "Niki. He's the youngest. He's the worst. I love him the most. Don't tell him." },
+      { s: 'sunoo', f: 'happy', t: "That's us! Heeseung-hyung, he used to be vice president until Jungwon fired him for you, he's the dad. Jay, he plays football, he's the other dad but meaner, and the rich one, everybody asks him for money. Jake, he's the nice one, you've met Layla's whole photo album. Sunghoon. You've met Sunghoon. I'm so sorry about Sunghoon." },
+      { s: 'sunoo', f: 'neutral', t: "Niki. He's the youngest. Basketball. He's the worst. I love him the most. Don't tell him." },
       { s: 'sunoo', f: 'neutral', t: "And Jungwon. In the middle. Not smiling. He thinks smiling in photos is unprofessional." },
       { choose: [
         { t: "Where are you?", notes: 3, then: [
@@ -436,11 +440,13 @@
       { s: 'sunoo', f: 'neutral', t: "Can I confess something? Since we're looking at photos. Since you don't remember, so it doesn't count." },
       { s: 'sunoo', f: 'flustered', t: "At home, Jake and I made you go shopping with him. For decorations. For the dance. We said it was because you were both candidates and you'd make a good pair, and we said it in a very innocent voice." },
       { s: 'sunoo', f: 'happy', t: "It was not innocent. We'd planned it. Jungwon wanted to throw a chair at me. I could feel it. From across the table. It was the best day of my life." },
+      { s: 'sunoo', f: 'flustered', t: "And the bake sale. The equations in the cupcakes, the chalk on the path. That was me too. And Jake. Mostly me." },
       { ifRomance: 'jungwon', then: [
         { s: 'sunoo', f: 'neutral', t: "And now he looks at you the same way here. Like he's been waiting for you all day and he's embarrassed about it. So I think it worked. I think it worked in two worlds." },
         { s: 'sunoo', f: 'serious', t: "Be gentle with him? He's so bad at being happy. He thinks it's a test he didn't study for." }
       ], else: [
-        { s: 'sunoo', f: 'neutral', t: "He looks at you differently here, you know. At home you two were always— it was a competition. Every room. Who talked first. Who got the last word. Here he just watches you walk in. Like you're the one thing in the building he's sure about." }
+        { s: 'sunoo', f: 'neutral', t: "At home it worked. You're his. He's yours. Here he just watches you walk in, like you're the one thing in the building he's sure about, and then he waits. He's very good at waiting. He's terrible at it." },
+        { s: 'sunoo', f: 'sad', t: "Here it's up to you. I won't push. I pushed once, and it worked so well it scares me a little." }
       ] },
       { n: "He said it without teasing. Sunoo didn't tease, Solar had noticed. Niki teased. Jay teased. Sunoo said the true thing and then looked worried that it might have hurt someone." },
       { choose: [

@@ -18,6 +18,9 @@
    yunjin-count (r5), yunjin-promise (r6), yunjin-fish (r8). Some choices tally lean.S (flags.js counter).
    Ranks 9–10 come after the solstice and branch on route-S / route-true / anything else (the goodbye shape).
    Hooks elsewhere: story-act5 anyRank('anc7-S'/'d7-sN', rank 7 by 12/21), story-act6 anyRank('d10-sN', rank 10 by 1/30).
+   Home love lives (Kat's ruling): Yunjin knows Haechan ("delivery boy", the fish) and Jungwon (the cup of tea) from strangers.
+   Rank 8 gives both boys dialogue: Haechan lives at the dorm, Jungwon visits from the guesthouse; an Akihiko beat is gated on
+   his rank. Her father is spoken of in the past tense (strangers canon).
    Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'yunjin', name: 'Huh Yunjin', short: 'Yunjin', arcana: '?', numeral: '', from: 'strangers',
@@ -127,13 +130,13 @@
     ],
     [
       { n: "There was a stone basin at the edge of the seaside park, under a pine somebody had trained sideways with wires, and in it two fat orange carp turned slow circles round each other in water the color of tea, and Yunjin was lying on her stomach on the stone rim with her chin on her hands, talking to them." },
-      { s: 'yunjin', f: 'neutral', t: "That one's Mr. Kim. That one's Mrs. Kim. Don't look at me like that. My dad says every pond has to have a Mr. and Mrs. Kim. He says it's the law." },
+      { s: 'yunjin', f: 'neutral', t: "That one's Mr. Kim. That one's Mrs. Kim. Don't look at me like that. My dad always said every pond has to have a Mr. and Mrs. Kim. He said it was the law." },
       { n: "Something warm went through Solar's chest, quick and sideways. A narrow apartment and a crocheted blanket. Somebody round and rumpled losing his reading glasses on top of his own head three times in one dinner. A man's voice through a wall, singing in the shower, badly, with enormous feeling." },
       { choose: [
         { t: "He calls you his little general.", notes: 3, tally: { 'lean.S': 1 }, then: [
           { n: "Yunjin's chin came up off her hands. She didn't turn around. She lay very still on the stone, looking at the water, and the carp went round, and round." },
-          { s: 'yunjin', f: 'sad', t: "...Yeah. He does. *My little general.* In front of everybody. It's so embarrassing." },
-          { s: 'yunjin', f: 'happy', t: "Say it again. No, don't. Do. No. Okay. Don't, I'll cry on the fish." }
+          { s: 'yunjin', f: 'sad', t: "...Yeah. He did. *My little general.* In front of everybody. It was so embarrassing." },
+          { s: 'yunjin', f: 'neutral', t: "Okay. That's enough of that. Don't. I'll cry on the fish, and they've been through enough." }
         ] },
         { t: "Which one's in charge?", notes: 2, then: [
           { s: 'yunjin', f: 'serious', t: "Mrs. Kim. Obviously. Look at him. He'd be lost without her. He'd swim into a wall." },
@@ -481,7 +484,7 @@
               { s: 'yunjin', f: 'neutral', t: "...Okay. Okay. I'm holding you to it. I've got it in writing. In my head. That's writing." }
             ] },
             { t: "I don't know if I can.", notes: 2, then: [
-              { s: 'yunjin', f: 'sad', t: "...Yeah. That's honest. I hate it. Thank you for being honest, I hate it so much." },
+              { s: 'yunjin', f: 'sad', t: "...Yeah. That's honest. I'm going to be furious about it later in the shower." },
               { s: 'yunjin', f: 'serious', t: "Then I'll ask again. Every week. Till you can." }
             ] }
           ] }
@@ -543,15 +546,22 @@
     ] },
 
     { after: '12/9', title: '8: send a fish', place: 'Iwatodai Dorm · Lounge', time: 'Evening', music: 'joy', scene: [
-      { n: "There were two of them now. In one dorm. That was how Yunjin put it, at dinner, loudly, to nobody, with her chopsticks pointed at the ceiling like she was addressing a higher power." },
-      { s: 'yunjin', f: 'serious', t: "Two. Of them. In one building. God help us all." },
-      { n: "One of them was sitting at the far end of the dining table in a black hoodie, eating very fast with his head down and his headphones around his neck, not looking at anyone. The other was at the near end with his sleeves at exactly the elbow, eating very slowly, very correctly, cutting his tamagoyaki into identical pieces, not looking at anyone either, so hard that you could feel it from across the room." },
+      { n: "There were two of them at dinner now. That was how Yunjin put it, loudly, to nobody, with her chopsticks pointed at the ceiling like she was addressing a higher power." },
+      { s: 'yunjin', f: 'serious', t: "Two. Of them. At one table. God help us all." },
+      { n: "One of them lived here now. He'd been given a room upstairs in November and kept to it like a held breath, and he was at the far end of the dining table in a black hoodie, eating very fast with his head down and his headphones around his neck, not looking at anyone. The other had walked over from the guesthouse by the station because Fuuka had invited him on a card, in writing, and he was apparently incapable of refusing anything that arrived on a card. He was at the near end with his sleeves at exactly the elbow, eating very slowly, very correctly, cutting his tamagoyaki into identical pieces, not looking at anyone either, so hard that you could feel it from across the room." },
       { n: "They were not looking at each other. It was the loudest thing in the house." },
-      { n: "Mitsuru, at the head of the table, had noticed. Mitsuru noticed everything. She cut a piece of fish with surgical care and said, to the table in general, that she hoped everyone was finding the accommodation adequate, and both boys said yes, at the same moment, in the same flat voice, and then each looked furious that the other had said it." },
+      { n: "Mitsuru, at the head of the table, had noticed. Mitsuru noticed everything. She cut a piece of fish with surgical care and said, to the table in general, that she hoped everyone was finding their rooms adequate, here and at the guesthouse, and both boys said yes, at the same moment, in the same flat voice, and then each looked furious that the other had said it." },
       { s: 'mitsuru', f: 'neutral', t: "...I see." },
-      { n: "On his way out, the one in the hoodie passed behind Yunjin's chair, and didn't stop, and didn't look, and said, very low, *Yunjin-ssi*, the way you'd nod at someone across a street." },
-      { s: 'yunjin', f: 'neutral', t: "Delivery boy." },
-      { n: "The corner of his mouth did something. Then he was gone up the stairs, and Yunjin went on eating with an expression of total serenity, and Solar, who had no idea what had just happened, had the strong and specific feeling that it had happened many times before." },
+      { n: "Yunjin leaned in to Solar and said, in English, low and fast and nowhere near low enough, the way she'd been saying things about him in English since he moved in: *babe. he got hotter. in the past. is that even allowed. you could open mail with those cheekbones. you could open a bank account.*" },
+      { n: "On his way out, the one in the hoodie passed behind Yunjin's chair, and didn't stop, and didn't look." },
+      { s: 'haechan', f: 'neutral', t: "It's the lighting." },
+      { n: "In English. Flat, unhurried, every word in its place. Yunjin's chopsticks stopped halfway to her mouth with a piece of omelette on them." },
+      { s: 'yunjin', f: 'surprised', t: "...Since WHEN do you speak English?" },
+      { s: 'haechan', f: 'neutral', t: "Long story, Yunjin-ssi." },
+      { s: 'yunjin', f: 'serious', t: "Delivery boy." },
+      { n: "The corner of his mouth did something. Then he was gone up the stairs, and Yunjin sat very still with the omelette going cold on her chopsticks and her face going slowly, magnificently red from the collar up." },
+      { s: 'yunjin', f: 'flustered', t: "A month. I've been saying things in English in front of that man for a MONTH. I said the cheekbones thing at home. In a shoe shop. He was carrying my bags. He was standing RIGHT THERE carrying my bags." },
+      { n: "Solar, who had no idea what had just happened, had the strong and specific feeling that it had happened before, in some other shape, many times, and that this time he'd won." },
       { s: 'yunjin', f: 'neutral', t: "Babe. Come here. Phone. I'm teaching you the codes. Again. Since you forgot. Since you're going to need them." },
       { n: "She pulled Solar onto the lounge sofa and held up her phone, stuck at 12:07 but still working, the screen lit with a sticker keyboard, a hundred little cartoon animals." },
       { s: 'yunjin', f: 'serious', t: "If you're alive, send a sticker. If you're dead, send two stickers." },
@@ -589,8 +599,24 @@
           { s: 'yunjin', f: 'serious', t: "...We might need a code for both." }
         ] }
       ] },
-      { n: "From the dining room there was the scrape of a chair. The second one had gotten up. He came past the lounge door on his way to the front hall with his coat already over his arm, and bowed, very slightly, at the doorway, to the room in general, and went out into the cold without his face doing anything at all." },
-      { s: 'yunjin', f: 'neutral', t: "...You know what? I'm going to need more stickers." }
+      { n: "From the dining room there was the scrape of a chair. The second one had gotten up. He came past the lounge door on his way to the front hall with his coat already over his arm, back to the guesthouse, and bowed, very slightly, at the doorway, to the room in general." },
+      { s: 'yunjin', f: 'neutral', t: "Yang Jungwon." },
+      { n: "He stopped. He turned all the way round, the way he did everything, completely, and waited." },
+      { s: 'jungwon', f: 'neutral', t: "Huh Yunjin-ssi." },
+      { s: 'yunjin', f: 'serious', t: "I took back what I said about you. At home. Almost all of it." },
+      { s: 'jungwon', f: 'neutral', t: "Almost." },
+      { s: 'yunjin', f: 'serious', t: "Most of it. Some of it. Don't push it. You still smell like nothing." },
+      { n: "He considered this with grave attention, as if she'd handed him a document that needed initialing on every page, and then bowed again, to her, a little lower than before, and to Solar, a little lower than that. His eyes went once to the phone in her hand, the sticker keyboard still lit, and came back to her face, and he said nothing about it at all." },
+      { s: 'jungwon', f: 'neutral', t: "Goodnight. Thank Fuuka-ssi for me. The card was very kind." },
+      { n: "Then he went out into the cold, and his face didn't do anything the whole way to the door, which, Yunjin said afterward, was the most suspicious thing a face had ever done." },
+      { ifRank: { akihiko: 7 }, then: [
+        { n: "The front door had barely shut behind him when it opened again, and Akihiko came in from his evening run with his breath still white and the cold coming off his shoulders, and stopped in the lounge doorway just long enough to say *Solar,* the way he always said it coming into a room, like a check he ran, and then went up the stairs two at a time." },
+        { n: "Yunjin looked at the empty doorway. Then at Solar's face. Then at the phone. She didn't say anything for about five seconds, which tied her personal record." },
+        { s: 'yunjin', f: 'surprised', t: "...Oh, no. Oh, babe. That's three." },
+        { s: 'yunjin', f: 'serious', t: "I'm going to need so many more stickers." }
+      ], else: [
+        { s: 'yunjin', f: 'neutral', t: "...You know what? I'm going to need more stickers." }
+      ] }
     ] },
 
     { after: '1/6', title: '9: elder', place: 'Naganaki Shrine', time: 'Afternoon', music: 'day', scene: [
@@ -636,7 +662,7 @@
       ] },
       { choose: [
         { t: "Yes, elder.", notes: 3, then: [
-          { s: 'yunjin', f: 'happy', t: "GOOD. Oh, that felt amazing. Say it again." },
+          { s: 'yunjin', f: 'happy', t: "GOOD. Oh, that felt amazing. Again. Louder. Bow a little." },
           { s: 'solar', f: 'neutral', t: "Yes, elder. Wife. Jin." },
           { s: 'yunjin', f: 'sad', t: "...Okay, that one got me. Don't do that one. That's cheating." }
         ] },
@@ -661,9 +687,9 @@
       { n: "She didn't turn around. She sat on the seawall with the can held out behind her and her shoulders gone very still, the way they'd gone still in the green light the first night, for five seconds, a personal record." },
       { ifFlag: 'yunjin-jin', then: [
         { s: 'yunjin', f: 'neutral', t: "...You said it like that the first day. On this wall. I told you not to do it yet. I said I'd be ready by Thursday." },
-        { s: 'yunjin', f: 'sad', t: "It's been like fourteen Thursdays, babe. I'm still not ready. Say it again." }
+        { s: 'yunjin', f: 'sad', t: "It's been like fourteen Thursdays, babe. I'm still not ready. Don't you dare stop." }
       ], else: [
-        { s: 'yunjin', f: 'neutral', t: "...Say it like that again." }
+        { s: 'yunjin', f: 'neutral', t: "...Babe. Do that one more time. Slower. I wasn't ready." }
       ] },
       { s: 'solar', f: 'neutral', t: "Jin. You look like you hate everyone." },
       { n: "There was a sound from Yunjin like something tearing very quietly." },
@@ -688,6 +714,7 @@
       { s: 'yunjin', f: 'neutral', t: "Okay. Okay. Listen. Here's the thing." },
       { ifFlag: 'route-S', then: [
         { s: 'yunjin', f: 'happy', t: "When we go home, I'm driving. You're paying. We're stopping at the machine by the ferry terminal for two of the bad ones and we're drinking them in the car with the heater on until it turns, and then I'm climbing your wall, and then I'm sleeping on your floor, and I'm wearing the rabbits, and nobody can stop me." },
+        { s: 'yunjin', f: 'neutral', t: "And if the delivery boy needs a ride he can fold himself into the back again. He knows where the fourth door isn't. The quiet one can call a car. He'd rather, anyway. He'd be polite about it the whole way." },
         { s: 'yunjin', f: 'serious', t: "Whatever's waiting. Whatever date's on the calendar. I'm not leaving your side. I said I'd fight them all. I'm still saying it. I'm saying it louder." },
         { choose: [
           { t: "I know. You're always up.", notes: 3, tally: { 'lean.S': 1 }, then: [

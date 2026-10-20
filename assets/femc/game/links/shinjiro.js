@@ -3,7 +3,11 @@
    Route turn at rank 8 (the roof); ranks 8–10 branch with ifRoute. He rejoins the dorm on 8/7, so ranks 6–10 play there;
    his home stays the back alley, where he still goes some nights.
    Rank 5 ends with an ifFlag on 'joined-shinjiro' (set by the story's { join: 'shinjiro' } on 8/7) in case it's played late.
-   afterMax (hospital visits from 10/5) and christmas (12/24, romance, at his bedside) are data for a later engine pass. */
+   afterMax (hospital visits from 10/5) and christmas (12/24, romance, at his bedside) are data for a later engine pass.
+   The triangle (Kat, 2026-10-20): felt before 10/4, leaning Akihiko. Akihiko clocks Solar in the kitchen (r6), Shinji clocks
+   Akihiko's water runs (r7), names Aki's look on the romance route (r9), and his last scene sends Solar and Aki off together
+   (r10, both routes). Nothing here says he never wakes: if links later go past rank 10, his final rank can be him waking
+   (Kat's idea); afterMax stays wordless at his bedside so it doesn't contradict that. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'shinjiro', name: 'Shinjiro Aragaki', short: 'Shinjiro', arcana: 'Moon', numeral: 'XVIII', from: 'Persona 3',
   kind: 'sees',
@@ -521,6 +525,7 @@
       { n: "Ken came down halfway through, in slippers, small and neat, to fill a glass at the sink, and said good evening, Aragaki-san, very politely, to Shinjiro's back. Shinjiro said evening without turning around. The knife didn't stop. Only she was close enough to see that it went slower for a while, and that he didn't look up from the board again until the slippers had gone all the way back up the stairs." },
       { n: "They ate at the counter, the two of them and then three and then everybody, because the smell went up the stairwell like a rumor and brought them down one at a time, Junpei first with a fork already in his hand. Ginger pork and rice and a soup with tofu in it, and the rice had been washed until the water ran clear, and nobody had lifted the lid. Junpei said dude, this is insane, with his mouth full. Mitsuru took one bite and set her chopsticks down and said nothing for a moment, which from Mitsuru was a standing ovation." },
       { n: "Akihiko ate standing up, leaning in the doorframe, two bowls, and didn't say anything about it at all, and didn't need to." },
+      { n: "Once, between bowls, she caught him looking at the two of them, at her on the counter by the rice cooker and Shinji at the stove a step away, with an expression she couldn't file anywhere. Shinji caught it too. He didn't say a word. He put an extra slice of pork in Akihiko's second bowl, which, she would learn, was how Shinjiro Aragaki said *I saw that*." },
       { n: "Afterward, when they'd all drifted off and the dishes were in the rack and the kitchen smelled like a kitchen, he was drying the pan with a towel, slowly, as if it had been lent to him." },
       { s: 'shinjiro', f: 'neutral', t: "...Don't tell anybody I came back for the dog." },
       { n: "She looked at Koromaru, asleep on his side across the doorway with his legs going in a dream. She thought about a pair of slippers on the stairs, and a knife going slower." },
@@ -601,6 +606,22 @@
         ] },
         { t: "Is the protein really unflavored?", notes: 1, then: [
           { s: 'shinjiro', f: 'neutral', t: "Nothing he owns is unflavored. Tastes like a gym bag." }
+        ] }
+      ] },
+      { s: 'shinjiro', f: 'neutral', t: "He's been coming down for water at seven every night since you started standing in here." },
+      { s: 'shinjiro', f: 'neutral', t: "Aki doesn't drink water at seven. Aki drinks protein at seven. Out of a tub. With a spoon." },
+      { choose: [
+        { t: "Maybe he's checking on you.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "...Sure. Me." },
+          { n: "He said it the way you'd agree with a kid about the tooth fairy, and stirred the pot, which did not need stirring, and she understood that he'd decided to let her have that one, and that it had cost him nothing at all, and that he'd done the math on that a long time before she walked in." }
+        ] },
+        { t: "(Look at the pot. Very hard.)", notes: 3, then: [
+          { s: 'shinjiro', f: 'happy', t: "Now you're poking it with your eyes." },
+          { n: "Her ears were hot. It was the stove. He let her think it was the stove, which was the second time tonight he'd let her think something, and she was starting to keep count." }
+        ] },
+        { t: "It's his kitchen too.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "It's my kitchen. He can visit." },
+          { s: 'shinjiro', f: 'neutral', t: "...He knows that. That's why he comes for water." }
         ] }
       ] },
       { n: "It was nearly done when Ken came to the door." },
@@ -763,6 +784,21 @@
             { s: 'shinjiro', f: 'neutral', t: "Tch. Fine." },
             { n: "He took her hand off the counter and held it, just held it, palm to palm, the way he had on the roof, while the rice cooker clicked over to warm." }
           ] }
+        ] },
+        { s: 'shinjiro', f: 'neutral', t: "Aki's gonna figure it out. If he hasn't." },
+        { s: 'shinjiro', f: 'sad', t: "He's had a look on his face since June, any room you walk into. Don't tell me you haven't seen it." },
+        { choose: [
+          { t: "I've seen it.", notes: 3, then: [
+            { s: 'shinjiro', f: 'neutral', t: "...Yeah. Figured." },
+            { n: "He didn't look hurt. That was the strange part, the part she'd turn over later in the dark. He looked like a man who had planned for this weather a long time ago and was only checking that the roof would hold." },
+            { s: 'shinjiro', f: 'neutral', t: "Good. Somebody oughta see it. He's been looking at you like that long enough." }
+          ] },
+          { t: "This isn't about him.", notes: 2, then: [
+            { s: 'shinjiro', f: 'neutral', t: "Everything in this house is a little about him. He likes it that way. Doesn't know he does." }
+          ] },
+          { t: "(Don't answer.)", notes: 2, then: [
+            { n: "She didn't answer. He nodded anyway, slowly, as if she had, and as if it was the answer he'd been expecting, and squeezed her hand once, and didn't let go." }
+          ] }
         ] }
       ], else: [
         { n: "Since the roof he had started letting her stand at his elbow at the stove without telling her to move, which was, as far as she could tell, the highest honor the kitchen gave out. Akihiko had noticed. Akihiko had said nothing about it, very loudly, for three days." },
@@ -854,6 +890,10 @@
         { n: "They stayed on the counter until the moonlight had crawled off the floor and up the cupboard doors and out of the window altogether." },
         { n: "When he got down, he picked up the beanie and looked at it, and then he put it on her head, and pulled it down over her ears with both hands, crooked, too big, low over one eyebrow. He looked at what he'd done for a long moment." },
         { s: 'shinjiro', f: 'happy', t: "Suits you. Don't let Aki borrow it." },
+        { n: "He got as far as the kitchen door. He stopped there, with one hand on the frame, the way Akihiko stood in doorways, and she wondered if he knew he'd learned it from him or the other way round." },
+        { s: 'shinjiro', f: 'neutral', t: "Hey. You and Aki." },
+        { s: 'shinjiro', f: 'sad', t: "He's gonna be a mess. Don't let him be a mess alone. Don't you do it alone either." },
+        { s: 'shinjiro', f: 'happy', t: "You'll be alright, the two of you. Long as you've got each other. ...Don't make it weird." },
         { n: "Then he went upstairs. She stayed in the dark kitchen with the beanie on. It was too big. She didn't take it off." }
       ], else: [
         { s: 'shinjiro', f: 'neutral', t: "Look after Aki. He'll act like he's fine. He won't be." },
@@ -873,7 +913,8 @@
           ] }
         ] },
         { n: "He got down off the counter and stood in front of her and, after a second's hesitation she would think about for a long time, ruffled her hair, hard, the way you'd do it to a kid or a dog, which he had never once done, and which he did like he'd been wanting to for months and had been waiting for a night when it wouldn't matter." },
-        { s: 'shinjiro', f: 'happy', t: "Night, Solar." },
+        { s: 'shinjiro', f: 'neutral', t: "You and Aki. You'll be okay. Long as you've got each other." },
+        { s: 'shinjiro', f: 'happy', t: "...Night, Solar." },
         { n: "It was the first time he had said her name. Five months. He went upstairs. She sat on the counter until the moon had gone off the window, and then she got down, and took the good pot off the back burner, and hung it on its hook with the others, handle out." }
       ] }
     ] }

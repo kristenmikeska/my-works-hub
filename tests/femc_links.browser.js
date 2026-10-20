@@ -11,23 +11,30 @@ window.LinkAudit = (() => {
   G.S.flags={armband:true,...p.flags};G.S.met=p.met||[];G.S.events=p.events||[];G.S.stats={academics:200,charm:200,courage:p.courage??200};
   G.S.day=G.dayOf(p.date||e.after||'1/24');G.S.slot=id==='mark'?'evening':'after';G.S.route.frags={R:9,S:9,H:9};
   G.S.links[id]={rank:p.rank??(e.kind==='rank'?e.i:e.kind==='after'?10:5),xp:0,seen:[],rankDay:{},hung:e.i,after:e.i,push:0,reversed:false,route:p.route||'friend'};
+  for(const [cid,r] of Object.entries(p.ranks||{}))G.S.links[cid]={rank:r,xp:0,seen:[],rankDay:{},push:0,reversed:false};
   for(const [cid,value] of Object.entries(p.romances||{})){const state=G.S.links[cid]||={rank:8,xp:0,seen:[],rankDay:{},push:0,reversed:false};state.route=value?'romance':'friend';}
  };
- function presets(e) {
-  const flags=new Set(),written=new Set(),met=new Set(),events=new Set(),romances=new Set();let rank=false,date=false,needs=false,route=false;
-  walk(e.scene,l=>{[].concat(l.ifFlag||[]).forEach(f=>flags.add(f));[].concat(l.ifMet||[]).forEach(m=>met.add(m));[].concat(l.ifEvent||[]).forEach(ev=>events.add(ev));if(l.ifRank)rank=true;if(l.ifRoute)route=true;if(l.ifRomance)romances.add(l.ifRomance);if(l.ifBefore||l.ifAfter)date=true;if(l.needs)needs=true;
+ function presets(e,id) {
+  const flags=new Set(),written=new Set(),met=new Set(),events=new Set(),romances=new Set(),dates=new Set(),others={};let rank=false,date=false,needs=false,route=false;
+  walk(e.scene,l=>{[].concat(l.ifFlag||[]).forEach(f=>flags.add(f));[].concat(l.ifMet||[]).forEach(m=>met.add(m));[].concat(l.ifEvent||[]).forEach(ev=>events.add(ev));if(l.ifRank)Object.entries(l.ifRank).forEach(([cid,r])=>{if(cid===id||!id)rank=true;else others[cid]=Math.max(others[cid]||0,r);});if(l.ifRoute)route=true;if(l.ifRomance)romances.add(l.ifRomance);if(l.ifBefore||l.ifAfter){date=true;dates.add(l.ifBefore||l.ifAfter);}if(l.needs)needs=true;
    if(l.flag) (typeof l.flag==='string'?[l.flag]:Array.isArray(l.flag)?l.flag:Object.keys(l.flag)).forEach(f=>written.add(f));});
   // These are derived inside the scene from the selected route, never independent player choices.
   ['mark-home','mark-away'].forEach(f=>flags.delete(f));
   const keys=[...flags].filter(f=>!written.has(f));let out=[{flags:{},met:[],courage:200}];
   for(const f of keys) out=out.flatMap(p=>[p,{...p,flags:{...p.flags,[f]:true}}]);
   out=out.filter(p=>!(p.flags['route-R']&&p.flags['route-true'])&&!(p.flags['mark-headphones']&&p.flags['mark-too-much'])&&['hyein-dress-run','hyein-dress-pockets','hyein-dress-red'].filter(f=>p.flags[f]).length<=1);
+  // Choices that can only ever set one flag of a group (one pick per rank, or one solstice route) never combine.
+  const exclusive=[['hanni-msg-ok','hanni-msg-joke','hanni-msg-ily'],['hanni-tag-coffee','hanni-tag-question','hanni-tag-this'],['hanni-knock','hanni-people'],['route-R','route-S','route-H','route-stay','route-true']];
+  out=out.filter(p=>exclusive.every(g=>g.filter(f=>p.flags[f]).length<=1));
+  // Another link's rank gate (e.g. ifRank akihiko): play it below and at the rank.
+  for(const [cid,r] of Object.entries(others))out=out.flatMap(p=>[p,{...p,ranks:{...p.ranks,[cid]:r}}]);
   for(const cid of romances)out=out.flatMap(p=>[{...p,romances:{...p.romances,[cid]:false}},{...p,romances:{...p.romances,[cid]:true}}]);
   if(route)out=out.flatMap(p=>[{...p,route:'friend'},{...p,route:'romance'}]);
   if(events.size)out=out.flatMap(p=>[p,{...p,events:[...events]}]);
   if(met.size)out=out.flatMap(p=>[p,{...p,met:[...met]}]);
   if(rank)out=out.flatMap(p=>[{...p,rank:1},{...p,rank:10}]);
-  if(date)out=out.flatMap(p=>[{...p,date:'12/22'},{...p,date:'12/23'}]);
+  // Each date gate is played on its threshold day and the day before (e.g. ifBefore 12/23 -> 12/22 and 12/23).
+  if(date){const ds=[...new Set([...dates].flatMap(t=>[G.mdOf(G.dayOf(t)-1),t]))];out=out.flatMap(p=>ds.map(d=>({...p,date:d})));}
   if(needs)out=out.flatMap(p=>[p,{...p,courage:0}]);
   return out;
  }
@@ -59,7 +66,7 @@ window.LinkAudit = (() => {
   el.remove();document.documentElement.classList.remove('g-in-scene');
   return {result,decisions,text,rendered};
  }
- function one(id,index){const e=sceneList(id)[index],key=id+'/'+e.kind+e.i,configs=presets(e);let paths=0,min=Infinity,max=0;
+ function one(id,index){const e=sceneList(id)[index],key=id+'/'+e.kind+e.i,configs=presets(e,id);let paths=0,min=Infinity,max=0;
   const staticNodes=[];walk(e.scene,(l,k,option)=>{if(option||l.n!==undefined||l.t!==undefined)staticNodes.push(key+k);if(l.phone)l.phone.forEach((_,j)=>staticNodes.push(key+k+'/phone'+j));});
   for(const preset of configs){const queue=[[]];while(queue.length){const path=queue.shift();reset(id,e,preset);const want=expected(id,e,path,key);reset(id,e,preset);const got=play(id,e,path,key);
    assert(got.result.finished,key+' unfinished');assert(got.result.gained===want.notes,key+' notes');
@@ -73,10 +80,10 @@ window.LinkAudit = (() => {
   return {key,presets:configs.length,paths,linesAndChoices:staticNodes.length,min,max};
  }
  async function assetCheck(){return {count:assets.size,missing:(await Promise.all([...assets].map(u=>fetch(u,{method:'HEAD'}).then(r=>r.ok?null:u).catch(()=>u)))).filter(Boolean),faces:seenFaces.size};}
- function faces(){const bad=[];for(const id of ['hyein','mark'])for(const e of sceneList(id))walk(e.scene,l=>{if(l.s&&l.f&&!(FEMC_PORTRAITS[l.s]||[]).includes(l.f))bad.push(l.s+'/'+l.f);});return bad;}
+ function faces(ids=['hyein','mark']){const bad=[];for(const id of ids)for(const e of sceneList(id))walk(e.scene,l=>{if(l.s&&l.f&&!(FEMC_PORTRAITS[l.s]||[]).includes(l.f))bad.push(l.s+'/'+l.f);});return bad;}
  return {one,sceneList,assetCheck,faces,reset,play,expected,original,base};
 })();
-LinkAudit.progression = (id,low=false) => {
+LinkAudit.progression = (id,low=false,requireAll=true) => {
  const G=FemcGame, A=LinkAudit,L=G.LINKS[id], trace=[];
  A.reset(id,A.sceneList(id)[0],{flags:{'year-goes-on':true,'route-R':true},rank:0});
  for(let day=G.dayOf(L.starts);day<=G.dayOf('1/29');day++){
@@ -95,7 +102,7 @@ LinkAudit.progression = (id,low=false) => {
   if((G.S.links[id].after||0)>=L.afterMax.length)break;
  }
  if(G.S.links[id].rank!==10)throw Error(id+' cannot reach MAX '+JSON.stringify(trace));
- if(!low&&(G.S.links[id].after||0)<L.afterMax.length)throw Error(id+' not enough post-MAX days '+JSON.stringify(trace));
+ if(!low&&requireAll&&(G.S.links[id].after||0)<L.afterMax.length)throw Error(id+' not enough post-MAX days '+JSON.stringify(trace));
  const saved=JSON.stringify(G.S.links[id]);G.saveSlot(3);G.S.links[id].rank=0;G.loadSlot(3);
  if(JSON.stringify(G.S.links[id])!==saved)throw Error('slot did not restore link progress');
  return {id,low,trace,saveRoundTrip:true};
@@ -103,9 +110,9 @@ LinkAudit.progression = (id,low=false) => {
 LinkAudit.gates = id => {
  const G=FemcGame,L=G.LINKS[id],A=LinkAudit;let checks=0;
  const assert=(v,m)=>{checks++;if(!v)throw Error(id+' '+m);};
- const probe=(day,slot,frags,rank=0)=>{A.reset(id,A.sceneList(id)[0],{flags:{},rank});G.S.day=day;G.S.slot=slot;G.S.route.frags.R=frags;return G.linkStatus(L)};
+ const world=Object.keys(L.gate||{R:0})[0];const probe=(day,slot,frags,rank=0)=>{A.reset(id,A.sceneList(id)[0],{flags:{},rank});G.S.day=day;G.S.slot=slot;G.S.route.frags[world]=frags;return G.linkStatus(L)};
  assert(probe(G.dayOf(L.starts)-1,L.home.slot,9).reason==='away','before start');
- assert(probe(G.dayOf(L.starts)+10,L.home.slot,L.gate.R-1).reason==='away','fragment gate');
+ assert(probe(G.dayOf(L.starts)+10,L.home.slot,L.gate[world]-1).reason==='away','fragment gate');
  for(let r=0;r<10;r++){
   const earliest=G.dayOf(L.ranks[r].after);
   assert(!probe(earliest-1,L.home.slot,9,r).ok,'rank date '+r);

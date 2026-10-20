@@ -93,12 +93,12 @@
     { dark: false },
     { music: 'joy' },
     { cg: 'ending-hoax-home' },
-    { n: "Hanlim. The gym. Blue and silver balloons on every surface, string lights, the ballot box on its table by the wall with STUDENT COUNCIL VOTE taped to the front. The night of the count. Everyone still in the building far too late, the lights on in every window, the whole school waiting for something. She was standing in the middle of it in a uniform with an armband on it that nobody here would ever understand, and nobody noticed, because Cherry had already crossed the gym at a dead run and thrown both arms around her neck." },
+    { n: "Hanlim. The gym, after hours, half-decorated for something the council had voted on and nobody had finished, blue and silver balloons on every surface, string lights, and on a table by the wall the old ballot box from the election, empty now, with a cash tin inside it where somebody had decided it would be safest. Everyone still in the building far too late, the lights on in every window. She was standing in the middle of it in a uniform with an armband on it that nobody here would ever understand, and nobody noticed, because Cherry had already crossed the gym at a dead run and thrown both arms around her neck." },
     { s: 'cherry', f: 'happy', t: "THERE you are. Where have you BEEN? Don't answer that. I don't care. You're here. You look like shit. I love you. Your left wing is lower than your right." },
     { n: "Her phone was going off in her pocket. A group chat she'd been in her whole life. Somebody had renamed it in the time she'd been gone. It was now called something so stupid she laughed out loud in the middle of the gym, and wouldn't tell anyone why. At home, Nana would be barking at the door. She could feel it." },
     { ifFlag: 'xmas-jungwon', then: [
-      { n: "Later, after hours, she found him in the council room. Of course she did. Lamplight, the long table, a stack of folders squared to the edge. Two candidates, and one croissant, on a plate between them, with red icing." },
-      { n: "He didn't know the result yet. He didn't ask her to tell him what she wanted it to be. He split the croissant in half, exactly, and gave her the larger one, and they sat in the council room and ate it and didn't talk about the count at all." }
+      { n: "Later, after hours, she found him in the council room. Of course she did. Lamplight, the long table, a stack of folders squared to the edge, and the cash tin out of the ballot box open in front of him, every note faced the same way, because he was counting it. Twice. A president and a vice president, and one croissant, on a plate between them, with red icing." },
+      { n: "He didn't ask where she'd been. He didn't ask her anything. He lost count, which he had never once done in his life, and started again, and split the croissant in half, exactly, and gave her the larger one, and they sat in the council room and ate it, and she let him finish the count before she kissed his cheek, because she knew him, and he'd have started over." }
     ] },
     { ifFlag: 'xmas-jihoon', then: [
       { n: "Later, they ended up at the arcade, because they always ended up at the arcade. The crane game. The claw slipping again. Jihoon feeding it coins anyway, complaining the whole time. She reached over his hand and pushed the button, and the claw closed, and held on, the whole way, and a stupid plush dog with Nana's face dropped into the chute." },
@@ -106,10 +106,10 @@
     ] },
     { ifFlag: 'xmas-jungwon', else: [{ ifFlag: 'xmas-jihoon', else: [
       { n: "At two in the morning, in her bed, with Nana asleep on her feet, the chat was still going. Cherry, insulting her lovingly, at length, with feeling. Asahi saying something bitter. Jihoon saying he was the light of her disgusting life. And Junkyu, at the bottom, in capital letters, asking if she needed some ice cream and hugs." },
-      { n: "She typed back. All lowercase, no full stop, the way her thumbs had always wanted to." }
+      { n: "She typed back. In capital letters, with a keysmash in the middle, the way her thumbs had always wanted to." }
     ] }] },
     { cg: null },
-    { n: "Nothing about the count was decided that night. Not on the screen. Nobody said who won. It didn't matter, yet. She'd come home to be the candidate, and somewhere very far away a pink hallway and a house by the sea went on missing her, and a dormitory by a bay kept a room made up with a uniform in her size, and she would never know." },
+    { n: "Nothing was decided that night. Not on the screen. Not about anyone, not the boy counting money in the council room and not the boy at the arcade feeding a machine coins, and not about her. She'd come home to be the vice president, and somewhere very far away a pink hallway and a house by the sea went on missing her, and a dormitory by a bay kept a room made up with a uniform in her size, and she would never know." },
     { n: "She knew exactly how to be the girl on the poster now. The smile. The speech. She could do it perfectly. She did." },
     card('the count')
   ];

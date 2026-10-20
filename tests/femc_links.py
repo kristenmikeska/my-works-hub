@@ -1,6 +1,6 @@
-"""Real-browser regression checks for the finished Hyein and Mark links.
+"""Real-browser regression checks for the finished searcher-friend links: Hyein, Mark, Hanni, Yunjin and Minji.
 
-Run: python3 tests/femc_links.py [--screenshots /absolute/output/directory]
+Run: python3 tests/femc_links.py [--links hyein,mark,...] [--screenshots /absolute/output/directory]
 Needs Chrome (set CHROME for a nonstandard installation), no Python packages.
 Uses a temporary browser profile and loopback server; never opens the player's saves.
 The output is spoiler-free. Full line/choice traversal uses reduced motion and instant
@@ -12,18 +12,33 @@ from femc_browser import Page
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
 parser.add_argument('--screenshots', type=pathlib.Path)
+parser.add_argument('--links', default='hyein,mark,hanni,yunjin,minji')
 args = parser.parse_args()
+LINKS = [x for x in args.links.split(',') if x]
 p = Page()
 try:
     p.ws.call('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'reduce'}]})
     p.goto('femc-game.html?debug=1')
     p.eval((ROOT / 'tests/femc_links.browser.js').read_text())
     assert not p.console(), 'Errors during game load'
-    assert not p.eval('LinkAudit.faces()'), 'Unknown portrait expression'
+    assert not p.eval(f'LinkAudit.faces({json.dumps(LINKS)})'), 'Unknown portrait expression'
     protected = "I'd never put my name on something that was yours. I want you to know that. I want you to know I know that matters."
     assert p.eval(f"JSON.stringify(FemcGame.LINKS.mark.ranks[8].scene).includes({json.dumps(protected)})"), 'Approved dialogue changed'
+    # Playtest notes 42/43/45/50/52/60/63/68/75/76 (2026-10-20): spoiler-free content guards on the link data.
+    content = p.eval(r'''(()=>{const L=FemcGame.LINKS,txt=id=>JSON.stringify(L[id]),bad=[];
+     const no=(id,re,msg)=>{if(re.test(txt(id)))bad.push(id+': '+msg)};
+     for(const id of ['hanni','hyein','yunjin','mark','minji']){no(id,/Say it again/,'repeated catchphrase');no(id,/THERE SHE IS/i,'repeated catchphrase');}
+     no('mark',/\bjk\b/i,'jk');no('mark',/the gap\b|mark-gap|mark-dad/,'canon gap/father thread');
+     if(!/ifRank":\{"akihiko"/.test(txt('hyein')))bad.push('hyein: no Akihiko notice');
+     if(!/ifRank":\{"akihiko"/.test(txt('hanni')))bad.push('hanni: no Akihiko notice');
+     const r8=JSON.stringify(L.yunjin.ranks[7].scene);if(!/"s":"haechan"/.test(r8)||!/"s":"jungwon"/.test(r8))bad.push('yunjin r8: boys silent');
+     if(!/guesthouse/.test(JSON.stringify(L.minji)))bad.push('minji: no lodging');
+     const r1=JSON.stringify(L.hyein.ranks[0].scene);if(/talking like that|waiting for instructions/.test(r1))bad.push('hyein r1: shared formal accusation');
+     return bad})()''')
+    assert not content, content
+    print('Content guards passed', flush=True)
     totals = {}
-    for link in ['hyein', 'mark']:
+    for link in LINKS:
         total = 0
         for i in range(p.eval(f"LinkAudit.sceneList('{link}').length")):
             r = p.eval(f"LinkAudit.one('{link}',{i})", timeout=180)
@@ -33,14 +48,16 @@ try:
         gates = p.eval(f"LinkAudit.gates('{link}')")
         print(f"  {gates['checks']} availability checks passed", flush=True)
         for low in ['false', 'true']:
-            r = p.eval(f"LinkAudit.progression('{link}',{low})")
-            print(f"  {'Lower-scoring' if low == 'true' else 'First-choice'} calendar run: MAX, {r['trace'][-1]['after']} post-MAX scenes, save/load passed", flush=True)
+            # Hyein and Mark were scheduled so one run reaches every post-MAX scene; the others rotate theirs.
+            every = 'true' if link in ('hyein', 'mark') else 'false'
+            r = p.eval(f"LinkAudit.progression('{link}',{low},{every})")
+            print(f"  {'Lower-scoring' if low == 'true' else 'First-choice'} calendar run: MAX, {r['trace'][-1]['after']} of {p.eval(f'FemcGame.LINKS.{link}.afterMax.length')} post-MAX scenes, save/load passed", flush=True)
     assets = p.eval('LinkAudit.assetCheck()')
     assert not assets['missing'], assets
     print(f"{assets['count']} scene assets load; {assets['faces']} displayed portraits checked", flush=True)
     if args.screenshots:
         args.screenshots.mkdir(parents=True, exist_ok=True)
-        for link in ['hyein', 'mark']:
+        for link in LINKS:
             p.ws.call('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'no-preference'}]})
             p.eval(f"LinkAudit.reset('{link}',LinkAudit.sceneList('{link}')[0],{{flags:{{}},rank:0}});window.sample=FemcScene.play({{...LinkAudit.sceneList('{link}')[0],link:'{link}'}});'ok'")
             p.eval("sample.el.querySelector('.gs-title')?.click();'ok'")

@@ -9,14 +9,16 @@
    Branch on the recorded event, not door-R6: the door may open after the crossing's fixed date. He sleeps at the Kirijo guesthouse by the
    station (plot doc §4, 9/13), like the other searcher boys; he visits the dorm. The Mark/Haechan run-in (rank 4) is handled
    gently: grief with muscle memory, nothing new, nothing mended.
-   Reworks v1's runners2.js (bodyguard Mark Lee, the voice memo with a gap where a voice goes, "does ur dad still know like
-   everyone", "Hyuck", the pencil). Texting voice: markylee, lowercase, "word", "lol", "ofc", ":)", "its not on u". No 'happy'
+   Reworks v1's runners2.js (bodyguard Mark Lee, "Hyuck", the pencil). Kat's playtest note (63/68): no "jk", no re-asking
+   about her father and no canon song "with a gap"; he builds something new from this world instead (r3 'the crossing':
+   the four notes he brought, her fifth, and a middle made of the line's station chimes and the monorail over the bay).
+   Rank 1's unfinished "my best friend" is deliberate: he checks her face and chooses not to say Haechan's name. Texting voice: markylee, lowercase, "word", "lol", "ofc", ":)", "its not on u". No 'happy'
    portrait exists, so his smiles use neutral. Faces used: neutral, flustered, surprised, serious, sad. Arcana: '?' (open
    question, plot doc §16.6). Rank 9's line "I'd never put my name on something that was yours." is Kat-approved: keep it.
    Choices that echo later (all flags are this link's own):
      mark-not-careful (r1), mark-marky (r1: she says Marky first), mark-game (r1: the fox-girl game; opens a rank 4 option),
-     mark-bodyguard (r2: she says his line), mark-paid-own (r2), mark-gap (r3: hums into the gap; r9 callback),
-     mark-dad-forgot / mark-dad-why (r3; r10 apology), mark-ask-hyuck (r4; r7 payoff), mark-pencil (r4; r10 she returns it),
+     mark-bodyguard (r2: she says his line), mark-paid-own (r2), mark-crossing (r3: hums over the crossing; r9 callback),
+     mark-who (r3: who he'd play it for; r10 apology), mark-ask-hyuck (r4; r7 payoff), mark-pencil (r4; r10 she returns it),
      mark-ask-me (r5: "you could have asked me"; r6 he asks), mark-too-much / mark-headphones (r6; r9 callback),
      mark-asked-plan (r6: "did you save mine for last on purpose"), mark-cover (r7; afterMax callback),
      mark-trouble / mark-handed-back (r8; r9 opening), mark-stood-up (r8: Jaehyun), mark-not-yet / mark-sang / mark-ask-again
@@ -220,8 +222,9 @@
         { t: "I play a game. There's a fox girl in it.", notes: 3, flag: { 'mark-game': true }, then: [
           { s: 'mark', f: 'surprised', t: "Oh, no way. You still— okay. Okay. Some things just stick, huh." },
           { s: 'mark', f: 'neutral', t: "I don't know anything about it. Honestly. My best friend loves that game. He—" },
-          { n: "He stopped. Not the way people stop when they've lost a word. The way you stop on a stair you thought was there. He played a chord with his left hand, loud, for no reason, and smiled at the keys." },
-          { s: 'mark', f: 'neutral', t: "Anyway. You're really good at it. Everybody says." }
+          { n: "He stopped. Not the way people stop when they've lost a word. He looked at her, quick, the way you'd check whether a door you were passing was open, and whatever he found in her face settled it. He played a chord with his left hand, loud, for no reason, and smiled at the keys." },
+          { s: 'mark', f: 'neutral', t: "Anyway. You're really good at it. Everybody says." },
+          { n: "He didn't say the name. Much later she would think about how easily he hadn't, how he'd stepped around it without breaking stride." }
         ] },
         { t: "I'm still finding out.", notes: 3, then: [
           { s: 'mark', f: 'neutral', t: "That's kind of cool, actually. Getting to find out twice." },
@@ -307,68 +310,56 @@
       ], contact: 'markylee' }
     ] },
 
-    { after: '12/3', title: '3: the gap', place: 'Port Island Station · Central Concourse', time: 'Evening', scene: [
-      { n: "He'd recorded something. On the phone he'd brought through with him, the screen cracked in one corner, the battery that never went down the way none of the searchers' batteries ever went down. He held it out to her on the bench beside the piano with the volume all the way up and his face doing the thing it did when he wanted something very much and was trying to look like he didn't." },
-      { s: 'mark', f: 'neutral', t: "Okay, don't laugh. It's rough. I did it on the piano in the guesthouse lobby at two in the morning. The night manager came up in his slippers and asked if it was a ghost." },
-      { n: "It was forty-eight seconds. The melody from the station, the one with her five notes in it, built out now, fuller, a left hand under it like a floor. And in the middle, a space. Eight bars where the piano dropped to almost nothing, just the chords, waiting, like a room with the furniture moved back for someone to dance in." },
-      { s: 'mark', f: 'neutral', t: "There's a gap in the middle. Where a voice goes." },
-      { s: 'mark', f: 'serious', t: "I keep hearing you in it." },
+    { after: '12/3', title: '3: the crossing', place: 'Port Island Station · Central Concourse', time: 'Evening', scene: [
+      { n: "He had a stopwatch. An actual one, orange plastic, on a cord around his neck like a gym teacher's, bought that morning at the sports shop in the mall for six hundred yen, and when she came across the concourse he held up one finger without looking at her while the departure chime for the 6:40 to Iwatodai played over the speakers, a bright little run of notes like a doorbell with ambitions, and clicked the stopwatch the instant it ended, and wrote something down in a notebook of staff paper propped on the piano lid." },
+      { s: 'mark', f: 'neutral', t: "Okay. Sorry. Hi. Four point two seconds. Iwatodai's is four point six. The one at the end of the line is in a completely different key, which, honestly, rude." },
+      { s: 'mark', f: 'flustered', t: "Every station here has its own song. Did you know that? You get off the train and the station plays you out the door. Nobody at home would believe me. Nobody at home has a station that plays them anything. Ours just beep at you for being slow." },
+      { n: "He'd been at it for days, by the look of the notebook. Every chime on the line written out in his neat small hand with the station's name over it like a title, and in the margins arrows and question marks and, once, underlined twice, the words *THE WATER???*" },
+      { s: 'mark', f: 'neutral', t: "So. Don't laugh. The four notes, I brought those with me. Everything after them is from here. I've been building it out of here." },
+      { n: "He turned to the seagull piano and played it. The four notes. Her fifth. And then a passage that sounded, impossibly, like the monorail going over the bay at night, the rail humming under it and the lights of the city sliding past the windows, with Iwatodai's chime folded in at one end of it and Port Island's at the other, so that the whole middle of the song was a train leaving one side of the water and arriving at the other." },
+      { s: 'mark', f: 'neutral', t: "That's the crossing. It needs a line over it. A voice. Somebody going somewhere." },
+      { s: 'mark', f: 'serious', t: "I keep hearing you on it." },
       { choose: [
         { t: "Me?", notes: 2, then: [
-          { s: 'mark', f: 'neutral', t: "You. Yeah. You've got the exact right kind of voice for it. Low. A little tired. Like you're telling somebody a secret you're not sure you should." }
+          { s: 'mark', f: 'neutral', t: "You. Yeah. Low. A little tired. Like somebody on the last train who knows exactly which stop is hers and isn't in a hurry to get there." }
         ] },
-        { t: "(Hum into the gap.)", notes: 3, flag: { 'mark-gap': true }, then: [
-          { n: "She played it again and hummed into the gap. Quietly. Eight bars. Her voice found the line under the chords like it had been written for it, and Mark sat absolutely still on the bench beside her, not breathing, the way you'd sit still when a bird lands near you." },
+        { t: "(Hum over the crossing.)", notes: 3, flag: { 'mark-crossing': true }, then: [
+          { n: "He played the middle again and she hummed over it. Quietly. Eight bars. Her voice found a line between the two chimes like a path she walked every day, one station going out and the other coming in, and Mark sat absolutely still on the bench beside her, not breathing, the way you'd sit still when a bird lands near you." },
           { s: 'mark', f: 'surprised', t: "...Yeah. That. That's what it's for." }
         ] },
-        { t: "Why do you want it to be me?", notes: 3, then: [
-          { s: 'mark', f: 'neutral', t: "Because it's good. Because you're good." },
-          { s: 'mark', f: 'neutral', t: "...And because I wrote it thinking about you. I'm not going to lie about that part. That part's true." }
+        { t: "Why a train?", notes: 3, then: [
+          { s: 'mark', f: 'neutral', t: "Because it's the first thing here that made sense to me. You get on one side, you get off the other. Everything in between is just water and lights." },
+          { s: 'mark', f: 'serious', t: "And the first night, right here, at midnight, everything stopped. There was a train out on the bridge with every light dead, just sitting there over the water in the green, and it was so quiet I could hear my own watch. I want the crossing to sound like the minute after. When it started moving again." }
         ] }
       ] },
-      { choose: [
-        { t: "How much of that song is yours?", notes: 3, then: [
-          { s: 'mark', f: 'surprised', t: "How much? Uh." },
-          { n: "His hand went to the back of his neck. It stayed there for a while." },
-          { s: 'mark', f: 'neutral', t: "Music's like that. Everything's a little bit somebody's. You hear a thing once when you're fifteen and it gets in you, and then you can't tell anymore where it came in." },
-          { s: 'mark', f: 'serious', t: "The four notes are mine. I know that much. The part you hummed is yours. I'm being really careful about that." }
-        ] },
-        { t: "Who else has heard it?", notes: 3, then: [
-          { s: 'mark', f: 'neutral', t: "Nobody. You. The night manager. Fuuka, kind of, I think she hears everything, I think she can't help it." },
-          { s: 'mark', f: 'neutral', t: "...I wanted you to be first. I'm saying that in a normal way." }
-        ] },
-        { t: "(Hand him back his phone.)", notes: 2, then: [
-          { n: "He took it like you'd take back something you'd lent and weren't sure you'd see again, and put it in his front pocket and kept his hand over the pocket." }
-        ] }
-      ] },
-      { s: 'mark', f: 'neutral', t: "Also. Unrelated." },
+      { n: "Before she could say anything else he'd taken the phone out of his pocket, the cracked one from home whose battery never went down, and was holding it up over the keys like a candle, playing the whole thing once more into it, start to finish, the stopwatch swinging on its cord against his chest." },
+      { s: 'mark', f: 'neutral', t: "Also. Kind of related. Kind of not." },
       { n: "He rubbed the back of his neck. He looked at the departure board. He laughed, at nothing, a beat too early." },
-      { s: 'mark', f: 'neutral', t: "Does your dad still know, like. Everyone? In music, I mean. At home." },
-      { s: 'mark', f: 'flustered', t: "Jk. That's— jk." },
-      { s: 'mark', f: 'neutral', t: "...Kind of jk." },
-      { n: "It sat there on the bench between them. Not a question, exactly. Something set down to see if she'd pick it up. And under it, warm, real, the same boy who'd sat up at two in the morning on a guesthouse piano writing a song about a girl who didn't know him, because he couldn't not." },
+      { s: 'mark', f: 'neutral', t: "If I finish it here, it comes with me, right? When we go. Like, if I go home and play it, it's still mine. Nobody there's heard anything like it. Nobody there's ever heard a monorail." },
+      { n: "He said it lightly, a joke about trains. Under the joke she watched him do a sum she couldn't see the numbers of: a song nobody had ever heard, from a place nobody could go back to, and somewhere at home a room with the right people in it, and how long it would take to walk from one to the other. And beside the sum, warm, real, the same boy who'd timed a doorbell chime with a stopwatch all afternoon because he couldn't not." },
       { choose: [
-        { t: "I don't remember my father.", notes: 3, flag: { 'mark-dad-forgot': true }, then: [
-          { s: 'mark', f: 'sad', t: "...Oh." },
-          { s: 'mark', f: 'neutral', t: "Oh. No, yeah. Of course. God. Forget it, Sol. Forget the whole— forget it. Are you okay? That's the actual question. That's the only question." },
-          { n: "He meant it. She watched him mean it. She also watched the other thing fold itself up very small and go back into a pocket, for later, and she didn't know which of them she was supposed to answer." }
+        { t: "Who would you play it for?", notes: 3, flag: { 'mark-who': true }, then: [
+          { s: 'mark', f: 'neutral', t: "...My mom. Obviously. My professor, maybe. Whoever's in the room." },
+          { s: 'mark', f: 'flustered', t: "That's the small answer. I'm going with the small answer tonight. It's a small-answer kind of night." },
+          { n: "He meant it. She watched him mean it. She also watched the bigger answer fold itself up very small and go back into a pocket, for later, and she didn't know which one she'd been given." }
         ] },
-        { t: "Why do you want to know?", notes: 3, flag: { 'mark-dad-why': true }, then: [
-          { s: 'mark', f: 'neutral', t: "No reason! Music nerd. You know me. Making conversation." },
-          { s: 'mark', f: 'flustered', t: "...Okay, a small reason. But mostly I just wanted you to hear the song first. Before anyone. That's the big reason. That's most of it." }
+        { t: "It's yours. Take it.", notes: 3, then: [
+          { s: 'mark', f: 'surprised', t: "...Yeah? Even the part you hummed?" },
+          { s: 'solar', f: 'neutral', t: "My part's mine. The trains are yours." },
+          { s: 'mark', f: 'neutral', t: "Okay. Okay. That's clean. That's really clean. I like clean. I'm writing that down." },
+          { n: "He did write it down, at the bottom of the page, under THE WATER???, in his small neat capitals. She didn't see what it said." }
         ] },
-        { t: "(Play the memo again instead of answering.)", notes: 2, then: [
-          { n: "She played it again. And again. He watched her listen and didn't ask a third time." },
-          { s: 'mark', f: 'neutral', t: "...You like it. I can tell. That's okay. I like that you like it." }
+        { t: "(Play the four notes for him instead of answering.)", notes: 2, then: [
+          { n: "She reached past him and played them, badly, with one finger. He laughed, and played her fifth note back to her, and the question went wherever questions go when nobody picks them up." }
         ] }
       ] },
-      { n: "He walked her to the gate and didn't mention her father again, at all, the whole way, so carefully that the not mentioning became a third person walking between them with its hands in its pockets." },
+      { n: "He walked her to the gate and didn't mention home again, the whole way, so carefully that the not mentioning became a third person walking between them with its hands in its pockets." },
       { phone: [
         { from: 'mark', t: "sent u the memo" },
         { from: 'mark', t: "dont listen to it at 2am. its a 2am song. itll get u" },
         { from: 'mark', t: "ok listen to it at 2am" }
       ], contact: 'markylee' },
-      { n: "She listened to it at two in the morning. It got her. She didn't text him that, and she had the feeling, lying there with the gap playing quietly into the dark, that he'd counted on her not texting it, and was right." }
+      { n: "She listened to it at two in the morning. It got her. She didn't text him that, and she had the feeling, lying there with the train crossing the bay quietly into the dark, that he'd counted on her not texting it, and was right." }
     ] },
 
     { after: '12/9', title: '4: hyuck', place: 'Paulownia Mall · Central Atrium', time: 'Evening', music: 'mystery', scene: [
@@ -382,9 +373,9 @@
       { choose: [
         { t: "Haechan.", notes: 3, then: [
           { s: 'mark', f: 'neutral', t: "...Yeah." },
-          { s: 'mark', f: 'neutral', t: "He's here. I know. I've seen him. At the dorm. On the steps. He looked at me like I was a song he's heard too many times." },
+          { s: 'mark', f: 'neutral', t: "He's here. I know. He lives at your dorm. I've seen him on the steps. He looked at me like I was a song he's heard too many times." },
           { s: 'mark', f: 'serious', t: "We haven't said anything to each other. We're very good at that. We've had a lot of practice." },
-          { s: 'mark', f: 'neutral', t: "Mitsuru put us on different floors of the guesthouse. I didn't ask her to. I think Hanni did. Hanni thinks of everything." }
+          { s: 'mark', f: 'neutral', t: "Mitsuru put me at the guesthouse and him with you. I didn't ask her to. I think Hanni had a word. Hanni thinks of everything." }
         ] },
         { t: "Your best friend. The one who loves the game.", ifFlag: 'mark-game', notes: 3, then: [
           { s: 'mark', f: 'surprised', t: "..." },
@@ -499,7 +490,7 @@
         { n: "Hers was in a small box with a ribbon." }
       ] },
       { n: "Everyone in the lounge was watching. That was, she understood, the point, or one of the points. He'd given everyone else theirs first so that hers would be last, so that everyone would be looking." },
-      { n: "Inside was a pair of headphones. Good ones. Over-ear, closed-back, the kind with the soft leather cushions, expensive, the most expensive thing in either bag by a long way, and a little card tucked into the headband in his handwriting. *For the gap in the song. When you're ready. M.*" },
+      { n: "Inside was a pair of headphones. Good ones. Over-ear, closed-back, the kind with the soft leather cushions, expensive, the most expensive thing in either bag by a long way, and a little card tucked into the headband in his handwriting. *For the crossing. When you're ready. M.*" },
       { s: 'junpei', f: 'surprised', t: "Duuude. Those are like, studio headphones. Those are nicer than the ones in the electronics shop window." },
       { choose: [
         { t: "These are too much, Mark.", notes: 3, flag: { 'mark-too-much': true }, then: [
@@ -560,10 +551,10 @@
       { n: "The cleaner went by. The departure board clicked over to a train neither of them was taking." },
       { ifFlag: 'mark-ask-hyuck', then: [
         { s: 'mark', f: 'neutral', t: "Oh. Also. You told me to ask him myself. Hyuck. At the mall." },
-        { s: 'mark', f: 'neutral', t: "I didn't ask him anything. But I said hey. On the guesthouse stairs. Tuesday. He was coming down, I was going up." },
+        { s: 'mark', f: 'neutral', t: "I didn't ask him anything. But I said hey. On your front steps. Tuesday. I was dropping off a cable for Fuuka, he was coming in." },
         { s: 'mark', f: 'serious', t: "He said hey back. That's it. That's the whole story. That's the most words we've had in— that's a lot of words, for us." },
         { s: 'mark', f: 'flustered', t: "Don't make it a thing. I can see you making it a thing." },
-        { n: "She didn't make it a thing. She sat with it, the two of them on a staircase in a building neither of them belonged in, one going up and one going down, one word each, and thought that it was the saddest thing she'd heard all week, and that he'd told it to her like good news." }
+        { n: "She didn't make it a thing. She sat with it, the two of them on the steps of a house one of them lived in now and the other only visited, one going in and one going away, one word each, and thought that it was the saddest thing she'd heard all week, and that he'd told it to her like good news." }
       ] },
       { s: 'mark', f: 'serious', t: "Can I tell you something? And you won't get weird?" },
       { s: 'mark', f: 'neutral', t: "People think I don't mean things. At home. They think I'm a guy who says the nice thing because it's the nice thing to say. I'm very good at the nice thing." },
@@ -640,7 +631,7 @@
           { n: "She kept walking. He kept pace. After half a block he said *cool, cool,* to nobody, softly, and she thought he'd probably taken the not-answering and counted it as something, and she couldn't have said as what." }
         ] }
       ] },
-      { s: 'mark', f: 'neutral', t: "And, you know, at home, there's always something coming up with your family. Some big dinner. Press, your dad's people, you're always so stressed about them, you'd need someone there who isn't— I could go. I could be your plus one. Bodyguard Mark Lee, black tie edition. I'd meet your dad. I'd behave. I'd—" },
+      { s: 'mark', f: 'neutral', t: "And, you know, at home, there's always something coming up with your family. Some big dinner. Press, all those people, you're always so stressed about them, you'd need someone there who isn't— I could go. I could be your plus one. Bodyguard Mark Lee, black tie edition. I'd meet everybody. I'd behave. I'd—" },
       { n: "He stopped. Mid-word. He heard where the sentence had gone, the same way she'd watched him hear it on the fountain's edge and at the station piano, and his hand went to the back of his neck and stayed there, and he laughed, and it was the loud one, the overplayed one, too early and too bright." },
       { s: 'mark', f: 'flustered', t: "That's— forget the dinner. I don't know why I said the dinner. I don't even own a tie. I'd have to borrow one from Jaemin and he'd make me pay rent on it." },
       { choose: [
@@ -716,9 +707,9 @@
       ] },
       { n: "He'd finished it. He told her before she'd sat down, standing up from the bench with his hands out like a man about to catch something, and the concourse was full of the six o'clock crowd and he didn't care, he sat back down and played it for her start to finish, right there, on the piano with the seagulls." },
       { n: "It was beautiful. She hadn't expected it to be beautiful. She'd expected it to be good, because he was good, because everyone said so. She hadn't expected it to sound like someone telling the truth very carefully for four minutes." },
-      { n: "Her five notes were in it. Not hidden. Right at the front, the opening, the line the whole thing climbed out of. And in the middle, the gap, eight bars where the piano dropped to almost nothing and waited." },
-      { ifFlag: 'mark-gap', then: [
-        { s: 'mark', f: 'neutral', t: "The bridge after the gap, that's you too. You hummed into it on the bench. I went home and built the whole bridge off what you did. I didn't change a note." }
+      { n: "Her five notes were in it. Not hidden. Right at the front, the opening, the line the whole thing climbed out of. And in the middle, the crossing, the two stations and the water between them, with the line over it left open for a voice." },
+      { ifFlag: 'mark-crossing', then: [
+        { s: 'mark', f: 'neutral', t: "The line over the crossing, that's you too. You hummed it on the bench. I went back to the guesthouse and built the whole bridge off what you did. I didn't change a note." }
       ] },
       { s: 'mark', f: 'neutral', t: "Your notes are the hook. I built the whole thing off them. They're credited. Obviously. On everything. Your name." },
       { s: 'mark', f: 'serious', t: "I'd never put my name on something that was yours. I want you to know that. I want you to know I know that matters." },
@@ -743,14 +734,14 @@
           { s: 'mark', f: 'neutral', t: "You said the headphones were too much. You were right. They were too much. I wanted them to be too much. I'm working on that." }
         ] }
       ] },
-      { s: 'mark', f: 'neutral', t: "Would you sing it? The gap. Not here. At home. For real. In a studio. I know people— I could—" },
+      { s: 'mark', f: 'neutral', t: "Would you sing it? Over the crossing. Not here. At home. For real. In a studio. I know people— I could—" },
       { s: 'mark', f: 'flustered', t: "...You don't have to. You don't have to decide now. You don't have to decide ever. I'm just asking." },
       { choose: [
         { t: "Not yet.", notes: 3, flag: { 'mark-not-yet': true }, then: [
           { s: 'mark', f: 'neutral', t: "Not yet. Okay. Not yet's not no." },
-          { s: 'mark', f: 'neutral', t: "...I'll wait. I'm actually pretty good at waiting. I've been waiting on this song for two years." }
+          { s: 'mark', f: 'neutral', t: "...I'll wait. I'm actually pretty good at waiting. I've been waiting on this song since the first night." }
         ] },
-        { t: "(Sing the gap. Here. Now.)", notes: 3, flag: { 'mark-sang': true }, stat: { courage: 2 }, then: [
+        { t: "(Sing over the crossing. Here. Now.)", notes: 3, flag: { 'mark-sang': true }, stat: { courage: 2 }, then: [
           { n: "She sang it. Here, now, in Port Island Station at six in the evening with a hundred strangers going home around them, not loud, not hidden. Eight bars. Her voice found the line under his chords like it had always known where it went, and Mark played under her with his eyes shut and didn't look at her once, which she understood was the only way he could get through it." },
           { n: "When it was over a woman in a raincoat clapped, and then three more people, and Mark opened his eyes and looked at the keys and laughed, wet, surprised, and rubbed his face with both hands." },
           { s: 'mark', f: 'sad', t: "...Yeah. That's what it's for. That's what it was always for." }
@@ -761,7 +752,7 @@
           { s: 'mark', f: 'sad', t: "I'd want that too. If I were you." }
         ] }
       ] },
-      { n: "He played it one more time after that, quieter, for nobody, with the gap left empty, and she sat beside him and listened to the empty part, which was, she thought, the part he'd written most carefully of all." },
+      { n: "He played it one more time after that, quieter, for nobody, with nobody singing over the crossing, and she sat beside him and listened to the empty part, which was, she thought, the part he'd written most carefully of all." },
       { phone: [
         { from: 'mark', t: "i put ur name first" },
         { from: 'mark', t: "on the file. on the sheet music. on everything" },
@@ -797,9 +788,9 @@
           { n: "She said nothing. He sat with it. The station went on around them, the river of umbrellas, the bakery's shutter coming down, and for once he didn't fill the silence, which she thought might have been the hardest thing she'd ever watched him do." }
         ] }
       ] },
-      { ifFlag: 'mark-dad-why', then: [
-        { s: 'mark', f: 'serious', t: "You asked me why I wanted to know about your dad. I gave you the small reason." },
-        { s: 'mark', f: 'sad', t: "It wasn't that small. I'm sorry about the small reason." }
+      { ifFlag: 'mark-who', then: [
+        { s: 'mark', f: 'serious', t: "You asked me who I'd play it for. On the bench, with the stopwatch. I gave you the small answer." },
+        { s: 'mark', f: 'sad', t: "It wasn't that small. I'm sorry about the small answer." }
       ] },
       { n: "She stood in front of the piano and looked at him. At the warm open face that wanted so badly to be liked, and was, and at the thing behind it that never stopped counting, and was there too. Both of them. Real. She'd known it on the first night in this station, with a can of milk tea going cold in her hands, before she'd known his name. She knew it now with his whole name, with everything, and it didn't make either of them less true." },
       { ifFlag: 'mark-pencil', then: [
@@ -830,7 +821,7 @@
           { n: "She sat down beside him on the bench and put her hands on the keys and played the four notes, badly, and he played the fifth, and then the chord, and it opened, and they played the whole thing through together, the way they'd never once done at home, and at the end he didn't look at her like a sum. He just looked at her." },
           { s: 'mark', f: 'neutral', t: "...Yeah. Okay. Yeah." }
         ] },
-        { t: "Ask me again. The gap.", ifFlag: 'mark-ask-again', notes: 3, then: [
+        { t: "Ask me again. The crossing.", ifFlag: 'mark-ask-again', notes: 3, then: [
           { s: 'mark', f: 'surprised', t: "..." },
           { s: 'mark', f: 'neutral', t: "...You remember me now. Okay. So I'm asking. Would you sing it?" },
           { ifFlag: 'mark-home', then: [
@@ -840,8 +831,8 @@
           ], else: [
             { s: 'solar', f: 'neutral', t: "I can't sing it where I'm going, Marky." },
             { s: 'mark', f: 'sad', t: "...Yeah. No. I figured. I think I figured." },
-            { s: 'solar', f: 'neutral', t: "Leave the gap in. Don't give it to anyone else." },
-            { s: 'mark', f: 'serious', t: "...Okay. I won't. It'll just be empty. Eight bars of nothing, every time. People are going to think I forgot something." },
+            { s: 'solar', f: 'neutral', t: "Leave it empty. Don't give it to anyone else." },
+            { s: 'mark', f: 'serious', t: "...Okay. I won't. It'll just be the train. Eight bars of the train going over the water, every time, and nobody on it. People are going to think I forgot something." },
             { n: "He laughed, and it broke in the middle, and he let it." }
           ] }
         ] }
@@ -892,7 +883,7 @@
       ] },
       { n: "At the corner the cat watched them go by with the expression of someone who'd seen this exact walk a dozen times and had opinions about every one of them." }
     ] },
-    { title: 'the gap, out loud', place: 'Paulownia Mall · Karaoke', time: 'Evening', music: 'joy', scene: [
+    { title: 'out loud', place: 'Paulownia Mall · Karaoke', time: 'Evening', music: 'joy', scene: [
       { n: "Somebody had booked a karaoke room, and somebody had told somebody, and by the time Solar arrived there were too many people in a room built for four, and a tambourine with half its jingles missing, and Mark in the corner by the machine flipping through the song book with the concentration of a man defusing something." },
       { ifMet: ['hyein'], then: [
         { s: 'hyein', f: 'happy', t: "SOL. Finally. He won't go first. He's a music major and he won't go first. That's like a chef who won't eat." },
@@ -977,9 +968,9 @@
       ] },
       { s: 'mark', f: 'neutral', t: "The middle's the hard part. The middle's Sol's." },
       { ifFlag: 'mark-sang', then: [
-        { n: "He didn't ask her. He'd stopped asking. He just played up to the gap and left it open, and looked at the keys, and waited, the way you'd hold a door." },
+        { n: "He didn't ask her. He'd stopped asking. He just played up to the crossing and left the line over it open, and looked at the keys, and waited, the way you'd hold a door." },
         { choose: [
-          { t: "(Sing the gap for her.)", notes: 3, then: [
+          { t: "(Sing the crossing for her.)", notes: 3, then: [
             { n: "She sang it. Eight bars, low, for a small woman in a grey uniform leaning on a mop, in a station going home around them. Mrs. Hamada closed her eyes for the whole of it, and at the end she clapped once, the way she had in December, and bowed, and took her mop and went." },
             { s: 'mark', f: 'sad', t: "...She's going to hum your part now. All over the station. Every night. That's so— okay. I need a minute." }
           ] },
@@ -994,7 +985,7 @@
             { s: 'mark', f: 'neutral', t: "That's the most anyone's ever gotten out of Mrs. Hamada. You know that, right? The bread one doesn't even pat me." }
           ] },
           { t: "(Let Mark play it without the middle.)", notes: 2, then: [
-            { n: "He played it with the gap left empty. Mrs. Hamada listened to the empty part with her head on one side, and at the end she said, very kindly, that it was a nice song, and that it was missing something, and that he'd find it." },
+            { n: "He played it with nobody over the crossing. Mrs. Hamada listened to the empty part with her head on one side, and at the end she said, very kindly, that it was a nice song, and that it was missing something, and that he'd find it." },
             { s: 'mark', f: 'sad', t: "...Yeah. I know where it is. It's sitting right here." }
           ] }
         ] }

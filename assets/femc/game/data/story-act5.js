@@ -238,59 +238,76 @@ window.FEMC_STORY_KIT.badEnding = [
     { n: "On the walk home she passed the station and didn't go up. She stood at the bottom of the stairs for a long time looking at the lit platform, and didn't go up, and didn't know why, except that for the first time since April she was afraid of what she'd find on the bench, and more afraid of what she wouldn't." }
   ] },
 
-  { id: 'a5-jungwon-awakens', date: '11/28', slot: 'evening', title: 'a veil and a poster', place: 'Tartarus · Lobby', time: 'The Dark Hour', scene: [
-    { music: 'tartarus' },
-    { n: "Jungwon had asked to come. Not argued. Asked. In the lounge, to Mitsuru, with a short formal bow, in the voice of somebody making a request to a council, and he'd laid out his reasons in order, numbered, and Mitsuru had listened to all four and then said yes before he'd finished the fourth, and he had looked, for a moment, almost disappointed not to get to say it." },
-    { n: "Haechan had been in the lounge doorway when he asked. He hadn't said anything. He'd watched Jungwon bow, with no expression at all, and then gone out through the front door, and Solar had heard the latch settle, very, very quietly." },
+  { id: 'a5-jungwon-awakens', date: '11/28', slot: 'evening', title: 'a veil and a poster', place: 'Iwatodai Dorm · Lounge', time: 'Evening', scene: [
+    { music: 'mystery' },
+    { n: "Jungwon's watch started at eleven fifty-eight." },
+    { n: "Solar didn't see it. She heard about it afterward, in pieces, the way you hear about something that happened in a room you weren't in. That he'd been at his desk at the guesthouse with a stack of somebody else's math homework, correcting it in pencil because there was nothing else here that needed correcting. That the steel watch on his left wrist, the one a little too big for him, with one link taken out so it would fit, the one that had stopped at midnight on the night he came through and hadn't moved a second since, had ticked. Once. And then gone on ticking. Backward." },
+    { n: "That he'd put his pencil down, and put his coat on, and walked the whole way to the dorm in the cold, and rung the bell, which nobody ever did, and when Junpei opened the door he'd said good evening, and asked for Mitsuru, very politely, and was shaking so hard that Junpei had stepped aside without a single joke." },
+    { place: 'Iwatodai Dorm · Lounge', time: 'Night', music: 'mystery' },
+    { s: 'jungwon', f: 'neutral', t: "I apologize for the hour. I'm not here to ask to come. I've seen how that conversation goes, and I don't think there's time for it." },
+    { s: 'jungwon', f: 'serious', t: "Whatever's in the tower tonight, I believe it's mine. Both of it. I can hear two of them. I think they're looking for me." },
+    { n: "He held up his wrist. Mitsuru looked at the watch, at the second hand going round the wrong way, small and steady and terrible, and didn't say anything for a long moment." },
+    { n: "Haechan was on the stairs. He'd come halfway down at the sound of the bell and stopped there, in the dark above the lounge light, with one hand on the banister, the way he stopped everywhere in this building, halfway, as if he hadn't decided yet whether he lived in it. He was looking at the watch too." },
+    { s: 'haechan', f: 'neutral', t: "Both of them." },
+    { n: "Jungwon turned his head. Not all the way. Just enough." },
+    { s: 'jungwon', f: 'neutral', t: "You can hear them." },
+    { s: 'haechan', f: 'neutral', t: "Every night." },
+    { n: "That was all. Neither of them said anything else. But something went between the stairs and the lounge that Solar, standing by the door with her armband half on, felt go past her like a draft. Two boys who couldn't stand each other, who had both crossed twice to get here, looking at each other for one second like the only two people in the building who knew exactly what the other one was carrying." },
+    { n: "Then Haechan went back up the stairs. His door closed at the far end of the top floor, very quietly. Mitsuru picked up her Evoker." },
+    { s: 'mitsuru', f: 'neutral', t: "Stay beside Solar." },
     { place: 'Tartarus · The Dark Hour', time: 'The Dark Hour', bg: 'tartarus-scene' },
     { dark: true },
-    { music: 'mystery' },
-    { s: 'fuuka', f: 'surprised', t: "Two floors. Two at once, one above the other, and they're... pulling at each other. Like they want to be the same floor. Solar, you can only reach one tonight before the other closes. I'm sorry. I don't know how I know that." },
-    { n: "Both rang at once. The jade ring and the star pin, together, in her chest, two pulls in two directions, and beside her Jungwon put his hand to his wrist, to the watch that had stopped at midnight, as though he'd heard them too." },
+    { music: 'tartarus' },
+    { s: 'fuuka', f: 'surprised', t: "Two floors. Two at once, one above the other, and they're... pulling at each other. Like they want to be the same floor. And they're both reaching for him. Not for Solar. For Jungwon." },
+    { s: 'fuuka', f: 'sad', t: "Solar, you can only reach one tonight before the other closes. I'm sorry. I don't know how I know that." },
+    { n: "Both rang at once. The jade ring and the star pin, together, in her chest, two pulls in two directions, and beside her Jungwon put two fingers to his wrist, to the watch going backward, as though he'd heard them too. As though they were ringing in him." },
     { choose: [
       { t: "(Follow the jade ring.)", flag: { 'xroad2-S': true }, tally: { crossroad2: 'S', 'lean.S': 1, 'jungwon.S': 1 }, then: [
         { n: "The floor was a pier at low tide. Mud to the horizon under sodium lights, the sea gone out so far it was only a line, boats lying on their sides, the smell of salt and diesel and the cold coming off the flats. And standing out on the mud, waiting, a bride." },
-        { n: "That was what it was. A tall shape in white, a veil to the ground, lace and pearl and a long train dragging through the gray mud behind it, and under the veil, where a face should be, nothing. A wedding dress with nobody in it. It turned toward them. It turned toward Jungwon, and the veil lifted, slightly, as if in greeting, as if it knew him." },
+        { n: "That was what it was. A tall shape in white, a veil to the ground, lace and pearl and a long train dragging through the gray mud behind it, and under the veil, where a face should be, nothing. A wedding dress with nobody in it. It turned toward them. It turned toward Jungwon, and the veil lifted, slightly, as if in greeting, as if it knew him. As if it had been waiting for him at the end of an aisle." },
         { fragment: 'strangers-low-tide' },
         { n: "Solar knew the mud. She knew this tide. She could feel it in her teeth, the sea a mile out and the whole long night of the low tide in front of her, the night she never slept. She knew the dress, too, though she'd never worn it. She knew the date it was for." }
       ] },
       { t: "(Follow the star pin.)", flag: { 'xroad2-H': true }, tally: { crossroad2: 'H', 'lean.H': 1, 'jungwon.H': 1 }, then: [
-        { n: "The floor was a student council room at night. Long table, folders, a whiteboard covered in someone's precise neat handwriting, and on the table, in a pool of lamplight, a math worksheet. Covered in corrections. Every wrong answer circled in somebody else's neat pencil, and the right way written out beside it, step by step, patient, with a small check mark at the end of each one like a pat on the head." },
+        { n: "The floor was a student council room at night. Long table, folders, a whiteboard covered in someone's precise neat handwriting, two names written at the top of it under two titles, and on the table, in a pool of lamplight, a math worksheet. Covered in corrections. Every wrong answer circled in somebody else's neat pencil, and the right way written out beside it, step by step, patient, with a small check mark at the end of each one like a pat on the head." },
         { fragment: 'hoax-math-homework' },
-        { n: "And standing by the whiteboard, waiting, a poster. A campaign poster the size of a door, glitter and bubble letters and a smiling face, and it peeled itself off the wall and stood up on paper legs and turned, and the face on it was her face, and the smile was the practiced one, and it was looking at Jungwon." }
+        { n: "And standing by the whiteboard, waiting, a poster. A campaign poster the size of a door, glitter and bubble letters and a smiling face, and it peeled itself off the wall and stood up on paper legs and turned, and the face on it was her face, and the smile was the practiced one, and it was looking at Jungwon the way a vice president looks at a president across a long table: waiting to be told what to do." }
       ] }
     ] },
-    { n: "Then the other floor came through. It came up through the one they were standing on like a photograph developing over another photograph, and the two Shadows folded together, the veil and the poster, the bride and the candidate, into one shape. A girl made of a white dress and a glitter smile, both at once, neither of them her, both of them the person somebody needed her to be." },
-    { n: "It reached for Jungwon. And Solar saw, the way she'd seen with Jihoon and with Minji, the memories start to come out of him. Not slips of paper. Not film. Small precise things, like pieces lifted off a board. A croissant with red icing. A dog on a leash. A girl at a dinner table saying the cutting thing once and letting it sit. A girl asleep on a sofa with a worksheet on her chest. A hand on a ledge, holding a ladder." },
-    { battle: { id: 'memory-jungwon', kind: 'scripted', script: 'memory-jungwon', segment: 1, title: 'Tartarus · Two Floors at Once', desc: 'A bride with no face and a poster with her face, folded into one Shadow. It wants everything Jungwon remembers.', notes: 'Memory floor (strangers + Hoax, crossroad 2). Two-phase Shadow (Veil / Poster) that swaps weakness each turn. Segment 1 ends with outcome interrupt; the scene plays Jungwon’s awakening; segment 2 has Jungwon in the party.', forced: true } },
-    { n: "He didn't fall to his knees. Of course he didn't. He stood perfectly straight in the middle of the floor with his hands at his sides while the pieces lifted off him one by one, and his face was very still, and he got more polite. She watched it happen. He bowed to the Shadow. A small, formal bow." },
-    { s: 'jungwon', f: 'neutral', t: "Excuse me. I'm afraid those aren't yours." },
-    { s: 'jungwon', f: 'serious', t: "I've spent my whole life being told what was expected of me. Which name to answer to. Which girl to marry. Which office to run for. I've done every one of them perfectly. I've never once been asked what I'd prefer." },
-    { s: 'jungwon', f: 'serious', t: "So I'll tell you. I'd rather remember. All of it. Both of it. Every version of her I've been lucky enough to know." },
-    { s: 'jungwon', f: 'neutral', t: "Please give them back." },
+    { n: "Then the other floor came through. It came up through the one they were standing on like a photograph developing over another photograph, mud under the council table, lamplight on the tide, and the two Shadows folded together, the veil and the poster, the bride and the vice president, into one shape. A girl made of a white dress and a glitter smile, both at once, neither of them her, both of them the person somebody needed her to be." },
+    { n: "And the floor split. Right down the middle of him." },
+    { n: "She saw it happen. A seam of light opening up the center of the hall, the pier on one side and the council room on the other, and Jungwon standing exactly on it, one foot in each, and both halves pulling. The memories started to come out of him, and they came out in two colors, and they went two ways. A croissant with red icing. A dog on a leash. A worksheet. A hand on a ladder. All of it peeling off one side of him toward the poster. A dinner over the sea. A watch with a link taken out. A girl at a table saying the cutting thing once and letting it sit. All of it peeling off the other side toward the veil." },
+    { s: 'fuuka', f: 'surprised', t: "It's making him choose! It wants him to be one or the other! If he picks a side, the other half of him goes, all of it, everything he remembers from there, Solar, everything he remembers of you from there!" },
+    { battle: { id: 'memory-jungwon', kind: 'scripted', script: 'memory-jungwon', segment: 1, title: 'Tartarus · Two Floors at Once', desc: 'A bride with no face and a poster with her face, folded into one Shadow. It wants Jungwon to be only one of the boys he is.', notes: 'Memory floor (strangers + Hoax, crossroad 2). Two-phase Shadow (Veil / Poster) that swaps weakness each turn. Segment 1 ends with outcome interrupt; the scene plays Jungwon’s awakening; segment 2 has Jungwon in the party.', forced: true } },
+    { n: "He didn't fall to his knees. Of course he didn't. He stood perfectly straight on the seam in the middle of the floor with his hands at his sides while both halves pulled, and his face was very still, and he got more polite. She watched it happen. He bowed to the Shadow. A small, formal bow, exactly to its center, so that neither half of it could claim it." },
+    { s: 'jungwon', f: 'neutral', t: "Excuse me. I'm afraid you've misunderstood the assignment." },
+    { s: 'jungwon', f: 'serious', t: "In one life, I'm the boy who ran against her and won, and then made her my vice president, because there was nobody else in that school I'd trust to tell me when I was wrong. In the other, I'm the son who'll marry her in April because two families shook hands over a table. I didn't ask for that one. I asked for the first." },
+    { s: 'jungwon', f: 'serious', t: "I have been both of them every hour since I came through that door. I don't put one down to carry the other. I'm not built like that. Neither is she. Neither, God help me, is he." },
+    { s: 'jungwon', f: 'neutral', t: "So I won't choose. And I won't let you make her choose. Give them back. Both halves. They were never two." },
     { cg: 'searchers-jungwon-awakening' },
-    { n: "Something came up out of him, very quiet. Not loud like Jihoon's, not a light like Minji's. A shape that built itself, the way a bridge is built, span by span, very fast, very exact, a figure of command and stillness standing over him with its arms crossed, and every piece that had lifted off him stopped in the air, mid-flight, and went back, one at a time, each into its exact place, the way you'd put pieces back on a board after someone's knocked it." },
+    { n: "Something came up out of him, very quiet. Not loud like Jihoon's, not a light like Minji's. A shape that built itself the way a bridge is built, span by span, very fast, very exact, a figure of command and stillness standing over him with its arms crossed, and where it stood, the seam in the floor closed. Mud and lamplight knitted together under his feet. Every piece that had lifted off him stopped in the air, mid-flight, both colors, and came back, one at a time, each into its exact place, the way you'd put pieces back on a board after someone's knocked it, and when the last one landed, the watch on his wrist stopped going backward, and went still." },
     { cg: null },
     { flag: { 'awake-jungwon': true } },
     { join: 'jungwon' },
     { battle: { id: 'memory-jungwon', kind: 'scripted', script: 'memory-jungwon', segment: 2, title: 'Tartarus · Two Floors at Once', desc: 'Jungwon has a Persona. Finish it.', notes: 'Segment 2: Jungwon joins the party (party id jungwon). His Persona is pending design with Kat; use placeholder skills.', forced: true } },
     { music: 'night' },
     { n: "Afterward the floor faded, mud and lamplight and glitter, and he was standing in the checkerboard hall straightening his cuffs, exactly, one and then the other. His hands were shaking. He saw her see it. He put them behind his back." },
-    { s: 'jungwon', f: 'neutral', t: "I apologize. That was very undignified." },
+    { s: 'jungwon', f: 'neutral', t: "I apologize. That was very undignified. And I said a great deal more than I meant to, in front of a great many people." },
     { choose: [
       { t: "That was the bravest thing I've ever seen.", then: [
         { n: "He looked at her. The dimples didn't come. His face went completely still instead, which she'd learned by now, slowly, reading him like a language, was what his face did when something meant too much to be polite about." },
         { s: 'jungwon', f: 'neutral', t: "...Thank you." },
         { n: "He didn't say anything else. He walked beside her all the way out of the tower, close, closer than he usually walked, and at the bottom of the stairs his hand brushed hers, once, and didn't apologize." }
       ] },
-      { t: "Both of it?", then: [
-        { s: 'jungwon', f: 'neutral', t: "Both of it. I'm not going to explain that. I'm not sure I could." },
-        { s: 'jungwon', f: 'neutral', t: "You'd understand, I think. You're the only person who would." }
+      { t: "Two lives?", then: [
+        { s: 'jungwon', f: 'neutral', t: "Two. I don't know how. I've stopped asking how. I just know I wake up as both of them and go to sleep as both of them." },
+        { s: 'jungwon', f: 'neutral', t: "You'd understand, I think. You're the only person who would. You, and one other, and I would sooner walk back into that floor than tell him so." }
       ] },
       { t: "(Take his shaking hand.)", then: [
         { n: "She reached behind him and took it. He let her. His hand was cold and thin and very still once she had it, as if all it had needed was somewhere to go. He didn't look at her. He looked straight ahead at the stairs, perfectly composed, and didn't let go until the bottom." }
       ] }
     ] },
+    { n: "When they came in at two, the light was on at the far end of the top floor, a thin line under one door. It went off as they came up the stairs. Jungwon looked at it, and at the watch on his wrist, which said a minute to midnight now and stayed there, and said good night to everyone, separately, and walked back to the guesthouse alone." },
     { dark: false }
   ] },
 
@@ -334,7 +351,7 @@ window.FEMC_STORY_KIT.badEnding = [
     { place: 'Tartarus · The Dark Hour', time: 'The Dark Hour', bg: 'tartarus-fromadistance' },
     { dark: true },
     { music: 'fullmoon' },
-    { n: "Everyone went. S.E.E.S., and the four who could fight now, Jihoon and Minji and Jungwon and Haechan, who'd come down the stairs at eleven-fifty without a word, dressed, with nothing in his hands, and Mitsuru had looked at him and decided not to say anything. The others waited in the lounge. Yunjin had argued. Hyein had cried. Hanni had made them both tea." },
+    { n: "Everyone went. S.E.E.S., and the three who could fight now, Jihoon and Minji and Jungwon. And Haechan, who'd come down the stairs at eleven-fifty without a word, dressed, with nothing in his hands, the first time he'd come anywhere near the tower, and Mitsuru had looked at him and decided not to say anything. The others waited in the lounge. Yunjin had argued. Hyein had cried. Hanni had made them both tea." },
     { n: "They heard it on the fortieth floor. The horn. Long and low, coming up through the tower from below, through the stone, into their feet." },
     { n: "Then rails. Rails where there had never been rails, coming up out of the checkerboard floor of the tower like something growing, black iron, gleaming, curving away up the corridor and round the corner and up, spiraling, toward the top of the tower and the moon. And on them, coming up from the dark below, slow, unhurried, its lantern windows lit gold, the train." },
     { battle: { id: 'tartarus-memory', op: 'tartarus-memory', title: 'Full Moon Operation', desc: 'The rails come up through the tower and the train comes with them, and things climb out of its shadow to keep them off the tracks.', notes: 'Scripted full-moon fight in Tartarus (12/2). No arcana Shadow: the train’s shadows (guards of the kept). The train itself cannot be targeted. Win to continue.', forced: true, kind: 'operation' } },
@@ -364,47 +381,67 @@ window.FEMC_STORY_KIT.badEnding = [
     { dark: false }
   ] },
 
-  { id: 'a5-haechan-awakens', date: '12/5', slot: 'evening', title: 'grandmaster', place: 'Tartarus · Lobby', time: 'The Dark Hour', scene: [
-    { music: 'tartarus' },
-    { n: "Haechan didn't ask to come. He was at the foot of the tower at midnight the way he'd been everywhere since November, half a step behind her and to the side, and nobody had told him he could and nobody had told him he couldn't, and Mitsuru had given up on both a week ago." },
+  { id: 'a5-haechan-awakens', date: '12/5', slot: 'evening', title: 'full sun', place: 'Iwatodai Dorm · Command Room', time: 'Evening', scene: [
+    { music: 'mystery' },
+    { n: "Haechan didn't go into the tower. He'd gone once, the night the train came through, with nothing in his hands, and had come back down looking at nobody, and hadn't gone again. That was the one thing about him the whole dorm had learned to rely on. He'd go anywhere else Solar went, half a step behind and to the side, the library, the strip, the station, the roof at three in the morning, as if it were a place he'd been assigned. But at a quarter to twelve, when the armbands came out, he went up to the top floor and shut his door, and Mitsuru had stopped asking him a week ago, and nobody else had ever dared start." },
+    { n: "So he wasn't there when Fuuka found the floor." },
+    { s: 'fuuka', f: 'surprised', t: "It's two places. It's... it's the same as Jungwon's, two floors at once, but these aren't pulling apart. They're on top of each other. A roof. And under the roof, where the ground should be, water." },
+    { s: 'fuuka', f: 'sad', t: "And there's something up there that reads exactly like Solar. Exactly. I keep losing track of which one's her." },
     { place: 'Tartarus · The Dark Hour', time: 'The Dark Hour', bg: 'tartarus-scene' },
     { dark: true },
-    { music: 'mystery' },
-    { n: "The floor was dark and full of screens. A room humming with computers, RGB light crawling along the desks, five chairs in a row, a whiteboard with a schedule on it. And past it, through a door that shouldn't have been there, a small room that smelled of soap and warm cotton, a washer and a dryer, a flashlight on the floor." },
-    { n: "Two rooms at once. A gaming lab and a laundry room. He stopped in the doorway between them, and she watched him see both, and his face did nothing at all." },
-    { n: "On every screen in the lab, a girl in a fox mask was standing in a game, very still, waiting, with a bell at her throat. Then she stepped out of the screens. All of them at once. A fox girl made of light and static, as tall as the ceiling, with a hundred little blades of light fanned between her fingers, and a bell that didn't ring." },
-    { n: "It looked at Haechan. It knew him. It was, Solar understood with a strange cold drop, playing her. Her main. Her hands. The way she moved. A mirror of her, and it raised its blades at him the way she'd have raised them, and it started to take." },
-    { n: "Not memories you could read. Things that weren't words. A song with no ending. The weight of somebody asleep on his shoulder. A cracked lid on a Discman. A name said once mid-laugh. A can held out sideways. Nineteen stitches. All of it lifting off him in little blades of light and going into the fox's hands, and his face, as it went, starting, very slightly, to go blank in a new way." },
-    { battle: { id: 'memory-haechan', kind: 'scripted', script: 'memory-haechan', segment: 1, title: 'Tartarus · Mirror Match', desc: 'A Shadow that plays exactly like Solar does, taking everything Haechan has of her.', notes: 'Memory floor (Runners + strangers). The fox Shadow mirrors Solar’s own skills and support timing. Segment 1 ends with outcome interrupt; the scene plays Haechan’s awakening; segment 2 has Haechan in the party.', forced: true } },
-    { n: "He didn't say anything. That was how she knew. Everybody else had said something. Jihoon had shouted. Minji had argued. Jungwon had bowed. Haechan didn't make a sound. He went quiet, the total quiet, the quiet she'd only seen once, in a laundry room at three in the morning, and she understood all at once that this was what he looked like afraid." },
-    { n: "Then he looked at the fox. Her moves. Her timing. Her hands." },
-    { n: "And the corner of his mouth went up. Flat. Humorless. Scraping against something." },
-    { s: 'haechan', f: 'neutral', t: "You play her like you read it off a wiki." },
-    { s: 'haechan', f: 'serious', t: "I've watched her play for... I've watched her. You're a half second late on the bell. You always will be. You don't know when she's going to throw it, because you've never seen her look at the person she's throwing it to." },
-    { s: 'haechan', f: 'serious', t: "I have." },
-    { s: 'haechan', f: 'neutral', t: "...You don't get those. I'd rather remember." },
+    { music: 'tartarus' },
+    { n: "It was a rooftop. Tar paper underfoot, soft with old rain. A low concrete ledge. A ladder bolted to a brick wall. A campus spread out somewhere below, bare trees and a bell tower and a few lit windows, and a breeze that smelled of leaves and somebody's lighter. Solar knew it the way she knew the ache in her own knees. She'd sat on that ledge. She'd sat on it with her legs over the drop." },
+    { n: "Except there was no campus below the ledge. There was the sea. Black, all the way down, high tide, slapping at the bottom of a wall that should have been brick and was harbor stone, green with weed, the smell of salt and diesel coming up it like breath. A rooftop in one life, hung over the water of another." },
+    { n: "And on the ledge, waiting, a girl." },
+    { n: "Her height. Her hair, pinned up the way her hands pinned it every morning. A fox mask pushed up on her head, and a bell at her throat that didn't ring, and a fan of little blades of light held loose between her fingers the way Solar held her Evoker, easy, practiced, like she'd been doing it all her life. She turned around. She had Solar's face. Not the practiced one. The real one, the one Solar never saw in a mirror, tired and frightened and very polite." },
+    { n: "It smiled at her. It moved the way she moved. A beat early." },
+    { battle: { id: 'memory-haechan', kind: 'scripted', script: 'memory-haechan', segment: 1, title: 'Tartarus · Mirror Match', desc: 'A Shadow that plays exactly like Solar does, a beat early, on a rooftop hung over the sea.', notes: 'Memory floor (Runners + strangers). The fox Shadow mirrors Solar’s own skills and support timing. Segment 1 ends with outcome interrupt; the scene plays Haechan’s awakening; segment 2 has Haechan in the party.', forced: true } },
+    { n: "They couldn't touch it. It knew every heal before she cast it and every guard before she raised it, because it was her, and it was always there first, a beat early, a beat early, until Akihiko was down on one knee and Junpei was down altogether and Mitsuru was shouting orders into a fight that had already read them. And Solar, every time she lifted the Evoker, felt a little more of herself go across the roof to the girl on the ledge, as if it were filling up on her. As if, when it had enough, there wouldn't need to be two of them." },
+    { n: "It didn't attack her, at the end. It just stepped off the ledge to meet her, very gently, and took her by the wrist, and leaned back." },
+    { n: "And she went over." },
+    { n: "Off the ledge. Into the air above the black water, and her stomach went through the floor of her, and the sea came up, and she knew, she knew it in every bone she had, that she couldn't swim. That she'd never been able to. That this was the water that had been waiting for her all her life." },
+    { s: 'fuuka', f: 'surprised', t: "SOLAR!" },
+    { n: "Her wrist stopped." },
+    { n: "Not the girl's hand. Somebody else's. Somebody had her by the wrist from above, the way you catch something you'd never in your life let hit the floor, and her whole weight came down on that one hand and it held, and she hung there over the sea with her shoulder screaming and looked up." },
     { cg: 'searchers-haechan-awakening' },
-    { n: "It came up out of him like the sun comes up over water. No warning. One second the dark and the screens and the fox, and the next, light, all of it, gold and enormous and much too hot, a shape standing over him so bright she couldn't look at it directly. Every blade of light the fox had taken turned in the air and came back to him, fast, the way a bell comes back to a hand, and he caught them without looking." },
+    { n: "Haechan. Flat on his stomach on the tar paper, half over the ledge, one hand locked round her wrist and the other on the concrete, holding both of them. No Evoker. No armband. No coat. He was breathing like he'd run the whole tower, because he had, Fuuka was saying, somewhere far away in Solar's ear, half sobbing, he came in the door at the bottom alone and he didn't stop, he didn't stop once, two hundred floors, nobody told him, he just came." },
+    { s: 'haechan', f: 'serious', t: "Look at me. Not down. Me." },
+    { n: "She looked at him. Above him, on the ledge, the girl with her face lifted the little blades of light, all of them, and turned them toward his hand." },
+    { s: 'haechan', f: 'neutral', t: "Twice now somebody's told me to keep you alive. Your father, in one life. Nobody, in the other." },
+    { s: 'haechan', f: 'serious', t: "I'd have done it anyway. Both times." },
+    { n: "He didn't look up at the thing above him. He didn't have to. He looked at Solar, hanging over the water with her wrist in his fist, and the corner of his mouth moved, flat, humorless, scraping against something." },
+    { s: 'haechan', f: 'neutral', t: "It's a beat early. You're never early. You throw it exactly when they need it, half a second before they know they're dying. It doesn't know that, because it's never once watched you look at the person you're throwing it to." },
+    { s: 'haechan', f: 'serious', t: "I have." },
+    { n: "Then the sun came up in the tower." },
+    { n: "No warning. One second the dark and the black water and the blades coming down, and the next, light, all of it, gold and enormous and much too hot, pouring up out of him like the sun comes up over water, a shape standing over the ledge so bright she couldn't look at it directly. A figure of fire and gold with a chariot of light at its back, the kind of sun that goes down every night and comes back every morning, without fail, without being asked. Every blade the fox had raised went to light and fell apart in the air like sparks off a fire." },
+    { n: "And Haenim answered it." },
+    { n: "Solar didn't call her. She came anyway, up out of Solar's chest like breath on a cold morning, veiled and gold and pink, and turned toward the light over the ledge, and the two of them stood in the same sky for one second, two suns, which isn't allowed, which happened anyway. On Haenim's sash the bell and the jade ring rang together, the way they had on the bridge the night he came. And on the summon card that hung in the air in front of Solar's eyes, the name that had glitched and torn between scripts every single time since April held still. Spelled whole. Once." },
+    { n: "He hauled her up. One pull, like she weighed nothing, over the ledge and onto the tar paper and into the front of his shirt, and held on with his whole arm around her for exactly as long as it took her to breathe, and then let go, and stood, and turned to the fox on the ledge with her face." },
     { cg: null },
     { flag: { 'awake-haechan': true } },
     { join: 'haechan' },
     { battle: { id: 'memory-haechan', kind: 'scripted', script: 'memory-haechan', segment: 2, title: 'Tartarus · Mirror Match', desc: 'Haechan has a Persona. He doesn’t intend to lose a mirror match.', notes: 'Segment 2: Haechan joins the party (party id haechan). His Persona is pending design with Kat; use placeholder skills. He refuses to lose: give him a guaranteed last hit on the fox.', forced: true } },
     { music: 'night' },
-    { n: "Afterward the two rooms went, the lab and the laundry, folding away into each other like a letter into an envelope, and he was standing in the tower's hall with his hands in his jacket pockets as if nothing had happened, and Junpei was saying *DUDE* over and over, and Jihoon was saying his was still bigger, and Haechan wasn't listening to either of them." },
-    { n: "He was looking at her." },
+    { n: "He took the last shot. Of course he did. One clean line of light across the roof, and the girl with her face came apart into ash and blew out over the black water, and the water went down, and the roof went thin as paper, and they were standing in the tower's checkerboard hall again, all of them, breathing." },
+    { n: "Junpei was saying *DUDE* over and over from the floor. Jihoon was saying his was still bigger, with no conviction at all. Akihiko, with one arm across his ribs, was looking at Haechan with an expression Solar couldn't read and didn't try to, and then he nodded, once, the way you nod at somebody who got there first, and looked away." },
+    { n: "Haechan wasn't listening to any of them. He'd put his hands in his pockets as if nothing had happened, and his right hand, she noticed, was shaking in there. He was looking at her." },
     { choose: [
-      { t: "You've watched me play?", then: [
-        { s: 'haechan', f: 'neutral', t: "Didn't say that." },
-        { n: "He said it flat. Then he looked away, down the hall, and the tips of his ears had gone red, and he didn't say anything else, and she understood that he had aimed every word of it, and that he'd known exactly what he'd said." }
+      { t: "Donghyuck.", flag: { 'hc-awaken-R': true }, tally: { 'haechan.R': 1 }, then: [
+        { n: "She didn't know where it came from. She'd heard Jungwon say it at breakfast, once, a month ago, like an accusation. It didn't sound like that in her mouth. It came out of her quiet and certain, in the voice she used for the things that mattered, like a door she was opening on purpose." },
+        { n: "He went very still. All of him. Then, very carefully, the way you'd put something fragile back on a shelf, he looked away, down the hall." },
+        { s: 'haechan', f: 'neutral', t: "...Yeah. You don't get to say that one in front of people, princess." },
+        { n: "His ears had gone red. She heard, under the flatness, that he'd been waiting a very long time for her to say it at all." }
       ] },
-      { t: "Half a second late?", then: [
-        { s: 'haechan', f: 'neutral', t: "Half a second. You throw it before they know they're dying. Every time. It's the most annoying thing I've ever watched." },
-        { n: "He said annoying the way other people said beautiful. She heard it. She thought he probably meant her to." }
+      { t: "You were supposed to be keeping your distance.", flag: { 'hc-awaken-S': true }, tally: { 'haechan.S': 1 }, then: [
+        { s: 'haechan', f: 'neutral', t: "I go where I'm walked, agasshi." },
+        { n: "He said it like a joke, flat, the way he said everything, and it landed in her hard and familiar and furious, like a hand caught around a wrist, which it had been, ten minutes ago, over the sea." },
+        { s: 'haechan', f: 'neutral', t: "Distance was for the dorm. This isn't the dorm." }
       ] },
       { t: "(Say nothing. Stand next to him.)", then: [
         { n: "She stood next to him. Half a step to the side, the way he always stood next to her. He didn't look at her. After a while his shoulder touched hers, just barely, and stayed, and that was all, and it was the loudest thing he'd said all night." }
       ] }
     ] },
+    { n: "Mitsuru gave him an Evoker the next morning, at the breakfast table, without a word. He looked at it for a long time, and then put it in his jacket pocket, on the left side, so his right hand stayed free, and went back upstairs. The door at the end of the top floor stayed open that day for the first time since he'd moved in. Nobody said anything about it. Everybody noticed." },
     { dark: false }
   ] },
 
@@ -491,7 +528,15 @@ window.FEMC_STORY_KIT.badEnding = [
         { n: "Then the drawer was the dorm's drawer, dish towels and a broken whisk, and there was no bag. But the pot was still on the stove. She turned the flame off before it burned, the way you would for anyone, and filled the second bowl, and set it at the empty place, carefully, the way you'd lay a place for somebody who was late. In the morning, the bowl was clean and dry and back in the cupboard, and nobody in the dorm would say who'd washed it." }
       ] }
     ] },
-    { n: "That night the other charm was quiet. She lay awake and listened for it, the one she hadn't followed, and it was there, but further. Like the next station down the line. Still running. Still lit. Just not where she was." }
+    { n: "That night the other charm was quiet. She lay awake and listened for it, the one she hadn't followed, and it was there, but further. Like the next station down the line. Still running. Still lit. Just not where she was." },
+    // Haechan's lean, readable by links/haechan.js: hc-lean-R or hc-lean-S (never both). Majority of the three story moments
+    // that ask which register she answers him in (11/4 the names, 12/5 after the awakening, tonight); a tie goes to tonight.
+    { flag: { 'hc-lean-R': false, 'hc-lean-S': false } },
+    ...window.FEMC_STORY_KIT.anyOf('hc-lean-R', [['hc-there-R', 'hc-awaken-R'], ['hc-there-R', 'xroad3-R'], ['hc-awaken-R', 'xroad3-R']]),
+    ...window.FEMC_STORY_KIT.anyOf('hc-lean-S', [['hc-there-S', 'hc-awaken-S'], ['hc-there-S', 'xroad3-S'], ['hc-awaken-S', 'xroad3-S']]),
+    { ifFlag: 'hc-lean-R', else: [{ ifFlag: 'hc-lean-S', else: [
+      { ifFlag: 'xroad3-R', then: [{ flag: { 'hc-lean-R': true } }], else: [{ flag: { 'hc-lean-S': true } }] }
+    ] }] }
   ] },
 
   { id: 'a5-call-runners', date: '12/14', slot: 'late', title: 'come home, sol', place: 'Iwatodai Dorm · Rooftop', time: 'Night', scene: [
@@ -504,7 +549,27 @@ window.FEMC_STORY_KIT.badEnding = [
     { n: "Then Hanni put her can down on the railing very carefully, lined up with the others." },
     { s: 'hanni', f: 'neutral', t: "Sol. We need to say something. And we need you to just let us say it. Don't fix it. Don't say you're fine." },
     { s: 'hyein', f: 'sad', t: "Come home." },
-    { s: 'hyein', f: 'sad', t: "Come home, Sol. Please. We'll stop asking you questions. We won't ask you anything. We won't ask you where you were or why you didn't call or who that boy is who keeps sleeping on the dryer. We'll stop asking." },
+    { s: 'hyein', f: 'sad', t: "Come home, Sol. Please. We'll stop asking you questions. We won't ask you anything. We won't ask where you were or why you didn't call. We won't even ask about you and H..." },
+    { n: "Hanni's hand came out and smacked Hyein's arm, hard, through the coat, without looking, the way you'd swat a wasp off a picnic table." },
+    { s: 'hyein', f: 'surprised', t: "OW." },
+    { s: 'hanni', f: 'serious', t: "We won't ask about anything." },
+    { choose: [
+      { t: "Me and who?", then: [
+        { n: "Hyein opened her mouth. Hanni looked at her. Hyein closed it, and drank a very long sip of her can, looking at the bay with tremendous interest." },
+        { s: 'hyein', f: 'neutral', t: "...Homework. You and homework. You have a really toxic relationship with homework." },
+        { s: 'hanni', f: 'neutral', t: "It's not ours to tell you, Sol. It isn't. You'd kill us. Old you would actually kill us. You'd do it with your bare hands and then you'd say you were fine." }
+      ] },
+      { t: "(Let it go.)", then: [
+        { n: "She let it go. She was good at that; she suspected she'd always been good at it. Hyein rubbed her arm and glared at Hanni, and Hanni didn't apologize, and something went between the two of them over Solar's head that she couldn't read and didn't try to." }
+      ] }
+    ] },
+    { ifEvent: 'a4-mark', then: [
+      { s: 'hanni', f: 'neutral', t: "Mark's here too, you know. He asks us how you are every day. Every single day. Like he's checking on a stock." },
+      { s: 'hyein', f: 'serious', t: "We don't love that." },
+      { s: 'hanni', f: 'neutral', t: "We don't love that. But it doesn't matter. None of it matters. You're what matters. We just want you back where we can see you." }
+    ], else: [
+      { s: 'hanni', f: 'neutral', t: "We just want you back where we can see you. That's all. That's the whole speech. Hyein wrote a longer one and I made her cut it." }
+    ] },
     { s: 'hanni', f: 'happy', t: "We'll ask so many questions." },
     { s: 'hyein', f: 'sad', t: "We'll ask SO many questions. We'll never stop. You'll hate it. Come home and hate it. Please." },
     { n: "Hanni didn't say anything else. She just looked at Solar, the way she had in the mall, checking each thing against a list, the hands, the face, the way she stood, and finding every single one present, and one missing." },
@@ -519,7 +584,18 @@ window.FEMC_STORY_KIT.badEnding = [
         { n: "She drank. They let her. Nobody made her answer. That, she thought afterward, lying awake, was exactly what they'd promised, and exactly what she'd have done for them, and she didn't know when she'd learned that about herself, except that it had been somewhere pink, a long way away." }
       ] }
     ] },
-    { n: "They stayed until Hyein's teeth were chattering. On the way down, Hyein collected all three empty cans and put them in her bag, and when Solar asked why, she said she was keeping them, obviously, they were evidence, and Hanni said evidence of what, and Hyein said, *that she drank one*, and went downstairs very fast." }
+    { n: "They stayed until Hyein's teeth were chattering. On the way down, Hyein collected all three empty cans and put them in her bag, and when Solar asked why, she said she was keeping them, obviously, they were evidence, and Hanni said evidence of what, and Hyein said, *that she drank one*." },
+    { place: 'Iwatodai Dorm · 3F Hallway', time: 'Night', soft: true },
+    { n: "The door at the end of the top-floor hall was open a crack, a line of lamplight on the carpet, the way it had been most nights since December. Haechan was sitting on the floor just inside it with his back against the frame and his headphones round his neck, not doing anything, as if the hallway were a place you sat. He'd heard them on the roof. He'd heard every word. Solar could tell from the way he didn't look up." },
+    { n: "Hyein stopped. Hanni said her name. Hyein didn't listen." },
+    { s: 'hyein', f: 'serious', t: "Tell her." },
+    { s: 'hyein', f: 'serious', t: "Tell her to come home. She'd listen to you. You know she'd listen to you. You, of all people, you could just..." },
+    { s: 'haechan', f: 'neutral', t: "Not my call." },
+    { s: 'hyein', f: 'surprised', t: "It's literally your..." },
+    { s: 'haechan', f: 'neutral', t: "Not my call." },
+    { n: "He said it flat, to the carpet, twice, exactly the same, the way you'd shut a door twice to make sure it had caught. Then he looked up. Not at Hyein. At Solar, standing at the top of the stairs behind her with an empty can still in her hand, and held it for one second longer than he usually let himself, and got up, and went into his room, and closed the door, very quietly." },
+    { n: "Hyein turned round with her face red and her eyes wet and her mouth open to say something terrible about him, and Hanni put an arm round her shoulders and steered her down the stairs." },
+    { s: 'hanni', f: 'sad', t: "He's right. That's the worst part. He's completely right." }
   ] },
 
   { id: 'a5-call-strangers', date: '12/15', slot: 'late', title: 'sitting up in the dark', place: 'Port Island · Harbor', time: 'Night', consumes: true, scene: [
@@ -533,6 +609,11 @@ window.FEMC_STORY_KIT.badEnding = [
     { s: 'yunjin', f: 'sad', t: "I don't know how I know. I don't know how long it's been there, it doesn't make sense, nothing about this makes sense. But I know he is. He's sitting up in his study with the light off and his glasses in his hand, polishing them, slow, the way he does. Waiting for you to come in the gate." },
     { s: 'yunjin', f: 'serious', t: "He'd set the whole city on fire for you, Sol. You know he would. Right now he can't even find the city you're in." },
     { s: 'yunjin', f: 'sad', t: "Come home. Whatever's waiting there. Whatever date's on the calendar. I'll be there. I'll fight them all. I said that once and I meant it. Come home and let me." },
+    { n: "She drank some of her coffee. She looked out at the mud. Then, without turning her head, in the voice she used for the true things, the one that was only slightly quieter than her normal one:" },
+    { s: 'yunjin', f: 'neutral', t: "And I'm not going to pretend I don't see it, babe. I'm not blind. I'm in Prada, I'm not blind." },
+    { s: 'yunjin', f: 'neutral', t: "You've got the Yang boy in a guesthouse by the station correcting people's math homework, and your dad's dog asleep at the top of your stairs with his door open, and you look at both of them like you're trying to remember a word. I know which word. It's not my word to say." },
+    { s: 'yunjin', f: 'happy', t: "I'll say this. The Yang boy still smells like nothing. Kind of hot. Like a ghost. I said it once at home and I stand by it." },
+    { s: 'yunjin', f: 'serious', t: "And the other one... I've stood outside a door for you before. I'll do it again. Whichever door. That's all I'm saying. That's me being very restrained. Write it down." },
     { choose: [
       { t: "Tell me about him. My father.", tally: { 'lean.S': 1 }, flag: { 'call-S': true }, then: [
         { n: "So Yunjin told her. The reading glasses on a cord. The trot songs in the car. The ramyun in the old yellow pot, and the egg. The way he'd put his hand over hers and never once asked about the scar. Solar listened to all of it with the coffee going cold in her hands and the tide going out, and somewhere around the egg she started crying, and Yunjin didn't stop talking, because Yunjin understood that if she stopped, Solar would have to." }
@@ -546,16 +627,20 @@ window.FEMC_STORY_KIT.badEnding = [
     ] }
   ] },
 
-  { id: 'a5-call-hoax', date: '12/16', slot: 'evening', title: 'not the candidate', place: 'Paulownia Mall · Game Panic', time: 'Evening', scene: [
+  { id: 'a5-call-hoax', date: '12/16', slot: 'evening', title: 'not the vice president', place: 'Paulownia Mall · Game Panic', time: 'Evening', scene: [
     { music: 'city' },
     { n: "Jihoon was at the crane game. He'd been at the crane game, according to the guy at the counter, for an hour and forty minutes, and had spent, according to the guy at the counter, more on it than the counter guy made in a day, and the claw kept slipping. Every time. It closed on a big stupid plush dog with a crooked felt smile and lifted it and carried it toward the chute and then just let go, a few centimeters short, every single time, and Jihoon fed it another coin." },
-    { s: 'jihoon', f: 'neutral', t: "Don't. Don't say anything. I'm in a groove." },
-    { s: 'jihoon', f: 'neutral', t: "It looks like Nana. It's got his stupid face. I'm getting it for you." },
+    { s: 'jihoon', f: 'neutral', t: "Don't. Don't say anything. I'm in a groove. The almighty Hoon does not miss twice." },
+    { s: 'jihoon', f: 'neutral', t: "...Thirteen times is a groove. Look at it. It's got Nana's stupid face. Father Jihoon is getting it for you, and you're going to be grateful, you ungrateful rug." },
     { n: "The claw slipped. He fed it another coin. She stood beside him and watched, and her hands knew this. The sound of the coin going in. The music the machine played, tinny and cheerful. Somebody beside her who wouldn't stop, who kept feeding it coins long after any sensible person would have walked away, because he'd said he'd get it for her, and he had never once in his life said a thing to her he hadn't followed through on." },
     { n: "On the fourteenth coin he stopped, with his hand on the joystick, and didn't push the button. He didn't look at her. He looked at the plush dog." },
-    { s: 'jihoon', f: 'neutral', t: "Everybody back home needs you, Sol. The school. The election. Your parents. Everybody needs the candidate. Solar Kim, who's going to change everything. Who gives speeches. Who smiles like that." },
-    { s: 'jihoon', f: 'sad', t: "I don't. I never did. I don't care if you win. I don't care if you lose. I don't care if you get up there and throw up on the podium, I'd film it, it'd be iconic." },
-    { s: 'jihoon', f: 'sad', t: "We need you. Not the candidate. You. The one who calls me at six in the morning to demand coffee. The one who eats all my ice cream. The one who's mean to me." },
+    { s: 'jihoon', f: 'neutral', t: "Everybody back home wants you, Sol. The school. The council. Your parents, whenever they remember they've got a daughter. Everybody wants the vice president. Solar Kim, loyal vice pres. You sign it on every post. It's a disease." },
+    { s: 'jihoon', f: 'neutral', t: "And Yang. Obviously. Your boyfriend. Yeah. Him. The math competition in a blazer. He's here, you know he's here, he lives at the end of my corridor and he irons his socks. Go home to him if that's what it takes. I don't care." },
+    { s: 'jihoon', f: 'sad', t: "I care so much it's honestly embarrassing for me. Don't look at me like that." },
+    { n: "He fed the machine another coin without looking at it. The claw went down, and closed, and came up empty, and he watched it come up empty like it was the most interesting thing in the room." },
+    { s: 'jihoon', f: 'sad', t: "I know I've been a piece of shit, back home. Don't say it. You already said it, like four hundred times, and you were right every time, and that's the worst thing about you, you're always right about me. I kissed you at homecoming and then I spent the whole rest of the year making you sorry I did. You don't remember any of that. Great. Perfect. That's perfect for me." },
+    { s: 'jihoon', f: 'sad', t: "But I don't want the vice president. I never did. I don't care if you run the whole school or burn it to the ground. I'd help with the burning. I'm very good at burning things down. Ask literally anyone." },
+    { s: 'jihoon', f: 'sad', t: "I want you. Not the vice president. You. The one who texts me in capital letters at six in the morning to demand I drive her to Starbucks. The one who eats all my ice cream. The one who's mean to me." },
     { s: 'jihoon', f: 'neutral', t: "Come home. Please. It's... it's really quiet without you being mean to me." },
     { choose: [
       { t: "(Push the button for him.)", tally: { 'lean.H': 1 }, flag: { 'call-H': true }, then: [
@@ -654,7 +739,7 @@ window.FEMC_STORY_KIT.badEnding = [
       ] },
       { t: "(The star pin rings.) I have to go home.", ifFlag: 'elig-H', flag: { 'route-H': true }, tally: { solstice: 'H' }, then: [
         { n: "The star pin rang over all the others, bright and sharp, metal through card, a pin pushed home. A front door and a tub of ice cream. A gym full of plastic chairs. Exit doors, and all of them there, screaming. She heard herself say it, and it was hers." },
-        { s: 'wren', f: 'sad', t: "...Hanlim. Of course. The count." },
+        { s: 'wren', f: 'sad', t: "...Hanlim. Of course. The council room, with the lights on late." },
         { n: "The other two charms went quiet. And the star went on, ringing, and then stopped ringing, and started, very slowly, to shine." }
       ] },
       { t: "I'm staying. Here.", flag: { 'route-stay': true }, tally: { solstice: 'stay' }, then: [

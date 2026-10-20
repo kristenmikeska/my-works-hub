@@ -652,7 +652,8 @@ window.FemcGame = (() => {
     const info = dayInfo(), state = S.dailyLife || { seen: [], lastDay: -99 };
     if (info.type === 'trip' || S.day - (state.lastDay ?? -99) < 2 ||
       D.events.some(e => e.date === info.md && S.events.includes(e.id))) return null;
-    return D.dailyLife.find(e => e.slot === slot && S.day >= dayOf(e.after) &&
+    // A routine goes stale `until` its date (default: 30 days after `after`), so a late save never plays early-autumn beats.
+    return D.dailyLife.find(e => e.slot === slot && S.day >= dayOf(e.after) && S.day <= (e.until ? dayOf(e.until) : dayOf(e.after) + 30) &&
       (!e.schoolOnly || info.type === 'school') && !(state.seen || []).includes(e.id) &&
       (e.events || []).every(id => S.events.includes(id))) || null;
   }
