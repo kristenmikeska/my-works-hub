@@ -1946,3 +1946,9 @@ html.bt-embed body { background: #07030a; }
 html.bt-embed .bt-hub-ho .bt-kicker::before { content: "Tonight · "; }
 html.bt-embed .bt-ho-done { background: radial-gradient(ellipse at 50% 40%, #0f2a1c, #030806 70%); }
 html.bt-embed .bt-ho-done h1 { text-shadow: .06em .06em 0 #1d6b4a; }
+/* The Dark Hour hub's last row (Haenim's Tree, Return to the dorm) fits every width: no sub-labels when it's tight. */
+html.bt-embed .bt-hub-ho .bt-hub-menu .bt-btn[data-go="dorm"] small { display: none; }
+@media (max-width: 760px) {
+  html.bt-embed .bt-hub-ho .bt-hub-row .bt-btn { white-space: normal; font-size: 15px; padding: 10px 12px; }
+  html.bt-embed .bt-hub-ho .bt-hub-row .bt-btn small { display: none; }
+}

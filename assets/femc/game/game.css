@@ -761,3 +761,5 @@ button.g-pm-tac:is(:hover, :focus-visible) b { color: var(--night); }
 .g-use > b { flex: 1; min-width: 0; }
 .g-use-who { display: flex; flex-wrap: wrap; gap: 6px; width: 100%; padding-top: 4px; }
 .g-use-who small { margin-left: 4px; opacity: .75; }
+@media (min-width: 701px) and (min-height: 561px) { .g-settings-ov .g-panel { height: min(860px, calc(100dvh - 32px)); } }
+.g-settings-ov .g-settings { display: contents; }
