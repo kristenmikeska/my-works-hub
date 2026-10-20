@@ -1,4 +1,4 @@
-"""Exercise selected weapon stances through real battle turns in an isolated browser."""
+"""Exercise selected weapon stances through real battle turns in an isolated browser (fights run in femc-game.html's Dark Hour frame)."""
 import argparse,base64,json,pathlib,tempfile,time
 from femc_browser import Page
 parser=argparse.ArgumentParser();parser.add_argument('--ids',default='solar,akihiko,junpei,yukari');ids=parser.parse_args().ids.split(',')
@@ -8,9 +8,9 @@ p=Page();seen=set();shots=False
 try:
  p.ws.call('Emulation.setDeviceMetricsOverride',{'width':1280,'height':800,'deviceScaleFactor':1,'mobile':False})
  for party in parties:
-  p.goto('femc-game.html')
+  p.goto('femc-game.html?speed=10&seed=1')
   p.eval('FemcGame.newGame();FemcGame.S.joined='+json.dumps(party)+';FemcGame.S.day=FemcGame.dayOf("9/15");FemcGame.makeHandoff("scripted",{script:"field-pose-check",notes:"interrupt turn 6",segment:1,forced:true,party:'+json.dumps(party)+'})')
-  p.ws.call('Page.navigate',{'url':f'http://127.0.0.1:{p.srv.server_port}/femc-battle.html?from=game&speed=10&seed=1'})
+  p.battle()  # the fight runs inside femc-game.html (the Dark Hour frame)
   p.wait('!!window.FemcBattle?.B && !!document.querySelector(".bt-fighter")');p.eval('window.__hoStay=true')
   party_seen=set()
   for n in range(260):

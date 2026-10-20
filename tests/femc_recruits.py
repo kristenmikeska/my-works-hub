@@ -1,18 +1,20 @@
-"""Recruit catch-up migration checks plus Minji's actual introductory battle UI."""
+"""Recruit catch-up migration checks plus Minji's actual introductory battle UI.
+The fight runs inside femc-game.html (the Dark Hour frame); the old battle record sits in the life sim's save (S.battleSave)."""
 import json,pathlib,time
 from femc_browser import Page
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 source=(ROOT/'assets/femc/battle/battle.js').read_text()
-helper=source[source.index('  function catchUpRecruits('):source.index('  const OLD_FLOORS =')]
+start=source.index('  function catchUpRecruits(');helper=source[start:source.index('\n  }\n',start)+5]
 p=Page()
 try:
- p.goto('femc-game.html')
+ p.goto('femc-game.html?speed=10&seed=2')
  # Use an old v4 battle record with future recruits initialized at level 5.
  p.eval('''FemcGame.newGame();FemcGame.S.started=true;FemcGame.S.phase='play';FemcGame.S.day=FemcGame.dayOf('10/31');FemcGame.S.flags['awake-minji']=true;
  const run=FemcGame.S.runId;localStorage.setItem('kg-femc-game',JSON.stringify({sentinel:'v1-untouched'}));localStorage.setItem('kg-femc-battle-proto',JSON.stringify({sentinel:'practice-untouched'}));
- localStorage.setItem('kg-femc-revamp-battle',JSON.stringify({v:1,runs:{[run]:{at:Date.now(),save:{v:4,awakened:true,lvl:40,exp:73,party:['akihiko','yukari'],mem:{minji:{lvl:5,exp:17},aigis:{lvl:50,exp:89},jungwon:{lvl:5,exp:23}},gear:{owned:{},eq:{}},nodes:[]}},other:{at:0,save:{sentinel:'other-run'}}}}));
+ localStorage.setItem('kg-femc-revamp-battle',JSON.stringify({v:1,runs:{other:{at:0,save:{sentinel:'other-run'}}}}));
+ FemcGame.S.battleSave={v:4,awakened:true,lvl:40,exp:73,party:['akihiko','yukari'],mem:{minji:{lvl:5,exp:17},aigis:{lvl:50,exp:89},jungwon:{lvl:5,exp:23}},gear:{owned:{},eq:{}},nodes:[]};
  FemcGame.makeHandoff('scripted',{script:'memory-runners',segment:2,forced:true,party:['solar','akihiko','yukari']})''')
- p.ws.call('Page.navigate',{'url':f'http://127.0.0.1:{p.srv.server_port}/femc-battle.html?from=game&speed=10&seed=2'})
+ p.battle()
  p.wait("!!document.querySelector('[data-prep=begin]')");p.eval("document.querySelector('[data-prep=begin]').click()")
  p.wait('!!window.FemcBattle?.B && FemcBattle.B.party().some(u=>u.mid==="minji")')
  result=p.eval('''(()=>{const s=FemcBattle.save,check=(v,msg)=>{if(!v)throw Error(msg)};
@@ -57,13 +59,14 @@ try:
  assert p.eval('JSON.parse(localStorage.getItem("kg-femc-game")).sentinel==="v1-untouched" && JSON.parse(localStorage.getItem("kg-femc-battle-proto")).sentinel==="practice-untouched" && JSON.parse(localStorage.getItem("kg-femc-revamp-battle")).runs.other.save.sentinel==="other-run"')
  assert actual['outcome']['outcome']=='win',actual
  p.eval("sessionStorage.setItem('expectedReturn',JSON.stringify({yen:FemcBattle.handoff.request.yen+__hoResult.yenDelta,minjiExp:__hoResult.exp.minji}));if(FemcBattle.save.preparation)throw Error('Preparation marker not cleared')")
- p.goto('femc-game.html?from=battle')
- p.wait('FemcGame.S.handoffId===null')
- assert p.eval("(()=>{const want=JSON.parse(sessionStorage.getItem('expectedReturn'));return FemcGame.S.yen===want.yen&&FemcGame.S.battle.exp.minji===want.minjiExp&&!FemcGame.readHandoff()})()")
+ # Hand the result back the way the frame does when it isn't held (__hoStay): the life sim fades back and applies it.
+ p.eval("window.parent.FemcBridge.finish(window.__hoResult)")
+ p.top();p.wait("FemcGame.S.handoffId===null && !document.querySelector('.g-dh')")
+ assert p.eval("(()=>{const want=JSON.parse(sessionStorage.getItem('expectedReturn'));return FemcGame.S.yen===want.yen&&FemcGame.S.battle.exp.minji===want.minjiExp&&!FemcGame.readHandoff()&&!FemcGame.S.battleSave.preparation})()")
  # A genuinely new battle save uses the date seed and the same encounter floor.
- p.goto('femc-game.html')
+ p.goto('femc-game.html?speed=10&seed=2')
  p.eval("FemcGame.newGame();FemcGame.S.day=FemcGame.dayOf('10/31');FemcGame.S.flags['awake-minji']=true;FemcGame.makeHandoff('scripted',{script:'memory-runners',segment:2,forced:true,party:['solar','akihiko','yukari']})")
- p.ws.call('Page.navigate',{'url':f'http://127.0.0.1:{p.srv.server_port}/femc-battle.html?from=game&speed=10&seed=2'})
+ p.battle()
  p.wait("!!document.querySelector('[data-prep=begin]')");p.eval("document.querySelector('[data-prep=begin]').click()")
  p.wait('!!window.FemcBattle?.B && FemcBattle.B.party().some(u=>u.mid==="minji")')
  fresh=p.eval('({lvl:FemcBattle.B.party().find(u=>u.mid==="minji").lvl,skills:FemcBattle.B.party().find(u=>u.mid==="minji").skills})')

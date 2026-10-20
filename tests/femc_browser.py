@@ -1,4 +1,6 @@
-"""Minimal CDP client (pure Python, no deps): launches headless Chrome, serves the repo, evaluates JS in femc-game.html."""
+"""Minimal CDP client (pure Python, no deps): launches headless Chrome, serves the repo, evaluates JS in femc-game.html.
+Story fights run inside femc-game.html (the Dark Hour layer: an iframe of femc-battle.html?embed=1). Page.battle() opens the
+fight waiting in FemcGame.S.handoff there and switches eval/wait into the battle frame; Page.top() switches back."""
 import base64, json, os, socket, struct, subprocess, sys, time, urllib.request, http.server, threading, functools, pathlib, tempfile
 
 REPO = str(pathlib.Path(__file__).resolve().parents[1])
@@ -26,6 +28,19 @@ class WS:
         self.id = 0
         self.pending = {}
         self.events = []
+        self.contexts = {}  # frameId -> the frame's main-world execution context id
+
+    def _event(self, m):
+        meth = m["method"]
+        if meth == "Runtime.executionContextCreated":
+            ctx = m["params"]["context"]; aux = ctx.get("auxData") or {}
+            if aux.get("isDefault") and aux.get("frameId"): self.contexts[aux["frameId"]] = ctx["id"]
+        elif meth == "Runtime.executionContextDestroyed":
+            cid = m["params"].get("executionContextId")
+            self.contexts = {k: v for k, v in self.contexts.items() if v != cid}
+        elif meth == "Runtime.executionContextsCleared":
+            self.contexts = {}
+        self.events.append(m)
 
     def _recv(self, n):
         out = b""
@@ -74,7 +89,7 @@ class WS:
             if m.get("id") == mid:
                 if "error" in m: raise RuntimeError(m["error"])
                 return m.get("result", {})
-            if "method" in m: self.events.append(m)
+            if "method" in m: self._event(m)
             if time.time() - t0 > timeout: raise TimeoutError(method)
 
     def drain(self, secs=0.3):
@@ -82,7 +97,7 @@ class WS:
         try:
             while True:
                 m = json.loads(self.recv())
-                if "method" in m: self.events.append(m)
+                if "method" in m: self._event(m)
         except (socket.timeout, TimeoutError):
             pass
         finally:
@@ -123,9 +138,11 @@ class Page:
         self.profile = tempfile.TemporaryDirectory(prefix="femc-link-test-")
         self.proc, url = launch(self.profile.name)
         self.ws = WS(url)
+        self.ctx = None  # None: the page itself; otherwise an execution context id (the battle frame, see battle())
         self.ws.call("Runtime.enable"); self.ws.call("Log.enable"); self.ws.call("Page.enable"); self.ws.call("Network.enable"); self.ws.call("Network.setCacheDisabled", {"cacheDisabled": True})
 
     def goto(self, path):
+        self.ctx = None
         self.ws.call("Page.navigate", {"url": f"http://127.0.0.1:{self.srv.server_port}/{path}"})
         self.wait("document.readyState === 'complete' && !!window.FemcGame && !!window.FemcScene")
 
@@ -137,10 +154,43 @@ class Page:
         raise TimeoutError(cond)
 
     def eval(self, expr, timeout=120):
-        r = self.ws.call("Runtime.evaluate", {"expression": expr, "awaitPromise": True, "returnByValue": True, "timeout": timeout * 1000}, timeout=timeout + 5)
+        params = {"expression": expr, "awaitPromise": True, "returnByValue": True, "timeout": timeout * 1000}
+        if self.ctx is not None: params["contextId"] = self.ctx
+        r = self.ws.call("Runtime.evaluate", params, timeout=timeout + 5)
         if "exceptionDetails" in r:
             raise RuntimeError(json.dumps(r["exceptionDetails"])[:2000])
         return r.get("result", {}).get("value")
+
+    def top(self):
+        """Evaluate in femc-game.html again (after battle())."""
+        self.ctx = None
+
+    def frame(self, timeout=30):
+        """Switch eval/wait into the Dark Hour's battle frame (it must be open)."""
+        self.ctx = None
+        # The layer is live once the Dark Hour transition has played and the frame reported in.
+        self.wait("!!document.querySelector('.g-dh.live .g-dh-iframe')?.contentWindow?.FemcBattle", timeout)
+        t0 = time.time()
+        while time.time() - t0 < timeout:
+            tree = self.ws.call("Page.getFrameTree")["frameTree"]
+            kids = [c["frame"]["id"] for c in tree.get("childFrames", []) if "embed=1" in c["frame"].get("url", "")]
+            self.ws.drain(0.05)
+            if kids and kids[-1] in self.ws.contexts:
+                self.ctx = self.ws.contexts[kids[-1]]
+                try:
+                    if self.eval("!!window.FemcBattle"): return self.ctx
+                except RuntimeError:
+                    pass
+                self.ctx = None
+            time.sleep(0.1)
+        raise TimeoutError("battle frame context")
+
+    def battle(self, timeout=60):
+        """Open the fight in FemcGame.S.handoff inside femc-game.html (no page jump) and switch into its frame."""
+        self.ctx = None
+        self.eval("(()=>{document.querySelectorAll('.gs,.g-overlay').forEach(x=>x.remove());document.documentElement.classList.remove('g-in-scene');"
+                  "if(FemcGame.S.phase==='title')FemcGame.S.phase='play';FemcGameUI.run()})()")
+        return self.frame(timeout)
 
     def console(self):
         self.ws.drain()

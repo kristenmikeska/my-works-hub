@@ -33,8 +33,8 @@ try:
  scripts={'ballot_box':'memory-hoax','flash_shadow':'memory-runners','tide_shadow':'memory-strangers','fox_shadow':'memory-haechan','party_shadow':'memory-runners-2','veil_poster':'memory-jungwon'}
  for kind in options.enemies.split(','):
   script=scripts[kind]
-  p.goto('femc-game.html');p.eval('FemcGame.newGame();FemcGame.S.day=FemcGame.dayOf("12/5");FemcGame.makeHandoff("scripted",{script:'+json.dumps(script)+',segment:2,forced:true,party:["solar"]})')
-  p.ws.call('Page.navigate',{'url':f'http://127.0.0.1:{p.srv.server_port}/femc-battle.html?from=game&speed=10&seed=1'})
+  p.goto('femc-game.html?speed=10&seed=1');p.eval('FemcGame.newGame();FemcGame.S.day=FemcGame.dayOf("12/5");FemcGame.makeHandoff("scripted",{script:'+json.dumps(script)+',segment:2,forced:true,party:["solar"]})')
+  p.battle()  # the fight runs inside femc-game.html (the Dark Hour frame)
   p.wait("!!document.querySelector('[data-prep=begin]')");p.eval("document.querySelector('[data-prep=begin]').click()")
   p.wait("!!window.FemcBattle && !!FemcBattle.B && !!document.querySelector('.bt-enemy img')")
   p.eval('''window.poseSeen=[];window.poseEnemy=document.querySelector('.bt-enemy');new MutationObserver(()=>poseSeen.push(+poseEnemy.dataset.pose)).observe(poseEnemy.querySelector('img'),{attributes:true,attributeFilter:['src']});''')
