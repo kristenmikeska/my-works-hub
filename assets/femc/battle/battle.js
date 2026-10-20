@@ -1,28 +1,41 @@
-/* FEMC battle prototype: screens, battle UI, menus, save, Haenim's skill tree, the Tartarus node map, shops, equipment,
-   Full Moon Operations, Persona evolutions and Haenim's forms.
-   Rules live in engine.js (battles, growth) and map.js (node maps), content in data.js, art in shadows.js / icons.js, effects in fx.js.
-   Save: localStorage 'kg-femc-battle-proto' only (never the main game's kg-femc-game).
-   Handoff mode (the life sim, FEMC-GAME-HANDOFF.md): femc-battle.html?from=game with a pending 'kg-femc-handoff' plays the
-   requested fight (a Tartarus night, a full-moon operation or a scripted story fight), writes `result` + status 'done' and
-   goes back to `returnTo`. It never reads or writes the prototype's save: it keeps 'kg-femc-revamp-battle' instead,
-   { v: 1, runs: { <request.run>: { at, day, save } } }: one battle save (levels, EXP, Haenim's tree, Personas, equipment,
-   materials, access point) per life-sim playthrough, the 4 most recent kept. A playthrough's first fight seeds it from the
-   game's date (a level a little under that month's full moon, the matching skill points; device settings are copied from
-   the prototype's save if there is one, read only), or, on New Game+, from the playthrough named in request.carryFrom. On every handoff the life sim's party, items, yen, gear, date, floor cap,
-   cleared operations, memory fragments and Solar's condition replace the battle save's own (the life sim is the source of
-   truth for those); levels, the tree and equipment stay the battle game's. See the HANDOFF section near the end.
-   Without ?from=game (or with no pending handoff) the page is the prototype exactly as before. A handoff that is already
-   'done' sends the page straight back to the game.
+/* FEMC battle: screens, battle UI, menus, Haenim's skill tree, the Tartarus node map, shops, equipment, Full Moon Operations,
+   Persona evolutions and Haenim's forms.
+   Rules live in engine.js (battles, growth) and map.js (node maps), content in data.js, the save's shape in save.js, art in
+   shadows.js / icons.js, effects in fx.js.
+   Two ways this page runs:
+   - Story fights (embedded): the life sim (femc-game.html) opens femc-battle.html?embed=1 in a full-screen same-origin iframe
+     during its Dark Hour transition and talks to it through window.parent.FemcBridge (ui.js): handoff() is the request
+     (FEMC-GAME-HANDOFF.md: a Tartarus night, a full-moon operation or a scripted story fight), battleSave() / carry() the
+     playthrough's battle save (levels, EXP, Haenim's tree, Personas, equipment, materials, access point; it lives inside the
+     life sim's save slot as S.battleSave), saveBattle(save) writes it back after every change, settings() / setSettings(patch)
+     the one settings store, openSettings(onClose) the game's settings panel, ready() when the first screen is up and
+     finish(result) with the contract's `result` when the fight is over (the life sim then fades back to the exact line).
+     A playthrough's first fight seeds the battle save from the game's date (save.js forRun), or on New Game+ from the
+     previous playthrough's (carry). On every handoff the life sim's party, items, yen, gear, date, floor cap, cleared
+     operations, memory fragments and Solar's condition replace the battle save's own (the life sim is the source of truth
+     for those); levels, the tree and equipment stay the battle game's. See the HANDOFF section near the end.
+   - Practice mode: femc-battle.html on its own (the title screen's Practice link adds ?practice=1). The battle prototype as
+     before: its own hub, shops, operations and save slots, saved in localStorage 'kg-femc-battle-proto' only (never the
+     story's save, never v1's kg-femc-game). The old page-jump handoff URL (?from=game) now just goes back to femc-game.html,
+     which picks the fight up itself.
+   Settings: both ways read the game's one settings store ('kg-femc-revamp-settings', core.js DEFAULTS) through pullSettings()
+   and write changes back through pushSettings(), so text speed, battle speed, cut-ins, volume, difficulty and the rest are
+   the same everywhere.
    Test hooks: ?seed=N (repeatable fights), ?speed=N (animation speed), ?fps=1 (frame meter), window.FemcBattle (state + freeze for screenshots). */
 (() => {
-  const D = window.FEMC_BATTLE_DATA, E = window.FemcBattleEngine, ART = window.FemcBattleArt, FX = window.FemcFX, MAP = window.FemcTartarusMap, ICON = window.FemcIcons;
-  const HANDOFF_KEY = 'kg-femc-handoff', REVAMP_KEY = 'kg-femc-revamp-battle', PROTO_KEY = 'kg-femc-battle-proto';
+  const D = window.FEMC_BATTLE_DATA, E = window.FemcBattleEngine, ART = window.FemcBattleArt, FX = window.FemcFX, MAP = window.FemcTartarusMap, ICON = window.FemcIcons, BS = window.FemcBattleSave;
+  const PROTO_KEY = 'kg-femc-battle-proto', UNI_KEY = 'kg-femc-revamp-settings';
+  // The old page-jump handoff: the life sim now runs the fight in its own page.
+  if (/[?&]from=game\b/.test(location.search)) { location.replace('femc-game.html'); return; }
+  const BR = (() => { if (!/[?&]embed=1\b/.test(location.search) || window.parent === window) return null; try { return window.parent.FemcBridge || null; } catch (e) { return null; } })();
   const HO = (() => {
-    if (!/[?&]from=game\b/.test(location.search)) return null;
-    try { const h = JSON.parse(localStorage.getItem(HANDOFF_KEY) || 'null'); return h && h.request && ['pending', 'done'].includes(h.status) ? h : null; } catch (e) { return null; }
+    if (!BR) return null;
+    try { const h = BR.handoff(); return h && h.request && ['pending', 'done'].includes(h.status) ? h : null; } catch (e) { return null; }
   })();
-  if (HO && HO.status === 'done') { location.replace(HO.returnTo || 'femc-game.html?from=battle'); return; }
-  const KEY = HO ? REVAMP_KEY : PROTO_KEY;
+  if (BR && !HO) { try { BR.finish(null); } catch (e) {} return; }
+  if (HO && HO.status === 'done') { BR.finish(HO.result); return; }
+  if (BR) document.documentElement.classList.add('bt-embed');
+  const KEY = PROTO_KEY;
   // Memory cards without art yet: swap in a placeholder card (data.js memoryPlaceholder) the moment the image fails to load.
   document.addEventListener('error', e => {
     const t = e.target, m = t && t.tagName === 'IMG' && !t.dataset.ph && /memories\/([a-z0-9-]+?)(-wide)?\.webp/.exec(t.getAttribute('src') || '');
@@ -71,87 +84,15 @@
   const STAT_SHORT = { atk: 'ATK', def: 'DEF', agi: 'AGI' };
 
   /* ── Save ─────────────────────────────────────────── */
+  // The save's shape (fresh, normalize, fromRaw, seeding, New Game+ carry) lives in save.js, shared with the life sim's menu.
   // reached: the floor id (e.g. 'f9') of the last access point Solar touched, like P3's access points; null = start at the bottom.
-  // v2 added: party (up to 3 ids beside Solar), mem (each member's own level and EXP), tactics, cutins, awakened.
-  // v3 adds: yen, items (now kept between runs), gear { owned, eq }, mats, memories, evo (evolved Personas), form + forms (Haenim),
-  //          ops { cleared } (Full Moon Operations), cycle (full climbs to the top; makes Tartarus harder), th (Theurgy gauges), perf.
-  // v4 adds: settings (see SETTINGS), tipsSeen (Fuuka's one-time tips), cursor (each member's last command, skill and item).
-  //          speed may now be 3. Older saves are copied to KEY + '-backup-v<old>' once, before the upgrade is written.
-  const SETTINGS = { textSpeed: 'normal', musicVol: 100, sfxVol: 100, remember: true, rushWhere: 'normal', rushStop: 30, difficulty: 'normal', shake: true, calm: false, numbers: true, pad: 'auto', tips: true };
-  const SETTING_OK = { textSpeed: ['slow', 'normal', 'fast', 'instant'], rushWhere: ['normal', 'strong', 'all'], rushStop: [30, 50], difficulty: ['story', 'normal', 'hard'], pad: ['auto', 'xbox', 'ps'] };
-  const PREFS = ['settings', 'tipsSeen', 'cursor', 'music', 'sfx', 'speed', 'cutins', 'perf']; // device preferences: kept when a slot or backup is loaded
-  const fresh = () => ({ v: 4, settings: Object.assign({}, SETTINGS), tipsSeen: [], cursor: {}, lvl: D.progression.startLevel, exp: 0, pts: 0, nodes: [], known: {}, clears: 0, cycle: 0, runs: 0, reached: null, music: null, sfx: true, speed: 1,
-    party: D.defaultParty.slice(), mem: {}, tactics: {}, cutins: 'first', awakened: false,
-    yen: D.startYen, items: Object.assign({}, D.startItems), gear: { owned: {}, eq: {} }, mats: {}, memories: [], evo: {}, form: 'haenim', forms: [], ops: { cleared: [] }, th: {}, perf: false });
-  /* Fills in anything missing, so v1/v2 saves (and hand-edited ones) load cleanly. Members who were already fighting
-     keep Solar's level; new recruits join one level behind her. */
-  const OLD_FLOORS = ['f2', 'f4', 'f6']; // batch-1 floors 2F/5F/9F → the first three floors of Thebel
-  function normalize(s) {
-    const was = s.v || 1;
-    if (!Array.isArray(s.party)) s.party = D.defaultParty.slice();
-    s.party = [...new Set(s.party)].filter(id => id !== 'solar' && member(id)).slice(0, 3);
-    if (!s.mem || typeof s.mem !== 'object') s.mem = {};
-    D.party.forEach(m => {
-      if (m.id === 'solar') return;
-      const e = s.mem[m.id];
-      if (!e || !(e.lvl >= 1)) s.mem[m.id] = { lvl: D.defaultParty.includes(m.id) ? s.lvl : Math.max(D.progression.startLevel, s.lvl - 1), exp: 0 };
-      else if (!(e.exp >= 0)) e.exp = 0;
-    });
-    if (!s.tactics || typeof s.tactics !== 'object') s.tactics = {};
-    Object.keys(s.tactics).forEach(k => { if (!D.tactics[s.tactics[k]]) delete s.tactics[k]; });
-    if (!['always', 'first', 'off'].includes(s.cutins)) s.cutins = 'first';
-    // v3: the old run (2F → 5F → 9F → Priestess) becomes Thebel plus the Priestess operation.
-    if (!s.ops || typeof s.ops !== 'object' || !Array.isArray(s.ops.cleared)) s.ops = { cleared: [] };
-    if (was < 3) {
-      if (s.clears > 0 && !s.ops.cleared.includes('priestess')) s.ops.cleared.push('priestess');
-      const r = typeof s.reached === 'number' ? s.reached : 0;
-      s.reached = s.clears > 0 ? 'f9' : (r > 0 ? OLD_FLOORS[Math.min(r, OLD_FLOORS.length - 1)] : null);
-      if (!s.items || typeof s.items !== 'object') s.items = Object.assign({}, D.startItems);
-    }
-    if (typeof s.reached !== 'string' || !D.floors.some(f => f.id === s.reached)) s.reached = null;
-    s.ops.cleared = s.ops.cleared.filter(id => D.ops.some(o => o.id === id));
-    if (!(s.cycle >= 0)) s.cycle = 0;
-    if (!(s.yen >= 0)) s.yen = D.startYen;
-    if (!s.items || typeof s.items !== 'object') s.items = {};
-    Object.keys(s.items).forEach(k => { if (!D.items[k] || !(s.items[k] > 0)) delete s.items[k]; });
-    if (!s.gear || typeof s.gear !== 'object') s.gear = {};
-    if (!s.gear.owned || typeof s.gear.owned !== 'object') s.gear.owned = {};
-    if (!s.gear.eq || typeof s.gear.eq !== 'object') s.gear.eq = {};
-    Object.keys(s.gear.owned).forEach(k => { if (!D.gear[k] || !(s.gear.owned[k] > 0)) delete s.gear.owned[k]; });
-    if (!s.mats || typeof s.mats !== 'object') s.mats = {};
-    if (!Array.isArray(s.memories)) s.memories = [];
-    s.memories = s.memories.filter(id => D.memories.some(m => m.id === id));
-    if (!s.evo || typeof s.evo !== 'object') s.evo = {};
-    if (!Array.isArray(s.forms)) s.forms = [];
-    E.formsList().forEach(f => { if (!s.forms.includes(f) && E.formUnlocked(Object.assign({}, s, { forms: [] }), f)) s.forms.push(f); });
-    if (!s.form || !E.formUnlocked(s, s.form)) s.form = 'haenim';
-    if (!s.th || typeof s.th !== 'object') s.th = {};
-    s.perf = !!s.perf;
-    // v4: settings, tips, remembered cursors.
-    const st = s.settings && typeof s.settings === 'object' ? s.settings : {};
-    s.settings = Object.assign({}, SETTINGS);
-    Object.keys(SETTINGS).forEach(k => {
-      const v = st[k];
-      if (SETTING_OK[k]) { if (SETTING_OK[k].includes(v)) s.settings[k] = v; }
-      else if (typeof SETTINGS[k] === 'boolean') { if (typeof v === 'boolean') s.settings[k] = v; }
-      else if (typeof v === 'number' && v >= 0 && v <= 100) s.settings[k] = Math.round(v);
-    });
-    if (![1, 2, 3].includes(s.speed)) s.speed = 1;
-    if (!Array.isArray(s.tipsSeen)) s.tipsSeen = [];
-    s.tipsSeen = s.tipsSeen.filter(k => D.tips[k]);
-    if (!s.cursor || typeof s.cursor !== 'object') s.cursor = {};
-    Object.keys(s.cursor).forEach(k => { if (!member(k) || !s.cursor[k] || typeof s.cursor[k] !== 'object') delete s.cursor[k]; });
-    s.v = 4;
-    return s;
-  }
-  /* Any object that looks like a save (from storage, a slot or a pasted backup) → a clean v4 save, or null. */
-  function fromRaw(s) {
-    if (!s || typeof s !== 'object' || Array.isArray(s) || !(s.lvl >= 1)) return null;
-    const v = [1, 2, 3, 4].includes(s.v) ? s.v : 1;
-    return normalize(Object.assign(fresh(), JSON.parse(JSON.stringify(s)), { v }));
-  }
+  const { SETTINGS, SETTING_OK, PREFS, fresh, normalize, fromRaw } = BS;
   function loadSave() {
-    if (HO) return loadRevamp();
+    if (HO) {
+      // The story's battle save comes from the life sim's save slot (or is seeded / carried over by save.js).
+      let prefs = null; try { prefs = JSON.parse(localStorage.getItem(PROTO_KEY) || 'null'); } catch (e) {}
+      return BS.forRun({ save: BR.battleSave(), carry: BR.carry(), day: (HO.date && HO.date.day) || 0, prefs }).save;
+    }
     try {
       const raw = localStorage.getItem(KEY), s = JSON.parse(raw || 'null');
       if (s && [1, 2, 3, 4].includes(s.v)) {
@@ -162,46 +103,44 @@
     } catch (e) {}
     return normalize(fresh());
   }
-  /* Handoff mode's battle save ('kg-femc-revamp-battle', see the header): one per life-sim playthrough. */
-  const HO_RUN = HO ? String(HO.request.run || 'default') : null;
-  function readRevamp() { try { const c = JSON.parse(localStorage.getItem(REVAMP_KEY) || 'null'); return c && c.v === 1 && c.runs && typeof c.runs === 'object' ? c : { v: 1, runs: {} }; } catch (e) { return { v: 1, runs: {} }; } }
-  function writeRevamp() {
-    const c = readRevamp();
-    c.runs[HO_RUN] = { at: Date.now(), day: HO.date ? HO.date.day : null, save };
-    c.runs = Object.fromEntries(Object.entries(c.runs).sort((a, b) => b[1].at - a[1].at).slice(0, 4));
-    localStorage.setItem(REVAMP_KEY, JSON.stringify(c));
-  }
-  function loadRevamp() {
-    const c = readRevamp(), x = c.runs[HO_RUN];
-    if (x && fromRaw(x.save)) return fromRaw(x.save);
-    // New Game+: the life sim names the playthrough it came from; its levels, tree, Personas and gear come along.
-    const from = HO.request.carryFrom && c.runs[HO.request.carryFrom];
-    const old = from && fromRaw(from.save);
-    if (old) { old.reached = null; old.ops = { cleared: [] }; old.memories = []; old.ngp = (old.ngp || 0) + 1; return old; }
-    return seedRevamp();
-  }
-  // Solar's level by the game's day (0 = 4/6): a little under each full moon's recommended level (data.js ops: Priestess 10
-  // on 5/9, Empress 15 on 6/8 … Hanged Man 43 on 11/3), so a playthrough that starts using the battle game late isn't stuck at 5.
-  const SEED_CURVE = [[0, 5], [33, 9], [63, 14], [92, 21], [122, 28], [152, 33], [181, 37], [211, 41], [240, 46], [270, 50], [300, 54]];
-  function seedLevel(day) {
-    let i = 0; while (i < SEED_CURVE.length - 2 && day > SEED_CURVE[i + 1][0]) i++;
-    const [d0, l0] = SEED_CURVE[i], [d1, l1] = SEED_CURVE[i + 1];
-    return Math.max(D.progression.startLevel, Math.round(l0 + (l1 - l0) * Math.min(1, Math.max(0, (day - d0) / (d1 - d0)))));
-  }
-  function seedRevamp() {
-    const s = fresh(), day = (HO.date && HO.date.day) || 0, L = seedLevel(day);
-    try { const p = JSON.parse(localStorage.getItem(PROTO_KEY) || 'null'); if (p && typeof p === 'object') PREFS.forEach(k => { if (p[k] !== undefined) s[k] = JSON.parse(JSON.stringify(p[k])); }); } catch (e) {}
-    s.lvl = L; s.pts = (L - D.progression.startLevel) * D.progression.pointsPerLevel; s.awakened = day > 3;
-    s.party = []; s.items = {}; s.yen = 0; s.mem = {};
-    s.seeded = { day, lvl: L };
-    return normalize(s);
-  }
   let save = loadSave();
-  const persist = () => { try { if (HO) writeRevamp(); else localStorage.setItem(KEY, JSON.stringify(save)); } catch (e) {} };
+  /* Settings: the game's one store. Story fights read it from the life sim; practice reads the same key directly. */
+  const readUni = () => { if (BR) { try { return JSON.parse(JSON.stringify(BR.settings() || {})); } catch (e) { return {}; } } try { return JSON.parse(localStorage.getItem(UNI_KEY) || '{}') || {}; } catch (e) { return {}; } };
+  // battle setting (save.settings.<k>) → the store's key
+  const UNI = { textSpeed: 'text', sfxVol: 'sfxVol', difficulty: 'difficulty', remember: 'remember', rushWhere: 'rushWhere', rushStop: 'rushStop', shake: 'shake', calm: 'calm', numbers: 'numbers', tips: 'tips', pad: 'pad' };
+  function pullSettings() {
+    const u = readUni(), st = save.settings;
+    Object.entries(UNI).forEach(([k, uk]) => {
+      const v = u[uk];
+      if (v === undefined) return;
+      if (SETTING_OK[k]) { if (SETTING_OK[k].includes(v)) st[k] = v; }
+      else if (typeof SETTINGS[k] === 'boolean') { if (typeof v === 'boolean') st[k] = v; }
+      else if (typeof v === 'number' && v >= 0 && v <= 100) st[k] = Math.round(v);
+    });
+    const mv = typeof u.music === 'number' ? u.music : 60;
+    save.music = mv > 0;
+    st.musicVol = mv > 0 ? mv : (typeof u.musicLast === 'number' && u.musicLast > 0 ? u.musicLast : 60);
+    if (typeof u.sfx === 'boolean') save.sfx = u.sfx;
+    if ([1, 2, 3].includes(u.battleSpeed)) save.speed = u.battleSpeed;
+    if (['always', 'first', 'off'].includes(u.cutins)) save.cutins = u.cutins;
+    if (typeof u.perf === 'boolean') save.perf = u.perf;
+  }
+  function pushSettings() {
+    const st = save.settings, patch = { battleSpeed: save.speed || 1, cutins: save.cutins, perf: !!save.perf, sfx: save.sfx !== false, music: save.music === false ? 0 : st.musicVol, musicLast: st.musicVol };
+    Object.entries(UNI).forEach(([k, uk]) => { patch[uk] = st[k]; });
+    if (BR) { try { BR.setSettings(patch); } catch (e) {} return; }
+    try { localStorage.setItem(UNI_KEY, JSON.stringify(Object.assign(readUni(), patch))); } catch (e) {}
+  }
+  pullSettings();
+  const persist = () => {
+    try {
+      if (BR) BR.saveBattle(JSON.parse(JSON.stringify(save)));
+      else localStorage.setItem(KEY, JSON.stringify(save));
+    } catch (e) {}
+  };
   persist();
   const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
-  const femcMusicWanted = () => { try { return (JSON.parse(lsGet('kg-femc-bgm') || '{}') || {}).on !== false; } catch (e) { return true; } };
-  const musicOn = () => (save.music == null ? femcMusicWanted() : save.music);
+  const musicOn = () => save.music !== false;
   const sfxOn = () => save.sfx !== false && lsGet('kg-femc-sound') !== 'off';
   const ST = () => save.settings;
   /* Rush doubles the battle speed (and skips cut-ins) while it's running. */
@@ -501,6 +440,7 @@
       if (t === 'music') { save.music = !musicOn(); music.refresh(); b.setAttribute('aria-pressed', String(musicOn())); }
       if (t === 'sfx') { save.sfx = save.sfx === false; b.setAttribute('aria-pressed', String(save.sfx)); sfx('ok'); }
       if (t === 'speed') { save.speed = (save.speed || 1) % 3 + 1; paintSpeed(); sfx('move'); mark('speed-' + save.speed); }
+      pushSettings();
       persist();
     }));
   }
@@ -581,11 +521,39 @@
     if (r.k === 'speed') paintSpeed();
     if (r.k === 'rushWhere' || r.k === 'rushStop') paintRush();
     applyPerf();
+    pushSettings();
     persist();
     mark('set-' + r.k);
   }
+  /* After the game's settings panel closed (story fights): take its values in and repaint what depends on them. */
+  function settingsChanged() {
+    pullSettings();
+    music.refresh(); paintSpeed(); paintRush(); applyPerf();
+    document.querySelectorAll('[data-tool="music"]').forEach(b => b.setAttribute('aria-pressed', String(musicOn())));
+    document.querySelectorAll('[data-tool="sfx"]').forEach(b => b.setAttribute('aria-pressed', String(save.sfx !== false)));
+  }
   function openSettings(startKey = null) {
     if (ctl && ctl.kind === 'settings') return;
+    if (BR) {
+      // Story fights use the game's one settings panel (it opens over this frame). The battle waits while it's open; a
+      // controller's buttons (pad.js, which runs in here) are passed on to it.
+      const prev = ctl;
+      const me = { kind: 'settings', move() {}, pick() {}, back: () => { try { BR.closeSettings(); } catch (e) {} }, key: e => { try { BR.key(e.key); } catch (err) {} return true; } };
+      paused++;
+      ctl = me;
+      root.classList.add('bt-ov-open');
+      mark('overlay-settings');
+      sfx('ok');
+      BR.openSettings(() => {
+        paused = Math.max(0, paused - 1);
+        root.classList.remove('bt-ov-open');
+        if (ctl === me) ctl = prev;
+        settingsChanged();
+        persist();
+        if (screen === 'hub' && !ctlBusy()) hub();
+      }, startKey);
+      return;
+    }
     const rows = settingRows();
     let i = Math.max(0, rows.findIndex(r => r.k === startKey));
     const valText = r => { const v = getSet(r); if (r.range) return `${v}%`; const o = r.opts.find(x => x[0] === v); return o ? o[1] : String(v); };
@@ -594,7 +562,7 @@
       : `<button type="button" class="ar" data-d="-1" aria-label="Previous">‹</button><b>${esc(valText(r))}</b><button type="button" class="ar" data-d="1" aria-label="Next">›</button>`}</span></div>`;
     const o = overlay({
       cls: 'bt-setp', kind: 'settings',
-      html: `<div class="bt-ov-card"><div class="bt-ov-head"><h2><small>${screen === 'battle' ? 'Paused' : 'FEMC · Battle prototype'}</small>SETTINGS</h2><button type="button" class="bt-tool" data-x><span>Close</span></button></div>
+      html: `<div class="bt-ov-card"><div class="bt-ov-head"><h2><small>${screen === 'battle' ? 'Paused' : 'Practice mode · same settings as the story'}</small>SETTINGS</h2><button type="button" class="bt-tool" data-x><span>Close</span></button></div>
         <div class="bt-set-list">${rows.map(rowHtml).join('')}</div><p class="bt-set-desc"></p>
         <div class="bt-ov-foot"><button type="button" class="bt-tool" data-help><span>? Help</span></button><span class="bt-hint">↑↓ choose · ←→ change · Esc close</span></div></div>`,
       key(e) {
@@ -793,7 +761,7 @@
     const cont = save.reached && D.floors.find(f => f.id === save.reached);
     const opsDone = save.ops.cleared.length, per = perOf('solar');
     const el = show(`<div class="bt-hub-copy">
-        <p class="bt-kicker">FEMC · Battle prototype<span class="bt-diff d-${esc(ST().difficulty)}" title="Difficulty (change it in Settings)">${esc(diff().name)}</span></p>
+        <p class="bt-kicker">Practice mode · its own save<span class="bt-diff d-${esc(ST().difficulty)}" title="Difficulty (change it in Settings)">${esc(diff().name)}</span></p>
         <h1>TARTARUS<small>Full Moon Operation</small></h1>
         <div class="bt-hub-menu">
           ${cont ? `<button type="button" class="bt-btn pink" data-go="cont"><span>Continue from ${esc(cont.label)}</span><small>Access point · ${esc(cont.block)}</small></button>` : ''}
@@ -808,7 +776,7 @@
       </div>
       <div class="bt-hub-fig" aria-hidden="true"><i class="band"></i><img src="assets/femc/profile/femc.webp?v=${V()}" alt=""></div>
       ${hubSolar(`<p class="bt-meta"><span class="bt-yen">${ICON.svg('yen')}${yen(save.yen)}</span> · ${save.runs} run${save.runs === 1 ? '' : 's'} · ${opsDone} full moon${opsDone === 1 ? '' : 's'} cleared${save.cycle ? ` · Tartarus is stronger (climb ${save.cycle + 1})` : ''}</p>`)}
-      <div class="bt-top" style="justify-content:flex-end"><a class="bt-tool" href="social.html"><span>‹ Back to the game</span></a><div class="bt-tools" style="margin-left:8px">${tools()}</div></div>`, 'bt-hub');
+      <div class="bt-top" style="justify-content:flex-end"><a class="bt-tool" href="femc-game.html"><span>‹ Back to the game</span></a><div class="bt-tools" style="margin-left:8px">${tools()}</div></div>`, 'bt-hub');
     wireTools(el);
     el.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => {
       const go = b.dataset.go;
@@ -3535,20 +3503,15 @@
     ctl = null;
     persist();
     const result = hoResult(outcome, extra);
-    let h = null;
-    try { h = JSON.parse(localStorage.getItem(HANDOFF_KEY) || 'null'); } catch (e) {}
-    if (h && h.id === HO.id && h.status === 'pending') {
-      h.result = result; h.status = 'done'; h.doneAt = new Date().toISOString();
-      try { localStorage.setItem(HANDOFF_KEY, JSON.stringify(h)); } catch (e) {}
-    }
     window.__hoResult = result;
     mark('handoff-done');
     screen = 'handoff';
     root.classList.remove('bt-in-battle');
     music.play(null);
     const word = { win: HO.kind === 'tartarus' ? 'Back to the dorm' : 'The moon is quiet', lose: 'The hour closes', retreat: 'Not tonight', interrupt: '…' }[outcome] || 'Back to the dorm';
-    show(`<div><p class="bt-kicker">${esc(HO.date ? HO.date.md : '')} · The Dark Hour</p><h1>${esc(word.toUpperCase())}</h1><p>Returning to the dorm…</p></div>`, 'bt-over bt-ho-done');
-    setTimeout(() => { if (!window.__hoStay) location.href = HO.returnTo || 'femc-game.html?from=battle'; }, Math.round(1100 / Math.min(speed(), 4)));
+    show(`<div><p class="bt-kicker">${esc(HO.date ? HO.date.md : '')} · The Dark Hour</p><h1>${esc(word.toUpperCase())}</h1></div>`, 'bt-over bt-ho-done');
+    // The life sim takes it from here: it records the result, fades this frame out and picks the story up on the next line.
+    setTimeout(() => { if (!window.__hoStay) BR.finish(result); }, Math.round(650 / Math.min(speed(), 4)));
   }
 
   /* ── Scripted story fights. Each entry → a list of battle specs, run in order (game over: retry, or back to the dorm).
@@ -3728,8 +3691,8 @@
     screen: () => screen, marks, freeze() { frozen = true; if (FX) FX.pause(); }, unfreeze() { frozen = false; if (FX) FX.resume(); },
     awakening: () => awakening(app.firstElementChild || app),
     get handoff() { return HO; }, get hs() { return HS; }, hoFinish: (o, x) => hoFinish(o, x),
-    reloadSave() { save = loadSave(); }
+    reloadSave() { save = loadSave(); }, settingsChanged, get embedded() { return !!BR; }
   };
   if (FX) FX.setSpeed(speed);
-  if (HO) hoStart(); else hub();
+  if (HO) { hoStart(); try { BR.ready(); } catch (e) {} } else hub();
 })();

@@ -53,10 +53,12 @@ window.FemcScene = (() => {
   }
   const plain = text => String(text).replace(/\*([^*]+)\*/g, '$1');
 
-  /* ── Music for scenes and screens ── */
+  /* ── Music for scenes and screens ──
+     duck(true): a battle has the floor (its own music plays in the battle frame); the track keeps running silently so it can
+     come back where it was, and so FEMC mode's background music stays paused. mood(): the last mood asked for. */
   const Music = (() => {
-    let cur = null, key = null;
-    const vol = () => (G?.settings().music ?? 60) / 100 * 0.5;
+    let cur = null, key = null, ducked = false, lastMood = null;
+    const vol = () => (ducked ? 0 : (G?.settings().music ?? 60) / 100 * 0.5);
     const fade = (a, to, done) => {
       clearInterval(a._fade);
       a._fade = setInterval(() => {
@@ -66,6 +68,7 @@ window.FemcScene = (() => {
     };
     return {
       set(mood) {
+        lastMood = mood;
         const M = window.FEMC_GAME_PLACES.music;
         const file = M[mood] || M.joy;
         if (file === key) return;
@@ -82,7 +85,8 @@ window.FemcScene = (() => {
       },
       volume() { if (cur) { clearInterval(cur._fade); cur.volume = vol(); } },
       stop() { if (cur) { const a = cur; fade(a, 0, () => a.pause()); } cur = null; key = null; },
-      key: () => key
+      duck(on) { ducked = !!on; if (cur) fade(cur, vol()); },
+      key: () => key, mood: () => lastMood
     };
   })();
 
@@ -337,7 +341,7 @@ window.FemcScene = (() => {
     el.addEventListener('click', e => { if (e.target.closest('.gs-tools, .gs-choices, .gs-log, .gs-summon, .g-card')) return; advanceClick(); });
     const keys = e => {
       if (!el.isConnected) return document.removeEventListener('keydown', keys, true);
-      if (document.querySelector('.g-overlay')) return;
+      if (document.querySelector('.g-overlay, .g-dh')) return;
       if (e.key === ' ' || e.key === 'Enter') { if (!choices.children.length && !e.target.closest?.('button')) { e.preventDefault(); advanceClick(); } }
       if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && choices.children.length) {
         e.preventDefault();
@@ -354,12 +358,16 @@ window.FemcScene = (() => {
     const autoBtn = $('[data-t="auto"]');
     const AUTO = { off: 'Auto', normal: 'Auto ▸', fast: 'Auto ▸▸', slow: 'Auto ·' }, PACE = { off: 0, normal: 1, fast: 0.55, slow: 1.7 }, ORDER = ['off', 'normal', 'fast', 'slow'];
     let mode = G.settings().auto || 'off', readyAt = 0;
-    const setAuto = m => { mode = m; readyAt = 0; autoBtn.textContent = AUTO[m]; autoBtn.setAttribute('aria-pressed', String(m !== 'off')); G.setSetting('auto', m); };
+    const setAuto = (m, persist = true) => { mode = m; readyAt = 0; autoBtn.textContent = AUTO[m]; autoBtn.setAttribute('aria-pressed', String(m !== 'off')); if (persist) G.setSetting('auto', m); };
     setAuto(AUTO[mode] ? mode : 'off');
     autoBtn.addEventListener('click', e => { e.stopPropagation(); setAuto(ORDER[(ORDER.indexOf(mode) + 1) % ORDER.length]); });
     const autoTick = setInterval(() => {
       if (!el.isConnected) return clearInterval(autoTick);
-      const can = mode !== 'off' && !skipping && waiting && !typing && !choices.children.length && $('.gs-log').hidden && !el.querySelector('.gs-summon') && !document.querySelector('.g-overlay, .g-card');
+      // The shared Settings panel can change Auto while this scene waits underneath it.
+      const pref = G.settings().auto;
+      const selected = AUTO[pref] ? pref : 'off';
+      if (selected !== mode) setAuto(selected, false);
+      const can = mode !== 'off' && !skipping && waiting && !typing && !choices.children.length && $('.gs-log').hidden && !el.querySelector('.gs-summon') && !document.querySelector('.g-overlay, .g-card, .g-dh');
       if (!can) { readyAt = 0; return; }
       if (!readyAt) readyAt = Date.now();
       const wait = PACE[mode] * (el.classList.contains('phoning') ? 1400 : Math.min(7000, 1100 + textEl.textContent.length * 38));

@@ -1910,3 +1910,22 @@ html.bt-perf .bt-amk.k-weak, html.bt-perf .bt-amk-ring, html.bt-perf .bt-enemy.a
 .bt-enemy.unreachable .sh-pic img { filter: grayscale(1) brightness(.5) blur(.6px); opacity: .7; }
 .bt-hub-ho .bt-hub-menu .bt-btn[data-go="dorm"] small { opacity: .7; }
 .bt-ho-done h1 { letter-spacing: .04em; }
+
+/* ══ The merge: one look with the life sim (femc-game.html, assets/femc/game/game.css). The same tokens and fonts already;
+   here the panels, cards and results take the story's text-box shape (rounded 4px/26px corners, the pink box shadow), and
+   the embedded frame (html.bt-embed: the Dark Hour inside the story) hides what belongs to the practice page. ══ */
+:root { --sans: "Avenir Next", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif; }
+body.bt-page { font-family: var(--sans); }
+.bt-over p { font: italic 500 18px/1.55 var(--sans); color: #f5d9e7; }
+.bt-memtext { font-family: var(--sans) !important; font-style: italic; }
+.bt-ov-card { border: 2px solid var(--pink-2); border-radius: 4px 26px 4px 26px; box-shadow: 10px 10px 0 rgba(255, 79, 158, .45); background: rgba(20, 7, 15, .97); }
+.bt-solar, .bt-room-in, .bt-shop-detail, .bt-tree-foot { border-radius: 4px 26px 4px 26px; }
+.bt-res-row { border: 1.5px solid rgba(255, 140, 192, .3); }
+.bt-tip { border-radius: 4px 22px 4px 22px; }
+/* Embedded in the story: no practice-only chrome. Its music and sound buttons go (one settings panel in the story), the
+   FEMC badge never shows, and the page sits flush in the frame. */
+html.bt-embed .femc-badge, html.bt-embed [data-tool="music"], html.bt-embed [data-tool="sfx"] { display: none !important; }
+html.bt-embed body { background: #07030a; }
+html.bt-embed .bt-hub-ho .bt-kicker::before { content: "Tonight · "; }
+html.bt-embed .bt-ho-done { background: radial-gradient(ellipse at 50% 40%, #0f2a1c, #030806 70%); }
+html.bt-embed .bt-ho-done h1 { text-shadow: .06em .06em 0 #1d6b4a; }

@@ -1,5 +1,14 @@
-/* FEMC revamp: screens and the day loop (title, date card, school day, Go Out map, the dorm at night, Tartarus handoff,
-   status, phone, exams, shops, saves, settings). Rules live in core.js, content in data/ and links/. */
+/* FEMC revamp: screens and the day loop (title, date card, school day, Go Out map, the dorm at night, the Dark Hour (battles
+   run in this page), phone, exams, shops, saves, settings). Rules live in core.js, content in data/ and links/, the field
+   menu (party, Personas, skills, equipment, items, status, links) in menu.js.
+   Battles: a { battle } line or a Tartarus night writes the handoff (core.js makeHandoff, S.handoff) and opens the Dark Hour
+   layer: a green wash, the glass shatters, the fight's title, then the battle game (femc-battle.html?embed=1) in a
+   full-screen same-origin iframe. It talks back through window.FemcBridge (below; battle.js header). When it finishes, the
+   layer fades back to the scene, the result is applied (applyResult), the results card shows and the scene goes on from the
+   very next line (the live scene player waits underneath). After a reload mid-fight, Continue reopens the fight and the
+   scene is rebuilt from its snapshot (S.pending). The scene's music ducks under the battle's and comes back after.
+   Controls: keyboard, mouse, touch, and a controller through pad.js (it turns the pad into keys; navKeys below moves focus
+   on the life-sim screens, the battle frame runs its own copy). */
 (() => {
   const G = window.FemcGame, SC = window.FemcScene;
   const S = () => G.S;
@@ -7,7 +16,8 @@
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const $ = (s, r = document) => r.querySelector(s);
   const app = document.getElementById('g-app');
-  const BATTLE_PAGE = 'femc-battle.html?from=game';
+  // The battle game, run inside this page. Test params (?seed, ?speed) pass through.
+  const battleSrc = () => { const p = new URLSearchParams(location.search), q = ['seed', 'speed'].filter(k => p.has(k)).map(k => `&${k}=${encodeURIComponent(p.get(k))}`).join(''); return `${G.base}femc-battle.html?embed=1${q}`; };
   // ?debug=1 keeps the Simulate buttons on fight cards (remembered for this tab's session, so it survives the round trip).
   const DEBUG = (() => { try { if (/[?&]debug=1\b/.test(location.search)) sessionStorage.setItem('kg-femc-debug', '1'); if (/[?&]debug=0\b/.test(location.search)) sessionStorage.removeItem('kg-femc-debug'); return sessionStorage.getItem('kg-femc-debug') === '1'; } catch (e) { return /[?&]debug=1\b/.test(location.search); } })();
 
@@ -79,11 +89,11 @@
       <div class="g-when"><span class="g-slot">${esc(G.slotName(S().slot, i))}</span>${i.label ? `<span class="g-label">${esc(i.label)}</span>` : ''}</div>
       <div class="g-sky"><span class="g-wx" title="${esc(G.D.cal.weatherNames[i.weather])}" aria-label="${esc(G.D.cal.weatherNames[i.weather])}">${ICON[i.weather] || ''}</span><span class="g-moon" title="${esc(moonTip)}" aria-label="${esc(moonTip)}">${moonSvg(m.phase)}</span></div>
       <div class="g-me"><span class="g-cond" style="--c:${c.color}" title="${esc(c.desc)}">${esc(c.name)}</span><span class="g-yen">¥${S().yen.toLocaleString()}</span></div>
-      <nav class="g-menu" aria-label="Menu"><button type="button" data-ui="phone">Phone${G.unread() ? `<em>${G.unread()}</em>` : ''}</button><button type="button" data-ui="status">Status</button><button type="button" data-ui="save">Save</button><button type="button" data-ui="settings" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="display:block;transform:skewX(14deg)"><path fill="currentColor" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" transform="translate(-1 0)"/></svg></button></nav>`;
+      <nav class="g-menu" aria-label="Menu"><button type="button" data-ui="menu" class="g-menu-main" title="Menu (M)">Menu</button><button type="button" data-ui="phone">Phone${G.unread() ? `<em>${G.unread()}</em>` : ''}</button><button type="button" data-ui="save">Save</button><button type="button" data-ui="settings" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="display:block;transform:skewX(14deg)"><path fill="currentColor" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" transform="translate(-1 0)"/></svg></button></nav>`;
   }
   hud.addEventListener('click', e => {
     const b = e.target.closest('[data-ui]'); if (!b) return;
-    ({ phone: () => openPhone(), status: openStatus, save: openSaves, settings: openSettings })[b.dataset.ui]?.();
+    ({ phone: () => openPhone(), menu: () => openStatus(), status: () => openStatus(), save: () => openSaves(), settings: () => openSettings() })[b.dataset.ui]?.();
   });
 
   /* ── Overlays ── */
@@ -165,92 +175,182 @@
     });
   }
 
-  /* ── Battle handoff: fights go to the battle game (femc-battle.html). With ?debug=1 a card offers Simulate instead. ── */
-  function goBattle(kind, req, resumeInfo) {
-    S().pending = resumeInfo ? { ctx: resumeInfo.ctx, snap: resumeInfo.snap } : { ctx: { type: kind }, snap: null };
+  /* ── Battle handoff: fights run in this page (the Dark Hour layer below). With ?debug=1 a card offers Simulate as well. ── */
+  // cont: the live scene's "carry on" (the scene player waits underneath the battle); null after a reload.
+  let liveCont = null;
+  function goBattle(kind, req, resumeInfo, cont) {
+    S().pending = resumeInfo ? { ctx: resumeInfo.ctx, snap: resumeInfo.snap, music: SC.Music.mood() } : { ctx: { type: kind }, snap: null, music: SC.Music.mood() };
     G.makeHandoff(kind, req);
     G.save();
-    location.href = BATTLE_PAGE;
+    liveCont = cont || null;
+    openBattle();
   }
   function battleCard(battle, resumeInfo, cont, kind) {
     kind = kind || battle.kind || (battle.script ? 'scripted' : battle.op ? 'operation' : 'tartarus');
     const title = battle.title || (kind === 'tartarus' ? 'Tartarus' : battle.op ? 'Full Moon Operation' : 'Battle');
     const req = { op: battle.op, ops: battle.ops, script: battle.script, segment: battle.segment, title, desc: battle.desc, notes: battle.notes || null, forced: battle.forced !== false && kind !== 'tartarus', party: battle.party };
     const seg1 = battle.script && battle.segment === 1;
-    if (!DEBUG) {
-      // A beat of the fight's title, then the battle game takes over.
-      const o = overlay(`<div class="g-battle g-battle-go"><p class="g-kicker">${kind === 'tartarus' ? 'The Dark Hour' : 'Battle'}</p><h2>${esc(title)}</h2>${battle.desc ? `<p class="g-battle-desc">${esc(battle.desc)}</p>` : ''}</div>`, 'g-battle-ov');
-      o.el.dataset.locked = '1';
-      screenMusic(kind === 'tartarus' ? 'tartarus' : 'fullmoon');
-      setTimeout(() => goBattle(kind, req, resumeInfo), reduced.matches ? 150 : 900);
-      return;
-    }
+    // The Dark Hour transition carries the fight's title.
+    if (!DEBUG) return goBattle(kind, req, resumeInfo, cont);
     const o = overlay(`<div class="g-battle">
-        <p class="g-kicker">${kind === 'tartarus' ? 'The Dark Hour' : 'Battle'} · handoff</p>
+        <p class="g-kicker">${kind === 'tartarus' ? 'The Dark Hour' : 'Battle'} · debug</p>
         <h2>Battle<small>${esc(title)}</small></h2>
         <p class="g-battle-desc">${esc(battle.desc || '')}</p>
-        <p class="g-battle-note">Debug: simulate the result here, or play the fight in the battle game.</p>
-        <div class="g-row"><button type="button" class="g-btn pink" data-b="sim">${seg1 ? 'Simulate (until the Evoker)' : 'Simulate win'}</button>
-        ${kind === 'tartarus' || !req.forced ? '<button type="button" class="g-btn" data-b="lose">Simulate retreat</button>' : ''}
-        <button type="button" class="g-btn" data-b="go">Go to the battle game ▸</button></div></div>`, 'g-battle-ov');
+        <p class="g-battle-note">Debug: simulate the result here, or fight it.</p>
+        <div class="g-row"><button type="button" class="g-btn pink" data-b="go">Fight ▸</button><button type="button" class="g-btn" data-b="sim">${seg1 ? 'Simulate (until the Evoker)' : 'Simulate win'}</button>
+        ${kind === 'tartarus' || !req.forced ? '<button type="button" class="g-btn" data-b="lose">Simulate retreat</button>' : ''}</div></div>`, 'g-battle-ov');
     o.el.dataset.locked = '1';
-    screenMusic(kind === 'tartarus' ? 'tartarus' : 'fullmoon');
     let used = false;
     o.el.addEventListener('click', e => {
       const b = e.target.closest('[data-b]'); if (!b || used) return;
       used = true;
-      if (b.dataset.b === 'go') return goBattle(kind, req, resumeInfo);
+      o.close();
+      if (b.dataset.b === 'go') return goBattle(kind, req, resumeInfo, cont);
       const h = G.makeHandoff(kind, req);
       const r = G.simulate(h, b.dataset.b === 'lose' ? 'retreat' : (seg1 ? 'interrupt' : 'win'));
       if (seg1) r.outcome = 'interrupt';
       const sum = G.applyResult(h, r);
       G.clearHandoff();
-      o.close();
       resultsCard(h, sum, () => cont(sum));
     });
   }
+
+  /* ── The Dark Hour layer: the transition in, the battle frame, the bridge, the fade back ── */
+  let dh = null; // { el, frame, h, cont, ready, timeOk, revealed, leaving }
+  // A glass-break sting (Web Audio; quiet when sound effects are off).
+  function shatterSfx() {
+    const st = G.settings();
+    if (!st.sfx || localStorage.getItem('kg-femc-sound') === 'off') return;
+    try {
+      const C = window.AudioContext || window.webkitAudioContext; if (!C) return;
+      const c = shatterSfx.ctx || (shatterSfx.ctx = new C()); if (c.state === 'suspended') c.resume().catch(() => {});
+      const out = c.createGain(); out.gain.value = Math.max(0, Math.min(1, (st.sfxVol ?? 100) / 100)) * 0.8; out.connect(c.destination);
+      const t = c.currentTime;
+      const noise = (d, f, v, at) => { const n = Math.floor(c.sampleRate * d), b = c.createBuffer(1, n, c.sampleRate), ch = b.getChannelData(0); for (let i = 0; i < n; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / n); const s = c.createBufferSource(), fl = c.createBiquadFilter(), g = c.createGain(); s.buffer = b; fl.type = 'bandpass'; fl.frequency.value = f; g.gain.value = v; s.connect(fl).connect(g).connect(out); s.start(t + at); };
+      const tone = (f, d, v, at, to) => { const o = c.createOscillator(), g = c.createGain(); o.type = 'triangle'; o.frequency.setValueAtTime(f, t + at); if (to) o.frequency.exponentialRampToValueAtTime(to, t + at + d); g.gain.setValueAtTime(v, t + at); g.gain.exponentialRampToValueAtTime(0.0001, t + at + d); o.connect(g).connect(out); o.start(t + at); o.stop(t + at + d + 0.03); };
+      tone(90, 0.5, 0.35, 0, 38); noise(0.35, 5200, 0.32, 0.38); [0.4, 0.45, 0.52, 0.6, 0.7].forEach((at, i) => tone(3600 + i * 420, 0.08, 0.04, at, 2600));
+    } catch (e) {}
+  }
+  function shardsHtml() {
+    // Glass pieces from the centre outward: each a full-screen layer clipped to one wedge, flying off on its own vector.
+    const n = 14, out = [];
+    for (let k = 0; k < n; k++) {
+      const a0 = (k / n) * Math.PI * 2, a1 = ((k + 1) / n) * Math.PI * 2, r = 150, cx = 50 + Math.cos(a0 * 3) * 3, cy = 48 + Math.sin(a0 * 2) * 3;
+      const p = [[cx, cy], [50 + Math.cos(a0) * r, 50 + Math.sin(a0) * r], [50 + Math.cos(a1) * r, 50 + Math.sin(a1) * r]].map(([x, y]) => `${x.toFixed(1)}% ${y.toFixed(1)}%`).join(',');
+      const m = (a0 + a1) / 2;
+      out.push(`<i style="clip-path:polygon(${p});--x:${(Math.cos(m) * 60).toFixed(1)}vw;--y:${(Math.sin(m) * 60).toFixed(1)}vh;--r:${((k * 53) % 70) - 35}deg;--d:${((k * 7) % 5) * 0.025}s"></i>`);
+    }
+    return out.join('');
+  }
+  function openBattle() {
+    const h = S().handoff;
+    if (!h || dh) return;
+    const R = h.request || {}, kind = h.kind;
+    const kicker = kind === 'operation' || (R.op && kind !== 'tartarus') ? 'Full Moon · The Dark Hour' : 'The Dark Hour';
+    const title = R.title || (kind === 'tartarus' ? 'Tartarus' : 'Battle');
+    document.querySelectorAll('.g-overlay').forEach(x => x.remove());
+    SC.Music.duck(true);
+    const el = document.createElement('div');
+    el.className = `g-dh${reduced.matches ? ' calm' : ''}`;
+    el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', title);
+    el.innerHTML = `<div class="g-dh-frame"></div>
+      <div class="g-dh-fx" aria-hidden="true"><div class="g-dh-wash"></div><div class="g-dh-black"></div><div class="g-dh-glass">${shardsHtml()}</div>
+        <svg class="g-dh-cracks" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M50 48 L8 6 M50 48 L92 10 M50 48 L97 60 M50 48 L70 98 M50 48 L22 96 M50 48 L2 58 M50 48 L60 2 M30 27 L41 22 M74 30 L68 22 M74 55 L80 46 M38 72 L30 66 M18 52 L22 44" /></svg>
+        <div class="g-dh-title"><small>${esc(kicker)}</small><b>${esc(title)}</b>${h.date ? `<span>${esc(h.date.md)} · ${esc(h.date.weekday || '')}</span>` : ''}</div></div>
+      <p class="g-dh-wait" aria-live="polite"></p>`;
+    document.body.appendChild(el);
+    document.documentElement.classList.add('g-in-battle');
+    const st = dh = { el, h, cont: liveCont, ready: false, timeOk: false, revealed: false, leaving: false, frame: null };
+    liveCont = null;
+    requestAnimationFrame(() => el.classList.add('go'));
+    setTimeout(() => { if (dh === st && !reduced.matches) shatterSfx(); }, 330);
+    setTimeout(() => {
+      if (dh !== st) return;
+      const f = document.createElement('iframe');
+      f.className = 'g-dh-iframe'; f.title = title; f.setAttribute('allow', 'autoplay; gamepad; fullscreen');
+      f.src = battleSrc();
+      el.querySelector('.g-dh-frame').appendChild(f);
+      st.frame = f;
+    }, reduced.matches ? 0 : 420);
+    setTimeout(() => { st.timeOk = true; reveal(st); }, reduced.matches ? 250 : 2500);
+    // If the frame is slow to report in, say so; it still opens on its own once it's up.
+    setTimeout(() => { if (dh === st && !st.revealed) el.querySelector('.g-dh-wait').textContent = 'Loading the Dark Hour…'; }, 6000);
+  }
+  function reveal(st) {
+    if (dh !== st || st.revealed || !st.ready || !st.timeOk) return;
+    st.revealed = true;
+    st.el.classList.add('live');
+    setTimeout(() => { try { st.frame?.contentWindow?.focus(); } catch (e) {} }, 60);
+  }
+  // The battle is over (result: the contract's `result`, or null when the frame had nothing to fight): fade back.
+  function leaveBattle(result) {
+    const st = dh;
+    if (!st || st.leaving) return;
+    st.leaving = true;
+    if (result) G.finishHandoff(JSON.parse(JSON.stringify(result)));
+    else if (S().handoff && S().handoff.status === 'pending') { G.clearHandoff(); }
+    st.el.classList.add('out');
+    setTimeout(() => {
+      st.frame?.remove();
+      st.el.classList.add('gone');
+      document.documentElement.classList.remove('g-in-battle');
+      dh = null;
+      setTimeout(() => st.el.remove(), 650);
+      afterBattle(st.cont);
+    }, reduced.matches ? 60 : 560);
+  }
+  // Apply a finished fight, show the results card, then go on: the live scene's next line, or the saved snapshot.
+  function afterBattle(cont) {
+    const h = S().handoff;
+    SC.Music.duck(false);
+    if (!h || h.status !== 'done' || !h.result) { if (h && h.status !== 'pending') G.clearHandoff(); return cont ? cont({}) : (S().pending ? resumePending() : run()); }
+    const sum = G.applyResult(h, h.result);
+    G.clearHandoff();
+    resultsCard(h, sum, () => {
+      if (cont) { if (!S().pending?.snap) { S().pending = null; G.save(); } return cont(sum); }
+      resumePending();
+    });
+  }
+  // On load / Continue: a fight in progress opens again; a finished one that wasn't applied yet is applied now.
+  function resumeHandoff() {
+    const h = S().handoff;
+    hud.hidden = true;
+    if (h.status === 'done') { show('', 'is-scene'); return afterBattle(null); }
+    show('', 'is-scene');
+    openBattle();
+  }
+  window.FemcBridge = {
+    handoff: () => (S().handoff ? JSON.parse(JSON.stringify(S().handoff)) : null),
+    battleSave: () => (S().battleSave ? JSON.parse(JSON.stringify(S().battleSave)) : null),
+    carry: () => (S().battleCarry ? JSON.parse(JSON.stringify(S().battleCarry)) : null),
+    saveBattle: b => { if (b && typeof b === 'object') G.setBattleSave(JSON.parse(JSON.stringify(b))); },
+    settings: () => ({ ...G.settings() }),
+    setSettings: p => { if (p && typeof p === 'object') { G.setSettings(JSON.parse(JSON.stringify(p))); SC.Music.volume(); } },
+    openSettings: (onClose, startKey) => openSettings({ inBattle: true, onClose, startKey }),
+    closeSettings: () => settingsPanel?.close(),
+    key: () => {},
+    ready: () => { if (dh) { dh.ready = true; reveal(dh); } },
+    finish: result => leaveBattle(result || null)
+  };
+  // The night's report after the battle's own results: the same look as the battle's results screen.
   function resultsCard(h, sum, done) {
     if (h.kind === 'scripted' && !sum.fragments.length) { done(); return; }
     const exp = Object.entries(sum.exp || {});
+    const lv = h.result?.levels || {};
+    const opName = id => G.D.battle.ops?.find(o => o.id === id)?.name || G.D.cal.ops.find(o => o.op === id)?.name || id;
+    const word = sum.outcome === 'win' ? (h.kind === 'tartarus' ? 'Back safe' : 'Victory') : sum.outcome === 'interrupt' ? 'Interrupted' : sum.outcome === 'lose' ? 'Defeated' : 'Retreated';
     const o = overlay(`<div class="g-results">
-      <p class="g-kicker">${h.kind === 'tartarus' ? 'Back from Tartarus' : 'Operation'}${sum.simulated ? ' · simulated' : ''}</p>
-      <h2>${sum.outcome === 'win' ? (h.kind === 'tartarus' ? 'Back safe' : 'Victory') : sum.outcome === 'interrupt' ? 'Interrupted' : sum.outcome === 'lose' ? 'Defeated' : 'Retreated'}</h2>
-      ${exp.length ? `<ul class="g-exp">${exp.map(([m, x]) => `<li><b>${esc(G.name(m))}</b><span>+${x} EXP</span></li>`).join('')}</ul>` : ''}
-      <ul class="g-gains">${sum.yen ? `<li>¥${sum.yen.toLocaleString()}</li>` : ''}${sum.items.map(([k, n]) => `<li>${esc(G.D.battle.items?.[k]?.name || k)} ${n > 0 ? `×${n}` : `used ×${-n}`}</li>`).join('')}${sum.bosses.length ? `<li>Cleared: ${sum.bosses.map(esc).join(', ')}</li>` : ''}${sum.fragments.map(f => `<li class="frag">Memory fragment: ${esc(G.fragmentInfo(f).title)}</li>`).join('')}${S().tartarus.maxFloor ? `<li>Best floor: ${S().tartarus.maxFloor}F</li>` : ''}</ul>
-      <button type="button" class="g-btn pink" data-close>Continue</button></div>`, 'g-results-ov', done);
+      <p class="g-kicker">${esc(h.date?.md || '')} · ${h.kind === 'tartarus' ? 'Back from Tartarus' : 'The Dark Hour'}${sum.simulated ? ' · simulated' : ''}</p>
+      <h2 class="g-res-word">${esc(word)}<small>Results</small></h2>
+      ${exp.length ? `<ul class="g-exp">${exp.map(([m, x]) => `<li><b>${esc(G.name(m))}${lv[m] ? `<small>Lv ${lv[m]}</small>` : ''}</b><span>+${x} EXP</span></li>`).join('')}</ul>` : ''}
+      <ul class="g-gains">${sum.yen ? `<li class="yen">${sum.yen > 0 ? '+' : '−'}¥${Math.abs(sum.yen).toLocaleString()}</li>` : ''}${sum.items.map(([k, n]) => `<li>${esc(G.D.battle.items?.[k]?.name || k)} ${n > 0 ? `×${n}` : `used ×${-n}`}</li>`).join('')}${sum.bosses.length ? `<li class="boss">Cleared: ${sum.bosses.map(b => esc(opName(b))).join(', ')}</li>` : ''}${sum.fragments.map(f => `<li class="frag">Memory fragment: ${esc(G.fragmentInfo(f).title)}</li>`).join('')}${h.kind === 'tartarus' && S().tartarus.maxFloor ? `<li>Best floor: ${S().tartarus.maxFloor}F</li>` : ''}</ul>
+      <div class="g-row"><button type="button" class="g-btn pink" data-close>Continue ▸</button></div></div>`, 'g-results-ov', done);
     return o;
-  }
-  // Back from the battle page: read the result, then pick up where the scene left off.
-  function checkReturn() {
-    const h = G.readHandoff();
-    if (!h || !S().handoffId || h.id !== S().handoffId) return false;
-    if (h.status === 'done' && h.result) {
-      const sum = G.applyResult(h, h.result);
-      G.clearHandoff();
-      resultsCard(h, sum, () => resumePending());
-      return true;
-    }
-    const o = overlay(`<div class="g-results"><p class="g-kicker">Handoff</p><h2>The fight didn't report back</h2>
-      <p>The battle game hasn't sent a result for this ${esc(h.kind)} yet.</p>
-      <div class="g-row">${DEBUG ? '<button type="button" class="g-btn" data-r="sim">Simulate the result</button>' : ''}<button type="button" class="g-btn pink" data-r="go">Back to the battle game</button>${h.request.forced ? '' : '<button type="button" class="g-btn" data-r="cancel">Call it off</button>'}</div></div>`);
-    o.el.dataset.locked = '1';
-    let used = false;
-    o.el.addEventListener('click', e => {
-      const b = e.target.closest('[data-r]'); if (!b || used) return;
-      used = true;
-      if (b.dataset.r === 'go') { location.href = BATTLE_PAGE; return; }
-      o.close();
-      if (b.dataset.r === 'cancel') { G.clearHandoff(); S().pending = null; G.save(); run(); return; }
-      const sum = G.applyResult(h, G.simulate(h, h.request.script && h.request.segment === 1 ? 'interrupt' : 'win'));
-      G.clearHandoff();
-      resultsCard(h, sum, () => resumePending());
-    });
-    return true;
   }
   function resumePending() {
     const p = S().pending;
     if (!p) return run();
-    if (p.snap) return playCtx(p.ctx, { onDone: () => afterCtx(p.ctx) }, p.snap);
+    if (p.snap) { if (p.music) SC.Music.set(p.music); return playCtx(p.ctx, { onDone: () => afterCtx(p.ctx) }, p.snap); }
     S().pending = null;
     if (p.ctx.type === 'tartarus') { S().spent[`${S().day}-evening`] = 'tartarus'; G.save(); return advance(); }
     run();
@@ -276,6 +376,8 @@
     if (document.querySelector('.gs:not(.out)')) return;
     const s = S();
     if (s.phase === 'title' || !s.started) return titleScreen();
+    if (dh) return;
+    if (s.handoff) return resumeHandoff();
     if (s.phase === 'prologue') return startPrologue();
     paintHud();
     if (s.pending) return resumePending();
@@ -327,6 +429,7 @@
   }
 
   /* ── Title ── */
+  const autoLine = () => { let x = null; try { x = G.slotInfo(JSON.parse(localStorage.getItem(G.KEY))); } catch (e) {} return x ? `${x.md} ${x.day} · ${x.slot}${x.lv ? ` · Lv ${x.lv}` : ''}${x.fight ? ' · in the Dark Hour' : ''}` : ''; };
   function titleScreen() {
     hud.hidden = true;
     setBg(null);
@@ -336,11 +439,12 @@
       <img class="g-title-art" src="${G.base}assets/femc/title/keyart.webp" alt="">
       <div class="g-title-copy"><p class="g-kicker">Persona 3 · FEMC</p><h1>FEMC<small>a year that made a place for her</small></h1>
       <div class="g-title-menu" role="menu">${has ? '<button type="button" role="menuitem" data-t="continue">Continue</button>' : ''}<button type="button" role="menuitem" data-t="new">New Game</button><button type="button" role="menuitem" data-t="load">Load</button><button type="button" role="menuitem" data-t="settings">Settings</button></div>
-      <p class="g-title-foot">${has ? `Autosave · ${esc(G.slotLabel(JSON.parse(localStorage.getItem(G.KEY))))}` : 'No save yet'}</p></div></section>`, 'is-title');
+      <p class="g-title-foot">${has ? `Autosave · ${esc(autoLine())}` : 'No save yet'}</p></div>
+      <a class="g-title-practice" href="femc-battle.html?practice=1" title="Practice mode: the battle game on its own, with its own save">Practice</a></section>`, 'is-title');
     main.querySelector('.g-title-menu button')?.focus({ preventScroll: true });
     main.querySelectorAll('[data-t]').forEach(b => b.addEventListener('click', () => {
       const t = b.dataset.t;
-      if (t === 'continue') { if (S().phase === 'title') S().phase = 'play'; G.save(); run(); }
+      if (t === 'continue') { if (S().phase === 'title') S().phase = 'play'; G.save(); cardDay = null; run(); }
       if (t === 'new') {
         if (has) {
           const o = overlay(`<h2>New game?</h2><p>This replaces the autosave. Your three save slots stay.</p><div class="g-row"><button type="button" class="g-btn pink" data-y>Start over</button><button type="button" class="g-btn" data-close>Cancel</button></div>`);
@@ -356,6 +460,8 @@
   function startPrologue() {
     hud.hidden = true;
     show('', 'is-scene');
+    const p = S().pending;
+    if (p && p.ctx?.type === 'prologue' && p.snap) return resumePending();
     playCtx({ type: 'prologue' }, { onDone: r => { if (r.finished) endPrologue(); } });
   }
   function endPrologue() {
@@ -634,8 +740,8 @@
   }
   function tartarusPrompt() {
     const s = S(), av = G.available().filter(x => x !== 'solar');
-    let party = (s.tartarus.lastParty || []).filter(x => av.includes(x));
-    if (!party.length) party = av.slice(0, 3);
+    // Only suggest companions before the first selection; an empty saved team is intentional.
+    let party = Array.isArray(s.tartarus.lastParty) ? s.tartarus.lastParty.filter(x => av.includes(x)) : av.slice(0, 3);
     const nav = G.navigator();
     const o = overlay(`<div class="g-tt"><p class="g-kicker">The Dark Hour · Tartarus</p><h2>Climb tonight?<small>Floors open up to ${G.floorCap()}F · best ${s.tartarus.maxFloor || 0}F</small></h2>
       <p>Pick up to three to go in with Solar.${nav ? ` ${esc(G.name(nav))} will navigate.` : ''}</p>
@@ -659,43 +765,10 @@
     });
   }
 
-  /* ── Status (P3R pause menu) ── */
-  function openStatus(tab = 'stats') {
-    const s = S();
-    const tabs = [['stats', 'Solar'], ['links', 'Social Links'], ['journal', 'Journal'], ['items', 'Items']];
-    const render = () => {
-      let body = '';
-      if (tab === 'stats') {
-        const c = G.D.stats.conditions[s.condition], i = G.dayInfo();
-        body = `<div class="g-st-solar"><img src="${G.base}assets/femc/portraits/solar/neutral.webp" alt=""><div>
-          <p class="g-st-name">Solar<small>3rd year · Gekkoukan High</small></p>
-          <ul class="g-st-facts"><li><span>Date</span>${esc(i.md)} ${esc(i.day)} · ${esc(G.slotName(s.slot, i))}</li><li><span>Condition</span><b style="color:${c.color}">${esc(c.name)}</b></li><li><span>Yen</span>¥${s.yen.toLocaleString()}</li><li><span>Tartarus</span>${s.tartarus.maxFloor ? `${s.tartarus.maxFloor}F · ${s.tartarus.nights} night${s.tartarus.nights === 1 ? '' : 's'}` : 'Not yet'}</li></ul></div></div>
-          <div class="g-st-stats">${Object.entries(G.D.stats.stats).map(([k, d]) => `<div class="g-st-stat" style="--c:${d.color}"><p><b>${esc(d.name)}</b><span>${esc(G.statRankName(k))}</span><small>Lv ${G.statRank(k)}</small></p><div class="g-st-bar"><i style="width:${Math.round(G.statProgress(k) * 100)}%"></i></div></div>`).join('')}</div>
-          <div class="g-st-party"><h3>S.E.E.S.</h3><p>${G.available().map(m => `<span class="g-chip on">${esc(G.name(m))}${s.battle.levels[m] ? ` · Lv ${s.battle.levels[m]}` : ''}</span>`).join('')}</p></div>
-          ${Object.keys(s.exams).filter(k => s.exams[k].posted).length ? `<div class="g-st-party"><h3>Exams</h3><p>${Object.entries(s.exams).filter(([, x]) => x.posted).map(([k, x]) => `<span class="g-chip">${esc(G.D.q.exams[k]?.name || k)} · #${x.place}</span>`).join('')}</p></div>` : ''}`;
-      }
-      if (tab === 'links') {
-        const met = Object.values(G.LINKS).filter(l => G.isMet(l.id));
-        body = met.length ? `<div class="g-st-links">${met.map(l => { const p = G.progress(l.id), art = G.tarot(l); return `<div class="g-st-link${p.reversed ? ' rev' : ''}"><div class="g-tarot"${art ? ` style="background-image:url('${art}')"` : ''}><span>${esc(l.numeral || '✦')}</span></div><div><b>${esc(l.short)}</b><small>${esc(l.arcana)}${p.reversed ? ' · Reversed' : ''}</small><p class="g-pips">${Array.from({ length: 10 }, (_, i) => `<i class="${i < p.rank ? 'on' : ''}"></i>`).join('')}</p><small class="g-hint">${esc(p.rank >= 10 ? 'MAX' : l.closes && S().day > G.dayOf(l.closes) ? 'Gone' : G.homeOf(l).hint || '')}</small></div></div>`; }).join('')}</div>` : '<p class="g-note">No bonds yet. Go out after school and meet people.</p>';
-      }
-      if (tab === 'journal') {
-        const fr = s.fragments.map(G.fragmentInfo);
-        body = `<p class="g-note">Things that feel too familiar. ${fr.length ? `${fr.length} so far.` : 'Nothing yet.'}</p><div class="g-frags">${fr.map(f => `<figure class="g-frag"><img src="${G.base}assets/femc/memories/${f.id}.webp" alt=""><figcaption><b>${esc(f.title)}</b>${esc(f.text || '')}</figcaption></figure>`).join('')}</div>`;
-      }
-      if (tab === 'items') {
-        const inv = Object.entries(s.inventory);
-        body = `<h3>Items</h3>${inv.length ? `<ul class="g-list">${inv.map(([k, n]) => `<li><b>${esc(G.D.battle.items?.[k]?.name || k)}</b><span>×${n}</span></li>`).join('')}</ul>` : '<p class="g-note">Nothing yet. Aohige Pharmacy is on the Strip.</p>'}
-          ${s.gear.length ? `<h3>Gear</h3><ul class="g-list">${s.gear.map(k => `<li><b>${esc(G.D.battle.gear?.[k]?.name || k)}</b></li>`).join('')}</ul>` : ''}
-          <h3>Books</h3>${s.books.owned.length ? `<ul class="g-list">${s.books.owned.map(k => { const b = G.bookById(k); return `<li><b>${esc(b?.name || k)}</b><span>${s.books.done.includes(k) ? 'Read' : `${s.books.progress[k] || 0}/${b?.nights}`}</span></li>`; }).join('')}</ul>` : '<p class="g-note">Bookworms on the Strip sells used books.</p>'}
-          ${Object.values(s.jobs).some(j => j.hired) ? `<h3>Jobs</h3><ul class="g-list">${G.D.jobs.filter(j => G.jobState(j.id).hired).map(j => `<li><b>${esc(j.name)}</b><span>${G.jobState(j.id).shifts} shifts</span></li>`).join('')}</ul>` : ''}`;
-      }
-      o.el.querySelector('.g-st-body').innerHTML = body;
-      o.el.querySelectorAll('[data-tab]').forEach(b => { b.classList.toggle('on', b.dataset.tab === tab); b.setAttribute('aria-selected', b.dataset.tab === tab); });
-    };
-    const o = overlay(`<div class="g-status"><div class="g-st-head"><h2>Status</h2><button type="button" class="g-btn small" data-close>Close</button></div>
-      <nav class="g-tabs" role="tablist">${tabs.map(([k, n]) => `<button type="button" role="tab" data-tab="${k}">${n}</button>`).join('')}</nav><div class="g-st-body"></div></div>`, 'g-status-ov');
-    o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; render(); }));
-    render();
+  /* ── The field menu (menu.js): party, Personas, skills, equipment, items, status, social links, journal, calendar ── */
+  function openStatus(tab) {
+    if (dh || !window.FemcMenu) return;
+    window.FemcMenu.open(tab === 'stats' ? 'status' : tab);
   }
 
   /* ── Phone ── */
@@ -757,54 +830,182 @@
     render();
   }
 
-  /* ── Saves ── */
+  /* ── Saves: the autosave and three slots, each the whole game (life sim + battle progress), and a backup code ── */
   function openSaves(fromTitle) {
-    const render = () => {
-      const auto = (() => { try { return JSON.parse(localStorage.getItem(G.KEY)); } catch (e) { return null; } })();
-      o.el.querySelector('.g-slots').innerHTML = `<div class="g-slot auto"><b>Autosave</b><span>${auto?.started ? esc(G.slotLabel(auto)) : 'Empty'}</span><small>Saves after everything you do.</small></div>` +
-        [1, 2, 3].map(n => { const x = G.readSlot(n); return `<div class="g-slot"><b>Slot ${n}</b><span>${x ? esc(x.label) : 'Empty'}</span><small>${x ? new Date(x.at).toLocaleString() : ''}</small><div class="g-row">${!fromTitle && S().phase === 'play' ? `<button type="button" class="g-btn small" data-save="${n}">Save</button>` : ''}${x ? `<button type="button" class="g-btn small" data-load="${n}">Load</button>` : ''}</div></div>`; }).join('');
-      o.el.querySelectorAll('[data-save]').forEach(b => b.addEventListener('click', () => { G.saveSlot(+b.dataset.save); G.sfx('femc-rankup'); render(); }));
-      o.el.querySelectorAll('[data-load]').forEach(b => b.addEventListener('click', () => { if (G.loadSlot(+b.dataset.load)) { o.close(); document.querySelectorAll('.gs').forEach(x => x.remove()); cardDay = S().day; run(); } }));
+    const canSave = !fromTitle && S().phase === 'play' && !S().handoff;
+    let armed = null;
+    const card = (n, x, info) => {
+      const head = n ? `<b class="g-slot-n">${String(n).padStart(2, '0')}</b>` : '<b class="g-slot-n auto">A</b>';
+      if (!info) return `<div class="g-slot empty${n ? '' : ' auto'}">${head}<div class="g-slot-main"><span class="g-slot-when">${n ? 'Empty' : 'Autosave · empty'}</span><small>${n ? 'No data' : 'Saves after everything you do.'}</small></div>
+        <div class="g-slot-acts">${n && canSave ? `<button type="button" class="g-btn small pink" data-save="${n}">Save</button>` : ''}</div></div>`;
+      return `<div class="g-slot${n ? '' : ' auto'}">${head}<div class="g-slot-month"><span>${esc(info.month.slice(0, 3).toUpperCase())}</span></div>
+        <div class="g-slot-main"><span class="g-slot-when"><b>${esc(info.md)}</b> ${esc(info.day)} · ${esc(info.slot)}</span>
+          <small>${info.prologue ? 'Prologue' : info.lv ? `Solar Lv ${info.lv}` : 'Solar'}${info.fight ? ' · in the Dark Hour' : ''}${info.ngp ? ` · New Game+ ${info.ngp}` : ''} · Play ${esc(info.play)}${n && x ? ` · saved ${esc(new Date(x.at).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }))}` : ''}</small></div>
+        <div class="g-slot-acts">${n && canSave ? `<button type="button" class="g-btn small${armed === `s${n}` ? ' pink' : ''}" data-save="${n}">${armed === `s${n}` ? 'Overwrite?' : 'Save'}</button>` : ''}<button type="button" class="g-btn small${armed === `l${n}` ? ' pink' : ''}" data-load="${n}">${armed === `l${n}` ? 'Load it?' : 'Load'}</button></div></div>`;
     };
-    const o = overlay(`<div class="g-saves"><div class="g-st-head"><h2>Save data</h2><button type="button" class="g-btn small" data-close>Close</button></div>
+    const render = () => {
+      let auto = null; try { auto = JSON.parse(localStorage.getItem(G.KEY)); } catch (e) {}
+      const autoInfo = G.slotInfo(auto);
+      o.el.querySelector('.g-slots').innerHTML = card(0, null, autoInfo).replace(/<button[^>]*data-load="0"[^>]*>[^<]*<\/button>/, '') + [1, 2, 3].map(n => { const x = G.readSlot(n); return card(n, x, x ? G.slotInfo(x.state) : null); }).join('');
+      o.el.querySelectorAll('[data-save]').forEach(b => b.addEventListener('click', () => {
+        const n = +b.dataset.save;
+        if (G.readSlot(n) && armed !== `s${n}`) { armed = `s${n}`; render(); o.el.querySelector(`[data-save="${n}"]`)?.focus(); return; }
+        armed = null; G.saveSlot(n); G.sfx('femc-rankup'); render(); o.el.querySelector(`[data-save="${n}"]`)?.focus();
+      }));
+      o.el.querySelectorAll('[data-load]').forEach(b => b.addEventListener('click', () => {
+        const n = +b.dataset.load;
+        if (!fromTitle && armed !== `l${n}`) { armed = `l${n}`; render(); o.el.querySelector(`[data-load="${n}"]`)?.focus(); return; }
+        if (G.loadSlot(n)) { o.close(); document.querySelectorAll('.gs').forEach(x => x.remove()); document.documentElement.classList.remove('g-in-scene'); cardDay = S().day; if (S().phase === 'title') S().phase = 'play'; run(); }
+      }));
+    };
+    const o = overlay(`<div class="g-saves"><div class="g-st-head"><h2>${canSave ? 'Save' : 'Load'}<small>Each slot holds the whole game: the year and the Dark Hour</small></h2><button type="button" class="g-btn small" data-close>Close</button></div>
       <div class="g-slots"></div>
-      <details class="g-io"><summary>Export / import</summary>
-        <p class="g-note small">Copy this code somewhere safe, or paste one in to load it.</p>
-        <textarea rows="4" spellcheck="false" aria-label="Save code"></textarea>
-        <div class="g-row"><button type="button" class="g-btn small" data-x="export">Export</button><button type="button" class="g-btn small" data-x="file">Download file</button><button type="button" class="g-btn small" data-x="import">Import</button></div><p class="g-io-msg" aria-live="polite"></p></details></div>`, 'g-saves-ov');
+      <details class="g-io"><summary>Backup code</summary>
+        <p class="g-note small">Your whole game as text. Copy it somewhere safe, or paste one in to load it. Codes from before the merge still work.</p>
+        <textarea rows="4" spellcheck="false" aria-label="Backup code"></textarea>
+        <div class="g-row"><button type="button" class="g-btn small" data-x="export">Show my code</button><button type="button" class="g-btn small" data-x="file">Download file</button><button type="button" class="g-btn small" data-x="import">Load this code</button></div><p class="g-io-msg" aria-live="polite"></p></details></div>`, 'g-saves-ov');
     const ta = o.el.querySelector('textarea'), msg = o.el.querySelector('.g-io-msg');
     o.el.querySelectorAll('[data-x]').forEach(b => b.addEventListener('click', () => {
       if (b.dataset.x === 'export') { ta.value = G.exportCode(); ta.select(); msg.textContent = 'Copied into the box.'; try { navigator.clipboard?.writeText(ta.value); } catch (e) {} }
       if (b.dataset.x === 'file') { const blob = new Blob([JSON.stringify({ game: G.KEY, state: S() }, null, 1)], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `femc-revamp-${G.dayInfo().md.replace('/', '-')}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); }
-      if (b.dataset.x === 'import') { if (G.importCode(ta.value)) { msg.textContent = 'Loaded.'; o.close(); document.querySelectorAll('.gs').forEach(x => x.remove()); cardDay = S().day; if (S().phase === 'title') S().phase = 'play'; run(); } else msg.textContent = 'That code didn’t work.'; }
+      if (b.dataset.x === 'import') {
+        const r = G.importCode(ta.value);
+        if (r === 'battle') { msg.textContent = 'Battle progress loaded into this game.'; return; }
+        if (r) { msg.textContent = 'Loaded.'; o.close(); document.querySelectorAll('.gs').forEach(x => x.remove()); document.documentElement.classList.remove('g-in-scene'); cardDay = S().day; if (S().phase === 'title') S().phase = 'play'; run(); } else msg.textContent = 'That code didn’t work.';
+      }
     }));
     render();
   }
 
-  /* ── Settings ── */
-  function openSettings() {
-    const st = G.settings();
-    const sel = (k, label, opts) => `<label class="g-set"><span>${label}</span><select data-k="${k}">${opts.map(([v, n]) => `<option value="${v}"${String(st[k]) === String(v) ? ' selected' : ''}>${n}</option>`).join('')}</select></label>`;
-    const o = overlay(`<div class="g-settings"><div class="g-st-head"><h2>Settings</h2><button type="button" class="g-btn small" data-close>Done</button></div>
-      ${sel('text', 'Text speed', [['slow', 'Slow'], ['normal', 'Normal'], ['fast', 'Fast'], ['instant', 'Instant']])}
-      ${sel('auto', 'Auto-advance', [['off', 'Off'], ['slow', 'Slow'], ['normal', 'Normal'], ['fast', 'Fast']])}
-      <label class="g-set"><span>Music volume</span><input type="range" min="0" max="100" step="5" value="${st.music}" data-k="music"></label>
-      ${sel('sfx', 'Sound effects', [['true', 'On'], ['false', 'Off']])}
-      ${sel('dateCard', 'Date card each morning', [['true', 'On'], ['false', 'Off']])}
-      ${sel('quickClass', 'Skip quiet class periods', [['false', 'Off'], ['true', 'On']])}
-      ${S().phase !== 'title' ? '<div class="g-row"><button type="button" class="g-btn small" data-title>Return to title</button></div>' : ''}</div>`, 'g-settings-ov');
-    o.el.querySelectorAll('[data-k]').forEach(c => c.addEventListener(c.type === 'range' ? 'input' : 'change', () => {
-      let v = c.value; if (v === 'true') v = true; else if (v === 'false') v = false; else if (c.type === 'range') v = +v;
-      G.setSetting(c.dataset.k, v);
-    }));
+  /* ── Settings: one panel for the story and the battles (core.js DEFAULTS; battle.js reads the same store) ── */
+  let settingsPanel = null;
+  const ONOFF = [[true, 'On'], [false, 'Off']], OFFON = [[false, 'Off'], [true, 'On']];
+  const settingRows = () => {
+    const DF = G.D.battle.difficulty || {};
+    return [
+      { h: 'Story' },
+      { k: 'text', label: 'Text speed', opts: [['slow', 'Slow'], ['normal', 'Normal'], ['fast', 'Fast'], ['instant', 'Instant']], desc: () => 'How fast lines type out, in scenes and in battle.' },
+      { k: 'auto', label: 'Auto-advance', opts: [['off', 'Off'], ['slow', 'Slow'], ['normal', 'Normal'], ['fast', 'Fast']], desc: () => 'Scenes move on by themselves after each line. The Auto button in a scene cycles it too.' },
+      { k: 'dateCard', label: 'Date card', opts: ONOFF, desc: () => 'The calendar flip each morning.' },
+      { k: 'quickClass', label: 'Quiet class periods', opts: [[false, 'Show'], [true, 'Skip']], desc: () => 'Skip class periods where nothing happens.' },
+      { h: 'Battle' },
+      { k: 'difficulty', label: 'Difficulty', opts: Object.keys(DF).map(id => [id, DF[id].name]), desc: v => DF[v]?.desc || '' },
+      { k: 'battleSpeed', label: 'Battle speed', opts: [[1, '1x'], [2, '2x'], [3, '3x']], desc: () => 'How fast battle animations play. Rush doubles it.' },
+      { k: 'cutins', label: 'Persona cut-ins', opts: [['always', 'Always'], ['first', '1st per battle'], ['off', 'Off']], desc: () => 'The Evoker summon before a Persona skill: every time, the first time per member each battle, or never.' },
+      { k: 'rushWhere', label: 'Rush allowed in', opts: [['normal', 'Normal rooms'], ['strong', '+ Strong rooms'], ['all', 'Every fight']], desc: () => 'Where Rush (auto-battle) may run.' },
+      { k: 'rushStop', label: 'Rush stops below', opts: [[30, '30% HP'], [50, '50% HP']], desc: v => `Rush hands control back when anyone drops below ${v}% HP, or Solar below 50%.` },
+      { k: 'remember', label: 'Remember cursor', opts: ONOFF, desc: () => 'Each member’s battle menu reopens on their last command, skill, item and target.' },
+      { k: 'numbers', label: 'Damage numbers', opts: ONOFF, desc: () => 'Damage and healing numbers. WEAK, CRITICAL and the rest still show.' },
+      { k: 'tips', label: 'Navigator tips', opts: ONOFF, desc: () => 'A small tip the first time each battle mechanic shows up.' },
+      { k: 'shake', label: 'Screen shake', opts: ONOFF, desc: () => 'The screen shakes on criticals, weaknesses and All-Out Attacks.' },
+      { k: 'calm', label: 'Reduce flashes', opts: OFFON, desc: () => 'Softens white flashes and bursts (Evoker, Theurgy, lightning, criticals).' },
+      { k: 'perf', label: 'Performance mode', opts: OFFON, desc: () => 'No glass shatter or ash, fewer particles, a lighter video. Try it if battles feel slow.' },
+      { k: 'pad', label: 'Controller buttons', opts: [['auto', 'Auto'], ['xbox', 'Xbox'], ['ps', 'PlayStation']], desc: () => 'Which button prompts show while you play with a controller.' },
+      { h: 'Sound' },
+      { k: 'music', label: 'Music volume', range: true, desc: v => (v ? 'Music, everywhere.' : 'Music is off.') },
+      { k: 'sfx', label: 'Sound effects', opts: ONOFF, desc: () => 'Menu sounds, text blips and battle sounds.' },
+      { k: 'sfxVol', label: 'SFX volume', range: true, desc: () => 'Battle sound effect volume. Below 100% the menu sounds in battle use softer built-in versions.' }
+    ];
+  };
+  // opts: { inBattle, onClose, startKey }
+  function openSettings(opts = {}) {
+    if (settingsPanel) return;
+    const rows = settingRows(), items = rows.filter(r => r.k);
+    let i = Math.max(0, items.findIndex(r => r.k === opts.startKey));
+    const val = r => G.settings()[r.k];
+    const valText = r => { const v = val(r); if (r.range) return v ? `${v}%` : 'Off'; const o = r.opts.find(x => String(x[0]) === String(v)); return o ? o[1] : String(v); };
+    const canTitle = !opts.inBattle && S().phase !== 'title' && !dh;
+    const o = overlay(`<div class="g-settings"><div class="g-st-head"><h2>Settings<small>${opts.inBattle ? 'Paused · the battle waits' : 'The whole game: story and battles'}</small></h2><button type="button" class="g-btn small" data-close>Done</button></div>
+      <div class="g-set-list">${rows.map(r => r.h ? `<h3 class="g-set-h">${esc(r.h)}</h3>` : `<div class="g-set" data-k="${r.k}" role="group" aria-label="${esc(r.label)}"><span class="g-set-k">${esc(r.label)}</span><span class="g-set-v">${r.range
+        ? `<button type="button" class="g-ar" data-d="-1" aria-label="Lower">‹</button><input type="range" min="0" max="100" step="5" value="${val(r)}" aria-label="${esc(r.label)}"><b>${esc(valText(r))}</b><button type="button" class="g-ar" data-d="1" aria-label="Higher">›</button>`
+        : `<button type="button" class="g-ar" data-d="-1" aria-label="Previous">‹</button><b>${esc(valText(r))}</b><button type="button" class="g-ar" data-d="1" aria-label="Next">›</button>`}</span></div>`).join('')}</div>
+      <p class="g-set-desc" aria-live="polite"></p>
+      <div class="g-row g-set-foot">${canTitle ? '<button type="button" class="g-btn small" data-title>Return to title</button>' : ''}<span class="g-hint">↑↓ choose · ←→ change · Esc close</span></div></div>`, `g-settings-ov${opts.inBattle ? ' g-over-battle' : ''}`, () => {
+      settingsPanel = null;
+      if (opts.inBattle) setTimeout(() => { try { dh?.frame?.contentWindow?.focus(); } catch (e) {} }, 30);
+      opts.onClose?.();
+    });
+    settingsPanel = o;
+    const list = o.el.querySelector('.g-set-list'), desc = o.el.querySelector('.g-set-desc');
+    const rowEl = r => list.querySelector(`[data-k="${r.k}"]`);
+    function set(r, v) {
+      G.setSetting(r.k, v);
+      if (r.k === 'sfx') G.sfx('femc-click');
+      paint(true);
+    }
+    function change(j, d) {
+      const r = items[j];
+      if (r.range) set(r, Math.max(0, Math.min(100, (+val(r) || 0) + d * 10)));
+      else { const k = r.opts.findIndex(x => String(x[0]) === String(val(r))); set(r, r.opts[(k + d + r.opts.length) % r.opts.length][0]); }
+      G.sfx('femc-hover');
+    }
+    function paint(vals) {
+      items.forEach((r, j) => {
+        const el = rowEl(r); el.classList.toggle('sel', j === i);
+        if (vals) { el.querySelector('b').textContent = valText(r); const rg = el.querySelector('input'); if (rg) rg.value = val(r); }
+      });
+      const r = items[i];
+      desc.innerHTML = `<b>${esc(r.label)}</b> ${esc(r.desc ? r.desc(val(r)) : '')}`;
+      rowEl(r).scrollIntoView?.({ block: 'nearest' });
+    }
+    items.forEach((r, j) => {
+      const el = rowEl(r);
+      el.addEventListener('click', ev => { if (ev.target.closest('input')) return; const d = ev.target.closest('[data-d]'); i = j; if (d) change(j, +d.dataset.d); else paint(); });
+      const rg = el.querySelector('input');
+      if (rg) rg.addEventListener('input', () => { i = j; set(r, +rg.value); });
+      el.addEventListener('focusin', () => { if (i !== j) { i = j; paint(); } });
+    });
+    o.el.addEventListener('keydown', e => {
+      if (e.target.closest?.('input[type="range"]') && !e.fromPad && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) return;
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') { e.preventDefault(); e.stopPropagation(); i = (i + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length; G.sfx('femc-hover'); paint(); rowEl(items[i]).querySelector('[data-d="1"]')?.focus({ preventScroll: true }); }
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); e.stopPropagation(); change(i, e.key === 'ArrowLeft' ? -1 : 1); }
+      else if ((e.key === 'Enter' || e.key === ' ') && e.target.closest?.('.g-set') && !e.target.closest('[data-d]')) { e.preventDefault(); change(i, 1); }
+      else if ((e.key === 'p' || e.key === 'P') && e.fromPad) { e.preventDefault(); o.close(); }
+    });
     o.el.querySelector('[data-title]')?.addEventListener('click', () => { o.close(); document.querySelectorAll('.gs').forEach(x => x.remove()); document.documentElement.classList.remove('g-in-scene'); S().phase = S().phase === 'prologue' ? 'prologue' : 'play'; G.save(); titleScreen(); });
+    paint();
+    setTimeout(() => rowEl(items[i]).querySelector('[data-d="1"]')?.focus({ preventScroll: true }), 40);
   }
 
+  /* ── Keys and controllers on the life-sim screens: arrows move between buttons (P3-style), and a controller's A / B / Start
+     (pad.js sends them as Enter / Escape / p) press, go back and open Settings. Scenes and panels keep their own keys. ── */
+  const FOCUSABLE = 'button:not(:disabled), [tabindex="0"], summary, a[href], input[type="range"], select';
+  function topLayer() {
+    const ovs = [...document.querySelectorAll('.g-overlay:not(.out)')];
+    if (ovs.length) return ovs[ovs.length - 1];
+    return document.querySelector('.g-datecard, .g-actcard, .gs-rank') || null;
+  }
+  function navKeys(e) {
+    if (dh && !settingsPanel) return;
+    if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
+    const t = e.target, k = e.key;
+    if (t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && t.type !== 'range'))) return;
+    const layer = topLayer(), scene = document.querySelector('.gs:not(.out)');
+    if ((k === 'm' || k === 'M') && !e.fromPad && !layer && !scene && S().phase === 'play' && !hud.hidden) { e.preventDefault(); return openStatus(); }
+    if (e.fromPad && (k === 'p' || k === 'P') && !layer && S().phase !== 'title') { e.preventDefault(); return openSettings(); }
+    if (e.fromPad && k === 'Enter' && t && t.matches?.('button, summary, a[href], [role="button"]') && (layer || !scene || t.closest('.gs-choices, .gs-tools'))) { e.preventDefault(); t.click(); return; }
+    if (e.fromPad && k === 'Escape' && !layer && !scene) { const back = main.querySelector('[data-back]'); if (back) { e.preventDefault(); back.click(); } return; }
+    if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(k)) return;
+    if (scene && !layer) return; // the scene player moves through choices itself
+    if (t && t.matches?.('input[type="range"], select') && !e.fromPad) return;
+    const host = layer || document;
+    const all = [...host.querySelectorAll(FOCUSABLE)].filter(x => x.offsetParent !== null && !x.closest('[hidden], .g-toasts'));
+    if (!all.length) return;
+    e.preventDefault();
+    const i = all.indexOf(document.activeElement), d = k === 'ArrowDown' || k === 'ArrowRight' ? 1 : -1;
+    const n = all[i < 0 ? (d > 0 ? 0 : all.length - 1) : (i + d + all.length) % all.length];
+    n.focus({ preventScroll: false });
+    G.sfx('femc-hover');
+  }
+  document.addEventListener('keydown', navKeys);
+  // Play time, for the save slots.
+  setInterval(() => { if (document.visibilityState === 'visible' && S().started && S().phase !== 'title') S().playMinutes = (S().playMinutes || 0) + 1; }, 60000);
+
   /* ── Start ── */
-  window.FemcGameUI = { run, openStatus, openPhone, openSaves, openSettings, playLink, goOut, evening: () => evening(G.dayInfo()), dateCard, advance };
+  window.FemcGameUI = { run, openStatus, openPhone, openSaves, openSettings, playLink, goOut, evening: () => evening(G.dayInfo()), dateCard, advance, overlay, esc, inBattle: () => !!dh };
+  // An old battle tab coming back (?from=battle): its result was taken into the save on load (core.js); carry on.
   const fromBattle = /[?&]from=battle\b/.test(location.search);
-  if (S().started && S().phase !== 'title' && checkReturn()) { paintHud(); return; }
   if (fromBattle) history.replaceState(null, '', location.pathname);
-  if (S().started && S().phase === 'play') S().phase = 'play';
+  if (fromBattle && S().started && S().phase !== 'title' && S().handoff) { run(); return; }
   titleScreen();
 })();

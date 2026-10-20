@@ -1,7 +1,18 @@
 /* FEMC revamp: game state and rules (calendar, stats, links, jobs, exams, the battle handoff, saves).
    No content lives here; it reads the data files in assets/femc/game/data and links/.
-   Save: localStorage 'kg-femc-revamp' (autosave) + 'kg-femc-revamp-slot1..3'. Settings: 'kg-femc-revamp-settings'.
-   Battle handoff: 'kg-femc-handoff' (contract in FEMC-GAME-HANDOFF.md). v1's 'kg-femc-game' is never touched.
+   One save holds the whole game: localStorage 'kg-femc-revamp' (autosave) + 'kg-femc-revamp-slot1..3', each the life sim's
+   state S, which also carries the battle game's progress for this playthrough (S.battleSave: levels, EXP, Haenim's tree,
+   Personas, equipment, materials, the access point; its shape is assets/femc/battle/save.js), New Game+'s carried battle
+   save until the first fight uses it (S.battleCarry), and the fight in progress (S.handoff). Settings, for the whole game
+   (story and battle): 'kg-femc-revamp-settings' (DEFAULTS below). v1's 'kg-femc-game' and the practice mode's
+   'kg-femc-battle-proto' are never touched.
+   Battle handoff: S.handoff (contract in FEMC-GAME-HANDOFF.md). The fight runs inside femc-game.html (ui.js, the Dark Hour
+   layer); the request/result shapes are the contract's.
+   Merge migration (S.mv < 2, saves from before the one-save merge): the old separate keys are read once and folded in:
+   the battle save from 'kg-femc-revamp-battle' (runs[S.runId]; New Game+: runs[S.ngFrom] becomes S.battleCarry), and a
+   pending or finished 'kg-femc-handoff' whose id matches S.handoffId (then that key is removed; the raw autosave and handoff
+   are kept once in 'kg-femc-revamp-premerge'). 'kg-femc-revamp-battle' itself is left in place, read only, so older slots
+   can still find their battle save when they're loaded. The battle save's own settings seed the shared settings once.
      Beyond the contract, the request also carries `run` (this playthrough's id, S.runId: the battle game keeps one battle
      save per playthrough), `carryFrom` (New Game+: the previous playthrough's id), `route` (route.choices.solstice),
      `routeFlags` (which of route-R/S/H/stay/true/bad, true-final, true-fallback are set: the finale's lantern lock) and
@@ -16,6 +27,7 @@
    Debug: femc-game.html?debug=1 keeps the Simulate buttons on fight cards (remembered for the tab's session). */
 window.FemcGame = (() => {
   const KEY = 'kg-femc-revamp', SETTINGS_KEY = 'kg-femc-revamp-settings', HANDOFF_KEY = 'kg-femc-handoff';
+  const LEGACY_BATTLE_KEY = 'kg-femc-revamp-battle', PREMERGE_KEY = 'kg-femc-revamp-premerge', MERGE_V = 2;
   const SLOT_KEY = n => `${KEY}-slot${n}`;
   const VERSION = 1;
   const base = window.FemcMode?.base || new URL('../../../', document.currentScript.src).href;
@@ -92,24 +104,80 @@ window.FemcGame = (() => {
     fragments: [], inventory: {}, gear: [], books: { owned: [], reading: null, progress: {}, done: [] },
     jobs: {}, events: [], spent: {}, exams: {}, classSeen: [], phone: { threads: {}, unread: {}, done: [], pending: {}, invite: null, lastInvite: -9 },
     tartarus: { nights: 0, maxFloor: 0, bosses: [], lastParty: null }, battle: { exp: {}, levels: {} },
-    pending: null, handoffId: null, runId: null, playMinutes: 0, savedAt: null
+    pending: null, handoffId: null, runId: null, playMinutes: 0, savedAt: null,
+    // The battle game's progress for this playthrough (save.js shape), New Game+'s carried one, the fight in progress.
+    battleSave: null, battleCarry: null, battleAt: 0, handoff: null, mv: MERGE_V
   });
   const newRunId = () => `r${Date.now().toString(36)}${Math.floor(Math.random() * 1296).toString(36)}`;
+  let migrated = false;
   let S = load() || fresh();
   function load() {
-    try { const s = JSON.parse(lsGet(KEY) || 'null'); return s && s.v ? migrate(s) : null; } catch (e) { return null; }
+    try { const s = JSON.parse(lsGet(KEY) || 'null'); return s && s.v ? migrate(s, true) : null; } catch (e) { return null; }
   }
-  function migrate(s) { const f = fresh(); if (!s.runId) s.runId = newRunId(); return { ...f, ...s, route: { ...f.route, ...(s.route || {}) }, phone: { ...f.phone, ...(s.phone || {}) }, books: { ...f.books, ...(s.books || {}) }, tartarus: { ...f.tartarus, ...(s.tartarus || {}) }, battle: { ...f.battle, ...(s.battle || {}) } }; }
+  function readLegacyBattle() { try { const c = JSON.parse(lsGet(LEGACY_BATTLE_KEY) || 'null'); return c && c.runs && typeof c.runs === 'object' ? c.runs : {}; } catch (e) { return {}; } }
+  // autosave: the state from 'kg-femc-revamp' (only then is the old handoff key adopted).
+  function migrate(s, autosave) {
+    const f = fresh(), legacy = !(s.mv >= MERGE_V);
+    if (!s.runId) s.runId = newRunId();
+    if (legacy && autosave && !lsGet(PREMERGE_KEY)) lsSet(PREMERGE_KEY, JSON.stringify({ at: Date.now(), revamp: lsGet(KEY), handoff: lsGet(HANDOFF_KEY) }));
+    const out = { ...f, ...s, route: { ...f.route, ...(s.route || {}) }, phone: { ...f.phone, ...(s.phone || {}) }, books: { ...f.books, ...(s.books || {}) }, tartarus: { ...f.tartarus, ...(s.tartarus || {}) }, battle: { ...f.battle, ...(s.battle || {}) } };
+    if (legacy) {
+      // One save: fold this playthrough's battle save in (New Game+: the previous playthrough's, to carry over).
+      const runs = readLegacyBattle(), mine = runs[out.runId];
+      if (!out.battleSave && mine && mine.save) { out.battleSave = mine.save; out.battleAt = mine.at || 0; }
+      else if (!out.battleSave && out.ngFrom && runs[out.ngFrom]?.save) out.battleCarry = runs[out.ngFrom].save;
+      out.mv = MERGE_V;
+      migrated = true;
+    }
+    if (autosave) adoptHandoff(out);
+    return out;
+  }
+  // A fight the old two-page game left pending or finished ('kg-femc-handoff'), for this state: it moves into S.handoff.
+  function adoptHandoff(out) {
+    let h = null; try { h = JSON.parse(lsGet(HANDOFF_KEY) || 'null'); } catch (e) {}
+    if (!h || !h.request || !out.handoffId || h.id !== out.handoffId) return;
+    // An old battle page may have saved progress after this state was written.
+    const r = readLegacyBattle()[out.runId];
+    if (r && r.save && (r.at || 0) > (out.battleAt || 0)) { out.battleSave = r.save; out.battleAt = r.at; }
+    if (!out.handoff || out.handoff.id !== h.id || (h.status === 'done' && out.handoff.status !== 'done')) out.handoff = h;
+    lsSet(HANDOFF_KEY, null);
+    migrated = true;
+  }
   const listeners = [];
   const onChange = fn => listeners.push(fn);
   function save() { S.savedAt = Date.now(); lsSet(KEY, JSON.stringify(S)); listeners.forEach(fn => { try { fn(); } catch (e) { console.error(e); } }); }
+  // The same, without telling the screens (the battle writes its progress often).
+  function saveQuiet() { S.savedAt = Date.now(); return lsSet(KEY, JSON.stringify(S)); }
+  if (migrated && S.started) saveQuiet();
   function newGame() { S = fresh(); S.started = true; S.phase = 'prologue'; S.runId = newRunId(); save(); }
 
   /* ── Settings ── */
-  const DEFAULTS = { text: 'normal', music: 60, sfx: true, auto: 'off', dateCard: true, battles: 'ask', quickClass: false };
-  let settingsCache = (() => { try { return { ...DEFAULTS, ...JSON.parse(lsGet(SETTINGS_KEY) || '{}') }; } catch (e) { return { ...DEFAULTS }; } })();
+  // One store for the whole game. Story: text, auto, dateCard, quickClass. Battle (battle.js pullSettings maps these onto its
+  // own names): battleSpeed, cutins, difficulty, remember, rushWhere, rushStop, shake, calm, numbers, tips, pad, perf. Both:
+  // text (also the battle's text speed), music (0-100, 0 = off; musicLast remembers the volume), sfx, sfxVol.
+  const DEFAULTS = { text: 'normal', music: 60, musicLast: 60, sfx: true, sfxVol: 100, auto: 'off', dateCard: true, battles: 'ask', quickClass: false,
+    battleSpeed: 1, cutins: 'first', difficulty: 'normal', remember: true, rushWhere: 'normal', rushStop: 30, shake: true, calm: false, numbers: true, tips: true, pad: 'auto', perf: false };
+  let settingsRaw = (() => { try { return JSON.parse(lsGet(SETTINGS_KEY) || '{}') || {}; } catch (e) { return {}; } })();
+  // The merge: battle preferences come from the playthrough's battle save the first time (difficulty, Rush, cut-ins…).
+  if (!('difficulty' in settingsRaw) && S.battleSave && S.battleSave.settings) {
+    const b = S.battleSave, st = b.settings;
+    ['difficulty', 'remember', 'rushWhere', 'rushStop', 'shake', 'calm', 'numbers', 'tips', 'pad'].forEach(k => { if (st[k] !== undefined) settingsRaw[k] = st[k]; });
+    if ([1, 2, 3].includes(b.speed)) settingsRaw.battleSpeed = b.speed;
+    if (b.cutins) settingsRaw.cutins = b.cutins;
+    if (typeof b.perf === 'boolean') settingsRaw.perf = b.perf;
+    if (typeof st.sfxVol === 'number') settingsRaw.sfxVol = st.sfxVol;
+    lsSet(SETTINGS_KEY, JSON.stringify(settingsRaw));
+  }
+  let settingsCache = { ...DEFAULTS, ...settingsRaw };
   const settings = () => settingsCache;
-  function setSetting(k, v) { settingsCache = { ...settingsCache, [k]: v }; lsSet(SETTINGS_KEY, JSON.stringify(settingsCache)); if (k === 'sfx') lsSet('kg-femc-sound', v ? null : 'off'); if (k === 'music') W.FemcScene?.Music.volume(); }
+  function setSettings(patch) {
+    settingsCache = { ...settingsCache, ...patch };
+    if (typeof patch.music === 'number' && patch.music > 0 && !('musicLast' in patch)) settingsCache.musicLast = patch.music;
+    lsSet(SETTINGS_KEY, JSON.stringify(settingsCache));
+    if ('sfx' in patch) lsSet('kg-femc-sound', patch.sfx ? null : 'off');
+    if ('music' in patch) W.FemcScene?.Music.volume();
+  }
+  const setSetting = (k, v) => setSettings({ [k]: v });
   const textDelay = () => ({ slow: 42, normal: 24, fast: 10, instant: 0 }[settingsCache.text] ?? 24);
   const sfx = name => { if (settingsCache.sfx && lsGet('kg-femc-sound') !== 'off') W.FemcMode?.sfx(name); };
 
@@ -604,6 +672,7 @@ window.FemcGame = (() => {
     S = fresh(); S.started = true; S.phase = 'prologue'; S.runId = newRunId();
     S.stats = { ...old.stats }; S.yen = Math.max(D.stats.startYen, Math.round(old.yen / 2)); S.registered = [...old.registered];
     S.books.owned = [...old.books.owned]; S.books.done = [...old.books.done]; S.ngp = (old.ngp || 0) + 1; S.ngFrom = old.runId; S.flags.ngplus = true;
+    S.battleCarry = old.battleSave || old.battleCarry || null;
     save();
   }
 
@@ -843,12 +912,32 @@ window.FemcGame = (() => {
       result: null
     };
     S.handoffId = id;
-    lsSet(HANDOFF_KEY, JSON.stringify(h));
+    S.handoff = h;
     save();
     return h;
   }
-  const readHandoff = () => { try { return JSON.parse(lsGet(HANDOFF_KEY) || 'null'); } catch (e) { return null; } };
-  function clearHandoff() { lsSet(HANDOFF_KEY, null); S.handoffId = null; save(); }
+  const readHandoff = () => S.handoff || null;
+  function clearHandoff() { S.handoff = null; S.handoffId = null; save(); }
+  // The battle side's answer (FemcBridge.finish): the contract's `result`, kept in S until the screens apply it.
+  function finishHandoff(result) {
+    const h = S.handoff;
+    if (!h || h.status !== 'pending') return null;
+    h.result = result; h.status = 'done'; h.doneAt = new Date().toISOString();
+    save();
+    return h;
+  }
+  /* The battle save (see the header). ensureBattleSave() makes one when there's none yet (the field menu needs it before a
+     first fight), with save.js: New Game+'s carried save, or one seeded from today's date. */
+  function setBattleSave(b) { S.battleSave = b; S.battleAt = Date.now(); S.battleCarry = null; saveQuiet(); }
+  function ensureBattleSave() {
+    const BS = W.FemcBattleSave;
+    if (!BS) return S.battleSave;
+    let prefs = null; try { prefs = JSON.parse(lsGet('kg-femc-battle-proto') || 'null'); } catch (e) {}
+    const r = BS.forRun({ save: S.battleSave, carry: S.battleCarry, day: S.day, prefs });
+    S.battleSave = r.save;
+    if (r.made) { S.battleCarry = null; S.battleAt = Date.now(); saveQuiet(); }
+    return S.battleSave;
+  }
   // A stand-in result, until the battle game reads handoffs. It looks like what the battle side will send.
   function simulate(h, outcome = 'win') {
     const lvl = 4 + Math.floor(S.day / 9);
@@ -874,6 +963,9 @@ window.FemcGame = (() => {
   }
   // Apply a battle result to the life sim. Returns a summary for the results screen.
   function applyResult(h, r) {
+    // A reload can recover this completed handoff after rewards were saved but before
+    // the UI cleared it. Keep its receipt in the same save as the rewards.
+    if (h.appliedResult) return clone(h.appliedResult);
     const sum = { outcome: r.outcome, yen: 0, items: [], fragments: [], bosses: [], exp: r.exp || {}, simulated: !!r.simulated };
     Object.entries(r.exp || {}).forEach(([m, x]) => { S.battle.exp[m] = (S.battle.exp[m] || 0) + x; });
     Object.assign(S.battle.levels, r.levels || {});
@@ -890,6 +982,7 @@ window.FemcGame = (() => {
     // Extras the battle game may send from story fights (the finale): flags to set, and the choice made in the fight.
     if (r.flags) setFlags(r.flags);
     if (r.choice && (h.request.op || h.request.script)) S.route.choices[`fight.${h.request.op || h.request.script}`] = r.choice;
+    h.appliedResult = clone(sum);
     save();
     return sum;
   }
@@ -899,22 +992,38 @@ window.FemcGame = (() => {
   function readSlot(n) { try { const x = JSON.parse(lsGet(SLOT_KEY(n)) || 'null'); return x && x.state && x.state.v ? x : null; } catch (e) { return null; } }
   function loadSlot(n) { const x = readSlot(n); if (!x) return false; S = migrate(clone(x.state)); save(); return true; }
   function slotLabel(s = S) { const i = dayInfo(s.day); return `${i.md} ${i.day} · ${slotName(s.slot, i)}`; }
-  function exportCode() { return btoa(unescape(encodeURIComponent(JSON.stringify({ game: KEY, v: VERSION, at: Date.now(), state: S })))); }
+  // What a save slot shows (P3-style): date, time of day, Solar's level, play time, the month's name.
+  function slotInfo(s) {
+    if (!s || !s.started) return null;
+    const i = dayInfo(s.day), b = s.battleSave || readLegacyBattle()[s.runId]?.save || null;
+    const m = Math.max(0, s.playMinutes || 0);
+    return { md: i.md, day: i.day, slot: slotName(s.slot, i), month: i.date.toLocaleString('en', { month: 'long' }), lv: b && b.lvl ? b.lvl : null, play: `${Math.floor(m / 60)}:${String(m % 60).padStart(2, '0')}`,
+      prologue: s.phase === 'prologue', ngp: s.ngp || 0, fight: !!(s.handoff && s.handoff.status === 'pending') };
+  }
+  // Backup code: the whole game (life sim + battle progress). Older codes still load. A battle-only code from the old battle
+  // game's Save data screen (FEMCBT<v>.…) loads into this playthrough's battle save.
+  function exportCode() { return btoa(unescape(encodeURIComponent(JSON.stringify({ game: KEY, v: VERSION, mv: MERGE_V, at: Date.now(), state: S })))); }
   function importCode(code) {
     try {
       const raw = String(code).trim();
-      const obj = JSON.parse(raw.startsWith('{') ? raw : decodeURIComponent(escape(atob(raw))));
+      if (/^FEMCBT\d*\./.test(raw)) {
+        const b = JSON.parse(decodeURIComponent(escape(atob(raw.replace(/^FEMCBT\d*\./, '').replace(/\s+/g, '')))));
+        const BS = W.FemcBattleSave, ok = BS ? BS.fromRaw(b) : (b && b.lvl >= 1 ? b : null);
+        if (!ok || !S.started) return false;
+        S.battleSave = ok; S.battleAt = Date.now(); save(); return 'battle';
+      }
+      const obj = JSON.parse(raw.startsWith('{') ? raw : decodeURIComponent(escape(atob(raw.replace(/\s+/g, '')))));
       const st = obj.state || obj;
       if (!st || typeof st.day !== 'number' || !st.stats) return false;
       S = migrate(st); save(); return true;
     } catch (e) { return false; }
   }
-  const hasSave = () => !!(load()?.started);
+  const hasSave = () => { try { return !!JSON.parse(lsGet(KEY) || 'null')?.started; } catch (e) { return false; } };
   function deleteSave() { lsSet(KEY, null); S = fresh(); }
 
   indexLinks();
   return {
-    KEY, HANDOFF_KEY, base, D, get S() { return S; }, save, newGame, onChange, settings, setSetting, textDelay, sfx,
+    KEY, HANDOFF_KEY, base, D, get S() { return S; }, save, saveQuiet, newGame, onChange, settings, setSetting, setSettings, DEFAULTS, textDelay, sfx,
     dayOf, dateOf, mdOf, dayInfo, slotsFor, slotName, weather, moon, END, SLOT_ORDER,
     statRank, statRankName, statProgress, addStat, addStats, lacking, addYen, takeToasts, toast,
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
@@ -926,7 +1035,8 @@ window.FemcGame = (() => {
     dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, answerInvite, unread, freeSlotSpent, nextSlot, sleep,
-    available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, simulate, applyResult,
-    saveSlot, readSlot, loadSlot, slotLabel, exportCode, importCode, hasSave, deleteSave
+    available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,
+    setBattleSave, ensureBattleSave,
+    saveSlot, readSlot, loadSlot, slotLabel, slotInfo, exportCode, importCode, hasSave, deleteSave
   };
 })();
