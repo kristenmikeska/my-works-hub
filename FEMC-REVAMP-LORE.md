@@ -99,7 +99,7 @@ Endings come from choices made across the game: whose fragments she follows, who
 
 - **Runners**: she goes home to Syracuse.
 - **strangers**: she goes home to the Lee house.
-- **Hoax**: she goes home to Hamlim.
+- **Hoax**: she goes home to Hanlim.
 - **Stay**: she chooses this world, S.E.E.S. and Akihiko. The three worlds go on missing her.
 - **True ending (IN; hardest to reach)**: Solar understands her Shadow (Wren) didn't steal her from her lives. Wren is the part of her that couldn't bear choosing. Every other route ends with Solar beating or leaving her Shadow; the true ending is taking Wren's hand instead. *I am thou.*
   - **Result:** she goes home to all three worlds at once.

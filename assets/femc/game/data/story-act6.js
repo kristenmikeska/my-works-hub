@@ -491,7 +491,7 @@
       { t: "(Take her hand.)", ifFlag: 'true-final', then: [] },
       { t: "(The bell.) Go home. To Syracuse.", ifFlag: 'fb-R', flag: { 'route-R': true, 'route-true': false }, tally: { solstice: 'R' }, then: [] },
       { t: "(The jade ring.) Go home. To the house by the sea.", ifFlag: 'fb-S', flag: { 'route-S': true, 'route-true': false }, tally: { solstice: 'S' }, then: [] },
-      { t: "(The star pin.) Go home. To Hamlim.", ifFlag: 'fb-H', flag: { 'route-H': true, 'route-true': false }, tally: { solstice: 'H' }, then: [] },
+      { t: "(The star pin.) Go home. To Hanlim.", ifFlag: 'fb-H', flag: { 'route-H': true, 'route-true': false }, tally: { solstice: 'H' }, then: [] },
       { t: "Stay. Here.", ifFlag: 'true-fallback', flag: { 'route-stay': true, 'route-true': false }, tally: { solstice: 'stay' }, then: [] },
       { t: "(Raise the Evoker.)", ifFlag: 'normal-route', then: [] }
     ] },

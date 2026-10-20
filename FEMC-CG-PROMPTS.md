@@ -33,7 +33,7 @@ Everything still to make, in one place: the earlier art list plus the new scenes
 > The dorm kitchen at night, steam rising from a pot, one warm light over the stove. Shinjiro Aragaki (black beanie, long maroon coat set aside on a chair, sleeves rolled up) stands at the stove showing Solar how to stir, his hand over hers on the wooden spoon, gruff but careful, not quite looking at her. She's looking at him instead of the pot. Warm yellow light, quiet, intimate.
 
 **2. Jungwon: the croissant** · 📎 Solar, Jungwon
-> A Japanese school's student council room late at night, stacks of papers, a single desk lamp. Jungwon (attached reference, navy Hamlim school blazer) has fallen asleep sitting up over his notes, pen still in his hand, glasses pushed up. Solar sets a croissant on a napkin beside his elbow, smiling softly. Warm lamplight, deep blue night through the window.
+> A Japanese school's student council room late at night, stacks of papers, a single desk lamp. Jungwon (attached reference, navy Hanlim school blazer) has fallen asleep sitting up over his notes, pen still in his hand, glasses pushed up. Solar sets a croissant on a napkin beside his elbow, smiling softly. Warm lamplight, deep blue night through the window.
 
 **3. Jihoon: the crane game** · 📎 Solar, Jihoon
 > A game arcade at night, crane machines glowing pink and blue. Jihoon (attached reference, bleached blond hair, black leather jacket) leans on a crane game, smug, holding out a lopsided plush dog he just won to Solar. She raises an eyebrow but takes it. Neon reflections on the floor, playful.

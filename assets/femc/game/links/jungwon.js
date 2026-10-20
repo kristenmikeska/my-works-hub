@@ -1,5 +1,5 @@
 /* Yang Jungwon · V The Hierophant. Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
-   Searcher, canon romance (Hoax + strangers). One boy carrying two lives: Hamlim's overworked student council president
+   Searcher, canon romance (Hoax + strangers). One boy carrying two lives: Hanlim's overworked student council president
    who forgets to eat and tutors everyone but himself (Hoax), and the heir with formal speech, a dead brother's watch,
    no scent and a face that goes still when he's actually pleased (strangers). The tell in both: the angrier he gets,
    the more polite. He knows two of her surnames and keeps almost saying one. Every rank lets Solar lean (tally

@@ -34,7 +34,7 @@ Full-screen 16:9 illustrations for big moments, the way P3R and P5R show a paint
 **Endings**
 - [x] Runners: Syracuse in snow, Haechan and the girls
 - [x] strangers: the Lee house at low tide
-- [x] Hoax: Hamlim on the night of the count (Cherry, not Sunoo: she's Solar's best friend in Hoax)
+- [x] Hoax: Hanlim on the night of the count (Cherry, not Sunoo: she's Solar's best friend in Hoax)
 - [x] Stay: S.E.E.S. and Akihiko on the dorm roof at dawn
 - [ ] True ending: Solar taking Wren's hand
 
@@ -78,7 +78,7 @@ Tartarus could have blocks shaped by her memories, with Shadows built from each 
 - [x] Flashback locations, in a dreamy, washed-out style (all 9 done):
   - Syracuse quad, Alpha Phi house, Sigma Chi house (Runners)
   - Incheon harbor, the Lee house, the fish market (strangers)
-  - Hamlim hallway, the gym, Yeobo's Cafe (Hoax)
+  - Hanlim hallway, the gym, Yeobo's Cafe (Hoax)
 
 ## 5. Characters
 - [ ] Full-body compendium art for the searchers (Hanni, Hyein, Minji, Mark, Jaehyun, Yunjin, Jungwon, Jihoon, ENHYPEN, Jihoon's crew, Cherry)

@@ -1045,7 +1045,7 @@ window.FEMC_BATTLE_DATA = (() => {
         { id: 'jade4', name: 'Bufula', cost: 2, desc: 'Learn Bufula: heavier ice damage.', effect: { learn: 'bufula', upgrade: ['bufu', 'bufula'] } },
         { id: 'jade5', name: 'Cold Read', cost: 3, desc: 'Every foe’s affinities are known at the start of battle. Weakness damage +25% for the party. Unlocks Mazu.', effect: { autoAnalyze: true, weakMult: 1.25 } }
       ] },
-    { id: 'star', name: 'Star', world: 'Hoax', who: 'Hamlim', color: '#ff8cc0', theme: 'Leadership · Party buffs · Rally', form: 'haenim-nike',
+    { id: 'star', name: 'Star', world: 'Hoax', who: 'Hanlim', color: '#ff8cc0', theme: 'Leadership · Party buffs · Rally', form: 'haenim-nike',
       blurb: 'A star pin from the campaign. Everyone looks to her when she wears it.',
       nodes: [
         { id: 'star1', name: 'Star Pin', cost: 1, desc: '+2 Ag and +10 max HP.', effect: { ag: 2, hp: 10 } },

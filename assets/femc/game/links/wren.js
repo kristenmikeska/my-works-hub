@@ -517,7 +517,7 @@
       { n: "It was Jihoon who saw the ticket. Of course it was Jihoon. Jihoon had never in his life seen a thing he didn't want to pick up." },
       { s: 'jihoon', f: 'neutral', t: "Oh, cute ribbon. Where's that for?" },
       { n: "Wren's hands closed on it. But Jihoon had already leaned over to read it, the way he leaned over everybody's everything, and he read it, and his whole face changed. Went soft and stunned and young, like a kid who's seen his own house on the news." },
-      { s: 'jihoon', f: 'surprised', t: "...Hamlim. It says Hamlim." },
+      { s: 'jihoon', f: 'surprised', t: "...Hanlim. It says Hanlim." },
       { s: 'jihoon', f: 'sad', t: "That's home. That's literally where we live. Sol, it's a ticket home, where did she..." },
       { s: 'hanni', f: 'surprised', t: "What? No it doesn't. It says Syracuse. Look, it's right there. It's in English." },
       { s: 'yunjin', f: 'serious', t: "Are you both high? It says Incheon. It's printed. Incheon. With the little ferry stamp in the corner." },

@@ -654,7 +654,7 @@ window.FEMC_STORY_KIT.badEnding = [
       ] },
       { t: "(The star pin rings.) I have to go home.", ifFlag: 'elig-H', flag: { 'route-H': true }, tally: { solstice: 'H' }, then: [
         { n: "The star pin rang over all the others, bright and sharp, metal through card, a pin pushed home. A front door and a tub of ice cream. A gym full of plastic chairs. Exit doors, and all of them there, screaming. She heard herself say it, and it was hers." },
-        { s: 'wren', f: 'sad', t: "...Hamlim. Of course. The count." },
+        { s: 'wren', f: 'sad', t: "...Hanlim. Of course. The count." },
         { n: "The other two charms went quiet. And the star went on, ringing, and then stopped ringing, and started, very slowly, to shine." }
       ] },
       { t: "I'm staying. Here.", flag: { 'route-stay': true }, tally: { solstice: 'stay' }, then: [

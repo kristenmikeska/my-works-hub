@@ -644,7 +644,7 @@
         { n: "It came off on her fingertips, pink and gold, and stayed there no matter how hard she rubbed them on her skirt." }
       ] },
       { t: "(Look at the crest in the corner.)", then: [
-        { n: "Bottom corner, small print, a crest she didn't know and a name she did. Hamlim. Her mouth shaped it without sound, the way you'd say the name of a street you grew up on." }
+        { n: "Bottom corner, small print, a crest she didn't know and a name she did. Hanlim. Her mouth shaped it without sound, the way you'd say the name of a street you grew up on." }
       ] },
       { t: "(Look at the smile for a long time.)", then: [
         { n: "She looked at it until it stopped looking like a smile and started looking like a door with the light on behind it and nobody home. She knew that smile. She did it every morning. She'd done it this morning, in the mirror, putting her hair up." }
