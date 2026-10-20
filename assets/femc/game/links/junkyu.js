@@ -7,13 +7,16 @@
    miss nana!!"). Here he keeps count of her thank-yous (Jihoon's link: "Three times! I keep count!").
    He crossed with Jihoon's crew (Asahi, Hyunsuk, Jaehyuk) at Game Panic on 10/31 (story event a4-crew); rank 1 is the next
    evening. The crew are cameos (cast below); none of them fight. Asahi says the meanest thing quietly, Hyunsuk laughs at it,
-   Jaehyuk is polite in capital letters. They sleep at the guesthouse by the station.
+   Jaehyuk is the actual smart one (Student Council) and types politely, with punctuation; Hyunsuk only wants people to think
+   he's the smart one (geniusuk). They all live at the Kirijo guesthouse by the station (FEMC-REVAMP-LORE.md); breakfast or a
+   night on the dorm sofa is a visit.
    Ranks 8-10 and the afterMax scenes read the solstice: route-H (the star pin shines: he's taking her home), route-true (all
    three charms hum together), anything else (the star has gone quiet: the ranks take a goodbye shape; on 1/30 the crew go
    home without her, Junkyu waving until the door shuts).
    Own flags, set and read only in this file: junkyu-hugs (r1) · junkyu-signs (r2) · junkyu-rhythm (r3) · junkyu-hug-list (r4)
    · junkyu-counter (r5) · junkyu-sundays (r6) · junkyu-card (r7) · junkyu-coin (r8).
-   Nothing here decides Hoax's plot (no election result, no romance) or reports news from home the book hasn't printed.
+   Hoax canon as of Ch 99: Jungwon won the election and made Solar his vice president; she is dating him (Junkyu says "jolar");
+   Jihoon has relapsed (named, never shown). Nothing here reports news from home the book hasn't printed.
    Texting voice: lowercase, "!!!", "omg", ":(". Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'junkyu', name: 'Kim Junkyu', short: 'Junkyu', arcana: '?', numeral: '', from: 'Hoax',
@@ -167,7 +170,7 @@
   ranks: [
     { after: '11/1', title: '1: ice cream and hugs', place: 'Paulownia Mall · Arcade', time: 'Evening', music: 'joy', scene: [
       { n: "Their arrival had ended in Game Panic with the shutter halfway up and the hour holding on one minute longer than it should have, four boys in navy blazers standing in the middle of the dead cabinets arguing about a wall, and the softest-faced one turning around and seeing her and saying her name with three exclamation points. She'd heard them. She could still hear them." },
-      { n: "Then the phone at two in the morning, an old chat going off like a smoke alarm. Then not sleeping. At their first breakfast here, the four of them had sat at the far end of the dorm's table in the same blazers eating Fuuka's rice with the focused, slightly frightened gratitude of boys in somebody else's house, and the round-faced one had looked up every time she moved, like a dog listening for its name, and not said anything, because every time he opened his mouth Jihoon kicked him under the table." },
+      { n: "Then the phone at two in the morning, an old chat going off like a smoke alarm. Then not sleeping. The first morning, Mitsuru had walked the four of them over from the guesthouse for breakfast, because the guesthouse kitchen had nothing in it yet but tea, and they had sat at the far end of the dorm's table in the same blazers eating Fuuka's rice with the focused, slightly frightened gratitude of boys in somebody else's house, and the round-faced one had looked up every time she moved, like a dog listening for its name, and not said anything, because every time he opened his mouth Jihoon kicked him under the table." },
       { n: "He was in the arcade tonight. The lights were all on and every cabinet was yelling its own song over every other cabinet's song, and he was losing to a ten-year-old at a dance game and cheering for the ten-year-old, and when he saw Solar come in he jumped off the platform mid-song and the machine booed him and he didn't care." },
       { register: 'junkyu' },
       { s: 'junkyu', f: 'happy', t: "SOL! Sol, hi! Are you okay? Do you need ice cream and hugs?" },
@@ -210,7 +213,7 @@
           { n: "He licked his wrist. Hyunsuk looked at him with the weary love of a man who'd been doing this for years, and handed him a napkin." }
         ] },
         { t: "What was I like? Before.", notes: 2, then: [
-          { s: 'junkyu', f: 'neutral', t: "Loud in the chat. Quieter in real life. You'd type in capitals and then in person you'd just go *hm.*" },
+          { s: 'junkyu', f: 'neutral', t: "Loud! In the chat AND in real life. You yell at your locker when you can't find your book. You punch people. Not me! Jihoon, mostly. He deserves it. He says so himself." },
           { s: 'junkyu', f: 'serious', t: "And you worried. All the time. With your whole forehead. Like that. Like you're doing now. I used to tell you you'd get wrinkles." },
           { n: "She put a hand up to her forehead without meaning to. He beamed at her, delighted, like she'd done a trick." }
         ] }
@@ -223,18 +226,18 @@
         { from: 'junkyu', t: "but still!!!" }
       ], contact: 'junkyute' },
       { choose: [
-        { t: "(Type: home. thank you for the ice cream)", notes: 2, then: [
+        { t: "(Type: HOME!! thank u for the ice cream kyu)", notes: 2, then: [
           { phone: [
-            { from: 'solar', t: "home. thank you for the ice cream" },
+            { from: 'solar', t: "HOME!! thank u for the ice cream kyu" },
             { from: 'junkyu', t: "HYUNSUK PAID but ok!!! ur welcome!!!" },
             { from: 'junkyu', t: "wait" },
             { from: 'junkyu', t: "u said thank you" },
             { from: 'junkyu', t: "no. that one was hyunsuk's money. it doesn't count. goodnight sol!!!" }
           ], contact: 'junkyute' }
         ] },
-        { t: "(Type: home. thank you for asking first)", notes: 3, then: [
+        { t: "(Type: home safe!! thank u for asking first :D)", notes: 3, then: [
           { phone: [
-            { from: 'solar', t: "home. thank you for asking first" },
+            { from: 'solar', t: "home safe!! thank u for asking first :D" },
             { from: 'junkyu', t: "......" },
             { from: 'junkyu', t: "ok that one" },
             { from: 'junkyu', t: "never mind!!! nothing!!! goodnight sol!!! ice cream and hugs!!!" }
@@ -259,6 +262,7 @@
       { s: 'junkyu', f: 'happy', t: "Do you like it? I should've made one at home. For the assembly. When they called you up on the stage." },
       { s: 'junkyu', f: 'neutral', t: "We all cheered. In the middle of the principal talking. Cherry made a heart with her hands. Jaehyuk did two thumbs. I blew you a kiss. You looked like you were going to throw up. You didn't! You were so good!" },
       { s: 'junkyu', f: 'neutral', t: "But I didn't have a sign. So this is that. Late." },
+      { s: 'junkyu', f: 'happy', t: "And then you lost! To Jungwon! But then he picked you for vice president anyway, in front of the whole school, and Jihoon wouldn't let go of your hand, and Cherry had to punch him in the arm. So you won a little bit! Vice president is a sign-worthy win!" },
       { s: 'junkyu', f: 'serious', t: "And then I thought, you're not running for anything here. But you're probably running for something. Everybody always is. So I left it open." },
       { choose: [
         { t: "I love it.", notes: 3, flag: { 'junkyu-signs': true }, then: [
@@ -304,7 +308,7 @@
       { s: 'junkyu', f: 'neutral', t: "And he asked Cherry to homecoming with signs. In the cafeteria. We all held one. She laughed for like a whole minute. They had a thing, before she started seeing Sunghoon." },
       { s: 'hyunsuk', f: 'flustered', t: "She said yes, Junkyu. Tell the part where she said yes." },
       { s: 'asahi', f: 'neutral', t: "Eventually." },
-      { s: 'junkyu', f: 'neutral', t: "Jaehyuk. He's the actual smart one. And the nice one. Not like me nice. Polite nice. He's on student council. He uses capital letters. In the chat. Full stops. Everyone's scared of him a little." },
+      { s: 'junkyu', f: 'neutral', t: "Jaehyuk. He's the actual smart one. And the nice one. Not like me nice. Polite nice. He's on student council. He uses full stops. In the chat. And question marks, correctly. He tells everybody to drink water. Everyone's scared of him a little." },
       { s: 'jaehyuk', f: 'neutral', t: "Nobody is scared of me, Junkyu." },
       { s: 'asahi', f: 'neutral', t: "I'm scared of you." },
       { s: 'hyunsuk', f: 'happy', t: "LMAO." },
@@ -414,8 +418,8 @@
       { s: 'mitsuru', f: 'neutral', t: "I've told him the guesthouse has heating and beds. He's thanked me for the information." },
       { n: "He stood up when they came in. He counted them. Solar saw him do it, his lips moving, his eyes going from face to face, one, two, three, all the way along. He got to Jihoon and stopped, and his whole body loosened, and then he saw the bandage on Jihoon's arm and tightened again." },
       { s: 'junkyu', f: 'surprised', t: "Jihoon! Your arm!" },
-      { s: 'jihoon', f: 'neutral', t: "It's nothing. It's a scratch. It's a big scratch. I'm fine. I'm going to bed. Light of all your lives. Goodnight." },
-      { n: "He went up. He took the stairs two at a time, the way you'd take them if your arm didn't hurt, which was how Solar knew it did. Junkyu watched him go with his hands pressed together in front of his mouth, and then turned to Solar, still in her armband, still smelling of the tower." },
+      { s: 'jihoon', f: 'neutral', t: "It's nothing. It's a scratch. It's a big scratch. Do Not fret. I'm going back to the guesthouse. Light of all your lives. Goodnight." },
+      { n: "He went out the front door toward the station at a walk so normal it was obviously costing him, swinging the arm a little to prove it didn't hurt, which was how Solar knew it did. Junkyu watched him go with his hands pressed together in front of his mouth, and then turned to Solar, still in her armband, still smelling of the tower." },
       { s: 'junkyu', f: 'sad', t: "Is he okay? Really? He won't tell me. He never tells me. He tells you." },
       { choose: [
         { t: "He's okay. He was brave.", notes: 3, then: [
@@ -452,11 +456,11 @@
       { n: "She went up to bed at half past one. Her phone buzzed before she'd gotten her boots off. The old chat. Junkyu, from the sofa, one floor down." },
       { phone: [
         { from: 'junkyu', t: "junkyute: @jihoney hope ur ok jihoon! even if ur a meanie" },
-        { from: 'jihoon', t: "jihoney: go to sleep junkyu" },
-        { from: 'jihoon', t: "jihoney: im fine" },
+        { from: 'jihoon', t: "jihoney: go to Sleep junkyu" },
+        { from: 'jihoon', t: "jihoney: im Fine. Do Not fret. it is Beneath me to be injured" },
         { from: 'junkyu', t: "junkyute: u say it like sol says it" },
         { from: 'asahi', t: "asanoonecares: some of us are trying to sleep in a guesthouse with a radiator that sounds like a man screaming" },
-        { from: 'jaehyuk', t: "jaehyukkie: Goodnight, Jihoon. Goodnight, everyone." },
+        { from: 'jaehyuk', t: "jaehyukkie: please put ice on that and drink some water before you sleep. goodnight, everyone." },
         { from: 'jihoon', t: "jihoney: ......thanks junkyu" }
       ], contact: 'PARK JIHOON HATE CLUB' },
       { n: "She read the last line twice. She had the feeling, sitting on the edge of her bed with one boot off, that it was going on a list somewhere, one floor down, in a notes app, with a date next to it." }
@@ -485,9 +489,9 @@
       { n: "Halfway along the path a small brown dog came out from under a bench with nobody attached to it, and Koromaru went toward it the way Koromaru went toward anything, cheerfully, all at once, and the small dog yipped, and Solar's whole body went tight before she'd decided anything at all. Her hand was already reaching for the leash. Her mouth was already making the shape of a name that wasn't Koromaru." },
       { n: "The small dog's owner came out from behind the bench, an old man with a newspaper, and laughed, and said they were only playing. They were only playing. Koromaru sat down, pleased with himself. Solar's hand was shaking a little on the leash." },
       { s: 'junkyu', f: 'surprised', t: "Oh. Oh, it's the thing. It's the thing from the chat. Nana made a friend and then the owner came out and yelled at you!" },
-      { s: 'junkyu', f: 'neutral', t: "And it turned out the boy who yelled was—" },
-      { n: "He stopped. He looked at her, very fast, and then at the river, and closed his mouth with the expression of somebody standing on the edge of a story that wasn't his to tell." },
-      { s: 'junkyu', f: 'happy', t: "Never mind! Not my place! You'll get there!" },
+      { s: 'junkyu', f: 'neutral', t: "And it turned out the boy who yelled was JUNGWON, and now you two are— you're JOL—" },
+      { n: "He stopped. He looked at her, very fast, and then at the river, and clapped a hand over his own mouth with the expression of somebody standing on the edge of a story that wasn't his to tell, and had already put one foot over it." },
+      { s: 'junkyu', f: 'happy', t: "Never mind! Nothing! Jake made up a word! It's a good word! Ask Jungwon! No, don't! You'll get there!" },
       { s: 'junkyu', f: 'neutral', t: "I miss Nana. I miss him so much. He's so big and so fluffy his legs look silly, and he sits on everybody. He sat on me once for an hour and I didn't move because he looked so comfortable." },
       { s: 'junkyu', f: 'sad', t: "I always wanted to come on the walks. I asked in the chat. I never asked for real. I thought you'd say no. I thought it was a you-and-Nana thing. Or a you-and-Jihoon thing, when he gets up, which is never." },
       { choose: [
@@ -513,8 +517,9 @@
         { from: 'hyunsuk', t: "geniusuk: PLEASE GIVE HIM A BEEF DOG BISCUIT FOR ME" },
         { from: 'asahi', t: "asanoonecares: that's not even her dog" },
         { from: 'junkyu', t: "junkyute: IT COUNTS" },
-        { from: 'jihoon', t: "jihoney: why was i not informed of a family walk" },
-        { from: 'jihoon', t: "jihoney: i am the father" }
+        { from: 'jihoon', t: "jihoney: why was I Not informed of a Family Walk" },
+        { from: 'jihoon', t: "jihoney: i am the Father. this is a Grave Sin" },
+        { from: 'asahi', t: "asanoonecares: no one cares" }
       ], contact: 'PARK JIHOON HATE CLUB' }
     ] },
 
@@ -536,12 +541,12 @@
           { s: 'junkyu', f: 'happy', t: "...Okay. Okay! That's for Akihiko. He'll understand. He's got a face like that reindeer when he's thinking." }
         ] },
         { t: "Why so many?", notes: 2, then: [
-          { s: 'junkyu', f: 'neutral', t: "We never did stuff at home. The six of us. Dances. Anything with a sign-up sheet. We always skipped. Asahi says it's a waste of time. We went to one, finally, this year, and nobody knew what to do, and we just sat at the table." },
+          { s: 'junkyu', f: 'neutral', t: "We never did stuff at home. The seven of us. Dances. Anything with a sign-up sheet. We always skipped. Asahi says it's a waste of time. We went to one, finally, this year, and nobody knew what to do, and we just sat at the table." },
           { s: 'junkyu', f: 'sad', t: "I always wanted to go. I said so in the chat once. Nobody listened. So this year I'm doing Christmas. All of it. For everybody. And nobody can skip it, because it comes in an envelope." }
         ] }
       ] },
       { n: "They worked through the evening. Fuuka came and helped and turned out to be a genius with the glitter glue. Junpei came and helped and turned out to be a menace with the glitter glue. Koromaru came and lay under the table and ended the night faintly gold." },
-      { n: "Asahi came in at nine for a glass of water and looked at the table and said it looked like a craft store had been in a car accident. Then he sat down. Then, after about ten minutes of saying nothing, he picked up a pen and wrote something in the card for Hyunsuk, folded it shut before anybody could read it, and went back upstairs without his water." },
+      { n: "Asahi, who had walked over from the guesthouse with Junkyu and claimed to be leaving any minute, came into the dining room at nine for a glass of water and looked at the table and said it looked like a craft store had been in a car accident. Then he sat down. Then, after about ten minutes of saying nothing, he picked up a pen and wrote something in the card for Hyunsuk, folded it shut before anybody could read it, and walked out into the cold toward the guesthouse without his water." },
       { s: 'junkyu', f: 'happy', t: "He's never done that before. Not once. I don't know what it says. Hyunsuk's going to pretend it says *ok.* I think it's longer." },
       { n: "At the end Junkyu stacked them all, forty-one cards, and went through them one more time, checking every name, and there was one left at the bottom that he hadn't written a name on, with a little sun drawn on the front, very carefully, with a face, and two pink cheeks." },
       { s: 'junkyu', f: 'neutral', t: "That one's for you. I don't know what to write in it yet." },
@@ -632,14 +637,14 @@
     ] },
 
     { after: '1/10', title: "9: i'm scared", place: 'Iwatodai Dorm · Rooftop', time: 'Night', music: 'night', scene: [
-      { n: "He'd come up to the roof to cry. He told her that later. He'd come up because it was the only place in the dorm where nobody would hear, and he hadn't counted on her already being up there, at the railing, in the cold, in her coat, and by the time he'd seen her it was too late, he was already crying, so he just kept going." },
+      { n: "He'd come up to the dorm roof to cry. He told her that later. The guesthouse walls were thin and Asahi heard everything, so he'd walked over and come up here, because it was the only place he knew where nobody would hear, and he hadn't counted on her already being up there, at the railing, in the cold, in her coat, and by the time he'd seen her it was too late, he was already crying, so he just kept going." },
       { s: 'junkyu', f: 'sad', t: "Sorry. Sorry. I'm fine. I'm totally fine. It's the wind." },
       { s: 'solar', f: 'neutral', t: "There isn't any wind." },
       { s: 'junkyu', f: 'sad', t: "...It's a little wind." },
       { n: "He came and stood next to her at the railing and cried, and she let him, and didn't say anything, and after a while he wiped his face on his blazer sleeve and took a big shaky breath like a kid at the end of a tantrum. Below them the city went on glittering in the cold. The new year was ten days old. It still smelled of fireworks somewhere, faintly, under the frost." },
       { ifFlag: 'route-H', then: [
         { s: 'junkyu', f: 'neutral', t: "You're coming home. I know. Everybody knows. The star's so bright I can feel it when I'm brushing my teeth." },
-        { s: 'junkyu', f: 'sad', t: "And I'm scared. I'm so scared. I'm scared you'll come home and you'll be sad. Everybody's going to need the candidate again. Your parents. The school. The posters. And you'll do the face. The poster face. You'll do it so good nobody can tell." },
+        { s: 'junkyu', f: 'sad', t: "And I'm scared. I'm so scared. I'm scared you'll come home and you'll be sad. Everybody's going to need the vice president again. Your parents. The council. Jungwon's meetings. And you'll do the face. The poster face. You'll do it so good nobody can tell." },
         { s: 'junkyu', f: 'sad', t: "And I'm scared I'll wake up at home and I won't remember any of this. The dorm. The signs. Koromaru. And I'll look at you doing the face and I won't know why it makes me sad." }
       ], else: [
         { ifFlag: 'route-true', then: [
@@ -652,6 +657,7 @@
           { s: 'junkyu', f: 'sad', t: "And I'm scared you'll be sad here, too, sometimes. And I won't be here to ask." }
         ] }
       ] },
+      { s: 'junkyu', f: 'sad', t: "And I'm scared about Jihoon. He's better here. He wasn't, at home, at the end. You don't know that. You will. I don't want to be the one who tells you, so that's all I'm telling you." },
       { s: 'junkyu', f: 'neutral', t: "I'm not asking you to change anything. I'm not. I said I'd never ask. I'm just scared. Out loud. I don't know what to do with it." },
       { choose: [
         { t: "Be scared with me. I'm scared too.", notes: 3, then: [
@@ -680,7 +686,8 @@
         { s: 'junkyu', f: 'neutral', t: "When we're home. If you do the face. I'm going to ask. Every time. *are u ok solar.* Even if you say yes. Even if you say it in capitals." },
         { s: 'junkyu', f: 'happy', t: "That's not me asking you to come home. You're already coming. That's just me being annoying. That's allowed." }
       ], else: [
-        { s: 'junkyu', f: 'neutral', t: "Whatever you picked. I'm on your team. I made the sign. It's binding. It's binding in two worlds. Asahi says that's not how signs work. Asahi doesn't make signs." }
+        { s: 'junkyu', f: 'neutral', t: "Whatever you picked. I'm on your team. I made the sign. It's binding. It's binding in two worlds. Asahi says that's not how signs work. Asahi doesn't make signs." },
+        { s: 'junkyu', f: 'happy', t: "I just want you to be happy, no matter who it's with. I said that at home too. In a comment. With a lot of exclamation points. I meant every one." }
       ] },
       { n: "They went down when the cold got into their hands. On the stairs he walked one step above her, the only time all year he'd been taller than her, and pointed it out, and walked the whole flight like that, very pleased, holding on to the rail." }
     ] },
@@ -699,7 +706,7 @@
       { s: 'junkyu', f: 'sad', t: "That's my line." },
       { s: 'junkyu', f: 'sad', t: "That's my line, Sol. That's mine. I say that. I always say that. You never say that. You just say *YES that is exactly what i need* in capitals." },
       { s: 'solar', f: 'neutral', t: "I know. I remember. It's your turn." },
-      { n: "He burst into tears. In the middle of the arcade, under the lights, with his arms still out, and then he was hugging her, around the middle, his cheek against her shoulder, the whole of him warm and solid and shaking and not letting go, and she held on back and didn't let go either, and somewhere behind them Asahi said, very quietly, *oh my God,* and Hyunsuk laughed, wet, and Jaehyuk said nothing at all and took his glasses off to clean them for a very long time, and Jihoon, by the crane game, put his forehead against the glass and stayed there." },
+      { n: "He burst into tears. In the middle of the arcade, under the lights, with his arms still out, and then he was hugging her, around the middle, his cheek against her shoulder, the whole of him warm and solid and shaking and not letting go, and she held on back and didn't let go either, and somewhere behind them Asahi said, very quietly, *oh my God,* and Hyunsuk laughed, wet, and Jaehyuk said nothing at all and looked very hard at a claw machine for a very long time, and Jihoon, by the crane game, put his forehead against the glass and stayed there." },
       { choose: [
         { t: "Ice cream first or hugs first?", notes: 3, then: [
           { s: 'junkyu', f: 'happy', t: "HUGS. Hugs first. I'm already doing the hugs. Then ice cream. Then more hugs. That's the order. That's always been the order." }
@@ -781,8 +788,8 @@
           { n: "They just walked. He didn't say anything for nearly a whole minute, which was a record, and then said *this is the best,* very quietly, and then didn't say anything for another one." }
         ] },
         { t: "Tell me about Nana. Everything.", notes: 3, then: [
-          { s: 'junkyu', f: 'happy', t: "EVERYTHING? Okay. He's big. He's so fluffy his legs look silly. He gets hyper when he meets a new friend and he forgets how big he is. He sits on your feet when somebody's yelling at you. He did it with that boy and the little dog, you said so in the chat. Sat right on your feet." },
-          { s: 'junkyu', f: 'neutral', t: "That's how I knew he was a good dog. Before you ever said anything. You don't have to tell me things. The dog tells me." }
+          { s: 'junkyu', f: 'happy', t: "EVERYTHING? Okay. He's big. He's so fluffy his legs look silly. He gets hyper when he meets a new friend and he forgets how big he is. He gets so excited about new friends he forgets how big he is. He knocked over a tiny dog once, playing, and that's sort of how everything started. Don't ask me to explain that part." },
+          { s: 'junkyu', f: 'neutral', t: "He's a good dog. He loves Jihoon the most, which is so unfair. You don't have to tell me things. The dog tells me." }
         ] }
       ] },
       { n: "On the way back he took a picture of Koromaru against the sun on the water and sent it to the chat, and the chat said what it always said, and Hyunsuk asked for a beef dog biscuit, and Junkyu read every message out loud to her, all the way home, in everybody's voice." }

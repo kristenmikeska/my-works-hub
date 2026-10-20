@@ -10,10 +10,14 @@
    she skips class, doesn't care about school, Solar "can barely add"; ice skating is her new hobby; she did Solar's hair and
    makeup for homecoming; Hyunsuk, her childhood friend, and Sunghoon, whom she claims to hate ("he's a fan"); she once did
    something behind Solar's back to protect her, felt sick with guilt, apologized, and Solar forgave her. Kept vague here.
+   Hoax canon as of Ch 99 (hoax skill): Jungwon won the election and made Solar VP; Solar is dating him; Cherry went to
+   homecoming with Hyunsuk (they had a situationship), then told him she likes Sunghoon, and is now seeing Sunghoon (not
+   official; his "soon" is pending); Jihoon has relapsed and Cherry promised Jungwon to keep Solar away from him. She and Jihoon
+   both live at the Kirijo guesthouse; dorm scenes are visits.
    Game-world inventions: "knockoff" (Cherry coins it here, rank 2), the winter rink in Seaside Park, the poster's handwriting.
    Flags this link sets and reads: cherry-said-you (r1 → r9), cherry-poster (r3 → afterMax), cherry-fan (r4 → r8),
    cherry-skated (r5 → afterMax), cherry-forgave (r7 → r10). Reads story flags route-H / route-true / route-stay (r8, r10),
-   call-H (r8), xmas-jihoon (r9), and ifMet wren (r7). Nothing here decides Hoax's election, homecoming or romances.
+   call-H (r8), xmas-jihoon (r9), and ifMet wren (r7). Nothing here invents Hoax events past the manuscript (Ch 99).
    Curses kept sparing (Kat's ruling) but in her voice. Texting voice: lowercase, "ur", "fking", "ltrly", "abt".
    Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
@@ -154,7 +158,7 @@
   ranks: [
     { after: '11/15', title: "1: who's really in first", place: 'Iwatodai Strip · Wild-Duck Burger', time: 'Afternoon', music: 'city', scene: [
       { n: "It was raining on the Strip, the thin November kind that didn't fall so much as hang in the air and wait for you to walk into it, and the windows of Wild-Duck Burger had fogged from the inside so that the whole place glowed like a fish tank somebody had left the light on in." },
-      { n: "The night she arrived, Cherry had come out of booth seven at the karaoke place in the middle of the Dark Hour with one arm already pointing, yelling Jihoon's name into the green. Since then she had eaten Jihoon's emergency ramen, fallen asleep face down on the dorm kitchen table in his hoodie, been driven to the Kirijo guesthouse by the station by a Mitsuru who had not said one word the entire way, and, according to Junkyu, who had followed her around the Strip like a duckling, insulted every single thing on the Strip except Wild-Duck, which she had walked into, looked around, and declared the only honest business in Japan." },
+      { n: "The night she arrived, Cherry had come out of booth seven at the karaoke place in the middle of the Dark Hour with one arm already pointing, yelling Jihoon's name into the green. Since then she had been driven to the Kirijo guesthouse by the station by a Mitsuru who had not said one word the entire way, eaten Jihoon's emergency ramen out of his cupboard there, fallen asleep face down on the guesthouse kitchen table in his hoodie, and, according to Junkyu, who had followed her around the Strip like a duckling, insulted every single thing on the Strip except Wild-Duck, which she had walked into, looked around, and declared the only honest business in Japan." },
       { n: "She maintained, to anyone who asked, that she had not cried at the karaoke place. There had been mascara all the way down her face. She maintained that it was the smoke machine. There had not been a smoke machine." },
       { n: "She was in the corner booth now with two large fries and a cola and her arms folded so tightly it looked structural, and when Solar came in out of the rain, shaking it off her sleeves, she didn't wave. She pointed at the seat." },
       { register: 'cherry' },
@@ -167,7 +171,7 @@
           { s: 'cherry', f: 'neutral', t: "The correct answer is me. Jihoon's going to tell you it's him. He's going to say it really loud, like volume makes it true. He's lying. Write that down." }
         ] },
         { t: "Jihoon says it's him.", notes: 2, then: [
-          { s: 'cherry', f: 'serious', t: "Of course he does. Of course he got to you first. He's got a car. He lives ten minutes from your house. He always gets there first." },
+          { s: 'cherry', f: 'serious', t: "Of course he does. Of course he got to you first. He's got a car. He lives right down the street from you. He always gets there first." },
           { s: 'cherry', f: 'neutral', t: "Getting there first isn't the same as being first. Remember who's really in first. That's me. I'm the answer." }
         ] },
         { t: "You.", notes: 3, flag: { 'cherry-said-you': true }, then: [
@@ -280,7 +284,7 @@
       { s: 'mitsuru', f: 'neutral', t: "I'll be in the hall. Take whatever time you need." },
       { n: "Then she went too. Cherry stood over the poster with her arms folded and her chin down and her gum gone still in her cheek, and she didn't turn around." },
       { s: 'cherry', f: 'neutral', t: "TEAM SOLAR is Junkyu. Obviously. The dog sticker. He bought a whole sheet of them for this." },
-      { s: 'cherry', f: 'neutral', t: "*She won't* is Asahi. He thinks it's funny. It is a little funny. The glue's me and Jihoon. We fought over the glue stick and it went on crooked and then neither of us would fix it because that would mean the other one was right." },
+      { s: 'cherry', f: 'neutral', t: "*She won't* is Asahi. He thinks it's funny. It is a little funny. Don't tell him." },
       { s: 'cherry', f: 'serious', t: "And the whole thing's my fault." },
       { s: 'solar', f: 'neutral', t: "The poster?" },
       { s: 'cherry', f: 'serious', t: "The running. Your parents said it first. Everybody knows that. But you said no, you said you'd never win, and that was going to be it." },
@@ -293,7 +297,7 @@
         ] },
         { t: "It's a good poster.", notes: 2, then: [
           { s: 'cherry', f: 'happy', t: "It's a terrible poster. It's the best terrible poster I've ever seen. The sun has CHEEKS." },
-          { s: 'cherry', f: 'sad', t: "...You stayed up all weekend on the cheeks. I fell asleep on your floor at one and woke up at five and you were still doing the cheeks." }
+          { s: 'cherry', f: 'sad', t: "...You made it with Sunoo. One of THEM. A whole weekend in your room. I found out when they went up on Monday. I've never fully recovered." }
         ] },
         { t: "You were trying to help.", notes: 3, then: [
           { s: 'cherry', f: 'serious', t: "Don't do that. Don't do the nice thing. You always do the nice thing when I deserve to be yelled at." },
@@ -302,7 +306,10 @@
       ] },
       { n: "The sun on the poster smiled up at them both. Somewhere inside Solar, under her ribs, where she couldn't have pointed to it, something small ticked once, like a pin dropped on a desk in a room down the hall, and she touched the glitter in the corner of the card and it came off on her fingertip, gold, the way it had apparently been coming off on everything for months, in another school, on another girl's hands." },
       { s: 'cherry', f: 'neutral', t: "I'm going to say something and then we're never talking about it again." },
-      { s: 'cherry', f: 'serious', t: "I don't care if you win. That's not true. I care a lot. I want you to destroy him. But if you lose I'm not going to love you any less, and if you quit I'm not going to love you any less, and if you drop out of school and become a Wild-Duck manager I'm going to eat there every day and complain about the service." },
+      { s: 'cherry', f: 'serious', t: "And then you lost. To HIM. Obviously. And he picked you for vice president in front of the whole school like you were a door prize, and Jihoon wouldn't let go of your hand, and I had to punch him." },
+      { s: 'cherry', f: 'neutral', t: "And then you went in a room with the preppy freak and I watched through the little window in the door like a stalker, and... you know what, you'll remember that part. I'm not narrating it." },
+      { s: 'cherry', f: 'sad', t: "I wanted you to destroy him. You didn't. You did something way worse. You started liking him. And I'm the one who told you to run, so technically the whole thing is my fault. I live with that." },
+      { s: 'cherry', f: 'neutral', t: "He's fine. He's a frail little twirp. He's fine to you. If you ever tell him I said that I'll deny it in two universes." },
       { s: 'cherry', f: 'neutral', t: "You're not a poster. That's all. Okay. Done. Never again." },
       { choose: [
         { t: "(Roll up the poster. Give it to her.)", notes: 3, flag: { 'cherry-poster': true }, then: [
@@ -324,7 +331,7 @@
 
     { after: '11/27', title: '4: the popular kids', place: "Iwatodai Strip · Yeobo's Cafe", time: 'After School', music: 'day', scene: [
       { n: "Yeobo's had turned up on the Strip one week in November like it had always been there, wedged between the ramen shop and a shuttered pachinko place, with its windows fogged gold and its hand-lettered sign and the smell of butter coming out under the door, and Sunoo behind the counter in an apron, beaming at everyone who came in like they were his favorite customer, because they were." },
-      { n: "Cherry had refused to go in for two weeks on principle. The principle being that it belonged to Jungwon's friends, and Jungwon's friends were, she said, the popular kids, the preppy freaks, the flower boys, and she had a policy, and the policy was older than this universe." },
+      { n: "Cherry had refused to go in for two weeks. Not on principle, she said; she'd sat at their table at home for a month, eaten their croissants, put up with Niki. She'd refused because Sunghoon was in there most afternoons, and she had not yet decided what her face was going to do when she saw him in another universe." },
       { n: "She was in it now. Solar had dragged her by the wrist the way, apparently, Cherry used to drag her. She was at a table by the window with her coat still on and her arms folded, glaring at the menu, while Sunoo approached with his order pad like a man approaching a nervous horse." },
       { s: 'sunoo', f: 'happy', t: "Cherry! Hi! You're not going to threaten me again, are you?" },
       { s: 'cherry', f: 'neutral', t: "Depends on the croissants." },
@@ -332,11 +339,11 @@
       { s: 'cherry', f: 'serious', t: "I'm not a friend of Solar's. I'm her best friend. There's a difference." },
       { s: 'sunoo', f: 'happy', t: "Of course! Then three. On the house." },
       { n: "He went away humming. Cherry watched him go with the face of a woman who had come prepared for a war and been handed a croissant." },
-      { s: 'cherry', f: 'neutral', t: "I hate that he's nice. I didn't think any of them were actually decent human beings, and then there's him, being decent, at five in the morning, on purpose." },
+      { s: 'cherry', f: 'neutral', t: "I hate that he's nice. I hated all of them for two years on principle and then he kept giving me free food until I couldn't anymore. It's manipulation. It's delicious manipulation." },
       { n: "The bell over the door went. A boy came in out of the cold with his collar up and his hair falling into his eyes on purpose, and a fake flower, a silk rose, pinned to his jacket where nobody would have put a flower unless they wanted to be asked about it. He saw their table. He changed direction without seeming to." },
       { s: 'sunghoon', f: 'neutral', t: "Cherry Kim. You crossed a whole dimension to see me. I'm flattered." },
       { s: 'cherry', f: 'serious', t: "I crossed a dimension to see HER. You're a coincidence. You're mold. You grow wherever." },
-      { s: 'sunghoon', f: 'neutral', t: "I do like them feisty." },
+      { s: 'sunghoon', f: 'neutral', t: "Mold with a car. You liked the passenger seat. You posted about it." },
       { s: 'cherry', f: 'serious', t: "Take that fake flower and..." },
       { s: 'sunoo', f: 'serious', t: "SUNGHOON. Counter. Now. You're scaring my customers." },
       { n: "He went, unhurried, and leaned on the counter with his back to them, and said something to Sunoo that made Sunoo put his face in his hands. And Solar, who had been watching all of it with her chin in her palm, watched Cherry, which was more interesting. Cherry had touched her hair. When the bell went. Before she'd even seen who it was. One quick hand to the back of her head, smoothing, the way you'd check your reflection in a dark window." },
@@ -347,8 +354,8 @@
           { n: "Her ears had gone red. It was warm in Yeobo's. It wasn't that warm." }
         ] },
         { t: "Who is he?", notes: 2, then: [
-          { s: 'cherry', f: 'neutral', t: "Nobody. A fan. He's a fan. I have several." },
-          { s: 'cherry', f: 'serious', t: "He flirts with everything that moves. He'd flirt with that coat rack. Don't ever take a flower from him." }
+          { s: 'cherry', f: 'neutral', t: "Sunghoon. He's... we're... it's not official. He said *soon.* In my comments. In front of everyone. Like a psychopath." },
+          { s: 'cherry', f: 'serious', t: "Everyone thinks he's a playboy. He thinks he's a reincarnated prince. Don't ever take a flower from him. Except me. I'm allowed." }
         ] },
         { t: "(Say nothing. Eat your croissant.)", notes: 2, then: [
           { n: "Solar ate her croissant and said nothing, and Cherry watched her say nothing with growing suspicion, and finally said *what,* and Solar said *nothing,* and Cherry said *that's a loud nothing,* and they left it there, on the table between them, like a bill neither of them was going to pick up." }
@@ -356,7 +363,7 @@
       ] },
       { n: "The croissants came, three of them, warm and flaking onto the plate, and Cherry ate hers in four bites without looking up, and then ate half of Solar's, and then, when Sunoo came back to ask how they were, looked him dead in the eye and said they were fine, and asked for two more, to go." },
       { s: 'cherry', f: 'neutral', t: "Don't look at me like that. They're for Junkyu. He's been sad." },
-      { s: 'cherry', f: 'serious', t: "And don't start. Don't you start with *maybe the popular kids aren't so bad.* You said that at home once and then you ran against their president." },
+      { s: 'cherry', f: 'serious', t: "And don't start. Don't you dare say *I told you so.* You said they weren't so bad at home about a hundred times, and you were right, and I'll never forgive you for it." },
       { choose: [
         { t: "You can like the croissant and still hate them.", notes: 3, then: [
           { s: 'cherry', f: 'happy', t: "...Yeah. Yeah, okay. That's legal. That's a legal position." }
@@ -366,7 +373,7 @@
           { s: 'cherry', f: 'sad', t: "I am mean. I'm also protecting you. It's both. It's always both." }
         ] },
         { t: "Maybe they aren't so bad.", notes: 1, then: [
-          { s: 'cherry', f: 'serious', t: "I'm going to pretend you didn't say that so I don't have to tell Jihoon. He'd have a stroke. It'd be fun to watch, but still." }
+          { s: 'cherry', f: 'serious', t: "I'm going to pretend you didn't say that so I don't have to admit it out loud. Hyunsuk would never speak to me again. He barely does now." }
         ] }
       ] },
       { n: "Her phone buzzed on the table, face down. She turned it over, looked at it, and turned it face down again in one motion, too fast, and put her hand flat on top of it like it might get up and leave." },
@@ -407,7 +414,7 @@
         ] },
         { t: "Do you like the one who turned up?", notes: 2, then: [
           { s: 'cherry', f: 'serious', t: "I'm not answering that on ice. I could die. People die on ice all the time. It's in the news." },
-          { s: 'cherry', f: 'neutral', t: "...Ask me on dry land sometime. Not soon. Sometime." }
+          { s: 'cherry', f: 'neutral', t: "...Yes. Fine. Yes. We go out. He drives. He said *soon,* which means nothing, which means everything, which means I'm going to kill him." }
         ] },
         { t: "Whoever stood you up is an idiot.", notes: 3, then: [
           { s: 'cherry', f: 'happy', t: "He is. He's the sweetest idiot alive. That's the worst part. You can't even hate him properly." },
@@ -419,7 +426,8 @@
         { from: 'cherry', t: "sent u the pic" },
         { from: 'cherry', t: "u look like a baby giraffe that just learned about death" },
         { from: 'cherry', t: "its my lockscreen now. dont talk to me abt it" },
-        { from: 'solar', t: "delete it" },
+        { from: 'solar', t: "CHERRY DELETE IT" },
+        { from: 'solar', t: "i look like a FOOT" },
         { from: 'cherry', t: "absolutely not. its going in the wedding slideshow. urs. or mine. whoever goes first" }
       ], contact: 'Cherry' }
     ] },
@@ -521,6 +529,7 @@
           { s: 'cherry', f: 'neutral', t: "Okay. Okay. Don't be nice. I'll cry in a train station. That's worse than a karaoke place. There's lighting." }
         ] }
       ] },
+      { s: 'cherry', f: 'neutral', t: "And Jihoon's better here. You don't know what that means. I'm not explaining it. At home I promised somebody I'd keep you away from him. Here I don't have to. It's the only thing I like about this place." },
       { s: 'cherry', f: 'neutral', t: "So here's the thing. Everybody's asking you. Jihoon's going to do it at the arcade, I can feel it. Junkyu's going to cry at you. Jungwon's going to do some polite thing where it doesn't sound like asking." },
       { s: 'cherry', f: 'serious', t: "And I yelled. On a street. I'm keeping it. I'm not taking it back. Come home." },
       { s: 'cherry', f: 'sad', t: "But I'm not deciding for you. I did that once. I'm never doing it again. So it's *come home,* and then the other half, which is: only if you want to. Only if it's yours." },
@@ -551,7 +560,7 @@
         ] }
       ] },
       { ifFlag: 'call-H', then: [
-        { s: 'cherry', f: 'neutral', t: "Jihoon sleeps with that dog. The crane game dog. I saw it in his room at the dorm. Face on the pillow. Tucked in." },
+        { s: 'cherry', f: 'neutral', t: "Jihoon sleeps with that dog. The crane game dog. I saw it in his room at the guesthouse, two doors down from mine. Face on the pillow. Tucked in." },
         { s: 'cherry', f: 'happy', t: "Don't tell him I told you. Tell everyone else." }
       ] },
       { n: "Her phone lit up on the floor beside the futon, face down, a white line of light around its edges on the tatami, and buzzed once. She didn't look at it. It buzzed again." },
@@ -560,8 +569,8 @@
         { s: 'cherry', f: 'surprised', t: "..." },
         { s: 'cherry', f: 'serious', t: "I hate you. I hate that you remembered that. You don't remember your own birthday and you remember that." },
         { n: "The phone buzzed a third time. Cherry put her arm over her eyes. In the dark it was easier to say things. It was why people had invented the dark." },
-        { s: 'cherry', f: 'neutral', t: "It's not Hyunsuk. Hyunsuk is... Hyunsuk is Hyunsuk. I've known him since forever. He's easy. He's like a sofa. That's not an insult. I love sofas." },
-        { s: 'cherry', f: 'sad', t: "And the other one is a nightmare. He's a flower boy. He's everything I hate. He calls me every night. Called. At home. And here he just texts, because he's in the room next to Jungwon's and the walls are thin." },
+        { s: 'cherry', f: 'neutral', t: "It's Sunghoon. Obviously it's Sunghoon. He's a flower boy. He's everything I hate. He called me every night at home. Here he just texts, because he's in the room next to Jungwon's and the walls are thin and Jungwon reports him." },
+        { s: 'cherry', f: 'sad', t: "And Hyunsuk is two doors down from me, not really talking to me. I told him. At home. At his locker. Way too late. He said he kind of knew. He said he wished I'd told him sooner. He was right, which is the worst thing Hyunsuk's ever been." },
         { s: 'cherry', f: 'sad', t: "I don't know what I'm doing, Sol. I always know what I'm doing. That's my whole thing." },
         { choose: [
           { t: "Let yourself have fun. Give it time. You don't have to know yet.", notes: 3, then: [
@@ -577,11 +586,11 @@
           ] }
         ] }
       ], else: [
-        { s: 'cherry', f: 'neutral', t: "Nobody. It's nobody. It's a fan. Go to sleep." },
+        { s: 'cherry', f: 'neutral', t: "It's Sunghoon. Don't. Go to sleep." },
         { n: "She turned the phone over and looked at it, and her face in the white light did something private and annoyed and soft all at once." },
         { choose: [
-          { t: "A fan who texts at one in the morning.", notes: 3, then: [
-            { s: 'cherry', f: 'serious', t: "Fans are very dedicated. That's what makes them fans. Look it up." },
+          { t: "A prince who texts at one in the morning.", notes: 3, then: [
+            { s: 'cherry', f: 'serious', t: "Princes are very dedicated. He told me he's reincarnated. I didn't ask follow-up questions. I was scared of the answers." },
             { s: 'cherry', f: 'neutral', t: "...I'll tell you about it on dry land. I said that. I'm keeping to it. Not tonight. Tonight's yours." }
           ] },
           { t: "(Say nothing. Let her have it.)", notes: 3, then: [
@@ -590,6 +599,19 @@
           { t: "Turn it off.", notes: 2, then: [
             { s: 'cherry', f: 'neutral', t: "I was going to. I was already going to. Don't take credit." },
             { n: "She turned it off, and put it under the futon, and lay back down with her arm over her eyes." }
+          ] }
+        ] }
+      ] },
+      { s: 'cherry', f: 'neutral', t: "You know what's insane? At home you're the one with a boyfriend. You. Who's never liked anybody in her whole life. First one ever, and it's the preppy freak." },
+      { s: 'cherry', f: 'serious', t: "I told him it had to be special. Your first one. I said it to his face, in front of all his friends, and he went red to the ears. And he made it special, I'll give him that. He did math at you. You loved it. It was disgusting." },
+      { ifRomance: 'jungwon', then: [
+        { s: 'cherry', f: 'neutral', t: "And he's doing it again here, isn't he. Slower. Like he's scared you'll grade him. I'm not saying anything. I'm saying so much, silently, with my face." }
+      ], else: [
+        { ifRomance: 'jihoon', then: [
+          { s: 'cherry', f: 'neutral', t: "And here you've gone and— with Jihoon. Of all the people in two universes. I'm not saying anything. I'm saying so much, silently, with my face." }
+        ], else: [
+          { ifRomance: 'akihiko', then: [
+            { s: 'cherry', f: 'neutral', t: "And here there's the silver-haired one who runs past your window every morning like it's a coincidence. It's not a coincidence. I'm not blind. I'm just polite. Ish." }
           ] }
         ] }
       ] },
@@ -604,7 +626,7 @@
           { s: 'cherry', f: 'serious', t: "You've been different since that night. You look like you're going everywhere at once. I don't understand it. I don't need to. I just want to be on the list." }
         ], else: [
           { ifFlag: 'route-stay', then: [
-            { s: 'cherry', f: 'neutral', t: "Nothing rang. On the twenty-first. Everybody from home was listening and nothing rang, and then Jihoon looked at the dorm across the street for a really long time, and I knew." },
+            { s: 'cherry', f: 'neutral', t: "Nothing rang. On the twenty-first. Everybody from home was listening and nothing rang, and then Jihoon stood outside your dorm for a really long time and wouldn't come back to the guesthouse, and I knew." },
             { s: 'cherry', f: 'sad', t: "You're staying. Here. Aren't you." },
             { s: 'cherry', f: 'neutral', t: "...Okay. I said wherever. In November. I said if it's here I'll hate it and I'll be okay. I meant it. Give me a minute. Give me like a year." }
           ], else: [
@@ -681,7 +703,7 @@
           { n: "There was a silence. Then Cherry said the dog was valid, actually, and Jihoon said the dog had been there for her, honestly, and the two of them got down on the floor on either side of Koromaru and argued about which of them he liked better instead, which, Solar thought, watching from the sofa, was the whole point. It had always been the whole point." }
         ] }
       ] },
-      { n: "Later, when Jihoon had finally gone upstairs, still talking, and the lounge had emptied out, Cherry stayed on the sofa with her boots on the table and the television murmuring, and said, without looking away from it, that she'd never actually wanted to win." },
+      { n: "Later, when Jihoon had finally gone back to the guesthouse, still talking, and the lounge had emptied out, Cherry stayed on the sofa with her boots on the table and the television murmuring, and said, without looking away from it, that she'd never actually wanted to win." },
       { s: 'cherry', f: 'neutral', t: "The first thing. I mean I do. I want to win everything. But I don't need it. Him and me fighting about it, that's the thing. That's how we say it. You know that, right? Everybody knows that." },
       { s: 'cherry', f: 'sad', t: "If we ever stop fighting about who's first, that's when you should worry. That means one of us isn't there anymore." },
       { choose: [
@@ -734,7 +756,7 @@
       { s: 'cherry', f: 'neutral', t: "Listen. Whatever door you go through. Whatever happens. Here's the only thing I know." },
       { s: 'cherry', f: 'serious', t: "If I see you, anywhere, I'm going to run at you. I don't run. Running is for Jihoon and people who do pilates. I'll run. Across a gym. Across a parking lot. Across a whole fucking universe." },
       { ifFlag: 'route-H', then: [
-        { s: 'cherry', f: 'neutral', t: "It'll be the gym, probably. That's where the door goes, Jihoon thinks. The whole school. Balloons. Everybody. You'll be standing in the middle of it in that armband looking like an idiot." },
+        { s: 'cherry', f: 'neutral', t: "It'll be school, probably. That's where the door goes, Jihoon thinks. Hanlim. Everybody. You'll be standing in the middle of the hallway in that armband looking like an idiot." },
         { s: 'cherry', f: 'happy', t: "So don't move. When you see me. Just stand there and let me hit you." }
       ], else: [
         { ifFlag: 'route-stay', then: [
