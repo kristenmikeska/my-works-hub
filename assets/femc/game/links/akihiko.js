@@ -6,6 +6,11 @@
   starts: '4/20',
   home: { area: 'Gekkoukan High', spot: 'Boxing Club', slot: 'after', days: [1, 2, 3, 4, 5, 6],
           hint: 'After school, Monday to Saturday, at the boxing club.' },
+  // School's shut on the breaks, so he's at the dorm in the evenings (rank 6 is a summer-break roof scene on 8/10).
+  summerHome: { area: 'dorm', spot: 'Rooftop', slot: 'evening', days: [0, 1, 2, 3, 4, 5, 6],
+                hint: 'Summer evenings, on the dorm roof, when the heat finally lets go of the concrete.' },
+  winterHome: { area: 'dorm', spot: 'Lounge', slot: 'evening', days: [0, 1, 2, 3, 4, 5, 6],
+                hint: 'Winter break evenings, in the dorm lounge, with the heater and a protein shake.' },
   approach: "Akihiko is on the bench by the boxing club ring with his ribs taped under his shirt, glaring at a heavy bag he isn't allowed to touch, and he sits up straighter when he sees you in the doorway.",
   cast: { kondo: 'Kondo', fanclub: 'Fan Club Girl' },
   invite: {
@@ -571,6 +576,42 @@
           { s: 'akihiko', f: 'sad', t: "You can't make Shinji do anything. I've been trying since I was six." }
         ] }
       ] },
+      { ifRank: { shinjiro: 6 }, then: [
+        { n: "Then, with his eyes on the monorail, much too casually, the way he lobbed a water bottle across the boxing club when he didn't want you to see him aim," },
+        { s: 'akihiko', f: 'neutral', t: "He lets you in the kitchen." },
+        { s: 'akihiko', f: 'happy', t: "Nobody gets in the kitchen. I've been trying to get into that kitchen since I was nine. He hit me with a spoon last week." },
+        { ifRomance: 'shinjiro', then: [
+          { n: "He didn't say the rest of it. He didn't need to. Two nights ago he'd come down at one in the morning for water, the way he always did, and stopped in the kitchen doorway when he saw who was at the stove, and stood there for a second with his hand on the frame, and gone back up the stairs without the water." },
+          { s: 'akihiko', f: 'sad', t: "I'm glad. That it's you. That he's got somebody he lets stand that close." },
+          { s: 'akihiko', f: 'sad-2', t: "I'm. Yeah. I'm glad." },
+          { n: "He said *glad* twice, which was once too many, and they both heard it, and he looked at the monorail very hard, as if it had said it." },
+          { choose: [
+            { t: "Akihiko.", notes: 3, then: [
+              { s: 'akihiko', f: 'neutral', t: "It's fine. It's good. Don't. It's good." },
+              { n: "Then he looked at her, just once, sideways, and something in his face wasn't fine at all and wasn't trying to be, and she felt it go in under her ribs and stay there, warm and unwelcome and absolutely hers, like a second heartbeat she hadn't asked for and couldn't give back." }
+            ] },
+            { t: "(Don't say anything. Stand a little closer.)", notes: 3, then: [
+              { n: "She moved along the railing until her sleeve was against his. He didn't move away. He didn't move toward her either. He just stood there and let it be true that she was there, on his side of the roof, and breathed out through his nose like a man finishing a set." }
+            ] },
+            { t: "It's not like that.", notes: 1, then: [
+              { s: 'akihiko', f: 'neutral', t: "...Okay." },
+              { n: "He didn't believe her. She wasn't sure she believed herself, and she wasn't sure which half of it she meant." }
+            ] }
+          ] }
+        ], else: [
+          { s: 'akihiko', f: 'neutral', t: "He saves you the end of the pot. The crispy part. He never saved me anything in his life." },
+          { choose: [
+            { t: "Are you jealous of me or of him?", notes: 3, then: [
+              { s: 'akihiko', f: 'blushing', t: "...Of the pot." },
+              { n: "He went red from the collar up and stayed red, and she laughed at him, and he let her, and somewhere in the middle of letting her he stopped being embarrassed and just looked pleased that she was laughing, which was worse, and lasted longer." }
+            ] },
+            { t: "He feeds everyone. I'm just closer to the stove.", notes: 2, then: [
+              { s: 'akihiko', f: 'happy', t: "Ha. Sure. That's it." },
+              { s: 'akihiko', f: 'neutral', t: "He doesn't stand that close to anyone. Trust me. I've known him since he was taller than me." }
+            ] }
+          ] }
+        ] }
+      ] },
       { n: "Her phone buzzed in her blazer pocket. Once, twice. She knew without looking what it would be, and she took it out and looked anyway, the way you press on a bruise." },
       { n: "A number she didn't know. That was the third one now, or the fourth, she'd stopped being able to say for sure. They came late, mostly, when she was half asleep, cheerful and ordinary and old, from people who wrote to her like she was someone they'd known all their lives, asking how she was settling in, whether she'd eaten, whether she'd seen something she'd never heard of. She hadn't answered any of them. She hadn't deleted any of them either. She didn't know what you were supposed to do with a letter addressed to someone who had your face." },
       { n: "She put the phone away. When she looked up he was watching the monorail, very carefully, with the face of a man who was not looking at her phone and very badly wanted to." },
@@ -639,11 +680,19 @@
       { s: 'akihiko', f: 'sad-2', t: "I yelled at her. I've never yelled at her. Not once, not since the day she put an Evoker in my hand." },
       { s: 'akihiko', f: 'sad-4', t: "I keep running it. That night. Every version where I'm faster." },
       { choose: [
-        { t: "Tell me about him.", notes: 3, then: [
+        { t: "Tell me about him when you were kids. The part I wasn't there for.", notes: 3, then: [
           { s: 'akihiko', f: 'surprised', t: "..." },
-          { n: "He looked at her like she'd said something in another language, one he used to speak and had forgotten he knew. Then he looked at the river." },
+          { n: "He looked at her like she'd said something in another language, one he used to speak and had forgotten he knew. She'd known Shinji for a season. The kitchen at seven, a long coat on the hook by the door, a voice telling everyone to get out of the way. Akihiko had known him since he was six. Then he looked at the river." },
           { s: 'akihiko', f: 'sad-3', t: "He couldn't cook when we were kids. He taught himself. Because somebody had to." },
           { s: 'akihiko', f: 'sad-2', t: "Burned everything for a year straight. Rice, eggs, everything. We ate it anyway. Miki said it tasted like camping." },
+          { ifRank: { shinjiro: 7 }, then: [
+            { s: 'solar', f: 'neutral', t: "He told me I cut onions like I was mad at them." },
+            { s: 'akihiko', f: 'sad-4', t: "...He said that to me. When I was eight. Word for word." },
+            { s: 'akihiko', f: 'sad-3', t: "Guess he only ever had the one complaint." }
+          ], else: [
+            { s: 'solar', f: 'neutral', t: "He told me to eat something. Every single time he saw me. Like it was hello." },
+            { s: 'akihiko', f: 'sad-3', t: "...Yeah. It was. That was the only hello he had." }
+          ] },
           { n: "He laughed, wet and broken in the middle, and didn't hide it, and she didn't look away, and the old man's dog in its coat barked once at the far end of the path as though it had heard something funny." }
         ] },
         { t: "You couldn't have changed it.", notes: 1, then: [

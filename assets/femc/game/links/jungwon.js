@@ -108,6 +108,23 @@
     [
       { n: "He walked her home. He always walked her home, to the gate of the dorm and not one step past it, and then turned round and walked the whole way back to the guesthouse by the station, which was out of his way in every direction, and which he described, when she pointed this out, as a route." },
       { place: 'Iwatodai Dorm · Front Steps', time: 'Evening' },
+      { ifEvent: 'a4-there-you-are', else: [
+        { n: "Junpei was on the steps with a convenience-store bag and a cap on backward, and he looked up at the two of them with the open delight of a man who had been bored for an hour and had just been handed a show." },
+        { s: 'junpei', f: 'happy', t: "Yo, Student Council! You coming in? There's curry. It's mostly okay." },
+        { s: 'jungwon', f: 'happy', t: "Thank you, no. It isn't my house. Good evening, Iori-san." },
+        { choose: [
+          { t: "You could come in. Just for curry.", notes: 3, then: [
+            { s: 'jungwon', f: 'neutral', t: "I'd have to be invited by someone who lives here." },
+            { s: 'solar', f: 'neutral', t: "I live here." },
+            { s: 'jungwon', f: 'flustered', t: "...Then another night. When I've brought something. One doesn't arrive at a house empty-handed." }
+          ] },
+          { t: "Goodnight, Jungwon. Thank you for the route.", notes: 3, tally: { 'jungwon.H': 1 }, then: [
+            { s: 'jungwon', f: 'flustered', t: "...It's on my way." },
+            { s: 'junpei', f: 'happy', t: "Dude, the station's the other way." }
+          ] }
+        ] },
+        { n: "He bowed at the gate and went, and wound his watch on the corner without looking back, and Junpei watched him go and said, to nobody, that he'd never once seen a guy walk that straight on purpose." }
+      ], then: [
       { n: "Tonight there was somebody on the dorm steps already. Hood up, elbows on his knees, a can of something black and bitter going cold beside his shoe. He didn't get up. He looked at the two of them coming up the path with the flat, patient interest of a man watching a delivery he hadn't ordered." },
       { s: 'jungwon', f: 'happy', t: "Good evening, Donghyuck." },
       { s: 'haechan', f: 'neutral', t: "Young master. You're on my step." },
@@ -131,6 +148,7 @@
           { s: 'jungwon', f: 'flustered', t: "Nobody asked you." },
           { n: "He went. Halfway down the path she heard him say, to the dark, very politely, *goodnight, Donghyuck*, and from the step behind her, flat as a closed door, *night, Yang*, and it was the most either of them had said to the other all week." }
         ] }
+      ] }
       ] }
     ]
   ],
@@ -323,7 +341,8 @@
       { n: "Jungwon's smile didn't move by a millimeter. It got, if anything, sweeter. She'd learned by now what that meant." },
       { s: 'jungwon', f: 'happy', t: "Please go. I wouldn't want to keep you from a crisis." },
       { s: 'jihoon', f: 'neutral', t: "Wow. See? *Wouldn't want to keep you.* That's how you know he hates me." },
-      { n: "She went. In the doorway she looked back. He'd turned the phone face up again, and was looking at it, and his hand was on the watch, and he didn't look up." }
+      { n: "She went. In the doorway she looked back. He'd turned the phone face up again, and was looking at it, and his hand was on the watch, and he didn't look up." },
+      { n: "Ten minutes later, from the far side of the courtyard, she glanced back at the school and saw a navy blazer coming out through the gate behind them at an even, unhurried pace, a long way back, as if its owner simply happened to be going to the mall too. Jihoon saw it at the same moment. He didn't say anything. He walked a little faster for a block, and then, as if he'd decided he wasn't going to give Yang the satisfaction, a little slower." }
     ] },
 
     { after: '11/6', title: '4: sea bream', place: 'Iwatodai Dorm · Kitchen', time: 'Late Night', music: 'tender', scene: [
