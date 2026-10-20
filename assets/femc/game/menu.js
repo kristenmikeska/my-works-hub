@@ -6,7 +6,15 @@
    Compendium page.
    The battle side's numbers come from the playthrough's battle save (core.js S.battleSave, shape in assets/femc/battle/save.js)
    through the battle engine (engine.js: levels, stats, skills, equipment math) and its data (data.js). Changes made here
-   (party, equipment, Haenim's form) are written straight into S.battleSave, so the next fight uses them.
+   (party, tactics, equipment, Haenim's form) are written straight into S.battleSave, so the next fight uses them.
+
+   The same menu opens over a fight (Tartarus's hub and access points, a fight's results, Get Ready before a boss): the battle
+   frame persists its save, calls window.FemcBridge.openMenu(tab, opts) (ui.js), and reloads S.battleSave when the menu
+   closes. opts (FemcMenu.open's second argument): inBattle, kind (the handoff's: tartarus / operation / scripted), onClose, required (ids who must fight: no benching), solo
+   (Solar alone: no party changes, only her equipment), extra (ids to list though the calendar hasn't made them available
+   yet: a searcher awakening in this very fight), items / yen (what Solar is carrying tonight: the battle's own counts),
+   hp ({ id: { hp, maxHp, sp, maxSp } } mid-climb), openTree (Haenim's tree, the battle's own screen, until the skill
+   system replaces it).
 
    ── SKILLS: the seam for the skill-tree system (next on the roadmap) ──
    The Skills tab is deliberately empty. The system that will live here owns:
@@ -25,46 +33,69 @@ window.FemcMenu = (() => {
   const yen = n => `¥${Math.round(n || 0).toLocaleString('en-US')}`;
   const AFF = { normal: '–', weak: 'Wk', resist: 'Rs', null: 'Nu', drain: 'Dr', repel: 'Rp' };
   const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['equip', 'Equipment'], ['items', 'Items'], ['status', 'Status'], ['links', 'Links'], ['journal', 'Journal'], ['calendar', 'Calendar'], ['compendium', 'Compendium']];
-  let o = null, tab = 'party', sel = {};
+  let o = null, tab = 'party', sel = {}, opts = {};
 
   /* ── Battle-side helpers (no fight running: the engine is asked for numbers only) ── */
   const bsave = () => G.ensureBattleSave();
   const member = id => D().party.find(m => m.id === id);
-  // Members the calendar allows today, in the battle game's order, Solar first. Unknown ids are skipped.
-  const roster = () => G.available().filter(member).map(member);
+  // Members the calendar allows today (plus opts.extra), in the battle game's order, Solar first. Unknown ids are skipped.
+  const roster = () => { const ids = new Set(G.available().concat(opts.extra || [])); return D().party.filter(m => ids.has(m.id)); };
+  const required = id => (opts.required || []).includes(id);
   const inParty = id => id === 'solar' || (bsave().party || []).includes(id);
   const lvOf = id => E().lvlOf(bsave(), id);
   const unit = id => { try { return E().buildUnit(id, bsave(), {}); } catch (e) { return null; } };
   const personaOf = id => D().personas[E().personaId(id, bsave())];
   const elIcon = el => (window.FemcBattleArt ? window.FemcBattleArt.icon(el) : '');
   const skillChips = ids => `<ul class="g-chips">${ids.map(id => { const s = D().skills[id]; return s ? `<li title="${esc(s.desc || '')}">${elIcon(s.el)}<span>${esc(s.name)}</span></li>` : ''; }).join('')}</ul>`;
-  const face = (id, f = 'neutral') => { const src = G.portrait(id, f); return src ? `<img src="${src}" alt="">` : `<span>${esc(G.name(id)[0] || '?')}</span>`; };
+  // The story hides Solar's face until she has her armband; the menu shows the battle game's portraits (data.js portraits).
+  const face = (id, f = 'neutral') => {
+    const src = G.portrait(id, f) || (member(id) && D().portraits ? `${D().portraits}${id}/${f}.webp` : null);
+    return src ? `<img src="${src}" alt="">` : `<span>${esc(G.name(id)[0] || '?')}</span>`;
+  };
+  // A member's HP/SP: tonight's numbers mid-climb (opts.hp), otherwise full.
+  const bars = (id, u) => { const h = (opts.hp || {})[id] || {}, mh = h.maxHp || u.maxHp, ms = h.maxSp || u.maxSp, hp = h.hp ?? mh, sp = h.sp ?? ms;
+    return `<span class="g-pm-bars"><span class="g-bar hp"><small>HP</small><i style="--w:${Math.round(hp / mh * 100)}%"></i><b>${hp}</b></span><span class="g-bar sp"><small>SP</small><i style="--w:${Math.round(sp / ms * 100)}%"></i><b>${sp}</b></span></span>`; };
+  const tacticOf = id => (id === 'solar' ? 'direct' : ((bsave().tactics || {})[id] || 'direct'));
   const affChips = aff => `<div class="g-affs">${D().affinityOrder.map(x => { const a = aff[x] || 'normal'; return `<span class="g-aff ${a}" title="${esc(D().elements[x].name)}: ${a}">${elIcon(x)}<em>${AFF[a]}</em></span>`; }).join('')}</div>`;
 
   /* ── Tabs ── */
   function partyTab() {
     const b = bsave(), list = roster();
+    const list2 = opts.solo ? list.filter(m => m.id === 'solar') : list;
     const card = m => {
-      const u = unit(m.id), p = personaOf(m.id), on = inParty(m.id), slot = m.id === 'solar' ? 1 : (b.party.indexOf(m.id) + 2);
-      return `<button type="button" class="g-pm${on ? ' in' : ''}${m.id === 'solar' ? ' lead' : ''}" data-pm="${m.id}" aria-pressed="${on}" style="--c:${m.color || '#ff4f9e'}">
+      const u = unit(m.id), p = personaOf(m.id), on = inParty(m.id), slot = m.id === 'solar' ? 1 : (b.party.indexOf(m.id) + 2), tac = D().tactics[tacticOf(m.id)];
+      const tag = m.id === 'solar' ? 'Leader' : required(m.id) ? 'Required' : on ? `In · ${slot}` : 'Bench';
+      return `<div class="g-pm-wrap"><button type="button" class="g-pm${on ? ' in' : ''}${m.id === 'solar' ? ' lead' : ''}${required(m.id) ? ' req' : ''}" data-pm="${m.id}" aria-pressed="${on}" style="--c:${m.color || '#ff4f9e'}">
         <i class="g-pm-pic">${face(m.id, m.faces?.idle || 'serious')}</i>
         <span class="g-pm-info"><b>${esc(m.name)}<small>Lv ${lvOf(m.id)}</small></b><span class="g-pm-per">${esc(p?.name || '')}${p?.arcana ? ` · ${esc(p.arcana)}` : ''}</span>
-          ${u ? `<span class="g-pm-bars"><span class="g-bar hp"><small>HP</small><i style="width:100%"></i><b>${u.maxHp}</b></span><span class="g-bar sp"><small>SP</small><i style="width:100%"></i><b>${u.maxSp}</b></span></span>` : ''}
+          ${u ? bars(m.id, u) : ''}
           <span class="g-pm-role">${esc(m.role || '')}</span></span>
-        <em class="g-pm-slot">${on ? (m.id === 'solar' ? 'Leader' : `In · ${slot}`) : 'Bench'}</em></button>`;
+        <em class="g-pm-slot">${tag}</em></button>
+        ${m.id === 'solar' ? '<span class="g-pm-tac lead">Always Direct</span>' : `<button type="button" class="g-pm-tac" data-tac="${m.id}" title="${esc(tac?.desc || '')}">Tactic · <b>${esc(tac?.name || 'Direct Command')}</b></button>`}</div>`;
     };
-    return `<p class="g-note">Pick up to three to go into Tartarus with Solar. The bench still earns ${Math.round(D().progression.benchShare * 100)}% of the EXP.${G.navigator() ? ` ${esc(G.name(G.navigator()))} navigates.` : ''}</p>
-      <div class="g-pm-grid">${list.map(card).join('')}</div>`;
+    const head = opts.solo ? 'Solar fights this one alone.'
+      : `Pick up to three to fight beside Solar. The bench still earns ${Math.round(D().progression.benchShare * 100)}% of the EXP.${(opts.required || []).length ? ` ${opts.required.map(id => esc(member(id)?.name || id)).join(' and ')} must take part.` : ''}${G.navigator() ? ` ${esc(G.name(G.navigator()))} navigates.` : ''}`;
+    return `<p class="g-note">${head} Tactics: Direct lets you choose; the others act on their own.</p>
+      <div class="g-pm-grid">${list2.map(card).join('')}</div>`;
   }
   function wireParty(el) {
     el.querySelectorAll('[data-pm]').forEach(bt => bt.addEventListener('click', () => {
-      const id = bt.dataset.pm; if (id === 'solar') return;
+      const id = bt.dataset.pm; if (id === 'solar' || opts.solo) return;
       const b = bsave(), at = b.party.indexOf(id);
+      if (at >= 0 && required(id)) { G.toast('note', `${member(id).name} must take part in this fight.`); G.sfx('femc-hover'); return; }
       if (at >= 0) b.party.splice(at, 1);
       else if (b.party.length >= 3) { G.toast('note', 'The party is full. Bench someone first.'); return; }
       else b.party.push(id);
-      S().tartarus.lastParty = ['solar', ...b.party];
+      // Tonight's team is remembered for the next Tartarus night (not a story fight's lineup).
+      if (!opts.inBattle || opts.kind === 'tartarus') S().tartarus.lastParty = ['solar', ...b.party];
       G.saveQuiet(); G.sfx('femc-click'); render(id);
+    }));
+    el.querySelectorAll('[data-tac]').forEach(bt => bt.addEventListener('click', () => {
+      const id = bt.dataset.tac, b = bsave(), order = Object.keys(D().tactics);
+      b.tactics = b.tactics || {};
+      b.tactics[id] = order[(order.indexOf(tacticOf(id)) + 1) % order.length];
+      if (b.tactics[id] === 'direct') delete b.tactics[id];
+      G.saveQuiet(); G.sfx('femc-hover'); render(`[data-tac="${id}"]`);
     }));
   }
   function personasTab() {
@@ -90,10 +121,11 @@ window.FemcMenu = (() => {
     const b = bsave();
     return `<div class="g-skills-empty"><p class="g-kicker">Coming soon</p><h2>Skills</h2>
       <p>The skill tree lives here next: skills that grow, Haenim's deeper tree, a small tree for each friend, and memory fragments to spend.</p>
-      <p class="g-note">For now: Solar has <b>${b.pts}</b> skill point${b.pts === 1 ? '' : 's'} and ${b.nodes.length} node${b.nodes.length === 1 ? '' : 's'} on Haenim's tree. You can still spend them in the results screen after a fight.</p></div>`;
+      <p class="g-note">For now: Solar has <b>${b.pts}</b> skill point${b.pts === 1 ? '' : 's'} and ${b.nodes.length} node${b.nodes.length === 1 ? '' : 's'} on Haenim's tree. ${opts.openTree ? 'Spend them on Haenim’s tree here in the Dark Hour.' : 'Spend them on Haenim’s tree in Tartarus, or after a fight.'}</p>
+      ${opts.openTree ? '<div class="g-row"><button type="button" class="g-btn pink" data-tree>Haenim’s tree ▸</button></div>' : ''}</div>`;
   }
   function equipTab() {
-    const b = bsave(), list = roster();
+    const b = bsave(), list = opts.solo ? roster().filter(m => m.id === 'solar') : roster();
     BS().syncGear(b, S().gear);
     const id = sel.equip && list.some(m => m.id === sel.equip) ? sel.equip : 'solar';
     // Loading an earlier slot can remove the previously selected member from the roster.
@@ -121,7 +153,8 @@ window.FemcMenu = (() => {
     }));
   }
   function itemsTab() {
-    const s = S(), inv = Object.entries(s.inventory), b = bsave();
+    // In the Dark Hour Solar carries the battle's own counts (items used tonight come off as she goes).
+    const s = S(), inv = Object.entries(opts.items || s.inventory).filter(([, n]) => n > 0), b = bsave();
     const gear = [...new Set([...s.gear, ...Object.keys(b.gear.owned).filter(k => b.gear.owned[k] > 0)])].filter(k => D().gear[k]);
     const mats = Object.entries(b.mats || {}).filter(([, n]) => n > 0);
     return `<div class="g-cols">
@@ -185,18 +218,21 @@ window.FemcMenu = (() => {
     body.innerHTML = html;
     body.scrollTop = top;
     if (tab === 'party') wireParty(body); else if (tab === 'personas') wirePersonas(body); else if (tab === 'equip') wireEquip(body);
+    // The battle frame opens its tree once the menu has closed (openTree only asks for it).
+    body.querySelector('[data-tree]')?.addEventListener('click', () => { opts.openTree?.(); o.close(); });
     o.el.querySelectorAll('[data-tab]').forEach(b => { b.classList.toggle('on', b.dataset.tab === tab); b.setAttribute('aria-selected', b.dataset.tab === tab); });
     if (focus) { const f = typeof focus === 'string' && focus.startsWith('[') ? body.querySelector(focus) : body.querySelector(`[data-pm="${focus}"]`); f?.focus({ preventScroll: true }); }
   }
-  function open(startTab) {
-    if (o) return;
+  function open(startTab, options = {}) {
+    if (o) return false;
+    opts = options || {};
     if (startTab && TABS.some(([k]) => k === startTab)) tab = startTab;
     if (tab === 'compendium') tab = 'party';
-    const s = S(), i = G.dayInfo();
-    o = UI().overlay(`<div class="g-fm"><div class="g-fm-head"><div><p class="g-kicker">${esc(i.md)} ${esc(i.day)} · ${esc(G.slotName(s.slot, i))}</p><h2>Menu</h2></div><span class="g-yen">${yen(s.yen)}</span><button type="button" class="g-btn small" data-close>Close</button></div>
+    const s = S(), i = G.dayInfo(), when = opts.inBattle ? 'The Dark Hour' : G.slotName(s.slot, i);
+    o = UI().overlay(`<div class="g-fm${opts.inBattle ? ' dark' : ''}"><div class="g-fm-head"><div><p class="g-kicker">${esc(i.md)} ${esc(i.day)} · ${esc(when)}</p><h2>Menu</h2></div><span class="g-yen">${yen(opts.yen ?? s.yen)}</span><button type="button" class="g-btn small" data-close>${opts.inBattle ? 'Back' : 'Close'}</button></div>
       <nav class="g-tabs g-fm-tabs" role="tablist">${TABS.map(([k, n]) => (k === 'compendium' ? `<a role="tab" href="${G.base}compendium.html" target="_blank" rel="noopener">${n} ↗</a>` : `<button type="button" role="tab" data-tab="${k}">${n}</button>`)).join('')}</nav>
       <div class="g-fm-body" tabindex="-1"></div>
-      <p class="g-hint g-fm-hint">[ ] or ←→ on the tabs · Esc close</p></div>`, 'g-fm-ov', () => { o = null; sel.slot = null; G.save(); });
+      <p class="g-hint g-fm-hint">[ ] or ←→ on the tabs · Esc ${opts.inBattle ? 'back' : 'close'}</p></div>`, `g-fm-ov${opts.inBattle ? ' g-over-battle' : ''}`, () => { o = null; sel.slot = null; G.save(); const done = opts.onClose; opts = {}; done?.(); });
     o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; sel.slot = null; G.sfx('femc-click'); render(); }));
     o.el.addEventListener('keydown', e => {
       const keys = TABS.filter(([k]) => k !== 'compendium').map(([k]) => k);
@@ -211,6 +247,7 @@ window.FemcMenu = (() => {
     render();
     setTimeout(() => o?.el.querySelector(`[data-tab="${tab}"]`)?.focus({ preventScroll: true }), 40);
     G.sfx('femc-click');
+    return true;
   }
-  return { open, close: () => o?.close(), TABS };
+  return { open, close: () => o?.close(), isOpen: () => !!o, TABS };
 })();

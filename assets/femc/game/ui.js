@@ -328,6 +328,13 @@
     setSettings: p => { if (p && typeof p === 'object') { G.setSettings(JSON.parse(JSON.stringify(p))); SC.Music.volume(); } },
     openSettings: (onClose, startKey) => openSettings({ inBattle: true, onClose, startKey }),
     closeSettings: () => settingsPanel?.close(),
+    // The field menu over the fight (menu.js header: opts). Returns false when it couldn't open (the frame carries on).
+    openMenu: (tab, opts = {}) => {
+      if (!window.FemcMenu) return false;
+      const ok = window.FemcMenu.open(tab, { ...opts, inBattle: true, onClose: () => { setTimeout(() => { try { dh?.frame?.contentWindow?.focus(); } catch (e) {} }, 30); opts.onClose?.(); } });
+      return ok !== false;
+    },
+    closeMenu: () => window.FemcMenu?.close(),
     key: () => {},
     ready: () => { if (dh) { dh.ready = true; reveal(dh); } },
     finish: result => leaveBattle(result || null)
@@ -780,7 +787,17 @@
       <p>Pick up to three to go in with Solar.${nav ? ` ${esc(G.name(nav))} will navigate.` : ''}</p>
       <div class="g-party"><span class="g-chip on lock">Solar</span>${av.map(m => `<button type="button" class="g-chip${party.includes(m) ? ' on' : ''}" data-m="${m}" aria-pressed="${party.includes(m)}">${esc(G.name(m))}</button>`).join('')}</div>
       ${s.condition === 'tired' ? '<p class="g-warn">Solar is already Tired. Going again will make her Sick.</p>' : ''}
-      <div class="g-row"><button type="button" class="g-btn pink" data-go>Enter Tartarus</button><button type="button" class="g-btn" data-close>Not tonight</button></div></div>`, 'g-tt-ov');
+      <div class="g-row"><button type="button" class="g-btn pink" data-go>Enter Tartarus</button><button type="button" class="g-btn" data-menu>Party &amp; equipment</button><button type="button" class="g-btn" data-close>Not tonight</button></div></div>`, 'g-tt-ov');
+    // The field menu (party, tactics, equipment) on top; the chips here follow what it changed.
+    o.el.querySelector('[data-menu]').addEventListener('click', () => {
+      s.tartarus.lastParty = [...party];
+      const b = G.ensureBattleSave(); if (b) { b.party = party.slice(); G.saveQuiet(); }
+      window.FemcMenu?.open('party', { onClose: () => {
+        party = (G.ensureBattleSave()?.party || party).filter(x => av.includes(x)).slice(0, 3);
+        o.el.querySelectorAll('[data-m]').forEach(x => { const on = party.includes(x.dataset.m); x.classList.toggle('on', on); x.setAttribute('aria-pressed', on); });
+        o.el.querySelector('[data-menu]')?.focus();
+      } });
+    });
     o.el.querySelectorAll('[data-m]').forEach(b => b.addEventListener('click', () => {
       const m = b.dataset.m;
       if (party.includes(m)) party = party.filter(x => x !== m); else if (party.length < 3) party.push(m);
@@ -1015,7 +1032,7 @@
     return document.querySelector('.g-datecard, .g-actcard, .gs-rank') || null;
   }
   function navKeys(e) {
-    if (dh && !settingsPanel) return;
+    if (dh && !document.querySelector('.g-overlay.g-over-battle:not(.out)')) return;
     if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
     const t = e.target, k = e.key;
     if (t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && t.type !== 'range'))) return;

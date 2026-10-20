@@ -18,6 +18,10 @@
      before: its own hub, shops, operations and save slots, saved in localStorage 'kg-femc-battle-proto' only (never the
      story's save, never v1's kg-femc-game). The old page-jump handoff URL (?from=game) now just goes back to femc-game.html,
      which picks the fight up itself.
+   Menus: in story fights every party / equipment / Persona / memories screen (Tartarus's hub and access points, a fight's
+   results, Get Ready before a boss) is the game's one field menu (menu.js), opened over this frame through
+   BR.openMenu (fieldMenu below); the screens further down are practice mode's. Haenim's tree stays this page's own until
+   the skill system replaces it (menu.js SKILLS).
    Settings: both ways read the game's one settings store ('kg-femc-revamp-settings', core.js DEFAULTS) through pullSettings()
    and write changes back through pushSettings(), so text speed, battle speed, cut-ins, volume, difficulty and the rest are
    the same everywhere.
@@ -394,7 +398,7 @@
   // gamepad into these same keys.
   let ctl = null, screen = 'boot';
   const typing = t => !!t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && !['range', 'checkbox', 'button', 'radio'].includes(t.type)));
-  const OVERLAYS = ['settings', 'log', 'help'];
+  const OVERLAYS = ['settings', 'log', 'help', 'field-menu'];
   function hotkey(e) {
     const k = e.key, kind = ctl && ctl.kind, over = OVERLAYS.includes(kind);
     if (kind === 'cinematic') return false;
@@ -439,6 +443,15 @@
     btns.forEach((b, j) => b.addEventListener('pointerenter', () => { i = j; show(); }));
     ctl = { kind: 'buttons', move(d) { if (!btns.length) return; i = (i + d + btns.length) % btns.length; sfx('move'); show(); if (btns[i] && btns[i].scrollIntoView) btns[i].scrollIntoView({ block: 'nearest' }); }, pick() { if (btns[i]) btns[i].click(); }, back };
     show();
+  }
+  // M opens the field menu from a screen that offers one (story fights).
+  function menuKey(el, go) {
+    if (!BR) return;
+    const k = e => {
+      if (!el.isConnected) { document.removeEventListener('keydown', k); return; }
+      if ((e.key === 'm' || e.key === 'M') && !e.metaKey && !e.ctrlKey && !e.altKey && ctl && ctl.kind === 'buttons') { e.preventDefault(); e.stopPropagation(); document.removeEventListener('keydown', k); go(); }
+    };
+    document.addEventListener('keydown', k);
   }
   const GEAR_SVG = '<svg class="bt-gear" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10.3 2h3.4l.5 2.6c.6.2 1.2.5 1.7.9l2.5-.9 1.7 2.9-2 1.8c.1.6.1 1.2 0 1.8l2 1.8-1.7 2.9-2.5-.9c-.5.4-1.1.7-1.7.9l-.5 2.6h-3.4l-.5-2.6c-.6-.2-1.2-.5-1.7-.9l-2.5.9-1.7-2.9 2-1.8a6 6 0 0 1 0-1.8l-2-1.8 1.7-2.9 2.5.9c.5-.4 1.1-.7 1.7-.9zM12 8.6a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8z"/></svg>';
   /* The corner tool buttons. Battle: Rush, log, speed, help, settings. Elsewhere: help, settings, music, SFX. */
@@ -817,9 +830,38 @@
   /* ════════════════════════════════════════════════════
      PARTY: Solar plus up to three, each with a Tactic
      ════════════════════════════════════════════════════ */
+  /* Story fights: the game's field menu (menu.js) over this frame, in place of the practice screens. The save is handed over
+     first and read back after, since the menu edits the playthrough's battle save in the life sim. Resolves when it closes
+     (after Haenim's tree, when the menu's Skills tab asked for it). */
+  function fieldMenu(tab, { required = [], solo = false, extra = [] } = {}) {
+    return new Promise(resolve => {
+      const prev = ctl;
+      let wantTree = false;
+      persist();
+      const hp = {};
+      if (run) buildParty(run.carry).forEach(u => { hp[u.mid] = { hp: u.hp, maxHp: u.maxHp, sp: u.sp, maxSp: u.maxSp }; });
+      const me = { kind: 'field-menu', move() {}, pick() {}, back: () => { try { BR.closeMenu(); } catch (e) {} }, key: () => true };
+      const done = () => {
+        paused = Math.max(0, paused - 1);
+        root.classList.remove('bt-ov-open');
+        if (ctl === me) ctl = prev;
+        let back = null; try { back = fromRaw(BR.battleSave()); } catch (e) {}
+        if (back) { save = back; persist(); }
+        mark('field-menu-closed');
+        if (wantTree) treeScreen(resolve); else resolve();
+      };
+      paused++; ctl = me;
+      root.classList.add('bt-ov-open');
+      sfx('ok'); mark('field-menu'); mark('field-menu-' + tab);
+      let ok = false;
+      try { ok = BR.openMenu(tab, { kind: HO && HO.kind, required, solo, extra, items: Object.assign({}, save.items), yen: save.yen, hp, openTree: () => { wantTree = true; }, onClose: done }); } catch (e) { ok = false; }
+      if (!ok) { paused = Math.max(0, paused - 1); root.classList.remove('bt-ov-open'); if (ctl === me) ctl = prev; resolve(); }
+    });
+  }
   const TACTIC_ORDER = Object.keys(D.tactics);
   const affChips = per => D.affinityOrder.filter(x => per.aff[x]).map(x => `<span class="bt-aff ${per.aff[x]}">${ART.icon(x)}<em>${AFF_SHORT[per.aff[x]]}</em></span>`).join('') || '<span class="bt-aff"><em>–</em></span>';
   function partyScreen(onClose, { required = [] } = {}) {
+    if (BR) { fieldMenu('party', { required, extra: required }).then(onClose); return; }
     screen = 'party';
     root.classList.remove('bt-in-battle');
     const list = D.party.slice(1).filter(m => usable(m) || required.includes(m.id));
@@ -1294,10 +1336,12 @@
       for (;;) {
         const v = await roomPanel({ bg: AP, cls: 'access', kicker: `${floor.label} · ${floor.block}`, title: 'ACCESS POINT', name: 'access',
           body: `<p>${better ? `Progress saved. Next time you can start from <b>${esc(floor.label)}</b>.` : 'A green terminal hums quietly.'}</p>`,
-          buttons: [{ v: 'stay', label: 'Keep climbing', pink: true }, { v: 'equip', label: 'Equip' }, { v: 'party', label: 'Party' }, { v: 'tree', label: 'Haenim’s Tree', small: `${save.pts} SP` }, { v: 'leave', label: 'Leave Tartarus' }],
+          buttons: BR ? [{ v: 'stay', label: 'Keep climbing', pink: true }, { v: 'menu', label: 'Menu', small: 'Party · Equipment · Items' }, { v: 'tree', label: 'Haenim’s Tree', small: `${save.pts} SP` }, { v: 'leave', label: 'Leave Tartarus' }]
+            : [{ v: 'stay', label: 'Keep climbing', pink: true }, { v: 'equip', label: 'Equip' }, { v: 'party', label: 'Party' }, { v: 'tree', label: 'Haenim’s Tree', small: `${save.pts} SP` }, { v: 'leave', label: 'Leave Tartarus' }],
           fuuka: navLine('access') });
         if (v === 'equip') { await new Promise(r => equipScreen(r)); continue; }
         if (v === 'party') { await new Promise(r => partyScreen(r)); continue; }
+        if (v === 'menu') { await fieldMenu(save.party.length || hoAvail().length > 1 ? 'party' : 'equip'); continue; }
         if (v === 'tree') { await new Promise(r => treeScreen(r)); continue; }
         if (v === 'leave') { mark('leave'); return 'leave'; }
         return null;
@@ -2877,6 +2921,7 @@
       if (go === 'tree') { await new Promise(r => treeScreen(r)); continue; }
       if (go === 'party') { await new Promise(r => partyScreen(r)); continue; }
       if (go === 'equip') { await new Promise(r => equipScreen(r)); continue; }
+      if (go === 'menu') { await fieldMenu('party'); continue; }
       return go;
     }
   }
@@ -2908,8 +2953,8 @@
           <div class="bt-res-btns">
             <button type="button" class="bt-btn pink" data-go="next"><span>${esc(o.back || 'Continue')}</span></button>
             <button type="button" class="bt-btn" data-go="tree"><span>Haenim’s Tree</span><small>${save.pts} SP</small></button>
-            <button type="button" class="bt-btn" data-go="party"><span>Party</span><small>${save.party.length + 1} / 4</small></button>
-            <button type="button" class="bt-btn" data-go="equip"><span>Equip</span></button>
+            ${BR ? '<button type="button" class="bt-btn" data-go="menu"><span>Menu</span><small>Party · Equipment</small></button>' : `<button type="button" class="bt-btn" data-go="party"><span>Party</span><small>${save.party.length + 1} / 4</small></button>
+            <button type="button" class="bt-btn" data-go="equip"><span>Equip</span></button>`}
           </div></div>
         <div class="bt-res-list">${rows}</div></div>`, 'bt-results');
       el.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => { sfx('ok'); res(b.dataset.go); }));
@@ -3000,6 +3045,7 @@
     return '';
   };
   function personaScreen(onClose, start = 0) {
+    if (BR) { fieldMenu('personas').then(onClose); return; }
     screen = 'personas';
     root.classList.remove('bt-in-battle');
     // One page per user: Haenim first, then S.E.E.S., then Fuuka's navigator.
@@ -3308,6 +3354,7 @@
      ════════════════════════════════════════════════════ */
   const SLOTS = [['weapon', 'Weapon'], ['armor', 'Armor'], ['acc', 'Accessory']];
   function equipScreen(onClose, startMid = null, { extra = [], solo = false } = {}) {
+    if (BR) { fieldMenu('equip', { extra, solo }).then(onClose); return; }
     screen = 'equip';
     root.classList.remove('bt-in-battle');
     const mates = D.party.filter(m => solo ? m.id === 'solar' : usable(m) || extra.includes(m.id)).sort((a, b) => ((b.id === 'solar' || save.party.includes(b.id)) - (a.id === 'solar' || save.party.includes(a.id))));
@@ -3375,6 +3422,7 @@
      MEMORIES: the fragments Solar has found
      ════════════════════════════════════════════════════ */
   function memoriesScreen(onClose) {
+    if (BR) { fieldMenu('journal').then(onClose); return; }
     screen = 'memories';
     root.classList.remove('bt-in-battle');
     const worlds = ['Runners', 'strangers', 'Hoax'], charm = { Runners: 'bell', strangers: 'jade', Hoax: 'star' };
@@ -3543,9 +3591,8 @@
         <div class="bt-hub-menu">
           ${cont ? `<button type="button" class="bt-btn pink" data-go="cont"><span>Continue from ${esc(cont.label)}</span><small>Access point · ${esc(cont.block)}</small></button>` : ''}
           <button type="button" class="bt-btn${cont ? '' : ' pink'}" data-go="run"><span>${start.fi === 0 && start.bi === 0 ? 'Enter Tartarus' : `Enter at ${esc(start.label)}`}</span><small>${esc(start.block)} · open up to ${esc(top.label)}</small></button>
-          <div class="bt-hub-row">${mates ? `<button type="button" class="bt-btn" data-go="party"><span>Party</span><small>${save.party.length + 1} / 4</small></button>` : ''}<button type="button" class="bt-btn" data-go="equip"><span>Equip</span></button></div>
-          <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="tree"><span>Haenim’s Tree</span><small>${save.pts} SP</small></button><button type="button" class="bt-btn" data-go="personas"><span>Personas</span></button></div>
-          <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="memories"><span>Memories</span><small>${save.memories.length} / ${D.memories.length}</small></button><button type="button" class="bt-btn" data-go="dorm"><span>Return to the dorm</span><small>Not tonight</small></button></div>
+          <button type="button" class="bt-btn bt-menu-btn" data-go="menu"><span>Menu</span><small>${mates ? `Party ${save.party.length + 1}/4 · ` : ''}Personas · Equipment · Items</small></button>
+          <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="tree"><span>Haenim’s Tree</span><small>${save.pts} SP</small></button><button type="button" class="bt-btn" data-go="dorm"><span>Return to the dorm</span><small>Not tonight</small></button></div>
         </div>
         <p class="bt-hub-hint">${esc(NAVI.name)} is navigating. ${R.condition === 'tired' || R.condition === 'sick' ? 'Solar is already tired; she’ll fight below her best tonight.' : 'Climb as far as you like, then leave at an access point.'}</p>
       </div>
@@ -3562,9 +3609,11 @@
       else if (go === 'personas') { sfx('ok'); personaScreen(hub); }
       else if (go === 'equip') { sfx('ok'); equipScreen(hub); }
       else if (go === 'memories') { sfx('ok'); memoriesScreen(hub); }
+      else if (go === 'menu') { fieldMenu(mates ? 'party' : 'equip').then(hub); }
       else if (go === 'dorm') { sfx('back'); hoFinish(HS.entered ? 'win' : 'retreat'); }
     }));
     buttonNav(el, { back: () => openSettings() });
+    menuKey(el, () => fieldMenu(mates ? 'party' : 'equip').then(hub));
     mark('hub'); mark('hub-ho');
   }
   /* The result for the life sim (FEMC-GAME-HANDOFF.md `result`). */

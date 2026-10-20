@@ -583,7 +583,7 @@ html.g-in-battle .g-hud, html.g-in-battle .g-toasts { visibility: hidden; }
 .g-bar { position: relative; display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; align-items: center; gap: 6px; margin-top: 3px; font: italic 900 12px/1 var(--cond); }
 .g-bar small { color: var(--pink-2); font-size: 10px; letter-spacing: .1em; }
 .g-bar i { height: 7px; background: #2a1020; transform: skewX(-12deg); overflow: hidden; position: relative; }
-.g-bar i::after { content: ""; position: absolute; inset: 0; background: var(--green); }
+.g-bar i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w, 100%); background: var(--green); }
 .g-bar.sp i::after { background: var(--pink-2); }
 
 /* ── The field menu ── */
@@ -741,3 +741,19 @@ html.g-in-battle .g-hud, html.g-in-battle .g-toasts { visibility: hidden; }
   .g-set { padding: 4px 10px; }
   .g-set-desc { min-height: 0; padding: 5px 10px; font-size: 12.5px; }
 }
+
+/* ── The field menu over a fight (Tartarus, results, Get Ready): the same panel, a touch of the Dark Hour's green ── */
+.g-fm-ov.g-over-battle { background: rgba(4, 12, 8, .72); }
+.g-fm-ov.g-over-battle .g-panel { box-shadow: 10px 10px 0 rgba(29, 107, 74, .55); }
+.g-fm.dark .g-kicker { color: #9dffc6; }
+.g-pm-wrap { display: grid; gap: 6px; }
+.g-pm.req .g-pm-slot { background: var(--gold); color: var(--night); }
+.g-pm-tac { justify-self: start; margin-left: 10px; padding: 5px 12px; border: 1.5px solid rgba(255, 140, 192, .3); background: rgba(20, 7, 15, .9); color: var(--muted); font: italic 800 12px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; transform: skewX(-10deg); }
+.g-pm-tac b { color: var(--ink); }
+.g-pm-tac.lead { opacity: .7; }
+button.g-pm-tac:is(:hover, :focus-visible) { outline: none; background: #fff; color: var(--night); }
+button.g-pm-tac:is(:hover, :focus-visible) b { color: var(--night); }
+.g-pm-slot { top: -10px; right: 14px; box-shadow: 2px 2px 0 rgba(0, 0, 0, .5); }
+.g-pm-bars, .g-bar { width: 100%; }
+.g-bar i { display: block; width: 100%; }
+.g-pm-grid { padding-top: 10px; row-gap: 18px; }
