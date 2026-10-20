@@ -16,6 +16,8 @@
    Flags this link sets (all its own): hyein-menace (r1, Solar says "ur so annoying"), hyein-stella (r3, she asks for the
    costume again), hyein-yelled (r4), hyein-shop (r6, commissions in Iwatodai), hyein-dress-run / -pockets / -red (r9, what
    Solar picks). They pay off in later ranks and afterMax. Reads the story flag call-R (12/14) in rank 10.
+   Kat's playtest notes 42/43/45: rank 1 answers the choice Solar actually made (no shared "why are you talking like that");
+   rank 2 notices Akihiko (and, before 10/4, Shinjiro) by their link ranks; rank 6 nearly tells a Halloween secret and stops.
    Texting voice: lowercase, caps when excited, ur, ltrly, fr, ofc. Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'hyein', name: 'Hyein Lee', short: 'Hyein', arcana: '?', numeral: '', from: 'Runners',
@@ -169,8 +171,8 @@
       { s: 'hyein', f: 'serious', t: "Okay. So this is either giving, or it's not giving, and I genuinely can't tell." },
       { choose: [
         { t: "It's giving.", notes: 3, then: [
-          { s: 'hyein', f: 'surprised', t: "...Since when do you say *giving?*" },
-          { s: 'hyein', f: 'happy', t: "No. I love it. Hanni! HANNI. She said giving. I taught her that. Just now. I'm an excellent influence." }
+          { s: 'hyein', f: 'happy', t: "It IS giving. Thank you. This is why I keep you. You have no taste in anything you buy for yourself and perfect taste in everything I make you try on." },
+          { s: 'hyein', f: 'neutral', t: "Hanni's going to be so jealous. She's been trying to get you into anything with a shoulder since the first week of school." }
         ] },
         { t: "The sleeves are too long.", notes: 3, then: [
           { s: 'hyein', f: 'happy', t: "THANK you. Finally somebody in this friend group has EYES." },
@@ -186,15 +188,18 @@
       { n: "Hanni came out of the shop next door with a paper bag and her face lit up at the sight of the two of them, and then lit up more, and then went soft at the edges, the way it did, all of it out loud." },
       { s: 'hanni', f: 'happy', t: "Oh! She's in a jacket! Hyein, you got her in a jacket!" },
       { s: 'hyein', f: 'neutral', t: "I got her in a jacket. Look at the shoulders. That's the right shape. I've been trying to tell the mannequin." },
-      { n: "She said it lightly. Her voice did a thing at the end, a little crack, like a seam letting go, and she turned back to the mirror and fixed a sleeve that didn't need fixing." },
-      { s: 'hyein', f: 'sad', t: "You keep looking at me like you're waiting for instructions, Sol." },
+      { n: "And then, because one jacket had never once in her life been enough for Hyein, there was a scarf off the next rack, and a beret off the next mannequin over, and the pin out of her mouth and into a hem, and all of it narrated at a volume meant for the entire second floor, to Hanni, to the shop girl, to a woman with a stroller who had not asked, while Hyein turned Solar by the shoulders toward the glass and away from it and toward it again, like a girl adjusting a lamp." },
       { choose: [
-        { t: "Like what?", notes: 2, then: [
-          { s: 'hyein', f: 'serious', t: "Like you're scared you'll break us. You've never once been scared you'd break us. You throw us around. You say *ur so annoying* and leave the room. You're not *polite* to us. You're polite to waiters and the dean and people you're about to destroy." }
+        { t: "(Stand still. Let her.)", notes: 3, then: [
+          { n: "Solar stood still and let her. She didn't sigh. She didn't touch the beret. She didn't do any of the things her body seemed to be waiting, faintly, to do, and halfway through the scarf Hyein's hands slowed down, and stopped, and stayed where they were on the knot." },
+          { s: 'hyein', f: 'sad', t: "...You'd have taken the beret off by now. At home. You'd have taken it off and put it on my head and walked away." },
+          { n: "Her voice did a thing at the end, a little crack, like a seam letting go. She took the beret off Solar herself and put it on her own head, crooked, and went back to the scarf, louder." }
         ] },
-        { t: "I don't know how to talk to you yet.", notes: 3, then: [
-          { s: 'hyein', f: 'sad', t: "...Okay." },
-          { s: 'hyein', f: 'neutral', t: "Okay. That's a real answer. I hate it. It's fair. Learn faster." }
+        { t: "Hanni. Help.", notes: 2, then: [
+          { s: 'hanni', f: 'happy', t: "Oh, no. No, I'm not getting involved. I've never once gotten involved." },
+          { s: 'hyein', f: 'neutral', t: "She's lying. She's always involved. She just does it with her face." },
+          { s: 'hanni', f: 'flustered', t: "My face isn't doing anything!" },
+          { n: "Her face was, very obviously, involved. Hyein put the beret on Hanni instead, and Hanni wore it the rest of the afternoon, and kept touching it to check it was still there." }
         ] },
         { t: "ur so annoying.", notes: 3, flag: 'hyein-menace', then: [
           { n: "It came out of her flat and bored and perfect, every letter lowercase even out loud, and she had no idea where it had come from, and Hyein's eyes went huge in the mirror, and then she spun around and grabbed Solar by both shoulders, the pin still in her mouth." },
@@ -263,6 +268,34 @@
       { s: 'junpei', f: 'neutral', t: "Wait, so are you actually gonna make stuff? Like, for us? 'Cause I'd wear a jacket. I'd wear a jacket so hard." },
       { s: 'hyein', f: 'neutral', t: "I'm going to make stuff for people who let me fix their trousers, Junpei." },
       { s: 'junpei', f: 'sad', t: "...That's fair. That's really fair." },
+      { ifRank: { akihiko: 4 }, then: [
+        { n: "Akihiko hadn't gone back to the television with everyone else. He was still on the arm of the sofa where he'd lowered his arms, and he'd watched the whole business of Solar's four numbers with the face of a man reading a scoreboard he had money on, and when Solar looked up, he looked, very quickly, at the window." },
+        { ifBefore: '10/4', then: [
+          { ifRank: { shinjiro: 5 }, then: [
+            { n: "In the kitchen doorway Shinjiro, who had refused to be measured with a single flat *no* that Hyein had accepted with enormous professional respect, hadn't left either. He was leaning on the frame with his hands in his coat pockets, looking at nobody, and nobody, for most of the evening, happened to be standing exactly where Solar was." }
+          ] }
+        ] },
+        { s: 'hyein', f: 'neutral', t: "Hm." },
+        { s: 'solar', f: 'neutral', t: "What." },
+        { s: 'hyein', f: 'neutral', t: "Nothing. Your senpai just looked at your measurements like they were a phone number somebody finally gave him." },
+        { ifBefore: '10/4', then: [
+          { ifRank: { shinjiro: 5 }, then: [
+            { s: 'hyein', f: 'serious', t: "And the one in the beanie said no to me and then stood in that doorway the entire time you weren't getting measured. I'm a professional. I notice where people stand." }
+          ] }
+        ] },
+        { choose: [
+          { t: "He's my senpai. That's all.", notes: 2, then: [
+            { s: 'hyein', f: 'happy', t: "He's Junpei's senpai too. He did not look at Junpei's inseam like that. Nobody in history has looked at Junpei's inseam like that." }
+          ] },
+          { t: "(Say nothing. Feel your ears go hot.)", notes: 3, then: [
+            { n: "She said nothing. Her ears said it for her. Hyein watched them go, and made a small delighted sound like a kettle starting, and wrote something in the margin of the sketchbook that she turned the page on before Solar could read it." }
+          ] },
+          { t: "There's nothing to notice, Hyein.", notes: 2, then: [
+            { s: 'hyein', f: 'neutral', t: "Okay. There's nothing. There's nothing so loud I can hear it from over here." },
+            { s: 'hyein', f: 'happy', t: "I'm telling Hanni. Not tonight. Later. When it's funnier." }
+          ] }
+        ] }
+      ] },
       { n: "Later, when everyone had gone up, Solar came back down for a glass of water and found her sitting alone on the lounge floor with the sketchbook open in her lap to a page with nothing on it but four numbers, Solar's, written very neatly, and underlined, and Hyein was looking at them the way other people look at a photograph." },
       { choose: [
         { t: "(Sit down next to her.)", notes: 2, then: [
@@ -387,12 +420,12 @@
       { choose: [
         { t: "I do like it here.", notes: 3, then: [
           { s: 'hyein', f: 'sad', t: "I know." },
-          { s: 'hyein', f: 'neutral', t: "Okay. Okay. You're allowed. I'm allowed to be mad. We're both allowed. That's how it works. I just made the rule." }
+          { s: 'hyein', f: 'neutral', t: "Okay. Okay. You're allowed. I'm allowed to be mad. We're both allowed. Mitsuru can put it on the fridge with the chore chart." }
         ] },
         { t: "I'd like it more with you here.", notes: 3, then: [
           { s: 'hyein', f: 'surprised', t: "..." },
           { n: "She looked at Solar for a long second. Then her face crumpled, all at once, the way it did, excitement and grief arriving in the same muscles, and she threw both arms around Solar's neck so hard they both nearly went over the railing, and the milk tea went everywhere." },
-          { s: 'hyein', f: 'sad', t: "That's such a cheat. That's such a cheat thing to say. I love you. Don't say it again. Say it again." }
+          { s: 'hyein', f: 'sad', t: "That's such a cheat. That's such a cheat thing to say. I love you. Never say it in front of Hanni, she'll put it on a mug." }
         ] },
         { t: "You're allowed to be mad at me too.", notes: 2, then: [
           { s: 'hyein', f: 'serious', t: "I know I'm allowed. I'm choosing not to. It's very mature of me. Write it down." },
@@ -467,6 +500,9 @@
       { n: "The lounge still had candy wrappers down the back of the sofa cushions and a paper bat hanging by one wing over the television, and Hyein was lying upside down on the armchair with her legs over the back and her hair on the floor, recovering, she said, like an athlete." },
       { s: 'hyein', f: 'neutral', t: "Don't talk to me. I'm grieving. I'm grieving a holiday." },
       { s: 'hyein', f: 'serious', t: "It was RIGHT there, Sol. Through the wall. The Sigma playlist. The actual playlist, in order, the song Jeno does the thing to, the whole thing. Home was on the other side of that wall, and I went outside and checked, and it was a parking lot. I stood in a parking lot in my socks." },
+      { s: 'hyein', f: 'neutral', t: "And the one after it is the song that was on when we sent you upstairs to the bathroom, which, okay, there was never actually a line for any— " },
+      { n: "She stopped. She put the back of her hand against her mouth, upside down, like she was checking it was still there." },
+      { s: 'hyein', f: 'serious', t: "Nope. Not mine. That one's not mine to tell. Hanni would kill me. Hanni would kill me with a mandarin and then cry about it." },
       { s: 'hyein', f: 'sad', t: "And then Minji got a monster. Which, good. Great for her. She deserves a monster. And I got to hold the sewing kit." },
       { choose: [
         { t: "You fixed Junpei's cape.", notes: 2, then: [
@@ -548,7 +584,7 @@
       ] },
       { s: 'hyein', f: 'neutral', t: "It's going to snow. Here. Mitsuru said. And you go out at midnight in a blazer and a skirt and come back with your sleeve ripped off, and I can't come with you, and I can't do anything about the monster part. I checked. I asked." },
       { s: 'hyein', f: 'serious', t: "So I did the part I can do. That's all this is. That's the whole thing." },
-      { n: "She turned the collar up for Solar herself, both sides, smoothing them with her thumbs, and then stood back, and her face did the thing it did, excitement and something else arriving in the same place and fighting over it." },
+      { n: "She turned the collar up for Solar herself, both sides, smoothing them with her thumbs, and then stood back, and looked at her own work with her arms folded and her mouth pressed flat, like a girl trying very hard to be professional about a coat." },
       { s: 'hyein', f: 'sad', t: "Take it with you. Wherever. If you go home, wear it home. If you don't—" },
       { s: 'hyein', f: 'neutral', t: "If you don't, wear it here. Wear it in the snow. Wear it to whatever you do at midnight. Just. Something warm from me, wherever you are." },
       { choose: [
@@ -594,7 +630,7 @@
         ] }
       ] },
       { n: "They sat on the bathroom floor with their backs against the tub because neither of them wanted to go back to bed yet, and Hyein turned the hairdryer on low and pointed it at their feet, which was, she said, a luxury, and their socks went warm." },
-      { s: 'hyein', f: 'neutral', t: "Can I tell you something and you don't make it weird?" },
+      { s: 'hyein', f: 'neutral', t: "Can I tell you something? It's three in the morning. Nothing said at three in the morning counts." },
       { s: 'hyein', f: 'serious', t: "I'm loud because I'm scared. That's all I am. I'm a scared person who's very loud about it." },
       { s: 'hyein', f: 'neutral', t: "In the tower. The party floor. When that thing reached for me. Hanni just stood there. In front of me. With her arms out. With nothing. No monster. No gun. Her sneakers stuck to the floor." },
       { s: 'hyein', f: 'sad', t: "And I was behind her holding the back of her shirt. That's what I did. I held the shirt." },
@@ -611,7 +647,7 @@
         { t: "You held on. That counts.", notes: 3, then: [
           { s: 'hyein', f: 'surprised', t: "...It does?" },
           { s: 'solar', f: 'neutral', t: "Somebody has to make sure the person standing in front doesn't get pulled away." },
-          { n: "Hyein looked at her for a long time, with the hairdryer humming at their feet. Then she put her head on Solar's shoulder, heavily, all at once, like something set down after carrying it a long way, and left it there." }
+          { n: "Hyein looked at her for a long time, with the hairdryer humming at their feet. Then she put her head on Solar's shoulder, heavily, all at once, the way she dropped her shopping bags on a bed at the end of a long day, and left it there." }
         ] }
       ] },
       { n: "They fell asleep there, eventually, against the tub, with the hairdryer off and their feet warm. Mitsuru found them at five, on her rounds, and did not wake them, and when they came down to breakfast there was a second hairdryer on the lounge table with a note on it in very precise handwriting that said only, *For the second floor.*" }
@@ -719,8 +755,7 @@
       { s: 'hyein', f: 'sad', t: "That's my line. That's MY line. You stole my line. You never say my line. You always tell me to stop saying it." },
       { s: 'solar', f: 'neutral', t: "Please don't start calling me that." },
       { s: 'hyein', f: 'sad', t: "...I won't, Stella." },
-      { s: 'solar', f: 'neutral', t: "Hyein. You're being so annoying." },
-      { n: "Not carefully. Not checking her face afterward to see whether she'd minded. It came out with the same exhausted affection as it had on the riverside, as it must have in a hundred rooms before that one, and Hyein laughed through the sound she'd been making." },
+      { n: "Hyein laughed through the sound she'd been making, wet, from behind both hands, and Solar didn't check her face afterward to see whether any of it had been all right. She knew it had. That was new, too." },
       { choose: [
         { t: "Stop crying. You'll ruin your own makeup work.", notes: 3, then: [
           { s: 'hyein', f: 'happy', t: "I'M NOT WEARING ANY. I'M CRYING ON PURPOSE. Let me have this." },
@@ -728,7 +763,7 @@
         ] },
         { t: "ur so annoying.", notes: 3, then: [
           { s: 'hyein', f: 'sad', t: "..." },
-          { s: 'hyein', f: 'happy', t: "I KNOW. I know I am. I missed it so much. Say it again. Say it every day." },
+          { s: 'hyein', f: 'happy', t: "I KNOW. I know I am. I've been waiting since September for somebody to tell me." },
           { n: "She came around the mirror and hugged her so hard the wings bent, and didn't let go even to fix them." }
         ] },
         { t: "You made the skirt longer.", notes: 3, then: [
@@ -738,11 +773,11 @@
       ] },
       { ifFlag: 'call-R', then: [
         { s: 'hyein', f: 'neutral', t: "You said you think you want to. On the roof. In December. With the cans. I'm not holding you to it." },
-        { s: 'hyein', f: 'sad', t: "...I'm holding you to it a little. Like two percent. Like a rounding error." }
+        { s: 'hyein', f: 'sad', t: "...I'm holding you to it a little. With two fingers. The way you hold a hem before you pin it." }
       ], else: [
         { s: 'hyein', f: 'neutral', t: "You didn't say yes. On the roof. In December. That's okay. Hanni says not saying yes isn't saying no. I said it's rude. She said it's yours." }
       ] },
-      { n: "Hanni came up a minute later, because she'd heard the sound Hyein made from three floors down, and stopped in the stairwell door with her face doing everything at once, and the three of them stood on the roof in the cold in front of a bathroom mirror, one of them dressed as a fairy under a long dark coat, and none of them said anything for a long time, and the wind took the edge of the orange skirt and lifted it and set it down again." },
+      { n: "Hanni came up a minute later, because she'd heard the sound Hyein made from three floors down, and stopped in the stairwell door with her cardigan sleeves pulled down over her fists and her chin already going, and the three of them stood on the roof in the cold in front of a bathroom mirror, one of them dressed as a fairy under a long dark coat, and none of them said anything for a long time, and the wind took the edge of the orange skirt and lifted it and set it down again." },
       { s: 'hyein', f: 'neutral', t: "Okay. It's cold. Inside. Drink water. Ttyl." },
       { s: 'hyein', f: 'sad', t: "...I'm not going anywhere, I just always say that. I'm going to stand here for five more minutes. Don't look at me." },
       { n: "Solar didn't look at her. She stood beside her instead, looking at the city, in the coat and the wings, and after a while Hanni came and stood on Hyein's other side, and Hyein, who was the tallest, put an arm around each of them, and the three of them stood there and were looked at by nobody at all." }

@@ -23,7 +23,9 @@
      rank 9  hanni-loops (Solar learns the braid loop)                                                → afterMax 'loops'
    Rank 10 and some afterMax lines read the solstice route flags (route-R / -S / -H / -stay / -true). afterMax plays in order,
    then rotates, at the café (she doesn't leave before the end, so there are no traces). Texting voice: @hanni, lowercase,
-   "!!!", apologizes for being nosy. Arcana: '?' (open question, plot doc §16.6). */
+   "!!!", apologizes for being nosy. Kat's rulings: the girls know the secret, unlabelled thing with Haechan (Runners) and
+   Haechan now lives in the dorm (r7). Hanni never hands it over: r8 she stops Hyein mid-sentence; r9 she took Hyein's
+   "make him ask her home" speech away. r3 notices Akihiko (gated on his rank). Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'hanni', name: 'Hanni Pham', short: 'Hanni', arcana: '?', numeral: '', from: 'Runners',
   kind: 'searcher', world: 'R', romance: null,
@@ -184,25 +186,27 @@
         ] },
         { t: "I'm sorry I didn't know you. At the mall.", notes: 2, then: [
           { s: 'hanni', f: 'sad', t: "Don't be sorry. Please. You looked so scared. You looked scared of *us.*" },
-          { s: 'hanni', f: 'neutral', t: "That was the worst part. Not that you didn't know me. That you looked at me like I might want something from you. You've never once looked at me like that. Not even the first day." }
+          { s: 'hanni', f: 'flustered', t: "Which, honestly, fair. I dropped eleven bags on you in the middle of the night and screamed your name. I'd have been scared of me." }
         ] }
       ] },
-      { s: 'hanni', f: 'neutral', t: "I couldn't sleep last night. I kept thinking of things to tell you. I was going to make a list. In Fuuka's pajamas, which are very soft, by the way. I think they're nicer than anything I own." },
-      { s: 'hanni', f: 'serious', t: "And then I decided something. Just me. Hyein doesn't know about it yet, she'll argue." },
-      { s: 'hanni', f: 'neutral', t: "I'm not going to quiz you. No *do you remember this.* No photos. No crying at you. Well. I might cry. I cry at commercials. That's not your fault and it's not about you, I promise, I cried at a commercial for rice yesterday." },
+      { n: "There was a pale yellow notebook on the table by Hanni's elbow, the kind with a cartoon bear on the cover from the stationery shop on the strip, open to a page covered top to bottom in small round handwriting. She saw Solar see it and put her hand flat over the page, and then, slowly, like a girl turning over a card she'd been caught holding, took the hand away." },
+      { s: 'hanni', f: 'flustered', t: "I couldn't sleep. In Fuuka's pajamas, which are very soft, by the way, nicer than anything I own. So I made a list. Of things to tell you." },
       { choose: [
-        { t: "Why not? It might help.", notes: 2, then: [
-          { s: 'hanni', f: 'neutral', t: "Because every time you get one wrong you make this face. Like you've failed a test. You did it eleven times with Hyein last night. I counted." },
-          { s: 'hanni', f: 'serious', t: "You're not getting tested by me. You get tested enough. You've been tested your whole life, Sol, by everyone, and you always pass, and it never once made you happy." }
+        { t: "Read it to me.", notes: 3, then: [
+          { s: 'hanni', f: 'neutral', t: "Okay. Okay. Number one. *She puts her own straw in.*" },
+          { n: "She looked at Solar's cup, at the straw she'd left in its paper for her before Solar ever came through the door, and stopped, and laughed so suddenly she had to put the notebook down." },
+          { s: 'hanni', f: 'happy', t: "I already did number one! I did it without the list. I didn't need the list. Okay. That's a sign. The rest can wait. The rest is just me being a lot on paper." }
         ] },
-        { t: "What do we do instead?", notes: 3, then: [
-          { s: 'hanni', f: 'happy', t: "Coffee! This. We sit here. You tell me things about here, and I tell you things about nothing, and if something comes back, it comes back on its own." },
-          { s: 'hanni', f: 'neutral', t: "Things come back on their own when you stop chasing them. That's my mom's rule. It's about cats. I think it works for people." }
+        { t: "What's on it?", notes: 2, then: [
+          { s: 'hanni', f: 'sad', t: "...Questions. It turned into questions. *Do you remember the kitchen. Do you remember the hallway.* Hyein did eleven of those at you the first night and you made this face every time, like you'd failed a test." },
+          { n: "She tore the page out, carefully, along the perforations, folded it twice, and put it in her own pocket instead of Solar's hand." },
+          { s: 'hanni', f: 'serious', t: "You've been tested your whole life, Sol. By everyone. You always pass and it never once made you happy. I'm not adding a test." }
         ] },
-        { t: "(Don't answer. Just keep drinking the coffee.)", notes: 3, then: [
-          { n: "She didn't answer. She drank the coffee. Hanni watched her not answer, and her face went soft at the edges, like she'd been given exactly the reply she'd been hoping for and was trying very hard not to make it a big deal, and losing, visibly, in both dimples." }
+        { t: "(Don't ask about it. Drink the coffee.)", notes: 3, then: [
+          { n: "She didn't ask. She drank the coffee. Hanni watched her not ask, and closed the notebook, and put it away in her bag, and her face went soft at the edges, like she'd been given exactly the reply she'd been hoping for and was trying very hard not to make it a big deal, and losing, visibly, in both dimples." }
         ] }
       ] },
+      { s: 'hanni', f: 'neutral', t: "I might cry at some point. Just so you know. I cry at commercials. I cried at one for rice yesterday. It's not about you." },
       { n: "Outside the window the mall went on, a mother with a stroller, a boy with a skateboard he wasn't allowed to ride inside, an old man asleep on a bench with his hat over his face. Hanni watched them the way you'd watch fish in a tank in a restaurant, fascinated and a little sorry for them." },
       { s: 'hanni', f: 'neutral', t: "It's so quiet here. Everything is so clean. Nobody's yelling down a hallway. I keep waking up and waiting for Hyein's hairdryer through the wall." },
       { s: 'hanni', f: 'sad', t: "...She doesn't have a hairdryer here. She keeps looking for the outlet." },
@@ -231,10 +235,9 @@
         { t: "Is it embarrassing?", notes: 2, then: [
           { s: 'hyein', f: 'happy', t: "For you? Extremely. That's why it's good." }
         ] },
-        { t: "Is that allowed? Under your rule?", notes: 3, then: [
-          { s: 'hanni', f: 'flustered', t: "It's not a quiz! It's just showing. Showing's allowed. I said no photos, I didn't say no chat." },
-          { s: 'hyein', f: 'neutral', t: "She makes rules and then she lawyers them. You'd know that if you remembered anything." },
-          { s: 'hanni', f: 'serious', t: "*Hyein.*" }
+        { t: "Is this a quiz?", notes: 3, then: [
+          { s: 'hanni', f: 'flustered', t: "No! It's not a quiz. It's showing. Showing's different. You don't have to get anything right. You just have to look." },
+          { s: 'hyein', f: 'neutral', t: "She wrote a whole quiz the first night and then tore it up and now she's very proud of herself about it." }
         ] }
       ] },
       { n: "Hanni turned the phone over and scrolled up, and up, and up, and the messages went by in a blur of lowercase and capitals and pink hearts until she stopped, and turned the screen so Solar could see." },
@@ -249,22 +252,21 @@
       ], contact: 'hanni, hyein 🩷' },
       { n: "*@solar.* Lowercase. Three question marks. *omg what a joke.* It was her. It was her in a voice she had never once used out loud in this city, a quick dry careless voice that swore at things and didn't capitalize and assumed everyone else was the strange one." },
       { s: 'solar', f: 'surprised', t: "...I type like that?" },
-      { s: 'hyein', f: 'serious', t: "You TALK like that too. Or you did. You never let me get away with anything." },
+      { s: 'hyein', f: 'serious', t: "Lowercase. Always. You think capitals are for people who want something." },
       { ifFlag: 'hyein-menace', then: [
         { s: 'hyein', f: 'happy', t: "You called me annoying at the mall. I don't think I've ever been so pleased to be insulted." }
       ], else: [
-        { s: 'hyein', f: 'neutral', t: "I keep waiting for you to argue with me. Over absolutely nothing. Just because you can." }
+        { s: 'hyein', f: 'neutral', t: "And that *omg what a joke* was about a party I dragged you to. I'm still not over it. I'll never be over it." }
       ] },
-      { s: 'hanni', f: 'neutral', t: "Hyein." },
-      { s: 'hyein', f: 'sad', t: "...Sorry. You don't have to. I'm just used to you." },
       { choose: [
-        { t: "I don't know how else to talk to you yet.", notes: 3, then: [
-          { s: 'hyein', f: 'sad', t: "...Okay." },
-          { s: 'hyein', f: 'neutral', t: "Okay. That's fair. That's a real answer. I hate it. It's fair." }
+        { t: "Teach me. How do I text?", notes: 3, then: [
+          { s: 'hyein', f: 'serious', t: "Okay. Lowercase. No periods, ever, a period is a threat. *u* not *you* unless you're mad. One question mark if you're asking, three if you're judging, four if it's Hanni's fault." },
+          { s: 'hanni', f: 'surprised', t: "Why would it be my fault?" },
+          { s: 'hyein', f: 'neutral', t: "It's never your fault. That's why it's four. You're the joke, Hanni. It's affectionate." }
         ] },
         { t: "omg what a joke.", notes: 3, then: [
           { n: "It came out of her flat and quick and a little mean and exactly right, and both girls stared at her, and then Hyein shrieked and threw a cushion at her and Hanni put both hands over her face and laughed into them until she was crying, a little, which she said didn't count, because it was the good kind." },
-          { s: 'hyein', f: 'happy', t: "THERE SHE IS. THERE SHE IS. SAY SOMETHING ELSE MEAN." }
+          { s: 'hyein', f: 'happy', t: "That's so RUDE. You're so rude. I've missed you so much I could scream. I am screaming." }
         ] },
         { t: "Was I happy? In the chat?", notes: 2, then: [
           { s: 'hanni', f: 'neutral', t: "Sometimes. You were happy in the chat more than you were out loud. You said things in it you never said in the kitchen." },
@@ -328,9 +330,13 @@
         ] }
       ] },
       { n: "It was a good party. That was the surprising thing. Fuuka and Hyein discovered they had the same taste in old horror movies and the same habit of watching them through their fingers. Ken explained the rules of a card game to Hanni for twenty minutes with total seriousness and she listened to every word and lost on purpose, badly, three times in a row, and Ken was so delighted to have taught someone something that he forgot to be eleven for nearly an hour. Koromaru ate a name tag. Not his." },
-      { n: "At half past ten Akihiko, who had stood by the wall all evening like a bodyguard at a wedding, came and sat on the arm of the sofa next to Solar and said, with real wonder, that he'd lived in this dorm for two years and hadn't known Fuuka liked horror films." },
+      { n: "At half past ten Akihiko, who had stood by the wall all evening like a bouncer nobody had hired, came and sat on the arm of the sofa next to Solar and said, with real wonder, that he'd lived in this dorm for two years and hadn't known Fuuka liked horror films." },
       { s: 'hanni', f: 'happy', t: "That's what mixers are for!" },
       { s: 'akihiko', f: 'happy', t: "...Huh. I get it now." },
+      { ifRank: { akihiko: 4 }, then: [
+        { n: "He didn't get up again. He stayed on the arm of the sofa for the rest of the night with his elbow about an inch from Solar's shoulder, and Hanni, going past with a fresh plate, looked at the inch, and then at Solar, and her face lit up all at once like somebody had leaned on every switch in a house. She turned around and faced the wall by the stairs until it stopped." },
+        { s: 'hanni', f: 'flustered', t: "I'm not saying anything! My face is saying something. Ignore my face. I'm checking on the snacks." }
+      ] },
       { n: "Solar kept losing Hanni and finding her again. By the snacks. By the stairs, listening to Yukari with her head tilted. Kneeling on the floor by Koromaru, apologizing to him about the name tag as if it had been her fault. And every time Solar found her, Hanni was already looking back, a quick glance across the room, checking, and then going on with whatever she'd been doing, like a girl counting heads on a field trip and finding everyone where she'd left them." },
       { choose: [
         { t: "(Go and stand next to her for a while.)", notes: 3, then: [
@@ -498,7 +504,7 @@
       { choose: [
         { t: "(Keep looking. Don't look away this time.)", notes: 3, flag: { 'hanni-eyes-open': true }, then: [
           { n: "She didn't look away. She made herself not, the way you make yourself stay in cold water, and the face in the glass looked back at her, and for a second, one second, its jaw went loose, and its mouth did something small and uncertain that wasn't a smile and wasn't *I'm fine,* and Hanni, behind her, made a very quiet sound, like she'd seen a deer step out of the trees." },
-          { s: 'hanni', f: 'sad', t: "...Hi. There you are." }
+          { s: 'hanni', f: 'sad', t: "...Hi. Hello. Okay. Hi." }
         ] },
         { t: "You do yours out loud. I do mine on the inside.", notes: 3, then: [
           { s: 'hanni', f: 'surprised', t: "...Yeah." },
@@ -517,6 +523,7 @@
 
     { after: '11/20', title: '7: the truth, small', place: 'Paulownia Mall · Chagall Café', time: 'After School', scene: [
       { n: "November had brought a boy from home. On the bridge in the green, and then in the dorm's laundry room at three in the morning, sitting on the dryer, saying almost nothing. Hanni had heard about it at breakfast from Junpei, who had heard about it from Fuuka, who had heard it, she said, like a single bell ringing twice. Hanni had put down her chopsticks and looked at Hyein, and Hyein had looked at Hanni, and neither of them had said anything at all, which for the two of them was the loudest thing Solar had ever heard." },
+      { n: "He'd stayed. Mitsuru found him a room upstairs, and he kept to it, or to the laundry room, or the roof, anywhere the rest of the house wasn't, the way a cat keeps to the top of a wardrobe in a new apartment. Hanni had left a mug of barley tea outside the laundry room door every night that first week without knocking, and every morning the mug was back on the drying rack, washed, upside down, and neither of them had said one word to the other about it." },
       { ifFlag: 'door-R6', then: [
         { n: "And then, two weeks after, another one, at the station piano, warm and easy and smiling, who'd said he knew the others were here because Hanni had texted him. And Hanni, told this at the breakfast table, had gone the color of the tablecloth." },
         { n: "She'd texted everyone. That was all. On the first night, on the phone from home that didn't send anything anywhere, she'd texted everyone in it, one by one, *we found her, she's okay, she's here,* and none of them had gone, and apparently one of them had." }
@@ -571,7 +578,7 @@
       { choose: [
         { t: "Does that scare you?", notes: 3, then: [
           { s: 'hanni', f: 'sad', t: "A little." },
-          { s: 'hanni', f: 'neutral', t: "But I'd rather you be happy somewhere I'm scared of than sad somewhere I'm not. That's the rule. I just made it." }
+          { s: 'hanni', f: 'neutral', t: "But I'd rather you be happy somewhere I'm scared of than sad somewhere I'm not. That's not a rule. It's just true." }
         ] },
         { t: "I'm happy with you, too.", notes: 3, then: [
           { s: 'hanni', f: 'surprised', t: "..." },
@@ -598,7 +605,7 @@
       { s: 'hanni', f: 'surprised', t: "..." },
       { s: 'solar', f: 'neutral', t: "And there are pink mugs. I bought pink mugs. You said I hated the pink when I moved in. I didn't tell anyone why I bought them." },
       { s: 'solar', f: 'neutral', t: "It's because I liked the mornings. With you two. In the kitchen. I wanted something there that was mine that was the same color as everything else." },
-      { n: "Hanni put her glass down on the counter. She didn't say anything. Her face was doing everything at once, every single thing, all of it out loud, and she put both hands flat on the counter like she needed to hold on to it." },
+      { n: "Hanni put her glass down on the counter. She didn't say anything. Her face was going through all of it, one feeling stepping on the heels of the next, and she put both hands flat on the counter like she needed to hold on to it." },
       { ifFlag: 'hanni-eyes-open', then: [
         { n: "It was the face from the bathroom mirror. The one that had looked back at Solar over her own shoulder, doing everything. Solar didn't look away from it this time either. She'd been practicing." }
       ] },
@@ -619,7 +626,26 @@
       { s: 'hyein', f: 'serious', t: "...Who drank my— oh. Oh, it's full. Why is it full? Why are you both looking at me like that? What happened? Why is Hanni crying? HANNI, WHY ARE YOU CRYING." },
       { s: 'hanni', f: 'happy', t: "She remembered the candle." },
       { s: 'hyein', f: 'surprised', t: "The CANDLE? Of all the things? Out of everything she could get back she got your *fire hazard?*" },
-      { n: "But she came and stood behind Solar's stool anyway and put her chin on top of Solar's head, wet hair and all, and drank her water, finally, the whole glass, standing there, like a toast." }
+      { n: "But she came and stood behind Solar's stool anyway and draped both arms down over her shoulders, wet hair dripping onto Solar's collar, and drank her water, finally, the whole glass, standing there, like a toast." },
+      { n: "The back stairs creaked. Haechan came in from the direction of the laundry room in yesterday's black hoodie, with the look of somebody who hadn't been to bed and had no plans to start, and went straight to the coffee maker, where the pot from Mitsuru's five o'clock had been sitting on the warmer for two hours, and poured a cup, and looked down into it." },
+      { n: "Nobody said good morning. Solar didn't know if you said good morning to him; she mostly saw him at three in the morning, when it didn't apply. Hanni had gone very still with her eyes on her glass, the honest kind of still, which meant her face was about to do something. Hyein didn't say it because, for once in her life, she was busy looking." },
+      { s: 'solar', f: 'neutral', t: "That's been on the warmer since five. It's burnt. They do something to the filtration in those." },
+      { n: "She had no idea why she said it. It came out of her flat and certain, like a fact somebody had told her a hundred times with strong opinions attached. Haechan looked at her over the cup. Something went across his face and was gone." },
+      { s: 'haechan', f: 'neutral', t: "It's fine." },
+      { s: 'hyein', f: 'surprised', t: "Oh my God. Hanni. She said *filtration.* She said it at home, too, in the kitchen, the morning she wasn't in her—" },
+      { n: "Hanni's hand was over Hyein's mouth before the sentence found its end. Not hard. Flat and quick and practiced, the way you'd put a lid on a pot, and she kept it there, and looked at the ceiling with an expression of total innocence that her face could not, in any way, support." },
+      { s: 'hanni', f: 'neutral', t: "Hyein's very tired. She dries her hair at three in the morning." },
+      { s: 'hyein', f: 'neutral', t: "Mmf." },
+      { n: "Haechan looked at the two of them, Hyein with a hand over her mouth and Hanni on the other end of it pretending that was a perfectly normal place for a hand to be, and then at Solar, who had no idea what had nearly just happened, and he took the burnt coffee and drank it anyway and went back the way he'd come without another word. On the stairs, very faintly, he laughed. Once. Flat." },
+      { choose: [
+        { t: "The morning I wasn't in my what?", notes: 2, then: [
+          { s: 'hanni', f: 'serious', t: "Ask him." },
+          { n: "Hyein, released, opened her mouth, looked at Hanni, and shut it again, and drank Solar's water too, which she said was a punishment, though it wasn't clear for whom." }
+        ] },
+        { t: "(Pretend you didn't hear it.)", notes: 3, then: [
+          { n: "She pretended. Hyein watched her pretend and looked so relieved and so disappointed at the same time that Hanni had to take her hand away and laugh into her own sleeve." }
+        ] }
+      ] }
     ] },
 
     { after: '12/8', title: '9: braids', place: 'Iwatodai Dorm · Rooftop', time: 'Afternoon', scene: [
@@ -655,6 +681,8 @@
       ] },
       { s: 'hanni', f: 'serious', t: "Sol. I want to say something and I want you to let me say all of it without saying anything back until I'm done." },
       { s: 'hanni', f: 'neutral', t: "Everybody's going to ask you to come home. Soon. Me too, probably. I can feel it coming, like a sneeze. And you're going to feel like you're letting someone down whatever you do. Because you always feel like that. You've felt like that your whole life." },
+      { s: 'hanni', f: 'neutral', t: "Hyein wanted to go upstairs and knock on Haechan's door and make *him* do it. Make him be the one who asks you. She had a speech. It had pointing in it." },
+      { s: 'hanni', f: 'serious', t: "I took the speech off her. It's in my notebook. She can have it back at home. Because that's just everybody deciding for you again, with a boy in it, and whatever he is to you, he gets to say that himself. Or not. That's his." },
       { s: 'hanni', f: 'serious', t: "So here's what I'm saying now, before the asking. Whatever you do. Wherever you are. You're our sister. That doesn't stop. It didn't stop when you forgot us, and it won't stop if you stay. It's not a thing you can lose. We decided." },
       { s: 'hanni', f: 'neutral', t: "And it's not a thing you owe us, either. That's the other half. That's the half people forget. You don't pay for it by coming home. It's not a loan. It's just yours." },
       { n: "She tied off the braid with one of the tiny elastics and put both hands on Solar's shoulders for a second, and squeezed, and let go." },
@@ -665,6 +693,10 @@
         ] },
         { t: "(Turn around and hug her.)", notes: 3, then: [
           { n: "She turned around on the cushion and hugged her, hard, and Hanni made a small surprised sound and then hugged back, harder, with the hairbrush still in one hand, digging into Solar's spine, and neither of them moved it." }
+        ] },
+        { t: "What is he? To me?", notes: 2, then: [
+          { s: 'hanni', f: 'flustered', t: "Nope. Ask him." },
+          { s: 'hanni', f: 'neutral', t: "I'm being so not-nosy right now my ears hurt. Look at them. Don't look at them." }
         ] },
         { t: "Who takes care of you? When you're the one doing all this?", notes: 3, then: [
           { s: 'hanni', f: 'surprised', t: "...Me?" },

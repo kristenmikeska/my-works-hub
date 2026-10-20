@@ -7,6 +7,9 @@
    Canon echoes: "the camera already loves you", "I look like I'm starring in a sad movie" / "then you must not know
    yourself, Sol", "authenticity", "I always believe you, Sol". Her canon line that she won't be a coping mechanism is
    kept as her integrity at the route choice (rank 8), not as a scene from the book. Texting voice: @minji, u, 2, :] ;] (:
+   She lives at the Kirijo guesthouse by the station (Kat's ruling): days at Game Panic, Seaside Park and the guesthouse
+   window seat; texts Solar during school (r2, r7); the guesthouse hangout shows who she lives near (Jihoon, Mark, the desk
+   lady). Haechan lives at the dorm (r7 meets him on its steps).
    Arcana: '?' (open question for Kat, plot doc §16.6). afterMax and christmas use v1's field shapes. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'minji', name: 'Minji Kim', short: 'Minji', arcana: '?', numeral: '', from: 'Runners',
@@ -65,6 +68,36 @@
           { s: 'minji', f: 'surprised', t: "Sol. Sol. That was mine. I'm the DPS. You're the— oh my God, you're doing this on purpose. You did this all of September." }
         ] }
       ] }
+    ],
+    [
+      { place: 'Iwatodai Station · Kirijo Guesthouse', time: 'After School', soft: true },
+      { n: "The Kirijo guesthouse by the station was four narrow floors of tatami and floor polish and a front desk with a bell nobody rang, and on the ground floor there was a common room where everyone from home who didn't live at the dorm ended up whether they meant to or not. Minji had the window seat. She'd had it since September. There was a bowl of rice crackers on the sill beside her camera that the woman at the front desk refilled every afternoon without being asked, having decided, apparently, that Minji was too thin and that this was personally her problem." },
+      { s: 'minji', f: 'neutral', t: "Welcome to the other house. It's the dorm, but nobody fights anything and the rice is too soft. Don't tell her. She stands there till I finish it." },
+      { ifMet: ['jihoon'], then: [
+        { n: "A boy came through the common room with a towel round his neck, slowed down exactly enough to check whether the camera was pointed at him, and stopped." },
+        { s: 'jihoon', f: 'neutral', t: "If you're filming, it's my left side. Everybody knows that." },
+        { s: 'minji', f: 'neutral', t: "I'm filming the light." },
+        { s: 'jihoon', f: 'happy', t: "Then you're filming me. I'm standing in it. Same thing." },
+        { n: "He went upstairs. Minji did not move the camera one degree toward the stairs, on principle, and told the window that he'd done that every afternoon for a week and that she was going to win." }
+      ] },
+      { ifMet: ['mark'], then: [
+        { n: "In the corner, an upright piano with a lace runner on top was being played very softly, four notes over and over, and Minji sat with her back to it, carefully, the way you sit with your back to a television you've decided not to watch." },
+        { s: 'minji', f: 'neutral', t: "He asked if I wanted to film him playing. I said I only film the light." },
+        { s: 'minji', f: 'serious', t: "...I don't film people who look at the camera first. That's all. It's a rule. It's not about anybody." }
+      ] },
+      { choose: [
+        { t: "(Sit in the window seat with her.)", notes: 3, then: [
+          { n: "She sat. The window looked straight down on the tracks behind the station, and every few minutes a train came in under them, close enough that the glass hummed, and Minji filmed every one, and named them, the way you'd name the cows on a farm that wasn't yours." }
+        ] },
+        { t: "Do you like it here?", notes: 2, then: [
+          { s: 'minji', f: 'neutral', t: "I like my window. I can see every train to Port Island. If I lean all the way out I can see the dorm's roof, too." },
+          { s: 'minji', f: 'flustered', t: "That's not a creepy sentence. That's a geography sentence." }
+        ] },
+        { t: "Film the desk lady.", notes: 3, then: [
+          { n: "Minji asked her. Properly, with her phrasebook and a great deal of bowing. The woman at the desk said absolutely not, and then fixed her hair, and then stood very straight behind the bell for nine seconds while Minji filmed her, and then said absolutely not again and went to get more rice crackers." },
+          { s: 'minji', f: 'happy', t: "Nine seconds. Best footage I've gotten all week. Don't tell Fuuka. Fuuka thinks she's my best subject." }
+        ] }
+      ] }
     ]
   ],
   ranks: [
@@ -87,12 +120,12 @@
           { s: 'minji', f: 'neutral', t: "Okay. Okay, good. That's the only reason that counts." }
         ] }
       ] },
-      { s: 'minji', f: 'neutral', t: "I'm not going to ask you to remember me. The others are going to, all of them. Hanni cried at you. Hyein yelled at you in a mall. I'm not going to do that." },
-      { s: 'minji', f: 'neutral', t: "I'm going to ask you something else." },
+      { s: 'minji', f: 'neutral', t: "They put me in a guesthouse by the station. Mitsuru's people. There's a lady at the front desk who calls me *the camera girl* and leaves rice balls outside my door like I'm a stray cat. I've been up since five filming the first trains go over the river." },
+      { s: 'minji', f: 'neutral', t: "So I've had a lot of time to work out how to ask you this properly. In daylight. Not at midnight with my face doing that." },
       { n: "She took the lens cap off. She didn't lift the camera. She held it in both hands in her lap, pointed at the ground, and looked at Solar instead of through it." },
       { s: 'minji', f: 'serious', t: "Can I keep filming you?" },
       { s: 'minji', f: 'neutral', t: "Not all the time. Not when you don't want me to. I always ask. I ask like twenty times, it's a whole thing with me, people make fun of me for it. I never post a frame without asking either. Not one, ever." },
-      { s: 'minji', f: 'neutral', t: "I just. You're the same in the frame. You're always the same in the frame. Even now. Even when you don't know me. I need to keep looking at something that's the same." },
+      { s: 'minji', f: 'neutral', t: "Everything here is lit wrong. The streetlights are the wrong color and the sun goes down on the wrong side of the water. You're the only thing in this whole city I already know how to shoot." },
       { choose: [
         { t: "Yes.", notes: 3, then: [
           { s: 'minji', f: 'happy', t: "...Thank you." },
@@ -113,6 +146,13 @@
     ] },
 
     { after: '10/3', title: '2: godgirlji', place: 'Paulownia Mall · Game Panic', time: 'After School', music: 'city', scene: [
+      { phone: [
+        { from: 'minji', t: "what time does ur school let out" },
+        { from: 'minji', t: "asking for a friend. the friend is me. ive been at game panic since it opened" },
+        { from: 'minji', t: "the man at the counter says good morning to me now. we have a whole routine" },
+        { from: 'solar', t: "why r u at an arcade at 10am" },
+        { from: 'minji', t: "research. come after school. ill explain w my hands :]" }
+      ], contact: 'minji' },
       { n: "Minji's cap was on backwards. Solar didn't know yet what that meant. She'd find out in about forty seconds." },
       { s: 'minji', f: 'serious', t: "Okay. They have a PC corner. Three machines behind a bead curtain, all sticky, nobody uses them. One of them has a game on it that's like, ninety percent the game we play. Ninety. The other ten percent is a crime against humanity, but it'll do." },
       { s: 'minji', f: 'neutral', t: "I'm logging in as a guest. You're logging in as a guest. We're a duo. Don't argue." },
@@ -314,6 +354,11 @@
     ] },
 
     { after: '11/12', title: '7: what the lens sees', place: 'Port Island · Seaside Park', time: 'Night', scene: [
+      { phone: [
+        { from: 'minji', t: "r u out of school yet" },
+        { from: 'minji', t: "im at the guesthouse. the desk lady made me eat two breakfasts and now its lunch and shes looking at me again" },
+        { from: 'minji', t: "save me. come walk w me. i want to film u walking (ill ask properly in person)" }
+      ], contact: 'minji' },
       { n: "By the time they reached the river path behind Seaside Park, the lamps were on and the water had gone dark between the long strips of light from the opposite bank. Minji stopped under one of the lamps and looked from it to Solar, and back again, very pleased with something she hadn't explained yet." },
       { n: "Minji had the camera up. She'd asked. She'd asked twice, actually, because the first time Solar had said *sure* without looking, and Minji had lowered it and waited until she did look, and asked again." },
       { s: 'minji', f: 'neutral', t: "Walk to the end of the wall and back. Don't do anything. Don't look at me. Pretend I'm a seagull." },
@@ -328,8 +373,7 @@
           { s: 'minji', f: 'happy', t: "Absolutely not. That's my whole job." }
         ] }
       ] },
-      { n: "On the way back to the station they passed the dorm, and on the front steps, sitting in the gold light with his headphones around his neck and a can of coffee he was glaring at, was Haechan. He looked up when they passed. His eyes went to Solar, and stayed there, flat and unreadable and absolutely certain, and then went to Minji, and to the camera." },
-      { n: "They sat on the seawall afterward while the gold went out of the light, and Minji scrolled through the walk with the sound off, frame by frame, and stopped every few seconds to show Solar her own shoulders, up by her ears, her chin at the angle it went to when someone was taking a picture of her, her hand going to her hair." },
+      { n: "They sat on the seawall afterward while the last of the light went out of the sky, and Minji scrolled through the walk with the sound off, frame by frame, and stopped every few seconds to show Solar her own shoulders, up by her ears, her chin at the angle it went to when someone was taking a picture of her, her hand going to her hair." },
       { s: 'minji', f: 'neutral', t: "See? There. And there. You're checking. You check the camera like it's a mirror. You're making sure you're the right version." },
       { s: 'minji', f: 'serious', t: "I'm not saying it to be mean. I'm saying it because nobody's ever let you see it. You've been looked at your whole life and nobody's ever shown you the footage." },
       { choose: [
@@ -341,7 +385,10 @@
           { n: "She turned the screen off. She didn't argue. She put the camera in her lap and kept her hand on it, and they watched the water instead." }
         ] }
       ] },
+      { place: 'Iwatodai Dorm · Front', time: 'Night', soft: true },
+      { n: "Minji walked her home. It wasn't on her way. The guesthouse was the other side of the station, and she walked Solar to the dorm anyway, the long way, over the river, and on the front steps, sitting in the porch light with his headphones around his neck and a can of coffee he was glaring at, was Haechan. He looked up when they came through the gate. His eyes went to Solar, and stayed there, flat and unreadable and absolutely certain, and then went to Minji, and to the camera." },
       { n: "Minji nodded to him. Just a nod. Polite, small, the nod of one person to another across a crowded room at a party where they both knew the host. He nodded back. Neither of them said anything. Neither of them needed to." },
+      { n: "He took the can and went in, and the door shut behind him, and Minji stood at the bottom of the steps looking at the door for a second longer than she looked at most things she wasn't filming." },
       { s: 'minji', f: 'neutral', t: "He looks at you like a song he's mixing." },
       { s: 'minji', f: 'neutral', t: "Like you're the only thing in the track and he's scared to touch the fader." },
       { choose: [
@@ -357,7 +404,7 @@
         ] }
       ] },
       { cg: 'link-minji-camera-lamp' },
-      { n: "At the station she played back the walk along the wall. Solar braced herself for her own shoulders, her own careful face. There was a second, near the end, where a gull had come down too close and Solar had flinched and laughed and forgotten, completely, that anyone was watching. Minji had kept that second. She'd slowed it down." },
+      { n: "Under the lamp by the gate, before she went back the way they'd come, toward the station and the guesthouse and the desk lady with her rice balls, Minji played back the walk along the wall one more time. Solar braced herself for her own shoulders, her own careful face. There was a second, near the end, where a gull had come down too close and Solar had flinched and laughed and forgotten, completely, that anyone was watching. Minji had kept that second. She'd slowed it down." },
       { s: 'minji', f: 'happy', t: "There. That's you. Two seconds. I'll take two seconds." },
       { cg: null }
     ] },
@@ -393,7 +440,7 @@
           { s: 'solar', f: 'neutral', t: "Duo." }
         ] }
       ] },
-      { n: "When they packed up the tripod an hour later, Minji played back the fixed shot to check it. Forty minutes of the bay, the lights, a ferry going across, nothing. And at the very bottom of the frame, for the whole forty minutes, you could hear them. Not the words. Just two voices, and a laugh, and the thermos lid going back and forth." },
+      { n: "When they packed up the tripod an hour later, before she carried it back along the river to the guesthouse over her shoulder like a fishing rod, Minji played back the fixed shot to check it. Forty minutes of the bay, the lights, a ferry going across, nothing. And at the very bottom of the frame, for the whole forty minutes, you could hear them. Not the words. Just two voices, and a laugh, and the thermos lid going back and forth." },
       { s: 'minji', f: 'neutral', t: "...Best audio I've ever recorded. And I didn't even point anything at it." }
     ] },
 
