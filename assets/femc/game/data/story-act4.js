@@ -273,7 +273,7 @@
     ], contact: 'Unknown number' },
     { n: "She looked at the last one for a long time. Somebody knew. Somebody, somewhere, knew that she didn't sleep at low tide, and had known it long enough to make a joke of it, and loved her enough to put the joke in brackets, quietly, like a hand on the back of her neck." },
     { n: "Whatever it was tomorrow had already happened, she thought. These were old too. These had been sent the night before something, a long time ago, by someone who'd been awake for her, and she'd never answered, and the something had come anyway." },
-    { n: "She didn't sleep. It was low tide. At two she got up and took her school skirt off the chair, where the hem had been coming down for a week, and found the little sewing kit in the bathroom cabinet, and sat on the floor under the desk lamp and mended it. She didn't decide to. Her hands did it, small, even, invisible stitches, every one the same length, the needle going in and out like something she'd done ten thousand times at this hour. Somebody's dress, she thought. Somebody's hem, let down and taken up and let down again by a woman with pins in her mouth. A fitting. A date written on a card in fountain pen. A date she hadn't picked, coming closer with every stitch." },
+    { n: "She didn't sleep. It was low tide. At two she got up and took her school skirt off the chair, where the hem had been coming down for a week, and found the little sewing kit in the bathroom cabinet, and sat on the floor under the desk lamp and mended it. She didn't decide to. Her hands did it, small, even, invisible stitches, every one the same length, the needle going in and out like something she'd done ten thousand times at this hour. Somebody's dress, she thought. Navy silk, long sleeves, pearls, a low chignon. A woman in her doorway at one in the morning with the hem of her coat wet, saying it all in order, and then, after a pause, *not the jade.* A date written on a card in fountain pen. A date she hadn't picked, coming closer with every stitch." },
     { fragment: 'strangers-needle' },
     { n: "When she looked at the clock it was three, and the hem was perfect, and somewhere far off, under everything, something green and smooth tapped once against something else, jade on jade, like a ring knocked against a glass to make a toast." }
   ] },
@@ -394,7 +394,7 @@
         { n: "Then they were both hugging her, hard, from both sides, and Solar sat there squashed between them with her arms pinned and her face hot, and didn't move, and didn't want to." }
       ] }
     ] },
-    { n: "That afternoon Hyein went through Solar's wardrobe, every item, holding each one up and making a face. She got to the black hoodie at the back, the one that had been in the wardrobe in April with nothing in its pockets, and held it up, and Solar's hands went out for it before she'd thought. Not for this one. For another one. Gray, enormous, the sleeves past her fingertips, a hoodie that wasn't hers and that she'd worn anyway, home across a cold lawn at an hour nobody should be awake, with her hands pulled up inside the cuffs and her face turned down into a collar that smelled of somebody else." },
+    { n: "That afternoon Hyein went through Solar's wardrobe, every item, holding each one up and making a face. She got to the black hoodie at the back, the one that had been in the wardrobe in April with nothing in its pockets, and held it up, and Solar's hands went out for it before she'd thought. Not for this one. For another one. Dark, enormous, a small orange S on the chest, the sleeves past her fingertips, a hoodie that wasn't hers and that she'd worn anyway, home across a cold lawn at an hour nobody should be awake, with her hands pulled up inside the cuffs and her face turned down into a collar that smelled of somebody else." },
     { fragment: 'runners-hoodie' },
     { n: "Hyein looked at her face and didn't say anything for once. Then she folded the black hoodie and put it back where it had been, very carefully, and pronounced the rest of the wardrobe a tragedy, and said it was okay, she'd fix it, she'd fix all of it. Hanni sat on the bed and watched them and didn't say anything, and every so often Solar caught her looking, not at the clothes, at Solar's hands, the way they moved, the way they folded things, as if she were checking each one against a list she kept somewhere and finding every single one present." }
   ] },
@@ -664,7 +664,7 @@
     { dark: true },
     { cg: 'searchers-yunjin-low-tide' },
     { n: "The sea was gone. That was the first thing. The harbor wall went down and down, past the line of green weed and the crust of barnacles, past where the water should have been, and kept going, and at the bottom there was mud. Gray, wet, shining mud, ribbed by the tide into long low ripples, going out and out under the green moon toward a sea that was only a silver line very far away, frozen, not coming back." },
-    { n: "Boats lay on their sides on it like tired dogs. The pilings stood up out of it bare and black. And out in the middle of all that gray, small and bright and absurd, a girl in a highlighter-yellow puffer jacket was walking away from the harbor wall with a car key in her fist, sinking to the ankle with every step, shouting." },
+    { n: "Boats lay on their sides on it like tired dogs. The pilings stood up out of it bare and black. And out in the middle of all that gray, small and bright and absurd, a girl in a highlighter-yellow puffer jacket was walking away from the harbor wall with a car key in her fist, sinking to the ankle with every step, shouting, in a voice that had something wrong with it, loud on top and scraped raw underneath, like gravel shaken in a can." },
     { s: 'yunjin', t: "SOL! Sol! SOLAR LEE, I swear to God, I drove all the way down here, I am in the MUD, I am RUINING these, babe, answer me!" },
     { cg: null },
     { n: "Solar's whole body locked at the top of the harbor steps. Her hand was on the rail. Her feet would not go down. The mud was not the sea, she knew that, she knew it the way you know a stove is off, and her body didn't care, her body could smell the water out there under the green, black and cold and waiting, and it would not go down the steps." },
@@ -703,7 +703,7 @@
     { s: 'yunjin', f: 'neutral', t: "And you're standing on the seabed. You. Standing on the bottom of the actual sea. Do you know how much I'd have paid to see this a week ago? You won't even stand at the edge of the pier." },
     { n: "Solar looked down. At the mud. At the silver line of the sea, very far off, waiting. Her knees, all at once, remembered what they were standing on, and went." },
     { dark: false },
-    { n: "The hour ended as she sat down in the mud. The sea didn't come rushing back, the way she'd been sure it would. It stayed where it was, a mile out, ordinary, a low tide on an ordinary October night, and the lights of the harbor came on all along the wall, and the boats on their sides creaked, and somewhere up on the road a car alarm started going off for no reason. Yunjin sat down in the mud beside her, in the Prada, and put her head on Solar's shoulder, and said she'd left Solar's house an hour ago, maybe less, she'd just been driving, she'd just wanted to see the water, and then the water was gone." },
+    { n: "The hour ended as she sat down in the mud. The sea didn't come rushing back, the way she'd been sure it would. It stayed where it was, a mile out, ordinary, a low tide on an ordinary October night, and the lights of the harbor came on all along the wall, and the boats on their sides creaked, and somewhere up on the road a car alarm started going off for no reason. Yunjin sat down in the mud beside her, in the Prada, and put her head on Solar's shoulder, and said she'd left Solar's house an hour ago, maybe less, she lived there now, sort of, it was a long story and not tonight's, she'd just been driving, she'd just wanted to see the water, and then the water was gone." },
     { n: "Solar didn't say she'd been gone six months. She didn't say anything. They sat on the bottom of the sea until Akihiko found them, and Yunjin looked up at him, all the way up, and said, oh, hello, okay, is HE in the cult, because I'm in." },
     { n: "Back at the dorm, Mitsuru found Yunjin a room upstairs and handed her a key and a clean towel. Yunjin took both, then asked where she could leave the shoes so nobody would have to smell them." }
   ] },
@@ -954,7 +954,7 @@
         { fragment: 'hoax-ladder' },
         { n: "She tied the twine. She came down. There was nobody at the bottom of the ladder. There was nobody in the gym at all, and the banner on the back wall was gone, and so were the balloons, and the twine she'd just tied was the only silver thing in the rafters." },
         { n: "In the doorway, though, there was Jungwon. He'd come to find her, he said, because she'd said she'd be at the dorm at one and it was a quarter to two. He looked up at the single strand of silver in the rafters for a long moment, and then at her, and his hand went to his watch." },
-        { s: 'jungwon', f: 'neutral', t: "You held the ladder for me. Once. I never thanked you for that either." },
+        { s: 'jungwon', f: 'neutral', t: "You held the ladder for me. Once. Then I held it for you, and I let go. I never thanked you for the first one." },
         { s: 'jungwon', f: 'neutral', t: "...You should have let me fall, frankly. I was being impossible." }
       ] }
     ] },
@@ -1301,7 +1301,7 @@
     { n: "Then Yunjin came down, last, in an enormous hoodie and no socks, yawning, and saw him, and stopped on the stairs above the other two, and took her round gold sunglasses off her head and put them on her face, indoors, at seven in the morning, which Solar was learning was what Yunjin did instead of screaming." },
     { s: 'yunjin', f: 'surprised', t: "Oh my God. It's the dog." },
     { s: 'hanni', f: 'surprised', t: "The WHAT?" },
-    { s: 'yunjin', f: 'neutral', t: "The dog. Her dad's. That's what he calls himself. He sleeps across the hall from her door. He carries my shopping bags in his left hand so his right's free." },
+    { s: 'yunjin', f: 'neutral', t: "The dog. Her dad's. That's what he calls himself. He sleeps ten meters from her door. It's a rule. Her mom made it. He carries my shopping bags in his left hand so his right's free." },
     { s: 'hyein', f: 'surprised', t: "He's the recruitment chair of a FRATERNITY." },
     { n: "Yunjin looked at Hyein. Hyein looked at Yunjin. Then both of them, slowly, looked at Haechan, who was eating his rice." },
     { s: 'haechan', f: 'neutral', t: "Two places." },
@@ -1447,7 +1447,7 @@
 
   { id: 'a4-ferry', date: '11/14', slot: 'evening', title: 'the last ferry', place: 'Tartarus · Lobby', time: 'The Dark Hour', scene: [
     { music: 'tartarus' },
-    { n: "Yunjin came because Jihoon had gotten to. That was the reason she gave, and she gave it at volume, in the lounge, to Mitsuru, at length, and Mitsuru listened to all of it and then said, very calmly, that Yunjin did not have a Persona, or an Evoker, or any training, and that the tower would kill her, and Yunjin said, babe, I've been in worse places than a tower, I've been to a funeral in Bupyeong, and Mitsuru looked at her for a long time and then said she could come as far as the landing." },
+    { n: "Yunjin came because Jihoon had gotten to. That was the reason she gave, and she gave it at volume, in the lounge, to Mitsuru, at length, and Mitsuru listened to all of it and then said, very calmly, that Yunjin did not have a Persona, or an Evoker, or any training, and that the tower would kill her, and Yunjin said, babe, I've been in worse places than a tower, I've been to my dad's funeral, and Mitsuru looked at her for a long time and then said she could come as far as the landing." },
     { n: "She came a lot further than the landing." },
     { place: 'Tartarus · The Dark Hour', time: 'The Dark Hour', bg: 'tartarus-scene' },
     { dark: true },
@@ -1466,7 +1466,7 @@
     { n: "Yunjin. Yunjin, who had no Persona, and no Evoker, and no training, who had gone over the rail of a ferry in a tower full of monsters into black water without a second's thought. She didn't stop talking the whole time. She talked them both to the side of the ship and she talked while Akihiko and Jihoon hauled them up by the arms and she talked while Solar lay on the wet deck on her side coughing up the sea, and she didn't stop talking until Solar reached out, blind, and found her hand, and held it." },
     { n: "Then she stopped. She sat on the deck with her hair plastered to her face and her mascara all down her cheeks and held Solar's hand in both of hers and didn't say anything at all." },
     { music: 'night' },
-    { n: "And in that quiet, with the deck rocking and the diesel smell and the cold, for a second it was another ferry. Another night. The last ferry of the night, rocking under her feet, and she had almost not gotten on. She'd stood on the pier and nearly turned around. And then somebody had said her name, and she'd stepped across the gap anyway, over the black water, and the deck had taken her weight." },
+    { n: "And in that quiet, with the deck rocking and the diesel smell and the cold, for a second it was another ferry. Another night. A low concrete terminal painted a blue that had faded nearly to gray, a timetable board, a white ferry idling at the bottom of a concrete ramp, the last one of the night. And a photograph of that ramp, taken from behind: a woman in a camel coat with her hair up, very straight, like a teacher, standing at the top of it with a small handbag on her arm, on a Thursday. Solar had never been on that boat. She'd only ever stood at the far end of the car park and watched it idle, and never once in her life wanted to be on it." },
     { fragment: 'strangers-ferry' },
     { choose: [
       { t: "You jumped in.", then: [

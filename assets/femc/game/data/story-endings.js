@@ -61,8 +61,8 @@
     { n: "Low tide. She knew before she opened her eyes. She could feel the sea gone out under the house, the whole bay pulled back to the horizon, the mud shining under the last of the sodium lights, the way she'd always felt it on the nights she couldn't sleep. Her room. Her ceiling. The gray Yonsei sweatshirt on the chair. The jade ring on her right hand, where it had always been." },
     { n: "It was nearly dawn. She went down in her socks, past the onggi jars, to the front steps, with her hair down, and the sky over the harbor was going the color of the inside of a shell, and the lanterns over the gate were still lit, red, and somewhere in the kitchen behind her, Mrs. Bang was making barley tea. Nothing had moved. Nothing at all. As if she'd been gone a night, or less." },
     { ifFlag: 'xmas-haechan', then: [
-      { n: "Haechan was in the sewing room. The little room under the eaves across the hall from hers, with the door open, the way it was always open. He was sitting on the narrow bed with a battered Discman in his hands, the one with the cracked lid, and there was no disc in it, and he had the headphones on anyway." },
-      { n: "He took them off when she came to the door." },
+      { n: "Haechan was in the sewing room. The little room under the eaves across the hall from hers, with the door open, the way it was always open. He was sitting on the narrow bed with a battered Discman in his hands, the one with the cracked lid, the same old disc still inside it and the batteries dead for years, and he had the earbuds in anyway." },
+      { n: "He took them out when she came to the door." },
       { s: 'solar', f: 'neutral', t: "I hate you." },
       { s: 'haechan', f: 'neutral', t: "I know, agasshi." },
       { n: "He looked at her. Hair down. Barefoot. Back. And then his face stopped performing entirely, all of it, the way it only ever did when nobody else could see, and he said her name. Not agasshi. Not anything else." },
@@ -71,10 +71,10 @@
     { ifFlag: 'xmas-jungwon', then: [
       { n: "Jungwon was at the gate. In the cold, in his camel coat, his hands at his sides, as if he'd been standing there all night, which, she suspected, he had. His watch was running. She could hear it, in the dawn quiet, ticking." },
       { n: "He bowed. Formal. Correct. In the register he always used with her, polite to the point of danger, and he asked, very courteously, whether she had slept." },
-      { n: "Then he said one word. In a register he had never once used with her in his life. She would keep it. She would never tell anyone what it was." }
+      { n: "Then he said one word. In the register he had only ever used with her a handful of times, and never once at a gate, in daylight, where anyone could hear. She would keep it. She would never tell anyone what it was." }
     ] },
     { ifFlag: 'xmas-haechan', else: [{ ifFlag: 'xmas-jungwon', else: [
-      { n: "Yunjin was asleep on her bedroom floor when she went back up. Curled up on the rug in a nest of blankets, in borrowed rabbit socks with ears, snoring, as if she'd climbed the wall in the night and simply refused to leave. And out of the window, down on the road, a car idling, engine running, lights off. A man at the wheel with his hands at ten and two, waiting. He'd always waited." },
+      { n: "Yunjin was asleep on her bedroom floor when she went back up. Curled up on the rug in a nest of blankets, in borrowed rabbit socks with ears, snoring, as if she'd come in from the room next door in the night and simply refused to leave. And out of the window, down on the road, a car idling, engine running, lights off. A man at the wheel with his hands at ten and two, waiting. He'd always waited." },
       { n: "She got back into bed. She didn't sleep. It was low tide. But for the first time in her life she didn't mind." }
     ] }] },
     { cg: null },

@@ -181,7 +181,7 @@
         ] },
         { t: "Who's Johnny?", notes: 2, then: [
           { s: 'jaehyun', f: 'neutral', t: "My vice president. At the house. He runs things when I'm at the field, which is always. He's the most reliable person I know." },
-          { s: 'jaehyun', f: 'serious', t: "...He'll be holding it all together right now. Tonight. Without me. It's still the same night there. I keep forgetting that, and then I remember, and I think, at least it's Johnny." }
+          { s: 'jaehyun', f: 'serious', t: "...He'll be holding it all together right now. Tonight, or this week, or whatever it is there. Hanni swears it's still the same night. I can't make the numbers agree. Either way, I think, at least it's Johnny." }
         ] },
         { t: "You could tell them I'm safe when you get home.", notes: 2, then: [
           { s: 'jaehyun', f: 'neutral', t: "I could." },
@@ -633,7 +633,7 @@
       { n: "She went down. He straightened when he saw her, the way you'd straighten for a coach." },
       { ifFlag: 'jaehyun-walked', then: [
         { s: 'jaehyun', f: 'neutral', t: "You walked past me." },
-        { s: 'jaehyun', f: 'neutral', t: "You've never walked past me. You yell. You've yelled at me in front of a Dean. You hung up on me in the middle of a sentence once and called back to finish yelling. I know what to do with yelling." },
+        { s: 'jaehyun', f: 'neutral', t: "You've never walked past me. You yell. You hang up on me. You did it this fall, in the middle of my sentence, and I sat there holding a dead phone, and at least I knew where I stood. I know what to do with yelling." },
         { s: 'jaehyun', f: 'serious', t: "I didn't know what to do with your back. I've been standing here a week trying to work it out." }
       ], else: [
         { ifFlag: 'jaehyun-asked', then: [

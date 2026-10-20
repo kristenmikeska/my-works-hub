@@ -266,6 +266,10 @@
           { s: 'mark', f: 'neutral', t: "...I know. I know you do. Fuuka let me listen. Once. I'm never doing that again. I couldn't breathe for three hours." }
         ] }
       ] },
+      { n: "The wind came up off the bay between two buildings and went straight down her collar, and she pulled it closed with one hand, and Mark watched her do it, and something went across his face, quick, and was gone." },
+      { s: 'mark', f: 'neutral', t: "You had a scarf. At home. Navy, with two little gold suns on it. It was for the cold, I got it for you, it's not a big deal." },
+      { s: 'mark', f: 'flustered', t: "I tied it really badly. Outside a ramen place. You said it was crooked and I said that was the style. ...Anyway." },
+      { n: "She didn't remember it. Her free hand went to her throat anyway, to the place a knot would have sat, and found nothing there, and stayed a second too long, and he saw that too and looked at the street." },
       { n: "Halfway there the back streets opened out onto a corner with a convenience store glowing on it like a fish tank, and he said *hang on* and was inside before she could answer, and came back out with two steamed buns in a paper bag, already paid for, the receipt already balled up in his pocket." },
       { s: 'mark', f: 'neutral', t: "Pork one's yours. The other one's red bean. I'm not saying you'd hate the red bean. I'm saying I know you." },
       { choose: [

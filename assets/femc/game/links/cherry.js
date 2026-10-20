@@ -288,7 +288,7 @@
       { s: 'cherry', f: 'serious', t: "And the whole thing's my fault." },
       { s: 'solar', f: 'neutral', t: "The poster?" },
       { s: 'cherry', f: 'serious', t: "The running. Your parents said it first. Everybody knows that. But you said no, you said you'd never win, and that was going to be it." },
-      { s: 'cherry', f: 'serious', t: "And then the president was a prick to you in the hallway and never said sorry, and I was so mad I couldn't see, and I wanted to watch him lose. So I said it too. In the chat. Like it was a mission. *I need you to run for pres.* I said you could fix this garbage school. I said it would make your parents happy." },
+      { s: 'cherry', f: 'serious', t: "And then the president was a prick to you outside his house about your dog and never said sorry, and I was so mad I couldn't see, and I wanted to watch him lose. So I said it too. In the chat. Like it was a mission. *I need you to run for pres.* I said you could fix this garbage school. I said it would make your parents happy." },
       { s: 'cherry', f: 'sad', t: "I didn't even say it for you. I said it to win a fight you weren't even having." },
       { choose: [
         { t: "Did I want to run?", notes: 3, then: [

@@ -1,6 +1,6 @@
 /* Yang Jungwon · V The Hierophant. Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
    Searcher, canon romance (Hoax + strangers). One boy carrying two lives: Hanlim's overworked student council president
-   who forgets to eat and tutors everyone but himself (Hoax), and the heir with formal speech, a dead brother's watch,
+   who forgets to eat and tutors everyone but himself (Hoax), and the heir with formal speech, his brother's watch,
    no scent and a face that goes still when he's actually pleased (strangers). The tell in both: the angrier he gets,
    the more polite. He knows two of her surnames and keeps almost saying one. Every rank lets Solar lean (tally
    jungwon.H / jungwon.S, plot doc §9, §12). His crossing (10/14, council room door, "It's you.") is a story event; rank 1
@@ -11,6 +11,10 @@
    couldn't be, and they started dating. He never speaks of a count still to come; "that night" is exam week. Maeumi is a
    small male dog; Nana is Solar's big fluffy one. strangers: the heir, formal speech, the brother's watch, the fiancé.
    He says plainly that he is one person from two places (rank 3) and that he shares one of them with Donghyuck (rank 4).
+   Current strangers canon (Kat's ruling 2026-10-20; strangers leaves off at Ch 65, early February): the engagement began as a
+   contract and isn't one to him anymore; Solar has told him she doesn't know about the wedding; he has spoken to her in banmal
+   a handful of times (never in this game); he knows the brother's watch fit his brother and that "it never fit me" was a lie;
+   he and Donghyuck have saved each other more than once and are still not friends. The game names none of the war.
    Housing: Kirijo guesthouse by the station; the dorm kitchen and the dorm steps are visits.
    Romance stays non-explicit: hands, foreheads, a kiss (rank 10). No banmal from him here (Kat's call, §16.13).
    Romance turn at rank 8, before Christmas. Arcana Hierophant is v1's; searcher arcana are open (§16.6).
@@ -388,7 +392,7 @@
       { s: 'jungwon', f: 'neutral', t: "We have one in common. It's the one where we're not friends." },
       { s: 'solar', f: 'neutral', t: "Your watch stopped." },
       { s: 'jungwon', f: 'neutral', t: "When I came through. Eleven fifty-eight and some seconds." },
-      { s: 'jungwon', f: 'neutral', t: "It was my brother's. There's a link taken out so it fits me. It never fit him either, he just didn't care." },
+      { s: 'jungwon', f: 'neutral', t: "It was my brother's. There's a link taken out so it fits me. He gave it to me the night he went, and told me it had never fit him. It had. I've only lately found out how much he lied to me." },
       { s: 'jungwon', f: 'neutral', t: "I wind it every night anyway. In case." },
       { choose: [
         { t: "In case of what?", notes: 2, then: [
@@ -531,7 +535,7 @@
       { n: "The first of December was cold and clean and blue, the kind of day that made Naganaki's steps look whiter than they were, and Jungwon was sitting on the top one with Koromaru, who had decided at some point in the last week that Jungwon was his, and Jungwon was talking to the dog in a low, careful, extremely formal voice." },
       { n: "She stopped three steps down, because she could hear what he was saying, and because he hadn't heard her yet, which had never happened before." },
       { s: 'jungwon', f: 'serious', t: "...and I said things to you that I'm not going to repeat, because repeating them would be a second offense. You were in front of my house. You hadn't done anything. Your dog was bigger than mine and very friendly and I was tired and late and I'd been awake since four." },
-      { s: 'jungwon', f: 'serious', t: "None of that is an excuse. I'm listing it so you know I've thought about it. I've thought about it a great deal. I'm sorry. I should have said so at the time. I should have said so the next morning, or any morning after, and instead I spent a whole campaign being—" },
+      { s: 'jungwon', f: 'serious', t: "None of that is an excuse. I'm listing it so you know I've thought about it. I've thought about it a great deal. I'm sorry. I should have said so at the time. Instead I said it weeks later, in a nurse's office, to a girl I thought was asleep, and I spent the whole campaign before that being—" },
       { n: "Koromaru licked his ear. He stopped, and closed his eyes, and let out a breath that went white." },
       { s: 'jungwon', f: 'neutral', t: "...Thank you. That's very gracious. I don't think you understood the terms." },
       { choose: [
@@ -543,7 +547,7 @@
         ] },
         { t: "Who was that apology for?", notes: 3, tally: { 'jungwon.H': 1 }, then: [
           { s: 'jungwon', f: 'neutral', t: "Someone with a very big, very happy, very white dog. On the first morning of school. At home." },
-          { s: 'jungwon', f: 'neutral', t: "I was practicing. I've been practicing it on him for a week. He accepts it every time. He's terrible at negotiation." }
+          { s: 'jungwon', f: 'neutral', t: "I said it to her once already. Late, and badly. I'd like to say it properly. I've been practicing it on him for a week. He accepts it every time. He's terrible at negotiation." }
         ] }
       ] },
       { n: "She sat down on the step beside him. Koromaru moved over to put his chin on her knee, which was, she thought, fair." },
@@ -619,7 +623,7 @@
       { n: "She turned the light on. He winced, and let her." },
       { s: 'jungwon', f: 'neutral', t: "Everyone's asking you." },
       { s: 'jungwon', f: 'neutral', t: "Sunoo asks you. Jihoon asks you in the loudest possible way. Cherry asks you with her arms folded. The girls from your other school ask you on the roof with drinks that don't exist yet. Your brother doesn't ask, which is his way of asking." },
-      { s: 'jungwon', f: 'serious', t: "In one place there are exams in the morning and my parents waiting up, and you're my vice president, and you're mine, and I still haven't asked you everything I should have. In the other there's a date in spring that you didn't pick, and I'm standing at the end of it, and neither of us picked that either." },
+      { s: 'jungwon', f: 'serious', t: "In one place there are exams in the morning and my parents waiting up, and you're my vice president, and you're mine, and I still haven't asked you everything I should have. In the other there's a date in spring that neither of us picked, and I'm standing at the end of it, and somewhere along the way I stopped minding. You told me you don't know. I'd rather you didn't know than lied to me." },
       { n: "He turned the watch on his wrist so the face was against the inside of his arm, where he couldn't see it." },
       { s: 'jungwon', f: 'neutral', t: "I'm not going to ask you." },
       { n: "He opened the minutes book. The one he'd been keeping since October. He turned it to the first page, where the date was written in his neat print, and *Present:*, and his own name, and then hers, with the surname in front of it torn out of the paper by the red pen." },

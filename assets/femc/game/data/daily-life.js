@@ -268,7 +268,7 @@ window.FEMC_GAME_DAILY_LIFE = [
       { phone: [
         { from: 'lockscreen', t: "chenle · missed call" },
         { from: 'lockscreen', t: "chenle · missed call" },
-        { from: 'sunews', t: "jen0l33 commented: hyuck pick up ur phone" },
+        { from: 'sunews', t: "jen0l33 commented: HAECHAN PICK UP UR PHONE" },
         { from: 'lockscreen', t: "chenle · 11 missed calls" }
       ], contact: "Haechan's lock screen" },
       { s: 'hanni', f: 'sad', t: "Eleven." },
@@ -314,8 +314,8 @@ window.FEMC_GAME_DAILY_LIFE = [
       { s: 'haechan', f: 'neutral', t: "Top floor." },
       { s: 'jaehyun', f: 'serious', t: "We've had this conversation." },
       { s: 'haechan', f: 'neutral', t: "Twice." },
-      { s: 'jaehyun', f: 'serious', t: "Then you know how the third one goes." },
-      { s: 'haechan', f: 'neutral', t: "I told you I wasn't having it a third time." },
+      { s: 'jaehyun', f: 'serious', t: "I told you I wasn't having it a third time." },
+      { s: 'haechan', f: 'neutral', t: "Then don't." },
       { n: "It was all very quiet. Jaehyun's voice was low and even and perfectly controlled, and Haechan's was flat, and neither of them had raised a single thing, and Solar, sitting between them on the sofa with a mug in her hands, felt the back of her neck go hot with a fury she had no reason for. She knew this. She knew it bodily. Two men deciding something about her, across her, over her head, as if she were the field." },
       { choose: [
         { t: "I live here too. If you're having it, have it with me.", then: [

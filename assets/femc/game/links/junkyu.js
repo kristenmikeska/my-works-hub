@@ -727,8 +727,8 @@
         { n: "*please come home. (but only if u want to!!!) (i support u in whatever!!!) #teamsolar.* And under that, in different ink, newer, very small: *found the missing thing. it was u knowing who i am. ok now it's done.*" }
       ] },
       { ifFlag: 'junkyu-counter', then: [
-        { n: "The others had drifted over by then, all of them, the whole club, the way they always ended up in one loud knot wherever she was. Junkyu looked around at them, and she watched his lips move, one, two, three, four, five, all the way along, and stop on her. Six." },
-        { s: 'junkyu', f: 'happy', t: "Everybody. That's everybody. I counted." }
+        { n: "The others had drifted over by then, all the boys, the way they always ended up in one loud knot wherever she was. Junkyu looked around at them, and she watched his lips move, one, two, three, four, five, all the way along, and stop on her. Six." },
+        { s: 'junkyu', f: 'happy', t: "Everybody. That's everybody here. Cherry makes seven, wherever she is. I counted her anyway." }
       ] },
       { n: "He didn't have money for the ice cream. He found this out at the stand by the fountain, patting every pocket twice, and turned around and yelled across the atrium for Hyunsuk, who came over, and sighed, and paid, and bought one for everyone, and didn't say anything about the six hundred yen at all." },
       { ifFlag: 'route-H', then: [

@@ -257,17 +257,17 @@
       { n: "She tied off the next stem, neat and quick, and reached for the twine again." },
       { s: 'haru', f: 'happy', t: "I've thought about dropping it off the roof. I've thought about it so carefully that I know which drain it would go down, and how long the drain is, and where it comes out in the bay." },
       { s: 'haru', f: 'happy', t: "And then I tie another tomato." },
-      { n: "She said it in exactly the voice she used for the weather, and pulled the loop round the stake and back through itself and drew the knot snug with one small tug, and the ring swung out again on its chain and touched her throat, and Solar's hand came up to her own collarbone before she knew she'd moved it." },
+      { n: "She said it in exactly the voice she used for the weather, and pulled the loop round the stake and back through itself and drew the knot snug with one small tug, and the ring swung out again on its chain and touched her throat, and Solar's thumb went to her own right hand before she knew she'd moved it." },
       { music: 'mystery' },
-      { n: "Green. Cold. A weight against her breastbone no bigger than a fingertip, stone, not metal, cold the way things are cold that have been kept somewhere for a long time. A cord, red, rough silk, laid around her neck from behind. Fingers at her nape knotting it, two loops and a pull, and then the fingers didn't go. They stayed where they were, flat and warm on the back of her neck, a beat too long, and then another, the way someone holds on after they've been told it's time to let go. Salt in the air. A voice saying something behind her that she couldn't hear over her own pulse." },
+      { n: "Green. Cold. A weight on her right hand no bigger than a fingertip, stone, not metal, cold the way things are cold that have been kept somewhere for a long time. Her grandmother's. Never off, not to sleep, not to bathe, not for a dinner where her mother said *not the jade*. Her thumb turning it a quarter turn and back, a quarter turn and back, counting something: exits, men, cups on a table. And her father's hand coming down over her other one at a kitchen table late at night, over the old scar on her palm, warm, staying a beat too long, and then another, never once asking. Salt in the air. A voice humming an old song she couldn't hear over her own pulse." },
       { fragment: 'strangers-jade-ring' },
       { n: "Then it was rain on seven umbrellas, and a tomato vine crushed in her fist, and Haru's face very close under the yellow hood, not smiling at all." },
       { s: 'haru', f: 'surprised', t: "Solar-chan? You've gone white. Did you cut yourself on the twine?" },
-      { n: "Her own hand was still pressed flat to her collarbone, holding something that wasn't there. She took it away and looked at it. There was nothing in it. There was a red line across her palm from the twine, and that was all." },
+      { n: "Her own thumb was still turning something on her right hand, a quarter turn and back, something that wasn't there. She stopped it and looked at her hand. There was nothing on it. There was a red line across her palm from the twine, and that was all." },
       { choose: [
-        { t: "Someone tied something around my neck once. I think.", notes: 3, then: [
+        { t: "Someone told me not to wear my ring once. I think.", notes: 3, then: [
           { n: "Haru went very still, the way she went still over a seedling she wasn't sure about, and then she asked, as gently as Solar had ever heard anyone ask anything," },
-          { s: 'haru', f: 'sad', t: "Did you want them to?" },
+          { s: 'haru', f: 'sad', t: "Did you listen?" },
           { s: 'solar', f: 'sad', t: "I don't know." },
           { s: 'haru', f: 'sad', t: "...Then we have that in common, you and I. That's a very unkind thing to have in common." },
           { n: "She took Solar's hand off the planter's edge and held it between both of hers, rain and dirt and all, and didn't say anything else, which was the right thing to say." }
@@ -278,12 +278,12 @@
         ] },
         { t: "What's it like? Being promised to someone.", notes: 1, then: [
           { s: 'haru', f: 'neutral', t: "Like being a parcel. A very well-wrapped one. Everyone admires the paper." },
-          { n: "Solar nodded as though that were an answer to the question she'd asked, and not to the other one. Her hand kept drifting back to her collar. Haru watched it go there and come away and go there again, and said nothing." }
+          { n: "Solar nodded as though that were an answer to the question she'd asked, and not to the other one. Her thumb kept drifting back to her ring finger. Haru watched it go there and come away and go there again, and said nothing." }
         ] }
       ] },
       { n: "They finished the row. The last vine was the tallest, a straggling, ambitious thing that had already flopped once and was trying again, and Haru tied it herself, slowly, and stepped back under her umbrellas to look at it." },
       { s: 'haru', f: 'happy', t: "There. Now it can't fall, and it can still grow. That's the whole trick, I think. With everything." },
-      { n: "Solar went down the stairs with wet shoes and a red line fading on her palm. Her fingers went to her collar on the landing, and again at the shoe lockers, and again on the monorail, where she caught herself doing it in the black window and made herself stop, and then, a station later, did it anyway." },
+      { n: "Solar went down the stairs with wet shoes and a red line fading on her palm. Her thumb went to her ring finger on the landing, and again at the shoe lockers, and again on the monorail, where she caught herself doing it in the black window and made herself stop, and then, a station later, did it anyway." },
       { n: "There was nothing there. She checked anyway." }
     ] },
 

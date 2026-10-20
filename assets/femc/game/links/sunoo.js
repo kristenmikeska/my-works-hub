@@ -461,7 +461,7 @@
           { s: 'sunoo', f: 'sad', t: "I just hope nobody gets hurt. Whatever happens. He's so bad at being hurt. He just gets politer." }
         ] }
       ] },
-      { n: "He put the phone away. Then took it out again, and looked at the five boys on the steps, and at the empty place on the end where the boy holding the camera would have stood." },
+      { n: "He put the phone away. Then took it out again, and looked at the six boys on the steps, and at the empty place on the end where the boy holding the camera would have stood." },
       { choose: [
         { t: "(Take his phone. Take one of him.)", notes: 3, flag: { 'sunoo-photo': true }, then: [
           { s: 'sunoo', f: 'surprised', t: "Wait— what are you— my hair is— I'm in an APRON—" },

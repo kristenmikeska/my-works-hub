@@ -18,7 +18,11 @@
      - rank 9 (after 1/9, post-solstice) is the sure scene: route-R → Runners, route-S → strangers, route-true → both at
        once, any other route (H / stay) → he stays both and lets her go. It sets this link's own flags haechan-sure-R /
        haechan-sure-S / haechan-sure-both (none on H/stay), which rank 10 reads. christmas (12/24, before rank 9) reads route-R /
-       route-S directly. Other files may read the haechan-sure-* flags. */
+       route-S directly. Other files may read the haechan-sure-* flags.
+   Current canon (Kat's ruling 2026-10-20): Runners leaves off at Ch 66 (early November, the secret unlabelled thing),
+   strangers at Ch 65 (early February). strangers side: the Discman holds an old disc and its batteries have been dead for
+   years (he never plays it; somebody gave it to him); he lives in the annex, ten meters from her door on paper; the
+   Chairman calls him son now; he smokes Reds and is always quitting (Runners Haechan smokes too and isn't pretending to). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'haechan', name: 'Haechan', short: 'Haechan', arcana: 'Universe', numeral: '∞', from: 'Runners · strangers',
   kind: 'searcher', world: 'RS', romance: 'canon',
@@ -346,7 +350,7 @@
       { s: 'haechan', f: 'serious', t: "You're in both. That's the only reason I know they're both real." },
       { n: "He took a stick of gum out of his pocket without looking and unwrapped it with one hand and put it in his mouth, and the smell of it came over to her on the wind, cinnamon, sharp and sweet and cheap, and her stomach did something strange and low, a little drop, like missing a stair." },
       { s: 'haechan', f: 'neutral', t: "I'm quitting smoking. In one of them. I've been quitting for about three years. The gum is how you can tell I'm serious." },
-      { s: 'haechan', f: 'neutral', t: "In the other one I never started. Same lungs. Different bad habits. Don't ask me how that works. I just live here." },
+      { s: 'haechan', f: 'neutral', t: "In the other one I'm not even pretending to quit. Same lungs. Different bad habits. Don't ask me how that works. I just live here." },
       { choose: [
         { t: "(Ask about the campus.)", notes: 2, tally: { 'haechan.R': 1 }, then: [
           { s: 'solar', f: 'neutral', t: "The ladder. Where does it go?" },
@@ -356,7 +360,7 @@
         ] },
         { t: "(Ask about the harbor.)", notes: 2, tally: { 'haechan.S': 1 }, then: [
           { s: 'solar', f: 'neutral', t: "The house on the hill. Do you live there?" },
-          { s: 'haechan', f: 'happy', t: "I live outside your door. There. Ten meters. It's a rule. Somebody's mother made it." },
+          { s: 'haechan', f: 'happy', t: "I live in a shed at the bottom of your garden. Ten meters from your door. It's a rule. Somebody's mother made it." },
           { n: "He said it like the funniest joke in the world, and laughed, loud and easy, the way you'd laugh with men you'd fought beside, and then he stopped laughing all at once, like a radio switched off mid-song." }
         ] },
         { t: "(Don't ask. Just listen to the wind.)", notes: 3, then: [
@@ -401,29 +405,29 @@
       { s: 'solar', f: 'neutral', t: "Tell her what?" },
       { s: 'haechan', f: 'neutral', t: "That's the thing. She knows exactly what. She's known it longer than you have." },
       { s: 'haechan', f: 'serious', t: "Mostly." },
-      { n: "He opened the lid. There was no disc in it. He closed it again, carefully, the way you'd close the eyes of something, and handed her one of the earbuds anyway." },
+      { n: "He opened the lid with his thumb. There was a disc in it, old, scratched pale at the edges, with a band's name on it she couldn't read upside down. He closed it again, carefully, the way you'd close the eyes of something, and handed her one of the earbuds anyway." },
       { choose: [
         { t: "(Put it in.)", notes: 3, then: [
-          { n: "She put it in. He put in the other. The cord between them was short, so short she had to lean in until her shoulder was against his, warm through the hoodie, and he pressed play on nothing." },
-          { n: "The motor whirred. Something inside it spun up and clicked and spun and clicked, the sound of a laser looking for a song that wasn't there, and it was the stupidest thing in the world, and her eyes stung." }
+          { n: "She put it in. He put in the other. The cord between them was short, so short she had to lean in until her shoulder was against his, warm through the hoodie, and he pressed play." },
+          { n: "Nothing happened. Not a whir, not a click, not the little hiss of a laser looking. The batteries were dead. They'd been dead a long time; she could tell from the way he hadn't expected anything. They sat there with an earbud each, listening to a song that wasn't going to start, and it was the stupidest thing in the world, and her eyes stung." }
         ] },
         { t: "There's nothing in it.", notes: 2, then: [
-          { s: 'haechan', f: 'neutral', t: "Yeah." },
+          { s: 'haechan', f: 'neutral', t: "There's something in it. There's nothing to play it with." },
           { s: 'haechan', f: 'neutral', t: "Put it in anyway." },
-          { n: "She did. He pressed play on nothing, and the motor whirred and clicked, looking." }
+          { n: "She did. He pressed play, and nothing happened at all, and neither of them took the earbud out." }
         ] }
       ] },
-      { n: "One earbud for her, one for someone else. She knew this. Not the Discman, not the cracked lid. The cord. The exact length of it. How close you had to sit. A car, maybe, at night, the heater roaring, a song with a skip in it, the same skip at the same place every time, two minutes and something in, and both of them going quiet right before it like a breath before a stair." },
+      { n: "She knew this. Not the song. The Discman. A narrow room under a sloping roof, the eaves so low he had to duck to get into bed, three shirts on a rail, a carton of cigarettes on a shelf, and this, on the shelf beside them, and his thumb opening the cracked lid to show her the disc inside, as if it were the only thing in the room worth showing anyone. A band from before either of them could read. The batteries dead since a winter years ago. He'd never replaced them. He'd never thrown it away." },
       { fragment: 'strangers-discman' },
       { n: "The jade ring on Haenim's sash clicked. She heard it inside her own head, small and green, like a stone dropped into a bowl." },
       { s: 'haechan', f: 'surprised', t: "..." },
       { s: 'haechan', f: 'serious', t: "You heard that." },
-      { s: 'solar', f: 'neutral', t: "It skips. The song. Two minutes in." },
+      { s: 'solar', f: 'neutral', t: "The batteries are dead. They've been dead for years. You never changed them." },
       { n: "His hand closed around the Discman so hard the cracked lid creaked. He didn't say yes. He didn't have to. His face did nothing at all, and she was learning that nothing was the loudest thing his face knew how to do." },
       { choose: [
         { t: "Why didn't you ever fix it?", notes: 3, tally: { 'haechan.S': 1 }, then: [
-          { s: 'haechan', f: 'neutral', t: "Because then it'd be a different song." },
-          { s: 'haechan', f: 'sad', t: "I like knowing where it breaks. You can get ready for it. Most things don't tell you." }
+          { s: 'haechan', f: 'neutral', t: "Because then I'd have to listen to it." },
+          { s: 'haechan', f: 'sad', t: "Somebody gave it to me. I'd rather keep it quiet than find out what it sounds like without him." }
         ] },
         { t: "Play it for me. The real one. When we're home.", notes: 3, then: [
           { n: "He went very still at *home*. At *we*. She heard both words leave her and couldn't call either of them back." },
@@ -436,9 +440,9 @@
       ] },
       { n: "The dryer buzzed. Neither of them moved for it. When she finally went to take the earbud out he caught her wrist, not hard, just quick, his fingers rough and split across the knuckles in a way that had healed and split and healed again, and then let go almost before she'd noticed he'd done it." },
       { s: 'haechan', f: 'neutral', t: "Sorry." },
-      { s: 'haechan', f: 'neutral', t: "Habit. Somebody used to try to run off with it." },
+      { s: 'haechan', f: 'neutral', t: "Habit. Nobody touches it. Nobody's ever asked." },
       { s: 'haechan', f: 'neutral', t: "In the other place I've got headphones that cost more than that dryer. Good ones. Closed-back. I don't listen to anything on them half the time. I just want the room to stop." },
-      { s: 'haechan', f: 'neutral', t: "In this one I've got a Discman with no disc in it. Both of them do the same thing. That's the joke. I'm the same idiot in two outfits." },
+      { s: 'haechan', f: 'neutral', t: "In this one I've got a Discman with dead batteries. Both of them do the same thing. That's the joke. I'm the same idiot in two outfits." },
       { choose: [
         { t: "Which one do you like better?", notes: 2, then: [
           { s: 'haechan', f: 'neutral', t: "The one you're holding." },
@@ -451,7 +455,7 @@
       ] },
       { n: "She folded her own uniforms that night, badly, while he watched and said nothing, and when she was done he refolded exactly one, the top one, so it would sit flat in her drawer, and handed the pile back to her with the Discman on top of it." },
       { s: 'haechan', f: 'neutral', t: "Hold onto it tonight. I can't sleep with it in the room." },
-      { n: "She didn't ask what that meant. It sat on her desk all night next to a can she still hadn't finished, and she lay in bed looking at it, and at some point she heard herself humming two minutes of a song and stopping, exactly where it broke." }
+      { n: "She didn't ask what that meant. It sat on her desk all night next to a can she still hadn't finished, and she lay in bed looking at it, and at some point she heard herself humming something she had never once heard come out of it." }
     ] },
 
     { after: '11/25', title: '4: duo queue', place: 'Paulownia Mall · Game Panic', time: 'Evening', music: 'city', scene: [
@@ -549,7 +553,7 @@
           { n: "It wasn't a decision to say it. It came up the way the four notes of a song come up when someone hums the first three. A closet. A dark jacket shoved at the very back of it behind things she wore every day, hidden from somebody, kept from somebody, and the smell of it every time she opened the door." },
           { s: 'haechan', f: 'surprised', t: "..." },
           { s: 'haechan', f: 'serious', t: "Yeah." },
-          { s: 'haechan', f: 'serious', t: "It's still there. Nobody's touched it. I'd know." }
+          { s: 'haechan', f: 'serious', t: "...The back of a closet. I never asked where it went. Of course that's where." }
         ] },
         { t: "Why do you keep giving me things?", notes: 3, tally: { 'haechan.S': 1 }, then: [
           { s: 'haechan', f: 'neutral', t: "Because you won't ask for them." },
@@ -637,18 +641,18 @@
           ] },
           { t: "Keep it on the rooftop.", notes: 3, then: [
             { n: "It came out in her own voice and in his cadence, a line with the shape of an old agreement, and he went so still that the wind moved his hair and nothing else on him moved at all." },
-            { s: 'haechan', f: 'serious', t: "...What happens on the rooftop." },
-            { s: 'solar', f: 'neutral', t: "Stays on the rooftop." },
+            { s: 'haechan', f: 'serious', t: "...It's not worth mentioning." },
+            { s: 'solar', f: 'neutral', t: "That's what you said." },
             { s: 'haechan', f: 'neutral', t: "God. You're such a nerd." }
           ] }
         ] }
       ], else: [
         { n: "He'd propped it open behind her with a brick. That was new. She looked at the brick and at him and at the gap the brick held, a hand's width of warm stairwell air leaking out into the cold, and something went through her that had nothing to do with the cold at all." },
-        { n: "A different door. Heavier. A different roof, the ledge under her legs, wind in her face that smelled of leaves instead of salt, and a boy's voice somewhere to her left, saying a thing about rooms, about hearing them, about how the bass eats the kick, the vocal's too dry, all the things that make people feel without knowing why. And under it, the clink of a can against concrete." },
+        { n: "A different way up. A ladder bolted to brick, cold metal biting her palms rung after rung. A different roof, the ledge under her legs, wind in her face that smelled of leaves instead of salt, and a boy's voice somewhere to her left, saying a thing about rooms, about hearing them, about how the bass eats the kick, the vocal's too dry, all the things that make people feel without knowing why. And under it, the clink of a can against concrete." },
         { fragment: 'runners-rooftop' },
         { n: "The bell on Haenim's sash rang once, so clear she turned her head to look for it." },
-        { s: 'haechan', f: 'neutral', t: "...That's the door." },
-        { s: 'haechan', f: 'serious', t: "You remembered the door. Of all the things." },
+        { s: 'haechan', f: 'neutral', t: "...That's the ladder." },
+        { s: 'haechan', f: 'serious', t: "You remembered the ladder. Of all the things." },
         { choose: [
           { t: "You talked about rooms. The bass and the kick.", notes: 3, tally: { 'haechan.R': 1 }, then: [
             { s: 'haechan', f: 'surprised', t: "..." },
@@ -658,8 +662,8 @@
           ] },
           { t: "Keep it on the rooftop.", notes: 3, then: [
             { n: "She didn't know where it came from. It came out in her own voice and in his cadence, a line with the shape of an old agreement, and he went so still that the wind moved his hair and nothing else on him moved at all." },
-            { s: 'haechan', f: 'serious', t: "...What happens on the rooftop." },
-            { s: 'solar', f: 'neutral', t: "Stays on the rooftop." },
+            { s: 'haechan', f: 'serious', t: "...It's not worth mentioning." },
+            { s: 'solar', f: 'neutral', t: "That's what you said." },
             { s: 'haechan', f: 'neutral', t: "God. You're such a nerd." }
           ] }
         ] }
@@ -805,9 +809,9 @@
         { ifFlag: 'route-S', then: [
           { flag: { 'haechan-sure-S': true } },
           { s: 'haechan', f: 'happy', t: "The harbor. Low tide, the mud all the way out to China. The house on the hill with too many stairs. Mrs. Bang beating a rug off the balcony at six in the morning like it owed her money." },
-          { s: 'haechan', f: 'happy', t: "And Hoejangnim in the car singing the wrong words to a song older than both of us, and me singing the right ones louder to make him mad. And you on the pier in November in a blouse, to make a point." },
+          { s: 'haechan', f: 'happy', t: "And Hoejangnim in the car singing the wrong words to a song older than both of us, and me singing the right ones louder to make him mad. He calls me son now. Out loud, in front of people, like it's nothing. I still don't know what to do with my hands when he does it. And you on the pier in November in a blouse, to make a point." },
           { n: "He said it loud. He said it like it was the funniest thing in the world, and then, for once, he didn't stop all at once the way he always had, radio switched off mid-song. He just kept going, warm and easy and much too loud for a rooftop at midnight, until somewhere below them a window went up and Junpei yelled something about people trying to sleep, and Haechan yelled back an apology so cheerful it was clearly an insult." },
-          { s: 'haechan', f: 'neutral', t: "That's the one. That's where we live. I knew it when I woke up. Ten meters outside your door. It's a rule. Somebody's mother made it." },
+          { s: 'haechan', f: 'neutral', t: "That's the one. That's where we live. I knew it when I woke up. Ten meters from your door, on paper. It's a rule. Somebody's mother made it. Nobody's measured in a while." },
           { s: 'haechan', f: 'serious', t: "I've still got the other one. Every brick of it. The ladder. The lab window. Don't look at me like I lost something. I didn't lose anything. I just know which door's mine now." },
           { n: "He reached into the blanket and came out with a can of coffee, the cheap sweet kind from the machine downstairs, still hot, and put it in her hands and closed her fingers round it with his own." },
           { s: 'haechan', f: 'happy', t: "Your kind. The bad kind. I bought the row." },
@@ -910,8 +914,8 @@
       { s: 'haechan', f: 'neutral', t: "Sit. Don't say anything for four minutes. I'll know." },
       { n: "He handed her one side of the headphones. The heavy black ones. They were warm from his neck." },
       { n: "It was a song. She'd known it would be. She hadn't known it would be this song." },
-      { n: "The gate chime at Iwatodai Station. The hiss of the monorail doors. The laundry room's light, flat, an E, humming under everything like a floor. Rain on the platform roof. Her own laugh, once, on the street outside Game Panic, the real one, the one that had come out of her like something knocked off a shelf. A dryer turning. And over all of it, laid in so carefully she almost didn't hear the seam, the four minutes of the song she'd been humming since April without knowing where she'd first heard it, the one that had always felt like it belonged to some other version of her life." },
-      { n: "It was his. It had always been his. In one place it was a track on a laptop in a room with a ladder outside. In the other it was a skip on a disc in a cracked silver case, two minutes in, the same place every time. Here, it was finished." },
+      { n: "The gate chime at Iwatodai Station. The hiss of the monorail doors. The laundry room's light, flat, an E, humming under everything like a floor. Rain on the platform roof. The rooftop door's long iron sigh, and the scrape of the brick that held it open. A dryer turning. And over all of it, laid in so carefully she almost didn't hear the seam, the four minutes of the song she'd been humming since April without knowing where she'd first heard it, the one that had always felt like it belonged to some other version of her life." },
+      { n: "It was his. It had always been his. In one place it was a track on a laptop, unfinished, in a room at the top of a very loud house. In the other it was an old disc in a cracked silver case that hadn't turned in years. Here, it was finished." },
       { s: 'haechan', f: 'flustered', t: "I've been making it a long time. In both of them. It always ends up being about the same person." },
       { s: 'haechan', f: 'neutral', t: "I guess it found you before I did. That tracks." },
       { choose: [

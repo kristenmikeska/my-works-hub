@@ -539,8 +539,8 @@ window.FEMC_GAME_JOB_SCENES = {
             { n: "His fingers didn't touch hers. They very carefully didn't, the way you don't touch a stove." }
           ] },
           { t: "I already have coffee.", then: [
-            { s: 'haechan', f: 'neutral', t: "You hate that coffee." },
-            { n: "She did. She'd only been holding it for the warmth. He waited, can out, until she swapped, and then drank the coffee himself and made a face at it, small and flat and devastatingly unimpressed, at a can that cost a hundred and twenty yen." }
+            { s: 'haechan', f: 'neutral', t: "You hate the black one." },
+            { n: "She did. It was the bitter black kind, not the sweet milky one in the brown can, and she'd only been holding it for the warmth. He waited, can out, until she swapped, and then drank the coffee himself and made a face at it, small and flat and devastatingly unimpressed, at a can that cost a hundred and twenty yen." }
           ] }
         ] },
         { n: "They watched the water. The gulls wheeled. Behind them the market was hosing down, the sound of it carrying out over the boards, and he didn't ask her anything, not one question, not her name, not whether she knew him, nothing, and it was the strangest thing anyone had done to her in weeks." },

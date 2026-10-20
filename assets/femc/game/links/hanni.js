@@ -256,7 +256,7 @@
       { ifFlag: 'hyein-menace', then: [
         { s: 'hyein', f: 'happy', t: "You called me annoying at the mall. I don't think I've ever been so pleased to be insulted." }
       ], else: [
-        { s: 'hyein', f: 'neutral', t: "And that *omg what a joke* was about a party I dragged you to. I'm still not over it. I'll never be over it." }
+        { s: 'hyein', f: 'neutral', t: "And that *omg what a joke* was about the gossip account. The first time it ever posted you, after a party. You were so mad you used three question marks. I'll never be over it." }
       ] },
       { choose: [
         { t: "Teach me. How do I text?", notes: 3, then: [
@@ -477,7 +477,7 @@
 
     { after: '10/28', title: '6: faces', place: 'Iwatodai Dorm · 2F Hallway', time: 'Evening', scene: [
       { n: "Halloween was in three days, and the dorm, Hyein had announced, with the horror of someone announcing a death in the family, did not do Halloween. Not properly. Junpei did Halloween, in the sense that he owned a Superman costume from a discount shop that was a size too small, but that, Hyein had told the lounge, did not count, and was in fact a cry for help." },
-      { n: "So Hyein had the clothes, and had disappeared into them, and the lounge had become a workshop, and nobody was allowed in without knocking. And Hanni had the faces. That was the system, Hanni said. It had always been the system. Hyein did the clothes and Hanni did faces and Minji did the camera and Solar sat still and complained, and between the four of them they had won something once, at a party Solar couldn't remember, in a house she couldn't picture." },
+      { n: "So Hyein had the clothes, and had disappeared into them, and the lounge had become a workshop, and nobody was allowed in without knocking. And Hanni had the faces. That was the system, Hanni said. It had always been the system. Hyein did the clothes and Hanni did faces and Minji did the camera and Solar sat still and complained, and the costumes had won something once, at a party Solar couldn't remember, in a house she couldn't picture." },
       { s: 'hanni', f: 'happy', t: "Okay. Sit. Lid down. Face to the light. This is just a test. I need to see what the lighting here does to your skin, it's all fluorescent, it's like a hospital." },
       { n: "The second-floor bathroom. Solar on the closed toilet lid with a towel round her shoulders like a barber's cape, Hanni standing over her with a little zip bag of makeup she'd bought on the strip, item by item, over three weeks, comparing every shade against the inside of her own wrist with the seriousness of a chemist. Steam from somebody's shower still clinging to the corners of the mirror. The extractor fan making its long tired noise." },
       { s: 'hanni', f: 'neutral', t: "Close your eyes. No. Not yet. Look up. Up. At the ceiling. Good." },
@@ -655,7 +655,7 @@
       { s: 'hanni', f: 'neutral', t: "You have a knot. Same place. Right at the back. You always have this knot. You sleep on it funny." },
       { choose: [
         { t: "Did you do this at home?", notes: 3, then: [
-          { s: 'hanni', f: 'happy', t: "Every Sunday! Before practice, or after, or when you had something you had to dress up for and you were being grumpy about it." },
+          { s: 'hanni', f: 'happy', t: "Every Sunday! And Saturdays before practice, or whenever you had something you had to dress up for and you were being grumpy about it." },
           { s: 'hanni', f: 'neutral', t: "You'd sit on the floor and I'd sit on the bed and we'd talk about nothing. You said it was the only time all week anyone touched your hair without wanting a picture of it." }
         ] },
         { t: "(Close your eyes.)", notes: 3, then: [
@@ -883,14 +883,14 @@
       ], else: [
         { n: "Hanni had a list. A short one, on a napkin, in her round hand, and she pushed it across the table with the expression of somebody turning themselves in." },
         { s: 'hanni', f: 'flustered', t: "These are all the things I've told people about you since we got here. All of them. Little things. I wrote them down so you'd know. So it's yours again." },
-        { n: "It was small things. That she liked her straw in the paper. That she ran in the mornings. That she didn't drink coffee after dark. That she used to sing in the shower and stopped if she thought anyone could hear. Solar read it twice and handed it back." },
+        { n: "It was small things. That she liked her straw in the paper. That she ran in the mornings. That she didn't drink coffee after dark. That she went down stairs on the outside edges so they wouldn't creak, and did it even when nobody was asleep. Solar read it twice and handed it back." },
         { choose: [
           { t: "(Tear up the napkin.)", notes: 3, then: [
             { s: 'hanni', f: 'surprised', t: "Sol!" },
             { s: 'solar', f: 'neutral', t: "It's mine. I can do what I want with it. You said." },
             { s: 'hanni', f: 'happy', t: "...I did say. Okay. Okay! Confetti. It's confetti now. I'm free." }
           ] },
-          { t: "I sing in the shower?", notes: 3, then: [
+          { t: "I do that with stairs?", notes: 3, then: [
             { s: 'hanni', f: 'flustered', t: "Oh no. Oh no, I did it again. I just handed you one. That's on the list now too. Give me the napkin." }
           ] }
         ] }

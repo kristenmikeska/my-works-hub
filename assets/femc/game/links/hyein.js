@@ -250,16 +250,16 @@
       { n: "Mitsuru sat down again, and picked up her tea, and didn't drink it for a while." },
       { n: "When she got to Solar, she didn't take the tape off her neck. She looked at Solar for a second, up and down, the way a tailor looks at someone across a room, and then wrote four numbers in her sketchbook without measuring anything at all." },
       { s: 'solar', f: 'surprised', t: "You didn't measure me." },
-      { s: 'hyein', f: 'neutral', t: "Don't need to. I know yours. I did your makeup the first week of school, and your tailgate fit, and I've hemmed two of your skirts in the middle of the night because you only tell me things need hemming at one in the morning. I know your measurements better than whoever your dad pays to know them." },
+      { s: 'hyein', f: 'neutral', t: "Don't need to. I know yours. I did your makeup the morning your dad's car came for you, and I built you a tailgate fit you never got to wear, and I've hemmed two of your skirts in the middle of the night because you only tell me things need hemming at one in the morning. I know your measurements better than whoever your dad pays to know them." },
       { choose: [
         { t: "Check. Measure me anyway.", notes: 3, then: [
           { n: "Hyein measured her. Shoulders. Waist. Arm, shoulder to wrist. Every number was the same as the one in the sketchbook, to the half centimeter, and Hyein didn't look triumphant about it. She looked at the tape around Solar's wrist and went quiet." },
           { s: 'hyein', f: 'sad', t: "...Same. You're exactly the same. You haven't eaten enough. But you're the same." }
         ] },
         { t: "My tailgate fit?", notes: 3, then: [
-          { s: 'hyein', f: 'happy', t: "Matching sets. All three of us. School colors. They photographed SO well in the sunlight. You said it was a lot. It was the correct amount." },
-          { s: 'hyein', f: 'serious', t: "You never asked me to do any of it. You just wore it. That's how you say thank you. You wear things." },
-          { n: "Solar didn't say anything. Something had moved, low down, a long way back, like the bottom step of a staircase in a house she'd been carried out of in her sleep. Bright orange in a hard white sun. Somebody's hands, quick and sure, fixing a hem on her while she stood very still and pretended to be annoyed about it." }
+          { s: 'hyein', f: 'happy', t: "Matching sets. All three of us. School colors. They would have photographed SO well in the sunlight. I had them laid out on my bed and everything." },
+          { s: 'hyein', f: 'sad', t: "And then your dad called, and you had to go get styled and walk around on his arm all day, and that was that. So we did your face instead. Forty-five minutes before the car. You never asked me to. You just sat still. That's how you say thank you. You sit still." },
+          { n: "Solar didn't say anything. Something had moved, low down, a long way back, like the bottom step of a staircase in a house she'd been carried out of in her sleep. Orange and navy laid out across somebody's bed, three of everything. Somebody's hands, quick and sure, at the corner of her eye while she sat very still and pretended to be annoyed about it." }
         ] },
         { t: "That's a little scary.", notes: 2, then: [
           { s: 'hyein', f: 'happy', t: "It's a LOT scary. It's my gift. I'll know your measurements when I'm ninety." }
@@ -516,19 +516,21 @@
           { n: "Solar lay down on the sofa with her legs over the back and her head hanging off the cushion, and the lounge turned over, the paper bat standing on its wing, the ceiling a white floor nobody had ever walked on, and Hyein looked at her sideways, upside down, from the next chair, and laughed so hard she slid off it." }
         ] }
       ] },
-      { s: 'hyein', f: 'neutral', t: "I won, you know. At home. Best costume. At Sigma. Jaemin was standing on a chair doing the worst accent I've ever heard in my life, and the award was so ugly, Sol, it was so poorly made, I held it up like it was a trophy at the Olympics." },
-      { s: 'hyein', f: 'happy', t: "I got on the mic. I told the whole room I'd be taking commissions. So long as they paid the appropriate price." },
-      { n: "And Solar could see it. Not imagine it. See it. A living room full of people in costumes, a hundred of them, the floor sticky, the lights strung across a ceiling, a tall girl with red extensions clipped into her brown hair at a microphone with something ugly and gold held over her head, and a smaller girl in black beside her leaning in to the mic in a hurry, and Solar herself somewhere off to the side in orange satin and small gold wings, laughing so hard she had to hold onto someone's arm." },
-      { s: 'solar', f: 'neutral', t: "...*My rates have gone up, but this is proof of my legacy.*" },
+      { s: 'hyein', f: 'neutral', t: "We won, you know. At home. Best costume. At Sigma. Me and Hanni, anyway, you'd already gone home by then. Jaemin was standing on a chair doing the worst accent I've ever heard in my life, and the award was so ugly, Sol, it was so poorly made, I held it up like it was a trophy at the Olympics." },
+      { s: 'hyein', f: 'happy', t: "I told the mic my rates had gone up, but this was proof of my legacy. And Hanni leaned in and went *um, she means thank you!* You missed my best line. You missed it by two minutes." },
+      { n: "And Solar could see something. Not that. Earlier. A living room full of people in costumes, a hundred of them, the floor sticky, purple bulbs screwed into every light, and a tall girl with red extensions clipped into her brown hair talking into a microphone for much, much too long about how hard she'd worked and how you couldn't find these anywhere else, and Solar herself coming down off a makeshift stage in orange satin and small gold wings, trying to push the tall girl off her, and failing, and laughing." },
+      { s: 'solar', f: 'neutral', t: "...*So long as you paid the appropriate price.*" },
       { s: 'hyein', f: 'surprised', t: "..." },
       { n: "She swung her legs down off the back of the chair and sat up so fast her hair whipped over her face, and pushed it back with both hands, and stared." },
-      { s: 'hyein', f: 'surprised', t: "I DID say that. I did. And Hanni leaned in and went *um, she means thank you!*" },
-      { s: 'solar', f: 'neutral', t: "And everyone cheered anyway." },
-      { s: 'hyein', f: 'happy', t: "And everyone cheered ANYWAY. Oh my God. You remember me being amazing. Of all the things. You remember me being amazing." },
+      { s: 'hyein', f: 'surprised', t: "I DID say that. Before the judging. On the stage. You were RIGHT there, you were trying to get away from me." },
+      { s: 'solar', f: 'neutral', t: "You wouldn't get off me." },
+      { s: 'hyein', f: 'happy', t: "I would NOT get off you. Oh my God. You remember me being amazing. Of all the things. You remember me being amazing." },
       { n: "She got her phone out of her back pocket. It still said twelve oh one. She went into her messages, past the girls' chat, into a little folder of requests from people she didn't follow, and held it out, and it was a single message from a girl with a profile picture too small to see." },
       { n: "*hiii are u taking commissions?? how much for a set like ur winx ones.* And under it, Hyein's answer, typed out and never sent, with a tiny clock beside it where the delivered mark should be. *yes!!! omg. dm me ur measurements and*" },
-      { s: 'hyein', f: 'sad', t: "She sent that the morning after. I was typing back in the dining hall. Then we went to the party, and then you were gone, and then we were here. I didn't finish the sentence. *And.* And what. I don't even know what I was going to say." },
+      { s: 'hyein', f: 'sad', t: "She sent that the morning after. I was typing back in the dining hall, and somebody said something, and I put my phone down, and I never picked the sentence back up. And then you were gone, and then we were here. *And.* And what. I don't even know what I was going to say." },
       { s: 'hyein', f: 'sad', t: "My first real client and I left her on *and.* She's been waiting on *and* for however long this is. Forty breakfasts." },
+      { s: 'hyein', f: 'neutral', t: "And Jaemin. Jaemin Na asked me for a December piece. Festive, but not ugly festive, he refuses to look like a department store. I said deposit up front and no friend discount, because he called my wings a hazard." },
+      { s: 'hyein', f: 'sad', t: "I never got the deposit. That's my career right now. One girl on *and* and one boy who owes me money in another universe." },
       { choose: [
         { t: "Answer her. Finish it.", notes: 3, then: [
           { n: "Hyein looked at her, and then at the phone, and then, slowly, she typed. *and we'll talk prices. sorry for the wait. it's been a weird week.* She pressed send. The little clock came up beside it, next to the other little clock, and stayed there, patient, turning, the way it would turn forever in a city where her phone couldn't reach anyone." },

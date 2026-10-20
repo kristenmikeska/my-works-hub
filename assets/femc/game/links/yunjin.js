@@ -21,6 +21,14 @@
    Home love lives (Kat's ruling): Yunjin knows Haechan ("delivery boy", the fish) and Jungwon (the cup of tea) from strangers.
    Rank 8 gives both boys dialogue: Haechan lives at the dorm, Jungwon visits from the guesthouse; an Akihiko beat is gated on
    his rank. Her father is spoken of in the past tense (strangers canon).
+   Current strangers canon (Kat's ruling 2026-10-20; strangers leaves off at Ch 65, early February, 66 days before the
+   wedding): her father died in December and her cousin is gone too; she and her mom live at the Lee house now, in the room
+   next to Solar's, and her mom plays the nocturne on the hall piano at three in the morning; the koi live in a bucket on the
+   Lee back step ("the Huhs' children", Mrs. Bang); her voice has been wrecked to gravel since December (she still talks,
+   loudly, and murmurs more); she sleeps with the light on; "sure" means no; the Veloster is purple with a La Cucaracha
+   horn; she wears a traffic-cone-orange puffer at home now (the yellow one in the arrival CG is her old one, kept for Kat's
+   art); Jungwon caught and carried her once, so she's taken back most of what she said about him. The game never says why,
+   who, or anything about the war: grief and the voice are felt, never explained.
    Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'yunjin', name: 'Huh Yunjin', short: 'Yunjin', arcana: '?', numeral: '', from: 'strangers',
@@ -28,7 +36,7 @@
   starts: '10/10', gate: { S: 3 },
   home: { area: 'port', spot: 'Harbor', slot: 'after', days: [0, 1, 3, 5],
           hint: 'Afternoons down at the Port Island harbor, on the seawall, with two cans of vending-machine coffee.' },
-  approach: "Down at the harbor there's a girl sitting on the seawall with her legs swinging over the water and two cans of coffee beside her, singing something loudly and badly to the gulls, and she stops mid-word when she sees you and grins like you're late for something.",
+  approach: "Down at the harbor there's a girl sitting on the seawall with her legs swinging over the water and two cans of coffee beside her, singing something loudly and badly to the gulls in a voice like gravel shaken in a can, and she stops mid-word when she sees you and grins like you're late for something.",
   cast: {},
   invite: {
     ask: [
@@ -131,6 +139,7 @@
     [
       { n: "There was a stone basin at the edge of the seaside park, under a pine somebody had trained sideways with wires, and in it two fat orange carp turned slow circles round each other in water the color of tea, and Yunjin was lying on her stomach on the stone rim with her chin on her hands, talking to them." },
       { s: 'yunjin', f: 'neutral', t: "That one's Mr. Kim. That one's Mrs. Kim. Don't look at me like that. My dad always said every pond has to have a Mr. and Mrs. Kim. He said it was the law." },
+      { s: 'yunjin', f: 'neutral', t: "Ours live in a bucket on your back step now. Your housekeeper feeds them. She calls them the Huhs' children. Don't tell her I told you, she'll go and beat a rug about it." },
       { n: "Something warm went through Solar's chest, quick and sideways. A narrow apartment and a crocheted blanket. Somebody round and rumpled losing his reading glasses on top of his own head three times in one dinner. A man's voice through a wall, singing in the shower, badly, with enormous feeling." },
       { choose: [
         { t: "He calls you his little general.", notes: 3, tally: { 'lean.S': 1 }, then: [
@@ -159,6 +168,7 @@
       { n: "In the dorm at two in the morning she'd sat on the lounge sofa in Mitsuru's spare blanket with salt drying white on her jeans and talked so fast Fuuka had to ask her to slow down twice, and every few minutes she'd pressed the button on the side of her phone to wake the screen, and every time it said 12:07, and every time she looked at it like it was lying to her personally. Solar had been polite to her. Kind, and careful, and polite. And Yunjin had gone very quiet, for about five seconds, which was, everyone in the dorm had since been told by Yunjin herself, a personal record." },
       { n: "She was on the seawall now, in one of Mitsuru's coats with the sleeves rolled up four times and her round gold sunglasses pushed up into her hair under a sky that didn't need them, swinging her legs over the water and singing at the gulls. Beside her on the concrete, a pair of very expensive shoes that had been in the sea were drying on their sides like two small dead animals. When Solar came down the steps she stopped mid-word and grinned like Solar was late." },
       { s: 'yunjin', f: 'happy', t: "SOL. Babe. Hi. Sit. I got you a coffee. It's from the machine. It's the sweet one. It's disgusting. You love it." },
+      { n: "Her voice was wrong. Solar couldn't have said how she knew that about a voice she'd never heard. It was loud, every word of it, and under the loud it was scraped raw, gravel shaken in a can, the voice of someone who'd breathed something she shouldn't have and had decided to be loud with what was left." },
       { n: "A can. The cheap sugary kind from the vending machine by the ferry office, the sweet milky one in the brown can, the cheapest thing in the machine, hot enough to sting. Solar's hand closed around it and her thumb went to the tab and her whole body let go by a degree, the way you let go when you sit down in your own chair at the end of a long day out." },
       { choose: [
         { t: "(Open it and drink.)", notes: 3, tally: { 'lean.S': 1 }, then: [
@@ -176,6 +186,7 @@
         ] }
       ] },
       { s: 'yunjin', f: 'neutral', t: "So. You don't remember me." },
+      { s: 'yunjin', f: 'serious', t: "And yes, my voice is like this now. Don't make the face. It's a long story and it's not a fun one, so it's not today's story. Today's story is you." },
       { s: 'yunjin', f: 'serious', t: "That's fine. That's totally fine. I remember you enough for both of us, and enough left over to make it really weird." },
       { s: 'yunjin', f: 'happy', t: "Here's what you need to know. I'm Jin. I'm your best friend. I'm your wife, as a bit, don't ask who started it, we both say it was the other one. I'm loud. You're quiet. I say the thing. You count the things. We've been doing this since tenth grade and it works." },
       { choose: [
@@ -194,7 +205,7 @@
       ] },
       { n: "Yunjin took her phone out of the borrowed coat and woke the screen with her thumb, and turned it so Solar could see. A photo behind the clock, the two of them in a car at night, Solar asleep against the passenger window with a can in her hand and her hair down, and over it, in big white numbers, 12:07." },
       { s: 'yunjin', f: 'neutral', t: "It won't change. I charge it every night in the lounge, Fuuka found me a cable, and it charges, and it's still 12:07. Your friend with the red hair says everybody's does that. The two girls from the mall, theirs did it too." },
-      { s: 'yunjin', f: 'serious', t: "I left your house an hour ago, Sol. Maybe two. I don't know. Somebody said you've been here since April and I said that's insane, and then I looked at you." },
+      { s: 'yunjin', f: 'serious', t: "I left your house an hour ago, Sol. Maybe two. I don't know. I live there now, kind of. Me and my mom. I'm in the room next to yours. That's the other long story. Somebody said you've been here since April and I said that's insane, and then I looked at you." },
       { choose: [
         { t: "(Say it the way she said it on the mud.) Jin.", say: "Jin.", notes: 3, flag: { 'yunjin-jin': true }, then: [
           { n: "It came out quiet, and it came out right. She could hear that it was right. Yunjin heard it too, and her face went still and very bright, like a window with the sun on it." },
@@ -243,7 +254,7 @@
       { s: 'yunjin', f: 'sad', t: "..." },
       { n: "Yunjin's face did something. It didn't crumple. It went very still and very bright, like a window when the sun hits it at the wrong angle, and she put her feet down off the fountain's edge, rabbits and all, and looked at the floor." },
       { s: 'yunjin', f: 'neutral', t: "...Yeah. You do. You wear them at home when nobody's looking. You never told me that. I worked it out. You wear the rabbits when it's bad." },
-      { s: 'yunjin', f: 'neutral', t: "So I bought some. Because everything's bad. You're right here, and you don't know me, and everything is bad, babe. I needed an emergency pair." },
+      { s: 'yunjin', f: 'neutral', t: "So I bought some. Because everything's bad. It's been bad at home since December, and now you're right here, and you don't know me, and everything is bad, Sol. I needed an emergency pair." },
       { choose: [
         { t: "Did you buy me a pair?", notes: 3, flag: { 'yunjin-socks': true }, then: [
           { s: 'yunjin', f: 'surprised', t: "..." },
@@ -409,6 +420,7 @@
         ] },
         { t: "Who else knows I can't sleep?", notes: 2, then: [
           { s: 'yunjin', f: 'neutral', t: "Your appa, I think. He'd never say. And whoever's on the gate at night, probably, because your light's on." },
+          { s: 'yunjin', f: 'neutral', t: "And my mom, now. She's up too. She plays your piano at three in the morning, the sad one she used to play at the end of my recitals. Nobody tells her to stop." },
           { s: 'yunjin', f: 'serious', t: "And me. Me most. I'm the only one who's up with you, though. That's the difference." }
         ] }
       ] },
@@ -418,7 +430,7 @@
       { n: "Solar looked down at her right hand on the blanket. Her thumb was at the base of her ring finger, turning nothing, slow, a quarter turn and back. She hadn't known. She didn't stop." },
       { choose: [
         { t: "Where's the ring?", notes: 3, then: [
-          { s: 'yunjin', f: 'sad', t: "At home, I guess. On your hand. On your other hand. I don't know how this works, babe. I'm just a girl from Yeonsu-dong with a stopped phone." },
+          { s: 'yunjin', f: 'sad', t: "At home, I guess. On your hand. On your other hand. I don't know how this works, Sol. I'm just a girl from Yeonsu-dong with a stopped phone." },
           { s: 'yunjin', f: 'neutral', t: "It's your grandmother's. Jade. Green. You never take it off. You'd never take it off." },
           { n: "On Haenim's sash, somewhere under the dorm, under the city, under the hour that hadn't come yet, a small green stone hung on a red cord. Solar thought of it, and her thumb went on turning." }
         ] },
@@ -440,7 +452,7 @@
     ] },
 
     { after: '11/17', title: '6: a terrible person', place: 'Iwatodai Dorm · Lounge', time: 'Night', music: 'tender', scene: [
-      { n: "In the days after the ferry, Yunjin still hadn't been warm. That was what she said, every time anyone asked. *I'm just not warm yet.* She'd been sitting in the lounge in two of Akihiko's sweatshirts and a pair of Mitsuru's wool socks over the rabbit socks, with a mug of something hot in both hands, for most of those days, and she hadn't talked as much as usual, which in anyone else would have been normal, and in Yunjin was a medical emergency." },
+      { n: "In the days after the ferry, Yunjin still hadn't been warm. That was what she said, every time anyone asked. *I'm just not warm yet.* She'd been sitting in the lounge in two of Akihiko's sweatshirts and a pair of Mitsuru's wool socks over the rabbit socks, with a mug of something hot in both hands, for most of those days, and she hadn't talked as much as usual, which in anyone else would have been normal, and in Yunjin was a medical emergency. At night she slept with her light on. She'd told Fuuka she always had. Solar knew, without knowing how, that that wasn't true, and that it hadn't been true for very long." },
       { n: "The dorm had noticed. The dorm had been very quiet about noticing, in its own way. Koromaru had been lying across her feet since Saturday and only got up to eat. Fuuka had made her soup three times and put it down on the table beside her and gone away without saying anything. Akihiko had come down the stairs that afternoon with a third sweatshirt, stopped in the doorway, looked at the two she already had on, and put it over the arm of the sofa anyway, and left." },
       { n: "Solar hadn't talked about it either. The ferry deck in the tower, rocking, the wet white paint and the orange life rings and the diesel. The tide standing up over the rail in the shape of something that wanted her. The deck going out from under her, and the black, and the cold that wasn't cold, that was a blow. And then something hitting the water beside her, hard, and hands on her collar, and a voice swearing in two languages into the sea." },
       { n: "She sat down on the sofa beside Yunjin. Yunjin lifted the edge of her blanket without looking, and Solar got under it." },
@@ -463,7 +475,7 @@
       { s: 'yunjin', f: 'sad', t: "You didn't fight. In there. You didn't kick. You just went still. You went so still, Sol." },
       { s: 'yunjin', f: 'serious', t: "Like you'd decided. Like the water had asked you something and you'd said *okay*. I saw your face. I saw you decide it." },
       { ifFlag: 'yunjin-step', then: [
-        { s: 'yunjin', f: 'neutral', t: "And on the pier you stepped toward it. One step. I thought that was brave. I thought about it the whole way down into that water, babe. Whether it was brave or whether it was the other thing." }
+        { s: 'yunjin', f: 'neutral', t: "And on the pier you stepped toward it. One step. I thought that was brave. I thought about it the whole way down into that water, Sol. Whether it was brave or whether it was the other thing." }
       ] },
       { n: "Solar didn't say anything. There was nothing to say. She remembered the cold, and the quiet under it, and how easy it had been, how restful, a whole black hush where nobody needed anything, and how for one second it had felt like the kindest thing that had happened to her all year." },
       { s: 'yunjin', f: 'sad', t: "You're my favorite person in the whole world." },
@@ -534,12 +546,13 @@
           { s: 'yunjin', f: 'happy', t: "So I sit on the bed, because somebody has to, and you sit on the floor, and I do your hair from up there. It's a whole system. It's very feudal." }
         ] },
         { t: "Something about you.", notes: 3, then: [
-          { s: 'yunjin', f: 'surprised', t: "Me? Okay. Um. I drive too fast. I have a car with three doors and everyone thinks it's broken and it's not, it's a design choice, it's very European." },
+          { s: 'yunjin', f: 'surprised', t: "Me? Okay. Um. I drive too fast. I have a car with three doors and everyone thinks it's broken and it's not, it's a design choice, it's very European. It's purple. The horn plays La Cucaracha. That part was my choice." },
           { s: 'yunjin', f: 'neutral', t: "You're the only person who never once asked where the fourth door was." }
         ] },
         { t: "Something nobody else would know.", notes: 2, then: [
           { s: 'yunjin', f: 'neutral', t: "You practice piano when you want to be left alone. Not because you love it. Because nobody ever knocks on a door when they can hear scales coming through it." },
-          { s: 'yunjin', f: 'happy', t: "Two hours of scales, and you're not even in the room half the time, you're on the phone with me. Genius. Criminal. A very polite criminal." }
+          { s: 'yunjin', f: 'happy', t: "Two hours of scales, and you're not even in the room half the time, you're on the phone with me. Genius. Criminal. A very polite criminal." },
+          { s: 'yunjin', f: 'neutral', t: "My mom plays it now. Your piano. At three in the morning, in your mom's slippers, which are too big for her. She plays the sad one and nobody knocks on that door either." }
         ] }
       ] },
       { n: "When the cans went cold they walked back along the seawall, and Yunjin took her hand and swung it, like they were kids, and when Solar asked why, she said because nobody needed her to, and that was the point." }
@@ -603,7 +616,7 @@
       { s: 'yunjin', f: 'neutral', t: "Yang Jungwon." },
       { n: "He stopped. He turned all the way round, the way he did everything, completely, and waited." },
       { s: 'jungwon', f: 'neutral', t: "Huh Yunjin-ssi." },
-      { s: 'yunjin', f: 'serious', t: "I took back what I said about you. At home. Almost all of it." },
+      { s: 'yunjin', f: 'serious', t: "I took back what I said about you. At home. Almost all of it. After you carried me. I remember who carried me." },
       { s: 'jungwon', f: 'neutral', t: "Almost." },
       { s: 'yunjin', f: 'serious', t: "Most of it. Some of it. Don't push it. You still smell like nothing." },
       { n: "He considered this with grave attention, as if she'd handed him a document that needed initialing on every page, and then bowed again, to her, a little lower than before, and to Solar, a little lower than that. His eyes went once to the phone in her hand, the sticker keyboard still lit, and came back to her face, and he said nothing about it at all." },
@@ -667,6 +680,8 @@
           { s: 'yunjin', f: 'sad', t: "...Okay, that one got me. Don't do that one. That's cheating." }
         ] },
         { t: "You'll be cold.", notes: 3, then: [
+          { s: 'yunjin', f: 'neutral', t: "Sure." },
+          { n: "Which, from Yunjin, had meant *no* since she was nine years old. Solar knew it the way she knew the tables." },
           { s: 'yunjin', f: 'neutral', t: "I'm never cold. I'm half New York." },
           { s: 'yunjin', f: 'happy', t: "...I'm freezing. Give me a sweet potato. Elder's orders." }
         ] },
@@ -681,13 +696,13 @@
       { n: "It was low tide at six in the evening, and the harbor had emptied itself out into the dark, the mud coming up gray and shining under the sodium lights along the seawall, the boats settled on their keels, everything smelling of salt and diesel and the iron underneath, and Yunjin was sitting on the seawall exactly where she'd been the first afternoon, in the red puffer, with two cans of coffee beside her, singing to the gulls." },
       { n: "She didn't stop singing when Solar came down the steps. She held up one can, without looking, the way you'd hold out a hand to someone you knew would take it." },
       { n: "And Solar knew her." },
-      { n: "Not in pieces. Not the socks and the codes and the scarf, one at a time. All of it, the way the tide comes back in over a mudflat, not in a line but everywhere at once, from underneath. Tenth-grade English, a classroom that smelled of whiteboard markers, a lazy teacher reading names off a list, and the girl in the next seat, just back from New York with an accent and a purple backpack, leaning over on the first morning to whisper *you look like you hate everyone. me too.* A little white car with three doors on a boardwalk in winter with the heater on and the windows fogged, a song on the radio for the fourth time, a girl doing a horse dance from the waist up with her face completely serious. Two hot cans from the machine by the ferry terminal. *I'll fight them all. I'll beat them with my Prada.* *You don't have a Prada.* *I'll borrow yours.* A phone face-down on a carpet at one in the morning, buzzing, *(u wont)*, *(its low tide)*. A white rabbit, bowing. A girl bent to her ear in a quiet room, saying the worst and kindest thing anybody had ever said to her, and a door Solar had closed all the way. And under all of it, every bad night of her life, a voice she didn't have to look at the phone to know, *I'm up. I'm always up.*" },
+      { n: "Not in pieces. Not the socks and the codes and the scarf, one at a time. All of it, the way the tide comes back in over a mudflat, not in a line but everywhere at once, from underneath. Tenth-grade English, a classroom that smelled of whiteboard markers, a lazy teacher reading names off a list, and the girl in the next seat, just back from New York with an accent and a purple backpack, leaning over on the first morning to whisper *you look like you hate everyone. me too.* A little purple car with three doors and a horn that played La Cucaracha, on a boardwalk in winter with the heater on and the windows fogged, a song on the radio for the fourth time, a girl doing a horse dance from the waist up with her face completely serious. Two hot cans from the machine by the ferry terminal. *I'll fight them all. I'll beat them with my Prada.* *You don't have a Prada.* *I'll borrow yours.* A phone face-down on a carpet at one in the morning, buzzing, *(u wont)*, *(its low tide)*. A white rabbit, bowing. A girl bent to her ear in a quiet room, saying the worst and kindest thing anybody had ever said to her, and a door Solar had closed all the way. And under all of it, every bad night of her life, a voice she didn't have to look at the phone to know, *I'm up. I'm always up.*" },
       { s: 'solar', f: 'neutral', t: "...Jin." },
       { n: "Yunjin stopped singing." },
       { n: "She didn't turn around. She sat on the seawall with the can held out behind her and her shoulders gone very still, the way they'd gone still in the green light the first night, for five seconds, a personal record." },
       { ifFlag: 'yunjin-jin', then: [
         { s: 'yunjin', f: 'neutral', t: "...You said it like that the first day. On this wall. I told you not to do it yet. I said I'd be ready by Thursday." },
-        { s: 'yunjin', f: 'sad', t: "It's been like fourteen Thursdays, babe. I'm still not ready. Don't you dare stop." }
+        { s: 'yunjin', f: 'sad', t: "It's been like fourteen Thursdays, Sol. I'm still not ready. Don't you dare stop." }
       ], else: [
         { s: 'yunjin', f: 'neutral', t: "...Babe. Do that one more time. Slower. I wasn't ready." }
       ] },
@@ -817,7 +832,7 @@
       { ifFlag: 'route-S', then: [
         { s: 'yunjin', f: 'happy', t: "Doesn't matter anyway. We're going home. The real machine's by the ferry terminal, and it's been waiting for us, and it's going to give us the good one first try." }
       ], else: [
-        { s: 'yunjin', f: 'neutral', t: "Okay. Number four. Write it down. Wherever you end up, babe, there's going to be a machine, and somewhere in it there's going to be a number four." },
+        { s: 'yunjin', f: 'neutral', t: "Okay. Number four. Write it down. Wherever you end up, Sol, there's going to be a machine, and somewhere in it there's going to be a number four." },
         { s: 'yunjin', f: 'serious', t: "Promise me you'll find it. Promise me you'll drink the cheap one and make the face, and not the polite one. That's all. That's my whole list." }
       ] }
     ] },
