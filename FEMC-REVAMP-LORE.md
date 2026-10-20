@@ -144,8 +144,8 @@ The dorm and Kirijo guesthouse are separate homes. Visiting the dorm, eating the
 
 | Home | Novel characters |
 |---|---|
-| Iwatodai dorm | Hanni, Hyein, Jihoon, Yunjin |
-| Kirijo guesthouse by the station | Minji, Jungwon, Haechan, Jaehyun, Mark, Cherry |
+| Iwatodai dorm | Hanni, Hyein, Yunjin, Haechan (moves in after arriving and keeps his distance at first) |
+| Kirijo guesthouse by the station | Minji, Jungwon, Jihoon, Jaehyun, Mark, Cherry |
 | Kirijo guesthouse by the station | Junkyu, Asahi, Hyunsuk, Jaehyuk |
 | Kirijo guesthouse by the station | Sunoo, Heeseung, Sunghoon, Jay, Jake, Niki |
 
@@ -181,7 +181,7 @@ Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve th
 4. **The revamp's title.**
 
 ## Kat's rulings (2026-10-20, from her playtest notes)
-- **Housing:** only Haechan moves into the dorm (the destiny pull), keeping his distance at first. Jungwon, Jihoon, Minji and the other searchers stay at the guesthouse and visit often.
+- **Housing (updates the table above):** of the love interests, only Haechan lives in the dorm (the destiny pull), keeping his distance at first. Jungwon and Jihoon live at the guesthouse and visit often, so Jihoon moves out of the dorm. Hanni, Hyein and Yunjin stay in the dorm.
 - **Haechan settles into one world.** As his link grows and the ending nears, he becomes more like the Haechan of the world Solar is leaning toward (Runners or strangers), with a sweet scene when he's sure. He keeps the memories of both lives.
 - **Characters from other Persona games belong to the Persona world.** They aren't visitors pulled in from elsewhere: no delayed texts, nobody missing them back home. Kuromi and My Melody become exchange students here, moved into the dorm for a reason the story gives. My Melody may be a hidden, skippable link.
 - **Buffs and debuffs stack** up to a limit (P5-style), so casting twice matters.
