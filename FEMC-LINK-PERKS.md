@@ -536,4 +536,4 @@ Before Minji fights, her Battle perks could work as Assists so the early ranks s
 - **Searchers who fight** give their battle perks as Assists before they join the party.
 - **MAX perk strength:** match Persona's own MAX confidant abilities (P5R and Phantom X). They're a real, signature payoff (a once-per-battle save, a strong passive, a free follow-up, or a skill Solar keeps) but not game-breaking. They're tuned to be noticeable at the end of the game, not to trivialize bosses.
 - **My Melody's table** stays, for when she becomes a hidden link.
-- **Kat's skill ideas** (Kunai Flick, Kitsune Rush, Public Veneer, Call the Bluff, Off Angle Flank) live in Haenim's tree, and Protective Suzu is Kiriko's MAX perk. The default stands unless Kat changes it.
+- **Kat's skill ideas** (Kunai Flick, Kitsune Rush, Public Veneer, Call the Bluff, Off Angle Flank) live in Haenim's tree, along with Protective Suzu in the Bell branch. Kiriko's MAX perk ties in: Solar gets Protective Suzu even without the Bell branch, at half the SP. The default stands unless Kat changes it.
