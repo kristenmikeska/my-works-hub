@@ -528,3 +528,12 @@ Before Minji fights, her Battle perks could work as Assists so the early ranks s
 3. **Searchers before they fight:** should Minji, Haechan, Jungwon and Jihoon's Battle perks work as Assists until they join the party?
 4. **How strong should MAX feel?** Several MAX skills (Megidolaon, Protective Suzu, Save Point, Undying Love) are big. They can be limited to once per battle or once per night, or given steep SP costs.
 5. **My Melody:** keep her small table, or wait until her link exists?
+
+---
+
+## Kat's answers (2026-10-20)
+- **Duo Cohesion** stays on Minji at rank 5.
+- **Searchers who fight** give their battle perks as Assists before they join the party.
+- **MAX perk strength:** match Persona's own MAX confidant abilities (P5R and Phantom X). They're a real, signature payoff (a once-per-battle save, a strong passive, a free follow-up, or a skill Solar keeps) but not game-breaking. They're tuned to be noticeable at the end of the game, not to trivialize bosses.
+- **My Melody's table** stays, for when she becomes a hidden link.
+- **Kat's skill ideas** (Kunai Flick, Kitsune Rush, Public Veneer, Call the Bluff, Off Angle Flank) live in Haenim's tree, and Protective Suzu is Kiriko's MAX perk. The default stands unless Kat changes it.
