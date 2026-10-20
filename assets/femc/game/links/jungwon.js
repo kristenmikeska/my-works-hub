@@ -104,6 +104,34 @@
         ] }
       ] },
       { n: "He carried the box. He insisted. Going down the stairs ahead of her he looked like somebody quietly glad to have lost at something that didn't matter, for once, in front of someone who wouldn't write it down." }
+    ],
+    [
+      { n: "He walked her home. He always walked her home, to the gate of the dorm and not one step past it, and then turned round and walked the whole way back to the guesthouse by the station, which was out of his way in every direction, and which he described, when she pointed this out, as a route." },
+      { place: 'Iwatodai Dorm · Front Steps', time: 'Evening' },
+      { n: "Tonight there was somebody on the dorm steps already. Hood up, elbows on his knees, a can of something black and bitter going cold beside his shoe. He didn't get up. He looked at the two of them coming up the path with the flat, patient interest of a man watching a delivery he hadn't ordered." },
+      { s: 'jungwon', f: 'happy', t: "Good evening, Donghyuck." },
+      { s: 'haechan', f: 'neutral', t: "Young master. You're on my step." },
+      { s: 'jungwon', f: 'happy', t: "It's Kirijo-san's step. You live on it. That's different." },
+      { n: "The dimples were all the way out. Haechan's face did nothing at all. The two of them looked at each other across a meter of cold concrete with the particular courtesy of men who had, somewhere, in some other city, decided a long time ago exactly how much they were each worth, and had never revised the figure." },
+      { choose: [
+        { t: "(Sit down on the step between them.)", notes: 3, tally: { 'jungwon.S': 1 }, then: [
+          { n: "She sat on the step between them, which was the only place left, and put her bag on her knees, and waited. Neither of them moved. Neither of them could, now, without it looking like losing." },
+          { s: 'jungwon', f: 'neutral', t: "...I'll say goodnight here, then." },
+          { s: 'haechan', f: 'neutral', t: "Mm. Watch the road. It's dark. Very dangerous. For a guy who tutors." },
+          { n: "Jungwon bowed to her, and only to her, and went down the path at an even, unhurried pace, and wound his watch at the gate without looking back." }
+        ] },
+        { t: "Be nice. Both of you.", notes: 2, then: [
+          { s: 'jungwon', f: 'happy', t: "I'm always nice." },
+          { s: 'haechan', f: 'neutral', t: "That's his problem." },
+          { n: "For one second, very briefly, both of them nearly laughed, at the same thing, and both of them heard the other one nearly do it, and stopped." }
+        ] },
+        { t: "Goodnight, Jungwon. Thank you for the route.", notes: 3, tally: { 'jungwon.H': 1 }, then: [
+          { s: 'jungwon', f: 'flustered', t: "...It's on my way." },
+          { s: 'haechan', f: 'neutral', t: "It is not on his way." },
+          { s: 'jungwon', f: 'flustered', t: "Nobody asked you." },
+          { n: "He went. Halfway down the path she heard him say, to the dark, very politely, *goodnight, Donghyuck*, and from the step behind her, flat as a closed door, *night, Yang*, and it was the most either of them had said to the other all week." }
+        ] }
+      ] }
     ]
   ],
   ranks: [

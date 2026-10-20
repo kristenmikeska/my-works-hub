@@ -401,20 +401,20 @@
     { n: "And down the middle of the road, between the stopped cars, a boy was walking like he was late for something. Tall, broad in the shoulders, dark hair wrecked by wind that wasn't blowing, gray sweatpants and a t-shirt and slides, like he'd left the house in a hurry. In the crook of his arm, held against his chest like a baby, a tub of ice cream so large it looked like a joke." },
     { cg: 'searchers-jihoon-arrives' },
     { n: "He was talking to himself. Loudly." },
-    { s: 'jihoon', f: 'neutral', t: "...left at the light, right at the thing, I KNOW where her house is, I've been going to her house since I was FOUR, why is everything green, why is everybody in a box..." },
+    { s: 'jihoon', f: 'neutral', t: "...left at the light, right at the thing, I KNOW where her house is, I've been going to her house since I was FOUR, why is everything green, why is everybody in a box, is this a flash mob, I swear to God if this is a flash mob..." },
     { n: "Hyein made a noise. A small, high, completely involuntary noise." },
     { cg: null },
     { n: "He looked up. He saw Hanni and Hyein first, and his face did nothing at all, two strangers. Then his eyes slid past them and found Solar, and stopped, and his whole body stopped with them, mid-step, one slide still in the air." },
     { s: 'jihoon', f: 'surprised', t: "SOL?" },
-    { s: 'jihoon', f: 'happy', t: "Oh my God. Oh my GOD. There you are. Do you know how long I've been walking? Do you know how many traffic lights there are in this place? None of them work! None of them! Everyone's in a BOX!" },
+    { s: 'jihoon', f: 'happy', t: "Oh my God. Oh my GOD. There you are. Do you know how long I've been walking? In SLIDES? Do you know what this is doing to my calves? I do pilates for these. None of the traffic lights work! Everyone's in a BOX!" },
     { n: "He came at her across the road. Not a hug, quite. He came right up to her and stopped, very close, and held the tub out at her like a cop holding up a badge." },
-    { s: 'jihoon', f: 'neutral', t: "I got the large tub. I was on my way to your house. As your best friend it is rightfully MY job, I don't care what Junkyu says, and then I took a wrong turn somewhere and everything went green, and now I'm here, and you're here, and..." },
+    { s: 'jihoon', f: 'neutral', t: "I got the large tub. Don't make it weird. I know I haven't done the ice cream thing in a while, whatever, I was on my way to your house. As your best friend it is rightfully MY job, I don't care what Junkyu says, and then I took a wrong turn somewhere and everything went green, and now I'm here, and you're here, and..." },
     { s: 'jihoon', f: 'neutral', t: "...why are you wearing that?" },
     { n: "The tub was so cold it smoked faintly in the green. Solar could see frost on the outside of it, crisp and white. In the hour, where nothing moved and nothing changed, where the water in the fountains hung in the air and the steam over the ramen pots stood still, it was the only thing that was exactly as it should be. It wasn't melting. It hadn't melted all the way here. It was going to stay that cold forever if he held it long enough." },
     { choose: [
       { t: "I'm sorry. Who are you?", then: [
         { n: "He laughed. A big, easy, delighted laugh, the laugh of a boy who has known a girl since he was four and knows exactly how she does a bit." },
-        { s: 'jihoon', f: 'happy', t: "Ok very funny, Sol. Very funny. Ten out of ten. Pilates instructors HATE her." },
+        { s: 'jihoon', f: 'happy', t: "Okay, very funny, Sol. Ten out of ten. You practiced that in the mirror, didn't you, you absolute freak. You practiced the face." },
         { n: "Nobody else laughed. He looked around at them. At Hanni's face, and Hyein's. At Akihiko, who had come up very quietly behind Solar's shoulder. He looked back at Solar, and waited for her to break, the way she always broke, and she didn't, and she watched him watch her not break." }
       ] },
       { t: "(Take the ice cream.)", then: [
@@ -424,23 +424,27 @@
       ] },
       { t: "Jihoon?", then: [
         { n: "It came out of her like a hiccup. She had no idea where it came from. It was just there, in her mouth, a name, and his face lit up so fast and so bright it was like watching a building's lights come on all at once." },
-        { s: 'jihoon', f: 'happy', t: "YES. Jihoon. Ur Jihoon. Thank God, I thought you were doing a bit." },
+        { s: 'jihoon', f: 'happy', t: "YES. Jihoon. Your Jihoon. The best thing that's ever happened to you. Thank God, I thought you were doing a bit." },
         { s: 'solar', f: 'neutral', t: "I don't... I'm sorry. I don't know why I said that. I don't know you." },
         { n: "The lights went out again, one floor at a time." }
       ] }
     ] },
     { s: 'hanni', f: 'sad', t: "She doesn't remember. Us either. She doesn't remember anyone." },
     { s: 'jihoon', f: 'neutral', t: "...What?" },
-    { s: 'jihoon', f: 'neutral', t: "Who are you? Sol, who are these people? Why are they... no. No, she knows me. She's known me since preschool. She's known me since before she could SPELL." },
+    { s: 'jihoon', f: 'neutral', t: "Who are you? Sol, who are these people? Why are they... no. No, she knows me. She's known me since preschool. She's known me since before she could SPELL. Nobody forgets this face. Look at it. Nobody's ever managed it." },
     { n: "He was looking at Solar the whole time he said it. Waiting. And she could see the exact second it stopped being a bit to him. It wasn't when Hanni said it. It was a second later, when he looked at Solar's face for the joke, the one she always made with her eyes when she was making one with her mouth, and it wasn't there." },
     { n: "His face. She would remember his face." },
     { dark: false },
     { n: "The hour ended. The strip came back on all at once, noise and neon and a taxi honking at the four of them standing in the road, and Jihoon didn't move out of the way of it, and Akihiko took him by the arm, gently, and moved him." },
     { place: 'Iwatodai Dorm · Front', time: 'Night', music: 'tender', soft: true },
-    { n: "Mitsuru took him inside before Solar could think of anything to say. Hanni picked up the ice-cream tub and followed, and Hyein stayed by the door with Solar, holding it open while Akihiko went back for the bags. From the lounge came Jihoon's voice, asking somebody, very loudly, what year it was." },
-    { s: 'mitsuru', f: 'neutral', t: "There's a spare room upstairs. I'll show you. We'll find you some clothes in the morning." },
-    { n: "Jihoon looked from her to the stairs, and then back to Solar, and for once didn't argue. Mitsuru took a key from the hook behind the desk and waited for him to follow." },
-    { n: "Solar could have gone upstairs. Her room was there, her books were there, and in the morning the monorail would still be running. She stayed by the open door until Hyein nudged her inside." }
+    { n: "Mitsuru brought him inside for long enough to sit him down and put a cup of tea in his hands. Hanni put the ice-cream tub in the freezer, where it went on not melting. From the lounge came Jihoon's voice, asking somebody, very loudly, what year it was, and then, when Junpei told him, asking who had let that happen." },
+    { s: 'mitsuru', f: 'neutral', t: "There's a Kirijo guesthouse by the station. I've had a room made up for you there. It's quieter than this building, and it has a lock you'll be glad of. We'll find you some clothes in the morning." },
+    { s: 'jihoon', f: 'neutral', t: "A guesthouse. You're putting me in a hotel. She lives here, and you're putting me in a hotel." },
+    { s: 'mitsuru', f: 'neutral', t: "Yes." },
+    { n: "Jihoon looked from her to the stairs, where Solar's room was, and then at Solar, and for once didn't argue, which Hanni would say later was how she knew something was really wrong with him. Mitsuru took a key from the hook behind the desk and held the front door open, and waited." },
+    { n: "Solar walked them as far as the gate. At the gate Jihoon turned round, walking backward up the street behind Mitsuru with his hands in his pockets and the green gone out of the sky behind him, and pointed at her." },
+    { s: 'jihoon', f: 'serious', t: "I'm coming back at seven. For breakfast. Don't argue. I'm a guest, apparently. Guests get breakfast." },
+    { n: "Hyein, beside her, said she didn't like him. Hanni said nobody had asked her to. Solar stood at the gate until he'd turned the corner, and didn't know why, and went up to bed, and lay awake with her hand on the phone." }
   ] },
 
   { id: 'a4-lamppost', date: '9/26', slot: 'late', title: 'in the frame', place: 'Iwatodai · Riverside', time: 'The Dark Hour', scene: [

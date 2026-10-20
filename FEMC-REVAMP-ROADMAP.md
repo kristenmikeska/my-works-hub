@@ -72,7 +72,13 @@ Batches, in order, after the story/character pass:
 - **A. Merge + battle systems:**
   - Finish the one-game merge (fixes the old Tartarus menu).
   - Skill tree. Kat's skill ideas: Protective Suzu, Kunai Flick and Kitsune Rush for the Bell branch; Public Veneer and Call the Bluff for the Star branch; Off Angle Flank as a passive; Duo Cohesion as a link perk.
-  - Link perks in battle (Minji r3/r8 and Haechan r2/r7 are her examples), and romance battle and Tartarus dialogue.
+  - **Link perks for EVERY social link** (Kat: like Persona 5 Phantom X). Each link unlocks named perks as it ranks up, about 4 per link, covering:
+    - battle: follow-ups, protect, revive, crits, Duo Cohesion-style combos
+    - Tartarus: healing between floors, map reveals, better drops
+    - daily life: stat boosts, shop discounts, job pay, extra time
+    - a skill or passive for Solar at MAX
+
+    Kat's examples: Minji r3 Crosshair Sync, r8 Behind the Lens; Haechan r2 Cut the Fluff, r7 Bait and Punish. Draft the full perk list for Kat to review before building. Also romance battle and Tartarus dialogue.
   - Buffs stack to a limit.
   - Smarter Rush (heals when needed, rebuffs, hits weaknesses, uses Theurgy).
   - Remove the post-battle All-Out flashes.
