@@ -26,8 +26,8 @@
    next to Solar's, and her mom plays the nocturne on the hall piano at three in the morning; the koi live in a bucket on the
    Lee back step ("the Huhs' children", Mrs. Bang); her voice has been wrecked to gravel since December (she still talks,
    loudly, and murmurs more); she sleeps with the light on; "sure" means no; the Veloster is purple with a La Cucaracha
-   horn; she wears a traffic-cone-orange puffer at home now (the yellow one in the arrival CG is her old one, kept for Kat's
-   art); Jungwon caught and carried her once, so she's taken back most of what she said about him. The game never says why,
+   horn; her puffer is yellow in the game (Kat's ruling: she owns more than one color, so
+   don't change it to canon's orange); Jungwon caught and carried her once, so she's taken back most of what she said about him. The game never says why,
    who, or anything about the war: grief and the voice are felt, never explained.
    Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
