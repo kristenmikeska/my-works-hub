@@ -832,11 +832,12 @@
      ════════════════════════════════════════════════════ */
   /* Story fights: the game's field menu (menu.js) over this frame, in place of the practice screens. The save is handed over
      first and read back after, since the menu edits the playthrough's battle save in the life sim. Resolves when it closes
-     (after Haenim's tree, when the menu's Skills tab asked for it). */
-  function fieldMenu(tab, { required = [], solo = false, extra = [] } = {}) {
+     (after Haenim's tree, when the menu's Skills tab asked for it): 'leave' when an escape item was used on a floor, else null.
+     onFloor: items can be used (useFieldItem) and the team is locked until an access point. */
+  function fieldMenu(tab, { required = [], solo = false, extra = [], onFloor = false } = {}) {
     return new Promise(resolve => {
       const prev = ctl;
-      let wantTree = false;
+      let wantTree = false, left = false;
       persist();
       const hp = {};
       if (run) buildParty(run.carry).forEach(u => { hp[u.mid] = { hp: u.hp, maxHp: u.maxHp, sp: u.sp, maxSp: u.maxSp }; });
@@ -848,14 +849,25 @@
         let back = null; try { back = fromRaw(BR.battleSave()); } catch (e) {}
         if (back) { save = back; persist(); }
         mark('field-menu-closed');
-        if (wantTree) treeScreen(resolve); else resolve();
+        const out = left ? 'leave' : null;
+        if (wantTree && !left) treeScreen(() => resolve(out)); else resolve(out);
       };
       paused++; ctl = me;
       root.classList.add('bt-ov-open');
       sfx('ok'); mark('field-menu'); mark('field-menu-' + tab);
+      // On a floor: field items are used from the menu, the team is set until an access point, Traesto leaves Tartarus.
+      const useItem = !onFloor ? null : (id, tgt) => {
+        const it = D.items[id];
+        if (!it || !(save.items[id] > 0) || it.use === 'battle' || it.type === 'key') return null;
+        if (it.type === 'escape') { save.items[id]--; if (!save.items[id]) delete save.items[id]; persist(); mark('traesto'); left = true; return { leave: true }; }
+        if (['ally', 'dead'].includes(it.target) && !tgt) return null;
+        useFieldItem(id, tgt, fieldUnits());
+        const now = {}; fieldUnits().forEach(u => { now[u.mid] = { hp: u.hp, maxHp: u.maxHp, sp: u.sp, maxSp: u.maxSp }; });
+        return { items: Object.assign({}, save.items), hp: now };
+      };
       let ok = false;
-      try { ok = BR.openMenu(tab, { kind: HO && HO.kind, required, solo, extra, items: Object.assign({}, save.items), yen: save.yen, hp, openTree: () => { wantTree = true; }, onClose: done }); } catch (e) { ok = false; }
-      if (!ok) { paused = Math.max(0, paused - 1); root.classList.remove('bt-ov-open'); if (ctl === me) ctl = prev; resolve(); }
+      try { ok = BR.openMenu(tab, { kind: HO && HO.kind, required, solo, extra, lockParty: onFloor, useItem, items: Object.assign({}, save.items), yen: save.yen, hp, openTree: () => { wantTree = true; }, onClose: done }); } catch (e) { ok = false; }
+      if (!ok) { paused = Math.max(0, paused - 1); root.classList.remove('bt-ov-open'); if (ctl === me) ctl = prev; resolve(null); }
     });
   }
   const TACTIC_ORDER = Object.keys(D.tactics);
@@ -1263,7 +1275,7 @@
         <div class="bt-map-party">${partyHtml}</div>
         <div class="bt-map-acts">
           <button type="button" class="bt-btn" data-act="scan"${map.scans ? '' : ' disabled'}><span>Fuuka’s scan</span><small>${map.scans ? (hasJuno() ? 'Juno · whole floor' : 'Nearby rooms') : 'Used'}</small></button>
-          <button type="button" class="bt-btn" data-act="items"><span>Items</span><small>${Object.values(save.items).reduce((a, b) => a + b, 0)}</small></button>
+          <button type="button" class="bt-btn" data-act="items"><span>${BR ? 'Menu' : 'Items'}</span><small>${BR ? 'Items · Equipment · ' : ''}${Object.values(save.items).reduce((a, b) => a + b, 0)}${BR ? ' items' : ''}</small></button>
         </div>
         <p class="bt-hint">${phone() ? 'Tap a lit room to move' : '←→ pick a room · Enter move · S scan · I items'}</p>
       </aside>
@@ -1387,6 +1399,10 @@
   }
   /* Items outside battle: heal, revive, SP, or a Traesto Gem out of Tartarus. */
   async function fieldItems() {
+    if (BR) {
+      // Story fights: the field menu, on its Items tab (use items, check the team, equipment, Personas).
+      return fieldMenu('items', { onFloor: true });
+    }
     for (;;) {
       const units = fieldUnits();
       const ids = Object.keys(save.items).filter(k => save.items[k] > 0 && D.items[k].use !== 'battle' && D.items[k].type !== 'key');

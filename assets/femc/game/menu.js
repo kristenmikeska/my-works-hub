@@ -14,7 +14,8 @@
    (Solar alone: no party changes, only her equipment), extra (ids to list though the calendar hasn't made them available
    yet: a searcher awakening in this very fight), items / yen (what Solar is carrying tonight: the battle's own counts),
    hp ({ id: { hp, maxHp, sp, maxSp } } mid-climb), openTree (Haenim's tree, the battle's own screen, until the skill
-   system replaces it).
+   system replaces it), lockParty (on a floor: the team changes only at the entrance or an access point), useItem(id,
+   target) (on a floor: use a field item; returns { items, hp } or { leave: true } for an escape item; the frame applies it).
 
    ── SKILLS: the seam for the skill-tree system (next on the roadmap) ──
    The Skills tab is deliberately empty. The system that will live here owns:
@@ -73,7 +74,7 @@ window.FemcMenu = (() => {
         <em class="g-pm-slot">${tag}</em></button>
         ${m.id === 'solar' ? '<span class="g-pm-tac lead">Always Direct</span>' : `<button type="button" class="g-pm-tac" data-tac="${m.id}" title="${esc(tac?.desc || '')}">Tactic · <b>${esc(tac?.name || 'Direct Command')}</b></button>`}</div>`;
     };
-    const head = opts.solo ? 'Solar fights this one alone.'
+    const head = opts.solo ? 'Solar fights this one alone.' : opts.lockParty ? 'The team is set for this climb. Change it at the entrance or an access point.'
       : `Pick up to three to fight beside Solar. The bench still earns ${Math.round(D().progression.benchShare * 100)}% of the EXP.${(opts.required || []).length ? ` ${opts.required.map(id => esc(member(id)?.name || id)).join(' and ')} must take part.` : ''}${G.navigator() ? ` ${esc(G.name(G.navigator()))} navigates.` : ''}`;
     return `<p class="g-note">${head} Tactics: Direct lets you choose; the others act on their own.</p>
       <div class="g-pm-grid">${list2.map(card).join('')}</div>`;
@@ -81,6 +82,7 @@ window.FemcMenu = (() => {
   function wireParty(el) {
     el.querySelectorAll('[data-pm]').forEach(bt => bt.addEventListener('click', () => {
       const id = bt.dataset.pm; if (id === 'solar' || opts.solo) return;
+      if (opts.lockParty) { G.toast('note', 'Change the party at the entrance or an access point.'); G.sfx('femc-hover'); return; }
       const b = bsave(), at = b.party.indexOf(id);
       if (at >= 0 && required(id)) { G.toast('note', `${member(id).name} must take part in this fight.`); G.sfx('femc-hover'); return; }
       if (at >= 0) b.party.splice(at, 1);
@@ -152,9 +154,33 @@ window.FemcMenu = (() => {
       sel.slot = null; G.saveQuiet(); G.sfx('femc-rankup'); render();
     }));
   }
+  // On a floor, items that work outside a fight can be used from here (the frame applies them: opts.useItem).
+  const usable = k => { const it = D().items?.[k]; return !!(opts.useItem && it && it.use !== 'battle' && it.type !== 'key'); };
+  const needsTarget = k => ['ally', 'dead'].includes(D().items?.[k]?.target);
+  function useRow(k, n) {
+    const it = D().items?.[k] || {}, hp = opts.hp || {};
+    const who = sel.use === k && needsTarget(k) ? `<div class="g-use-who">${Object.keys(hp).map(id => `<button type="button" class="g-btn small" data-use="${k}" data-tgt="${id}">${esc(member(id)?.name || id)} <small>${hp[id].hp}/${hp[id].maxHp}</small></button>`).join('')}<button type="button" class="g-btn small" data-use-cancel>Cancel</button></div>` : '';
+    return `<li class="g-use"><b>${esc(it.name || k)}<small>${esc(it.desc || '')}</small></b><span>×${n}</span>${usable(k) && sel.use !== k ? `<button type="button" class="g-btn small pink" data-use="${k}"${needsTarget(k) ? ' data-pick-target' : ''}>Use</button>` : ''}${who}</li>`;
+  }
+  function wireItems(el) {
+    el.querySelectorAll('[data-use]').forEach(bt => bt.addEventListener('click', () => {
+      const k = bt.dataset.use;
+      if (bt.hasAttribute('data-pick-target')) { sel.use = k; G.sfx('femc-click'); render(`[data-tgt]`); return; }
+      const r = opts.useItem(k, bt.dataset.tgt || null);
+      sel.use = null;
+      if (!r) return;
+      if (r.leave) { o.close(); return; }
+      opts.items = r.items; opts.hp = r.hp;
+      G.toast('note', `Used ${D().items[k].name}${bt.dataset.tgt ? ` on ${member(bt.dataset.tgt)?.name || ''}` : ''}.`);
+      render();
+    }));
+    el.querySelector('[data-use-cancel]')?.addEventListener('click', () => { sel.use = null; render(); });
+  }
   function itemsTab() {
     // In the Dark Hour Solar carries the battle's own counts (items used tonight come off as she goes).
     const s = S(), inv = Object.entries(opts.items || s.inventory).filter(([, n]) => n > 0), b = bsave();
+    if (opts.useItem) return `<div class="g-cols"><div class="g-col"><h3>Items</h3>${inv.length ? `<ul class="g-list">${inv.map(([k, n]) => useRow(k, n)).join('')}</ul>` : '<p class="g-note">Nothing in the bag tonight.</p>'}</div>
+      <div class="g-col"><h3>The team</h3><ul class="g-list">${Object.entries(opts.hp || {}).map(([id, h]) => `<li><b>${esc(member(id)?.name || id)}</b><span>${h.hp}/${h.maxHp} HP · ${h.sp}/${h.maxSp} SP</span></li>`).join('')}</ul></div></div>`;
     const gear = [...new Set([...s.gear, ...Object.keys(b.gear.owned).filter(k => b.gear.owned[k] > 0)])].filter(k => D().gear[k]);
     const mats = Object.entries(b.mats || {}).filter(([, n]) => n > 0);
     return `<div class="g-cols">
@@ -217,7 +243,7 @@ window.FemcMenu = (() => {
     const top = body.scrollTop;
     body.innerHTML = html;
     body.scrollTop = top;
-    if (tab === 'party') wireParty(body); else if (tab === 'personas') wirePersonas(body); else if (tab === 'equip') wireEquip(body);
+    if (tab === 'party') wireParty(body); else if (tab === 'personas') wirePersonas(body); else if (tab === 'equip') wireEquip(body); else if (tab === 'items') wireItems(body);
     // The battle frame opens its tree once the menu has closed (openTree only asks for it).
     body.querySelector('[data-tree]')?.addEventListener('click', () => { opts.openTree?.(); o.close(); });
     o.el.querySelectorAll('[data-tab]').forEach(b => { b.classList.toggle('on', b.dataset.tab === tab); b.setAttribute('aria-selected', b.dataset.tab === tab); });
@@ -233,7 +259,8 @@ window.FemcMenu = (() => {
       <nav class="g-tabs g-fm-tabs" role="tablist">${TABS.map(([k, n]) => (k === 'compendium' ? `<a role="tab" href="${G.base}compendium.html" target="_blank" rel="noopener">${n} ↗</a>` : `<button type="button" role="tab" data-tab="${k}">${n}</button>`)).join('')}</nav>
       <div class="g-fm-body" tabindex="-1"></div>
       <p class="g-hint g-fm-hint">[ ] or ←→ on the tabs · Esc ${opts.inBattle ? 'back' : 'close'}</p></div>`, `g-fm-ov${opts.inBattle ? ' g-over-battle' : ''}`, () => { o = null; sel.slot = null; G.save(); const done = opts.onClose; opts = {}; done?.(); });
-    o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; sel.slot = null; G.sfx('femc-click'); render(); }));
+    sel.use = null;
+    o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; sel.slot = null; sel.use = null; G.sfx('femc-click'); render(); }));
     o.el.addEventListener('keydown', e => {
       const keys = TABS.filter(([k]) => k !== 'compendium').map(([k]) => k);
       const onTab = e.target.closest?.('[data-tab]');

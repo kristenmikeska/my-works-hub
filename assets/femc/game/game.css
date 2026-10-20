@@ -757,3 +757,7 @@ button.g-pm-tac:is(:hover, :focus-visible) b { color: var(--night); }
 .g-pm-bars, .g-bar { width: 100%; }
 .g-bar i { display: block; width: 100%; }
 .g-pm-grid { padding-top: 10px; row-gap: 18px; }
+.g-use { flex-wrap: wrap; gap: 8px; }
+.g-use > b { flex: 1; min-width: 0; }
+.g-use-who { display: flex; flex-wrap: wrap; gap: 6px; width: 100%; padding-top: 4px; }
+.g-use-who small { margin-left: 4px; opacity: .75; }
