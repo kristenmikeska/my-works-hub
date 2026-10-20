@@ -1,14 +1,14 @@
 /* Secrets: hoax3. Format in femc-social.js above secrets().
-   Source: Hoax (readers/hoax.html). More of Solar Kim's world leaking into Iwatodai: Hamlim people half-recognize the
+   Source: Hoax (readers/hoax.html). More of Solar Kim's world leaking into Iwatodai: Hanlim people half-recognize the
    player as Solar Kim and never quite work it out. Nothing here decides the election, homecoming, or anyone's romance.
    - Texts (new threads only, so nothing wipes a reply in hx-gc / hx-dm / jw-gc):
-       'hx3-ann'    the Hamlim council broadcast list. No questions until the last one, so its texts never wipe each other.
+       'hx3-ann'    the Hanlim council broadcast list. No questions until the last one, so its texts never wipe each other.
                     9/3 (pets), 9/24 (homecoming committee, the canon PA line), 10/22 (ladders), and an undated absentee
                     ballot the night before the count (after 1/24, never expires). The ballot never delivers.
        'hx3-sunoo'  Sunoo, who copied Solar Kim's "new number" from Junkyu (the wrong one). 7/7 poster drafts; then,
                     once Solar has met Jungwon, the night he went back for his notes (after 1/22, never expires).
        'hx3-cherry' Cherry DMs "sol" about homecoming (10/23), realizes halfway it's the knockoff. Needs 'wrong-gc'.
-   - Moments: 10/16 Solar Kim's final speech over Gekkoukan's speakers (a VOTE SOLAR KIM button), 10/24 the Hamlim
+   - Moments: 10/16 Solar Kim's final speech over Gekkoukan's speakers (a VOTE SOLAR KIM button), 10/24 the Hanlim
      homecoming gym and its ladder, 12/2 the nurse's office behind a curtain, 1/28 Jake and Layla at the shrine.
      Moments fire late on a late save, so their text never names the day.
    - Places: Port Island Station (Heeseung and Jay, daytime), Paulownia Mall fountain (Niki, evening), a winter rink
@@ -20,7 +20,7 @@
 FemcSocial.secrets({
   id: 'hoax3',
   cast: {
-    'hx3-council': 'Hamlim Student Council', 'hx3-speaker': 'The speakers', 'hx3-girl': '???'
+    'hx3-council': 'Hanlim Student Council', 'hx3-speaker': 'The speakers', 'hx3-girl': '???'
   },
   threads: {
     'hx3-ann': { name: 'HAMLIM STUDENT COUNCIL', members: ['hx3-council'] },
@@ -32,7 +32,7 @@ FemcSocial.secrets({
     // The broadcast list. Jaehyuk copied the council's contact sheet from the group chat, wrong digit and all.
     { id: 'hx3-ann-1', thread: 'hx3-ann', date: '9/3', window: 10, msgs: [
       { sys: 'You were added to a broadcast list' },
-      { from: 'hx3-council', t: "Welcome back, Hamlim! 🌸 The Student Council hopes everyone had a restful break." },
+      { from: 'hx3-council', t: "Welcome back, Hanlim! 🌸 The Student Council hopes everyone had a restful break." },
       { from: 'hx3-council', t: "Reminder that pets are not permitted on campus, in the faculty lot, or on the sidewalk in front of any council member's house before 7 AM." },
       { from: 'hx3-council', t: "This includes large dogs. Especially large dogs." },
       { from: 'hx3-council', t: "Council meetings are Tuesdays at lunch. Attendance is mandatory for officers. Eating lunch at lunch is also encouraged. — Sec. Kim Sunoo" }
@@ -445,7 +445,7 @@ FemcSocial.secrets({
       place: 'Port Island Station · Central Concourse', scene: [
       { n: "Port Island Station after school was the same every day, the same pleasant recorded voice making the same announcements, the same smell of hot brakes and somebody's fried chicken drifting down from the stand by the stairs, the same crush of uniforms all moving in the same direction, and Solar had stopped noticing any of it months ago, which was exactly why she noticed the two boys standing completely still in the middle of it." },
       { n: "They were in navy blazers from a school that wasn't on this line or any other. One was tall, with a soft, patient face and a convenience store bag hanging from two fingers, and the other had a letterman jacket thrown on over his blazer like the blazer had personally offended him, and they were both staring up at the route map above the ticket machines with the particular betrayed look of people who had been reading it for a while." },
-      { s: 'hx-jay', f: 'serious', t: "It's not on there. I'm telling you, it's not on there. There's no Hamlim stop. There's no Hamlim anything." },
+      { s: 'hx-jay', f: 'serious', t: "It's not on there. I'm telling you, it's not on there. There's no Hanlim stop. There's no Hanlim anything." },
       { s: 'hx-heeseung', f: 'neutral', t: "It has to be on there. We got on a train. Trains go places, Jay. That's the whole thing about trains." },
       { s: 'hx-jay', f: 'neutral', t: "Then where are we?" },
       { n: "The tall one turned to ask somebody, and the somebody happened to be her, and his whole face changed, the patience going out of it all at once in pure relief." },

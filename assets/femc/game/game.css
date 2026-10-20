@@ -516,6 +516,9 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
 }
 @media (prefers-reduced-motion: reduce) { .gs, .gs *, .g-overlay, .g-datecard, .g-datecard *, .g-actcard, .g-actcard *, .g-toast, .g-title * { animation: none !important; transition: none !important; } .g-dc-days { transform: translateY(-1em); } }
 
+.g-act .g-act-benefit { margin-top: 6px; line-height: 1.45; color: var(--ink); }
+.g-act:is(:hover, :focus-visible):not(:disabled) .g-act-benefit { color: var(--night); }
+
 /* ══ The merge: one game. The Dark Hour layer (battles in this page), the field menu, one settings panel, P3-style save
    slots, the practice link, and the battle's chips / bars / affinity markers drawn the same way here. ══ */
 .g-hint { color: var(--muted); font: italic 700 11px/1.3 var(--cond); letter-spacing: .14em; text-transform: uppercase; }

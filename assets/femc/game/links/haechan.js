@@ -102,9 +102,9 @@
   ],
   ranks: [
     { after: '11/5', title: '1: the dryer', place: 'Iwatodai Dorm · Laundry Room', time: 'Late Night', music: 'night', scene: [
-      { n: "She hadn't slept since the night before, and the night before that she'd stood in the doorway of this same room in her socks and watched a boy she'd never seen in her life look up from the top of a dryer like she was the answer to something, and say three words to her in a voice that sounded like it had walked a very long way to say them. She had been polite to him. That was the worst part. She'd said something careful and kind, the way you'd talk to a stranger who'd mistaken you for his sister on a train, and his face hadn't changed at all, which she'd understood even then was the most expensive thing she'd ever watched a face do." },
-      { n: "So it was a quarter to three, and she was back, because her legs had brought her here and she'd stopped arguing with her legs sometime around April." },
-      { n: "He was on the dryer again. Same black hoodie, sleeves shoved past the elbow, choppy dark hair in his eyes like he'd decided nobody was worth the effort of moving it, a pair of heavy black headphones around his neck with the cord coiled in his lap. The dryer was running with nothing in it. He'd worked out, in one day, that it was the only warm thing in the building after midnight." },
+      { n: "The laundry room door was open. Solar stopped outside it with one hand on the frame, listening to the empty dryer turn. She knew who was in there before she looked, which was different from remembering him and still, somehow, enough to bring her downstairs." },
+      { n: "It was a quarter to three, and she was back, because her legs had brought her here and she'd stopped arguing with her legs sometime around April." },
+      { n: "He was on the dryer again. A black hoodie, sleeves shoved past the elbow, choppy dark hair in his eyes like he'd decided nobody was worth the effort of moving it, a pair of heavy black headphones around his neck with the cord coiled in his lap. The dryer was running with nothing in it. He'd decided, apparently, that it was the only warm thing in the building after midnight." },
       { n: "He didn't say *there you are* this time. He didn't say anything. He looked at her for exactly as long as it took her to stop in the doorway, and then he looked at the other dryer, the cold one, and back at her, which was apparently an invitation." },
       { register: 'haechan' },
       { choose: [

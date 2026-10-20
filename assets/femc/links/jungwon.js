@@ -1,11 +1,11 @@
 /* Yang Jungwon · V The Hierophant. SECRET LINK. Format notes are at the top of akihiko.js.
-   From Hoax (readers/hoax.html): student council president of Hamlim High, a third-year, eighteen. Composed, overworked,
+   From Hoax (readers/hoax.html): student council president of Hanlim High, a third-year, eighteen. Composed, overworked,
    competitive, secretly soft, dry; forgets to eat and sometimes faints; tutors people beautifully and never himself.
    His friends: Sunoo (council secretary, runs Yeobo's for his grandmother), Heeseung (his vice president), Sunghoon
    (flirts with everything), Jay (football scholarship), Jake (dog named Layla), Niki (the youngest, hopes he loses);
    their group chat is "JUNGWON IS MEAN", where he is injangwon. His rival is Park Jihoon. His dog is Maeumi. The girl
    running against him is Solar Kim, whose VOTE SOLAR KIM poster turned up at Gekkoukan on 10/13 (secrets/hoax.js).
-   PLOT (spoilers, for Claude): he comes from the night before Hamlim counts the votes, after the final speeches. He left
+   PLOT (spoilers, for Claude): he comes from the night before Hanlim counts the votes, after the final speeches. He left
    Yeobo's for his council room to fetch his notes and opened the door onto Gekkoukan's, where Mitsuru had pinned the
    poster "in case its owner comes looking." He keeps half-recognizing Solar ("Sorry. You look like someone.") because
    every world has a Solar. The ending he runs from is the count: win or lose, the campaign ends, and the campaign is the
@@ -518,7 +518,7 @@ FemcSocial.define({
           { n: "He said it like that settled something." }
         ] }
       ] },
-      { s: 'jungwon', f: 'neutral', t: "Yang Jungwon. Student council president, Hamlim High. Third-year." },
+      { s: 'jungwon', f: 'neutral', t: "Yang Jungwon. Student council president, Hanlim High. Third-year." },
       { s: 'jungwon', f: 'serious', t: "Eighteen, before you ask. Old enough to run a school. Not old enough to skip lunch, according to everyone I know." },
       { n: "He stood and held his hand out across the long table, formally, the way candidates do on a stage." },
       { choose: [
@@ -693,7 +693,7 @@ FemcSocial.define({
           { n: "He didn't say anything else, and she didn't make him." }
         ] }
       ] },
-      { n: "At the station he stopped under the departures board, all ordinary times and ordinary places, and read it for a long time, as though somewhere on it there might be a line that said Hamlim, and a platform, and a time." },
+      { n: "At the station he stopped under the departures board, all ordinary times and ordinary places, and read it for a long time, as though somewhere on it there might be a line that said Hanlim, and a platform, and a time." },
       { s: 'jungwon', f: 'neutral', t: "May the best candidate win." },
       { n: "He said it to the board. It sounded like something he'd said on a stage, to a girl who had laughed at him for it, and it sounded like he would give a great deal to be laughed at again." }
     ] },
@@ -949,7 +949,7 @@ FemcSocial.define({
       { n: "He untied the string and unrolled the poster on the cold concrete, holding the corners down with his hands. VOTE SOLAR KIM. The smiling sun. The glitter, fainter now, which had gotten into the council room carpet and her blazer and, she suspected, permanently into him." },
       { s: 'jungwon', f: 'neutral', t: "Your president said she'd keep it in case its owner came looking. I'm the closest thing it's got. I'm taking it back to her." },
       { s: 'jungwon', f: 'flustered', t: "She'll pretend she doesn't want it. Then she'll put it on her wall." },
-      { n: "He rolled it up again, carefully, and retied the string. Then he reached into his blazer pocket and held out something small and gold on his palm. A pin, the Hamlim crest in navy enamel, PRESIDENT along the bottom in tiny capitals, the back worn smooth from being put on and taken off every morning for three years." },
+      { n: "He rolled it up again, carefully, and retied the string. Then he reached into his blazer pocket and held out something small and gold on his palm. A pin, the Hanlim crest in navy enamel, PRESIDENT along the bottom in tiny capitals, the back worn smooth from being put on and taken off every morning for three years." },
       { s: 'jungwon', f: 'neutral', t: "This one's yours." },
       { ifRoute: 'friend', then: [
         { s: 'jungwon', f: 'happy', t: "Honorary vice president of a council you've never seen, at a school you'll never go to. It's the highest office I can give. Don't tell Heeseung." },

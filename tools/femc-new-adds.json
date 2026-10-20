@@ -1,0 +1,1482 @@
+{
+  "sourceRoot": "/Users/katarinagrande/Documents/UniverseHub-Images/Femc Mode Images/New Adds",
+  "entries": [
+    {
+      "source": "AigisBattle.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "1dd13b56bf2043b01c39643f775e5f82704e3c53d3f0efc5a071cb0d4ab53607",
+      "status": "integrated",
+      "batch": 13,
+      "destination": "assets/femc/battle/art/poses/aigis.webp",
+      "character": "aigis",
+      "uses": [
+        "Active character full-body battlefield stance"
+      ],
+      "intendedUse": "Full-body weapon stance on the battlefield",
+      "placement": "femc-battle.html: acting party character beside Shadows; contained whole-body framing",
+      "conversion": "Alpha preserved; transparent margins trimmed; max dimension 1400px; WebP quality 90",
+      "outputSha256": "d3a09beaac559d0969d591c6146e8262a96a3cde2702139abb4524a256171cf2"
+    },
+    {
+      "source": "AkihikoBattle.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "827b02506d696d81de58e9307e91e4fec65b618df2e7c17b171ebcdae0e5749d",
+      "status": "integrated",
+      "batch": 12,
+      "destination": "assets/femc/battle/art/poses/akihiko.webp",
+      "character": "akihiko",
+      "uses": [
+        "Active character full-body battlefield stance"
+      ],
+      "conversion": "Alpha preserved; transparent margins trimmed; max dimension 1400px; WebP quality 90",
+      "outputSha256": "ef3b8087ab5209277e8da413306517bb70284d8361bea05e8ac0821f1a9dd321",
+      "intendedUse": "Full-body weapon stance on the battlefield",
+      "placementNote": "Batch 12 places the prepared poses on the battlefield. Commands, All-Out silhouettes and finish cards retain their existing art.",
+      "preparedInBatch": 8,
+      "placement": "femc-battle.html: acting party character beside Shadows; contained whole-body framing"
+    },
+    {
+      "source": "BadEnding.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "dc8018f204b33a2faf01e13f82c7c5880876c6cb14aef4298fce62a07fd68b7a",
+      "status": "integrated",
+      "batch": 5,
+      "destination": "assets/femc/cg/ending-last-stop.webp",
+      "event": "a5-solstice",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "1ab654ed1e1a39cc9e48af447126ab93a0bfe929c19456ecd84e6d2b664c693f",
+      "mobileFocus": "40% 35%"
+    },
+    {
+      "source": "BallotBoxShadow.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "22af145c8a89d975b3a74cb11c22a3e6585456b35edcd944756427af759f1b7a",
+      "status": "integrated",
+      "batch": 6,
+      "destination": "assets/femc/battle/art/shadows/memory-ballot-box.webp",
+      "enemy": "ballot_box",
+      "conversion": "First standing-pose cell extracted, alpha retained, transparent margins trimmed, WebP quality 90",
+      "outputSha256": "5c87ac32209b8286bc7cd1e1656afe917fe819fdb6fa3e400105963aaa5c6aee",
+      "poseFramesUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "animation": {
+        "canvas": [
+          640,
+          640
+        ],
+        "states": {
+          "attack": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cast": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "outputs": {
+          "assets/femc/battle/art/shadows/memory-ballot-box-pose-0.webp": "780e3406061a8fd3d3a52374de9f88df8d3c2f7a9208c3e3ff760f5243632583",
+          "assets/femc/battle/art/shadows/memory-ballot-box-pose-1.webp": "ae929a600f676c590bd2081a8041d3e47081e672f1a37297c13ad70d258ad069",
+          "assets/femc/battle/art/shadows/memory-ballot-box-pose-2.webp": "0543c8592979cdf733a6e9a3657f19db6101e24875631579bc775d77010e81d5",
+          "assets/femc/battle/art/shadows/memory-ballot-box-pose-3.webp": "6c0239b11f3e1e20d0358b32709fb05f1085e344b47d43605dbcfde88c7fdedd",
+          "assets/femc/battle/art/shadows/memory-ballot-box-pose-4.webp": "cc58e5827a8d5b947cc79b207d65165a222737ec23e986f322e45d1ad186c393",
+          "assets/femc/battle/art/shadows/memory-ballot-box-pose-5.webp": "47ce56decba574f6570da429e4f7986c6fd28acaa6468f9b9786efa535474f52"
+        },
+        "preparationTool": "tools/femc-shadow-poses.py",
+        "notes": "All six cells extracted with original alpha, adjacent-cell fragments removed, primary silhouette bottom centered at source scale. Existing recoil/dissolve retained where no dedicated pose fits."
+      }
+    },
+    {
+      "source": "CampaignPosterShadow.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "33253fe2201948ed05eca1d377433385ae3217003bf8aeff9c5db47cc1480048",
+      "status": "integrated",
+      "batch": 7,
+      "destination": "assets/femc/battle/art/shadows/memory-poster-pose-0.webp",
+      "enemy": "veil_poster",
+      "artGroup": "memory-veil-poster",
+      "poseFramesUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "conversion": "Six alpha-preserving pose cells on fixed canvases, neighboring-cell fragments removed; WebP quality 90",
+      "outputSha256": "fae0f97aff618f33c3967764e0f112a148e981bc5f9c6e50f0d3d5022ddeb3f8",
+      "animation": {
+        "canvas": [
+          640,
+          640
+        ],
+        "states": {
+          "attack": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "cast": [
+            1,
+            2,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            3,
+            4,
+            5
+          ]
+        },
+        "outputs": {
+          "assets/femc/battle/art/shadows/memory-poster-pose-0.webp": "fae0f97aff618f33c3967764e0f112a148e981bc5f9c6e50f0d3d5022ddeb3f8",
+          "assets/femc/battle/art/shadows/memory-poster-pose-1.webp": "e50659497c2e68b4e8d073aeb0221feee7f6b04514ce4d787bc7361a96f64461",
+          "assets/femc/battle/art/shadows/memory-poster-pose-2.webp": "69aeb3040a556f2d8b70e20094291d38aaa9e46f15e4e90ad1e436b05b05c361",
+          "assets/femc/battle/art/shadows/memory-poster-pose-3.webp": "23b1a9fd5eb4598035f1a7c3a9ff8f307f7982c672306c37ef87e8aea6cff2a8",
+          "assets/femc/battle/art/shadows/memory-poster-pose-4.webp": "b1b8da069c4fc1ea4d6b82139376587c61c0776d8b7957f869e96863dd42a42e",
+          "assets/femc/battle/art/shadows/memory-poster-pose-5.webp": "2c0696badf4deed94084284dcbdcbde03d5efa27ee1fbed86e20e0b47639378d"
+        },
+        "preparationTool": "tools/femc-shadow-poses.py",
+        "notes": "Poster and veil share one existing enemy, with both sheets in its spell sequence; no combat rules changed."
+      }
+    },
+    {
+      "source": "ChatGPT Image Oct 18, 2026, 02_44_02 AM.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "a50681a88f0675130f85eeaa677d302c8021cc3452c934ad4941cdf6f58d3c77",
+      "status": "pending"
+    },
+    {
+      "source": "ChatGPT Image Oct 18, 2026, 02_44_45 AM.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "a50681a88f0675130f85eeaa677d302c8021cc3452c934ad4941cdf6f58d3c77",
+      "status": "pending"
+    },
+    {
+      "source": "ChatGPT Image Oct 18, 2026, 05_05_25 PM.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "a4af5bb5a8f3e18c50f4b6e87b18b1f761915d3308e12ae32c7252c6f534ee36",
+      "status": "pending",
+      "placementNote": "Kat requested this remain aside for correction: character holds a round ornamental device instead of a gun-shaped Evoker. Do not wire as supplied."
+    },
+    {
+      "source": "CherryFullBody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d7629a0a27267870880775f0acb4340c63adc7adf32f4015094da540f68e0e2b",
+      "status": "integrated",
+      "batch": 11,
+      "destination": "assets/femc/profile/searchers/cherry.webp",
+      "character": "cherry",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "intendedUse": "Compendium, as specified by Kat",
+      "placement": "compendium.html: discovered character entry; full-body contain framing",
+      "conversion": "Source transparency retained; transparent margins trimmed; max dimension 1400px; WebP quality 90",
+      "outputSha256": "44bfc31fe624b06a0cd25921f8e15483266daf01e2e7009e8edc5867e27074fd"
+    },
+    {
+      "source": "CraneJihoon.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "52e334b4788bf437a283e4d4f708d33fdc0cca0cb6b48d28ba89438b94b52049",
+      "status": "integrated",
+      "batch": 9,
+      "destination": "assets/femc/cg/link-jihoon-crane.webp",
+      "link": "jihoon",
+      "placement": "hangouts[0], shared closing beat",
+      "mobileFocus": "45% 40%",
+      "conversion": "WebP quality 90; original dimensions/composition, no retouching",
+      "outputSha256": "eabef31a242a627762ef4abfb428d6a0ab9f43cddc71325542c79bdf5fc9292e",
+      "sceneAdjustments": "Kat explicitly approved small scene-detail changes to fit these four CGs in this conversation. Choices, rewards and gates are unchanged."
+    },
+    {
+      "source": "GroupChatShadow.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ac3334fe7d56e4f925a2c000e6dde23be7b002c93d0c4e9baa99edd690572bd8",
+      "status": "pending",
+      "reviewNote": "Pose sheet inspected; no existing matching encounter. Pending appropriate encounter design."
+    },
+    {
+      "source": "HaechanAwakening.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "04d21bca1ea49a7d3bd985c7d1826bf5cfa3fe0389a4e1a250968d0d3296cfbd",
+      "status": "integrated",
+      "batch": 3,
+      "destination": "assets/femc/cg/searchers-haechan-awakening.webp",
+      "event": "a5-haechan-awakens",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "2aef723cf2a30050c28d608c45ab56662a774e8cd981b46e1ed9c42f04471439",
+      "mobileFocus": "39% 35%"
+    },
+    {
+      "source": "HanniFullBody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "adbedd794c2807e239a37db391157925d176cdb11a7c7242159494c6ce794e2f",
+      "status": "integrated",
+      "batch": 10,
+      "destination": "assets/femc/profile/searchers/hanni.webp",
+      "character": "hanni",
+      "intendedUse": "Compendium, as specified by Kat",
+      "conversion": "Source transparency retained; transparent margins trimmed; height limited to 1400px; WebP quality 90",
+      "outputSha256": "2d389ddaff59677baaec3a2a3b1e6f9987091f3e9e1bb742ac585a75453a47f2",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "placement": "compendium.html: discovered character entry; full-body contain framing"
+    },
+    {
+      "source": "Hoax-Math-Homework.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "dad720dcbced65502f036695d1f71d6cbdc81a07770c190a51e5677829f82476",
+      "status": "integrated",
+      "batch": 4,
+      "destination": "assets/femc/memories/hoax-math-homework.webp",
+      "fragment": "hoax-math-homework",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "a989fdf5864242502262c01302d9a77f02857cabe9c412d2f95260045ed69660"
+    },
+    {
+      "source": "HyeinFullBody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "6cf4c09baebd97575e90a777cdea1e21ce512ba6e5be490b612b555e1a59ad7b",
+      "status": "integrated",
+      "batch": 10,
+      "destination": "assets/femc/profile/searchers/hyein.webp",
+      "character": "hyein",
+      "intendedUse": "Compendium, as specified by Kat",
+      "conversion": "Source transparency retained; transparent margins trimmed; height limited to 1400px; WebP quality 90",
+      "outputSha256": "0d11c76840352d35bc0a71b933ca22e3f384676dfe344e89fe2d472df4b19e3e",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "placement": "compendium.html: discovered character entry; full-body contain framing"
+    },
+    {
+      "source": "JihoonArrival.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "f55e8531c369dd1075fba9c36066e8861a8b7e50ddcf9c783ac9867fd1fb7b18",
+      "status": "integrated",
+      "batch": 1,
+      "destination": "assets/femc/cg/searchers-jihoon-arrives.webp",
+      "event": "a4-ice-cream",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "1ada1513223af2d8149576025851873d732c0752b01065482d8cb093f9d415fd",
+      "mobileFocus": "35% 35%"
+    },
+    {
+      "source": "JihoonAwakening.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "b189268cb4a2bcf453ec37acdb2adfca8e87abe9f8be26e184511a5bc7097ea1",
+      "status": "integrated",
+      "batch": 2,
+      "destination": "assets/femc/cg/searchers-jihoon-awakening.webp",
+      "event": "a4-jihoon-awakens",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "b4c6e70effeece61e840822314d1d260c4e57eee655d61bbeacdc613d56adb26",
+      "mobileFocus": "77% 35%"
+    },
+    {
+      "source": "JihoonFullBody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "65a2ff70a47837b4fe10be29bc5b5867768f977074dac357f4348c3e60f234b2",
+      "status": "integrated",
+      "batch": 10,
+      "destination": "assets/femc/profile/searchers/jihoon.webp",
+      "character": "jihoon",
+      "intendedUse": "Compendium, as specified by Kat",
+      "conversion": "Source transparency retained; transparent margins trimmed; height limited to 1400px; WebP quality 90",
+      "outputSha256": "b758dd00cdfbaf3780ac7b6d34dd87cc5348040bc67364998926e8695e2298bf",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "placement": "compendium.html: discovered character entry; full-body contain framing"
+    },
+    {
+      "source": "JungwonAwakening.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4888f722c383f0a5d4d083cae942f9d6983da0f08fa764053d7aef767172929d",
+      "status": "integrated",
+      "batch": 3,
+      "destination": "assets/femc/cg/searchers-jungwon-awakening.webp",
+      "event": "a5-jungwon-awakens",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "806d21c37218fa1c3aa26bb404546c770963e732d0487b97a92ea199ecba8ea1",
+      "mobileFocus": "37% 35%"
+    },
+    {
+      "source": "JungwonCroissant.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "31b5f09d614deb08472a21ac4aee5b23f2917d2f97bb180681893ea2cd849360",
+      "status": "integrated",
+      "batch": 9,
+      "destination": "assets/femc/cg/link-jungwon-croissant.webp",
+      "link": "jungwon",
+      "placement": "hangouts[1], opening",
+      "mobileFocus": "67% 45%",
+      "conversion": "WebP quality 90; original dimensions/composition, no retouching",
+      "outputSha256": "d684ab512488e04d80bcf133f4bfd3c7ee22f7b7a505c9a68c64adb8b7e99e67",
+      "sceneAdjustments": "Kat explicitly approved small scene-detail changes to fit these four CGs in this conversation. Choices, rewards and gates are unchanged."
+    },
+    {
+      "source": "JungwonFullBody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "6b5aa73f35cb82ee07650bd3a0019babc40f5f09fa049dc574a342fc7ee4bfb1",
+      "status": "integrated",
+      "batch": 11,
+      "destination": "assets/femc/profile/searchers/jungwon.webp",
+      "character": "jungwon",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "intendedUse": "Compendium, as specified by Kat",
+      "placement": "compendium.html: discovered character entry; full-body contain framing",
+      "conversion": "Source transparency retained; transparent margins trimmed; max dimension 1400px; WebP quality 90",
+      "outputSha256": "d53351a2fb8461ca183580fd713dec8545c94014efd188963c431afe13e2edd1"
+    },
+    {
+      "source": "JunpeiBattle.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "611a876d153dfe932078ad670264893fceb39f9620d34e51f8ce0a8b1b61e07f",
+      "status": "integrated",
+      "batch": 12,
+      "destination": "assets/femc/battle/art/poses/junpei.webp",
+      "character": "junpei",
+      "uses": [
+        "Active character full-body battlefield stance"
+      ],
+      "conversion": "Alpha preserved; transparent margins trimmed; max dimension 1400px; WebP quality 90",
+      "outputSha256": "e7620e7245473a41041e22bc88edc8bda5a2c61340b49e0973a7ed2999f79dac",
+      "intendedUse": "Full-body weapon stance on the battlefield",
+      "placementNote": "Batch 12 places the prepared poses on the battlefield. Commands, All-Out silhouettes and finish cards retain their existing art.",
+      "preparedInBatch": 8,
+      "placement": "femc-battle.html: acting party character beside Shadows; contained whole-body framing"
+    },
+    {
+      "source": "MarkFullBody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0ec3da738c6d45cc812a072fde5dc21d9d809fce918b0322129e1a9173ddffbf",
+      "status": "integrated",
+      "batch": 10,
+      "destination": "assets/femc/profile/searchers/mark.webp",
+      "character": "mark",
+      "intendedUse": "Compendium, as specified by Kat",
+      "conversion": "Source transparency retained; transparent margins trimmed; height limited to 1400px; WebP quality 90",
+      "outputSha256": "ab2a4e0ff9aa56cbb6d63362ad5e7409c052e6a5d2a7c98fd8e0055aa657d7bf",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "placement": "compendium.html: discovered character entry; full-body contain framing"
+    },
+    {
+      "source": "MinjiAwakening.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "9c24ea2a5c62a0164392cc8df784a2d0850c7c3bc066ea010ef583458e17870c",
+      "status": "integrated",
+      "batch": 2,
+      "destination": "assets/femc/cg/searchers-minji-awakening.webp",
+      "event": "a4-minji-awakens",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "5fe563e3b1f61fae0281c3c3e4245fcf809324bb177d50ae42a6e1bdc8ca4b39",
+      "mobileFocus": "62% 35%"
+    },
+    {
+      "source": "MinjiCameraLamp.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "9d2914d9050068da7737fe35be93cfa8a42d384660d4f0902350affd7d522be4",
+      "status": "integrated",
+      "batch": 9,
+      "destination": "assets/femc/cg/link-minji-camera-lamp.webp",
+      "link": "minji",
+      "placement": "ranks[6], footage playback",
+      "mobileFocus": "68% 40%",
+      "conversion": "WebP quality 90; original dimensions/composition, no retouching",
+      "outputSha256": "50d7689c33f7e2688c8769e72491c7fb3648bcadec3844709fd155c08c3a4820",
+      "sceneAdjustments": "Kat explicitly approved small scene-detail changes to fit these four CGs in this conversation. Choices, rewards and gates are unchanged."
+    },
+    {
+      "source": "MinjiFullBody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8bfb82140155a40c1d5f5c9a9cf77b63d2cbe7d2be87aa03123184684d791ade",
+      "status": "integrated",
+      "batch": 10,
+      "destination": "assets/femc/profile/searchers/minji.webp",
+      "character": "minji",
+      "intendedUse": "Compendium, as specified by Kat",
+      "conversion": "Source transparency retained; transparent margins trimmed; height limited to 1400px; WebP quality 90",
+      "outputSha256": "97af81fdfd3fe9ed81f08d41bef05f9459c8bf29e749d75476642f3c0a1b9fc3",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "placement": "compendium.html: discovered character entry; full-body contain framing"
+    },
+    {
+      "source": "MitsuruBattle.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "190bfd72fea30499477b36f9d013ab1898cdbc36aa470ef637bbc641117eb715",
+      "status": "integrated",
+      "batch": 13,
+      "destination": "assets/femc/battle/art/poses/mitsuru.webp",
+      "character": "mitsuru",
+      "uses": [
+        "Active character full-body battlefield stance"
+      ],
+      "intendedUse": "Full-body weapon stance on the battlefield",
+      "placement": "femc-battle.html: acting party character beside Shadows; contained whole-body framing",
+      "conversion": "Alpha preserved; transparent margins trimmed; max dimension 1400px; WebP quality 90",
+      "outputSha256": "f738ac8feca7aa8922d7dff03e965c126cf38bae3f9778a905dd17c410aceafd"
+    },
+    {
+      "source": "MoonlightTrain.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ea09d7a745b2db141819d9369626419823f3313e3360d5d73264d1ae3f2dd08f",
+      "status": "integrated",
+      "batch": 5,
+      "destination": "assets/femc/cg/story-moonlight-train.webp",
+      "event": "a3-chariot",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "c7f4857e743bb1b18fb74e6939588338b68f9ba815ac596ef15c3848402f4767",
+      "mobileFocus": "55% 35%"
+    },
+    {
+      "source": "PaparazziShadow.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "acb79079722bf0e13dcc5224d878840c604432aed1ff0fbce4cbad1e7ab6ee1d",
+      "status": "integrated",
+      "batch": 6,
+      "destination": "assets/femc/battle/art/shadows/memory-flash.webp",
+      "enemy": "flash_shadow",
+      "conversion": "First standing-pose cell extracted, alpha retained, transparent margins trimmed, WebP quality 90",
+      "outputSha256": "826ecd4a55abb4c792f4011cd6104359001804a6355d77881015bb6a0fe26a06",
+      "poseFramesUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "animation": {
+        "canvas": [
+          640,
+          640
+        ],
+        "states": {
+          "attack": [
+            1,
+            3,
+            4
+          ],
+          "cast": [
+            1,
+            2,
+            5
+          ],
+          "defeat": [
+            4
+          ],
+          "down": [
+            4
+          ],
+          "hurt": [
+            4
+          ]
+        },
+        "outputs": {
+          "assets/femc/battle/art/shadows/memory-flash-pose-0.webp": "b256594a0e6e1297fd95de4c741690f43bb85ce348c4726f968724efc9ce80f0",
+          "assets/femc/battle/art/shadows/memory-flash-pose-1.webp": "6285874916660ee07a7d9122a40cd5e8bc435b91ef48760a327b6e00a8e3cc3b",
+          "assets/femc/battle/art/shadows/memory-flash-pose-2.webp": "3b5e6beace014e879f9f58513027bf3e2a281785099ffc6b541656b9550f97db",
+          "assets/femc/battle/art/shadows/memory-flash-pose-3.webp": "0f5e053a7bf088a5f726d7e422a4a937bdd1e080135ee2682039c27b0c9df8ac",
+          "assets/femc/battle/art/shadows/memory-flash-pose-4.webp": "b039292d4f59c1d2b60d8cc63d55ddf812f6557b7c06632ce410c3a0b36bb198",
+          "assets/femc/battle/art/shadows/memory-flash-pose-5.webp": "159da30fc875274b48e3e36ee525b34216a85f0a03a49d97eac9d1ff9220a5b5"
+        },
+        "preparationTool": "tools/femc-shadow-poses.py",
+        "notes": "All six cells extracted with original alpha, adjacent-cell fragments removed, primary silhouette bottom centered at source scale. Existing recoil/dissolve retained where no dedicated pose fits."
+      }
+    },
+    {
+      "source": "PossibleUses/Aigis_Battle.webp",
+      "size": [
+        4724,
+        6711
+      ],
+      "sha256": "2e723d0bab0e16b40e8c61c15cfd85b6758856b396745222933b1d8fcb5dc036",
+      "status": "pending",
+      "reviewNote": "Alternate full-body art; keep in reserve rather than replacing the newly integrated supplied battle stance."
+    },
+    {
+      "source": "PossibleUses/Koromaru.webp",
+      "size": [
+        1200,
+        2267
+      ],
+      "sha256": "9cf7a5bd4e8fc70d0bc0fa174698c0ba97e78d530d7f2e05d21e1702ada1acde",
+      "status": "pending",
+      "reviewNote": "Alternate sitting pose without the visible knife from the supplied battlefield stance; keep in reserve."
+    },
+    {
+      "source": "PossibleUses/Mitsuru-FullBody-WithWeapon.webp",
+      "size": [
+        360,
+        573
+      ],
+      "sha256": "d663bc6bf9e227f17f7bc8929210b2e111847d4d14b05ac6420a8b607cbfc95c",
+      "status": "pending",
+      "reviewNote": "Alternate low-resolution full-body weapon pose; keep in reserve."
+    },
+    {
+      "source": "PossibleUses/Untitled design (25).png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "a9e9775895363f4eba70cb5fb4981e5a6292855c08d5307d845d8a64e2449e6d",
+      "status": "pending",
+      "reviewNote": "Cropped Mitsuru upper-body weapon art; not a complete full-body battlefield pose. Keep in reserve."
+    },
+    {
+      "source": "Runners-Rooftop.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "58b0cb7480981bad2630ba1bfe72972784b0f74bee870ee976fe1f0fb056d54c",
+      "status": "integrated",
+      "batch": 4,
+      "destination": "assets/femc/memories/runners-rooftop.webp",
+      "fragment": "runners-rooftop",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "0d60184022749b160afb115cf79191423499b0cdda503956e00c464e4aedf486"
+    },
+    {
+      "source": "ShinjiSolarCooking.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "27394bbcb27f38995203b28ac78779bed7f6e90df0cf0c8ea7df87b14b613677",
+      "status": "integrated",
+      "batch": 9,
+      "destination": "assets/femc/cg/link-shinjiro-cooking.webp",
+      "link": "shinjiro",
+      "placement": "ranks[6], first choice Show me branch",
+      "mobileFocus": "50% 40%",
+      "conversion": "WebP quality 90; original dimensions/composition, no retouching",
+      "outputSha256": "f0ba6c3e8e715e21be6792d1c6738ef32fb27374bd222bcb28431053ab245017",
+      "sceneAdjustments": "Kat explicitly approved small scene-detail changes to fit these four CGs in this conversation. Choices, rewards and gates are unchanged."
+    },
+    {
+      "source": "SolarBattle.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "a1bece4f1760e642c707a15c43a9340cbca24b021757ca0ea3563d0d519ba272",
+      "status": "integrated",
+      "batch": 12,
+      "destination": "assets/femc/battle/art/poses/solar.webp",
+      "character": "solar",
+      "uses": [
+        "Active character full-body battlefield stance"
+      ],
+      "conversion": "Alpha preserved; transparent margins trimmed; max dimension 1400px; WebP quality 90",
+      "outputSha256": "55944272b04cc52e195d25fcf09d58a0af700def448dd4951806292ed6f1e286",
+      "intendedUse": "Full-body weapon stance on the battlefield",
+      "placementNote": "Batch 12 places the prepared poses on the battlefield. Commands, All-Out silhouettes and finish cards retain their existing art.",
+      "preparedInBatch": 8,
+      "placement": "femc-battle.html: acting party character beside Shadows; contained whole-body framing"
+    },
+    {
+      "source": "SolarWeapons.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "f23820b62483a9315f11808a065d4801fa4e1b3824752e045cbf612aa7139027",
+      "status": "prepared",
+      "batch": 14,
+      "outputs": [
+        {
+          "design": "dragon",
+          "box": [
+            66,
+            9,
+            298,
+            506
+          ],
+          "destination": "assets/femc/battle/art/weapons/dragon.webp",
+          "outputSha256": "5c9042389814547f2c304a4659e362d017d2920d0ccaa4a765c3bf3024c1716f"
+        },
+        {
+          "design": "pink-kitty",
+          "box": [
+            315,
+            9,
+            533,
+            506
+          ],
+          "destination": "assets/femc/battle/art/weapons/pink-kitty.webp",
+          "outputSha256": "157a72790e04ff79cee829dda1d7b9e1a82506c7759a835c19e38580b56b2188"
+        },
+        {
+          "design": "ivory-heart",
+          "box": [
+            548,
+            9,
+            771,
+            506
+          ],
+          "destination": "assets/femc/battle/art/weapons/ivory-heart.webp",
+          "outputSha256": "12f49ee1015890c6d925f4febda168ead7166c60a458fd652ef0ebab278b291f"
+        },
+        {
+          "design": "violet-butterfly",
+          "box": [
+            784,
+            9,
+            1009,
+            506
+          ],
+          "destination": "assets/femc/battle/art/weapons/violet-butterfly.webp",
+          "outputSha256": "3cb73c5fa4f5d8240a8a386057ef3a68586f8d3f848d25676e895a6f993d9907"
+        },
+        {
+          "design": "black-rose",
+          "box": [
+            1022,
+            9,
+            1245,
+            506
+          ],
+          "destination": "assets/femc/battle/art/weapons/black-rose.webp",
+          "outputSha256": "cb8aa9b8c5c8db37f596f59568b630d5f2fd5a72a5e874f2454f389c0b169045"
+        },
+        {
+          "design": "moon-and-stars",
+          "box": [
+            1258,
+            9,
+            1481,
+            506
+          ],
+          "destination": "assets/femc/battle/art/weapons/moon-and-stars.webp",
+          "outputSha256": "4b37128bbee0e363245a9dc7dc4013b42f8c142e2d63a1f607888964ed4eddcf"
+        },
+        {
+          "design": "bamboo-panda",
+          "box": [
+            66,
+            517,
+            298,
+            1010
+          ],
+          "destination": "assets/femc/battle/art/weapons/bamboo-panda.webp",
+          "outputSha256": "5931f7e346b86b732fb51dafc24df221856194c0e4c13cefc447c4be76a4e60e"
+        },
+        {
+          "design": "ice-crystal",
+          "box": [
+            315,
+            517,
+            533,
+            1010
+          ],
+          "destination": "assets/femc/battle/art/weapons/ice-crystal.webp",
+          "outputSha256": "7a166251fee0b08c2b6870c89a1375b9d3ed514fd7a2d90d49e177364aba6c27"
+        },
+        {
+          "design": "crimson-lock",
+          "box": [
+            548,
+            517,
+            771,
+            1010
+          ],
+          "destination": "assets/femc/battle/art/weapons/crimson-lock.webp",
+          "outputSha256": "75c99934655acc25dd19a00ffbca98358c3c6759623342f2873ed6fac160b7a7"
+        },
+        {
+          "design": "mint-flowers",
+          "box": [
+            784,
+            517,
+            1009,
+            1010
+          ],
+          "destination": "assets/femc/battle/art/weapons/mint-flowers.webp",
+          "outputSha256": "38e79edac0d2a880e834f2481956798323c49f8ef5229cc154c05df3eaac2e18"
+        },
+        {
+          "design": "iridescent-orb",
+          "box": [
+            1022,
+            517,
+            1245,
+            1010
+          ],
+          "destination": "assets/femc/battle/art/weapons/iridescent-orb.webp",
+          "outputSha256": "e510c1c3420e6f77a84e155b3e9fe2d3074158eacf1bfb715296eebdfba449ca"
+        },
+        {
+          "design": "autumn-fox",
+          "box": [
+            1258,
+            517,
+            1481,
+            1010
+          ],
+          "destination": "assets/femc/battle/art/weapons/autumn-fox.webp",
+          "outputSha256": "56335e6cbb5738bdeefcdb1698b686aeb3e9b7e2e765bd9552568394517b8a81"
+        }
+      ],
+      "uses": [],
+      "conversion": "Twelve separate rectangular WebP design cards, quality 90; each original background and complete weapon preserved",
+      "intendedUse": "Solar weapon artwork; on hold at Kat’s request",
+      "placementNote": "Kat explicitly requested “Wait on those.” Keep the twelve prepared design cards aside; do not map them to gear or add collectibles/cosmetics until she asks to resume. No gear, shops, equipment UI or combat rules changed."
+    },
+    {
+      "source": "TrueEnding-Unveiled.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "53620c118fdf3322c71a5ad54ee680e010ab4afca1531609ea04cd963d0eb25f",
+      "status": "integrated",
+      "batch": 5,
+      "destination": "assets/femc/cg/story-haenim-unveiled.webp",
+      "event": "a6-last-train",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "a70d0621b7ab0a146649602d5ab2cc432da250883d3b9598e356b6b77dbafc88",
+      "mobileFocus": "50% 35%"
+    },
+    {
+      "source": "YukariBattle.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "b96e3e9960b24af7da948d819d1d73d9fb8c6f0a041928f497f83606ebc5de35",
+      "status": "integrated",
+      "batch": 12,
+      "destination": "assets/femc/battle/art/poses/yukari.webp",
+      "character": "yukari",
+      "uses": [
+        "Active character full-body battlefield stance"
+      ],
+      "conversion": "Alpha preserved; transparent margins trimmed; max dimension 1400px; WebP quality 90",
+      "outputSha256": "c6226be1d8d8d42886092f3e2b7a921511e328015844ec238c7d39715f3b763a",
+      "intendedUse": "Full-body weapon stance on the battlefield",
+      "placementNote": "Batch 12 places the prepared poses on the battlefield. Commands, All-Out silhouettes and finish cards retain their existing art.",
+      "preparedInBatch": 8,
+      "placement": "femc-battle.html: acting party character beside Shadows; contained whole-body framing"
+    },
+    {
+      "source": "YunjinFullBody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b0d54769c2ab7bb4ca9b0e2a21acbbc0dac0b0f310a4507377ba357165676384",
+      "status": "integrated",
+      "batch": 11,
+      "destination": "assets/femc/profile/searchers/yunjin.webp",
+      "character": "yunjin",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "intendedUse": "Compendium, as specified by Kat",
+      "placement": "compendium.html: discovered character entry; full-body contain framing",
+      "conversion": "Source transparency retained; transparent margins trimmed; max dimension 1400px; WebP quality 90",
+      "outputSha256": "e517086888446eca556fc040b0e4d4f5498f97a3ce073cc109d6fc795df713f1"
+    },
+    {
+      "source": "YunjinLowTide.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "ed8d402bc76f424a18e9b80594ac43360e16c5974416c50560a23c5238de8b90",
+      "status": "integrated",
+      "batch": 1,
+      "destination": "assets/femc/cg/searchers-yunjin-low-tide.webp",
+      "event": "a4-low-tide",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "a6a9ba914a36e480e7d24dae239e4980460d525758909e96753ebcb00d71ace9",
+      "mobileFocus": "65% 45%"
+    },
+    {
+      "source": "brideShadow.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e7f5cad283b138dd47ce69d2a87027dc5ebec9da8efac1538683711a03bf93fc",
+      "status": "integrated",
+      "batch": 7,
+      "destination": "assets/femc/battle/art/shadows/memory-veil-pose-0.webp",
+      "enemy": "veil_poster",
+      "artGroup": "memory-veil-poster",
+      "poseFramesUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "conversion": "Six alpha-preserving pose cells on fixed canvases, neighboring-cell fragments removed; WebP quality 90",
+      "outputSha256": "c013a48d9c1c6b86b31db1c02ad031d1e67abac76a1f5b7e17e4365fe53f771c",
+      "animation": {
+        "canvas": [
+          640,
+          640
+        ],
+        "states": {
+          "attack": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "cast": [
+            1,
+            2,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            3,
+            4,
+            5
+          ]
+        },
+        "outputs": {
+          "assets/femc/battle/art/shadows/memory-veil-pose-0.webp": "c013a48d9c1c6b86b31db1c02ad031d1e67abac76a1f5b7e17e4365fe53f771c",
+          "assets/femc/battle/art/shadows/memory-veil-pose-1.webp": "f6e843c82296dc50f6221728894d3519917e0fd3c136e1a83d97c0f8f39d0dcd",
+          "assets/femc/battle/art/shadows/memory-veil-pose-2.webp": "46a61cd4d29659d66cec3c564808a8145d2e26e9b345250822369c659b45e43f",
+          "assets/femc/battle/art/shadows/memory-veil-pose-3.webp": "bb1a57e961da001f70b4a61dac08cf934b93415153289d521d449d2ae8b1b6dc",
+          "assets/femc/battle/art/shadows/memory-veil-pose-4.webp": "a35b4cc84ab590763670c9ce7c0a327693821689c138f4574d20c81ee9d23681",
+          "assets/femc/battle/art/shadows/memory-veil-pose-5.webp": "98e6f0dcd3dd060e0edd7d1d19be01d947180811a732faad05ffc69f10731296"
+        },
+        "preparationTool": "tools/femc-shadow-poses.py",
+        "notes": "Poster and veil share one existing enemy, with both sheets in its spell sequence; no combat rules changed."
+      }
+    },
+    {
+      "source": "cityoftheawake.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a0501d0c7406c236b02da799ce4e5213eb75710b0b82282b541e09ce64b6c954",
+      "status": "integrated",
+      "batch": 5,
+      "destination": "assets/femc/cg/story-city-of-the-awake.webp",
+      "event": "a2-empress",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "58ebb04e6dbad006d885f20d555b6aea1dd041c3b53c43cc52a05e45a9de6bc9",
+      "mobileFocus": "50% 40%"
+    },
+    {
+      "source": "fishmongerShadow.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4ce36201732489a93ec4f6c1e8ad7b67b7aaa7bd349a4af61e8a477814e119f2",
+      "status": "pending",
+      "reviewNote": "Pose sheet inspected; no existing matching encounter. Pending appropriate encounter design."
+    },
+    {
+      "source": "grandmasterShadow.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2b2dd82d161f55b0cafeb6c13d9060f4576e36ae2dd59116acf7ed3b775327a0",
+      "status": "integrated",
+      "batch": 6,
+      "destination": "assets/femc/battle/art/shadows/memory-mirror-fox.webp",
+      "enemy": "fox_shadow",
+      "conversion": "First standing-pose cell extracted, alpha retained, transparent margins trimmed, WebP quality 90",
+      "outputSha256": "50fc5a02ea584946c5cbc0727e73d6e88efd67becf2bbaa7cbfab3572ca2e953",
+      "poseFramesUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "animation": {
+        "canvas": [
+          640,
+          640
+        ],
+        "states": {
+          "attack": [
+            1,
+            2,
+            4
+          ],
+          "cast": [
+            1,
+            3,
+            5
+          ]
+        },
+        "outputs": {
+          "assets/femc/battle/art/shadows/memory-mirror-fox-pose-0.webp": "9cef0a09fd29bf2af6b355740a352609564bc99b0b695a85891588f2a6ab2ad1",
+          "assets/femc/battle/art/shadows/memory-mirror-fox-pose-1.webp": "33204bf5aa1c52bb7456d577b2d0f53d338a2b2e43c2a33afec70235f5983c92",
+          "assets/femc/battle/art/shadows/memory-mirror-fox-pose-2.webp": "989f36f51b8f2593f1c2b4cb043b70a30c01b94b51079832055f6f9467f6b003",
+          "assets/femc/battle/art/shadows/memory-mirror-fox-pose-3.webp": "f04b6a987c1ff2d0bca7295e53239cddbb67dab3f9cf23d6f270d23cae2d7a2d",
+          "assets/femc/battle/art/shadows/memory-mirror-fox-pose-4.webp": "2bf3340c8dc3997cb04298e97231555424182cd3253a5d6e6febba01124721a5",
+          "assets/femc/battle/art/shadows/memory-mirror-fox-pose-5.webp": "847f70e957627220185e9a168dce4aa1947495cd3f1554c1fbcc332cae0e4f1a"
+        },
+        "preparationTool": "tools/femc-shadow-poses.py",
+        "notes": "All six cells extracted with original alpha, adjacent-cell fragments removed, primary silhouette bottom centered at source scale. Existing recoil/dissolve retained where no dedicated pose fits."
+      }
+    },
+    {
+      "source": "hoax-group-chat.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "4b4d4ee2dd5ae1959493fb4784ae0a03c6199ae6167765589d417b8ac71f6287",
+      "status": "integrated",
+      "batch": 4,
+      "destination": "assets/femc/memories/hoax-group-chat.webp",
+      "fragment": "hoax-group-chat",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "f74c5bd1283820f6340f277ce86f11e98f31877ac8484e54e4c5d71b960cda66"
+    },
+    {
+      "source": "ikutskiportraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9a251555f6992d213a01671247cad13abeb8c3cfe18c04bf3e477f3219b26ee6",
+      "status": "integrated",
+      "batch": 9,
+      "destination": "assets/femc/portraits/ikutsuki/neutral.webp",
+      "character": "ikutsuki",
+      "conversion": "Six labeled cells extracted; backgrounds removed with existing macOS Vision tool; existing portrait normalization aligns faces on shared canvases; WebP copies preserve originals",
+      "outputs": {
+        "assets/femc/portraits/ikutsuki/flustered.webp": "331db7412b8a81c618bcb8deaab9c0be309dc5196fd14d3011c7e501c4546a1f",
+        "assets/femc/portraits/ikutsuki/happy.webp": "65f885111f69209098a50e37203c826127d5f37e310c2438b1575c3b5595c304",
+        "assets/femc/portraits/ikutsuki/neutral.webp": "5eb0280bc2dac578e1934480a2b39e7b16cdefefdab9afc2dbf0bf9c55b555ec",
+        "assets/femc/portraits/ikutsuki/sad.webp": "e515cff8ef0739fba37c80525a777f7a61bd075584e7da97926e13e7de48d199",
+        "assets/femc/portraits/ikutsuki/serious.webp": "5fc3aa365b94687b8e20641b5c4fa3a729f056c0b172989089600c66c1832674",
+        "assets/femc/portraits/ikutsuki/surprised.webp": "90192cb93e7f35eef809ea230bf67d0dd0c3addf586323da9979a17be41d0f71"
+      },
+      "outputSha256": "5eb0280bc2dac578e1934480a2b39e7b16cdefefdab9afc2dbf0bf9c55b555ec",
+      "expressionMapping": {
+        "ANGRY": "serious",
+        "EMBARRASSED": "flustered",
+        "SAD": "sad",
+        "NEUTRAL": "neutral",
+        "HAPPY": "happy",
+        "SURPRISED": "surprised"
+      },
+      "scale": 0.82
+    },
+    {
+      "source": "jaehyunFullBody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b5c040da8e8c43528206e3369be81b1f18b5f8e8e9d3d12bb939dac4e15fc61f",
+      "status": "integrated",
+      "batch": 11,
+      "destination": "assets/femc/profile/searchers/jaehyun.webp",
+      "character": "jaehyun",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "intendedUse": "Compendium, as specified by Kat",
+      "placement": "compendium.html: discovered character entry; full-body contain framing",
+      "conversion": "Source transparency retained; transparent margins trimmed; max dimension 1400px; WebP quality 90",
+      "outputSha256": "3f732363bd67f660401d903553af0182e206f4663adb2b99fad1f003a5d507a4"
+    },
+    {
+      "source": "kegstandshadow.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0c30908a2545648b6d96030a51bbb42ca29e67211a79ea16458aadb7821bd7b8",
+      "status": "integrated",
+      "batch": 7,
+      "destination": "assets/femc/battle/art/shadows/memory-party-pose-0.webp",
+      "enemy": "party_shadow",
+      "artGroup": "memory-party",
+      "poseFramesUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "conversion": "Six alpha-preserving pose cells on fixed canvases, neighboring-cell fragments removed; WebP quality 90",
+      "outputSha256": "a1b00552bd75c7080d254af6e2f83ede984bc7d7e3a6045487f86b03c7a21320",
+      "animation": {
+        "canvas": [
+          640,
+          640
+        ],
+        "states": {
+          "attack": [
+            1,
+            2,
+            3,
+            5
+          ],
+          "cast": [
+            1,
+            2,
+            4,
+            5
+          ]
+        },
+        "outputs": {
+          "assets/femc/battle/art/shadows/memory-party-pose-0.webp": "a1b00552bd75c7080d254af6e2f83ede984bc7d7e3a6045487f86b03c7a21320",
+          "assets/femc/battle/art/shadows/memory-party-pose-1.webp": "1c0ba81074fb8a7d85110a1d93e47efe79efe59ba3cc8348a91384b1107efb6d",
+          "assets/femc/battle/art/shadows/memory-party-pose-2.webp": "1992ccb00cf5ae206c56b6ba84e8c38f32466fc9fc9222112db4005ab175f4ea",
+          "assets/femc/battle/art/shadows/memory-party-pose-3.webp": "a531775dbc0d2addcd833cd084b60ecfc7c841745193345d28c1b06c998244ed",
+          "assets/femc/battle/art/shadows/memory-party-pose-4.webp": "88b0037abfe3c9f31cb27a3cdb3ca33df9a48c0e43f7cf992674ab1f90d798c3",
+          "assets/femc/battle/art/shadows/memory-party-pose-5.webp": "d1d7fd44c9203005732db2c35c0b03b7350aac3e9fa59c683cb503e821e13c77"
+        },
+        "preparationTool": "tools/femc-shadow-poses.py",
+        "notes": "Poster and veil share one existing enemy, with both sheets in its spell sequence; no combat rules changed."
+      }
+    },
+    {
+      "source": "koromarubattle.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "0149a3dde221800466b212bc6c33a7e2e88cd8f5a2c1e89415f86b5f304e88ad",
+      "status": "integrated",
+      "batch": 13,
+      "destination": "assets/femc/battle/art/poses/koromaru.webp",
+      "character": "koromaru",
+      "uses": [
+        "Active character full-body battlefield stance"
+      ],
+      "intendedUse": "Full-body weapon stance on the battlefield",
+      "placement": "femc-battle.html: acting party character beside Shadows; contained whole-body framing",
+      "conversion": "Alpha preserved; transparent margins trimmed; max dimension 1400px; WebP quality 90",
+      "outputSha256": "89bacb9164d4a7e8b3f317176098e4f651597239e5665a762ad05dea935b4862"
+    },
+    {
+      "source": "lowtideshadow.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b390b751f00a56de94123f4dc947674f2bdbaa5827ba44ef14e4d2c24018b543",
+      "status": "integrated",
+      "batch": 6,
+      "destination": "assets/femc/battle/art/shadows/memory-tide.webp",
+      "enemy": "tide_shadow",
+      "conversion": "First standing-pose cell extracted, alpha retained, transparent margins trimmed, WebP quality 90",
+      "outputSha256": "d52fbb755060989c40687775f433b289067d974dec06bfcd083358c2707aaa81",
+      "poseFramesUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "animation": {
+        "canvas": [
+          640,
+          640
+        ],
+        "states": {
+          "attack": [
+            1,
+            2,
+            3,
+            5
+          ],
+          "cast": [
+            2,
+            4,
+            5
+          ],
+          "defeat": [
+            5
+          ],
+          "down": [
+            5
+          ],
+          "hurt": [
+            5
+          ]
+        },
+        "outputs": {
+          "assets/femc/battle/art/shadows/memory-tide-pose-0.webp": "586135acd6bae95c150d8d96b2b445ce35b0b852af075d7f0e79c7b5d9f84922",
+          "assets/femc/battle/art/shadows/memory-tide-pose-1.webp": "0eb76cf0e8c62fced1d91217e098a6db1803e625fe7e4c2a57619e94c66438cc",
+          "assets/femc/battle/art/shadows/memory-tide-pose-2.webp": "012b38faf0b377c0e447e495c51816d51f0027741acc9036da66210d9d7211b1",
+          "assets/femc/battle/art/shadows/memory-tide-pose-3.webp": "b430aa8d1c4ba41f9ff05d2be28060cbbbc35a3a93a7ccf89efdbeecabce9c00",
+          "assets/femc/battle/art/shadows/memory-tide-pose-4.webp": "b654ca5e0249c30605df4e775241efe24ce471d28c6fde11844be74d64afda79",
+          "assets/femc/battle/art/shadows/memory-tide-pose-5.webp": "8225d72fc5e580c6384cf20a7797147ba995150c45b07f243972ce16dd11669c"
+        },
+        "preparationTool": "tools/femc-shadow-poses.py",
+        "notes": "All six cells extracted with original alpha, adjacent-cell fragments removed, primary silhouette bottom centered at source scale. Existing recoil/dissolve retained where no dedicated pose fits."
+      }
+    },
+    {
+      "source": "shinjirobattle.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ca5b020e4f8a64a8e56702bcd80d87300cb99c3bc00e23d57040027d360bc788",
+      "status": "integrated",
+      "batch": 13,
+      "destination": "assets/femc/battle/art/poses/shinjiro.webp",
+      "character": "shinjiro",
+      "uses": [
+        "Active character full-body battlefield stance"
+      ],
+      "intendedUse": "Full-body weapon stance on the battlefield",
+      "placement": "femc-battle.html: acting party character beside Shadows; contained whole-body framing",
+      "conversion": "Alpha preserved; transparent margins trimmed; max dimension 1400px; WebP quality 90",
+      "outputSha256": "1807c01d63d0c18fb022121d0483873d05166f601611b93e90122440d47f8629"
+    },
+    {
+      "source": "strangers-low-tide.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "64770089d6198ea5e95c4c315f67cde782583d63582b9db406f85cca95b6ee16",
+      "status": "integrated",
+      "batch": 4,
+      "destination": "assets/femc/memories/strangers-low-tide.webp",
+      "fragment": "strangers-low-tide",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "a017ab9a52bc83f8d0eef8954eb9e9d7c1e2744a566ac5876ab3fac099b24f5c"
+    },
+    {
+      "source": "strangers-suture-kit.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "a5ae165e5a076126a470c21c4cfcba58c9e65e11f6b305ae67a712c8745f677b",
+      "status": "integrated",
+      "batch": 4,
+      "destination": "assets/femc/memories/strangers-suture-kit.webp",
+      "fragment": "strangers-suture-kit",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "52a2599d52ad7d996207856e3324f8c3243f6cf861f304ac4935ce425b2dec48"
+    }
+  ],
+  "batch1Validation": {
+    "sceneRuns": 10,
+    "allChoicesChecked": true,
+    "dialogueAndLogicUnchanged": true,
+    "desktopAndPhoneReviewed": true,
+    "sourceFilesUnchanged": 54,
+    "browserErrors": 0
+  },
+  "batch2Validation": {
+    "sceneRuns": 5,
+    "allChoicesChecked": true,
+    "dialogueAndLogicUnchanged": true,
+    "desktopAndPhoneReviewed": true,
+    "phoneTextScrollingChecked": true,
+    "battleHooksChecked": true,
+    "battleCompletionSimulated": true,
+    "combatRetested": false,
+    "recruitmentFlagsChecked": true,
+    "sourceFilesUnchanged": 54,
+    "browserErrors": 0
+  },
+  "batch3Validation": {
+    "sceneRuns": 10,
+    "allChoicesChecked": true,
+    "dialogueAndLogicUnchanged": true,
+    "desktopAndPhoneReviewed": true,
+    "phoneTextScrollingChecked": true,
+    "battleHooksChecked": true,
+    "battleCompletionSimulated": true,
+    "combatRetested": false,
+    "recruitmentFlagsChecked": true,
+    "sourceFilesUnchanged": 54,
+    "browserErrors": 0
+  },
+  "batch4Validation": {
+    "imagesLoaded": 5,
+    "existingFragmentIdsMatched": true,
+    "desktopAndPhoneReviewed": true,
+    "sourceFilesUnchanged": 54,
+    "browserErrors": 0,
+    "verification": "One journal loading check and one screenshot per viewport; no game code changed."
+  },
+  "batch5Validation": {
+    "imagesLoaded": 4,
+    "eventMappingsAndClearCuesChecked": 4,
+    "dialogueAndLogicUnchanged": true,
+    "desktopAndPhoneReviewed": true,
+    "screenshots": 2,
+    "sourceFilesUnchanged": 54,
+    "browserErrors": 0,
+    "verification": "Targeted CG segments in existing event data; no full route replay."
+  },
+  "batch6Validation": {
+    "battleImagesLoaded": 4,
+    "combatDataUnchanged": true,
+    "desktopAndPhoneReviewed": true,
+    "screenshots": 2,
+    "sourceFilesUnchanged": 54,
+    "browserErrors": 0,
+    "scope": "First standing pose from each sheet only. Remaining five poses per sheet reserved; combat rendering checked, battles not replayed."
+  },
+  "shadowAnimationValidation": {
+    "framesLoaded": 24,
+    "actualAttackAndCastBattles": 4,
+    "actualDefeatTransitions": 2,
+    "fixedFrameLayoutChecked": true,
+    "interruptedActionsChecked": true,
+    "reducedMotionChecked": true,
+    "slowLoadingFallbackChecked": true,
+    "desktopAndPhoneReviewed": true,
+    "sourceFilesUnchanged": 54,
+    "browserErrors": 0,
+    "test": "python3 tests/femc_shadow_poses.py"
+  },
+  "batch7Validation": {
+    "framesLoaded": 18,
+    "actualBattleAttackAndCast": 2,
+    "desktopAndPhoneReviewed": true,
+    "sourceFilesUnchanged": 54,
+    "browserErrors": 0,
+    "test": "python3 tests/femc_shadow_poses.py --art memory-party,memory-veil-poster --enemies party_shadow,veil_poster",
+    "notes": "Pose extraction also visually reviewed; lower-right sheet overflow retained to avoid clipping the veil head."
+  },
+  "batch8Validation": {
+    "commandArtLoaded": 4,
+    "allOutFiguresLoaded": 4,
+    "combatDataUnchanged": true,
+    "sourceFilesUnchanged": 54,
+    "desktopAndPhoneReviewed": true,
+    "screenshots": 2,
+    "browserErrors": 0,
+    "notes": "Earlier checks confirmed loading, not suitability. Command and All-Out placement reverted; prepared files preserved for battlefield placement.",
+    "status": "placement_reverted"
+  },
+  "batch8RestorationValidation": {
+    "commandPortraitsRestored": 4,
+    "allOutPortraitFiguresRestored": 4,
+    "combatDataUnchanged": true,
+    "sourceFilesUnchanged": 54,
+    "browserErrors": 0,
+    "preparedAssetsPreserved": 4
+  },
+  "batch9Validation": {
+    "cgImagesLoadedAndCleared": 4,
+    "portraitExpressionsLoaded": 6,
+    "portraitLayoutStable": true,
+    "choicesRewardsAndGatesUnchanged": true,
+    "sourceFilesUnchanged": 54,
+    "desktopAndPhoneReviewed": true,
+    "screenshots": 4,
+    "browserErrors": 0,
+    "sceneAdjustmentsApprovedByKat": true,
+    "shinjiroEvokerHeldForCorrection": true
+  },
+  "batch10Preparation": {
+    "sourceImagesReviewed": 5,
+    "preparedTransparentAssets": 5,
+    "allSourceFilesUnchanged": 54,
+    "integrated": true,
+    "pendingDecision": null,
+    "decision": "Kat specified the Compendium; found the shared standalone page also linked by the parked merge."
+  },
+  "batch10Validation": {
+    "profilesLoaded": 5,
+    "unlockChecks": 23,
+    "undiscoveredEntriesHidden": true,
+    "newGamePlusRegistrationChecked": true,
+    "gameSavesUnchanged": true,
+    "sourceFilesUnchanged": 54,
+    "desktopAndPhoneReviewed": true,
+    "browserErrors": 0,
+    "test": "python3 tests/femc_compendium.py"
+  },
+  "batch11Validation": {
+    "sourceImagesReviewed": 4,
+    "profilesLoaded": 4,
+    "unlockChecks": 20,
+    "existingEntryMetadataPreserved": true,
+    "undiscoveredEntriesHidden": true,
+    "newGamePlusRegistrationChecked": true,
+    "gameSavesUnchanged": true,
+    "sourceFilesUnchanged": 54,
+    "desktopAndPhoneReviewed": true,
+    "browserErrors": 0,
+    "test": "python3 tests/femc_compendium.py --ids cherry,jungwon,yunjin,jaehyun"
+  },
+  "batch12Validation": {
+    "sourceImagesReviewed": 4,
+    "battlefieldPosesLoaded": 4,
+    "actualPartyTurnsChecked": 4,
+    "scriptedBattleContinuation": true,
+    "commandPortraitsPreserved": true,
+    "combatDataUnchanged": true,
+    "preparedAssetHashesUnchanged": 4,
+    "sourceFilesUnchanged": 54,
+    "desktopAndPhoneReviewed": true,
+    "browserErrors": 0,
+    "test": "python3 tests/femc_field_poses.py"
+  },
+  "batch13Validation": {
+    "sourceImagesReviewed": 4,
+    "battlefieldPosesLoaded": 4,
+    "actualPartyTurnsChecked": 4,
+    "scriptedBattleContinuation": true,
+    "encounters": 2,
+    "commandPortraitsPreserved": true,
+    "combatDataUnchanged": true,
+    "sourceFilesUnchanged": 54,
+    "desktopAndPhoneReviewed": true,
+    "browserErrors": 0,
+    "test": "python3 tests/femc_field_poses.py --ids aigis,mitsuru,koromaru,shinjiro"
+  },
+  "batch14Preparation": {
+    "sourceImagesReviewed": 1,
+    "weaponCardsPrepared": 12,
+    "preparedCardsDecoded": 12,
+    "preparedCardsVisuallyReviewed": 12,
+    "sourceFilesUnchanged": 54,
+    "integrated": false,
+    "pendingDecision": null,
+    "status": "on_hold_by_user",
+    "decision": "Kat requested “Wait on those.” Prepared cards retained without game integration."
+  },
+  "remainingDuplicateReview": {
+    "sources": [
+      "ChatGPT Image Oct 18, 2026, 02_44_02 AM.png",
+      "ChatGPT Image Oct 18, 2026, 02_44_45 AM.png"
+    ],
+    "identicalSha256": true,
+    "note": "Identical supplied files. Opaque scene composition differs from current transparent enemy sprite; keep pending rather than replace battlefield cutout with a rectangular scene."
+  }
+}

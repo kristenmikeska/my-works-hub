@@ -17,12 +17,13 @@ window.FEMC_COMPENDIUM = [
   "id": "jungwon",
   "name": "Yang Jungwon",
   "from": "Hoax",
-  "img": null,
+  "img": "assets/femc/profile/searchers/jungwon.webp",
   "unlock": "met:jungwon",
   "note": "Student council president of a school nobody here has heard of. He keeps saying you look like someone.",
   "arcana": "V · Hierophant",
   "link": "social.html#jungwon",
-  "secret": true
+  "secret": true,
+  "profile": true
  },
  {
   "id": "femc",
@@ -90,26 +91,26 @@ window.FEMC_COMPENDIUM = [
   "arcana": "VI · Lovers",
   "link": "social.html#ann"
  },
-{
- "id": "rio",
- "name": "Rio Iwasaki",
- "from": "Persona 3 Portable",
- "img": null,
- "unlock": "met:rio",
- "note": "The volleyball team's ace, who never once let herself stop before the ball did.",
- "arcana": "VII · Chariot",
- "link": "social.html#rio"
-},
-{
- "id": "saori",
- "name": "Saori Hasegawa",
- "from": "Persona 3 Portable",
- "img": null,
- "unlock": "met:saori",
- "note": "A library committee girl everyone whispers about, and nobody bothered to know.",
- "arcana": "IX · Hermit",
- "link": "social.html#saori"
-},
+ {
+  "id": "rio",
+  "name": "Rio Iwasaki",
+  "from": "Persona 3 Portable",
+  "img": null,
+  "unlock": "met:rio",
+  "note": "The volleyball team's ace, who never once let herself stop before the ball did.",
+  "arcana": "VII · Chariot",
+  "link": "social.html#rio"
+ },
+ {
+  "id": "saori",
+  "name": "Saori Hasegawa",
+  "from": "Persona 3 Portable",
+  "img": null,
+  "unlock": "met:saori",
+  "note": "A library committee girl everyone whispers about, and nobody bothered to know.",
+  "arcana": "IX · Hermit",
+  "link": "social.html#saori"
+ },
  {
   "id": "leon",
   "name": "Leon S. Kennedy",
@@ -471,16 +472,114 @@ window.FEMC_COMPENDIUM = [
   "img": null,
   "unlock": "reg:jotaro",
   "note": "Calm, stoic, and rarely surprised."
+ },
+ {
+  "id": "hanni",
+  "name": "Hanni Pham",
+  "from": "Runners",
+  "img": "assets/femc/profile/searchers/hanni.webp",
+  "profile": true,
+  "unlock": "met:hanni",
+  "note": "There's a very small girl with thick black bangs at the window table in Chagall Café with two iced coffees in front of her and nobody in the other chair, and she waves at you through the glass with her whole arm, like you're late, and like it doesn't matter that you're late.",
+  "link": "femc-game.html",
+  "linkLabel": "Return to game",
+  "secret": true
+ },
+ {
+  "id": "hyein",
+  "name": "Hyein Lee",
+  "from": "Runners",
+  "img": "assets/femc/profile/searchers/hyein.webp",
+  "profile": true,
+  "unlock": "met:hyein",
+  "note": "A very tall girl with very long, very straight hair is standing in front of a shop window in Paulownia Mall telling a mannequin, out loud, exactly what's wrong with its jacket, and she spots you in the glass and turns around already pointing.",
+  "link": "femc-game.html",
+  "linkLabel": "Return to game",
+  "secret": true
+ },
+ {
+  "id": "mark",
+  "name": "Mark Lee",
+  "from": "Runners",
+  "img": "assets/femc/profile/searchers/mark.webp",
+  "profile": true,
+  "unlock": "met:mark",
+  "note": "Somebody's playing the public piano in Port Island Station's concourse, the one painted with fat cartoon seagulls, and it isn't one of the three songs children always play on it. A boy with light brown hair falling in his eyes, playing like he's talking to someone who hasn't shown up yet.",
+  "link": "femc-game.html",
+  "linkLabel": "Return to game",
+  "secret": true
+ },
+ {
+  "id": "jihoon",
+  "name": "Park Jihoon",
+  "from": "Hoax",
+  "img": "assets/femc/profile/searchers/jihoon.webp",
+  "profile": true,
+  "unlock": "met:jihoon",
+  "note": "There's a tall boy in a navy blazer at the crane game by Game Panic's door, feeding it coins with the grim focus of a man trying to win back his honor, and he says your name without turning around.",
+  "link": "femc-game.html",
+  "linkLabel": "Return to game",
+  "secret": true
+ },
+ {
+  "id": "minji",
+  "name": "Minji Kim",
+  "from": "Runners",
+  "img": "assets/femc/profile/searchers/minji.webp",
+  "profile": true,
+  "unlock": "met:minji",
+  "note": "A girl in a backwards cap is sitting on the seawall at Port Island with an old camera up to her eye, filming the light on the water, and she lowers it the second you come into the frame, like she's been waiting for you to walk into it.",
+  "link": "femc-game.html",
+  "linkLabel": "Return to game",
+  "secret": true
+ },
+ {
+  "id": "cherry",
+  "name": "Cherry",
+  "from": "Hoax",
+  "img": "assets/femc/profile/searchers/cherry.webp",
+  "profile": true,
+  "unlock": "met:cherry",
+  "note": "There's a girl in the corner booth at Wild-Duck Burger with her arms folded so tightly it looks structural, glaring at a menu like it owes her money, and when she sees you through the window she doesn't wave. She points at the seat across from her.",
+  "link": "femc-game.html",
+  "linkLabel": "Return to game",
+  "secret": true
+ },
+ {
+  "id": "yunjin",
+  "name": "Huh Yunjin",
+  "from": "strangers",
+  "img": "assets/femc/profile/searchers/yunjin.webp",
+  "profile": true,
+  "unlock": "met:yunjin",
+  "note": "Down at the harbor there's a girl sitting on the seawall with her legs swinging over the water and two cans of coffee beside her, singing something loudly and badly to the gulls, and she stops mid-word when she sees you and grins like you're late for something.",
+  "link": "femc-game.html",
+  "linkLabel": "Return to game",
+  "secret": true
+ },
+ {
+  "id": "jaehyun",
+  "name": "Jaehyun Lee",
+  "from": "Runners",
+  "img": "assets/femc/profile/searchers/jaehyun.webp",
+  "profile": true,
+  "unlock": "met:jaehyun",
+  "note": "Someone is running the steps at Naganaki Shrine, all hundred and twelve of them, up and down, at a pace that makes the old man by the offering box stop sweeping to watch, and when he reaches the bottom he sees you and stops, not out of breath, like he'd been expecting you to arrive at exactly this minute.",
+  "link": "femc-game.html",
+  "linkLabel": "Return to game",
+  "secret": true
  }
 ];
 
+// The shared Compendium reads progress without changing either game's saves.
 window.femcCompendiumOpen = e => {
-  let game = {};
-  try { game = JSON.parse(localStorage.getItem('kg-femc-game')) || {}; } catch (err) {}
+  const read = key => { try { const value = JSON.parse(localStorage.getItem(key)); return value && typeof value === 'object' ? value : {}; } catch (err) { return {}; } };
+  const game = read('kg-femc-game'), revamp = read('kg-femc-revamp');
+  const ids = (...lists) => lists.flatMap(list => Array.isArray(list) ? list : []);
   const got = window.Achievements ? Achievements.unlocked() : {};
   if (e.unlock === 'always') return true;
-  // New Game+ keeps everyone from earlier playthroughs in game.past.
-  if (e.unlock.startsWith('met:')) return [...(game.met || []), ...(game.past?.met || [])].includes(e.unlock.slice(4));
-  if (e.unlock.startsWith('reg:')) return [...(game.registered || []), ...(game.past?.registered || [])].includes(e.unlock.slice(4));
+  // v1 keeps prior discoveries in past; the revamp carries registered entries through New Game+.
+  if (e.unlock.startsWith('met:')) return ids(game.met, game.past?.met, revamp.met, revamp.registered).includes(e.unlock.slice(4));
+  if (e.unlock.startsWith('reg:')) return ids(game.registered, game.past?.registered, revamp.registered).includes(e.unlock.slice(4));
   return !!got[e.unlock];
 };

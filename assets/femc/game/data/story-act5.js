@@ -172,8 +172,10 @@ window.FEMC_STORY_KIT.badEnding = [
   { n: "They weren't moving. They had stopped. As she watched, the green settled on them like dust on furniture, and they went dark, one by one, and tall, and smooth, and closed. Coffins. All of them. At the top of the stairs, in a row, like a crowd seeing someone off." },
   { n: "She should have minded. She waited to mind. It didn't come. Nothing came. That was the whole point." },
   { n: "The doors closed. The train pulled out, slow, unhurried, a hand's width above the rails, out past the end of the platform, out past the city, over the black water of the bay, and the hour went with it, the green, all of it, the whole long night, and it never ended. It didn't have to." },
+  { cg: 'ending-last-stop' },
   { n: "Wren put her head on Solar's shoulder. The cap pushed crooked. Solar didn't straighten it. Out the window the moon hung full and close and didn't move, and the bells were silent, all three, dark on a sash she couldn't feel anymore, and somewhere very far behind them three worlds and a dormitory went on standing at the tops of their stairs, waiting for a girl who was never going to have to choose." },
   { n: "It was very peaceful. It was the most peaceful thing she had ever felt in her life. Nobody ever had to choose anything again." },
+  { cg: null },
   { n: "Somewhere, a page in a blue book went faint, and fainter, and was gone, and the gutter where it had been showed a thin line of light." },
   { n: "ENDING · the last stop" }
 ];
@@ -239,7 +241,7 @@ window.FEMC_STORY_KIT.badEnding = [
   { id: 'a5-jungwon-awakens', date: '11/28', slot: 'evening', title: 'a veil and a poster', place: 'Tartarus · Lobby', time: 'The Dark Hour', scene: [
     { music: 'tartarus' },
     { n: "Jungwon had asked to come. Not argued. Asked. In the lounge, to Mitsuru, with a short formal bow, in the voice of somebody making a request to a council, and he'd laid out his reasons in order, numbered, and Mitsuru had listened to all four and then said yes before he'd finished the fourth, and he had looked, for a moment, almost disappointed not to get to say it." },
-    { n: "Haechan had been in the lounge doorway when he asked. He hadn't said anything. He'd watched Jungwon bow, with no expression at all, and then gone up the stairs, and Solar had heard his door, and it hadn't slammed. It had closed very, very quietly." },
+    { n: "Haechan had been in the lounge doorway when he asked. He hadn't said anything. He'd watched Jungwon bow, with no expression at all, and then gone out through the front door, and Solar had heard the latch settle, very, very quietly." },
     { place: 'Tartarus · The Dark Hour', time: 'The Dark Hour', bg: 'tartarus-scene' },
     { dark: true },
     { music: 'mystery' },
@@ -266,7 +268,9 @@ window.FEMC_STORY_KIT.badEnding = [
     { s: 'jungwon', f: 'serious', t: "I've spent my whole life being told what was expected of me. Which name to answer to. Which girl to marry. Which office to run for. I've done every one of them perfectly. I've never once been asked what I'd prefer." },
     { s: 'jungwon', f: 'serious', t: "So I'll tell you. I'd rather remember. All of it. Both of it. Every version of her I've been lucky enough to know." },
     { s: 'jungwon', f: 'neutral', t: "Please give them back." },
+    { cg: 'searchers-jungwon-awakening' },
     { n: "Something came up out of him, very quiet. Not loud like Jihoon's, not a light like Minji's. A shape that built itself, the way a bridge is built, span by span, very fast, very exact, a figure of command and stillness standing over him with its arms crossed, and every piece that had lifted off him stopped in the air, mid-flight, and went back, one at a time, each into its exact place, the way you'd put pieces back on a board after someone's knocked it." },
+    { cg: null },
     { flag: { 'awake-jungwon': true } },
     { join: 'jungwon' },
     { battle: { id: 'memory-jungwon', kind: 'scripted', script: 'memory-jungwon', segment: 2, title: 'Tartarus · Two Floors at Once', desc: 'Jungwon has a Persona. Finish it.', notes: 'Segment 2: Jungwon joins the party (party id jungwon). His Persona is pending design with Kat; use placeholder skills.', forced: true } },
@@ -379,7 +383,9 @@ window.FEMC_STORY_KIT.badEnding = [
     { s: 'haechan', f: 'serious', t: "I've watched her play for... I've watched her. You're a half second late on the bell. You always will be. You don't know when she's going to throw it, because you've never seen her look at the person she's throwing it to." },
     { s: 'haechan', f: 'serious', t: "I have." },
     { s: 'haechan', f: 'neutral', t: "...You don't get those. I'd rather remember." },
+    { cg: 'searchers-haechan-awakening' },
     { n: "It came up out of him like the sun comes up over water. No warning. One second the dark and the screens and the fox, and the next, light, all of it, gold and enormous and much too hot, a shape standing over him so bright she couldn't look at it directly. Every blade of light the fox had taken turned in the air and came back to him, fast, the way a bell comes back to a hand, and he caught them without looking." },
+    { cg: null },
     { flag: { 'awake-haechan': true } },
     { join: 'haechan' },
     { battle: { id: 'memory-haechan', kind: 'scripted', script: 'memory-haechan', segment: 2, title: 'Tartarus · Mirror Match', desc: 'Haechan has a Persona. He doesn’t intend to lose a mirror match.', notes: 'Segment 2: Haechan joins the party (party id haechan). His Persona is pending design with Kat; use placeholder skills. He refuses to lose: give him a guaranteed last hit on the fox.', forced: true } },
@@ -648,7 +654,7 @@ window.FEMC_STORY_KIT.badEnding = [
       ] },
       { t: "(The star pin rings.) I have to go home.", ifFlag: 'elig-H', flag: { 'route-H': true }, tally: { solstice: 'H' }, then: [
         { n: "The star pin rang over all the others, bright and sharp, metal through card, a pin pushed home. A front door and a tub of ice cream. A gym full of plastic chairs. Exit doors, and all of them there, screaming. She heard herself say it, and it was hers." },
-        { s: 'wren', f: 'sad', t: "...Hamlim. Of course. The count." },
+        { s: 'wren', f: 'sad', t: "...Hanlim. Of course. The count." },
         { n: "The other two charms went quiet. And the star went on, ringing, and then stopped ringing, and started, very slowly, to shine." }
       ] },
       { t: "I'm staying. Here.", flag: { 'route-stay': true }, tally: { solstice: 'stay' }, then: [

@@ -1,5 +1,5 @@
 /* Secrets: hoax. Format in femc-social.js above secrets().
-   Source: Hoax (readers/hoax.html), Kat's group-chat school story. Its Solar is Solar Kim of Hamlim High, a different Solar.
+   Source: Hoax (readers/hoax.html), Kat's group-chat school story. Its Solar is Solar Kim of Hanlim High, a different Solar.
    - Wrong group chat: Junkyu adds Solar's "new number" to PARK JIHOON HATE CLUB and gets a digit wrong. Six chats from
      April to January (4/21, 5/12, 6/17, 9/15, 10/27, 12/21, 1/12) plus one late-night DM from Jihoon (7/22). The friends
      figure out she's "other solar", the real Solar Kim gets added in September, the group is renamed in December, and
@@ -428,7 +428,7 @@ FemcSocial.secrets({
       { n: "Underneath, in different handwriting, someone had added TEAM SOLAR!!! with three exclamation points. And under that, in a third, smaller, meaner hand: (no she wont)." },
       { choose: [
         { t: "(Touch the glitter.)", then: [{ n: "It came off on her fingertips, pink and gold, and stayed there no matter how she rubbed them on her skirt." }] },
-        { t: "(Look for the name of the school.)", then: [{ n: "Bottom corner, small print, a crest she didn't know. Hamlim. She'd never heard of it. She was fairly sure nobody in Iwatodai had." }] }
+        { t: "(Look for the name of the school.)", then: [{ n: "Bottom corner, small print, a crest she didn't know. Hanlim. She'd never heard of it. She was fairly sure nobody in Iwatodai had." }] }
       ] },
       { s: 'mitsuru', f: 'neutral', t: "Is something the matter?" },
       { n: "Mitsuru-senpai had come out of the council room with a stack of folders, and she stopped beside Solar and read the poster with the same total attention she gave budget reports and Shadows." },

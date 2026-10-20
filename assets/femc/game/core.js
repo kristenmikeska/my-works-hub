@@ -36,6 +36,7 @@ window.FemcGame = (() => {
     get cal() { return W.FEMC_GAME_CALENDAR; }, get stats() { return W.FEMC_GAME_STATS; }, get places() { return W.FEMC_GAME_PLACES; },
     get jobs() { return W.FEMC_GAME_JOBS || []; }, get jobScenes() { return W.FEMC_GAME_JOB_SCENES || {}; }, get flags() { return W.FEMC_GAME_FLAGS; },
     get texts() { return W.FEMC_GAME_TEXTS || { threads: {}, texts: [] }; }, get q() { return W.FEMC_GAME_QUESTIONS || { classes: [], exams: {}, teachers: {}, rivals: [], ambient: {} }; },
+    get dailyLife() { return W.FEMC_GAME_DAILY_LIFE || []; },
     get events() { return W.FEMC_GAME_EVENTS || []; }, get battle() { return W.FEMC_BATTLE_DATA || {}; }
   };
   const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
@@ -102,6 +103,7 @@ window.FemcGame = (() => {
     links: {}, met: [], registered: [], flags: {}, unlocked: {}, joined: ['solar'],
     route: { tally: {}, choices: {}, frags: { R: 0, S: 0, H: 0 }, doorsDue: [], doorsSeen: [] },
     fragments: [], inventory: {}, gear: [], books: { owned: [], reading: null, progress: {}, done: [] },
+    dailyLife: { seen: [], lastDay: -99 },
     jobs: {}, events: [], spent: {}, exams: {}, classSeen: [], phone: { threads: {}, unread: {}, done: [], pending: {}, invite: null, lastInvite: -9 },
     tartarus: { nights: 0, maxFloor: 0, bosses: [], lastParty: null }, battle: { exp: {}, levels: {} },
     pending: null, handoffId: null, runId: null, playMinutes: 0, savedAt: null,
@@ -328,7 +330,7 @@ window.FemcGame = (() => {
   // Link homes name an area id or an area's display name.
   const areaById = id => D.places.areas.find(a => a.id === id || a.name === id);
   const linkPlace = l => { const h = homeOf(l), a = areaById(h.area); return `${a ? a.name : (h.area || '')}${h.spot ? ` · ${h.spot}` : ''}`; };
-  const linksAt = (areaId, slot = S.slot) => Object.values(LINKS).filter(l => areaById(homeOf(l).area)?.id === areaId && !['unwritten', 'away', 'closed', 'max'].includes(linkStatus(l, S.day, slot).reason) && (linkStatus(l, S.day, slot).ok || ['spent', 'later', 'needs'].includes(linkStatus(l, S.day, slot).reason) && isHome(l, slot)));
+  const linksAt = (areaId, slot = S.slot) => Object.values(LINKS).filter(l => !l.storyOnly && areaById(homeOf(l).area)?.id === areaId && !['unwritten', 'away', 'closed', 'max'].includes(linkStatus(l, S.day, slot).reason) && (linkStatus(l, S.day, slot).ok || ['spent', 'later', 'needs'].includes(linkStatus(l, S.day, slot).reason) && isHome(l, slot)));
   function isHome(l, slot = S.slot) { const h = homeOf(l), info = dayInfo(); return (h.slot === 'evening' ? 'evening' : 'after') === slot && (h.days || []).includes(info.dow); }
   // An afterMax entry's area (longest area name its place starts with) and slot.
   function areaOfPlace(place, fallback) {
@@ -433,6 +435,7 @@ window.FemcGame = (() => {
     if (line.ifRank) ok = Object.entries(line.ifRank).every(([id, r]) => progress(id).rank >= r);
     else if (line.ifStat) ok = Object.entries(line.ifStat).every(([id, r]) => statRank(id) >= r);
     else if (line.ifFlag) ok = [].concat(line.ifFlag).every(flag);
+    else if (line.ifEvent) ok = [].concat(line.ifEvent).every(id => S.events.includes(id));
     else if (line.ifMet) ok = [].concat(line.ifMet).every(isMet);
     else if (line.ifRoute) ok = linkId && progress(linkId).route === line.ifRoute;
     else if (line.ifRomance) ok = progress(line.ifRomance).route === 'romance';
@@ -514,6 +517,17 @@ window.FemcGame = (() => {
     if (a.cost && S.yen < a.cost) return { ok: false, why: 'Not enough yen' };
     if (S.spent[`${S.day}-${slot}`] && !a.shop) return { ok: false, why: 'No time left' };
     return { ok: true };
+  }
+  // Preview the same weather and condition-adjusted gains the activity will award.
+  function activityInfo(a) {
+    const w = a.weather?.[dayInfo().weather];
+    const gains = stats => Object.entries(stats || {}).map(([id, points]) => `${D.stats.stats[id].name} +${Math.max(1, Math.round(points * (D.stats.conditions[S.condition]?.gain ?? 1)))}`).join(', ');
+    let benefit = gains(w ? w.stats : a.stats);
+    if (a.random) benefit = `One random gain: ${gains(a.random).replaceAll(', ', ' or ')}`;
+    if (a.fortune) benefit = 'A random fortune; may improve a social stat or your condition.';
+    if (a.cures?.length) benefit += `${benefit ? ' · ' : ''}Relieves ${a.cures.map(id => D.stats.conditions[id].name).join(' or ')}`;
+    if (a.shop) benefit = a.shop === 'books' ? 'Buy books to read at the dorm.' : (D.battle.shops[a.shop]?.sub || 'Browse items for sale.');
+    return { benefit: `${w ? w.label + ' · ' : ''}${benefit}`, cost: a.shop ? 'Browsing is free; purchases cost yen.' : a.cost ? `Costs ¥${a.cost.toLocaleString()}` : 'Free', time: a.shop ? 'Does not spend time.' : 'Uses this time slot.' };
   }
   // Does an activity; returns { text, place } for the narration scene.
   function doActivity(a) {
@@ -633,6 +647,20 @@ window.FemcGame = (() => {
       if (rank?.scene && rank.after && d >= dayOf(rank.after) && fragGateMet(rank.gate) && (l.home?.slot === 'evening' ? 'evening' : 'after') === slot) return { kind: 'link', link: l };
     }
     return null;
+  }
+  function dailyLife(slot = S.slot) {
+    const info = dayInfo(), state = S.dailyLife || { seen: [], lastDay: -99 };
+    if (info.type === 'trip' || S.day - (state.lastDay ?? -99) < 2 ||
+      D.events.some(e => e.date === info.md && S.events.includes(e.id))) return null;
+    return D.dailyLife.find(e => e.slot === slot && S.day >= dayOf(e.after) &&
+      (!e.schoolOnly || info.type === 'school') && !(state.seen || []).includes(e.id) &&
+      (e.events || []).every(id => S.events.includes(id))) || null;
+  }
+  function finishDailyLife(id) {
+    const e = D.dailyLife.find(e => e.id === id); if (!e) return;
+    const state = S.dailyLife ||= { seen: [], lastDay: -99 };
+    if (!Array.isArray(state.seen)) state.seen = [];
+    if (!state.seen.includes(id)) { state.seen.push(id); state.lastDay = S.day; save(); }
   }
   const markEvent = id => { if (!S.events.includes(id)) S.events.push(id); save(); };
   // An event's `unlock` holds it until a condition is met, then it plays on the first matching slot on or after its `date`:
@@ -780,6 +808,12 @@ window.FemcGame = (() => {
   }
 
   /* ── Phone ── */
+  function appendPhone(thread, messages) {
+    const phone = S.phone, th = (phone.threads[thread] ||= []);
+    const latest = Math.max(0, phone.sequence || 0, ...Object.values(phone.threads).flatMap(xs => xs.map(m => m.seq || 0)));
+    phone.sequence = latest;
+    messages.forEach(m => th.push({ ...m, d: S.day, slot: S.slot, seq: ++phone.sequence }));
+  }
   function deliverTexts() {
     const md = mdOf(S.day);
     for (const t of D.texts.texts) {
@@ -791,8 +825,7 @@ window.FemcGame = (() => {
       if (t.rank && !Object.entries(t.rank).every(([id, r]) => progress(id).rank >= r)) continue;
       if (t.met && !t.met.every(isMet)) continue;
       S.phone.done.push(t.id);
-      const th = (S.phone.threads[t.thread] ||= []);
-      t.msgs.forEach(m => th.push({ ...m, d: S.day }));
+      appendPhone(t.thread, t.msgs);
       S.phone.unread[t.thread] = (S.phone.unread[t.thread] || 0) + t.msgs.length;
       if (t.reply) S.phone.pending[t.thread] = t.id;
       toast('text', `${D.texts.threads[t.thread] || name(t.thread)}: ${t.msgs[0].t}`, { thread: t.thread });
@@ -806,9 +839,7 @@ window.FemcGame = (() => {
     const t = D.texts.texts.find(x => x.id === S.phone.pending[thread]);
     if (!t) return;
     const o = t.reply[i];
-    const th = S.phone.threads[thread];
-    if (!o.silent) th.push({ from: 'solar', t: o.t, d: S.day });
-    (o.then || []).forEach(m => th.push({ ...m, d: S.day }));
+    appendPhone(thread, [...(!o.silent ? [{ from: 'solar', t: o.t }] : []), ...(o.then || [])]);
     if (o.link && o.notes && isMet(o.link)) progress(o.link).xp += o.notes;
     delete S.phone.pending[thread];
     save();
@@ -828,8 +859,7 @@ window.FemcGame = (() => {
     const ask = l.invite.ask[Math.floor(seeded(S.day) * l.invite.ask.length)];
     S.phone.invite = { link: l.id, d: S.day, slot: S.slot };
     S.phone.lastInvite = S.day;
-    const th = (S.phone.threads[l.id] ||= []);
-    th.push({ from: l.id, t: ask, d: S.day, invite: true });
+    appendPhone(l.id, [{ from: l.id, t: ask, invite: true }]);
     S.phone.unread[l.id] = (S.phone.unread[l.id] || 0) + 1;
     toast('text', `${l.short}: ${ask}`, { thread: l.id, invite: true });
   }
@@ -838,7 +868,7 @@ window.FemcGame = (() => {
     if (!inv) return null;
     const l = LINKS[inv.link];
     const pool = yes ? l.invite.ok : l.invite.no;
-    S.phone.threads[l.id].push({ from: 'solar', t: yes ? 'sure. where?' : 'can’t right now, sorry', d: S.day }, { from: l.id, t: pool[Math.floor(Math.random() * pool.length)], d: S.day });
+    appendPhone(l.id, [{ from: 'solar', t: yes ? 'sure. where?' : 'can’t right now, sorry' }, { from: l.id, t: pool[Math.floor(Math.random() * pool.length)] }]);
     S.phone.invite = null;
     save();
     return yes ? l : null;
@@ -1030,9 +1060,9 @@ window.FemcGame = (() => {
     homeOf, leavesAtMax, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,
     flag, effect, branch, applyChoice, addFragment, fragmentInfo, worldOf,
     portrait, scale, name, silhouette, tarot, background, moodFor, sub, setDate, dateLabel,
-    activityOk, doActivity, shopStock, buy, bookById, readTonight,
+    activityOk, activityInfo, doActivity, shopStock, buy, bookById, readTonight,
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift,
-    dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
+    dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, answerInvite, unread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,

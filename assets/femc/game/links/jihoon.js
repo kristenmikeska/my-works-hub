@@ -2,8 +2,8 @@
    Searcher, canon romance (Hoax). Solar Kim's best friend since preschool: loud, vain, does pilates, has a car at home,
    calls her dog his son, and is always the first one at her door with ice cream. The romance is the best friend realizing
    he's been saying the quiet part loudly for years, and Solar realizing she always heard it. Nothing here decides Hoax's
-   own canon (plot doc §9). His crossing (9/19, the Strip, the ice cream that won't melt) is a story event; rank 1 is the
-   hour on the dorm steps after his one-day bit (plot doc §7). He awakens on 10/17 (story); ranks 5+ come after.
+   own canon (plot doc §9). His crossing (9/19, the Strip, the ice cream that won't melt) is a story event; rank 1 is a
+   later conversation on the dorm steps. He awakens on 10/17 (story); ranks 5+ come after.
    Fragment: hoax-crane-game (rank 4, plot doc §8 H6). Romance turn at rank 8.
    Arcana: the stub has '?' (searcher arcana are an open question for Kat, plot doc §16.6).
    afterMax and christmas use v1's field shapes; the revamp engine doesn't play them yet. */
@@ -22,7 +22,7 @@
   },
   hangouts: [
     [
-      { n: "Game Panic's crane game had a new prize in it, a lumpy white plush dog with one ear inside out, and Jihoon had decided it looked exactly like his son and that he would not be leaving the mall without it." },
+      { n: "Game Panic's crane game had a new prize in it, a lumpy white-and-brown plush dog with one ear inside out, and Jihoon had decided it looked exactly like his son and that he would not be leaving the mall without it." },
       { s: 'jihoon', f: 'serious', t: "Don't talk to me. I'm in the zone. The claw respects silence." },
       { choose: [
         { t: "(Stay silent. Very loudly.)", notes: 3, then: [
@@ -36,7 +36,11 @@
           { s: 'jihoon', f: 'surprised', t: "You? You've never once in your life— okay. Okay. Go. Embarrass yourself. I'll hold your bag." },
           { n: "She missed. He looked deeply relieved." }
         ] }
-      ] }
+      ] },
+      { n: "He went back to the counter for one last coin. He called it the last coin twice, to make it binding, and the claw came down and caught the dog by its middle and carried it all the way over the chute without opening. For a second neither of them moved. Then he hit the glass with both hands." },
+      { cg: 'link-jihoon-crane' },
+      { n: "He pulled it out of the prize door and held it between them, absurdly pleased, one soft brown ear folded over his thumb. Solar put her hand under its paws. It was heavier than it looked, and warm from the lights inside the machine, and he didn't let go until she had it." },
+      { cg: null }
     ],
     [
       { n: "He'd found the one convenience store in Iwatodai that sold the right brand of ice cream sandwich, which he said was a sign, and they were eating them on the low wall outside it in the cold, which was his idea of a balanced diet." },
@@ -68,11 +72,9 @@
     ]
   ],
   ranks: [
-    { after: '9/20', title: '1: an hour on the steps', place: 'Iwatodai Dorm · Front', time: 'Evening', music: 'night', scene: [
-      { n: "He'd done a bit about it for one whole day. That was the thing everyone in the dorm would talk about afterward, in lowered voices, the way you'd talk about a storm that had gone through the night before." },
-      { n: "He'd woken up on the lounge sofa at seven in the morning with the tub of ice cream still in his arms, still frozen, which nobody had been able to explain, and he'd looked at Solar coming down the stairs in her uniform and said *ok very funny sol,* and then he'd kept saying it. At breakfast. On the walk to the monorail, where Yukari had to physically steer him through the ticket gate. At the school gate, which he wasn't allowed through. At four o'clock, when she came out and found him waiting on the wall across the street with his hands in his pockets, still in his navy blazer, still saying it. *Ok very funny. You've had your fun. Ok. Haha. Sol. Very funny.*" },
-      { n: "By dinner he'd stopped saying it. He'd stopped saying anything. He'd eaten Junpei's curry without commenting on it, which Junpei had found so alarming he'd gone and gotten Mitsuru." },
-      { n: "And now he was sitting on the front steps of the dorm in the dark with his elbows on his knees, and he'd been sitting there an hour, and he hadn't said a single word, and Solar didn't know him, and still somehow knew that for Park Jihoon this was a medical event." },
+    { after: '9/20', title: '1: the unopened tub', place: 'Iwatodai Dorm · Front', time: 'Evening', music: 'night', scene: [
+      { n: "Solar found Jihoon on the front steps after dinner, with his elbows on his knees and a tub of ice cream between his feet. The porch light was on. He hadn't taken the lid off." },
+      { n: "She'd heard him in the kitchen earlier, arguing with Junpei about the curry, and now the quiet was so complete she stopped with her hand still on the door. Solar didn't know him, and still somehow knew that for Park Jihoon this was a medical event." },
       { register: 'jihoon' },
       { choose: [
         { t: "(Sit down next to him.)", notes: 3, then: [
@@ -89,7 +91,7 @@
           { s: 'jihoon', f: 'neutral', t: "That's my line. That's my whole thing. You can't steal my whole thing." }
         ] }
       ] },
-      { s: 'jihoon', f: 'neutral', t: "You know what you said? Yesterday? When I came round the corner with this and you looked at me?" },
+      { s: 'jihoon', f: 'neutral', t: "You know what you said? When I came round the corner with this and you looked at me?" },
       { s: 'jihoon', f: 'neutral', t: "*I'm sorry, do I know you?*" },
       { s: 'jihoon', f: 'serious', t: "Do I know you. Do I *know* you. I've known you since you had a bowl cut. I know your blood type. I know you sleep with one sock off. I know you hate pickles but you eat them if your mom's watching. I know your PIN. Don't change your PIN." },
       { s: 'jihoon', f: 'sad', t: "And you looked at me like I was a guy handing out flyers." },
@@ -111,7 +113,7 @@
         ] }
       ] },
       { s: 'jihoon', f: 'serious', t: "Okay. Here's the new rule." },
-      { s: 'jihoon', f: 'serious', t: "If you don't know me, fine. I'll be insufferable to you from scratch. I'll be so annoying you'll have to remember me just to know who to complain about." },
+      { s: 'jihoon', f: 'serious', t: "You don't get to be rid of me this easily. I'll be so annoying you'll have to remember me just to file a complaint." },
       { s: 'jihoon', f: 'happy', t: "I'm the light of your disgusting life. I'll prove it again. It took me like four years the first time. I'm faster now. I do pilates." },
       { n: "He stood up, and stretched, and held out a hand to pull her up off the cold step, and she took it, and his hand closed around hers the way you'd close a door you'd closed ten thousand times, without looking, and she had to stand there for a second after he let go." }
     ] },
@@ -146,7 +148,7 @@
       { s: 'jihoon', f: 'serious', t: "Like you're going to steal their fries. Which you are. Which you do." },
       { n: "Afterward, when Akihiko had gone down to shower and Junpei had gone down to tell everyone, at length, what they'd missed, Jihoon lay flat on his back on the mat in the cold with his arms out like a starfish and looked at the sky." },
       { s: 'jihoon', f: 'neutral', t: "I haven't done it since I got here. Pilates. Three weeks. I do it every morning at home. Every single morning. Ask anyone. Ask the group chat. They're sick of hearing about it." },
-      { s: 'jihoon', f: 'sad', t: "And then I got here and I just. Didn't. I lay in the guesthouse bed every morning and looked at the ceiling. It felt stupid. Keeping my core a temple when you didn't know my name." },
+      { s: 'jihoon', f: 'sad', t: "And then I got here and I just. Didn't. I lay in my dorm bed every morning and looked at the ceiling. It felt stupid. Keeping my core a temple when you didn't know my name." },
       { choose: [
         { t: "Your core's still a temple.", notes: 3, then: [
           { s: 'jihoon', f: 'happy', t: "IT IS. Thank you. Somebody gets it. Somebody finally respects the temple." },
@@ -358,9 +360,9 @@
     ] },
 
     { after: '11/21', title: '8: the quiet part', place: 'Iwatodai Dorm · Rooftop', time: 'Night', music: 'night', scene: [
-      { n: "He'd brought ice cream to the roof in November, which was insane, and two spoons, and a blanket he'd stolen from the guesthouse, which he said was technically Mitsuru's, which made it technically fine." },
+      { n: "He'd brought ice cream to the roof in November, which was insane, and two spoons, and a blanket he'd taken from the dorm's linen cupboard, which he said was technically Mitsuru's, which made it technically fine." },
       { n: "The wind was coming off the bay sharp enough to cut. They sat with their backs against the water tank and the blanket over their knees and the tub between them going nowhere, frozen hard as a stone the way it had been every single day since he'd come through, and they ate it anyway, scraping the top." },
-      { s: 'jihoon', f: 'neutral', t: "It doesn't melt. Did you notice? It's been in the guesthouse freezer and the dorm freezer and my backpack and your desk for two months and it hasn't melted once. I've eaten a third of it. It keeps being the same amount." },
+      { s: 'jihoon', f: 'neutral', t: "It doesn't melt. Did you notice? It's been in the dorm freezer and my backpack and your desk for two months and it hasn't melted once. I've eaten a third of it. It keeps being the same amount." },
       { s: 'jihoon', f: 'neutral', t: "I think it's waiting for something." },
       { s: 'solar', f: 'neutral', t: "For what?" },
       { s: 'jihoon', f: 'serious', t: "For me to say whatever I was going to say when I got to your house. That night. Before the street went green." },
@@ -434,7 +436,7 @@
 
     { after: '1/16', title: '10: the light of your life', place: 'Iwatodai Dorm · Front', time: 'Night', music: 'tender', scene: [
       { n: "The front steps of the dorm, in the dark, in January. It was colder than it had been in September by a whole other season, and the stone came up through her skirt like the cold off a lake, and he was sitting exactly where he'd sat that first night, elbows on his knees, the tub of ice cream on the step beside him." },
-      { n: "It was nearly empty. They'd eaten it all winter. A spoonful at a time, on the roof, in the lounge, at the guesthouse kitchen table at two in the morning. It had never melted, and it had never run out, and tonight, when she sat down beside him and looked into it, there was exactly one spoonful left." },
+      { n: "It was nearly empty. They'd eaten it all winter. A spoonful at a time, on the roof, in the lounge, at the dorm kitchen table at two in the morning. It had never melted, and it had never run out, and tonight, when she sat down beside him and looked into it, there was exactly one spoonful left." },
       { s: 'jihoon', f: 'neutral', t: "I think that's it. I think that's the last one." },
       { s: 'jihoon', f: 'neutral', t: "Whatever it was waiting for, I think it's done waiting." },
       { n: "He held out the spoon. Handle first. To her." },

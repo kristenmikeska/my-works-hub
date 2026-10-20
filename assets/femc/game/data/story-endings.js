@@ -93,7 +93,7 @@
     { dark: false },
     { music: 'joy' },
     { cg: 'ending-hoax-home' },
-    { n: "Hamlim. The gym. Blue and silver balloons on every surface, string lights, the ballot box on its table by the wall with STUDENT COUNCIL VOTE taped to the front. The night of the count. Everyone still in the building far too late, the lights on in every window, the whole school waiting for something. She was standing in the middle of it in a uniform with an armband on it that nobody here would ever understand, and nobody noticed, because Cherry had already crossed the gym at a dead run and thrown both arms around her neck." },
+    { n: "Hanlim. The gym. Blue and silver balloons on every surface, string lights, the ballot box on its table by the wall with STUDENT COUNCIL VOTE taped to the front. The night of the count. Everyone still in the building far too late, the lights on in every window, the whole school waiting for something. She was standing in the middle of it in a uniform with an armband on it that nobody here would ever understand, and nobody noticed, because Cherry had already crossed the gym at a dead run and thrown both arms around her neck." },
     { s: 'cherry', f: 'happy', t: "THERE you are. Where have you BEEN? Don't answer that. I don't care. You're here. You look like shit. I love you. Your left wing is lower than your right." },
     { n: "Her phone was going off in her pocket. A group chat she'd been in her whole life. Somebody had renamed it in the time she'd been gone. It was now called something so stupid she laughed out loud in the middle of the gym, and wouldn't tell anyone why. At home, Nana would be barking at the door. She could feel it." },
     { ifFlag: 'xmas-jungwon', then: [

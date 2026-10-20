@@ -387,6 +387,8 @@
     if (s.slot === 'early' && cardDay !== s.day) { cardDay = s.day; show('', 'is-card'); return dateCard(run); }
     const due = G.dueEvent();
     if (due) return playDue(due);
+    const daily = G.dailyLife();
+    if (daily) return playDailyLife(daily, info);
     switch (s.slot) {
       case 'early': return earlyMorning(info);
       case 'morning': return info.exam ? examSession(info) : classPeriod('morning', info);
@@ -397,6 +399,16 @@
       case 'late': return lateNight(info);
       default: return advance();
     }
+  }
+  function playDailyLife(e, info) {
+    const slot = S().slot;
+    return SC.play({ ...e, scene: [{ bg: e.bg }, ...e.scene], label: 'Everyday life', onDone: () => {
+      G.finishDailyLife(e.id);
+      if (slot === 'evening') return evening(info);
+      const exam = slot === 'early' && G.D.cal.exams.find(x => x.results === info.md);
+      if (exam) return resultsBoard(exam.id, advance);
+      advance();
+    } });
   }
   function playDue(due) {
     if (due.kind === 'event') { S().pending = null; return playCtx({ type: 'event', id: due.ev.id }, { onDone: () => { G.markEvent(due.ev.id); afterEvent(due.ev.id); } }); }
@@ -631,7 +643,8 @@
     const actRow = x => {
       const ok = G.activityOk(x, slot);
       const cost = x.cost ? `¥${x.cost.toLocaleString()}` : x.shop ? 'Shop' : 'Free';
-      return `<button type="button" class="g-act" data-act="${x.id}"${ok.ok ? '' : ' disabled'}><span><b>${esc(x.name)}</b><small>${esc(x.spot)}${ok.ok ? '' : ` · ${esc(ok.why)}`}</small></span><em>${esc(cost)}</em></button>`;
+      const preview = G.activityInfo(x);
+      return `<button type="button" class="g-act" data-act="${x.id}"${ok.ok ? '' : ' disabled'}><span><b>${esc(x.name)}</b><small>${esc(x.spot)}${ok.ok ? '' : ` · ${esc(ok.why)}`}</small><small class="g-act-benefit">${esc(preview.benefit)} ${esc(preview.time)}</small></span><em>${esc(cost)}</em></button>`;
     };
     const jobRow = j => {
       const st = G.jobState(j.id), ok = G.jobOk(j, slot);
@@ -650,13 +663,33 @@
     main.querySelector('[data-back]').addEventListener('click', () => goOut(slot));
     main.querySelectorAll('[data-link]').forEach(b => b.addEventListener('click', () => playLink(G.LINKS[b.dataset.link])));
     main.querySelectorAll('[data-trace]').forEach(b => b.addEventListener('click', () => playLink(G.LINKS[b.dataset.trace], false, G.nextTrace(G.LINKS[b.dataset.trace]))));
-    main.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => doActivity(G.D.places.activities.find(x => x.id === b.dataset.act), slot, a)));
-    main.querySelectorAll('[data-job]').forEach(b => b.addEventListener('click', () => jobFlow(G.D.jobs.find(x => x.id === b.dataset.job), slot, a)));
+    main.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => previewActivity(G.D.places.activities.find(x => x.id === b.dataset.act), slot, a)));
+    main.querySelectorAll('[data-job]').forEach(b => b.addEventListener('click', () => previewJob(G.D.jobs.find(x => x.id === b.dataset.job), slot, a)));
+  }
+  function previewActivity(x, slot, a) {
+    const preview = G.activityInfo(x), ok = G.activityOk(x, slot);
+    const o = overlay(`<p class="g-kicker">${esc(a.name)} · ${esc(x.spot)}</p><h2>${esc(x.name)}</h2>
+      <p>${esc(preview.benefit)}</p><ul class="g-gains"><li>${esc(preview.cost)}</li><li>${esc(preview.time)}</li></ul>
+      ${ok.ok ? '' : `<p class="g-warn">${esc(ok.why)}</p>`}
+      <div class="g-row"><button type="button" class="g-btn pink" data-confirm${ok.ok ? '' : ' disabled'}>${x.shop ? 'Browse shop' : 'Spend time here'}</button><button type="button" class="g-btn" data-close>Back</button></div>`, 'g-activity-preview');
+    o.el.querySelector('[data-confirm]').addEventListener('click', () => {
+      o.close();
+      if (!G.activityOk(x, slot).ok) return areaView(slot, a);
+      doActivity(x, slot, a);
+    });
   }
   function doActivity(x, slot, a) {
     if (x.shop) return openShop(x.shop, () => areaView(slot, a));
     const r = G.doActivity(x);
     SC.play({ scene: [{ n: r.text }], place: r.place, time: slot === 'evening' ? 'Evening' : G.slotName(slot), onDone: () => advance() });
+  }
+  function previewJob(j, slot, a) {
+    if (!G.jobState(j.id).hired) return jobFlow(j, slot, a);
+    const preview = G.activityInfo(j);
+    const o = overlay(`<p class="g-kicker">Part-time job</p><h2>${esc(j.name)}</h2><p>${esc(j.role)}</p>
+      <ul class="g-gains"><li>Earn ¥${j.pay.toLocaleString()}</li><li>${esc(preview.benefit)}</li><li>Uses this time slot.</li></ul>
+      <div class="g-row"><button type="button" class="g-btn pink" data-confirm>Work a shift</button><button type="button" class="g-btn" data-close>Back</button></div>`, 'g-activity-preview');
+    o.el.querySelector('[data-confirm]').addEventListener('click', () => { o.close(); if (G.jobOk(j, slot).ok) jobFlow(j, slot, a); else areaView(slot, a); });
   }
   function jobFlow(j, slot, a) {
     const st = G.jobState(j.id);
@@ -779,7 +812,13 @@
     const tname = id => G.D.texts.threads[id] || G.name(id);
     const list = () => {
       title.textContent = 'Messages'; back.hidden = true; reply.replaceChildren();
-      const ids = Object.keys(s.phone.threads);
+      const latest = id => (s.phone.threads[id] || []).at(-1) || {};
+      const ids = Object.keys(s.phone.threads).sort((a, b) => {
+        const x = latest(a), y = latest(b);
+        return (y.d ?? -1) - (x.d ?? -1) || (y.seq || 0) - (x.seq || 0) ||
+          G.SLOT_ORDER.indexOf(y.slot) - G.SLOT_ORDER.indexOf(x.slot) ||
+          (s.phone.unread[b] || 0) - (s.phone.unread[a] || 0);
+      });
       body.innerHTML = ids.length ? ids.map(id => { const th = s.phone.threads[id], last = th[th.length - 1]; return `<button type="button" class="g-ph-row" data-th="${id}"><i>${G.portrait(id, 'neutral') ? `<img src="${G.portrait(id, 'neutral')}" alt="">` : esc(tname(id)[0])}</i><span><b>${esc(tname(id))}</b><small>${esc(last?.t || '')}</small></span>${s.phone.unread[id] ? `<em>${s.phone.unread[id]}</em>` : ''}</button>`; }).join('') : '<p class="g-note">No messages.</p>';
       body.querySelectorAll('[data-th]').forEach(b => b.addEventListener('click', () => open(b.dataset.th)));
     };
