@@ -66,3 +66,35 @@ What's next for the battle prototype (`femc-battle.html`). **Claude** = code, **
   - respec allowed
 - **Party members get small trees opened by link rank.** Levels give points, link ranks open new branches, and each member has a final upgraded skill.
 - The tree lives in the shared game menu's Skills tab, built after the life sim and battle are merged into one game.
+
+## 7. Kat's playtest decisions (2026-10-20)
+Batches, in order, after the story/character pass:
+- **A. Merge + battle systems:**
+  - Finish the one-game merge (fixes the old Tartarus menu).
+  - Skill tree. Kat's skill ideas: Protective Suzu, Kunai Flick and Kitsune Rush for the Bell branch; Public Veneer and Call the Bluff for the Star branch; Off Angle Flank as a passive; Duo Cohesion as a link perk.
+  - Link perks in battle (Minji r3/r8 and Haechan r2/r7 are her examples), and romance battle and Tartarus dialogue.
+  - Buffs stack to a limit.
+  - Smarter Rush (heals when needed, rebuffs, hits weaknesses, uses Theurgy).
+  - Remove the post-battle All-Out flashes.
+  - Shuffle Time.
+- **B. Polish:**
+  - Animated text send and receive with a notification sound.
+  - Read all.
+  - Softer pink slashes.
+  - A P5-style stat screen with a sun level-up.
+  - A P5X-inspired Go Out menu.
+- **C. Living world:**
+  - Daily random events.
+  - Run-ins while out or working.
+  - More jobs, and job scenes that vary.
+  - Holiday invites.
+  - **Clubs:** tennis (Rio, with romance scenes on her route), library/book club, band, gaming/eSports.
+  - **Solar's birthday on 6/24** (canon), with a surprise party.
+  - A fuller Yakushima trip.
+  - Pre-boss story beats.
+- **D. Rewards:**
+  - Weapons with looks and abilities (the art is on hold until Kat says), and per-character reward lists.
+  - Achievements as hub stamps.
+  - **Gacha, both kinds:** a capsule machine at the mall (yen or Tartarus tickets; accessories, cosmetics, cast keychains, rare items) and Velvet Room draws from Elizabeth (skill cards, rare gear).
+- **E. Visitors:** the Persona cast belongs to this world; Kuromi and My Melody as exchange students (My Melody as a hidden link); deeper Mercy, Kiriko and Sebastian links; Kasumi's timeline.
+- **Social stats become five P5-style ones:** Knowledge, Courage, Proficiency, Charm, Kindness. They gate links, choices, jobs and clubs.
