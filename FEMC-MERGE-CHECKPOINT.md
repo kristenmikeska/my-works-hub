@@ -1,49 +1,39 @@
-# FEMC development checkpoint — October 19, 2026
+# FEMC development checkpoint — updated October 20, 2026
 
-Kat requested a pivot to the CGs and other assets in `~/Documents/UniverseHub-Images/Femc Mode Images/New Adds`. The combined-game work is parked at this checkpoint; it is not complete or integrated into main. Work in small batches and keep all progress reports spoiler-free.
+The combined game ("one game") is finished on its branch and ready for the lead to integrate after the story writers are done. It is NOT merged into main and nothing is pushed. Keep all progress reports spoiler-free.
 
 ## Where the work lives
 
-- Main checkout: `/Users/katarinagrande/Desktop/Narrative Universe Sites/my-works-hub`. Contains the completed, uncommitted Hyein/Mark improvements and their tests.
-- Existing combined-game checkout: `.claude/worktrees/agent-aa5a837b28ef8c3d0`, branch `worktree-agent-aa5a837b28ef8c3d0`. Contains Claude’s original unfinished merge draft plus the four verified steps below. It is based on an older commit than main.
-- No work from these sessions has been committed or pushed. Do not push unless Kat explicitly asks.
-- Keep both checkouts intact. When integrating, do not overwrite main’s newer links or its `ifEvent` branch support with the older worktree files.
+- Branch `worktree-agent-aa5a837b28ef8c3d0`, checkout `.claude/worktrees/agent-aa5a837b28ef8c3d0`. It is main (through `0c96089`, the story and link passes) plus the merge work, in logical commits. Main's content, data, tests and cache numbers were kept; every file the merge changes has a cache number above main's.
+- Integrating: merge the branch into main (it already contains main up to `0c96089`). If main has moved, merge main into the branch first; the only file both sides touch for cache numbers is `femc-game.html` (keep main's content/link numbers, the merge's engine lines: core 8, scene 5, menu 3, ui 5, game.css 4, battle/save.js 2, pad.js; femc-battle.html: battle.js 17, battle.css 11, save.js 2). If main's `core.js` changes again, bump core above both.
+- Do not push unless Kat says "push".
 
-## Finished: friend links in main
+## What the one game is
 
-Hyein and Mark are finished locally: ten ranks each, expanded invitations/hangouts/texts, and five/six post-MAX scenes respectively. Mark’s approved rank-nine dialogue is unchanged. Calendar, availability, continuity and progression fixes are included. Main’s core supports `ifEvent` for event-aware continuity.
+1. **No page jump.** A `{ battle }` line, a Tartarus night or a full moon writes the handoff into the save (`S.handoff`) and opens the Dark Hour layer in `femc-game.html`: green wash, glass, the fight's title, then `femc-battle.html?embed=1` in a full-screen frame talking through `window.FemcBridge` (ui.js). It fades back and the scene carries on from the exact next line. Reload/Continue mid-fight reopens the fight; a finished one is applied once (`appliedResult` receipt).
+2. **One save per slot.** `S.battleSave` (shape: `assets/femc/battle/save.js`) holds levels, EXP, the tree, Personas, equipment, materials and the access point; `S.battleCarry` is New Game+'s carried save; `S.handoff` the fight in progress. Slots, autosave and backup codes carry all of it; the title's Load shows Solar's level and play time.
+3. **Migration (core.js `migrate`, `S.mv < 2`).** Old autosave + `kg-femc-revamp-battle` (by run id; New Game+ from `ngFrom`) + a pending or finished `kg-femc-handoff` matching `handoffId` fold in once. The raw old autosave/handoff are kept once in `kg-femc-revamp-premerge`; `kg-femc-revamp-battle` is left in place (read only) for older slots; the old handoff key is removed after it's adopted. The battle save's own settings seed the shared settings once. Old backup codes and the old battle page's `FEMCBT` codes still load. `kg-femc-game` (v1) and `kg-femc-battle-proto` are never written.
+4. **One menu** (`assets/femc/game/menu.js`, HUD Menu button or M): Party (with tactics), Personas (Haenim's forms), Skills, Equipment, Items, Status, Links, Journal, Calendar, Compendium link. **Skills is deliberately empty**: the seam for the approved skill system is documented at the top of menu.js. **Tartarus uses this menu everywhere** (Kat's playtest note): the Dark Hour hub has one Menu button (and M), the access point and fight results offer Menu, Get Ready's Party/Equipment open it (required members can't be benched; solo fights only show Solar), and on a floor the map's Menu opens it on Items (field items are used there, an escape item leaves, the team is locked until an access point). In the Dark Hour the Skills tab opens Haenim's tree (the battle's own screen) until the skill system replaces it. The Tartarus prompt in the dorm can open it too.
+5. **One look and one settings panel.** The battle keeps Theurgy's aura, weakness markers and icons; panels/cards share the life sim's pink text-box shape. One settings store (`kg-femc-revamp-settings`, core.js DEFAULTS) and one panel for story + battle, also opened from inside a fight.
+6. **One title, practice hidden.** The title has Continue/New/Load/Settings and a small "Practice" link to `femc-battle.html?practice=1`: the old battle prototype with its own save (`kg-femc-battle-proto`), its own screens, the shared settings, and "Back to the game". The old `femc-battle.html?from=game` URL just returns to the game.
 
-`python3 tests/femc_links.py` passed 392 Hyein and 1,112 Mark scene runs, 91 availability checks, four calendar progressions, save/load, 50 scene assets, and desktop/mobile checks with no browser errors. These changes remain separate from the merge draft.
+## Validation (all pass, isolated Chrome profiles, random ports)
 
-## Finished: four merge checks and their fixes
+- `python3 tests/femc_onegame.py` (new; `--only` sections, `--screenshots DIR`): a Tartarus night with every menu (prompt, hub Menu + M/Escape, equipment, items, tactics, tree from Skills, a field item used on a floor, team lock, tonight's HP at an access point), climbing with real fights, leaving, results and the next morning; 5/9's full moon and 11/3's operation started from the story and back on the next line; save slots carrying battle progress; old two-page saves (autosave + battle save + slots + New Game+ carry + old backup code; a save left mid-fight resumed on the right line; a finished-but-unapplied fight applied once); practice mode (own save, story save untouched, shared settings, old URL); title, HUD, menu, settings, the Dark Hour hub with the menu over it, a fight and results at 1000×486, 375×812 and 1440×900 with no sideways scroll and no browser errors.
+- `femc_merge.py` (new game → prologue → both scripted fights including the segment-1 interrupt → exact next line → first day; reward receipt), `femc_saves.py`, `femc_menu.py`, `femc_settings.py`.
+- Main's suite, run in this checkout: `femc_preparation`, `femc_recruits`, `femc_field_poses`, `femc_shadow_poses` (ported to open fights inside femc-game.html: `femc_browser.Page.battle()/frame()/top()`; preparation now drives Party/Equipment through the field menu), `femc_scene_keyboard`, `femc_phone_activities`, `femc_daily_life`, `femc_compendium`, `femc_continuity`, `femc_cast_consistency`, `femc_links`. 16/16 pass.
 
-Run these commands from the combined-game checkout. All use a disposable Chrome profile and localhost server, not the player’s browser saves.
+## Not done / not verified
 
-1. `python3 tests/femc_merge.py` — Two real opening battles stay inside the life-sim page, return to the exact next scene line, and reach the first playable day. Fixed duplicate rewards during completed-battle recovery by saving an `appliedResult` receipt with the rewards. Reload/Continue recovery passes. Core cache version: 4.
-2. `python3 tests/femc_saves.py` — All three slots preserve complete story/battle snapshots. Checked switching slots, cancelled/confirmed overwrites, autosave, reload/Continue, title-screen loading, and three Tartarus entry/return cycles. Each uses its slot’s own progress; checkpoints and v1/practice sentinel saves stay unchanged. No game-code change was needed for this step.
-3. `python3 tests/femc_menu.py` — Party capacity/leader lock, equipment ownership and weapon compatibility, accessory removal, save/load, and the next battle pass. Fixed equipment targeting a stale character after loading an earlier roster. Fixed the Tartarus prompt refilling a deliberately solo party; first-time defaults still work. Desktop/mobile equipment screenshots inspected. Menu cache version: 2; UI version: 4.
-4. `python3 tests/femc_settings.py` — All 19 settings transfer between story and battle. Checked display flags, audio volume/muting, toolbar toggles, preference persistence across older-slot loading and reload, and pause/resume plus speed changes during an actual fight that finishes normally. Fixed Auto-advance not updating an already-open scene; turning it on/off now works immediately through the shared preference. Scene cache version: 4.
+- The skill system itself (8 slots, upgrades, the deeper Haenim tree, party trees, respec): next on the roadmap; build it in menu.js's Skills tab (seam documented there).
+- Physical controllers were not tested (pad.js runs in both the page and the battle frame; keyboard, mouse and touch paths were).
+- Practice mode keeps the prototype's own screens (by design: it's the hidden practice page).
+- Not every operation/scripted fight in the year was played; 5/9, 11/3, the prologue pair and the memory-floor/finale fights in main's ported tests were.
 
-All four completed checks had no browser errors. Shared test driver: `tests/femc_browser.py`. Temporary menu screenshots: `/private/tmp/femc-menu-check/`; temporary artifacts are not needed to rerun the tests.
+## Resume order
 
-## Not finished / not yet verified
-
-The original draft already contains much of the following implementation. Its presence does not mean it has been fully checked:
-
-- Complete title-screen and standalone practice-mode review, including keeping practice progress separate. Title Load/Continue and untouched practice-save sentinels were checked, but the whole practice flow was not.
-- Legacy autosave/slot/backup migration from the old two-page game, interrupted legacy battle recovery, and New Game+ carryover. The migration code exists but was not comprehensively tested in these steps.
-- Remaining shared-menu areas, especially Personas/forms and the Compendium flow. Party/equipment were the scope of step 3. The Skills tab is still a placeholder for the approved future skill-system work.
-- Broader late-game battle/operation, failure/retry, interrupted-fight recovery, and full visual/controller coverage. The passed opening-fight and selected integration checks are not a complete game playthrough or physical-controller test.
-- Integrating the merge checkout into main while preserving Hyein/Mark and `ifEvent`, reconciling HTML/cache versions, then running regression checks on the combined result.
-- The approved deeper skill system, skill upgrades/slot management, party-member trees and respec have not been built in this work.
-- No publication or push.
-
-## Resume order after the art work
-
-1. Title screen and separate practice mode.
-2. Legacy-save migration and recovery, including New Game+ and backup compatibility.
-3. Remaining merge UI/integration gaps, then combine into main and test the combined checkout.
-4. Continue the approved skill-system roadmap after the merge is ready.
+1. Lead integrates the branch into main after the story writers finish, then reruns the suite in main.
+2. The approved skill-system roadmap, in the menu's Skills tab.
 
 ## Current pivot: new art
 
