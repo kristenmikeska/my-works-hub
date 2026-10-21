@@ -12,7 +12,9 @@ from scipy import ndimage
 from scipy.signal import fftconvolve
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
-SOURCE=Path.home()/'Documents/UniverseHub-Images/Femc Mode Images/New Adds'
+# Integrated sources moved from New Adds/ to Added to Game/ (same names, 2026-10-20); look there first.
+IMAGES=Path.home()/'Documents/UniverseHub-Images/Femc Mode Images'
+SOURCE=IMAGES/'Added to Game'
 CONFIG={
  'BallotBoxShadow.png':('memory-ballot-box',{'attack':[1,2,3,4,5],'cast':[1,2,3,4,5]}),
  'PaparazziShadow.png':('memory-flash',{'attack':[1,3,4],'cast':[1,2,5],'hurt':[4],'down':[4],'defeat':[4]}),
@@ -86,7 +88,7 @@ def main():
  only=set(sys.argv[1:])
  for name,(slug,states) in CONFIG.items():
   if only and name not in only:continue
-  with Image.open(SOURCE/name) as sheet:
+  with Image.open(SOURCE/name if (SOURCE/name).exists() else IMAGES/'New Adds'/name) as sheet:
    if sheet.size!=(1536,1024):raise ValueError(name)
    if name in SPREAD:
     for i,frame in enumerate(spread(sheet.convert('RGBA'))):frame.save(ROOT/f'assets/femc/battle/art/shadows/{slug}-pose-{i}.webp','WEBP',quality=90,method=4)

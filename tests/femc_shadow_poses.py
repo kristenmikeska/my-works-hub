@@ -4,8 +4,12 @@ from femc_browser import Page
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 OUT=pathlib.Path(tempfile.mkdtemp(prefix='femc-shadow-poses-'))
 data=json.loads((ROOT/'tools/femc-new-adds.json').read_text())
+# Integrated sources moved from New Adds/ to Added to Game/ (same names; see the manifest's sourceRootNote): check either.
+roots=[pathlib.Path(data['sourceRoot']),pathlib.Path(data['sourceRoot']).parent/'Added to Game']
 for entry in data['entries']:
- assert hashlib.sha256((pathlib.Path(data['sourceRoot'])/entry['source']).read_bytes()).hexdigest()==entry['sha256']
+ src=next((r/entry['source'] for r in roots if (r/entry['source']).exists()),None)
+ assert src, 'source missing: '+entry['source']
+ assert hashlib.sha256(src.read_bytes()).hexdigest()==entry['sha256'],entry['source']
 source=(ROOT/'assets/femc/battle/battle.js').read_text()
 helpers=source[source.index('  const shadowFrames = new Map();'):source.index('  function addEnemy(u)')]
 args=argparse.ArgumentParser();args.add_argument("--art",default="");args.add_argument("--enemies",default="ballot_box,flash_shadow,tide_shadow,fox_shadow");options=args.parse_args();art_filter=[x for x in options.art.split(",") if x]
