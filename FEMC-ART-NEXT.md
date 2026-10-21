@@ -93,3 +93,14 @@ These are themed card sets. The frames and icons happen in code; these are the c
 - **Fixes:** Elizabeth's armband edit, the Wren bench socks edit.
 - **CGs:** side romances, Leon and Ada, Mercy and Aphrodite doing Solar's hair, Cloud with Tifa and Aerith, the dorm dinner, and the optional story scenes (sections 1–3 there).
 - **Wren's Shadow phases 1 and 3** (section 4 there).
+
+## 9. Pose sheets: animate the bosses and party ⭐ (Kat loves these)
+Kegstand, Bride and the other memory Shadows animate from a 6-pose sheet, which I cut into frames. Any Shadow or fighter can get the same treatment. One sheet per character, on a plain white background, in a 3×2 grid with even spacing so I can cut the cells cleanly.
+
+> *Character pose sheet, 3 columns × 2 rows on a plain white background, the same character in six poses, same scale and lighting in every cell, nothing overlapping between cells: (1) idle/ready, (2) wind-up, (3) attack, (4) casting a spell with **[element]** effects, (5) hit/recoil, (6) knocked down. Match the attached image's design exactly.*
+
+📎 the existing art of that Shadow or fighter.
+
+- **Full-moon bosses (highest impact):** Priestess, Empress, Emperor, Hierophant, Lovers, Chariot, Justice, Hermit, Fortune, Strength, Hanged Man. Their current art is in `assets/femc/battle/art/shadows/<name>-shadow.webp`.
+- **Wren's Shadow (the Last Train):** six poses, with the wind-up and attack as the train lunging.
+- **Party members:** six poses each from their battle stance (`poses/<name>.webp`). For people, use (1) idle, (2) Evoker raised, (3) weapon attack, (4) spell, (5) hurt, (6) victory.
