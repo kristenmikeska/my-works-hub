@@ -100,6 +100,7 @@ Batches, in order, after the story/character pass:
   - ✓ A fuller Yakushima trip: `data/yakushima.js` day plan (calendar trip `slots`; core.js `tripPlan`; ui.js `tripSlot`): three days of scenes and picks, the story's own night in its slot.
   - ✓ Pre-boss story beats: a build-up scene on the day of every operation after the first (`data/living-world.js` `lw-pre-*`), and a text the night before.
   - ✓ Also built: reactive texts (`afterRank`, 51) and daytime texts / group chats (`ambient`, 29) in `data/living-texts.js`; late nights for Akihiko, Jungwon and Jihoon (`lateNights`, `data/living-nights.js`; housing in `FEMC_GAME_LODGING`).
+- ✓ **Haechan (built 2026-10-21, Kat's rulings in the lore bible):** story ranks like Wren's (`links/haechan.js` `forced`, `storySlot: 'late'`, rank `slot`, `storyEvents`; core.js dueEvent / linkStatus / linkScene; `migrateForced` keeps old meter-based saves whole). His living world is in `data/living-haechan-nights.js` (12 late nights, 6 run-ins), `-days.js` (16 routines) and `-texts.js` (afterRank for every rank, 12 daytime and reaction texts, 4 holidays). New engine: `heading()` (where the story is heading) with `{ ifHeading }` in scenes, `heading` gates and per-heading text `variants`; routines in a later slot that are about to go stale hold the day. The Hoax ending is a secret route (details for writers only). `tests/femc_haechan.py`.
 - **D. Rewards:**
   - Weapons with looks and abilities (the art is on hold until Kat says), and per-character reward lists.
   - Achievements as hub stamps.

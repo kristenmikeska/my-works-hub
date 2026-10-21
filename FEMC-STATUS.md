@@ -15,7 +15,7 @@ Other docs, if you ever want detail:
 - ✅ **The living world, part 1:** many more everyday moments all year, texts that react to your time with people, holiday invites, Solar's birthday, a real Yakushima trip, late nights with the romances, and a build-up before each full moon
 - ✅ **The living world, part 2:** job shifts that don't repeat and three new jobs, running into people while out or working, four clubs, the Persona cast staying all year, a deeper Kuromi link, and a secret link to find
 
-- ⬜ **Queued after part 2: Haechan.** His rank becomes automatic like Wren's, he gets lots more scenes (late nights, dorm moments, texts, scenes with the people he knows), and the Hoax ending becomes a secret route.
+- ✅ **Haechan:** his ranks now arrive with the story (your choices with him still count, and old saves keep every rank), and he has much more life: late nights, dorm moments, run-ins around town, texts after every rank, holiday invites, reactions to big story moments and scenes with the people he knows. It all changes with where your story is heading. The Hoax ending is now a secret route, and the other routes play as before
 
 ## Story and characters
 - ✅ More story after Hanni, Hyein and Jihoon arrive, including the three comparing notes on Solar
