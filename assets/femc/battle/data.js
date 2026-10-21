@@ -937,16 +937,30 @@ window.FEMC_BATTLE_DATA = (() => {
     return 'data:image/svg+xml,' + encodeURIComponent(svg);
   };
 
-  /* Music per screen. A floor can override `battle` with its own `music` key. Swap files here. */
-  const M = 'assets/femc/music/';
+  /* Music per screen. A key is one file or a rotation (a list): each time the key starts it takes the next file, never the
+     one that just played (battle.js keeps the place in localStorage, so the rotation carries over from fight to fight).
+     world: Solar's world songs (the hub's own files), played softly over a memory fragment's card. Swap files here. */
+  const M = 'assets/femc/music/', AU = 'assets/audio/';
   const music = {
-    title: M + 'color-your-night.mp3',       // the entrance / hub
-    battle: M + 'its-going-down-now.mp3',     // regular fights
-    boss: M + 'master-of-shadow.mp3',         // full-moon bosses and the Reaper
+    title: M + 'basement.mp3',                // the entrance / hub (the Tartarus lobby)
+    battle: [M + 'wiping-all-out.mp3', M + 'mass-destruction.mp3', M + 'wiping-all-out.mp3', M + 'its-going-down-now.mp3'], // regular fights: Wiping All Out is the main theme
+    danger: M + 'danger-zone.mp3',            // Strong Shadows, the Reaper, memory-floor bosses
+    boss: M + 'calamity.mp3',                 // full-moon bosses
+    villain: M + 'blooming-villain.mp3',      // rival fights (Haechan's mirror match; Strega, if they come)
+    p5: [M + 'last-surprise.mp3', M + 'break-out-of.mp3'], // fights with the Persona 5 cast (none yet)
+    'finale-call': M + 'nyx.mp3',             // 1/30: Last Call
+    'finale-train': M + 'period.mp3',         // 1/30: No Stops (the Last Train)
+    'finale-last': M + 'burn-my-dread-last-battle.mp3', // 1/30: End of the Line
     floor: M + 'tartarus-thebel.mp3',         // the node map, results, skill tree
+    mementos: M + 'mementos.mp3',             // memory floors (before the fight) and the Memories screen
     shop: M + 'paulownia-mall.mp3',           // Paulownia Mall
     victory: M + 'full-moon-full-life.mp3',   // operation complete
     gameover: null,
+    world: {
+      runners: [AU + 'Camo-Runners.mp3', AU + 'chanmina-ashell.mp3', AU + 'rose-3am.mp3'],
+      strangers: [AU + 'EthelCain-Strangers.mp3', AU + 'EthelCain-Crush.mp3', AU + 'CocteauTwins-SeaSwallowMe.mp3'],
+      hoax: [AU + 'TaylorSwift-Hoax.mp3', AU + 'arianagrande-someonelikeu.mp3']
+    },
     alt: { tartarus: M + 'master-of-tartarus.mp3', classic: M + 'mass-destruction.mp3' }
   };
 

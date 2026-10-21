@@ -71,7 +71,7 @@
   ] },
 
   { id: 'a3-hierophant', date: '7/7', slot: 'evening', title: 'a wish on a festival night', place: 'Iwatodai Dorm · Command Room', time: 'Evening', scene: [
-    { music: 'mystery' },
+    { music: 'badfeeling' },
     { n: "It was Tanabata. The shopping streets had put up bamboo along the pavements, hung with paper wishes in every color, and they rustled in the hot wind like something breathing, and every time Solar walked past one she read a few without meaning to. *Pass my exams.* *Let Mom get better.* *I want to see him again.* Children's handwriting, mostly. Some of it wasn't." },
     { n: "She didn't write one. Yukari asked why, on the way home, and she said she couldn't think of anything, and Yukari looked at her the way people did lately, a half second too long, and let it go." },
     { s: 'fuuka', f: 'neutral', t: "There are two. One on Shirakawa Boulevard, inside a building. A big one. And another, close to it, that keeps... moving around. Like it's pacing." },
@@ -108,6 +108,7 @@
     { place: 'Gekkoukan High · Front Gate', time: 'Evening', soft: true },
     { music: 'tender' },
     { n: "Outside, it was dusk. The real kind, the long blue kind that only happens in summer, when the sun has gone but the light hasn't heard yet. The heat had finally broken. The air coming off the bay was almost cool against her arms, and the brick paths across the school grounds had gone the color of rust and dried roses, and somewhere above her the big clock on the main building cleared its throat and struck seven." },
+    { music: 'world-runners' },
     { n: "She started walking. Not to the gate. Her feet had gone a different way, left instead of right, along the path past the gym, with total confidence, the way they'd go to her own room in the dark. Past the gym. Past the old club building. Toward a building that should have been at the end of the path, a tall one, brick, with long windows and a metal ladder bolted to its back wall going all the way up to the roof. She could see it so clearly she could have drawn it. She could have told you which rung was loose." },
     { n: "The path ended at the fence by the archery range. There was no building. There was a vending machine and a bike rack and the fence, and beyond the fence, the road, and the bay." },
     { n: "She stood there with her bag on her shoulder, slightly out of breath, the way you are when you've run up a flight of stairs and found one more step than you counted. The air smelled like cut grass and the sea. It should have smelled like something else. Cold. Leaves. Somebody's lighter, three floors up." },
@@ -252,7 +253,7 @@
   ] },
 
   { id: 'a3-chariot', date: '8/6', slot: 'evening', title: 'no rails', place: 'Iwatodai Dorm · Command Room', time: 'Evening', scene: [
-    { music: 'mystery' },
+    { music: 'badfeeling' },
     { n: "August had come down on the city like a lid. The kind of heat that made the air over the roads wobble and the cicadas scream from every tree at once, and at night it didn't break, it just got darker. Solar had stopped sleeping well. She told herself it was the heat." },
     { s: 'fuuka', f: 'neutral', t: "Moonlight Bridge. Two of them. They're on the bridge itself, in the middle, and they're not moving apart. I think they're... together. One of them's very fast." },
     { place: 'Moonlight Bridge · The Dark Hour', time: 'The Dark Hour', bg: 'darkhour-moonlight-bridge' },
@@ -382,6 +383,7 @@
         { n: "Seventeen. The seventeenth was the one at the bottom, by the corner, and under it, in her mind, there was somebody leaning on the wall." }
       ] }
     ] },
+    { music: 'world-strangers' },
     { n: "Under the last lantern, at the bottom, there should have been someone waiting. She could feel the shape of him the way you feel a step in the dark. Leaning on the wall with one shoulder, in a black jacket, not close, not far. Exactly as far back as he'd been told to stand. The smell of cinnamon gum and salt and cold engine oil. Not looking at her. Watching everything else, so that she didn't have to." },
     { n: "There was nobody under the last lantern. There was a wall, and a drainpipe, and a cat." },
     { fragment: 'strangers-lanterns' },

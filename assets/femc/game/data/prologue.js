@@ -41,6 +41,7 @@ window.FEMC_GAME_PROLOGUE = {
     {"n": "Every part of her that was still a person screamed at her to stop. Every part of her that was something else, something underneath, something that had been waiting in the dark of her for a very long time to be asked, said *finally*."},
     {"n": "She didn't know who she was. She was almost sure she had never done this before."},
     {"n": "She squeezed."},
+    {"music": "awakening"},
     {"summon": "haenim", "glitch": true, "first": true},
     {"n": "The sound of it was like every bell she'd ever heard ringing once, at the same time, in a room too small to hold them."},
     {"n": "Something rose out of the white behind her. A woman, or the shape of one, tall and slender in pink and gold that flowed like a gown and glinted like armor, with a crown of ribbons and gold pins and a veil of thin pink silk over her face, and under the veil, where her eyes should have been, a small golden sun. Her joints, where the silk fell away at the wrists, were smooth and seamed like a doll's. A white fox mask sat pushed aside on her head like a girl at a festival who'd gotten bored of it."},

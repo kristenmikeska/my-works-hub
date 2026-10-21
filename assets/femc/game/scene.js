@@ -55,39 +55,116 @@ window.FemcScene = (() => {
   const plain = text => String(text).replace(/\*([^*]+)\*/g, '$1');
 
   /* ── Music for scenes and screens ──
-     duck(true): a battle has the floor (its own music plays in the battle frame); the track keeps running silently so it can
-     come back where it was, and so FEMC mode's background music stays paused. mood(): the last mood asked for. */
+     set(mood): the P3 track for a mood (places.js `music`). A mood is a file (it loops) or a pool: a pool rotates (the
+     rotation is remembered in localStorage, kg-femc-music), never starts the file that just played, and plays each track
+     through once before crossfading into the next. Asking for the mood that's already playing (or a mood whose pool holds
+     the current file) keeps the track going.
+     World moods ('world-runners' etc.): Solar's world songs. They fade in softly over the scene while the P3 track waits,
+     paused where it was, and fade back out to it when the song ends, the scene asks for another mood, or the scene ends.
+     (A change of place without a music key only changes the P3 track waiting underneath.)
+     duck(true): a battle has the floor (its own music plays in the battle frame); the tracks keep running silently so they
+     can come back where they were, and so FEMC mode's background music stays paused. mood(): the last P3 mood asked for.
+     Volume is the shared Music setting (0 = silent; the track still runs). */
   const Music = (() => {
-    let cur = null, key = null, ducked = false, lastMood = null;
-    const vol = () => (ducked ? 0 : (G?.settings().music ?? 60) / 100 * 0.5);
-    const fade = (a, to, done) => {
+    const SOFT = 0.6, ROT = 'kg-femc-music';
+    let cur = null, file = null, mood0 = null, lastMood = null, ducked = false, world = null;
+    let rot = {};
+    try { rot = JSON.parse(localStorage.getItem(ROT) || '{}').rot || {}; } catch (e) { rot = {}; }
+    const keepRot = () => { try { localStorage.setItem(ROT, JSON.stringify({ rot })); } catch (e) {} };
+    const vol = () => (ducked ? 0 : Math.max(0, Math.min(100, G?.settings().music ?? 60)) / 100 * 0.5);
+    const wvol = () => vol() * SOFT;
+    const MAP = () => window.FEMC_GAME_PLACES.music;
+    const isWorld = m => /^world-/.test(m || '');
+    const pool = m => [].concat(MAP()[m] ?? MAP().joy);
+    const src = f => `${G.base}${f.includes('/') ? f : `assets/femc/music/${f}.mp3`}`;
+    // The next file in a mood's rotation, skipping `avoid` (the file that just played).
+    function pick(m, avoid) {
+      const list = pool(m);
+      let i = (rot[m] || 0) % list.length;
+      if (list.length > 1 && list[i] === avoid) i = (i + 1) % list.length;
+      rot[m] = (i + 1) % list.length; keepRot();
+      return list[i];
+    }
+    function fade(a, to, ms, done) {
       clearInterval(a._fade);
+      const step = (to - a.volume) / Math.max(1, ms / 50);
+      if (!step) { a.volume = Math.max(0, Math.min(1, to)); done && done(); return; }
       a._fade = setInterval(() => {
-        const v = a.volume + (to > a.volume ? 0.03 : -0.03);
-        if (Math.abs(to - a.volume) <= 0.03) { a.volume = to; clearInterval(a._fade); done && done(); } else a.volume = Math.max(0, Math.min(1, v));
+        const v = a.volume + step;
+        if ((step > 0 && v >= to) || (step < 0 && v <= to)) { a.volume = Math.max(0, Math.min(1, to)); clearInterval(a._fade); done && done(); }
+        else a.volume = Math.max(0, Math.min(1, v));
       }, 50);
-    };
+    }
+    // Start (or resume) an element and fade it up to to(); if autoplay is blocked, try again on the first click or key.
+    function begin(a, to, ms) {
+      clearInterval(a._fade);
+      const go = () => a.play().then(() => { if (a === cur && world) { a.pause(); return; } fade(a, to(), ms); }); // a world song took over meanwhile
+      go().catch(() => {
+        const retry = () => { removeEventListener('pointerdown', retry, true); removeEventListener('keydown', retry, true); if (a === cur || a === world?.a) go().catch(() => {}); };
+        addEventListener('pointerdown', retry, true); addEventListener('keydown', retry, true);
+      });
+    }
+    const out = (a, ms) => fade(a, 0, ms, () => a.pause());
+    // A pooled track crossfades into the next one just before it ends; a single-file mood just loops. (Every P3 track has
+    // loop on, so a missed cue only means one more time round.)
+    function watch(a) {
+      const next = () => { if (a !== cur || a._next || world || pool(mood0).length < 2) return; a._next = true; playP3(mood0, pick(mood0, file)); };
+      a.addEventListener('timeupdate', () => { const d = a.duration; if (d && isFinite(d) && d - a.currentTime < 2.2) next(); });
+    }
+    function playP3(m, f) {
+      const old = cur;
+      file = f; mood0 = m;
+      const a = cur = new Audio(src(f));
+      a.preload = 'auto'; a.volume = 0; a.loop = true;
+      watch(a);
+      if (world) return; // waits under the world song; it starts when that fades out
+      begin(a, vol, 900);
+      if (old) out(old, 900);
+    }
+    function resumeP3(ms) {
+      if (!cur) { if (lastMood) playP3(lastMood, pick(lastMood, file)); return; }
+      if (cur.paused) begin(cur, vol, ms); else fade(cur, vol(), ms);
+    }
+    function startWorld(m) {
+      if (world && world.mood === m) return;
+      const prev = world;
+      const f = pick(m, prev && prev.file);
+      if (prev) out(prev.a, 1200);
+      const a = new Audio(src(f));
+      a.preload = 'auto'; a.volume = 0; a.loop = false;
+      const w = world = { a, mood: m, file: f };
+      a.addEventListener('ended', () => { if (world === w) { world = null; resumeP3(2200); } });
+      if (cur && !cur.paused) { const p = cur; fade(p, 0, 1200, () => { if (world) p.pause(); }); }
+      begin(a, () => (ducked ? 0 : wvol()), 2500);
+    }
+    function endWorld(ms = 2200) {
+      if (!world) return;
+      const w = world; world = null;
+      out(w.a, ms);
+      resumeP3(ms);
+    }
     return {
-      set(mood) {
+      // opts.under: a mood the scene only implies (a change of place): a world song keeps playing over it.
+      set(mood, opts = {}) {
+        if (!mood) return;
+        if (isWorld(mood)) return startWorld(mood);
         lastMood = mood;
-        const M = window.FEMC_GAME_PLACES.music;
-        const file = M[mood] || M.joy;
-        if (file === key) return;
-        key = file;
-        const old = cur;
-        const a = cur = new Audio(`${G.base}assets/femc/music/${file}.mp3`);
-        a.loop = true; a.volume = 0;
-        const start = () => a.play().then(() => fade(a, vol()));
-        start().catch(() => {
-          const go = () => { removeEventListener('pointerdown', go, true); removeEventListener('keydown', go, true); if (cur === a) start().catch(() => {}); };
-          addEventListener('pointerdown', go, true); addEventListener('keydown', go, true);
-        });
-        if (old) fade(old, 0, () => old.pause());
+        const keep = cur && (mood === mood0 || pool(mood).includes(file));
+        if (world && opts.under) { if (keep) mood0 = mood; else playP3(mood, pick(mood, file)); return; }
+        if (world) { const w = world; world = null; out(w.a, 1600); if (keep) { mood0 = mood; return resumeP3(1600); } }
+        if (keep) { mood0 = mood; if (cur.paused) resumeP3(600); return; }
+        playP3(mood, pick(mood, file));
       },
-      volume() { if (cur) { clearInterval(cur._fade); cur.volume = vol(); } },
-      stop() { if (cur) { const a = cur; fade(a, 0, () => a.pause()); } cur = null; key = null; },
-      duck(on) { ducked = !!on; if (cur) fade(cur, vol()); },
-      key: () => key, mood: () => lastMood
+      // A memory fragment in a scene: its world's song, unless a world song is already playing.
+      fragment(id) { const m = (window.FEMC_GAME_PLACES.worldMusic || {})[G.worldOf?.(id)]; if (m && !world) startWorld(m); },
+      sceneEnd() { endWorld(); },
+      volume() { if (cur && !world) { clearInterval(cur._fade); cur.volume = vol(); } if (world) { clearInterval(world.a._fade); world.a.volume = ducked ? 0 : wvol(); } },
+      stop() { if (world) { out(world.a, 400); world = null; } if (cur) out(cur, 400); cur = null; file = null; mood0 = null; },
+      duck(on) { ducked = !!on; if (world) fade(world.a, ducked ? 0 : wvol(), 400); else if (cur && !cur.paused) fade(cur, vol(), 400); },
+      key: () => file, mood: () => lastMood, world: () => (world ? world.mood : null),
+      // For tests: what's playing.
+      state: () => ({ file, mood: mood0, lastMood, ducked, curPaused: cur ? cur.paused : null, curVol: cur ? cur.volume : null, curLoop: cur ? cur.loop : null, curSrc: cur ? cur.src : null,
+        world: world ? world.mood : null, worldFile: world ? world.file : null, worldVol: world ? world.a.volume : null, worldPaused: world ? world.a.paused : null, target: vol(), soft: SOFT })
     };
   })();
 
@@ -224,7 +301,7 @@ window.FemcScene = (() => {
     }
     function sceneBreak(line) {
       currentFace = null; img.hidden = true; sil.hidden = true;
-      if (line.music) Music.set(line.music); else if (!opts.music && line.place) Music.set(G.moodFor(line.place, line.time));
+      if (line.music) Music.set(line.music); else if (!opts.music && line.place) Music.set(G.moodFor(line.place, line.time), { under: true });
       const apply = () => {
         vis.place = line.place; vis.time = line.time || ''; vis.bg = line.bg || null; vis.cg = null;
         if (line.date) { G.setDate(line.date); vis.date = null; }
@@ -316,6 +393,7 @@ window.FemcScene = (() => {
       if (line.route) return ask(line.route);
       const branch = G.branch(line, curLink);
       if (branch !== null) { queue.unshift(...(branch || [])); return next(); }
+      if (line.fragment) Music.fragment(line.fragment);
       if (G.effect(line)) return next();
       if (line.n !== undefined) {
         nameEl.textContent = ''; textEl.classList.add('narration'); img.classList.add('dim'); sil.hidden = true; if (currentFace?.startsWith('sil/')) currentFace = null;
@@ -405,6 +483,7 @@ window.FemcScene = (() => {
     function end(finished) {
       if (closed) return;
       clearTimeout(typing);
+      Music.sceneEnd();
       close();
       opts.onDone?.({ finished, gained });
     }

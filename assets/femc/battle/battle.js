@@ -247,10 +247,14 @@
     return e;
   }
 
-  /* ── Music: one track per screen (data.music); "off" keeps the track muted so FEMC's own BGM stays paused here too ── */
+  /* ── Music: a track per screen (data.music). A key that's a list rotates: each start takes the next file and never the one
+     that just played. The place is kept in localStorage (kg-femc-battle-music) because the life sim opens a fresh battle
+     frame for every fight. world(name): Solar's world song for a memory fragment, soft over the screen while the screen's
+     track waits; endWorld() fades it out and brings the track back. "Off" keeps the tracks muted so FEMC's own BGM stays
+     paused here too. ── */
   const music = (() => {
-    const VOL = () => 0.42 * Math.max(0, Math.min(100, ST().musicVol)) / 100, pool = {}, fades = new Map();
-    let cur = null, key = null, pending = false;
+    const VOL = () => 0.42 * Math.max(0, Math.min(100, ST().musicVol)) / 100, SOFT = 0.6, ROT = 'kg-femc-battle-music', pool = {}, fades = new Map();
+    let cur = null, key = null, pending = false, world = null;
     const get = src => pool[src] || (pool[src] = Object.assign(new Audio(src), { loop: true, preload: 'auto' }));
     function fade(a, to, ms, done) {
       clearInterval(fades.get(a));
@@ -261,27 +265,68 @@
         else a.volume = Math.max(0, Math.min(1, v));
       }, 40));
     }
+    // The next file for a rotation id, skipping the file that rotation played last.
+    function pick(id, list) {
+      list = [].concat(list || []).filter(Boolean);
+      if (list.length < 2) return list[0] || null;
+      let st = {};
+      try { st = JSON.parse(localStorage.getItem(ROT) || '{}') || {}; } catch (e) { st = {}; }
+      const r = st.rot || (st.rot = {}), last = st.last || (st.last = {});
+      let i = (r[id] || 0) % list.length;
+      if (list[i] === last[id]) i = (i + 1) % list.length;
+      r[id] = (i + 1) % list.length; last[id] = list[i];
+      try { localStorage.setItem(ROT, JSON.stringify(st)); } catch (e) {}
+      return list[i];
+    }
     function play(k, { restart = false } = {}) {
+      if (world) endWorld(300);
+      if (k && k === key && cur && !cur.paused && !restart) return;
       key = k;
-      const src = k && D.music[k];
+      const src = k && pick(k, D.music[k]);
       if (!src) { stop(); return; }
       const a = get(src);
       a.muted = !musicOn();
       if (cur && cur !== a) { const old = cur; fade(old, 0, 450, () => old.pause()); }
-      if (cur === a && !a.paused) return;
+      if (cur === a && !a.paused && !restart) return;
       cur = a;
       if (restart) { try { a.currentTime = 0; } catch (e) {} }
       a.volume = 0;
       const p = a.play();
-      const ok = () => { pending = false; fade(a, VOL(), 700); };
+      const ok = () => { pending = false; if (world && cur === a) { a.pause(); return; } fade(a, VOL(), 700); }; // a world song took over meanwhile: wait under it
       if (p && p.then) p.then(ok).catch(() => { pending = true; }); else ok();
     }
-    function stop() { if (cur) { const old = cur; fade(old, 0, 400, () => old.pause()); cur = null; } }
+    function stop() { if (world) endWorld(300); if (cur) { const old = cur; fade(old, 0, 400, () => old.pause()); cur = null; } }
+    function startWorld(name) {
+      const n = String(name || '').toLowerCase(), src = pick('world:' + n, (D.music.world || {})[n]);
+      if (!src) return;
+      if (world) { const w = world.a; fade(w, 0, 600, () => w.pause()); }
+      const a = new Audio(src);
+      a.preload = 'auto'; a.loop = false; a.volume = 0; a.muted = !musicOn();
+      const w = world = { a, name: n, src };
+      a.addEventListener('ended', () => { if (world === w) endWorld(1800); });
+      if (cur && !cur.paused) { const c = cur; fade(c, 0, 1000, () => { if (world) c.pause(); }); }
+      const p = a.play();
+      if (p && p.then) p.then(() => fade(a, VOL() * SOFT, 2200)).catch(() => {});
+    }
+    function endWorld(ms = 1800) {
+      if (!world) return;
+      const a = world.a; world = null;
+      fade(a, 0, ms, () => a.pause());
+      if (!cur) return;
+      cur.muted = !musicOn();
+      if (cur.paused) { const c = cur, p = c.play(); if (p && p.then) p.then(() => fade(c, VOL(), ms)).catch(() => {}); } else fade(cur, VOL(), ms);
+    }
     const retry = () => { if (pending && key) { const k = key; key = null; cur = null; play(k); } };
     addEventListener('pointerdown', retry, true);
     addEventListener('keydown', retry, true);
     // refresh(): after the Music toggle or the volume slider changed.
-    return { play, stop, refresh: () => { if (cur) { cur.muted = !musicOn(); clearInterval(fades.get(cur)); cur.volume = VOL(); } else if (key) play(key); }, key: () => key };
+    const refresh = () => {
+      if (world) { world.a.muted = !musicOn(); clearInterval(fades.get(world.a)); world.a.volume = VOL() * SOFT; if (cur) cur.muted = !musicOn(); return; }
+      if (cur) { cur.muted = !musicOn(); clearInterval(fades.get(cur)); cur.volume = VOL(); } else if (key) play(key);
+    };
+    return { play, stop, refresh, world: startWorld, endWorld, key: () => key,
+      state: () => ({ key, src: cur ? cur.getAttribute('src') : null, paused: cur ? cur.paused : null, vol: cur ? cur.volume : null, muted: cur ? cur.muted : null, target: VOL(),
+        world: world ? world.name : null, worldSrc: world ? world.src : null, worldVol: world ? world.a.volume : null, worldPaused: world ? world.a.paused : null, soft: SOFT }) };
   })();
 
   /* ── Sound effects: FEMC's menu sounds when available, otherwise small Web Audio synths ── */
@@ -1044,7 +1089,7 @@
   async function fight(floor, { group, strong = false, reaper = false }) {
     for (;;) {
       const snap = JSON.stringify({ carry: run.carry, items: save.items, th: save.th, fights: run.fights, tired: run.tired });
-      const out = await battle({ group, bg: floor.bg, label: floor.label, block: floor.block, boss: reaper, reaper, strong, music: reaper ? 'boss' : 'battle', nav: reaper ? 'reaper' : floor.nav, heat: reaper ? 0 : save.cycle * D.progression.heat });
+      const out = await battle({ group, bg: floor.bg, label: floor.label, block: floor.block, boss: reaper, reaper, strong, music: reaper || strong ? 'danger' : 'battle', nav: reaper ? 'reaper' : floor.nav, heat: reaper ? 0 : save.cycle * D.progression.heat });
       if (out.result === 'win') {
         await afterWin(out, { title: `${floor.label} · ${floor.block}`, strong, reaper, back: 'Back to the map' });
         return 'win';
@@ -1711,9 +1756,11 @@
     sfx('unlock'); mark('memory'); mark('memory-' + m.id);
     const charm = { Runners: 'bell', strangers: 'jade', Hoax: 'star' }[m.world];
     const bg = await new Promise(r => { const i = new Image(); i.onload = () => r(m.wide || m.img); i.onerror = () => r(D.memoryPlaceholder ? D.memoryPlaceholder(m.id) : ''); i.src = m.img; });
+    music.world(m.world); // the fragment's world song, softly, while its card is up
     await roomPanel({ bg, cls: 'memory', kicker: `Memory fragment · ${m.world}`, title: esc(m.title).toUpperCase(), name: 'memory',
       body: `<div class="bt-memcard"><img src="${m.img}" alt="${esc(m.title)}"></div><p class="bt-memtext">${esc(m.text)}</p><p class="bt-memcharm">${ART.charm(charm)}<span>Haenim’s ${esc(charm)} rings. <b>+${D.progression.memoryPoints} skill point</b></span></p>`,
       fuuka: navLine('memory') });
+    music.endWorld();
   }
 
   /* ════════════════════════════════════════════════════
@@ -3845,6 +3892,7 @@
   function memoriesScreen(onClose) {
     if (BR) { fieldMenu('journal').then(onClose); return; }
     screen = 'memories';
+    music.play('mementos');
     root.classList.remove('bt-in-battle');
     const worlds = ['Runners', 'strangers', 'Hoax'], charm = { Runners: 'bell', strangers: 'jade', Hoax: 'star' };
     const all = D.memories;
@@ -4084,9 +4132,10 @@
   const SEG1 = (at, foeHp = 0.5) => ({ protect: true, noEscape: true, interruptAt: at, interruptFoeHp: foeHp, interruptHp: 0.35 });
   // A memory floor: one boss (plus any Shadows at its side: pass an array, boss first), two segments when someone awakens
   // mid-fight (seg 1 interrupts, seg 2 has them in the party).
-  const memoryFloor = (boss, bg, block, who, at = 4) => R => (R.segment === 1
-    ? [{ group: [].concat(boss), bg, label: 'Tartarus', block, boss: true, music: 'boss', noResults: true, title: R.title || block, rules: SEG1(at) }]
-    : [{ group: [].concat(boss), bg, label: 'Tartarus', block, boss: true, music: 'boss', title: R.title || block, join: who ? [who] : [], rules: { noEscape: true, startHp: R.segment === 2 ? 0.5 : 1 } }]);
+  // Music: Mementos while getting ready, Danger Zone for the fight (or another key: Haechan's mirror match is a rival fight).
+  const memoryFloor = (boss, bg, block, who, at = 4, tune = 'danger') => R => (R.segment === 1
+    ? [{ group: [].concat(boss), bg, label: 'Tartarus', block, boss: true, music: tune, prep: 'mementos', noResults: true, title: R.title || block, rules: SEG1(at) }]
+    : [{ group: [].concat(boss), bg, label: 'Tartarus', block, boss: true, music: tune, prep: 'mementos', title: R.title || block, join: who ? [who] : [], rules: { noEscape: true, startHp: R.segment === 2 ? 0.5 : 1 } }]);
   const SCRIPTS = {
     // 4/6, the prologue. Segment 1: two Maya, Attack and Guard only; ends 'interrupt' when round 3 starts, when Solar drops
     // below half her HP, or when a Maya falls. Segment 2: the Evoker works, the second Maya is weak to Light, Solar can't lose.
@@ -4108,7 +4157,7 @@
     'memory-strangers': memoryFloor(['tide_shadow', 'fishmonger'], BGP + 'tartarus-coffins.webp', 'The Last Ferry', null),
     'memory-runners-2': memoryFloor('party_shadow', TBG(4), 'The First Party', null),
     'memory-jungwon': memoryFloor('veil_poster', TBG(6), 'Two Floors at Once', 'jungwon', 3),
-    'memory-haechan': memoryFloor('fox_shadow', TBG(6), 'Mirror Match', 'haechan', 3)
+    'memory-haechan': memoryFloor('fox_shadow', TBG(6), 'Mirror Match', 'haechan', 3, 'villain')
   };
   // Story fights the battle game doesn't know yet: a Shadow group from the newest open block. The scene's designer notes can
   // ask for an interrupt ("interrupt … turn N", "half HP"); segment 1 can't be lost.
@@ -4116,12 +4165,13 @@
     const b = D.blocks[hoBlockCap()], notes = String(R.notes || '');
     const wantsInterrupt = /interrupt/i.test(notes) && R.segment !== 2;
     const turn = notes.match(/turn (\d+)/i);
-    return [{ group: (b.strong[0] || b.pool[0]).slice(), bg: b.bg, label: R.title || 'Tartarus', block: b.name, boss: false, music: 'boss', title: R.title || b.name,
+    return [{ group: (b.strong[0] || b.pool[0]).slice(), bg: b.bg, label: R.title || 'Tartarus', block: b.name, boss: false, music: 'danger', title: R.title || b.name,
       rules: wantsInterrupt ? SEG1(turn ? +turn[1] + 1 : 4, /half/i.test(notes) ? 0.5 : 0) : { noEscape: true } }];
   }
   // Preparation is deliberately separate from battle(): nothing can take a turn before Begin.
   function prepareBattle(spec) {
     const required = spec.join || [], level = Math.max(...spec.group.map(kind => E.enemyBase(kind).lvl));
+    if (spec.prep) music.play(spec.prep);
     if (HO) { save.preparation = { handoff: HO.id }; persist(); }
     return new Promise(resolve => {
       let started = false;
@@ -4214,7 +4264,7 @@
     const done = (outcome, extra = {}) => { run = null; return hoFinish(outcome, Object.assign(Object.keys(flags).length ? { flags } : {}, extra)); };
     if (!seg || seg === 1) {
       if (!seg) await message('LAST CALL', 'Wren is on the bench with her ticket in both hands. Midnight is a minute away and so is the train. She doesn’t want to fight you. She wants you to stay.');
-      const p1 = await hoFight({ group: ['wren_call'], bg, label: 'Last Call', block, boss: true, music: 'boss', noResults: true, op: { id: 'finale', name: 'Last Call', arcana: 'Jester' },
+      const p1 = await hoFight({ group: ['wren_call'], bg, label: 'Last Call', block, boss: true, music: 'finale-call', noResults: true, op: { id: 'finale', name: 'Last Call', arcana: 'Jester' },
         rules: { protect: true, noNav: true, noEscape: true, labels: { guard: 'Hold' }, roundsMax: 4 } });
       const w = B && B.foes().find(f => f.kind === 'wren_call');
       // In segments, the scene records its own choice (story-act6); only a full run reports it.
@@ -4224,7 +4274,7 @@
       await message('NO STOPS', 'The train comes in with no lights in the lead car. Three windows glow along its side, and in each one a girl who looks like you is asleep.');
     }
     if (!seg || seg === 2) {
-      const p2 = await hoFight({ group: ['last_train', 'lantern_r', 'lantern_s', 'lantern_h'], bg, label: 'No Stops', block, boss: true, music: 'boss', title: 'The Last Train',
+      const p2 = await hoFight({ group: ['last_train', 'lantern_r', 'lantern_s', 'lantern_h'], bg, label: 'No Stops', block, boss: true, music: 'finale-train', title: 'The Last Train',
         op: { id: 'finale', name: 'The Last Train', arcana: 'XVIII · Moon' },
         rules: { noEscape: true, setup: b => b.foes().forEach(f => { if (/^lantern_/.test(f.kind) && !open.includes(f.kind)) { f.unreachable = true; f.aff = Object.fromEntries(D.affinityOrder.map(el => [el, 'null'])); } }) } });
       mark('finale-route-' + route);
@@ -4243,7 +4293,7 @@
     // Phase 3 in the route's form of Haenim (only for this fight; the battle save's chosen form comes back after).
     const form = { R: 'haenim-sunna', S: 'haenim-mazu', H: 'haenim-nike' }[route] || 'haenim';
     save.forceForm = form;
-    const p3 = await hoFight({ group: ['wren_last'], bg, label: 'End of the Line', block, boss: true, music: 'boss', solo: true, noResults: true, op: { id: 'finale', name: 'End of the Line', arcana: 'Jester' },
+    const p3 = await hoFight({ group: ['wren_last'], bg, label: 'End of the Line', block, boss: true, music: 'finale-last', solo: true, noResults: true, op: { id: 'finale', name: 'End of the Line', arcana: 'Jester' },
       rules: { protect: true, noNav: true, noEscape: true, cmds: ['attack', 'skill', 'theurgy'] } });
     delete save.forceForm; persist();
     if (p3 === 'win') HS.bosses.push('finale');
@@ -4287,7 +4337,8 @@
     screen: () => screen, marks, freeze() { frozen = true; if (FX) FX.pause(); }, unfreeze() { frozen = false; if (FX) FX.resume(); },
     awakening: () => awakening(app.firstElementChild || app),
     get handoff() { return HO; }, get hs() { return HS; }, hoFinish: (o, x) => hoFinish(o, x),
-    reloadSave() { save = loadSave(); }, settingsChanged, get embedded() { return !!BR; }
+    reloadSave() { save = loadSave(); }, settingsChanged, get embedded() { return !!BR; },
+    music: { state: () => music.state(), play: (k, o) => music.play(k, o), world: n => music.world(n), endWorld: () => music.endWorld() }
   };
   if (FX) FX.setSpeed(speed);
   if (HO) { hoStart(); try { BR.ready(); } catch (e) {} } else hub();

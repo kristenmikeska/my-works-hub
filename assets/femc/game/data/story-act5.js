@@ -263,12 +263,14 @@ window.FEMC_STORY_KIT.badEnding = [
     { n: "Both rang at once. The jade ring and the star pin, together, in her chest, two pulls in two directions, and beside her Jungwon put two fingers to his wrist, to the watch going backward, as though he'd heard them too. As though they were ringing in him." },
     { choose: [
       { t: "(Follow the jade ring.)", flag: { 'xroad2-S': true }, tally: { crossroad2: 'S', 'lean.S': 1, 'jungwon.S': 1 }, then: [
+        { music: 'world-strangers' },
         { n: "The floor was a pier at low tide. Mud to the horizon under sodium lights, the sea gone out so far it was only a line, boats lying on their sides, the smell of salt and diesel and the cold coming off the flats. And standing out on the mud, waiting, a bride." },
         { n: "That was what it was. A tall shape in white, a veil to the ground, lace and pearl and a long train dragging through the gray mud behind it, and under the veil, where a face should be, nothing. A wedding dress with nobody in it. It turned toward them. It turned toward Jungwon, and the veil lifted, slightly, as if in greeting, as if it knew him. As if it had been waiting for him at the end of an aisle." },
         { fragment: 'strangers-low-tide' },
         { n: "Solar knew the mud. She knew this tide. She could feel it in her teeth, the sea a mile out and the whole long night of the low tide in front of her, the night she never slept. She knew the dress, too, though she'd never worn it. She knew the date it was for." }
       ] },
       { t: "(Follow the star pin.)", flag: { 'xroad2-H': true }, tally: { crossroad2: 'H', 'lean.H': 1, 'jungwon.H': 1 }, then: [
+        { music: 'world-hoax' },
         { n: "The floor was a student council room at night. Long table, folders, a whiteboard covered in someone's precise neat handwriting, two names written at the top of it under two titles, and on the table, in a pool of lamplight, a math worksheet. Covered in corrections. Every wrong answer circled in somebody else's neat pencil, and the right way written out beside it, step by step, patient, with a small check mark at the end of each one like a pat on the head." },
         { fragment: 'hoax-math-homework' },
         { n: "And standing by the whiteboard, waiting, a poster. A campaign poster the size of a door, glitter and bubble letters and a smiling face, and it peeled itself off the wall and stood up on paper legs and turned, and the face on it was her face, and the smile was the practiced one, and it was looking at Jungwon the way a vice president looks at a president across a long table: waiting to be told what to do." }
@@ -284,6 +286,7 @@ window.FEMC_STORY_KIT.badEnding = [
     { s: 'jungwon', f: 'serious', t: "In one life, I'm the boy she ran against, who won, and then made her my vice president, because there was nobody else in that school I'd trust to tell me when I was wrong. In the other, I'm the son who's to marry her in April because two families shook hands over a table. I didn't ask for that one either. I've stopped wishing nobody had given it to me." },
     { s: 'jungwon', f: 'serious', t: "I have been both of them every hour since I came through that door. I don't put one down to carry the other. I'm not built like that. Neither is she. Neither, God help me, is he." },
     { s: 'jungwon', f: 'neutral', t: "So I won't choose. And I won't let you make her choose. Give them back. Both halves. They were never two." },
+    { music: 'awakening' },
     { cg: 'searchers-jungwon-awakening' },
     { n: "Something came up out of him, very quiet. Not loud like Jihoon's, not a light like Minji's. A shape that built itself the way a bridge is built, span by span, very fast, very exact, a figure of command and stillness standing over him with its arms crossed, and where it stood, the seam in the floor closed. Mud and lamplight knitted together under his feet. Every piece that had lifted off him stopped in the air, mid-flight, both colors, and came back, one at a time, each into its exact place, the way you'd put pieces back on a board after someone's knocked it, and when the last one landed, the watch on his wrist stopped going backward, and went still." },
     { cg: null },
@@ -344,7 +347,7 @@ window.FEMC_STORY_KIT.badEnding = [
   ] },
 
   { id: 'a5-train', date: '12/2', slot: 'evening', title: 'through the tower', place: 'Iwatodai Dorm · Command Room', time: 'Evening', scene: [
-    { music: 'mystery' },
+    { music: 'badfeeling' },
     { n: "It was supposed to be over. That was the thing nobody said. Twelve full moons, twelve Shadows, and the last one gone on the third of November, and the moon came up full again on the second of December anyway, white and close and indifferent, and the hour came anyway, and Fuuka sat in the command room with her eyes closed and her hands shaking." },
     { s: 'fuuka', f: 'surprised', t: "There's nothing. No Shadow. No big reading. There's just..." },
     { s: 'fuuka', f: 'sad', t: "There's the hole. The hole in the sound. The one from the bridge in August. It's in the tower. It's going up the tower." },
@@ -403,6 +406,7 @@ window.FEMC_STORY_KIT.badEnding = [
     { s: 'fuuka', f: 'surprised', t: "SOLAR!" },
     { n: "Her wrist stopped." },
     { n: "Not the girl's hand. Somebody else's. Somebody had her by the wrist from above, the way you catch something you'd never in your life let hit the floor, and her whole weight came down on that one hand and it held, and she hung there over the sea with her shoulder screaming and looked up." },
+    { music: 'awakening' },
     { cg: 'searchers-haechan-awakening' },
     { n: "Haechan. Flat on his stomach on the tar paper, half over the ledge, one hand locked round her wrist and the other on the concrete, holding both of them. No Evoker. No armband. No coat. He was breathing like he'd run the whole tower, because he had, Fuuka was saying, somewhere far away in Solar's ear, half sobbing, he came in the door at the bottom alone and he didn't stop, he didn't stop once, two hundred floors, nobody told him, he just came." },
     { s: 'haechan', f: 'serious', t: "Look at me. Not down. Me." },
@@ -514,6 +518,7 @@ window.FEMC_STORY_KIT.badEnding = [
         { place: 'Iwatodai Dorm · Rooftop', time: 'Night', music: 'night' },
         { n: "The roof door was propped open with a brick. It never was. Somebody always shut it; Mitsuru had a rule. Tonight it stood open onto the cold, and the city lay below in its Christmas lights, red and gold and white, all the way to the bay, and on the railing, where nobody ever left anything, there was a can." },
         { n: "Pink and black. Cold. Already open." },
+        { music: 'world-runners' },
         { n: "And for one second the roof was the other roof, the high one, the ledge and the ladder and the campus below and the boy beside her with his legs over the drop. A week of nights like this. More. A secret built out of rooftops and lab windows and duo queues at eleven at night with his voice in her ear for the first time. Lights everywhere, the whole campus lit for something big that was coming, and up here, nobody, just the two of them and a can and a city, and him not saying anything, and her not saying anything, and none of it having a name yet." },
         { n: "*Keep it on the rooftop.*" },
         { fragment: 'runners-rooftop' },
@@ -523,6 +528,7 @@ window.FEMC_STORY_KIT.badEnding = [
         { place: 'Iwatodai Dorm · Kitchen', time: 'Night', music: 'tender' },
         { n: "Somebody was cooking. She smelled it from the stairs. Kombu and soy and sake, and something seared in a dry pan until the skin blistered. The kitchen was empty. The light over the stove was on. On the back burner, on a flame turned very low, sat a black clay pot, round and heavy, the kind nobody in this dormitory had ever owned." },
         { n: "Rice. With a square of kombu and whole fillets of sea bream laid over it, skin up, gold. On the table, two bowls. Two pairs of chopsticks. As if someone had made it for two and then, at the last minute, hadn't been able to sit down." },
+        { music: 'world-strangers' },
         { n: "She opened the drawer beside the stove for a spoon. She didn't need a spoon. Her hand went there anyway and found, under the dish towels, at the back, a small soft bag. Quilted. Black. A Chanel makeup bag that had never held makeup. She knew before she unzipped it. Curved needles in a paper packet. A spool of black thread. Gauze. A brown bottle of iodine that had stained the lining yellow, and the same yellow, faintly, at the edge of her own thumbnail, every morning, under dark polish." },
         { fragment: 'strangers-suture-kit' },
         { n: "Then the drawer was the dorm's drawer, dish towels and a broken whisk, and there was no bag. But the pot was still on the stove. She turned the flame off before it burned, the way you would for anyone, and filled the second bowl, and set it at the empty place, carefully, the way you'd lay a place for somebody who was late. In the morning, the bowl was clean and dry and back in the cupboard, and nobody in the dorm would say who'd washed it." }
@@ -547,6 +553,7 @@ window.FEMC_STORY_KIT.badEnding = [
     { s: 'hanni', f: 'neutral', t: "I think the station wanted us to have them. I think the station's on our side." },
     { n: "They opened them. They drank them in the cold, the three of them, leaning on the railing, too sweet and too fizzy and much too much caffeine for eleven at night, and Hyein made a face, and Hanni laughed at the face, and for about five minutes it was easy. It was the easiest five minutes Solar had had in a month." },
     { n: "Then Hanni put her can down on the railing very carefully, lined up with the others." },
+    { music: 'world-runners' },
     { s: 'hanni', f: 'neutral', t: "Sol. We need to say something. And we need you to just let us say it. Don't fix it. Don't say you're fine." },
     { s: 'hyein', f: 'sad', t: "Come home." },
     { s: 'hyein', f: 'sad', t: "Come home, Sol. Please. We'll stop asking you questions. We won't ask you anything. We won't ask where you were or why you didn't call. We won't even ask about you and H..." },
@@ -603,6 +610,7 @@ window.FEMC_STORY_KIT.badEnding = [
     { n: "Yunjin drove her to the harbor. She'd found a car. Solar didn't ask where. It was small and had three doors and was the wrong color, white instead of purple, and the horn didn't play anything, she checked twice, and Yunjin said it wasn't the same car, it was just the same car, and she drove it the way she apparently drove everything, fast and talking, and parked it on the harbor road facing the water with the engine running and the heater on." },
     { n: "Low tide. One-forty. Solar knew it before they got there. The mud out, gray under the sodium lights, going to the horizon. Yunjin reached into the back seat and came up with two cans of coffee from a vending machine, the cheap sweet kind, and pressed one into Solar's hand, hot, and Solar's hands went round it the way they'd gone round a thousand of them in a thousand cars like this one." },
     { s: 'yunjin', f: 'neutral', t: "You can't sleep at low tide. You never could. So we do this. We sit in the car and drink bad coffee until it turns." },
+    { music: 'world-strangers' },
     { s: 'yunjin', f: 'neutral', t: "I'm not going to be cute about this, babe. I'm bad at cute when it matters." },
     { s: 'yunjin', f: 'sad', t: "Your appa is sitting up in the dark." },
     { n: "Solar went still. All the way still. The can in her hands. The heater ticking." },
@@ -634,6 +642,7 @@ window.FEMC_STORY_KIT.badEnding = [
     { s: 'jihoon', f: 'neutral', t: "Don't. Don't say anything. I'm in a groove. The almighty Hoon does not miss twice." },
     { s: 'jihoon', f: 'neutral', t: "...Thirteen times is a groove. Look at it. It's got Nana's stupid face. Father Jihoon is getting it for you, and you're going to be grateful, you ungrateful rug." },
     { n: "The claw slipped. He fed it another coin. She stood beside him and watched, and her hands knew this. The sound of the coin going in. The music the machine played, tinny and cheerful. Somebody beside her who wouldn't stop, who kept feeding it coins long after any sensible person would have walked away, because he'd said he'd get it for her, and he had never once in his life said a thing to her he hadn't followed through on." },
+    { music: 'world-hoax' },
     { n: "On the fourteenth coin he stopped, with his hand on the joystick, and didn't push the button. He didn't look at her. He looked at the plush dog." },
     { s: 'jihoon', f: 'neutral', t: "Everybody back home wants you, Sol. The school. The council. Your parents, whenever they remember they've got a daughter. Everybody wants the vice president. Solar Kim, loyal vice pres. You sign it on every post. It's a disease." },
     { s: 'jihoon', f: 'neutral', t: "And Yang. Obviously. Your boyfriend. Yeah. Him. The math competition in a blazer. He's here, you know he's here, he lives at the end of my corridor and he irons his socks. Go home to him if that's what it takes. I don't care." },
@@ -687,7 +696,7 @@ window.FEMC_STORY_KIT.badEnding = [
   ] },
 
   { id: 'a5-solstice', date: '12/21', slot: 'late', title: 'the longest night', place: 'Iwatodai Station · Platform', time: 'The Dark Hour', scene: [
-    { music: 'mystery' },
+    { music: 'badfeeling' },
     // Eligibility (flags). Doors seen stand in for fragment counts: door-W6 means that world reached 6.
     ...window.FEMC_STORY_KIT.anyOf('home2-R', [['home-R3', 'home-R6'], ['home-R3', 'home-R9'], ['home-R6', 'home-R9']]),
     ...window.FEMC_STORY_KIT.anyOf('home2-S', [['home-S3', 'home-S6'], ['home-S3', 'home-S9'], ['home-S6', 'home-S9']]),

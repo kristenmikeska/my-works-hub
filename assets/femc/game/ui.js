@@ -42,7 +42,21 @@
   }, true);
 
   /* ── Music by screen ── */
-  const screenMusic = key => { const mood = G.D.places.screens[key]; if (mood) SC.Music.set(mood); };
+  // A day screen's mood for today (places.js `screens`, then the day): a trip or the culture festival, an exam, a rainy
+  // evening, a new term's first week, and school days from December on.
+  const TERMS = ['4/8', '9/1', '1/8'];
+  function screenMood(key) {
+    const base = G.D.places.screens[key];
+    if (!base || !['school', 'class', 'after', 'evening'].includes(key)) return base;
+    const i = G.dayInfo(), d = i.d;
+    if (i.type === 'trip' || i.label === 'Culture Festival') return 'trip';
+    if (key === 'evening') return i.weather === 'rain' ? 'rain' : base;
+    if (i.type === 'exam') return 'exam';
+    if (TERMS.some(md => d >= G.dayOf(md) && d < G.dayOf(md) + 7)) return 'fresh';
+    if (d >= G.dayOf('12/1')) return 'late';
+    return base;
+  }
+  const screenMusic = key => { const mood = screenMood(key); if (mood) SC.Music.set(mood); };
 
   /* ── Toasts ── */
   const toastBox = document.createElement('div');
@@ -525,7 +539,7 @@
     segment({ slot: 'lunch', bg: 'school-hallway', place: 'Gekkoukan High', text: info.weather === 'rain' ? 'Lunch indoors, the hallway loud with everybody who’d meant to eat on the roof.' : 'Lunch. The roof was crowded and the cafeteria was worse.', sub: line ? `<i>“${esc(line)}”</i>` : '' });
   }
   function classPeriod(slot, info) {
-    screenMusic('school');
+    screenMusic('class');
     const cond = Object.assign({}, G.D.stats.conditions[S().condition], { doze: G.dozeChance() }); // Cherry's Back Row halves dozing
     const seed = Math.abs(Math.sin((S().day + 1) * (slot === 'morning' ? 3.7 : 5.3)));
     const asks = seed < (slot === 'morning' ? 0.42 : 0.3);
@@ -732,7 +746,7 @@
     SC.play({
       scene: pick.scene, place: pick.place, time: pick.time || rank.time || (S().slot === 'evening' ? 'Evening' : G.slotName(S().slot)),
       title: pick.kind === 'rank' || pick.kind === 'after' || pick.kind === 'trace' ? pick.title || null : null, label: pick.kind === 'rank' ? `${l.short} · Rank ${r + 1}` : pick.kind === 'after' ? `${l.short} · MAX` : l.short, link: l.id,
-      music: pick.music || null,
+      music: pick.music || (/^Persona 5/.test(l.from || '') ? 'p5' : null), // the Persona 5 cast: Beneath the Mask
       onBattle: (b, snap, cont) => battleCard(b, null, cont),
       onDone: res => {
         const out = G.finishLink(l, pick.kind, r, res.gained);

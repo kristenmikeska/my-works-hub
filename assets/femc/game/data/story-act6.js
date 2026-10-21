@@ -22,6 +22,7 @@
     { n: "The closing ceremony was at ten in the morning and nobody heard a word of it. The whole third year sat in the gym in their coats with the heaters ticking, thinking about winter break, and Solar sat among them with her hands in her lap and felt it the whole time, under her ribs, where the charms lived. Something that had been ringing all year had stopped. Something else had started." },
     { n: "She went up to the roof after dinner, alone, and stood in the cold with the Evoker in her hand, and for the first time since April she didn't want to fight anything. She just wanted to see." },
     { n: "She raised it. The barrel against her temple, cold. Her arm steady. Her own choice, all the way down." },
+    { music: 'awakening' },
     ...window.FEMC_STORY_KIT.byRoute([
       { summon: 'haenim-sunna' },
       { n: "Haenim came up out of her the way she always came, all light and silk, and the name on the card held still for the first time in eight months and then changed. The veil went bright as stage lights. The gold bell on her sash wasn't ringing. It was shining, steady, the way a spotlight shines, and the Persona that stood over the dorm roof in the cold was dressed for a stage, a runner under the lights, the whole world looking at her and her not looking away." },

@@ -550,7 +550,8 @@ window.FemcGame = (() => {
   }
   function moodFor(place = '', time = '') {
     if (/Velvet/.test(place)) return 'velvet';
-    if (/Dark Hour|Tartarus/.test(place + time)) return 'mystery';
+    if (/Tartarus/.test(place)) return 'mystery';
+    if (/Dark Hour/.test(place + time)) return 'darkhour'; // Shadow World: the Dark Hour streets
     if (/^Gekkoukan/.test(place)) return 'school';
     if (/^(Paulownia Mall|Iwatodai Strip|Port Island Station)/.test(place)) return 'city';
     if (/Evening|Night/.test(time)) return 'night';

@@ -180,12 +180,40 @@ window.FEMC_GAME_PLACES = {
     'story-moonlight-train': '55% 35%', 'story-city-of-the-awake': '50% 40%', 'ending-last-stop': '40% 35%', 'story-haenim-unveiled': '50% 35%',
     'story-facing-wrens-shadow': '40% 35%'
   },
-  /* Music (assets/femc/music/<file>.mp3) by mood. Scenes pick a mood; screens use the `screens` map. */
+  /* Music (assets/femc/music/<file>.mp3) by mood. Scenes pick a mood; screens use the `screens` map.
+     A mood is one file (it loops) or a pool (a list): a pool rotates, never plays the same file twice in a row, and each
+     track plays through once and crossfades into the next one, so a long stay doesn't loop one song. A value with a '/'
+     is a path from the site root (the world songs are the hub's own, in assets/audio/).
+     World moods (world-runners / world-strangers / world-hoax) are Solar's world songs: they play softly, fading in under
+     the scene, and fade back out to the P3 track when the song ends, the scene asks for another mood, or the scene ends.
+     A memory fragment found in a scene starts its world's song if one isn't already playing. */
   music: {
-    joy: 'joy', school: 'after-school', sun: 'sun', tender: 'tender-feeling', mystery: 'this-mysterious-feeling', night: 'tranquility',
-    velvet: 'poem-for-everyones-souls', date: 'heartbeat-heartbreak', city: 'paulownia-mall', battle: 'mass-destruction',
-    title: 'full-moon-full-life', day: 'want-to-be-close', evening: 'color-your-night', dorm: 'iwatodai-dorm', tartarus: 'tartarus-thebel',
-    fullmoon: 'master-of-shadow', exam: 'time', results: 'its-going-down-now', shop: 'paulownia-mall'
+    // P3 and the rest of the Persona soundtrack, by mood
+    joy: ['joy', 'my-homie', 'specialist'], school: ['after-school', 'school-memories'], sun: 'sun',
+    tender: ['tender-feeling', 'its-alright-this-way'], mystery: ['this-mysterious-feeling', 'deep-mentality', 'whos-there'],
+    night: ['tranquility', 'deep-breath-reload'], velvet: ['poem-for-everyones-souls', 'hall-of-doors'],
+    date: ['heartbeat-heartbreak', 'like-a-dream-come-true', 'signs-of-love'], city: ['paulownia-mall', 'specialist', 'my-homie'],
+    battle: ['wiping-all-out', 'mass-destruction', 'wiping-all-out', 'its-going-down-now'],
+    title: 'full-moon-full-life', day: ['want-to-be-close', 'school-memories'], evening: 'color-your-night',
+    dorm: ['iwatodai-dorm', 'deep-breath-reload', 'deep-breath-reincarnation'], tartarus: ['basement', 'tartarus-thebel'],
+    fullmoon: 'master-of-shadow', exam: ['exam-in-progress', 'time'], results: 'its-going-down-now', shop: 'paulownia-mall',
+    class: ['school-memories', 'boring'],          // つまらない: a boring class
+    fresh: 'new-days',                             // a new term
+    late: 'living-with-determination',             // the last weeks of the year
+    trip: 'time-to-make-history',                  // trips and festivals
+    rain: 'beneath-the-mask', p5: 'beneath-the-mask', // rainy evenings; the Persona 5 cast's links
+    darkhour: 'shadow-world',                      // the Dark Hour streets
+    badfeeling: 'bad-feeling',                     // 嫌な予感: a full-moon night
+    eerie: ['whos-there', 'disconnected'], tension: 'dont', romance: ['signs-of-love', 'dont'],
+    sees: 'meaning-of-armbands', awakening: 'power-of-the-heart', hopeful: 'skys-the-limit', ending: 'memories-of-you',
+    // Solar's world songs (soft, over the scene)
+    'world-runners': ['assets/audio/Camo-Runners.mp3', 'assets/audio/chanmina-ashell.mp3', 'assets/audio/rose-3am.mp3'],
+    'world-strangers': ['assets/audio/EthelCain-Strangers.mp3', 'assets/audio/EthelCain-Crush.mp3', 'assets/audio/CocteauTwins-SeaSwallowMe.mp3'],
+    'world-hoax': ['assets/audio/TaylorSwift-Hoax.mp3', 'assets/audio/arianagrande-someonelikeu.mp3']
   },
-  screens: { title: 'title', school: 'day', after: 'day', evening: 'evening', dorm: 'dorm', exam: 'exam', results: 'results', tartarus: 'tartarus', fullmoon: 'fullmoon', status: null }
+  // A memory fragment's world (core.js worldOf: R / S / H) → its song.
+  worldMusic: { R: 'world-runners', S: 'world-strangers', H: 'world-hoax' },
+  /* Screens. ui.js screenMood() swaps in a mood for the day: an exam day plays `exam`, a trip `trip`, the first week of a term
+     `fresh`, a rainy evening `rain`, and school days from December on `late`. */
+  screens: { title: 'title', school: 'day', class: 'class', after: 'day', evening: 'evening', dorm: 'dorm', exam: 'exam', results: 'results', tartarus: 'tartarus', fullmoon: 'fullmoon', status: null }
 };

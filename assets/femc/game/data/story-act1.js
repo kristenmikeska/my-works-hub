@@ -17,7 +17,7 @@
     ] },
     { place: 'Iwatodai Dorm · Lounge', time: 'The Dark Hour' },
     { dark: true },
-    { music: 'mystery' },
+    { music: 'badfeeling' },
     { n: "Midnight came the way it came every night now, all at once and without asking. The television died mid-word. The lamps went out. The green came up out of nowhere and settled over the couches and the counter and Yukari's untouched homework like dust on furniture in a house nobody lived in anymore." },
     { n: "Then the front door banged open hard enough to bounce off the wall, and Akihiko came through it backwards, one arm clamped tight across his ribs and blood running in a thin bright line from his hairline to his jaw, and he was grinning, which was the worst part." },
     { s: 'akihiko', f: 'happy', t: "You two are going to want to see this. Actually, no. You're really not going to want to see this." },
@@ -73,7 +73,7 @@
   ] },
 
   { id: 'a1-armband', date: '4/10', slot: 'after', title: 'the armband', place: 'Iwatodai Dorm · Command Room', time: 'After School', cast: { ikutsuki: 'Ikutsuki' }, scene: [
-    { music: 'school' },
+    { music: 'sees' },
     { n: "The fourth floor had a heavy door with a keypad, and behind it a long table and a wall of monitors, all dark, and the smell of new electronics and old carpet, and a window with the blinds half drawn so the afternoon came in striped. A spring wind was rattling the glass in its frame. Solar counted the exits without meaning to. One. The door she'd come in by. She didn't love that." },
     { n: "Akihiko was in a chair by the wall with a bandage taped across his hairline and the wounded dignity of a man who'd been yelled at, at length. Yukari sat beside him with her hands in her lap. Mitsuru stood at the head of the table. And in the middle of it all sat the Chairman, beaming, like he'd organized the whole thing as a surprise party." },
     { s: 'ikutsuki', t: "Ah! Our heroine of the hour. The Dark Hour, I should say. Ha ha." },
@@ -190,7 +190,7 @@
   ] },
 
   { id: 'a1-priestess', date: '5/9', slot: 'evening', title: 'the priestess', place: 'Iwatodai Dorm · Command Room', time: 'Evening', scene: [
-    { music: 'mystery' },
+    { music: 'badfeeling' },
     { n: "The moon was full that night, and the whole dorm knew it before anyone said so, the way you know a storm is coming by the way the air sits on your skin. Nobody ate much at dinner. Junpei talked twice as much as usual, which was a lot. Akihiko still wasn't cleared to fight, which he had taken as a personal insult, and tonight he sat at the command room table taping his knuckles anyway, for nothing, with the focus of a surgeon, and didn't say a word." },
     { place: 'Iwatodai Dorm · Command Room', time: 'The Dark Hour' },
     { dark: true },

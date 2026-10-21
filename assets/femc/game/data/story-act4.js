@@ -90,6 +90,7 @@
         ], contact: 'hanni, hyein' }
       ] }
     ] },
+    { music: 'world-runners' },
     { n: "She hadn't decided how to type it. Her thumbs had, lowercase and lazy and a little rude, the way they'd typed every message she'd sent since April to people who'd never once asked why she wrote like that. It looked right in there. It looked like it lived there." },
     { n: "It wasn't before noon. It was nearly midnight. But the screen said the messages had been sent at a quarter to ten in the morning, on a day with dashes where the year should be, and somewhere a girl called Hyein was eating breakfast and rolling her eyes at a friend who always said the same thing, and Solar laughed, out loud, alone on the rug, and then put her hand over her mouth, and then didn't know what to do with her face at all." },
     { phone: [
@@ -174,6 +175,7 @@
         { n: "She didn't type. She read. Forty messages, sixty, a whole evening of other people being loud at each other in a room she wasn't in, and somewhere around the fiftieth she realized she was smiling, and had been for some time, and her face hurt." }
       ] }
     ] },
+    { music: 'world-hoax' },
     { n: "The messages were old. She could tell. Not from the stamps, which had their row of dashes like all the others, but the way you can tell a photograph is old from the colors. They had the feel of something sent a long time ago, a summer ago, maybe, that had taken the long way round to reach her and arrived tired." },
     { n: "Somewhere, a girl had been sad over x reason, and a boy had been stuck at a traffic light, and a whole room of people had argued about who loved her best. She lay back on the bed with the phone on her chest and her arm still caught in the hoodie and looked at the ceiling." },
     { n: "Somewhere, a boy had said he'd get her something from a crane game and fed it coins for an hour while the claw slipped and slipped, and she'd stood beside him complaining the whole time and not once suggested they leave. She didn't know how she knew. Her hand, on the duvet, closed on a joystick that wasn't there." },
@@ -182,7 +184,7 @@
   ] },
 
   { id: 'a4-hermit', date: '9/5', slot: 'evening', title: 'the first bell', place: 'Iwatodai Dorm · Command Room', time: 'Evening', scene: [
-    { music: 'mystery' },
+    { music: 'badfeeling' },
     { n: "The moon on the fifth of September was enormous and yellow, a harvest moon a few weeks early, and it came up over the bay so close and so heavy that Junpei, looking at it out of the lounge window, said it looked like it was thinking about landing." },
     { s: 'fuuka', f: 'neutral', t: "One. It's big, and it's very still, and it's at the tower. At the gate. Right at the foot of it, like it's waiting for someone to come out." },
     { s: 'fuuka', f: 'surprised', t: "And... two more. Not Shadows. People. They just came in. One's walking very carefully, like he's checking corners. The other one's..." },
@@ -271,6 +273,7 @@
       { from: 'yunjin', t: "(u wont)" },
       { from: 'yunjin', t: "(its low tide)" }
     ], contact: 'Unknown number' },
+    { music: 'world-strangers' },
     { n: "She looked at the last one for a long time. Somebody knew. Somebody, somewhere, knew that she didn't sleep at low tide, and had known it long enough to make a joke of it, and loved her enough to put the joke in brackets, quietly, like a hand on the back of her neck." },
     { n: "Whatever it was tomorrow had already happened, she thought. These were old too. These had been sent the night before something, a long time ago, by someone who'd been awake for her, and she'd never answered, and the something had come anyway." },
     { n: "She didn't sleep. It was low tide. At two she got up and took her school skirt off the chair, where the hem had been coming down for a week, and found the little sewing kit in the bathroom cabinet, and sat on the floor under the desk lamp and mended it. She didn't decide to. Her hands did it, small, even, invisible stitches, every one the same length, the needle going in and out like something she'd done ten thousand times at this hour. Somebody's dress, she thought. Navy silk, long sleeves, pearls, a low chignon. A woman in her doorway at one in the morning with the hem of her coat wet, saying it all in order, and then, after a pause, *not the jade.* A date written on a card in fountain pen. A date she hadn't picked, coming closer with every stitch." },
@@ -295,6 +298,7 @@
     { n: "She came round the corner by the fountain and the hour ended." },
     { dark: false },
     { music: 'tender' },
+    { music: 'world-runners' },
     { place: 'Paulownia Mall', time: 'Night', soft: true },
     { n: "Everything came back at once. The lights in the shop windows, warm and gold. The fountain falling. The noise of the Saturday night crowd, all of it at full volume, music from the karaoke, a couple arguing, the hiss of a coffee machine somewhere, as though somebody had taken a hand off a speaker." },
     { n: "And in the middle of the plaza, in front of a boutique window full of autumn coats, two girls standing frozen mid-step, as if the hour had let go of them in the middle of a stride." },
@@ -394,6 +398,7 @@
         { n: "Then they were both hugging her, hard, from both sides, and Solar sat there squashed between them with her arms pinned and her face hot, and didn't move, and didn't want to." }
       ] }
     ] },
+    { music: 'world-runners' },
     { n: "That afternoon Hyein went through Solar's wardrobe, every item, holding each one up and making a face. She got to the black hoodie at the back, the one that had been in the wardrobe in April with nothing in its pockets, and held it up, and Solar's hands went out for it before she'd thought. Not for this one. For another one. Dark, enormous, a small orange S on the chest, the sleeves past her fingertips, a hoodie that wasn't hers and that she'd worn anyway, home across a cold lawn at an hour nobody should be awake, with her hands pulled up inside the cuffs and her face turned down into a collar that smelled of somebody else." },
     { fragment: 'runners-hoodie' },
     { n: "Hyein looked at her face and didn't say anything for once. Then she folded the black hoodie and put it back where it had been, very carefully, and pronounced the rest of the wardrobe a tragedy, and said it was okay, she'd fix it, she'd fix all of it. Hanni sat on the bed and watched them and didn't say anything, and every so often Solar caught her looking, not at the clothes, at Solar's hands, the way they moved, the way they folded things, as if she were checking each one against a list she kept somewhere and finding every single one present." }
@@ -413,6 +418,7 @@
     { s: 'jihoon', f: 'neutral', t: "...left at the light, right at the thing, I KNOW where her house is, I've been going to her house since I was FOUR, why is everything green, why is everybody in a box, is this a flash mob, I swear to God if this is a flash mob..." },
     { n: "Hyein made a noise. A small, high, completely involuntary noise." },
     { cg: null },
+    { music: 'world-hoax' },
     { n: "He looked up. He saw Hanni and Hyein first, and his face did nothing at all, two strangers. Then his eyes slid past them and found Solar, and stopped, and his whole body stopped with them, mid-step, one slide still in the air." },
     { s: 'jihoon', f: 'surprised', t: "SOL?" },
     { s: 'jihoon', f: 'happy', t: "Oh my God. Oh my GOD. There you are. Do you know how long I've been walking? In SLIDES? Do you know what this is doing to my calves? I do pilates for these. None of the traffic lights work! Everyone's in a BOX!" },
@@ -525,6 +531,7 @@
     { n: "And underneath it, sitting on the bench by the railing, there was a girl with a camera." },
     { n: "Long dark hair, soft wispy bangs, a cap turned backwards. A navy sweatshirt with the sleeves pulled down over her hands. An old camera held up to her face, the kind with a real lens you turned with your fingers, pointed at the empty pool of light on the path, the light coming and going on nothing. Filming it. Filming the place under the lamp where somebody should have been standing, very steadily, the way you'd film a door you were waiting for someone to come through." },
     { n: "She was crying. Not much. The kind that runs out of you without your face doing anything about it." },
+    { music: 'world-runners' },
     { n: "Solar stepped into the light." },
     { n: "The camera didn't move. The girl behind it went completely still, the way an animal does in headlights. Then, very quietly, without lowering it, she spoke. Easy and automatic, the way you'd say it to someone you'd said it to a hundred times." },
     { s: 'minji', f: 'neutral', t: "Sol, you're in my... no." },
@@ -570,7 +577,7 @@
   ] },
 
   { id: 'a4-fortune', date: '10/4', slot: 'evening', title: 'october', place: 'Iwatodai Dorm · Command Room', time: 'Evening', scene: [
-    { music: 'mystery' },
+    { music: 'badfeeling' },
     { n: "It was a Sunday, and it rained all afternoon, a thin cold October rain that made the dorm smell like wet coats and the radiator, and Shinjiro made curry for twelve people without being asked and then didn't eat any of it. He sat at the end of the table with his coat on and watched everybody else eat, and when Ken asked for seconds Shinjiro got up and served him before anyone else could move, and Ken said thank you without looking at him, and Shinjiro said nothing at all." },
     { n: "Solar noticed. She noticed everything that night, afterward, in the way you only notice things once you know what they were for." },
     { n: "The searchers had been told to stay in. Mitsuru had said it to each of them separately, in the voice she used for things that were not discussions, and Hanni and Hyein had agreed at once, and Minji had agreed and gone up to the roof with her camera anyway, and Jihoon had agreed loudly and then been found at eleven-thirty trying to tie his shoes very quietly in the front hall, and been sent back upstairs by Akihiko with a look." },
@@ -677,6 +684,7 @@
         { n: "Then Solar was on the steps, and off them, and on the mud, because that was where the girl was, and she was cold and terrified and walking and didn't remember deciding any of it." }
       ] }
     ] },
+    { music: 'world-strangers' },
     { n: "The girl turned around. She had a round sharp face and a mouth made for talking and a pair of round gold sunglasses pushed up on her head in the middle of the night, and when she saw Solar coming across the mud toward her she went from loud to very quiet so fast it was like watching someone fall." },
     { n: "She didn't move. She stood there in the mud with the car key in her fist. Solar stopped a meter away." },
     { s: 'yunjin', f: 'serious', t: "Sol." },
@@ -758,6 +766,7 @@
     { s: 'mitsuru', f: 'surprised', t: "He says he came through the door. That door. At midnight. And he asked, very politely, whether a girl named Solar was enrolled here." },
     { place: 'Gekkoukan High · Student Council Room', time: 'After School', soft: true },
     { n: "The council room at four o'clock was full of the low gold light of an October afternoon going down over the bay, long bars of it across the table and the stacked folders and the dust in the air. Mitsuru set her to sorting the club budget requests, because Mitsuru believed in giving people something to do with their hands when they were frightened, and went to fetch him. Solar sat at the long table and wrote numbers in columns and didn't take in a single one." },
+    { music: 'world-hoax' },
     { n: "The door opened behind her." },
     { cg: 'searchers-jungwon-finds-solar' },
     { n: "A boy was standing in the doorway with his arms full of paper. Slight and neat, dark hair that had been combed and had then been through a long night, a navy blazer with a crest she'd seen yesterday on a poster, and a stack of documents held against his chest the way some people hold a shield. He'd stopped dead. He'd seen her. The light was in his face and he didn't blink." },
@@ -837,6 +846,7 @@
         { n: "She didn't know why she said it. Junpei and Yukari both shut up at once, which was almost more alarming than the speaker." }
       ] }
     ] },
+    { music: 'world-hoax' },
     { n: "The voice talked. She couldn't follow it. The words broke up in the hiss, came and went like a radio between stations, and what came through wasn't sentences, it was the feeling under them. A podium too tall for her. Lights too bright. A sheet of paper in her hands with the speech on it that she'd mostly written herself and partly hadn't, gone soft at the corners from being held. A boy at the other podium, very straight, very calm, who had gone first and been so good that she'd felt it in her stomach. All eyes on her. All of them. Here goes nothing." },
     { n: "Her hands, on her desk, were holding a sheet of paper that wasn't there." },
     { s: 'pa-voice', t: "...so. Um. That's it. That's all I've got. Thank you." },
@@ -890,6 +900,7 @@
     { s: 'jihoon', f: 'serious', t: "You're a plastic box. You're a plastic box with a microphone. I've been rejected by better." },
     { s: 'jihoon', f: 'serious', t: "I lost. Fine. I lost to a math competition in a blazer. I'll lose to him every day for the rest of my life if that's what it takes, and I'll STILL be the one she calls at six in the morning, and you don't get to recount that." },
     { s: 'jihoon', f: 'serious', t: "Give them back. All of them. I'm keeping the bad ones too. Especially the bad ones. They've got her in them." },
+    { music: 'awakening' },
     { cg: 'searchers-jihoon-awakening' },
     { n: "Something came up out of him." },
     { n: "Not out of a gun. Not out of anything. It tore up out of him like a shout, all at once, huge and loud and laughing, a shape the size of the gym's back wall, horned and grinning, swinging a great knotted club, and every glowing slip that had been drifting toward the box turned in the air and went flying back into him like birds coming home to roost. On the stage the result card went blank. Jihoon was on his feet in his socks in the third row. Jihoon was laughing. The thing above him was laughing too, the same laugh, his laugh, enormous and rude, and it had a name, and he said it, and Solar didn't catch it, because the ballot box was screaming." },
@@ -932,6 +943,7 @@
       { t: "(Follow the bell.)", flag: { 'xroad1-R': true }, tally: { crossroad1: 'R', 'lean.R': 1 }, then: [
         { place: 'Paulownia Mall · Game Panic', time: 'Afternoon', music: 'city' },
         { n: "Game Panic on a Saturday afternoon was all noise and no air. She went straight through it, past Junpei's fighting game and the claw machine and the rhythm cabinets, to the row of demo screens by the back wall." },
+        { music: 'world-runners' },
         { n: "Every one of them, for one second, was showing the same thing. Not a demo. A room she'd never been in, folding chairs in crooked rows, a projector screen the size of a garage door, a pink banner shedding glitter over a crowd. Five people at five desks on a stage, headsets on. A girl in the middle seat, hair up, very still. And on the screen behind them, enormous, a girl in a fox mask with a bell at her throat, throwing two little blades of light to someone who had already decided they were going to die." },
         { n: "The room on the screen stood up. All of it at once. A noise came out of every speaker in the arcade, a roar, a hundred people breathing in and then screaming, and on the big screen three letters went up so large they filled it." },
         { n: "MVP." },
@@ -948,6 +960,7 @@
         { n: "The school was empty on a Saturday afternoon, the corridors full of that hollow church echo, and her footsteps went ahead of her down the hall to the gym and came back to her from the far end." },
         { n: "Somebody had been decorating. Strands of silver twine hung from the rafters in long, loose swoops, catching the light from the high windows and throwing it around, and across the back wall a paper banner was half taped up, its last letters still curling off the brick, bubble letters filled in so carefully the marker had soaked through. Folding tables. A box of balloons nobody had blown up. And in the middle of the floor a ladder, three meters of it, still swaying, very slightly, like something had only just climbed down." },
         { n: "There was one strand of twine left in the box at the ladder's feet, and one bare stretch of rafter above it. You could see exactly where it was supposed to go." },
+        { music: 'world-hoax' },
         { n: "She climbed. She didn't decide to. The ladder had a bent leg and a sticker telling her in three languages not to stand on the top step, and the top step was exactly where you'd have to stand, and she was on it, with the twine in one hand and the other flat on the rafter, when the whole thing lurched under her, a sick little drop to the left that took her stomach straight through the floor." },
         { n: "And stopped." },
         { n: "Somebody had it. She felt it more than anything, the ladder going solid all at once under her feet, two hands at the bottom gripping the rails, holding it steady, holding it for her. And everybody watching from below. She could feel them. A whole gym of people craning their necks, and the one at the bottom holding on, not looking up, not saying anything, just holding." },
@@ -983,6 +996,7 @@
     { n: "She came round the corner by the station, and the hour ended." },
     { dark: false },
     { music: 'tender' },
+    { music: 'world-runners' },
     { n: "The rain came down all at once, every drop of it, like a held breath let out, and the strip was suddenly loud, and full, people with umbrellas everywhere, lights in the windows and on the wet pavement, a taxi hissing past, red banners snapping on the lampposts. She got her umbrella open on reflex." },
     { cg: 'searchers-jaehyun-finds-solar' },
     { n: "He was standing in the middle of the pavement in the rain, soaked through, as if the rain had been falling on him the whole hour and he'd simply let it. A tall young man in a long black coat dark with water, a black shirt plastered to him under it, dark hair flattened to his forehead. Broad shoulders. A careful way of standing, weight balanced, like somebody who'd been hit hard many times by large people and had learned exactly where to put his feet." },
@@ -1078,6 +1092,7 @@
     { s: 'minji', f: 'serious', t: "Every single person on that campus took her picture without asking. You're just all of them, in a coat. I'm the only one who ever asked her. Twenty times. Every time." },
     { s: 'minji', f: 'serious', t: "So I'm asking you. Can I film you?" },
     { n: "And she lifted the camera, and turned it on the Shadow, and pressed record." },
+    { music: 'awakening' },
     { cg: 'searchers-minji-awakening' },
     { n: "Light came up out of her. Not a flash. The opposite. A long, soft, steady light, like a lamp that had finally decided to stop flickering, and in it a shape, tall and quiet and patient, a figure that held everything it had ever seen in its arms and wouldn't let any of it go. In that light the Shadow couldn't hide between its flashes. It was just there, in the hallway, a crowd of strangers with their phones up, caught, looked at. Every copy of Solar's face it had taken came loose from its lenses and drifted back across the hall to her like pages blowing home, and the hundred flashing lenses went dark, one after another, as if somebody had finally told them no." },
     { cg: null },
@@ -1086,6 +1101,7 @@
     { battle: { id: 'memory-runners', kind: 'scripted', script: 'memory-runners', segment: 2, title: 'Tartarus · A Hallway at 3 A.M.', desc: 'Minji has a Persona. The cameras are still there. Finish it.', notes: 'Segment 2: Minji joins the party (party id minji). Her Persona is pending design with Kat; use placeholder skills.', forced: true } },
     { music: 'night' },
     { n: "Afterward the hallway faded the way all the memory floors faded, carpet and cups and cobwebs going thin as paper and blowing away, until it was only the tower again, and the bass was gone, and it was very quiet." },
+    { music: 'world-runners' },
     { n: "And in the quiet, for a second, it was three in the morning somewhere. A room with a monitor glowing on a desk and the house asleep around it. Headphones around her neck. A message typed and not sent. The one hour she wasn't pretending to be anyone." },
     { fragment: 'runners-3am' },
     { n: "Minji was sitting on the floor with the camera in her lap, turning it over and over, looking at it like she'd never seen it before. Solar sat down next to her. She didn't ask. Minji didn't say anything for a long time." },
@@ -1119,6 +1135,7 @@
     { s: 'jaehyuk', f: 'serious', t: "I'd like to note for the record that I said this was a bad idea at the start." },
     { s: 'asahi', f: 'neutral', t: "You say that at the start of everything." },
     { s: 'jaehyuk', f: 'serious', t: "And I'm always RIGHT." },
+    { music: 'world-hoax' },
     { n: "Then the one with the softest face, the one who'd wanted to turn left, saw Jihoon. And then saw who was standing beside Jihoon." },
     { s: 'junkyu', f: 'surprised', t: "SOL!!!" },
     { n: "He said it exactly the way he typed it. With three exclamation points. She could hear them." },
@@ -1151,6 +1168,7 @@
       { from: 'asahi', t: "asanoonecares: oh god he's got a gun AND a personality" },
       { from: 'junkyu', t: "junkyute: sol ur still in here right!!! say something!!!" }
     ], contact: 'PARK JIHOON HATE CLUB' },
+    { music: 'world-hoax' },
     { n: "She sat on her bed in the dark and laughed until her stomach hurt, at a phone full of capital letters at two in the morning, and somewhere in the middle of laughing she stopped, and sat very still, because she knew this. This exact thing. A phone full of capital letters at two in the morning and her face hurting from it. It was the thing she'd missed most. She hadn't known she'd missed it until right now." },
     { fragment: 'hoax-group-chat' },
     { phone: [
@@ -1164,7 +1182,7 @@
   ] },
 
   { id: 'a4-hanged', date: '11/3', slot: 'evening', title: 'the last one', place: 'Iwatodai Dorm · Command Room', time: 'Evening', scene: [
-    { music: 'mystery' },
+    { music: 'badfeeling' },
     { n: "It was a holiday. Culture Day. The city had flags out and the dorm had too many people in it, searchers on the stairs and on the sofa and in the kitchen arguing about how to cook rice, and the moon came up full over the bay at five o'clock, huge and the color of a bruise, and the whole house went quiet without anyone asking it to." },
     { s: 'fuuka', f: 'neutral', t: "It's in Iwatodai. Right in the middle. Near the station. It's... hanging. That's the only word. It's hanging there, upside down, not moving." },
     { s: 'mitsuru', f: 'neutral', t: "This is the last one. The twelfth. If the Chairman's research is right, after tonight, the Dark Hour ends." },
@@ -1199,6 +1217,7 @@
     { n: "The hour ended." },
     { dark: false },
     { music: 'tender' },
+    { music: 'world-runners' },
     { cg: 'searchers-haechan-finds-solar' },
     { n: "Everything came back on at once, the wind, the traffic, the red lights strung along the cables, the cars going past in long smears of light, a full moon over the water as big as a dinner plate. And on the walkway, a few meters away, there was a boy." },
     { n: "Black jacket, white shirt, a loose black tie, black jeans, sneakers. Dark hair, a mess, longer at the front, falling in his eyes. Sun-browned skin, moles scattered on his cheek and his jaw like somebody had flicked a paintbrush. A thin pale scar through his left eyebrow. His hands loose at his sides. He wasn't moving. He was looking at her." },
@@ -1339,6 +1358,7 @@
     { s: 'sunghoon', f: 'flustered', t: "Why hello." },
     { s: 'jay', f: 'serious', t: "Dude. Pack it up." },
     { s: 'heeseung', f: 'neutral', t: "Please leave the girl alone, Sunghoon. She's had a year." },
+    { music: 'world-hoax' },
     { n: "Then they all looked at her properly, and she watched each of them understand, in turn, the way you'd watch dominoes go. That it was her. That she was looking back at them like a stranger. The cheerful one's face fell first, and he hid it fast, and said hi Solar in a voice that was trying very hard." },
     { s: 'jake', f: 'happy', t: "Hi, Solar! It's so good to... hi. Hi. I'm Jake. You don't... it's okay. I'm Jake." },
     { s: 'niki', f: 'neutral', t: "She doesn't know us." },
@@ -1415,6 +1435,7 @@
     { s: 'cherry', f: 'neutral', t: "YOU." },
     { s: 'jihoon', f: 'neutral', t: "Hi, Cherry." },
     { s: 'cherry', f: 'serious', t: "Don't hi Cherry me. Three weeks, Jihoon. Three WEEKS of nobody answering the chat, and Junkyu crying, and you didn't even TELL me you were going, you just went, you went to find my best friend without me like you're number one, when we ALL know who's really in first..." },
+    { music: 'world-hoax' },
     { n: "Then she saw Solar, and stopped, mid-sentence, mid-step, one hand still pointing." },
     { n: "Her face did a lot of things very fast. Relief, enormous and helpless, that made her whole body sag. Then fury, at the relief. Then she was across the hall and had Solar by both shoulders and was shaking her, not hard, just shaking, the way you'd shake a vending machine that had taken your money." },
     { s: 'cherry', f: 'serious', t: "Where have you BEEN? Do you know what you put me through? Do you know how many times I've had to listen to Jihoon cry? HE CRIES, Solar. He cries like a WALRUS." },
@@ -1466,6 +1487,7 @@
     { n: "Yunjin. Yunjin, who had no Persona, and no Evoker, and no training, who had gone over the rail of a ferry in a tower full of monsters into black water without a second's thought. She didn't stop talking the whole time. She talked them both to the side of the ship and she talked while Akihiko and Jihoon hauled them up by the arms and she talked while Solar lay on the wet deck on her side coughing up the sea, and she didn't stop talking until Solar reached out, blind, and found her hand, and held it." },
     { n: "Then she stopped. She sat on the deck with her hair plastered to her face and her mascara all down her cheeks and held Solar's hand in both of hers and didn't say anything at all." },
     { music: 'night' },
+    { music: 'world-strangers' },
     { n: "And in that quiet, with the deck rocking and the diesel smell and the cold, for a second it was another ferry. Another night. A low concrete terminal painted a blue that had faded nearly to gray, a timetable board, a white ferry idling at the bottom of a concrete ramp, the last one of the night. And a photograph of that ramp, taken from behind: a woman in a camel coat with her hair up, very straight, like a teacher, standing at the top of it with a small handbag on her arm, on a Thursday. Solar had never been on that boat. She'd only ever stood at the far end of the car park and watched it idle, and never once in her life wanted to be on it." },
     { fragment: 'strangers-ferry' },
     { choose: [
@@ -1498,6 +1520,7 @@
     { n: "He stopped on the chord. And again. And a third time. And on the fourth time, before she could think better of it, the next notes were already out of her, hummed under her breath, quiet as anything, the way you finish a stranger's sentence on a train." },
     { n: "His hands came off the keys." },
     { s: 'mark', f: 'surprised', t: "Wait. Do that again, that's..." },
+    { music: 'world-runners' },
     { n: "He turned round. His face did something complicated. A double take, the real kind, eyes on her and away and back again, like his brain had sent the picture twice to be sure." },
     { s: 'mark', f: 'surprised', t: "Sol?" },
     { n: "And then, as she watched, he did what nobody else had done. He didn't wait for her to recognize him. He didn't look for it in her face. He just knew who she was, entirely, all at once, the way he'd known it once on a first day somewhere, before she'd said her name. And he smiled, warm and easy, like she'd walked into a room he'd been keeping a seat in." },

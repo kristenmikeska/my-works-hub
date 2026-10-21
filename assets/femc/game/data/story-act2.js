@@ -82,6 +82,7 @@ window.FEMC_STORY_KIT ||= (() => {
         { n: "Twenty-two on the near side. The third from the end had a crack in it, shored up with an iron band gone orange with rust. She had no idea why she needed to know that. She needed to know that." }
       ] }
     ] },
+    { music: 'world-strangers' },
     { n: "Low water would be a little before four. The number was just there in her, like her shoe size. Low water at three forty-one, and the next high a little after ten, and the spring tides in a week, when the sea went out so far you could walk on the bottom of it." },
     { n: "And under the number, the way a smell sits under a room, something else. Sodium lights on wet concrete. A man's voice, low and tuneless, humming along with an old song on a car radio, the kind of song only fathers know the words to. A cup of something hot and roasted and faintly bitter, barley, held in both hands at an hour when nobody else was awake. The tide going out. Not being able to sleep when the tide went out." },
     { n: "Somebody calling her in off the cold. *Sol-ah.*" },
@@ -102,6 +103,7 @@ window.FEMC_STORY_KIT ||= (() => {
     { n: "The café was warm and smelled like burnt sugar and steamed milk, all dark wood and little round tables too close together, and the girl at the counter had the glassy, patient look of someone who had served four hundred exhausted students since noon. Yukari ordered tea. Junpei ordered the biggest thing on the menu without reading it. Solar opened her mouth to say a coffee, please, and what came out was something else." },
     { s: 'solar', f: 'neutral', t: "A croissant. Please." },
     { n: "She hadn't looked at the menu. She hadn't looked at the case. There was a croissant in it, as it turned out, one, sitting on a paper doily at the back like it had been waiting for her specifically, golden and flaking and enormous, and the girl at the counter put it on a plate and slid it across without a second glance, and Solar stood there holding it and feeling like she'd said a password." },
+    { music: 'world-hoax' },
     { n: "She ate it at the table by the window. She meant to eat it slowly. She didn't. She ate it fast, tearing it apart with her fingers, flakes going everywhere, on the table and her skirt and the front of her blazer, half of it gone before Yukari had finished stirring her tea, with her eyes going to the door and back and to the door again, the way you eat when you're standing up between two things you're already late for." },
     { n: "There was a feeling in her body that had nothing to do with the café. A building with too many people in it. A hallway. Somewhere she was supposed to be by a certain time, and somewhere else she was supposed to be right after, and a bag over her shoulder that was too heavy, and a door with a little bell over it that went *ding* when you pushed it, and a warm voice from behind a counter, saying the croissants were big and the regulars loved them." },
     { n: "The bell over Chagall's door didn't ding. Chagall's door didn't have a bell." },
@@ -152,6 +154,7 @@ window.FEMC_STORY_KIT ||= (() => {
     { n: "Bottom row, far right, between a melon soda and a canned coffee with a cartoon bear on it, there was a can that didn't belong. Tall, black, with a slash of hot pink down the side and a clawed green letter she'd never seen before and knew perfectly well. Pink Punch. It wasn't a thing that was sold here. She was almost certain it wasn't a thing that was sold anywhere, yet." },
     { n: "She put in her coins. It fell with a heavy, satisfying clunk. It was so cold it hurt her fingers." },
     { s: 'junpei', f: 'surprised', t: "Whoa, what's that? I've never seen that before. Is that, like, an import?" },
+    { music: 'world-runners' },
     { n: "She cracked it open. It hissed, sharp and loud. It tasted like candy and battery acid and a lot of sugar pretending to be fruit, much too sweet and much too fizzy and much too much caffeine, and it was the best thing she'd tasted since April, and she drank half of it standing in front of the machine with her eyes closed." },
     { n: "Someone used to hand her these. Before things. Without asking what she wanted, because he already knew, and without ever saying how. A can held out sideways, not looking at her, cold against her knuckles. *Here.*" },
     { fragment: 'runners-energy-drink' },
@@ -228,7 +231,7 @@ window.FEMC_STORY_KIT ||= (() => {
   ] },
 
   { id: 'a2-empress', date: '6/8', slot: 'evening', title: 'the people who are awake', place: 'Iwatodai Dorm · Command Room', time: 'Evening', scene: [
-    { music: 'mystery' },
+    { music: 'badfeeling' },
     { n: "It rained all day and stopped at nine, all at once, like somebody had turned off a tap, and by eleven the clouds had pulled apart over the bay and the moon came up through them full and close and heavy, and the wet streets shone with it." },
     { n: "Nobody had eaten dinner. Akihiko had his gloves on before ten, which meant he'd been ready since four. Junpei was bouncing his knee hard enough to shake the table. Yukari sat with her bow across her lap, running her thumb along the string, back and forth, like it was a rosary." },
     { s: 'mitsuru', f: 'neutral', t: "The reading at the school has changed. It isn't faint anymore. There are two large ones at the entrance to the tower, and one very small one somewhere inside it, behind them." },
