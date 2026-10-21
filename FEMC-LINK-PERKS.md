@@ -418,7 +418,7 @@ Before Minji fights, her Battle perks could work as Assists so the early ranks s
 
 | Rank | Perk | Type | Effect |
 |---|---|---|---|
-| 2 | Practice Swing | Daily | Club practice gives +1 Courage and +1 Proficiency. *(needs clubs)* |
+| 2 | Practice Swing | Daily | Tennis club practice gives +1 Courage and +1 Proficiency. |
 | 4 | Second Serve | Assist | Once per battle, if Solar's attack misses, she gets an immediate retry. |
 | 6 | Stamina | Battle | Solar gets +8% max HP, and the party recovers 5% HP after every win. |
 | 10 | Match Point | MAX · passive | Solar always crits a foe under 20% HP. |
@@ -491,7 +491,7 @@ Before Minji fights, her Battle perks could work as Assists so the early ranks s
 | 7 | Rival's Dare | Tartarus | Strong Shadow groups give double EXP. |
 | 10 | Payback | MAX · passive | When Solar takes a crit or a weakness hit, she gets +10 Theurgy, and her next attack deals 30% more damage. |
 
-**My Melody** (hidden link, if she's added)
+**My Melody** (hidden link)
 
 | Rank | Perk | Type | Effect |
 |---|---|---|---|
@@ -547,7 +547,7 @@ All of the perks above are in the game (`assets/femc/battle/build.js`, `PERKS`),
 
 **Romance ideas (2026-10-21):** the battle ones are in the game as banter on the romance route (`data.js party[].banter`, from rank 6, more at 9), each with Solar's reply; the Tartarus ones aren't built yet. Duo Cohesion stays Minji's perk; her bond skill is a separate move (`bonds.js`).
 
-**Waiting on systems that don't exist yet (stubbed, shown as "Coming later"):** Rio · Practice Swing (clubs; the hook is `places.js clubs`), Jaehyun · Audible (party switching in battle), Elizabeth · Compendium Credit (Velvet Room draws). My Melody's three perks are built and wait for her link.
+**Waiting on systems that don't exist yet (stubbed, shown as "Coming later"):** Jaehyun · Audible (party switching in battle), Elizabeth · Compendium Credit (Velvet Room draws). My Melody's three perks are built and wait for her link.
 
 ## Built (2026-10-21): the perks that waited on the five social stats
 The five stats (Knowledge, Courage, Proficiency, Charm, Kindness) are in the game, so these work now (`build.js` fx, read by `core.js`; `tests/femc_stats.py` plays each one):
@@ -559,3 +559,7 @@ The five stats (Knowledge, Courage, Proficiency, Charm, Kindness) are in the gam
 - **Hyein · Sewing Machine:** "Sew with Hyein" at Solar's desk (+3 Proficiency, +1 Charm; plain sewing is +2 Proficiency).
 - **Haru · Garden Patch:** +1 Kindness and +1 Proficiency at both gardens (the school's rooftop garden, where she is, and the dorm roof).
 - **Sunoo · Seven Croissants and Staff Shift:** their +1 Kindness is on (Chagall coffee; Yeobo's shifts).
+
+## Built (2026-10-21): the living world, part 2
+- **Rio · Practice Swing** works: every tennis club practice gives +1 Courage and +1 Proficiency on top of the club's own (`build.js` fx `clubStat`, read by `core.js actPerkStats` for clubs).
+- **My Melody** is a hidden link now (`links/mymelody.js`), so her three perks (Almond Pound Cake, Sweet Nature, Melody Hug) can be earned once she's found.

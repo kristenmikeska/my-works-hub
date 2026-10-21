@@ -13,7 +13,7 @@ Other docs, if you ever want detail:
 ## Running now / next up
 - ✅ **Five social stats** (Knowledge, Courage, Proficiency, Charm, Kindness), five ranks each, with lots of new ways to raise them: new places to go, evenings at the dorm (cooking, the roof garden, Koromaru, your desk), volunteering, a new job and new books. Old saves carry over without losing a rank, and nine bond perks that were waiting now work
 - ✅ **The living world, part 1:** many more everyday moments all year, texts that react to your time with people, holiday invites, Solar's birthday, a real Yakushima trip, late nights with the romances, and a build-up before each full moon
-- ⬜ **Next: the living world, part 2:** jobs that vary, running into people while out, clubs, and the Persona cast staying around
+- ✅ **The living world, part 2:** job shifts that don't repeat and three new jobs, running into people while out or working, four clubs, the Persona cast staying all year, a deeper Kuromi link, and a secret link to find
 
 - ⬜ **Queued after part 2: Haechan.** His rank becomes automatic like Wren's, he gets lots more scenes (late nights, dorm moments, texts, scenes with the people he knows), and the Hoax ending becomes a secret route.
 
@@ -32,19 +32,19 @@ Other docs, if you ever want detail:
 - ✅ Late-night scenes with the romances: Haechan, Akihiko, Jungwon and Jihoon, changing with the day and how close you are
 - ✅ Story before each full-moon fight (Akihiko is protective)
 - ⬜ Links past rank 10, and Shinjiro waking up
-- ⬜ The Persona cast belongs to this world: no delayed texts, and Ann, Kasumi and the rest stick around *(living world)*
-- ⬜ Kuromi and My Melody as exchange students; My Melody as a hidden link
-- ⬜ Deeper Mercy, Kiriko and Sebastian links; Kasumi's timeline
+- ✅ The Persona cast belongs to this world: texts arrive like anyone's, and Ann, Kasumi and Haru stay all year, with holiday invites
+- ✅ Kuromi and My Melody as exchange students living in the dorm; Kuromi's link rewritten and deeper; My Melody as a hidden link you can miss
+- 🟡 Kasumi's timeline fixed (she stays all year); deeper Mercy, Kiriko and Sebastian links still to do
 
 ## Daily life *(living world)*
 - ✅ Daily routines all year that change as people arrive (77): teachers, students, S.E.E.S. moments and the searchers' days
 - ✅ Texts through the day: texts reacting to your last time with someone, daytime texts and group chats, and the night before a full moon
-- ⬜ Job scenes that don't repeat, plus more jobs
-- ⬜ Running into characters while out or working
+- ✅ Job scenes that don't repeat (over 100 new shifts, regulars and a small story at every job), plus three new jobs: Chagall Café, Hagakure and the shrine's amulet stall
+- ✅ Running into people while out, working or at a club (54 short run-ins, as people arrive)
 - ✅ Holiday invites you only get by spending the day with someone
 - ✅ Solar's birthday on 6/24, with a surprise party
 - ✅ Yakushima trip gameplay (three days, and who you spend them with)
-- ⬜ Clubs: tennis (Rio), library, band, gaming
+- ✅ Clubs: tennis (Rio, with extra scenes on her romance route), the library committee, the light music club and the gaming club; Rio's Practice Swing works
 
 ## Battle and building
 - ✅ One merged game (battles inside the story, one save, one menu)
@@ -63,6 +63,7 @@ Other docs, if you ever want detail:
 - ✅ 57 songs, rotating with no repeats, plus world songs in memories, arrivals, calls and endings
 - ✅ Texts animate with a chime and typing, there's a Read all button, and group chats show names
 - ✅ Softer pink slashes, a P5R-style Status screen with sun level-ups, and a P5X-style Go Out menu
+- ✅ Often-seen lines (mornings, lunch, bedtime, studying, every activity) have many more versions and don't repeat back to back
 
 ## Later
 - ⬜ The revamp's name and title logo

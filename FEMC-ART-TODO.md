@@ -238,6 +238,16 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
   - [ ] Tatsumi Memorial's children's ward playroom: picture books, cards, a window, soft afternoon light (now `hospital-hallway-day`)
   - [ ] A Gekkoukan classroom after school with a small study group's desks pushed together (now `gekkoukan-classroom-day`)
   - [ ] The riverside path at night with a lamppost, for walking Koromaru (now `park-2`)
+- *The living world, part 2 (2026-10-21).* Each works now on an existing background (in brackets); a new one would replace it:
+  - [ ] Gekkoukan's tennis courts in autumn and winter, no cherry blossoms (the courts use `outside-school-2`, which shows spring blossoms all year)
+  - [ ] Gekkoukan's music room: a borrowed amp, a drum kit, a keyboard on a stand, afternoon light (now `gekkoukan-classroom-day`)
+  - [ ] Gekkoukan's computer room after hours: old monitors, a whiteboard of match notes (now `gekkoukan-classroom-day`)
+  - [ ] Inside Chagall Café behind the counter: the espresso machine, the pastry case, mugs on hooks (now `lablanc`)
+  - [ ] Hagakure's kitchen during the dinner rush: steam, big stockpots, the ticket rail (now `hagakureramen`)
+  - [ ] The amulet stall at Naganaki Shrine: a wooden counter of charms and ema plaques, paper lanterns (now `outside-shrine-day`)
+  - [ ] Naganaki Shrine on New Year's: crowds, stalls, lanterns, a line for the bell (the amulet stall's New Year shifts use the shrine)
+  - [ ] The dorm kitchen at night with an oven light on and a pound cake cooling (My Melody's scenes use `iwatodaidorm-kitchen`)
+  - [ ] A botanical garden greenhouse (a holiday scene uses existing art until then)
 
 ---
 
@@ -270,6 +280,8 @@ The full prompts are in `FEMC-CG-PROMPTS.md` under the number shown. For all of 
 - [ ] **Fix:** edit `cg/prologue-elizabeth-blank-page.webp` to remove the armband (#0.1). Attach that CG only.
 - [ ] **Fix:** the Wren bench's socks (#0.2). Attach 🎨 `Event CGs/wren-meets-solar-bench-v1`.
 - [ ] **Side romances** (#5): Solar plus Ann, Kasumi, Judy, Rio or Saori
+- [ ] **My Melody's portraits** exist; a **full body** for the Compendium would go with the others (attach her portrait and 🎨 `Added to Game/CherryFullBody.png` for style)
+- [ ] *(Optional)* **Kuromi's full body** for the Compendium, the same way
 - [ ] **Leon and Ada** (#6): Solar, Leon, Ada
 - [ ] **Mercy and Aphrodite doing Solar's hair** (#7): Solar, Mercy, Aphrodite
 - [ ] **Cloud, Tifa and Aerith** (#8): Solar, Cloud, Tifa, Aerith
