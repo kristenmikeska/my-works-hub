@@ -175,3 +175,14 @@ Moods live in `assets/femc/game/data/places.js` (`music`, `screens`, `worldMusic
 - **Story moods:** A Bad Feeling (full-moon nights), Deep Mentality and Who's There? (mysteries), It's Alright This Way (quiet comfort), Don't and Signs of Love (romance), The Meaning of Armbands (the armband), Power of the Heart (awakenings and new forms), Sky's the Limit and Memories of You (endings).
 - **World songs:** soft (60% of the music volume), fading in over the scene while the P3 track waits, and back out when the song ends, the scene changes mood or the scene ends. They play at memory moments (and any memory fragment found in a scene), each searcher's arrival, the three calls home and each world's ending, and over a fragment's card in Tartarus. The files are the hub's own in `assets/audio/`.
 
+
+### Overnight queue (2026-10-20, Kat asleep)
+1. Theurgy presentation and art: running.
+2. **Next:** bond skills (Solar plus a partner, unlocked by link rank; special ones for romances), more unique skills and effects per fighter, and situational and romance battle lines. Bond cut-in art doesn't exist yet, so build a portrait-based fallback with an art hook.
+3. **Then:** batch B polish:
+   - animated text send/receive with a sound
+   - read all
+   - softer pink slashes
+   - a P5-style stat screen with a sun level-up
+   - a P5X-inspired Go Out menu
+   - group-chat sender names in `ui.js`
