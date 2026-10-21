@@ -85,8 +85,34 @@ These are themed card sets. The frames and icons happen in code; these are the c
 - **Full bodies still missing:** Sunoo, Junkyu, Wren (prompts in `FEMC-CG-PROMPTS.md`, section 8).
 - **Birthday CG (6/24):** Solar walking into a dark dorm lounge as the lights flip on. S.E.E.S. jump out with a cake, Koromaru in a party hat, and Akihiko holding the cake a little too seriously. 📎 Solar, Akihiko, Yukari, Junpei, Koromaru.
 
-## 7. Design together first (just ask me)
-- **The four searcher Personas** (Haechan, Jungwon, Jihoon, Minji). They're in battle now with stand-in art. Once designed, they also need Theurgy cut-ins.
+## 7. Searcher Personas ⭐ (designed: make these next)
+📎 `Femc Mode Images/Personas/Haenim.png` (style), plus the searcher's portrait for color cues. Full body, transparent or plain dark background, Persona 3 Reload Persona render style.
+
+**Template: paste this, then add the description below.**
+> *Official Persona 3 Reload-style Persona design, full body, dramatic pose, matching the attached Persona's rendering, level of detail and mythic elegance exactly. Plain dark background.*
+
+- **Dalnim** (Haechan, Universe). Haenim's moon sibling from the Korean sun-and-moon folktale.
+  > *A tall, beautiful moon deity in flowing midnight-blue and silver hanbok-inspired robes edged in crescent shapes. A pale full moon halo behind the head, silver hair streaming like moonlight, a calm half-smile that looks like it has never lost. Faint violet lightning crackling along the sleeves. A mirror twin to a golden sun goddess.*
+- **Hyeonmu** (Jungwon, Hierophant). The Black Tortoise of the North.
+  > *A guardian made of two beings in one: an armored black tortoise-shell warrior with a great black serpent coiled around it. Jade-green inlays and a jade ring motif, frost and ice crystals forming around its feet. Perfectly still and exact, a scholar-general's dignity.*
+- **Dokkaebi** (Jihoon, Hunger). The Korean goblin.
+  > *A huge, grinning Korean dokkaebi goblin with wild hair, a single horn, and a studded magic club (dokkaebi bangmangi) slung over one shoulder. A gust of wind swirls around it and it's mid-laugh. Mischievous and intimidating, wearing a tattered royal sash like it crowned itself.*
+- **Theia** (Minji, Moon). The Greek titaness of sight and light.
+  > *A radiant titaness with closed eyes painted on her eyelids and a glowing third eye of light, holding a long bow strung with a beam of light. Gauzy white and gold drapery, lens-like rings of light circling her like a camera aperture, soft flashes of light behind her.*
+
+Once these exist, each of them also needs a **Theurgy cut-in** (section 1 template) and a **pose sheet** (section 9).
+
+## 7b. Tarot cards
+📎 two existing cards from `assets/femc/tarot/` (e.g. `star.webp` and `moon.webp`) to match the style. Card proportions match the attachments.
+> *A tarot card in exactly the same style, border and layout as the attached cards: **[ARCANA]**, numbered **[number]**, depicting **[image]**.*
+
+- **Aeon** (Aigis; it's missing right now). XX. A winged mechanical angel holding an hourglass, a butterfly resting on it, sunrise behind.
+- **Judgement** (Yunjin, if approved). XX. A trumpet-blowing angel above a harbor at dawn, people rising to answer the call.
+- **Councillor** (Hanni, if approved). An open book and a gentle hand holding a lantern, a path lit ahead.
+- **Optional alternates for shared arcana:** a second design each for Lovers, Strength, Empress, Priestess, Justice and Magician, so pairs don't show the same card.
+
+## 7c. Still to decide
+- **The revamp's name**, then a title logo.
 - **The revamp's name**, then a title logo.
 
 ## 8. Still open from the earlier list (`FEMC-CG-PROMPTS.md`)
