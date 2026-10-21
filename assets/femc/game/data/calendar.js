@@ -35,11 +35,12 @@ window.FEMC_GAME_CALENDAR = {
   // Named school days and seasons (shown under the date; some change the day's flow).
   events: {
     '4/8': 'Opening Ceremony', '4/29': 'Golden Week', '5/2': 'Golden Week', '5/3': 'Golden Week', '5/4': 'Golden Week', '5/5': 'Golden Week', '5/6': 'Golden Week',
-    '7/17': 'Closing Ceremony', '9/1': 'Second Term', '10/30': 'Culture Festival', '10/31': 'Culture Festival',
+    '7/17': 'Closing Ceremony', '9/1': 'Second Term', '8/16': 'Summer Festival', '10/30': 'Culture Festival', '10/31': 'Culture Festival',
     '12/22': 'Closing Ceremony', '12/24': 'Christmas Eve', '12/25': 'Christmas', '12/31': "New Year's Eve", '1/8': 'Third Term'
   },
   trips: [
-    { from: '7/21', to: '7/23', place: 'Yakushima', note: 'S.E.E.S. went to Yakushima. The Kirijo villa had a beach, and the beach had a great deal of sun.' }
+    // slots: a trip with a day plan (data/yakushima.js) has daytime and evening slots too.
+    { id: 'yakushima', from: '7/21', to: '7/23', place: 'Yakushima', slots: ['early', 'after', 'evening', 'late'], note: 'S.E.E.S. went to Yakushima. The Kirijo villa had a beach, and the beach had a great deal of sun.' }
   ],
   exams: [
     { id: 'midterm1', days: ['5/18', '5/19', '5/20', '5/21'], results: '5/25' },

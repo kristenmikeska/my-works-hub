@@ -240,6 +240,10 @@ window.FEMC_GAME_PLACES = {
     ['Moonlight Bridge', 'moonlightbridge', null, 'nightblue'],
     ['Naganaki Shrine · Night', 'naganaki-shrine-night'],
     ['Naganaki Shrine', 'outside-shrine-day', 'naganaki-shrine-night'],
+    // Yakushima (data/yakushima.js): the villa, the forest and the ferry reuse art until Kat's own (FEMC-ART-TODO.md section 8).
+    ['Yakushima · Kirijo Villa', 'hotel-lobby'],
+    ['Yakushima · Forest', 'park'],
+    ['Yakushima · Ferry', 'harbor'],
     ['Yakushima', 'yakushima-beach']
   ],
   /* CG focus: which part of each CG (assets/femc/cg) to keep in view when a tall, narrow window has to crop it. */

@@ -36,7 +36,7 @@ window.FemcGame = (() => {
     get cal() { return W.FEMC_GAME_CALENDAR; }, get stats() { return W.FEMC_GAME_STATS; }, get places() { return W.FEMC_GAME_PLACES; },
     get jobs() { return W.FEMC_GAME_JOBS || []; }, get jobScenes() { return W.FEMC_GAME_JOB_SCENES || {}; }, get flags() { return W.FEMC_GAME_FLAGS; },
     get texts() { return W.FEMC_GAME_TEXTS || { threads: {}, texts: [] }; }, get q() { return W.FEMC_GAME_QUESTIONS || { classes: [], exams: {}, teachers: {}, rivals: [], ambient: {} }; },
-    get dailyLife() { return W.FEMC_GAME_DAILY_LIFE || []; },
+    get dailyLife() { return W.FEMC_GAME_DAILY_LIFE || []; }, get trip() { return W.FEMC_GAME_TRIP || {}; }, get lodging() { return W.FEMC_GAME_LODGING || {}; },
     get events() { return W.FEMC_GAME_EVENTS || []; }, get battle() { return W.FEMC_BATTLE_DATA || {}; }
   };
   const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
@@ -90,7 +90,8 @@ window.FemcGame = (() => {
   }
   const SLOT_ORDER = ['early', 'morning', 'lunch', 'afternoon', 'after', 'evening', 'late'];
   function slotsFor(info) {
-    if (info.type === 'trip') return ['early', 'late'];
+    // A trip with its own day plan (data/yakushima.js) has daytime and evening slots too (calendar trips[].slots).
+    if (info.type === 'trip') return info.trip?.slots || ['early', 'late'];
     if (info.type === 'off') return ['early', 'after', 'evening', 'late'];
     return SLOT_ORDER;
   }
@@ -104,6 +105,9 @@ window.FemcGame = (() => {
     route: { tally: {}, choices: {}, frags: { R: 0, S: 0, H: 0 }, doorsDue: [], doorsSeen: [] },
     fragments: [], inventory: {}, gear: [], books: { owned: [], reading: null, progress: {}, done: [] },
     dailyLife: { seen: [], lastDay: -99 },
+    // The living world: holiday invites (today's, and whose day she spent: holidays[md] = link id | 'none'), the late-night
+    // scenes already played, and the trip's day plan (trip.done['7/21-after'] = the pick).
+    holiday: null, holidays: {}, lateNights: { seen: [], lastDay: -99 }, trip: { done: {} },
     perks: { week: {}, pitchDay: -1 }, // bond perks' once-a-week / once-a-day uses (build.js; FEMC-LINK-PERKS.md)
     jobs: {}, events: [], spent: {}, exams: {}, classSeen: [], phone: { threads: {}, unread: {}, done: [], pending: {}, invite: null, lastInvite: -9 },
     tartarus: { nights: 0, maxFloor: 0, bosses: [], lastParty: null }, battle: { exp: {}, levels: {} },
@@ -339,6 +343,11 @@ window.FemcGame = (() => {
        farewell: [lines]  plays (early morning) the day after `closes` if the bond never reached rank 10. Without it the game
          plays a short generic goodbye so a link never vanishes silently (a text from visitors and searchers, narration
          for everyone else).
+       afterRank: { n: { delay, slot, msgs, reply } }  a text sent a day or two after rank n (see deliverTexts).
+       holidays: { 'M/D': { ask, yes, ok, no, sorry, rank, route, flag, events, slot, title, place, time, music, bg, scene } }
+         an invitation texted that morning; the scene plays only if Solar spends the day with them (see holidayInvites).
+       lateNights: [{ id, after, until, rank, route, flag, events, days, when, kind, place, time, music, bg, scene }]  late-night
+         scenes (see lateNightDue). These three can also live in data/living-*.js (FEMC_GAME_LINK_EXTRAS), merged in here.
      Scene lines: see scene.js. Choices give ♪ with `notes` (0-3); `reverse: 1` pushes a reversible link. */
   const LINKS = {};
   const CAST = { solar: 'Solar', 'mitsuru-radio': 'Mitsuru · Radio', porter: '???', clerk: 'Clerk', ikutsuki: 'Ikutsuki', teacher: 'Teacher', fuuka: 'Fuuka', koromaru: 'Koromaru', ken: 'Ken', aigis: 'Aigis', elizabeth: 'Elizabeth', wren: 'Wren', kurosawa: 'Officer Kurosawa' };
@@ -348,7 +357,15 @@ window.FemcGame = (() => {
       if (LINKS[l.id] && l.status === 'stub') return;
       LINKS[l.id] = l; CAST[l.id] = l.short || l.name; Object.assign(CAST, l.cast || {});
     });
+    // The living world's link fields (data/living-*.js, FEMC_GAME_LINK_EXTRAS: afterRank, holidays, lateNights) join the
+    // link they name; a link file can carry the same fields itself.
+    Object.entries(W.FEMC_GAME_LINK_EXTRAS || {}).forEach(([id, x]) => {
+      const l = LINKS[id]; if (!l) return;
+      Object.entries(x).forEach(([k, v]) => { l[k] = Array.isArray(v) ? [...(l[k] || []), ...v] : { ...(l[k] || {}), ...v }; });
+    });
     Object.values(D.jobScenes).forEach(j => Object.assign(CAST, j.cast || {}));
+    D.dailyLife.forEach(e => Object.assign(CAST, e.cast || {}));
+    Object.values(D.trip).forEach(t => Object.assign(CAST, t.cast || {}));
     D.events.forEach(e => Object.assign(CAST, e.cast || {}));
   }
   const progress = id => (S.links[id] ||= { rank: 0, xp: 0, seen: [], rankDay: {}, hung: 0, push: 0, reversed: false });
@@ -507,6 +524,25 @@ window.FemcGame = (() => {
     return true;
   }
   function addItem(id, n = 1) { S.inventory[id] = Math.max(0, (S.inventory[id] || 0) + n); if (!S.inventory[id]) delete S.inventory[id]; }
+  /* { gift: { from: 'Mitsuru', item: { medicine: 2 }, gear: 'guard_ring' } }: a present (items into the bag, gear into what she
+     owns, the battle's gear list), with a toast naming it. */
+  function gift(g) {
+    const B = D.battle, names = [];
+    Object.entries(g.item || {}).forEach(([k, n]) => { addItem(k, n); names.push(`${B.items?.[k]?.name || k}${n > 1 ? ` ×${n}` : ''}`); });
+    [].concat(g.gear || []).forEach(k => { if (B.gear?.[k] && !S.gear.includes(k)) S.gear.push(k); names.push(B.gear?.[k]?.name || k); });
+    if (g.keepsake) names.push(g.keepsake);
+    if (names.length) toast('gift', `${g.from ? `From ${g.from}: ` : 'A gift: '}${names.join(', ')}`);
+  }
+  /* ♪ toward a link's next rank from outside its own scenes (holiday days, the trip, late nights): only for a met link that
+     isn't reversed or at MAX. The meter shows it the next time they spend time together. */
+  function bond(id, n) {
+    const l = LINKS[id];
+    if (!l || !n || !isMet(id)) return 0;
+    const p = progress(id);
+    if (p.reversed || p.rank >= 10) return 0;
+    p.xp = (p.xp || 0) + n;
+    return n;
+  }
   function effect(line) {
     let did = false;
     if (line.stat) { addStats(line.stat); did = true; }
@@ -515,6 +551,8 @@ window.FemcGame = (() => {
     if (line.tally) { tally(line.tally); did = true; }
     if (line.fragment) { addFragment(line.fragment); did = true; }
     if (line.item) { Object.entries(line.item).forEach(([k, v]) => addItem(k, v)); did = true; }
+    if (line.gift) { gift(line.gift); did = true; }
+    if (line.bond) { Object.entries(line.bond).forEach(([k, v]) => bond(k, v)); did = true; }
     if (line.register) { if (!S.registered.includes(line.register)) { S.registered.push(line.register); if (!line.quiet) toast('register', `Registered to the Compendium: ${CAST[line.register] || line.register}`); } did = true; }
     if (line.join) { if (!S.joined.includes(line.join)) { S.joined.push(line.join); S.flags[`joined-${line.join}`] = true; toast('join', `${CAST[line.join] || line.join} joined S.E.E.S.`); } did = true; }
     if (line.end) { S.flags['the-end'] = line.end; did = true; }
@@ -822,14 +860,37 @@ window.FemcGame = (() => {
     }
     return null;
   }
-  function dailyLife(slot = S.slot) {
-    const info = dayInfo(), state = S.dailyLife || { seen: [], lastDay: -99 };
-    if (info.type === 'trip' || S.day - (state.lastDay ?? -99) < 2 ||
+  /* Everyday life (data/daily-life.js): small once-a-playthrough routines that replace a plain beat (early morning, class,
+     lunch), play before After School / the evening menu without spending them, or close a late night.
+     An entry: { id, slot, after: 'M/D', until (default after + 30, so a late save never plays an early beat), schoolOnly,
+       offOnly (days off only), days: [0-6], weather: ['rain', …], events: [story ids played], flags: [flags set],
+       noFlags: [flags not set], met: [link ids met], ranks: { link: n }, place, time, bg, cast, scene }.
+     One plays at most every other day, never on a trip or on a day whose story event has already played, and never in a
+     free slot that's already spent. Of the routines that fit, the one that goes stale soonest plays first (then file order),
+     so a crowded month doesn't leave beats to expire unseen. */
+  const dailyUntil = e => (e.until ? dayOf(e.until) : dayOf(e.after) + 30);
+  function dailyFits(e, slot, d, info) {
+    if (e.slot !== slot || d < dayOf(e.after) || d > dailyUntil(e)) return false;
+    if (e.schoolOnly && info.type !== 'school') return false;
+    if (e.offOnly && info.type !== 'off') return false;
+    if (e.days && !e.days.includes(info.dow)) return false;
+    if (e.weather && !e.weather.includes(info.weather)) return false;
+    if (!(e.events || []).every(id => S.events.includes(id))) return false;
+    if (!(e.flags || []).every(flag) || (e.noFlags || []).some(flag)) return false;
+    if (!(e.met || []).every(isMet)) return false;
+    if (e.ranks && !Object.entries(e.ranks).every(([id, r]) => progress(id).rank >= r)) return false;
+    return true;
+  }
+  function dailyLife(slot = S.slot, d = S.day) {
+    const info = dayInfo(d), state = S.dailyLife || { seen: [], lastDay: -99 };
+    if (info.type === 'trip' || d - (state.lastDay ?? -99) < 2 ||
       D.events.some(e => e.date === info.md && S.events.includes(e.id))) return null;
-    // A routine goes stale `until` its date (default: 30 days after `after`), so a late save never plays early-autumn beats.
-    return D.dailyLife.find(e => e.slot === slot && S.day >= dayOf(e.after) && S.day <= (e.until ? dayOf(e.until) : dayOf(e.after) + 30) &&
-      (!e.schoolOnly || info.type === 'school') && !(state.seen || []).includes(e.id) &&
-      (e.events || []).every(id => S.events.includes(id))) || null;
+    if (['after', 'evening'].includes(slot) && S.spent[`${d}-${slot}`]) return null;
+    if (holidayDue(slot, d)) return null;
+    const seen = state.seen || [];
+    const fit = D.dailyLife.map((e, i) => ({ e, i })).filter(({ e }) => !seen.includes(e.id) && dailyFits(e, slot, d, info));
+    fit.sort((a, b) => dailyUntil(a.e) - dailyUntil(b.e) || a.i - b.i);
+    return fit[0]?.e || null;
   }
   function finishDailyLife(id) {
     const e = D.dailyLife.find(e => e.id === id); if (!e) return;
@@ -1011,36 +1072,226 @@ window.FemcGame = (() => {
     phone.sequence = latest;
     messages.forEach(m => th.push({ ...m, d: S.day, slot: S.slot, seq: ++phone.sequence }));
   }
-  function deliverTexts() {
-    const md = mdOf(S.day);
+  /* Texts (data/texts.js), three kinds, at most one a time slot:
+       texts: dated ones (date, slot, flag, rank, met, events), delivered up to two days late, then dropped.
+       afterRank (a link's own field): { n: { delay (days, default 1), slot, msgs, reply } }, sent `delay` days after rank n
+         was reached (the link's rankDay), within four days of that; it reacts to the last rank scene played.
+       ambient: { id, from: 'M/D', to: 'M/D', thread, slot, flag(s), met, rank, events, msgs, reply }, random daytime texts
+         and group chats: one may arrive on a random day inside its window (at most one a day), and surely by its last day
+         or two; past `to` it's dropped.
+     A text's id goes into phone.done once it's sent or dropped. textById() finds any of them (for replies). */
+  const AR_ID = (l, n) => `ar-${l.id}-${n}`;
+  function afterRankTexts() {
+    const out = [];
+    Object.values(LINKS).forEach(l => Object.entries(l.afterRank || {}).forEach(([n, t]) => out.push({ ...t, id: AR_ID(l, n), thread: t.thread || l.id, link: l.id, rank: +n })));
+    return out;
+  }
+  function textById(id) {
+    return D.texts.texts.find(t => t.id === id) || (D.texts.ambient || []).find(t => t.id === id) || afterRankTexts().find(t => t.id === id) || null;
+  }
+  function textOk(t) {
+    if (t.slot && t.slot !== S.slot) return false;
+    if (t.flag && ![].concat(t.flag).every(flag)) return false;
+    if (t.noFlag && [].concat(t.noFlag).some(flag)) return false;
+    if (t.rank && typeof t.rank === 'object' && !Object.entries(t.rank).every(([id, r]) => progress(id).rank >= r)) return false;
+    if (t.met && !t.met.every(isMet)) return false;
+    if (t.events && !t.events.every(id => S.events.includes(id))) return false;
+    if (t.route && !Object.entries(t.route).every(([id, r]) => progress(id).route === r)) return false;
+    return true;
+  }
+  function sendText(t) {
+    S.phone.done.push(t.id);
+    appendPhone(t.thread, t.msgs);
+    S.phone.unread[t.thread] = (S.phone.unread[t.thread] || 0) + t.msgs.length;
+    if (t.reply) S.phone.pending[t.thread] = t.id;
+    toast('text', `${D.texts.threads[t.thread] || name(t.thread)}: ${t.msgs[0].t}`, { thread: t.thread, from: t.msgs[0].from, msg: t.msgs[0].t, count: t.msgs.length });
+  }
+  function nextDated() {
     for (const t of D.texts.texts) {
-      if (S.phone.done.includes(t.id)) continue;
-      if (dayOf(t.date) > S.day) continue;
+      if (S.phone.done.includes(t.id) || dayOf(t.date) > S.day) continue;
       if (S.day > dayOf(t.date) + 2) { S.phone.done.push(t.id); continue; }
       if (t.slot && t.slot !== S.slot && dayOf(t.date) === S.day) continue;
-      if (t.flag && !flag(t.flag)) continue;
-      if (t.rank && !Object.entries(t.rank).every(([id, r]) => progress(id).rank >= r)) continue;
-      if (t.met && !t.met.every(isMet)) continue;
-      S.phone.done.push(t.id);
-      appendPhone(t.thread, t.msgs);
-      S.phone.unread[t.thread] = (S.phone.unread[t.thread] || 0) + t.msgs.length;
-      if (t.reply) S.phone.pending[t.thread] = t.id;
-      toast('text', `${D.texts.threads[t.thread] || name(t.thread)}: ${t.msgs[0].t}`, { thread: t.thread, from: t.msgs[0].from, msg: t.msgs[0].t, count: t.msgs.length });
-      void md;
-      break;
+      if (!textOk({ ...t, slot: null })) continue;
+      return t;
     }
+    return null;
+  }
+  function nextAfterRank() {
+    for (const t of afterRankTexts()) {
+      if (S.phone.done.includes(t.id)) continue;
+      const p = progress(t.link), at = p.rankDay?.[t.rank];
+      if (typeof at !== 'number' || p.reversed) continue;
+      const from = at + (t.delay ?? 1);
+      if (S.day < from) continue;
+      if (S.day > from + 4) { S.phone.done.push(t.id); continue; }
+      if (textOk(t)) return t;
+    }
+    return null;
+  }
+  function nextAmbient() {
+    if (S.phone.ambientDay === S.day) return null;
+    const ready = [];
+    for (const t of D.texts.ambient || []) {
+      if (S.phone.done.includes(t.id) || S.day < dayOf(t.from)) continue;
+      if (S.day > dayOf(t.to)) { S.phone.done.push(t.id); continue; }
+      if (textOk(t)) ready.push(t);
+    }
+    if (!ready.length) return null;
+    const urgent = ready.filter(t => S.day >= dayOf(t.to) - 1);
+    if (urgent.length) return urgent[0];
+    return seeded(S.day * 5 + SLOT_ORDER.indexOf(S.slot) * 3 + ready.length) < 0.2 ? ready[Math.floor(seeded(S.day * 3 + 1) * ready.length)] : null;
+  }
+  function deliverTexts() {
+    sendHolidayInvites();
+    const t = nextDated() || nextAfterRank() || nextAmbient();
+    if (t) { if ((D.texts.ambient || []).includes(t)) S.phone.ambientDay = S.day; sendText(t); }
     maybeInvite();
     save();
   }
   function replyText(thread, i) {
-    const t = D.texts.texts.find(x => x.id === S.phone.pending[thread]);
+    const t = textById(S.phone.pending[thread]);
     if (!t) return;
     const o = t.reply[i];
     appendPhone(thread, [...(!o.silent ? [{ from: 'solar', t: o.t }] : []), ...(o.then || [])]);
     if (o.link && o.notes && isMet(o.link)) progress(o.link).xp += o.notes;
+    if (o.stat) addStats(o.stat);
     delete S.phone.pending[thread];
     save();
   }
+
+  /* ── Holidays (a link's `holidays`): { 'M/D': { ask, yes, ok, no, sorry, rank (default 1), route, flag, events, slot
+     ('after' default, or 'evening'), title, place, time, music, bg, scene } }. On the morning of that date each met link whose
+     holiday is open (not reversed, rank reached, route / flag / events met, not closed) texts its `ask`. When the holiday's slot
+     comes, the invitations are the choice (ui.js holidayPicker): spend the day with one of them, which plays that link's holiday
+     scene (its only chance this playthrough), or make your own plans. The others get `sorry` from Solar and their `no`. A day
+     with them spends the slot; its ♪ go toward their next rank. S.holiday is today's invitations; S.holidays[md] the answer. ── */
+  function holidayOf(l, md) { return l.holidays?.[md] || null; }
+  function holidayInvites(d = S.day) {
+    const md = mdOf(d);
+    return Object.values(LINKS).filter(l => {
+      const h = holidayOf(l, md); if (!h || l.status === 'stub' || !isMet(l.id)) return false;
+      const p = progress(l.id);
+      if (p.reversed || p.rank < (h.rank ?? 1)) return false;
+      if (h.route && p.route !== h.route) return false;
+      if (h.flag && ![].concat(h.flag).every(flag)) return false;
+      if (h.events && !h.events.every(id => S.events.includes(id))) return false;
+      if (l.closes && d >= dayOf(l.closes)) return false;
+      return true;
+    });
+  }
+  function sendHolidayInvites() {
+    if (S.slot !== 'early' || S.phase !== 'play' || (S.holiday && S.holiday.d === S.day) || S.holidays?.[mdOf(S.day)]) return;
+    const list = holidayInvites();
+    if (!list.length) return;
+    const md = mdOf(S.day);
+    S.holiday = { d: S.day, md, links: list.map(l => l.id), pick: null };
+    list.forEach(l => {
+      const h = holidayOf(l, md);
+      appendPhone(l.id, [{ from: l.id, t: h.ask, holiday: md }]);
+      S.phone.unread[l.id] = (S.phone.unread[l.id] || 0) + 1;
+      toast('text', `${l.short}: ${h.ask}`, { thread: l.id, from: l.id, msg: h.ask, count: 1 });
+    });
+  }
+  // Today's invitations, waiting for this slot (null once answered, or when the slot is spent).
+  function holidayDue(slot = S.slot, d = S.day) {
+    const h = S.holiday;
+    if (!h || h.d !== d || h.pick || S.spent[`${d}-${slot}`]) return null;
+    const links = h.links.map(id => LINKS[id]).filter(l => l && (holidayOf(l, h.md)?.slot || 'after') === slot);
+    return links.length ? { md: h.md, links } : null;
+  }
+  // Yes to one link: the texts, then the scene to play (ui.js plays it in the link's context).
+  function acceptHoliday(id) {
+    const h = S.holiday; if (!h) return null;
+    const l = LINKS[id], e = holidayOf(l, h.md);
+    h.pick = id;
+    appendPhone(id, [{ from: 'solar', t: e.yes || 'yes!! where' }, { from: id, t: e.ok || 'ok. see you soon' }]);
+    h.links.filter(x => x !== id).forEach(x => { const o = holidayOf(LINKS[x], h.md); appendPhone(x, [{ from: 'solar', t: o.sorry || 'cant today. im so sorry' }, { from: x, t: o.no || 'ok. next time' }]); });
+    save();
+    return { link: l, scene: e.scene || [], place: e.place || linkPlace(l), time: e.time || 'Daytime', music: e.music, bg: e.bg, title: e.title || h.md };
+  }
+  function finishHoliday(id, gained = 0) {
+    const h = S.holiday; if (!h) return;
+    (S.holidays ||= {})[h.md] = id;
+    S.spent[`${S.day}-${holidayOf(LINKS[id], h.md)?.slot || 'after'}`] = `holiday:${id}`;
+    const p = progress(id); p.lastDay = S.day;
+    bond(id, gained);
+    save();
+  }
+  // Your own plans: everyone who asked gets a kind no.
+  function declineHolidays() {
+    const h = S.holiday; if (!h) return;
+    h.pick = 'none'; (S.holidays ||= {})[h.md] = 'none';
+    h.links.forEach(x => { const o = holidayOf(LINKS[x], h.md); appendPhone(x, [{ from: 'solar', t: o.sorry || 'cant today. im so sorry' }, { from: x, t: o.no || 'ok. next time' }]); });
+    save();
+  }
+
+  /* ── Late nights (a link's `lateNights`): [{ id, after, until, rank, route ('romance' | 'friend' | 'none' = no route yet),
+     flag, events, days: [0-6], when: 'tartarus' (after a night in the tower) | 'quiet' (not after one) | 'rain', kind:
+     'dorm' (they live in the dorm) | 'visit' (a guesthouse resident's visit that ends tonight) | 'call' (by phone),
+     place, time, music, bg, scene }]. One may play in the late slot instead of the plain bedtime line, at most every third
+     night, never on a trip, a full-moon night or a night a story scene already took. Each plays once. Who lives where is
+     data/living-world.js FEMC_GAME_LODGING: only dorm residents get 'dorm' scenes (the test holds every file to it). ── */
+  function lateNightFits(l, e, d = S.day) {
+    const p = progress(l.id), info = dayInfo(d);
+    if (!isMet(l.id) || p.reversed || p.rank < (e.rank ?? 1)) return false;
+    if (d < dayOf(e.after) || (e.until && d > dayOf(e.until))) return false;
+    if (e.route === 'none' ? !!p.route : e.route && p.route !== e.route) return false;
+    if (e.flag && ![].concat(e.flag).every(flag)) return false;
+    if (e.events && !e.events.every(id => S.events.includes(id))) return false;
+    if (e.days && !e.days.includes(info.dow)) return false;
+    const battled = S.tonight === 'battled';
+    if (e.when === 'tartarus' ? !battled : battled) return false;
+    if (e.when === 'rain' && info.weather !== 'rain') return false;
+    if (l.closes && d >= dayOf(l.closes)) return false;
+    return true;
+  }
+  function lateNightDue(d = S.day) {
+    const info = dayInfo(d), st = S.lateNights || { seen: [], lastDay: -99 };
+    if (S.phase !== 'play' || info.type === 'trip' || info.moon.full || S.tonight === 'rest' || d - (st.lastDay ?? -99) < 3) return null;
+    if (D.events.some(e => e.date === info.md && SLOT_FOR[e.slot || 'evening'] === 'late' && S.events.includes(e.id))) return null;
+    const all = [];
+    Object.values(LINKS).forEach(l => (l.lateNights || []).forEach(e => { if (!(st.seen || []).includes(e.id) && lateNightFits(l, e, d)) all.push({ link: l, e }); }));
+    if (!all.length) return null;
+    // Rotate between people night to night; within one person, their scenes in order.
+    const people = [...new Set(all.map(x => x.link.id))];
+    const who = people[d % people.length];
+    return all.find(x => x.link.id === who);
+  }
+  function finishLateNight(id, gained = 0) {
+    const st = S.lateNights ||= { seen: [], lastDay: -99 };
+    if (!Array.isArray(st.seen)) st.seen = [];
+    if (!st.seen.includes(id)) st.seen.push(id);
+    st.lastDay = S.day;
+    const hit = Object.values(LINKS).find(l => (l.lateNights || []).some(e => e.id === id));
+    if (hit) bond(hit.id, Math.min(2, gained));
+    save();
+  }
+
+  /* ── Trips with a day plan (data/yakushima.js FEMC_GAME_TRIP[trip id].days['M/D'][slot]): a scene ({ place, time, bg,
+     music, scene }) or a pick ({ prompt, options: [{ id, who, label, sub, place, time, bg, needs: { join | flag | met },
+     scene }] }) where she chooses who to spend that part of the day with. Each part plays once (S.trip.done). Choices' ♪ go to
+     the person picked (bond). A story event for the slot (7/22 late) plays instead. ── */
+  function tripPlan(d = S.day, slot = S.slot) {
+    const info = dayInfo(d); if (info.type !== 'trip' || !info.trip?.id) return null;
+    const day = D.trip[info.trip.id]?.days?.[info.md]; const e = day?.[slot];
+    if (!e || (S.trip?.done || {})[`${info.md}-${slot}`]) return null;
+    if (e.options) return { ...e, key: `${info.md}-${slot}`, options: e.options.filter(o => tripOptionOk(o)) };
+    return { ...e, key: `${info.md}-${slot}` };
+  }
+  function tripOptionOk(o) {
+    const n = o.needs || {};
+    if (n.join && !S.joined.includes(n.join) && !available().includes(n.join)) return false;
+    if (n.flag && !flag(n.flag)) return false;
+    if (n.met && !isMet(n.met)) return false;
+    if (n.events && !n.events.every(id => S.events.includes(id))) return false;
+    return true;
+  }
+  function finishTrip(key, pick = true, who = null, gained = 0) {
+    ((S.trip ||= { done: {} }).done ||= {})[key] = pick;
+    if (who) bond(who, gained);
+    save();
+  }
+
   // "Free right now?": a met friend whose next rank is ready but who isn't at their usual spot.
   // On breaks and holidays, links whose home is at school (and who have no break home) are stranded: they ask more often.
   function stranded(l, d = S.day) { const h = homeOf(l, d); return h.slot !== 'evening' && !!areaById(h.area)?.schoolOnly; }
@@ -1280,7 +1531,9 @@ window.FemcGame = (() => {
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift,
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
-    deliverTexts, replyText, answerInvite, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
+    deliverTexts, replyText, textById, answerInvite, gift, bond,
+    holidayInvites, sendHolidayInvites, holidayDue, acceptHoliday, finishHoliday, declineHolidays,
+    lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,
     setBattleSave, ensureBattleSave,
     saveSlot, readSlot, loadSlot, slotLabel, slotInfo, exportCode, importCode, hasSave, deleteSave

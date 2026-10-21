@@ -531,6 +531,11 @@
     if (s.slot === 'early' && cardDay !== s.day) { cardDay = s.day; show('', 'is-card'); return dateCard(run); }
     const due = G.dueEvent();
     if (due) return playDue(due);
+    // A trip with a day plan (data/yakushima.js): its own scenes and picks instead of school, Go Out and the dorm.
+    if (info.type === 'trip') return tripSlot(info);
+    // Holiday invitations (a link's `holidays`) wait for their slot: spend the day with someone, or make your own plans.
+    const hol = G.holidayDue();
+    if (hol) return holidayPicker(hol, info);
     const daily = G.dailyLife();
     if (daily) return playDailyLife(daily, info);
     switch (s.slot) {
@@ -540,7 +545,7 @@
       case 'afternoon': return info.exam ? segment({ slot: 'afternoon', bg: 'gekkoukan-classroom-day', text: 'The afternoon was a blur of answer keys being passed back and forth and people comparing what they wrote, which never helped anyone.' }) : classPeriod('afternoon', info);
       case 'after': return G.freeSlotSpent('after') ? advance() : goOut('after');
       case 'evening': return G.freeSlotSpent('evening') ? advance() : evening(info);
-      case 'late': return lateNight(info);
+      case 'late': { const ln = G.lateNightDue(); return ln ? playLateNight(ln) : lateNight(info); }
       default: return advance();
     }
   }
@@ -549,6 +554,7 @@
     return SC.play({ ...e, scene: [{ bg: e.bg }, ...e.scene], label: 'Everyday life', onDone: () => {
       G.finishDailyLife(e.id);
       if (slot === 'evening') return evening(info);
+      if (slot === 'after') return G.freeSlotSpent('after') ? advance() : goOut('after');
       const exam = slot === 'early' && G.D.cal.exams.find(x => x.results === info.md);
       if (exam) return resultsBoard(exam.id, advance);
       advance();
@@ -561,6 +567,55 @@
     if (due.kind === 'christmas') return christmasEve();
     if (due.kind === 'door') return playCtx({ type: 'door', key: due.key }, { onDone: () => { G.markDoor(due.key); run(); } });
     if (due.kind === 'farewell') return SC.play({ scene: G.farewellScene(due.link), place: G.linkPlace(due.link), time: 'Early Morning', label: due.link.short, link: due.link.id, onDone: () => run() });
+  }
+
+  /* ── Holidays: who texted an invitation this morning (core.js holidays). Pick one and the day is theirs (their holiday
+     scene, the only chance at it this playthrough), or make your own plans and go out as usual. ── */
+  function holidayPicker(hol, info) {
+    const slot = S().slot, night = slot === 'evening';
+    setBg(night ? 'iwatodaidorm-livingroom-night' : 'solar-dormroom-day', night ? 'night' : '');
+    screenMusic(night ? 'dorm' : 'after');
+    const label = info.holiday || info.label || 'A day off';
+    show(`<section class="g-dorm g-holiday"><div class="g-map-head"><p class="g-kicker">${esc(info.md)} · ${esc(label)}</p><h1>${night ? 'Plans tonight?' : 'Holiday plans'}</h1>
+      <p class="g-map-sub">Your phone went off ${night ? 'all afternoon' : 'before breakfast'}. A day like this only comes once.</p></div>
+      <div class="g-nights">${hol.links.map(l => { const pic = G.portrait(l.id, 'happy'), h = l.holidays[hol.md]; return `<button type="button" class="g-night who" data-h="${l.id}">${pic ? `<i class="g-xmas-pic"><img src="${pic}" alt=""></i>` : ''}<b>${esc(l.short)}</b><small>“${esc(h.ask)}”</small></button>`; }).join('')}
+        <button type="button" class="g-night" data-h="none"><b>Make your own plans</b><small>${night ? 'Stay in, or go out on your own.' : 'Go out on your own today.'}</small></button></div></section>`, 'is-dorm');
+    main.querySelector('[data-h]')?.focus({ preventScroll: true });
+    main.querySelectorAll('[data-h]').forEach(b => b.addEventListener('click', () => {
+      G.sfx('femc-click');
+      if (b.dataset.h === 'none') { G.declineHolidays(); return run(); }
+      const id = b.dataset.h, e = G.acceptHoliday(id);
+      SC.play({ scene: [...(e.bg ? [{ bg: e.bg }] : []), ...e.scene], place: e.place, time: e.time, music: e.music || null, title: e.title, label: `${e.link.short} · ${label}`, link: id,
+        onDone: res => { G.finishHoliday(id, res.gained || 0); advance(); } });
+    }));
+  }
+
+  /* ── Late nights (core.js lateNights): instead of the plain bedtime line, now and then, someone. ── */
+  function playLateNight(ln) {
+    const { link: l, e } = ln;
+    SC.play({ scene: [...(e.bg ? [{ bg: e.bg }] : []), ...e.scene], place: e.place, time: e.time || 'Late Night', music: e.music || 'night', label: `${l.short} · Late night`, link: l.id,
+      onDone: res => { G.finishLateNight(e.id, res.gained || 0); const r = G.sleep(); if (r.end) return endScreen(); run(); } });
+  }
+
+  /* ── A trip's day plan (data/yakushima.js): a scene for the slot, or a pick of who to spend it with. ── */
+  function tripSlot(info) {
+    const slot = S().slot, plan = G.tripPlan();
+    if (!plan) {
+      if (slot === 'early') return earlyMorning(info);
+      if (slot === 'late') return lateNight(info);
+      return advance();
+    }
+    screenMusic('after');
+    const done = (pick, who, gained) => { G.finishTrip(plan.key, pick, who, gained); if (slot === 'late') { const r = G.sleep(); if (r.end) return endScreen(); return run(); } advance(); };
+    const playIt = (e, pick, who) => SC.play({ scene: [...(e.bg ? [{ bg: e.bg }] : []), ...(e.scene || [])], place: e.place || plan.place || info.trip.place, time: e.time || plan.time || G.slotName(slot, info), music: e.music || plan.music || 'trip', title: e.title || null, label: info.trip.place, link: who || null,
+      onDone: res => done(pick, who, res.gained || 0) });
+    if (!plan.options) return playIt(plan, true, plan.who || null);
+    setBg(plan.bg || 'yakushima-beach');
+    show(`<section class="g-dorm g-trip"><div class="g-map-head"><p class="g-kicker">${esc(info.md)} · ${esc(info.trip.place)} · ${esc(G.slotName(slot, info))}</p><h1>${esc(plan.prompt || 'Who will you spend it with?')}</h1>
+      <p class="g-map-sub">${esc(plan.sub || 'The island is big, and the day is short.')}</p></div>
+      <div class="g-nights">${plan.options.map(o => { const pic = o.who ? G.portrait(o.who, 'happy') : null; return `<button type="button" class="g-night${o.who ? ' who' : ''}" data-o="${esc(o.id)}">${pic ? `<i class="g-xmas-pic"><img src="${pic}" alt=""></i>` : ''}<b>${esc(o.label)}</b><small>${esc(o.sub || '')}</small></button>`; }).join('')}</div></section>`, 'is-dorm');
+    main.querySelector('[data-o]')?.focus({ preventScroll: true });
+    main.querySelectorAll('[data-o]').forEach(b => b.addEventListener('click', () => { G.sfx('femc-click'); const o = plan.options.find(x => x.id === b.dataset.o); playIt(o, o.id, o.who || null); }));
   }
 
   /* ── Christmas Eve (P3P): who will you spend it with? ── */
@@ -651,7 +706,7 @@
   }
   function earlyMorning(info) {
     screenMusic('school');
-    if (info.type === 'trip') return segment({ slot: 'early', bg: 'yakushima-beach', place: info.trip.place, text: info.trip.note, button: 'The day goes by', next: () => { S().slot = 'late'; G.save(); run(); } });
+    if (info.type === 'trip') return segment({ slot: 'early', bg: 'yakushima-beach', place: info.trip.place, text: info.trip.note, button: 'The day goes by', next: () => { if (info.trip.slots) return advance(); S().slot = 'late'; G.save(); run(); } });
     if (info.type === 'off') return segment({ slot: 'early', bg: 'solar-dormroom-day', place: 'Iwatodai Dorm', text: info.holiday ? `${info.holiday}. No school. The dorm was quiet in the way it only was on days off, everybody sleeping in except Akihiko, who never slept in, and Mitsuru, who might not sleep at all.` : info.brk ? `${info.brk.name}. The day was hers.` : 'Sunday. No school, no alarm, and a whole day that belonged to nobody but her.' });
     const exam = G.D.cal.exams.find(e => e.results === info.md);
     const walk = info.weather === 'rain' ? 'Rain on the monorail windows, umbrellas everywhere.' : info.weather === 'snow' ? 'Snow on the rails. The monorail crept across the bay like it was being careful.' : 'The monorail across the bay, the city falling away behind it.';
@@ -1092,7 +1147,7 @@
     const compose = $p('.g-ph-compose'), draft = $p('.g-ph-draft');
     const stop = () => { anim.token += 1; clearTimeout(anim.timer); anim.skip = null; o.el.classList.remove('g-ph-playing'); };
     const focusIn = el => setTimeout(() => el?.isConnected && el.focus({ preventScroll: true }), 40);
-    const pending = id => !!(s.phone.pending[id] && G.D.texts.texts.some(x => x.id === s.phone.pending[id])) || s.phone.invite?.link === id;
+    const pending = id => !!(s.phone.pending[id] && G.textById(s.phone.pending[id])) || s.phone.invite?.link === id;
 
     const list = () => {
       stop();
@@ -1196,7 +1251,7 @@
     const replies = id => {
       reply.replaceChildren();
       bar.innerHTML = ''; bar.hidden = true;
-      const t = s.phone.pending[id] && G.D.texts.texts.find(x => x.id === s.phone.pending[id]);
+      const t = s.phone.pending[id] && G.textById(s.phone.pending[id]);
       if (t) t.reply.forEach((r, i) => {
         const b = document.createElement('button'); b.type = 'button'; b.textContent = G.sub(r.t);
         b.addEventListener('click', () => { const from = (s.phone.threads[id] || []).length; G.replyText(id, i); reply.replaceChildren(); G.sfx('femc-click'); play(id, from, () => replies(id)); });
