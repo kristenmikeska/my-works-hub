@@ -286,6 +286,7 @@ window.FEMC_GAME_PLACES = {
     night: ['tranquility', 'deep-breath-reload'], velvet: ['poem-for-everyones-souls', 'hall-of-doors'],
     date: ['heartbeat-heartbreak', 'like-a-dream-come-true', 'signs-of-love'], city: ['paulownia-mall', 'specialist', 'my-homie'],
     battle: ['wiping-all-out', 'mass-destruction', 'wiping-all-out', 'its-going-down-now'],
+    opening: 'burn-my-dread',                     // the title screen (`title` scores the year's last screen)
     title: 'full-moon-full-life', day: ['want-to-be-close', 'school-memories'], evening: 'color-your-night',
     dorm: ['iwatodai-dorm', 'deep-breath-reload', 'deep-breath-reincarnation'], tartarus: ['basement', 'tartarus-thebel'],
     fullmoon: 'master-of-shadow', exam: ['exam-in-progress', 'time'], results: 'its-going-down-now', shop: 'paulownia-mall',
@@ -307,5 +308,5 @@ window.FEMC_GAME_PLACES = {
   worldMusic: { R: 'world-runners', S: 'world-strangers', H: 'world-hoax' },
   /* Screens. ui.js screenMood() swaps in a mood for the day: an exam day plays `exam`, a trip `trip`, the first week of a term
      `fresh`, a rainy evening `rain`, and school days from December on `late`. */
-  screens: { title: 'title', school: 'day', class: 'class', after: 'day', evening: 'evening', dorm: 'dorm', exam: 'exam', results: 'results', tartarus: 'tartarus', fullmoon: 'fullmoon', status: null }
+  screens: { opening: 'opening', title: 'title', school: 'day', class: 'class', after: 'day', evening: 'evening', dorm: 'dorm', exam: 'exam', results: 'results', tartarus: 'tartarus', fullmoon: 'fullmoon', status: null }
 };

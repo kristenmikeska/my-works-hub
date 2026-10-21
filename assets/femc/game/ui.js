@@ -656,27 +656,95 @@
     if (logoSvg !== null) put(logoSvg); else logoLoad.then(put);
   }
   const autoLine = () => { let x = null; try { x = G.slotInfo(JSON.parse(localStorage.getItem(G.KEY))); } catch (e) {} return x ? `${x.md} ${x.day} · ${x.slot}${x.lv ? ` · Lv ${x.lv}` : ''}${x.fight ? ' · in the Dark Hour' : ''}` : ''; };
+  /* The title: Burn My Dread (places.js `opening`), the key art breathing (and leaning with the mouse), a moonlight sheen,
+     glass shards and moon dust drifting, the menu sliding in. The first visit of a page load opens on a P3-style "Press any
+     key / Tap to start" (browsers keep music locked until a key or a tap, so this is when the song starts). The menu is in
+     the page under it all along, so its buttons work straight away too. Moving the cursor ticks, choosing clicks, and New
+     Game / Continue wipe out to the game. Reduced motion: no drift, no lean, no wipe; the key art holds still. */
+  let titleWoke = false;
+  function titleFx(box) {
+    if (!box || reduced.matches) return;
+    const phone = innerWidth < 700, R = (a, b) => (a + Math.random() * (b - a)).toFixed(2);
+    let h = '';
+    for (let i = 0; i < (phone ? 8 : 13); i++) h += `<i class="sh" style="--x:${R(0, 100)}%;--s:${R(6, 14)}px;--d:${R(16, 28)}s;--l:-${R(0, 28)}s;--dx:${R(-110, 40)}px;--r:${R(-300, 300)}deg;--o:${R(0.35, 0.8)}"></i>`;
+    for (let i = 0; i < (phone ? 10 : 16); i++) h += `<i class="du" style="--x:${R(0, 100)}%;--s:${R(1.5, 3.6)}px;--d:${R(11, 22)}s;--l:-${R(0, 22)}s;--dx:${R(-50, 50)}px;--o:${R(0.4, 0.9)}"></i>`;
+    box.innerHTML = h;
+  }
   function titleScreen() {
     hud.hidden = true;
     setBg(null);
-    screenMusic('title');
+    screenMusic('opening');
     const has = G.hasSave();
-    show(`<section class="g-title">
-      <img class="g-title-art" src="${G.base}assets/femc/title/keyart.webp" alt="">
+    const splash = !titleWoke && !navigator.userActivation?.hasBeenActive;
+    const tap = matchMedia('(hover: none)').matches;
+    show(`<section class="g-title${splash ? ' is-splash' : ''}">
+      <div class="g-title-stage"><img class="g-title-art" src="${G.base}assets/femc/title/keyart.webp" alt=""></div>
+      <div class="g-title-moon" aria-hidden="true"></div><div class="g-title-fx" aria-hidden="true"></div>
       <div class="g-title-copy"><h1 class="g-logo" aria-label="Persona 3: Solstice"><span class="g-logo-text" aria-hidden="true">Solstice<small>Persona 3 · Every Universe</small></span></h1>
+      <button type="button" class="g-title-press">${tap ? 'Tap to start' : 'Press any key'}</button>
       <div class="g-title-menu" role="menu">${has ? '<button type="button" role="menuitem" data-t="continue">Continue</button>' : ''}<button type="button" role="menuitem" data-t="new">New Game</button><button type="button" role="menuitem" data-t="load">Load</button><button type="button" role="menuitem" data-t="settings">Settings</button></div>
       <p class="g-title-foot">${has ? `Autosave · ${esc(autoLine())}` : 'No save yet'}</p></div>
       <a class="g-title-practice" href="femc-battle.html?practice=1" title="Practice mode: the battle game on its own, with its own save">Practice</a></section>`, 'is-title');
+    const sec = main.querySelector('.g-title'), items = [...sec.querySelectorAll('.g-title-menu button')];
+    let leaving = false;
     putLogo(main.querySelector('.g-logo'));
-    main.querySelector('.g-title-menu button')?.focus({ preventScroll: true });
-    main.querySelectorAll('[data-t]').forEach(b => b.addEventListener('click', () => {
+    titleFx(sec.querySelector('.g-title-fx'));
+    // The cursor: one lit item, by mouse or keys (the arrow keys already tick, in navKeys).
+    const light = b => items.forEach(x => x.classList.toggle('is-on', x === b));
+    items.forEach(b => {
+      b.addEventListener('focus', () => light(b));
+      b.addEventListener('pointerenter', e => { if (e.pointerType !== 'mouse' || leaving || b.classList.contains('is-on')) return; b.focus({ preventScroll: true }); G.sfx('femc-hover'); });
+    });
+    const firstItem = () => { if (sec.isConnected && !leaving) items[0]?.focus({ preventScroll: true }); };
+    // Press start.
+    const onKey = e => {
+      if (!sec.isConnected || !sec.classList.contains('is-splash')) return document.removeEventListener('keydown', onKey, true);
+      if (topLayer() || e.metaKey || e.ctrlKey || e.altKey || ['Shift', 'Control', 'Alt', 'Meta', 'Tab', 'CapsLock'].includes(e.key)) return;
+      e.preventDefault(); e.stopPropagation(); wake();
+    };
+    function wake() {
+      titleWoke = true;
+      if (!sec.classList.contains('is-splash')) return;
+      document.removeEventListener('keydown', onKey, true);
+      sec.classList.remove('is-splash');
+      G.sfx('femc-on');
+      screenMusic('opening');
+      setTimeout(firstItem, 0);
+    }
+    if (splash) {
+      document.addEventListener('keydown', onKey, true);
+      sec.querySelector('.g-title-press').focus({ preventScroll: true });
+      sec.addEventListener('click', e => { if (sec.classList.contains('is-splash') && !e.target.closest('[data-t], a')) { e.preventDefault(); wake(); } });
+    } else firstItem();
+    // The key art leans a little with the mouse (desktop only).
+    if (!reduced.matches && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      let raf = 0, px = 0, py = 0;
+      sec.addEventListener('pointermove', e => {
+        px = e.clientX / innerWidth - 0.5; py = e.clientY / innerHeight - 0.5;
+        if (!raf) raf = requestAnimationFrame(() => { raf = 0; sec.style.setProperty('--px', px.toFixed(3)); sec.style.setProperty('--py', py.toFixed(3)); });
+      });
+    }
+    // New Game / Continue wipe out to the game.
+    const leave = (b, go) => {
+      if (leaving) return;
+      titleWoke = true;
+      if (reduced.matches) return go();
+      leaving = true;
+      b?.classList.add('is-go');
+      sec.classList.add('is-leaving');
+      setTimeout(() => { if (sec.isConnected) go(); }, 560);
+    };
+    items.forEach(b => b.addEventListener('click', () => {
       const t = b.dataset.t;
-      if (t === 'continue') { if (S().phase === 'title') S().phase = 'play'; G.save(); cardDay = null; run(); }
+      if (leaving) return;
+      titleWoke = true; sec.classList.remove('is-splash');
+      G.sfx('femc-click');
+      if (t === 'continue') leave(b, () => { if (S().phase === 'title') S().phase = 'play'; G.save(); cardDay = null; run(); });
       if (t === 'new') {
         if (has) {
           const o = overlay(`<h2>New game?</h2><p>This replaces the autosave. Your three save slots stay.</p><div class="g-row"><button type="button" class="g-btn pink" data-y>Start over</button><button type="button" class="g-btn" data-close>Cancel</button></div>`);
-          o.el.querySelector('[data-y]').addEventListener('click', () => { o.close(); G.newGame(); run(); });
-        } else { G.newGame(); run(); }
+          o.el.querySelector('[data-y]').addEventListener('click', () => { o.close(); leave(b, () => { G.newGame(); run(); }); });
+        } else leave(b, () => { G.newGame(); run(); });
       }
       if (t === 'load') openSaves(true);
       if (t === 'settings') openSettings();
