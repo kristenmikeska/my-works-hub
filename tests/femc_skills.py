@@ -31,7 +31,8 @@ SETUP = r"""(()=>{
   G.newGame(); const S=G.S; S.started=true; S.phase='play'; S.day=G.dayOf('8/3'); S.slot='evening';
   S.events=G.D.events.map(e=>e.id); S.spent={}; S.pending=null; S.unlocked.tartarus=true; S.flags.armband=true;
   S.joined=D.party.map(m=>m.id); S.yen=60000;
-  for (const l of Object.values(G.LINKS)) if (l.forced?.length) G.progress(l.id).rank=Math.max(...l.forced);
+  // The story links (all ranks forced) at the rank their dates allow: none due, and no MAX bond perks out of season.
+  for (const l of Object.values(G.LINKS)) if (l.forced?.length) G.progress(l.id).rank=l.ranks.filter(r=>r&&r.after&&G.dayOf(r.after)<=S.day).length;
   const b=FemcBattleSave.normalize(FemcBattleSave.fresh());
   b.lvl=%(lvl)d; b.pts=%(pts)d; b.party=['akihiko','yukari','junpei']; b.awakened=true;
   D.party.forEach(m=>{ if(m.id!=='solar') b.mem[m.id]={lvl:%(lvl)d,exp:0}; });
