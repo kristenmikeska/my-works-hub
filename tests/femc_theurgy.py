@@ -6,6 +6,7 @@ Checks:
     Spring Tide, Landslide, Unveiled), with the mechanics unchanged;
   - Haechan's layered version (bg / Persona / character) with his strike sheet, and the layers alone;
   - the searchers' cut-in + strike-sheet versions; a still-only cut-in; the stylized fallback for someone without art;
+  - every S.E.E.S. member's cut-in + strike sheet (Akihiko .. Shinjiro): the art loads and the whole cut-in plays;
   - Solar's Evoker sheet: in the summon cut-in and on the battlefield figure for repeat / Off summons;
   - settings: Always, 1st per battle, Off, Rush (short versions), reduced motion (a fade), battle speed scaling;
   - all art loads, no browser errors; screenshots mid-animation at 1000x486, 375x812 and 1440x900.
@@ -46,11 +47,11 @@ WATCH = r'''(() => {
 })()'''
 
 
-def fight(p, party, *, speed=8, cutins='always', setup=''):
+def fight(p, party, *, speed=8, cutins='always', setup='', day='12/12'):
     """A fresh story fight with this party; returns once the battle is live. setup: JS run in the frame before the watch."""
     p.top()
     p.goto(f'femc-game.html?seed=1' + (f'&speed={speed}' if speed else ''))
-    p.eval('FemcGame.newGame();FemcGame.S.joined=' + json.dumps(party) + ';FemcGame.S.day=FemcGame.dayOf("12/12");'
+    p.eval('FemcGame.newGame();FemcGame.S.joined=' + json.dumps(party) + ';FemcGame.S.day=FemcGame.dayOf("' + day + '");'
            'FemcGame.makeHandoff("scripted",{script:"theurgy-check",notes:"",segment:1,forced:true,party:' + json.dumps(party) + '})')
     p.battle()
     for _ in range(200):
@@ -137,7 +138,7 @@ try:
     results['solarForms'] = seen
 
     # 2. Haechan: layers + strike sheet, then the layers alone; Jungwon, Jihoon, Minji: cut-in + sheet;
-    #    Jungwon's still alone (no sheet); Akihiko (no art): the stylized fallback.
+    #    Jungwon's still alone (no sheet); Akihiko with his art taken away: the stylized fallback.
     fight(p, ['solar', 'haechan', 'jungwon', 'akihiko'])
     r = (act(p, 'haechan', 'theurgy'), wait_cut(p, 1))[1]
     check('kind-layers' in r['cls'] and 'has-sheet' in r['cls'] and r['loaded'], r)
@@ -152,6 +153,7 @@ try:
     p.eval("FEMC_BATTLE_DATA.party.find(m => m.id === 'jungwon').theurgy.sheet = null; FemcBattle.B.party().forEach(u => u.th = 100)")
     r = (act(p, 'jungwon', 'theurgy'), wait_cut(p, 4))[1]
     check('kind-cut' in r['cls'] and 'has-sheet' not in r['cls'] and r['loaded'], r)
+    p.eval("(() => { const t = FEMC_BATTLE_DATA.party.find(m => m.id === 'akihiko').theurgy; delete t.img; delete t.focus; delete t.sheet; })()")
     r = (act(p, 'akihiko', 'theurgy'), wait_cut(p, 5))[1]
     check('kind-styl' in r['cls'] and r['loaded'] and 'LIGHTNING CADENZA' in r['name'], r)
     m = marks(p)
@@ -163,6 +165,34 @@ try:
         check('has-sheet' in r['cls'] and any(f'{mid}.webp' in s for s in r['imgs']) and any(f'{mid}-strike-2' in s for s in r['imgs']) and r['loaded'], r)
     errs = p.console(); check(not errs, errs)
     results['searchers'] = 'Haechan layers+sheet and layers alone; Jungwon sheet and still alone; Jihoon, Minji sheets; Akihiko stylized'
+
+    # 2b. S.E.E.S.: each member's own cut-in and strike sheet, through the real Theurgy command, every phase played.
+    SEES = {'akihiko': 'LIGHTNING CADENZA', 'yukari': 'CADENZA', 'junpei': 'BRAVE BLADE', 'mitsuru': 'BUFUDYNE EXECUTION',
+            'aigis': 'ORGIA MODE', 'ken': 'JUDGMENT', 'koromaru': 'HELLFIRE HOWL', 'shinjiro': 'CHARGE'}
+    played = {}
+    for group, day in ((['akihiko', 'yukari', 'junpei'], '12/12'), (['mitsuru', 'aigis', 'ken'], '12/12'), (['koromaru', 'shinjiro'], '9/20')):
+        fight(p, ['solar'] + group, day=day)
+        for i, mid in enumerate(group):
+            r = (act(p, mid, 'theurgy', before='u.th = 100;'), wait_cut(p, i + 1))[1]
+            check(r['mid'] == mid and SEES[mid] in r['name'].upper(), (mid, r['mid'], r['name']))
+            check('kind-cut' in r['cls'] and 'has-sheet' in r['cls'] and 'st-full' in r['cls'] and r['loaded'], (mid, r))
+            check(any(f'/{mid}.webp' in s for s in r['imgs']), (mid, 'cut-in', r['imgs']))
+            check(all(any(f'{mid}-strike-{k}.webp' in s for s in r['imgs']) for k in range(3)), (mid, 'sheet', r['imgs']))
+            played[mid] = round(r['done'] - r['t0'])
+        m = marks(p)
+        for k in ('theurgy-windup', 'theurgy-strike', 'theurgy-follow', 'theurgy-final', 'theurgy-impact', 'theurgy-done'):
+            check(m.get(k, 0) >= len(group), (group, k, m.get(k)))
+        errs = p.console(); check(not errs, errs)
+    # Every new file decodes at a sensible size (the cut-in at 16:9, the three frames on one shared canvas).
+    sizes = p.eval('''Promise.all(''' + json.dumps([f'{m}.webp' for m in SEES] + [f'{m}-strike-{k}.webp' for m in SEES for k in range(3)]) + '''.map(f =>
+      new Promise(res => { const i = new Image(); i.onload = () => res([f, i.naturalWidth, i.naturalHeight]); i.onerror = () => res([f, 0, 0]);
+        i.src = 'assets/femc/battle/art/theurgy/' + f; })))''')
+    for f, w, h in sizes:
+        check(w > 0 and h > 0, (f, 'no load'))
+        if '-strike-' not in f: check((w, h) == (1600, 900), (f, w, h))
+    for mid in SEES:
+        check(len({(w, h) for f, w, h in sizes if f.startswith(mid + '-strike-')}) == 1, (mid, 'frame sizes'))
+    results['sees'] = played
 
     # 3. Settings: 1st per battle (full, then short), Off (short), Always (full twice), Rush (short).
     fight(p, ['solar'], cutins='first')

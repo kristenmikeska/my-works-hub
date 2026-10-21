@@ -934,8 +934,8 @@
       ],
       "uses": [],
       "conversion": "Twelve separate rectangular WebP design cards, quality 90; each original background and complete weapon preserved",
-      "intendedUse": "Solar weapon artwork; on hold at Kat’s request",
-      "placementNote": "Kat explicitly requested “Wait on those.” Keep the twelve prepared design cards aside; do not map them to gear or add collectibles/cosmetics until she asks to resume. No gear, shops, equipment UI or combat rules changed."
+      "intendedUse": "Solar weapon artwork; on hold at Kat\u2019s request",
+      "placementNote": "Kat explicitly requested \u201cWait on those.\u201d Keep the twelve prepared design cards aside; do not map them to gear or add collectibles/cosmetics until she asks to resume. No gear, shops, equipment UI or combat rules changed."
     },
     {
       "source": "TrueEnding-Unveiled.png",
@@ -1887,6 +1887,342 @@
       ],
       "status": "integrated",
       "sourceNow": "Added to Game/solar-evoker-animation.png"
+    },
+    {
+      "batch": 18,
+      "source": "theurgy-akihiko.png",
+      "sha256": "d8df2e216807ab85d6341be8c1a143d36ebf18bb6f375174779a12fb357da674",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "akihiko",
+      "intendedUse": "Theurgy cut-in still: Lightning Cadenza",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/akihiko.webp",
+      "outputSha256": "6ee56639b32e450c60a7ab9a1088539d342d9c33ce8780e90075e5af138bf4d5",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-akihiko.png"
+    },
+    {
+      "batch": 18,
+      "source": "theurgy-yukari.png",
+      "sha256": "4e6cfa4f4707d0ff1a82289681716bd9d28a27041f52cd40bb7b6f5844c342b4",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "yukari",
+      "intendedUse": "Theurgy cut-in still: Cadenza",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/yukari.webp",
+      "outputSha256": "86b00c35ca4ef5569c0e07396f1a2e086d0a12bc4839e354d50eb911f3a77b61",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-yukari.png"
+    },
+    {
+      "batch": 18,
+      "source": "theurgy-junpei.png",
+      "sha256": "9c67afee4cdd773b7dfa6d82613caa3dccf9eae5a6ad05e94ea8ae79d4cb13df",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "junpei",
+      "intendedUse": "Theurgy cut-in still: Brave Blade",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/junpei.webp",
+      "outputSha256": "bb4a9410d5a71176168c9754eef3033d59519f6441f665d8561f8a1a1cf54359",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-junpei.png"
+    },
+    {
+      "batch": 18,
+      "source": "theurgy-mitsuru.png",
+      "sha256": "dbab3e4fb54ba9866e5665033b74d1de00ebc82e8f116b7e8c63d276448e8840",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "mitsuru",
+      "intendedUse": "Theurgy cut-in still: Bufudyne Execution",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/mitsuru.webp",
+      "outputSha256": "6957c8d9204e1a400fe4046e03fdb898d5e796a4219c88dadafc8ecf54deb068",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-mitsuru.png"
+    },
+    {
+      "batch": 18,
+      "source": "theurgy-aigis.png",
+      "sha256": "0cc78540ef447b49bd350778eb5d9693d4ba2b995a06c776716fc983972c37c2",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "aigis",
+      "intendedUse": "Theurgy cut-in still: Orgia Mode",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/aigis.webp",
+      "outputSha256": "d67878642c25472feead2b1a0fbb53e7d74979a2bdcca306519f2ee8485362fa",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-aigis.png"
+    },
+    {
+      "batch": 18,
+      "source": "theurgy-ken.png",
+      "sha256": "25c0b4b3412e5226b921b17961f4b2f3565474f5eb58634a0be997e43610f2d2",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "ken",
+      "intendedUse": "Theurgy cut-in still: Kala\u2019s Judgment",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/ken.webp",
+      "outputSha256": "8a1266fe809cc4ec20d11d13f5e3969ded78ce17c58ad5d0efb1b0507b4c8fcd",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-ken.png"
+    },
+    {
+      "batch": 18,
+      "source": "theurgy-koromaru.png",
+      "sha256": "0b390824e5edf968e96c2f3fe8636bf170e7356a2db8cd2519d8eeefc89a4cc9",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "koromaru",
+      "intendedUse": "Theurgy cut-in still: Hellfire Howl",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/koromaru.webp",
+      "outputSha256": "981bd2ed2058168ca5d05d51f5ca24a597fa6c762f7035a0b5f84c57ebd9d2a7",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-koromaru.png"
+    },
+    {
+      "batch": 18,
+      "source": "theurgy-shinjiro.png",
+      "sha256": "96fd2982273b8f55eb403dcc8d709700d2589bfb4d443f896b49c1f2ff32d6d4",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "shinjiro",
+      "intendedUse": "Theurgy cut-in still: Castor\u2019s Charge",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/shinjiro.webp",
+      "outputSha256": "9ad1cdb43a8292fd99397a1ffcdfe101ad76d8bf428cc6ac9c826d8cc14a2802",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-shinjiro.png"
+    },
+    {
+      "batch": 18,
+      "source": "akihiko-strikesheet.png",
+      "sha256": "597c0d05173c19d1364bb48a496f5e093e3663b66597791507d2bd47efd0a8c3",
+      "size": [
+        1855,
+        848
+      ],
+      "character": "akihiko",
+      "intendedUse": "Strike sheet: wind-up, strike, follow-through",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/akihiko-strike-0.webp",
+        "assets/femc/battle/art/theurgy/akihiko-strike-1.webp",
+        "assets/femc/battle/art/theurgy/akihiko-strike-2.webp"
+      ],
+      "outputSha256": [
+        "00e23f856344db147154a2c521bed7f2045599856b70d1d46ee04c83ad167d50",
+        "4682b7eb2aa471767be00969c93fe42ef875a98c5c54c238531c7c814ebad682",
+        "5e8a157efeca03b5f22fd6fb60b17f2bb77dfe099d5144e3c28939b8c5e67a27"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/akihiko-strikesheet.png"
+    },
+    {
+      "batch": 18,
+      "source": "yukari-strikesheet.png",
+      "sha256": "b0771627952ef9cd36a8306c70d511804a8188c1a4edc0df289d64456fa042c2",
+      "size": [
+        2172,
+        724
+      ],
+      "character": "yukari",
+      "intendedUse": "Strike sheet: wind-up, strike, follow-through",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/yukari-strike-0.webp",
+        "assets/femc/battle/art/theurgy/yukari-strike-1.webp",
+        "assets/femc/battle/art/theurgy/yukari-strike-2.webp"
+      ],
+      "outputSha256": [
+        "05572c369e1e4e05d78f89877ace0467927a277cebbf6d0b72d7cb4084276514",
+        "45f46e3858cff437beb142317fbfda93c71515f8715077d9b43a4cc7a9988ffe",
+        "a3fea1c0a33fe5576dbf23f4edf9230cc1f9b37eba15721ffbb4f29457e5866a"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/yukari-strikesheet.png"
+    },
+    {
+      "batch": 18,
+      "source": "junpei-strikesheet.png",
+      "sha256": "30f74daf72f78a4655a90bff32d5cab5663aa910f7c5916b793c07887c03ce9b",
+      "size": [
+        2056,
+        765
+      ],
+      "character": "junpei",
+      "intendedUse": "Strike sheet: wind-up, strike, follow-through",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88 ; SOLID: the flying cap (missed by Vision) made opaque",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/junpei-strike-0.webp",
+        "assets/femc/battle/art/theurgy/junpei-strike-1.webp",
+        "assets/femc/battle/art/theurgy/junpei-strike-2.webp"
+      ],
+      "outputSha256": [
+        "9d761b814dc02f5d881f6da1ff8b74261eea9642ad8f82412514d7c9bb130645",
+        "1e2d83c3ec010d095e2a9714fa019cfed04b0ad57c47a4807e2c1ddf1554b2e6",
+        "2dc72230ae2d72c8bbc65a29bd90ac6273fae28bdd5974d39096df35444ad76d"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/junpei-strikesheet.png"
+    },
+    {
+      "batch": 18,
+      "source": "mitsuru-strikesheet.png",
+      "sha256": "a1cb8786c404d63e2a5540c5ef298bf9b4ffb0928e29144d67ea524369d03d25",
+      "size": [
+        2172,
+        724
+      ],
+      "character": "mitsuru",
+      "intendedUse": "Strike sheet: wind-up, strike, follow-through",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/mitsuru-strike-0.webp",
+        "assets/femc/battle/art/theurgy/mitsuru-strike-1.webp",
+        "assets/femc/battle/art/theurgy/mitsuru-strike-2.webp"
+      ],
+      "outputSha256": [
+        "2c572d45e9f4ce694d02ebce027b1d1a377b0a63acc2c68271822f96f4dcd511",
+        "af48e31511020b646204a28b8970e2550aefdc311d2b26baf8f8136bdcfccdf9",
+        "479138595dd15e07b6b5b4460adc4e7b284f3b8f57196fa51cc29cd8ec1d01fa"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/mitsuru-strikesheet.png"
+    },
+    {
+      "batch": 18,
+      "source": "aigis-strikesheet.png",
+      "sha256": "43b58a449f8c7b19e2b10ca3e94cbc316f944ad2e6ecb87b6315cb5f71470b4e",
+      "size": [
+        2109,
+        746
+      ],
+      "character": "aigis",
+      "intendedUse": "Strike sheet: wind-up, strike, follow-through",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/aigis-strike-0.webp",
+        "assets/femc/battle/art/theurgy/aigis-strike-1.webp",
+        "assets/femc/battle/art/theurgy/aigis-strike-2.webp"
+      ],
+      "outputSha256": [
+        "5a35b8a878d6742797d1a4fd7f4615d51baecf70d6ff2decaa09a70db85eff60",
+        "74c0758bfbab5cc3caa8142d6f11c9da73fb3809bb289c45db0707eba8729216",
+        "5ffd667293b15f2c8ffcf28421284d8a78846b4c4203ace19792221cd95f2aac"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/aigis-strikesheet.png"
+    },
+    {
+      "batch": 18,
+      "source": "ken-strikesheet.png",
+      "sha256": "bc60637c7a909269e39a5d1ea16381bfdc3241c245a7d016d0334a149eecf4fe",
+      "size": [
+        1846,
+        852
+      ],
+      "character": "ken",
+      "intendedUse": "Strike sheet: wind-up, strike, follow-through",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/ken-strike-0.webp",
+        "assets/femc/battle/art/theurgy/ken-strike-1.webp",
+        "assets/femc/battle/art/theurgy/ken-strike-2.webp"
+      ],
+      "outputSha256": [
+        "698e5a5f93722c88603352ff65929e3e013d88c6d51caa1c9b7e49a52ed53830",
+        "00b2207a99d2b7c14f4dc35a8821fcd03aefe77a439fe0a1b7082c8150e8b738",
+        "5fe9e826d54de8cf1f55ef378f12b6ea94d6757cd2c24d7d3a1a7dffdde7a09f"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/ken-strikesheet.png"
+    },
+    {
+      "batch": 18,
+      "source": "koromaru-strikesheet.png",
+      "sha256": "685094d9e62a0fb6915ba773009935f33c004026a46cd52e6a0049a9641a1a8b",
+      "size": [
+        2048,
+        768
+      ],
+      "character": "koromaru",
+      "intendedUse": "Strike sheet: wind-up, strike, follow-through",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/koromaru-strike-0.webp",
+        "assets/femc/battle/art/theurgy/koromaru-strike-1.webp",
+        "assets/femc/battle/art/theurgy/koromaru-strike-2.webp"
+      ],
+      "outputSha256": [
+        "5a1f7b93ca1a431f75a292d45146934882ad352c71f2bdd789d3ad264c27e288",
+        "c0f7a0823314c9a5b8f3ae13eed2c8816395765f1eed9e964519dcfa38fd5a0f",
+        "1362e03ff2c44d0c99d26783c9bdfdf99417b288599d114aa26080dbaa8b6211"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/koromaru-strikesheet.png"
+    },
+    {
+      "batch": 18,
+      "source": "shinjiro-strikesheet.png",
+      "sha256": "ca5ef397523a248f926f231ed7647e1f8c22672665ed4db966aa23132f0a5d3e",
+      "size": [
+        2006,
+        784
+      ],
+      "character": "shinjiro",
+      "intendedUse": "Strike sheet: wind-up, strike, follow-through",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/shinjiro-strike-0.webp",
+        "assets/femc/battle/art/theurgy/shinjiro-strike-1.webp",
+        "assets/femc/battle/art/theurgy/shinjiro-strike-2.webp"
+      ],
+      "outputSha256": [
+        "7cabbf3917712633eda26b2f573819a18e1a78b00191e6337616ac35c2449d70",
+        "66ac4d3f8ef1097e901b6e9c20478b372bd4a19c2feb28ac8dea0ed4e78be4d1",
+        "46bf4480a22a63a76def16966bdadad69773211e52bc96352294ef9f987dbf52"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/shinjiro-strikesheet.png"
     }
   ],
   "batch1Validation": {
@@ -2070,7 +2406,7 @@
     "integrated": false,
     "pendingDecision": null,
     "status": "on_hold_by_user",
-    "decision": "Kat requested “Wait on those.” Prepared cards retained without game integration."
+    "decision": "Kat requested \u201cWait on those.\u201d Prepared cards retained without game integration."
   },
   "remainingDuplicateReview": {
     "sources": [
@@ -2117,6 +2453,18 @@
     "sourcesUnchanged": true,
     "edgesReviewed": "every cut-out on pink, purple and white (tools/femc-theurgy.py check)",
     "test": "python3 tests/femc_theurgy.py",
+    "browserErrors": 0
+  },
+  "batch18Validation": {
+    "date": "2026-10-21",
+    "scope": "S.E.E.S. Theurgy art: a cut-in still and a 3-panel strike sheet each for Akihiko, Yukari, Junpei, Mitsuru, Aigis, Ken, Koromaru and Shinjiro",
+    "sourcesInspected": "all 16 viewed before wiring: each cut-in shows the right member with their Persona; each sheet shows the member in three attack moments on white",
+    "sourcesIntegrated": 16,
+    "sourcesPreparedOnly": 0,
+    "sourcesUnchanged": true,
+    "edgesReviewed": "every strike frame on pink, purple and white (tools/femc-theurgy.py check); Junpei's flying cap needed SOLID",
+    "framing": "face focus checked at 375x812 on Akihiko, Mitsuru, Ken and Shinjiro",
+    "test": "python3 tests/femc_theurgy.py (section 2b: each member's Theurgy through the real menu, all art loaded, every phase played)",
     "browserErrors": 0
   }
 }

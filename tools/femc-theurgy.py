@@ -72,6 +72,9 @@ def white_holes(minc, area=120, ring_max=0.62):
 # Haechan's sheet skips it; Minji's long hair leaves gaps ringed by lighter strands, so her ring test is looser (her
 # sheet has no blades, whose bright highlights a loose test would punch). Layers never use it.
 HOLES = {'haechan-strikesheet.png': None, 'minji-strikesheet.png': 0.8}
+# Vision can miss a small piece that's apart from the body (Junpei's cap flying off), which then only gets the un-mix
+# alpha and shows through a little. For these sources, art that's clearly darker than the paper is made solid.
+SOLID = {'junpei-strikesheet.png'}
 
 
 def key(src, holes=True):
@@ -91,6 +94,8 @@ def key(src, holes=True):
     ring = HOLES.get(os.path.basename(src), 0.62)
     if holes and ring:
         av = np.minimum(av, 1 - white_holes(minc, ring_max=ring))
+    if os.path.basename(src) in SOLID:
+        av = np.maximum(av, ndimage.binary_erosion(aw > 0.35, iterations=2).astype(np.float32))
     A = np.maximum(av, aw)
     col = np.where((aw >= av)[..., None], unmixed, rgb)
     a = np.dstack([col, A]).astype(np.float32)
@@ -193,7 +198,7 @@ def check(out, files):
 
 IMAGES = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images')
 SUMMON = os.path.join(ROOT, 'assets/femc/battle/art/summon')
-# What's in the game (2026-10-20). New pieces: add a line here, run `all` (or the single command), then the data.js entry.
+# What's in the game (2026-10-21). New pieces: add a line here, run `all` (or the single command), then the data.js entry.
 BUILD = [
     ('cutin', 'theurgy-solar-haenim.png', 'solar-haenim'), ('cutin', 'theurgy-solar-sunna.png', 'solar-sunna'),
     ('cutin', 'theurgy-solar-harbor.png', 'solar-mazu'), ('cutin', 'theurgy-solar-nike.png', 'solar-nike'),
@@ -205,6 +210,15 @@ BUILD = [
     ('sheet', 'jihoon-strikesheet.png', 'jihoon-strike'), ('sheet', 'minji-strikesheet.png', 'minji-strike'),
     ('sheet', 'solar-strikesheet-1.png', 'solar-strike-a'), ('sheet', 'solar-strikesheet-2.png', 'solar-strike-b'),
     ('evoker', 'solar-evoker-animation.png', 'solar-evoke'),
+    # S.E.E.S. (2026-10-21): a cut-in and a strike sheet each.
+    ('cutin', 'theurgy-akihiko.png', 'akihiko'), ('cutin', 'theurgy-yukari.png', 'yukari'),
+    ('cutin', 'theurgy-junpei.png', 'junpei'), ('cutin', 'theurgy-mitsuru.png', 'mitsuru'),
+    ('cutin', 'theurgy-aigis.png', 'aigis'), ('cutin', 'theurgy-ken.png', 'ken'),
+    ('cutin', 'theurgy-koromaru.png', 'koromaru'), ('cutin', 'theurgy-shinjiro.png', 'shinjiro'),
+    ('sheet', 'akihiko-strikesheet.png', 'akihiko-strike'), ('sheet', 'yukari-strikesheet.png', 'yukari-strike'),
+    ('sheet', 'junpei-strikesheet.png', 'junpei-strike'), ('sheet', 'mitsuru-strikesheet.png', 'mitsuru-strike'),
+    ('sheet', 'aigis-strikesheet.png', 'aigis-strike'), ('sheet', 'ken-strikesheet.png', 'ken-strike'),
+    ('sheet', 'koromaru-strikesheet.png', 'koromaru-strike'), ('sheet', 'shinjiro-strikesheet.png', 'shinjiro-strike'),
 ]
 
 

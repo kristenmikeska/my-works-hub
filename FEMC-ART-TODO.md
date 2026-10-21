@@ -12,63 +12,22 @@ Use **ChatGPT** for anything with a face, and **Gemini** for places and objects.
 
 ---
 
-## 1. Theurgy cut-ins: S.E.E.S. ⭐
-All of Solar's cut-ins and all four searchers' are done.
+## 1–2. Theurgy cut-ins and strike sheets
+Every fighter's cut-in and strike sheet is in the game. One optional extra is left.
 
-**Attach, in this order:**
-1. 🎮 `battle/art/theurgy/solar-rise-and-shine.webp` (style), or any finished cut-in you like
-2. 🎨 `Character Portraits/<Name>/` (one portrait)
-3. 🎨 their Persona from `Personas/` (named next to each line)
+### Solar's strike sheets per form *(optional)*
+Right now Haenim, Sunna, Mazu and Unveiled share one sheet, and Nike has her own. A sheet each would match each form's look.
 
-The Personas are all in 🎨 `Personas/`. Each prompt starts the same way; paste this first:
-```
-Create a NEW full-screen 16:9 ultimate-attack cut-in that matches the FIRST attached image's art style, energy and composition exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. Keep the character (second attached image) and the Persona (third attached image) exactly as in their references. No text, no letters, no logos.
-```
-Then add that character's line:
-- [ ] **Akihiko** (Caesar):
-  ```
-  Akihiko throws a furious punch flurry straight at the viewer, gloves blurring into afterimages, a fierce competitive grin. Caesar raises its sword as blue-white lightning crashes through the frame. Red, silver and electric blue.
-  ```
-- [ ] **Yukari** (Isis):
-  ```
-  Yukari draws her bow upward with her eyes closed, calm and determined. Isis spreads her wings as a spiral of pink-green healing light, wind and feathers sweeps the frame. Pink, green and white.
-  ```
-- [ ] **Junpei** (Trismegistus):
-  ```
-  Junpei swings his sword in a massive overhead strike, cap flying off, with a cocky grin. Trismegistus dives as a giant blazing slash arc rips across the frame. Blue, orange and white.
-  ```
-- [ ] **Mitsuru** (Artemisia):
-  ```
-  Mitsuru raises her rapier and snaps her fingers, icy calm. Artemisia cracks her whip as everything freezes into towering ice spikes. Crimson, white and ice blue.
-  ```
-- [ ] **Aigis** (Athena):
-  ```
-  Aigis's arms become blazing machine guns, her eyes glowing red. Athena raises her shield amid a storm of fire and shell casings. Gold, white and fiery orange.
-  ```
-- [ ] **Ken** (Kala-Nemi):
-  ```
-  Ken thrusts his spear to the sky, small but fierce. Kala-Nemi towers in a pillar of holy golden light. Gold, white and deep blue.
-  ```
-- [ ] **Koromaru** (Cerberus):
-  ```
-  Koromaru howls with a knife in his teeth. Cerberus roars with all three heads as a wall of hellfire sweeps the frame. Red, orange and black.
-  ```
-- [ ] **Shinjiro** (Castor):
-  ```
-  Shinjiro rests his axe on his shoulder, coat whipping, gruff but deadly. Castor charges at the viewer on his black horse in a shockwave of dust and dark red force. Maroon, black and steel.
-  ```
-
-Mitsuru: the waist-up crop didn't work as a full-screen still, so make hers from her line above.
-
----
-
-## 2. Strike sheets (3 steps; make one after each cut-in) ⭐
-**Attach:** the finished cut-in for that character.
+**Attach:** that form's cut-in from 🎨 `Added to Game/` (e.g. `theurgy-solar-sunna.png`).
 ```
 A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, nothing overlapping between panels. Character only: no Persona, no background, no effects.
 ```
-- [ ] **Each S.E.E.S. member,** after their cut-in.
-- [ ] *(Optional)* **Solar:** one each for Haenim, Sunna, Mazu and Unveiled, attaching that form's cut-in from 🎨 `Added to Game/` (e.g. `theurgy-solar-sunna.png`). Right now they share one sheet, and Nike has her own.
+- [ ] Haenim (`theurgy-solar-haenim.png`)
+- [ ] Sunna (`theurgy-solar-sunna.png`)
+- [ ] Mazu (`theurgy-solar-harbor.png`)
+- [ ] Unveiled (`theurgy-solar-haenimunveiled.png`)
+
+Save each as `solar-<form>-strikesheet.png` in New Adds.
 
 ---
 
