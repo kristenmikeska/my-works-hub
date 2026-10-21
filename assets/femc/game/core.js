@@ -1047,7 +1047,7 @@ window.FemcGame = (() => {
         fragments: [...S.fragments], fragmentsOpen: S.day >= dayOf(D.cal.fragmentsFrom || '5/16'),
         run: S.runId, carryFrom: S.ngFrom || null, route: S.route.choices.solstice ?? null, trueReady: !!(S.flags['true-final'] || S.flags['true-path']),
         routeFlags: ['route-R', 'route-S', 'route-H', 'route-stay', 'route-true', 'route-bad', 'true-final', 'true-fallback'].filter(flag),
-        social: { stats: { ...S.stats }, ranks: Object.fromEntries(Object.entries(S.links).filter(([, p]) => p.rank > 0).map(([k, p]) => [k, p.rank])), reversed: Object.entries(S.links).filter(([, p]) => p.reversed).map(([k]) => k) },
+        social: { stats: { ...S.stats }, ranks: Object.fromEntries(Object.entries(S.links).filter(([, p]) => p.rank > 0).map(([k, p]) => [k, p.rank])), reversed: Object.entries(S.links).filter(([, p]) => p.reversed).map(([k]) => k), romance: Object.entries(S.links).filter(([, p]) => p.route === 'romance').map(([k]) => k) },
         difficulty: null
       },
       result: null

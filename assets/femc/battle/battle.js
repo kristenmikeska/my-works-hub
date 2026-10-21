@@ -29,6 +29,7 @@
 (() => {
   const D = window.FEMC_BATTLE_DATA, E = window.FemcBattleEngine, ART = window.FemcBattleArt, FX = window.FemcFX, MAP = window.FemcTartarusMap, ICON = window.FemcIcons, BS = window.FemcBattleSave;
   const BLD = window.FemcBuild || null; // naginatas, Revelation cards, Shuffle Time, bond perks (build.js)
+  const BDS = window.FemcBonds || null; // bond skills: Solar and a partner (bonds.js)
   const PROTO_KEY = 'kg-femc-battle-proto', UNI_KEY = 'kg-femc-revamp-settings';
   // The old page-jump handoff: the life sim now runs the fight in its own page.
   if (/[?&]from=game\b/.test(location.search)) { location.replace('femc-game.html'); return; }
@@ -71,7 +72,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 12;
+  const ART_V = 13;
   const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
   Object.values(D.personas).forEach(p => { if (p.art && !p.art.startsWith('data:') && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
   // Theurgy and Evoker sheet art (data.js paths are bare) get the art version too.
@@ -1819,9 +1820,9 @@
     if (run) run.curse = 0;
     B = E.create({ party: spec.solo ? partyUnits.slice(0, 1) : partyUnits, enemies: group, mods, known: save.known, rand, items: save.items, heat: spec.heat || 0, ctx: { op: spec.op && spec.op.id },
       diff: RL && RL.edmg ? () => Object.assign({}, diff(), { edmg: diff().edmg * RL.edmg }) : diff, protect: !!(RL && RL.protect),
-      perks, names: BLD ? BLD.names() : {}, startBuffs, foeHpMult });
+      perks, names: BLD ? BLD.names() : {}, startBuffs, foeHpMult, bondArts: BDS && HO && !(RL && RL.noPerks) ? BDS.arts(save) : [] });
     if (RL && RL.setup) RL.setup(B);
-    navSaid = new Set(); summoned = new Set(); thSeen = new Set();
+    navSaid = new Set(); summoned = new Set(); thSeen = new Set(); barkN = new Map(); barkAt = 0;
     curSpec = spec; blog = []; lastTgt = {}; focusId = null;
     blogAdd(`${spec.label} · ${spec.block}${spec.boss && !spec.reaper ? ' · Full Moon' : spec.reaper ? ' · The Reaper' : spec.strong ? ' · Strong Shadows' : ''} · ${diff().name}`, 'sys');
     buildBattle(spec);
@@ -1832,6 +1833,8 @@
     if (fx.openBuff) await play(B.openBuff(fx.openBuff));
     if (B.start) await play(B.start());
     nav(spec.nav);
+    // A boss on the field: someone in the party says so.
+    if (spec.boss || spec.reaper) { const who = B.party().filter(p => !p.dead && p !== B.leader()); bark(who.length ? who[Math.floor(Math.random() * who.length)] : B.leader(), 'boss', {}, { force: true }); }
     B.party().forEach(p => { if (p.tired) nav('tired', { name: p.name }, { once: true }); });
     // Rush turns itself off for fights it isn't allowed in (bosses by default).
     if (rushOn && !rushAllowed(spec)) stopRush(spec.boss || spec.reaper ? 'rushBoss' : 'rushNo');
@@ -1880,6 +1883,8 @@
     persist();
     if (result === 'win') {
       nav(spec.reaper ? 'reaperWin' : spec.boss ? 'bossWin' : 'win');
+      // A victory line (a romance partner's banter, on that route), varied from fight to fight.
+      if (!banterAny('win')) { const up = B.party().filter(p => !p.dead); if (up.length) bark(up[Math.floor(Math.random() * up.length)], 'win', {}, { force: true }); }
       B.party().filter(p => !p.dead).forEach(p => { const c = BT.cards.get(p.id); if (c) setFace(c.querySelector('.face img'), p.mid, member(p.mid).faces.win); });
       await sleep(1300);
     } else if (result === 'lose') { nav('solarDown'); sfx('ko'); await sleep(1500); }
@@ -1903,11 +1908,11 @@
       <div class="bt-log" role="status" aria-live="polite"></div>
       <div class="bt-nav" hidden></div>
       <div class="bt-rushtag" aria-hidden="true"><b>RUSH</b><span>R to stop</span></div>
-      <div class="bt-fx"></div><div class="bt-cut"></div><div class="bt-flash"></div><div class="bt-dim"></div>`, `bt-battle${floor.boss ? ' boss' : ''}${floor.reaper ? ' reaper' : ''}`);
+      <div class="bt-barks" aria-live="polite"></div><div class="bt-fx"></div><div class="bt-cut"></div><div class="bt-flash"></div><div class="bt-dim"></div>`, `bt-battle${floor.boss ? ' boss' : ''}${floor.reaper ? ' reaper' : ''}`);
     BT = {
       root: el, field: el.querySelector('.bt-field'), fighter: el.querySelector('.bt-fighter'), party: el.querySelector('.bt-party'), cmd: el.querySelector('.bt-cmd'),
       body: el.querySelector('.bt-cmd-body'), who: el.querySelector('.bt-who'), log: el.querySelector('.bt-log'), nav: el.querySelector('.bt-nav'),
-      fx: el.querySelector('.bt-fx'), cut: el.querySelector('.bt-cut'), flash: el.querySelector('.bt-flash'), order: el.querySelector('.bt-order'),
+      fx: el.querySelector('.bt-fx'), cut: el.querySelector('.bt-cut'), barks: el.querySelector('.bt-barks'), flash: el.querySelector('.bt-flash'), order: el.querySelector('.bt-order'),
       enemies: new Map(), cards: new Map(), bg: floor.bg
     };
     wireTools(el);
@@ -1918,6 +1923,8 @@
     stills(B.party().flatMap(p => Object.values(member(p.mid).faces).map(f => pimg(p.mid, f))), 0);
     if (!save.awakened) { stills(AWAKEN.map(f => SUMMON_DIR + f + '.webp'), 0); prepClip('awakening'); }
     stills(B.party().filter(p => FIELD_POSES.has(p.mid)).map(p => fieldPose(p.mid)).concat(B.party().flatMap(p => evokeFrames(p.mid) || [])), 0);
+    // Bond cut-ins: both portraits (and any bond art) decoded ahead.
+    stills((B.S.bondArts || []).filter(a => B.party().some(p => p.mid === a.partner)).flatMap(a => [pimg(a.partner, a.face || member(a.partner).faces.win), ...thArt(a)]).concat([pimg('solar', 'happy')]), 0);
     B.foes().forEach(u => addEnemy(u));
     B.party().forEach(u => {
       const m = member(u.mid);
@@ -2224,11 +2231,16 @@
     if (!FX) { strikeFx(id, kind); return 0; }
     return FX.play(kind, fxAt(id), Object.assign({ track: () => { if (!BT || !(BT.enemies.has(id) || BT.cards.has(id))) return null; const b = fxAt(id); return b.w > 0 ? b : null; } }, o)) || 0;
   }
+  // Signature skills with their own effect (data.js skills[].fx → fx.js).
+  const SIG_FX = new Set(['corkscrew', 'galearrow', 'fastball', 'fleche', 'salvo', 'lance', 'bite', 'haymaker', 'moonstatic', 'goblinfire', 'aperture', 'crescent', 'serpent', 'club', 'theia', 'shell']);
   function fxHit(e) {
     const src = B.U(e.src), el = e.el, o = { crit: e.crit, color: (D.elements[el] || {}).color };
     if (e.skill === 'golden_rope') { const c = BT.cards.get(e.src), R = BT.root.getBoundingClientRect(); if (c) { const r = c.getBoundingClientRect(); o.from = { x: r.left + r.width * 0.4 - R.left, y: r.top - R.top }; } return fxPlay('rope', e.tgt, o); }
     if (e.insta) return fxPlay(el === 'light' ? 'light' : 'dark', e.tgt, Object.assign(o, { holy: el === 'light' }));
     if (e.theurgy) { const look = (B.U(e.src) && member(B.U(e.src).mid).theurgy.look) || el; return fxPlay(look === 'sun' ? 'light' : (D.elements[look] ? look : 'almighty'), e.tgt, Object.assign(o, { holy: look === 'sun' })); }
+    const sg = D.skills[e.skill];
+    if (sg && sg.fx && SIG_FX.has(sg.fx)) return fxPlay(sg.fx, e.tgt, o);
+    if (String(e.skill || '').startsWith('bond_')) return fxPlay(el === 'light' ? 'light' : D.elements[el] ? el : 'almighty', e.tgt, Object.assign(o, { holy: el === 'light', crit: true }));
     if (e.skill === 'kunai_flick') { const t = fxPlay('kunai', e.tgt, Object.assign(o, { keen: e.keen })); if (e.flank) fxPlay('flank', e.tgt); return t; }
     if (e.flank) fxPlay('flank', e.tgt);
     if (['golden_tether', 'heavens_rope'].includes(e.skill)) { const c = BT.cards.get(e.src), R = BT.root.getBoundingClientRect(); if (c) { const r = c.getBoundingClientRect(); o.from = { x: r.left + r.width * 0.4 - R.left, y: r.top - R.top }; } return fxPlay('rope', e.tgt, o); }
@@ -2631,6 +2643,161 @@
     await sleep(200);
     el.remove();
   }
+  /* ── Battle lines (data.js party[].lines, text barks) ──────────────────
+     Situations: allyDown / allyLow (another member, {name}), solarHurt, weak, downed, boss, win, thReady. Each member says each
+     one a set number of times per fight (LINE_CAP) and never on top of another line (a short gap), so the field doesn't fill
+     with talk. Romance banter (data.js party[].banter: { key: [{ r: rank, l: [their line, Solar's reply] }] }) plays instead
+     when that partner is on the romance route at that rank (save.bondsLove / save.bonds, from the life sim). A line shows as
+     a small speech bubble over the speaker's card and goes in the battle log. Story fights with rules.noNav stay quiet. */
+  let barkN = new Map(), barkAt = 0;
+  const LINE_CAP = { weak: 1, allyLow: 1, allyDown: 2, solarHurt: 1, downed: 1, boss: 1, win: 1, thReady: 1, banter: 1 };
+  const barkOk = () => !!BT && !(curSpec && curSpec.rules && (curSpec.rules.noNav || curSpec.rules.noBarks));
+  function say(u, text) {
+    if (!BT || !u) return;
+    blogAdd(`${u.name}: “${text}”`, 'say');
+    BT.barks.querySelectorAll(`[data-u="${u.id}"]`).forEach(x => x.remove());
+    const c = BT.cards.get(u.id), R = BT.root.getBoundingClientRect();
+    const b = document.createElement('div');
+    b.className = 'bt-bark';
+    b.dataset.u = u.id;
+    b.style.setProperty('--c', (member(u.mid) || {}).color || '#ff4f9e');
+    b.innerHTML = `<b>${esc(u.name)}</b><span>${esc(text)}</span>`;
+    BT.barks.appendChild(b);
+    if (c) {
+      const r = c.getBoundingClientRect(), w = b.offsetWidth;
+      b.style.left = `${Math.max(8, Math.min(R.width - w - 8, r.left - R.left + r.width * 0.12))}px`;
+      let top = r.top - R.top - 8;
+      // Never under Fuuka's panel (on phones it sits right above the cards): go above it instead.
+      const nv = BT.nav && !BT.nav.hidden && !BT.nav.classList.contains('out') ? BT.nav.getBoundingClientRect() : null;
+      if (nv && nv.width && top > nv.top - R.top && top - b.offsetHeight < nv.bottom - R.top) top = nv.top - R.top - 6;
+      // Two lines at once (an exchange): stack them instead of covering one another.
+      const left = parseFloat(b.style.left), w2 = b.offsetWidth;
+      BT.barks.querySelectorAll('.bt-bark:not(.out)').forEach(o => { if (o === b) return; const q = o.getBoundingClientRect(), ql = q.left - R.left, qt = q.top - R.top;
+        if (left < ql + q.width && left + w2 > ql && top > qt && top - b.offsetHeight < qt + q.height) top = qt - 6; });
+      b.style.top = `${Math.max(8 + b.offsetHeight, top)}px`;
+    } else b.classList.add('free');
+    const ms = 2400 * textHold() / Math.min(speed(), 2);
+    setTimeout(() => { b.classList.add('out'); setTimeout(() => b.remove(), 260); }, ms);
+  }
+  function bark(u, key, vars = {}, { force = false } = {}) {
+    if (!barkOk() || !u || u.side !== 'party' || u.dead || u.assistOf) return false;
+    const pool = ((member(u.mid) || {}).lines || {})[key];
+    if (!pool) return false;
+    const k = u.mid + ':' + key, n = barkN.get(k) || 0, now = performance.now();
+    if (n >= (LINE_CAP[key] || 1) || (!force && now - barkAt < 900 / Math.min(speed(), 3))) return false;
+    barkN.set(k, n + 1); barkAt = now;
+    say(u, String(pickOne(pool)).replace(/\{(\w+)\}/g, (_, x) => (vars[x] != null ? vars[x] : '')));
+    mark('bark'); mark('bark-' + key); mark('bark-' + u.mid + '-' + key);
+    return true;
+  }
+  /* A romance partner's banter: only on the romance route, only from the rank each line needs, and not while the link is reversed. */
+  const loveRank = mid => ((save.bondsLove || []).includes(mid) && !(save.bondsRev || []).includes(mid) ? +((save.bonds || {})[mid]) || 0 : 0);
+  function banterRow(mid, key) { const b = (member(mid) || {}).banter, r = loveRank(mid); if (!b || !r || !b[key]) return null; const rows = b[key].filter(x => r >= x.r); return rows.length ? pickOne(rows).l : null; }
+  function banter(u, key) {
+    const L = B.leader(), row = barkOk() && u && !u.dead && L && !L.dead && u !== L ? banterRow(u.mid, key) : null;
+    if (!row) return false;
+    const k = u.mid + ':banter-' + key;
+    if ((barkN.get(k) || 0) >= LINE_CAP.banter) return false;
+    barkN.set(k, 1); barkAt = performance.now();
+    say(u, row[0]);
+    setTimeout(() => { if (BT && !L.dead) say(L, row[1]); }, 1250 / Math.min(speed(), 2));
+    mark('banter'); mark('banter-' + key); mark('banter-' + u.mid + '-' + key);
+    return true;
+  }
+  const banterAny = key => B.party().filter(p => !p.dead && p !== B.leader()).some(p => banter(p, key));
+  /* After a hit lands (playOne 'hit'): weakness, Solar's crit (banter), Solar hurt, an ally low or down, a member knocked down. */
+  function hitLines(e, t, src, onEnemy) {
+    if (!barkOk() || e.quiet || e.self) return;
+    const L = B.leader(), others = ex => B.party().filter(p => !p.dead && p !== ex).sort(() => Math.random() - 0.5); // whoever's free says it, not always the same one
+    const someone = (ex, key, vars) => { const pool = others(ex).filter(p => p !== L).concat(others(ex).includes(L) ? [L] : []); return pool.some(p => bark(p, key, vars)); };
+    if (onEnemy) {
+      if (src && src.side === 'party' && !src.assistOf && e.aff === 'weak' && e.amount > 0) bark(src, 'weak');
+      if (src && src === L && e.crit && e.amount > 0) banterAny('crit');
+      return;
+    }
+    if (e.killed) { if (t !== L) someone(t, 'allyDown', { name: t.name }); return; }
+    if (e.downed && e.amount > 0) bark(t, 'downed');
+    if (t === L && e.amount > 0 && (e.amount >= t.maxHp * 0.25 || e.hp / e.maxHp < 0.4)) { if (!banterAny('hurt')) others(L).some(p => bark(p, 'solarHurt')); }
+    else if (t !== L && e.amount > 0 && e.hp / e.maxHp < 0.3) someone(t, 'allyLow', { name: t.name });
+  }
+
+  /* ── Bond cut-in (engine event 'bond'; bonds.js). Built like a Theurgy's (theurgyCut, the same classes and beats): a
+     still (img), layers or a strike sheet when Kat's art arrives (bond.img / bond.sheet / bond.layers), and until then a
+     stylized cut-in made of both portraits on a split diagonal in both colors, both Personas behind, and a knot between
+     them (a heart for a romance version). Both lines play: the partner's, then Solar's reply. Settings: Always and 1st per
+     battle get the full one (each bond is once per battle anyway); Off and Rush a short band; reduced motion a fade. Battle
+     speed scales every beat. Test marks: bond, bond-<id>, bond-full|short|fade, bond-kind-*, bond-final, bond-impact, bond-done. */
+  const LOOK_FX = { sun: 'light', jade: 'ice', star: 'almighty' };
+  async function bondCut(e) {
+    const L = B.U(e.solar), P = B.U(e.partner), mp = member(P.mid), ms = member('solar');
+    hideMenu();
+    mark('bond'); mark('bond-' + e.id); if (e.love) mark('bond-love');
+    const reduced = !FX || FX.reduced(), setting = save.cutins || 'first';
+    const style = reduced ? 'fade' : rushActive() || setting === 'off' ? 'short' : 'full';
+    const Lr = e.layers || null, sheet = style === 'full' && e.sheet && e.sheet.frames && e.sheet.frames.length >= 3 ? e.sheet.frames : null;
+    const kind = Lr ? 'layers' : e.img ? 'cut' : 'duo';
+    const perS = D.personas[L.personaId] || D.personas.haenim, perP = D.personas[P.personaId] || D.personas[mp.persona];
+    const fS = e.love ? 'happy' : ms.faces.idle, fP = e.face || (e.love ? 'happy' : mp.faces.win);
+    await stills([...thArt({ img: e.img, layers: Lr, sheet: sheet && { frames: sheet } }), perS.art, perP.art, pimg('solar', fS), pimg(P.mid, fP)], style === 'full' ? 1200 : 500);
+    const [fx, fy] = e.focus || [50, 42];
+    const look = e.look || ['almighty', 'sun'], c1 = (e.colors || [])[0] || ms.color, c2 = (e.colors || [])[1] || mp.color;
+    const w = document.createElement('div');
+    w.className = `bt-theurgy bt-bond kind-${kind} st-${style}${sheet ? ' has-sheet' : ''} look-${look[0]}${e.love ? ' love' : ''}${reduced ? ' reduced' : ''}`;
+    w.style.cssText = `--c:${c2};--c2:${c1};--spd:${speed()};--fx:${fx}%;--fy:${fy}%`;
+    w.dataset.bond = e.id; w.dataset.mid = P.mid;
+    const piece = (x, cls) => { const o = typeof x === 'object' ? x : {}; return `<div class="th-pl ${cls}" style="--x:${o.x || 0}%;--y:${o.y || 0}%;--s:${o.s || 1}"><img src="${thSrc(x)}" alt=""></div>`; };
+    const knot = e.love ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-8.5-5.3-8.5-11.3A4.7 4.7 0 0 1 12 6.6a4.7 4.7 0 0 1 8.5 3.1C20.5 15.7 12 21 12 21z" fill="#ff8cc0" stroke="#fff" stroke-width="1.6"/></svg>'
+      : '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="5.6" fill="none" stroke="#fff" stroke-width="2.4"/><circle cx="15" cy="12" r="5.6" fill="none" stroke="#ffd36b" stroke-width="2.4"/></svg>';
+    const final = kind === 'layers' ? `<img class="th-bg" src="${thSrc(Lr.bg)}" alt="">${Lr.persona ? piece(Lr.persona, 'th-lper') : ''}${Lr.char ? piece(Lr.char, 'th-lchar') : ''}`
+      : kind === 'cut' ? `<div class="th-cut"><img class="th-img" src="${e.img}" alt=""></div>`
+        : `<div class="bd-bg"></div><div class="th-lines"></div><img class="bd-per s" src="${perS.art}" alt=""><img class="bd-per p" src="${perP.art}" alt="">
+          <div class="bd-band s fcb">${fimg('solar', fS, '', 'th-face')}</div><div class="bd-band p fcb">${fimg(P.mid, fP, '', 'th-face')}</div><div class="bd-knot">${knot}</div>`;
+    const back = sheet && (Lr ? thSrc(Lr.bg) : e.img);
+    const prelude = sheet ? `<div class="th-prelude"><div class="th-back">${back ? `<img src="${back}" alt="">` : ''}</div><div class="th-lines"></div>
+      <div class="th-strike">${sheet.map((f, i) => `<img class="th-f" data-i="${i}" src="${f}" alt="">`).join('')}</div></div>` : '';
+    const line = e.line || [mp.lines.shift, ms.lines.shift];
+    w.innerHTML = `<div class="th-stage">${prelude}<div class="th-final">${final}<div class="th-sweep"></div><div class="th-burst"></div>${look.includes('sun') ? '<div class="th-rays"></div>' : ''}</div></div>
+      <div class="th-stripes" aria-hidden="true"><i></i><i></i></div>
+      <b class="th-name"><small>Bond · Solar & ${esc(mp.name)}${e.love ? ' · ♥' : ''}</small>${esc(e.name.toUpperCase())}</b>
+      <p class="th-line bd-l1">“${esc(line[0])}”<em>${esc(mp.name)}</em></p><p class="th-line bd-l2">“${esc(line[1])}”<em>Solar</em></p>`;
+    BT.cut.appendChild(w);
+    BT.root.classList.add('evoking', 'th-fx');
+    document.documentElement.classList.add('bt-cutin');
+    sfx('summon');
+    blogAdd(`Bond: Solar & ${mp.name} · ${e.name}${e.love ? ' ♥' : ''}`, 'pf');
+    blogAdd(`${mp.name}: “${line[0]}”`, 'say'); blogAdd(`Solar: “${line[1]}”`, 'say');
+    mark('bond-' + style); mark('bond-kind-' + kind);
+    const impact = big => {
+      flash(!look.includes('sun')); if (big) shake(true); sfx(look.includes('sun') ? 'light' : 'almighty');
+      if (!FX || perf()) return;
+      const r = w.getBoundingClientRect(), R = BT.root.getBoundingClientRect(), x = r.left - R.left + r.width * 0.5, y = r.top - R.top + r.height * 0.45;
+      look.forEach((k, i) => { const fk = LOOK_FX[k] || (D.elements[k] ? k : 'almighty'); setTimeout(() => FX.play(fk, { x: x + (i ? 60 : -60), y, w: r.width * 0.5, h: r.height * 0.7, big: fk !== 'light' }, { holy: k === 'sun', crit: true }), i * 140 / speed()); });
+    };
+    if (style === 'fade') await sleep(1200);
+    else if (style === 'short') { await sleep(700); impact(false); await sleep(140); }
+    else {
+      if (FX && !perf()) { look.forEach(k => FX.stream(k === 'jade' ? 'jade' : k, { dur: sheet ? 3.4 : 2.9, n: 0.6 })); if (e.love) FX.stream('love', { dur: 2.9, n: 0.7 }); }
+      if (sheet) {
+        w.classList.add('p-in'); await sleep(140);
+        w.classList.add('p-wind'); await sleep(430);
+        w.classList.add('p-strike'); impact(true); await sleep(400);
+        w.classList.add('p-follow'); await sleep(470);
+      }
+      w.classList.add('f-in'); mark('bond-final');
+      await sleep(kind === 'duo' ? 1150 : 800);
+      w.classList.add('f-hit'); mark('bond-impact');
+      impact(!sheet);
+      await sleep(1700);
+    }
+    w.classList.add('out');
+    BT.root.classList.remove('evoking');
+    await sleep(260);
+    BT.root.classList.remove('th-fx');
+    document.documentElement.classList.remove('bt-cutin');
+    w.remove();
+    [L, P].forEach(u => paintCard(u));
+    mark('bond-done');
+  }
   /* Fortune's wheel: a spinning wheel that lands on the outcome. */
   async function wheelCut(e) {
     const keys = Object.keys(WHEEL_TXT), i = keys.indexOf(e.outcome), n = keys.length;
@@ -2693,7 +2860,7 @@
           await Promise.all([sleep(ms), animateShadow(el, E.PHYS.has(e.el) ? 'attack' : 'cast', ms)]);
         } else {
           paintCard(u);
-          if (e.summon && !e.charmed) { await summonCut(u, e.name); banner(e.name, { el: e.el, sub: u.persona }); }
+          if (e.summon && !e.charmed) { await summonCut(u, e.name); banner(e.name, { el: e.el, sub: u.persona }); const sg = D.skills[e.skill]; if (sg && sg.fx && sg.type !== 'dmg' && SIG_FX.has(sg.fx)) e.tgts.forEach(id => fxPlay(sg.fx, id)); }
           else if (e.charmed) { banner(e.name, { el: 'charm', sub: `${u.name} · Charmed` }); await sleep(300); }
           else { const c = BT.cards.get(u.id); c.classList.remove('hit'); banner('Attack', { el: e.el, sub: u.name }); await sleep(260); }
           log(`${u.name}: ${e.name}`, 'pu');
@@ -2747,6 +2914,7 @@
           if (onEnemy) { deathFx(e.tgt); mark('kill'); }
           else { stat0.ko = true; sfx('ko'); setFace(BT.cards.get(t.id).querySelector('.face img'), t.mid, member(t.mid).faces.ko); if (t !== B.leader()) nav('ko', { name: t.name }); log(`${t.name} was knocked out!`); }
         }
+        hitLines(e, t, src, onEnemy);
         await sleep(next && next.t === 'hit' && !e.crit ? 240 : (e.aff === 'weak' || e.crit ? 700 : 460));
         break;
       }
@@ -2757,12 +2925,15 @@
       case 'thReady': {
         // The gauge just filled: a gold sweep and a chime on the card (once), Fuuka's line the first time in a battle.
         const t = U(e.tgt), c = BT.cards.get(t.id);
+        bark(t, 'thReady');
         paintCard(t); tip('theurgy'); blogAdd(`${t.name}’s Theurgy is ready.`, 'sys'); sfx('thready');
         if (c) { c.classList.remove('th-flash'); void c.offsetWidth; c.classList.add('th-flash'); setTimeout(() => c.classList.remove('th-flash'), 1300); }
         if (!navSaid.has('th-first')) { navSaid.add('th-first'); nav('theurgyReady', { name: t.name }); }
         mark('th-ready'); break;
       }
       case 'theurgy': await theurgyCut(e); break;
+      case 'bond': await bondCut(e); break;
+      case 'bondRest': { const t = U(e.tgt); popup(e.tgt, { label: 'CATCHING BREATH', lcls: 'buff' }); log(`${t.name} is catching their breath after the bond.`); mark('bond-rest'); await sleep(420); break; }
       case 'orgia': popup(e.tgt, { label: 'ORGIA MODE', lcls: 'buff' }); paintCard(U(e.tgt)); await sleep(300); break;
       case 'orgiaEnd': popup(e.tgt, { label: 'ORGIA OFF', lcls: 'debuff' }); paintCard(U(e.tgt)); break;
       case 'tiredSkip': { const t = U(e.tgt); tip('fatigue'); popup(e.tgt, { label: 'TIRED…', lcls: 'miss' }); log(`${t.name} is too tired to move…`); mark('tired-skip'); await sleep(520); break; }
@@ -3167,6 +3338,7 @@
     it.push(
       { v: 'attack', label: 'Attack', icon: u.weapon, tag: wt && wt[1] !== 'unk' ? wt : null, desc: `<b>Attack</b>${D.elements[u.weapon].name} attack with your weapon (power ${u.atk}${u.whits ? `, ${u.whits[0]} hits` : ''}).${E.PHYS.has(u.weapon) ? ' Can crit.' : ''}${wt && foe ? ` vs ${esc(foe.name)}: ${tagHtml(wt)}` : ''}` },
       { v: 'skill', label: 'Skill', icon: 'skill', desc: `<b>${esc(u.persona)}</b>Use a Persona skill. Magic costs SP, physical skills cost HP.` },
+      ...bondItem(u),
       { v: 'item', label: 'Item', icon: 'item', off: !usable.length, why: usable.length ? '' : 'NONE', offWhy: 'You have no items you can use in battle.', desc: '<b>Item</b>' + (usable.map(k => `${D.items[k].name} ×${B.S.items[k]}`).join(' · ') || 'Nothing usable.') },
       { v: 'guard', label: 'Guard', icon: 'guard', desc: '<b>Guard</b>Halve damage and cover your weakness until your next turn.' },
       { v: 'analyze', label: 'Analyze', icon: 'analyze', desc: '<b>Analyze</b>Fuuka scans a Shadow’s affinities and status, or check an ally’s Persona. Free action.' },
@@ -3196,12 +3368,43 @@
       if (c === 'theurgy') return { type: 'theurgy' };
       if (c === 'attack') { const t = await pickTarget(u, { target: 'one', el: u.weapon }, 'Attack → choose a Shadow'); if (t === RUSH) return RUSH; if (t) return { type: 'attack', target: t }; }
       else if (c === 'skill') { const r = await skillMenu(u); if (r) return r; }
+      else if (c === 'bond') { const r = await bondMenu(u); if (r === RUSH) return RUSH; if (r) return r; }
       else if (c === 'item') { const r = await itemMenu(u); if (r) return r; }
       else if (c === 'guard') return { type: 'guard' };
       else if (c === 'escape') return { type: 'escape' };
       else if (c === 'shift') { const t = await pickTarget(u, { target: 'shift' }, 'Shift → pass the turn'); if (t === RUSH) return RUSH; if (t) return { type: 'shift', to: t }; }
       else if (c === 'analyze') { const t = await pickTarget(u, { target: 'scan' }, 'Analyze → choose'); if (t === RUSH) return RUSH; if (t) { const ev = await analyzePanel(t); if (ev && ev.length) await play(ev); } }
       else if (c === 'tactics') { const r = await tacticsMenu(); if (r === RUSH) return RUSH; if (tacticOf(u) !== 'direct') return null; }
+    }
+  }
+  /* Bond skills (bonds.js; rules in engine.js bondInfo). The root menu's Bond: shown when Solar and an unlocked partner are
+     both in the party (on either one's turn), greyed with the reason when none can go right now. */
+  const bondList = u => (B && B.bondsFor ? B.bondsFor(u) : []);
+  function bondItem(u) {
+    const list = bondList(u);
+    if (!list.length) return [];
+    const ok = list.filter(b => b.ok);
+    return [{ v: 'bond', label: 'Bond', icon: 'bond', cls: 'bond', off: !ok.length, why: ok.length ? '' : (list.every(b => b.used) ? 'USED' : 'NOT NOW'), offWhy: list.map(b => `${b.art.name}: ${b.why}`).join(' '),
+      right: ok.length ? `${ok.length}` : '', desc: `<b>Bond</b>Solar and a partner together. Both pay the SP and both use their turn; once per battle each. ${list.map(b => esc(b.art.name)).join(' · ')}` }];
+  }
+  async function bondMenu(u) {
+    for (;;) {
+      const list = bondList(u);
+      if (!list.length) return null;
+      const items = list.map(b => {
+        const a = b.art, pm = member(a.partner);
+        return { v: a.id, label: a.name, iconHtml: `<span class="bt-bondico${a.love ? ' love' : ''}" style="--c:${a.colors[1]}">${ART.icon(a.love ? 'charm' : 'bond')}</span>`, right: `${a.sp} SP ×2`, off: !b.ok, why: b.ok ? '' : b.used ? 'USED' : b.sp ? 'LOW SP' : 'NOT NOW', offWhy: b.why,
+          desc: `<b>${esc(a.name)}${a.love ? ' ♥' : ''}</b>Solar & ${esc(pm.name)}. ${esc(a.desc)} <span class="vs">Both pay ${a.sp} SP; ${esc(u.mid === 'solar' ? pm.name : 'Solar')} uses up their next turn.</span>${b.ok ? '' : ` <em class="why">${esc(b.why)}</em>`}` };
+      });
+      const v = await listMenu({ items, back: true, cls: 'small', title: 'Bond → with whom?', name: 'bond' });
+      if (v === RUSH) return RUSH;
+      if (v == null) return null;
+      const a = list.find(b => b.art.id === v).art;
+      mark('bond-pick');
+      const one = a.target === 'one' || a.steps.some(st => (st.target || a.target) === 'one');
+      const t = one ? await pickTarget(u, { target: 'one', el: a.steps[0].el, type: 'dmg' }, `${a.name} → choose`) : 'all';
+      if (t === RUSH) return RUSH;
+      if (t != null) return { type: 'bond', bond: v, target: t };
     }
   }
   /* Tactics: pick a member, then their tactic. A free action; if the current member stops being Direct they act at once. */
@@ -4159,7 +4362,8 @@
     const ranks = (R.social && R.social.ranks) || null;
     if (ranks) D.party.forEach(m => { if (m.id !== 'solar' && ranks[m.id] != null) save.ranks[m.id] = Math.min(10, +ranks[m.id] || 0); });
     // Every link's rank feeds the bond perks (build.js); a reversed link pauses its perks. Rank gifts (a naginata, a skill point) land once.
-    const gifts = BLD ? BLD.syncBonds(save, ranks || {}, (R.social && R.social.reversed) || []) : [];
+    // Bond skills (bonds.js): the links on their romance route, and today's date (a bond's last day).
+    const gifts = BLD ? BLD.syncBonds(save, ranks || {}, (R.social && R.social.reversed) || [], (R.social && Array.isArray(R.social.romance)) ? R.social.romance : null, (HO.date && HO.date.md) || null) : [];
     delete save.forceForm;
     if (save.reached) { const i = D.floors.findIndex(f => f.id === save.reached); if (i < 0 || D.floors[i].bi > hoBlockCap()) save.reached = null; }
     E.formsList().forEach(f => { if (!save.forms.includes(f) && E.formUnlocked(Object.assign({}, save, { forms: [] }), f)) save.forms.push(f); });
@@ -4454,6 +4658,7 @@
     awakening: () => awakening(app.firstElementChild || app),
     get handoff() { return HO; }, get hs() { return HS; }, hoFinish: (o, x) => hoFinish(o, x),
     reloadSave() { save = loadSave(); }, settingsChanged, get embedded() { return !!BR; },
+    playEvents: evs => play(evs), // tests: play engine-shaped events through the real presentation (battle lines, cut-ins)
     music: { state: () => music.state(), play: (k, o) => music.play(k, o), world: n => music.world(n), endWorld: () => music.endWorld() }
   };
   if (FX) FX.setSpeed(speed);

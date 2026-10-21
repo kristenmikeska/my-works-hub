@@ -197,7 +197,9 @@ window.FemcBattleArt = (() => {
     bind: '<ellipse cx="12" cy="12" rx="9.5" ry="4.2" fill="none" stroke="currentColor" stroke-width="2.4" transform="rotate(-22 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="4.2" fill="none" stroke="currentColor" stroke-width="2.4" transform="rotate(28 12 12)"/><circle cx="12" cy="12" r="2.7" fill="currentColor"/>',
     tactics: '<path d="M5.5 2v20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M6.5 3h12.5l-3.2 4.6 3.2 4.6H6.5z" fill="currentColor"/>',
     party: '<circle cx="8.5" cy="7.5" r="3.6" fill="currentColor"/><circle cx="16.8" cy="8.6" r="3" fill="currentColor" opacity=".7"/><path d="M1.8 20.5c0-4.2 3-6.8 6.7-6.8s6.7 2.6 6.7 6.8z" fill="currentColor"/><path d="M15 13.4c.6-.3 1.2-.4 1.8-.4 3 0 5.4 2.4 5.4 6.2h-5.6" fill="currentColor" opacity=".7"/>',
-    allout: '<path d="M12 1l2.2 6.3L21 5l-3.4 5.6L23 14l-6.6.7L17 21l-5-4.2L7 21l.6-6.3L1 14l5.4-3.4L3 5l6.8 2.3z" fill="currentColor"/>'
+    allout: '<path d="M12 1l2.2 6.3L21 5l-3.4 5.6L23 14l-6.6.7L17 21l-5-4.2L7 21l.6-6.3L1 14l5.4-3.4L3 5l6.8 2.3z" fill="currentColor"/>',
+    // Bond skills: two linked rings (Solar and a partner).
+    bond: '<circle cx="8.6" cy="12" r="5.8" fill="none" stroke="currentColor" stroke-width="2.8"/><circle cx="15.4" cy="12" r="5.8" fill="none" stroke="currentColor" stroke-width="2.8" opacity=".75"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/>'
   };
   const icon = (el, cls = '') => `<svg class="bt-ico ${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[el] || ICONS.none}</svg>`;
 

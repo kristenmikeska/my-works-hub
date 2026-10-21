@@ -21,6 +21,8 @@ window.FemcBattleSave = (() => {
   //          pboost { mid: { stat: n } } (Persona boosts), skillCards { skillId: n }, taught { mid: [skillIds] },
   //          bonds { linkId: rank } and bondsRev [linkIds] (the life sim's link ranks, for perks), bondGifts [perk ids],
   //          floorsMapped [floor ids] (Rohan's Sketch the Floor), shuffles (Shuffle Times played).
+// Bond skills (bonds.js, 2026-10-20; defaults, so older saves load as they were): bondsLove [link ids on their romance route],
+//          bondDate (the life sim's "m/d" at the last sync: a bond's last day).
   const SETTINGS = { textSpeed: 'normal', musicVol: 100, sfxVol: 100, remember: true, rushWhere: 'normal', rushStop: 30, difficulty: 'normal', shake: true, calm: false, numbers: true, pad: 'auto', tips: true };
   const SETTING_OK = { textSpeed: ['slow', 'normal', 'fast', 'instant'], rushWhere: ['normal', 'strong', 'all'], rushStop: [30, 50], difficulty: ['story', 'normal', 'hard'], pad: ['auto', 'xbox', 'ps'] };
   const PREFS = ['settings', 'tipsSeen', 'cursor', 'music', 'sfx', 'speed', 'cutins', 'perf']; // device preferences: kept when a slot or backup is loaded
@@ -28,7 +30,7 @@ window.FemcBattleSave = (() => {
     party: D.defaultParty.slice(), mem: {}, tactics: {}, cutins: 'first', awakened: false,
     yen: D.startYen, items: Object.assign({}, D.startItems), gear: { owned: {}, eq: {} }, mats: {}, memories: [], evo: {}, form: 'haenim', forms: [], ops: { cleared: [] }, th: {}, perf: false,
     ptree: {}, ranks: {}, forgot: {}, order: {},
-    cards: { list: [], eq: {}, uid: 0 }, wref: {}, pboost: {}, skillCards: {}, taught: {}, bonds: {}, bondsRev: [], bondGifts: [], floorsMapped: [], shuffles: 0 });
+    cards: { list: [], eq: {}, uid: 0 }, wref: {}, pboost: {}, skillCards: {}, taught: {}, bonds: {}, bondsRev: [], bondGifts: [], floorsMapped: [], shuffles: 0, bondsLove: [], bondDate: null });
   /* The first Haenim tree (three branches of five, before the skill system): its node costs, and the form each branch gave. */
   const OLD_TREE = { bell: { form: 'haenim-sunna', cost: [1, 1, 2, 2, 3] }, jade: { form: 'haenim-mazu', cost: [1, 1, 2, 2, 3] }, star: { form: 'haenim-nike', cost: [1, 1, 2, 2, 3] } };
   function migrateTree(s) {
@@ -72,7 +74,8 @@ window.FemcBattleSave = (() => {
     Object.keys(s.taught).forEach(mid => { if (!member(mid) || !Array.isArray(s.taught[mid])) delete s.taught[mid]; else s.taught[mid] = [...new Set(s.taught[mid].filter(k => D.skills[k]))]; });
     if (!obj(s.bonds)) s.bonds = {};
     Object.keys(s.bonds).forEach(k => { const r = Math.floor(+s.bonds[k]); if (!(r > 0)) delete s.bonds[k]; else s.bonds[k] = Math.min(10, r); });
-    ['bondsRev', 'bondGifts', 'floorsMapped'].forEach(k => { if (!Array.isArray(s[k])) s[k] = []; s[k] = [...new Set(s[k].filter(x => typeof x === 'string'))]; });
+    if (typeof s.bondDate !== 'string' || !/^\d{1,2}\/\d{1,2}$/.test(s.bondDate)) s.bondDate = null;
+    ['bondsRev', 'bondGifts', 'floorsMapped', 'bondsLove'].forEach(k => { if (!Array.isArray(s[k])) s[k] = []; s[k] = [...new Set(s[k].filter(x => typeof x === 'string'))]; });
     if (!(s.shuffles >= 0)) s.shuffles = 0;
   }
   /* Fills in anything missing, so v1/v2 saves (and hand-edited ones) load cleanly. Members who were already fighting

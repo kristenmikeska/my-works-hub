@@ -858,6 +858,259 @@ window.FemcFX = (() => {
     return 0;
   }
 
+  /* ── Signature skills (data.js skills[].fx): one look per fighter. Each returns ms (at 1x) until it lands. ── */
+  /* Corkscrew Thunder: three fist impacts in a tight triangle, each with a jagged arc; the last twists into a spiral. */
+  function corkscrew(at, o = {}) {
+    const R = sizeOf(at), pts = [[-0.35, -0.15], [0.3, -0.25], [0, 0.15]];
+    let fired = 0;
+    add({ dur: 0.85, draw(c, t) {
+      pts.forEach(([dx, dy], i) => {
+        const t0 = i * 0.14, u = c01((t - t0) / 0.22);
+        if (u <= 0 || u >= 1) return;
+        const x = at.x + dx * R, y = at.y + dy * R;
+        if (fired <= i) { fired = i + 1; burst(x, y, scaleN(9), { color: pick(['#ffc979', '#ffffff']), min: 200, max: 520 }); }
+        radial(c, x, y, R * (0.35 + 0.4 * u), '#ffc979', 0.9 * (1 - u));
+        c.globalCompositeOperation = 'lighter'; c.globalAlpha = 1 - u; c.lineWidth = 4 * (1 - u) + 1; c.strokeStyle = '#fff';
+        c.beginPath(); c.arc(x, y, R * 0.3 * E.out(u), 0, TAU); c.stroke();
+        strokeBolts(c, [{ pts: bolt(x, y, x + rnd(-R, R) * 0.6, y - R * 0.5, R * 0.18), w: 0.6 }], (1 - u) * flashK());
+      });
+      const v = c01((t - 0.42) / 0.4);
+      if (v > 0 && v < 1) { c.globalCompositeOperation = 'lighter'; c.globalAlpha = 1 - v; c.lineWidth = 3; c.strokeStyle = '#ffe14d'; c.beginPath(); for (let k = 0; k <= 40; k++) { const a = k / 40 * TAU * 2.2 + v * 6, r = R * 0.9 * (k / 40) * E.out(v); c.lineTo(at.x + Math.cos(a) * r, at.y + Math.sin(a) * r * 0.7); } c.stroke(); }
+    } });
+    return 160;
+  }
+  /* Gale Arrow: an arrow streaks in on a green spiral; a soft wind ring breaks off it. */
+  function galearrow(at, o = {}) {
+    const R = sizeOf(at), from = { x: at.x - R * 3.2, y: at.y + R * 0.4 };
+    let hit = false;
+    add({ dur: 0.9, draw(c, t) {
+      const u = c01(t / 0.3), x = from.x + (at.x - from.x) * E.out(u), y = from.y + (at.y - from.y) * E.out(u), ang = Math.atan2(at.y - from.y, at.x - from.x);
+      c.globalCompositeOperation = 'lighter';
+      if (u < 1) {
+        c.globalAlpha = 0.8; c.strokeStyle = '#5dffa0'; c.lineWidth = 2;
+        c.beginPath(); for (let k = 0; k <= 24; k++) { const f = k / 24, px = from.x + (x - from.x) * f, py = from.y + (y - from.y) * f + Math.sin(f * 14 + t * 20) * R * 0.12 * (1 - f); c.lineTo(px, py); } c.stroke();
+        c.save(); c.translate(x, y); c.rotate(ang); c.globalCompositeOperation = 'source-over'; c.globalAlpha = 1;
+        c.fillStyle = '#eef2fa'; c.strokeStyle = '#14070f'; c.lineWidth = 1.4; c.beginPath(); c.moveTo(R * 0.22, 0); c.lineTo(-R * 0.05, -R * 0.07); c.lineTo(-R * 0.05, R * 0.07); c.closePath(); c.fill(); c.stroke();
+        c.fillStyle = '#ff8cc0'; c.fillRect(-R * 0.55, -R * 0.06, R * 0.14, R * 0.12); c.restore();
+      } else if (!hit) { hit = true; burst(at.x, at.y, scaleN(14), { color: pick(['#5dffa0', '#ffffff', '#ff8cc0']), min: 220, max: 600 }); }
+      const v = c01((t - 0.3) / 0.6);
+      if (v > 0 && v < 1) { c.globalAlpha = 1 - v; c.lineWidth = 3; c.strokeStyle = '#7dffb0'; c.beginPath(); c.ellipse(at.x, at.y, R * (0.3 + 1.1 * E.out(v)), R * (0.3 + 1.1 * E.out(v)) * 0.4, -0.2, 0, TAU); c.stroke(); radial(c, at.x, at.y, R, '#7dffc0', 0.3 * (1 - v)); }
+    } });
+    return 280;
+  }
+  /* Fastball: a stitched ball with a flame tail arcs in and bursts into fire. */
+  function fastball(at, o = {}) {
+    const R = sizeOf(at), from = { x: at.x - R * 3, y: at.y - R * 1.6 };
+    let hit = false;
+    add({ dur: 1.0, acc: 0, draw(c, t, dt, e) {
+      const u = c01(t / 0.32);
+      if (u < 1) {
+        const x = from.x + (at.x - from.x) * u, y = from.y + (at.y - from.y) * u - Math.sin(u * Math.PI) * R * 0.5;
+        e.acc += dt * 90; while (e.acc >= 1) { e.acc--; emit({ shape: 'flame', ramp: ['#ffe9a0', '#ffb03a', '#ff4a14', '#6a1208'], x, y, vx: rnd(-80, -20), vy: rnd(-40, 20), life: rnd(0.2, 0.4), size: rnd(7, 12), drag: 2 }); }
+        c.globalCompositeOperation = 'source-over'; c.globalAlpha = 1; c.fillStyle = '#fff4f9'; c.strokeStyle = '#14070f'; c.lineWidth = 2;
+        c.beginPath(); c.arc(x, y, R * 0.16, 0, TAU); c.fill(); c.stroke();
+        c.strokeStyle = '#d2324f'; c.lineWidth = 1.4; c.beginPath(); c.arc(x - R * 0.2, y, R * 0.16, -0.7, 0.7); c.stroke(); c.beginPath(); c.arc(x + R * 0.2, y, R * 0.16, Math.PI - 0.7, Math.PI + 0.7); c.stroke();
+      } else if (!hit) { hit = true; fire(at, { small: false }); burst(at.x, at.y, scaleN(18), { color: pick(['#ffe39a', '#ff6b3d']), min: 260, max: 700 }); }
+    } });
+    return 320;
+  }
+  /* Glacial Flèche: two thin thrust lines, each leaving a spinning snowflake. */
+  function fleche(at, o = {}) {
+    const R = sizeOf(at);
+    add({ dur: 0.9, draw(c, t) {
+      [0, 0.22].forEach((d, i) => {
+        const u = c01((t - d) / 0.18), v = c01((t - d - 0.15) / 0.5), yy = at.y + (i ? R * 0.18 : -R * 0.12);
+        c.globalCompositeOperation = 'lighter';
+        if (u > 0 && u < 1) { c.globalAlpha = 1; c.lineWidth = 3; c.strokeStyle = '#ffffff'; c.beginPath(); c.moveTo(at.x - R * 2.2 * (1 - u) - R * 0.8, yy + R * 0.3); c.lineTo(at.x - R * 2.2 * (1 - u) + R * 0.3, yy); c.stroke(); }
+        if (v > 0 && v < 1) {
+          c.save(); c.translate(at.x + R * 0.2, yy); c.rotate(v * 3); c.globalAlpha = 1 - v; c.strokeStyle = '#9fe8ff'; c.lineWidth = 2.4; const L = R * (0.25 + 0.45 * E.out(v));
+          for (let k = 0; k < 6; k++) { c.rotate(TAU / 6); c.beginPath(); c.moveTo(0, 0); c.lineTo(L, 0); c.moveTo(L * 0.6, 0); c.lineTo(L * 0.8, L * 0.15); c.moveTo(L * 0.6, 0); c.lineTo(L * 0.8, -L * 0.15); c.stroke(); }
+          c.restore(); radial(c, at.x, yy, R * 0.8, '#7fe3ff', 0.4 * (1 - v));
+        }
+      });
+    } });
+    return 150;
+  }
+  /* Missile Salvo: small missiles arc in on smoke trails from below and pop one after another. */
+  function salvo(at, o = {}) {
+    const R = sizeOf(at), ms = Array.from({ length: phone() ? 4 : 6 }, (_, i) => ({ d: i * 0.07, sx: at.x + rnd(-R * 2.4, -R * 0.6), sy: at.y + R * rnd(1.6, 2.6), ox: rnd(-R, R) * 0.45, oy: rnd(-R, R) * 0.35, hit: false }));
+    add({ dur: 1.0, draw(c, t) {
+      ms.forEach(m => {
+        const u = c01((t - m.d) / 0.34);
+        if (u <= 0) return;
+        const tx = at.x + m.ox, ty = at.y + m.oy, cx = (m.sx + tx) / 2, cy = Math.min(m.sy, ty) - R * 1.2;
+        const q = (a, b, cc, k) => (1 - k) * (1 - k) * a + 2 * (1 - k) * k * b + k * k * cc;
+        if (u < 1) {
+          const x = q(m.sx, cx, tx, u), y = q(m.sy, cy, ty, u);
+          emit({ shape: 'soft', x, y, vx: rnd(-20, 20), vy: rnd(-20, 10), life: rnd(0.4, 0.7), size: rnd(4, 7), size1: 12, color: '#c9d0dc', blend: 'source-over', alpha: 0.5 });
+          radial(c, x, y, R * 0.12, '#ffd36b', 1);
+        } else if (!m.hit) { m.hit = true; burst(tx, ty, scaleN(8), { color: pick(['#ffd36b', '#ff6b3d', '#fff']), min: 180, max: 480 }); radial(c, tx, ty, R * 0.6, '#ff8a3d', 0.8); }
+      });
+    } });
+    return 360;
+  }
+  /* Lance of Justice: a golden spear falls point-first and a star of light opens where it lands. */
+  function lance(at, o = {}) {
+    const R = sizeOf(at);
+    let hit = false;
+    add({ dur: 1.0, draw(c, t) {
+      const u = c01(t / 0.28);
+      if (u < 1) {
+        const y = at.y - R * 3 * (1 - E.in(u));
+        c.save(); c.translate(at.x + R * 0.6 * (1 - u), y); c.rotate(0.35 * (1 - u) + Math.PI / 2); c.globalCompositeOperation = 'source-over'; c.globalAlpha = 1;
+        c.fillStyle = '#8a5a2a'; c.fillRect(-R * 1.1, -R * 0.03, R * 0.9, R * 0.06);
+        c.fillStyle = '#fff2b0'; c.strokeStyle = '#5a3a0a'; c.lineWidth = 1.5; c.beginPath(); c.moveTo(R * 0.25, 0); c.lineTo(-R * 0.2, -R * 0.09); c.lineTo(-R * 0.2, R * 0.09); c.closePath(); c.fill(); c.stroke(); c.restore();
+      } else if (!hit) { hit = true; light(at, { holy: true }); }
+      const v = c01((t - 0.28) / 0.6);
+      if (v > 0 && v < 1) { c.save(); c.translate(at.x, at.y); c.rotate(v * 0.6); c.globalCompositeOperation = 'lighter'; c.globalAlpha = 1 - v; c.fillStyle = '#ffd36b'; const r = R * (0.4 + 1.1 * E.out(v)); c.beginPath(); for (let k = 0; k < 8; k++) { const rr = k % 2 ? r * 0.25 : r, a = k / 8 * TAU; c.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); } c.closePath(); c.fill(); c.restore(); }
+    } });
+    return 300;
+  }
+  /* Three Heads: three pairs of fanged arcs snap shut one after another, embers flying. */
+  function bite(at, o = {}) {
+    const R = sizeOf(at), spots = [[-0.4, -0.2], [0.35, -0.3], [0, 0.25]];
+    let n = 0;
+    add({ dur: 0.85, draw(c, t) {
+      spots.forEach(([dx, dy], i) => {
+        const u = c01((t - i * 0.14) / 0.24);
+        if (u <= 0 || u >= 1) return;
+        const x = at.x + dx * R, y = at.y + dy * R, gap = R * 0.35 * (1 - E.out(c01(u / 0.6))), f = u > 0.6 ? 1 - (u - 0.6) / 0.4 : 1;
+        if (n <= i && u > 0.55) { n = i + 1; burst(x, y, scaleN(8), { color: pick(['#ffb347', '#ff6b3d']), min: 150, max: 420 }); }
+        c.globalCompositeOperation = 'source-over'; c.globalAlpha = f; c.fillStyle = '#fff'; c.strokeStyle = '#14070f'; c.lineWidth = 1.5;
+        [-1, 1].forEach(k => { c.beginPath(); c.moveTo(x - R * 0.3, y + k * gap); for (let j = 0; j < 4; j++) { const xx = x - R * 0.3 + j * R * 0.2; c.lineTo(xx + R * 0.1, y + k * gap - k * R * 0.14); c.lineTo(xx + R * 0.2, y + k * gap); } c.closePath(); c.fill(); c.stroke(); });
+        radial(c, x, y, R * 0.5, '#ff6b3d', 0.5 * f);
+      });
+    } });
+    return 180;
+  }
+  /* Haymaker: one heavy impact, a red shockwave ring along the floor and the ground cracking. */
+  function haymaker(at, o = {}) {
+    const R = sizeOf(at) * 1.1, cracks = Array.from({ length: 7 }, () => ({ a: rnd(0, TAU), l: rnd(0.6, 1.3) }));
+    burst(at.x, at.y, scaleN(26), { color: pick(['#ffc979', '#ffffff', '#ff5b5b']), min: 300, max: 900, p: { size: 2.6 } });
+    add({ dur: 0.9, draw(c, t) {
+      const u = c01(t / 0.6), f = 1 - c01((t - 0.4) / 0.5);
+      radial(c, at.x, at.y, R * (0.5 + u), '#ff5b5b', 0.7 * (1 - u));
+      c.globalCompositeOperation = 'lighter'; c.globalAlpha = 1 - u; c.lineWidth = 7 * (1 - u) + 1; c.strokeStyle = '#ff8a6b';
+      c.beginPath(); c.ellipse(at.x, at.y + R * 0.5, R * 2 * E.out(u), R * 0.5 * E.out(u), 0, 0, TAU); c.stroke();
+      c.globalCompositeOperation = 'source-over'; c.globalAlpha = 0.8 * f; c.strokeStyle = '#14070f'; c.lineWidth = 2.4;
+      cracks.forEach(k => { c.beginPath(); c.moveTo(at.x, at.y); const L = R * k.l * E.out(c01(t / 0.2)); c.lineTo(at.x + Math.cos(k.a) * L * 0.5 + rnd(-2, 2), at.y + Math.sin(k.a) * L * 0.5); c.lineTo(at.x + Math.cos(k.a + 0.2) * L, at.y + Math.sin(k.a + 0.2) * L); c.stroke(); });
+    } });
+    return 60;
+  }
+  /* Moonlit Static: a pale moon rises over the target and drops violet-gold arcs onto it. */
+  function moonstatic(at, o = {}) {
+    const R = sizeOf(at), my = at.y - R * 1.2;
+    add({ dur: 1.0, bt: 0, bolts: null, draw(c, t, dt, e) {
+      const u = E.out(c01(t / 0.35)), f = t > 0.7 ? 1 - (t - 0.7) / 0.3 : 1;
+      c.globalCompositeOperation = 'lighter'; radial(c, at.x, my, R * 0.9 * u, '#c9a8ff', 0.5 * f);
+      c.globalCompositeOperation = 'source-over'; c.globalAlpha = 0.95 * f; c.fillStyle = '#f2ecff';
+      c.beginPath(); c.arc(at.x, my, R * 0.36 * u, 0, TAU); c.fill(); c.globalAlpha = f; c.fillStyle = '#1a1030'; c.beginPath(); c.arc(at.x + R * 0.14 * u, my - R * 0.06, R * 0.3 * u, 0, TAU); c.fill();
+      e.bt -= dt;
+      if (t > 0.25 && t < 0.75 && e.bt <= 0) { e.bt = 0.09; e.bolts = boltTree(at.x + rnd(-R, R) * 0.2, my + R * 0.3, at.x + rnd(-R, R) * 0.4, at.y + rnd(-R, R) * 0.2); e.ba = 1; }
+      if (e.bolts) { e.ba -= dt * 8; if (e.ba > 0) strokeBolts(c, e.bolts, e.ba * flashK()); }
+    } });
+    return 300;
+  }
+  /* Black Tortoise: hexagon plates lock together into a shell over the ally, rimmed with frost. */
+  function shell(at, o = {}) {
+    const R = sizeOf(at) * 1.05, cells = [];
+    for (let row = -1; row <= 1; row++) for (let col = -2; col <= 2; col++) { if (Math.abs(row) === 1 && Math.abs(col) === 2) continue; cells.push({ x: col * 0.42 + (row % 2 ? 0.21 : 0), y: row * 0.36, d: rnd(0, 0.25) }); }
+    add({ dur: 1.1, draw(c, t) {
+      const f = t > 0.8 ? 1 - (t - 0.8) / 0.3 : 1;
+      cells.forEach(k => {
+        const u = E.back(c01((t - k.d) / 0.3)); if (u <= 0) return;
+        c.save(); c.translate(at.x + k.x * R, at.y - R * 0.1 + k.y * R); c.scale(u, u); c.globalCompositeOperation = 'lighter'; c.globalAlpha = 0.55 * f;
+        c.beginPath(); for (let j = 0; j < 6; j++) { const a = j / 6 * TAU + Math.PI / 6; c.lineTo(Math.cos(a) * R * 0.22, Math.sin(a) * R * 0.22); } c.closePath();
+        c.fillStyle = 'rgba(95,224,176,.35)'; c.fill(); c.lineWidth = 2; c.strokeStyle = '#9fe8ff'; c.stroke(); c.restore();
+      });
+      radial(c, at.x, at.y, R * 1.3, '#5fe0b0', 0.25 * f);
+    } });
+    return 200;
+  }
+  /* Goblin Fire: blue dokkaebi wisps circle the target, then dive into it. */
+  function goblinfire(at, o = {}) {
+    const R = sizeOf(at), n = phone() ? 3 : 5, ws = Array.from({ length: n }, (_, i) => ({ ph: i / n * TAU }));
+    let hit = false;
+    add({ dur: 1.0, acc: 0, draw(c, t, dt, e) {
+      const u = c01((t - 0.35) / 0.25), r = R * 1.1 * (1 - E.in(u));
+      ws.forEach(w => { const a = w.ph + t * 8, x = at.x + Math.cos(a) * r, y = at.y + Math.sin(a) * r * 0.5; radial(c, x, y, R * 0.26, '#5ab4ff', 0.9); radial(c, x, y, R * 0.1, '#ffffff', 1); c.globalCompositeOperation = 'source-over'; c.globalAlpha = 0.9; c.fillStyle = '#14070f'; c.fillRect(x - R * 0.06, y - R * 0.02, R * 0.03, R * 0.04); c.fillRect(x + R * 0.03, y - R * 0.02, R * 0.03, R * 0.04); });
+      if (u >= 1 && !hit) { hit = true; burst(at.x, at.y, scaleN(16), { color: pick(['#5ab4ff', '#bfe4ff', '#ffffff']), min: 200, max: 560 }); }
+      if (u >= 1) radial(c, at.x, at.y, R * 1.1, '#5ab4ff', 0.6 * (1 - c01((t - 0.6) / 0.4)));
+    } });
+    return 560;
+  }
+  /* Focus Pull: aperture blades close on the target, a shutter flash, and focus marks at the corners. */
+  function aperture(at, o = {}) {
+    const R = sizeOf(at) * 0.9;
+    add({ dur: 0.9, draw(c, t) {
+      const u = E.inOut(c01(t / 0.35)), f = t > 0.6 ? 1 - (t - 0.6) / 0.3 : 1;
+      // The iris: six blades inside a lens ring, closing from wide open to a small hole.
+      c.save(); c.beginPath(); c.arc(at.x, at.y, R, 0, TAU); c.clip();
+      c.translate(at.x, at.y); c.globalCompositeOperation = 'source-over'; c.globalAlpha = 0.55 * f; c.fillStyle = '#14070f'; c.strokeStyle = '#ffe6a8'; c.lineWidth = 1.4;
+      const hole = R * (0.95 - 0.7 * u);
+      for (let k = 0; k < 6; k++) { c.save(); c.rotate(k / 6 * TAU + u * 0.9); c.beginPath(); c.moveTo(hole, -R * 0.1); c.lineTo(R * 1.1, -R * 0.75); c.lineTo(R * 1.1, R * 0.4); c.lineTo(hole * 0.9, R * 0.5); c.closePath(); c.fill(); c.stroke(); c.restore(); }
+      c.restore();
+      c.globalCompositeOperation = 'lighter'; c.globalAlpha = f; c.lineWidth = 2.5; c.strokeStyle = '#ffe6a8'; c.beginPath(); c.arc(at.x, at.y, R, 0, TAU); c.stroke();
+      if (t > 0.33 && t < 0.5) radial(c, at.x, at.y, R * 1.3, '#ffffff', (1 - (t - 0.33) / 0.17) * 0.9 * flashK());
+      c.globalAlpha = f; c.strokeStyle = '#ff4f9e'; c.lineWidth = 3; const b = R * 0.8, k2 = R * 0.22;
+      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([sx, sy]) => { c.beginPath(); c.moveTo(at.x + sx * b, at.y + sy * b - sy * k2); c.lineTo(at.x + sx * b, at.y + sy * b); c.lineTo(at.x + sx * b - sx * k2, at.y + sy * b); c.stroke(); });
+    } });
+    return 330;
+  }
+  /* Waning Moon: a dark crescent blade sweeps across and leaves violet motes. */
+  function crescentFx(at, o = {}) {
+    const R = sizeOf(at) * 1.1;
+    let hit = false;
+    add({ dur: 0.7, draw(c, t) {
+      const u = c01(t / 0.32), f = 1 - c01((t - 0.3) / 0.4);
+      c.globalCompositeOperation = 'lighter'; c.globalAlpha = f;
+      crescent(c, at.x, at.y, R * 0.8, -2.4 + u * 1.6, -0.6 + u * 1.6, R * 0.32, 'rgba(192,123,255,.85)', '#ffffff');
+      radial(c, at.x, at.y, R * 0.9, '#7a2bd0', 0.45 * f);
+      if (!hit && u >= 1) { hit = true; for (let k = 0; k < scaleN(14); k++) emit({ shape: 'soft', x: at.x + rnd(-R, R) * 0.6, y: at.y + rnd(-R, R) * 0.4, vx: rnd(-40, 40), vy: rnd(-90, -30), life: rnd(0.5, 0.9), size: rnd(4, 9), color: pick(['#c07bff', '#7a2bd0', '#ff5ab0']) }); }
+    } });
+    return 200;
+  }
+  /* Serpent Coil: an ice serpent spirals tight around the target and squeezes. */
+  function serpent(at, o = {}) {
+    const R = sizeOf(at);
+    add({ dur: 1.0, draw(c, t) {
+      const u = E.out(c01(t / 0.5)), f = t > 0.7 ? 1 - (t - 0.7) / 0.3 : 1, sq = 1 - 0.25 * c01((t - 0.5) / 0.2);
+      c.globalCompositeOperation = 'lighter'; c.globalAlpha = f; c.lineCap = 'round';
+      [[9, 'rgba(127,227,255,.45)'], [4, '#bff6ff']].forEach(([w, col]) => { c.lineWidth = w; c.strokeStyle = col; c.beginPath(); const N = 60; for (let k = 0; k <= N * u; k++) { const a = k / N * TAU * 2.4 + t * 2, r = R * 0.95 * sq, y = at.y + R * 0.7 - k / N * R * 1.4; c.lineTo(at.x + Math.cos(a) * r, y + Math.sin(a) * r * 0.25); } c.stroke(); });
+      radial(c, at.x, at.y, R, '#7fe3ff', 0.3 * f);
+    } });
+    return 350;
+  }
+  /* Goblin Club: a huge club slams down, stars spin out. */
+  function club(at, o = {}) {
+    const R = sizeOf(at) * 1.2;
+    let hit = false;
+    add({ dur: 0.9, draw(c, t) {
+      const u = c01(t / 0.24), f = 1 - c01((t - 0.5) / 0.4);
+      if (u < 1) {
+        c.save(); c.translate(at.x + R * 0.9, at.y + R * 0.6); c.rotate(-2.2 + u * 1.7); c.globalCompositeOperation = 'source-over'; c.globalAlpha = 1;
+        c.fillStyle = '#c98a3a'; c.strokeStyle = '#14070f'; c.lineWidth = 2.4; c.beginPath(); c.moveTo(0, -R * 0.06); c.lineTo(R * 1.2, -R * 0.2); c.quadraticCurveTo(R * 1.45, 0, R * 1.2, R * 0.2); c.lineTo(0, R * 0.06); c.closePath(); c.fill(); c.stroke(); c.restore();
+      } else if (!hit) { hit = true; strike(at, { crit: true }); }
+      if (u >= 1) for (let k = 0; k < 3; k++) { const a = t * 7 + k * TAU / 3; c.save(); c.translate(at.x + Math.cos(a) * R * 0.5, at.y - R * 0.5 + Math.sin(a) * R * 0.15); c.globalCompositeOperation = 'lighter'; c.globalAlpha = f; c.fillStyle = '#ffe14d'; c.beginPath(); for (let j = 0; j < 10; j++) { const rr = j % 2 ? R * 0.04 : R * 0.1, aa = j / 10 * TAU; c.lineTo(Math.cos(aa) * rr, Math.sin(aa) * rr); } c.closePath(); c.fill(); c.restore(); }
+    } });
+    return 240;
+  }
+  /* Clear Sight: an eye of light opens over the target and an arrow of light flies through its pupil. */
+  function theia(at, o = {}) {
+    const R = sizeOf(at);
+    let hit = false;
+    add({ dur: 0.95, draw(c, t) {
+      const u = E.out(c01(t / 0.3)), f = t > 0.65 ? 1 - (t - 0.65) / 0.3 : 1;
+      c.globalCompositeOperation = 'lighter'; c.globalAlpha = f; c.lineWidth = 3; c.strokeStyle = '#fff2b0';
+      c.beginPath(); c.moveTo(at.x - R, at.y); c.quadraticCurveTo(at.x, at.y - R * 0.8 * u, at.x + R, at.y); c.quadraticCurveTo(at.x, at.y + R * 0.8 * u, at.x - R, at.y); c.stroke();
+      radial(c, at.x, at.y, R * 0.35 * u, '#ffd36b', f);
+      const v = c01((t - 0.25) / 0.2);
+      if (v > 0 && v < 1) { c.globalAlpha = 1; c.lineWidth = 3; c.strokeStyle = '#ffffff'; const x = at.x - R * 2.6 + R * 2.6 * v; c.beginPath(); c.moveTo(x - R * 0.8, at.y + R * 0.2); c.lineTo(x, at.y); c.stroke(); }
+      if (v >= 1 && !hit) { hit = true; light(at, { small: true }); }
+    } });
+    return 290;
+  }
+
   /* ── Cut-in ambience (battle.js theurgyCut): the element's particles streaming across the whole canvas for dur seconds,
      mostly along the cut-in's diagonal. kind: an element, or 'sun' (Solar's gold). Returns 0; nothing in reduced motion. ── */
   const STREAM = {
@@ -870,7 +1123,11 @@ window.FemcFX = (() => {
     dark: { cols: ['#c07bff', '#7a2bd0', '#ff5ab0'], shapes: ['glow', 'soft'], vx: [-90, 90], vy: [-90, 90], size: [3, 9], life: [0.7, 1.2], rate: 50 },
     almighty: { cols: ['#ffb3d6', '#ffffff', '#ff8cc0'], shapes: ['glow', 'star'], vx: [-120, 120], vy: [-160, 0], size: [2.5, 6], life: [0.6, 1.1], rate: 60 },
     heal: { cols: ['#c8ffe4', '#7dffc0', '#ffffff'], shapes: ['glow', 'plus'], vx: [-30, 30], vy: [-160, -60], size: [3, 7], life: [0.8, 1.3], rate: 55 },
-    phys: { cols: ['#ffffff', '#e8e8f0', '#ffe4a8'], shapes: ['spark'], vx: [-1300, -900], vy: [200, 420], size: [1.2, 2.4], life: [0.25, 0.5], rate: 70, streak: 0.06 }
+    phys: { cols: ['#ffffff', '#e8e8f0', '#ffe4a8'], shapes: ['spark'], vx: [-1300, -900], vy: [200, 420], size: [1.2, 2.4], life: [0.25, 0.5], rate: 70, streak: 0.06 },
+    // Bond cut-ins (battle.js bondCut): Jungwon's jade, Nike's star, and hearts for a romance version.
+    jade: { cols: ['#5fe0b0', '#9fe8ff', '#ffffff'], shapes: ['poly', 'glow'], vx: [-260, -120], vy: [100, 240], size: [4, 10], life: [0.8, 1.4], rate: 40 },
+    star: { cols: ['#ff8cc0', '#ffd36b', '#ffffff'], shapes: ['star', 'star', 'glow'], vx: [-90, 90], vy: [-170, -40], size: [3, 8], life: [0.7, 1.3], rate: 55 },
+    love: { cols: ['#ff8cc0', '#ffb3d6', '#ff4f9e'], shapes: ['heart', 'glow'], vx: [-40, 40], vy: [-120, -40], size: [10, 18], life: [1, 1.6], rate: 22 }
   };
   function stream(kind, o = {}) {
     if (!ctx || reduced()) return 0;
@@ -887,7 +1144,7 @@ window.FemcFX = (() => {
         const x = S.vx[1] < -400 ? W + rnd(0, 60) : rnd(-20, W + 20), y = S.vy[1] < -30 ? rnd(H * 0.35, H + 20) : S.vy[0] > 60 ? rnd(-40, H * 0.6) : rnd(0, H);
         emit({ shape, pts: shape === 'poly' ? shard() : undefined, x, y, vx: rnd(S.vx[0], S.vx[1]), vy: rnd(S.vy[0], S.vy[1]), life: rnd(S.life[0], S.life[1]),
           size: rnd(S.size[0], S.size[1]), color: pick(S.cols), fill: shape === 'poly' ? pick(S.cols) : undefined, rot: rnd(0, TAU), vr: rnd(-3, 3),
-          streak: S.streak, fadeIn: 0.12, blend: shape === 'poly' ? 'source-over' : 'lighter' });
+          streak: S.streak, fadeIn: 0.12, ph: rnd(0, TAU), blend: shape === 'poly' || shape === 'heart' ? 'source-over' : 'lighter' });
       }
       if (S.bolts) {
         e.bt -= dt;
@@ -906,7 +1163,9 @@ window.FemcFX = (() => {
   }
 
   const COLORS = { fire: '#ff6b3d', ice: '#7fe3ff', elec: '#ffe14d', wind: '#5dffa0', light: '#fff2b0', dark: '#c07bff', almighty: '#ff8cc0', slash: '#e8e8f0', strike: '#ffc979', pierce: '#9fd3ff', heal: '#7dffc0', charm: '#ff7ac8', poison: '#b36bff', fear: '#a98bff', distress: '#ff9a3d', freeze: '#9fe8ff', shock: '#ffe14d', bind: '#ffd36b', cure: '#ffffff', buff: '#6ab0ff', debuff: '#ff5a7a',
-    suzu: '#ffd36b', kunai: '#9fd3ff', kitsune: '#7fe3ff', veneer: '#ff8cc0', bluff: '#ffb3e6', flank: '#ff4f9e', disorient: '#ffb3e6' };
+    suzu: '#ffd36b', kunai: '#9fd3ff', kitsune: '#7fe3ff', veneer: '#ff8cc0', bluff: '#ffb3e6', flank: '#ff4f9e', disorient: '#ffb3e6',
+    corkscrew: '#ffe14d', galearrow: '#5dffa0', fastball: '#ff6b3d', fleche: '#9fe8ff', salvo: '#ffd36b', lance: '#fff2b0', bite: '#ff6b3d', haymaker: '#ff5b5b',
+    moonstatic: '#c9a8ff', shell: '#5fe0b0', goblinfire: '#5ab4ff', aperture: '#ffe6a8', crescent: '#c07bff', serpent: '#7fe3ff', club: '#ffc979', theia: '#fff2b0' };
   /* play(kind, at, opts) → milliseconds (at 1x) until the effect "lands", so the battle can time its damage numbers. */
   function play(kind, at, o = {}) {
     if (!ctx || !at) return 0;
@@ -943,6 +1202,22 @@ window.FemcFX = (() => {
       case 'veneer': return veneer(at, o);
       case 'bluff': return bluff(at, o);
       case 'flank': return flank(at, o);
+      case 'corkscrew': return corkscrew(at, o);
+      case 'galearrow': return galearrow(at, o);
+      case 'fastball': return fastball(at, o);
+      case 'fleche': return fleche(at, o);
+      case 'salvo': return salvo(at, o);
+      case 'lance': return lance(at, o);
+      case 'bite': return bite(at, o);
+      case 'haymaker': return haymaker(at, o);
+      case 'moonstatic': return moonstatic(at, o);
+      case 'shell': return shell(at, o);
+      case 'goblinfire': return goblinfire(at, o);
+      case 'aperture': return aperture(at, o);
+      case 'crescent': return crescentFx(at, o);
+      case 'serpent': return serpent(at, o);
+      case 'club': return club(at, o);
+      case 'theia': return theia(at, o);
       default: return simple(at, COLORS[kind]);
     }
   }

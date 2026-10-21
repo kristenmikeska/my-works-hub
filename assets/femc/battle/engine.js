@@ -372,7 +372,8 @@ window.FemcBattleEngine = (() => {
       units: [], round: 0, queue: [], cur: null, oneMore: false, chain: new Set(), alloutReady: false, outcome: null,
       mods, known: setup.known || {}, items: setup.items || {}, heat: setup.heat || 0, extraUsed: false, uid: 0, boss: false, reaper: false, log: [], ctx: setup.ctx || {}, scanRound: -1, deaths: [],
       kitsune: 0, kitsuneSide: null, once: new Set(), // Kitsune Rush's turns left (and whose side), skills used once this battle
-      perks: setup.perks || {}, perkUsed: new Set(), assists: {}, follow: [], lastWeak: null, forceOneMore: false, keep: 0, warp: false // bond perks (build.js)
+      perks: setup.perks || {}, perkUsed: new Set(), assists: {}, follow: [], lastWeak: null, forceOneMore: false, keep: 0, warp: false, // bond perks (build.js)
+      bondArts: setup.bondArts || [], bondUsed: new Set() // bond skills (bonds.js): this fight's unlocked combos, and the ones used
     };
     /* Buff levels (data.js buffRules): damage dealt / taken for a stat level from -cap to +cap. */
     const BRu = D.buffRules, CAP = BRu.cap;
@@ -431,6 +432,9 @@ window.FemcBattleEngine = (() => {
        into src.actBoost once per action (useSkill). */
     function hitMult(src, tgt, sk, aff) {
       let m = src.actBoost || 1;
+      // Signature skills: Fastball / Moonlit Static hit a Down foe harder; Haymaker hits harder the more hurt Shinjiro is.
+      if (sk.downBonus && tgt.down) m *= 1 + sk.downBonus;
+      if (sk.lowHpBonus && src.maxHp) m *= 1 + sk.lowHpBonus * (1 - Math.max(0, Math.min(1, src.hp / src.maxHp)));
       const phys = PHYS.has(sk.el) || sk.id === 'attack', magic = !phys && sk.el !== 'almighty' && D.elements[sk.el];
       if (src.side === 'party' && !src.assistOf) {
         m *= 1 + (src.dmgUp || 0) + (phys ? src.physUp || 0 : 0) + (magic ? src.magicUp || 0 : 0) + (tgt.boss ? src.bossUp || 0 : 0) + (tgt.down ? src.downUp || 0 : 0);
@@ -585,7 +589,7 @@ window.FemcBattleEngine = (() => {
     function power(src, sk) {
       const phys = PHYS.has(sk.el) || sk.id === 'attack';
       let stat = phys ? src.st : src.ma;
-      if (sk.theurgy) stat = Math.max(src.st, src.ma);
+      if (sk.theurgy || sk.bond) stat = Math.max(src.st, src.ma); // a Theurgy or a bond uses the better stat
       return sk.power * (stat + src.lvl * 0.5 + 4) / 16;
     }
     function rawDamage(src, tgt, sk) {
@@ -1104,6 +1108,18 @@ window.FemcBattleEngine = (() => {
       else if (sk.type === 'bond') { tgts.forEach(t => { if (t.dead || t === src) return; t.bondWith = src.id; t.bondT = sk.turns || 3; ev.push({ t: 'status', tgt: t.id, label: 'WARDING BOND', cls: 'buff' }); }); gain(src, 'buff', ev); }
       else if (sk.type === 'charge') { tgts.forEach(t => { if (t.dead) return; t.charge2 = sk.mult || 2.5; ev.push({ t: 'status', tgt: t.id, label: 'CHARGED', cls: 'buff' }); }); gain(src, 'buff', ev); }
       if (sk.selfBuff && !src.dead) buff(src, sk.selfBuff, 1, ev);
+      // Black Tortoise: the user draws every single-target attack (one taunter per side; the newest takes over).
+      if (sk.tauntSelf && !src.dead) {
+        alive(sideOf(src, true)).forEach(p => { if (p !== src && p.taunt > 0) { p.taunt = 0; p.veneer = 0; ev.push({ t: 'tauntEnd', tgt: p.id }); } });
+        src.taunt = sk.tauntSelf; src.veneer = 0;
+        ev.push({ t: 'taunt', tgt: src.id, turns: src.taunt, flank: !!mods.flank && src.side === 'party', veneer: false });
+      }
+      // Focus Pull: whatever it hit loses a level of the stat, and (scan) every affinity it has is known.
+      if ((sk.debuffOnHit || sk.scan) && sk.type === 'dmg') tgts.forEach(t => {
+        if (t.dead || t.side === src.side || !ev.slice(ev0).some(e => e.t === 'hit' && e.src === src.id && e.tgt === t.id && e.amount > 0)) return;
+        if (sk.debuffOnHit) buff(t, sk.debuffOnHit, -1, ev, false, 1, src);
+        if (sk.scan && t.side === 'enemy') { const k = S.known[t.kind] || (S.known[t.kind] = {}); D.affinityOrder.forEach(el => { k[el] = true; }); ev.push({ t: 'status', tgt: t.id, label: 'IN FOCUS', cls: 'buff', scan: true }); }
+      });
       if (sk.type === 'taunt' && sk.thOnHit) tgts.forEach(t => { t.thOnHit = sk.thOnHit; });
       if (sk.dodgeNext && !src.dead) src.dodgeNext = true;
       if (sk.partyHeal) alive(sideOf(src, true)).forEach(p => heal(src, p, p.maxHp * sk.partyHeal, ev));
@@ -1200,6 +1216,71 @@ window.FemcBattleEngine = (() => {
       return downs;
     }
 
+    /* ── Bond skills (bonds.js; setup.bondArts: this save's unlocked combos, already resolved to their current version) ──
+       Solar and one partner, from either one's turn. Both must be in the party, alive and able to act; both pay the SP; the
+       one who didn't start it loses their next turn (bondRest); once per battle each. */
+    const bondArt = id => S.bondArts.find(a => a.id === id) || null;
+    function bondInfo(u, id) {
+      const art = bondArt(id), L = leader();
+      if (!art) return { ok: false, why: 'Not unlocked yet.' };
+      const P = party().find(p => p.mid === art.partner) || null;
+      const pn = P ? P.name : (member(art.partner) || {}).name || art.partner;
+      const out = (why, extra = {}) => Object.assign({ ok: !why, why, art, solar: L, partner: P }, extra);
+      if (!P) return out(`${pn} isn’t in the party.`, { absent: true });
+      if (!u || (u !== L && u !== P)) return out(`Only Solar or ${pn} can start it.`);
+      if (S.bondUsed.has(id)) return out('Once per battle, and it’s been used.', { used: true });
+      if (L.dead || P.dead) return out(`${L.dead ? L.name : pn} is knocked out.`);
+      const other = u === L ? P : L;
+      if (helpless(other)) return out(`${other.name} can’t move right now.`);
+      if (other.bondRest) return out(`${other.name} is still catching their breath.`);
+      if (L.sp < art.sp || P.sp < art.sp) return out(`Both need ${art.sp} SP (${L.name} ${L.sp}, ${pn} ${P.sp}).`, { sp: true });
+      if (!alive(foes()).some(f => !f.unreachable && !f.hidden)) return out('Nothing to aim at.');
+      return out('');
+    }
+    /* Every bond this member could start right now, usable or not (the menu greys the ones that aren't). */
+    function bondsFor(u) {
+      if (!u || u.side !== 'party') return [];
+      return S.bondArts.filter(a => (isLead(u) && party().some(p => p.mid === a.partner)) || a.partner === u.mid).map(a => bondInfo(u, a.id));
+    }
+    function bondAct(u, id, target, ev) {
+      const info = bondInfo(u, id), art = info.art, L = info.solar, P = info.partner;
+      L.sp -= art.sp; P.sp -= art.sp;
+      S.bondUsed.add(id);
+      const other = u === L ? P : L;
+      other.bondRest = true;
+      ev.push({ t: 'bond', src: u.id, solar: L.id, partner: P.id, mid: P.mid, id, name: art.name, love: art.love, tier: art.tier, look: art.look, colors: art.colors,
+        img: art.img, focus: art.focus, sheet: art.sheet, layers: art.layers, face: art.face || null, line: art.line, desc: art.desc, sp: art.sp, spSolar: L.sp, spPartner: P.sp, rest: other.id });
+      const open = () => alive(foes()).filter(f => !f.unreachable && !f.hidden && !shieldUp(f));
+      let main = U(target);
+      if (!main || main.dead || main.side !== 'enemy' || main.hidden || main.unreachable) main = open().sort((a, b) => (b.boss - a.boss) || b.hp - a.hp)[0] || null;
+      let downs = 0;
+      art.steps.forEach((st, i) => {
+        const a = st.by === 'partner' ? P : L;
+        if (!a || a.dead || S.outcome || !alive(foes()).some(f => !f.unreachable)) return;
+        const tg = st.target || art.target;
+        const sk = { id: `bond_${art.id}_${i}`, name: art.name, el: st.el, power: st.power, target: tg, multi: st.multi, crit: st.crit || 6, ail: st.ail, down: st.down, sure: true, bond: true, type: 'dmg' };
+        const n = sk.multi ? sk.multi[0] + Math.floor(R() * (sk.multi[1] - sk.multi[0] + 1)) : 1;
+        if (tg === 'rand') { for (let k = 0; k < n; k++) { const pool = alive(foes()).filter(f => !f.unreachable); if (!pool.length) break; if (strike(a, pick(pool), sk, ev, { spread: true })) downs++; } }
+        else if (tg === 'all') alive(foes()).filter(f => !f.unreachable).forEach(t => { for (let k = 0; k < n && !t.dead; k++) if (strike(a, t, sk, ev, { spread: true })) downs++; });
+        else { if (!main || main.dead) main = open()[0] || null; if (main) for (let k = 0; k < n && !main.dead; k++) if (strike(a, main, sk, ev)) downs++; }
+        flushDeaths(ev);
+      });
+      const af = art.after || {};
+      if (!S.outcome || S.outcome === 'win') {
+        if (af.heal) alive(party()).forEach(p => heal(L, p, p.maxHp * af.heal, ev));
+        if (af.cure) alive(party()).forEach(p => { if (p.ail) cure(p, Object.keys(D.ailments), ev, L); });
+        (af.buffs || []).forEach(st => alive(party()).forEach(p => buff(p, st, 1, ev, false, 1, L)));
+        (af.debuffs || []).forEach(st => alive(foes()).filter(f => !f.unreachable).forEach(f => buff(f, st, -1, ev, false, 1, L)));
+        if (af.ward === 'solar' && !L.dead) { L.ward = true; ev.push({ t: 'ward', tgt: L.id }); }
+        if (af.th) [L, P].forEach(p => { if (!p.dead && p.th < 100) { p.th = Math.min(100, p.th + af.th); ev.push({ t: 'thGain', tgt: p.id, n: af.th }); if (p.th >= 100) ev.push({ t: 'thReady', tgt: p.id }); } });
+      }
+      gain(L, 'sig', ev); gain(P, 'sig', ev);
+      flushDeaths(ev);
+      runFollows(ev);
+      checkTriggers(ev);
+      return downs;
+    }
+
     /* ── Turn flow ────────────────────────────────────── */
     function order() {
       // Kitsune Rush: its side moves first, 50% faster. Quick Draw: Solar leads the first round.
@@ -1279,6 +1360,8 @@ window.FemcBattleEngine = (() => {
           else { u.ail = null; ev.push({ t: 'ailEnd', tgt: u.id, id: a.id }); }
         }
       }
+      // A bond took this member's turn too (bondAct): they catch their breath.
+      if (u.bondRest) { u.bondRest = false; if (canAct && !forced) { ev.push({ t: 'bondRest', tgt: u.id }); canAct = false; } }
       // Tired members sometimes lose a turn.
       if (canAct && !forced && u.side === 'party' && u.tired && R() < D.progression.tired.skip) { ev.push({ t: 'tiredSkip', tgt: u.id }); canAct = false; }
       // Aphrodite's Back Off!: a shoved foe loses this turn.
@@ -1377,6 +1460,10 @@ window.FemcBattleEngine = (() => {
       } else if (action.type === 'theurgy') {
         if (!canTheurgy(u)) { S.oneMore = wasOneMore; return [{ t: 'msg', text: 'The Theurgy gauge isn’t full yet.' }]; }
         afterAction(u, theurgy(u, ev), ev);
+      } else if (action.type === 'bond') {
+        const inf = bondInfo(u, action.bond);
+        if (!inf.ok) { S.oneMore = wasOneMore; return [{ t: 'msg', text: inf.why }]; }
+        afterAction(u, bondAct(u, action.bond, action.target, ev), ev);
       } else if (action.type === 'guard') {
         u.guard = true; ev.push({ t: 'guard', src: u.id });
         let p;
@@ -1783,6 +1870,14 @@ window.FemcBattleEngine = (() => {
         const dku = hasT('dispel').find(id => sk(id).dispel === 'debuffs');
         if (dku && allies.filter(p => ['atk', 'def'].some(s => p.buffs[s] < 0)).length >= (smart ? 1 : 2)) return { type: 'skill', skill: dku, target: 'all' };
       }
+      // Rush: Solar starts a bond when it's worth both turns (a boss, a crowd, or a long fight) and Theurgy isn't the better move.
+      if (smart && isLead(u) && S.bondArts.length && !canTheurgy(u) && (bossUp || foesA.length >= 2 || longFight)) {
+        const b = bondsFor(u).filter(x => x.ok).sort((a, c) => c.art.tier - a.art.tier)[0];
+        if (b) {
+          const tg = foesA.filter(f => !f.hidden && !shieldUp(f)).sort((a, c) => (c.boss - a.boss) || c.hp - a.hp)[0];
+          return { type: 'bond', bond: b.art.id, target: tg ? tg.id : null };
+        }
+      }
       // Rush: keep the party's buffs up (missing or about to run out) and the big foe's guard down, when the fight will last.
       if (smart && longFight) {
         const need = (p, st) => p.buffs[st] <= 0 || (p.buffs[st] < CAP && p.buffT[st] <= 1);
@@ -1870,7 +1965,7 @@ window.FemcBattleEngine = (() => {
     return {
       S, U, party, foes, alive, leader, act, openBuff, autoAction, forcedAct, helpless, analyze, allOut, declineAllOut, enemyAct, nextTurn, upcoming, canPay, canShiftTo,
       canTheurgy, theurgyDef, shieldUp, outcome: () => S.outcome || check(), skillOf, attackSkill, known: kind => S.known[kind] || {},
-      costOf, usedOnce, aggro, flanking, kitsuneOn, atkM, defM, start, perkOn: k => perkOn(k), perks: () => S.perks
+      costOf, usedOnce, aggro, flanking, kitsuneOn, atkM, defM, start, perkOn: k => perkOn(k), perks: () => S.perks, bondInfo, bondsFor
     };
   }
 

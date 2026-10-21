@@ -329,12 +329,12 @@ window.FemcMenu = (() => {
     D0.party.forEach(m => { if (m.id === 'solar' || !G.LINKS[m.id]) return; const r = Math.min(10, rankOf(m.id)); if ((b.ranks[m.id] || 0) !== r) { b.ranks[m.id] = r; changed = true; } });
     // Every link's rank for the bond perks (and the gifts some ranks give: a naginata, a skill point).
     if (BLD()) {
-      const ranks = {}, rev = [];
-      Object.entries(S().links || {}).forEach(([k, p]) => { if (p.rank > 0) ranks[k] = p.rank; if (p.reversed) rev.push(k); });
-      const before = JSON.stringify([b.bonds, b.bondsRev]);
-      const gifts = BLD().syncBonds(b, ranks, rev);
+      const ranks = {}, rev = [], love = [];
+      Object.entries(S().links || {}).forEach(([k, p]) => { if (p.rank > 0) ranks[k] = p.rank; if (p.reversed) rev.push(k); if (p.route === 'romance') love.push(k); });
+      const before = JSON.stringify([b.bonds, b.bondsRev, b.bondsLove, b.bondDate]);
+      const gifts = BLD().syncBonds(b, ranks, rev, love, G.dayInfo ? G.dayInfo().md : null);
       gifts.forEach(g => G.toast('perk', g.gear ? `A gift: ${D0.gear[g.gear].name}${D0.gear[g.gear].nag ? ' (one of Solar’s naginatas)' : ''}` : 'A gift: +1 skill point for Haenim’s tree'));
-      if (gifts.length || before !== JSON.stringify([b.bonds, b.bondsRev])) changed = true;
+      if (gifts.length || before !== JSON.stringify([b.bonds, b.bondsRev, b.bondsLove, b.bondDate])) changed = true;
     }
     if (changed) G.saveQuiet();
   }
@@ -515,6 +515,22 @@ window.FemcMenu = (() => {
     const B = BLD();
     return `<ul class="g-perks">${B.perksOf(linkId).map(p => { const st = B.perkState(p, ctx), [word, cls] = PSTATE[st]; return `<li class="g-perk ${cls}${p.kat ? ' kat' : ''}"><span class="g-perk-r">${p.rank >= 10 ? 'MAX' : `R${p.rank}`}</span><div><b>${esc(p.name)}<em class="t-${p.type}">${esc(B.TYPE_NAME[p.type])}</em>${p.kat ? '<em class="t-kat">★ Kat</em>' : ''}</b><small>${esc(p.desc)}</small>${st === 'stub' ? `<small class="why">${esc(p.stub)}</small>` : ''}</div><span class="g-perk-st">${esc(word)}</span></li>`; }).join('')}</ul>`;
   }
+  /* Bond skills (bonds.js): Solar and a partner, one combo each, with the rank each version unlocks at. Met partners only. */
+  const BSTATE = { own: ['Ready', 'own'], rank: ['Not yet', 'rank'], paused: ['Paused · the bond is reversed', 'paused'], gone: ['Unavailable', 'paused'] };
+  function bondSkillsHtml() {
+    const BD = window.FemcBonds;
+    if (!BD) return '';
+    const links = S().links || {};
+    const ctx = { bonds: Object.fromEntries(Object.entries(links).map(([k, p]) => [k, p.rank || 0])), rev: Object.entries(links).filter(([, p]) => p.reversed).map(([k]) => k),
+      love: Object.entries(links).filter(([, p]) => p.route === 'romance').map(([k]) => k), date: G.dayInfo ? G.dayInfo().md : null };
+    const rows = BD.BONDS.filter(b => G.isMet(b.partner)).map(b => {
+      const st = BD.status(b, ctx), [word, cls] = BSTATE[st.state], name = member(b.partner)?.name || b.partner;
+      const vers = st.vers.map(v => `<li class="g-perk ${st.rank >= v.rank && st.state !== 'paused' && st.state !== 'gone' ? 'own' : 'rank'}"><span class="g-perk-r">R${v.rank}</span><div><b>${esc(v.name)}${v.love ? '<em class="t-kat">♥ Romance</em>' : ''}</b><small>${esc(v.desc)} Both pay ${v.sp} SP.</small></div><span class="g-perk-st">${st.cur && st.cur.name === v.name && st.state === 'own' ? 'In use' : st.rank >= v.rank ? 'Earned' : 'Not yet'}</span></li>`).join('');
+      const spare = b.love && !st.love ? `<li class="g-perk rank"><span class="g-perk-r">R${b.love.rank}</span><div><b>♥ ? ? ?</b><small>A special version of this bond, if the two of you become more than friends.</small></div><span class="g-perk-st">Not yet</span></li>` : '';
+      return `<section class="g-bond g-bondsk" data-bondsk="${b.id}"><header><b>Solar & ${esc(name)}</b><small>${esc(word)}${b.until ? ' · only while he fights alongside you' : ''}</small></header><ul class="g-perks">${vers}${spare}</ul></section>`;
+    }).join('');
+    return rows ? `<h3 class="g-bondsk-h">Bond skills</h3><p class="g-note">A combo for Solar and one partner, from the battle menu’s <b>Bond</b>. Both must be in the party and able to act; both pay the SP and both use their turn. Once per battle each.</p><div class="g-bondsks">${rows}</div><h3 class="g-bondsk-h">Bond perks</h3>` : '';
+  }
   function bondsTab() {
     const B = BLD();
     if (!B) return '<p class="g-note">No bonds yet.</p>';
@@ -529,7 +545,7 @@ window.FemcMenu = (() => {
       return `<section class="g-bond"><header><b>${esc(l.short)}</b><small>${esc(l.arcana)}${pr.reversed ? ' · Reversed' : ''} · ${pr.rank >= 10 ? 'MAX' : `rank ${pr.rank}`}</small></header>
         <ul class="g-perks">${ps.map(p => { const st = B.perkState(p, ctx), [word, cls] = PSTATE[st]; return `<li class="g-perk ${cls}${p.kat ? ' kat' : ''}"><span class="g-perk-r">${p.rank >= 10 ? 'MAX' : `R${p.rank}`}</span><div><b>${esc(p.name)}<em class="t-${p.type}">${esc(B.TYPE_NAME[p.type])}</em>${p.kat ? '<em class="t-kat">★ Kat</em>' : ''}</b><small>${esc(p.desc)}</small>${st === 'stub' ? `<small class="why">${esc(p.stub)}</small>` : ''}</div><span class="g-perk-st">${esc(word)}</span></li>`; }).join('')}</ul></section>`;
     }).join('');
-    return `<p class="g-note">Every bond pays off: Battle perks (a fighter in the party), Assists (friends cutting in from outside the party), Tartarus, Daily and a MAX skill or passive. <b>${earned.length}</b> earned of ${all.length} from the bonds you’ve made.</p>
+    return `${bondSkillsHtml()}<p class="g-note">Every bond pays off: Battle perks (a fighter in the party), Assists (friends cutting in from outside the party), Tartarus, Daily and a MAX skill or passive. <b>${earned.length}</b> earned of ${all.length} from the bonds you’ve made.</p>
       <div class="g-row g-bond-filter">${[['all', 'All'], ['earned', 'Earned'], ['battle', 'Battle'], ['assist', 'Assist'], ['tartarus', 'Tartarus'], ['daily', 'Daily'], ['max', 'MAX']].map(([k, n]) => `<button type="button" class="g-chip${f === k ? ' on' : ''}" data-btype="${k}">${n}</button>`).join('')}</div>
       <div class="g-bonds">${rows || '<p class="g-note">No bonds yet. Go out after school and meet people.</p>'}</div>`;
   }

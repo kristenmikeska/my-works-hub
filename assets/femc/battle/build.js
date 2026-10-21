@@ -733,11 +733,14 @@ window.FemcBuild = (() => {
     });
     return got;
   }
-  /* The life sim's link ranks into the battle save (and the reversed ones). */
-  function syncBonds(save, ranks = {}, reversed = []) {
+  /* The life sim's link ranks into the battle save (and the reversed ones). love: the links on their romance route, and date:
+     today's "m/d" (bonds.js: romance versions of the bond skills, and a bond's last day). Both are left alone when not given. */
+  function syncBonds(save, ranks = {}, reversed = [], love = null, date = null) {
     const b = {};
     Object.entries(ranks || {}).forEach(([k, r]) => { const n = Math.min(10, Math.floor(+r || 0)); if (n > 0) b[k] = n; });
     save.bonds = b; save.bondsRev = (reversed || []).filter(x => typeof x === 'string');
+    if (Array.isArray(love)) save.bondsLove = love.filter(x => typeof x === 'string');
+    if (typeof date === 'string') save.bondDate = date;
     return grantGifts(save);
   }
   /* Perks a link unlocked at exactly this rank (the rank-up toast). */
