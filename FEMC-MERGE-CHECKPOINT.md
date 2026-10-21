@@ -25,7 +25,7 @@ The combined game ("one game") is finished on its branch and ready for the lead 
 
 ## Not done / not verified
 
-- The skill system itself (8 slots, upgrades, the deeper Haenim tree, party trees, respec): next on the roadmap; build it in menu.js's Skills tab (seam documented there).
+- The skill system is built (2026-10-20): the Skills tab is Haenim's tree and the party trees; see "Skill system" in CLAUDE.md and the SKILLS header in menu.js. `tests/femc_skills.py` plays it.
 - Physical controllers were not tested (pad.js runs in both the page and the battle frame; keyboard, mouse and touch paths were).
 - Practice mode keeps the prototype's own screens (by design: it's the hidden practice page).
 - Not every operation/scripted fight in the year was played; 5/9, 11/3, the prologue pair and the memory-floor/finale fights in main's ported tests were.
@@ -33,7 +33,7 @@ The combined game ("one game") is finished on its branch and ready for the lead 
 ## Resume order
 
 1. Lead integrates the branch into main after the story writers finish, then reruns the suite in main.
-2. The approved skill-system roadmap, in the menu's Skills tab.
+2. ~~The approved skill-system roadmap, in the menu's Skills tab.~~ Done (batch A's skill system, buff stacking, smarter Rush, no post-battle flash).
 
 ## Current pivot: new art
 

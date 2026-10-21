@@ -71,7 +71,7 @@ What's next for the battle prototype (`femc-battle.html`). **Claude** = code, **
 Batches, in order, after the story/character pass:
 - **A. Merge + battle systems:**
   - Finish the one-game merge (fixes the old Tartarus menu).
-  - Skill tree. Kat's skill ideas: Protective Suzu, Kunai Flick and Kitsune Rush for the Bell branch; Public Veneer and Call the Bluff for the Star branch; Off Angle Flank as a passive; Duo Cohesion as a link perk.
+  - ✓ Skill tree (built 2026-10-20). Kat's skill ideas: Protective Suzu, Kunai Flick and Kitsune Rush for the Bell branch; Public Veneer and Call the Bluff for the Star branch; Off Angle Flank as a passive; Duo Cohesion as a link perk (not built yet: it belongs to the link perks).
   - **Link perks for EVERY social link** (Kat: like Persona 5 Phantom X). Each link unlocks named perks as it ranks up, about 4 per link, covering:
     - battle: follow-ups, protect, revive, crits, Duo Cohesion-style combos
     - Tartarus: healing between floors, map reveals, better drops
@@ -79,9 +79,9 @@ Batches, in order, after the story/character pass:
     - a skill or passive for Solar at MAX
 
     Kat's examples: Minji r3 Crosshair Sync, r8 Behind the Lens; Haechan r2 Cut the Fluff, r7 Bait and Punish. Draft the full perk list for Kat to review before building. Also romance battle and Tartarus dialogue.
-  - Buffs stack to a limit.
-  - Smarter Rush (heals when needed, rebuffs, hits weaknesses, uses Theurgy).
-  - Remove the post-battle All-Out flashes.
+  - ✓ Buffs stack to a limit (3 levels).
+  - ✓ Smarter Rush (heals when needed, rebuffs, hits weaknesses, uses Theurgy).
+  - ✓ Remove the post-battle All-Out flashes.
   - Shuffle Time.
 - **B. Polish:**
   - Animated text send and receive with a notification sound.
