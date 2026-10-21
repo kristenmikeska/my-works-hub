@@ -111,3 +111,15 @@ Batches, in order, after the story/character pass:
 - **GroupChatShadow.png and fishmongerShadow.png:** new Shadows on the Hoax and strangers memory floors, animated like the others.
 - **PossibleUses/** (Aigis, Koromaru, Mitsuru full bodies): compendium and party-menu art.
 - **Skip** the Shinjiro close-up (05_05_25 PM). Kat is regenerating it with an Evoker.
+
+## 8. More building and skilling (Kat, 2026-10-20)
+Kat loves the skill tree and wants much more building.
+- **Revelation-style cards (P5X):** each fighter equips a set of cards. Each card has a main stat and random substats; matching sets give bonuses. Cards level and refine with materials. Sets are themed on Solar's worlds and the arcana.
+- **Shuffle Time, P3P-style:** after some fights the cards spin and you pick one.
+  - Cups heal, Coins give yen, Swords give weapons, Wands give EXP.
+  - Arcana cards give skill cards or Persona boosts.
+  - Rare penalty cards add risk.
+  - It can also drop building materials and Revelation-style cards.
+- **Bond skills (joint skills):** Solar and one partner unleash a combo with its own cut-in, unlocked by link rank. Romances get special ones (Akihiko, Haechan, Jungwon...).
+- **More unique skills, animations and effects for every fighter,** plus situational battle lines (hurt ally, low HP, romance banter). Battle lines are text unless Kat supplies voice audio.
+- **Status now:** every fighter already has a Theurgy and basic battle lines (turn, One More, shift, finish, Theurgy). Only Solar has full-screen Theurgy art.
