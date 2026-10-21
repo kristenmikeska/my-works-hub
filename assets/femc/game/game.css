@@ -191,6 +191,9 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
 /* Evening activities a bond opened up (Kitchen Duty, Sewing Machine), and Solar's desk (the crafts overlay). */
 .g-night.perk { background: linear-gradient(120deg, rgba(150, 110, 20, .5), rgba(20, 7, 15, .95) 60%); box-shadow: 4px 4px 0 rgba(255, 211, 107, .5); }
 .g-night.perk small { color: #ffe08f; }
+/* A hidden link's quiet evening option (core.js secretsDue): soft, so it reads as something noticed, not announced. */
+.g-night.secret { background: linear-gradient(120deg, rgba(255, 180, 210, .22), rgba(20, 7, 15, .95) 60%); box-shadow: 4px 4px 0 rgba(255, 190, 215, .35); }
+.g-night.secret small { color: #ffd0e2; font-style: italic; }
 .g-desk { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 12px; margin: 10px 0 14px; }
 .g-desk .g-night { min-height: 64px; padding: 10px 16px; }
 .g-desk .g-night b { font-size: 20px; }

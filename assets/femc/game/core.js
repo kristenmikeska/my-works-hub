@@ -37,6 +37,7 @@ window.FemcGame = (() => {
     get jobs() { return W.FEMC_GAME_JOBS || []; }, get jobScenes() { return W.FEMC_GAME_JOB_SCENES || {}; }, get flags() { return W.FEMC_GAME_FLAGS; },
     get texts() { return W.FEMC_GAME_TEXTS || { threads: {}, texts: [] }; }, get q() { return W.FEMC_GAME_QUESTIONS || { classes: [], exams: {}, teachers: {}, rivals: [], ambient: {} }; },
     get dailyLife() { return W.FEMC_GAME_DAILY_LIFE || []; }, get trip() { return W.FEMC_GAME_TRIP || {}; }, get lodging() { return W.FEMC_GAME_LODGING || {}; },
+    get clubs() { return W.FEMC_GAME_CLUBS || {}; }, get runIns() { return W.FEMC_GAME_RUNINS || []; }, get variants() { return W.FEMC_GAME_VARIANTS || {}; },
     get events() { return W.FEMC_GAME_EVENTS || []; }, get battle() { return W.FEMC_BATTLE_DATA || {}; }
   };
   const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
@@ -108,6 +109,9 @@ window.FemcGame = (() => {
     // The living world: holiday invites (today's, and whose day she spent: holidays[md] = link id | 'none'), the late-night
     // scenes already played, and the trip's day plan (trip.done['7/21-after'] = the pick).
     holiday: null, holidays: {}, lateNights: { seen: [], lastDay: -99 }, trip: { done: {} },
+    // Part 2: clubs joined (clubs[id] = { joined, sessions, seen, beats, quiet }), run-ins seen and the texts they leave for
+    // later (runIns.later), and which variant line each often-seen spot showed last (vary[key] = { n, d }).
+    clubs: {}, runIns: { seen: [], lastDay: -99, later: [] }, vary: {},
     perks: { week: {}, pitchDay: -1 }, // bond perks' once-a-week / once-a-day uses (build.js; FEMC-LINK-PERKS.md)
     jobs: {}, events: [], spent: {}, exams: {}, classSeen: [], phone: { threads: {}, unread: {}, done: [], pending: {}, invite: null, lastInvite: -9 },
     tartarus: { nights: 0, maxFloor: 0, bosses: [], lastParty: null }, battle: { exp: {}, levels: {} },
@@ -283,6 +287,7 @@ window.FemcGame = (() => {
     if (perkOn('weekendCharm') && [0, 6].includes(dateOf(S.day).getDay())) add({ charm: 1 });
     perkVal('goldenHour').forEach(o => { if (w === 'clear' && o.areas.includes(a.area) && S.slot === 'after') add(o.stat); });
     if (a.id === 'library') perkVal('studyAny').forEach(add);
+    if (a.club) perkVal('clubStat').forEach(m => add(m[a.id])); // Rio's Practice Swing (the tennis club)
     return out;
   }
   // When a link ranks up: the perks it just earned (a toast each).
@@ -348,6 +353,12 @@ window.FemcGame = (() => {
          an invitation texted that morning; the scene plays only if Solar spends the day with them (see holidayInvites).
        lateNights: [{ id, after, until, rank, route, flag, events, days, when, kind, place, time, music, bg, scene }]  late-night
          scenes (see lateNightDue). These three can also live in data/living-*.js (FEMC_GAME_LINK_EXTRAS), merged in here.
+       secret: { flag, after, until, days, met, ranks, label, sub, place, time, scene }  a hidden link (My Melody): invisible
+         everywhere until `flag` is set. While its gates hold, the dorm's evening menu shows one quiet extra option (label /
+         sub); playing it (secretsDue / findSecret) plays `scene`, sets the flag and counts as meeting them. Skip it and the
+         link never appears.
+       kind 'persona': Persona-world people from other Persona games (and Kuromi / My Melody, exchange students). They live
+         around here: no `closes`, no goodbye texts, ordinary texts (Kat's ruling, 2026-10-20).
      Scene lines: see scene.js. Choices give ♪ with `notes` (0-3); `reverse: 1` pushes a reversible link. */
   const LINKS = {};
   const CAST = { solar: 'Solar', 'mitsuru-radio': 'Mitsuru · Radio', porter: '???', clerk: 'Clerk', ikutsuki: 'Ikutsuki', teacher: 'Teacher', fuuka: 'Fuuka', koromaru: 'Koromaru', ken: 'Ken', aigis: 'Aigis', elizabeth: 'Elizabeth', wren: 'Wren', kurosawa: 'Officer Kurosawa' };
@@ -363,7 +374,8 @@ window.FemcGame = (() => {
       const l = LINKS[id]; if (!l) return;
       Object.entries(x).forEach(([k, v]) => { l[k] = Array.isArray(v) ? [...(l[k] || []), ...v] : { ...(l[k] || {}), ...v }; });
     });
-    Object.values(D.jobScenes).forEach(j => Object.assign(CAST, j.cast || {}));
+    Object.values(packs()).forEach(j => Object.assign(CAST, j.cast || {})); // job and club scene packs (job-scenes*, clubs)
+    D.runIns.forEach(e => Object.assign(CAST, e.cast || {}));
     D.dailyLife.forEach(e => Object.assign(CAST, e.cast || {}));
     Object.values(D.trip).forEach(t => Object.assign(CAST, t.cast || {}));
     D.events.forEach(e => Object.assign(CAST, e.cast || {}));
@@ -400,6 +412,7 @@ window.FemcGame = (() => {
   function linkStatus(l, d = S.day, slot = S.slot) {
     const p = progress(l.id);
     if (l.hidden || l.status === 'stub' || !l.ranks?.[0]?.scene) return { ok: false, reason: 'unwritten' };
+    if (l.secret && !flag(l.secret.flag)) return { ok: false, reason: 'unwritten' };
     if (p.rank >= 10) {
       // After MAX: afterMax scenes with the person, unless they've left (then they're traces, see tracesAt).
       if (!(l.afterMax || []).length || leavesAtMax(l)) return { ok: false, reason: 'max' };
@@ -553,6 +566,7 @@ window.FemcGame = (() => {
     if (line.item) { Object.entries(line.item).forEach(([k, v]) => addItem(k, v)); did = true; }
     if (line.gift) { gift(line.gift); did = true; }
     if (line.bond) { Object.entries(line.bond).forEach(([k, v]) => bond(k, v)); did = true; }
+    if (line.later) { laterText(line.later); did = true; }
     if (line.register) { if (!S.registered.includes(line.register)) { S.registered.push(line.register); if (!line.quiet) toast('register', `Registered to the Compendium: ${CAST[line.register] || line.register}`); } did = true; }
     if (line.join) { if (!S.joined.includes(line.join)) { S.joined.push(line.join); S.flags[`joined-${line.join}`] = true; toast('join', `${CAST[line.join] || line.join} joined S.E.E.S.`); } did = true; }
     if (line.end) { S.flags['the-end'] = line.end; did = true; }
@@ -613,6 +627,7 @@ window.FemcGame = (() => {
   }
   const scale = id => (W.FEMC_PORTRAIT_SCALE || {})[faceId(id)] || 1;
   const name = id => CAST[id] || (id ? id[0].toUpperCase() + id.slice(1) : '');
+  const castHas = id => id in CAST;
   function tarot(l) { const k = String(l?.arcana || '').toLowerCase().replace(/[^a-z0-9]/g, ''); return (W.FEMC_TAROT || []).includes(k) ? `${base}assets/femc/tarot/${k}.webp` : null; }
   function background(place = '', time = '', override) {
     if (override) return { url: `${base}assets/femc/bg/${override}.webp`, mood: '' };
@@ -681,8 +696,9 @@ window.FemcGame = (() => {
     const w = a.weather?.[info.weather] || (sh ? { ...sh, label: `Now showing: ${sh.title}` } : null);
     if (w) stats = w.stats;
     if (a.random) { const k = Object.keys(a.random); const pick = k[Math.floor(Math.random() * k.length)]; stats = { [pick]: a.random[pick] }; }
+    // The activity's own lines plus its variants (data/living-variants.js), walked without repeats (vary).
     const lines = (w && w.lines) || a.lines;
-    let text = lines ? lines[Math.floor(Math.random() * lines.length)] : '';
+    let text = lines ? (w && w.lines ? lines[Math.floor(Math.random() * lines.length)] : vary(`activities.${a.id}`, lines)) : '';
     // A bond can change what the activity is (Noctis's Fishing Trip turns the pier into fishing).
     const alt = perkVal('actLine').map(m => m[a.id]).filter(Boolean)[0];
     if (alt) text = alt;
@@ -782,7 +798,7 @@ window.FemcGame = (() => {
     (S.done ||= {})[a.id] = (S.done[a.id] || 0) + 1;
     S.spent[`${S.day}-evening`] = `dorm:${a.id}`;
     save();
-    return { text: a.lines[S.done[a.id] % a.lines.length], place: a.place || "Iwatodai Dorm · Solar's Room" };
+    return { text: vary(`dorm.${a.id}`, a.lines), place: a.place || "Iwatodai Dorm · Solar's Room" };
   }
   // Study at the dorm: rainy nights are a little better; Mitsuru's Study Hall and Jungwon's Tutor Session add to it.
   function doStudy() {
@@ -794,9 +810,109 @@ window.FemcGame = (() => {
   }
   function studyInfo() { const d = D.places.dorm.study; return gainText(sumStats(d.stats, weather(S.day) === 'rain' ? d.rain : null, studyBonus(), dormPerkStats({ id: 'study' }))); }
 
+  /* ── Scene packs: job shifts and club practices (living world, part 2) ──
+     A pack (data/job-scenes.js + data/job-scenes-more*.js for a job id; data/clubs.js for a club id):
+       { cast, join (clubs: the first practice), shifts: [{ id, scene, gates… }] (full scenes; job-scenes.js's plain arrays
+         count as ungated ones), beats: [{ id, at, prev, lean, scene, gates… }] (one-time, in order), quiet: [{ id, scene,
+         gates… }], openers: { month: line } }.
+     Gates (all optional): months, weather, days, after, until, met, flags, noFlags, events, ranks: { link: n }, route:
+       { link: 'romance' }; beats also at (from the nth shift) and prev (that beat already played).
+     packPick, in order: (1) the first unplayed beat that fits; (2) an unseen full shift that fits, the one whose window
+     closes soonest first (seasonal ones before they go), then file order; (3) a quiet shift: this month's opener plus the
+     quiet moment used longest ago and not yet this month. So a full scene never plays twice, and a quiet shift never repeats
+     its opener-and-moment pair. State per job / club: { shifts | sessions, seen: [ids], beats: [indices], quiet: { id: day } }. */
+  let PACKS = null;
+  function packs() {
+    if (PACKS) return PACKS;
+    const out = {};
+    const merge = (id, p) => {
+      const o = (out[id] ||= { cast: {}, shifts: [], beats: [], quiet: [], openers: {}, join: null });
+      Object.assign(o.cast, p.cast || {});
+      (p.shifts || []).forEach((x, i) => o.shifts.push(Array.isArray(x) ? { id: `${id}-base-${i}`, base: true, scene: x } : x));
+      (p.beats || []).forEach((x, i) => o.beats.push({ id: x.id || `${id}-beat-${i}`, ...x }));
+      (p.quiet || []).forEach(x => o.quiet.push(x));
+      Object.assign(o.openers, p.openers || {});
+      if (p.join) o.join = p.join;
+    };
+    Object.entries(W.FEMC_GAME_JOB_SCENES || {}).forEach(([id, p]) => merge(id, p));
+    Object.entries(W.FEMC_GAME_JOB_SCENES_MORE || {}).forEach(([id, p]) => merge(id, p));
+    Object.entries(W.FEMC_GAME_CLUBS || {}).forEach(([id, p]) => merge(id, p));
+    return (PACKS = out);
+  }
+  function packFits(e, d = S.day) {
+    const info = dayInfo(d), m = info.date.getMonth() + 1;
+    if (e.months && !e.months.includes(m)) return false;
+    if (e.weather && !e.weather.includes(info.weather)) return false;
+    if (e.days && !e.days.includes(info.dow)) return false;
+    if (e.after && d < dayOf(e.after)) return false;
+    if (e.until && d > dayOf(e.until)) return false;
+    if (e.met && !e.met.every(isMet)) return false;
+    if (e.flags && !e.flags.every(flag)) return false;
+    if (e.noFlags && e.noFlags.some(flag)) return false;
+    if (e.events && !e.events.every(id => S.events.includes(id))) return false;
+    if (e.ranks && !Object.entries(e.ranks).every(([id, r]) => progress(id).rank >= r && !progress(id).reversed)) return false;
+    if (e.route && !Object.entries(e.route).every(([id, r]) => progress(id).route === r && !progress(id).reversed)) return false;
+    return true;
+  }
+  // The last day an entry could still fit (its months / until), for the seasonal-first order.
+  function packEnd(e, d = S.day) {
+    let end = END();
+    if (e.until) end = Math.min(end, dayOf(e.until));
+    if (e.months) { let k = d; while (k < end && e.months.includes(dateOf(k + 1).getMonth() + 1)) k++; end = Math.min(end, k); }
+    return end;
+  }
+  function packState(st) {
+    if (!Array.isArray(st.seen)) st.seen = [];
+    if (!Array.isArray(st.beats)) st.beats = [];
+    if (!st.quiet || typeof st.quiet !== 'object') st.quiet = {};
+    return st;
+  }
+  // n: this shift's number (1 = the first). Returns { kind: 'join'|'beat'|'shift'|'quiet', id, scene, beat, index, key }.
+  function packPick(id, st, n, d = S.day) {
+    const pk = packs()[id] || { shifts: [], beats: [], quiet: [], openers: {} };
+    packState(st);
+    if (pk.join && n === 1) return { kind: 'join', id: `${id}-join`, scene: pk.join };
+    const bi = pk.beats.findIndex((b, i) => !st.beats.includes(i) && n >= (b.at || 1) && (!b.prev || st.beats.some(k => pk.beats[k]?.id === b.prev)) && packFits(b, d));
+    if (bi >= 0) return { kind: 'beat', id: pk.beats[bi].id, beat: pk.beats[bi], index: bi, scene: pk.beats[bi].scene };
+    const fresh = pk.shifts.map((x, i) => ({ x, i })).filter(({ x }) => !st.seen.includes(x.id) && packFits(x, d));
+    if (fresh.length) {
+      fresh.sort((a, b) => packEnd(a.x, d) - packEnd(b.x, d) || a.i - b.i);
+      const x = fresh[0].x;
+      return { kind: 'shift', id: x.id, scene: x.scene };
+    }
+    const m = dateOf(d).getMonth() + 1, monthKey = d - dateOf(d).getDate() + 1; // the first of this month
+    const quiet = pk.quiet.filter(q => packFits(q, d) && !((st.quiet[q.id] ?? -999) >= monthKey));
+    if (quiet.length) {
+      quiet.sort((a, b) => (st.quiet[a.id] ?? -999) - (st.quiet[b.id] ?? -999) || pk.quiet.indexOf(a) - pk.quiet.indexOf(b));
+      const q = quiet[0], op = pk.openers[m];
+      const opener = Array.isArray(op) ? op[n % op.length] : op;
+      return { kind: 'quiet', id: q.id, key: `${m}:${q.id}`, scene: [...(opener ? [{ n: opener }] : []), ...q.scene] };
+    }
+    // A very busy month (every quiet moment already used this month): the quiet moment used longest ago, with the opener.
+    const anyQuiet = pk.quiet.filter(q => packFits(q, d)).sort((a, b) => (st.quiet[a.id] ?? -999) - (st.quiet[b.id] ?? -999));
+    if (anyQuiet.length) { const q = anyQuiet[0], op = pk.openers[m], opener = Array.isArray(op) ? op[n % op.length] : op; return { kind: 'quiet', id: q.id, key: `${m}:${q.id}:again`, again: true, scene: [...(opener ? [{ n: opener }] : []), ...q.scene] }; }
+    // No quiet moments at all: the full scene seen longest ago, never the one just played.
+    const all = pk.shifts.filter(x => packFits(x, d));
+    if (all.length) { const x = all.slice().sort((a, b) => st.seen.indexOf(a.id) - st.seen.indexOf(b.id))[0]; return { kind: 'shift', id: x.id, scene: x.scene, again: true }; }
+    return { kind: 'shift', id: null, scene: null };
+  }
+  function packDone(st, pick) {
+    packState(st);
+    if (pick.kind === 'beat' && pick.index != null && !st.beats.includes(pick.index)) st.beats.push(pick.index);
+    if (pick.kind === 'shift' && pick.id) { st.seen = st.seen.filter(x => x !== pick.id); st.seen.push(pick.id); }
+    if (pick.kind === 'quiet' && pick.id) st.quiet[pick.id] = S.day;
+    (st.log ||= []).push(pick.kind === 'quiet' ? pick.key : pick.id);
+    if (st.log.length > 400) st.log.splice(0, st.log.length - 400);
+  }
+
   /* ── Jobs ── */
   function jobVisible(j) { const u = j.unlock || {}; return (!u.after || S.day >= dayOf(u.after)) && fragGateMet(u.frags); }
-  const jobState = id => (S.jobs[id] ||= { hired: false, shifts: 0, beats: [] });
+  function jobState(id) {
+    const st = (S.jobs[id] ||= { hired: false, shifts: 0, beats: [] });
+    // Saves from before part 2 rotated the three base scenes: the ones already worked count as seen.
+    if (!Array.isArray(st.seen)) { st.seen = []; const base = (packs()[id]?.shifts || []).filter(x => x.base); for (let k = 0; k < Math.min(st.shifts || 0, base.length); k++) st.seen.push(base[k].id); }
+    return packState(st);
+  }
   function jobOk(j, slot = S.slot) {
     const info = dayInfo();
     if (!jobVisible(j)) return { ok: false, why: 'Not hiring' };
@@ -809,22 +925,127 @@ window.FemcGame = (() => {
   }
   function hire(j) { const why = lacking(j.needs); if (why) return why; jobState(j.id).hired = true; save(); return null; }
   function shiftScene(j) {
-    const st = jobState(j.id), sc = D.jobScenes[j.id] || {};
-    const n = st.shifts + 1;
-    const beat = (sc.beats || []).find((b, i) => !st.beats.includes(i) && n >= (b.at || 1) && (!b.after || S.day >= dayOf(b.after)) && (b.met || []).every(isMet));
-    if (beat) return { beat, index: sc.beats.indexOf(beat), scene: beat.scene };
-    const pool = sc.shifts || [];
-    return { scene: pool.length ? pool[st.shifts % pool.length] : [{ n: `The shift at ${j.name} went by the way shifts do, slowly and then all at once.` }] };
+    const st = jobState(j.id), pick = packPick(j.id, st, st.shifts + 1);
+    if (!pick.scene) pick.scene = [{ n: `The shift at ${j.name} went by the way shifts do, slowly and then all at once.` }];
+    return pick;
   }
-  function finishShift(j, pick) {
+  function finishShift(j, pick = {}) {
     const st = jobState(j.id);
     st.shifts += 1;
-    if (pick.beat) { st.beats.push(pick.index); if (pick.beat.lean) tally({ [`lean.${pick.beat.lean}`]: 1 }); }
+    if (pick.beat && pick.index != null && pick.beat.lean) tally({ [`lean.${pick.beat.lean}`]: 1 });
+    packDone(st, pick);
+    st.lastDay = S.day;
     const up = perkVal('jobPay').reduce((a, o) => a + (o.all || 0) + (o[j.id] || 0), 0); // Cloud, Jungwon, Sunoo
     addYen(Math.round(j.pay * (1 + up / 100)));
     addStats(sumStats(j.stats, ...perkVal('jobStat').map(m => m[j.id]))); // Sunoo's Staff Shift: +1 Kindness at Yeobo's
     S.spent[`${S.day}-${S.slot}`] = `job:${j.id}`;
     save();
+  }
+
+  /* ── Clubs (places.js clubs; scenes in data/clubs.js) ──
+     Join from the club's card on a club day: the `join` scene is the first practice. After that the club meets on its days;
+     each practice plays a pack scene (packPick), gives the club's stats (plus Rio's Practice Swing at tennis: perk key
+     clubStat) and spends the slot. Any number of clubs can be joined. */
+  const clubById = id => (D.places.clubs || []).find(c => c.id === id) || null;
+  const clubState = id => packState(((S.clubs ||= {})[id] ||= { joined: false, sessions: 0, seen: [], beats: [], quiet: {} }));
+  const clubStats = c => sumStats(c.stats, actPerkStats({ ...c, club: true, area: c.area || 'gekkoukan' }));
+  function clubScene(c) {
+    const st = clubState(c.id), pick = packPick(c.id, st, st.sessions + 1);
+    if (!pick.scene) pick.scene = [{ n: `Practice at the ${c.name.toLowerCase()} ran long, the way it does when nobody wants to be the first to leave.` }];
+    return pick;
+  }
+  function joinClub(c) { const st = clubState(c.id); if (!st.joined) { st.joined = true; st.joinedDay = S.day; toast('job', `Joined the ${c.name}.`); } save(); }
+  function finishClub(c, pick = {}) {
+    const st = clubState(c.id);
+    if (!st.joined) { st.joined = true; st.joinedDay = S.day; }
+    st.sessions += 1; st.lastDay = S.day;
+    if (pick.kind !== 'join') packDone(st, pick);
+    addStats(clubStats(c));
+    (S.done ||= {})[c.id] = (S.done[c.id] || 0) + 1;
+    S.spent[`${S.day}-${S.slot}`] = `club:${c.id}`;
+    save();
+  }
+
+  /* ── Run-ins (data/living-runins.js): after an activity, a shift or a club practice, sometimes someone turns up.
+     { id, who, where: { acts, areas, jobs, clubs }, slot, after, until (default after + 45), days, weather, months, met
+     (default [who]), flags, noFlags, events, ranks, route, cast, scene }. At most one every other day, each once; one whose
+     window is about to close comes first and surely, otherwise about half the time. The scene plays on the end of the scene
+     that was already playing; its effects are scene lines ({ bond }, { stat }, { later }: a text that arrives later). ── */
+  const runState = () => { const r = (S.runIns ||= { seen: [], lastDay: -99, later: [] }); if (!Array.isArray(r.seen)) r.seen = []; if (!Array.isArray(r.later)) r.later = []; return r; };
+  const runUntil = e => (e.until ? dayOf(e.until) : dayOf(e.after || '4/8') + 45);
+  function runInFits(e, w, d = S.day) {
+    const where = e.where || {};
+    const hit = (where.acts || []).includes(w.act) || (where.areas || []).includes(w.area) || (where.jobs || []).includes(w.job) || (where.clubs || []).includes(w.club);
+    if (!hit) return false;
+    if (e.slot && w.slot && e.slot !== w.slot) return false;
+    if (d > runUntil(e)) return false;
+    if (!(e.met || [e.who]).every(isMet)) return false;
+    if (e.who && LINKS[e.who] && progress(e.who).reversed) return false;
+    return packFits({ ...e, met: null, until: null }, d);
+  }
+  // w: { act, area, job, club, slot }. force: skip the spacing and the coin flip (tests).
+  function runInDue(w, force = false) {
+    const st = runState(), d = S.day;
+    if (!force && d - (st.lastDay ?? -99) < 2) return null;
+    const fit = D.runIns.map((e, i) => ({ e, i })).filter(({ e }) => !st.seen.includes(e.id) && runInFits(e, w, d));
+    if (!fit.length) return null;
+    fit.sort((a, b) => runUntil(a.e) - runUntil(b.e) || a.i - b.i);
+    const urgent = runUntil(fit[0].e) - d <= 3;
+    const key = String(w.act || w.job || w.club || w.area || '').length;
+    if (!force && !urgent && seeded(d * 7 + key * 13) < 0.5) return null;
+    return fit[0].e;
+  }
+  function finishRunIn(id) {
+    const st = runState();
+    if (!st.seen.includes(id)) st.seen.push(id);
+    st.lastDay = S.day;
+    save();
+  }
+  // { later: { delay, slot, thread, msgs } } in a scene: a text that arrives `delay` days on (in that slot, or the first one).
+  function laterText(x) {
+    if (!x || !(x.msgs || []).length) return;
+    runState().later.push({ d: S.day + (x.delay ?? 1), slot: x.slot || null, thread: x.thread || x.msgs[0].from, msgs: x.msgs });
+  }
+  function nextLater() {
+    const st = runState();
+    const i = st.later.findIndex(t => S.day > t.d + 1 || (S.day >= t.d && (!t.slot || t.slot === S.slot || SLOT_ORDER.indexOf(S.slot) > SLOT_ORDER.indexOf(t.slot))));
+    if (i < 0) return null;
+    const t = st.later.splice(i, 1)[0];
+    return { id: `later-${S.day}-${i}`, thread: t.thread, msgs: t.msgs };
+  }
+
+  /* ── Variants (data/living-variants.js): often-seen narration gets a pool, added to the line the game already had.
+     vary(path, base, key): the spot's line today; the whole pool is walked in a fixed shuffled order, moving on once per day
+     the spot shows to the next line that fits today's month and weather, so nothing repeats until the walk has gone round.
+     Entries are strings or { t, months, weather }. ── */
+  const varyFits = (x, m, w) => typeof x === 'string' || ((!x.months || x.months.includes(m)) && (!x.weather || x.weather.includes(w)));
+  function varyAll(path, base = []) {
+    let v = D.variants; path.split('.').forEach(k => { v = v && v[k]; });
+    return [...[].concat(base || []), ...(Array.isArray(v) ? v : [])].filter(Boolean);
+  }
+  // Today's lines for a spot (months / weather tags applied).
+  function varyPool(path, base = []) {
+    const m = dateOf(S.day).getMonth() + 1, w = weather(S.day);
+    return varyAll(path, base).filter(x => varyFits(x, m, w)).map(x => (typeof x === 'string' ? x : x.t));
+  }
+  // key: a separate walk for one spot that shares a pool (class in the morning and the afternoon).
+  function vary(path, base = [], key = path) {
+    const all = varyAll(path, base);
+    if (!all.length) return '';
+    const m = dateOf(S.day).getMonth() + 1, w = weather(S.day);
+    // A fixed shuffle of the whole pool (seeded by the spot's name); each day the spot shows, the walk moves on to the next
+    // line that fits today, so a line comes back only after the walk has gone all the way round.
+    const salt = [...path].reduce((a, c) => (a * 31 + c.charCodeAt(0)) % 9973, 7);
+    const order = all.map((_, i) => i).sort((a, b) => seeded(salt + a * 17) - seeded(salt + b * 17));
+    const st = ((S.vary ||= {})[key] ||= { n: -1, d: -1 });
+    if (st.d !== S.day) {
+      st.d = S.day;
+      let k = st.n + 1;
+      for (let tries = 0; tries < all.length && !varyFits(all[order[k % all.length]], m, w); tries++) k++;
+      st.n = k;
+    }
+    const x = all[order[st.n % all.length]];
+    return typeof x === 'string' ? x : x.t;
   }
 
   /* ── Story events ── */
@@ -959,6 +1180,31 @@ window.FemcGame = (() => {
     lines.push({ n: 'Whatever the two of them had been building stopped where it stopped. She kept what there was of it.' });
     return lines;
   }
+  /* ── Hidden links (a link's `secret`, see the header): the quiet evening option that finds them. ── */
+  function secretsDue(d = S.day) {
+    const info = dayInfo(d);
+    return Object.values(LINKS).filter(l => {
+      const x = l.secret; if (!x || flag(x.flag) || l.status === 'stub') return false;
+      if (x.after && d < dayOf(x.after)) return false;
+      if (x.until && d > dayOf(x.until)) return false;
+      if (x.days && !x.days.includes(info.dow)) return false;
+      if (x.met && !x.met.every(isMet)) return false;
+      if (x.ranks && !Object.entries(x.ranks).every(([id, r]) => progress(id).rank >= r)) return false;
+      return info.type !== 'trip';
+    });
+  }
+  // After its scene: the flag, met and registered; the evening is spent with them.
+  function findSecret(id, gained = 0) {
+    const l = LINKS[id]; if (!l?.secret) return null;
+    S.flags[l.secret.flag] = true;
+    if (!S.met.includes(id)) S.met.push(id);
+    bond(id, gained); // the discovery's ♪ count toward rank 1
+    if (!S.registered.includes(id)) { S.registered.push(id); toast('register', `Registered to the Compendium: ${l.name}`); }
+    S.spent[`${S.day}-${S.slot}`] = `secret:${id}`;
+    save();
+    return l;
+  }
+
   const XMAS = '12/24';
   // Who can be picked on Christmas Eve (see `christmas` in the header): romance route, the rank it needs, not reversed.
   function christmasOptions(d = S.day) {
@@ -1100,7 +1346,7 @@ window.FemcGame = (() => {
     return true;
   }
   function sendText(t) {
-    S.phone.done.push(t.id);
+    if (!/^later-/.test(t.id)) S.phone.done.push(t.id);
     appendPhone(t.thread, t.msgs);
     S.phone.unread[t.thread] = (S.phone.unread[t.thread] || 0) + t.msgs.length;
     if (t.reply) S.phone.pending[t.thread] = t.id;
@@ -1143,7 +1389,7 @@ window.FemcGame = (() => {
   }
   function deliverTexts() {
     sendHolidayInvites();
-    const t = nextDated() || nextAfterRank() || nextAmbient();
+    const t = nextDated() || nextAfterRank() || nextLater() || nextAmbient();
     if (t) { if ((D.texts.ambient || []).includes(t)) S.phone.ambientDay = S.day; sendText(t); }
     maybeInvite();
     save();
@@ -1525,10 +1771,11 @@ window.FemcGame = (() => {
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
     homeOf, leavesAtMax, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,
     flag, effect, branch, applyChoice, addFragment, fragmentInfo, worldOf,
-    portrait, scale, name, silhouette, tarot, background, moodFor, sub, setDate, dateLabel,
+    portrait, scale, name, castHas, silhouette, tarot, background, moodFor, sub, setDate, dateLabel,
     activities, actById, showing, activityOk, activityInfo, doActivity, dormActs, dormInfo, dormOk, doDorm, doStudy, studyInfo, shopStock, buy, bookById, readTonight, matSellPrice, sellMat,
     perkOn, bondRank, dailyPerks, actCost, dozeChance, dozed, canRetryClass, useGuidance, classHint, studyBonus, weekly,
-    jobVisible, jobState, jobOk, hire, shiftScene, finishShift,
+    jobVisible, jobState, jobOk, hire, shiftScene, finishShift, packs, packPick, packFits,
+    clubById, clubState, clubStats, clubScene, joinClub, finishClub, runInDue, runInFits, finishRunIn, vary, varyPool, secretsDue, findSecret,
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, textById, answerInvite, gift, bond,

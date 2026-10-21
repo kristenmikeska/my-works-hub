@@ -104,7 +104,10 @@ window.FemcScene = (() => {
         addEventListener('pointerdown', retry, true); addEventListener('keydown', retry, true);
       });
     }
-    const out = (a, ms) => fade(a, 0, ms, () => a.pause());
+    // Fade out and pause; an element that is no longer the current track or the world song is released, so a long session
+    // never piles up media players (Chrome stops creating them past a limit).
+    const release = a => { if (a === cur || a === world?.a) return; a.removeAttribute('src'); try { a.load(); } catch (e) {} };
+    const out = (a, ms) => fade(a, 0, ms, () => { a.pause(); release(a); });
     // A pooled track crossfades into the next one just before it ends; a single-file mood just loops. (Every P3 track has
     // loop on, so a missed cue only means one more time round.)
     function watch(a) {
@@ -133,7 +136,7 @@ window.FemcScene = (() => {
       const a = new Audio(src(f));
       a.preload = 'auto'; a.volume = 0; a.loop = false;
       const w = world = { a, mood: m, file: f };
-      a.addEventListener('ended', () => { if (world === w) { world = null; resumeP3(2200); } });
+      a.addEventListener('ended', () => { if (world === w) { world = null; resumeP3(2200); } release(a); });
       if (cur && !cur.paused) { const p = cur; fade(p, 0, 1200, () => { if (world) p.pause(); }); }
       begin(a, () => (ducked ? 0 : wvol()), 2500);
     }

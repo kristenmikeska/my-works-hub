@@ -707,15 +707,21 @@
   function earlyMorning(info) {
     screenMusic('school');
     if (info.type === 'trip') return segment({ slot: 'early', bg: 'yakushima-beach', place: info.trip.place, text: info.trip.note, button: 'The day goes by', next: () => { if (info.trip.slots) return advance(); S().slot = 'late'; G.save(); run(); } });
-    if (info.type === 'off') return segment({ slot: 'early', bg: 'solar-dormroom-day', place: 'Iwatodai Dorm', text: info.holiday ? `${info.holiday}. No school. The dorm was quiet in the way it only was on days off, everybody sleeping in except Akihiko, who never slept in, and Mitsuru, who might not sleep at all.` : info.brk ? `${info.brk.name}. The day was hers.` : 'Sunday. No school, no alarm, and a whole day that belonged to nobody but her.' });
+    if (info.type === 'off') {
+      // Variants (data/living-variants.js offDay); {holiday} and {break} are the day's names.
+      const off = info.holiday ? G.vary('offDay.holiday', ['{holiday}. No school. The dorm was quiet in the way it only was on days off, everybody sleeping in except Akihiko, who never slept in, and Mitsuru, who might not sleep at all.'])
+        : info.brk ? G.vary('offDay.break', ['{break}. The day was hers.']) : G.vary('offDay.sunday', ['Sunday. No school, no alarm, and a whole day that belonged to nobody but her.']);
+      return segment({ slot: 'early', bg: 'solar-dormroom-day', place: 'Iwatodai Dorm', text: off.replace(/\{holiday\}/g, info.holiday || '').replace(/\{break\}/g, info.brk?.name || '') });
+    }
     const exam = G.D.cal.exams.find(e => e.results === info.md);
-    const walk = info.weather === 'rain' ? 'Rain on the monorail windows, umbrellas everywhere.' : info.weather === 'snow' ? 'Snow on the rails. The monorail crept across the bay like it was being careful.' : 'The monorail across the bay, the city falling away behind it.';
+    const walk = G.vary(`monorail.${['rain', 'snow', 'cloudy'].includes(info.weather) ? info.weather : 'clear'}`, info.weather === 'rain' ? 'Rain on the monorail windows, umbrellas everywhere.' : info.weather === 'snow' ? 'Snow on the rails. The monorail crept across the bay like it was being careful.' : 'The monorail across the bay, the city falling away behind it.');
     const chatter = ambient('morning');
     return segment({ slot: 'early', bg: 'train-car-inside', place: 'Monorail', text: walk, sub: chatter ? `<i>“${esc(chatter)}”</i>` : '', next: exam ? () => resultsBoard(exam.id, advance) : advance });
   }
   function lunch(info) {
     const line = ambient('lunch');
-    segment({ slot: 'lunch', bg: 'school-hallway', place: 'Gekkoukan High', text: info.weather === 'rain' ? 'Lunch indoors, the hallway loud with everybody who’d meant to eat on the roof.' : 'Lunch. The roof was crowded and the cafeteria was worse.', sub: line ? `<i>“${esc(line)}”</i>` : '' });
+    const rain = ['rain', 'snow'].includes(info.weather);
+    segment({ slot: 'lunch', bg: 'school-hallway', place: 'Gekkoukan High', text: G.vary(`lunch.${rain ? 'rain' : 'clear'}`, rain ? 'Lunch indoors, the hallway loud with everybody who’d meant to eat on the roof.' : 'Lunch. The roof was crowded and the cafeteria was worse.'), sub: line ? `<i>“${esc(line)}”</i>` : '' });
   }
   function classPeriod(slot, info) {
     screenMusic('class');
@@ -752,7 +758,7 @@
     if (dozed) G.dozed(); // Cherry's Back Row: dozing still earns +1 Courage
     const t = pick(Object.values(T), S().day + slot.length) || { name: 'The teacher', quirk: '' };
     const QUIET = ['Chalk dust, the clock above the door, and the specific drone of a lesson that had decided to take its time.', 'She took notes in neat small handwriting she didn’t remember learning, and the period went by.', 'Someone behind her was passing notes. The teacher pretended not to see. The period went by anyway.', 'Rain or sun outside, the classroom had its own weather, warm and stale and slow.'];
-    const text = dozed ? 'The lecture went somewhere warm and far away, and so did she. When she lifted her head, the board was full and her notes were a single long line where the pen had slid.' : pick(QUIET, S().day * 2 + slot.length);
+    const text = dozed ? 'The lecture went somewhere warm and far away, and so did she. When she lifted her head, the board was full and her notes were a single long line where the pen had slid.' : G.vary('classQuiet', QUIET, `classQuiet.${slot}`);
     const listened = !dozed && Math.abs(Math.sin(S().day * 2.1 + slot.length)) < 0.3;
     if (listened) G.addStat('knowledge', 1);
     segment({ slot, bg: 'gekkoukan-classroom-day', place: t.subject || 'Class', text, sub: dozed ? '' : `<b>${esc(cap(t.name))}.</b> ${esc(t.quirk || '')}${listened ? ' <i>She caught something worth writing down.</i>' : ''}` });
@@ -760,7 +766,7 @@
   function lateNight(info) {
     screenMusic('dorm');
     const t = S().tonight;
-    const text = t === 'battled' ? 'Back from the tower, she fell into bed with her boots half off. Her body felt every floor.' : t === 'rest' ? 'She was asleep before her head finished settling into the pillow.' : info.moon.full ? 'The moon outside was enormous. She lay awake for a while and listened to the dorm be quiet.' : 'The dorm settled around her. Somewhere down the hall, a door, and then nothing.';
+    const text = t === 'battled' ? G.vary('late.battled', 'Back from the tower, she fell into bed with her boots half off. Her body felt every floor.') : t === 'rest' ? G.vary('late.rest', 'She was asleep before her head finished settling into the pillow.') : info.moon.full ? G.vary('late.fullMoon', 'The moon outside was enormous. She lay awake for a while and listened to the dorm be quiet.') : G.vary('late.plain', 'The dorm settled around her. Somewhere down the hall, a door, and then nothing.');
     segment({ slot: 'late', bg: 'solar-dormroom-night', place: "Solar's Room", text, button: 'Sleep', next: () => { const r = G.sleep(); if (r.end) return endScreen(); run(); } });
   }
   // The end of the year: the ending's name, credits, and New Game+ (social stats, half the yen, the Compendium and books carry
@@ -869,7 +875,7 @@
     main.querySelectorAll('[data-area]').forEach(b => b.addEventListener('click', () => {
       const a = G.areaById(b.dataset.area);
       G.sfx('femc-click');
-      if (a.home) { S().spent[`${S().day}-${slot}`] = 'home'; G.save(); return segment({ slot, bg: 'iwotodaidorm-outside', place: 'Iwatodai Dorm', text: 'She went straight home and let the afternoon go by without asking anything of it.', next: advance }); }
+      if (a.home) { S().spent[`${S().day}-${slot}`] = 'home'; G.save(); return segment({ slot, bg: 'iwotodaidorm-outside', place: 'Iwatodai Dorm', text: G.vary('home', ['She went straight home and let the afternoon go by without asking anything of it.']), next: advance }); }
       areaView(slot, a);
     }));
     const first = main.querySelector('.g-px-card.busy') || main.querySelector('.g-px-card');
@@ -895,7 +901,7 @@
     const traceCard = t => card(`data-trace="${t.link.id}" data-px="trace:${t.link.id}"${G.freeSlotSpent(slot) ? ' aria-disabled="true"' : ''}`, `who trace${G.freeSlotSpent(slot) ? ' off' : ''}`, art(t.entry.place || G.linkPlace(t.link)),
       `${faceOf(t.link.id, ' g-pc-pic')}<span class="g-pc-txt"><small class="g-pc-kick">A memory</small><b>${esc(t.entry.place ? t.entry.place.split(' · ').pop() : t.link.short)}</b><small>${esc(`Something of ${t.link.short}'s is still here.`)}</small></span>`);
     const actCard = x => {
-      const ok = G.activityOk(x, slot), pv = G.activityInfo(x), cost = x.cost ? `¥${x.cost.toLocaleString()}` : x.shop ? 'Shop' : 'Free';
+      const ok = G.activityOk(x, slot), pv = G.activityInfo(x), cost = x.club ? (G.clubState(x.id).joined ? 'Your club' : 'Join') : x.cost ? `¥${x.cost.toLocaleString()}` : x.shop ? 'Shop' : 'Free';
       const who = free.filter(l => spotOf(l) === x.spot);
       return card(`data-act="${x.id}" data-px="act:${x.id}"${ok.ok ? '' : ' aria-disabled="true"'}`, `place${ok.ok ? '' : ' off'}`, art(`${a.name} · ${x.spot}`),
         `<span class="g-pc-txt"><small class="g-pc-kick">${esc(x.spot)}</small><b>${esc(x.name)}</b><small class="g-act-benefit">${esc(pv.benefit)} · ${esc(pv.time)}</small>${ok.ok ? '' : `<small class="g-pc-why">${esc(ok.why)}</small>`}<small class="g-px-more">${esc(x.about || '')}</small></span>`,
@@ -922,7 +928,7 @@
       const [kind, id] = b.dataset.px.split(':');
       if (kind === 'act') {
         const x = G.activities().find(v => v.id === id), pv = G.activityInfo(x), ok = G.activityOk(x, slot), who = free.filter(l => spotOf(l) === x.spot);
-        panel.innerHTML = `<p class="g-kicker">${esc(a.name)} · ${esc(x.spot)}</p><h2>${esc(x.name)}</h2>${x.about ? `<p class="g-px-about">${esc(x.about)}</p>` : ''}
+        panel.innerHTML = `<p class="g-kicker">${esc(a.name)} · ${esc(x.spot)}${x.club ? ` · ${G.clubState(x.id).joined ? 'your club' : 'club'}` : ''}</p><h2>${esc(x.name)}</h2>${x.about ? `<p class="g-px-about">${esc(x.about)}</p>` : ''}
           <h3>You’d get</h3><ul class="g-px-gets"><li><b>${esc(pv.benefit)}</b></li><li><small>${esc(pv.cost)}</small></li><li><small>${esc(pv.time)}</small></li></ul>
           ${ok.ok ? '' : `<p class="g-warn">${esc(ok.why)}</p>`}
           ${who.length ? `<h3>Who’s there</h3><ul class="g-px-who">${who.map(l => `<li>${faceOf(l.id)}<span><b>${esc(l.short)}</b><small>${esc(personNote(l, slot).line)}</small></span></li>`).join('')}</ul>` : ''}
@@ -955,6 +961,7 @@
     if (first) { paint(first); first.focus({ preventScroll: true }); }
   }
   function previewActivity(x, slot, a) {
+    if (x.club) return previewClub(x, slot, a);
     const preview = G.activityInfo(x), ok = G.activityOk(x, slot);
     const o = overlay(`<p class="g-kicker">${esc(a.name)} · ${esc(x.spot)}</p><h2>${esc(x.name)}</h2>
       ${x.about ? `<p class="g-note">${esc(x.about)}</p>` : ''}<p>${esc(preview.benefit)}</p><ul class="g-gains"><li>${esc(preview.cost)}</li><li>${esc(preview.time)}</li></ul>
@@ -968,8 +975,31 @@
   }
   function doActivity(x, slot, a) {
     if (x.shop) return openShop(x.shop, () => areaView(slot, a));
+    if (x.club) return playClub(x, slot, a);
     const r = G.doActivity(x);
-    SC.play({ scene: [{ n: r.text }], place: r.place, time: slot === 'evening' ? 'Evening' : G.slotName(slot), onDone: () => advance() });
+    // Sometimes someone turns up (data/living-runins.js): their scene plays on the end of this one.
+    const ri = G.runInDue({ act: x.id, area: a.id, slot });
+    SC.play({ scene: [{ n: r.text }, ...(ri ? ri.scene : [])], place: r.place, time: slot === 'evening' ? 'Evening' : G.slotName(slot), label: ri ? `${x.name} · ${G.name(ri.who)}` : undefined,
+      onDone: () => { if (ri) G.finishRunIn(ri.id); advance(); } });
+  }
+  /* ── Clubs (places.js clubs, data/clubs.js): join on a club day (the first practice), then practice on its days. ── */
+  function previewClub(x, slot, a) {
+    const st = G.clubState(x.id), ok = G.activityOk(x, slot), pv = G.activityInfo(x);
+    const days = (x.days || []).map(d => ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][d]).join(', ');
+    const lead = x.link && G.isMet(x.link) ? ` ${G.LINKS[x.link]?.short || ''} is in it.` : '';
+    const o = overlay(`<p class="g-kicker">${esc(a.name)} · ${esc(x.spot)} · ${st.joined ? 'Your club' : 'Club'}</p><h2>${esc(x.name)}</h2>
+      ${x.about ? `<p class="g-note">${esc(x.about)}${esc(lead)}</p>` : ''}<p>${esc(pv.benefit)} every practice</p>
+      <ul class="g-gains"><li>Meets after school: ${esc(days)}</li><li>${st.joined ? `${st.sessions} practice${st.sessions === 1 ? '' : 's'} so far` : 'Joining is free; the first practice is today.'}</li><li>Uses this time slot.</li></ul>
+      ${ok.ok ? '' : `<p class="g-warn">${esc(ok.why)}</p>`}
+      <div class="g-row"><button type="button" class="g-btn pink" data-confirm${ok.ok ? '' : ' disabled'}>${st.joined ? 'Go to practice' : 'Join the club'}</button><button type="button" class="g-btn" data-close>Back</button></div>`, 'g-activity-preview g-club-preview');
+    o.el.querySelector('[data-confirm]').addEventListener('click', () => { o.close(); if (!G.activityOk(x, slot).ok) return areaView(slot, a); playClub(x, slot, a); });
+  }
+  function playClub(x, slot, a) {
+    const st = G.clubState(x.id);
+    if (!st.joined) G.joinClub(x);
+    const pk = G.clubScene(x), ri = G.runInDue({ club: x.id, area: a.id, slot });
+    SC.play({ scene: [...pk.scene, ...(ri ? ri.scene : [])], place: x.place || `${a.name} · ${x.spot}`, time: G.slotName(slot), label: x.name, link: x.link && G.isMet(x.link) ? x.link : null,
+      onDone: () => { G.finishClub(x, pk); if (ri) G.finishRunIn(ri.id); advance(); } });
   }
   function previewJob(j, slot, a) {
     if (!G.jobState(j.id).hired) return jobFlow(j, slot, a);
@@ -990,8 +1020,9 @@
       o.el.querySelector('[data-y]')?.addEventListener('click', () => { G.hire(j); o.close(); G.toast('job', `Hired at ${j.name}.`); G.save(); areaView(slot, a); });
       return;
     }
-    const pk = G.shiftScene(j);
-    SC.play({ scene: pk.scene, place: j.place, time: slot === 'evening' ? 'Evening' : G.slotName(slot), title: pk.beat ? null : null, label: j.name, onDone: () => { G.finishShift(j, pk); advance(); } });
+    const pk = G.shiftScene(j), ri = G.runInDue({ job: j.id, area: j.area, slot });
+    SC.play({ scene: [...pk.scene, ...(ri ? ri.scene : [])], place: j.place, time: slot === 'evening' ? 'Evening' : G.slotName(slot), label: j.name,
+      onDone: () => { G.finishShift(j, pk); if (ri) G.finishRunIn(ri.id); advance(); } });
   }
 
   /* ── Links ── */
@@ -1028,6 +1059,7 @@
     const book = s.books.owned.find(b => !s.books.done.includes(b));
     const jobs = G.D.jobs.filter(j => G.jobState(j.id).hired && j.slot === 'evening');
     const dorm = G.dormActs(), desk = dorm.filter(a => a.desk);
+    const secrets = s.spent[`${s.day}-evening`] ? [] : G.secretsDue(); // a hidden link's quiet option (My Melody)
     const opt = (id, label, sub, ok = true, cls = '') => `<button type="button" class="g-night ${cls}" data-n="${id}"${ok ? '' : ' disabled'}><b>${label}</b><small>${esc(sub)}</small></button>`;
     show(`<section class="g-dorm"><div class="g-map-head"><p class="g-kicker">Evening · Iwatodai Dorm</p><h1>Tonight</h1>
       <p class="g-map-sub">${info.moon.days != null && info.moon.days <= 3 && !info.moon.full ? `The moon is almost full. ${info.moon.days} day${info.moon.days === 1 ? '' : 's'} to go.` : 'The lounge smells like instant ramen. What now?'}</p></div>
@@ -1041,6 +1073,7 @@
         ${jobs.map(j => { const ok = G.jobOk(j, 'evening'); return opt(`job:${j.id}`, `Work · ${esc(j.name)}`, ok.ok ? `¥${j.pay.toLocaleString()}` : ok.why, ok.ok); }).join('')}
         ${homeLinks.map(l => opt(`link:${l.id}`, `${esc(G.linkName(l))}`, `${l.arcana} · ${G.homeOf(l).spot ? G.homeOf(l).spot.toLowerCase() : 'in the lounge'}`, true, 'who')).join('')}
         ${traces.map(t => opt(`trace:${t.link.id}`, esc(t.entry.place ? t.entry.place.split(' · ').pop() : t.link.short), `Something of ${t.link.short}'s is still here.`, true, 'who trace')).join('')}
+        ${secrets.map(l => opt(`secret:${l.id}`, esc(l.secret.label || 'Something’s different tonight'), l.secret.sub || '', true, 'secret')).join('')}
         ${opt('out', 'Go out', 'Iwatodai at night')}
       </div></section>`, 'is-dorm');
     main.querySelectorAll('[data-n]').forEach(b => b.addEventListener('click', () => nightChoice(b.dataset.n, info)));
@@ -1050,16 +1083,25 @@
     const spend = tag => { s.spent[`${s.day}-evening`] = tag; G.save(); };
     if (n === 'study') {
       G.doStudy(); // rainy nights, Mitsuru's Study Hall, Jungwon's Tutor Session, Judy's Editing Bay
-      return SC.play({ scene: [{ n: pick(G.D.places.dorm.study.lines, s.day) }], place: "Iwatodai Dorm · Solar's Room", time: 'Evening', onDone: advance });
+      return SC.play({ scene: [{ n: G.vary('study', G.D.places.dorm.study.lines) }], place: "Iwatodai Dorm · Solar's Room", time: 'Evening', onDone: advance });
     }
     if (n === 'desk') return deskMenu(info);
     if (n.startsWith('dorm:')) return dormAct(G.dormActs().find(a => a.id === n.slice(5)));
-    if (n === 'rest') { s.tonight = 'rest'; spend('rest'); return SC.play({ scene: [{ n: pick(G.D.places.dorm.rest.lines, s.day) }], place: "Iwatodai Dorm · Solar's Room", time: 'Evening', onDone: advance }); }
-    if (n === 'read') { const r = G.readTonight(); return SC.play({ scene: [{ n: r.finished ? `She read the last chapter of ${r.book.name} and closed it, and sat with it in her lap for a while.` : `She read a chapter of ${r.book.name}, then another, until the words started sliding.` }], place: "Iwatodai Dorm · Solar's Room", time: 'Evening', onDone: advance }); }
+    if (n === 'rest') { s.tonight = 'rest'; spend('rest'); return SC.play({ scene: [{ n: G.vary('rest', G.D.places.dorm.rest.lines) }], place: "Iwatodai Dorm · Solar's Room", time: 'Evening', onDone: advance }); }
+    if (n === 'read') {
+      const r = G.readTonight();
+      const line = r.finished ? G.vary('read.finished', ['She read the last chapter of {book} and closed it, and sat with it in her lap for a while.']) : G.vary('read.chapter', ['She read a chapter of {book}, then another, until the words started sliding.']);
+      return SC.play({ scene: [{ n: line.replace(/\{book\}/g, r.book.name) }], place: "Iwatodai Dorm · Solar's Room", time: 'Evening', onDone: advance });
+    }
     if (n === 'out') return goOut('evening');
     if (n.startsWith('job:')) return jobFlow(G.D.jobs.find(j => j.id === n.slice(4)), 'evening', G.areaById(G.D.jobs.find(j => j.id === n.slice(4)).area));
     if (n.startsWith('link:')) return playLink(G.LINKS[n.slice(5)]);
     if (n.startsWith('trace:')) return playLink(G.LINKS[n.slice(6)], false, G.nextTrace(G.LINKS[n.slice(6)]));
+    if (n.startsWith('secret:')) {
+      const l = G.LINKS[n.slice(7)], x = l.secret;
+      return SC.play({ scene: x.scene || [], place: x.place || "Iwatodai Dorm · Kitchen", time: x.time || 'Evening', music: x.music || null, label: x.label || '', link: l.id,
+        onDone: res => { G.findSecret(l.id, res.gained || 0); advance(); } });
+    }
     if (n === 'tartarus') return tartarusPrompt();
   }
   // An evening activity at home (places.js dorm.acts): the stats, then a line of narration in its place.

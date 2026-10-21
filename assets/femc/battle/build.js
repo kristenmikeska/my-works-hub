@@ -592,7 +592,7 @@ window.FemcBuild = (() => {
     ['cherry', 8, 'Try Me', 'assist', { tryMe: {} }, 'Once per battle, an attack aimed at Solar while she’s Down is cancelled, and the attacker is Distressed.'],
     ['cherry', 10, 'Bestie Clause', 'max', { bestie: { dmg: 0.2 } }, 'Solar’s crits on a debuffed foe Distress it, and Distressed foes take 20% more crit damage.'],
     // ── Other links
-    ['rio', 2, 'Practice Swing', 'daily', {}, 'Club practice gives +1 Courage and +1 Proficiency.', 'Waits on clubs (the hook is places.js clubs).'],
+    ['rio', 2, 'Practice Swing', 'daily', { clubStat: { 'club-tennis': { courage: 1, proficiency: 1 } } }, 'Tennis club practice gives +1 Courage and +1 Proficiency.'],
     ['rio', 4, 'Second Serve', 'assist', { secondServe: {} }, 'Once per battle, if Solar’s attack misses, she gets an immediate retry.'],
     ['rio', 6, 'Stamina', 'battle', { stamina: { hp: 0.08, win: 0.05 } }, 'Solar gets +8% max HP, and the party recovers 5% HP after every win.'],
     ['rio', 10, 'Match Point', 'max', { matchPoint: { below: 0.2 } }, 'Solar always crits a foe under 20% HP.'],
