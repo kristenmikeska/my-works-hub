@@ -91,12 +91,23 @@ window.FEMC_GAME_PLACES = {
     { id: 'wardvisit', area: 'hospital', spot: "Children's Ward", name: 'Volunteer: read on the children’s ward', about: 'The children’s ward wants volunteers to read aloud and play cards on visiting afternoons.', icon: 'book', slots: ['after'], days: [2, 4, 6], stats: { kindness: 2, charm: 1 },
       lines: ['She read the same picture book four times to a girl with a cast on her arm, doing all the voices, and the girl corrected her pronunciation of the dragon every single time.', 'Cards with a boy who cheated beautifully and did not know she knew. She lost on purpose twice and for real once, and the nurse caught her eye over his head and smiled.'] }
   ],
-  /* Clubs (the hook for tennis, the library club, band and gaming; Kat's roadmap section 7 C). Each club is an activity
-     (same fields as above, plus `club: true` added by core.js), shown at its area (default Gekkoukan, after school):
-       { id: 'club-tennis', spot: 'Tennis Courts', name: 'Tennis practice', link: 'rio', days: [1, 3, 5], stats: { courage: 1, proficiency: 1 },
-         needs: { ... }, from: 'M/D', about, lines }
-     Rio's Practice Swing (build.js) waits for the tennis club's id. Empty until the clubs are built. */
-  clubs: [],
+  /* Clubs (Kat's roadmap section 7 C; built in the living world, part 2). Each club is an activity (same fields as above,
+     plus `club: true` added by core.js), shown at its area (default Gekkoukan, after school, school days):
+       { id, spot, name, kind: 'sports' | 'culture', link (whose club it is), days, stats (each practice), about, place }
+     Join from its card (the club's `join` scene is the first practice); after that it meets on its `days`. Practices play a
+     scene from data/clubs.js (same id): recurring members, a small story across the year, seasonal ones, and, for some,
+     scenes that need a link's rank or route (Rio's tennis club on her romance route). Rio's Practice Swing (build.js) adds
+     to the tennis club. Any number of clubs can be joined; they meet on different days. */
+  clubs: [
+    { id: 'club-tennis', spot: 'Tennis Courts', place: 'Gekkoukan High · Tennis Courts', name: 'Tennis club', kind: 'sports', link: 'rio', icon: 'club', slots: ['after'], days: [1, 3, 5], stats: { courage: 2, proficiency: 1 },
+      about: 'Gekkoukan’s tennis club: drills, a ball cart with one bad wheel, a captain who stays late, and a team that is mostly there for the team.' },
+    { id: 'club-library', spot: 'Library', place: 'Gekkoukan High · Library', name: 'Library committee', kind: 'culture', link: 'saori', icon: 'book', slots: ['after'], days: [2, 4], stats: { knowledge: 2, kindness: 1 },
+      about: 'The library committee: the returns cart, the overdue list, new arrivals to stamp, and a book club that meets at the big table when the committee is done.' },
+    { id: 'club-band', spot: 'Music Room', place: 'Gekkoukan High · Music Room', name: 'Light music club', kind: 'culture', icon: 'mic', slots: ['after'], days: [2, 5], stats: { charm: 2, proficiency: 1 },
+      about: 'A band of four, a borrowed amp and a practice room on the third floor. They need a keyboard. They would settle for anybody who can count to four.' },
+    { id: 'club-gaming', spot: 'Computer Room', place: 'Gekkoukan High · Computer Room', name: 'Gaming club', kind: 'culture', icon: 'game', slots: ['after'], days: [3, 6], stats: { proficiency: 2, courage: 1 },
+      about: 'The gaming club: the computer room after hours on Wednesdays, and Saturday scrims at Game Panic in the mall, where anybody can wander in.' }
+  ],
   /* Night at the dorm (Evening). Tartarus opens after the story unlocks it. Study and Rest are always there; `acts` are the
      other evening activities at home (core.js dormActs): desk: true ones are listed under "Your desk". from / until: dates;
      perk: only once that bond perk (build.js fx key) is earned; leftovers: the dish comes along on the next Tartarus night. */
@@ -177,6 +188,8 @@ window.FEMC_GAME_PLACES = {
     ['Gekkoukan High · Shoe Lockers', 'school-entryhallway'],
     ['Gekkoukan High · Front Gate', 'gekkoukanhigh'],
     ['Gekkoukan High · Tennis Courts', 'outside-school-2'],
+    ['Gekkoukan High · Music Room', 'gekkoukan-classroom-day', 'gekkoukan-classroom-evening'],
+    ['Gekkoukan High · Computer Room', 'gekkoukan-classroom-day', 'gekkoukan-classroom-evening'],
     ['Gekkoukan High · Archery Range', 'outside-school-2'],
     ['Gekkoukan High · Classroom', 'gekkoukan-classroom-day', 'gekkoukan-classroom-evening'],
     ['Gekkoukan High', 'school-hallway'],
@@ -214,6 +227,7 @@ window.FEMC_GAME_PLACES = {
     ['Hagakure', 'hagakureramen'],
     ['Tutor', 'green-bedroom'],
     ['Paulownia Mall · Chagall Café', 'lablanc'],
+    ['Paulownia Mall · Fountain', 'paulownia-mall'],
     ['Paulownia Mall · Shop Windows', 'clothing-store'],
     ['Paulownia Mall · Flower Stall', 'shopping-street'],
     ['Paulownia Mall · Game Panic', 'gameparade-outside'],
@@ -239,6 +253,7 @@ window.FEMC_GAME_PLACES = {
     ['Tatsumi Memorial Hospital', 'hospital-hallway-day', 'hospital-hallway-night'],
     ['Moonlight Bridge', 'moonlightbridge', null, 'nightblue'],
     ['Naganaki Shrine · Night', 'naganaki-shrine-night'],
+    ['Naganaki Shrine · Amulet Stall', 'outside-shrine-day', 'naganaki-shrine-night'],
     ['Naganaki Shrine', 'outside-shrine-day', 'naganaki-shrine-night'],
     // Yakushima (data/yakushima.js): the villa, the forest and the ferry reuse art until Kat's own (FEMC-ART-TODO.md section 8).
     ['Yakushima · Kirijo Villa', 'hotel-lobby'],

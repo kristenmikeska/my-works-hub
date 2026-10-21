@@ -1,9 +1,11 @@
 /* Kasumi Yoshizawa · Faith. Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
-   A P5R visitor and side romance (route choice at rank 9). She goes home on 1/30 with every visitor.
-   P5R's third-semester twist is felt, never stated: she is never named anything but Kasumi. afterMax: 2 scenes; christmas: 12/24. */
+   Persona-world cast (kind 'persona', Kat's ruling 2026-10-20): a first-year gymnast from Tokyo, down here this year for
+   training, her school and her sister a train ride and a text away. Side romance (route choice at rank 9). No `closes`.
+   P5R's third-semester twist is felt, never stated: she is never named anything but Kasumi. afterMax: 2 scenes; christmas:
+   12/24. Holidays and reactive texts: data/living-persona.js. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'kasumi', name: 'Kasumi Yoshizawa', short: 'Kasumi', arcana: 'Faith', numeral: '', from: 'Persona 5 Royal',
-  kind: 'visitor',
+  kind: 'persona',
   romance: 'side',
   starts: '5/1',
   home: { area: 'Naganaki Shrine', spot: 'Flat Stones', slot: 'after', days: [0, 2, 4, 6],
@@ -156,9 +158,9 @@
       ] },
       { n: "They sat on the dry end of the steps afterwards while the stones finished steaming, and Kasumi let Solar put a plaster on her palm, holding her hand out flat and very still like a patient at the dentist, and talked, because Kasumi, once she'd decided you were safe, talked the way water runs downhill." },
       { s: 'kasumi', f: 'neutral', t: "My sister and I used to practice in the park by our house until the streetlights came on. She'd count for me. She has a better sense of rhythm than I do. She just doesn't think so." },
-      { s: 'kasumi', f: 'happy', t: "Now I have a real coach, and a real gym, at school. Shujin Academy, in Aoyama. Have you heard of it? Everybody in Tokyo knows it. The gym has these huge windows." },
-      { s: 'solar', f: 'neutral', t: "Is it new?" },
-      { s: 'kasumi', f: 'surprised', t: "Shujin? No, it's been there forever. It's very old and very strict, and the cafeteria curry is terrible. Why?" },
+      { s: 'kasumi', f: 'happy', t: "Now I have a real coach, and a real gym, at school. Shujin Academy, in Aoyama. Have you heard of it? Everybody in Tokyo knows it. The gym has these huge windows. They sent me down here this year to train with a coach at the sports center by the bay. It's a very big honor. I cried in the office." },
+      { s: 'solar', f: 'neutral', t: "Is it far?" },
+      { s: 'kasumi', f: 'surprised', t: "Shujin? An hour, if you get the express. It's very old and very strict, and the cafeteria curry is terrible. Why?" },
       { choose: [
         { t: "I'd like to see you compete there someday.", notes: 3, then: [
           { s: 'kasumi', f: 'blushing', t: "...You would? Senpai, you can't just say things like that. I'll hold you to it." },
@@ -169,11 +171,10 @@
         ] }
       ] },
       { place: 'Iwatodai Strip · Bookworms', time: 'Evening' },
-      { n: "Bookworms kept a shelf of school guides by the register, fat paperback directories with glossy covers for parents deciding where to send their children. Solar didn't know why she went in. Her feet turned at the door the way they'd turned at the shrine steps, and then she was standing at the shelf with last year's guide to private high schools in Tokyo open across her arm." },
-      { n: "Aoyama had four. None of them was Shujin. She checked the index, and then the index again, and then the pages on either side of where it should have been, in case it had been filed under an old name or a sister school or a typo." },
-      { n: "There was nothing. Not a torn-out page, not a misprint. Only the schools that were there, in order, closing up neatly over the place where an old, strict school with terrible curry should have been, as if nobody had ever thought to leave room for it." },
-      { n: "It was last year's edition. Kasumi might have said the name wrong, or Solar might have heard it wrong, or it was the kind of school too proud to put itself in a book for parents. There were a dozen explanations, and every single one of them was perfectly reasonable." },
-      { n: "The old woman behind the register asked, kindly, whether she was going to buy it. Solar put it back on the shelf with the spine straight and said no, and walked home along the river with the evening coming down blue and the strange, itchy feeling of having been told about something too early." }
+      { n: "Bookworms kept a shelf of school guides by the register, fat paperback directories with glossy covers for parents deciding where to send their children. Solar told herself she only wanted to see the windows. Her feet turned at the door the way they'd turned at the shrine steps, and then she was standing at the shelf with last year's guide to private high schools in Tokyo open across her arm." },
+      { n: "Aoyama had four. Shujin was the second, a half page in small gray type: founded long ago, uniform regulations strictly observed, a volleyball program and a gymnastics program both described, in the guarded language of school guides, as of national standing. There was a photograph of the gym, very small. The windows really were huge." },
+      { n: "Solar stood at the shelf and read the half page twice, the founding year and the bus routes and the line about the cafeteria, which did not mention the curry, and found that she was pleased about it, quietly and out of all proportion, the way you'd be pleased to find a friend's name in a newspaper. It was a strange thing to have done. She couldn't have said what she'd expected. Only that she'd wanted to see the place a person came from, since she couldn't see her own." },
+      { n: "The old woman behind the register asked, kindly, whether she was going to buy it. Solar put it back on the shelf with the spine straight and said no, and walked home along the river with the evening coming down blue and the slightly foolish feeling of having looked up a friend's school like somebody's mother." }
     ] },
 
     { after: '5/23', title: '3: which one', place: 'Naganaki Shrine', time: 'After School', scene: [
@@ -293,26 +294,26 @@
       { s: 'kasumi', f: 'sad', t: "I've taken that train every day since I was twelve. I know every stop. And I stood there with the coins in my hand and there was nothing. Like a word on the tip of your tongue, except it was my whole house." },
       { n: "She laughed, small, not much like a laugh." },
       { s: 'kasumi', f: 'neutral', t: "So I came here and practiced until my arms hurt, and that helped. It always helps." },
-      { n: "Solar knew. She'd half known since the shelf at Bookworms, and properly since last week, since Mitsuru's table and Fuuka sitting with her eyes closed, listening to the city, and a word nobody had wanted to say first. She'd been carrying it up these steps every Tuesday and Thursday since, setting it down at the top, picking it up again on the way down." },
+      { n: "Solar didn't have a word for that part. She had a word for something else, though, and she'd been carrying it up these steps every Tuesday and Thursday since last week, since Mitsuru's table and Fuuka sitting with her eyes closed, listening to the city, and saying, quietly, that there was someone at the old shrine who didn't go into a coffin at midnight. She'd been setting it down at the top of the steps and picking it up again on the way down." },
       { choose: [
         { t: "(Tell her. All of it, plainly.)", notes: 3, then: [
-          { n: "So Solar told her plainly, the way Mitsuru told things, because she couldn't think of a gentler way that wouldn't turn out worse. That there were people in the city who had come from somewhere else. That something drew them, like water toward a drain. That the ones with someone here stayed solid, and the ones without went faint. That Shujin wasn't in the book at Bookworms, and that she'd checked. Kasumi listened to all of it without interrupting once, which she had never done in her life, with both hands flat on her knees." }
+          { n: "So Solar told her plainly, the way Mitsuru told things, because she couldn't think of a gentler way that wouldn't turn out worse. That there was an hour between one day and the next that most people slept through without knowing, sealed in coffins in the green. That a few people didn't. That Fuuka could hear the ones who didn't, and that Fuuka had heard her. Kasumi listened to all of it without interrupting once, which she had never done in her life, with both hands flat on her knees." }
         ] },
         { t: "(Tell her a piece at a time, watching her face.)", notes: 2, then: [
-          { n: "Solar told it in pieces, the people from somewhere else, the pull, the ones who went faint, the book at Bookworms, stopping after each one to see if Kasumi wanted the next. Every time, Kasumi nodded, very small, the way you'd nod at a coach calling out the next element, and Solar went on." }
+          { n: "Solar told it in pieces, the hour, the coffins, the few who stayed awake, Fuuka listening, stopping after each one to see if Kasumi wanted the next. Every time, Kasumi nodded, very small, the way you'd nod at a coach calling out the next element, and Solar went on." }
         ] },
         { t: "Maybe you're just homesick.", notes: 1, then: [
           { s: 'kasumi', f: 'neutral', t: "Maybe. ...Senpai, you're doing the face. The one where you're being very nice about being disappointed." },
           { n: "So Solar told her the rest. Kasumi listened to it with her hands flat on her knees." }
         ] }
       ] },
-      { s: 'kasumi', f: 'surprised', t: "...Another world." },
-      { s: 'kasumi', f: 'happy', t: "Okay! Okay. That's... okay. It's like an away meet. A really, really far away meet." },
-      { s: 'kasumi', f: 'neutral', t: "I remember the night now. Isn't that strange? I didn't, before. I was walking home from the gym in the rain, and there's a big crossing near the station with all the screens, and I was waiting for the light, and I closed my eyes for one second because I was so tired." },
-      { s: 'kasumi', f: 'neutral', t: "And then I was on a platform, and everything was green and quiet, and there was a girl on a bench. Small. In a coat much too big for her, with a cap. She told me there was a shrine that way. She said the light was good there in the afternoon." },
+      { s: 'kasumi', f: 'surprised', t: "...A secret hour." },
+      { s: 'kasumi', f: 'happy', t: "Okay! Okay. That's... okay. It's like an extra session. A really, really late extra session." },
+      { s: 'kasumi', f: 'neutral', t: "I remember my first night now. Isn't that strange? I didn't, before. I came down on the last train in the rain, with my bag and my ribbon stick, and I was waiting on the platform for someone from the sports center, and I closed my eyes for one second because I was so tired." },
+      { s: 'kasumi', f: 'neutral', t: "And when I opened them everything was green and quiet, and there was a girl on a bench. Small. In a coat much too big for her, with a cap. She told me there was a shrine that way. She said the light was good there in the afternoon." },
       { n: "The light's good here. Kasumi had said it to Solar the very first day, on these stones, as if it had been her own idea. The hairs on Solar's arms rose under her sleeves, slowly, one at a time, though the air was as warm and wet as bathwater." },
-      { s: 'kasumi', f: 'serious', t: "But I'm not running from anything, Senpai. That's the funny part. Everything at home is perfect. My grades. My coach. My sister. Everything is exactly how I want it to be." },
-      { s: 'kasumi', f: 'neutral', t: "So why would I run?" },
+      { s: 'kasumi', f: 'serious', t: "Mitsuru-senpai asked me why I came all the way down here. I said for the training. That's true. Everything at home is perfect. My grades. My coach. My sister. Everything is exactly how I want it to be." },
+      { s: 'kasumi', f: 'neutral', t: "So why did it feel like running?" },
       { choose: [
         { t: "Then why does going home scare you?", notes: 3, then: [
           { n: "Kasumi didn't answer for a long time. A crow walked across the stones in front of them, looked at them both, and walked off again." },
@@ -322,12 +323,12 @@
           { s: 'kasumi', f: 'happy', t: "It is! It's so tiring!" },
           { s: 'kasumi', f: 'surprised', t: "...Don't tell anyone I said that." }
         ] },
-        { t: "Maybe it caught you by mistake.", notes: 1, then: [
+        { t: "Maybe it was just the training.", notes: 1, then: [
           { s: 'kasumi', f: 'happy', t: "Maybe! That must be it!" },
           { n: "She said it brightly, and too fast, like landing a move a beat early so nobody would see you wobble." }
         ] }
       ] },
-      { s: 'kasumi', f: 'neutral', t: "And the part about staying solid. You need someone here." },
+      { s: 'kasumi', f: 'neutral', t: "And Mitsuru-senpai said nobody should be awake in that hour on their own." },
       { n: "She put the ribbon stick down on the step and held out both hands, palms up, the way she had on the balance stone in May." },
       { s: 'kasumi', f: 'blushing', t: "Then hold on, Senpai. Like on the stone. Until I've got it." },
       { choose: [
@@ -344,7 +345,7 @@
           { n: "She kept her hands out until Solar took them." }
         ] }
       ] },
-      { n: "The rain came back at five, soft, almost apologetic. Kasumi walked her down to the gate under one umbrella and announced, with total seriousness, that she had decided to treat it as a training camp, a very long one, somewhere very far away, and that she was going to come home from it better than she'd left. Solar said that sounded like her. Kasumi beamed. Solar walked home in the rain thinking that it sounded exactly like her, and that that was the trouble." }
+      { n: "The rain came back at five, soft, almost apologetic. Kasumi walked her down to the gate under one umbrella and announced, with total seriousness, that she had decided to treat the green hour as part of the training camp, the hardest part, the one nobody puts on the schedule, and that she was going to come out of it better than she went in. Solar said that sounded like her. Kasumi beamed. Solar walked home in the rain thinking that it sounded exactly like her, and that that was the trouble." }
     ] },
 
     { after: '7/14', title: '6: always lands it', place: 'Naganaki Shrine', time: 'After School', scene: [
@@ -557,8 +558,8 @@
       { s: 'kasumi', f: 'neutral', t: "They look at you the way you'd look at a photo of someone. Like they're checking it against something. Like you're almost right." },
       { n: "Solar knew the look. She'd felt it land on her across the dining table, across the lounge, at the top of the stairs, a gaze going over her face feature by feature and coming up short somewhere she couldn't see, and every time, her body had wanted to be whatever it was they were checking for, and hadn't known how." },
       { s: 'kasumi', f: 'neutral', t: "They came for you. People who know exactly who you are. They crossed a whole... whatever it is. For you." },
-      { s: 'kasumi', f: 'sad', t: "Nobody's come for me." },
-      { s: 'kasumi', f: 'neutral', t: "I keep telling myself it means everything at home is fine. Nobody needs to come. Everything's perfect. And then I think maybe it means nobody knows where I went. Or who to ask for." },
+      { s: 'kasumi', f: 'sad', t: "Nobody would come for me like that." },
+      { s: 'kasumi', f: 'neutral', t: "I know that sounds sad. It isn't. Everyone at home knows exactly where I am. My sister writes. My coach calls on Sundays. Everything's perfect. And then I think, if I turned into somebody else, a little bit at a time, would anybody look at me like that? Checking? Or would they just say I was fine." },
       { s: 'kasumi', f: 'neutral', t: "Senpai. When they talk about the girl they know, is that you? Or is this you? The one on my steps?" },
       { choose: [
         { t: "Both. I think I'm both. I don't know how yet.", notes: 3, then: [
@@ -616,7 +617,7 @@
       { n: "At the walkover she looked down. Solar saw her do it, the old hitch, eyes down and to the side, checking. And then she kept going. Whatever she was checking for was there. She came down through the turn and caught the stick and stood, and held it, arms up, breathing, on a stone the size of a tray, and didn't wobble at all." },
       { s: 'kasumi', f: 'happy', t: "That's me, Senpai. I think that's what I look like." },
       { s: 'kasumi', f: 'neutral', t: "I don't know whose routine it is. I made it this month, out of the parts my body kept doing when I wasn't watching. I looked down. I always look down. And this time I was there." },
-      { s: 'kasumi', f: 'neutral', t: "I think when I go home, I'm going to wake up. I don't know how I know. And I don't know who I'll be when I do. I think she might be sadder than me. But I wanted somebody to see her first. So somebody saw her." },
+      { s: 'kasumi', f: 'neutral', t: "I think one day soon I'm going to wake up. I don't know how I know. And I don't know who I'll be when I do. I think she might be sadder than me. But I wanted somebody to see her first. So somebody saw her." },
       { choose: [
         { t: "I saw her.", notes: 3, then: [
           { n: "Kasumi's face did something complicated and then simple. She came and sat on the step below Solar's, close, with her back against Solar's knees, the way you'd lean on a wall you trusted, and breathed out a long white breath into the cold." },
@@ -668,7 +669,7 @@
       { n: "On the way down the steps Solar realized she hadn't counted them. Not once. Not on the way up either. She couldn't have said how many there were, and for the first time since April, she didn't need to know." }
     ] }
   ],
-  // After MAX (engine need: not played yet). Kasumi goes home on 1/30 with every visitor; the second scene is set in late January.
+  // After MAX: they play in order, then rotate, at the shrine. The second scene is set in late January.
   afterMax: [
     { place: 'Naganaki Shrine', time: 'After School', scene: [
       { music: 'day' },
@@ -701,7 +702,7 @@
     ] },
     { place: 'Naganaki Shrine', time: 'After School', scene: [
       { music: 'tender' },
-      { n: "The last week of January, and there was frost on the flat stones in the mornings that didn't burn off until noon, white ferns of it in every crack, and the shrine had gone back to being the kind of place people walked past on the way to somewhere else. Kasumi was there anyway. She'd been there every day that week. She said she wanted to get the stones memorized." },
+      { n: "The last week of January, and there was frost on the flat stones in the mornings that didn't burn off until noon, white ferns of it in every crack, and the shrine had gone back to being the kind of place people walked past on the way to somewhere else. Kasumi was there anyway. She'd been there every day that week. She said she wanted to know the stones by heart, in case she ever had to find them in the dark." },
       { s: 'kasumi', f: 'neutral', t: "I keep dreaming about waking up, Senpai. Every night now. It's not scary anymore. Mostly." },
       { s: 'kasumi', f: 'neutral', t: "I can't see the room. I just know I'm in it. And somebody's going to say something to me when I open my eyes, and I'm going to have to answer." },
       { n: "She did the routine once, her own, the slow one, in sneakers on the frosted stone, carefully, and landed the walkover, and looked down, and was there. Then she did it again, just the first thirty seconds, the turn and the throw and the catch, over and over, the way she had on the very first day, and every time she landed she glanced down at the line of her shadow on the stones before she did anything else, checking her work. The shadow was very long. The sun was very low." },
@@ -802,7 +803,7 @@
           { s: 'kasumi', f: 'happy', t: "One second! Senpai! Personal best! For both of us!" }
         ] },
         { t: "Merry Christmas, Kasumi.", notes: 3, then: [
-          { s: 'kasumi', f: 'happy', t: "Merry Christmas, Senpai. Best one I've had. In any world." }
+          { s: 'kasumi', f: 'happy', t: "Merry Christmas, Senpai. Best one I've had. In any year." }
         ] }
       ] }
     ] },

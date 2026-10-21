@@ -15,7 +15,7 @@
   { id: 'elizabeth', name: 'Elizabeth', short: 'Elizabeth', arcana: 'Velvet Room', numeral: '', from: 'Persona 3', kind: 'frame', romance: null, starts: '4/7', hidden: true, status: 'stub', todo: 'Requests and Velvet Room visits.' },
   // Visitors
   { id: 'kiriko', name: 'Kiriko', short: 'Kiriko', arcana: 'Fortune', numeral: 'X', from: 'Overwatch', kind: 'visitor', romance: null, starts: '6/10', status: 'stub', todo: 'Ranks 1–10.' },
-  { id: 'kuromi', name: 'Kuromi', short: 'Kuromi', arcana: 'Tower', numeral: 'XVI', from: 'Sanrio', kind: 'visitor', romance: null, starts: '6/10', status: 'stub', todo: 'Ranks 1–10.' },
+  { id: 'kuromi', name: 'Kuromi', short: 'Kuromi', arcana: 'Tower', numeral: 'XVI', from: 'Mariland Girls’ Academy', kind: 'persona', romance: null, starts: '6/10', status: 'stub', todo: 'Ranks 1–10.' },
   { id: 'mercy', name: 'Mercy', short: 'Mercy', arcana: 'Temperance', numeral: 'XIV', from: 'Overwatch', kind: 'visitor', romance: null, starts: '6/10', status: 'stub', todo: 'Ranks 1–10.' },
   { id: 'sebastian', name: 'Sebastian', short: 'Sebastian', arcana: 'Fool', numeral: '0', from: 'Stardew Valley', kind: 'visitor', romance: null, starts: '6/10', status: 'stub', todo: 'Ranks 1–10.' },
   { id: 'aphrodite', name: 'Aphrodite', short: 'Aphrodite', arcana: 'Sun', numeral: 'XIX', from: 'Smite', kind: 'visitor', romance: null, starts: '7/9', status: 'stub', todo: 'Ranks 1–10.' },

@@ -1,4 +1,4 @@
-/* Part-time jobs for femc-game.html. Shift scenes live in data/job-scenes.js (same ids).
+/* Part-time jobs for femc-game.html. Shift scenes live in data/job-scenes.js and data/job-scenes-more.js (same ids).
    slot: 'after' (After School, or Daytime on days off) | 'evening'. days: 0 Sun ... 6 Sat. offDaysOnly: only on days off.
    pay: yen per shift. stats: social stat points per shift (each job has its own mix; Proficiency comes from work). needs: stat ranks to be hired.
    unlock: when the job appears at all { after: 'M/D', frags: { R|S|H: n } } (memory fragments from that world).
@@ -24,5 +24,15 @@ window.FEMC_GAME_JOBS = [
     blurb: 'A café that wasn’t on the Strip last week. The sign is hand-lettered. The cups are where she expects them to be.' },
   { id: 'flowers', name: 'Flower stall', role: 'Afternoons at the flower stall in the mall', area: 'mall', place: 'Paulownia Mall · Flower Stall',
     slot: 'after', days: [2, 4, 6], pay: 1600, stats: { kindness: 1, proficiency: 1 },
-    blurb: 'A tiny stall by the mall fountain. The owner’s knees are bad and the buckets are heavy. Most customers are buying flowers for somebody else.' }
+    blurb: 'A tiny stall by the mall fountain. The owner’s knees are bad and the buckets are heavy. Most customers are buying flowers for somebody else.' },
+  // Living world, part 2 (2026-10-21): three more around Iwatodai.
+  { id: 'chagall', name: 'Chagall Café', role: 'Behind the counter at Chagall', area: 'mall', place: 'Paulownia Mall · Chagall Café',
+    slot: 'after', days: [1, 2, 4, 6], pay: 2000, stats: { charm: 1, knowledge: 1 },
+    blurb: 'The café with the strange coffee wants someone for the afternoon rush. The manager says the job is mostly memory: the orders, the regulars, which pastry goes with which mood.' },
+  { id: 'hagakure', name: 'Hagakure', role: 'The dinner rush in the ramen kitchen', area: 'strip', place: 'Iwatodai Strip · Hagakure',
+    slot: 'evening', days: [0, 3, 5, 6], pay: 2600, stats: { proficiency: 1, courage: 1 },
+    blurb: 'The ramen shop needs a pair of hands for the dinner rush: bowls, broth, the ticket machine, and the occasional customer attempting the Mega Bowl.' },
+  { id: 'amulets', name: 'Amulet stall', role: 'Helping at the shrine’s amulet stall', area: 'shrine', place: 'Naganaki Shrine · Amulet Stall',
+    slot: 'after', days: [0, 6], pay: 1700, stats: { kindness: 1, charm: 1 },
+    blurb: 'The neighborhood association pays a little for someone to keep the amulet stall open on weekends. Busier than it looks, and very busy at New Year.' }
 ];

@@ -1,12 +1,13 @@
 /* Haru Okumura · Empress. Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
-   Friendship link (v1's romance is cut). Visitor: goes home 1/30 (closes). Rank 4 holds the fragment strangers-jade-ring.
-   Cast-only speaker: custodian (no portrait). afterMax: 2 scenes for after rank 10 (an engine pass will play them). */
+   Friendship link (v1's romance is cut). Persona-world cast (kind 'persona', Kat's ruling 2026-10-20): a third-year from
+   Tokyo staying at a hotel here this year on her father's arrangements, a guest at Gekkoukan; Tokyo is a train ride away.
+   No `closes`. Rank 4 holds the fragment strangers-jade-ring. Cast-only speaker: custodian (no portrait). afterMax: 2
+   scenes after rank 10. Holidays and reactive texts: data/living-persona.js. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'haru', name: 'Haru Okumura', short: 'Haru', arcana: 'Empress', numeral: 'III', from: 'Persona 5',
-  kind: 'visitor',
+  kind: 'persona',
   romance: null,
   starts: '5/7',
-  closes: '1/30',
   home: { area: 'Gekkoukan High', spot: 'Rooftop Garden', slot: 'after', days: [1, 3, 5],
           hint: 'After school on Mondays, Wednesdays and Fridays, in the planters along the Gekkoukan roof.' },
   approach: "Someone has brought the dead planters along the Gekkoukan roof back to life, and she's kneeling among them now with a trowel, a thermos and a sunhat the wind keeps trying to steal.",
@@ -328,32 +329,33 @@
           { n: "Haru slid the whole carton across to her without looking up from her notebook, which was how Solar knew it was bad. Haru always noticed. Haru noticed the toast in a cup of coffee." }
         ] }
       ] },
-      { n: "Elizabeth had said, in the blue room, that the pull caught people who were running from an ending. Solar had thought of Haru that same night, lying awake, and then put it away carefully on a high shelf, the way she was learning to put things. It came down now on its own, with the duck grinning at her off the tray liner." },
+      { n: "Solar had wondered since May what a girl like Haru was doing on the roof of a school whose lists didn't have her on them, in a city she talked about like a hotel lobby. She'd put the question away carefully on a high shelf, the way she was learning to put things. It came down now on its own, with the duck grinning at her off the tray liner." },
       { s: 'solar', f: 'neutral', t: "Haru. How did you get here? To Iwatodai, I mean." },
       { n: "Haru put down the plastic fork. She lined it up with the knife, exactly parallel, and looked at them." },
       { s: 'haru', f: 'neutral', t: "There was a dinner. There's always a dinner. And afterward a car, and my father's driver, and the city going past the window, very bright, all those lit-up signs with nobody under them." },
-      { s: 'haru', f: 'neutral', t: "And I asked him to stop. I've never asked him to stop. He stopped. I got out and I walked, and I wasn't walking anywhere, that was the lovely thing. I was so tired of always walking toward the next thing. And there was a door, and it opened onto a roof, and the planters were all dead. And I couldn't walk past." },
-      { n: "She smiled at the memory. Then the smile stalled halfway, like a car on a hill, and she frowned down at the knife and fork the way you frown at a word in a dream that was perfectly sensible a moment ago." },
-      { s: 'haru', f: 'surprised', t: "That's strange. That wasn't this roof. Was it? It was a building in..." },
-      { n: "She stopped. Out on the Strip a bicycle bell rang twice and somebody laughed." },
-      { s: 'haru', f: 'sad', t: "...Oh. I can't remember the name of my own street." },
+      { s: 'haru', f: 'neutral', t: "And I asked him to stop. I've never asked him to stop. He stopped. I got out and I walked, and I wasn't walking anywhere, that was the lovely thing. I was so tired of always walking toward the next thing. I walked into a station and got on the first train that wasn't going home, and I got off where it stopped." },
+      { s: 'haru', f: 'neutral', t: "It stopped here. Very late. And then everything went green and still, and there was a little girl in a great big coat on the platform, the only other person awake, and she told me the hotel was that way, and that in the morning I should go up the hill and look at the school roof, because somebody had left a garden there to die." },
+      { n: "She smiled at the memory. Then the smile stalled halfway, like a car on a hill, and she frowned down at the knife and fork as though they'd said something rude." },
+      { s: 'haru', f: 'neutral', t: "I called the house in the morning so nobody would worry. By lunchtime my father's office had booked the suite and arranged for me to sit in at Gekkoukan as a guest. He's very good at arrangements. He didn't ask me to come home. He didn't ask me anything." },
+      { n: "Out on the Strip a bicycle bell rang twice and somebody laughed." },
+      { s: 'haru', f: 'sad', t: "...Oh. I've never said that out loud. That I got on a train because I couldn't bear to be driven anywhere else." },
       { choose: [
-        { t: "(Put your hand over hers.) You don't have to remember it right now.", notes: 3, then: [
+        { t: "(Put your hand over hers.) You don't have to go back right now.", notes: 3, then: [
           { n: "Haru turned her hand over under Solar's, palm up, and held on, and looked out of the window at the Strip going gold in the low sun." },
-          { s: 'haru', f: 'sad', t: "I think I'm a very long way from home, Solar-chan. I think I've known for a while. The way you know you've overslept before you look at the clock." }
+          { s: 'haru', f: 'sad', t: "I think I'm a very long way from home, Solar-chan. An hour and forty minutes on the express. I've timed it. It's terribly far. I think I've known for a while, the way you know you've overslept before you look at the clock." }
         ] },
-        { t: "I can't remember mine either.", notes: 2, then: [
+        { t: "I can't even remember mine.", notes: 2, then: [
           { n: "Haru laughed, startled, a little wet at the edges, and pressed her knuckle under one eye." },
-          { s: 'haru', f: 'happy', t: "Aren't we a pair. Two girls who don't know where they live, in a burger shop that belongs to neither of us." }
+          { s: 'haru', f: 'happy', t: "Aren't we a pair. Two girls a long way from home, in a burger shop that belongs to neither of us." }
         ] },
-        { t: "Maybe you should go back and look.", notes: 1, then: [
+        { t: "Maybe you should go back.", notes: 1, then: [
           { s: 'haru', f: 'neutral', t: "Maybe." },
           { n: "She picked up the fork again and cut a quarter of a burger she wasn't going to eat into two smaller quarters." },
           { s: 'haru', f: 'neutral', t: "Not today, I think." }
         ] }
       ] },
       { n: "She closed the notebook on her verdict, which was that the fries were better than her father's and she was going to have to find a way to live with it. They walked out together into the evening, the air thick and warm as bathwater, the Strip's signs coming on one by one over their heads." },
-      { s: 'haru', f: 'neutral', t: "I'm in no hurry to find out how far. Is that terrible?" },
+      { s: 'haru', f: 'neutral', t: "I'm in no hurry to go back. Is that terrible?" },
       { n: "Solar didn't answer. She wasn't in any hurry either, and she suspected Haru knew it, and that was most of why she'd asked." }
     ] },
 
@@ -363,8 +365,8 @@
       { n: "Summer had come down over the bay like a lid on a pot. The air on the walk from the station was so thick and white that the buildings across the water looked sketched in pencil, and by the time Solar found the address Haru had texted her she had sweat running down the inside of her collar. It was a hotel. The tall one by Port Island Station with the doorman and the revolving door that took a whole breath to get through, and a lobby made of cold marble and colder air, and an arrangement of lilies on the center table roughly the size of a car." },
       { n: "Haru was waiting by the lilies in a sundress and the sunhat, and the clerk at the front desk bowed to her as they passed, too deep, the bow of a man who had been instructed to bow and wasn't sure by whom." },
       { s: 'haru', f: 'happy', t: "I live here. Isn't it ridiculous? I didn't choose it." },
-      { s: 'haru', f: 'neutral', t: "When I came down off the roof that first evening I didn't know where to go, so I let my feet decide, and they came here, and the clerk said good evening, Miss Okumura, your suite is ready. And it was." },
-      { s: 'haru', f: 'neutral', t: "It's paid for through the end of January. I asked him who by. He looked at me as though I ought to know." },
+      { s: 'haru', f: 'neutral', t: "That first night I walked in off the platform with nothing but my handbag, and the clerk gave me a room without asking a single question. And at lunch the next day he said, Miss Okumura, your suite is ready. Nobody had asked me what I wanted. It was simply ready." },
+      { s: 'haru', f: 'neutral', t: "It's booked through the end of January. Nobody has come to see it. Not once. I suppose that's the point of booking things." },
       { n: "Solar stopped walking, in the middle of all that marble, between a bellhop and a potted palm." },
       { n: "A room at the end of the girls' hall with the sheets already turned down at one corner, and a second uniform pressed in her size in the wardrobe. Mitsuru, at two in the morning, looking at her like a tidy person looks at the one thing not where she left it, and saying she'd been going to ask Solar who it was for. Solar had slept in it every night since. She had stopped thinking about it, mostly, the way you stop hearing a clock." },
       { choose: [
@@ -374,7 +376,7 @@
           { s: 'haru', f: 'happy', t: "Then we're both somebody's guests. I'd much rather be a guest with you than a guest alone." }
         ] },
         { t: "The end of January. That's specific.", notes: 2, then: [
-          { s: 'haru', f: 'neutral', t: "Isn't it? I've decided not to think about it until December. I'm very good at deciding things like that." },
+          { s: 'haru', f: 'neutral', t: "Isn't it? That's when the company opens its new site on Port Island, and I expect I'll be wanted at the ribbon. I've decided not to think about it until December. I'm very good at deciding things like that." },
           { s: 'haru', f: 'happy', t: "I'm less good at keeping to them. Come up." }
         ] },
         { t: "Must be nice.", notes: 1, then: [
@@ -405,7 +407,7 @@
       { n: "Haru shook the colander over the sink while the chaff blew off in papery flakes, and the air conditioning picked them up and carried them across the room so that for a moment it seemed to be snowing in July." },
       { s: 'haru', f: 'neutral', t: "If you go past it, there's a second crack. Then it turns dark and oily and shiny, and everything that made it itself burns off, and it only tastes of the fire. My father likes it there. Most of the world likes it there. It's very reliable." },
       { s: 'haru', f: 'blushing', t: "Solar-chan, when I'm older I'm going to have a café. A very small one. Eight seats. Nobody's name over the door. Only coffee I roasted myself, and whatever I grew that week, and a window." },
-      { s: 'haru', f: 'neutral', t: "I've never said that to anyone. At home the café is a line in a business plan with my name on it. And someone else's name beside mine." },
+      { s: 'haru', f: 'neutral', t: "I've never said that to anyone. In Tokyo the café is a line in a business plan with my name on it. And someone else's name beside mine." },
       { choose: [
         { t: "Eight seats. Save me one.", notes: 3, then: [
           { s: 'haru', f: 'blushing', t: "The one by the window. I'll scratch your name under it, very small, where nobody else will ever see." },
@@ -491,7 +493,7 @@
       { n: "October had turned the light. It came in lower and harder now, at a slant, and made everything on the roof cast a shadow twice its own length, and the bay past the fence was the hard clean blue that only came once the summer haze had burned off for good. The new cedar planters had autumn in them already. Spinach, daikon, a row of garlic cloves Haru had pushed into the soil one by one with her thumb, pointed end up, like someone setting a very long table." },
       { n: "Haru wasn't working. She was sitting on an upturned crate by the north planters with her phone held in both hands on her knees, the way people hold a cup of something hot they've forgotten to drink." },
       { s: 'haru', f: 'neutral', t: "Good afternoon, Solar-chan. My father called me yesterday." },
-      { n: "She told it evenly, in order, like a report. The phone had rung at a quarter past four. The screen had said *Father*, not the secretary's number. His own. It rang once, and stopped before she could get it to her ear, and when she looked there was nothing in the call log at all. No missed call. Nothing. As if it hadn't." },
+      { n: "She told it evenly, in order, like a report. The phone had rung at a quarter past four. The screen had said *Father*, not the secretary's number. His own. It rang once, and stopped before she could get it to her ear, and sat there in the call log afterward, one missed call, four fifteen, as plain as anything." },
       { s: 'haru', f: 'neutral', t: "He has never once called me himself. Not on my birthday. Not when I was in hospital with my appendix, when I was eleven. He has people for that." },
       { s: 'haru', f: 'neutral', t: "I've been holding it since. In case it does it again." },
       { choose: [
@@ -503,7 +505,7 @@
           { s: 'haru', f: 'neutral', t: "Maybe. He doesn't make mistakes, though. He has people for those too." }
         ] },
         { t: "Call him back.", notes: 1, then: [
-          { s: 'haru', f: 'sad', t: "I tried. It doesn't go anywhere. It rings and rings in a room with nobody in it." },
+          { s: 'haru', f: 'sad', t: "I tried. His secretary answered. She said he's been in meetings since noon and hasn't called anyone. She said it very kindly, the way you'd tell a child there's nothing under the bed." },
           { n: "She stopped there, and looked at the phone, and didn't say what she had been about to say next." }
         ] }
       ] },
@@ -576,7 +578,7 @@
       { s: 'haru', f: 'neutral', t: "They want you to go back with them, don't they?" },
       { choose: [
         { t: "They do. I don't know where back is yet.", notes: 3, then: [
-          { s: 'haru', f: 'sad', t: "Then you've got further to go than I have. I always knew exactly where mine was. That was always the trouble with it." }
+          { s: 'haru', f: 'sad', t: "Then you've got further to go than I have. I always knew exactly where mine was. An hour and forty minutes. That was always the trouble with it." }
         ] },
         { t: "I don't know what they want.", notes: 2, then: [
           { s: 'haru', f: 'neutral', t: "Yes, you do, Solar-chan." },
@@ -587,7 +589,8 @@
           { s: 'haru', f: 'happy', t: "But that isn't what I asked, is it. Fufu. You're very slippery in the cold." }
         ] }
       ] },
-      { s: 'haru', f: 'neutral', t: "I'm going home. In January, I think. I can feel it coming the way you feel weather in an old knee. The way the suite was paid for." },
+      { s: 'haru', f: 'neutral', t: "I'm going up to Tokyo in January. After the holidays, when he's back at the house. He'll be down here at the end of the month to cut a ribbon on Port Island, and I could tell him there, in front of the cameras, but I'd rather do it at home, at his own table, where he can't leave early." },
+      { s: 'haru', f: 'happy', t: "And then I'll come back on the next train and finish the year up here. The garlic doesn't come up until May, and I refuse to miss it." },
       { s: 'haru', f: 'happy', t: "I'm not frightened of it any more. That's your fault, you know. You were a very convincing door." },
       { s: 'haru', f: 'serious', t: "I won't tell you what to do. Everybody tells you what to do. I've watched them. But I'll tell you what I'd want somebody to tell me." },
       { s: 'haru', f: 'serious', t: "Whichever door it is, walk through it yourself. Don't let anyone carry you. Not even the people who love you. Especially not them. They're the ones who'll want to." },
@@ -609,7 +612,7 @@
         ] }
       ] },
       { n: "The last bed went under. Haru stood up and brushed the straw off her skirt and her knees and looked down the long row of planters, all of them tucked in and gold and quiet, with the gray city behind them." },
-      { s: 'haru', f: 'neutral', t: "When they come up in the spring, I won't be here. Will you look in on them for me? Only look. You needn't do anything. Things like being looked at by somebody who isn't going to make them do anything." },
+      { s: 'haru', f: 'neutral', t: "Though if it goes the way these things go, when they come up in the spring I may be in Tokyo arguing with lawyers. Will you look in on them for me? Only look. You needn't do anything. Things like being looked at by somebody who isn't going to make them do anything." },
       { n: "Solar opened her mouth to say yes, and found she couldn't quite, and closed it again. Haru watched her not say it." },
       { s: 'haru', f: 'sad', t: "...If you're here." },
       { n: "She said it very gently, a moment late, the way you add a line to a letter after you've already signed it, and Solar understood that Haru had been thinking about that too, for a while, on her own, up here among the planters, and had decided to say it anyway." }
@@ -641,9 +644,9 @@
       { n: "Junpei promised. He did not drink it slowly. He looked down into the empty cup with an expression of real betrayal, as if it had ended on purpose." },
       { s: 'junpei', f: 'happy', t: "Okay, that's illegal. That should be illegal. I'm telling everyone." },
       { n: "He went to tell everyone. Haru poured two more cups and sat down across from Solar, and before she drank, she reached up under her scarf and unfastened the gold chain from the back of her neck, and slid the ring off it into her palm, and looked at it there." },
-      { s: 'haru', f: 'neutral', t: "It isn't mine to wear. It's mine to give back. I'll carry it home in my pocket, like a stone I'm returning to a river." },
+      { s: 'haru', f: 'neutral', t: "It isn't mine to wear. It's mine to give back. I'll carry it up to Tokyo in my pocket, like a stone I'm returning to a river." },
       { n: "She put the ring in her skirt pocket. She coiled the empty chain on the table beside the bag of coffee, where it lay in a small gold heap, holding nothing." },
-      { s: 'haru', f: 'happy', t: "And then I'm going to have my café. Not soon, perhaps. But I'm going to. And this will be on the board, first thing, at the top. And people will drink it in a city you've never been to, and never know it was named after a girl from somewhere else." },
+      { s: 'haru', f: 'happy', t: "And then I'm going to have my café. Not soon, perhaps. But I'm going to. And this will be on the board, first thing, at the top. And people will drink it an hour up the line, in a city you can't remember, and never know it was named after a girl from somewhere else." },
       { choose: [
         { t: "I'll drink it every morning. Properly. Slowly.", notes: 3, then: [
           { s: 'haru', f: 'happy', t: "With patience. And never hurry the part where it's deciding." },
@@ -674,16 +677,16 @@
       { n: "She didn't say so. Haru knew anyway. Haru was watching her drink it with her chin in her hand, the way she watched a row come up." }
     ] }
   ],
-  // After MAX (engine pass needed): scenes that can play any time after rank 10, up to 1/30.
+  // After MAX: they play in order, then rotate, on the roof's usual days.
   afterMax: [
     { place: 'Gekkoukan High · Rooftop Garden', time: 'After School', scene: [
       { music: 'tender' },
       { n: "The garden was asleep under its straw, and the roof was the color of a pigeon, and the wind came across it hard and steady and smelling of snow that hadn't decided yet. Haru was kneeling at the end of the south planter anyway, in gloves and the cream scarf, with a paper bag of something beside her that rattled faintly when the wind caught it." },
       { s: 'haru', f: 'happy', t: "Tulips. They go in now, in the cold, and sleep until April. It's the only way they'll come up. They have to believe it's been winter for a long time first." },
       { n: "She showed Solar how deep, three times the height of the bulb, and which way up, the pointed end, always, and they worked along the planter making holes with their fingers in the cold black soil under the straw and dropping the bulbs in one by one like letters into a post box." },
-      { s: 'haru', f: 'neutral', t: "I won't see them. I know that. Someone will come up here in April to eat their lunch and find a row of red tulips nobody planted, and they'll be so surprised." },
+      { s: 'haru', f: 'neutral', t: "I may not see them. I don't know where I'll be in April, or who I'll be arguing with. Someone will come up here in April to eat their lunch and find a row of red tulips nobody planted, and they'll be so surprised." },
       { s: 'haru', f: 'happy', t: "I think that might be my favorite thing I've ever done. Surprising a stranger, on purpose, months later." },
-      { n: "She said it with her nose pink and her breath going away from her in the wind in small white flags, and Solar thought of a room at the end of a hall with the sheets turned down at one corner, and a suite paid for through January, and somebody, somewhere, months ago, planting all of it in the cold for a stranger to find. She didn't say so. It didn't feel like the kind of thing you said on a roof with your hands in the dirt. It felt like the kind of thing you carried down the stairs and thought about later, in bed, with the light off." },
+      { n: "She said it with her nose pink and her breath going away from her in the wind in small white flags, and Solar thought of a room at the end of a hall with the sheets turned down at one corner, and somebody, somewhere, months ago, planting all of it in the cold for a stranger to find. She didn't say so. It didn't feel like the kind of thing you said on a roof with your hands in the dirt. It felt like the kind of thing you carried down the stairs and thought about later, in bed, with the light off." },
       { choose: [
         { t: "(Plant the last one yourself, and don't tell her where.)", notes: 3, then: [
           { n: "Solar took the last bulb and walked down to the far end, past the cedar planters, and pushed it into the soil at the foot of the fence where Haru hadn't planted anything, and covered it over, and came back with her hands in her pockets." },
@@ -707,11 +710,11 @@
       { s: 'haru', f: 'happy', t: "Don't tell them I said so. They've been very kind to us." },
       { n: "She set the cup down, and from the bag at her feet took out something wrapped in a handkerchief, white cotton with a little embroidered tomato in the corner, and put it on the table and pushed it across to Solar with two fingers, the way you'd push a chess piece you'd been thinking about for a long time." },
       { n: "It was her trowel. The good one, the one she'd bought new and wanted admired, with the wooden handle gone dark and smooth where her hand went, and the blade worn bright." },
-      { s: 'haru', f: 'neutral', t: "For whenever. I don't know exactly when I'll go, and I didn't want to be in a hurry when I gave it to you. I don't give anything in a hurry any more." },
+      { s: 'haru', f: 'neutral', t: "For whenever. I don't know exactly when I'll have to go up to Tokyo, or for how long, and I didn't want to be in a hurry when I gave it to you. I don't give anything in a hurry any more." },
       { n: "Solar unfolded the handkerchief the rest of the way and held the trowel by its handle, and it was warmer than it should have been, as if Haru had been carrying it in her coat all day, which, Solar realized, she probably had. There was soil still in the seam where the blade met the wood. Haru had not cleaned it. Haru cleaned everything. Solar looked at the soil and then at Haru, and Haru looked back at her over the rim of the perfectly nice coffee, and didn't explain, and didn't need to." },
       { choose: [
         { t: "I'll use it. I promise.", notes: 3, then: [
-          { s: 'haru', f: 'happy', t: "Wherever you are. In whatever soil they have there. Every world has dirt, Solar-chan. It's the one thing I'm sure of." }
+          { s: 'haru', f: 'happy', t: "Wherever you are. In whatever soil they have there. Every city has dirt, Solar-chan. It's the one thing I'm sure of." }
         ] },
         { t: "Won't you need it?", notes: 2, then: [
           { s: 'haru', f: 'happy', t: "I'll buy another one. And I'll make someone admire it. But this one has your radishes in it." }
@@ -720,7 +723,7 @@
           { s: 'haru', f: 'neutral', t: "You're not. You only think you're terrible with things that need you. That isn't the same thing at all." }
         ] }
       ] },
-      { n: "Solar wrapped it up again in the handkerchief and put it in her bag, carefully, between two books where it wouldn't move. Outside the steamed glass the mall lights had all come on, and people went past in coats with their breath showing, and Haru drank the rest of the perfectly nice coffee to the bottom without complaint, which was, Solar understood, a kind of goodbye too, and a kind of practice for it." }
+      { n: "Solar wrapped it up again in the handkerchief and put it in her bag, carefully, between two books where it wouldn't move. Outside the steamed glass the mall lights had all come on, and people went past in coats with their breath showing, and Haru drank the rest of the perfectly nice coffee to the bottom without complaint, which was, Solar understood, a kind of see-you-soon, and a kind of practice for one." }
     ] }
   ]
 });
