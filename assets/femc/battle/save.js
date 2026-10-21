@@ -16,13 +16,19 @@ window.FemcBattleSave = (() => {
   // treeV 2 (the skill system, 2026-10-20): nodes are the new Haenim tree's (data.js tree / treeCenter); ptree { mid: [ids] }
   //          (party trees), ranks { mid: link rank } (from the life sim), forgot / order { mid: [chain roots] } (8 skill slots).
   //          An older save's tree is refunded as skill points into the new tree; forms it had already unlocked stay.
+  // The building systems (build.js, 2026-10-20; every field defaults, so older saves load as they were):
+  //          cards { list: [card], eq: { mid: { slot: uid } }, uid } (Revelation cards), wref { gearId: 0-5 } (weapon refines),
+  //          pboost { mid: { stat: n } } (Persona boosts), skillCards { skillId: n }, taught { mid: [skillIds] },
+  //          bonds { linkId: rank } and bondsRev [linkIds] (the life sim's link ranks, for perks), bondGifts [perk ids],
+  //          floorsMapped [floor ids] (Rohan's Sketch the Floor), shuffles (Shuffle Times played).
   const SETTINGS = { textSpeed: 'normal', musicVol: 100, sfxVol: 100, remember: true, rushWhere: 'normal', rushStop: 30, difficulty: 'normal', shake: true, calm: false, numbers: true, pad: 'auto', tips: true };
   const SETTING_OK = { textSpeed: ['slow', 'normal', 'fast', 'instant'], rushWhere: ['normal', 'strong', 'all'], rushStop: [30, 50], difficulty: ['story', 'normal', 'hard'], pad: ['auto', 'xbox', 'ps'] };
   const PREFS = ['settings', 'tipsSeen', 'cursor', 'music', 'sfx', 'speed', 'cutins', 'perf']; // device preferences: kept when a slot or backup is loaded
   const fresh = () => ({ v: 4, settings: Object.assign({}, SETTINGS), tipsSeen: [], cursor: {}, lvl: D.progression.startLevel, exp: 0, pts: 0, nodes: [], known: {}, clears: 0, cycle: 0, runs: 0, reached: null, music: null, sfx: true, speed: 1,
     party: D.defaultParty.slice(), mem: {}, tactics: {}, cutins: 'first', awakened: false,
     yen: D.startYen, items: Object.assign({}, D.startItems), gear: { owned: {}, eq: {} }, mats: {}, memories: [], evo: {}, form: 'haenim', forms: [], ops: { cleared: [] }, th: {}, perf: false,
-    ptree: {}, ranks: {}, forgot: {}, order: {} });
+    ptree: {}, ranks: {}, forgot: {}, order: {},
+    cards: { list: [], eq: {}, uid: 0 }, wref: {}, pboost: {}, skillCards: {}, taught: {}, bonds: {}, bondsRev: [], bondGifts: [], floorsMapped: [], shuffles: 0 });
   /* The first Haenim tree (three branches of five, before the skill system): its node costs, and the form each branch gave. */
   const OLD_TREE = { bell: { form: 'haenim-sunna', cost: [1, 1, 2, 2, 3] }, jade: { form: 'haenim-mazu', cost: [1, 1, 2, 2, 3] }, star: { form: 'haenim-nike', cost: [1, 1, 2, 2, 3] } };
   function migrateTree(s) {
@@ -39,6 +45,35 @@ window.FemcBattleSave = (() => {
     s.nodes = [];
     s.treeRefund = back;
     s.treeV = 2;
+  }
+  /* The building systems' fields (build.js): cards, refines, boosts, skill cards, bonds. Unknown ids are dropped. */
+  const STATKEYS = ['st', 'ma', 'en', 'ag', 'lu'];
+  const obj = v => v && typeof v === 'object' && !Array.isArray(v);
+  function normalizeBuild(s) {
+    const B = window.FemcBuild;
+    if (!obj(s.cards)) s.cards = { list: [], eq: {}, uid: 0 };
+    if (!Array.isArray(s.cards.list)) s.cards.list = [];
+    s.cards.list = s.cards.list.filter(c => obj(c) && c.u > 0 && (!B || (B.SETS[c.set] && B.SLOTS.some(x => x.id === c.slot) && B.STATS[c.main] && [3, 4, 5].includes(c.r))));
+    s.cards.list.forEach(c => { c.lvl = Math.max(1, Math.floor(+c.lvl || 1)); c.ref = Math.max(0, Math.min(3, Math.floor(+c.ref || 0))); if (!Array.isArray(c.subs)) c.subs = []; c.subs = c.subs.filter(x => Array.isArray(x) && (!B || B.STATS[x[0]])).slice(0, 4); c.lock = !!c.lock; });
+    s.cards.uid = Math.max(+s.cards.uid || 0, ...s.cards.list.map(c => c.u), 0);
+    if (!obj(s.cards.eq)) s.cards.eq = {};
+    const ids = new Set(s.cards.list.map(c => c.u)), used = new Set();
+    Object.keys(s.cards.eq).forEach(mid => {
+      if (!member(mid) || !obj(s.cards.eq[mid])) { delete s.cards.eq[mid]; return; }
+      Object.keys(s.cards.eq[mid]).forEach(slot => { const u = s.cards.eq[mid][slot], c = s.cards.list.find(x => x.u === u); if (!ids.has(u) || used.has(u) || !c || c.slot !== slot) delete s.cards.eq[mid][slot]; else used.add(u); });
+    });
+    if (!obj(s.wref)) s.wref = {};
+    Object.keys(s.wref).forEach(k => { const v = Math.floor(+s.wref[k]); if (!D.gear[k] || !(v > 0)) delete s.wref[k]; else s.wref[k] = Math.min(5, v); });
+    if (!obj(s.pboost)) s.pboost = {};
+    Object.keys(s.pboost).forEach(mid => { if (!member(mid) || !obj(s.pboost[mid])) { delete s.pboost[mid]; return; } Object.keys(s.pboost[mid]).forEach(k => { const v = Math.floor(+s.pboost[mid][k]); if (!STATKEYS.includes(k) || !(v > 0)) delete s.pboost[mid][k]; else s.pboost[mid][k] = Math.min(10, v); }); });
+    if (!obj(s.skillCards)) s.skillCards = {};
+    Object.keys(s.skillCards).forEach(k => { if (!D.skills[k] || !(s.skillCards[k] > 0)) delete s.skillCards[k]; });
+    if (!obj(s.taught)) s.taught = {};
+    Object.keys(s.taught).forEach(mid => { if (!member(mid) || !Array.isArray(s.taught[mid])) delete s.taught[mid]; else s.taught[mid] = [...new Set(s.taught[mid].filter(k => D.skills[k]))]; });
+    if (!obj(s.bonds)) s.bonds = {};
+    Object.keys(s.bonds).forEach(k => { const r = Math.floor(+s.bonds[k]); if (!(r > 0)) delete s.bonds[k]; else s.bonds[k] = Math.min(10, r); });
+    ['bondsRev', 'bondGifts', 'floorsMapped'].forEach(k => { if (!Array.isArray(s[k])) s[k] = []; s[k] = [...new Set(s[k].filter(x => typeof x === 'string'))]; });
+    if (!(s.shuffles >= 0)) s.shuffles = 0;
   }
   /* Fills in anything missing, so v1/v2 saves (and hand-edited ones) load cleanly. Members who were already fighting
      keep Solar's level; new recruits join one level behind her. */
@@ -85,6 +120,7 @@ window.FemcBattleSave = (() => {
     Object.keys(s.ptree).forEach(mid => { const ok = new Set(E.ptreeNodes(mid).map(n => n.id)); s.ptree[mid] = Array.isArray(s.ptree[mid]) ? [...new Set(s.ptree[mid].filter(id => ok.has(id)))] : []; if (!s.ptree[mid].length) delete s.ptree[mid]; });
     Object.keys(s.ranks).forEach(mid => { const r = +s.ranks[mid]; if (!member(mid) || !(r >= 0)) delete s.ranks[mid]; else s.ranks[mid] = Math.min(10, Math.floor(r)); });
     ['forgot', 'order'].forEach(k => Object.keys(s[k]).forEach(mid => { if (!member(mid) || !Array.isArray(s[k][mid])) delete s[k][mid]; else s[k][mid] = [...new Set(s[k][mid].filter(x => typeof x === 'string'))]; }));
+    normalizeBuild(s);
     if (!Array.isArray(s.memories)) s.memories = [];
     s.memories = s.memories.filter(id => D.memories.some(m => m.id === id));
     if (!s.evo || typeof s.evo !== 'object') s.evo = {};
@@ -169,10 +205,11 @@ window.FemcBattleSave = (() => {
   // Gear bought in the life sim (S.gear: ids) is owned here too (one copy each), the same rule the battle's handoff uses.
   function syncGear(s, ids) { (ids || []).forEach(g => { if (D.gear[g] && !(s.gear.owned[g] > 0)) s.gear.owned[g] = 1; }); return s; }
   /* One line describing a piece of gear. */
-  function gearLine(id) {
+  function gearLine(id, s = null) {
     const g = D.gear[id]; if (!g) return '';
     const out = [];
-    if (g.slot === 'weapon') out.push(`ATK ${g.atk}`); if (g.slot === 'armor') out.push(`DEF ${g.def}`);
+    const B = window.FemcBuild, r = s && B ? B.wrefOf(s, id) : 0;
+    if (g.slot === 'weapon') out.push(r ? `ATK ${B.weaponAtk(s, id)} (+${r})` : `ATK ${g.atk}`); if (g.slot === 'armor') out.push(`DEF ${g.def}`);
     if (g.el) out.push(`${D.elements[g.el].name} attacks`);
     if (g.hits) out.push(`${g.hits[0]} hits`);
     if (g.crit) out.push(`Crit +${g.crit}%`);
@@ -180,7 +217,7 @@ window.FemcBattleSave = (() => {
     if (g.ail) out.push(`May inflict ${D.ailments[g.ail.id].name}`);
     if (g.stats) out.push(Object.entries(g.stats).map(([k, v]) => `${k.toUpperCase()} +${v}`).join(' '));
     if (g.aff) out.push(Object.entries(g.aff).map(([k, v]) => `${v === 'null' ? 'Nulls' : 'Resists'} ${D.elements[k].name}`).join(', '));
-    if (g.nullAil) out.push(`Prevents ${g.nullAil.map(a => D.ailments[a].name).join(' & ')}`);
+    if (g.nullAil && !g.nag) out.push(`Prevents ${g.nullAil.map(a => D.ailments[a].name).join(' & ')}`);
     if (g.desc) out.push(g.desc);
     return out.join(' · ');
   }

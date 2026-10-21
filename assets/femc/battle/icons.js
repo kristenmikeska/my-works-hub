@@ -105,10 +105,10 @@ window.FemcIcons = (() => {
   function of(id, cls = '') {
     const D = window.FEMC_BATTLE_DATA;
     if (D.items[id]) return svg(D.items[id].icon || 'medicine', null, cls);
-    if (D.materials[id]) return svg(D.materials[id].icon || 'mat-ash', null, cls);
+    if (D.materials[id]) return svg(D.materials[id].icon || 'mat-ash', D.materials[id].tint || null, cls);
     const g = D.gear[id];
     if (g) {
-      if (g.slot === 'weapon') return svg(g.wtype, g.el ? D.elements[g.el].color : null, cls);
+      if (g.slot === 'weapon') return svg(g.wtype, g.tint || (g.el ? D.elements[g.el].color : null), cls); // tint: Solar's naginatas (build.js)
       if (g.slot === 'armor') return svg('armor', g.aff ? D.elements[Object.keys(g.aff)[0]].color : null, cls);
       return svg(g.icon || 'ring', null, cls);
     }
