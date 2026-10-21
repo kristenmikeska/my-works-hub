@@ -15,6 +15,8 @@ Other docs, if you ever want detail:
 - ✅ **The living world, part 1:** many more everyday moments all year, texts that react to your time with people, holiday invites, Solar's birthday, a real Yakushima trip, late nights with the romances, and a build-up before each full moon
 - ⬜ **Next: the living world, part 2:** jobs that vary, running into people while out, clubs, and the Persona cast staying around
 
+- ⬜ **Queued after part 2: Haechan.** His rank becomes automatic like Wren's, he gets lots more scenes (late nights, dorm moments, texts, scenes with the people he knows), and the Hoax ending becomes a secret route.
+
 ## Story and characters
 - ✅ More story after Hanni, Hyein and Jihoon arrive, including the three comparing notes on Solar
 - ✅ Searchers mention her love lives back home (Hyein's near-slip, the "come home" calls, Yunjin, Hoax)
