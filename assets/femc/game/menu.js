@@ -1,6 +1,6 @@
 /* FEMC revamp: the field menu (P3's dorm / field menu), opened from the HUD's Menu button or M.
    One menu for the whole game. Tabs: Party (who goes into Tartarus, levels, HP/SP, Personas), Personas (the current Persona,
-   its skills and affinities; Haenim's forms), Skills (empty for now: see SKILLS below), Equipment (weapon, armor, accessory
+   its skills and affinities; Haenim's forms), Skills (the skill system: see SKILLS below), Equipment (weapon, armor, accessory
    per member, from the gear bought in shops or found in Tartarus), Items (consumables, gear, books, jobs), Status (Solar's
    social stats, condition, exams), Links (the social links), Journal (memory fragments), Calendar (this month), and the
    Compendium page.
@@ -13,19 +13,18 @@
    closes. opts (FemcMenu.open's second argument): inBattle, kind (the handoff's: tartarus / operation / scripted), onClose, required (ids who must fight: no benching), solo
    (Solar alone: no party changes, only her equipment), extra (ids to list though the calendar hasn't made them available
    yet: a searcher awakening in this very fight), items / yen (what Solar is carrying tonight: the battle's own counts),
-   hp ({ id: { hp, maxHp, sp, maxSp } } mid-climb), openTree (Haenim's tree, the battle's own screen, until the skill
-   system replaces it), lockParty (on a floor: the team changes only at the entrance or an access point), useItem(id,
+   hp ({ id: { hp, maxHp, sp, maxSp } } mid-climb), lockParty (on a floor: the team changes only at the entrance or an access point), useItem(id,
    target) (on a floor: use a field item; returns { items, hp } or { leave: true } for an escape item; the frame applies it).
 
-   ── SKILLS: the seam for the skill-tree system (next on the roadmap) ──
-   The Skills tab is deliberately empty. The system that will live here owns:
-     - S.battleSave.nodes / pts (Haenim's tree: data.js `tree`, engine.js treeFx / mastered) and whatever replaces them;
-     - each member's learned list (engine.js skillsFor) once members get their own small trees (opened by link rank:
-       G.progress(id).rank) and skills that upgrade in place;
-     - memory fragments as currency (S.fragments; the battle side gives data.js progression.memoryPoints per fragment);
-     - respec. The battle game's own tree screen (battle.js treeScreen) still works in a fight's results and in practice mode.
-   To build it: replace skillsTab() below, keep the tab id 'skills', and read/write S.battleSave through G.ensureBattleSave()
-   then G.saveQuiet() (or G.save() to repaint the HUD). engine.js is where the rules go; data.js is where the nodes go. */
+   ── SKILLS: the skill system (built 2026-10-20 from Kat's picks; FEMC-REVAMP-ROADMAP.md sections 6 and 7) ──
+     - Haenim's tree (data.js tree / treeCenter): a Sun trunk, four branches (Bell, Jade, Star, Veil), choice nodes, hidden memory
+       nodes, keystones that awaken her forms, Unveiled at the center. Owned ids: S.battleSave.nodes; points: S.battleSave.pts.
+     - Party trees (data.js ptrees): three tiers each, opened at link ranks 0 / 4 / 7, points from levels; MAX (rank 10) evolves
+       a signature skill. Owned ids: S.battleSave.ptree[mid]; ranks are copied into S.battleSave.ranks (syncLife).
+     - Eight skill slots and "forget which?" (engine.js kitFor / forgetSkill), upgrades in place (data.js chains).
+     - Respec at the Velvet Room for yen (progression.respecFee), from the field only (not in the Dark Hour).
+     Rules are engine.js's (treeState / treeBuy / ptreeState / ptreeBuy / kitFor); this file only draws them and writes
+     S.battleSave through G.ensureBattleSave() then G.saveQuiet(). Practice mode keeps the battle page's own tree screen. */
 window.FemcMenu = (() => {
   const G = window.FemcGame, UI = () => window.FemcGameUI, SC = window.FemcScene;
   const D = () => window.FEMC_BATTLE_DATA, E = () => window.FemcBattleEngine, BS = () => window.FemcBattleSave;
@@ -37,7 +36,10 @@ window.FemcMenu = (() => {
   let o = null, tab = 'party', sel = {}, opts = {};
 
   /* ── Battle-side helpers (no fight running: the engine is asked for numbers only) ── */
-  const bsave = () => G.ensureBattleSave();
+  // The battle save, normalized once and then reused while it's still the playthrough's (ensureBattleSave makes a fresh copy
+  // each call, so two calls in one action would otherwise edit different objects).
+  let bsCache = null;
+  const bsave = () => (bsCache && bsCache === S().battleSave ? bsCache : (bsCache = G.ensureBattleSave()));
   const member = id => D().party.find(m => m.id === id);
   // Members the calendar allows today (plus opts.extra), in the battle game's order, Solar first. Unknown ids are skipped.
   const roster = () => { const ids = new Set(G.available().concat(opts.extra || [])); return D().party.filter(m => ids.has(m.id)); };
@@ -47,7 +49,7 @@ window.FemcMenu = (() => {
   const unit = id => { try { return E().buildUnit(id, bsave(), {}); } catch (e) { return null; } };
   const personaOf = id => D().personas[E().personaId(id, bsave())];
   const elIcon = el => (window.FemcBattleArt ? window.FemcBattleArt.icon(el) : '');
-  const skillChips = ids => `<ul class="g-chips">${ids.map(id => { const s = D().skills[id]; return s ? `<li title="${esc(s.desc || '')}">${elIcon(s.el)}<span>${esc(s.name)}</span></li>` : ''; }).join('')}</ul>`;
+  const skillChips = ids => `<ul class="g-chips">${ids.map(id => { const s = D().skills[id]; return s ? `<li title="${esc(s.desc || '')}">${s.icon && window.FemcIcons ? window.FemcIcons.svg(s.icon, null, 'bt-ico sk') : elIcon(s.el)}<span>${esc(s.name)}</span></li>` : ''; }).join('')}</ul>`;
   // The story hides Solar's face until she has her armband; the menu shows the battle game's portraits (data.js portraits).
   const face = (id, f = 'neutral') => {
     const src = G.portrait(id, f) || (member(id) && D().portraits ? `${D().portraits}${id}/${f}.webp` : null);
@@ -103,7 +105,7 @@ window.FemcMenu = (() => {
   function personasTab() {
     const b = bsave(), list = roster();
     const id = sel.persona && list.some(m => m.id === sel.persona) ? sel.persona : 'solar';
-    const m = member(id), p = personaOf(id), u = unit(id), skills = E().skillsFor(id, b);
+    const m = member(id), p = personaOf(id), u = unit(id), kit = E().kitFor(id, b), skills = kit.slots.concat(kit.sig ? [kit.sig] : []);
     const forms = ['haenim'].concat(E().formsList());
     const formsHtml = id === 'solar' ? `<h3>Forms</h3><div class="g-forms">${forms.map(f => { const fp = D().personas[f], ok = E().formUnlocked(b, f), on = (b.form || 'haenim') === f; return `<button type="button" class="g-form${ok ? '' : ' lock'}${on ? ' on' : ''}" data-form="${f}"${ok ? '' : ' disabled'} style="--c:${fp.color || '#ff4f9e'}"><img src="${fp.art}" alt=""><b>${esc(fp.name)}</b><small>${ok ? esc(fp.theme || 'Base form') : 'Not yet'}</small>${on ? '<i>In use</i>' : ''}</button>`; }).join('')}</div>` : '';
     return `<div class="g-pv">
@@ -112,19 +114,210 @@ window.FemcMenu = (() => {
         <div class="g-pv-card"><p class="g-kicker">${esc(p.arcana || '')} · ${esc(m.name)}${inParty(id) ? ' · in the party' : ''}</p><h2>${esc(p.name)}${p.ko ? ` <span class="ko">${esc(p.ko)}</span>` : ''}</h2>
           ${u ? `<p class="g-pv-stats">${[['HP', u.maxHp], ['SP', u.maxSp], ['St', u.st], ['Ma', u.ma], ['En', u.en], ['Ag', u.ag], ['Lu', u.lu]].map(([k, v]) => `<span><small>${k}</small><b>${v}</b></span>`).join('')}</p>` : ''}
           ${affChips(u ? u.aff : p.aff || {})}
-          <h3>Skills</h3>${skillChips(skills)}
+          <h3>Skills <small>${kit.slots.length} / ${D().skillSlots}</small></h3>${skillChips(skills)}${kit.pending.length ? `<p class="g-note">A new skill is waiting: choose one to forget on the Skills tab.</p>` : ''}
           ${p.blurb ? `<p class="g-note">${esc(p.blurb)}</p>` : ''}${formsHtml}</div></div></div>`;
   }
   function wirePersonas(el) {
     el.querySelectorAll('[data-pv]').forEach(bt => bt.addEventListener('click', () => { sel.persona = bt.dataset.pv; G.sfx('femc-hover'); render(); }));
     el.querySelectorAll('[data-form]').forEach(bt => bt.addEventListener('click', () => { const b = bsave(); if (!E().formUnlocked(b, bt.dataset.form)) return; b.form = bt.dataset.form; G.saveQuiet(); G.sfx('femc-rankup'); render(); }));
   }
+  /* ── SKILLS: the skill system (Kat's picks; rules in engine.js, nodes in data.js tree / treeCenter / ptrees) ──
+     The who-bar picks Solar (Haenim's tree) or a party member (their three-tier tree). A node is selected with a click, a tap
+     or the arrow keys (pad: the D-pad); clicking / Enter on the selected node buys it (so does the Unlock button). Learning a
+     ninth skill opens "forget which?" right here; anyone still waiting for that choice has a banner. Respec is the Velvet
+     Room's (a yen fee, outside the Dark Hour). Forms awaken from the keystones and are switched on the Personas tab. */
+  const COLS = ['bell', 'jade', 'sun', 'star', 'veil'];
+  const skMembers = () => roster().filter(m => m.id === 'solar' || D().ptrees[m.id]);
+  const frags = () => E().fragSet(bsave(), S().fragments || []);
+  const rankOf = id => +(((S().links || {})[id] || {}).rank) || 0;
+  const skIcon = id => { const sk = D().skills[id] || {}; return sk.icon && window.FemcIcons ? window.FemcIcons.svg(sk.icon, null, 'bt-ico sk') : elIcon(sk.el); };
+  const kitOf = id => E().kitFor(id, bsave());
+  const fee = (who, spent) => { const f = D().progression.respecFee; return Math.max(f.min, Math.round(spent * (who === 'solar' ? f.solar : f.party))); };
+  // Haenim's grid: column → rows; a choice pair shares a row. Memory nodes sit below the keystone.
+  function haenimGrid() {
+    const out = [];
+    COLS.forEach((cid, ci) => {
+      const b = D().tree.find(x => x.id === cid);
+      let row = 0, last = null;
+      const main = b.nodes.filter(n => !n.memory), mem = b.nodes.filter(n => n.memory);
+      main.forEach(n => {
+        if (n.choice && last && last.choice === n.choice) out.push({ n, b, ci, x: ci * 2 + 1, y: row - 1, pair: true });
+        else { out.push({ n, b, ci, x: ci * 2, y: row, pair: !!n.choice }); row++; }
+        last = n;
+      });
+      if (cid === 'sun') { out.push({ n: D().treeCenter, b: { id: 'center', name: 'Unveiled', world: 'The center', color: '#fff2b0' }, ci, x: ci * 2, y: row + 0.5, center: true }); row += 2; }
+      mem.forEach(n => { out.push({ n, b, ci, x: ci * 2, y: row + 0.5, mem: true }); row++; });
+    });
+    return out;
+  }
+  function partyGrid(mid) { return E().ptreeNodes(mid).map(n => ({ n, x: D().ptrees[mid].tiers[n.tier].findIndex(z => z.id === n.id), y: n.tier })); }
+  // Arrow keys: the nearest node in that direction (the other axis counts double).
+  function gridMove(grid, id, key) {
+    const cur = grid.find(g => g.n.id === id) || grid[0];
+    const d = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0] }[key];
+    let best = null;
+    grid.forEach(g => {
+      if (g === cur) return;
+      const dx = g.x - cur.x, dy = g.y - cur.y, along = dx * d[0] + dy * d[1];
+      if (along <= 0) return;
+      const score = along + 2.2 * Math.abs(d[0] ? dy : dx);
+      if (!best || score < best.s) best = { g, s: score };
+    });
+    return best ? best.g.n.id : cur.n.id;
+  }
+  const hState = id => E().treeState(bsave(), id, frags());
+  function nodeBtn(g, st, on) {
+    const n = g.n, hid = st === 'hidden';
+    return `<button type="button" class="g-hn ${st}${n.keystone ? ' key' : ''}${g.mem ? ' mem' : ''}${n.choice ? ' choice' : ''}${g.center ? ' center' : ''}${on ? ' sel' : ''}" data-hn="${n.id}" style="--c:${g.b ? g.b.color : 'var(--pink)'}" aria-pressed="${st === 'own'}" aria-label="${esc(hid ? 'Hidden memory node' : n.name)}: ${st}">
+      <i class="gem" aria-hidden="true"></i><b>${esc(hid ? '? ? ?' : n.name)}</b><small>${st === 'own' ? '✓' : `${n.cost}`}</small></button>`;
+  }
+  function kitHtml(id) {
+    const k = kitOf(id), N = D().skillSlots;
+    const rows = Array.from({ length: N }, (_, i) => { const s = k.slots[i], sk = s && D().skills[s]; return `<li${sk ? ` title="${esc(sk.desc || '')}"` : ' class="empty"'}><em>${i + 1}</em>${sk ? `${skIcon(s)}<span>${esc(sk.name)}</span>` : '<span>—</span>'}</li>`; }).join('');
+    return `<h3>Skills <small>${k.slots.length} / ${N}</small></h3><ol class="g-sk-kit">${rows}${k.sig ? `<li class="sig" title="${esc(D().skills[k.sig].desc || '')}"><em>★</em>${skIcon(k.sig)}<span>${esc(D().skills[k.sig].name)}</span></li>` : ''}</ol>`;
+  }
+  function pendingBanner() {
+    const waiting = skMembers().filter(m => kitOf(m.id).pending.length);
+    return waiting.length && !sel.forget ? `<div class="g-sk-banner">${waiting.map(m => `<button type="button" class="g-btn small pink" data-sk-forget="${m.id}">${esc(m.name)}: a new skill is waiting · forget which?</button>`).join('')}</div>` : '';
+  }
+  function forgetHtml(mid) {
+    const k = kitOf(mid), fresh = k.pending[0];
+    if (!fresh) return '';
+    const m = member(mid), list = k.slots.concat([fresh]);
+    return `<div class="g-sk-forget" role="group" aria-label="Forget a skill"><p class="g-kicker">${esc(m.name)} · ${D().skillSlots} skill slots</p><h2>Forget a skill?</h2>
+      <p>${esc(m.name)} wants to learn <b>${esc(D().skills[fresh].name)}</b>, but ${esc(personaOf(mid).name)} already holds ${D().skillSlots}. Choose one to forget; it won’t come back by itself. Choose the new one to skip it.</p>
+      <ul class="g-sk-flist">${list.map(id => `<li><button type="button" class="g-sk-fb${id === fresh ? ' new' : ''}${sel.armed === id ? ' armed' : ''}" data-forget="${id}">${skIcon(id)}<b>${esc(D().skills[id].name)}${id === fresh ? ' <em>NEW</em>' : ''}</b><small>${sel.armed === id ? (id === fresh ? 'Press again: don’t learn it' : 'Press again to forget it') : esc(D().skills[id].desc || '')}</small></button></li>`).join('')}</ul></div>`;
+  }
+  function velvetHtml(who) {
+    const b = bsave(), solar = who === 'solar', spent = solar ? E().treeSpent(b) : E().ptreeSpent(b, who), cost = fee(who, spent), name = solar ? 'Haenim' : member(who).name;
+    return `<div class="g-sk-velvet" role="group" aria-label="The Velvet Room"><p class="g-kicker">The Velvet Room</p><h2>Rewrite the tree?</h2>
+      <p>“The threads can be unpicked and woven again,” Elizabeth says, turning a page. ${esc(name)}’s ${spent} spent point${spent === 1 ? '' : 's'} come back to be spent anew${solar ? '; forms that have awakened stay awake' : ''}. The fee is <b>${yen(cost)}</b>.</p>
+      <div class="g-row"><button type="button" class="g-btn pink" data-velvet-ok${S().yen < cost || !spent ? ' disabled' : ''}>${!spent ? 'Nothing to rewrite' : S().yen < cost ? `Not enough yen (${yen(S().yen)})` : `Pay ${yen(cost)} · respec`}</button><button type="button" class="g-btn" data-velvet-no>Not now</button></div></div>`;
+  }
+  function haenimView() {
+    const b = bsave(), grid = haenimGrid(), fr = frags();
+    if (!grid.some(g => g.n.id === sel.hn)) sel.hn = (grid.find(g => hState(g.n.id) === 'avail') || grid[0]).n.id;
+    const cur = grid.find(g => g.n.id === sel.hn), n = cur.n, st = hState(n.id), why = E().treeWhy(b, n.id, fr), afford = b.pts >= n.cost;
+    sel.col = cur.ci;
+    const col = (cid, ci) => {
+      const br = D().tree.find(x => x.id === cid), items = grid.filter(g => g.ci === ci);
+      const rows = []; items.forEach(g => { const last = rows[rows.length - 1]; if (g.x % 2 === 1 && last) last.push(g); else rows.push([g]); });
+      return `<section class="g-ht-col${ci === sel.col ? ' on' : ''}${cid === 'sun' ? ' trunk' : ''}" style="--c:${br.color}" aria-label="${esc(br.name)}">
+        <header>${['bell', 'jade', 'star'].includes(cid) && window.FemcBattleArt ? window.FemcBattleArt.charm(cid) : `<span class="g-ht-glyph">${cid === 'sun' ? '✺' : '◐'}</span>`}<div><b>${esc(br.name)}</b><small>${esc(br.world)} · ${esc(br.theme.split(' · ').slice(0, 2).join(' · '))}</small></div></header>
+        ${rows.map(r => `<div class="g-hn-row${r.length > 1 ? ' pair' : ''}${r[0].mem ? ' memrow' : ''}${r[0].center ? ' centerrow' : ''}">${r.map(g => nodeBtn(g, hState(g.n.id), g.n.id === sel.hn)).join('')}</div>`).join('')}
+      </section>`;
+    };
+    const btn = st === 'own' ? 'Unlocked' : st !== 'avail' ? (st === 'taken' ? 'Not chosen' : st === 'hidden' ? 'A memory first' : 'Locked') : afford ? `Unlock · ${n.cost} SP` : `Need ${n.cost} SP`;
+    const branch = cur.b;
+    return `<div class="g-sk-top"><p><b>Haenim</b> · Lv ${b.lvl} · <span class="g-sk-pts">${b.pts} skill point${b.pts === 1 ? '' : 's'}</span><small>from levels, full moons and memory fragments</small></p>
+        <button type="button" class="g-btn small" data-velvet="solar"${opts.inBattle ? ' disabled title="The Velvet Room’s door is in town, not in the Dark Hour."' : ''}>Velvet Room · Respec</button></div>
+      <div class="g-ht-switch" role="tablist">${COLS.map((cid, ci) => { const br = D().tree.find(x => x.id === cid); return `<button type="button" class="g-chip${ci === sel.col ? ' on' : ''}" data-col="${ci}" style="--c:${br.color}">${esc(br.name)}</button>`; }).join('')}</div>
+      <div class="g-sk-main"><div class="g-ht">${COLS.map(col).join('')}</div>
+        <aside class="g-sk-detail" style="--c:${branch.color}"><p class="g-kicker">${esc(branch.name)} · ${esc(branch.world)}${n.choice ? ' · choose one' : ''}${n.memory ? ' · memory' : ''}${n.keystone ? ' · keystone' : ''}</p>
+          <h3 class="g-sk-name">${esc(st === 'hidden' ? '? ? ?' : n.name)}</h3><p>${st === 'hidden' ? 'Something from another life is still hiding here.' : esc(n.desc)}</p>
+          ${why ? `<p class="g-sk-why">${esc(why)}</p>` : ''}
+          <button type="button" class="g-btn pink" data-sk-buy${st !== 'avail' || !afford ? ' disabled' : ''}>${btn}</button>
+          ${kitHtml('solar')}</aside></div>`;
+  }
+  function partyView(mid) {
+    const b = bsave(), m = member(mid), t = D().ptrees[mid], rank = rankOf(mid), grid = partyGrid(mid), pts = E().ptreePts(b, mid);
+    if (!grid.some(g => g.n.id === sel.pn)) sel.pn = (grid.find(g => E().ptreeState(b, mid, g.n.id, rank) === 'avail') || grid[0]).n.id;
+    const n = grid.find(g => g.n.id === sel.pn).n, st = E().ptreeState(b, mid, n.id, rank);
+    const R = D().ptreeRanks, link = G.LINKS[mid];
+    const why = st === 'rank' ? `Opens at link rank ${R[n.tier]} (now ${rank}).` : st === 'lock' ? 'Buy something in the tier above first.' : st === 'taken' ? 'The other choice is taken.' : st === 'avail' && pts < n.cost ? `Needs ${n.cost} point${n.cost === 1 ? '' : 's'}; more come with levels.` : '';
+    const tier = k => `<div class="g-pt-tier${rank >= R[k] ? '' : ' shut'}"><p class="g-pt-h">Tier ${k + 1}<small>${R[k] ? `link rank ${R[k]}` : 'open'}${k === 2 ? ' · choose one' : ''}</small></p>
+      <div class="g-hn-row${k === 2 ? ' pair' : ''}">${t.tiers[k].map(x => nodeBtn({ n: x, b: { color: m.color } }, E().ptreeState(b, mid, x.id, rank), x.id === sel.pn)).join('')}</div></div>`;
+    const maxed = rank >= 10, from = D().skills[t.max.from], to = D().skills[t.max.to];
+    const btn = st === 'own' ? 'Unlocked' : st !== 'avail' ? (st === 'rank' ? `Link rank ${R[n.tier]}` : st === 'taken' ? 'Not chosen' : 'Locked') : pts >= n.cost ? `Unlock · ${n.cost} pt${n.cost === 1 ? '' : 's'}` : `Need ${n.cost}`;
+    return `<div class="g-sk-top"><p><b>${esc(m.name)}</b> · Lv ${lvOf(mid)} · ${link ? `${esc(link.arcana || '')} · rank ${rank}` : 'no link yet'} · <span class="g-sk-pts">${pts} point${pts === 1 ? '' : 's'}</span><small>from levels</small></p>
+        <button type="button" class="g-btn small" data-velvet="${mid}"${opts.inBattle ? ' disabled title="The Velvet Room’s door is in town, not in the Dark Hour."' : ''}>Velvet Room · Respec</button></div>
+      <div class="g-sk-main"><div class="g-pt" style="--c:${m.color}">${[0, 1, 2].map(tier).join('')}
+          <div class="g-pt-tier g-pt-max${maxed ? ' done' : ' shut'}"><p class="g-pt-h">MAX<small>link rank 10</small></p><p class="g-pt-maxline">${maxed ? '✓ ' : ''}<b>${esc(from ? from.name : t.max.from)}</b> evolves into <b>${esc(to.name)}</b>. ${esc(to.desc)}</p></div></div>
+        <aside class="g-sk-detail" style="--c:${m.color}"><p class="g-kicker">${esc(m.name)} · tier ${n.tier + 1}${n.choice ? ' · choose one' : ''}</p>
+          <h3 class="g-sk-name">${esc(n.name)}</h3><p>${esc(n.desc)}</p>${why ? `<p class="g-sk-why">${esc(why)}</p>` : ''}
+          <button type="button" class="g-btn pink" data-pt-buy${st !== 'avail' || pts < n.cost ? ' disabled' : ''}>${btn}</button>
+          ${kitHtml(mid)}</aside></div>`;
+  }
   function skillsTab() {
-    const b = bsave();
-    return `<div class="g-skills-empty"><p class="g-kicker">Coming soon</p><h2>Skills</h2>
-      <p>The skill tree lives here next: skills that grow, Haenim's deeper tree, a small tree for each friend, and memory fragments to spend.</p>
-      <p class="g-note">For now: Solar has <b>${b.pts}</b> skill point${b.pts === 1 ? '' : 's'} and ${b.nodes.length} node${b.nodes.length === 1 ? '' : 's'} on Haenim's tree. ${opts.openTree ? 'Spend them on Haenim’s tree here in the Dark Hour.' : 'Spend them on Haenim’s tree in Tartarus, or after a fight.'}</p>
-      ${opts.openTree ? '<div class="g-row"><button type="button" class="g-btn pink" data-tree>Haenim’s tree ▸</button></div>' : ''}</div>`;
+    const list = skMembers();
+    if (!list.some(m => m.id === sel.sk)) sel.sk = 'solar';
+    const who = `<div class="g-pv-who g-sk-who">${list.map(x => { const p = x.id === 'solar' ? bsave().pts : E().ptreePts(bsave(), x.id), wait = kitOf(x.id).pending.length; return `<button type="button" class="g-who-mini${x.id === sel.sk ? ' on' : ''}" data-sk="${x.id}" title="${esc(x.name)}"><i>${face(x.id, x.faces?.idle || 'serious')}</i><b>${esc(x.name)}<small>${wait ? 'New skill!' : `${p} pt${p === 1 ? '' : 's'}`}</small></b></button>`; }).join('')}</div>`;
+    const over = sel.forget ? forgetHtml(sel.forget) : sel.velvet ? velvetHtml(sel.velvet) : '';
+    return `<div class="g-sk${over ? ' has-over' : ''}">${who}${pendingBanner()}${over || (sel.sk === 'solar' ? haenimView() : partyView(sel.sk))}</div>`;
+  }
+  function wireSkills(el) {
+    const again = f => render(f);
+    el.querySelectorAll('[data-sk]').forEach(bt => bt.addEventListener('click', () => { sel.sk = bt.dataset.sk; sel.velvet = null; G.sfx('femc-hover'); again(`[data-sk="${sel.sk}"]`); }));
+    el.querySelectorAll('[data-col]').forEach(bt => bt.addEventListener('click', () => { const g = haenimGrid().filter(x => x.ci === +bt.dataset.col); sel.hn = (g.find(x => hState(x.n.id) === 'avail') || g[0]).n.id; G.sfx('femc-hover'); again(`[data-hn="${sel.hn}"]`); }));
+    el.querySelectorAll('[data-hn]').forEach(bt => bt.addEventListener('click', () => {
+      const id = bt.dataset.hn;
+      if (sel.sk === 'solar') { if (sel.hn === id) buyHaenim(); else { sel.hn = id; G.sfx('femc-hover'); again(`[data-hn="${id}"]`); } }
+      else if (sel.pn === id) buyParty(); else { sel.pn = id; G.sfx('femc-hover'); again(`[data-hn="${id}"]`); }
+    }));
+    el.querySelector('[data-sk-buy]')?.addEventListener('click', buyHaenim);
+    el.querySelector('[data-pt-buy]')?.addEventListener('click', buyParty);
+    el.querySelectorAll('[data-sk-forget]').forEach(bt => bt.addEventListener('click', () => { sel.forget = bt.dataset.skForget; sel.armed = null; G.sfx('femc-click'); again('[data-forget]'); }));
+    el.querySelectorAll('[data-forget]').forEach(bt => bt.addEventListener('click', () => {
+      const id = bt.dataset.forget, mid = sel.forget;
+      if (sel.armed !== id) { sel.armed = id; G.sfx('femc-hover'); again(`[data-forget="${id}"]`); return; }
+      E().forgetSkill(bsave(), mid, id); sel.armed = null;
+      G.toast('note', `${member(mid).name} forgot ${D().skills[id].name}.`); G.sfx('femc-click');
+      if (!kitOf(mid).pending.length) sel.forget = null;
+      G.saveQuiet(); again(sel.forget ? '[data-forget]' : `[data-sk="${sel.sk}"]`);
+    }));
+    el.querySelectorAll('[data-velvet]').forEach(bt => bt.addEventListener('click', () => { if (opts.inBattle) return; sel.velvet = bt.dataset.velvet; G.sfx('femc-click'); again('[data-velvet-no]'); }));
+    el.querySelector('[data-velvet-no]')?.addEventListener('click', () => { sel.velvet = null; G.sfx('femc-hover'); again(`[data-sk="${sel.sk}"]`); });
+    el.querySelector('[data-velvet-ok]')?.addEventListener('click', () => {
+      const who = sel.velvet, b = bsave(), spent = who === 'solar' ? E().treeSpent(b) : E().ptreeSpent(b, who), cost = fee(who, spent);
+      if (!spent || S().yen < cost) return;
+      G.addYen(-cost);
+      if (who === 'solar') E().treeRespec(b); else E().ptreeRespec(b, who);
+      sel.velvet = null; G.saveQuiet(); G.sfx('femc-rankup');
+      G.toast('note', `The Velvet Room rewrote ${who === 'solar' ? 'Haenim' : member(who).name}’s tree: ${spent} point${spent === 1 ? '' : 's'} back.`);
+      again(`[data-sk="${sel.sk}"]`);
+    });
+    // Arrows walk the tree (the menu's own [ ] still switch tabs).
+    el.querySelector('.g-ht, .g-pt')?.addEventListener('keydown', e => {
+      if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+      e.preventDefault(); e.stopPropagation();
+      if (sel.sk === 'solar') { sel.hn = gridMove(haenimGrid(), sel.hn, e.key); again(`[data-hn="${sel.hn}"]`); }
+      else { sel.pn = gridMove(partyGrid(sel.sk), sel.pn, e.key); again(`[data-hn="${sel.pn}"]`); }
+      G.sfx('femc-hover');
+    });
+  }
+  function afterLearn(mid) { if (kitOf(mid).pending.length) { sel.forget = mid; sel.armed = null; } }
+  function buyHaenim() {
+    if (hState(sel.hn) === 'own') { G.sfx('femc-hover'); return; }
+    const b = bsave(), r = E().treeBuy(b, sel.hn, frags());
+    if (!r.ok) { G.toast('note', r.why); G.sfx('femc-hover'); return; }
+    G.sfx('femc-rankup');
+    const n = E().treeNode(sel.hn);
+    G.toast('note', r.form ? `${n.name}: ${D().personas[r.form].name} has awakened. Switch forms on the Personas tab.` : r.learned.length ? `Haenim learned ${D().skills[r.learned[0]].name}.` : `${n.name} unlocked.`);
+    afterLearn('solar');
+    G.saveQuiet();
+    render(sel.forget ? '[data-forget]' : `[data-hn="${sel.hn}"]`);
+  }
+  function buyParty() {
+    const b = bsave(), mid = sel.sk;
+    if (E().ptreeState(b, mid, sel.pn, rankOf(mid)) === 'own') { G.sfx('femc-hover'); return; }
+    const r = E().ptreeBuy(b, mid, sel.pn, rankOf(mid));
+    if (!r.ok) { G.toast('note', r.why); G.sfx('femc-hover'); return; }
+    G.sfx('femc-rankup');
+    const n = E().ptreeNodes(mid).find(x => x.id === sel.pn);
+    G.toast('note', r.learned.length ? `${member(mid).name} learned ${D().skills[r.learned[0]].name}.` : `${member(mid).name}: ${n.name} unlocked.`);
+    afterLearn(mid);
+    G.saveQuiet();
+    render(sel.forget ? '[data-forget]' : `[data-hn="${sel.pn}"]`);
+  }
+  /* What the life sim knows that the battle save needs: fragments found (a skill point each, once; the memory nodes) and the
+     link ranks (the party trees' tiers, MAX evolutions). The battle's handoff does the same (battle.js hoBegin). */
+  function syncLife() {
+    const b = bsave(), D0 = D();
+    let changed = false;
+    (S().fragments || []).forEach(f => { if (D0.memories.some(m => m.id === f) && !b.memories.includes(f)) { b.memories.push(f); b.pts += D0.progression.memoryPoints; changed = true; } });
+    b.ranks = b.ranks || {};
+    D0.party.forEach(m => { if (m.id === 'solar' || !G.LINKS[m.id]) return; const r = Math.min(10, rankOf(m.id)); if ((b.ranks[m.id] || 0) !== r) { b.ranks[m.id] = r; changed = true; } });
+    if (changed) G.saveQuiet();
   }
   function equipTab() {
     const b = bsave(), list = opts.solo ? roster().filter(m => m.id === 'solar') : roster();
@@ -243,11 +436,9 @@ window.FemcMenu = (() => {
     const top = body.scrollTop;
     body.innerHTML = html;
     body.scrollTop = top;
-    if (tab === 'party') wireParty(body); else if (tab === 'personas') wirePersonas(body); else if (tab === 'equip') wireEquip(body); else if (tab === 'items') wireItems(body);
-    // The battle frame opens its tree once the menu has closed (openTree only asks for it).
-    body.querySelector('[data-tree]')?.addEventListener('click', () => { opts.openTree?.(); o.close(); });
+    if (tab === 'party') wireParty(body); else if (tab === 'personas') wirePersonas(body); else if (tab === 'equip') wireEquip(body); else if (tab === 'items') wireItems(body); else if (tab === 'skills') wireSkills(body);
     o.el.querySelectorAll('[data-tab]').forEach(b => { b.classList.toggle('on', b.dataset.tab === tab); b.setAttribute('aria-selected', b.dataset.tab === tab); });
-    if (focus) { const f = typeof focus === 'string' && focus.startsWith('[') ? body.querySelector(focus) : body.querySelector(`[data-pm="${focus}"]`); f?.focus({ preventScroll: true }); }
+    if (focus) { const f = typeof focus === 'string' && focus.startsWith('[') ? body.querySelector(focus) : body.querySelector(`[data-pm="${focus}"]`); f?.focus({ preventScroll: true }); f?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' }); }
   }
   function open(startTab, options = {}) {
     if (o) return false;
@@ -259,11 +450,19 @@ window.FemcMenu = (() => {
       <nav class="g-tabs g-fm-tabs" role="tablist">${TABS.map(([k, n]) => (k === 'compendium' ? `<a role="tab" href="${G.base}compendium.html" target="_blank" rel="noopener">${n} ↗</a>` : `<button type="button" role="tab" data-tab="${k}">${n}</button>`)).join('')}</nav>
       <div class="g-fm-body" tabindex="-1"></div>
       <p class="g-hint g-fm-hint">[ ] or ←→ on the tabs · Esc ${opts.inBattle ? 'back' : 'close'}</p></div>`, `g-fm-ov${opts.inBattle ? ' g-over-battle' : ''}`, () => { o = null; sel.slot = null; G.save(); const done = opts.onClose; opts = {}; done?.(); });
-    sel.use = null;
-    o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; sel.slot = null; sel.use = null; G.sfx('femc-click'); render(); }));
+    sel.use = null; sel.velvet = null; sel.armed = null;
+    try { syncLife(); } catch (e) {}
+    // Someone waiting on a "forget which?" choice: the Skills tab opens on it.
+    sel.forget = skMembers().find(m => kitOf(m.id).pending.length)?.id || null;
+    o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; sel.slot = null; sel.use = null; sel.velvet = null; G.sfx('femc-click'); render(); }));
     o.el.addEventListener('keydown', e => {
       const keys = TABS.filter(([k]) => k !== 'compendium').map(([k]) => k);
       const onTab = e.target.closest?.('[data-tab]');
+      // Down from the tabs (keyboard or a pad's D-pad) steps into the Skills tab's tree, or its open prompt.
+      if (onTab && e.key === 'ArrowDown' && tab === 'skills') {
+        const f = o.el.querySelector('.g-sk-forget [data-forget], .g-sk-velvet [data-velvet-no], .g-hn.sel');
+        if (f) { e.preventDefault(); e.stopPropagation(); f.focus(); return; }
+      }
       if (e.key === '[' || e.key === ']' || (onTab && (e.key === 'ArrowLeft' || e.key === 'ArrowRight'))) {
         e.preventDefault(); e.stopPropagation();
         tab = keys[(keys.indexOf(tab) + (e.key === '[' || e.key === 'ArrowLeft' ? -1 : 1) + keys.length) % keys.length];
