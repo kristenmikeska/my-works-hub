@@ -15,6 +15,9 @@ button { font: inherit; color: inherit; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 /* The FEMC badge sits bottom-left on every page; in battle the party HUD lives there. */
 html.bt-in-battle .femc-badge { display: none !important; }
+/* The site skin's full-screen pink stripes (femc-mode.js body::after) sit on top of everything, over the battle HUD and the
+   command menu; the battle draws its own, softer ones behind the action (playtest note 39). */
+html.femc:not(.femc-reader) body.bt-page::after { display: none; }
 
 #bt-app { position: fixed; inset: 0; overflow: hidden; }
 .bt-screen { position: absolute; inset: 0; overflow: hidden; }
