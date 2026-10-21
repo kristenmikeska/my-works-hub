@@ -13,11 +13,26 @@ Use **ChatGPT** for anything with a face, and **Gemini** for places and objects.
 ---
 
 ## ✅ Received, waiting to go in
-These don't need anything from you:
-- Solar's 5 Theurgy cut-ins
-- Solar's Evoker sheet
-- Haechan's Theurgy cut-in and its 3 layers
-- Mitsuru's waist-up crop. This could be her Theurgy still; tell me if you'd rather make a new one.
+These don't need anything from you. All of these are in the game now (2026-10-20):
+- [x] Solar's 5 Theurgy cut-ins. Each Haenim form shows its own: Rise and Shine, Golden Hour (Sunna), Spring Tide (Mazu), Landslide (Nike), Unveiled.
+- [x] Solar's Evoker sheet. It plays in her summon cut-in and on her battlefield figure.
+- [x] Haechan's Theurgy cut-in and its 3 layers (Every Universe)
+- [x] Jungwon's, Jihoon's and Minji's cut-ins (Perfect Composure, Light of Your Life, Final Cut)
+- [x] Strike sheets: Haechan, Jungwon, Jihoon, Minji, and Solar's two. The star-pin sheet is Nike's; the red-tassel sheet plays for her other forms.
+- [ ] Mitsuru's waist-up crop: **not used.** It's a cut-out on an empty frame (no background, no Persona) and in a different style from the other cut-ins, so it doesn't work as a full-screen still. Make her one from the S.E.E.S. prompt below.
+
+### For Claude: how new Theurgy art goes in
+Everything is data plus one tool. The presentation is reusable: `battle.js theurgyCut` plays whatever a fighter has (see the comment above `TH` in `data.js`).
+1. Add a line to `BUILD` in `tools/femc-theurgy.py`, then run `python3 tools/femc-theurgy.py all` (or one command: `cutin SRC slug`, `layers CHAR PERSONA BG slug`, `sheet SHEET slug`). Check the edges with `python3 tools/femc-theurgy.py check OUT.png <files>`.
+   - **Strike sheets** are cut by finding each figure as a connected piece, not by a fixed grid, so a blade crossing into the next panel is fine. Each frame gets the same canvas with the body's mass centred and the feet on one baseline. White gaps in long hair are punched out.
+   - If a figure wears a big white shirt, add the file to `HOLES` with `None`; otherwise the shirt could be punched out too.
+2. In `data.js`, on that member's `theurgy`, add the pieces:
+   - `img` (with `focus: [x%, y%]` of the face)
+   - `sheet: sheet3('<slug>')`
+   - `layers: { bg, persona, char }`
+   - A Persona form gets its own look under `theurgy.forms['<personaId>']`.
+3. Bump `ART_V` in `battle.js` and the `data.js ?v=` in both pages, then run `python3 tests/femc_theurgy.py`.
+4. Move the source to `Added to Game/` and add its entry (hash, outputs) to `tools/femc-new-adds.json`.
 
 ---
 
@@ -28,8 +43,9 @@ Make one for each Theurgy cut-in, using the same prompt every time.
 ```
 A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, nothing overlapping between panels. Character only: no Persona, no background, no effects.
 ```
-- [ ] **Solar:** Haenim, Sunna, Mazu (harbor), Nike, Unveiled (five sheets, one per cut-in)
-- [ ] **Haechan**
+- [ ] **Solar:** two are in (Nike's star-pin sheet, and the red-tassel one shared by the other forms). Optional: one each for Haenim, Sunna, Mazu (harbor) and Unveiled, attaching that form's cut-in.
+- [x] **Haechan**
+- [x] **Jungwon, Jihoon, Minji**
 - [ ] **The rest:** do each one after its cut-in in section 2.
 
 ---
@@ -40,17 +56,17 @@ A 3-panel horizontal sheet on a plain white background showing the same characte
 2. 🎨 `Character Portraits/<Name>/` (one portrait)
 3. 🎨 The Persona: `Personas/Hyeonmu.png`, `Dokkaebi.png`, `Theia.png`, or the S.E.E.S. Persona named in the heading
 
-### Jungwon: Perfect Composure (attach Hyeonmu.png)
+### Jungwon: Perfect Composure (attach Hyeonmu.png) ✅ in the game
 ```
 Create a NEW full-screen 16:9 ultimate-attack cut-in that matches the FIRST attached image's art style, energy and composition exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. The character is Yang Jungwon (second attached image). Keep his face, hair and outfit exactly. Close-to-mid shot: he stands perfectly still and composed amid the chaos, adjusting his sleeve with one hand, a thin rapier held point-down in the other, a calm, polite, faintly dangerous expression. His dimples barely show. Behind him, towering, is his Persona Hyeonmu (third attached image: an armored black tortoise-shell guardian entwined with a great black serpent, with jade-green inlays and a jade ring emblem), drawn exactly as in the reference. The serpent rears and the ground explodes into a field of huge ice spikes and frost shards. A jade ring of light hangs behind them. Icy white, black and jade-green palette. No text, no letters, no logos.
 ```
 
-### Jihoon: Light of Your Life (attach Dokkaebi.png)
+### Jihoon: Light of Your Life (attach Dokkaebi.png) ✅ in the game
 ```
 Create a NEW full-screen 16:9 ultimate-attack cut-in that matches the FIRST attached image's art style, energy and composition exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. The character is Park Jihoon (second attached image). Keep his face, hair and outfit exactly. Close-to-mid shot: a huge smug grin, one gloved fist thrown forward at the viewer, the other hand pointing at himself like "you're welcome," hair whipping in the wind, completely full of himself. Behind him, enormous and mid-laugh, is his Persona Dokkaebi (third attached image: a giant blue-skinned Korean goblin with wild white hair, a single horn, a studded gold club over his shoulder, a red and gold sash and gold cuffs), drawn exactly as in the reference. The goblin slams the club down and a tornado of white wind and flying debris tears across the frame. Sky blue, red and gold palette. Loud, vain and enormous. No text, no letters, no logos.
 ```
 
-### Minji: Final Cut (attach Theia.png)
+### Minji: Final Cut (attach Theia.png) ✅ in the game
 ```
 Create a NEW full-screen 16:9 ultimate-attack cut-in that matches the FIRST attached image's art style, energy and composition exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. The character is Kim Minji (second attached image). Keep her face, long dark hair and outfit exactly. Close-to-mid shot: she draws a bow toward the viewer with one eye closed, as if framing a perfect shot through a camera, her expression focused and soft at once. Behind her, radiant and huge, is her Persona Theia (third attached image: a golden titaness with flowing white-gold drapery and a sunburst crown, drawing a bow of light, circled by rings like a camera aperture), drawn exactly as in the reference. Theia looses an arrow of pure light and the whole frame flashes white and gold like a camera flash going off, with aperture rings and lens flares across the image. Warm gold and white palette. No text, no letters, no logos.
 ```
@@ -204,7 +220,7 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 - [ ] **Shinjiro's Evoker shot** (your redo)
   - **Attach:** Shinjiro's portrait.
 - [ ] **Evoker poses** for Akihiko, Yukari, Junpei, Mitsuru, Ken and Aigis
-  - **Attach:** 🎨 `Added to Game/solar-evoker-animation.png` (once it's in) and the character's portrait.
+  - **Attach:** 🎨 `Added to Game/solar-evoker-animation.png` and the character's portrait.
   - Prompt:
     ```
     Close-up of [NAME] raising an ornate silver Evoker to their temple, [EXPRESSION], hair lifting in a rush of blue wind, glowing glass shards around them, a huge full moon behind. Persona 3 Reload style, 16:9.

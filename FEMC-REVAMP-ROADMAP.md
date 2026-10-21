@@ -122,10 +122,11 @@ Kat loves the skill tree and wants much more building. **Built 2026-10-20:** Rev
   - It can also drop building materials and Revelation-style cards.
 - **Bond skills (joint skills):** Solar and one partner unleash a combo with its own cut-in, unlocked by link rank. Romances get special ones (Akihiko, Haechan, Jungwon...).
 - **More unique skills, animations and effects for every fighter,** plus situational battle lines (hurt ally, low HP, romance banter). Battle lines are text unless Kat supplies voice audio.
-- **Status now:** every fighter already has a Theurgy and basic battle lines (turn, One More, shift, finish, Theurgy). Only Solar has full-screen Theurgy art.
+- **Status now:** every fighter already has a Theurgy and basic battle lines (turn, One More, shift, finish, Theurgy). Solar (one per form) and the four searchers have Theurgy cut-in art and strike sheets; S.E.E.S. use the stylized cut-in until theirs come.
 
-### Theurgy animation (Kat, 2026-10-20)
+### Theurgy animation (Kat, 2026-10-20) ✅ built 2026-10-20
 Kat likes the **3-step strike sheet**: wind-up, strike, follow-through. Plan: play the sheet's three frames as the character's motion over the Theurgy background and Persona, with a flash, shake and particles. Use the layered pieces where she supplies them; otherwise the regular cut-in is the backdrop. Prompts are in `FEMC-ART-TODO.md`.
+- **Built:** `battle.js theurgyCut` plays any mix of a cut-in still, layers (bg / Persona / character) and a strike sheet; without art it builds a stylized cut-in. Each Haenim form has its own art and name. Particles come from `fx.js stream`, with a flash and a shake on impact. It follows the cut-in setting (1st per battle / Off / Rush get a short band; reduced motion gets a fade) and battle speed. The Evoker sheet plays in the summon cut-in and on the battlefield figure. Art tool: `tools/femc-theurgy.py`. Test: `tests/femc_theurgy.py`. How to add more is in `FEMC-ART-TODO.md`.
 
 ### World songs (Kat loves this, 2026-10-20) ✅ built 2026-10-20
 Play Solar's world songs quietly at the right moments. Sources are in `~/Documents/UniverseHub-Audio/`: Runners/ (Camo – Runners, chanmina – a shell, rosé – 3am), Strangers/ (Ethel Cain – Strangers, Crush, Sea Swallow Me), Hoax/ (Taylor Swift – Hoax, Ariana Grande – someone like u).

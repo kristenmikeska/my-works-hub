@@ -69,6 +69,16 @@ Kat approved lighter art batches: aim for 4–6 images, check mappings/loading a
 - *Sources moved:* the lead moved integrated sources from `New Adds/` to `Femc Mode Images/Added to Game/` (same names). `tools/femc-new-adds.json` has a `sourceRootNote`; `tests/femc_shadow_poses.py` and `tools/femc-shadow-poses.py` look in both folders.
 - `python3 tests/femc_music.py` checks files, rotations, world-song fades (memory scene, arrival, mid-scene fragment), battle rotation across frames, volume/mute and no browser errors. The local test server can't seek (no range requests), so the test fakes the near-end time.
 
+**Animated Theurgy cut-ins: built (2026-10-20).** `battle.js theurgyCut` is P3R-style and data-driven (`data.js` comment above `TH`):
+- **Strike sheet:** wind-up, strike, follow-through over the backdrop, then the cut-in.
+- **Layers:** the bg sweeps in, the Persona rises, the character slides in.
+- **Still:** a diagonal mask with pan/zoom and a light sweep.
+- **No art:** a stylized cut-in from the portrait and Persona art.
+
+Every version gets `fx.js stream` particles, a flash and a shake. Settings: Always, or 1st per battle (later ones get a short band); Off and Rush get the short band; reduced motion gets a fade; battle speed applies. Solar's art and names change per Haenim form through `theurgy.forms`; the mechanics don't. Her Evoker sheet (`member.evoker.frames`) plays in the summon cut-in and on the battlefield figure for summons that skip it.
+
+Art is in `art/theurgy/` and `art/summon/solar-evoke-*`, made with `tools/femc-theurgy.py all`. All 19 sources moved to Added to Game; it's batch 17 in the manifest. Mitsuru's PossibleUses crop was reviewed and left unused. `python3 tests/femc_theurgy.py` covers this. ART_V 12.
+
 **Next: the rest of batch A in section 7 of `FEMC-REVAMP-ROADMAP.md`:** the remaining New Adds art (link perks and Shuffle Time are done). The story/character pass from Kat's playtest notes is done (see `FEMC-PLAYTEST-TRACKER.md`).
 
 ## Roadmap after the current art pivot
