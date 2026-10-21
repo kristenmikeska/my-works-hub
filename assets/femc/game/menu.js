@@ -24,7 +24,16 @@
      - Eight skill slots and "forget which?" (engine.js kitFor / forgetSkill), upgrades in place (data.js chains).
      - Respec at the Velvet Room for yen (progression.respecFee), from the field only (not in the Dark Hour).
      Rules are engine.js's (treeState / treeBuy / ptreeState / ptreeBuy / kitFor); this file only draws them and writes
-     S.battleSave through G.ensureBattleSave() then G.saveQuiet(). Practice mode keeps the battle page's own tree screen. */
+     S.battleSave through G.ensureBattleSave() then G.saveQuiet(). Practice mode keeps the battle page's own tree screen.
+
+   ── CARDS, BONDS and weapon refines (the building systems, build.js) ──
+     - Cards: each fighter's six Revelation card slots (I Crown … VI Fate), the card box (filter by slot), a card's detail with
+       Equip / Remove, Level up (Tarot Dust + yen), Refine (Velvet Thread + yen; R3 an Arcana Fragment), Lock and Dismantle
+       (two presses), and the skill cards Shuffle Time gives (teach one to a member). Faces are drawn in code (cardFace).
+     - Bonds: every met link's perks (Battle / Assist / Tartarus / Daily / MAX), earned or not, paused (reversed) or waiting on a
+       system that isn't built yet. The Links tab shows a link's perks when you pick it.
+     - Equipment: weapon art (Solar's naginatas) and Refine (+1 to +5) on the weapon slot.
+     Money: in the field the life sim's yen (G.addYen); in the Dark Hour the battle save's (the fight reports the change back). */
 window.FemcMenu = (() => {
   const G = window.FemcGame, UI = () => window.FemcGameUI, SC = window.FemcScene;
   const D = () => window.FEMC_BATTLE_DATA, E = () => window.FemcBattleEngine, BS = () => window.FemcBattleSave;
@@ -32,7 +41,8 @@ window.FemcMenu = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const yen = n => `¥${Math.round(n || 0).toLocaleString('en-US')}`;
   const AFF = { normal: '–', weak: 'Wk', resist: 'Rs', null: 'Nu', drain: 'Dr', repel: 'Rp' };
-  const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['equip', 'Equipment'], ['items', 'Items'], ['status', 'Status'], ['links', 'Links'], ['journal', 'Journal'], ['calendar', 'Calendar'], ['compendium', 'Compendium']];
+  const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['cards', 'Cards'], ['equip', 'Equipment'], ['items', 'Items'], ['status', 'Status'], ['links', 'Links'], ['bonds', 'Bonds'], ['journal', 'Journal'], ['calendar', 'Calendar'], ['compendium', 'Compendium']];
+  const BLD = () => window.FemcBuild || null;
   let o = null, tab = 'party', sel = {}, opts = {};
 
   /* ── Battle-side helpers (no fight running: the engine is asked for numbers only) ── */
@@ -317,6 +327,15 @@ window.FemcMenu = (() => {
     (S().fragments || []).forEach(f => { if (D0.memories.some(m => m.id === f) && !b.memories.includes(f)) { b.memories.push(f); b.pts += D0.progression.memoryPoints; changed = true; } });
     b.ranks = b.ranks || {};
     D0.party.forEach(m => { if (m.id === 'solar' || !G.LINKS[m.id]) return; const r = Math.min(10, rankOf(m.id)); if ((b.ranks[m.id] || 0) !== r) { b.ranks[m.id] = r; changed = true; } });
+    // Every link's rank for the bond perks (and the gifts some ranks give: a naginata, a skill point).
+    if (BLD()) {
+      const ranks = {}, rev = [];
+      Object.entries(S().links || {}).forEach(([k, p]) => { if (p.rank > 0) ranks[k] = p.rank; if (p.reversed) rev.push(k); });
+      const before = JSON.stringify([b.bonds, b.bondsRev]);
+      const gifts = BLD().syncBonds(b, ranks, rev);
+      gifts.forEach(g => G.toast('perk', g.gear ? `A gift: ${D0.gear[g.gear].name}${D0.gear[g.gear].nag ? ' (one of Solar’s naginatas)' : ''}` : 'A gift: +1 skill point for Haenim’s tree'));
+      if (gifts.length || before !== JSON.stringify([b.bonds, b.bondsRev])) changed = true;
+    }
     if (changed) G.saveQuiet();
   }
   function equipTab() {
@@ -334,9 +353,21 @@ window.FemcMenu = (() => {
       <div class="g-pv-who">${list.map(x => `<button type="button" class="g-who-mini${x.id === id ? ' on' : ''}" data-eq="${x.id}" title="${esc(x.name)}"><i>${face(x.id, x.faces?.idle || 'serious')}</i><b>${esc(x.name)}<small>Lv ${lvOf(x.id)}</small></b></button>`).join('')}</div>
       <div class="g-eq-main">
         <div class="g-eq-head"><h2>${esc(m.name)}<small>${esc(personaOf(id)?.name || '')}</small></h2>${u ? `<p class="g-pv-stats">${[['HP', u.maxHp], ['SP', u.maxSp], ['ATK', u.atk], ['DEF', u.def], ['St', u.st], ['Ma', u.ma], ['En', u.en], ['Ag', u.ag], ['Lu', u.lu]].map(([k, v]) => `<span><small>${k}</small><b>${v}</b></span>`).join('')}</p>` : ''}</div>
-        <div class="g-eq-slots">${SL.map(([k, label]) => { const g = D().gear[eq[k]]; return `<button type="button" class="g-eq-slot${open === k ? ' open' : ''}" data-slot="${k}"><small>${label}</small><i>${g ? icon(eq[k]) : ''}</i><b>${g ? esc(g.name) : '—'}<span>${g ? esc(BS().gearLine(eq[k])) : 'Nothing equipped'}</span></b></button>`; }).join('')}</div>
-        ${open ? `<ul class="g-eq-list">${cands.map(x => { const g = x && D().gear[x]; return `<li><button type="button" class="g-eq-item${x === eq[open] ? ' cur' : ''}" data-pick="${x || ''}"><i>${g ? icon(x) : ''}</i><b>${g ? esc(g.name) : 'Remove'}<span>${g ? esc(BS().gearLine(x)) : 'Take it off'}</span></b><em>${x === eq[open] ? 'E' : g && g.tier ? `×${BS().spare(b, x)}` : ''}</em></button></li>`; }).join('') || '<li class="g-note">Nothing that fits. Shops are on the Strip and at the Mall.</li>'}</ul>` : '<p class="g-note small">Pick a slot to change it. Gear bought in town goes here.</p>'}
+        <div class="g-eq-slots">${SL.map(([k, label]) => { const g = D().gear[eq[k]], rf = g && BLD() ? BLD().wrefOf(b, eq[k]) : 0; return `<button type="button" class="g-eq-slot${open === k ? ' open' : ''}${g && g.art ? ' art' : ''}" data-slot="${k}"><small>${label}</small>${g && g.art ? `<img class="g-eq-art" src="${G.base}${g.art}" alt="">` : `<i>${g ? icon(eq[k]) : ''}</i>`}<b>${g ? esc(g.name) + (rf ? ` +${rf}` : '') : '—'}<span>${g ? esc(BS().gearLine(eq[k], b)) : 'Nothing equipped'}</span>${g && g.look ? `<span class="look">${esc(g.look)}</span>` : ''}</b></button>`; }).join('')}</div>
+        ${refineHtml(b, eq.weapon)}
+        ${open ? `<ul class="g-eq-list">${cands.map(x => { const g = x && D().gear[x]; return `<li><button type="button" class="g-eq-item${x === eq[open] ? ' cur' : ''}${g && g.art ? ' art' : ''}" data-pick="${x || ''}">${g && g.art ? `<img class="g-eq-art sm" src="${G.base}${g.art}" alt="">` : `<i>${g ? icon(x) : ''}</i>`}<b>${g ? esc(g.name) : 'Remove'}<span>${g ? esc(BS().gearLine(x, b)) : 'Take it off'}</span></b><em>${x === eq[open] ? 'E' : g && g.tier ? `×${BS().spare(b, x)}` : ''}</em></button></li>`; }).join('') || '<li class="g-note">Nothing that fits. Shops are on the Strip and at the Mall.</li>'}</ul>` : '<p class="g-note small">Pick a slot to change it. Gear bought in town goes here.</p>'}
       </div></div>`;
+  }
+  /* Money for building: the life sim's yen in the field, the battle save's in the Dark Hour (the fight reports it back). */
+  const yenNow = () => (opts.inBattle ? bsave().yen : S().yen);
+  const payYen = n => { if (opts.inBattle) { bsave().yen = Math.max(0, bsave().yen - n); opts.yen = bsave().yen; } else G.addYen(-n); };
+  const costHtml = c => Object.entries(c).map(([k, n]) => k === 'yen' ? `<span class="${yenNow() >= n ? '' : 'short'}">¥${n.toLocaleString('en-US')}</span>` : `<span class="${(bsave().mats[k] || 0) >= n ? '' : 'short'}">${esc(D().materials[k].name)} ×${n} <small>(${bsave().mats[k] || 0})</small></span>`).join('');
+  function refineHtml(b, wid) {
+    const g = D().gear[wid], B = BLD();
+    if (!B || !g || !(g.tier > 0)) return '';
+    const r = B.wrefOf(b, wid), c = B.wrefCost(b, wid);
+    return `<div class="g-refine"><p><b>Refine · ${esc(g.name)} ${r ? `+${r}` : ''}</b><small>${c ? `+${r + 1}: ATK ${B.weaponAtk(b, wid)} → ${Math.round(g.atk * (1 + B.WREF.atk * (r + 1)))}${g.bonus ? ', its bonus +15%' : ''}` : 'Fully refined (+5).'}</small></p>
+      ${c ? `<div class="g-cost">${costHtml(c)}</div><button type="button" class="g-btn small pink" data-refine="${esc(wid)}"${B.canPay(b, c, yenNow()) ? '' : ' disabled'}>Refine to +${r + 1}</button>` : ''}</div>`;
   }
   function wireEquip(el) {
     el.querySelectorAll('[data-eq]').forEach(bt => bt.addEventListener('click', () => { sel.equip = bt.dataset.eq; sel.slot = null; G.sfx('femc-hover'); render(); }));
@@ -346,7 +377,163 @@ window.FemcMenu = (() => {
       BS().equip(b, id, sel.slot, bt.dataset.pick || null);
       sel.slot = null; G.saveQuiet(); G.sfx('femc-rankup'); render();
     }));
+    el.querySelector('[data-refine]')?.addEventListener('click', e => {
+      const wid = e.currentTarget.dataset.refine, r = BLD().refineWeapon(bsave(), wid, { yenNow: yenNow(), payYen });
+      if (!r.ok) { G.toast('note', r.why); G.sfx('femc-hover'); return; }
+      G.toast('note', `${D().gear[wid].name} is now +${r.lvl}.`); G.sfx('femc-rankup'); G.saveQuiet(); render('[data-refine], [data-slot="weapon"]');
+    });
   }
+
+  /* ── CARDS (Revelation-style, P5X) ── */
+  const RAR = { 3: '#7fb6ff', 4: '#c07bff', 5: '#ffd36b' };
+  const GLYPH = {
+    bell: '<path d="M50 38c-12 0-17 10-17 22v12l-7 8h48l-7-8V60c0-12-5-22-17-22z" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><circle cx="50" cy="84" r="5" fill="#fff4f9" stroke="#14070f" stroke-width="2"/><path d="M38 40l-6-10 10 5M62 40l6-10-10 5" fill="#ff8a3d" stroke="#14070f" stroke-width="2"/>',
+    stadium: '<ellipse cx="50" cy="74" rx="34" ry="13" fill="none" stroke="var(--g)" stroke-width="4"/><ellipse cx="50" cy="74" rx="20" ry="6" fill="var(--g)" opacity=".5"/><path d="M20 72V42M80 72V42" stroke="#fff4f9" stroke-width="3"/><circle cx="20" cy="40" r="5" fill="#fff"/><circle cx="80" cy="40" r="5" fill="#fff"/><path d="M40 34l3 3M58 30l3 3M50 46l3 3" stroke="#fff" stroke-width="2"/>',
+    headset: '<path d="M26 66V58c0-14 10-24 24-24s24 10 24 24v8" fill="none" stroke="var(--g)" stroke-width="5"/><rect x="20" y="60" width="13" height="22" rx="5" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><rect x="67" y="60" width="13" height="22" rx="5" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><path d="M27 82c0 8 8 12 16 12" fill="none" stroke="#fff4f9" stroke-width="2.5"/><circle cx="46" cy="94" r="3.5" fill="#fff"/>',
+    ring: '<circle cx="50" cy="66" r="18" fill="none" stroke="var(--g)" stroke-width="8"/><circle cx="50" cy="66" r="18" fill="none" stroke="#14070f" stroke-width="1.5"/><path d="M50 84c-4 14-16 20-24 22M50 84c4 14 16 20 24 22" fill="none" stroke="#ff3b4f" stroke-width="3"/>',
+    crane: '<path d="M30 100V44h6v56zM33 44L76 34v5L36 50zM68 37v24" stroke="var(--g)" stroke-width="3.5" fill="var(--g)"/><path d="M68 61v8" stroke="#fff" stroke-width="2"/><rect x="62" y="69" width="12" height="7" fill="#ff8a3d"/><circle cx="76" cy="88" r="9" fill="#ffd36b" opacity=".85"/>',
+    needle: '<path d="M30 96L70 40l3 2-38 56z" fill="#e8e8f0" stroke="#14070f" stroke-width="2"/><ellipse cx="68" cy="45" rx="2" ry="4" transform="rotate(35 68 45)" fill="#14070f"/><path d="M69 44c14-6 6 22-10 26s-26 16-14 28" fill="none" stroke="var(--g)" stroke-width="3"/>',
+    star: '<path d="M50 34l9 19 21 3-15 14 4 21-19-10-19 10 4-21-15-14 21-3z" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><circle cx="50" cy="62" r="5" fill="#fff4f9"/>',
+    ballot: '<rect x="28" y="54" width="44" height="38" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><rect x="40" y="52" width="20" height="4" fill="#14070f"/><path d="M44 36h14l-2 20H46z" fill="#fff4f9" stroke="#14070f" stroke-width="2"/><path d="M28 72c10 6 34 6 44 0M44 92l-6 12M56 92l6 12" stroke="#ff4f9e" stroke-width="3" fill="none"/>',
+    croissant: '<path d="M22 74c6-22 50-22 56 0-8-6-14-6-18-2-4-8-16-8-20 0-4-4-10-4-18 2z" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><path d="M40 60l2 12M50 56v14M60 60l-2 12" stroke="#8a5a2a" stroke-width="2"/><rect x="26" y="86" width="48" height="5" fill="#fff4f9" opacity=".6"/>',
+    evoker: '<path d="M22 56h48l8 4v8H58l-4 6h-8l-4-6H34v-8z" fill="#c9d0dc" stroke="#14070f" stroke-width="2.5"/><path d="M34 68h12l-6 24H28z" fill="#3a404e" stroke="#14070f" stroke-width="2.5"/><rect x="48" y="58" width="16" height="3" fill="var(--g)"/><path d="M14 92c22-8 50-8 72 0" stroke="var(--g)" stroke-width="4" fill="none" opacity=".7"/>',
+    moon: '<circle cx="50" cy="56" r="22" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><circle cx="58" cy="50" r="5" fill="#14070f" opacity=".12"/><path d="M38 104V78l6-4V66l6-4 6 4v8l6 4v26z" fill="#14070f" stroke="#7dffc0" stroke-width="1.5"/>',
+    butterfly: '<path d="M50 66C40 40 18 40 22 58c2 10 14 12 28 8zM50 66c10-26 32-26 28-8-2 10-14 12-28 8zM50 68c-8 14-24 22-24 10s14-12 24-10zM50 68c8 14 24 22 24 10s-14-12-24-10z" fill="var(--g)" stroke="#14070f" stroke-width="2"/><path d="M50 52v32" stroke="#14070f" stroke-width="3"/>',
+    coffin: '<path d="M50 30l16 10-6 64H40l-6-64z" fill="#1a2420" stroke="var(--g)" stroke-width="3"/><path d="M50 50v34M42 60h16" stroke="var(--g)" stroke-width="3"/><ellipse cx="50" cy="104" rx="26" ry="5" fill="var(--g)" opacity=".35"/>'
+  };
+  /* A Revelation card face, drawn in code (a set's `img` replaces the glyph once Kat's art exists). */
+  function cardFace(c, cls = '') {
+    const B = BLD(), st = B.SETS[c.set] || { color: '#ff4f9e', glyph: 'star', name: c.set }, sl = B.SLOTS.find(x => x.id === c.slot) || { n: '?', name: '' };
+    const art = st.img ? `<image href="${G.base}${st.img}" x="12" y="24" width="76" height="86" preserveAspectRatio="xMidYMid slice"/>` : (GLYPH[st.glyph] || GLYPH.star);
+    return `<svg class="g-cardface ${cls}" viewBox="0 0 100 150" role="img" aria-label="${esc(B.cardName(c))}" style="--g:${st.color};--r:${RAR[c.r]}">
+      <defs><linearGradient id="cg-${c.u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${st.color}" stop-opacity=".55"/><stop offset=".55" stop-color="#1a0c24"/><stop offset="1" stop-color="#0b0612"/></linearGradient></defs>
+      <rect x="2" y="2" width="96" height="146" rx="6" fill="url(#cg-${c.u})" stroke="var(--r)" stroke-width="3"/>
+      <rect x="7" y="7" width="86" height="136" rx="3" fill="none" stroke="#ffd36b" stroke-width="1.2" opacity=".85"/>
+      <path d="M7 18q6 0 6-6M93 18q-6 0-6-6M7 132q6 0 6 6M93 132q-6 0-6 6" fill="none" stroke="#ffd36b" stroke-width="1.5"/>
+      <text x="50" y="19" fill="var(--r)" font-size="10" text-anchor="middle" letter-spacing="1">${'★'.repeat(c.r)}</text>
+      <g>${art}</g>
+      <rect x="18" y="116" width="64" height="22" rx="2" fill="#14070f" stroke="#ffd36b" stroke-width="1"/>
+      <text x="50" y="126" fill="#fff4f9" font-family="Georgia, serif" font-size="9" font-weight="700" text-anchor="middle">${esc(sl.n)} · ${esc(sl.name.toUpperCase())}</text>
+      <text x="50" y="135" fill="#ffd36b" font-size="7" text-anchor="middle">Lv ${c.lvl}${c.ref ? ` · R${c.ref}` : ''}</text>
+      ${c.lock ? '<path d="M84 26h8v7h-8zM85.5 26v-3a2.5 2.5 0 0 1 5 0v3" fill="#ffd36b" stroke="#14070f" stroke-width="1"/>' : ''}
+      ${c.isNew ? '<circle cx="14" cy="27" r="4" fill="#ff4f9e" stroke="#fff" stroke-width="1"/>' : ''}
+    </svg>`;
+  }
+  const subsHtml = c => { const B = BLD(); return `<ul class="g-card-stats"><li class="main"><b>${esc(B.statLine(c.main, B.mainValue(c)))}</b><small>main</small></li>${c.subs.map(([k, v]) => `<li>${esc(B.statLine(k, v))}</li>`).join('')}${Array.from({ length: Math.max(0, 4 - c.subs.length) }, () => '<li class="empty">—</li>').join('')}</ul>`; };
+  // A member's card bonus in words: totals of every stat line and the set bonuses that are on.
+  function bonusSummary(mid) {
+    const B = BLD(), b = bsave(), x = B.unitBonus(b, mid, BS().eqOf(b, mid).weapon), parts = [];
+    ['hp', 'sp', 'st', 'ma', 'en', 'ag', 'lu'].forEach(k => { if (x.flat[k]) parts.push(`${k.toUpperCase()} +${x.flat[k]}`); if (x.pct[k]) parts.push(`${k.toUpperCase()} +${x.pct[k]}%`); });
+    ['crit', 'critX', 'heal', 'th', 'evade', 'phys'].forEach(k => { if (x[k]) parts.push(B.statLine(k, Math.round(x[k]))); });
+    Object.entries(x.el).forEach(([e, v]) => parts.push(`${D().elements[e] ? D().elements[e].name : e} +${Math.round(v)}%`));
+    return parts;
+  }
+  function cardsTab() {
+    const B = BLD();
+    if (!B) return '<p class="g-note">Cards aren’t available.</p>';
+    const b = bsave(), C = B.ensureCards(b), list = opts.solo ? roster().filter(m => m.id === 'solar') : roster();
+    const mid = sel.cmember && list.some(m => m.id === sel.cmember) ? sel.cmember : 'solar';
+    sel.cmember = mid;
+    const eq = C.eq[mid] || {}, slot = sel.cslot || null;
+    const box = C.list.filter(c => !slot || c.slot === slot).slice().sort((a, c2) => ((B.wearerOf(b, c2.u) === mid) - (B.wearerOf(b, a.u) === mid)) || (c2.r - a.r) || (c2.lvl - a.lvl) || (c2.u - a.u));
+    const cur = sel.card != null ? B.cardById(b, sel.card) : null;
+    const sets = Object.entries(B.setCounts(b, mid)).filter(([, n]) => n >= 2);
+    const mats = ['tarot_dust', 'velvet_thread', 'arcana_fragment'].map(k => `<span>${esc(D().materials[k].name)} <b>${b.mats[k] || 0}</b></span>`).join('') + `<span>Yen <b>¥${yenNow().toLocaleString('en-US')}</b></span>`;
+    const slotBtn = sd => { const c = B.cardById(b, eq[sd.id]); return `<button type="button" class="g-cslot${slot === sd.id ? ' on' : ''}${c ? ' full' : ''}" data-cslot="${sd.id}" title="${esc(sd.name)}${c ? ': ' + esc(B.cardName(c)) : ''}">${c ? cardFace(c, 'mini') : `<span class="g-cslot-empty"><b>${sd.n}</b>${esc(sd.name)}</span>`}<small>${sd.n} · ${esc(sd.name)}</small></button>`; };
+    let detail = '<p class="g-note">Pick a card to see it. Cards come from Shuffle Time, chests, bosses and Mayoido Antiques.</p>';
+    if (cur) {
+      const who = B.wearerOf(b, cur.u), mine = who === mid, other = eq[cur.slot] && eq[cur.slot] !== cur.u ? B.cardById(b, eq[cur.slot]) : null;
+      const lc = B.levelCost(cur), rc = B.refineCost(cur), st = B.SETS[cur.set];
+      const cmp = other ? `<p class="g-card-cmp">Instead of <b>${esc(B.cardName(other))}</b> ★${other.r} Lv ${other.lvl}: ${esc(B.statLine(other.main, B.mainValue(other)))}${other.subs.length ? ' · ' + other.subs.map(([k, v]) => esc(B.statLine(k, v))).join(' · ') : ''}</p>` : '';
+      detail = `<div class="g-card-detail" style="--g:${st.color}">${cardFace(cur, 'big')}<div>
+          <p class="g-kicker">${esc(st.world)} · ★${cur.r} · Lv ${cur.lvl}/${B.CARD.maxLvl[cur.r]} · R${cur.ref}/${B.CARD.maxRef}${who ? ` · on ${esc(member(who)?.name || who)}` : ''}</p>
+          <h3 class="g-card-name">${esc(B.cardName(cur))}</h3>
+          ${subsHtml(cur)}
+          <p class="g-card-set"><b>${esc(st.name)}</b> 2: ${esc(st.t2)} · 4: ${esc(st.t4)}</p>${cmp}
+          <div class="g-row g-card-acts">
+            ${mine ? `<button type="button" class="g-btn small" data-cunequip="${cur.slot}">Remove</button>` : `<button type="button" class="g-btn small pink" data-cequip="${cur.u}">Equip on ${esc(member(mid).name)}</button>`}
+            ${lc ? `<button type="button" class="g-btn small" data-clevel="${cur.u}"${B.canPay(b, lc, yenNow()) ? '' : ' disabled'}>Level up</button>` : '<span class="g-chip">Max level</span>'}
+            ${rc ? `<button type="button" class="g-btn small" data-crefine="${cur.u}"${B.canPay(b, rc, yenNow()) ? '' : ' disabled'}>Refine</button>` : '<span class="g-chip">Fully refined</span>'}
+            <button type="button" class="g-btn small" data-clock="${cur.u}">${cur.lock ? 'Unlock' : 'Lock'}</button>
+            <button type="button" class="g-btn small${sel.armedCard === cur.u ? ' pink' : ''}" data-cdis="${cur.u}"${cur.lock ? ' disabled title="Locked"' : ''}>${sel.armedCard === cur.u ? 'Dismantle? Press again' : 'Dismantle'}</button>
+          </div>
+          <div class="g-card-costs">${lc ? `<p><small>Level up</small>${costHtml(lc)}</p>` : ''}${rc ? `<p><small>Refine</small>${costHtml(rc)}</p>` : ''}<p><small>Dismantle</small><span>Tarot Dust ×${B.CARD.dismantle[cur.r] + Math.floor((cur.spent || 0) / 2)}${cur.ref ? ` · Velvet Thread ×${cur.ref}` : ''}</span></p></div>
+        </div></div>`;
+    }
+    const sc = Object.entries(b.skillCards || {}).filter(([, n]) => n > 0);
+    const skillCards = sc.length ? `<h3>Skill cards</h3><ul class="g-skillcards">${sc.map(([k, n]) => `<li><b>${esc(D().skills[k].name)} ×${n}</b><small>${esc(D().skills[k].desc || '')}</small>${sel.teach === k ? `<span class="g-teach">${list.map(m => { const t = B.teachable(b, m.id, k); return `<button type="button" class="g-btn small" data-teach="${k}" data-to="${m.id}"${t.ok ? '' : ` disabled title="${esc(t.why)}"`}>${esc(m.name)}</button>`; }).join('')}<button type="button" class="g-btn small" data-teach-cancel>Cancel</button></span>` : `<button type="button" class="g-btn small pink" data-teach="${k}">Teach</button>`}</li>`).join('')}</ul>` : '';
+    const boosts = Object.entries((b.pboost || {})).filter(([m, o]) => member(m) && Object.keys(o).length);
+    const boostHtml = boosts.length ? `<p class="g-note small">Persona boosts from Shuffle Time: ${boosts.map(([m, o]) => `${esc(member(m).name)} ${Object.entries(o).map(([k, v]) => `${k.toUpperCase()} +${v}`).join(' ')}`).join(' · ')}</p>` : '';
+    const sum = bonusSummary(mid);
+    return `<div class="g-cards">
+      <div class="g-pv-who">${list.map(x => `<button type="button" class="g-who-mini${x.id === mid ? ' on' : ''}" data-cmember="${x.id}" title="${esc(x.name)}"><i>${face(x.id, x.faces?.idle || 'serious')}</i><b>${esc(x.name)}<small>${Object.keys(C.eq[x.id] || {}).length}/6 cards</small></b></button>`).join('')}</div>
+      <div class="g-cslots">${B.SLOTS.map(slotBtn).join('')}</div>
+      <p class="g-card-sum">${sets.length ? sets.map(([set, n]) => `<span class="g-chip on" style="--c:${B.SETS[set].color}">${esc(B.SETS[set].name)} ${n >= 4 ? '4' : '2'}</span>`).join('') : '<span class="g-note small">No set bonus yet: two or four cards of one set.</span>'}${sum.length ? `<small>${esc(sum.join(' · '))}</small>` : ''}</p>
+      <div class="g-cards-main">
+        <div class="g-cbox-wrap"><div class="g-cbox-head"><b>Card box</b><small>${C.list.length}/${B.CARD.cap}${slot ? ` · ${esc(B.SLOTS.find(x => x.id === slot).name)} only` : ''}</small>${slot ? '<button type="button" class="g-btn small" data-cslot-all>All slots</button>' : ''}</div>
+          <div class="g-cbox">${box.map(c => `<button type="button" class="g-cbox-card${sel.card === c.u ? ' on' : ''}${B.wearerOf(b, c.u) ? ' worn' : ''}" data-card="${c.u}" title="${esc(B.cardName(c))}">${cardFace(c, 'mini')}${B.wearerOf(b, c.u) ? `<em>${esc((member(B.wearerOf(b, c.u)) || {}).name || '')}</em>` : ''}</button>`).join('') || '<p class="g-note small">No cards yet.</p>'}</div></div>
+        <aside class="g-card-side">${detail}</aside></div>
+      <p class="g-mats">${mats}</p>${boostHtml}${skillCards}</div>`;
+  }
+  function wireCards(el) {
+    const B = BLD(), b = bsave(), again = f => render(f);
+    el.querySelectorAll('[data-cmember]').forEach(bt => bt.addEventListener('click', () => { sel.cmember = bt.dataset.cmember; sel.armedCard = null; G.sfx('femc-hover'); again(`[data-cmember="${sel.cmember}"]`); }));
+    el.querySelectorAll('[data-cslot]').forEach(bt => bt.addEventListener('click', () => {
+      const s2 = bt.dataset.cslot, eqd = (B.ensureCards(b).eq[sel.cmember] || {})[s2];
+      sel.cslot = sel.cslot === s2 ? null : s2; if (eqd) sel.card = eqd; sel.armedCard = null; G.sfx('femc-hover'); again(`[data-cslot="${s2}"]`);
+    }));
+    el.querySelector('[data-cslot-all]')?.addEventListener('click', () => { sel.cslot = null; again('[data-cslot]'); });
+    el.querySelectorAll('[data-card]').forEach(bt => bt.addEventListener('click', () => { const u = +bt.dataset.card, c = B.cardById(b, u); if (c && c.isNew) { c.isNew = false; G.saveQuiet(); } sel.card = u; sel.armedCard = null; G.sfx('femc-hover'); again(`[data-card="${u}"]`); }));
+    el.querySelector('[data-cequip]')?.addEventListener('click', e => { B.equipCard(b, sel.cmember, +e.currentTarget.dataset.cequip); G.saveQuiet(); G.sfx('femc-rankup'); again('[data-cunequip]'); });
+    el.querySelector('[data-cunequip]')?.addEventListener('click', e => { B.unequipCard(b, sel.cmember, e.currentTarget.dataset.cunequip); G.saveQuiet(); G.sfx('femc-click'); again('[data-cequip]'); });
+    el.querySelector('[data-clevel]')?.addEventListener('click', e => { const r = B.levelCard(b, +e.currentTarget.dataset.clevel, { yenNow: yenNow(), payYen }); if (!r.ok) { G.toast('note', r.why); return; } G.sfx('femc-rankup'); G.saveQuiet(); again('[data-clevel]'); });
+    el.querySelector('[data-crefine]')?.addEventListener('click', e => { const r = B.refineCard(b, +e.currentTarget.dataset.crefine, Math.random, { yenNow: yenNow(), payYen }); if (!r.ok) { G.toast('note', r.why); return; } G.toast('note', `Refined to R${r.ref}: ${B.statLine(r.gained[0], r.gained[1])}${r.gained[2] ? ' (new)' : ''}.`); G.sfx('femc-rankup'); G.saveQuiet(); again('[data-crefine]'); });
+    el.querySelector('[data-clock]')?.addEventListener('click', e => { const c = B.cardById(b, +e.currentTarget.dataset.clock); c.lock = !c.lock; sel.armedCard = null; G.saveQuiet(); G.sfx('femc-click'); again('[data-clock]'); });
+    el.querySelector('[data-cdis]')?.addEventListener('click', e => {
+      const u = +e.currentTarget.dataset.cdis;
+      if (sel.armedCard !== u) { sel.armedCard = u; G.sfx('femc-hover'); again('[data-cdis]'); return; }
+      const r = B.dismantleCard(b, u); sel.armedCard = null;
+      if (!r.ok) { G.toast('note', r.why); return; }
+      sel.card = null; G.toast('note', `Dismantled: Tarot Dust ×${r.dust}${r.thread ? `, Velvet Thread ×${r.thread}` : ''}.`); G.sfx('femc-click'); G.saveQuiet(); again('[data-card], [data-cslot]');
+    });
+    el.querySelectorAll('[data-teach]').forEach(bt => bt.addEventListener('click', () => {
+      const k = bt.dataset.teach, to = bt.dataset.to;
+      if (!to) { sel.teach = k; G.sfx('femc-click'); again(`[data-teach="${k}"][data-to]`); return; }
+      const r = B.teach(b, to, k); sel.teach = null;
+      if (!r.ok) { G.toast('note', r.why); return; }
+      G.toast('note', `${member(to).name} learned ${D().skills[k].name}.`); G.sfx('femc-rankup'); G.saveQuiet();
+      if (kitOf(to).pending.length) { tab = 'skills'; sel.sk = to; sel.forget = to; sel.armed = null; }
+      again();
+    }));
+    el.querySelector('[data-teach-cancel]')?.addEventListener('click', () => { sel.teach = null; again(); });
+  }
+
+  /* ── BONDS: every met link's perks ── */
+  const PSTATE = { own: ['Earned', 'own'], party: ['Earned · in the party', 'own'], assist: ['Earned · an Assist until they join', 'own'], paused: ['Paused · the bond is reversed', 'paused'], rank: ['Not yet', 'rank'], stub: ['Coming later', 'stub'] };
+  function perkCtx() { const b = bsave(); return { bonds: Object.fromEntries(Object.entries(S().links || {}).map(([k, p]) => [k, p.rank || 0])), rev: Object.entries(S().links || {}).filter(([, p]) => p.reversed).map(([k]) => k), joined: G.available() }; }
+  function perkList(linkId, ctx = perkCtx()) {
+    const B = BLD();
+    return `<ul class="g-perks">${B.perksOf(linkId).map(p => { const st = B.perkState(p, ctx), [word, cls] = PSTATE[st]; return `<li class="g-perk ${cls}${p.kat ? ' kat' : ''}"><span class="g-perk-r">${p.rank >= 10 ? 'MAX' : `R${p.rank}`}</span><div><b>${esc(p.name)}<em class="t-${p.type}">${esc(B.TYPE_NAME[p.type])}</em>${p.kat ? '<em class="t-kat">★ Kat</em>' : ''}</b><small>${esc(p.desc)}</small>${st === 'stub' ? `<small class="why">${esc(p.stub)}</small>` : ''}</div><span class="g-perk-st">${esc(word)}</span></li>`; }).join('')}</ul>`;
+  }
+  function bondsTab() {
+    const B = BLD();
+    if (!B) return '<p class="g-note">No bonds yet.</p>';
+    const ctx = perkCtx(), met = Object.values(G.LINKS).filter(l => G.isMet(l.id) && B.perksOf(l.id).length);
+    const f = sel.bondType || 'all';
+    const all = met.flatMap(l => B.perksOf(l.id).map(p => [l, p, B.perkState(p, ctx)]));
+    const earned = all.filter(([, , st]) => ['own', 'party', 'assist'].includes(st));
+    const rows = met.map(l => {
+      const ps = B.perksOf(l.id).filter(p => f === 'all' || (f === 'earned' ? ['own', 'party', 'assist'].includes(B.perkState(p, ctx)) : p.type === f));
+      if (!ps.length) return '';
+      const pr = G.progress(l.id);
+      return `<section class="g-bond"><header><b>${esc(l.short)}</b><small>${esc(l.arcana)}${pr.reversed ? ' · Reversed' : ''} · ${pr.rank >= 10 ? 'MAX' : `rank ${pr.rank}`}</small></header>
+        <ul class="g-perks">${ps.map(p => { const st = B.perkState(p, ctx), [word, cls] = PSTATE[st]; return `<li class="g-perk ${cls}${p.kat ? ' kat' : ''}"><span class="g-perk-r">${p.rank >= 10 ? 'MAX' : `R${p.rank}`}</span><div><b>${esc(p.name)}<em class="t-${p.type}">${esc(B.TYPE_NAME[p.type])}</em>${p.kat ? '<em class="t-kat">★ Kat</em>' : ''}</b><small>${esc(p.desc)}</small>${st === 'stub' ? `<small class="why">${esc(p.stub)}</small>` : ''}</div><span class="g-perk-st">${esc(word)}</span></li>`; }).join('')}</ul></section>`;
+    }).join('');
+    return `<p class="g-note">Every bond pays off: Battle perks (a fighter in the party), Assists (friends cutting in from outside the party), Tartarus, Daily and a MAX skill or passive. <b>${earned.length}</b> earned of ${all.length} from the bonds you’ve made.</p>
+      <div class="g-row g-bond-filter">${[['all', 'All'], ['earned', 'Earned'], ['battle', 'Battle'], ['assist', 'Assist'], ['tartarus', 'Tartarus'], ['daily', 'Daily'], ['max', 'MAX']].map(([k, n]) => `<button type="button" class="g-chip${f === k ? ' on' : ''}" data-btype="${k}">${n}</button>`).join('')}</div>
+      <div class="g-bonds">${rows || '<p class="g-note">No bonds yet. Go out after school and meet people.</p>'}</div>`;
+  }
+  function wireBonds(el) { el.querySelectorAll('[data-btype]').forEach(bt => bt.addEventListener('click', () => { sel.bondType = bt.dataset.btype; G.sfx('femc-hover'); render(`[data-btype="${sel.bondType}"]`); })); }
   // On a floor, items that work outside a fight can be used from here (the frame applies them: opts.useItem).
   const usable = k => { const it = D().items?.[k]; return !!(opts.useItem && it && it.use !== 'battle' && it.type !== 'key'); };
   const needsTarget = k => ['ally', 'dead'].includes(D().items?.[k]?.target);
@@ -393,7 +580,13 @@ window.FemcMenu = (() => {
   }
   function linksTab() {
     const met = Object.values(G.LINKS).filter(l => G.isMet(l.id));
-    return met.length ? `<div class="g-st-links">${met.map(l => { const p = G.progress(l.id), art = G.tarot(l); return `<div class="g-st-link${p.reversed ? ' rev' : ''}"><div class="g-tarot"${art ? ` style="background-image:url('${art}')"` : ''}><span>${esc(l.numeral || '✦')}</span></div><div><b>${esc(l.short)}</b><small>${esc(l.arcana)}${p.reversed ? ' · Reversed' : ''}</small><p class="g-pips">${Array.from({ length: 10 }, (_, k) => `<i class="${k < p.rank ? 'on' : ''}"></i>`).join('')}</p><small class="g-hint">${esc(p.rank >= 10 ? 'MAX' : l.closes && S().day > G.dayOf(l.closes) ? 'Gone' : G.homeOf(l).hint || '')}</small></div></div>`; }).join('')}</div>` : '<p class="g-note">No bonds yet. Go out after school and meet people.</p>';
+    const B = BLD(), ctx = B ? perkCtx() : null, cur = sel.link && met.find(l => l.id === sel.link);
+    const detail = cur && B ? `<div class="g-link-perks"><p class="g-kicker">${esc(cur.short)} · ${esc(cur.arcana)} · bond perks</p>${perkList(cur.id, ctx)}<button type="button" class="g-btn small" data-link-close>Close</button></div>` : '';
+    return met.length ? `${detail}<div class="g-st-links">${met.map(l => { const p = G.progress(l.id), art = G.tarot(l), n = B ? B.perksOf(l.id).filter(x => ['own', 'party', 'assist'].includes(B.perkState(x, ctx))).length : 0; return `<button type="button" class="g-st-link${p.reversed ? ' rev' : ''}${cur === l ? ' on' : ''}" data-link="${l.id}"><div class="g-tarot"${art ? ` style="background-image:url('${art}')"` : ''}><span>${esc(l.numeral || '✦')}</span></div><div><b>${esc(l.short)}</b><small>${esc(l.arcana)}${p.reversed ? ' · Reversed' : ''}</small><p class="g-pips">${Array.from({ length: 10 }, (_, k) => `<i class="${k < p.rank ? 'on' : ''}"></i>`).join('')}</p><small class="g-hint">${esc(p.rank >= 10 ? 'MAX' : l.closes && S().day > G.dayOf(l.closes) ? 'Gone' : G.homeOf(l).hint || '')}</small>${B && B.perksOf(l.id).length ? `<small class="g-perkn">${n} perk${n === 1 ? '' : 's'} earned</small>` : ''}</div></button>`; }).join('')}</div>` : '<p class="g-note">No bonds yet. Go out after school and meet people.</p>';
+  }
+  function wireLinks(el) {
+    el.querySelectorAll('[data-link]').forEach(bt => bt.addEventListener('click', () => { sel.link = sel.link === bt.dataset.link ? null : bt.dataset.link; G.sfx('femc-hover'); render(sel.link ? '[data-link-close]' : `[data-link="${bt.dataset.link}"]`); }));
+    el.querySelector('[data-link-close]')?.addEventListener('click', () => { const id = sel.link; sel.link = null; render(`[data-link="${id}"]`); });
   }
   function journalTab() {
     const fr = S().fragments.map(G.fragmentInfo);
@@ -428,6 +621,8 @@ window.FemcMenu = (() => {
     else if (tab === 'personas') html = personasTab();
     else if (tab === 'skills') html = skillsTab();
     else if (tab === 'equip') html = equipTab();
+    else if (tab === 'cards') html = cardsTab();
+    else if (tab === 'bonds') html = bondsTab();
     else if (tab === 'items') html = itemsTab();
     else if (tab === 'status') html = statusTab();
     else if (tab === 'links') html = linksTab();
@@ -437,6 +632,7 @@ window.FemcMenu = (() => {
     body.innerHTML = html;
     body.scrollTop = top;
     if (tab === 'party') wireParty(body); else if (tab === 'personas') wirePersonas(body); else if (tab === 'equip') wireEquip(body); else if (tab === 'items') wireItems(body); else if (tab === 'skills') wireSkills(body);
+    else if (tab === 'cards') wireCards(body); else if (tab === 'bonds') wireBonds(body); else if (tab === 'links') wireLinks(body);
     o.el.querySelectorAll('[data-tab]').forEach(b => { b.classList.toggle('on', b.dataset.tab === tab); b.setAttribute('aria-selected', b.dataset.tab === tab); });
     if (focus) { const f = typeof focus === 'string' && focus.startsWith('[') ? body.querySelector(focus) : body.querySelector(`[data-pm="${focus}"]`); f?.focus({ preventScroll: true }); f?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' }); }
   }
@@ -450,7 +646,7 @@ window.FemcMenu = (() => {
       <nav class="g-tabs g-fm-tabs" role="tablist">${TABS.map(([k, n]) => (k === 'compendium' ? `<a role="tab" href="${G.base}compendium.html" target="_blank" rel="noopener">${n} ↗</a>` : `<button type="button" role="tab" data-tab="${k}">${n}</button>`)).join('')}</nav>
       <div class="g-fm-body" tabindex="-1"></div>
       <p class="g-hint g-fm-hint">[ ] or ←→ on the tabs · Esc ${opts.inBattle ? 'back' : 'close'}</p></div>`, `g-fm-ov${opts.inBattle ? ' g-over-battle' : ''}`, () => { o = null; sel.slot = null; G.save(); const done = opts.onClose; opts = {}; done?.(); });
-    sel.use = null; sel.velvet = null; sel.armed = null;
+    sel.use = null; sel.velvet = null; sel.armed = null; sel.armedCard = null; sel.teach = null;
     try { syncLife(); } catch (e) {}
     // Someone waiting on a "forget which?" choice: the Skills tab opens on it.
     sel.forget = skMembers().find(m => kitOf(m.id).pending.length)?.id || null;

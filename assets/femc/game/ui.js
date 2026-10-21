@@ -526,20 +526,29 @@
   }
   function classPeriod(slot, info) {
     screenMusic('school');
-    const cond = G.D.stats.conditions[S().condition];
+    const cond = Object.assign({}, G.D.stats.conditions[S().condition], { doze: G.dozeChance() }); // Cherry's Back Row halves dozing
     const seed = Math.abs(Math.sin((S().day + 1) * (slot === 'morning' ? 3.7 : 5.3)));
     const asks = seed < (slot === 'morning' ? 0.42 : 0.3);
     const q = asks ? G.classQuestion() : null;
     const T = G.D.q.teachers || {};
     if (q && seed * 1.7 % 1 > cond.doze) {
       const t = T[q.teacher] || { name: 'The teacher', subject: '' };
-      const box = segment({ slot, bg: 'gekkoukan-classroom-day', place: t.subject || 'Class', text: `${cap(t.name)} turned from the board and looked straight at her.`, extra: `<div class="g-quiz"><p class="g-quiz-q"><b>${esc(t.name)}</b>${esc(q.q)}</p><div class="g-quiz-a">${q.a.map((a, i) => `<button type="button" class="g-btn" data-a="${i}">${esc(a)}</button>`).join('')}</div><p class="g-quiz-r" hidden></p></div>`, button: 'Continue' });
+      // Haechan's Recruitment Pitch: once a day, one wrong answer is crossed out.
+      const hint = G.classHint(q);
+      const box = segment({ slot, bg: 'gekkoukan-classroom-day', place: t.subject || 'Class', text: `${cap(t.name)} turned from the board and looked straight at her.`, extra: `<div class="g-quiz"><p class="g-quiz-q"><b>${esc(t.name)}</b>${esc(q.q)}</p><div class="g-quiz-a">${q.a.map((a, i) => `<button type="button" class="g-btn${i === hint ? ' hinted' : ''}" data-a="${i}"${i === hint ? ' disabled' : ''}>${esc(a)}</button>`).join('')}</div>${hint != null ? '<p class="g-quiz-hint">Haechan, under his breath: “Not that one.”</p>' : ''}<p class="g-quiz-r" hidden></p></div>`, button: 'Continue' });
       const next = box.querySelector('[data-next]'); next.hidden = true;
       box.querySelectorAll('[data-a]').forEach(b => b.addEventListener('click', () => {
         const right = G.answerClass(q, +b.dataset.a);
+        const r = box.querySelector('.g-quiz-r'); r.hidden = false;
+        // Shadowheart's Guidance: once a week, a wrong answer can be taken back.
+        if (!right && G.canRetryClass()) {
+          G.useGuidance(); b.classList.add('wrong'); b.disabled = true;
+          r.textContent = 'Shadowheart’s Guidance: something tells her to look again. Try once more.';
+          G.sfx('femc-back'); return;
+        }
         box.querySelectorAll('[data-a]').forEach(x => { x.disabled = true; if (+x.dataset.a === q.correct) x.classList.add('right'); });
         if (!right) b.classList.add('wrong');
-        const r = box.querySelector('.g-quiz-r'); r.hidden = false; r.textContent = right ? (q.right || 'Correct.') : (q.wrong || 'Not quite.');
+        r.textContent = right ? (q.right || 'Correct.') : (q.wrong || 'Not quite.');
         G.sfx(right ? 'femc-rankup' : 'femc-back');
         next.hidden = false; next.focus({ preventScroll: true });
       }));
@@ -547,6 +556,7 @@
     }
     if (G.settings().quickClass && !(seed < cond.doze)) return advance();
     const dozed = Math.abs(Math.sin(S().day * 7.7 + slot.length)) < cond.doze;
+    if (dozed) G.dozed(); // Cherry's Back Row: dozing still earns +1 Courage
     const t = pick(Object.values(T), S().day + slot.length) || { name: 'The teacher', quirk: '' };
     const QUIET = ['Chalk dust, the clock above the door, and the specific drone of a lesson that had decided to take its time.', 'She took notes in neat small handwriting she didn’t remember learning, and the period went by.', 'Someone behind her was passing notes. The teacher pretended not to see. The period went by anyway.', 'Rain or sun outside, the classroom had its own weather, warm and stale and slow.'];
     const text = dozed ? 'The lecture went somewhere warm and far away, and so did she. When she lifted her head, the board was full and her notes were a single long line where the pen had slid.' : pick(QUIET, S().day * 2 + slot.length);
@@ -767,6 +777,7 @@
     if (n === 'study') {
       const d = G.D.places.dorm.study;
       G.addStats(info.weather === 'rain' ? { academics: d.stats.academics + (d.rain?.academics || 0) } : d.stats);
+      const sb = G.studyBonus(); if (Object.keys(sb).length) G.addStats(sb); // Mitsuru's Study Hall, Jungwon's Tutor Session
       spend('study');
       return SC.play({ scene: [{ n: pick(d.lines, s.day) }], place: "Iwatodai Dorm · Solar's Room", time: 'Evening', onDone: advance });
     }
@@ -866,10 +877,20 @@
     const books = id === 'books';
     const shopData = books ? { name: 'Bookworms', sub: 'Used books', lines: { hi: ['Take your time, dear. The good ones are on the bottom shelf.'] } } : G.D.battle.shops?.[G.D.places.shops[id].battleShop];
     if (!shopData) { G.toast('note', 'Closed today.'); return done(); }
+    // Mayoido buys materials (they live in the battle save): a Sell tab.
+    const buys = !books && !!shopData.buys;
+    let tab = 'buy';
     const render = () => {
+      const mats = buys ? Object.entries((G.ensureBattleSave()?.mats) || {}).filter(([k, n]) => n > 0 && G.D.battle.materials?.[k]) : [];
       const stock = books ? G.D.places.books.filter(b => !S().books.owned.includes(b.id)).map(b => ({ id: b.id, kind: 'book', name: b.name, price: b.price, desc: `${b.nights} nights · ${Object.keys(b.stats).map(k => G.D.stats.stats[k].name).join(', ')}` })) : G.shopStock(id);
-      o.el.querySelector('.g-shop-list').innerHTML = stock.length ? stock.map((x, i) => `<button type="button" class="g-act" data-i="${i}"${S().yen < x.price ? ' disabled' : ''}><span><b>${esc(x.name)}</b><small>${esc(x.desc || '')}</small></span><em>¥${x.price.toLocaleString()}${!books && x.kind === 'item' && S().inventory[x.id] ? ` · own ${S().inventory[x.id]}` : ''}${!books && x.kind !== 'item' && S().gear.includes(x.id) ? ' · owned' : ''}</em></button>`).join('') : '<p class="g-note">Nothing for sale right now.</p>';
+      const tabs = o.el.querySelector('.g-shop-tabs');
+      if (tabs) tabs.innerHTML = buys ? `<button type="button" class="g-chip${tab === 'buy' ? ' on' : ''}" data-tab="buy">Buy</button><button type="button" class="g-chip${tab === 'sell' ? ' on' : ''}" data-tab="sell">Sell materials</button>` : '';
+      o.el.querySelector('.g-shop-list').innerHTML = tab === 'sell'
+        ? (mats.length ? mats.map(([k, n]) => `<button type="button" class="g-act" data-sell="${esc(k)}"><span><b>${esc(G.D.battle.materials[k].name)} ×${n}</b><small>${esc(G.D.battle.materials[k].desc || '')}</small></span><em>¥${G.matSellPrice(k).toLocaleString()} each</em></button>`).join('') : '<p class="g-note">Nothing to sell. Shadows drop materials in Tartarus.</p>')
+        : stock.length ? stock.map((x, i) => `<button type="button" class="g-act${x.art ? ' has-art' : ''}" data-i="${i}"${S().yen < x.price ? ' disabled' : ''}>${x.art ? `<img class="g-shop-art" src="${G.base}${x.art}" alt="">` : ''}<span><b>${esc(x.name)}</b><small>${esc(x.desc || '')}${x.who ? ` · for ${esc(x.who)}` : ''}</small></span><em>¥${x.price.toLocaleString()}${!books && x.kind === 'item' && S().inventory[x.id] ? ` · own ${S().inventory[x.id]}` : ''}${!books && !['item', 'cardpack'].includes(x.kind) && S().gear.includes(x.id) ? ' · owned' : ''}</em></button>`).join('') : '<p class="g-note">Nothing for sale right now.</p>';
       o.el.querySelector('.g-shop-yen').textContent = `¥${S().yen.toLocaleString()}`;
+      o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; G.sfx('femc-hover'); render(); }));
+      o.el.querySelectorAll('[data-sell]').forEach(b => b.addEventListener('click', () => { if (G.sellMat(b.dataset.sell, 1)) { o.el.querySelector('.g-shop-say').textContent = shopData.lines?.sold || 'A pleasure.'; G.sfx('femc-click'); } render(); }));
       o.el.querySelectorAll('[data-i]').forEach(b => b.addEventListener('click', () => {
         const x = stock[+b.dataset.i];
         if (books) { if (S().yen >= x.price) { G.addYen(-x.price); S().books.owned.push(x.id); G.save(); } }
@@ -882,7 +903,7 @@
     const pic = shopData.portrait ? G.portrait(shopData.portrait, 'neutral') : null;
     const o = overlay(`<div class="g-shop"${shopData.bg ? ` style="--pic:url('${G.base}${shopData.bg}')"` : ''}><div class="g-st-head"><h2>${esc(shopData.name)}<small>${esc(shopData.sub || '')}</small></h2><button type="button" class="g-btn small" data-close>Leave</button></div>
       <div class="g-shop-top">${pic ? `<img src="${pic}" alt="">` : ''}<p class="g-shop-say">${esc(pick(shopData.lines?.hi || ['Welcome.'], S().day))}</p><b class="g-shop-yen"></b></div>
-      <p class="g-note small">${books ? 'Read them at the dorm in the evening.' : 'Whatever you buy goes with you into Tartarus.'}</p><div class="g-shop-list"></div></div>`, 'g-shop-ov', done);
+      <p class="g-note small">${books ? 'Read them at the dorm in the evening.' : 'Whatever you buy goes with you into Tartarus.'}</p><div class="g-shop-tabs g-row"></div><div class="g-shop-list"></div></div>`, 'g-shop-ov', done);
     render();
   }
 

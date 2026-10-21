@@ -39,6 +39,7 @@ window.FEMC_GAME_PLACES = {
       lines: ['The theater was half empty and the film was better than it had any right to be.', 'She sat in the dark with a paper cup of melon soda and let somebody else’s story be loud for two hours.'] },
     { id: 'police', area: 'mall', spot: 'Police Box', name: 'Police Box', icon: 'shop', slots: ['after', 'evening'], shop: 'police' },
     { id: 'bebluev', area: 'mall', spot: 'Be Blue V', name: 'Be Blue V', icon: 'shop', slots: ['after', 'evening'], shop: 'bebluev' },
+    { id: 'mayoido', area: 'mall', spot: 'Mayoido Antiques', name: 'Mayoido Antiques', icon: 'shop', slots: ['after', 'evening'], shop: 'mayoido' },
     { id: 'vending', area: 'station', spot: 'Vending Machines', name: 'Something from the vending machine', icon: 'cup', slots: ['after', 'evening'], cost: 150, stats: { courage: 1 },
       lines: ['She stood in front of the vending machine for a long time looking for something it didn’t have, and bought a canned coffee instead.'] },
     { id: 'alley', area: 'portisland', spot: 'Back Alley', name: 'Cut through the back alley', icon: 'alley', slots: ['evening'], stats: { courage: 3 }, needs: { courage: 2 },
@@ -75,7 +76,9 @@ window.FEMC_GAME_PLACES = {
   shops: {
     police: { area: 'mall', battleShop: 'police' },
     aohige: { area: 'strip', battleShop: 'aohige' },
-    bebluev: { area: 'mall', battleShop: 'bebluev' }
+    bebluev: { area: 'mall', battleShop: 'bebluev' },
+    // Mayoido Antiques: rare goods, Solar's rarer naginatas, sealed Revelation cards; it buys the materials Shadows drop.
+    mayoido: { area: 'mall', battleShop: 'mayoido', cards: true }
   },
 
   /* Scene backgrounds by place: [place, image, evening image?, look?]. The first rule whose place starts the scene's

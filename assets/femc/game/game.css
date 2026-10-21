@@ -873,3 +873,110 @@ button.g-pm-tac:is(:hover, :focus-visible) b { color: var(--night); }
   .g-sk-detail { padding: 8px 10px; gap: 4px; }
   .g-sk-name { font-size: 20px !important; }
 }
+
+/* ── The building systems (build.js): toasts, the Cards tab, Bonds, weapon art and refines, Mayoido ── */
+.g-toast.k-perk { border-color: #7dffc0; box-shadow: 5px 5px 0 rgba(43, 98, 217, .55); color: #e6fff4; }
+button.g-st-link { width: 100%; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+button.g-st-link:is(:hover, :focus-visible) { outline: none; border-color: #fff; background: rgba(255, 79, 158, .2); }
+.g-st-link.on { border-color: var(--pink); box-shadow: 4px 4px 0 var(--pink); }
+.g-st-link .g-perkn { color: #7dffc0; font: italic 800 11px/1.2 var(--cond); letter-spacing: .1em; text-transform: uppercase; }
+.g-link-perks { margin-bottom: 14px; padding: 12px; border: 2px solid var(--pink-2); background: rgba(20, 7, 15, .92); box-shadow: 5px 5px 0 rgba(255, 79, 158, .35); }
+.g-perks { margin: 0 0 8px; padding: 0; list-style: none; display: grid; gap: 6px; }
+.g-perk { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 7px 10px; border-left: 4px solid rgba(255, 140, 192, .35); background: rgba(255, 255, 255, .04); }
+.g-perk.own { border-left-color: #7dffc0; background: rgba(29, 107, 74, .2); }
+.g-perk.paused { border-left-color: #ff6b6b; opacity: .75; }
+.g-perk.rank { opacity: .62; }
+.g-perk.stub { opacity: .5; border-left-style: dashed; }
+.g-perk.kat b { color: var(--gold); }
+.g-perk-r { display: grid; place-items: center; height: 30px; background: var(--night); color: var(--pink-2); font: italic 900 14px/1 var(--cond); transform: skewX(-12deg); }
+.g-perk b { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font: italic 900 16px/1.15 var(--cond); }
+.g-perk b em { padding: 2px 6px; background: var(--night); color: var(--pink-2); font: italic 800 10px/1 var(--cond); letter-spacing: .12em; text-transform: uppercase; }
+.g-perk b em.t-battle { color: #ff9a3d; } .g-perk b em.t-assist { color: #9fd3ff; } .g-perk b em.t-tartarus { color: #7dffc0; } .g-perk b em.t-daily { color: var(--pink-2); } .g-perk b em.t-max { background: var(--gold); color: var(--night); } .g-perk b em.t-kat { color: var(--gold); }
+.g-perk small { display: block; color: var(--muted); font-size: 12.5px; line-height: 1.3; }
+.g-perk small.why { color: #ffb36b; font-style: italic; }
+.g-perk-st { color: var(--pink-3); font: italic 800 11px/1.1 var(--cond); letter-spacing: .08em; text-transform: uppercase; text-align: right; max-width: 120px; }
+.g-perk.own .g-perk-st { color: #7dffc0; }
+.g-bond-filter { flex-wrap: wrap; margin: 6px 0 10px; }
+.g-bonds { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 12px; }
+.g-bond header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+.g-bond header b { font: italic 900 20px/1 var(--cond); transform: skewX(-6deg); }
+.g-bond header small { color: var(--pink-2); font-size: 12.5px; }
+/* Cards tab */
+.g-cslots { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; margin-bottom: 8px; }
+.g-cslot { display: grid; justify-items: center; gap: 4px; padding: 6px 4px; border: 1.5px solid rgba(255, 140, 192, .3); background: rgba(20, 7, 15, .9); color: var(--ink); }
+.g-cslot small { color: var(--pink-2); font: italic 800 10px/1 var(--cond); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.g-cslot.on { border-color: var(--pink); box-shadow: 3px 3px 0 var(--pink); }
+.g-cslot:is(:hover, :focus-visible) { outline: none; border-color: #fff; }
+.g-cslot-empty { display: grid; place-content: center; width: 100%; max-width: 70px; aspect-ratio: 2 / 3; border: 2px dashed rgba(255, 140, 192, .35); color: var(--muted); font: italic 800 10px/1.1 var(--cond); text-align: center; }
+.g-cslot-empty b { font-size: 20px; color: var(--pink-2); }
+.g-cardface { display: block; width: 100%; height: auto; filter: drop-shadow(3px 3px 0 rgba(5, 2, 8, .6)); }
+.g-cardface.mini { max-width: 70px; }
+.g-cardface.big { width: clamp(110px, 18vw, 170px); }
+.g-card-sum { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 10px; }
+.g-card-sum .g-chip.on { background: var(--c); color: var(--night); }
+.g-card-sum small { color: var(--muted); font-size: 12px; }
+.g-cards-main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 12px; align-items: start; }
+.g-cbox-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.g-cbox-head b { font: italic 900 16px/1 var(--cond); letter-spacing: .14em; text-transform: uppercase; color: var(--pink-2); }
+.g-cbox-head small { color: var(--muted); }
+.g-cbox { display: grid; grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); gap: 6px; max-height: 330px; overflow-y: auto; padding: 4px; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
+.g-cbox-card { position: relative; padding: 2px; border: 2px solid transparent; background: none; }
+.g-cbox-card.on { border-color: #fff; background: rgba(255, 79, 158, .2); }
+.g-cbox-card:is(:hover, :focus-visible) { outline: none; border-color: var(--pink-2); }
+.g-cbox-card em { position: absolute; left: 2px; right: 2px; bottom: 2px; background: var(--pink); color: #fff; font: italic 900 9px/1.3 var(--cond); letter-spacing: .06em; text-align: center; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.g-card-side { padding: 10px; border: 2px solid rgba(255, 140, 192, .3); background: rgba(20, 7, 15, .9); }
+.g-card-detail { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start; }
+.g-card-name { margin: 0 0 6px; font: italic 900 22px/1.05 var(--cond); transform: skewX(-6deg); text-shadow: .06em .06em 0 var(--g); }
+.g-card-stats { margin: 0 0 6px; padding: 0; list-style: none; display: grid; gap: 2px; font-size: 13.5px; }
+.g-card-stats li.main b { font: italic 900 16px/1.1 var(--cond); color: var(--gold); }
+.g-card-stats li.main small { margin-left: 6px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
+.g-card-stats li.empty { color: rgba(255, 255, 255, .25); }
+.g-card-set, .g-card-cmp { margin: 4px 0; color: var(--muted); font-size: 12.5px; }
+.g-card-set b { color: var(--ink); }
+.g-card-acts { flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.g-card-costs { margin-top: 6px; display: grid; gap: 2px; font-size: 12px; }
+.g-card-costs p, .g-cost { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 0; align-items: baseline; }
+.g-card-costs small { width: 74px; color: var(--pink-2); font: italic 800 10px/1 var(--cond); letter-spacing: .1em; text-transform: uppercase; }
+.g-card-costs span, .g-cost span { color: var(--ink); }
+.g-card-costs span.short, .g-cost span.short { color: #ff6b6b; }
+.g-mats { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+.g-mats b { color: var(--gold); }
+.g-skillcards { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.g-skillcards li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; align-items: center; padding: 6px 10px; background: rgba(255, 255, 255, .05); }
+.g-skillcards small { grid-column: 1; color: var(--muted); font-size: 12px; }
+.g-skillcards .g-teach { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; }
+/* Equipment: weapon art and refines */
+.g-eq-slot.art { grid-template-columns: minmax(0, 1fr); }
+.g-eq-slot .g-eq-art { width: 46px; height: 102px; object-fit: cover; border: 2px solid var(--gold); transform: rotate(-6deg); float: left; margin: 2px 12px 2px 4px; box-shadow: 3px 3px 0 var(--night); }
+.g-eq-item.art { grid-template-columns: 30px minmax(0, 1fr) auto; }
+.g-eq-art.sm { width: 26px; height: 56px; object-fit: cover; border: 1.5px solid var(--gold); }
+.g-eq-slot b span.look { color: var(--pink-3); font-style: italic; }
+.g-refine { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; align-items: center; padding: 8px 12px; border: 1.5px dashed rgba(255, 211, 107, .5); background: rgba(255, 211, 107, .06); }
+.g-refine p { margin: 0; }
+.g-refine p b { display: block; font: italic 900 16px/1.1 var(--cond); color: var(--gold); }
+.g-refine p small { color: var(--muted); font-size: 12px; }
+.g-refine .g-cost { grid-column: 1; font-size: 12.5px; }
+.g-refine .g-btn { grid-column: 2; grid-row: 1 / span 2; }
+/* Life sim shops: art rows, the Sell tab, the class hint */
+.g-act.has-art { grid-template-columns: 30px minmax(0, 1fr) auto; }
+.g-shop-art { width: 26px; height: 58px; object-fit: cover; border: 1.5px solid var(--gold); }
+.g-shop-tabs { gap: 6px; margin: 4px 0 8px; }
+.g-shop-tabs:empty { display: none; }
+.g-quiz-a .g-btn.hinted { opacity: .35; text-decoration: line-through; }
+.g-quiz-hint { margin: 8px 0 0; color: #ff9a3d; font-style: italic; font-size: 14px; }
+@media (max-width: 700px) {
+  .g-cslots { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .g-cards-main { grid-template-columns: 1fr; }
+  .g-card-detail { grid-template-columns: 96px minmax(0, 1fr); }
+  .g-cardface.big { width: 96px; }
+  .g-cbox { max-height: 220px; }
+  .g-perk { grid-template-columns: 40px minmax(0, 1fr); }
+  .g-perk-st { grid-column: 2; text-align: left; max-width: none; }
+  .g-bonds { grid-template-columns: 1fr; }
+}
+@media (max-height: 600px) and (min-width: 701px) {
+  .g-cslot small { display: none; }
+  .g-cardface.mini { max-width: 48px; }
+  .g-cardface.big { width: 104px; }
+  .g-cbox { grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); max-height: 220px; }
+}

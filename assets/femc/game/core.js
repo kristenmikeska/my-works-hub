@@ -104,6 +104,7 @@ window.FemcGame = (() => {
     route: { tally: {}, choices: {}, frags: { R: 0, S: 0, H: 0 }, doorsDue: [], doorsSeen: [] },
     fragments: [], inventory: {}, gear: [], books: { owned: [], reading: null, progress: {}, done: [] },
     dailyLife: { seen: [], lastDay: -99 },
+    perks: { week: {}, pitchDay: -1 }, // bond perks' once-a-week / once-a-day uses (build.js; FEMC-LINK-PERKS.md)
     jobs: {}, events: [], spent: {}, exams: {}, classSeen: [], phone: { threads: {}, unread: {}, done: [], pending: {}, invite: null, lastInvite: -9 },
     tartarus: { nights: 0, maxFloor: 0, bosses: [], lastParty: null }, battle: { exp: {}, levels: {} },
     pending: null, handoffId: null, runId: null, playMinutes: 0, savedAt: null,
@@ -194,7 +195,9 @@ window.FemcGame = (() => {
   function addStat(id, pts, raw) {
     if (!statDef(id) || !pts) return 0;
     const mult = raw ? 1 : (D.stats.conditions[S.condition]?.gain ?? 1);
-    const n = Math.max(1, Math.round(pts * mult));
+    let n = Math.max(1, Math.round(pts * mult));
+    // Sebastian's Rain Check (rainy days) and Elizabeth's Sunday Best (Sundays): every gain +1.
+    if (!raw && pts > 0) { if (weather(S.day) === 'rain' && perkOn('rainCheck')) n++; if (dateOf(S.day).getDay() === 0 && perkOn('sundayBest')) n++; }
     const before = statRank(id);
     S.stats[id] += n;
     const after = statRank(id);
@@ -208,6 +211,55 @@ window.FemcGame = (() => {
     return null;
   }
   function addYen(n) { S.yen = Math.max(0, S.yen + n); if (n) toast('yen', `${n > 0 ? '+' : '−'}¥${Math.abs(n).toLocaleString()}`); }
+
+  /* ── Bond perks, the life sim's side (build.js PERKS: type 'daily'). A link's rank earns them; a reversed link pauses them.
+     perkOn(key) → the earned daily perks with that fx key ([] when none); weekly(key) → true the first time this week (and uses it). ── */
+  const BLD = () => W.FemcBuild || null;
+  const bondRank = id => { const p = S.links[id]; return p && !p.reversed ? (p.rank || 0) : 0; };
+  const dailyPerks = () => (BLD() ? BLD().PERKS.filter(p => p.type === 'daily' && !p.stub && bondRank(p.link) >= p.rank) : []);
+  function perkOn(key) { const l = dailyPerks().filter(p => p.fx[key] != null); return l.length ? l : null; }
+  const perkVal = key => (perkOn(key) || []).map(p => p.fx[key]);
+  const weekOf = (d = S.day) => Math.floor((d + 1) / 7); // weeks start on Sunday (day 0 is a Monday)
+  function weekly(key) { S.perks = S.perks || { week: {} }; S.perks.week = S.perks.week || {}; if (S.perks.week[key] === weekOf()) return false; S.perks.week[key] = weekOf(); return true; }
+  const weeklyFree = key => !(S.perks && S.perks.week && S.perks.week[key] === weekOf());
+  // Shop discounts stack to 30% (FEMC-LINK-PERKS.md). kind: weapon | armor | acc | item | book.
+  function shopDiscount(shop, kind) {
+    let pct = 0;
+    perkVal('shopOff').forEach(o => { if (o.shop === shop && (!o.kinds || o.kinds.includes(kind))) pct += o.pct; });
+    return Math.min(30, pct);
+  }
+  function actCost(a) {
+    if (!a.cost) return 0;
+    if (perkVal('freeAct').some(l => l.includes(a.id))) return 0;
+    if (a.fortune && perkOn('omikuji')) return 0;
+    const off = Math.min(30, perkVal('discount').reduce((s, o) => s + (o.acts.includes(a.id) ? o.pct : 0), 0));
+    return Math.round(a.cost * (1 - off / 100));
+  }
+  /* Extra stat points an activity earns from bonds (Yukari, Junpei, Ken, Aphrodite, Mark, Yunjin, Saori, Kuromi, Hyein, Minji, Jungwon). */
+  function actPerkStats(a, w = weather(S.day)) {
+    const out = {}, add = o => Object.entries(o || {}).forEach(([k, v]) => { out[k] = (out[k] || 0) + v; });
+    perkVal('actStat').forEach(m => add(m[a.id]));
+    perkVal('areaStat').forEach(o => { if (o.area === a.area) add(o.stat); });
+    if (perkOn('weekendCharm') && [0, 6].includes(dateOf(S.day).getDay())) add({ charm: 1 });
+    perkVal('goldenHour').forEach(o => { if (w === 'clear' && o.areas.includes(a.area) && S.slot === 'after') add(o.stat); });
+    if (a.id === 'library') perkVal('studyAny').forEach(add);
+    return out;
+  }
+  // When a link ranks up: the perks it just earned (a toast each).
+  function perkToasts(l, rank) {
+    if (!BLD()) return;
+    BLD().perksAt(l.id, rank).forEach(p => toast('perk', `Bond perk · ${p.name} (${l.short} ${rank >= 10 ? 'MAX' : `rank ${rank}`})${p.stub ? ' · coming later' : ''}`, { perk: p.id }));
+  }
+  // Weekly bonds that just happen (no free time): Akihiko's Roadwork, My Melody's Almond Pound Cake.
+  function weeklyBonds() {
+    const dow = dateOf(S.day).getDay();
+    dailyPerks().forEach(p => {
+      const w = p.fx.weekly;
+      if (!w || (p.fx.dow != null && p.fx.dow !== dow) || !weekly(w)) return;
+      if (p.fx.stat) { addStats(p.fx.stat); toast('perk', `${p.name} with ${LINKS[p.link]?.short || p.link}.`); }
+      if (p.fx.cond) { const up = { sick: 'tired', tired: 'good', good: 'great' }[S.condition]; if (up) { S.condition = up; toast('cond', `${p.name}: she feels better.`); } }
+    });
+  }
 
   /* ── Links ──
      A link file (links/<id>.js) pushes one object onto window.FEMC_GAME_LINKS:
@@ -380,10 +432,12 @@ window.FemcGame = (() => {
     if (story && kind === 'hangout') { p.hung = (p.hung || 0) + 1; p.xp = (p.xp || 0) + gained; save(); return { up: false, req: 0 }; }
     const req = story ? 0 : need(l, r);
     const from = Math.min(p.xp || 0, req);
+    // Junkyu's #teamsolar: the first hangout each week, with anyone, gives +1 ♪.
+    if (kind === 'hangout' && perkOn('teamSolar') && weekly('teamsolar')) { gained += 1; toast('perk', '#teamsolar: +1 ♪'); }
     p.xp = (p.xp || 0) + gained;
     if (kind === 'hangout') p.hung = (p.hung || 0) + 1; else if (!p.seen.includes(r)) p.seen.push(r);
     const up = p.xp >= req;
-    if (up) { p.rank = r + 1; p.rankDay[p.rank] = S.day; p.xp = 0; delete p.ready; } else p.ready = r;
+    if (up) { p.rank = r + 1; p.rankDay[p.rank] = S.day; p.xp = 0; delete p.ready; perkToasts(l, p.rank); } else p.ready = r;
     save();
     return { up, from, to: Math.min(from + gained, req), req, rank: p.rank };
   }
@@ -514,7 +568,7 @@ window.FemcGame = (() => {
     if (a.days && !a.days.includes(info.dow)) return { ok: false, why: 'Not today' };
     if (areaById(a.area)?.schoolOnly && info.type !== 'school') return { ok: false, why: 'School’s out' };
     if (a.needs && lacking(a.needs)) return { ok: false, why: `Needs ${lacking(a.needs)}` };
-    if (a.cost && S.yen < a.cost) return { ok: false, why: 'Not enough yen' };
+    if (actCost(a) && S.yen < actCost(a)) return { ok: false, why: 'Not enough yen' };
     if (S.spent[`${S.day}-${slot}`] && !a.shop) return { ok: false, why: 'No time left' };
     return { ok: true };
   }
@@ -522,31 +576,43 @@ window.FemcGame = (() => {
   function activityInfo(a) {
     const w = a.weather?.[dayInfo().weather];
     const gains = stats => Object.entries(stats || {}).map(([id, points]) => `${D.stats.stats[id].name} +${Math.max(1, Math.round(points * (D.stats.conditions[S.condition]?.gain ?? 1)))}`).join(', ');
-    let benefit = gains(w ? w.stats : a.stats);
-    if (a.random) benefit = `One random gain: ${gains(a.random).replaceAll(', ', ' or ')}`;
+    const bonus = actPerkStats(a);
+    const merged = Object.assign({}, w ? w.stats : a.stats);
+    Object.entries(bonus).forEach(([k, v]) => { merged[k] = (merged[k] || 0) + v; });
+    let benefit = gains(merged);
+    if (a.random) benefit = `One random gain: ${gains(a.random).replaceAll(', ', ' or ')}${Object.keys(bonus).length ? `, plus ${gains(bonus)}` : ''}`;
     if (a.fortune) benefit = 'A random fortune; may improve a social stat or your condition.';
     if (a.cures?.length) benefit += `${benefit ? ' · ' : ''}Relieves ${a.cures.map(id => D.stats.conditions[id].name).join(' or ')}`;
     if (a.shop) benefit = a.shop === 'books' ? 'Buy books to read at the dorm.' : (D.battle.shops[a.shop]?.sub || 'Browse items for sale.');
-    return { benefit: `${w ? w.label + ' · ' : ''}${benefit}`, cost: a.shop ? 'Browsing is free; purchases cost yen.' : a.cost ? `Costs ¥${a.cost.toLocaleString()}` : 'Free', time: a.shop ? 'Does not spend time.' : 'Uses this time slot.' };
+    const c = actCost(a);
+    return { benefit: `${w ? w.label + ' · ' : ''}${benefit}`, cost: a.shop ? 'Browsing is free; purchases cost yen.' : c ? `Costs ¥${c.toLocaleString()}${c < a.cost ? ' (a friend’s discount)' : ''}` : a.cost ? 'Free (a friend’s perk)' : 'Free', time: a.shop ? 'Does not spend time.' : 'Uses this time slot.' };
   }
   // Does an activity; returns { text, place } for the narration scene.
   function doActivity(a) {
     const info = dayInfo();
-    if (a.cost) addYen(-a.cost);
+    if (actCost(a)) addYen(-actCost(a));
     let stats = a.stats;
     const w = a.weather?.[info.weather];
     if (w) stats = w.stats;
     if (a.random) { const k = Object.keys(a.random); const pick = k[Math.floor(Math.random() * k.length)]; stats = { [pick]: a.random[pick] }; }
     let text = a.lines ? a.lines[Math.floor(Math.random() * a.lines.length)] : '';
     if (a.fortune) {
-      const f = D.places.fortunes[Math.floor(Math.random() * D.places.fortunes.length)];
+      // Kiriko's Omikuji Pull: the Great Blessing (the first slip) comes up twice as often.
+      const F = D.places.fortunes, pool = perkOn('omikuji') ? [F[0]].concat(F) : F;
+      const f = pool[Math.floor(Math.random() * pool.length)];
       text = `She unfolded the slip. “${f.t}”`;
       if (f.stats) stats = f.stats;
       if (f.cond && S.condition === 'good') S.condition = f.cond;
     }
     if (stats) addStats(stats);
+    const bonus = actPerkStats(a);
+    if (Object.keys(bonus).length) addStats(bonus);
     if (a.cures?.includes(S.condition)) { S.condition = 'good'; toast('cond', 'She feels better.'); }
-    S.spent[`${S.day}-${S.slot}`] = `act:${a.id}`;
+    // Yunjin's Taxi Driver Coffee: once a week the vending machine's coffee clears Tired.
+    perkVal('weeklyCure').forEach(o => { if (o.act === a.id && S.condition === o.cond && weekly('cure-' + a.id)) { S.condition = 'good'; toast('cond', 'Yunjin’s coffee. She’s awake now.'); } });
+    // Jaehyun's It's a Schedule: once a week, two activities fit in one After School slot.
+    if (S.slot === 'after' && perkOn('schedule') && weeklyFree('schedule')) { weekly('schedule'); toast('perk', 'It’s a schedule: there’s still time for one more thing.'); }
+    else S.spent[`${S.day}-${S.slot}`] = `act:${a.id}`;
     save();
     return { text: (w ? `${w.label}. ` : '') + text, place: `${areaById(a.area).name} · ${a.spot}` };
   }
@@ -554,21 +620,41 @@ window.FemcGame = (() => {
     const B = D.battle, cfg = D.places.shops[id], shop = B.shops?.[cfg?.battleShop];
     if (!shop) return [];
     const tier = 1 + S.tartarus.bosses.length;
-    const out = [];
-    if (shop.sells.includes('item')) (shop.stock || Object.keys(B.items || {})).forEach(k => { const it = B.items?.[k]; if (it && (it.tier || 1) <= tier) out.push({ id: k, kind: 'item', name: it.name, price: it.price, desc: it.desc }); });
+    const out = [], line = k => (W.FemcBattleSave ? W.FemcBattleSave.gearLine(k) : (B.gear[k].desc || ''));
+    const price = (p, kind) => Math.round(p * (1 - shopDiscount(id, kind) / 100));
+    if (shop.sells.includes('item')) (shop.stock || Object.keys(B.items || {})).forEach(k => { const it = B.items?.[k]; if (it && !it.night && (it.tier || 1) <= tier) out.push({ id: k, kind: 'item', name: it.name, price: price(it.price, 'item'), desc: it.desc, shop: id }); });
+    // Gear: weapons for whoever is fighting this season (newest tiers first), armor, accessories; Mayoido's rare stock.
+    const wt = new Set(available().map(m => (B.party || []).find(x => x.id === m)?.wtype).filter(Boolean));
+    const gear = [];
     ['weapon', 'armor', 'acc'].forEach(kind => {
       if (!shop.sells.includes(kind)) return;
-      Object.entries(B.gear || {}).forEach(([k, g]) => { if (g.kind === kind && (g.tier ?? 1) <= tier && (g.tier ?? 1) > 0 && g.price) out.push({ id: k, kind, name: g.name, price: g.price, desc: g.desc || '', who: g.who || g.for || '' }); });
+      Object.entries(B.gear || {}).forEach(([k, g]) => { if ((g.kind || g.slot) === kind && !g.rare && (g.tier ?? 1) <= tier && (g.tier ?? 1) > 0 && g.price && (kind !== 'weapon' || wt.has(g.wtype))) gear.push([k, g, kind]); });
     });
-    return out.slice(0, 18);
+    if (shop.sells.includes('rare')) (shop.stock || []).forEach(k => { const g = B.gear?.[k]; if (g && (g.tier ?? 1) <= tier) gear.push([k, g, g.slot]); });
+    gear.sort((a, b) => (b[1].tier - a[1].tier) || (a[2] > b[2] ? 1 : -1)).slice(0, 14).forEach(([k, g, kind]) => out.push({ id: k, kind, name: g.name, price: price(g.price, kind), desc: line(k), who: g.wtype ? (B.party || []).filter(m => m.wtype === g.wtype && available().includes(m.id)).map(m => m.name).join(', ') : '', shop: id, art: g.art || null }));
+    // Mayoido also sells sealed Revelation cards.
+    if (cfg?.cards && W.FemcBuild) out.push({ id: 'card_pack', kind: 'cardpack', name: 'Sealed Revelation Card', price: 1500 + 500 * Math.min(6, tier), desc: `A random Revelation card (★3–★5; better as Tartarus opens up). Equip it from the menu’s Cards tab.`, shop: id });
+    return out.slice(0, 24);
   }
   function buy(entry) {
     if (S.yen < entry.price) return false;
     addYen(-entry.price);
-    if (entry.kind === 'item') addItem(entry.id, 1); else if (!S.gear.includes(entry.id)) S.gear.push(entry.id);
+    if (entry.kind === 'item') addItem(entry.id, 1);
+    else if (entry.kind === 'cardpack') { const b = ensureBattleSave(), c = W.FemcBuild.rollCard(Math.random, { tier: 1 + S.tartarus.bosses.length }); const r = W.FemcBuild.addCard(b, c); toast('perk', r.card ? `Revelation card: ${W.FemcBuild.cardName(c)} ★${c.r}` : `The card box is full: +${r.dust} Tarot Dust`); }
+    else if (entry.kind !== 'book' && !S.gear.includes(entry.id)) S.gear.push(entry.id);
     if (entry.kind === 'book') S.books.owned.push(entry.id);
+    // Ann's Model Discount: shopping at Be Blue V is good for Charm.
+    perkVal('shopStat').forEach(m => { if (m[entry.shop]) addStats(m[entry.shop]); });
     save();
     return true;
+  }
+  /* Selling materials (Mayoido buys what Shadows drop; Astarion's Expensive Taste pays 20% more). They live in the battle save. */
+  function matSellPrice(k) { const m = D.battle.materials?.[k]; if (!m) return 0; return Math.round(m.price * (1 + perkVal('matSell').reduce((a, v) => a + v, 0))); }
+  function sellMat(k, n = 1) {
+    const b = ensureBattleSave(); if (!b || !(b.mats[k] >= n)) return false;
+    b.mats[k] -= n; if (!b.mats[k]) delete b.mats[k];
+    S.yen += matSellPrice(k) * n; toast('yen', `+¥${(matSellPrice(k) * n).toLocaleString()}`);
+    save(); return true;
   }
   const bookById = id => D.places.books.find(b => b.id === id);
   function readTonight() {
@@ -578,7 +664,7 @@ window.FemcGame = (() => {
     S.books.reading = id;
     S.books.progress[id] = (S.books.progress[id] || 0) + 1;
     let finished = false;
-    if (S.books.progress[id] >= b.nights) { S.books.done.push(id); S.books.reading = null; addStats(b.stats); finished = true; }
+    if (S.books.progress[id] >= Math.max(1, b.nights - (perkOn('speedReader') ? 1 : 0))) { S.books.done.push(id); S.books.reading = null; addStats(b.stats); finished = true; }
     S.spent[`${S.day}-${S.slot}`] = 'read';
     save();
     return { book: b, finished, night: S.books.progress[id] };
@@ -610,7 +696,8 @@ window.FemcGame = (() => {
     const st = jobState(j.id);
     st.shifts += 1;
     if (pick.beat) { st.beats.push(pick.index); if (pick.beat.lean) tally({ [`lean.${pick.beat.lean}`]: 1 }); }
-    addYen(j.pay); addStats(j.stats);
+    const up = perkVal('jobPay').reduce((a, o) => a + (o.all || 0) + (o[j.id] || 0), 0); // Cloud, Jungwon, Sunoo
+    addYen(Math.round(j.pay * (1 + up / 100))); addStats(j.stats);
     S.spent[`${S.day}-${S.slot}`] = `job:${j.id}`;
     save();
   }
@@ -765,11 +852,32 @@ window.FemcGame = (() => {
     return all.length ? all[Math.floor(seeded(S.day * 3 + SLOT_ORDER.indexOf(S.slot)) * all.length)] : null;
   }
   function answerClass(q, i) {
-    S.classSeen.push(q.id);
+    if (!S.classSeen.includes(q.id)) S.classSeen.push(q.id);
     const right = i === q.correct;
     if (right) addStats({ charm: 2, academics: 1 });
+    // Haechan's Recruitment Pitch: +1 Charm when she gets the hinted one right.
+    if (right && S.perks?.pitchQ === q.id) perkVal('pitch').forEach(o => addStats(o.stat));
     save();
     return right;
+  }
+  /* Class perks: Cherry's Back Row (half the doze chance), Shadowheart's Guidance (once a week, a retry), Haechan's
+     Recruitment Pitch (once a day, a hint: one wrong answer crossed out). */
+  const dozeChance = () => (D.stats.conditions[S.condition]?.doze || 0) * (perkOn('backRow') ? 0.5 : 1);
+  function dozed() { perkVal('backRow').forEach(o => addStats(o.stat)); }
+  const canRetryClass = () => !!perkOn('guidance') && weeklyFree('guidance');
+  const useGuidance = () => weekly('guidance');
+  function classHint(q) {
+    if (!perkOn('pitch') || (S.perks && S.perks.pitchDay === S.day)) return null;
+    S.perks = S.perks || { week: {} }; S.perks.pitchDay = S.day; S.perks.pitchQ = q.id;
+    const wrong = q.a.map((_, i) => i).filter(i => i !== q.correct);
+    return wrong[Math.floor(seeded(S.day + q.id.length) * wrong.length)];
+  }
+  // Mitsuru's Study Hall (+1 Knowledge, +2 in exam weeks) and Jungwon's Tutor Session (+1 anywhere) at the dorm.
+  function studyBonus() {
+    const out = {};
+    perkVal('studyHall').forEach(o => { const examWeek = Array.from({ length: 7 }, (_, k) => examOn(S.day + k)).some(Boolean); Object.entries(examWeek ? o.exam : o.stat).forEach(([k, v]) => { out[k] = (out[k] || 0) + v; }); });
+    perkVal('studyAny').forEach(o => Object.entries(o).forEach(([k, v]) => { out[k] = (out[k] || 0) + v; }));
+    return out;
   }
   function examQuestions(e) {
     const pool = D.q.exams[e.id]?.questions || [];
@@ -890,12 +998,13 @@ window.FemcGame = (() => {
     // Overnight: Tartarus tires her out; resting clears it.
     const t = S.tonight;
     if (t === 'tartarus') S.condition = S.condition === 'tired' || S.condition === 'sick' ? 'sick' : 'tired';
-    else if (t === 'rest') S.condition = S.condition === 'sick' ? 'tired' : seeded(S.day) < 0.25 ? 'great' : 'good';
+    else if (t === 'rest') S.condition = S.condition === 'sick' ? 'tired' : (seeded(S.day) < 0.25 || perkOn('powerNap')) ? 'great' : 'good'; // Noctis's Power Nap
     else if (S.condition === 'great') S.condition = 'good';
     else if (S.condition === 'tired' && seeded(S.day + 5) < 0.5) S.condition = 'good';
     S.tonight = null;
     if (S.day >= END()) { S.slot = 'late'; save(); return { newDay: false, end: true }; }
     S.day += 1; S.slot = 'early';
+    weeklyBonds();
     // Don't let old spent markers pile up forever.
     Object.keys(S.spent).forEach(k => { if (+k.split('-')[0] < S.day - 1) delete S.spent[k]; });
     expireInvite(); deliverTexts(); save();
@@ -937,7 +1046,7 @@ window.FemcGame = (() => {
         fragments: [...S.fragments], fragmentsOpen: S.day >= dayOf(D.cal.fragmentsFrom || '5/16'),
         run: S.runId, carryFrom: S.ngFrom || null, route: S.route.choices.solstice ?? null, trueReady: !!(S.flags['true-final'] || S.flags['true-path']),
         routeFlags: ['route-R', 'route-S', 'route-H', 'route-stay', 'route-true', 'route-bad', 'true-final', 'true-fallback'].filter(flag),
-        social: { stats: { ...S.stats }, ranks: Object.fromEntries(Object.entries(S.links).filter(([, p]) => p.rank > 0).map(([k, p]) => [k, p.rank])) },
+        social: { stats: { ...S.stats }, ranks: Object.fromEntries(Object.entries(S.links).filter(([, p]) => p.rank > 0).map(([k, p]) => [k, p.rank])), reversed: Object.entries(S.links).filter(([, p]) => p.reversed).map(([k]) => k) },
         difficulty: null
       },
       result: null
@@ -1008,7 +1117,11 @@ window.FemcGame = (() => {
     (r.bossesCleared || []).forEach(b => { if (!S.tartarus.bosses.includes(b)) { S.tartarus.bosses.push(b); sum.bosses.push(b); } S.flags[`op-${b}`] = true; });
     if (r.floorsReached) S.tartarus.maxFloor = Math.max(S.tartarus.maxFloor, r.floorsReached);
     if (h.kind === 'tartarus') { S.tartarus.nights += 1; S.tonight = 'tartarus-done'; }
-    if (r.fatigue) { S.condition = r.fatigue; S.tonightFatigue = r.fatigue; }
+    let fat = r.fatigue;
+    // Hanni's Mom Mode (Good instead of Tired) and Jaehyun's Wear Layers (Tired instead of Sick), once a week each.
+    if (fat === 'sick' && perkOn('wearLayers') && weekly('wearLayers')) { fat = 'tired'; toast('perk', 'Wear Layers: Jaehyun’s jacket. She’s only Tired.'); }
+    else if (fat === 'tired' && h.kind === 'tartarus' && perkOn('momMode') && weekly('momMode')) { fat = 'good'; toast('perk', 'Mom Mode: there’s cut fruit waiting. She feels fine.'); }
+    if (fat) { S.condition = fat; S.tonightFatigue = fat; }
     if (h.kind === 'tartarus' || (h.kind === 'operation' && r.fatigue)) S.tonight = 'battled';
     // Extras the battle game may send from story fights (the finale): flags to set, and the choice made in the fight.
     if (r.flags) setFlags(r.flags);
@@ -1061,7 +1174,8 @@ window.FemcGame = (() => {
     homeOf, leavesAtMax, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,
     flag, effect, branch, applyChoice, addFragment, fragmentInfo, worldOf,
     portrait, scale, name, silhouette, tarot, background, moodFor, sub, setDate, dateLabel,
-    activityOk, activityInfo, doActivity, shopStock, buy, bookById, readTonight,
+    activityOk, activityInfo, doActivity, shopStock, buy, bookById, readTonight, matSellPrice, sellMat,
+    perkOn, bondRank, dailyPerks, actCost, dozeChance, dozed, canRetryClass, useGuidance, classHint, studyBonus, weekly,
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift,
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
