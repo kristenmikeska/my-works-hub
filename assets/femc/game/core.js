@@ -113,7 +113,7 @@ window.FemcGame = (() => {
     // later (runIns.later), and which variant line each often-seen spot showed last (vary[key] = { n, d }).
     clubs: {}, runIns: { seen: [], lastDay: -99, later: [] }, vary: {},
     perks: { week: {}, pitchDay: -1 }, // bond perks' once-a-week / once-a-day uses (build.js; FEMC-LINK-PERKS.md)
-    jobs: {}, events: [], spent: {}, exams: {}, classSeen: [], phone: { threads: {}, unread: {}, done: [], pending: {}, invite: null, lastInvite: -9 },
+    jobs: {}, events: [], spent: {}, exams: {}, classSeen: [], phone: { threads: {}, unread: {}, done: [], pending: {}, invite: null, lastInvite: -9, vars: {} },
     tartarus: { nights: 0, maxFloor: 0, bosses: [], lastParty: null }, battle: { exp: {}, levels: {} },
     pending: null, handoffId: null, runId: null, playMinutes: 0, savedAt: null,
     // The battle game's progress for this playthrough (save.js shape), New Game+'s carried one, the fight in progress.
@@ -143,6 +143,7 @@ window.FemcGame = (() => {
       migrated = true;
     }
     if (!(s.sv >= STATS_V)) { migrateStats(out); migrated = true; } // fresh() says 2; the save itself decides
+    if (migrateForced(out)) migrated = true;
     if (autosave) adoptHandoff(out);
     return out;
   }
@@ -172,6 +173,23 @@ window.FemcGame = (() => {
     stats.proficiency = Math.min(cap('proficiency'), 3 + shifts('proficiency') + weeks3);
     stats.kindness = Math.min(cap('kindness'), 3 + shifts('kindness') + koro * 2 + Math.floor(ranks / 6) + weeks3);
     out.statsFrom = old; out.stats = stats; out.sv = STATS_V;
+  }
+  /* Story ranks (a link's `forced`, e.g. Haechan's since 2026-10-21, which used to fill a meter like anyone's). A save made
+     while a rank scene had been played but its meter wasn't full yet (progress.ready = that rank's index, and its index in
+     `seen`) would otherwise sit on a hangout forever: the rank is granted instead (dated today), so nothing is lost and the
+     scene already seen never plays again. Ranks still ahead simply wait for their dates. Runs on every load; idempotent. */
+  function migrateForced(out) {
+    let changed = false;
+    (W.FEMC_GAME_LINKS || []).filter(l => l.forced && l.status !== 'stub').forEach(l => {
+      const p = out.links?.[l.id];
+      if (!p || p.ready == null) return;
+      const r = p.ready;
+      if (r === (p.rank || 0) && (p.seen || []).includes(r) && l.forced.includes(r + 1) && r < 10) {
+        p.rank = r + 1; (p.rankDay ||= {})[p.rank] = out.day || 0; p.xp = 0;
+      }
+      delete p.ready; changed = true;
+    });
+    return changed;
   }
   // A fight the old two-page game left pending or finished ('kg-femc-handoff'), for this state: it moves into S.handoff.
   function adoptHandoff(out) {
@@ -317,6 +335,10 @@ window.FemcGame = (() => {
        hangouts: [[lines], ...] story-free time that fills the bond meter between ranks
        ranks: 10 entries, each { after: 'M/D', title: '1: rookie', place, time, music, scene: [lines] } or { todo: '…' }
        forced: [rank numbers] that play as story on their `after` date (no meter); reversible: true allows reversal
+         A story rank plays in the link's home slot (evening / after school), or `storySlot` ('late' for Haechan), or the
+         rank's own `slot`. Before its date, time together is a hangout (no rank-up; never before rank 1). A late story rank
+         waits for the next night if a story event already took tonight's late slot. storyEvents: [story event ids] that
+         must have played before any story rank (Haechan: his arrival). See migrateForced for old meter-based saves.
        status: 'stub' for links that exist but aren't written (links/stubs.js).
        afterMax: [{ place, time, music, scene }, ...]  what spending time together plays after rank 10. They play in order, then
          rotate, at the link's usual spot (no meter, no rank-up; ifRoute still works). The entry's place/time are the scene's.
@@ -359,6 +381,11 @@ window.FemcGame = (() => {
          link never appears.
        kind 'persona': Persona-world people from other Persona games (and Kuromi / My Melody, exchange students). They live
          around here: no `closes`, no goodbye texts, ordinary texts (Kat's ruling, 2026-10-20).
+     Where the story is heading (heading(): 'R' | 'S' | 'H' | 'stay' | 'true' | 'bad'): the solstice's route once it's
+     locked; before that, the secret road ('H', see heading) or the world Solar leans toward. Scenes branch on it with
+     { ifHeading: 'R' | ['R', 'true'], then, else }; daily-life routines, late nights, holidays and texts can be gated with
+     `heading` (one value or a list). A text can carry `variants: { R: { msgs, reply }, S: …, H: …, stay: …, true: … }`:
+     the one for the current heading is sent (and its replies served) instead of its own msgs / reply.
      Scene lines: see scene.js. Choices give ♪ with `notes` (0-3); `reverse: 1` pushes a reversible link. */
   const LINKS = {};
   const CAST = { solar: 'Solar', 'mitsuru-radio': 'Mitsuru · Radio', porter: '???', clerk: 'Clerk', ikutsuki: 'Ikutsuki', teacher: 'Teacher', fuuka: 'Fuuka', koromaru: 'Koromaru', ken: 'Ken', aigis: 'Aigis', elizabeth: 'Elizabeth', wren: 'Wren', kurosawa: 'Officer Kurosawa' };
@@ -424,12 +451,13 @@ window.FemcGame = (() => {
     const next = l.ranks[p.rank];
     if (!next?.scene) return { ok: false, reason: 'unwritten' };
     if (d < dayOf(l.starts || '4/8') || !fragGateMet(l.gate)) return { ok: false, reason: 'away' };
+    if (l.storyEvents && !l.storyEvents.every(id => S.events.includes(id))) return { ok: false, reason: 'away' };
     if (l.closes && d >= dayOf(l.closes)) return { ok: false, reason: 'closed' };
     // A rank's own `gate` (memory fragments, e.g. Wren's { total: 12 }) holds it back until they're found.
     if (next.gate && !fragGateMet(next.gate)) return { ok: false, reason: 'later', gate: next.gate };
     // Story ranks play on their date (dueEvent); before that, time together is a hangout.
     if (l.forced?.includes(p.rank + 1) && next.after && d >= dayOf(next.after)) return { ok: false, reason: 'story' };
-    if (l.forced?.includes(p.rank + 1) && !(l.hangouts || []).length) return { ok: false, reason: 'later' };
+    if (l.forced?.includes(p.rank + 1) && (!(l.hangouts || []).length || p.rank === 0)) return { ok: false, reason: 'later' };
     if (p.rank === 0 && l.needs && lacking(l.needs)) return { ok: false, reason: 'needs', needs: lacking(l.needs) };
     if (S.spent[`${d}-${slot}`]) return { ok: false, reason: 'spent' };
     if (next.after && d < dayOf(next.after) && !l.forced?.includes(p.rank + 1)) return { ok: false, reason: 'later', when: next.after };
@@ -480,7 +508,7 @@ window.FemcGame = (() => {
     }
     if (p.reversed && (l.repair || []).length) { const e = l.repair[(p.repairs || 0) % l.repair.length]; return { kind: 'repair', r, scene: Array.isArray(e) ? e : e.scene || [], place: (!Array.isArray(e) && e.place) || linkPlace(l), time: !Array.isArray(e) ? e.time : undefined }; }
     if (p.reversed) return { kind: 'repair', r, scene: [{ n: `${l.short} didn't quite look at her at first. Solar stayed anyway, and said the thing she should have said last time, and after a while the silence between them stopped being the bad kind.` }], place: linkPlace(l) };
-    if ((p.ready === r && r > 0) || (l.forced?.includes(r + 1) && r > 0 && !(l.ranks[r]?.after && S.day >= dayOf(l.ranks[r].after)))) return { kind: 'hangout', r, scene: hang(), place: linkPlace(l), story: l.forced?.includes(r + 1) };
+    if ((p.ready === r && r > 0 && !l.forced?.includes(r + 1)) || (l.forced?.includes(r + 1) && r > 0 && !(l.ranks[r]?.after && S.day >= dayOf(l.ranks[r].after)))) return { kind: 'hangout', r, scene: hang(), place: linkPlace(l), story: l.forced?.includes(r + 1) };
     const rank = l.ranks[r];
     return { kind: 'rank', r, scene: rank.scene, place: rank.place || linkPlace(l), title: rank.title, music: rank.music };
   }
@@ -574,6 +602,23 @@ window.FemcGame = (() => {
     if (did) save();
     return did;
   }
+  /* Where the story is heading. After the solstice: the locked route. Before it, the secret road shows only to a player who
+     means it: she has gone toward a Hoax door (home-H3), turned the pull down at least once (pull-no-there / -awaken /
+     -xroad3, or Haechan's friendship route), and holds at least as many Hoax memories as either other world's. Otherwise
+     the world she leans toward: Haechan's settled lean (hc-lean-R / -S, from 12/12), else fragments + door answers +
+     Haechan's tally (ties go to Runners). Nothing reads this to lock anything; the solstice still decides. */
+  function heading() {
+    const f = S.flags;
+    for (const [k, v] of [['route-bad', 'bad'], ['route-true', 'true'], ['route-R', 'R'], ['route-S', 'S'], ['route-H', 'H'], ['route-stay', 'stay']]) if (f[k]) return v;
+    const fr = S.route.frags || {}, t = S.route.tally || {};
+    const pullNo = ['pull-no-there', 'pull-no-awaken', 'pull-no-xroad3'].filter(k => f[k]).length + (S.links.haechan?.route === 'friend' ? 1 : 0);
+    if (pullNo >= 1 && f['home-H3'] && (fr.H || 0) >= Math.max(fr.R || 0, fr.S || 0)) return 'H';
+    if (f['hc-lean-R']) return 'R';
+    if (f['hc-lean-S']) return 'S';
+    const r = (fr.R || 0) + (t['lean.R'] || 0) + (t['haechan.R'] || 0), s = (fr.S || 0) + (t['lean.S'] || 0) + (t['haechan.S'] || 0);
+    return s > r ? 'S' : 'R';
+  }
+  const headingIs = want => [].concat(want).includes(heading());
   function branch(line, linkId) {
     let ok = null;
     if (line.ifRank) ok = Object.entries(line.ifRank).every(([id, r]) => progress(id).rank >= r);
@@ -584,6 +629,7 @@ window.FemcGame = (() => {
     else if (line.ifRoute) ok = linkId && progress(linkId).route === line.ifRoute;
     else if (line.ifRomance) ok = progress(line.ifRomance).route === 'romance';
     else if (line.ifReversed) ok = [].concat(line.ifReversed).every(id => !!progress(id).reversed);
+    else if (line.ifHeading) ok = headingIs(line.ifHeading);
     // Dates: ifAfter is "on or after" (like a rank's `after`), ifBefore is "strictly before"; they're each other's else.
     else if (line.ifAfter) ok = S.day >= dayOf(line.ifAfter);
     else if (line.ifBefore) ok = S.day < dayOf(line.ifBefore);
@@ -1071,13 +1117,17 @@ window.FemcGame = (() => {
       && !D.events.some(e => e.date === XMAS && (!e.flag || flag(e.flag)))) return { kind: 'christmas' };
     // A link that closed before rank 10 says goodbye the morning after (see `farewell`).
     if (slot === 'early') { const l = farewellDue(d); if (l) return { kind: 'farewell', link: l }; }
-    // Story ranks that happen on a date (a link's `forced`).
+    // Story ranks that happen on a date (a link's `forced`; see the header for storySlot / slot / storyEvents).
+    const lateTaken = slot === 'late' && D.events.some(e => e.date === md && SLOT_FOR[e.slot || 'evening'] === 'late' && S.events.includes(e.id));
     for (const l of Object.values(LINKS)) {
       const p = progress(l.id);
       if (!l.forced?.includes(p.rank + 1)) continue;
       const rank = l.ranks[p.rank];
       if (opTonight) continue;
-      if (rank?.scene && rank.after && d >= dayOf(rank.after) && fragGateMet(rank.gate) && (l.home?.slot === 'evening' ? 'evening' : 'after') === slot) return { kind: 'link', link: l };
+      if (l.storyEvents && !l.storyEvents.every(id => S.events.includes(id))) continue;
+      const rs = rank?.slot || l.storySlot || (l.home?.slot === 'evening' ? 'evening' : 'after');
+      if (rs === 'late' && (lateTaken || S.phase !== 'play')) continue;
+      if (rank?.scene && rank.after && d >= dayOf(rank.after) && fragGateMet(rank.gate) && rs === slot) return { kind: 'link', link: l };
     }
     return null;
   }
@@ -1088,7 +1138,8 @@ window.FemcGame = (() => {
        noFlags: [flags not set], met: [link ids met], ranks: { link: n }, place, time, bg, cast, scene }.
      One plays at most every other day, never on a trip or on a day whose story event has already played, and never in a
      free slot that's already spent. Of the routines that fit, the one that goes stale soonest plays first (then file order),
-     so a crowded month doesn't leave beats to expire unseen. */
+     so a crowded month doesn't leave beats to expire unseen; one in a later slot today that's three days from going stale
+     holds the day for itself. */
   const dailyUntil = e => (e.until ? dayOf(e.until) : dayOf(e.after) + 30);
   function dailyFits(e, slot, d, info) {
     if (e.slot !== slot || d < dayOf(e.after) || d > dailyUntil(e)) return false;
@@ -1100,6 +1151,7 @@ window.FemcGame = (() => {
     if (!(e.flags || []).every(flag) || (e.noFlags || []).some(flag)) return false;
     if (!(e.met || []).every(isMet)) return false;
     if (e.ranks && !Object.entries(e.ranks).every(([id, r]) => progress(id).rank >= r)) return false;
+    if (e.heading && !headingIs(e.heading)) return false;
     return true;
   }
   function dailyLife(slot = S.slot, d = S.day) {
@@ -1111,6 +1163,12 @@ window.FemcGame = (() => {
     const seen = state.seen || [];
     const fit = D.dailyLife.map((e, i) => ({ e, i })).filter(({ e }) => !seen.includes(e.id) && dailyFits(e, slot, d, info));
     fit.sort((a, b) => dailyUntil(a.e) - dailyUntil(b.e) || a.i - b.i);
+    // A later slot's routine about to go stale (three days or less) keeps today free for itself, so evening and late-night
+    // routines aren't crowded out by mornings that could wait (Haechan's batch made Nov-Jan busy enough to need this).
+    const order = slotsFor(info), later = order.slice(order.indexOf(slot) + 1);
+    const urgent = D.dailyLife.filter(e => later.includes(e.slot) && !seen.includes(e.id) && dailyUntil(e) - d <= 3 && dailyFits(e, e.slot, d, info))
+      .sort((a, b) => dailyUntil(a) - dailyUntil(b))[0];
+    if (urgent && (!fit[0] || dailyUntil(urgent) < dailyUntil(fit[0].e))) return null;
     return fit[0]?.e || null;
   }
   function finishDailyLife(id) {
@@ -1142,7 +1200,7 @@ window.FemcGame = (() => {
   function jumpToEnd() { S.day = END(); S.slot = 'late'; S.tonight = null; save(); }
   function endingName() {
     const f = S.flags;
-    return f['route-bad'] ? 'the last stop' : f['true-final'] ? 'I am thou' : f['route-R'] ? 'where it begins' : f['route-S'] ? 'low tide' : f['route-H'] ? 'the count' : 'here';
+    return f['route-bad'] ? 'the last stop' : f['true-final'] ? 'I am thou' : f['route-R'] ? 'where it begins' : f['route-S'] ? 'low tide' : f['route-H'] ? 'the unfated life' : 'here';
   }
   const CLEARS_KEY = 'kg-femc-revamp-clears';
   function recordClear() {
@@ -1333,8 +1391,12 @@ window.FemcGame = (() => {
     return out;
   }
   function textById(id) {
-    return D.texts.texts.find(t => t.id === id) || (D.texts.ambient || []).find(t => t.id === id) || afterRankTexts().find(t => t.id === id) || null;
+    const t = D.texts.texts.find(t => t.id === id) || (D.texts.ambient || []).find(t => t.id === id) || afterRankTexts().find(t => t.id === id) || null;
+    return t ? withVariant(t, S.phone.vars?.[id]) : null;
   }
+  // A text's `variants` (by heading): which one goes out is decided when it's sent and remembered for its replies.
+  const variantFor = t => (t?.variants && t.variants[heading()] ? heading() : null);
+  const withVariant = (t, key) => (key && t.variants?.[key] ? { ...t, ...t.variants[key] } : t);
   function textOk(t) {
     if (t.slot && t.slot !== S.slot) return false;
     if (t.flag && ![].concat(t.flag).every(flag)) return false;
@@ -1343,9 +1405,12 @@ window.FemcGame = (() => {
     if (t.met && !t.met.every(isMet)) return false;
     if (t.events && !t.events.every(id => S.events.includes(id))) return false;
     if (t.route && !Object.entries(t.route).every(([id, r]) => progress(id).route === r)) return false;
+    if (t.heading && !headingIs(t.heading)) return false;
     return true;
   }
   function sendText(t) {
+    const vk = variantFor(t);
+    if (vk) { (S.phone.vars ||= {})[t.id] = vk; t = withVariant(t, vk); }
     if (!/^later-/.test(t.id)) S.phone.done.push(t.id);
     appendPhone(t.thread, t.msgs);
     S.phone.unread[t.thread] = (S.phone.unread[t.thread] || 0) + t.msgs.length;
@@ -1421,6 +1486,7 @@ window.FemcGame = (() => {
       if (h.route && p.route !== h.route) return false;
       if (h.flag && ![].concat(h.flag).every(flag)) return false;
       if (h.events && !h.events.every(id => S.events.includes(id))) return false;
+      if (h.heading && !headingIs(h.heading)) return false;
       if (l.closes && d >= dayOf(l.closes)) return false;
       return true;
     });
@@ -1488,6 +1554,7 @@ window.FemcGame = (() => {
     const battled = S.tonight === 'battled';
     if (e.when === 'tartarus' ? !battled : battled) return false;
     if (e.when === 'rain' && info.weather !== 'rain') return false;
+    if (e.heading && !headingIs(e.heading)) return false;
     if (l.closes && d >= dayOf(l.closes)) return false;
     return true;
   }
@@ -1776,6 +1843,7 @@ window.FemcGame = (() => {
     perkOn, bondRank, dailyPerks, actCost, dozeChance, dozed, canRetryClass, useGuidance, classHint, studyBonus, weekly,
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift, packs, packPick, packFits,
     clubById, clubState, clubStats, clubScene, joinClub, finishClub, runInDue, runInFits, finishRunIn, vary, varyPool, secretsDue, findSecret,
+    heading, headingIs, migrateForced,
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, textById, answerInvite, gift, bond,

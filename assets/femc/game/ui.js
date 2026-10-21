@@ -775,7 +775,7 @@
     hud.hidden = true;
     setBg('iwatodaidorm-roof-night', 'night');
     screenMusic('title');
-    const name = G.endingName(), clears = G.recordClear(), seen = [...new Set(clears.map(c => c.ending))];
+    const name = G.endingName(), clears = G.recordClear(), seen = [...new Set(clears.map(c => (c.ending === 'the count' ? 'the unfated life' : c.ending)))]; // the Hoax ending's old name (before 2026-10-21)
     const met = S().met.length, frags = S().fragments.length, maxed = Object.values(G.LINKS).filter(l => G.progress(l.id).rank >= 10).length;
     show(`<section class="g-seg g-end"><p class="g-kicker">1/31 · the last minutes of the last Dark Hour</p>
       <div class="g-seg-box"><p class="g-end-name">ENDING · ${esc(name)}</p>
