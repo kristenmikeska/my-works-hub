@@ -126,3 +126,9 @@ Kat loves the skill tree and wants much more building.
 
 ### Theurgy animation (Kat, 2026-10-20)
 Kat likes the **3-step strike sheet**: wind-up, strike, follow-through. Plan: play the sheet's three frames as the character's motion over the Theurgy background and Persona, with a flash, shake and particles. Use the layered pieces where she supplies them; otherwise the regular cut-in is the backdrop. Prompts are in `FEMC-THEURGY-PROMPTS.md`.
+
+### World songs (Kat loves this, 2026-10-20)
+Play Solar's world songs quietly at the right moments. Sources are in `~/Documents/UniverseHub-Audio/`: Runners/ (Camo – Runners, chanmina – a shell, rosé – 3am), Strangers/ (Ethel Cain – Strangers, Crush, Sea Swallow Me), Hoax/ (Taylor Swift – Hoax, Ariana Grande – someone like u).
+- **Where:** memory-fragment scenes and flashbacks, each searcher's arrival, the "come home" calls, and each world's ending. Match each world to its own songs.
+- **How:** soft volume. Fade in under the scene and back out to the P3 track. Add new mood keys (e.g. `world-runners`, `world-strangers`, `world-hoax`) in `places.js`'s music map.
+- Spread all the P3 tracks so the same song doesn't repeat back to back. This also answers Kat's note about music repetition.
