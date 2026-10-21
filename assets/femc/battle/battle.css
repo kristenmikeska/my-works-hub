@@ -1952,3 +1952,56 @@ html.bt-embed .bt-hub-ho .bt-hub-menu .bt-btn[data-go="dorm"] small { display: n
   html.bt-embed .bt-hub-ho .bt-hub-row .bt-btn { white-space: normal; font-size: 15px; padding: 10px 12px; }
   html.bt-embed .bt-hub-ho .bt-hub-row .bt-btn small { display: none; }
 }
+
+/* ── The skill system (2026-10-20) ── */
+/* Kat's skills use the sticker icons from icons.js at the element icons' size. */
+.bt-icon.bt-ico.sk { width: 1.25em; height: 1.25em; vertical-align: -.25em; }
+.bt-mi .bt-icon.bt-ico.sk { width: 24px; height: 24px; }
+/* Buff/debuff levels (stack to 3): ▲▲ plus the turns left; a lasting one has no number. */
+/* Status chips sit on the card's top edge and stack upward (never over the face or the bars). */
+.bt-card .st { top: auto; bottom: calc(100% - 8px); flex-wrap: wrap-reverse; justify-content: flex-end; gap: 3px; max-width: calc(100% - 12px); pointer-events: none; }
+.bt-card .st i.bf b { margin-left: 1px; font-size: .85em; letter-spacing: -.12em; }
+.bt-card .st i sub, .bt-tag em { margin-left: 3px; font-size: .8em; vertical-align: 0; opacity: .85; font-style: normal; }
+.bt-card .st i.bf.lv3 { box-shadow: 2px 2px 0 #fff; }
+.bt-card .st i.ward { background: var(--gold); color: var(--night); }
+.bt-card .st i.aggro { background: var(--pink); color: #fff; box-shadow: 2px 2px 0 #fff; }
+.bt-card .st i.flank { background: #fff; color: #c2185b; }
+.bt-card .st i.kit { background: #1d5b78; color: #bff6ff; box-shadow: 2px 2px 0 #7fe3ff; }
+.bt-tag.bf { font-size: 12px; padding: 2px 8px; }
+.bt-tag.bf.up { background: #2b62d9; } .bt-tag.bf.dn { background: #7a1030; }
+.bt-tag.bf b { letter-spacing: -.1em; }
+/* Practice mode's tree: five branches and the center. */
+.bt-branches.n6 { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(6px, 1.4vw, 22px); padding: 8px clamp(10px, 2vw, 30px); }
+.bt-branches.n6 .bt-branch-h { grid-template-columns: 36px minmax(0, 1fr); padding: 6px 8px; }
+.bt-branches.n6 .bt-charm { width: 34px; height: 34px; }
+.bt-branch-glyph { display: grid; place-items: center; width: 34px; height: 34px; color: var(--c); font-size: 28px; line-height: 1; }
+.bt-branches.n6 .bt-branch-h b { font-size: 20px; }
+.bt-branches.n6 .bt-node { grid-template-columns: 18px minmax(0, 1fr) auto; gap: 6px; padding: 6px 8px; }
+.bt-branches.n6 .bt-node .gem { width: 16px; height: 16px; }
+.bt-branches.n6 .bt-node b { font-size: 14px; }
+.bt-branches.n6 .bt-node .cost { font-size: 11px; }
+.bt-branches.n6 .bt-branch { --ng: clamp(6px, 1.2vh, 12px); }
+.bt-node.key { border-style: double; border-width: 4px; }
+.bt-node.mem:not(.own) { border-style: dashed; }
+.bt-node.hidden { opacity: .55; filter: grayscale(.6); }
+.bt-node.taken { opacity: .3; text-decoration: line-through; }
+.bt-node.lvl, .bt-node.story { opacity: .6; }
+.bt-branch.center { align-self: center; }
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-branches.n6 { grid-template-columns: repeat(6, minmax(118px, 1fr)); overflow-x: auto; }
+}
+/* "Forget a skill?" (eight slots) */
+.bt-forgetscr { display: grid; place-items: center; overflow-y: auto; padding: 16px; }
+.bt-forget { width: min(760px, 100%); padding: clamp(14px, 3vw, 28px); background: rgba(14, 5, 10, .94); border: 2px solid var(--pink-2); border-radius: 4px 26px 4px 26px; box-shadow: 10px 10px 0 rgba(255, 79, 158, .45); }
+.bt-forget h1 { margin: 0 0 8px; font: italic 900 clamp(32px, 5vw, 54px)/.95 var(--cond); transform: skewX(-8deg); text-shadow: .06em .06em 0 var(--pink); }
+.bt-forget-lead { margin: 0 0 12px; color: var(--pink-3); }
+.bt-forget-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+.bt-forget-b { width: 100%; justify-content: flex-start; text-align: left; flex-direction: column; align-items: flex-start; gap: 2px; padding: 9px 14px; }
+.bt-forget-b span { display: flex; align-items: center; gap: 8px; font-size: 17px; }
+.bt-forget-b small { font: 600 12px/1.25 var(--sans); text-transform: none; letter-spacing: 0; opacity: .8; }
+.bt-forget-b em { padding: 1px 6px; background: var(--gold); color: var(--night); font-size: 11px; }
+.bt-forget-b.armed { background: #7a1030; box-shadow: 5px 5px 0 #fff; }
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-card .st { gap: 2px; max-width: calc(100% - 4px); right: 2px; }
+  .bt-card .st i { padding: 1px 4px; font-size: 9px; box-shadow: 1px 1px 0 var(--pink); }
+}

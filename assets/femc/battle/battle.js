@@ -357,7 +357,10 @@
   const need = lvl => D.progression.expToNext(lvl);
   const treeFx = (nodes = save.nodes) => E.treeFx(nodes);
   const memberStats = (m, lvl, fx) => E.statsFor(m.id, save, lvl, fx);
-  const solarSkills = fx => E.skillsFor('solar', save, save.lvl, fx);
+  // Solar's eight slots (plus her form's signature), the skill system's kit (engine.js kitFor).
+  const solarSkills = fx => { const k = E.kitFor('solar', save, save.lvl, fx); return k.slots.concat(k.sig ? [k.sig] : []); };
+  // A skill's icon: Kat's skills have their own (icons.js sk-*), the rest show their element.
+  const skIcon = id => { const sk = D.skills[id] || {}; return sk.icon && ICON ? ICON.svg(sk.icon, null, 'bt-ico sk') : ART.icon(sk.el); };
   /* Each member's own level (Solar's is the save's). */
   const lvOf = id => E.lvlOf(save, id);
   const roster = () => [D.party[0]].concat(save.party.map(member).filter(Boolean));
@@ -758,7 +761,9 @@
     const pool = B.foes().filter(f => !f.dead && !f.hidden && !B.shieldUp(f)).map(f => ({ f, s: score(f) })).filter(x => x.s > 0).sort((a, b) => b.s - a.s || a.f.hp - b.f.hp);
     return pool.length ? { type: 'attack', target: pool[0].f.id } : { type: 'guard' };
   }
-  const rushAction = u => (tacticOf(u) !== 'direct' ? B.autoAction(u, tacticOf(u)) : rushAttack(u));
+  // Rush's brain (engine.js autoAction 'rush'): Direct and Act Freely members heal, rebuff, strip buffs, hit known weaknesses
+  // and fire Theurgy the moment it's ready; the other tactics keep their own style. rushAttack stays as the fallback.
+  const rushAction = u => { const t = tacticOf(u); const a = B.autoAction(u, t === 'direct' || t === 'free' ? 'rush' : t); return a || rushAttack(u); };
 
   /* ════════════════════════════════════════════════════
      HUB
@@ -774,7 +779,7 @@
           <div class="bt-expbar"><i style="width:${pct}%"></i></div>
           <div class="bt-explabel"><span>EXP ${save.exp} / ${need(save.lvl)}</span><span>${save.pts} skill pts</span></div>
           <div class="bt-stats">${['hp', 'sp', 'st', 'ma', 'en', 'ag', 'lu'].map(k => `<div><span>${k.toUpperCase()}</span><b>${s[k]}</b></div>`).join('')}</div>
-          <ul class="bt-chips">${skills.map(id => `<li>${ART.icon(D.skills[id].el)}<span>${esc(D.skills[id].name)}</span></li>`).join('')}</ul>
+          <ul class="bt-chips">${skills.map(id => `<li>${skIcon(id)}<span>${esc(D.skills[id].name)}</span></li>`).join('')}</ul>
           <div class="bt-hub-party" aria-label="Party">${roster().slice(1).map(m => `<span title="${esc(m.name)}"><i class="av fcb">${fimg(m.id, m.faces.idle)}</i><b>${esc(m.name)}<small>Lv ${lvOf(m.id)}${tacticOf({ mid: m.id }) !== 'direct' ? ` · ${esc(D.tactics[tacticOf({ mid: m.id })].short)}` : ''}</small></b></span>`).join('') || '<em>Solar fights alone</em>'}</div>
           ${meta}
         </div>
@@ -783,6 +788,7 @@
   function hub() {
     // Evolutions that came due (an old save, or levels from the bench) play before the hub opens.
     if (!evolving && E.evolutionsDue(save, lvOf).length) { ctl = null; pendingEvolutions().then(hub); return; }
+    if (!resolving && D.party.filter(usable).some(m => pendingOf(m.id).length)) { ctl = null; resolvePending().then(hub); return; }
     if (HO) return hoHub();
     screen = 'hub';
     root.classList.remove('bt-in-battle');
@@ -831,13 +837,13 @@
      PARTY: Solar plus up to three, each with a Tactic
      ════════════════════════════════════════════════════ */
   /* Story fights: the game's field menu (menu.js) over this frame, in place of the practice screens. The save is handed over
-     first and read back after, since the menu edits the playthrough's battle save in the life sim. Resolves when it closes
-     (after Haenim's tree, when the menu's Skills tab asked for it): 'leave' when an escape item was used on a floor, else null.
+     first and read back after, since the menu edits the playthrough's battle save in the life sim. Resolves when it closes:
+     'leave' when an escape item was used on a floor, else null. Its Skills tab is the skill system (Haenim's tree, the party trees).
      onFloor: items can be used (useFieldItem) and the team is locked until an access point. */
   function fieldMenu(tab, { required = [], solo = false, extra = [], onFloor = false } = {}) {
     return new Promise(resolve => {
       const prev = ctl;
-      let wantTree = false, left = false;
+      let left = false;
       persist();
       const hp = {};
       if (run) buildParty(run.carry).forEach(u => { hp[u.mid] = { hp: u.hp, maxHp: u.maxHp, sp: u.sp, maxSp: u.maxSp }; });
@@ -850,7 +856,7 @@
         if (back) { save = back; persist(); }
         mark('field-menu-closed');
         const out = left ? 'leave' : null;
-        if (wantTree && !left) treeScreen(() => resolve(out)); else resolve(out);
+        resolve(out);
       };
       paused++; ctl = me;
       root.classList.add('bt-ov-open');
@@ -866,7 +872,7 @@
         return { items: Object.assign({}, save.items), hp: now };
       };
       let ok = false;
-      try { ok = BR.openMenu(tab, { kind: HO && HO.kind, required, solo, extra, lockParty: onFloor, useItem, items: Object.assign({}, save.items), yen: save.yen, hp, openTree: () => { wantTree = true; }, onClose: done }); } catch (e) { ok = false; }
+      try { ok = BR.openMenu(tab, { kind: HO && HO.kind, required, solo, extra, lockParty: onFloor, useItem, items: Object.assign({}, save.items), yen: save.yen, hp, onClose: done }); } catch (e) { ok = false; }
       if (!ok) { paused = Math.max(0, paused - 1); root.classList.remove('bt-ov-open'); if (ctl === me) ctl = prev; resolve(null); }
     });
   }
@@ -1077,7 +1083,9 @@
     persist();
     if (nowTired.length) tip('fatigue');
     await results({ title, out, rew, bonus, nowTired, op, reaper, back });
+    await resolvePending();   // a ninth skill from a level-up: forget which?
     await pendingEvolutions();
+    await resolvePending();   // an evolved Persona's new skills
     const forms = checkForms();
     for (const f of forms) await formUnlocked(f);
   }
@@ -1348,7 +1356,7 @@
       for (;;) {
         const v = await roomPanel({ bg: AP, cls: 'access', kicker: `${floor.label} · ${floor.block}`, title: 'ACCESS POINT', name: 'access',
           body: `<p>${better ? `Progress saved. Next time you can start from <b>${esc(floor.label)}</b>.` : 'A green terminal hums quietly.'}</p>`,
-          buttons: BR ? [{ v: 'stay', label: 'Keep climbing', pink: true }, { v: 'menu', label: 'Menu', small: 'Party · Equipment · Items' }, { v: 'tree', label: 'Haenim’s Tree', small: `${save.pts} SP` }, { v: 'leave', label: 'Leave Tartarus' }]
+          buttons: BR ? [{ v: 'stay', label: 'Keep climbing', pink: true }, { v: 'menu', label: 'Menu', small: 'Party · Equipment · Items' }, { v: 'tree', label: 'Skills', small: `Haenim · ${save.pts} SP` }, { v: 'leave', label: 'Leave Tartarus' }]
             : [{ v: 'stay', label: 'Keep climbing', pink: true }, { v: 'equip', label: 'Equip' }, { v: 'party', label: 'Party' }, { v: 'tree', label: 'Haenim’s Tree', small: `${save.pts} SP` }, { v: 'leave', label: 'Leave Tartarus' }],
           fuuka: navLine('access') });
         if (v === 'equip') { await new Promise(r => equipScreen(r)); continue; }
@@ -1547,7 +1555,7 @@
       await sleep(1300);
     } else if (result === 'lose') { nav('solarDown'); sfx('ko'); await sleep(1500); }
     else await sleep(700);
-    if (result === 'win' && spec.boss && !spec.reaper && !(RL && RL.noNav)) await navCard();
+    // (Kat's note: no finish card flashes after a fight is won. The real All-Out finish cards still play during battle.)
     return { result, rew: result === 'win' ? E.rewards(B, rand) : null, boss: !!spec.boss };
   }
 
@@ -1708,7 +1716,7 @@
     if (shield) tags.push('<span class="bt-tag shield">Shielded</span>');
     el.classList.toggle('unreachable', !!u.unreachable && !u.dead);
     if (u.unreachable && !u.dead) tags.push('<span class="bt-tag">Out of reach</span>');
-    ['atk', 'def'].forEach(s => { if (u.buffs[s]) tags.push(`<span class="bt-tag">${STAT_SHORT[s]} ${u.buffs[s] > 0 ? '↑' : '↓'}</span>`); });
+    tags.push(...buffChips(u, u.dead, 'span'));
     el.querySelector('.bt-tags').innerHTML = tags.join('');
     restShadow(el);
   }
@@ -1721,6 +1729,17 @@
     track._p = p;
     if (f) f.style.transform = `scaleX(${p})`;
     if (g) { g.classList.toggle('now', p >= prev); g.style.transform = `scaleX(${p})`; }
+  }
+  /* Buff/debuff levels on a card or a Shadow: ▲▲ (up to the cap of 3) and the turns left (none for a lasting one). */
+  const STAT_NAME = { atk: 'Attack', def: 'Defense', agi: 'Agility' };
+  function buffChips(u, dead = u.dead, tag = 'i') {
+    if (dead) return [];
+    return ['atk', 'def', 'agi'].filter(k => u.buffs[k]).map(k => {
+      const v = u.buffs[k], lv = Math.min(D.buffRules.cap, Math.abs(v)), t = u.buffT[k], lasting = t >= 90;
+      const title = `${STAT_NAME[k]} ${v > 0 ? 'up' : 'down'} ${lv} level${lv > 1 ? 's' : ''}${lasting ? ', lasting' : `, ${t} turn${t === 1 ? '' : 's'} left`}`;
+      return tag === 'i' ? `<i class="bf ${v > 0 ? 'up' : 'dn'} lv${lv}${lasting ? ' last' : ''}" title="${title}" data-buff="${k}${v}">${STAT_SHORT[k]}<b>${(v > 0 ? '▲' : '▼').repeat(lv)}</b>${lasting ? '' : `<sub>${t}</sub>`}</i>`
+        : `<span class="bt-tag bf ${v > 0 ? 'up' : 'dn'} lv${lv}" title="${title}" data-buff="${k}${v}">${STAT_SHORT[k]} <b>${(v > 0 ? '▲' : '▼').repeat(lv)}</b>${lasting ? '' : `<em>${t}</em>`}</span>`;
+    });
   }
   const ailTag = a => { const d = D.ailments[a.id]; return `<span class="bt-tag ail" style="--c:${d.color}" title="${esc(d.desc)}">${ART.icon(a.id)}<span>${esc(d.name)}</span><em>${a.t}</em></span>`; };
   function paintCard(u, o = {}) {
@@ -1746,7 +1765,11 @@
     if (tac !== 'direct' && !dead) st.push(`<i class="tc" title="${esc(D.tactics[tac].name)}">${esc(D.tactics[tac].short.toUpperCase())}</i>`);
     if (u.tired && !dead) st.push('<i class="tired" title="Tired: weaker, and may lose turns">TIRED</i>');
     if (u.orgia > 0 && !dead) st.push(`<i class="up">ORGIA ${u.orgia}</i>`);
-    ['atk', 'def', 'agi'].forEach(k => { if (u.buffs[k]) st.push(`<i class="${u.buffs[k] > 0 ? 'up' : 'dn'}">${STAT_SHORT[k]}${u.buffs[k] > 0 ? '↑' : '↓'}</i>`); });
+    st.push(...buffChips(u, dead));
+    if (u.ward && !dead) st.push('<i class="ward" title="Protective Suzu: nothing can hurt them until their next turn">WARD</i>');
+    if (u.taunt > 0 && !dead) st.push(`<i class="aggro" title="Drawing every single-target attack (${u.taunt} turn${u.taunt === 1 ? '' : 's'} left)">AGGRO<sub>${u.taunt}</sub></i>`);
+    if (!dead && B.flanking(u)) st.push('<i class="flank" title="Off Angle Flank: big evasion and +30% crit while someone else draws aggro">FLANK</i>');
+    if (!dead && B.kitsuneOn(u)) st.push(`<i class="kit" title="Kitsune Rush: moves first, +50% agility and accuracy, costs halved">FOX<sub>${B.S.kitsune}</sub></i>`);
     c.querySelector('.st').innerHTML = st.join('');
     c.classList.toggle('ailing', !!(u.ail && !dead));
     c.dataset.ail = u.ail && !dead ? u.ail.id : '';
@@ -1868,7 +1891,10 @@
     if (e.skill === 'golden_rope') { const c = BT.cards.get(e.src), R = BT.root.getBoundingClientRect(); if (c) { const r = c.getBoundingClientRect(); o.from = { x: r.left + r.width * 0.4 - R.left, y: r.top - R.top }; } return fxPlay('rope', e.tgt, o); }
     if (e.insta) return fxPlay(el === 'light' ? 'light' : 'dark', e.tgt, Object.assign(o, { holy: el === 'light' }));
     if (e.theurgy) { const look = (B.U(e.src) && member(B.U(e.src).mid).theurgy.look) || el; return fxPlay(look === 'sun' ? 'light' : (D.elements[look] ? look : 'almighty'), e.tgt, Object.assign(o, { holy: look === 'sun' })); }
-    if (e.skill === 'daybreak' || el === 'light') return fxPlay('light', e.tgt, o);
+    if (e.skill === 'kunai_flick') { const t = fxPlay('kunai', e.tgt, Object.assign(o, { keen: e.keen })); if (e.flank) fxPlay('flank', e.tgt); return t; }
+    if (e.flank) fxPlay('flank', e.tgt);
+    if (['golden_tether', 'heavens_rope'].includes(e.skill)) { const c = BT.cards.get(e.src), R = BT.root.getBoundingClientRect(); if (c) { const r = c.getBoundingClientRect(); o.from = { x: r.left + r.width * 0.4 - R.left, y: r.top - R.top }; } return fxPlay('rope', e.tgt, o); }
+    if (['daybreak', 'morning_glory', 'high_noon'].includes(e.skill) || el === 'light') return fxPlay('light', e.tgt, o);
     if (src && src.side === 'enemy' && el === 'almighty') return fxPlay('almighty', e.tgt, o);
     return fxPlay(D.elements[el] ? el : 'strike', e.tgt, o);
   }
@@ -2152,17 +2178,6 @@
     w.classList.add('out');
     setTimeout(() => w.remove(), 300 / speed());
   }
-  /* Fuuka's card: a navigator moment after the full-moon boss. */
-  async function navCard() {
-    const w = document.createElement('div');
-    w.className = 'bt-allout';
-    await stills([FINISH_DIR + NAVI.id + '.webp'], 900);
-    w.innerHTML = `<div class="bt-finish card nav"><div class="bk" style="background-image:url('${softBg(FINISH_DIR + NAVI.id + '.webp')}')"></div><img src="${FINISH_DIR}${NAVI.id}.webp" alt="${esc(NAVI.name)}"></div>`;
-    BT.cut.appendChild(w);
-    mark('navcard');
-    await sleep(1500);
-    w.remove();
-  }
   async function bigWord(text, { sub = '', gold = false, band = null, ms = 900 } = {}) {
     const w = document.createElement('div');
     w.className = 'bt-onemore';
@@ -2223,8 +2238,9 @@
         if (e.self) { popup(e.tgt, { label: 'FALL!', lcls: 'weak' }); paintEnemy(t); sfx('down'); mark('fortune-fall'); await sleep(600); break; }
         if (e.shield) { fxPlay('miss', e.tgt); popup(e.tgt, { label: 'SHIELDED', lcls: 'null' }); nav('shielded', {}, { once: true }); sfx('miss'); mark('shielded'); await sleep(420); break; }
         if (e.aff === 'repel' && !e.reflected) { fxPlay(e.el, e.tgt, { small: true }); popup(e.tgt, { label: 'REPEL', lcls: 'repel' }); if (src.side === 'party') nav('repel', {}, { once: true }); sfx('miss'); await sleep(420); break; }
-        const lead = e.aff === 'null' ? fxPlay('miss', e.tgt) : fxHit(e);
+        const lead = e.warded ? fxPlay('suzu', e.tgt, { small: true }) : e.aff === 'null' ? fxPlay('miss', e.tgt) : fxHit(e);
         if (lead > 40) await sleep(lead);
+        if (e.insta && e.warded) { await sleep(420); break; }
         if (e.insta) {
           if (e.killed) { popup(e.tgt, { label: e.el === 'light' ? 'BANISHED!' : 'INSTANT KILL!', lcls: 'weak' }); flash(e.el !== 'light'); shake(true); sfx('crit'); nav('insta'); mark('insta'); paintEnemy(t, { hp: 0 }); deathFx(e.tgt); mark('kill'); }
           else { popup(e.tgt, { label: t.boss ? 'IMMUNE' : 'NULL', lcls: 'null' }); sfx('miss'); }
@@ -2239,9 +2255,10 @@
           el.classList.add('hitstop'); await sleep(85); el.classList.remove('hitstop');
         }
         if (el && e.amount > 0 && e.aff !== 'drain') { el.classList.remove('hit'); void el.offsetWidth; el.classList.add('hit'); if (onEnemy) animateShadow(el, 'hurt', 360); setTimeout(() => el.classList.remove('hit'), 420); }
-        const label = e.crit ? 'CRITICAL!' : (AFF_WORD[e.aff] || '');
+        const label = e.keen ? 'CRITICAL ×3.5!' : e.crit ? 'CRITICAL!' : (AFF_WORD[e.aff] || '');
         const lcls = e.crit ? 'crit' : e.aff;
-        if (e.aff === 'null') popup(e.tgt, { label: 'NULL', lcls: 'null' });
+        if (e.warded) { popup(e.tgt, { label: 'WARD', lcls: 'buff' }); mark('warded'); }
+        else if (e.aff === 'null') popup(e.tgt, { label: 'NULL', lcls: 'null' });
         else if (e.aff === 'drain') popup(e.tgt, { label: 'DRAIN', lcls: 'drain', n: e.amount, cls: 'heal' });
         else popup(e.tgt, { n: e.amount, label, lcls, cls: `${onEnemy ? '' : 'party'} ${e.crit ? 'crit' : ''} ${e.aff === 'weak' ? 'big' : ''}` });
         if (onEnemy) paintEnemy(t, { hp: e.hp }); else paintCard(t, { hp: e.hp, dead: e.killed });
@@ -2349,15 +2366,41 @@
       case 'revive': { const t = U(e.tgt); blogAdd(`${t.name} is back up!`, 'heal'); const c = BT.cards.get(t.id); fxPlay('revive', e.tgt); c.classList.remove('dead'); setFace(c.querySelector('.face img'), t.mid, member(t.mid).faces.idle); popup(e.tgt, { label: 'REVIVED', lcls: 'buff' }); mark('revive'); await sleep(300); break; }
       case 'buff': {
         const t = U(e.tgt);
-        blogAdd(`${t.name}: ${STAT_SHORT[e.stat]} ${e.dir > 0 ? 'up' : 'down'}`, e.dir > 0 ? 'buff' : 'debuff');
-        popup(e.tgt, { label: `${STAT_SHORT[e.stat]} ${e.dir > 0 ? '↑' : '↓'}`, lcls: e.dir > 0 ? 'buff' : 'debuff' });
+        const lv = Math.min(D.buffRules.cap, Math.abs(e.v || 0));
+        blogAdd(`${t.name}: ${STAT_SHORT[e.stat]} ${e.dir > 0 ? 'up' : 'down'}${lv ? ` (${(e.v > 0 ? '▲' : '▼').repeat(lv)}${e.lasting ? ', lasting' : `, ${e.turns} turns`})` : ''}${e.capped ? ' · at the cap' : ''}`, e.dir > 0 ? 'buff' : 'debuff');
+        popup(e.tgt, { label: e.capped ? `${STAT_SHORT[e.stat]} MAX` : `${STAT_SHORT[e.stat]} ${lv ? (e.v > 0 ? '▲' : '▼').repeat(lv) : '–'}`, lcls: (e.v || e.dir) > 0 ? 'buff' : 'debuff' });
+        mark('buff-lv' + lv); if (e.capped) mark('buff-cap');
         fxPlay('buff', e.tgt, { dir: e.dir, stat: e.stat });
         if (t.side === 'party') paintCard(t); else paintEnemy(t);
         sfx('buff');
         await sleep(next && next.t === 'buff' ? 120 : 380);
         break;
       }
-      case 'buffEnd': break;
+      case 'buffEnd': { const t = U(e.tgt); if (t.side === 'party') paintCard(t); else paintEnemy(t); break; }
+      // ── The skill system's moves (Kat's skills and the passives)
+      case 'ward': { const t = U(e.tgt); fxPlay('suzu', e.tgt); popup(e.tgt, { label: 'WARD', lcls: 'buff' }); paintCard(t); nav('ward', {}, { once: true }); sfx('cure'); mark('ward'); await sleep(next && next.t === 'ward' ? 140 : 420); break; }
+      case 'wardEnd': { const t = U(e.tgt); if (t.side === 'party') paintCard(t); break; }
+      case 'taunt': {
+        const t = U(e.tgt);
+        fxPlay('veneer', e.tgt); popup(e.tgt, { label: e.veneer ? 'PUBLIC VENEER' : 'AGGRO', lcls: 'buff' }); paintCard(t); sfx('guard');
+        nav('taunt', { name: t.name }); mark('taunt'); await sleep(450);
+        if (e.flank) { B.party().filter(p => !p.dead && p !== t).forEach(p => { fxPlay('flank', p.id, { small: true }); paintCard(p); }); nav('flank', { name: t.name }); mark('flank-on'); await sleep(300); }
+        break;
+      }
+      case 'tauntEnd': { const t = U(e.tgt); B.party().forEach(p => paintCard(p)); log(`${t.name} isn’t drawing attention anymore.`); break; }
+      case 'drawn': { popup(e.tgt, { label: 'DRAWN IN', lcls: 'ail', style: '--c:#ff8cc0' }); mark('drawn'); await sleep(260); break; }
+      case 'kitsune': {
+        e.tgts.forEach(id => fxPlay('kitsune', id));
+        sfx('summon'); nav('kitsune'); mark('kitsune');
+        await bigWord('KITSUNE RUSH', { sub: `${e.turns} turns · first to move · costs halved`, gold: true, ms: 950 });
+        B.party().forEach(p => paintCard(p)); paintOrder();
+        break;
+      }
+      case 'kitsuneEnd': banner('Kitsune Rush fades'); blogAdd('Kitsune Rush ends.', 'sys'); B.party().forEach(p => paintCard(p)); mark('kitsune-end'); break;
+      case 'counter': { const a = U(e.src); popup(e.src, { label: 'COUNTER!', lcls: 'crit' }); nav('counter', { name: a.name }); log(`${a.name} counters!`); sfx('guard'); mark('counter'); await sleep(320); break; }
+      case 'endure': { const t = U(e.tgt); popup(e.tgt, { label: 'ENDURE!', lcls: 'buff' }); nav('endure', { name: t.name }); paintCard(t); sfx('cure'); mark('endure'); await sleep(420); break; }
+      case 'bluff': { const t = U(e.tgt); fxPlay('bluff', e.tgt); popup(e.tgt, { label: 'BLUFF CALLED', lcls: 'weak' }); paintEnemy(t); nav('bluff'); mark('bluff'); await sleep(480); break; }
+      case 'thGain': { const t = U(e.tgt); popup(e.tgt, { n: `+${e.n} TH`, cls: 'sp' }); paintCard(t); break; }
       case 'reveal': {
         // A weakness found by hitting it: a small banner now, and the cell flips over the next time its plate shows.
         freshAff.add(e.kind + ':' + e.el);
@@ -2513,7 +2556,7 @@
   const tagHtml = t => (t ? `<em class="mk ${t[1]}">${t[0]}</em>` : '');
   function listMenu({ items, cls = '', back = false, title = '', start = 0, onSel = null, name = 'list', onKey = null, onOther = null }) {
     return new Promise(resolve => {
-      BT.body.innerHTML = `${title ? `<p class="bt-hint bt-mtitle">${title}</p>` : ''}<ul class="bt-menu ${cls}">${items.map((it, i) => `<li style="--i:${i}" class="${it.wide ? 'wide' : ''}"><button type="button" class="bt-mi ${it.cls || ''}${it.off ? ' off' : ''}" data-v="${esc(it.v)}"${it.off ? ' aria-disabled="true"' : ''}>${it.icon ? ART.icon(it.icon) : ''}<span>${esc(it.label)}</span>${it.right || it.tag || it.why ? `<span class="r ${it.rcls || ''}">${it.why ? `<em class="why">${esc(it.why)}</em>` : tagHtml(it.tag)}${it.right || ''}</span>` : ''}</button></li>`).join('')}</ul>
+      BT.body.innerHTML = `${title ? `<p class="bt-hint bt-mtitle">${title}</p>` : ''}<ul class="bt-menu ${cls}">${items.map((it, i) => `<li style="--i:${i}" class="${it.wide ? 'wide' : ''}"><button type="button" class="bt-mi ${it.cls || ''}${it.off ? ' off' : ''}" data-v="${esc(it.v)}"${it.off ? ' aria-disabled="true"' : ''}>${it.iconHtml || (it.icon ? ART.icon(it.icon) : '')}<span>${esc(it.label)}</span>${it.right || it.tag || it.why ? `<span class="r ${it.rcls || ''}">${it.why ? `<em class="why">${esc(it.why)}</em>` : tagHtml(it.tag)}${it.right || ''}</span>` : ''}</button></li>`).join('')}</ul>
         <p class="bt-desc"></p>${back ? '<button type="button" class="bt-back" data-back>‹ Back</button>' : ''}<p class="bt-hint">↑↓ choose · Enter confirm${back ? ' · Esc back' : ''}</p>`;
       const ul = BT.body.querySelector('.bt-menu'), btns = [...ul.querySelectorAll('.bt-mi')], desc = BT.body.querySelector('.bt-desc');
       let i = Math.max(0, Math.min(start, items.length - 1));
@@ -2552,10 +2595,12 @@
     });
   }
 
+  // A skill's cost for this member right now (Kitsune Rush halves it; Double Tap makes the first one free).
   function costText(u, sk) {
     if (!sk.cost) return '';
-    if (sk.cost.sp) return `${sk.cost.sp} SP`;
-    return `${Math.round(u.maxHp * sk.cost.hp / 100)} HP`;
+    const c = B && B.costOf ? B.costOf(u, sk) : { sp: sk.cost.sp || 0, hp: sk.cost.hp || 0 };
+    if (sk.cost.sp) return c.sp ? `${c.sp} SP` : 'FREE';
+    return c.hp ? `${Math.round(u.maxHp * c.hp / 100)} HP` : 'FREE';
   }
   /* What the party knows about element el on foe f (only from Analyze or from hitting it, like P3R): a tag
      ['WEAK', 'weak'] … ['?', 'unk'], or null for a normal hit or a non-elemental skill. */
@@ -2718,11 +2763,11 @@
     for (;;) {
       const deadCount = B.party().filter(p => p.dead).length, foe = focusFoe(u), foes = B.foes().filter(markable), L = letters();
       const items = u.skills.map(id => {
-        const sk = D.skills[id], pay = B.canPay(u, sk), noDead = sk.target === 'dead' && !deadCount;
+        const sk = D.skills[id], once = !!(sk.once && B.usedOnce(u, id)), pay = B.canPay(u, sk), noDead = sk.target === 'dead' && !deadCount;
         const hostile = ['one', 'all', 'rand'].includes(sk.target) && ['dmg', 'insta'].includes(sk.type);
         const tg = hostile ? affTag(foe, sk.el) : null, need = sk.cost && sk.cost.hp ? 'HP' : 'SP';
-        const offWhy = noDead ? 'No one needs reviving.' : !pay ? `Not enough ${need}: it costs ${costText(u, sk)} and ${u.name} has ${need === 'HP' ? u.hp : u.sp}.` : '';
-        return { v: id, label: sk.name, icon: sk.el, tag: tg, right: costText(u, sk), rcls: sk.cost && sk.cost.hp ? 'hp' : '', off: !pay || noDead, why: noDead ? 'NO KO' : !pay ? `LOW ${need}` : '', offWhy, el: hostile ? sk.el : null,
+        const offWhy = once ? 'Once per battle, and it’s been used.' : noDead ? 'No one needs reviving.' : !pay ? `Not enough ${need}: it costs ${costText(u, sk)} and ${u.name} has ${need === 'HP' ? u.hp : u.sp}.` : '';
+        return { v: id, label: sk.name, icon: sk.el, iconHtml: sk.icon ? skIcon(id) : null, tag: tg, right: costText(u, sk), rcls: sk.cost && sk.cost.hp ? 'hp' : '', off: once || !pay || noDead, why: once ? 'USED' : noDead ? 'NO KO' : !pay ? `LOW ${need}` : '', offWhy, el: hostile ? sk.el : null,
           desc: `<b>${esc(sk.name)}</b>${esc(sk.desc)}${tg && foe ? ` <span class="vs">vs ${esc(foe.name + L[foe.id])}: ${tagHtml(tg)}</span>` : ''}${offWhy ? ` <em class="why">${esc(offWhy)}</em>` : ''}` };
       });
       const title = `${esc(u.persona)} · SP ${u.sp}/${u.maxSp}${foe ? ` <span class="vs">vs <b>${esc(foe.name + L[foe.id])}</b>${foes.length > 1 ? ' <i>‹ ›</i>' : ''}</span>` : ''}`;
@@ -2796,7 +2841,7 @@
         html = `<div class="bt-pv"><img src="${per.art}" alt=""><div>
           <h2><small>Persona · ${esc(per.arcana)} · ${esc(u.name)}</small>${esc(per.name)}</h2>
           <div class="bt-affs">${D.affinityOrder.map(x => { const a = per.aff[x] || 'normal'; return `<span class="bt-aff ${a === 'normal' ? '' : a}">${ART.icon(x)}<em>${AFF_SHORT[a]}</em>${D.elements[x].name}</span>`; }).join('')}</div>
-          <ul class="bt-chips">${u.skills.map(s => `<li>${ART.icon(D.skills[s].el)}<span>${esc(D.skills[s].name)}</span></li>`).join('')}</ul>
+          <ul class="bt-chips">${u.skills.map(s => `<li>${skIcon(s)}<span>${esc(D.skills[s].name)}</span></li>`).join('')}</ul>
           <p class="note">${esc(per.blurb || '')}</p>
           ${statusLine(u)}
           <p class="note">St ${u.st} · Ma ${u.ma} · En ${u.en} · Ag ${u.ag} · Lu ${u.lu}</p></div></div>`;
@@ -2950,7 +2995,7 @@
       const rows = g.rows.filter(r => r.inP).map((r, i) => {
         const m = r.m, b = r.before.stats, a = r.after, pct = Math.round(r.exp / need(r.lvl) * 100);
         const gains = r.ups ? ['hp', 'sp', 'st', 'ma', 'en', 'ag', 'lu'].filter(k => a[k] > b[k]).map(k => `<span>${k.toUpperCase()} <b>+${a[k] - b[k]}</b></span>`).join('') : '';
-        const learned = r.ups ? E.skillsFor(m.id, save, r.lvl).filter(x => !E.skillsFor(m.id, save, r.before.lvl).includes(x)) : [];
+        const learned = r.ups ? E.skillsFor(m.id, save, r.lvl).filter(x => !E.skillsFor(m.id, save, r.before.lvl).includes(x) && !((save.forgot || {})[m.id] || []).includes(E.rootOf(x))) : [];
         const tired = run && run.tired && run.tired[m.id];
         return `<div class="bt-res-row${tired ? ' tired' : ''}" style="animation-delay:${0.15 + i * 0.08}s"><div class="pic fcb">${fimg(m.id, tired ? m.faces.ko : m.faces.win)}</div>
           <div><b>${esc(m.name)}<small>Lv ${r.lvl}</small></b>${r.ups ? '<span class="bt-lvup">LEVEL UP!</span>' : ''}${(o.nowTired || []).includes(m.id) ? '<span class="bt-tiredtag">TIRED</span>' : ''}
@@ -2968,7 +3013,7 @@
           <div class="bt-res-extra" style="margin-top:18px">${extra.join('')}</div>
           <div class="bt-res-btns">
             <button type="button" class="bt-btn pink" data-go="next"><span>${esc(o.back || 'Continue')}</span></button>
-            <button type="button" class="bt-btn" data-go="tree"><span>Haenim’s Tree</span><small>${save.pts} SP</small></button>
+            <button type="button" class="bt-btn" data-go="tree"><span>${BR ? 'Skills' : 'Haenim’s Tree'}</span><small>${save.pts} SP</small></button>
             ${BR ? '<button type="button" class="bt-btn" data-go="menu"><span>Menu</span><small>Party · Equipment</small></button>' : `<button type="button" class="bt-btn" data-go="party"><span>Party</span><small>${save.party.length + 1} / 4</small></button>
             <button type="button" class="bt-btn" data-go="equip"><span>Equip</span></button>`}
           </div></div>
@@ -2981,30 +3026,39 @@
 
   /* ════════════════════════════════════════════════════
      HAENIM'S SKILL TREE
+     Story fights: the field menu's Skills tab (menu.js) is the tree. Practice mode keeps this screen: the same tree and rules
+     (engine.js treeState / treeBuy), a free Refund all, and the party trees left to the story.
      ════════════════════════════════════════════════════ */
+  const treeCols = () => D.tree.map(b => ({ b, nodes: b.nodes.slice() })).concat([{ b: { id: 'center', name: 'Unveiled', world: 'The center', color: '#fff2b0', theme: 'Sunna · Mazu · Nike', blurb: 'All three keystones and a full moon cleared.' }, nodes: [D.treeCenter] }]);
   function treeScreen(onClose) {
+    if (BR) { fieldMenu('skills').then(() => { save = loadSaveFromBridge() || save; onClose(); }); return; }
     screen = 'tree';
     root.classList.remove('bt-in-battle');
     if (onClose === hub) music.play('title'); else music.play('floor');
+    const cols = treeCols();
     let bi = 0, ni = 0, just = null, formBusy = false;
+    const frags = () => E.fragSet(save);
+    const st = n => E.treeState(save, n.id, frags());
     // Start on the first node you can buy.
-    D.tree.some((b, x) => b.nodes.some((n, y) => { if (nodeState(n) === 'avail') { bi = x; ni = y; return true; } return false; }));
+    cols.some((c, x) => c.nodes.some((n, y) => { if (st(n) === 'avail') { bi = x; ni = y; return true; } return false; }));
+    const label = n => (st(n) === 'hidden' ? '? ? ?' : n.name);
     const render = () => {
       screen = 'tree';
       const fx = treeFx();
-      const node = D.tree[bi].nodes[ni], st = nodeState(node), afford = save.pts >= node.cost;
+      const node = cols[bi].nodes[ni], s0 = st(node), afford = save.pts >= node.cost, why = E.treeWhy(save, node.id, frags());
+      const btn = s0 === 'own' ? 'Unlocked' : s0 === 'avail' ? (afford ? `Unlock · ${node.cost} SP` : `Need ${node.cost} SP`) : s0 === 'taken' ? 'Not chosen' : s0 === 'hidden' ? 'A memory first' : 'Locked';
       const el = show(`${ART.defs()}<img class="bt-tree-art" src="${D.personas.haenim.art}" alt="">
         <div class="bt-tree-head"><button type="button" class="bt-tool" data-act="back"><span>‹ Back</span></button>
           <h1>HAENIM<small>해님 · Fool</small></h1>
           <div class="bt-pts"><span><small>Skill Points</small>${save.pts}</span></div></div>
-        <div class="bt-branches">${D.tree.map((b, x) => `<section class="bt-branch" style="--c:${b.color}" aria-label="${esc(b.name)} branch">
-          <div class="bt-branch-h">${ART.charm(b.id)}<div><b>${esc(b.name)}</b><span>${esc(b.world)} · ${esc(b.theme)}</span><span>${esc(b.blurb)}</span></div></div>
-          ${b.nodes.map((n, y) => `<button type="button" class="bt-node ${nodeState(n)}${x === bi && y === ni ? ' sel' : ''}${just === n.id ? ' just' : ''}" data-b="${x}" data-n="${y}"><span class="gem"></span><b>${esc(n.name)}</b><span class="cost">${nodeState(n) === 'own' ? '✓' : `${n.cost} SP`}</span></button>`).join('')}
+        <div class="bt-branches n6">${cols.map((c, x) => `<section class="bt-branch${c.b.id === 'center' ? ' center' : ''}" style="--c:${c.b.color}" aria-label="${esc(c.b.name)} branch">
+          <div class="bt-branch-h">${['bell', 'jade', 'star'].includes(c.b.id) ? ART.charm(c.b.id) : `<span class="bt-branch-glyph">${c.b.id === 'center' ? '☀' : c.b.id === 'veil' ? '◐' : '✺'}</span>`}<div><b>${esc(c.b.name)}</b><span>${esc(c.b.world)} · ${esc(c.b.theme)}</span></div></div>
+          ${c.nodes.map((n, y) => `<button type="button" class="bt-node ${st(n)}${n.keystone ? ' key' : ''}${n.memory ? ' mem' : ''}${n.choice ? ' choice' : ''}${x === bi && y === ni ? ' sel' : ''}${just === n.id ? ' just' : ''}" data-b="${x}" data-n="${y}"><span class="gem"></span><b>${esc(label(n))}</b><span class="cost">${st(n) === 'own' ? '✓' : `${n.cost} SP`}</span></button>`).join('')}
         </section>`).join('')}</div>
-        <div class="bt-tree-foot"><div><h3>${esc(node.name)}<small>${esc(D.tree[bi].name)} · ${esc(D.tree[bi].world)} · ${node.cost} SP</small></h3><p>${esc(node.desc)}${st === 'lock' ? ' <em>(Unlock the one above it first.)</em>' : ''}</p></div>
-          <div class="btns"><button type="button" class="bt-btn pink" data-act="buy"${st !== 'avail' || !afford ? ' disabled' : ''}><span>${st === 'own' ? 'Unlocked' : st === 'lock' ? 'Locked' : afford ? `Unlock · ${node.cost} SP` : `Need ${node.cost} SP`}</span></button>
-          <button type="button" class="bt-btn" data-act="refund"${save.nodes.length ? '' : ' disabled'}><span>Refund all</span></button></div>
-          <ul class="bt-chips bt-tree-skills"><li class="lbl"><span>Haenim knows</span></li>${solarSkills(fx).map(id => `<li>${ART.icon(D.skills[id].el)}<span>${esc(D.skills[id].name)}</span></li>`).join('')}</ul></div>`, 'bt-tree');
+        <div class="bt-tree-foot"><div><h3>${esc(label(node))}<small>${esc(cols[bi].b.name)} · ${esc(cols[bi].b.world)} · ${node.cost} SP${node.choice ? ' · choose one' : ''}${node.memory ? ' · memory' : ''}${node.keystone ? ' · keystone' : ''}</small></h3><p>${s0 === 'hidden' ? '' : esc(node.desc)}${why ? ` <em>${esc(why)}</em>` : ''}</p></div>
+          <div class="btns"><button type="button" class="bt-btn pink" data-act="buy"${s0 !== 'avail' || !afford ? ' disabled' : ''}><span>${btn}</span></button>
+          <button type="button" class="bt-btn" data-act="refund"${E.treeSpent(save) ? '' : ' disabled'}><span>Refund all</span><small>Practice: free</small></button></div>
+          <ul class="bt-chips bt-tree-skills"><li class="lbl"><span>Haenim knows</span></li>${solarSkills(fx).map(id => `<li>${skIcon(id)}<span>${esc(D.skills[id].name)}</span></li>`).join('')}</ul></div>`, 'bt-tree');
       el.querySelectorAll('.bt-node').forEach(b => {
         b.addEventListener('click', () => {
           const x = +b.dataset.b, y = +b.dataset.n;
@@ -3013,40 +3067,78 @@
       });
       el.querySelector('[data-act="back"]').addEventListener('click', close);
       el.querySelector('[data-act="buy"]').addEventListener('click', buy);
-      el.querySelector('[data-act="refund"]').addEventListener('click', () => {
-        D.tree.forEach(b => b.nodes.forEach(n => { if (save.nodes.includes(n.id)) save.pts += n.cost; }));
-        save.nodes = []; persist(); sfx('back'); just = null; render();
-      });
+      el.querySelector('[data-act="refund"]').addEventListener('click', () => { E.treeRespec(save); persist(); sfx('back'); just = null; mark('tree-refund'); render(); });
       ctl = {
         kind: 'tree',
         key(e) {
           const k = e.key;
-          if (k === 'ArrowLeft' || k === 'ArrowRight') { bi = (bi + (k === 'ArrowLeft' ? -1 : 1) + D.tree.length) % D.tree.length; ni = Math.min(ni, D.tree[bi].nodes.length - 1); sfx('move'); just = null; render(); return true; }
-          if (k === 'ArrowUp' || k === 'ArrowDown') { const L = D.tree[bi].nodes.length; ni = (ni + (k === 'ArrowUp' ? -1 : 1) + L) % L; sfx('move'); just = null; render(); return true; }
+          if (k === 'ArrowLeft' || k === 'ArrowRight') { bi = (bi + (k === 'ArrowLeft' ? -1 : 1) + cols.length) % cols.length; ni = Math.min(ni, cols[bi].nodes.length - 1); sfx('move'); just = null; render(); return true; }
+          if (k === 'ArrowUp' || k === 'ArrowDown') { const L = cols[bi].nodes.length; ni = (ni + (k === 'ArrowUp' ? -1 : 1) + L) % L; sfx('move'); just = null; render(); return true; }
           return false;
         },
         move() {}, pick: buy, back: close
       };
+      el.querySelector('.bt-node.sel')?.scrollIntoView?.({ block: 'nearest' });
       mark('tree');
     };
     function buy() {
       if (formBusy) return;
-      const n = D.tree[bi].nodes[ni];
-      if (nodeState(n) !== 'avail' || save.pts < n.cost) { sfx('back'); return; }
-      save.pts -= n.cost;
-      save.nodes.push(n.id);
+      const n = cols[bi].nodes[ni];
+      const r = E.treeBuy(save, n.id, frags());
+      if (!r.ok) { sfx('back'); return; }
       persist();
       sfx('unlock');
       just = n.id;
       mark('tree-buy');
-      const nx = D.tree[bi].nodes[ni + 1];
       render();
-      const got = checkForms();
-      if (got.length) { formBusy = true; ctl = null; (async () => { for (const f of got) await formUnlocked(f); formBusy = false; render(); })(); return; }
-      if (nx) setTimeout(() => { if (screen === 'tree' && just === n.id) { ni++; just = null; render(); } }, 650);
+      (async () => {
+        formBusy = true; ctl = null;
+        await resolvePending(['solar']);
+        if (r.form) await formUnlocked(r.form);
+        for (const f of checkForms()) await formUnlocked(f);
+        formBusy = false; render();
+      })();
     }
     function close() { if (formBusy) return; sfx('back'); ctl = null; onClose(); }
     render();
+  }
+  // The story's battle save after the field menu closed (it may have changed in the life sim).
+  const loadSaveFromBridge = () => { try { return fromRaw(BR.battleSave()); } catch (e) { return null; } };
+
+  /* ── Eight slots: the "forget which?" choice (P3). A member who has learned a ninth skill picks one to forget; picking the new
+     one means not learning it. A forgotten skill's line never comes back on its own. ── */
+  const pendingOf = mid => { try { return E.kitFor(mid, save).pending; } catch (e) { return []; } };
+  function forgetScreen(mid) {
+    return new Promise(resolve => {
+      const m = member(mid), kit = E.kitFor(mid, save), fresh = kit.pending[0];
+      if (!fresh) { resolve(null); return; }
+      const list = kit.slots.concat([fresh]);
+      let armed = null;
+      const prevScreen = screen;
+      screen = 'forget';
+      const render = () => {
+        const el = show(`<div class="bt-forget"><p class="bt-kicker">${esc(m.name)} · ${esc(perOf(mid).name)} · ${D.skillSlots} skill slots</p>
+          <h1>FORGET A SKILL?</h1>
+          <p class="bt-forget-lead">${esc(m.name)} wants to learn <b>${esc(D.skills[fresh].name)}</b>, but ${esc(perOf(mid).name)} already holds ${D.skillSlots}. Choose one to forget. A forgotten skill won’t come back by itself.</p>
+          <ul class="bt-forget-list">${list.map((id, j) => { const sk = D.skills[id]; return `<li><button type="button" class="bt-btn bt-forget-b${id === fresh ? ' new' : ''}${armed === id ? ' armed' : ''}" data-f="${id}"><span>${skIcon(id)}${esc(sk.name)}${id === fresh ? ' <em>NEW</em>' : ''}</span><small>${armed === id ? (id === fresh ? 'Press again: don’t learn it' : 'Press again to forget it') : esc(sk.desc || '')}</small></button></li>`; }).join('')}</ul></div>`, 'bt-tree bt-forgetscr');
+        el.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => {
+          const id = b.dataset.f;
+          if (armed !== id) { armed = id; sfx('move'); render(); ctlFocus(`[data-f="${id}"]`); return; }
+          E.forgetSkill(save, mid, id); persist(); sfx('back'); mark('forget'); mark('forget-' + id);
+          blogAdd(`${m.name} forgot ${D.skills[id].name}.`, 'sys');
+          screen = prevScreen; resolve(id);
+        }));
+        buttonNav(el, { start: Math.max(0, list.indexOf(armed || fresh)) });
+        mark('forget-screen');
+      };
+      render();
+    });
+  }
+  let resolving = false;
+  async function resolvePending(ids = D.party.filter(usable).map(m => m.id)) {
+    if (resolving) return;
+    resolving = true;
+    try { for (const id of ids) { let guard = 0; while (pendingOf(id).length && guard++ < 12) await forgetScreen(id); } } finally { resolving = false; }
   }
 
   /* ════════════════════════════════════════════════════
@@ -3056,9 +3148,9 @@
   const affRow = aff => `<div class="bt-affs">${D.affinityOrder.map(x => { const a = aff[x] || 'normal'; return `<span class="bt-aff ${a === 'normal' ? '' : a}">${ART.icon(x)}<em>${AFF_SHORT[a]}</em>${D.elements[x].name}</span>`; }).join('')}</div>`;
   const formLock = f => {
     const u = D.personas[f].unlock || {};
-    if (u.branch) { const b = D.tree.find(x => x.id === u.branch); return `Master the ${b.name} branch (${b.world})`; }
-    if (u.branches) return 'Master all three branches and clear a full moon';
-    return '';
+    if (u.node === 'unveiled') return 'All three keystones and a full moon cleared';
+    const b = D.tree.find(x => x.nodes.some(n => n.id === u.node));
+    return b ? `The ${b.name} branch’s keystone (${b.world})` : '';
   };
   function personaScreen(onClose, start = 0) {
     if (BR) { fieldMenu('personas').then(onClose); return; }
@@ -3075,9 +3167,9 @@
       const p = id === 'haenim' ? perOf('solar') : evolved ? D.personas[base.evolves] : base;
       const ev = base.evolves && D.personas[base.evolves];
       const inParty = roster().some(m => m.persona === id) || id === 'haenim';
-      const skills = member(base.user) ? E.skillsFor(base.user, save) : [];
+      const skills = member(base.user) ? (base.user === 'solar' ? solarSkills() : E.kitFor(base.user, save).slots) : [];
       const evoWhen = base.evolve ? (base.evolve.lvl ? `at Lv ${base.evolve.lvl}` : `after ${D.ops.find(o => o.id === base.evolve.op).name}`) : '';
-      const formsHtml = id === 'haenim' ? `<div class="bt-forms"><p class="bt-forms-h">Forms <em>Prototype preview</em><span>In the full game these are route endings. Here, mastering a branch of Haenim’s tree unlocks one.</span></p>
+      const formsHtml = id === 'haenim' ? `<div class="bt-forms"><p class="bt-forms-h">Forms <em>Prototype preview</em><span>In the full game these are route endings. Here, a keystone on Haenim’s tree unlocks one.</span></p>
         <div class="bt-forms-row">${forms.map((f, j) => {
           const fp = D.personas[f], ok = E.formUnlocked(save, f), on = (save.form || 'haenim') === f;
           return `<button type="button" class="bt-form${ok ? '' : ' lock'}${on ? ' on' : ''}${j === fi ? ' sel' : ''}" data-form="${f}" style="--c:${fp.color || '#ff4f9e'}"><img src="${fp.art}" alt=""><b>${esc(fp.name)}</b><small>${ok ? esc(fp.theme || 'Base form') : esc(formLock(f))}</small>${on ? '<i>IN USE</i>' : ''}</button>`;
@@ -3087,7 +3179,7 @@
           <div class="bt-pv-art"><img src="${p.art}" alt="${esc(p.name)}"></div>
           <div class="bt-card-lg"><h2><small>${esc(p.arcana)} · ${esc(userName(p.user))}${inParty ? ' · in the party' : ''}</small>${esc(p.name)}${p.ko ? ` <span style="color:var(--gold);font-size:.6em">${esc(p.ko)}</span>` : ''}</h2>
             ${affRow(p.aff)}
-            ${skills.length ? `<ul class="bt-chips">${skills.map(s => `<li>${ART.icon(D.skills[s].el)}<span>${esc(D.skills[s].name)}</span></li>`).join('')}</ul>` : ''}
+            ${skills.length ? `<ul class="bt-chips">${skills.map(s => `<li>${skIcon(s)}<span>${esc(D.skills[s].name)}</span></li>`).join('')}</ul>` : ''}
             <p class="note">${esc(p.blurb || '')}</p>
             ${p.lean ? `<p class="note">Stat lean: ${Object.entries(p.lean).map(([k, v]) => `${k.toUpperCase()} +${v}`).join(' · ')}${p.sig ? ` · Signature: <b>${esc(D.skills[p.sig].name)}</b>` : ''}</p>` : ''}
             ${ev && !evolved ? `<div class="bt-evo"><img src="${ev.art}" alt=""><p><b>Evolves into ${esc(ev.name)} ${esc(evoWhen)}</b>${esc(ev.blurb || '')}</p></div>` : ''}
@@ -3167,7 +3259,7 @@
       root.classList.remove('bt-in-battle');
       const el = show(`<div class="bt-evx-rays"></div><img class="bt-evx-new" src="${p.art}" alt="" style="opacity:1;transform:none"><div class="bt-evx-txt" style="opacity:1">
           <p class="bt-kicker">New form · prototype preview</p><h1>${esc(p.name.toUpperCase())}</h1><p class="sub">${esc(p.blurb)}</p>
-          <ul class="bt-chips"><li><span>${esc(p.theme)}</span></li>${p.sig ? `<li>${ART.icon(D.skills[p.sig].el)}<span>${esc(D.skills[p.sig].name)}</span></li>` : ''}</ul>
+          <ul class="bt-chips"><li><span>${esc(p.theme)}</span></li>${p.sig ? `<li>${skIcon(p.sig)}<span>${esc(D.skills[p.sig].name)}</span></li>` : ''}</ul>
           <div class="row"><button type="button" class="bt-btn pink" data-v="use"><span>Use this form</span></button><button type="button" class="bt-btn" data-v="later"><span>Later</span></button></div></div>`, 'bt-evx named form');
       sfx('unlock'); mark('form-unlocked'); mark('form-unlocked-' + f);
       tip('forms');
@@ -3586,6 +3678,9 @@
     save.ops.cleared = (R.bossesCleared || []).filter(id => D.ops.some(o => o.id === id));
     // Fragments Solar found in the life sim feed Haenim's tree here too (a skill point each, once).
     (R.fragments || []).forEach(f => { if (D.memories.some(m => m.id === f) && !save.memories.includes(f)) { save.memories.push(f); save.pts += D.progression.memoryPoints; } });
+    // Link ranks open the party trees' tiers and, at MAX, evolve a signature skill (engine.js linkRank).
+    const ranks = (R.social && R.social.ranks) || null;
+    if (ranks) D.party.forEach(m => { if (m.id !== 'solar' && ranks[m.id] != null) save.ranks[m.id] = Math.min(10, +ranks[m.id] || 0); });
     delete save.forceForm;
     if (save.reached) { const i = D.floors.findIndex(f => f.id === save.reached); if (i < 0 || D.floors[i].bi > hoBlockCap()) save.reached = null; }
     E.formsList().forEach(f => { if (!save.forms.includes(f) && E.formUnlocked(Object.assign({}, save, { forms: [] }), f)) save.forms.push(f); });
@@ -3608,7 +3703,7 @@
           ${cont ? `<button type="button" class="bt-btn pink" data-go="cont"><span>Continue from ${esc(cont.label)}</span><small>Access point · ${esc(cont.block)}</small></button>` : ''}
           <button type="button" class="bt-btn${cont ? '' : ' pink'}" data-go="run"><span>${start.fi === 0 && start.bi === 0 ? 'Enter Tartarus' : `Enter at ${esc(start.label)}`}</span><small>${esc(start.block)} · open up to ${esc(top.label)}</small></button>
           <button type="button" class="bt-btn bt-menu-btn" data-go="menu"><span>Menu</span><small>${mates ? `Party ${save.party.length + 1}/4 · ` : ''}Personas · Equipment · Items</small></button>
-          <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="tree"><span>Haenim’s Tree</span><small>${save.pts} SP</small></button><button type="button" class="bt-btn" data-go="dorm"><span>Return to the dorm</span><small>Not tonight</small></button></div>
+          <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="tree"><span>Skills</span><small>Haenim · ${save.pts} SP</small></button><button type="button" class="bt-btn" data-go="dorm"><span>Return to the dorm</span><small>Not tonight</small></button></div>
         </div>
         <p class="bt-hub-hint">${esc(NAVI.name)} is navigating. ${R.condition === 'tired' || R.condition === 'sick' ? 'Solar is already tired; she’ll fight below her best tonight.' : 'Climb as far as you like, then leave at an access point.'}</p>
       </div>
@@ -3869,7 +3964,7 @@
   /* ── Boot ─────────────────────────────────────────── */
   window.FemcBattle = {
     get B() { return B; }, get save() { return save; }, get run() { return run; }, get ctl() { return ctl; },
-    get settings() { return save.settings; }, get blog() { return blog; }, get rushOn() { return rushActive(); }, get paused() { return paused; },
+    get settings() { return save.settings; }, get blog() { return blog; }, get rushOn() { return rushActive(); }, get paused() { return paused; }, get frozen() { return frozen; },
     openSettings: k => openSettings(k), openHelp: t => openHelp(t), openLog, toggleRush, exportCode, parseCode, diff,
     screen: () => screen, marks, freeze() { frozen = true; if (FX) FX.pause(); }, unfreeze() { frozen = false; if (FX) FX.resume(); },
     awakening: () => awakening(app.firstElementChild || app),
