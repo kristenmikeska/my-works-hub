@@ -78,7 +78,7 @@ Batches, in order, after the story/character pass:
     - daily life: stat boosts, shop discounts, job pay, extra time
     - a skill or passive for Solar at MAX
 
-    Kat's examples: Minji r3 Crosshair Sync, r8 Behind the Lens; Haechan r2 Cut the Fluff, r7 Bait and Punish. ✓ Built 2026-10-20 (193 perks; 12 wait on unbuilt systems, listed at the end of `FEMC-LINK-PERKS.md`). Romance battle and Tartarus dialogue: not yet.
+    Kat's examples: Minji r3 Crosshair Sync, r8 Behind the Lens; Haechan r2 Cut the Fluff, r7 Bait and Punish. ✓ Built 2026-10-20 (193 perks; 12 wait on unbuilt systems, listed at the end of `FEMC-LINK-PERKS.md`). Romance battle dialogue: built 2026-10-21 (battle banter on the romance route); Tartarus dialogue: not yet.
   - ✓ Buffs stack to a limit (3 levels).
   - ✓ Smarter Rush (heals when needed, rebuffs, hits weaknesses, uses Theurgy).
   - ✓ Remove the post-battle All-Out flashes.
@@ -113,7 +113,7 @@ Batches, in order, after the story/character pass:
 - **Skipped:** the Shinjiro close-up (05_05_25 PM). Kat is regenerating it with an Evoker.
 
 ## 8. More building and skilling (Kat, 2026-10-20)
-Kat loves the skill tree and wants much more building. **Built 2026-10-20:** Revelation cards (menu → Cards), Shuffle Time, the link perks (menu → Bonds) and the naginatas, all in `assets/femc/battle/build.js`; `tests/femc_building.py` plays them. Not built yet: bond skills (joint skills), Velvet Room draws, the five social stats.
+Kat loves the skill tree and wants much more building. **Built 2026-10-20:** Revelation cards (menu → Cards), Shuffle Time, the link perks (menu → Bonds) and the naginatas, all in `assets/femc/battle/build.js`; `tests/femc_building.py` plays them. Bond skills, signature skills and battle lines were built 2026-10-21 (see the overnight queue below). Not built yet: Velvet Room draws, the five social stats.
 - **Revelation-style cards (P5X):** each fighter equips a set of cards. Each card has a main stat and random substats; matching sets give bonuses. Cards level and refine with materials. Sets are themed on Solar's worlds and the arcana.
 - **Shuffle Time, P3P-style:** after some fights the cards spin and you pick one.
   - Cups heal, Coins give yen, Swords give weapons, Wands give EXP.
@@ -179,7 +179,11 @@ Moods live in `assets/femc/game/data/places.js` (`music`, `screens`, `worldMusic
 
 ### Overnight queue (2026-10-20, Kat asleep)
 1. Theurgy presentation and art: running.
-2. **Next:** bond skills (Solar plus a partner, unlocked by link rank; special ones for romances), more unique skills and effects per fighter, and situational and romance battle lines. Bond cut-in art doesn't exist yet, so build a portrait-based fallback with an art hook.
+2. ✅ **Built 2026-10-21:** bond skills (Solar plus a partner, unlocked by link rank; special ones for romances), more unique skills and effects per fighter, and situational and romance battle lines. Bond cut-in art doesn't exist yet, so there's a portrait-based fallback with an art hook.
+   - **Bond skills** (`assets/femc/battle/bonds.js`, rules in `engine.js` bondInfo / bondAct, menu and cut-in in `battle.js`): one for each fighter's link with Solar: Akihiko, Shinjiro (until 10/3), Haechan, Jungwon, Jihoon, Minji (romances) and Yukari, Junpei, Mitsuru, Aigis, Ken, Koromaru (friendships). Rank 5 opens the first version, rank 9 the upgrade; a romance on its romance route gets its own special version at rank 9 instead. The battle menu's **Bond** works on Solar's turn or the partner's, when both are in the party and able to act. Both pay the SP, both use their turn (the other one rests next turn), once per battle each. A reversed link pauses it. Rush starts one on its own for a boss, a crowd or a long fight. Menu → Bonds lists them with their ranks. Duo Cohesion stays Minji's separate perk.
+   - **Signature skills:** every fighter's tree has a third tier-2 node (link rank 4) with their own skill, icon and effect: Corkscrew Thunder, Gale Arrow, Fastball, Glacial Flèche, Missile Salvo, Lance of Justice, Three Heads, Haymaker, Moonlit Static, Black Tortoise, Goblin Fire, Focus Pull. The searchers' first ones (Waning Moon, Serpent Coil, Goblin Club, Clear Sight) got their own icons and effects too.
+   - **Battle lines:** each fighter now speaks up when an ally is down or low, Solar is hurt, they hit a weakness, they're knocked down, a boss appears, they win, and their Theurgy is ready (speech bubbles over the cards, and in the log). Romance pair lines (their line and Solar's reply) replace the plain ones on the romance route, from rank 6 (more at 9).
+   - Test: `python3 tests/femc_bonds.py`.
 3. **Then:** batch B polish:
    - animated text send/receive with a sound
    - read all

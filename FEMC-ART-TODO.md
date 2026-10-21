@@ -146,6 +146,10 @@ Create a NEW 16:9 combo-attack cut-in matching the FIRST attached image's art st
 - [ ] **Shinjiro:** axe; dark red force; a single gruff nod, the weapons crossing
 - [ ] *(Optional)* Yukari, Junpei, Mitsuru, Aigis, Ken, Koromaru
 
+**Status (2026-10-21):** the bond skills are in the game with a stylized cut-in made from both portraits and Personas, so nothing waits on this art. The romance versions (on that route) can have their own art too.
+
+**For Claude: how bond art goes in.** The same pieces as a Theurgy (the steps above), in `assets/femc/battle/bonds.js`: on a bond (or one version of it, `tiers[i]` or `love`), add `img` with `focus: [x%, y%]`, `sheet: { frames: [three files] }` or `layers: { bg, persona, char }`. Cut it with `tools/femc-theurgy.py` (a bond still is a `cutin`; a 3-step combo sheet is a `sheet`). Bump `ART_V` in `battle.js` and the `bonds.js ?v=` in both pages, then run `python3 tests/femc_bonds.py --only art,shots`.
+
 ---
 
 ## 5. Weapon sheets for the other fighters
