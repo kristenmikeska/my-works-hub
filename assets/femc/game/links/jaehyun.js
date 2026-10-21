@@ -26,7 +26,7 @@
    Fragment: runners-stadium (rank 3, plot doc §8 R6). Arcana: '?' (open question, plot doc §16.6). He never closes (searchers
    go home on 1/30 in the story), so afterMax plays in person from 1/25 and never as traces. */
 (window.FEMC_GAME_LINKS ||= []).push({
-  id: 'jaehyun', name: 'Jaehyun Lee', short: 'Jaehyun', arcana: '?', numeral: '', from: 'Runners',
+  id: 'jaehyun', name: 'Jaehyun Lee', short: 'Jaehyun', arcana: 'Emperor', numeral: '', from: 'Runners',
   kind: 'searcher', world: 'R', romance: null,
   starts: '10/24', gate: { R: 5 },
   home: { area: 'shrine', spot: 'The Steps', slot: 'after', days: [1, 2, 4, 5, 6],

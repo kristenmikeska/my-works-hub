@@ -19,7 +19,7 @@
    Jihoon has relapsed (named, never shown). Nothing here reports news from home the book hasn't printed.
    Texting voice: lowercase, "!!!", "omg", ":(". Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
-  id: 'junkyu', name: 'Kim Junkyu', short: 'Junkyu', arcana: '?', numeral: '', from: 'Hoax',
+  id: 'junkyu', name: 'Kim Junkyu', short: 'Junkyu', arcana: 'Fool', numeral: '', from: 'Hoax',
   kind: 'searcher', world: 'H', romance: null,
   starts: '10/31', gate: { H: 5 },
   home: { area: 'mall', spot: 'Arcade', slot: 'evening', days: [0, 2, 5, 6],

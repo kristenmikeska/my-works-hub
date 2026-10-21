@@ -19,7 +19,7 @@
    the bake sale, whose equation hunt Sunoo and Jake ran; Cherry is seeing Sunghoon. Sunoo's friends live at the Kirijo guesthouse.
    Texting voice: sunooshine, lowercase, "!!!", "dw", ":)". Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
-  id: 'sunoo', name: 'Kim Sunoo', short: 'Sunoo', arcana: '?', numeral: '', from: 'Hoax',
+  id: 'sunoo', name: 'Kim Sunoo', short: 'Sunoo', arcana: 'Sun', numeral: '', from: 'Hoax',
   kind: 'searcher', world: 'H', romance: null,
   starts: '11/7', gate: { H: 6 },
   home: { area: 'strip', spot: "Yeobo's Cafe", slot: 'after', days: [0, 2, 4, 6],

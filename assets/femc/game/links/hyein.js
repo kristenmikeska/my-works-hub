@@ -20,7 +20,7 @@
    rank 2 notices Akihiko (and, before 10/4, Shinjiro) by their link ranks; rank 6 nearly tells a Halloween secret and stops.
    Texting voice: lowercase, caps when excited, ur, ltrly, fr, ofc. Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
-  id: 'hyein', name: 'Hyein Lee', short: 'Hyein', arcana: '?', numeral: '', from: 'Runners',
+  id: 'hyein', name: 'Hyein Lee', short: 'Hyein', arcana: 'Lovers', numeral: '', from: 'Runners',
   kind: 'searcher', world: 'R', romance: null,
   starts: '9/12', gate: { R: 3 },
   home: { area: 'mall', spot: 'Shop Windows', slot: 'after', days: [0, 2, 4, 6],

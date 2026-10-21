@@ -12,7 +12,7 @@
    lady). Haechan lives at the dorm (r7 meets him on its steps).
    Arcana: '?' (open question for Kat, plot doc §16.6). afterMax and christmas use v1's field shapes. */
 (window.FEMC_GAME_LINKS ||= []).push({
-  id: 'minji', name: 'Minji Kim', short: 'Minji', arcana: '?', numeral: '', from: 'Runners',
+  id: 'minji', name: 'Minji Kim', short: 'Minji', arcana: 'Moon', numeral: '', from: 'Runners',
   kind: 'searcher', world: 'R', romance: 'canon',
   starts: '9/26', gate: { R: 4 },
   home: { area: 'port', spot: 'Seaside Park', slot: 'after', days: [0, 2, 4, 6],

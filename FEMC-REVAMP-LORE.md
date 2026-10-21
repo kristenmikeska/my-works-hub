@@ -202,7 +202,7 @@ Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve th
 - **Jihoon → Dokkaebi.** The Korean goblin: a loud, laughing trickster with a club. Mean if you cross him, loyal if you don't. Wind.
 - **Minji → Theia.** The Greek titaness of sight and shining light, "the one who sees". Light; bow.
 
-**Proposed searcher arcana (awaiting Kat's OK):**
+**Searcher arcana (approved by Kat, 2026-10-20):**
 - Jihoon: Hunger
 - Minji: Moon
 - Jaehyun: Emperor

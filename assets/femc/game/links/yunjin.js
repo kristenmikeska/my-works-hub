@@ -31,7 +31,7 @@
    who, or anything about the war: grief and the voice are felt, never explained.
    Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
-  id: 'yunjin', name: 'Huh Yunjin', short: 'Yunjin', arcana: '?', numeral: '', from: 'strangers',
+  id: 'yunjin', name: 'Huh Yunjin', short: 'Yunjin', arcana: 'Judgement', numeral: '', from: 'strangers',
   kind: 'searcher', world: 'S', romance: null,
   starts: '10/10', gate: { S: 3 },
   home: { area: 'port', spot: 'Harbor', slot: 'after', days: [0, 1, 3, 5],

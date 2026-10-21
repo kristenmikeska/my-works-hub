@@ -27,7 +27,7 @@
    Haechan now lives in the dorm (r7). Hanni never hands it over: r8 she stops Hyein mid-sentence; r9 she took Hyein's
    "make him ask her home" speech away. r3 notices Akihiko (gated on his rank). Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
-  id: 'hanni', name: 'Hanni Pham', short: 'Hanni', arcana: '?', numeral: '', from: 'Runners',
+  id: 'hanni', name: 'Hanni Pham', short: 'Hanni', arcana: 'Councillor', numeral: '', from: 'Runners',
   kind: 'searcher', world: 'R', romance: null,
   starts: '9/12', gate: { R: 3 },
   home: { area: 'mall', spot: 'Chagall Café', slot: 'after', days: [0, 1, 3, 5],

@@ -27,7 +27,7 @@
    mark-away. Each of those scenes sets them itself at the top, so they never depend on another file.
    Rank 10 opens on 1/18, leaving six available evenings for all six after-MAX scenes before the finale. */
 (window.FEMC_GAME_LINKS ||= []).push({
-  id: 'mark', name: 'Mark Lee', short: 'Mark', arcana: '?', numeral: '', from: 'Runners',
+  id: 'mark', name: 'Mark Lee', short: 'Mark', arcana: 'Magician', numeral: '', from: 'Runners',
   kind: 'searcher', world: 'R', romance: null,
   starts: '11/18', gate: { R: 7 },
   home: { area: 'portisland', spot: 'Central Concourse', slot: 'evening', days: [1, 3, 5, 6],

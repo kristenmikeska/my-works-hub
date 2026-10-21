@@ -21,7 +21,7 @@
    Curses kept sparing (Kat's ruling) but in her voice. Texting voice: lowercase, "ur", "fking", "ltrly", "abt".
    Arcana: '?' (open question, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
-  id: 'cherry', name: 'Cherry', short: 'Cherry', arcana: '?', numeral: '', from: 'Hoax',
+  id: 'cherry', name: 'Cherry', short: 'Cherry', arcana: 'Chariot', numeral: '', from: 'Hoax',
   kind: 'searcher', world: 'H', romance: null,
   starts: '11/14', gate: { H: 7 },
   home: { area: 'strip', spot: 'Wild-Duck Burger', slot: 'after', days: [0, 1, 3, 5, 6],

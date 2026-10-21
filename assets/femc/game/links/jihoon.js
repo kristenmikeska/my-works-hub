@@ -12,7 +12,7 @@
    Texting voice: lowercase with Capitalized Random Words, hashtags (#brocken), "Skank" / "ungrateful rug" as affection.
    Arcana: the stub has '?' (searcher arcana are an open question for Kat, plot doc §16.6). */
 (window.FEMC_GAME_LINKS ||= []).push({
-  id: 'jihoon', name: 'Park Jihoon', short: 'Jihoon', arcana: '?', numeral: '', from: 'Hoax',
+  id: 'jihoon', name: 'Park Jihoon', short: 'Jihoon', arcana: 'Hunger', numeral: '', from: 'Hoax',
   kind: 'searcher', world: 'H', romance: 'canon',
   starts: '9/19', gate: { H: 3 },
   home: { area: 'mall', spot: 'Game Panic', slot: 'after', days: [0, 1, 3, 5, 6],
