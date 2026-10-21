@@ -5,6 +5,8 @@ The current game is preserved as `femc-v1` (git tag + branch, zip in Documents/F
 
 ---
 
+**The name (Kat, 2026-10-21): *Persona 3: Solstice*,** tagline *Every Universe*. The logo (`assets/femc/title/solstice-logo.svg`) is P3R-style: a small tracked PERSONA 3, a wide slanted SOLSTICE in FeMC pink, and an O that is half sun, half moon. Haenim is the sun; the solstice is the longest night turning back to the sun.
+
 **Key art / title screen:** `Background Images/screen.png` (in the site at `assets/femc/title/keyart.webp`).
 
 ## The premise

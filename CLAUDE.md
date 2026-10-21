@@ -15,7 +15,7 @@ Kat's fiction archive (13 worlds) plus FEMC mode, a Persona 3 Portable FeMC-styl
 
 ## The two FEMC games
 - **v1 (finished, backed up):** `social.html` and `femc-social.js`, save key `kg-femc-game`. Backups are tag `femc-v1` and branch `femc-v1-backup`. Don't break Kat's v1 save.
-- **The revamp:**
+- **The revamp: *Persona 3: Solstice*** (Kat's name, 2026-10-21; tagline *Every Universe*). Code ids, file names and save keys still say femc / revamp; don't rename them.
   - **Life sim:** `femc-game.html` and `assets/femc/game/`, save key `kg-femc-revamp`.
     - The engine lives in `core.js`; its header documents the link format. Scene lines are in `scene.js`, and the UI is in `ui.js`.
     - Data is in `data/`: the calendar, the story acts, endings, jobs and texts, with links under `data/links/*.js`. A written link file overrides its entry in `stubs.js`.
@@ -126,6 +126,8 @@ Art is in `art/theurgy/` and `art/summon/solar-evoke-*`, made with `tools/femc-t
 - *Content:* `data/living-haechan-nights.js` (12 late nights, 6 run-ins), `-days.js` (16 routines), `-texts.js` (afterRank 2/4/6/7/9/10 with variants, 12 ambient and event-reaction texts, holidays 12/23, 12/31, 1/1, 1/11). Story edits in story-act4/5/6 and story-endings (three hidden choices, the solstice's lock, one new route-only event, the Hoax ending renamed "the unfated life"; old clears show the new name). Written by three parallel writers to one brief, integrated and checked here.
 - `python3 tests/femc_haechan.py` (ranks on their dates and through the UI, migration via code/slot, perks/Christmas/bonds/handoff/afterRank, heading, the solstice on every route including each missing secret-road piece, the hidden choices, endings and the end screen, ~2,800 scene paths on every heading and both of his routes, faces and backgrounds, a simulated year of routines, every late night reachable). femc_living.py and femc_living2.py walkers also play every heading for scenes that use `ifHeading`. femc_living.py's ambient check now meets a text's `route` / `rank` gates; femc_cast_consistency.py checks story ranks via `dueEvent`. Run this batch: femc_haechan, femc_living, femc_living2, femc_links, femc_continuity, femc_saves, femc_cast_consistency all pass. HTML: core v16, ui v14, story-act4 v13, story-act5 v10, story-act6 v6, story-endings v7, haechan v6; new living-haechan-nights/days/texts (v1).
 
+**Title logo: built (2026-10-21).** `assets/femc/title/solstice-logo.svg` is the logo (stroked-path letters, so crisp at any size; light backgrounds by default, class `sl-dark` for dark; colours are its `--sl-*` properties). `ui.js putLogo` fetches and inlines it on the title screen in the dark variant (a text title if it can't load); `game.css` `.g-logo` wipes it in and makes the sun-moon O pop and shimmer (glow, rays, a glint), all off under reduced motion. `solstice-icon.svg` is the favicon on femc-game.html and femc-battle.html. Page titles: "Persona 3: Solstice" and "Tartarus Practice · Persona 3: Solstice"; the end credits use the name too. HTML: game.css v11, ui v15.
+
 **Next:** the rest of batch A in section 7 of `FEMC-REVAMP-ROADMAP.md` (remaining New Adds art), and roadmap batch D.
 
 ## Roadmap after the current art pivot
@@ -147,7 +149,7 @@ Art is in `art/theurgy/` and `art/summon/solar-evoke-*`, made with `tools/femc-t
 
    Her feedback so far: other characters should get upgraded skills, the skill list is too long and overwhelming, and the tree needs more depth.
 3. **Friend-link expansion: complete locally.** Preserve these completed files when merging the combined-game worktree. Keep Mark's rank 9 line exactly as written; Kat approved it.
-4. Later: arcana for the searchers besides Haechan and Jungwon (links may share arcana; new arcana or alternate tarot art may come later), wiring in new art as Kat makes it, and the title logo once the revamp has a name.
+4. Later: arcana for the searchers besides Haechan and Jungwon (links may share arcana; new arcana or alternate tarot art may come later), wiring in new art as Kat makes it, and new art as it comes. (The name and title logo are done; see "Title logo" above.)
 
 ## Working with Kat
 She's the author, a communications professional, and P3P is her favorite game (Akihiko is her favorite character). She sends art as files in Downloads or in her image folders, and expects it cut, cleaned and wired in, with every face checked in the game. She likes being asked about design (skills, mechanics, lore) and surprised by story. Keep replies short and plain.

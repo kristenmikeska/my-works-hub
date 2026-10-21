@@ -67,5 +67,5 @@ Other docs, if you ever want detail:
 - ✅ Often-seen lines (mornings, lunch, bedtime, studying, every activity) have many more versions and don't repeat back to back
 
 ## Later
-- ⬜ The revamp's name and title logo
+- ✅ The revamp's name (**Persona 3: Solstice**) and title logo
 - ⬜ The big push to the live site (everything is saved locally)

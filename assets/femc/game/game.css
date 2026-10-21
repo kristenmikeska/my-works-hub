@@ -83,9 +83,24 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
 .g-title { position: relative; height: 100%; min-height: 100%; overflow: hidden; background: #fd64a8; }
 .g-title::before { content: ""; position: absolute; z-index: 1; left: -14%; top: -20%; width: 62%; height: 140%; background: #14070f; transform: skewX(-14deg); animation: g-band .75s .1s cubic-bezier(.2, 1, .3, 1) both; }
 .g-title-art { position: absolute; right: 0; bottom: 0; height: 100%; width: 70%; object-fit: cover; object-position: 30% 20%; -webkit-mask-image: linear-gradient(to right, transparent, #000 22%); mask-image: linear-gradient(to right, transparent, #000 22%); animation: g-in 1s .2s both; }
-.g-title-copy { position: absolute; z-index: 2; left: 6vw; top: 50%; max-width: min(44vw, 560px); transform: translateY(-50%); }
-.g-title h1 { margin: 0 0 26px; font: italic 900 clamp(70px, 12vw, 170px)/.82 var(--cond); letter-spacing: -.03em; transform: skewX(-10deg); text-shadow: .06em .06em 0 var(--pink); animation: g-slam .6s .4s cubic-bezier(.2, 1.4, .4, 1) both; }
-.g-title h1 small { display: block; margin-top: 16px; color: var(--pink-2); font-size: clamp(15px, 1.7vw, 24px); letter-spacing: .1em; text-shadow: none; }
+.g-title-copy { position: absolute; z-index: 2; left: 6vw; top: 50%; width: min(42vw, 560px); max-width: min(44vw, 560px); transform: translateY(-50%); }
+/* The Persona 3: Solstice logo (ui.js putLogo inlines assets/femc/title/solstice-logo.svg in its dark variant). It wipes in
+   from the left, then the sun-moon O pops in and keeps a slow shimmer (a glow that breathes, a glint across it). Reduced
+   motion: the .g-title * rule below stops all of it, and the glint rests out of sight. Without the SVG: a text title. */
+.g-logo { position: relative; margin: 0 0 clamp(14px, 3.4vh, 28px); width: 100%; aspect-ratio: 1116 / 252; }
+.g-logo.is-text { aspect-ratio: auto; }
+.g-logo svg { display: block; width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 6px 18px rgba(0, 0, 0, .55)); animation: g-logo-wipe .85s .3s cubic-bezier(.2, 1, .3, 1) both; }
+.g-logo-text { display: none; }
+.g-logo.is-text .g-logo-text { display: block; font: italic 900 clamp(54px, 9vw, 120px)/.82 var(--cond); letter-spacing: .04em; text-transform: uppercase; transform: skewX(-10deg); text-shadow: .06em .06em 0 var(--pink); animation: g-slam .6s .4s cubic-bezier(.2, 1.4, .4, 1) both; }
+.g-logo.is-text .g-logo-text small { display: block; margin-top: 14px; color: var(--pink-2); font-size: clamp(14px, 1.6vw, 20px); letter-spacing: .2em; text-shadow: none; }
+.g-logo .sl-o { transform-box: fill-box; transform-origin: center; animation: g-logo-o .7s 1s cubic-bezier(.2, 1.5, .4, 1) both, g-logo-glow 3.4s 1.7s ease-in-out infinite alternate; }
+.g-logo .sl-rays { animation: g-logo-rays 3.4s 1.7s ease-in-out infinite alternate; }
+.g-logo .sl-shine { transform: translateX(-70px); animation: g-logo-shine 5.2s 1.9s ease-in-out infinite; }
+@keyframes g-logo-wipe { from { opacity: 0; clip-path: inset(-20% 100% -20% -20%); transform: translateX(-34px); } 25% { opacity: 1; } to { clip-path: inset(-20% -20% -20% -20%); } }
+@keyframes g-logo-o { from { opacity: 0; transform: scale(.35) rotate(-120deg); } }
+@keyframes g-logo-glow { from { filter: drop-shadow(0 0 1px rgba(255, 211, 107, .25)); } to { filter: drop-shadow(0 0 12px rgba(255, 211, 107, .8)) drop-shadow(0 0 4px rgba(223, 227, 255, .6)); } }
+@keyframes g-logo-rays { to { opacity: .5; } }
+@keyframes g-logo-shine { 0% { transform: translateX(-70px); } 34%, 100% { transform: translateX(210px); } }
 .g-title-menu { display: grid; justify-items: start; gap: 10px; }
 .g-title-menu button { position: relative; min-width: min(300px, 70vw); padding: 11px 44px 11px 18px; border: 0; background: rgba(255, 255, 255, .08); color: #fff; font: italic 800 22px/1 var(--cond); text-align: left; text-transform: uppercase; letter-spacing: .05em; transform: skewX(-14deg); animation: g-item .45s cubic-bezier(.2, 1.2, .4, 1) both; }
 .g-title-menu button:nth-child(2) { animation-delay: .08s; } .g-title-menu button:nth-child(3) { animation-delay: .16s; } .g-title-menu button:nth-child(4) { animation-delay: .24s; }
@@ -491,7 +506,7 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
   .g-toasts { top: 120px; }
   .g-title::before { width: 130%; left: -30%; opacity: .78; }
   .g-title-art { width: 100%; opacity: .7; -webkit-mask-image: none; mask-image: none; }
-  .g-title-copy { left: 16px; right: 16px; max-width: none; top: auto; bottom: 7vh; transform: none; }
+  .g-title-copy { left: 16px; right: 16px; width: auto; max-width: none; top: auto; bottom: 7vh; transform: none; }
   .g-st-solar { grid-template-columns: 96px minmax(0, 1fr); }
   .g-st-name { font-size: 32px; }
   .g-dc-band { height: 38vh; }

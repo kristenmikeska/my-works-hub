@@ -640,6 +640,21 @@
   }
 
   /* ── Title ── */
+  /* The logo (assets/femc/title/solstice-logo.svg) is inlined so game.css can switch it to its dark variant (class sl-dark)
+     and animate its parts: the wipe in, the sun-moon O's shimmer. Fetched once; until it arrives (or if it can't be, as on
+     file://) the h1 shows a plain text title. */
+  let logoSvg = null;
+  const logoLoad = fetch(`${G.base}assets/femc/title/solstice-logo.svg?v=1`).then(r => r.ok ? r.text() : '').catch(() => '').then(t => (logoSvg = t));
+  function putLogo(h) {
+    if (!h) return;
+    const put = t => {
+      if (!h.isConnected) return;
+      if (!/^\s*<svg[\s>]/.test(t || '')) { h.classList.add('is-text'); return; }
+      h.insertAdjacentHTML('afterbegin', t.replace('class="sl-logo"', 'class="sl-logo sl-dark" aria-hidden="true" focusable="false"').replace(/<title[^>]*>.*?<\/title>/, ''));
+      h.classList.add('is-svg');
+    };
+    if (logoSvg !== null) put(logoSvg); else logoLoad.then(put);
+  }
   const autoLine = () => { let x = null; try { x = G.slotInfo(JSON.parse(localStorage.getItem(G.KEY))); } catch (e) {} return x ? `${x.md} ${x.day} · ${x.slot}${x.lv ? ` · Lv ${x.lv}` : ''}${x.fight ? ' · in the Dark Hour' : ''}` : ''; };
   function titleScreen() {
     hud.hidden = true;
@@ -648,10 +663,11 @@
     const has = G.hasSave();
     show(`<section class="g-title">
       <img class="g-title-art" src="${G.base}assets/femc/title/keyart.webp" alt="">
-      <div class="g-title-copy"><p class="g-kicker">Persona 3 · FEMC</p><h1>FEMC<small>a year that made a place for her</small></h1>
+      <div class="g-title-copy"><h1 class="g-logo" aria-label="Persona 3: Solstice"><span class="g-logo-text" aria-hidden="true">Solstice<small>Persona 3 · Every Universe</small></span></h1>
       <div class="g-title-menu" role="menu">${has ? '<button type="button" role="menuitem" data-t="continue">Continue</button>' : ''}<button type="button" role="menuitem" data-t="new">New Game</button><button type="button" role="menuitem" data-t="load">Load</button><button type="button" role="menuitem" data-t="settings">Settings</button></div>
       <p class="g-title-foot">${has ? `Autosave · ${esc(autoLine())}` : 'No save yet'}</p></div>
       <a class="g-title-practice" href="femc-battle.html?practice=1" title="Practice mode: the battle game on its own, with its own save">Practice</a></section>`, 'is-title');
+    putLogo(main.querySelector('.g-logo'));
     main.querySelector('.g-title-menu button')?.focus({ preventScroll: true });
     main.querySelectorAll('[data-t]').forEach(b => b.addEventListener('click', () => {
       const t = b.dataset.t;
@@ -780,7 +796,7 @@
     show(`<section class="g-seg g-end"><p class="g-kicker">1/31 · the last minutes of the last Dark Hour</p>
       <div class="g-seg-box"><p class="g-end-name">ENDING · ${esc(name)}</p>
         <p class="g-seg-sub">${frags} memory fragment${frags === 1 ? '' : 's'} · ${maxed} bond${maxed === 1 ? '' : 's'} at MAX · ${met} people met${S().ngp ? ` · New Game+ ${S().ngp}` : ''}</p>
-        <div class="g-credits"><p><b>FEMC</b> a year that made a place for her</p><p>Story, characters and worlds · Kat</p><p>Persona 3 · ATLUS (the year it borrows)</p><p>Endings seen · ${seen.map(esc).join(' · ')}</p></div></div>
+        <div class="g-credits"><p><b>Persona 3: Solstice</b> Every Universe</p><p>Story, characters and worlds · Kat</p><p>Persona 3 · ATLUS (the year it borrows)</p><p>Endings seen · ${seen.map(esc).join(' · ')}</p></div></div>
       <div class="g-row"><button type="button" class="g-btn pink" data-t="ngp">New Game+</button><button type="button" class="g-btn" data-t="title">Back to title</button></div></section>`, 'is-seg');
     main.querySelector('[data-t=ngp]').addEventListener('click', () => { G.newGamePlus(); cardDay = null; run(); });
     main.querySelector('[data-t=title]').addEventListener('click', () => { S().phase = 'title'; G.save(); run(); });

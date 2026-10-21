@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Persona 3: Solstice app icon / favicon: the logo's sun-moon O (solstice-logo.svg) on the night pink-black. -->
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0b8"/><stop offset=".55" stop-color="#ffd36b"/><stop offset="1" stop-color="#f2a417"/></linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#dfe3ff"/><stop offset="1" stop-color="#a9b2ff"/></linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#14070f"/>
+  <rect x="3" y="3" width="58" height="58" rx="11" fill="none" stroke="#ff4f9e" stroke-width="2.5"/>
+  <g transform="translate(35 32) scale(.34) translate(-230 -130)">
+    <path fill="none" stroke="url(#g)" stroke-width="9" stroke-linecap="round" d="M162 130H146M171.1 164L160.7 170M171.1 96L160.7 90M196 188.9L190 199.3M196 71.1L190 60.7"/>
+    <path fill="url(#g)" d="M227 70A60 60 0 0 0 227 190V164A34 34 0 0 1 227 96Z"/>
+    <path fill="url(#m)" d="M233 70A60 60 0 0 1 233 190A34 60 0 0 0 233 70Z"/>
+  </g>
+</svg>

@@ -251,7 +251,7 @@ The full prompts are in `FEMC-CG-PROMPTS.md` under the number shown. For all of 
 ---
 
 ## Still to decide
-- **The revamp's name,** then the title logo.
+- Nothing open right now. (The name, **Persona 3: Solstice**, and its logo are done: `assets/femc/title/solstice-logo.svg`.)
 
 ---
 

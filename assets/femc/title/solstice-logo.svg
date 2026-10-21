@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="sl-logo" viewBox="0 0 1116 252" role="img" aria-labelledby="sl-name">
+  <!-- Persona 3: Solstice, the title logo (P3R-style: small tracked PERSONA 3, a wide slanted SOLSTICE, a small tagline).
+       The O is the sun-moon mark: Haenim's sun half and a crescent moon half (the longest night turning back to the sun).
+       Letters are stroked paths (crisp at any size, no font needed); the two small lines are text with system fonts.
+       Light backgrounds by default. Add class "sl-dark" to the <svg> for dark ones (ui.js inlines this file on the title
+       screen; game.css animates .sl-word, .sl-o, .sl-rays and .sl-shine there). Colours are the sl- custom properties in the style below. -->
+  <title id="sl-name">Persona 3: Solstice</title>
+  <style>
+    .sl-logo { --sl-ink: #14070f; --sl-sub: #7a2f57; --sl-shade: #14070f; --sl-rule: #e0a51f; }
+    .sl-logo.sl-dark { --sl-ink: #fff4f9; --sl-sub: #ffd6e8; --sl-shade: #3a0c24; --sl-rule: #ffd36b; }
+    .sl-logo .sl-shade { fill: var(--sl-shade); stroke: var(--sl-shade); }
+    .sl-logo .sl-ink { fill: var(--sl-ink); }
+    .sl-logo .sl-sub { fill: var(--sl-sub); }
+    .sl-logo .sl-rule { stroke: var(--sl-rule); }
+    .sl-logo text { font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif; }
+  </style>
+  <defs>
+    <linearGradient id="sl-pink" gradientUnits="userSpaceOnUse" x1="0" y1="70" x2="0" y2="190">
+      <stop offset="0" stop-color="#ffa8d0"/><stop offset=".5" stop-color="#ff4f9e"/><stop offset="1" stop-color="#e02a7c"/>
+    </linearGradient>
+    <linearGradient id="sl-gold" gradientUnits="userSpaceOnUse" x1="0" y1="70" x2="0" y2="190">
+      <stop offset="0" stop-color="#fff0b8"/><stop offset=".55" stop-color="#ffd36b"/><stop offset="1" stop-color="#f2a417"/>
+    </linearGradient>
+    <linearGradient id="sl-moon" gradientUnits="userSpaceOnUse" x1="233" y1="70" x2="293" y2="190">
+      <stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#dfe3ff"/><stop offset="1" stop-color="#a9b2ff"/>
+    </linearGradient>
+    <linearGradient id="sl-glint" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- S L S T I C E, on a 120-high cap line (stroke 26, square ends) -->
+    <g id="sl-letters" fill="none" stroke-width="26" stroke-linecap="square" stroke-miterlimit="8">
+      <path transform="translate(0 70)" d="M107 13H35A22 22 0 0 0 13 35V38A22 22 0 0 0 35 60H85A22 22 0 0 1 107 82V85A22 22 0 0 1 85 107H13"/>
+      <path transform="translate(323 70)" d="M13 13V107H91"/>
+      <path transform="translate(457 70)" d="M107 13H35A22 22 0 0 0 13 35V38A22 22 0 0 0 35 60H85A22 22 0 0 1 107 82V85A22 22 0 0 1 85 107H13"/>
+      <path transform="translate(607 70)" d="M13 13H103M58 13V107"/>
+      <path transform="translate(753 70)" d="M13 13V107"/>
+      <path transform="translate(809 70)" d="M99 13H35A22 22 0 0 0 13 35V85A22 22 0 0 0 35 107H99"/>
+      <path transform="translate(951 70)" d="M93 13H13V107H93M13 60H80"/>
+    </g>
+    <!-- The O: sun half (left, with rays) and crescent moon half (right) -->
+    <path id="sl-sun" d="M227 70A60 60 0 0 0 227 190V164A34 34 0 0 1 227 96Z"/>
+    <path id="sl-crescent" d="M233 70A60 60 0 0 1 233 190A34 60 0 0 0 233 70Z"/>
+    <path id="sl-rayset" fill="none" stroke-width="7" stroke-linecap="round" d="M162 130H146M171.1 164L160.7 170M171.1 96L160.7 90M196 188.9L190 199.3M196 71.1L190 60.7"/>
+    <clipPath id="sl-oclip"><use href="#sl-sun"/><use href="#sl-crescent"/></clipPath>
+  </defs>
+  <g transform="translate(54 0) skewX(-12)">
+    <text class="sl-ink" x="4" y="48" font-size="34" font-weight="700" textLength="330" lengthAdjust="spacing">PERSONA</text>
+    <text x="372" y="50" font-size="42" font-weight="800" fill="#ff4f9e">3</text>
+    <g class="sl-shade" transform="translate(7 7)">
+      <use href="#sl-letters"/><use href="#sl-sun"/><use href="#sl-crescent"/><use href="#sl-rayset"/>
+    </g>
+    <use class="sl-word" href="#sl-letters" stroke="url(#sl-pink)"/>
+    <g class="sl-o">
+      <use class="sl-rays" href="#sl-rayset" stroke="url(#sl-gold)"/>
+      <use href="#sl-sun" fill="url(#sl-gold)"/>
+      <use href="#sl-crescent" fill="url(#sl-moon)"/>
+      <g clip-path="url(#sl-oclip)"><rect class="sl-shine" x="120" y="60" width="34" height="140" fill="url(#sl-glint)"/></g>
+    </g>
+    <path class="sl-rule" d="M590 227H700" stroke-width="3"/>
+    <text class="sl-sub" x="1057" y="236" font-size="28" font-weight="600" text-anchor="end" textLength="330" lengthAdjust="spacing">Every Universe</text>
+  </g>
+</svg>
