@@ -110,7 +110,7 @@ SETUP = r"""window.T={
     Object.assign(S,o.S||{});G.save();return G.dayInfo().day},
   fresh(day,slot,o={}){const G=FemcGame;G.newGame();const S=G.S;S.phase='play';S.started=true;
     G.setSetting('text','instant');G.setSetting('music',0);G.setSetting('dateCard',false);G.setSetting('auto','off');
-    S.events=G.D.events.map(e=>e.id);S.dailyLife={seen:G.D.dailyLife.map(e=>e.id),lastDay:999};S.unlocked.tartarus=true;S.flags.armband=true;
+    S.events=G.D.events.map(e=>e.id);S.dailyLife={seen:G.D.dailyLife.map(e=>e.id),lastDay:999};S.lateNights={seen:[],lastDay:99999};S.holidays=Object.fromEntries(Object.values(G.LINKS).flatMap(l=>Object.keys(l.holidays||{})).map(md=>[md,'none']));S.unlocked.tartarus=true;S.flags.armband=true;
     S.phone={threads:{},unread:{},done:G.D.texts.texts.map(t=>t.id),pending:{},invite:null,lastInvite:9999};
     ['arrived-hanni','arrived-hyein','arrived-jihoon','arrived-crew','arrived-cherry','joined-junpei'].forEach(f=>S.flags[f]=true);
     // Story-forced link ranks would play on their own when the slot moves on; count them as played. (Elizabeth's Sunday
