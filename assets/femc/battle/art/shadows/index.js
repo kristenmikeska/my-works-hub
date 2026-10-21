@@ -343,6 +343,34 @@ window.FEMC_SHADOW_ART = {
   "small": false,
   "w": 640
  },
+ "memory-fishmonger": {
+  "h": 640,
+  "poses": {
+   "frames": [
+    "memory-fishmonger-pose-0",
+    "memory-fishmonger-pose-1",
+    "memory-fishmonger-pose-2",
+    "memory-fishmonger-pose-3",
+    "memory-fishmonger-pose-4",
+    "memory-fishmonger-pose-5"
+   ],
+   "scale": 1.2403,
+   "states": {
+    "attack": [
+     1,
+     2,
+     5
+    ],
+    "cast": [
+     3,
+     4,
+     5
+    ]
+   }
+  },
+  "small": false,
+  "w": 640
+ },
  "memory-flash": {
   "h": 640,
   "poses": {
@@ -374,6 +402,42 @@ window.FEMC_SHADOW_ART = {
     ],
     "hurt": [
      4
+    ]
+   }
+  },
+  "small": false,
+  "w": 640
+ },
+ "memory-group-chat": {
+  "h": 640,
+  "poses": {
+   "frames": [
+    "memory-group-chat-pose-0",
+    "memory-group-chat-pose-1",
+    "memory-group-chat-pose-2",
+    "memory-group-chat-pose-3",
+    "memory-group-chat-pose-4",
+    "memory-group-chat-pose-5"
+   ],
+   "scale": 1.3061,
+   "states": {
+    "attack": [
+     1,
+     3
+    ],
+    "cast": [
+     1,
+     2,
+     4
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     5
     ]
    }
   },

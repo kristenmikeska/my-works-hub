@@ -70,7 +70,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 9;
+  const ART_V = 10;
   const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
   Object.values(D.personas).forEach(p => { if (p.art && !p.art.startsWith('data:') && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
   const FINISH_DIR = 'assets/femc/battle/art/finish/', SUMMON_DIR = 'assets/femc/battle/art/summon/';
@@ -1468,7 +1468,8 @@
   const freshAff = new Set(), discovered = new Set(); // affinities just learned (their plate cell flips once); weaknesses announced this session
 
   /* Story-fight rules (handoff mode; spec.rules). interruptAt: end with 'interrupt' when this round starts. interruptHp: when
-     Solar drops below this share of her HP. interruptFoeHp: when any Shadow does. interruptOnKill: when any Shadow falls.
+     Solar drops below this share of her HP. interruptFoeHp: when any Shadow does (only the bosses count when the fight has
+     one, so a memory floor's lesser Shadows can't cut it short). interruptOnKill: when any Shadow falls.
      roundsMax: end with 'phase' after this many rounds (the finale's Last Call). */
   function ruleEnd(spec, at) {
     const R = spec.rules;
@@ -1478,7 +1479,8 @@
     if (at !== 'act') return null;
     const solar = B.party()[0];
     if (R.interruptHp && solar && solar.hp < solar.maxHp * R.interruptHp) return 'interrupt';
-    if (R.interruptFoeHp && B.foes().some(f => !f.dead && f.hp < f.maxHp * R.interruptFoeHp)) return 'interrupt';
+    const watched = B.foes().some(f => f.boss) ? B.foes().filter(f => f.boss) : B.foes();
+    if (R.interruptFoeHp && watched.some(f => !f.dead && f.hp < f.maxHp * R.interruptFoeHp)) return 'interrupt';
     if (R.interruptOnKill && B.foes().some(f => f.dead)) return 'interrupt';
     return null;
   }
@@ -3765,10 +3767,11 @@
   const BGP = 'assets/femc/bg/';
   const TBG = i => D.blocks[Math.min(i, D.blocks.length - 1)].bg;
   const SEG1 = (at, foeHp = 0.5) => ({ protect: true, noEscape: true, interruptAt: at, interruptFoeHp: foeHp, interruptHp: 0.35 });
-  // A memory floor: one boss, two segments when someone awakens mid-fight (seg 1 interrupts, seg 2 has them in the party).
+  // A memory floor: one boss (plus any Shadows at its side: pass an array, boss first), two segments when someone awakens
+  // mid-fight (seg 1 interrupts, seg 2 has them in the party).
   const memoryFloor = (boss, bg, block, who, at = 4) => R => (R.segment === 1
-    ? [{ group: [boss], bg, label: 'Tartarus', block, boss: true, music: 'boss', noResults: true, title: R.title || block, rules: SEG1(at) }]
-    : [{ group: [boss], bg, label: 'Tartarus', block, boss: true, music: 'boss', title: R.title || block, join: who ? [who] : [], rules: { noEscape: true, startHp: R.segment === 2 ? 0.5 : 1 } }]);
+    ? [{ group: [].concat(boss), bg, label: 'Tartarus', block, boss: true, music: 'boss', noResults: true, title: R.title || block, rules: SEG1(at) }]
+    : [{ group: [].concat(boss), bg, label: 'Tartarus', block, boss: true, music: 'boss', title: R.title || block, join: who ? [who] : [], rules: { noEscape: true, startHp: R.segment === 2 ? 0.5 : 1 } }]);
   const SCRIPTS = {
     // 4/6, the prologue. Segment 1: two Maya, Attack and Guard only; ends 'interrupt' when round 3 starts, when Solar drops
     // below half her HP, or when a Maya falls. Segment 2: the Evoker works, the second Maya is weak to Light, Solar can't lose.
@@ -3785,9 +3788,9 @@
       op: { id: 'tartarus-memory', name: 'The Sleeper Car', arcana: 'XVIII · Moon' }, title: 'Full Moon · Tartarus',
       rules: { noEscape: true, setup: b => b.foes().forEach(f => { if (f.kind === 'memory_car') { f.unreachable = true; f.scenery = true; } }) } }],
     // Memory floors (story-act4/5). Simplified: one boss each; the awakening's segment 2 has the searcher in the party.
-    'memory-hoax': memoryFloor('ballot_box', BGP + 'tartarus-lobby.webp', 'A Gym That Isn’t Here', 'jihoon', 4),
+    'memory-hoax': memoryFloor(['ballot_box', 'group_chat'], BGP + 'tartarus-lobby.webp', 'A Gym That Isn’t Here', 'jihoon', 4),
     'memory-runners': memoryFloor('flash_shadow', TBG(5), 'A Hallway at 3 A.M.', 'minji', 3),
-    'memory-strangers': memoryFloor('tide_shadow', BGP + 'tartarus-coffins.webp', 'The Last Ferry', null),
+    'memory-strangers': memoryFloor(['tide_shadow', 'fishmonger'], BGP + 'tartarus-coffins.webp', 'The Last Ferry', null),
     'memory-runners-2': memoryFloor('party_shadow', TBG(4), 'The First Party', null),
     'memory-jungwon': memoryFloor('veil_poster', TBG(6), 'Two Floors at Once', 'jungwon', 3),
     'memory-haechan': memoryFloor('fox_shadow', TBG(6), 'Mirror Match', 'haechan', 3)

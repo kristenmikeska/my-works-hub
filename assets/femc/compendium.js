@@ -253,7 +253,8 @@ window.FEMC_COMPENDIUM = [
   "id": "mitsuru",
   "name": "Mitsuru Kirijo",
   "from": "Persona 3",
-  "img": "assets/femc/portraits/mitsuru/neutral.webp",
+  "img": "assets/femc/profile/sees/mitsuru.webp",
+  "profile": true,
   "unlock": "reg:mitsuru",
   "note": "Student council president and the steady center of S.E.E.S."
  },
@@ -266,10 +267,20 @@ window.FEMC_COMPENDIUM = [
   "note": "Archer, skeptic, and the first friend you made at the dorm."
  },
  {
+  "id": "aigis",
+  "name": "Aigis",
+  "from": "Persona 3",
+  "img": "assets/femc/profile/sees/aigis.webp",
+  "profile": true,
+  "unlock": "reg:aigis",
+  "note": "Precise, polite, and always counting something. Stars, steps, ships in the bay."
+ },
+ {
   "id": "koromaru",
   "name": "Koromaru",
   "from": "Persona 3",
-  "img": null,
+  "img": "assets/femc/profile/sees/koromaru.webp",
+  "profile": true,
   "unlock": "reg:koromaru",
   "note": "The best boy at Naganaki Shrine."
  },

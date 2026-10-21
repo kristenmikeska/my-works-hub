@@ -174,7 +174,8 @@ window.FEMC_GAME_PLACES = {
     'searchers-jihoon-awakening': '77% 35%', 'searchers-minji-awakening': '62% 35%',
     'searchers-jungwon-awakening': '37% 35%', 'searchers-haechan-awakening': '39% 35%',
     'link-jihoon-crane': '45% 40%', 'link-jungwon-croissant': '67% 45%', 'link-minji-camera-lamp': '68% 40%', 'link-shinjiro-cooking': '50% 40%',
-    'story-moonlight-train': '55% 35%', 'story-city-of-the-awake': '50% 40%', 'ending-last-stop': '40% 35%', 'story-haenim-unveiled': '50% 35%'
+    'story-moonlight-train': '55% 35%', 'story-city-of-the-awake': '50% 40%', 'ending-last-stop': '40% 35%', 'story-haenim-unveiled': '50% 35%',
+    'story-facing-wrens-shadow': '40% 35%'
   },
   /* Music (assets/femc/music/<file>.mp3) by mood. Scenes pick a mood; screens use the `screens` map. */
   music: {

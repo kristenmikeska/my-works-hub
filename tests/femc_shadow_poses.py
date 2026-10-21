@@ -30,36 +30,39 @@ try:
   observer.disconnect();el.remove();results.push({slug,frames:art.poses.frames.length,states:Object.keys(art.poses.states)});
  }return results})()''')
  actual=[]
- scripts={'ballot_box':'memory-hoax','flash_shadow':'memory-runners','tide_shadow':'memory-strangers','fox_shadow':'memory-haechan','party_shadow':'memory-runners-2','veil_poster':'memory-jungwon'}
+ scripts={'ballot_box':'memory-hoax','flash_shadow':'memory-runners','tide_shadow':'memory-strangers','fox_shadow':'memory-haechan','party_shadow':'memory-runners-2','veil_poster':'memory-jungwon','group_chat':'memory-hoax','fishmonger':'memory-strangers'}
+ defeats=[]
  for kind in options.enemies.split(','):
   script=scripts[kind]
   p.goto('femc-game.html?speed=10&seed=1');p.eval('FemcGame.newGame();FemcGame.S.day=FemcGame.dayOf("12/5");FemcGame.makeHandoff("scripted",{script:'+json.dumps(script)+',segment:2,forced:true,party:["solar"]})')
   p.battle()  # the fight runs inside femc-game.html (the Dark Hour frame)
   p.wait("!!document.querySelector('[data-prep=begin]')");p.eval("document.querySelector('[data-prep=begin]').click()")
   p.wait("!!window.FemcBattle && !!FemcBattle.B && !!document.querySelector('.bt-enemy img')")
-  p.eval('''window.poseSeen=[];window.poseEnemy=document.querySelector('.bt-enemy');new MutationObserver(()=>poseSeen.push(+poseEnemy.dataset.pose)).observe(poseEnemy.querySelector('img'),{attributes:true,attributeFilter:['src']});''')
+  # The Shadow under test (a memory floor can field more than one); Solar is made sturdy so a two-Shadow floor can't end the run.
+  p.eval('''window.poseFoe=FemcBattle.B.foes().find(f=>f.kind==='''+json.dumps(kind)+''');window.poseSeen=[];window.poseEnemy=document.querySelector('.bt-enemy[data-id="'+poseFoe.id+'"]');const s=FemcBattle.B.party()[0];s.maxHp=s.hp=99999;new MutationObserver(()=>poseSeen.push(+poseEnemy.dataset.pose)).observe(poseEnemy.querySelector('img'),{attributes:true,attributeFilter:['src']});''')
   for skill,state in [('bash','attack'),('e_agi','cast')]:
-   p.eval('FemcBattle.B.foes()[0].skills=['+json.dumps(skill)+'];poseSeen=[]')
+   p.eval('poseFoe.skills=['+json.dumps(skill)+'];poseSeen=[]')
    for i in range(200):
     ok=p.eval('''(()=>{const expected=poseEnemy._shadowPoses.states['''+json.dumps(state)+'''];if(expected.every(n=>poseSeen.includes(n))&&poseEnemy.dataset.pose==='0')return true;const c=FemcBattle.ctl;if(c?.kind==='menu'&&c.items?.some(i=>i.v==='guard'))c.pickValue('guard');return false})()''')
     if ok:break
     import time;time.sleep(.03)
    else:raise AssertionError((kind,state,p.eval('poseSeen')))
-  if kind in ['flash_shadow','tide_shadow']:
+  if p.eval('!!poseEnemy._shadowPoses.states.defeat'):
    p.wait("FemcBattle.ctl?.kind==='menu' && FemcBattle.ctl.items?.some(i=>i.v==='attack')")
-   p.eval("window.defeatFrame=null;window.__hoStay=true;new MutationObserver(()=>{if(poseEnemy.classList.contains('dead'))defeatFrame=+poseEnemy.dataset.pose}).observe(poseEnemy,{attributes:true,attributeFilter:['class']});FemcBattle.B.foes()[0].hp=1")
+   p.eval("window.defeatFrame=null;window.__hoStay=true;new MutationObserver(()=>{if(poseEnemy.classList.contains('dead'))defeatFrame=+poseEnemy.dataset.pose}).observe(poseEnemy,{attributes:true,attributeFilter:['class']});poseFoe.hp=1")
    for i in range(200):
     if p.eval("defeatFrame!==null"):break
-    p.eval("(()=>{const c=FemcBattle.ctl;if(c?.kind==='menu'&&c.items?.some(i=>i.v==='attack'))c.pickValue('attack');else if(c?.kind==='menu')document.querySelector('.bt-enemy')?.click();else if(c?.kind==='allout')c.pickValue('0')})()")
+    p.eval("(()=>{const c=FemcBattle.ctl;if(c?.kind==='menu'&&c.items?.some(i=>i.v==='attack'))c.pickValue('attack');else if(c?.kind==='menu')poseEnemy.click();else if(c?.kind==='allout')c.pickValue('0')})()")
     import time;time.sleep(.03)
    else:raise AssertionError('Defeat not shown: '+kind)
    assert p.eval("defeatFrame===poseEnemy._shadowPoses.states.defeat[0]"),kind
+   defeats.append(kind)
   actual.append(kind)
   if kind==options.enemies.split(',')[0]:
    p.wait("FemcBattle.ctl?.kind==='menu'");p.eval('FemcBattle.freeze()')
    for name,w,h in [('desktop',1280,800),('phone',390,844)]:
     p.ws.call('Emulation.setDeviceMetricsOverride',{'width':w,'height':h,'deviceScaleFactor':1,'mobile':name=='phone'});p.eval('document.fonts.ready.then(()=>new Promise(r=>setTimeout(r,300)))');shot=p.ws.call('Page.captureScreenshot',{'format':'png'});(OUT/(name+'.png')).write_bytes(base64.b64decode(shot['data']))
  errors=p.console();assert not errors,errors
- summary={'posePlayback':result,'actualBattleAttackAndCast':actual,'actualDefeatTransitions':[k for k in options.enemies.split(',') if k in ['flash_shadow','tide_shadow']],'sourcesUnchanged':54,'browserErrors':errors,'screenshots':str(OUT)}
+ summary={'posePlayback':result,'actualBattleAttackAndCast':actual,'actualDefeatTransitions':defeats,'sourcesUnchanged':len(data['entries']),'browserErrors':errors,'screenshots':str(OUT)}
  (OUT/'results.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary))
 finally:p.close()
