@@ -119,7 +119,9 @@ def serve():
 def launch(profile):
     os.makedirs(profile, exist_ok=True)
     p = subprocess.Popen([CHROME, "--headless=new", f"--remote-debugging-port={CDP_PORT}", f"--user-data-dir={profile}", "--remote-debugging-address=127.0.0.1", "--disable-background-networking",
-                          "--no-first-run", "--mute-audio", "--autoplay-policy=no-user-gesture-required", "about:blank"],
+                          "--no-first-run", "--mute-audio", "--autoplay-policy=no-user-gesture-required",
+                          # Long runs: headless pages otherwise fall into background timer throttling (one wake-up a minute after ~5 min).
+                          "--disable-background-timer-throttling", "--disable-renderer-backgrounding", "--disable-backgrounding-occluded-windows", "about:blank"],
                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     for _ in range(100):
         try:

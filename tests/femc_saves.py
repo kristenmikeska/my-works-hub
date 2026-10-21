@@ -31,7 +31,7 @@ HELPERS = r"""(()=>{
         Object.assign(G.progress('mark'),{rank:n,bond:n*3});
         S.tartarus.maxFloor=5; S.tartarus.nights=n; S.tartarus.bosses=['priestess'];
         const b=FemcBattleSave.normalize(FemcBattleSave.fresh());
-        b.lvl=10+n; b.exp=20*n; b.pts=3*n; b.nodes=D.tree.slice(0,n).map(x=>x.id);
+        b.lvl=10+n; b.exp=20*n; b.pts=3*n; b.nodes=['sun1','bell1','star1'].slice(0,n);
         b.party=n===2?['junpei']:['yukari']; S.tartarus.lastParty=['solar',...b.party];
         b.mem.yukari={lvl:9+n,exp:11*n}; b.mem.junpei={lvl:8+n,exp:12*n};
         b.tactics.yukari='heal'; b.reached=D.floors.find(f=>f.bi===0).id;

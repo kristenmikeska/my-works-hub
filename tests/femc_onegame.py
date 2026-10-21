@@ -164,11 +164,12 @@ try:
         p.eval("document.querySelector('.g-fm-ov:not(.out) [data-tab=party]').click()")
         p.eval("document.querySelector('.g-fm-ov:not(.out) [data-tac=yukari], .g-fm-ov:not(.out) [data-tac]').click()")
         tac = p.eval("JSON.stringify(FemcGame.S.battleSave.tactics)")
+        # The Skills tab is the skill system itself (Haenim's tree), in the Dark Hour too.
         p.eval("document.querySelector('.g-fm-ov:not(.out) [data-tab=skills]').click()")
-        p.eval("document.querySelector('.g-fm-ov:not(.out) [data-tree]').click()")
-        p.frame(); p.wait("FemcBattle.screen()==='tree'")
+        assert p.eval("document.querySelectorAll('.g-fm-ov:not(.out) .g-ht-col').length") == 5, 'tree in the Skills tab'
+        p.eval("document.querySelector('.g-fm-ov:not(.out) [data-close]').click()")
+        p.frame(); p.wait("FemcBattle.screen()==='hub' && FemcBattle.ctl?.kind==='buttons'")
         assert p.eval("JSON.stringify(FemcBattle.save.tactics)") == tac, 'tactic not handed back'
-        p.eval("FemcBattle.ctl.back()"); p.wait("FemcBattle.screen()==='hub'")
         # M opens it too; Escape closes it.
         p.eval("document.dispatchEvent(new KeyboardEvent('keydown',{key:'m',bubbles:true}))")
         p.top(); p.wait("!!document.querySelector('.g-fm-ov.g-over-battle:not(.out)')")
@@ -207,7 +208,7 @@ try:
         S = p.eval("({n:FemcGame.S.tartarus.nights,f:FemcGame.S.tartarus.maxFloor,c:FemcGame.S.condition,md:FemcGame.dayInfo().md,acc:FemcGame.S.battleSave.gear.eq.solar?.acc,exp:FemcGame.S.battle.exp.solar||0,h:FemcGame.S.handoff})")
         assert S['n'] == 1 and S['f'] > 0 and S['h'] is None and S['exp'] > 0 and S['md'] == '7/25', S
         no_errors('tartarus')
-        results['tartarus'] = {'prompt menu': True, 'hub has one Menu': True, 'menu over the frame': True, 'tree from Skills': True, 'M/Escape': True,
+        results['tartarus'] = {'prompt menu': True, 'hub has one Menu': True, 'menu over the frame': True, 'tree in Skills': True, 'M/Escape': True,
                                'floor menu: item used, team locked': True, 'access point HP': hp, 'fights': seen.get('cmd', 0), 'floors reached': res.get('floorsReached'),
                                'back on': S['md'], 'nights': S['n']}
         print('tartarus', json.dumps(results['tartarus']), flush=True)
