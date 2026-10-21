@@ -125,15 +125,15 @@ Kat loves the skill tree and wants much more building. **Built 2026-10-20:** Rev
 - **Status now:** every fighter already has a Theurgy and basic battle lines (turn, One More, shift, finish, Theurgy). Only Solar has full-screen Theurgy art.
 
 ### Theurgy animation (Kat, 2026-10-20)
-Kat likes the **3-step strike sheet**: wind-up, strike, follow-through. Plan: play the sheet's three frames as the character's motion over the Theurgy background and Persona, with a flash, shake and particles. Use the layered pieces where she supplies them; otherwise the regular cut-in is the backdrop. Prompts are in `FEMC-THEURGY-PROMPTS.md`.
+Kat likes the **3-step strike sheet**: wind-up, strike, follow-through. Plan: play the sheet's three frames as the character's motion over the Theurgy background and Persona, with a flash, shake and particles. Use the layered pieces where she supplies them; otherwise the regular cut-in is the backdrop. Prompts are in `FEMC-ART-TODO.md`.
 
-### World songs (Kat loves this, 2026-10-20)
+### World songs (Kat loves this, 2026-10-20) ✅ built 2026-10-20
 Play Solar's world songs quietly at the right moments. Sources are in `~/Documents/UniverseHub-Audio/`: Runners/ (Camo – Runners, chanmina – a shell, rosé – 3am), Strangers/ (Ethel Cain – Strangers, Crush, Sea Swallow Me), Hoax/ (Taylor Swift – Hoax, Ariana Grande – someone like u).
 - **Where:** memory-fragment scenes and flashbacks, each searcher's arrival, the "come home" calls, and each world's ending. Match each world to its own songs.
 - **How:** soft volume. Fade in under the scene and back out to the P3 track. Add new mood keys (e.g. `world-runners`, `world-strangers`, `world-hoax`) in `places.js`'s music map.
 - Spread all the P3 tracks so the same song doesn't repeat back to back. This also answers Kat's note about music repetition.
 
-### New songs Kat added (2026-10-20), in `~/Documents/UniverseHub-Audio/`. Planned uses:
+### New songs Kat added (2026-10-20), in `~/Documents/UniverseHub-Audio/`. ✅ All 36 are in `assets/femc/music/` and mapped (2026-10-20); see "Music map" below. Planned uses:
 - **Battle rotation:** Wiping All Out (the P3P FeMC battle theme, primary), alongside Mass Destruction and It's Going Down Now.
   - Danger Zone: strong Shadows and the Reaper.
   - Calamity (P3R): full-moon bosses.
@@ -166,3 +166,12 @@ Play Solar's world songs quietly at the right moments. Sources are in `~/Documen
   - Period (P4): final-boss or huge-battle variety
   - 心の力 (P4, "Power of the Heart"): Persona awakenings and Theurgy-style moments
   - そこにいるのは誰 (P3, "Who's There?"): eerie and mysterious scenes
+
+### Music map (built 2026-10-20)
+Moods live in `assets/femc/game/data/places.js` (`music`, `screens`, `worldMusic`) and the battle's in `assets/femc/battle/data.js` (`music`). A list is a rotation: it never starts the same file twice in a row, and in the story a pooled track plays through once and crossfades into the next. `tests/femc_music.py` checks it all.
+- **Battle:** Wiping All Out (every other fight), Mass Destruction, It's Going Down Now. Danger Zone: Strong Shadows, the Reaper, memory-floor bosses. Calamity: full moons. Blooming Villain: a rival fight (and Strega, if they come). Last Surprise / Break Out Of: ready for fights with the Persona 5 cast (none yet). Nyx, Period and Burn My Dread -Last Battle-: pinned to the finale.
+- **Tartarus and the Dark Hour:** Basement (lobby and the battle hub), Shadow World (Dark Hour streets), Mementos (memory floors before the fight, the Memories screen), Hall of Doors (in the Velvet Room rotation).
+- **School and daily life:** School Memories and Boring (class), Exam in Progress (exams), New Days (a term's first week), Time to Make History (Yakushima, the culture festival), Living With Determination (school days from December), Beneath the Mask (rainy evenings, the Persona 5 cast's links), My Homie / Specialist / Like a Dream Come True (hangouts and free time), Deep Breath Deep Breath (dorm nights).
+- **Story moods:** A Bad Feeling (full-moon nights), Deep Mentality and Who's There? (mysteries), It's Alright This Way (quiet comfort), Don't and Signs of Love (romance), The Meaning of Armbands (the armband), Power of the Heart (awakenings and new forms), Sky's the Limit and Memories of You (endings).
+- **World songs:** soft (60% of the music volume), fading in over the scene while the P3 track waits, and back out when the song ends, the scene changes mood or the scene ends. They play at memory moments (and any memory fragment found in a scene), each searcher's arrival, the three calls home and each world's ending, and over a fragment's card in Tartarus. The files are the hub's own in `assets/audio/`.
+
