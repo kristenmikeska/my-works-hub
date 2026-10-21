@@ -59,7 +59,7 @@ Full-screen 16:9 illustrations for big moments, the way P3R and P5R show a paint
 - [ ] **Evoker poses** for each member (✅ Solar)
 - [ ] **Theurgy cut-ins** for S.E.E.S. (official P3R stills exist; ✅ Solar's "Rise and Shine")
 - [ ] Bigger **Aigis All-Out card** (✅ the rest)
-- [ ] **Searcher Personas:** designs for whoever joins the party (Haechan, Jungwon, Jihoon, Hanni, Hyein, Minji...). Design them with Claude first, like Haenim
+- [x] **Searcher Personas:** ✅ Dalnim (Haechan), Hyeonmu (Jungwon), Dokkaebi (Jihoon), Theia (Minji), in the game 2026-10-20. Others only if more searchers fight later
 - [ ] **Searcher battle poses and finish cards** once their Personas exist
 - [ ] **Wren's Shadow phases:** ✅ phase 2 (the Last Train); phase 1, Wren crying on the bench in green light; phase 3, cap off and hair down, small and scared
 - (opt) Bigger renders for the ~33 small Shadows

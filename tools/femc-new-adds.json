@@ -1,5 +1,6 @@
 {
   "sourceRoot": "/Users/katarinagrande/Documents/UniverseHub-Images/Femc Mode Images/New Adds",
+  "sourceRootNote": "2026-10-20: every integrated source was moved (same filenames and subfolders) from New Adds/ to 'Femc Mode Images/Added to Game/'. Entry `source` names are relative to whichever folder holds the file now; hashes are unchanged (checked for the batch 16 Personas). Sources still waiting stay in New Adds/.",
   "entries": [
     {
       "source": "AigisBattle.png",
@@ -1426,6 +1427,86 @@
       "fragment": "strangers-suture-kit",
       "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
       "outputSha256": "52a2599d52ad7d996207856e3324f8c3243f6cf861f304ac4935ce425b2dec48"
+    },
+    {
+      "source": "Dalnim.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "7cd171914d2ddedd97d3cda9e07efe9faf4db514567f9d92993a27e467fd0b81",
+      "status": "integrated",
+      "batch": 16,
+      "destination": "assets/femc/battle/art/personas/dalnim.webp",
+      "persona": "p-haechan",
+      "copy": "Femc Mode Images/Personas/Dalnim.png (byte-identical copy of the source)",
+      "conversion": "tools/femc-artclean.py personas --only dalnim: macOS Vision lift, dark-background gaps punched out (OVERRIDES holes), despeckle/dehalo/defringe, tone, 1-2px rim, WebP q90, longest side 900",
+      "outputSize": [
+        597,
+        898
+      ],
+      "outputSha256": "082cdb9e5d23a3e8cd78326117857cbbcd507bf354b1055f8e06943693ade1ae",
+      "sourceNow": "Added to Game/Dalnim.png"
+    },
+    {
+      "source": "Hyeonmu.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0ba8de3bda3be9129ac02d714d36a9e0c0b5dbfa81d2dba40e39bdef79040fa0",
+      "status": "integrated",
+      "batch": 16,
+      "destination": "assets/femc/battle/art/personas/hyeonmu.webp",
+      "persona": "p-jungwon",
+      "copy": "Femc Mode Images/Personas/Hyeonmu.png (byte-identical copy of the source)",
+      "conversion": "tools/femc-artclean.py personas --only hyeonmu: macOS Vision lift, dark-background gaps punched out (OVERRIDES holes), despeckle/dehalo/defringe, tone, 1-2px rim, WebP q90, longest side 900",
+      "outputSize": [
+        611,
+        899
+      ],
+      "outputSha256": "7664cba5b216340b6c26d28b0deabd9caa99edba9155474ccd1ae58dba162c1e",
+      "sourceNow": "Added to Game/Hyeonmu.png"
+    },
+    {
+      "source": "Dokkaebi.png",
+      "size": [
+        1225,
+        1284
+      ],
+      "sha256": "e1358942f356be3901f07aa53944ef8dd68168fe5283b33e9737c6e23630a7b2",
+      "status": "integrated",
+      "batch": 16,
+      "destination": "assets/femc/battle/art/personas/dokkaebi.webp",
+      "persona": "p-jihoon",
+      "copy": "Femc Mode Images/Personas/Dokkaebi.png (byte-identical copy of the source)",
+      "conversion": "tools/femc-artclean.py personas --only dokkaebi: macOS Vision lift, dark-background gaps punched out (OVERRIDES holes), despeckle/dehalo/defringe, tone, 1-2px rim, WebP q90, longest side 900",
+      "outputSize": [
+        865,
+        903
+      ],
+      "outputSha256": "1d2dd185344829240163271ae93ae6fe9950606897d49473072127f38cee8798",
+      "sourceNow": "Added to Game/Dokkaebi.png"
+    },
+    {
+      "source": "Theia.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "61011cf466dc7d0eaae1d6ea05ca963c170d8e4edd862a103cb03bfb795f2b14",
+      "status": "integrated",
+      "batch": 16,
+      "destination": "assets/femc/battle/art/personas/theia.webp",
+      "persona": "p-minji",
+      "copy": "Femc Mode Images/Personas/Theia.png (byte-identical copy of the source)",
+      "conversion": "tools/femc-artclean.py personas --only theia: macOS Vision lift, dark-background gaps punched out (OVERRIDES holes), despeckle/dehalo/defringe, tone, 1-2px rim, WebP q90, longest side 900",
+      "outputSize": [
+        590,
+        903
+      ],
+      "outputSha256": "e1774223989d7709d3df96eef874d6e7f475107570cc538f0bd918ea8f863236",
+      "sourceNow": "Added to Game/Theia.png"
     }
   ],
   "batch1Validation": {
@@ -1638,6 +1719,15 @@
       "python3 tests/femc_compendium.py --ids aigis,koromaru,mitsuru",
       "python3 tests/femc_compendium.py",
       "python3 tests/femc_menu.py"
+    ]
+  },
+  "batch16Validation": {
+    "date": "2026-10-20",
+    "scope": "Searcher Personas: four transparent cut-outs replace the veiled placeholders for p-haechan, p-jungwon, p-jihoon, p-minji (ids kept).",
+    "checks": [
+      "sources unchanged (sha256 before/after)",
+      "edges reviewed on pink, purple and white",
+      "Personas tab and battle summon screenshots, desktop and phone"
     ]
   }
 }

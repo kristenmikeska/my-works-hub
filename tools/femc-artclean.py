@@ -42,8 +42,11 @@ RIM_COLOR = (12, 5, 26)
 RIM_ALPHA = 0.85
 PURPLE = (34, 16, 52)
 
-# slug: {'tone': False, 'rim': False, 'upscale': False, 'keep': True (leave the existing output alone)}
+# slug: {'tone': False, 'rim': False, 'upscale': False, 'keep': True (leave the existing output alone),
+#        'holes': True (art painted on a flat dark background: punch out the background Vision leaves inside the shape)}
 OVERRIDES = {
+    # The searchers' Personas (Kat, 2026-10-20) are painted on near-black; Vision keeps the gaps between coils, wind and cloak.
+    'dalnim': {'holes': True}, 'hyeonmu': {'holes': True}, 'dokkaebi': {'holes': True}, 'theia': {'holes': True},
 }
 PERSONA_ALIASES = {'kalinemi': 'kala-nemi'}
 
@@ -106,6 +109,44 @@ def load(src):
     im = im.convert('RGBA')
     im.info['lifted'] = lifted
     return im
+
+
+def punch_holes(src, im, tol=11, min_area=500, ring_lum=30):
+    """For art on a flat dark background: Vision's cut-out keeps the background showing through gaps inside the shape
+    (between coils, wind ribbons, a torn cloak). Find flat patches of the background colour (sampled from the border)
+    that are big enough and ringed by brighter art, and fade them out with a soft edge. Dark patches ringed by dark art
+    (an armoured chest) are left alone."""
+    rgb = np.asarray(Image.open(src).convert('RGB'), np.float32)
+    a = np.asarray(im.convert('RGBA'), np.float32) / 255.0
+    if rgb.shape[:2] != a.shape[:2]:
+        return im
+    b = np.concatenate([rgb[:6].reshape(-1, 3), rgb[-6:].reshape(-1, 3), rgb[:, :6].reshape(-1, 3), rgb[:, -6:].reshape(-1, 3)])
+    bg = np.median(b, 0)
+    if bg.mean() > 60:   # not a dark background
+        return im
+    d = np.linalg.norm(rgb - bg, axis=2)
+    cand = ndimage.binary_opening((d < tol) & (ndimage.uniform_filter(d, 5) < tol) & (a[..., 3] > 0.02), iterations=1)
+    lab, n = ndimage.label(cand)
+    if not n:
+        return im
+    L = rgb.mean(2)
+    hole = np.zeros(d.shape, bool)
+    area = ndimage.sum(np.ones_like(d), lab, np.arange(1, n + 1))
+    for i in np.nonzero(area >= min_area)[0] + 1:
+        m = lab == i
+        ys, xs = np.nonzero(m)
+        y0, y1, x0, x1 = max(0, ys.min() - 8), ys.max() + 9, max(0, xs.min() - 8), xs.max() + 9
+        mm = m[y0:y1, x0:x1]
+        ring = ndimage.binary_dilation(mm, iterations=6) & ~mm
+        if L[y0:y1, x0:x1][ring].mean() >= ring_lum:
+            hole[y0:y1, x0:x1] |= mm
+    reg = ndimage.binary_dilation(hole, iterations=3)
+    t = np.clip((d - 4) / 12, 0, 1)
+    t = t * t * (3 - 2 * t)
+    a[..., 3] = np.where(reg, a[..., 3] * t, a[..., 3])
+    out = img(a)
+    out.info['lifted'] = im.info.get('lifted', False)
+    return out
 
 
 def trim(im, pad=0):
@@ -379,6 +420,8 @@ def personas(redo=False, dst=PERSONA_DST, only=()):
         if not redo and not only and os.path.exists(out) and os.path.getmtime(out) >= os.path.getmtime(src):
             continue
         im = load(src)
+        if o.get('holes'):
+            im = punch_holes(src, im)
         pristine = sid.startswith('haenim')
         tw = trim(im).size
         small = max(tw) < 600 and not pristine

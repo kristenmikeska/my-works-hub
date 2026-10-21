@@ -154,6 +154,11 @@ window.FEMC_BATTLE_DATA = (() => {
     high_noon: { name: 'High Noon', el: 'light', type: 'dmg', target: 'one', power: 128, cost: { sp: 18 }, desc: 'The sun at its highest. Severe light damage to one foe.' },
     golden_tether: { name: 'Golden Tether', el: 'strike', type: 'dmg', target: 'one', power: 86, cost: { hp: 11 }, crit: 8, ail: { id: 'bind', chance: 0.32, rope: true }, desc: 'The rope holds. Heavy strike damage to one foe; may Bind it for a turn.' },
     heavens_rope: { name: 'Heaven’s Rope', el: 'strike', type: 'dmg', target: 'one', power: 66, multi: [2, 2], cost: { hp: 14 }, crit: 10, ail: { id: 'bind', chance: 0.3, rope: true }, desc: 'The rope let down from the sky, from the old story. Heavy strike damage to one foe, twice; each lash may Bind.' },
+    // The searchers' Persona skills (Dalnim, Hyeonmu, Dokkaebi, Theia).
+    waning_moon: { name: 'Waning Moon', el: 'dark', type: 'dmg', target: 'one', power: 64, cost: { sp: 8 }, ail: { id: 'fear', chance: 0.15 }, desc: 'Dalnim’s crescent blade. Medium dark damage to one foe; may cause Fear.' },
+    serpent_coil: { name: 'Serpent Coil', el: 'ice', type: 'dmg', target: 'one', power: 58, cost: { sp: 9 }, ail: { id: 'bind', chance: 0.3 }, desc: 'The serpent wraps and the tortoise holds. Medium ice damage to one foe; may Bind it for a turn.' },
+    goblin_club: { name: 'Goblin Club', el: 'strike', type: 'dmg', target: 'one', power: 64, cost: { hp: 10 }, crit: 8, ail: { id: 'disorient', chance: 0.2 }, desc: 'Dokkaebi brings the club down, laughing. Medium strike damage to one foe; may Disorient it.' },
+    clear_sight: { name: 'Clear Sight', el: 'light', type: 'dmg', target: 'one', power: 58, cost: { sp: 8 }, desc: 'Theia looses an arrow of light at what she sees. Medium light damage to one foe.' },
     undertow: { name: 'Undertow', el: 'ice', type: 'dmg', target: 'one', power: 96, cost: { sp: 16 }, ail: { id: 'bind', chance: 0.35, rope: true }, desc: 'The harbor pulls. Heavy ice damage to one foe; it may be Bound by the tide.' },
     mandate: { name: 'Mandate', el: 'support', type: 'buff', target: 'allies', stat: ['atk', 'def', 'agi'], thGain: 15, cost: { sp: 32 }, desc: 'She won. Party attack, defense and agility up a level each, and every Theurgy gauge fills by 15.' },
     // ── Kat's skills (Haenim's tree). Each has its own icon (icons.js sk-*) and effect (fx.js).
@@ -286,7 +291,7 @@ window.FEMC_BATTLE_DATA = (() => {
      `evolves`. bonus: stats the evolved form adds. learn: [level, skill, replaces?] once that Persona is the active one.
      Haenim's route forms (form: true) are a prototype preview: unlock, aff, lean (stat bonuses) and sig (signature skill). */
   const A = 'assets/femc/battle/art/personas/';
-  /* The searchers' Personas aren't designed yet (Kat): a veiled silhouette in the member's color stands in for the art. */
+  /* A veiled silhouette in a member's color, for a Persona whose art isn't in yet (unused since the searchers' art came in). */
   const unnamedArt = color => 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><defs><radialGradient id="g" cx="50%" cy="38%" r="55%"><stop offset="0" stop-color="${color}" stop-opacity=".55"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></radialGradient></defs><ellipse cx="200" cy="250" rx="190" ry="250" fill="url(#g)"/><path d="M200 70c-38 0-64 30-64 70 0 28 12 50 30 62-58 18-96 72-106 150l-16 190h312l-16-190c-10-78-48-132-106-150 18-12 30-34 30-62 0-40-26-70-64-70z" fill="#140812" stroke="${color}" stroke-width="5" stroke-opacity=".8"/><text x="200" y="400" fill="${color}" font-family="Georgia, serif" font-size="120" text-anchor="middle" opacity=".7">?</text></svg>`);
   const personas = {
     haenim: { name: 'Haenim', ko: '해님', arcana: 'Fool', art: A + 'haenim.webp', aff: { light: 'resist', dark: 'weak' }, user: 'solar',
@@ -325,11 +330,15 @@ window.FEMC_BATTLE_DATA = (() => {
     athena: { name: 'Athena', arcana: 'Chariot', art: A + 'athena.webp', aff: { pierce: 'null', strike: 'resist', elec: 'weak' }, user: 'aigis', bonus: { st: 3, en: 3, hp: 30 },
       learn: [[28, 'myriad_shots', 'arrow_rain'], [31, 'marakukaja']], blurb: 'Aigis’s awakened Persona.' },
     lucia: { name: 'Lucia', arcana: 'Priestess', art: A + 'lucia.webp', aff: {}, user: 'fuuka', evolves: 'juno', evolve: { op: 'lovers' }, blurb: 'Fuuka’s navigator Persona. She sees every Shadow’s heart.' },
-    // Searchers who awaken (Act IV–V). Persona names and art are Kat's to design; placeholders until then.
-    'p-jihoon': { name: 'Persona (unnamed)', arcana: 'Hoax', art: unnamedArt('#7dd3ff'), aff: { wind: 'resist', elec: 'weak' }, user: 'jihoon', placeholder: true, blurb: 'Jihoon’s Persona. Huge, loud, laughing. Its name is still being written.' },
-    'p-minji': { name: 'Persona (unnamed)', arcana: 'Runners', art: unnamedArt('#ffe6a8'), aff: { light: 'resist', dark: 'weak' }, user: 'minji', placeholder: true, blurb: 'Minji’s Persona. It came out of a flash. Its name is still being written.' },
-    'p-jungwon': { name: 'Persona (unnamed)', arcana: 'strangers · Hoax', art: unnamedArt('#9fe8ff'), aff: { ice: 'resist', fire: 'weak' }, user: 'jungwon', placeholder: true, blurb: 'Jungwon’s Persona. Very still, very exact. Its name is still being written.' },
-    'p-haechan': { name: 'Persona (unnamed)', arcana: 'Runners · strangers', art: unnamedArt('#ff9a3d'), aff: { elec: 'resist', ice: 'weak' }, user: 'haechan', placeholder: true, blurb: 'Haechan’s Persona. It refuses to lose. Its name is still being written.' },
+    // The searchers' Personas (Kat's picks, 2026-10-20). Ids stay 'p-<member>' so saves keep working.
+    'p-jihoon': { name: 'Dokkaebi', ko: '도깨비', arcana: 'Hunger', art: A + 'dokkaebi.webp', aff: { wind: 'resist', elec: 'weak' }, user: 'jihoon',
+      blurb: 'The goblin of the old stories, laughing with a club over his shoulder. Cross him and he’s mean; stay on his side and he’s yours for life.' },
+    'p-minji': { name: 'Theia', arcana: 'Moon', art: A + 'theia.webp', aff: { light: 'resist', dark: 'weak' }, user: 'minji',
+      blurb: 'The titaness of sight and shining light, the one who sees. Her bow is drawn on whatever’s hiding.' },
+    'p-jungwon': { name: 'Hyeonmu', ko: '현무', arcana: 'Hierophant', art: A + 'hyeonmu.webp', aff: { ice: 'resist', fire: 'weak' }, user: 'jungwon',
+      blurb: 'The Black Tortoise of the North: winter, ice and a guardian that doesn’t move. A tortoise and a serpent, two beings in one body.' },
+    'p-haechan': { name: 'Dalnim', ko: '달님', arcana: 'Universe', art: A + 'dalnim.webp', aff: { dark: 'resist', elec: 'resist', light: 'weak' }, user: 'haechan',
+      blurb: 'Lord Moon. In the old tale, Haenim and Dalnim are the sister and brother who became the sun and the moon. He keeps the sky she leaves.' },
     juno: { name: 'Juno', arcana: 'Priestess', art: A + 'juno.webp', aff: {}, user: 'fuuka', blurb: 'Fuuka’s awakened Persona. Her scans now map a whole Tartarus floor at once.' }
   };
 
@@ -398,31 +407,31 @@ window.FEMC_BATTLE_DATA = (() => {
       lines: { turn: 'Tch. Fine.', onemore: 'Stay down.', shift: 'Your turn.', finish: 'Heh. Not bad.', theurgy: 'Get outta my way.' } }
   ];
   /* Searchers who fight (life sim only, after they awaken: searcher: true keeps them out of the prototype's own screens).
-     Personas pending Kat's design: placeholder stats and skills, no finish art (their portrait stands in). */
+     Their Personas: Dokkaebi, Theia, Hyeonmu and Dalnim. No finish art yet (their portrait stands in). */
   party.push(
     { id: 'jihoon', name: 'Jihoon', persona: 'p-jihoon', weapon: 'strike', wtype: 'gloves', color: '#7dd3ff', searcher: true,
       base: { hp: 104, sp: 46, st: 11, ma: 8, en: 9, ag: 9, lu: 8 }, growth: { hp: 8, sp: 3.5, st: 1, ma: 0.7, en: 0.8, ag: 0.8, lu: 0.7 },
-      skills: ['garu', 'sonic_punch', 'tarukaja'], learn: [[24, 'garula', 'garu'], [28, 'magaru'], [32, 'kill_rush']], sig: ['sonic_punch', 'garula'], th: { buff: 1.4, hurt: 1.3 },
+      skills: ['garu', 'sonic_punch', 'tarukaja', 'goblin_club'], learn: [[24, 'garula', 'garu'], [28, 'magaru'], [32, 'kill_rush']], sig: ['sonic_punch', 'garula', 'goblin_club'], th: { buff: 1.4, hurt: 1.3 },
       theurgy: { name: 'Light of Your Life', type: 'dmg', el: 'wind', look: 'wind', target: 'all', power: 150, down: 0.4, desc: 'Loud, vain and enormous. Heavy Wind damage to all foes.' },
       role: 'Wind · Strike · Buffs', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Watch me. Everybody watch me.', onemore: 'Again! I’m on fire!', shift: 'Sol, you’re up!', finish: 'Light of your life, baby!', theurgy: 'Look at me. LOOK AT ME.' } },
     { id: 'minji', name: 'Minji', persona: 'p-minji', weapon: 'pierce', wtype: 'bow', color: '#ffe6a8', searcher: true,
       base: { hp: 84, sp: 68, st: 7, ma: 11, en: 7, ag: 10, lu: 10 }, growth: { hp: 6, sp: 5.5, st: 0.6, ma: 1, en: 0.6, ag: 0.9, lu: 0.9 },
-      skills: ['hama', 'dia', 'tarunda', 'twin_shot'], learn: [[26, 'media'], [30, 'diarama', 'dia'], [34, 'hamaon', 'hama']], sig: ['hama', 'dia'], th: { heal: 1.4 },
+      skills: ['hama', 'dia', 'tarunda', 'twin_shot', 'clear_sight'], learn: [[26, 'media'], [30, 'diarama', 'dia'], [34, 'hamaon', 'hama']], sig: ['hama', 'dia', 'clear_sight'], th: { heal: 1.4 },
       theurgy: { name: 'Final Cut', type: 'dmg', el: 'light', look: 'light', target: 'all', power: 140, down: 0.45, heal: 0.25, desc: 'One perfect frame. Heavy Light damage to all foes, and the party heals 25%.' },
       role: 'Light · Healer', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'I’ve got you in frame.', onemore: 'Rolling!', shift: 'Your shot.', finish: 'Cut. Print.', theurgy: 'Look at the camera.' } },
     { id: 'jungwon', name: 'Jungwon', persona: 'p-jungwon', weapon: 'pierce', wtype: 'rapier', color: '#9fe8ff', searcher: true,
       base: { hp: 92, sp: 60, st: 9, ma: 11, en: 8, ag: 11, lu: 8 }, growth: { hp: 7, sp: 4.5, st: 0.8, ma: 1, en: 0.7, ag: 1, lu: 0.7 },
-      skills: ['bufu', 'rakunda', 'rakukaja'], learn: [[30, 'bufula', 'bufu'], [34, 'mabufu']], sig: ['bufu', 'bufula'], th: { ail: 1.3, crit: 1.3 },
+      skills: ['bufu', 'rakunda', 'rakukaja', 'serpent_coil'], learn: [[30, 'bufula', 'bufu'], [34, 'mabufu']], sig: ['bufu', 'bufula', 'serpent_coil'], th: { ail: 1.3, crit: 1.3 },
       theurgy: { name: 'Perfect Composure', type: 'dmg', el: 'ice', look: 'ice', target: 'all', power: 150, down: 0.4, ail: { id: 'freeze', chance: 0.3 }, desc: 'The angrier he gets, the more polite. Heavy Ice damage to all foes; may Freeze.' },
       role: 'Ice · Precision · Debuffs', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Excuse me.', onemore: 'Pardon me. Again.', shift: 'After you.', finish: 'Thank you for your patience.', theurgy: 'Please. Stay down.' } },
     { id: 'haechan', name: 'Haechan', persona: 'p-haechan', weapon: 'slash', wtype: 'knife', color: '#ff9a3d', searcher: true,
       base: { hp: 96, sp: 52, st: 11, ma: 9, en: 8, ag: 12, lu: 9 }, growth: { hp: 7.5, sp: 4, st: 1, ma: 0.8, en: 0.7, ag: 1.1, lu: 0.8 },
-      skills: ['zio', 'cleave', 'rakunda'], learn: [[38, 'zionga', 'zio'], [42, 'mazio'], [44, 'power_slash', 'cleave']], sig: ['cleave', 'zionga'], th: { crit: 1.4, kill: 1.3 },
+      skills: ['zio', 'cleave', 'rakunda', 'waning_moon'], learn: [[38, 'zionga', 'zio'], [40, 'mudo'], [42, 'mazio'], [44, 'power_slash', 'cleave']], sig: ['cleave', 'zionga', 'waning_moon'], th: { crit: 1.4, kill: 1.3 },
       theurgy: { name: 'Every Universe', type: 'dmg', el: 'elec', look: 'elec', target: 'all', power: 155, down: 0.45, ail: { id: 'shock', chance: 0.3 }, desc: 'He doesn’t lose. Heavy Elec damage to all foes; may Shock.' },
-      role: 'Elec · Slash · Speed', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
+      role: 'Elec · Dark · Slash', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Yeah, yeah. I got it.', onemore: 'Again. Obviously.', shift: 'Go, princess.', finish: 'Told you.', theurgy: 'Every single universe.' } }
   );
   /* The party before anyone picks one (and for old saves): Solar plus these three. */
