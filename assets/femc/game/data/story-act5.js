@@ -443,6 +443,13 @@ window.FEMC_STORY_KIT.badEnding = [
       ] },
       { t: "(Say nothing. Stand next to him.)", then: [
         { n: "She stood next to him. Half a step to the side, the way he always stood next to her. He didn't look at her. After a while his shoulder touched hers, just barely, and stayed, and that was all, and it was the loudest thing he'd said all night." }
+      ] },
+      // Hidden unless she has gone toward a Hoax door: the second moment that turns the pull down.
+      { t: "Thank you. (Then step back, out of the light.)", ifFlag: 'home-H3', flag: { 'pull-no-awaken': true }, then: [
+        { n: "She meant it. It came out of her plain and whole, the way you'd thank someone who'd pulled you out of a river, which he had. Then she stepped back. One step, off the edge of the gold he was still giving off without meaning to, into the ordinary checkerboard dark of the hall, where the light didn't reach and her own two feet were holding her up." },
+        { n: "The bell and the jade ring were still humming on Haenim's sash, together, the way they'd rung on the bridge. She let them hum. She didn't go back toward the light." },
+        { s: 'haechan', f: 'neutral', t: "...Yeah. You always did that too. Took the hand and then gave it back." },
+        { n: "He didn't sound hurt. He sounded like somebody who'd been watching a door for a long time and had just seen which way it opened, and found, to his own surprise, that he didn't mind." }
       ] }
     ] },
     { n: "Mitsuru gave him an Evoker the next morning, at the breakfast table, without a word. He looked at it for a long time, and then put it in his jacket pocket, on the left side, so his right hand stayed free, and went back upstairs. The door at the end of the top floor stayed open that day for the first time since he'd moved in. Nobody said anything about it. Everybody noticed." },
@@ -532,6 +539,16 @@ window.FEMC_STORY_KIT.badEnding = [
         { n: "She opened the drawer beside the stove for a spoon. She didn't need a spoon. Her hand went there anyway and found, under the dish towels, at the back, a small soft bag. Quilted. Black. A Chanel makeup bag that had never held makeup. She knew before she unzipped it. Curved needles in a paper packet. A spool of black thread. Gauze. A brown bottle of iodine that had stained the lining yellow, and the same yellow, faintly, at the edge of her own thumbnail, every morning, under dark polish." },
         { fragment: 'strangers-suture-kit' },
         { n: "Then the drawer was the dorm's drawer, dish towels and a broken whisk, and there was no bag. But the pot was still on the stove. She turned the flame off before it burned, the way you would for anyone, and filled the second bowl, and set it at the empty place, carefully, the way you'd lay a place for somebody who was late. In the morning, the bowl was clean and dry and back in the cupboard, and nobody in the dorm would say who'd washed it." }
+      ] },
+      // Hidden unless she has gone toward a Hoax door: let both ring and follow neither (no fragment tonight). The third
+      // moment that turns the pull down; links/haechan.js rank 7 remembers it.
+      { t: "(Let them both ring. Put on your shoes and go out the front door.)", ifFlag: 'home-H3', flag: { 'pull-no-xroad3': true }, tally: { crossroad3: 'none' }, then: [
+        { place: 'Iwatodai Strip', time: 'Night', music: 'city' },
+        { n: "She put on her shoes. Up and down, gold and green, the two pulls went on ringing in her chest like two phones in two rooms, and she let them, and went out the front door into the cold, which was neither." },
+        { n: "The Strip had its Christmas lights up too, cheaper ones, half of them blinking out of time with the other half. She walked without deciding where, the way she'd walked onto the bridge on the night of the fourth, and noticed, three streets on, that nothing was pulling. Nothing at all. Her feet were just going where she put them. It was the strangest feeling she'd had all year, and the plainest." },
+        { n: "Outside the konbini by the station a very tall boy was explaining to a girl in boots, at volume, why buying three tubs of ice cream in December was a public service. The girl in boots was telling him he was a waste of oxygen. Neither of them had seen her yet." },
+        { n: "Somewhere very small, under her ribs, where nobody had rung it, the star pin ticked once. Like a watch. Like somebody's watch, in a council room, at a desk, being checked." },
+        { n: "She didn't follow that either. She just went and stood with them, and let Jihoon put a tub in her arms, and let Cherry call her a dumb bitch for going out without gloves, and it was the first thing she'd walked into all year that she was sure she'd chosen." }
       ] }
     ] },
     { n: "That night the other charm was quiet. She lay awake and listened for it, the one she hadn't followed, and it was there, but further. Like the next station down the line. Still running. Still lit. Just not where she was." },
@@ -541,7 +558,10 @@ window.FEMC_STORY_KIT.badEnding = [
     ...window.FEMC_STORY_KIT.anyOf('hc-lean-R', [['hc-there-R', 'hc-awaken-R'], ['hc-there-R', 'xroad3-R'], ['hc-awaken-R', 'xroad3-R']]),
     ...window.FEMC_STORY_KIT.anyOf('hc-lean-S', [['hc-there-S', 'hc-awaken-S'], ['hc-there-S', 'xroad3-S'], ['hc-awaken-S', 'xroad3-S']]),
     { ifFlag: 'hc-lean-R', else: [{ ifFlag: 'hc-lean-S', else: [
-      { ifFlag: 'xroad3-R', then: [{ flag: { 'hc-lean-R': true } }], else: [{ flag: { 'hc-lean-S': true } }] }
+      // A tie goes to tonight; if she followed neither tonight, to whichever name she answered first.
+      { ifFlag: 'xroad3-R', then: [{ flag: { 'hc-lean-R': true } }], else: [{ ifFlag: 'xroad3-S', then: [{ flag: { 'hc-lean-S': true } }], else: [
+        { ifFlag: 'hc-there-S', then: [{ flag: { 'hc-lean-S': true } }], else: [{ ifFlag: 'hc-awaken-S', then: [{ flag: { 'hc-lean-S': true } }], else: [{ flag: { 'hc-lean-R': true } }] }] }
+      ] }] }
     ] }] }
   ] },
 
@@ -701,12 +721,29 @@ window.FEMC_STORY_KIT.badEnding = [
     ...window.FEMC_STORY_KIT.anyOf('home2-R', [['home-R3', 'home-R6'], ['home-R3', 'home-R9'], ['home-R6', 'home-R9']]),
     ...window.FEMC_STORY_KIT.anyOf('home2-S', [['home-S3', 'home-S6'], ['home-S3', 'home-S9'], ['home-S6', 'home-S9']]),
     ...window.FEMC_STORY_KIT.anyOf('home2-H', [['home-H3', 'home-H6'], ['home-H3', 'home-H9'], ['home-H6', 'home-H9']]),
-    ...window.FEMC_STORY_KIT.anyRank('anc7-R', ['minji', 'hanni', 'hyein', 'jaehyun', 'haechan'], 7),
-    ...window.FEMC_STORY_KIT.anyRank('anc7-S', ['yunjin', 'haechan', 'jungwon'], 7),
-    ...window.FEMC_STORY_KIT.anyRank('anc7-H', ['jihoon', 'cherry', 'jungwon'], 7),
+    // Haechan's ranks are story ranks now (he always reaches 7 by 12/13), so he anchors only the world he leans toward
+    // (hc-lean-R / -S, settled on 12/12): a two-world person counts for one world at a time (plot doc §12).
+    ...window.FEMC_STORY_KIT.anyRank('anc7-R', ['minji', 'hanni', 'hyein', 'jaehyun'], 7),
+    { ifFlag: 'hc-lean-R', then: window.FEMC_STORY_KIT.anyRank('anc7-R', ['haechan'], 7) },
+    ...window.FEMC_STORY_KIT.anyRank('anc7-S', ['yunjin', 'jungwon'], 7),
+    { ifFlag: 'hc-lean-S', then: window.FEMC_STORY_KIT.anyRank('anc7-S', ['haechan'], 7) },
     { ifFlag: ['door-R6', 'home2-R', 'anc7-R'], then: [{ flag: { 'elig-R': true } }] },
     { ifFlag: ['door-S6', 'home2-S', 'anc7-S'], then: [{ flag: { 'elig-S': true } }] },
-    { ifFlag: ['door-H6', 'home2-H', 'anc7-H'], then: [{ flag: { 'elig-H': true } }] },
+    // The secret road (Hoax, "the unfated life", Kat's ruling 2026-10-21). Never the natural path; it takes intent:
+    //   following Hoax memories: the sixth Hoax fragment, two Hoax doors answered "Go toward it", and the star followed at
+    //     one crossroad (10/24 or 11/28);
+    //   strong Hoax links: two of Jungwon, Jihoon and Cherry at rank 7+;
+    //   turning the pull down at two key moments: answering to her own name on 11/4, stepping back after his awakening on
+    //     12/5, following neither charm on 12/12 (those three only appear after home-H3), or Haechan as a friend at rank 8.
+    ...window.FEMC_STORY_KIT.anyRank('h7-jw', ['jungwon'], 7),
+    ...window.FEMC_STORY_KIT.anyRank('h7-jh', ['jihoon'], 7),
+    ...window.FEMC_STORY_KIT.anyRank('h7-ch', ['cherry'], 7),
+    ...window.FEMC_STORY_KIT.anyOf('anc7-H', [['h7-jw', 'h7-jh'], ['h7-jw', 'h7-ch'], ['h7-jh', 'h7-ch']]),
+    ...window.FEMC_STORY_KIT.anyOf('star-followed', [['xroad1-H'], ['xroad2-H']]),
+    { ifRank: { haechan: 8 }, then: [{ ifRomance: 'haechan', else: [{ flag: { 'pull-no-friend': true } }] }] },
+    ...window.FEMC_STORY_KIT.anyOf('pull-no-2', [['pull-no-there', 'pull-no-awaken'], ['pull-no-there', 'pull-no-xroad3'], ['pull-no-there', 'pull-no-friend'],
+      ['pull-no-awaken', 'pull-no-xroad3'], ['pull-no-awaken', 'pull-no-friend'], ['pull-no-xroad3', 'pull-no-friend']]),
+    { ifFlag: ['door-H6', 'home2-H', 'star-followed', 'anc7-H', 'pull-no-2'], then: [{ flag: { 'elig-H': true } }] },
     // True path (provisional): three different anchors at 7+, Akihiko 7+, Wren 9, 6 fragments in every world and 9 in one.
     ...window.FEMC_STORY_KIT.anyRank('d7-rN', ['minji', 'hanni', 'hyein', 'jaehyun'], 7),
     ...window.FEMC_STORY_KIT.anyRank('d7-sN', ['yunjin'], 7),
@@ -747,10 +784,13 @@ window.FEMC_STORY_KIT.badEnding = [
         { s: 'wren', f: 'sad', t: "...The house by the sea. Of course. The tide." },
         { n: "The other two charms went quiet. And the jade went on, ringing, and then stopped ringing, and started, very slowly, to shine." }
       ] },
-      { t: "(The star pin rings.) I have to go home.", ifFlag: 'elig-H', flag: { 'route-H': true }, tally: { solstice: 'H' }, then: [
-        { n: "The star pin rang over all the others, bright and sharp, metal through card, a pin pushed home. A front door and a tub of ice cream. A gym full of plastic chairs. Exit doors, and all of them there, screaming. She heard herself say it, and it was hers." },
-        { s: 'wren', f: 'sad', t: "...Hanlim. Of course. The council room, with the lights on late." },
-        { n: "The other two charms went quiet. And the star went on, ringing, and then stopped ringing, and started, very slowly, to shine." }
+      { t: "(The star pin isn't ringing. Choose it anyway.) I want to go home.", ifFlag: 'elig-H', flag: { 'route-H': true }, tally: { solstice: 'H' }, then: [
+        { n: "It wasn't the loudest. That was the thing. The bell and the jade ring were ringing over everything, gold and green, two pulls she'd felt in her bones since November, the way you feel the tide. The star pin wasn't pulling at all. It was just there on her sash, small and silver, the way a door is just there when nobody's leaning on it." },
+        { n: "She reached for it anyway. A front door and a tub of ice cream. A gym full of plastic chairs. Exit doors, and all of them there, screaming. A life nobody had arranged for her, not a father at a dinner over the sea, not a song somebody had been writing for her since before she could read. One she'd walked into with her own feet, on purpose, swearing the whole way." },
+        { s: 'wren', f: 'surprised', t: "...Hanlim? But it isn't even... it isn't calling you." },
+        { s: 'solar', f: 'neutral', t: "I know. That's why." },
+        { n: "The bell and the jade ring went quiet, slowly, the way two people stop talking when they realize the conversation has gone somewhere without them. And the star, which nobody had rung, began very slowly to shine." },
+        { n: "At the top of the station stairs, out of breath, in a hoodie over pajamas, Haechan had stopped. He'd heard all three. He'd heard which one she picked. He stood there with his hand on the rail and didn't come down, and when she looked up at him, his face, for once in his life, did nothing to hide what it was doing, and what it was doing was letting her go." }
       ] },
       { t: "I'm staying. Here.", flag: { 'route-stay': true }, tally: { solstice: 'stay' }, then: [
         { n: "It came out of her low and certain, in the voice she didn't use much. Here. The dorm and the full house and the shoes in the hall. Akihiko at a railing not asking. Koromaru's chin on her knee. A year, this year, the only one she could remember all of." },

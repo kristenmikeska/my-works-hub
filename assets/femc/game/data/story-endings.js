@@ -2,7 +2,7 @@
    One event, 'end-ending', branching on the flags the solstice (12/21) and the finale (1/30) set:
      route-bad → the last stop (the bad ending already played at the solstice; this is its coda)
      route-true + true-final → I am thou        route-R → where it begins       route-S → low tide
-     route-H → the count                         route-stay (or no route at all) → here
+     route-H → the unfated life (the secret road) route-stay (or no route at all) → here
    Variants come from Christmas Eve (xmas-<id>) and, for Stay, the solstice (stay-akihiko / stay-shinjiro).
    Each ending closes on an "ENDING · …" card. Home endings are undated and plot-free: she wakes, nothing in her book has
    moved, and nobody says what happens next. */
@@ -86,11 +86,20 @@
     card('low tide')
   ];
 
+  // The secret road (Kat's ruling 2026-10-21): "the unfated life". Hoax is the one world without Haechan; Solar picks a
+  // life nobody arranged for her. Bittersweet, not tragic. He let her go on 12/22 (a6-unfated) and on the platform (1/30,
+  // where he gave her the last can); Jungwon is the bridge, the one person who exists both in the life arranged for her
+  // (strangers) and in the one she ran into on purpose. The CG and the Christmas variants are unchanged.
   const hoax = [
     ...lastHour,
     { n: "There was a door in the lounge that had never been there, between the television and the stairs, and behind it, through the gap, music. A gym. Hundreds of voices. A dog barking, somewhere further off, at nothing, delighted." },
-    { n: "Jihoon was waiting by it, with Cherry, who had her arm through his and was pretending she didn't. The crew, all four of them, arguing about who went first. Jungwon a little apart, very straight, his watch running again." },
+    { n: "It wasn't pulling. That was the first thing she noticed, and she noticed it with her whole body, the way you notice a sound only once it stops. All year every door had pulled at her like a tide. This one just stood there, a little ajar, with a gym on the other side of it, and waited to see what she'd do." },
+    { n: "Jihoon was waiting by it, with Cherry, who had her arm through his and was pretending she didn't. The crew, all four of them, arguing about who went first. And Jungwon, a little apart, very straight, his watch running again." },
+    { n: "He was the only one of them who had stood in the other place too. She knew that now. In a house by the sea somebody had arranged him for her, at a dinner, over a white porcelain bottle, on a date that was still on a calendar in a hall. Here, she'd run against him in front of the whole school and lost, and he'd picked her anyway. Same boy. One of him was a contract. The other one she'd walked into on purpose, swearing the whole way." },
+    { s: 'jungwon', f: 'neutral', t: "I'd rather be the one you ran against." },
+    { n: "He said it very politely, to the door, which she knew by now meant he'd been holding it in for a month. Then, because he was him, he checked his watch, and corrected himself, and said a month and nine days." },
     { n: "S.E.E.S. stood around the lounge in the green, where they'd stood a hundred times. She hugged every one of them. Akihiko last. He didn't ask. He just held on, and let go, exactly when she did." },
+    { n: "In her coat pocket, cold against her hip, there was a can. Pink and black, a logo like claw marks, the last one in any world that wasn't his. She didn't take it out. She knew exactly where it was." },
     { n: "Then she went through." },
     { dark: false },
     { music: 'joy' },
@@ -99,6 +108,7 @@
     { n: "Hanlim. The gym, after hours, half-decorated for something the council had voted on and nobody had finished, blue and silver balloons on every surface, string lights, and on a table by the wall the old ballot box from the election, empty now, with a cash tin inside it where somebody had decided it would be safest. Everyone still in the building far too late, the lights on in every window. She was standing in the middle of it in a uniform with an armband on it that nobody here would ever understand, and nobody noticed, because Cherry had already crossed the gym at a dead run and thrown both arms around her neck." },
     { s: 'cherry', f: 'happy', t: "THERE you are. Where have you BEEN? Don't answer that. I don't care. You're here. You look like shit. I love you. Your left wing is lower than your right." },
     { n: "Her phone was going off in her pocket. A group chat she'd been in her whole life. Somebody had renamed it in the time she'd been gone. It was now called something so stupid she laughed out loud in the middle of the gym, and wouldn't tell anyone why. At home, Nana would be barking at the door. She could feel it." },
+    { n: "Nobody had arranged any of it. Not the gym, not the balloons, not the girl hanging off her neck calling her a dumb bitch with love. Her parents had wanted a candidate and she'd given them one and then, somewhere along the way, without asking anybody, she'd started to want it back. That was the difference. She could feel it under her feet like a floor." },
     { ifFlag: 'xmas-jungwon', then: [
       { n: "Later, after hours, she found him in the council room. Of course she did. Lamplight, the long table, a stack of folders squared to the edge, and the cash tin out of the ballot box open in front of him, every note faced the same way, because he was counting it. Twice. A president and a vice president, and one croissant, on a plate between them, with red icing." },
       { n: "He didn't ask where she'd been. He didn't ask her anything. He lost count, which he had never once done in his life, and started again, and split the croissant in half, exactly, and gave her the larger one, and they sat in the council room and ate it, and she let him finish the count before she kissed his cheek, because she knew him, and he'd have started over." }
@@ -112,9 +122,10 @@
       { n: "She typed back. In capital letters, with a keysmash in the middle, the way her thumbs had always wanted to." }
     ] }] },
     { cg: null },
-    { n: "Nothing was decided that night. Not on the screen. Not about anyone, not the boy counting money in the council room and not the boy at the arcade feeding a machine coins, and not about her. She'd come home to be the vice president, and somewhere very far away a pink hallway and a house by the sea went on missing her, and a dormitory by a bay kept a room made up with a uniform in her size, and she would never know." },
-    { n: "She knew exactly how to be the girl on the poster now. The smile. The speech. She could do it perfectly. She did." },
-    card('the count')
+    { n: "Nothing was decided that night. Not on the screen. Not about anyone, not the boy counting money in the council room and not the boy at the arcade feeding a machine coins, and not about her. Somewhere very far away a pink hallway and a house by the sea went on missing her, and a dormitory by a bay kept a room made up with a uniform in her size, and she would never know." },
+    { n: "And somewhere, in two places at once, a boy on a roof and a boy on a dryer listened to a song that ended now, and didn't go on past it, and didn't mind. He'd said it was allowed. He'd said it out loud so it would count." },
+    { n: "She knew how to be the girl on the poster. The smile. The speech. She could do it perfectly, and some mornings she did. But at the back of her closet, behind the blazer, there was a can nobody in this world had ever seen, and she never opened it, and she never threw it away, and she never once had to explain to anyone why she'd chosen the life she was standing in. It was hers. Nobody had written it. That was the whole of it." },
+    card('the unfated life')
   ];
 
   const stay = [

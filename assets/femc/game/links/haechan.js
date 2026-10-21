@@ -4,6 +4,13 @@
    afraid (strangers). Both registers surface; neither world's plot moves. Every rank lets Solar lean one way or the other
    (tally haechan.R / haechan.S, plot doc §9, §12). His crossing (11/4, the laundry room, "...There you are.") is a story
    event; rank 1 is the first night after it. He awakens on 12/5 (story); ranks 6+ come after.
+   Story ranks (Kat's ruling 2026-10-21): all ten are `forced`, like Wren's. Each plays on its date as story, in the late
+   slot (storySlot; ranks 4 and 5 are evening scenes, rank `slot`), once his arrival has played (storyEvents). No meter:
+   time with him between ranks is a hangout. Choices still decide romance or friendship (rank 8) and his lean.
+   More of him lives in data/living-haechan-*.js (late nights, routines, run-ins, texts, holidays).
+   The secret road (Hoax, "the unfated life"): the one world without him. Rank 7 has a variant for a player who let both
+   charms ring on 12/12 (pull-no-xroad3: no memory taken); ranks 9 and 10 and the Christmas scene have route-H branches
+   where he is the one who lets her choose (a6-unfated, story-act6.js, is that conversation).
    Fragments awarded here: strangers-discman (rank 3, plot doc §8 S7), runners-rooftop (rank 7, ★ new card, §8 R9).
    Romance turn at rank 8 (route romance/friend), before Christmas. Arcana Universe is v1's; searcher arcana are an open
    question for Kat (plot doc §16.6). afterMax and christmas use v1's field shapes; the revamp engine doesn't play them yet.
@@ -26,7 +33,8 @@
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'haechan', name: 'Haechan', short: 'Haechan', arcana: 'Universe', numeral: '∞', from: 'Runners · strangers',
   kind: 'searcher', world: 'RS', romance: 'canon',
-  starts: '11/4', gate: { R: 5, S: 4 },
+  starts: '11/4',
+  forced: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], storySlot: 'late', storyEvents: ['a4-there-you-are'],
   home: { area: 'dorm', spot: 'Laundry Room', slot: 'evening', days: [0, 1, 2, 3, 4, 5, 6],
           hint: 'Late, any night. The laundry room, usually on top of the dryer, at an hour nobody does laundry.' },
   approach: "There's someone in the dorm's laundry room at an hour nobody does laundry, sitting on top of the dryer with headphones around his neck, and he looks up a second before you reach the door, like he heard you thinking about it.",
@@ -458,7 +466,7 @@
       { n: "She didn't ask what that meant. It sat on her desk all night next to a can she still hadn't finished, and she lay in bed looking at it, and at some point she heard herself humming something she had never once heard come out of it." }
     ] },
 
-    { after: '11/25', title: '4: duo queue', place: 'Paulownia Mall · Game Panic', time: 'Evening', music: 'city', scene: [
+    { after: '11/25', slot: 'evening', title: '4: duo queue', place: 'Paulownia Mall · Game Panic', time: 'Evening', music: 'city', scene: [
       { n: "Game Panic at eight on a weeknight was all noise and no air, every cabinet shouting its own song over every other cabinet's song, the carpet printed with planets that had been walked flat years ago, and Haechan was standing in front of the old two-player shooter in the back corner with his hands in his hoodie pocket like it had personally called him here." },
       { s: 'haechan', f: 'neutral', t: "Play with me." },
       { n: "It wasn't a question. He picked up the gun on the left without looking, the one with the long plastic scope taped onto the barrel, and she picked up the other one, the stubby one with the green button on the side that dropped health packs, and her hands went completely still on it for a second, the way your hands go still on a doorknob in a house you grew up in." },
@@ -526,7 +534,7 @@
       { n: "On the monorail home he sat with his knee an inch from hers and his headphones on and nothing playing in them. She could tell because his thumb wasn't moving on the cord. He just wanted the weight of them over his ears. She knew that about him too, she realized. She knew it the way she knew the stubby gun had a green button." }
     ] },
 
-    { after: '12/1', title: '5: it fits you better', place: 'Iwatodai Station · Platform', time: 'Evening', music: 'night', scene: [
+    { after: '12/1', slot: 'evening', title: '5: it fits you better', place: 'Iwatodai Station · Platform', time: 'Evening', music: 'night', scene: [
       { n: "It rained on the way back from Port Island, the cold sideways December kind that came off the bay in sheets and got under every umbrella in the city, and she had left hers in the dorm, because she always left hers in the dorm, and by the time they came up the steps onto the platform her blazer was soaked through to the shirt and her hair was stuck to her neck in black ropes." },
       { n: "He didn't say anything. He didn't sigh, or roll his eyes, or tell her she should have brought one. He just pulled the black hoodie off over his head in one movement, the T-shirt underneath riding up and coming back down, and held it out to her." },
       { s: 'haechan', f: 'neutral', t: "Here." },
@@ -572,7 +580,7 @@
       { n: "On the train, he stood close enough that their arms touched through the wet, and she let him, and when the doors opened at their stop neither of them moved to step away first. She wore the hoodie up the dorm steps and into the lounge, where Junpei took one look at her and opened his mouth, and Yukari elbowed him so hard he closed it again." }
     ] },
 
-    { after: '12/7', title: '6: eat, you didn\'t eat', place: 'Iwatodai Dorm · Kitchen', time: 'Late Night', music: 'tender', scene: [
+    { after: '12/8', title: '6: eat, you didn\'t eat', place: 'Iwatodai Dorm · Kitchen', time: 'Late Night', music: 'tender', scene: [
       { n: "In the nights after the tower she found him most often in the laundry room, but on the third one she found him in the kitchen at three in the morning with every light off but the one over the stove, standing at the counter in a T-shirt with his back to her, very still, the way people stand when they've walked into a room and forgotten why." },
       { n: "He'd come out of Tartarus on Saturday walking, which was the only thing anyone in S.E.E.S. had been able to agree on afterward. Fuuka had cried. Akihiko had clapped him on the shoulder hard enough to make a lesser man sit down. Mitsuru had looked at him for a long, flat moment and said, *Well,* the way she said it about things she'd decided to stop being surprised by. Haechan had said nothing to any of them. He'd gone and sat on the dryer until dawn." },
       { n: "He hadn't told Solar what it had been like. She hadn't asked. She'd been there. She'd seen the thing that came up behind him in the green light and the way he'd put a hand back without looking, like he was steadying himself on a wall, and the wall had been the color of noon." },
@@ -625,12 +633,12 @@
       { n: "He'd already turned back toward the laundry room. She stood on the third step for a long time, holding the rail, waiting for her heart to come back down from wherever it had gone." }
     ] },
 
-    { after: '12/12', title: '7: full sun', place: 'Iwatodai Dorm · Rooftop', time: 'Night', music: 'sun', scene: [
+    { after: '12/13', title: '7: full sun', place: 'Iwatodai Dorm · Rooftop', time: 'Night', music: 'sun', scene: [
       { n: "December had come in clear and hard. The sky over the bay was the deep cold blue of something that had been scrubbed, and every light in Port Island sat sharp on the water instead of blurring, and the rooftop door had frozen a little in its frame so she had to shoulder it." },
       { ifFlag: 'xroad3-R', then: [
-        { n: "The brick was there again. The second time this week. The first time, the night the city put its lights up, a bell had sent her up here alone, and she'd found a can on the railing and a whole other roof inside her head, and heard somebody climb the stairs behind her and stop outside this door for a long moment and go away again without opening it." },
+        { n: "The brick was there again. Two nights running. The first time, last night, when the city put its lights up, a bell had sent her up here alone, and she'd found a can on the railing and a whole other roof inside her head, and heard somebody climb the stairs behind her and stop outside this door for a long moment and go away again without opening it." },
         { n: "Tonight he was on her side of the door. He'd put the brick there himself, and he was at the railing with his hood down, and he didn't turn around." },
-        { s: 'haechan', f: 'neutral', t: "That was me. The other night. On the stairs." },
+        { s: 'haechan', f: 'neutral', t: "That was me. Last night. On the stairs." },
         { s: 'haechan', f: 'serious', t: "You were remembering something. You don't walk in on somebody remembering. You'd have thrown the can at me." },
         { choose: [
           { t: "You talked about rooms. The bass and the kick.", notes: 3, tally: { 'haechan.R': 1 }, then: [
@@ -647,6 +655,25 @@
           ] }
         ] }
       ], else: [
+        { ifFlag: 'pull-no-xroad3', then: [
+          { n: "He'd propped it open behind her with a brick. That was new. She looked at the brick, and at the hand's width of warm stairwell air it held open into the cold, and felt the thing start in her that always started now, the floor of her going soft, a ladder, cold rungs, a different roof." },
+          { n: "She let it go by. She'd done it last night too, when both charms rang at once in the lounge and she'd put on her shoes and gone out the front door instead of up or down, into the ordinary lights of the street. It was like letting a train pass at a station you knew wasn't yours. The memory slowed, and waited, and went on without her." },
+          { s: 'haechan', f: 'neutral', t: "...You didn't take it." },
+          { n: "He wasn't looking at her. He was looking at the brick, the way he'd look at a mixing desk with one fader pulled all the way down, interested, not offended." },
+          { s: 'haechan', f: 'neutral', t: "Last night too. Both of them rang and you went out the front. I heard the door. I thought you'd forgotten something at the konbini." },
+          { s: 'haechan', f: 'serious', t: "You hadn't forgotten anything." },
+          { choose: [
+            { t: "I wanted to see where I'd go if nothing was pulling.", notes: 3, then: [
+              { s: 'haechan', f: 'surprised', t: "..." },
+              { s: 'haechan', f: 'neutral', t: "And?" },
+              { s: 'solar', f: 'neutral', t: "Toward the station. Somebody was yelling about ice cream." },
+              { n: "He laughed through his nose, once, flat, and it didn't sound hurt. It sounded like a man who'd been told a song he'd written had been covered by a band he couldn't stand, and that it was good." }
+            ] },
+            { t: "(Don't explain. Hand him the coffee.)", notes: 2, then: [
+              { n: "She held out a can. He took it. Neither of them said anything about the brick, and he didn't kick it out of the door, either, and she understood he was leaving it there for her the way you leave a light on, not to make anybody come home, just so they can see the step." }
+            ] }
+          ] }
+        ], else: [
         { n: "He'd propped it open behind her with a brick. That was new. She looked at the brick and at him and at the gap the brick held, a hand's width of warm stairwell air leaking out into the cold, and something went through her that had nothing to do with the cold at all." },
         { n: "A different way up. A ladder bolted to brick, cold metal biting her palms rung after rung. A different roof, the ledge under her legs, wind in her face that smelled of leaves instead of salt, and a boy's voice somewhere to her left, saying a thing about rooms, about hearing them, about how the bass eats the kick, the vocal's too dry, all the things that make people feel without knowing why. And under it, the clink of a can against concrete." },
         { fragment: 'runners-rooftop' },
@@ -667,6 +694,7 @@
             { s: 'haechan', f: 'neutral', t: "God. You're such a nerd." }
           ] }
         ] }
+      ] }
       ] },
       { n: "She'd brought two cans of hot coffee from the machine downstairs. He took one without saying thank you, which she had come to understand was how he said thank you, and cracked it, and grimaced at the first sip like it had betrayed him, and kept drinking it." },
       { s: 'haechan', f: 'neutral', t: "This is so bad. Somebody brewed this in a factory in a different decade and it's been waiting for me." },
@@ -674,7 +702,7 @@
       { s: 'haechan', f: 'serious', t: "Drop it." },
       { n: "She didn't drop it. She smiled into her own can and he saw her do it and looked away at the water with the expression of a man who has been caught at something extremely minor and would rather have been caught at something worse." },
       { ifFlag: 'xroad3-S', then: [
-        { s: 'haechan', f: 'neutral', t: "You went down. The other night. When the lights went up. You went down instead of up." },
+        { s: 'haechan', f: 'neutral', t: "You went down. Last night. When the lights went up. You went down instead of up." },
         { s: 'haechan', f: 'happy', t: "Somebody made sea bream for two at midnight and then didn't sit down to eat it. I know who. I'm not going to say his name on a nice roof. It'd make him too happy." },
         { n: "He said it loud and cheerful, the way he'd say something rude to an old man at a restaurant to make him laugh, and then the cheer ran out of it all at once, and he drank his terrible coffee, and didn't say anything else about the kitchen at all." }
       ] },
@@ -853,6 +881,27 @@
               ] }
             ] }
           ], else: [
+            { ifFlag: 'route-H', then: [
+              { s: 'haechan', f: 'neutral', t: "Neither. That's the funny part. Both of mine went quiet at the same time, like two radios in two rooms somebody switched off from the hall." },
+              { s: 'haechan', f: 'neutral', t: "I dreamed a gym. Plastic chairs. Balloons nobody finished blowing up. A dog barking at a door, delighted, and a girl in a blazer with an armband on it laughing at something somebody short said. I wasn't in it. I was the one watching from the window, and I didn't mind. That's how I knew it wasn't mine." },
+              { n: "He said it in neither voice. Not the dry one, not the loud one. Something in between that she'd never heard him use, quiet and level, the voice you'd use to read somebody their own name off a list to make sure you'd spelled it right." },
+              { s: 'haechan', f: 'serious', t: "I told you on the roof. After the station. I'll say it once more and then I'm done, because if I say it three times it turns into a speech." },
+              { s: 'haechan', f: 'neutral', t: "I've been pulled at you my whole life. Twice. Two lives, both of them bent toward the same girl like a plant on a windowsill. Nobody asked me. Nobody asked you. Being pulled at somebody isn't the same as being tied to them. You're the first person I've ever watched work that out." },
+              { s: 'haechan', f: 'neutral', t: "So go somewhere nobody arranged. I mean it. I'm the only one here who knows exactly what it costs to say that, so it counts double." },
+              { choose: [
+                { t: "You're not angry.", notes: 2, then: [
+                  { s: 'haechan', f: 'neutral', t: "I'm furious. Not at you. At the weather. At whoever decided two suns was a good idea." },
+                  { s: 'haechan', f: 'happy', t: "...It's fine. I'll get over it in about forty years. I'm fast." }
+                ] },
+                { t: "(Find his hand inside the blanket.)", notes: 3, then: [
+                  { n: "She found his hand. He held on, and didn't pull, which on him was the whole sentence. After a while his thumb moved once over her knuckles, the way you'd smooth a page flat before you closed the book on it." }
+                ] },
+                { t: "Bring two cans anyway. If you ever end up at a gym.", notes: 3, then: [
+                  { s: 'haechan', f: 'happy', t: "I'll bring the wrong ones. Peach. Your president can have the second." },
+                  { s: 'haechan', f: 'neutral', t: "...I'm joking. I'd never give him a can." }
+                ] }
+              ] }
+            ], else: [
             { s: 'haechan', f: 'neutral', t: "Both. Still both. I keep waiting for one of them to go quiet, and neither of them will." },
             { s: 'haechan', f: 'serious', t: "Neither of them is where you're going. I worked that out on the platform. I'm not going to make that your problem." },
             { s: 'haechan', f: 'neutral', t: "I'll go home to whichever one wakes me up first. And I'll be up somewhere high, a roof, a hill, whichever, and you'll be somewhere I'm not." },
@@ -868,6 +917,7 @@
               { t: "Bring two cans anyway.", notes: 3, then: [
                 { s: 'haechan', f: 'happy', t: "Yeah. I'll drink yours. It's fine. I'll be on a budget." }
               ] }
+            ] }
             ] }
           ] }
         ] }
@@ -936,8 +986,13 @@
           { ifFlag: 'haechan-sure-both', then: [
             { s: 'haechan', f: 'neutral', t: "When the hour ends I'm going to be in two places at once, and so are you, and for once that's the whole plan. I'll find you in both. You'll tell me to go to hell in both. In two accents." }
           ], else: [
+            { ifFlag: 'route-H', then: [
+              { s: 'haechan', f: 'neutral', t: "When the hour ends I'll wake up in one of mine. I don't know which yet. Doesn't matter. You'll be somewhere neither of them goes." },
+              { s: 'haechan', f: 'serious', t: "I'm not going to come looking. That's the deal. That was always going to be the deal. It's a good one. I checked it twice, like the vending machine." }
+            ], else: [
             { s: 'haechan', f: 'neutral', t: "When the hour ends I don't know where I'm going to be." },
             { s: 'haechan', f: 'serious', t: "But I'll find you. I always do. Some laundry room. Some roof. Some hallway at a party that goes on too long. I'll find you, and you'll have no idea who I am for about five minutes, and then you'll tell me to go to hell." }
+            ] }
           ] }
         ] }
       ] },
@@ -1066,9 +1121,11 @@
     { ifFlag: 'route-S', then: [
       { n: "He'd been loud all day. He'd sung carols in the kitchen with the wrong words on purpose, and called Mitsuru *Hoejangnim* to her face over the cake, and she'd let him. Since the solstice the harbor had been coming up in him more and more, warm and rude and much too cheerful, the way a tide comes in, a little further every night." }
     ], else: [
-      { ifFlag: 'route-R', then: [
+      { ifFlag: 'route-H', then: [
+        { n: "He'd been easy all day, which was the strangest thing about him lately. Not loud, not flat. Since the station he'd stopped switching, the way a man stops checking his pockets once he's decided he hasn't lost anything after all. He'd even let Jihoon explain pilates to him over the cake, for eleven minutes, and only said *no* twice." }
+      ], else: [{ ifFlag: 'route-R', then: [
         { n: "He'd been quiet all day. The good quiet, the dry one, the one that read the whole party from the stairs and said three words about it, all of them accurate. Since the solstice the campus had been coming up in him more and more, flat and certain, like snow settling on something until you could see its shape." }
-      ] }
+      ] }] }
     ] },
     { s: 'haechan', f: 'sad', t: "Christmas was always somebody else's party. In both places. I just remember being cold." },
     { choose: [

@@ -1275,6 +1275,18 @@
         { s: 'haechan', f: 'neutral', t: "Agasshi." },
         { n: "She didn't flinch. It landed in her hard and familiar and furious, like a hand caught around a wrist, and it didn't hurt, because she had been expecting it, somehow, all year, and she watched him watch her not flinch, and file it." },
         { n: "Then he tried the other one, quieter, *princess*, and that one went through her soft and sudden as a hand on the small of her back in a crowded room, and she flinched, and he saw that too." }
+      ] },
+      // Only for a player who has already gone toward a Hoax door (home-H3): she answers to neither. One of the moments
+      // that turn the pull down (pull-no-*, read by the solstice's secret road and core.js heading()).
+      { t: "(He tries both. Answer to your own name.)", ifFlag: 'home-H3', flag: { 'pull-no-there': true }, then: [
+        { s: 'haechan', f: 'neutral', t: "Princess." },
+        { n: "Something warm, put into her hands on a cold night. She held it and didn't close her fingers on it." },
+        { s: 'haechan', f: 'neutral', t: "...Agasshi." },
+        { n: "A hand around a wrist, hard and familiar. She felt it, and didn't pull against it, and didn't go with it either. She just let it be a hand." },
+        { s: 'solar', f: 'neutral', t: "Solar. It's just Solar." },
+        { n: "It came out of her quiet and very even, the voice somebody had once told her to use when she meant a thing, from a stage, with a sheet of paper gone soft in her fist. He looked at her for a long moment. He didn't file it anywhere. She watched him not know where to put it." },
+        { s: 'haechan', f: 'neutral', t: "...Yeah. Okay. Solar." },
+        { n: "He said it like somebody trying a key in a door he'd assumed was his and finding it turned from the other side too." }
       ] }
     ] },
     { n: "He didn't say anything about it. He didn't ask her which one was hers. He leaned his head back against the dryer and shut his eyes again and stayed there, a hand's width away, until it was light, and she stayed too, and neither of them said his name, because she didn't know it, and he wasn't going to make her ask." }
