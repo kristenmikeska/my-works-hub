@@ -130,6 +130,10 @@ window.LW = (() => {
       () => at(md, 'evening'),
       () => { at(md, 'evening', { flags: flagsRead }); G.S.events = G.D.events.map(e => e.id); Object.keys(G.LINKS).forEach(id => link(id, 10, { route: 'romance' })); }
     ];
+    // Scenes that branch on where the story is heading (core.js heading(), { ifHeading }) play on every heading too.
+    let heads = false; walk(opts.scene, l => { if (l.ifHeading) heads = true; });
+    if (heads) [{ 'hc-lean-S': true }, { 'home-H3': true, 'pull-no-there': true }, { 'route-R': true }, { 'route-S': true }, { 'route-H': true }, { 'route-stay': true }, { 'route-true': true }]
+      .forEach(h => states.push(() => { at(md, 'evening', { flags: h }); G.S.route.frags = { R: 3, S: 3, H: h['home-H3'] ? 6 : 3 }; }));
     const got = new Set(); let n = 0;
     for (const st of states) {
       const queue = [[]];
@@ -229,7 +233,7 @@ try:
     ok(not ar['bad'], f"every afterRank text arrives after its rank (not before), waits for a reply that gives ♪, and drops when stale: {ar['bad'][:4]}")
     ok(ar['sent'] >= 45, f"{ar['sent']} reactive texts across the links")
     amb = p.eval(r"""(()=>{const G=FemcGame;const bad=[];let n=0;
-      for(const t of G.D.texts.ambient){const s=LW.at(t.to,'early');s.phone.done=G.D.texts.texts.map(x=>x.id).concat(G.D.texts.ambient.filter(x=>x!==t).map(x=>x.id));(t.events||[]).forEach(e=>{if(!s.events.includes(e))s.events.push(e)});
+      for(const t of G.D.texts.ambient){const s=LW.at(t.to,'early');s.phone.done=G.D.texts.texts.map(x=>x.id).concat(G.D.texts.ambient.filter(x=>x!==t).map(x=>x.id));(t.events||[]).forEach(e=>{if(!s.events.includes(e))s.events.push(e)});Object.entries(t.route||{}).forEach(([id,r])=>LW.link(id,10,{route:r}));if(t.rank&&typeof t.rank==='object')Object.entries(t.rank).forEach(([id,r])=>{if(!t.route?.[id])LW.link(id,r)});
         let got=false;for(let d=G.dayOf(t.to)-1;d<=G.dayOf(t.to)&&!got;d++){s.day=d;s.phone.ambientDay=-1;for(const slot of G.slotsFor(G.dayInfo(d))){s.slot=slot;G.deliverTexts();if(s.phone.done.includes(t.id)&&(s.phone.threads[t.thread]||[]).length){got=true;break;}}}
         if(got)n++;else bad.push(t.id);}
       // At most one a day: a day with several open windows.

@@ -155,6 +155,10 @@ window.LW = (() => {
       () => at(md, 'evening'),
       () => { at(md, 'evening', { flags: flagsRead }); G.S.events = G.D.events.map(e => e.id); Object.keys(G.LINKS).forEach(id => link(id, 10, { route: 'romance' })); G.S.stats = { knowledge: 999, courage: 999, proficiency: 999, charm: 999, kindness: 999 }; }
     ];
+    // Scenes that branch on where the story is heading (core.js heading(), { ifHeading }) play on every heading too.
+    let heads = false; walk(opts.scene, l => { if (l.ifHeading) heads = true; });
+    if (heads) [{ 'hc-lean-S': true }, { 'home-H3': true, 'pull-no-there': true }, { 'route-R': true }, { 'route-S': true }, { 'route-H': true }, { 'route-stay': true }, { 'route-true': true }]
+      .forEach(h => states.push(() => { at(md, 'evening', { flags: h }); G.S.route.frags = { R: 3, S: 3, H: h['home-H3'] ? 6 : 3 }; }));
     const got = new Set(); let n = 0;
     for (const st of states) {
       const queue = [[]];
