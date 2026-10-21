@@ -17,7 +17,7 @@ Solar gets a **new Rise and Shine** plus a **variant for each of Haenim's forms*
 
 **Attach, in this order:**
 1. The current `solar-rise-and-shine.webp` (art style only)
-2. `Character Portraits/Solar/solarportrait.png`
+2. `Character Portraits/Solar/Solar-smiling.png`
 3. `New Adds/SolarBattle.png` (her full-body battle stance with the naginata)
 4. The Haenim form from `Personas/`: `Haenim.png`, `Haenim-Sunna.png`, `Haenim-Harbor.png` (Mazu), `Haenim-Nike.png` or `Haenim-Unveiled.png`
 
