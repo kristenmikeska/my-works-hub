@@ -132,3 +132,27 @@ Play Solar's world songs quietly at the right moments. Sources are in `~/Documen
 - **Where:** memory-fragment scenes and flashbacks, each searcher's arrival, the "come home" calls, and each world's ending. Match each world to its own songs.
 - **How:** soft volume. Fade in under the scene and back out to the P3 track. Add new mood keys (e.g. `world-runners`, `world-strangers`, `world-hoax`) in `places.js`'s music map.
 - Spread all the P3 tracks so the same song doesn't repeat back to back. This also answers Kat's note about music repetition.
+
+### New songs Kat added (2026-10-20), in `~/Documents/UniverseHub-Audio/`. Planned uses:
+- **Battle rotation:** Wiping All Out (the P3P FeMC battle theme, primary), alongside Mass Destruction and It's Going Down Now.
+  - Danger Zone: strong Shadows and the Reaper.
+  - Calamity (P3R): full-moon bosses.
+  - Blooming Villain: Strega and rival fights.
+  - Last Surprise and Break Out Of...: fights with the Persona 5 cast.
+  - Nyx (P3R) and Burn My Dread -Last Battle-: the finale.
+- **Tartarus and the Dark Hour:** Shadow World (Dark Hour streets), Basement (P3R, the Tartarus lobby), メメントス / Mementos (memory floors), 扉の間 (P3R, the Velvet Room).
+- **School and daily life:**
+  - 学園の記憶 (P3R, school days)
+  - つまらない (boring class)
+  - 試験中… (P3R, exams)
+  - My Homie (friend hangouts)
+  - Beneath the Mask (rainy evenings, the Persona 5 cast)
+  - Deep Breath Deep Breath (Reload and Reincarnation Reload; dorm nights)
+- **Story moods:**
+  - 嫌な予感 (P3R, a bad feeling)
+  - 深層心理 -Reload- (mysteries, memories)
+  - これでいいんだ… (P3R, quiet comfort and sad beats)
+  - Don't (tension, romance)
+  - The Meaning of Armbands (S.E.E.S. moments)
+  - Living With Determination (P3R, late game)
+  - キミの記憶 -Reload- (endings)
