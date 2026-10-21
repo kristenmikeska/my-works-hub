@@ -221,8 +221,12 @@ window.FemcBattleEngine = (() => {
   function gearOf(save, mid) {
     const D = DATA(), m = member(mid), eq = Object.assign({}, D.startGear[mid], ((save.gear || {}).eq || {})[mid] || {});
     const ok = (id, slot) => { const g = id && D.gear[id]; return g && g.slot === slot && (slot !== 'weapon' || g.wtype === m.wtype) ? g : null; };
-    return { weapon: ok(eq.weapon, 'weapon') || D.gear[D.startGear[mid].weapon], armor: ok(eq.armor, 'armor') || D.gear.armor0, acc: ok(eq.acc, 'acc'), ids: eq };
+    const wid = ok(eq.weapon, 'weapon') ? eq.weapon : D.startGear[mid].weapon;
+    return { weapon: D.gear[wid], armor: ok(eq.armor, 'armor') || D.gear.armor0, acc: ok(eq.acc, 'acc'), ids: eq, wid };
   }
+  /* The building systems (build.js): cards, the weapon's bonus and refine, Persona boosts. null without build.js. */
+  const BLD = () => window.FemcBuild || null;
+  const bonusOf = (save, mid) => (BLD() ? BLD().unitBonus(save, mid, gearOf(save, mid).wid) : null);
   /* Every skill a member knows at a level: base list, level learns, the evolved Persona's learns, then Haenim's tree (Solar) or
      the member's own tree and MAX evolution. Later tiers upgrade earlier ones in place. Forms' signatures are separate (kitFor). */
   function skillsFor(mid, save, lvl = lvlOf(save, mid), fx = treeFx(save.nodes)) {
@@ -242,6 +246,9 @@ window.FemcBattleEngine = (() => {
       const t = ptreeOf(mid);
       if (t && t.max && linkRank(save, mid) >= 10) learnInto(list, t.max.to);
     }
+    // Skill cards taught (Shuffle Time's Magician), and the skills Solar keeps from MAX links (build.js perks).
+    (((save.taught || {})[mid]) || []).forEach(id => learnInto(list, id));
+    if (mid === 'solar' && BLD()) BLD().bondSkills(save).forEach(id => learnInto(list, id));
     return [...new Set(list)];
   }
   /* The eight slots: skills in the order they were learned, minus forgotten ones. slots: what the Persona uses; pending: learned
@@ -265,13 +272,21 @@ window.FemcBattleEngine = (() => {
     if (mid === 'solar') add(fx); else add(ptreeFx(save, mid));
     const per = D.personas[personaId(mid, save)];
     [per.bonus, per.lean].forEach(b => b && Object.keys(b).forEach(k => { s[k] = (s[k] || 0) + b[k]; }));
-    if (!opts.noGear) { const g = gearOf(save, mid); [g.weapon, g.armor, g.acc].forEach(x => x && x.stats && Object.keys(x.stats).forEach(k => { s[k] = (s[k] || 0) + x.stats[k]; })); }
+    if (!opts.noGear) {
+      const g = gearOf(save, mid); [g.weapon, g.armor, g.acc].forEach(x => x && x.stats && Object.keys(x.stats).forEach(k => { s[k] = (s[k] || 0) + x.stats[k]; }));
+      // Cards (flat, then percent), Persona boosts.
+      const bx = opts.bx || bonusOf(save, mid);
+      if (bx) {
+        Object.entries(bx.flat).forEach(([k, v]) => { s[k] = (s[k] || 0) + v; });
+        Object.entries(bx.pct).forEach(([k, v]) => { if (s[k] != null) s[k] = Math.round(s[k] * (1 + v / 100)); });
+      }
+    }
     if (opts.tired) ['st', 'ma', 'en', 'ag'].forEach(k => { s[k] = Math.round(s[k] * D.progression.tired.stat); });
     return s;
   }
   /* The battle unit for a member. carry: { hp, sp, th } from the last fight; tired: true if fatigued. */
   function buildUnit(mid, save, { carry = null, tired = false, fx = treeFx(save.nodes) } = {}) {
-    const D = DATA(), m = member(mid), L = lvlOf(save, mid), s = statsFor(mid, save, L, fx, { tired }), pid = personaId(mid, save), per = D.personas[pid], g = gearOf(save, mid);
+    const D = DATA(), m = member(mid), L = lvlOf(save, mid), bx = bonusOf(save, mid), s = statsFor(mid, save, L, fx, { tired, bx }), pid = personaId(mid, save), per = D.personas[pid], g = gearOf(save, mid);
     const aff = Object.assign({}, per.aff);
     [g.armor, g.acc].forEach(x => x && x.aff && Object.entries(x.aff).forEach(([el, a]) => { if (!['null', 'repel', 'drain'].includes(aff[el])) aff[el] = a; }));
     // Tree passives: Solar's from Haenim's tree, everyone else's from their own.
@@ -279,9 +294,12 @@ window.FemcBattleEngine = (() => {
     const resist = el => { if (!['null', 'repel', 'drain'].includes(aff[el])) aff[el] = 'resist'; };
     if (hu) hu.resist.forEach(resist);
     if (pf) Object.entries(pf.aff).forEach(([el, a]) => (a === 'resist' ? resist(el) : (aff[el] = a)));
-    const nullAil = [].concat(...[g.weapon, g.armor, g.acc].map(x => (x && x.nullAil) || []));
+    const nullAil = [...new Set([].concat(...[g.weapon, g.armor, g.acc].map(x => (x && x.nullAil) || []), bx ? bx.nullAil : []))];
     const w = g.weapon, kit = kitFor(mid, save, L, fx);
-    return {
+    const b = bx || (BLD() ? BLD().emptyBonus() : null);
+    const elBoost = Object.assign({}, pf ? pf.boost : {});
+    if (b) Object.entries(b.el).forEach(([el, v]) => { elBoost[el] = (elBoost[el] || 1) * (1 + v / 100); });
+    const unit = {
       mid, name: m.name, persona: per.name, personaId: pid, lvl: L, maxHp: s.hp, maxSp: s.sp, acc: (m.acc || 0) + (w.acc || 0) + (pf ? pf.acc : 0),
       hp: carry ? Math.max(1, Math.min(carry.hp, s.hp)) : s.hp, sp: carry ? Math.min(carry.sp, s.sp) : s.sp, th: carry && carry.th != null ? carry.th : ((save.th || {})[mid] || 0),
       st: s.st, ma: s.ma, en: s.en, ag: s.ag, lu: s.lu, aff, weapon: w.el || m.weapon, atk: w.atk, whits: w.hits || null, wail: w.ail || null,
@@ -290,8 +308,18 @@ window.FemcBattleEngine = (() => {
       skills: kit.slots.concat(kit.sig && !kit.slots.includes(kit.sig) ? [kit.sig] : []), pending: kit.pending.slice(),
       healMult: mid === 'solar' ? fx.healMult : pf.healMult,
       counter: hu ? hu.counter : pf.counter, evade: pf ? pf.evade : 0, endure: hu ? hu.endure : pf.endure,
-      quick: !!(hu && hu.quick), firstFree: !!(hu && hu.firstFree), elBoost: pf ? pf.boost : {}
+      quick: !!(hu && hu.quick), firstFree: !!(hu && hu.firstFree), elBoost
     };
+    // The building systems' bonus (build.js unitBonus): cards, the weapon's own bonus and refine.
+    if (b) {
+      if (BLD()) unit.atk = BLD().weaponAtk(save, g.wid) || unit.atk;
+      unit.critBonus += b.crit; unit.critAdd = b.critX / 100; unit.healMult *= 1 + b.heal / 100; unit.thMult *= 1 + b.th / 100;
+      unit.spRegen += b.spRegen; unit.hpRegen += b.hpRegen / 100; unit.evade += b.evade; unit.def += b.def;
+      unit.endure = !!(unit.endure || b.endure); unit.quick = !!(unit.quick || b.quick);
+      Object.assign(unit, { physUp: b.phys / 100, magicUp: b.magic / 100, dmgUp: b.dmg / 100, bossUp: b.boss / 100, downUp: b.down / 100, ailUp: b.ail / 100, bindUp: b.bind / 100,
+        freezeUp: b.freeze / 100, instaUp: b.insta, costCut: b.costCut / 100, distressDebuff: b.distressDebuff / 100, thStart: b.thStart, openBuff: b.openBuff.slice(), partyOpen: b.partyOpen.slice(), sets: b.sets.slice() });
+    }
+    return unit;
   }
   /* For the balance sim: a whole party from a compact config { lvl, party, nodes, tier, form, evo }. */
   function simParty(c) {
@@ -343,7 +371,8 @@ window.FemcBattleEngine = (() => {
     const S = {
       units: [], round: 0, queue: [], cur: null, oneMore: false, chain: new Set(), alloutReady: false, outcome: null,
       mods, known: setup.known || {}, items: setup.items || {}, heat: setup.heat || 0, extraUsed: false, uid: 0, boss: false, reaper: false, log: [], ctx: setup.ctx || {}, scanRound: -1, deaths: [],
-      kitsune: 0, kitsuneSide: null, once: new Set() // Kitsune Rush's turns left (and whose side), skills used once this battle
+      kitsune: 0, kitsuneSide: null, once: new Set(), // Kitsune Rush's turns left (and whose side), skills used once this battle
+      perks: setup.perks || {}, perkUsed: new Set(), assists: {}, follow: [], lastWeak: null, forceOneMore: false, keep: 0, warp: false // bond perks (build.js)
     };
     /* Buff levels (data.js buffRules): damage dealt / taken for a stat level from -cap to +cap. */
     const BRu = D.buffRules, CAP = BRu.cap;
@@ -354,7 +383,7 @@ window.FemcBattleEngine = (() => {
       taunt: 0, veneer: 0, ward: false, endured: false, usedFree: false, counter: 0, evade: 0 }, p)));
     setup.enemies.forEach(kind => { const e = makeEnemy(kind, 'e' + S.uid++, S.heat); S.units.push(e); if (e.boss) S.boss = true; if (e.reaper) S.reaper = true; });
 
-    const U = id => S.units.find(u => u.id === id);
+    const U = id => S.units.find(u => u.id === id) || Object.values(S.assists).find(a => a.id === id) || null;
     const party = () => S.units.filter(u => u.side === 'party');
     const foes = () => S.units.filter(u => u.side === 'enemy');
     const alive = list => list.filter(u => !u.dead);
@@ -377,9 +406,175 @@ window.FemcBattleEngine = (() => {
     const flanking = u => !!(mods.flank && u && u.side === 'party' && !u.dead && aggro() && aggro() !== u);
     const kitsuneOn = u => !!(S.kitsune > 0 && u && u.side === S.kitsuneSide);
 
+    /* ── Bond perks (build.js battlePerks: { fxKey: { perk, link, name, by, assist, …params } }) ──────────────
+       A perk with `by` belongs to a fighter who must be in the party (and able to act, for the ones they do themselves);
+       the rest are Assists (cut-ins from outside the party) or Solar's own passives. Each firing emits { t: 'perk' } for the
+       cut-in. Once-per-battle perks are remembered in S.perkUsed. Assist attacks come from a stand-in unit at Solar's level. */
+    const PK = k => S.perks[k] || null;
+    const byUnit = mid => party().find(p => p.mid === mid && !p.dead) || null;
+    function perkOn(k, able = false) { const p = PK(k); if (!p) return null; if (!p.by) return p; const u = byUnit(p.by); return u && (!able || !helpless(u)) ? p : null; }
+    const onceOk = k => !S.perkUsed.has(k);
+    const useOnce = k => { S.perkUsed.add(k); };
+    function perkEv(ev, k, extra = {}) { const p = PK(k); if (p) ev.push(Object.assign({ t: 'perk', key: k, perk: p.perk, link: p.link, name: p.name, assist: !p.by, by: p.by || null }, extra)); }
+    /* Who acts for a perk: the fighter's own unit, or an assist stand-in (Solar's level and stats). */
+    function actorFor(k) {
+      const p = PK(k); if (!p) return null;
+      if (p.by) return byUnit(p.by);
+      if (S.assists[p.link]) return S.assists[p.link];
+      const L = leader(), nm = (setup.names || {})[p.link] || p.link;
+      return (S.assists[p.link] = { id: 'a:' + p.link, side: 'party', assistOf: p.link, mid: null, name: nm, lvl: L.lvl, st: L.st, ma: L.ma, en: L.en, ag: L.ag, lu: L.lu, acc: 0,
+        buffs: { atk: 0, def: 0, agi: 0 }, buffT: { atk: 0, def: 0, agi: 0 }, boost: 1, aff: {}, dead: false, th: 0, critBonus: 0, elBoost: {}, hp: 1, maxHp: 1, sp: 0, maxSp: 0, atk: 30 });
+    }
+    const isLead = u => !!u && u === leader();
+    const hpPct = u => u.hp / u.maxHp;
+    /* Multipliers on one hit (cards, weapons and perks). Consumables (Polite Fury, Payback, Key Change, Titanic Kiss) are folded
+       into src.actBoost once per action (useSkill). */
+    function hitMult(src, tgt, sk, aff) {
+      let m = src.actBoost || 1;
+      const phys = PHYS.has(sk.el) || sk.id === 'attack', magic = !phys && sk.el !== 'almighty' && D.elements[sk.el];
+      if (src.side === 'party' && !src.assistOf) {
+        m *= 1 + (src.dmgUp || 0) + (phys ? src.physUp || 0 : 0) + (magic ? src.magicUp || 0 : 0) + (tgt.boss ? src.bossUp || 0 : 0) + (tgt.down ? src.downUp || 0 : 0);
+        let p;
+        if (phys && tgt.ail && tgt.ail.id === 'freeze' && (p = perkOn('shatterUp'))) m *= 1 + p.dmg;
+        if (sk.el === 'light' && (p = perkOn('justiceBolt'))) m *= 1 + p.light;
+        if (sk.el === 'light' && (p = perkOn('sunnySide'))) m *= 1 + p.light;
+        if (sk.el === 'fire' && (p = perkOn('carmen'))) m *= 1 + p.fire;
+        if (phys && tgt.down && (p = perkOn('buster'))) m *= 1 + p.dmg;
+        if (src.mid === 'shinjiro' && tgt.down && (p = perkOn('heavyHand'))) m *= 1 + p.dmg;
+        if (isLead(src) && phys && hpPct(src) < 0.3 && (p = perkOn('hardWay'))) m *= 1 + p.dmg;
+        if (isLead(src) && src.hp >= src.maxHp && (p = perkOn('centerStage'))) m *= 1 + p.dmg;
+        if (isLead(src) && tgt.grudged && (p = perkOn('grudge'))) m *= 1 + p.dmg;
+        if (src.mid === 'haechan' && src.loudAt === tgt.id && (p = perkOn('loud'))) { m *= 1 + p.dmg; src.loudUsed = true; }
+        if (aff === 'weak' && S.lastWeak && S.lastWeak.el === sk.el && S.lastWeak.src !== src.id && (p = perkOn('harmony'))) m *= 1 + p.dmg;
+        if (src.counterHit && (p = perkOn('baitPunish'))) m *= 1 + p.dmg;
+      }
+      return m;
+    }
+    /* A free follow-up hit from a perk (Jab-Cross, Duo Cohesion, Roundhouse, Prada Swing, Spirit Guardians, a counter-snipe,
+       Milady's Salute). Queued during an action, played after it (S.follow), so multi-hits stay in order. */
+    function follow(k, tgt, o = {}) { S.follow.push({ k, tgt: tgt && tgt.id, o }); }
+    function runFollows(ev) {
+      let guard = 0;
+      while (S.follow.length && guard++ < 12) {
+        const f = S.follow.shift(), a = actorFor(f.k), tgts = f.o.all ? alive(foes()).filter(x => !x.unreachable && x.id !== f.o.except) : [U(f.tgt)].filter(t => t && !t.dead);
+        if (!a || a.dead || !tgts.length) continue;
+        perkEv(ev, f.k, { follow: true });
+        const sk = Object.assign({ id: 'perk_' + f.k, name: PK(f.k).name, type: 'dmg', target: f.o.all ? 'all' : 'one', sure: true, crit: 0 }, f.o.skill);
+        tgts.forEach(t => { if (!t.dead) { const down = strike(a, t, sk, ev, { spread: !!f.o.all }); if (!down && f.o.down && !t.dead && !t.down && R() < f.o.down) { t.down = true; ev.push({ t: 'hit', src: a.id, tgt: t.id, el: 'none', aff: 'normal', amount: 0, hp: t.hp, maxHp: t.maxHp, downed: true, self: false, perkDown: true }); } } });
+      }
+      S.follow.length = 0;
+    }
+    /* Checks after any action: rescues and second winds. */
+    function checkTriggers(ev) {
+      if (S.outcome || check()) return;
+      const pt = alive(party()), L = leader();
+      let p;
+      // Mercy's Resurrect: the first ally to fall comes back with half their HP at the end of that turn.
+      if (S.reviveNow && (p = perkOn('resurrect')) && onceOk('resurrect')) {
+        const t = U(S.reviveNow); S.reviveNow = null;
+        if (t && t.dead) { useOnce('resurrect'); perkEv(ev, 'resurrect'); t.dead = false; t.hp = 0; t.endured = false; ev.push({ t: 'revive', tgt: t.id }); heal(null, t, t.maxHp * p.hp, ev); }
+      }
+      if (!L || L.dead) return;
+      if ((p = perkOn('littleBrother')) && onceOk('littleBrother') && hpPct(L) < p.below) { useOnce('littleBrother'); perkEv(ev, 'littleBrother'); heal(actorFor('littleBrother'), L, power(actorFor('littleBrother'), { power: p.power, el: 'heal' }), ev); }
+      const low = pt.filter(u => hpPct(u) < ((PK('swiftStep') || {}).below || 0)).sort((a, b) => hpPct(a) - hpPct(b))[0];
+      if (low && (p = perkOn('swiftStep')) && onceOk('swiftStep')) { useOnce('swiftStep'); perkEv(ev, 'swiftStep', { tgt: low.id }); heal(null, low, low.maxHp * p.heal, ev); }
+      const lowS = pt.filter(u => hpPct(u) < ((PK('sanctuary') || {}).below || 0))[0];
+      if (lowS && (p = perkOn('sanctuary')) && onceOk('sanctuary')) { useOnce('sanctuary'); lowS.sanct = true; perkEv(ev, 'sanctuary', { tgt: lowS.id }); }
+      if (pt.length > 1 && pt.every(u => hpPct(u) < ((PK('secondWind') || {}).below || 0)) && (p = perkOn('secondWind', true)) && onceOk('secondWind')) {
+        useOnce('secondWind'); perkEv(ev, 'secondWind'); const y = byUnit('yukari') || actorFor('secondWind'); pt.forEach(u => heal(y, u, power(y, D.skills.media) * (y.healMult || 1), ev));
+      }
+      if ((p = perkOn('oracleLink')) && onceOk('oracleLink') && (hpPct(L) < 0.35 || party().some(u => u.dead) || pt.filter(u => hpPct(u) < 0.35).length >= 2 || pt.filter(u => u.ail).length >= 2)) {
+        useOnce('oracleLink');
+        const sick = pt.filter(u => u.ail).length, dry = pt.filter(u => u.sp < u.maxSp * 0.2).sort((a, b) => a.sp / a.maxSp - b.sp / b.maxSp)[0];
+        const pickWhat = sick >= 2 ? 'cure' : (pt.some(u => hpPct(u) < 0.5) ? 'heal' : dry ? 'sp' : 'heal');
+        perkEv(ev, 'oracleLink', { what: pickWhat });
+        if (pickWhat === 'heal') pt.forEach(u => heal(null, u, u.maxHp, ev));
+        else if (pickWhat === 'sp') heal(null, dry, 0, ev, dry.maxSp);
+        else pt.forEach(u => { if (u.ail) cure(u, Object.keys(D.ailments), ev); });
+      }
+      if (party().length > 1 && pt.length === 1 && pt[0] === L && (p = perkOn('quietStrength')) && onceOk('quietStrength')) {
+        useOnce('quietStrength'); perkEv(ev, 'quietStrength'); ['atk', 'def', 'agi'].forEach(st => buff(L, st, 1, ev)); heal(null, L, L.maxHp * p.heal, ev);
+      }
+      // Junkyu's Ice Pack: Shock, Freeze or Poison on Solar wears off at the end of the turn it landed.
+      if (L.ail && (p = perkOn('icePack')) && onceOk('icePack') && [].concat(p.v || []).includes(L.ail.id)) { useOnce('icePack'); perkEv(ev, 'icePack'); cure(L, [L.ail.id], ev); }
+    }
+    /* Before damage lands on a party member: parries, covers and the perks that keep Solar standing. Returns the damage to apply,
+       or null when someone else took the hit (Cover Me). */
+    function guardHit(src, tgt, sk, amount, ev) {
+      let p;
+      const phys = PHYS.has(sk.el);
+      if (tgt.papillon) { tgt.papillon = false; perkEv(ev, 'papillon'); S.queue.unshift(tgt.id); ev.push({ t: 'msg', text: `${tgt.name} slips the blow, and moves again!` }); return 0; }
+      if (isLead(tgt) && tgt.guard && phys && (p = perkOn('knifeParry')) && R() < p.chance) { perkEv(ev, 'knifeParry'); return 0; }
+      if (isLead(tgt) && amount > 0 && (tgt.hp - amount) / tgt.maxHp < 0.25 && (p = perkOn('cover', true)) && onceOk('cover')) {
+        const a = byUnit('akihiko');
+        if (a && !helpless(a)) {
+          useOnce('cover'); perkEv(ev, 'cover');
+          const d = Math.max(1, Math.round(amount / 2));
+          a.hp = Math.max(1, a.hp - d);
+          ev.push({ t: 'hit', src: src.id, tgt: a.id, el: sk.el, aff: 'normal', amount: d, hp: a.hp, maxHp: a.maxHp, covered: true });
+          return null;
+        }
+      }
+      if (tgt.bondWith && !tgt.dead) {
+        const L = U(tgt.bondWith);
+        if (L && !L.dead && L !== tgt) { const half = Math.round(amount / 2); L.hp = Math.max(1, L.hp - half); ev.push({ t: 'hit', src: src.id, tgt: L.id, el: sk.el, aff: 'normal', amount: half, hp: L.hp, maxHp: L.maxHp, bond: true }); amount -= half; }
+      }
+      if (isLead(tgt) && amount > 0 && (p = perkOn('bloom')) && !S.bloomed) { S.bloomed = true; perkEv(ev, 'bloom'); amount = Math.round(amount / 2); }
+      if (isLead(tgt) && amount > tgt.maxHp * ((PK('blindside') || {}).over || 1) && (p = perkOn('blindside')) && onceOk('blindside')) { useOnce('blindside'); perkEv(ev, 'blindside'); amount = Math.round(amount / 2); }
+      if (amount >= tgt.hp) {
+        if (tgt.undying > 0) { amount = tgt.hp - 1; ev.push({ t: 'endure', tgt: tgt.id, undying: true }); }
+        else if (isLead(tgt) && hpPct(tgt) > ((PK('tether') || {}).above || 2) && perkOn('tether')) { amount = tgt.hp - 1; perkEv(ev, 'tether'); }
+        else if (isLead(tgt) && (p = perkOn('behindLens')) && onceOk('behindLens')) {
+          useOnce('behindLens'); amount = tgt.hp - 1; perkEv(ev, 'behindLens');
+          follow('behindLens', src, { skill: { el: 'pierce', power: 60, crit: 100 } });
+        }
+      }
+      return amount;
+    }
+
+    /* After a party member's hit lands: follow-ups, SP back, Harmony's chain, Cut, Print. */
+    function afterPartyHit(src, tgt, sk, ev, h) {
+      let p;
+      const L = leader();
+      if (h.aff === 'weak') S.lastWeak = { el: sk.el, src: src.id }; else if (h.amount > 0) S.lastWeak = null;
+      if (!isLead(src)) return;
+      if ((h.aff === 'weak' || h.crit) && (p = perkOn('feelEverything')) && src.sp < src.maxSp) { src.sp = Math.min(src.maxSp, src.sp + p.sp); ev.push({ t: 'heal', src: src.id, tgt: src.id, amount: 0, sp: p.sp, hp: src.hp, maxHp: src.maxHp, spNow: src.sp }); }
+      if (h.aff === 'weak' && !tgt.dead && (p = perkOn('jab', true)) && byUnit('akihiko') && !S.follow.some(f => f.k === 'jab') && R() < (p.rank >= p.hiRank ? p.hi : p.chance)) follow('jab', tgt, { skill: { el: 'strike', power: p.power } });
+      if (h.crit) {
+        if ((p = perkOn('perfectTen')) && src.buffs.agi < 3) buff(src, 'agi', 1, ev);
+        if (!tgt.dead && (p = perkOn('bestie')) && !tgt.ail && ['atk', 'def', 'agi'].some(st => tgt.buffs[st] < 0)) inflict(src, tgt, { id: 'distress', chance: 1 }, ev);
+        if (tgt.down && !h.downed && (p = perkOn('cutPrint')) && onceOk('cutPrint')) { useOnce('cutPrint'); perkEv(ev, 'cutPrint'); S.forceOneMore = true; alive(party()).forEach(u => heal(null, u, u.maxHp * p.heal, ev)); }
+        if (!tgt.dead && (p = perkOn('duo', true)) && !S.follow.some(f => f.k === 'duo')) follow('duo', tgt, { skill: { el: 'pierce', power: p.power, crit: 6 } });
+      }
+      if (h.downed && !tgt.dead && (p = perkOn('roundhouse')) && onceOk('roundhouse') && alive(foes()).some(f => f !== tgt)) { useOnce('roundhouse'); follow('roundhouse', null, { all: true, except: tgt.id, skill: { el: 'strike', power: p.power } }); }
+      if (h.killed && (p = perkOn('goodDog'))) { heal(null, src, src.maxHp * p.hp, ev, Math.round(src.maxSp * p.sp)); }
+      if (PHYS.has(sk.el) && h.amount > 0 && (p = perkOn('taste')) && src.hp < src.maxHp) heal(null, src, h.amount * p.drain, ev);
+    }
+    /* After a Shadow's hit lands on the party: Limit Break, Payback, Polite Fury, Loud About It, Prada Swing, Back Off!,
+       Spirit Guardians, Corner Man. */
+    function afterFoeHit(src, tgt, sk, ev, h) {
+      let p;
+      const L = leader(), phys = PHYS.has(sk.el);
+      if (tgt.thOnHit && tgt.taunt > 0) { tgt.th = Math.min(100, (tgt.th || 0) + tgt.thOnHit); ev.push({ t: 'thGain', tgt: tgt.id, n: tgt.thOnHit }); }
+      if (!isLead(tgt)) {
+        if ((h.crit || h.aff === 'weak') && L && !L.dead && (p = perkOn('politeFury'))) { L.fury = Math.min(p.max, (L.fury || 0) + 1); }
+        return;
+      }
+      if ((p = perkOn('limitBreak')) && tgt.th < 100) { tgt.th = Math.min(100, tgt.th + p.th); if (tgt.th >= 100) ev.push({ t: 'thReady', tgt: tgt.id }); }
+      if ((h.crit || h.aff === 'weak') && (p = perkOn('payback'))) { tgt.th = Math.min(100, tgt.th + p.th); tgt.payback = 1 + p.dmg; ev.push({ t: 'thGain', tgt: tgt.id, n: p.th }); }
+      if (h.crit) {
+        const hc = byUnit('haechan');
+        if (hc && (p = perkOn('loud'))) { hc.loudAt = src.id; hc.loudUsed = false; }
+        if (!src.dead && (p = perkOn('prada')) && onceOk('prada')) { useOnce('prada'); follow('prada', src, { skill: { el: 'strike', power: p.power }, down: p.down }); }
+      }
+      if (phys && !src.dead && (p = perkOn('backOff')) && onceOk('backOff')) { useOnce('backOff'); if (R() < p.chance) { src.skipNext = true; perkEv(ev, 'backOff', { tgt: src.id }); } }
+      if (phys && !src.dead && (p = perkOn('spiritGuardians'))) follow('spiritGuardians', src, { skill: { el: 'light', power: p.power } });
+      if (h.downed && !tgt.dead && (p = perkOn('cornerMan')) && onceOk('cornerMan')) { useOnce('cornerMan'); tgt.down = false; tgt.sureCrit = true; perkEv(ev, 'cornerMan'); ev.push({ t: 'standup', tgt: tgt.id }); }
+    }
+
     /* ── Theurgy gauge ─────────────────────────────── */
     function gain(u, kind, ev, scale = 1) {
-      if (!u || u.side !== 'party' || u.dead || u.th >= 100) return;
+      if (!u || u.side !== 'party' || u.dead || u.th >= 100 || u.assistOf) return;
       const m = member(u.mid) || {};
       const amt = D.theurgyGain[kind] * scale * ((m.th || {})[kind] || 1) * (u.thMult || 1);
       u.th = Math.min(100, u.th + amt);
@@ -412,7 +607,9 @@ window.FemcBattleEngine = (() => {
     }
     const helpless = u => !!(u.down || (u.ail && D.ailments[u.ail.id].noAct));
     function hits(src, tgt, sk) {
+      if (tgt.dodgeNext && src.side !== tgt.side) { tgt.dodgeNext = false; return false; } // Pirouette
       if (sk.sure || helpless(tgt)) return true;
+      if (isLead(src) && S.warp) return true; // Noctis's Warp-Strike: her first attack can't miss
       const base = (sk.acc || (PHYS.has(sk.el) ? 93 : 97)) + (src.acc || 0);
       const ag = u => u.ag * (kitsuneOn(u) ? 1.5 : 1);
       let chance = base + (ag(src) - ag(tgt)) * 0.8 + BRu.agi * (src.buffs.agi - tgt.buffs.agi);
@@ -420,7 +617,8 @@ window.FemcBattleEngine = (() => {
       if (src.wild || (src.ail && src.ail.id === 'disorient')) chance -= 35; // Disoriented: swings wide
       let floor = sk.acc ? 50 : 60;
       if (src.side !== tgt.side && tgt.side === 'party') {
-        const ev = (tgt.evade || 0) + (flanking(tgt) ? 35 : 0);       // evasion (party trees) and Off Angle Flank
+        const fr = isLead(tgt) && PHYS.has(sk.el) && perkOn('floorRoutine');
+        const ev = (tgt.evade || 0) + (flanking(tgt) ? 35 : 0) + (fr ? fr.evade : 0); // evasion (party trees, cards, Kasumi) and Off Angle Flank
         chance -= ev; floor -= ev / 2;
       }
       return R() * 100 < Math.max(floor, chance);
@@ -429,7 +627,20 @@ window.FemcBattleEngine = (() => {
       if ((!PHYS.has(sk.el) && !sk.crit) || tgt.guard) return 0;
       if (!PHYS.has(sk.el) && sk.id !== 'theurgy') return 0;
       let c = 3 + src.lu * 0.6 + (sk.crit || 0);
-      if (src.side === 'party') c += mods.crit + (src.critBonus || 0) + ((sk.ail && sk.ail.rope) ? mods.ropeCrit : 0) + (flanking(src) ? 30 : 0) + (sk.critIf && critCond(tgt, sk) ? 30 : 0);
+      if (src.side === 'party') {
+        if (src.sureCrit && (src.sureCrit !== 'phys' || PHYS.has(sk.el))) return 100; // Corner Man, Pinch Hitter
+        if ((sk.critDown && tgt.down) || (sk.critFresh && tgt.actedRound !== S.round)) return 100; // Grand Slam / Suplex, Widow's Kiss
+        if (isLead(src) && tgt.heard && !tgt.heardHit && perkOn('hearRoom')) return 100;
+        if (isLead(src) && hpPct(tgt) < ((PK('matchPoint') || {}).below || 0) && perkOn('matchPoint')) return 100;
+        c += mods.crit + (src.critBonus || 0) + ((sk.ail && sk.ail.rope) ? mods.ropeCrit : 0) + (flanking(src) ? 30 : 0) + (sk.critIf && critCond(tgt, sk) ? 30 : 0);
+        // Bond perks' crit bonuses stack up to +30.
+        let pc = 0, p;
+        if (src.mid === 'junpei' && (p = perkOn('clutch')) && (S.round > 5 || alive(party()).reduce((a, u) => a + hpPct(u), 0) / Math.max(1, alive(party()).length) < 0.5)) pc += p.crit;
+        if (isLead(src) && tgt.turns === 0 && (p = perkOn('sneak'))) pc += p.crit;
+        if (isLead(src) && sk.el === 'pierce' && (p = perkOn('headshot'))) pc += p.crit;
+        if (tgt.down && (p = perkOn('crosshair'))) pc += p.crit;
+        c += Math.min(30, pc);
+      }
       else c *= 0.5;
       if (tgt.ail && tgt.ail.id === 'distress') c += 40;
       return c;
@@ -443,13 +654,26 @@ window.FemcBattleEngine = (() => {
     function inflict(src, tgt, ail, ev, mult = 1) {
       if (!ail || tgt.dead || tgt.ail || ailImmune(tgt, ail.id)) return false;
       if (tgt.ward && src.side !== tgt.side) return false; // Protective Suzu
+      let p;
+      if (tgt.side === 'party' && src.side !== tgt.side) {
+        if (isLead(tgt) && (p = perkOn('grounded')) && [].concat(p.v).includes(ail.id)) return false;
+        if ((p = perkOn('sweetNature')) && [].concat(p.v).includes(ail.id)) return false;
+      }
       let ch = ail.chance * mult;
       if (ail.rope && src.side === 'party') ch += mods.bind;
+      if (src.side === 'party' && !src.assistOf) {
+        ch += (src.ailUp || 0) + (ail.id === 'bind' ? src.bindUp || 0 : 0) + (ail.id === 'freeze' ? src.freezeUp || 0 : 0);
+        if (['charm', 'bind'].includes(ail.id) && (p = perkOn('whipCrack'))) ch += p.up;
+        if ((p = perkOn('cutFluff'))) ch += p.ail;
+      }
       if (tgt.guard) ch *= 0.5;
       if (R() >= ch) return false;
+      if (isLead(tgt) && src.side !== tgt.side && (p = perkOn('noRefuse')) && onceOk('noRefuse')) { useOnce('noRefuse'); perkEv(ev, 'noRefuse'); return false; }
       const T = D.ailments[ail.id].turns;
       tgt.ail = { id: ail.id, t: T[0] + Math.floor(R() * (T[1] - T[0] + 1)) };
       if (ail.rope && ail.id === 'bind' && src.side === 'party' && mods.bindTurns > 1) tgt.ail.t = mods.bindTurns; // Fine Stitch
+      if (ail.id === 'freeze' && src.side === 'party' && tgt.side === 'enemy' && perkOn('shatterUp')) tgt.ail.t += 1; // Mitsuru's Shatter
+      if (tgt.side === 'party' && src.side !== tgt.side && (p = perkOn('peacemaker')) && [].concat(p.v).includes(ail.id)) tgt.ail.t = Math.max(1, tgt.ail.t - 1);
       ev.push({ t: 'ail', src: src.id, tgt: tgt.id, id: ail.id, turns: tgt.ail.t });
       if (src.side === 'party' && tgt.side === 'enemy') gain(src, 'ail', ev);
       return true;
@@ -574,7 +798,8 @@ window.FemcBattleEngine = (() => {
         return false;
       }
       if (aff === 'null') { ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff, amount: 0, hp: tgt.hp, maxHp: tgt.maxHp }); return false; }
-      let d = rawDamage(src, tgt, sk);
+      if (sk.noResist && aff === 'resist') aff = 'normal'; // Widow's Kiss
+      let d = rawDamage(src, tgt, sk) * hitMult(src, tgt, sk, aff);
       if (spread && tgt.gimmick === 'hermit') d *= 0.5;
       if (aff === 'drain') {
         const amt = Math.max(1, Math.round(d));
@@ -588,23 +813,33 @@ window.FemcBattleEngine = (() => {
       const crit = shatter || (sk.crit >= 100) || R() * 100 < critChance(src, tgt, sk);
       if (aff === 'weak') d *= 1.5 * (src.side === 'party' ? mods.weakMult : 1);
       if (aff === 'resist') d *= 0.5;
-      if (crit) d *= keen ? sk.critX : (src.side === 'party' ? mods.critMult : 1.6);
-      const amount = Math.max(1, Math.round(d));
+      if (crit) d *= keen ? sk.critX : (src.side === 'party' ? mods.critMult + (src.critAdd || 0) : 1.6);
+      if (crit && src.side === 'party' && tgt.ail && tgt.ail.id === 'distress' && perkOn('bestie')) d *= 1 + PK('bestie').dmg;
+      if (crit && src.sureCrit && (src.sureCrit !== 'phys' || PHYS.has(sk.el))) src.sureCrit = false;
+      if (crit && isLead(src) && tgt.heard) tgt.heardHit = true;
+      let amount = Math.max(1, Math.round(d));
+      if (src.side === 'enemy' && tgt.side === 'party') {
+        const g = guardHit(src, tgt, sk, amount, ev);
+        if (g === null) return false;
+        amount = g;
+      }
       tgt.hp = Math.max(0, tgt.hp - amount);
       if (tgt.hp <= 0 && guarded(tgt)) tgt.hp = 1;
       let endured = false;
       if (tgt.hp <= 0 && tgt.endure && !tgt.endured) { tgt.hp = 1; tgt.endured = true; endured = true; } // Endure: once per battle
       let downed = false, killed = false;
+      const noDown = isLead(tgt) && hpPct(tgt) < ((PK('hardWay') || {}).below || 0) && perkOn('hardWay'); // Hard Way Home
       if (tgt.hp <= 0) { kill(tgt, ev); killed = true; }
-      else if ((aff === 'weak' || crit) && !tgt.down && !tgt.guard) { tgt.down = true; downed = true; }
-      else if (sk.down && !tgt.down && !tgt.guard && R() < sk.down) { tgt.down = true; downed = true; }
+      else if (amount > 0 && (aff === 'weak' || crit) && !tgt.down && !tgt.guard && !noDown) { tgt.down = true; downed = true; }
+      else if (amount > 0 && sk.down && !tgt.down && !tgt.guard && !noDown && R() < sk.down) { tgt.down = true; downed = true; }
       ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff, crit, amount, hp: tgt.hp, maxHp: tgt.maxHp, killed, downed, shatter, skill: sk.id, theurgy: !!sk.theurgy, keen: keen && crit, flank: crit && flanking(src) });
       if (endured) ev.push({ t: 'endure', tgt: tgt.id });
       if (src.side === 'party') {
         if (aff === 'weak') gain(src, 'weak', ev);
         if (crit) gain(src, 'crit', ev);
         if (killed) gain(src, 'kill', ev);
-      } else if (tgt.side === 'party' && amount > 0) gain(tgt, 'hurt', ev);
+        if (!src.assistOf) afterPartyHit(src, tgt, sk, ev, { aff, crit, killed, downed, amount });
+      } else if (tgt.side === 'party' && amount > 0) { gain(tgt, 'hurt', ev); afterFoeHit(src, tgt, sk, ev, { aff, crit, killed, downed, amount }); }
       if (downed) { const h = G(tgt, 'downed'); if (h) h(tgt, ev); }
       if (shatter && !killed) { tgt.ail = null; ev.push({ t: 'ailEnd', tgt: tgt.id, id: 'freeze', shatter: true }); }
       // Shocked: touching it with a physical attack may shock the attacker.
@@ -623,6 +858,13 @@ window.FemcBattleEngine = (() => {
       if (tgt.ward && src.side !== tgt.side) { ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff: 'null', warded: true, amount: 0, hp: tgt.hp, maxHp: tgt.maxHp, insta: true }); return false; }
       if (tgt.boss || tgt.unreachable || guarded(tgt) || ['null', 'repel', 'drain'].includes(a)) { ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff: 'null', amount: 0, hp: tgt.hp, maxHp: tgt.maxHp, insta: true }); return false; }
       let ch = sk.chance + src.lu * 0.5;
+      if (src.side === 'party') {
+        let p;
+        ch += src.instaUp || 0;
+        if (sk.el === 'light' && (p = perkOn('justiceBolt'))) ch += p.insta;
+        if (tgt.down && (p = perkOn('hellhound'))) ch += p.insta;
+      }
+      if (isLead(tgt) && src.side === 'enemy' && perkOn('noRefuse') && onceOk('noRefuse')) { useOnce('noRefuse'); perkEv(ev, 'noRefuse'); ev.push({ t: 'miss', src: src.id, tgt: tgt.id, insta: true }); return false; }
       if (a === 'weak') ch = ch * 2 + 15;
       if (a === 'resist') ch *= 0.4;
       if (sk.el === 'dark' && tgt.ail && tgt.ail.id === 'fear') ch += 55;
@@ -636,6 +878,12 @@ window.FemcBattleEngine = (() => {
       return false;
     }
     function kill(u, ev) {
+      if (u.side === 'party' && !u.dead && u !== leader() && !u.assistOf) {
+        if (perkOn('resurrect') && onceOk('resurrect') && !S.reviveNow) S.reviveNow = u.id;
+        const L = leader();
+        if (L && !L.dead && perkOn('rideOrDie') && onceOk('rideOrDie')) { useOnce('rideOrDie'); L.rideRevive = true; S.queue = [L.id].concat(S.queue.filter(x => x !== L.id)); if (ev) perkEv(ev, 'rideOrDie'); }
+        if (S.cur && S.cur.side === 'enemy' && perkOn('grudge')) S.cur.grudged = true;
+      }
       u.dead = true; u.hp = 0; u.down = false; u.ail = null; u.guard = false; u.hidden = false; u.orgia = 0; u.taunt = 0; u.ward = false;
       u.buffs = { atk: 0, def: 0, agi: 0 }; u.buffT = { atk: 0, def: 0, agi: 0 };
       if (G(u, 'death')) S.deaths.push(u);
@@ -651,11 +899,17 @@ window.FemcBattleEngine = (() => {
     }
     /* Buffs stack (data.js buffRules.cap levels, P5-style): another cast adds a level and refreshes the turns. A lasting buff
        (the Hierophant's sermons) stays lasting while it keeps its sign. */
-    function buff(tgt, stat, dir, ev, lasting = false, levels = 1) {
+    function buff(tgt, stat, dir, ev, lasting = false, levels = 1, src = null) {
       const old = tgt.buffs[stat];
       const v = Math.max(-CAP, Math.min(CAP, old + dir * levels));
       tgt.buffs[stat] = v;
       tgt.buffT[stat] = !v ? 0 : (lasting || (tgt.buffT[stat] >= 90 && Math.sign(old) === Math.sign(v)) ? 99 : BRu.turns);
+      // Jungwon's Order of Business (his and Solar's debuffs), Jihoon's Hype Man (his buffs on Solar).
+      if (src && v && tgt.buffT[stat] < 90) {
+        let p;
+        if (dir < 0 && tgt.side === 'enemy' && (isLead(src) || src.mid === 'jungwon') && (p = perkOn('orderBiz'))) tgt.buffT[stat] += p.turns;
+        if (dir > 0 && isLead(tgt) && src.mid === 'jihoon' && (p = perkOn('hypeMan'))) tgt.buffT[stat] += p.turns;
+      }
       ev.push({ t: 'buff', tgt: tgt.id, stat, dir, v, lasting: tgt.buffT[stat] >= 90, turns: tgt.buffT[stat], capped: v === old });
     }
     function dispel(tgts, kind, ev) {
@@ -683,6 +937,9 @@ window.FemcBattleEngine = (() => {
       if (!sk.cost || u.side !== 'party') return { sp: 0, hp: 0 };
       let sp = sk.cost.sp || 0, hp = sk.cost.hp || 0;
       if (kitsuneOn(u)) { sp = Math.ceil(sp / 2); hp = hp / 2; }
+      // Council Croissant (cards), Sebastian's Optimize, Kiriko's Protective Suzu at half the SP.
+      if (sp && u.costCut) sp = Math.ceil(sp * (1 - u.costCut));
+      if (sp && isLead(u)) { let p; if ((p = perkOn('optimize'))) sp = Math.ceil(sp * (1 - p.cut)); if (sk.id === 'protective_suzu' && (p = perkOn('suzuHalf'))) sp = Math.ceil(sp * p.v); }
       if (u.firstFree && !u.usedFree && sk.id !== 'attack') { sp = 0; hp = 0; }
       return { sp, hp };
     }
@@ -709,19 +966,54 @@ window.FemcBattleEngine = (() => {
     function counterHit(u, foe, ev) {
       if (!u || u.dead || helpless(u) || !foe || foe.dead || u.side === foe.side) return;
       ev.push({ t: 'counter', src: u.id, tgt: foe.id });
+      u.counterHit = true;
       strike(u, foe, attackSkill(u), ev);
+      u.counterHit = false;
     }
     function useSkill(src, skId, target, ev, { flip = false } = {}) {
       const sk = skId === 'attack' ? attackSkill(src) : Object.assign({ id: skId }, skillOf(skId));
       payCost(src, sk);
       if (sk.once) S.once.add(src.side + ':' + skId);
+      const ev0 = ev.length, lead = isLead(src) && !flip;
+      let pk;
+      // One-action boosts: Polite Fury, Payback, Key Change, Titanic Kiss (magic only).
+      if (src.side === 'party' && !src.assistOf) {
+        let b = 1;
+        if (lead && sk.type === 'dmg' && skId !== 'attack' && src.fury && (pk = PK('politeFury'))) { b *= 1 + pk.dmg * src.fury; src.fury = 0; }
+        if (lead && sk.type === 'dmg' && src.payback) { b *= src.payback; src.payback = 0; }
+        if (sk.type === 'dmg' && src.keyBoost) { b *= src.keyBoost; src.keyBoost = 0; }
+        if (sk.type === 'dmg' && src.charge2 && skId !== 'attack' && !PHYS.has(sk.el)) { b *= src.charge2; src.charge2 = 0; }
+        src.actBoost = b;
+      }
       // Aggro: a Shadow's single-target attack goes to whoever is drawing it (Public Veneer, Provoke).
       let drawn = null;
       if (src.side === 'enemy' && !flip && sk.target === 'one' && ['dmg', 'insta'].includes(sk.type)) {
         const tank = aggro();
         if (tank && tank.id !== target) { drawn = tank; target = tank.id; }
+        // Bond perks that steer a Shadow's single-target attack away from Solar.
+        const L = leader(), t0 = U(target);
+        if (!tank && t0 && t0.side === 'party' && !t0.dead) {
+          const others = () => alive(party()).filter(x => x !== L && !x.sanct);
+          let to = null;
+          if (t0 === L && L.down && (pk = perkOn('tryMe')) && onceOk('tryMe')) {
+            useOnce('tryMe');
+            ev.push({ t: 'use', src: src.id, skill: skId, name: sk.name, el: sk.el, tgts: [], hp: src.hp, sp: src.sp });
+            perkEv(ev, 'tryMe', { tgt: src.id });
+            inflict(actorFor('tryMe'), src, { id: 'distress', chance: 1 }, ev);
+            src.boost = 1; src.actBoost = 1;
+            return 0;
+          }
+          if (t0.sanct && others().length) to = pick(others());
+          else if (t0 === L && src.noSolar > 0 && others().length) { to = pick(others()); perkEv(ev, 'heavensDoor', { tgt: src.id, quiet: true }); }
+          else if (t0 === L && hpPct(L) < ((PK('mainChar') || {}).below || 0) && (pk = perkOn('mainChar', true)) && byUnit('jihoon')) { to = byUnit('jihoon'); perkEv(ev, 'mainChar'); }
+          else if (t0 === L && (pk = perkOn('bodyguard', true)) && byUnit('aigis') && R() < pk.chance) { to = byUnit('aigis'); perkEv(ev, 'bodyguard'); }
+          else if (t0 === L && (pk = perkOn('spotlight')) && others().length && R() < pk.chance) { to = pick(others()); perkEv(ev, 'spotlight', { quiet: true }); }
+          if (to && to !== t0) { drawn = to; target = to.id; }
+        }
       }
-      const tgts = targetsFor(src, sk, target, flip);
+      let tgts = targetsFor(src, sk, target, flip);
+      // Valkyrie: Solar's single-target heals reach the whole party.
+      if (lead && src.valkyrie > 0 && sk.type === 'heal' && sk.target === 'ally') tgts = alive(party());
       const hp0 = new Map(tgts.map(t => [t.id, t.hp]));
       ev.push({ t: 'use', src: src.id, skill: skId, name: sk.name, el: sk.el, tgts: tgts.map(u => u.id), summon: skId !== 'attack' && src.side === 'party', cost: sk.cost || null, hp: src.hp, sp: src.sp, charmed: flip, fx: sk.fx || null });
       if (drawn) ev.push({ t: 'drawn', src: src.id, tgt: drawn.id });
@@ -738,18 +1030,38 @@ window.FemcBattleEngine = (() => {
       else if (sk.type === 'ailment') tgts.forEach(t => {
         if (t.dead || hidden(t)) return;
         if (t.ail || ailImmune(t, sk.ail.id) || !inflict(src, t, sk.ail, ev)) ev.push({ t: 'miss', src: src.id, tgt: t.id, ail: sk.ail.id, immune: ailImmune(t, sk.ail.id), has: !!t.ail });
+        // Haechan's Bait and Punish: an ailment tried on the party gets countered.
+        if (src.side === 'enemy' && !flip && t.side === 'party' && !t.dead && !src.dead && (pk = perkOn('baitPunish')) && R() < pk.chance) { perkEv(ev, 'baitPunish', { quiet: true }); counterHit(t, src, ev); }
       });
       else if (sk.type === 'heal') {
-        tgts.forEach(t => { heal(src, t, sk.full ? t.maxHp : power(src, sk) * (src.side === 'party' ? (src.healMult || 1) : 1), ev); if (sk.cureAll && t.ail) cure(t, Object.keys(D.ailments), ev, src); });
+        const wab = lead && perkOn('windAtBack');
+        tgts.forEach(t => {
+          const before = t.hp;
+          heal(src, t, (sk.full ? t.maxHp : power(src, sk) * (src.side === 'party' ? (src.healMult || 1) : 1)) * (wab ? 1 + wab.heal : 1), ev);
+          if (sk.cureAll && t.ail) cure(t, Object.keys(D.ailments), ev, src);
+          if (lead) healPerks(src, t, t.hp - before, ev);
+        });
         if (src.side === 'party' && !flip) gain(src, 'heal', ev);
+        if (lead && (pk = perkOn('duo', true)) && alive(foes()).some(f => !f.unreachable && !f.hidden)) follow('duo', pick(alive(foes()).filter(f => !f.unreachable && !f.hidden)), { skill: { el: 'pierce', power: pk.power, crit: 6 } });
       }
-      else if (sk.type === 'revive') { tgts.forEach(t => { t.dead = false; t.hp = 0; t.endured = false; ev.push({ t: 'revive', tgt: t.id }); heal(src, t, t.maxHp * sk.power / 100, ev); }); if (src.side === 'party') gain(src, 'heal', ev, 1.5); }
+      else if (sk.type === 'revive') { tgts.forEach(t => { t.dead = false; t.hp = 0; t.endured = false; ev.push({ t: 'revive', tgt: t.id }); heal(src, t, t.maxHp * (src.rideRevive ? 1 : sk.power / 100), ev); }); src.rideRevive = false; if (src.side === 'party') gain(src, 'heal', ev, 1.5); }
       else if (sk.type === 'buff') {
-        tgts.forEach(t => { [].concat(sk.stat).forEach(s => buff(t, s, 1, ev, sk.lasting)); if (sk.sp) heal(null, t, 0, ev, sk.sp); });
+        tgts.forEach(t => { [].concat(sk.stat).forEach(s => buff(t, s, 1, ev, sk.lasting, 1, src)); if (sk.sp) heal(null, t, 0, ev, sk.sp); if (lead && t !== src) keepCount(ev); });
         if (sk.thGain) tgts.forEach(t => { if (t.side === 'party' && !t.dead && t.th < 100) { t.th = Math.min(100, t.th + sk.thGain); ev.push({ t: 'thGain', tgt: t.id, n: sk.thGain }); if (t.th >= 100) ev.push({ t: 'thReady', tgt: t.id }); } });
         if (src.side === 'party') gain(src, 'buff', ev);
+        // Jungwon's Motion Denied: a foe that buffs itself has it stripped at once (once per battle).
+        if (src.side === 'enemy' && (pk = perkOn('motionDenied', true)) && onceOk('motionDenied') && tgts.some(t => ['atk', 'def', 'agi'].some(st => t.buffs[st] > 0))) { useOnce('motionDenied'); perkEv(ev, 'motionDenied'); dispel(tgts, 'buffs', ev); }
       }
-      else if (sk.type === 'debuff') { tgts.forEach(t => { if (hidden(t)) return; [].concat(sk.stat).forEach(s => buff(t, s, -1, ev, sk.lasting)); }); if (src.side === 'party') gain(src, 'buff', ev); }
+      else if (sk.type === 'debuff') {
+        tgts.forEach(t => {
+          if (hidden(t)) return;
+          [].concat(sk.stat).forEach(s => buff(t, s, -1, ev, sk.lasting, 1, src));
+          // Ballot Box (cards) and Cherry's Mean on Purpose: debuffs may Distress.
+          if (src.side === 'party' && !t.dead && src.distressDebuff > 0 && R() < src.distressDebuff) inflict(src, t, { id: 'distress', chance: 1 }, ev);
+          else if (lead && !t.dead && (pk = perkOn('meanPurpose')) && R() < pk.chance && inflict(src, t, { id: 'distress', chance: 1 }, ev)) perkEv(ev, 'meanPurpose', { quiet: true });
+        });
+        if (src.side === 'party') gain(src, 'buff', ev);
+      }
       else if (sk.type === 'cure') { let any = false; tgts.forEach(t => { if (cure(t, sk.cures, ev, src)) any = true; }); if (!any) ev.push({ t: 'msg', text: 'It had no effect.' }); else if (src.side === 'party') gain(src, 'heal', ev); }
       else if (sk.type === 'dispel') { dispel(tgts, sk.dispel, ev); if (src.side === 'party') gain(src, 'buff', ev); }
       // ── Kat's skills
@@ -786,8 +1098,34 @@ window.FemcBattleEngine = (() => {
         });
         if (src.side === 'party') gain(src, 'buff', ev);
       }
+      // ── MAX skills from bonds (build.js)
+      else if (sk.type === 'valkyrie') { src.valkyrie = sk.turns || 3; ev.push({ t: 'status', tgt: src.id, label: 'VALKYRIE', cls: 'buff' }); gain(src, 'buff', ev); }
+      else if (sk.type === 'undying') { tgts.forEach(t => { if (t.dead) return; t.undying = sk.turns || 2; ev.push({ t: 'status', tgt: t.id, label: 'UNDYING', cls: 'buff' }); }); src.undying = sk.turns || 2; ev.push({ t: 'status', tgt: src.id, label: 'UNDYING', cls: 'buff' }); gain(src, 'buff', ev); }
+      else if (sk.type === 'bond') { tgts.forEach(t => { if (t.dead || t === src) return; t.bondWith = src.id; t.bondT = sk.turns || 3; ev.push({ t: 'status', tgt: t.id, label: 'WARDING BOND', cls: 'buff' }); }); gain(src, 'buff', ev); }
+      else if (sk.type === 'charge') { tgts.forEach(t => { if (t.dead) return; t.charge2 = sk.mult || 2.5; ev.push({ t: 'status', tgt: t.id, label: 'CHARGED', cls: 'buff' }); }); gain(src, 'buff', ev); }
       if (sk.selfBuff && !src.dead) buff(src, sk.selfBuff, 1, ev);
+      if (sk.type === 'taunt' && sk.thOnHit) tgts.forEach(t => { t.thOnHit = sk.thOnHit; });
+      if (sk.dodgeNext && !src.dead) src.dodgeNext = true;
       if (sk.partyHeal) alive(sideOf(src, true)).forEach(p => heal(src, p, p.maxHp * sk.partyHeal, ev));
+      // Damage dealt by this action (Fangs Out's drain, Armiger's phantom swords, Rio's Second Serve).
+      if (src.side === 'party' && !src.assistOf && ['dmg', 'insta'].includes(sk.type)) {
+        const dealt = {}; let any = false;
+        ev.slice(ev0).forEach(e => { if (e.t === 'hit' && e.src === src.id && e.tgt !== src.id && !e.reflected && e.amount > 0 && e.aff !== 'drain') { dealt[e.tgt] = (dealt[e.tgt] || 0) + e.amount; any = true; } });
+        const total = Object.values(dealt).reduce((a, b) => a + b, 0);
+        if (sk.drain && total > 0 && !src.dead) heal(src, src, total * sk.drain, ev);
+        if (lead && src.th >= 100 && sk.type === 'dmg' && total > 0 && (pk = perkOn('armiger'))) {
+          perkEv(ev, 'armiger', { quiet: true });
+          Object.entries(dealt).forEach(([id, d]) => { const t = U(id); if (!t || t.dead) return; const a = Math.max(1, Math.round(d * pk.pct)); t.hp = Math.max(0, t.hp - a); const k = t.hp <= 0; if (k) kill(t, ev); ev.push({ t: 'hit', src: src.id, tgt: t.id, el: 'almighty', aff: 'normal', amount: a, hp: t.hp, maxHp: t.maxHp, killed: k, armiger: true }); });
+        }
+        if (lead && skId === 'attack' && !any && !ev.slice(ev0).some(e => e.t === 'hit' && e.src === src.id) && tgts.length && !tgts[0].dead && (pk = perkOn('secondServe')) && onceOk('secondServe')) {
+          useOnce('secondServe'); perkEv(ev, 'secondServe');
+          if (strike(src, tgts[0], sk, ev)) downs++;
+        }
+        if (lead) S.warp = false;
+      }
+      if (src.loudUsed) { src.loudAt = null; src.loudUsed = false; }
+      src.actBoost = 1;
+      runFollows(ev);
       if (src.side === 'party' && !flip && skId !== 'attack' && ((member(src.mid) || {}).sig || []).includes(skId)) gain(src, 'sig', ev);
       if (src.side === 'enemy' && src.charged && sk.type === 'dmg' && PHYS.has(sk.el)) src.charged = false;
       // Counters: a party member struck alone by a Shadow may hit back (Counterstrike; Public Veneer's stance).
@@ -798,7 +1136,24 @@ window.FemcBattleEngine = (() => {
       });
       src.boost = 1;
       flushDeaths(ev);
+      checkTriggers(ev);
       return downs;
+    }
+    /* After Solar heals someone: Wind at Your Back, Blue Beam, Melody Hug, Kiss, Keeping Count. */
+    function healPerks(src, t, amt, ev) {
+      let p;
+      if (t.dead) return;
+      if ((p = perkOn('windAtBack'))) buff(t, 'agi', 1, ev);
+      if ((p = perkOn('blueBeam')) && onceOk('blueBeam')) { useOnce('blueBeam'); perkEv(ev, 'blueBeam', { quiet: true }); buff(t, 'atk', 1, ev); }
+      if ((p = perkOn('melodyHug'))) buff(t, 'def', 1, ev);
+      if (amt > 0 && (p = perkOn('kiss')) && S.kissTo && S.kissTo !== t.id) { const k = U(S.kissTo); if (k && !k.dead) heal(null, k, amt * p.share, ev); }
+      if (t !== src) keepCount(ev);
+    }
+    function keepCount(ev) {
+      const p = perkOn('keepCount');
+      if (!p) return;
+      S.keep++;
+      if (S.keep >= p.n) { S.keep = 0; perkEv(ev, 'keepCount'); const a = actorFor('keepCount'); alive(party()).forEach(u => heal(null, u, power(a, D.skills.media), ev)); }
     }
 
     /* ── Theurgy ──────────────────────────────────────── */
@@ -831,7 +1186,12 @@ window.FemcBattleEngine = (() => {
         (T.buffs || []).forEach(st => alive(party()).forEach(p => buff(p, st, 1, ev)));
       }
       if (T.heal && T.type !== 'support') alive(party()).forEach(p => heal(u, p, p.maxHp * T.heal, ev));
+      // Mark's Key Change: after Rise and Shine, Solar's gauge restarts at 30% and the party's next attacks hit harder.
+      let kc;
+      if (isLead(u) && (kc = perkOn('keyChange'))) { perkEv(ev, 'keyChange'); u.th = kc.th; ev.push({ t: 'thGain', tgt: u.id, n: kc.th }); alive(party()).forEach(p => { p.keyBoost = 1 + kc.dmg; }); }
       flushDeaths(ev);
+      runFollows(ev);
+      checkTriggers(ev);
       return downs;
     }
 
@@ -857,6 +1217,7 @@ window.FemcBattleEngine = (() => {
           S.round++;
           if (S.kitsune > 0 && --S.kitsune === 0) { S.kitsuneSide = null; ev.push({ t: 'kitsuneEnd' }); }
           S.queue = order(); ev.push({ t: 'round', n: S.round });
+          roundPerks(ev);
         }
         const c = U(S.queue.shift());
         if (c && !c.dead) u = c;
@@ -866,6 +1227,13 @@ window.FemcBattleEngine = (() => {
       u.acted = 0;
       u.guard = false;
       u.wild = false;
+      u.actedRound = S.round;
+      // Bond perks' timed states: Sanctuary ends on their turn; Undying Love, Warding Bond, Valkyrie and Heaven's Door count down.
+      if (u.sanct) u.sanct = false;
+      if (u.undying > 0) u.undying--;
+      if (u.bondT > 0 && --u.bondT === 0) u.bondWith = null;
+      if (u.valkyrie > 0) { u.valkyrie--; if (u.sp < u.maxSp) { u.sp = Math.min(u.maxSp, u.sp + 4); ev.push({ t: 'heal', src: u.id, tgt: u.id, amount: 0, sp: 4, hp: u.hp, maxHp: u.maxHp, spNow: u.sp }); } }
+      if (u.noSolar > 0) u.noSolar--;
       ['atk', 'def', 'agi'].forEach(s => { if (u.buffT[s] > 0 && u.buffT[s] < 90 && --u.buffT[s] === 0) { u.buffs[s] = 0; ev.push({ t: 'buffEnd', tgt: u.id, stat: s }); } });
       if (u.ward) { u.ward = false; ev.push({ t: 'wardEnd', tgt: u.id }); }
       if (u.taunt > 0 && --u.taunt === 0) { u.veneer = 0; ev.push({ t: 'tauntEnd', tgt: u.id }); }
@@ -888,6 +1256,7 @@ window.FemcBattleEngine = (() => {
           u.hp = Math.max(u.side === 'party' ? 1 : 0, u.hp - amt);
           ev.push({ t: 'ailTick', tgt: u.id, id: 'poison', amount: amt, hp: u.hp, maxHp: u.maxHp });
           if (u.hp <= 0) { kill(u, ev); flushDeaths(ev); ev.push({ t: 'hit', src: u.id, tgt: u.id, el: 'poison', aff: 'normal', amount: 0, hp: 0, maxHp: u.maxHp, killed: true, quiet: true }); check(); return { actor: u.id, canAct: false, events: ev }; }
+          if (u.side === 'party') checkTriggers(ev);
         }
         if (def.noAct) { if (canAct) ev.push({ t: 'ailSkip', tgt: u.id, id: a.id }); canAct = false; }
         else if (canAct && a.id === 'fear') {
@@ -907,6 +1276,8 @@ window.FemcBattleEngine = (() => {
       }
       // Tired members sometimes lose a turn.
       if (canAct && !forced && u.side === 'party' && u.tired && R() < D.progression.tired.skip) { ev.push({ t: 'tiredSkip', tgt: u.id }); canAct = false; }
+      // Aphrodite's Back Off!: a shoved foe loses this turn.
+      if (u.skipNext) { u.skipNext = false; if (canAct) { canAct = false; ev.push({ t: 'msg', text: `${u.name} is still reeling and loses its turn.`, src: u.id }); } }
       return { actor: u.id, canAct, forced, events: ev };
     }
     /* A charmed unit's turn: hit someone on its own side, or heal the other side. */
@@ -930,6 +1301,14 @@ window.FemcBattleEngine = (() => {
     }
     function endTurn(u, ev) {
       if (u.side === 'party' && u === leader() && mods.regen && !u.dead) alive(party()).forEach(p => { if (p.hp < p.maxHp) heal(null, p, p.maxHp * mods.regen, ev); });
+      if (isLead(u) && !u.dead) {
+        let p;
+        // Yukari's Second Opinion: Solar ends her turn with an ailment, Yukari cures it (once per battle).
+        if (u.ail && (p = perkOn('secondOpinion', true)) && onceOk('secondOpinion')) { useOnce('secondOpinion'); perkEv(ev, 'secondOpinion'); cure(u, [u.ail.id], ev); }
+        // Haru's Bloom: she heals 10% at the end of each of her first 3 turns.
+        if ((p = perkOn('bloom')) && u.turns <= p.turns && u.hp < u.maxHp) heal(null, u, u.maxHp * p.heal, ev);
+      }
+      checkTriggers(ev);
       u.boost = 1;
       S.oneMore = false; S.alloutReady = false;
     }
@@ -938,8 +1317,11 @@ window.FemcBattleEngine = (() => {
       if (S.outcome) return;
       if (u.dead) { endTurn(u, ev); return; }
       if (u.side === 'party') {
-        if (downs > 0) {
+        const forced = S.forceOneMore; S.forceOneMore = false;
+        if (downs > 0 || forced) {
           S.chain.add(u.id);
+          let cs;
+          if (isLead(u) && (cs = perkOn('centerStage'))) alive(party()).forEach(p => { if (p.th < 100) { p.th = Math.min(100, p.th + cs.th); ev.push({ t: 'thGain', tgt: p.id, n: cs.th }); if (p.th >= 100) ev.push({ t: 'thReady', tgt: p.id }); } });
           if (alive(foes()).filter(f => !f.unreachable).every(f => f.down)) { S.alloutReady = true; S.oneMore = true; ev.push({ t: 'alloutReady', src: u.id }); }
           else { S.oneMore = true; ev.push({ t: 'onemore', src: u.id }); }
         } else endTurn(u, ev);
@@ -964,8 +1346,9 @@ window.FemcBattleEngine = (() => {
       S.items[id]--;
       const t = U(target);
       ev.push({ t: 'item', src: u.id, item: id, name: it.name, tgt: t && t.id });
-      const amt = (p, v) => (v <= 1 ? p.maxHp * v : v);
-      if (it.type === 'heal') {
+      const fm = perkOn('fieldMedicine'), amt = (p, v) => (v <= 1 ? p.maxHp * v : v) * (fm ? 1 + fm.v : 1);
+      if (it.type === 'spPct') alive(party()).forEach(p => heal(u, p, 0, ev, Math.round(p.maxSp * it.sp)));
+      else if (it.type === 'heal') {
         if (it.target === 'allies') alive(party()).forEach(p => heal(u, p, amt(p, it.hp), ev));
         else if (t && !t.dead) heal(u, t, amt(t, it.hp), ev);
       } else if (it.type === 'full') alive(party()).forEach(p => heal(u, p, p.maxHp, ev, p.maxSp));
@@ -989,7 +1372,13 @@ window.FemcBattleEngine = (() => {
       } else if (action.type === 'theurgy') {
         if (!canTheurgy(u)) { S.oneMore = wasOneMore; return [{ t: 'msg', text: 'The Theurgy gauge isn’t full yet.' }]; }
         afterAction(u, theurgy(u, ev), ev);
-      } else if (action.type === 'guard') { u.guard = true; ev.push({ t: 'guard', src: u.id }); endTurn(u, ev); }
+      } else if (action.type === 'guard') {
+        u.guard = true; ev.push({ t: 'guard', src: u.id });
+        let p;
+        if (isLead(u) && (p = perkOn('waitingRoom'))) { perkEv(ev, 'waitingRoom', { quiet: true }); heal(null, u, u.maxHp * p.heal, ev, Math.round(u.maxSp * p.heal)); }
+        if (isLead(u) && perkOn('papillon')) u.papillon = true;
+        endTurn(u, ev);
+      }
       else if (action.type === 'item') {
         const it = D.items[action.item];
         if (!it || !(S.items[action.item] > 0) || it.use === 'field') { S.oneMore = wasOneMore; return [{ t: 'msg', text: 'None left.' }]; }
@@ -999,8 +1388,10 @@ window.FemcBattleEngine = (() => {
         if (S.boss && !S.reaper) { S.oneMore = wasOneMore; return [{ t: 'msg', text: 'There’s no escape from the full moon!' }]; }
         const avg = l => l.reduce((s, x) => s + x.ag, 0) / Math.max(1, l.length);
         const chance = S.reaper ? 34 + (alive(foes()).some(f => f.down) ? 30 : 0) : Math.max(25, Math.min(90, 55 + (avg(alive(party())) - avg(alive(foes()))) * 4 + (alive(foes()).some(f => f.down) ? 20 : 0)));
-        const ok = R() * 100 < chance;
-        ev.push({ t: 'escape', ok });
+        const gh = !S.boss && perkOn('grapple');
+        const ok = !!gh || R() * 100 < chance;
+        if (gh) perkEv(ev, 'grapple', { quiet: true });
+        ev.push({ t: 'escape', ok, grapple: !!gh });
         if (ok) S.outcome = 'escaped'; else endTurn(u, ev);
       } else if (action.type === 'shift') {
         const t = U(action.to);
@@ -1010,6 +1401,11 @@ window.FemcBattleEngine = (() => {
         if (!ok) { S.oneMore = wasOneMore; return [{ t: 'msg', text: 'Can’t shift now.' }]; }
         S.chain.add(u.id);
         t.boost = mods.shiftMult;
+        let p;
+        // Jaehyun's Field General: each pass in a chain adds another +10%. Judy's Hotwire: +10 Theurgy. Junpei's Pinch Hitter.
+        if ((p = perkOn('fieldGeneral'))) t.boost = mods.shiftMult + p.step * S.chain.size;
+        if ((p = perkOn('hotwire')) && t.th < 100) { t.th = Math.min(100, t.th + p.th); perkEv(ev, 'hotwire', { quiet: true }); ev.push({ t: 'thGain', tgt: t.id, n: p.th }); if (t.th >= 100) ev.push({ t: 'thReady', tgt: t.id }); }
+        if (isLead(u) && t.mid === 'junpei' && perkOn('pinchHitter', true) && onceOk('pinchHitter')) { useOnce('pinchHitter'); t.sureCrit = 'phys'; perkEv(ev, 'pinchHitter'); }
         if (mods.shiftSp) t.sp = Math.min(t.maxSp, t.sp + mods.shiftSp);
         if (mods.shiftTh && t.th < 100) { t.th = Math.min(100, t.th + mods.shiftTh); ev.push({ t: 'thGain', tgt: t.id, n: mods.shiftTh }); if (t.th >= 100) ev.push({ t: 'thReady', tgt: t.id }); }
         S.cur = t;
@@ -1033,7 +1429,14 @@ window.FemcBattleEngine = (() => {
       }
       const k = S.known[t.kind] || (S.known[t.kind] = {});
       D.affinityOrder.forEach(el => { k[el] = true; });
-      ev.push({ t: 'analyze', tgt: t.id, kind: t.kind });
+      // Haechan's Cut the Fluff: the status openings (ailments that land on it) come with the scan.
+      const open = perkOn('cutFluff') ? Object.keys(D.ailments).filter(a => !ailImmune(t, a) && a !== 'disorient') : null;
+      ev.push({ t: 'analyze', tgt: t.id, kind: t.kind, open });
+      // Saori's Margin Notes: the first Analyze reads every foe on the field.
+      if (perkOn('marginNotes') && onceOk('marginNotes')) {
+        useOnce('marginNotes'); perkEv(ev, 'marginNotes', { quiet: true });
+        alive(foes()).forEach(f => { if (f.hidden) return; const kk = S.known[f.kind] || (S.known[f.kind] = {}); D.affinityOrder.forEach(el => { kk[el] = true; }); });
+      }
       if (t.gimmick === 'empress') ev.push({ t: 'gate', tgt: t.id, el: t.gate });
       return ev;
     }
@@ -1054,12 +1457,53 @@ window.FemcBattleEngine = (() => {
       foes().forEach(f => { f.down = false; });
       flushDeaths(ev);
       ev.unshift({ t: 'allout', src: u.id, parts: parts.map(p => p.id), hits: hitsOut });
+      // Haru's Milady's Salute: a grenade shell after the All-Out.
+      let ms;
+      if (!check() && (ms = perkOn('milady')) && alive(foes()).length) { follow('milady', null, { all: true, skill: { el: 'almighty', power: ms.power } }); runFollows(ev); flushDeaths(ev); }
       check();
       endTurn(u, ev);
       return ev;
     }
     /* Start-of-battle party buff (Star tree capstone). */
     function openBuff(stat) { const ev = []; alive(party()).forEach(p => buff(p, stat, 1, ev)); return ev; }
+    /* Each new round: Fuuka's Steady Signal, and Haechan's Hear the Room (the foe charging its strongest move). */
+    function roundPerks(ev) {
+      let p;
+      if ((p = perkOn('steadySignal')) && S.round > 1 && S.round % p.every === 0) { perkEv(ev, 'steadySignal'); alive(party()).forEach(u => { if (u.hp < u.maxHp) heal(null, u, u.maxHp * p.heal, ev); }); }
+      if (perkOn('hearRoom')) {
+        const fs = alive(foes()).filter(f => !f.unreachable && !f.hidden);
+        fs.forEach(f => { f.heard = false; f.heardHit = false; });
+        const f = fs.slice().sort((a, b) => (!!(b.charge || b.charged) - !!(a.charge || a.charged)) || (Math.max(b.st, b.ma) * (b.boss ? 2 : 1) - Math.max(a.st, a.ma) * (a.boss ? 2 : 1)))[0];
+        if (f) { f.heard = true; ev.push({ t: 'heard', tgt: f.id }); if (S.round === 1) perkEv(ev, 'hearRoom', { tgt: f.id, quiet: true }); }
+      }
+    }
+    /* The start of a battle: cards' opening buffs and Theurgy, set bonuses, the night's buffs (battle.js setup.startBuffs:
+       Yunjin's mood, Leon's Mission Briefing, Jihoon's Almighty Hoon) and the start-of-battle perks. */
+    function start() {
+      const ev = [], L = leader();
+      let p;
+      party().forEach(u => {
+        if (u.dead) return;
+        if (u.thStart && u.th < 100) { u.th = Math.min(100, u.th + u.thStart); ev.push({ t: 'thGain', tgt: u.id, n: u.thStart }); if (u.th >= 100) ev.push({ t: 'thReady', tgt: u.id }); }
+        (u.openBuff || []).forEach(st => buff(u, st, 1, ev));
+      });
+      [...new Set([].concat(...alive(party()).map(u => u.partyOpen || [])))].forEach(st => alive(party()).forEach(u => buff(u, st, 1, ev)));
+      (setup.startBuffs || []).forEach(b => alive(party()).forEach(u => { buff(u, b.stat || b, 1, ev); if (b.turns) u.buffT[b.stat || b] = Math.max(u.buffT[b.stat || b], b.turns); }));
+      if ((p = perkOn('countIn'))) { perkEv(ev, 'countIn', { quiet: true }); [].concat(p.v).forEach(st => alive(party()).forEach(u => buff(u, st, 1, ev))); }
+      if (L && (p = perkOn('onIce'))) { buff(L, 'agi', 1, ev); L.buffT.agi = 1; }
+      if ((p = perkOn('sunnySide'))) { perkEv(ev, 'sunnySide', { quiet: true }); alive(party()).forEach(u => { if (u.hp < u.maxHp) heal(null, u, u.maxHp * p.heal, ev); }); }
+      if ((p = perkOn('venomMine')) && R() < p.chance) {
+        const pool = alive(foes()).filter(f => !f.ail && !f.unreachable && !ailImmune(f, 'poison'));
+        if (pool.length) { const f = pick(pool); perkEv(ev, 'venomMine', { tgt: f.id }); f.ail = { id: 'poison', t: 3 }; ev.push({ t: 'ail', src: actorFor('venomMine').id, tgt: f.id, id: 'poison', turns: 3 }); }
+      }
+      if ((p = perkOn('heavensDoor'))) {
+        const f = alive(foes()).filter(x => !x.unreachable).sort((a, b) => (b.boss - a.boss) || (Math.max(b.st, b.ma) - Math.max(a.st, a.ma)))[0];
+        if (f) { f.noSolar = p.turns; perkEv(ev, 'heavensDoor', { tgt: f.id }); }
+      }
+      if ((p = perkOn('kiss'))) { const k = alive(party()).filter(u => u !== L).sort((a, b) => hpPct(a) - hpPct(b))[0]; if (k) { S.kissTo = k.id; perkEv(ev, 'kiss', { tgt: k.id, quiet: true }); } }
+      if (perkOn('warpStrike')) S.warp = true;
+      return ev;
+    }
     function declineAllOut() { S.alloutReady = false; S.oneMore = true; return [{ t: 'onemore', src: S.cur.id }]; }
 
     /* ── Shadow AI ────────────────────────────────────── */
@@ -1267,6 +1711,18 @@ window.FemcBattleEngine = (() => {
       return ev;
     }
     foes().forEach(f => { const h = G(f, 'init'); if (h) h(f); });
+    /* Bond perks that change the units themselves (build.js): Rio's Stamina, Hyein's Tailor Made, Cherry's On Ice, Noctis's
+       Warp-Strike (Solar first), and the Moon's curse from Shuffle Time (setup.foeHpMult). */
+    (() => {
+      const L = leader(); let p;
+      if (L) {
+        if ((p = perkOn('stamina'))) { const add = Math.round(L.maxHp * p.hp); const full = L.hp >= L.maxHp; L.maxHp += add; if (full) L.hp = L.maxHp; }
+        if ((p = perkOn('solarDef'))) L.def = (L.def || 0) + p.v;
+        if (perkOn('onIce') && !['null', 'repel', 'drain'].includes(L.aff.ice)) L.aff = Object.assign({}, L.aff, { ice: 'resist' });
+        if (perkOn('warpStrike')) L.quick = true;
+      }
+      if (setup.foeHpMult && setup.foeHpMult !== 1) foes().forEach(f => { f.maxHp = Math.round(f.maxHp * setup.foeHpMult); f.hp = Math.round(f.hp * setup.foeHpMult); });
+    })();
 
     /* ── Party tactics (P3P) ───────────────────────────
        Returns the action a member would choose on their own. Uses only the affinities the party knows.
@@ -1409,7 +1865,7 @@ window.FemcBattleEngine = (() => {
     return {
       S, U, party, foes, alive, leader, act, openBuff, autoAction, forcedAct, helpless, analyze, allOut, declineAllOut, enemyAct, nextTurn, upcoming, canPay, canShiftTo,
       canTheurgy, theurgyDef, shieldUp, outcome: () => S.outcome || check(), skillOf, attackSkill, known: kind => S.known[kind] || {},
-      costOf, usedOnce, aggro, flanking, kitsuneOn, atkM, defM
+      costOf, usedOnce, aggro, flanking, kitsuneOn, atkM, defM, start, perkOn: k => perkOn(k), perks: () => S.perks
     };
   }
 
@@ -1420,7 +1876,7 @@ window.FemcBattleEngine = (() => {
     const drops = {};
     beaten.forEach(f => {
       const d = D.enemies[f.kind];
-      if (d.drop && rand() < (d.dropChance != null ? d.dropChance : P.dropChance)) drops[d.drop] = (drops[d.drop] || 0) + 1;
+      if (d.drop && rand() < (d.dropChance != null ? d.dropChance : P.dropChance) * (1 + (mult.drop || 0))) drops[d.drop] = (drops[d.drop] || 0) + 1;
     });
     return {
       exp: Math.round(beaten.reduce((s, f) => s + f.exp, 0) * (mult.exp || 1)),

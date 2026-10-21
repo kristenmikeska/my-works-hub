@@ -28,6 +28,7 @@
    Test hooks: ?seed=N (repeatable fights), ?speed=N (animation speed), ?fps=1 (frame meter), window.FemcBattle (state + freeze for screenshots). */
 (() => {
   const D = window.FEMC_BATTLE_DATA, E = window.FemcBattleEngine, ART = window.FemcBattleArt, FX = window.FemcFX, MAP = window.FemcTartarusMap, ICON = window.FemcIcons, BS = window.FemcBattleSave;
+  const BLD = window.FemcBuild || null; // naginatas, Revelation cards, Shuffle Time, bond perks (build.js)
   const PROTO_KEY = 'kg-femc-battle-proto', UNI_KEY = 'kg-femc-revamp-settings';
   // The old page-jump handoff: the life sim now runs the fight in its own page.
   if (/[?&]from=game\b/.test(location.search)) { location.replace('femc-game.html'); return; }
@@ -865,7 +866,12 @@
       const useItem = !onFloor ? null : (id, tgt) => {
         const it = D.items[id];
         if (!it || !(save.items[id] > 0) || it.use === 'battle' || it.type === 'key') return null;
-        if (it.type === 'escape') { save.items[id]--; if (!save.items[id]) delete save.items[id]; persist(); mark('traesto'); left = true; return { leave: true }; }
+        if (it.type === 'escape') {
+          save.items[id]--; if (!save.items[id]) delete save.items[id];
+          // Saori's Bookmark: leaving with a Traesto Gem keeps the progress since the last access point.
+          if (run && TP().bookmark) { save.reached = D.floors[run.fi].id; mark('bookmark'); }
+          persist(); mark('traesto'); left = true; return { leave: true };
+        }
         if (['ally', 'dead'].includes(it.target) && !tgt) return null;
         useFieldItem(id, tgt, fieldUnits());
         const now = {}; fieldUnits().forEach(u => { now[u.mid] = { hp: u.hp, maxHp: u.maxHp, sp: u.sp, maxSp: u.maxSp }; });
@@ -957,8 +963,15 @@
       if (HS) { HS.entered = true; HS.floor = Math.max(HS.floor, floor.gameFloor || 0); }
       // Test hook: window.__btMap forces a seed for the floor's layout.
       run.map = MAP.generate(floor, { rand, strongChance: D.map.strongChance * diff().strong });
+      mapPerks(floor, run.map);
       const r = await explore(floor);
+      // Sebastian's Save Point: the party wakes at the last access point instead of a Game Over (once a night).
+      if (r === 'savepoint') { const ai = save.reached ? D.floors.findIndex(f => f.id === save.reached) : -1; run.fi = ai >= 0 && ai <= run.fi ? ai : run.fi; run.carry = null; run.tired = {}; run.fights = {}; continue; }
       if (r !== 'up') { run = null; if (HO) return hoFinish(r === 'over' ? 'lose' : 'win'); hub(); return; }
+      // Rohan's Sketch the Floor remembers floors whose stairs were taken; Kiriko's Fox Spirit heals on the way up.
+      if (!save.floorsMapped.includes(floor.id)) { save.floorsMapped.push(floor.id); persist(); }
+      const tpu = TP();
+      if (tpu.foxSpirit) carryEach(u => { u.hp = Math.min(u.maxHp, Math.round(u.hp + u.maxHp * tpu.foxSpirit.v)); });
       if (floor.top) {
         const op = D.ops.find(o => o.id === floor.op);
         if (!opCleared(op.id) || run.refight) {
@@ -1036,7 +1049,17 @@
         await afterWin(out, { title: `${floor.label} · ${floor.block}`, strong, reaper, back: 'Back to the map' });
         return 'win';
       }
-      if (out.result === 'escaped') return 'escaped';
+      if (out.result === 'escaped') {
+        // Widowmaker's Grappling Hook: the Reaper loses 2 more steps after an escape.
+        const tpe = TP(); if (tpe.grapple && run.map && !reaper) run.map.steps = Math.max(0, run.map.steps - tpe.grapple.v);
+        return 'escaped';
+      }
+      const tpo = TP();
+      if (tpo.savePoint && !run.savePointUsed) {
+        run.savePointUsed = true; mark('save-point');
+        await message('SAVE POINT', 'The world goes dark… and then green. Solar wakes at the last access point, everything she carried still with her. Sebastian would call it a checkpoint.');
+        return 'savepoint';
+      }
       const c = await gameOver();
       if (c === 'retry') { const s = JSON.parse(snap); run.carry = s.carry; save.items = s.items; save.th = s.th; run.fights = s.fights; run.tired = s.tired; persist(); continue; }
       return 'over';
@@ -1066,28 +1089,160 @@
     } finally { if (own) run = null; }
   }
   /* After a win: rewards, fatigue, results, then any Persona evolution or new Haenim form. */
-  async function afterWin(out, { title, strong = false, reaper = false, op = null, first = false, back = 'Continue' }) {
-    const mult = strong ? D.progression.strongMult : {};
+  async function afterWin(out, { title, strong = false, reaper = false, op = null, first = false, back = 'Continue', story = false }) {
+    const tp = TP(), notes = [];
+    const mult = strong ? Object.assign({}, D.progression.strongMult, tp.rivalsDare ? { exp: tp.rivalsDare.v } : {}) : {};
     const rew = out.rew || { exp: 0, yen: 0, drops: {} };
-    if (strong) { rew.exp = Math.round(rew.exp * mult.exp); rew.yen = Math.round(rew.yen * mult.yen); }
+    if (strong) { rew.exp = Math.round(rew.exp * mult.exp); rew.yen = Math.round(rew.yen * mult.yen); if (tp.rivalsDare) notes.push('Rival’s Dare: double EXP'); }
+    // Bond perks on the money: Jungwon's Stewardship (battles), Wren's Porter's Tip (Tartarus).
+    const yb = (tp.stewardship ? tp.stewardship.v : 0) + (tp.portersTip && run && !run.ops ? tp.portersTip.v : 0);
+    if (yb && rew.yen) { rew.yen = Math.round(rew.yen * (1 + yb)); notes.push(`Yen +${Math.round(yb * 100)}%`); }
+    // Tarot Dust: what's left of Shadows in Tartarus (cards and refines run on it).
+    if (BLD && run && !run.ops && !op && !story && rand() < 0.4 + (strong ? 0.3 : 0)) { const n = 1 + Math.floor(rand() * 3) + (strong ? 2 : 0) + Math.floor(run.fi / 6); rew.drops.tarot_dust = (rew.drops.tarot_dust || 0) + n; }
+    // A full moon's first clear can leave one of Solar's naginatas behind.
+    const bw = BLD && op && first && BLD.BOSS_WEAPON[op.id];
+    if (bw && !(save.gear.owned[bw] > 0)) { addGear(bw); notes.push(`${D.gear[bw].name} (one of Solar’s naginatas!)`); mark('boss-weapon'); }
+    // Shuffle Time (P3P): after an All-Out finish, a clean fast win, Strong Shadows, the Reaper or a full moon, or by chance.
+    let shuffle = null;
+    const due = BLD && !story && out.rating ? (window.__btShuffle ? 'chance' : BLD.shuffleDue(Object.assign({ strong, reaper, boss: !!op }, out.rating), rand)) : null;
+    if (due) {
+      shuffle = await shuffleTime(due, { tier: shuffleTier(op), bg: (curSpec && curSpec.bg) || '' });
+      const f = shuffle.res.fx;
+      if (f.expMult) rew.exp = Math.round(rew.exp * (1 + f.expMult));
+      if (f.heal || f.hpLoss || f.th) carryEach(u => { if (f.heal) { u.hp = Math.min(u.maxHp, Math.round(u.hp + u.maxHp * f.heal)); u.sp = Math.min(u.maxSp, Math.round(u.sp + u.maxSp * f.heal)); } if (f.hpLoss) u.hp = Math.max(1, Math.round(u.hp - u.maxHp * f.hpLoss)); if (f.th) u.th = Math.min(100, (u.th || 0) + f.th); });
+      if (f.th) roster().forEach(m => { save.th[m.id] = Math.min(100, (save.th[m.id] || 0) + f.th); });
+      if (f.reaper && run && run.map) run.map.steps += f.reaper;
+      if (f.curse && run) run.curse = f.curse;
+    }
     save.yen += rew.yen;
     Object.entries(rew.drops).forEach(([k, n]) => addMat(k, n));
     let bonus = 0;
     if (op && first) { bonus = D.progression.bossBonusPoints; save.pts += bonus; }
-    // Fatigue: members who fought get closer to Tired (not in operations: the clock just healed them).
-    const nowTired = [];
+    // Yukari's First Aid Kit and Rio's Stamina: a little HP after the win. Jihoon's Almighty Hoon: a strong win fires the party up.
+    if (run && tp.firstAid) { let low = null; carryEach(u => { if (!low || u.hp / u.maxHp < low.hp / low.maxHp) low = u; }, false); if (low) { carryEach(u => { if (u.mid === low.mid) u.hp = Math.min(u.maxHp, Math.round(u.hp + u.maxHp * tp.firstAid.v)); }); notes.push(`First Aid Kit: ${low.name} +${Math.round(tp.firstAid.v * 100)}% HP`); } }
+    if (run && tp.stamina) { carryEach(u => { u.hp = Math.min(u.maxHp, Math.round(u.hp + u.maxHp * tp.stamina.win)); }); notes.push('Stamina: the party +5% HP'); }
+    if (run && strong && tp.almightyHoon) { run.hoon = true; notes.push('Almighty Hoon: the next fight starts with attack up'); }
+    // Fatigue: members who fought get closer to Tired (not in operations: the clock just healed them). Akihiko's All Night: +2.
+    const nowTired = [], tiredAfter = D.progression.tiredAfter + (tp.allNight ? tp.allNight.v : 0);
     if (run && !run.ops && !op) roster().forEach(m => {
       run.fights[m.id] = (run.fights[m.id] || 0) + 1;
-      if (run.fights[m.id] >= D.progression.tiredAfter && !run.tired[m.id]) { run.tired[m.id] = true; nowTired.push(m.id); }
+      if (run.fights[m.id] >= tiredAfter && !run.tired[m.id]) { run.tired[m.id] = true; nowTired.push(m.id); }
     });
     persist();
     if (nowTired.length) tip('fatigue');
-    await results({ title, out, rew, bonus, nowTired, op, reaper, back });
+    await results({ title, out, rew, bonus, nowTired, op, reaper, back, notes, shuffle });
     await resolvePending();   // a ninth skill from a level-up: forget which?
     await pendingEvolutions();
     await resolvePending();   // an evolved Persona's new skills
     const forms = checkForms();
     for (const f of forms) await formUnlocked(f);
+  }
+  /* Tartarus-side bond perks (build.js battlePerks): story nights only; practice has no links. */
+  const TP = () => (BLD && HO ? BLD.battlePerks(save, hoAvail()) : {});
+  /* Change tonight's carried HP/SP/Theurgy for each member (run.carry; a missing entry is full). fn(u) edits { mid, name, hp, maxHp, sp, maxSp, th }. */
+  function carryEach(fn, write = true) {
+    if (!run) return;
+    const units = buildParty(run.carry).map(u => ({ mid: u.mid, name: u.name, hp: u.hp, maxHp: u.maxHp, sp: u.sp, maxSp: u.maxSp, th: u.th }));
+    units.forEach(fn);
+    if (write) run.carry = Object.fromEntries(units.map(u => [u.mid, { hp: u.hp, sp: u.sp, th: u.th }]));
+  }
+  const shuffleTier = op => Math.max(1, Math.min(7, op ? 1 + D.ops.findIndex(o => o.id === op.id) : 1 + (run ? D.floors[run.fi].bi : save.ops.cleared.length)));
+
+  /* ════════════════════════════════════════════════════
+     SHUFFLE TIME (P3P): the cards show face up, flip, shuffle and spin; pick one. Rush picks for you. Reduced motion: no
+     movement (the order still changes, out of sight). Test hooks: window.__btShuffle (always due), window.__btShuffleHand (a
+     fixed hand), window.__btShufflePick (the index Rush/auto picks).
+     ════════════════════════════════════════════════════ */
+  const SH_WHY = { boss: 'The full moon is quiet', allout: 'All-Out finish', rating: 'A clean, fast win', strong: 'Strong Shadows', chance: 'The cards are turning…' };
+  const SUIT_SVG = {
+    cups: c => `<path d="M38 50h44c0 22-9 35-22 37v19h13v8H47v-8h13V87C47 85 38 72 38 50z" fill="${c}" stroke="#14070f" stroke-width="3"/><path d="M45 58h30" stroke="#fff" stroke-width="3" opacity=".6"/>`,
+    coins: c => `<circle cx="60" cy="80" r="27" fill="${c}" stroke="#14070f" stroke-width="3"/><circle cx="60" cy="80" r="19" fill="none" stroke="#14070f" stroke-width="2"/><path d="M60 64l5 11h12l-10 7 4 12-11-7-11 7 4-12-10-7h12z" fill="#fff" opacity=".85"/>`,
+    swords: c => `<path d="M57 34h6l3 64h-12z" fill="${c}" stroke="#14070f" stroke-width="3"/><rect x="42" y="98" width="36" height="7" fill="#ffd36b" stroke="#14070f" stroke-width="2.5"/><rect x="56" y="105" width="8" height="18" fill="#7a4a2a" stroke="#14070f" stroke-width="2.5"/><circle cx="60" cy="127" r="5" fill="#ffd36b" stroke="#14070f" stroke-width="2.5"/>`,
+    wands: c => `<path d="M56 36h8l-2 92h-4z" fill="#a0603a" stroke="#14070f" stroke-width="3"/><path d="M60 40c-12-6-16-16-12-24 8 2 12 10 12 24zM60 40c12-6 16-16 12-24-8 2-12 10-12 24z" fill="${c}" stroke="#14070f" stroke-width="2.5"/><path d="M58 74c-10-2-14-8-14-14 7 0 12 5 14 14zM62 96c10-2 14-8 14-14-7 0-12 5-14 14z" fill="${c}" stroke="#14070f" stroke-width="2.5"/>`
+  };
+  const shFrame = inner => `<svg viewBox="0 0 120 180" aria-hidden="true"><defs><linearGradient id="shg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b1a5c"/><stop offset="1" stop-color="#0d0c2c"/></linearGradient></defs>
+    <rect x="2" y="2" width="116" height="176" rx="7" fill="#d9e4ff" stroke="#14070f" stroke-width="3"/><rect x="9" y="9" width="102" height="162" rx="4" fill="url(#shg)" stroke="#ffd36b" stroke-width="2"/>
+    <path d="M14 14l10 0M14 14l0 10M106 14l-10 0M106 14l0 10M14 166l10 0M14 166l0-10M106 166l-10 0M106 166l0-10" stroke="#ffd36b" stroke-width="2"/>${inner}</svg>`;
+  function shFace(c) {
+    if (c.kind !== 'minor') return `<span class="sh-face major${c.kind === 'penalty' ? ' pen' : ''}"><img src="assets/femc/tarot/${esc(c.id)}.webp?v=${V()}" alt="" draggable="false"><b>${esc(c.name)}</b></span>`;
+    const su = D.shuffle.suits[c.suit];
+    return `<span class="sh-face minor" style="--c:${su.color}">${shFrame(SUIT_SVG[c.suit](su.color) + `<rect x="30" y="140" width="60" height="22" rx="3" fill="#14070f" stroke="#ffd36b" stroke-width="1.5"/><text x="60" y="157" fill="#fff4f9" font-family="Georgia, serif" font-size="16" font-weight="700" text-anchor="middle">${esc(c.num)}</text>`)}<b>${esc(c.name)}</b></span>`;
+  }
+  const shBack = () => `<span class="sh-back">${shFrame('<circle cx="60" cy="90" r="34" fill="none" stroke="#6ab0ff" stroke-width="3"/><circle cx="60" cy="90" r="24" fill="#0b1640" stroke="#ffd36b" stroke-width="2"/><path d="M66 74a18 18 0 1 0 0 32 14 14 0 1 1 0-32z" fill="#ffd36b"/><path d="M60 40v10M60 130v10M24 90h10M86 90h10M35 65l7 7M78 108l7 7M85 65l-7 7M42 108l-7 7" stroke="#6ab0ff" stroke-width="2.5" stroke-linecap="round"/>')}</span>`;
+  let shState = null;
+  function shuffleTime(why, ctx) {
+    return new Promise(async resolve => {
+      const tp = TP(), extra = tp.goodFortune ? 1 : 0, reduced = !FX || FX.reduced();
+      const hand = Array.isArray(window.__btShuffleHand) ? window.__btShuffleHand.splice(0) : BLD.deal(rand, { tier: ctx.tier, extra, hard: ST().difficulty === 'hard', boss: why === 'boss', practice: !HO });
+      const auto = rushActive();
+      shState = { why, hand, phase: 'show', picked: null, res: null };
+      save.shuffles = (save.shuffles || 0) + 1;
+      screen = 'shuffle';
+      root.classList.remove('bt-in-battle');
+      music.play('floor');
+      mark('shuffle'); mark('shuffle-' + why);
+      const el = show(`<div class="bt-sh-bg"${ctx.bg ? ` style="background-image:url('${ctx.bg}')"` : ''}></div><div class="bt-sh-shade"></div>
+        <div class="bt-sh-in"><p class="bt-kicker">${esc(SH_WHY[why] || 'Shuffle Time')}${extra ? ' · Kiriko’s Good Fortune: one more card' : ''}</p><h1 class="bt-sh-title"><span>SHUFFLE</span> <span>TIME</span></h1>
+          <div class="bt-sh-hand" style="--n:${hand.length}">${hand.map((c, i) => `<button type="button" class="bt-sh-card" data-i="${i}" style="--slot:${i}" aria-label="Card ${i + 1}"><span class="in"><span class="front">${shFace(c)}</span>${shBack()}</span></button>`).join('')}</div>
+          <p class="bt-sh-say" aria-live="polite">Watch the cards…</p>
+          <div class="bt-sh-out" hidden></div>
+          <div class="row" hidden><button type="button" class="bt-btn pink" data-sh-ok><span>Continue</span></button></div></div>`, `bt-shuffle${reduced ? ' reduced' : ''}`);
+      el.style.setProperty('--spd', speed());
+      const cards = [...el.querySelectorAll('.bt-sh-card')], say = el.querySelector('.bt-sh-say');
+      sfx('summon'); tip('shuffle'); nav('shuffle');
+      ctl = { kind: 'shuffle-wait', move() {}, pick() {}, back() {} };
+      await sleep(auto ? 500 : 1300);
+      // Flip face down, then shuffle (the order changes either way; with reduced motion it happens out of sight).
+      el.classList.add('down'); sfx('move');
+      shState.phase = 'shuffle';
+      await sleep(reduced ? 150 : 420);
+      const slots = cards.map((_, i) => i);
+      const rounds = reduced || auto ? 1 : 6;
+      for (let k = 0; k < rounds; k++) {
+        for (let i = slots.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [slots[i], slots[j]] = [slots[j], slots[i]]; }
+        cards.forEach((c, i) => c.style.setProperty('--slot', slots[i]));
+        if (!reduced && !auto) { sfx('move'); await sleep(230); }
+      }
+      el.classList.add('spin');
+      shState.phase = 'pick';
+      say.textContent = 'Pick a card!';
+      mark('shuffle-ready');
+      // Keyboard / pad: ←→ walk the cards in their on-screen order.
+      const order = () => cards.slice().sort((a, b) => +a.style.getPropertyValue('--slot') - +b.style.getPropertyValue('--slot'));
+      let sel = 0, done = false;
+      const paint = () => order().forEach((c, j) => c.classList.toggle('sel', j === sel));
+      const choose = async cardEl => {
+        if (done) return; done = true; ctl = null;
+        const i = +cardEl.dataset.i, c = hand[i];
+        el.classList.remove('spin'); el.classList.add('picked');
+        cardEl.classList.add('chosen'); sfx('ok');
+        shState.phase = 'reveal'; shState.picked = i;
+        await sleep(reduced ? 120 : 380);
+        cardEl.classList.add('up');
+        const res = BLD.applyShuffle(save, c, { R: rand, tier: ctx.tier, party: roster().map(m => m.id) });
+        shState.res = res;
+        persist();
+        mark('shuffle-pick'); mark('shuffle-' + (c.kind === 'minor' ? c.suit : c.kind === 'penalty' ? 'penalty' : 'major')); mark('shuffle-out-' + (c.out || c.suit));
+        sfx(res.penalty ? 'ko' : 'unlock');
+        if (res.penalty) nav('shufflePenalty');
+        const out = el.querySelector('.bt-sh-out');
+        out.hidden = false;
+        out.innerHTML = `<b>${esc(c.name)}${c.kind === 'penalty' ? ' · reversed' : ''}</b>${res.lines.map(l => `<span>${esc(l)}</span>`).join('')}`;
+        say.textContent = res.penalty ? 'Upside down…' : BLD.cardText(c);
+        blogAdd(`Shuffle Time: ${c.name} · ${res.lines.join(', ')}`, res.penalty ? 'miss' : 'buff');
+        await sleep(reduced ? 200 : 650);
+        cards.forEach(x => { if (x !== cardEl) x.classList.add('up', 'other'); });
+        const row = el.querySelector('.row'); row.hidden = false;
+        const fin = () => { ctl = null; shState.phase = 'done'; resolve({ card: c, res }); };
+        el.querySelector('[data-sh-ok]').addEventListener('click', () => { sfx('ok'); fin(); });
+        if (auto) { await sleep(900); if (shState.phase !== 'done') fin(); } else buttonNav(el);
+      };
+      cards.forEach(c => c.addEventListener('click', () => { if (shState.phase === 'pick') choose(c); }));
+      cards.forEach(c => c.addEventListener('pointerenter', () => { if (shState.phase !== 'pick') return; sel = order().indexOf(c); paint(); }));
+      ctl = { kind: 'shuffle', items: hand, move(d) { sel = (sel + (d > 0 ? 1 : -1) + cards.length) % cards.length; sfx('move'); paint(); }, pick() { choose(order()[sel]); }, back() {}, pickValue(v) { const c = cards.find(x => +x.dataset.i === +v); if (c) choose(c); } };
+      paint();
+      if (auto) { await sleep(450); const k = window.__btShufflePick != null ? +window.__btShufflePick : Math.floor(Math.random() * cards.length); choose(cards[Math.max(0, Math.min(cards.length - 1, k))]); }
+    });
   }
   /* Evolutions that are due play one after another. Returns how many played. */
   let evolving = false;
@@ -1107,8 +1262,28 @@
   const ROOM = {
     start: { name: 'Arrival', icon: 'room-start' }, shadow: { name: 'Shadow', icon: 'room-shadow', color: '#4b9bff' }, chest: { name: 'Treasure', icon: 'room-chest', color: '#ffd36b' },
     locked: { name: 'Locked chest', icon: 'room-locked', color: '#b07bff' }, clock: { name: 'Clock', icon: 'room-clock', color: '#7dffc0' }, access: { name: 'Access point', icon: 'room-access', color: '#5fe0b0' },
-    stairs: { name: 'Stairs', icon: 'room-stairs', color: '#ff4f9e' }, event: { name: 'Something here', icon: 'room-event', color: '#ff8cc0' }, empty: { name: 'Corridor', icon: 'room-empty', color: '#8a7a9a' }
+    stairs: { name: 'Stairs', icon: 'room-stairs', color: '#ff4f9e' }, event: { name: 'Something here', icon: 'room-event', color: '#ff8cc0' }, empty: { name: 'Corridor', icon: 'room-empty', color: '#8a7a9a' },
+    shrine: { name: 'Night Orchid', icon: 'room-clock', color: '#c9b8ff' }
   };
+  /* Tartarus bond perks on a fresh floor (build.js): Koromaru's Good Nose (one more chest), Shadowheart's Night Orchid (a
+     shrine), Judy's Tech Savvy (locked chests roll one more item), Fuuka's Oracle Ping (chests and events marked), Widowmaker's
+     Infra-Sight (Shadow rooms marked), Mitsuru's Field Report (the way to the stairs), Rohan's Sketch the Floor (floors cleared
+     before are fully mapped), Mark's Setlist (one more layer ahead). Mint Blossom can turn up in a chest from Arqa on. */
+  function mapPerks(floor, map) {
+    const tp = TP(), N = map.nodes, bi = floor.bi || 0;
+    const pickN = list => list[Math.floor(rand() * list.length)];
+    if (BLD && bi >= BLD.CHEST_WEAPON.fromBlock && !(save.gear.owned[BLD.CHEST_WEAPON.id] > 0)) N.filter(n => n.type === 'chest').forEach(n => { if (rand() < BLD.CHEST_WEAPON.chance) n.chest = { gear: BLD.CHEST_WEAPON.id }; });
+    if (tp.goodNose) { const e = N.filter(n => n.type === 'empty'); if (e.length) { const n = pickN(e); n.type = 'chest'; n.chest = MAP.rollChest(rand, bi, false); n.perk = 'goodNose'; } }
+    if (tp.nightOrchid) { const e = N.filter(n => n.type === 'empty'); if (e.length) pickN(e).type = 'shrine'; }
+    if (tp.techSavvy) N.filter(n => n.type === 'locked' && n.chest).forEach(n => { const t = D.map.chest.items; n.chest = Object.assign({}, n.chest, { extra: pickN(t[Math.min(bi + 1, t.length - 1)]) }); });
+    if (tp.oraclePing) N.filter(n => ['chest', 'locked', 'event', 'shrine'].includes(n.type)).forEach(n => { n.seen = n.known = true; });
+    if (tp.infraSight) N.filter(n => n.type === 'shadow').forEach(n => { n.seen = n.known = true; });
+    if (tp.fieldReport) { const { prev } = MAP.bfs(map, map.stairs); let c = map.start, k = 0; while (c && c !== map.stairs && k++ < 40) { const n = MAP.get(map, c); n.seen = n.known = true; n.route = true; c = prev[c]; } }
+    if (tp.sketchFloor && save.floorsMapped.includes(floor.id)) N.forEach(n => { n.seen = n.known = true; });
+    if (tp.setlist) extraSight(map);
+  }
+  function extraSight(map) { const { dist } = MAP.bfs(map, map.pos); map.nodes.forEach(n => { if (dist[n.id] <= 2) n.seen = n.known = true; else if (dist[n.id] === 3) n.seen = true; }); }
+  const MOODS = [['def', 'Sad', 'defense up'], ['atk', 'Angry', 'attack up'], ['crit', 'Plotting', 'crits up'], ['agi', 'Shoes', 'agility up']];
   const hasJuno = () => !!save.evo.fuuka;
   let mapLine = null, mapTyped = null;
   function explore(floor) {
@@ -1117,7 +1292,10 @@
       let busy = false, sel = 0, done = false;
       const finish = r => { if (done) return; done = true; ctl = null; resolve(r); };
       const say = (key, vars) => { const l = D.nav[key]; if (!l) return; mapLine = [String(pickOne(l[0])).replace(/\{(\w+)\}/g, (_, k) => (vars && vars[k] != null ? vars[k] : '')), l[1] || 'neutral']; mark('mapnav-' + key); };
-      const options = () => MAP.neighbors(map, map.pos).sort((a, b) => (a.x - b.x) || (a.y - b.y));
+      let mode = null; // 'roads': Sebastian's Back Roads, two steps at once
+      const options = () => (mode === 'roads'
+        ? (() => { const { dist } = MAP.bfs(map, map.pos); return map.nodes.filter(n => dist[n.id] === 2 && n.type !== 'start'); })()
+        : MAP.neighbors(map, map.pos)).sort((a, b) => (a.x - b.x) || (a.y - b.y));
       if (!map.started) { map.started = true; say(floor.nav === 'floor' ? 'mapStart' : floor.nav); }
       music.play('floor');
       let animFrom = null;
@@ -1126,7 +1304,7 @@
         root.classList.remove('bt-in-battle');
         const opts = options();
         sel = Math.min(sel, opts.length - 1);
-        const el = show(mapHtml(floor, map, opts, sel, animFrom), 'bt-map');
+        const el = show(mapHtml(floor, map, opts, sel, animFrom, mode), 'bt-map');
         animFrom = null;
         wireTools(el);
         el.querySelectorAll('[data-node]').forEach(g => {
@@ -1161,23 +1339,42 @@
           if (r === 'leave') return finish('leave');
           render(); return;
         }
+        if (a === 'roads') { if (map.roadsUsed) return; mode = mode === 'roads' ? null : 'roads'; sfx(mode ? 'ok' : 'back'); mark('back-roads-' + (mode ? 'on' : 'off')); sel = 0; render(); return; }
+        if (a === 'ticket') {
+          if (run.ticketUsed) return;
+          busy = true; run.ticketUsed = true; sfx('ok'); mark('through-ticket');
+          const r = await room(floor, MAP.get(map, map.stairs), say);
+          busy = false;
+          if (r) return finish(r);
+          render(); return;
+        }
       }
       async function go(id) {
         if (busy || done) return;
         busy = true;
-        const from = map.pos;
-        const res = MAP.move(map, id, { noReaper: !diff().reaper });
+        const from = map.pos, tp = TP();
+        let res;
+        if (mode === 'roads') {
+          // Back Roads: skip the room between, two steps for one, and the Reaper's counter doesn't move.
+          res = { ok: true }; map.prev = map.pos; map.pos = id; MAP.visit(map, id); map.roadsUsed = true; mode = null; mark('back-roads');
+        } else res = MAP.move(map, id, { noReaper: !diff().reaper, reaperSteps: D.map.reaperSteps + (tp.timetable ? tp.timetable.v : 0) });
         if (!res.ok) { busy = false; return; }
+        if (tp.setlist) extraSight(map);
         sfx('move'); mark('map-move');
         animFrom = from;
         render();
         await sleep(320);
         if (res.warn) { say('reaperNear'); mark('reaper-warn'); tip('reaper'); }
-        if (res.spawned) { say('reaperCame'); sfx('ko'); mark('reaper-spawn'); tip('reaper'); render(); await sleep(500); }
+        if (res.spawned) {
+          say('reaperCame'); sfx('ko'); mark('reaper-spawn'); tip('reaper');
+          // Aigis's Sentry Mode: she holds it off, and it loses track for a few steps (once a night).
+          if (tp.sentry && map.reaper && !run.sentryUsed) { run.sentryUsed = true; map.reaper.stun = tp.sentry.v; mapLine = ['Aigis is holding it back! It’s lost track of us for now.', 'surprised']; mark('sentry'); }
+          render(); await sleep(500);
+        }
         if (res.caught) {
           mark('reaper-fight');
           const r = await fight(floor, { group: ['reaper'], reaper: true });
-          if (r === 'over') return finish('over');
+          if (r === 'over' || r === 'savepoint') return finish(r);
           if (r === 'win') { MAP.banishReaper(map); say('reaperWin'); }
           else { MAP.retreat(map); if (map.reaper) map.reaper.stun = 2; say('escape'); }
           busy = false; render(); return;
@@ -1214,11 +1411,21 @@
     if (n.type === 'access') return `<b>Access point</b><span>Saves your progress. You can leave Tartarus from here.</span>`;
     if (n.type === 'stairs') return `<b>Stairs</b><span>The way up.</span>`;
     if (n.type === 'event') return `<b>Something here</b><span>${n.used ? 'Quiet now.' : 'Fuuka senses something odd.'}</span>`;
+    if (n.type === 'shrine') return `<b>Night Orchid</b><span>${n.used ? 'The orchids have closed.' : 'A small shrine: 30% HP and SP. Once.'}</span>`;
     return `<b>${esc(r.name)}</b><span>${n.type === 'start' ? 'Where you arrived.' : 'An empty corridor.'}</span>`;
   }
   /* Party status for the map panel (HP/SP as they'll start the next fight). */
   function fieldUnits() { return buildParty(run.carry); }
-  function mapHtml(floor, map, opts, sel, animFrom) {
+  function mapHtml(floor, map, opts, sel, animFrom, mode = null) {
+    const tp = TP();
+    // Yunjin's Sticker Code: green when the party knows a weakness it can hit, red when it doesn't.
+    let pels = null;
+    const sticker = n => {
+      if (!tp.stickerCode || n.type !== 'shadow' || n.cleared || !n.known) return '';
+      if (!pels) { pels = new Set(); fieldUnits().forEach(u => { pels.add(u.weapon); u.skills.forEach(id => { const sk = D.skills[id]; if (sk && ['dmg', 'insta'].includes(sk.type)) pels.add(sk.el); }); }); }
+      const ok = n.group.some(k => { const kind = k.split('@')[0], kn = save.known[kind] || {}, d = D.enemies[kind]; return d && Object.keys(kn).some(el => kn[el] && d.aff[el] === 'weak' && pels.has(el)); });
+      return ok ? 'g' : 'r';
+    };
     // Portrait-ish windows draw the floor bottom-to-top so it fills the space.
     const vert = phone() || innerWidth / innerHeight < 1.2;
     const W = vert ? 400 : 1000, H = vert ? 520 : 560, padX = vert ? 46 : 70, padY = vert ? 40 : 56;
@@ -1246,7 +1453,7 @@
       return `<g class="${cls}" ${opt ? `data-node="${n.id}" role="button" tabindex="-1" aria-label="${esc(label)}"` : ''} style="--c:${col}">
         ${opt ? `<polygon class="ring" points="${p.x},${p.y - S - 9} ${p.x + S + 9},${p.y} ${p.x},${p.y + S + 9} ${p.x - S - 9},${p.y}"/>` : ''}
         <g class="nt" style="transform-origin:${p.x}px ${p.y}px"><polygon class="tile" points="${p.x},${p.y - S} ${p.x + S},${p.y} ${p.x},${p.y + S} ${p.x - S},${p.y}"/><polygon class="tile-in" points="${p.x},${p.y - S + 6} ${p.x + S - 6},${p.y} ${p.x},${p.y + S - 6} ${p.x - S + 6},${p.y}"/>${ic}</g>
-        <text x="${p.x}" y="${p.y + S + (vert ? 15 : 19)}" class="lbl">${esc(label.toUpperCase())}</text></g>`;
+        <text x="${p.x}" y="${p.y + S + (vert ? 15 : 19)}" class="lbl">${esc(label.toUpperCase())}</text>${sticker(n) ? `<circle class="sticker ${sticker(n)}" cx="${p.x + S * 0.78}" cy="${p.y - S * 0.78}" r="${vert ? 6 : 7.5}"/>` : ''}${n.route && !n.visited ? `<circle class="route" cx="${p.x}" cy="${p.y}" r="${S * 0.32}"/>` : ''}</g>`;
     };
     const hp = pos(here), lift = S + (vert ? 28 : 36), fromN = animFrom && MAP.get(map, animFrom), fp = fromN ? pos(fromN) : hp;
     const tf = p => `translate(${p.x}px, ${p.y - lift}px)`;
@@ -1262,7 +1469,7 @@
       <defs><pattern id="mgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(125,255,192,.07)" stroke-width="1"/></pattern></defs>
       <rect width="${W}" height="${H}" fill="url(#mgrid)"/>
       ${edges.join('')}${nodes.map(nodeSvg).join('')}${reaper}${marker}</svg>`;
-    const R = D.map.reaperSteps, steps = map.steps, calmFloor = !diff().reaper && !map.reaper, danger = map.reaperGone || calmFloor ? 0 : Math.min(1, steps / R);
+    const R = D.map.reaperSteps, steps = map.steps, calmFloor = !diff().reaper && !map.reaper, danger = map.reaperGone || calmFloor ? 0 : Math.min(1, steps / (R + (tp.timetable ? tp.timetable.v : 0)));
     const units = fieldUnits();
     const partyHtml = units.map(u => {
       const m = member(u.mid);
@@ -1274,7 +1481,7 @@
     return `<div class="bt-map-bg" style="background-image:url('${floor.bg}')"></div><div class="bt-map-shade" style="--bc:${floor.color}"></div>
       <header class="bt-top bt-map-top">
         <div class="bt-floorlabel"><b>${esc(floor.label)}</b><span>${esc(floor.block)}<em><br>Tartarus${floor.top ? ' · block top' : ''}</em></span></div>
-        <div class="bt-steps${map.reaper ? ' hunted' : danger > 0.75 ? ' near' : ''}" title="Linger too long and the Reaper comes."><span>Steps <b>${steps}</b></span><i style="--p:${danger}"></i><em>${map.reaper ? (diff().reaper ? 'THE REAPER IS HERE' : 'The Reaper isn’t chasing') : map.reaperGone ? 'The Reaper is gone' : calmFloor ? 'Story · no Reaper' : danger > 0.75 ? 'Something is coming…' : 'Quiet'}</em></div>
+        <div class="bt-steps${map.reaper ? ' hunted' : danger > 0.75 ? ' near' : ''}" title="Linger too long and the Reaper comes."><span>Steps <b>${steps}</b>${tp.timetable && !map.reaper && !map.reaperGone && !calmFloor ? ` / ${R + tp.timetable.v}` : ''}</span><i style="--p:${danger}"></i><em>${map.reaper ? (diff().reaper ? 'THE REAPER IS HERE' : 'The Reaper isn’t chasing') : map.reaperGone ? 'The Reaper is gone' : calmFloor ? 'Story · no Reaper' : danger > 0.75 ? 'Something is coming…' : 'Quiet'}</em></div>
         <div class="bt-tools"><span class="bt-yen">${ICON.svg('yen')}${yen(save.yen)}</span>${tools()}</div>
       </header>
       <div class="bt-map-stage">${svg}</div>
@@ -1284,6 +1491,8 @@
         <div class="bt-map-acts">
           <button type="button" class="bt-btn" data-act="scan"${map.scans ? '' : ' disabled'}><span>Fuuka’s scan</span><small>${map.scans ? (hasJuno() ? 'Juno · whole floor' : 'Nearby rooms') : 'Used'}</small></button>
           <button type="button" class="bt-btn" data-act="items"><span>${BR ? 'Menu' : 'Items'}</span><small>${BR ? 'Items · Equipment · ' : ''}${Object.values(save.items).reduce((a, b) => a + b, 0)}${BR ? ' items' : ''}</small></button>
+          ${tp.backRoads ? `<button type="button" class="bt-btn${mode === 'roads' ? ' pink' : ''}" data-act="roads"${map.roadsUsed ? ' disabled' : ''}><span>Back Roads</span><small>${map.roadsUsed ? 'Used on this floor' : mode === 'roads' ? 'Pick a room two steps away' : 'Sebastian · two steps, no Reaper'}</small></button>` : ''}
+          ${tp.throughTicket && map.pos !== map.stairs ? `<button type="button" class="bt-btn" data-act="ticket"${run.ticketUsed ? ' disabled' : ''}><span>Through Ticket</span><small>${run.ticketUsed ? 'Used tonight' : 'Wren · straight to the stairs'}</small></button>` : ''}
         </div>
         <p class="bt-hint">${phone() ? 'Tap a lit room to move' : '←→ pick a room · Enter move · S scan · I items'}</p>
       </aside>
@@ -1309,16 +1518,27 @@
     const rows = [];
     if (c.yen) rows.push(`<div class="bt-loot">${ICON.svg('yen')}<b>${yen(c.yen)}</b></div>`);
     if (c.item) rows.push(`<div class="bt-loot">${ICON.of(c.item)}<b>${esc(D.items[c.item].name)}${c.n > 1 ? ` ×${c.n}` : ''}</b><span>${esc(D.items[c.item].desc)}</span></div>`);
-    if (c.gear) rows.push(`<div class="bt-loot">${ICON.of(c.gear)}<b>${esc(D.gear[c.gear].name)}</b><span>${esc(gearLine(c.gear))}</span></div>`);
+    if (c.gear) rows.push(`<div class="bt-loot${D.gear[c.gear].art ? ' art' : ''}">${D.gear[c.gear].art ? `<img src="${D.gear[c.gear].art}?v=${ART_V}" alt="">` : ICON.of(c.gear)}<b>${esc(D.gear[c.gear].name)}</b><span>${esc(gearLine(c.gear))}</span></div>`);
+    if (c.extra) rows.push(`<div class="bt-loot">${ICON.of(c.extra)}<b>${esc(D.items[c.extra].name)}</b><span>Tech Savvy: one more thing inside.</span></div>`);
     return rows.join('');
   };
-  const grant = c => { if (c.yen) save.yen += c.yen; if (c.item) addItem(c.item, c.n || 1); if (c.gear) addGear(c.gear); persist(); };
+  const grant = c => { if (c.yen) save.yen += c.yen; if (c.item) addItem(c.item, c.n || 1); if (c.gear) addGear(c.gear); if (c.extra) addItem(c.extra, 1); persist(); };
   /* Resolve the room the party just walked into. Returns 'up' | 'leave' | 'over' to end the floor, else nothing. */
   async function room(floor, n, say) {
     const T = 'assets/femc/bg/tartarus-treasure.webp', AP = 'assets/femc/bg/tartarus-access-point.webp';
     if (n.type === 'shadow' && !n.cleared) {
+      // Kasumi's Light Feet: sometimes the party can slip past (Solar chooses).
+      const tpl = TP();
+      if (tpl.lightFeet && !n.slipChecked) {
+        n.slipChecked = true;
+        if (rand() < tpl.lightFeet.v) {
+          const v = await roomPanel({ bg: floor.bg, cls: 'event', kicker: `${floor.label} · ${floor.block}`, title: 'LIGHT FEET', name: 'light-feet',
+            body: '<p>The Shadows haven’t noticed. Kasumi’s footwork says you could slip right past them.</p>', buttons: [{ v: 'slip', label: 'Slip past', pink: true }, { v: 'fight', label: 'Fight anyway' }] });
+          if (v === 'slip') { n.cleared = true; n.slipped = true; mark('light-feet'); say('empty'); return null; }
+        }
+      }
       const r = await fight(floor, { group: n.group, strong: n.strong });
-      if (r === 'over') return 'over';
+      if (r === 'over' || r === 'savepoint') return r;
       if (r === 'win') { n.cleared = true; const t = roster().find(m => run.tired[m.id] && run.fights[m.id] === D.progression.tiredAfter); say(t ? 'tired' : 'win', { name: t && t.name }); }
       else { MAP.retreat(run.map); say('escape'); }
       return null;
@@ -1331,15 +1551,25 @@
       return null;
     }
     if (n.type === 'locked' && !n.opened) {
-      const keys = save.items.tartarus_key || 0;
+      const keys = save.items.tartarus_key || 0, pickOk = !!TP().lockpick && !run.map.picked;
       const v = await roomPanel({ bg: T, cls: 'chest locked', kicker: `${floor.label} · ${floor.block}`, title: 'LOCKED CHEST', name: 'locked',
         body: `<p>An iron-banded chest with an old brass lock. ${keys ? `You have ${keys} Tartarus Key${keys > 1 ? 's' : ''}.` : 'Mayoido Antiques sells Tartarus Keys.'}</p>`,
-        buttons: [{ v: 'open', label: 'Use a Tartarus Key', pink: true, off: !keys }, { v: 'no', label: 'Leave it' }], fuuka: navLine('locked') });
-      if (v === 'open' && keys) {
+        buttons: (pickOk ? [{ v: 'pick', label: 'Pick the lock', pink: true, small: 'Astarion’s Lockpick · once a floor' }] : []).concat([{ v: 'open', label: 'Use a Tartarus Key', pink: !pickOk, off: !keys }, { v: 'no', label: 'Leave it' }]), fuuka: navLine('locked') });
+      if (v === 'pick' && pickOk) {
+        run.map.picked = true; n.opened = true; grant(n.chest); sfx('unlock'); mark('lockpick'); mark('locked-open');
+        await roomPanel({ bg: T, cls: 'chest', kicker: 'Astarion’s Lockpick', title: 'RARE TREASURE', body: lootHtml(n.chest), name: 'chest-rare' });
+      } else if (v === 'open' && keys) {
         save.items.tartarus_key--; if (!save.items.tartarus_key) delete save.items.tartarus_key;
         n.opened = true; grant(n.chest); sfx('unlock'); mark('locked-open');
         await roomPanel({ bg: T, cls: 'chest', kicker: 'The lock gives way', title: 'RARE TREASURE', body: lootHtml(n.chest), name: 'chest-rare' });
       }
+      return null;
+    }
+    if (n.type === 'shrine' && !n.used) {
+      // Shadowheart's Night Orchid: a small shrine in an empty room.
+      n.used = true; sfx('heal'); mark('night-orchid');
+      carryEach(u => { u.hp = Math.min(u.maxHp, Math.round(u.hp + u.maxHp * 0.3)); u.sp = Math.min(u.maxSp, Math.round(u.sp + u.maxSp * 0.3)); });
+      await roomPanel({ bg: floor.bg, cls: 'clock', kicker: 'Shadowheart’s Night Orchid', title: 'A SMALL SHRINE', body: '<p>Night orchids around a little stone shrine. Everyone recovers 30% of their HP and SP.</p>', name: 'shrine' });
       return null;
     }
     if (n.type === 'clock' && !n.used) {
@@ -1353,12 +1583,36 @@
       const better = !save.reached || D.floors.findIndex(f => f.id === save.reached) <= run.fi;
       if (better) { save.reached = floor.id; persist(); }
       if (firstTouch) sfx('unlock');
+      // Hanni's Tea Time, Ann's Snack Break, Junkyu's Hug List (once per access point).
+      const tpa = TP(), notes = [];
+      if (!n.restored && (tpa.teaTime || tpa.snackBreak || tpa.hugList)) {
+        n.restored = true;
+        let hurt = null; carryEach(u => { if (!hurt || u.hp / u.maxHp < hurt.hp / hurt.maxHp) hurt = u; }, false);
+        carryEach(u => {
+          if (tpa.teaTime) { u.hp = Math.min(u.maxHp, Math.round(u.hp + u.maxHp * tpa.teaTime.v)); u.sp = Math.min(u.maxSp, Math.round(u.sp + u.maxSp * tpa.teaTime.v)); }
+          if (tpa.snackBreak) u.sp = Math.min(u.maxSp, Math.round(u.sp + u.maxSp * tpa.snackBreak.v));
+          if (tpa.hugList && hurt && u.mid === hurt.mid) u.hp = u.maxHp;
+        });
+        if (tpa.teaTime) notes.push('Hanni’s Tea Time: everyone +15% HP and SP.');
+        if (tpa.snackBreak) notes.push('Ann’s Snack Break: everyone +10% SP.');
+        if (tpa.hugList && hurt) notes.push(`Junkyu’s Hug List: ${hurt.name} is fully healed.`);
+        sfx('heal'); mark('access-perks');
+      }
       for (;;) {
+        const mood = run.mood && run.mood.fi === run.fi + 1 ? MOODS.find(m => m[0] === run.mood.stat) : null;
+        const extraBtn = tpa.moodPick ? [{ v: 'mood', label: 'Pick a mood', small: mood ? `Next floor: ${mood[1]}` : 'Yunjin · sad, angry or shoes' }] : [];
         const v = await roomPanel({ bg: AP, cls: 'access', kicker: `${floor.label} · ${floor.block}`, title: 'ACCESS POINT', name: 'access',
-          body: `<p>${better ? `Progress saved. Next time you can start from <b>${esc(floor.label)}</b>.` : 'A green terminal hums quietly.'}</p>`,
-          buttons: BR ? [{ v: 'stay', label: 'Keep climbing', pink: true }, { v: 'menu', label: 'Menu', small: 'Party · Equipment · Items' }, { v: 'tree', label: 'Skills', small: `Haenim · ${save.pts} SP` }, { v: 'leave', label: 'Leave Tartarus' }]
-            : [{ v: 'stay', label: 'Keep climbing', pink: true }, { v: 'equip', label: 'Equip' }, { v: 'party', label: 'Party' }, { v: 'tree', label: 'Haenim’s Tree', small: `${save.pts} SP` }, { v: 'leave', label: 'Leave Tartarus' }],
+          body: `<p>${better ? `Progress saved. Next time you can start from <b>${esc(floor.label)}</b>.` : 'A green terminal hums quietly.'}</p>${notes.map(t => `<p class="bt-perknote">${esc(t)}</p>`).join('')}`,
+          buttons: BR ? [{ v: 'stay', label: 'Keep climbing', pink: true }, { v: 'menu', label: 'Menu', small: 'Party · Equipment · Items' }, { v: 'tree', label: 'Skills', small: `Haenim · ${save.pts} SP` }].concat(extraBtn, [{ v: 'leave', label: 'Leave Tartarus' }])
+            : [{ v: 'stay', label: 'Keep climbing', pink: true }, { v: 'equip', label: 'Equip' }, { v: 'party', label: 'Party' }, { v: 'tree', label: 'Haenim’s Tree', small: `${save.pts} SP` }].concat(extraBtn, [{ v: 'leave', label: 'Leave Tartarus' }]),
           fuuka: navLine('access') });
+        if (v === 'mood') {
+          // Yunjin's Sad, Angry or Shoes: a mood for the next floor's fights.
+          const m = await roomPanel({ bg: AP, cls: 'access', kicker: 'Yunjin · “Sad, angry, or shoes?”', title: 'PICK A MOOD', name: 'mood',
+            body: '<p>The mood lasts for every fight on the next floor.</p>', buttons: MOODS.map(([st, nm, what]) => ({ v: st, label: nm, small: what })).concat([{ v: 'back', label: 'Back' }]) });
+          if (m && m !== 'back') { run.mood = { fi: run.fi + 1, stat: m }; mark('mood-' + m); sfx('ok'); }
+          continue;
+        }
         if (v === 'equip') { await new Promise(r => equipScreen(r)); continue; }
         if (v === 'party') { await new Promise(r => partyScreen(r)); continue; }
         if (v === 'menu') { await fieldMenu(save.party.length || hoAvail().length > 1 ? 'party' : 'equip'); continue; }
@@ -1435,11 +1689,12 @@
     const it = D.items[id];
     const c = run.carry || (run.carry = Object.fromEntries(units.map(u => [u.mid, { hp: u.hp, sp: u.sp, th: u.th }])));
     units.forEach(u => { if (!c[u.mid]) c[u.mid] = { hp: u.hp, sp: u.sp, th: u.th }; });
-    const amt = (u, v) => (v <= 1 ? u.maxHp * v : v);
+    const fm = TP().fieldMedicine, amt = (u, v) => (v <= 1 ? u.maxHp * v : v) * (fm ? 1 + fm.v : 1); // Mercy's Field Medicine
     const apply = u => {
       const k = c[u.mid];
       if (it.type === 'heal' || it.type === 'revive') k.hp = Math.min(u.maxHp, Math.round(k.hp + amt(u, it.hp)));
       if (it.type === 'sp') k.sp = Math.min(u.maxSp, k.sp + it.sp);
+      if (it.type === 'spPct') k.sp = Math.min(u.maxSp, Math.round(k.sp + u.maxSp * it.sp));
       if (it.type === 'full') { k.hp = u.maxHp; k.sp = u.maxSp; }
     };
     if (it.target === 'allies') units.forEach(apply); else { const u = units.find(x => x.mid === tgt); if (u) apply(u); }
@@ -1464,7 +1719,7 @@
   /* ════════════════════════════════════════════════════
      BATTLE
      ════════════════════════════════════════════════════ */
-  let B = null, BT = null, navSaid = new Set(), navTimer = null, summoned = new Set();
+  let B = null, BT = null, navSaid = new Set(), navTimer = null, summoned = new Set(), curPerks = {}, stat0 = { allout: false, ko: false }, perkSeen = new Set();
   const freshAff = new Set(), discovered = new Set(); // affinities just learned (their plate cell flips once); weaknesses announced this session
 
   /* Story-fight rules (handoff mode; spec.rules). interruptAt: end with 'interrupt' when this round starts. interruptHp: when
@@ -1492,8 +1747,20 @@
     if (fx.autoAnalyze) kinds.forEach(k => { if (D.enemies[k].gimmick) return; const kn = save.known[k] || (save.known[k] = {}); D.affinityOrder.forEach(el => { kn[el] = true; }); });
     const RL = spec.rules || null;
     const partyUnits = buildParty(run && run.carry);
-    B = E.create({ party: spec.solo ? partyUnits.slice(0, 1) : partyUnits, enemies: group, mods: fx.mods, known: save.known, rand, items: save.items, heat: spec.heat || 0, ctx: { op: spec.op && spec.op.id },
-      diff: RL && RL.edmg ? () => Object.assign({}, diff(), { edmg: diff().edmg * RL.edmg }) : diff, protect: !!(RL && RL.protect) });
+    // Bond perks (build.js): story fights only (practice has no links). Third Eye: Shadows fought before start analyzed.
+    const perks = BLD && HO && !(RL && RL.noPerks) ? BLD.battlePerks(save, hoAvail()) : {};
+    curPerks = perks;
+    if (perks.thirdEye) kinds.forEach(k => { const d = D.enemies[k]; const kn = save.known[k]; if (!d || d.gimmick || !kn || !Object.keys(kn).length) return; D.affinityOrder.forEach(el => { kn[el] = true; }); });
+    // Tonight's extras: Yunjin's mood for this floor, Jihoon's Almighty Hoon after a strong win, Leon's Mission Briefing, the Moon's curse.
+    const startBuffs = [], mods = Object.assign({}, fx.mods);
+    if (run && run.mood && run.mood.fi === run.fi) { if (run.mood.stat === 'crit') mods.crit = (mods.crit || 0) + 15; else startBuffs.push(run.mood.stat); }
+    if (run && run.hoon) { startBuffs.push('atk'); run.hoon = false; }
+    if (spec.op && perks.missionBriefing) startBuffs.push({ stat: 'atk', turns: perks.missionBriefing.v });
+    const foeHpMult = run && run.curse ? 1 + run.curse : 1;
+    if (run) run.curse = 0;
+    B = E.create({ party: spec.solo ? partyUnits.slice(0, 1) : partyUnits, enemies: group, mods, known: save.known, rand, items: save.items, heat: spec.heat || 0, ctx: { op: spec.op && spec.op.id },
+      diff: RL && RL.edmg ? () => Object.assign({}, diff(), { edmg: diff().edmg * RL.edmg }) : diff, protect: !!(RL && RL.protect),
+      perks, names: BLD ? BLD.names() : {}, startBuffs, foeHpMult });
     if (RL && RL.setup) RL.setup(B);
     navSaid = new Set(); summoned = new Set();
     curSpec = spec; blog = []; lastTgt = {}; focusId = null;
@@ -1504,6 +1771,7 @@
     await stills(theurgyStills());
     await intro(spec, kinds);
     if (fx.openBuff) await play(B.openBuff(fx.openBuff));
+    if (B.start) await play(B.start());
     nav(spec.nav);
     B.party().forEach(p => { if (p.tired) nav('tired', { name: p.name }, { once: true }); });
     // Rush turns itself off for fights it isn't allowed in (bosses by default).
@@ -1514,6 +1782,7 @@
     mark('battle-start');
     if (spec.op) mark('boss-' + spec.op.id);
     let guard = 0, ended = null;
+    stat0 = { allout: false, ko: false };
     while (!B.outcome() && guard++ < 800) {
       const turn = B.nextTurn();
       if ((ended = ruleEnd(spec, 'turn'))) break;
@@ -1543,6 +1812,7 @@
       return { result: ended, rew: null, boss: !!spec.boss };
     }
     const result = B.outcome() || 'lose';
+    const rating = { allout: stat0.allout, rounds: B.S.round, ko: stat0.ko || B.party().some(p => p.dead) };
     blogAdd(result === 'win' ? 'Victory!' : result === 'escaped' ? 'Got away.' : 'Solar has fallen…', 'sys');
     setActive(null);
     hideMenu();
@@ -1556,7 +1826,8 @@
     } else if (result === 'lose') { nav('solarDown'); sfx('ko'); await sleep(1500); }
     else await sleep(700);
     // (Kat's note: no finish card flashes after a fight is won. The real All-Out finish cards still play during battle.)
-    return { result, rew: result === 'win' ? E.rewards(B, rand) : null, boss: !!spec.boss };
+    const fh = curPerks.freshHarvest;
+    return { result, rew: result === 'win' ? E.rewards(B, rand, fh ? { drop: fh.v } : {}) : null, boss: !!spec.boss, rating };
   }
 
   function buildBattle(floor) {
@@ -1713,6 +1984,8 @@
     if (u.weakEl && !u.dead) tags.push(kn[u.weakEl] ? `<span class="bt-tag veil" style="--veil:${D.elements[u.weakEl].color}">Weak · ${D.elements[u.weakEl].name}</span>` : '<span class="bt-tag">Weak · ?</span>');
     if (u.empower && !u.dead) tags.push(`<span class="bt-tag drive">Drive ×${u.empower}</span>`);
     if (u.hidden && !u.dead) tags.push('<span class="bt-tag">Hidden</span>');
+    if (u.heard && !u.dead) tags.push('<span class="bt-tag heard" title="Hear the Room: it’s charging its strongest move. Solar’s first hit on it crits.">Heard</span>');
+    if (u.noSolar > 0 && !u.dead) tags.push(`<span class="bt-tag rule" title="Heaven’s Door: it can’t target Solar">Rule <em>${u.noSolar}</em></span>`);
     if (shield) tags.push('<span class="bt-tag shield">Shielded</span>');
     el.classList.toggle('unreachable', !!u.unreachable && !u.dead);
     if (u.unreachable && !u.dead) tags.push('<span class="bt-tag">Out of reach</span>');
@@ -1770,6 +2043,12 @@
     if (u.taunt > 0 && !dead) st.push(`<i class="aggro" title="Drawing every single-target attack (${u.taunt} turn${u.taunt === 1 ? '' : 's'} left)">AGGRO<sub>${u.taunt}</sub></i>`);
     if (!dead && B.flanking(u)) st.push('<i class="flank" title="Off Angle Flank: big evasion and +30% crit while someone else draws aggro">FLANK</i>');
     if (!dead && B.kitsuneOn(u)) st.push(`<i class="kit" title="Kitsune Rush: moves first, +50% agility and accuracy, costs halved">FOX<sub>${B.S.kitsune}</sub></i>`);
+    if (!dead && u.undying > 0) st.push(`<i class="ward" title="Undying Love: can’t drop below 1 HP">UNDYING<sub>${u.undying}</sub></i>`);
+    if (!dead && u.valkyrie > 0) st.push(`<i class="up" title="Valkyrie: single-target heals reach the whole party, +4 SP a turn">VALK<sub>${u.valkyrie}</sub></i>`);
+    if (!dead && u.bondWith) st.push(`<i class="ward" title="Warding Bond: Solar takes half of the damage">BOND<sub>${u.bondT}</sub></i>`);
+    if (!dead && u.sanct) st.push('<i class="ward" title="Sanctuary: can’t be targeted until their next turn">SANCT</i>');
+    if (!dead && u.charge2) st.push('<i class="up" title="Titanic Kiss: the next magic attack deals 2.5×">KISS</i>');
+    if (!dead && u.papillon) st.push('<i class="ward" title="Papillon Heart: the next hit does nothing">PAPILLON</i>');
     c.querySelector('.st').innerHTML = st.join('');
     c.classList.toggle('ailing', !!(u.ail && !dead));
     c.dataset.ail = u.ail && !dead ? u.ail.id : '';
@@ -1784,7 +2063,7 @@
   }
   function paintOrder() {
     const cur = B.S.cur;
-    const ids = [cur && cur.id].concat(B.upcoming(7)).filter(Boolean);
+    const ids = [cur && cur.id].concat(B.upcoming(curPerks.editMode ? 8 : 7)).filter(Boolean); // Judy's Edit Mode: one turn further
     BT.order.innerHTML = ids.map((id, i) => {
       const u = B.U(id); if (!u) return '';
       return `<li class="${u.side === 'enemy' ? 'enemy' : 'party fcb'}${i === 0 ? ' now' : ''}${u.down ? ' down' : ''}${u.side === 'party' && (u.th || 0) >= 100 && !u.dead ? ' th' : ''}" title="${esc(u.name)}">${u.side === 'party' ? fimg(u.mid, member(u.mid).faces.idle) : ''}</li>`;
@@ -2160,6 +2439,33 @@
     if (useClip) { try { clip.v.pause(); } catch (err) {} clip.v.remove(); }
     mark('theurgy-done');
   }
+  /* A bond perk firing (engine event 'perk'). Assists (friends outside the party) and Solar's own passives get a P5-style
+     portrait cut-in; the Persona cut-in setting decides how often (always / the first time per friend each battle / off, and
+     never during Rush). quiet perks only log and pop a label. */
+  const PERK_FACE = l => { const w = BLD && BLD.WHO[l]; return `${D.portraits}${l}/${w ? w.face : 'neutral'}.webp?v=${V()}`; };
+  async function perkCut(e) {
+    const who = (BLD && BLD.WHO[e.link]) || { name: e.link }, tgt = e.tgt && B.U(e.tgt);
+    blogAdd(`${who.name}: ${e.name}${e.assist ? ' (assist)' : ''}${e.what ? ` · ${e.what}` : ''}`, 'perk');
+    mark('perk'); mark('perk-' + e.key); if (e.assist) mark('assist');
+    const anchorId = (tgt && tgt.id) || (B.leader() && B.leader().id);
+    if (e.quiet) { if (anchorId) popup(anchorId, { label: e.name.toUpperCase(), lcls: 'buff' }); await sleep(260); return; }
+    const mode = rushActive() ? 'off' : (save.cutins || 'first'), first = !perkSeen.has(e.link);
+    perkSeen.add(e.link);
+    if (e.assist && first) tip('perk');
+    if (mode === 'off' || (mode === 'first' && !first) || e.follow && !first) { banner(e.name, { sub: `${who.name}${e.assist ? ' · Assist' : ''}` }); await sleep(380); return; }
+    const reduced = !FX || FX.reduced();
+    const el = document.createElement('div');
+    el.className = `bt-perkcut${reduced ? ' reduced' : ''}${e.assist ? ' assist' : ''}`;
+    el.style.setProperty('--spd', speed());
+    el.innerHTML = `<div class="pk-band"><div class="pk-face fcb"><img src="${PERK_FACE(e.link)}" alt=""></div><p><small>${e.assist ? 'Assist' : e.by ? 'Bond' : 'Bond · ' + esc(who.name)}</small><b>${esc(e.name)}</b><em>${esc(who.name)}</em></p></div>`;
+    BT.cut.appendChild(el);
+    sfx('summon');
+    mark('perk-cut'); mark('perk-cut-' + e.link);
+    await sleep(reduced ? 520 : 900);
+    el.classList.add('out');
+    await sleep(200);
+    el.remove();
+  }
   /* Fortune's wheel: a spinning wheel that lands on the outcome. */
   async function wheelCut(e) {
     const keys = Object.keys(WHEEL_TXT), i = keys.indexOf(e.outcome), n = keys.length;
@@ -2274,7 +2580,7 @@
         if (!onEnemy && e.aff === 'weak') { nav('hurt', { name: t.name }); const img = BT.cards.get(t.id).querySelector('.face img'); setFace(img, t.mid, member(t.mid).faces.hurt); setTimeout(() => { if (!t.dead) setFace(img, t.mid, member(t.mid).faces.idle); }, 1600); }
         if (e.killed) {
           if (onEnemy) { deathFx(e.tgt); mark('kill'); }
-          else { sfx('ko'); setFace(BT.cards.get(t.id).querySelector('.face img'), t.mid, member(t.mid).faces.ko); if (t !== B.leader()) nav('ko', { name: t.name }); log(`${t.name} was knocked out!`); }
+          else { stat0.ko = true; sfx('ko'); setFace(BT.cards.get(t.id).querySelector('.face img'), t.mid, member(t.mid).faces.ko); if (t !== B.leader()) nav('ko', { name: t.name }); log(`${t.name} was knocked out!`); }
         }
         await sleep(next && next.t === 'hit' && !e.crit ? 240 : (e.aff === 'weak' || e.crit ? 700 : 460));
         break;
@@ -2421,7 +2727,10 @@
         break;
       }
       case 'alloutReady': tip('allout'); blogAdd('All foes are Down!', 'sys'); nav('allDown'); sfx('onemore'); await bigWord('ALL DOWN', { sub: 'They’re wide open', ms: 900 }); break;
-      case 'allout': await allOutSequence(e); break;
+      case 'allout': stat0.allout = true; await allOutSequence(e); break;
+      case 'perk': await perkCut(e); break;
+      case 'status': { const t = U(e.tgt); if (t) { popup(e.tgt, { label: e.label, lcls: e.cls || 'buff' }); if (t.side === 'party') paintCard(t); } blogAdd(`${t ? t.name : ''}: ${e.label}`, 'buff'); mark('status-' + String(e.label).toLowerCase().replace(/\s+/g, '-')); await sleep(300); break; }
+      case 'heard': { const t = U(e.tgt); if (t) paintEnemy(t); mark('heard'); break; }
       case 'shift': {
         const a = U(e.src), b = U(e.tgt);
         sfx('summon');
@@ -2955,7 +3264,7 @@
      ════════════════════════════════════════════════════ */
   /* Everyone in the party gets the full EXP; the bench gets a share so nobody falls behind. Solar's level-ups give skill points. */
   function gainExp(n) {
-    const fx = treeFx(), share = D.progression.benchShare;
+    const tp = TP(), fx = treeFx(), share = tp.dugout ? tp.dugout.v : D.progression.benchShare; // Junpei's Dugout: 80%
     const rows = D.party.filter(usable).map(m => {
       const inP = m.id === 'solar' || save.party.includes(m.id);
       const rec = m.id === 'solar' ? save : save.mem[m.id];
@@ -3007,6 +3316,8 @@
       if (g.pts) extra.push(`<span class="pts">+${g.pts} Skill Points</span>`);
       if (o.bonus) extra.push(`<span class="pts">+${o.bonus} Full-moon bonus</span>`);
       if (o.op && o.first) extra.push(`<span class="pts">Shops restocked · tier ${shopTier()}</span>`);
+      if (o.shuffle) extra.push(`<span class="shuf${o.shuffle.res.penalty ? ' pen' : ''}">Shuffle Time · ${esc(o.shuffle.card.name)}: ${esc(o.shuffle.res.lines.join(', '))}</span>`);
+      (o.notes || []).forEach(n => extra.push(`<span class="perk">${esc(n)}</span>`));
       const el = show(`<div class="bt-res"><div>
           <h1 class="bt-res-title"><small>${esc(o.title)}</small>RESULTS</h1>
           <div class="bt-res-exp"><small>EXP</small>+${o.rew.exp}</div>
@@ -3681,10 +3992,14 @@
     // Link ranks open the party trees' tiers and, at MAX, evolve a signature skill (engine.js linkRank).
     const ranks = (R.social && R.social.ranks) || null;
     if (ranks) D.party.forEach(m => { if (m.id !== 'solar' && ranks[m.id] != null) save.ranks[m.id] = Math.min(10, +ranks[m.id] || 0); });
+    // Every link's rank feeds the bond perks (build.js); a reversed link pauses its perks. Rank gifts (a naginata, a skill point) land once.
+    const gifts = BLD ? BLD.syncBonds(save, ranks || {}, (R.social && R.social.reversed) || []) : [];
     delete save.forceForm;
     if (save.reached) { const i = D.floors.findIndex(f => f.id === save.reached); if (i < 0 || D.floors[i].bi > hoBlockCap()) save.reached = null; }
     E.formsList().forEach(f => { if (!save.forms.includes(f) && E.formUnlocked(Object.assign({}, save, { forms: [] }), f)) save.forms.push(f); });
-    HS = { items0: Object.assign({}, save.items), yen0: save.yen, exp: {}, frags: [], bosses: [], floor: 0, entered: false, scripted: false, finished: false };
+    HS = { items0: Object.assign({}, save.items), yen0: save.yen, exp: {}, frags: [], bosses: [], floor: 0, entered: false, scripted: false, finished: false, gifts };
+    // Night kits from bonds (Fuuka's bento, Ken's bead, Leon's spray, Sunoo's soul): only good tonight, never sent back.
+    if (BLD && HO.kind === 'tartarus') { const ctx = BLD.ctxOf(save, hoAvail()); BLD.PERKS.forEach(p => { if (p.fx.nightKit && ['own', 'party', 'assist'].includes(BLD.perkState(p, ctx))) Object.entries(p.fx.nightKit).forEach(([k, n]) => { if (D.items[k]) { save.items[k] = (save.items[k] || 0) + n; mark('night-kit-' + k); } }); }); }
     persist();
     mark('handoff-' + HO.kind);
   }
@@ -3733,7 +4048,7 @@
     const r = { outcome, exp: {}, levels: {}, yenDelta: Math.round(save.yen - HS.yen0), items: {}, gear: [], fragments: HS.frags.slice(), bossesCleared: HS.bosses.slice() };
     if (outcome !== 'interrupt') Object.entries(HS.exp).forEach(([k, n]) => { if (n > 0) r.exp[k] = n; });
     hoAvail().forEach(id => { r.levels[id] = lvOf(id); });
-    new Set(Object.keys(HS.items0).concat(Object.keys(save.items))).forEach(k => { const d = (save.items[k] || 0) - (HS.items0[k] || 0); if (d) r.items[k] = d; });
+    new Set(Object.keys(HS.items0).concat(Object.keys(save.items))).forEach(k => { if (D.items[k] && D.items[k].night) return; const d = (save.items[k] || 0) - (HS.items0[k] || 0); if (d) r.items[k] = d; });
     r.gear = [...new Set((R.gear || []).concat(Object.keys(save.gear.owned).filter(k => save.gear.owned[k] > 0 && D.gear[k] && D.gear[k].tier > 0)))];
     if (HO.kind === 'tartarus') {
       r.fatigue = HS.entered ? (['tired', 'sick'].includes(R.condition) ? 'sick' : 'tired') : (R.condition || 'good');
@@ -3845,7 +4160,7 @@
       const snap = JSON.stringify({ items: save.items, th: save.th, carry: run && run.carry });
       const out = await battle(Object.assign({ heat: 0, nav: 'boss' }, spec));
       if (out.result === 'win') {
-        if (!spec.noResults) await afterWin(out, { title: spec.title || spec.block, back: 'Continue' });
+        if (!spec.noResults) await afterWin(out, { title: spec.title || spec.block, back: 'Continue', story: true });
         else if (out.rew && out.rew.exp) { gainExp(out.rew.exp); save.yen += out.rew.yen || 0; persist(); }
         return 'win';
       }
