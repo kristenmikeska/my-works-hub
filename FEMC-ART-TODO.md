@@ -216,10 +216,15 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 - [ ] Gekkoukan tennis courts at sunset, a racket on the bench
 - [ ] A school band room: drum kit, keyboards, posters, afternoon light
 - [ ] A gaming club room: PCs with RGB light, headsets, a whiteboard of match notes, dusk
-- [ ] Yakushima: the Kirijo villa's grand lounge
-- [ ] Yakushima: a forest trail with mossy cedars
+- [ ] Yakushima: the Kirijo villa's grand lounge (the villa scenes use the hotel lobby until then)
+- [ ] Yakushima: a forest trail with mossy cedars (the forest scene uses the park until then)
 - [ ] Yakushima: the beach at night with fireworks
-- [ ] The dorm lounge decorated for a birthday: streamers, a cake, balloons, warm night light
+- [ ] Yakushima: the ferry's top deck, the island ahead in cloud (the trip's ferry scenes use the harbor until then)
+- [ ] Yakushima: the villa's long balcony at night over the sea
+- [ ] Yakushima: the villa terrace set for dinner at sunset, strings of lights
+- [ ] The dorm lounge decorated for a birthday: streamers, a cake, balloons, warm night light (the 6/24 party uses the lounge at night until then)
+- [ ] A record shop's listening booth, glass walls, old headphones (a holiday scene uses the mall until then)
+- [ ] A small city museum hall with old maps in glass cases (a holiday scene uses a building entrance until then)
 - *The five social stats' places (2026-10-21).* Each one works now on an existing background (in brackets); a new one would replace it:
   - [ ] Inside the neighborhood bathhouse: tiled baths, a mural, steam, a small electric bath in the corner, evening (now `outside-daytime-neighborhood` / `outside-night`)
   - [ ] Hagakure's challenge bowl on the counter: an enormous ramen bowl, a stopwatch, a wall of winners' photos (now `hagakureramen`)

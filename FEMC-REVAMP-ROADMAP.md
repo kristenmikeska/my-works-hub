@@ -89,15 +89,16 @@ Batches, in order, after the story/character pass:
   - ✓ Softer pink slashes.
   - ✓ A P5-style stat screen with a sun level-up (now showing the five stats below).
   - ✓ A P5X-inspired Go Out menu.
-- **C. Living world:**
-  - Daily random events.
-  - Run-ins while out or working.
-  - More jobs, and job scenes that vary.
-  - Holiday invites.
-  - **Clubs:** tennis (Rio, with romance scenes on her route), library/book club, band, gaming/eSports.
-  - **Solar's birthday on 6/24** (canon), with a surprise party.
-  - A fuller Yakushima trip.
-  - Pre-boss story beats.
+- **C. Living world:** part 1 ✓ built 2026-10-21 (`tests/femc_living.py`); part 2 next (run-ins, jobs, clubs, the Persona cast staying).
+  - ✓ Daily random events: 59 new routines (77 in all) in every slot and month, teachers, students, S.E.E.S. and the searchers (`data/daily-life.js`; core.js `dailyLife`: new gates `offOnly`, `days`, `weather`, `flags`, `noFlags`, `met`, `ranks`; the routine that goes stale soonest plays first; one every other day at most; After School routines play before Go Out).
+  - Run-ins while out or working. *(part 2)*
+  - More jobs, and job scenes that vary. *(part 2)*
+  - ✓ Holiday invites: a link's `holidays['M/D']` (22 written, `data/living-holidays.js`): the friend texts that morning, the picker at the slot (ui.js `holidayPicker`), the scene only if you spend the day with them. Suggestions for part 2's Persona-cast links: Ann (Golden Week, a photo shoot; the summer festival in a yukata), Kasumi (Sports Day, a gymnastics exhibition; New Year's first sunrise), Haru (Greenery Day at a botanical garden; New Year's Eve with toshikoshi soba from her family's kitchen), Kuromi (Halloween, which is also her birthday).
+  - **Clubs:** tennis (Rio, with romance scenes on her route), library/book club, band, gaming/eSports. *(part 2)*
+  - ✓ **Solar's birthday on 6/24** (canon), with a surprise party (`data/living-world.js`: the morning, the party with gifts, a late scene; texts that day).
+  - ✓ A fuller Yakushima trip: `data/yakushima.js` day plan (calendar trip `slots`; core.js `tripPlan`; ui.js `tripSlot`): three days of scenes and picks, the story's own night in its slot.
+  - ✓ Pre-boss story beats: a build-up scene on the day of every operation after the first (`data/living-world.js` `lw-pre-*`), and a text the night before.
+  - ✓ Also built: reactive texts (`afterRank`, 51) and daytime texts / group chats (`ambient`, 29) in `data/living-texts.js`; late nights for Akihiko, Jungwon and Jihoon (`lateNights`, `data/living-nights.js`; housing in `FEMC_GAME_LODGING`).
 - **D. Rewards:**
   - Weapons with looks and abilities (the art is on hold until Kat says), and per-character reward lists.
   - Achievements as hub stamps.

@@ -30,14 +30,15 @@ These are playtest observations, questions, canon corrections and design ideas. 
 | 70 | Read all on the phone (2026-10-21); newest threads stay on top (34). |
 | 22 | P5R-style social stats screen with a sun level-up animation on every rank-up (2026-10-21). Built for today's three stats and ready for the five P5 stats; the five-stat migration itself is still to do (roadmap section 7). |
 | 72 (with 4) | P5X-style Go Out menu (2026-10-21): slanted art cards, descriptions and benefits on hover / focus, who's there today with portraits, touch and pad friendly; the activity review before spending a slot is unchanged. |
+| 1, 44, 2, 38, 71, 6, 30, 36, 37, 69 | Living world, part 1 (2026-10-21). **1, 44:** 59 new everyday routines (77 in all) across the whole year and every time of day: teachers (Mr. Ekoda, Mr. Ono, Mr. Edogawa, Ms. Toriumi) and students at Gekkoukan, S.E.E.S. at home, the searchers' days once they've come; each plays once, the one closest to going stale first, some choices give a stat. **2, 38, 71:** 51 texts that react a day or two after a rank scene, 29 daytime texts and group chats with their own windows, and texts the night before each full moon. **69:** late nights for Akihiko (in the dorm), Jungwon and Jihoon (visits that end at the gate, walks, calls), by rank, route and the kind of night. **6:** holiday invites (22, across the P3 calendar) that you only get by spending the day with that person. **30:** Solar's birthday on 6/24, with a surprise party. **36:** Yakushima has a day plan: three days of scenes and picks of who to spend them with. **37:** a build-up scene before each full-moon operation. `tests/femc_living.py`. |
 | 78, 53 (story side) | Hoax canon state (election over) reflected in the story and the Hoax ending; Jihoon's story-scene voice revised toward HOAX. Link-side Jihoon work is tracked by its own writer. |
 
 ## Partly addressed; broader request remains
 
 | Entries | Coverage and remaining work |
 |---|---|
-| 1, 44, 49 | Story pass: eighteen arrival-aware routines (walks to school, visits, meetings, late nights) and a new story event where searchers from different worlds compare what they know of Solar. Further variety beyond the searchers remains open. |
-| 2, 38, 71 | Story pass: story-aware daytime texts and three searcher group chats added, plus the unopenable campus-gossip notifications Kat proposed (with concerned friends glimpsed). Link-specific texts belong to the link files. |
+| 49 | Story pass: eighteen arrival-aware routines and a story event where searchers from different worlds compare what they know of Solar; the wider daily variety is done (living world, above). |
+| 2, 38, 71 | Done for part 1 (above). Still to come in part 2: texts from run-ins while out and from the Persona cast once they stay. |
 | 45, 50, 60, 76 | Story pass: the come-home asks and several routines acknowledge her love lives back home, naturally and not in every scene. Link-level coverage continues in the link files. |
 | 74 | Story side ready: readable lean flags exist for the link writer; the settling arc itself lives in Haechan's link. |
 | 42, 43 (story side) | The arrival-day introduction now responds to the player's actual answer and no longer uses the repeated restart wording. |
@@ -62,11 +63,11 @@ These are playtest observations, questions, canon corrections and design ideas. 
 ## Held or awaiting design
 
 - 3: weapon artwork remains on hold by Kat’s explicit instruction. Existing equipment mechanics are separate from these prepared designs.
-- 6–19, 26, 30–31, 35, 47: holiday/club/stat/skill/synergy/presentation/visitor-lore/birthday/gacha/post-MAX proposals require scoped design; concepts are not settled specifications.
+- 7–19, 26, 31, 35, 47: club/stat/skill/synergy/presentation/visitor-lore/gacha/post-MAX proposals require scoped design; concepts are not settled specifications. (6 and 30, holidays and the birthday, are built.)
 - 56: “Buffs and debuffs stack” needs its intended behavior clarified during the combat pass. Do not infer whether this is a bug report or a desired rule.
 
 ## Other unresolved notes
 
-Entries 5, 21, 23, 25, 27, 29, 32, 36–37, 40, 46, 48 and 51 remain pending (24 and 39 were built in the 2026-10-21 polish batch) beyond any existing baseline features (2, 38, 45, 50 and 53 are partly addressed above). In particular, the Akihiko/Shinjiro wording and relationship continuity, Jihoon’s deeper characterization, broader messaging, battle presentation, Rush behavior and Tartarus menu work are not complete. Entry 51 overlaps the separately parked combined-game work; do not report that integration as finished.
+Entries 5, 21, 23, 25, 27, 29, 32, 40, 46, 48 and 51 remain pending (36 and 37 were built in living world part 1) (24 and 39 were built in the 2026-10-21 polish batch) beyond any existing baseline features (2, 38, 45, 50 and 53 are partly addressed above). In particular, the Akihiko/Shinjiro wording and relationship continuity, Jihoon’s deeper characterization, broader messaging, battle presentation, Rush behavior and Tartarus menu work are not complete. Entry 51 overlaps the separately parked combined-game work; do not report that integration as finished.
 
 Next small batches: entry 60 and the broader home-relationship/knowledge review, alongside the remaining later-rank character audit. Entries 58/59/61/62 and the introduction gap in 64 are complete locally. Entry 63 has been reviewed without rewriting its ambiguity. Read the newly updated Runners skill and installed local Strangers skill before that narrative work. Keep the novel/game continuities distinct and preserve the approved Mark rank-nine dialogue.
