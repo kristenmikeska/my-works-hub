@@ -1,4 +1,4 @@
-# Art to make (one list, updated 2026-10-20)
+# Art to make (updated 2026-10-21)
 
 This file replaces `FEMC-ART-NEXT.md` and `FEMC-THEURGY-PROMPTS.md`. Everything already in the game is off this list.
 - Put finished pieces in **New Adds**.
@@ -12,66 +12,14 @@ Use **ChatGPT** for anything with a face, and **Gemini** for places and objects.
 
 ---
 
-## ✅ Received, waiting to go in
-These don't need anything from you. All of these are in the game now (2026-10-20):
-- [x] Solar's 5 Theurgy cut-ins. Each Haenim form shows its own: Rise and Shine, Golden Hour (Sunna), Spring Tide (Mazu), Landslide (Nike), Unveiled.
-- [x] Solar's Evoker sheet. It plays in her summon cut-in and on her battlefield figure.
-- [x] Haechan's Theurgy cut-in and its 3 layers (Every Universe)
-- [x] Jungwon's, Jihoon's and Minji's cut-ins (Perfect Composure, Light of Your Life, Final Cut)
-- [x] Strike sheets: Haechan, Jungwon, Jihoon, Minji, and Solar's two. The star-pin sheet is Nike's; the red-tassel sheet plays for her other forms.
-- [ ] Mitsuru's waist-up crop: **not used.** It's a cut-out on an empty frame (no background, no Persona) and in a different style from the other cut-ins, so it doesn't work as a full-screen still. Make her one from the S.E.E.S. prompt below.
+## 1. Theurgy cut-ins: S.E.E.S. ⭐
+All of Solar's cut-ins and all four searchers' are done.
 
-### For Claude: how new Theurgy art goes in
-Everything is data plus one tool. The presentation is reusable: `battle.js theurgyCut` plays whatever a fighter has (see the comment above `TH` in `data.js`).
-1. Add a line to `BUILD` in `tools/femc-theurgy.py`, then run `python3 tools/femc-theurgy.py all` (or one command: `cutin SRC slug`, `layers CHAR PERSONA BG slug`, `sheet SHEET slug`). Check the edges with `python3 tools/femc-theurgy.py check OUT.png <files>`.
-   - **Strike sheets** are cut by finding each figure as a connected piece, not by a fixed grid, so a blade crossing into the next panel is fine. Each frame gets the same canvas with the body's mass centred and the feet on one baseline. White gaps in long hair are punched out.
-   - If a figure wears a big white shirt, add the file to `HOLES` with `None`; otherwise the shirt could be punched out too.
-2. In `data.js`, on that member's `theurgy`, add the pieces:
-   - `img` (with `focus: [x%, y%]` of the face)
-   - `sheet: sheet3('<slug>')`
-   - `layers: { bg, persona, char }`
-   - A Persona form gets its own look under `theurgy.forms['<personaId>']`.
-3. Bump `ART_V` in `battle.js` and the `data.js ?v=` in both pages, then run `python3 tests/femc_theurgy.py`.
-4. Move the source to `Added to Game/` and add its entry (hash, outputs) to `tools/femc-new-adds.json`.
-
----
-
-## 1. Strike sheets (3 steps each) ⭐
-Make one for each Theurgy cut-in, using the same prompt every time.
-
-**Attach:** the finished Theurgy cut-in for that character, e.g. `New Adds/theurgy-solar-sunna.png`.
-```
-A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, nothing overlapping between panels. Character only: no Persona, no background, no effects.
-```
-- [ ] **Solar:** two are in (Nike's star-pin sheet, and the red-tassel one shared by the other forms). Optional: one each for Haenim, Sunna, Mazu (harbor) and Unveiled, attaching that form's cut-in.
-- [x] **Haechan**
-- [x] **Jungwon, Jihoon, Minji**
-- [ ] **The rest:** do each one after its cut-in in section 2.
-
----
-
-## 2. Theurgy cut-ins still to make ⭐
 **Attach, in this order:**
-1. 🎮 `battle/art/theurgy/solar-rise-and-shine.webp` (style)
+1. 🎮 `battle/art/theurgy/solar-rise-and-shine.webp` (style), or any finished cut-in you like
 2. 🎨 `Character Portraits/<Name>/` (one portrait)
-3. 🎨 The Persona: `Personas/Hyeonmu.png`, `Dokkaebi.png`, `Theia.png`, or the S.E.E.S. Persona named in the heading
+3. 🎨 their Persona from `Personas/` (named next to each line)
 
-### Jungwon: Perfect Composure (attach Hyeonmu.png) ✅ in the game
-```
-Create a NEW full-screen 16:9 ultimate-attack cut-in that matches the FIRST attached image's art style, energy and composition exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. The character is Yang Jungwon (second attached image). Keep his face, hair and outfit exactly. Close-to-mid shot: he stands perfectly still and composed amid the chaos, adjusting his sleeve with one hand, a thin rapier held point-down in the other, a calm, polite, faintly dangerous expression. His dimples barely show. Behind him, towering, is his Persona Hyeonmu (third attached image: an armored black tortoise-shell guardian entwined with a great black serpent, with jade-green inlays and a jade ring emblem), drawn exactly as in the reference. The serpent rears and the ground explodes into a field of huge ice spikes and frost shards. A jade ring of light hangs behind them. Icy white, black and jade-green palette. No text, no letters, no logos.
-```
-
-### Jihoon: Light of Your Life (attach Dokkaebi.png) ✅ in the game
-```
-Create a NEW full-screen 16:9 ultimate-attack cut-in that matches the FIRST attached image's art style, energy and composition exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. The character is Park Jihoon (second attached image). Keep his face, hair and outfit exactly. Close-to-mid shot: a huge smug grin, one gloved fist thrown forward at the viewer, the other hand pointing at himself like "you're welcome," hair whipping in the wind, completely full of himself. Behind him, enormous and mid-laugh, is his Persona Dokkaebi (third attached image: a giant blue-skinned Korean goblin with wild white hair, a single horn, a studded gold club over his shoulder, a red and gold sash and gold cuffs), drawn exactly as in the reference. The goblin slams the club down and a tornado of white wind and flying debris tears across the frame. Sky blue, red and gold palette. Loud, vain and enormous. No text, no letters, no logos.
-```
-
-### Minji: Final Cut (attach Theia.png) ✅ in the game
-```
-Create a NEW full-screen 16:9 ultimate-attack cut-in that matches the FIRST attached image's art style, energy and composition exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. The character is Kim Minji (second attached image). Keep her face, long dark hair and outfit exactly. Close-to-mid shot: she draws a bow toward the viewer with one eye closed, as if framing a perfect shot through a camera, her expression focused and soft at once. Behind her, radiant and huge, is her Persona Theia (third attached image: a golden titaness with flowing white-gold drapery and a sunburst crown, drawing a bow of light, circled by rings like a camera aperture), drawn exactly as in the reference. Theia looses an arrow of pure light and the whole frame flashes white and gold like a camera flash going off, with aperture rings and lens flares across the image. Warm gold and white palette. No text, no letters, no logos.
-```
-
-### S.E.E.S.
 The Personas are all in 🎨 `Personas/`. Each prompt starts the same way; paste this first:
 ```
 Create a NEW full-screen 16:9 ultimate-attack cut-in that matches the FIRST attached image's art style, energy and composition exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. Keep the character (second attached image) and the Persona (third attached image) exactly as in their references. No text, no letters, no logos.
@@ -109,6 +57,18 @@ Then add that character's line:
   ```
   Shinjiro rests his axe on his shoulder, coat whipping, gruff but deadly. Castor charges at the viewer on his black horse in a shockwave of dust and dark red force. Maroon, black and steel.
   ```
+
+Mitsuru: the waist-up crop didn't work as a full-screen still, so make hers from her line above.
+
+---
+
+## 2. Strike sheets (3 steps; make one after each cut-in) ⭐
+**Attach:** the finished cut-in for that character.
+```
+A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, nothing overlapping between panels. Character only: no Persona, no background, no effects.
+```
+- [ ] **Each S.E.E.S. member,** after their cut-in.
+- [ ] *(Optional)* **Solar:** one each for Haenim, Sunna, Mazu and Unveiled, attaching that form's cut-in from 🎨 `Added to Game/` (e.g. `theurgy-solar-sunna.png`). Right now they share one sheet, and Nike has her own.
 
 ---
 
@@ -148,7 +108,6 @@ Create a NEW 16:9 combo-attack cut-in matching the FIRST attached image's art st
 
 **Status (2026-10-21):** the bond skills are in the game with a stylized cut-in made from both portraits and Personas, so nothing waits on this art. The romance versions (on that route) can have their own art too.
 
-**For Claude: how bond art goes in.** The same pieces as a Theurgy (the steps above), in `assets/femc/battle/bonds.js`: on a bond (or one version of it, `tiers[i]` or `love`), add `img` with `focus: [x%, y%]`, `sheet: { frames: [three files] }` or `layers: { bg, persona, char }`. Cut it with `tools/femc-theurgy.py` (a bond still is a `cutin`; a 3-step combo sheet is a `sheet`). Bump `ART_V` in `battle.js` and the `bonds.js ?v=` in both pages, then run `python3 tests/femc_bonds.py --only art,shots`.
 
 ---
 
@@ -260,3 +219,22 @@ The full prompts are in `FEMC-CG-PROMPTS.md` under the number shown. For all of 
 
 ## Still to decide
 - **The revamp's name,** then the title logo.
+
+---
+
+## Appendix (for Claude): how new art goes in
+### Theurgy and strike-sheet art
+Everything is data plus one tool. The presentation is reusable: `battle.js theurgyCut` plays whatever a fighter has (see the comment above `TH` in `data.js`).
+1. Add a line to `BUILD` in `tools/femc-theurgy.py`, then run `python3 tools/femc-theurgy.py all` (or one command: `cutin SRC slug`, `layers CHAR PERSONA BG slug`, `sheet SHEET slug`). Check the edges with `python3 tools/femc-theurgy.py check OUT.png <files>`.
+   - **Strike sheets** are cut by finding each figure as a connected piece, not by a fixed grid, so a blade crossing into the next panel is fine. Each frame gets the same canvas with the body's mass centred and the feet on one baseline. White gaps in long hair are punched out.
+   - If a figure wears a big white shirt, add the file to `HOLES` with `None`; otherwise the shirt could be punched out too.
+2. In `data.js`, on that member's `theurgy`, add the pieces:
+   - `img` (with `focus: [x%, y%]` of the face)
+   - `sheet: sheet3('<slug>')`
+   - `layers: { bg, persona, char }`
+   - A Persona form gets its own look under `theurgy.forms['<personaId>']`.
+3. Bump `ART_V` in `battle.js` and the `data.js ?v=` in both pages, then run `python3 tests/femc_theurgy.py`.
+4. Move the source to `Added to Game/` and add its entry (hash, outputs) to `tools/femc-new-adds.json`.
+
+### Bond art
+The same pieces as a Theurgy (the steps above), in `assets/femc/battle/bonds.js`: on a bond (or one version of it, `tiers[i]` or `love`), add `img` with `focus: [x%, y%]`, `sheet: { frames: [three files] }` or `layers: { bg, persona, char }`. Cut it with `tools/femc-theurgy.py` (a bond still is a `cutin`; a 3-step combo sheet is a `sheet`). Bump `ART_V` in `battle.js` and the `bonds.js ?v=` in both pages, then run `python3 tests/femc_bonds.py --only art,shots`.
