@@ -148,6 +148,7 @@ The dorm and Kirijo guesthouse are separate homes. Visiting the dorm, eating the
 | Kirijo guesthouse by the station | Minji, Jungwon, Jihoon, Jaehyun, Mark, Cherry |
 | Kirijo guesthouse by the station | Junkyu, Asahi, Hyunsuk, Jaehyuk |
 | Kirijo guesthouse by the station | Sunoo, Heeseung, Sunghoon, Jay, Jake, Niki |
+| Iwatodai dorm (not searchers) | Kuromi (from June) and My Melody (from July), exchange students |
 
 Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve this split to keep the dorm cast manageable. The others follow their existing room references. Hanni and Hyein have separate rooms. No new Gekkoukan enrollment is implied by lodging or a school visit.
 
@@ -184,6 +185,7 @@ Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve th
 - **Housing (updates the table above):** of the love interests, only Haechan lives in the dorm (the destiny pull), keeping his distance at first. Jungwon and Jihoon live at the guesthouse and visit often, so Jihoon moves out of the dorm. Hanni, Hyein and Yunjin stay in the dorm.
 - **Haechan settles into one world.** As his link grows and the ending nears, he becomes more like the Haechan of the world Solar is leaning toward (Runners or strangers), with a sweet scene when he's sure. He keeps the memories of both lives.
 - **Characters from other Persona games belong to the Persona world.** They aren't visitors pulled in from elsewhere: no delayed texts, nobody missing them back home. Kuromi and My Melody become exchange students here, moved into the dorm for a reason the story gives. My Melody may be a hidden, skippable link.
+  - **Built (2026-10-21):** Ann, Kasumi and Haru live around here this year (Iwatodai is a train ride from Tokyo, where their friends and schools are); their texts go through like anyone's, nobody leaves at the end of their link, and they stay all year. Kuromi and My Melody are second-years on a one-year Kirijo exchange from Mariland Girls' Academy, a small school in a mountain town. Kuromi came first, in June; the Kirijo Group moved her from her homestay into one of the dorm's empty rooms (the official reason is water damage at the homestay; the real one stays in her link). My Melody's start was delayed, and she joined her in July in the room next door. Both are Persona-world residents, not searchers or visitors. My Melody is a hidden link: find her and she's there on Wednesday evenings; skip her and she never appears.
 - **Buffs and debuffs stack** up to a limit (P5-style), so casting twice matters.
 - **The searchers remember Solar's love lives back home** and should acknowledge them naturally, though not every link is about romance. Hyein nearly saying something about Haechan and Hanni shutting her up is the kind of beat she wants. The girls know about the secret, unlabelled thing with Haechan from where Runners currently leaves off. Yunjin knows Haechan and Jungwon from strangers. Hoax: Jihoon has had a crush on Solar forever (everyone knew except her), they had a small fling, and she ultimately starts dating Jungwon.
 - **Hoax canon state:** the election has already happened. Jungwon won and chose Solar as his Vice President, and Jihoon has fallen back into old habits.
@@ -215,3 +217,8 @@ Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve th
 - Junkyu: Fool
 
 Haechan stays Universe and Jungwon stays Hierophant.
+
+## Kat's rulings (2026-10-21): Haechan and the Hoax ending
+- **Haechan's rank becomes automatic** (story-driven, like Wren's): his ranks happen on set dates as the story moves, so his scenes always match where the player is. Choices inside his scenes still decide romance or friendship and which world he settles toward. Then he gets much more content: late nights through his whole stretch, dorm moments, texts, reactions to big story events, and scenes with Hanni, Hyein, Mark, Yunjin and Jungwon. Every special scene branches by the route the player is heading toward.
+- **The Hoax ending is "the unfated life."** Hoax is the one world without Haechan, so it's Solar choosing a life nobody arranged for her. Destiny isn't a cage; being drawn to someone isn't the same as being bound to them. It's bittersweet, not tragic: Haechan, who understands the pull best, is the one who lets her choose. Jungwon is the bridge, existing in both Hoax and strangers. Friend-zoning Haechan is possible, and Kat finds it hilarious.
+- **The Hoax ending becomes a secret, hidden route.** It takes real intent: strong Hoax links (Jungwon, Jihoon, Cherry), following Hoax memories, and turning down the pull at key moments. Runners, strangers, Stay and the true ending stay the natural paths. Update the route lock and the plot docs to match.
