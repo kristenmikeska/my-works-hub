@@ -78,11 +78,11 @@ Batches, in order, after the story/character pass:
     - daily life: stat boosts, shop discounts, job pay, extra time
     - a skill or passive for Solar at MAX
 
-    Kat's examples: Minji r3 Crosshair Sync, r8 Behind the Lens; Haechan r2 Cut the Fluff, r7 Bait and Punish. Draft the full perk list for Kat to review before building. Also romance battle and Tartarus dialogue.
+    Kat's examples: Minji r3 Crosshair Sync, r8 Behind the Lens; Haechan r2 Cut the Fluff, r7 Bait and Punish. ✓ Built 2026-10-20 (193 perks; 12 wait on unbuilt systems, listed at the end of `FEMC-LINK-PERKS.md`). Romance battle and Tartarus dialogue: not yet.
   - ✓ Buffs stack to a limit (3 levels).
   - ✓ Smarter Rush (heals when needed, rebuffs, hits weaknesses, uses Theurgy).
   - ✓ Remove the post-battle All-Out flashes.
-  - Shuffle Time.
+  - ✓ Shuffle Time (built 2026-10-20; see section 8).
 - **B. Polish:**
   - Animated text send and receive with a notification sound.
   - Read all.
@@ -106,14 +106,14 @@ Batches, in order, after the story/character pass:
 - **Social stats become five P5-style ones:** Knowledge, Courage, Proficiency, Charm, Kindness. They gate links, choices, jobs and clubs.
 
 ### New Adds still to wire in (after the merge lands)
-- **SolarWeapons.png (12 naginatas):** each is a REAL weapon with its own stats and a bonus that suits its look (snowflake → ice, fox → crits, and so on), earned from shops, chests, bosses, links and achievements. Cut files are in `assets/femc/battle/art/weapons/`.
+- ✓ **SolarWeapons.png (12 naginatas)** (built 2026-10-20: `build.js` NAG, with art in the Equipment tab and refines +1 to +5): each is a REAL weapon with its own stats and a bonus that suits its look (snowflake → ice, fox → crits, and so on), earned from shops, chests, bosses, links and achievements. Cut files are in `assets/femc/battle/art/weapons/`.
 - **ChatGPT Image Oct 18, 2026, 02_44_02 AM.png** (the Last Train with the veiled lantern figure and Solar facing it) **replaces** the current "facing Wren's Shadow" CG. The 02_44_45 file is an identical copy.
 - **GroupChatShadow.png and fishmongerShadow.png:** new Shadows on the Hoax and strangers memory floors, animated like the others.
 - **PossibleUses/** (Aigis, Koromaru, Mitsuru full bodies): compendium and party-menu art.
 - **Skip** the Shinjiro close-up (05_05_25 PM). Kat is regenerating it with an Evoker.
 
 ## 8. More building and skilling (Kat, 2026-10-20)
-Kat loves the skill tree and wants much more building.
+Kat loves the skill tree and wants much more building. **Built 2026-10-20:** Revelation cards (menu → Cards), Shuffle Time, the link perks (menu → Bonds) and the naginatas, all in `assets/femc/battle/build.js`; `tests/femc_building.py` plays them. Not built yet: bond skills (joint skills), Velvet Room draws, the five social stats.
 - **Revelation-style cards (P5X):** each fighter equips a set of cards. Each card has a main stat and random substats; matching sets give bonuses. Cards level and refine with materials. Sets are themed on Solar's worlds and the arcana.
 - **Shuffle Time, P3P-style:** after some fights the cards spin and you pick one.
   - Cups heal, Coins give yen, Swords give weapons, Wands give EXP.
@@ -156,3 +156,13 @@ Play Solar's world songs quietly at the right moments. Sources are in `~/Documen
   - The Meaning of Armbands (S.E.E.S. moments)
   - Living With Determination (P3R, late game)
   - キミの記憶 -Reload- (endings)
+- **Nine more (same day):**
+  - Like a Dream Come True: P3P FeMC hangouts and dates
+  - Signs of Love (P4): romance scenes
+  - New Days (P4G): a fresh start, the new semester
+  - Time to Make History (P4G): the school trip, Yakushima, festivals
+  - Sky's the Limit (P4G): good-ending and big hopeful moments
+  - Specialist (P4): daily or free-time variety
+  - Period (P4): final-boss or huge-battle variety
+  - 心の力 (P4, "Power of the Heart"): Persona awakenings and Theurgy-style moments
+  - そこにいるのは誰 (P3, "Who's There?"): eerie and mysterious scenes
