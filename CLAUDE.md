@@ -85,6 +85,14 @@ Art is in `art/theurgy/` and `art/summon/solar-evoke-*`, made with `tools/femc-t
 - *Battle lines:* `data.js party[].lines` gained allyDown, allyLow, solarHurt, weak, downed, boss, win, thReady; romance `banter` (gated by route and rank). `battle.js` bark / banter / hitLines (speech bubbles, capped per fight; quiet in `rules.noNav` fights). `FemcBattle.playEvents` is a test hook.
 - `python3 tests/femc_bonds.py` covers it. ART_V 13.
 
+**Polish batch (batch B): built (2026-10-21), roadmap overnight queue item 3, Kat's playtest notes 22, 24, 39, 70, 72.**
+- *Texts:* `ui.js` textBanner (a phone banner and chime when a text arrives; tap / Enter opens it), openPhone (new texts get a typing bubble and pop in one at a time; Solar's answer types out in a compose bar and sends with a whoosh; Skip / tap / Enter fast-forwards; Text speed and Auto set the pace, Instant and reduced motion show everything at once), phoneSfx (Web Audio, `FemcGameUI.sfxLog()` for tests). The save holds every message before it animates. Scene phone lines (`scene.js`) type and whoosh too. Group chats (`texts.js groups`, or any thread with two or more senders) show sender names, the in-world handle beside them, and "added you" lines as notices; the text data is unchanged.
+- *Read all:* phone list bar, `core.js markAllRead`; order stays newest first; threads still waiting on an answer keep a Reply tag.
+- *Slashes:* the site skin's full-screen stripes (`femc-mode.js` body::after, drawn over everything) are hidden on `femc-game.html` (game.css) and `femc-battle.html` (battle.css); the game's own are thin, faint and kept to the lower right of the stage and the top-right corner of scene art.
+- *Stats:* menu → Status is a P5R-style stats screen (`menu.js statsScreen`: a radar plus a card per stat with rank name, suns and meter); a rank-up plays the sun level-up card (`ui.js statCard`; waits for scenes, date and rank cards). Both read `stats.js`, so the five P5 stats drop in as data. **The five-stat migration is not done**; roadmap section 7 lists what it needs.
+- *Go Out:* P5X-style slanted art cards for areas and places with who's there today; hover / focus fills a side panel (description, who's around, what you'd get, cost and time); phones show it on the cards. Same flow and data: the activity review still comes before any time or yen is spent. Descriptions are new `about` fields in `places.js`.
+- `python3 tests/femc_polish.py` covers it (90 checks, screenshots at 1000×486, 375×812, 1440×900). HTML: game.css v8, places v11, texts v3, core v12, scene v7, menu v7, ui v9; battle.css v16.
+
 **Next: the rest of batch A in section 7 of `FEMC-REVAMP-ROADMAP.md`:** the remaining New Adds art (link perks and Shuffle Time are done). The story/character pass from Kat's playtest notes is done (see `FEMC-PLAYTEST-TRACKER.md`).
 
 ## Roadmap after the current art pivot

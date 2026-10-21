@@ -83,12 +83,12 @@ Batches, in order, after the story/character pass:
   - ✓ Smarter Rush (heals when needed, rebuffs, hits weaknesses, uses Theurgy).
   - ✓ Remove the post-battle All-Out flashes.
   - ✓ Shuffle Time (built 2026-10-20; see section 8).
-- **B. Polish:**
-  - Animated text send and receive with a notification sound.
-  - Read all.
-  - Softer pink slashes.
-  - A P5-style stat screen with a sun level-up.
-  - A P5X-inspired Go Out menu.
+- **B. Polish:** ✓ built 2026-10-21 (overnight queue item 3).
+  - ✓ Animated text send and receive with a notification sound.
+  - ✓ Read all.
+  - ✓ Softer pink slashes.
+  - ✓ A P5-style stat screen with a sun level-up (works with today's three stats; the five-stat migration below is still to do).
+  - ✓ A P5X-inspired Go Out menu.
 - **C. Living world:**
   - Daily random events.
   - Run-ins while out or working.
@@ -103,7 +103,7 @@ Batches, in order, after the story/character pass:
   - Achievements as hub stamps.
   - **Gacha, both kinds:** a capsule machine at the mall (yen or Tartarus tickets; accessories, cosmetics, cast keychains, rare items) and Velvet Room draws from Elizabeth (skill cards, rare gear).
 - **E. Visitors:** the Persona cast belongs to this world; Kuromi and My Melody as exchange students (My Melody as a hidden link); deeper Mercy, Kiriko and Sebastian links; Kasumi's timeline.
-- **Social stats become five P5-style ones:** Knowledge, Courage, Proficiency, Charm, Kindness. They gate links, choices, jobs and clubs.
+- **Social stats become five P5-style ones:** Knowledge, Courage, Proficiency, Charm, Kindness. They gate links, choices, jobs and clubs. **Not migrated yet** (2026-10-21: the game still has P3P's Academics, Charm and Courage). The stats screen and level-up are ready for five (they read `stats.js`). The migration needs: the five in `stats.js` (names, colors, rank names, thresholds); a one-time save migration (Academics → Knowledge; Proficiency and Kindness start fresh or seeded); gains re-pointed in `places.js` (activities, books, dorm study), `jobs.js` and `job-scenes.js`, `core.js` (class answers, exams, perks) and `ui.js` (class listening, study); `needs` gates and choice requirements in the story and link files; the daily perks in `build.js`; and Kat's call on what earns Proficiency and Kindness.
 
 ### New Adds still to wire in (after the merge lands)
 - ✓ **SolarWeapons.png (12 naginatas)** (built 2026-10-20: `build.js` NAG, with art in the Equipment tab and refines +1 to +5): each is a REAL weapon with its own stats and a bonus that suits its look (snowflake → ice, fox → crits, and so on), earned from shops, chests, bosses, links and achievements. Cut files are in `assets/femc/battle/art/weapons/`.
@@ -184,10 +184,11 @@ Moods live in `assets/femc/game/data/places.js` (`music`, `screens`, `worldMusic
    - **Signature skills:** every fighter's tree has a third tier-2 node (link rank 4) with their own skill, icon and effect: Corkscrew Thunder, Gale Arrow, Fastball, Glacial Flèche, Missile Salvo, Lance of Justice, Three Heads, Haymaker, Moonlit Static, Black Tortoise, Goblin Fire, Focus Pull. The searchers' first ones (Waning Moon, Serpent Coil, Goblin Club, Clear Sight) got their own icons and effects too.
    - **Battle lines:** each fighter now speaks up when an ally is down or low, Solar is hurt, they hit a weakness, they're knocked down, a boss appears, they win, and their Theurgy is ready (speech bubbles over the cards, and in the log). Romance pair lines (their line and Solar's reply) replace the plain ones on the romance route, from rank 6 (more at 9).
    - Test: `python3 tests/femc_bonds.py`.
-3. **Then:** batch B polish:
-   - animated text send/receive with a sound
-   - read all
-   - softer pink slashes
-   - a P5-style stat screen with a sun level-up
-   - a P5X-inspired Go Out menu
-   - group-chat sender names in `ui.js`
+3. ✅ **Built 2026-10-21:** batch B polish (Kat's playtest notes 22, 24, 39, 70, 72):
+   - **Texts feel real** (`ui.js` openPhone / textBanner / phoneSfx): a new text slides in as a phone banner with a soft chime (tap or Enter opens it); in the conversation each new text gets a typing bubble, then pops in, one at a time; Solar's answer types out in the compose bar and sends with a whoosh, then the replies arrive the same way. Pace follows Text speed (Instant shows everything at once) and Auto (Slow / Fast stretch or tighten the gaps); reduced motion shows everything at once; Skip, a tap on the conversation, or Enter / Space fast-forwards. Everything is saved before it animates. Scene phone lines (`scene.js`) get the same typing bubble and whoosh. Sounds are Web Audio, made in code.
+   - **Group chats name the sender** in every multi-person thread (`texts.js groups` plus any thread with two or more senders): the name over the bubble, the in-world handle beside it (hate club), and "added you to a group" lines as chat notices. The data is unchanged.
+   - **Read all** on the phone list (`core.js markAllRead`), with the unread count; newest threads stay on top; answers still waiting keep a Reply tag.
+   - **Softer pink slashes:** the site skin's full-screen stripes (drawn on top of everything, over the HUD and text boxes) are off on the game and battle pages; the game's own are thin, faint and kept to the lower right of the stage and the top-right corner of scene art.
+   - **P5R-style social stats** (menu → Status): a radar with one corner per stat, and a card per stat with its rank name, rank in suns and the meter to the next rank. A rank-up plays a level-up card with Solar's sun (waits for a scene to end; reduced motion gets a still version). Both read `stats.js`, so the five P5 stats drop in as data. **The five-stat migration itself is not done** (see section 7).
+   - **P5X-style Go Out:** slanted art cards per area (and per place inside one) with who's there today (met links' faces); hover or focus fills a side panel with what the place is, who's around, what you'd get and what it costs; on phones the cards carry that themselves. Keyboard, pad, mouse and touch. Choosing still opens the review before any time or yen is spent. Descriptions are `about` fields in `places.js`.
+   - Test: `python3 tests/femc_polish.py` (screenshots at 1000×486, 375×812 and 1440×900).

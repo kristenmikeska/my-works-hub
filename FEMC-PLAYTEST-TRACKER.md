@@ -25,6 +25,11 @@ These are playtest observations, questions, canon corrections and design ideas. 
 | 62 | Re-verified in the story pass: the older memory is clearly distinguished from the disappearance. |
 | 66 | Each searcher awakening now has its own trigger, setting and stakes; Haechan's is a high-stakes scene tied to both his worlds; Jungwon acknowledges carrying two lives. Battle hooks unchanged. |
 | 77 | Solar's own texts and phone choices use her novel texting voice everywhere; friends react to what she says rather than how she types. |
+| 24 | Texts feel real (2026-10-21, polish batch): a phone banner and notification chime when a text arrives, a typing bubble before each incoming text, texts arriving one at a time, and Solar's answer typing out and sending with a whoosh; follows Text speed, Auto and reduced motion, with Skip. Scene phone lines type too. Group chats now name the sender in every multi-person thread. `tests/femc_polish.py`. |
+| 39 | Softer pink slashes (2026-10-21): the site skin's full-screen stripes no longer sit over the HUD, text boxes or battle menus; the game's own are thinner, fainter and kept to the edges. |
+| 70 | Read all on the phone (2026-10-21); newest threads stay on top (34). |
+| 22 | P5R-style social stats screen with a sun level-up animation on every rank-up (2026-10-21). Built for today's three stats and ready for the five P5 stats; the five-stat migration itself is still to do (roadmap section 7). |
+| 72 (with 4) | P5X-style Go Out menu (2026-10-21): slanted art cards, descriptions and benefits on hover / focus, who's there today with portraits, touch and pad friendly; the activity review before spending a slot is unchanged. |
 | 78, 53 (story side) | Hoax canon state (election over) reflected in the story and the Hoax ending; Jihoon's story-scene voice revised toward HOAX. Link-side Jihoon work is tracked by its own writer. |
 
 ## Partly addressed; broader request remains
@@ -57,11 +62,11 @@ These are playtest observations, questions, canon corrections and design ideas. 
 ## Held or awaiting design
 
 - 3: weapon artwork remains on hold by Kat’s explicit instruction. Existing equipment mechanics are separate from these prepared designs.
-- 6–19, 22, 26, 30–31, 35, 47: holiday/club/stat/skill/synergy/presentation/visitor-lore/birthday/gacha/post-MAX proposals require scoped design; concepts are not settled specifications.
+- 6–19, 26, 30–31, 35, 47: holiday/club/stat/skill/synergy/presentation/visitor-lore/birthday/gacha/post-MAX proposals require scoped design; concepts are not settled specifications.
 - 56: “Buffs and debuffs stack” needs its intended behavior clarified during the combat pass. Do not infer whether this is a bug report or a desired rule.
 
 ## Other unresolved notes
 
-Entries 5, 21, 23–25, 27, 29, 32, 36–37, 39–40, 46, 48 and 51 remain pending beyond any existing baseline features (2, 38, 45, 50 and 53 are partly addressed above). In particular, the Akihiko/Shinjiro wording and relationship continuity, Jihoon’s deeper characterization, broader messaging, battle presentation, Rush behavior and Tartarus menu work are not complete. Entry 51 overlaps the separately parked combined-game work; do not report that integration as finished.
+Entries 5, 21, 23, 25, 27, 29, 32, 36–37, 40, 46, 48 and 51 remain pending (24 and 39 were built in the 2026-10-21 polish batch) beyond any existing baseline features (2, 38, 45, 50 and 53 are partly addressed above). In particular, the Akihiko/Shinjiro wording and relationship continuity, Jihoon’s deeper characterization, broader messaging, battle presentation, Rush behavior and Tartarus menu work are not complete. Entry 51 overlaps the separately parked combined-game work; do not report that integration as finished.
 
 Next small batches: entry 60 and the broader home-relationship/knowledge review, alongside the remaining later-rank character audit. Entries 58/59/61/62 and the introduction gap in 64 are complete locally. Entry 63 has been reviewed without rewriting its ambiguity. Read the newly updated Runners skill and installed local Strangers skill before that narrative work. Keep the novel/game continuities distinct and preserve the approved Mark rank-nine dialogue.
