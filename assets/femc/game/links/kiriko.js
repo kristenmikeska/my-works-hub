@@ -3,7 +3,15 @@
    Kiriko doesn't know Solar. Solar's body knows Kiriko (in another life she mains her), which is uncanny for Solar and
    only ever delightful to Kiriko. Rank 4 holds the fragment runners-monitor. Rank 9: the gold bell on Haenim's sash is
    Kiriko's suzu. Rank 8 meets Widowmaker (branches on Widowmaker rank 1).
-   Cast-only speakers: none. afterMax: scenes for after rank 10 (engine support pending, see report). */
+   Cast-only speakers: none.
+   Link-local flags (2026-10-21 depth pass), read back later in this file and in data/living-visitors.js:
+     kiriko-shade (rank 1: Solar steps into the sun's way) → rank 10, afterMax "the last sweep".
+     kiriko-healer (rank 4: she tells Kiriko she's played a game with a healer) → afterMax "healer main".
+     kiriko-next-one (rank 6: "you'd be the next one") → rank 10 (she only quotes Solar if Solar said it), the 12/31 bell.
+     kiriko-borrowed (rank 9: "maybe I just borrowed it") → rank 10.
+   Living world (texts after ranks 2/3/5/6/8/9, holidays 9/23 and 12/31, a visit and a call): data/living-visitors.js.
+   Runners (skill, on the page only): Solar is a Grandmaster support who mains Kiriko; Haechan mains Widowmaker.
+   afterMax: four scenes after rank 10 (she stays until the doors open on 1/30). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'kiriko', name: 'Kiriko', short: 'Kiriko', arcana: 'Fortune', numeral: 'X', from: 'Overwatch',
   kind: 'visitor',
@@ -84,6 +92,63 @@
       ] },
       { s: 'kiriko', f: 'happy', t: "Fortune for good manners. Kichi. Blessing. \"Respect the old guardians, and they will keep you.\"" },
       { n: "When they were done both foxes stood in their new red bibs at the bottom of the steps, and Solar could have sworn the grumpy one looked very slightly less grumpy, the way a man looks less grumpy in a new tie." }
+    ],
+    // The list: ofuda practice before the bridge (8/6), the counting after it.
+    [
+      { ifAfter: '8/7', then: [
+        { n: "The inside of the shrine office door was papered with fortune slips now, taped edge to edge, and every one of them had names on the back in Kiriko's small round pencil, every awake person she'd met or heard of since June, with a tick beside each one she'd seen this week. She'd started it the night after the bridge. She hadn't said so. She didn't have to." },
+        { s: 'kiriko', f: 'neutral', t: "Sunday count. I do it every Sunday. Then I run the roofs and check the windows. Then I sleep. That's the system. Write a name if you know one I don't." },
+        { choose: [
+          { t: "(Add your own name.)", notes: 2, then: [
+            { s: 'kiriko', f: 'happy', t: "Sol-chan. You're the first one on there. Top left. Look. I wrote you before I wrote me." },
+            { n: "She had. *Sol-chan*, in pencil, the very first slip, gone soft and gray from her thumb, with a long row of ticks beside it, one for every Sunday." }
+          ] },
+          { t: "(Add the porter girl. The one who said sorry.)", notes: 3, then: [
+            { s: 'kiriko', f: 'neutral', t: "She's on. Bottom of the last one. I didn't know her name, so I put her down as *sorry*. That's what she said to everybody. Angela says she said it to her too." },
+            { n: "There was no tick beside it. Kiriko looked at the empty space for a moment, and then took the pencil from behind her ear and drew a very small fox there instead, as if that was the next best thing." }
+          ] },
+          { t: "Who's at the top of the list at home?", notes: 2, then: [
+            { s: 'kiriko', f: 'happy', t: "Grandma. Then Mom. Then the ramen cat. Then everybody else. Then you, now, here. Don't let it go to your head." }
+          ] }
+        ] }
+      ], else: [
+        { n: "Kiriko was writing ofuda at the low table in the shrine office, a stack of blank paper strips on one side and a pot of ink on the other, painting the characters in long confident strokes with a brush that looked older than the shrine. The white dog was asleep under the table across both their feet." },
+        { s: 'kiriko', f: 'happy', t: "Try one. Protection. It's just three strokes and a sort of swoosh. Everybody's first one is terrible. Mine was terrible. Grandma framed it so I'd never forget." },
+        { choose: [
+          { t: "(Try. Slowly.)", notes: 2, then: [
+            { n: "Solar's was terrible. The swoosh went off the edge of the paper and onto the table and the second stroke had a drip in it like a tear. Kiriko held it up to the light and studied it with enormous seriousness." },
+            { s: 'kiriko', f: 'neutral', t: "...It's a little haunted. That's fine. Haunted protects twice as hard. I'm keeping it." }
+          ] },
+          { t: "(Let your hand do it without thinking.)", notes: 3, then: [
+            { n: "She didn't think. Her hand went down to the paper by itself and made three strokes and a swoosh, quick, sure, and it wasn't anything Kiriko had shown her, and it wasn't Japanese, it was a little cartoon fox, three lines and a curl, like something doodled in the margin of a notebook a thousand times in a room with a screen on." },
+            { s: 'kiriko', f: 'surprised', t: "...That's my fox. That's literally my fox. How is that my fox." },
+            { s: 'kiriko', f: 'happy', t: "Okay. New rule. That's a real ofuda now. I'm blessing it. I'm putting it on the door." }
+          ] }
+        ] }
+      ] },
+      { s: 'kiriko', f: 'neutral', t: "Fortune. Office edition. Kichi. \"What is written down is not lost.\"" }
+    ],
+    // For once Solar draws the fortune.
+    [
+      { n: "Rain, all afternoon, on the blue tarp over the office porch, and Kiriko was lying on her back on the boards with her feet up on the offering box, holding the fortune box up over her face and shaking it at the ceiling, not drawing, just shaking, like a rattle." },
+      { s: 'kiriko', f: 'serious', t: "Sol-chan. Nobody ever draws one for me. I draw them for everybody. Every day. You know how many fortunes I've had this year? Zero. The gods forget the fortune girl." },
+      { s: 'kiriko', f: 'happy', t: "You do it. You shake, you read the number, you get the slip, you read it out. I'll close my eyes so you can't cheat. Well. So you can cheat if you want. I won't know." },
+      { n: "Solar shook the box until a stick came out of the hole, and found the drawer, and unfolded the slip. *Kyo.* Bad luck. Travel unwise. What is lost will stay lost. She looked at Kiriko, lying there on the porch boards with her eyes screwed shut, waiting, smiling, the way you wait for a present." },
+      { choose: [
+        { t: "(Read it exactly as written.)", notes: 2, then: [
+          { s: 'kiriko', f: 'surprised', t: "Kyo?? For ME?? On my own porch??" },
+          { n: "Then she laughed, so hard she rolled off the boards onto the gravel in the rain, and lay there in it, laughing up at the sky, and said it was the first honest fortune anyone had given her all year and she was keeping it forever, and she did not tie it to the tree." }
+        ] },
+        { t: "(Make one up. A good one.)", notes: 3, then: [
+          { n: "Solar folded the slip back up without a word and held it like she was reading it, and said, Dai-kichi. Great blessing. \"The one who gives every fortune away will be given one back.\"" },
+          { s: 'kiriko', f: 'neutral', t: "...That's not on any of the slips. I know every slip. I wrote half of them down this summer so I wouldn't lose them." },
+          { s: 'kiriko', f: 'happy', t: "It's the best one I've ever got. I'm putting it in my sleeve. It's going home with me. Don't you dare tell me what it really said." }
+        ] },
+        { t: "(Tie it to the tree without reading it.)", notes: 2, then: [
+          { n: "Solar got up and went out into the rain and tied it to the low pine by the water basin with a vicious double knot, the way Kiriko had taught her, and came back soaked, and Kiriko, who had opened one eye, didn't ask what it had said. She just held the towel out." }
+        ] }
+      ] },
+      { n: "The rain went on. The fox came out of nowhere and lay down along the edge of the tarp where the drips fell, and every drop that touched it lit up for an instant on the way down." }
     ]
   ],
   ranks: [
@@ -132,7 +197,7 @@
           { n: "She tucked her hands into her sleeves, both of them, quick and practiced, like a girl hiding a bad manicure." },
           { s: 'kiriko', f: 'happy', t: "It's fine. It's probably the weird green. I'll get a tan or something." }
         ] },
-        { t: "(Don't say anything. Move so you're blocking the sun.)", notes: 3, then: [
+        { t: "(Don't say anything. Move so you're blocking the sun.)", notes: 3, flag: 'kiriko-shade', then: [
           { n: "Solar stepped sideways, so her shadow fell across the offering box, and in the shade Kiriko's fingers were just fingers again, chipped purple polish and a callus where a kunai would sit. Kiriko looked at the shadow, and then up at her, and didn't say anything either. Her mouth did something small and pleased at one corner." }
         ] },
         { t: "Are you okay up here? Alone?", notes: 1, then: [
@@ -303,7 +368,7 @@
       { n: "The cicadas came back first. Then the heat, and the hard stone under the towel, and the sticky blue on her arm. Kiriko had her hand around Solar's wrist. Not hard. Just holding it, the way you'd hold the wrist of someone asleep to check they were still there." },
       { s: 'kiriko', f: 'serious', t: "Sol-chan? You went somewhere." },
       { choose: [
-        { t: "...I think I've played a game. Late at night. With a healer in it.", notes: 3, then: [
+        { t: "...I think I've played a game. Late at night. With a healer in it.", notes: 3, flag: 'kiriko-healer', then: [
           { s: 'kiriko', f: 'surprised', t: "Yeah? A healer? Ooh. Were you any good?" },
           { s: 'solar', f: 'neutral', t: "I think so." },
           { s: 'kiriko', f: 'happy', t: "Of course you were. You have the hands. I said so on the roof." },
@@ -432,7 +497,7 @@
       { s: 'kiriko', f: 'neutral', t: "And then everything went green." },
       { n: "A gold chrysanthemum opened over the water and hung there and came apart slowly into falling sparks, and the light went across Kiriko's face and away. Solar didn't say anything for a while. She had a feeling she knew this. Not Kanezaka. The shape of it. A date set by somebody else. A thing that was yours now whether you'd asked for it or not, handed over like a present." },
       { choose: [
-        { t: "You wouldn't be the last one. You'd be the next one.", notes: 3, then: [
+        { t: "You wouldn't be the last one. You'd be the next one.", notes: 3, flag: 'kiriko-next-one', then: [
           { s: 'kiriko', f: 'surprised', t: "..." },
           { s: 'kiriko', f: 'neutral', t: "That's annoyingly good. That's a fortune. You just did a fortune." }
         ] },
@@ -617,7 +682,7 @@
           { s: 'kiriko', f: 'happy', t: "It's kind of an honor, though. You know that? Out of everything, out of everybody in every world, she's wearing my bell." },
           { n: "She said it like that, like the strangest thing that had happened to her all year was a compliment, and Solar knelt on the gravel with her hands shaking and loved her, suddenly and completely and without any way to say it, for not being afraid of her." }
         ] },
-        { t: "Maybe it was always yours. Maybe I just borrowed it.", notes: 2, then: [
+        { t: "Maybe it was always yours. Maybe I just borrowed it.", notes: 2, flag: 'kiriko-borrowed', then: [
           { s: 'kiriko', f: 'neutral', t: "Hm. Borrowed. I like that better than stole." },
           { s: 'kiriko', f: 'happy', t: "Keep it, though. You ring it louder than me." }
         ] },
@@ -665,11 +730,18 @@
           { s: 'kiriko', f: 'happy', t: "So I figure I can do it for mine." }
         ] }
       ] },
-      { s: 'kiriko', f: 'neutral', t: "I'm not going to be the last one, Sol-chan. You were right. I'm going to be the next one. And then somebody's going to be next after me, and I'm going to stand at the back for them. And I'm going to be so annoying about it." },
+      { ifFlag: 'kiriko-next-one', then: [
+        { s: 'kiriko', f: 'neutral', t: "I'm not going to be the last one, Sol-chan. You were right, at the festival. I'm going to be the next one. And then somebody's going to be next after me, and I'm going to stand at the back for them. And I'm going to be so annoying about it." }
+      ], else: [
+        { s: 'kiriko', f: 'neutral', t: "I'm not going to be the last one, Sol-chan. I worked it out on the steps, in the green, with you at the back. I'm going to be the next one. And then somebody's going to be next after me, and I'm going to stand at the back for them. And I'm going to be so annoying about it." }
+      ] },
       { s: 'kiriko', f: 'flustered', t: "Okay. So. I made you something. Well. I didn't make it. I had it. And now it's yours. Don't argue." },
       { n: "She held it out on her flat palm. A suzu. A little brass shrine bell on a red cord, the kind that hung from the ropes outside every shrine in the world, the one that had been on her belt every day since June. It was worn smooth on one side where her thumb went." },
       { s: 'kiriko', f: 'neutral', t: "That's mine. My Protection Suzu. Or it was. If you ring it, I'll hear it. Doesn't matter which world. I'll hear it, and I'll know you're okay." },
       { s: 'kiriko', f: 'happy', t: "And you've already got one on your Persona, so now you've got two, and I've got none, so I guess I'll have to go home and get a new one blessed. Which is a whole ceremony. Which I'm doing myself. Because it's my shrine." },
+      { ifFlag: 'kiriko-borrowed', then: [
+        { s: 'kiriko', f: 'neutral', t: "You said you borrowed the first one. So this one's a loan too. Same terms. You give them both back to me in some other world, someday, when you're old, and I'll be annoyed you kept them so long." }
+      ] },
       { choose: [
         { t: "(Ring it.)", notes: 3, then: [
           { n: "Solar held it up by the cord and rang it. A small, clear sound in the snow, very high, the kind you feel in your teeth. And somewhere very far off, under it, so faint she might have imagined it, another bell answered, the same note, exactly the same, as if the sound had gone out across the snow and come back to her from a long way off, from inside her own chest." },
@@ -680,6 +752,9 @@
           { s: 'kiriko', f: 'happy', t: "Then you'll hear it in your dreams. That's how it works. I just decided." },
           { s: 'kiriko', f: 'neutral', t: "...You'll hear it. I'll ring it really loud. I'll ring it every morning." }
         ] }
+      ] },
+      { ifFlag: 'kiriko-shade', then: [
+        { s: 'kiriko', f: 'neutral', t: "The first day. You moved so you were blocking the sun, so I wouldn't see my hands. You didn't say anything. You just stood there being a shadow for me. I've been trying to pay that back all year. This is me paying it back." }
       ] },
       { s: 'kiriko', f: 'neutral', t: "Okay. Last fortune. The big one. The year-end one. You only get one of these a year, so don't waste it." },
       { n: "She shook the box for a long time, longer than she ever had, with her eyes shut and her lips moving, and when the stick came out she didn't look at the number. She just went to the wall of drawers and pulled one open without reading it and unfolded the slip and read it out with her eyes on Solar the whole time and not on the paper at all." },
@@ -709,6 +784,11 @@
       ] },
       { n: "They won. They won again. A small crowd collected behind them, middle-school boys with their bags still on, saying who is that, and Solar's ears went hot the way they did under any kind of light, and her hands kept going anyway." },
       { s: 'kiriko', f: 'neutral', t: "That's how she plays, you know. The girl who picks me. Always where she needs to be before anybody knows they need her." },
+      { ifFlag: 'kiriko-healer', then: [
+        { s: 'kiriko', f: 'happy', t: "You told me, on the steps in July. With blue ice pop all down your arm. A game, late at night, with a healer in it. I knew it. I knew those were the hands." }
+      ], else: [
+        { s: 'kiriko', f: 'neutral', t: "...You never said you'd played anything. In July, on the steps, you said it was the heat. I let you. I'm not letting you now. Those are the hands, Sol-chan." }
+      ] },
       { s: 'kiriko', f: 'happy', t: "It was really nice to see it from the outside. That's all. Just once." },
       { s: 'kiriko', f: 'neutral', t: "Fortune. Arcade edition. Kichi. \"Your hands remember what you have not yet learned.\"" },
       { s: 'kiriko', f: 'flustered', t: "...Okay, the gods are being kind of weird today. That one goes in your pocket and we're getting crepes." }
@@ -735,6 +815,58 @@
       { s: 'kiriko', f: 'neutral', t: "When I get home I'm going to tell Grandma I made these in another world on a shrine stove out of my own head. And she's going to say they still weren't as good as hers. And she'll be right. And I'll eat three." },
       { s: 'kiriko', f: 'happy', t: "And I'll tell her somebody in another world ate the head. She'll make you an honorary granddaughter. She does that. She has like nine." },
       { s: 'kiriko', f: 'neutral', t: "Fortune. Taiyaki edition. Chu-kichi. \"What breaks in the pan is still sweet.\" Don't look at me. You said it first. The gods are copying you now." }
+    ] },
+    { title: 'dai-kichi', place: 'Naganaki Shrine', scene: [
+      { place: 'Naganaki Shrine', time: 'Daytime', bg: 'outside-shrine-day' },
+      { music: 'tender' },
+      { n: "Dai-kichi had outgrown his bag in August and his jar in October and now lived in a glass bowl on the shrine office windowsill with a bit of pondweed and a very small ceramic torii that Kiriko had bought for him at a stall, and he swam round and round the torii all day like a pilgrim who'd lost count of his laps." },
+      { n: "Kiriko was sitting in front of the bowl with her chin on her folded arms, eye to eye with him through the glass, and she didn't look round when Solar came in." },
+      { s: 'kiriko', f: 'sad', t: "He can't come with me. I thought about it all week. He was born here. In a bucket, at a stall, under a lantern. You don't take somebody out of their own world and drop him somewhere strange. That's how you get a faint fish." },
+      { s: 'kiriko', f: 'neutral', t: "So somebody has to keep him. And the boss would want to keep him, but the boss would also want to eat him, a little, so. It has to be somebody with thumbs." },
+      { choose: [
+        { t: "I'll keep him. In my room. I promise.", notes: 3, then: [
+          { s: 'kiriko', f: 'happy', t: "...Yeah? Really? You'll do his water every week? And talk to him? He likes being talked to. He likes the news." },
+          { s: 'solar', f: 'neutral', t: "I'll read him the news." },
+          { n: "Kiriko put both hands flat on the windowsill on either side of the bowl and looked at the fish for a long time, and then at Solar, and her eyes were wet, which was ridiculous, over a goldfish, and wasn't ridiculous at all." }
+        ] },
+        { t: "Fuuka would love him. The dorm kitchen gets the morning sun.", notes: 2, then: [
+          { s: 'kiriko', f: 'neutral', t: "Fuuka. Okay. Fuuka's good. Fuuka talks to the rice cooker. She'll talk to him." },
+          { s: 'kiriko', f: 'happy', t: "But you visit him. Every day. That's a condition. Write it down." }
+        ] }
+      ] },
+      { s: 'kiriko', f: 'neutral', t: "His name's Great Blessing, you know. I gave him that name because he was the only thing I won all summer. Out of pity. The old man felt sorry for us." },
+      { s: 'kiriko', f: 'neutral', t: "...I've been thinking that's what this whole year was. Out of pity. Somebody felt sorry for a girl on a top step and gave her a fish and a friend and five months off. And now I have to give the fish back. And I'm so glad I got him." },
+      { s: 'kiriko', f: 'happy', t: "Fortune. Goldfish edition. He picks. He swims to a number." },
+      { n: "He swam to the left side of the bowl, which Kiriko declared was seven, and she unfolded seven, and read it to the fish first, out loud, before she read it to Solar." },
+      { s: 'kiriko', f: 'neutral', t: "Kichi. \"What you leave in good hands is never left.\"" }
+    ] },
+    { title: 'the last sweep', place: 'Naganaki Shrine', scene: [
+      { place: 'Naganaki Shrine', time: 'Daytime', bg: 'outside-shrine-day' },
+      { music: 'day' },
+      { n: "It was cold enough that the water basin had a skin of ice on it in the mornings, and Kiriko had given Solar the good broom. Not lent. Given. Handed it to her at the top of the steps with both hands and a small, formal bow, like a sword in a ceremony." },
+      { s: 'kiriko', f: 'serious', t: "Okay. Lesson. When I go, somebody has to be still here in the morning. Genji-nii said. So you're learning the whole thing. Bibs, broom, basin, bell rope. In that order." },
+      { n: "She taught her the whole thing. How to rake the gravel so the lines went with the path and not against it. How often the foxes' bibs needed washing, and which detergent, and that the grumpy one's had to be tied a little looser because he didn't like it tight. How to check the bell rope for fraying at the top where nobody looked. Which step was loose. Which crow was the leader and was owed a rice cracker on Sundays." },
+      { choose: [
+        { t: "(Write it all down in your handbook.)", notes: 3, then: [
+          { n: "Solar wrote it all down in the back of her student handbook in her own small handwriting, bibs, broom, basin, bell rope, the loose step, the crow, and Kiriko leaned over her shoulder and read every line and corrected the detergent, and then took the pen and drew a tiny fox at the bottom, in the margin, and signed it, like a teacher." }
+        ] },
+        { t: "I'm not going to do it as well as you.", notes: 2, then: [
+          { s: 'kiriko', f: 'neutral', t: "No. You're going to do it like you. The shrine doesn't care how. It just cares that somebody comes." },
+          { s: 'kiriko', f: 'happy', t: "And you'll be bad at the gravel for a month and then you'll be great. That's how everybody does it. Even me. Especially me." }
+        ] },
+        { t: "(Sweep the steps in silence beside her.)", notes: 2, then: [
+          { n: "They swept the hundred and twelve steps from the top down, side by side, two brooms, not talking, the leaves going over the edge of each step in neat little drifts, and at the bottom they turned around and looked back up at it, all the way to the torii, clean, and Kiriko let out a breath that went up white in the cold." }
+        ] }
+      ] },
+      { ifEvent: 'a6-new-year', then: [
+        { s: 'kiriko', f: 'neutral', t: "You still have the blank one? From New Year's? Keep it in the handbook with this. Not written yet. That's the whole shrine, really. Somebody comes in the morning and nothing's written yet." }
+      ] },
+      { ifFlag: 'kiriko-shade', then: [
+        { n: "At the bottom of the steps Kiriko held her hands up to the low winter sun, both of them, fingers spread, the way she had on the very first day. They were solid to the ends. She looked at them, and then at Solar, standing beside her where she'd stood in June, in the same place, between her and the light, without thinking about it, and she laughed." },
+        { s: 'kiriko', f: 'happy', t: "You're doing it again. Blocking the sun. I don't even need it anymore and you're still doing it." }
+      ] },
+      { s: 'kiriko', f: 'neutral', t: "Fortune. Last-sweep edition. Kichi. \"The one who stays is the one who is kept.\" ...Wait. I've drawn that before. That's yours. The gods are recycling." },
+      { s: 'kiriko', f: 'happy', t: "...Or they mean it twice. Fine. Fine! It's yours twice. Fold it twice." }
     ] }
   ]
 });

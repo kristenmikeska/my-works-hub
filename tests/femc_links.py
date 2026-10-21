@@ -1,4 +1,5 @@
-"""Real-browser regression checks for the finished searcher-friend links: Hyein, Mark, Hanni, Yunjin and Minji.
+"""Real-browser regression checks for the finished links: by default Hyein, Mark, Hanni, Yunjin and Minji; also
+mercy,kiriko,sebastian (the visitor depth pass) with --links.
 
 Run: python3 tests/femc_links.py [--links hyein,mark,...] [--screenshots /absolute/output/directory]
 Needs Chrome (set CHROME for a nonstandard installation), no Python packages.
@@ -36,6 +37,16 @@ try:
      const r1=JSON.stringify(L.hyein.ranks[0].scene);if(/talking like that|waiting for instructions/.test(r1))bad.push('hyein r1: shared formal accusation');
      return bad})()''')
     assert not content, content
+    # Link-local flags of the visitor depth pass (Mercy, Kiriko, Sebastian; prefix = id or seb-): every one a scene reads
+    # is set by a choice somewhere in the same link.
+    orphans = p.eval(f'''(()=>{{const L=FemcGame.LINKS,bad=[];const walk=(a,fn)=>(a||[]).forEach(l=>{{fn(l);walk(l.then,fn);walk(l.else,fn);(l.choose||[]).forEach(o=>{{fn(o);walk(o.then,fn);}});}});
+     for(const id of {json.dumps([x for x in LINKS if x in ('mercy', 'kiriko', 'sebastian')])}){{const l=L[id],read=new Set(),set=new Set(),scenes=[...l.ranks.map(r=>r.scene),...l.hangouts,...l.afterMax.map(e=>e.scene),...Object.values(l.holidays||{{}}).map(h=>h.scene),...(l.lateNights||[]).map(e=>e.scene)];
+      scenes.forEach(s=>walk(s,x=>{{[].concat(x.ifFlag||[]).forEach(f=>read.add(f));if(x.flag)(typeof x.flag==='string'?[x.flag]:Array.isArray(x.flag)?x.flag:Object.keys(x.flag)).forEach(f=>set.add(f));}}));
+      (l.lateNights||[]).forEach(e=>[].concat(e.flag||[]).forEach(f=>read.add(f)));
+      const mine=f=>f.startsWith(id+'-')||f.startsWith(id.slice(0,3)+'-');
+      read.forEach(f=>{{if(mine(f)&&!set.has(f))bad.push(id+': '+f+' is read but never set');}});}}
+     return bad}})()''')
+    assert not orphans, orphans
     print('Content guards passed', flush=True)
     totals = {}
     for link in LINKS:

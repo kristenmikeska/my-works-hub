@@ -5,7 +5,14 @@
    Rank 3: Solar's hands already know how to tie a surgeon's knot (strangers, uncanny for Solar).
    Rank 5: Solar sets up Mercy and Genji; holding the light triggers a strangers flashback; fragment strangers-needle.
    Rank 7: Mercy and Aphrodite do Solar's hair and makeup (the "big sisters" CG idea; no CG file yet).
-   Cast-only speakers: nurse. afterMax: scenes for after rank 10 (engine support pending). */
+   Cast-only speakers: nurse.
+   Link-local flags (2026-10-21 depth pass), read back later in this file and in data/living-visitors.js:
+     mercy-lessons (rank 3: she asks to be taught properly) → ranks 8 and 10, hangout 5, afterMax "her own stitches".
+     mercy-told-parents (rank 6: she says she can't remember her parents) → rank 9.
+     mercy-sister / mercy-three-am / mercy-doctor (rank 9: what Angela is to her) → rank 10, afterMax "handover", and
+       mercy-three-am opens the late-night call in living-visitors.js.
+   Living world (texts after ranks 2/3/5/7/9, holidays 7/20 and 9/21, two late-night calls): data/living-visitors.js.
+   afterMax: five scenes after rank 10 (she stays until the doors open on 1/30). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'mercy', name: 'Mercy', short: 'Mercy', arcana: 'Temperance', numeral: 'XIV', from: 'Overwatch',
   kind: 'visitor',
@@ -61,6 +68,65 @@
         ] }
       ] },
       { n: "She took the chart back and clipped it to the foot of the bed and patted the blanket over the sleeping patient's feet, absently, the way you'd pat a dog, and Solar thought that she had probably done that ten thousand times in her life and that she'd never once stopped meaning it." }
+    ],
+    // Rounds on the visitors: the faint before the bridge, the kept after it (8/6).
+    [
+      { ifAfter: '8/7', then: [
+        { n: "Since the night on the bridge Angela had started doing rounds on people who weren't patients. She had a list folded into her coat pocket on the back of a discharge form, every visitor she'd met or been told about, and on her afternoons off she went down it with a penlight and a clipboard, the Kirijo flats by the station, the back of the arcade, the bottom of the shrine steps, knocking on doors and asking people to hold their hands up to the light." },
+        { s: 'mercy', f: 'sad', t: "The woman on the train. With the viola case. I never met her. I've asked everyone I know. Nobody ever stopped her long enough to learn her name." },
+        { s: 'mercy', f: 'serious', t: "That's the whole diagnosis, Solar. I've been looking for a mechanism for two months and it's that. Nobody stopping." },
+        { ifRank: { kiriko: 6 }, then: [
+          { n: "Kiriko had given Angela her list, the one on the backs of fortune slips, and Angela had copied it out in her neat, typed-looking hand and given it back, and now there were two lists that matched, and the two of them compared them on Sundays on the shrine steps like generals over a map, arguing about spelling." }
+        ] }
+      ], else: [
+        { n: "Kirijo's paper had said the faint could be found by light. Hold a hand up to it and see what came through. Angela had taken this as a clinical protocol, and on her afternoons off she went looking for people who'd fallen through with a penlight and a clipboard, and today she'd brought Solar along to hold the light." },
+        { s: 'mercy', f: 'neutral', t: "The boy in the hoodie, under the awning. I diagnosed him with a concussion in June. In the rain he's still a little see-through at the edges. I told him to call someone. He said he doesn't call people. I told him that was the symptom." }
+      ] },
+      { s: 'mercy', f: 'neutral', t: "Now you. Hold out your hand. I know you're from here. Humor me. I check the ones I'm fond of last." },
+      { choose: [
+        { t: "(Hold your hand up to the light.)", notes: 2, then: [
+          { n: "Solar held it up. Angela put the penlight behind it and looked, and kept looking, and her thumb found the pulse at the wrist and stayed there a good deal longer than it needed to." },
+          { s: 'mercy', f: 'happy', t: "Solid. Disgustingly solid. You're the healthiest patient I have and you don't sleep. It's very unfair to medicine." }
+        ] },
+        { t: "Who checks you?", notes: 3, then: [
+          { s: 'mercy', f: 'surprised', t: "...Nobody. That's rather the point of being the one with the penlight." },
+          { n: "Solar took the penlight out of her hand. Angela let her, which Solar was beginning to understand was rare, and held up her own palm, and the light came through her fingers pink at the edges and stopped there, the way it did with anybody's, and Angela looked at her own hand in the beam for a long time like it belonged to a patient she hadn't expected to see recover." }
+        ] },
+        { t: "Can I come with you next time? On the rounds.", notes: 2, then: [
+          { s: 'mercy', f: 'happy', t: "You're hired. The pay is terrible and so is the coffee. Bring the steady hand." }
+        ] }
+      ] },
+      { n: "She wrote something on the clipboard. Solar read it upside down on the way to the lift. It was her own name, at the bottom of the list, with a tick beside it and the word *solid*, underlined twice." }
+    ],
+    // Thursdays: the lessons she asked for (rank 3), or the first one, if she never asked.
+    [
+      { ifFlag: 'mercy-lessons', then: [
+        { n: "Thursday, the staff lounge, an orange on a paper towel between them like a patient on a table. Angela had run out of stitches Solar didn't already know somewhere around August and had started going through a surgical textbook from the hospital library chapter by chapter, looking for one that Solar's hands would stumble on, with the dedication of a woman doing a crossword." },
+        { s: 'mercy', f: 'neutral', t: "Vertical mattress. Far-far, near-near. Watch me once. Then you." },
+        { n: "Solar watched. She took the clamps. And her hands, for the first time all year, did nothing at all. They waited. They didn't know this one." },
+        { choose: [
+          { t: "My hands don't know this one.", notes: 3, then: [
+            { s: 'mercy', f: 'surprised', t: "...Really?" },
+            { s: 'mercy', f: 'happy', t: "Wunderbar. Finally. Something I get to teach you from the start. Give me your hands. Far. Far. Now near. Good. Again." },
+            { n: "She did it four times, badly, and then a fifth time well, and the fifth one was hers. She knew it the way you know a word you've just learned: not as well as the old ones, but all your own. Angela looked at it for a long time and didn't say anything, which was how Solar knew she was pleased." }
+          ] },
+          { t: "(Try anyway. Let it go wrong.)", notes: 2, then: [
+            { n: "It went wrong. The needle came out in the wrong place and the orange wept juice onto the paper towel, and Solar sat back and laughed, startled, at a mistake, her first one with a needle all year, and Angela laughed too, delighted, as though Solar had brought her a present." }
+          ] }
+        ] }
+      ], else: [
+        { n: "The hospital roof, a cold bright afternoon, the vending-machine coffee going lukewarm between them on the railing. Angela had looked at Solar for a while and decided, out loud, that if she was going to keep coming up here she should be able to take a pulse properly, in case it was ever Angela's." },
+        { s: 'mercy', f: 'neutral', t: "Two fingers. Not the thumb. The thumb has its own pulse and it will lie to you. Here, at my wrist. Count to fifteen and multiply by four." },
+        { choose: [
+          { t: "(Count carefully. Out loud.)", notes: 3, then: [
+            { n: "Solar counted, out loud, to the beat under her two fingers, and got to seventeen in fifteen seconds and said sixty-eight, and Angela said yes, and then said, without looking at her, that it had been eighty when Solar came up the stairs, and that she wasn't going to explain that." }
+          ] },
+          { t: "Your pulse is fast.", notes: 2, then: [
+            { s: 'mercy', f: 'blushing', t: "It is not. It's the coffee. It's very good coffee. That's a lie. It's the stairs. You'll learn not to say things like that to patients." }
+          ] }
+        ] }
+      ] },
+      { n: "When Solar left, Angela was still on the bench with her own fingers on her own wrist, counting, frowning at it, as though it had just told her something she'd need to look up." }
     ]
   ],
   ranks: [
@@ -196,7 +262,7 @@
         { t: "That's a strange thing to be proud of.", notes: 2, then: [
           { s: 'mercy', f: 'neutral', t: "Most of the things worth being proud of are." }
         ] },
-        { t: "Will you teach me the rest? Properly?", notes: 3, then: [
+        { t: "Will you teach me the rest? Properly?", notes: 3, flag: 'mercy-lessons', then: [
           { s: 'mercy', f: 'happy', t: "Liebling. I don't think there's much left to teach." },
           { s: 'mercy', f: 'neutral', t: "...Yes. Of course. Thursdays. Bring oranges. I'll teach you everything I know, and you can tell me which bits you knew already, and we'll both pretend that's normal." }
         ] }
@@ -341,7 +407,7 @@
       { s: 'mercy', f: 'sad', t: "My parents were doctors too. They went to help in a war when I was very young. They didn't come back. I think I've been trying to finish their shift ever since." },
       { n: "Solar didn't say anything for a moment. There was a tightness in her throat that she knew the shape of. Not grief. The place where grief would be, if she had anything to put there. She thought, very clearly, I have parents. She must. Everyone does. And she couldn't see a single face." },
       { choose: [
-        { t: "I don't know if mine are alive. I don't remember them.", notes: 3, then: [
+        { t: "I don't know if mine are alive. I don't remember them.", notes: 3, flag: 'mercy-told-parents', then: [
           { n: "Angela reached across the table and put her hand on top of Solar's. Warm and steady. A doctor's hand. She didn't say anything for a while. She didn't pat. She just left it there, the weight of it, the way you leave a hand on a patient so they know someone is in the room." },
           { s: 'mercy', f: 'neutral', t: "Then somewhere, someone is sitting up waiting for you. I'd put money on it. Good parents always do. It's the main symptom." },
           { s: 'mercy', f: 'neutral', t: "And until you find them, Liebling, you can borrow some of my nagging. I have a great deal of it and no one to spend it on." }
@@ -413,6 +479,9 @@
     { after: '9/24', title: '8: apathy', place: 'Tatsumi Memorial Hospital · 3F Ward', scene: [
       { place: 'Tatsumi Memorial Hospital · 3F Ward', time: 'Daytime', bg: 'hospital-room' },
       { music: 'mystery' },
+      { ifFlag: 'mercy-lessons', then: [
+        { n: "It was a Thursday, so there was a bag of oranges in Solar's school bag, the way there had been every Thursday since July. Eleven weeks of oranges. She'd stopped needing them somewhere around the fourth and kept bringing them anyway, because Angela kept pretending she still had something to teach, and Solar kept pretending to learn it, and both of them knew, and neither of them was going to be the one to stop." }
+      ] },
       { n: "Angela had figured it out. Solar could tell from the doorway by the way she was standing in the middle of the third-floor ward, very still, arms crossed, looking at the beds the way you look at a crossword you've finally solved and don't like the answer to." },
       { n: "There were more of them now. Eleven beds where there had been eight. They'd brought in cots. The girl with the hair clips and the stuffed rabbit was still by her window. The rabbit had fallen into her lap at some point and someone had put it back." },
       { s: 'mercy', f: 'serious', t: "It's them. Isn't it. The things in the green hour. They're not making these people sick. They're feeding on them." },
@@ -482,18 +551,21 @@
       ] },
       { s: 'mercy', f: 'neutral', t: "I need to ask you something now, and I'd like you to answer like a patient. Which is to say honestly, because I'll know if you don't." },
       { s: 'mercy', f: 'neutral', t: "I've been your doctor, and your teacher, and your unpaid hairdresser, and the person who checks your ribs after every full moon whether you like it or not. And somewhere in there I stopped knowing what to call it." },
+      { ifFlag: 'mercy-told-parents', then: [
+        { s: 'mercy', f: 'sad', t: "You told me once, over a bento, that you couldn't see your parents' faces. I've thought about that every single day since August. I'm not trying to be them. I couldn't. I'd only like to know what I'm allowed to be instead." }
+      ] },
       { s: 'mercy', f: 'neutral', t: "What am I to you, Solar?" },
       { choose: [
-        { t: "My big sister. If that's allowed.", notes: 3, then: [
+        { t: "My big sister. If that's allowed.", notes: 3, flag: 'mercy-sister', then: [
           { n: "Angela didn't say anything. She took one end of the ugly scarf and looped it around Solar's neck, too, so they were stuck together, ridiculous, two people sharing six feet of mustard wool on a hospital roof in the cold." },
           { s: 'mercy', f: 'happy', t: "There. Now we match. Medically speaking, this is very important." },
           { s: 'mercy', f: 'neutral', t: "It's allowed, Liebling. I'd have been offended by anything else. I was an only child. I've wanted a little sister to boss around my whole life." }
         ] },
-        { t: "The person I'd call at three in the morning.", notes: 3, then: [
+        { t: "The person I'd call at three in the morning.", notes: 3, flag: 'mercy-three-am', then: [
           { s: 'mercy', f: 'neutral', t: "...Yes. That's a very good answer. That's the most honest diagnosis anyone's ever given me." },
           { s: 'mercy', f: 'happy', t: "Call me. At three. Any night. In any world where that's possible. I'll be awake. I'm always awake. That part I can't fix." }
         ] },
-        { t: "My doctor.", notes: 1, then: [
+        { t: "My doctor.", notes: 1, flag: 'mercy-doctor', then: [
           { s: 'mercy', f: 'neutral', t: "...That's true. It isn't all of it. But it's true. I'll take true." }
         ] }
       ] },
@@ -521,13 +593,23 @@
         ] },
         { t: "Will you remember me? After?", notes: 3, then: [
           { s: 'mercy', f: 'serious', t: "I have a medical-grade memory and a very ugly scarf. I'll remember you every single day." },
-          { s: 'mercy', f: 'neutral', t: "And if anyone ever tells me you weren't real, I'll show them my knots. They've gotten better since July. Someone kept correcting my second throw." }
+          { ifFlag: 'mercy-lessons', then: [
+            { s: 'mercy', f: 'neutral', t: "And if anyone ever tells me you weren't real, I'll show them my knots. They've gotten better since July. Someone kept correcting my second throw on Thursdays." }
+          ], else: [
+            { s: 'mercy', f: 'neutral', t: "And if anyone ever tells me you weren't real, I'll show them an orange. Four knots in a row. I'll draw it from memory. I won't get it wrong." }
+          ] }
         ] }
       ] },
       { s: 'genji', f: 'neutral', t: "She also wants you to know that she will be sleeping eight hours a night. I will be personally enforcing it. It's in the terms." },
       { s: 'mercy', f: 'blushing', t: "You said you weren't listening." },
       { s: 'genji', f: 'happy', t: "I said I would sit at the far end. I am at the far end. I have very good hearing. You built it." },
       { n: "Angela made an exasperated noise and turned her back on him and looked at Solar, and her eyes were wet, and she was smiling, both at once, the face of someone who has been very tired for a very long time and has just, this minute, been told she can sit down." },
+      { ifFlag: 'mercy-doctor', then: [
+        { s: 'mercy', f: 'neutral', t: "You said doctor, on the roof. I said I'd take true. I've had a month with it and I've changed my mind. I'm taking more. You can object in writing." }
+      ] },
+      { ifFlag: 'mercy-three-am', then: [
+        { s: 'mercy', f: 'neutral', t: "And the three a.m. offer stands. In this world, and the feather for the others. I've checked. It hums at three. I don't know who tuned it to that. I'm choosing to believe it was me." }
+      ] },
       { s: 'mercy', f: 'neutral', t: "Look after yourself, little sister. Eat lunch. Sleep. Let someone hold the light for you sometimes. That's an order. I outrank you. I've decided." },
       { choose: [
         { t: "Yes, Doctor.", notes: 3, then: [
@@ -582,6 +664,70 @@
       { s: 'genji', f: 'neutral', t: "My master says the leaves fall all at once because the tree trusts the spring. It doesn't need to hold on to anything. It knows they'll come back." },
       { s: 'mercy', f: 'neutral', t: "Your master is a very wise robot who has never once had to fill out a discharge form." },
       { n: "But she leaned her shoulder against his when she said it, and stayed leaning, and the leaves came down on all three of them, the last few stragglers, gold, slow, unhurried, as if there were all the time in the world." }
+    ] },
+    { title: 'her own stitches', place: 'Tatsumi Memorial Hospital', scene: [
+      { place: 'Tatsumi Memorial Hospital · Treatment Room', time: 'Evening', bg: 'hospital-room' },
+      { music: 'tender' },
+      { n: "Genji had texted her at a quarter to seven, which he had never once done, three words and a room number. *She is stitching.* Then, a minute later, *her own hand.* Then, *in the mirror.*" },
+      { n: "Treatment room two. Angela was standing at the sink in front of the little steel mirror with her left hand flat on the counter and a curved needle in her right, and there was a long clean cut across the heel of her left palm from a vial that had broken in her grip, and she had very clearly been about to do exactly what Genji had said she always did. Genji was in the corner, sitting on the examination bed, not interfering, with the air of a man who had sent for reinforcements and was now innocent of everything." },
+      { s: 'mercy', f: 'serious', t: "I'm fine. It's three stitches. I've done this in a field with a torch in my teeth. He shouldn't have called you." },
+      { s: 'genji', f: 'neutral', t: "I did not call. I texted. There is a difference. The monks were very clear about it." },
+      { ifFlag: 'mercy-lessons', then: [
+        { n: "Solar didn't say anything. She washed her hands at the other sink, the way she'd been taught on Thursdays, all the way to the elbow, and dried them, and held one out for the needle." },
+        { s: 'mercy', f: 'neutral', t: "...You've been coming on Thursdays since July. I suppose I can't pretend you don't know how." }
+      ], else: [
+        { n: "Solar didn't say anything. She'd sat in that dorm lounge in July and put four knots in an orange with hands that knew how, and she'd never done it since, and her hands, washing at the other sink, all the way to the elbow, knew that too." },
+        { s: 'mercy', f: 'neutral', t: "...Four knots in an orange. In July. You think I've forgotten. I haven't." }
+      ] },
+      { choose: [
+        { t: "(Take the needle. \"Hold still.\")", notes: 3, then: [
+          { n: "Angela looked at her for a long moment over the needle, the look she gave charts, and then she turned it round and put it in Solar's palm handle first, and sat down on the stool, and laid her hand flat on the steel tray, palm up, and held still. Genji got up off the bed without a word and took the penlight from the drawer and held it over them, steady, in the place where Solar had once held it for him." }
+        ] },
+        { t: "Talk me through it. You're the doctor.", notes: 2, then: [
+          { s: 'mercy', f: 'neutral', t: "...Yes. All right. I'll talk. You do it. That's a fair division of labor." },
+          { n: "She talked her through it, every step, in a low clinical voice, though Solar's hands were a half-second ahead of every word, and they both knew it, and Angela kept talking anyway, because it was easier than holding still in silence, and Genji held the light." }
+        ] }
+      ] },
+      { n: "Three stitches. Three small black knots across the heel of a surgeon's hand, laid down flat to one side, evenly spaced. Angela looked at them for a long time under the penlight." },
+      { s: 'mercy', f: 'sad', t: "I've never let anyone do that. Not once. In all those years." },
+      { s: 'genji', f: 'happy', t: "I know. I told her. I said I'd let you, and I'd hold still. I did not expect to be the one holding the light when you finally did." },
+      { s: 'mercy', f: 'blushing', t: "...Both of you. Out. No. Stay. Both of you stay a minute. I'm going to sit here and look at my hand." },
+      { n: "So they stayed, the three of them, in the little room with the broken overhead light, and Angela sat with her stitched hand open on her knee like something she'd been given, and didn't say anything else, and didn't need to." }
+    ] },
+    { title: 'handover', place: 'Tatsumi Memorial Hospital · 3F Ward', scene: [
+      { place: 'Tatsumi Memorial Hospital · 3F Ward', time: 'Evening', bg: 'hospital-hallway-night' },
+      { music: 'night' },
+      { n: "Angela was at the nurses' station with a fat ring binder open in front of her, writing, and she'd been writing for a while, because the binder was half full, and the label on its spine said HANDOVER · 3F in her handwriting and then the same thing again underneath in German, as though she didn't trust either language to manage alone." },
+      { ifAfter: '12/22', then: [
+        { n: "Elizabeth had come up to the roof in December with her book and told her, very kindly, the date the doors would open. Angela had written it on the inside cover of the binder and drawn a box round it and had not looked at it since, except all the time." }
+      ] },
+      { s: 'mercy', f: 'neutral', t: "When I go home, somebody has to turn them every two hours. Somebody has to read to bed eight, and do the voices, badly. I'm writing all of it down. Which window, which pillow, who likes the radio on. The nurses say I'm being dramatic." },
+      { s: 'mercy', f: 'neutral', t: "The nurses are going to need this." },
+      { choose: [
+        { t: "(Help. Tell her what you've noticed on the ward.)", notes: 3, then: [
+          { n: "Solar pulled the other chair round and told her. That bed four's window had to be open a crack or her breathing went short. That the old man at bed five turned his head toward the door at two, every day, a little, when his wife was due. That the girl with the clips held the rabbit better if it was the left hand." },
+          { n: "Angela wrote every one down, in her neat, typed-looking hand, and after each one, in brackets, she wrote *observed by S.*, and Solar watched her do it and didn't say anything, and her face went warm anyway." }
+        ] },
+        { t: "Who's going to look after you, over there?", notes: 3, then: [
+          { s: 'mercy', f: 'neutral', t: "Genji. Ana, if she's speaking to me. A great many people who will be very surprised that I now eat lunch." },
+          { s: 'mercy', f: 'happy', t: "And me. That's the new part. I'm putting myself on the handover. Patient: Ziegler, A. Sleeps. Eats. Does not do it alone. See attached." }
+        ] },
+        { t: "You could leave it unfinished. So you have to come back.", notes: 2, then: [
+          { s: 'mercy', f: 'sad', t: "I've thought about that. Every night. Leaving one page blank so I'd have an excuse." },
+          { s: 'mercy', f: 'neutral', t: "But that's what an inherited shift is, isn't it. Somebody leaving a page blank. I won't do that to these nurses. I'll come back some other way. In a dream, or whatever this is." }
+        ] }
+      ] },
+      { n: "On the last page, under EMERGENCY CONTACT, Angela had written a name. Solar saw it upside down." },
+      { ifFlag: 'mercy-sister', then: [
+        { n: "It was hers. And next to it, under RELATIONSHIP, in the same neat hand, where it could have said anything at all: *little sister.*" }
+      ], else: [
+        { ifFlag: 'mercy-three-am', then: [
+          { n: "It was hers. And next to it, under WHEN TO CALL, where it could have said anything at all: *three in the morning. Any night.*" }
+        ], else: [
+          { n: "It was hers. Next to it, under RELATIONSHIP, Angela had started a word, and crossed it out, and started another, and crossed that out too, and left the box blank, as if she'd decided it was the kind of thing you didn't write down. You just knew." }
+        ] }
+      ] },
+      { s: 'mercy', f: 'neutral', t: "Don't look at that page. It's not finished. Go home, Liebling. It's late. That's an order. I outrank you. I've decided." }
     ] }
   ]
 });

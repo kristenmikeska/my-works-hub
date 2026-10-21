@@ -66,9 +66,31 @@ window.LinkAudit = (() => {
   el.remove();document.documentElement.classList.remove('g-in-scene');
   return {result,decisions,text,rendered};
  }
- function one(id,index){const e=sceneList(id)[index],key=id+'/'+e.kind+e.i,configs=presets(e,id);let paths=0,min=Infinity,max=0;
+ // play(), but it can wait for a summon card's timer (one() and progression use it; other tests keep the sync play).
+ async function playA(id,e,path,key){let result,choice=0;const decisions=[],rendered=[];
+  const p=SC.play({...e,link:id,onDone:r=>{result=r}}),el=p.el;
+  let steps=0;
+  while(!result){assert(++steps<1500,'stuck '+key);
+   // A summon card ({ summon }) waits for its own timer (instant under reduced motion), then a tap.
+   const sm=el.querySelector('.gs-summon:not(.out)');if(sm){const art=sm.querySelector('img');if(art?.getAttribute('src'))assets.add(art.src);if(!sm.classList.contains('ready')){await new Promise(r=>setTimeout(r,20));continue;}sm.click();continue;}
+   const buttons=[...el.querySelectorAll('.gs-choices button:not(:disabled)')];
+   if(buttons.length){const requested=path[choice++]??0;const n=requested<0?buttons.length-1:requested;assert(n<buttons.length,'bad path');decisions.push(buttons.length);buttons[n].click();continue;}
+   const phone=el.querySelector('.gs-phone-thread');
+   if(phone){const m=phone.lastElementChild;if(m&&!m.dataset.audit){m.dataset.audit='1';rendered.push('[text] '+m.textContent);}}
+   else {const t=el.querySelector('.gs-text').textContent;if(t)rendered.push(t);}
+   for(const img of el.querySelectorAll('img:not([hidden])'))if(img.getAttribute('src'))assets.add(img.src);
+   const bg=el.querySelector('.gs-bg').style.backgroundImage.match(/url\("?(.*?)"?\)/);if(bg)assets.add(bg[1]);
+   const img=el.querySelector('.gs-portrait');if(!phone&&!img.hidden&&img.alt)seenFaces.add(img.alt+' '+img.getAttribute('src'));
+   el.click();
+  }
+  el.querySelector('[data-t=log]').click();
+  const text=[...el.querySelectorAll('.gs-log-inner p')].map(p=>{const c=p.cloneNode(true);c.querySelector('b')?.remove();return c.textContent});
+  el.remove();document.documentElement.classList.remove('g-in-scene');
+  return {result,decisions,text,rendered};
+ }
+ async function one(id,index){const e=sceneList(id)[index],key=id+'/'+e.kind+e.i,configs=presets(e,id);let paths=0,min=Infinity,max=0;
   const staticNodes=[];walk(e.scene,(l,k,option)=>{if(option||l.n!==undefined||l.t!==undefined)staticNodes.push(key+k);if(l.phone)l.phone.forEach((_,j)=>staticNodes.push(key+k+'/phone'+j));});
-  for(const preset of configs){const queue=[[]];while(queue.length){const path=queue.shift();reset(id,e,preset);const want=expected(id,e,path,key);reset(id,e,preset);const got=play(id,e,path,key);
+  for(const preset of configs){const queue=[[]];while(queue.length){const path=queue.shift();reset(id,e,preset);const want=expected(id,e,path,key);reset(id,e,preset);const got=await playA(id,e,path,key);
    assert(got.result.finished,key+' unfinished');assert(got.result.gained===want.notes,key+' notes');
    assert(JSON.stringify(got.text)===JSON.stringify(want.text),key+' log mismatch '+JSON.stringify({path,preset,got:got.text,want:want.text}));
    assert(JSON.stringify(G.S.flags)===JSON.stringify(want.flags),key+' flag mismatch');
@@ -81,9 +103,9 @@ window.LinkAudit = (() => {
  }
  async function assetCheck(){return {count:assets.size,missing:(await Promise.all([...assets].map(u=>fetch(u,{method:'HEAD'}).then(r=>r.ok?null:u).catch(()=>u)))).filter(Boolean),faces:seenFaces.size};}
  function faces(ids=['hyein','mark']){const bad=[];for(const id of ids)for(const e of sceneList(id))walk(e.scene,l=>{if(l.s&&l.f&&!(FEMC_PORTRAITS[l.s]||[]).includes(l.f))bad.push(l.s+'/'+l.f);});return bad;}
- return {one,sceneList,assetCheck,faces,reset,play,expected,original,base};
+ return {one,sceneList,assetCheck,faces,reset,play,playA,expected,original,base};
 })();
-LinkAudit.progression = (id,low=false,requireAll=true) => {
+LinkAudit.progression = async (id,low=false,requireAll=true) => {
  const G=FemcGame, A=LinkAudit,L=G.LINKS[id], trace=[];
  A.reset(id,A.sceneList(id)[0],{flags:{'year-goes-on':true,'route-R':true},rank:0});
  for(let day=G.dayOf(L.starts);day<=G.dayOf('1/29');day++){
@@ -95,7 +117,7 @@ LinkAudit.progression = (id,low=false,requireAll=true) => {
   // The last enabled option exercises lower-scoring answers and subsequent hangouts.
   const want=A.expected(id,e,path,'progress');
   Object.keys(G.S).forEach(k=>delete G.S[k]);Object.assign(G.S,JSON.parse(state));
-  const got=A.play(id,e,path,'progress');
+  const got=await A.playA(id,e,path,'progress');
   if(!got.result.finished||got.result.gained!==want.notes)throw Error('progress result');
   const result=G.finishLink(L,e.kind,e.r,got.result.gained);
   trace.push({date:G.mdOf(day),kind:e.kind,rank:result.rank??G.S.links[id].rank,after:G.S.links[id].after||0});
@@ -112,7 +134,8 @@ LinkAudit.gates = id => {
  const assert=(v,m)=>{checks++;if(!v)throw Error(id+' '+m);};
  const world=Object.keys(L.gate||{R:0})[0];const probe=(day,slot,frags,rank=0)=>{A.reset(id,A.sceneList(id)[0],{flags:{},rank});G.S.day=day;G.S.slot=slot;G.S.route.frags[world]=frags;return G.linkStatus(L)};
  assert(probe(G.dayOf(L.starts)-1,L.home.slot,9).reason==='away','before start');
- assert(probe(G.dayOf(L.starts)+10,L.home.slot,L.gate[world]-1).reason==='away','fragment gate');
+ // Visitors and the Persona cast have no fragment gate.
+ if(L.gate)assert(probe(G.dayOf(L.starts)+10,L.home.slot,L.gate[world]-1).reason==='away','fragment gate');
  for(let r=0;r<10;r++){
   const earliest=G.dayOf(L.ranks[r].after);
   assert(!probe(earliest-1,L.home.slot,9,r).ok,'rank date '+r);

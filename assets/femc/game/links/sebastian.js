@@ -3,7 +3,16 @@
    The ending he runs from: staying in Pelican Town forever, or leaving it (the ticket to Zuzu City in his pocket).
    Abigail and Sam come through on the 7/7 full moon looking for him (rank 3). Rank 5 is Kat's matchmaking: a game night
    that's secretly a date for Sebastian and Abigail, which sets off a Runners flashback (a duo queue); fragment runners-hoodie.
-   Cast-only speakers: none (abigail and sam have portraits). afterMax: scenes for after rank 10 (engine support pending). */
+   Cast-only speakers: none (abigail and sam have portraits).
+   Link-local flags (2026-10-21 depth pass), read back later in this file and in data/living-visitors.js:
+     seb-dragon-friend / seb-dragon-slain (rank 3: what Solarion does to the dragon) → rank 7's text adventure, hangout 4,
+       afterMax "the rogue", the late-night call.
+     seb-sam-pact (rank 3: the eyebrows across the table) → rank 5 (why Sam's plan comes to her).
+     seb-three-basements (rank 4: "none of them are mine") → rank 9.
+     seb-turn-around (rank 6: "turn around and ride it back") → rank 9 (she only quotes him if he said it to her).
+     seb-sister (rank 10: "his sister, the annoying kind") → afterMax "frogs in winter".
+   Living world (texts after ranks 2/3/4/6/8/9, holidays 10/12 and 1/11, a rainy visit and a call): data/living-visitors.js.
+   afterMax: four scenes after rank 10 (he stays until the doors open on 1/30). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'sebastian', name: 'Sebastian', short: 'Sebastian', arcana: 'Fool', numeral: '0', from: 'Stardew Valley',
   kind: 'visitor',
@@ -77,6 +86,82 @@
         ] }
       ] },
       { n: "He wrote something down. Then he drew a tiny cardigan on the thing with too many teeth, and looked at it, and seemed, for a second, extremely pleased with himself." }
+    ],
+    // A one-room session under the awning.
+    [
+      { n: "No rain, for once, and he was under the awning anyway, with three dice lined up on top of the ticket machine like chess pieces and his notebook open on his forearm." },
+      { s: 'sebastian', f: 'neutral', t: "One room. Ten minutes. I wrote it on the bus. Solarion only. You in?" },
+      { ifFlag: 'seb-dragon-friend', then: [
+        { s: 'sebastian', f: 'neutral', t: "\"Solarion and her dragon stand at the door of an abandoned arcade. The dragon is too big to fit through the door. It is sulking about this.\"" }
+      ], else: [
+        { ifFlag: 'seb-dragon-slain', then: [
+          { s: 'sebastian', f: 'neutral', t: "\"Solarion stands at the door of an abandoned arcade. Inside, something is waiting. It is the dragon's younger sister. She has heard what happened. She is very upset.\"" }
+        ], else: [
+          { s: 'sebastian', f: 'neutral', t: "\"Solarion stands at the door of an abandoned arcade. Inside, a goblin is guarding the last working cabinet. He has goblin energy.\"" }
+        ] }
+      ] },
+      { choose: [
+        { t: "(Roll. Let the dice decide.)", notes: 2, then: [
+          { n: "She rolled on the ticket machine. A two. Sebastian looked at it, and at her, with the horror of a man watching a friend trip on stage." },
+          { s: 'sebastian', f: 'surprised', t: "...You rolled a two. You never roll low. Okay. Okay. Solarion trips over the threshold. Everyone in the arcade sees. It's the most humiliating moment of her life. She gets up anyway. That's still a hero thing. I'm deciding that." }
+        ] },
+        { t: "Solarion asks what it wants.", notes: 3, then: [
+          { s: 'sebastian', f: 'neutral', t: "...What it wants." },
+          { n: "He looked down at his notebook. There was nothing written there for that. He thought about it, under the awning, for long enough that a bus came and went, and then he said, very quietly, in the narrator voice, that it wanted someone to play the cabinet with. That it had been alone in there with the high score for a long time." },
+          { s: 'sebastian', f: 'neutral', t: "That's not what I wrote. That's just what it wants. You keep doing that to my monsters." }
+        ] },
+        { t: "(Get Solarion to sneak past it.)", notes: 2, then: [
+          { s: 'sebastian', f: 'neutral', t: "Roll stealth. ...Eighteen. Of course. She sneaks past. She gets to the cabinet. It's a frog game. It's always a frog game." }
+        ] }
+      ] },
+      { n: "The session took fourteen minutes, not ten, and when it was over he wrote her result in his cramped handwriting in the notebook, under SOLARION, beside a long column of other results, all dated, all from this summer, and she realized he'd kept every one." }
+    ],
+    // The crane game with his friends, or without them.
+    [
+      { ifAfter: '8/9', then: [
+        { n: "Abigail had decided there was a sword in the crane machine. There was not a sword in the crane machine. There was a plush sword, purple, wedged at the back behind a pile of cartoon bears, and Abigail had put eleven hundred yen into it and was on her twelfth try, and Sebastian was standing behind her with his hood up holding her bag and saying nothing in a way that was very loudly saying something." },
+        { s: 'abigail', f: 'serious', t: "Don't. Don't say it. I can hear you not saying it." },
+        { s: 'sebastian', f: 'neutral', t: "I didn't say anything." },
+        { s: 'abigail', f: 'happy', t: "You were thinking it at me. Solar, tell him to stop thinking at me." },
+        { choose: [
+          { t: "(Take the controls. Steady hand.)", notes: 3, stat: { proficiency: 1 }, then: [
+            { n: "Solar put in a coin. She moved the claw once, then a hair to the left, then waited, and dropped it, and it went down past the bears and closed on the sword's hilt and came up shaking, and the whole arcade seemed to hold its breath, and the sword dropped into the chute." },
+            { s: 'abigail', f: 'surprised', t: "SOLAR. You got my SWORD." },
+            { n: "Abigail held it over her head with both hands like a knight in a painting. Sebastian looked at Solar over the top of it and mouthed *thank you*, with enormous feeling, because it meant he could go home." }
+          ] },
+          { t: "(Tell Sebastian to try. He's been watching it for an hour.)", notes: 2, then: [
+            { s: 'sebastian', f: 'neutral', t: "...Fine. One try. If I get it I'm never hearing the end of it. If I don't I'm never hearing the end of it." },
+            { n: "He didn't get it. He got a bear instead, a small brown one, by accident, and Abigail took it off him and named it after him on the spot and refused to give it back, and he pretended to be annoyed about it all the way to the station." }
+          ] }
+        ] }
+      ], else: [
+        { ifAfter: '7/8', then: [
+          { n: "Abigail was here, which was the strange thing, after a month of only hearing about her, purple-haired and real, standing at the crane machine with Sam and arguing with it, and Sebastian was a step behind them both, hood up, watching her and not the machine." },
+          { s: 'abigail', f: 'happy', t: "So what's he like here? Seb. Be honest. Does he talk to anybody? Does he eat? Does he still say \"I'm going to go\" and then stay for four hours?" },
+          { choose: [
+            { t: "He talks about you. Not a lot. But he does.", notes: 3, then: [
+              { s: 'abigail', f: 'surprised', t: "...He does?" },
+              { n: "Abigail turned round and looked at Sebastian, who had heard every word and was now looking at the ceiling of the arcade as though it contained the answer to something, with his ears going red under the hood." }
+            ] },
+            { t: "He saves frogs.", notes: 2, then: [
+              { s: 'abigail', f: 'happy', t: "Oh, he's FINE, then. If he's saving frogs he's fine. That's the whole test." }
+            ] }
+          ] }
+        ], else: [
+          { n: "He was standing in front of a crane machine in the back of Game Panic with a handful of hundred-yen coins, not putting any in, just looking at it, at a purple plush something wedged at the back behind a heap of bears." },
+          { s: 'sebastian', f: 'neutral', t: "My friend Abby would've already spent a thousand yen on this. She'd think that was a sword. She'd be wrong, and she'd get it anyway." },
+          { choose: [
+            { t: "Tell me about her.", notes: 3, then: [
+              { s: 'sebastian', f: 'neutral', t: "...She wants to go in the mines and find a sword. She plays the flute. Badly. On purpose, I think. She dyes her hair purple and her dad hates it." },
+              { s: 'sebastian', f: 'neutral', t: "That's. Yeah. That's Abby. I don't know why I told you all that." },
+              { n: "He knew exactly why. Solar did too. Neither of them said so, and he put one coin into the machine, just one, for her, like lighting a candle somewhere, and missed." }
+            ] },
+            { t: "(Win it for him. For when she gets here.)", notes: 2, then: [
+              { n: "Solar won it on her third try. He held the purple sword for a while like it might break. Then he put it in the front pocket of his hoodie, where it stuck out, all the way back to the canal." }
+            ] }
+          ] }
+        ] }
+      ] }
     ]
   ],
   ranks: [
@@ -191,11 +276,11 @@
       { s: 'sebastian', f: 'neutral', t: "You have goblin energy." },
       { n: "They played for three hours. Solar didn't know the rules and found she didn't need to. Solarion, Sebastian narrated, in a voice like an old radio drama, stood at the mouth of the cave and heard something enormous breathing in the dark." },
       { choose: [
-        { t: "(Roll to attack the dragon.)", notes: 2, then: [
+        { t: "(Roll to attack the dragon.)", notes: 2, flag: 'seb-dragon-slain', then: [
           { n: "She rolled a twenty. Sam screamed. Abigail screamed. Junpei screamed because everyone else was screaming. Sebastian sat back in his chair and stared at the die like it had betrayed him personally." },
           { s: 'sebastian', f: 'surprised', t: "...Solarion slays the dragon. In one hit. On her first session. That's never happened. That's never happened in three years." }
         ] },
-        { t: "(Roll to befriend the dragon.)", notes: 3, then: [
+        { t: "(Roll to befriend the dragon.)", notes: 3, flag: 'seb-dragon-friend', then: [
           { n: "She rolled a nineteen. There was a long pause. Sebastian looked at his notes, and then at her, and then at his notes, and then very slowly crossed something out." },
           { s: 'sebastian', f: 'neutral', t: "...The dragon becomes Solarion's companion. It's been alone in that cave a long time. It didn't know anybody could just ask." },
           { s: 'abigail', f: 'surprised', t: "SEB. You've never let ANYONE befriend the dragon." },
@@ -205,7 +290,7 @@
       { n: "But it wasn't the dragon Solar remembered later. It was the way, every time Abigail's rogue did something reckless, which was constantly, Sebastian's eyes went to her before they went to the dice. Every time. And the way Abigail, when Sebastian did the old lich's voice, low and slow and awful, watched his mouth instead of her character sheet, and pressed her knuckles against her own smile so he wouldn't see it." },
       { n: "And the way Sam, who saw both of these things, caught Solar's eye across the coffee table over a bag of chips and raised his eyebrows all the way up, and mouthed, with enormous weary affection, every single time." },
       { choose: [
-        { t: "(Raise your eyebrows back at Sam.)", notes: 3, then: [
+        { t: "(Raise your eyebrows back at Sam.)", notes: 3, flag: 'seb-sam-pact', then: [
           { n: "Solar raised her eyebrows back. Sam nearly choked on a chip. And an alliance was formed, there, over the coffee table, wordless and complete, between two people who had known each other for three hours and had already agreed on the single most important thing in the room." }
         ] },
         { t: "(Pretend you didn't see.)", notes: 1, then: [
@@ -225,7 +310,7 @@
       { s: 'sebastian', f: 'neutral', t: "And I'm the guy in the basement. The one nobody quite knows what to do with. They'll be talking at dinner and laugh at something and then they'll go, oh, Sebastian, did you want to say something? And I didn't." },
       { n: "He said it without self-pity. Just a fact, laid down like a card on a table. Solar knew the shape of it. Not the basement. The shape. A family that loved you in a language you didn't speak, and a place set for you at a table you sat at like a guest." },
       { choose: [
-        { t: "I've never had a house that felt like mine either.", notes: 3, then: [
+        { t: "I've never had a house that felt like mine either.", notes: 3, flag: 'seb-three-basements', then: [
           { s: 'sebastian', f: 'neutral', t: "Yeah? Where's yours?" },
           { s: 'solar', f: 'neutral', t: "I don't know. I think I have more than one. I think none of them are mine." },
           { n: "She hadn't meant to say it. It came out like it had been waiting at the back of her mouth for somebody slow and quiet enough to say it to. He didn't say anything for a while. He kicked a pebble into the river and watched it go." },
@@ -262,6 +347,11 @@
     { after: '8/8', title: '5: two player', place: 'Paulownia Mall · Game Panic', time: 'Evening', scene: [
       { music: 'city' },
       { n: "The plan was Sam's. Sam had texted Solar at two in the morning two days after the train came across Moonlight Bridge, a long message with no punctuation and a lot of feeling, and the feeling was this: Abigail had been scared, really scared, since the bridge. She'd watched the woman with the viola case get on. She'd said to Sam, at the flat, in the dark, \"what if nobody notices if it's us,\" and Sam had said he'd notice, dude, obviously, and she'd said, \"you're not the one I meant.\"" },
+      { ifFlag: 'seb-sam-pact', then: [
+        { n: "He'd texted her, he wrote, because of the eyebrows. Across the coffee table, at game night. That had been a pact. Pacts had obligations. Pacts had plans." }
+      ], else: [
+        { n: "He'd gotten her number off Sebastian's phone while Sebastian was in the bathroom, he wrote, because there was nobody else in two worlds who'd seen both of them in one room and might actually help, and he was sorry, and he wasn't sorry." }
+      ] },
       { n: "And Sebastian, Sam wrote, was never going to say anything, ever, in his life, unless somebody locked him in a room with her and a game he couldn't leave. so. we lock him in a room. figuratively. with a game." },
       { n: "So it was game night. A game night at Game Panic, at the two-player cabinet in the back that Sebastian loved, the one with the knights and the long dungeon you could only finish in co-op. Four of them were meant to come. Two of them, at the last minute, by an extraordinary coincidence, could not." },
       { s: 'sam', f: 'happy', t: "Oh no! My skateboard! It's broken! I have to go fix my skateboard. Now. Urgently. Solar's going to help me. With the board. Bye!" },
@@ -337,7 +427,7 @@
           { n: "She didn't let go. The engine was off and they weren't moving and she didn't let go, and he noticed, and didn't say anything, and after a while he put one hand over hers on his stomach, briefly, the way you'd check your wallet was still in your pocket, and took it away again." },
           { s: 'sebastian', f: 'neutral', t: "...You're a good passenger. You don't talk. You lean the right way." }
         ] },
-        { t: "What if the road doesn't have to end anywhere?", notes: 3, then: [
+        { t: "What if the road doesn't have to end anywhere?", notes: 3, flag: 'seb-turn-around', then: [
           { s: 'sebastian', f: 'neutral', t: "Every road ends somewhere." },
           { s: 'solar', f: 'neutral', t: "Then you turn around and ride it back." },
           { n: "He looked over his shoulder at her, in the dark, for a long time." },
@@ -369,6 +459,12 @@
           { n: "WHICH ONE? There is a long pause. The cursor blinks. YOU DO NOT HAVE ENOUGH INFORMATION TO GO HOME YET. TRY TALKING TO PEOPLE." },
           { n: "Solar sat back in her chair. From across the room, Sebastian, who had said he wasn't looking, said, very quietly, \"Yeah. That one was harder to write.\"" }
         ] }
+      ] },
+      { ifFlag: 'seb-dragon-friend', then: [
+        { n: "Somewhere in the second room a DRAGON started following her. The text said it had been alone in a cave a long time and now it wasn't, and every few rooms afterward, no matter what she typed, a line came up at the bottom of the screen that said THE DRAGON IS STILL HERE." }
+      ] },
+      { ifFlag: 'seb-dragon-slain', then: [
+        { n: "On the wall of the dorm in the game there was a DRAGON'S TOOTH. If you looked at it the text said YOU DID THIS IN ONE HIT. ON YOUR FIRST SESSION. SAM IS STILL TALKING ABOUT IT. SAM WILL NOT STOP TALKING ABOUT IT." }
       ] },
       { n: "She played the whole thing. It took an hour. It was full of small jokes about the dorm, a goblin named JUNPEI who stole all the pudding, a terrifying RED QUEEN who was secretly very kind and kept a list of everyone's birthdays, a SILVER BOXER who would only answer questions about protein. There was a shrine with a FOX GIRL who gave you a fortune every time you passed, and a DOCTOR on a roof who confiscated your coffee." },
       { n: "And there was a girl in a big coat on a bench at the station who said, if you talked to her, LOOK AT ALL THE TRAINS, and nothing else, every time, no matter what you typed." },
@@ -438,6 +534,9 @@
       { choose: [
         { t: "Why is that the worst thing?", notes: 3, then: [
           { s: 'sebastian', f: 'neutral', t: "Because then you have to admit you need something. Somebody. A place. And they can leave. Or you can. And then you're just a guy standing at a bus stop with a ticket." },
+          { ifFlag: 'seb-three-basements', then: [
+            { s: 'sebastian', f: 'neutral', t: "You've got three basements, you said. I've got one. I keep thinking that makes you the expert. How do you stand it. Wanting all three." }
+          ] },
           { n: "He said it to the puddles. He said it like he'd been carrying it for years and had only just now noticed how heavy it was." }
         ] },
         { t: "I don't want you to leave either.", notes: 2, then: [
@@ -455,9 +554,15 @@
         ] },
         { t: "Maybe leaving isn't the ending. Maybe you get to choose it again every day.", notes: 3, then: [
           { s: 'sebastian', f: 'neutral', t: "Every day? That sounds exhausting." },
-          { s: 'solar', f: 'neutral', t: "You turn around and ride it back. You said you never thought about it." },
-          { s: 'sebastian', f: 'neutral', t: "...You remember that." },
-          { s: 'solar', f: 'neutral', t: "I remember everything that happened this year. It's the only year I've got." }
+          { ifFlag: 'seb-turn-around', then: [
+            { s: 'solar', f: 'neutral', t: "You turn around and ride it back. You said you never thought about it." },
+            { s: 'sebastian', f: 'neutral', t: "...You remember that." },
+            { s: 'solar', f: 'neutral', t: "I remember everything that happened this year. It's the only year I've got." }
+          ], else: [
+            { s: 'solar', f: 'neutral', t: "Like the coast road. When it runs out, you turn around and ride it back. Nobody makes you stay at the guardrail." },
+            { s: 'sebastian', f: 'neutral', t: "...I always thought turning around was losing." },
+            { s: 'solar', f: 'neutral', t: "Only if you were racing somebody." }
+          ] }
         ] },
         { t: "Then stay.", notes: 1, then: [
           { n: "He looked at her like she'd slapped him. And then, slowly, like she'd done him a favor. He laughed, short." },
@@ -501,7 +606,7 @@
           { s: 'sebastian', f: 'surprised', t: "...Critical success. Of course. Of course you did." },
           { s: 'sebastian', f: 'happy', t: "Best friends. Every campaign. That's canon now. The dice said." }
         ] },
-        { t: "His sister. The annoying kind.", notes: 2, then: [
+        { t: "His sister. The annoying kind.", notes: 2, flag: 'seb-sister', then: [
           { s: 'sebastian', f: 'neutral', t: "I already have a sister who's better than me at everything." },
           { s: 'sebastian', f: 'happy', t: "...Fine. Two. I'll allow two. You're the one who doesn't build robots." }
         ] }
@@ -519,6 +624,12 @@
       { n: "Abigail had demanded a one-shot. A short campaign, one night only, where her rogue got to be the main character for once, because, she said, Solarion had been hogging the spotlight since the summer and some of them had been waiting three years." },
       { s: 'abigail', f: 'happy', t: "Solar. You're playing the villain. Seb says you're too good at being the hero, and it's making the rest of us look bad." },
       { s: 'sebastian', f: 'neutral', t: "I didn't say that. I said she rolls too high. It's statistically offensive." },
+      { ifFlag: 'seb-dragon-friend', then: [
+        { s: 'sebastian', f: 'neutral', t: "Also the villain has a dragon. Obviously. It followed her over from the last campaign. I'm not allowed to write it out. I tried. It came back." }
+      ] },
+      { ifFlag: 'seb-dragon-slain', then: [
+        { s: 'sam', f: 'happy', t: "One HIT, dude. First session. I'm going to be talking about it at your funeral." }
+      ] },
       { choose: [
         { t: "(Play the most charming villain they've ever seen.)", notes: 3, then: [
           { n: "Solar played the villain as a polite, tired woman who ran a tea shop and only wanted everybody to stop fighting in it, and by the third hour Abigail's rogue had agreed to work for her, and Sam's bard had written her a song, and Junpei's goblin had proposed, and Sebastian was sitting at the head of the coffee table with his face in his hands saying \"this is not how the campaign was supposed to go\" in a voice of total, delighted despair." }
@@ -543,6 +654,56 @@
         ] }
       ] },
       { s: 'sebastian', f: 'neutral', t: "...When I get home I'm going to do this in the basement with Abby. Except with the door open. That's the new rule. Door open." }
+    ] },
+    { title: 'packing', place: 'Kirijo Flat · By the Station', scene: [
+      { place: 'Kirijo Flat · By the Station', time: 'Evening', bg: 'hotel-lobby' },
+      { music: 'dorm' },
+      { n: "The little Kirijo flat by the station had been Abigail and Sam's since July and Sebastian's, unofficially, since about a week after that, and it had the look now of a place three people had been very happy in without ever once tidying it. Dice on every surface. A skateboard deck propped against the fridge. A purple plush sword in the window like a flag." },
+      { ifAfter: '12/22', then: [
+        { n: "Elizabeth had been to see them in December. She'd sat on the floor because all the chairs had laundry on them and told them the night the doors would open, and Abigail had written it on the fridge in marker and drawn a sword through it, which nobody had asked about." }
+      ] },
+      { s: 'sam', f: 'neutral', t: "Okay. Packing meeting. Rule is, one thing each. One thing from here that comes home. Abby's is the sword, obviously." },
+      { s: 'abigail', f: 'happy', t: "Obviously. It's a real sword. Spiritually." },
+      { s: 'sam', f: 'happy', t: "Mine's the deck. The guy at the shop on the Strip drew a fox on it for me. Seb won't say what his is." },
+      { s: 'sebastian', f: 'neutral', t: "...Because it's stupid." },
+      { choose: [
+        { t: "Then it's definitely the right one. What is it?", notes: 3, then: [
+          { n: "He took it out of the front pocket of his hoodie, where it had evidently been for some time. A folded piece of paper, soft at the creases. Solar knew it before he opened it. A one-way bus ticket, Pelican Town to Zuzu City, the date circled in pen. Under the circle, in new ink, he'd written something else." },
+          { s: 'sebastian', f: 'neutral', t: "I'm taking it home to give it back to the bus company. With a note. \"Not this one. I'll buy my own in spring. Round trip.\"" },
+          { s: 'abigail', f: 'surprised', t: "...Round trip. Seb. You wrote round trip." },
+          { s: 'sebastian', f: 'neutral', t: "For the moonlight jellies. I said I'd come back for them. I keep my promises. Mostly. Recently." }
+        ] },
+        { t: "I'll go first. Mine would be the die.", notes: 2, then: [
+          { s: 'sebastian', f: 'neutral', t: "You're not going anywhere you can't bring a die to. That's the one thing I know about you." },
+          { s: 'sebastian', f: 'neutral', t: "...Mine's a ticket. I'll show you sometime. It's not interesting. It's the most interesting thing I own." }
+        ] }
+      ] },
+      { n: "They didn't pack, in the end. They played a one-shot instead, on the floor, because Sam said a packing meeting that ended in packing was a waste of a meeting, and the one-shot was about three adventurers trying to leave a city that kept being too good to leave, and none of them pointed out what it was about, and none of them needed to." }
+    ] },
+    { title: 'frogs in winter', place: 'Paulownia Mall', scene: [
+      { place: 'Paulownia Mall · Behind the Canal', time: 'Daytime', bg: 'park-2' },
+      { music: 'tender' },
+      { n: "There was frost on the concrete edge of the canal behind the mall, a thin white rind on everything, and the water was low and black and very still, and Sebastian was crouched at the edge of it in a borrowed scarf with his elbows on his knees, looking down, the way he had in June, at nothing." },
+      { s: 'sebastian', f: 'neutral', t: "He's down there. The first frog. Not him specifically. Probably. In the mud at the bottom. Heart nearly stopped. Waiting for spring." },
+      { s: 'sebastian', f: 'neutral', t: "I won't be here when he comes up. That's the bit I keep getting stuck on. I'll be in Pelican Town and he'll come up in a canal in a world I can't get to and nobody'll be crouched here to see it." },
+      { choose: [
+        { t: "I'll come and check. In spring. For you.", notes: 3, then: [
+          { s: 'sebastian', f: 'neutral', t: "...You'll be home too. Wherever home is. You won't be here either." },
+          { s: 'solar', f: 'neutral', t: "Then somebody will. Fuuka. Ken. Somebody who likes frogs." },
+          { s: 'sebastian', f: 'neutral', t: "...I'll write it on the fridge at the dorm. FROG CHECK, SPRING. The red-haired lady will enforce it. I believe that about her." }
+        ] },
+        { t: "He doesn't need anybody to see it. He'll come up anyway.", notes: 3, then: [
+          { s: 'sebastian', f: 'neutral', t: "...Yeah. That's the most frog thing about him. He just comes up." },
+          { n: "He picked up a pebble and turned it over in his fingers and didn't throw it, because it might hit somebody sleeping down there, and put it in his pocket instead." }
+        ] }
+      ] },
+      { ifFlag: 'seb-sister', then: [
+        { s: 'sebastian', f: 'neutral', t: "When I tell Maru about this year I'm going to tell her she has competition. Another sister. The annoying kind. Who doesn't build robots, and rolls too high, and made me run a relay." },
+        { s: 'sebastian', f: 'happy', t: "She's going to be so jealous. She's never once made me run anything." }
+      ], else: [
+        { s: 'sebastian', f: 'neutral', t: "When I tell Maru about this year she won't believe half of it. She'll ask for data. I'll give her the frog sketch. She'll say that's not data. It's the best data I have." }
+      ] },
+      { n: "They stayed by the canal until their hands went numb, and then he walked her back round to the front of the mall and stopped under the Game Panic awning, out of habit, though the sky was a hard clear blue with nothing in it, and stood there anyway, with her, as if it might start raining any minute and he wanted to be ready." }
     ] }
   ]
 });

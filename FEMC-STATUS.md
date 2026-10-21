@@ -16,6 +16,7 @@ Other docs, if you ever want detail:
 - ✅ **The living world, part 1:** many more everyday moments all year, texts that react to your time with people, holiday invites, Solar's birthday, a real Yakushima trip, late nights with the romances, and a build-up before each full moon
 - ✅ **The living world, part 2:** job shifts that don't repeat and three new jobs, running into people while out or working, four clubs, the Persona cast staying all year, a deeper Kuromi link, and a secret link to find
 
+- ✅ **Mercy, Kiriko and Sebastian, deeper:** choices in their ranks they remember later, more time together between ranks, texts after their ranks, two holiday invites and two late-night scenes each, and more to do after you max them. Their links now follow the visitors' whole year
 - ✅ **Haechan:** his ranks now arrive with the story (your choices with him still count, and old saves keep every rank), and he has much more life: late nights, dorm moments, run-ins around town, texts after every rank, holiday invites, reactions to big story moments and scenes with the people he knows. It all changes with where your story is heading. The Hoax ending is now a secret route, and the other routes play as before
 
 ## Story and characters
@@ -36,7 +37,7 @@ Other docs, if you ever want detail:
 - ✅ The Persona cast belongs to this world: texts arrive like anyone's, and Ann, Kasumi and Haru stay all year, with holiday invites
 - ✅ Ann is a Tokyo model whose jobs keep bringing her through Port Island, so she comes and goes all year; more Persona 5 friends drop by now and then
 - ✅ Kuromi and My Melody as exchange students living in the dorm; Kuromi's link rewritten and deeper; My Melody as a hidden link you can miss
-- 🟡 Kasumi's timeline fixed (she stays all year); deeper Mercy, Kiriko and Sebastian links still to do
+- ✅ Kasumi's timeline fixed (she stays all year); Mercy, Kiriko and Sebastian are deeper (see above)
 
 ## Daily life *(living world)*
 - ✅ Daily routines all year that change as people arrive (77): teachers, students, S.E.E.S. moments and the searchers' days
