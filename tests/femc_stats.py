@@ -426,7 +426,7 @@ try:
     ids = ['aigis-2', 'koromaru-2', 'shinjiro-2', 'judy-6', 'noctis-2', 'hyein-7', 'haru-2', 'kasumi-2', 'jihoon-4', 'sunoo-2', 'sunoo-8']
     st = p.eval("(()=>{const B=FemcBuild;return %s.map(id=>{const x=B.perkById(id);return [id,!!x&&!x.stub,B.perkState(x,{bonds:{[x.link]:10}})]})})()" % json.dumps(ids))
     ok(all(s[1] and s[2] != 'stub' for s in st), f'none of them is "coming later" any more: {st}')
-    ok(p.eval("FemcBuild.PERKS.filter(p=>p.stub).map(p=>p.id).sort().join()") == 'elizabeth-2,jaehyun-4', 'the stubs left are party switching and Velvet Room draws (clubs came in the living world, part 2)')
+    ok(p.eval("FemcBuild.PERKS.filter(p=>p.stub).map(p=>p.id).sort().join()") == 'jaehyun-4', 'the stub left is party switching (clubs came in the living world, part 2; Velvet Room draws in batch D)')
     ranks = {'aigis': 2, 'koromaru': 2, 'shinjiro': 2, 'judy': 6, 'noctis': 2, 'hyein': 7, 'haru': 2, 'kasumi': 2, 'jihoon': 4, 'sunoo': 8}
     p.eval("T.fresh('%s','after',{ranks:%s});true" % (school_wed, json.dumps(ranks)))
     # Learning Mode: a hangout (not a rank scene) is +1 Kindness.

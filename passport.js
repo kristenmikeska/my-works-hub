@@ -128,10 +128,13 @@ function earnedReadingStamps() {
   return out.sort((a, b) => b.when - a.when);
 }
 
+const SOLSTICE = "Persona 3: Solstice";
 function visibleSecrets() {
   if (!window.Achievements) return { list: [], got: {} };
   const got = Achievements.unlocked();
-  return { list: Achievements.list().filter(a => !a.side || got.femc), got };
+  // Persona 3: Solstice stamps also show once any of them is earned (the game can be played without crossing over first).
+  const solstice = Object.keys(got).some(k => k.startsWith("p3s-"));
+  return { list: Achievements.list().filter(a => !a.side || got.femc || (solstice && a.group === SOLSTICE)), got };
 }
 
 /* Homepage card: counts, the newest stamps, and a way in to passport.html. */
@@ -233,11 +236,17 @@ function renderSecretStamps() {
     if (countEl) countEl.textContent = `${items.filter(a => got[a.id]).length} of ${items.length} found`;
   };
   // Crossovers (the novels leaking into FEMC mode) get their own page section.
-  fill(grid, document.querySelector("#secretCount"), list.filter(a => a.group !== "Crossovers"));
+  fill(grid, document.querySelector("#secretCount"), list.filter(a => a.group !== "Crossovers" && a.group !== SOLSTICE));
   const cross = list.filter(a => a.group === "Crossovers"), section = document.querySelector("#crossSection");
   if (section) {
     section.hidden = !cross.length;
     if (cross.length) fill(document.querySelector("#crossGrid"), document.querySelector("#crossCount"), cross);
+  }
+  // The game's own achievements (assets/femc/game/stamps.js) get a page of their own.
+  const sol = list.filter(a => a.group === SOLSTICE), solSection = document.querySelector("#solsticeSection");
+  if (solSection) {
+    solSection.hidden = !sol.length;
+    if (sol.length) fill(document.querySelector("#solsticeGrid"), document.querySelector("#solsticeCount"), sol);
   }
 }
 

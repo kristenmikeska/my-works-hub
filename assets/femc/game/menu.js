@@ -33,7 +33,10 @@
      - Bonds: every met link's perks (Battle / Assist / Tartarus / Daily / MAX), earned or not, paused (reversed) or waiting on a
        system that isn't built yet. The Links tab shows a link's perks when you pick it.
      - Equipment: weapon art (Solar's naginatas) and Refine (+1 to +5) on the weapon slot.
-     Money: in the field the life sim's yen (G.addYen); in the Dark Hour the battle save's (the fight reports the change back). */
+     Money: in the field the life sim's yen (G.addYen); in the Dark Hour the battle save's (the fight reports the change back).
+
+   ── COLLECTION (gacha.js draws and wires it): the capsule machine's keychains by set, phone cases (pick one for the phone),
+     and both machines' counters (turns, tickets, Capsule Stars, Velvet draws and plumes). */
 window.FemcMenu = (() => {
   const G = window.FemcGame, UI = () => window.FemcGameUI, SC = window.FemcScene;
   const D = () => window.FEMC_BATTLE_DATA, E = () => window.FemcBattleEngine, BS = () => window.FemcBattleSave;
@@ -41,7 +44,7 @@ window.FemcMenu = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const yen = n => `¥${Math.round(n || 0).toLocaleString('en-US')}`;
   const AFF = { normal: '–', weak: 'Wk', resist: 'Rs', null: 'Nu', drain: 'Dr', repel: 'Rp' };
-  const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['cards', 'Cards'], ['equip', 'Equipment'], ['items', 'Items'], ['status', 'Status'], ['links', 'Links'], ['bonds', 'Bonds'], ['journal', 'Journal'], ['calendar', 'Calendar'], ['compendium', 'Compendium']];
+  const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['cards', 'Cards'], ['equip', 'Equipment'], ['items', 'Items'], ['collection', 'Collection'], ['status', 'Status'], ['links', 'Links'], ['bonds', 'Bonds'], ['journal', 'Journal'], ['calendar', 'Calendar'], ['compendium', 'Compendium']];
   const BLD = () => window.FemcBuild || null;
   let o = null, tab = 'party', sel = {}, opts = {};
 
@@ -666,6 +669,7 @@ window.FemcMenu = (() => {
     else if (tab === 'cards') html = cardsTab();
     else if (tab === 'bonds') html = bondsTab();
     else if (tab === 'items') html = itemsTab();
+    else if (tab === 'collection') html = window.FemcGacha ? window.FemcGacha.collectionHtml() : '<p class="g-note">Nothing collected yet.</p>';
     else if (tab === 'status') html = statusTab();
     else if (tab === 'links') html = linksTab();
     else if (tab === 'journal') html = journalTab();
@@ -675,6 +679,7 @@ window.FemcMenu = (() => {
     body.scrollTop = top;
     if (tab === 'party') wireParty(body); else if (tab === 'personas') wirePersonas(body); else if (tab === 'equip') wireEquip(body); else if (tab === 'items') wireItems(body); else if (tab === 'skills') wireSkills(body);
     else if (tab === 'cards') wireCards(body); else if (tab === 'bonds') wireBonds(body); else if (tab === 'links') wireLinks(body);
+    else if (tab === 'collection') window.FemcGacha?.wireCollection(body, render);
     o.el.querySelectorAll('[data-tab]').forEach(b => { b.classList.toggle('on', b.dataset.tab === tab); b.setAttribute('aria-selected', b.dataset.tab === tab); });
     if (focus) { const f = typeof focus === 'string' && focus.startsWith('[') ? body.querySelector(focus) : body.querySelector(`[data-pm="${focus}"]`); f?.focus({ preventScroll: true }); f?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' }); }
   }

@@ -41,7 +41,7 @@ Kat's fiction archive (13 worlds) plus FEMC mode, a Persona 3 Portable FeMC-styl
   - Use headless Chrome driven from Python (the Mac has no node; `jsc` works for syntax checks).
   - Before reporting done, test real playthroughs, not just syntax.
 
-## Where things stand (updated 2026-10-21)
+## Where things stand (updated 2026-10-21, after the rewards batch)
 The existing revamp baseline is built (the latest friend-link improvements below are held locally):
 - all 44 links
 - the full story through every ending, plus the bad ending and New Game+
@@ -128,7 +128,12 @@ Art is in `art/theurgy/` and `art/summon/solar-evoke-*`, made with `tools/femc-t
 
 **Title logo: built (2026-10-21).** `assets/femc/title/solstice-logo.svg` is the logo (stroked-path letters, so crisp at any size; light backgrounds by default, class `sl-dark` for dark; colours are its `--sl-*` properties). `ui.js putLogo` fetches and inlines it on the title screen in the dark variant (a text title if it can't load); `game.css` `.g-logo` wipes it in and makes the sun-moon O pop and shimmer (glow, rays, a glint), all off under reduced motion. `solstice-icon.svg` is the favicon on femc-game.html and femc-battle.html. Page titles: "Persona 3: Solstice" and "Tartarus Practice · Persona 3: Solstice"; the end credits use the name too. HTML: game.css v11, ui v15.
 
-**Next:** the rest of batch A in section 7 of `FEMC-REVAMP-ROADMAP.md` (remaining New Adds art), and roadmap batch D.
+**Rewards batch (batch D, part 1): built (2026-10-21), Kat's picks: gacha both kinds, achievements as hub stamps.** Details in the roadmap's section 7 batch D.
+- *Gacha:* `assets/femc/game/gacha.js` (rules, both machines' UI, Menu → Collection; header documents odds, pity, prizes and `S.gacha`) and `gacha.css`. Places: `places.js` activities `capsule` and `velvet` (`gacha:` field; ui.js doActivity opens them; no time spent). Data in `build.js`: the `capsule_ticket` item, ten `gacha:` gear pieces, Shuffle Time's Hierophant (`out: 'ticket'`), Compendium Credit (`velvetCredit`). battle.js afterWin drops tickets (handoff mode only); core.js applyResult calls `FemcGacha.afterFight` for Velvet Plumes; NG+ keeps keychains and cases; ui.js openPhone wears the phone case. `FemcGacha.rng` is replaceable for tests.
+- *Stamps:* 28 `p3s-*` stamps in `achievements.js` (group "Persona 3: Solstice"; `unlock(id, { quiet })` and `byId` are new). `assets/femc/game/stamps.js` checks the save after every save and awards with an in-game toast (more than three at once collapse into a count); battle.js awards the first summon / bond skill through `parent.FemcStamps` and sets `save.feats`. The passport has a Persona 3: Solstice section, shown once one is earned or FEMC mode was entered.
+- Only Jaehyun's Audible is still stubbed. `python3 tests/femc_extras.py` covers it; femc_building (shuffle card count 21, one stub), femc_stats (one stub) updated. HTML: achievements v20 everywhere, femc-mode v97 (all pages), femc-social v97, femc-menu v41, femc-eggs v19, passport.js v7, build v5 (both pages), battle v28, core v17, menu v9, ui v17, places v16; new gacha.js, stamps.js, gacha.css (v1).
+
+**Next:** the rest of batch A in section 7 of `FEMC-REVAMP-ROADMAP.md` (remaining New Adds art), and the rest of batch D (weapons with looks for the other fighters, per-character reward lists).
 
 ## Roadmap after the current art pivot
 1. **Merge the two halves into one game.** Kat wants it to feel like one game.

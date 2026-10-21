@@ -314,7 +314,8 @@ window.FemcBuild = (() => {
       { id: 'chariot', num: 'VII', name: 'The Chariot', out: 'boost', stat: 'ag' }, { id: 'justice', num: 'VIII', name: 'Justice', out: 'boost', stat: 'en' },
       { id: 'hermit', num: 'IX', name: 'The Hermit', out: 'mats' }, { id: 'fortune', num: 'X', name: 'Fortune', out: 'boost', stat: 'lu' },
       { id: 'strength', num: 'XI', name: 'Strength', out: 'boost', stat: 'st' }, { id: 'temperance', num: 'XIV', name: 'Temperance', out: 'dust' },
-      { id: 'star', num: 'XVII', name: 'The Star', out: 'card', minR: 4, five: 0.5 }, { id: 'sun', num: 'XIX', name: 'The Sun', out: 'sun' }
+      { id: 'star', num: 'XVII', name: 'The Star', out: 'card', minR: 4, five: 0.5 }, { id: 'sun', num: 'XIX', name: 'The Sun', out: 'sun' },
+      { id: 'hierophant', num: 'V', name: 'The Hierophant', out: 'ticket' }
     ],
     penalties: [
       { id: 'death', num: 'XIII', name: 'Death', out: 'reaper', text: 'The Reaper is 6 steps closer.' },
@@ -343,7 +344,7 @@ window.FemcBuild = (() => {
       if (!boss && pen < 1 && R() < (hard ? SH.penaltyHard : SH.penalty)) { const p = pick(R, SH.penalties); hand.push({ kind: 'penalty', id: p.id, num: p.num, name: p.name, out: p.out, text: p.text }); pen++; continue; }
       if (majors < (boss ? 2 : 1) && R() < (boss ? 0.75 : SH.majorChance)) {
         // Practice mode has no card menu: its Major Arcana are the non-card ones.
-        const m = pick(R, SH.majors.filter(x => !practice || !['card', 'skillcard'].includes(x.out)));
+        const m = pick(R, SH.majors.filter(x => !practice || !['card', 'skillcard', 'ticket'].includes(x.out)));
         hand.push({ kind: 'major', id: m.id, num: m.num, name: m.name, out: m.out, stat: m.stat, minR: m.minR, five: m.five }); majors++; continue;
       }
       const suit = pick(R, Object.keys(SH.suits));
@@ -364,7 +365,7 @@ window.FemcBuild = (() => {
       return `+${c.rank * 10}% EXP from this fight.`;
     }
     return { card: c.minR ? `A Revelation card (★${c.minR} or better).` : 'A Revelation card.', skillcard: 'A skill card: teach a Persona a new skill.', boost: `Persona boost: +1 ${String(c.stat).toUpperCase()} to someone in the party.`,
-      mats: 'Velvet Thread and Tarot Dust.', dust: 'A pile of Tarot Dust.', sun: 'A full heal, and every Theurgy gauge +25.' }[c.out] || '';
+      mats: 'Velvet Thread and Tarot Dust.', dust: 'A pile of Tarot Dust.', sun: 'A full heal, and every Theurgy gauge +25.', ticket: 'Capsule Tickets for the machine at Paulownia Mall.' }[c.out] || '';
   }
   /* Apply a picked card. Changes to the battle save happen here; the rest comes back as effects for the battle page:
      { heal (fraction HP+SP), expMult, reaper (steps closer), hpLoss (fraction), curse (next fight's Shadows +25% HP), th }.
@@ -423,6 +424,8 @@ window.FemcBuild = (() => {
     if (c.out === 'mats') { addMat('velvet_thread', 1 + (tier >= 4 ? 1 : 0)); addMat('tarot_dust', 8 + tier * 2); }
     if (c.out === 'dust') addMat('tarot_dust', 16 + tier * 4);
     if (c.out === 'sun') { fx.heal = 1; fx.th = 25; lines.push('A full heal; Theurgy +25'); }
+    // The Hierophant: Capsule Tickets (items, so they ride home with the night's other items; gacha.js spends them).
+    if (c.out === 'ticket') { const n = 1 + (tier >= 4 ? 1 : 0); save.items = save.items || {}; save.items.capsule_ticket = (save.items.capsule_ticket || 0) + n; fx.tickets = n; lines.push(`Capsule Ticket ×${n}`); }
     return { lines, fx };
   }
 
@@ -621,7 +624,7 @@ window.FemcBuild = (() => {
     ['mymelody', 3, 'Almond Pound Cake', 'daily', { weekly: 'poundcake', cond: 1, dow: 3 }, 'Once a week, Solar’s condition improves one step.'],
     ['mymelody', 6, 'Sweet Nature', 'assist', { sweetNature: ['charm'] }, 'Charm on the party wears off at once.'],
     ['mymelody', 10, 'Melody Hug', 'max', { melodyHug: {} }, 'Solar’s heals also give defense up.'],
-    ['elizabeth', 2, 'Compendium Credit', 'daily', {}, 'Velvet Room draws cost less.', 'Waits on the Velvet Room draws.'],
+    ['elizabeth', 2, 'Compendium Credit', 'daily', { velvetCredit: { pct: 25, plumes: 1 } }, 'Velvet Room draws cost 25% less yen and one Velvet Plume less.'],
     ['elizabeth', 4, 'Velvet Key', 'battle', { gift: 'pts' }, '+1 skill point for Haenim’s tree.'],
     ['elizabeth', 7, 'Sunday Best', 'daily', { sundayBest: 1 }, 'On Sundays, every social stat gain is +1.'],
     ['elizabeth', 10, 'Megidolaon', 'max', { learn: 'megidolaon' }, 'Solar learns Megidolaon: heavy Almighty damage to all foes (expensive).'],
@@ -658,6 +661,26 @@ window.FemcBuild = (() => {
     night_bento: { name: 'Fuuka’s Bento', type: 'spPct', target: 'allies', sp: 0.3, price: 0, tier: 99, icon: 'soul', use: 'both', night: true, desc: 'Experimental. Restores 30% SP to the whole party. Probably.' },
     aid_spray: { name: 'First Aid Spray', type: 'heal', target: 'allies', hp: 0.4, price: 0, tier: 99, icon: 'medicine', use: 'both', night: true, desc: 'Leon’s spray. Heals the whole party 40%.' },
     night_leftovers: { name: 'Shinjiro’s Leftovers', type: 'heal', target: 'allies', hp: 0.2, price: 0, tier: 99, icon: 'medicine', use: 'both', night: true, desc: 'From the dorm kitchen, in a box with Solar’s name on it. Heals the whole party 20%. Only good tonight.' }
+  });
+  /* ══════════ Gacha prizes (gacha.js runs the capsule machine and the Velvet Room draws in the life sim) ══════════
+     Capsule Tickets are an item (Tartarus drops one now and then, and Shuffle Time's Hierophant), so they travel between the
+     life sim's bag and the battle like any other item. The gear below is never sold: capsules and Elizabeth's cards only. */
+  Object.assign(D.items, {
+    capsule_ticket: { name: 'Capsule Ticket', type: 'key', target: 'none', price: 0, tier: 99, icon: 'star', use: 'field', gacha: true, desc: 'One free turn of the capsule machine at Paulownia Mall.' }
+  });
+  Object.assign(D.gear, {
+    // Capsule machine (Super Rare and up)
+    cap_koro_charm: { name: 'Koro-chan Charm', slot: 'acc', icon: 'charm', stats: { lu: 4, ag: 2 }, tier: 2, price: 0, rare: true, gacha: 'capsule', desc: 'A tiny felt Koromaru on a bell.' },
+    cap_feather_pin: { name: 'Featherman Pin', slot: 'acc', icon: 'star', stats: { st: 3, en: 3 }, crit: 4, tier: 3, price: 0, rare: true, gacha: 'capsule', desc: 'Ken would trade anything for it.' },
+    cap_jack_frost: { name: 'Frosty Hairclip', slot: 'acc', icon: 'barrette', nullAil: ['freeze'], stats: { ma: 3 }, tier: 3, price: 0, rare: true, gacha: 'capsule', desc: 'Hee-ho.' },
+    cap_moon_locket: { name: 'Moon Locket', slot: 'acc', icon: 'amulet', spRegen: 2, stats: { ma: 2, lu: 2 }, tier: 4, price: 0, rare: true, gacha: 'capsule', desc: 'A crescent that opens on nothing. Restores 2 SP each turn.' },
+    cap_gold_sun: { name: 'Golden Sun Keyring', slot: 'acc', icon: 'sun', stats: { st: 3, ma: 3, en: 3, ag: 3, lu: 3 }, thMult: 1.15, tier: 5, price: 0, rare: true, gacha: 'capsule', desc: 'The capsule machine’s jackpot. Theurgy fills 15% faster.' },
+    // Elizabeth's cards (rare gear)
+    vel_ribbon: { name: 'Velvet Ribbon', slot: 'acc', icon: 'barrette', spRegen: 4, stats: { ma: 4 }, tier: 4, price: 0, rare: true, gacha: 'velvet', desc: 'The exact blue of the Velvet Room. Restores 4 SP each turn.' },
+    vel_butterfly: { name: 'Blue Butterfly Brooch', slot: 'acc', icon: 'star', stats: { ag: 6, lu: 4 }, crit: 6, tier: 5, price: 0, rare: true, gacha: 'velvet', desc: 'It flutters when nobody is looking.' },
+    vel_key: { name: 'Contract Key', slot: 'acc', icon: 'amulet', nullAil: ['charm', 'fear', 'distress'], stats: { en: 5 }, tier: 5, price: 0, rare: true, gacha: 'velvet', desc: 'A small silver key on a blue cord.' },
+    vel_compendium: { name: 'Pocket Compendium', slot: 'acc', icon: 'bangle', stats: { st: 5, ma: 5, en: 5, ag: 5, lu: 5 }, tier: 6, price: 0, rare: true, gacha: 'velvet', desc: 'Elizabeth’s smallest book, lent indefinitely.' },
+    vel_coat: { name: 'Attendant’s Coat', slot: 'armor', def: 64, stats: { en: 4 }, tier: 6, price: 0, rare: true, gacha: 'velvet', desc: 'Blue, impeccably pressed, and surprisingly warm.' }
   });
   // Fuuka's lines for the new systems, the glossary and one-time tips.
   Object.assign(D.nav, {

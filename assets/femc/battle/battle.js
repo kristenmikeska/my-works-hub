@@ -1165,6 +1165,8 @@
     if (yb && rew.yen) { rew.yen = Math.round(rew.yen * (1 + yb)); notes.push(`Yen +${Math.round(yb * 100)}%`); }
     // Tarot Dust: what's left of Shadows in Tartarus (cards and refines run on it).
     if (BLD && run && !run.ops && !op && !story && rand() < 0.4 + (strong ? 0.3 : 0)) { const n = 1 + Math.floor(rand() * 3) + (strong ? 2 : 0) + Math.floor(run.fi / 6); rew.drops.tarot_dust = (rew.drops.tarot_dust || 0) + n; }
+    // A Capsule Ticket, now and then (the life sim's capsule machine; gacha.js). Story mode only: practice has no mall.
+    if (HO && run && !run.ops && !op && !story && D.items.capsule_ticket && rand() < (strong ? 0.12 : 0.05)) { addItem('capsule_ticket'); notes.push('A Capsule Ticket (the machine at Paulownia Mall)'); mark('capsule-ticket'); }
     // A full moon's first clear can leave one of Solar's naginatas behind.
     const bw = BLD && op && first && BLD.BOSS_WEAPON[op.id];
     if (bw && !(save.gear.owned[bw] > 0)) { addGear(bw); notes.push(`${D.gear[bw].name} (one of Solar’s naginatas!)`); mark('boss-weapon'); }
@@ -2344,6 +2346,8 @@
     summoned.add(u.id);
     mark('summon');
     mark('summon-' + u.mid);
+    // The hub stamp for a first Persona (stamps.js also reads save.feats.summon).
+    if (u.mid === 'solar' && !(save.feats && save.feats.summon)) { save.feats = Object.assign(save.feats || {}, { summon: 1 }); try { if (window.parent !== window && window.parent.FemcStamps) window.parent.FemcStamps.award('p3s-persona'); } catch (err) {} }
     if (u.mid === 'solar' && !save.awakened) {
       save.awakened = true; persist();
       await awakening(BT.root, sleep);
@@ -2776,6 +2780,9 @@
     const L = B.U(e.solar), P = B.U(e.partner), mp = member(P.mid), ms = member('solar');
     hideMenu();
     mark('bond'); mark('bond-' + e.id); if (e.love) mark('bond-love');
+    // The hub stamp for a first bond skill (stamps.js in the life sim reads save.feats too, in case the frame can't reach it).
+    save.feats = Object.assign(save.feats || {}, { bond: (save.feats && save.feats.bond || 0) + 1 });
+    try { if (window.parent !== window && window.parent.FemcStamps) window.parent.FemcStamps.award('p3s-bond'); } catch (err) {}
     const reduced = !FX || FX.reduced(), setting = save.cutins || 'first';
     const style = reduced ? 'fade' : rushActive() || setting === 'off' ? 'short' : 'full';
     const Lr = e.layers || null, sheet = style === 'full' && e.sheet && e.sheet.frames && e.sheet.frames.length >= 3 ? e.sheet.frames : null;

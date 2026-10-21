@@ -504,7 +504,7 @@ Before Minji fights, her Battle perks could work as Assists so the early ranks s
 
 | Rank | Perk | Type | Effect |
 |---|---|---|---|
-| 2 | Compendium Credit | Daily | Velvet Room draws cost less. *(needs the Velvet Room draws)* |
+| 2 | Compendium Credit | Daily | Velvet Room draws cost 25% less yen and one Velvet Plume less. *(built 2026-10-21 with the draws)* |
 | 4 | Velvet Key | Battle | +1 skill point for Haenim's tree. |
 | 7 | Sunday Best | Daily | On Sundays, every social stat gain is +1. |
 | 10 | Megidolaon | MAX · skill | Solar learns Megidolaon: heavy Almighty damage to all foes (expensive). |
@@ -547,7 +547,7 @@ All of the perks above are in the game (`assets/femc/battle/build.js`, `PERKS`),
 
 **Romance ideas (2026-10-21):** the battle ones are in the game as banter on the romance route (`data.js party[].banter`, from rank 6, more at 9), each with Solar's reply; the Tartarus ones aren't built yet. Duo Cohesion stays Minji's perk; her bond skill is a separate move (`bonds.js`).
 
-**Waiting on systems that don't exist yet (stubbed, shown as "Coming later"):** Jaehyun · Audible (party switching in battle), Elizabeth · Compendium Credit (Velvet Room draws). My Melody's three perks are built and wait for her link.
+**Waiting on systems that don't exist yet (stubbed, shown as "Coming later"):** Jaehyun · Audible (party switching in battle). (Elizabeth's Compendium Credit works since the Velvet Room draws, 2026-10-21.) My Melody's three perks are built and wait for her link.
 
 ## Built (2026-10-21): the perks that waited on the five social stats
 The five stats (Knowledge, Courage, Proficiency, Charm, Kindness) are in the game, so these work now (`build.js` fx, read by `core.js`; `tests/femc_stats.py` plays each one):

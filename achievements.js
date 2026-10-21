@@ -201,7 +201,64 @@ window.Achievements = (() => {
     { id: 'on-repeat', name: 'On repeat', group: 'Moods', hint: 'let a song play all the way through.',
       svg: '<path d="M24 14l28-7v35a7 7 0 1 1-4-6.3V17l-20 5v26a7 7 0 1 1-4-6.3z"/>' },
     { id: 'dead-air', name: 'Seven seconds', group: 'Moods', hint: 'stay for the silence.',
-      svg: '<text x="32" y="46" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-weight="800" font-size="40">7</text>' }
+      svg: '<text x="32" y="46" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-weight="800" font-size="40">7</text>' },
+    // Persona 3: Solstice (femc-game.html): awarded by assets/femc/game/stamps.js, which watches the save. Hints stay spoiler-free.
+    { id: 'p3s-persona', side: 'femc', name: 'Persona!', group: 'Persona 3: Solstice', hint: 'Summon a Persona for the first time.',
+      svg: '<path d="M6 22c8-6 18-7 26-3c8-4 18-3 26 3c-1 12-8 20-17 20c-4 0-7-2-9-5c-2 3-5 5-9 5C14 42 7 34 6 22zM15 25c3 3 8 4 12 2c-3-4-9-4-12-2zM37 27c4 2 9 1 12-2c-3-2-9-2-12 2z" fill-rule="evenodd"/><path d="M28 46h8l-4 12z"/>' },
+    { id: 'p3s-moon-magician', side: 'femc', name: 'April Moon', group: 'Persona 3: Solstice', hint: 'Clear the April full-moon operation.',
+      svg: '<path d="M30 6a26 26 0 1 0 22 40A21 21 0 0 1 30 6z"/><text x="45" y="30" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="13">APR</text>' },
+    { id: 'p3s-moon-priestess', side: 'femc', name: 'May Moon', group: 'Persona 3: Solstice', hint: 'Clear the May full-moon operation.',
+      svg: '<path d="M30 6a26 26 0 1 0 22 40A21 21 0 0 1 30 6z"/><text x="45" y="30" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="13">MAY</text>' },
+    { id: 'p3s-moon-empress', side: 'femc', name: 'June Moon', group: 'Persona 3: Solstice', hint: 'Clear the June full-moon operation.',
+      svg: '<path d="M30 6a26 26 0 1 0 22 40A21 21 0 0 1 30 6z"/><text x="45" y="30" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="13">JUN</text>' },
+    { id: 'p3s-moon-lovers', side: 'femc', name: 'July Moon', group: 'Persona 3: Solstice', hint: 'Clear the July full-moon operation.',
+      svg: '<path d="M30 6a26 26 0 1 0 22 40A21 21 0 0 1 30 6z"/><text x="45" y="30" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="13">JUL</text>' },
+    { id: 'p3s-moon-chariot', side: 'femc', name: 'August Moon', group: 'Persona 3: Solstice', hint: 'Clear the August full-moon operation.',
+      svg: '<path d="M30 6a26 26 0 1 0 22 40A21 21 0 0 1 30 6z"/><text x="45" y="30" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="13">AUG</text>' },
+    { id: 'p3s-moon-hermit', side: 'femc', name: 'September Moon', group: 'Persona 3: Solstice', hint: 'Clear the September full-moon operation.',
+      svg: '<path d="M30 6a26 26 0 1 0 22 40A21 21 0 0 1 30 6z"/><text x="45" y="30" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="13">SEP</text>' },
+    { id: 'p3s-moon-fortune', side: 'femc', name: 'October Moon', group: 'Persona 3: Solstice', hint: 'Clear the October full-moon operation.',
+      svg: '<path d="M30 6a26 26 0 1 0 22 40A21 21 0 0 1 30 6z"/><text x="45" y="30" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="13">OCT</text>' },
+    { id: 'p3s-moon-hanged', side: 'femc', name: 'November Moon', group: 'Persona 3: Solstice', hint: 'Clear the November full-moon operation.',
+      svg: '<path d="M30 6a26 26 0 1 0 22 40A21 21 0 0 1 30 6z"/><text x="45" y="30" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="13">NOV</text>' },
+    { id: 'p3s-moon-tartarus-memory', side: 'femc', name: 'December Moon', group: 'Persona 3: Solstice', hint: 'Clear the December full-moon operation.',
+      svg: '<path d="M30 6a26 26 0 1 0 22 40A21 21 0 0 1 30 6z"/><text x="45" y="30" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="13">DEC</text>' },
+    { id: 'p3s-max-link', side: 'femc', name: 'Bond MAX', group: 'Persona 3: Solstice', hint: 'Take any social link to MAX.',
+      svg: '<rect x="16" y="4" width="32" height="56" rx="4" fill-opacity=".35"/><path d="M32 14l4.5 10.5L48 26l-8.6 7.6L42 45l-10-6l-10 6l2.6-11.4L16 26l11.5-1.5z"/><text x="32" y="56" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="9">MAX</text>' },
+    { id: 'p3s-sees-max', side: 'femc', name: 'All of S.E.E.S.', group: 'Persona 3: Solstice', hint: 'Take every S.E.E.S. link to MAX.',
+      svg: '<path d="M4 22h56v20H4z" fill-opacity=".35"/><path fill-rule="evenodd" d="M4 22h56v20H4zM8 26v12h48V26z"/><text x="32" y="37" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="11">S.E.E.S.</text>' },
+    { id: 'p3s-stat-max', side: 'femc', name: 'Top Marks', group: 'Persona 3: Solstice', hint: 'Raise one social stat to its highest rank.',
+      svg: '<circle cx="32" cy="32" r="12"/><path d="M31 3h2v11h-2zM31 50h2v11h-2zM3 31h11v2H3zM50 31h11v2H50zM11 12l1.4-1.4l8 8l-1.4 1.4zM44.6 46l1.4-1.4l8 8l-1.4 1.4zM52 11.4l1.4 1.4l-8 8l-1.4-1.4zM18.6 44l1.4 1.4l-8 8l-1.4-1.4z"/>' },
+    { id: 'p3s-stats-all', side: 'femc', name: 'Every Rank', group: 'Persona 3: Solstice', hint: 'Raise all five social stats to their highest ranks.',
+      svg: '<path d="M32 4l26 19l-10 31H16L6 23z" fill-opacity=".35"/><path d="M32 13l17 12.4l-6.5 20.1h-21L15 25.4z"/>' },
+    { id: 'p3s-end-the-last-stop', side: 'femc', name: 'The Last Stop', group: 'Persona 3: Solstice', hint: 'Reach an ending.',
+      svg: '<path fill-rule="evenodd" d="M14 58V14a18 10 0 0 1 36 0v44zM20 52h24V16a12 6 0 0 0-24 0z"/><circle cx="38" cy="36" r="2.6"/><path d="M8 58h48v4H8z"/>' },
+    { id: 'p3s-end-i-am-thou', side: 'femc', name: 'I Am Thou', group: 'Persona 3: Solstice', hint: 'Reach an ending.',
+      svg: '<path fill-rule="evenodd" d="M14 58V14a18 10 0 0 1 36 0v44zM20 52h24V16a12 6 0 0 0-24 0z"/><circle cx="38" cy="36" r="2.6"/><path d="M8 58h48v4H8z"/>' },
+    { id: 'p3s-end-where-it-begins', side: 'femc', name: 'Where It Begins', group: 'Persona 3: Solstice', hint: 'Reach an ending.',
+      svg: '<path fill-rule="evenodd" d="M14 58V14a18 10 0 0 1 36 0v44zM20 52h24V16a12 6 0 0 0-24 0z"/><circle cx="38" cy="36" r="2.6"/><path d="M8 58h48v4H8z"/>' },
+    { id: 'p3s-end-low-tide', side: 'femc', name: 'Low Tide', group: 'Persona 3: Solstice', hint: 'Reach an ending.',
+      svg: '<path fill-rule="evenodd" d="M14 58V14a18 10 0 0 1 36 0v44zM20 52h24V16a12 6 0 0 0-24 0z"/><circle cx="38" cy="36" r="2.6"/><path d="M8 58h48v4H8z"/>' },
+    { id: 'p3s-end-the-unfated-life', side: 'femc', name: 'The Unfated Life', group: 'Persona 3: Solstice', hint: 'Reach an ending.',
+      svg: '<path fill-rule="evenodd" d="M14 58V14a18 10 0 0 1 36 0v44zM20 52h24V16a12 6 0 0 0-24 0z"/><circle cx="38" cy="36" r="2.6"/><path d="M8 58h48v4H8z"/>' },
+    { id: 'p3s-end-here', side: 'femc', name: 'Here', group: 'Persona 3: Solstice', hint: 'Reach an ending.',
+      svg: '<path fill-rule="evenodd" d="M14 58V14a18 10 0 0 1 36 0v44zM20 52h24V16a12 6 0 0 0-24 0z"/><circle cx="38" cy="36" r="2.6"/><path d="M8 58h48v4H8z"/>' },
+    { id: 'p3s-mymelody', side: 'femc', name: 'My Melody', group: 'Persona 3: Solstice', hint: 'Find the link nobody tells you about.',
+      svg: '<ellipse cx="22" cy="16" rx="6" ry="14" transform="rotate(-14 22 16)"/><ellipse cx="42" cy="16" rx="6" ry="14" transform="rotate(14 42 16)"/><circle cx="32" cy="38" r="18"/><path d="M40 22c5-3 10-1 10 3c0 3-4 4-8 3z"/>' },
+    { id: 'p3s-clubs', side: 'femc', name: 'Joiner', group: 'Persona 3: Solstice', hint: 'Join every club at Gekkoukan.',
+      svg: '<path d="M10 4h4v56h-4z"/><path d="M14 8l42 12l-42 12z"/>' },
+    { id: 'p3s-floor-100', side: 'femc', name: 'Hundredth Floor', group: 'Persona 3: Solstice', hint: 'Climb to the 100th floor of Tartarus.',
+      svg: '<path d="M24 4h16v8H24zM20 14h24v10H20zM16 26h32v12H16zM12 40h40v18H12z" fill-opacity=".9"/><text x="32" y="55" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="11" fill="#fff">100</text>' },
+    { id: 'p3s-bond', side: 'femc', name: 'Bonded', group: 'Persona 3: Solstice', hint: 'Use a bond skill in battle.',
+      svg: '<path fill-rule="evenodd" d="M24 14a16 16 0 1 1 0 32a16 16 0 1 1 0-32zm0 6a10 10 0 1 0 0 20a10 10 0 1 0 0-20zM40 18a16 16 0 1 1 0 32a16 16 0 1 1 0-32zm0 6a10 10 0 1 0 0 20a10 10 0 1 0 0-20z"/>' },
+    { id: 'p3s-naginatas', side: 'femc', name: 'Twelve Blades', group: 'Persona 3: Solstice', hint: 'Collect every one of Solar’s naginatas.',
+      svg: '<path d="M8 58l-3-3l30-30l3 3z"/><path d="M33 31C37 17 45 9 59 5c-4 14-12 22-26 26z"/><path d="M28 30l6 6l-3 3l-6-6z"/>' },
+    { id: 'p3s-keyset', side: 'femc', name: 'Full Set', group: 'Persona 3: Solstice', hint: 'Complete a keychain set from the capsule machine.',
+      svg: '<path fill-rule="evenodd" d="M32 2a9 9 0 1 1 0 18a9 9 0 1 1 0-18zm0 4a5 5 0 1 0 0 10a5 5 0 1 0 0-10z"/><path d="M30 18h4v8h-4z"/><circle cx="32" cy="42" r="17" fill-opacity=".35"/><path d="M32 30l3.5 7.6l8.3.9l-6.2 5.6l1.8 8.2L32 48l-7.4 4.3l1.8-8.2l-6.2-5.6l8.3-.9z"/>' },
+    { id: 'p3s-capsule', side: 'femc', name: 'First Capsule', group: 'Persona 3: Solstice', hint: 'Turn the handle of the capsule machine at the mall.',
+      svg: '<path d="M8 32a24 24 0 0 1 48 0z"/><path d="M8 36h48a24 24 0 0 1-48 0z" fill-opacity=".45"/><path d="M13 22c3-7 9-11 16-12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>' },
+    { id: 'p3s-velvet', side: 'femc', name: 'From the Blue Room', group: 'Persona 3: Solstice', hint: 'Draw one of Elizabeth’s cards in the Velvet Room.',
+      svg: '<rect x="14" y="4" width="36" height="56" rx="4" fill-opacity=".35"/><path d="M31 32C26 22 19 19 15 22c2 2 3 5 3 7c-2 1-3 3-3 5c5 1 11 0 16-2zM33 32c5-10 12-13 16-10c-2 2-3 5-3 7c2 1 3 3 3 5c-5 1-11 0-16-2z"/><path d="M31 30h2v14h-2z"/>' },
   ];
   const byId = Object.fromEntries(LIST.map(a => [a.id, a]));
   const read = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) || fallback; } catch (e) { return fallback; } };
@@ -233,14 +290,15 @@ window.Achievements = (() => {
     window.EntranceSounds?.home('thunk');
   }
 
-  function unlock(id) {
+  // opts.quiet: record it without the site toast (the game shows its own).
+  function unlock(id, opts = {}) {
     const a = byId[id];
     if (!a) return false;
     const got = read(KEY, {});
     if (got[id]) return false;
     got[id] = Date.now();
     write(KEY, got);
-    toast(a);
+    if (!opts.quiet) toast(a);
     return true;
   }
 
@@ -254,5 +312,5 @@ window.Achievements = (() => {
     if (values.size >= goal) unlock(id);
   }
 
-  return { list: () => LIST, unlocked: () => read(KEY, {}), unlock, note };
+  return { list: () => LIST, byId: id => byId[id] || null, unlocked: () => read(KEY, {}), unlock, note };
 })();

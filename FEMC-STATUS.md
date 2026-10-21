@@ -11,6 +11,7 @@ Other docs, if you ever want detail:
 ---
 
 ## Running now / next up
+- ✅ **Rewards, part 1:** the capsule machine and Elizabeth's draws, and the game's achievements as stamps on the hub's passport (old saves earn the ones they already have)
 - ✅ **Five social stats** (Knowledge, Courage, Proficiency, Charm, Kindness), five ranks each, with lots of new ways to raise them: new places to go, evenings at the dorm (cooking, the roof garden, Koromaru, your desk), volunteering, a new job and new books. Old saves carry over without losing a rank, and nine bond perks that were waiting now work
 - ✅ **The living world, part 1:** many more everyday moments all year, texts that react to your time with people, holiday invites, Solar's birthday, a real Yakushima trip, late nights with the romances, and a build-up before each full moon
 - ✅ **The living world, part 2:** job shifts that don't repeat and three new jobs, running into people while out or working, four clubs, the Persona cast staying all year, a deeper Kuromi link, and a secret link to find
@@ -58,8 +59,8 @@ Other docs, if you ever want detail:
 - ✅ New Shadows: Group Chat and Fishmonger
 - 🟡 Bosses and fighters move in battle: all 11 full-moon bosses (the Last Train too) and 12 fighters have pose sheets; Ken and Justice still need theirs
 - 🟡 Weapons for the other fighters: waiting on weapon-sheet art
-- ⬜ Gacha: capsule machine at the mall, plus Velvet Room draws
-- ⬜ Achievements as stamps on the hub
+- ✅ Gacha, both kinds: a capsule machine at Paulownia Mall (yen or Capsule Tickets from Tartarus and Shuffle Time; cast keychains you can collect and show off in the menu, phone cases, accessories and rare items; odds on the front and a pity counter) and Elizabeth's card draws in the Velvet Room (yen or Velvet Plumes from fights and the Compendium; skill cards and rare gear). Elizabeth's Compendium Credit works now
+- ✅ Achievements as stamps on the hub: 28 Persona 3: Solstice stamps with their own page in the passport, and a toast in the game when you earn one
 
 ## Music and polish
 - ✅ 57 songs, rotating with no repeats, plus world songs in memories, arrivals, calls and endings

@@ -107,6 +107,8 @@
       el.className = `g-toast k-${t.kind}${t.stat ? ` s-${t.stat}` : ''}`;
       if (t.stat && statColor(t.stat)) el.style.setProperty('--c', statColor(t.stat));
       el.textContent = t.text;
+      // A hub stamp earned in the game (stamps.js): the stamp's art, a kicker and its name.
+      if (t.kind === 'stamp') { el.innerHTML = `<svg viewBox="0 0 64 64" aria-hidden="true">${t.svg || ''}</svg><span><b>Stamp earned</b></span>`; el.querySelector('span').append(t.text); el.setAttribute('role', 'status'); }
       if (t.thread) { el.setAttribute('role', 'button'); el.tabIndex = 0; el.addEventListener('click', () => openPhone(t.thread)); }
       setTimeout(() => { toastBox.appendChild(el); }, i * 160);
       setTimeout(() => el.classList.add('out'), 2600 + i * 160);
@@ -951,7 +953,7 @@
         <h3>Here today</h3>${h.met.length || h.traces.length ? `<ul class="g-px-who">${h.met.map(l => `<li>${faceOf(l.id)}<span><b>${esc(l.short)}</b><small>${esc(personNote(l, slot).line)}</small></span></li>`).join('')}${h.traces.map(t => `<li>${faceOf(t.link.id, ' trace')}<span><b>${esc(t.link.short)}</b><small>Something of theirs is still here.</small></span></li>`).join('')}</ul>` : ''}
         ${h.unmet ? `<p class="g-px-new">${faceOf('?', ' q')}${h.unmet === 1 ? 'Someone you haven’t met' : `${h.unmet} people you haven’t met`}</p>` : ''}
         ${!h.n ? '<p class="g-note small">Nobody you know is free here right now.</p>' : ''}
-        ${acts.length || jobs.length ? `<h3>Things to do</h3><ul class="g-px-gets">${acts.map(x => { const pv = G.activityInfo(x); return `<li><b>${esc(x.name)}</b><small>${esc(x.shop ? 'Shop · browsing is free' : pv.benefit)}${!x.shop && pv.cost !== 'Free' ? ` · ${esc(pv.cost.replace(/^Costs /, ''))}` : ''}</small></li>`; }).join('')}${jobs.map(j => `<li><b>${esc(j.name)}</b><small>${G.jobState(j.id).hired ? `Work a shift · ¥${j.pay.toLocaleString()}` : 'Part-time work'}</small></li>`).join('')}</ul>` : ''}`}
+        ${acts.length || jobs.length ? `<h3>Things to do</h3><ul class="g-px-gets">${acts.map(x => { const pv = G.activityInfo(x); return `<li><b>${esc(x.name)}</b><small>${esc(x.gacha ? (x.gacha === 'velvet' ? 'Elizabeth’s cards' : 'Capsule machine') : x.shop ? 'Shop · browsing is free' : pv.benefit)}${!x.shop && pv.cost !== 'Free' ? ` · ${esc(pv.cost.replace(/^Costs /, ''))}` : ''}</small></li>`; }).join('')}${jobs.map(j => `<li><b>${esc(j.name)}</b><small>${G.jobState(j.id).hired ? `Work a shift · ¥${j.pay.toLocaleString()}` : 'Part-time work'}</small></li>`).join('')}</ul>` : ''}`}
         <p class="g-px-go">${pxGo()} ▸ ${a.home ? 'go home' : `go to ${esc(a.name)}`}</p>`;
     };
     pxWire(paint);
@@ -985,7 +987,7 @@
     const traceCard = t => card(`data-trace="${t.link.id}" data-px="trace:${t.link.id}"${G.freeSlotSpent(slot) ? ' aria-disabled="true"' : ''}`, `who trace${G.freeSlotSpent(slot) ? ' off' : ''}`, art(t.entry.place || G.linkPlace(t.link)),
       `${faceOf(t.link.id, ' g-pc-pic')}<span class="g-pc-txt"><small class="g-pc-kick">A memory</small><b>${esc(t.entry.place ? t.entry.place.split(' · ').pop() : t.link.short)}</b><small>${esc(`Something of ${t.link.short}'s is still here.`)}</small></span>`);
     const actCard = x => {
-      const ok = G.activityOk(x, slot), pv = G.activityInfo(x), cost = x.club ? (G.clubState(x.id).joined ? 'Your club' : 'Join') : x.cost ? `¥${x.cost.toLocaleString()}` : x.shop ? 'Shop' : 'Free';
+      const ok = G.activityOk(x, slot), pv = G.activityInfo(x), cost = x.club ? (G.clubState(x.id).joined ? 'Your club' : 'Join') : x.cost ? `¥${x.cost.toLocaleString()}` : x.gacha ? (x.gacha === 'velvet' ? 'Draw' : 'Gacha') : x.shop ? 'Shop' : 'Free';
       const who = free.filter(l => spotOf(l) === x.spot);
       return card(`data-act="${x.id}" data-px="act:${x.id}"${ok.ok ? '' : ' aria-disabled="true"'}`, `place${ok.ok ? '' : ' off'}`, art(`${a.name} · ${x.spot}`),
         `<span class="g-pc-txt"><small class="g-pc-kick">${esc(x.spot)}</small><b>${esc(x.name)}</b><small class="g-act-benefit">${esc(pv.benefit)} · ${esc(pv.time)}</small>${ok.ok ? '' : `<small class="g-pc-why">${esc(ok.why)}</small>`}<small class="g-px-more">${esc(x.about || '')}</small></span>`,
@@ -1050,7 +1052,7 @@
     const o = overlay(`<p class="g-kicker">${esc(a.name)} · ${esc(x.spot)}</p><h2>${esc(x.name)}</h2>
       ${x.about ? `<p class="g-note">${esc(x.about)}</p>` : ''}<p>${esc(preview.benefit)}</p><ul class="g-gains"><li>${esc(preview.cost)}</li><li>${esc(preview.time)}</li></ul>
       ${ok.ok ? '' : `<p class="g-warn">${esc(ok.why)}</p>`}
-      <div class="g-row"><button type="button" class="g-btn pink" data-confirm${ok.ok ? '' : ' disabled'}>${x.shop ? 'Browse shop' : 'Spend time here'}</button><button type="button" class="g-btn" data-close>Back</button></div>`, 'g-activity-preview');
+      <div class="g-row"><button type="button" class="g-btn pink" data-confirm${ok.ok ? '' : ' disabled'}>${x.gacha === 'velvet' ? 'Open the door' : x.gacha ? 'Walk over' : x.shop ? 'Browse shop' : 'Spend time here'}</button><button type="button" class="g-btn" data-close>Back</button></div>`, 'g-activity-preview');
     o.el.querySelector('[data-confirm]').addEventListener('click', () => {
       o.close();
       if (!G.activityOk(x, slot).ok) return areaView(slot, a);
@@ -1058,6 +1060,8 @@
     });
   }
   function doActivity(x, slot, a) {
+    // The capsule machine and the Velvet Room (gacha.js): free to walk up to, no time spent.
+    if (x.gacha && window.FemcGacha) return window.FemcGacha.open(x.gacha, () => areaView(slot, a));
     if (x.shop) return openShop(x.shop, () => areaView(slot, a));
     if (x.club) return playClub(x, slot, a);
     const r = G.doActivity(x);
@@ -1268,6 +1272,8 @@
       stop();
       if (goLink) { const l = goLink; goLink = null; setTimeout(() => playLink(l), 0); }
     });
+    // A phone case from the capsule machine (gacha.js; game.css .g-phone-ov[data-case]).
+    const pcase = window.FemcGacha?.phoneCase(); if (pcase) o.el.dataset.case = pcase;
     const $p = sel => o.el.querySelector(sel);
     const body = $p('.g-ph-body'), reply = $p('.g-ph-reply'), back = $p('.g-ph-back'), title = $p('.g-ph-top b'), bar = $p('.g-ph-bar');
     const compose = $p('.g-ph-compose'), draft = $p('.g-ph-draft');

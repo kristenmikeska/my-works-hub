@@ -119,7 +119,9 @@ window.FemcGame = (() => {
     // The battle game's progress for this playthrough (save.js shape), New Game+'s carried one, the fight in progress.
     battleSave: null, battleCarry: null, battleAt: 0, handoff: null, mv: MERGE_V,
     // Social stats version: 2 = the five P5-style stats (stats.js). Saves without it have P3P's three and migrate once.
-    sv: STATS_V, statsFrom: null, leftovers: 0, done: {}
+    sv: STATS_V, statsFrom: null, leftovers: 0, done: {},
+    // The gacha (gacha.js): the capsule machine's and the Velvet Room's counters, keychains, phone cases and Velvet Plumes.
+    gacha: { v: 1, plumes: 0, stars: 0, pulls: 0, draws: 0, pity: { cap: { sr: 0, ur: 0 }, vel: { sr: 0, ur: 0 } }, keys: {}, cases: [], caseOn: null, credited: [], last: null }
   });
   const newRunId = () => `r${Date.now().toString(36)}${Math.floor(Math.random() * 1296).toString(36)}`;
   let migrated = false;
@@ -729,9 +731,9 @@ window.FemcGame = (() => {
     if (a.random) benefit = `One random gain: ${gains(a.random).replaceAll(', ', ' or ')}${Object.keys(bonus).length ? `, plus ${gains(bonus)}` : ''}`;
     if (a.fortune) benefit = 'A random fortune; may improve a social stat or your condition.';
     if (a.cures?.length) benefit += `${benefit ? ' · ' : ''}Relieves ${a.cures.map(id => D.stats.conditions[id].name).join(' or ')}`;
-    if (a.shop) benefit = a.shop === 'books' ? 'Buy books to read at the dorm.' : (D.battle.shops[a.shop]?.sub || 'Browse items for sale.');
+    if (a.shop) benefit = a.shop === 'books' ? 'Buy books to read at the dorm.' : a.gacha ? a.gain : (D.battle.shops[a.shop]?.sub || 'Browse items for sale.');
     const c = actCost(a);
-    return { benefit: `${w ? w.label + ' · ' : ''}${benefit}`, cost: a.shop ? 'Browsing is free; purchases cost yen.' : c ? `Costs ¥${c.toLocaleString()}${c < a.cost ? ' (a friend’s discount)' : ''}` : a.cost ? 'Free (a friend’s perk)' : 'Free', time: a.shop ? 'Does not spend time.' : 'Uses this time slot.' };
+    return { benefit: `${w ? w.label + ' · ' : ''}${benefit}`, cost: a.gacha ? a.price : a.shop ? 'Browsing is free; purchases cost yen.' : c ? `Costs ¥${c.toLocaleString()}${c < a.cost ? ' (a friend’s discount)' : ''}` : a.cost ? 'Free (a friend’s perk)' : 'Free', time: a.shop ? 'Does not spend time.' : 'Uses this time slot.' };
   }
   // Does an activity; returns { text, place } for the narration scene.
   function doActivity(a) {
@@ -1216,6 +1218,8 @@ window.FemcGame = (() => {
     S.stats = { ...old.stats }; S.yen = Math.max(D.stats.startYen, Math.round(old.yen / 2)); S.registered = [...old.registered];
     S.books.owned = [...old.books.owned]; S.books.done = [...old.books.done]; S.ngp = (old.ngp || 0) + 1; S.ngFrom = old.runId; S.flags.ngplus = true;
     S.battleCarry = old.battleSave || old.battleCarry || null;
+    // The keychains and phone cases are a collection, so they come along (gacha.js); counters and plumes start over.
+    if (old.gacha) Object.assign(S.gacha, { keys: { ...(old.gacha.keys || {}) }, cases: [...(old.gacha.cases || [])], caseOn: old.gacha.caseOn || null, stars: old.gacha.stars || 0 });
     save();
   }
 
@@ -1782,6 +1786,8 @@ window.FemcGame = (() => {
     // Courage from the Dark Hour: +1 for a Tartarus night that went in, +3 for a full-moon operation won.
     if (h.kind === 'tartarus' && r.outcome !== 'interrupt') addStat('courage', 1, true);
     else if (h.kind === 'operation' && r.outcome === 'win') addStat('courage', 3, true);
+    // Velvet Plumes for Elizabeth's draws (gacha.js): a Tartarus night, a full moon won.
+    W.FemcGacha?.afterFight(h.kind, r.outcome);
     let fat = r.fatigue;
     // Hanni's Mom Mode (Good instead of Tired) and Jaehyun's Wear Layers (Tired instead of Sick), once a week each.
     if (fat === 'sick' && perkOn('wearLayers') && weekly('wearLayers')) { fat = 'tired'; toast('perk', 'Wear Layers: Jaehyun’s jacket. She’s only Tired.'); }

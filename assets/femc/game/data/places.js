@@ -67,6 +67,11 @@ window.FEMC_GAME_PLACES = {
       lines: ['The late show was a cursed-videotape film older than she was, and the projector flickered at the worst moments as if it were in on the joke. She walked home past every dark alley on purpose.', 'There were four people at the late show. By the end there were three; one of them had left at the part with the well. Solar stayed for the credits.'] },
     { id: 'police', area: 'mall', spot: 'Police Box', name: 'Police Box', about: 'The police box. Weapons and armor for Tartarus, sold quietly over the counter.', icon: 'shop', slots: ['after', 'evening'], shop: 'police' },
     { id: 'bebluev', area: 'mall', spot: 'Be Blue V', name: 'Be Blue V', about: 'An accessory boutique: pretty things that also help in a fight.', icon: 'shop', slots: ['after', 'evening'], shop: 'bebluev' },
+    // The gacha (gacha.js): walking up is free and spends no time; `gain` and `price` are the review panel's lines.
+    { id: 'capsule', area: 'mall', spot: 'Capsule Corner', name: 'Capsule machine', about: 'A row of capsule machines by the escalator: cast keychains, phone cases, accessories and the odd rare find. The odds are printed on the front.', icon: 'game', slots: ['after', 'evening'], shop: 'capsule', gacha: 'capsule',
+      gain: 'Keychains, phone cases, accessories, items. Super Rare or better at least every 10 turns.', price: '¥500 a turn, or a Capsule Ticket (Tartarus and Shuffle Time give them).' },
+    { id: 'velvet', area: 'mall', spot: 'The Velvet Room', name: 'The blue door', about: 'A blue door nobody else seems to notice. Elizabeth deals cards here: skill cards and rare gear.', icon: 'shop', slots: ['after', 'evening'], from: '4/8', shop: 'velvet', gacha: 'velvet',
+      gain: 'Skill cards, Revelation cards, Velvet Thread and rare gear. Super Rare or better at least every 5 draws.', price: '¥3,000 or 3 Velvet Plumes a draw (plumes come from Tartarus, full moons and the Compendium).' },
     { id: 'mayoido', area: 'mall', spot: 'Mayoido Antiques', name: 'Mayoido Antiques', about: 'Antiques, rare goods and sealed cards. It buys the materials Shadows drop.', icon: 'shop', slots: ['after', 'evening'], shop: 'mayoido' },
     // ── Iwatodai Station
     { id: 'vending', area: 'station', spot: 'Vending Machines', name: 'Something from the vending machine', about: 'A row of machines that never have what you want.', icon: 'cup', slots: ['after', 'evening'], cost: 150, stats: { courage: 1 },
@@ -236,6 +241,7 @@ window.FEMC_GAME_PLACES = {
     ['Paulownia Mall · Police Box', 'policestation-outside'],
     ['Paulownia Mall · Be Blue V', 'bebluev-outside'],
     ['Paulownia Mall · Arcade', 'inside-mall'],
+    ['Paulownia Mall · Capsule Corner', 'inside-mall'],
     ['Paulownia Mall · Photo Booth', 'inside-mall'],
     ['Paulownia Mall · Central Atrium', 'inside-mall'],
     ['Paulownia Mall', 'paulownia-mall'],

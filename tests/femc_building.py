@@ -145,10 +145,10 @@ try:
         ok(r['fox3'] == 'rank' and r['fox4'] == 'own' and r['paused'] == 'paused', ('Fox Spirit at rank 4, paused when reversed', r))
         ok(r['cross'] == 'assist' and r['crossJoined'] == 'party' and r['ken'] == 'rank', ('searchers assist before joining; S.E.E.S. battle perks need them', r))
         # Since the living world, part 2 (clubs), only party switching and Velvet Room draws are left.
-        ok(r['stub'] == 'stub' and sorted(r['stubs']) == ['elizabeth-2', 'jaehyun-4'], r['stubs'])
+        ok(r['stub'] == 'stub' and sorted(r['stubs']) == ['jaehyun-4'], r['stubs'])
         ok(r['bp']['duo'] == 'minji' and r['bp']['suzu'] == 0.5 and r['bp']['count'], r['bp'])
         kinds = r['cards']
-        ok(len(kinds) == 4 + 12 + 4, len(kinds))
+        ok(len(kinds) == 4 + 13 + 4, len(kinds))
         ok(all(v['lines'] for v in kinds.values()), [k for k, v in kinds.items() if not v['lines']])
         ok(kinds['penalty:tower:tower']['fx'] == ['hpLoss'] and kinds['penalty:reaper:death']['fx'] == ['reaper'] and kinds['penalty:moon:moon']['fx'] == ['curse'] and kinds['penalty:devil:devil']['pen'], 'penalties')
         ok(kinds['minor:cups:']['fx'] == ['heal'] and kinds['minor:wands:']['fx'] == ['expMult'] and 'yen' in kinds['minor:coins:']['fx'] and 'gear' in kinds['minor:swords:']['fx'], 'minor suits')
