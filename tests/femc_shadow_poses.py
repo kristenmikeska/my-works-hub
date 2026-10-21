@@ -1,5 +1,9 @@
-"""Isolated browser checks for Shadow pose playback and four real battle action hooks."""
-import sys,json,pathlib,hashlib,base64,tempfile,argparse
+"""Isolated browser checks for Shadow pose playback, real battle action hooks for the memory Shadows, and the full-moon
+bosses' pose sheets in their real fights (--ops; 'finale' is the Last Train): each boss's attack (wind-up, attack),
+cast (wind-up, cast), hurt, down and defeat frames through the battle's own event playback, back to idle after each,
+and one canvas per boss. --ops '' skips the bosses; --enemies '' skips the memory fights; --shots picks the boss fights
+to screenshot at desktop and phone size."""
+import sys,json,pathlib,hashlib,base64,tempfile,argparse,time
 from femc_browser import Page
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 OUT=pathlib.Path(tempfile.mkdtemp(prefix='femc-shadow-poses-'))
@@ -14,7 +18,7 @@ for entry in data['entries']:
  assert hashlib.sha256(src.read_bytes()).hexdigest()==entry['sha256'],entry['source']
 source=(ROOT/'assets/femc/battle/battle.js').read_text()
 helpers=source[source.index('  const shadowFrames = new Map();'):source.index('  function addEnemy(u)')]
-args=argparse.ArgumentParser();args.add_argument("--art",default="");args.add_argument("--enemies",default="ballot_box,flash_shadow,tide_shadow,fox_shadow");options=args.parse_args();art_filter=[x for x in options.art.split(",") if x]
+args=argparse.ArgumentParser();args.add_argument("--art",default="");args.add_argument("--enemies",default="ballot_box,flash_shadow,tide_shadow,fox_shadow");args.add_argument("--ops",default="priestess,empress,hierophant,lovers,chariot,hermit,fortune,hanged,finale");args.add_argument("--shots",default="empress,finale");options=args.parse_args();art_filter=[x for x in options.art.split(",") if x]
 p=Page()
 try:
  p.goto('femc-game.html')
@@ -38,7 +42,7 @@ try:
  actual=[]
  scripts={'ballot_box':'memory-hoax','flash_shadow':'memory-runners','tide_shadow':'memory-strangers','fox_shadow':'memory-haechan','party_shadow':'memory-runners-2','veil_poster':'memory-jungwon','group_chat':'memory-hoax','fishmonger':'memory-strangers'}
  defeats=[]
- for kind in options.enemies.split(','):
+ for kind in [k for k in options.enemies.split(',') if k]:
   script=scripts[kind]
   p.goto('femc-game.html?speed=10&seed=1');p.eval('FemcGame.newGame();FemcGame.S.day=FemcGame.dayOf("12/5");FemcGame.makeHandoff("scripted",{script:'+json.dumps(script)+',segment:2,forced:true,party:["solar"]})')
   p.battle()  # the fight runs inside femc-game.html (the Dark Hour frame)
@@ -68,7 +72,51 @@ try:
    p.wait("FemcBattle.ctl?.kind==='menu'");p.eval('FemcBattle.freeze()')
    for name,w,h in [('desktop',1280,800),('phone',390,844)]:
     p.ws.call('Emulation.setDeviceMetricsOverride',{'width':w,'height':h,'deviceScaleFactor':1,'mobile':name=='phone'});p.eval('document.fonts.ready.then(()=>new Promise(r=>setTimeout(r,300)))');shot=p.ws.call('Page.captureScreenshot',{'format':'png'});(OUT/(name+'.png')).write_bytes(base64.b64decode(shot['data']))
+ bosses={}
+ def run(kind,evs,done):
+  p.eval('poseSeen=[];window.__ev=FemcBattle.playEvents('+evs+').then(()=>window.__ev=null)')
+  for i in range(400):
+   if p.eval('window.__ev===null && ('+done+')'):return p.eval('poseSeen')
+   time.sleep(.03)
+  raise AssertionError((kind,evs,p.eval('poseSeen')))
+ for op in [o for o in options.ops.split(',') if o]:
+  p.goto('femc-game.html?speed=10&seed=1')
+  if op=='finale':p.eval('FemcGame.newGame();FemcGame.S.day=FemcGame.dayOf("1/30");FemcGame.makeHandoff("scripted",{script:"finale",segment:2,forced:true,party:["solar"]})')
+  else:p.eval('FemcGame.newGame();FemcGame.S.day=FemcGame.dayOf("12/5");FemcGame.makeHandoff("operation",{op:'+json.dumps(op)+',forced:true,party:["solar"]})')
+  p.battle();p.eval('window.__hoStay=true')
+  for i in range(600):
+   if p.eval("!!window.FemcBattle?.B && FemcBattle.screen()==='battle' && FemcBattle.ctl?.kind==='menu'"):break
+   p.eval("(()=>{const b=document.querySelector('.bt-clock-in button')||document.querySelector('[data-prep=begin]');if(b)b.click();else if(FemcBattle.ctl&&FemcBattle.ctl.kind!=='menu'&&FemcBattle.ctl.pick)FemcBattle.ctl.pick()})()")
+   time.sleep(.05)
+  else:raise AssertionError('no battle: '+op)
+  p.eval('FemcBattle.B.party().forEach(u=>{u.maxHp=u.hp=99999})')
+  kinds=p.eval("FemcBattle.B.foes().filter(f=>{const el=document.querySelector('.bt-enemy[data-id=\"'+f.id+'\"]');return el&&el._shadowPoses}).map(f=>f.kind)")
+  assert kinds,('no posed boss',op)
+  if op in options.shots.split(','):
+   p.eval('FemcBattle.freeze()')
+   for name,w,h in [('desktop',1280,800),('phone',390,844)]:
+    p.ws.call('Emulation.setDeviceMetricsOverride',{'width':w,'height':h,'deviceScaleFactor':1,'mobile':name=='phone'});p.eval('document.fonts.ready.then(()=>new Promise(r=>setTimeout(r,400)))');shot=p.ws.call('Page.captureScreenshot',{'format':'png'});(OUT/(op+'-'+name+'.png')).write_bytes(base64.b64decode(shot['data']))
+   p.ws.call('Emulation.clearDeviceMetricsOverride',{});p.eval('FemcBattle.unfreeze()')
+  for kind in kinds:
+   p.eval("window.poseFoe=FemcBattle.B.foes().find(f=>f.kind==="+json.dumps(kind)+");window.poseEnemy=document.querySelector('.bt-enemy[data-id=\"'+poseFoe.id+'\"]');window.poseSeen=[];new MutationObserver(()=>poseSeen.push(+poseEnemy.dataset.pose)).observe(poseEnemy.querySelector('img'),{attributes:true,attributeFilter:['src']})")
+   r={};party='FemcBattle.B.party()[0].id'
+   r['attack']=run(kind,'[{t:"use",src:poseFoe.id,skill:"bash",name:"Bash",el:"strike",tgts:[]}]',"poseEnemy.dataset.pose==='0'")
+   r['cast']=run(kind,'[{t:"use",src:poseFoe.id,skill:"e_agi",name:"Agi",el:"fire",tgts:[]}]',"poseEnemy.dataset.pose==='0'")
+   r['hurt']=run(kind,'[{t:"hit",src:'+party+',tgt:poseFoe.id,amount:1,hp:poseFoe.hp,aff:"normal",el:"strike"}]',"poseEnemy.dataset.pose==='0'")
+   st=p.eval('poseEnemy._shadowPoses.states')
+   for k in ('attack','cast','hurt'):assert all(n in r[k] for n in st[k]) and r[k][-1]==0,(kind,k,r[k],st[k])
+   p.eval('poseFoe.down=true');r['down']=run(kind,'[{t:"hit",src:'+party+',tgt:poseFoe.id,amount:1,hp:poseFoe.hp,aff:"weak",el:"strike",downed:true}]',"poseEnemy.classList.contains('down')")
+   assert p.eval('poseEnemy.dataset.pose')==str(st['down'][0]),(kind,'down',p.eval('poseEnemy.dataset.pose'))
+   # Size: frames share one canvas (img width/height) and the element width keeps the idle figure at the boss's own height.
+   chk=p.eval("(()=>{const im=poseEnemy.querySelector('img'),a=FEMC_SHADOW_ART[im.src.split('/').pop().split('-pose-')[0]];return {w:poseEnemy.style.getPropertyValue('--w'),aw:a.w,ah:a.h,scale:a.poses.scale,iw:im.getAttribute('width'),ih:im.getAttribute('height')}})()")
+   assert chk['iw']==str(chk['aw']) and chk['ih']==str(chk['ah']),chk
+   r['size']=chk
+   # Defeat: the dissolve keeps the defeat frame.
+   p.eval('poseFoe.hp=0;poseFoe.dead=true');run(kind,'[{t:"hit",src:'+party+',tgt:poseFoe.id,amount:1,hp:0,aff:"normal",el:"strike",killed:true}]',"poseEnemy.classList.contains('dead')")
+   assert p.eval('poseEnemy.dataset.pose')==str(st['defeat'][0]),(kind,'defeat')
+   bosses[kind]=r
+  errors=p.console();assert not errors,(op,errors)
  errors=p.console();assert not errors,errors
- summary={'posePlayback':result,'actualBattleAttackAndCast':actual,'actualDefeatTransitions':defeats,'sourcesUnchanged':sum(e.get('status')=='integrated' for e in data['entries']),'browserErrors':errors,'screenshots':str(OUT)}
+ summary={'bossPoses':{k:{s:v[s] for s in ('attack','cast','hurt','down')} for k,v in bosses.items()},'posePlayback':result,'actualBattleAttackAndCast':actual,'actualDefeatTransitions':defeats,'sourcesUnchanged':sum(e.get('status')=='integrated' for e in data['entries']),'browserErrors':errors,'screenshots':str(OUT)}
  (OUT/'results.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary))
 finally:p.close()

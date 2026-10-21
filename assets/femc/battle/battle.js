@@ -72,7 +72,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 14;
+  const ART_V = 15;
   const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
   Object.values(D.personas).forEach(p => { if (p.art && !p.art.startsWith('data:') && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
   // Theurgy and Evoker sheet art (data.js paths are bare) get the art version too.
@@ -89,7 +89,16 @@
   const finishArt = mid => ((member(mid) || {}).searcher ? pimg(mid, 'serious') : FINISH_DIR + mid + '.webp');
   // Full-body weapon stances belong on the battlefield, separate from face crops and finish cards.
   const FIELD_POSES = new Set(['solar', 'akihiko', 'junpei', 'yukari', 'aigis', 'mitsuru', 'shinjiro', 'koromaru']);
-  const fieldPose = mid => `assets/femc/battle/art/poses/${mid}.webp?v=${ART_V}`;
+  /* Fighter pose sheets (Kat's <name>-posesheet.png, cut by tools/femc-shadow-poses.py into poses/<mid>-pose-0..5.webp:
+     idle, Evoker raised, weapon attack, spell, hurt, victory). They play through the Shadow pose controller below; the
+     idle frame is the stance. The number scales the figure so its size matches the stance it replaces (or, for the
+     searchers, the S.E.E.S. figures): frames sit on one canvas per member, framed in the stance box like the stances.
+     Members without a sheet keep their static stance (or nothing, like Ken). */
+  const FIGHTER_POSES = { solar: 1.3, akihiko: 1, yukari: 1.04, junpei: 0.84, mitsuru: 0.87, aigis: 1.1, koromaru: 0.87, shinjiro: 0.91, haechan: 1, jungwon: 0.87, jihoon: 0.77, minji: 0.97 };
+  const FIGHTER_STATES = { attack: [2], cast: [3], hurt: [4], evoke: [1], win: [5] };
+  const posedFrames = mid => [0, 1, 2, 3, 4, 5].map(i => `assets/femc/battle/art/poses/${mid}-pose-${i}.webp?v=${ART_V}`);
+  const fieldPose = mid => (FIGHTER_POSES[mid] ? posedFrames(mid)[0] : `assets/femc/battle/art/poses/${mid}.webp?v=${ART_V}`);
+  const hasField = mid => FIELD_POSES.has(mid) || !!FIGHTER_POSES[mid];
   const AWAKEN = ['solar-01-resolve', 'solar-02-focus', 'solar-03-awakening', 'solar-04-manifestation', 'solar-05-command', 'solar-06-summoned'];
   /* A stylized Evoker for members without their own Evoker art (muzzle on the left, at the temple). */
   const EVOKER_SVG = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 110"><defs><linearGradient id="m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f9ff"/><stop offset=".35" stop-color="#c9d0dc"/><stop offset=".7" stop-color="#8a93a6"/><stop offset="1" stop-color="#4b5263"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a404e"/><stop offset="1" stop-color="#14171f"/></linearGradient></defs><path d="M214 30H70l-10 5v22h34l6 7h20l7-7h87z" fill="url(#m)" stroke="#12151c" stroke-width="3" stroke-linejoin="round"/><path d="M214 30v27" stroke="#12151c" stroke-width="5"/><path d="M78 36h126" stroke="#fff" stroke-opacity=".85" stroke-width="2"/><path d="M84 44h120M84 50h120" stroke="#5a6274" stroke-width="1.2"/><path d="M62 57h32l-16 48H38z" fill="url(#g)" stroke="#0b0d12" stroke-width="3" stroke-linejoin="round"/><path d="M50 70h30M46 80h30M42 90h30" stroke="#5a6274" stroke-width="1.5"/><path d="M98 57q-2 18 16 18h6" fill="none" stroke="#12151c" stroke-width="4"/><path d="M104 60l4 10" stroke="#12151c" stroke-width="3"/><rect x="150" y="40" width="40" height="4" rx="1" fill="#ff4f9e"/></svg>`);
@@ -1877,6 +1886,7 @@
     const result = B.outcome() || 'lose';
     const rating = { allout: stat0.allout, rounds: B.S.round, ko: stat0.ko || B.party().some(p => p.dead) };
     blogAdd(result === 'win' ? 'Victory!' : result === 'escaped' ? 'Got away.' : 'Solar has fallen…', 'sys');
+    const lastFighter = BT.fighter.dataset.id;
     setActive(null);
     hideMenu();
     B.party().forEach(p => { save.th[p.mid] = Math.round(p.th); });
@@ -1887,6 +1897,7 @@
       // A victory line (a romance partner's banter, on that route), varied from fight to fight.
       if (!banterAny('win')) { const up = B.party().filter(p => !p.dead); if (up.length) bark(up[Math.floor(Math.random() * up.length)], 'win', {}, { force: true }); }
       B.party().filter(p => !p.dead).forEach(p => { const c = BT.cards.get(p.id); if (c) setFace(c.querySelector('.face img'), p.mid, member(p.mid).faces.win); });
+      fighterWin(lastFighter);
       await sleep(1300);
     } else if (result === 'lose') { nav('solarDown'); sfx('ko'); await sleep(1500); }
     else await sleep(700);
@@ -1923,7 +1934,9 @@
     // Every mood a card or the results can switch to, so a face never pops in blank.
     stills(B.party().flatMap(p => Object.values(member(p.mid).faces).map(f => pimg(p.mid, f))), 0);
     if (!save.awakened) { stills(AWAKEN.map(f => SUMMON_DIR + f + '.webp'), 0); prepClip('awakening'); }
-    stills(B.party().filter(p => FIELD_POSES.has(p.mid)).map(p => fieldPose(p.mid)).concat(B.party().flatMap(p => evokeFrames(p.mid) || [])), 0);
+    stills(B.party().filter(p => hasField(p.mid)).map(p => fieldPose(p.mid)).concat(B.party().flatMap(p => evokeFrames(p.mid) || [])), 0);
+    // Fighter pose frames go in the pose controller's cache (it only shows a frame once it has loaded).
+    B.party().filter(p => FIGHTER_POSES[p.mid]).forEach(p => posedFrames(p.mid).forEach(src => { if (!shadowFrames.has(src)) { const im = new Image(); im.src = src; shadowFrames.set(src, im); } }));
     // Bond cut-ins: both portraits (and any bond art) decoded ahead.
     stills((B.S.bondArts || []).filter(a => B.party().some(p => p.mid === a.partner)).flatMap(a => [pimg(a.partner, a.face || member(a.partner).faces.win), ...thArt(a)]).concat([pimg('solar', 'happy')]), 0);
     B.foes().forEach(u => addEnemy(u));
@@ -1950,13 +1963,14 @@
   // The hit flash's mask lives in a CSS variable, which resolves against battle.css, not the page: give it an absolute URL.
   const absUrl = u => { try { return new URL(u, document.baseURI).href; } catch (e) { return u; } };
   // Pose sheets use equal canvases so changing an action never changes the field layout.
+  // The same controller runs the fighter on the battlefield (BT.fighter): its frames are full URLs (_poses.src).
   const shadowFrames = new Map();
   function setShadowFrame(el, n) {
     const frames = el._shadowPoses?.frames, slug = frames && frames[n];
     if (!slug) return;
     const loaded = shadowFrames.get(slug);
     if (!loaded?.complete || !loaded.naturalWidth) return; // Keep the last frame while slow art loads.
-    const src = sart(slug), img = el.querySelector('.sh-pic img');
+    const src = el._shadowPoses.src ? slug : sart(slug), img = el.querySelector('.sh-pic img, img.posed');
     if (!img) return;
     img.src = src;
     el.dataset.pose = String(n);
@@ -1965,9 +1979,19 @@
   function restShadow(el) {
     if (!el._shadowPoses || el._shadowAction) return;
     const states = el._shadowPoses.states;
-    const state = el.classList.contains('dead') ? 'defeat' : el.classList.contains('down') ? 'down' : 'idle';
+    const state = el.classList.contains('dead') ? 'defeat' : el.classList.contains('down') ? 'down' : el.classList.contains('won') ? 'win' : 'idle';
     setShadowFrame(el, (states[state] || [0])[0]);
   }
+  /* Hold one pose until the next action or rest (the fighter's Evoker frame while the summon plays). */
+  function holdPose(el, state) {
+    const n = el?._shadowPoses?.states[state];
+    if (!n) return;
+    el._shadowToken = (el._shadowToken || 0) + 1; el._shadowAction = true;
+    setShadowFrame(el, n[0]);
+  }
+  function releasePose(el) { if (!el?._shadowPoses) return; el._shadowToken = (el._shadowToken || 0) + 1; el._shadowAction = false; restShadow(el); }
+  /* The fighter on the battlefield, when it's this unit and it has a pose sheet. */
+  const posedFighter = u => { const box = BT && BT.fighter; return box && u && !box.hidden && box.dataset.id === u.id && box._shadowPoses ? box : null; };
   async function animateShadow(el, state, ms) {
     const poses = el?._shadowPoses, sequence = poses?.states[state];
     if (!sequence?.length) return;
@@ -2146,18 +2170,37 @@
   }
   function paintFighter() {
     const box = BT.fighter, u = B.U(box.dataset.id);
-    const visible = !!u && FIELD_POSES.has(u.mid) && !u.dead && !u.down;
+    const visible = !!u && hasField(u.mid) && !u.dead && !u.down;
     box.hidden = !visible;
     if (!visible) return;
-    const img = box.querySelector('img');
+    const img = box.querySelector('img:not(.evk)');
     if (img.dataset.mid !== u.mid) {
       img.dataset.mid = u.mid;
+      box._shadowToken = (box._shadowToken || 0) + 1; box._shadowAction = false; box.classList.remove('won');
+      box._shadowPoses = FIGHTER_POSES[u.mid] ? { src: true, frames: posedFrames(u.mid), states: FIGHTER_STATES } : null;
+      img.classList.toggle('posed', !!box._shadowPoses);
+      box.style.setProperty('--pz', FIGHTER_POSES[u.mid] || 1);
+      delete box.dataset.pose;
       img.style.visibility = 'hidden';
       img.onload = () => { img.style.visibility = 'visible'; };
       img.onerror = () => { img.style.visibility = 'hidden'; };
       img.alt = `${u.name}, battle stance`;
       img.src = fieldPose(u.mid);
+      if (box._shadowPoses) box.dataset.pose = '0';
     }
+  }
+  /* A won fight: the last fighter on the field (or the first one standing who has field art) strikes the victory pose. */
+  function fighterWin(lastId) {
+    const up = B.party().filter(p => !p.dead && !p.down && hasField(p.mid));
+    const u = up.find(p => p.id === lastId) || up[0];
+    if (!u) return;
+    BT.fighter.dataset.id = u.id;
+    paintFighter();
+    const box = BT.fighter;
+    if (!box._shadowPoses) return;
+    box.classList.add('won');
+    releasePose(box);
+    mark('fighter-win');
   }
   function log(text, cls = '') { if (cls !== 'say') blogAdd(text, cls); BT.log.textContent = text; clearTimeout(log.t); log.t = setTimeout(() => { if (BT) BT.log.textContent = ''; }, 2200 * textHold() / Math.min(speed(), 2)); }
 
@@ -2861,9 +2904,10 @@
           await Promise.all([sleep(ms), animateShadow(el, E.PHYS.has(e.el) ? 'attack' : 'cast', ms)]);
         } else {
           paintCard(u);
-          if (e.summon && !e.charmed) { await summonCut(u, e.name); banner(e.name, { el: e.el, sub: u.persona }); const sg = D.skills[e.skill]; if (sg && sg.fx && sg.type !== 'dmg' && SIG_FX.has(sg.fx)) e.tgts.forEach(id => fxPlay(sg.fx, id)); }
+          const fp = posedFighter(u), act = E.PHYS.has(e.el) ? 'attack' : 'cast';
+          if (e.summon && !e.charmed) { if (fp) { holdPose(fp, 'evoke'); mark('fighter-evoke'); } await summonCut(u, e.name); if (fp) { animateShadow(fp, act, 700); mark('fighter-' + act); } banner(e.name, { el: e.el, sub: u.persona }); const sg = D.skills[e.skill]; if (sg && sg.fx && sg.type !== 'dmg' && SIG_FX.has(sg.fx)) e.tgts.forEach(id => fxPlay(sg.fx, id)); }
           else if (e.charmed) { banner(e.name, { el: 'charm', sub: `${u.name} · Charmed` }); await sleep(300); }
-          else { const c = BT.cards.get(u.id); c.classList.remove('hit'); banner('Attack', { el: e.el, sub: u.name }); await sleep(260); }
+          else { const c = BT.cards.get(u.id); c.classList.remove('hit'); banner('Attack', { el: e.el, sub: u.name }); if (fp) { animateShadow(fp, 'attack', 700); mark('fighter-attack'); } await sleep(260); }
           log(`${u.name}: ${e.name}`, 'pu');
         }
         if (D.ailments[e.el]) sfx('ail');
@@ -2893,7 +2937,7 @@
           const wb = el.lastElementChild; setTimeout(() => wb.remove(), 700);
           el.classList.add('hitstop'); await sleep(85); el.classList.remove('hitstop');
         }
-        if (el && e.amount > 0 && e.aff !== 'drain') { el.classList.remove('hit'); void el.offsetWidth; el.classList.add('hit'); if (onEnemy) animateShadow(el, 'hurt', 360); setTimeout(() => el.classList.remove('hit'), 420); }
+        if (el && e.amount > 0 && e.aff !== 'drain') { el.classList.remove('hit'); void el.offsetWidth; el.classList.add('hit'); if (onEnemy) animateShadow(el, 'hurt', 360); else { const fp = posedFighter(t); if (fp && !e.killed) { animateShadow(fp, 'hurt', 420); mark('fighter-hurt'); } } setTimeout(() => el.classList.remove('hit'), 420); }
         const label = e.keen ? 'CRITICAL ×3.5!' : e.crit ? 'CRITICAL!' : (AFF_WORD[e.aff] || '');
         const lcls = e.crit ? 'crit' : e.aff;
         if (e.warded) { popup(e.tgt, { label: 'WARD', lcls: 'buff' }); mark('warded'); }

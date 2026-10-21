@@ -2224,6 +2224,719 @@
       ],
       "status": "integrated",
       "sourceNow": "Added to Game/shinjiro-strikesheet.png"
+    },
+    {
+      "batch": 19,
+      "source": "priestess-attack.png",
+      "sha256": "3451b5718e4be4b5a5822109f64a738329209cef62434b3fad6700b4704d6105",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "Arcana Priestess",
+      "intendedUse": "Full-moon boss pose sheet: idle, wind-up, attack, cast, hurt, down",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90; the same thin dark rim as the static Shadow art",
+      "placement": "battle.js Shadow pose controller via art/shadows/index.js 'priestess-shadow'.poses (enemy priestess): attack = wind-up, attack; cast = wind-up, cast; hurt; down; defeat = down frame. Idle figure kept at the boss's data.js h; the static priestess-shadow.webp stays for the operation title card",
+      "destination": [
+        "assets/femc/battle/art/shadows/priestess-shadow-pose-0.webp",
+        "assets/femc/battle/art/shadows/priestess-shadow-pose-1.webp",
+        "assets/femc/battle/art/shadows/priestess-shadow-pose-2.webp",
+        "assets/femc/battle/art/shadows/priestess-shadow-pose-3.webp",
+        "assets/femc/battle/art/shadows/priestess-shadow-pose-4.webp",
+        "assets/femc/battle/art/shadows/priestess-shadow-pose-5.webp"
+      ],
+      "outputSha256": [
+        "7d32a90c9bc91599560b1a874176e20815a3de03731c52b5bacb3e230cb098ee",
+        "acc72433f2bcb9c599741974a1516395b2c7ebd7f41329a2d4133870001e2b2e",
+        "bd24223b06ed50b3ae6577662e3f504f62edb777f5a03a3cbbc00eb63a791dba",
+        "d8377468a75b897ee468bd7f17a1882e5a954bf7f6d49f93e57860509d58e420",
+        "f9d2d58b46199b17b73d91b0476ea88603a113d30cdcff79078facbd41d3e84d",
+        "c70c23ec34a42967c14fdd729601bf3e389d1468ddf827a947e4bd0eb075d706"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/priestess-attack.png"
+    },
+    {
+      "batch": 19,
+      "source": "empress-attack.png",
+      "sha256": "b324c40bd6b2458242a8218132f471e4b5486d48d841487037c4718d9f0b98d3",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "Arcana Empress",
+      "intendedUse": "Full-moon boss pose sheet: idle, wind-up, attack, cast, hurt, down",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90; the same thin dark rim as the static Shadow art",
+      "placement": "battle.js Shadow pose controller via art/shadows/index.js 'empress-shadow'.poses (enemy empress): attack = wind-up, attack; cast = wind-up, cast; hurt; down; defeat = down frame. Idle figure kept at the boss's data.js h; the static empress-shadow.webp stays for the operation title card",
+      "destination": [
+        "assets/femc/battle/art/shadows/empress-shadow-pose-0.webp",
+        "assets/femc/battle/art/shadows/empress-shadow-pose-1.webp",
+        "assets/femc/battle/art/shadows/empress-shadow-pose-2.webp",
+        "assets/femc/battle/art/shadows/empress-shadow-pose-3.webp",
+        "assets/femc/battle/art/shadows/empress-shadow-pose-4.webp",
+        "assets/femc/battle/art/shadows/empress-shadow-pose-5.webp"
+      ],
+      "outputSha256": [
+        "87055dd59c0541e31e8de55024b6fe4e99d1fe9870c7783fcf25f681866b51c5",
+        "61c0531753acd21ea76c5fe17387eaac96454a21935e36e207a762776429218f",
+        "fe685620d87193a63ba25cb45b35950b875afdbde5ce4c6096543ac20e9fdc25",
+        "4974d608300918154379310cb13036c37c7460f844d72e8e810f93c3924c4092",
+        "77dc9f542b4c6dbc67e2a90d84b9d0523297ac9fb7102fdc952bca95a8a00454",
+        "4e480ad8a4ae63fd0b6ab40e6090c86224c38972db78223c4ccf2d80b0ef768f"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/empress-attack.png"
+    },
+    {
+      "batch": 19,
+      "source": "emperor-attack.png",
+      "sha256": "1ca6e76f58f723fefd03400ae2ed7e27b48234270e5818fe60c4279b6e7eaa42",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "Arcana Emperor",
+      "intendedUse": "Full-moon boss pose sheet: idle, wind-up, attack, cast, hurt, down",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90; the same thin dark rim as the static Shadow art",
+      "placement": "battle.js Shadow pose controller via art/shadows/index.js 'emperor-shadow'.poses (enemy emperor): attack = wind-up, attack; cast = wind-up, cast; hurt; down; defeat = down frame. Idle figure kept at the boss's data.js h; the static emperor-shadow.webp stays for the operation title card",
+      "destination": [
+        "assets/femc/battle/art/shadows/emperor-shadow-pose-0.webp",
+        "assets/femc/battle/art/shadows/emperor-shadow-pose-1.webp",
+        "assets/femc/battle/art/shadows/emperor-shadow-pose-2.webp",
+        "assets/femc/battle/art/shadows/emperor-shadow-pose-3.webp",
+        "assets/femc/battle/art/shadows/emperor-shadow-pose-4.webp",
+        "assets/femc/battle/art/shadows/emperor-shadow-pose-5.webp"
+      ],
+      "outputSha256": [
+        "494d6c15ba9514330aebf48d8cb3556ff54d23b13ee23321d7b661f3976814e9",
+        "a71a43349d47e36c9d625bcf63e874452e09ef39eff3b80616ec566ad0574613",
+        "2016d6231ee8278557d027b2ea579acd194e34924d1018dc3fd5ac0d061ad25c",
+        "122133c3a0b639ad9a36fd5c64c673480d63b775ac6391c5041338f4ca43c938",
+        "8da3ff5214117e91495705f32a11c0694f0c8e9f4a410aad12d965781c051f43",
+        "aff20a1203db3a568e40dbc5a4443153459185daa955c5463d2f1715fe6dd127"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/emperor-attack.png"
+    },
+    {
+      "batch": 19,
+      "source": "hierophant-attack.png",
+      "sha256": "ff5f703ef688677f9706bbaec6f9d4e2dc3b8a6f7444844de87131c10d8e2649",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "Arcana Hierophant",
+      "intendedUse": "Full-moon boss pose sheet: idle, wind-up, attack, cast, hurt, down",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90; the same thin dark rim as the static Shadow art",
+      "placement": "battle.js Shadow pose controller via art/shadows/index.js 'hierophant-shadow'.poses (enemy hierophant): attack = wind-up, attack; cast = wind-up, cast; hurt; down; defeat = down frame. Idle figure kept at the boss's data.js h; the static hierophant-shadow.webp stays for the operation title card",
+      "destination": [
+        "assets/femc/battle/art/shadows/hierophant-shadow-pose-0.webp",
+        "assets/femc/battle/art/shadows/hierophant-shadow-pose-1.webp",
+        "assets/femc/battle/art/shadows/hierophant-shadow-pose-2.webp",
+        "assets/femc/battle/art/shadows/hierophant-shadow-pose-3.webp",
+        "assets/femc/battle/art/shadows/hierophant-shadow-pose-4.webp",
+        "assets/femc/battle/art/shadows/hierophant-shadow-pose-5.webp"
+      ],
+      "outputSha256": [
+        "f99c2f1bce6c1fd0b0fa586928c4c2e3cb62caff61f69b7a47e750b13aa5022c",
+        "5a7530477c30038f2d44b42c37f9d83360a1d9e460d8738996b8728a4167676d",
+        "bf3da4c1e36e888a6bd4eb636f6e2993a8dc652f29de3fc0b0cc3765cd625869",
+        "aef96261603729a516b820a0e36b9c1939013447b9c2b20af80bbe2c804b5d1d",
+        "4bc0f46310df7bc9ac747e3d08be95b7e16ba205baf863353186ceb81775b4be",
+        "49aa653bac5e453974cbd5f3a5533066f1c01d9dda92f0b65f3050b11a821cce"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/hierophant-attack.png"
+    },
+    {
+      "batch": 19,
+      "source": "lovers-attack.png",
+      "sha256": "338dcb973be37441706d66d9eff3505b366dc5db0cbf4c515a6c3cdfd54a2328",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "Arcana Lovers",
+      "intendedUse": "Full-moon boss pose sheet: idle, wind-up, attack, cast, hurt, down",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90; the same thin dark rim as the static Shadow art",
+      "placement": "battle.js Shadow pose controller via art/shadows/index.js 'lovers-shadow'.poses (enemy lovers): attack = wind-up, attack; cast = wind-up, cast; hurt; down; defeat = down frame. Idle figure kept at the boss's data.js h; the static lovers-shadow.webp stays for the operation title card",
+      "destination": [
+        "assets/femc/battle/art/shadows/lovers-shadow-pose-0.webp",
+        "assets/femc/battle/art/shadows/lovers-shadow-pose-1.webp",
+        "assets/femc/battle/art/shadows/lovers-shadow-pose-2.webp",
+        "assets/femc/battle/art/shadows/lovers-shadow-pose-3.webp",
+        "assets/femc/battle/art/shadows/lovers-shadow-pose-4.webp",
+        "assets/femc/battle/art/shadows/lovers-shadow-pose-5.webp"
+      ],
+      "outputSha256": [
+        "bc61bf4cd4a4e5ba898894026c4f17544d9041444c4ad7d4b303c73fa5a59fcd",
+        "950ee6a8e7ca715db38c68e1c1c2481cfc542c71b1b271e5c43a94847d7b6a16",
+        "cb4415cdd155e8ea07b6f26a001e742a26699520d329c1c1190d29a719f945db",
+        "5a9655abf463e6015c0ec23aeefec31ab53edfc00289e6d46dbf53a5a1146986",
+        "c969df9e31809b04a9f60c7b047ce6df969e4a4570c8519d0b80830210e1242a",
+        "25b043615011888ec930df00a2cf8502baa3f440987dc1d18e851e3bae613d41"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/lovers-attack.png"
+    },
+    {
+      "batch": 19,
+      "source": "chariot-attack.png",
+      "sha256": "57675b24fcfe1798f3bba9a9967a0051b15905e0e14d4fc95f46cb130da673b5",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "Arcana Chariot (the tank only; Justice is a separate Shadow and has no sheet)",
+      "intendedUse": "Full-moon boss pose sheet: idle, wind-up, attack, cast, hurt, down",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90; the same thin dark rim as the static Shadow art",
+      "placement": "battle.js Shadow pose controller via art/shadows/index.js 'chariot-shadow'.poses (enemy chariot): attack = wind-up, attack; cast = wind-up, cast; hurt; down; defeat = down frame. Idle figure kept at the boss's data.js h; the static chariot-shadow.webp stays for the operation title card",
+      "destination": [
+        "assets/femc/battle/art/shadows/chariot-shadow-pose-0.webp",
+        "assets/femc/battle/art/shadows/chariot-shadow-pose-1.webp",
+        "assets/femc/battle/art/shadows/chariot-shadow-pose-2.webp",
+        "assets/femc/battle/art/shadows/chariot-shadow-pose-3.webp",
+        "assets/femc/battle/art/shadows/chariot-shadow-pose-4.webp",
+        "assets/femc/battle/art/shadows/chariot-shadow-pose-5.webp"
+      ],
+      "outputSha256": [
+        "25199b7c9e4cc3c81883b65a64d19d7f692dbfd1363bd3f7c59b558d74dcd6aa",
+        "7fbf4c3f18356b9fc9bd9f2c08077844e328a9657e450f6f4fd6fb0b5bf57246",
+        "f72f4fabd7332070dc8d1b45815a391b68f8b2fa761ebefb267ee405e4a72904",
+        "08b87c0a6f52fe5e81f0637338ff2e8230c37157560fadd4fa55bacd5eeebede",
+        "0aa56c3a65d9624d51ddc447d8d0126ecda54fcd2659289cc857285570c100a0",
+        "d39ae65cdea7f186cc07c2bedbb4b2b41d33dc66e4b0f82f2c13cde8e423abf5"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/chariot-attack.png"
+    },
+    {
+      "batch": 19,
+      "source": "hermit-attack.png",
+      "sha256": "bd97068b444d398f43012595661723b25f005b69be5cd7e38a57ee551c109b1b",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "Arcana Hermit",
+      "intendedUse": "Full-moon boss pose sheet: idle, wind-up, attack, cast, hurt, down",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90; the same thin dark rim as the static Shadow art",
+      "placement": "battle.js Shadow pose controller via art/shadows/index.js 'hermit-shadow'.poses (enemy hermit): attack = wind-up, attack; cast = wind-up, cast; hurt; down; defeat = down frame. Idle figure kept at the boss's data.js h; the static hermit-shadow.webp stays for the operation title card",
+      "destination": [
+        "assets/femc/battle/art/shadows/hermit-shadow-pose-0.webp",
+        "assets/femc/battle/art/shadows/hermit-shadow-pose-1.webp",
+        "assets/femc/battle/art/shadows/hermit-shadow-pose-2.webp",
+        "assets/femc/battle/art/shadows/hermit-shadow-pose-3.webp",
+        "assets/femc/battle/art/shadows/hermit-shadow-pose-4.webp",
+        "assets/femc/battle/art/shadows/hermit-shadow-pose-5.webp"
+      ],
+      "outputSha256": [
+        "9f0b183de547cff004787d32d7bab798937bc5eadbc2215ad71c730162c13cfb",
+        "ceb4008d0280349e436c850e84fb25dcfedc214fa1895715c82f79aab5415080",
+        "1ce7fd6c1151a2183035a25d1fe03dfa355208b89d6b71189873d5048ca7cb87",
+        "b381303b09867a09100beb7eae08aa7964d64ac26f1fe928b05f0d908a118f6b",
+        "08745160d8e66ea5f62cd37da83d6979e9b1e339ecb84069df10701e90dc9ab9",
+        "ebbefdd730dd18a22051c6c6dc99c08358aa11b36241d5166491179453005170"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/hermit-attack.png"
+    },
+    {
+      "batch": 19,
+      "source": "fortune-attack.png",
+      "sha256": "1e118c3f39ffb8145605c4392c389ecd2f787dcfa668dfbe64bf65151ae780aa",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "Arcana Fortune",
+      "intendedUse": "Full-moon boss pose sheet: idle, wind-up, attack, cast, hurt, down",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90; the same thin dark rim as the static Shadow art",
+      "placement": "battle.js Shadow pose controller via art/shadows/index.js 'fortune-shadow'.poses (enemy fortune): attack = wind-up, attack; cast = wind-up, cast; hurt; down; defeat = down frame. Idle figure kept at the boss's data.js h; the static fortune-shadow.webp stays for the operation title card",
+      "destination": [
+        "assets/femc/battle/art/shadows/fortune-shadow-pose-0.webp",
+        "assets/femc/battle/art/shadows/fortune-shadow-pose-1.webp",
+        "assets/femc/battle/art/shadows/fortune-shadow-pose-2.webp",
+        "assets/femc/battle/art/shadows/fortune-shadow-pose-3.webp",
+        "assets/femc/battle/art/shadows/fortune-shadow-pose-4.webp",
+        "assets/femc/battle/art/shadows/fortune-shadow-pose-5.webp"
+      ],
+      "outputSha256": [
+        "5cab9d5dc899ef6bf44fc9fc8f900d7a1b3d0641b65f05ab45398254e110eaa8",
+        "e5f559702d67f103cb7ed930b6ba656ae0af723af1524005e842f6389f2ac726",
+        "4008879bda905d1548b3c873296eee7d0b832826f58a3d1ef6ef154901c3e4f7",
+        "9fc66fb569a034eb120456b01a599abda31ea2bf79b86d365a0bb3657c9051b6",
+        "ad1387455b3ca288c0fff8852f80f110f1e496b3c8a8f161f8d2b26958d5024f",
+        "6059360a9819fbadecd8868c192d91a25bea4a449aa6e3b613e9f654231960cf"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/fortune-attack.png"
+    },
+    {
+      "batch": 19,
+      "source": "strength-attack.png",
+      "sha256": "9b82bb341b2ad59d66461e65ff0102495a60cb4c9348eaaa87f2001992e33520",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "Arcana Strength",
+      "intendedUse": "Full-moon boss pose sheet: idle, wind-up, attack, cast, hurt, down",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90; the same thin dark rim as the static Shadow art",
+      "placement": "battle.js Shadow pose controller via art/shadows/index.js 'strength-shadow'.poses (enemy strength): attack = wind-up, attack; cast = wind-up, cast; hurt; down; defeat = down frame. Idle figure kept at the boss's data.js h; the static strength-shadow.webp stays for the operation title card",
+      "destination": [
+        "assets/femc/battle/art/shadows/strength-shadow-pose-0.webp",
+        "assets/femc/battle/art/shadows/strength-shadow-pose-1.webp",
+        "assets/femc/battle/art/shadows/strength-shadow-pose-2.webp",
+        "assets/femc/battle/art/shadows/strength-shadow-pose-3.webp",
+        "assets/femc/battle/art/shadows/strength-shadow-pose-4.webp",
+        "assets/femc/battle/art/shadows/strength-shadow-pose-5.webp"
+      ],
+      "outputSha256": [
+        "27d14d5a713628cec4bb7e629d8fff5b8726a9b10f944d2242ff8d2d661b8ebe",
+        "bc8c7f3f6c85581a23021d8c465aa415fcfeabefcfc801c09e08cf44cca9a041",
+        "540acf7c5fb13d7066cc555ceedc0b697f3a6d030794001762ce36a6ea7519c9",
+        "5e0a9142f0ebde90f7304540d87a541fd70439ac3a7483a123719badda81f6d9",
+        "b46d0feee8335de5c99cc72785e4bb31432b74569d4f87e29c999ee7ec303625",
+        "bfc3e664f9c9d03f531ff88146de694d67d76240da4bb4005ce789de2b6ea8c9"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/strength-attack.png"
+    },
+    {
+      "batch": 19,
+      "source": "hangedman-attack.png",
+      "sha256": "d752b9a39bc9da679149f9daf7320e85dc7f633a1c529e8260050e03ebd3513f",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "Arcana Hanged Man",
+      "intendedUse": "Full-moon boss pose sheet: idle, wind-up, attack, cast, hurt, down",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90; the same thin dark rim as the static Shadow art",
+      "placement": "battle.js Shadow pose controller via art/shadows/index.js 'hanged-man-shadow'.poses (enemy hanged): attack = wind-up, attack; cast = wind-up, cast; hurt; down; defeat = down frame. Idle figure kept at the boss's data.js h; the static hanged-man-shadow.webp stays for the operation title card",
+      "destination": [
+        "assets/femc/battle/art/shadows/hanged-man-shadow-pose-0.webp",
+        "assets/femc/battle/art/shadows/hanged-man-shadow-pose-1.webp",
+        "assets/femc/battle/art/shadows/hanged-man-shadow-pose-2.webp",
+        "assets/femc/battle/art/shadows/hanged-man-shadow-pose-3.webp",
+        "assets/femc/battle/art/shadows/hanged-man-shadow-pose-4.webp",
+        "assets/femc/battle/art/shadows/hanged-man-shadow-pose-5.webp"
+      ],
+      "outputSha256": [
+        "4fb02a51c72bf4dde7410730607cc6258d8d94c676fc5bb901d86e5180b60042",
+        "d494dce4de3b8cce31af6142e55f8a443a6d7b66ec227b1f708b2f9c5d4568c1",
+        "98d84a2891277b090ff5a814f987337f1a8cda2787c94cf1039daadb7beb8c18",
+        "960a7d8d6a44e8555e4cae3216d148fe41e1855d6090b57a84eaa7f4d8186748",
+        "c61c9ab5c0dfa613fecfe6b3180bb38b7d14b4f99d4191d628d36d21f7f8fb44",
+        "204233bccfb359b3b3ba34bc96ffff5646c086017406035bd5a44a4ba397d13d"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/hangedman-attack.png"
+    },
+    {
+      "batch": 19,
+      "source": "wrensshadow-attack.png",
+      "sha256": "bc7b90f352e0595a91510d91e9f893218692ddab21e3f8de7524e0faf077abb0",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "Wren's Shadow: the Last Train",
+      "intendedUse": "Full-moon boss pose sheet: idle, wind-up, attack, cast, hurt, down",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90; the same thin dark rim as the static Shadow art",
+      "placement": "battle.js Shadow pose controller via art/shadows/index.js 'wren-shadow-last-train'.poses (enemy last_train): attack = wind-up, attack; cast = wind-up, cast; hurt; down; defeat = down frame. Idle figure kept at the boss's data.js h; the static wren-shadow-last-train.webp stays for the operation title card",
+      "destination": [
+        "assets/femc/battle/art/shadows/wren-shadow-last-train-pose-0.webp",
+        "assets/femc/battle/art/shadows/wren-shadow-last-train-pose-1.webp",
+        "assets/femc/battle/art/shadows/wren-shadow-last-train-pose-2.webp",
+        "assets/femc/battle/art/shadows/wren-shadow-last-train-pose-3.webp",
+        "assets/femc/battle/art/shadows/wren-shadow-last-train-pose-4.webp",
+        "assets/femc/battle/art/shadows/wren-shadow-last-train-pose-5.webp"
+      ],
+      "outputSha256": [
+        "588631d581e6994f4071e9887bf7a702974ec1754e2087fe1ebb2c9f5751c64c",
+        "19e302ee5eb8dd8ea3b64f16cc2ad6d8f86f4f6743245adae1b3143232298124",
+        "ae9e455434a2a5a1395091fc9c477ad656aa76455741e7d1adecb30e6b05e2cb",
+        "c7e22ea6301d2fa3ba17ba3a76c0bd8240cacc9661c79911cf368e6f86cc51df",
+        "d519d3d4347ebc5b00783125eee4364720ea96e7aea324503f9194e19066fc47",
+        "095234462dab2ac1b5e061aa48a37e00c06541ac147d9c3883bd7b1b6995f39a"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/wrensshadow-attack.png"
+    },
+    {
+      "batch": 19,
+      "source": "solar-posesheet.png",
+      "sha256": "abbcbb1be2cea192a9a2f96a60480fa3bfdcebdf8c68715a6d1ace896a42016c",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "solar",
+      "intendedUse": "Fighter pose sheet: idle, Evoker raised, weapon attack, spell, hurt, victory",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90",
+      "placement": "battle.js FIGHTER_POSES: the battlefield figure (.bt-fighter) through the Shadow pose controller; idle is the stance, Evoker held during the summon, weapon frame on Attack and physical skills, spell frame on casts, hurt when hit, victory on a win (replaces the static poses/solar.webp stance, kept on disk)",
+      "destination": [
+        "assets/femc/battle/art/poses/solar-pose-0.webp",
+        "assets/femc/battle/art/poses/solar-pose-1.webp",
+        "assets/femc/battle/art/poses/solar-pose-2.webp",
+        "assets/femc/battle/art/poses/solar-pose-3.webp",
+        "assets/femc/battle/art/poses/solar-pose-4.webp",
+        "assets/femc/battle/art/poses/solar-pose-5.webp"
+      ],
+      "outputSha256": [
+        "4cfaa5fa97dbe40b603379dc846ffc145d610de2070cba264ebff0021cd27b48",
+        "5cc2c66ae856014cae18bcfcd55ee26f40c66a205363280e279dc143b7461909",
+        "9ac5419bb18c4cc3ae681335f7bdf20eb8acb6aa0d4a3cc15e8f5c5ee83910e6",
+        "78842c737809a8b3221b79a0f2293ce7552ad4ad0af3c42431d867be5f3e4f2b",
+        "e20a2a235e91f4a21c24e9fc1c0b6ea4d85508f8573f525b20d9c9a492fa7417",
+        "fcdde6e995037fbcf6cec3bd467da978b726b3d1b64f61749a320f7e6d3ead8a"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/solar-posesheet.png"
+    },
+    {
+      "batch": 19,
+      "source": "akihiko-posesheet.png",
+      "sha256": "476295d35dc0e15a3be9f417bfe4d92d2f2ee2105412d12b1491f92ec46c59ee",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "akihiko",
+      "intendedUse": "Fighter pose sheet: idle, Evoker raised, weapon attack, spell, hurt, victory",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90",
+      "placement": "battle.js FIGHTER_POSES: the battlefield figure (.bt-fighter) through the Shadow pose controller; idle is the stance, Evoker held during the summon, weapon frame on Attack and physical skills, spell frame on casts, hurt when hit, victory on a win (replaces the static poses/akihiko.webp stance, kept on disk)",
+      "destination": [
+        "assets/femc/battle/art/poses/akihiko-pose-0.webp",
+        "assets/femc/battle/art/poses/akihiko-pose-1.webp",
+        "assets/femc/battle/art/poses/akihiko-pose-2.webp",
+        "assets/femc/battle/art/poses/akihiko-pose-3.webp",
+        "assets/femc/battle/art/poses/akihiko-pose-4.webp",
+        "assets/femc/battle/art/poses/akihiko-pose-5.webp"
+      ],
+      "outputSha256": [
+        "1d5a8f586fd596192e2ff763f2e59efd7974ba1d7bfb6d8d895be36e58cf4259",
+        "8ec776baf0ff3596fca5cc38e29fbe5bf8dce04ebdb0ae6c0d99d905724e8039",
+        "73109515db11d3d72e43cacfb2379b53b9eaaaa7d2b4e1709aa2e06376e2c02c",
+        "0ae4a85f769dff53c5c3da4372964816df2a942b80e67e442a296afa15d6d81d",
+        "56b181e6be9af7048dc678fefb3de27b238ff29124af2ff36c41fa0a972743bb",
+        "39ec6ddcd917ff7273c982bb4abb234bc9c05204982c204541778428ba4e3ba4"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/akihiko-posesheet.png"
+    },
+    {
+      "batch": 19,
+      "source": "yukari-posesheet.png",
+      "sha256": "2dd1ce4ddb4c2116581fc835ce220324cdef47fc1f07527ecd92e5a249bded09",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "yukari",
+      "intendedUse": "Fighter pose sheet: idle, Evoker raised, weapon attack, spell, hurt, victory",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90",
+      "placement": "battle.js FIGHTER_POSES: the battlefield figure (.bt-fighter) through the Shadow pose controller; idle is the stance, Evoker held during the summon, weapon frame on Attack and physical skills, spell frame on casts, hurt when hit, victory on a win (replaces the static poses/yukari.webp stance, kept on disk)",
+      "destination": [
+        "assets/femc/battle/art/poses/yukari-pose-0.webp",
+        "assets/femc/battle/art/poses/yukari-pose-1.webp",
+        "assets/femc/battle/art/poses/yukari-pose-2.webp",
+        "assets/femc/battle/art/poses/yukari-pose-3.webp",
+        "assets/femc/battle/art/poses/yukari-pose-4.webp",
+        "assets/femc/battle/art/poses/yukari-pose-5.webp"
+      ],
+      "outputSha256": [
+        "6bdee5d07ae4ac5b5f017cf94e2bf321b5cd342de1e4f9ca7d915e2d4d405520",
+        "f2f489aaa7c73a9967ce5aba6db4e11088570295ef2e7fcc9eea9c011da84527",
+        "b6aea4041da600b566760fd8b3ea06b23869ec1aa3c3df47aed362291c5133da",
+        "e50651cfa4b4223d7b0ab11deac3fa432ffe0bef0e308a616203ff3efd2baba0",
+        "d07aadeda1f78fb615d87c0054c6d4b9f11c57728b490e71006a4093478a8bc8",
+        "64a08416a145089fc19b470bb76db279ae3ed7237b098f4b4129482accacbaf1"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/yukari-posesheet.png"
+    },
+    {
+      "batch": 19,
+      "source": "junpei-posesheet.png",
+      "sha256": "880ff3fdfbdedf85134b4bff1d229d875c35769fa5a811103235775b6516df38",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "junpei",
+      "intendedUse": "Fighter pose sheet: idle, Evoker raised, weapon attack, spell, hurt, victory",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90",
+      "placement": "battle.js FIGHTER_POSES: the battlefield figure (.bt-fighter) through the Shadow pose controller; idle is the stance, Evoker held during the summon, weapon frame on Attack and physical skills, spell frame on casts, hurt when hit, victory on a win (replaces the static poses/junpei.webp stance, kept on disk)",
+      "destination": [
+        "assets/femc/battle/art/poses/junpei-pose-0.webp",
+        "assets/femc/battle/art/poses/junpei-pose-1.webp",
+        "assets/femc/battle/art/poses/junpei-pose-2.webp",
+        "assets/femc/battle/art/poses/junpei-pose-3.webp",
+        "assets/femc/battle/art/poses/junpei-pose-4.webp",
+        "assets/femc/battle/art/poses/junpei-pose-5.webp"
+      ],
+      "outputSha256": [
+        "791e50bb1c842933f9d80581ceb1b8439a3246152f5cd9bcbff1edbe0482288d",
+        "18e12bc31dd30a9677934800adb39ef6b3e236c2dc231f5ec4dc56aabd8d7c84",
+        "ba018fcb31b074d7bb29288f3d234eca0e1e3a406cfd83769f43092f8559ac9e",
+        "ed49ef2898cd1d4642d7e9cf2a95c74812cd484e9be79e9dd5323b7e6e001cc7",
+        "0164b1e3c60211e2a42b1e18786f9af39afdbca03da08d48cfe13f611c759637",
+        "18b5868f8ba4fff966a945b5305f4c1a41a223709ae570f004b412441cb203ad"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/junpei-posesheet.png"
+    },
+    {
+      "batch": 19,
+      "source": "mitsuru-posesheet.png",
+      "sha256": "4c6c21cb6163a4738a5d3a8a969ba9dc353447b2a3424d812da2ec6c6a5030cd",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "mitsuru",
+      "intendedUse": "Fighter pose sheet: idle, Evoker raised, weapon attack, spell, hurt, victory",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90",
+      "placement": "battle.js FIGHTER_POSES: the battlefield figure (.bt-fighter) through the Shadow pose controller; idle is the stance, Evoker held during the summon, weapon frame on Attack and physical skills, spell frame on casts, hurt when hit, victory on a win (replaces the static poses/mitsuru.webp stance, kept on disk)",
+      "destination": [
+        "assets/femc/battle/art/poses/mitsuru-pose-0.webp",
+        "assets/femc/battle/art/poses/mitsuru-pose-1.webp",
+        "assets/femc/battle/art/poses/mitsuru-pose-2.webp",
+        "assets/femc/battle/art/poses/mitsuru-pose-3.webp",
+        "assets/femc/battle/art/poses/mitsuru-pose-4.webp",
+        "assets/femc/battle/art/poses/mitsuru-pose-5.webp"
+      ],
+      "outputSha256": [
+        "75f3e8ca90cbf36ee54eee29403a29a446fad97120cd5ce08f8715e3cd77f1b2",
+        "da453b06374071312b2ac305a8482c47b017e255076f767accb25d64a4825001",
+        "c866ea382dc9623a7db7b1632baefc614a95ec352a24bf17821c511b75f06d94",
+        "2ea4452ecb140d97a99107d39517af1218338d515159e2ef866923a9e6f26e5c",
+        "9b96a0a6c94583ff59187c5363596d7a5792b3faf7c5d64501987bf9edf88297",
+        "b8d794f3c4ed00cac2315a6733501a2eaa53d384647a82435dd976b3b09955e0"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/mitsuru-posesheet.png"
+    },
+    {
+      "batch": 19,
+      "source": "aigis-posesheet.png",
+      "sha256": "bfd9d51f1bc39001aaf53d89c4bdae2bda0ad7d580b46f07a1f430ec479d254b",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "aigis",
+      "intendedUse": "Fighter pose sheet: idle, Evoker raised, weapon attack, spell, hurt, victory",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90",
+      "placement": "battle.js FIGHTER_POSES: the battlefield figure (.bt-fighter) through the Shadow pose controller; idle is the stance, Evoker held during the summon, weapon frame on Attack and physical skills, spell frame on casts, hurt when hit, victory on a win (replaces the static poses/aigis.webp stance, kept on disk)",
+      "destination": [
+        "assets/femc/battle/art/poses/aigis-pose-0.webp",
+        "assets/femc/battle/art/poses/aigis-pose-1.webp",
+        "assets/femc/battle/art/poses/aigis-pose-2.webp",
+        "assets/femc/battle/art/poses/aigis-pose-3.webp",
+        "assets/femc/battle/art/poses/aigis-pose-4.webp",
+        "assets/femc/battle/art/poses/aigis-pose-5.webp"
+      ],
+      "outputSha256": [
+        "ba08737278c752799878406c18106081739f1382e75a3fb8179931684a9e7c4a",
+        "6b44ec523b8c722b1b99b1c6f11bc1aaaba26e227c43b7035d2a07aa8fd687ea",
+        "094e726bb90ede030b78111d9731c5c696d64292cfb0677cf47d5fc2982ad3b6",
+        "2ee49a6b40b3aebd41d288ee425c08a637f39fc3c481a40c934296097b317ade",
+        "f584a1516e09bd9d61943ef0564614cfee6d115f069419b518949f508aa1490b",
+        "6fb7ec15d2b79dbe74767678f0127f2b4a9bfe3336e6f6df348c5058aa19959a"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/aigis-posesheet.png"
+    },
+    {
+      "batch": 19,
+      "source": "koromaru-posesheet.png",
+      "sha256": "629c09aaa87edcafa3b452a11d87d99029b767a71bc558aa6ab58eaa7cb664c8",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "koromaru",
+      "intendedUse": "Fighter pose sheet: idle, Evoker raised, weapon attack, spell, hurt, victory",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90",
+      "placement": "battle.js FIGHTER_POSES: the battlefield figure (.bt-fighter) through the Shadow pose controller; idle is the stance, Evoker held during the summon, weapon frame on Attack and physical skills, spell frame on casts, hurt when hit, victory on a win (replaces the static poses/koromaru.webp stance, kept on disk)",
+      "destination": [
+        "assets/femc/battle/art/poses/koromaru-pose-0.webp",
+        "assets/femc/battle/art/poses/koromaru-pose-1.webp",
+        "assets/femc/battle/art/poses/koromaru-pose-2.webp",
+        "assets/femc/battle/art/poses/koromaru-pose-3.webp",
+        "assets/femc/battle/art/poses/koromaru-pose-4.webp",
+        "assets/femc/battle/art/poses/koromaru-pose-5.webp"
+      ],
+      "outputSha256": [
+        "0b830305f0691d08ebfce3dd5fe7a018cd9c46609d064daf9e658f5606d71ef0",
+        "e2afdadce4c39d68b83383bfeac5a7ffe66a1c1548e319eee417df3c1422b8a5",
+        "e2d19a65125f88ea8861245b66998893a0517f95f2dcd8329b51f2b63fd64e0d",
+        "da1daee3536f1061f55e38eac5915c74afcb2aea1c828fc1e2a79a309764fc0e",
+        "e4d550f91c6912512dde71b3521ed7bbf472ec6307e7a13c15ca1205350f9f60",
+        "dd3909f215bdc60330c0870ff327a132006977c1439811a91b3f850bae43d978"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/koromaru-posesheet.png"
+    },
+    {
+      "batch": 19,
+      "source": "shinjiro-posesheet.png",
+      "sha256": "310ef37002cb85166110a5efffacd72bb819a8c35860ca19b16542c13c3ebf05",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "shinjiro",
+      "intendedUse": "Fighter pose sheet: idle, Evoker raised, weapon attack, spell, hurt, victory",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90",
+      "placement": "battle.js FIGHTER_POSES: the battlefield figure (.bt-fighter) through the Shadow pose controller; idle is the stance, Evoker held during the summon, weapon frame on Attack and physical skills, spell frame on casts, hurt when hit, victory on a win (replaces the static poses/shinjiro.webp stance, kept on disk)",
+      "destination": [
+        "assets/femc/battle/art/poses/shinjiro-pose-0.webp",
+        "assets/femc/battle/art/poses/shinjiro-pose-1.webp",
+        "assets/femc/battle/art/poses/shinjiro-pose-2.webp",
+        "assets/femc/battle/art/poses/shinjiro-pose-3.webp",
+        "assets/femc/battle/art/poses/shinjiro-pose-4.webp",
+        "assets/femc/battle/art/poses/shinjiro-pose-5.webp"
+      ],
+      "outputSha256": [
+        "eb0bc86b1fa8724fa3a5b4ff408edf3a182d612ca2e8ff6d3f0aeebd7a5861ed",
+        "055d367027391a31d11f4d641287076b5f8ccd29e3421cd71c592b9373f2c44d",
+        "a660d54348a1b0f8b868154be6921ae5c515b576eafb3b3b0a371fe95de66acc",
+        "2518576d4ef6942eaa871d92d97363b791d957a4e41ab9d0ae96ba048e8027df",
+        "65954cfae2f729d2ef918eae0c38af7fac0ea60cc2d4f87e6dc5b9f2653a244e",
+        "05aeba339e5c2a4bf194fb976b11e351412e18f5dbcbf57e0eb3e4101f3c868d"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/shinjiro-posesheet.png"
+    },
+    {
+      "batch": 19,
+      "source": "haechan-posesheet.png",
+      "sha256": "0b04e84281a4cabcdccdf30556e02b6a52a31a596c3b8b58dc93ecd1ea44182e",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "haechan",
+      "intendedUse": "Fighter pose sheet: idle, Evoker raised, weapon attack, spell, hurt, victory",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90",
+      "placement": "battle.js FIGHTER_POSES: the battlefield figure (.bt-fighter) through the Shadow pose controller; idle is the stance, Evoker held during the summon, weapon frame on Attack and physical skills, spell frame on casts, hurt when hit, victory on a win (new: searchers had no battlefield figure)",
+      "destination": [
+        "assets/femc/battle/art/poses/haechan-pose-0.webp",
+        "assets/femc/battle/art/poses/haechan-pose-1.webp",
+        "assets/femc/battle/art/poses/haechan-pose-2.webp",
+        "assets/femc/battle/art/poses/haechan-pose-3.webp",
+        "assets/femc/battle/art/poses/haechan-pose-4.webp",
+        "assets/femc/battle/art/poses/haechan-pose-5.webp"
+      ],
+      "outputSha256": [
+        "47770ba6adf031a598d1fad870311a8320599d0923ed50bde428207e0f83be2b",
+        "8639f457b7f796eca440548e71b69009cd615c5dff9ffba8e561bea9ca503ec6",
+        "31405f320cd2a150bafb9cf897f8a1820cda35e49961ac6652483b427075077f",
+        "0aa6b6360b111055563cf759dd337e6bc4998746453f9a7e06f136b91a3b2d1d",
+        "156eb0cda5778f13a4b350c91f3437ddc923a5207f61f7b881a5b1a3f331d6b0",
+        "eb1eaab42f2689a7e920247c76955355df6febbf5f358d4a7d28ca412dd34186"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/haechan-posesheet.png"
+    },
+    {
+      "batch": 19,
+      "source": "jungwon-posesheet.png",
+      "sha256": "1daa48b890fea500017b8a6f5b3e1927ae2015a8046852f34e696c9c4aceca0b",
+      "size": [
+        1024,
+        1536
+      ],
+      "character": "jungwon",
+      "intendedUse": "Fighter pose sheet: idle, Evoker raised, weapon attack, spell, hurt, victory",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90",
+      "placement": "battle.js FIGHTER_POSES: the battlefield figure (.bt-fighter) through the Shadow pose controller; idle is the stance, Evoker held during the summon, weapon frame on Attack and physical skills, spell frame on casts, hurt when hit, victory on a win (new: searchers had no battlefield figure)",
+      "destination": [
+        "assets/femc/battle/art/poses/jungwon-pose-0.webp",
+        "assets/femc/battle/art/poses/jungwon-pose-1.webp",
+        "assets/femc/battle/art/poses/jungwon-pose-2.webp",
+        "assets/femc/battle/art/poses/jungwon-pose-3.webp",
+        "assets/femc/battle/art/poses/jungwon-pose-4.webp",
+        "assets/femc/battle/art/poses/jungwon-pose-5.webp"
+      ],
+      "outputSha256": [
+        "0d1ab90017cc508e8401d826ef55e3929142d0a92950d4fe68ac6cf792d26d7f",
+        "653ed43d82de363c45bbec3b743e7bd3ca53908eb270c9a0bf4543fdd33a7062",
+        "bd28e18cd55386e344701c3f9c75ea9fcb58ceda8af51cd8b8e63395620baaff",
+        "0eab67c21c41c59d77218d4bb4e5ba536346b8b68a5f7f5ca7cb3703c18846a0",
+        "48bc48b1d4e2a6ed2036fc4d76fa8ccdece42db7074812c7ffec7f753fabf02d",
+        "63897ff06b8c138324896d24201802573bcaa242b2a764a7242e3b42f78bd04f"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/jungwon-posesheet.png"
+    },
+    {
+      "batch": 19,
+      "source": "jihoon-posesheet.png",
+      "sha256": "e00419e1d2b156a40787e56a003d46d8057f2cc61eeda3f6d03d196ce1ccf91c",
+      "size": [
+        1024,
+        1536
+      ],
+      "character": "jihoon",
+      "intendedUse": "Fighter pose sheet: idle, Evoker raised, weapon attack, spell, hurt, victory",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90",
+      "placement": "battle.js FIGHTER_POSES: the battlefield figure (.bt-fighter) through the Shadow pose controller; idle is the stance, Evoker held during the summon, weapon frame on Attack and physical skills, spell frame on casts, hurt when hit, victory on a win (new: searchers had no battlefield figure)",
+      "destination": [
+        "assets/femc/battle/art/poses/jihoon-pose-0.webp",
+        "assets/femc/battle/art/poses/jihoon-pose-1.webp",
+        "assets/femc/battle/art/poses/jihoon-pose-2.webp",
+        "assets/femc/battle/art/poses/jihoon-pose-3.webp",
+        "assets/femc/battle/art/poses/jihoon-pose-4.webp",
+        "assets/femc/battle/art/poses/jihoon-pose-5.webp"
+      ],
+      "outputSha256": [
+        "f2ec4cb8864b8757a0ce1895d6b13c1a91e1bcc7c18212bc282f9b0228f667af",
+        "5efb5d67235d8150f319632088f632378fa667420bda2b026aa25266bc0714bf",
+        "bb47fe83469b29ed527775fd9f8f9ef35782870a340e5fd13fedaa09a206ae87",
+        "55ee8b4739b9e70fe6adc6ed440a1ab46b29b59961ba86b98be24481c2513a74",
+        "9a0046f8f89f5b8cf449ffa805a6f3078c41fb4283fc05c8860806f95e8f5bac",
+        "b848ea81d0210d2db29fba4d708f3476bec84485587f5184c06969beaea71763"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/jihoon-posesheet.png"
+    },
+    {
+      "batch": 19,
+      "source": "minji-posesheet.png",
+      "sha256": "0331c43e6f7bf1fc7661cdafc403edc86a2c5e94f00f86bc0a4dd194d03945e9",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "minji",
+      "intendedUse": "Fighter pose sheet: idle, Evoker raised, weapon attack, spell, hurt, victory",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key() (Vision mask + un-mix from white; per-sheet hole/gap/glow settings), split into the six 3x2 grid figures, every frame on one fixed canvas per sheet with the body's mass centred and its lowest solid point on one baseline, WebP q90",
+      "placement": "battle.js FIGHTER_POSES: the battlefield figure (.bt-fighter) through the Shadow pose controller; idle is the stance, Evoker held during the summon, weapon frame on Attack and physical skills, spell frame on casts, hurt when hit, victory on a win (new: searchers had no battlefield figure)",
+      "destination": [
+        "assets/femc/battle/art/poses/minji-pose-0.webp",
+        "assets/femc/battle/art/poses/minji-pose-1.webp",
+        "assets/femc/battle/art/poses/minji-pose-2.webp",
+        "assets/femc/battle/art/poses/minji-pose-3.webp",
+        "assets/femc/battle/art/poses/minji-pose-4.webp",
+        "assets/femc/battle/art/poses/minji-pose-5.webp"
+      ],
+      "outputSha256": [
+        "c182080805536ec8c48992c17a396f839d2b83670dc6235f9b0ae81ad8822c67",
+        "a0cad7f2c314a040bf54ad6d4340d0949b3b44116172b290e51d7f63dbcd9331",
+        "0e9729ec8d2083062e1e31a619b860e090a60b867cb859960cc844f228f3d065",
+        "e1a0972f6700d369d9fc4baa0a609a57aab5710cdfb8ba18d7cd78a6b792cc9e",
+        "a7eb9bd419dca9eb8fa27f8d0b5f08d9d166323f22f4668959316563b87ef1a3",
+        "00d65d4ee2c7e6272e90ac242f874f3fca030df82ea9d2a7817a9c65a9f4355d"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/minji-posesheet.png"
     }
   ],
   "batch1Validation": {
@@ -2467,5 +3180,24 @@
     "framing": "face focus checked at 375x812 on Akihiko, Mitsuru, Ken and Shinjiro",
     "test": "python3 tests/femc_theurgy.py (section 2b: each member's Theurgy through the real menu, all art loaded, every phase played)",
     "browserErrors": 0
+  },
+  "batch19Validation": {
+    "date": "2026-10-21",
+    "scope": "Pose sheets: 11 full-moon boss sheets (the Last Train included) and 12 fighter sheets",
+    "sourcesInspected": "all 23 viewed before wiring: each boss sheet shows that boss in the six requested poses; each fighter sheet shows the right member, weapon and the six poses. chariot-attack.png is the Chariot alone (Justice is a separate Shadow in the same fight and keeps its static art)",
+    "sourcesIntegrated": 23,
+    "sourcesPreparedOnly": 0,
+    "sourcesUnchanged": true,
+    "edgesReviewed": "every frame on purple, pink and white; Vision-filled white gaps (hair, ribbons, glows) punched or un-mixed per sheet; the Hierophant cast aura stays slightly milky",
+    "tests": [
+      "python3 tests/femc_shadow_poses.py (memory Shadows plus every full-moon boss in its real fight: attack, cast, hurt, down, defeat, canvas)",
+      "python3 tests/femc_field_poses.py (all 12 fighters: stance, summon with and without cut-in, hurt, reduced motion, real Attack, victory)",
+      "python3 tests/femc_theurgy.py (cross-check)"
+    ],
+    "browserErrors": 0,
+    "remaining": [
+      "ken (no fighter sheet yet)",
+      "justice (no boss sheet)"
+    ]
   }
 }

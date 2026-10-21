@@ -2065,6 +2065,8 @@ html.bt-perf .bt-amk.k-weak, html.bt-perf .bt-amk-ring, html.bt-perf .bt-enemy.a
 .bt-fighter { flex: 0 1 24%; width: 24%; min-width: 0; max-width: 240px; align-self: flex-end; pointer-events: none; }
 .bt-fighter[hidden] { display: none; }
 .bt-fighter img { display: block; width: 100%; height: min(38vh, 330px); object-fit: contain; object-position: center bottom; filter: drop-shadow(0 10px 8px rgba(0, 0, 0, .5)); }
+/* Pose-sheet frames (battle.js FIGHTER_POSES): one canvas per member, scaled from the feet so the figure matches its old stance. */
+.bt-fighter img.posed { transform: scale(var(--pz, 1)); transform-origin: 50% 100%; }
 @media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
   .bt-fighter { flex-basis: 28%; width: 28%; }
   .bt-fighter img { height: min(23vh, 180px); }

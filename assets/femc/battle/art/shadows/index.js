@@ -87,9 +87,39 @@ window.FEMC_SHADOW_ART = {
   "w": 331
  },
  "chariot-shadow": {
-  "h": 703,
+  "h": 512,
+  "poses": {
+   "frames": [
+    "chariot-shadow-pose-0",
+    "chariot-shadow-pose-1",
+    "chariot-shadow-pose-2",
+    "chariot-shadow-pose-3",
+    "chariot-shadow-pose-4",
+    "chariot-shadow-pose-5"
+   ],
+   "scale": 1.0756,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
   "small": false,
-  "w": 404
+  "w": 578
  },
  "cloudgirl-pot": {
   "h": 639,
@@ -147,14 +177,74 @@ window.FEMC_SHADOW_ART = {
   "w": 687
  },
  "emperor-shadow": {
-  "h": 644,
+  "h": 530,
+  "poses": {
+   "frames": [
+    "emperor-shadow-pose-0",
+    "emperor-shadow-pose-1",
+    "emperor-shadow-pose-2",
+    "emperor-shadow-pose-3",
+    "emperor-shadow-pose-4",
+    "emperor-shadow-pose-5"
+   ],
+   "scale": 1.0413,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
   "small": false,
-  "w": 543
+  "w": 610
  },
  "empress-shadow": {
-  "h": 700,
+  "h": 544,
+  "poses": {
+   "frames": [
+    "empress-shadow-pose-0",
+    "empress-shadow-pose-1",
+    "empress-shadow-pose-2",
+    "empress-shadow-pose-3",
+    "empress-shadow-pose-4",
+    "empress-shadow-pose-5"
+   ],
+   "scale": 1.1501,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
   "small": false,
-  "w": 475
+  "w": 544
  },
  "flauros": {
   "h": 704,
@@ -162,9 +252,39 @@ window.FEMC_SHADOW_ART = {
   "w": 252
  },
  "fortune-shadow": {
-  "h": 415,
+  "h": 512,
+  "poses": {
+   "frames": [
+    "fortune-shadow-pose-0",
+    "fortune-shadow-pose-1",
+    "fortune-shadow-pose-2",
+    "fortune-shadow-pose-3",
+    "fortune-shadow-pose-4",
+    "fortune-shadow-pose-5"
+   ],
+   "scale": 1.1532,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
   "small": false,
-  "w": 539
+  "w": 636
  },
  "gabriel": {
   "h": 573,
@@ -187,9 +307,39 @@ window.FEMC_SHADOW_ART = {
   "w": 549
  },
  "hanged-man-shadow": {
-  "h": 615,
+  "h": 534,
+  "poses": {
+   "frames": [
+    "hanged-man-shadow-pose-0",
+    "hanged-man-shadow-pose-1",
+    "hanged-man-shadow-pose-2",
+    "hanged-man-shadow-pose-3",
+    "hanged-man-shadow-pose-4",
+    "hanged-man-shadow-pose-5"
+   ],
+   "scale": 1.0766,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
   "small": false,
-  "w": 540
+  "w": 564
  },
  "hariti": {
   "h": 703,
@@ -207,14 +357,74 @@ window.FEMC_SHADOW_ART = {
   "w": 524
  },
  "hermit-shadow": {
-  "h": 702,
+  "h": 582,
+  "poses": {
+   "frames": [
+    "hermit-shadow-pose-0",
+    "hermit-shadow-pose-1",
+    "hermit-shadow-pose-2",
+    "hermit-shadow-pose-3",
+    "hermit-shadow-pose-4",
+    "hermit-shadow-pose-5"
+   ],
+   "scale": 1.1128,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
   "small": false,
-  "w": 453
+  "w": 598
  },
  "hierophant-shadow": {
-  "h": 702,
+  "h": 556,
+  "poses": {
+   "frames": [
+    "hierophant-shadow-pose-0",
+    "hierophant-shadow-pose-1",
+    "hierophant-shadow-pose-2",
+    "hierophant-shadow-pose-3",
+    "hierophant-shadow-pose-4",
+    "hierophant-shadow-pose-5"
+   ],
+   "scale": 1.1488,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
   "small": false,
-  "w": 535
+  "w": 546
  },
  "high-pixie": {
   "h": 702,
@@ -282,9 +492,39 @@ window.FEMC_SHADOW_ART = {
   "w": 407
  },
  "lovers-shadow": {
-  "h": 354,
+  "h": 486,
+  "poses": {
+   "frames": [
+    "lovers-shadow-pose-0",
+    "lovers-shadow-pose-1",
+    "lovers-shadow-pose-2",
+    "lovers-shadow-pose-3",
+    "lovers-shadow-pose-4",
+    "lovers-shadow-pose-5"
+   ],
+   "scale": 1.2304,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
   "small": false,
-  "w": 540
+  "w": 624
  },
  "lustful-snake": {
   "h": 641,
@@ -740,9 +980,39 @@ window.FEMC_SHADOW_ART = {
   "w": 462
  },
  "priestess-shadow": {
-  "h": 442,
+  "h": 542,
+  "poses": {
+   "frames": [
+    "priestess-shadow-pose-0",
+    "priestess-shadow-pose-1",
+    "priestess-shadow-pose-2",
+    "priestess-shadow-pose-3",
+    "priestess-shadow-pose-4",
+    "priestess-shadow-pose-5"
+   ],
+   "scale": 1.1808,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
   "small": false,
-  "w": 540
+  "w": 572
  },
  "principality": {
   "h": 703,
@@ -920,9 +1190,39 @@ window.FEMC_SHADOW_ART = {
   "w": 553
  },
  "strength-shadow": {
-  "h": 698,
+  "h": 534,
+  "poses": {
+   "frames": [
+    "strength-shadow-pose-0",
+    "strength-shadow-pose-1",
+    "strength-shadow-pose-2",
+    "strength-shadow-pose-3",
+    "strength-shadow-pose-4",
+    "strength-shadow-pose-5"
+   ],
+   "scale": 1.141,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
   "small": false,
-  "w": 427
+  "w": 472
  },
  "surt": {
   "h": 699,
@@ -955,9 +1255,39 @@ window.FEMC_SHADOW_ART = {
   "w": 897
  },
  "wren-shadow-last-train": {
-  "h": 904,
+  "h": 518,
+  "poses": {
+   "frames": [
+    "wren-shadow-last-train-pose-0",
+    "wren-shadow-last-train-pose-1",
+    "wren-shadow-last-train-pose-2",
+    "wren-shadow-last-train-pose-3",
+    "wren-shadow-last-train-pose-4",
+    "wren-shadow-last-train-pose-5"
+   ],
+   "scale": 1.0637,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
   "small": false,
-  "w": 608
+  "w": 556
  },
  "yaksini": {
   "h": 696,

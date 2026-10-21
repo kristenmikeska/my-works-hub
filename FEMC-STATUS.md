@@ -56,6 +56,7 @@ Other docs, if you ever want detail:
 - ✅ Animated Theurgies (Solar's change with her form), and the animated Evoker summon
 - ✅ The searcher Personas: Dalnim, Hyeonmu, Dokkaebi, Theia
 - ✅ New Shadows: Group Chat and Fishmonger
+- 🟡 Bosses and fighters move in battle: all 11 full-moon bosses (the Last Train too) and 12 fighters have pose sheets; Ken and Justice still need theirs
 - 🟡 Weapons for the other fighters: waiting on weapon-sheet art
 - ⬜ Gacha: capsule machine at the mall, plus Velvet Room draws
 - ⬜ Achievements as stamps on the hub

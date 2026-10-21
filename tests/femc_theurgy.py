@@ -260,7 +260,8 @@ try:
     ff = p.eval('fieldFrames')
     check([any(f'solar-evoke-{k}' in s for s in ff) for k in range(3)] == [True] * 3, ff)
     check(p.eval("!document.querySelector('.bt-fighter img.evk') && getComputedStyle(document.querySelector('.bt-fighter img')).opacity === '1'"), 'stance restored')
-    check(p.eval("document.querySelector('.bt-fighter img').src.includes('/poses/solar.webp')"), 'stance image')
+    # Her stance is the idle frame of her pose sheet (battle.js FIGHTER_POSES); the spell frame plays after the shot.
+    p.wait("document.querySelector('.bt-fighter img').src.includes('/poses/solar-pose-0.webp')", 10)
     errs = p.console(); check(not errs, errs)
     results['evoker'] = {'cutInBody': body, 'fieldFrames': ff}
 
