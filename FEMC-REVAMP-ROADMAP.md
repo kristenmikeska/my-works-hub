@@ -78,7 +78,7 @@ Batches, in order, after the story/character pass:
     - daily life: stat boosts, shop discounts, job pay, extra time
     - a skill or passive for Solar at MAX
 
-    Kat's examples: Minji r3 Crosshair Sync, r8 Behind the Lens; Haechan r2 Cut the Fluff, r7 Bait and Punish. ✓ Built 2026-10-20 (193 perks; 12 wait on unbuilt systems, listed at the end of `FEMC-LINK-PERKS.md`). Romance battle dialogue: built 2026-10-21 (battle banter on the romance route); Tartarus dialogue: not yet.
+    Kat's examples: Minji r3 Crosshair Sync, r8 Behind the Lens; Haechan r2 Cut the Fluff, r7 Bait and Punish. ✓ Built 2026-10-20 (193 perks; 3 still wait on unbuilt systems since the five stats landed on 2026-10-21: clubs, party switching, Velvet Room draws; listed at the end of `FEMC-LINK-PERKS.md`). Romance battle dialogue: built 2026-10-21 (battle banter on the romance route); Tartarus dialogue: not yet.
   - ✓ Buffs stack to a limit (3 levels).
   - ✓ Smarter Rush (heals when needed, rebuffs, hits weaknesses, uses Theurgy).
   - ✓ Remove the post-battle All-Out flashes.
@@ -87,7 +87,7 @@ Batches, in order, after the story/character pass:
   - ✓ Animated text send and receive with a notification sound.
   - ✓ Read all.
   - ✓ Softer pink slashes.
-  - ✓ A P5-style stat screen with a sun level-up (works with today's three stats; the five-stat migration below is still to do).
+  - ✓ A P5-style stat screen with a sun level-up (now showing the five stats below).
   - ✓ A P5X-inspired Go Out menu.
 - **C. Living world:**
   - Daily random events.
@@ -103,7 +103,34 @@ Batches, in order, after the story/character pass:
   - Achievements as hub stamps.
   - **Gacha, both kinds:** a capsule machine at the mall (yen or Tartarus tickets; accessories, cosmetics, cast keychains, rare items) and Velvet Room draws from Elizabeth (skill cards, rare gear).
 - **E. Visitors:** the Persona cast belongs to this world; Kuromi and My Melody as exchange students (My Melody as a hidden link); deeper Mercy, Kiriko and Sebastian links; Kasumi's timeline.
-- **Social stats become five P5-style ones:** Knowledge, Courage, Proficiency, Charm, Kindness. They gate links, choices, jobs and clubs. **Not migrated yet** (2026-10-21: the game still has P3P's Academics, Charm and Courage). The stats screen and level-up are ready for five (they read `stats.js`). The migration needs: the five in `stats.js` (names, colors, rank names, thresholds); a one-time save migration (Academics → Knowledge; Proficiency and Kindness start fresh or seeded); gains re-pointed in `places.js` (activities, books, dorm study), `jobs.js` and `job-scenes.js`, `core.js` (class answers, exams, perks) and `ui.js` (class listening, study); `needs` gates and choice requirements in the story and link files; the daily perks in `build.js`; and Kat's call on what earns Proficiency and Kindness.
+- ✓ **Five social stats (built 2026-10-21):** Knowledge, Courage, Proficiency, Charm, Kindness (Persona 5 Royal / Phantom X style). Each has five ranks with the game's own names. They gate links, choices, jobs and activities (clubs will use them too). Test: `python3 tests/femc_stats.py`.
+
+  **Ranks and points** (`stats.js`; points needed for ranks 1 to 5):
+
+  | Stat | Ranks | Points |
+  |---|---|---|
+  | Knowledge | Clueless · Bookish · Well-Read · Brilliant · Luminary | 0 · 20 · 65 · 125 · 200 |
+  | Courage | Skittish · Steady · Gutsy · Fearless · Unflinching | 0 · 15 · 45 · 90 · 150 |
+  | Proficiency | All Thumbs · Handy · Capable · Deft · Virtuoso | 0 · 15 · 45 · 90 · 150 |
+  | Charm | Wallflower · Noticed · Magnetic · Radiant · Main Character | 0 · 15 · 45 · 90 · 150 |
+  | Kindness | Polite · Thoughtful · Warmhearted · Devoted · Heart of Gold | 0 · 15 · 45 · 90 · 150 |
+
+  Knowledge's ladder is longer because class feeds it every day (about 110 points a year from class alone). In a simulated year, a normal playthrough (half its free time on links) ends near 750 points and maxes about three stats; a link-heavy one ends near 530 and maxes one. All five take 800.
+
+  **Ways to raise each one** (Go Out activities in `places.js`, the dorm at night in `places.js dorm`, books, jobs in `jobs.js`, shift choices in `job-scenes.js`, class and exams in `core.js`, bond perks in `build.js`):
+  - **Knowledge:** class (catching something worth writing down; a teacher's question answered right, also Charm), the library, studying at the dorm (rainy nights more), Study over coffee at Chagall, Hagakure (the rainy-day special more), the study group for first-years, Fix something at the desk, books (Pillow Book, Algebra, Fix It Yourself), exams (top 10 / top 3), the cinema's documentary week, the bookstore and tutoring jobs, a few shift and link choices. Perks: Study Hall, Tutor Session, Quiet Corner, Bro Discount.
+  - **Courage:** Wild-Duck's Mystery Burger, the Hagakure Mega Bowl challenge, the bathhouse's electric bath, the late horror show (Fri/Sat nights), the cinema's horror week, karaoke, the arcade cabinets, the back alley (needs Courage 2), the vending machine, wishing at the shrine, the pier, retro games at the desk, every Tartarus night (+1) and full moon won (+3), the convenience store and fish market jobs, standing-up choices in links and shifts, books (Tiger and the Rope, Say It Like You Mean It). Perks: Roadwork, Featherman Fan, Troublemaker, Pilates Partner.
+  - **Proficiency:** every job but tutoring and Yeobo's (by job), the crane game and arcade cabinets, sewing / fixing / retro games / keyboard at Solar's desk, cooking dinner at the dorm, the school rooftop garden, the cinema's heist week, books (Handmade, Fix It Yourself, The Dormitory Kitchen), handy choices in links and shifts. Perks: Kitchen Duty, Sewing Machine, Editing Bay, Fishing Trip, Garden Patch, Morning Stretch, Pilates Partner.
+  - **Charm:** Pheromone Coffee at Chagall, trying on outfits at the mall, soaking at the bathhouse, karaoke, the pier, the children's ward, the keyboard, a class question answered right, exams, the romance week at the cinema, Respawn and Yeobo's shifts, books (Art of Poise, Say It Like You Mean It, The Art of Listening). Perks: Fan Club, Glow Up, Fit Check, Golden Hour, Warm-Up, Model Discount, Recruitment Pitch.
+  - **Kindness:** walking Koromaru (from 8/10), watering the dorm's roof garden, cooking for the dorm, volunteering (the first-years' study group, sweeping the shrine, the weekend beach cleanup, reading on the children's ward), the school rooftop garden, the flower stall job, tutoring, Yeobo's, helping people in shift choices, caring choices in links, the cinema's drama week, books (Letters to a Young Nurse, The Dormitory Kitchen, The Art of Listening). Perks: Learning Mode, Walkies, Garden Patch, Seven Croissants, Staff Shift.
+
+  **New places and activities:** the Mega Bowl challenge (Hagakure), the electric bath (bathhouse), Study over coffee (Chagall), Try on outfits (Shop Windows), the crane game (Game Panic), the cinema's weekly bill (five films, one a week) and the late horror show, the first-years' study group and the rooftop garden (Gekkoukan), the beach cleanup (Port Island), sweeping the shrine, reading on the children's ward (the hospital), the flower stall job (the mall), and at the dorm in the evening: Cook dinner, Water the roof garden, Walk Koromaru, and Your desk (sew, fix something, retro games, the keyboard). Five new books at Bookworms. All reuse existing backgrounds; art Kat could make is in `FEMC-ART-TODO.md` section 8.
+
+  **Gates** (same rank numbers as before, so old gates keep working): Mitsuru's link (Knowledge 2), tutoring (Knowledge 3), the back alley (Courage 2), Cherry's skating and Mark's mic (Courage 3), Cherry's explaining (Knowledge 3). Two moved to fit the character, with the text unchanged: Junkyu's rhythm-game challenge is Proficiency 2, and Sunoo's "I'll be the whole school" is Kindness 2. An old id (`academics`) still works anywhere (`stats.js alias`).
+
+  **Save migration** (`core.js migrateStats`, once per save; `S.sv` 2 marks it done, the old values stay in `S.statsFrom`): Academics → Knowledge, Charm → Charm, Courage → Courage. Each keeps its place on the ladder (old rank and progress → new rank and progress; old ranks 1-6 map to 1, 2, 3, 3.5, 4, 5), so no stat drops a rank, every old gate still passes, and an old MAX is a new MAX. Proficiency and Kindness start at 3 plus a catch-up from what the playthrough already did: job shifts (each job's Proficiency / Kindness), Koromaru's rank (+2 each), every 6 link ranks (+1 Kindness) and every three weeks of the year (+1 each), capped below rank 4. A mid-December save lands around rank 2-3 in both. Slots and backup codes migrate when loaded.
+
+  **Clubs hook:** `places.js clubs` (empty): each club is an activity with `club: true`, shown at its area like any other; Rio's Practice Swing waits for the tennis club.
 
 ### New Adds still to wire in (after the merge lands)
 - ✓ **SolarWeapons.png (12 naginatas)** (built 2026-10-20: `build.js` NAG, with art in the Equipment tab and refines +1 to +5): each is a REAL weapon with its own stats and a bonus that suits its look (snowflake → ice, fox → crits, and so on), earned from shops, chests, bosses, links and achievements. Cut files are in `assets/femc/battle/art/weapons/`.
@@ -113,7 +140,7 @@ Batches, in order, after the story/character pass:
 - **Skipped:** the Shinjiro close-up (05_05_25 PM). Kat is regenerating it with an Evoker.
 
 ## 8. More building and skilling (Kat, 2026-10-20)
-Kat loves the skill tree and wants much more building. **Built 2026-10-20:** Revelation cards (menu → Cards), Shuffle Time, the link perks (menu → Bonds) and the naginatas, all in `assets/femc/battle/build.js`; `tests/femc_building.py` plays them. Bond skills, signature skills and battle lines were built 2026-10-21 (see the overnight queue below). Not built yet: Velvet Room draws, the five social stats.
+Kat loves the skill tree and wants much more building. **Built 2026-10-20:** Revelation cards (menu → Cards), Shuffle Time, the link perks (menu → Bonds) and the naginatas, all in `assets/femc/battle/build.js`; `tests/femc_building.py` plays them. Bond skills, signature skills and battle lines were built 2026-10-21 (see the overnight queue below). Not built yet: Velvet Room draws. (The five social stats were built 2026-10-21; see section 7.)
 - **Revelation-style cards (P5X):** each fighter equips a set of cards. Each card has a main stat and random substats; matching sets give bonuses. Cards level and refine with materials. Sets are themed on Solar's worlds and the arcana.
 - **Shuffle Time, P3P-style:** after some fights the cards spin and you pick one.
   - Cups heal, Coins give yen, Swords give weapons, Wands give EXP.
@@ -189,6 +216,6 @@ Moods live in `assets/femc/game/data/places.js` (`music`, `screens`, `worldMusic
    - **Group chats name the sender** in every multi-person thread (`texts.js groups` plus any thread with two or more senders): the name over the bubble, the in-world handle beside it (hate club), and "added you to a group" lines as chat notices. The data is unchanged.
    - **Read all** on the phone list (`core.js markAllRead`), with the unread count; newest threads stay on top; answers still waiting keep a Reply tag.
    - **Softer pink slashes:** the site skin's full-screen stripes (drawn on top of everything, over the HUD and text boxes) are off on the game and battle pages; the game's own are thin, faint and kept to the lower right of the stage and the top-right corner of scene art.
-   - **P5R-style social stats** (menu → Status): a radar with one corner per stat, and a card per stat with its rank name, rank in suns and the meter to the next rank. A rank-up plays a level-up card with Solar's sun (waits for a scene to end; reduced motion gets a still version). Both read `stats.js`, so the five P5 stats drop in as data. **The five-stat migration itself is not done** (see section 7).
+   - **P5R-style social stats** (menu → Status): a radar with one corner per stat, and a card per stat with its rank name, rank in suns and the meter to the next rank. A rank-up plays a level-up card with Solar's sun (waits for a scene to end; reduced motion gets a still version). Both read `stats.js`; they show the five stats (built 2026-10-21, section 7).
    - **P5X-style Go Out:** slanted art cards per area (and per place inside one) with who's there today (met links' faces); hover or focus fills a side panel with what the place is, who's around, what you'd get and what it costs; on phones the cards carry that themselves. Keyboard, pad, mouse and touch. Choosing still opens the review before any time or yen is spent. Descriptions are `about` fields in `places.js`.
    - Test: `python3 tests/femc_polish.py` (screenshots at 1000×486, 375×812 and 1440×900).

@@ -50,7 +50,8 @@ Until the battle side is wired up, every fight shows a placeholder card ("Battle
     bossesCleared: ['magician', 'priestess'],
     fragments: ['strangers-harbor'],   // memory fragments Solar already has (don't award these again)
     fragmentsOpen: true,         // false before 5/16: no memory fragments may drop yet
-    social: { stats: { academics: 64, charm: 36, courage: 33 }, ranks: { akihiko: 3, yukari: 3 } },  // link ranks: the party trees' tiers (4, 7) and MAX evolutions (battle save `ranks`); link perks later
+    kits: { night_leftovers: 1 },  // Tartarus only, optional: night-only items the life sim packed (Shinjiro's Kitchen Duty); battle.js adds them for the night
+    social: { stats: { knowledge: 64, courage: 33, proficiency: 20, charm: 36, kindness: 18 }, ranks: { akihiko: 3, yukari: 3 } },  // link ranks: the party trees' tiers (4, 7) and MAX evolutions (battle save `ranks`); link perks later
     difficulty: null             // reserved; the battle side keeps its own setting
   },
 

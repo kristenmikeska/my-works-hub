@@ -156,7 +156,7 @@ Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve th
 - **Battle:** a real Persona-style system. Turn-based, with weaknesses, One More, All-Out Attacks, and an S.E.E.S. party.
 - **Tartarus:** floors to climb, Shadows, treasure, and full-moon bosses.
 - **Growth:** leveling, skill trees, upgrades and equipment. Her Persona's skills unlock through memory fragments of her three lives.
-- **Social stats:** Academics, Charm, Courage and more. They gate links and choices. There are also exams and part-time jobs.
+- **Social stats:** Knowledge, Courage, Proficiency, Charm and Kindness (Persona 5 style, five ranks each). They gate links and choices. There are also exams and part-time jobs.
 - **Memory fragments:** a journal of déjà-vu moments (first 12 cards done in `assets/femc/memories/`, four per world). Following them shapes her route.
 - **Kept from v1, reworked:** social links, the bond meter, texts, the Go Out map, stamps, the compendium, New Game+, music, portraits and the art.
 

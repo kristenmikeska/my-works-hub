@@ -220,6 +220,19 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 - [ ] Yakushima: a forest trail with mossy cedars
 - [ ] Yakushima: the beach at night with fireworks
 - [ ] The dorm lounge decorated for a birthday: streamers, a cake, balloons, warm night light
+- *The five social stats' places (2026-10-21).* Each one works now on an existing background (in brackets); a new one would replace it:
+  - [ ] Inside the neighborhood bathhouse: tiled baths, a mural, steam, a small electric bath in the corner, evening (now `outside-daytime-neighborhood` / `outside-night`)
+  - [ ] Hagakure's challenge bowl on the counter: an enormous ramen bowl, a stopwatch, a wall of winners' photos (now `hagakureramen`)
+  - [ ] Inside Screen Shot: a small cinema with red seats and the projector beam, the late show (now `screen`)
+  - [ ] Inside Game Panic: rows of crane machines full of plushies, rhythm cabinets, neon (now `gameparade-outside`)
+  - [ ] The dorm roof with planters: tomatoes, basil, a watering can, the city at dusk (now `iwatodaidorm-roof-evening`)
+  - [ ] Solar's desk at night: a sewing kit, a half-fixed radio, an old game console, a small keyboard and headphones (now `solar-dormroom-night`)
+  - [ ] A flower stall by the Paulownia Mall fountain: buckets of flowers, a stool, wrapping paper (now `shopping-street`)
+  - [ ] Naganaki Shrine's grounds with a bamboo broom and a pile of leaves, afternoon (now `outside-shrine-day`)
+  - [ ] The seaside park's beach after a cleanup: bags, gloves, gulls, morning light (now `park-2`)
+  - [ ] Tatsumi Memorial's children's ward playroom: picture books, cards, a window, soft afternoon light (now `hospital-hallway-day`)
+  - [ ] A Gekkoukan classroom after school with a small study group's desks pushed together (now `gekkoukan-classroom-day`)
+  - [ ] The riverside path at night with a lamppost, for walking Koromaru (now `park-2`)
 
 ---
 

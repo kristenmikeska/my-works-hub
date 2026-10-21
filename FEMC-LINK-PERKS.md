@@ -102,7 +102,7 @@ Every social link earns named perks as it ranks up, the way Persona 5 Phantom X 
 
 | Rank | Perk | Type | Effect |
 |---|---|---|---|
-| 2 | Walkies | Daily | Once a week, an evening walk with him gives +2 Kindness without using any free time. |
+| 2 | Walkies | Daily | Once a week (Thursdays), an evening walk with him gives +2 Kindness without using any free time. |
 | 4 | Good Nose | Tartarus | One extra chest on every floor. |
 | 6 | Hellhound Hunt | Battle | The party's instant-kill skills (Mudo, Hama) land 15% more often against Down foes. |
 | 10 | Good Dog | MAX · passive | Every time Solar defeats a foe, she recovers 5% HP and SP. |
@@ -112,7 +112,7 @@ Every social link earns named perks as it ranks up, the way Persona 5 Phantom X 
 
 | Rank | Perk | Type | Effect |
 |---|---|---|---|
-| 2 | Kitchen Duty | Daily | Cooking with him becomes an evening activity at the dorm: +2 Proficiency, and the leftovers heal 20% HP at the start of the next Tartarus night. |
+| 2 | Kitchen Duty | Daily | Cooking with him becomes an evening activity at the dorm: +3 Proficiency, and the leftovers come along on the next Tartarus night (a dish that heals the party 20%). |
 | 3 | Heavy Hand | Battle | Shinjiro's attacks on Down foes never miss. |
 | 5 | Back Alley Rules | Battle | When a foe hits Solar, Shinjiro may counter it for free (25%). |
 | 10 | Hard Way Home | MAX · passive | Below 30% HP, Solar's physical damage is +40% and she can't be knocked Down. |
@@ -278,7 +278,7 @@ Every social link earns named perks as it ranks up, the way Persona 5 Phantom X 
 | 2 | Fit Check | Daily | +1 Charm on every activity on weekends. |
 | 4 | Tailor Made | Daily | Police Box armor costs 15% less, and every armor Solar wears gets +5 defense. |
 | 5 | Spotlight | Assist | Foes are 20% less likely to target Solar. |
-| 7 | Sewing Machine | Daily | Sewing with her becomes an evening activity at the dorm: +2 Proficiency. |
+| 7 | Sewing Machine | Daily | Sewing with her becomes an evening activity at Solar's desk: +3 Proficiency and +1 Charm. |
 | 10 | Showstopper | MAX · skill | Solar learns Showstopper: for 2 turns, every foe targets Solar. She gets defense up, and each hit she takes fills her Theurgy. |
 
 ### Jaehyun Lee · Arcana TBD · *Runners*
@@ -367,7 +367,7 @@ Before Minji fights, her Battle perks could work as Assists so the early ranks s
 | Rank | Perk | Type | Effect |
 |---|---|---|---|
 | 2 | Hype Man | Battle | Jihoon's buffs on Solar last 2 extra turns. |
-| 4 | Pilates Partner | Daily | Once a week, pilates with him gives +2 Proficiency and +1 Courage. |
+| 4 | Pilates Partner | Daily | Once a week (Saturdays), pilates with him gives +2 Proficiency and +1 Courage without using any free time. |
 | 6 | Main Character | Battle | While Solar is under half HP, foes go after Jihoon instead (he insists). |
 | 8 | Almighty Hoon | Tartarus | After beating a strong Shadow group, the party starts the next fight with attack up. |
 | 10 | Center Stage | MAX · passive | At full HP, Solar deals 20% more damage, and every One More she earns gives the party +10 Theurgy. |
@@ -461,7 +461,7 @@ Before Minji fights, her Battle perks could work as Assists so the early ranks s
 
 | Rank | Perk | Type | Effect |
 |---|---|---|---|
-| 2 | Garden Patch | Daily | Tending her garden gives +1 Kindness and +1 Proficiency. |
+| 2 | Garden Patch | Daily | Tending a garden (her rooftop garden at school, or the dorm roof) gives +1 Kindness and +1 Proficiency more. |
 | 4 | Milady's Salute | Assist | After an All-Out Attack, Haru follows up with a grenade shell: light Almighty damage to all foes. |
 | 7 | Fresh Harvest | Tartarus | Shadows drop materials 15% more often. |
 | 10 | Bloom | MAX · passive | The first damage Solar takes each battle is halved, and she heals 10% at the end of each of her first 3 turns. |
@@ -471,7 +471,7 @@ Before Minji fights, her Battle perks could work as Assists so the early ranks s
 
 | Rank | Perk | Type | Effect |
 |---|---|---|---|
-| 2 | Morning Stretch | Daily | Once a week, a morning routine with her gives +2 Proficiency without using any free time. |
+| 2 | Morning Stretch | Daily | Once a week (Tuesdays), a morning routine with her gives +2 Proficiency without using any free time. |
 | 4 | Floor Routine | Assist | Solar dodges physical attacks 10% more often. |
 | 6 | Perfect Ten | Battle | Each crit Solar lands raises her agility one step (up to the stack limit). |
 | 8 | Light Feet | Tartarus | 30% chance to slip past a Shadow room without a fight (Solar chooses). |
@@ -547,4 +547,15 @@ All of the perks above are in the game (`assets/femc/battle/build.js`, `PERKS`),
 
 **Romance ideas (2026-10-21):** the battle ones are in the game as banter on the romance route (`data.js party[].banter`, from rank 6, more at 9), each with Solar's reply; the Tartarus ones aren't built yet. Duo Cohesion stays Minji's perk; her bond skill is a separate move (`bonds.js`).
 
-**Waiting on systems that don't exist yet (stubbed, shown as "Coming later"):** Aigis · Learning Mode, Koromaru · Walkies, Judy · Editing Bay, Noctis · Fishing Trip, Hyein · Sewing Machine, Haru · Garden Patch, Kasumi · Morning Stretch (the five social stats: Proficiency / Kindness); Shinjiro · Kitchen Duty and Jihoon · Pilates Partner (Proficiency plus a new activity); Rio · Practice Swing (clubs); Jaehyun · Audible (party switching in battle); Elizabeth · Compendium Credit (Velvet Room draws). Sunoo's Seven Croissants and Staff Shift work now; their +1 Kindness waits on the five stats. My Melody's three perks are built and wait for her link.
+**Waiting on systems that don't exist yet (stubbed, shown as "Coming later"):** Rio · Practice Swing (clubs; the hook is `places.js clubs`), Jaehyun · Audible (party switching in battle), Elizabeth · Compendium Credit (Velvet Room draws). My Melody's three perks are built and wait for her link.
+
+## Built (2026-10-21): the perks that waited on the five social stats
+The five stats (Knowledge, Courage, Proficiency, Charm, Kindness) are in the game, so these work now (`build.js` fx, read by `core.js`; `tests/femc_stats.py` plays each one):
+- **Aigis · Learning Mode:** every hangout (not a rank scene) is +1 Kindness.
+- **Koromaru · Walkies, Kasumi · Morning Stretch, Jihoon · Pilates Partner:** weekly bonds like Akihiko's Roadwork, on Thursdays, Tuesdays and Saturdays, with no free time used.
+- **Shinjiro · Kitchen Duty:** "Cook with Shinjiro" on the dorm's evening menu until he leaves (+3 Proficiency). The leftovers are a night-only item on the next Tartarus night ("Shinjiro's Leftovers", heals the party 20%), not an automatic heal, since the party starts each night at full HP.
+- **Judy · Editing Bay:** +1 Proficiency on every evening activity at the dorm (study, reading, cooking, the roof garden, Koromaru, the desk).
+- **Noctis · Fishing Trip:** the pier gives +2 Proficiency and its narration becomes fishing with him.
+- **Hyein · Sewing Machine:** "Sew with Hyein" at Solar's desk (+3 Proficiency, +1 Charm; plain sewing is +2 Proficiency).
+- **Haru · Garden Patch:** +1 Kindness and +1 Proficiency at both gardens (the school's rooftop garden, where she is, and the dorm roof).
+- **Sunoo · Seven Croissants and Staff Shift:** their +1 Kindness is on (Chagall coffee; Yeobo's shifts).
