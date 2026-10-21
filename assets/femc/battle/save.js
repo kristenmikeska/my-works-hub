@@ -13,12 +13,33 @@ window.FemcBattleSave = (() => {
   //          ops { cleared } (Full Moon Operations), cycle (full climbs to the top; makes Tartarus harder), th (Theurgy gauges), perf.
   // v4 adds: settings (see SETTINGS), tipsSeen (Fuuka's one-time tips), cursor (each member's last command, skill and item).
   //          speed may now be 3. The device settings now live in the game's one settings store (battle.js pulls them in).
+  // treeV 2 (the skill system, 2026-10-20): nodes are the new Haenim tree's (data.js tree / treeCenter); ptree { mid: [ids] }
+  //          (party trees), ranks { mid: link rank } (from the life sim), forgot / order { mid: [chain roots] } (8 skill slots).
+  //          An older save's tree is refunded as skill points into the new tree; forms it had already unlocked stay.
   const SETTINGS = { textSpeed: 'normal', musicVol: 100, sfxVol: 100, remember: true, rushWhere: 'normal', rushStop: 30, difficulty: 'normal', shake: true, calm: false, numbers: true, pad: 'auto', tips: true };
   const SETTING_OK = { textSpeed: ['slow', 'normal', 'fast', 'instant'], rushWhere: ['normal', 'strong', 'all'], rushStop: [30, 50], difficulty: ['story', 'normal', 'hard'], pad: ['auto', 'xbox', 'ps'] };
   const PREFS = ['settings', 'tipsSeen', 'cursor', 'music', 'sfx', 'speed', 'cutins', 'perf']; // device preferences: kept when a slot or backup is loaded
   const fresh = () => ({ v: 4, settings: Object.assign({}, SETTINGS), tipsSeen: [], cursor: {}, lvl: D.progression.startLevel, exp: 0, pts: 0, nodes: [], known: {}, clears: 0, cycle: 0, runs: 0, reached: null, music: null, sfx: true, speed: 1,
     party: D.defaultParty.slice(), mem: {}, tactics: {}, cutins: 'first', awakened: false,
-    yen: D.startYen, items: Object.assign({}, D.startItems), gear: { owned: {}, eq: {} }, mats: {}, memories: [], evo: {}, form: 'haenim', forms: [], ops: { cleared: [] }, th: {}, perf: false });
+    yen: D.startYen, items: Object.assign({}, D.startItems), gear: { owned: {}, eq: {} }, mats: {}, memories: [], evo: {}, form: 'haenim', forms: [], ops: { cleared: [] }, th: {}, perf: false,
+    ptree: {}, ranks: {}, forgot: {}, order: {} });
+  /* The first Haenim tree (three branches of five, before the skill system): its node costs, and the form each branch gave. */
+  const OLD_TREE = { bell: { form: 'haenim-sunna', cost: [1, 1, 2, 2, 3] }, jade: { form: 'haenim-mazu', cost: [1, 1, 2, 2, 3] }, star: { form: 'haenim-nike', cost: [1, 1, 2, 2, 3] } };
+  function migrateTree(s) {
+    const old = Array.isArray(s.nodes) ? s.nodes : [];
+    let back = 0;
+    if (!Array.isArray(s.forms)) s.forms = [];
+    Object.entries(OLD_TREE).forEach(([b, t]) => {
+      const ids = t.cost.map((_, i) => `${b}${i + 1}`);
+      ids.forEach((id, i) => { if (old.includes(id)) back += t.cost[i]; });
+      if (ids.every(id => old.includes(id)) && !s.forms.includes(t.form)) s.forms.push(t.form); // a mastered branch keeps its form
+    });
+    if (old.length && (s.forms.length >= 3 || old.length === 15) && ((s.ops || {}).cleared || []).length && !s.forms.includes('haenim-unveiled')) s.forms.push('haenim-unveiled');
+    s.pts = Math.max(0, (+s.pts || 0) + back);
+    s.nodes = [];
+    s.treeRefund = back;
+    s.treeV = 2;
+  }
   /* Fills in anything missing, so v1/v2 saves (and hand-edited ones) load cleanly. Members who were already fighting
      keep Solar's level; new recruits join one level behind her. */
   const OLD_FLOORS = ['f2', 'f4', 'f6']; // batch-1 floors 2F/5F/9F → the first three floors of Thebel
@@ -55,6 +76,15 @@ window.FemcBattleSave = (() => {
     if (!s.gear.eq || typeof s.gear.eq !== 'object') s.gear.eq = {};
     Object.keys(s.gear.owned).forEach(k => { if (!D.gear[k] || !(s.gear.owned[k] > 0)) delete s.gear.owned[k]; });
     if (!s.mats || typeof s.mats !== 'object') s.mats = {};
+    // The skill system: an older tree is refunded once (migrateTree), then the new tree's fields are cleaned.
+    if (s.treeV !== 2) migrateTree(s);
+    const nodeIds = new Set(E.treeNodes().map(n => n.id));
+    s.nodes = [...new Set((Array.isArray(s.nodes) ? s.nodes : []).filter(id => nodeIds.has(id)))];
+    if (!(s.pts >= 0)) s.pts = 0;
+    ['ptree', 'ranks', 'forgot', 'order'].forEach(k => { if (!s[k] || typeof s[k] !== 'object' || Array.isArray(s[k])) s[k] = {}; });
+    Object.keys(s.ptree).forEach(mid => { const ok = new Set(E.ptreeNodes(mid).map(n => n.id)); s.ptree[mid] = Array.isArray(s.ptree[mid]) ? [...new Set(s.ptree[mid].filter(id => ok.has(id)))] : []; if (!s.ptree[mid].length) delete s.ptree[mid]; });
+    Object.keys(s.ranks).forEach(mid => { const r = +s.ranks[mid]; if (!member(mid) || !(r >= 0)) delete s.ranks[mid]; else s.ranks[mid] = Math.min(10, Math.floor(r)); });
+    ['forgot', 'order'].forEach(k => Object.keys(s[k]).forEach(mid => { if (!member(mid) || !Array.isArray(s[k][mid])) delete s[k][mid]; else s[k][mid] = [...new Set(s[k][mid].filter(x => typeof x === 'string'))]; }));
     if (!Array.isArray(s.memories)) s.memories = [];
     s.memories = s.memories.filter(id => D.memories.some(m => m.id === id));
     if (!s.evo || typeof s.evo !== 'object') s.evo = {};

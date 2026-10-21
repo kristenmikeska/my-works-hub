@@ -9,7 +9,6 @@ window.FemcBattleEngine = (() => {
   const DATA = () => window.FEMC_BATTLE_DATA;
   const PHYS = new Set(['slash', 'strike', 'pierce']);
   const MAGIC = ['fire', 'ice', 'elec', 'wind'];
-  const BUFF_TURNS = 3;
 
   /* Seedable RNG (mulberry32) so tests can replay a fight. */
   function rng(seed) {
@@ -21,34 +20,181 @@ window.FemcBattleEngine = (() => {
      GROWTH: building a party member from the save
      ══════════════════════════════════════════════════ */
   const member = id => DATA().party.find(m => m.id === id);
+
+  /* ── The skill system (data.js tree / treeCenter / ptrees / chains / skillSlots). Rules only; the menu's Skills tab
+     (menu.js) and practice mode's tree screen (battle.js) draw it.
+     Save fields (save.js): nodes (Haenim's owned node ids), pts (her skill points), ptree { mid: [node ids] } (party trees),
+     ranks { mid: link rank } (synced from the life sim), forgot { mid: [chain roots] }, order { mid: [chain roots] }
+     (the order skills were learned in: the ninth and later wait for a "forget which?" choice), forms (permanent). ── */
+  let chainIdx = null;
+  function chainInfo(id) {
+    if (!chainIdx) {
+      chainIdx = {};
+      DATA().chains.forEach(c => c.forEach((s, i) => { chainIdx[s] = { i, root: c[0] }; }));
+      // A link's MAX evolution is the last step of its signature's chain (one member's own ending).
+      Object.values(DATA().ptrees || {}).forEach(t => { const m = t.max; if (m && !chainIdx[m.to]) chainIdx[m.to] = { i: 99, root: (chainIdx[m.from] || { root: m.from }).root }; });
+    }
+    return chainIdx[id] || null;
+  }
+  const rootOf = id => (chainInfo(id) || { root: id }).root;
+  const tierOf = id => (chainInfo(id) || { i: 0 }).i;
+  /* Learn into a list in place: a later tier replaces an earlier one in its slot; an earlier tier never replaces a later one. */
+  function learnInto(list, id) {
+    if (!id || !DATA().skills[id]) return list;
+    const r = rootOf(id), j = list.findIndex(x => rootOf(x) === r);
+    if (j < 0) list.push(id); else if (tierOf(list[j]) < tierOf(id)) list[j] = id;
+    return list;
+  }
+
+  /* Haenim's tree */
+  let nodeCache = null;
+  const treeNodes = () => nodeCache || (nodeCache = DATA().tree.flatMap(b => b.nodes.map(n => Object.assign({ branch: b.id }, n))).concat(DATA().treeCenter ? [Object.assign({ branch: 'center' }, DATA().treeCenter)] : []));
+  const treeNode = id => treeNodes().find(n => n.id === id) || null;
   function treeFx(nodes = []) {
-    const fx = { st: 0, ag: 0, hp: 0, sp: 0, mods: {}, learn: [], upgrade: [], healMult: 1, openBuff: null, autoAnalyze: false };
-    DATA().tree.forEach(b => b.nodes.forEach(n => {
+    const fx = { st: 0, ma: 0, en: 0, ag: 0, lu: 0, hp: 0, sp: 0, mods: {}, learn: [], healMult: 1, openBuff: null, autoAnalyze: false,
+      unit: { counter: 0, spRegen: 0, resist: [], quick: false, firstFree: false, endure: false } };
+    treeNodes().forEach(n => {
       if (!nodes.includes(n.id)) return;
-      const e = n.effect;
-      ['st', 'ag', 'hp', 'sp'].forEach(k => { if (e[k]) fx[k] += e[k]; });
+      const e = n.fx || {};
+      ['st', 'ma', 'en', 'ag', 'lu', 'hp', 'sp'].forEach(k => { if (e[k]) fx[k] += e[k]; });
       if (e.healMult) fx.healMult *= e.healMult;
       if (e.learn) fx.learn.push(e.learn);
-      if (e.upgrade) fx.upgrade.push(e.upgrade);
       ['crit', 'bind', 'ropeCrit'].forEach(k => { if (e[k]) fx.mods[k] = (fx.mods[k] || 0) + e[k]; });
-      ['weakMult', 'shiftMult', 'alloutMult', 'regen', 'shiftSp'].forEach(k => { if (e[k]) fx.mods[k] = e[k]; });
+      ['weakMult', 'critMult', 'shiftMult', 'alloutMult', 'regen', 'shiftSp', 'shiftTh', 'bindTurns'].forEach(k => { if (e[k]) fx.mods[k] = e[k]; });
+      if (e.flank) fx.mods.flank = true;
       if (e.autoAnalyze) fx.autoAnalyze = true;
       if (e.openBuff) fx.openBuff = e.openBuff;
-    }));
+      if (e.counter) fx.unit.counter += e.counter;
+      if (e.spRegen) fx.unit.spRegen += e.spRegen;
+      if (e.resist) fx.unit.resist.push(e.resist);
+      ['quick', 'firstFree', 'endure'].forEach(k => { if (e[k]) fx.unit[k] = true; });
+    });
     return fx;
   }
-  /* A tree branch is mastered when every node in it is owned. */
-  const mastered = (save, branch) => { const b = DATA().tree.find(x => x.id === branch); return !!b && b.nodes.every(n => (save.nodes || []).includes(n.id)); };
-  /* Haenim's forms the save has unlocked (permanent once earned: save.forms). Checks fresh unlocks too. */
+  /* A keystone counts as owned once its form has awakened (forms are permanent, and survive a respec or an old save). */
+  function treeOwned(save, id) {
+    const n = treeNode(id);
+    if (!n) return false;
+    return (save.nodes || []).includes(id) || !!(n.keystone && n.form && (save.forms || []).includes(n.form));
+  }
+  /* Fragments found (the battle save's, plus any the life sim knows about: extra). */
+  const fragSet = (save, extra = []) => new Set((save.memories || []).concat(extra || []));
+  /* own | avail | lock (a node before it) | lvl (Solar's level) | story (a full moon not cleared yet) | hidden (a memory not found) | taken (the other choice) */
+  function treeState(save, id, frags = fragSet(save)) {
+    const n = treeNode(id);
+    if (!n) return 'lock';
+    if (treeOwned(save, id)) return 'own';
+    if (n.memory && !frags.has(n.memory)) return 'hidden';
+    if (n.choice && treeNodes().some(x => x.choice === n.choice && x.id !== id && treeOwned(save, x.id))) return 'taken';
+    if ((n.needs || []).some(x => !treeOwned(save, x)) || (n.any && !n.any.some(x => treeOwned(save, x)))) return 'lock';
+    if (n.lvl && (save.lvl || 0) < n.lvl) return 'lvl';
+    if (n.op && !((save.ops || {}).cleared || []).length) return 'story';
+    return 'avail';
+  }
+  const nodeName = id => (treeNode(id) || {}).name || id;
+  function treeWhy(save, id, frags = fragSet(save)) {
+    const n = treeNode(id), st = treeState(save, id, frags);
+    if (!n) return '';
+    if (st === 'hidden') { const m = DATA().memories.find(x => x.id === n.memory); return `Opens when a memory from ${m ? m.world : 'another life'} surfaces.`; }
+    if (st === 'taken') return `You chose ${nodeName(treeNodes().find(x => x.choice === n.choice && x.id !== id && treeOwned(save, x.id)).id)} here.`;
+    if (st === 'lock') {
+      const miss = (n.needs || []).filter(x => !treeOwned(save, x)).map(nodeName);
+      if (n.any && !n.any.some(x => treeOwned(save, x))) miss.push(n.any.map(nodeName).join(' or '));
+      return `Needs ${miss.join(' and ')}.`;
+    }
+    if (st === 'lvl') return `Needs Solar at Lv ${n.lvl}.`;
+    if (st === 'story') return 'Needs a full moon cleared.';
+    if (st === 'avail' && (save.pts || 0) < n.cost) return `Needs ${n.cost} skill points.`;
+    return '';
+  }
+  function treeBuy(save, id, frags = fragSet(save)) {
+    const n = treeNode(id);
+    if (!n || treeState(save, id, frags) !== 'avail') return { ok: false, why: treeWhy(save, id, frags) || 'Not yet.' };
+    if ((save.pts || 0) < n.cost) return { ok: false, why: `Needs ${n.cost} skill points.` };
+    save.pts -= n.cost;
+    (save.nodes || (save.nodes = [])).push(id);
+    const learned = n.fx && n.fx.learn ? [n.fx.learn] : [];
+    learned.forEach(s => unforget(save, 'solar', s));
+    let form = null;
+    if (n.form) { save.forms = save.forms || []; if (!save.forms.includes(n.form)) { save.forms.push(n.form); form = n.form; } }
+    return { ok: true, learned, form, cost: n.cost };
+  }
+  /* Respec: every bought node comes back as points, except keystones (their forms are permanent, so they stay). */
+  const treeRefundable = save => (save.nodes || []).filter(id => { const n = treeNode(id); return n && !n.keystone; });
+  const treeSpent = save => treeRefundable(save).reduce((s, id) => s + treeNode(id).cost, 0);
+  function treeRespec(save) {
+    const back = treeSpent(save);
+    save.pts = (save.pts || 0) + back;
+    save.nodes = (save.nodes || []).filter(id => { const n = treeNode(id); return n && n.keystone; });
+    return back;
+  }
+
+  /* Party trees */
+  const ptreeOf = mid => (DATA().ptrees || {})[mid] || null;
+  const ptreeNodes = mid => { const t = ptreeOf(mid); return t ? t.tiers.flatMap((tier, k) => tier.map(n => Object.assign({ tier: k, choice: k === 2 }, n))) : []; };
+  const linkRank = (save, mid) => +((save.ranks || {})[mid]) || 0;
+  const ptreeOwn = (save, mid) => ((save.ptree || {})[mid]) || [];
+  const ptreeEarned = (save, mid) => DATA().progression.partyPts(lvlOf(save, mid));
+  const ptreeSpent = (save, mid) => ptreeNodes(mid).filter(n => ptreeOwn(save, mid).includes(n.id)).reduce((s, n) => s + n.cost, 0);
+  const ptreePts = (save, mid) => ptreeEarned(save, mid) - ptreeSpent(save, mid);
+  /* own | avail | rank (the link isn't high enough) | lock (buy something in the tier before) | taken (the other tier-3 choice) */
+  function ptreeState(save, mid, id, rank = linkRank(save, mid)) {
+    const n = ptreeNodes(mid).find(x => x.id === id);
+    if (!n) return 'lock';
+    const own = ptreeOwn(save, mid);
+    if (own.includes(id)) return 'own';
+    if (rank < DATA().ptreeRanks[n.tier]) return 'rank';
+    if (n.choice && ptreeNodes(mid).some(x => x.tier === n.tier && x.id !== id && own.includes(x.id))) return 'taken';
+    if (n.tier > 0 && !ptreeNodes(mid).some(x => x.tier === n.tier - 1 && own.includes(x.id))) return 'lock';
+    return 'avail';
+  }
+  function ptreeBuy(save, mid, id, rank = linkRank(save, mid)) {
+    const n = ptreeNodes(mid).find(x => x.id === id);
+    const st = ptreeState(save, mid, id, rank);
+    if (!n || st !== 'avail') return { ok: false, why: st === 'rank' ? `Opens at link rank ${DATA().ptreeRanks[n.tier]}.` : st === 'taken' ? 'The other choice is taken.' : 'Buy something in the tier above first.' };
+    if (ptreePts(save, mid) < n.cost) return { ok: false, why: `Needs ${n.cost} points (they come from levels).` };
+    save.ptree = save.ptree || {};
+    (save.ptree[mid] || (save.ptree[mid] = [])).push(id);
+    const learned = n.fx && n.fx.learn ? [n.fx.learn] : [];
+    learned.forEach(s => unforget(save, mid, s));
+    return { ok: true, learned, cost: n.cost };
+  }
+  function ptreeRespec(save, mid) { const back = ptreeSpent(save, mid); if (save.ptree) save.ptree[mid] = []; return back; }
+  function ptreeFx(save, mid) {
+    const fx = { st: 0, ma: 0, en: 0, ag: 0, lu: 0, hp: 0, sp: 0, learn: [], counter: 0, crit: 0, evade: 0, acc: 0, endure: false, healMult: 1, aff: {}, boost: {} };
+    const own = ptreeOwn(save, mid);
+    ptreeNodes(mid).forEach(n => {
+      if (!own.includes(n.id)) return;
+      const e = n.fx || {};
+      ['st', 'ma', 'en', 'ag', 'lu', 'hp', 'sp', 'counter', 'crit', 'evade', 'acc'].forEach(k => { if (e[k]) fx[k] += e[k]; });
+      if (e.learn) fx.learn.push(e.learn);
+      if (e.endure) fx.endure = true;
+      if (e.healMult) fx.healMult *= e.healMult;
+      Object.assign(fx.aff, e.aff || {}); Object.assign(fx.boost, e.boost || {});
+    });
+    return fx;
+  }
+
+  /* Forgetting: a forgotten skill's whole chain stays forgotten (an upgrade won't bring it back); buying it again does. */
+  function forgetSkill(save, mid, id) {
+    save.forgot = save.forgot || {};
+    const f = save.forgot[mid] || (save.forgot[mid] = []), r = rootOf(id);
+    if (!f.includes(r)) f.push(r);
+  }
+  function unforget(save, mid, id) {
+    const f = (save.forgot || {})[mid];
+    if (f) save.forgot[mid] = f.filter(r => r !== rootOf(id));
+  }
+
+  /* A tree branch is mastered when every node it needs is owned (kept for older callers; forms now come from keystones). */
+  const mastered = (save, branch) => { const b = DATA().tree.find(x => x.id === branch); return !!b && !!b.form && treeOwned(save, b.nodes.find(n => n.keystone).id); };
+  /* Haenim's forms the save has unlocked (permanent once earned: save.forms). */
   function formUnlocked(save, id) {
     const p = DATA().personas[id];
     if (!p || !p.form) return id === 'haenim';
     if ((save.forms || []).includes(id)) return true;
     const u = p.unlock || {};
-    if (u.branch && !mastered(save, u.branch)) return false;
-    if (u.branches && !u.branches.every(b => mastered(save, b))) return false;
-    if (u.op && !((save.ops || {}).cleared || []).length) return false;
-    return true;
+    return !!(u.node && (save.nodes || []).includes(u.node));
   }
   const formsList = () => Object.keys(DATA().personas).filter(k => DATA().personas[k].form);
   /* Which Persona a member is using right now. */
@@ -77,28 +223,46 @@ window.FemcBattleEngine = (() => {
     const ok = (id, slot) => { const g = id && D.gear[id]; return g && g.slot === slot && (slot !== 'weapon' || g.wtype === m.wtype) ? g : null; };
     return { weapon: ok(eq.weapon, 'weapon') || D.gear[D.startGear[mid].weapon], armor: ok(eq.armor, 'armor') || D.gear.armor0, acc: ok(eq.acc, 'acc'), ids: eq };
   }
-  /* Learned skills for a member at a level: base list, then level learns (in order) with replacements. */
+  /* Every skill a member knows at a level: base list, level learns, the evolved Persona's learns, then Haenim's tree (Solar) or
+     the member's own tree and MAX evolution. Later tiers upgrade earlier ones in place. Forms' signatures are separate (kitFor). */
   function skillsFor(mid, save, lvl = lvlOf(save, mid), fx = treeFx(save.nodes)) {
     const D = DATA(), m = member(mid);
-    let list = m.skills.slice();
+    let list = [];
+    m.skills.forEach(id => learnInto(list, id));
     const apply = arr => (arr || []).slice().sort((a, b) => a[0] - b[0]).forEach(([L, id, rep]) => {
       if (L > lvl) return;
-      if (rep && list.includes(rep)) list = list.map(x => (x === rep ? id : x)); else if (!list.includes(id)) list.push(id);
+      if (rep && list.includes(rep) && rootOf(rep) !== rootOf(id)) list = list.map(x => (x === rep ? id : x)); else learnInto(list, id);
     });
     apply(m.learn);
     const pid = personaId(mid, save), per = D.personas[pid];
     if (mid !== 'solar' && pid !== m.persona) apply(per.learn);
-    if (mid === 'solar') {
-      list = list.concat(fx.learn);
-      fx.upgrade.forEach(([a, b]) => { list = list.map(x => (x === a ? b : x)); });
-      if (per.sig) list.push(per.sig);
+    if (mid === 'solar') fx.learn.forEach(id => learnInto(list, id));
+    else {
+      ptreeFx(save, mid).learn.forEach(id => learnInto(list, id));
+      const t = ptreeOf(mid);
+      if (t && t.max && linkRank(save, mid) >= 10) learnInto(list, t.max.to);
     }
     return [...new Set(list)];
+  }
+  /* The eight slots: skills in the order they were learned, minus forgotten ones. slots: what the Persona uses; pending: learned
+     but waiting for a "forget which?" choice; sig: a form's signature (its own slot). Keeps save.order up to date. */
+  function kitFor(mid, save, lvl = lvlOf(save, mid), fx = treeFx(save.nodes)) {
+    const D = DATA(), pool = skillsFor(mid, save, lvl, fx);
+    const forgot = new Set(((save.forgot || {})[mid]) || []);
+    const list = pool.filter(id => !forgot.has(rootOf(id)));
+    const roots = list.map(rootOf);
+    const ord = (((save.order || {})[mid]) || []).filter(r => roots.includes(r));
+    roots.forEach(r => { if (!ord.includes(r)) ord.push(r); });
+    (save.order || (save.order = {}))[mid] = ord;
+    const sorted = ord.map(r => list.find(id => rootOf(id) === r));
+    const per = D.personas[personaId(mid, save)] || {};
+    return { slots: sorted.slice(0, D.skillSlots), pending: sorted.slice(D.skillSlots), sig: mid === 'solar' && per.sig ? per.sig : null, pool };
   }
   function statsFor(mid, save, lvl = lvlOf(save, mid), fx = treeFx(save.nodes), opts = {}) {
     const D = DATA(), m = member(mid), L = lvl - D.progression.startLevel, s = {};
     Object.keys(m.base).forEach(k => { s[k] = Math.round(m.base[k] + m.growth[k] * L); });
-    if (mid === 'solar') { s.st += fx.st; s.ag += fx.ag; s.hp += fx.hp; s.sp += fx.sp; }
+    const add = src => ['st', 'ma', 'en', 'ag', 'lu', 'hp', 'sp'].forEach(k => { if (src[k]) s[k] = (s[k] || 0) + src[k]; });
+    if (mid === 'solar') add(fx); else add(ptreeFx(save, mid));
     const per = D.personas[personaId(mid, save)];
     [per.bonus, per.lean].forEach(b => b && Object.keys(b).forEach(k => { s[k] = (s[k] || 0) + b[k]; }));
     if (!opts.noGear) { const g = gearOf(save, mid); [g.weapon, g.armor, g.acc].forEach(x => x && x.stats && Object.keys(x.stats).forEach(k => { s[k] = (s[k] || 0) + x.stats[k]; })); }
@@ -110,15 +274,23 @@ window.FemcBattleEngine = (() => {
     const D = DATA(), m = member(mid), L = lvlOf(save, mid), s = statsFor(mid, save, L, fx, { tired }), pid = personaId(mid, save), per = D.personas[pid], g = gearOf(save, mid);
     const aff = Object.assign({}, per.aff);
     [g.armor, g.acc].forEach(x => x && x.aff && Object.entries(x.aff).forEach(([el, a]) => { if (!['null', 'repel', 'drain'].includes(aff[el])) aff[el] = a; }));
+    // Tree passives: Solar's from Haenim's tree, everyone else's from their own.
+    const pf = mid === 'solar' ? null : ptreeFx(save, mid), hu = mid === 'solar' ? fx.unit : null;
+    const resist = el => { if (!['null', 'repel', 'drain'].includes(aff[el])) aff[el] = 'resist'; };
+    if (hu) hu.resist.forEach(resist);
+    if (pf) Object.entries(pf.aff).forEach(([el, a]) => (a === 'resist' ? resist(el) : (aff[el] = a)));
     const nullAil = [].concat(...[g.weapon, g.armor, g.acc].map(x => (x && x.nullAil) || []));
-    const w = g.weapon;
+    const w = g.weapon, kit = kitFor(mid, save, L, fx);
     return {
-      mid, name: m.name, persona: per.name, personaId: pid, lvl: L, maxHp: s.hp, maxSp: s.sp, acc: (m.acc || 0) + (w.acc || 0),
+      mid, name: m.name, persona: per.name, personaId: pid, lvl: L, maxHp: s.hp, maxSp: s.sp, acc: (m.acc || 0) + (w.acc || 0) + (pf ? pf.acc : 0),
       hp: carry ? Math.max(1, Math.min(carry.hp, s.hp)) : s.hp, sp: carry ? Math.min(carry.sp, s.sp) : s.sp, th: carry && carry.th != null ? carry.th : ((save.th || {})[mid] || 0),
       st: s.st, ma: s.ma, en: s.en, ag: s.ag, lu: s.lu, aff, weapon: w.el || m.weapon, atk: w.atk, whits: w.hits || null, wail: w.ail || null,
-      critBonus: (w.crit || 0) + ((g.acc && g.acc.crit) || 0) + ((g.armor && g.armor.crit) || 0), def: (g.armor && g.armor.def) || 0,
-      nullAil, spRegen: (g.acc && g.acc.spRegen) || 0, hpRegen: (g.acc && g.acc.hpRegen) || 0, thMult: (g.acc && g.acc.thMult) || 1, tired: !!tired,
-      skills: skillsFor(mid, save, L, fx), healMult: mid === 'solar' ? fx.healMult : 1
+      critBonus: (w.crit || 0) + ((g.acc && g.acc.crit) || 0) + ((g.armor && g.armor.crit) || 0) + (pf ? pf.crit : 0), def: (g.armor && g.armor.def) || 0,
+      nullAil, spRegen: ((g.acc && g.acc.spRegen) || 0) + (hu ? hu.spRegen : 0), hpRegen: (g.acc && g.acc.hpRegen) || 0, thMult: (g.acc && g.acc.thMult) || 1, tired: !!tired,
+      skills: kit.slots.concat(kit.sig && !kit.slots.includes(kit.sig) ? [kit.sig] : []), pending: kit.pending.slice(),
+      healMult: mid === 'solar' ? fx.healMult : pf.healMult,
+      counter: hu ? hu.counter : pf.counter, evade: pf ? pf.evade : 0, endure: hu ? hu.endure : pf.endure,
+      quick: !!(hu && hu.quick), firstFree: !!(hu && hu.firstFree), elBoost: pf ? pf.boost : {}
     };
   }
   /* For the balance sim: a whole party from a compact config { lvl, party, nodes, tier, form, evo }. */
@@ -128,7 +300,8 @@ window.FemcBattleEngine = (() => {
     const t = c.tier != null ? c.tier : 0;
     const eq = {};
     ids.forEach(id => { eq[id] = { weapon: `${member(id).wtype}${Math.min(7, t)}`, armor: `armor${Math.min(7, t)}`, acc: c.acc ? c.acc[id] || null : null }; });
-    const save = { lvl: c.lvl, nodes: c.nodes || [], mem: Object.fromEntries(ids.map(id => [id, { lvl: c.lvl }])), gear: { eq }, form: c.form || 'haenim', forms: c.form ? [c.form] : [], evo: c.evo || {}, ops: { cleared: c.cleared || [] }, th: {} };
+    const save = { lvl: c.lvl, nodes: c.nodes || [], mem: Object.fromEntries(ids.map(id => [id, { lvl: c.lvl }])), gear: { eq }, form: c.form || 'haenim', forms: c.form ? [c.form] : [], evo: c.evo || {}, ops: { cleared: c.cleared || [] }, th: {},
+      ptree: c.ptree || {}, ranks: c.ranks || {}, forgot: {}, order: {} };
     if (c.evoAuto) evolutionsDue(save, id => c.lvl).forEach(e => { save.evo[e.mid] = true; });
     const fx = treeFx(save.nodes);
     return { units: ids.map(id => buildUnit(id, save, { fx, tired: !!(c.tired && c.tired.includes(id)) })), mods: fx.mods, fx, save };
@@ -166,12 +339,19 @@ window.FemcBattleEngine = (() => {
     const R = setup.rand || Math.random;
     const diff = () => (setup.diff && setup.diff()) || NO_DIFF;
     const D = DATA();
-    const mods = Object.assign({ crit: 0, critMult: 1.6, weakMult: 1, healMult: 1, bind: 0, ropeCrit: 0, shiftMult: 1.25, shiftSp: 0, alloutMult: 1, regen: 0 }, setup.mods || {});
+    const mods = Object.assign({ crit: 0, critMult: 1.6, weakMult: 1, healMult: 1, bind: 0, ropeCrit: 0, shiftMult: 1.25, shiftSp: 0, shiftTh: 0, alloutMult: 1, regen: 0, bindTurns: 1, flank: false }, setup.mods || {});
     const S = {
       units: [], round: 0, queue: [], cur: null, oneMore: false, chain: new Set(), alloutReady: false, outcome: null,
-      mods, known: setup.known || {}, items: setup.items || {}, heat: setup.heat || 0, extraUsed: false, uid: 0, boss: false, reaper: false, log: [], ctx: setup.ctx || {}, scanRound: -1, deaths: []
+      mods, known: setup.known || {}, items: setup.items || {}, heat: setup.heat || 0, extraUsed: false, uid: 0, boss: false, reaper: false, log: [], ctx: setup.ctx || {}, scanRound: -1, deaths: [],
+      kitsune: 0, kitsuneSide: null, once: new Set() // Kitsune Rush's turns left (and whose side), skills used once this battle
     };
-    setup.party.forEach((p, i) => S.units.push(Object.assign({ id: 'p' + i, side: 'party', down: false, guard: false, ail: null, dead: p.hp <= 0, buffs: { atk: 0, def: 0, agi: 0 }, buffT: { atk: 0, def: 0, agi: 0 }, boost: 1, turns: 0, th: 0, orgia: 0, nullAil: [] }, p)));
+    /* Buff levels (data.js buffRules): damage dealt / taken for a stat level from -cap to +cap. */
+    const BRu = D.buffRules, CAP = BRu.cap;
+    const lvl3 = v => Math.min(CAP, Math.abs(v));
+    const atkM = v => (v >= 0 ? BRu.atk[lvl3(v)] : BRu.atkDown[lvl3(v)]);
+    const defM = v => (v >= 0 ? BRu.def[lvl3(v)] : BRu.defDown[lvl3(v)]);
+    setup.party.forEach((p, i) => S.units.push(Object.assign({ id: 'p' + i, side: 'party', down: false, guard: false, ail: null, dead: p.hp <= 0, buffs: { atk: 0, def: 0, agi: 0 }, buffT: { atk: 0, def: 0, agi: 0 }, boost: 1, turns: 0, th: 0, orgia: 0, nullAil: [],
+      taunt: 0, veneer: 0, ward: false, endured: false, usedFree: false, counter: 0, evade: 0 }, p)));
     setup.enemies.forEach(kind => { const e = makeEnemy(kind, 'e' + S.uid++, S.heat); S.units.push(e); if (e.boss) S.boss = true; if (e.reaper) S.reaper = true; });
 
     const U = id => S.units.find(u => u.id === id);
@@ -191,6 +371,11 @@ window.FemcBattleEngine = (() => {
     };
     const forget = u => { delete S.known[u.kind]; };
     const kindAlive = kind => alive(foes()).find(f => f.kind === kind);
+    /* Aggro: the party member drawing every single-target attack (Public Veneer, Provoke). Off Angle Flank: while someone
+       draws aggro, everyone else on the party gets big evasion and crit rate (Haenim's Veil branch). */
+    const aggro = () => alive(party()).filter(p => p.taunt > 0).sort((a, b) => b.taunt - a.taunt)[0] || null;
+    const flanking = u => !!(mods.flank && u && u.side === 'party' && !u.dead && aggro() && aggro() !== u);
+    const kitsuneOn = u => !!(S.kitsune > 0 && u && u.side === S.kitsuneSide);
 
     /* ── Theurgy gauge ─────────────────────────────── */
     function gain(u, kind, ev, scale = 1) {
@@ -210,8 +395,9 @@ window.FemcBattleEngine = (() => {
     }
     function rawDamage(src, tgt, sk) {
       let d = power(src, sk);
-      d *= 1 + 0.25 * src.buffs.atk;
-      d *= 1 - 0.2 * tgt.buffs.def;
+      d *= atkM(src.buffs.atk);
+      d *= defM(tgt.buffs.def);
+      if (src.elBoost && src.elBoost[sk.el]) d *= src.elBoost[sk.el];
       d /= 1 + (tgt.en + (tgt.def || 0) / 4) / 20;
       d *= 0.92 + R() * 0.16;
       d *= src.boost || 1;
@@ -228,29 +414,42 @@ window.FemcBattleEngine = (() => {
     function hits(src, tgt, sk) {
       if (sk.sure || helpless(tgt)) return true;
       const base = (sk.acc || (PHYS.has(sk.el) ? 93 : 97)) + (src.acc || 0);
-      const chance = base + (src.ag - tgt.ag) * 0.8 + 8 * (src.buffs.agi - tgt.buffs.agi);
-      return R() * 100 < Math.max(sk.acc ? 50 : 60, chance);
+      const ag = u => u.ag * (kitsuneOn(u) ? 1.5 : 1);
+      let chance = base + (ag(src) - ag(tgt)) * 0.8 + BRu.agi * (src.buffs.agi - tgt.buffs.agi);
+      if (kitsuneOn(src)) chance *= 1.5;                               // Kitsune Rush: accuracy +50%
+      if (src.wild || (src.ail && src.ail.id === 'disorient')) chance -= 35; // Disoriented: swings wide
+      let floor = sk.acc ? 50 : 60;
+      if (src.side !== tgt.side && tgt.side === 'party') {
+        const ev = (tgt.evade || 0) + (flanking(tgt) ? 35 : 0);       // evasion (party trees) and Off Angle Flank
+        chance -= ev; floor -= ev / 2;
+      }
+      return R() * 100 < Math.max(floor, chance);
     }
     function critChance(src, tgt, sk) {
       if ((!PHYS.has(sk.el) && !sk.crit) || tgt.guard) return 0;
       if (!PHYS.has(sk.el) && sk.id !== 'theurgy') return 0;
       let c = 3 + src.lu * 0.6 + (sk.crit || 0);
-      if (src.side === 'party') c += mods.crit + (src.critBonus || 0) + (sk.id === 'golden_rope' ? mods.ropeCrit : 0);
+      if (src.side === 'party') c += mods.crit + (src.critBonus || 0) + ((sk.ail && sk.ail.rope) ? mods.ropeCrit : 0) + (flanking(src) ? 30 : 0) + (sk.critIf && critCond(tgt, sk) ? 30 : 0);
       else c *= 0.5;
       if (tgt.ail && tgt.ail.id === 'distress') c += 40;
       return c;
     }
 
+    /* Kunai Flick: a debuffed or ailing foe, or a weak spot. */
+    const critCond = (tgt, sk, aff) => !!(tgt.ail || ['atk', 'def', 'agi'].some(s => tgt.buffs[s] < 0) || aff === 'weak' || (aff == null && tgt.aff && tgt.aff[sk.el] === 'weak' && !tgt.guard));
+
     /* ── Ailments ─────────────────────────────────────── */
     const ailImmune = (u, id) => u.side === 'enemy' ? (D.enemies[u.kind].ailImmune || []).includes(id) : (u.nullAil || []).includes(id);
     function inflict(src, tgt, ail, ev, mult = 1) {
       if (!ail || tgt.dead || tgt.ail || ailImmune(tgt, ail.id)) return false;
+      if (tgt.ward && src.side !== tgt.side) return false; // Protective Suzu
       let ch = ail.chance * mult;
       if (ail.rope && src.side === 'party') ch += mods.bind;
       if (tgt.guard) ch *= 0.5;
       if (R() >= ch) return false;
       const T = D.ailments[ail.id].turns;
       tgt.ail = { id: ail.id, t: T[0] + Math.floor(R() * (T[1] - T[0] + 1)) };
+      if (ail.rope && ail.id === 'bind' && src.side === 'party' && mods.bindTurns > 1) tgt.ail.t = mods.bindTurns; // Fine Stitch
       ev.push({ t: 'ail', src: src.id, tgt: tgt.id, id: ail.id, turns: tgt.ail.t });
       if (src.side === 'party' && tgt.side === 'enemy') gain(src, 'ail', ev);
       return true;
@@ -356,6 +555,7 @@ window.FemcBattleEngine = (() => {
         if (!spread) { ev.push({ t: 'miss', src: src.id, tgt: tgt.id, hidden: true }); return false; }
         tgt.hidden = false; tgt.revealT = 1; ev.push({ t: 'flushed', tgt: tgt.id });
       }
+      if (tgt.ward && src.side !== tgt.side) { ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff: 'null', warded: true, amount: 0, hp: tgt.hp, maxHp: tgt.maxHp }); return false; }
       if (!hits(src, tgt, sk)) { ev.push({ t: 'miss', src: src.id, tgt: tgt.id }); return false; }
       if (shieldUp(tgt) && src.side === 'party') { ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff: 'null', shield: true, amount: 0, hp: tgt.hp, maxHp: tgt.maxHp }); return false; }
       let aff = sk.el === 'almighty' ? 'normal' : (tgt.aff[sk.el] || 'normal');
@@ -384,18 +584,22 @@ window.FemcBattleEngine = (() => {
       }
       // Frozen: the next physical hit is a sure critical and shatters the ice.
       const shatter = PHYS.has(sk.el) && tgt.ail && tgt.ail.id === 'freeze';
+      const keen = !!(sk.critX && sk.critIf && src.side === 'party' && critCond(tgt, sk, aff)); // Kunai Flick's opening
       const crit = shatter || (sk.crit >= 100) || R() * 100 < critChance(src, tgt, sk);
       if (aff === 'weak') d *= 1.5 * (src.side === 'party' ? mods.weakMult : 1);
       if (aff === 'resist') d *= 0.5;
-      if (crit) d *= mods.critMult;
+      if (crit) d *= keen ? sk.critX : (src.side === 'party' ? mods.critMult : 1.6);
       const amount = Math.max(1, Math.round(d));
       tgt.hp = Math.max(0, tgt.hp - amount);
       if (tgt.hp <= 0 && guarded(tgt)) tgt.hp = 1;
+      let endured = false;
+      if (tgt.hp <= 0 && tgt.endure && !tgt.endured) { tgt.hp = 1; tgt.endured = true; endured = true; } // Endure: once per battle
       let downed = false, killed = false;
       if (tgt.hp <= 0) { kill(tgt, ev); killed = true; }
       else if ((aff === 'weak' || crit) && !tgt.down && !tgt.guard) { tgt.down = true; downed = true; }
       else if (sk.down && !tgt.down && !tgt.guard && R() < sk.down) { tgt.down = true; downed = true; }
-      ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff, crit, amount, hp: tgt.hp, maxHp: tgt.maxHp, killed, downed, shatter, skill: sk.id, theurgy: !!sk.theurgy });
+      ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff, crit, amount, hp: tgt.hp, maxHp: tgt.maxHp, killed, downed, shatter, skill: sk.id, theurgy: !!sk.theurgy, keen: keen && crit, flank: crit && flanking(src) });
+      if (endured) ev.push({ t: 'endure', tgt: tgt.id });
       if (src.side === 'party') {
         if (aff === 'weak') gain(src, 'weak', ev);
         if (crit) gain(src, 'crit', ev);
@@ -416,6 +620,7 @@ window.FemcBattleEngine = (() => {
       const a = tgt.aff[sk.el] || 'normal';
       if (src.side === 'party' && learn(tgt, sk.el)) ev.push({ t: 'reveal', tgt: tgt.id, kind: tgt.kind, el: sk.el, aff: a });
       if (tgt.hidden && src.side === 'party') { ev.push({ t: 'miss', src: src.id, tgt: tgt.id, hidden: true }); return false; }
+      if (tgt.ward && src.side !== tgt.side) { ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff: 'null', warded: true, amount: 0, hp: tgt.hp, maxHp: tgt.maxHp, insta: true }); return false; }
       if (tgt.boss || tgt.unreachable || guarded(tgt) || ['null', 'repel', 'drain'].includes(a)) { ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff: 'null', amount: 0, hp: tgt.hp, maxHp: tgt.maxHp, insta: true }); return false; }
       let ch = sk.chance + src.lu * 0.5;
       if (a === 'weak') ch = ch * 2 + 15;
@@ -431,7 +636,7 @@ window.FemcBattleEngine = (() => {
       return false;
     }
     function kill(u, ev) {
-      u.dead = true; u.hp = 0; u.down = false; u.ail = null; u.guard = false; u.hidden = false; u.orgia = 0;
+      u.dead = true; u.hp = 0; u.down = false; u.ail = null; u.guard = false; u.hidden = false; u.orgia = 0; u.taunt = 0; u.ward = false;
       u.buffs = { atk: 0, def: 0, agi: 0 }; u.buffT = { atk: 0, def: 0, agi: 0 };
       if (G(u, 'death')) S.deaths.push(u);
     }
@@ -444,11 +649,14 @@ window.FemcBattleEngine = (() => {
       if (sp) tgt.sp = Math.min(tgt.maxSp, tgt.sp + sp);
       ev.push({ t: 'heal', src: src && src.id, tgt: tgt.id, amount: tgt.hp - before, sp, hp: tgt.hp, maxHp: tgt.maxHp, spNow: tgt.sp });
     }
-    function buff(tgt, stat, dir, ev, lasting = false) {
-      const v = Math.max(-1, Math.min(1, tgt.buffs[stat] + dir));
+    /* Buffs stack (data.js buffRules.cap levels, P5-style): another cast adds a level and refreshes the turns. A lasting buff
+       (the Hierophant's sermons) stays lasting while it keeps its sign. */
+    function buff(tgt, stat, dir, ev, lasting = false, levels = 1) {
+      const old = tgt.buffs[stat];
+      const v = Math.max(-CAP, Math.min(CAP, old + dir * levels));
       tgt.buffs[stat] = v;
-      tgt.buffT[stat] = v ? (lasting ? 99 : BUFF_TURNS) : 0;
-      ev.push({ t: 'buff', tgt: tgt.id, stat, dir, v, lasting });
+      tgt.buffT[stat] = !v ? 0 : (lasting || (tgt.buffT[stat] >= 90 && Math.sign(old) === Math.sign(v)) ? 99 : BRu.turns);
+      ev.push({ t: 'buff', tgt: tgt.id, stat, dir, v, lasting: tgt.buffT[stat] >= 90, turns: tgt.buffT[stat], capped: v === old });
     }
     function dispel(tgts, kind, ev) {
       let n = 0;
@@ -470,48 +678,124 @@ window.FemcBattleEngine = (() => {
       if (!t || t.dead || (pool.length && t.side !== pool[0].side)) t = alive(pool)[0];
       return t ? [t] : [];
     }
+    /* What a skill costs this unit right now: Kitsune Rush halves HP/SP costs; Double Tap makes Solar's first skill free. */
+    function costOf(u, sk) {
+      if (!sk.cost || u.side !== 'party') return { sp: 0, hp: 0 };
+      let sp = sk.cost.sp || 0, hp = sk.cost.hp || 0;
+      if (kitsuneOn(u)) { sp = Math.ceil(sp / 2); hp = hp / 2; }
+      if (u.firstFree && !u.usedFree && sk.id !== 'attack') { sp = 0; hp = 0; }
+      return { sp, hp };
+    }
     function payCost(u, sk) {
       if (u.side !== 'party' || !sk.cost) return;
-      if (sk.cost.sp) u.sp -= sk.cost.sp;
-      if (sk.cost.hp) u.hp = Math.max(1, u.hp - Math.round(u.maxHp * sk.cost.hp / 100));
+      const c = costOf(u, sk);
+      if (u.firstFree && !u.usedFree && sk.id !== 'attack') u.usedFree = true;
+      if (c.sp) u.sp -= c.sp;
+      if (c.hp) u.hp = Math.max(1, u.hp - Math.round(u.maxHp * c.hp / 100));
     }
     function canPay(u, sk) {
-      if (!sk.cost) return true;
-      if (sk.cost.sp) return u.sp >= sk.cost.sp;
-      if (sk.cost.hp) return u.hp > Math.round(u.maxHp * sk.cost.hp / 100);
+      if (!sk || !sk.cost) return true;
+      const c = costOf(u, sk);
+      if (sk.once && S.once.has(u.side + ':' + (sk.id || ''))) return false;
+      if (sk.cost.sp) return u.sp >= c.sp;
+      if (sk.cost.hp) return u.hp > Math.round(u.maxHp * c.hp / 100);
       return true;
     }
+    const usedOnce = (u, id) => S.once.has(u.side + ':' + id);
     function attackSkill(src) {
       return Object.assign({ id: 'attack' }, D.attack, { el: src.weapon || 'strike', power: src.atk || D.attack.power, crit: D.attack.crit, multi: src.whits || null, ail: src.wail || null });
+    }
+    /* A party member hits back (Counterstrike, Public Veneer): a plain attack on the Shadow that struck them alone. */
+    function counterHit(u, foe, ev) {
+      if (!u || u.dead || helpless(u) || !foe || foe.dead || u.side === foe.side) return;
+      ev.push({ t: 'counter', src: u.id, tgt: foe.id });
+      strike(u, foe, attackSkill(u), ev);
     }
     function useSkill(src, skId, target, ev, { flip = false } = {}) {
       const sk = skId === 'attack' ? attackSkill(src) : Object.assign({ id: skId }, skillOf(skId));
       payCost(src, sk);
+      if (sk.once) S.once.add(src.side + ':' + skId);
+      // Aggro: a Shadow's single-target attack goes to whoever is drawing it (Public Veneer, Provoke).
+      let drawn = null;
+      if (src.side === 'enemy' && !flip && sk.target === 'one' && ['dmg', 'insta'].includes(sk.type)) {
+        const tank = aggro();
+        if (tank && tank.id !== target) { drawn = tank; target = tank.id; }
+      }
       const tgts = targetsFor(src, sk, target, flip);
-      ev.push({ t: 'use', src: src.id, skill: skId, name: sk.name, el: sk.el, tgts: tgts.map(u => u.id), summon: skId !== 'attack' && src.side === 'party', cost: sk.cost || null, hp: src.hp, sp: src.sp, charmed: flip });
+      const hp0 = new Map(tgts.map(t => [t.id, t.hp]));
+      ev.push({ t: 'use', src: src.id, skill: skId, name: sk.name, el: sk.el, tgts: tgts.map(u => u.id), summon: skId !== 'attack' && src.side === 'party', cost: sk.cost || null, hp: src.hp, sp: src.sp, charmed: flip, fx: sk.fx || null });
+      if (drawn) ev.push({ t: 'drawn', src: src.id, tgt: drawn.id });
       let downs = 0;
       let n = sk.multi ? sk.multi[0] + Math.floor(R() * (sk.multi[1] - sk.multi[0] + 1)) : 1;
       if (src.orgia > 0 && sk.type === 'dmg') n *= 2;
       if (sk.partyBuff) [].concat(sk.partyBuff).forEach(st => alive(sideOf(src, true)).forEach(p => buff(p, st, 1, ev)));
       const spread = sk.target === 'all' || sk.target === 'rand';
+      const hidden = t => { if (t.hidden && src.side === 'party' && !spread) { ev.push({ t: 'miss', src: src.id, tgt: t.id, hidden: true }); return true; } return false; };
       if (sk.type === 'dmg' && sk.target === 'rand') {
         for (let i = 0; i < n; i++) { const pool = tgts.filter(t => !t.dead); if (!pool.length) break; const t = pick(pool); if (strike(src, t, sk, ev, { spread })) downs++; }
       } else if (sk.type === 'dmg') tgts.forEach(t => { for (let i = 0; i < n && !t.dead; i++) if (strike(src, t, sk, ev, { spread })) downs++; });
       else if (sk.type === 'insta') tgts.forEach(t => { if (!t.dead && hits(src, t, sk)) instaKill(src, t, sk, ev); else if (!t.dead) ev.push({ t: 'miss', src: src.id, tgt: t.id }); });
       else if (sk.type === 'ailment') tgts.forEach(t => {
-        if (t.dead) return;
-        if (t.hidden && src.side === 'party' && !spread) { ev.push({ t: 'miss', src: src.id, tgt: t.id, hidden: true }); return; }
+        if (t.dead || hidden(t)) return;
         if (t.ail || ailImmune(t, sk.ail.id) || !inflict(src, t, sk.ail, ev)) ev.push({ t: 'miss', src: src.id, tgt: t.id, ail: sk.ail.id, immune: ailImmune(t, sk.ail.id), has: !!t.ail });
       });
-      else if (sk.type === 'heal') { tgts.forEach(t => heal(src, t, power(src, sk) * (src.side === 'party' ? (src.healMult || 1) : 1), ev)); if (src.side === 'party' && !flip) gain(src, 'heal', ev); }
-      else if (sk.type === 'revive') { tgts.forEach(t => { t.dead = false; t.hp = 0; ev.push({ t: 'revive', tgt: t.id }); heal(src, t, t.maxHp * sk.power / 100, ev); }); if (src.side === 'party') gain(src, 'heal', ev, 1.5); }
-      else if (sk.type === 'buff') { tgts.forEach(t => { [].concat(sk.stat).forEach(s => buff(t, s, 1, ev, sk.lasting)); if (sk.sp) heal(null, t, 0, ev, sk.sp); }); if (src.side === 'party') gain(src, 'buff', ev); }
-      else if (sk.type === 'debuff') { tgts.forEach(t => { if (t.hidden && src.side === 'party' && !spread) { ev.push({ t: 'miss', src: src.id, tgt: t.id, hidden: true }); return; } [].concat(sk.stat).forEach(s => buff(t, s, -1, ev, sk.lasting)); }); if (src.side === 'party') gain(src, 'buff', ev); }
+      else if (sk.type === 'heal') {
+        tgts.forEach(t => { heal(src, t, sk.full ? t.maxHp : power(src, sk) * (src.side === 'party' ? (src.healMult || 1) : 1), ev); if (sk.cureAll && t.ail) cure(t, Object.keys(D.ailments), ev, src); });
+        if (src.side === 'party' && !flip) gain(src, 'heal', ev);
+      }
+      else if (sk.type === 'revive') { tgts.forEach(t => { t.dead = false; t.hp = 0; t.endured = false; ev.push({ t: 'revive', tgt: t.id }); heal(src, t, t.maxHp * sk.power / 100, ev); }); if (src.side === 'party') gain(src, 'heal', ev, 1.5); }
+      else if (sk.type === 'buff') {
+        tgts.forEach(t => { [].concat(sk.stat).forEach(s => buff(t, s, 1, ev, sk.lasting)); if (sk.sp) heal(null, t, 0, ev, sk.sp); });
+        if (sk.thGain) tgts.forEach(t => { if (t.side === 'party' && !t.dead && t.th < 100) { t.th = Math.min(100, t.th + sk.thGain); ev.push({ t: 'thGain', tgt: t.id, n: sk.thGain }); if (t.th >= 100) ev.push({ t: 'thReady', tgt: t.id }); } });
+        if (src.side === 'party') gain(src, 'buff', ev);
+      }
+      else if (sk.type === 'debuff') { tgts.forEach(t => { if (hidden(t)) return; [].concat(sk.stat).forEach(s => buff(t, s, -1, ev, sk.lasting)); }); if (src.side === 'party') gain(src, 'buff', ev); }
       else if (sk.type === 'cure') { let any = false; tgts.forEach(t => { if (cure(t, sk.cures, ev, src)) any = true; }); if (!any) ev.push({ t: 'msg', text: 'It had no effect.' }); else if (src.side === 'party') gain(src, 'heal', ev); }
       else if (sk.type === 'dispel') { dispel(tgts, sk.dispel, ev); if (src.side === 'party') gain(src, 'buff', ev); }
+      // ── Kat's skills
+      else if (sk.type === 'ward') {
+        // Protective Suzu: nothing hurts the party until each one's next turn, and every ailment is cured.
+        tgts.forEach(t => { if (t.dead) return; t.ward = true; ev.push({ t: 'ward', tgt: t.id }); if (t.ail) cure(t, Object.keys(D.ailments), ev, src); });
+        if (src.side === 'party') gain(src, 'buff', ev);
+      }
+      else if (sk.type === 'taunt') {
+        // Public Veneer / Provoke: draw every single-target attack (one taunter per side; the newest takes over).
+        tgts.forEach(t => {
+          alive(sideOf(t, true)).forEach(p => { if (p !== t && p.taunt > 0) { p.taunt = 0; p.veneer = 0; ev.push({ t: 'tauntEnd', tgt: p.id }); } });
+          t.taunt = sk.turns || 3; t.veneer = sk.counter || 0;
+          ev.push({ t: 'taunt', tgt: t.id, turns: t.taunt, flank: !!mods.flank && t.side === 'party', veneer: skId === 'public_veneer' });
+          if (sk.def) buff(t, 'def', 1, ev, false, sk.def);
+        });
+        if (src.side === 'party') gain(src, 'buff', ev);
+      }
+      else if (sk.type === 'kitsune') {
+        // Kitsune Rush: for 3 turns the side moves first (the rest of this round's queue too), +50% agility and accuracy, costs halved.
+        S.kitsune = sk.turns || 3; S.kitsuneSide = src.side;
+        const q = S.queue.map(U).filter(x => x && !x.dead);
+        S.queue = q.filter(x => x.side === src.side).concat(q.filter(x => x.side !== src.side)).map(x => x.id);
+        ev.push({ t: 'kitsune', src: src.id, turns: S.kitsune, tgts: alive(sideOf(src, true)).map(p => p.id) });
+        if (src.side === 'party') gain(src, 'buff', ev);
+      }
+      else if (sk.type === 'bluff') {
+        // Call the Bluff: strip every buff (lasting ones too), then Disorient for a turn.
+        tgts.forEach(t => {
+          if (t.dead || hidden(t)) return;
+          dispel([t], 'buffs', ev);
+          if (inflict(src, t, { id: 'disorient', chance: 1 }, ev)) ev.push({ t: 'bluff', tgt: t.id });
+          else ev.push({ t: 'miss', src: src.id, tgt: t.id, ail: 'disorient', immune: ailImmune(t, 'disorient'), has: !!t.ail });
+        });
+        if (src.side === 'party') gain(src, 'buff', ev);
+      }
+      if (sk.selfBuff && !src.dead) buff(src, sk.selfBuff, 1, ev);
       if (sk.partyHeal) alive(sideOf(src, true)).forEach(p => heal(src, p, p.maxHp * sk.partyHeal, ev));
       if (src.side === 'party' && !flip && skId !== 'attack' && ((member(src.mid) || {}).sig || []).includes(skId)) gain(src, 'sig', ev);
       if (src.side === 'enemy' && src.charged && sk.type === 'dmg' && PHYS.has(sk.el)) src.charged = false;
+      // Counters: a party member struck alone by a Shadow may hit back (Counterstrike; Public Veneer's stance).
+      if (src.side === 'enemy' && !flip && sk.target === 'one' && sk.type === 'dmg' && !src.dead) tgts.forEach(t => {
+        if (t.side !== 'party' || t.dead || !(t.hp < hp0.get(t.id))) return;
+        const ch = (t.counter || 0) + (t.taunt > 0 ? (t.veneer || 0) : 0);
+        if (ch > 0 && R() < ch) counterHit(t, src, ev);
+      });
       src.boost = 1;
       flushDeaths(ev);
       return downs;
@@ -553,7 +837,9 @@ window.FemcBattleEngine = (() => {
 
     /* ── Turn flow ────────────────────────────────────── */
     function order() {
-      return alive(S.units).map(u => ({ u, k: u.ag * (1 + 0.25 * u.buffs.agi) + R() * 2.5 })).sort((a, b) => b.k - a.k).map(x => x.u.id);
+      // Kitsune Rush: its side moves first, 50% faster. Quick Draw: Solar leads the first round.
+      return alive(S.units).map(u => ({ u, k: u.ag * (1 + 0.25 * u.buffs.agi) * (kitsuneOn(u) ? 1.5 : 1) + R() * 2.5 + (kitsuneOn(u) ? 1000 : 0) + (S.round === 1 && u.quick ? 2000 : 0) }))
+        .sort((a, b) => b.k - a.k).map(x => x.u.id);
     }
     /* Upcoming actors for the HUD: the rest of this round, then next round's rough order. */
     function upcoming(n = 8) {
@@ -567,7 +853,11 @@ window.FemcBattleEngine = (() => {
       S.oneMore = false; S.alloutReady = false; S.chain.clear(); S.extraUsed = false;
       let u = null;
       while (!u) {
-        if (!S.queue.length) { S.round++; S.queue = order(); ev.push({ t: 'round', n: S.round }); }
+        if (!S.queue.length) {
+          S.round++;
+          if (S.kitsune > 0 && --S.kitsune === 0) { S.kitsuneSide = null; ev.push({ t: 'kitsuneEnd' }); }
+          S.queue = order(); ev.push({ t: 'round', n: S.round });
+        }
         const c = U(S.queue.shift());
         if (c && !c.dead) u = c;
       }
@@ -575,7 +865,10 @@ window.FemcBattleEngine = (() => {
       u.turns++;
       u.acted = 0;
       u.guard = false;
+      u.wild = false;
       ['atk', 'def', 'agi'].forEach(s => { if (u.buffT[s] > 0 && u.buffT[s] < 90 && --u.buffT[s] === 0) { u.buffs[s] = 0; ev.push({ t: 'buffEnd', tgt: u.id, stat: s }); } });
+      if (u.ward) { u.ward = false; ev.push({ t: 'wardEnd', tgt: u.id }); }
+      if (u.taunt > 0 && --u.taunt === 0) { u.veneer = 0; ev.push({ t: 'tauntEnd', tgt: u.id }); }
       if (u.side === 'party') {
         if (u.orgia > 0 && --u.orgia === 0) ev.push({ t: 'orgiaEnd', tgt: u.id });
         if (u.spRegen && u.sp < u.maxSp) { u.sp = Math.min(u.maxSp, u.sp + u.spRegen); }
@@ -605,6 +898,7 @@ window.FemcBattleEngine = (() => {
           }
           if (r < 0.45) { ev.push({ t: 'ailSkip', tgt: u.id, id: 'fear' }); canAct = false; }
         } else if (canAct && a.id === 'charm') forced = 'charm';
+        else if (canAct && a.id === 'disorient') { if (R() < 0.5) { ev.push({ t: 'ailSkip', tgt: u.id, id: 'disorient' }); canAct = false; } else u.wild = true; }
         // Count the turn. A charmed unit recovers after its charmed action (forcedAct); the rest right away.
         if (--a.t <= 0 && u.ail) {
           if (forced) a.endAfter = true;
@@ -689,7 +983,8 @@ window.FemcBattleEngine = (() => {
       if (action.type === 'attack') afterAction(u, useSkill(u, 'attack', action.target, ev), ev);
       else if (action.type === 'skill') {
         const sk = skillOf(action.skill);
-        if (!sk || !u.skills.includes(action.skill) || !canPay(u, sk)) { S.oneMore = wasOneMore; return [{ t: 'msg', text: 'Not enough ' + (sk && sk.cost && sk.cost.hp ? 'HP' : 'SP') + '.' }]; }
+        if (sk && sk.once && usedOnce(u, action.skill)) { S.oneMore = wasOneMore; return [{ t: 'msg', text: `${sk.name} can only be used once per battle.` }]; }
+        if (!sk || !u.skills.includes(action.skill) || !canPay(u, Object.assign({ id: action.skill }, sk))) { S.oneMore = wasOneMore; return [{ t: 'msg', text: 'Not enough ' + (sk && sk.cost && sk.cost.hp ? 'HP' : 'SP') + '.' }]; }
         afterAction(u, useSkill(u, action.skill, action.target, ev), ev);
       } else if (action.type === 'theurgy') {
         if (!canTheurgy(u)) { S.oneMore = wasOneMore; return [{ t: 'msg', text: 'The Theurgy gauge isn’t full yet.' }]; }
@@ -716,6 +1011,7 @@ window.FemcBattleEngine = (() => {
         S.chain.add(u.id);
         t.boost = mods.shiftMult;
         if (mods.shiftSp) t.sp = Math.min(t.maxSp, t.sp + mods.shiftSp);
+        if (mods.shiftTh && t.th < 100) { t.th = Math.min(100, t.th + mods.shiftTh); ev.push({ t: 'thGain', tgt: t.id, n: mods.shiftTh }); if (t.th >= 100) ev.push({ t: 'thReady', tgt: t.id }); }
         S.cur = t;
         if (t.down) t.down = false;
         ev.push({ t: 'shift', src: u.id, tgt: t.id, boost: mods.shiftMult, sp: mods.shiftSp, spNow: t.sp });
@@ -746,7 +1042,7 @@ window.FemcBattleEngine = (() => {
       const parts = alive(party());
       const hitsOut = [];
       alive(foes()).forEach(f => {
-        let d = parts.reduce((s, p) => s + (p.st + p.lvl * 0.5 + 6) * 2.3 * (1 + 0.25 * p.buffs.atk), 0);
+        let d = parts.reduce((s, p) => s + (p.st + p.lvl * 0.5 + 6) * 2.3 * atkM(p.buffs.atk), 0);
         d *= (0.9 + R() * 0.2) * mods.alloutMult * (D.enemies[f.kind].alloutResist || 1) * diff().pdmg;
         d /= 1 + f.en / 40;
         if (shieldUp(f) || f.unreachable) d = 0;
@@ -935,7 +1231,7 @@ window.FemcBattleEngine = (() => {
       if (out === 'bless') alive(foes()).forEach(f => heal(u, f, f.maxHp * 0.12, ev));
       else if (out === 'curse') alive(party()).forEach(p => { if (R() < 0.45) inflict(u, p, { id: pick(['poison', 'distress', 'fear']), chance: 1 }, ev); });
       else if (out === 'frenzy') { buff(str, 'atk', 1, ev); str.empower = Math.min(4, (str.empower || 0) + 2); S.queue.unshift(str.id); ev.push({ t: 'frenzy', tgt: str.id }); }
-      else if (out === 'reverse') S.units.filter(x => !x.dead).forEach(x => ['atk', 'def', 'agi'].forEach(s => { if (x.buffs[s]) { x.buffs[s] = -x.buffs[s]; x.buffT[s] = BUFF_TURNS; } }));
+      else if (out === 'reverse') S.units.filter(x => !x.dead).forEach(x => ['atk', 'def', 'agi'].forEach(s => { if (x.buffs[s]) { x.buffs[s] = -x.buffs[s]; x.buffT[s] = BRu.turns; } }));
       else if (out === 'fall') { u.down = true; ev.push({ t: 'hit', src: u.id, tgt: u.id, el: 'none', aff: 'normal', amount: 0, hp: u.hp, maxHp: u.maxHp, downed: true, self: true }); }
       else if (out === 'jackpot') alive(party()).forEach(p => heal(null, p, p.maxHp * 0.2, ev, 10));
       else if (out === 'spark') return useSkill(u, 'e_mazionga', null, ev);
@@ -973,46 +1269,72 @@ window.FemcBattleEngine = (() => {
     foes().forEach(f => { const h = G(f, 'init'); if (h) h(f); });
 
     /* ── Party tactics (P3P) ───────────────────────────
-       Returns the action a member would choose on their own. Uses only the affinities the party knows. */
+       Returns the action a member would choose on their own. Uses only the affinities the party knows.
+       tactic 'rush' is Rush's own brain (battle.js uses it for Direct and Act Freely members while Rush is on): it fires Theurgy
+       the moment it's ready, heals before anyone gets low, rebuffs when a buff is missing or about to run out (only when the
+       fight will last), strips a foe's buffs, and otherwise goes for known weaknesses. It never spends a turn on something
+       that does nothing (a known null, a cure with nothing to cure, a buff already at the cap). */
     function autoAction(u, tactic = 'free') {
+      const smart = tactic === 'rush';
       const foesA = alive(foes()).filter(f => !f.unreachable), allies = alive(party()), dead = party().filter(p => p.dead);
       if (!foesA.length) return { type: 'guard' };
-      const sk = id => skillOf(id), can = id => canPay(u, sk(id));
-      const hasT = type => u.skills.filter(id => sk(id).type === type && can(id));
+      const sk = id => Object.assign({ id }, skillOf(id)), can = id => canPay(u, sk(id));
+      const hasT = type => u.skills.filter(id => skillOf(id).type === type && can(id));
       const affOf = (f, el) => (el === 'almighty' ? (f.gimmick === 'empress' ? 'null' : 'normal') : (S.known[f.kind] || {})[el] ? (f.aff[el] || 'normal') : 'unknown');
       const MULT = { weak: 1.6, normal: 1, unknown: 0.95, resist: 0.45, null: 0, repel: -1, drain: -1 };
       const conserve = tactic === 'conserve';
       const spOk = id => !sk(id).cost || !sk(id).cost.sp || !conserve;
       const hpOk = id => !sk(id).cost || !sk(id).cost.hp || u.hp / u.maxHp > (tactic === 'assault' ? 0.3 : 0.45);
       const bossUp = foesA.some(f => f.boss);
-      // Theurgy when it's ready (Yukari's when the party needs it).
+      // Will this fight last? Rough: the foes' HP against what the party deals in a round.
+      const roundDmg = allies.reduce((s, p) => s + rawDamageEst(p, foesA[0], attackSkill(p)) * 1.6, 0);
+      const longFight = bossUp || foesA.reduce((s, f) => s + f.hp, 0) > roundDmg * 2.2;
+      // Theurgy when it's ready (Rush: always; a support Theurgy waits for someone to need it).
       if (canTheurgy(u) && tactic !== 'conserve') {
         const T = theurgyDef(u);
-        const needHeal = allies.some(p => p.hp / p.maxHp < 0.5) || dead.length;
-        if (T.type === 'support' ? needHeal : (bossUp || foesA.length >= 2 || tactic === 'assault')) return { type: 'theurgy' };
+        const needHeal = allies.some(p => p.hp / p.maxHp < (smart ? 0.75 : 0.5)) || dead.length || (smart && allies.some(p => p.ail));
+        if (T.type === 'support' ? needHeal : (smart || bossUp || foesA.length >= 2 || tactic === 'assault')) return { type: 'theurgy' };
       }
       // Heal first, at a threshold that depends on the tactic.
-      const healAt = { free: 0.45, heal: 0.7, assault: 0.25, conserve: 0.3 }[tactic] || 0.45;
+      const healAt = { free: 0.45, heal: 0.7, assault: 0.25, conserve: 0.3, rush: 0.6 }[tactic] || 0.45;
       const hurt = allies.filter(p => p.hp / p.maxHp < healAt).sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp);
       if (tactic !== 'conserve' || hurt.some(p => p.hp / p.maxHp < 0.25)) {
-        const revive = hasT('revive')[0];
-        if (revive && dead.length && (tactic === 'heal' || tactic === 'free')) return { type: 'skill', skill: revive, target: dead[0].id };
-        const group = hasT('heal').find(id => sk(id).target === 'allies');
+        const revive = hasT('revive').sort((a, b) => sk(b).power - sk(a).power)[0];
+        if (revive && dead.length && ['heal', 'free', 'rush'].includes(tactic)) return { type: 'skill', skill: revive, target: dead[0].id };
+        const group = hasT('heal').filter(id => sk(id).target === 'allies').sort((a, b) => (sk(a).cost?.sp || 0) - (sk(b).cost?.sp || 0))[0];
         const single = hasT('heal').slice().sort((a, b) => sk(b).power - sk(a).power).find(id => sk(id).target === 'ally');
         if (hurt.length > 1 && group) return { type: 'skill', skill: group, target: 'all' };
         if (hurt.length && single) return { type: 'skill', skill: single, target: hurt[0].id };
+        if (hurt.length && group) return { type: 'skill', skill: group, target: 'all' };
       }
       // Cure Charm / Fear on allies, and clear lasting curses or blessings.
-      if (tactic === 'heal' || tactic === 'free') {
+      if (['heal', 'free', 'rush'].includes(tactic)) {
         const sick = allies.filter(p => p.ail && ['charm', 'fear', 'distress', 'freeze'].includes(p.ail.id));
         const cureG = hasT('cure').find(id => sk(id).target === 'allies' && sk(id).cures.includes('charm'));
         const cureS = hasT('cure').find(id => sk(id).target === 'ally' && sk(id).cures.includes('charm'));
         if (sick.length > 1 && cureG) return { type: 'skill', skill: cureG, target: 'all' };
         if (sick.length && cureS) return { type: 'skill', skill: cureS, target: sick[0].id };
+        const buffed = foesA.filter(f => !f.hidden && ['atk', 'def', 'agi'].some(s => f.buffs[s] > 0 && (f.buffT[s] > 1 || smart)));
+        const bluff = hasT('bluff')[0];
+        if (bluff && buffed.length) return { type: 'skill', skill: bluff, target: buffed.sort((a, b) => (b.boss - a.boss) || b.hp - a.hp)[0].id };
         const dek = hasT('dispel').find(id => sk(id).dispel === 'buffs');
-        if (dek && foesA.some(f => ['atk', 'def'].some(s => f.buffs[s] > 0 && f.buffT[s] > 3))) return { type: 'skill', skill: dek, target: 'all' };
+        if (dek && foesA.some(f => ['atk', 'def'].some(s => f.buffs[s] > 0 && (f.buffT[s] > 3 || (smart && f.buffs[s] > 0))))) return { type: 'skill', skill: dek, target: 'all' };
         const dku = hasT('dispel').find(id => sk(id).dispel === 'debuffs');
-        if (dku && allies.filter(p => ['atk', 'def'].some(s => p.buffs[s] < 0)).length >= 2) return { type: 'skill', skill: dku, target: 'all' };
+        if (dku && allies.filter(p => ['atk', 'def'].some(s => p.buffs[s] < 0)).length >= (smart ? 1 : 2)) return { type: 'skill', skill: dku, target: 'all' };
+      }
+      // Rush: keep the party's buffs up (missing or about to run out) and the big foe's guard down, when the fight will last.
+      if (smart && longFight) {
+        const need = (p, st) => p.buffs[st] <= 0 || (p.buffs[st] < CAP && p.buffT[st] <= 1);
+        for (const id of hasT('buff')) {
+          const s = sk(id), stats = [].concat(s.stat);
+          if (s.target === 'allies') { if (allies.filter(p => stats.some(st => need(p, st))).length >= Math.min(2, allies.length)) return { type: 'skill', skill: id, target: 'all' }; }
+          else if (s.target === 'ally') { const p = allies.filter(x => stats.some(st => need(x, st))).sort((a, b) => b.st - a.st)[0]; if (p) return { type: 'skill', skill: id, target: p.id }; }
+        }
+        for (const id of hasT('debuff')) {
+          const s = sk(id), stats = [].concat(s.stat);
+          const f = foesA.filter(x => !x.hidden && stats.some(st => x.buffs[st] >= 0 || (x.buffs[st] > -CAP && x.buffT[st] <= 1))).sort((a, b) => (b.boss - a.boss) || b.hp - a.hp)[0];
+          if (f && (bossUp || s.target === 'all')) return { type: 'skill', skill: id, target: s.target === 'all' ? 'all' : f.id };
+        }
       }
       // Support: buffs and debuffs.
       if (tactic === 'heal' || (tactic === 'free' && bossUp && R() < 0.35)) {
@@ -1036,26 +1358,30 @@ window.FemcBattleEngine = (() => {
       let best = null;
       const consider = (score, action) => { if (!best || score > best.score) best = { score, action }; };
       const atk = attackSkill(u);
-      const opts = [{ id: 'attack', s: atk }].concat(hasT('dmg').concat(hasT('insta')).filter(id => spOk(id) && hpOk(id)).map(id => ({ id, s: Object.assign({ id }, sk(id)) })));
+      const opts = [{ id: 'attack', s: atk }].concat(hasT('dmg').concat(hasT('insta')).filter(id => spOk(id) && hpOk(id)).map(id => ({ id, s: sk(id) })));
       const shielded = f => shieldUp(f);
       opts.forEach(({ id, s }) => {
-        const cost = s.cost && s.cost.sp ? s.cost.sp : 0;
-        const costPen = tactic === 'assault' ? 0 : cost * (tactic === 'heal' ? 3 : 1.2);
+        const cost = id === 'attack' ? 0 : costOf(u, s).sp;
+        const costPen = tactic === 'assault' ? 0 : cost * (tactic === 'heal' ? 3 : smart ? (longFight ? 0.8 : 1.6) : 1.2);
         const n = (s.multi ? (s.multi[0] + s.multi[1]) / 2 : 1) * (u.orgia > 0 ? 2 : 1);
         const est = f => rawDamageEst(u, f, s) * n;
         if (s.type === 'insta') {
           if (tactic === 'heal') return;
-          foesA.forEach(f => {
+          let sc = 0, any = false;
+          (s.target === 'all' ? foesA : foesA).forEach(f => {
             const a = affOf(f, s.el);
             if (f.boss || f.hidden || ['null', 'repel', 'drain', 'resist'].includes(a)) return;
             const ch = (s.chance + (a === 'weak' ? s.chance + 15 : 0) + (s.el === 'dark' && f.ail && f.ail.id === 'fear' ? 55 : 0)) / 100;
-            consider(Math.min(0.95, ch) * f.hp * 0.9 - costPen + (a === 'weak' ? 25 : 0), { type: 'skill', skill: id, target: f.id });
+            const v = Math.min(0.95, ch) * f.hp * 0.9 + (a === 'weak' ? 25 : 0);
+            if (s.target === 'all') { sc += v; any = true; } else consider(v - costPen, { type: 'skill', skill: id, target: f.id });
           });
+          if (s.target === 'all' && any) consider(sc - costPen, { type: 'skill', skill: id, target: 'all' });
           return;
         }
         if (s.target === 'all' || s.target === 'rand') {
-          let sc = 0;
-          foesA.forEach(f => { const m = shielded(f) ? 0 : MULT[affOf(f, s.el)]; sc += Math.min(f.hp, est(f) * Math.max(0, m) * (f.hidden ? 0.5 : 1)) * (s.target === 'rand' ? 1 / foesA.length : 1) + (m < 0 ? -80 : 0) + (f.hidden ? 40 : 0); });
+          let sc = 0, useful = false;
+          foesA.forEach(f => { const m = shielded(f) ? 0 : MULT[affOf(f, s.el)]; if (m > 0) useful = true; sc += Math.min(f.hp, est(f) * Math.max(0, m) * (f.hidden ? 0.5 : 1)) * (s.target === 'rand' ? 1 / foesA.length : 1) + (m < 0 ? -80 : 0) + (f.hidden ? 40 : 0); });
+          if (smart && !useful) return;
           consider(sc - costPen, { type: 'skill', skill: id, target: 'all' });
           return;
         }
@@ -1065,7 +1391,7 @@ window.FemcBattleEngine = (() => {
           if (m <= 0 && a !== 'unknown') return;
           const frozen = f.ail && f.ail.id === 'freeze' && PHYS.has(s.el);
           let sc = Math.min(f.hp + 10, est(f) * m * (frozen ? 1.6 : 1));
-          if ((a === 'weak' || frozen) && !f.down) sc += 45;       // a Down means One More
+          if ((a === 'weak' || frozen) && !f.down) sc += smart ? 70 : 45; // a Down means One More (Rush leans on it hardest)
           if (est(f) * m >= f.hp) sc += 30;                        // finish it
           if (f.ail && f.ail.id === 'shock' && PHYS.has(s.el)) sc -= 25;
           if (f.kind === 'justice' || f.effigy) sc += 20;          // gimmick priorities: Justice first, effigies before the Hanged Man
@@ -1076,13 +1402,14 @@ window.FemcBattleEngine = (() => {
       return best ? best.action : (firstOpen ? { type: 'attack', target: firstOpen.id } : { type: 'guard' });
     }
     function rawDamageEst(src, tgt, sk) {
-      let d = power(src, sk) * (1 + 0.25 * src.buffs.atk) * (1 - 0.2 * tgt.buffs.def) / (1 + (tgt.en + (tgt.def || 0) / 4) / 20);
+      let d = power(src, sk) * atkM(src.buffs.atk) * defM(tgt.buffs.def) * ((src.elBoost || {})[sk.el] || 1) / (1 + (tgt.en + (tgt.def || 0) / 4) / 20);
       return d * (src.boost || 1);
     }
 
     return {
       S, U, party, foes, alive, leader, act, openBuff, autoAction, forcedAct, helpless, analyze, allOut, declineAllOut, enemyAct, nextTurn, upcoming, canPay, canShiftTo,
-      canTheurgy, theurgyDef, shieldUp, outcome: () => S.outcome || check(), skillOf, attackSkill, known: kind => S.known[kind] || {}
+      canTheurgy, theurgyDef, shieldUp, outcome: () => S.outcome || check(), skillOf, attackSkill, known: kind => S.known[kind] || {},
+      costOf, usedOnce, aggro, flanking, kitsuneOn, atkM, defM
     };
   }
 
@@ -1102,5 +1429,7 @@ window.FemcBattleEngine = (() => {
     };
   }
 
-  return { create, rng, PHYS, MAGIC, treeFx, mastered, formUnlocked, formsList, personaId, evolutionsDue, lvlOf, gearOf, skillsFor, statsFor, buildUnit, simParty, enemyBase, rewards };
+  return { create, rng, PHYS, MAGIC, treeFx, mastered, formUnlocked, formsList, personaId, evolutionsDue, lvlOf, gearOf, skillsFor, kitFor, statsFor, buildUnit, simParty, enemyBase, rewards,
+    rootOf, tierOf, learnInto, treeNodes, treeNode, treeOwned, treeState, treeWhy, treeBuy, treeSpent, treeRespec, fragSet,
+    ptreeOf, ptreeNodes, ptreeState, ptreeBuy, ptreeRespec, ptreeFx, ptreeEarned, ptreeSpent, ptreePts, linkRank, forgetSkill, unforget };
 })();
