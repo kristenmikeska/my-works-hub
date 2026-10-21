@@ -72,21 +72,65 @@ A 3-panel horizontal sheet on a plain white background showing the same characte
 
 ---
 
-## 3. Battle pose sheets (6 poses: bosses and fighters animate) ⭐
-**Attach:** the existing art of that Shadow or fighter.
-- 🎮 Bosses: `battle/art/shadows/<name>-shadow.webp`
-- 🎮 Wren's Shadow: `battle/art/shadows/wren-shadow-last-train.webp`
-- 🎮 Fighters: `battle/art/poses/<name>.webp`
-- 🎨 Searcher fighters: their full body in `Added to Game/<Name>FullBody.png`
+## 3. Battle pose sheets: make bosses and fighters move ⭐
+
+**What this is.** Right now most bosses and fighters stand still as one picture and just shake when they attack. A pose sheet is **one image with 6 drawings of the same character in a grid**. I cut it into 6 pictures, and the game flips between them during battle (getting ready, attacking, casting a spell, getting hit), so the character looks animated. It's exactly what you did for Kegstand and the other memory Shadows.
+
+**Every time:**
+- **One character per image**, in a grid of 3 across and 2 down.
+- **Plain white background** and **space between the drawings**, so nothing touches or overlaps. This is the most important part: it's what lets me cut them cleanly.
+- **The same size in every drawing.** If it comes out with a background, or poses overlapping, just ask ChatGPT to *"redo it on a plain white background with more space between the poses."*
+- **Save as** `<name>-poses.png` in New Adds (e.g. `priestess-poses.png`, `akihiko-poses.png`).
+
+---
+
+### 3A. Full-moon bosses (do these first: biggest upgrade)
+**Attach (1 image):** that boss's current art from the 🎮 game folder: `battle/art/shadows/<file>`.
 ```
-Character pose sheet, 3 columns × 2 rows on a plain white background, the same character as the attached image in six poses, same scale and lighting in every cell, nothing overlapping between cells: (1) idle/ready, (2) wind-up, (3) attack, (4) casting a spell with [ELEMENT] effects, (5) hit/recoil, (6) knocked down. Match the attached design exactly.
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME monster as the attached image in all six cells, same design, colors, size and lighting, nothing overlapping. Cell 1: idle, hovering menacingly. Cell 2: winding up, gathering power. Cell 3: lunging forward to attack. Cell 4: casting a spell, surrounded by [ELEMENT] effects. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Persona 3 Reload official art style. No text.
 ```
-For people, swap the six poses for: (1) idle, (2) Evoker raised, (3) weapon attack, (4) spell, (5) hurt, (6) victory.
-- [ ] **Full-moon bosses:** Priestess, Empress, Emperor, Hierophant, Lovers, Chariot, Justice, Hermit, Fortune, Strength, Hanged Man
-- [ ] **Wren's Shadow** (the train lunging is the attack)
-- [ ] **Solar**
-- [ ] **Akihiko, Yukari, Junpei, Mitsuru, Aigis, Ken, Koromaru, Shinjiro**
-- [ ] **Haechan, Jungwon, Jihoon, Minji**
+Replace **[ELEMENT]** with the one in the table:
+
+| ✓ | Boss | Attach this file | [ELEMENT] |
+|---|---|---|---|
+| ☐ | Priestess | `priestess-shadow.webp` | ice crystals and frost |
+| ☐ | Empress | `empress-shadow.webp` | swirling ice and pink charm hearts |
+| ☐ | Emperor | `emperor-shadow.webp` | a fiery shockwave |
+| ☐ | Hierophant | `hierophant-shadow.webp` | crackling lightning and holy light |
+| ☐ | Lovers | `lovers-shadow.webp` | flames and pink charm hearts |
+| ☐ | Chariot | `chariot-shadow.webp` | a red power aura |
+| ☐ | Justice | `justice-shadow.webp` | holy light and lightning |
+| ☐ | Hermit | `hermit-shadow.webp` | lightning and poison mist |
+| ☐ | Fortune | `fortune-shadow.webp` | wind and a spinning golden wheel |
+| ☐ | Strength | `strength-shadow.webp` | a red power aura |
+| ☐ | Hanged Man | `hanged-man-shadow.webp` | dark purple almighty energy |
+| ☐ | Wren's Shadow | `wren-shadow-last-train.webp` | green ghost-fire and flying pages. For cell 3, write "the train lunging forward." |
+
+---
+
+### 3B. Fighters
+**Attach (1 image):** their full-body battle art, from the table below.
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, same face, hair, outfit and weapon, same size, nothing overlapping. Cell 1: battle-ready stance. Cell 2: raising an ornate silver Evoker to their temple. Cell 3: attacking with their [WEAPON]. Cell 4: casting a spell with one hand out, [ELEMENT] effects. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+
+| ✓ | Fighter | Attach this file | [WEAPON] | [ELEMENT] |
+|---|---|---|---|---|
+| ☐ | Solar | 🎨 `Added to Game/SolarBattle.png` | naginata | golden sunlight |
+| ☐ | Akihiko | 🎨 `Added to Game/AkihikoBattle.png` | boxing gloves | lightning |
+| ☐ | Yukari | 🎨 `Added to Game/YukariBattle.png` | bow | wind and pink healing light |
+| ☐ | Junpei | 🎨 `Added to Game/JunpeiBattle.png` | two-handed sword | fire |
+| ☐ | Mitsuru | 🎨 `Added to Game/MitsuruBattle.png` | rapier | ice |
+| ☐ | Aigis | 🎨 `Added to Game/AigisBattle.png` | arm guns | blazing gunfire |
+| ☐ | Koromaru | 🎨 `Added to Game/koromarubattle.png` | knife in his mouth | fire |
+| ☐ | Shinjiro | 🎨 `Added to Game/shinjirobattle.png` | battle axe | a red power aura |
+| ☐ | Ken | 🎨 `Character Portraits/Ken/Ken-Neutral.png`; he has no full-body art yet, so say "full body" | spear | holy light |
+| ☐ | Haechan | 🎨 `Added to Game/Theurgy-Haechan-char.png` | short knife | violet lightning and moonlight |
+| ☐ | Jungwon | 🎨 `Added to Game/JungwonFullBody.png` | thin rapier | ice and a jade glow |
+| ☐ | Jihoon | 🎨 `Added to Game/JihoonFullBody.png` | fists in fingerless gloves | a whirl of wind |
+| ☐ | Minji | 🎨 `Added to Game/MinjiFullBody.png` | bow | golden light |
+
+**For Koromaru,** change cell 2 to *"howling, the Evoker on his collar glowing."*
 
 ---
 
