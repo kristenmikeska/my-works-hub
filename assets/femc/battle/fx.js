@@ -756,6 +756,108 @@ window.FemcFX = (() => {
     return 0;
   }
 
+  /* ── Kat's skills (Haenim's tree) ───────────────── */
+  /* Protective Suzu: a gold bell rings once above the ally; a dome of light settles over them with chiming rings. */
+  function suzu(at, o = {}) {
+    const R = sizeOf(at) * (o.small ? 0.7 : 1), by = at.y - R * 1.05;
+    add({ dur: 1.1, draw(c, t) {
+      const fade = t > 0.75 ? 1 - (t - 0.75) / 0.35 : 1, sw = Math.sin(t * 22) * 0.35 * (1 - c01(t / 0.6));
+      // the bell
+      c.save(); c.translate(at.x, by); c.rotate(sw); c.globalAlpha = fade; c.globalCompositeOperation = 'source-over';
+      const g = c.createLinearGradient(-R * 0.22, 0, R * 0.22, 0); g.addColorStop(0, '#b8862a'); g.addColorStop(0.45, '#fff2b0'); g.addColorStop(1, '#c9962e');
+      c.fillStyle = g; c.strokeStyle = '#5a3a0a'; c.lineWidth = 2;
+      c.beginPath(); c.moveTo(-R * 0.22, R * 0.22); c.quadraticCurveTo(-R * 0.24, -R * 0.2, 0, -R * 0.24); c.quadraticCurveTo(R * 0.24, -R * 0.2, R * 0.22, R * 0.22); c.closePath(); c.fill(); c.stroke();
+      c.fillStyle = '#ff4f9e'; c.beginPath(); c.arc(0, R * 0.25, R * 0.05, 0, TAU); c.fill();
+      c.restore();
+      // chiming rings
+      [0, 0.18, 0.36].forEach(d => { const u = c01((t - d) / 0.55); if (u <= 0 || u >= 1) return; c.globalCompositeOperation = 'lighter'; c.globalAlpha = (1 - u) * fade; c.lineWidth = 3 * (1 - u) + 1; c.strokeStyle = '#ffe9a0'; c.beginPath(); c.arc(at.x, by, R * (0.3 + 0.9 * E.out(u)), 0, TAU); c.stroke(); });
+      // the ward dome
+      const du = E.out(c01((t - 0.2) / 0.5));
+      if (du > 0) { c.globalCompositeOperation = 'lighter'; c.globalAlpha = 0.5 * fade; c.lineWidth = 2.5; c.strokeStyle = '#fff2b0'; c.beginPath(); c.ellipse(at.x, at.y + R * 0.35, R * 0.95 * du, R * 1.15 * du, 0, Math.PI, TAU); c.stroke(); radial(c, at.x, at.y, R * 1.1 * du, '#ffd36b', 0.22 * fade); }
+      if (t < 0.6 && Math.random() < 0.5) emit({ shape: 'star', x: at.x + rnd(-R, R) * 0.8, y: at.y + rnd(-R, R * 0.4), vx: 0, vy: rnd(-60, -20), life: rnd(0.4, 0.7), size: rnd(3, 6), color: pick(['#fff2b0', '#ffd36b', '#ffffff']), rot: rnd(0, TAU) });
+    } });
+    return 280;
+  }
+  /* Kunai Flick: three thin blades flicked in a fan; a keen hit (×3.5) leaves a pink cross-flash. */
+  function kunai(at, o = {}) {
+    const R = sizeOf(at), phi = rnd(-0.3, -0.12) + Math.PI, keen = !!o.keen;
+    const blades = [-0.18, 0, 0.18].map((d, i) => ({ an: phi + d, delay: i * 0.05 }));
+    let hit = false;
+    add({ dur: 0.6, draw(c, t) {
+      c.globalCompositeOperation = 'lighter';
+      blades.forEach(b => {
+        const u = c01((t - b.delay) / 0.18); if (u <= 0 || u >= 1) return;
+        const dist = R * 2.2 * (1 - E.out(u)), x = at.x - Math.cos(b.an) * dist, y = at.y - Math.sin(b.an) * dist;
+        c.save(); c.translate(x, y); c.rotate(b.an); c.globalAlpha = 1;
+        c.fillStyle = '#e8eef8'; c.strokeStyle = '#14070f'; c.lineWidth = 1.5;
+        c.beginPath(); c.moveTo(R * 0.28, 0); c.lineTo(0, -R * 0.05); c.lineTo(-R * 0.14, 0); c.lineTo(0, R * 0.05); c.closePath(); c.fill(); c.stroke();
+        c.fillStyle = '#ff4f9e'; c.beginPath(); c.arc(-R * 0.18, 0, R * 0.035, 0, TAU); c.fill();
+        c.restore();
+        c.globalAlpha = 0.5; c.strokeStyle = '#9fd3ff'; c.lineWidth = 1.4; c.beginPath(); c.moveTo(x, y); c.lineTo(x - Math.cos(b.an) * R * 0.6, y - Math.sin(b.an) * R * 0.6); c.stroke();
+      });
+      if (!hit && t > 0.2) { hit = true; burst(at.x, at.y, scaleN(keen ? 22 : 10), { color: keen ? '#ff8cc0' : '#ffffff', min: 260, max: keen ? 900 : 600 }); }
+      if (keen) { const u = c01((t - 0.2) / 0.35); if (u > 0 && u < 1) { c.globalAlpha = 1 - u; c.lineWidth = 5 * (1 - u) + 1; c.strokeStyle = '#ff4f9e'; const L = R * (0.4 + 0.8 * E.out(u)); c.beginPath(); c.moveTo(at.x - L, at.y - L); c.lineTo(at.x + L, at.y + L); c.moveTo(at.x + L, at.y - L); c.lineTo(at.x - L, at.y + L); c.stroke(); radial(c, at.x, at.y, R, '#ff4f9e', 0.5 * (1 - u)); } }
+    } });
+    return 200;
+  }
+  /* Kitsune Rush: fox-fire. Blue-white wisps circle the ally, then streak forward like a sprint start. */
+  function kitsune(at, o = {}) {
+    const R = sizeOf(at) * 0.9, wisps = Array.from({ length: phone() ? 5 : 8 }, (_, i) => ({ ph: (i / (phone() ? 5 : 8)) * TAU }));
+    add({ dur: 1.1, acc: 0, draw(c, t, dt, e) {
+      const fade = t > 0.8 ? 1 - (t - 0.8) / 0.3 : 1, r = R * (0.6 + 0.4 * E.out(c01(t / 0.4)));
+      c.globalCompositeOperation = 'lighter';
+      wisps.forEach(w => { const an = w.ph + t * 7, x = at.x + Math.cos(an) * r, y = at.y + Math.sin(an) * r * 0.45; radial(c, x, y, R * 0.18, '#7fe3ff', 0.9 * fade); radial(c, x, y, R * 0.08, '#ffffff', fade); });
+      radial(c, at.x, at.y, R * 1.3, '#ff9ac8', 0.18 * fade);
+      e.acc += dt * 40;
+      while (e.acc >= 1) { e.acc--; emit({ shape: 'flame', ramp: ['#ffffff', '#bff6ff', '#7fe3ff', '#ff9ac8'], x: at.x + rnd(-R, R) * 0.7, y: at.y + rnd(-R * 0.2, R * 0.5), vx: rnd(160, 320), vy: rnd(-60, -20), drag: 1.5, life: rnd(0.3, 0.55), size: rnd(8, 14) }); }
+    } });
+    return 220;
+  }
+  /* Public Veneer: a smiling mask settles over her and a pink shield ring locks in place. */
+  function veneer(at, o = {}) {
+    const R = sizeOf(at);
+    add({ dur: 1.0, draw(c, t) {
+      const fade = t > 0.7 ? 1 - (t - 0.7) / 0.3 : 1, u = E.out(c01(t / 0.35));
+      drawMask(c, at.x, at.y - R * 0.45 - (1 - u) * R * 0.5, R * 0.55, 0, 0.85 * fade);
+      c.globalCompositeOperation = 'lighter'; c.globalAlpha = fade; c.lineWidth = 4; c.strokeStyle = '#ff8cc0';
+      c.beginPath(); c.ellipse(at.x, at.y + R * 0.4, R * (1.3 - 0.4 * u), R * (1.3 - 0.4 * u) * 0.32, 0, 0, TAU); c.stroke();
+      c.lineWidth = 2; c.strokeStyle = '#ffffff'; c.beginPath(); c.arc(at.x, at.y, R * 0.9 * u, Math.PI * 1.1, Math.PI * 1.9); c.stroke();
+      radial(c, at.x, at.y, R * 1.2, '#ff4f9e', 0.25 * fade);
+    } });
+    return 200;
+  }
+  /* Call the Bluff: a playing card spins in, flips, and splits; the foe's glow drains out. */
+  function bluff(at, o = {}) {
+    const R = sizeOf(at);
+    let split = false;
+    add({ dur: 1.0, draw(c, t) {
+      const u = c01(t / 0.45), fade = t > 0.7 ? 1 - (t - 0.7) / 0.3 : 1;
+      if (t < 0.5) {
+        c.save(); c.translate(at.x, at.y - R * 0.3); c.rotate((1 - E.out(u)) * 3); c.scale(Math.cos(u * Math.PI * 2) || 0.05, 1);
+        c.globalCompositeOperation = 'source-over'; c.globalAlpha = 1;
+        c.fillStyle = u > 0.5 ? '#fff4f9' : '#ff4f9e'; c.strokeStyle = '#14070f'; c.lineWidth = 2;
+        c.fillRect(-R * 0.28, -R * 0.4, R * 0.56, R * 0.8); c.strokeRect(-R * 0.28, -R * 0.4, R * 0.56, R * 0.8);
+        if (u > 0.5) { c.fillStyle = '#ff4f9e'; c.font = `900 ${Math.round(R * 0.36)}px sans-serif`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('?', 0, 0); }
+        c.restore();
+      } else if (!split) { split = true; burst(at.x, at.y - R * 0.3, scaleN(16), { color: '#ff8cc0', min: 200, max: 520 }); }
+      c.globalCompositeOperation = 'lighter';
+      const du = c01((t - 0.45) / 0.5);
+      if (du > 0) { c.globalAlpha = fade; c.lineWidth = 3; c.strokeStyle = '#ffb3e6'; for (let i = 0; i < 3; i++) { const an = t * 6 + i * TAU / 3; c.beginPath(); c.arc(at.x + Math.cos(an) * R * 0.3, at.y - R * 0.55, R * 0.12, 0, TAU); c.stroke(); } }
+    } });
+    return 380;
+  }
+  /* Off Angle Flank: a pink slash from the side angle. */
+  function flank(at, o = {}) {
+    const R = sizeOf(at) * (o.small ? 0.6 : 1), an = Math.PI * 0.82;
+    add({ dur: 0.45, draw(c, t) {
+      const u = c01(t / 0.25), f = 1 - c01((t - 0.2) / 0.25);
+      c.globalCompositeOperation = 'lighter'; c.globalAlpha = f; c.lineCap = 'round';
+      [0, 1].forEach(k => { const off = (k - 0.5) * R * 0.25, L = R * 1.4 * E.out(u); c.lineWidth = k ? 2 : 5; c.strokeStyle = k ? '#ffffff' : '#ff4f9e';
+        c.beginPath(); c.moveTo(at.x - Math.cos(an) * L + off, at.y - Math.sin(an) * L); c.lineTo(at.x + Math.cos(an) * L * 0.4 + off, at.y + Math.sin(an) * L * 0.4); c.stroke(); });
+    } });
+    return 0;
+  }
+
   /* A soft colored flash: the reduced-motion version of everything. */
   function simple(at, color) {
     const R = sizeOf(at);
@@ -763,7 +865,8 @@ window.FemcFX = (() => {
     return 0;
   }
 
-  const COLORS = { fire: '#ff6b3d', ice: '#7fe3ff', elec: '#ffe14d', wind: '#5dffa0', light: '#fff2b0', dark: '#c07bff', almighty: '#ff8cc0', slash: '#e8e8f0', strike: '#ffc979', pierce: '#9fd3ff', heal: '#7dffc0', charm: '#ff7ac8', poison: '#b36bff', fear: '#a98bff', distress: '#ff9a3d', freeze: '#9fe8ff', shock: '#ffe14d', bind: '#ffd36b', cure: '#ffffff', buff: '#6ab0ff', debuff: '#ff5a7a' };
+  const COLORS = { fire: '#ff6b3d', ice: '#7fe3ff', elec: '#ffe14d', wind: '#5dffa0', light: '#fff2b0', dark: '#c07bff', almighty: '#ff8cc0', slash: '#e8e8f0', strike: '#ffc979', pierce: '#9fd3ff', heal: '#7dffc0', charm: '#ff7ac8', poison: '#b36bff', fear: '#a98bff', distress: '#ff9a3d', freeze: '#9fe8ff', shock: '#ffe14d', bind: '#ffd36b', cure: '#ffffff', buff: '#6ab0ff', debuff: '#ff5a7a',
+    suzu: '#ffd36b', kunai: '#9fd3ff', kitsune: '#7fe3ff', veneer: '#ff8cc0', bluff: '#ffb3e6', flank: '#ff4f9e', disorient: '#ffb3e6' };
   /* play(kind, at, opts) → milliseconds (at 1x) until the effect "lands", so the battle can time its damage numbers. */
   function play(kind, at, o = {}) {
     if (!ctx || !at) return 0;
@@ -794,6 +897,12 @@ window.FemcFX = (() => {
       case 'shatter': return ice(at, {});
       case 'shock': return elec(at, { small: true });
       case 'bind': return bindFx(at, o);
+      case 'suzu': return suzu(at, o);
+      case 'kunai': return kunai(at, o);
+      case 'kitsune': return kitsune(at, o);
+      case 'veneer': return veneer(at, o);
+      case 'bluff': return bluff(at, o);
+      case 'flank': return flank(at, o);
       default: return simple(at, COLORS[kind]);
     }
   }
