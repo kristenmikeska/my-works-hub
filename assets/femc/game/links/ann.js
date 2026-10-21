@@ -1,6 +1,6 @@
 /* Ann Takamaki · Lovers. Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
    Cast-only speakers: boy, vendor, shopgirl (no portraits). Persona-world cast (kind 'persona', Kat's ruling 2026-10-20): a
-   model from Tokyo on a work contract here this year, her friends a train ride and a text away. Side romance (route
+   model based in Tokyo whose jobs keep bringing her through Port Island, her friends a train ride and a text away. Side romance (route
    choice at rank 9). She stays all year: no `closes`; afterMax: 3 ordinary scenes with her; christmas: 12/24.
    Holidays and reactive texts: data/living-persona.js. */
 (window.FEMC_GAME_LINKS ||= []).push({
@@ -11,7 +11,7 @@
   home: { area: 'Paulownia Mall', spot: 'Fountain', slot: 'after', days: [0, 3, 5, 6],
           hint: 'After school on Wednesdays and Fridays, and in the daytime on weekends, by the fountain at Paulownia Mall.' },
   approach: "On the rim of the fountain at Paulownia Mall, a blonde girl in a red jacket is frowning at a half-eaten crepe like it has personally let her down.",
-  cast: { boy: 'Boy from the Arcade', vendor: 'Sweets Vendor', shopgirl: 'Shop Assistant' },
+  cast: { boy: 'Boy from the Arcade', vendor: 'Sweets Vendor', shopgirl: 'Shop Assistant', ryuji: 'Ryuji' }, // ryuji: her 9/22 holiday (living-persona.js)
   invite: {
     ask: [
       "SOLAR. are u free?? i found a parfait the size of my head",
@@ -106,9 +106,9 @@
         ] }
       ] },
       { n: "The girl scooted over on the rim of the fountain and patted the stone beside her, and Solar, who had a whole philosophy about not stopping for people at fountains, stopped and sat. The stone was cool and a little damp. The spray came over now and then on the wind, fine as breath." },
-      { s: 'ann', f: 'happy', t: "I'm Ann. Ann Takamaki. I'm here for work, kind of. I model. Part-time, magazines mostly, nothing fancy. My agency's got me on a contract down here till the fall. I'm from Tokyo. It's like an hour, but it's a whole different hour." },
+      { s: 'ann', f: 'happy', t: "I'm Ann. Ann Takamaki. I'm here for work, kind of. I model. Part-time, magazines mostly, nothing fancy. My agency sends me wherever the jobs are, and lately the jobs keep being here. I'm from Tokyo. It's like an hour, but it's a whole different hour." },
       { register: 'ann' },
-      { s: 'ann', f: 'neutral', t: "They put me up at a hotel by the station. My window looks right into a parking garage. It's very glamorous. I watch a guy in a gray car eat his lunch every day at one." },
+      { s: 'ann', f: 'neutral', t: "They always put me up at the same hotel by the station. Same room, practically. My window looks right into a parking garage. It's very glamorous. I watch a guy in a gray car eat his lunch every day at one." },
       { s: 'solar', f: 'neutral', t: "Solar." },
       { s: 'ann', f: 'neutral', t: "Solar what?" },
       { s: 'solar', f: 'neutral', t: "Just Solar." },
@@ -400,7 +400,7 @@
       { place: 'Iwatodai Dorm · Front', time: 'Evening' },
       { n: "The rain had thinned to the kind of drizzle you only see under streetlights. They sat on the front steps under the overhang, knees up, Ann's tomato umbrella dripping between them, and the street was black and shining and empty all the way to the corner." },
       { s: 'ann', f: 'neutral', t: "I remember my first night here now. I didn't, before. Or I did, and I just never looked at it." },
-      { s: 'ann', f: 'neutral', t: "I was on the last train down from Tokyo with my suitcase. We'd had a goodbye dinner, all of us, the best day, and I fell asleep against the window, and when I woke up everything was green and the train was stopped and everybody was... you know. Boxes." },
+      { s: 'ann', f: 'neutral', t: "I was on the last train down from Tokyo with my suitcase. We'd had dinner first, all of us, the best day, and I fell asleep against the window, and when I woke up everything was green and the train was stopped and everybody was... you know. Boxes." },
       { s: 'ann', f: 'neutral', t: "There was a girl on the platform. Little. In this big coat like a conductor's, way too big for her. She was the only other person awake. She said the hotel was that way and I'd like it here, it was quiet. She was so nice about it. I turned around to ask her name and she wasn't there anymore." },
       { n: "Something touched the back of Solar's neck, light, like a drop of rain off the overhang. She looked up. Nothing was dripping." },
       { s: 'ann', f: 'serious', t: "Mitsuru asked why I took a job this far from home, right when everything there was so good. I didn't tell her. I told you, though. At the fountain. Spring." },
@@ -618,8 +618,8 @@
           { s: 'ann', f: 'happy', t: "Don't thank me. I'm doing it for me. I'm very nosy." }
         ] },
         { t: "You might not be here by then.", notes: 1, then: [
-          { s: 'ann', f: 'sad', t: "...Yeah. Maybe. The agency only booked me through the fall." },
-          { s: 'ann', f: 'neutral', t: "Then I'll check them from Tokyo. It's a train ride. I'll find a way. I'm very annoying." }
+          { s: 'ann', f: 'sad', t: "...Yeah. Maybe. The agency moves me around like a game piece. Next month I could be in Osaka for all I know." },
+          { s: 'ann', f: 'neutral', t: "Then I'll check them from Osaka. It's a train ride. Everything's a train ride. I'll find a way. I'm very annoying." }
         ] }
       ] },
       { n: "When the mall started playing the song it played before closing, Ann reached over and took the phone out of Solar's hand, very gently, and closed it, click, and gave it back. Solar put it in her pocket, where it sat against her hip the whole way home, warm and quiet and full of people." }
@@ -630,29 +630,31 @@
       { n: "October came in clear and cold and bright as a struck bell, the first week that smelled like autumn properly, dry leaves on the walk from the monorail and a man roasting sweet potatoes on a cart outside the mall doors, so that the whole entrance smelled of smoke and sugar. Ann had picked the fountain. Solar noticed that she'd picked it." },
       { n: "She was sitting on the rim where she'd sat in April, in the red jacket, which she hadn't worn since the weather turned, and Solar understood before she got there that something had been decided, the way you understand from the far end of a hallway that the classroom has gone quiet." },
       { s: 'ann', f: 'neutral', t: "I've been dreaming about home. Every night, for like two weeks. Not dreams-dreams. Just home. My room. The station. This morning I woke up and I could smell Shibuya station. The actual smell. Pretzels and rain and a million people's shampoo." },
-      { s: 'ann', f: 'neutral', t: "And then the agency called. The contract down here's done at the end of the month. They've already booked my train back. They always book the train first and ask after." },
+      { s: 'ann', f: 'neutral', t: "And then the agency called. They want to put me on the circuit. Osaka, Fukuoka, Sapporo, a week in Seoul, then wherever's next. Through March. A new city every week, a new hotel every week. It's the biggest thing they've ever offered me." },
+      { s: 'ann', f: 'neutral', t: "The first train's at the end of the month. They've already booked it. They always book the train first and ask after." },
       { s: 'ann', f: 'sad', t: "And I said I'd think about it. I never say that. I always just go where they put me. I've been thinking about it for nine days, Solar. I'm so bad at it." },
-      { n: "The splinter from May, the little one Solar had been carrying since the photo booth, end date, went in the rest of the way. It didn't hurt the way she'd expected. It hurt the way cold water hurts, everywhere at once and then nowhere, and then she couldn't feel her hands." },
+      { n: "The splinter from May, the little one Solar had been carrying since the photo booth, end date, went in the rest of the way. Not a goodbye, not exactly. Just a calendar with no fountain on it, a girl who came through on a Friday and then, one week, didn't. It didn't hurt the way she'd expected. It hurt the way cold water hurts, everywhere at once and then nowhere, and then she couldn't feel her hands." },
       { choose: [
         { t: "(Sit down next to her. Don't say anything yet.)", notes: 3, then: [
           { n: "She sat. The stone was cold through her skirt. The spray came over on the draft from the doors, fine as breath, and Ann leaned until their shoulders touched, and they sat like that until it was bearable, or nearly." }
         ] },
         { t: "When?", notes: 2, then: [
-          { s: 'ann', f: 'neutral', t: "End of the month. A Saturday. Ten-forty in the morning, car four, window seat. I didn't even pick the seat. That's the part that gets me." }
+          { s: 'ann', f: 'neutral', t: "End of the month. A Saturday. Ten-forty in the morning, Osaka, car four, window seat. I didn't even pick the seat. That's the part that gets me." }
         ] },
         { t: "You can't just leave.", notes: 1, then: [
           { s: 'ann', f: 'neutral', t: "I know. I mean, I can. That's the whole problem." }
         ] }
       ] },
       { s: 'ann', f: 'neutral', t: "I think I ran. That's the only way I can say it." },
-      { s: 'ann', f: 'serious', t: "When they offered me this job I said yes so fast my manager laughed. Six months, a whole different city. I told everybody it was a big opportunity. It was a place where I didn't have to look at the calendar. I didn't want spring. I didn't want the best year of my life to turn into a story at a reunion." },
+      { s: 'ann', f: 'serious', t: "When they started sending me down here in April I said yes so fast my manager laughed. Any job, any city, as long as it was out of Tokyo. I told everybody it was a big opportunity. It was a train I could get on so I didn't have to look at the calendar. I didn't want spring. I didn't want the best year of my life to turn into a story at a reunion." },
+      { s: 'ann', f: 'serious', t: "And the circuit's the same thing, only bigger. If I'm never anywhere longer than a week, nothing can end on me. That's the whole appeal. That's so messed up." },
       { s: 'ann', f: 'serious', t: "But I looked. I looked right at it. And it's still awful. Everybody's going to scatter. And I want to be there when it does. I want the ending part too. It's mine." },
       { n: "Mine. Solar heard it the way you hear your own name across a room. She thought, without wanting to, of the box on the enrollment form with nothing in it, and of every door she'd counted since April, and of a thing she couldn't see the edges of that she had been walking around for months like furniture in a dark room. Ann had looked straight at hers. Solar didn't know yet what hers was. Her hands had gone cold in her lap again, and she held them together to give them something to do." },
-      { s: 'ann', f: 'sad', t: "I just don't know if being there means going back. Or if it means I've been an hour away this whole time and acting like it was the moon." },
+      { s: 'ann', f: 'sad', t: "I just don't know if I'm allowed to say no to them. Or have a place. Two places. People who know where I'll be on a Friday. I've been running so long I don't know what standing still looks like." },
       { choose: [
         { t: "Then go be there.", notes: 3, then: [
           { n: "Ann's face did the thing Solar had only ever seen it do once before, at the photo booth, crumpling and brightening at the same time." },
-          { s: 'ann', f: 'sad', t: "...Yeah. Yeah. Okay. You're the only person who'd say it like that. Like it's simple. Like there's a door and you just walk through it." }
+          { s: 'ann', f: 'sad', t: "...Yeah. Yeah. Okay. You're the only person who'd say it like that. Like it's simple. Like there's a door and you just walk through it and stay on the other side." }
         ] },
         { t: "I'll miss you.", notes: 2, then: [
           { s: 'ann', f: 'sad', t: "Don't. Not yet. If you say it now then I'll say it and it'll be a whole thing and we'll both be crying in a mall in October." }
@@ -668,7 +670,7 @@
           { s: 'ann', f: 'surprised', t: "..." },
           { n: "For a second she didn't move at all. Then she grabbed both of Solar's hands and held on like the fountain was about to wash her away, and a kid by the arcade stared, and Ann didn't notice, because Ann had decided a long time ago that being stared at wasn't worth the energy, and she was not about to start now." },
           { s: 'ann', f: 'blushing', t: "Oh my god. Okay. Me too. Obviously me too. Since the photo booth, probably. Since the stupid bear." },
-          { s: 'ann', f: 'flustered', t: "I'm so mad. I'm so happy. There's a train with my name on it in a few weeks, Solar, what is wrong with us." },
+          { s: 'ann', f: 'flustered', t: "I'm so mad. I'm so happy. There's a whole itinerary with my name on it sitting in my inbox, Solar, what is wrong with us." },
           { n: "Solar didn't know. She didn't care, which was new. She looked at their hands, Ann's thumbs pressing into the backs of hers, and for once in her life didn't count a single exit." }
         ] },
         { t: "You're my best friend. The first one I remember.", route: 'friend', notes: 3, then: [
@@ -688,7 +690,7 @@
       ], contact: 'Ann' },
       { music: 'tender' },
       { n: "The last of October had come in cold, and the trees along the street outside the mall had finally given up, gold and then brown and then down, so that the leaves lay ankle-deep in every corner where the wind had put them, and the light went early now, the sky over the bay turning violet before five. Ann's text had come at noon. No emoji. That was how Solar knew it was serious." },
-      { n: "She was on the rim of the fountain in the red jacket with her pigtails high and a train ticket tucked into the back of her phone case, the way you'd mark a page you meant to come back to. She had two crepes in paper cones from the stand by the escalator. She held one out without getting up." },
+      { n: "She was on the rim of the fountain in the red jacket with her pigtails high and a train ticket to Tokyo tucked into the back of her phone case, the way you'd mark a page you meant to come back to. She had two crepes in paper cones from the stand by the escalator. She held one out without getting up." },
       { s: 'ann', f: 'happy', t: "Okay. Official results. Six months of research. Forty-one crepes. And number one, after everything, after all of that, is this stand. Right here. The one I said was terrible the day I met you." },
       { s: 'ann', f: 'flustered', t: "I know! I know. It got better. Or something did. The crepe lady swears she changed nothing. I think she's lying. I think she changed the cream for me." },
       { choose: [
@@ -706,9 +708,9 @@
         ] }
       ] },
       { n: "She gave Solar the notebook. The pink one with the strawberry in sunglasses, gone soft at the corners from six months in a handbag, every page filled in her round loud handwriting, scores and rules and crossings-out and little drawings in the margins, and Solar's rules among them, in Ann's hand, with Solar's name beside each one like a credit in a magazine." },
-      { s: 'ann', f: 'neutral', t: "You keep it on weekdays. I get it on weekends. Joint custody. Someone has to keep ranking, and you can't let this city get away with things." },
-      { s: 'ann', f: 'serious', t: "Because I'm staying. I'm going up this weekend on the train they booked, in my good jacket, and I'm going to sit in my agency's office and tell them I'm signing on down here through March. Then I'm having dinner with my friends. Then I'm coming back Sunday night on the six-oh-four." },
-      { s: 'ann', f: 'happy', t: "And every other weekend I'm going up. And in spring, when everybody scatters, I'm going to be standing right there on the platform, crying, with a sign. I get both. I didn't know you were allowed to have both." },
+      { s: 'ann', f: 'neutral', t: "You keep it when I'm away. I get it when I'm here. Joint custody. Someone has to keep ranking, and you can't let this city get away with things." },
+      { s: 'ann', f: 'serious', t: "Because I'm saying no. To the circuit. I'm going up this weekend in my good jacket, and I'm going to sit in my agency's office and tell them Tokyo's home and Port Island's my other home, and they can send me anywhere they want as long as the train comes back through here. Then I'm having dinner with my friends. Then I'm coming back Sunday night on the six-oh-four, because the mall people booked me for Monday." },
+      { s: 'ann', f: 'happy', t: "And when there's a job in Kyoto I'll go to Kyoto, and then I'll come back. And in spring, when everybody scatters, I'm going to be standing right there on the platform, crying, with a sign. I get both. I didn't know you were allowed to have both." },
       { s: 'ann', f: 'sad', t: "And I don't want you at the station. Is that okay? I don't want it to look like a goodbye, because it isn't one. I want the last thing before the train to be this. The fountain. You with cream on your face." },
       { choose: [
         { t: "Okay. Not at the station.", notes: 3, then: [
@@ -720,14 +722,14 @@
           { n: "Solar looked at her for a long time, and then nodded, once, the way you'd sign something." }
         ] },
         { t: "You're really staying.", notes: 1, then: [
-          { s: 'ann', f: 'happy', t: "I'm really staying. Say it a few more times. I practiced it in the mirror all week. It gets easier every time." }
+          { s: 'ann', f: 'happy', t: "I'm really staying. Coming back, every time. Same thing. Say it a few more times. I practiced it in the mirror all week. It gets easier every time." }
         ] }
       ] },
       { s: 'ann', f: 'neutral', t: "Can I tell you what I figured out? Here, I mean. What this whole year was for." },
       { s: 'ann', f: 'serious', t: "I was so scared of the end that I almost didn't get to have it. And you're scared of something too. I don't know what. I don't think you know what. But whatever it is, Solar, you're allowed to have the ending. It's yours. Don't let anybody keep it for you." },
       { n: "The fountain went on behind them, throwing up its tired plumes. Somewhere upstairs the arcade chimed a win for somebody. Solar sat very still with the notebook on her knees and the words in her, and didn't know where to put them, so she put them where she'd put the photo strip, flat, between two pages, where they'd keep." },
       { ifRoute: 'romance', then: [
-        { s: 'ann', f: 'blushing', t: "And I'm not sorry. About any of it. About you. You're half the reason I'm staying, and I'm not going to pretend you're not. I'm done pretending things on fountains." },
+        { s: 'ann', f: 'blushing', t: "And I'm not sorry. About any of it. About you. You're half the reason I'm coming back, and I'm not going to pretend you're not. I'm done pretending things on fountains." },
         { choose: [
           { t: "(Kiss her.)", notes: 3, then: [
             { n: "Solar leaned in and kissed her on the rim of the fountain, under the mall's evening lights, with the spray coming over them on the draft from the doors, and Ann's mouth tasted like burnt sugar, and her hand came up and held the back of Solar's neck like she was keeping something from falling, and it was short, and it was not short at all." },
@@ -770,7 +772,7 @@
       { n: "It had answered before she'd closed the phone. Solar read it twice on the edge of her bed, and then closed it, gently, click, and put it in her pocket, where it sat warm against her hip all morning, and buzzed twice more before lunch, both times about the bag." }
     ] }
   ],
-  // After MAX: ordinary days with her, now that she's staying (they play in order, then rotate, at the fountain's usual times).
+  // After MAX: ordinary days with her, now that she keeps coming back (they play in order, then rotate, at the fountain's usual times).
   afterMax: [
     { title: 'consultant on duty', place: 'Paulownia Mall · Fountain', time: 'After School', scene: [
       { music: 'city' },
@@ -887,7 +889,7 @@
         { s: 'ann', f: 'happy', t: "It's the most you thing ever photographed. Of course I kept it. It's frame one. It's the cover." }
       ] },
       { t: "When did you even do this?", notes: 2, then: [
-        { s: 'ann', f: 'happy', t: "On the train. Every other weekend. People stare. I tell them it's for school." }
+        { s: 'ann', f: 'happy', t: "On trains. I'm on a lot of trains. People stare. I tell them it's for school." }
       ] }
     ] },
     { n: "Solar had brought something too. She'd thought about it for two weeks and changed her mind four times and in the end gone back to the first thing, which was a notebook. Pink. A strawberry on the cover. Not in sunglasses, because she couldn't find one in sunglasses, so she'd drawn them on herself in marker, badly." },

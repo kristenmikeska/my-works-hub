@@ -2,7 +2,8 @@
    living-holidays.js (holidays: core.js holidayInvites) and living-texts.js (afterRank: core.js deliverTexts), merged into
    the links through FEMC_GAME_LINK_EXTRAS. Kat's ruling: these three belong to the Persona world. They live around here
    this year, Tokyo is a train ride away, and their texts are ordinary and instant. Romance flavor sits inside ifRoute;
-   no holiday decides a route. New Year's ones carry flag 'year-goes-on' like the rest of the calendar's. */
+   no holiday decides a route. New Year's ones carry flag 'year-goes-on' like the rest of the calendar's. Ann's 9/22 is a
+   Persona 5 cameo (Ryuji visits); his name is in links/ann.js `cast`. */
 (() => {
   const X = (window.FEMC_GAME_LINK_EXTRAS ||= {});
   const add = (id, field, v) => { const o = (X[id] ||= {}); o[field] = { ...(o[field] || {}), ...v }; };
@@ -93,6 +94,32 @@
         ] },
         { s: 'ann', f: 'happy', t: "Same time next year. Same yukata. Same expert. I'm making it a rule." },
         { n: "On the way down Ann bought a third candy apple purely, she said, for research, and gave it to Junpei at the gate, who had been waiting there in case anybody brought him anything, and who looked at it as though she'd handed him a medal." }
+      ] },
+    '9/22': { rank: 6, title: 'silver week', place: 'Iwatodai Strip · Wild-Duck Burger', time: 'Daytime', bg: 'wilduckburger', music: 'joy',
+      ask: "SOLAR. emergency. ryuji came down on the train bc he heard there's a burger here u can't finish and he's taking it personally", yes: "i've finished it", ok: "U HAVE?? ok ur coming. wild-duck, 1pm. he needs to see this", sorry: 'cant today, sorry!!', no: "nooo ok. i'll film it for u. it's going to be tragic",
+      scene: [
+        { n: "The holiday had put half of Iwatodai on the strip at once, families and couples and a line out the door of the takoyaki stand, the late September sun still warm enough on the pavement that the air over it wobbled, and inside Wild-Duck Burger it smelled the way it always smelled, fryer oil and ketchup and the specific ambition of teenage boys." },
+        { n: "Ann was in the window booth with a milkshake, and across from her sat a boy with bleached hair and a loud yellow T-shirt, one leg bouncing under the table at a speed that suggested he'd had a coffee on the train, and in front of him, unopened, the large Mystery Burger in its paper, which he was looking at like a boxer looks at the other corner." },
+        { s: 'ryuji', f: 'happy', t: "Yo! You're Solar? For real? Dude, Ann won't shut up about you. Crepe this, Solar that. It's a whole thing in the chat." },
+        { s: 'ann', f: 'flustered', t: "I do NOT not shut up. I shut up a normal amount." },
+        { s: 'ryuji', f: 'neutral', t: "She says you finished one of these. The large. By yourself. No offense, but I gotta see that with my own eyes, 'cause that sounds made up." },
+        { choose: [
+          { t: "(Order a large. Finish it first.)", notes: 3, stat: { courage: 1 }, then: [
+            { n: "Solar ordered the large and sat down and unwrapped it and started, steadily, the way she did anything she'd decided to do, without looking up, and across the table Ryuji got through half of his at a sprint and then slowed, and then stopped, and sat there breathing through his nose with a fry in his hand like a man holding a white flag." },
+            { s: 'ryuji', f: 'sad', t: "...How. HOW. You didn't even make a face. Ann, she didn't even make a face." },
+            { s: 'ann', f: 'happy', t: "I told you. I told you and you didn't believe me. She's my friend. She does weird things perfectly." }
+          ] },
+          { t: "Last time you had two crepes before a roller coaster.", notes: 2, stat: { charm: 1 }, then: [
+            { s: 'ryuji', f: 'neutral', t: "Wait. How do you know about that? ...Ann. You SENT her that?" },
+            { s: 'ann', f: 'happy', t: "I send her everything. You were so green. You looked like a pickle in a hat." },
+            { s: 'ryuji', f: 'happy', t: "Okay, okay, that's fair, I did look like a pickle. Whatever. This time I'm ready. I ate nothing on the train. Nothing!" }
+          ] }
+        ] },
+        { n: "He did not finish it. He got closer than most, which Solar told him, and he took it the way a person takes a silver medal, gracious and suspicious about the referee, and the girl behind the counter, who had seen everything, wrapped the last quarter up for him without being asked." },
+        { s: 'ryuji', f: 'neutral', t: "Hey. For real, though. Thanks for hanging with her. She gets kinda lonely in hotels. She acts like she doesn't, but she does. She texts us pictures of parking garages." },
+        { s: 'ann', f: 'flustered', t: "Ryuji. She's RIGHT HERE." },
+        { s: 'ryuji', f: 'happy', t: "Yeah, I know. That's why I'm saying it to her." },
+        { n: "He went back up on the six o'clock train with the burger in a paper bag and a promise to come back and try again, and at the gate he did a bow at Solar that was far too deep and far too sincere, and Ann hit him on the arm, and then hugged him, quickly, hard, and waved until the doors shut." }
       ] }
   });
 

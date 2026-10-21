@@ -33,6 +33,7 @@ Other docs, if you ever want detail:
 - ✅ Story before each full-moon fight (Akihiko is protective)
 - ⬜ Links past rank 10, and Shinjiro waking up
 - ✅ The Persona cast belongs to this world: texts arrive like anyone's, and Ann, Kasumi and Haru stay all year, with holiday invites
+- ✅ Ann is a Tokyo model whose jobs keep bringing her through Port Island, so she comes and goes all year; more Persona 5 friends drop by now and then
 - ✅ Kuromi and My Melody as exchange students living in the dorm; Kuromi's link rewritten and deeper; My Melody as a hidden link you can miss
 - 🟡 Kasumi's timeline fixed (she stays all year); deeper Mercy, Kiriko and Sebastian links still to do
 

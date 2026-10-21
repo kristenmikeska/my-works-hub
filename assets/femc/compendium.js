@@ -97,7 +97,7 @@ window.FEMC_COMPENDIUM = [
   "from": "Persona 3 Portable",
   "img": null,
   "unlock": "met:rio",
-  "note": "The volleyball team's ace, who never once let herself stop before the ball did.",
+  "note": "The tennis team's ace, who never once let herself stop before the ball did.",
   "arcana": "VII · Chariot",
   "link": "social.html#rio"
  },

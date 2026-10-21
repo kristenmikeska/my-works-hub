@@ -493,6 +493,74 @@ window.FEMC_GAME_RUNINS = [
       { bond: { kuromi: 1 } }
     ] },
 
+  /* Persona 5 cameos (2026-10-21): Ann's and Kasumi's people from Tokyo, a train ride away. Light, no story weight; each one
+     is gated on the link they come with (who), and uses only the faces each of them has. */
+  { id: 'ri-ann-makoto-shoot', who: 'ann', where: { acts: ['pier', 'beachclean'] }, slot: 'after',
+    after: '6/1', until: '7/19', cast: { makoto: 'Makoto' }, scene: [
+      { n: "On her way back along the seafront there was a rope of yellow tape and a photographer and a folding rack of summer dresses flapping in the wind, and on an upturned crate just outside the tape, a girl in a neat cardigan sat with a thick exam workbook open on her knees and a highlighter in her teeth, looking up every thirty seconds at the shoot like a lifeguard counting heads." },
+      { s: 'ann', f: 'happy', t: "SOLAR. Oh my god, perfect timing. Come here. This is Makoto. She came down on the early train to keep me company, and by keep me company I mean study at me." },
+      { s: 'makoto', f: 'neutral', t: "I'm also making sure nobody on this crew keeps Ann past six. They tried it last time. ...You're Solar. The crepe consultant." },
+      { n: "She said it the way a person reads a name off a file, politely and completely, and Solar had the brief, specific feeling of having been looked up." },
+      { choose: [
+        { t: "What are you studying?", stat: { knowledge: 1 }, then: [
+          { s: 'makoto', f: 'happy', t: "Entrance exams. Law, eventually. It's a lot of reading. Honestly, the sea is a very good place for it. Nothing here wants to talk to me." },
+          { n: "A gull landed on the rail beside her and looked at the workbook. Makoto looked back at it, level and patient, until it left, which Solar decided was the most frightening thing she'd seen all week." }
+        ] },
+        { t: "Does she always need a chaperone?", stat: { courage: 1 }, then: [
+          { s: 'makoto', f: 'serious', t: "She doesn't need one. I just like being one. There's a difference." },
+          { s: 'ann', f: 'happy', t: "She's the scary one. I told you about the scary one. Isn't she the best?" },
+          { s: 'makoto', f: 'surprised', t: "Ann. You can't introduce me as the scary one." }
+        ] }
+      ] },
+      { n: "The photographer called Ann back under the tape, and Makoto capped the highlighter and watched her go, and then said, without looking away from the shoot, that Ann talked about Port Island a lot lately, and that it was nice, and that she was glad, and turned a page." },
+      { bond: { ann: 1 } }
+    ] },
+
+  { id: 'ri-ann-futaba-crane', who: 'ann', where: { acts: ['crane', 'arcade'] },
+    after: '7/21', until: '8/31', cast: { futaba: 'Futaba' }, scene: [
+      { n: "By the crane machines on her way out there was a small crowd of exactly two, Ann and a girl half her height in a hoodie far too warm for July, orange hair down her back and enormous glasses, standing with her nose nearly on the glass of a machine full of round white plush cats." },
+      { s: 'ann', f: 'happy', t: "Solar! Okay, this is Futaba. She heard there was a limited prize down here and made me take her on the train. She's been staring at it for twenty minutes. She has a plan." },
+      { s: 'futaba', f: 'serious', t: "I have a model. The claw's got a forty percent grip on the drop and the cat's center of mass is in the head. It's very simple, actually, I just haven't touched it yet because I'm still... computing." },
+      { s: 'futaba', f: 'neutral', t: "...You're the one from the group chat. The photo booth. Hi. I'm not good with people I haven't seen through a screen first. Don't take it personally, it's universal." },
+      { choose: [
+        { t: "(Try it. Go for the head, like she said.)", stat: { proficiency: 1 }, then: [
+          { n: "Solar put in a coin and lined the claw up over the cat's round head and dropped it, and the claw closed weakly and wobbled and somehow didn't let go, and the cat came up and over and into the chute like it had been waiting for permission." },
+          { s: 'futaba', f: 'happy', t: "It WORKED. My model works. You're a very good hardware component." },
+          { s: 'ann', f: 'happy', t: "That's the nicest thing she's ever said to anybody. I'm so jealous." }
+        ] },
+        { t: "Want me to stand behind you so nobody watches?", stat: { kindness: 1 }, then: [
+          { n: "Futaba looked at her sideways for a long moment through the big glasses, and then nodded, once, and Solar stood at her back with Ann and blocked the aisle while she played, and on the fourth try she got it, and held the cat up over her head with both arms." },
+          { s: 'futaba', f: 'happy', t: "Mweheheh. Victory. ...Thanks. That was a very efficient wall." }
+        ] }
+      ] },
+      { n: "On the way out Futaba took a picture of the cat on the rim of the fountain and sent it somewhere, and Ann's phone buzzed in her pocket at the same time, and Ann read it and laughed, and said the group chat had voted, and the cat lived in Port Island now, and Futaba would be visiting it." },
+      { bond: { ann: 1 } }
+    ] },
+
+  { id: 'ri-kasumi-maruki-books', who: 'kasumi', where: { jobs: ['bookworms'] },
+    after: '6/10', until: '9/30', ranks: { kasumi: 4 }, cast: { maruki: 'Dr. Maruki' }, scene: [
+      { n: "Near closing a man in a rumpled white coat over a sweater came to the counter with a stack of paperbacks so tall he had to look round the side of it, set it down, knocked the top two off, apologized to them, and picked them up again." },
+      { s: 'maruki', f: 'happy', t: "Ah, sorry, sorry. I'm a bit of a klutz. I come down for a talk at the university and I always end up in a used bookstore, and then I have to carry it all home on the train." },
+      { n: "Psychology, mostly, a few cookbooks, and one very old paperback on gymnastics with a cracked spine, which he set apart from the others, carefully, like it belonged to somebody else." },
+      { s: 'maruki', f: 'neutral', t: "That one's a gift. One of my students. She's training down here a lot this year, at a shrine, of all places. Kasumi Yoshizawa. You wouldn't know her." },
+      { choose: [
+        { t: "I do, actually. She runs the shrine steps.", stat: { kindness: 1 }, then: [
+          { s: 'maruki', f: 'happy', t: "Twenty at a time, yes? She told me. She said somebody counts with her now. ...Oh. You're the senpai. I've heard a lot about you." },
+          { n: "He said it warmly, the way a person mentions the weather on a nice day, and Solar didn't know what to do with having been talked about kindly, so she wrapped the gymnastics book in brown paper with the corners folded properly." }
+        ] },
+        { t: "Do you always buy this many?", stat: { knowledge: 1 }, then: [
+          { s: 'maruki', f: 'serious', t: "Every time. My apartment is mostly books and a frying pan I'm not very good with. I've been trying to learn curry. It's going... honestly, it's going badly." },
+          { s: 'maruki', f: 'happy', t: "But I'm learning! That's the important part." }
+        ] }
+      ] },
+      { n: "He paid in exact change, counted twice, and went out with the stack held against his chest, and in the window Solar watched him stop on the pavement to shift it, and drop one, and pick it up, and keep going toward the station." },
+      { later: { delay: 1, slot: 'evening', msgs: [
+        { from: 'kasumi', t: 'Senpai!! Dr. Maruki says he met you!' },
+        { from: 'kasumi', t: 'He says you wrapped my book very nicely. I haven\'t opened it yet. I\'m saving it for after practice ✨' }
+      ] } },
+      { bond: { kasumi: 1 } }
+    ] },
+
   /* ── Visitors ── */
   { id: 'ri-kiriko-amulets', who: 'kiriko', where: { jobs: ['amulets'] }, met: ['kiriko'],
     after: '6/13', until: '1/20', scene: [
