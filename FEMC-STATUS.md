@@ -11,7 +11,7 @@ Other docs, if you ever want detail:
 ---
 
 ## Running now / next up
-- ⏳ **Five social stats** (Knowledge, Courage, Proficiency, Charm, Kindness), with lots of new ways to raise them
+- ✅ **Five social stats** (Knowledge, Courage, Proficiency, Charm, Kindness), five ranks each, with lots of new ways to raise them: new places to go, evenings at the dorm (cooking, the roof garden, Koromaru, your desk), volunteering, a new job and new books. Old saves carry over without losing a rank, and nine bond perks that were waiting now work
 - ⬜ **Next: the "living world" batch.** It covers everything marked *(living world)* below.
 
 ## Story and characters
