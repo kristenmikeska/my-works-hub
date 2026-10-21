@@ -770,7 +770,7 @@
       { n: "The crepe lady looked up from her griddle as Solar came off the escalator, and without a word, without being asked, started on two." },
       { n: "Solar didn't stop her. She paid for both. She sat on the rim of the fountain in the place that was hers, beside the place that wasn't, with a crepe in each hand and the pink notebook open on her knee to the first empty page after the round loud handwriting ran out. The last thing Ann had written was the final ranking, NUMBER ONE, THE FOUNTAIN STAND (I KNOW!!!), and under it, much smaller, in the corner, consultant on duty, just solar, and a heart." },
       { choose: [
-        { t: "(Give it five strawberries. Even the sad one.)", notes: 3, then: [
+        { t: "(Give it five strawberries. Even the sad one.)", notes: 3, stat: { kindness: 1 }, then: [
           { n: "She wrote the date and drew five strawberries in a row, each a little worse than the last, the fifth one mostly a triangle, the way she had in May. It looked lonely on its own. She drew a sixth, for Ann's crepe, though she didn't have a rule for it, and figured Ann would have made one up." }
         ] },
         { t: "(Take a point off. The cream's gone a little flat.)", notes: 2, then: [

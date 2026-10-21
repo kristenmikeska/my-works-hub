@@ -444,7 +444,7 @@
           { s: 'hanni', f: 'neutral', t: "...No. No, I think she wants to be by herself. She looks like you do when you want to be by yourself." },
           { s: 'hanni', f: 'happy', t: "Anyway! Takoyaki! There's two left! One each!" }
         ] },
-        { t: "(Give her the last takoyaki.)", notes: 3, then: [
+        { t: "(Give her the last takoyaki.)", notes: 3, stat: { kindness: 1 }, then: [
           { s: 'hanni', f: 'happy', t: "No, you have it! You have it. Okay. Half. We'll do half." },
           { n: "They did half. When Solar looked back down the platform, the bench was empty. Hanni didn't look back at all. Solar noticed that, and didn't know what to do with it, and put it away somewhere." }
         ] },

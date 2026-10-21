@@ -472,12 +472,12 @@
       ] },
       { n: "They looked at the third problem together. Cherry read it out loud twice, slowly, in the voice of someone reading a ransom note, and then said she didn't understand a single word of it and that it was probably written in a curse." },
       { choose: [
-        { t: "(Explain it to her until she gets it.)", notes: 3, needs: { academics: 3 }, then: [
+        { t: "(Explain it to her until she gets it.)", notes: 3, needs: { knowledge: 3 }, then: [
           { n: "Solar explained it. Slowly, the way the neat handwriting in the margins had explained it to her, one step and then the next, and somewhere around the fourth step she realized she understood it herself, all at once, the way you suddenly see the second picture in an optical illusion, and she kept going, and Cherry's face went from bored to suspicious to something like horror." },
           { s: 'cherry', f: 'surprised', t: "...I understood that. Why did I understand that. Take it back. I don't want it. Put it back in your head." },
           { s: 'cherry', f: 'serious', t: "He's turning you into one of them. This is how it starts. First it's calculus. Then you're carrying a planner." }
         ] },
-        { t: "(Give up. Make tea.)", notes: 2, then: [
+        { t: "(Give up. Make tea.)", notes: 2, stat: { kindness: 1 }, then: [
           { n: "They gave up. Solar made tea in the kitchen and Cherry followed her in and sat on the counter, which you weren't supposed to do, and told her everything that was wrong with every teacher she'd ever had, in order, by grade, and when they came back to the lounge the third problem was still there, waiting, and somehow it didn't matter as much." }
         ] },
         { t: "(Ask Yukari.)", notes: 2, then: [

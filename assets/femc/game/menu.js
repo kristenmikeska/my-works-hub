@@ -586,7 +586,7 @@ window.FemcMenu = (() => {
         <h3>Books</h3>${s.books.owned.length ? `<ul class="g-list">${s.books.owned.map(k => { const bk = G.bookById(k); return `<li><b>${esc(bk?.name || k)}</b><span>${s.books.done.includes(k) ? 'Read' : `${s.books.progress[k] || 0}/${bk?.nights}`}</span></li>`; }).join('')}</ul>` : '<p class="g-note">Bookworms on the Strip sells used books.</p>'}
         ${Object.values(s.jobs).some(j => j.hired) ? `<h3>Jobs</h3><ul class="g-list">${G.D.jobs.filter(j => G.jobState(j.id).hired).map(j => `<li><b>${esc(j.name)}</b><span>${G.jobState(j.id).shifts} shifts</span></li>`).join('')}</ul>` : ''}</div></div>`;
   }
-  /* ── Social stats, P5R-style: a radar of every stat (a triangle for P3P's three; the five P5 stats make a pentagon) and a
+  /* ── Social stats, P5R-style: a radar of every stat (the five make a pentagon) and a
      card per stat with its rank name, rank number in suns, and the meter to the next rank. Everything is read from
      G.D.stats.stats (name, color, ranks, at), so a stat added there appears here without changes. ── */
   function statsScreen() {

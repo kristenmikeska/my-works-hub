@@ -520,7 +520,7 @@
       { s: 'sunoo', f: 'sad', t: "And then I thought about the speech. In front of the whole school. All those faces. And I just. Couldn't. I never even signed up. Jake still brings it up. I was a coward with a really nice handwriting." },
       { s: 'sunoo', f: 'happy', t: "That's why I helped you so much. With yours. I practiced it with you for days. I think I was practicing mine. I think I wanted somebody to get up there who was as scared as me, and do it anyway." },
       { choose: [
-        { t: "Then give it now. I'll be the whole school.", notes: 3, needs: { courage: 2 }, flag: { 'sunoo-speech': true }, then: [
+        { t: "Then give it now. I'll be the whole school.", notes: 3, needs: { kindness: 2 }, flag: { 'sunoo-speech': true }, then: [
           { s: 'sunoo', f: 'surprised', t: "Now? Here? On the FLOOR?" },
           { s: 'solar', f: 'neutral', t: "Stand up if you want. I'll clap either way." },
           { n: "He stood up. He brushed the flour off his apron, both sides. He looked out over the empty café, the chairs up on the tables, the gold windows gone dark, the one light left on over the till, as if it were a gym full of people, and opened his mouth, and closed it, and opened it again." },
@@ -817,7 +817,7 @@
           { s: 'sunoo', f: 'surprised', t: "...There wasn't. I forgot the sun. I gave a whole speech without a sun." }
         ] }
       ] },
-      { stat: { courage: 2 } },
+      { stat: { kindness: 2 } },
       { n: "He folded the paper back up very small and put it in the CROISSANT FUND jar with the other things he didn't throw away, and she saw, on the way out, that he'd drawn a sun on it after all, in the corner, at the last minute, with a face." }
     ] },
 

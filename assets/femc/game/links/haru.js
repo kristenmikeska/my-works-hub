@@ -183,7 +183,7 @@
       { n: "It was warm and muggy, the air thick enough to lean on, the bay a flat white glare past the fence. The radishes had come up. Haru was kneeling at the end of the row pulling the first ones, tiny and round and shockingly red, and she held one up to Solar with dirt on her fingers as though she were presenting a jewel." },
       { s: 'haru', f: 'happy', t: "Twenty days! They're called twenty-day radishes, and they kept their word. Isn't that wonderful? Hardly anything keeps its word that precisely." },
       { choose: [
-        { t: "(Give her the seeds.)", notes: 3, then: [
+        { t: "(Give her the seeds.)", notes: 3, stat: { kindness: 1 }, then: [
           { s: 'haru', f: 'surprised', t: "For me?" },
           { n: "She turned the packet over and read the back, and her whole face changed." },
           { s: 'haru', f: 'blushing', t: "Sunflowers. Oh, Solar-chan. They'll be taller than the fence by August. Wherever will I put them?" },
@@ -223,7 +223,7 @@
       { s: 'haru', f: 'happy', t: "Solar-chan! You came up in the rain. Fufu. This is how I find out who my real friends are." },
       { s: 'haru', f: 'happy', t: "The umbrellas were all in the lost-and-found. I asked the office very nicely if I might borrow them, and they said some of them had been there since last year, and I said, then they've been lost long enough." },
       { choose: [
-        { t: "(Hold an umbrella over her instead.)", notes: 3, then: [
+        { t: "(Hold an umbrella over her instead.)", notes: 3, stat: { kindness: 1 }, then: [
           { n: "Solar took the plain black one off the end of the row, the one nobody had ever come back for, and held it over Haru's hood, and the rain changed its sound overhead from a hiss to a drum." },
           { s: 'haru', f: 'surprised', t: "Oh!" },
           { s: 'haru', f: 'happy', t: "Now I'm a tomato. How lovely. Nobody's ever staked me before." }
@@ -472,7 +472,7 @@
       { s: 'haru', f: 'serious', t: "Whatever you do with them, it ought to be because you chose to. Not because it was ringing." },
       { n: "There were new boards stacked by the door, fresh cedar, pale and sweet-smelling, and a box of nails and a hammer, and Haru, it turned out, had drawn plans. Of course she had." },
       { choose: [
-        { t: "(Hold the boards steady while she nails them.)", notes: 3, then: [
+        { t: "(Hold the boards steady while she nails them.)", notes: 3, stat: { proficiency: 1 }, then: [
           { n: "Solar knelt and held each board in place with both hands, her fingers a few centimeters from where the nails went in, and Haru drove every one in three strokes, never four, and never once came close, and neither of them remarked on the fact that Solar never flinched, or on what it meant that Haru never asked her to move her hands." }
         ] },
         { t: "(Carry the broken wood down to the bins.)", notes: 2, then: [

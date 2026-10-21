@@ -162,7 +162,8 @@
   const SUN = (cls = '') => `<svg class="g-sun ${cls}" viewBox="-50 -50 100 100" aria-hidden="true"><g class="g-sun-rays">${Array.from({ length: 12 }, (_, k) => `<path d="${k % 2 ? 'M-4.5 -27 L0 -44 L4.5 -27Z' : 'M-6 -27 L0 -49 L6 -27Z'}" transform="rotate(${k * 30})"/>`).join('')}</g><circle class="g-sun-core" r="22"/><circle class="g-sun-ring" r="15"/></svg>`;
   const statQueue = [];
   let statBusy = false, statTimer = null;
-  function statUp(t) { statQueue.push(t); pumpStat(); }
+  // A beat later, so a scene opened in the same step as the gain (an activity's narration) is up before the card checks.
+  function statUp(t) { statQueue.push(t); if (!statBusy) { clearTimeout(statTimer); statTimer = setTimeout(pumpStat, 80); } }
   function pumpStat() {
     clearTimeout(statTimer);
     if (statBusy || !statQueue.length) return;
@@ -698,7 +699,7 @@
     const QUIET = ['Chalk dust, the clock above the door, and the specific drone of a lesson that had decided to take its time.', 'She took notes in neat small handwriting she didn’t remember learning, and the period went by.', 'Someone behind her was passing notes. The teacher pretended not to see. The period went by anyway.', 'Rain or sun outside, the classroom had its own weather, warm and stale and slow.'];
     const text = dozed ? 'The lecture went somewhere warm and far away, and so did she. When she lifted her head, the board was full and her notes were a single long line where the pen had slid.' : pick(QUIET, S().day * 2 + slot.length);
     const listened = !dozed && Math.abs(Math.sin(S().day * 2.1 + slot.length)) < 0.3;
-    if (listened) G.addStat('academics', 1);
+    if (listened) G.addStat('knowledge', 1);
     segment({ slot, bg: 'gekkoukan-classroom-day', place: t.subject || 'Class', text, sub: dozed ? '' : `<b>${esc(cap(t.name))}.</b> ${esc(t.quirk || '')}${listened ? ' <i>She caught something worth writing down.</i>' : ''}` });
   }
   function lateNight(info) {
@@ -798,7 +799,7 @@
     const paint = b => {
       const a = G.areaById(b.dataset.px), h = here(a);
       main.querySelectorAll('[data-px]').forEach(x => x.classList.toggle('px-on', x === b));
-      const acts = G.D.places.activities.filter(x => x.area === a.id && x.slots.includes(slot));
+      const acts = G.activities().filter(x => x.area === a.id && x.slots.includes(slot));
       const jobs = G.D.jobs.filter(j => j.area === a.id && G.jobVisible(j) && j.slot === slot);
       panel.innerHTML = `<p class="g-kicker">${esc(G.slotName(slot, info))}</p><h2>${esc(a.name)}</h2><p class="g-px-about">${esc(a.about || a.blurb)}</p>
         ${a.home ? '<ul class="g-px-gets"><li><b>Go home</b><small>Uses this time slot.</small></li></ul>' : `
@@ -823,7 +824,7 @@
     const info = G.dayInfo(), night = slot === 'evening';
     setBg(night && a.bgEvening ? a.bgEvening : a.bg, night && !a.bgEvening ? 'night' : '');
     const people = G.linksAt(a.id, slot), traces = G.tracesAt(a.id, slot);
-    const acts = G.D.places.activities.filter(x => x.area === a.id && x.slots.includes(slot));
+    const acts = G.activities().filter(x => x.area === a.id && x.slots.includes(slot));
     const jobs = G.D.jobs.filter(j => j.area === a.id && G.jobVisible(j) && j.slot === slot);
     const when = night ? 'Evening' : 'Afternoon';
     const art = place => G.background(place, when)?.url || bgUrl(night && a.bgEvening ? a.bgEvening : a.bg);
@@ -865,7 +866,7 @@
       main.querySelectorAll('[data-px]').forEach(x => x.classList.toggle('px-on', x === b));
       const [kind, id] = b.dataset.px.split(':');
       if (kind === 'act') {
-        const x = G.D.places.activities.find(v => v.id === id), pv = G.activityInfo(x), ok = G.activityOk(x, slot), who = free.filter(l => spotOf(l) === x.spot);
+        const x = G.activities().find(v => v.id === id), pv = G.activityInfo(x), ok = G.activityOk(x, slot), who = free.filter(l => spotOf(l) === x.spot);
         panel.innerHTML = `<p class="g-kicker">${esc(a.name)} · ${esc(x.spot)}</p><h2>${esc(x.name)}</h2>${x.about ? `<p class="g-px-about">${esc(x.about)}</p>` : ''}
           <h3>You’d get</h3><ul class="g-px-gets"><li><b>${esc(pv.benefit)}</b></li><li><small>${esc(pv.cost)}</small></li><li><small>${esc(pv.time)}</small></li></ul>
           ${ok.ok ? '' : `<p class="g-warn">${esc(ok.why)}</p>`}
@@ -893,7 +894,7 @@
     main.querySelectorAll('[data-link]').forEach(b => b.addEventListener('click', () => { if (!blocked(b)) playLink(G.LINKS[b.dataset.link]); }));
     main.querySelectorAll('[data-trace]').forEach(b => b.addEventListener('click', () => { if (!blocked(b)) playLink(G.LINKS[b.dataset.trace], false, G.nextTrace(G.LINKS[b.dataset.trace])); }));
     // Activities you can't do right now still open their review, which says why (its confirm stays off).
-    main.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => previewActivity(G.D.places.activities.find(x => x.id === b.dataset.act), slot, a)));
+    main.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => previewActivity(G.activities().find(x => x.id === b.dataset.act), slot, a)));
     main.querySelectorAll('[data-job]').forEach(b => b.addEventListener('click', () => { if (!blocked(b)) previewJob(G.D.jobs.find(x => x.id === b.dataset.job), slot, a); }));
     const first = main.querySelector('.g-pcard:not([aria-disabled])') || main.querySelector('.g-pcard');
     if (first) { paint(first); first.focus({ preventScroll: true }); }
@@ -971,13 +972,16 @@
     const traces = G.tracesAt('dorm', 'evening');
     const book = s.books.owned.find(b => !s.books.done.includes(b));
     const jobs = G.D.jobs.filter(j => G.jobState(j.id).hired && j.slot === 'evening');
+    const dorm = G.dormActs(), desk = dorm.filter(a => a.desk);
     const opt = (id, label, sub, ok = true, cls = '') => `<button type="button" class="g-night ${cls}" data-n="${id}"${ok ? '' : ' disabled'}><b>${label}</b><small>${esc(sub)}</small></button>`;
     show(`<section class="g-dorm"><div class="g-map-head"><p class="g-kicker">Evening · Iwatodai Dorm</p><h1>Tonight</h1>
       <p class="g-map-sub">${info.moon.days != null && info.moon.days <= 3 && !info.moon.full ? `The moon is almost full. ${info.moon.days} day${info.moon.days === 1 ? '' : 's'} to go.` : 'The lounge smells like instant ramen. What now?'}</p></div>
       <div class="g-nights">
         ${s.unlocked.tartarus ? opt('tartarus', 'Tartarus', tt.ok ? `Climb tonight. Solar will be tired tomorrow.${s.condition === 'tired' ? ' She’s already tired.' : ''}` : tt.why, tt.ok, 'tt') : ''}
-        ${opt('study', 'Study', 'Academics', true)}
+        ${opt('study', 'Study', G.studyInfo(), true)}
         ${book ? opt('read', 'Read', G.bookById(book)?.name || 'A book') : ''}
+        ${dorm.filter(a => !a.desk).map(a => { const ok = G.dormOk(a), pv = G.dormInfo(a); return opt(`dorm:${a.id}`, esc(a.name), ok.ok ? `${pv.benefit}${a.cost ? ` · ¥${a.cost.toLocaleString()}` : ''}` : ok.why, ok.ok, a.perk ? 'perk' : ''); }).join('')}
+        ${desk.length ? opt('desk', 'Your desk', `${desk.map(a => a.name).join(' · ')}`, true) : ''}
         ${opt('rest', 'Rest', s.condition === 'good' || s.condition === 'great' ? 'Go to bed early.' : 'Shake off being ' + G.D.stats.conditions[s.condition].name.toLowerCase() + '.')}
         ${jobs.map(j => { const ok = G.jobOk(j, 'evening'); return opt(`job:${j.id}`, `Work · ${esc(j.name)}`, ok.ok ? `¥${j.pay.toLocaleString()}` : ok.why, ok.ok); }).join('')}
         ${homeLinks.map(l => opt(`link:${l.id}`, `${esc(G.linkName(l))}`, `${l.arcana} · ${G.homeOf(l).spot ? G.homeOf(l).spot.toLowerCase() : 'in the lounge'}`, true, 'who')).join('')}
@@ -990,12 +994,11 @@
     const s = S();
     const spend = tag => { s.spent[`${s.day}-evening`] = tag; G.save(); };
     if (n === 'study') {
-      const d = G.D.places.dorm.study;
-      G.addStats(info.weather === 'rain' ? { academics: d.stats.academics + (d.rain?.academics || 0) } : d.stats);
-      const sb = G.studyBonus(); if (Object.keys(sb).length) G.addStats(sb); // Mitsuru's Study Hall, Jungwon's Tutor Session
-      spend('study');
-      return SC.play({ scene: [{ n: pick(d.lines, s.day) }], place: "Iwatodai Dorm · Solar's Room", time: 'Evening', onDone: advance });
+      G.doStudy(); // rainy nights, Mitsuru's Study Hall, Jungwon's Tutor Session, Judy's Editing Bay
+      return SC.play({ scene: [{ n: pick(G.D.places.dorm.study.lines, s.day) }], place: "Iwatodai Dorm · Solar's Room", time: 'Evening', onDone: advance });
     }
+    if (n === 'desk') return deskMenu(info);
+    if (n.startsWith('dorm:')) return dormAct(G.dormActs().find(a => a.id === n.slice(5)));
     if (n === 'rest') { s.tonight = 'rest'; spend('rest'); return SC.play({ scene: [{ n: pick(G.D.places.dorm.rest.lines, s.day) }], place: "Iwatodai Dorm · Solar's Room", time: 'Evening', onDone: advance }); }
     if (n === 'read') { const r = G.readTonight(); return SC.play({ scene: [{ n: r.finished ? `She read the last chapter of ${r.book.name} and closed it, and sat with it in her lap for a while.` : `She read a chapter of ${r.book.name}, then another, until the words started sliding.` }], place: "Iwatodai Dorm · Solar's Room", time: 'Evening', onDone: advance }); }
     if (n === 'out') return goOut('evening');
@@ -1003,6 +1006,21 @@
     if (n.startsWith('link:')) return playLink(G.LINKS[n.slice(5)]);
     if (n.startsWith('trace:')) return playLink(G.LINKS[n.slice(6)], false, G.nextTrace(G.LINKS[n.slice(6)]));
     if (n === 'tartarus') return tartarusPrompt();
+  }
+  // An evening activity at home (places.js dorm.acts): the stats, then a line of narration in its place.
+  function dormAct(a) {
+    if (!a || !G.dormOk(a).ok) return evening(G.dayInfo());
+    const r = G.doDorm(a);
+    SC.play({ scene: [{ n: r.text }], place: r.place, time: 'Evening', onDone: advance });
+  }
+  // Solar's desk: the crafts and hobbies in her room (sewing, fixing things, retro games, the keyboard; sewing with Hyein).
+  function deskMenu(info) {
+    const acts = G.dormActs().filter(a => a.desk);
+    const o = overlay(`<p class="g-kicker">Evening · Solar's room</p><h2>Your desk<small>One project tonight</small></h2>
+      <div class="g-desk">${acts.map(a => { const ok = G.dormOk(a), pv = G.dormInfo(a); return `<button type="button" class="g-night${a.perk ? ' perk' : ''}" data-desk="${a.id}"${ok.ok ? '' : ' disabled'}><b>${esc(a.name)}</b><small>${esc(a.sub || '')}</small><small class="g-desk-gain">${esc(ok.ok ? `${pv.benefit}${a.cost ? ` · ¥${a.cost.toLocaleString()}` : ''}` : ok.why)}</small></button>`; }).join('')}</div>
+      <div class="g-row"><button type="button" class="g-btn" data-close>Back</button></div>`, 'g-desk-ov');
+    o.el.querySelectorAll('[data-desk]').forEach(b => b.addEventListener('click', () => { o.close(); dormAct(acts.find(a => a.id === b.dataset.desk)); }));
+    void info;
   }
   function tartarusPrompt() {
     const s = S(), av = G.available().filter(x => x !== 'solar');

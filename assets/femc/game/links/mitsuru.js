@@ -4,7 +4,7 @@
   kind: 'sees',
   romance: null,
   starts: '4/27',
-  needs: { academics: 2 },
+  needs: { knowledge: 2 },
   home: { area: 'Gekkoukan High', spot: 'Student Council Room', slot: 'after', days: [2, 4],
           hint: 'After school on Tuesdays and Thursdays, in the student council room.' },
   cast: { 'mk-vp': 'Vice President' },

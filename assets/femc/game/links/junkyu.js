@@ -348,7 +348,7 @@
           { s: 'asahi', f: 'neutral', t: "...Okay. There she is. That's the one." },
           { n: "He went back to his bench. He looked, for one second, very pleased, and then very carefully didn't." }
         ] },
-        { t: "(Challenge him to the rhythm game.)", notes: 3, needs: { courage: 3 }, flag: { 'junkyu-rhythm': true }, then: [
+        { t: "(Challenge him to the rhythm game.)", notes: 3, needs: { proficiency: 2 }, flag: { 'junkyu-rhythm': true }, then: [
           { s: 'asahi', f: 'surprised', t: "You? Me? You've never beaten me at that. Not once. In your entire life." },
           { n: "She beat him. Not by much. Her hands knew the song before her head did, every note coming up out of somewhere she couldn't reach on purpose, and when the score came up Asahi stared at it with his hood half off and Junkyu screamed so loud the man at the counter came out." },
           { s: 'asahi', f: 'neutral', t: "...That's not her. That's a different girl. That girl's never beaten me." },

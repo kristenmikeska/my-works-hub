@@ -39,7 +39,7 @@
       { n: "Fuuka was bent over it with a jeweler's screwdriver from a little zip case she apparently kept in her pencil case, between her erasers and her highlighters, as if this were the sort of thing a person might need during a history test." },
       { s: 'fuuka', f: 'surprised', t: "Ah! I'm not breaking it. I promise. The battery for the clock is soldered in, which is a very rude thing to do to a battery." },
       { choose: [
-        { t: "(Hold the flashlight.)", notes: 3, then: [
+        { t: "(Hold the flashlight.)", notes: 3, stat: { proficiency: 1 }, then: [
           { n: "Solar held the flashlight. Fuuka said *a little left* and *there* and *thank you* in the same soft voice every time, like a nurse calling numbers, and when the solder gave with a tiny hiss she made a sound of such private satisfaction that Solar had to look at the ceiling." }
         ] },
         { t: "Where did you learn to do this?", notes: 2, then: [
@@ -587,7 +587,7 @@
         { t: "(Turn the burner down so she doesn't have to think about it.)", notes: 2, then: [
           { n: "Solar reached past her and turned the flame down under the pot, and Fuuka saw her do it and her mouth moved, *thank you*, with no sound, without breaking off listening." }
         ] },
-        { t: "(Step out into the hall to give her privacy.)", notes: 1, then: [
+        { t: "(Step out into the hall to give her privacy.)", notes: 1, stat: { kindness: 1 }, then: [
           { n: "Solar slid off the stool and went toward the door, and Fuuka's free hand came off the counter and caught her sleeve, without looking, and held on. Solar stayed." }
         ] }
       ] },

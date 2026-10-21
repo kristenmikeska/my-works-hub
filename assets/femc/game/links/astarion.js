@@ -231,7 +231,7 @@
       { s: 'astarion', f: 'sad', t: "...Cazador." },
       { s: 'cazador', f: 'happy', t: "Come. You've had your little holiday. Your little café. Your little friend. Come home, and kneel, and we will say no more about it." },
       { choose: [
-        { t: "(Step in front of him.)", notes: 3, then: [
+        { t: "(Step in front of him.)", notes: 3, stat: { courage: 1 }, then: [
           { n: "Solar stepped in front of him. She didn't think about it. She did it the way you'd put a hand out to stop a door slamming on somebody's fingers. The thing in the long coat looked at her for the first time, slowly, the way you'd look at a mark on a tablecloth." }
         ] },
         { t: "Astarion. That's not him. Look at me.", notes: 3, then: [

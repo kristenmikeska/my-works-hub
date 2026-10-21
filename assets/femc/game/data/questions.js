@@ -1,6 +1,6 @@
 /* Class questions and exam pools (femc-game.html). correct = index into a.
-   classes: teachers call on Solar in class (right answer = Charm, a little Academics).
-   exams: multiple choice, 4 options each; score = Academics stat + correct answers.
+   classes: teachers call on Solar in class (right answer = Knowledge +1, Charm +1).
+   exams: multiple choice, 4 options each; score = Knowledge rank + correct answers (top 10 earns Knowledge and Charm).
    months use the calendar month number (4 = April ... 12 = December, 1 = January). */
 window.FEMC_GAME_QUESTIONS = {
   teachers: {

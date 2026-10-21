@@ -773,7 +773,7 @@
           { n: "He stopped. He looked at the bag. She watched him run it back, the way he ran rounds back, and find the place where he'd done exactly that." },
           { s: 'akihiko', f: 'sad-2', t: "...Yeah. I was. Sorry. Old habit." }
         ] },
-        { t: "(Hold the bag for him, without saying anything.)", notes: 2, then: [
+        { t: "(Hold the bag for him, without saying anything.)", notes: 2, stat: { kindness: 1 }, then: [
           { n: "She came in and put her shoulder to the bag. He looked at her over the top of it, and then hit it, and the old dull thud went through her collarbone and rattled her teeth, and it was such a relief to be hit by something familiar that she nearly laughed." }
         ] }
       ] },

@@ -829,7 +829,7 @@
           { s: 'hyein', f: 'happy', t: "YES. Look at it. It's ashamed. It knows." },
           { s: 'hyein', f: 'neutral', t: "That face. That's your Sigma face. You used to do that face at boys who said *hey, aren't you Jaehyun's sister.* I haven't seen it in five months. Welcome back, face." }
         ] },
-        { t: "(Fix the scarf on the mannequin when the clerk isn't looking.)", notes: 3, then: [
+        { t: "(Fix the scarf on the mannequin when the clerk isn't looking.)", notes: 3, stat: { proficiency: 1 }, then: [
           { s: 'hyein', f: 'surprised', t: "SOL. That's CRIME." },
           { s: 'hyein', f: 'happy', t: "...That's so much better. You did it right. Once and loose and one end long. I taught you that. I'm so proud of my criminal." },
           { n: "The clerk came back, and looked at the mannequin, and looked at it again, and then at the two girls standing in front of the window being very interested in the price of a belt, and then, after a long moment, went and got a second scarf and did the other mannequin the same way." }
@@ -925,7 +925,7 @@
           { s: 'hyein', f: 'happy', t: "Obviously. You can do a button. You can't do a coat. Don't get cocky." },
           { s: 'hyein', f: 'sad', t: "...Thank you. I know that's what you meant. I heard it." }
         ] },
-        { t: "(Sew a crooked little sun on the scrap of wool.)", notes: 3, then: [
+        { t: "(Sew a crooked little sun on the scrap of wool.)", notes: 3, stat: { proficiency: 1 }, then: [
           { n: "Solar picked up the gold thread without asking and sewed a sun on the corner of the scrap, seven rays, uneven, lopsided, the worst sun anyone had ever sewn, and held it out." },
           { s: 'hyein', f: 'neutral', t: "...It looks like someone made it." },
           { n: "She folded the square of wool in half, very carefully, and put it in the back of her sketchbook, between the pages with the four numbers on them, and closed it, and kept her hand flat on the cover." }

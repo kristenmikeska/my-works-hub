@@ -67,7 +67,7 @@
       { n: "It was raining, the hard straight-down kind that turned the plaza outside the station into a shallow lake, and Aphrodite was standing just inside the doors looking out at it with the outraged disbelief of someone who has been told the bridge is closed." },
       { s: 'aphrodite', f: 'serious', t: "I don't get wet. It isn't done. In four thousand years I have never once been rained on. Somebody always brings an umbrella. Or a cloak. Or a small army to hold up a canopy." },
       { choose: [
-        { t: "(Hold your umbrella over her.)", notes: 3, then: [
+        { t: "(Hold your umbrella over her.)", notes: 3, stat: { kindness: 1 }, then: [
           { n: "Solar opened her umbrella, a cheap clear plastic one from the convenience store with a bent rib, and held it up over the goddess's head, which meant holding it rather high, and they went out into the rain like that, Solar getting completely soaked down one side." },
           { s: 'aphrodite', f: 'happy', t: "A canopy. Of sorts. Oh, this is perfectly adequate, little sun. Higher. No, that's good. You're the best army I've ever had." }
         ] },

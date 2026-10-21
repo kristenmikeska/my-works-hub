@@ -607,7 +607,7 @@
           { s: 'jungwon', f: 'flustered', t: "I'm noting it for the minutes. I'm not going to stop you. I'm only noting it." },
           { n: "His ears had gone red to the tips. His face was absolutely still, no dimples, nothing, and she'd learned to read it backward. He was happier than she'd ever seen him. He didn't let go until the librarian rang the closing bell." }
         ] },
-        { t: "(Pick up the pen and correct his notes.)", route: 'friend', notes: 3, then: [
+        { t: "(Pick up the pen and correct his notes.)", route: 'friend', notes: 3, stat: { knowledge: 1 }, then: [
           { n: "She picked up the red pen and leaned over his own notebook, the one with his study schedule in it, and circled the place where he'd scheduled himself nine hours a day and no lunch, and wrote in the margin in her own messier hand, *you knew this.*" },
           { s: 'jungwon', f: 'surprised', t: "..." },
           { s: 'jungwon', f: 'happy', t: "That's insubordination." },

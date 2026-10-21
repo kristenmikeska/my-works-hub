@@ -4369,6 +4369,8 @@
     E.formsList().forEach(f => { if (!save.forms.includes(f) && E.formUnlocked(Object.assign({}, save, { forms: [] }), f)) save.forms.push(f); });
     HS = { items0: Object.assign({}, save.items), yen0: save.yen, exp: {}, frags: [], bosses: [], floor: 0, entered: false, scripted: false, finished: false, gifts };
     // Night kits from bonds (Fuuka's bento, Ken's bead, Leon's spray, Sunoo's soul): only good tonight, never sent back.
+    // Night-only dishes the life sim packed (request.kits: Shinjiro's Kitchen Duty leftovers).
+    if (HO.kind === 'tartarus' && R.kits) Object.entries(R.kits).forEach(([k, n]) => { if (D.items[k] && n > 0) { save.items[k] = (save.items[k] || 0) + n; mark('night-kit-' + k); } });
     if (BLD && HO.kind === 'tartarus') { const ctx = BLD.ctxOf(save, hoAvail()); BLD.PERKS.forEach(p => { if (p.fx.nightKit && ['own', 'party', 'assist'].includes(BLD.perkState(p, ctx))) Object.entries(p.fx.nightKit).forEach(([k, n]) => { if (D.items[k]) { save.items[k] = (save.items[k] || 0) + n; mark('night-kit-' + k); } }); }); }
     persist();
     mark('handoff-' + HO.kind);

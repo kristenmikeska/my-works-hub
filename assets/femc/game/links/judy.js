@@ -278,7 +278,7 @@
       ] },
       { s: 'judy', f: 'neutral', t: "Here. New plan. You hold the line. There's a rope on my belt, it comes up to the dock. Two tugs, I'm okay. Three tugs, pull. That's it. That's the whole job. You're my lifeline. Most important job on any dive." },
       { choose: [
-        { t: "(Hold the line.)", notes: 3, then: [
+        { t: "(Hold the line.)", notes: 3, stat: { courage: 1 }, then: [
           { n: "Solar held the line. Judy went over the side backwards, with a thumbs-up, and was gone, and the rope went down into the gray-green after her and kept going, and Solar sat on the dock with it wrapped twice around her wrist and both hands on it and watched the place where it went under like she was watching a fuse." },
           { n: "Two tugs. Two tugs. Two tugs. Every minute, regular as a heartbeat, from somewhere far down where Solar couldn't see. She counted every one. She was always counting. For once she knew exactly why." }
         ] },

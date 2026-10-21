@@ -81,7 +81,7 @@
           { n: "It went in with a small plain sound. Elizabeth watched it fall, and then looked at Solar, and narrowed her eyes slightly." },
           { s: 'elizabeth', f: 'neutral', t: "You wished for nothing. I could tell. Your face stayed exactly where it was. It is very good at that." }
         ] },
-        { t: "(Give the coin to Elizabeth instead.)", notes: 1, then: [
+        { t: "(Give the coin to Elizabeth instead.)", notes: 1, stat: { kindness: 1 }, then: [
           { n: "Elizabeth looked down at the coin in her own palm as though Solar had handed her a live bird. She held it over the water for a long time, much longer than Solar had." },
           { s: 'elizabeth', f: 'sad', t: "...I find I cannot think of anything. I have never wanted anything. I have always been given what I needed before I needed it." },
           { n: "She closed her glove over the coin and did not throw it, and did not give it back either." }

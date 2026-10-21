@@ -1,5 +1,6 @@
 /* Part-time job shift scenes. Keys match job ids in assets/femc/game/data/jobs.js.
-   shifts: three short rotating vignettes per job (one choice each; options carry no notes, only optional { stat }).
+   shifts: three short rotating vignettes per job (one choice each; options carry no notes, only optional { stat }: which of
+           the five social stats fits what Solar did, e.g. helping someone is Kindness, handling the work well is Proficiency).
    beats: one-time scenes that play on shift number `at` once `after` (M/D) and `met` (link ids) hold.
           A beat may end with { fragment: id }. lean: 'R' | 'S' | 'H' (recorded by the engine, never shown).
    cast: display names for speakers who have no link file of their own. */
@@ -19,12 +20,12 @@ window.FEMC_GAME_JOB_SCENES = {
         { choose: [
           { t: "(Put them back in order, shogun by shogun.)", then: [
             { n: "It took the rest of the afternoon and a pencil she borrowed off the counter, and by the end of it she could have recited the whole Tokugawa line without looking, which was more than a month of history class had managed, and she felt very smug about it for someone covered in that much dust." },
-            { stat: { academics: 1 } }
+            { stat: { knowledge: 1 } }
           ] },
           { t: "Do you want help finding it?", then: [
             { s: 'bunkichi', t: "That's kind of you. But if I find it today, what will I look for tomorrow?" },
             { n: "From the register Mitsuko made a small noise, half sigh and half forty-odd years of marriage, and Solar laughed before she could decide whether she was allowed to." },
-            { stat: { charm: 1 } }
+            { stat: { kindness: 1 } }
           ] }
         ] },
         { n: "When she climbed down, the light through the front window had gone long and gold and lay across the floorboards in a stripe, dust turning slowly in it like something underwater, and her hands were gray to the wrist." },
@@ -40,7 +41,7 @@ window.FEMC_GAME_JOB_SCENES = {
             { s: 'bunkichi', t: "Good. Good, good." },
             { s: 'mitsuko', t: "He asks everyone in that uniform. Every single one." },
             { s: 'bunkichi', t: "And every single one tells me the same thing, and I like hearing it every time. Is that a crime now?" },
-            { stat: { charm: 1 } }
+            { stat: { kindness: 1 } }
           ] },
           { t: "(Ask why it matters so much.)", then: [
             { s: 'mitsuko', t: "Our son planted it. When he taught there. A long time ago now." },
@@ -59,7 +60,7 @@ window.FEMC_GAME_JOB_SCENES = {
         { choose: [
           { t: "(Solve the circled one before you ring it up.)", then: [
             { n: "It was a geometry problem, a triangle inside a circle inside a much worse triangle, and it took her the whole time Mitsuko spent wrapping the book in brown paper plus one false start she covered with her thumb, but she wrote the answer under the three question marks, small, in her own pencil, and the boy looked at it and then at her like she'd done a card trick." },
-            { stat: { academics: 1 } }
+            { stat: { knowledge: 1 } }
           ] },
           { t: "The notes are a bonus. Somebody already did half your homework.", then: [
             { n: "He looked at the margins, then at her, then at the margins again, and some of the firing squad went out of his shoulders. He paid in ten-yen coins and said thank you twice, once to her and once, for reasons of his own, to the book." },
@@ -93,7 +94,7 @@ window.FEMC_GAME_JOB_SCENES = {
           { t: "Takeda sounds awful. You should tell him.", then: [
             { s: 'salaryman', t: "...I should, shouldn't I. I should tell him. Tomorrow. First thing." },
             { n: "He was never going to tell Takeda anything, tomorrow or ever, and they both knew it, but he left a lot happier than he came in, and he bowed to her at the door like she'd provided a professional service." },
-            { stat: { charm: 1 } }
+            { stat: { kindness: 1 } }
           ] }
         ] },
         { n: "She mopped at ten. The wind kept shoving the automatic doors open on nobody, and every time the chime went off she looked up and said welcome to an empty doorway, which the clerk said was a good habit and also the saddest thing he'd seen all week." }
@@ -114,7 +115,7 @@ window.FEMC_GAME_JOB_SCENES = {
           { t: "(Count his coins with him, out loud.)", then: [
             { n: "They counted together, ten-yen coin by ten-yen coin, and he lost count twice and blamed her both times, and it came out short, and he went pale, and she found a hundred-yen coin in her own apron pocket and decided out loud that it must have been his all along." },
             { s: 'kid', t: "...Thanks. I'm not saying it again." },
-            { stat: { charm: 1 } }
+            { stat: { kindness: 1 } }
           ] }
         ] },
         { s: 'clerk', t: "He'll be back next Friday. He's been back every Friday since forever. His mom thinks he's at extra math." },
@@ -128,7 +129,7 @@ window.FEMC_GAME_JOB_SCENES = {
         { choose: [
           { t: "(Walk over with the mop.)", then: [
             { n: "She didn't say a word. She just started mopping, very slowly and very thoroughly, in a widening circle that happened to have the magazine rack in the middle of it, and by the time the wet edge reached their shoes two of them had bought a can of coffee each out of what looked like guilt, and the third had put every manga back in its slot, spine out, in order." },
-            { stat: { courage: 1 } }
+            { stat: { proficiency: 1 } }
           ] },
           { t: "Those are three hundred yen each. There's a bench outside.", then: [
             { n: "One of them started to say something smart, looked at her face, and changed his mind halfway through, which she watched happen like weather crossing a field, and they left, and thirty seconds later the third one came back in alone and bought the issue he'd been halfway through." },
@@ -157,7 +158,7 @@ window.FEMC_GAME_JOB_SCENES = {
             { s: 'kenta', t: "...That one's a trick question." },
             { s: 'solar', f: 'neutral', t: "It's a sign error." },
             { s: 'kenta', t: "Same thing." },
-            { stat: { academics: 1 } }
+            { stat: { knowledge: 1 } }
           ] },
           { t: "(Sit down and do number six yourself, badly, out loud.)", then: [
             { n: "She got as far as dividing the wrong side by two before he snatched the pencil out of her hand with a noise of physical pain and did it properly, explaining every step in a voice dripping with contempt, which was, she noted, technically him doing his homework." },
@@ -178,12 +179,12 @@ window.FEMC_GAME_JOB_SCENES = {
           { t: "(Read the passage out loud first, as badly as you possibly can.)", then: [
             { n: "She gave it everything. Every R became an L and every TH became a Z, and she put the stress on the wrong syllable of every word that had more than one, and somewhere around the second sentence Kenta put his face down on the table and his shoulders started to shake." },
             { s: 'kenta', t: "Stop. Stop. Okay. Give it here. I'll do it. You're embarrassing the whole country." },
-            { stat: { charm: 1 } }
+            { stat: { courage: 1 } }
           ] },
           { t: "Spelling's just memory. Want a trick for it?", then: [
             { n: "She showed him the one where you say the word the way it's spelled, out loud and ridiculous, kuh-nig-hut, Wed-nes-day, so your mouth remembers what your eyes won't, and he resisted it for exactly three words before it got him." },
             { s: 'kenta', t: "Kuh-nig-hut. ...That's so stupid. I hate that it works." },
-            { stat: { academics: 1 } }
+            { stat: { knowledge: 1 } }
           ] }
         ] },
         { n: "He read the whole passage after that, in an accent that was actually fine, too fast and too quiet and glaring at the page like it owed him money, and when he got to the end he didn't look up." },
@@ -199,7 +200,7 @@ window.FEMC_GAME_JOB_SCENES = {
         { choose: [
           { t: "(Go through it with him. Every wrong answer.)", then: [
             { n: "It took the whole hour. Most of it was the same mistake made eleven different ways, and somewhere around the seventh he started catching it before she did, and stopped glaring, and started muttering at the paper instead of at her, which was progress of a kind." },
-            { stat: { academics: 1 } }
+            { stat: { kindness: 1 } }
           ] },
           { t: "I'm not telling her. You are. I'll sit right here.", then: [
             { n: "He told her when she got home, in the doorway, shoes still on, so fast it came out as one word, and Solar stayed at the table and did not listen very hard, and Mrs. Sakamoto's voice in the hall wasn't angry at all, only tired and soft, and when Kenta came back his ears were bright red." },
@@ -227,7 +228,7 @@ window.FEMC_GAME_JOB_SCENES = {
         { choose: [
           { t: "(Bring him a free refill and set it down without a word.)", then: [
             { n: "He stopped mid-smack, looked at the cup, looked at her, and said thank you in a voice two octaves lower than the one he'd been screaming in, and played the rest of the night at a volume that only made the people directly next to him wince." },
-            { stat: { charm: 1 } }
+            { stat: { kindness: 1 } }
           ] },
           { t: "Take a walk around the block. The game will still be here.", then: [
             { n: "He opened his mouth to argue, met her eyes, closed it, and went, and came back ten minutes later with the red gone out of his neck and won his next match, and nodded at her on the way to the bathroom like they'd been through a war together." },
@@ -244,11 +245,11 @@ window.FEMC_GAME_JOB_SCENES = {
         { choose: [
           { t: "(Lean over her shoulder and tell her to go left.)", then: [
             { n: "The girl in blue jumped, went left, found her team just as the fight started, and kept two of them alive long enough to win it, and the whole row stood up and yelled, and she looked back at Solar over her headset with an expression of total, suspicious gratitude." },
-            { stat: { courage: 1 } }
+            { stat: { proficiency: 1 } }
           ] },
           { t: "(Say nothing. Refill the ice.)", then: [
             { n: "She refilled the ice. The team in blue lost. The girl took her headset off afterward and sat very still with her hands in her lap, and Solar brought her a drink on the house and didn't make her talk about it, which seemed like the only thing anybody could really do about losing." },
-            { stat: { charm: 1 } }
+            { stat: { kindness: 1 } }
           ] }
         ] },
         { s: 'regular', t: "...Those office guys are going to win the whole thing, aren't they. Unbelievable. They're wearing matching lanyards." },
@@ -263,11 +264,11 @@ window.FEMC_GAME_JOB_SCENES = {
         { choose: [
           { t: "(Do every keyboard properly, one key at a time.)", then: [
             { n: "It took forty minutes and a whole packet of wipes, and at the end the manager came out of the office, looked down the rows of clean, gleaming keyboards, and gave her the kind of nod usually reserved for soldiers." },
-            { stat: { courage: 1 } }
+            { stat: { proficiency: 1 } }
           ] },
           { t: "(Write under the sticky note: we'll be here.)", then: [
             { n: "She wrote it small, in the corner, and felt a little stupid, and left it anyway, and the next night the note was gone and seat nine's regular nodded at her across the room like the two of them had an understanding." },
-            { stat: { charm: 1 } }
+            { stat: { kindness: 1 } }
           ] }
         ] },
         { n: "On the last row her own face came up in a dark monitor, gray and tired, hair coming down from where she'd pinned it, a girl in an apron inside a black glass rectangle, and she looked at herself the way you look at a stranger across a train carriage, and then wiped the screen, and that was that." },
@@ -409,12 +410,12 @@ window.FEMC_GAME_JOB_SCENES = {
         { choose: [
           { t: "(Keep pace with the men on the next stall.)", then: [
             { n: "She matched them crate for crate until one of them, sixty if he was a day, looked over and said something in a dialect she didn't catch that made the whole stall laugh, and then, without a word, started passing her the lighter crates." },
-            { stat: { courage: 1 } }
+            { stat: { proficiency: 1 } }
           ] },
           { t: "(Ask Mr. Tanabe how he knows which fish are good.)", then: [
             { s: 'tanabe', t: "The eyes. Clear eyes, good fish. Cloudy eyes, somebody's lying to you." },
             { s: 'tanabe', t: "Works on people too. Mostly." },
-            { stat: { academics: 1 } }
+            { stat: { knowledge: 1 } }
           ] }
         ] },
         { s: 'tanabe', t: "Huh. Still standing. Most of them are sitting on a crate crying about their hands by now." },
@@ -430,7 +431,7 @@ window.FEMC_GAME_JOB_SCENES = {
         { choose: [
           { t: "I must have read it somewhere.", then: [
             { n: "Tanabe looked at her a moment longer, with his clear-eyes-good-fish look, and then let it go, and wrote it up on the board in chalk exactly the way she'd said it." },
-            { stat: { academics: 1 } }
+            { stat: { knowledge: 1 } }
           ] },
           { t: "I don't know where I'm from.", then: [
             { s: 'tanabe', t: "Huh." },
@@ -453,7 +454,7 @@ window.FEMC_GAME_JOB_SCENES = {
           ] },
           { t: "(Shout for the others.)", then: [
             { n: "Her voice cracked across the market like a flare, and every man in rubber boots came running at once, and they had him out in under a minute, and the nephew grinned up at her from the dock, soaked and freezing and very pleased with himself, like she'd thrown him a party instead of a fit." },
-            { stat: { academics: 1 } }
+            { stat: { kindness: 1 } }
           ] }
         ] },
         { s: 'nephew', t: "Got the crate, though!" },
@@ -587,7 +588,7 @@ window.FEMC_GAME_JOB_SCENES = {
           { t: "(Make him a latte instead of answering.)", then: [
             { n: "She made him a latte. She put a heart on it, a reasonably good one, and slid it across, and he looked at it and then at her with the betrayed delight of a boy who knows exactly what's being done to him and is going to allow it." },
             { s: 'sunoo', f: 'happy', t: "Bribery. Okay. I respect bribery. I'm still going to find out." },
-            { stat: { charm: 1 } }
+            { stat: { proficiency: 1 } }
           ] }
         ] },
         { n: "He did not find out, not that day, though not for lack of trying, and by closing he had asked about her dorm, her classes, her favorite convenience store, what she was eating these days and whether the red-haired senpai who'd come in once was as scary as she looked, and Solar had answered maybe half of it, and he'd taken every answer like a present." },
@@ -603,7 +604,7 @@ window.FEMC_GAME_JOB_SCENES = {
         { choose: [
           { t: "(Keep at it until it's a heart.)", then: [
             { n: "It took eleven more cups, which they drank between them, and by the end they were both vibrating gently and she had made exactly one heart, lopsided, a little off to the left, unmistakable, and Sunoo took a picture of it like it was a newborn." },
-            { stat: { charm: 1 } }
+            { stat: { proficiency: 1 } }
           ] },
           { t: "(Make another sun, on purpose.)", then: [
             { n: "She made another one, better, with a little face in it this time, two dots and a curve, and Sunoo put both hands over his mouth and then set it on the counter for the next customer, a businessman with an umbrella and a very bad day, who looked down at the sun in his coffee and laughed out loud, alone, like it had caught him off guard." },
@@ -623,7 +624,7 @@ window.FEMC_GAME_JOB_SCENES = {
           { t: "(Push your pile back toward him, for the croissant budget.)", then: [
             { s: 'sunoo', f: 'surprised', t: "Solar. No. That's yours." },
             { n: "She didn't take it back. He looked at it a moment, and then put it in the jar marked CROISSANT FUND in gel pen, and drew a small star beside the words, and didn't say anything else about it, which for Sunoo was practically a speech." },
-            { stat: { charm: 1 } }
+            { stat: { kindness: 1 } }
           ] },
           { t: "I do a thing with my eyebrows?", then: [
             { s: 'sunoo', f: 'happy', t: "Oh my gosh. All the time. You're doing it right now." },
@@ -725,13 +726,13 @@ window.FEMC_GAME_JOB_SCENES = {
             { n: "She did it in one pass, left to right, five drinks and four croissants and something Niki invented on the spot, without writing any of it down, and read it all back to them, and they stared at her like she'd pulled a coin out of somebody's ear." },
             { s: 'heeseung', f: 'happy', t: "...Okay. She's better at this than you, Sunoo." },
             { s: 'sunoo', f: 'surprised', t: "I'm standing RIGHT HERE." },
-            { stat: { academics: 1 } }
+            { stat: { proficiency: 1 } }
           ] },
           { t: "(Put Sunghoon's flower back in the vase, and take his order last.)", then: [
             { s: 'sunghoon', f: 'surprised', t: "...Last? Me?" },
             { s: 'niki', f: 'happy-2', t: "She did it. She finally did it. Somebody write down the date." },
             { s: 'jay', f: 'happy', t: "Best thing that's happened since we got here." },
-            { stat: { charm: 1 } }
+            { stat: { kindness: 1 } }
           ] }
         ] },
         { n: "They took the big table by the window and immediately rearranged it, dragging over two more chairs than there were people, and Solar brought out the tray, and Niki took one bite of his croissant and announced to the entire cafe that the picture on the menu made the food look way better than it was, and Sunoo threw a napkin at him from behind the counter with real violence." },
@@ -767,7 +768,7 @@ window.FEMC_GAME_JOB_SCENES = {
         { choose: [
           { t: "(Come around the counter and pick up the coins.)", then: [
             { n: "She got down on the floor for them. Jihoon was down there with her in about a second and a half, still complaining, still loud, picking up ten-yen coins and handing them to her one at a time, and his shoulder knocked hers, and he didn't move it." },
-            { stat: { charm: 1 } }
+            { stat: { kindness: 1 } }
           ] },
           { t: "Jihoon. Sit down. I'll bring them.", then: [
             { n: "He sat. Instantly, without a word, in the middle of a sentence, like she'd pulled a plug, and the whole table turned to look at him, and Hyunsuk put his face in his hands, and Asahi said, very quietly, that this was the best day of his entire life." },
@@ -790,6 +791,67 @@ window.FEMC_GAME_JOB_SCENES = {
         { n: "When they left, the bell had one last breakdown over the door, and Jihoon was the last one out, and he stopped in the doorway with the cold coming in around him and pointed at her across the whole cafe like he was calling a shot." },
         { s: 'jihoon', f: 'happy-2', t: "I'm walking you home after. Don't argue. It's my job." }
       ] }
+    ]
+  },
+
+  /* ── Flower stall (Paulownia Mall) ── */
+  flowers: {
+    cast: { okada: 'Mrs. Okada', salaryman: 'Salaryman', girl: 'Little girl' },
+    shifts: [
+      [
+        { place: 'Paulownia Mall · Flower Stall' },
+        { n: "The flower stall was four buckets wide and one stool deep, wedged between the fountain and a shoe shop, and Mrs. Okada ran it from the stool with a pair of scissors on a ribbon around her neck and a bad knee she referred to only as \"the weather.\"" },
+        { s: 'okada', t: "Buckets first. Fresh water, every one, all the way to the line. Flowers can't complain, so we do it for them." },
+        { n: "The buckets were heavier than they looked and there were nineteen of them. By the last one her arms had opinions, and the carnations stood up straighter in the clean water like they'd been waiting all morning for someone to notice." },
+        { choose: [
+          { t: "(Trim every stem at an angle, the way she showed you.)", then: [
+            { n: "Snip, turn, snip. Mrs. Okada watched the first ten and then stopped watching, which Solar understood was the highest compliment the stall had to offer." },
+            { stat: { proficiency: 1 } }
+          ] },
+          { t: "(Bring her a cushion for the stool from the shoe shop.)", then: [
+            { s: 'okada', t: "Hm. The shoe man gave you that? He's never given me anything but a look." },
+            { n: "She sat on it anyway, carefully, and the weather in her knee seemed to ease a little for the rest of the afternoon." },
+            { stat: { kindness: 1 } }
+          ] }
+        ] },
+        { n: "When the mall lights came on she smelled like wet stems and lilies all the way home, and didn't mind." }
+      ],
+      [
+        { place: 'Paulownia Mall · Flower Stall' },
+        { n: "A salaryman came up to the stall at a near run, tie loose, and stood in front of the buckets with the face of a man defusing a bomb." },
+        { s: 'salaryman', t: "It's our anniversary. It's today. I thought it was next week. What do I— what does someone buy, for ten years?" },
+        { choose: [
+          { t: "(Ask him what she likes, and build it from that.)", then: [
+            { n: "She liked yellow, it turned out, and the sea, and things that didn't look too expensive because then she'd worry. Solar made a small loose bunch of freesia and one sprig of something blue, and Mrs. Okada wrapped it in plain paper without a word." },
+            { s: 'salaryman', t: "That's her. That looks like her. How did you do that?" },
+            { stat: { kindness: 1 } }
+          ] },
+          { t: "Roses. Ten. One for every year.", then: [
+            { s: 'salaryman', t: "Ten. Yes. That's— yes. You're a genius." },
+            { n: "He paid without looking at the price and ran for the train holding them up like a torch, and Mrs. Okada said roses were a coward's flower, but she said it fondly." },
+            { stat: { charm: 1 } }
+          ] }
+        ] },
+        { n: "For the rest of the shift Solar kept wondering whether he'd made it home in time. She decided he had." }
+      ],
+      [
+        { place: 'Paulownia Mall · Flower Stall' },
+        { n: "A little girl with a coin purse shaped like a frog counted out eighty yen on the counter and asked, very seriously, what flower meant sorry." },
+        { s: 'girl', t: "I broke my brother's robot. On accident. Mostly on accident." },
+        { choose: [
+          { t: "(Give her a single white carnation, and don't take all the coins.)", then: [
+            { n: "Solar slid back fifty of the eighty yen when Mrs. Okada wasn't looking. Mrs. Okada was looking. She said nothing, and later she put fifty yen of her own into Solar's apron pocket and said nothing about that either." },
+            { stat: { kindness: 1 } }
+          ] },
+          { t: "(Help her write \"sorry\" on the little card, in big letters.)", then: [
+            { s: 'girl', t: "He can't read yet. But he'll know. It's big." },
+            { n: "It was very big. It took up the whole card and part of the back. The girl carried it away like a diploma." },
+            { stat: { charm: 1 } }
+          ] }
+        ] },
+        { s: 'okada', t: "Half of what we sell is sorry, you know. The other half is thank you. Nobody ever buys flowers just for themselves." },
+        { s: 'okada', t: "Well. I do. But I'm the exception to most things." }
+      ]
     ]
   }
 };

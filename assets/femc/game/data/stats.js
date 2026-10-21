@@ -1,13 +1,33 @@
 /* Social stats, conditions and the party for femc-game.html.
-   Social stats use P3P's three, with P3P's rank names. `at` is the points needed for each rank (rank 1 to 6).
-   Anything in the game that says `needs: { academics: 3 }` means rank 3 ("Above Average") or better. */
+   Five P5-style social stats, each with five ranks (rank 1 to 5) named in the game's own voice. `at` is the points needed
+   for each rank. Anything in the game that says `needs: { knowledge: 3 }` means rank 3 ("Well-Read") or better; an `ifStat`
+   line works the same way. The order here is the order on the Status screen's radar.
+   Tuning: a year of class alone (listening, answering, exams) is about 110 Knowledge, Tartarus nights and full moons about
+   60 Courage. In a simulated year (tests/femc_stats.py), a playthrough that spends about half its free time on links ends
+   near 750 points and maxes about three stats; a link-heavy one ends near 530 and maxes one. All five take 800, like
+   Persona. Knowledge's ladder is longer because class feeds it every day.
+   Where the points come from (activities, books, the dorm at night, class, exams, jobs, link choices, bond perks) is listed in
+   FEMC-REVAMP-ROADMAP.md section 7 ("Five social stats").
+   alias: old stat ids that still work anywhere a stat id is read (data written for P3P's three: `academics` is Knowledge).
+   legacy: the P3P ladders saves were made with (Academics / Charm / Courage, six ranks), for the one-time migration in
+   core.js migrateStats. Never edit them; they describe old saves. */
 window.FEMC_GAME_STATS = {
   stats: {
-    academics: { name: 'Academics', color: '#7fb6ff', ranks: ['Slacker', 'Average', 'Above Average', 'Smart', 'Intelligent', 'Genius'], at: [0, 20, 55, 100, 155, 230] },
-    charm: { name: 'Charm', color: '#ff8cc0', ranks: ['Plain', 'Unpolished', 'Confident', 'Smooth', 'Popular', 'Charismatic'], at: [0, 15, 30, 45, 70, 100] },
-    courage: { name: 'Courage', color: '#ffd36b', ranks: ['Timid', 'Ordinary', 'Determined', 'Tough', 'Brave', 'Badass'], at: [0, 15, 30, 45, 70, 100] }
+    knowledge: { name: 'Knowledge', color: '#7fb6ff', ranks: ['Clueless', 'Bookish', 'Well-Read', 'Brilliant', 'Luminary'], at: [0, 20, 65, 125, 200] },
+    courage: { name: 'Courage', color: '#ffd36b', ranks: ['Skittish', 'Steady', 'Gutsy', 'Fearless', 'Unflinching'], at: [0, 15, 45, 90, 150] },
+    proficiency: { name: 'Proficiency', color: '#7dffc0', ranks: ['All Thumbs', 'Handy', 'Capable', 'Deft', 'Virtuoso'], at: [0, 15, 45, 90, 150] },
+    charm: { name: 'Charm', color: '#ff8cc0', ranks: ['Wallflower', 'Noticed', 'Magnetic', 'Radiant', 'Main Character'], at: [0, 15, 45, 90, 150] },
+    kindness: { name: 'Kindness', color: '#c9a0ff', ranks: ['Polite', 'Thoughtful', 'Warmhearted', 'Devoted', 'Heart of Gold'], at: [0, 15, 45, 90, 150] }
   },
-  start: { academics: 0, charm: 0, courage: 0 },
+  start: { knowledge: 0, courage: 0, proficiency: 0, charm: 0, kindness: 0 },
+  alias: { academics: 'knowledge' },
+  legacy: {
+    academics: { to: 'knowledge', at: [0, 20, 55, 100, 155, 230] },
+    charm: { to: 'charm', at: [0, 15, 30, 45, 70, 100] },
+    courage: { to: 'courage', at: [0, 15, 30, 45, 70, 100] },
+    // Old rank (1-6) -> new rank (1-5), so every old gate (rank 2 or 3) still passes after the move, and an old MAX is a new MAX.
+    rankMap: [1, 2, 3, 3.5, 4, 5]
+  },
   startYen: 3000,
   // Solar's condition. Tartarus leaves her Tired; going again while Tired makes her Sick.
   // doze: chance of nodding off in class (no class gains). gain: multiplier on social stat gains.
