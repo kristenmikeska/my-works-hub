@@ -2,54 +2,56 @@
    Images are in assets/femc/bg/<slug>.webp. All of it is data; add an activity or a place by adding a line. */
 window.FEMC_GAME_PLACES = {
   /* Go Out map. slots: when the area is open ('after' = After School / Daytime, 'evening').
-     schoolOnly: only on school days. Links appear at an area when their `home.area` matches. */
+     schoolOnly: only on school days. Links appear at an area when their `home.area` matches.
+     blurb: the short line on the area's card; about: the longer description in the Go Out panel (hover or focus). */
   areas: [
-    { id: 'gekkoukan', name: 'Gekkoukan High', bg: 'outside-school', slots: ['after'], schoolOnly: true, blurb: 'Clubs, the library, and whoever is still around.' },
-    { id: 'strip', name: 'Iwatodai Strip', bg: 'location-2', slots: ['after', 'evening'], blurb: 'Ramen, burgers, used books and the pharmacy.' },
-    { id: 'mall', name: 'Paulownia Mall', bg: 'paulownia-mall', slots: ['after', 'evening'], blurb: 'Shops, karaoke, the arcade and the police box.' },
-    { id: 'station', name: 'Iwatodai Station', bg: '0d489c888283c69d5c7848eb84174bc6', slots: ['after', 'evening'], blurb: 'Benches, vending machines, the last train.' },
-    { id: 'portisland', name: 'Port Island Station', bg: 'location-1', slots: ['after', 'evening'], blurb: 'The busy side of the bay. Some of it is less busy.' },
-    { id: 'port', name: 'Port Island', bg: 'park', slots: ['after'], blurb: 'The pier, the park and the harbor.' },
-    { id: 'shrine', name: 'Naganaki Shrine', bg: 'outside-shrine-day', bgEvening: 'naganaki-shrine-night', slots: ['after', 'evening'], blurb: 'Quiet steps, a fortune box, a playground.' },
-    { id: 'hospital', name: 'Tatsumi Memorial Hospital', bg: 'hospital-outside', slots: ['after'], blurb: 'If she isn’t feeling well.' },
-    { id: 'dorm', name: 'Iwatodai Dorm', bg: 'iwotodaidorm-outside', slots: ['after'], home: true, blurb: 'Go home and let the day wind down.' }
+    { id: 'gekkoukan', name: 'Gekkoukan High', bg: 'outside-school', slots: ['after'], schoolOnly: true, blurb: 'Clubs, the library, and whoever is still around.', about: "School after the last bell: the library's quiet tables, the club rooms, and whoever hasn't gone home yet." },
+    { id: 'strip', name: 'Iwatodai Strip', bg: 'location-2', slots: ['after', 'evening'], blurb: 'Ramen, burgers, used books and the pharmacy.', about: 'The narrow street by the station. Cheap food that fixes a bad day, a pharmacy, used books, and the bathhouse after dark.' },
+    { id: 'mall', name: 'Paulownia Mall', bg: 'paulownia-mall', slots: ['after', 'evening'], blurb: 'Shops, karaoke, the arcade and the police box.', about: 'Coffee, karaoke, the arcade and a small cinema, plus the Police Box, Be Blue V and Mayoido for gear and rare goods.' },
+    { id: 'station', name: 'Iwatodai Station', bg: '0d489c888283c69d5c7848eb84174bc6', slots: ['after', 'evening'], blurb: 'Benches, vending machines, the last train.', about: 'Benches, a row of vending machines, and people waiting for trains with somewhere to be.' },
+    { id: 'portisland', name: 'Port Island Station', bg: 'location-1', slots: ['after', 'evening'], blurb: 'The busy side of the bay. Some of it is less busy.', about: 'The busy side of the bay: crowds on the concourse, and a back alley most people walk around.' },
+    { id: 'port', name: 'Port Island', bg: 'park', slots: ['after'], blurb: 'The pier, the park and the harbor.', about: 'The pier, the seaside park and the harbor. Wind off the bay and room to think.' },
+    { id: 'shrine', name: 'Naganaki Shrine', bg: 'outside-shrine-day', bgEvening: 'naganaki-shrine-night', slots: ['after', 'evening'], blurb: 'Quiet steps, a fortune box, a playground.', about: 'Stone steps, an offering box, fortunes tied to the tree and the playground behind it. Quiet most days.' },
+    { id: 'hospital', name: 'Tatsumi Memorial Hospital', bg: 'hospital-outside', slots: ['after'], blurb: 'If she isn’t feeling well.', about: 'Tatsumi Memorial. The clinic can fix being tired or sick, for a price.' },
+    { id: 'dorm', name: 'Iwatodai Dorm', bg: 'iwotodaidorm-outside', slots: ['after'], home: true, blurb: 'Go home and let the day wind down.', about: 'Head straight home. The rest of this time passes quietly; nothing else happens.' }
   ],
   /* Things to do. One activity uses up the time slot. cost: yen. stats: social stat points (before the condition multiplier).
      days: 0 Sun ... 6 Sat. weather: a bonus that applies in that weather. cures: conditions it fixes.
-     lines: one is picked at random as the narration. */
+     lines: one is picked at random as the narration. about: what the place is, shown in the Go Out panel beside the
+     benefit preview (core.js activityInfo). */
   activities: [
-    { id: 'library', area: 'gekkoukan', spot: 'Library', name: 'Study in the library', icon: 'book', slots: ['after'], stats: { academics: 3 },
+    { id: 'library', area: 'gekkoukan', spot: 'Library', name: 'Study in the library', about: 'Quiet tables by the window and the smell of old paper.', icon: 'book', slots: ['after'], stats: { academics: 3 },
       lines: ['The library was warm and smelled like old paper and floor wax, and someone two tables over was sighing at a chemistry textbook in a way that made her feel better about her own.', 'She claimed a table by the window and worked through a page of problems until the light went long and orange across the desk.'] },
-    { id: 'hagakure', area: 'strip', spot: 'Hagakure', name: 'Hagakure Bowl', icon: 'food', slots: ['after', 'evening'], cost: 800, stats: { academics: 2 },
+    { id: 'hagakure', area: 'strip', spot: 'Hagakure', name: 'Hagakure Bowl', about: 'A ramen shop with bowls the size of hubcaps. On rainy days the special is famous for a reason.', icon: 'food', slots: ['after', 'evening'], cost: 800, stats: { academics: 2 },
       weather: { rain: { stats: { academics: 4 }, label: 'Rainy-day special' } },
       lines: ['The ramen came in a bowl the size of a hubcap, and the broth was so rich it felt like it was doing her homework for her.', 'She ate at the counter with her elbows in, the steam fogging the edges of her vision, and thought about absolutely nothing for the first time all day.'] },
-    { id: 'wildduck', area: 'strip', spot: 'Wild-Duck Burger', name: 'Wild-Duck Burger', icon: 'food', slots: ['after', 'evening'], cost: 500, stats: { courage: 2 },
+    { id: 'wildduck', area: 'strip', spot: 'Wild-Duck Burger', name: 'Wild-Duck Burger', about: 'Loud, greasy and home of the Mystery Burger. Finishing a large takes nerve.', icon: 'food', slots: ['after', 'evening'], cost: 500, stats: { courage: 2 },
       lines: ['The Mystery Burger lived up to its name in every way, and she finished it out of spite.', 'Wild-Duck smelled like fryer oil and teenage ambition. She ordered the large without blinking, which felt like a personal victory.'] },
-    { id: 'bathhouse', area: 'strip', spot: 'Bathhouse', name: 'The bathhouse', icon: 'bath', slots: ['evening'], cost: 400, stats: { charm: 1 }, cures: ['tired'],
+    { id: 'bathhouse', area: 'strip', spot: 'Bathhouse', name: 'The bathhouse', about: 'The neighborhood bathhouse. Hot water that takes the day off you.', icon: 'bath', slots: ['evening'], cost: 400, stats: { charm: 1 }, cures: ['tired'],
       lines: ['The water was hot enough to sting and then not, and she sank into it to her chin and let the day come off her like a coat.'] },
-    { id: 'books', area: 'strip', spot: 'Bookworms', name: 'Browse books', icon: 'book', slots: ['after'], shop: 'books' },
-    { id: 'aohige', area: 'strip', spot: 'Aohige Pharmacy', name: 'Aohige Pharmacy', icon: 'shop', slots: ['after', 'evening'], shop: 'aohige' },
-    { id: 'chagall', area: 'mall', spot: 'Chagall Café', name: 'Pheromone Coffee', icon: 'cup', slots: ['after', 'evening'], cost: 600, stats: { charm: 2 },
+    { id: 'books', area: 'strip', spot: 'Bookworms', name: 'Browse books', about: 'A used bookshop run by a kind old couple. Books bought here are read at the dorm, a chapter a night.', icon: 'book', slots: ['after'], shop: 'books' },
+    { id: 'aohige', area: 'strip', spot: 'Aohige Pharmacy', name: 'Aohige Pharmacy', about: 'Medicine and supplies to carry into Tartarus.', icon: 'shop', slots: ['after', 'evening'], shop: 'aohige' },
+    { id: 'chagall', area: 'mall', spot: 'Chagall Café', name: 'Pheromone Coffee', about: 'A café famous for one strange drink: Pheromone Coffee.', icon: 'cup', slots: ['after', 'evening'], cost: 600, stats: { charm: 2 },
       lines: ['The Pheromone Coffee smelled like nothing she could name and tasted like confidence, which was a strange thing for a drink to taste like.', 'She sat in the window at Chagall with the coffee going cold between her hands and watched the mall go by, and the mall, now and then, watched her back.'] },
-    { id: 'karaoke', area: 'mall', spot: 'Karaoke', name: 'Mandragora karaoke', icon: 'mic', slots: ['evening'], cost: 800, stats: { courage: 1, charm: 1 },
+    { id: 'karaoke', area: 'mall', spot: 'Karaoke', name: 'Mandragora karaoke', about: 'Private booths, a tired clerk and a songbook as thick as a dictionary.', icon: 'mic', slots: ['evening'], cost: 800, stats: { courage: 1, charm: 1 },
       lines: ['She booked a booth for one, which the clerk did not comment on, and sang until her voice went somewhere it hadn’t been before.', 'The first song came out small. By the fourth she had stopped checking whether the door was shut.'] },
-    { id: 'arcade', area: 'mall', spot: 'Game Panic', name: 'Game Panic', icon: 'game', slots: ['after', 'evening'], cost: 200, stats: { courage: 1 },
+    { id: 'arcade', area: 'mall', spot: 'Game Panic', name: 'Game Panic', about: 'Loud cabinets, sticky buttons, and middle-schoolers who never lose.', icon: 'game', slots: ['after', 'evening'], cost: 200, stats: { courage: 1 },
       lines: ['The arcade was loud enough to think in. She lost three times to a middle-schooler and won the fourth, and did not let it show on her face, and let it show everywhere else.'] },
-    { id: 'cinema', area: 'mall', spot: 'Screen Shot', name: 'See a movie', icon: 'film', slots: ['after'], days: [0, 6], cost: 1200, random: { academics: 3, charm: 3, courage: 3 },
+    { id: 'cinema', area: 'mall', spot: 'Screen Shot', name: 'See a movie', about: "A small theater with weekend showings. You never know what you'll take away from a film.", icon: 'film', slots: ['after'], days: [0, 6], cost: 1200, random: { academics: 3, charm: 3, courage: 3 },
       lines: ['The theater was half empty and the film was better than it had any right to be.', 'She sat in the dark with a paper cup of melon soda and let somebody else’s story be loud for two hours.'] },
-    { id: 'police', area: 'mall', spot: 'Police Box', name: 'Police Box', icon: 'shop', slots: ['after', 'evening'], shop: 'police' },
-    { id: 'bebluev', area: 'mall', spot: 'Be Blue V', name: 'Be Blue V', icon: 'shop', slots: ['after', 'evening'], shop: 'bebluev' },
-    { id: 'mayoido', area: 'mall', spot: 'Mayoido Antiques', name: 'Mayoido Antiques', icon: 'shop', slots: ['after', 'evening'], shop: 'mayoido' },
-    { id: 'vending', area: 'station', spot: 'Vending Machines', name: 'Something from the vending machine', icon: 'cup', slots: ['after', 'evening'], cost: 150, stats: { courage: 1 },
+    { id: 'police', area: 'mall', spot: 'Police Box', name: 'Police Box', about: 'The police box. Weapons and armor for Tartarus, sold quietly over the counter.', icon: 'shop', slots: ['after', 'evening'], shop: 'police' },
+    { id: 'bebluev', area: 'mall', spot: 'Be Blue V', name: 'Be Blue V', about: 'An accessory boutique: pretty things that also help in a fight.', icon: 'shop', slots: ['after', 'evening'], shop: 'bebluev' },
+    { id: 'mayoido', area: 'mall', spot: 'Mayoido Antiques', name: 'Mayoido Antiques', about: 'Antiques, rare goods and sealed cards. It buys the materials Shadows drop.', icon: 'shop', slots: ['after', 'evening'], shop: 'mayoido' },
+    { id: 'vending', area: 'station', spot: 'Vending Machines', name: 'Something from the vending machine', about: 'A row of machines that never have what you want.', icon: 'cup', slots: ['after', 'evening'], cost: 150, stats: { courage: 1 },
       lines: ['She stood in front of the vending machine for a long time looking for something it didn’t have, and bought a canned coffee instead.'] },
-    { id: 'alley', area: 'portisland', spot: 'Back Alley', name: 'Cut through the back alley', icon: 'alley', slots: ['evening'], stats: { courage: 3 }, needs: { courage: 2 },
+    { id: 'alley', area: 'portisland', spot: 'Back Alley', name: 'Cut through the back alley', about: 'The alley behind the station. Not a place to linger, unless you have the nerve.', icon: 'alley', slots: ['evening'], stats: { courage: 3 }, needs: { courage: 2 },
       lines: ['The alley behind the station was the kind of place that watched you walk through it. She walked through it slowly, on purpose, and nobody said a word.'] },
-    { id: 'pier', area: 'port', spot: 'Pier', name: 'Walk the pier', icon: 'wave', slots: ['after'], stats: { charm: 1, courage: 1 },
+    { id: 'pier', area: 'port', spot: 'Pier', name: 'Walk the pier', about: 'Salt wind, gulls and a long rail over the water.', icon: 'wave', slots: ['after'], stats: { charm: 1, courage: 1 },
       lines: ['The wind off the bay was cold and smelled like salt and diesel, and she stood at the rail longer than she meant to.'] },
-    { id: 'pray', area: 'shrine', spot: 'Offering Box', name: 'Make a wish', icon: 'shrine', slots: ['after', 'evening'], cost: 10, stats: { courage: 1 },
+    { id: 'pray', area: 'shrine', spot: 'Offering Box', name: 'Make a wish', about: 'Ten yen in the offering box, two claps and a wish.', icon: 'shrine', slots: ['after', 'evening'], cost: 10, stats: { courage: 1 },
       lines: ['She clapped twice and stood with her eyes shut, and found she didn’t know what to wish for, so she wished for that.'] },
-    { id: 'fortune', area: 'shrine', spot: 'Omikuji', name: 'Draw a fortune', icon: 'shrine', slots: ['after'], cost: 100, fortune: true },
-    { id: 'clinic', area: 'hospital', spot: 'Clinic', name: 'See a doctor', icon: 'cross', slots: ['after'], cost: 1000, cures: ['tired', 'sick'],
+    { id: 'fortune', area: 'shrine', spot: 'Omikuji', name: 'Draw a fortune', about: 'Paper fortunes tied to the tree. Good luck can lift a stat or her mood.', icon: 'shrine', slots: ['after'], cost: 100, fortune: true },
+    { id: 'clinic', area: 'hospital', spot: 'Clinic', name: 'See a doctor', about: 'The hospital clinic. Expensive, but it gets her back on her feet.', icon: 'cross', slots: ['after'], cost: 1000, cures: ['tired', 'sick'],
       lines: ['The doctor listened to her chest, frowned at nothing, and told her to sleep more, which everyone always said and nobody ever meant.'] }
   ],
   /* Night at the dorm (Evening). Tartarus opens after the story unlocks it. */

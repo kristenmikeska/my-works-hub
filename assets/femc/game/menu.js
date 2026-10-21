@@ -586,12 +586,38 @@ window.FemcMenu = (() => {
         <h3>Books</h3>${s.books.owned.length ? `<ul class="g-list">${s.books.owned.map(k => { const bk = G.bookById(k); return `<li><b>${esc(bk?.name || k)}</b><span>${s.books.done.includes(k) ? 'Read' : `${s.books.progress[k] || 0}/${bk?.nights}`}</span></li>`; }).join('')}</ul>` : '<p class="g-note">Bookworms on the Strip sells used books.</p>'}
         ${Object.values(s.jobs).some(j => j.hired) ? `<h3>Jobs</h3><ul class="g-list">${G.D.jobs.filter(j => G.jobState(j.id).hired).map(j => `<li><b>${esc(j.name)}</b><span>${G.jobState(j.id).shifts} shifts</span></li>`).join('')}</ul>` : ''}</div></div>`;
   }
+  /* ── Social stats, P5R-style: a radar of every stat (a triangle for P3P's three; the five P5 stats make a pentagon) and a
+     card per stat with its rank name, rank number in suns, and the meter to the next rank. Everything is read from
+     G.D.stats.stats (name, color, ranks, at), so a stat added there appears here without changes. ── */
+  function statsScreen() {
+    const list = Object.entries(G.D.stats.stats), n = list.length;
+    const sun = cls => (UI().SUN ? UI().SUN(cls) : '☀');
+    const pt = (k, r) => { const a = -Math.PI / 2 + (k * 2 * Math.PI) / n; return [100 + Math.cos(a) * r, 100 + Math.sin(a) * r]; };
+    const poly = r => list.map((_, k) => pt(k, r).map(v => v.toFixed(1)).join(',')).join(' ');
+    const level = ([k, d]) => { const max = d.ranks.length, r = G.statRank(k); return max > 1 ? Math.min(1, (r - 1 + (r >= max ? 0 : G.statProgress(k))) / (max - 1)) : 1; };
+    const maxR = Math.max(...list.map(([, d]) => d.ranks.length));
+    const radar = n >= 3 ? `<svg class="g-ss-radar" viewBox="-52 -2 304 206" role="img" aria-label="${esc(list.map(([k, d]) => `${d.name}: ${G.statRankName(k)}`).join(', '))}">
+        ${Array.from({ length: maxR - 1 }, (_, j) => `<polygon class="grid" points="${poly(70 * (j + 1) / (maxR - 1))}"/>`).join('')}
+        ${list.map((_, k) => { const [x, y] = pt(k, 70); return `<line x1="100" y1="100" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"/>`; }).join('')}
+        <polygon class="val" points="${list.map((st, k) => pt(k, 8 + 62 * level(st)).map(v => v.toFixed(1)).join(',')).join(' ')}"/>
+        ${list.map((st, k) => { const [x, y] = pt(k, 8 + 62 * level(st)); return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5" style="fill:${st[1].color}"/>`; }).join('')}
+        ${list.map(([, d], k) => { const [x, y] = pt(k, 82); return `<text x="${x.toFixed(1)}" y="${(y + 4).toFixed(1)}" text-anchor="${Math.abs(x - 100) < 8 ? 'middle' : x < 100 ? 'end' : 'start'}" style="fill:${d.color}">${esc(d.name)}</text>`; }).join('')}
+        <g transform="translate(100 100) scale(.34)" class="g-ss-core">${(UI().SUN ? UI().SUN('') : '').replace(/^<svg[^>]*>|<\/svg>$/g, '')}</g></svg>` : '';
+    const card = ([k, d]) => {
+      const r = G.statRank(k), max = d.ranks.length, top = r >= max, pr = top ? 1 : G.statProgress(k);
+      return `<div class="g-ss-stat" style="--c:${d.color}" data-stat="${k}"><p class="g-ss-name">${esc(d.name)}</p><p class="g-ss-rank">${esc(G.statRankName(k))}</p>
+        <p class="g-ss-suns" aria-label="Rank ${r} of ${max}">${Array.from({ length: max }, (_, j) => sun(j < r ? 'on' : '')).join('')}<small>${top ? 'MAX' : `Rank ${r}`}</small></p>
+        <div class="g-ss-meter" role="progressbar" aria-label="${esc(d.name)} to the next rank" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(pr * 100)}"><i style="width:${Math.round(pr * 100)}%"></i></div>
+        <p class="g-ss-next">${top ? 'Mastered.' : `Next: ${esc(d.ranks[r])}`}</p></div>`;
+    };
+    return `<div class="g-ss"><div class="g-ss-chart">${radar}<p class="g-ss-title">Social stats</p></div><div class="g-st-stats g-ss-list">${list.map(card).join('')}</div></div>`;
+  }
   function statusTab() {
     const s = S(), c = G.D.stats.conditions[s.condition], i = G.dayInfo(), b = bsave();
     return `<div class="g-st-solar"><img src="${G.base}assets/femc/portraits/solar/neutral.webp" alt=""><div>
         <p class="g-st-name">Solar<small>3rd year · Gekkoukan High${b.lvl ? ` · Lv ${b.lvl}` : ''}</small></p>
         <ul class="g-st-facts"><li><span>Date</span>${esc(i.md)} ${esc(i.day)} · ${esc(G.slotName(s.slot, i))}</li><li><span>Condition</span><b style="color:${c.color}">${esc(c.name)}</b></li><li><span>Yen</span>${yen(s.yen)}</li><li><span>Tartarus</span>${s.tartarus.maxFloor ? `${s.tartarus.maxFloor}F · ${s.tartarus.nights} night${s.tartarus.nights === 1 ? '' : 's'}` : 'Not yet'}</li></ul></div></div>
-      <div class="g-st-stats">${Object.entries(G.D.stats.stats).map(([k, d]) => `<div class="g-st-stat" style="--c:${d.color}"><p><b>${esc(d.name)}</b><span>${esc(G.statRankName(k))}</span><small>Lv ${G.statRank(k)}</small></p><div class="g-st-bar"><i style="width:${Math.round(G.statProgress(k) * 100)}%"></i></div></div>`).join('')}</div>
+      ${statsScreen()}
       ${Object.keys(s.exams).filter(k => s.exams[k].posted).length ? `<div class="g-st-party"><h3>Exams</h3><p>${Object.entries(s.exams).filter(([, x]) => x.posted).map(([k, x]) => `<span class="g-chip">${esc(G.D.q.exams[k]?.name || k)} · #${x.place}</span>`).join('')}</p></div>` : ''}`;
   }
   function linksTab() {

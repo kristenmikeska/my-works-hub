@@ -3,8 +3,12 @@
    thread: conversation id; threads: display names. reply: Solar's answer options ({ t, notes, link } gives that link ♪).
    Link invitations ("free right now?") come from each link's `invite` data, not from here. */
 window.FEMC_GAME_TEXTS = {
-  // Group threads show sender names only in 'sees' (ui.js), so the searchers' groups prefix each line with the sender, as the
-  // story's own phone scenes do. Arrival flags (arrived-<id>, story-act4.js) gate texts on who has actually crossed.
+  // Group threads (`groups`, plus any thread where two or more people besides Solar write) show each sender's name over their
+  // bubble (ui.js openPhone). The searchers' groups also start each line with the sender's handle ("hyein: ", "jihoney: "),
+  // as the story's own phone scenes do: the phone shows that handle under the name and drops it from the bubble. Lines like
+  // "hanni added jihoon and you to a group" show as the chat's own notices. Arrival flags (arrived-<id>, story-act4.js) gate
+  // texts on who has actually crossed.
+  groups: ['sees', 'sisters', 'searchparty', 'hateclub'],
   threads: { yukari: 'Yukari', junpei: 'Junpei', akihiko: 'Akihiko', mitsuru: 'Mitsuru', sees: 'S.E.E.S. (no seniors)',
     sisters: 'hanni, hyein', searchparty: "sol's search party", hateclub: 'PARK JIHOON HATE CLUB' },
   texts: [

@@ -58,31 +58,153 @@
   }
   const screenMusic = key => { const mood = screenMood(key); if (mood) SC.Music.set(mood); };
 
-  /* ── Toasts ── */
+  /* ── Phone sounds (Web Audio, made here; nothing is downloaded): a soft two-note chime when a text arrives, a small pop for
+     each incoming bubble, and a whoosh when Solar sends. Quiet when sound effects are off; the SFX volume applies.
+     sfxLog keeps the last few names for the tests. ── */
+  const sfxLog = [];
+  function phoneSfx(kind) {
+    sfxLog.push(kind); if (sfxLog.length > 60) sfxLog.shift();
+    const st = G.settings();
+    if (!st.sfx || localStorage.getItem('kg-femc-sound') === 'off') return;
+    if (navigator.userActivation && !navigator.userActivation.hasBeenActive) return; // browsers keep audio locked until a click
+    try {
+      const C = window.AudioContext || window.webkitAudioContext; if (!C) return;
+      const c = phoneSfx.ctx || (phoneSfx.ctx = new C()); if (c.state === 'suspended') c.resume().catch(() => {});
+      const out = c.createGain(); out.gain.value = Math.max(0, Math.min(1, (st.sfxVol ?? 100) / 100)); out.connect(c.destination);
+      const t = c.currentTime + 0.01;
+      const tone = (f, at, d, v, to, type = 'sine') => { const o = c.createOscillator(), g = c.createGain(); o.type = type; o.frequency.setValueAtTime(f, t + at); if (to) o.frequency.exponentialRampToValueAtTime(to, t + at + d * 0.6); g.gain.setValueAtTime(0.0001, t + at); g.gain.exponentialRampToValueAtTime(v, t + at + 0.012); g.gain.exponentialRampToValueAtTime(0.0001, t + at + d); o.connect(g).connect(out); o.start(t + at); o.stop(t + at + d + 0.03); };
+      if (kind === 'notify') { tone(1318.5, 0, 0.32, 0.06); tone(1975.5, 0.11, 0.5, 0.055); tone(3951, 0.11, 0.25, 0.008); }
+      else if (kind === 'pop') tone(740, 0, 0.09, 0.035, 1180);
+      else if (kind === 'whoosh') {
+        const n = Math.floor(c.sampleRate * 0.34), b = c.createBuffer(1, n, c.sampleRate), ch = b.getChannelData(0);
+        for (let i = 0; i < n; i++) ch[i] = Math.random() * 2 - 1;
+        const s = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
+        s.buffer = b; f.type = 'bandpass'; f.Q.value = 1.4; f.frequency.setValueAtTime(500, t); f.frequency.exponentialRampToValueAtTime(3600, t + 0.24);
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.16, t + 0.1); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.32);
+        s.connect(f).connect(g).connect(out); s.start(t); s.stop(t + 0.35);
+        tone(1568, 0.2, 0.16, 0.02);
+      }
+    } catch (e) {}
+  }
+
+  /* ── Toasts. Texts come in as phone banners (slide down from the top, tap to read); a social stat ranking up plays the
+     level-up card (statUp below) instead of a toast. ── */
   const toastBox = document.createElement('div');
   toastBox.className = 'g-toasts';
   toastBox.setAttribute('aria-live', 'polite');
   document.body.appendChild(toastBox);
+  const bannerBox = document.createElement('div');
+  bannerBox.className = 'g-banners';
+  bannerBox.setAttribute('aria-live', 'polite');
+  document.body.appendChild(bannerBox);
+  const statColor = id => G.D.stats.stats[id]?.color || '';
   function flushToasts() {
+    let chimed = false;
     G.takeToasts().forEach((t, i) => {
+      if (t.kind === 'statrank') return statUp(t);
+      if (t.kind === 'text') { textBanner(t, i, !chimed); chimed = true; return; }
       const el = document.createElement('div');
       el.className = `g-toast k-${t.kind}${t.stat ? ` s-${t.stat}` : ''}`;
+      if (t.stat && statColor(t.stat)) el.style.setProperty('--c', statColor(t.stat));
       el.textContent = t.text;
       if (t.thread) { el.setAttribute('role', 'button'); el.tabIndex = 0; el.addEventListener('click', () => openPhone(t.thread)); }
-      setTimeout(() => { toastBox.appendChild(el); if (t.kind === 'statrank') G.sfx('femc-rankup'); }, i * 160);
-      setTimeout(() => el.classList.add('out'), 2600 + i * 160 + (t.kind === 'statrank' ? 900 : 0));
-      setTimeout(() => el.remove(), 3200 + i * 160 + (t.kind === 'statrank' ? 900 : 0));
+      setTimeout(() => { toastBox.appendChild(el); }, i * 160);
+      setTimeout(() => el.classList.add('out'), 2600 + i * 160);
+      setTimeout(() => el.remove(), 3200 + i * 160);
     });
     paintHud();
   }
   G.onChange(() => { flushToasts(); });
+
+  // How a text reads on the phone: group chats name the sender (their handle, when the line starts with one, moves out of
+  // the bubble), and "hanni added jihoon and you to a group" lines are the chat's own notices.
+  const HANDLE = /^([a-z0-9_.]{2,24}):\s+/i, NOTICE = /^[a-z0-9_.]+ (added|named|removed|left|renamed|changed|created) /i;
+  function msgParts(id, m) {
+    const group = G.isGroupThread(id), me = m.from === 'solar', name = me ? 'Solar' : G.name(m.from);
+    let text = G.sub(m.t), handle = null;
+    if (group && !me) {
+      const h = HANDLE.exec(text);
+      if (h) { handle = h[1]; text = text.slice(h[0].length); }
+      else if (NOTICE.test(text)) return { group, me, name, notice: true, text };
+    }
+    return { group, me, name, handle: handle && handle.toLowerCase() !== name.toLowerCase() ? handle : null, text };
+  }
+  const threadName = id => G.D.texts.threads[id] || G.name(id);
+  const threadPic = id => G.portrait(id, 'neutral');
+  // A text arriving: the notification chime and a banner from the top. Tap / Enter opens the conversation.
+  function textBanner(t, i, chime) {
+    const th = S().phone.threads[t.thread] || [], last = th[th.length - (t.count || 1)] || { from: t.from, t: t.msg || t.text };
+    const m = msgParts(t.thread, { from: t.from || last.from, t: t.msg || last.t });
+    const pic = threadPic(t.thread) || threadPic(t.from || last.from);
+    const el = document.createElement('div');
+    el.className = `g-banner${reduced.matches ? ' calm' : ''}${t.invite ? ' invite' : ''}`;
+    el.setAttribute('role', 'button'); el.tabIndex = 0;
+    el.dataset.thread = t.thread;
+    const more = (t.count || 1) > 1 ? ` · ${t.count} new` : '';
+    el.innerHTML = `<i class="g-bn-pic">${pic ? `<img src="${pic}" alt="">` : esc(threadName(t.thread)[0] || '✉')}</i><span class="g-bn-body"><span class="g-bn-top"><b>${esc(threadName(t.thread))}</b><small>now${esc(more)}</small></span><span class="g-bn-msg">${m.group && !m.notice ? `<em>${esc(m.name)}:</em> ` : ''}${esc(m.text)}</span></span>`;
+    el.setAttribute('aria-label', `New message. ${threadName(t.thread)}: ${m.text}. Open the phone.`);
+    const go = () => {
+      if (el.classList.contains('out')) return;
+      el.classList.add('out'); setTimeout(() => el.remove(), 260);
+      if (document.querySelector('.gs:not(.out), .g-dh')) return; // mid-scene the banner just goes; the phone waits for after
+      document.querySelectorAll('.g-phone-ov:not(.out) [data-close]').forEach(b => b.click());
+      openPhone(t.thread);
+    };
+    el.addEventListener('click', go);
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); go(); } });
+    setTimeout(() => { bannerBox.prepend(el); if (chime) phoneSfx('notify'); }, i * 220);
+    setTimeout(() => { el.classList.add('out'); setTimeout(() => el.remove(), 300); }, 4600 + i * 220);
+  }
+
+  /* ── Social stat level-up (P5R's rank-up, with Solar's sun instead of a star). Waits until no scene, date card or rank card
+     is up, so it lands between beats, never under them. Click / Enter / Space / Esc (or a pad's A / B) to go on; it also
+     moves on by itself. ── */
+  const SUN = (cls = '') => `<svg class="g-sun ${cls}" viewBox="-50 -50 100 100" aria-hidden="true"><g class="g-sun-rays">${Array.from({ length: 12 }, (_, k) => `<path d="${k % 2 ? 'M-4.5 -27 L0 -44 L4.5 -27Z' : 'M-6 -27 L0 -49 L6 -27Z'}" transform="rotate(${k * 30})"/>`).join('')}</g><circle class="g-sun-core" r="22"/><circle class="g-sun-ring" r="15"/></svg>`;
+  const statQueue = [];
+  let statBusy = false, statTimer = null;
+  function statUp(t) { statQueue.push(t); pumpStat(); }
+  function pumpStat() {
+    clearTimeout(statTimer);
+    if (statBusy || !statQueue.length) return;
+    if (document.querySelector('.gs:not(.out), .gs-rank, .g-datecard, .g-actcard, .g-dh')) { statTimer = setTimeout(pumpStat, 300); return; }
+    statBusy = true;
+    statCard(statQueue.shift(), () => { statBusy = false; pumpStat(); });
+  }
+  function statCard(t, done) {
+    const d = G.D.stats.stats[t.stat];
+    if (!d) return done();
+    const to = t.rank || G.statRank(t.stat), from = t.from || Math.max(1, to - 1), max = d.ranks.length;
+    const el = document.createElement('div');
+    el.className = `g-statup${reduced.matches ? ' calm' : ''}`;
+    el.setAttribute('role', 'alertdialog'); el.setAttribute('aria-modal', 'true');
+    el.setAttribute('aria-label', `${d.name} rank up: ${d.ranks[to - 1]}`);
+    el.style.setProperty('--c', d.color || 'var(--pink)');
+    el.innerHTML = `<div class="g-su-band" aria-hidden="true"></div><div class="g-su-band b2" aria-hidden="true"></div>
+      <div class="g-su-inner"><div class="g-su-sunbox" aria-hidden="true"><i class="g-su-burst"></i>${SUN('big')}</div>
+        <div class="g-su-text"><p class="g-su-kicker">Social stat</p><p class="g-su-name">${esc(d.name)}</p><p class="g-su-up">Rank up!</p>
+          <p class="g-su-rank"><s>${esc(d.ranks[from - 1] || '')}</s><span aria-hidden="true">▸</span><b>${esc(d.ranks[to - 1] || '')}</b></p>
+          <p class="g-su-pips" aria-label="Rank ${to} of ${max}">${Array.from({ length: max }, (_, k) => SUN(k < to ? (k >= from ? 'on new' : 'on') : '')).join('')}</p></div></div>
+      <p class="g-su-hint">${matchMedia('(hover: none)').matches ? 'Tap' : 'Click'} to continue</p>`;
+    document.body.appendChild(el);
+    G.sfx('femc-rankup');
+    let gone = false;
+    const close = () => {
+      if (gone) return; gone = true;
+      clearTimeout(auto); window.removeEventListener('keydown', key, true);
+      el.classList.add('out'); setTimeout(() => { el.remove(); done(); }, reduced.matches ? 60 : 320);
+    };
+    const key = e => { if (['Enter', ' ', 'Escape'].includes(e.key)) { e.preventDefault(); e.stopPropagation(); close(); } };
+    window.addEventListener('keydown', key, true);
+    el.addEventListener('click', close);
+    const auto = setTimeout(close, reduced.matches ? 2600 : 4800);
+  }
 
   /* ── The scene bridge (FemcScene needs these) ── */
   const bridge = Object.assign(Object.create(G), {
     base: G.base, settings: G.settings, setSetting: G.setSetting, textDelay: G.textDelay, sfx: G.sfx,
     background: G.background, portrait: G.portrait, scale: G.scale, name: G.name, silhouette: G.silhouette, sub: G.sub,
     dateLabel: G.dateLabel, setDate: G.setDate, moodFor: G.moodFor, applyChoice: G.applyChoice, lacking: G.lacking, flag: G.flag,
-    branch: G.branch, effect: G.effect, tarot: G.tarot, actCard
+    branch: G.branch, effect: G.effect, tarot: G.tarot, actCard, phoneSfx
   });
   SC.init(bridge);
 
@@ -634,73 +756,151 @@
     main.querySelector('[data-next]').addEventListener('click', done);
   }
 
-  /* ── Go Out map (After School / Daytime, or out at night) ── */
+  /* ── Go Out (After School / Daytime, or out at night), P5X-style: bold slanted cards with each place's art and who's there
+     today (met links' faces). Hovering or focusing a card fills the side panel: what the place is, who's around, what you'd
+     get and what it costs. On a phone the cards carry that themselves (the panel would be off-screen), and choosing an
+     activity still opens its review before any time or yen is spent (previewActivity). Arrows / a pad's D-pad move between
+     cards (navKeys), Enter / A picks, Esc / B goes back. ── */
+  const faceOf = (id, cls = '') => { const pic = G.portrait(id, 'neutral'); return `<i class="g-px-face${cls}">${pic ? `<img src="${pic}" alt="">` : '?'}</i>`; };
+  // A link's line on Go Out: rank progress if they're free, why not if they aren't.
+  function personNote(l, slot) {
+    const st = G.linkStatus(l, S().day, slot), met = G.isMet(l.id), p = G.progress(l.id);
+    const note = st.ok ? (met ? (st.after ? 'MAX · Spend time together' : p.ready === p.rank && p.rank > 0 ? 'Hang out' : `Rank ${p.rank} ▸ ${p.rank + 1}`) : 'Someone you haven’t met') : st.reason === 'needs' ? `Needs ${st.needs}` : st.reason === 'later' ? 'Busy today' : 'Busy right now';
+    return { st, met, note, line: met ? `${l.arcana} · ${note}` : (st.ok && l.approach ? l.approach : note) };
+  }
+  function pxWire(onPaint) {
+    // The side panel follows the pointer and the focus; leaving the cards keeps the last one shown.
+    main.querySelectorAll('[data-px]').forEach(b => { const go = () => onPaint(b); b.addEventListener('mouseenter', go); b.addEventListener('focus', go); });
+  }
+  const pxGo = () => (matchMedia('(hover: none)').matches ? 'Tap' : 'Enter or click');
   function goOut(slot, areaId) {
     screenMusic(slot === 'evening' ? 'evening' : 'after');
-    const info = G.dayInfo();
+    const info = G.dayInfo(), night = slot === 'evening';
     const areas = G.D.places.areas.filter(a => a.slots.includes(slot) && !(a.schoolOnly && info.type !== 'school'));
     if (areaId) return areaView(slot, G.areaById(areaId));
-    setBg(slot === 'evening' ? 'outside-night' : 'paulownia-mall', slot === 'evening' ? 'night' : '');
-    show(`<section class="g-map"><div class="g-map-head"><p class="g-kicker">Iwatodai · ${esc(G.slotName(slot, info))}</p><h1>${slot === 'evening' ? 'Out tonight' : 'Go out'}</h1>
-      <p class="g-map-sub">${slot === 'evening' ? 'Where to tonight?' : 'Where do you want to spend this time?'} People keep their own schedules.</p>${slot === 'evening' ? '<button type="button" class="g-btn small" data-back>‹ Back to the dorm</button>' : ''}</div>
-      <div class="g-areas">${areas.map(a => {
-        const people = G.linksAt(a.id, slot).filter(l => G.linkStatus(l, S().day, slot).ok);
-        const n = people.length + G.tracesAt(a.id, slot).length;
-        const img = slot === 'evening' && a.bgEvening ? a.bgEvening : a.bg;
-        return `<button type="button" class="g-area${n ? ' busy' : ''}${a.home ? ' home' : ''}${slot === 'evening' ? ' late' : ''}" data-area="${a.id}" style="--pic:url('${bgUrl(img)}')">
-          <b>${esc(a.name)}</b><small>${esc(a.blurb)}</small>${n ? `<em>${n} ${n === 1 ? 'person' : 'people'}</em>` : ''}</button>`;
-      }).join('')}</div></section>`, 'is-map');
+    setBg(night ? 'outside-night' : 'paulownia-mall', night ? 'night' : '');
+    const here = a => {
+      const people = G.linksAt(a.id, slot).filter(l => G.linkStatus(l, S().day, slot).ok), traces = G.tracesAt(a.id, slot);
+      return { people, traces, met: people.filter(l => G.isMet(l.id)), unmet: people.filter(l => !G.isMet(l.id)).length, n: people.length + traces.length };
+    };
+    show(`<section class="g-map g-px"><div class="g-map-head"><p class="g-kicker">Iwatodai · ${esc(G.slotName(slot, info))}</p><h1>${night ? 'Out tonight' : 'Go out'}</h1>
+      <p class="g-map-sub">${night ? 'Where to tonight?' : 'Where do you want to spend this time?'} People keep their own schedules.</p>${night ? '<button type="button" class="g-btn small" data-back>‹ Back to the dorm</button>' : ''}</div>
+      <div class="g-px-wrap"><div class="g-px-grid">${areas.map((a, k) => {
+        const h = here(a), img = night && a.bgEvening ? a.bgEvening : a.bg;
+        const faces = h.met.slice(0, 4).map(l => faceOf(l.id)).join('') + (h.met.length > 4 ? `<i class="g-px-face more">+${h.met.length - 4}</i>` : '') + (h.unmet ? '<i class="g-px-face q">?</i>' : '') + h.traces.map(t => faceOf(t.link.id, ' trace')).join('');
+        return `<button type="button" class="g-px-card${h.n ? ' busy' : ''}${a.home ? ' home' : ''}${night ? ' late' : ''}" data-area="${a.id}" data-px="${a.id}" style="--pic:url('${bgUrl(img)}');--k:${k}">
+          <span class="g-px-art" aria-hidden="true"></span><span class="g-px-num" aria-hidden="true">${String(k + 1).padStart(2, '0')}</span>
+          <span class="g-px-txt"><b>${esc(a.name)}</b><small>${esc(a.blurb)}</small></span>
+          ${faces ? `<span class="g-px-faces" aria-label="Here today: ${esc(h.met.map(l => l.short).join(', ') || 'someone new')}">${faces}</span>` : ''}${h.n ? `<em>${h.n} ${h.n === 1 ? 'person' : 'people'}</em>` : ''}</button>`;
+      }).join('')}</div><aside class="g-px-info" aria-live="polite"></aside></div></section>`, 'is-map');
+    const panel = main.querySelector('.g-px-info');
+    const paint = b => {
+      const a = G.areaById(b.dataset.px), h = here(a);
+      main.querySelectorAll('[data-px]').forEach(x => x.classList.toggle('px-on', x === b));
+      const acts = G.D.places.activities.filter(x => x.area === a.id && x.slots.includes(slot));
+      const jobs = G.D.jobs.filter(j => j.area === a.id && G.jobVisible(j) && j.slot === slot);
+      panel.innerHTML = `<p class="g-kicker">${esc(G.slotName(slot, info))}</p><h2>${esc(a.name)}</h2><p class="g-px-about">${esc(a.about || a.blurb)}</p>
+        ${a.home ? '<ul class="g-px-gets"><li><b>Go home</b><small>Uses this time slot.</small></li></ul>' : `
+        <h3>Here today</h3>${h.met.length || h.traces.length ? `<ul class="g-px-who">${h.met.map(l => `<li>${faceOf(l.id)}<span><b>${esc(l.short)}</b><small>${esc(personNote(l, slot).line)}</small></span></li>`).join('')}${h.traces.map(t => `<li>${faceOf(t.link.id, ' trace')}<span><b>${esc(t.link.short)}</b><small>Something of theirs is still here.</small></span></li>`).join('')}</ul>` : ''}
+        ${h.unmet ? `<p class="g-px-new">${faceOf('?', ' q')}${h.unmet === 1 ? 'Someone you haven’t met' : `${h.unmet} people you haven’t met`}</p>` : ''}
+        ${!h.n ? '<p class="g-note small">Nobody you know is free here right now.</p>' : ''}
+        ${acts.length || jobs.length ? `<h3>Things to do</h3><ul class="g-px-gets">${acts.map(x => { const pv = G.activityInfo(x); return `<li><b>${esc(x.name)}</b><small>${esc(x.shop ? 'Shop · browsing is free' : pv.benefit)}${!x.shop && pv.cost !== 'Free' ? ` · ${esc(pv.cost.replace(/^Costs /, ''))}` : ''}</small></li>`; }).join('')}${jobs.map(j => `<li><b>${esc(j.name)}</b><small>${G.jobState(j.id).hired ? `Work a shift · ¥${j.pay.toLocaleString()}` : 'Part-time work'}</small></li>`).join('')}</ul>` : ''}`}
+        <p class="g-px-go">${pxGo()} ▸ ${a.home ? 'go home' : `go to ${esc(a.name)}`}</p>`;
+    };
+    pxWire(paint);
     main.querySelector('[data-back]')?.addEventListener('click', () => evening(info));
     main.querySelectorAll('[data-area]').forEach(b => b.addEventListener('click', () => {
       const a = G.areaById(b.dataset.area);
+      G.sfx('femc-click');
       if (a.home) { S().spent[`${S().day}-${slot}`] = 'home'; G.save(); return segment({ slot, bg: 'iwotodaidorm-outside', place: 'Iwatodai Dorm', text: 'She went straight home and let the afternoon go by without asking anything of it.', next: advance }); }
       areaView(slot, a);
     }));
+    const first = main.querySelector('.g-px-card.busy') || main.querySelector('.g-px-card');
+    if (first) { paint(first); first.focus({ preventScroll: true }); }
   }
   function areaView(slot, a) {
-    const info = G.dayInfo();
-    setBg(slot === 'evening' && a.bgEvening ? a.bgEvening : a.bg, slot === 'evening' && !a.bgEvening ? 'night' : '');
+    const info = G.dayInfo(), night = slot === 'evening';
+    setBg(night && a.bgEvening ? a.bgEvening : a.bg, night && !a.bgEvening ? 'night' : '');
     const people = G.linksAt(a.id, slot), traces = G.tracesAt(a.id, slot);
     const acts = G.D.places.activities.filter(x => x.area === a.id && x.slots.includes(slot));
     const jobs = G.D.jobs.filter(j => j.area === a.id && G.jobVisible(j) && j.slot === slot);
-    const personRow = l => {
-      const st = G.linkStatus(l, S().day, slot), met = G.isMet(l.id), p = G.progress(l.id);
-      const pic = met ? G.portrait(l.id, 'neutral') : null;
-      const note = st.ok ? (met ? (st.after ? 'MAX · Spend time together' : p.ready === p.rank && p.rank > 0 ? 'Hang out' : `Rank ${p.rank} ▸ ${p.rank + 1}`) : 'Someone you haven’t met') : st.reason === 'needs' ? `Needs ${st.needs}` : st.reason === 'later' ? 'Busy today' : 'Busy right now';
-      return `<button type="button" class="g-who" data-link="${l.id}"${st.ok ? '' : ' disabled'}><i>${pic ? `<img src="${pic}" alt="">` : '?'}</i><span><b>${esc(G.linkName(l))}</b><small>${esc(met ? `${l.arcana} · ${note}` : (st.ok && l.approach ? l.approach : note))}</small></span></button>`;
+    const when = night ? 'Evening' : 'Afternoon';
+    const art = place => G.background(place, when)?.url || bgUrl(night && a.bgEvening ? a.bgEvening : a.bg);
+    const spotOf = l => G.homeOf(l).spot || '';
+    const free = people.filter(l => G.linkStatus(l, S().day, slot).ok && G.isMet(l.id));
+    let k = 0;
+    const card = (attrs, cls, pic, body, tail = '') => `<button type="button" class="g-pcard ${cls}" ${attrs} style="--pic:url('${pic}');--k:${k++}"><span class="g-px-art" aria-hidden="true"></span>${body}${tail}</button>`;
+    const personCard = l => {
+      const x = personNote(l, slot), portrait = x.met ? G.portrait(l.id, 'neutral') : null;
+      return card(`data-link="${l.id}" data-px="link:${l.id}"${x.st.ok ? '' : ' aria-disabled="true"'}`, `who${x.st.ok ? '' : ' off'}${x.met ? '' : ' unmet'}`, art(G.linkPlace(l)),
+        `<i class="g-pc-pic">${portrait ? `<img src="${portrait}" alt="">` : '?'}</i><span class="g-pc-txt"><small class="g-pc-kick">${esc(spotOf(l) || a.name)}</small><b>${esc(G.linkName(l))}</b><small>${esc(x.line)}</small></span>`);
     };
-    // Something a link who has left behind (afterMax traces).
-    const traceRow = t => { const pic = G.portrait(t.link.id, 'neutral'); return `<button type="button" class="g-who trace" data-trace="${t.link.id}"${G.freeSlotSpent(slot) ? ' disabled' : ''}><i>${pic ? `<img src="${pic}" alt="">` : '✦'}</i><span><b>${esc(t.entry.place ? t.entry.place.split(' · ').pop() : t.link.short)}</b><small>${esc(`Something of ${t.link.short}'s is still here.`)}</small></span></button>`; };
-    const actRow = x => {
-      const ok = G.activityOk(x, slot);
-      const cost = x.cost ? `¥${x.cost.toLocaleString()}` : x.shop ? 'Shop' : 'Free';
-      const preview = G.activityInfo(x);
-      return `<button type="button" class="g-act" data-act="${x.id}"${ok.ok ? '' : ' disabled'}><span><b>${esc(x.name)}</b><small>${esc(x.spot)}${ok.ok ? '' : ` · ${esc(ok.why)}`}</small><small class="g-act-benefit">${esc(preview.benefit)} ${esc(preview.time)}</small></span><em>${esc(cost)}</em></button>`;
+    const traceCard = t => card(`data-trace="${t.link.id}" data-px="trace:${t.link.id}"${G.freeSlotSpent(slot) ? ' aria-disabled="true"' : ''}`, `who trace${G.freeSlotSpent(slot) ? ' off' : ''}`, art(t.entry.place || G.linkPlace(t.link)),
+      `${faceOf(t.link.id, ' g-pc-pic')}<span class="g-pc-txt"><small class="g-pc-kick">A memory</small><b>${esc(t.entry.place ? t.entry.place.split(' · ').pop() : t.link.short)}</b><small>${esc(`Something of ${t.link.short}'s is still here.`)}</small></span>`);
+    const actCard = x => {
+      const ok = G.activityOk(x, slot), pv = G.activityInfo(x), cost = x.cost ? `¥${x.cost.toLocaleString()}` : x.shop ? 'Shop' : 'Free';
+      const who = free.filter(l => spotOf(l) === x.spot);
+      return card(`data-act="${x.id}" data-px="act:${x.id}"${ok.ok ? '' : ' aria-disabled="true"'}`, `place${ok.ok ? '' : ' off'}`, art(`${a.name} · ${x.spot}`),
+        `<span class="g-pc-txt"><small class="g-pc-kick">${esc(x.spot)}</small><b>${esc(x.name)}</b><small class="g-act-benefit">${esc(pv.benefit)} · ${esc(pv.time)}</small>${ok.ok ? '' : `<small class="g-pc-why">${esc(ok.why)}</small>`}<small class="g-px-more">${esc(x.about || '')}</small></span>`,
+        `<em>${esc(cost)}</em>${who.length ? `<span class="g-px-faces">${who.map(l => faceOf(l.id)).join('')}</span>` : ''}`);
     };
-    const jobRow = j => {
-      const st = G.jobState(j.id), ok = G.jobOk(j, slot);
-      const label = st.hired ? `Work a shift · ¥${j.pay.toLocaleString()}` : 'Ask about work';
-      return `<button type="button" class="g-act job" data-job="${j.id}"${st.hired && !ok.ok ? ' disabled' : ''}><span><b>${esc(j.name)}</b><small>${esc(j.role)}${st.hired && !ok.ok ? ` · ${esc(ok.why)}` : ''}</small></span><em>${esc(label)}</em></button>`;
+    const jobCard = j => {
+      const st = G.jobState(j.id), ok = G.jobOk(j, slot), off = st.hired && !ok.ok;
+      return card(`data-job="${j.id}" data-px="job:${j.id}"${off ? ' aria-disabled="true"' : ''}`, `job${off ? ' off' : ''}`, art(j.place || a.name),
+        `<span class="g-pc-txt"><small class="g-pc-kick">Part-time job</small><b>${esc(j.name)}</b><small>${esc(j.role)}${off ? ` · ${esc(ok.why)}` : ''}</small></span>`, `<em>${esc(st.hired ? `Shift · ¥${j.pay.toLocaleString()}` : 'Ask about work')}</em>`);
     };
     const spent = G.freeSlotSpent(slot);
-    show(`<section class="g-areaview"><div class="g-map-head"><button type="button" class="g-btn small" data-back>‹ Map</button><p class="g-kicker">${esc(G.slotName(slot, info))}</p><h1>${esc(a.name)}</h1></div>
+    show(`<section class="g-areaview g-px"><div class="g-map-head"><button type="button" class="g-btn small" data-back>‹ Map</button><p class="g-kicker">${esc(G.slotName(slot, info))}</p><h1>${esc(a.name)}</h1>
+      <p class="g-map-sub">${esc(a.about || a.blurb)}</p></div>
       ${spent ? '<p class="g-note">You’ve already spent this time.</p>' : ''}
-      <div class="g-cols">
-        ${people.length || traces.length ? `<div class="g-col"><h2>People</h2>${people.map(personRow).join('')}${traces.map(traceRow).join('')}</div>` : ''}
-        ${acts.length ? `<div class="g-col"><h2>Things to do</h2>${acts.map(actRow).join('')}</div>` : ''}
-        ${jobs.length ? `<div class="g-col"><h2>Work</h2>${jobs.map(jobRow).join('')}</div>` : ''}
+      <div class="g-px-wrap"><div class="g-px-places">
+        ${people.length || traces.length ? `<div class="g-col"><h2>People</h2>${people.map(personCard).join('')}${traces.map(traceCard).join('')}</div>` : ''}
+        ${acts.length ? `<div class="g-col"><h2>Places</h2>${acts.map(actCard).join('')}</div>` : ''}
+        ${jobs.length ? `<div class="g-col"><h2>Work</h2>${jobs.map(jobCard).join('')}</div>` : ''}
         ${!people.length && !traces.length && !acts.length && !jobs.length ? '<p class="g-note">Nothing much going on here right now.</p>' : ''}
-      </div></section>`, 'is-area');
+      </div><aside class="g-px-info" aria-live="polite"></aside></div></section>`, 'is-area');
+    const panel = main.querySelector('.g-px-info');
+    const paint = b => {
+      main.querySelectorAll('[data-px]').forEach(x => x.classList.toggle('px-on', x === b));
+      const [kind, id] = b.dataset.px.split(':');
+      if (kind === 'act') {
+        const x = G.D.places.activities.find(v => v.id === id), pv = G.activityInfo(x), ok = G.activityOk(x, slot), who = free.filter(l => spotOf(l) === x.spot);
+        panel.innerHTML = `<p class="g-kicker">${esc(a.name)} · ${esc(x.spot)}</p><h2>${esc(x.name)}</h2>${x.about ? `<p class="g-px-about">${esc(x.about)}</p>` : ''}
+          <h3>You’d get</h3><ul class="g-px-gets"><li><b>${esc(pv.benefit)}</b></li><li><small>${esc(pv.cost)}</small></li><li><small>${esc(pv.time)}</small></li></ul>
+          ${ok.ok ? '' : `<p class="g-warn">${esc(ok.why)}</p>`}
+          ${who.length ? `<h3>Who’s there</h3><ul class="g-px-who">${who.map(l => `<li>${faceOf(l.id)}<span><b>${esc(l.short)}</b><small>${esc(personNote(l, slot).line)}</small></span></li>`).join('')}</ul>` : ''}
+          <p class="g-px-go">${pxGo()} ▸ review${x.shop ? ' and browse' : ' before spending time'}</p>`;
+      } else if (kind === 'link') {
+        const l = G.LINKS[id], x = personNote(l, slot), pic = x.met ? G.portrait(l.id, 'neutral') : null;
+        panel.innerHTML = `<div class="g-px-person">${pic ? `<img src="${pic}" alt="">` : '<i>?</i>'}</div><p class="g-kicker">${esc(G.linkPlace(l))}</p><h2>${esc(G.linkName(l))}</h2>
+          <p class="g-px-about">${esc(x.met ? `${l.arcana} · ${x.note}` : x.st.ok && l.approach ? l.approach : x.note)}</p>
+          ${x.met && x.st.ok ? `<ul class="g-px-gets"><li><b>${esc(x.st.after ? 'Time together' : 'Deepen your bond')}</b><small>Uses this time slot.</small></li></ul>` : ''}
+          <p class="g-px-go">${x.st.ok ? `${pxGo()} ▸ spend time together` : 'Not today.'}</p>`;
+      } else if (kind === 'trace') {
+        const l = G.LINKS[id];
+        panel.innerHTML = `<p class="g-kicker">${esc(a.name)}</p><h2>${esc(l.short)}</h2><p class="g-px-about">Something of ${esc(l.short)}'s is still here.</p><ul class="g-px-gets"><li><small>Uses this time slot.</small></li></ul>`;
+      } else if (kind === 'job') {
+        const j = G.D.jobs.find(v => v.id === id), st = G.jobState(j.id), ok = G.jobOk(j, slot);
+        panel.innerHTML = `<p class="g-kicker">Part-time job</p><h2>${esc(j.name)}</h2><p class="g-px-about">${esc(st.hired ? j.role : j.blurb || j.role)}</p>
+          <ul class="g-px-gets"><li><b>¥${j.pay.toLocaleString()} a shift</b></li><li><small>${esc(Object.keys(j.stats).map(k2 => G.D.stats.stats[k2]?.name).filter(Boolean).join(', '))}</small></li><li><small>${st.hired ? 'Uses this time slot.' : 'Asking about work uses no time.'}</small></li></ul>
+          ${st.hired && !ok.ok ? `<p class="g-warn">${esc(ok.why)}</p>` : ''}<p class="g-px-go">${pxGo()} ▸ ${st.hired ? 'review the shift' : 'ask about work'}</p>`;
+      }
+    };
+    pxWire(paint);
     main.querySelector('[data-back]').addEventListener('click', () => goOut(slot));
-    main.querySelectorAll('[data-link]').forEach(b => b.addEventListener('click', () => playLink(G.LINKS[b.dataset.link])));
-    main.querySelectorAll('[data-trace]').forEach(b => b.addEventListener('click', () => playLink(G.LINKS[b.dataset.trace], false, G.nextTrace(G.LINKS[b.dataset.trace]))));
+    const blocked = b => { if (b.getAttribute('aria-disabled') !== 'true') return false; G.sfx('femc-back'); return true; };
+    main.querySelectorAll('[data-link]').forEach(b => b.addEventListener('click', () => { if (!blocked(b)) playLink(G.LINKS[b.dataset.link]); }));
+    main.querySelectorAll('[data-trace]').forEach(b => b.addEventListener('click', () => { if (!blocked(b)) playLink(G.LINKS[b.dataset.trace], false, G.nextTrace(G.LINKS[b.dataset.trace])); }));
+    // Activities you can't do right now still open their review, which says why (its confirm stays off).
     main.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => previewActivity(G.D.places.activities.find(x => x.id === b.dataset.act), slot, a)));
-    main.querySelectorAll('[data-job]').forEach(b => b.addEventListener('click', () => previewJob(G.D.jobs.find(x => x.id === b.dataset.job), slot, a)));
+    main.querySelectorAll('[data-job]').forEach(b => b.addEventListener('click', () => { if (!blocked(b)) previewJob(G.D.jobs.find(x => x.id === b.dataset.job), slot, a); }));
+    const first = main.querySelector('.g-pcard:not([aria-disabled])') || main.querySelector('.g-pcard');
+    if (first) { paint(first); first.focus({ preventScroll: true }); }
   }
   function previewActivity(x, slot, a) {
     const preview = G.activityInfo(x), ok = G.activityOk(x, slot);
     const o = overlay(`<p class="g-kicker">${esc(a.name)} · ${esc(x.spot)}</p><h2>${esc(x.name)}</h2>
-      <p>${esc(preview.benefit)}</p><ul class="g-gains"><li>${esc(preview.cost)}</li><li>${esc(preview.time)}</li></ul>
+      ${x.about ? `<p class="g-note">${esc(x.about)}</p>` : ''}<p>${esc(preview.benefit)}</p><ul class="g-gains"><li>${esc(preview.cost)}</li><li>${esc(preview.time)}</li></ul>
       ${ok.ok ? '' : `<p class="g-warn">${esc(ok.why)}</p>`}
       <div class="g-row"><button type="button" class="g-btn pink" data-confirm${ok.ok ? '' : ' disabled'}>${x.shop ? 'Browse shop' : 'Spend time here'}</button><button type="button" class="g-btn" data-close>Back</button></div>`, 'g-activity-preview');
     o.el.querySelector('[data-confirm]').addEventListener('click', () => {
@@ -846,14 +1046,38 @@
     window.FemcMenu.open(tab === 'stats' ? 'status' : tab);
   }
 
-  /* ── Phone ── */
+  /* ── Phone. The list: newest conversation on top (latest message's day, then its sequence), unread badges, a "Reply" tag
+     where an answer is waiting, and Read all. A conversation: what was already read shows at once; new texts arrive one at
+     a time (a typing bubble, then the message, a soft pop), and Solar's answer types out in the compose bar and sends with a
+     whoosh. Pace: the Text speed setting (Instant shows everything at once) and Auto (Slow / Fast stretch or tighten the gap
+     between bubbles); reduced motion shows everything at once. Skip, a tap on the conversation, or Enter / Space while it
+     plays fast-forwards. Everything is already in the save before it animates, so closing mid-way loses nothing. ── */
+  function phonePace() {
+    const st = G.settings();
+    const text = { slow: 1.45, normal: 1, fast: 0.5, instant: 0 }[st.text] ?? 1;
+    const auto = { off: 1, slow: 1.4, normal: 1, fast: 0.65 }[st.auto] ?? 1;
+    return { text, auto, instant: !text || reduced.matches };
+  }
   function openPhone(thread) {
     const s = S();
-    const o = overlay(`<div class="g-phone"><div class="g-ph-top"><button type="button" class="g-ph-back" aria-label="Back">‹</button><b>Messages</b><button type="button" data-close aria-label="Close">✕</button></div><div class="g-ph-body"></div><div class="g-ph-reply"></div></div>`, 'g-phone-ov');
-    const body = o.el.querySelector('.g-ph-body'), reply = o.el.querySelector('.g-ph-reply'), back = o.el.querySelector('.g-ph-back'), title = o.el.querySelector('.g-ph-top b');
-    const tname = id => G.D.texts.threads[id] || G.name(id);
+    let goLink = null; // an invitation said yes to: the hangout starts when the phone closes
+    const anim = { token: 0, skip: null, timer: null };
+    const o = overlay(`<div class="g-phone"><div class="g-ph-top"><button type="button" class="g-ph-back" aria-label="Back">‹</button><b>Messages</b><button type="button" data-close aria-label="Close">✕</button></div>
+      <div class="g-ph-bar"></div><div class="g-ph-body" aria-live="polite"></div>
+      <div class="g-ph-compose" hidden aria-hidden="true"><p class="g-ph-draft"></p><span class="g-ph-send">↑</span></div><div class="g-ph-reply"></div></div>`, 'g-phone-ov', () => {
+      stop();
+      if (goLink) { const l = goLink; goLink = null; setTimeout(() => playLink(l), 0); }
+    });
+    const $p = sel => o.el.querySelector(sel);
+    const body = $p('.g-ph-body'), reply = $p('.g-ph-reply'), back = $p('.g-ph-back'), title = $p('.g-ph-top b'), bar = $p('.g-ph-bar');
+    const compose = $p('.g-ph-compose'), draft = $p('.g-ph-draft');
+    const stop = () => { anim.token += 1; clearTimeout(anim.timer); anim.skip = null; o.el.classList.remove('g-ph-playing'); };
+    const focusIn = el => setTimeout(() => el?.isConnected && el.focus({ preventScroll: true }), 40);
+    const pending = id => !!(s.phone.pending[id] && G.D.texts.texts.some(x => x.id === s.phone.pending[id])) || s.phone.invite?.link === id;
+
     const list = () => {
-      title.textContent = 'Messages'; back.hidden = true; reply.replaceChildren();
+      stop();
+      title.textContent = 'Messages'; back.hidden = true; reply.replaceChildren(); compose.hidden = true;
       const latest = id => (s.phone.threads[id] || []).at(-1) || {};
       const ids = Object.keys(s.phone.threads).sort((a, b) => {
         const x = latest(a), y = latest(b);
@@ -861,29 +1085,135 @@
           G.SLOT_ORDER.indexOf(y.slot) - G.SLOT_ORDER.indexOf(x.slot) ||
           (s.phone.unread[b] || 0) - (s.phone.unread[a] || 0);
       });
-      body.innerHTML = ids.length ? ids.map(id => { const th = s.phone.threads[id], last = th[th.length - 1]; return `<button type="button" class="g-ph-row" data-th="${id}"><i>${G.portrait(id, 'neutral') ? `<img src="${G.portrait(id, 'neutral')}" alt="">` : esc(tname(id)[0])}</i><span><b>${esc(tname(id))}</b><small>${esc(last?.t || '')}</small></span>${s.phone.unread[id] ? `<em>${s.phone.unread[id]}</em>` : ''}</button>`; }).join('') : '<p class="g-note">No messages.</p>';
+      const n = G.unread();
+      bar.innerHTML = `<span>${n ? `${n} unread` : ids.length ? 'All caught up' : ''}</span><button type="button" class="g-ph-readall" data-readall${n ? '' : ' disabled'}>Read all</button>`;
+      bar.hidden = !ids.length;
+      body.innerHTML = ids.length ? ids.map(id => {
+        const th = s.phone.threads[id], last = th[th.length - 1], pic = threadPic(id), u = s.phone.unread[id];
+        const m = last ? msgParts(id, last) : { text: '' };
+        const lead = !last ? '' : m.me ? 'You: ' : m.group && !m.notice ? `${m.name}: ` : '';
+        return `<button type="button" class="g-ph-row${u ? ' unread' : ''}" data-th="${id}"><i>${pic ? `<img src="${pic}" alt="">` : esc(threadName(id)[0])}</i><span><b>${esc(threadName(id))}</b><small>${esc(lead + m.text)}</small></span>${u ? `<em>${u}</em>` : pending(id) ? '<em class="g-ph-due">Reply</em>' : ''}</button>`;
+      }).join('') : '<p class="g-note">No messages.</p>';
       body.querySelectorAll('[data-th]').forEach(b => b.addEventListener('click', () => open(b.dataset.th)));
+      bar.querySelector('[data-readall]').addEventListener('click', () => {
+        if (!G.markAllRead()) return;
+        G.sfx('femc-click'); paintHud(); list();
+        focusIn(body.querySelector('.g-ph-row'));
+      });
     };
-    const open = id => {
-      title.textContent = tname(id); back.hidden = false;
-      delete s.phone.unread[id]; G.save();
-      body.innerHTML = (s.phone.threads[id] || []).map(m => `<p class="g-ph-msg ${m.from === 'solar' ? 'me' : 'them'}">${id === 'sees' && m.from !== 'solar' ? `<b>${esc(G.name(m.from))}</b>` : ''}${esc(m.t)}</p>`).join('');
+
+    // One bubble (or a group chat's notice). Consecutive texts from one sender in a group show the name once.
+    let lastFrom = null;
+    const bubble = (id, m, animate) => {
+      const x = msgParts(id, m), p = document.createElement('p');
+      if (x.notice) { p.className = 'g-ph-notice'; p.textContent = x.text; lastFrom = null; }
+      else {
+        p.className = `g-ph-msg ${x.me ? 'me' : 'them'}${x.group && !x.me ? ' group' : ''}`;
+        if (x.group && !x.me && lastFrom !== m.from) { const b = document.createElement('b'); b.textContent = x.name; if (x.handle) { const h = document.createElement('small'); h.textContent = x.handle; b.append(' ', h); } p.append(b); }
+        p.append(x.text);
+        lastFrom = m.from;
+      }
+      if (animate) p.classList.add('in');
+      body.appendChild(p);
       body.scrollTop = body.scrollHeight;
+      return p;
+    };
+    // Play messages [from, end) of a conversation, then call done. Instant when the pace says so.
+    const play = (id, from, done) => {
+      stop();
+      const tok = anim.token, th = s.phone.threads[id] || [], queue = th.slice(from), pace = phonePace();
+      const alive = () => tok === anim.token && o.el.isConnected && !o.el.classList.contains('out');
+      let i = 0, dots = null;
+      const finish = () => {
+        if (!alive()) return;
+        clearTimeout(anim.timer); dots?.remove(); dots = null; compose.hidden = true; draft.textContent = '';
+        while (i < queue.length) bubble(id, queue[i++], false);
+        anim.skip = null; o.el.classList.remove('g-ph-playing');
+        done?.();
+      };
+      if (!queue.length) return finish();
+      if (pace.instant) { if (queue.some(m => m.from !== 'solar')) phoneSfx('pop'); return finish(); }
+      anim.skip = finish;
+      o.el.classList.add('g-ph-playing');
+      bar.innerHTML = '<span>…</span><button type="button" class="g-ph-skip" data-skip>Skip ▸▸</button>';
+      bar.hidden = false;
+      bar.querySelector('[data-skip]').addEventListener('click', e => { e.stopPropagation(); anim.skip?.(); focusIn(reply.querySelector('button') || back); });
+      focusIn(bar.querySelector('[data-skip]'));
+      const gap = () => Math.round(420 * pace.auto);
+      const step = () => {
+        if (!alive()) return;
+        if (i >= queue.length) return finish();
+        const m = queue[i], text = G.sub(m.t);
+        if (m.from === 'solar') {
+          // Solar's answer types out in the compose bar, then sends.
+          compose.hidden = false; draft.textContent = '';
+          const per = Math.max(8, G.textDelay()), chunk = Math.max(1, Math.ceil(text.length / 70));
+          let k = 0;
+          const type = () => {
+            if (!alive()) return;
+            k = Math.min(text.length, k + chunk); draft.textContent = text.slice(0, k);
+            if (k % 3 === 1) G.sfx('femc-text');
+            if (k < text.length) { anim.timer = setTimeout(type, per); return; }
+            anim.timer = setTimeout(() => {
+              if (!alive()) return;
+              compose.classList.add('sent'); phoneSfx('whoosh');
+              anim.timer = setTimeout(() => { if (!alive()) return; compose.classList.remove('sent'); compose.hidden = true; draft.textContent = ''; bubble(id, m, true).classList.add('sent'); i += 1; anim.timer = setTimeout(step, gap()); }, 160);
+            }, Math.round(260 * pace.text));
+          };
+          anim.timer = setTimeout(type, 120);
+          return;
+        }
+        // Someone else: the typing bubble, then the message.
+        dots = document.createElement('p');
+        dots.className = 'g-ph-typing'; dots.setAttribute('aria-label', `${G.name(m.from)} is typing`);
+        dots.innerHTML = '<i></i><i></i><i></i>';
+        body.appendChild(dots); body.scrollTop = body.scrollHeight;
+        const wait = Math.round(Math.max(550, Math.min(1700, 420 + text.length * 22)) * pace.text);
+        anim.timer = setTimeout(() => { if (!alive()) return; dots.remove(); dots = null; bubble(id, m, true); phoneSfx('pop'); i += 1; anim.timer = setTimeout(step, gap()); }, wait);
+      };
+      step();
+    };
+    // Answers waiting in a conversation: a text's reply options, or an invitation.
+    const replies = id => {
       reply.replaceChildren();
-      const pend = s.phone.pending[id];
-      const t = pend && G.D.texts.texts.find(x => x.id === pend);
-      if (t) t.reply.forEach((r, i) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = r.t; b.addEventListener('click', () => { G.replyText(id, i); open(id); }); reply.append(b); });
+      bar.innerHTML = ''; bar.hidden = true;
+      const t = s.phone.pending[id] && G.D.texts.texts.find(x => x.id === s.phone.pending[id]);
+      if (t) t.reply.forEach((r, i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.textContent = G.sub(r.t);
+        b.addEventListener('click', () => { const from = (s.phone.threads[id] || []).length; G.replyText(id, i); reply.replaceChildren(); G.sfx('femc-click'); play(id, from, () => replies(id)); });
+        reply.append(b);
+      });
       const inv = s.phone.invite;
       if (inv && inv.link === id) {
         [['Sure, I’m free', true], ['Can’t right now', false]].forEach(([label, yes]) => {
           const b = document.createElement('button'); b.type = 'button'; b.textContent = label;
-          b.addEventListener('click', () => { const l = G.answerInvite(yes); open(id); if (l) { setTimeout(() => { o.close(); playLink(l); }, 500); } });
+          b.addEventListener('click', () => {
+            const from = (s.phone.threads[id] || []).length;
+            const l = G.answerInvite(yes); reply.replaceChildren(); G.sfx('femc-click');
+            if (l) goLink = l;
+            play(id, from, () => { if (goLink) setTimeout(() => o.close(), 500); else replies(id); });
+          });
           reply.append(b);
         });
       }
+      if (reply.firstChild) focusIn(reply.firstChild);
     };
-    back.addEventListener('click', list);
-    thread ? open(thread) : list();
+    const open = id => {
+      title.textContent = threadName(id); back.hidden = false;
+      const th = s.phone.threads[id] || [], fresh = Math.min(th.length, s.phone.unread[id] || 0);
+      delete s.phone.unread[id]; G.save(); paintHud();
+      body.replaceChildren(); reply.replaceChildren(); lastFrom = null;
+      th.slice(0, th.length - fresh).forEach(m => bubble(id, m, false));
+      body.scrollTop = body.scrollHeight;
+      bar.innerHTML = ''; bar.hidden = true;
+      play(id, th.length - fresh, () => replies(id));
+      if (!o.el.classList.contains('g-ph-playing') && !reply.firstChild) focusIn(back);
+    };
+    back.addEventListener('click', () => { list(); focusIn(body.querySelector('.g-ph-row')); });
+    // A tap on the conversation, or Enter / Space on it, fast-forwards what's still arriving.
+    body.addEventListener('click', () => anim.skip?.());
+    o.el.addEventListener('keydown', e => { if (anim.skip && (e.key === 'Enter' || e.key === ' ') && !e.target.closest?.('button:not([data-skip])')) { e.preventDefault(); anim.skip(); } });
+    if (thread) open(thread); else { list(); focusIn(body.querySelector('.g-ph-row') || $p('[data-close]')); }
   }
 
   /* ── Shops ── */
@@ -1093,7 +1423,7 @@
   setInterval(() => { if (document.visibilityState === 'visible' && S().started && S().phase !== 'title') S().playMinutes = (S().playMinutes || 0) + 1; }, 60000);
 
   /* ── Start ── */
-  window.FemcGameUI = { run, openStatus, openPhone, openSaves, openSettings, playLink, goOut, evening: () => evening(G.dayInfo()), dateCard, advance, overlay, esc, inBattle: () => !!dh };
+  window.FemcGameUI = { run, openStatus, openPhone, openSaves, sfxLog: () => sfxLog.slice(), SUN, openSettings, playLink, goOut, evening: () => evening(G.dayInfo()), dateCard, advance, overlay, esc, inBattle: () => !!dh };
   // An old battle tab coming back (?from=battle): its result was taken into the save on load (core.js); carry on.
   const fromBattle = /[?&]from=battle\b/.test(location.search);
   if (fromBattle) history.replaceState(null, '', location.pathname);

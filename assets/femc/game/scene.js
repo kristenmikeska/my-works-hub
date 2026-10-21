@@ -322,18 +322,35 @@ window.FemcScene = (() => {
       el.appendChild(box);
       const thread = box.querySelector('.gs-phone-thread');
       let i = 0;
+      // Each incoming text gets a moment of "typing…" first (a tap shows it at once); Solar's own send with a whoosh.
+      // Skip, Instant text speed and reduced motion show them straight away.
       const reveal = () => {
         const m = line.phone[i++];
         if (!m) { box.remove(); el.classList.remove('phoning'); waiting = null; return next(); }
-        const p = document.createElement('p');
-        p.className = `gs-msg ${m.from === 'solar' ? 'me' : 'them'}`;
-        p.textContent = G.sub(m.t);
-        thread.appendChild(p);
+        const me = m.from === 'solar', text = G.sub(m.t);
+        let dots = null;
+        const show = () => {
+          clearTimeout(typing); typing = null; dots?.remove();
+          if (!el.isConnected) return;
+          const p = document.createElement('p');
+          p.className = `gs-msg ${me ? 'me' : 'them'}${reduced.matches ? '' : ' in'}`;
+          p.textContent = text;
+          thread.appendChild(p);
+          thread.scrollTop = thread.scrollHeight;
+          log.push({ name: me ? 'Solar' : G.name(m.from), text: `[text] ${text}` });
+          if (G.phoneSfx) G.phoneSfx(me ? 'whoosh' : 'pop'); else G.sfx('femc-text');
+          waiting = reveal;
+          if (skipping) setTimeout(() => { if (waiting === reveal) advanceClick(); }, 40);
+        };
+        const speed = G.textDelay();
+        if (me || skipping || reduced.matches || speed <= 0) return show();
+        dots = document.createElement('p');
+        dots.className = 'gs-msg them gs-typing';
+        dots.innerHTML = '<i></i><i></i><i></i>';
+        thread.appendChild(dots);
         thread.scrollTop = thread.scrollHeight;
-        log.push({ name: m.from === 'solar' ? 'Solar' : G.name(m.from), text: `[text] ${G.sub(m.t)}` });
-        G.sfx('femc-text');
-        waiting = reveal;
-        if (skipping) setTimeout(() => { if (waiting === reveal) advanceClick(); }, 40);
+        typing = setTimeout(show, Math.round(Math.max(420, Math.min(1300, 300 + text.length * speed * 0.8))));
+        waiting = show;
       };
       el.classList.add('ready', 'phoning');
       reveal();
@@ -458,7 +475,7 @@ window.FemcScene = (() => {
       const pref = G.settings().auto;
       const selected = AUTO[pref] ? pref : 'off';
       if (selected !== mode) setAuto(selected, false);
-      const can = mode !== 'off' && !skipping && waiting && !typing && !choices.children.length && $('.gs-log').hidden && !el.querySelector('.gs-summon') && !document.querySelector('.g-overlay, .g-card, .g-dh');
+      const can = mode !== 'off' && !skipping && waiting && !typing && !choices.children.length && $('.gs-log').hidden && !el.querySelector('.gs-summon') && !document.querySelector('.g-overlay, .g-card, .g-dh, .g-statup');
       if (!can) { readyAt = 0; return; }
       if (!readyAt) readyAt = Date.now();
       const wait = PACE[mode] * (el.classList.contains('phoning') ? 1400 : Math.min(7000, 1100 + textEl.textContent.length * 38));

@@ -202,7 +202,7 @@ window.FemcGame = (() => {
     S.stats[id] += n;
     const after = statRank(id);
     toast('stat', `${statDef(id).name} ${'▲'.repeat(Math.min(3, Math.ceil(n / 2)))}`, { stat: id });
-    if (after > before) toast('statrank', `Your ${statDef(id).name} has grown to "${statRankName(id, after)}"!`, { stat: id });
+    if (after > before) toast('statrank', `Your ${statDef(id).name} has grown to "${statRankName(id, after)}"!`, { stat: id, rank: after, from: before });
     return n;
   }
   function addStats(obj, raw) { Object.entries(obj || {}).forEach(([k, v]) => addStat(k, v, raw)); }
@@ -938,7 +938,7 @@ window.FemcGame = (() => {
       appendPhone(t.thread, t.msgs);
       S.phone.unread[t.thread] = (S.phone.unread[t.thread] || 0) + t.msgs.length;
       if (t.reply) S.phone.pending[t.thread] = t.id;
-      toast('text', `${D.texts.threads[t.thread] || name(t.thread)}: ${t.msgs[0].t}`, { thread: t.thread });
+      toast('text', `${D.texts.threads[t.thread] || name(t.thread)}: ${t.msgs[0].t}`, { thread: t.thread, from: t.msgs[0].from, msg: t.msgs[0].t, count: t.msgs.length });
       void md;
       break;
     }
@@ -971,7 +971,7 @@ window.FemcGame = (() => {
     S.phone.lastInvite = S.day;
     appendPhone(l.id, [{ from: l.id, t: ask, invite: true }]);
     S.phone.unread[l.id] = (S.phone.unread[l.id] || 0) + 1;
-    toast('text', `${l.short}: ${ask}`, { thread: l.id, invite: true });
+    toast('text', `${l.short}: ${ask}`, { thread: l.id, invite: true, from: l.id, msg: ask, count: 1 });
   }
   function answerInvite(yes) {
     const inv = S.phone.invite;
@@ -985,6 +985,13 @@ window.FemcGame = (() => {
   }
   function expireInvite() { const inv = S.phone.invite; if (inv && (inv.d !== S.day || inv.slot !== S.slot)) S.phone.invite = null; }
   const unread = () => Object.values(S.phone.unread).reduce((a, b) => a + b, 0);
+  // "Read all" on the phone: clears every unread badge. Replies and invitations still waiting stay answerable.
+  function markAllRead() { const n = unread(); S.phone.unread = {}; save(); return n; }
+  // Group chats (texts.js `groups`, or any thread where more than one person besides Solar has written) show sender names.
+  function isGroupThread(id) {
+    if ((D.texts.groups || []).includes(id)) return true;
+    return new Set((S.phone.threads[id] || []).filter(m => m.from !== 'solar').map(m => m.from)).size > 1;
+  }
 
   /* ── Time ── */
   function freeSlotSpent(slot = S.slot) { return !!S.spent[`${S.day}-${slot}`]; }
@@ -1180,7 +1187,7 @@ window.FemcGame = (() => {
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift,
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
-    deliverTexts, replyText, answerInvite, unread, freeSlotSpent, nextSlot, sleep,
+    deliverTexts, replyText, answerInvite, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,
     setBattleSave, ensureBattleSave,
     saveSlot, readSlot, loadSlot, slotLabel, slotInfo, exportCode, importCode, hasSave, deleteSave
