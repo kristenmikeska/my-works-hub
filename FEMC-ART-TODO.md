@@ -41,7 +41,7 @@ Save each as `solar-<form>-strikesheet.png` in New Adds.
 - **One character per image**, in a grid of 3 across and 2 down.
 - **Plain white background** and **space between the drawings**, so nothing touches or overlaps. This is the most important part: it's what lets me cut them cleanly.
 - **The same size in every drawing.** If it comes out with a background, or poses overlapping, just ask ChatGPT to *"redo it on a plain white background with more space between the poses."*
-- **Save it** in New Adds: `justice-attack.png` and `ken-posesheet.png`.
+- **Save it** in New Adds: `justice-attack.png`.
 
 ---
 
@@ -60,16 +60,7 @@ The Chariot sheet is the Chariot alone; Justice is its own Shadow in that fight,
 ---
 
 ### 3B. Fighters
-**Attach (1 image):** 🎨 `Character Portraits/Ken/Ken-Neutral.png`. He has no full-body art yet, so say "full body."
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, full body, same face, hair, outfit and weapon, same size, nothing overlapping. Cell 1: battle-ready stance. Cell 2: raising an ornate silver Evoker to their temple. Cell 3: attacking with their spear. Cell 4: casting a spell with one hand out, holy light effects. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-
-| ✓ | Fighter | Attach this file | [WEAPON] | [ELEMENT] |
-|---|---|---|---|---|
-| ☐ | Ken | 🎨 `Character Portraits/Ken/Ken-Neutral.png` | spear | holy light |
-
-Until his sheet arrives, Ken has no battlefield figure (as before).
+All done. Ken is skipped (Kat's call: she won't use him), so he keeps no battlefield figure.
 
 ---
 
@@ -87,7 +78,7 @@ Create a NEW 16:9 combo-attack cut-in matching the FIRST attached image's art st
 - [ ] **Jihoon:** fists; wind and pink star sparks; a smug grin
 - [ ] **Minji:** bow; a camera flash freezing the moment as Solar strikes
 - [ ] **Shinjiro:** axe; dark red force; a single gruff nod, the weapons crossing
-- [ ] *(Optional)* Yukari, Junpei, Mitsuru, Aigis, Ken, Koromaru
+- [ ] *(Optional)* Yukari, Junpei, Mitsuru, Aigis, Koromaru
 
 **Status (2026-10-21):** the bond skills are in the game with a stylized cut-in made from both portraits and Personas, so nothing waits on this art. The romance versions (on that route) can have their own art too.
 
@@ -104,7 +95,6 @@ A 2×3 grid of six weapon designs on a white background, each in its own card, i
 - [ ] **Junpei** (sword): baseball bat, katana, flame, neon, giant cleaver
 - [ ] **Mitsuru** (rapier): ice crystal, rose, gold filigree, snow queen, Kirijo crest
 - [ ] **Aigis** (arm guns): gold plating, heart, wing, heavy cannon, butterfly
-- [ ] **Ken** (spear): hero-show toy, lightning, gold, star, dragon
 - [ ] **Koromaru** (knife): bone, shrine bell, flame, collar tag, kunai
 - [ ] **Shinjiro** (axe): black steel, chain, kitchen cleaver, ember, moonlit
 - [ ] **Haechan** (knife), **Jungwon** (rapier), **Jihoon** (gloves), **Minji** (bow): themes from their worlds and Personas
@@ -193,7 +183,7 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 ## 9. Characters and CGs
 - [ ] **Shinjiro's Evoker shot** (your redo)
   - **Attach:** Shinjiro's portrait.
-- [ ] **Evoker poses** for Akihiko, Yukari, Junpei, Mitsuru, Ken and Aigis
+- [ ] **Evoker poses** for Akihiko, Yukari, Junpei, Mitsuru and Aigis
   - **Attach:** 🎨 `Added to Game/solar-evoker-animation.png` and the character's portrait.
   - Prompt:
     ```
