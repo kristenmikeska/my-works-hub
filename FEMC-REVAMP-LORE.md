@@ -195,3 +195,23 @@ Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve th
 - **Jihoon telling Solar on 12/16 that Jungwon is her boyfriend back home:** approved. Kat loves it.
 - **Yunjin's puffer is yellow** in the game, matching the art. She owns more than one color. Don't "fix" it to orange.
 - **Memory fragments may be half-remembered** (e.g. the HOAX ladder memory shows Solar caught, though in the book she fell). Her memory being slightly off is intentional, so don't correct those against canon.
+
+## Searcher Personas (Kat's picks, 2026-10-20)
+- **Haechan → Dalnim.** In the Korean folktale, Haenim and Dalnim are siblings who become the sun and the moon, so his Persona is Solar's forever pair. Moon-themed affinities (Dark and Elec).
+- **Jungwon → Hyeonmu.** The Black Tortoise of the North: winter, ice, a steadfast guardian. A tortoise entwined with a snake, two beings in one body, like his two lives.
+- **Jihoon → Dokkaebi.** The Korean goblin: a loud, laughing trickster with a club. Mean if you cross him, loyal if you don't. Wind.
+- **Minji → Theia.** The Greek titaness of sight and shining light, "the one who sees". Light; bow.
+
+**Proposed searcher arcana (awaiting Kat's OK):**
+- Jihoon: Hunger
+- Minji: Moon
+- Jaehyun: Emperor
+- Mark: Magician
+- Hanni: Councillor (new card)
+- Hyein: Lovers
+- Yunjin: Judgement (new card)
+- Cherry: Chariot
+- Sunoo: Sun
+- Junkyu: Fool
+
+Haechan stays Universe and Jungwon stays Hierophant.
