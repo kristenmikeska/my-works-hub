@@ -23,7 +23,7 @@ HELPERS = r"""(()=>{
         S.unlocked.tartarus=true; S.flags.armband=true;
         S.joined=['solar','yukari','junpei','akihiko'];
         S.yen=6000+n*123; S.inventory={medicine:n+2}; S.condition='good';
-        S.stats.academics=10+n; S.stats.charm=20+n; S.stats.courage=30+n;
+        S.stats.knowledge=10+n; S.stats.charm=20+n; S.stats.courage=30+n; S.stats.proficiency=40+n; S.stats.kindness=50+n;
         // Keep scheduled story scenes from interrupting these isolated save checks.
         for (const l of Object.values(G.LINKS)) {
             if (l.forced?.length) G.progress(l.id).rank=Math.max(...l.forced);

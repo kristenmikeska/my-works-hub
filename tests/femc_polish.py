@@ -3,7 +3,7 @@
 Checks: texts arriving one at a time (banner + chime, typing bubble, pop) and Solar's reply typing out and sending (whoosh),
 with Skip, Instant text speed, Auto pace and reduced motion; the same typing in a scene's phone lines; group chat sender
 names in every multi-person thread; Read all; the social stat level-up (sun) firing on a rank-up, waiting for a scene to end,
-and the P5R-style stats screen (with five stats dropped in); the P5X-style Go Out menu (hover / focus / pad descriptions,
+and the P5R-style stats screen (all five stats); the P5X-style Go Out menu (hover / focus / pad descriptions,
 who's there today with portraits, touch, and an activity still reviewed and spending the slot exactly as before); the softened
 pink slashes; screenshots at 1000x486, 375x812 and 1440x900; no browser errors.
 
@@ -248,8 +248,8 @@ try:
     p.eval("FemcGame.addStat('charm',20,true);true")
     p.wait("!!document.querySelector('.g-statup')", 3)
     su = p.eval("({name:document.querySelector('.g-su-name').textContent,to:document.querySelector('.g-su-rank b').textContent,from:document.querySelector('.g-su-rank s').textContent,sun:!!document.querySelector('.g-su-sunbox svg.g-sun .g-sun-rays'),pips:document.querySelectorAll('.g-su-pips .g-sun').length,on:document.querySelectorAll('.g-su-pips .g-sun.on').length,new:document.querySelectorAll('.g-su-pips .g-sun.new').length,anim:getComputedStyle(document.querySelector('.g-su-sunbox .g-sun')).animationName})")
-    ok(su['name'] == 'Charm' and su['to'] == 'Unpolished' and su['from'] == 'Plain', f'level-up names the stat and its new rank: {su}')
-    ok(su['sun'] and su['pips'] == 6 and su['on'] == 2 and su['new'] == 1 and su['anim'] != 'none', 'a sun, not a star; rank pips with the new one lit; animated')
+    ok(su['name'] == 'Charm' and su['to'] == 'Noticed' and su['from'] == 'Wallflower', f'level-up names the stat and its new rank: {su}')
+    ok(su['sun'] and su['pips'] == 5 and su['on'] == 2 and su['new'] == 1 and su['anim'] != 'none', 'a sun, not a star; rank pips with the new one lit; animated')
     time.sleep(1.1)  # let the card finish (it moves on by itself after ~4.8 s)
     shot('levelup-desktop')
     key('Enter')
@@ -266,7 +266,7 @@ try:
     p.eval("document.querySelector('.g-statup').click();true")
     p.wait("!document.querySelector('.g-statup')", 3)
     motion(True)
-    p.eval("FemcGame.addStat('academics',25,true);true")
+    p.eval("FemcGame.addStat('knowledge',25,true);true")
     p.wait("!!document.querySelector('.g-statup')", 3)
     ok(p.eval("document.querySelector('.g-statup').classList.contains('calm') && getComputedStyle(document.querySelector('.g-su-sunbox .g-sun')).animationName==='none'"), 'reduced motion: the level-up appears without animation')
     key('Escape')
@@ -285,21 +285,17 @@ try:
     size(1440, 900)
     p.eval("FemcMenu.close();true")
     time.sleep(0.3)
-    # Five P5 stats drop in with no code changes (data only), then the real three come back.
-    five = p.eval("""(()=>{const G=FemcGame,keep=G.D.stats.stats,keepS={...G.S.stats};
-      const R=['Rank 1','Rank 2','Rank 3','Rank 4','Rank 5'],at=[0,10,25,45,70];
-      G.D.stats.stats={knowledge:{name:'Knowledge',color:'#7fb6ff',ranks:R,at},courage:{name:'Courage',color:'#ffd36b',ranks:R,at},proficiency:{name:'Proficiency',color:'#7dffc0',ranks:R,at},charm:{name:'Charm',color:'#ff8cc0',ranks:R,at},kindness:{name:'Kindness',color:'#c9a0ff',ranks:R,at}};
-      Object.keys(G.D.stats.stats).forEach(k=>{G.S.stats[k]=G.S.stats[k]||12});
-      FemcMenu.open('status');const n=document.querySelectorAll('.g-ss-stat').length,c=document.querySelector('.g-ss-radar .val').getAttribute('points').trim().split(/\\s+/).length,pips=document.querySelectorAll('.g-ss-stat')[0].querySelectorAll('.g-ss-suns .g-sun').length;
-      return {n,c,pips,restore(){}}})()""")
-    ok(five['n'] == 5 and five['c'] == 5 and five['pips'] == 5, f'five P5 stats drop in: a pentagon and five cards ({five})')
+    # The five P5-style stats (stats.js): a pentagon and five cards, five suns each.
+    five = p.eval("""(()=>{FemcMenu.open('status');const n=document.querySelectorAll('.g-ss-stat').length,c=document.querySelector('.g-ss-radar .val').getAttribute('points').trim().split(/\\s+/).length,pips=document.querySelectorAll('.g-ss-stat')[0].querySelectorAll('.g-ss-suns .g-sun').length;
+      return {n,c,pips}})()""")
+    ok(five['n'] == 5 and five['c'] == 5 and five['pips'] == 5, f'the five stats: a pentagon and five cards ({five})')
     shot('stats-five-desktop')
     p.eval("FemcGame.addStat('kindness',20,true);true")
     p.eval("FemcMenu.close();true")
     p.wait("!!document.querySelector('.g-statup')", 3)
     ok(p.eval("document.querySelector('.g-su-name').textContent==='Kindness' && document.querySelectorAll('.g-su-pips .g-sun').length===5"), 'the level-up works for a new stat too')
     p.eval("document.querySelector('.g-statup').click();true")
-    p.goto('femc-game.html')  # back to the real three stats
+    p.goto('femc-game.html')
 
     # ── 5. Go Out (P5X): cards with art, descriptions on hover / focus / pad, who's there, touch, the slot spent as before ──
     found = p.eval("""(()=>{const G=FemcGame;G.newGame();G.S.phase='play';G.setSetting('text','instant');G.setSetting('music',0);G.setSetting('dateCard',false);

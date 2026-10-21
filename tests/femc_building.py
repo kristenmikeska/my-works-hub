@@ -144,7 +144,8 @@ try:
           return out;})()""")
         ok(r['fox3'] == 'rank' and r['fox4'] == 'own' and r['paused'] == 'paused', ('Fox Spirit at rank 4, paused when reversed', r))
         ok(r['cross'] == 'assist' and r['crossJoined'] == 'party' and r['ken'] == 'rank', ('searchers assist before joining; S.E.E.S. battle perks need them', r))
-        ok(r['stub'] == 'stub' and len(r['stubs']) == 12, r['stubs'])
+        # Since the five social stats (2026-10-21) only clubs, party switching and Velvet Room draws are left.
+        ok(r['stub'] == 'stub' and sorted(r['stubs']) == ['elizabeth-2', 'jaehyun-4', 'rio-2'], r['stubs'])
         ok(r['bp']['duo'] == 'minji' and r['bp']['suzu'] == 0.5 and r['bp']['count'], r['bp'])
         kinds = r['cards']
         ok(len(kinds) == 4 + 12 + 4, len(kinds))
@@ -230,10 +231,10 @@ try:
           const out={};
           out.bathInfo=G.activityInfo(A('bathhouse')).benefit; S.slot='evening'; S.spent={}; const c0=S.stats.charm; G.doActivity(A('bathhouse')); out.bath=S.stats.charm-c0;
           S.spent={}; S.slot='after'; const y0=S.yen; G.doActivity(A('clinic')); out.clinic=y0-S.yen;
-          S.spent={}; const y1=S.yen, a0=S.stats.academics; G.doActivity(A('hagakure')); out.hagakure={paid:y1-S.yen, acad:S.stats.academics-a0};
+          S.spent={}; const y1=S.yen, a0=S.stats.knowledge; G.doActivity(A('hagakure')); out.hagakure={paid:y1-S.yen, acad:S.stats.knowledge-a0};
           S.links.mercy.rank=1; out.clinicNo=G.actCost(A('clinic'));
           return out;})()""")
-        ok(d['bath'] == 3 and 'Charm +3' in d['bathInfo'], ('Glow Up: the bathhouse +2 Charm', d))
+        ok(d['bath'] == 4 and 'Charm +4' in d['bathInfo'], ('Glow Up: the bathhouse (Charm +2 since the five stats) +2 Charm', d))
         ok(d['clinic'] == 0 and d['clinicNo'] == 1000, ('House Call: the clinic is free at rank 2', d))
         ok(d['hagakure']['paid'] == 560 and d['hagakure']['acad'] == 3, ('Bro Discount: 30% off, +1 Knowledge', d))
         results['daily'] = d

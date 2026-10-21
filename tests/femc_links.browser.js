@@ -8,7 +8,7 @@ window.LinkAudit = (() => {
  const walk=(a,fn,p='')=>(a||[]).forEach((l,i)=>{const key=p+'/'+i;fn(l,key);walk(l.then,fn,key+'/then');walk(l.else,fn,key+'/else');(l.choose||l.route||[]).forEach((o,j)=>{fn(o,key+'/option'+j,true);walk(o.then,fn,key+'/option'+j)});});
  const reset=(id,e,p)=>{
   Object.keys(G.S).forEach(k=>delete G.S[k]);Object.assign(G.S,copy(base));
-  G.S.flags={armband:true,...p.flags};G.S.met=p.met||[];G.S.events=p.events||[];G.S.stats={academics:200,charm:200,courage:p.courage??200};
+  G.S.flags={armband:true,...p.flags};G.S.met=p.met||[];G.S.events=p.events||[];{const v=p.low?0:200;G.S.stats={knowledge:v,courage:v,proficiency:v,charm:v,kindness:v};}
   G.S.day=G.dayOf(p.date||e.after||'1/24');G.S.slot=id==='mark'?'evening':'after';G.S.route.frags={R:9,S:9,H:9};
   G.S.links[id]={rank:p.rank??(e.kind==='rank'?e.i:e.kind==='after'?10:5),xp:0,seen:[],rankDay:{},hung:e.i,after:e.i,push:0,reversed:false,route:p.route||'friend'};
   for(const [cid,r] of Object.entries(p.ranks||{}))G.S.links[cid]={rank:r,xp:0,seen:[],rankDay:{},push:0,reversed:false};
@@ -20,7 +20,7 @@ window.LinkAudit = (() => {
    if(l.flag) (typeof l.flag==='string'?[l.flag]:Array.isArray(l.flag)?l.flag:Object.keys(l.flag)).forEach(f=>written.add(f));});
   // These are derived inside the scene from the selected route, never independent player choices.
   ['mark-home','mark-away'].forEach(f=>flags.delete(f));
-  const keys=[...flags].filter(f=>!written.has(f));let out=[{flags:{},met:[],courage:200}];
+  const keys=[...flags].filter(f=>!written.has(f));let out=[{flags:{},met:[]}];
   for(const f of keys) out=out.flatMap(p=>[p,{...p,flags:{...p.flags,[f]:true}}]);
   out=out.filter(p=>!(p.flags['route-R']&&p.flags['route-true'])&&!(p.flags['mark-headphones']&&p.flags['mark-too-much'])&&['hyein-dress-run','hyein-dress-pockets','hyein-dress-red'].filter(f=>p.flags[f]).length<=1);
   // Choices that can only ever set one flag of a group (one pick per rank, or one solstice route) never combine.
@@ -35,7 +35,7 @@ window.LinkAudit = (() => {
   if(rank)out=out.flatMap(p=>[{...p,rank:1},{...p,rank:10}]);
   // Each date gate is played on its threshold day and the day before (e.g. ifBefore 12/23 -> 12/22 and 12/23).
   if(date){const ds=[...new Set([...dates].flatMap(t=>[G.mdOf(G.dayOf(t)-1),t]))];out=out.flatMap(p=>ds.map(d=>({...p,date:d})));}
-  if(needs)out=out.flatMap(p=>[p,{...p,courage:0}]);
+  if(needs)out=out.flatMap(p=>[p,{...p,low:true}]);
   return out;
  }
  function expected(id,e,path,key){let pick=0,notes=0;const text=[],nodes=[];

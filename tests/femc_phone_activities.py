@@ -19,7 +19,7 @@ try:
  details=p.eval("FemcGame.D.places.activities.map(a=>({id:a.id,...FemcGame.activityInfo(a)}))")
  assert all(d['benefit'] and d['cost'] and d['time'] for d in details),details
  assert p.eval("FemcGame.activityInfo(FemcGame.D.places.activities.find(a=>a.id==='chagall')).benefit.includes('Charm +3')")
- assert p.eval("FemcGame.activityInfo(FemcGame.D.places.activities.find(a=>a.id==='cinema')).benefit.includes('One random gain')")
+ assert p.eval("FemcGame.activityInfo(FemcGame.D.places.activities.find(a=>a.id==='cinema')).benefit.startsWith('Now showing: ')")
  assert p.eval("FemcGame.activityInfo(FemcGame.D.places.activities.find(a=>a.id==='fortune')).benefit.includes('random fortune')")
  assert p.eval("FemcGame.activityInfo(FemcGame.D.places.activities.find(a=>a.id==='clinic')).benefit.includes('Tired or Sick')")
  p.eval("window.beforePreview=JSON.stringify({yen:FemcGame.S.yen,stats:FemcGame.S.stats,spent:FemcGame.S.spent});document.querySelector('[data-act=chagall]').click()")
@@ -36,14 +36,14 @@ try:
  p.eval("document.querySelector('[data-act=police]').click();document.querySelector('.g-activity-preview:not(.out) [data-confirm]').click()")
  assert p.eval("JSON.stringify({yen:FemcGame.S.yen,stats:FemcGame.S.stats,spent:FemcGame.S.spent})===beforePreview")
  p.eval("document.querySelector('.g-overlay:not(.out) [data-close]').click();FemcGame.hire(FemcGame.D.jobs.find(j=>j.id==='bookworms'));FemcGameUI.goOut('after','strip');window.beforeJob=JSON.stringify({yen:FemcGame.S.yen,stats:FemcGame.S.stats,spent:FemcGame.S.spent,jobs:FemcGame.S.jobs});document.querySelector('[data-job=bookworms]').click()")
- assert p.eval("document.querySelector('.g-activity-preview:not(.out)').textContent.includes('Earn ¥1,800') && document.querySelector('.g-activity-preview:not(.out)').textContent.includes('Academics +2, Charm +2')")
+ assert p.eval("document.querySelector('.g-activity-preview:not(.out)').textContent.includes('Earn ¥1,800') && document.querySelector('.g-activity-preview:not(.out)').textContent.includes('Knowledge +2, Proficiency +2')")
  p.eval("document.querySelector('.g-activity-preview:not(.out) [data-close]').click()")
  assert p.eval("JSON.stringify({yen:FemcGame.S.yen,stats:FemcGame.S.stats,spent:FemcGame.S.spent,jobs:FemcGame.S.jobs})===beforeJob")
  p.eval("FemcGameUI.goOut('after','mall');document.querySelector('[data-act=chagall]').click();document.querySelector('.g-activity-preview:not(.out) [data-confirm]').click()")
  assert p.eval("FemcGame.S.yen===9400 && FemcGame.S.stats.charm===3 && FemcGame.S.spent[FemcGame.S.day+'-after']==='act:chagall'")
  # Weather-specific preview and committed gain must agree.
- weather=p.eval("(()=>{const G=FemcGame;const day=Array.from({length:90},(_,i)=>i+1).find(d=>G.weather(d)==='rain');G.S.day=day;G.S.slot='after';G.S.condition='good';G.S.spent={};const a=G.D.places.activities.find(a=>a.id==='hagakure'),preview=G.activityInfo(a);const before=G.S.stats.academics;G.doActivity(a);return {preview,gain:G.S.stats.academics-before}})()")
- assert weather['gain']==4 and 'Academics +4' in weather['preview']['benefit'],weather
+ weather=p.eval("(()=>{const G=FemcGame;const day=Array.from({length:90},(_,i)=>i+1).find(d=>G.weather(d)==='rain');G.S.day=day;G.S.slot='after';G.S.condition='good';G.S.spent={};const a=G.D.places.activities.find(a=>a.id==='hagakure'),preview=G.activityInfo(a);const before=G.S.stats.knowledge;G.doActivity(a);return {preview,gain:G.S.stats.knowledge-before}})()")
+ assert weather['gain']==4 and 'Knowledge +4' in weather['preview']['benefit'],weather
  errors=p.console();assert not errors,errors
  print(json.dumps({'phoneRecencyCases':4,'activityDescriptions':len(details),'previewAndCancelPreserveState':True,'confirmedCostAndGainsChecked':True,'shopDoesNotSpendTime':True,'jobPreviewAndCancelChecked':True,'rainBonusChecked':True,'browserErrors':errors,'screenshots':str(OUT)}))
 finally:p.close()
