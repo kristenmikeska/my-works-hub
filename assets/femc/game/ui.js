@@ -645,7 +645,8 @@
   function ambient(kind) {
     const m = G.dayInfo().date.getMonth() + 1;
     const pool = (G.D.q.ambient?.[kind] || []).filter(a => !a.months || a.months.includes(m));
-    return pool.length ? pick(pool, S().day + kind.length).t : '';
+    // The screen adds its own quotation marks, so strip any the line already carries.
+    return pool.length ? pick(pool, S().day + kind.length).t.trim().replace(/^["“]+|["”]+$/g, '') : '';
   }
   function earlyMorning(info) {
     screenMusic('school');
