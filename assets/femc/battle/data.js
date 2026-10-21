@@ -342,9 +342,19 @@ window.FEMC_BATTLE_DATA = (() => {
     juno: { name: 'Juno', arcana: 'Priestess', art: A + 'juno.webp', aff: {}, user: 'fuuka', blurb: 'Fuuka’s awakened Persona. Her scans now map a whole Tartarus floor at once.' }
   };
 
-  /* Theurgy art. img: a full-screen still (only Solar's exists so far); video: an animated clip, if Kat makes one.
-     Members without img get a stylized cut-in made from their portrait and Persona art. */
+  /* Theurgy presentation (battle.js theurgyCut; art made with tools/femc-theurgy.py). Each `theurgy` can carry:
+       img:    the full-screen cut-in still. Played P3R-style: a diagonal mask slides it in, it pans and zooms, light sweeps.
+       focus:  [x%, y%] of the face in img (phones crop to a band around it; the impact burst lands near it).
+       layers: { bg, persona, char } pieces cut apart: the bg sweeps in, the Persona rises behind, the character slides in.
+               persona/char can be { src, x, y, s } to nudge a piece (x/y in % of the frame, s a scale).
+       sheet:  { frames: [wind-up, strike, follow-through] } a 3-panel strike sheet: the character's motion over the backdrop
+               (the layers' bg, else img), then the finished cut-in (layers, else img) as the closing shot.
+       video:  a data.clips key, played in place of img when it's ready.
+       forms:  { personaId: { name, img, focus, sheet, ... } } a different look and name per Persona form (Haenim's forms).
+               Mechanics always stay the base entry's (and the form's own `theurgy` boost in personas).
+     Nobody needs any of it: without art, a stylized cut-in is built from the portrait and Persona art in the member's color. */
   const TH = 'assets/femc/battle/art/theurgy/';
+  const sheet3 = slug => ({ frames: [0, 1, 2].map(i => `${TH}${slug}-${i}.webp`) });
 
   /* Party at level 5. Growth is added per level above 5. (Portrait crops: faceFocus above.)
      wtype: weapon type (gear.js below). learn: [level, skill, replaces?] for the base Persona.
@@ -353,8 +363,18 @@ window.FEMC_BATTLE_DATA = (() => {
     { id: 'solar', name: 'Solar', persona: 'haenim', weapon: 'pierce', wtype: 'naginata', color: '#ff4f9e',
       base: { hp: 92, sp: 62, st: 8, ma: 10, en: 7, ag: 9, lu: 9 }, growth: { hp: 7, sp: 5, st: 0.8, ma: 1, en: 0.7, ag: 0.8, lu: 0.8 },
       skills: ['agi', 'daybreak', 'golden_rope', 'dia'], learn: [[14, 'agilao', 'agi'], [20, 'diarama', 'dia'], [26, 'maragion']], sig: ['golden_rope', 'daybreak'],
-      theurgy: { name: 'Rise and Shine', type: 'dmg', el: 'almighty', weakEl: 'light', look: 'sun', target: 'all', power: 175, down: 0.55, img: TH + 'solar-rise-and-shine.webp', video: 'theurgy_solar',
+      theurgy: { name: 'Rise and Shine', type: 'dmg', el: 'almighty', weakEl: 'light', look: 'sun', target: 'all', power: 175, down: 0.55, img: TH + 'solar-haenim.webp', focus: [57, 46], sheet: sheet3('solar-strike-b'), video: 'theurgy_solar',
+        // Kat's two strike sheets: the star-pinned one (a) is Nike's; the red-tasseled naginata (b) plays for the other forms.
+        forms: {
+          'haenim-sunna': { name: 'Golden Hour', img: TH + 'solar-sunna.webp', focus: [41, 43] },
+          'haenim-mazu': { name: 'Spring Tide', img: TH + 'solar-mazu.webp', focus: [45, 35] },
+          'haenim-nike': { name: 'Landslide', img: TH + 'solar-nike.webp', focus: [56, 39], sheet: sheet3('solar-strike-a') },
+          'haenim-unveiled': { name: 'Unveiled', img: TH + 'solar-unveiled.webp', focus: [52, 48] }
+        },
         desc: 'Haenim lifts her veil and the sun pours out. Massive Light/Almighty damage to all foes; it may knock them Down (a Light weakness always does).' },
+      // Evoker summon sheet (Kat's 3 full-body panels: Evoker raised, the shot, Evoker lowered): played on the battlefield figure
+      // and in the summon cut-in (battle.js evoker / fieldEvoke). Any member can get one; without it nothing changes.
+      evoker: { frames: [0, 1, 2].map(i => `assets/femc/battle/art/summon/solar-evoke-${i}.webp`) },
       role: 'Leader · Light · Golden Rope', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Let’s go, Haenim.', onemore: 'Again.', shift: 'Your turn!', allout: 'Now. Everyone!', finish: 'Rise and shine.', theurgy: 'Look at me. Rise and shine.' } },
     { id: 'akihiko', name: 'Akihiko', persona: 'polydeuces', weapon: 'strike', wtype: 'gloves', color: '#ff9a3d',
@@ -412,25 +432,28 @@ window.FEMC_BATTLE_DATA = (() => {
     { id: 'jihoon', name: 'Jihoon', persona: 'p-jihoon', weapon: 'strike', wtype: 'gloves', color: '#7dd3ff', searcher: true,
       base: { hp: 104, sp: 46, st: 11, ma: 8, en: 9, ag: 9, lu: 8 }, growth: { hp: 8, sp: 3.5, st: 1, ma: 0.7, en: 0.8, ag: 0.8, lu: 0.7 },
       skills: ['garu', 'sonic_punch', 'tarukaja', 'goblin_club'], learn: [[24, 'garula', 'garu'], [28, 'magaru'], [32, 'kill_rush']], sig: ['sonic_punch', 'garula', 'goblin_club'], th: { buff: 1.4, hurt: 1.3 },
-      theurgy: { name: 'Light of Your Life', type: 'dmg', el: 'wind', look: 'wind', target: 'all', power: 150, down: 0.4, desc: 'Loud, vain and enormous. Heavy Wind damage to all foes.' },
+      theurgy: { name: 'Light of Your Life', type: 'dmg', el: 'wind', look: 'wind', target: 'all', power: 150, down: 0.4, img: TH + 'jihoon.webp', focus: [50, 42], sheet: sheet3('jihoon-strike'), desc: 'Loud, vain and enormous. Heavy Wind damage to all foes.' },
       role: 'Wind · Strike · Buffs', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Watch me. Everybody watch me.', onemore: 'Again! I’m on fire!', shift: 'Sol, you’re up!', finish: 'Light of your life, baby!', theurgy: 'Look at me. LOOK AT ME.' } },
     { id: 'minji', name: 'Minji', persona: 'p-minji', weapon: 'pierce', wtype: 'bow', color: '#ffe6a8', searcher: true,
       base: { hp: 84, sp: 68, st: 7, ma: 11, en: 7, ag: 10, lu: 10 }, growth: { hp: 6, sp: 5.5, st: 0.6, ma: 1, en: 0.6, ag: 0.9, lu: 0.9 },
       skills: ['hama', 'dia', 'tarunda', 'twin_shot', 'clear_sight'], learn: [[26, 'media'], [30, 'diarama', 'dia'], [34, 'hamaon', 'hama']], sig: ['hama', 'dia', 'clear_sight'], th: { heal: 1.4 },
-      theurgy: { name: 'Final Cut', type: 'dmg', el: 'light', look: 'light', target: 'all', power: 140, down: 0.45, heal: 0.25, desc: 'One perfect frame. Heavy Light damage to all foes, and the party heals 25%.' },
+      theurgy: { name: 'Final Cut', type: 'dmg', el: 'light', look: 'light', target: 'all', power: 140, down: 0.45, heal: 0.25, img: TH + 'minji.webp', focus: [45, 60], sheet: sheet3('minji-strike'), desc: 'One perfect frame. Heavy Light damage to all foes, and the party heals 25%.' },
       role: 'Light · Healer', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'I’ve got you in frame.', onemore: 'Rolling!', shift: 'Your shot.', finish: 'Cut. Print.', theurgy: 'Look at the camera.' } },
     { id: 'jungwon', name: 'Jungwon', persona: 'p-jungwon', weapon: 'pierce', wtype: 'rapier', color: '#9fe8ff', searcher: true,
       base: { hp: 92, sp: 60, st: 9, ma: 11, en: 8, ag: 11, lu: 8 }, growth: { hp: 7, sp: 4.5, st: 0.8, ma: 1, en: 0.7, ag: 1, lu: 0.7 },
       skills: ['bufu', 'rakunda', 'rakukaja', 'serpent_coil'], learn: [[30, 'bufula', 'bufu'], [34, 'mabufu']], sig: ['bufu', 'bufula', 'serpent_coil'], th: { ail: 1.3, crit: 1.3 },
-      theurgy: { name: 'Perfect Composure', type: 'dmg', el: 'ice', look: 'ice', target: 'all', power: 150, down: 0.4, ail: { id: 'freeze', chance: 0.3 }, desc: 'The angrier he gets, the more polite. Heavy Ice damage to all foes; may Freeze.' },
+      theurgy: { name: 'Perfect Composure', type: 'dmg', el: 'ice', look: 'ice', target: 'all', power: 150, down: 0.4, ail: { id: 'freeze', chance: 0.3 }, img: TH + 'jungwon.webp', focus: [50, 37], sheet: sheet3('jungwon-strike'), desc: 'The angrier he gets, the more polite. Heavy Ice damage to all foes; may Freeze.' },
       role: 'Ice · Precision · Debuffs', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Excuse me.', onemore: 'Pardon me. Again.', shift: 'After you.', finish: 'Thank you for your patience.', theurgy: 'Please. Stay down.' } },
     { id: 'haechan', name: 'Haechan', persona: 'p-haechan', weapon: 'slash', wtype: 'knife', color: '#ff9a3d', searcher: true,
       base: { hp: 96, sp: 52, st: 11, ma: 9, en: 8, ag: 12, lu: 9 }, growth: { hp: 7.5, sp: 4, st: 1, ma: 0.8, en: 0.7, ag: 1.1, lu: 0.8 },
       skills: ['zio', 'cleave', 'rakunda', 'waning_moon'], learn: [[38, 'zionga', 'zio'], [40, 'mudo'], [42, 'mazio'], [44, 'power_slash', 'cleave']], sig: ['cleave', 'zionga', 'waning_moon'], th: { crit: 1.4, kill: 1.3 },
-      theurgy: { name: 'Every Universe', type: 'dmg', el: 'elec', look: 'elec', target: 'all', power: 155, down: 0.45, ail: { id: 'shock', chance: 0.3 }, desc: 'He doesn’t lose. Heavy Elec damage to all foes; may Shock.' },
+      theurgy: { name: 'Every Universe', type: 'dmg', el: 'elec', look: 'elec', target: 'all', power: 155, down: 0.45, ail: { id: 'shock', chance: 0.3 },
+        img: TH + 'haechan.webp', focus: [48, 40], sheet: sheet3('haechan-strike'),
+        layers: { bg: TH + 'haechan-bg.webp', persona: { src: TH + 'haechan-persona.webp', x: 14, y: -6, s: 0.92 }, char: { src: TH + 'haechan-char.webp', x: -8 } },
+        desc: 'He doesn’t lose. Heavy Elec damage to all foes; may Shock.' },
       role: 'Elec · Dark · Slash', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
       lines: { turn: 'Yeah, yeah. I got it.', onemore: 'Again. Obviously.', shift: 'Go, princess.', finish: 'Told you.', theurgy: 'Every single universe.' } }
   );

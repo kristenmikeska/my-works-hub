@@ -71,9 +71,18 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 11;
+  const ART_V = 12;
   const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
   Object.values(D.personas).forEach(p => { if (p.art && !p.art.startsWith('data:') && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
+  // Theurgy and Evoker sheet art (data.js paths are bare) get the art version too.
+  const artV = x => (typeof x === 'string' && !x.startsWith('data:') && !x.includes('?') ? `${x}?v=${ART_V}` : x);
+  const verTh = T => {
+    if (!T) return;
+    T.img = artV(T.img);
+    if (T.sheet) T.sheet.frames = T.sheet.frames.map(artV);
+    if (T.layers) ['bg', 'persona', 'char'].forEach(k => { const v = T.layers[k]; if (v && typeof v === 'object') v.src = artV(v.src); else if (v) T.layers[k] = artV(v); });
+  };
+  D.party.forEach(m => { verTh(m.theurgy); Object.values((m.theurgy && m.theurgy.forms) || {}).forEach(verTh); if (m.evoker) m.evoker.frames = m.evoker.frames.map(artV); });
   const FINISH_DIR = 'assets/femc/battle/art/finish/', SUMMON_DIR = 'assets/femc/battle/art/summon/';
   // The searchers have no finish-card art yet: their portrait stands in.
   const finishArt = mid => ((member(mid) || {}).searcher ? pimg(mid, 'serious') : FINISH_DIR + mid + '.webp');
@@ -223,7 +232,8 @@
     const all = Promise.all(srcs.filter(Boolean).map(s => still(s).p));
     return maxWait ? Promise.race([all, new Promise(r => setTimeout(r, maxWait))]) : Promise.resolve();
   }
-  const theurgyStills = () => (B ? B.party() : []).map(p => (member(p.mid).theurgy || {}).img).filter(Boolean);
+  // The current presentation of each fighter's Theurgy (their Persona form's art, if it has its own); thArt is with theurgyCut.
+  const theurgyStills = () => (B ? B.party() : []).flatMap(p => thArt(B.theurgyDef(p)));
   /* Video clips (data.clips): a <video> loaded ahead of time. ready() resolves true once it can play through,
      false on error or after maxWait. The small file is used on phones, low-end devices and in Performance mode. */
   const clipCache = new Map();
@@ -579,7 +589,7 @@
     { k: 'difficulty', label: 'Difficulty', opts: Object.keys(D.difficulty).map(id => [id, D.difficulty[id].name]), desc: v => D.difficulty[v].desc },
     { k: 'speed', top: true, label: 'Battle speed', opts: [[1, '1x'], [2, '2x'], [3, '3x']], desc: () => 'How fast battle animations play. Rush doubles it.' },
     { k: 'textSpeed', label: 'Text speed', opts: [['slow', 'Slow'], ['normal', 'Normal'], ['fast', 'Fast'], ['instant', 'Instant']], desc: () => 'How fast Fuuka’s lines type out, and how long lines stay on screen.' },
-    { k: 'cutins', top: true, label: 'Persona cut-ins', opts: [['always', 'Always'], ['first', '1st per battle'], ['off', 'Off']], desc: () => 'The Evoker summon before a Persona skill: every time, the first time per member each battle, or never.' },
+    { k: 'cutins', top: true, label: 'Persona cut-ins', opts: [['always', 'Always'], ['first', '1st per battle'], ['off', 'Off']], desc: () => 'The Evoker summon before a Persona skill and the full Theurgy cut-in: every time, the first time per member each battle, or never (Theurgy then plays a short version, as it does in Rush).' },
     { k: 'music', label: 'Music', opts: ON_OFF, get: () => musicOn(), set: v => { save.music = v; }, desc: () => 'The same switch as the ♪ button.' },
     { k: 'musicVol', label: 'Music volume', range: true, desc: () => (musicOn() ? 'Music volume.' : 'Music volume (music is switched off).') },
     { k: 'sfx', label: 'Sound effects', opts: ON_OFF, get: () => save.sfx !== false, set: v => { save.sfx = v; }, desc: () => (lsGet('kg-femc-sound') === 'off' ? 'Sound effects (FEMC’s sound switch is off, so they stay quiet).' : 'The same switch as the SFX button.') },
@@ -1811,7 +1821,7 @@
       diff: RL && RL.edmg ? () => Object.assign({}, diff(), { edmg: diff().edmg * RL.edmg }) : diff, protect: !!(RL && RL.protect),
       perks, names: BLD ? BLD.names() : {}, startBuffs, foeHpMult });
     if (RL && RL.setup) RL.setup(B);
-    navSaid = new Set(); summoned = new Set();
+    navSaid = new Set(); summoned = new Set(); thSeen = new Set();
     curSpec = spec; blog = []; lastTgt = {}; focusId = null;
     blogAdd(`${spec.label} · ${spec.block}${spec.boss && !spec.reaper ? ' · Full Moon' : spec.reaper ? ' · The Reaper' : spec.strong ? ' · Strong Shadows' : ''} · ${diff().name}`, 'sys');
     buildBattle(spec);
@@ -1907,7 +1917,7 @@
     // Every mood a card or the results can switch to, so a face never pops in blank.
     stills(B.party().flatMap(p => Object.values(member(p.mid).faces).map(f => pimg(p.mid, f))), 0);
     if (!save.awakened) { stills(AWAKEN.map(f => SUMMON_DIR + f + '.webp'), 0); prepClip('awakening'); }
-    stills(B.party().filter(p => FIELD_POSES.has(p.mid)).map(p => fieldPose(p.mid)), 0);
+    stills(B.party().filter(p => FIELD_POSES.has(p.mid)).map(p => fieldPose(p.mid)).concat(B.party().flatMap(p => evokeFrames(p.mid) || [])), 0);
     B.foes().forEach(u => addEnemy(u));
     B.party().forEach(u => {
       const m = member(u.mid);
@@ -2122,7 +2132,7 @@
     BT.cards.forEach(c => c.classList.remove('active'));
     BT.enemies.forEach(e => e.classList.remove('acting'));
     if (u && u.side === 'party') BT.cards.get(u.id).classList.add('active');
-    if (!u || u.side === 'party') BT.fighter.dataset.id = u?.id || '';
+    if (!u || u.side === 'party') { if (BT.fighter.dataset.id !== (u?.id || '')) endFieldEvoke(); BT.fighter.dataset.id = u?.id || ''; }
     paintFighter();
     paintOrder();
   }
@@ -2284,12 +2294,45 @@
       return;
     }
     const mode = rushActive() ? 'off' : (save.cutins || 'first');
-    if (mode === 'off' || (mode === 'first' && !first)) { sfx('summon'); flash(true); await sleep(180); return; }
+    if (mode === 'off' || (mode === 'first' && !first)) { sfx('summon'); if (!(await fieldEvoke(u))) { flash(true); await sleep(180); } return; }
     await evoker(u, skillName);
+  }
+  /* The Evoker sheet on the battlefield (data.js member.evoker.frames: raised, the shot, lowered), for the summons that
+     skip the cut-in (repeats, Off, Rush). The frames sit over the stance at the stance figure's own height; this returns
+     once the shot lands and the follow-through finishes by itself. false: nothing to play (no sheet, no figure on the
+     field, frames not decoded yet, reduced motion), and the caller does the plain flash. */
+  let evokeTok = 0;
+  const evokeFrames = mid => { const f = ((member(mid) || {}).evoker || {}).frames; return f && f.length >= 3 ? f : null; };
+  function endFieldEvoke() {
+    evokeTok++;
+    const box = BT && BT.fighter;
+    if (!box) return;
+    box.classList.remove('evoking-f');
+    const ov = box.querySelector('img.evk');
+    if (ov) ov.remove();
+  }
+  async function fieldEvoke(u) {
+    const frames = evokeFrames(u.mid), box = BT && BT.fighter;
+    if (!frames || !box || box.hidden || box.dataset.id !== u.id || !FX || FX.reduced()) return false;
+    const base = box.querySelector('img:not(.evk)');
+    if (!base || !base.complete || !base.naturalWidth || !frames.every(f => { const im = still(f).im; return im.complete && im.naturalWidth; })) return false;
+    const tok = ++evokeTok;
+    const r = base.getBoundingClientRect(), k = Math.min(r.width / base.naturalWidth, r.height / base.naturalHeight);
+    let ov = box.querySelector('img.evk');
+    if (!ov) { ov = document.createElement('img'); ov.className = 'evk'; ov.alt = ''; ov.draggable = false; box.appendChild(ov); }
+    ov.style.height = `${Math.round(base.naturalHeight * k)}px`;
+    box.classList.add('evoking-f');
+    const show = i => { ov.src = frames[i]; ov.dataset.f = i; mark('field-evoke-' + i); };
+    show(0);
+    await sleep(170);
+    if (tok !== evokeTok) return true;
+    show(1); flash(true); sfx('evoker');
+    (async () => { await sleep(300); if (tok === evokeTok) show(2); await sleep(280); if (tok === evokeTok) { endFieldEvoke(); mark('field-evoke-done'); } })();
+    return true;
   }
   async function evoker(u, skillName) {
     const m = member(u.mid), per = D.personas[u.personaId] || D.personas[m.persona], reduced = !FX || FX.reduced() || perf(), solar = u.mid === 'solar';
-    await stills(solar ? [SUMMON_DIR + 'solar-evoker.webp', per.art] : [per.art, pimg(u.mid, m.faces.idle)], 900);
+    await stills((solar ? [SUMMON_DIR + 'solar-evoker.webp', per.art] : [per.art, pimg(u.mid, m.faces.idle)]).concat(evokeFrames(u.mid) || []), 900);
     const wrap = document.createElement('div');
     wrap.className = `bt-evoke${solar ? ' solar' : ''}`;
     wrap.style.setProperty('--spd', speed());
@@ -2299,7 +2342,9 @@
     const shot = solar
       ? `<div class="bt-evk-shot">${useS ? '' : `<img src="${SUMMON_DIR}solar-evoker.webp" alt="">`}</div>`
       : `<div class="bt-evk-band" style="--c:${m.color}">${fimg(u.mid, m.faces.idle, '', 'face')}<img class="gun" src="${EVOKER_SVG}" alt=""></div>`;
-    wrap.innerHTML = `<div class="bt-evk-light"></div><img class="per" src="${per.art}" alt=""><b class="bt-evk-name"><span class="pn">${esc(per.name.toUpperCase())}</span><small>${esc(skillName)}</small></b>${shot}`;
+    // With an Evoker sheet: after the glass breaks, the full-body shot stands beside the Persona, then the Evoker lowers.
+    const body = evokeFrames(u.mid) && !reduced && evokeFrames(u.mid).every(f => { const im = still(f).im; return im.complete && im.naturalWidth; }) ? evokeFrames(u.mid) : null;
+    wrap.innerHTML = `<div class="bt-evk-light"></div><img class="per" src="${per.art}" alt="">${body ? `<div class="bt-evk-body"><img data-i="1" src="${body[1]}" alt=""><img data-i="2" src="${body[2]}" alt=""></div>` : ''}<b class="bt-evk-name"><span class="pn">${esc(per.name.toUpperCase())}</span><small>${esc(skillName)}</small></b>${shot}`;
     if (useS) { const v = sclip.v; v.className = 'bt-evk-video'; try { v.currentTime = 0; } catch (err) {} wrap.querySelector('.bt-evk-shot').appendChild(v); v.play().catch(() => {}); mark('evoke-clip'); }
     BT.cut.appendChild(wrap);
     BT.root.classList.add('evoking');
@@ -2329,7 +2374,8 @@
       mark('evoke-shatter');
     } else { sh.remove(); wrap.classList.add('broke'); flash(); }
     if (solar && !per.form) glitchName(wrap.querySelector('.pn'));
-    await sleep(reduced ? 600 : 900);
+    if (body) { mark('evoke-body'); await sleep(520); wrap.classList.add('follow'); mark('evoke-follow'); await sleep(380); }
+    else await sleep(reduced ? 600 : 900);
     wrap.classList.add('out');
     BT.root.classList.remove('evoking');
     await sleep(200);
@@ -2452,38 +2498,108 @@
       return url;
     } catch (err) { return src; }
   }
-  /* Theurgy cut-in. With a still (Solar's "Rise and Shine"): the full-screen art, the veil-lift light burst and a sun-ray sweep.
-     Without one: a stylized cut-in from the member's portrait and Persona art, in their color. A clip (data.clips[theurgy.video])
-     plays instead of the still when it's ready. */
+  /* Theurgy cut-in, P3R-style, built from whatever art the member has (data.js theurgy: img / focus / layers / sheet /
+     video, per Persona form via theurgy.forms; the engine's event carries the current form's choice):
+       - a strike sheet: the character's wind-up → strike → follow-through over the backdrop (the layers' bg, else the
+         still, pushed back and darkened; the Persona rises behind if there's a layer), impact on the strike, then a
+         diagonal wipe to the finished cut-in as the closing shot;
+       - layers: the bg sweeps in, the Persona rises and scales up behind, the character slides in from the side, impact;
+       - a still: it slides in on a diagonal mask, pans and zooms, light sweeps, impact;
+       - nothing: a stylized cut-in from the portrait and Persona art in the member's color.
+     Every version: the element's particles (fx.js stream, drawn over the cut-in), a flash and a screen shake on impact,
+     the Theurgy name in the house style. Persona cut-ins setting: Always / 1st per battle (later ones and Off get a short
+     band version) / Off; Rush always gets the short one; reduced motion gets a short fade with no movement. Battle speed
+     scales every beat (sleep() and the CSS --spd). Test marks: theurgy-final, theurgy-strike, theurgy-impact, theurgy-done. */
   const WHEEL_TXT = { bless: ['BLESSING', 'The Shadows heal'], curse: ['CURSE', 'Ailments rain down'], frenzy: ['FRENZY', 'Strength acts again, harder'], reverse: ['REVERSAL', 'Every buff flips'],
     fall: ['FORTUNE’S FALL', 'Fortune knocks itself Down'], jackpot: ['JACKPOT', 'The party heals and regains SP'], spark: ['SPARK', 'Lightning on everyone'] };
+  const thSrc = x => (x && typeof x === 'object' ? x.src : x) || null;
+  // Every image a Theurgy presentation can show (decoded ahead so the cut-in never pops in).
+  const thArt = T => (T ? [T.img, ...(T.layers ? ['bg', 'persona', 'char'].map(k => thSrc(T.layers[k])) : []), ...((T.sheet && T.sheet.frames) || [])].filter(Boolean) : []);
+  let thSeen = new Set();
   async function theurgyCut(e) {
     const u = B.U(e.src), m = member(u.mid), per = D.personas[u.personaId] || D.personas[m.persona];
     hideMenu();
     mark('theurgy'); mark('theurgy-' + u.mid);
-    const img = e.img, reduced = !FX || FX.reduced();
-    await stills([img || per.art, pimg(u.mid, m.faces.idle)], 1200);
-    const clip = e.video && prepClip(e.video);
+    const first = !thSeen.has(u.id);
+    thSeen.add(u.id);
+    const reduced = !FX || FX.reduced(), setting = save.cutins || 'first';
+    const style = reduced ? 'fade' : rushActive() || setting === 'off' || (setting === 'first' && !first) ? 'short' : 'full';
+    const L = e.layers || null, sheet = style === 'full' && e.sheet && e.sheet.frames && e.sheet.frames.length >= 3 ? e.sheet.frames : null;
+    const kind = L ? 'layers' : e.img ? 'cut' : 'styl';
+    const look = e.look === 'sun' ? 'sun' : e.look;
+    await stills([...thArt({ img: e.img, layers: L, sheet: sheet && { frames: sheet } }), per.art, pimg(u.mid, m.faces.idle)], style === 'full' ? 1200 : 500);
+    const clip = kind === 'cut' && style === 'full' && e.video && prepClip(e.video);
     const useClip = clip && await clip.ready(600);
+    const [fx, fy] = e.focus || [50, 40];
     const w = document.createElement('div');
-    w.className = `bt-theurgy ${img || useClip ? 'still' : 'styl'} look-${e.look}${e.unveiled ? ' unveiled' : ''}${reduced ? ' reduced' : ''}`;
-    w.style.setProperty('--c', m.color);
-    w.style.setProperty('--spd', speed());
-    const name = `<b class="th-name"><small>Theurgy${per.form ? ' · ' + esc(per.name) : ''}</small>${esc(e.name.toUpperCase())}</b><p class="th-line">“${esc(m.lines.theurgy || m.lines.finish)}”</p>`;
-    if (img || useClip) w.innerHTML = `<div class="th-still">${useClip ? '' : `<img src="${img}" alt="">`}</div><div class="th-burst"></div><div class="th-rays"></div><div class="th-sweep"></div>${name}`;
-    else w.innerHTML = `<div class="th-bg"></div><div class="th-lines"></div><img class="th-per" src="${per.art}" alt=""><div class="th-band fcb">${fimg(u.mid, m.faces.idle, '', 'th-face')}</div>${name}`;
-    if (useClip) { const v = clip.v; v.className = 'th-video'; try { v.currentTime = 0; } catch (err) {} w.querySelector('.th-still').appendChild(v); v.play().catch(() => {}); }
+    w.className = `bt-theurgy kind-${kind} st-${style}${sheet ? ' has-sheet' : ''} look-${e.look}${e.unveiled ? ' unveiled' : ''}${reduced ? ' reduced' : ''}`;
+    w.style.cssText = `--c:${m.color};--spd:${speed()};--fx:${fx}%;--fy:${fy}%`;
+    w.dataset.mid = u.mid;
+    if (e.form) w.dataset.form = e.form;
+    const piece = (x, cls) => { const o = typeof x === 'object' ? x : {}; return `<div class="th-pl ${cls}" style="--x:${o.x || 0}%;--y:${o.y || 0}%;--s:${o.s || 1}"><img src="${thSrc(x)}" alt=""></div>`; };
+    const final = kind === 'layers'
+      ? `<img class="th-bg" src="${thSrc(L.bg)}" alt="">${L.persona ? piece(L.persona, 'th-lper') : ''}${L.char ? piece(L.char, 'th-lchar') : ''}`
+      : kind === 'cut' ? `<div class="th-cut">${useClip ? '' : `<img class="th-img" src="${e.img}" alt="">`}</div>`
+        : `<div class="th-bgc"></div><div class="th-lines"></div><img class="th-per" src="${per.art}" alt=""><div class="th-band fcb">${fimg(u.mid, m.faces.idle, '', 'th-face')}</div>`;
+    const back = sheet && (L ? thSrc(L.bg) : e.img);
+    const prelude = sheet ? `<div class="th-prelude"><div class="th-back">${back ? `<img src="${back}" alt="">` : ''}</div>${L && L.persona ? piece(L.persona, 'th-lper') : ''}<div class="th-lines"></div>
+      <div class="th-strike">${sheet.map((f, i) => `<img class="th-f" data-i="${i}" src="${f}" alt="">`).join('')}</div></div>` : '';
+    w.innerHTML = `<div class="th-stage">${prelude}<div class="th-final">${final}<div class="th-sweep"></div>${look === 'sun' ? '<div class="th-burst"></div><div class="th-rays"></div>' : ''}</div></div>
+      <div class="th-stripes" aria-hidden="true"><i></i><i></i></div>
+      <b class="th-name"><small>Theurgy${per.form ? ' · ' + esc(per.name) : ''}</small>${esc(e.name.toUpperCase())}</b><p class="th-line">“${esc(m.lines.theurgy || m.lines.finish)}”</p>`;
+    if (useClip) { const v = clip.v; v.className = 'th-img th-video'; try { v.currentTime = 0; } catch (err) {} w.querySelector('.th-cut').appendChild(v); v.play().catch(() => {}); }
     BT.cut.appendChild(w);
-    BT.root.classList.add('evoking');
+    BT.root.classList.add('evoking', 'th-fx');
+    document.documentElement.classList.add('bt-cutin'); // a tip waiting on screen steps aside until it's over
     sfx('summon');
-    setTimeout(() => sfx(e.look === 'sun' || e.look === 'light' ? 'light' : 'almighty'), 500 / speed());
     log(`${u.name}: “${m.lines.theurgy || m.lines.finish}”`, 'say');
     blogAdd(`${u.name}: Theurgy · ${e.name}!`, 'pf');
-    await sleep(img ? 2700 : 1900);
-    flash(e.look !== 'sun');
+    mark('theurgy-' + style); mark('theurgy-kind-' + kind);
+    const stage = () => w.getBoundingClientRect();
+    // The impact: a flash, a shake, and the element's burst where the art's focus is (fx.js, drawn over the cut-in).
+    const impact = (big, at) => {
+      flash(look !== 'sun');
+      if (big) shake(true);
+      sfx(look === 'sun' || look === 'light' ? 'light' : 'almighty');
+      if (!FX || perf()) return;
+      const r = stage(), R = BT.root.getBoundingClientRect(), x = r.left - R.left + r.width * at[0], y = r.top - R.top + r.height * at[1];
+      const fk = look === 'sun' ? 'light' : look === 'heal' ? 'heal' : D.elements[look] ? look : 'almighty';
+      // Light already blooms white: it stays battle-sized so it doesn't wash out the art; the rest go full-screen.
+      FX.play(fk, { x, y, w: r.width * 0.6, h: r.height * 0.8, big: fk !== 'light' && fk !== 'heal' }, { holy: look === 'sun', crit: true });
+    };
+    if (style === 'fade') {
+      // Reduced motion: the finished art fades in and out; nothing moves, flashes or shakes.
+      await sleep(1100);
+    } else if (style === 'short') {
+      await sleep(620);
+      flash(look !== 'sun');
+      sfx(look === 'sun' || look === 'light' ? 'light' : 'almighty');
+      await sleep(120);
+    } else {
+      if (FX && !perf()) FX.stream(look, { dur: sheet ? 3.3 : 2.7 });
+      if (sheet) {
+        w.classList.add('p-in'); mark('theurgy-prelude');
+        await sleep(140);
+        w.classList.add('p-wind'); mark('theurgy-windup');
+        await sleep(430);
+        w.classList.add('p-strike'); mark('theurgy-strike');
+        impact(true, phone() ? [0.62, 0.42] : [0.5, 0.45]); // out along the strike, past the figure
+        await sleep(400);
+        w.classList.add('p-follow'); mark('theurgy-follow');
+        await sleep(470);
+      }
+      w.classList.add('f-in'); mark('theurgy-final');
+      await sleep(sheet ? 450 : kind === 'layers' ? 1050 : kind === 'cut' ? 700 : 900);
+      w.classList.add('f-hit'); mark('theurgy-impact');
+      // Beside the face, toward the Persona's side of the art, so the burst never sits on someone's face.
+      impact(!sheet, [fx < 50 ? Math.min(0.85, fx / 100 + 0.3) : Math.max(0.15, fx / 100 - 0.3), 0.6]);
+      await sleep(sheet ? 1300 : 1600);
+    }
     w.classList.add('out');
     BT.root.classList.remove('evoking');
     await sleep(260);
+    BT.root.classList.remove('th-fx');
+    document.documentElement.classList.remove('bt-cutin');
     w.remove();
     if (useClip) { try { clip.v.pause(); } catch (err) {} clip.v.remove(); }
     mark('theurgy-done');

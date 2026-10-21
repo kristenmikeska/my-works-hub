@@ -1157,9 +1157,13 @@ window.FemcBattleEngine = (() => {
     }
 
     /* ── Theurgy ──────────────────────────────────────── */
+    // Presentation fields a Persona form may swap (data.js theurgy.forms); the mechanics always stay the base entry's.
+    const TH_LOOK = ['name', 'img', 'focus', 'layers', 'sheet', 'video'];
     function theurgyDef(u) {
-      const m = member(u.mid), base = m && m.theurgy;
-      if (!base) return null;
+      const m = member(u.mid), base0 = m && m.theurgy;
+      if (!base0) return null;
+      const fl = base0.forms && base0.forms[u.personaId];
+      const base = fl ? Object.assign({}, base0, ...TH_LOOK.filter(k => fl[k] !== undefined).map(k => ({ [k]: fl[k] })), { form: u.personaId }) : base0;
       const per = D.personas[u.personaId] || {}, f = per.theurgy;
       return f ? Object.assign({}, base, { power: base.power && Math.round(base.power * (f.mult || 1)), down: f.down != null ? f.down : base.down, heal: f.heal || base.heal, unveiled: true }) : base;
     }
@@ -1167,7 +1171,8 @@ window.FemcBattleEngine = (() => {
     function theurgy(u, ev) {
       const T = theurgyDef(u);
       u.th = 0;
-      ev.push({ t: 'theurgy', src: u.id, mid: u.mid, name: T.name, look: T.look || T.el, img: T.img || null, video: T.video || null, unveiled: !!T.unveiled });
+      ev.push({ t: 'theurgy', src: u.id, mid: u.mid, name: T.name, look: T.look || T.el, img: T.img || null, video: T.video || null, unveiled: !!T.unveiled,
+        focus: T.focus || null, layers: T.layers || null, sheet: T.sheet || null, form: T.form || null });
       let downs = 0;
       if (T.type === 'dmg' || T.type === 'orgia') {
         const sk = { id: 'theurgy', name: T.name, el: T.el, power: T.power, target: T.target, multi: T.multi, crit: T.crit || 10, sure: T.sure !== false, ail: T.ail, down: T.down, weakEl: T.weakEl, theurgy: true, type: 'dmg' };

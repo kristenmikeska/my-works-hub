@@ -1000,35 +1000,133 @@ html.bt-in-battle .femc-badge { display: none !important; }
 .bt-moon.reaper { background: radial-gradient(circle at 50% 42%, rgba(255, 60, 80, .7) 0 8vmin, rgba(120, 0, 20, .4) 14vmin, rgba(10, 0, 4, .96) 40vmin); }
 .bt-moon small { display: block; margin-top: 8px; color: rgba(255, 255, 255, .7); font: italic 800 14px/1 var(--cond); letter-spacing: .3em; text-transform: uppercase; }
 
-/* ── Theurgy cut-in ─────────────────────────────────── */
-.bt-theurgy { --c: var(--pink); --spd: 1; position: absolute; inset: 0; z-index: 49; overflow: hidden; pointer-events: none; background: #05060c; animation: bt-in calc(160ms / var(--spd)) ease both; }
+/* ── Theurgy cut-in (battle.js theurgyCut) ──────────────
+   JS adds the beats as classes: p-in → p-wind → p-strike → p-follow (strike sheet), f-in (the cut-in) → f-hit (impact) → out.
+   kind-cut / kind-layers / kind-styl say what the finished cut-in is made of; st-full / st-short / st-fade the setting's version.
+   --fx/--fy: the art's focus (phones keep it in frame). Every duration divides by --spd (battle speed). */
+.bt-theurgy { --c: var(--pink); --spd: 1; --fx: 50%; --fy: 40%; position: absolute; inset: 0; z-index: 49; overflow: hidden; pointer-events: none; background: #05060c; animation: bt-in calc(140ms / var(--spd)) ease both; }
 .bt-theurgy.out { animation: bt-out calc(260ms / var(--spd)) ease forwards; }
 @keyframes bt-out { to { opacity: 0; } }
-.bt-theurgy .th-still { position: absolute; inset: 0; overflow: hidden; }
-.bt-theurgy .th-still img, .bt-theurgy .th-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; animation: th-push calc(2900ms / var(--spd)) cubic-bezier(.2, .7, .3, 1) both; will-change: transform; }
-@keyframes th-push { from { transform: scale(1.18) translateY(3%); } to { transform: scale(1.02); } }
-/* The veil lifts: a white-gold burst from her eyes. */
-.bt-theurgy .th-burst { position: absolute; left: 39%; top: 22%; width: 30vmax; height: 30vmax; margin: -15vmax 0 0 -15vmax; border-radius: 50%; background: radial-gradient(circle, #fff 0 12%, rgba(255, 242, 176, .9) 25%, rgba(255, 211, 107, .5) 45%, transparent 70%); mix-blend-mode: screen; opacity: 0; animation: th-burst calc(2700ms / var(--spd)) ease-out calc(450ms / var(--spd)) both; will-change: transform, opacity; }
-@keyframes th-burst { 0% { opacity: 0; transform: scale(.1); } 18% { opacity: 1; transform: scale(1); } 45% { opacity: .9; transform: scale(2.6); } 100% { opacity: 0; transform: scale(4.2); } }
-.bt-theurgy .th-rays { position: absolute; left: 39%; top: 22%; width: 260vmax; height: 260vmax; margin: -130vmax 0 0 -130vmax; background: repeating-conic-gradient(from 0deg, rgba(255, 246, 200, .5) 0 2.5deg, transparent 2.5deg 13deg); -webkit-mask-image: radial-gradient(circle, #000 0, transparent 46%); mask-image: radial-gradient(circle, #000 0, transparent 46%); mix-blend-mode: screen; opacity: 0; animation: th-rays calc(2600ms / var(--spd)) ease-out calc(550ms / var(--spd)) both; will-change: transform, opacity; }
-@keyframes th-rays { 0% { opacity: 0; transform: rotate(-20deg) scale(.4); } 25% { opacity: 1; } 100% { opacity: 0; transform: rotate(40deg) scale(1); } }
-.bt-theurgy .th-sweep { position: absolute; top: -20%; bottom: -20%; left: 0; width: 40vw; background: linear-gradient(90deg, transparent, rgba(255, 250, 220, .75) 45%, #fff 50%, rgba(255, 250, 220, .75) 55%, transparent); transform: translateX(-60vw) skewX(-20deg); mix-blend-mode: screen; animation: th-sweep calc(1100ms / var(--spd)) cubic-bezier(.6, 0, .3, 1) calc(1300ms / var(--spd)) both; will-change: transform; }
-@keyframes th-sweep { to { transform: translateX(140vw) skewX(-20deg); } }
-.bt-theurgy .th-name { position: absolute; left: 5vw; bottom: 12vh; z-index: 3; font: italic 900 clamp(54px, 9vw, 140px)/.86 var(--cond); letter-spacing: -.01em; color: #fff; text-shadow: .05em .05em 0 var(--c), 0 0 40px rgba(255, 211, 107, .8); transform: skewX(-10deg); opacity: 0; animation: th-name calc(2400ms / var(--spd)) cubic-bezier(.2, 1.3, .4, 1) calc(700ms / var(--spd)) both; }
-.bt-theurgy .th-name small { display: block; margin-bottom: 6px; color: var(--gold); font-size: .24em; letter-spacing: .4em; text-transform: uppercase; text-shadow: 2px 2px 0 var(--night); }
-@keyframes th-name { 0% { opacity: 0; transform: translateX(-12%) skewX(-10deg); } 20% { opacity: 1; transform: skewX(-10deg); } 100% { opacity: 1; transform: translateX(2%) skewX(-10deg); } }
-.bt-theurgy .th-line { position: absolute; left: 5.4vw; bottom: 7vh; z-index: 3; margin: 0; padding: 6px 16px; background: rgba(12, 4, 9, .85); font: italic 700 clamp(16px, 1.8vw, 24px)/1.2 Georgia, serif; color: #fff4d0; animation: bt-in calc(400ms / var(--spd)) ease calc(1100ms / var(--spd)) both; }
-.bt-theurgy.styl .th-bg { position: absolute; inset: 0; background: linear-gradient(120deg, #05060c 30%, color-mix(in srgb, var(--c) 55%, #05060c) 70%, #05060c); }
-.bt-theurgy.styl .th-lines { position: absolute; inset: -20%; background: repeating-linear-gradient(-24deg, color-mix(in srgb, var(--c) 35%, transparent) 0 3px, transparent 3px 34px); animation: th-lines calc(600ms / var(--spd)) linear infinite; opacity: .8; will-change: transform; }
+.bt-battle.th-fx .bt-fxc { z-index: 39; } /* the element's particles play over the cut-in (flash stays on top) */
+html.bt-cutin .bt-tip { opacity: 0; pointer-events: none; transition: opacity .15s; } /* a waiting tip steps aside */
+.bt-theurgy .th-stage { position: absolute; inset: 0; overflow: hidden; }
+.bt-theurgy .th-final, .bt-theurgy .th-prelude { position: absolute; inset: 0; overflow: hidden; }
+.bt-theurgy .th-final { z-index: 2; visibility: hidden; }
+.bt-theurgy.f-in .th-final, .bt-theurgy.st-short .th-final, .bt-theurgy.st-fade .th-final { visibility: visible; }
+.bt-theurgy img { display: block; max-width: none; }
+.bt-theurgy .th-img, .bt-theurgy .th-bg, .bt-theurgy .th-pl img, .bt-theurgy .th-back img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--fx) var(--fy); }
+/* A still: opens from a diagonal slit, pans and zooms in, punches on impact. */
+.bt-theurgy .th-cut { position: absolute; inset: 0; }
+.bt-theurgy.st-full.kind-cut:not(.has-sheet).f-in .th-final { animation: th-mask calc(380ms / var(--spd)) cubic-bezier(.7, 0, .2, 1) both; }
+@keyframes th-mask { from { clip-path: polygon(58% 0, 72% 0, 42% 100%, 28% 100%); } to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); } }
+.bt-theurgy.st-full.f-in .th-img { transform-origin: var(--fx) var(--fy); animation: th-pan calc(3000ms / var(--spd)) cubic-bezier(.15, .7, .3, 1) both; will-change: transform; }
+@keyframes th-pan { from { transform: translateX(6%) scale(1.24); } to { transform: translateX(0) scale(1.05); } }
+.bt-theurgy.st-full.f-hit .th-cut, .bt-theurgy.st-full.f-hit .th-pl.th-lchar { animation: th-punch calc(320ms / var(--spd)) cubic-bezier(.2, 1.4, .4, 1) both; }
+@keyframes th-punch { from { transform: scale(1.06); } }
+/* Layers: the bg sweeps in, the Persona rises and scales up behind, the character slides in from the side. */
+.bt-theurgy .th-pl { position: absolute; inset: 0; transform: translate(var(--x), var(--y)) scale(var(--s)); }
+.bt-theurgy.st-full.kind-layers.f-in .th-bg { animation: th-bgin calc(520ms / var(--spd)) cubic-bezier(.7, 0, .2, 1) both, th-drift calc(3200ms / var(--spd)) linear both; transform-origin: var(--fx) var(--fy); will-change: transform; }
+@keyframes th-bgin { from { clip-path: polygon(100% 0, 112% 0, 100% 100%, 88% 100%); } to { clip-path: polygon(-30% 0, 112% 0, 100% 100%, -42% 100%); } }
+@keyframes th-drift { from { transform: scale(1.16) translateX(3%); } to { transform: scale(1.04); } }
+.bt-theurgy.st-full.f-in .th-lper img { opacity: 0; animation: th-rise calc(900ms / var(--spd)) cubic-bezier(.2, .9, .3, 1) calc(250ms / var(--spd)) both; will-change: transform, opacity; }
+.bt-theurgy.has-sheet.p-in .th-prelude .th-lper img { opacity: 0; animation: th-rise calc(900ms / var(--spd)) cubic-bezier(.2, .9, .3, 1) both; }
+@keyframes th-rise { from { opacity: 0; transform: translateY(28%) scale(.82); } 55% { opacity: 1; } to { opacity: 1; transform: translateY(0) scale(1.04); } }
+.bt-theurgy.st-full.f-in .th-lchar img { animation: th-slide calc(420ms / var(--spd)) cubic-bezier(.2, 1.15, .35, 1) calc(650ms / var(--spd)) both; will-change: transform, opacity; }
+.bt-theurgy.st-full.has-sheet.f-in .th-lchar img, .bt-theurgy.st-full.has-sheet.f-in .th-final .th-lper img { animation-delay: 0s; animation-duration: calc(380ms / var(--spd)); }
+@keyframes th-slide { from { opacity: 0; transform: translateX(-62%) skewX(-10deg); } 60% { opacity: 1; transform: translateX(2%) skewX(0); } to { opacity: 1; transform: none; } }
+/* Strike sheet: the backdrop pushed back and darkened, then wind-up → strike → follow-through, then a wipe to the cut-in. */
+.bt-theurgy .th-prelude { z-index: 1; }
+.bt-theurgy .th-back { position: absolute; inset: 0; }
+.bt-theurgy .th-back::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, rgba(5, 6, 12, .78) 25%, rgba(5, 6, 12, .45) 65%, color-mix(in srgb, var(--c) 30%, rgba(5, 6, 12, .5))); }
+.bt-theurgy.p-in .th-back img { transform-origin: 70% 40%; animation: th-push calc(1700ms / var(--spd)) cubic-bezier(.2, .7, .3, 1) both; will-change: transform; }
+@keyframes th-push { from { transform: scale(1.34); } to { transform: scale(1.14); } }
+.bt-theurgy .th-strike { position: absolute; inset: 2% 0 0; z-index: 3; }
+.bt-theurgy .th-f { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: 14% 100%; opacity: 0; filter: drop-shadow(0 0 18px color-mix(in srgb, var(--c) 55%, transparent)); will-change: transform, opacity; }
+.bt-theurgy.p-wind .th-f[data-i="0"] { opacity: 1; animation: th-windin calc(300ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; }
+@keyframes th-windin { from { opacity: 0; transform: translateX(-26%) skewX(-6deg); } to { opacity: 1; transform: none; } }
+.bt-theurgy.p-strike .th-f[data-i="0"] { opacity: 0; animation: none; }
+.bt-theurgy.p-strike .th-f[data-i="1"] { opacity: 1; animation: th-lunge calc(260ms / var(--spd)) cubic-bezier(.1, 1.3, .3, 1) both; }
+@keyframes th-lunge { from { transform: translateX(-7%) scale(.97); } to { transform: translateX(3%) scale(1.04); } }
+.bt-theurgy.p-follow .th-f[data-i="1"] { opacity: 0; animation: none; }
+.bt-theurgy.p-follow .th-f[data-i="2"] { opacity: 1; animation: th-follow calc(700ms / var(--spd)) ease-out both; }
+@keyframes th-follow { from { transform: translateX(3%) scale(1.04); } to { transform: translateX(6%) scale(1.05); } }
+.bt-theurgy.has-sheet.st-full.f-in .th-final { animation: th-wipe calc(420ms / var(--spd)) cubic-bezier(.7, 0, .2, 1) both; }
+@keyframes th-wipe { from { clip-path: polygon(100% 0, 120% 0, 100% 100%, 80% 100%); } to { clip-path: polygon(-30% 0, 120% 0, 100% 100%, -50% 100%); } }
+.bt-theurgy .th-lines { position: absolute; inset: -20%; z-index: 2; background: repeating-linear-gradient(-24deg, color-mix(in srgb, var(--c) 32%, transparent) 0 3px, transparent 3px 34px); opacity: .75; animation: th-lines calc(600ms / var(--spd)) linear infinite; will-change: transform; }
 @keyframes th-lines { to { transform: translateX(-74px); } }
-.bt-theurgy.styl .th-per { position: absolute; right: 2vw; bottom: -6vh; height: 112vh; width: auto; max-width: 70vw; object-fit: contain; filter: drop-shadow(0 0 40px color-mix(in srgb, var(--c) 70%, transparent)); animation: th-per calc(1900ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; will-change: transform, opacity; }
-@keyframes th-per { 0% { opacity: 0; transform: translateX(16%) scale(1.15); } 25% { opacity: 1; transform: none; } 100% { opacity: 1; transform: translateX(-3%) scale(1.03); } }
-.bt-theurgy.styl .th-band { position: absolute; left: -5%; right: 35%; top: 22%; height: 26vh; overflow: hidden; background: var(--night); border-top: 5px solid var(--c); border-bottom: 5px solid #fff; transform: skewY(-6deg); animation: th-band calc(700ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; }
-.bt-theurgy.styl .th-band { --zx: 32%; --zy: 52%; --zk: .62; --zsky: 6deg; }
-@keyframes th-band { from { transform: skewY(-6deg) translateX(-110%); } }
 .bt-theurgy.look-ice .th-lines { background: repeating-linear-gradient(-24deg, rgba(127, 227, 255, .35) 0 3px, transparent 3px 34px); }
-.bt-theurgy.unveiled .th-burst { animation-duration: calc(3200ms / var(--spd)); }
-.bt-theurgy.reduced * { animation-duration: .01ms !important; animation-delay: 0s !important; }
+/* Color bars slashing across on a diagonal as each part comes in. */
+.bt-theurgy .th-stripes { position: absolute; inset: 0; z-index: 4; overflow: hidden; }
+.bt-theurgy .th-stripes i { position: absolute; top: -30%; bottom: -30%; left: 0; width: 9vw; background: var(--c); transform: translateX(-30vw) skewX(-24deg); opacity: 0; }
+.bt-theurgy .th-stripes i + i { width: 3vw; background: #fff; }
+.bt-theurgy.st-full.p-in .th-stripes i, .bt-theurgy.st-full.f-in:not(.has-sheet) .th-stripes i { animation: th-stripe calc(520ms / var(--spd)) cubic-bezier(.6, 0, .3, 1) both; }
+.bt-theurgy.st-full.p-in .th-stripes i + i, .bt-theurgy.st-full.f-in:not(.has-sheet) .th-stripes i + i { animation-delay: calc(70ms / var(--spd)); }
+@keyframes th-stripe { 0% { opacity: 1; transform: translateX(-30vw) skewX(-24deg); } 100% { opacity: 1; transform: translateX(130vw) skewX(-24deg); } }
+/* Light sweep after the cut-in lands; Solar's sun gets the veil-lift burst and rays on impact. */
+.bt-theurgy .th-sweep { position: absolute; top: -20%; bottom: -20%; left: 0; z-index: 3; width: 40vw; background: linear-gradient(90deg, transparent, rgba(255, 250, 220, .7) 45%, #fff 50%, rgba(255, 250, 220, .7) 55%, transparent); transform: translateX(-60vw) skewX(-20deg); mix-blend-mode: screen; opacity: 0; }
+.bt-theurgy.st-full.f-in .th-sweep { opacity: 1; animation: th-sweep calc(1000ms / var(--spd)) cubic-bezier(.6, 0, .3, 1) calc(320ms / var(--spd)) both; will-change: transform; }
+@keyframes th-sweep { to { transform: translateX(140vw) skewX(-20deg); } }
+.bt-theurgy .th-burst { position: absolute; left: var(--fx); top: calc(var(--fy) - 18%); z-index: 3; width: 30vmax; height: 30vmax; margin: -15vmax 0 0 -15vmax; border-radius: 50%; background: radial-gradient(circle, #fff 0 12%, rgba(255, 242, 176, .9) 25%, rgba(255, 211, 107, .5) 45%, transparent 70%); mix-blend-mode: screen; opacity: 0; will-change: transform, opacity; }
+.bt-theurgy.st-full.f-hit .th-burst { animation: th-burst calc(1900ms / var(--spd)) ease-out both; }
+@keyframes th-burst { 0% { opacity: 0; transform: scale(.1); } 18% { opacity: .7; transform: scale(1); } 45% { opacity: .45; transform: scale(2.3); } 100% { opacity: 0; transform: scale(3.4); } }
+.bt-theurgy .th-rays { position: absolute; left: var(--fx); top: calc(var(--fy) - 18%); z-index: 3; width: 260vmax; height: 260vmax; margin: -130vmax 0 0 -130vmax; background: repeating-conic-gradient(from 0deg, rgba(255, 246, 200, .5) 0 2.5deg, transparent 2.5deg 13deg); -webkit-mask-image: radial-gradient(circle, #000 0, transparent 46%); mask-image: radial-gradient(circle, #000 0, transparent 46%); mix-blend-mode: screen; opacity: 0; will-change: transform, opacity; }
+.bt-theurgy.st-full.f-hit .th-rays { animation: th-rays calc(1800ms / var(--spd)) ease-out both; }
+@keyframes th-rays { 0% { opacity: 0; transform: rotate(-20deg) scale(.4); } 25% { opacity: 1; } 100% { opacity: 0; transform: rotate(40deg) scale(1); } }
+.bt-theurgy.unveiled.f-hit .th-burst { animation-duration: calc(2400ms / var(--spd)); }
+/* No art: the member's color, speed lines, the Persona rising and a band with their eyes. */
+.bt-theurgy.kind-styl .th-bgc { position: absolute; inset: 0; background: linear-gradient(120deg, #05060c 30%, color-mix(in srgb, var(--c) 55%, #05060c) 70%, #05060c); }
+.bt-theurgy.kind-styl .th-per { position: absolute; right: 2vw; bottom: -6vh; z-index: 2; height: 112vh; width: auto; max-width: 70vw; object-fit: contain; filter: drop-shadow(0 0 40px color-mix(in srgb, var(--c) 70%, transparent)); }
+.bt-theurgy.kind-styl.st-full.f-in .th-per { animation: th-per calc(1900ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) calc(150ms / var(--spd)) both; will-change: transform, opacity; }
+@keyframes th-per { 0% { opacity: 0; transform: translateY(18%) scale(.9); } 30% { opacity: 1; transform: none; } 100% { opacity: 1; transform: translateX(-3%) scale(1.04); } }
+.bt-theurgy.kind-styl .th-band { position: absolute; left: -5%; right: 35%; top: 22%; z-index: 3; height: 26vh; overflow: hidden; background: var(--night); border-top: 5px solid var(--c); border-bottom: 5px solid #fff; transform: skewY(-6deg); --zx: 32%; --zy: 52%; --zk: .62; --zsky: 6deg; }
+.bt-theurgy.kind-styl.st-full.f-in .th-band { animation: th-band calc(520ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) calc(420ms / var(--spd)) both; }
+@keyframes th-band { from { transform: skewY(-6deg) translateX(-110%); } }
+/* The name, in the house style. */
+.bt-theurgy .th-name { position: absolute; left: 5vw; bottom: 12vh; z-index: 5; font: italic 900 clamp(42px, min(9vw, 17vh), 140px)/.86 var(--cond); letter-spacing: -.01em; color: #fff; text-shadow: .05em .05em 0 var(--c), 0 0 40px rgba(255, 211, 107, .8); transform: skewX(-10deg); opacity: 0; }
+.bt-theurgy .th-name small { display: block; margin-bottom: 6px; color: var(--gold); font-size: .24em; letter-spacing: .4em; text-transform: uppercase; text-shadow: 2px 2px 0 var(--night); }
+.bt-theurgy.f-in .th-name { animation: th-name calc(2400ms / var(--spd)) cubic-bezier(.2, 1.3, .4, 1) calc(300ms / var(--spd)) both; }
+@keyframes th-name { 0% { opacity: 0; transform: translateX(-12%) skewX(-10deg); } 20% { opacity: 1; transform: skewX(-10deg); } 100% { opacity: 1; transform: translateX(2%) skewX(-10deg); } }
+.bt-theurgy .th-line { position: absolute; left: 5.4vw; bottom: 7vh; z-index: 5; margin: 0; padding: 6px 16px; background: rgba(12, 4, 9, .85); font: italic 700 clamp(16px, 1.8vw, 24px)/1.2 Georgia, serif; color: #fff4d0; opacity: 0; }
+.bt-theurgy.f-in .th-line { animation: bt-in calc(400ms / var(--spd)) ease calc(700ms / var(--spd)) both; opacity: 1; }
+/* Short (repeats, Off, Rush): the finished cut-in in a slanted band with the name, no shake. */
+.bt-theurgy.st-short { background: rgba(5, 6, 12, .55); }
+.bt-theurgy.st-short .th-stage { top: 20%; bottom: auto; height: 50%; clip-path: polygon(0 12%, 100% 0, 100% 88%, 0 100%); animation: th-bandin calc(220ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; }
+@keyframes th-bandin { from { clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%); } }
+.bt-theurgy.st-short .th-name, .bt-theurgy.st-fade .th-name { opacity: 1; animation: none; }
+.bt-theurgy.st-short .th-name { bottom: 8vh; }
+.bt-theurgy.st-short .th-line { display: none; }
+.bt-theurgy.st-fade .th-line { opacity: 1; }
+.bt-theurgy.st-short .th-img { transform: scale(1.06); }
+/* Reduced motion: the finished cut-in fades in and out; nothing moves. */
+.bt-theurgy.st-fade { animation: bt-in calc(220ms / var(--spd)) ease both; }
+.bt-theurgy.st-fade .th-final *, .bt-theurgy.st-fade .th-stripes, .bt-theurgy.st-fade .th-sweep { animation: none !important; transition: none !important; }
+.bt-theurgy.st-fade .th-stripes, .bt-theurgy.st-fade .th-sweep, .bt-theurgy.st-fade .th-burst, .bt-theurgy.st-fade .th-rays, .bt-theurgy.st-fade .th-lines, .bt-theurgy.st-short .th-lines { display: none; }
+.bt-theurgy.st-fade.out { animation: bt-out calc(260ms / var(--spd)) ease forwards; }
+html.bt-perf .bt-theurgy .th-f { filter: none; }
+/* Phones and upright tablets: the cut-in plays in a tall slanted band around the art's focus; the name sits under it. */
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-theurgy.st-full .th-stage, .bt-theurgy.st-fade .th-stage { top: 9%; bottom: auto; height: 64%; clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%); }
+  .bt-theurgy .th-name { left: 5vw; right: 4vw; bottom: 11vh; font-size: clamp(34px, 11vw, 64px); }
+  .bt-theurgy .th-line { bottom: 5vh; font-size: 14px; }
+  .bt-theurgy .th-f { object-position: 50% 100%; }
+  .bt-theurgy .th-stripes i { width: 22vw; } .bt-theurgy .th-stripes i + i { width: 7vw; }
+  .bt-theurgy.kind-styl .th-per { height: 62vh; right: -18vw; bottom: 26vh; max-width: 90vw; }
+  .bt-theurgy.kind-styl .th-band { top: 30%; right: 0; height: 20vh; }
+  .bt-theurgy .th-burst { width: 60vmax; height: 60vmax; margin: -30vmax 0 0 -30vmax; }
+  .bt-theurgy.st-short .th-stage { top: 22%; height: 46%; }
+}
+
+/* ── Evoker sheet: on the battlefield figure, and the full-body shot in Solar's summon cut-in ── */
+.bt-fighter { position: relative; }
+.bt-fighter img.evk { position: absolute; left: 50%; bottom: 0; width: auto; max-width: none; transform: translateX(-50%); object-fit: contain; pointer-events: none; }
+.bt-fighter.evoking-f > img:not(.evk) { opacity: 0; }
+.bt-evk-body { position: absolute; left: 1vw; bottom: 0; z-index: 6; height: 94vh; width: 46vw; pointer-events: none; }
+.bt-evk-body img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: 30% 100%; opacity: 0; filter: drop-shadow(0 0 22px rgba(120, 180, 255, .55)); }
+.bt-evoke.broke .bt-evk-body img[data-i="1"] { animation: bt-evk-bodyin calc(380ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) calc(100ms / var(--spd)) forwards; }
+@keyframes bt-evk-bodyin { from { opacity: 0; transform: translateX(-14%); } to { opacity: 1; transform: none; } }
+.bt-evoke.follow .bt-evk-body img[data-i="1"] { animation: none; opacity: 0; }
+.bt-evoke.follow .bt-evk-body img[data-i="2"] { opacity: 1; animation: bt-in calc(160ms / var(--spd)) ease both; }
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) { .bt-evk-body { height: 58vh; width: 70vw; left: -8vw; } }
 
 /* ── Fortune's wheel ────────────────────────────────── */
 .bt-wheel { --spd: 1; position: absolute; inset: 0; z-index: 47; display: grid; place-items: center; background: radial-gradient(circle, rgba(60, 40, 0, .5), rgba(5, 3, 8, .85) 70%); pointer-events: none; animation: bt-in calc(200ms / var(--spd)) ease both; }
@@ -1267,11 +1365,6 @@ html.bt-perf .bt-dust .cloud.ol i { box-shadow: 0 0 0 4px #14070f; }
   .bt-eq-mates button { grid-template-columns: 1fr; padding: 2px; } .bt-eq-mates b { display: none; } .bt-eq-mates .av { width: 100%; height: 40px; }
   .bt-eq-who { min-height: 0; } .bt-eq-who .port, .bt-eq-who .per { display: none; }
   .bt-forms-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .bt-theurgy .th-name { font-size: 46px; bottom: 16vh; }
-  .bt-theurgy .th-still img { object-position: 37% 30%; }
-  .bt-theurgy .th-burst, .bt-theurgy .th-rays { left: 49%; top: 18%; }
-  .bt-theurgy .th-line { font-size: 14px; bottom: 10vh; }
-  .bt-theurgy.styl .th-per { height: 80vh; right: -20vw; bottom: 8vh; }
   .bt-evx-old, .bt-evx-new { height: 52vh; top: 6vh; }
   .bt-evx-txt h1 { font-size: 54px; }
   .bt-card .bt-th { left: 10px; right: 10px; bottom: 2px; }
@@ -1370,7 +1463,7 @@ html.bt-calm .bt-flash.go { animation-name: bt-flash-calm; }
 @keyframes bt-flash-calm { 0% { opacity: .16; } 100% { opacity: 0; } }
 html.bt-calm .bt-evoke.broke .bt-evk-light { animation-name: bt-evk-light-calm; }
 @keyframes bt-evk-light-calm { 0% { opacity: 0; } 30% { opacity: .4; } 100% { opacity: .4; } }
-html.bt-calm .bt-theurgy .th-burst { animation-name: th-burst-calm; }
+html.bt-calm .bt-theurgy.st-full.f-hit .th-burst { animation-name: th-burst-calm; }
 @keyframes th-burst-calm { 0% { opacity: 0; transform: scale(.1); } 18% { opacity: .28; transform: scale(1); } 45% { opacity: .22; transform: scale(2.6); } 100% { opacity: 0; transform: scale(4.2); } }
 html.bt-calm .bt-evx-burst { animation-name: evx-burst-calm; }
 @keyframes evx-burst-calm { 0% { opacity: 0; } 15% { opacity: .28; } 100% { opacity: 0; } }
@@ -1570,7 +1663,6 @@ html.bt-pad .bt-battle .bt-cmd { bottom: 50px; }
 .bt-finish h2 { font-size: clamp(48px, min(10vw, 19vh), 156px); }
 .bt-evk-name { font-size: clamp(44px, min(9.5vw, 18vh), 138px); }
 .bt-awk-name { font-size: clamp(48px, min(11vw, 20vh), 168px); }
-.bt-theurgy .th-name { font-size: clamp(42px, min(9vw, 17vh), 140px); }
 .bt-evx-txt h1 { font-size: clamp(44px, min(10vw, 17vh), 150px); }
 .bt-wheel .wt { font-size: clamp(36px, min(7vw, 13vh), 96px); }
 .bt-hub h1 { font-size: clamp(40px, min(6.6vw, 12vh), 140px); }

@@ -321,7 +321,7 @@ window.FemcFX = (() => {
   }
 
   /* ── Spells ─────────────────────────────────────── */
-  const sizeOf = at => Math.max(46, Math.min(150, Math.min(at.w || 200, (at.h || 200) * 1.2) * 0.5));
+  const sizeOf = at => Math.max(46, Math.min(at.big ? 280 : 150, Math.min(at.w || 200, (at.h || 200) * 1.2) * 0.5)); // at.big: a cut-in's full-screen impact
 
   function fire(at, o = {}) {
     const R = sizeOf(at) * (o.small ? 0.6 : 1), baseY = at.y + R * 0.55;
@@ -858,6 +858,46 @@ window.FemcFX = (() => {
     return 0;
   }
 
+  /* ── Cut-in ambience (battle.js theurgyCut): the element's particles streaming across the whole canvas for dur seconds,
+     mostly along the cut-in's diagonal. kind: an element, or 'sun' (Solar's gold). Returns 0; nothing in reduced motion. ── */
+  const STREAM = {
+    sun: { cols: ['#fff2b0', '#ffd36b', '#ffffff', '#ffb3d6'], shapes: ['glow', 'star', 'glow'], vx: [-60, 60], vy: [-180, -60], size: [2.5, 7], life: [0.8, 1.4], rate: 70 },
+    light: { cols: ['#ffffff', '#fff2b0', '#ffe6a8'], shapes: ['star', 'glow'], vx: [-50, 50], vy: [-140, -40], size: [2, 6], life: [0.7, 1.3], rate: 60 },
+    ice: { cols: ['rgba(220,248,255,.9)', 'rgba(170,236,255,.85)'], shapes: ['poly', 'poly', 'glow'], vx: [-300, -160], vy: [140, 280], size: [5, 13], life: [0.8, 1.4], rate: 45 },
+    elec: { cols: ['#fff6b0', '#ffe14d', '#c9a8ff'], shapes: ['spark'], vx: [-900, 900], vy: [-500, 500], size: [1.2, 2.6], life: [0.12, 0.3], rate: 90, streak: 0.04, bolts: true },
+    wind: { cols: ['#e8fff2', '#7dffb0', '#ffffff'], shapes: ['spark'], vx: [-1400, -900], vy: [-160, 40], size: [1, 2.2], life: [0.35, 0.7], rate: 70, streak: 0.07 },
+    fire: { cols: ['#ffb347', '#ff6b3d', '#ffe39a'], shapes: ['glow'], vx: [-70, 70], vy: [-300, -140], size: [2, 6], life: [0.6, 1.1], rate: 80 },
+    dark: { cols: ['#c07bff', '#7a2bd0', '#ff5ab0'], shapes: ['glow', 'soft'], vx: [-90, 90], vy: [-90, 90], size: [3, 9], life: [0.7, 1.2], rate: 50 },
+    almighty: { cols: ['#ffb3d6', '#ffffff', '#ff8cc0'], shapes: ['glow', 'star'], vx: [-120, 120], vy: [-160, 0], size: [2.5, 6], life: [0.6, 1.1], rate: 60 },
+    heal: { cols: ['#c8ffe4', '#7dffc0', '#ffffff'], shapes: ['glow', 'plus'], vx: [-30, 30], vy: [-160, -60], size: [3, 7], life: [0.8, 1.3], rate: 55 },
+    phys: { cols: ['#ffffff', '#e8e8f0', '#ffe4a8'], shapes: ['spark'], vx: [-1300, -900], vy: [200, 420], size: [1.2, 2.4], life: [0.25, 0.5], rate: 70, streak: 0.06 }
+  };
+  function stream(kind, o = {}) {
+    if (!ctx || reduced()) return 0;
+    const S = STREAM[kind] || STREAM[{ slash: 'phys', strike: 'phys', pierce: 'phys' }[kind]] || STREAM.almighty;
+    const dur = o.dur || 2.4, k = (phone() ? 0.5 : 1) * Q().n * (o.n || 1);
+    const shard = () => { const a = rnd(0.7, 1.4); return [[0, -1], [0.32 * a, 0.1], [0, 1], [-0.28 * a, 0]]; };
+    add({ dur, acc: 0, bt: 0, bolts: null, draw(c, t, dt, e) {
+      const fade = t > dur - 0.4 ? Math.max(0, (dur - t) / 0.4) : 1;
+      e.acc += dt * S.rate * k * fade;
+      while (e.acc >= 1) {
+        e.acc--;
+        const shape = pick(S.shapes);
+        // Spawn across the frame; things that travel left come in from the right edge, risers from the bottom.
+        const x = S.vx[1] < -400 ? W + rnd(0, 60) : rnd(-20, W + 20), y = S.vy[1] < -30 ? rnd(H * 0.35, H + 20) : S.vy[0] > 60 ? rnd(-40, H * 0.6) : rnd(0, H);
+        emit({ shape, pts: shape === 'poly' ? shard() : undefined, x, y, vx: rnd(S.vx[0], S.vx[1]), vy: rnd(S.vy[0], S.vy[1]), life: rnd(S.life[0], S.life[1]),
+          size: rnd(S.size[0], S.size[1]), color: pick(S.cols), fill: shape === 'poly' ? pick(S.cols) : undefined, rot: rnd(0, TAU), vr: rnd(-3, 3),
+          streak: S.streak, fadeIn: 0.12, blend: shape === 'poly' ? 'source-over' : 'lighter' });
+      }
+      if (S.bolts) {
+        e.bt -= dt;
+        if (e.bt <= 0) { e.bt = rnd(0.18, 0.4); const x1 = rnd(W * 0.1, W * 0.9); e.bolts = boltTree(x1, -10, x1 + rnd(-W * 0.25, W * 0.25), rnd(H * 0.4, H * 0.9)); e.ba = 1; }
+        if (e.bolts) { e.ba -= dt * 7; if (e.ba > 0) strokeBolts(c, e.bolts, e.ba * 0.55 * fade * flashK()); }
+      }
+    } });
+    return 0;
+  }
+
   /* A soft colored flash: the reduced-motion version of everything. */
   function simple(at, color) {
     const R = sizeOf(at);
@@ -1096,7 +1136,7 @@ window.FemcFX = (() => {
   }
 
   return {
-    attach, detach, resize, play, setSpeed(fn) { speedFn = fn; }, ash, snapshot, shatter, preload, reduced,
+    attach, detach, resize, play, stream, setSpeed(fn) { speedFn = fn; }, ash, snapshot, shatter, preload, reduced,
     pause() { paused = true; }, resume() { paused = false; last = performance.now(); kick(); }, get paused() { return paused; },
     setCalm(b) { calm = !!b; },
     setQuality(q) { pinned = q === 'low' ? LEVELS.length - 1 : null; resize(); }, quality: () => ['full', 'reduced', 'low'][pinned != null ? pinned : level],
