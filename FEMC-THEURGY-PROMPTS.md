@@ -11,7 +11,53 @@ The game draws the attack name on top, so the art itself has **no text**. Save e
 
 ---
 
-## Novel characters (do these first)
+## Solar (our MC) ⭐ do these first
+
+Solar gets a **new Rise and Shine** plus a **variant for each of Haenim's forms**, so her ultimate changes with the form she's in. The form names below are suggestions; rename freely.
+
+**Attach, in this order:**
+1. The current `solar-rise-and-shine.webp` (art style only)
+2. `Character Portraits/Solar/solarportrait.png`
+3. `New Adds/SolarBattle.png` (her full-body battle stance with the naginata)
+4. The Haenim form from `Personas/`: `Haenim.png`, `Haenim-Sunna.png`, `Haenim-Harbor.png` (Mazu), `Haenim-Nike.png` or `Haenim-Unveiled.png`
+
+Then do the **strike sheet** for each one (the prompt is at the bottom of this file), attaching the cut-in you just made.
+
+### Rise and Shine (Haenim · Almighty)
+```
+Create a NEW full-screen 16:9 ultimate-attack cut-in, matching the FIRST attached image's art style exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. The character is Solar (second and third attached images: very long straight black hair, black Gekkoukan High uniform, red bow, white earbuds around her neck, white knee socks, red S.E.E.S. armband). Keep her face and outfit exactly. Dynamic mid shot: she spins her naginata overhead and brings it down toward the viewer, her long hair whipping in an arc, her eyes bright and fierce, a small confident smile. Behind her, enormous and radiant, rises her Persona Haenim (fourth attached image), drawn exactly as in the reference, arms opening as a blinding sunrise breaks over the horizon behind them both. Golden light floods the frame, sunbeams cut through the darkness, and shattered night-glass falls away like dawn breaking the Dark Hour. Gold, white and warm pink palette, triumphant and beautiful. No text, no letters, no logos.
+```
+
+### Golden Hour (Sunna · Runners)
+```
+Create a NEW full-screen 16:9 ultimate-attack cut-in, matching the FIRST attached image's art style exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. The character is Solar (second and third attached images; keep her face, long black hair and uniform exactly). Dynamic mid shot: she sprints forward at full speed, naginata trailing behind her in a streak of gold light, as if racing the sun, laughing. Behind her soars her Persona Sunna (fourth attached image), drawn exactly as in the reference, ringing a great golden bell as waves of healing gold light pour across the frame. A stadium's floodlights blaze in the background, and confetti and gold sparks fly. Gold, amber and white palette, joyful, fast and warm. No text, no letters, no logos.
+```
+
+### Spring Tide (Mazu · strangers)
+```
+Create a NEW full-screen 16:9 ultimate-attack cut-in, matching the FIRST attached image's art style exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. The character is Solar (second and third attached images; keep her face, long black hair and uniform exactly). Dynamic mid shot: she stands perfectly still with the naginata held level, eyes cold and exact, a red cord with a jade ring wrapped around her wrist. Behind her rises her Persona Mazu (fourth attached image), drawn exactly as in the reference, as a colossal wave of jade-green seawater rises behind them and freezes mid-crash into glittering ice. A harbor crane and dawn light glint in the distance. Jade green, ice white and deep sea blue palette, calm and devastating. No text, no letters, no logos.
+```
+
+### Landslide (Nike · Hoax)
+```
+Create a NEW full-screen 16:9 ultimate-attack cut-in, matching the FIRST attached image's art style exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. The character is Solar (second and third attached images; keep her face, long black hair and uniform exactly). Dynamic mid shot: she plants the naginata and raises one fist high like she's just won an election, a gold star pin glinting on her lapel, grinning and fierce. Behind her her Persona Nike (fourth attached image), drawn exactly as in the reference, spreads her wings and lets fly a storm of pink and gold stars and ribbons. Streamers and a wave of light sweep the frame like a victory rally. Hot pink, gold and white palette, triumphant and bold. No text, no letters, no logos.
+```
+
+### Unveiled (Haenim, Unveiled)
+```
+Create a NEW full-screen 16:9 ultimate-attack cut-in, matching the FIRST attached image's art style exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. The character is Solar (second and third attached images; keep her face, long black hair and uniform exactly). Dynamic mid shot: hair streaming upward, eyes shining with soft gold light, she lifts the naginata over her head in both hands, calm and certain. Behind her her Persona Haenim, Unveiled (fourth attached image), drawn exactly as in the reference, opens her eyes, and the sun itself rises behind them, with a gold bell, a jade ring and a star pin orbiting together in the light. The whole frame is overwhelmed by pure golden-white radiance. Gold, white and soft rainbow highlights, overwhelming and hopeful. No text, no letters, no logos.
+```
+
+### Solar's extra animation pieces (optional, recommended)
+- **Evoker summon pose sheet** (her summon becomes a real animation). Attach `SolarBattle.png`:
+```
+A 3-panel horizontal sheet on a plain white background showing the same girl from the attached image (keep her face, long black hair and uniform exactly), same scale and Persona 3 Reload art style in every panel, nothing overlapping: (1) raising an ornate silver Evoker to her temple, eyes closing, (2) the moment she pulls the trigger, hair lifting in a burst of blue wind, glass shards around her, (3) eyes opening, calm and ready, the Evoker lowered. Character only, no background.
+```
+- **Battle pose sheet** (attacks and spells become motion). Use the 6-pose prompt in `FEMC-ART-NEXT.md` section 9, attaching `SolarBattle.png`.
+
+---
+
+## Novel characters (next)
 
 ### Haechan: "Every Universe" (Dalnim · Elec/Dark)
 ```
