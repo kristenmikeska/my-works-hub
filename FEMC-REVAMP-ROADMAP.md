@@ -123,3 +123,6 @@ Kat loves the skill tree and wants much more building.
 - **Bond skills (joint skills):** Solar and one partner unleash a combo with its own cut-in, unlocked by link rank. Romances get special ones (Akihiko, Haechan, Jungwon...).
 - **More unique skills, animations and effects for every fighter,** plus situational battle lines (hurt ally, low HP, romance banter). Battle lines are text unless Kat supplies voice audio.
 - **Status now:** every fighter already has a Theurgy and basic battle lines (turn, One More, shift, finish, Theurgy). Only Solar has full-screen Theurgy art.
+
+### Theurgy animation (Kat, 2026-10-20)
+Kat likes the **3-step strike sheet**: wind-up, strike, follow-through. Plan: play the sheet's three frames as the character's motion over the Theurgy background and Persona, with a flash, shake and particles. Use the layered pieces where she supplies them; otherwise the regular cut-in is the backdrop. Prompts are in `FEMC-THEURGY-PROMPTS.md`.
