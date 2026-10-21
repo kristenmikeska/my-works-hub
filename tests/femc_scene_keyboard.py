@@ -9,6 +9,10 @@ def key(value='Enter',repeat=False):
 def fixture(reduced=False):
  p.ws.call('Emulation.setEmulatedMedia',{'features':[{'name':'prefers-reduced-motion','value':'reduce' if reduced else 'no-preference'}]})
  p.goto('femc-game.html?debug=1')
+ # A fresh page load opens on the title's "Press any key" splash (947a461), which takes the first key as a player would.
+ # Press start first, then focus the fixture launcher once the title menu has taken its own focus.
+ p.wait('!!document.querySelector(".g-title.is-splash")');key()
+ p.wait('!document.querySelector(".g-title.is-splash")&&document.activeElement?.matches?.(".g-title-menu button")')
  p.eval('''FemcGame.setSetting('text','instant');FemcGame.setSetting('auto','off');FemcGame.setSetting('music',0);window.starts=0;window.ends=[];window.effects=0;
  const b=document.createElement('button');b.id='key-launcher';b.textContent='Open test scene';document.body.append(b);b.addEventListener('click',()=>{starts++;window.handle=FemcScene.play({title:'Keyboard fixture',scene:[{n:'First line.'},{n:'Second line.'},{choose:[{t:'First option',notes:2,then:[{n:'First branch.'}]},{t:'Second option',notes:3,then:[{n:'Second branch.'}]}]},{n:'Last line.'}],onDone:r=>{ends.push(r);effects+=r.gained}})});b.focus();''')
 def state():return p.eval('({starts,ends,effects,scenes:document.querySelectorAll(".gs:not(.out)").length,title:!!document.querySelector(".gs-title:not(.out)"),line:document.querySelector(".gs-text")?.textContent})')
