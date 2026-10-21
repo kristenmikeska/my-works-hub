@@ -63,6 +63,7 @@ Your 12 naginatas are going in as real weapons. The other fighters need the same
 
 ## 4. Revelation-style card art (new building system)
 These are themed card sets. The frames and icons happen in code; these are the card illustrations. Use Gemini, no faces, square or 3:4.
+The game draws a placeholder face for each set now. To wire a finished image, save it as `assets/femc/battle/art/cards/<set>.webp` and set that set's `img` in `build.js` (sets: bell, stadium, headset · jade, crane, needle · pin, ballot, croissant · evoker, moon, butterfly, coffin, in the order listed below).
 > *Ornate tarot-like card illustration, no people, no text: **[subject]**, rich jewel colors, gold filigree border, Persona-style dark glamour.*
 
 - **Runners:** a gold bell on a fox charm, a stadium under snow, a gaming headset glowing
