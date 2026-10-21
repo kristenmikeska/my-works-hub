@@ -734,7 +734,8 @@
       ],
       "sha256": "a9e9775895363f4eba70cb5fb4981e5a6292855c08d5307d845d8a64e2449e6d",
       "status": "pending",
-      "reviewNote": "Left pending. A 1920x1080 crop (waist up, figure on the right, transparent left) of the same Mitsuru render as Mitsuru-FullBody-WithWeapon.webp, at higher resolution. Not full-body, so it does not fit the Compendium card or a portrait circle. It reads like a cut-in still: a possible future use is Mitsuru's Theurgy still (data.js party theurgy.img; only Solar has one today), which needs Kat's OK and a party-data edit outside this batch."
+      "reviewNote": "Left pending. A 1920x1080 crop (waist up, figure on the right, transparent left) of the same Mitsuru render as Mitsuru-FullBody-WithWeapon.webp, at higher resolution. Not full-body, so it does not fit the Compendium card or a portrait circle. It reads like a cut-in still: a possible future use is Mitsuru's Theurgy still (data.js party theurgy.img; only Solar has one today), which needs Kat's OK and a party-data edit outside this batch.",
+      "theurgyReview": "2026-10-20: reviewed as a possible Mitsuru Theurgy still and left unused. It is a waist-up cut-out on transparency (no Persona, no background, the figure in the right half of a mostly empty frame) in a different, official-looking render style from Kat's other cut-ins, so it does not work as a full-screen still. It could serve as a `layers.char` piece later if a background and Artemisia layer are made for it."
     },
     {
       "source": "Runners-Rooftop.jpeg",
@@ -1507,6 +1508,385 @@
       ],
       "outputSha256": "e1774223989d7709d3df96eef874d6e7f475107570cc538f0bd918ea8f863236",
       "sourceNow": "Added to Game/Theia.png"
+    },
+    {
+      "batch": 17,
+      "source": "theurgy-solar-haenim.png",
+      "sha256": "fbb98d067322c755dc0063a29671b6d26a59c14b1bf4b6afde0551b6ba4974db",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "solar",
+      "intendedUse": "Theurgy cut-in still: Rise and Shine (base Haenim)",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/solar-haenim.webp",
+      "outputSha256": "602e3ca0237522f34a422a14471adf96987db75b3086de15601c2b8605014ca5",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-solar-haenim.png"
+    },
+    {
+      "batch": 17,
+      "source": "theurgy-solar-sunna.png",
+      "sha256": "a6660201c9d9277b21e1152abcc13799adb396466f03544ef3052d8fd7ce97b3",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "solar",
+      "intendedUse": "Theurgy cut-in still: Golden Hour (Sunna form)",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/solar-sunna.webp",
+      "outputSha256": "50db206a394fc41d454fb428cd4d167bf593ecd1fe7b4c791f53f6ef7ced9060",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-solar-sunna.png"
+    },
+    {
+      "batch": 17,
+      "source": "theurgy-solar-harbor.png",
+      "sha256": "e4d9a4d4e0f554ff7efaa81df9ce516ba7e2778ed2899e9d9e93887fbb31e5f6",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "solar",
+      "intendedUse": "Theurgy cut-in still: Spring Tide (Mazu form)",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/solar-mazu.webp",
+      "outputSha256": "0b6faba89d98d8180537c2cf8fa512cc2bfc4fa3c5b40f8a6154ceaf9f5cfa59",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-solar-harbor.png"
+    },
+    {
+      "batch": 17,
+      "source": "theurgy-solar-nike.png",
+      "sha256": "66a240ac711e2de41f186696c753f1782ecac177e30e213c15d078fceece6918",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "solar",
+      "intendedUse": "Theurgy cut-in still: Landslide (Nike form)",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/solar-nike.webp",
+      "outputSha256": "aa1bee7ed822077e3188b2e7b27eaab5950243da09c2c6eb5a71477b9a23d543",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-solar-nike.png"
+    },
+    {
+      "batch": 17,
+      "source": "theurgy-solar-haenimunveiled.png",
+      "sha256": "a45832a481149c527f0cbfdf8a47b491fbd664d73feb029138f0d64e670461ed",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "solar",
+      "intendedUse": "Theurgy cut-in still: Unveiled (Unveiled form)",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/solar-unveiled.webp",
+      "outputSha256": "a15571e128834fde0edb56d546f9f946d4be42f7fc0cbdc5ac15483b7c474b4d",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-solar-haenimunveiled.png"
+    },
+    {
+      "batch": 17,
+      "source": "Haechan-Theurgy-1.png",
+      "sha256": "3fc77d3c99e74c412622f5f6b066ec7936023a3ef7050350f2a343dab66f5482",
+      "size": [
+        1672,
+        940
+      ],
+      "character": "haechan",
+      "intendedUse": "Theurgy cut-in still: Every Universe (short and reduced-motion versions; the strike sheet backdrop falls back to the bg layer)",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/haechan.webp",
+      "outputSha256": "a157772159b0237ab5e6bf2f47fbd58aa3779c7a13abc9af5a7644e79380dd70",
+      "status": "integrated",
+      "sourceNow": "Added to Game/Haechan-Theurgy-1.png"
+    },
+    {
+      "batch": 17,
+      "source": "Theurgy-haechan-bg.png",
+      "sha256": "d854582b545a152ada71270746d52dc1f7d8eb0186f0c58004fc761413ad98d7",
+      "size": [
+        1672,
+        940
+      ],
+      "character": "haechan",
+      "intendedUse": "Every Universe layer: background (sweeps in; strike-sheet backdrop)",
+      "conversion": "tools/femc-theurgy.py layers: Vision subject mask + un-mix from white (persona/char), full 16:9 canvas kept so pieces line up, 1600x900 WebP",
+      "placement": "battle.js theurgyCut kind-layers: bg sweeps in, Persona rises, character slides in",
+      "destination": "assets/femc/battle/art/theurgy/haechan-bg.webp",
+      "outputSha256": "764525af02a3c30ae68a879a461b3abf7ad2d63f0c86f36f064f3530a94cde7a",
+      "status": "integrated",
+      "sourceNow": "Added to Game/Theurgy-haechan-bg.png"
+    },
+    {
+      "batch": 17,
+      "source": "Theurgy-Haechan-persona.png",
+      "sha256": "0da125df60a3e4ec1f6151d474f87ec61926b6d4b535676d1acc1bb84ecf64be",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "haechan",
+      "intendedUse": "Every Universe layer: Dalnim (rises behind), white keyed out",
+      "conversion": "tools/femc-theurgy.py layers: Vision subject mask + un-mix from white (persona/char), full 16:9 canvas kept so pieces line up, 1600x900 WebP",
+      "placement": "battle.js theurgyCut kind-layers: bg sweeps in, Persona rises, character slides in",
+      "destination": "assets/femc/battle/art/theurgy/haechan-persona.webp",
+      "outputSha256": "c3a09147fca1d539caa897772447130e18503b8a04067392dc90de3063bd49f4",
+      "status": "integrated",
+      "sourceNow": "Added to Game/Theurgy-Haechan-persona.png"
+    },
+    {
+      "batch": 17,
+      "source": "Theurgy-Haechan-char.png",
+      "sha256": "b9157ae34db3cb9e6ff30018d0edcbc2b97d66d3f49f8501b2c828104cee5645",
+      "size": [
+        1673,
+        940
+      ],
+      "character": "haechan",
+      "intendedUse": "Every Universe layer: Haechan (slides in), white keyed out",
+      "conversion": "tools/femc-theurgy.py layers: Vision subject mask + un-mix from white (persona/char), full 16:9 canvas kept so pieces line up, 1600x900 WebP",
+      "placement": "battle.js theurgyCut kind-layers: bg sweeps in, Persona rises, character slides in",
+      "destination": "assets/femc/battle/art/theurgy/haechan-char.webp",
+      "outputSha256": "074a0ebe8285fdfeebbf431bef35e7412f3396976512dec1ba49c2691421bf8e",
+      "status": "integrated",
+      "sourceNow": "Added to Game/Theurgy-Haechan-char.png"
+    },
+    {
+      "batch": 17,
+      "source": "theurgy-jungwon.png",
+      "sha256": "2436fa18f9904d0ef269de6cfff9527e494c1184862c8afa5821f7cfbaa95b3c",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "jungwon",
+      "intendedUse": "Theurgy cut-in still: Perfect Composure",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/jungwon.webp",
+      "outputSha256": "af3314f8db593a37804a6d47f343f2f635205bbc2f4bc97f1af2b0734677d2ca",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-jungwon.png"
+    },
+    {
+      "batch": 17,
+      "source": "theurgy-jihoon.png",
+      "sha256": "815e79290796e1e876fcaf4f3542843e193753e97fe0e2973570a4e68dc697b9",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "jihoon",
+      "intendedUse": "Theurgy cut-in still: Light of Your Life",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/jihoon.webp",
+      "outputSha256": "88700b86a833d16a17403a64fcb1e0224f09770234eb1f6dadf99575da545fa4",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-jihoon.png"
+    },
+    {
+      "batch": 17,
+      "source": "theurgy-minji.png",
+      "sha256": "068e19b64f212bdf20917d780d1ad387bdf339e3a6d14a1c8a6819d23d514482",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "minji",
+      "intendedUse": "Theurgy cut-in still: Final Cut",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/minji.webp",
+      "outputSha256": "0d51a4e952b2eff0dc7d74500db92e5d6cb014064d930f06621a214b317a3ec3",
+      "status": "integrated",
+      "sourceNow": "Added to Game/theurgy-minji.png"
+    },
+    {
+      "batch": 17,
+      "source": "haechan-strikesheet.png",
+      "sha256": "e3bb1e24442ca5ce2bd80539b5555df37e334a8feb75430fb1f5f8681d972bdf",
+      "size": [
+        2156,
+        729
+      ],
+      "character": "haechan",
+      "intendedUse": "Strike sheet: wind-up, strike, follow-through",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/haechan-strike-0.webp",
+        "assets/femc/battle/art/theurgy/haechan-strike-1.webp",
+        "assets/femc/battle/art/theurgy/haechan-strike-2.webp"
+      ],
+      "outputSha256": [
+        "ad779596bc5c3f377ae531177ac5163972cadb5bbbbf2de71013eda58a26a0aa",
+        "0b3057af732dac40a7c9a71fb2bbf8e9b99a9f9233e6086d7ffeeb5dde2b8938",
+        "6db0dd1731bb15f962bb708d2ac434787622b61857f67bfd9a7ed992f10f5467"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/haechan-strikesheet.png"
+    },
+    {
+      "batch": 17,
+      "source": "jungwon-strikesheet.png",
+      "sha256": "61b0916e4268511e6f9c3adde6ec876120ca276beca4ba5387cbd3989d21666b",
+      "size": [
+        2046,
+        768
+      ],
+      "character": "jungwon",
+      "intendedUse": "Strike sheet: wind-up, strike, follow-through",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/jungwon-strike-0.webp",
+        "assets/femc/battle/art/theurgy/jungwon-strike-1.webp",
+        "assets/femc/battle/art/theurgy/jungwon-strike-2.webp"
+      ],
+      "outputSha256": [
+        "aa0cf73c7caeee92d0664a135d1798992bc65faf2ffb393af40df0ad6f1373b1",
+        "e35ea4800ef05fdce2133ac35adaea06fa4b07520bd60ed657f17494e35d7c7d",
+        "99d8e4a734c8450b362891e27fe724abb168056204e34f30b9b0111507cd689a"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/jungwon-strikesheet.png"
+    },
+    {
+      "batch": 17,
+      "source": "jihoon-strikesheet.png",
+      "sha256": "9d582fca5b983bd4f6b7608faad3d7ef8181c031fd99dc0a8d93eea983123e6d",
+      "size": [
+        2042,
+        770
+      ],
+      "character": "jihoon",
+      "intendedUse": "Strike sheet: wind-up, strike, follow-through",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/jihoon-strike-0.webp",
+        "assets/femc/battle/art/theurgy/jihoon-strike-1.webp",
+        "assets/femc/battle/art/theurgy/jihoon-strike-2.webp"
+      ],
+      "outputSha256": [
+        "5677b105bf4c2d0731557da9978d23b7efbd30fd8ffe3dad898b69ca6f098e6a",
+        "b9f484da9544c4c90db0d1b33ef3e1704f90cb40145997a62288f86a4afa95fa",
+        "4e1bc37c3a38303656f10b7c95f5a1d5ccf21474085ee93a8f685a028d703ee3"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/jihoon-strikesheet.png"
+    },
+    {
+      "batch": 17,
+      "source": "minji-strikesheet.png",
+      "sha256": "991653ef6825c346ec29c907482e6bc56ea30c91da9a3e994ea10a2979ad64d0",
+      "size": [
+        2172,
+        724
+      ],
+      "character": "minji",
+      "intendedUse": "Strike sheet: wind-up, strike, follow-through",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/minji-strike-0.webp",
+        "assets/femc/battle/art/theurgy/minji-strike-1.webp",
+        "assets/femc/battle/art/theurgy/minji-strike-2.webp"
+      ],
+      "outputSha256": [
+        "5ef62cb27f1cb71ada670f6ed39a3e342a7d710d4413e181a6938ea5284c2d2a",
+        "aadceb15c37c72ae4bbaf821e792c48cf92f9b229df7a4e34f2062aebd3d91aa",
+        "704f4accac681a23319df0fde1d7bda8f245cd252568b90a1a541a87602b68d2"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/minji-strikesheet.png"
+    },
+    {
+      "batch": 17,
+      "source": "solar-strikesheet-1.png",
+      "sha256": "906c52c5f256bf1f3d9339c2cb09574988b12d5e38dbc336903fe61c95ec4489",
+      "size": [
+        1983,
+        793
+      ],
+      "character": "solar",
+      "intendedUse": "Strike sheet for the Nike form (Landslide): star hair pins and earrings, plain naginata",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/solar-strike-a-0.webp",
+        "assets/femc/battle/art/theurgy/solar-strike-a-1.webp",
+        "assets/femc/battle/art/theurgy/solar-strike-a-2.webp"
+      ],
+      "outputSha256": [
+        "19fdaa40d296876b8d59712295249815b0a6d77975198cbd3ddcc5410e1f3578",
+        "fc7a6f92ba67dfe667d4466975c4caa06f322d418afe10ea394935556f4b480b",
+        "53f8a7602a0982fbfddaa04c239f97ac19c38f7d19f76524e883c6c78a6fd503"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/solar-strikesheet-1.png"
+    },
+    {
+      "batch": 17,
+      "source": "solar-strikesheet-2.png",
+      "sha256": "9f869944aa0a1909706eccc205911e77dc7defd4af476974cdfc447839669878",
+      "size": [
+        2046,
+        768
+      ],
+      "character": "solar",
+      "intendedUse": "Strike sheet for base Haenim, Sunna, Mazu and Unveiled (red-tasseled naginata); shared until each form gets its own",
+      "conversion": "tools/femc-theurgy.py sheet: white keyed out (Vision mask + un-mix from white + pure-white gaps in hair punched out), figures split as connected pieces, mass-centred on one fixed canvas with a shared baseline, WebP q88",
+      "placement": "battle.js theurgyCut prelude: wind-up, strike (impact), follow-through over the backdrop, then the cut-in",
+      "destination": [
+        "assets/femc/battle/art/theurgy/solar-strike-b-0.webp",
+        "assets/femc/battle/art/theurgy/solar-strike-b-1.webp",
+        "assets/femc/battle/art/theurgy/solar-strike-b-2.webp"
+      ],
+      "outputSha256": [
+        "6723ebbdf7c1d1d63c0d7a2f5f671e040debfbd0fe61961483d65dc4df35913f",
+        "df40d76e7b4208ff8bb97df7c23e41b7cfa7bcc80822dee4302c7f0bd680f7b0",
+        "ba2fdd60667312c4872b4107f220165f359d9055e9cf7ba8d8fdc00c8c3aa0e9"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/solar-strikesheet-2.png"
+    },
+    {
+      "batch": 17,
+      "source": "solar-evoker-animation.png",
+      "sha256": "b3e6bec7db8801d84999bc7c4f97bc0294443c509237c8c06ca47f9d55e3e887",
+      "size": [
+        1774,
+        887
+      ],
+      "character": "solar",
+      "intendedUse": "Evoker summon sheet: Evoker raised, the shot (blue wind and glass), Evoker lowered",
+      "conversion": "tools/femc-theurgy.py sheet (as for strike sheets), max height 1100",
+      "placement": "battle.js evoker (summon cut-in: the shot, then lowered) and fieldEvoke (battlefield figure for repeat/Off/Rush summons)",
+      "destination": [
+        "assets/femc/battle/art/summon/solar-evoke-0.webp",
+        "assets/femc/battle/art/summon/solar-evoke-1.webp",
+        "assets/femc/battle/art/summon/solar-evoke-2.webp"
+      ],
+      "outputSha256": [
+        "e342662da7568ccbf2b5a9c3cc6ef49ea5525c392dbddcbe27d4bd467e9fab73",
+        "2f8d2beb4ccd013cf2f1455121e5c0bc65327779329c56cbc6743012400de336",
+        "36e27134cf1018178a727c50242a49974d8bf8372678fea9f67b788dafaa10aa"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/solar-evoker-animation.png"
     }
   ],
   "batch1Validation": {
@@ -1729,5 +2109,14 @@
       "edges reviewed on pink, purple and white",
       "Personas tab and battle summon screenshots, desktop and phone"
     ]
+  },
+  "batch17Validation": {
+    "date": "2026-10-20",
+    "scope": "Animated Theurgy cut-ins (cut-in / layers / strike sheet / stylized fallback), Solar's per-form Theurgy art and names, Evoker summon sheet",
+    "sourcesIntegrated": 19,
+    "sourcesUnchanged": true,
+    "edgesReviewed": "every cut-out on pink, purple and white (tools/femc-theurgy.py check)",
+    "test": "python3 tests/femc_theurgy.py",
+    "browserErrors": 0
   }
 }
