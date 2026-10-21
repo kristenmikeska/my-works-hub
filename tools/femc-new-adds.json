@@ -733,7 +733,8 @@
         1080
       ],
       "sha256": "a9e9775895363f4eba70cb5fb4981e5a6292855c08d5307d845d8a64e2449e6d",
-      "status": "pending",
+      "status": "removed",
+      "removedNote": "deleted by Kat 2026-10-21; never used",
       "reviewNote": "Left pending. A 1920x1080 crop (waist up, figure on the right, transparent left) of the same Mitsuru render as Mitsuru-FullBody-WithWeapon.webp, at higher resolution. Not full-body, so it does not fit the Compendium card or a portrait circle. It reads like a cut-in still: a possible future use is Mitsuru's Theurgy still (data.js party theurgy.img; only Solar has one today), which needs Kat's OK and a party-data edit outside this batch.",
       "theurgyReview": "2026-10-20: reviewed as a possible Mitsuru Theurgy still and left unused. It is a waist-up cut-out on transparency (no Persona, no background, the figure in the right half of a mostly empty frame) in a different, official-looking render style from Kat's other cut-ins, so it does not work as a full-screen still. It could serve as a `layers.char` piece later if a background and Artemisia layer are made for it."
     },

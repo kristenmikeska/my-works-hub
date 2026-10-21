@@ -215,7 +215,8 @@
      its log (last 60 lines), each member's last target, and the Shadow the skill list is marking against. */
   const RUSH = '__rush__';
   let rushOn = false, curSpec = null, menuAbort = null, blog = [], lastTgt = {}, focusId = null, listIdx = 0;
-  const sleep = ms => new Promise(r => setTimeout(function go() { if (frozen) return; if (paused) { setTimeout(go, 120); return; } r(); }, ms / speed()));
+  // A frozen or paused beat waits and resumes; it must not drop its timer, or unfreeze() would leave the cut-in hung.
+  const sleep = ms => new Promise(r => setTimeout(function go() { if (frozen || paused) { setTimeout(go, 120); return; } r(); }, ms / speed()));
 
   /* ── Stills and clips: decode before showing (kept in a cache so the decoded image stays warm) ── */
   const stillCache = new Map();

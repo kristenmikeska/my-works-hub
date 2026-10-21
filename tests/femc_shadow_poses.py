@@ -7,6 +7,8 @@ data=json.loads((ROOT/'tools/femc-new-adds.json').read_text())
 # Integrated sources moved from New Adds/ to Added to Game/ (same names; see the manifest's sourceRootNote): check either.
 roots=[pathlib.Path(data['sourceRoot']),pathlib.Path(data['sourceRoot']).parent/'Added to Game']
 for entry in data['entries']:
+ # Only sources in the game must still exist; pending, prepared, skipped, missing or removed ones (e.g. a source Kat deleted) are skipped.
+ if entry.get('status')!='integrated':continue
  src=next((r/entry['source'] for r in roots if (r/entry['source']).exists()),None)
  assert src, 'source missing: '+entry['source']
  assert hashlib.sha256(src.read_bytes()).hexdigest()==entry['sha256'],entry['source']
@@ -67,6 +69,6 @@ try:
    for name,w,h in [('desktop',1280,800),('phone',390,844)]:
     p.ws.call('Emulation.setDeviceMetricsOverride',{'width':w,'height':h,'deviceScaleFactor':1,'mobile':name=='phone'});p.eval('document.fonts.ready.then(()=>new Promise(r=>setTimeout(r,300)))');shot=p.ws.call('Page.captureScreenshot',{'format':'png'});(OUT/(name+'.png')).write_bytes(base64.b64decode(shot['data']))
  errors=p.console();assert not errors,errors
- summary={'posePlayback':result,'actualBattleAttackAndCast':actual,'actualDefeatTransitions':defeats,'sourcesUnchanged':len(data['entries']),'browserErrors':errors,'screenshots':str(OUT)}
+ summary={'posePlayback':result,'actualBattleAttackAndCast':actual,'actualDefeatTransitions':defeats,'sourcesUnchanged':sum(e.get('status')=='integrated' for e in data['entries']),'browserErrors':errors,'screenshots':str(OUT)}
  (OUT/'results.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary))
 finally:p.close()

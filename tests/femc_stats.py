@@ -286,7 +286,9 @@ try:
     # Class: a teacher's question answered right through the UI (Knowledge +1, Charm +1).
     qday = p.eval("""(()=>{const G=FemcGame;for(let d=G.dayOf('5/12');d<G.dayOf('7/15');d++){const i=G.dayInfo(d);if(i.type!=='school')continue;
       const seed=Math.abs(Math.sin((d+1)*3.7));if(seed<0.42&&seed*1.7%1>0)return i.md}return null})()""")
-    p.eval(f"T.at('{qday}','morning');FemcGame.S.classSeen=[];FemcGame.save();FemcGameUI.run();true")
+    # Haechan's ranks are story ranks now (fresh() counts them all as played), so his Recruitment Pitch (rank 4: a hint and
+    # +1 Charm on the hinted question) is on; mark today's hint as used so this checks the plain answer's gain.
+    p.eval(f"T.at('{qday}','morning');FemcGame.S.classSeen=[];Object.assign(FemcGame.S.perks,{{pitchDay:FemcGame.S.day,pitchQ:null}});FemcGame.save();FemcGameUI.run();true")
     p.wait("!!document.querySelector('.g-quiz [data-a]')", 5)
     a = stats()
     right = p.eval("(()=>{const G=FemcGame,q=G.classQuestion();return q.correct})()")
