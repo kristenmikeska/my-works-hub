@@ -78,3 +78,28 @@ Create a NEW full-screen 16:9 ultimate-attack cut-in that matches the FIRST atta
 ```
 Create a NEW full-screen 16:9 ultimate-attack cut-in that matches the FIRST attached image's art style, energy and composition exactly: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. The character is Shinjiro Aragaki (second attached image: black beanie, long maroon coat, battle axe). Keep him exactly. Close-to-mid shot: the axe rests on his shoulder, his coat whips around him, and his expression is gruff and reluctant but deadly. Behind him charges his Persona Castor (third attached image), drawn exactly as in the reference, riding his black horse straight at the viewer in a shockwave of dust and dark red force. Maroon, black and steel palette. No text, no letters, no logos.
 ```
+
+---
+
+## Animated version: layers (optional, best result)
+Instead of one flat picture, make **three pieces** per Theurgy. The game animates them P3R-style: the background sweeps in, the character slides in from the side, the Persona rises and scales up behind them, then a flash, screen shake and particles. Make the regular cut-in above first, then attach it as the FIRST image for these, so all three match it.
+
+**Layer 1: the character alone.** Save as `Theurgy-<Name>-char.png`.
+```
+Using the FIRST attached image, recreate ONLY the character, same pose, same outfit, same art style, full figure from about mid-thigh up, on a plain flat white background. No Persona, no effects, no background, nothing else. Clean edges.
+```
+
+**Layer 2: the Persona alone.** Save as `Theurgy-<Name>-persona.png`.
+```
+Using the FIRST attached image, recreate ONLY the Persona, same pose and design, same art style, on a plain flat white background. No character, no effects, no background. Clean edges.
+```
+
+**Layer 3: the background and effects.** Save as `Theurgy-<Name>-bg.png`.
+```
+Using the FIRST attached image, recreate ONLY the background and attack effects (the lightning, ice, fire, wind or light, the speed lines and the colors) with NO character and NO Persona. 16:9.
+```
+
+**Optional layer 4: a 3-step strike sheet.** Save as `Theurgy-<Name>-sheet.png`.
+```
+A 3-panel horizontal sheet on a plain white background showing the same character from the FIRST attached image in three moments of their ultimate attack, same scale and art style in every panel, nothing overlapping between panels: (1) wind-up, (2) the strike or release, (3) the follow-through. Character only, no Persona, no background.
+```
