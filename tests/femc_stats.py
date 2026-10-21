@@ -110,7 +110,7 @@ SETUP = r"""window.T={
     Object.assign(S,o.S||{});G.save();return G.dayInfo().day},
   fresh(day,slot,o={}){const G=FemcGame;G.newGame();const S=G.S;S.phase='play';S.started=true;
     G.setSetting('text','instant');G.setSetting('music',0);G.setSetting('dateCard',false);G.setSetting('auto','off');
-    S.events=G.D.events.map(e=>e.id);S.dailyLife={seen:G.D.dailyLife.map(e=>e.id),lastDay:999};S.lateNights={seen:[],lastDay:99999};S.holidays=Object.fromEntries(Object.values(G.LINKS).flatMap(l=>Object.keys(l.holidays||{})).map(md=>[md,'none']));S.unlocked.tartarus=true;S.flags.armband=true;
+    S.events=G.D.events.map(e=>e.id);S.dailyLife={seen:G.D.dailyLife.map(e=>e.id),lastDay:999};S.lateNights={seen:[],lastDay:99999};S.runIns={seen:G.D.runIns.map(e=>e.id),lastDay:99999,later:[]};S.holidays=Object.fromEntries(Object.values(G.LINKS).flatMap(l=>Object.keys(l.holidays||{})).map(md=>[md,'none']));S.unlocked.tartarus=true;S.flags.armband=true;
     S.phone={threads:{},unread:{},done:G.D.texts.texts.map(t=>t.id),pending:{},invite:null,lastInvite:9999};
     ['arrived-hanni','arrived-hyein','arrived-jihoon','arrived-crew','arrived-cherry','joined-junpei'].forEach(f=>S.flags[f]=true);
     // Story-forced link ranks would play on their own when the slot moves on; count them as played. (Elizabeth's Sunday
@@ -280,7 +280,7 @@ try:
     for k in dl: raised[k].append('job: flowers')
     # Every job's stats are the five (and each pays a mix).
     jobs = p.eval("FemcGame.D.jobs.map(j=>({id:j.id,stats:j.stats,needs:j.needs||null}))")
-    ok(all(set(j['stats']) <= set(STATS) for j in jobs) and len(jobs) == 7, f'seven jobs, all on the five stats: {jobs}')
+    ok(all(set(j['stats']) <= set(STATS) for j in jobs) and len(jobs) == 10, f'ten jobs (three more since the living world, part 2), all on the five stats: {jobs}')
     raised['proficiency'] += [j['id'] for j in jobs if 'proficiency' in j['stats']]
 
     # Class: a teacher's question answered right through the UI (Knowledge +1, Charm +1).
@@ -424,7 +424,7 @@ try:
     ids = ['aigis-2', 'koromaru-2', 'shinjiro-2', 'judy-6', 'noctis-2', 'hyein-7', 'haru-2', 'kasumi-2', 'jihoon-4', 'sunoo-2', 'sunoo-8']
     st = p.eval("(()=>{const B=FemcBuild;return %s.map(id=>{const x=B.perkById(id);return [id,!!x&&!x.stub,B.perkState(x,{bonds:{[x.link]:10}})]})})()" % json.dumps(ids))
     ok(all(s[1] and s[2] != 'stub' for s in st), f'none of them is "coming later" any more: {st}')
-    ok(p.eval("FemcBuild.PERKS.filter(p=>p.stub).map(p=>p.id).sort().join()") == 'elizabeth-2,jaehyun-4,rio-2', 'the stubs left are clubs, party switching and Velvet Room draws')
+    ok(p.eval("FemcBuild.PERKS.filter(p=>p.stub).map(p=>p.id).sort().join()") == 'elizabeth-2,jaehyun-4', 'the stubs left are party switching and Velvet Room draws (clubs came in the living world, part 2)')
     ranks = {'aigis': 2, 'koromaru': 2, 'shinjiro': 2, 'judy': 6, 'noctis': 2, 'hyein': 7, 'haru': 2, 'kasumi': 2, 'jihoon': 4, 'sunoo': 8}
     p.eval("T.fresh('%s','after',{ranks:%s});true" % (school_wed, json.dumps(ranks)))
     # Learning Mode: a hangout (not a rank scene) is +1 Kindness.

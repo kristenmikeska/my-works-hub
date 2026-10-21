@@ -400,11 +400,13 @@ try:
         ok(m.get('banter', 0) == 0, 'no banter without the romance route')
         bl = p.eval("barkLog")
         ok(any('{name}' not in x and ('Yukari' in x) for x in bl), ('names filled in', bl))
-        # Caps: the same member doesn't repeat the same situation in one fight.
-        before = p.eval("FemcBattle.marks['bark-solarHurt'] || 0")
-        play([{'t': 'hit', 'src': foe, 'tgt': ids['solar'], 'el': 'strike', 'aff': 'normal', 'amount': 150, 'hp': 30, 'maxHp': 300}])
-        play([{'t': 'hit', 'src': foe, 'tgt': ids['solar'], 'el': 'strike', 'aff': 'normal', 'amount': 10, 'hp': 20, 'maxHp': 300}])
-        ok((p.eval("FemcBattle.marks['bark-solarHurt'] || 0") - before) <= 1, 'capped')
+        # Caps: the same member doesn't repeat the same situation in one fight. The cap is per member (each says
+        # "Solar's hurt" once), so count each member's own mark: deterministic whatever the 900 ms gap between lines does
+        # (the old total-count check raced that gap against the sleep between hits).
+        for _ in range(3):
+            play([{'t': 'hit', 'src': foe, 'tgt': ids['solar'], 'el': 'strike', 'aff': 'normal', 'amount': 150, 'hp': 30, 'maxHp': 300}])
+        per = p.eval("Object.fromEntries(Object.entries(FemcBattle.marks).filter(([k]) => /^bark-[a-z]+-solarHurt$/.test(k)))")
+        ok(per and all(v <= 1 for v in per.values()), ('capped: each member says it once', per))
         first = {k: v for k, v in marks(p).items() if k.startswith('bark-')}
         clean(p, 'lines (fight)')
         # A boss appearing, and a victory line, in a real full-moon fight.

@@ -144,8 +144,8 @@ try:
           return out;})()""")
         ok(r['fox3'] == 'rank' and r['fox4'] == 'own' and r['paused'] == 'paused', ('Fox Spirit at rank 4, paused when reversed', r))
         ok(r['cross'] == 'assist' and r['crossJoined'] == 'party' and r['ken'] == 'rank', ('searchers assist before joining; S.E.E.S. battle perks need them', r))
-        # Since the five social stats (2026-10-21) only clubs, party switching and Velvet Room draws are left.
-        ok(r['stub'] == 'stub' and sorted(r['stubs']) == ['elizabeth-2', 'jaehyun-4', 'rio-2'], r['stubs'])
+        # Since the living world, part 2 (clubs), only party switching and Velvet Room draws are left.
+        ok(r['stub'] == 'stub' and sorted(r['stubs']) == ['elizabeth-2', 'jaehyun-4'], r['stubs'])
         ok(r['bp']['duo'] == 'minji' and r['bp']['suzu'] == 0.5 and r['bp']['count'], r['bp'])
         kinds = r['cards']
         ok(len(kinds) == 4 + 12 + 4, len(kinds))

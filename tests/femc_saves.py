@@ -25,7 +25,7 @@ HELPERS = r"""(()=>{
         S.yen=6000+n*123; S.inventory={medicine:n+2}; S.condition='good';
         S.stats.knowledge=10+n; S.stats.charm=20+n; S.stats.courage=30+n; S.stats.proficiency=40+n; S.stats.kindness=50+n;
         // Keep scheduled story scenes from interrupting these isolated save checks.
-        S.dailyLife={seen:G.D.dailyLife.map(e=>e.id),lastDay:999}; S.lateNights={seen:[],lastDay:999};
+        S.dailyLife={seen:G.D.dailyLife.map(e=>e.id),lastDay:999}; S.lateNights={seen:[],lastDay:999}; S.runIns={seen:G.D.runIns.map(e=>e.id),lastDay:999,later:[]};
         for (const l of Object.values(G.LINKS)) {
             if (l.forced?.length) G.progress(l.id).rank=Math.max(...l.forced);
         }
