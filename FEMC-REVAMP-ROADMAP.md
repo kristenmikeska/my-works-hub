@@ -107,10 +107,10 @@ Batches, in order, after the story/character pass:
 
 ### New Adds still to wire in (after the merge lands)
 - ✓ **SolarWeapons.png (12 naginatas)** (built 2026-10-20: `build.js` NAG, with art in the Equipment tab and refines +1 to +5): each is a REAL weapon with its own stats and a bonus that suits its look (snowflake → ice, fox → crits, and so on), earned from shops, chests, bosses, links and achievements. Cut files are in `assets/femc/battle/art/weapons/`.
-- **ChatGPT Image Oct 18, 2026, 02_44_02 AM.png** (the Last Train with the veiled lantern figure and Solar facing it) **replaces** the current "facing Wren's Shadow" CG. The 02_44_45 file is an identical copy.
-- **GroupChatShadow.png and fishmongerShadow.png:** new Shadows on the Hoax and strangers memory floors, animated like the others.
-- **PossibleUses/** (Aigis, Koromaru, Mitsuru full bodies): compendium and party-menu art.
-- **Skip** the Shinjiro close-up (05_05_25 PM). Kat is regenerating it with an Evoker.
+- **Done (batch 15):** ChatGPT Image Oct 18, 2026, 02_44_02 AM.png turned out to be the source of the CG already in the game (`story-facing-wrens-shadow`, same picture), so the file is kept as is and only gained a phone crop focus; 02_44_45 is marked duplicate.
+- **Done (batch 15):** GroupChatShadow.png and fishmongerShadow.png are the Group Chat (beside the Ballot Box on the Hoax memory floor) and the Fishmonger (beside the Tide on the strangers memory floor), with pose animation.
+- **Done (batch 15):** PossibleUses/ Aigis, Koromaru and Mitsuru full bodies are their Compendium art (Aigis gets a new entry). The field menu's Party screen shows face crops for everyone, so they aren't used there. `Untitled design (25).png` (a waist-up Mitsuru crop) is still pending; it could be her Theurgy still if Kat wants one.
+- **Skipped:** the Shinjiro close-up (05_05_25 PM). Kat is regenerating it with an Evoker.
 
 ## 8. More building and skilling (Kat, 2026-10-20)
 Kat loves the skill tree and wants much more building. **Built 2026-10-20:** Revelation cards (menu → Cards), Shuffle Time, the link perks (menu → Bonds) and the naginatas, all in `assets/femc/battle/build.js`; `tests/femc_building.py` plays them. Not built yet: bond skills (joint skills), Velvet Room draws, the five social stats.

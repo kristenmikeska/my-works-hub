@@ -179,7 +179,17 @@
         940
       ],
       "sha256": "a50681a88f0675130f85eeaa677d302c8021cc3452c934ad4941cdf6f58d3c77",
-      "status": "pending"
+      "status": "integrated",
+      "batch": 15,
+      "destination": "assets/femc/cg/story-facing-wrens-shadow.webp",
+      "event": "a6-last-train",
+      "uses": [
+        "Story CG: the Last Train with the veiled lantern figure, Solar facing it"
+      ],
+      "conversion": "WebP, original dimensions (1672x940), no cropping or retouching",
+      "outputSha256": "d17d53c814bf0bff0622d1919a660a34a3387023423d6e406af32c7f9e8d8931",
+      "mobileFocus": "40% 35%",
+      "placementNote": "Replacement checked: the CG already in the game (commit fa67f41, Oct 18) is a WebP of this exact source. Same 1672x940 size; mean pixel difference 2.3/255, the same as re-encoding this PNG at WebP q90 (2.2/255), with no region differing beyond compression noise. The file, id and every scene reference are kept byte-for-byte; batch 15 adds only the phone crop focus in places.js (cgFocus)."
     },
     {
       "source": "ChatGPT Image Oct 18, 2026, 02_44_45 AM.png",
@@ -188,7 +198,10 @@
         940
       ],
       "sha256": "a50681a88f0675130f85eeaa677d302c8021cc3452c934ad4941cdf6f58d3c77",
-      "status": "pending"
+      "status": "duplicate",
+      "duplicateOf": "ChatGPT Image Oct 18, 2026, 02_44_02 AM.png",
+      "batch": 15,
+      "placementNote": "Byte-identical copy of the 02_44_02 AM file (same sha256). Not used separately."
     },
     {
       "source": "ChatGPT Image Oct 18, 2026, 05_05_25 PM.png",
@@ -197,8 +210,10 @@
         940
       ],
       "sha256": "a4af5bb5a8f3e18c50f4b6e87b18b1f761915d3308e12ae32c7252c6f534ee36",
-      "status": "pending",
-      "placementNote": "Kat requested this remain aside for correction: character holds a round ornamental device instead of a gun-shaped Evoker. Do not wire as supplied."
+      "status": "skipped",
+      "placementNote": "Kat requested this remain aside for correction: character holds a round ornamental device instead of a gun-shaped Evoker. Do not wire as supplied.",
+      "batch": 15,
+      "skipNote": "Kat is regenerating this Shinjiro image with a gun-shaped Evoker. Not wired; wait for the new file."
     },
     {
       "source": "CherryFullBody.png",
@@ -243,8 +258,58 @@
         1024
       ],
       "sha256": "ac3334fe7d56e4f925a2c000e6dde23be7b002c93d0c4e9baa99edd690572bd8",
-      "status": "pending",
-      "reviewNote": "Pose sheet inspected; no existing matching encounter. Pending appropriate encounter design."
+      "status": "integrated",
+      "batch": 15,
+      "destination": "assets/femc/battle/art/shadows/memory-group-chat-pose-0.webp",
+      "enemy": "group_chat",
+      "artGroup": "memory-group-chat",
+      "memoryFloor": "memory-hoax (segments 1 and 2, beside the Ballot Box)",
+      "poseFramesUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "conversion": "Six alpha-preserving poses on fixed 640px canvases at source scale. The attacks cross the 512px cell lines, so every piece of art goes to its nearest figure; pose 0 is bottom-centred like the other sheets and each action pose is lined up with it by mask correlation, shifted only to stay on the canvas. WebP quality 90.",
+      "outputSha256": "55f2995b5a3c131b40a754a1daa7f60b5e8b4ecf5af7e9d3b898400d6c36a854",
+      "animation": {
+        "canvas": [
+          640,
+          640
+        ],
+        "states": {
+          "attack": [
+            1,
+            3
+          ],
+          "cast": [
+            1,
+            2,
+            4
+          ],
+          "hurt": [
+            5
+          ],
+          "down": [
+            5
+          ],
+          "defeat": [
+            5
+          ]
+        },
+        "outputs": {
+          "assets/femc/battle/art/shadows/memory-group-chat-pose-0.webp": "55f2995b5a3c131b40a754a1daa7f60b5e8b4ecf5af7e9d3b898400d6c36a854",
+          "assets/femc/battle/art/shadows/memory-group-chat-pose-1.webp": "7f041fee7444f20bac2b83ad898877d9658054e1a7a848fdb19e6daecd50e24a",
+          "assets/femc/battle/art/shadows/memory-group-chat-pose-2.webp": "13ae2aa109f5191cb82d2a962decd78b36d0cdf07c837f8e78e9d0c4f18b5167",
+          "assets/femc/battle/art/shadows/memory-group-chat-pose-3.webp": "c261fbe51047fe52abd575e15f92685a8b96c24192f07337609c0e07f0db4989",
+          "assets/femc/battle/art/shadows/memory-group-chat-pose-4.webp": "8a3dd811ecf0ec9fc52ec850d7e79ee970686b3e4c22dc7b32f860af968cbae9",
+          "assets/femc/battle/art/shadows/memory-group-chat-pose-5.webp": "41ae54337f7a08ca6fef8e274861d75f6e0f73848863b086d019f8d309cbba2d"
+        },
+        "preparationTool": "tools/femc-shadow-poses.py",
+        "notes": "Pose 0 idle swarm; 1 charge-up; 2 vortex; 3 bubble spray; 4 sphere; 5 scattered swarm (hurt/down/defeat). Pose 3 sits about 35px left of idle so the spray stays on the canvas."
+      }
     },
     {
       "source": "HaechanAwakening.png",
@@ -604,8 +669,19 @@
         6711
       ],
       "sha256": "2e723d0bab0e16b40e8c61c15cfd85b6758856b396745222933b1d8fcb5dc036",
-      "status": "pending",
-      "reviewNote": "Alternate full-body art; keep in reserve rather than replacing the newly integrated supplied battle stance."
+      "status": "integrated",
+      "batch": 15,
+      "destination": "assets/femc/profile/sees/aigis.webp",
+      "character": "aigis",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "placement": "compendium.html: entry aigis; full-body contain framing",
+      "conversion": "Source transparency retained; transparent margins trimmed; max dimension 1400px (no upscaling); WebP quality 90",
+      "outputSha256": "2f64c93c77c78260ae05f19b3c556d45903cce4e10ec470b30b8aeb31ce83d30",
+      "partyScreenNote": "Field menu Party screen not changed: every member there (Solar, S.E.E.S. and searchers) uses a 64px round face crop; nobody has full-body art on that screen, so this render was not forced into a portrait circle.",
+      "placementNote": "New Compendium entry (reg:aigis, matching the register line her link already plays); short spoiler-free note."
     },
     {
       "source": "PossibleUses/Koromaru.webp",
@@ -614,8 +690,19 @@
         2267
       ],
       "sha256": "9cf7a5bd4e8fc70d0bc0fa174698c0ba97e78d530d7f2e05d21e1702ada1acde",
-      "status": "pending",
-      "reviewNote": "Alternate sitting pose without the visible knife from the supplied battlefield stance; keep in reserve."
+      "status": "integrated",
+      "batch": 15,
+      "destination": "assets/femc/profile/sees/koromaru.webp",
+      "character": "koromaru",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "placement": "compendium.html: entry koromaru; full-body contain framing",
+      "conversion": "Source transparency retained; transparent margins trimmed; max dimension 1400px (no upscaling); WebP quality 90",
+      "outputSha256": "57a5f720cd2185f575e93cdebd58714e6bbb90cdef649355fea639076606ab56",
+      "partyScreenNote": "Field menu Party screen not changed: every member there (Solar, S.E.E.S. and searchers) uses a 64px round face crop; nobody has full-body art on that screen, so this render was not forced into a portrait circle.",
+      "placementNote": "Existing entry (was a silhouette); name, note and unlock unchanged."
     },
     {
       "source": "PossibleUses/Mitsuru-FullBody-WithWeapon.webp",
@@ -624,8 +711,19 @@
         573
       ],
       "sha256": "d663bc6bf9e227f17f7bc8929210b2e111847d4d14b05ac6420a8b607cbfc95c",
-      "status": "pending",
-      "reviewNote": "Alternate low-resolution full-body weapon pose; keep in reserve."
+      "status": "integrated",
+      "batch": 15,
+      "destination": "assets/femc/profile/sees/mitsuru.webp",
+      "character": "mitsuru",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "placement": "compendium.html: entry mitsuru; full-body contain framing",
+      "conversion": "Source transparency retained; transparent margins trimmed; max dimension 1400px (no upscaling); WebP quality 90",
+      "outputSha256": "bf582a910ee13fc0114efb1bb34860b0cfabadedf57131952fa35b072142e3b2",
+      "partyScreenNote": "Field menu Party screen not changed: every member there (Solar, S.E.E.S. and searchers) uses a 64px round face crop; nobody has full-body art on that screen, so this render was not forced into a portrait circle.",
+      "placementNote": "Existing entry switched from her neutral face portrait to this full-body render; name, note and unlock unchanged. Source is only 360x573, so it is used at native size and looks slightly soft on high-density screens."
     },
     {
       "source": "PossibleUses/Untitled design (25).png",
@@ -635,7 +733,7 @@
       ],
       "sha256": "a9e9775895363f4eba70cb5fb4981e5a6292855c08d5307d845d8a64e2449e6d",
       "status": "pending",
-      "reviewNote": "Cropped Mitsuru upper-body weapon art; not a complete full-body battlefield pose. Keep in reserve."
+      "reviewNote": "Left pending. A 1920x1080 crop (waist up, figure on the right, transparent left) of the same Mitsuru render as Mitsuru-FullBody-WithWeapon.webp, at higher resolution. Not full-body, so it does not fit the Compendium card or a portrait circle. It reads like a cut-in still: a possible future use is Mitsuru's Theurgy still (data.js party theurgy.img; only Solar has one today), which needs Kat's OK and a party-data edit outside this batch."
     },
     {
       "source": "Runners-Rooftop.jpeg",
@@ -991,8 +1089,50 @@
         1024
       ],
       "sha256": "4ce36201732489a93ec4f6c1e8ad7b67b7aaa7bd349a4af61e8a477814e119f2",
-      "status": "pending",
-      "reviewNote": "Pose sheet inspected; no existing matching encounter. Pending appropriate encounter design."
+      "status": "integrated",
+      "batch": 15,
+      "destination": "assets/femc/battle/art/shadows/memory-fishmonger-pose-0.webp",
+      "enemy": "fishmonger",
+      "artGroup": "memory-fishmonger",
+      "memoryFloor": "memory-strangers (beside the Tide)",
+      "poseFramesUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "conversion": "Six alpha-preserving poses on fixed 640px canvases at source scale. The attacks cross the 512px cell lines, so every piece of art goes to its nearest figure; pose 0 is bottom-centred like the other sheets and each action pose is lined up with it by mask correlation, shifted only to stay on the canvas. WebP quality 90.",
+      "outputSha256": "dfbb94d7eabd4a0fe92b71335a339ca5a4b4a7cd2cefaa46c5f71040271c7d5d",
+      "animation": {
+        "canvas": [
+          640,
+          640
+        ],
+        "states": {
+          "attack": [
+            1,
+            2,
+            5
+          ],
+          "cast": [
+            3,
+            4,
+            5
+          ]
+        },
+        "outputs": {
+          "assets/femc/battle/art/shadows/memory-fishmonger-pose-0.webp": "dfbb94d7eabd4a0fe92b71335a339ca5a4b4a7cd2cefaa46c5f71040271c7d5d",
+          "assets/femc/battle/art/shadows/memory-fishmonger-pose-1.webp": "eea0651ef1725ff0fe41976e66f1396e9525400cfc8ee091e40bc9d51c259b09",
+          "assets/femc/battle/art/shadows/memory-fishmonger-pose-2.webp": "3b9b440d6b71fdae90f28ba205c2dc0042fcad6517f27443c399aad1627ee6e1",
+          "assets/femc/battle/art/shadows/memory-fishmonger-pose-3.webp": "1549f9a1634367a82472ba18358c64290224277c444729bba09eca97118c7d50",
+          "assets/femc/battle/art/shadows/memory-fishmonger-pose-4.webp": "d01a160434b89a2ea7cbdbc99b7b347632ee5fcf287ad62cd14893f5c56e438e",
+          "assets/femc/battle/art/shadows/memory-fishmonger-pose-5.webp": "556d62c8a9e99a87cde1109e2f95237ba1b30057b449dc2b23dcc75f87dad323"
+        },
+        "preparationTool": "tools/femc-shadow-poses.py",
+        "notes": "Pose 0 idle crate stack; 1 lunge; 2 ice slash; 3 shard volley; 4 ice burst; 5 settle (end of each action). Pose 3 is 652px wide: it shifts about 100px left and the last 12px of the left blade (already cut at the sheet edge) falls off the canvas. Pose 4 rises above idle because the burst replaces the bottom crate in the source."
+      }
     },
     {
       "source": "grandmasterShadow.png",
@@ -1477,6 +1617,27 @@
       "ChatGPT Image Oct 18, 2026, 02_44_45 AM.png"
     ],
     "identicalSha256": true,
-    "note": "Identical supplied files. Opaque scene composition differs from current transparent enemy sprite; keep pending rather than replace battlefield cutout with a rectangular scene."
+    "note": "Identical supplied files. Batch 15: 02_44_02 is confirmed as the source of the existing story-facing-wrens-shadow CG; 02_44_45 is marked duplicate."
+  },
+  "batch15Validation": {
+    "sourceImagesReviewed": 9,
+    "cg": "Existing CG confirmed identical in content to the source (kept byte-for-byte); loads in a6-last-train from its own cue at desktop and phone; phone focus added",
+    "shadowFramesExtracted": 12,
+    "newEnemies": [
+      "group_chat (memory-hoax)",
+      "fishmonger (memory-strangers)"
+    ],
+    "segment1InterruptKeyedToBoss": true,
+    "profilesLoaded": 3,
+    "partyScreen": "Reviewed at desktop and phone; face crops only for every member, unchanged",
+    "sourceFilesUnchanged": 54,
+    "browserErrors": 0,
+    "tests": [
+      "python3 tests/femc_shadow_poses.py --art memory-group-chat,memory-fishmonger --enemies group_chat,fishmonger",
+      "python3 tests/femc_shadow_poses.py --enemies ballot_box,flash_shadow,tide_shadow,fox_shadow,party_shadow,veil_poster",
+      "python3 tests/femc_compendium.py --ids aigis,koromaru,mitsuru",
+      "python3 tests/femc_compendium.py",
+      "python3 tests/femc_menu.py"
+    ]
   }
 }
