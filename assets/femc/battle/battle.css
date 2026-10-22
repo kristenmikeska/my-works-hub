@@ -2323,7 +2323,9 @@ html.bt-perf .bt-enemy.lantern .ln-win { animation: none; }
 @media (max-height: 620px) and (min-width: 761px) { .bt-order li { width: 30px; height: 30px; } .bt-order li.now { width: 40px; height: 40px; } }
 
 /* All-Out brawl (battle.js allOutSequence): pose-sheet attack frames pop out of the cloud and duck back in (P3R). */
-.bt-dust .sil.pose { width: auto; height: clamp(84px, 19vh, 190px); filter: drop-shadow(0 0 1.5px #fff) drop-shadow(4px 4px 0 var(--pink)); transform-origin: 50% 90%; animation: bt-brawl .9s cubic-bezier(.3, 1.3, .5, 1) infinite; }
+.bt-dust .sil.pose { width: auto; height: clamp(84px, 19vh, 190px); filter: drop-shadow(0 0 1.5px #fff) drop-shadow(4px 4px 0 var(--pink)); transform-origin: 50% 90%; animation: bt-brawl .9s cubic-bezier(.3, 1.3, .5, 1) infinite, bt-jit .14s steps(2) infinite; }
+@keyframes bt-jit { 0% { translate: -3px 2px; } 50% { translate: 3px -2px; } 100% { translate: -1px -3px; } }
+@media (prefers-reduced-motion: reduce) { .bt-dust .sil.pose { animation: bt-brawl .9s cubic-bezier(.3, 1.3, .5, 1) infinite; } }
 .bt-dust .sil.pose.flip { --fl: -1; }
 @keyframes bt-brawl {
   0% { z-index: -1; opacity: 0; transform: translateY(40%) scale(calc(.45 * var(--pz, 1))) scaleX(var(--fl, 1)); }
@@ -2341,6 +2343,13 @@ html.bt-perf .bt-enemy.lantern .ln-win { animation: none; }
   .bt-theurgy .th-sf.go img { animation-name: th-kb-duo; } /* a band this narrow only has room for a gentle zoom */
   .bt-bond.kind-cut.st-short .th-stage { top: 18%; height: min(46vh, 96vw); }
   .bt-bond.kind-cut.st-short .th-img { transform: none; }
+}
+/* Narrow portrait phones (600px and under): the band takes the still's own 16:9 shape at full width, so the whole picture
+   shows (no side crop) and both faces stay on screen whatever the bond's focus; only the gentle pan / zoom trims an edge. */
+@media (max-width: 600px) and (orientation: portrait) {
+  .bt-bond:is(.kind-cut, .kind-seq):is(.st-full, .st-fade) .th-stage { top: 16%; height: calc(100vw * 9 / 16); clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%); }
+  .bt-bond.kind-cut.st-short .th-stage, .bt-bond.kind-seq.st-short .th-stage { top: 20%; height: calc(100vw * 9 / 16); }
+  .bt-bond:is(.kind-cut, .kind-seq) :is(.th-img, .th-sf img) { object-position: 50% 50%; transform-origin: 50% 50%; }
 }
 @keyframes th-pan-duo { from { transform: translateX(2%) scale(1.07); } to { transform: none; } }
 @keyframes th-kb-duo { from { transform: translate(calc(var(--px) * .6), var(--py)) scale(1); } to { transform: translate(0, 0) scale(1.05); } }

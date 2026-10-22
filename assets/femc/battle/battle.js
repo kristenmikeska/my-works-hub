@@ -3343,10 +3343,12 @@
       const x = ring ? 50 + Math.cos(ang) * 30 : 36 + (i - 9) * 14, y = ring ? 52 + Math.sin(ang) * 26 : 50;
       return `<i style="left:${x - s / 2}%;top:${y - s * 0.6}%;width:${s}%;aspect-ratio:1;animation-delay:${-i * 0.17}s"></i>`;
     }).join('');
-    // The brawl (P3R): each fighter's pose-sheet attack frame pops in and out of the cloud, small, at a few spots each.
+    // The brawl (P3R): each fighter's pose-sheet action frames pop in and out of the cloud, small, at a few spots each,
+    // flicking between the weapon swing and the spell pose (data-f, cycled below) with a small jitter (CSS).
     // Members without a pose sheet (Ken) keep the darkened portrait silhouette.
+    const BRAWL = [2, 3];
     const sils = parts.map((p, i) => FIGHTER_POSES[p.mid]
-      ? [0, 1].map(k => { const j = (i + k * 2) % 4; return `<img class="sil pose${(i + k) % 2 ? ' flip' : ''}" src="${posedFrames(p.mid)[2]}" alt="" style="--pz:${FIGHTER_POSES[p.mid]};left:${[6, 66, 28, 80][j]}%;top:${[4, 0, 46, 40][j]}%;animation-delay:${(i * 0.19 + k * 0.5).toFixed(2)}s">`; }).join('')
+      ? [0, 1].map(k => { const j = (i + k * 2) % 4, f = (i + k) % BRAWL.length; return `<img class="sil pose${(i + k) % 2 ? ' flip' : ''}" src="${posedFrames(p.mid)[BRAWL[f]]}" data-mid="${p.mid}" data-f="${f}" alt="" style="--pz:${FIGHTER_POSES[p.mid]};left:${[6, 66, 28, 80][j]}%;top:${[4, 0, 46, 40][j]}%;animation-delay:${(i * 0.19 + k * 0.5).toFixed(2)}s">`; }).join('')
       : `<img class="sil" src="${pimg(p.mid, member(p.mid).faces.idle)}" alt="" style="left:${[8, 64, 30, 78][i % 4]}%;top:${[2, 0, 58, 50][i % 4]}%;animation-delay:${i * 0.22}s">`).join('');
     const words = ['BAM!', 'POW!', 'WHAM!', 'SMASH!'].map((w, i) => `<b style="left:${[2, 70, 18, 66][i]}%;top:${[10, 6, 74, 70][i]}%;animation-delay:${0.1 + i * 0.22}s">${w}</b>`).join('');
     const stars = [0, 1, 2, 3, 4, 5].map(i => `<span class="star" style="left:${[14, 84, 48, 0, 94, 40][i]}%;top:${[78, 30, -6, 44, 74, 92][i]}%;animation-delay:${-i * 0.15}s">${ART.icon('allout')}</span>`).join('');
@@ -3359,7 +3361,12 @@
     sfx('allout');
     shake(true);
     mark('allout-dust');
+    // Frames cycle (both are preloaded with the field poses); reduced motion holds the attack frame.
+    const flick = FX && FX.reduced() ? 0 : setInterval(() => wrap.querySelectorAll('.sil.pose').forEach(im => {
+      const f = (+im.dataset.f + 1) % BRAWL.length; im.dataset.f = f; im.src = posedFrames(im.dataset.mid)[BRAWL[f]];
+    }), Math.round(170 / speed()));
     await sleep(500); shake(true); await sleep(500); shake(true); await sleep(500);
+    clearInterval(flick);
     wrap.innerHTML = '';
     // P3R finish card of whoever triggered it (the line is in Kat's art), wiped in full screen.
     const fin = document.createElement('div');

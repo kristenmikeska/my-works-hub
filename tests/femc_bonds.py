@@ -21,7 +21,7 @@ Covers:
   - lines: weakness, Solar hurt, an ally low and down, knocked down, Theurgy ready, a boss appearing, victory.
   - banter: romance pair lines only on the romance route and from the rank they need.
   - rush: Rush starts a bond on its own when it's worth it (short cut-in).
-  - shots: screenshots at 1000x486, 375x812 and 1440x900 (plus each panel of Haechan's rank-15 sequence, frozen, with both
+  - shots: screenshots at 1000x486, 375x812 and 1440x900 (on the 375px phone a bond still shows whole, 16:9 at full width; plus each panel of Haechan's rank-15 sequence, frozen, with both
     faces checked inside the visible band); no console errors anywhere.
 """
 import argparse, base64, json, pathlib, tempfile, time
@@ -540,7 +540,10 @@ try:
             p.eval("document.getAnimations().forEach(a => a.pause())")
             fit = p.eval('''(() => { const t = document.querySelector('.bt-bond'), n = t.querySelector('.th-name').getBoundingClientRect(), l = [...t.querySelectorAll('.th-line')].map(x => x.getBoundingClientRect());
               const bands = [...t.querySelectorAll('.bd-band img')].every(i => i.complete && i.naturalWidth > 0);
-              return { cover: t.getBoundingClientRect().width >= innerWidth - 1, nameIn: n.left >= 0 && n.right <= innerWidth + 2 && n.top >= 0, linesIn: l.every(r => r.left >= -2 && r.right <= innerWidth + 2 && r.bottom <= innerHeight + 2),
+              const sg = t.querySelector('.th-stage'), sw = sg.offsetWidth, sh = sg.offsetHeight, still = t.querySelector('.th-img'); // layout size (the impact shake moves the box)
+              // Narrow portrait phones: the still's band is its own 16:9 at full width, so both faces show whatever the focus.
+              const whole = innerWidth > 600 || innerHeight < innerWidth || !still || (Math.abs(sw / sh - 16 / 9) < 0.05 && sw >= innerWidth - 1);
+              return { whole, cover: t.getBoundingClientRect().width >= innerWidth - 1, nameIn: n.left >= 0 && n.right <= innerWidth + 2 && n.top >= 0, linesIn: l.every(r => r.left >= -2 && r.right <= innerWidth + 2 && r.bottom <= innerHeight + 2),
                        bands, scroll: document.documentElement.scrollWidth <= innerWidth, rect: [n.left, n.top, n.right, n.bottom] }; })()''')
             p.top(); name = f'{w}x{h}-bond-cutin.png'
             (OUT / name).write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot', {'format': 'png'})['data'])); shots.append(name)
