@@ -281,3 +281,11 @@ Spoiler-free here; the story side is in the hidden plot doc (§20).
   moving, ~19,000 scene paths). Updated: femc_haechan (fifteen story ranks), femc_bonds (Akihiko's bond still), femc_extras and
   femc_living (fixtures), `tools/femc-check-scenes.py` (maxRank, stretch hangouts, late nights).
 - **Maybe later:** rank 15 for Hanni, Hyein, Mark, Minji, Jihoon (lower priority).
+
+### Overnight queue (2026-10-22, Kat asleep; Kat approved)
+1. Wire the 13 card sets and the S.E.E.S. weapons: running.
+2. **Next, in parallel once 1 is done:**
+   - **New links: Danielle, Jaemin and Chenle** (Runners; silhouettes until Kat's portraits).
+   - **A Memories photo album:** every CG and memory card unlocked, P3R-style gallery.
+   - **A Theater:** replay key story scenes already seen.
+3. Then one full test run.
