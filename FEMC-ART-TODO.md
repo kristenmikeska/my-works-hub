@@ -289,7 +289,7 @@ A set of [N] flat game UI icons in Persona 3 Reload's style (bold shapes, heavy 
 ---
 
 ## 7. Screens and keepsakes *(optional)*
-- [ ] **Capsule keychains** (30 cast members). Each is a CSS charm with their face now. Acrylic chibi charms would look real; the 12 fighters' chibi frames already exist, so only the other 18 need art (searchers and the Persona cast). **Attach:** 🎮 `battle/art/chibi/solar-0.webp` (style) and the portrait. **Fills:** `game/art/keys/<id>.webp`.
+- [ ] **Capsule keychains** (30 cast members). The 12 fighters' charms show their chibi victory frame now (`gacha.js KEY_CHIBI`); the other 18 (searchers and the Persona cast) are a CSS charm with their face. Acrylic chibi charms would look real for them; a proper charm for the 12 can replace their chibi frame too. **Attach:** 🎮 `battle/art/chibi/solar-0.webp` (style) and the portrait. **Fills:** `game/art/keys/<id>.webp`.
   ```
   A small acrylic keychain charm of [NAME] as a cute chibi, same chibi style as the attached image, clear acrylic edge, a metal ring at the top, transparent background.
   ```
@@ -315,13 +315,7 @@ Checked and fine as they are: the title screen's key art, the Velvet Room, the G
 
 ## Appendix (for Claude): how new art goes in
 ### Wiring-only fixes (no art needed)
-Found in the 2026-10-22 audit; each one points existing art at a place that's showing a stand-in.
-- `places.js bg`: add `['Paulownia Mall · Club Escapade', 'clubescapade']` above the mall's rule (Judy's four scenes show the plain mall).
-- `places.js bg`: `Tatsumi Memorial Hospital · 3F Ward` and `· Treatment Room` → `hospital-room`; `· Courtyard` and `· Front Steps` → `hospital-outside`. Some scenes set these by hand; the rest show the hallway.
-- `places.js bg`: `Paulownia Mall · Velvet Door` → `paulownia-velvet-door`, `Port Island · Junkyard` → `junkyard-scene` (scenes set them by hand; a rule covers new ones).
-- `battle/data.js ops`: the Chariot & Justice and Fortune & Strength fights use the daytime `moonlightbridge` as their arena; `darkhour-moonlight-bridge` exists.
-- `gacha.js keyFace`: the 12 fighters' keychains could use their chibi idle frame (`battle/art/chibi/<id>-0.webp`) now.
-- `FEMC-STATUS.md` still says Justice needs a pose sheet; it's been in since `6d3df20`.
+None left: the 2026-10-22 audit's list was all wired in.
 
 ### CGs
 Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 1920 wide), then show it with a `{ cg: '<slug>' }` scene step and clear it with `{ cg: null }`. Add the face's crop point to `places.js cgFocus` for tall phone windows. The album and Theater find CGs in the scene data (`menu.js albumData`), so nothing else is needed. Endings live in `story-endings.js` (one event, branching by route); Christmas Eve scenes are each link's `christmas`; rank 10 / 15 are the link's ranks; graduation is `a6-graduation` in `living-march.js`; Yakushima is `yakushima.js`. Record the source in `tools/femc-new-adds.json` and move it to `Added to Game/`.

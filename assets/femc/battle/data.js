@@ -910,11 +910,11 @@ window.FEMC_BATTLE_DATA = (() => {
       brief: 'He preaches buffs onto himself and penance onto you, and none of it wears off. Bring Dekaja and Dekunda.' },
     { id: 'lovers', name: 'The Lovers', arcana: 'VI · Lovers', place: 'The hotel lobby', arena: BG + 'hotel-lobby.webp', group: ['lovers'], lvl: 25,
       brief: 'A Shadow made of heartbreak. She charms everyone she can. Patra Gems and Rose Barrettes will save you.' },
-    { id: 'chariot', name: 'Chariot & Justice', arcana: 'VII · VIII · Chariot & Justice', place: 'Moonlight Bridge', arena: BG + 'moonlightbridge.webp', group: ['chariot', 'justice'], lvl: 30,
+    { id: 'chariot', name: 'Chariot & Justice', arcana: 'VII · VIII · Chariot & Justice', place: 'Moonlight Bridge', arena: BG + 'darkhour-moonlight-bridge.webp', group: ['chariot', 'justice'], lvl: 30,
       brief: 'The Chariot grows stronger every round Justice stands. Justice heals it and banishes with Hamaon. Take Justice down first.' },
     { id: 'hermit', name: 'The Hermit', arcana: 'IX · Hermit', place: 'Outside Tartarus', arena: BG + 'tartarus-fromadistance.webp', group: ['hermit'], lvl: 35,
       brief: 'It hides in the static. Analyze to pin it down, or hit everyone to flush it out.' },
-    { id: 'fortune', name: 'Fortune & Strength', arcana: 'X · XI · Fortune & Strength', place: 'Moonlight Bridge', arena: BG + 'moonlightbridge.webp', group: ['fortune', 'strength'], lvl: 39,
+    { id: 'fortune', name: 'Fortune & Strength', arcana: 'X · XI · Fortune & Strength', place: 'Moonlight Bridge', arena: BG + 'darkhour-moonlight-bridge.webp', group: ['fortune', 'strength'], lvl: 39,
       brief: 'The wheel spins every turn: blessings, curses, or a frenzy for Strength. Bring Fortune down and the luck runs out.' },
     { id: 'hanged', name: 'The Hanged Man', arcana: 'XII · Hanged Man', place: 'Iwatodai, the Dark Hour', arena: BG + 'darkhour-iwatodai-street.webp', group: ['hanged'], lvl: 43,
       brief: 'It hides behind its effigies. While any of them stand, nothing touches it. Knock them all Down, then go for the Hanged Man.' }

@@ -200,7 +200,11 @@ window.FemcGacha = (() => {
 
   /* ── Drawing things ── */
   const starsHtml = r => `<span class="g-ga-stars" aria-label="${RARITY[r].name}">${'★'.repeat(RARITY[r].stars)}</span>`;
+  /* The 12 fighters' charms show their chibi victory pose (the last frame of Kat's brawl sheet, battle/art/chibi, cut but
+     unused in the All-Out cloud); everyone else shows a portrait until their own keychain art exists. */
+  const KEY_CHIBI = { solar: 5, akihiko: 5, yukari: 5, junpei: 5, mitsuru: 5, aigis: 5, koromaru: 5, shinjiro: 5, haechan: 7, jungwon: 5, jihoon: 5, minji: 5 };
   function keyFace(id) {
+    if (KEY_CHIBI[id] != null) return `<img class="chibi" src="${G.base}assets/femc/battle/art/chibi/${id}-${KEY_CHIBI[id]}.webp" alt="">`;
     const src = G.portrait(id, 'happy') || G.portrait(id, 'neutral') || (id === 'solar' ? `${G.base}assets/femc/portraits/solar/happy.webp` : null);
     return src ? `<img src="${src}" alt="">` : `<b>${esc(keyName(id)[0] || '?')}</b>`;
   }
