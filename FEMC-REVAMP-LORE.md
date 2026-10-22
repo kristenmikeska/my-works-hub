@@ -226,3 +226,20 @@ Haechan stays Universe and Jungwon stays Hierophant.
 - **The Hoax ending becomes a secret, hidden route.** It takes real intent: strong Hoax links (Jungwon, Jihoon, Cherry), following Hoax memories, and turning down the pull at key moments. Runners, strangers, Stay and the true ending stay the natural paths. Update the route lock and the plot docs to match.
 - **Built (2026-10-21):** Haechan's ranks now arrive with the story, with his choices intact, and he has a lot more life in the dorm and around town that follows where Solar is heading. The Hoax ending is now "the unfated life", a secret route that takes deliberate play; the other routes and the true ending are unchanged in how you reach them. (Details are in the hidden plot doc, for writers.)
 - **Kat loves the two-lives language joke** (2026-10-21): Runners Haechan is fluent in English (Syracuse), while strangers Haechan only speaks Korean. "Don't ask me which one of me is translating." Keep using this thread lightly; it works.
+
+## Kat's rulings (2026-10-21): rank 15, removals, new links
+- **The year extends to early March,** like real P3 (graduation, around 3/5), to give room for ranks 11–15 and an epilogue feel. The endings move to March.
+- **Rank 15 links:**
+  - **Haechan** (Kat's favorite; his ranks are automatic, so spread 15 story beats).
+  - **Jungwon:** play with how different Hoax and strangers are, e.g. the student council president versus the Incheon heir.
+  - **Akihiko** (Kat's second favorite; with Haechan, he's "the" canon romance):
+    - the couple stretch P3P never had: scenes at school, the dorm and with the team;
+    - the "Gekkoukan buzz" (his fan-club girls, rumors, Yukari fake-disgusted, Junpei's "you love me more though, right?");
+    - main-story scenes about the rumors that depend on how far into his link you are;
+    - check when his romance starts, and make it earlier if it's late.
+  - **Shinjiro:** ranks 11–14 keep him alive in small ways (cooking his recipe, the stray cat, Koromaru by the door, Ken, Akihiko on Shinji as a kid). Rank 15 is him waking from the coma.
+- **Maybe rank 15 later (lower priority):** Hanni, Hyein, Mark, Minji, Jihoon.
+- **Remove fully:** Leon, Cloud, Noctis, Astarion, Shadowheart. Rehome their extras (e.g. Astarion's black-rose naginata), keep old saves working, and drop their perks, matchmaking threads and art-list items. **Sebastian stays.**
+- **New links:** Danielle, Jaemin and Chenle (Runners searchers). Jeno: not now.
+- **Solar's parents (Jaesang and Solji):** maybe as texts or one scene, not full links. Undecided.
+- **Later idea:** cameos from Kat's other universes (e.g. Delicate) as Persona-world residents, like Soomi as a Rise-style celebrity.
