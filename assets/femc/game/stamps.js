@@ -10,7 +10,7 @@
 window.FemcStamps = (() => {
   const G = window.FemcGame;
   if (!G) return null;
-  const VER = 20; // achievements.js?v= (keep in step with the other pages)
+  const VER = 21; // achievements.js?v= (keep in step with the other pages)
   const SEES = ['akihiko', 'yukari', 'junpei', 'mitsuru', 'fuuka', 'aigis', 'ken', 'koromaru', 'shinjiro'];
   const MOONS = ['magician', 'priestess', 'empress', 'lovers', 'chariot', 'hermit', 'fortune', 'hanged', 'tartarus-memory'];
   const slug = s => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -36,8 +36,13 @@ window.FemcStamps = (() => {
     const b = S.battleSave || {}, feats = b.feats || {}, bosses = S.tartarus?.bosses || [];
     if (feats.summon || bosses.includes('magician') || (S.tartarus?.nights || 0) > 0) out.push('p3s-persona');
     MOONS.forEach(op => { if (bosses.includes(op) || S.flags?.[`op-${op}`]) out.push(`p3s-moon-${op}`); });
-    if (Object.values(S.links || {}).some(p => (p.rank || 0) >= 10)) out.push('p3s-max-link');
+    // Bond MAX: any link at its own top rank (maxRank: 15 for Haechan, Jungwon, Akihiko and Shinjiro since 2026-10-21; a save
+    // that earned the stamp at their old MAX keeps it). All of S.E.E.S. stays at rank 10, P3's MAX, for every member (Akihiko's
+    // and Shinjiro's 11–15 are a February epilogue, and Shinjiro's 15 is his waking). Rank 15: any link at 15.
+    const top = id => (G.maxOf && G.LINKS[id] ? G.maxOf(G.LINKS[id]) : 10);
+    if (Object.entries(S.links || {}).some(([id, p]) => G.LINKS[id] && (p.rank || 0) >= top(id))) out.push('p3s-max-link');
     if (SEES.every(id => rank(id) >= 10)) out.push('p3s-sees-max');
+    if (Object.values(S.links || {}).some(p => (p.rank || 0) >= 15)) out.push('p3s-rank-15');
     const stats = Object.keys(G.D.stats?.stats || {});
     if (stats.some(statMax)) out.push('p3s-stat-max');
     if (stats.length && stats.every(statMax)) out.push('p3s-stats-all');

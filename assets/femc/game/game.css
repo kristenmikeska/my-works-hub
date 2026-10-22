@@ -291,6 +291,11 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
 .g-pips { display: flex; gap: 4px; margin: 6px 0 4px; }
 .g-pips i { width: 10px; height: 10px; border: 1.5px solid rgba(255, 140, 192, .55); transform: rotate(45deg) scale(.8); }
 .g-pips i.on { background: var(--pink); border-color: #fff; transform: rotate(45deg); }
+/* Rank-15 links (maxRank): fifteen smaller pips, the five past rank 10 in gold. */
+.g-pips.long { gap: 3px; flex-wrap: wrap; }
+.g-pips.long i { width: 7px; height: 7px; }
+.g-pips i.ext { border-color: rgba(255, 210, 120, .6); }
+.g-pips i.ext.on { background: #ffcf6e; border-color: #fff; }
 .g-frags { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 1fr)); gap: 12px; }
 .g-frag { margin: 0; border: 1px solid rgba(143, 176, 255, .5); background: rgba(5, 11, 38, .7); }
 .g-frag img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }

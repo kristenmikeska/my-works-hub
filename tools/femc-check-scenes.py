@@ -106,7 +106,10 @@ for lid in want:
     for md, h in (l.get('holidays') or {}).items(): walk(h.get('scene', []), f'{lid}/holiday {md}')
     if l.get('christmas'): walk(l['christmas'].get('scene', []), f'{lid}/christmas')
     if l.get('secret'): walk(l['secret'].get('scene', []), f'{lid}/secret')
-    if len(l.get('ranks', [])) != 10: problems.append(f'{lid}: {len(l.get("ranks", []))} ranks')
+    for i, h in enumerate(l.get('stretchHangouts', [])): walk(h if isinstance(h, list) else h.get('scene', []), f'{lid}/stretch{i}')
+    for e in (l.get('lateNights') or []): walk(e.get('scene', []), f'{lid}/night {e.get("id")}')
+    top = max(10, int(l.get('maxRank') or 10))  # the rank-15 links (2026-10-21) have maxRank: 15
+    if len(l.get('ranks', [])) != top: problems.append(f'{lid}: {len(l.get("ranks", []))} ranks (maxRank {top})')
 print('\n'.join(errs))
 print('\n'.join(problems) if problems else 'OK: no problems')
 print(json.dumps({'jobPacks': {k: {kk: len(v) for kk, v in p.items() if isinstance(v, list)} for k, p in D['more'].items()},

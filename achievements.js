@@ -225,6 +225,8 @@ window.Achievements = (() => {
       svg: '<path d="M30 6a26 26 0 1 0 22 40A21 21 0 0 1 30 6z"/><text x="45" y="30" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="13">DEC</text>' },
     { id: 'p3s-max-link', side: 'femc', name: 'Bond MAX', group: 'Persona 3: Solstice', hint: 'Take any social link to MAX.',
       svg: '<rect x="16" y="4" width="32" height="56" rx="4" fill-opacity=".35"/><path d="M32 14l4.5 10.5L48 26l-8.6 7.6L42 45l-10-6l-10 6l2.6-11.4L16 26l11.5-1.5z"/><text x="32" y="56" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="9">MAX</text>' },
+    { id: 'p3s-rank-15', side: 'femc', name: 'Rank 15', group: 'Persona 3: Solstice', hint: 'Take one of the deepest bonds all the way to rank 15.',
+      svg: '<rect x="16" y="4" width="32" height="56" rx="4" fill-opacity=".35"/><path d="M32 12l4.5 10.5L48 24l-8.6 7.6L42 43l-10-6l-10 6l2.6-11.4L16 24l11.5-1.5z"/><text x="32" y="56" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="11">XV</text>' },
     { id: 'p3s-sees-max', side: 'femc', name: 'All of S.E.E.S.', group: 'Persona 3: Solstice', hint: 'Take every S.E.E.S. link to MAX.',
       svg: '<path d="M4 22h56v20H4z" fill-opacity=".35"/><path fill-rule="evenodd" d="M4 22h56v20H4zM8 26v12h48V26z"/><text x="32" y="37" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="11">S.E.E.S.</text>' },
     { id: 'p3s-stat-max', side: 'femc', name: 'Top Marks', group: 'Persona 3: Solstice', hint: 'Raise one social stat to its highest rank.',

@@ -5,6 +5,8 @@
    How a bond works (engine.js bondInfo / bondAct; battle.js bondMenu / bondCut):
    - It unlocks at the partner's link rank (`tiers[].rank`: 5 for the first version, 9 for the upgrade). A romance partner on
      the romance route gets a special version at rank 9 instead (`love`). A reversed link pauses its bond.
+   - The links that go to rank 15 (2026-10-21) and still fight (Akihiko, Haechan, Jungwon) have a third tier at rank 15, and a
+     romance version of it (`love15`). Shinjiro's bond keeps its `until`: he doesn't fight again, whatever his rank.
    - Usable when Solar and the partner are both in the party, conscious and able to act. Either of them can start it from
      their own turn (menu: Bond).
    - Cost: both pay `sp`, and it takes both their turns (whoever didn't start it loses their next one). Once per battle each.
@@ -33,9 +35,13 @@ window.FemcBonds = (() => {
         { rank: 5, name: 'Daybreak One-Two', sp: 12, target: 'one', steps: [P('elec', 46, { multi: [2, 2], ail: { id: 'shock', chance: 0.2 } }), S('light', 64, { down: 0.3 })],
           line: ['On three. One—', '—two. Keep up.'], desc: 'Akihiko’s lightning jabs, then Solar’s sunrise on the same foe. May Shock it.' },
         { rank: 9, name: 'Thunder at Dawn', sp: 16, target: 'one', steps: [P('elec', 52, { multi: [3, 3], ail: { id: 'shock', chance: 0.25 } }), S('light', 88, { down: 0.4 })], after: { buffs: ['agi'] },
-          line: ['Ready when you are.', 'I was ready first.'], desc: 'Three lightning punches and a heavy sunrise on one foe; the party gets faster.' }],
+          line: ['Ready when you are.', 'I was ready first.'], desc: 'Three lightning punches and a heavy sunrise on one foe; the party gets faster.' },
+        { rank: 15, name: 'Championship Round', sp: 18, target: 'one', steps: [P('elec', 58, { multi: [3, 4], ail: { id: 'shock', chance: 0.3 } }), S('light', 100, { down: 0.5 })], after: { buffs: ['atk', 'agi'] },
+          line: ['Last round. Hands up.', 'They never came down.'], desc: 'Up to four lightning punches and the full sunrise on one foe; the party gets stronger and faster.' }],
       love: { rank: 9, name: 'Sunrise Cadenza', sp: 16, target: 'one', steps: [P('elec', 56, { multi: [3, 3], ail: { id: 'shock', chance: 0.3 } }), S('light', 96, { down: 0.5 })], after: { buffs: ['atk', 'agi'], heal: 0.15 },
-        line: ['Stay on my left. Like always.', 'I always do.'], desc: 'Their own combination: lightning, then the sun. Heavy damage to one foe; the party heals a little and gets stronger and faster.' } },
+        line: ['Stay on my left. Like always.', 'I always do.'], desc: 'Their own combination: lightning, then the sun. Heavy damage to one foe; the party heals a little and gets stronger and faster.' },
+      love15: { rank: 15, name: 'Five A.M.', sp: 18, target: 'one', steps: [P('elec', 60, { multi: [3, 4], ail: { id: 'shock', chance: 0.35 } }), S('light', 110, { down: 0.6 })], after: { buffs: ['atk', 'agi', 'def'], heal: 0.2 },
+        line: ['Same time tomorrow?', 'Every day.'], desc: 'Their own combination, all the way: lightning and the sun on one foe; the party heals and gets stronger, faster and tougher.' } },
     { id: 'shinjiro', partner: 'shinjiro', romance: true, loveFace: 'happy', until: '10/3', look: ['strike', 'sun'], colors: ['#ff4f9e', '#c43b3b'],
       tiers: [
         { rank: 5, name: 'Back Alley Sunrise', sp: 10, target: 'one', steps: [P('strike', 120, { crit: 15 }), S('light', 40, { target: 'all' })], after: { heal: 0.15 },
@@ -49,17 +55,25 @@ window.FemcBonds = (() => {
         { rank: 5, name: 'Sun and Moon', sp: 14, target: 'all', steps: [P('elec', 44, { ail: { id: 'shock', chance: 0.15 } }), S('light', 52)],
           line: ['Keep up, princess.', 'Keep up yourself.'], desc: 'Dalnim’s static and Haenim’s light on every foe. May Shock.' },
         { rank: 9, name: 'Eclipse', sp: 18, target: 'all', steps: [P('dark', 40), P('elec', 40, { ail: { id: 'shock', chance: 0.2 } }), S('light', 66, { down: 0.35 })], after: { buffs: ['atk'] },
-          line: ['Don’t look directly at it.', 'Too late.'], desc: 'Moon, then static, then the sun, on every foe; the party’s attack rises.' }],
+          line: ['Don’t look directly at it.', 'Too late.'], desc: 'Moon, then static, then the sun, on every foe; the party’s attack rises.' },
+        { rank: 15, name: 'Two Suns', sp: 20, target: 'all', steps: [P('dark', 48), P('elec', 48, { ail: { id: 'shock', chance: 0.25 } }), S('light', 80, { down: 0.45 })], after: { buffs: ['atk', 'agi'] },
+          line: ['Which one of me is this?', 'Both. Keep up.'], desc: 'Moon, static and a brighter sun on every foe; the party’s attack and agility rise.' }],
       love: { rank: 9, name: 'Corona', img: BA('bond-haechan-love'), focus: [55, 25], sp: 18, target: 'all', steps: [P('dark', 44, { ail: { id: 'fear', chance: 0.2 } }), P('elec', 48, { ail: { id: 'shock', chance: 0.25 } }), S('light', 76, { down: 0.45 })], after: { buffs: ['atk', 'agi'], th: 10 },
-        line: ['You and me. Every sky.', 'Show-off.'], desc: 'Their own combination: the light around an eclipse. Heavy damage to every foe; the party gets stronger and faster, and both Theurgy gauges fill a little.' } },
+        line: ['You and me. Every sky.', 'Show-off.'], desc: 'Their own combination: the light around an eclipse. Heavy damage to every foe; the party gets stronger and faster, and both Theurgy gauges fill a little.' },
+      love15: { rank: 15, name: 'Universe', img: BA('bond-haechan-love'), focus: [55, 25], sp: 20, target: 'all', steps: [P('dark', 52, { ail: { id: 'fear', chance: 0.25 } }), P('elec', 56, { ail: { id: 'shock', chance: 0.3 } }), S('light', 90, { down: 0.55 })], after: { buffs: ['atk', 'agi', 'def'], th: 15 },
+        line: ['Don’t ask me which one of me is translating.', 'Both of you. Every time.'], desc: 'Their own combination, all the way: every sky at once on every foe; the party gets stronger, faster and tougher, and both Theurgy gauges fill.' } },
     { id: 'jungwon', partner: 'jungwon', romance: true, loveFace: 'flustered', img: BA('bond-jungwon'), focus: [60, 22], look: ['ice', 'jade'], colors: ['#ff4f9e', '#9fe8ff'],
       tiers: [
         { rank: 5, name: 'Jade Frost', sp: 12, target: 'one', steps: [P('ice', 60, { ail: { id: 'freeze', chance: 0.2 } }), S('strike', 56, { ail: { id: 'bind', chance: 0.3, rope: true } })],
           line: ['After you.', 'Together, Jungwon.'], desc: 'Hyeonmu’s frost, then the golden rope. Heavy damage to one foe; may Freeze or Bind it.' },
         { rank: 9, name: 'Winter Jade', sp: 16, target: 'all', steps: [P('ice', 58, { ail: { id: 'freeze', chance: 0.25 } }), S('light', 48)], after: { debuffs: ['def'] },
-          line: ['Shall we?', 'We shall.'], desc: 'Ice and light on every foe; every foe’s defense drops.' }],
+          line: ['Shall we?', 'We shall.'], desc: 'Ice and light on every foe; every foe’s defense drops.' },
+        { rank: 15, name: 'Unanimous', sp: 18, target: 'all', steps: [P('ice', 70, { ail: { id: 'freeze', chance: 0.3 } }), S('light', 66)], after: { debuffs: ['def', 'atk'] },
+          line: ['All in favor?', 'Unanimous.'], desc: 'Heavier ice and light on every foe; every foe’s defense and attack drop.' }],
       love: { rank: 9, name: 'Jade Ring', img: BA('bond-jungwon-love'), focus: [57, 27], sp: 16, target: 'all', steps: [P('ice', 64, { ail: { id: 'freeze', chance: 0.3 } }), S('light', 60)], after: { debuffs: ['def'], ward: 'solar' },
-        line: ['Please stay where I can see you.', 'Formal, even now?'], desc: 'Their own combination. Ice and light on every foe, their defense drops, and the tortoise’s shell closes over Solar: nothing hurts her until her next turn.' } },
+        line: ['Please stay where I can see you.', 'Formal, even now?'], desc: 'Their own combination. Ice and light on every foe, their defense drops, and the tortoise’s shell closes over Solar: nothing hurts her until her next turn.' },
+      love15: { rank: 15, name: 'Signed in Full', img: BA('bond-jungwon-love'), focus: [57, 27], sp: 18, target: 'all', steps: [P('ice', 74, { ail: { id: 'freeze', chance: 0.35 } }), S('light', 72)], after: { debuffs: ['def', 'atk'], ward: 'solar' },
+        line: ['I read every word first.', 'Then sign it.'], desc: 'Their own combination, all the way: ice and light on every foe, their defense and attack drop, and the shell closes over Solar until her next turn.' } },
     { id: 'jihoon', partner: 'jihoon', romance: true, loveFace: 'happy-2', img: BA('bond-jihoon'), focus: [59, 23], look: ['wind', 'star'], colors: ['#ff4f9e', '#7dd3ff'],
       tiers: [
         { rank: 5, name: 'Star Power', sp: 14, target: 'all', steps: [P('wind', 46), S('almighty', 40)], after: { buffs: ['atk'] },
@@ -125,6 +139,7 @@ window.FemcBonds = (() => {
     const rank = +((ctx.bonds || {})[b.partner]) || 0, love = !!(b.romance && (ctx.love || []).includes(b.partner));
     const vers = b.tiers.map((t, i) => Object.assign({ tier: i + 1, love: false }, t));
     if (b.love && love) vers[1] = Object.assign({ tier: 2, love: true }, b.love);
+    if (b.love15 && love && vers[2]) vers[2] = Object.assign({ tier: 3, love: true }, b.love15);
     const got = vers.filter(v => rank >= v.rank);
     const cur = got.length ? got[got.length - 1] : null, next = vers.find(v => rank < v.rank) || null;
     let state = cur ? 'own' : 'rank';

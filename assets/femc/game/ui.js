@@ -862,7 +862,7 @@
     setBg('iwatodaidorm-roof-night', 'night');
     screenMusic('title');
     const name = G.endingName(), clears = G.recordClear(), seen = [...new Set(clears.map(c => (c.ending === 'the count' ? 'the unfated life' : c.ending)))]; // the Hoax ending's old name (before 2026-10-21)
-    const met = S().met.length, frags = S().fragments.length, maxed = Object.values(G.LINKS).filter(l => G.progress(l.id).rank >= 10).length;
+    const met = S().met.length, frags = S().fragments.length, maxed = Object.values(G.LINKS).filter(l => G.isMaxed(l)).length;
     show(`<section class="g-seg g-end"><p class="g-kicker">${esc(G.dayInfo(G.END()).md)} · the last minutes of the last Dark Hour</p>
       <div class="g-seg-box"><p class="g-end-name">ENDING · ${esc(name)}</p>
         <p class="g-seg-sub">${frags} memory fragment${frags === 1 ? '' : 's'} · ${maxed} bond${maxed === 1 ? '' : 's'} at MAX · ${met} people met${S().ngp ? ` · New Game+ ${S().ngp}` : ''}</p>
@@ -914,7 +914,7 @@
   // A link's line on Go Out: rank progress if they're free, why not if they aren't.
   function personNote(l, slot) {
     const st = G.linkStatus(l, S().day, slot), met = G.isMet(l.id), p = G.progress(l.id);
-    const note = st.ok ? (met ? (st.after ? 'MAX · Spend time together' : p.ready === p.rank && p.rank > 0 ? 'Hang out' : `Rank ${p.rank} ▸ ${p.rank + 1}`) : 'Someone you haven’t met') : st.reason === 'needs' ? `Needs ${st.needs}` : st.reason === 'later' ? 'Busy today' : 'Busy right now';
+    const note = st.ok ? (met ? (st.after ? `${G.isMaxed(l) ? 'MAX' : `Rank ${p.rank}`} · Spend time together` : p.ready === p.rank && p.rank > 0 ? 'Hang out' : `Rank ${p.rank} ▸ ${p.rank + 1}`) : 'Someone you haven’t met') : st.reason === 'needs' ? `Needs ${st.needs}` : st.reason === 'later' ? 'Busy today' : 'Busy right now';
     return { st, met, note, line: met ? `${l.arcana} · ${note}` : (st.ok && l.approach ? l.approach : note) };
   }
   function pxWire(onPaint) {
@@ -1121,7 +1121,7 @@
     const rank = l.ranks[r] || {};
     SC.play({
       scene: pick.scene, place: pick.place, time: pick.time || rank.time || (S().slot === 'evening' ? 'Evening' : G.slotName(S().slot)),
-      title: pick.kind === 'rank' || pick.kind === 'after' || pick.kind === 'trace' ? pick.title || null : null, label: pick.kind === 'rank' ? `${l.short} · Rank ${r + 1}` : pick.kind === 'after' ? `${l.short} · MAX` : l.short, link: l.id,
+      title: pick.kind === 'rank' || pick.kind === 'after' || pick.kind === 'trace' ? pick.title || null : null, label: pick.kind === 'rank' ? `${l.short} · Rank ${r + 1}` : pick.kind === 'after' ? `${l.short} · ${G.isMaxed(l) ? 'MAX' : `Rank ${r}`}` : l.short, link: l.id,
       music: pick.music || (/^Persona 5/.test(l.from || '') ? 'p5' : null), // the Persona 5 cast: Beneath the Mask
       onBattle: (b, snap, cont) => battleCard(b, null, cont),
       onDone: res => {

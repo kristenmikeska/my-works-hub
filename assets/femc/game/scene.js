@@ -525,13 +525,15 @@ window.FemcScene = (() => {
   }
 
   /* ── The bond meter and rank-up (P3R) ── */
+  // A link's top rank (its maxRank, 15 for the rank-15 links since 2026-10-21; 10 otherwise): "MAX" means that one.
+  const topRank = link => Math.max(10, +(link && link.maxRank) || 10);
   function cardFace(link) { const art = G.tarot(link); return art ? ` art" style="background-image:url('${art}')` : ''; }
   function meter(link, r, from, to, req, up, done) {
     const gained = to - from;
     const box = document.createElement('div');
     box.className = 'gs-rank gs-meter g-card';
     box.innerHTML = `<div class="gs-meter-inner"><div class="gs-card gs-card-sm${cardFace(link)}" aria-label="${esc(link.arcana)}"><span>${esc(link.numeral || '✦')}</span><small>${esc(link.arcana)}</small></div>
-      <div class="gs-meter-info"><p class="gs-meter-name">${esc(link.short)}<small>Rank ${r} ▸ ${r + 1 >= 10 ? 'MAX' : r + 1}</small></p>
+      <div class="gs-meter-info"><p class="gs-meter-name">${esc(link.short)}<small>Rank ${r} ▸ ${r + 1 >= topRank(link) ? 'MAX' : r + 1}</small></p>
       <div class="gs-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${req}" aria-valuenow="${to}"><i></i></div>
       <p class="gs-meter-notes"><b>+${gained} ♪</b> <span>${from}</span> / ${req}</p><p class="gs-meter-msg"></p></div></div>`;
     document.body.appendChild(box);
@@ -548,7 +550,7 @@ window.FemcScene = (() => {
     document.addEventListener('keydown', onKey, true);
   }
   function rankUp(link, n, done, reversed) {
-    const max = n >= 10;
+    const max = n >= topRank(link);
     const box = document.createElement('div');
     box.className = `gs-rank g-card${reversed ? ' reversed' : ''}`;
     box.innerHTML = `<div class="gs-rank-inner"><div class="gs-card${cardFace(link)}" aria-label="${esc(link.arcana)}"><span>${esc(link.numeral || '✦')}</span><small>${esc(link.arcana)}</small></div><p class="gs-thou"></p><p class="gs-ranknum">${reversed ? 'REVERSED' : max ? 'RANK MAX' : `RANK ${n}`}<small>${esc(link.short || link.name)}</small></p></div>`;

@@ -234,7 +234,7 @@ try:
 
     # ── Stamps ──
     if want('stamps'):
-        setup(p, ranks={'akihiko': 10, 'mymelody': 1}, bosses=['magician', 'priestess', 'empress', 'lovers'])
+        setup(p, ranks={'yukari': 10, 'mymelody': 1}, bosses=['magician', 'priestess', 'empress', 'lovers'])  # Akihiko's MAX is 15 since the rank-15 batch
         p.eval("localStorage.removeItem('kg-achievements')")
         p.eval(r"""(()=>{const G=FemcGame,S=G.S;S.tartarus.maxFloor=120;S.gacha.pulls=3;S.gacha.draws=1;
           (G.D.places.clubs||[]).forEach(c=>{G.clubState(c.id).joined=true;});
@@ -264,7 +264,7 @@ try:
             if 'tests' not in f.parts and f.is_file():
                 for m in re.findall(r'achievements\.js\?v=(\d+)', f.read_text(errors='ignore')):
                     if m != '20': bad.append((str(f), m))
-        ok(not bad and p.eval("FemcStamps.lib().then(()=>[...document.scripts].some(s=>/achievements\\.js\\?v=20/.test(s.src)))"), f'achievements.js?v=20 everywhere: {bad}')
+        ok(not bad and p.eval("FemcStamps.lib().then(()=>[...document.scripts].some(s=>/achievements\\.js\\?v=21/.test(s.src)))"), f'achievements.js?v=20 everywhere: {bad}')
         # The hub's passport shows them in their own section.
         p.ws.call('Page.navigate', {'url': f'http://127.0.0.1:{p.srv.server_port}/passport.html'})
         p.wait("document.readyState==='complete' && !!window.Achievements && !!document.querySelector('#solsticeGrid .secret-stamp')")

@@ -192,7 +192,7 @@ window.FemcGame = (() => {
       const p = out.links?.[l.id];
       if (!p || p.ready == null) return;
       const r = p.ready;
-      if (r === (p.rank || 0) && (p.seen || []).includes(r) && l.forced.includes(r + 1) && r < 10) {
+      if (r === (p.rank || 0) && (p.seen || []).includes(r) && l.forced.includes(r + 1) && r < maxOf(l)) {
         p.rank = r + 1; (p.rankDay ||= {})[p.rank] = out.day || 0; p.xp = 0;
       }
       delete p.ready; changed = true;
@@ -357,7 +357,7 @@ window.FemcGame = (() => {
   // When a link ranks up: the perks it just earned (a toast each).
   function perkToasts(l, rank) {
     if (!BLD()) return;
-    BLD().perksAt(l.id, rank).forEach(p => toast('perk', `Bond perk · ${p.name} (${l.short} ${rank >= 10 ? 'MAX' : `rank ${rank}`})${p.stub ? ' · coming later' : ''}`, { perk: p.id }));
+    BLD().perksAt(l.id, rank).forEach(p => toast('perk', `Bond perk · ${p.name} (${l.short} ${rank >= maxOf(l) ? 'MAX' : `rank ${rank}`})${p.stub ? ' · coming later' : ''}`, { perk: p.id }));
   }
   // Weekly bonds that just happen (no free time): Akihiko's Roadwork, My Melody's Almond Pound Cake.
   function weeklyBonds() {
@@ -379,14 +379,25 @@ window.FemcGame = (() => {
        home: { area (id or name from data/places.js), spot, slot: 'after' | 'evening', days: [0-6], hint }
        approach: one line shown on the map before you've met; invite: { ask, ok, no } texts, or null
        hangouts: [[lines], ...] story-free time that fills the bond meter between ranks
-       ranks: 10 entries, each { after: 'M/D', title: '1: rookie', place, time, music, scene: [lines] } or { todo: '…' }
+       ranks: 10 entries (maxRank of them), each { after: 'M/D', title: '1: rookie', place, time, music, scene: [lines] } or { todo: '…' }
+       maxRank: 15  the link's top rank (default 10: P3's MAX). Since 2026-10-21 Haechan, Jungwon, Akihiko and Shinjiro go to 15:
+         ranks 11–15 are ranks[10..14], with `after` dates in February (2/1–3/4; 3/5–3/7 belong to the story). Rank 10 stays
+         what it was (the P3 MAX: its perks, the party trees' evolution, bond tier 9 → the rank-10 Christmas / goodbye rules);
+         "MAX" in the UI, the meter, the rank card, stamps and toasts means maxOf(link). Between rank 10 and the next rank's
+         date (and gate), time together plays afterMax as it did at MAX; a meter that a rank scene didn't fill plays
+         stretchHangouts (or hangouts). At maxRank, afterMax rotates as before. maxOf(l) / isMaxed(l) read it.
+       stretchHangouts: [[lines], …]  hangouts used instead of `hangouts` once the link is at rank 10+.
+       stretch: { from: 'M/D', home: { area, spot, slot, days, hint } }  a link that `closes` (Shinjiro, 10/4) comes back for
+         ranks 11+: from `from`, at rank 10+, `closes` no longer stops it and it is met at stretch.home (homeOf). Its traces
+         (afterMax after `closes`) keep going in the meantime.
        forced: [rank numbers] that play as story on their `after` date (no meter); reversible: true allows reversal
          A story rank plays in the link's home slot (evening / after school), or `storySlot` ('late' for Haechan), or the
          rank's own `slot`. Before its date, time together is a hangout (no rank-up; never before rank 1). A late story rank
          waits for the next night if a story event already took tonight's late slot. storyEvents: [story event ids] that
          must have played before any story rank (Haechan: his arrival). See migrateForced for old meter-based saves.
        status: 'stub' for links that exist but aren't written (links/stubs.js).
-       afterMax: [{ place, time, music, scene }, ...]  what spending time together plays after rank 10. They play in order, then
+       afterMax: [{ place, time, music, scene, flags, noFlags }, ...]  what spending time together plays after rank 10 (and
+         at maxRank; see maxRank). An entry whose flags aren't all set, or whose noFlags are, is skipped. They play in order, then
          rotate, at the link's usual spot (no meter, no rank-up; ifRoute still works). The entry's place/time are the scene's.
          A link that has *left* (see leavesAtMax / closes) can't be met any more; its afterMax become **traces**: from the day
          after `closes`, each entry shows up once, in order, as something to look at in the area its `place` names (e.g.
@@ -463,10 +474,28 @@ window.FemcGame = (() => {
   }
   // Where a link spends its free time today: summerHome / winterHome on those breaks, otherwise home.
   function homeOf(l, d = S.day) {
+    if (stretchOn(l, d)) return l.stretch.home;
     const brk = D.cal.breaks.find(b => inRange(d, b.from, b.to));
     if (brk?.id === 'summer' && l.summerHome) return l.summerHome;
     if (brk?.id === 'winter' && l.winterHome) return l.winterHome;
     return l.home || {};
+  }
+  /* Ranks past 10 (maxRank, see the header). maxOf: the link's top rank. isMaxed: at it. stretchOn: a closing link's
+     comeback (stretch) is on today. afterList: the afterMax entries this save can play (flags / noFlags). afterGap: at rank
+     10+, time together is afterMax right now (the link is at its top, or the next rank isn't open yet: its date, its gate,
+     the stretch), not a rank scene; a meter a rank scene left short (p.ready) is never the gap (hangouts fill it). */
+  const maxOf = l => Math.max(10, +(l?.maxRank) || 10);
+  const isMaxed = (l, p = progress(l.id)) => (p.rank || 0) >= maxOf(l);
+  function stretchOn(l, d = S.day) { return !!(l.stretch && (S.links[l.id]?.rank || 0) >= 10 && d >= dayOf(l.stretch.from)); }
+  const entryOk = e => !!e && (e.flags || []).every(flag) && !(e.noFlags || []).some(flag);
+  const afterList = l => (l.afterMax || []).filter(entryOk);
+  function afterGap(l, d = S.day) {
+    const p = progress(l.id), r = p.rank || 0;
+    if (r < 10) return false;
+    const next = r < maxOf(l) ? l.ranks?.[r] : null;
+    if (!next?.scene) return true;
+    if (p.ready === r) return false;
+    return !((!next.after || d >= dayOf(next.after)) && fragGateMet(next.gate) && (!l.stretch || stretchOn(l, d)));
   }
   // A link whose rank 10 is its goodbye (see leavesAtMax in the header).
   function leavesAtMax(l) {
@@ -486,10 +515,11 @@ window.FemcGame = (() => {
     const p = progress(l.id);
     if (l.hidden || l.status === 'stub' || !l.ranks?.[0]?.scene) return { ok: false, reason: 'unwritten' };
     if (l.secret && !flag(l.secret.flag)) return { ok: false, reason: 'unwritten' };
-    if (p.rank >= 10) {
-      // After MAX: afterMax scenes with the person, unless they've left (then they're traces, see tracesAt).
-      if (!(l.afterMax || []).length || leavesAtMax(l)) return { ok: false, reason: 'max' };
-      if (l.closes && d >= dayOf(l.closes)) return { ok: false, reason: 'closed' };
+    if (afterGap(l, d)) {
+      // After rank 10 (MAX, or waiting on rank 11+): afterMax scenes with the person, unless they've left (then they're
+      // traces, see tracesAt). A link with a stretch is hidden while its next rank isn't open (no "busy" row for it).
+      if (!afterList(l).length || leavesAtMax(l)) return { ok: false, reason: 'max' };
+      if (l.closes && d >= dayOf(l.closes) && !stretchOn(l, d)) return { ok: false, reason: 'closed' };
       if (S.spent[`${d}-${slot}`]) return { ok: false, reason: 'spent' };
       if (!atHome(l, d, slot)) return { ok: false, reason: 'elsewhere' };
       return { ok: true, after: true };
@@ -498,7 +528,7 @@ window.FemcGame = (() => {
     if (!next?.scene) return { ok: false, reason: 'unwritten' };
     if (d < dayOf(l.starts || '4/8') || !fragGateMet(l.gate)) return { ok: false, reason: 'away' };
     if (l.storyEvents && !l.storyEvents.every(id => S.events.includes(id))) return { ok: false, reason: 'away' };
-    if (l.closes && d >= dayOf(l.closes)) return { ok: false, reason: 'closed' };
+    if (l.closes && d >= dayOf(l.closes) && !stretchOn(l, d)) return { ok: false, reason: 'closed' };
     // A rank's own `gate` (memory fragments, e.g. Wren's { total: 12 }) holds it back until they're found.
     if (next.gate && !fragGateMet(next.gate)) return { ok: false, reason: 'later', gate: next.gate };
     // Story ranks play on their date (dueEvent); before that, time together is a hangout.
@@ -535,9 +565,12 @@ window.FemcGame = (() => {
     const p = progress(l.id), list = l.afterMax || [];
     if (p.rank < 10 || !list.length || !leavesAtMax(l)) return null;
     const from = l.closes ? dayOf(l.closes) + 1 : (p.rankDay[10] ?? d) + 1;
-    if (d < from || (p.after || 0) >= list.length) return null;
-    const e = list[p.after || 0], a = areaOfPlace(e.place, l.home?.area);
-    return a ? { link: l, i: p.after || 0, entry: e, area: a.id, slot: a.id === 'dorm' ? 'evening' : slotOfTime(e.time) } : null;
+    // The next one in order whose gates hold (an entry gated out, e.g. Shinjiro's bedside once he's awake, is passed over).
+    let i = p.after || 0;
+    while (i < list.length && !entryOk(list[i])) i += 1;
+    if (d < from || i >= list.length) return null;
+    const e = list[i], a = areaOfPlace(e.place, l.home?.area);
+    return a ? { link: l, i, entry: e, area: a.id, slot: a.id === 'dorm' ? 'evening' : slotOfTime(e.time) } : null;
   }
   function tracesAt(areaId, slot = S.slot) {
     if (S.spent[`${S.day}-${slot}`]) return [];
@@ -546,10 +579,10 @@ window.FemcGame = (() => {
   // What to play when Solar spends time with a link: { kind: 'rank'|'hangout'|'repair'|'after'|'trace', r, scene, place, title }
   function linkScene(l, trace) {
     const p = progress(l.id), r = p.rank;
-    const hang = () => { const pool = l.hangouts || []; return pool.length ? pool[(p.hung || 0) % pool.length] : [{ n: `Solar spent a while with ${l.short}. They talked about nothing in particular, which turned out to be the point.` }, { choose: [{ t: '(Mostly listen.)', notes: 2 }, { t: '(Tell them about your week.)', notes: 3 }, { t: '(Tease them a little.)', notes: 1 }] }]; };
+    const hang = () => { const pool = (r >= 10 && (l.stretchHangouts || []).length ? l.stretchHangouts : l.hangouts) || []; return pool.length ? pool[(p.hung || 0) % pool.length] : [{ n: `Solar spent a while with ${l.short}. They talked about nothing in particular, which turned out to be the point.` }, { choose: [{ t: '(Mostly listen.)', notes: 2 }, { t: '(Tell them about your week.)', notes: 3 }, { t: '(Tease them a little.)', notes: 1 }] }]; };
     if (trace) return { kind: 'trace', r, scene: trace.entry.scene || [], place: trace.entry.place || linkPlace(l), time: trace.entry.time, music: trace.entry.music, title: trace.entry.title };
-    if (r >= 10 && (l.afterMax || []).length) {
-      const e = l.afterMax[(p.after || 0) % l.afterMax.length];
+    if (afterGap(l) && afterList(l).length) {
+      const list = afterList(l), e = list[(p.after || 0) % list.length];
       return { kind: 'after', r, scene: e.scene || [], place: e.place || linkPlace(l), time: e.time, music: e.music, title: e.title };
     }
     if (p.reversed && (l.repair || []).length) { const e = l.repair[(p.repairs || 0) % l.repair.length]; return { kind: 'repair', r, scene: Array.isArray(e) ? e : e.scene || [], place: (!Array.isArray(e) && e.place) || linkPlace(l), time: !Array.isArray(e) ? e.time : undefined }; }
@@ -566,7 +599,8 @@ window.FemcGame = (() => {
     S.spent[`${S.day}-${S.slot}`] = l.id;
     p.lastDay = S.day;
     if (kind === 'repair') { p.reversed = false; p.push = 0; p.repairs = (p.repairs || 0) + 1; S.flags[`reversed-${l.id}`] = false; save(); return { repaired: true }; }
-    if (kind === 'after' || kind === 'trace') { p.after = (p.after || 0) + 1; save(); return { after: true }; }
+    if (kind === 'trace') { const t = nextTrace(l); p.after = (t ? t.i : (p.after || 0)) + 1; save(); return { after: true }; }
+    if (kind === 'after') { p.after = (p.after || 0) + 1; save(); return { after: true }; }
     if (p.push >= 2 && l.reversible && !p.reversed) { p.reversed = true; S.flags[`reversed-${l.id}`] = true; delete p.ready; save(); return { reversed: true, rank: p.rank }; }
     // Aigis's Learning Mode: every hangout (not a rank scene) is +1 Kindness.
     if (kind === 'hangout') perkVal('learningMode').forEach(o => addStats(o));
@@ -626,7 +660,8 @@ window.FemcGame = (() => {
     const l = LINKS[id];
     if (!l || !n || !isMet(id)) return 0;
     const p = progress(id);
-    if (p.reversed || p.rank >= 10) return 0;
+    // No ♪ at MAX, nor at rank 10+ while the next rank isn't open yet (afterGap): a February rank starts its own meter.
+    if (p.reversed || isMaxed(l, p) || afterGap(l)) return 0;
     p.xp = (p.xp || 0) + n;
     return n;
   }
@@ -943,7 +978,9 @@ window.FemcGame = (() => {
     if (e.noFlags && e.noFlags.some(flag)) return false;
     if (e.events && !e.events.every(id => S.events.includes(id))) return false;
     if (e.ranks && !Object.entries(e.ranks).every(([id, r]) => progress(id).rank >= r && !progress(id).reversed)) return false;
-    if (e.route && !Object.entries(e.route).every(([id, r]) => progress(id).route === r && !progress(id).reversed)) return false;
+    if (e.ranksBelow && !Object.entries(e.ranksBelow).every(([id, r]) => progress(id).rank < r)) return false;
+    if (e.route && !routeFits(e.route)) return false;
+    if (e.heading && !headingIs(e.heading)) return false;
     return true;
   }
   // The last day an entry could still fit (its months / until), for the seasonal-first order.
@@ -1171,7 +1208,8 @@ window.FemcGame = (() => {
       const rank = l.ranks[p.rank];
       if (opTonight) continue;
       if (l.storyEvents && !l.storyEvents.every(id => S.events.includes(id))) continue;
-      const rs = rank?.slot || l.storySlot || (l.home?.slot === 'evening' ? 'evening' : 'after');
+      if (l.stretch && p.rank >= 10 && !stretchOn(l, d)) continue;
+      const rs = rank?.slot || l.storySlot || (homeOf(l, d).slot === 'evening' ? 'evening' : 'after');
       if (rs === 'late' && (lateTaken || S.phase !== 'play')) continue;
       if (rank?.scene && rank.after && d >= dayOf(rank.after) && fragGateMet(rank.gate) && rs === slot) return { kind: 'link', link: l };
     }
@@ -1181,7 +1219,8 @@ window.FemcGame = (() => {
      lunch), play before After School / the evening menu without spending them, or close a late night.
      An entry: { id, slot, after: 'M/D', until (default after + 30, so a late save never plays an early beat), schoolOnly,
        offOnly (days off only), days: [0-6], weather: ['rain', …], events: [story ids played], flags: [flags set],
-       noFlags: [flags not set], met: [link ids met], ranks: { link: n }, place, time, bg, cast, scene }.
+       noFlags: [flags not set], met: [link ids met], ranks: { link: n }, ranksBelow: { link: n } (rank under n), route:
+       { link: 'romance' | 'friend' | 'none' } (2026-10-21, the rank-15 batch), heading, place, time, bg, cast, scene }.
      One plays at most every other day, never on a trip or on a day whose story event has already played, and never in a
      free slot that's already spent. Of the routines that fit, the one that goes stale soonest plays first (then file order),
      so a crowded month doesn't leave beats to expire unseen; one in a later slot today that's three days from going stale
@@ -1197,9 +1236,13 @@ window.FemcGame = (() => {
     if (!(e.flags || []).every(flag) || (e.noFlags || []).some(flag)) return false;
     if (!(e.met || []).every(isMet)) return false;
     if (e.ranks && !Object.entries(e.ranks).every(([id, r]) => progress(id).rank >= r)) return false;
+    if (e.ranksBelow && !Object.entries(e.ranksBelow).every(([id, r]) => progress(id).rank < r)) return false;
+    if (e.route && !routeFits(e.route)) return false;
     if (e.heading && !headingIs(e.heading)) return false;
     return true;
   }
+  // { link: 'romance' | 'friend' | 'none' (no route yet) } for routines and run-ins; a reversed link fits nothing.
+  const routeFits = want => Object.entries(want).every(([id, r]) => { const p = progress(id); return !p.reversed && (r === 'none' ? !p.route : p.route === r); });
   function dailyLife(slot = S.slot, d = S.day) {
     const info = dayInfo(d), state = S.dailyLife || { seen: [], lastDay: -99 };
     if (info.type === 'trip' || d - (state.lastDay ?? -99) < 2 ||
@@ -1275,7 +1318,7 @@ window.FemcGame = (() => {
     return Object.values(LINKS).find(l => {
       if (!l.closes || d <= dayOf(l.closes) || l.status === 'stub' || !isMet(l.id)) return false;
       const p = progress(l.id);
-      return p.rank > 0 && p.rank < 10 && !p.farewell;
+      return p.rank > 0 && p.rank < 10 && !p.farewell; // rank 10 is a closing link's goodbye, whatever its maxRank
     }) || null;
   }
   // The scene for a link that closed before rank 10: its own `farewell`, or a generic goodbye (no plot).
@@ -1606,7 +1649,8 @@ window.FemcGame = (() => {
     if (e.when === 'tartarus' ? !battled : battled) return false;
     if (e.when === 'rain' && info.weather !== 'rain') return false;
     if (e.heading && !headingIs(e.heading)) return false;
-    if (l.closes && d >= dayOf(l.closes)) return false;
+    if (e.noFlags && [].concat(e.noFlags).some(flag)) return false;
+    if (l.closes && d >= dayOf(l.closes) && !stretchOn(l, d)) return false;
     return true;
   }
   function lateNightDue(d = S.day) {
@@ -1889,7 +1933,7 @@ window.FemcGame = (() => {
     dayOf, dateOf, mdOf, dayInfo, slotsFor, slotName, weather, moon, END, SLOT_ORDER,
     statRank, statRankName, statProgress, statId, sumStats, gainText, addStat, addStats, lacking, addYen, takeToasts, toast, migrateStats,
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
-    homeOf, leavesAtMax, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,
+    homeOf, leavesAtMax, maxOf, isMaxed, stretchOn, afterGap, afterList, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,
     flag, effect, branch, applyChoice, addFragment, fragmentInfo, worldOf,
     portrait, scale, name, castHas, silhouette, tarot, background, moodFor, sub, setDate, dateLabel,
     activities, actById, showing, activityOk, activityInfo, doActivity, dormActs, dormInfo, dormOk, doDorm, doStudy, studyInfo, shopStock, buy, bookById, readTonight, matSellPrice, sellMat,
