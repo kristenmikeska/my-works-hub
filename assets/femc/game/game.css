@@ -402,8 +402,9 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
 .gs-bg.nightblue { filter: hue-rotate(125deg) saturate(.45) brightness(.78); }
 .gs-bg.darkhour { filter: hue-rotate(70deg) saturate(.7) brightness(.7); }
 .gs-cg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; animation: g-in .6s ease both; }
-.gs-tint { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 1.2s ease; background: radial-gradient(ellipse at 50% 20%, rgba(120, 255, 160, .28), rgba(10, 60, 30, .45) 70%); mix-blend-mode: color; }
-.gs.gs-dark .gs-tint { opacity: 1; }
+/* Hidden outright when off: an idle colour-blend layer can mis-composite over a CG in some GPU paths (Kat saw a pink wash). */
+.gs-tint { position: absolute; inset: 0; pointer-events: none; opacity: 0; visibility: hidden; transition: opacity 1.2s ease, visibility 0s linear 1.2s; background: radial-gradient(ellipse at 50% 20%, rgba(120, 255, 160, .28), rgba(10, 60, 30, .45) 70%); mix-blend-mode: color; }
+.gs.gs-dark .gs-tint { opacity: 1; visibility: visible; transition: opacity 1.2s ease, visibility 0s; }
 .gs-place { position: absolute; top: 18px; left: 22px; z-index: 3; display: flex; align-items: center; gap: 14px; max-width: calc(100vw - 300px); padding: 8px 18px; background: #14070f; transform: skewX(-14deg); box-shadow: 5px 5px 0 rgba(255, 79, 158, .55); }
 .gs-place > * { transform: skewX(14deg); }
 .gs-place b { font: italic 900 24px/1 var(--cond); white-space: nowrap; }
