@@ -24,6 +24,8 @@ Other docs, if you ever want detail:
 - ⬜ **Next:** rank 15 for Haechan, Jungwon, Akihiko (with the Gekkoukan buzz) and Shinjiro (waking up); February has room for them now
 - ⬜ **Then:** new links Danielle, Jaemin and Chenle (portraits needed: see the art list)
 
+- ⬜ **Small battle fixes queued:** All-Out cloud figures use the pose-sheet attack frames instead of dark silhouettes; a phone layout so both faces fit in bond cut-ins
+
 ## Story and characters
 - ✅ More story after Hanni, Hyein and Jihoon arrive, including the three comparing notes on Solar
 - ✅ Searchers mention her love lives back home (Hyein's near-slip, the "come home" calls, Yunjin, Hoax)
