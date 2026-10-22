@@ -26,6 +26,8 @@ Other docs, if you ever want detail:
 
 - ⬜ **Small battle fixes queued:** All-Out cloud figures use the pose-sheet attack frames instead of dark silhouettes; a phone layout so both faces fit in bond cut-ins
 
+- ⬜ **Ideas to talk about:** rank 15 for Hanni, Hyein, Mark, Minji and Jihoon; a Memories photo album (every CG and memory card you've unlocked); a Theater to replay scenes; the big push
+
 ## Story and characters
 - ✅ More story after Hanni, Hyein and Jihoon arrive, including the three comparing notes on Solar
 - ✅ Searchers mention her love lives back home (Hyein's near-slip, the "come home" calls, Yunjin, Hoax)
