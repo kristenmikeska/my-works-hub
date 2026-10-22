@@ -214,7 +214,7 @@ try:
         for(const j of G.D.jobs){
           const s=LW.at('4/8','early');s.stats={knowledge:999,courage:999,proficiency:999,charm:999,kindness:999};s.route.frags={R:9,S:9,H:9};G.hire(j);
           const start=Math.max(G.dayOf('4/8'),j.unlock?.after?G.dayOf(j.unlock.after):0);let lastWeek=-1;const log=[];
-          for(let d=start;d<=G.dayOf('1/31');d++){s.day=d;s.spent={};s.condition='good';LW.meetBy(d);const info=G.dayInfo(d);if(info.type==='trip')continue;
+          for(let d=start;d<=G.END();d++){s.day=d;s.spent={};s.condition='good';LW.meetBy(d);const info=G.dayInfo(d);if(info.type==='trip')continue;
             s.slot=j.slot;if(!G.jobOk(j).ok)continue;const wk=Math.floor((d+1)/7);if(!every&&wk===lastWeek)continue;lastWeek=wk;
             const pk=G.shiftScene(j);log.push([pk.kind,pk.kind==='quiet'?pk.key:pk.id,d]);(pk.scene||[]).forEach(l=>{if(l.flag)G.effect({flag:l.flag})});G.finishShift(j,pk);G.takeToasts();}
           const P=G.packs()[j.id],full=log.filter(x=>x[0]==='shift').map(x=>x[1]),quiet=log.filter(x=>x[0]==='quiet').map(x=>x[1]),beats=log.filter(x=>x[0]==='beat').map(x=>x[1]);
@@ -343,7 +343,7 @@ try:
     cy = p.eval(r"""(()=>{const G=FemcGame,bad=[],out={};
       for(const c of G.D.places.clubs){for(const romance of [false,true]){
         const s=LW.at('4/13','after');s.stats={knowledge:999,courage:999,proficiency:999,charm:999,kindness:999};const log=[];
-        for(let d=G.dayOf('4/13');d<=G.dayOf('1/31');d++){s.day=d;s.spent={};LW.meetBy(d);const info=G.dayInfo(d);
+        for(let d=G.dayOf('4/13');d<=G.END();d++){s.day=d;s.spent={};LW.meetBy(d);const info=G.dayInfo(d);
           // Rio and Saori's ranks grow through the year; Rio's route is set at rank 9.
           const r=Math.min(10,Math.floor((d-G.dayOf('4/21'))/24)+1);if(r>0){LW.link('rio',r,{route:r>=9?(romance?'romance':'friend'):null});LW.link('saori',r)}
           // Twice a week at most (a realistic club life next to links and jobs).
@@ -383,10 +383,10 @@ try:
     pc = p.eval(r"""(()=>{const G=FemcGame,ids=['ann','kasumi','haru','kuromi','mymelody'],bad=[];
       ids.forEach(id=>{const l=G.LINKS[id];if(!l){bad.push(id+' missing');return}if(l.kind!=='persona')bad.push(id+' kind '+l.kind);if(l.closes)bad.push(id+' closes '+l.closes);if(G.leavesAtMax(l))bad.push(id+' leaves at MAX');
         const txt=JSON.stringify(l);%s.forEach(w=>{if(txt.includes(w))bad.push(id+': still says "'+w+'"')});
-        // At MAX in late January they're still here (afterMax plays, nothing closed), no goodbye is due.
-        const s=LW.at('1/29','evening');s.flags['found-mymelody']=true;LW.link(id,10);const st=G.linkStatus(l,G.dayOf('1/29'),G.homeOf(l).slot==='evening'?'evening':'after');if(['closed','max'].includes(st.reason))bad.push(id+' gone at MAX: '+st.reason);
+        // At MAX at the end of the year (early March now) they're still here (afterMax plays, nothing closed), no goodbye is due.
+        const s=LW.at('3/5','evening');s.flags['found-mymelody']=true;LW.link(id,10);const st=G.linkStatus(l,G.dayOf('3/5'),G.homeOf(l).slot==='evening'?'evening':'after');if(['closed','max'].includes(st.reason))bad.push(id+' gone at MAX: '+st.reason);
         if(!(l.afterMax||[]).length)bad.push(id+': no afterMax');
-        const s2=LW.at('1/30','early');LW.link(id,5);if(G.farewellDue()?.id===id)bad.push(id+': a goodbye is due');
+        const s2=LW.at('3/6','early');LW.link(id,5);if(G.farewellDue()?.id===id)bad.push(id+': a goodbye is due');
         // No delayed texts: reactive ones arrive the day after (delay 1 at most).
         Object.entries(l.afterRank||{}).forEach(([n,t])=>{if((t.delay??1)>1)bad.push(id+': afterRank '+n+' delayed '+t.delay)});
       });
@@ -434,7 +434,7 @@ try:
       let s=LW.at('7/15','evening');LW.meetBy(s.day);out.hiddenStatus=G.linkStatus(l,s.day,'evening').reason;out.notListed=!G.linksAt('dorm','evening').includes(l);
       out.secretWed=G.secretsDue().map(x=>x.id);s=LW.at('7/16','evening');out.secretThu=G.secretsDue().map(x=>x.id);s=LW.at('7/8','evening');out.secretEarly=G.secretsDue().map(x=>x.id);
       // Skipped: a whole year without finding her, she's never met, never on a list, never invites.
-      s=LW.at('7/15','evening');let seen=false;for(let d=G.dayOf('7/15');d<=G.dayOf('1/31');d++){s.day=d;s.slot='evening';LW.meetBy(d);if(G.linksAt('dorm','evening').includes(l)||G.linkStatus(l,d,'evening').ok||G.holidayInvites(d).includes(l)||G.christmasOptions(d).includes(l))seen=true;}
+      s=LW.at('7/15','evening');let seen=false;for(let d=G.dayOf('7/15');d<=G.END();d++){s.day=d;s.slot='evening';LW.meetBy(d);if(G.linksAt('dorm','evening').includes(l)||G.linkStatus(l,d,'evening').ok||G.holidayInvites(d).includes(l)||G.christmasOptions(d).includes(l))seen=true;}
       out.skipped=!seen&&!G.isMet('mymelody');out.ranks=(l.ranks||[]).filter(r=>r.scene).length;out.wed=l.ranks.every(r=>G.dayInfo(G.dayOf(r.after)).dow===3);out.home=l.home;
       return out})()""")
     print('melody', json.dumps(ml))

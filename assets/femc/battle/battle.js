@@ -4611,7 +4611,7 @@
     run = null;
     hoFinish(out === 'phase' || out === 'escaped' ? 'win' : out);
   }
-  /* 1/30, Wren's Shadow: the Last Train (story-act6 hands it over in three segments; with no segment all three play).
+  /* 3/6 (1/30 until the year ran to March), Wren's Shadow: the Last Train (story-act6 hands it over in three segments; with no segment all three play).
      1. Last Call: Wren never attacks; every turn she asks (Charm, Fear, Distress). Hold (Guard) and answer, or strike her:
         striking shortens the phase and isn't punished. It ends when her resolve breaks (four rounds) or she falls.
      2. No Stops: the train and three lantern windows, one sleeping Solar in each. Only the lanterns of the locked route can

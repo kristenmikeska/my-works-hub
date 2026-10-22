@@ -160,7 +160,7 @@
 })();
 
 /* The one bad ending ("the last stop"): giving up at the crucial moment, taking the ticket at the solstice.
-   It plays in place, inside the solstice scene; story-endings.js closes the year on it if the calendar reaches 1/31. */
+   It plays in place, inside the solstice scene; story-endings.js closes the year on it on the last night (3/7). */
 window.FEMC_STORY_KIT.badEnding = [
   { music: 'night' },
   { n: "The train came in at the far end of the platform, where there were no rails, and there were rails. Black and green and gleaming, unhurried, its lantern windows lit gold, the horn so close now that she felt it in her teeth. It slowed. It stopped exactly in front of the handless clock, as if it had been aiming for them all year." },

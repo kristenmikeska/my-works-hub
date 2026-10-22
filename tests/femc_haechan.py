@@ -293,14 +293,14 @@ try:
 
     # ── endings ──
     end = p.eval(r"""(()=>{const G=FemcGame,out={};
-      const card=flags=>{HC.at('1/31','late',{flags:{'year-goes-on':true,...flags}});return G.endingName()};
+      const card=flags=>{HC.at(G.mdOf(G.END()),'late',{flags:{'year-goes-on':true,...flags}});return G.endingName()};
       out.names=[card({'route-H':true}),card({'route-R':true}),card({'route-S':true}),card({'route-stay':true}),card({'true-final':true}),card({'route-bad':true})];
       const txt=JSON.stringify(G.D.events.find(x=>x.id==='end-ending'));out.card=txt.includes('ENDING · the unfated life')&&!txt.includes('ENDING · the count');out.cg=txt.includes('ending-hoax-home');
-      localStorage.setItem('kg-femc-revamp-clears',JSON.stringify([{run:'old',ending:'the count'}]));HC.at('1/31','late',{flags:{'route-H':true,'year-goes-on':true}});G.S.runId='new';
+      localStorage.setItem('kg-femc-revamp-clears',JSON.stringify([{run:'old',ending:'the count'}]));HC.at(G.mdOf(G.END()),'late',{flags:{'route-H':true,'year-goes-on':true}});G.S.runId='new';
       document.querySelectorAll('.gs,.g-overlay').forEach(x=>x.remove());return out})()""")
     ok(end['names'] == ['the unfated life', 'where it begins', 'low tide', 'here', 'I am thou', 'the last stop'], f"ending names: {end['names']}")
     ok(end['card'] and end['cg'], 'the Hoax ending closes on "the unfated life" and keeps its CG')
-    p.eval(r"""(()=>{const G=FemcGame;HC.at('1/31','late',{flags:{'route-H':true,'year-goes-on':true}});G.S.runId='hc-test';G.S.events.push('end-ending');G.S.lateNights={seen:[],lastDay:9999};document.querySelectorAll('.gs,.g-overlay').forEach(x=>x.remove());FemcGameUI.run()})()""")
+    p.eval(r"""(()=>{const G=FemcGame;HC.at(G.mdOf(G.END()),'late',{flags:{'route-H':true,'year-goes-on':true}});G.S.runId='hc-test';G.S.events.push('end-ending');G.S.lateNights={seen:[],lastDay:9999};document.querySelectorAll('.gs,.g-overlay').forEach(x=>x.remove());FemcGameUI.run()})()""")
     for _ in range(200):
         if p.eval("!!document.querySelector('.g-end')"):
             break
@@ -334,7 +334,7 @@ try:
 
     # ── capacity ──
     cap = p.eval(r"""(()=>{const G=FemcGame,s=HC.at('4/8','early');s.dailyLife={seen:[],lastDay:-99};const plays=[];
-      for(let d=G.dayOf('4/8');d<=G.dayOf('1/31');d++){s.day=d;const info=G.dayInfo(d);s.spent={};
+      for(let d=G.dayOf('4/8');d<=G.END();d++){s.day=d;const info=G.dayInfo(d);s.spent={};
         if(d>=G.dayOf('4/18'))s.flags['joined-junpei']=true; if(d>=G.dayOf('12/22'))s.flags['year-goes-on']=true;
         for(const slot of G.slotsFor(info)){s.slot=slot;
           const due=G.D.events.filter(e=>!e.unlock&&e.date===info.md&&({darkhour:'evening'}[e.slot]||e.slot||'evening')===slot&&!s.events.includes(e.id)&&(!e.flag||s.flags[e.flag]));
@@ -345,7 +345,7 @@ try:
       // Late nights: each one can be the night's scene on at least one night in its window, at the rank he has by then.
       const l=G.LINKS.haechan,all=(l.lateNights||[]).map(x=>x.id),never=[];
       for(const e of (l.lateNights||[])){let fits=false;
-        for(let d=G.dayOf(e.after);d<=G.dayOf(e.until||'1/30')&&!fits;d++){const w=G.dayInfo(d);if(e.when==='rain'&&w.weather!=='rain')continue;
+        for(let d=G.dayOf(e.after);d<=G.dayOf(e.until||G.mdOf(G.END()-1))&&!fits;d++){const w=G.dayInfo(d);if(e.when==='rain'&&w.weather!=='rain')continue;
           HC.at(G.mdOf(d),'late',{flags:d>G.dayOf('12/21')?{'year-goes-on':true}:{}});const r=l.ranks.filter(x=>G.dayOf(x.after)<=d).length;
           HC.link('haechan',r,e.route&&e.route!=='none'?{route:e.route}:{});if(e.when==='tartarus')G.S.tonight='battled';
           (e.events||[]).forEach(x=>{if(!G.S.events.includes(x))G.S.events.push(x)});G.S.lateNights={seen:all.filter(x=>x!==e.id),lastDay:-99};

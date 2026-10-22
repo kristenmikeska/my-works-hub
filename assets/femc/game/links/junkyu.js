@@ -11,7 +11,7 @@
    he's the smart one (geniusuk). They all live at the Kirijo guesthouse by the station (FEMC-REVAMP-LORE.md); breakfast or a
    night on the dorm sofa is a visit.
    Ranks 8-10 and the afterMax scenes read the solstice: route-H (the star pin shines: he's taking her home), route-true (all
-   three charms hum together), anything else (the star has gone quiet: the ranks take a goodbye shape; on 1/30 the crew go
+   three charms hum together), anything else (the star has gone quiet: the ranks take a goodbye shape; on 3/6 the crew go
    home without her, Junkyu waving until the door shuts).
    Own flags, set and read only in this file: junkyu-hugs (r1) · junkyu-signs (r2) · junkyu-rhythm (r3) · junkyu-hug-list (r4)
    · junkyu-counter (r5) · junkyu-sundays (r6) · junkyu-card (r7) · junkyu-coin (r8).

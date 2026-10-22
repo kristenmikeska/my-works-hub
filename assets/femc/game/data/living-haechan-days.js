@@ -259,7 +259,7 @@
 
   // ── December ──────────────────────────────────────────────────────────────────────────────────────────────────────
 
-  { id: 'hc-day-four-bars', after: '12/26', until: '1/26', slot: 'evening', events: ['a4-household-introductions'], flags: ['year-goes-on'],
+  { id: 'hc-day-four-bars', after: '12/26', until: '3/2', slot: 'evening', events: ['a4-household-introductions'], flags: ['year-goes-on'],
     place: 'Iwatodai Dorm · Lounge', time: 'Evening', bg: 'iwatodaidorm-livingroom-night', scene: [
       { n: "Haechan had decided at some point that the household's towels were his problem. Nobody had asked him to. They just started coming back from the dryer folded into identical bricks, corners squared, and tonight he was doing it in the lounge, on the coffee table, a basket of everyone's at his feet, while Kuromi sat on the arm of the sofa watching him like a guard dog watching a burglar who'd brought his own ladder." },
       { s: 'kuromi', f: 'serious', t: "Why are you folding MY towel. Is this a threat. Is this a punk thing. Because I know punk things, and this is NOT one." },
@@ -484,7 +484,7 @@
 
   // ── Winter break and January ──────────────────────────────────────────────────────────────────────────────────────
 
-  { id: 'hc-day-tables', after: '12/25', until: '1/24', slot: 'after', offOnly: true, flags: ['year-goes-on'],
+  { id: 'hc-day-tables', after: '12/25', until: '2/28', slot: 'after', offOnly: true, flags: ['year-goes-on'],
     events: ['a4-household-introductions', 'a6-remember'],
     place: 'Iwatodai Dorm · Front', time: 'Daytime', bg: 'iwotodaidorm-outside', scene: [
       { n: "The two tables Mitsuru had borrowed for the bounenkai were still folded against the lounge wall like tired guests, and on a quiet afternoon she taped a note to them in her handwriting. *Kirijo Guesthouse. Today. Please.* The please was underlined, which in Mitsuru's handwriting was a threat." },
@@ -542,7 +542,7 @@
       { bond: { haechan: 1 } }
     ] },
 
-  { id: 'hc-day-the-row', after: '12/28', until: '1/29', slot: 'early', flags: ['year-goes-on'], events: ['a4-household-introductions'],
+  { id: 'hc-day-the-row', after: '12/28', until: '3/5', slot: 'early', flags: ['year-goes-on'], events: ['a4-household-introductions'],
     place: 'Iwatodai Dorm · Stairs', time: 'Early Morning', bg: 'iwatodaidorm-hallway', scene: [
       { n: "There was a sign on the vending machine by the back stairs. Handwritten on the back of a takeout menu, taped across the bottom row in square, small, very neat letters. RESERVED. DON'T." },
       { n: "Junpei was standing in front of it in his pajamas with a coin in his hand, deeply offended." },
@@ -589,7 +589,7 @@
       { bond: { haechan: 1 } }
     ] },
 
-  { id: 'hc-day-mark', after: '12/27', until: '1/29', slot: 'evening', flags: ['year-goes-on'], events: ['a4-household-introductions', 'a4-mark'],
+  { id: 'hc-day-mark', after: '12/27', until: '3/5', slot: 'evening', flags: ['year-goes-on'], events: ['a4-household-introductions', 'a4-mark'],
     place: 'Iwatodai Dorm · Lounge', time: 'Evening', bg: 'iwatodaidorm-livingroom-night', scene: [
       { n: "Mark came over on one of the long nights of the break with a bag of tangerines and his name on the whiteboard, and stood in the lounge doorway a beat too long before he came in, the way he always did now, as if checking the room for something. Tonight the room had Haechan in it, on the floor by the heater with his back against the sofa, and Mark's smile arrived half a second late." },
       { s: 'mark', f: 'surprised', t: "Hyuck." },
@@ -702,7 +702,7 @@
       { bond: { haechan: 1 } }
     ] },
 
-  { id: 'hc-day-twice', after: '1/4', until: '1/29', slot: 'late', flags: ['year-goes-on'], events: ['a4-household-introductions'],
+  { id: 'hc-day-twice', after: '1/4', until: '3/5', slot: 'late', flags: ['year-goes-on'], events: ['a4-household-introductions'],
     place: 'Iwatodai Dorm · Rooftop', time: 'Night', bg: 'iwatodaidorm-roof-night', scene: [
       { n: "Hanni found them on the roof at midnight, both of them, in two blankets each, and came out with a third over her own shoulders and a thermos, and stood between them at the railing and didn't say anything until she'd poured three cups." },
       { s: 'hanni', f: 'neutral', t: "I'm going to ask you something, and you're going to say fine." },

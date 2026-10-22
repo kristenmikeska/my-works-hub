@@ -610,7 +610,7 @@
         { n: "He waited a beat at the end of it, a gap, the way you'd leave a gap for a second voice, and when nothing came he laughed and filled it himself." },
         { s: 'mark', f: 'neutral', t: "—duty. Duty. You used to say the ugh part. It's fine. I'll do both parts." }
       ] },
-      { s: 'mark', f: 'neutral', t: "So. The end of the month. Everyone's talking about it. Mitsuru says *the thirty-first* the way my professors say *the final.*" },
+      { s: 'mark', f: 'neutral', t: "So. March. Everyone's talking about it. Mitsuru says *the sixth* the way my professors say *the final.*" },
       { s: 'mark', f: 'neutral', t: "Are you coming home? To ours, I mean. You don't have to tell me. I'm just— I'm asking. Everyone's asking. I'm one more person asking." },
       { n: "She knew the answer. She'd known it since the longest night of the year, since a station clock with no hands. It sat in her chest, decided, and the deciding didn't make it any easier to say out loud on a dark street to a boy with his hands in his pockets." },
       { choose: [

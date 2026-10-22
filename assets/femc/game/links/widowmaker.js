@@ -321,7 +321,7 @@
     { after: '12/23', title: '8: talon', place: 'Moonlight Bridge', time: 'Evening', scene: [
       { music: 'tender' },
       { n: "There was something wrong with her tonight. She was up on the very top of the north tower, higher than she'd ever been, on the beacon housing, crouched, not watching the city. Watching the horizon. Toward the sea. Toward where you'd look if you were waiting for something to come for you." },
-      { s: 'widowmaker', f: 'neutral', t: "Elizabeth came. The woman with the book. She stood on the walkway in the wind and talked to me as if I were a person. She said the doors open at the end of January." },
+      { s: 'widowmaker', f: 'neutral', t: "Elizabeth came. The woman with the book. She stood on the walkway in the wind and talked to me as if I were a person. She said the doors open at the beginning of March." },
       { s: 'widowmaker', f: 'serious', t: "When I go back, they will find me. Talon. They always find me. They will see what has grown back. They always see it." },
       { s: 'widowmaker', f: 'sad', t: "They will put me back in the chair. And they will take out whatever has grown. The heart that goes up. The scarf. The bridge. The fox, laughing. You." },
       { s: 'widowmaker', f: 'sad', t: "I will not remember you, petite. I am sorry. I wanted to say it while I still could." },

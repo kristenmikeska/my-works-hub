@@ -12,7 +12,7 @@
      seb-turn-around (rank 6: "turn around and ride it back") → rank 9 (she only quotes him if he said it to her).
      seb-sister (rank 10: "his sister, the annoying kind") → afterMax "frogs in winter".
    Living world (texts after ranks 2/3/4/6/8/9, holidays 10/12 and 1/11, a rainy visit and a call): data/living-visitors.js.
-   afterMax: four scenes after rank 10 (he stays until the doors open on 1/30). */
+   afterMax: four scenes after rank 10 (he stays until the doors open on 3/6). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'sebastian', name: 'Sebastian', short: 'Sebastian', arcana: 'Fool', numeral: '0', from: 'Stardew Valley',
   kind: 'visitor',
@@ -528,7 +528,7 @@
     { after: '10/24', title: '9: wanting to stay', place: 'Paulownia Mall · Game Panic', time: 'Evening', scene: [
       { music: 'night' },
       { n: "October rain, cold this time, the first rain of the year that meant it. The awning. The arcade lights flickering on the wet pavement like a broken television. Sebastian was already there, soaked, without an umbrella, the way he always was. He didn't say hello. He started talking before she'd stopped walking." },
-      { s: 'sebastian', f: 'neutral', t: "Elizabeth came by the flat. The lady with the book. She said the doors open at the end of January. Everybody who came through can go home." },
+      { s: 'sebastian', f: 'neutral', t: "Elizabeth came by the flat. The lady with the book. She said the doors open at the beginning of March. Everybody who came through can go home." },
       { s: 'sebastian', f: 'sad', t: "I spent my whole life wanting to leave home. And now I get to go back, and the only thing I can think is, I don't want to leave here." },
       { s: 'sebastian', f: 'sad', t: "That's the worst possible thing that could happen to a person like me. Wanting to stay somewhere." },
       { choose: [

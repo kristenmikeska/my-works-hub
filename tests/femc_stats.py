@@ -483,7 +483,7 @@ try:
         return p.eval("""(()=>{const G=FemcGame;T.fresh('4/20','early');const S=G.S;let x=%d;const rnd=()=>(x=(x*1103515245+12345)%%2147483648)/2147483648;
           const pick=a=>a[Math.floor(rnd()*a.length)];G.hire(G.D.jobs[0]);G.hire(G.D.jobs[1]);
           const toast=()=>G.takeToasts();let qs=0,tt=0;
-          for(let d=G.dayOf('4/20');d<=G.dayOf('1/31');d++){S.day=d;S.spent={};S.condition='good';S.yen=99999;const i=G.dayInfo(d);if(i.type==='trip')continue;
+          for(let d=G.dayOf('4/20');d<=G.END();d++){S.day=d;S.spent={};S.condition='good';S.yen=99999;const i=G.dayInfo(d);if(i.type==='trip')continue;
             if(i.type==='school'){for(const sl of ['morning','afternoon']){S.slot=sl;const q=rnd()<0.36?G.classQuestion():null;if(q){qs++;G.answerClass(q,rnd()<0.7?q.correct:(q.correct+1)%%4)}else if(rnd()<0.19)G.addStat('knowledge',1)}}
             if(i.exam&&i.exam.index===i.exam.count-1){const id=i.exam.id;S.exams[id]={answers:Object.fromEntries((G.D.q.exams[id]?.questions||[]).map(q=>[q.id,rnd()<0.7])),posted:false};G.postExam(id)}
             for(const sl of ['after','evening']){S.slot=sl;S.spent={};const r=rnd();if(r<%f)continue;

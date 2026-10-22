@@ -26,7 +26,7 @@
                                       on the next line either way.
      { summon: 'haenim', glitch }   the Evoker and the Persona card. Forms: 'haenim-sunna' (Sunna), 'haenim-harbor' (Mazu),
                                     'haenim-nike' (Nike), 'haenim-unveiled'; name / sub override the card's two lines
-     { end: 'id' }                  stops the calendar: the game goes to the last night (1/31), where the endings play
+     { end: 'id' }                  stops the calendar: the game goes to the last night (calendar `end`, 3/7), where the endings play
      { ifReversed: 'linkId' }       -> then / else, when that link is reversed (the flag reversed-<id> mirrors it)
      choices may carry link: 'id' (whose bond reverse / route apply to); in story events a reverse that reaches 2 turns it now
      { act: { numeral, title } }    an act title card

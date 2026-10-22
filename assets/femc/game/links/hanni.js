@@ -925,7 +925,7 @@
       ] }
     ] },
     { title: 'snow day practice', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', scene: [
-      { ifBefore: '1/27', then: [
+      { ifBefore: '3/3', then: [
         { n: "There was batter on the ceiling. Not much. A single pale freckle of it above the stove, where Junpei had tried to flip one by tossing it, which Hanni had specifically asked him not to do, and now Hanni was standing on a chair with a damp cloth looking up at it with an expression of deep personal betrayal." },
         { s: 'hanni', f: 'serious', t: "These are PRACTICE pancakes. For the first snow. The real ones have to be perfect. And SOMEONE is treating the practice pancakes like a circus." },
         { s: 'junpei', f: 'flustered', t: "It was one time!" }

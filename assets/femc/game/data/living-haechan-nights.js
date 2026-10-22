@@ -210,7 +210,7 @@
     ] },
 
     /* ── After 12/5 he goes into the tower with them (spans the solstice: R / S / H / true / stay). ── */
-    { id: 'hc-ln-tower', kind: 'dorm', rank: 6, events: ['a5-haechan-awakens'], after: '12/8', until: '1/29', when: 'tartarus', place: 'Iwatodai Dorm · Laundry Room', time: 'Night · 3 AM', music: 'tender', scene: [
+    { id: 'hc-ln-tower', kind: 'dorm', rank: 6, events: ['a5-haechan-awakens'], after: '12/8', until: '3/5', when: 'tartarus', place: 'Iwatodai Dorm · Laundry Room', time: 'Night · 3 AM', music: 'tender', scene: [
       { n: "Three in the morning after the tower, and the laundry room smelled of hot lint and the strange flat nothing-smell that came home on all of them from Tartarus, like a room nobody had ever breathed in. Haechan was at the sink in a T-shirt, scrubbing the cuff of his jacket under the cold tap with a nailbrush and a bar of somebody's soap, and the jacket's left pocket hung heavy against the basin with what he carried in it now." },
       { n: "He'd taken the Evoker out and put it on the shelf above the dryer, between the detergent and a lost sock, and every so often he looked up at it the way you look at a phone you're waiting on." },
       { s: 'haechan', f: 'neutral', t: "There's a floor in there with rails in the walls. Did you hear it tonight?" },
@@ -386,7 +386,7 @@
     ] },
 
     /* ── Friend (after the lock), after a night in the tower. ── */
-    { id: 'hc-ln-friend-tower', kind: 'dorm', rank: 8, route: 'friend', when: 'tartarus', flag: 'year-goes-on', after: '12/22', until: '1/29', place: 'Iwatodai Dorm · Stairs', time: 'Late Night', music: 'joy', scene: [
+    { id: 'hc-ln-friend-tower', kind: 'dorm', rank: 8, route: 'friend', when: 'tartarus', flag: 'year-goes-on', after: '12/22', until: '3/5', place: 'Iwatodai Dorm · Stairs', time: 'Late Night', music: 'joy', scene: [
       { n: "Back from the tower at half past one, filthy and starving, and Haechan was already on the stairs ahead of her, four steps up with his jacket off and two cans on the step beside him, which he had bought, apparently, before they left, and carried up and down a haunted tower in his pocket, for this." },
       { n: "He held one out to her without looking. Then he drew it back a little, just out of reach." },
       { s: 'haechan', f: 'neutral', t: "Before you take this. I'd like to review tonight." },
@@ -665,7 +665,7 @@
     ] },
 
   { id: 'ri-hc-counter', who: 'haechan', where: { acts: [], areas: [], jobs: ['konbini', 'yeobos', 'chagall'] },
-    flags: ['arrived-haechan', 'year-goes-on'], after: '12/22', until: '1/29', scene: [
+    flags: ['arrived-haechan', 'year-goes-on'], after: '12/22', until: '3/5', scene: [
       { n: "The bell over the door went for what felt like the hundredth time that shift, and she looked up with the customer smile already on, and it slid straight off again, because it was Haechan, in out of the cold with his ears wind-red, looking around the place like a man who'd been sent to inspect it." },
       { s: 'haechan', f: 'neutral', t: "Don't do the face. I've seen the face. You do it at people you're going to talk about later." },
       { ifHeading: 'R', then: [

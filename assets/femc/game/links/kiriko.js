@@ -11,7 +11,7 @@
      kiriko-borrowed (rank 9: "maybe I just borrowed it") → rank 10.
    Living world (texts after ranks 2/3/5/6/8/9, holidays 9/23 and 12/31, a visit and a call): data/living-visitors.js.
    Runners (skill, on the page only): Solar is a Grandmaster support who mains Kiriko; Haechan mains Widowmaker.
-   afterMax: four scenes after rank 10 (she stays until the doors open on 1/30). */
+   afterMax: four scenes after rank 10 (she stays until the doors open on 3/6). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'kiriko', name: 'Kiriko', short: 'Kiriko', arcana: 'Fortune', numeral: 'X', from: 'Overwatch',
   kind: 'visitor',

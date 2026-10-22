@@ -45,7 +45,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-akihiko-bathhouse', who: 'akihiko', where: { acts: ['bathhouse', 'electricbath'] }, slot: 'evening',
-    after: '11/1', until: '1/28', route: { akihiko: 'romance' }, scene: [
+    after: '11/1', until: '3/4', route: { akihiko: 'romance' }, scene: [
       { n: "When she came out of the bathhouse, pink to the ears and her hair still damp at the ends, the cold hit her all at once, and so did Akihiko, who was coming the other way at the end of his evening run and very nearly went through her." },
       { s: 'akihiko', f: 'surprised', t: "—Sorry. Solar. Your hair's wet." },
       { s: 'solar', f: 'neutral', t: "That's what happens in a bath." },
@@ -654,7 +654,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-rohan-electricbath', who: 'rohan', where: { acts: ['electricbath'] }, slot: 'evening', met: ['rohan'],
-    after: '9/9', until: '1/24', scene: [
+    after: '9/9', until: '2/28', scene: [
       { n: "In the lobby afterward, red to the ears and still faintly buzzing, she found Rohan Kishibe on the bench by the milk fridge with a towel around his neck and a sketchbook open on his knee, drawing furiously." },
       { s: 'rohan', f: 'serious', t: "Don't talk to me yet. I'm getting it down before it fades." },
       { s: 'rohan', f: 'neutral', t: "Do you know what that feels like? Of course you do, you were in it. Electricity through water, through the *skin*. Every artist draws it as a skeleton and jagged lines. Wrong. All wrong. It's ants. Polite ants." },
@@ -673,7 +673,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-widowmaker-watching', who: 'widowmaker', where: { areas: ['portisland'] }, slot: 'evening', met: ['widowmaker'],
-    after: '10/7', until: '1/24', scene: [
+    after: '10/7', until: '2/28', scene: [
       { n: "On her way back to the station she had the specific feeling, a prickle at the nape of the neck, of being watched from very far away, and when she looked up, three floors above the street on a fire escape with the city light behind her, Widowmaker raised two fingers in a small salute." },
       { n: "A minute later she was simply there at Solar's side on the concourse, as if she had been walking with her all along, not a hair out of place." },
       { s: 'widowmaker', f: 'neutral', t: "You walk with your hands in your pockets. In a crowd. At night. If I wanted your wallet, petite, I would have it already." },
@@ -735,7 +735,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-hyein-hairdryer', who: 'hyein', where: { acts: ['bathhouse', 'electricbath'] }, slot: 'evening', flags: ['arrived-hyein'],
-    after: '9/14', until: '1/24', scene: [
+    after: '9/14', until: '2/28', scene: [
       { n: "In the changing room afterward, the one hair dryer on the wall was occupied, and had been for some time, by Hyein, who was drying her hair section by section with the focus of a sculptor and narrating every section under her breath." },
       { s: 'hyein', f: 'surprised', t: "Sol! Oh my God. Okay. Sit. You're next. You can't go out like that, you'll get sick, and then you'll be sick *and* wet." },
       { s: 'hyein', f: 'happy', t: "Also I need the practice. I've never done anyone's hair at a bathhouse. It's like a salon if the salon was a sauna." },
@@ -753,7 +753,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-jihoon-megabowl', who: 'jihoon', where: { jobs: ['hagakure'] }, slot: 'evening', flags: ['arrived-jihoon'],
-    after: '9/20', until: '1/24', scene: [
+    after: '9/20', until: '2/28', scene: [
       { n: "At the busy end of the counter somebody had ordered the Mega Bowl, and somebody else, two stools down, had appointed himself the commentator, and the commentator was Park Jihoon." },
       { s: 'jihoon', f: 'serious', t: "Minute nineteen. He's slowing down. He's looking at the broth. Never look at the broth. The broth can smell fear." },
       { s: 'jihoon', f: 'happy', t: "Oh, it's you. Nice apron. Very humble. Very peasant. I love that for you." },
@@ -771,7 +771,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-minji-gulls', who: 'minji', where: { acts: ['pier', 'beachclean'] }, slot: 'after', flags: ['arrived-minji'],
-    after: '9/27', until: '1/24', scene: [
+    after: '9/27', until: '2/28', scene: [
       { n: "Halfway down the pier there was a camera pointed at the gulls, and behind it Minji, crouched low on the boards with her elbows on her knees, holding so still that the gulls had given up being suspicious of her." },
       { s: 'minji', f: 'happy', t: "Hi. Don't move. Okay, you can move. They're used to me now. I bribed them." },
       { s: 'minji', f: 'neutral', t: "Can I turn around? Just for a second. You and the water. You can say no. I'll still like you." },
@@ -789,7 +789,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-yunjin-taxi-coffee', who: 'yunjin', where: { acts: ['vending'], areas: ['station'] }, flags: ['arrived-yunjin'],
-    after: '10/11', until: '1/24', scene: [
+    after: '10/11', until: '2/28', scene: [
       { n: "On her way to the platform she heard a vending machine being spoken to, firmly, in English, and found Yunjin in her yellow puffer feeding it coins one at a time with three cans of coffee already clutched against her chest." },
       { s: 'yunjin', f: 'serious', t: "Don't judge me. They're for taxi drivers." },
       { s: 'yunjin', f: 'neutral', t: "It's coffee for taxi drivers, babe. It's sad and sweet and it's eighty yen and I need it in my body. I'm just being honest about who it's for." },
@@ -806,7 +806,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-yunjin-konbini', who: 'yunjin', where: { jobs: ['konbini'] }, slot: 'evening', flags: ['arrived-yunjin'],
-    after: '10/11', until: '1/24', scene: [
+    after: '10/11', until: '2/28', scene: [
       { n: "At half past eleven the door chimed, and it was Yunjin, in a hoodie over pajama pants and slippers that weren't made for outside, carrying nothing, wanting nothing, leaning on the counter on both elbows." },
       { s: 'yunjin', f: 'neutral', t: "I'm always up. You know that. I saw your shift on the fridge." },
       { s: 'yunjin', f: 'happy', t: "I'm not buying anything. I'm a customer emotionally." },
@@ -823,7 +823,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-jungwon-corner-table', who: 'jungwon', where: { acts: ['cafestudy'], jobs: ['chagall'] }, flags: ['arrived-jungwon'],
-    after: '10/15', until: '1/24', scene: [
+    after: '10/15', until: '2/28', scene: [
       { n: "At the corner table by the window, the one with the bad lamp, Jungwon had been sitting for an hour and a half behind a stack of borrowed textbooks and a single coffee long gone cold, and as far as Solar could tell he had not eaten anything at all." },
       { s: 'jungwon', f: 'neutral', t: "Solar. Hello. I'm almost finished." },
       { s: 'jungwon', f: 'serious', t: "Their curriculum is three weeks ahead of ours in mathematics and two weeks behind in history. I'm reconciling them. It's for no one. I'm aware of that." },
@@ -844,7 +844,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-jaehyun-bookworms', who: 'jaehyun', where: { jobs: ['bookworms'] }, flags: ['arrived-jaehyun'],
-    after: '10/26', until: '1/24', scene: [
+    after: '10/26', until: '2/28', scene: [
       { n: "Near closing the bell over the door rang and Jaehyun came in, dark hair in a neat side part, scarf knotted exactly, and went straight to the games-and-strategy shelf and stood in front of the Go manuals with his hands behind his back as if they were a field he meant to read." },
       { s: 'jaehyun', f: 'neutral', t: "Sister. You work here." },
       { s: 'jaehyun', f: 'neutral', t: "Your shelving's alphabetical by author, within subject. That's good. That's a system." },
@@ -862,7 +862,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-junkyu-matinee', who: 'junkyu', where: { acts: ['cinema'] }, flags: ['arrived-crew'],
-    after: '11/1', until: '1/24', scene: [
+    after: '11/1', until: '2/28', scene: [
       { n: "On her way out of the theater she found Junkyu in the lobby under the poster for the film they had evidently both just seen, crying freely, a box of popcorn held to his chest, while Hyunsuk patted his shoulder with an expression of profound embarrassment." },
       { s: 'junkyu', f: 'sad', t: "Sol!!! Did you see it? Did you see the END?" },
       { s: 'junkyu', f: 'happy', t: "I'm okay. I'm so okay. It was so good. Hyunsuk didn't cry. Hyunsuk's a robot." },
@@ -880,7 +880,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-haechan-curb', who: 'haechan', where: { acts: ['hagakure', 'wildduck', 'bathhouse', 'electricbath'], jobs: ['hagakure'] }, slot: 'evening',
-    flags: ['arrived-haechan'], after: '11/5', until: '1/24', scene: [
+    flags: ['arrived-haechan'], after: '11/5', until: '2/28', scene: [
       { n: "On her way out into the cold she found Haechan on the curb across the street under the one streetlight that worked, an unlit cigarette between two fingers and the look of somebody in the middle of a long conversation with it." },
       { s: 'haechan', f: 'neutral', t: "I'm quitting." },
       { s: 'haechan', f: 'neutral', t: "This is what quitting looks like. You hold it. You don't light it. It's very visual. It's a whole performance." },
@@ -898,7 +898,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-sunoo-research', who: 'sunoo', where: { jobs: ['chagall'] }, flags: ['arrived-sunoo'],
-    after: '11/8', until: '1/24', scene: [
+    after: '11/8', until: '2/28', scene: [
       { n: "Around four a boy in a pastel cardigan ordered the Pheromone Coffee, took one sip, set it down, and began writing in a small notebook with the gravity of a food critic, and it took Solar a full minute to recognize Sunoo behind the sunglasses he had very obviously put on just for this." },
       { s: 'sunoo', f: 'surprised', t: "Solar! No! I'm not here!" },
       { s: 'sunoo', f: 'neutral', t: "I'm not spying. It's research. Every café on the Strip has a pastry. This place has a *coffee*. People come here for one coffee. I need to understand." },
@@ -916,7 +916,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-cherry-coat', who: 'cherry', where: { acts: ['boutique'] }, flags: ['arrived-cherry'],
-    after: '11/14', until: '1/24', scene: [
+    after: '11/14', until: '2/28', scene: [
       { n: "She was coming out of the changing rooms when the next curtain whipped back and Cherry stepped out in a coat far too long for her, looked at herself in the mirror, and told her own reflection, with real venom, that it was hideous." },
       { s: 'cherry', f: 'neutral', t: "Don't say anything. I know. It's hideous. I'm buying it." },
       { s: 'cherry', f: 'serious', t: "It's for skating. I need to look like I don't care if I fall. This coat doesn't care about anything. Look at it." },
@@ -935,7 +935,7 @@ window.FEMC_GAME_RUNINS = [
     ] },
 
   { id: 'ri-mark-credits', who: 'mark', where: { acts: ['cinema', 'lateshow'] }, flags: ['arrived-mark'],
-    after: '11/19', until: '1/24', scene: [
+    after: '11/19', until: '2/28', scene: [
       { n: "On her way out of the theater she noticed somebody still sitting in the dark of row F, after the credits, after the lights, headphones around his neck, and it was Mark, with a hand over his mouth, very still." },
       { s: 'mark', f: 'surprised', t: "Oh— Sol. Hey. Hi. I'm fine. I'm totally fine." },
       { s: 'mark', f: 'neutral', t: "The score. Did you hear the score? The cellos at the end, under everything. Nobody stayed for it. They all just got up. Somebody had to stay." },

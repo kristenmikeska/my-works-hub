@@ -53,7 +53,7 @@ try:
  p.wait("FemcBattle.screen()==='preparation'")
  assert p.eval("FemcBattle.marks['battle-start']===1 && FemcBattle.save.gear.eq.solar.weapon==='naginata1' && FemcBattle.save.party.includes('minji')")
  # A new handoff must use its requested lineup, not the previous preparation's saved selection. Solo: only Solar's gear.
- p.goto('femc-game.html?speed=10&seed=2');p.eval("FemcGame.S.day=FemcGame.dayOf('1/30');FemcGame.makeHandoff('scripted',{script:'finale',segment:3,forced:true,party:['solar','akihiko','yukari']})")
+ p.goto('femc-game.html?speed=10&seed=2');p.eval("FemcGame.S.day=FemcGame.dayOf('3/6');FemcGame.makeHandoff('scripted',{script:'finale',segment:3,forced:true,party:['solar','akihiko','yukari']})")
  prep();assert p.eval("!document.querySelector('[data-prep=party]') && document.querySelector('.bt-prep-list').children.length===1 && FemcBattle.save.party.includes('yukari')")
  menu('equip')
  assert p.eval("document.querySelectorAll('.g-fm-ov:not(.out) [data-eq]').length===1 && !!document.querySelector('.g-fm-ov:not(.out) [data-eq=solar]')")

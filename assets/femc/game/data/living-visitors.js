@@ -9,7 +9,7 @@
      temple bell), Sebastian 10/12 (Sports Day) and 1/11 (Coming of Age Day). Friendship only; no route is read or set.
    - Late nights: none of them lives in the dorm (FEMC_GAME_LODGING), so each is a visit to the dorm's front step or a
      call. Mercy's 3 a.m. call needs the flag mercy-three-am (her rank 9, "the person I'd call at three in the morning").
-   Visitors go home through the doors on 1/30; nothing here plays past 1/29. */
+   Visitors go home through the doors on 3/6 (1/30 until the year ran to March); nothing here plays past 3/5. */
 (() => {
   const X = (window.FEMC_GAME_LINK_EXTRAS ||= {});
   const add = (id, field, v) => {
@@ -97,7 +97,7 @@
   });
 
   add('mercy', 'lateNights', [
-    { id: 'mercy-ln-ribs', kind: 'call', rank: 8, after: '9/25', until: '1/29', when: 'tartarus', place: "Iwatodai Dorm · Solar's Room", time: 'Late Night', music: 'night', scene: [
+    { id: 'mercy-ln-ribs', kind: 'call', rank: 8, after: '9/25', until: '3/5', when: 'tartarus', place: "Iwatodai Dorm · Solar's Room", time: 'Late Night', music: 'night', scene: [
       { n: "Solar had been back from Tartarus for twenty minutes and was lying on top of the covers in her clothes, too tired to take them off, when the phone went on the desk. Not a text. A call. The screen said ANGELA, in the capitals Solar had typed it in, and it was eleven-thirty at night." },
       { phone: [{ from: 'mercy', t: 'Ribs.' }] },
       { n: "That was all she said when Solar picked up. Not hello. Ribs. In the voice of a woman with a clipboard." },
@@ -119,7 +119,7 @@
       { s: 'mercy', f: 'neutral', t: "You in the hour. Me in the morning. That was the deal. I'm only moving the morning a little earlier." },
       { n: "She stayed on the line while Solar went down to the kitchen for ice, and talked the whole time, about nothing, about a patient on the fourth floor who'd started knitting a second scarf and wouldn't say who it was for, and Solar lay back down with a bag of frozen edamame against her side and listened to her voice instead of the ache, which, she was fairly sure, was the point." }
     ] },
-    { id: 'mercy-ln-three', kind: 'call', rank: 9, flag: 'mercy-three-am', after: '10/21', until: '1/29', when: 'quiet', place: "Iwatodai Dorm · Solar's Room", time: 'Night · 11:40 PM', music: 'tender', scene: [
+    { id: 'mercy-ln-three', kind: 'call', rank: 9, flag: 'mercy-three-am', after: '10/21', until: '3/5', when: 'quiet', place: "Iwatodai Dorm · Solar's Room", time: 'Night · 11:40 PM', music: 'tender', scene: [
       { n: "It wasn't three in the morning. It was twenty to midnight, and the dorm had gone quiet around her floor by floor, and Solar was lying in the dark with her phone on her chest, awake for no reason she could name, the kind of awake that has nothing to do with being tired." },
       { n: "She'd said it on the roof. The person I'd call at three in the morning. She hadn't actually thought she'd do it." },
       { n: "Angela picked up on the first ring. In the background, a monitor beeped, steady, and a trolley wheel squeaked, and somebody laughed down a corridor, softly, the way people laugh in hospitals at night." },
@@ -131,10 +131,10 @@
           { s: 'mercy', f: 'neutral', t: "That's not nothing. That's the most common complaint in this building. Stay on the line. I'm doing charts. You can listen to me do charts. It's very boring. Patients find it soothing." },
           { n: "She did charts. Solar listened to the pen, and the monitor, and Angela murmuring numbers to herself in German, and somewhere around the fourth chart her eyes closed by themselves." }
         ] },
-        { t: "I keep thinking about the end of January.", notes: 3, then: [
+        { t: "I keep thinking about March.", notes: 3, then: [
           { n: "There was a pause. The pen stopped. Solar heard her put it down." },
           { s: 'mercy', f: 'neutral', t: "So do I. Every night, about now. I'm glad it isn't only me." },
-          { s: 'mercy', f: 'neutral', t: "Here is what I know, as a doctor. You can't do anything about the end of January at midnight in October. You can only sleep, so that you're there for it with your eyes open. That's all. That's the whole prescription." }
+          { s: 'mercy', f: 'neutral', t: "Here is what I know, as a doctor. You can't do anything about March at midnight in October. You can only sleep, so that you're there for it with your eyes open. That's all. That's the whole prescription." }
         ] },
         { t: "Tell me about your day.", notes: 2, then: [
           { s: 'mercy', f: 'happy', t: "Oh, you'll regret that." },
@@ -258,7 +258,7 @@
       { n: "Solar looked at the word at the bottom of the last slip, sorry, in pencil, with no tick beside it, and something cold went down her neck that she didn't have a reason for, and she let it go, because it was late, and because Kiriko was yawning." },
       { s: 'kiriko', f: 'happy', t: "Okay. Everybody's home. I can sleep now. Night, Sol-chan. Lock the door. I'll know if you don't. The fox will tell me." }
     ] },
-    { id: 'kiriko-ln-call', kind: 'call', rank: 9, after: '11/8', until: '1/29', when: 'quiet', place: "Iwatodai Dorm · Solar's Room", time: 'Late Night', music: 'tender', scene: [
+    { id: 'kiriko-ln-call', kind: 'call', rank: 9, after: '11/8', until: '3/5', when: 'quiet', place: "Iwatodai Dorm · Solar's Room", time: 'Late Night', music: 'tender', scene: [
       { n: "The phone rang at eleven. Rang. Solar stared at it. Kiriko had never once called her. Kiriko conducted her entire life through four-minute texts and pebbles." },
       { s: 'kiriko', f: 'surprised', t: "Sol-chan. Sol-chan. Phones are for CALLING. You push the green button and it's just a person. In your ear. Why did nobody tell me this. I've been typing like an animal for five months." },
       { s: 'solar', f: 'neutral', t: "...You didn't know you could call?" },
@@ -384,7 +384,7 @@
       { s: 'sebastian', f: 'neutral', t: "Here you're just in it. On a step. It's worse. I kind of like it more." },
       { n: "At midnight minus ten he stood up and pulled his hood further down and stepped out into the rain without an umbrella, the way he always did, and turned around at the gate and lifted one hand, flat, the same wave as off the motorcycle, and went, and Solar sat on the step a while longer by herself, listening to it happen to her." }
     ] },
-    { id: 'seb-ln-call', kind: 'call', rank: 7, after: '9/13', until: '1/29', when: 'quiet', place: "Iwatodai Dorm · Solar's Room", time: 'Late Night', music: 'dorm', scene: [
+    { id: 'seb-ln-call', kind: 'call', rank: 7, after: '9/13', until: '3/5', when: 'quiet', place: "Iwatodai Dorm · Solar's Room", time: 'Late Night', music: 'dorm', scene: [
       { n: "He called at eleven-fifteen and didn't say hello. He said, in a flat narrator's voice, the old-radio one he used for the lich, \"You are standing in a dormitory. It is late. There is a phone at your ear. What do you do?\"" },
       { s: 'solar', f: 'neutral', t: "...Is this the game?" },
       { s: 'sebastian', f: 'neutral', t: "New room. I wrote it tonight. I can't test it on Junpei's laptop, it's at the dorm. So you're the laptop. Say what you'd type." },

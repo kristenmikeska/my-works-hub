@@ -581,11 +581,11 @@
       { n: "Somewhere far away, far past the end of the platform, past the city, past the bay, the horn sounded. Long and low. Closer than it had ever been." }
     ] },
 
-    { after: '1/26', title: '10: the girl on the bench', place: 'Iwatodai Dorm · Rooftop', time: 'Night', gate: { total: 24 }, scene: [
+    { after: '3/2', title: '10: the girl on the bench', place: 'Iwatodai Dorm · Rooftop', time: 'Night', gate: { total: 24 }, scene: [
       { music: 'tender' },
       { n: "Wren knocked on her door at eleven. Solar knew it was Wren before she opened it. Nobody else in the building knocked like that, two small careful taps, like someone checking whether a melon was ripe. Nobody else in the building had ever needed to be let in." },
       { s: 'wren', f: 'neutral', t: "Will you come up to the roof? I want to ask you something, and I'd like to be somewhere with a lot of sky." },
-      { n: "The roof in the last week of January was the coldest place in Iwatodai. The water tank had a skin of ice down one side. The city was all lights below them, the bay black, the monorail sliding across it like a bead on a string, and over at the station, small and bright, the platform where everything had started." },
+      { n: "The roof in the first week of March was the coldest place in Iwatodai. The water tank had a skin of ice down one side. The city was all lights below them, the bay black, the monorail sliding across it like a bead on a string, and over at the station, small and bright, the platform where everything had started." },
       { n: "Wren sat down with her back against the water tank and pulled her coat around her knees and looked at the station lights for a while before she said anything. The cap was on. It was always on. Solar had stopped noticing, the way you stop noticing a ring someone always wears, until the night you see them without it." },
       { s: 'wren', f: 'neutral', t: "Tell me about her. The girl on the bench. From the beginning. You're the only one who was there." },
       { n: "So Solar told her." },

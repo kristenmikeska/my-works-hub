@@ -17,7 +17,7 @@
    Own flags (read only in this file): yunjin-jin (r1), yunjin-socks (r2), yunjin-mandarin (r3), yunjin-step (r4),
    yunjin-count (r5), yunjin-promise (r6), yunjin-fish (r8). Some choices tally lean.S (flags.js counter).
    Ranks 9–10 come after the solstice and branch on route-S / route-true / anything else (the goodbye shape).
-   Hooks elsewhere: story-act5 anyRank('anc7-S'/'d7-sN', rank 7 by 12/21), story-act6 anyRank('d10-sN', rank 10 by 1/30).
+   Hooks elsewhere: story-act5 anyRank('anc7-S'/'d7-sN', rank 7 by 12/21), story-act6 anyRank('d10-sN', rank 10 by 3/6).
    Home love lives (Kat's ruling): Yunjin knows Haechan ("delivery boy", the fish) and Jungwon (the cup of tea) from strangers.
    Rank 8 gives both boys dialogue: Haechan lives at the dorm, Jungwon visits from the guesthouse; an Akihiko beat is gated on
    his rank. Her father is spoken of in the past tense (strangers canon).

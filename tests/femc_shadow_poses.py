@@ -81,7 +81,7 @@ try:
   raise AssertionError((kind,evs,p.eval('poseSeen')))
  for op in [o for o in options.ops.split(',') if o]:
   p.goto('femc-game.html?speed=10&seed=1')
-  if op=='finale':p.eval('FemcGame.newGame();FemcGame.S.day=FemcGame.dayOf("1/30");FemcGame.makeHandoff("scripted",{script:"finale",segment:2,forced:true,party:["solar"]})')
+  if op=='finale':p.eval('FemcGame.newGame();FemcGame.S.day=FemcGame.dayOf("3/6");FemcGame.makeHandoff("scripted",{script:"finale",segment:2,forced:true,party:["solar"]})')
   else:p.eval('FemcGame.newGame();FemcGame.S.day=FemcGame.dayOf("12/5");FemcGame.makeHandoff("operation",{op:'+json.dumps(op)+',forced:true,party:["solar"]})')
   p.battle();p.eval('window.__hoStay=true')
   for i in range(600):

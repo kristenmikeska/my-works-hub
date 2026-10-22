@@ -22,12 +22,12 @@
      (whose bond the event's `reverse` choices push), consumes, unlock (see unlockMet: fragments / flags / ranks, then it plays on
      the first matching slot on or after `date`), scene }. Door scenes (FEMC_GAME_FLAGS.doorScenes, story-act5.js) play one a
      night in the late slot once due (route.doorsDue → route.doorsSeen). The bad ending (flag route-bad) or a scene's { end }
-     jumps to 1/31 late, where 'end-ending' plays; then the end screen (credits, endings seen in 'kg-femc-revamp-clears',
+     jumps to the last night (calendar `end`, 3/7 since the year runs to March) late, where 'end-ending' plays; then the end screen (credits, endings seen in 'kg-femc-revamp-clears',
      New Game+: stats, half the yen, Compendium and books carry over; S.ngFrom tells the battle game whose levels to copy).
    Debug: femc-game.html?debug=1 keeps the Simulate buttons on fight cards (remembered for the tab's session). */
 window.FemcGame = (() => {
   const KEY = 'kg-femc-revamp', SETTINGS_KEY = 'kg-femc-revamp-settings', HANDOFF_KEY = 'kg-femc-handoff';
-  const LEGACY_BATTLE_KEY = 'kg-femc-revamp-battle', PREMERGE_KEY = 'kg-femc-revamp-premerge', MERGE_V = 2, STATS_V = 2;
+  const LEGACY_BATTLE_KEY = 'kg-femc-revamp-battle', PREMERGE_KEY = 'kg-femc-revamp-premerge', MERGE_V = 2, STATS_V = 2, YEAR_V = 2;
   const SLOT_KEY = n => `${KEY}-slot${n}`;
   // Links removed from the revamp (2026-10-21; migrateRemoved). Declared up here: load() runs before the rest of the file.
   const REMOVED_LINKS = ['leon', 'cloud', 'noctis', 'astarion', 'shadowheart'];
@@ -122,6 +122,8 @@ window.FemcGame = (() => {
     battleSave: null, battleCarry: null, battleAt: 0, handoff: null, mv: MERGE_V,
     // Social stats version: 2 = the five P5-style stats (stats.js). Saves without it have P3P's three and migrate once.
     sv: STATS_V, statsFrom: null, leftovers: 0, done: {},
+    // Calendar version: 2 = the year runs to early March (2026-10-21). Saves without it migrate once (migrateYear).
+    yv: YEAR_V,
     // The gacha (gacha.js): the capsule machine's and the Velvet Room's counters, keychains, phone cases and Velvet Plumes.
     gacha: { v: 1, plumes: 0, stars: 0, pulls: 0, draws: 0, pity: { cap: { sr: 0, ur: 0 }, vel: { sr: 0, ur: 0 } }, keys: {}, cases: [], caseOn: null, credited: [], last: null }
   });
@@ -149,6 +151,7 @@ window.FemcGame = (() => {
     if (!(s.sv >= STATS_V)) { migrateStats(out); migrated = true; } // fresh() says 2; the save itself decides
     if (migrateForced(out)) migrated = true;
     if (migrateRemoved(out)) migrated = true;
+    if (migrateYear(out, s.yv)) migrated = true; // the save itself decides (fresh() says YEAR_V)
     if (autosave) adoptHandoff(out);
     return out;
   }
@@ -214,6 +217,23 @@ window.FemcGame = (() => {
     if (out.holiday) strip(out.holiday, 'links');
     [out.battleSave, out.battleCarry].forEach(b => { if (b) { strip(b, 'bondsRev'); strip(b, 'bondsLove'); } });
     return changed;
+  }
+  /* The year runs to early March since 2026-10-21 (Kat's ruling, like P3: graduation on 3/5). The finale moved from 1/30 to
+     3/6 and the endings from 1/31 to 3/7 (calendar.js `end`); everything up to the solstice kept its date, and the January
+     story still plays where it was. Once per save (S.yv < YEAR_V):
+     - an old save whose ending already played ('end-ending' seen) moves to the new last night, late, so sleeping goes to the
+       end screen instead of into a February nobody wrote for it;
+     - the Black Rose naginata is the Hermit's first-clear drop now (it was Astarion's rank-8 gift): a save that cleared the
+       Hermit without it gets it.
+     A save past the old finale but before its ending needs no move: endingDue() sends it to the ending (see below). A save
+     before the old finale just plays on into February. */
+  function migrateYear(out, from) {
+    if (from >= YEAR_V) return false;
+    if ((out.events || []).includes('end-ending')) { out.day = END(); out.slot = 'late'; out.tonight = null; }
+    const owned = out.battleSave?.gear?.owned;
+    if (owned && !(owned.nag_rose > 0) && ((out.tartarus?.bosses || []).includes('hermit') || out.flags?.['op-hermit'])) owned.nag_rose = 1;
+    out.yv = YEAR_V;
+    return true;
   }
   // A fight the old two-page game left pending or finished ('kg-femc-handoff'), for this state: it moves into S.handoff.
   function adoptHandoff(out) {
@@ -372,7 +392,7 @@ window.FemcGame = (() => {
          suggests (Evening / Night / Late → evening, anything else → after school / daytime). Each trace plays once.
        leavesAtMax: true | false  the link's rank 10 is its goodbye. Default: true when `closes` is 21 days or less after
          rank 10's `after` date (Ann: rank 10 10/23, closes 11/3; Shinjiro: 10/3, 10/4), so afterMax only plays as traces.
-         Links that stay a while after MAX (Haru: 12/4 → 1/30) play afterMax normally until `closes`, then nothing.
+         Links that stay a while after MAX (Haru: 12/4 → the end) play afterMax normally until `closes`, then nothing.
        christmas: { place, time, music, scene, rank, early }  the Christmas Eve date (12/24 evening). christmasOptions() lists every
          met link with `christmas` that is on its romance route (route 'romance') at rank 8+ (the earliest romance turn; a
          link that has closed by 12/24, like Shinjiro, needs rank 10). `rank: n` overrides the rank; `early: n` lets a link be
@@ -1218,9 +1238,11 @@ window.FemcGame = (() => {
   }
   function markDoor(key) { if (!S.route.doorsSeen.includes(key)) S.route.doorsSeen.push(key); S.route.doorNight = S.day; save(); }
   /* ── The end of the year ── */
-  // { end: 'id' } in a scene (or the solstice's route-bad flag) stops the calendar: the game jumps to the last night (1/31,
-  // late), where the endings event plays, then the end screen.
-  const endingDue = () => !!(S.flags['the-end'] || S.flags['route-bad']) && S.day < END();
+  // { end: 'id' } in a scene (or the solstice's route-bad flag) stops the calendar: the game jumps to the last night (calendar
+  // `end`, 3/7, late), where the endings event plays, then the end screen. The finale (a6-last-train) normally plays the night
+  // before; if it played earlier (a save from before the year ran to March, finished on the old date), its ending is due too.
+  const FINALE = 'a6-last-train';
+  const endingDue = () => !!(S.flags['the-end'] || S.flags['route-bad'] || (S.events.includes(FINALE) && S.day < END() - 1)) && S.day < END();
   function jumpToEnd() { S.day = END(); S.slot = 'late'; S.tonight = null; save(); }
   function endingName() {
     const f = S.flags;

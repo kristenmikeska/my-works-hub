@@ -1,5 +1,9 @@
-/* The in-game year for femc-game.html: 4/6/2009 (the first Dark Hour) to 1/31/2010.
-   Dates are 'M/D' (April to December are 2009, January is 2010). Everything here is data; core.js reads it.
+/* The in-game year for femc-game.html: 4/6/2009 (the first Dark Hour) to 3/7/2010.
+   Dates are 'M/D' (April to December are 2009; January to March are 2010). Everything here is data; core.js reads it.
+   - The year runs to early March, like P3 (Kat's ruling, 2026-10-21; until then it ended on 1/31): February is the last
+     month, graduation is 3/5, the finale is the full moon on 3/6 and the endings play on 3/7, the last night (`end`).
+     `finalStretch` names those days for anything that needs them (core.js, data files, tests); room for links' ranks
+     11-15 is February (see living-march.js and FEMC-REVAMP-ROADMAP.md).
    - School runs Monday to Saturday, as in P3. Sundays, `holidays` and `breaks` are days off. A break's `id` ('summer',
      'winter') picks a link's summerHome / winterHome (core.js).
    - `exams`: test days (morning exam, no Tartarus that night); `results` is the day the ranking board goes up.
@@ -9,7 +13,8 @@
    - `trips`: days with no free time (the whole day is one scene or a summary).
    - `weather`: fixed weather for some dates; every other day rolls from `climate` with a seed, so it never changes. */
 window.FEMC_GAME_CALENDAR = {
-  start: '4/6', firstFree: '4/8', end: '1/31',
+  start: '4/6', firstFree: '4/8', end: '3/7',
+  finalStretch: { from: '2/1', graduation: '3/5', finale: '3/6', end: '3/7' },
   // Memory fragments can't turn up in Tartarus before this date (the first ones are story beats).
   fragmentsFrom: '5/16',
   slots: [
@@ -26,7 +31,7 @@ window.FEMC_GAME_CALENDAR = {
     '4/29': 'Showa Day', '5/3': 'Constitution Day', '5/4': 'Greenery Day', '5/5': "Children's Day", '5/6': 'Substitute Holiday',
     '7/20': 'Marine Day', '9/21': 'Respect for the Aged Day', '9/22': "Citizens' Holiday", '9/23': 'Autumnal Equinox Day',
     '10/12': 'Sports Day', '11/3': 'Culture Day', '11/23': 'Labor Thanksgiving Day', '12/23': "The Emperor's Birthday",
-    '1/1': "New Year's Day", '1/11': 'Coming of Age Day'
+    '1/1': "New Year's Day", '1/11': 'Coming of Age Day', '2/11': 'National Foundation Day'
   },
   breaks: [
     { id: 'summer', from: '7/21', to: '8/31', name: 'Summer Break' },
@@ -36,7 +41,8 @@ window.FEMC_GAME_CALENDAR = {
   events: {
     '4/8': 'Opening Ceremony', '4/29': 'Golden Week', '5/2': 'Golden Week', '5/3': 'Golden Week', '5/4': 'Golden Week', '5/5': 'Golden Week', '5/6': 'Golden Week',
     '7/17': 'Closing Ceremony', '9/1': 'Second Term', '8/16': 'Summer Festival', '10/30': 'Culture Festival', '10/31': 'Culture Festival',
-    '12/22': 'Closing Ceremony', '12/24': 'Christmas Eve', '12/25': 'Christmas', '12/31': "New Year's Eve", '1/8': 'Third Term'
+    '12/22': 'Closing Ceremony', '12/24': 'Christmas Eve', '12/25': 'Christmas', '12/31': "New Year's Eve", '1/8': 'Third Term',
+    '2/3': 'Setsubun', '2/14': "Valentine's Day", '3/5': 'Graduation'
   },
   trips: [
     // slots: a trip with a day plan (data/yakushima.js) has daytime and evening slots too.
@@ -48,7 +54,8 @@ window.FEMC_GAME_CALENDAR = {
     { id: 'midterm2', days: ['10/19', '10/20', '10/21', '10/22'], results: '10/26' },
     { id: 'final2', days: ['12/14', '12/15', '12/16', '12/17'], results: '12/19' }
   ],
-  fullMoons: ['3/10', '4/9', '5/9', '6/8', '7/7', '8/6', '9/5', '10/4', '11/3', '12/2', '12/31', '1/30', '3/1'],
+  // 1/30 is a full moon with no operation now (Tartarus closes, nothing comes); the last one, 3/6, is the finale.
+  fullMoons: ['4/9', '5/9', '6/8', '7/7', '8/6', '9/5', '10/4', '11/3', '12/2', '12/31', '1/30', '3/6'],
   ops: [
     { date: '4/9', op: 'magician', name: 'The Magician', kind: 'operation', scripted: true },
     { date: '5/9', op: 'priestess', name: 'The Priestess' },
@@ -60,16 +67,18 @@ window.FEMC_GAME_CALENDAR = {
     { date: '10/4', op: 'fortune', name: 'Fortune & Strength' },
     { date: '11/3', op: 'hanged', name: 'The Hanged Man' },
     { date: '12/2', op: 'tartarus-memory', name: 'Full Moon Operation', scripted: true },
-    { date: '1/30', op: 'finale', name: 'Full Moon Operation', scripted: true }
+    { date: '3/6', op: 'finale', name: 'Full Moon Operation', scripted: true }
   ],
   // Tartarus floors the battle game should allow by date (P3 opens blocks as the year goes on). Passed in the handoff.
   floorCaps: [['4/18', 16], ['5/10', 36], ['6/9', 64], ['7/8', 92], ['8/7', 118], ['9/6', 144], ['10/5', 172], ['11/4', 204], ['12/3', 230], ['1/1', 254]],
-  weather: { '4/6': 'clear', '4/7': 'clear', '4/8': 'clear', '12/24': 'snow', '12/25': 'snow', '10/30': 'storm', '10/31': 'rain' },
+  weather: { '4/6': 'clear', '4/7': 'clear', '4/8': 'clear', '12/24': 'snow', '12/25': 'snow', '10/30': 'storm', '10/31': 'rain',
+    '3/3': 'snow', '3/6': 'snow', '3/7': 'clear' },
   // Chance of each weather by month (the rest is clear). Rainy season in June; snow is possible in winter.
   climate: {
     4: { cloudy: 0.25, rain: 0.18 }, 5: { cloudy: 0.25, rain: 0.2 }, 6: { cloudy: 0.25, rain: 0.45 }, 7: { cloudy: 0.2, rain: 0.2 },
     8: { cloudy: 0.15, rain: 0.12 }, 9: { cloudy: 0.25, rain: 0.25 }, 10: { cloudy: 0.25, rain: 0.18 }, 11: { cloudy: 0.3, rain: 0.15 },
-    12: { cloudy: 0.3, rain: 0.1, snow: 0.08 }, 1: { cloudy: 0.3, rain: 0.08, snow: 0.12 }
+    12: { cloudy: 0.3, rain: 0.1, snow: 0.08 }, 1: { cloudy: 0.3, rain: 0.08, snow: 0.12 }, 2: { cloudy: 0.3, rain: 0.1, snow: 0.12 },
+    3: { cloudy: 0.3, rain: 0.18, snow: 0.03 }
   },
   weatherNames: { clear: 'Clear', cloudy: 'Cloudy', rain: 'Rain', snow: 'Snow', storm: 'Storm' }
 };

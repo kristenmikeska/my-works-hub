@@ -271,12 +271,12 @@
     { id: 'am-sisters-luckybags', thread: 'sisters', from: '1/2', to: '1/14', flag: 'year-goes-on', msgs: [
       { from: 'hanni', t: 'hanni: hyein bought three lucky bags' }, { from: 'hyein', t: 'hyein: two of them are mine' }, { from: 'hanni', t: 'hanni: two of them are YOURS??' }, { from: 'hyein', t: "hyein: we're not talking about it" }
     ], reply: [{ t: 'whats in the third one', then: [{ from: 'hyein', t: 'hyein: something for u. obviously' }] }, { t: 'iconic', then: [{ from: 'hyein', t: 'hyein: THANK U' }, { from: 'hanni', t: "hanni: don't encourage her!!" }] }] },
-    { id: 'am-hateclub-bath', thread: 'hateclub', from: '1/8', to: '1/24', flag: 'year-goes-on', msgs: [
+    { id: 'am-hateclub-bath', thread: 'hateclub', from: '1/8', to: '2/28', flag: 'year-goes-on', msgs: [
       { from: 'hyunsuk', t: 'geniusuk: jihoon fell asleep in the guesthouse bath' }, { from: 'asahi', t: "asanoonecares: we're leaving him" }, { from: 'junkyu', t: 'junkyute: im putting a towel on him!!!' }
     ], reply: [{ t: 'HEHEHEHE take a pic', then: [{ from: 'asahi', t: 'asanoonecares: already did' }, { from: 'jihoon', t: 'jihoney: DELETE IT' }] }, { t: 'kyu ur a saint', then: [{ from: 'junkyu', t: 'junkyute: :D' }] }] },
-    { id: 'am-yukari-graduation', thread: 'yukari', from: '1/12', to: '1/27', flag: 'year-goes-on', msgs: [{ from: 'yukari', t: 'the third years are all crying in the hallway about graduation' }, { from: 'yukari', t: "you're not allowed to graduate. i decided" }],
+    { id: 'am-yukari-graduation', thread: 'yukari', from: '1/12', to: '3/3', flag: 'year-goes-on', msgs: [{ from: 'yukari', t: 'the third years are all crying in the hallway about graduation' }, { from: 'yukari', t: "you're not allowed to graduate. i decided" }],
       reply: [{ t: 'i accept ur ruling', link: 'yukari', notes: 2, then: [{ from: 'yukari', t: 'good' }] }, { t: 'ill visit', link: 'yukari', notes: 3, then: [{ from: 'yukari', t: "you'd better" }] }] },
-    { id: 'am-minji-editing', thread: 'minji', from: '1/18', to: '1/29', flag: 'year-goes-on', msgs: [{ from: 'minji', t: "i'm editing all of it. everything i shot here" }, { from: 'minji', t: "it's going to take forever. i don't want it to be done" }],
+    { id: 'am-minji-editing', thread: 'minji', from: '1/18', to: '3/5', flag: 'year-goes-on', msgs: [{ from: 'minji', t: "i'm editing all of it. everything i shot here" }, { from: 'minji', t: "it's going to take forever. i don't want it to be done" }],
       reply: [{ t: 'then dont finish it', link: 'minji', notes: 3, then: [{ from: 'minji', t: 'ok' }, { from: 'minji', t: "i'll leave one frame out. so it's never done" }] }, { t: 'can i see it when it is', link: 'minji', notes: 2, then: [{ from: 'minji', t: "you'll be the first. you're always the first" }] }] }
   );
 
@@ -304,7 +304,7 @@
     ], reply: [{ t: 'ill be home before u know it', then: [{ from: 'hanni', t: 'hanni: promise?' }, { from: 'hyein', t: 'hyein: she promised. i saw it' }] }, { t: 'love u guys', then: [{ from: 'hanni', t: 'hanni: we love u more!!!' }, { from: 'hyein', t: 'hyein: correct' }] }] },
     { id: 't-1201-jungwon', thread: 'jungwon', date: '12/1', slot: 'afternoon', flag: 'awake-jungwon', msgs: [{ from: 'jungwon', t: "tomorrow. i'll be on your left." }, { from: 'jungwon', t: "i've decided. that isn't me deciding for you. it's just where i'll be." }],
       reply: [{ t: 'ok. my left', link: 'jungwon', notes: 3, then: [{ from: 'jungwon', t: 'good.' }] }, { t: 'eat dinner first', link: 'jungwon', notes: 2, then: [{ from: 'jungwon', t: "...i'll eat dinner first." }] }] },
-    { id: 't-0129-sees', thread: 'sees', date: '1/29', slot: 'late', flag: 'year-goes-on', msgs: [
+    { id: 't-0129-sees', thread: 'sees', date: '3/5', slot: 'late', flag: 'year-goes-on', msgs: [
       { from: 'junpei', t: 'night everyone' }, { from: 'hanni', t: 'goodnight everyone!! :)' }, { from: 'jihoon', t: 'Goodnight To My Loyal Subjects' }, { from: 'minji', t: 'night' }, { from: 'yukari', t: 'go to sleep. all of you. i mean it' }, { from: 'haechan', t: 'sleep.' }
     ], reply: [{ t: 'goodnight. see everyone at breakfast', then: [{ from: 'hyein', t: 'breakfast. everybody. thats an order' }] }, { t: '(Leave it on read. Smile at it.)', silent: true, then: [{ from: 'junkyu', t: 'she read it!!! goodnight sol!!!' }] }] }
   );

@@ -1,5 +1,5 @@
-/* The endings (1/31, the last minutes of the last Dark Hour). Revamp story data (femc-game.html).
-   One event, 'end-ending', branching on the flags the solstice (12/21) and the finale (1/30) set:
+/* The endings (3/7, the last minutes of the last Dark Hour; 1/31 until the year ran to March, 2026-10-21). Revamp story data (femc-game.html).
+   One event, 'end-ending', branching on the flags the solstice (12/21) and the finale (3/6) set:
      route-bad → the last stop (the bad ending already played at the solstice; this is its coda)
      route-true + true-final → I am thou        route-R → where it begins       route-S → low tide
      route-H → the unfated life (the secret road) route-stay (or no route at all) → here
@@ -87,7 +87,7 @@
   ];
 
   // The secret road (Kat's ruling 2026-10-21): "the unfated life". Hoax is the one world without Haechan; Solar picks a
-  // life nobody arranged for her. Bittersweet, not tragic. He let her go on 12/22 (a6-unfated) and on the platform (1/30,
+  // life nobody arranged for her. Bittersweet, not tragic. He let her go on 12/22 (a6-unfated) and on the platform (3/6,
   // where he gave her the last can); Jungwon is the bridge, the one person who exists both in the life arranged for her
   // (strangers) and in the one she ran into on purpose. The CG and the Christmas variants are unchanged.
   const hoax = [
@@ -187,7 +187,7 @@
     { n: "She could look at it now. A sun you could look at." },
     { music: 'ending' },
     { n: "Somewhere very far away, a year closed like water." },
-    { n: "In a dormitory by a bay, a group of students woke up on the first of February with the strange, heavy feeling of having forgotten something enormous, and couldn't say what, and went to school. A room at the end of the girls' hall stood empty, with no name on the door, and nobody could remember why it had been made up. A dog sat on the front steps of a shrine every morning for a while, waiting for someone, and then, gently, stopped." },
+    { n: "In a dormitory by a bay, a group of students woke up on the eighth of March with the strange, heavy feeling of having forgotten something enormous, and couldn't say what, and went to school. A room at the end of the girls' hall stood empty, with no name on the door, and nobody could remember why it had been made up. A dog sat on the front steps of a shrine every morning for a while, waiting for someone, and then, gently, stopped." },
     { n: "And every morning, on his run, Akihiko Sanada slowed down when he passed a certain bench at the far end of Iwatodai Station. The last one, under the timetable. He never knew why. He'd stop, and look at it, and stand there with his breath going up white, feeling like he'd left something there, or someone had." },
     { n: "In the lining of his left glove there was a small scrap of pink ribbon. He didn't know where it had come from. He never took it out." },
     card('I am thou')
@@ -195,14 +195,14 @@
 
   const badCoda = [
     { music: 'night' },
-    { n: "There was no thirty-first. Not for her." },
+    { n: "There was no March. Not for her." },
     { n: "Somewhere, a train that never had to arrive went on around and around a line with no end, a hand's width above rails that weren't there, under a moon that didn't move. In the middle window of the lead car, two girls with the same face sat with their heads together, asleep, peaceful, the way the kept were peaceful. Neither of them had to be anybody. Neither of them had to choose." },
     { n: "In a dormitory by a bay, in three houses in three worlds, people stood at the tops of their stairs and waited, and waited, and the hour never ended, so they never stopped." },
     card('the last stop')
   ];
 
   (window.FEMC_GAME_EVENTS ||= []).push(
-    { id: 'end-ending', date: '1/31', slot: 'late', title: 'the last minutes', place: 'Iwatodai Dorm · Lounge', time: 'The Dark Hour', scene: [
+    { id: 'end-ending', date: '3/7', slot: 'late', title: 'the last minutes', place: 'Iwatodai Dorm · Lounge', time: 'The Dark Hour', scene: [
       { ifFlag: 'route-bad', then: badCoda, else: [
         { ifFlag: 'true-final', then: trueEnding, else: [
           { ifFlag: 'route-R', then: runners, else: [

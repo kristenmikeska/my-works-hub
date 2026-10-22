@@ -80,7 +80,7 @@
         ] }
       ] }
     ] },
-    { id: 'aki-ln-snow', kind: 'dorm', rank: 9, route: 'romance', after: '12/26', until: '1/29', flag: 'year-goes-on', place: 'Iwatodai Dorm · Rooftop', time: 'Late Night', music: 'romance', scene: [
+    { id: 'aki-ln-snow', kind: 'dorm', rank: 9, route: 'romance', after: '12/26', until: '3/5', flag: 'year-goes-on', place: 'Iwatodai Dorm · Rooftop', time: 'Late Night', music: 'romance', scene: [
       { n: "It had snowed in the afternoon and stopped at dark, and the roof at midnight was white and untouched except for one line of footprints to the rail, big ones, and at the end of them, his back, in his coat, looking at the city under the snow like it was something he'd been asked to remember." },
       { n: "He heard her on the stairs. He didn't turn around. He opened one side of his coat instead, held it out, an invitation that didn't need to be said, and she walked the length of his footprints, in them, and stepped inside it." },
       { s: 'akihiko', f: 'neutral', t: "Whatever you decide. I meant that. I still mean it. I just wanted one more night up here first. With you in it." },
@@ -142,7 +142,7 @@
         ] }
       ] }
     ] },
-    { id: 'jw-ln-streetlight', kind: 'visit', rank: 8, route: 'romance', after: '12/10', until: '1/29', place: 'Iwatodai Dorm · Front', time: 'Late Night', music: 'romance', scene: [
+    { id: 'jw-ln-streetlight', kind: 'visit', rank: 8, route: 'romance', after: '12/10', until: '3/5', place: 'Iwatodai Dorm · Front', time: 'Late Night', music: 'romance', scene: [
       { phone: [
         { from: 'jungwon', t: "i'm outside." },
         { from: 'jungwon', t: "not to come in. it's past curfew. i'm aware." },
@@ -206,7 +206,7 @@
         ] }
       ] }
     ] },
-    { id: 'jh-ln-romance', kind: 'visit', rank: 8, route: 'romance', after: '11/22', until: '1/29', place: 'Iwatodai Dorm · Front', time: 'Late Night', music: 'romance', scene: [
+    { id: 'jh-ln-romance', kind: 'visit', rank: 8, route: 'romance', after: '11/22', until: '3/5', place: 'Iwatodai Dorm · Front', time: 'Late Night', music: 'romance', scene: [
       { n: "He walked her back from the arcade at ten to eleven, which was ten minutes before curfew and therefore, by his math, the latest it was legally possible to keep her, and stopped at the bottom of the dorm steps, and didn't let go of her hand, which he'd been holding since the station and pretending he wasn't." },
       { s: 'jihoon', f: 'neutral', t: "I'm not doing a bit. Just so you know. I'm standing here not doing a bit. It's very hard. My whole body wants to do a bit." },
       { s: 'jihoon', f: 'serious', t: "It's not a bit, Sol. None of it was ever a bit. I'm just going to keep saying it now. Quietly. Like a normal person. It's going to be horrible." },

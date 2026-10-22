@@ -341,7 +341,7 @@
       { music: 'tender' },
       { n: "The end of November. The junkyard was cold, and Judy had a space heater running off the battery of the wheelless car, glowing orange on the ground between two oil drums, and the cat sitting so close to it Solar was worried for his whiskers." },
       { s: 'judy', f: 'neutral', t: "Elizabeth came by. Lady with the book. She talked to the cat for ten minutes first. He liked her. He doesn't like anybody." },
-      { s: 'judy', f: 'neutral', t: "She said the green's gonna close. End of January. Doors open, everybody goes home." },
+      { s: 'judy', f: 'neutral', t: "She said the green's gonna close. Beginning of March. Doors open, everybody goes home." },
       { s: 'judy', f: 'sad', t: "Back home there's so much to fix. The Mox. The girls at Clouds. All the people the corps chew up and spit out and make BDs of. Somebody's gotta stand between them and that. That was supposed to be Ev and me. Now it's just me." },
       { s: 'judy', f: 'sad', t: "And part of me just wants to stay here. In a junkyard. With a cat. Where nobody needs me to be anything. Where it's never gonna be the night I have to choose." },
       { s: 'judy', f: 'sad', t: "Is that giving up? Is that what giving up feels like? Because it feels kinda nice." },

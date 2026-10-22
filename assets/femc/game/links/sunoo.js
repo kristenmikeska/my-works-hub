@@ -14,7 +14,7 @@
    Link-local flags (all optional flavor, read only inside this file): sunoo-recommend (r1), sunoo-asked-need (r3),
    sunoo-five-am (r4), sunoo-photo (r5), sunoo-no-smile and sunoo-speech (r6), sunoo-crime (hangout). The last afterMax reads
    the solstice's route-H / route-true flags. Rank dates 8–10 sit earlier than the first draft (12/29, 1/9, 1/17) so the
-   after-MAX scenes have room to play before the end of January.
+   after-MAX scenes have room to play before the year ends (3/6 since it runs to March).
    Hoax canon as of Ch 99 (hoax skill): Jungwon won and made Solar his VP (firing Heeseung); Solar and Jungwon are official since
    the bake sale, whose equation hunt Sunoo and Jake ran; Cherry is seeing Sunghoon. Sunoo's friends live at the Kirijo guesthouse.
    Texting voice: sunooshine, lowercase, "!!!", "dw", ":)". Arcana: '?' (open question, plot doc §16.6). */
@@ -849,7 +849,7 @@
     ] },
 
     { title: 'the last tray', place: "Iwatodai Strip · Yeobo's Cafe", time: 'Early Morning', music: 'tender', scene: [
-      { n: "It was the end of January, and the café was the size of a café again, the size of a small warm room on a cold street, nothing more. The windows hardly fogged. The bell over the door was quieter, as if somebody had put a hand around it. The only thing that hadn't gone thin was the smell, butter and yeast and coffee, which came out onto the Strip every morning at six-ten and stopped people on their way to the station." },
+      { n: "It was the end of winter, and the café was the size of a café again, the size of a small warm room on a cold street, nothing more. The windows hardly fogged. The bell over the door was quieter, as if somebody had put a hand around it. The only thing that hadn't gone thin was the smell, butter and yeast and coffee, which came out onto the Strip every morning at six-ten and stopped people on their way to the station." },
       { s: 'sunoo', f: 'neutral', t: "Last tray. I think. I don't know how I know. I just know. It's like knowing the oven's ready." },
       { ifFlag: 'route-H', then: [
         { s: 'sunoo', f: 'happy', t: "You're coming home. I know. Jungwon told us like he was reading the minutes, very calm, and then he went in the walk-in and stood there for five minutes. Jay timed it." },

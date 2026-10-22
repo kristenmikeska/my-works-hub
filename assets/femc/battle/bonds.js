@@ -112,7 +112,7 @@ window.FemcBonds = (() => {
           line: ['AWOOO!', 'Sic ’em!'], desc: 'Heavier fire and light on every foe; may frighten them, and the party gets faster.' }] }
   ];
   const byId = id => BONDS.find(b => b.id === id) || null;
-  // School-year order for "m/d" dates (April is the first month), so 10/3 comes after 4/6 and before 1/31.
+  // School-year order for "m/d" dates (April is the first month), so 10/3 comes after 4/6 and before 3/7.
   const ord = md => { const [m, d] = String(md || '').split('/').map(Number); return m && d ? ((m < 4 ? m + 12 : m) * 40 + d) : null; };
   const pastUntil = (b, md) => !!(b.until && md && ord(md) != null && ord(md) > ord(b.until));
   /* Where a bond stands: { state, rank, cur (the version in use or null), next (the next version to unlock), love (on the

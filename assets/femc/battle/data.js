@@ -1005,9 +1005,9 @@ window.FEMC_BATTLE_DATA = (() => {
     boss: M + 'calamity.mp3',                 // full-moon bosses
     villain: M + 'blooming-villain.mp3',      // rival fights (Haechan's mirror match; Strega, if they come)
     p5: [M + 'last-surprise.mp3', M + 'break-out-of.mp3'], // fights with the Persona 5 cast (none yet)
-    'finale-call': M + 'nyx.mp3',             // 1/30: Last Call
-    'finale-train': M + 'period.mp3',         // 1/30: No Stops (the Last Train)
-    'finale-last': M + 'burn-my-dread-last-battle.mp3', // 1/30: End of the Line
+    'finale-call': M + 'nyx.mp3',             // 3/6: Last Call
+    'finale-train': M + 'period.mp3',         // 3/6: No Stops (the Last Train)
+    'finale-last': M + 'burn-my-dread-last-battle.mp3', // 3/6: End of the Line
     floor: M + 'tartarus-thebel.mp3',         // the node map, results, skill tree
     mementos: M + 'mementos.mp3',             // memory floors (before the fight) and the Memories screen
     shop: M + 'paulownia-mall.mp3',           // Paulownia Mall

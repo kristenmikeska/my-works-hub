@@ -863,7 +863,7 @@
     screenMusic('title');
     const name = G.endingName(), clears = G.recordClear(), seen = [...new Set(clears.map(c => (c.ending === 'the count' ? 'the unfated life' : c.ending)))]; // the Hoax ending's old name (before 2026-10-21)
     const met = S().met.length, frags = S().fragments.length, maxed = Object.values(G.LINKS).filter(l => G.progress(l.id).rank >= 10).length;
-    show(`<section class="g-seg g-end"><p class="g-kicker">1/31 · the last minutes of the last Dark Hour</p>
+    show(`<section class="g-seg g-end"><p class="g-kicker">${esc(G.dayInfo(G.END()).md)} · the last minutes of the last Dark Hour</p>
       <div class="g-seg-box"><p class="g-end-name">ENDING · ${esc(name)}</p>
         <p class="g-seg-sub">${frags} memory fragment${frags === 1 ? '' : 's'} · ${maxed} bond${maxed === 1 ? '' : 's'} at MAX · ${met} people met${S().ngp ? ` · New Game+ ${S().ngp}` : ''}</p>
         <div class="g-credits"><p><b>Persona 3: Solstice</b> Every Universe</p><p>Story, characters and worlds · Kat</p><p>Persona 3 · ATLUS (the year it borrows)</p><p>Endings seen · ${seen.map(esc).join(' · ')}</p></div></div>

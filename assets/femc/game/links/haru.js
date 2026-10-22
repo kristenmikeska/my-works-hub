@@ -366,7 +366,7 @@
       { n: "Haru was waiting by the lilies in a sundress and the sunhat, and the clerk at the front desk bowed to her as they passed, too deep, the bow of a man who had been instructed to bow and wasn't sure by whom." },
       { s: 'haru', f: 'happy', t: "I live here. Isn't it ridiculous? I didn't choose it." },
       { s: 'haru', f: 'neutral', t: "That first night I walked in off the platform with nothing but my handbag, and the clerk gave me a room without asking a single question. And at lunch the next day he said, Miss Okumura, your suite is ready. Nobody had asked me what I wanted. It was simply ready." },
-      { s: 'haru', f: 'neutral', t: "It's booked through the end of January. Nobody has come to see it. Not once. I suppose that's the point of booking things." },
+      { s: 'haru', f: 'neutral', t: "It's booked through the first week of March. Nobody has come to see it. Not once. I suppose that's the point of booking things." },
       { n: "Solar stopped walking, in the middle of all that marble, between a bellhop and a potted palm." },
       { n: "A room at the end of the girls' hall with the sheets already turned down at one corner, and a second uniform pressed in her size in the wardrobe. Mitsuru, at two in the morning, looking at her like a tidy person looks at the one thing not where she left it, and saying she'd been going to ask Solar who it was for. Solar had slept in it every night since. She had stopped thinking about it, mostly, the way you stop hearing a clock." },
       { choose: [
@@ -375,7 +375,7 @@
           { n: "Solar nodded. Haru looked at her for a long time, there in the cold lobby air, and something in her face eased that Solar hadn't known was clenched." },
           { s: 'haru', f: 'happy', t: "Then we're both somebody's guests. I'd much rather be a guest with you than a guest alone." }
         ] },
-        { t: "The end of January. That's specific.", notes: 2, then: [
+        { t: "The first week of March. That's specific.", notes: 2, then: [
           { s: 'haru', f: 'neutral', t: "Isn't it? That's when the company opens its new site on Port Island, and I expect I'll be wanted at the ribbon. I've decided not to think about it until December. I'm very good at deciding things like that." },
           { s: 'haru', f: 'happy', t: "I'm less good at keeping to them. Come up." }
         ] },

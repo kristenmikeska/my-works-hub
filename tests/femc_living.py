@@ -182,7 +182,7 @@ try:
 
     # ── year: routines across a simulated year ──
     year = p.eval(r"""(()=>{const G=FemcGame,s=LW.at('4/8','early');const plays=[];
-      for(let d=G.dayOf('4/8');d<=G.dayOf('1/31');d++){s.day=d;const info=G.dayInfo(d);s.spent={};
+      for(let d=G.dayOf('4/8');d<=G.END();d++){s.day=d;const info=G.dayInfo(d);s.spent={};
         if(d>=G.dayOf('4/18'))s.flags['joined-junpei']=true; if(d>=G.dayOf('12/22'))s.flags['year-goes-on']=true;
         for(const slot of G.slotsFor(info)){s.slot=slot;
           const due=G.D.events.filter(e=>!e.unlock&&e.date===info.md&&({darkhour:'evening'}[e.slot]||e.slot||'evening')===slot&&!s.events.includes(e.id)&&(!e.flag||s.flags[e.flag]));

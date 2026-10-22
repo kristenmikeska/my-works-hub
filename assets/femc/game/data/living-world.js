@@ -262,7 +262,7 @@ window.FEMC_GAME_LODGING = {
     ] }
   ] },
 
-  { id: 'lw-pre-last-train', date: '1/30', slot: 'early', consumes: true, flag: 'year-goes-on', title: 'saturday', place: 'Iwatodai Dorm · Dining Room', time: 'Early Morning', bg: 'iwatodaidorm-diningroom', scene: [
+  { id: 'lw-pre-last-train', date: '3/6', slot: 'early', consumes: true, flag: 'year-goes-on', title: 'saturday', place: 'Iwatodai Dorm · Dining Room', time: 'Early Morning', bg: 'iwatodaidorm-diningroom', scene: [
     { music: 'tender' },
     { n: "Everyone came down for breakfast. Everyone. Nobody had said to. S.E.E.S. and the girls and Yunjin and the boy from the top floor, and by seven the visitors from the guesthouse were knocking, and taking their shoes off in the hall, and nobody looked at the whiteboard or the clock, and Mitsuru, for the first time all year, didn't either." },
     { n: "It was too many people for the table. They ate anyway, elbow to elbow, passing things down the line, loud and then suddenly quiet and then loud again, the way a family eats on a day nobody wants to talk about." },

@@ -12,7 +12,7 @@
      mercy-sister / mercy-three-am / mercy-doctor (rank 9: what Angela is to her) → rank 10, afterMax "handover", and
        mercy-three-am opens the late-night call in living-visitors.js.
    Living world (texts after ranks 2/3/5/7/9, holidays 7/20 and 9/21, two late-night calls): data/living-visitors.js.
-   afterMax: five scenes after rank 10 (she stays until the doors open on 1/30). */
+   afterMax: five scenes after rank 10 (she stays until the doors open on 3/6). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'mercy', name: 'Mercy', short: 'Mercy', arcana: 'Temperance', numeral: 'XIV', from: 'Overwatch',
   kind: 'visitor',

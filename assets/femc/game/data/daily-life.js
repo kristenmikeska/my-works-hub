@@ -1165,7 +1165,7 @@ window.FEMC_GAME_DAILY_LIFE = [
       ] }
     ] },
 
-  { id: 'after-graduation-talk', after: '1/12', until: '1/26', slot: 'lunch', schoolOnly: true, flags: ['year-goes-on'],
+  { id: 'after-graduation-talk', after: '1/12', until: '3/2', slot: 'lunch', schoolOnly: true, flags: ['year-goes-on'],
     place: 'Gekkoukan High · Classroom', time: 'Lunch', bg: 'gekkoukan-classroom-day', cast: { classmate: 'A Classmate' }, scene: [
       { n: "Everybody in the third year had started talking about after. Universities, and entrance exams, and somebody's cousin's company, and a boy at the back who was going to be a chef in Osaka and said it like a dare. It came around the lunch table like a bowl being passed, and it got to Solar." },
       { s: 'classmate', t: "What about you? Where are you going after graduation?" },
@@ -1180,7 +1180,7 @@ window.FEMC_GAME_DAILY_LIFE = [
       ] }
     ] },
 
-  { id: 'household-photo', after: '1/17', until: '1/28', slot: 'evening', flags: ['year-goes-on'], events: ['a4-lamppost'],
+  { id: 'household-photo', after: '1/17', until: '3/4', slot: 'evening', flags: ['year-goes-on'], events: ['a4-lamppost'],
     place: 'Iwatodai Dorm · Lounge', time: 'Evening', bg: 'iwatodaidorm-livingroom-night', scene: [
       { n: "Minji had brought a tripod from the guesthouse and set it up in the middle of the lounge, and was walking around the room moving people like furniture, very gently, with two fingers on a shoulder or an elbow, and nobody argued with her, which had never happened to anyone in this building before." },
       { s: 'minji', f: 'neutral', t: "Everybody. All of you. I want one where everybody's in it. I'm asking properly. It's just for us. Nobody's ever going to see it but us." },
@@ -1197,14 +1197,14 @@ window.FEMC_GAME_DAILY_LIFE = [
       ] }
     ] },
 
-  { id: 'last-quiet-walk', after: '1/24', until: '1/29', slot: 'late', flags: ['year-goes-on'],
+  { id: 'last-quiet-walk', after: '2/28', until: '3/5', slot: 'late', flags: ['year-goes-on'],
     place: 'Iwatodai Dorm · Hallway', time: 'Late Night', bg: 'iwatodaidorm-hallway', scene: [
       { n: "She walked the dorm at night, the whole of it, top to bottom, the way she'd walked it the first week to learn where the doors were. The fourth floor and the command room, dark. The third, Mitsuru's light still on. Her own floor, and the girls' doors with the shopping list still taped to one of them, curling at the corners now. The top floor and the radiator that knocked." },
       { n: "The lounge, the long table, the whiteboard by the fridge with VISITORS on it and the names rubbed out and rewritten so many times the board had gone gray. The front door. The rota for the dog, which had grown three new columns since August." },
       { n: "She stood in the hall and put her hand flat on the wall, for no reason, the way you'd put your hand on the side of a horse." },
       { choose: [
         { t: "(Go back up to bed.)", then: [
-          { n: "She went back up. The building made all its small night noises around her, the way it had every night for ten months, and none of them were strange anymore, and she fell asleep counting them." }
+          { n: "She went back up. The building made all its small night noises around her, the way it had every night for eleven months, and none of them were strange anymore, and she fell asleep counting them." }
         ] },
         { t: "(Add your name to the whiteboard. Under RESIDENTS.)", then: [
           { n: "There was no RESIDENTS column. She made one. She wrote her name in it, *Solar*, and nothing after it, and looked at it, and left it there, and in the morning someone had drawn a small sun next to it, and someone else had drawn a smaller one, and nobody ever said who." }

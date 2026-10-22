@@ -1,7 +1,10 @@
-/* Act VI story events (end of the line, 12/22 → 1/30). Revamp story data (femc-game.html). Same format as story-act1.js.
+/* Act VI story events (end of the line, 12/22 → 3/6; the year runs to March since 2026-10-21). Revamp story data (femc-game.html). Same format as story-act1.js.
    Every event here is gated on flag 'year-goes-on' (set at the solstice on every route except the bad ending, which ends the
    year on the platform). Route flags from the solstice: route-R / route-S / route-H / route-stay / route-true.
-   The finale (1/30) hands off Wren's Shadow in three segments (script 'finale'); the lock behaviour is in each segment's notes. */
+   Re-paced after the solstice for the March calendar: Elizabeth's visit stays 1/9; the verso moved 1/16 → 2/20; the last
+   week moved five weeks on, weekdays kept (snow 1/27 → 3/3, mirror 1/28 → 3/4, playdate 1/29 → 3/5, the last train
+   1/30 → 3/6), so every 'Saturday' still means the night of the train. February is room for links' ranks 11-15.
+   The finale (3/6) hands off Wren's Shadow in three segments (script 'finale'); the lock behaviour is in each segment's notes. */
 (() => {
   const K = window.FEMC_STORY_KIT;
   // Short lines that change with the route, for scenes that are otherwise the same on every route.
@@ -304,7 +307,7 @@
     { s: 'elizabeth', f: 'neutral', t: "He's very heavy. Is this a gesture of affection or a form of arrest?" },
     { s: 'ken', f: 'neutral', t: "...Both, I think." },
     { n: "Later, when the others had drifted off to give them room, Elizabeth sat on the couch with the book on her knees and Koromaru still on her feet and looked at Solar for a long time." },
-    { s: 'elizabeth', f: 'serious', t: "I came to tell you about the thirtieth. The full moon. The train will come into the station at midnight, and stop. It's been coming all year. On the thirtieth it will finally arrive." },
+    { s: 'elizabeth', f: 'serious', t: "I came to tell you about the sixth of March. The full moon. The train will come into the station at midnight, and stop. It's been coming all year. On the sixth it will finally arrive." },
     { s: 'elizabeth', f: 'neutral', t: "When it's over, whatever over turns out to mean, I'll be there. On the platform. I'll open the doors. All of them. Every guest who came into this city will have a door home, and I'll hold it for them." },
     ...window.FEMC_STORY_KIT.byRoute([
       { s: 'elizabeth', f: 'neutral', t: "And yours. A door that smells of snow and a pink hallway. I've seen it in the margins. It's already ajar." }
@@ -330,7 +333,7 @@
     { n: "She left at dusk. At the door she shook hands with everyone, very formally, including Koromaru, and said goodbye to the rice cooker on her way past the kitchen, and went down the steps into the snow with the book under her arm, and at the gate she lifted one gloved hand in a small formal wave, like a girl seeing someone off at a train station, and was gone." }
   ] },
 
-  { id: 'a6-verso', date: '1/16', slot: 'after', flag: 'year-goes-on', title: 'the verso', place: 'The Velvet Room', time: '', scene: [
+  { id: 'a6-verso', date: '2/20', slot: 'after', flag: 'year-goes-on', title: 'the verso', place: 'The Velvet Room', time: '', scene: [
     { music: 'velvet' },
     { n: "Elizabeth was holding the book closed against her chest when the elevator doors opened, both arms around it, the way she'd held it on the very first morning. She didn't open it straight away. She looked at Solar for a long time." },
     { s: 'elizabeth', f: 'serious', t: "I've done something I don't do. I've looked at a thing twice." },
@@ -358,11 +361,11 @@
       ] }
     ] },
     { n: "Elizabeth turned the page back over, so the front faced up, and closed the book, gently, with both hands, the way you'd close a door on someone sleeping." },
-    { s: 'elizabeth', f: 'neutral', t: "Two weeks. The thirtieth. Whatever's written on the back, I expect you'll have to read it on the platform. Not in here. Not in a mirror. Face to face." },
+    { s: 'elizabeth', f: 'neutral', t: "Two weeks. The sixth. Whatever's written on the back, I expect you'll have to read it on the platform. Not in here. Not in a mirror. Face to face." },
     { n: "On the way down she held the edge of the velvet seat with both hands. Not because the elevator was moving fast. Because her hands needed something to hold that wasn't a sleeve." }
   ] },
 
-  { id: 'a6-snow', date: '1/27', slot: 'late', flag: 'year-goes-on', title: 'first snow', place: 'Iwatodai Dorm · Rooftop', time: 'Night', scene: [
+  { id: 'a6-snow', date: '3/3', slot: 'late', flag: 'year-goes-on', title: 'first snow', place: 'Iwatodai Dorm · Rooftop', time: 'Night', scene: [
     { music: 'night' },
     { n: "It started a little after nine, properly, big slow deliberate flakes coming down one at a time out of the orange city sky, as if each of them had been considered first, and by ten the rooftop railing had a white edge on it as thick as a finger. Hanni and Hyein had dragged her up there in coats over their pajamas because, Hanni said, first big snow, you had to be outside for it, it was a rule." },
     { s: 'hyein', f: 'happy', t: "The lake's doing it at home right now. I can feel it. Two feet. They'll cancel classes. I can feel it in my BONES." },
@@ -399,7 +402,7 @@
     ])
   ] },
 
-  { id: 'a6-mirror', date: '1/28', slot: 'evening', flag: 'year-goes-on', title: 'the first thing people see', place: 'Iwatodai Dorm · Hallway', time: 'Evening', cast: { 'mirror-woman': 'A Woman in the Mirror' }, scene: [
+  { id: 'a6-mirror', date: '3/4', slot: 'evening', flag: 'year-goes-on', title: 'the first thing people see', place: 'Iwatodai Dorm · Hallway', time: 'Evening', cast: { 'mirror-woman': 'A Woman in the Mirror' }, scene: [
     { music: 'mystery' },
     { n: "The clock over the lounge said ten to seven, and the dorm was making its evening noises, the television and the kettle and somebody losing at something upstairs. She was on her way to the stairs, and she glanced into the long mirror by the front door the way everybody did on their way past, and there was a woman standing behind her." },
     { n: "Not in the hall. In the mirror. Fifty, perhaps, and beautiful in the way that takes a great deal of work and never lets any of it show; a cream cardigan, a single strand of pearls, black hair pinned up in a chignon so smooth it looked lacquered. She wasn't looking at Solar's face. She was looking at Solar's hair." },
@@ -435,7 +438,7 @@
     ])
   ] },
 
-  { id: 'a6-playdate', date: '1/29', slot: 'after', flag: 'year-goes-on', title: 'playdate', place: 'Naganaki Shrine', time: 'After School', cast: { jake: 'Jake' }, scene: [
+  { id: 'a6-playdate', date: '3/5', slot: 'after', flag: 'year-goes-on', title: 'playdate', place: 'Naganaki Shrine', time: 'After School', cast: { jake: 'Jake' }, scene: [
     { music: 'day' },
     { n: "The cold had gotten into everything, the shrine gravel frozen into little ridges, the stone fox by the offering box wearing a cap of frost, and Koromaru was by the torii anyway, because Koromaru was always there, sitting with his breath going up in small white puffs like a very short dragon." },
     { n: "Jake was there too, crouched in front of him in a navy school coat with a scarf wound up to his nose, scratching Koromaru behind the ears with total devotion. He saw Solar and lit up like a porch light." },
@@ -469,9 +472,9 @@
     ])
   ] },
 
-  { id: 'a6-last-train', date: '1/30', slot: 'evening', flag: 'year-goes-on', title: 'the last train', place: 'Iwatodai Station · Platform', time: 'The Dark Hour', scene: [
+  { id: 'a6-last-train', date: '3/6', slot: 'evening', flag: 'year-goes-on', title: 'the last train', place: 'Iwatodai Station · Platform', time: 'The Dark Hour', scene: [
     { music: 'night' },
-    { n: "Everybody went. Nobody had to say so. At eleven o'clock on the thirtieth of January the whole impossible household put on its coats in the front hall of the dorm without a word, S.E.E.S. and searchers and every visitor who'd ever eaten at that long table, and walked to the station in the snow in a long untidy line, and nobody talked, and the snow came down on all of them the same." },
+    { n: "Everybody went. Nobody had to say so. At eleven o'clock on the sixth of March the whole impossible household put on its coats in the front hall of the dorm without a word, S.E.E.S. and searchers and every visitor who'd ever eaten at that long table, and walked to the station in the snow in a long untidy line, and nobody talked, and the snow came down on all of them the same." },
     { n: "Elizabeth was already on the platform. She stood under the handless clock with the book held against her chest in both arms, and when she saw them coming up the stairs she lifted one gloved hand, the small formal wave, like a girl seeing someone off at a train station." },
     { n: "And on the last bench, very straight, in a porter's coat cut for somebody twice her size, with a ticket held against her chest and a scrap of pink ribbon round her knuckles, Wren." },
     { n: "Solar went and sat down beside her. Everyone else stayed back by the stairs. They knew. Everybody knew by now. It was eleven fifty-nine." },
