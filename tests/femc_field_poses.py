@@ -3,7 +3,8 @@ femc-game.html's Dark Hour frame).
 
 Every member in --ids must show on the battlefield on their turn. Members with a pose sheet (battle.js FIGHTER_POSES:
 poses/<mid>-pose-0..5.webp) are also checked through the real presentation code: the idle frame is the stance, a
-real Attack shows the weapon frame, a summon holds the Evoker frame and then the spell (or weapon) frame, a hit on
+real Attack shows the weapon frame, a summon holds the Evoker frame (in view, before the glass, which breaks beside the
+figure, not over it) and then the spell (or weapon) frame, a hit on
 them shows the hurt frame, every action returns to idle, reduced motion still swaps to the one pose without a
 sequence, and a won fight ends on the victory frame. Members without a sheet keep their static stance.
   python3 tests/femc_field_poses.py [--ids solar,akihiko,...] [--screenshots DIR]
@@ -64,11 +65,15 @@ try:
      p.eval('FemcBattle.unfreeze()');shots=True
     if sheet and mid not in posed:
      # A summon through the real presentation (cut-in on, then the repeat that skips it), a hit on them, reduced motion.
-     r={}
+     r={};m0=p.eval('Object.assign({},FemcBattle.marks)')
      for k,cut in (('summon','always'),('repeat','off')):
       p.eval('poseLog=[];FemcBattle.save.cutins='+json.dumps(cut)+';window.__ev=FemcBattle.playEvents([{t:"use",src:'+json.dumps(state['id'])+',skill:"agi",name:"Agi",el:"fire",summon:true,tgts:[]}]).then(()=>window.__ev=null)')
       until('window.__ev===null',30);until('document.querySelector(".bt-fighter").dataset.pose==="0"')
       r[k]=poses(mid);assert r[k][:2]==[1,3] and r[k][-1]==0,(mid,k,r[k])
+     # The Evoker frame holds before the glass, the cut-in starts at the figure's right edge, a repeat breaks small
+     # glass beside the figure (Solar: her field Evoker sheet does it), never the full-screen flash over it.
+     m1=p.eval('FemcBattle.marks');d=lambda key:m1.get(key,0)-m0.get(key,0)
+     assert d('evoke-hold')>=1 and d('evoke-side')>=1 and (d('side-glass')>=1 or d('field-evoke-done')>=1),(mid,{x:d(x) for x in ('evoke-hold','evoke-side','side-glass','field-evoke-done')})
      p.eval('poseLog=[];window.__ev=FemcBattle.playEvents([{t:"hit",src:FemcBattle.B.foes()[0].id,tgt:'+json.dumps(state['id'])+',amount:5,hp:99990,aff:"normal",el:"strike"}]).then(()=>window.__ev=null)')
      until('window.__ev===null');until('document.querySelector(".bt-fighter").dataset.pose==="0"')
      r['hurt']=poses(mid);assert 4 in r['hurt'] and r['hurt'][-1]==0,(mid,r['hurt'])

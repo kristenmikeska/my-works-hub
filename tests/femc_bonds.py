@@ -60,13 +60,13 @@ SETUP = r"""(()=>{
 
 # In the battle frame: log every cut-in (Theurgy or bond) and every speech bubble as they appear.
 WATCH = r'''(() => {
-  window.cutLog = []; window.barkLog = [];
+  window.cutLog = []; window.barkLog = []; window.barkMax = 0;
   new MutationObserver(ms => ms.forEach(m => {
     m.addedNodes.forEach(n => { if (n.classList && n.classList.contains('bt-bond')) { const r = { cls: n.className, bond: n.dataset.bond, name: (n.querySelector('.th-name') || {}).textContent || '',
       lines: [...n.querySelectorAll('.th-line')].map(x => x.textContent), imgs: [...n.querySelectorAll('img')].map(i => i.getAttribute('src')), t0: performance.now(), done: null }; n._log = r; cutLog.push(r); } });
     m.removedNodes.forEach(n => { if (n._log) { n._log.done = performance.now(); n._log.final = n.className; n._log.loaded = [...n.querySelectorAll('img')].every(i => i.complete && i.naturalWidth > 0); } });
   })).observe(document.querySelector('.bt-cut'), { childList: true });
-  new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.classList && n.classList.contains('bt-bark')) barkLog.push(n.textContent); })))
+  new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.classList && n.classList.contains('bt-bark')) { barkLog.push(n.textContent); barkMax = Math.max(barkMax, document.querySelectorAll('.bt-bark:not(.out)').length); } })))
     .observe(document.querySelector('.bt-barks'), { childList: true });
   return true;
 })()'''
@@ -435,10 +435,14 @@ try:
             ids = p.eval("Object.fromEntries(FemcBattle.B.party().map(u => [u.mid, u.id]))")
             foe = first_foe(p)
             p.eval("FemcBattle.B.party().forEach(u => { u.maxHp = 300; u.hp = 300; })")
+            # Lines queue one at a time, each up for its reading time (battle.js barkMs): wait for the queue to empty
+            # instead of sleeping a fixed time, so the run doesn't depend on the line lengths.
+            drained = "!document.querySelector('.bt-bark')"
             p.eval("FemcBattle.playEvents(" + json.dumps([{'t': 'hit', 'src': ids['solar'], 'tgt': foe, 'el': 'pierce', 'aff': 'normal', 'crit': True, 'amount': 300, 'hp': 8e6, 'maxHp': 9e6}]) + ")", timeout=60)
-            time.sleep(2.2)
+            p.wait(drained, 40)
             p.eval("FemcBattle.playEvents(" + json.dumps([{'t': 'hit', 'src': foe, 'tgt': ids['solar'], 'el': 'strike', 'aff': 'normal', 'amount': 150, 'hp': 150, 'maxHp': 300}]) + ")", timeout=60)
-            time.sleep(2.2)
+            p.wait(drained, 40)
+            ok(p.eval("barkMax") <= 1, ('one bubble at a time', p.eval("barkMax")))
             return marks(p), p.eval("barkLog")
         m0, _ = banter_run([], 9)
         ok(not m0.get('banter') and m0.get('bark-haechan-solarHurt', 0) >= 1, ('friend route: no banter, a plain line', m0))
@@ -447,6 +451,8 @@ try:
         m6, bl6 = banter_run(['haechan'], 6)
         ok(m6.get('banter-haechan-crit') == 1 and m6.get('banter-haechan-hurt') == 1, m6)
         ok(any('Solar' in x for x in bl6) and any('Haechan' in x for x in bl6), ('both speak', bl6))
+        # Each pair: their line, then Solar's reply right after it (both crit and hurt pairs played in full).
+        ok(len(bl6) == 4 and [x.startswith('Haechan') for x in bl6] == [True, False, True, False], ('pairs in order', bl6))
         m9, bl9 = banter_run(['haechan'], 9)
         ok(m9.get('banter-haechan-crit') == 1, m9)
         clean(p, 'banter')

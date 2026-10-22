@@ -1834,7 +1834,7 @@
       diff: RL && RL.edmg ? () => Object.assign({}, diff(), { edmg: diff().edmg * RL.edmg }) : diff, protect: !!(RL && RL.protect),
       perks, names: BLD ? BLD.names() : {}, startBuffs, foeHpMult, bondArts: BDS && HO && !(RL && RL.noPerks) ? BDS.arts(save) : [] });
     if (RL && RL.setup) RL.setup(B);
-    navSaid = new Set(); summoned = new Set(); thSeen = new Set(); barkN = new Map(); barkAt = 0;
+    navSaid = new Set(); summoned = new Set(); thSeen = new Set(); barkN = new Map(); barkAt = 0; barkQ = []; barkRun = 0;
     curSpec = spec; blog = []; lastTgt = {}; focusId = null;
     blogAdd(`${spec.label} · ${spec.block}${spec.boss && !spec.reaper ? ' · Full Moon' : spec.reaper ? ' · The Reaper' : spec.strong ? ' · Strong Shadows' : ''} · ${diff().name}`, 'sys');
     buildBattle(spec);
@@ -2354,8 +2354,42 @@
       return;
     }
     const mode = rushActive() ? 'off' : (save.cutins || 'first');
-    if (mode === 'off' || (mode === 'first' && !first)) { sfx('summon'); if (!(await fieldEvoke(u))) { flash(true); await sleep(180); } return; }
-    await evoker(u, skillName);
+    // A posed fighter on the field (2026-10-21, Kat): the Evoker frame holds in view first, the glass breaks beside
+    // the figure instead of over it, and the spell frame follows (playOne). Reduced motion keeps the old quick version.
+    const fp = posedFighter(u), side = !!fp && !!FX && !FX.reduced();
+    if (mode === 'off' || (mode === 'first' && !first)) {
+      sfx('summon');
+      if (await fieldEvoke(u, side)) return;
+      if (side) { await sleep(EVOKE_HOLD); sideGlass(fp); sfx('evoker'); mark('side-glass'); await sleep(260); return; }
+      flash(true); await sleep(180); return;
+    }
+    if (side) {
+      mark('evoke-hold');
+      // An Evoker sheet (Solar) plays on the figure itself: raised, the shot as the cut-in breaks beside her, lowered.
+      if (await fieldEvoke(u, true, () => evoker(u, skillName, fp))) return;
+      await sleep(EVOKE_HOLD);
+    }
+    await evoker(u, skillName, side ? fp : null);
+  }
+  /* How long the fighter's Evoker frame stays up before the glass breaks (ms at speed 1; sleep() scales it). */
+  const EVOKE_HOLD = 500;
+  /* And the spell (or weapon) frame after it, while the skill's effect plays. */
+  const SPELL_HOLD = 1200;
+  /* A small burst of glass beside the fighter (summons that skip the cut-in): light breaking at the Evoker, off the figure. */
+  function sideGlass(box) {
+    if (!FX || FX.reduced() || perf()) { flash(true); return; }
+    const R = BT.root.getBoundingClientRect(), r = box.getBoundingClientRect();
+    const s = Math.round(Math.max(120, Math.min(r.height * 0.75, R.width * 0.3)));
+    const layer = document.createElement('div');
+    layer.className = 'bt-sideglass';
+    const x = Math.max(0, Math.min(R.width - s, r.right - R.left - s * 0.12)), y = Math.max(0, r.top - R.top + r.height * 0.04);
+    Object.assign(layer.style, { left: `${Math.round(x)}px`, top: `${Math.round(y)}px`, width: `${s}px`, height: `${s}px` });
+    BT.cut.appendChild(layer);
+    const c = document.createElement('canvas'); c.width = c.height = s;
+    const g = c.getContext('2d'), gr = g.createRadialGradient(s * 0.18, s * 0.38, 0, s * 0.18, s * 0.38, s * 0.85);
+    [[0, 'rgba(255,255,255,.95)'], [0.25, 'rgba(150,205,255,.75)'], [0.55, 'rgba(255,79,158,.4)'], [1, 'rgba(40,20,80,0)']].forEach(([o, col]) => gr.addColorStop(o, col));
+    g.fillStyle = gr; g.fillRect(0, 0, s, s);
+    FX.shatter(layer, c, { cx: s * 0.12, cy: s * 0.38 }).then(() => layer.remove());
   }
   /* The Evoker sheet on the battlefield (data.js member.evoker.frames: raised, the shot, lowered), for the summons that
      skip the cut-in (repeats, Off, Rush). The frames sit over the stance at the stance figure's own height; this returns
@@ -2371,7 +2405,7 @@
     const ov = box.querySelector('img.evk');
     if (ov) ov.remove();
   }
-  async function fieldEvoke(u) {
+  async function fieldEvoke(u, side = false, during = null) {
     const frames = evokeFrames(u.mid), box = BT && BT.fighter;
     if (!frames || !box || box.hidden || box.dataset.id !== u.id || !FX || FX.reduced()) return false;
     const base = box.querySelector('img:not(.evk)');
@@ -2384,13 +2418,15 @@
     box.classList.add('evoking-f');
     const show = i => { ov.src = frames[i]; ov.dataset.f = i; mark('field-evoke-' + i); };
     show(0);
-    await sleep(170);
+    await sleep(side ? EVOKE_HOLD : 170);
     if (tok !== evokeTok) return true;
-    show(1); flash(true); sfx('evoker');
-    (async () => { await sleep(300); if (tok === evokeTok) show(2); await sleep(280); if (tok === evokeTok) { endFieldEvoke(); mark('field-evoke-done'); } })();
+    show(1);
+    if (during) await during(); else { if (side) sideGlass(box); else flash(true); sfx('evoker'); }
+    const tail = (async () => { await sleep(300); if (tok === evokeTok) show(2); await sleep(280); if (tok === evokeTok) { endFieldEvoke(); mark('field-evoke-done'); } })();
+    if (side) await tail; // the spell frame comes after the follow-through, not hidden under it
     return true;
   }
-  async function evoker(u, skillName) {
+  async function evoker(u, skillName, fp = null) {
     const m = member(u.mid), per = D.personas[u.personaId] || D.personas[m.persona], reduced = !FX || FX.reduced() || perf(), solar = u.mid === 'solar';
     await stills((solar ? [SUMMON_DIR + 'solar-evoker.webp', per.art] : [per.art, pimg(u.mid, m.faces.idle)]).concat(evokeFrames(u.mid) || []), 900);
     const wrap = document.createElement('div');
@@ -2403,9 +2439,12 @@
       ? `<div class="bt-evk-shot">${useS ? '' : `<img src="${SUMMON_DIR}solar-evoker.webp" alt="">`}</div>`
       : `<div class="bt-evk-band" style="--c:${m.color}">${fimg(u.mid, m.faces.idle, '', 'face')}<img class="gun" src="${EVOKER_SVG}" alt=""></div>`;
     // With an Evoker sheet: after the glass breaks, the full-body shot stands beside the Persona, then the Evoker lowers.
-    const body = evokeFrames(u.mid) && !reduced && evokeFrames(u.mid).every(f => { const im = still(f).im; return im.complete && im.naturalWidth; }) ? evokeFrames(u.mid) : null;
+    const body = !fp && evokeFrames(u.mid) && !reduced && evokeFrames(u.mid).every(f => { const im = still(f).im; return im.complete && im.naturalWidth; }) ? evokeFrames(u.mid) : null;
     wrap.innerHTML = `<div class="bt-evk-light"></div><img class="per" src="${per.art}" alt="">${body ? `<div class="bt-evk-body"><img data-i="1" src="${body[1]}" alt=""><img data-i="2" src="${body[2]}" alt=""></div>` : ''}<b class="bt-evk-name"><span class="pn">${esc(per.name.toUpperCase())}</span><small>${esc(skillName)}</small></b>${shot}`;
     if (useS) { const v = sclip.v; v.className = 'bt-evk-video'; try { v.currentTime = 0; } catch (err) {} wrap.querySelector('.bt-evk-shot').appendChild(v); v.play().catch(() => {}); mark('evoke-clip'); }
+    // With the fighter on the field the cut-in starts at the figure's right edge, so the figure stays in view.
+    const sideX = fp ? Math.max(0, Math.round(fp.getBoundingClientRect().right - BT.root.getBoundingClientRect().left)) : 0;
+    if (sideX) { wrap.classList.add('side'); wrap.style.left = `${sideX}px`; mark('evoke-side'); }
     BT.cut.appendChild(wrap);
     BT.root.classList.add('evoking');
     sfx('click');
@@ -2427,7 +2466,11 @@
         cx = g.right - R.left - g.width * 0.02; cy = g.top - R.top + g.height * 0.32;
         extras = [{ el: sh, clip: [[0, 18], [100, 0], [100, 82], [0, 100]], fill: '#14070f', edge: m.color }];
       }
-      const snap = FX.snapshot(BT.root, { bg: BT.bg, extras });
+      let snap = FX.snapshot(BT.root, { bg: BT.bg, extras });
+      if (sideX) { // only the part of the battle the cut-in covers breaks
+        const part = document.createElement('canvas'); part.width = Math.max(1, snap.width - sideX); part.height = snap.height;
+        part.getContext('2d').drawImage(snap, -sideX, 0); snap = part; cx = Math.max(0, cx - sideX);
+      }
       sh.remove();
       wrap.classList.add('broke');
       FX.shatter(wrap, snap, { cx, cy });
@@ -2700,9 +2743,41 @@
   let barkN = new Map(), barkAt = 0;
   const LINE_CAP = { weak: 1, allyLow: 1, allyDown: 2, solarHurt: 1, downed: 1, boss: 1, win: 1, thReady: 1, banter: 1 };
   const barkOk = () => !!BT && !(curSpec && curSpec.rules && (curSpec.rules.noNav || curSpec.rules.noBarks));
+  /* Lines wait their turn (2026-10-21, Kat: they vanished too fast): one bubble at a time, each up for ~1.5 s plus 60 ms a
+     character (at least 2.5 s at speed 1, never under BARK_FLOOR at any speed), the clock stopping while a summon or
+     Theurgy cut-in is over the field (the bubble hides and comes back). The log gets the line at once, as before. */
+  let barkQ = [], barkRun = 0;
+  const BARK_FLOOR = 1800;
+  const barkMs = text => Math.max(BARK_FLOOR, Math.max(2500, 1500 + 60 * String(text).length) * textHold() / Math.min(speed(), 3));
+  const barkCovered = () => !!BT && (BT.root.classList.contains('evoking') || document.documentElement.classList.contains('bt-cutin') || !!BT.cut.querySelector('.bt-evoke, .bt-awaken, .bt-sideglass'));
   function say(u, text) {
     if (!BT || !u) return;
     blogAdd(`${u.name}: “${text}”`, 'say');
+    barkQ.push([u, text]);
+    if (!barkRun) runBarks();
+  }
+  async function runBarks() {
+    const run = ++barkRun, bt = BT;
+    const tick = () => new Promise(r => setTimeout(r, 100));
+    while (barkQ.length && BT === bt && run === barkRun) {
+      while ((frozen || paused || barkCovered()) && BT === bt) await tick();
+      const [u, text] = barkQ.shift();
+      if (BT !== bt) break;
+      const b = showBark(u, text);
+      mark('bark-shown');
+      let left = barkMs(text);
+      while (left > 0 && BT === bt && run === barkRun) {
+        const hide = frozen || paused || barkCovered();
+        b.style.visibility = barkCovered() ? 'hidden' : '';
+        await tick();
+        if (!hide) left -= 100;
+      }
+      b.classList.add('out'); setTimeout(() => b.remove(), 260);
+      await new Promise(r => setTimeout(r, 180));
+    }
+    if (run === barkRun) barkRun = 0;
+  }
+  function showBark(u, text) {
     BT.barks.querySelectorAll(`[data-u="${u.id}"]`).forEach(x => x.remove());
     const c = BT.cards.get(u.id), R = BT.root.getBoundingClientRect();
     const b = document.createElement('div');
@@ -2724,8 +2799,7 @@
         if (left < ql + q.width && left + w2 > ql && top > qt && top - b.offsetHeight < qt + q.height) top = qt - 6; });
       b.style.top = `${Math.max(8 + b.offsetHeight, top)}px`;
     } else b.classList.add('free');
-    const ms = 2400 * textHold() / Math.min(speed(), 2);
-    setTimeout(() => { b.classList.add('out'); setTimeout(() => b.remove(), 260); }, ms);
+    return b;
   }
   function bark(u, key, vars = {}, { force = false } = {}) {
     if (!barkOk() || !u || u.side !== 'party' || u.dead || u.assistOf) return false;
@@ -2748,7 +2822,7 @@
     if ((barkN.get(k) || 0) >= LINE_CAP.banter) return false;
     barkN.set(k, 1); barkAt = performance.now();
     say(u, row[0]);
-    setTimeout(() => { if (BT && !L.dead) say(L, row[1]); }, 1250 / Math.min(speed(), 2));
+    if (!L.dead) say(L, row[1]); // queued: Solar's reply follows once their line has been read
     mark('banter'); mark('banter-' + key); mark('banter-' + u.mid + '-' + key);
     return true;
   }
@@ -2912,7 +2986,7 @@
         } else {
           paintCard(u);
           const fp = posedFighter(u), act = E.PHYS.has(e.el) ? 'attack' : 'cast';
-          if (e.summon && !e.charmed) { if (fp) { holdPose(fp, 'evoke'); mark('fighter-evoke'); } await summonCut(u, e.name); if (fp) { animateShadow(fp, act, 700); mark('fighter-' + act); } banner(e.name, { el: e.el, sub: u.persona }); const sg = D.skills[e.skill]; if (sg && sg.fx && sg.type !== 'dmg' && SIG_FX.has(sg.fx)) e.tgts.forEach(id => fxPlay(sg.fx, id)); }
+          if (e.summon && !e.charmed) { if (fp) { holdPose(fp, 'evoke'); mark('fighter-evoke'); } await summonCut(u, e.name); if (fp) { animateShadow(fp, act, SPELL_HOLD); mark('fighter-' + act); } banner(e.name, { el: e.el, sub: u.persona }); const sg = D.skills[e.skill]; if (sg && sg.fx && sg.type !== 'dmg' && SIG_FX.has(sg.fx)) e.tgts.forEach(id => fxPlay(sg.fx, id)); }
           else if (e.charmed) { banner(e.name, { el: 'charm', sub: `${u.name} · Charmed` }); await sleep(300); }
           else { const c = BT.cards.get(u.id); c.classList.remove('hit'); banner('Attack', { el: e.el, sub: u.name }); if (fp) { animateShadow(fp, 'attack', 700); mark('fighter-attack'); } await sleep(260); }
           log(`${u.name}: ${e.name}`, 'pu');

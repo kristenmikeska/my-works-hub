@@ -248,15 +248,18 @@ try:
     errs = p.console(); check(not errs, errs)
     results['settings'] = ['first: full then short', 'off: short', 'always: full twice', 'rush: short', 'reduced motion: fade', 'speed scales']
 
-    # 4. The Evoker: Solar's summon cut-in shows the full-body shot, then the Evoker lowered; repeat summons with the
-    #    1st-per-battle setting play the sheet on her battlefield figure.
+    # 4. The Evoker (2026-10-21): with Solar on the battlefield her sheet plays on her figure, raised, the shot while the
+    #    cut-in breaks beside her (it starts at her right edge, so it has no full-body shot of its own), then lowered;
+    #    repeat summons with the 1st-per-battle setting play it there too, with small glass beside her.
     fight(p, ['solar'], cutins='first', setup="FemcBattle.B.party()[0].th = 0;")
     act(p, 'solar', ['skill', 'fire'])
-    p.wait("(FemcBattle.marks['evoke-follow'] || 0) >= 1 && evkLog.length >= 1", 30)
-    body = p.eval('evkLog[0].body')
-    check(len(body) == 2 and 'solar-evoke-1' in body[0] and 'solar-evoke-2' in body[1], body)
+    p.wait("(FemcBattle.marks['field-evoke-done'] || 0) >= 1 && evkLog.length >= 1", 30)
+    body = p.eval('evkLog[0].body'); ff = p.eval('fieldFrames')
+    check(body == [] and (p.eval("FemcBattle.marks['evoke-side'] || 0") >= 1), body)
+    check([any(f'solar-evoke-{k}' in s for s in ff) for k in range(3)] == [True] * 3, ff)
+    p.eval('fieldFrames.length = 0')
     act(p, 'solar', ['skill', 'fire'])
-    p.wait("(FemcBattle.marks['field-evoke-done'] || 0) >= 1", 30)
+    p.wait("(FemcBattle.marks['field-evoke-done'] || 0) >= 2", 30)
     ff = p.eval('fieldFrames')
     check([any(f'solar-evoke-{k}' in s for s in ff) for k in range(3)] == [True] * 3, ff)
     check(p.eval("!document.querySelector('.bt-fighter img.evk') && getComputedStyle(document.querySelector('.bt-fighter img')).opacity === '1'"), 'stance restored')
