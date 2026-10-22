@@ -21,7 +21,7 @@ Other docs, if you ever want detail:
 
 - ✅ **Leon, Cloud, Noctis, Astarion and Shadowheart are gone** from the game: their links, scenes, run-ins, perks and art-list items. Scenes they were part of read fine without them, old saves keep loading (and keep anything they gave you), the Black Rose naginata now comes from another boss, and the v1 game and its Compendium pages are untouched
 - ✅ **The year runs to early March**, like P3: February is a whole extra month of school and free time (the cold, Setsubun, Valentine's Day invitations, new everyday moments and texts, job and club lines for the season), graduation is on 3/5, and the end of the year moved to match. A save from late January carries on into February
-- ⬜ **Next:** rank 15 for Haechan, Jungwon, Akihiko (with the Gekkoukan buzz) and Shinjiro (waking up); February has room for them now
+- ✅ **Rank 15** for Haechan, Jungwon, Akihiko and Shinjiro: five more ranks each in February, different for every route you can be on and for romance or friendship, more time together in between, texts after every new rank, a few new late nights and February moments, and the Gekkoukan buzz around Akihiko all year (it changes as you get closer). His romance can start sooner now. Each of the four gets a new perk at 15, the fighters a new bond skill, and there's a Rank 15 stamp. Old saves pick it all up
 - ⬜ **Then:** new links Danielle, Jaemin and Chenle (portraits needed: see the art list)
 
 - ⬜ **Small battle fixes queued:** All-Out cloud figures use the pose-sheet attack frames instead of dark silhouettes; a phone layout so both faces fit in bond cut-ins
@@ -40,7 +40,7 @@ Other docs, if you ever want detail:
 - ✅ Mark's rank 1 avoids Haechan's name on purpose
 - ✅ Late-night scenes with the romances: Haechan, Akihiko, Jungwon and Jihoon, changing with the day and how close you are
 - ✅ Story before each full-moon fight (Akihiko is protective)
-- ⬜ Links past rank 10, and Shinjiro waking up
+- ✅ Links past rank 10, and Shinjiro waking up
 - ✅ The Persona cast belongs to this world: texts arrive like anyone's, and Ann, Kasumi and Haru stay all year, with holiday invites
 - ✅ Ann is a Tokyo model whose jobs keep bringing her through Port Island, so she comes and goes all year; more Persona 5 friends drop by now and then
 - ✅ Kuromi and My Melody as exchange students living in the dorm; Kuromi's link rewritten and deeper; My Melody as a hidden link you can miss
@@ -68,7 +68,7 @@ Other docs, if you ever want detail:
 - 🟡 Bosses and fighters move in battle: all 11 full-moon bosses (the Last Train too) and 12 fighters have pose sheets; Ken and Justice still need theirs
 - 🟡 Weapons for the other fighters: waiting on weapon-sheet art
 - ✅ Gacha, both kinds: a capsule machine at Paulownia Mall (yen or Capsule Tickets from Tartarus and Shuffle Time; cast keychains you can collect and show off in the menu, phone cases, accessories and rare items; odds on the front and a pity counter) and Elizabeth's card draws in the Velvet Room (yen or Velvet Plumes from fights and the Compendium; skill cards and rare gear). Elizabeth's Compendium Credit works now
-- ✅ Achievements as stamps on the hub: 28 Persona 3: Solstice stamps with their own page in the passport, and a toast in the game when you earn one
+- ✅ Achievements as stamps on the hub: 29 Persona 3: Solstice stamps with their own page in the passport, and a toast in the game when you earn one
 
 ## Music and polish
 - ✅ 57 songs, rotating with no repeats, plus world songs in memories, arrivals, calls and endings

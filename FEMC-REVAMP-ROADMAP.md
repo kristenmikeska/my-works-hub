@@ -259,12 +259,25 @@ Spoiler-free here; the story side is in the hidden plot doc (§20).
   femc_preparation, femc_shadow_poses; and
   `tools/femc-check-scenes.py` wants openers for all twelve months.
 
-**Hooks for ranks 11–15** (the next batch):
-- Where: February, 2/1–3/4 (3/5–3/7 belong to the story). A link's `ranks` entries 11–15 with `after` dates there; story ranks
-  (Haechan's `forced`) the same way. Gate new February content on `year-goes-on`.
-- What assumes rank 10 is MAX today: `core.js` linkStatus / linkScene (`p.rank >= 10` → afterMax), finishLink, bond()
-  (no ♪ at MAX), farewellDue, nextTrace / leavesAtMax (`ranks[9]`), migrateForced (`r < 10`), perkToasts ('MAX' label);
-  `menu.js` (MAX evolution of signature skills, `rank >= 10`); `stamps.js` (Bond MAX, All of S.E.E.S.); `build.js` perks
-  (MAX perks sit at rank 10) and `bonds.js` tiers; `ui.js` end screen ("bonds at MAX"); story checks `anyRank(..., 10)` for
-  the true ending (story-act6). Decide per link whether 15 or 10 is "MAX" before changing these.
-- Shinjiro's rank 15 (waking) needs his `closes: '10/4'` and `bonds.js until: '10/3'` rethought for his late ranks.
+**Ranks 11–15: built (2026-10-21).** Haechan, Jungwon, Akihiko and Shinjiro go to 15; every other link stays at 10.
+- Data: a link's `maxRank: 15` and `ranks[10..14]` with `after` dates in February (Akihiko 2/1–2/26, Jungwon and Haechan 2/2–3/1,
+  Shinjiro 2/1–2/27). Haechan's are story ranks (`forced` 1–15); Shinjiro's 15 is one. Each new rank branches by the locked route
+  (`ifHeading`) and by romance / friendship. Content: the link files plus `data/living-r15-<id>.js` (texts after ranks 11–15,
+  a few late nights and routines, Haechan's 2/14, the Gekkoukan buzz all year, Shinjiro's morning-after event). Akihiko's romance
+  can start at rank 7 now (rank 9 still offers it). Story inserts: two in story-act3 (Akihiko), the Stay ending and graduation
+  (Shinjiro).
+- Engine (`core.js`, header): `maxOf` / `isMaxed`; `afterGap` (rank 10+ while the next rank's date or gate isn't reached: afterMax,
+  no ♪); `stretchHangouts` when a rank scene leaves the meter short; afterMax entries gated by `flags` / `noFlags` (traces too);
+  `stretch: { from, home }` for a link that closed (Shinjiro: the dorm kitchen from 2/1); routine / pack gates `ranksBelow` and
+  `route` ('romance' | 'friend' | 'none'); `migrateForced` and `bond()` read the link's own top rank.
+- What "MAX" means: the link's own top rank in the meter, rank card, toasts, Links / Bonds tabs, Go Out notes, end screen and the
+  Bond MAX stamp. Rank 10 stays the P3 MAX for the party trees' evolution, the old MAX perks, bond tier 9, Christmas Eve and
+  goodbyes; All of S.E.E.S. stays at 10. New at 15: a daily perk each (`build.js`), a third bond tier with a romance version
+  (`bonds.js love15`; Shinjiro's bond stays ended), and the Rank 15 stamp (29 stamps). Status draws fifteen pips for the four.
+- Old saves: nothing to migrate; a save at rank 10 plays afterMax until the February dates, then the ranks (a save already past
+  the dates catches up, Haechan one a night).
+- `python3 tests/femc_rank15.py` (engine, UI, perks / bonds / stamps, Shinjiro's return and waking through the UI, Akihiko's turn
+  and buzz gates, route branches, a February on every route reaching 15, a weaker player, migration, a year of routines with links
+  moving, ~19,000 scene paths). Updated: femc_haechan (fifteen story ranks), femc_bonds (Akihiko's bond still), femc_extras and
+  femc_living (fixtures), `tools/femc-check-scenes.py` (maxRank, stretch hangouts, late nights).
+- **Maybe later:** rank 15 for Hanni, Hyein, Mark, Minji, Jihoon (lower priority).

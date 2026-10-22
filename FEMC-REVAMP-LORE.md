@@ -238,6 +238,7 @@ Haechan stays Universe and Jungwon stays Hierophant.
     - main-story scenes about the rumors that depend on how far into his link you are;
     - check when his romance starts, and make it earlier if it's late.
   - **Shinjiro:** ranks 11–14 keep him alive in small ways (cooking his recipe, the stray cat, Koromaru by the door, Ken, Akihiko on Shinji as a kid). Rank 15 is him waking from the coma.
+- **Built (2026-10-21): rank 15.** Haechan, Jungwon, Akihiko and Shinjiro have ranks 11–15 in February, each shaped by the route you're on and by romance or friendship, with the Gekkoukan buzz and an earlier start to Akihiko's romance. Everyone else stays at 10. (Details for writers are in the hidden plot doc.)
 - **Maybe rank 15 later (lower priority):** Hanni, Hyein, Mark, Minji, Jihoon.
 - **Remove fully:** Leon, Cloud, Noctis, Astarion, Shadowheart. Rehome their extras (e.g. Astarion's black-rose naginata), keep old saves working, and drop their perks, matchmaking threads and art-list items. **Sebastian stays.**
 - **New links:** Danielle, Jaemin and Chenle (Runners searchers). Jeno: not now.
