@@ -4549,6 +4549,284 @@
       "destination": "assets/femc/bg/yakushima-villa-terrace.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
       "outputSha256": "6ec21e63d2da07081567a1130d1681868efe2f5de409d425136bc12fce4d8927"
+    },
+    {
+      "batch": 28,
+      "source": "aigis-chibi-alloutattack.png",
+      "sourceNow": "Added to Game/aigis-chibi-alloutattack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0ddf29559cceab74a51537e4c2ac15fc60688b9bb497b6f7cb3157f00fa0b16d",
+      "character": "aigis",
+      "status": "integrated",
+      "role": "All-Out brawl cloud: 6-frame chibi sheet (3x2); frames 0-4 cycle in the cloud, frame 5 (victory pose) cut but unused",
+      "destination": "assets/femc/battle/art/chibi/aigis-0..5.webp",
+      "conversion": "tools/femc-chibi.py: source alpha kept, figures split by alpha pieces per grid cell, 50% scale, one shared 386x297 canvas (mass centred, common baseline), WebP q86; source unchanged",
+      "outputSha256": {
+        "aigis-0.webp": "2447a667b86a28ebf8271b6516fae3b2b38c0190905dbf94b2c1503953b0f2b8",
+        "aigis-1.webp": "b8bf4bf985da257c3888bfbbf9029e8e95e709126efe55ca326f6d1cfa3346d6",
+        "aigis-2.webp": "e0971acc13ae9f6e363cbdc97dff7fff81c5198b98e130334e82af9c1709fc7c",
+        "aigis-3.webp": "27e00c19d5d9d2a74e49b7acdf7d50ea4cfdccdb0bf7076cbc374e4293693c6f",
+        "aigis-4.webp": "cd5edcca965c861d115d66552a56d71f90cff19aba7dc18b097dad5eee149266",
+        "aigis-5.webp": "5e3d31645804e78cf6a878490d4c4042a3266218dc388bbc09b457b446777fc3"
+      }
+    },
+    {
+      "batch": 28,
+      "source": "akihiko-chibi-alloutattack.png",
+      "sourceNow": "Added to Game/akihiko-chibi-alloutattack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4a547cbeb27e57bb446ef3933385f68799cff74a755a96ee59c9936c2b991cd3",
+      "character": "akihiko",
+      "status": "integrated",
+      "role": "All-Out brawl cloud: 6-frame chibi sheet (3x2); frames 0-4 cycle in the cloud, frame 5 (victory pose) cut but unused",
+      "destination": "assets/femc/battle/art/chibi/akihiko-0..5.webp",
+      "conversion": "tools/femc-chibi.py: source alpha kept, figures split by alpha pieces per grid cell, 50% scale, one shared 386x297 canvas (mass centred, common baseline), WebP q86; source unchanged",
+      "outputSha256": {
+        "akihiko-0.webp": "996b792b5f79276d073f7324adcc72570acece2b205afc75daf9169569514539",
+        "akihiko-1.webp": "8d378b85da95e47ba384bacb125cf8d09dd8e9457c45ab6e9ed0cfd754cfcd0c",
+        "akihiko-2.webp": "c096d739a56a81e307b13a4859b418fd34a3091cad1c0aa1f05f12c10d6baa06",
+        "akihiko-3.webp": "5611470bf03b78b965004df2fac95f51b385baa5c0e1c7ab78bbc23acb6dfa1d",
+        "akihiko-4.webp": "2ff089f239e1dbac88f8d1bcd0510701fe16948eef46406e6e25b14ffee0a1d4",
+        "akihiko-5.webp": "634911c4b62ac63cc3a95036b49581e5fbbc688e8ece2e363b26770e95e8792c"
+      }
+    },
+    {
+      "batch": 28,
+      "source": "haechan-chibi-alloutattack.png",
+      "sourceNow": "Added to Game/haechan-chibi-alloutattack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "95143dec3ae44c56f7b63e8dbcdf0409ba497b433e1e41bfbabae8b487e84834",
+      "character": "haechan",
+      "status": "integrated",
+      "role": "All-Out brawl cloud: 8-frame chibi sheet (4x2); frames 0-6 cycle in the cloud, frame 7 (victory pose) cut but unused",
+      "destination": "assets/femc/battle/art/chibi/haechan-0..7.webp",
+      "conversion": "tools/femc-chibi.py: source alpha kept, figures split by alpha pieces per grid cell, 50% scale, one shared 386x297 canvas (mass centred, common baseline), WebP q86; source unchanged",
+      "outputSha256": {
+        "haechan-0.webp": "6098503231d17d18fa4c4d24cfe81df1abc4005c5668cceca27300091a416106",
+        "haechan-1.webp": "9ffdb1bde97f025bbc56771ce37d31edf46c77081fcec8db1b43d7c45ff99c99",
+        "haechan-2.webp": "f1156f6b24f52c418e34614be244a353b412d287592859e331d6c4e95ecb492f",
+        "haechan-3.webp": "c0759d2852816beaee00f262b3b14130fef184363776deacd60ff66ba5c230b1",
+        "haechan-4.webp": "dcfc9dd717972e2b9ad6ca52cd6ef09be1a6295622c614d57aa679fdc2ca7818",
+        "haechan-5.webp": "8ff031c41569c0b3983e1c5e4e5ad0666fee6d2d3b0d060e040f7e3b716ede08",
+        "haechan-6.webp": "3c126419973219c85d500c7acd676eb7a9b165d6a0c84c2f27f9ba73e8c0a493",
+        "haechan-7.webp": "000e720a41d7522cb8a9a5559a78152c26b06d84a8fe5846628a82739f0a585f"
+      }
+    },
+    {
+      "batch": 28,
+      "source": "jihoon-chibi-alloutattack.png",
+      "sourceNow": "Added to Game/jihoon-chibi-alloutattack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "26917960f434b233fa5b26c4f8446389b8c5b1ae8177150e1a1842e900843b9a",
+      "character": "jihoon",
+      "status": "integrated",
+      "role": "All-Out brawl cloud: 6-frame chibi sheet (3x2); frames 0-4 cycle in the cloud, frame 5 (victory pose) cut but unused",
+      "destination": "assets/femc/battle/art/chibi/jihoon-0..5.webp",
+      "conversion": "tools/femc-chibi.py: source alpha kept, figures split by alpha pieces per grid cell, 50% scale, one shared 386x297 canvas (mass centred, common baseline), WebP q86; source unchanged",
+      "outputSha256": {
+        "jihoon-0.webp": "eef5b193fa4e9a77359623925a42679996a595c79016e3e5fdb6dd692d177182",
+        "jihoon-1.webp": "699a6a00fc9501fa228669dbb3740211533abe1fbf14fed21dc14fec86f5e60b",
+        "jihoon-2.webp": "e98cd872b78423d5393aa30c1c56c0b978e9b1208c902b0ff3ae4a0d1461e85a",
+        "jihoon-3.webp": "255874a841ef45d35e4f7f85ae3419867aa6fbebe04b9426eb57f822d1019f1f",
+        "jihoon-4.webp": "1403eb0007ed96957691a65704bd6c2649f57f77d08bca7d30489de3dd86a71b",
+        "jihoon-5.webp": "897e0b9cca5c4e01147d6cafbc472c22681f1705b6aa7c9f1cdcc509908e22f1"
+      }
+    },
+    {
+      "batch": 28,
+      "source": "jungwon-chibi-alloutattack.png",
+      "sourceNow": "Added to Game/jungwon-chibi-alloutattack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "5460fd5bd9788a6de9fc043f2a4f766e681dd077e6684a337568adcf481c25b6",
+      "character": "jungwon",
+      "status": "integrated",
+      "role": "All-Out brawl cloud: 6-frame chibi sheet (3x2); frames 0-4 cycle in the cloud, frame 5 (victory pose) cut but unused",
+      "destination": "assets/femc/battle/art/chibi/jungwon-0..5.webp",
+      "conversion": "tools/femc-chibi.py: source alpha kept, figures split by alpha pieces per grid cell, 50% scale, one shared 386x297 canvas (mass centred, common baseline), WebP q86; source unchanged",
+      "outputSha256": {
+        "jungwon-0.webp": "c22361ca76e7efb45585b0b256202e12e80e519cb6494ed090c6368591cc192f",
+        "jungwon-1.webp": "a3a65e17b89a86fa0226a6d3b3a8581cb1ebe9a84cdc1bc2a6675e7eaf8b96fc",
+        "jungwon-2.webp": "6eb170546c3cc915fd14992d253d244fb06c8a6239c5a78381c453be54ec49e6",
+        "jungwon-3.webp": "6f4c179e0ba97d6a7d001a70d12cee9dd68e264158a3aa14364fac8713aef2e2",
+        "jungwon-4.webp": "818ccc8d4ee724219b5eea735ea74b2240149a81c4b6c5b6232219f3364fdfd6",
+        "jungwon-5.webp": "64c616457f377bb007338d9b118bc2176f2d4e54baf063102ad76e1a2c531b9f"
+      }
+    },
+    {
+      "batch": 28,
+      "source": "junpei-chibi-alloutattack.png",
+      "sourceNow": "Added to Game/junpei-chibi-alloutattack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0fb1f60f52e1452493c65ba308f075a0655a03088320dc130045fdbe5c43b942",
+      "character": "junpei",
+      "status": "integrated",
+      "role": "All-Out brawl cloud: 6-frame chibi sheet (3x2); frames 0-4 cycle in the cloud, frame 5 (victory pose) cut but unused",
+      "destination": "assets/femc/battle/art/chibi/junpei-0..5.webp",
+      "conversion": "tools/femc-chibi.py: source alpha kept, figures split by alpha pieces per grid cell, 50% scale, one shared 386x297 canvas (mass centred, common baseline), WebP q86; source unchanged",
+      "outputSha256": {
+        "junpei-0.webp": "d7cc33e5bdd0e3f36f4488bdf6041e2597e47bcf2b6b47fb5f186b0658cc6ac9",
+        "junpei-1.webp": "0808d8fedcd35ca934dcbda97ddeb6e4563d20731192522ed01dfa29efbb3cbe",
+        "junpei-2.webp": "65c986acf8ae59791f9e5509b8f0534208510904d606f045834b944ec2fd751f",
+        "junpei-3.webp": "b22a7c48ab4e9fded63847ee8ba08a678f090ae76f79b380ddb9a3a9c94d21c3",
+        "junpei-4.webp": "f17707abe9ec184568844bf43617bc187ae79ab31c2e1f444fc7721743b9b329",
+        "junpei-5.webp": "515ef0a0cbb0aa49d19fb67003c05bea22ca65328af8b8fd9e1ad147f138a696"
+      }
+    },
+    {
+      "batch": 28,
+      "source": "koromaru-chibi-alloutattack.png",
+      "sourceNow": "Added to Game/koromaru-chibi-alloutattack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7f2dab8f18da397620a0ee7403c53aa3ebbd9b98babd4bdf96f5efc9ffbf84e3",
+      "character": "koromaru",
+      "status": "integrated",
+      "role": "All-Out brawl cloud: 6-frame chibi sheet (3x2); frames 0-4 cycle in the cloud, frame 5 (victory pose) cut but unused",
+      "destination": "assets/femc/battle/art/chibi/koromaru-0..5.webp",
+      "conversion": "tools/femc-chibi.py: source alpha kept, figures split by alpha pieces per grid cell, 50% scale, one shared 386x297 canvas (mass centred, common baseline), WebP q86; source unchanged",
+      "outputSha256": {
+        "koromaru-0.webp": "2609f901a1ec60385b062a03364cd5fc94f3406a5cc3a47ccb4467aeea25d0cf",
+        "koromaru-1.webp": "d13fd2be726f51b41ab598766f996685b994673c7eff6e1b69aa6b5dc30a28c6",
+        "koromaru-2.webp": "902c435df6d9fedf708372d08c8650d1e81fc0d331873ca712122578524e1a2a",
+        "koromaru-3.webp": "463496584a2aed2ebdd6a4d0c22982263e2747dfc1a731ea826db00a9358ddd4",
+        "koromaru-4.webp": "91dcccc7c5a5075af0d5b4046a5f75fadff95fd439ba03a19e1efba2a3a3f8bb",
+        "koromaru-5.webp": "2730dd9f1f6780bd3e12967d6cbc5d7d54fa5d9931c93ec0443cf654711de14f"
+      }
+    },
+    {
+      "batch": 28,
+      "source": "minji-chibi-alloutattack.png",
+      "sourceNow": "Added to Game/minji-chibi-alloutattack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "00ea832f210a184764b54fa7cf980eeedb9995db2c38535c4ec8bf199699f7f2",
+      "character": "minji",
+      "status": "integrated",
+      "role": "All-Out brawl cloud: 6-frame chibi sheet (3x2); frames 0-4 cycle in the cloud, frame 5 (victory pose) cut but unused",
+      "destination": "assets/femc/battle/art/chibi/minji-0..5.webp",
+      "conversion": "tools/femc-chibi.py: source alpha kept, figures split by alpha pieces per grid cell, 50% scale, one shared 386x297 canvas (mass centred, common baseline), WebP q86; source unchanged",
+      "outputSha256": {
+        "minji-0.webp": "2da53913e870103bbf264d851907c55567461f53e62c4f2973c4356be79e2a12",
+        "minji-1.webp": "646df51139cf1bc4cc2f9d6c4c60346eeee1ce4b9952ca429afa59a5ffa91b29",
+        "minji-2.webp": "37324230ef63ddee84d12ce6484cd9f127cc0c46b64acd25d7fbf4927f36ae4c",
+        "minji-3.webp": "ec65af64e1e109ca5e01b616f961f88a61186bb291f7dce45d0317f4cbb842d4",
+        "minji-4.webp": "68780f179bda8bfc4360010124cedfffaaa758d4e8d328aeff02d00f827d1392",
+        "minji-5.webp": "0c99389905e7c0998af535e541dd1d6b7b4b7300fe4a3e6575b7753b0b144285"
+      }
+    },
+    {
+      "batch": 28,
+      "source": "mitsuru-chibi-alloutattack.png",
+      "sourceNow": "Added to Game/mitsuru-chibi-alloutattack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6469b9f2a8e24ee51c3668fe05c03046cd78fc479de107cc47f5bd0e811273f2",
+      "character": "mitsuru",
+      "status": "integrated",
+      "role": "All-Out brawl cloud: 6-frame chibi sheet (3x2); frames 0-4 cycle in the cloud, frame 5 (victory pose) cut but unused",
+      "destination": "assets/femc/battle/art/chibi/mitsuru-0..5.webp",
+      "conversion": "tools/femc-chibi.py: source alpha kept, figures split by alpha pieces per grid cell, 50% scale, one shared 386x297 canvas (mass centred, common baseline), WebP q86; source unchanged",
+      "outputSha256": {
+        "mitsuru-0.webp": "623e983e3b5c1d7c703d0c52705e5cac9f43f998bd0c0f59eaf517329a6ebeab",
+        "mitsuru-1.webp": "9350f31e1999cb3bfd748ef7627882e6d9deaea6a7a587c442b9e2d7b57257a6",
+        "mitsuru-2.webp": "03187322eaa1e55b4b51ebb0508218e7aebb56a0de9175c53b19b179f59f11f3",
+        "mitsuru-3.webp": "f6c314ac2d255ac9329ffbbabd2f18c431466724c71af67758f504c690d74745",
+        "mitsuru-4.webp": "9c2e47434b08682574f90a94c93f1dcb90b04ba2a9f712dd7850b9e1b57ec0de",
+        "mitsuru-5.webp": "4f729a45cf20e31d7eae839e743c6e313cb6d3cf2bf7b6d0a5c9353d6cb98050"
+      }
+    },
+    {
+      "batch": 28,
+      "source": "shinjiro-chibi-alloutattack.png",
+      "sourceNow": "Added to Game/shinjiro-chibi-alloutattack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "23f73b29bad7780d8ab18b245c7fe063018a4a3fecd6c162f3fa01621e4dc1ab",
+      "character": "shinjiro",
+      "status": "integrated",
+      "role": "All-Out brawl cloud: 6-frame chibi sheet (3x2); frames 0-4 cycle in the cloud, frame 5 (victory pose) cut but unused",
+      "destination": "assets/femc/battle/art/chibi/shinjiro-0..5.webp",
+      "conversion": "tools/femc-chibi.py: source alpha kept, figures split by alpha pieces per grid cell, 50% scale, one shared 386x297 canvas (mass centred, common baseline), WebP q86; source unchanged",
+      "outputSha256": {
+        "shinjiro-0.webp": "6576bc262023cb98f6834da296f8906e66724c85de4e3bbbfcb2d1fece34f15e",
+        "shinjiro-1.webp": "72d42e7ccab1c9c562505ea31b0ea2c94ff7810e63642378109a0481cb0466f6",
+        "shinjiro-2.webp": "227ed6a076332d1925da87c3d3a8eeaf46c07de3815d3307c49c02313f84810a",
+        "shinjiro-3.webp": "a020caf2395d9bb592c87f5be36c9cbdcb46ea198522d17a22356430307977d4",
+        "shinjiro-4.webp": "571dbc1a494f729844afa5a4306e6448d8c96af75ccf5a07b3400e242d90e35e",
+        "shinjiro-5.webp": "9bc90ece729ba2b55ff0f360d4b825a878d9d7ac6e7eb40e0a482b8250a6f867"
+      }
+    },
+    {
+      "batch": 28,
+      "source": "solar-chibi-alloutattack.png",
+      "sourceNow": "Added to Game/solar-chibi-alloutattack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ffd8bc14e608e1b474cd6b4829201174529e7f488a16c5a91fe19951b9e546d6",
+      "character": "solar",
+      "status": "integrated",
+      "role": "All-Out brawl cloud: 6-frame chibi sheet (3x2); frames 0-4 cycle in the cloud, frame 5 (victory pose) cut but unused",
+      "destination": "assets/femc/battle/art/chibi/solar-0..5.webp",
+      "conversion": "tools/femc-chibi.py: source alpha kept, figures split by alpha pieces per grid cell, 50% scale, one shared 386x297 canvas (mass centred, common baseline), WebP q86; source unchanged",
+      "outputSha256": {
+        "solar-0.webp": "d23034a4371622cea9c9c506ec717d9d13001b3d38bf35a71a46a2170d717401",
+        "solar-1.webp": "d14b3486e1f754051c093a8aafa8f5380f5fa8f96e44af3844cab17b7f46d40e",
+        "solar-2.webp": "c2c28ce69462fb275f1adf7cf735ea09a692184ec6382cdb6224f4b664e86938",
+        "solar-3.webp": "d78ccc98f107679c30d896eccfce23d2ba8f4a6568acef425768f1b7f5d6d0d3",
+        "solar-4.webp": "2a3e205094a83915fe20a5fd5064f3d4f76eb5e26ce39baaf0e7869e0b9c5745",
+        "solar-5.webp": "7e4c7858f756def726a04eeb040422d784b660a25d6f42dbd4eea70fda830d3d"
+      }
+    },
+    {
+      "batch": 28,
+      "source": "yukari-chibi-alloutattack.png",
+      "sourceNow": "Added to Game/yukari-chibi-alloutattack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "20692eda0eb6f3ce8281aeb9ee178f4ce0acff7d3994338c0da97ec8353aec09",
+      "character": "yukari",
+      "status": "integrated",
+      "role": "All-Out brawl cloud: 6-frame chibi sheet (3x2); frames 0-4 cycle in the cloud, frame 5 (victory pose) cut but unused",
+      "destination": "assets/femc/battle/art/chibi/yukari-0..5.webp",
+      "conversion": "tools/femc-chibi.py: source alpha kept, figures split by alpha pieces per grid cell, 50% scale, one shared 386x297 canvas (mass centred, common baseline), WebP q86; source unchanged",
+      "outputSha256": {
+        "yukari-0.webp": "39e7835c52328dc90e925c9c3805d4c4071058c01c95cd4c08de54900c41cf59",
+        "yukari-1.webp": "130264b2ad9bcda086381fd07bf4d1a98c4434584429102f4f172b961228de43",
+        "yukari-2.webp": "eef16fc6c026705c17cae023b617b4cc7fff2a51f6828e1a9df516726945b94e",
+        "yukari-3.webp": "31c5887fd9d855c76d270b24b2c780329c39a03b8c3d4da130b86bd692885edc",
+        "yukari-4.webp": "a27b5cd4861776c556afdead572e064ecf7ea1811118dd4d9a489d202b8771ca",
+        "yukari-5.webp": "07d4ccb9687c32d6172d274cc3295cf42f5fce4706a9282827aac221f67f1cf2"
+      }
     }
   ],
   "batch1Validation": {
@@ -4918,5 +5196,12 @@
       "targeted jsc check: every activity, dorm act and changed place resolves to an existing background"
     ],
     "browserErrors": 0
+  },
+  "batch28Validation": {
+    "date": "2026-10-22",
+    "test": "python3 tests/femc_chibi.py (four real Tartarus All-Outs covering all 12 sheets plus Ken's silhouette fallback; frames decode at ART_V 22 and cycle; reduced motion holds frames and drops the jitter; screenshots at 1440x900, 375x812, 1000x486, 1280x850; no console errors) and python3 tests/femc_building.py --only searchers (real All-Out, finish card)",
+    "sourcesUnchanged": true,
+    "artV": 22,
+    "html": "femc-battle.html battle.css v26, battle.js v39"
   }
 }

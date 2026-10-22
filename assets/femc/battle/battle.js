@@ -72,7 +72,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 21;
+  const ART_V = 22;
   const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
   Object.values(D.personas).forEach(p => { if (p.art && !p.art.startsWith('data:') && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
   // Theurgy and Evoker sheet art (data.js paths are bare) get the art version too.
@@ -102,6 +102,13 @@
   const posedFrames = mid => [0, 1, 2, 3, 4, 5].map(i => `assets/femc/battle/art/poses/${mid}-pose-${i}.webp?v=${ART_V}`);
   const fieldPose = mid => (FIGHTER_POSES[mid] ? posedFrames(mid)[0] : `assets/femc/battle/art/poses/${mid}.webp?v=${ART_V}`);
   const hasField = mid => FIELD_POSES.has(mid) || !!FIGHTER_POSES[mid];
+  /* Chibi brawl sheets (Kat's <name>-chibi-alloutattack.png, cut by tools/femc-chibi.py into chibi/<mid>-<i>.webp, one
+     shared canvas and scale): the number is how many action frames the All-Out cloud cycles (each sheet's last frame is a
+     victory pose, cut but not used here). Members without one use their pose-sheet attack frames, or the silhouette (Ken). */
+  const CHIBI = { solar: 5, akihiko: 5, yukari: 5, junpei: 5, mitsuru: 5, aigis: 5, koromaru: 5, shinjiro: 5, haechan: 7, jungwon: 5, jihoon: 5, minji: 5 };
+  const BRAWL = [2, 3];
+  const brawlFrames = mid => (CHIBI[mid] ? Array.from({ length: CHIBI[mid] }, (_, i) => `assets/femc/battle/art/chibi/${mid}-${i}.webp?v=${ART_V}`)
+    : FIGHTER_POSES[mid] ? BRAWL.map(i => posedFrames(mid)[i]) : null);
   const AWAKEN = ['solar-01-resolve', 'solar-02-focus', 'solar-03-awakening', 'solar-04-manifestation', 'solar-05-command', 'solar-06-summoned'];
   /* A stylized Evoker for members without their own Evoker art (muzzle on the left, at the temple). */
   const EVOKER_SVG = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 110"><defs><linearGradient id="m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f9ff"/><stop offset=".35" stop-color="#c9d0dc"/><stop offset=".7" stop-color="#8a93a6"/><stop offset="1" stop-color="#4b5263"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a404e"/><stop offset="1" stop-color="#14171f"/></linearGradient></defs><path d="M214 30H70l-10 5v22h34l6 7h20l7-7h87z" fill="url(#m)" stroke="#12151c" stroke-width="3" stroke-linejoin="round"/><path d="M214 30v27" stroke="#12151c" stroke-width="5"/><path d="M78 36h126" stroke="#fff" stroke-opacity=".85" stroke-width="2"/><path d="M84 44h120M84 50h120" stroke="#5a6274" stroke-width="1.2"/><path d="M62 57h32l-16 48H38z" fill="url(#g)" stroke="#0b0d12" stroke-width="3" stroke-linejoin="round"/><path d="M50 70h30M46 80h30M42 90h30" stroke="#5a6274" stroke-width="1.5"/><path d="M98 57q-2 18 16 18h6" fill="none" stroke="#12151c" stroke-width="4"/><path d="M104 60l4 10" stroke="#12151c" stroke-width="3"/><rect x="150" y="40" width="40" height="4" rx="1" fill="#ff4f9e"/></svg>`);
@@ -1943,8 +1950,8 @@
     stills(B.party().flatMap(p => Object.values(member(p.mid).faces).map(f => pimg(p.mid, f))), 0);
     if (!save.awakened) { stills(AWAKEN.map(f => SUMMON_DIR + f + '.webp'), 0); prepClip('awakening'); }
     stills(B.party().filter(p => hasField(p.mid)).map(p => fieldPose(p.mid)).concat(B.party().flatMap(p => evokeFrames(p.mid) || [])), 0);
-    // Fighter pose frames go in the pose controller's cache (it only shows a frame once it has loaded).
-    B.party().filter(p => FIGHTER_POSES[p.mid]).forEach(p => posedFrames(p.mid).forEach(src => { if (!shadowFrames.has(src)) { const im = new Image(); im.src = src; shadowFrames.set(src, im); } }));
+    // Fighter pose frames and chibi brawl frames go in the pose controller's cache (it only shows a frame once it has loaded).
+    B.party().filter(p => FIGHTER_POSES[p.mid] || CHIBI[p.mid]).forEach(p => [...(FIGHTER_POSES[p.mid] ? posedFrames(p.mid) : []), ...(brawlFrames(p.mid) || [])].forEach(src => { if (!shadowFrames.has(src)) { const im = new Image(); im.src = src; shadowFrames.set(src, im); } }));
     // Bond cut-ins: both portraits (and any bond art) decoded ahead.
     stills((B.S.bondArts || []).filter(a => B.party().some(p => p.mid === a.partner)).flatMap(a => [pimg(a.partner, a.face || member(a.partner).faces.win), ...thArt(a)]).concat([pimg('solar', 'happy')]), 0);
     B.foes().forEach(u => addEnemy(u));
@@ -3343,13 +3350,12 @@
       const x = ring ? 50 + Math.cos(ang) * 30 : 36 + (i - 9) * 14, y = ring ? 52 + Math.sin(ang) * 26 : 50;
       return `<i style="left:${x - s / 2}%;top:${y - s * 0.6}%;width:${s}%;aspect-ratio:1;animation-delay:${-i * 0.17}s"></i>`;
     }).join('');
-    // The brawl (P3R): each fighter's pose-sheet action frames pop in and out of the cloud, small, at a few spots each,
-    // flicking between the weapon swing and the spell pose (data-f, cycled below) with a small jitter (CSS).
-    // Members without a pose sheet (Ken) keep the darkened portrait silhouette.
-    const BRAWL = [2, 3];
-    const sils = parts.map((p, i) => FIGHTER_POSES[p.mid]
-      ? [0, 1].map(k => { const j = (i + k * 2) % 4, f = (i + k) % BRAWL.length; return `<img class="sil pose${(i + k) % 2 ? ' flip' : ''}" src="${posedFrames(p.mid)[BRAWL[f]]}" data-mid="${p.mid}" data-f="${f}" alt="" style="--pz:${FIGHTER_POSES[p.mid]};left:${[6, 66, 28, 80][j]}%;top:${[4, 0, 46, 40][j]}%;animation-delay:${(i * 0.19 + k * 0.5).toFixed(2)}s">`; }).join('')
-      : `<img class="sil" src="${pimg(p.mid, member(p.mid).faces.idle)}" alt="" style="left:${[8, 64, 30, 78][i % 4]}%;top:${[2, 0, 58, 50][i % 4]}%;animation-delay:${i * 0.22}s">`).join('');
+    // The brawl (P3 chibi brawl): each fighter pops in and out of the cloud at a few spots, cycling their chibi sheet's
+    // action frames (data-f, cycled below) with a small jitter (CSS). Without chibi art: the pose sheet's weapon swing and
+    // spell pose; without either (Ken): the darkened portrait silhouette.
+    const sils = parts.map((p, i) => { const fs = brawlFrames(p.mid), ch = !!CHIBI[p.mid]; return fs
+      ? [0, 1].map(k => { const j = (i + k * 2) % 4, f = (i * 2 + k * 3) % fs.length; return `<img class="sil pose${ch ? ' chibi' : ''}${(i + k) % 2 ? ' flip' : ''}" src="${fs[f]}" data-mid="${p.mid}" data-f="${f}" alt="" style="--pz:${ch ? 1 : FIGHTER_POSES[p.mid]};${ch ? '--x' : 'left'}:${[6, 66, 28, 80][j]}%;top:${[4, 0, 46, 40][j]}%;animation-delay:${(i * 0.19 + k * 0.5).toFixed(2)}s">`; }).join('')
+      : `<img class="sil" src="${pimg(p.mid, member(p.mid).faces.idle)}" alt="" style="left:${[8, 64, 30, 78][i % 4]}%;top:${[2, 0, 58, 50][i % 4]}%;animation-delay:${i * 0.22}s">`; }).join('');
     const words = ['BAM!', 'POW!', 'WHAM!', 'SMASH!'].map((w, i) => `<b style="left:${[2, 70, 18, 66][i]}%;top:${[10, 6, 74, 70][i]}%;animation-delay:${0.1 + i * 0.22}s">${w}</b>`).join('');
     const stars = [0, 1, 2, 3, 4, 5].map(i => `<span class="star" style="left:${[14, 84, 48, 0, 94, 40][i]}%;top:${[78, 30, -6, 44, 74, 92][i]}%;animation-delay:${-i * 0.15}s">${ART.icon('allout')}</span>`).join('');
     wrap.innerHTML = `<div class="bt-speedlines"></div><div class="bt-dust"><div class="cloud ol">${puffs}</div><div class="cloud">${puffs}</div>${sils}${words}${stars}</div>`;
@@ -3361,9 +3367,9 @@
     sfx('allout');
     shake(true);
     mark('allout-dust');
-    // Frames cycle (both are preloaded with the field poses); reduced motion holds the attack frame.
+    // Frames cycle (preloaded with the field poses); reduced motion holds each figure's first frame.
     const flick = FX && FX.reduced() ? 0 : setInterval(() => wrap.querySelectorAll('.sil.pose').forEach(im => {
-      const f = (+im.dataset.f + 1) % BRAWL.length; im.dataset.f = f; im.src = posedFrames(im.dataset.mid)[BRAWL[f]];
+      const fs = brawlFrames(im.dataset.mid), f = (+im.dataset.f + 1) % fs.length; im.dataset.f = f; im.src = fs[f];
     }), Math.round(170 / speed()));
     await sleep(500); shake(true); await sleep(500); shake(true); await sleep(500);
     clearInterval(flick);

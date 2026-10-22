@@ -29,7 +29,6 @@ Bonds already work without art, using a stylized cut-in.
 
 ## 3. Optional extras
 - [ ] **Solar's strike sheets per form.** Attach that form's cut-in from 🎨 `Added to Game/` (`theurgy-solar-haenim.png`, `-sunna`, `-harbor`, `-haenimunveiled`), using the 3-panel prompt: "A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, nothing overlapping. Character only." Save as `solar-<form>-strikesheet.png`.
-- [ ] **A chibi brawl sheet per character** for a cuter All-Out cloud.
 
 ---
 
