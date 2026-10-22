@@ -72,8 +72,10 @@ window.FemcBattleSave = (() => {
     Object.keys(s.skillCards).forEach(k => { if (!D.skills[k] || !(s.skillCards[k] > 0)) delete s.skillCards[k]; });
     if (!obj(s.taught)) s.taught = {};
     Object.keys(s.taught).forEach(mid => { if (!member(mid) || !Array.isArray(s.taught[mid])) delete s.taught[mid]; else s.taught[mid] = [...new Set(s.taught[mid].filter(k => D.skills[k]))]; });
+    // Haechan starts with his own Black Tactical knife now (build.js HK); a save still holding the plain Combat Knife swaps.
+    if (s.gear && obj(s.gear.eq) && obj(s.gear.eq.haechan) && s.gear.eq.haechan.weapon === 'knife0' && D.gear.hk_starter) s.gear.eq.haechan.weapon = 'hk_starter';
     if (!obj(s.bonds)) s.bonds = {};
-    Object.keys(s.bonds).forEach(k => { const r = Math.floor(+s.bonds[k]); if (!(r > 0)) delete s.bonds[k]; else s.bonds[k] = Math.min(10, r); });
+    Object.keys(s.bonds).forEach(k => { const r = Math.floor(+s.bonds[k]); if (!(r > 0)) delete s.bonds[k]; else s.bonds[k] = Math.min(15, r); }); // links go to 15 (bond tier 3, rank-15 perks)
     if (typeof s.bondDate !== 'string' || !/^\d{1,2}\/\d{1,2}$/.test(s.bondDate)) s.bondDate = null;
     ['bondsRev', 'bondGifts', 'floorsMapped', 'bondsLove'].forEach(k => { if (!Array.isArray(s[k])) s[k] = []; s[k] = [...new Set(s[k].filter(x => typeof x === 'string'))]; });
     if (!(s.shuffles >= 0)) s.shuffles = 0;
@@ -196,7 +198,7 @@ window.FemcBattleSave = (() => {
   // What a member could put in a slot: their starter piece, anything spare that fits, and what they're wearing (acc: null = remove).
   function candidates(s, mid, slot) {
     const m = member(mid), cur = eqOf(s, mid)[slot];
-    const ids = Object.keys(D.gear).filter(x => { const g = D.gear[x]; if (g.slot !== slot) return false; if (slot === 'weapon' && g.wtype !== m.wtype) return false; if (g.tier === 0) return x === D.startGear[mid][slot]; return spare(s, x) > 0 || x === cur; });
+    const ids = Object.keys(D.gear).filter(x => { const g = D.gear[x]; if (g.slot !== slot) return false; if (slot === 'weapon' && (g.wtype !== m.wtype || (g.owner && g.owner !== mid))) return false; if (g.tier === 0) return x === D.startGear[mid][slot]; return spare(s, x) > 0 || x === cur; });
     ids.sort((a, b) => (D.gear[b].atk || D.gear[b].def || D.gear[b].price || 0) - (D.gear[a].atk || D.gear[a].def || D.gear[a].price || 0));
     return slot === 'acc' ? [null].concat(ids) : ids;
   }
@@ -220,7 +222,7 @@ window.FemcBattleSave = (() => {
     if (g.ail) out.push(`May inflict ${D.ailments[g.ail.id].name}`);
     if (g.stats) out.push(Object.entries(g.stats).map(([k, v]) => `${k.toUpperCase()} +${v}`).join(' '));
     if (g.aff) out.push(Object.entries(g.aff).map(([k, v]) => `${v === 'null' ? 'Nulls' : 'Resists'} ${D.elements[k].name}`).join(', '));
-    if (g.nullAil && !g.nag) out.push(`Prevents ${g.nullAil.map(a => D.ailments[a].name).join(' & ')}`);
+    if (g.nullAil && !g.named) out.push(`Prevents ${g.nullAil.map(a => D.ailments[a].name).join(' & ')}`);
     if (g.desc) out.push(g.desc);
     return out.join(' · ');
   }

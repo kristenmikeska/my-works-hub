@@ -336,7 +336,7 @@ window.FemcMenu = (() => {
       Object.entries(S().links || {}).forEach(([k, p]) => { if (p.rank > 0) ranks[k] = p.rank; if (p.reversed) rev.push(k); if (p.route === 'romance') love.push(k); });
       const before = JSON.stringify([b.bonds, b.bondsRev, b.bondsLove, b.bondDate]);
       const gifts = BLD().syncBonds(b, ranks, rev, love, G.dayInfo ? G.dayInfo().md : null);
-      gifts.forEach(g => G.toast('perk', g.gear ? `A gift: ${D0.gear[g.gear].name}${D0.gear[g.gear].nag ? ' (one of Solar’s naginatas)' : ''}` : 'A gift: +1 skill point for Haenim’s tree'));
+      gifts.forEach(g => G.toast('perk', g.gear ? `A gift: ${D0.gear[g.gear].name}${BLD().namedTag(g.gear).replace('!', '')}` : 'A gift: +1 skill point for Haenim’s tree'));
       if (gifts.length || before !== JSON.stringify([b.bonds, b.bondsRev, b.bondsLove, b.bondDate])) changed = true;
     }
     if (changed) G.saveQuiet();

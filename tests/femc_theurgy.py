@@ -5,7 +5,8 @@ Checks:
   - Solar's Theurgy in each Haenim form shows that form's cut-in, name and strike sheet (Rise and Shine, Golden Hour,
     Spring Tide, Landslide, Unveiled), with the mechanics unchanged;
   - Haechan's layered version (bg / Persona / character) with his strike sheet, and the layers alone;
-  - the searchers' cut-in + strike-sheet versions; a still-only cut-in; the stylized fallback for someone without art;
+  - the searchers' cut-in + strike-sheet versions; a still-only cut-in; a multi-panel sequence (`sequence`: every panel
+    shown in order, the impact on the hit panel); the stylized fallback for someone without art;
   - every S.E.E.S. member's cut-in + strike sheet (Akihiko .. Shinjiro): the art loads and the whole cut-in plays;
   - Solar's Evoker sheet: in the summon cut-in and on the battlefield figure for repeat / Off summons;
   - settings: Always, 1st per battle, Off, Rush (short versions), reduced motion (a fade), battle speed scaling;
@@ -153,18 +154,27 @@ try:
     p.eval("FEMC_BATTLE_DATA.party.find(m => m.id === 'jungwon').theurgy.sheet = null; FemcBattle.B.party().forEach(u => u.th = 100)")
     r = (act(p, 'jungwon', 'theurgy'), wait_cut(p, 4))[1]
     check('kind-cut' in r['cls'] and 'has-sheet' not in r['cls'] and r['loaded'], r)
+    # A sequence (the bonds' multi-panel option works for a Theurgy too): three panels, the second one the hit.
+    p.eval('''(() => { const T = 'assets/femc/battle/art/theurgy/'; FEMC_BATTLE_DATA.party.find(m => m.id === 'jungwon').theurgy.sequence =
+      [T + 'jungwon.webp', { src: T + 'jihoon.webp', focus: [50, 42], hit: true }, { src: T + 'minji.webp', focus: [45, 60] }]; FemcBattle.B.party().forEach(u => u.th = 100); })()''')
+    p.eval("window.seqOrder = []; new MutationObserver(() => document.querySelectorAll('.th-sf.go').forEach(f => { if (!seqOrder.includes(f.dataset.i)) seqOrder.push(f.dataset.i); })).observe(document.querySelector('.bt-cut'), { subtree: true, attributes: true, attributeFilter: ['class'] })")
+    r = (act(p, 'jungwon', 'theurgy'), wait_cut(p, 5))[1]
+    m = marks(p)
+    check('kind-seq' in r['cls'] and 'q-last' in r['final'] and r['loaded'] and all(any(f in s for s in r['imgs']) for f in ('jungwon.webp', 'jihoon.webp', 'minji.webp')), r)
+    check(p.eval('seqOrder') == ['0', '1', '2'] and all(m.get(f'theurgy-seq-{i}') == 1 for i in range(3)) and m.get('theurgy-seq-hit') == 1, (p.eval('seqOrder'), m))
+    p.eval("FEMC_BATTLE_DATA.party.find(m => m.id === 'jungwon').theurgy.sequence = null")
     p.eval("(() => { const t = FEMC_BATTLE_DATA.party.find(m => m.id === 'akihiko').theurgy; delete t.img; delete t.focus; delete t.sheet; })()")
-    r = (act(p, 'akihiko', 'theurgy'), wait_cut(p, 5))[1]
+    r = (act(p, 'akihiko', 'theurgy'), wait_cut(p, 6))[1]
     check('kind-styl' in r['cls'] and r['loaded'] and 'LIGHTNING CADENZA' in r['name'], r)
     m = marks(p)
-    check(m.get('theurgy-kind-layers') == 2 and m.get('theurgy-kind-styl') == 1 and m.get('theurgy-impact') == 5, m)
+    check(m.get('theurgy-kind-layers') == 2 and m.get('theurgy-kind-styl') == 1 and m.get('theurgy-kind-seq') == 1 and m.get('theurgy-impact') == 6, m)
     errs = p.console(); check(not errs, errs)
     fight(p, ['solar', 'jihoon', 'minji'])
     for i, mid in enumerate(['jihoon', 'minji']):
         r = (act(p, mid, 'theurgy'), wait_cut(p, i + 1))[1]
         check('has-sheet' in r['cls'] and any(f'{mid}.webp' in s for s in r['imgs']) and any(f'{mid}-strike-2' in s for s in r['imgs']) and r['loaded'], r)
     errs = p.console(); check(not errs, errs)
-    results['searchers'] = 'Haechan layers+sheet and layers alone; Jungwon sheet and still alone; Jihoon, Minji sheets; Akihiko stylized'
+    results['searchers'] = 'Haechan layers+sheet and layers alone; Jungwon sheet, still alone and a 3-panel sequence; Jihoon, Minji sheets; Akihiko stylized'
 
     # 2b. S.E.E.S.: each member's own cut-in and strike sheet, through the real Theurgy command, every phase played.
     SEES = {'akihiko': 'LIGHTNING CADENZA', 'yukari': 'CADENZA', 'junpei': 'BRAVE BLADE', 'mitsuru': 'BUFUDYNE EXECUTION',

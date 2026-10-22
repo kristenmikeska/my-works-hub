@@ -278,6 +278,11 @@ BUILD = [
     ('cutin', 'solar-minji-bond.png', 'bond-minji'),
     ('cutin', 'solar-haechan-bond.png', 'bond-haechan'), ('cutin', 'solar-haechan-bond-ver2.png', 'bond-haechan-love'),
     ('cutin', 'solar-jungwon-bond.png', 'bond-jungwon'), ('cutin', 'solar-jungwon-bond-ver2.png', 'bond-jungwon-love'),
+    # Haechan's rank-9 bond still, and his rank-15 romance bond: a 5-beat sequence (bonds.js `sequence`; 2026-10-21).
+    ('cutin', 'solar-haechan-bond-ver3.png', 'bond-haechan-2'),
+    ('cutin', 'solar-haechan-pt1.png', 'bond-haechan-seq-1'), ('cutin', 'solar-haechan-pt2.png', 'bond-haechan-seq-2'),
+    ('cutin', 'solar-haechan-pt3.png', 'bond-haechan-seq-3'), ('cutin', 'solar-haechan-pt4.png', 'bond-haechan-seq-4'),
+    ('cutin', 'solar-haechan-pt5.png', 'bond-haechan-seq-5'),
 ]
 
 

@@ -55,12 +55,37 @@ window.FemcBuild = (() => {
     D.gear[id] = { name, slot: 'weapon', wtype: 'naginata', atk, tier, price, rare: !price || tier >= 5, nag: true, art: WART + art + '.webp', bonus, src, look: desc, tint: TINT[id],
       stats: bonus.stats || undefined, nullAil: bonus.nullAil || undefined, desc: bonusText(bonus) };
   });
-  // Police Box stocks the two early ones (practice mode's shop lists non-rare gear of the shop's tier); Mayoido the two rare ones.
-  if (D.shops.mayoido) D.shops.mayoido.stock = D.shops.mayoido.stock.concat(['nag_butterfly', 'nag_dragon']);
-  // Locked chests can hold Crimson Lock; Shuffle Time's Swords and the bosses below give the rest.
-  if (D.map && D.map.chest) D.map.chest.lockedRare = D.map.chest.lockedRare.concat(['nag_lock']);
+
+  /* ══════════ Haechan's knives (Kat's haechan-weapons.png, cut into art/weapons/haechan-*.webp by tools/femc-cards.py) ══════════
+     The same system as the naginatas (bonus, refine, art, look, sources), but only Haechan can hold them (`owner`; every
+     equip list and shop checks fits()). The Starter replaces his plain Combat Knife as the weapon he starts with (tier 0:
+     always his, never refined; old saves holding the Combat Knife keep it until they swap). FEMC-ART-TODO.md section 5. */
+  const HK = [
+    ['hk_starter', 'starter', 'Black Tactical', 0, 32, 0, { crit: 3 }, 'A plain black tactical knife, his since before any of this. Crit +3%.', ['Haechan’s own (he starts with it)']],
+    ['hk_harbor', 'harbor-watch', 'Harbor Watch', 3, 64, 4400, { stats: { en: 3 }, hpRegen: 3 }, 'Rust-red steel, a rope-wrapped grip, an anchor guard and a sea-glass pommel. +3 En, and he regains 3% HP each turn.', ['Police Box (tier 3)', 'Shuffle Time · Swords']],
+    ['hk_mixdown', 'mixdown', 'Mixdown', 4, 80, 0, { th: 25, spRegen: 3 }, 'A waveform etched down the blade, a fader for a guard and a headphone jack on the cord. His Theurgy fills 25% faster, and 3 SP back each turn.', ['Haechan’s bond (rank 7)']],
+    ['hk_widow', 'widows-kiss', 'Widow’s Kiss', 4, 84, 0, { crit: 14, critX: 18 }, 'Violet steel, a grappling-line grip and a scope lens in the pommel. Crit +14%, and critical hits deal 18% more.', ['Locked chests (Arqa and up)', 'Shuffle Time · Swords']],
+    ['hk_disc', 'old-disc', 'Old Disc', 5, 102, 0, { evade: 10, stats: { lu: 4 }, el: { elec: 15 } }, 'Black steel behind a scuffed, silver disc. +4 Lu, better evasion, and Elec skills +15% (Dalnim’s static).', ['Chariot & Justice (first clear)', 'Shuffle Time · Swords']],
+    ['hk_sunlight', 'neo-sunlight', 'Neo Sunlight', 6, 128, 15000, { el: { light: 20 }, stats: { ma: 3 }, crit: 5 }, 'A neon-green edge and a guard of sun rays; his name means full of sunlight. +3 Ma, Light +20%, crit +5%.', ['Mayoido Antiques (tier 6)', 'Shuffle Time · Swords']]
+  ];
+  const HK_TINT = { hk_starter: '#6b6f7a', hk_harbor: '#c2553a', hk_mixdown: '#c9d0dc', hk_widow: '#9a6bff', hk_disc: '#d8e4ff', hk_sunlight: '#7dff6a' };
+  HK.forEach(([id, art, name, tier, atk, price, bonus, desc, src]) => {
+    D.gear[id] = { name, slot: 'weapon', wtype: 'knife', owner: 'haechan', atk, tier, price, rare: tier > 0 && (!price || tier >= 5), named: true, art: WART + 'haechan-' + art + '.webp', bonus, src, look: desc, tint: HK_TINT[id],
+      stats: bonus.stats || undefined, nullAil: bonus.nullAil || undefined, desc: bonusText(bonus) };
+  });
+  if (D.startGear && D.startGear.haechan) D.startGear.haechan.weapon = 'hk_starter';
+  NAG.forEach(([id]) => { D.gear[id].named = true; });
+  /* Who can hold a piece of gear: a weapon of their type, and a named one only by its owner. */
+  const fits = (g, mid) => { const m = D.party.find(x => x.id === mid); return !!(g && m) && (g.slot !== 'weapon' || (g.wtype === m.wtype && (!g.owner || g.owner === mid))); };
+  // "(one of Solar’s naginatas!)" / "(one of Haechan’s knives!)" for drops and gifts.
+  const namedTag = id => { const g = D.gear[id]; return !g || !g.named ? '' : g.owner ? ` (one of ${(D.party.find(x => x.id === g.owner) || {}).name || g.owner}’s knives!)` : ' (one of Solar’s naginatas!)'; };
+
+  // Police Box stocks the early ones (practice mode's shop lists non-rare gear of the shop's tier); Mayoido the rare ones.
+  if (D.shops.mayoido) D.shops.mayoido.stock = D.shops.mayoido.stock.concat(['nag_butterfly', 'nag_dragon', 'hk_sunlight']);
+  // Locked chests can hold Crimson Lock and Widow's Kiss; Shuffle Time's Swords and the bosses below give the rest.
+  if (D.map && D.map.chest) D.map.chest.lockedRare = D.map.chest.lockedRare.concat(['nag_lock', 'hk_widow']);
   // The Black Rose was Astarion's rank-8 gift until his link was removed (2026-10-21); it's the Hermit's now.
-  const BOSS_WEAPON = { priestess: 'nag_ice', lovers: 'nag_moon', hermit: 'nag_rose', fortune: 'nag_prism', hanged: 'nag_dragon' };
+  const BOSS_WEAPON = { priestess: 'nag_ice', lovers: 'nag_moon', chariot: 'hk_disc', hermit: 'nag_rose', fortune: 'nag_prism', hanged: 'nag_dragon' };
   const CHEST_WEAPON = { id: 'nag_mint', chance: 0.06, fromBlock: 1 };
 
   /* Weapon refining (any weapon above the starters): +1 … +5 with materials. */
@@ -389,15 +414,16 @@ window.FemcBuild = (() => {
       if (c.suit === 'wands') { fx.expMult = c.rank / 10; lines.push(`EXP +${c.rank * 10}%`); }
       if (c.suit === 'swords') {
         const ownNag = id => (save.gear.owned[id] || 0) > 0;
-        const nagPool = Object.keys(D.gear).filter(id => D.gear[id].nag && (D.gear[id].src || []).some(s => /Shuffle Time/.test(s)) && D.gear[id].tier <= tier + 1 && !ownNag(id));
+        // Named weapons: Solar's naginatas always; someone's own (Haechan's knives) only while they're in the party.
+        const nagPool = Object.keys(D.gear).filter(id => { const g = D.gear[id]; return g.named && (!g.owner || party.includes(g.owner)) && (g.src || []).some(s => /Shuffle Time/.test(s)) && g.tier <= tier + 1 && !ownNag(id); });
         let got = null;
         if (nagPool.length && (c.rank >= 9 || (c.rank >= 7 && R() < 0.4))) got = pick(R, nagPool);
         if (!got) {
           const who = pick(R, party), m = D.party.find(x => x.id === who) || D.party[0], t = clamp(tier + (c.rank >= 6 ? 1 : 0), 1, 7);
-          const pool = Object.keys(D.gear).filter(id => { const g = D.gear[id]; return !g.rare && g.tier === t && (g.slot === 'armor' || (g.slot === 'weapon' && g.wtype === m.wtype)); });
+          const pool = Object.keys(D.gear).filter(id => { const g = D.gear[id]; return !g.rare && g.tier === t && (g.slot === 'armor' || (g.slot === 'weapon' && fits(g, m.id))); });
           got = pool.length ? pick(R, pool) : null;
         }
-        if (got) { save.gear.owned[got] = (save.gear.owned[got] || 0) + 1; fx.gear = got; lines.push(D.gear[got].name + (D.gear[got].nag ? ' (one of Solar’s naginatas!)' : '')); }
+        if (got) { save.gear.owned[got] = (save.gear.owned[got] || 0) + 1; fx.gear = got; lines.push(D.gear[got].name + namedTag(got)); }
         else { const y = c.rank * 200; save.yen += y; fx.yen = y; lines.push(`+¥${y}`); }
       }
       return { lines, fx };
@@ -542,7 +568,7 @@ window.FemcBuild = (() => {
     ['haechan', 2, 'Cut the Fluff', 'battle', { cutFluff: { ail: 0.1 } }, 'Kat’s perk. Every foe’s status openings (the ailments that land on it) are revealed at once in Analyze, and the party’s ailments land 10% more often.'],
     ['haechan', 4, 'Recruitment Pitch', 'daily', { pitch: { stat: { charm: 1 } } }, 'Once a day, Solar gets a hint on a class question, and +1 Charm when she gets it right.'],
     ['haechan', 5, 'Loud About It', 'battle', { loud: { dmg: 0.5 } }, 'When a foe crits Solar, Haechan’s next attack on that foe deals 50% more damage.'],
-    ['haechan', 7, 'Bait and Punish', 'battle', { baitPunish: { chance: 0.5, dmg: 0.5 } }, 'Kat’s perk. When a foe tries an ailment on the party, the target counters (50%), and the team’s counters deal 50% more damage.'],
+    ['haechan', 7, 'Bait and Punish', 'battle', { baitPunish: { chance: 0.5, dmg: 0.5 }, gift: 'hk_mixdown' }, 'Kat’s perk. When a foe tries an ailment on the party, the target counters (50%), and the team’s counters deal 50% more damage. He also brings out his Mixdown knife (one of his six).'],
     ['haechan', 10, 'Hear the Room', 'max', { hearRoom: {} }, 'Each round, Solar sees which foe is charging its strongest move, and her first hit on that foe always crits.'],
     ['haechan', 15, 'Room Tone', 'daily', { weekly: 'roomtone', stat: { charm: 1, proficiency: 1 }, dow: 5 }, 'Once a week (Fridays), one side of the headphones each: +1 Charm and +1 Proficiency, without using any free time.'],
     ['yunjin', 2, 'Taxi Driver Coffee', 'daily', { actStat: { vending: { courage: 1 } }, weeklyCure: { act: 'vending', cond: 'tired' } }, 'The vending machine gives +1 Courage, and once a week its coffee clears Tired.'],
@@ -744,7 +770,8 @@ window.FemcBuild = (() => {
      today's "m/d" (bonds.js: romance versions of the bond skills, and a bond's last day). Both are left alone when not given. */
   function syncBonds(save, ranks = {}, reversed = [], love = null, date = null) {
     const b = {};
-    Object.entries(ranks || {}).forEach(([k, r]) => { const n = Math.min(10, Math.floor(+r || 0)); if (n > 0) b[k] = n; });
+    // Up to rank 15 (the links that go there): bonds.js's third tier and love15, and the rank-15 perks.
+    Object.entries(ranks || {}).forEach(([k, r]) => { const n = Math.min(15, Math.floor(+r || 0)); if (n > 0) b[k] = n; });
     save.bonds = b; save.bondsRev = (reversed || []).filter(x => typeof x === 'string');
     if (Array.isArray(love)) save.bondsLove = love.filter(x => typeof x === 'string');
     if (typeof date === 'string') save.bondDate = date;
@@ -755,7 +782,7 @@ window.FemcBuild = (() => {
   const TYPE_NAME = { battle: 'Battle', assist: 'Assist', tartarus: 'Tartarus', daily: 'Daily', max: 'MAX' };
 
   return {
-    NAG, BOSS_WEAPON, CHEST_WEAPON, WREF, wrefOf, wrefCost, refineWeapon, weaponAtk, bonusText, canPay,
+    NAG, HK, fits, namedTag, BOSS_WEAPON, CHEST_WEAPON, WREF, wrefOf, wrefCost, refineWeapon, weaponAtk, bonusText, canPay,
     STATS, SLOTS, SETS, CARD, rollCard, rarityRoll, mainValue, cardName, statLine, addCard, cardById, wearerOf, equipCard, unequipCard, equippedCards,
     levelCost, refineCost, levelCard, refineCard, dismantleCard, cardBonus, setCounts, ensureCards,
     emptyBonus, addBonus, unitBonus, SKILL_CARDS, teachable, teach,

@@ -14,7 +14,8 @@
    - `until`: the last calendar day it can be used (Shinjiro's, the day the story uses for his exit). Practice has no date.
    Art hook (FEMC-ART-TODO.md section 4): any bond, or any one version of it, can carry
      img: a full-screen cut-in still (with focus [x%, y%]), sheet: { frames: [wind-up, strike, follow-through] },
-     layers: { bg, persona, char }: the same shapes as a Theurgy's (data.js comment above TH).
+     layers: { bg, persona, char }, sequence: [{ src, focus, pan, hit }, ...] (several panels crossfading, P3R-style; img is
+     then the last panel, for the short band and reduced motion): the same shapes as a Theurgy's (data.js comment above TH).
    Without art, battle.js builds a stylized cut-in from both portraits, both Personas and both colors.
    Steps: { by: 'solar' | 'partner', el, power, target: 'one' | 'all' | 'rand', multi, ail, down, crit, fx }. Each is a sure
    hit using the better of St or Ma (like a Theurgy). after: { heal (party, fraction of max HP), cure, buffs [party stats],
@@ -27,7 +28,7 @@ window.FemcBonds = (() => {
   const P = (el, power, o = {}) => Object.assign({ by: 'partner', el, power }, o);
   /* Kat's bond stills (tools/femc-theurgy.py cutin; BUILD lists the sources). battle.js doesn't version bond art, so the ?v= is
      here: bump it with ART_V when a still changes. focus: between the two faces, set so both stay in the phone band. */
-  const BA = slug => `assets/femc/battle/art/theurgy/${slug}.webp?v=17`;
+  const BA = slug => `assets/femc/battle/art/theurgy/${slug}.webp?v=18`;
   const BONDS = [
     // ── Romances: special combos, and a special version on the romance route
     { id: 'akihiko', partner: 'akihiko', romance: true, loveFace: 'blushing', img: BA('bond-akihiko'), focus: [55, 24], look: ['elec', 'sun'], colors: ['#ff4f9e', '#ff9a3d'],
@@ -51,16 +52,25 @@ window.FemcBonds = (() => {
       love: { rank: 9, name: 'Warm Hands', sp: 14, target: 'one', steps: [P('strike', 160, { crit: 25 }), S('light', 60, { target: 'all' })], after: { heal: 0.25, cure: true },
         line: ['Stay behind me. …Please.', 'Just this once.'], desc: 'Their own combination. A colossal charge, light on every foe, and the party heals and is cured.' } },
     { id: 'haechan', partner: 'haechan', romance: true, loveFace: 'flustered', img: BA('bond-haechan'), focus: [61, 27], look: ['elec', 'sun'], colors: ['#ff4f9e', '#ff9a3d'],
+      // Rank 9 has its own still (ver3: the same pair, closer in); rank 15 keeps it. Corona keeps the romance still; Universe
+      // is Kat's five-panel sequence (side by side → his strike → pulled close → the kiss), each panel framed on both faces.
+      // A focus here has to keep both faces in the 375px phone band (about 53% of a panel's width); the comments give them.
       tiers: [
         { rank: 5, name: 'Sun and Moon', sp: 14, target: 'all', steps: [P('elec', 44, { ail: { id: 'shock', chance: 0.15 } }), S('light', 52)],
           line: ['Keep up, princess.', 'Keep up yourself.'], desc: 'Dalnim’s static and Haenim’s light on every foe. May Shock.' },
-        { rank: 9, name: 'Eclipse', sp: 18, target: 'all', steps: [P('dark', 40), P('elec', 40, { ail: { id: 'shock', chance: 0.2 } }), S('light', 66, { down: 0.35 })], after: { buffs: ['atk'] },
+        { rank: 9, name: 'Eclipse', img: BA('bond-haechan-2'), focus: [71, 25], sp: 18, target: 'all', steps: [P('dark', 40), P('elec', 40, { ail: { id: 'shock', chance: 0.2 } }), S('light', 66, { down: 0.35 })], after: { buffs: ['atk'] },
           line: ['Don’t look directly at it.', 'Too late.'], desc: 'Moon, then static, then the sun, on every foe; the party’s attack rises.' },
-        { rank: 15, name: 'Two Suns', sp: 20, target: 'all', steps: [P('dark', 48), P('elec', 48, { ail: { id: 'shock', chance: 0.25 } }), S('light', 80, { down: 0.45 })], after: { buffs: ['atk', 'agi'] },
+        { rank: 15, name: 'Two Suns', img: BA('bond-haechan-2'), focus: [71, 25], sp: 20, target: 'all', steps: [P('dark', 48), P('elec', 48, { ail: { id: 'shock', chance: 0.25 } }), S('light', 80, { down: 0.45 })], after: { buffs: ['atk', 'agi'] },
           line: ['Which one of me is this?', 'Both. Keep up.'], desc: 'Moon, static and a brighter sun on every foe; the party’s attack and agility rise.' }],
       love: { rank: 9, name: 'Corona', img: BA('bond-haechan-love'), focus: [55, 25], sp: 18, target: 'all', steps: [P('dark', 44, { ail: { id: 'fear', chance: 0.2 } }), P('elec', 48, { ail: { id: 'shock', chance: 0.25 } }), S('light', 76, { down: 0.45 })], after: { buffs: ['atk', 'agi'], th: 10 },
         line: ['You and me. Every sky.', 'Show-off.'], desc: 'Their own combination: the light around an eclipse. Heavy damage to every foe; the party gets stronger and faster, and both Theurgy gauges fill a little.' },
-      love15: { rank: 15, name: 'Universe', img: BA('bond-haechan-love'), focus: [55, 25], sp: 20, target: 'all', steps: [P('dark', 52, { ail: { id: 'fear', chance: 0.25 } }), P('elec', 56, { ail: { id: 'shock', chance: 0.3 } }), S('light', 90, { down: 0.55 })], after: { buffs: ['atk', 'agi', 'def'], th: 15 },
+      love15: { rank: 15, name: 'Universe', img: BA('bond-haechan-seq-5'), focus: [33, 30],
+        sequence: [{ src: BA('bond-haechan-seq-1'), focus: [70, 28] }, // faces at x 42% / 77%
+          { src: BA('bond-haechan-seq-2'), focus: [40, 28] }, // 27% / 63%
+          { src: BA('bond-haechan-seq-3'), focus: [22, 30], pan: [-3, 0], hit: true }, // 20% / 41%; the knife leaves his hand
+          { src: BA('bond-haechan-seq-4'), focus: [35, 32] }, // 34% / 51%
+          { src: BA('bond-haechan-seq-5'), focus: [33, 30], pan: [0, 1.5] }], // the kiss at 42%
+        sp: 20, target: 'all', steps: [P('dark', 52, { ail: { id: 'fear', chance: 0.25 } }), P('elec', 56, { ail: { id: 'shock', chance: 0.3 } }), S('light', 90, { down: 0.55 })], after: { buffs: ['atk', 'agi', 'def'], th: 15 },
         line: ['Don’t ask me which one of me is translating.', 'Both of you. Every time.'], desc: 'Their own combination, all the way: every sky at once on every foe; the party gets stronger, faster and tougher, and both Theurgy gauges fill.' } },
     { id: 'jungwon', partner: 'jungwon', romance: true, loveFace: 'flustered', img: BA('bond-jungwon'), focus: [60, 22], look: ['ice', 'jade'], colors: ['#ff4f9e', '#9fe8ff'],
       tiers: [
@@ -156,7 +166,8 @@ window.FemcBonds = (() => {
       if (st.state !== 'own') return null;
       const v = st.cur;
       return { id: b.id, partner: b.partner, name: v.name, tier: v.tier, love: !!v.love, sp: v.sp, target: v.target, steps: v.steps, after: v.after || {}, line: v.line || null, desc: v.desc,
-        look: b.look, colors: b.colors, face: v.love ? b.loveFace || null : null, img: v.img || b.img || null, focus: v.focus || b.focus || null, sheet: v.sheet || b.sheet || null, layers: v.layers || b.layers || null, romance: !!b.romance };
+        look: b.look, colors: b.colors, face: v.love ? b.loveFace || null : null, img: v.img || b.img || null, focus: v.focus || b.focus || null, sheet: v.sheet || b.sheet || null,
+        sequence: v.sequence || b.sequence || null, layers: v.layers || b.layers || null, romance: !!b.romance };
     }).filter(Boolean);
   }
   return { BONDS, byId, status, ctxOf, arts, ord, pastUntil };

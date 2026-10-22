@@ -72,7 +72,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 17;
+  const ART_V = 18;
   const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
   Object.values(D.personas).forEach(p => { if (p.art && !p.art.startsWith('data:') && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
   // Theurgy and Evoker sheet art (data.js paths are bare) get the art version too.
@@ -81,12 +81,14 @@
     if (!T) return;
     T.img = artV(T.img);
     if (T.sheet) T.sheet.frames = T.sheet.frames.map(artV);
+    if (T.sequence) T.sequence = T.sequence.map(f => (f && typeof f === 'object' ? Object.assign({}, f, { src: artV(f.src) }) : artV(f)));
     if (T.layers) ['bg', 'persona', 'char'].forEach(k => { const v = T.layers[k]; if (v && typeof v === 'object') v.src = artV(v.src); else if (v) T.layers[k] = artV(v); });
   };
   D.party.forEach(m => { verTh(m.theurgy); Object.values((m.theurgy && m.theurgy.forms) || {}).forEach(verTh); if (m.evoker) m.evoker.frames = m.evoker.frames.map(artV); });
   const FINISH_DIR = 'assets/femc/battle/art/finish/', SUMMON_DIR = 'assets/femc/battle/art/summon/';
-  // The searchers have no finish-card art yet: their portrait stands in.
-  const finishArt = mid => ((member(mid) || {}).searcher ? pimg(mid, 'serious') : FINISH_DIR + mid + '.webp');
+  // Searchers' finish cards (Kat's <name>-alloutattack.png, cut by tools/femc-cards.py): the rest still use their portrait.
+  const FINISH_CARDS = new Set(['haechan', 'jungwon']);
+  const finishArt = mid => ((member(mid) || {}).searcher && !FINISH_CARDS.has(mid) ? pimg(mid, 'serious') : FINISH_DIR + mid + '.webp');
   // Full-body weapon stances belong on the battlefield, separate from face crops and finish cards.
   const FIELD_POSES = new Set(['solar', 'akihiko', 'junpei', 'yukari', 'aigis', 'mitsuru', 'shinjiro', 'koromaru']);
   /* Fighter pose sheets (Kat's <name>-posesheet.png, cut by tools/femc-shadow-poses.py into poses/<mid>-pose-0..5.webp:
@@ -1167,9 +1169,9 @@
     if (BLD && run && !run.ops && !op && !story && rand() < 0.4 + (strong ? 0.3 : 0)) { const n = 1 + Math.floor(rand() * 3) + (strong ? 2 : 0) + Math.floor(run.fi / 6); rew.drops.tarot_dust = (rew.drops.tarot_dust || 0) + n; }
     // A Capsule Ticket, now and then (the life sim's capsule machine; gacha.js). Story mode only: practice has no mall.
     if (HO && run && !run.ops && !op && !story && D.items.capsule_ticket && rand() < (strong ? 0.12 : 0.05)) { addItem('capsule_ticket'); notes.push('A Capsule Ticket (the machine at Paulownia Mall)'); mark('capsule-ticket'); }
-    // A full moon's first clear can leave one of Solar's naginatas behind.
+    // A full moon's first clear can leave one of Solar's naginatas (or Haechan's knives) behind.
     const bw = BLD && op && first && BLD.BOSS_WEAPON[op.id];
-    if (bw && !(save.gear.owned[bw] > 0)) { addGear(bw); notes.push(`${D.gear[bw].name} (one of Solar’s naginatas!)`); mark('boss-weapon'); }
+    if (bw && !(save.gear.owned[bw] > 0)) { addGear(bw); notes.push(`${D.gear[bw].name}${BLD.namedTag(bw)}`); mark('boss-weapon'); }
     // Shuffle Time (P3P): after an All-Out finish, a clean fast win, Strong Shadows, the Reaper or a full moon, or by chance.
     let shuffle = null;
     const due = BLD && !story && out.rating ? (window.__btShuffle ? 'chance' : BLD.shuffleDue(Object.assign({ strong, reaper, boss: !!op }, out.rating), rand)) : null;
@@ -2663,6 +2665,7 @@
          diagonal wipe to the finished cut-in as the closing shot;
        - layers: the bg sweeps in, the Persona rises and scales up behind, the character slides in from the side, impact;
        - a still: it slides in on a diagonal mask, pans and zooms, light sweeps, impact;
+       - a sequence (several panels): see playSeq above; the first panel slides in on the same mask;
        - nothing: a stylized cut-in from the portrait and Persona art in the member's color.
      Every version: the element's particles (fx.js stream, drawn over the cut-in), a flash and a screen shake on impact,
      the Theurgy name in the house style. Persona cut-ins setting: Always / 1st per battle (later ones and Off get a short
@@ -2672,7 +2675,26 @@
     fall: ['FORTUNE’S FALL', 'Fortune knocks itself Down'], jackpot: ['JACKPOT', 'The party heals and regains SP'], spark: ['SPARK', 'Lightning on everyone'] };
   const thSrc = x => (x && typeof x === 'object' ? x.src : x) || null;
   // Every image a Theurgy presentation can show (decoded ahead so the cut-in never pops in).
-  const thArt = T => (T ? [T.img, ...(T.layers ? ['bg', 'persona', 'char'].map(k => thSrc(T.layers[k])) : []), ...((T.sheet && T.sheet.frames) || [])].filter(Boolean) : []);
+  const thArt = T => (T ? [T.img, ...(T.layers ? ['bg', 'persona', 'char'].map(k => thSrc(T.layers[k])) : []), ...((T.sheet && T.sheet.frames) || []), ...(T.sequence || []).map(thSrc)].filter(Boolean) : []);
+  /* A multi-frame cut-in (a Theurgy's or a bond's `sequence`: [{ src, focus, pan, hit }] or plain paths; data.js comment above
+     TH): quick crossfading panels, each with its own slow zoom and pan (P3R), every panel framed on its own focus. The impact
+     lands on the strike panel (`hit`, else the middle one), where the name comes in; the last panel holds for the lines and
+     the closing punch. Only the full version plays it: the short band (Off, Rush, repeats) and reduced motion show the last
+     panel as a still (the entry's img, which should be that panel). Test marks: <kind>-seq-<i>, <kind>-seq-hit. */
+  const SEQ_STEP = 640;
+  const seqOf = (e, style) => (style === 'full' && Array.isArray(e.sequence) && e.sequence.length >= 2 ? e.sequence.map(f => (f && typeof f === 'object' ? f : { src: f })) : null);
+  const seqHtml = (seq, focus) => `<div class="th-seq">${seq.map((f, i) => { const [x, y] = f.focus || focus || [50, 40], [px, py] = f.pan || [i % 2 ? -2.5 : 2.5, 0];
+    return `<div class="th-sf${i === seq.length - 1 ? ' last' : ''}" data-i="${i}" style="--fx:${x}%;--fy:${y}%;--px:${px}%;--py:${py}%;z-index:${i + 1}"><img src="${thSrc(f.src)}" alt=""></div>`; }).join('')}</div>`;
+  // Plays the panels (the cut-in already has f-in); strike(): the impact on the strike panel. Resolves on the last panel.
+  async function playSeq(w, seq, tag, strike) {
+    const frames = [...w.querySelectorAll('.th-sf')], at = seq.findIndex(f => f.hit), hit = at >= 0 ? at : Math.floor((seq.length - 1) / 2);
+    for (let i = 0; i < frames.length; i++) {
+      frames[i].classList.add('go'); mark(`${tag}-seq-${i}`);
+      if (i === hit) { w.classList.add('q-hit'); mark(`${tag}-seq-hit`); strike(); }
+      if (i < frames.length - 1) await sleep(i === hit ? SEQ_STEP + 160 : SEQ_STEP);
+    }
+    w.classList.add('q-hit', 'q-last');
+  }
   let thSeen = new Set();
   async function theurgyCut(e) {
     const u = B.U(e.src), m = member(u.mid), per = D.personas[u.personaId] || D.personas[m.persona];
@@ -2683,9 +2705,10 @@
     const reduced = !FX || FX.reduced(), setting = save.cutins || 'first';
     const style = reduced ? 'fade' : rushActive() || setting === 'off' || (setting === 'first' && !first) ? 'short' : 'full';
     const L = e.layers || null, sheet = style === 'full' && e.sheet && e.sheet.frames && e.sheet.frames.length >= 3 ? e.sheet.frames : null;
-    const kind = L ? 'layers' : e.img ? 'cut' : 'styl';
+    const seq = seqOf(e, style);
+    const kind = L ? 'layers' : seq ? 'seq' : e.img ? 'cut' : 'styl';
     const look = e.look === 'sun' ? 'sun' : e.look;
-    await stills([...thArt({ img: e.img, layers: L, sheet: sheet && { frames: sheet } }), per.art, pimg(u.mid, m.faces.idle)], style === 'full' ? 1200 : 500);
+    await stills([...thArt({ img: e.img, layers: L, sheet: sheet && { frames: sheet }, sequence: seq }), per.art, pimg(u.mid, m.faces.idle)], style === 'full' ? 1200 : 500);
     const clip = kind === 'cut' && style === 'full' && e.video && prepClip(e.video);
     const useClip = clip && await clip.ready(600);
     const [fx, fy] = e.focus || [50, 40];
@@ -2697,6 +2720,7 @@
     const piece = (x, cls) => { const o = typeof x === 'object' ? x : {}; return `<div class="th-pl ${cls}" style="--x:${o.x || 0}%;--y:${o.y || 0}%;--s:${o.s || 1}"><img src="${thSrc(x)}" alt=""></div>`; };
     const final = kind === 'layers'
       ? `<img class="th-bg" src="${thSrc(L.bg)}" alt="">${L.persona ? piece(L.persona, 'th-lper') : ''}${L.char ? piece(L.char, 'th-lchar') : ''}`
+      : kind === 'seq' ? seqHtml(seq, e.focus)
       : kind === 'cut' ? `<div class="th-cut">${useClip ? '' : `<img class="th-img" src="${e.img}" alt="">`}</div>`
         : `<div class="th-bgc"></div><div class="th-lines"></div><img class="th-per" src="${per.art}" alt=""><div class="th-band fcb">${fimg(u.mid, m.faces.idle, '', 'th-face')}</div>`;
     const back = sheet && (L ? thSrc(L.bg) : e.img);
@@ -2746,11 +2770,14 @@
         w.classList.add('p-follow'); mark('theurgy-follow');
         await sleep(470);
       }
-      w.classList.add('f-in'); mark('theurgy-final');
-      await sleep(sheet ? 450 : kind === 'layers' ? 1050 : kind === 'cut' ? 700 : 900);
+      w.classList.add('f-in');
+      const beside = [fx < 50 ? Math.min(0.85, fx / 100 + 0.3) : Math.max(0.15, fx / 100 - 0.3), 0.6];
+      if (seq) { if (FX && !perf()) FX.stream(look, { dur: seq.length * SEQ_STEP / 1000 * 0.8 }); await playSeq(w, seq, 'theurgy', () => impact(true, beside)); }
+      mark('theurgy-final');
+      await sleep(sheet ? 450 : seq ? 650 : kind === 'layers' ? 1050 : kind === 'cut' ? 700 : 900);
       w.classList.add('f-hit'); mark('theurgy-impact');
       // Beside the face, toward the Persona's side of the art, so the burst never sits on someone's face.
-      impact(!sheet, [fx < 50 ? Math.min(0.85, fx / 100 + 0.3) : Math.max(0.15, fx / 100 - 0.3), 0.6]);
+      impact(!sheet && !seq, beside);
       await sleep(sheet ? 1300 : 1600);
     }
     w.classList.add('out');
@@ -2899,7 +2926,8 @@
   }
 
   /* ── Bond cut-in (engine event 'bond'; bonds.js). Built like a Theurgy's (theurgyCut, the same classes and beats): a
-     still (img), layers or a strike sheet when Kat's art arrives (bond.img / bond.sheet / bond.layers), and until then a
+     still (img), a sequence of panels (bond.sequence, playSeq), layers or a strike sheet when Kat's art arrives (bond.img /
+     bond.sheet / bond.layers), and until then a
      stylized cut-in made of both portraits on a split diagonal in both colors, both Personas behind, and a knot between
      them (a heart for a romance version). Both lines play: the partner's, then Solar's reply. Settings: Always and 1st per
      battle get the full one (each bond is once per battle anyway); Off and Rush a short band; reduced motion a fade. Battle
@@ -2915,10 +2943,11 @@
     const reduced = !FX || FX.reduced(), setting = save.cutins || 'first';
     const style = reduced ? 'fade' : rushActive() || setting === 'off' ? 'short' : 'full';
     const Lr = e.layers || null, sheet = style === 'full' && e.sheet && e.sheet.frames && e.sheet.frames.length >= 3 ? e.sheet.frames : null;
-    const kind = Lr ? 'layers' : e.img ? 'cut' : 'duo';
+    const seq = seqOf(e, style);
+    const kind = Lr ? 'layers' : seq ? 'seq' : e.img ? 'cut' : 'duo';
     const perS = D.personas[L.personaId] || D.personas.haenim, perP = D.personas[P.personaId] || D.personas[mp.persona];
     const fS = e.love ? 'happy' : ms.faces.idle, fP = e.face || (e.love ? 'happy' : mp.faces.win);
-    await stills([...thArt({ img: e.img, layers: Lr, sheet: sheet && { frames: sheet } }), perS.art, perP.art, pimg('solar', fS), pimg(P.mid, fP)], style === 'full' ? 1200 : 500);
+    await stills([...thArt({ img: e.img, layers: Lr, sheet: sheet && { frames: sheet }, sequence: seq }), perS.art, perP.art, pimg('solar', fS), pimg(P.mid, fP)], style === 'full' ? 1200 : 500);
     const [fx, fy] = e.focus || [50, 42];
     const look = e.look || ['almighty', 'sun'], c1 = (e.colors || [])[0] || ms.color, c2 = (e.colors || [])[1] || mp.color;
     const w = document.createElement('div');
@@ -2929,6 +2958,7 @@
     const knot = e.love ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-8.5-5.3-8.5-11.3A4.7 4.7 0 0 1 12 6.6a4.7 4.7 0 0 1 8.5 3.1C20.5 15.7 12 21 12 21z" fill="#ff8cc0" stroke="#fff" stroke-width="1.6"/></svg>'
       : '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="5.6" fill="none" stroke="#fff" stroke-width="2.4"/><circle cx="15" cy="12" r="5.6" fill="none" stroke="#ffd36b" stroke-width="2.4"/></svg>';
     const final = kind === 'layers' ? `<img class="th-bg" src="${thSrc(Lr.bg)}" alt="">${Lr.persona ? piece(Lr.persona, 'th-lper') : ''}${Lr.char ? piece(Lr.char, 'th-lchar') : ''}`
+      : kind === 'seq' ? seqHtml(seq, e.focus)
       : kind === 'cut' ? `<div class="th-cut"><img class="th-img" src="${e.img}" alt=""></div>`
         : `<div class="bd-bg"></div><div class="th-lines"></div><img class="bd-per s" src="${perS.art}" alt=""><img class="bd-per p" src="${perP.art}" alt="">
           <div class="bd-band s fcb">${fimg('solar', fS, '', 'th-face')}</div><div class="bd-band p fcb">${fimg(P.mid, fP, '', 'th-face')}</div><div class="bd-knot">${knot}</div>`;
@@ -2956,17 +2986,20 @@
     if (style === 'fade') await sleep(1200);
     else if (style === 'short') { await sleep(700); impact(false); await sleep(140); }
     else {
-      if (FX && !perf()) { look.forEach(k => FX.stream(k === 'jade' ? 'jade' : k, { dur: sheet ? 3.4 : 2.9, n: 0.6 })); if (e.love) FX.stream('love', { dur: 2.9, n: 0.7 }); }
+      const dur = seq ? 2.9 + (seq.length - 1) * SEQ_STEP / 1000 : sheet ? 3.4 : 2.9;
+      if (FX && !perf()) { look.forEach(k => FX.stream(k === 'jade' ? 'jade' : k, { dur, n: 0.6 })); if (e.love) FX.stream('love', { dur, n: 0.7 }); }
       if (sheet) {
         w.classList.add('p-in'); await sleep(140);
         w.classList.add('p-wind'); await sleep(430);
         w.classList.add('p-strike'); impact(true); await sleep(400);
         w.classList.add('p-follow'); await sleep(470);
       }
-      w.classList.add('f-in'); mark('bond-final');
-      await sleep(kind === 'duo' ? 1150 : 800);
+      w.classList.add('f-in');
+      if (seq) await playSeq(w, seq, 'bond', () => impact(true));
+      mark('bond-final');
+      await sleep(kind === 'duo' ? 1150 : seq ? 650 : 800);
       w.classList.add('f-hit'); mark('bond-impact');
-      impact(!sheet);
+      impact(!sheet && !seq);
       await sleep(1700);
     }
     w.classList.add('out');
@@ -4226,7 +4259,7 @@
   }
   const priceOf = id => (D.items[id] || D.gear[id] || D.materials[id] || {}).price || 0;
   const nameOf = id => (D.items[id] || D.gear[id] || D.materials[id] || {}).name || id;
-  const whoCan = id => { const g = D.gear[id]; if (!g) return []; return D.party.filter(m => usable(m) && (g.slot !== 'weapon' || g.wtype === m.wtype)); };
+  const whoCan = id => { const g = D.gear[id]; if (!g) return []; return D.party.filter(m => usable(m) && (g.slot !== 'weapon' || (g.wtype === m.wtype && (!g.owner || g.owner === m.id)))); };
   function shopScreen(id, onClose) {
     const shop = D.shops[id];
     screen = 'shop';
@@ -4240,7 +4273,7 @@
       if (shop.stock) return shop.stock.filter(x => (D.items[x] ? D.items[x].tier : D.gear[x].tier) <= t);
       if (shop.sells.includes('weapon')) {
         const m = members[who];
-        return Object.keys(D.gear).filter(x => { const g = D.gear[x]; return !g.rare && g.tier >= 1 && g.tier <= t && ((g.slot === 'weapon' && g.wtype === m.wtype) || g.slot === 'armor'); })
+        return Object.keys(D.gear).filter(x => { const g = D.gear[x]; return !g.rare && g.tier >= 1 && g.tier <= t && ((g.slot === 'weapon' && g.wtype === m.wtype && (!g.owner || g.owner === m.id)) || g.slot === 'armor'); })
           .sort((a, b) => (D.gear[a].slot === 'armor') - (D.gear[b].slot === 'armor') || D.gear[a].tier - D.gear[b].tier);
       }
       if (shop.sells.includes('acc')) return Object.keys(D.gear).filter(x => D.gear[x].slot === 'acc' && !D.gear[x].rare && D.gear[x].tier <= t).sort((a, b) => D.gear[a].tier - D.gear[b].tier || D.gear[a].price - D.gear[b].price);
@@ -4341,7 +4374,7 @@
     let mi = Math.max(0, mates.findIndex(m => m.id === startMid)), si = 0, mode = 'slot', li = 0;
     const cands = (mid, slot) => {
       const m = member(mid), cur = eqOf(mid)[slot];
-      const ids = Object.keys(D.gear).filter(x => { const g = D.gear[x]; if (g.slot !== slot) return false; if (slot === 'weapon' && g.wtype !== m.wtype) return false; if (g.tier === 0) return x === D.startGear[mid][slot]; return spare(x) > 0 || x === cur; });
+      const ids = Object.keys(D.gear).filter(x => { const g = D.gear[x]; if (g.slot !== slot) return false; if (slot === 'weapon' && (g.wtype !== m.wtype || (g.owner && g.owner !== mid))) return false; if (g.tier === 0) return x === D.startGear[mid][slot]; return spare(x) > 0 || x === cur; });
       ids.sort((a, b) => (D.gear[b].atk || D.gear[b].def || D.gear[b].price || 0) - (D.gear[a].atk || D.gear[a].def || D.gear[a].price || 0));
       return slot === 'acc' ? [null].concat(ids) : ids;
     };

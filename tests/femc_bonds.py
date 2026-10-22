@@ -13,13 +13,16 @@ Covers:
     and Personas (images decoded), damage lands, both pay SP, the partner's next turn is spent, it can't be used twice, and
     the availability rules (partner absent, frozen, low SP) grey it with the reason.
   - partner: a bond started on the partner's own turn (Solar then rests).
-  - art: the data hook: bond.img → a still cut-in, bond.sheet → the strike sheet.
+  - art: the data hook: bond.img → a still cut-in, bond.sheet → the strike sheet; Haechan's real art by tier (rank 5 and
+    rank 9 stills; rank 15 on the romance route: Kat's five-panel sequence, every panel in order with the impact on the
+    strike panel, the name and both lines; Off → the short band and reduced motion → a fade, both on the last panel only).
   - settings: Persona cut-ins Off → the short band, reduced motion → a fade, battle speed scales it.
   - sigs: each of the 16 signature skills cast through the menu plays its own effect and does what it says.
   - lines: weakness, Solar hurt, an ally low and down, knocked down, Theurgy ready, a boss appearing, victory.
   - banter: romance pair lines only on the romance route and from the rank they need.
   - rush: Rush starts a bond on its own when it's worth it (short cut-in).
-  - shots: screenshots at 1000x486, 375x812 and 1440x900; no console errors anywhere.
+  - shots: screenshots at 1000x486, 375x812 and 1440x900 (plus each panel of Haechan's rank-15 sequence, frozen, with both
+    faces checked inside the visible band); no console errors anywhere.
 """
 import argparse, base64, json, pathlib, tempfile, time
 from femc_browser import Page
@@ -294,8 +297,37 @@ try:
         my_menu(p, 'solar'); pick(p, 'bond'); p.wait("FemcBattle.ctl.items.some(i => i.v === 'jungwon')"); pick(p, 'jungwon')
         r = wait_cut(p, 1)
         ok('has-sheet' in r['cls'] and all(any(f'jungwon-strike-{k}' in s for s in r['imgs']) for k in range(3)) and r['loaded'], r)
+        # Haechan's own art by tier: rank 5 the side-by-side still, rank 9 its upgrade (ver3), rank 15 romance the sequence.
+        for rank, still, name in [(5, 'bond-haechan.webp', 'SUN AND MOON'), (9, 'bond-haechan-2.webp', 'ECLIPSE')]:
+            fight(p, ['solar', 'haechan'], ranks={'haechan': rank})
+            my_menu(p, 'solar'); pick(p, 'bond'); p.wait("FemcBattle.ctl.items.some(i => i.v === 'haechan')"); pick(p, 'haechan')
+            r = wait_cut(p, 1)
+            ok('kind-cut' in r['cls'] and any(still in x for x in r['imgs']) and not any('bond-haechan-seq' in x for x in r['imgs']) and r['loaded'] and name in r['name'], (rank, r))
+        SEQ_ORDER = r'''(() => { window.seqLog = []; new MutationObserver(() => { const w = document.querySelector('.bt-bond'); if (!w) return;
+          w.querySelectorAll('.th-sf.go').forEach(f => { if (!seqLog.includes('p' + f.dataset.i)) seqLog.push('p' + f.dataset.i); });
+          ['q-hit', 'q-last', 'f-hit'].forEach(c => { if (w.classList.contains(c) && !seqLog.includes(c)) seqLog.push(c); });
+        }).observe(document.querySelector('.bt-cut'), { subtree: true, attributes: true, attributeFilter: ['class'], childList: true }); return true; })()'''
+        fight(p, ['solar', 'haechan'], ranks={'haechan': 15}, love=['haechan'], speed=3)
+        p.eval(SEQ_ORDER)
+        my_menu(p, 'solar'); pick(p, 'bond'); p.wait("FemcBattle.ctl.items.some(i => i.v === 'haechan')"); pick(p, 'haechan')
+        r = wait_cut(p, 1); m = marks(p); order = p.eval('seqLog')
+        ok('kind-seq' in r['cls'] and 'st-full' in r['cls'] and 'love' in r['cls'] and 'UNIVERSE' in r['name'] and r['loaded'], r)
+        ok(all(any(f'bond-haechan-seq-{i}.webp' in x for x in r['imgs']) for i in range(1, 6)) and len(r['lines']) == 2, r['imgs'])
+        ok([x for x in order if x.startswith('p')] == ['p0', 'p1', 'p2', 'p3', 'p4'] and order.index('q-hit') == order.index('p2') + 1 and order.index('f-hit') > order.index('p4'), order)
+        ok(all(m.get(f'bond-seq-{i}') == 1 for i in range(5)) and m.get('bond-seq-hit') == 1 and m.get('bond-kind-seq') == 1 and m.get('bond-impact') == 1, m)
+        ok(r['done'] - r['t0'] > 1000, ('the sequence takes its time', r['done'] - r['t0']))
+        fight(p, ['solar', 'haechan'], ranks={'haechan': 15}, love=['haechan'], cutins='off')
+        my_menu(p, 'solar'); pick(p, 'bond'); p.wait("FemcBattle.ctl.items.some(i => i.v === 'haechan')"); pick(p, 'haechan')
+        r = wait_cut(p, 1)
+        ok('st-short' in r['cls'] and 'kind-cut' in r['cls'] and [x for x in r['imgs'] if 'bond-haechan' in x] == [x for x in r['imgs'] if 'bond-haechan-seq-5' in x] and r['loaded'], ('Off: the short band, last panel only', r))
+        p.ws.call('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'reduce'}]})
+        fight(p, ['solar', 'haechan'], ranks={'haechan': 15}, love=['haechan'])
+        my_menu(p, 'solar'); pick(p, 'bond'); p.wait("FemcBattle.ctl.items.some(i => i.v === 'haechan')"); pick(p, 'haechan')
+        r = wait_cut(p, 1)
+        ok('st-fade' in r['cls'] and any('bond-haechan-seq-5' in x for x in r['imgs']) and not any('bond-haechan-seq-1' in x for x in r['imgs']) and r['done'] - r['t0'] < 2500, ('reduced motion: the last panel, a fade', r))
+        p.ws.call('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'no-preference'}]})
         clean(p, 'art')
-        results['art'] = 'bond.img → still cut-in; bond.sheet → strike sheet'
+        results['art'] = {'hooks': 'bond.img → still cut-in; bond.sheet → strike sheet', 'haechan': 'rank 5 still, rank 9 ver3, rank 15 romance: 5-panel sequence (hit on panel 3), Off short / reduced fade on panel 5', 'order': order}
         print('art OK', flush=True)
 
     # ── Settings: Off → short band; reduced motion → fade; speed ──
@@ -534,6 +566,27 @@ try:
             name = f'{w}x{h}-bonds-tab.png'
             (OUT / name).write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot', {'format': 'png'})['data'])); shots.append(name)
             p.eval("FemcMenu.close()")
+            # Haechan's rank-15 sequence, frozen on each panel: both faces (the kiss: one point) inside the visible band.
+            fight(p, ['solar', 'haechan'], ranks={'haechan': 15}, love=['haechan'], speed=0)
+            FACES = [[42, 77], [27, 63], [20, 41], [34, 51], [42]]
+            my_menu(p, 'solar'); pick(p, 'bond'); p.wait("FemcBattle.ctl.items.some(i => i.v === 'haechan')")
+            p.eval("window.__btFreezeAt = 'bond-seq-0'")
+            pick(p, 'haechan')
+            for i in range(5):
+                p.wait('FemcBattle.frozen', 30)
+                time.sleep(0.4)
+                p.eval("document.getAnimations().forEach(a => a.pause())")
+                vis = p.eval('''(() => { const w = document.querySelector('.bt-bond'), st = w.querySelector('.th-stage').getBoundingClientRect(), im = w.querySelector('.th-sf[data-i="%d"] img'), R = im.getBoundingClientRect();
+                  const s = Math.max(R.width / im.naturalWidth, R.height / im.naturalHeight), cw = im.naturalWidth * s, px = parseFloat(getComputedStyle(im).objectPosition) / 100, left = R.left + (R.width - cw) * px;
+                  const lo = Math.max(st.left, 0, R.left), hi = Math.min(st.right, innerWidth, R.right);
+                  return { faces: %s.map(f => { const x = left + f / 100 * cw; return x >= lo + 6 && x <= hi - 6; }), top: getComputedStyle(w.querySelector('.th-sf[data-i="%d"]')).opacity }; })()''' % (i, json.dumps(FACES[i]), i))
+                ok(all(vis['faces']) and float(vis['top']) > 0.95, (w, h, f'panel {i + 1}', vis))
+                if (w, h) == (375, 812) or i == 4:
+                    p.top(); name = f'{w}x{h}-universe-panel{i + 1}.png'
+                    (OUT / name).write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot', {'format': 'png'})['data'])); shots.append(name)
+                    p.frame()
+                p.eval("window.__btFreezeAt = %s; FemcBattle.unfreeze(); document.getAnimations().forEach(a => a.play())" % json.dumps(f'bond-seq-{i + 1}' if i < 4 else None))
+            p.wait("(FemcBattle.marks['bond-done'] || 0) >= 1", 30)
             clean(p, f'shots {w}x{h}')
         p.ws.call('Emulation.setDeviceMetricsOverride', {'width': 1280, 'height': 800, 'deviceScaleFactor': 1, 'mobile': False})
         results['screenshots'] = {'dir': str(OUT), 'files': shots}

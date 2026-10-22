@@ -3117,17 +3117,204 @@
       "sourceNow": "Added to Game/justice-attack.png"
     },
     {
-      "batch": 20,
-      "source": "solar-haechan-bond-ver3.png",
-      "sha256": "51e5d4f0c2c146624d1b413d99abb2946c1c45e657d02162a63d865ac8d13d91",
+      "batch": 21,
+      "source": "solar-haechan-pt1.png",
+      "sourceNow": "Added to Game/solar-haechan-pt1.png",
       "size": [
         1672,
         941
       ],
+      "sha256": "6da9e0192fe5a598b2af5a55689fd6284249ee094d5ea2ea16c87ab860d22107",
       "character": "solar + haechan",
-      "intendedUse": "Bond cut-in still (alternate)",
-      "status": "skipped",
-      "skipNote": "Kat (2026-10-21): not used; on hold, left in New Adds"
+      "intendedUse": "Rank-15 romance bond Universe (bonds.js haechan.love15.sequence): a 5-beat sequence played as crossfading panels with a slow zoom and pan; panel 1: fighting side by side",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-haechan-seq-1.webp"
+      ],
+      "outputSha256": [
+        "2432e3bfb8febb2f3a5ea59656595630482a679a4813fdd1d8159b1b68172517"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept)",
+      "placement": "battle.js bondCut kind-seq (playSeq), focus per panel chosen so both faces stay in the 375x812 band"
+    },
+    {
+      "batch": 21,
+      "source": "solar-haechan-pt2.png",
+      "sourceNow": "Added to Game/solar-haechan-pt2.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e643e8de2cfdadacc0263367af8d3cc24e01ef659df2fb5c1c5462b114b87522",
+      "character": "solar + haechan",
+      "intendedUse": "Rank-15 romance bond Universe (bonds.js haechan.love15.sequence): a 5-beat sequence played as crossfading panels with a slow zoom and pan; panel 2: he steps in front of her and strikes",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-haechan-seq-2.webp"
+      ],
+      "outputSha256": [
+        "5d243577fcae162258506dea623642c328cc1f8524e30c86efd7ed84d47f7939"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept)",
+      "placement": "battle.js bondCut kind-seq (playSeq), focus per panel chosen so both faces stay in the 375x812 band"
+    },
+    {
+      "batch": 21,
+      "source": "solar-haechan-pt3.png",
+      "sourceNow": "Added to Game/solar-haechan-pt3.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "836b4235f8636122413c6e675c42d00ae87a9fa36bf183e1bcad334504820b7e",
+      "character": "solar + haechan",
+      "intendedUse": "Rank-15 romance bond Universe (bonds.js haechan.love15.sequence): a 5-beat sequence played as crossfading panels with a slow zoom and pan; panel 3: the knife leaves his hand (the hit panel: impact)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-haechan-seq-3.webp"
+      ],
+      "outputSha256": [
+        "b08f0261be5bfdbc4083242fd1c6ffc903ddd48b6c2d5415addc1057002e7dee"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept)",
+      "placement": "battle.js bondCut kind-seq (playSeq), focus per panel chosen so both faces stay in the 375x812 band"
+    },
+    {
+      "batch": 21,
+      "source": "solar-haechan-pt4.png",
+      "sourceNow": "Added to Game/solar-haechan-pt4.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "2ca75ff9f170be9cc09d42998eb1997f0032db520e0c881f94d5f33b7e0f4610",
+      "character": "solar + haechan",
+      "intendedUse": "Rank-15 romance bond Universe (bonds.js haechan.love15.sequence): a 5-beat sequence played as crossfading panels with a slow zoom and pan; panel 4: she is pulled close",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-haechan-seq-4.webp"
+      ],
+      "outputSha256": [
+        "cb8d63e8fac8a07992fea494494ad2cb4fabcdc2a098761da394c66357955bd7"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept)",
+      "placement": "battle.js bondCut kind-seq (playSeq), focus per panel chosen so both faces stay in the 375x812 band"
+    },
+    {
+      "batch": 21,
+      "source": "solar-haechan-pt5.png",
+      "sourceNow": "Added to Game/solar-haechan-pt5.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "697fd9d1e4dbc35f89f5edd6ea3412c69ad27909cc09cd886af876515af7c98d",
+      "character": "solar + haechan",
+      "intendedUse": "Rank-15 romance bond Universe (bonds.js haechan.love15.sequence): a 5-beat sequence played as crossfading panels with a slow zoom and pan; panel 5: a kiss (non-explicit; the last panel, also the short/reduced-motion still)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-haechan-seq-5.webp"
+      ],
+      "outputSha256": [
+        "e8f5cc244232951824f8aab017b2a7309169b91b9c8ae868e3faf3c05c7ca44a"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept)",
+      "placement": "battle.js bondCut kind-seq (playSeq), focus per panel chosen so both faces stay in the 375x812 band"
+    },
+    {
+      "batch": 21,
+      "source": "solar-haechan-bond-ver3.png",
+      "sourceNow": "Added to Game/solar-haechan-bond-ver3.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "51e5d4f0c2c146624d1b413d99abb2946c1c45e657d02162a63d865ac8d13d91",
+      "character": "solar + haechan",
+      "intendedUse": "Haechan's regular bond, upgraded tier (rank 9 Eclipse; rank 15 Two Suns keeps it). Rank 5 keeps bond-haechan; Corona keeps bond-haechan-love",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-haechan-2.webp"
+      ],
+      "outputSha256": [
+        "5066bbfc339c290c39dffe12fe7c845d49e0dc645518840d16376257770dfecf"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept)",
+      "placement": "bonds.js haechan.tiers[1].img / tiers[2].img, focus [71, 25] (faces at x 40% / 80%)",
+      "history": "batch 20 left it on hold (Kat); Kat asked for it as the rank-9 tier on 2026-10-21"
+    },
+    {
+      "batch": 21,
+      "source": "haechan-weapons.png",
+      "sourceNow": "Added to Game/haechan-weapons.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e757876f5a4ef2410019402169cca115cfa81b6b13f9f057928a6e3088c4916f",
+      "character": "haechan",
+      "intendedUse": "Haechan's six knives (FEMC-ART-TODO section 5), matched to their themes by inspection in sheet order: Starter (plain black tactical), Mixdown (waveform blade, fader guard, jack charm), Widow's Kiss (violet steel, line-wrapped grip, scope pommel), Harbor Watch (rust-red, rope grip, anchor guard, sea-glass pommel), Old Disc (CD-sheen disc guard), Neo Sunlight (neon-green edge, sun-ray guard)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/weapons/haechan-starter.webp",
+        "assets/femc/battle/art/weapons/haechan-mixdown.webp",
+        "assets/femc/battle/art/weapons/haechan-widows-kiss.webp",
+        "assets/femc/battle/art/weapons/haechan-harbor-watch.webp",
+        "assets/femc/battle/art/weapons/haechan-old-disc.webp",
+        "assets/femc/battle/art/weapons/haechan-neo-sunlight.webp"
+      ],
+      "outputSha256": [
+        "005c05ee9d1b4ebe49d4cc0b0c4ef4fc3612350c51c71be4eb653a0bc8236f41",
+        "309301055bc2ff79f33f7c469161281f762845f319cd0a4eaa226b8c51de5d95",
+        "e1c4dd20b805fba06d2c13a9b26f2cc6a5468cda3c15889618c356946742b58f",
+        "ecd0c3fd072fcf25089b13ecf16669656b8baa7e99fca412f76be42877454aff",
+        "cc5602f6eea9280c5993ab9ff23211cb25e4189e413ab03da85b7605a217ca40",
+        "ca71dcc49e7f4ccfea897ca89a049f52a1c60ffb791530fb22169ca5dcbeac14"
+      ],
+      "conversion": "tools/femc-cards.py weapons: card frames found from their grey lines, the printed names blanked, each knife turned 45\u00b0 upright on white and centred on the naginata cards' tall shape (WebP q88)",
+      "placement": "build.js HK: hk_starter, hk_mixdown, hk_widow, hk_harbor, hk_disc, hk_sunlight (owner haechan; menu.js g-eq-art, battle.css .bt-loot.art)"
+    },
+    {
+      "batch": 21,
+      "source": "haechan-alloutattack.png",
+      "sourceNow": "Added to Game/haechan-alloutattack.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "48445af83e484f016c00e5fad416825f1f9bd9c0a55d80b4172c63dadaffe015",
+      "character": "haechan",
+      "intendedUse": "All-Out finish card (TOO EASY.)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/finish/haechan.webp"
+      ],
+      "outputSha256": [
+        "c56942b63a5eae351bae0e7c79e59f98432690e81c18e18cb028555e1b6e527c"
+      ],
+      "conversion": "tools/femc-cards.py finish (1600x900 WebP q86)",
+      "placement": "battle.js finishArt (FINISH_CARDS)"
+    },
+    {
+      "batch": 21,
+      "source": "jungwon-alloutattack.png",
+      "sourceNow": "Added to Game/jungwon-alloutattack.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "de3187d5e5974c75ce0084ddacfe058b8c659e0bcca62772a4c638e002e39cfe",
+      "character": "jungwon",
+      "intendedUse": "All-Out finish card (MEETING ADJOURNED.)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/finish/jungwon.webp"
+      ],
+      "outputSha256": [
+        "2b0db32925d64547d3b8c3e4c8edda4813dca0bfa7d7c643d39d23e98ab820af"
+      ],
+      "conversion": "tools/femc-cards.py finish (1600x900 WebP q86)",
+      "placement": "battle.js finishArt (FINISH_CARDS)"
     }
   ],
   "batch1Validation": {
@@ -3404,6 +3591,21 @@
     "tests": [
       "python3 tests/femc_bonds.py --only art,shots",
       "python3 tests/femc_shadow_poses.py --shots chariot (Justice: attack, cast, hurt, down, defeat, canvas in the Chariot operation)"
+    ],
+    "browserErrors": 0
+  },
+  "batch21Validation": {
+    "date": "2026-10-21",
+    "scope": "Haechan's rank-15 romance bond sequence (5 panels), his rank-9 bond still, his six knives, Haechan's and Jungwon's All-Out finish cards",
+    "sourcesInspected": "all 9 viewed before wiring: the five panels are one non-explicit sequence (side by side, his strike, pulled close, a kiss); ver3 is the same pair in a side-by-side combat still; the weapon sheet's six labelled cards match the section-5 themes in order; both finish cards show the right searcher, weapon and line",
+    "sourcesIntegrated": 9,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold untouched",
+    "phoneFraming": "each sequence panel frozen at 375x812 (and 1000x486, 1440x900): both faces (the kiss: one point) checked inside the visible band by the test; screenshots reviewed",
+    "tests": [
+      "python3 tests/femc_bonds.py --only art,shots",
+      "python3 tests/femc_building.py",
+      "python3 tests/femc_theurgy.py"
     ],
     "browserErrors": 0
   }

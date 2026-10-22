@@ -220,7 +220,7 @@ window.FemcBattleEngine = (() => {
   const lvlOf = (save, mid) => (mid === 'solar' ? save.lvl : ((save.mem || {})[mid] || {}).lvl || save.lvl);
   function gearOf(save, mid) {
     const D = DATA(), m = member(mid), eq = Object.assign({}, D.startGear[mid], ((save.gear || {}).eq || {})[mid] || {});
-    const ok = (id, slot) => { const g = id && D.gear[id]; return g && g.slot === slot && (slot !== 'weapon' || g.wtype === m.wtype) ? g : null; };
+    const ok = (id, slot) => { const g = id && D.gear[id]; return g && g.slot === slot && (slot !== 'weapon' || (g.wtype === m.wtype && (!g.owner || g.owner === mid))) ? g : null; };
     const wid = ok(eq.weapon, 'weapon') ? eq.weapon : D.startGear[mid].weapon;
     return { weapon: D.gear[wid], armor: ok(eq.armor, 'armor') || D.gear.armor0, acc: ok(eq.acc, 'acc'), ids: eq, wid };
   }
@@ -1174,7 +1174,7 @@ window.FemcBattleEngine = (() => {
 
     /* ── Theurgy ──────────────────────────────────────── */
     // Presentation fields a Persona form may swap (data.js theurgy.forms); the mechanics always stay the base entry's.
-    const TH_LOOK = ['name', 'img', 'focus', 'layers', 'sheet', 'video'];
+    const TH_LOOK = ['name', 'img', 'focus', 'layers', 'sheet', 'sequence', 'video'];
     function theurgyDef(u) {
       const m = member(u.mid), base0 = m && m.theurgy;
       if (!base0) return null;
@@ -1188,7 +1188,7 @@ window.FemcBattleEngine = (() => {
       const T = theurgyDef(u);
       u.th = 0;
       ev.push({ t: 'theurgy', src: u.id, mid: u.mid, name: T.name, look: T.look || T.el, img: T.img || null, video: T.video || null, unveiled: !!T.unveiled,
-        focus: T.focus || null, layers: T.layers || null, sheet: T.sheet || null, form: T.form || null });
+        focus: T.focus || null, layers: T.layers || null, sheet: T.sheet || null, sequence: T.sequence || null, form: T.form || null });
       let downs = 0;
       if (T.type === 'dmg' || T.type === 'orgia') {
         const sk = { id: 'theurgy', name: T.name, el: T.el, power: T.power, target: T.target, multi: T.multi, crit: T.crit || 10, sure: T.sure !== false, ail: T.ail, down: T.down, weakEl: T.weakEl, theurgy: true, type: 'dmg' };
@@ -1249,7 +1249,7 @@ window.FemcBattleEngine = (() => {
       const other = u === L ? P : L;
       other.bondRest = true;
       ev.push({ t: 'bond', src: u.id, solar: L.id, partner: P.id, mid: P.mid, id, name: art.name, love: art.love, tier: art.tier, look: art.look, colors: art.colors,
-        img: art.img, focus: art.focus, sheet: art.sheet, layers: art.layers, face: art.face || null, line: art.line, desc: art.desc, sp: art.sp, spSolar: L.sp, spPartner: P.sp, rest: other.id });
+        img: art.img, focus: art.focus, sheet: art.sheet, sequence: art.sequence || null, layers: art.layers, face: art.face || null, line: art.line, desc: art.desc, sp: art.sp, spSolar: L.sp, spPartner: P.sp, rest: other.id });
       const open = () => alive(foes()).filter(f => !f.unreachable && !f.hidden && !shieldUp(f));
       let main = U(target);
       if (!main || main.dead || main.side !== 'enemy' || main.hidden || main.unreachable) main = open().sort((a, b) => (b.boss - a.boss) || b.hp - a.hp)[0] || null;

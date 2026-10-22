@@ -377,6 +377,10 @@ window.FEMC_BATTLE_DATA = (() => {
                persona/char can be { src, x, y, s } to nudge a piece (x/y in % of the frame, s a scale).
        sheet:  { frames: [wind-up, strike, follow-through] } a 3-panel strike sheet: the character's motion over the backdrop
                (the layers' bg, else img), then the finished cut-in (layers, else img) as the closing shot.
+       sequence: [{ src, focus, pan, hit }, ...] (or plain paths) several full-screen panels played as quick crossfades, each
+               with a slow zoom and pan (pan: [x%, y%] it drifts from) on its own focus; the impact lands on the `hit` panel
+               (else the middle one) and the last one holds. Full version only: set img (and focus) to the last panel, which
+               the short band and reduced motion show. Bonds take it too (bonds.js).
        video:  a data.clips key, played in place of img when it's ready.
        forms:  { personaId: { name, img, focus, sheet, ... } } a different look and name per Persona form (Haenim's forms).
                Mechanics always stay the base entry's (and the form's own `theurgy` boost in personas).

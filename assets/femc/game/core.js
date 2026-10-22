@@ -860,10 +860,10 @@ window.FemcGame = (() => {
     const gear = [];
     ['weapon', 'armor', 'acc'].forEach(kind => {
       if (!shop.sells.includes(kind)) return;
-      Object.entries(B.gear || {}).forEach(([k, g]) => { if ((g.kind || g.slot) === kind && !g.rare && (g.tier ?? 1) <= tier && (g.tier ?? 1) > 0 && g.price && (kind !== 'weapon' || wt.has(g.wtype))) gear.push([k, g, kind]); });
+      Object.entries(B.gear || {}).forEach(([k, g]) => { if ((g.kind || g.slot) === kind && !g.rare && (g.tier ?? 1) <= tier && (g.tier ?? 1) > 0 && g.price && (kind !== 'weapon' || (wt.has(g.wtype) && (!g.owner || available().includes(g.owner))))) gear.push([k, g, kind]); });
     });
     if (shop.sells.includes('rare')) (shop.stock || []).forEach(k => { const g = B.gear?.[k]; if (g && (g.tier ?? 1) <= tier) gear.push([k, g, g.slot]); });
-    gear.sort((a, b) => (b[1].tier - a[1].tier) || (a[2] > b[2] ? 1 : -1)).slice(0, 14).forEach(([k, g, kind]) => out.push({ id: k, kind, name: g.name, price: price(g.price, kind), desc: line(k), who: g.wtype ? (B.party || []).filter(m => m.wtype === g.wtype && available().includes(m.id)).map(m => m.name).join(', ') : '', shop: id, art: g.art || null }));
+    gear.sort((a, b) => (b[1].tier - a[1].tier) || (a[2] > b[2] ? 1 : -1)).slice(0, 14).forEach(([k, g, kind]) => out.push({ id: k, kind, name: g.name, price: price(g.price, kind), desc: line(k), who: g.wtype ? (B.party || []).filter(m => m.wtype === g.wtype && (!g.owner || g.owner === m.id) && available().includes(m.id)).map(m => m.name).join(', ') : '', shop: id, art: g.art || null }));
     // Mayoido also sells sealed Revelation cards.
     if (cfg?.cards && W.FemcBuild) out.push({ id: 'card_pack', kind: 'cardpack', name: 'Sealed Revelation Card', price: 1500 + 500 * Math.min(6, tier), desc: `A random Revelation card (★3–★5; better as Tartarus opens up). Equip it from the menu’s Cards tab.`, shop: id });
     return out.slice(0, 24);

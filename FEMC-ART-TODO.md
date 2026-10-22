@@ -75,7 +75,7 @@ All done. Ken is skipped (Kat's call: she won't use him), so he keeps no battlef
 ---
 
 ## 3C. All-Out finish cards for the searchers ⭐
-Solar and S.E.E.S. have one; **Haechan, Jungwon, Jihoon and Minji** don't yet.
+Solar, S.E.E.S., Haechan and Jungwon have one (Haechan's and Jungwon's went in 2026-10-21); **Jihoon and Minji** don't yet.
 **Attach:**
 1. 🎮 `battle/art/finish/akihiko.webp` (layout and style)
 2. The searcher's full body from 🎨 `Added to Game/` (e.g. `JungwonFullBody.png`; for Haechan, his pose sheet)
@@ -84,8 +84,8 @@ Persona 3 Reload All-Out Attack finish card, the same bold graphic layout and st
 ```
 | ✓ | Name | [COLOR] | [LINE] |
 |---|---|---|---|
-| ☐ | Haechan | deep violet and gold | TOO EASY. |
-| ☐ | Jungwon | jade green and ice white | MEETING ADJOURNED. |
+| ✓ | Haechan | deep violet and gold | TOO EASY. |
+| ✓ | Jungwon | jade green and ice white | MEETING ADJOURNED. |
 | ☐ | Jihoon | sky blue and gold | YOU'RE WELCOME. |
 | ☐ | Minji | warm gold and white | THAT'S A WRAP. |
 
@@ -129,7 +129,9 @@ Create a NEW 16:9 combo-attack cut-in matching the FIRST attached image's art st
 
 **Status (2026-10-21):** the bond skills are in the game with a stylized cut-in made from both portraits and Personas, so nothing waits on this art. The romance versions (on that route) can have their own art too.
 
-**Done (2026-10-21):** Akihiko, Haechan, Jungwon, Jihoon and Minji have their art (`art/theurgy/bond-*.webp`). Haechan and Jungwon have two: the side-by-side one for the regular bond, the close, smiling one (`ver2`) for the romance version. Akihiko, Jihoon and Minji use one still for every version. `solar-haechan-bond-ver3.png` is unused (on hold; it stays in New Adds). Still open: Shinjiro and the optional S.E.E.S. ones.
+**Done (2026-10-21):** Akihiko, Haechan, Jungwon, Jihoon and Minji have their art (`art/theurgy/bond-*.webp`). Haechan and Jungwon have two: the side-by-side one for the regular bond, the close, smiling one (`ver2`) for the romance version. Akihiko, Jihoon and Minji use one still for every version. Still open: Shinjiro and the optional S.E.E.S. ones.
+
+**Done (2026-10-21, later):** Haechan's regular bond has an upgraded still at rank 9 (`solar-haechan-bond-ver3.png` → `bond-haechan-2`; rank 5 keeps the first one, Corona keeps `ver2`), and his rank-15 romance bond (Universe) plays `solar-haechan-pt1.png` … `pt5.png` as a five-panel sequence. Any bond or Theurgy can take a `sequence` now (see the appendix), so other multi-panel combos can follow the same way.
 
 
 ---
@@ -146,7 +148,7 @@ A 2×3 grid of six weapon designs on a white background, each in its own card, i
 - [ ] **Aigis** (arm guns): gold plating, heart, wing, heavy cannon, butterfly
 - [ ] **Koromaru** (knife): bone, shrine bell, flame, collar tag, kunai
 - [ ] **Shinjiro** (axe): black steel, chain, kitchen cleaver, ember, moonlit
-- [ ] **Haechan** (knife). Six designs, one per card:
+- [x] **Haechan** (knife). Six designs, one per card. *(Done 2026-10-21: `haechan-weapons.png` → `art/weapons/haechan-*.webp`, his six knives in `build.js HK`.)*
   1. **Starter:** a plain black tactical knife.
   2. **Mixdown (Runners):** an audio waveform etched along the blade, a studio-fader guard, and a tiny headphone-jack charm on the cord.
   3. **Widow's Kiss (Runners):** violet steel, a grappling-line wrapped grip, and a sniper-scope lens set in the pommel.
@@ -325,4 +327,9 @@ Everything is data plus one tool. The presentation is reusable: `battle.js theur
 Cut each one to a transparent WebP in `battle/art/shadows/` (`memory-lantern-runners.webp` etc.) and add it to `art/shadows/index.js` (w, h). In `data.js`, give `lantern_r` / `lantern_s` / `lantern_h` an `img` (and drop `pic`). `battle.js addEnemy` draws the code lantern (`lanternSvg`) only while a lantern has no `img` art; with art it takes the Shadow-art branch and keeps its `.lantern` classes and place on the train (`--lo`), and `orderIcon` shows the art. The "behind glass" look for art lanterns needs a CSS rule on `.bt-enemy.lantern.unreachable .sh-pic` (dim plus a glass overlay). Bump `ART_V`, the `data.js` and `shadows/index.js ?v=` in both pages, and check the finale's phase 2 at 1000×486, 375×812 and 1440×900.
 
 ### Bond art
-The same pieces as a Theurgy (the steps above), in `assets/femc/battle/bonds.js`: on a bond (or one version of it, `tiers[i]` or `love`), add `img` with `focus: [x%, y%]`, `sheet: { frames: [three files] }` or `layers: { bg, persona, char }`. Cut it with `tools/femc-theurgy.py` (a bond still is a `cutin`; a 3-step combo sheet is a `sheet`). Bump `ART_V` in `battle.js` and the `bonds.js ?v=` in both pages, then run `python3 tests/femc_bonds.py --only art,shots`.
+The same pieces as a Theurgy (the steps above), in `assets/femc/battle/bonds.js`: on a bond (or one version of it, `tiers[i]`, `love` or `love15`), add `img` with `focus: [x%, y%]`, `sheet: { frames: [three files] }` or `layers: { bg, persona, char }`. Cut it with `tools/femc-theurgy.py` (a bond still is a `cutin`; a 3-step combo sheet is a `sheet`). Bump `ART_V` in `battle.js` and the `bonds.js ?v=` in both pages, then run `python3 tests/femc_bonds.py --only art,shots`.
+- **A sequence** (several full-screen panels, like Haechan's Universe): cut each panel as a `cutin`, then give the version `sequence: [{ src, focus, pan, hit }, ...]` and set its `img` / `focus` to the last panel (the short band and reduced motion show only that one). `hit: true` marks the strike panel (the impact and the name land there; default: the middle one); `pan: [x%, y%]` is where a panel's drift starts. Pick each `focus` so both faces stay inside the phone band (about 53% of a panel's width at 375×812); the test freezes each panel there and checks. A Theurgy takes the same `sequence` field (`data.js` comment above `TH`).
+
+### Weapon sheets and finish cards
+- **Weapons (section 5):** add the sheet to `BUILD` in `tools/femc-cards.py` (`weapons`, the file and the six names in reading order) and run `python3 tools/femc-cards.py all`; it finds the card frames, blanks the printed names and turns a diagonal blade upright. Then add the six to `build.js` like `HK` (Haechan's): an `owner` keeps them to that fighter in every list, shop and Shuffle draw; sources go in shops, `lockedRare`, `BOSS_WEAPON`, a perk's `gift` and `Shuffle Time · Swords`. Run `python3 tests/femc_building.py`.
+- **Finish cards (3C):** add `('finish', '<name>-alloutattack.png', '<mid>')` to the same `BUILD`, run it, and add the member to `FINISH_CARDS` in `battle.js`.

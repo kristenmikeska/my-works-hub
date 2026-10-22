@@ -1,13 +1,14 @@
 """The building systems, played for real in headless Chrome (femc-game.html, isolated profile, localhost; no player saves).
 
-Run: python3 tests/femc_building.py [--only rules,menu,daily,fight,boss,practice,migrate,shots] [--screenshots DIR]
+Run: python3 tests/femc_building.py [--only rules,menu,daily,fight,boss,knives,practice,migrate,shots] [--screenshots DIR]
 
 Covers: Shuffle Time (real draws through the UI: Cups, a Major Arcana Revelation card, a penalty, Rush's auto-pick, and every
 card type and penalty applied), Revelation cards (drops, equip through the menu, set bonuses applied in battle, level, refine,
 lock, dismantle, skill cards taught), link perks (unlocking at the right ranks, the rank-up toast, a battle Assist, a
 Tartarus perk at an access point, the night kit, a daily perk, Kiriko's MAX Protective Suzu at half SP without the Bell
 branch, searchers' Assists before they join, a reversed link pausing them), Solar's naginatas (stats, refines and bonuses in
-a fight, gifts from bonds, a boss drop), save migration (old battle and life-sim saves), zero console errors, and
+a fight, gifts from bonds, a boss drop), Haechan's six knives (his alone: every equip list, shop and Shuffle draw; art,
+bonuses and refines in a real fight; his starter; the rank-7 gift; the Chariot's drop; shops and chests), save migration (old battle and life-sim saves), zero console errors, and
 screenshots of the new screens at 1000x486, 375x812 and 1440x900."""
 import argparse, base64, json, pathlib, time
 from femc_browser import Page
@@ -339,6 +340,82 @@ try:
         errs = p.console(); ok(not errs, errs)
         print('Boss: naginata drop and Shuffle Time OK', flush=True)
 
+    # ── Haechan's six knives (FEMC-ART-TODO section 5): data, sources, who can hold them, the menu, a real fight ──
+    if want('knives'):
+        setup(p, day='12/12', ranks={'haechan': 6}, mats={'tarot_dust': 400, 'velvet_thread': 12, 'arcana_fragment': 2}, party=['haechan', 'koromaru'])
+        r = p.eval(r"""(async()=>{
+          const B=FemcBuild,D=FEMC_BATTLE_DATA,BS=FemcBattleSave,E=FemcBattleEngine,out={};
+          const ids=['hk_starter','hk_mixdown','hk_widow','hk_harbor','hk_disc','hk_sunlight'];
+          out.gear=ids.map(id=>{const g=D.gear[id];return [id,g.wtype,g.owner,g.tier,!!g.art,!!g.look,g.desc]});
+          // Every card's art decodes, and is the tall shape the weapon slots crop to.
+          out.art=await Promise.all(ids.map(id=>new Promise(res=>{const i=new Image();i.onload=()=>res([id,i.naturalWidth,i.naturalHeight]);i.onerror=()=>res([id,0,0]);i.src=D.gear[id].art;})));
+          out.start=D.startGear.haechan.weapon; out.koroStart=D.startGear.koromaru.weapon;
+          out.fits={h:B.fits(D.gear.hk_widow,'haechan'),k:B.fits(D.gear.hk_widow,'koromaru'),hk0:B.fits(D.gear.knife3,'haechan')};
+          const t=BS.normalize(BS.fresh()); ids.forEach(id=>{t.gear.owned[id]=1}); t.gear.owned.knife3=1;
+          out.cand={h:BS.candidates(t,'haechan','weapon'),k:BS.candidates(t,'koromaru','weapon')};
+          // Koromaru can't be handed one, even by a hand-edited save (the engine falls back to his own weapon).
+          t.gear.eq.koromaru={weapon:'hk_sunlight',armor:'armor0',acc:null}; out.koroGear=E.gearOf?E.gearOf(t,'koromaru').wid:E.buildUnit('koromaru',t).atk;
+          // An old save with Haechan on the plain Combat Knife moves to his own.
+          const old=BS.fromRaw({v:4,lvl:30,gear:{owned:{},eq:{haechan:{weapon:'knife0',armor:'armor1',acc:null},koromaru:{weapon:'knife0',armor:'armor0',acc:null}}}});
+          out.migr=[old.gear.eq.haechan.weapon,old.gear.eq.koromaru.weapon];
+          // Bonuses and refines.
+          const bm=B.unitBonus(t,'haechan','hk_mixdown'), bw=B.unitBonus(t,'haechan','hk_widow'), bs=B.unitBonus(t,'haechan','hk_sunlight');
+          t.mats={tarot_dust:500,velvet_thread:20,arcana_fragment:2}; t.yen=99999; const a0=B.weaponAtk(t,'hk_widow'); B.refineWeapon(t,'hk_widow'); B.refineWeapon(t,'hk_widow');
+          const bw2=B.unitBonus(t,'haechan','hk_widow');
+          out.bonus={th:bm.th,sp:bm.spRegen,crit:bw.crit,critX:bw.critX,light:bs.el.light,a0,a2:B.weaponAtk(t,'hk_widow'),crit2:bw2.crit,starterNoRefine:B.wrefCost(t,'hk_starter')};
+          // Sources: the Police Box (life sim, tier 3), Mayoido, locked chests, the Chariot, the rank-7 gift, Shuffle Time's Swords.
+          FemcGame.S.tartarus.bosses=['priestess','hierophant'];
+          out.police=FemcGame.shopStock('police').filter(x=>/^hk_/.test(x.id)).map(x=>[x.id,x.who,!!x.art]);
+          out.mayoido=D.shops.mayoido.stock.includes('hk_sunlight'); out.chest=D.map.chest.lockedRare.includes('hk_widow'); out.boss=B.BOSS_WEAPON.chariot;
+          const g=BS.normalize(BS.fresh()); out.gift5=B.syncBonds(g,{haechan:6}).length; out.gift7=B.syncBonds(g,{haechan:7}).map(x=>x.gear); out.gift7b=B.syncBonds(g,{haechan:9}).length;
+          const draws=party=>{const s=BS.normalize(BS.fresh()),R=E.rng(5),got=new Set();for(let i=0;i<60;i++){const res=B.applyShuffle(s,{kind:'minor',suit:'swords',rank:9},{R,tier:6,party});if(res.fx.gear)got.add(res.fx.gear);}return [...got]};
+          const without=draws(['solar','akihiko']), withH=draws(['solar','haechan']);
+          out.shuffle={without:without.filter(x=>/^hk_/.test(x)),withH:withH.filter(x=>/^hk_/.test(x)).sort()};
+          out.tag=B.namedTag('hk_disc');
+          out.line=BS.gearLine('hk_widow');
+          return out;})()""")
+        ok([x[0] for x in r['gear']] == ['hk_starter', 'hk_mixdown', 'hk_widow', 'hk_harbor', 'hk_disc', 'hk_sunlight'] and all(x[1] == 'knife' and x[2] == 'haechan' and x[4] and x[5] and x[6] for x in r['gear']), r['gear'])
+        ok(all(w > 200 and h > 500 for _, w, h in r['art']), ('weapon art decodes, tall', r['art']))
+        ok(r['start'] == 'hk_starter' and r['koroStart'] == 'knife0', 'Haechan starts with his own knife; Koromaru keeps the Combat Knife')
+        ok(r['fits'] == {'h': True, 'k': False, 'hk0': True}, r['fits'])
+        ok(set(r['cand']['h']) >= {'hk_starter', 'hk_mixdown', 'hk_widow', 'hk_harbor', 'hk_disc', 'hk_sunlight', 'knife3'} and not any(x.startswith('hk_') for x in r['cand']['k']), r['cand'])
+        ok(r['koroGear'] == 'knife0', ('a hand-edited save cannot arm Koromaru with one', r['koroGear']))
+        ok(r['migr'] == ['hk_starter', 'knife0'], r['migr'])
+        b = r['bonus']
+        ok(b['th'] == 25 and b['sp'] == 3 and b['crit'] == 14 and b['critX'] == 18 and b['light'] == 20 and b['a0'] == 84 and b['a2'] == round(84 * 1.12) and abs(b['crit2'] - 14 * 1.3) < 1e-6 and b['starterNoRefine'] is None, b)
+        ok(r['police'] == [['hk_harbor', 'Haechan', True]], ('the Police Box sells Harbor Watch, for Haechan only', r['police']))
+        ok(r['mayoido'] and r['chest'] and r['boss'] == 'hk_disc', 'Mayoido, locked chests, the Chariot')
+        ok(r['gift5'] == 0 and r['gift7'] == ['hk_mixdown'] and r['gift7b'] == 0, ('Mixdown arrives once, at rank 7', r))
+        ok(r['shuffle']['without'] == [] and set(r['shuffle']['withH']) <= {'hk_harbor', 'hk_widow', 'hk_disc', 'hk_sunlight'} and r['shuffle']['withH'], r['shuffle'])
+        ok(r['tag'] == ' (one of Haechan’s knives!)' and 'Crit +14%' in r['line'], (r['tag'], r['line']))
+        # The menu: the gift arrived with rank 7; Haechan's weapon list has his knives with their art; Koromaru's doesn't.
+        p.eval("(()=>{const G=FemcGame;G.progress('haechan').rank=7;G.save();})()")
+        menu(p, 'equip'); click(p, '[data-eq="haechan"]')
+        ok(p.eval(B + ".gear.owned.hk_mixdown") == 1, 'the rank-7 gift synced into the battle save')
+        ok(p.eval("document.querySelector('[data-slot=weapon] img.g-eq-art').getAttribute('src').includes('weapons/haechan-starter.webp')"), 'his starter is equipped, with art')
+        click(p, '[data-slot="weapon"]')
+        ok(p.eval("!!document.querySelector('[data-pick=hk_mixdown] img.g-eq-art')"), 'Mixdown in his list, with art')
+        click(p, '[data-pick="hk_mixdown"]')
+        ok(p.eval("document.querySelector('[data-slot=weapon] img.g-eq-art').getAttribute('src').includes('weapons/haechan-mixdown.webp')") and p.eval("document.querySelector('[data-slot=weapon] .look').textContent.includes('waveform')"), 'equipped art and look')
+        click(p, '[data-refine="hk_mixdown"]')
+        ok(p.eval(B + ".wref.hk_mixdown") == 1 and p.eval("FemcBattleEngine.buildUnit('haechan',FemcGame.S.battleSave).atk") == round(80 * 1.06), 'refine')
+        for w, h, name in [(1000, 486, '1000x486'), (375, 812, '375x812')]:
+            view(p, w, h); menu(p, 'equip'); click(p, '[data-eq="haechan"]'); click(p, '[data-slot="weapon"]'); no_scroll(p, 'knives ' + name); shot(p, 'knives-equip-' + name)
+        view(p, 1280, 850)
+        click(p, '[data-eq="koromaru"]'); click(p, '[data-slot="weapon"]')
+        ok(not p.eval("[...document.querySelectorAll('[data-pick]')].some(b=>/^hk_/.test(b.dataset.pick))"), 'none in Koromaru\'s list')
+        p.eval("FemcMenu.close()")
+        # A real Tartarus fight: Mixdown's Theurgy charge and SP regen are on Haechan's unit; Koromaru keeps his own knife.
+        night(p, ['haechan', 'koromaru'])
+        p.eval("window.__btGroup=['pesce'];window.__want='shadow';document.querySelector('[data-go=run],[data-go=cont]').click()")
+        drive(p, "FemcBattle.screen()==='battle' && !!FemcBattle.B", 90)
+        u = p.eval("(()=>{const P=FemcBattle.B.party(),h=P.find(x=>x.mid==='haechan'),k=P.find(x=>x.mid==='koromaru');return {th:h.thMult,sp:h.spRegen,atk:h.atk,katk:k.atk}})()")
+        ok(abs(u['th'] - (1 + 25 * 1.15 / 100)) < 1e-6 and u['sp'] >= 3 * 1.15 - 1e-6 and u['atk'] == round(80 * 1.06), u)
+        p.eval("window.__hoStay=false;FemcBattle.hoFinish('retreat')"); p.top(); p.wait("!document.querySelector('.g-dh')", 30)
+        results['knives'] = {'gear': [x[0] for x in r['gear']], 'police': r['police'], 'gift': r['gift7'], 'shuffle': r['shuffle'], 'unit': u}
+        errs = p.console(); ok(not errs, errs)
+        print("Haechan's knives: data, art, owner-only lists, sources, menu, refine, real fight OK", flush=True)
+
     # ── Practice mode still works (its own save; Shuffle Time without the card menu's outcomes) ──
     if want('practice'):
         p.goto(URL)
@@ -374,9 +451,9 @@ try:
         ok(r['eq'] == {'weapon': 'naginata3', 'armor': 'armor2', 'acc': 'power_ring'} and r['mats'] == {'shadow_ash': 4} and r['unit'] == 78, r)
         ok(r['cards'] == {'list': [], 'eq': {}, 'uid': 0} and r['wref'] == {} and r['bonds'] == {} and r['perks'] == {'week': {}, 'pitchDay': -1}, r)
         # A hand-edited / corrupt build section is cleaned, the rest kept.
-        c = p.eval(r"""(()=>{const s=FemcBattleSave.fromRaw({v:4,lvl:20,cards:{list:[{u:3,set:'bell',slot:'crown',r:4,main:'hp',subs:[['st',1],['nope',2]],lvl:2},{u:4,set:'nope',slot:'x',r:9,main:'hp'}],eq:{solar:{crown:3,heart:99},ghost:{crown:3}},uid:1},wref:{nag_ice:9,bogus:2},pboost:{solar:{st:2,zz:1}},bonds:{kiriko:12,x:-1}});
+        c = p.eval(r"""(()=>{const s=FemcBattleSave.fromRaw({v:4,lvl:20,cards:{list:[{u:3,set:'bell',slot:'crown',r:4,main:'hp',subs:[['st',1],['nope',2]],lvl:2},{u:4,set:'nope',slot:'x',r:9,main:'hp'}],eq:{solar:{crown:3,heart:99},ghost:{crown:3}},uid:1},wref:{nag_ice:9,bogus:2},pboost:{solar:{st:2,zz:1}},bonds:{kiriko:16,x:-1}});
           return {n:s.cards.list.length,subs:s.cards.list[0].subs,eq:s.cards.eq,uid:s.cards.uid,wref:s.wref,pboost:s.pboost,bonds:s.bonds}})()""")
-        ok(c['n'] == 1 and c['subs'] == [['st', 1]] and c['eq'] == {'solar': {'crown': 3}} and c['uid'] == 3 and c['wref'] == {'nag_ice': 5} and c['pboost'] == {'solar': {'st': 2}} and c['bonds'] == {'kiriko': 10}, c)
+        ok(c['n'] == 1 and c['subs'] == [['st', 1]] and c['eq'] == {'solar': {'crown': 3}} and c['uid'] == 3 and c['wref'] == {'nag_ice': 5} and c['pboost'] == {'solar': {'st': 2}} and c['bonds'] == {'kiriko': 15}, c)
         results['migration'] = {'old battle save': 'kept', 'corrupt build fields': 'cleaned'}
         errs = p.console(); ok(not errs, errs)
         print('Migration: old saves load with nothing lost; bad build fields cleaned OK', flush=True)

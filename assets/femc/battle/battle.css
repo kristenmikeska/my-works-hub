@@ -1020,12 +1020,25 @@ html.bt-cutin .bt-tip { opacity: 0; pointer-events: none; transition: opacity .1
 .bt-theurgy .th-img, .bt-theurgy .th-bg, .bt-theurgy .th-pl img, .bt-theurgy .th-back img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--fx) var(--fy); }
 /* A still: opens from a diagonal slit, pans and zooms in, punches on impact. */
 .bt-theurgy .th-cut { position: absolute; inset: 0; }
-.bt-theurgy.st-full.kind-cut:not(.has-sheet).f-in .th-final { animation: th-mask calc(380ms / var(--spd)) cubic-bezier(.7, 0, .2, 1) both; }
+.bt-theurgy.st-full:is(.kind-cut, .kind-seq):not(.has-sheet).f-in .th-final { animation: th-mask calc(380ms / var(--spd)) cubic-bezier(.7, 0, .2, 1) both; }
 @keyframes th-mask { from { clip-path: polygon(58% 0, 72% 0, 42% 100%, 28% 100%); } to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); } }
 .bt-theurgy.st-full.f-in .th-img { transform-origin: var(--fx) var(--fy); animation: th-pan calc(3000ms / var(--spd)) cubic-bezier(.15, .7, .3, 1) both; will-change: transform; }
 @keyframes th-pan { from { transform: translateX(6%) scale(1.24); } to { transform: translateX(0) scale(1.05); } }
-.bt-theurgy.st-full.f-hit .th-cut, .bt-theurgy.st-full.f-hit .th-pl.th-lchar { animation: th-punch calc(320ms / var(--spd)) cubic-bezier(.2, 1.4, .4, 1) both; }
+.bt-theurgy.st-full.f-hit .th-cut, .bt-theurgy.st-full.f-hit .th-seq, .bt-theurgy.st-full.f-hit .th-pl.th-lchar { animation: th-punch calc(320ms / var(--spd)) cubic-bezier(.2, 1.4, .4, 1) both; }
 @keyframes th-punch { from { transform: scale(1.06); } }
+/* A sequence (battle.js playSeq): stacked panels, each crossfading in over the last with its own slow zoom and pan around
+   its focus (--fx/--fy per panel; --px/--py where the drift starts). The name waits for the strike panel (q-hit), the
+   lines for the last one (q-last). */
+.bt-theurgy .th-seq { position: absolute; inset: 0; }
+.bt-theurgy .th-sf { position: absolute; inset: 0; overflow: hidden; opacity: 0; }
+.bt-theurgy .th-sf img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--fx) var(--fy); transform-origin: var(--fx) var(--fy); }
+.bt-theurgy .th-sf.go { opacity: 1; animation: th-xfade calc(300ms / var(--spd)) ease-out both; }
+.bt-theurgy .th-sf[data-i="0"].go { animation: none; } /* the first panel comes in on the diagonal mask */
+.bt-theurgy .th-sf.go img { animation: th-kb calc(1500ms / var(--spd)) cubic-bezier(.25, .6, .35, 1) both; will-change: transform; }
+.bt-theurgy .th-sf.last.go img { animation-duration: calc(3400ms / var(--spd)); }
+@keyframes th-xfade { from { opacity: 0; } }
+@keyframes th-kb { from { transform: translate(var(--px), var(--py)) scale(1.03); } to { transform: translate(0, 0) scale(1.1); } }
+.bt-theurgy.kind-seq.st-full:not(.q-hit) .th-name, .bt-theurgy.kind-seq.st-full:not(.q-last) .th-line { animation: none; opacity: 0; }
 /* Layers: the bg sweeps in, the Persona rises and scales up behind, the character slides in from the side. */
 .bt-theurgy .th-pl { position: absolute; inset: 0; transform: translate(var(--x), var(--y)) scale(var(--s)); }
 .bt-theurgy.st-full.kind-layers.f-in .th-bg { animation: th-bgin calc(520ms / var(--spd)) cubic-bezier(.7, 0, .2, 1) both, th-drift calc(3200ms / var(--spd)) linear both; transform-origin: var(--fx) var(--fy); will-change: transform; }
@@ -2307,9 +2320,11 @@ html.bt-perf .bt-enemy.lantern .ln-win { animation: none; }
 /* Bond cut-ins on phones: a still shows two faces side by side, so the band is wider (taller) than the Theurgy one and
    the pan barely zooms; with the bond's focus both faces stay whole on a 375px screen. */
 @media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
-  .bt-bond.kind-cut.st-full .th-stage, .bt-bond.kind-cut.st-fade .th-stage { top: 11%; height: min(52vh, 106vw); clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%); }
+  .bt-bond:is(.kind-cut, .kind-seq).st-full .th-stage, .bt-bond.kind-cut.st-fade .th-stage { top: 11%; height: min(52vh, 106vw); clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%); }
   .bt-bond.kind-cut.st-full.f-in .th-img { animation-name: th-pan-duo; }
+  .bt-theurgy .th-sf.go img { animation-name: th-kb-duo; } /* a band this narrow only has room for a gentle zoom */
   .bt-bond.kind-cut.st-short .th-stage { top: 18%; height: min(46vh, 96vw); }
   .bt-bond.kind-cut.st-short .th-img { transform: none; }
 }
 @keyframes th-pan-duo { from { transform: translateX(2%) scale(1.07); } to { transform: none; } }
+@keyframes th-kb-duo { from { transform: translate(calc(var(--px) * .6), var(--py)) scale(1); } to { transform: translate(0, 0) scale(1.05); } }
