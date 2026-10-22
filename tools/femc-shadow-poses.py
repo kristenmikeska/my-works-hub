@@ -95,7 +95,8 @@ def spread(sheet):
 BOSSES={'priestess-attack.png':'priestess-shadow','empress-attack.png':'empress-shadow','emperor-attack.png':'emperor-shadow',
  'hierophant-attack.png':'hierophant-shadow','lovers-attack.png':'lovers-shadow','chariot-attack.png':'chariot-shadow',
  'hermit-attack.png':'hermit-shadow','fortune-attack.png':'fortune-shadow','strength-attack.png':'strength-shadow',
- 'hangedman-attack.png':'hanged-man-shadow','wrensshadow-attack.png':'wren-shadow-last-train'}
+ 'hangedman-attack.png':'hanged-man-shadow','wrensshadow-attack.png':'wren-shadow-last-train',
+ 'justice-attack.png':'justice-shadow'}
 BOSS_STATES={'attack':[1,2],'cast':[1,3],'hurt':[4],'down':[5],'defeat':[5]}
 # Fighters: 0 idle (the stance), 1 Evoker raised, 2 weapon attack, 3 spell, 4 hurt, 5 victory.
 FIGHTERS=['solar','akihiko','yukari','junpei','mitsuru','aigis','koromaru','shinjiro','haechan','jungwon','jihoon','minji']
@@ -111,6 +112,9 @@ GLOW={'hermit-attack.png':0.78,'fortune-attack.png':0.8}
 # opacity, only in the spell cell and outside the body (dark art, holes filled, grown a little), for pixels whose
 # darkest channel is above this.
 AURA={'akihiko-posesheet.png':0.82,'shinjiro-posesheet.png':0.8}
+# Bosses whose spell cell (bottom left) has a saturated golden glow but whose body is silver: AURA's rule with GLOW's
+# luminance test (a yellow glow's darkest channel is low). Justice (2026-10-21): sheet-wide GLOW thinned its helm.
+SPELL_GLOW={'justice-attack.png':0.8}
 HOLES.update({'hermit-attack.png':0.85,'solar-posesheet.png':0.8,'yukari-posesheet.png':0.8,'akihiko-posesheet.png':0.62})
 
 # Thin paper-white gaps between hair strands or inside a bow that Vision fills and white_holes misses (it opens away
@@ -189,13 +193,14 @@ def white_frames(src,rim=False):
   h=gaps(src,GAPS[src.name]);a[...,3]*=~h
  if src.name in STRANDS:
   TH.strands(src,a,*STRANDS[src.name])
- if src.name in AURA:
+ if src.name in AURA or src.name in SPELL_GLOW:
   rgb=np.asarray(Image.open(src).convert('RGB'),np.float32)/255;minc=rgb.min(2)
   lab,n=ndimage.label(ndimage.binary_closing((minc<0.6)&(a[...,3]>0.5),iterations=3));sizes=np.bincount(lab.ravel());sizes[0]=0
   body=ndimage.binary_dilation(ndimage.binary_fill_holes(np.isin(lab,np.nonzero(sizes>20000)[0])),iterations=8)
   aw=np.clip((1-minc-0.02)/0.98,0,1);unmixed=np.clip((rgb-(1-aw[...,None]))/np.maximum(aw,1e-3)[...,None],0,1)
   H,W=minc.shape;spell=np.zeros_like(body);spell[H//2:,:W//3]=True
-  t=np.clip((minc-AURA[src.name])/0.06,0,1)*(~body&spell)
+  if src.name in SPELL_GLOW:t=np.clip((.299*rgb[...,0]+.587*rgb[...,1]+.114*rgb[...,2]-SPELL_GLOW[src.name])/0.08,0,1)*(~body&spell)
+  else:t=np.clip((minc-AURA[src.name])/0.06,0,1)*(~body&spell)
   a[...,3]=a[...,3]*(1-t)+aw*t;a[...,:3]=a[...,:3]*(1-t[...,None])+unmixed*t[...,None]
  if src.name in GLOW:
   rgb=np.asarray(Image.open(src).convert('RGB'),np.float32)/255;minc=rgb.min(2);lum=.299*rgb[...,0]+.587*rgb[...,1]+.114*rgb[...,2]

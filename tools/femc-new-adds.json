@@ -2937,6 +2937,197 @@
       ],
       "status": "integrated",
       "sourceNow": "Added to Game/minji-posesheet.png"
+    },
+    {
+      "batch": 20,
+      "source": "solar-akihiko-bond.png",
+      "sha256": "58fd190622ec94f4f3c72620ee542dbc6de1fa6072f46a77a4593b6518b26193",
+      "size": [
+        1672,
+        940
+      ],
+      "character": "solar + akihiko",
+      "intendedUse": "Bond cut-in still (all versions: Daybreak One-Two, Thunder at Dawn, Sunrise Cadenza)",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "bonds.js akihiko: bond-level img: regular tiers and the romance version (side-by-side combat art; not romance-specific), focus [55, 24]; battle.js bondCut kind-cut (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/bond-akihiko.webp",
+      "outputSha256": "f3de52fe19c9328fe570b6685a31d1468cf8e4e1d5fc3970618c1680ec2614aa",
+      "mobileFocus": [
+        55,
+        24
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/solar-akihiko-bond.png"
+    },
+    {
+      "batch": 20,
+      "source": "solar-jihoon-bond.png",
+      "sha256": "afc4db88fdf238779a4e0a8e6b6f4d169ecbf5743cd8b5c5ea430a7410e0273f",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "solar + jihoon",
+      "intendedUse": "Bond cut-in still (all versions: Star Power, Supernova, Royal Pair)",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "bonds.js jihoon: bond-level img: regular tiers and the romance version (side-by-side combat art; not romance-specific), focus [59, 23]; battle.js bondCut kind-cut (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/bond-jihoon.webp",
+      "outputSha256": "cd3378ad75c656a27fcdccf89a0a302231c524ace2dcf432fde48d041900b869",
+      "mobileFocus": [
+        59,
+        23
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/solar-jihoon-bond.png"
+    },
+    {
+      "batch": 20,
+      "source": "solar-minji-bond.png",
+      "sha256": "82ce08e32e65a77ff9126319fae3b8a3e4bd12296c1ac8a8dbca6edeeb6b0f3b",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "solar + minji",
+      "intendedUse": "Bond cut-in still (all versions: Two-Shot, Long Take, Keep This One)",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "bonds.js minji: bond-level img: regular tiers and the romance version (side-by-side combat art; not romance-specific), focus [51, 23]; battle.js bondCut kind-cut (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/bond-minji.webp",
+      "outputSha256": "8ffdc3608a202b62fe49fd2c90aaa66108e05d06d737ed6f9b3320b0d20ca321",
+      "mobileFocus": [
+        51,
+        23
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/solar-minji-bond.png"
+    },
+    {
+      "batch": 20,
+      "source": "solar-haechan-bond.png",
+      "sha256": "75f201c7a5aa4a1dc3a1684480f0af2f4991652969e59623a9482b62431e0465",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "solar + haechan",
+      "intendedUse": "Bond cut-in still, regular bond (Sun and Moon, Eclipse)",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "bonds.js haechan: bond-level img (Kat: side-by-side art is the regular bond, all tiers), focus [61, 27]; battle.js bondCut kind-cut (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/bond-haechan.webp",
+      "outputSha256": "e1dd5fa1d3e0083f7ff15d33753c7fa508d459f8239d6cbe9ea05e83049b0634",
+      "mobileFocus": [
+        61,
+        27
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/solar-haechan-bond.png"
+    },
+    {
+      "batch": 20,
+      "source": "solar-haechan-bond-ver2.png",
+      "sha256": "7b641b32807d32b13d3a3ca8d5b5d4581ce911ce992d259732266f1ef729f172",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "solar + haechan",
+      "intendedUse": "Bond cut-in still, romance version (Corona)",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "bonds.js haechan: love.img (Kat: close and smiling art is the romance version), focus [55, 25]; battle.js bondCut kind-cut (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/bond-haechan-love.webp",
+      "outputSha256": "f26ed52ff901c80a4fc3b5bd5141b9ef059e945758df90704dc2bec05992f6ee",
+      "mobileFocus": [
+        55,
+        25
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/solar-haechan-bond-ver2.png"
+    },
+    {
+      "batch": 20,
+      "source": "solar-jungwon-bond.png",
+      "sha256": "057be51b4493f657511e90efcdbbfdebb4316a9c55f61ca23252425634a871a7",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "solar + jungwon",
+      "intendedUse": "Bond cut-in still, regular bond (Jade Frost, Winter Jade)",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "bonds.js jungwon: bond-level img (Kat: side-by-side art is the regular bond, all tiers), focus [60, 22]; battle.js bondCut kind-cut (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/bond-jungwon.webp",
+      "outputSha256": "90834d59b3ff056bbd0eb440a255aa5c4b2a96933fa697f2efe8d632a1bfefa0",
+      "mobileFocus": [
+        60,
+        22
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/solar-jungwon-bond.png"
+    },
+    {
+      "batch": 20,
+      "source": "solar-jungwon-bond-ver2.png",
+      "sha256": "d990b412825b5acd193f4e4ff2ab011220881196a0b5fd179e59106f43aaced2",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "solar + jungwon",
+      "intendedUse": "Bond cut-in still, romance version (Jade Ring)",
+      "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
+      "placement": "bonds.js jungwon: love.img (Kat: close and smiling art is the romance version), focus [57, 27]; battle.js bondCut kind-cut (diagonal mask, pan/zoom, light sweep, impact)",
+      "destination": "assets/femc/battle/art/theurgy/bond-jungwon-love.webp",
+      "outputSha256": "c58ffa0af6d8163116ed5929f6bae8dc50f87131ae20948fff6adb1a52582117",
+      "mobileFocus": [
+        57,
+        27
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/solar-jungwon-bond-ver2.png"
+    },
+    {
+      "batch": 20,
+      "source": "justice-attack.png",
+      "sha256": "f9de93536d096d4cced951b9635ca0067342cc526d3e39502b05806ec5befa3a",
+      "size": [
+        1536,
+        1024
+      ],
+      "character": "Arcana Justice (the winged helm on a cannon; the Chariot fight's second Shadow)",
+      "intendedUse": "Full-moon boss pose sheet: idle, wind-up, attack, cast (holy light), hurt, down",
+      "conversion": "tools/femc-shadow-poses.py (white sheets): keyed with tools/femc-theurgy.py key(), default hole punch (wing gaps), new SPELL_GLOW rule (the spell cell's golden glow un-mixed outside the body; sheet-wide GLOW thinned the silver helm), six 3x2 grid figures on one fixed canvas, WebP q90; the same thin dark rim as the static Shadow art",
+      "placement": "battle.js Shadow pose controller via art/shadows/index.js 'justice-shadow'.poses (enemy justice, Chariot operation): attack = wind-up, attack; cast = wind-up, cast; hurt; down; defeat = down frame. Idle figure kept at data.js h 260; the static justice-shadow.webp stays",
+      "destination": [
+        "assets/femc/battle/art/shadows/justice-shadow-pose-0.webp",
+        "assets/femc/battle/art/shadows/justice-shadow-pose-1.webp",
+        "assets/femc/battle/art/shadows/justice-shadow-pose-2.webp",
+        "assets/femc/battle/art/shadows/justice-shadow-pose-3.webp",
+        "assets/femc/battle/art/shadows/justice-shadow-pose-4.webp",
+        "assets/femc/battle/art/shadows/justice-shadow-pose-5.webp"
+      ],
+      "outputSha256": [
+        "7d9cfe60f414f0ac7697e2fb41866b1c178ab85d7ee7541b7b12219cceb7618f",
+        "02559c57e775b2c73ad95ac19496f8769cec2eefa03d81f73c1d095bb40879b5",
+        "70e5fad4a179560bdefa35104047e08337486840b83721ad039c041e8def2204",
+        "8e26ddc8e2950a2217ee6e80bb3d8cd7c3eddffeef7d6b54da671ac403d67e6f",
+        "cd64bfedd70655eb65d5a74d4849d025d7dd256157d27ac823a978fe5f7fb0ee",
+        "48dfeac2f8507c7733878bec6edd26e0f329dfa7431f56fbe125c40492a08add"
+      ],
+      "status": "integrated",
+      "sourceNow": "Added to Game/justice-attack.png"
+    },
+    {
+      "batch": 20,
+      "source": "solar-haechan-bond-ver3.png",
+      "sha256": "51e5d4f0c2c146624d1b413d99abb2946c1c45e657d02162a63d865ac8d13d91",
+      "size": [
+        1672,
+        941
+      ],
+      "character": "solar + haechan",
+      "intendedUse": "Bond cut-in still (alternate)",
+      "status": "skipped",
+      "skipNote": "Kat (2026-10-21): not used; on hold, left in New Adds"
     }
   ],
   "batch1Validation": {
@@ -3199,5 +3390,21 @@
       "ken (no fighter sheet yet)",
       "justice (no boss sheet)"
     ]
+  },
+  "batch20Validation": {
+    "date": "2026-10-21",
+    "scope": "Bond cut-in stills (Akihiko, Haechan, Jungwon, Jihoon, Minji; romance stills for Haechan and Jungwon) and the Justice pose sheet",
+    "sourcesInspected": "all 9 viewed before wiring: the seven bond stills show Solar with the right partner and weapon; the Akihiko, Jihoon and Minji stills are side-by-side combat art, so one still serves every version; justice-attack.png matches justice-shadow.webp in six poses",
+    "sourcesIntegrated": 8,
+    "sourcesSkipped": [
+      "solar-haechan-bond-ver3.png (Kat: unused, on hold)"
+    ],
+    "sourcesUnchanged": true,
+    "phoneFraming": "focus set from a crop model of the 375x812 cut-in band (about 39% of the still's width visible): Akihiko, Jungwon and both romance stills keep both faces; the regular Haechan, Jihoon and Minji stills place the two faces wider apart than the band, so the focus centres them and each face's outer edge is trimmed on phones",
+    "tests": [
+      "python3 tests/femc_bonds.py --only art,shots",
+      "python3 tests/femc_shadow_poses.py --shots chariot (Justice: attack, cast, hurt, down, defeat, canvas in the Chariot operation)"
+    ],
+    "browserErrors": 0
   }
 }

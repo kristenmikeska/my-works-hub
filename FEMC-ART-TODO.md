@@ -43,7 +43,7 @@ Save each as `solar-<form>-strikesheet.png` in New Adds.
 
 ## 3. Battle pose sheets: make bosses and fighters move ⭐
 
-**Done (2026-10-21):** all 11 full-moon boss sheets (the Last Train too) and 12 fighter sheets are in the game; bosses and fighters now animate in battle. Two are left.
+**Done (2026-10-21):** all 11 full-moon boss sheets (the Last Train too), Justice's sheet and 12 fighter sheets are in the game; bosses and fighters now animate in battle. Nothing is left (Ken is skipped).
 
 **What this is.** A pose sheet is **one image with 6 drawings of the same character in a grid**. I cut it into 6 pictures, and the game flips between them during battle, so the character looks animated.
 
@@ -63,7 +63,7 @@ Character pose sheet: 3 columns × 2 rows on a plain white background, with clea
 
 | ✓ | Boss | Attach this file | [ELEMENT] |
 |---|---|---|---|
-| ☐ | Justice | `justice-shadow.webp` | holy light and lightning |
+| ✓ | Justice | `justice-shadow.webp` | holy light and lightning |
 
 The Chariot sheet is the Chariot alone; Justice is its own Shadow in that fight, so it needs its own sheet.
 
@@ -82,15 +82,17 @@ All done. Ken is skipped (Kat's call: she won't use him), so he keeps no battlef
 ```
 Create a NEW 16:9 combo-attack cut-in matching the FIRST attached image's art style: Persona 3 Reload official art, cel shading, a bold diagonal layout, speed lines. Solar (second image: very long straight black hair, black Gekkoukan uniform, red bow, red S.E.E.S. armband) and [NAME] (third image) attack together side by side, mid-strike: her naginata and their [WEAPON], with [EFFECT], their two colors swirling together. Both confident. Keep both faces and outfits exactly. No text.
 ```
-- [ ] **Akihiko:** boxing gloves; lightning and sunrise gold; back to back
-- [ ] **Haechan:** knife; violet moonlight and sun gold; he's relaxed and she's fierce
-- [ ] **Jungwon:** rapier; ice and a jade glow; calm and precise
-- [ ] **Jihoon:** fists; wind and pink star sparks; a smug grin
-- [ ] **Minji:** bow; a camera flash freezing the moment as Solar strikes
+- [x] **Akihiko:** boxing gloves; lightning and sunrise gold; back to back
+- [x] **Haechan:** knife; violet moonlight and sun gold; he's relaxed and she's fierce
+- [x] **Jungwon:** rapier; ice and a jade glow; calm and precise
+- [x] **Jihoon:** fists; wind and pink star sparks; a smug grin
+- [x] **Minji:** bow; a camera flash freezing the moment as Solar strikes
 - [ ] **Shinjiro:** axe; dark red force; a single gruff nod, the weapons crossing
 - [ ] *(Optional)* Yukari, Junpei, Mitsuru, Aigis, Koromaru
 
 **Status (2026-10-21):** the bond skills are in the game with a stylized cut-in made from both portraits and Personas, so nothing waits on this art. The romance versions (on that route) can have their own art too.
+
+**Done (2026-10-21):** Akihiko, Haechan, Jungwon, Jihoon and Minji have their art (`art/theurgy/bond-*.webp`). Haechan and Jungwon have two: the side-by-side one for the regular bond, the close, smiling one (`ver2`) for the romance version. Akihiko, Jihoon and Minji use one still for every version. `solar-haechan-bond-ver3.png` is unused (on hold; it stays in New Adds). Still open: Shinjiro and the optional S.E.E.S. ones.
 
 
 ---

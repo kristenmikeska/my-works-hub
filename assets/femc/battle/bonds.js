@@ -23,9 +23,12 @@ window.FemcBonds = (() => {
   if (!D) return null;
   const S = (el, power, o = {}) => Object.assign({ by: 'solar', el, power }, o);
   const P = (el, power, o = {}) => Object.assign({ by: 'partner', el, power }, o);
+  /* Kat's bond stills (tools/femc-theurgy.py cutin; BUILD lists the sources). battle.js doesn't version bond art, so the ?v= is
+     here: bump it with ART_V when a still changes. focus: between the two faces, set so both stay in the phone band. */
+  const BA = slug => `assets/femc/battle/art/theurgy/${slug}.webp?v=17`;
   const BONDS = [
     // ── Romances: special combos, and a special version on the romance route
-    { id: 'akihiko', partner: 'akihiko', romance: true, loveFace: 'blushing', look: ['elec', 'sun'], colors: ['#ff4f9e', '#ff9a3d'],
+    { id: 'akihiko', partner: 'akihiko', romance: true, loveFace: 'blushing', img: BA('bond-akihiko'), focus: [55, 24], look: ['elec', 'sun'], colors: ['#ff4f9e', '#ff9a3d'],
       tiers: [
         { rank: 5, name: 'Daybreak One-Two', sp: 12, target: 'one', steps: [P('elec', 46, { multi: [2, 2], ail: { id: 'shock', chance: 0.2 } }), S('light', 64, { down: 0.3 })],
           line: ['On three. One—', '—two. Keep up.'], desc: 'Akihiko’s lightning jabs, then Solar’s sunrise on the same foe. May Shock it.' },
@@ -41,23 +44,23 @@ window.FemcBonds = (() => {
           line: ['Don’t get in front of me.', 'Then don’t make me.'], desc: 'A colossal charge at one foe, then light on every foe; the party heals.' }],
       love: { rank: 9, name: 'Warm Hands', sp: 14, target: 'one', steps: [P('strike', 160, { crit: 25 }), S('light', 60, { target: 'all' })], after: { heal: 0.25, cure: true },
         line: ['Stay behind me. …Please.', 'Just this once.'], desc: 'Their own combination. A colossal charge, light on every foe, and the party heals and is cured.' } },
-    { id: 'haechan', partner: 'haechan', romance: true, loveFace: 'flustered', look: ['elec', 'sun'], colors: ['#ff4f9e', '#ff9a3d'],
+    { id: 'haechan', partner: 'haechan', romance: true, loveFace: 'flustered', img: BA('bond-haechan'), focus: [61, 27], look: ['elec', 'sun'], colors: ['#ff4f9e', '#ff9a3d'],
       tiers: [
         { rank: 5, name: 'Sun and Moon', sp: 14, target: 'all', steps: [P('elec', 44, { ail: { id: 'shock', chance: 0.15 } }), S('light', 52)],
           line: ['Keep up, princess.', 'Keep up yourself.'], desc: 'Dalnim’s static and Haenim’s light on every foe. May Shock.' },
         { rank: 9, name: 'Eclipse', sp: 18, target: 'all', steps: [P('dark', 40), P('elec', 40, { ail: { id: 'shock', chance: 0.2 } }), S('light', 66, { down: 0.35 })], after: { buffs: ['atk'] },
           line: ['Don’t look directly at it.', 'Too late.'], desc: 'Moon, then static, then the sun, on every foe; the party’s attack rises.' }],
-      love: { rank: 9, name: 'Corona', sp: 18, target: 'all', steps: [P('dark', 44, { ail: { id: 'fear', chance: 0.2 } }), P('elec', 48, { ail: { id: 'shock', chance: 0.25 } }), S('light', 76, { down: 0.45 })], after: { buffs: ['atk', 'agi'], th: 10 },
+      love: { rank: 9, name: 'Corona', img: BA('bond-haechan-love'), focus: [55, 25], sp: 18, target: 'all', steps: [P('dark', 44, { ail: { id: 'fear', chance: 0.2 } }), P('elec', 48, { ail: { id: 'shock', chance: 0.25 } }), S('light', 76, { down: 0.45 })], after: { buffs: ['atk', 'agi'], th: 10 },
         line: ['You and me. Every sky.', 'Show-off.'], desc: 'Their own combination: the light around an eclipse. Heavy damage to every foe; the party gets stronger and faster, and both Theurgy gauges fill a little.' } },
-    { id: 'jungwon', partner: 'jungwon', romance: true, loveFace: 'flustered', look: ['ice', 'jade'], colors: ['#ff4f9e', '#9fe8ff'],
+    { id: 'jungwon', partner: 'jungwon', romance: true, loveFace: 'flustered', img: BA('bond-jungwon'), focus: [60, 22], look: ['ice', 'jade'], colors: ['#ff4f9e', '#9fe8ff'],
       tiers: [
         { rank: 5, name: 'Jade Frost', sp: 12, target: 'one', steps: [P('ice', 60, { ail: { id: 'freeze', chance: 0.2 } }), S('strike', 56, { ail: { id: 'bind', chance: 0.3, rope: true } })],
           line: ['After you.', 'Together, Jungwon.'], desc: 'Hyeonmu’s frost, then the golden rope. Heavy damage to one foe; may Freeze or Bind it.' },
         { rank: 9, name: 'Winter Jade', sp: 16, target: 'all', steps: [P('ice', 58, { ail: { id: 'freeze', chance: 0.25 } }), S('light', 48)], after: { debuffs: ['def'] },
           line: ['Shall we?', 'We shall.'], desc: 'Ice and light on every foe; every foe’s defense drops.' }],
-      love: { rank: 9, name: 'Jade Ring', sp: 16, target: 'all', steps: [P('ice', 64, { ail: { id: 'freeze', chance: 0.3 } }), S('light', 60)], after: { debuffs: ['def'], ward: 'solar' },
+      love: { rank: 9, name: 'Jade Ring', img: BA('bond-jungwon-love'), focus: [57, 27], sp: 16, target: 'all', steps: [P('ice', 64, { ail: { id: 'freeze', chance: 0.3 } }), S('light', 60)], after: { debuffs: ['def'], ward: 'solar' },
         line: ['Please stay where I can see you.', 'Formal, even now?'], desc: 'Their own combination. Ice and light on every foe, their defense drops, and the tortoise’s shell closes over Solar: nothing hurts her until her next turn.' } },
-    { id: 'jihoon', partner: 'jihoon', romance: true, loveFace: 'happy-2', look: ['wind', 'star'], colors: ['#ff4f9e', '#7dd3ff'],
+    { id: 'jihoon', partner: 'jihoon', romance: true, loveFace: 'happy-2', img: BA('bond-jihoon'), focus: [59, 23], look: ['wind', 'star'], colors: ['#ff4f9e', '#7dd3ff'],
       tiers: [
         { rank: 5, name: 'Star Power', sp: 14, target: 'all', steps: [P('wind', 46), S('almighty', 40)], after: { buffs: ['atk'] },
           line: ['Behold. Me. And Sol.', 'Mostly Sol.'], desc: 'Dokkaebi’s gale and Nike’s star on every foe; the party’s attack rises.' },
@@ -65,7 +68,7 @@ window.FemcBonds = (() => {
           line: ['Everybody watch. Everybody.', 'They’re watching, Jihoon.'], desc: 'A bigger gale and a brighter star; the party’s attack and defense rise.' }],
       love: { rank: 9, name: 'Royal Pair', sp: 18, target: 'all', steps: [P('wind', 66), S('almighty', 64)], after: { buffs: ['atk', 'def', 'agi'], th: 10 },
         line: ['Bow, peasants. To both of us.', 'Do NOT include me in this.'], desc: 'Their own combination. Wind and star on every foe; the party’s attack, defense and agility rise, and both Theurgy gauges fill a little.' } },
-    { id: 'minji', partner: 'minji', romance: true, loveFace: 'flustered', look: ['light', 'sun'], colors: ['#ff4f9e', '#ffe6a8'],
+    { id: 'minji', partner: 'minji', romance: true, loveFace: 'flustered', img: BA('bond-minji'), focus: [51, 23], look: ['light', 'sun'], colors: ['#ff4f9e', '#ffe6a8'],
       tiers: [
         { rank: 5, name: 'Two-Shot', sp: 12, target: 'one', steps: [P('pierce', 34, { multi: [2, 2], crit: 10 }), S('light', 60)],
           line: ['I’ve got you in frame.', 'Then roll.'], desc: 'Two arrows from Theia and Solar’s light, all on one foe.' },

@@ -273,6 +273,11 @@ BUILD = [
     ('sheet', 'junpei-strikesheet.png', 'junpei-strike'), ('sheet', 'mitsuru-strikesheet.png', 'mitsuru-strike'),
     ('sheet', 'aigis-strikesheet.png', 'aigis-strike'), ('sheet', 'ken-strikesheet.png', 'ken-strike'),
     ('sheet', 'koromaru-strikesheet.png', 'koromaru-strike'), ('sheet', 'shinjiro-strikesheet.png', 'shinjiro-strike'),
+    # Bond cut-in stills (bonds.js; 2026-10-21). `-love` is the romance version's own still.
+    ('cutin', 'solar-akihiko-bond.png', 'bond-akihiko'), ('cutin', 'solar-jihoon-bond.png', 'bond-jihoon'),
+    ('cutin', 'solar-minji-bond.png', 'bond-minji'),
+    ('cutin', 'solar-haechan-bond.png', 'bond-haechan'), ('cutin', 'solar-haechan-bond-ver2.png', 'bond-haechan-love'),
+    ('cutin', 'solar-jungwon-bond.png', 'bond-jungwon'), ('cutin', 'solar-jungwon-bond-ver2.png', 'bond-jungwon-love'),
 ]
 
 

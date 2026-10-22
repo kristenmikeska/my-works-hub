@@ -447,9 +447,39 @@ window.FEMC_SHADOW_ART = {
   "w": 526
  },
  "justice-shadow": {
-  "h": 484,
+  "h": 542,
+  "poses": {
+   "frames": [
+    "justice-shadow-pose-0",
+    "justice-shadow-pose-1",
+    "justice-shadow-pose-2",
+    "justice-shadow-pose-3",
+    "justice-shadow-pose-4",
+    "justice-shadow-pose-5"
+   ],
+   "scale": 1.1084,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
   "small": false,
-  "w": 540
+  "w": 634
  },
  "kaguya": {
   "h": 295,
