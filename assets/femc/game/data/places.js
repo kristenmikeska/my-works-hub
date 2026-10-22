@@ -236,7 +236,7 @@ window.FEMC_GAME_PLACES = {
     ['Iwatodai · Riverside', 'park-2', 'iwatodai-riverside-night'],
     ['Hagakure', 'hagakure-ramen'],
     ['Tutor', 'green-bedroom'],
-    ['Paulownia Mall · Chagall Café', 'lablanc'],
+    ['Paulownia Mall · Chagall Café', 'chagall-cafe-inside', 'chagall-cafe-inside'],
     ['Paulownia Mall · Fountain', 'paulownia-mall'],
     ['Paulownia Mall · Shop Windows', 'clothing-store'],
     ['Paulownia Mall · Flower Stall', 'paulownia-flower-shop'],
@@ -268,7 +268,7 @@ window.FEMC_GAME_PLACES = {
     ['Tatsumi Memorial Hospital', 'hospital-hallway-day', 'hospital-hallway-night'],
     ['Moonlight Bridge', 'moonlightbridge', null, 'nightblue'],
     ['Naganaki Shrine · Night', 'naganaki-shrine-night'],
-    ['Naganaki Shrine · Amulet Stall', 'outside-shrine-day', 'naganaki-shrine-night'],
+    ['Naganaki Shrine · Amulet Stall', 'naganaki-amulet-stall', 'naganaki-amulet-stall'],
     ['Naganaki Shrine', 'outside-shrine-day', 'naganaki-shrine-night'],
     // Yakushima (data/yakushima.js). The terrace dinner (7/21 evening) sets its own bg.
     ['Yakushima · Villa Balcony', 'yakushima-villa-balcony', 'yakushima-villa-balcony'],
@@ -277,8 +277,15 @@ window.FEMC_GAME_PLACES = {
     ['Yakushima · Ferry', 'yakushima-ferry'],
     ['Yakushima', 'yakushima-beach']
   ],
+  /* Seasonal day art: wherever a scene's day background is one of these (a rule's or a scene's own bg), the month picks
+     the version: [first month, image] pairs, the latest one not after this month (January and February wrap to the last).
+     core.js background(); evening images and other backgrounds are unchanged. */
+  seasons: {
+    'outside-shrine-day': [[3, 'naganaki-shrine-spring'], [6, 'naganaki-shrine-summer'], [10, 'naganaki-shrine-autumn'], [12, 'naganaki-shrine-winter']]
+  },
   /* CG focus: which part of each CG (assets/femc/cg) to keep in view when a tall, narrow window has to crop it. */
   cgFocus: {
+    'story-birthday-surprise': '38% 45%',
     'prologue-waking-in-tartarus': '24% 70%', 'prologue-akihiko-finds-solar': '42% 55%', 'prologue-first-night-dorm': '55% 45%',
     'prologue-elizabeth-blank-page': '58% 45%', 'prologue-first-day-gekkoukan': '24% 40%',
     'searchers-jihoon-arrives': '35% 35%', 'searchers-yunjin-low-tide': '65% 45%',

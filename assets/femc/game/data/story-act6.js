@@ -280,6 +280,7 @@
   ] },
 
   { id: 'a6-new-year', date: '1/1', slot: 'after', flag: 'year-goes-on', title: 'a blank fortune', place: 'Naganaki Shrine', time: 'Daytime', scene: [
+    { bg: 'naganaki-shrine-newyear' },
     { music: 'joy' },
     { n: "The whole impossible household went to Naganaki Shrine on New Year's Day, which meant a crowd of twenty-odd people in coats coming up the shrine steps at once, half of them in borrowed yukata over their sweaters because Hyein had found a rental shop, and the old women selling amazake by the gate stopping to stare." },
     { n: "Everyone threw coins. Everyone clapped twice. Jihoon threw a five-hundred-yen coin and announced it was an investment. Cherry said the gods could see through him. Junpei made a wish out loud by accident and then had to throw another coin to cancel it." },

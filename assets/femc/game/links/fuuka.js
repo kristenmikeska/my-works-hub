@@ -75,6 +75,7 @@
   ],
   ranks: [
     { after: '6/15', title: '1: attempt one', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'dorm', scene: [
+      { bg: 'iwatodaidorm-kitchen-night-cake' },
       { n: "It had been raining for nine days, the soft relentless June rain that didn't so much stop as change its mind about how hard to fall, and the dorm smelled of it, of wet umbrellas in the stand by the door and somebody's socks drying on the radiator and, tonight, faintly and then not faintly at all, of something burning." },
       { n: "Solar followed it down the stairs the way she followed most things, quietly, counting doors, and found the kitchen lit up like an operating theater and Fuuka Yamagishi standing in the middle of it in an apron two sizes too big, holding a baking tray out at arm's length in both oven mitts as if it might go off." },
       { n: "On the tray were twelve small black discs, arranged in a perfect grid, three by four, the spacing so even that someone had very probably used a ruler. They had been cookies. They had been cookies with enormous care." },

@@ -4827,6 +4827,183 @@
         "yukari-4.webp": "a27b5cd4861776c556afdead572e064ecf7ea1811118dd4d9a489d202b8771ca",
         "yukari-5.webp": "07d4ccb9687c32d6172d274cc3295cf42f5fce4706a9282827aac221f67f1cf2"
       }
+    },
+    {
+      "batch": 29,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/botanical-garden-greenhouse.webp",
+      "outputSha256": "7c3a65a90f26a1fa3de5c17aa1661dd3cfdd8b736a58626d676974dfb24d2d04",
+      "scene": "Haru's 9/23 holiday (living-persona.js): a { bg } step once they step inside the greenhouse; the opening keeps the garden (park)",
+      "sha256": "b0b7892820d648644a16bebf9906ded35e8de2ef8350f9716bc1831ca0043d98",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "botanicalgarden.jpeg",
+      "sourceNow": "Added to Game/botanicalgarden.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 29,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/chagall-cafe-inside.webp",
+      "outputSha256": "340e80a3d2bfabc8b460abd679b06224aac6c2ee11051c4f6c1865d83d7f0ece",
+      "place": "Paulownia Mall · Chagall Café (day and evening; the Chagall job, its shift scenes and the café activities), replacing lablanc",
+      "sha256": "39731d2c8aafe718c86287716cdf08e292879cc366d79c3913fa5b22707743a3",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "chagallcafe-inside.jpeg",
+      "sourceNow": "Added to Game/chagallcafe-inside.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 29,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/iwatodaidorm-kitchen-night-cake.webp",
+      "outputSha256": "a10c9a1cca212cd5f7b2301d14f998eec8a2aa0fe045e60c817f079591c83189",
+      "scene": "{ bg } first step on My Melody's kitchen scenes (discovery, ranks 1-4, 6, 9, 10, after-MAX 'your recipe'), Fuuka rank 1 (baking) and Kuromi's 'the baking round'; other kitchen scenes unchanged",
+      "sha256": "91de2cbd40ade5536f7bd14a44f64c07334bd66cb9c1cc774ef1c1c2e38fc2a0",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "dormkitchen-almondcake.jpeg",
+      "sourceNow": "Added to Game/dormkitchen-almondcake.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 29,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/naganaki-amulet-stall.webp",
+      "outputSha256": "f0c377b32c0c1e94371924b9a47c8b415c05e481be1b51d47cee11a2bd6fd386",
+      "place": "Naganaki Shrine · Amulet Stall (day and evening: night-lit art), replacing outside-shrine-day / naganaki-shrine-night; am-s-leaves keeps autumn, am-s-hatsumode uses New Year",
+      "sha256": "fe069ccdf8aec99cda83a94c1838a771c7959f6f99b5e8ff05250aabd4e66b16",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "naganaki-amulet-stall.jpeg",
+      "sourceNow": "Added to Game/naganaki-amulet-stall.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 29,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/naganaki-shrine-newyear.webp",
+      "outputSha256": "625a49df80a461cba8d74782d52aba91647ab3de3aeaec9aaa93af0004db5ad9",
+      "scene": "am-s-hatsumode (the amulet stall's 1/2-1/3 New Year shift) and a6-new-year (1/1 at the shrine, a { bg } step)",
+      "sha256": "d88b59e4e94c526406e4bf297c6d185238c3352a3a7aab545c722f8419990535",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "naganakishrine-newyears.jpeg",
+      "sourceNow": "Added to Game/naganakishrine-newyears.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 29,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/naganaki-shrine-spring.webp",
+      "outputSha256": "f7ffe44fe6b31f38d87cbbcdcc9615270da9994b1a8a189cd00e14ce28ce16c5",
+      "place": "places.js seasons: outside-shrine-day in March-May (rules, scene bg and Go Out via core.js seasonal)",
+      "sha256": "5e987ca9ef8c3070887fa4bf5b46ade564d9ed3b44935b9939565e30c6c8ad56",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "naganakishrine-spring.jpeg",
+      "sourceNow": "Added to Game/naganakishrine-spring.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 29,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/naganaki-shrine-summer.webp",
+      "outputSha256": "c31a19f8c72f13c4cc88f60f950877d067d91a310a0da11d2ae3cd00d5bae1fc",
+      "place": "places.js seasons: outside-shrine-day in June-September",
+      "sha256": "9befea5a96d276c372709cef8e3715ff59e6c2e71c791aeaf5260d436d57f2a5",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "naganakishrine-summer.jpeg",
+      "sourceNow": "Added to Game/naganakishrine-summer.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 29,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/naganaki-shrine-winter.webp",
+      "outputSha256": "3bbd1565cc15302849dc47d3d4722911dbf91430818439cf4e7aeec1d93ff9d6",
+      "place": "places.js seasons: outside-shrine-day in December-February (October-November use naganaki-shrine-autumn from batch 27)",
+      "sha256": "49834dca8e065e78a76d1d9e1786631896fcfd44fd03e92eb509cc8be515ddb9",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "naganakishrine-winter.jpeg",
+      "sourceNow": "Added to Game/naganakishrine-winter.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 29,
+      "character": "akihiko",
+      "conversion": "Opaque white background removed: macOS Vision subject mask (tools/femc-lift.swift) intersected with the femc-profiles.py edge flood fill, eroded 1px against the white fringe; trimmed; 1400px tall; WebP q90; source unchanged",
+      "destination": "assets/femc/profile/sees/akihiko.webp",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "placement": "compendium.js entry akihiko: img profile/sees/akihiko.webp, profile: true (compendium.html now lets an entry's own full body win over the older assets/femc/profile/akihiko.webp, which v1's social pages still use)",
+      "outputSha256": "132989ca78e450ccae8e786cf0361eafb061e3da42b05e0ead8b95a44a7e7edb",
+      "sha256": "7a03ca9f950c605a6dcfb55199ecd66c217da5a5a041845a9cc8535a72d7eb5b",
+      "size": [
+        1024,
+        1536
+      ],
+      "source": "akihiko-fullbody.png",
+      "sourceNow": "Added to Game/akihiko-fullbody.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 29,
+      "character": "yukari",
+      "conversion": "Opaque white background removed: macOS Vision subject mask (tools/femc-lift.swift) intersected with the femc-profiles.py edge flood fill, eroded 1px against the white fringe; trimmed; 1400px tall; WebP q90; source unchanged",
+      "destination": "assets/femc/profile/sees/yukari.webp",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "uses": [
+        "Compendium full-body character card"
+      ],
+      "placement": "compendium.js entry yukari: img profile/sees/yukari.webp, profile: true (compendium.html now lets an entry's own full body win over the older assets/femc/profile/yukari.webp, which v1's social pages still use)",
+      "outputSha256": "643fbe20c9ac8d1eb9613cdb433aaa3355453076d9b124288d0df95d1d0f258c",
+      "sha256": "160239a4a2b4dc4ac4b28962d209562b0fe3a8f8f58c3296ea4621f40c3a5020",
+      "size": [
+        1024,
+        1536
+      ],
+      "source": "yukari-fullbody.png",
+      "sourceNow": "Added to Game/yukari-fullbody.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 29,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/story-birthday-surprise.webp",
+      "event": "lw-birthday",
+      "placement": "living-world.js lw-birthday: { cg } right after the lights come on, cleared ({ cg: null }) before Mitsuru explains; story text unchanged; Memories album (Story group) via the scene walk",
+      "mobileFocus": "38% 45%",
+      "outputSha256": "ad75c99ae0119b2c45338f803dfc0a0b4a1c40e3875438f6c991d700f0c1e7f4",
+      "sha256": "b3dba547bfa873cd48b836ddabaa8b3ec2490fcd614588023283b4a4f0ebf275",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "solar-sees-bdaysurprise.png",
+      "sourceNow": "Added to Game/solar-sees-bdaysurprise.png",
+      "status": "integrated"
     }
   ],
   "batch1Validation": {
@@ -5203,5 +5380,19 @@
     "sourcesUnchanged": true,
     "artV": 22,
     "html": "femc-battle.html battle.css v26, battle.js v39"
+  },
+  "batch29Validation": {
+    "sourceImagesReviewed": 11,
+    "outputsReviewed": true,
+    "sourcesUnchanged": true,
+    "seasons": "places.js seasons + core.js seasonal (exported; ui.js bgUrl uses it): outside-shrine-day becomes spring (3-5), summer (6-9), autumn (10-11, batch 27's art) or winter (12-2) wherever it's used; evening art unchanged",
+    "tests": [
+      "python3 tools/femc-check-scenes.py --links mymelody,fuuka,kuromi (OK)",
+      "python3 tests/femc_gallery.py (94 checks)",
+      "python3 tests/femc_living.py (pass)",
+      "python3 tests/femc_living2.py (47 checks, 4,382 scene paths)",
+      "Compendium: akihiko and yukari load profile/sees art (contain, has-profile) at 1280x800 and 390x844, no overflow, no errors (femc_compendium.py's fixture opens met:akihiko from its v1 save, so it can't take these ids)"
+    ],
+    "html": "femc-game.html places v19, core v25, ui v24, story-act6 v8, job-scenes-more-c v3, living-world v5, living-persona v3, fuuka v4, kuromi v4, mymelody v2; FEMC_ASSET_VERSION 134, femc-mode.js v100 (12 pages)"
   }
 }

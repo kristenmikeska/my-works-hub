@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <script src="femc-mode.js?v=99"></script>
+  <script src="femc-mode.js?v=100"></script>
   <title>Compendium</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/femc/femc-pages.css?v=1">
@@ -68,8 +68,8 @@
       // Anyone with a neutral portrait in assets/femc/portraits gets it here automatically.
       // Hand-set portrait and profile paths get the current image version so regenerated portraits show up.
       ENTRIES.forEach(e => { if (e.img && e.img.startsWith('assets/femc/') && !e.img.includes('?')) e.img += `?v=${v}`; });
-      // Full-body art (assets/femc/profile) wins over everything else.
-      ENTRIES.forEach(e => { if ((window.FEMC_PROFILE || []).includes(e.id)) { e.img = `assets/femc/profile/${e.id}.webp?v=${v}`; e.profile = true; } });
+      // Full-body art (assets/femc/profile) wins over everything else, unless the entry names its own (profile: true).
+      ENTRIES.forEach(e => { if (!e.profile && (window.FEMC_PROFILE || []).includes(e.id)) { e.img = `assets/femc/profile/${e.id}.webp?v=${v}`; e.profile = true; } });
       ENTRIES.forEach(e => { if (!e.img && (window.FEMC_PORTRAITS?.[e.id] || []).includes('neutral')) e.img = `assets/femc/portraits/${e.id}/neutral.webp?v=${v}`; });
       const $ = id => document.getElementById(id);
       const isOpen = e => window.femcCompendiumOpen(e);

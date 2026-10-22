@@ -37,7 +37,7 @@
     const lit = phase < 0.5 ? `M10 1A9 9 0 0 1 10 19A${rx} 9 0 0 ${k > 0 ? 0 : 1} 10 1` : `M10 1A9 9 0 0 0 10 19A${rx} 9 0 0 ${k > 0 ? 1 : 0} 10 1`;
     return `<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#3a1028"/><path d="${lit}" fill="#fff4f9"/></svg>`;
   }
-  const bgUrl = slug => `${G.base}assets/femc/bg/${slug}.webp`;
+  const bgUrl = slug => `${G.base}assets/femc/bg/${G.seasonal(slug)}.webp`; // the shrine's day art follows the season (places.js seasons)
   // Memory cards without art yet (new fragment ids): the battle data's placeholder card stands in until the .webp exists.
   document.addEventListener('error', e => {
     const t = e.target, m = t && t.tagName === 'IMG' && !t.dataset.ph && /memories\/([a-z0-9-]+?)\.webp/.exec(t.getAttribute('src') || '');

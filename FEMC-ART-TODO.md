@@ -1,4 +1,4 @@
-# Art to make (updated 2026-10-22: the Revelation cards, the S.E.E.S. weapon sheets, three tarot cards and twenty-five places are in the game)
+# Art to make (updated 2026-10-22: the Revelation cards, the S.E.E.S. weapon sheets, three tarot cards, thirty-three places, the shrine's seasons and the 6/24 CG are in the game)
 
 This file replaces `FEMC-ART-NEXT.md` and `FEMC-THEURGY-PROMPTS.md`. Everything already in the game is off this list.
 - Put finished pieces in **New Adds**.
@@ -46,14 +46,8 @@ A tarot card in exactly the same style, border and layout as the attached cards:
 ```
 Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: [PLACE].
 ```
-- *(Optional)* Naganaki Shrine's grounds in spring, summer and winter, to go with the autumn one (the sweeping activity uses the plain shrine all year, since a place's background can't change by season yet)
 - *The living world, part 2 (2026-10-21).* Each works now on an existing background (in brackets); a new one would replace it:
-  - [ ] Inside Chagall Café behind the counter: the espresso machine, the pastry case, mugs on hooks (now `lablanc`)
   - [ ] Hagakure's kitchen during the dinner rush: steam, big stockpots, the ticket rail (now `hagakure-ramen`)
-  - [ ] The amulet stall at Naganaki Shrine: a wooden counter of charms and ema plaques, paper lanterns (now `outside-shrine-day`)
-  - [ ] Naganaki Shrine on New Year's: crowds, stalls, lanterns, a line for the bell (the amulet stall's New Year shifts use the shrine)
-  - [ ] The dorm kitchen at night with an oven light on and a pound cake cooling (My Melody's scenes use `iwatodaidorm-kitchen`)
-  - [ ] A botanical garden greenhouse (a holiday scene uses existing art until then)
 
 ---
 
@@ -71,12 +65,6 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
   - Prompt:
     ```
     Full-body character art of [NAME], standing in a relaxed signature pose, outfit matching the attached portrait, in the same style as the attached full body, transparent background.
-    ```
-- [ ] **Birthday CG (6/24)**
-  - **Attach:** 🎮 `cg/prologue-akihiko-finds-solar.webp` (style), plus Solar, Akihiko, Yukari, Junpei and Koromaru portraits.
-  - Prompt:
-    ```
-    Solar walks into a dark dorm lounge as the lights flip on: S.E.E.S. jump out with a cake, Koromaru in a party hat, Akihiko holding the cake a little too seriously. Warm, chaotic, happy. 16:9.
     ```
 
 ---
@@ -103,7 +91,7 @@ The full prompts are in `FEMC-CG-PROMPTS.md` under the number shown. For all of 
 ## Appendix (for Claude): how new art goes in
 ### Tarot cards and places
 - **A tarot card:** add `'<arcana key>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-tarot.py` (the key is the link's `arcana` lowercased without spaces) and run it: it writes `tarot/<key>.webp` and `tarot/index.js`, which the Bonds menu and the rank-up cards read (`core.js tarot`). Bump the `tarot/index.js ?v=` in `femc-game.html`.
-- **A place:** add `'<slug>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-backgrounds.py` and run it (WebP, at most 1920 wide; New Adds pieces are fit to 1920×1072), then point the place's rule in `game/data/places.js` (or a scene's or a pick's `bg`) at the slug and bump that file's `?v=`. An activity that shares its spot with other scenes gets its own `place` (e.g. `'Iwatodai Strip · Hagakure · Challenge Bowl'`) and a rule above the spot's. Rules can't change by season, so seasonal art goes on dated scenes' `bg`. Night-lit art gets the same slug as its evening image too, or evening scenes dim it.
+- **A place:** add `'<slug>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-backgrounds.py` and run it (WebP, at most 1920 wide; New Adds pieces are fit to 1920×1072), then point the place's rule in `game/data/places.js` (or a scene's or a pick's `bg`) at the slug and bump that file's `?v=`. An activity that shares its spot with other scenes gets its own `place` (e.g. `'Iwatodai Strip · Hagakure · Challenge Bowl'`) and a rule above the spot's. A rule can't change by season, but a day image can: `places.js seasons` maps one (now `outside-shrine-day`) to [first month, slug] pairs, and `core.js seasonal` swaps it wherever it's used (rules, scene `bg`, Go Out); other seasonal art goes on dated scenes' `bg`. A story event's own `bg` field isn't read (ui.js `sceneFor`), so an event sets its art with a `{ bg }` step. Night-lit art gets the same slug as its evening image too, or evening scenes dim it.
 
 ### Theurgy and strike-sheet art
 Everything is data plus one tool. The presentation is reusable: `battle.js theurgyCut` plays whatever a fighter has (see the comment above `TH` in `data.js`).

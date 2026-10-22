@@ -231,6 +231,7 @@
       scene: [
         { n: "The botanical garden sat at the quiet end of Port Island behind a long iron fence, all gravel paths and labeled trees and benches nobody sat on, and at its center the greenhouse, a great old glass house with a curved roof like the inside of a whale, the panes fogged white from within so that the plants pressed up against them looked like people waiting at a window." },
         { n: "Haru stopped at the door with her hand on it and took a breath, the way some people stop at the door of a church. Then she opened it, and the air came out to meet them, warm and wet and green, so thick with the smell of soil and leaves and something flowering that Solar felt it settle on her skin like a second sweater." },
+        { bg: 'botanical-garden-greenhouse' },
         { s: 'haru', f: 'happy', t: "Oh. Oh, listen. You can hear it drinking. Isn't that the loveliest sound in the world?" },
         { s: 'solar', f: 'neutral', t: "It's the pipes." },
         { s: 'haru', f: 'happy', t: "It's the pipes drinking. Please don't ruin it, Solar-chan." },

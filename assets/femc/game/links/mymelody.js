@@ -17,6 +17,7 @@
     sub: 'Something smells like almonds.',
     place: 'Iwatodai Dorm · Kitchen', time: 'Evening',
     scene: [
+      { bg: 'iwatodaidorm-kitchen-night-cake' },
       { music: 'dorm' },
       { n: "Somebody had left the kitchen light on, which in this dorm was not unusual, and somebody was using the oven, which was. Solar smelled it from the stairs before she saw anything, warm and buttery with something faintly bitter at the back of it, like marzipan, like a bakery at seven in the morning, a smell with no business in a building where the most ambitious thing anyone cooked on a weeknight was instant ramen with an egg cracked into it." },
       { n: "The girl at the counter had her back to the door. A pink hood with two long rabbit ears hanging down behind, sleeves pushed up to the elbow, flour to the wrists. She was humming something with no particular tune that went up at the end like a question, and weighing sugar on a little kitchen scale with the total concentration of a chemist." },
@@ -110,6 +111,7 @@
   ],
   ranks: [
     { after: '7/15', title: '1: almond', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'dorm', scene: [
+      { bg: 'iwatodaidorm-kitchen-night-cake' },
       { ifBefore: '7/17', then: [
         { n: "It was exam week, and the whole dorm had the gray, overwatered look of people who'd been reading the same page for an hour. Solar had come down for tea. She'd meant to go straight back up. Then the kitchen light was on again, and the smell came up the hall like a hand on her sleeve." }
       ], else: [
@@ -148,6 +150,7 @@
     ] },
 
     { after: '8/5', title: '2: almond jelly', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'joy', scene: [
+      { bg: 'iwatodaidorm-kitchen-night-cake' },
       { n: "It was too hot for the oven. Summer had settled over Iwatodai like a damp towel over a bowl, and the kitchen at eight o'clock was the temperature of the inside of a mouth, and My Melody, undefeated, had decided on almond jelly. Milk and sugar and almond essence and gelatin, poured into little glass cups and lined up in the fridge to set, which meant, she explained, that you had to wait, which was the best part of any recipe and nobody ever believed her." },
       { n: "Aigis was sitting at the kitchen table, upright, hands folded, watching them both with the polite total attention she gave to everything." },
       { s: 'aigis', f: 'neutral', t: "I do not eat. But I find the procedure very satisfying to observe. Please continue as though I am a chair." },
@@ -184,6 +187,7 @@
     ] },
 
     { after: '8/26', title: '3: a slice for later', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'dorm', scene: [
+      { bg: 'iwatodaidorm-kitchen-night-cake' },
       { n: "Koromaru had learned what Wednesdays were. He'd only lived at the dorm a few weeks and he already knew, the way dogs know, the sound of the oven door and the particular rattle of the rabbit-shaped mitts coming off their hook, and he was lying across the kitchen doorway like a draught excluder when Solar came down, so that she had to step over him, and he thumped his tail once on the floor in what was either a greeting or a toll." },
       { s: 'mymelody', f: 'happy', t: "Koromaru-kun is helping. He's in charge of the floor. If anything falls on it, it's his." },
       { n: "Solar sat at the table while the cake baked and put her head down on her folded arms for a second, only a second, because the kitchen was warm and the light was low and it had been a long week, and longer nights. When she lifted it again My Melody was sitting across from her with her chin on her hands, studying her." },
@@ -224,6 +228,7 @@
     ] },
 
     { after: '9/16', title: '4: rival', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'tender', scene: [
+      { bg: 'iwatodaidorm-kitchen-night-cake' },
       { n: "Tonight it was something with apples, because September had come in cool at last and the greengrocer on the strip had a crate of them by the door, red and small and freckled. My Melody peeled them in one long curl each, round and round without the knife ever leaving the skin, and laid the peels out on the counter side by side like ribbons, and didn't seem to think there was anything remarkable about it." },
       { n: "The lounge door was open. Through it, Solar could see the back of the couch, and the top of a black jester hat with a pink skull on it, which had not moved in twenty minutes, and which was the most attentive hat she'd ever seen." },
       { s: 'mymelody', f: 'neutral', t: "Senpai. Do you know why Kuromi came here?" },
@@ -305,6 +310,7 @@
     ] },
 
     { after: '10/28', title: '6: sweet nature', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'joy', scene: [
+      { bg: 'iwatodaidorm-kitchen-night-cake' },
       { n: "The culture festival was in two days and the whole of Gekkoukan had gone mad in the usual ways, cardboard and paint and extension cords and somebody's class doing a maid café whether the faculty liked it or not. My Melody's class was doing a tea room. My Melody, it had been decided, unanimously and without consulting her, was doing the cakes." },
       { n: "She was on her fourth pound cake of the evening when Junpei came in. He came in the way he came into rooms when he wanted something, which was sideways, with his hands in his pockets and his cap at an angle that was meant to look accidental." },
       { s: 'junpei', f: 'happy', t: "Melody-chan. Melody-chaaan. Has anyone ever told you you're, like, an angel? Sent down from heaven? To bring cake to the people?" },
@@ -420,6 +426,7 @@
     ] },
 
     { after: '1/13', title: '9: terrible', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'joy', scene: [
+      { bg: 'iwatodaidorm-kitchen-night-cake' },
       { n: "The kitchen looked like a crime scene. There was flour on the ceiling, which Solar had not known was possible, and black sesame seeds on every surface like a fine dark sand, and a bowl of strawberries that had been mashed into something that looked frankly forensic. In the middle of the counter, on the rack, sat a cake. It had fallen in on itself in the middle like a sinkhole. It was the color of a storm." },
       { n: "My Melody was standing in front of it with her hands clasped and her hood pushed back and a look on her face Solar had never seen before, which was absolute, stunned, radiant horror." },
       { s: 'mymelody', f: 'surprised', t: "Senpai. Senpai, it's terrible. I made something terrible!" },
@@ -461,6 +468,7 @@
     ] },
 
     { after: '1/20', title: '10: my recipe', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'tender', scene: [
+      { bg: 'iwatodaidorm-kitchen-night-cake' },
       { n: "The smell met her on the stairs, the way it had the very first time, except that it was different. Not almond. Something darker and warmer underneath, toasted, nutty, and over it something bright and sharp and sweet, like a window opened in winter. Solar stopped on the bottom step and breathed in, and didn't know what it was, and that was the point." },
       { n: "My Melody was standing at the counter with the oven mitts still on, both rabbits, and in front of her on the rack was a cake. It had risen evenly. It was dark at the edges, almost black, and through the middle where she'd cut into it ran a ribbon of pink, strawberry, set in swirls through the black sesame like a stripe of dawn through a night sky. It hadn't sunk at all." },
       { n: "Beside it the plain notebook lay open, and the first page wasn't the first page any more. There were six of them, crossed out and rewritten and crossed out again, notes in the margins, a coffee ring, a tiny drawing of a rabbit in the corner of the last one. At the top of the last page, in pencil, in her own small round hand, it said: *Melody's cake.*" },
@@ -503,6 +511,7 @@
   ],
   afterMax: [
     { title: 'your recipe', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', scene: [
+      { bg: 'iwatodaidorm-kitchen-night-cake' },
       { n: "It was Solar's turn, My Melody had decided. She'd put the plain notebook on the counter open to a clean page, and a pencil on top of it, and folded her hands, and was waiting with the bright expectant patience of a teacher who already knows you haven't done the homework." },
       { s: 'mymelody', f: 'happy', t: "What do you like, Senpai? Not what's good. What do *you* like?" },
       { n: "Solar opened her mouth and nothing came. She stood in the warm kitchen with the pencil in her hand and realized she didn't know, that she'd been eating whatever was put in front of her for most of a year and liking it well enough, the way you like weather, and had never once stopped to ask. It was an odd thing to find a hole in yourself in a kitchen. It was odder that it didn't hurt." },

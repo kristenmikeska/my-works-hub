@@ -41,6 +41,15 @@ EXTRA = {
     'yakushima-ferry': 'Added to Game/yakushima-ferrytopdeck.jpeg',
     'yakushima-villa-balcony': 'Added to Game/yakushima-villabalcony.jpeg',
     'yakushima-villa-terrace': 'Added to Game/yakushima-villaterrace.jpeg',
+    # batch 29 (2026-10-22)
+    'botanical-garden-greenhouse': 'Added to Game/botanicalgarden.jpeg',
+    'chagall-cafe-inside': 'Added to Game/chagallcafe-inside.jpeg',
+    'iwatodaidorm-kitchen-night-cake': 'Added to Game/dormkitchen-almondcake.jpeg',
+    'naganaki-amulet-stall': 'Added to Game/naganaki-amulet-stall.jpeg',
+    'naganaki-shrine-newyear': 'Added to Game/naganakishrine-newyears.jpeg',
+    'naganaki-shrine-spring': 'Added to Game/naganakishrine-spring.jpeg',
+    'naganaki-shrine-summer': 'Added to Game/naganakishrine-summer.jpeg',
+    'naganaki-shrine-winter': 'Added to Game/naganakishrine-winter.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

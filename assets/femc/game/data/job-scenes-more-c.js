@@ -313,7 +313,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
       ] },
 
       { id: 'am-s-hatsumode', after: '1/2', until: '1/3', scene: [
-        { place: 'Naganaki Shrine · Amulet Stall' },
+        { place: 'Naganaki Shrine · Amulet Stall', bg: 'naganaki-shrine-newyear' },
         { n: "The first visits of the new year came up the steps in a line that started at the torii and went down the stairs and out into the street and around the corner past the bakery, people in their good coats, people in rented kimono with fur stoles, grandparents on the arms of grandchildren, babies asleep in slings, a line so long and so patient it looked less like a crowd than a slow river with somewhere to be." },
         { s: 'maeda', t: "Hold the line. Hold it. Second day, third day, these are the big ones. Everybody who couldn't come on the first comes now, and they're all coming to *us*." },
         { n: "The association had hired two university girls in red hakama for the omikuji window and lent Solar a white happi coat with the shrine's crest, and from noon until the light went she did nothing but take coins and hand over amulets, *please receive it, thank you, happy new year, please receive it*, so many times the words went soft and round in her mouth like a stone in a river, until it stopped being a sentence and started being a rhythm." },

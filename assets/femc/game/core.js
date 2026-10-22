@@ -762,14 +762,21 @@ window.FemcGame = (() => {
   const name = id => CAST[id] || (id ? id[0].toUpperCase() + id.slice(1) : '');
   const castHas = id => id in CAST;
   function tarot(l) { const k = String(l?.arcana || '').toLowerCase().replace(/[^a-z0-9]/g, ''); return (W.FEMC_TAROT || []).includes(k) ? `${base}assets/femc/tarot/${k}.webp` : null; }
+  // places.js seasons: the plain day art that has a version per season (the shrine).
+  function seasonal(img) {
+    const list = D.places.seasons?.[img];
+    if (!list) return img;
+    const m = dateOf(S?.day || 0).getMonth() + 1;
+    return ([...list].reverse().find(([from]) => from <= m) || list[list.length - 1])[1];
+  }
   function background(place = '', time = '', override) {
-    if (override) return { url: `${base}assets/femc/bg/${override}.webp`, mood: '' };
+    if (override) return { url: `${base}assets/femc/bg/${seasonal(override)}.webp`, mood: '' };
     const rule = D.places.bg.find(([at]) => at[0] === '*' ? place.includes(at.slice(1)) : place.startsWith(at));
     if (!rule) return null;
     const [, day, evening, look] = rule;
     const late = /Evening|Night|PM|AM/.test(time) && !/Morning/.test(time);
     const special = /Dark Hour|Velvet|Tartarus/.test(place + time);
-    const img = late && evening ? evening : day;
+    const img = late && evening ? evening : seasonal(day);
     return { url: `${base}assets/femc/bg/${img}.webp`, mood: look || (special || (late && evening) ? '' : late ? 'night' : '') };
   }
   function moodFor(place = '', time = '') {
@@ -1941,7 +1948,7 @@ window.FemcGame = (() => {
   indexLinks();
   return {
     KEY, HANDOFF_KEY, base, D, get S() { return S; }, save, saveQuiet, newGame, onChange, settings, setSetting, setSettings, DEFAULTS, textDelay, sfx,
-    dayOf, dateOf, mdOf, dayInfo, slotsFor, slotName, weather, moon, END, SLOT_ORDER,
+    dayOf, dateOf, mdOf, dayInfo, seasonal, slotsFor, slotName, weather, moon, END, SLOT_ORDER,
     statRank, statRankName, statProgress, statId, sumStats, gainText, addStat, addStats, lacking, addYen, takeToasts, toast, migrateStats,
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
     homeOf, leavesAtMax, maxOf, isMaxed, stretchOn, afterGap, afterList, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,

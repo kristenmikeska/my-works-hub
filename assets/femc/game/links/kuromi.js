@@ -814,6 +814,7 @@
       { n: "They both said no at exactly the same time, in exactly the same voice, and looked at each other, and Kuromi taped both drawings inside the snack cupboard next to the dog, where the gallery was getting crowded now, a whole door of evidence that somebody had lived here and been, against her will, very happy." }
     ] },
     { title: 'the baking round', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', scene: [
+      { bg: 'iwatodaidorm-kitchen-night-cake' },
       { music: 'joy' },
       { n: "The kitchen smelled of burnt sugar and determination. There was flour on the counter, the floor, the window, Koromaru, and most of Kuromi, who was standing over a loaf tin with an oven mitt on each hand like boxing gloves and the expression of a girl defusing something." },
       { s: 'kuromi', f: 'serious', t: "The festival has a baking round. Melody's going to make the almond pound cake. She ALWAYS makes the almond pound cake. So I'm going to make the almond pound cake. Better. In her own kitchen. With her own recipe." },
