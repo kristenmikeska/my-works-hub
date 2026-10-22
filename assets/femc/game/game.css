@@ -1031,6 +1031,7 @@ button.g-st-link:is(:hover, :focus-visible) { outline: none; border-color: #fff;
 /* A pair of gloves (Jihoon's; build.js artWide) is landscape art: a wide box instead of the tall weapon one. */
 .g-eq-slot .g-eq-art.wide { width: 92px; height: 64px; transform: rotate(-4deg); }
 .g-eq-art.sm.wide { width: 52px; height: 36px; }
+.g-eq-item.art:has(.g-eq-art.wide) { grid-template-columns: 56px minmax(0, 1fr) auto; } /* the wide box needs a wider first column */
 .g-eq-slot b span.look { color: var(--pink-3); font-style: italic; }
 .g-refine { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; align-items: center; padding: 8px 12px; border: 1.5px dashed rgba(255, 211, 107, .5); background: rgba(255, 211, 107, .06); }
 .g-refine p { margin: 0; }
@@ -1042,6 +1043,7 @@ button.g-st-link:is(:hover, :focus-visible) { outline: none; border-color: #fff;
 .g-act.has-art { grid-template-columns: 30px minmax(0, 1fr) auto; }
 .g-shop-art { width: 26px; height: 58px; object-fit: cover; border: 1.5px solid var(--gold); }
 .g-shop-art.wide { width: 54px; height: 38px; }
+.g-act.has-art:has(.g-shop-art.wide) { grid-template-columns: 58px minmax(0, 1fr) auto; }
 .g-shop-tabs { gap: 6px; margin: 4px 0 8px; }
 .g-shop-tabs:empty { display: none; }
 .g-quiz-a .g-btn.hinted { opacity: .35; text-decoration: line-through; }

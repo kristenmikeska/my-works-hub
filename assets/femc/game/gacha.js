@@ -115,7 +115,7 @@ window.FemcGacha = (() => {
       if (g.cases.includes(c.id)) { out.dup = true; out.stars = CAP.stars[r]; g.stars += out.stars; } else g.cases.push(c.id);
     } else if (p[0] === 'card') {
       const Bd = B(), b = bsave(), c = Bd.rollCard(R, { tier: 2 + (S().tartarus.bosses || []).length, r: p[2] === 5 ? 5 : null, minR: p[2] || 3 }), res = Bd.addCard(b, c);
-      out.n = 1; out.name = res.card ? `${Bd.cardName(c)} ★${c.r}` : `Tarot Dust ×${res.dust}`; out.desc = res.card ? 'A Revelation card. Equip it from the menu’s Cards tab.' : 'The card box was full, so it became dust.';
+      out.n = 1; out.card = res.card || null; out.name = res.card ? `${Bd.cardName(c)} ★${c.r}` : `Tarot Dust ×${res.dust}`; out.desc = res.card ? 'A Revelation card. Equip it from the menu’s Cards tab.' : 'The card box was full, so it became dust.';
     } else if (p[0] === 'skill') {
       const b = bsave(); b.skillCards = b.skillCards || {}; b.skillCards[p[1]] = (b.skillCards[p[1]] || 0) + 1;
       out.name = `Skill card: ${D().skills[p[1]].name}`; out.desc = `${D().skills[p[1]].desc || ''} Teach it from the menu’s Cards tab.`;
@@ -213,7 +213,8 @@ window.FemcGacha = (() => {
     if (p.kind === 'key') return keychain(p.id);
     if (p.kind === 'case') return `<span class="g-case-art" data-case="${p.id}"><i></i></span>`;
     const ICON = window.FemcIcons;
-    if (p.kind === 'card') return `<span class="g-ga-cardart">✦</span>`;
+    // A Revelation card shows its face (Kat's set art; icons.js revCard); a full box (it turned to dust) keeps the plain back.
+    if (p.kind === 'card') return p.card && ICON && ICON.revCard ? ICON.revCard(p.card, { cls: 'g-ga-revcard', base: G.base }) : `<span class="g-ga-cardart">✦</span>`;
     if (p.kind === 'skill') return ICON ? ICON.svg('star', '#6ab0ff', 'g-ga-ico') : '';
     return ICON ? ICON.of(p.id, 'g-ga-ico') : '';
   }

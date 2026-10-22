@@ -72,7 +72,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 19;
+  const ART_V = 20;
   const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
   Object.values(D.personas).forEach(p => { if (p.art && !p.art.startsWith('data:') && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
   // Theurgy and Evoker sheet art (data.js paths are bare) get the art version too.
@@ -1298,7 +1298,10 @@
         if (res.penalty) nav('shufflePenalty');
         const out = el.querySelector('.bt-sh-out');
         out.hidden = false;
-        out.innerHTML = `<b>${esc(c.name)}${c.kind === 'penalty' ? ' · reversed' : ''}</b>${res.lines.map(l => `<span>${esc(l)}</span>`).join('')}`;
+        // A Revelation card (the Fool, the Empress, the Star) shows its face: Kat's set art in the drawn frame (icons.js revCard).
+        const rc = res.fx.card && ICON && ICON.revCard ? ICON.revCard(res.fx.card, { cls: 'bt-sh-rev' }) : '';
+        out.classList.toggle('has-card', !!rc);
+        out.innerHTML = `${rc}<b>${esc(c.name)}${c.kind === 'penalty' ? ' · reversed' : ''}</b>${res.lines.map(l => `<span>${esc(l)}</span>`).join('')}`;
         say.textContent = res.penalty ? 'Upside down…' : BLD.cardText(c);
         blogAdd(`Shuffle Time: ${c.name} · ${res.lines.join(', ')}`, res.penalty ? 'miss' : 'buff');
         await sleep(reduced ? 200 : 650);
@@ -3913,7 +3916,8 @@
       if (g.pts) extra.push(`<span class="pts">+${g.pts} Skill Points</span>`);
       if (o.bonus) extra.push(`<span class="pts">+${o.bonus} Full-moon bonus</span>`);
       if (o.op && o.first) extra.push(`<span class="pts">Shops restocked · tier ${shopTier()}</span>`);
-      if (o.shuffle) extra.push(`<span class="shuf${o.shuffle.res.penalty ? ' pen' : ''}">Shuffle Time · ${esc(o.shuffle.card.name)}: ${esc(o.shuffle.res.lines.join(', '))}</span>`);
+      if (o.shuffle) { const rc = o.shuffle.res.fx.card && ICON && ICON.revCard ? ICON.revCard(o.shuffle.res.fx.card, { cls: 'bt-res-card' }) : '';
+        extra.push(`<span class="shuf${o.shuffle.res.penalty ? ' pen' : ''}${rc ? ' has-card' : ''}">${rc}<em>Shuffle Time · ${esc(o.shuffle.card.name)}: ${esc(o.shuffle.res.lines.join(', '))}</em></span>`); }
       (o.notes || []).forEach(n => extra.push(`<span class="perk">${esc(n)}</span>`));
       const el = show(`<div class="bt-res"><div>
           <h1 class="bt-res-title"><small>${esc(o.title)}</small>RESULTS</h1>
@@ -4391,7 +4395,7 @@
       const list = mode === 'pick' ? cands(mid, slot) : [];
       li = Math.max(0, Math.min(li, list.length - 1));
       const now = unitWith(mid), prev = mode === 'pick' ? unitWith(mid, slot, list[li]) : now;
-      const stat = (k, label) => { const a = now[k], b = prev[k], d = b - a; return `<div><span>${label}</span><b>${b}</b>${d ? `<em class="${d > 0 ? 'up' : 'dn'}">${d > 0 ? '+' : ''}${d}</em>` : ''}</div>`; };
+      const stat = (k, label) => { const a = Math.round(now[k]), b = Math.round(prev[k]), d = b - a; return `<div><span>${label}</span><b>${b}</b>${d ? `<em class="${d > 0 ? 'up' : 'dn'}">${d > 0 ? '+' : ''}${d}</em>` : ''}</div>`; };
       const affNow = Object.entries(prev.aff).filter(([, a]) => a !== 'normal');
       const el = show(`<div class="bt-tree-head"><button type="button" class="bt-tool" data-act="back"><span>‹ Back</span></button><h1>EQUIPMENT<small>${esc(m.name)}</small></h1><div class="bt-pts"><span><small>Money</small>${yen(save.yen)}</span></div></div>
         <div class="bt-equip" style="--c:${m.color}">

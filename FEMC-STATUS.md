@@ -63,12 +63,13 @@ Other docs, if you ever want detail:
 - ✅ Skill tree: Haenim's branches, keystones and forms, party trees, 8 slots, your six skills
 - ✅ Buff stacking, smarter Rush, and the All-Out flash removed
 - ✅ Shuffle Time, Revelation cards, 170 link perks, your 12 naginatas as weapons
+- ✅ Your art on all 13 Revelation card sets: in the Cards menu, when Shuffle Time or Elizabeth hands you one, and in the results
 - ✅ Bond skills (12), a new signature skill for every fighter, battle reactions, romance banter
 - ✅ Animated Theurgies (Solar's change with her form), and the animated Evoker summon
 - ✅ The searcher Personas: Dalnim, Hyeonmu, Dokkaebi, Theia
 - ✅ New Shadows: Group Chat and Fishmonger
 - 🟡 Bosses and fighters move in battle: all 11 full-moon bosses (the Last Train too) and 12 fighters have pose sheets; Ken and Justice still need theirs
-- 🟡 Weapons for the other fighters: waiting on weapon-sheet art
+- ✅ Weapons for the other fighters: Haechan, Jungwon, Jihoon and Minji, and now Akihiko, Yukari, Junpei, Mitsuru, Aigis, Koromaru and Shinjiro each have six of their own, with your art (a starter, then shops, chests, a full-moon drop, a gift from their link, and Shuffle Time while they're in the party). Old saves get their starters and any full-moon drops they missed. Only Ken is still on plain weapons
 - ✅ Gacha, both kinds: a capsule machine at Paulownia Mall (yen or Capsule Tickets from Tartarus and Shuffle Time; cast keychains you can collect and show off in the menu, phone cases, accessories and rare items; odds on the front and a pity counter) and Elizabeth's card draws in the Velvet Room (yen or Velvet Plumes from fights and the Compendium; skill cards and rare gear). Elizabeth's Compendium Credit works now
 - ✅ Achievements as stamps on the hub: 29 Persona 3: Solstice stamps with their own page in the passport, and a toast in the game when you earn one
 

@@ -6,7 +6,7 @@ Run: python3 tests/femc_extras.py [--only capsule,velvet,credit,tickets,stamps,s
 Covers: a capsule turn through the real UI (Go Out → the mall → Capsule machine → Turn), the animation's beats, a ticket
 turn, trading Capsule Stars; rarity odds over many turns and the pity counters (Super Rare every 10, Ultra at 60); keychains
 never repeat while a new one is available and only for people Solar has met; a Velvet Room draw through the UI (three cards,
-pick one), plume draws and the Compendium claim, Velvet pity; Compendium Credit (no longer stubbed, cheaper draws, listed in
+pick one), plume draws and the Compendium claim, Velvet pity; a Revelation card prize showing its set art (batch 23); Compendium Credit (no longer stubbed, cheaper draws, listed in
 Bonds); Capsule Tickets from Shuffle Time's Hierophant, Tartarus results and Velvet Plumes from fights; stamps awarded from
 a save and from the battle frame's hook, the in-game toast, and the passport's Persona 3: Solstice section; achievements.js
 at one version everywhere; saves from before the gacha (autosave, slot, backup code) loading cleanly; zero console errors."""
@@ -331,6 +331,20 @@ try:
             click(p, '.g-vel-card[data-i="1"]')
             p.wait("!!document.querySelector('.g-vel-ov .g-ga-prize')")
             shot(p, f'velvet-{tag}')
+            # A Revelation card prize shows its real face (batch 23: Kat's set art, icons.js revCard): Velvet pity lifted to Super
+            # Rare, and a Super Rare draw of 0.5 is a ★4 card.
+            p.eval("document.querySelector('.g-vel-ov [data-close]').click()")
+            p.eval("FemcGacha.rng=()=>0.5;FemcGame.S.gacha.pity.vel.ur=0;FemcGame.S.gacha.pity.vel.sr=999")
+            open_act(p, 'velvet')
+            click(p, '.g-vel-ov [data-draw=yen]')
+            click(p, '.g-vel-card[data-i="0"]')
+            p.wait("!!document.querySelector('.g-vel-ov .g-ga-prize')")
+            face = p.eval("(()=>{const s=document.querySelector('.g-vel-ov .g-ga-prize svg.g-ga-revcard'),i=s&&s.querySelector('image'),r=s&&s.getBoundingClientRect();return s?{set:s.dataset.set,href:i&&i.getAttribute('href'),w:Math.round(r.width),h:Math.round(r.height)}:null})()")
+            ok(face and face['href'] and ('/cards/%s.webp' % face['set']) in face['href'] and face['w'] >= 56 and abs(face['h'] / face['w'] - 1.5) < 0.05, (tag, 'card prize face', face))
+            ok(p.eval("new Promise(r=>{const i=new Image();i.onload=()=>r(i.naturalWidth);i.onerror=()=>r(0);i.src=document.querySelector('.g-vel-ov svg.g-ga-revcard image').getAttribute('href')})") == 540, (tag, 'card art loads'))
+            ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1'), tag + ': card prize, no sideways scroll')
+            shot(p, f'velvet-card-{tag}')
+            p.eval("FemcGacha.rng=Math.random")
             p.eval("document.querySelector('.g-vel-ov [data-close]').click();FemcMenu.open('collection')")
             p.wait("!!document.querySelector('.g-fm-ov .g-col-set')")
             shot(p, f'collection-{tag}')

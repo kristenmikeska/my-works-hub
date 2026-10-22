@@ -1,4 +1,4 @@
-# Art to make (updated 2026-10-22, finished items removed)
+# Art to make (updated 2026-10-22: the Revelation cards and the S.E.E.S. weapon sheets are in the game)
 
 This file replaces `FEMC-ART-NEXT.md` and `FEMC-THEURGY-PROMPTS.md`. Everything already in the game is off this list.
 - Put finished pieces in **New Adds**.
@@ -6,7 +6,7 @@ This file replaces `FEMC-ART-NEXT.md` and `FEMC-THEURGY-PROMPTS.md`. Everything 
 
 **Where attachments live:**
 - 🎨 **Images folder:** `~/Documents/UniverseHub-Images/Femc Mode Images/`. Character Portraits, Personas, Added to Game.
-- 🎮 **Game folder:** `my-works-hub/assets/femc/`. Battle art, tarot cards, CGs.
+- 🎮 **Game folder:** `my-works-hub/assets/femc/`. Battle art, tarot cards, Revelation card art, CGs.
 
 Use **ChatGPT** for anything with a face, and **Gemini** for places and objects.
 
@@ -22,51 +22,7 @@ Save each as `<name>-portraits.png`. Until these exist, their scenes use a silho
 
 ---
 
-## 1. Revelation card art ⭐ (12 sets left)
-**Fox Bell is done.** Your `card-runners-foxbell.jpeg` is the first set's art, and the style every other card should match.
-
-**How it works:** one picture per **set**; the game adds the frame, slot icon and stats. Each set needs **one clear subject**, so the sets look different at a glance.
-
-**Attach (1 image):** 🎨 `New Adds/card-runners-foxbell.jpeg` (it moves to `Added to Game/` once it's in, so attach it from there later).
-```
-A NEW card illustration in exactly the same style, border, colors and level of detail as the attached card: an ornate gold filigree frame with jewels and star corners, Persona-style dark glamour, rich jewel tones, portrait 3:4. The centerpiece is [SUBJECT], large and glowing, with [BACKDROP] behind it. Only this one subject, no other objects from the attached card. No people, no text.
-```
-
-| ✓ | Set | Save as | [SUBJECT] | [BACKDROP] |
-|---|---|---|---|---|
-| ✓ | Fox Bell | `card-runners-foxbell` | *(done)* | |
-| ☐ | Snow Stadium | `card-runners-stadium` | a football stadium's floodlights blazing through falling snow, a golden goalpost | a night sky in deep violet with snowflakes |
-| ☐ | Glow Headset | `card-runners-headset` | a pair of gaming headphones glowing hot pink with a fox emblem | a dark room lit by a monitor's glow and floating pixels |
-| ☐ | Jade Cord | `card-strangers-jade` | a jade ring hanging on a red silk cord | dark harbor water with lantern reflections |
-| ☐ | Harbor Crane | `card-strangers-crane` | a giant red harbor crane | an Incheon dawn with gulls and pale gold light |
-| ☐ | Red Thread | `card-strangers-thread` | a silver sewing needle trailing glowing red thread | dark velvet, the thread forming a loose knot |
-| ☐ | Star Pin | `card-hoax-star` | a gold star pin on a navy school blazer lapel | a starburst of gold light |
-| ☐ | Ballot Box | `card-hoax-ballot` | an ornate ballot box with folded ballots and ribbons | a school gym with string lights |
-| ☐ | Council Croissant | `card-hoax-croissant` | a golden croissant on a white plate on a student-council desk | a warm lamp and papers |
-| ☐ | Velvet Evoker | `card-persona-evoker` | an ornate silver Evoker resting on blue velvet | the Velvet Room's deep blue glow |
-| ☐ | Full Moon | `card-persona-moon` | a huge yellow-green full moon | the twisting tower of Tartarus |
-| ☐ | Blue Butterfly | `card-persona-butterfly` | a glowing blue butterfly with luminous wings | swirling blue light and drifting sparks |
-| ☐ | Green Coffin | `card-persona-coffin` | an upright black coffin | the Dark Hour's sickly green light and dark red stains |
-
----
-
-## 2. Weapon sheets for S.E.E.S.
-The searchers' weapons are all in the game. These seven are left.
-**Attach:** 🎨 `Added to Game/SolarWeapons.png` (layout)
-```
-A 2×3 grid of six weapon designs on a white background, each in its own card, in the same rendering style as the attached sheet: [WEAPON] for [NAME]. One plain starter, then themed designs: [THEMES].
-```
-- [ ] **Akihiko** (boxing gloves): red champion, lightning, silver wolf, gold belt, midnight
-- [ ] **Yukari** (bow): pink heart, feather, sakura, moon, angel
-- [ ] **Junpei** (sword): baseball bat, katana, flame, neon, giant cleaver
-- [ ] **Mitsuru** (rapier): ice crystal, rose, gold filigree, snow queen, Kirijo crest
-- [ ] **Aigis** (arm guns): gold plating, heart, wing, heavy cannon, butterfly
-- [ ] **Koromaru** (knife): bone, shrine bell, flame, collar tag, kunai
-- [ ] **Shinjiro** (axe): black steel, chain, kitchen cleaver, ember, moonlit
-
----
-
-## 3. Lantern windows (the last full-moon fight)
+## 1. Lantern windows (the last full-moon fight)
 Three small foes that hang beside the last boss. For now they're drawn in code; real art would make them look like the memory Shadows.
 **Attach (2 images):**
 1. 🎮 `battle/art/shadows/memory-party-pose-0.webp` (the Kegstand: the style and finish to match)
@@ -80,7 +36,7 @@ Persona 3 Reload Shadow enemy art, the same painted style, outline and glow as t
 
 ---
 
-## 4. Bond cut-ins still open
+## 2. Bond cut-ins still open
 **Attach:**
 1. 🎮 `cg/prologue-akihiko-finds-solar.webp` (style)
 2. 🎨 `Character Portraits/Solar/Solar-smiling.png`
@@ -95,13 +51,13 @@ Bonds already work without art, using a stylized cut-in.
 
 ---
 
-## 5. Optional extras
+## 3. Optional extras
 - [ ] **Solar's strike sheets per form.** Attach that form's cut-in from 🎨 `Added to Game/` (`theurgy-solar-haenim.png`, `-sunna`, `-harbor`, `-haenimunveiled`), using the 3-panel prompt: "A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, nothing overlapping. Character only." Save as `solar-<form>-strikesheet.png`.
 - [ ] **A chibi brawl sheet per character** for a cuter All-Out cloud.
 
 ---
 
-## 6. Tarot cards
+## 4. Tarot cards
 **Attach:** 🎮 two existing cards, e.g. `tarot/star.webp` and `tarot/moon.webp`.
 ```
 A tarot card in exactly the same style, border and layout as the attached cards: [ARCANA], numbered [NUMBER], depicting [IMAGE].
@@ -113,7 +69,7 @@ A tarot card in exactly the same style, border and layout as the attached cards:
 
 ---
 
-## 7. Places (Gemini; no attachment needed)
+## 5. Places (Gemini; no attachment needed)
 ```
 Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: [PLACE].
 ```
@@ -155,7 +111,7 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 
 ---
 
-## 8. Characters and CGs
+## 6. Characters and CGs
 - [ ] **Shinjiro's Evoker shot** (your redo)
   - **Attach:** Shinjiro's portrait.
 - [ ] **Evoker poses** for Akihiko, Yukari, Junpei, Mitsuru and Aigis
@@ -179,7 +135,7 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 
 ---
 
-## 9. Older CG list
+## 7. Older CG list
 The full prompts are in `FEMC-CG-PROMPTS.md` under the number shown. For all of these, attach 🎮 `cg/prologue-akihiko-finds-solar.webp` first for style, then the portraits named.
 - [ ] **Fix:** edit `cg/prologue-elizabeth-blank-page.webp` to remove the armband (#0.1). Attach that CG only.
 - [ ] **Fix:** the Wren bench's socks (#0.2). Attach 🎨 `Event CGs/wren-meets-solar-bench-v1`.
@@ -228,5 +184,6 @@ The same pieces as a Theurgy (the steps above), in `assets/femc/battle/bonds.js`
 - **A sequence** (several full-screen panels, like Haechan's Universe): cut each panel as a `cutin`, then give the version `sequence: [{ src, focus, pan, hit }, ...]` and set its `img` / `focus` to the last panel (the short band and reduced motion show only that one). `hit: true` marks the strike panel (the impact and the name land there; default: the middle one); `pan: [x%, y%]` is where a panel's drift starts. Pick each `focus` so both faces stay inside the phone band (about 53% of a panel's width at 375×812); the test freezes each panel there and checks. A Theurgy takes the same `sequence` field (`data.js` comment above `TH`).
 
 ### Weapon sheets and finish cards
-- **Weapons (section 5):** add the sheet to `BUILD` in `tools/femc-cards.py` (`weapons`, the file, the six names in reading order, and options: `rotate` for how far to turn a diagonal weapon upright, `auto_names` to blank only the printed names when art reaches the card's bottom, `wide` for landscape art like a pair of gloves) and run `python3 tools/femc-cards.py all`. Then add the six to `build.js` as a list like `HK` / `JW` / `JH` / `MJ` and one line in `OWNED` (owner, weapon type): that sets `owner` (only that fighter, in every list, shop and Shuffle draw), makes the tier-0 one their starter (old saves swap through `STARTER_SWAP`), and `artWide` for gloves. Sources go in shops (a price below tier 5 = Police Box; Mayoido's `stock`), `lockedRare`, `BOSS_WEAPON` (a value may be a list; saves that already cleared that full moon get it once in `save.js`), a perk's `gift` and `Shuffle Time · Swords`. Add the noun to `SET_NOUN` for a new weapon type. Run `python3 tests/femc_building.py` (`--only knives,searchers`).
+- **Weapons:** every fighter but Solar's naginatas and Ken has a set now (the searchers' in batch 22, S.E.E.S.'s in batch 23). For a new sheet (Ken's, say), add it to `BUILD` in `tools/femc-cards.py` (`weapons`, the file, the six names in reading order, and options: `rotate` for how far to turn a diagonal weapon upright, `labels` `auto` / `auto-wide` to blank only the printed names, or `none` for an unlabelled sheet, `wide` for landscape art like gloves or arm guns, `grid` 3 / 6 when the frame lines are too faint to find, `pick` when a sheet has more cards than six) and run `python3 tools/femc-cards.py all`. Then add the six to `build.js` as a list like `HK` / `AK` and one line in `OWNED` (owner, weapon type): that sets `owner` (only that fighter, in every list, shop and Shuffle draw), makes the tier-0 one their starter (old saves swap through `STARTER_SWAP`), and `artWide` for gloves and guns (guns also get `hits`). Sources go in shops (a price below tier 5 = Police Box; Mayoido's `stock`; both only list a weapon while its owner is around), `lockedRare`, `BOSS_WEAPON` (a value may be a list; saves that already cleared that full moon get it once in `save.js`: bump the `ownBoss` round), a perk's `gift` and `Shuffle Time · Swords`. Add the noun to `SET_NOUN` for a new weapon type. Run `python3 tests/femc_building.py` (`--only knives,searchers,sees`).
+- **Revelation card art:** a set's painting goes in with `('revcard', 'card-<world>-<subject>.jpeg', ('<set>', x0, y0, x1))` in the same `BUILD`: the fractions cut inside the printed frame (the game draws its own) to the face's 88:114 art window. `build.js SETS` points every set at `art/cards/<set>.webp`; bump `CARD_ART_V` there with `ART_V`. The face is `icons.js revCard` (menu, Shuffle Time, results, gacha). `python3 tests/femc_building.py --only cardart` checks all three sizes.
 - **Finish cards (3C):** add `('finish', '<name>-alloutattack.png', '<mid>')` to the same `BUILD`, run it, and add the member to `FINISH_CARDS` in `battle.js`.

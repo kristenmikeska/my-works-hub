@@ -72,14 +72,16 @@ window.FemcBattleSave = (() => {
     Object.keys(s.skillCards).forEach(k => { if (!D.skills[k] || !(s.skillCards[k] > 0)) delete s.skillCards[k]; });
     if (!obj(s.taught)) s.taught = {};
     Object.keys(s.taught).forEach(mid => { if (!member(mid) || !Array.isArray(s.taught[mid])) delete s.taught[mid]; else s.taught[mid] = [...new Set(s.taught[mid].filter(k => D.skills[k]))]; });
-    // Haechan, Jungwon, Jihoon and Minji start with their own weapons now (build.js OWNED); a save still holding the plain
-    // tier-0 one (Combat Knife, Rapier, Leather Gloves, Practice Bow) swaps.
+    // Every fighter but Solar and Ken starts with their own weapon now (build.js OWNED: the searchers since batch 22, S.E.E.S.
+    // since batch 23); a save still holding the plain tier-0 one (Combat Knife, Rapier, Leather Gloves, Practice Bow, Practice
+    // Sword, Finger Rounds, Lead Pipe) swaps.
     Object.entries((B && B.STARTER_SWAP) || {}).forEach(([mid, [plain, own]]) => { if (s.gear && obj(s.gear.eq) && obj(s.gear.eq[mid]) && s.gear.eq[mid].weapon === plain && D.gear[own]) s.gear.eq[mid].weapon = own; });
-    // Batch 22 added boss drops for full moons a save may already have cleared (the Empress, the Hierophant, Fortune): once,
-    // a save that cleared one gets the owner weapons it never got (a first clear from now on drops it in battle.js).
-    if (!s.ownBoss && B && s.gear && obj(s.gear.owned) && s.ops && Array.isArray(s.ops.cleared)) {
+    // Batch 22 added boss drops for full moons a save may already have cleared (the Empress, the Hierophant, Fortune), and
+    // batch 23 one for each of S.E.E.S. (every full moon): once per batch (ownBoss 1, then 2), a save that cleared one gets
+    // the owner weapons it never got (a first clear from now on drops it in battle.js).
+    if ((+s.ownBoss || 0) < 2 && B && s.gear && obj(s.gear.owned) && s.ops && Array.isArray(s.ops.cleared)) {
       s.ops.cleared.forEach(op => B.bossWeapons(op).forEach(id => { const g = D.gear[id]; if (g && g.owner && !(s.gear.owned[id] > 0)) s.gear.owned[id] = 1; }));
-      s.ownBoss = 1;
+      s.ownBoss = 2;
     }
     if (!obj(s.bonds)) s.bonds = {};
     Object.keys(s.bonds).forEach(k => { const r = Math.floor(+s.bonds[k]); if (!(r > 0)) delete s.bonds[k]; else s.bonds[k] = Math.min(15, r); }); // links go to 15 (bond tier 3, rank-15 perks)

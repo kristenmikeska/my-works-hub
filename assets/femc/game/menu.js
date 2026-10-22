@@ -29,7 +29,7 @@
    ── CARDS, BONDS and weapon refines (the building systems, build.js) ──
      - Cards: each fighter's six Revelation card slots (I Crown … VI Fate), the card box (filter by slot), a card's detail with
        Equip / Remove, Level up (Tarot Dust + yen), Refine (Velvet Thread + yen; R3 an Arcana Fragment), Lock and Dismantle
-       (two presses), and the skill cards Shuffle Time gives (teach one to a member). Faces are drawn in code (cardFace).
+       (two presses), and the skill cards Shuffle Time gives (teach one to a member). Faces are Kat's set art in a frame drawn in code (cardFace → icons.js revCard).
      - Bonds: every met link's perks (Battle / Assist / Tartarus / Daily / MAX), earned or not, paused (reversed) or waiting on a
        system that isn't built yet. The Links tab shows a link's perks when you pick it.
      - Equipment: weapon art (Solar's naginatas) and Refine (+1 to +5) on the weapon slot.
@@ -355,7 +355,7 @@ window.FemcMenu = (() => {
     return `<div class="g-eq">
       <div class="g-pv-who">${list.map(x => `<button type="button" class="g-who-mini${x.id === id ? ' on' : ''}" data-eq="${x.id}" title="${esc(x.name)}"><i>${face(x.id, x.faces?.idle || 'serious')}</i><b>${esc(x.name)}<small>Lv ${lvOf(x.id)}</small></b></button>`).join('')}</div>
       <div class="g-eq-main">
-        <div class="g-eq-head"><h2>${esc(m.name)}<small>${esc(personaOf(id)?.name || '')}</small></h2>${u ? `<p class="g-pv-stats">${[['HP', u.maxHp], ['SP', u.maxSp], ['ATK', u.atk], ['DEF', u.def], ['St', u.st], ['Ma', u.ma], ['En', u.en], ['Ag', u.ag], ['Lu', u.lu]].map(([k, v]) => `<span><small>${k}</small><b>${v}</b></span>`).join('')}</p>` : ''}</div>
+        <div class="g-eq-head"><h2>${esc(m.name)}<small>${esc(personaOf(id)?.name || '')}</small></h2>${u ? `<p class="g-pv-stats">${[['HP', u.maxHp], ['SP', u.maxSp], ['ATK', u.atk], ['DEF', u.def], ['St', u.st], ['Ma', u.ma], ['En', u.en], ['Ag', u.ag], ['Lu', u.lu]].map(([k, v]) => `<span><small>${k}</small><b>${Math.round(v)}</b></span>`).join('')}</p>` : ''}</div>
         <div class="g-eq-slots">${SL.map(([k, label]) => { const g = D().gear[eq[k]], rf = g && BLD() ? BLD().wrefOf(b, eq[k]) : 0; return `<button type="button" class="g-eq-slot${open === k ? ' open' : ''}${g && g.art ? ' art' : ''}" data-slot="${k}"><small>${label}</small>${g && g.art ? `<img class="g-eq-art${g.artWide ? ' wide' : ''}" src="${G.base}${g.art}" alt="">` : `<i>${g ? icon(eq[k]) : ''}</i>`}<b>${g ? esc(g.name) + (rf ? ` +${rf}` : '') : '—'}<span>${g ? esc(BS().gearLine(eq[k], b)) : 'Nothing equipped'}</span>${g && g.look ? `<span class="look">${esc(g.look)}</span>` : ''}</b></button>`; }).join('')}</div>
         ${refineHtml(b, eq.weapon)}
         ${open ? `<ul class="g-eq-list">${cands.map(x => { const g = x && D().gear[x]; return `<li><button type="button" class="g-eq-item${x === eq[open] ? ' cur' : ''}${g && g.art ? ' art' : ''}" data-pick="${x || ''}">${g && g.art ? `<img class="g-eq-art sm${g.artWide ? ' wide' : ''}" src="${G.base}${g.art}" alt="">` : `<i>${g ? icon(x) : ''}</i>`}<b>${g ? esc(g.name) : 'Remove'}<span>${g ? esc(BS().gearLine(x, b)) : 'Take it off'}</span></b><em>${x === eq[open] ? 'E' : g && g.tier ? `×${BS().spare(b, x)}` : ''}</em></button></li>`; }).join('') || '<li class="g-note">Nothing that fits. Shops are on the Strip and at the Mall.</li>'}</ul>` : '<p class="g-note small">Pick a slot to change it. Gear bought in town goes here.</p>'}
@@ -388,40 +388,8 @@ window.FemcMenu = (() => {
   }
 
   /* ── CARDS (Revelation-style, P5X) ── */
-  const RAR = { 3: '#7fb6ff', 4: '#c07bff', 5: '#ffd36b' };
-  const GLYPH = {
-    bell: '<path d="M50 38c-12 0-17 10-17 22v12l-7 8h48l-7-8V60c0-12-5-22-17-22z" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><circle cx="50" cy="84" r="5" fill="#fff4f9" stroke="#14070f" stroke-width="2"/><path d="M38 40l-6-10 10 5M62 40l6-10-10 5" fill="#ff8a3d" stroke="#14070f" stroke-width="2"/>',
-    stadium: '<ellipse cx="50" cy="74" rx="34" ry="13" fill="none" stroke="var(--g)" stroke-width="4"/><ellipse cx="50" cy="74" rx="20" ry="6" fill="var(--g)" opacity=".5"/><path d="M20 72V42M80 72V42" stroke="#fff4f9" stroke-width="3"/><circle cx="20" cy="40" r="5" fill="#fff"/><circle cx="80" cy="40" r="5" fill="#fff"/><path d="M40 34l3 3M58 30l3 3M50 46l3 3" stroke="#fff" stroke-width="2"/>',
-    headset: '<path d="M26 66V58c0-14 10-24 24-24s24 10 24 24v8" fill="none" stroke="var(--g)" stroke-width="5"/><rect x="20" y="60" width="13" height="22" rx="5" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><rect x="67" y="60" width="13" height="22" rx="5" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><path d="M27 82c0 8 8 12 16 12" fill="none" stroke="#fff4f9" stroke-width="2.5"/><circle cx="46" cy="94" r="3.5" fill="#fff"/>',
-    ring: '<circle cx="50" cy="66" r="18" fill="none" stroke="var(--g)" stroke-width="8"/><circle cx="50" cy="66" r="18" fill="none" stroke="#14070f" stroke-width="1.5"/><path d="M50 84c-4 14-16 20-24 22M50 84c4 14 16 20 24 22" fill="none" stroke="#ff3b4f" stroke-width="3"/>',
-    crane: '<path d="M30 100V44h6v56zM33 44L76 34v5L36 50zM68 37v24" stroke="var(--g)" stroke-width="3.5" fill="var(--g)"/><path d="M68 61v8" stroke="#fff" stroke-width="2"/><rect x="62" y="69" width="12" height="7" fill="#ff8a3d"/><circle cx="76" cy="88" r="9" fill="#ffd36b" opacity=".85"/>',
-    needle: '<path d="M30 96L70 40l3 2-38 56z" fill="#e8e8f0" stroke="#14070f" stroke-width="2"/><ellipse cx="68" cy="45" rx="2" ry="4" transform="rotate(35 68 45)" fill="#14070f"/><path d="M69 44c14-6 6 22-10 26s-26 16-14 28" fill="none" stroke="var(--g)" stroke-width="3"/>',
-    star: '<path d="M50 34l9 19 21 3-15 14 4 21-19-10-19 10 4-21-15-14 21-3z" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><circle cx="50" cy="62" r="5" fill="#fff4f9"/>',
-    ballot: '<rect x="28" y="54" width="44" height="38" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><rect x="40" y="52" width="20" height="4" fill="#14070f"/><path d="M44 36h14l-2 20H46z" fill="#fff4f9" stroke="#14070f" stroke-width="2"/><path d="M28 72c10 6 34 6 44 0M44 92l-6 12M56 92l6 12" stroke="#ff4f9e" stroke-width="3" fill="none"/>',
-    croissant: '<path d="M22 74c6-22 50-22 56 0-8-6-14-6-18-2-4-8-16-8-20 0-4-4-10-4-18 2z" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><path d="M40 60l2 12M50 56v14M60 60l-2 12" stroke="#8a5a2a" stroke-width="2"/><rect x="26" y="86" width="48" height="5" fill="#fff4f9" opacity=".6"/>',
-    evoker: '<path d="M22 56h48l8 4v8H58l-4 6h-8l-4-6H34v-8z" fill="#c9d0dc" stroke="#14070f" stroke-width="2.5"/><path d="M34 68h12l-6 24H28z" fill="#3a404e" stroke="#14070f" stroke-width="2.5"/><rect x="48" y="58" width="16" height="3" fill="var(--g)"/><path d="M14 92c22-8 50-8 72 0" stroke="var(--g)" stroke-width="4" fill="none" opacity=".7"/>',
-    moon: '<circle cx="50" cy="56" r="22" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><circle cx="58" cy="50" r="5" fill="#14070f" opacity=".12"/><path d="M38 104V78l6-4V66l6-4 6 4v8l6 4v26z" fill="#14070f" stroke="#7dffc0" stroke-width="1.5"/>',
-    butterfly: '<path d="M50 66C40 40 18 40 22 58c2 10 14 12 28 8zM50 66c10-26 32-26 28-8-2 10-14 12-28 8zM50 68c-8 14-24 22-24 10s14-12 24-10zM50 68c8 14 24 22 24 10s-14-12-24-10z" fill="var(--g)" stroke="#14070f" stroke-width="2"/><path d="M50 52v32" stroke="#14070f" stroke-width="3"/>',
-    coffin: '<path d="M50 30l16 10-6 64H40l-6-64z" fill="#1a2420" stroke="var(--g)" stroke-width="3"/><path d="M50 50v34M42 60h16" stroke="var(--g)" stroke-width="3"/><ellipse cx="50" cy="104" rx="26" ry="5" fill="var(--g)" opacity=".35"/>'
-  };
-  /* A Revelation card face, drawn in code (a set's `img` replaces the glyph once Kat's art exists). */
-  function cardFace(c, cls = '') {
-    const B = BLD(), st = B.SETS[c.set] || { color: '#ff4f9e', glyph: 'star', name: c.set }, sl = B.SLOTS.find(x => x.id === c.slot) || { n: '?', name: '' };
-    const art = st.img ? `<image href="${G.base}${st.img}" x="12" y="24" width="76" height="86" preserveAspectRatio="xMidYMid slice"/>` : (GLYPH[st.glyph] || GLYPH.star);
-    return `<svg class="g-cardface ${cls}" viewBox="0 0 100 150" role="img" aria-label="${esc(B.cardName(c))}" style="--g:${st.color};--r:${RAR[c.r]}">
-      <defs><linearGradient id="cg-${c.u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${st.color}" stop-opacity=".55"/><stop offset=".55" stop-color="#1a0c24"/><stop offset="1" stop-color="#0b0612"/></linearGradient></defs>
-      <rect x="2" y="2" width="96" height="146" rx="6" fill="url(#cg-${c.u})" stroke="var(--r)" stroke-width="3"/>
-      <rect x="7" y="7" width="86" height="136" rx="3" fill="none" stroke="#ffd36b" stroke-width="1.2" opacity=".85"/>
-      <path d="M7 18q6 0 6-6M93 18q-6 0-6-6M7 132q6 0 6 6M93 132q-6 0-6 6" fill="none" stroke="#ffd36b" stroke-width="1.5"/>
-      <text x="50" y="19" fill="var(--r)" font-size="10" text-anchor="middle" letter-spacing="1">${'★'.repeat(c.r)}</text>
-      <g>${art}</g>
-      <rect x="18" y="116" width="64" height="22" rx="2" fill="#14070f" stroke="#ffd36b" stroke-width="1"/>
-      <text x="50" y="126" fill="#fff4f9" font-family="Georgia, serif" font-size="9" font-weight="700" text-anchor="middle">${esc(sl.n)} · ${esc(sl.name.toUpperCase())}</text>
-      <text x="50" y="135" fill="#ffd36b" font-size="7" text-anchor="middle">Lv ${c.lvl}${c.ref ? ` · R${c.ref}` : ''}</text>
-      ${c.lock ? '<path d="M84 26h8v7h-8zM85.5 26v-3a2.5 2.5 0 0 1 5 0v3" fill="#ffd36b" stroke="#14070f" stroke-width="1"/>' : ''}
-      ${c.isNew ? '<circle cx="14" cy="27" r="4" fill="#ff4f9e" stroke="#fff" stroke-width="1"/>' : ''}
-    </svg>`;
-  }
+  /* A Revelation card face: icons.js revCard (Kat's set art in the window, the frame and slot plate drawn around it). */
+  const cardFace = (c, cls = '') => window.FemcIcons.revCard(c, { cls, base: G.base });
   const subsHtml = c => { const B = BLD(); return `<ul class="g-card-stats"><li class="main"><b>${esc(B.statLine(c.main, B.mainValue(c)))}</b><small>main</small></li>${c.subs.map(([k, v]) => `<li>${esc(B.statLine(k, v))}</li>`).join('')}${Array.from({ length: Math.max(0, 4 - c.subs.length) }, () => '<li class="empty">—</li>').join('')}</ul>`; };
   // A member's card bonus in words: totals of every stat line and the set bonuses that are on.
   function bonusSummary(mid) {

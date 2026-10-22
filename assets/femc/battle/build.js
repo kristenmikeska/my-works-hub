@@ -101,12 +101,87 @@ window.FemcBuild = (() => {
   const OWN_TINT = { jw_starter: '#c9d0dc', jw_mandate: '#2a3a8c', jw_maeumi: '#d9b48a', jw_jade: '#4fbf7f', jw_tortoise: '#9fe8ff', jw_hyphen: '#c4203b',
     jh_starter: '#3a3a40', jh_varsity: '#c4203b', jh_bestfriend: '#f4f0e8', jh_capitalized: '#e0b040', jh_goblin: '#b8202a', jh_treasure: '#7dc4ff',
     mj_starter: '#7a5236', mj_bunny: '#9fc8ff', mj_finalcut: '#9aa0aa', mj_muse: '#e8cf8a', mj_hitscan: '#3a7dff', mj_theia: '#fff2d6' };
+  /* ══════════ S.E.E.S.'s own weapons (Kat's <name>-weapons.jpeg, batch 23; FEMC-ART-TODO.md appendix, weapon sheets) ══════════
+     Seven more sets on the searchers' system: owner-only, a starter that replaces the plain tier-0 one, refines, art, a look.
+     Each set: the Police Box (tier 3 or 4), Mayoido, a full moon's first clear, a link-rank gift (a perk's `gift` below),
+     locked chests and Shuffle Time's Swords while the owner is in the party. Shinjiro's only make sense while he's with the
+     party (8/7–10/3): his are the Police Box and Mayoido (both only list a weapon while its owner is around: core.js
+     shopStock), the Hermit (9/5), his rank-5 gift and Shuffle Swords, and never the locked chests. Aigis's arm guns hit
+     twice like every gun (atk is the gun scale, about 0.62 of the others; `hits` is set below). Akihiko's gloves and Aigis's
+     arm guns are landscape art (artWide), like Jihoon's gloves. Koromaru's knives are cut upright like Haechan's. */
+  const AK = [
+    ['ak_starter', 'starter', 'Old Reds', 0, 32, 0, { crit: 3 }, 'Red leather, black cuffs, white laces: the first pair he ever bought, laced the same way every morning. Crit +3%.', ['Akihiko’s own (he starts with them)']],
+    ['ak_champion', 'red-champion', 'Red Champion', 3, 64, 4400, { stats: { st: 3 }, critX: 15 }, 'Glossy red and gold, a crowned C on the fist and a title belt round the cuff. +3 St, and critical hits deal 15% more.', ['Police Box (tier 3)', 'Shuffle Time · Swords']],
+    ['ak_belt', 'gold-belt', 'Gold Belt', 4, 82, 0, { phys: 12, def: 6 }, 'Black and gold, CHAMP across the knuckles and a championship belt at the wrist. Physical +12%, Defense +6.', ['Empress & Emperor (first clear)', 'Shuffle Time · Swords']],
+    ['ak_wolf', 'silver-wolf', 'Silver Wolf', 4, 80, 0, { crit: 10, down: 15 }, 'Brushed silver with a wolf’s head on each fist, fur cuffs and claws. Crit +10%, and 15% more damage to foes that are Down.', ['Akihiko’s bond (rank 6)']],
+    ['ak_lightning', 'lightning', 'Lightning', 5, 104, 0, { el: { elec: 20 }, stats: { ag: 3 } }, 'Royal blue with gold bolts, crackling at the laces: Polydeuces’s static. +3 Ag, and Elec skills +20%.', ['Locked chests (Tziah and up)', 'Shuffle Time · Swords']],
+    ['ak_midnight', 'midnight', 'Midnight', 6, 126, 15000, { el: { elec: 15 }, crit: 8, spRegen: 3 }, 'Galaxy purple with a crescent moon and star charms: the Dark Hour in a pair of gloves. Elec +15%, crit +8%, and 3 SP back each turn.', ['Mayoido Antiques (tier 6)', 'Shuffle Time · Swords']]
+  ];
+  const YK = [
+    ['yk_starter', 'starter', 'Lacquered Yumi', 0, 32, 0, { acc: 4 }, 'A plain lacquered bow with a red grip wrap and a little tassel. Accuracy +4.', ['Yukari’s own (she starts with it)']],
+    ['yk_feather', 'feather', 'Feather', 3, 64, 4400, { el: { wind: 15 }, evade: 6 }, 'Mint-green wings for limbs, with feathers and jade beads on the string. Wind skills +15%, and better evasion.', ['Police Box (tier 3)', 'Shuffle Time · Swords']],
+    ['yk_heart', 'pink-heart', 'Pink Heart', 4, 80, 0, { heal: 15, nullAil: ['charm'] }, 'Pink ribbons, heart-shaped tips and dangling heart charms. Healing +15%, and she can’t be Charmed.', ['The Lovers (first clear)', 'Shuffle Time · Swords']],
+    ['yk_sakura', 'sakura', 'Sakura', 4, 80, 0, { heal: 20, hpRegen: 3 }, 'A blossoming cherry branch strung with a bell and a pink tassel. Healing +20%, and she regains 3% HP each turn.', ['Yukari’s bond (rank 6)']],
+    ['yk_moon', 'moon', 'Crescent Moon', 5, 102, 0, { el: { wind: 15 }, crit: 10, stats: { ag: 3 } }, 'Night-blue lacquer, crescent tips and star charms on a ribbon. +3 Ag, Wind +15%, and crit +10%.', ['Locked chests (Tziah and up)', 'Shuffle Time · Swords']],
+    ['yk_angel', 'angel', 'Angel', 6, 124, 15000, { heal: 25, spRegen: 4, stats: { ma: 3 } }, 'White wings, gold filigree and pearl chains with a little cross: Isis’s blessing. +3 Ma, healing +25%, and 4 SP back each turn.', ['Mayoido Antiques (tier 6)', 'Shuffle Time · Swords']]
+  ];
+  const JP = [
+    ['jp_starter', 'starter', 'Old Reliable', 0, 32, 0, { crit: 3 }, 'A plain steel sword with a blue grip and a baseball-glove charm. Crit +3%.', ['Junpei’s own (he starts with it)']],
+    ['jp_bat', 'baseball-bat', 'Slugger', 3, 66, 0, { critX: 20, stats: { st: 3 } }, 'A wooden bat with red stitching, a batting-helmet charm and two baseballs on chains. +3 St, and critical hits deal 20% more.', ['The Priestess (first clear)', 'Shuffle Time · Swords']],
+    ['jp_katana', 'katana', 'Katana', 3, 64, 4400, { crit: 10, acc: 4 }, 'Black and red lacing, a red tassel and a little samurai-helmet charm. Crit +10%, and Accuracy +4.', ['Police Box (tier 3)', 'Shuffle Time · Swords']],
+    ['jp_flame', 'flame', 'Hermes Flame', 4, 82, 0, { el: { fire: 20 }, th: 15 }, 'A blade of living fire with a winged-sandal charm: Hermes’s. Fire skills +20%, and his Theurgy fills 15% faster.', ['Junpei’s bond (rank 6)']],
+    ['jp_neon', 'neon', 'Neon', 5, 104, 0, { crit: 8, critX: 12, spRegen: 3 }, 'Cyan-and-violet neon tubing, glowing star charms and a pair of dog tags. Crit +8%, crit damage +12%, and 3 SP back each turn.', ['Locked chests (Tziah and up)', 'Shuffle Time · Swords']],
+    ['jp_cleaver', 'cleaver', 'Trickster', 6, 128, 15000, { phys: 15, stats: { st: 4 } }, 'A huge graffiti-tagged cleaver: hazard tape, a chain, a skull and a baseball. +4 St, and Physical +15%.', ['Mayoido Antiques (tier 6)', 'Shuffle Time · Swords']]
+  ];
+  const MT = [
+    ['mt_starter', 'starter', 'Fencing Foil', 0, 32, 0, { acc: 4 }, 'A plain silver rapier with a black grip and a black tassel, from her fencing club. Accuracy +4.', ['Mitsuru’s own (she starts with it)']],
+    ['mt_ice', 'ice-crystal', 'Diamond Dust', 3, 64, 4400, { el: { ice: 15 }, freeze: 8 }, 'A blade of clear ice with a snowflake guard and snowflake charms. Ice skills +15%, and Freeze lands 8% more often.', ['Police Box (tier 3)', 'Shuffle Time · Swords']],
+    ['mt_queen', 'snow-queen', 'Snow Queen', 4, 84, 0, { el: { ice: 20 }, freeze: 12, stats: { ma: 3 } }, 'An ice crown for a guard, lilac ribbons and star charms. +3 Ma, Ice +20%, and Freeze +12%.', ['The Hierophant (first clear)', 'Shuffle Time · Swords']],
+    ['mt_rose', 'rose', 'Thorned Rose', 4, 80, 0, { crit: 10, ail: 10 }, 'A thorned blade, red roses at the guard and a black ribbon with blood-red drops. Crit +10%, and her ailments land 10% more often.', ['Mitsuru’s bond (rank 6)']],
+    ['mt_gold', 'gold-filigree', 'Gold Filigree', 5, 102, 0, { costCut: 12, th: 15, stats: { ma: 3 } }, 'A gold filigree basket hilt dripping with pearls and tassels: old Kirijo money. +3 Ma, SP costs −12%, and Theurgy +15%.', ['Locked chests (Tziah and up)', 'Shuffle Time · Swords']],
+    ['mt_crest', 'kirijo-crest', 'Kirijo Crest', 6, 128, 15000, { el: { ice: 20 }, crit: 8, critX: 15 }, 'Black and crimson with the Kirijo crest on a silver shell guard. Ice +20%, crit +8%, and critical hits deal 15% more.', ['Mayoido Antiques (tier 6)', 'Shuffle Time · Swords']]
+  ];
+  const AG = [
+    ['ag_starter', 'starter', 'Starter Model', 0, 20, 0, { acc: 4 }, 'Her standard-issue arm: grey plating, a P3 decal and a little tassel charm. Accuracy +4.', ['Aigis’s own (she starts with it)']],
+    ['ag_gold', 'gold-plated', 'Gold Plated', 3, 40, 4400, { stats: { lu: 3 }, crit: 6 }, 'White and gold filigree, brass gears, an amber core and a heart locket on a ribbon. +3 Lu, and crit +6%.', ['Police Box (tier 3)', 'Shuffle Time · Swords']],
+    ['ag_heart', 'papillon-heart', 'Papillon Heart', 4, 50, 0, { def: 6, hpRegen: 3 }, 'Pink and crimson, a big bow, a heart jewel and heart charms. Defense +6, and she regains 3% HP each turn.', ['Aigis’s bond (rank 7)']],
+    ['ag_wing', 'angelic-wing', 'Angelic Wing', 5, 63, 0, { evade: 10, stats: { ag: 3 }, crit: 6 }, 'Pearl-white plating, a wing along the forearm and a blue core. +3 Ag, big evasion, and crit +6%.', ['Locked chests (Tziah and up)', 'Shuffle Time · Swords']],
+    ['ag_cannon', 'siege-cannon', 'Siege Cannon', 5, 64, 0, { phys: 15, stats: { st: 3 } }, 'A gatling barrel, an ammo belt, hazard stripes and a padlock. +3 St, and Physical +15%.', ['Chariot & Justice (first clear)', 'Shuffle Time · Swords']],
+    ['ag_butterfly', 'velvet-butterfly', 'Velvet Butterfly', 6, 78, 15000, { th: 20, crit: 8, stats: { ma: 3 } }, 'Midnight violet with glowing butterfly wings and ribbon charms. +3 Ma, crit +8%, and her Theurgy fills 20% faster.', ['Mayoido Antiques (tier 6)', 'Shuffle Time · Swords']]
+  ];
+  const KM = [
+    ['km_starter', 'starter', 'Trusty Knife', 0, 32, 0, { crit: 3 }, 'A plain steel knife with red and black tassels, carried in his mouth. Crit +3%.', ['Koromaru’s own (he starts with it)']],
+    ['km_bone', 'bone', 'Bone', 3, 64, 4400, { stats: { st: 3 }, hpRegen: 3 }, 'A blade carved from bone, a beast’s skull for a guard, bones on cords. +3 St, and he regains 3% HP each turn.', ['Police Box (tier 3)', 'Shuffle Time · Swords']],
+    ['km_flame', 'flame', 'Cerberus Flame', 4, 80, 0, { el: { fire: 20 }, crit: 6 }, 'A blade of flame with a gold-tasselled ribbon: Cerberus’s. Fire skills +20%, and crit +6%.', ['Koromaru’s bond (rank 6)']],
+    ['km_tag', 'collar-tag', 'Collar Tag', 4, 84, 0, { evade: 8, stats: { ag: 3 }, crit: 6 }, 'A leather-wrapped grip, a studded collar and two dog tags: P3 and S.E.E.S. +3 Ag, better evasion, and crit +6%.', ['Locked chests (Yabbashah and up)', 'Shuffle Time · Swords']],
+    ['km_shrine', 'shrine-bell', 'Shrine Bell', 5, 104, 0, { el: { dark: 15 }, insta: 10 }, 'Black and gold with shrine bells, a red-and-white rope and paper streamers, for Naganaki Shrine. Dark +15%, and Mudo lands 10% more often.', ['The Hanged Man (first clear)', 'Shuffle Time · Swords']],
+    ['km_kunai', 'kunai', 'Kunai', 6, 126, 15000, { crit: 12, critX: 15 }, 'A black kunai with a ring pommel and black ribbons: quick in, quick out. Crit +12%, and critical hits deal 15% more.', ['Mayoido Antiques (tier 6)', 'Shuffle Time · Swords']]
+  ];
+  const SJ = [
+    ['sj_starter', 'starter', 'Old Hatchet', 0, 32, 0, { acc: 4 }, 'A plain, notched axe with a taped grip and a frayed tassel. It steadies his swing: Accuracy +4.', ['Shinjiro’s own (he starts with it)']],
+    ['sj_steel', 'black-steel', 'Black Steel', 4, 84, 6200, { phys: 12, crit: 6 }, 'Black steel, spikes, a skull and red chains: the back-alley look. Physical +12%, and crit +6%.', ['Police Box (tier 4)', 'Shuffle Time · Swords']],
+    ['sj_cleaver', 'kitchen-cleaver', 'Kitchen Cleaver', 5, 100, 0, { crit: 8, hpRegen: 4 }, 'A kitchen cleaver with brass fittings, a ladle charm and a red-and-white cord. Crit +8%, and he regains 4% HP each turn.', ['Shinjiro’s bond (rank 5)']],
+    ['sj_chain', 'chain', 'Chained', 5, 104, 0, { stats: { en: 3 }, def: 8, hpRegen: 3 }, 'A rusted double axe wrapped in chain, a padlock and a shackle hanging off it. +3 En, Defense +8, and he regains 3% HP each turn.', ['The Hermit (first clear)', 'Shuffle Time · Swords']],
+    ['sj_ember', 'ember', 'Ember', 6, 126, 15000, { phys: 10, el: { fire: 15 }, critX: 15 }, 'Charred iron with embers still glowing in the cracks. Physical +10%, Fire +15%, and critical hits deal 15% more.', ['Mayoido Antiques (tier 6)', 'Shuffle Time · Swords']],
+    ['sj_moonlit', 'moonlit', 'Moonlit', 6, 130, 0, { crit: 10, el: { dark: 15 }, stats: { lu: 3 } }, 'A crescent-moon blade full of stars, blue ribbons and moon charms. +3 Lu, crit +10%, and Dark +15%.', ['Shuffle Time · Swords (while he’s in the party)']]
+  ];
+  Object.assign(OWN_TINT, {
+    ak_starter: '#c43b3b', ak_champion: '#e0303a', ak_belt: '#e0b040', ak_wolf: '#c9d0dc', ak_lightning: '#3a7dff', ak_midnight: '#6a4acb',
+    yk_starter: '#a0603a', yk_feather: '#9fe8c8', yk_heart: '#ff8cc0', yk_sakura: '#ffc0d8', yk_moon: '#2a3a8c', yk_angel: '#fff2d6',
+    jp_starter: '#c9d0dc', jp_bat: '#b07a40', jp_katana: '#c4203b', jp_flame: '#ff8a3d', jp_neon: '#5ff0ff', jp_cleaver: '#9aa0aa',
+    mt_starter: '#c9d0dc', mt_ice: '#9fe8ff', mt_queen: '#c9b8ff', mt_rose: '#c4203b', mt_gold: '#e0b040', mt_crest: '#8a1830',
+    ag_starter: '#c9d0dc', ag_gold: '#e0b040', ag_heart: '#ff6a9a', ag_wing: '#f4f0e8', ag_cannon: '#6b6f7a', ag_butterfly: '#8a6aff',
+    km_starter: '#c9d0dc', km_bone: '#e8dcc0', km_flame: '#ff6a2a', km_tag: '#9aa0aa', km_shrine: '#e0b040', km_kunai: '#3a3a40',
+    sj_starter: '#9aa0aa', sj_steel: '#3a3a40', sj_cleaver: '#c9d0dc', sj_chain: '#a0603a', sj_ember: '#ff6a2a', sj_moonlit: '#6ab0ff'
+  });
   // What the drop and gift lines call a set ("one of Haechan’s knives!").
-  const SET_NOUN = { knife: 'knives', rapier: 'rapiers', gloves: 'pairs of gloves', bow: 'bows' };
-  const OWNED = [[HK, 'haechan', 'knife', HK_TINT], [JW, 'jungwon', 'rapier', OWN_TINT], [JH, 'jihoon', 'gloves', OWN_TINT], [MJ, 'minji', 'bow', OWN_TINT]];
+  const SET_NOUN = { knife: 'knives', rapier: 'rapiers', gloves: 'pairs of gloves', bow: 'bows', greatsword: 'swords', gun: 'arm guns', axe: 'axes' };
+  const OWNED = [[HK, 'haechan', 'knife', HK_TINT], [JW, 'jungwon', 'rapier', OWN_TINT], [JH, 'jihoon', 'gloves', OWN_TINT], [MJ, 'minji', 'bow', OWN_TINT],
+    [AK, 'akihiko', 'gloves', OWN_TINT], [YK, 'yukari', 'bow', OWN_TINT], [JP, 'junpei', 'greatsword', OWN_TINT], [MT, 'mitsuru', 'rapier', OWN_TINT],
+    [AG, 'aigis', 'gun', OWN_TINT], [KM, 'koromaru', 'knife', OWN_TINT], [SJ, 'shinjiro', 'axe', OWN_TINT]];
   OWNED.forEach(([list, owner, wtype, tints]) => list.forEach(([id, art, name, tier, atk, price, bonus, desc, src]) => {
     D.gear[id] = { name, slot: 'weapon', wtype, owner, atk, tier, price, rare: tier > 0 && (!price || tier >= 5), named: true, art: WART + owner + '-' + art + '.webp', bonus, src, look: desc, tint: tints[id],
-      artWide: wtype === 'gloves' || undefined, acc: bonus.acc || undefined, stats: bonus.stats || undefined, nullAil: bonus.nullAil || undefined, desc: bonusText(bonus) };
+      artWide: wtype === 'gloves' || wtype === 'gun' || undefined, hits: wtype === 'gun' ? [2, 2] : undefined, acc: bonus.acc || undefined, stats: bonus.stats || undefined, nullAil: bonus.nullAil || undefined, desc: bonusText(bonus) };
     if (tier === 0 && D.startGear && D.startGear[owner]) D.startGear[owner].weapon = id;
   }));
   NAG.forEach(([id]) => { D.gear[id].named = true; });
@@ -125,12 +200,17 @@ window.FemcBuild = (() => {
   }
 
   // Police Box stocks the early ones (practice mode's shop lists non-rare gear of the shop's tier); Mayoido the rare ones.
-  if (D.shops.mayoido) D.shops.mayoido.stock = D.shops.mayoido.stock.concat(['nag_butterfly', 'nag_dragon', 'hk_sunlight', 'jw_hyphen', 'jh_goblin', 'mj_theia']);
+  if (D.shops.mayoido) D.shops.mayoido.stock = D.shops.mayoido.stock.concat(['nag_butterfly', 'nag_dragon', 'hk_sunlight', 'jw_hyphen', 'jh_goblin', 'mj_theia',
+    'ak_midnight', 'yk_angel', 'jp_cleaver', 'mt_crest', 'ag_butterfly', 'km_kunai', 'sj_ember']);
   // Locked chests can hold Crimson Lock and Widow's Kiss; Shuffle Time's Swords and the bosses below give the rest.
-  if (D.map && D.map.chest) D.map.chest.lockedRare = D.map.chest.lockedRare.concat(['nag_lock', 'hk_widow', 'jw_jade', 'jh_capitalized', 'mj_hitscan']);
+  // Batch 23: one for each of S.E.E.S. but Shinjiro (a chest can open long after he's gone). map.js rollChest takes tier <= block + 2.
+  if (D.map && D.map.chest) D.map.chest.lockedRare = D.map.chest.lockedRare.concat(['nag_lock', 'hk_widow', 'jw_jade', 'jh_capitalized', 'mj_hitscan',
+    'ak_lightning', 'yk_moon', 'jp_neon', 'mt_gold', 'ag_wing', 'km_tag']);
   // The Black Rose was Astarion's rank-8 gift until his link was removed (2026-10-21); it's the Hermit's now.
   // A first clear can leave more than one (Fortune: Solar's Prism Orb and Jihoon's Treasure).
-  const BOSS_WEAPON = { priestess: 'nag_ice', empress: 'mj_bunny', hierophant: 'jw_tortoise', lovers: 'nag_moon', chariot: 'hk_disc', hermit: 'nag_rose', fortune: ['nag_prism', 'jh_treasure'], hanged: 'nag_dragon' };
+  // Batch 23: each of S.E.E.S. has one too, from a full moon they're there for (Shinjiro: the Hermit, 9/5, before he leaves).
+  const BOSS_WEAPON = { priestess: ['nag_ice', 'jp_bat'], empress: ['mj_bunny', 'ak_belt'], hierophant: ['jw_tortoise', 'mt_queen'], lovers: ['nag_moon', 'yk_heart'],
+    chariot: ['hk_disc', 'ag_cannon'], hermit: ['nag_rose', 'sj_chain'], fortune: ['nag_prism', 'jh_treasure'], hanged: ['nag_dragon', 'km_shrine'] };
   const bossWeapons = op => [].concat(BOSS_WEAPON[op] || []);
   const CHEST_WEAPON = { id: 'nag_mint', chance: 0.06, fromBlock: 1 };
 
@@ -164,8 +244,8 @@ window.FemcBuild = (() => {
      Six slots by position; each card has a main stat (by slot) and up to four random substats. Two and four cards of one set
      give a bonus. Rarity ★3 / ★4 / ★5 sets the max level (6 / 8 / 10) and the starting substats (1 / 2 / 3). Levels cost
      Tarot Dust and yen; refines (R1 to R3) cost Velvet Thread, yen and, for R3, an Arcana Fragment, and add or raise a substat.
-     Card art doesn't exist yet: the UI draws each face in code. A set's `img` is the hook for Kat's art (FEMC-ART-NEXT.md
-     section 4): set it to an image path once the file exists, and the face shows it. */
+     Faces: icons.js revCard draws the frame, rarity, slot plate and marks around a set's `img` (Kat's art, below); a set
+     without one falls back to its code-drawn glyph. */
   const STATS = {
     hp: { n: 'HP', main: [24, 32, 40], sub: [[6, 9], [8, 12], [10, 15]] },
     sp: { n: 'SP', main: [12, 16, 20], sub: [[3, 5], [4, 6], [5, 8]] },
@@ -210,7 +290,10 @@ window.FemcBuild = (() => {
     butterfly: { name: 'Blue Butterfly', world: 'Persona', color: '#6ab0ff', glyph: 'butterfly', subject: 'a blue butterfly', two: { evade: 6 }, four: { thStart: 20 }, t2: 'Evasion +6', t4: 'Theurgy +20 at the start of every battle' },
     coffin: { name: 'Green Coffin', world: 'Persona', color: '#7dffc0', glyph: 'coffin', subject: 'a coffin under green light', two: { el: { dark: 12 } }, four: { insta: 12, down: 12 }, t2: 'Dark +12%', t4: 'Instant kills +12%; +12% damage to Down foes' }
   };
-  Object.values(SETS).forEach(s => { s.img = null; }); // Kat's card art: 'assets/femc/battle/art/cards/<set>.webp' once it exists
+  // Kat's card art (batch 23, her card-<world>-<subject> paintings, cut by tools/femc-cards.py revcard): every set has one.
+  // CARD_ART_V: bump with battle.js ART_V when the cards are re-cut (the menu and gacha don't see ART_V).
+  const CARD_ART_V = 20;
+  Object.entries(SETS).forEach(([id, s]) => { s.img = `assets/femc/battle/art/cards/${id}.webp?v=${CARD_ART_V}`; });
   const CARD = { maxLvl: { 3: 6, 4: 8, 5: 10 }, growth: 0.15, refineMain: 0.05, maxRef: 3, cap: 160,
     lvlDust: (c) => (4 + c.lvl * 3) * (c.r - 2), lvlYen: (c) => 80 * c.lvl * (c.r - 2),
     refThread: [1, 2, 3], refYen: [500, 1500, 3500], refArcana: [0, 0, 1], dismantle: { 3: 6, 4: 14, 5: 30 } };
@@ -511,23 +594,23 @@ window.FemcBuild = (() => {
     // ── S.E.E.S.
     ['akihiko', 2, 'Roadwork', 'daily', { weekly: 'roadwork', stat: { courage: 2 }, dow: 1 }, 'Once a week (Mondays), a morning run with him gives +2 Courage without using any free time.'],
     ['akihiko', 3, 'Jab-Cross', 'battle', { jab: { chance: 0.3, hi: 0.5, hiRank: 6, power: 40 } }, 'When Solar hits a weakness, Akihiko follows up with a free Strike jab to the same foe (30%; 50% from rank 6).'],
-    ['akihiko', 6, 'Cover Me', 'battle', { cover: {} }, 'Once per battle, when a hit would drop Solar below 25% HP, Akihiko steps in front and takes it at half damage.'],
+    ['akihiko', 6, 'Cover Me', 'battle', { cover: {}, gift: 'ak_wolf' }, 'Once per battle, when a hit would drop Solar below 25% HP, Akihiko steps in front and takes it at half damage. He also brings out his Silver Wolf gloves (one of his six pairs).'],
     ['akihiko', 8, 'All Night', 'tartarus', { allNight: 2 }, 'The party can fight 2 more battles in a row before anyone gets Tired.'],
     ['akihiko', 10, 'Corner Man', 'max', { cornerMan: {} }, 'Once per battle, when Solar is knocked Down she’s back on her feet at once, and her next attack is a guaranteed crit.'],
     ['akihiko', 15, 'Five, Every Day', 'daily', { weekly: 'fiveeveryday', stat: { courage: 1, kindness: 1 }, dow: 3 }, 'Once a week (Wednesdays), the five o’clock run together: +1 Courage and +1 Kindness, without using any free time.'],
     ['yukari', 2, 'Fan Club', 'daily', { areaStat: { area: 'gekkoukan', stat: { charm: 1 } } }, '+1 Charm on every activity at Gekkoukan.'],
     ['yukari', 4, 'Second Opinion', 'battle', { secondOpinion: {} }, 'Once per battle, if Solar ends a turn with an ailment, Yukari cures it for free.'],
-    ['yukari', 6, 'First Aid Kit', 'tartarus', { firstAid: 0.1 }, 'After each win, the party member with the lowest HP recovers 10%.'],
+    ['yukari', 6, 'First Aid Kit', 'tartarus', { firstAid: 0.1, gift: 'yk_sakura' }, 'After each win, the party member with the lowest HP recovers 10%. She also brings out her Sakura bow (one of her six).'],
     ['yukari', 8, 'Second Wind', 'battle', { secondWind: { below: 0.4 } }, 'Once per battle, when everyone in the party is under 40% HP, Yukari casts a free Media.'],
     ['yukari', 10, 'Wind at Your Back', 'max', { windAtBack: { heal: 0.15 } }, 'Solar’s heals restore 15% more and give the target agility up.'],
     ['junpei', 2, 'Bro Discount', 'daily', { discount: { acts: ['wildduck', 'hagakure'], pct: 30 }, actStat: { hagakure: { knowledge: 1 } } }, 'Wild-Duck Burger and Hagakure cost 30% less, and Hagakure gives +1 Knowledge.'],
     ['junpei', 4, 'Clutch Hitter', 'battle', { clutch: { crit: 10 } }, 'Junpei’s crit rate is +10% when the party is under half HP or the fight passes turn 5.'],
-    ['junpei', 6, 'Pinch Hitter', 'battle', { pinchHitter: {} }, 'Once per battle, when Solar Shifts to Junpei, his next physical attack is a guaranteed crit.'],
+    ['junpei', 6, 'Pinch Hitter', 'battle', { pinchHitter: {}, gift: 'jp_flame' }, 'Once per battle, when Solar Shifts to Junpei, his next physical attack is a guaranteed crit. He also brings out his Hermes Flame sword (one of his six).'],
     ['junpei', 8, 'Dugout', 'tartarus', { dugout: 0.8 }, 'Members on the bench earn 80% of the EXP instead of 60%.'],
     ['junpei', 10, 'Grand Slam', 'max', { learn: 'grand_slam' }, 'Solar learns Grand Slam: heavy Strike damage to one foe, always a crit against a Down foe.'],
     ['mitsuru', 2, 'Study Hall', 'daily', { studyHall: { stat: { knowledge: 1 }, exam: { knowledge: 2 } } }, 'Studying at the dorm gives +1 Knowledge (+2 in exam weeks).'],
     ['mitsuru', 4, 'Company Card', 'daily', { shopOff: { shop: 'police', kinds: ['weapon', 'armor'], pct: 10 } }, 'Police Box weapons and armor cost 10% less.'],
-    ['mitsuru', 6, 'Shatter', 'battle', { shatterUp: { dmg: 0.25, freeze: 1 } }, 'Physical hits on a Frozen foe deal 25% more damage, and the party’s Freeze lasts one extra turn.'],
+    ['mitsuru', 6, 'Shatter', 'battle', { shatterUp: { dmg: 0.25, freeze: 1 }, gift: 'mt_rose' }, 'Physical hits on a Frozen foe deal 25% more damage, and the party’s Freeze lasts one extra turn. She also brings out her Thorned Rose rapier (one of her six).'],
     ['mitsuru', 8, 'Field Report', 'tartarus', { fieldReport: {} }, 'The way to the stairs is marked on the node map from the moment the party arrives on a floor.'],
     ['mitsuru', 10, 'Frozen Verdict', 'max', { learn: 'frozen_verdict' }, 'Solar learns Frozen Verdict: medium Ice damage to all foes with a high chance to Freeze.'],
     ['fuuka', 2, 'Experimental Bento', 'tartarus', { nightKit: { night_bento: 1 } }, 'Each night Solar brings a bento that restores 30% SP to the party once.'],
@@ -537,7 +620,7 @@ window.FemcBuild = (() => {
     ['fuuka', 10, 'Oracle Link', 'max', { oracleLink: {} }, 'Once per battle, when the party is in trouble, Fuuka steps in with a full party heal, full SP for one member, or a party-wide Me Patra.'],
     ['aigis', 2, 'Learning Mode', 'daily', { learningMode: { kindness: 1 } }, '+1 Kindness from every link hangout (not rank scenes).'],
     ['aigis', 4, 'Bodyguard Protocol', 'battle', { bodyguard: { chance: 0.3 } }, 'Aigis takes single-target hits aimed at Solar 30% of the time.'],
-    ['aigis', 7, 'Sentry Mode', 'tartarus', { sentry: 3 }, 'Once per night, when the Reaper arrives, Aigis holds it off and it loses track of the party for 3 steps.'],
+    ['aigis', 7, 'Sentry Mode', 'tartarus', { sentry: 3, gift: 'ag_heart' }, 'Once per night, when the Reaper arrives, Aigis holds it off and it loses track of the party for 3 steps. She also fits her Papillon Heart arm (one of her six).'],
     ['aigis', 10, 'Papillon Heart', 'max', { papillon: {} }, 'When Solar Guards, the next hit on her does no damage, and she gets One More.'],
     ['ken', 2, 'Featherman Fan', 'daily', { actStat: { cinema: { courage: 1 }, arcade: { courage: 1 } } }, 'The movie theater and Game Panic give +1 Courage.'],
     ['ken', 4, 'Justice Bolt', 'battle', { justiceBolt: { light: 0.15, insta: 10 } }, 'With Ken in the party, Light skills do 15% more damage and instant kills land 10% more often.'],
@@ -546,11 +629,11 @@ window.FemcBuild = (() => {
     ['ken', 10, 'Featherman Strike', 'max', { learn: 'featherman_strike' }, 'Solar learns Featherman Strike: medium Light damage to all foes, and a guaranteed Down on a Light weakness.'],
     ['koromaru', 2, 'Walkies', 'daily', { weekly: 'walkies', stat: { kindness: 2 }, dow: 4 }, 'Once a week (Thursdays), an evening walk with him gives +2 Kindness without using any free time.'],
     ['koromaru', 4, 'Good Nose', 'tartarus', { goodNose: 1 }, 'One extra chest on every floor.'],
-    ['koromaru', 6, 'Hellhound Hunt', 'battle', { hellhound: { insta: 15 } }, 'The party’s instant-kill skills (Mudo, Hama) land 15% more often against Down foes.'],
+    ['koromaru', 6, 'Hellhound Hunt', 'battle', { hellhound: { insta: 15 }, gift: 'km_flame' }, 'The party’s instant-kill skills (Mudo, Hama) land 15% more often against Down foes. He also brings out his Cerberus Flame knife (one of his six).'],
     ['koromaru', 10, 'Good Dog', 'max', { goodDog: { hp: 0.05, sp: 0.05 } }, 'Every time Solar defeats a foe, she recovers 5% HP and SP.'],
     ['shinjiro', 2, 'Kitchen Duty', 'daily', { kitchenDuty: 1 }, 'Cooking with him becomes an evening activity at the dorm (+3 Proficiency), and the leftovers come along on the next Tartarus night: a dish that heals the party 20%.'],
     ['shinjiro', 3, 'Heavy Hand', 'battle', { heavyHand: { dmg: 0.15 } }, 'Shinjiro’s attacks on Down foes never miss (a Down foe can’t dodge anyway), and they hit 15% harder.'],
-    ['shinjiro', 5, 'Back Alley Rules', 'battle', { backAlley: { chance: 0.25 } }, 'When a foe hits Solar, Shinjiro may counter it for free (25%).'],
+    ['shinjiro', 5, 'Back Alley Rules', 'battle', { backAlley: { chance: 0.25 }, gift: 'sj_cleaver' }, 'When a foe hits Solar, Shinjiro may counter it for free (25%). He also brings out his Kitchen Cleaver axe (one of his six).'],
     ['shinjiro', 10, 'Hard Way Home', 'max', { hardWay: { dmg: 0.4, below: 0.3 } }, 'Below 30% HP, Solar’s physical damage is +40% and she can’t be knocked Down.'],
     ['shinjiro', 15, 'Up to the Knuckle', 'daily', { weekly: 'uptoknuckle', stat: { kindness: 2 }, dow: 0 }, 'Once a week (Sundays), Solar cooks from the recipe card: +2 Kindness, without using any free time.'],
     // ── Visitors
@@ -828,7 +911,7 @@ window.FemcBuild = (() => {
   const TYPE_NAME = { battle: 'Battle', assist: 'Assist', tartarus: 'Tartarus', daily: 'Daily', max: 'MAX' };
 
   return {
-    NAG, HK, JW, JH, MJ, OWNED, STARTER_SWAP, yenBonus, bossWeapons, fits, namedTag, BOSS_WEAPON, CHEST_WEAPON, WREF, wrefOf, wrefCost, refineWeapon, weaponAtk, bonusText, canPay,
+    NAG, HK, JW, JH, MJ, AK, YK, JP, MT, AG, KM, SJ, OWNED, STARTER_SWAP, yenBonus, bossWeapons, fits, namedTag, BOSS_WEAPON, CHEST_WEAPON, WREF, wrefOf, wrefCost, refineWeapon, weaponAtk, bonusText, canPay,
     STATS, SLOTS, SETS, CARD, rollCard, rarityRoll, mainValue, cardName, statLine, addCard, cardById, wearerOf, equipCard, unequipCard, equippedCards,
     levelCost, refineCost, levelCard, refineCard, dismantleCard, cardBonus, setCounts, ensureCards,
     emptyBonus, addBonus, unitBonus, SKILL_CARDS, teachable, teach,

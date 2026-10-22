@@ -1,6 +1,6 @@
 """The building systems, played for real in headless Chrome (femc-game.html, isolated profile, localhost; no player saves).
 
-Run: python3 tests/femc_building.py [--only rules,menu,daily,fight,boss,knives,searchers,practice,migrate,shots] [--screenshots DIR]
+Run: python3 tests/femc_building.py [--only rules,menu,daily,fight,boss,knives,searchers,sees,cardart,practice,migrate,shots] [--screenshots DIR]
 
 Covers: Shuffle Time (real draws through the UI: Cups, a Major Arcana Revelation card, a penalty, Rush's auto-pick, and every
 card type and penalty applied), Revelation cards (drops, equip through the menu, set bonuses applied in battle, level, refine,
@@ -10,7 +10,9 @@ branch, searchers' Assists before they join, a reversed link pausing them), Sola
 a fight, gifts from bonds, a boss drop), Haechan's six knives (his alone: every equip list, shop and Shuffle draw; art,
 bonuses and refines in a real fight; his starter; the rank-7 gift; the Chariot's drop; shops and chests), Jungwon's rapiers,
 Jihoon's gloves and Minji's bows the same way (plus the one-time boss backfill, Treasure's battle yen, and Minji's finish card
-in a real All-Out, screenshotted), save migration (old battle and life-sim saves), zero console errors, and
+in a real All-Out, screenshotted), S.E.E.S.'s seven sets the same way (batch 23: Shinjiro's only while he's in the party,
+the second boss backfill, Aigis's two-hit arm guns, a real fight), the Revelation card art (all 13 sets in the Cards menu,
+Shuffle Time's reveal and the results, at three sizes), save migration (old battle and life-sim saves), zero console errors, and
 screenshots of the new screens at 1000x486, 375x812 and 1440x900."""
 import argparse, base64, json, pathlib, time
 from femc_browser import Page
@@ -342,7 +344,7 @@ try:
         errs = p.console(); ok(not errs, errs)
         print('Boss: naginata drop and Shuffle Time OK', flush=True)
 
-    # ── Haechan's six knives (FEMC-ART-TODO section 5): data, sources, who can hold them, the menu, a real fight ──
+    # ── Haechan's six knives (FEMC-ART-TODO appendix, weapon sheets): data, sources, who can hold them, the menu, a real fight ──
     if want('knives'):
         setup(p, day='12/12', ranks={'haechan': 6}, mats={'tarot_dust': 400, 'velvet_thread': 12, 'arcana_fragment': 2}, party=['haechan', 'koromaru'])
         r = p.eval(r"""(async()=>{
@@ -368,7 +370,7 @@ try:
           // Sources: the Police Box (life sim, tier 3), Mayoido, locked chests, the Chariot, the rank-7 gift, Shuffle Time's Swords.
           FemcGame.S.tartarus.bosses=['priestess','hierophant'];
           out.police=FemcGame.shopStock('police').filter(x=>/^hk_/.test(x.id)).map(x=>[x.id,x.who,!!x.art]);
-          out.mayoido=D.shops.mayoido.stock.includes('hk_sunlight'); out.chest=D.map.chest.lockedRare.includes('hk_widow'); out.boss=B.BOSS_WEAPON.chariot;
+          out.mayoido=D.shops.mayoido.stock.includes('hk_sunlight'); out.chest=D.map.chest.lockedRare.includes('hk_widow'); out.boss=B.bossWeapons('chariot');
           const g=BS.normalize(BS.fresh()); out.gift5=B.syncBonds(g,{haechan:6}).length; out.gift7=B.syncBonds(g,{haechan:7}).map(x=>x.gear); out.gift7b=B.syncBonds(g,{haechan:9}).length;
           const draws=party=>{const s=BS.normalize(BS.fresh()),R=E.rng(5),got=new Set();for(let i=0;i<60;i++){const res=B.applyShuffle(s,{kind:'minor',suit:'swords',rank:9},{R,tier:6,party});if(res.fx.gear)got.add(res.fx.gear);}return [...got]};
           const without=draws(['solar','akihiko']), withH=draws(['solar','haechan']);
@@ -378,15 +380,15 @@ try:
           return out;})()""")
         ok([x[0] for x in r['gear']] == ['hk_starter', 'hk_mixdown', 'hk_widow', 'hk_harbor', 'hk_disc', 'hk_sunlight'] and all(x[1] == 'knife' and x[2] == 'haechan' and x[4] and x[5] and x[6] for x in r['gear']), r['gear'])
         ok(all(w > 200 and h > 500 for _, w, h in r['art']), ('weapon art decodes, tall', r['art']))
-        ok(r['start'] == 'hk_starter' and r['koroStart'] == 'knife0', 'Haechan starts with his own knife; Koromaru keeps the Combat Knife')
+        ok(r['start'] == 'hk_starter' and r['koroStart'] == 'km_starter', 'Haechan starts with his own knife; Koromaru with his own (batch 23)')
         ok(r['fits'] == {'h': True, 'k': False, 'hk0': True}, r['fits'])
         ok(set(r['cand']['h']) >= {'hk_starter', 'hk_mixdown', 'hk_widow', 'hk_harbor', 'hk_disc', 'hk_sunlight', 'knife3'} and not any(x.startswith('hk_') for x in r['cand']['k']), r['cand'])
-        ok(r['koroGear'] == 'knife0', ('a hand-edited save cannot arm Koromaru with one', r['koroGear']))
-        ok(r['migr'] == ['hk_starter', 'knife0'], r['migr'])
+        ok(r['koroGear'] == 'km_starter', ('a hand-edited save cannot arm Koromaru with one', r['koroGear']))
+        ok(r['migr'] == ['hk_starter', 'km_starter'], r['migr'])
         b = r['bonus']
         ok(b['th'] == 25 and b['sp'] == 3 and b['crit'] == 14 and b['critX'] == 18 and b['light'] == 20 and b['a0'] == 84 and b['a2'] == round(84 * 1.12) and abs(b['crit2'] - 14 * 1.3) < 1e-6 and b['starterNoRefine'] is None, b)
         ok(r['police'] == [['hk_harbor', 'Haechan', True]], ('the Police Box sells Harbor Watch, for Haechan only', r['police']))
-        ok(r['mayoido'] and r['chest'] and r['boss'] == 'hk_disc', 'Mayoido, locked chests, the Chariot')
+        ok(r['mayoido'] and r['chest'] and 'hk_disc' in r['boss'], ('Mayoido, locked chests, the Chariot (with Aigis’s cannon since batch 23)', r['boss']))
         ok(r['gift5'] == 0 and r['gift7'] == ['hk_mixdown'] and r['gift7b'] == 0, ('Mixdown arrives once, at rank 7', r))
         ok(r['shuffle']['without'] == [] and set(r['shuffle']['withH']) <= {'hk_harbor', 'hk_widow', 'hk_disc', 'hk_sunlight'} and r['shuffle']['withH'], r['shuffle'])
         ok(r['tag'] == ' (one of Haechan’s knives!)' and 'Crit +14%' in r['line'], (r['tag'], r['line']))
@@ -421,9 +423,9 @@ try:
     # ── Jungwon's rapiers, Jihoon's gloves, Minji's bows (batch 22): the knives' checks for each, a real fight, an All-Out ──
     if want('searchers'):
         SETS = {
-            'jungwon': {'pre': 'jw_', 'wtype': 'rapier', 'other': 'mitsuru', 'plain': 'rapier0', 'gift': ('jw_maeumi', 6), 'police': 'jw_mandate', 'mayoido': 'jw_hyphen', 'chest': 'jw_jade', 'boss': ('hierophant', 'jw_tortoise'), 'art': 'jungwon-starter', 'noun': 'rapiers'},
-            'jihoon': {'pre': 'jh_', 'wtype': 'gloves', 'other': 'akihiko', 'plain': 'gloves0', 'gift': ('jh_bestfriend', 6), 'police': 'jh_varsity', 'mayoido': 'jh_goblin', 'chest': 'jh_capitalized', 'boss': ('fortune', 'jh_treasure'), 'art': 'jihoon-starter', 'noun': 'pairs of gloves'},
-            'minji': {'pre': 'mj_', 'wtype': 'bow', 'other': 'yukari', 'plain': 'bow0', 'gift': ('mj_muse', 5), 'police': 'mj_finalcut', 'mayoido': 'mj_theia', 'chest': 'mj_hitscan', 'boss': ('empress', 'mj_bunny'), 'art': 'minji-starter', 'noun': 'bows'},
+            'jungwon': {'pre': 'jw_', 'wtype': 'rapier', 'other': 'mitsuru', 'otherOwn': 'mt_starter', 'plain': 'rapier0', 'gift': ('jw_maeumi', 6), 'police': 'jw_mandate', 'mayoido': 'jw_hyphen', 'chest': 'jw_jade', 'boss': ('hierophant', 'jw_tortoise'), 'art': 'jungwon-starter', 'noun': 'rapiers'},
+            'jihoon': {'pre': 'jh_', 'wtype': 'gloves', 'other': 'akihiko', 'otherOwn': 'ak_starter', 'plain': 'gloves0', 'gift': ('jh_bestfriend', 6), 'police': 'jh_varsity', 'mayoido': 'jh_goblin', 'chest': 'jh_capitalized', 'boss': ('fortune', 'jh_treasure'), 'art': 'jihoon-starter', 'noun': 'pairs of gloves'},
+            'minji': {'pre': 'mj_', 'wtype': 'bow', 'other': 'yukari', 'otherOwn': 'yk_starter', 'plain': 'bow0', 'gift': ('mj_muse', 5), 'police': 'mj_finalcut', 'mayoido': 'mj_theia', 'chest': 'mj_hitscan', 'boss': ('empress', 'mj_bunny'), 'art': 'minji-starter', 'noun': 'bows'},
         }
         setup(p, day='12/12', ranks={'jungwon': 4, 'jihoon': 4, 'minji': 4}, mats={'tarot_dust': 400, 'velvet_thread': 12, 'arcana_fragment': 2}, party=['jungwon', 'jihoon', 'minji'])
         r = p.eval(r"""(async()=>{
@@ -467,10 +469,10 @@ try:
             ok(len(o['ids']) == 6 and all(x[1] and x[2] and x[3] and x[4] and (x[5] or x[0].endswith('starter')) for x in o['gear']), (mid, o['gear']))  # a starter's accuracy shows through gearLine, not desc
             ok(all(w > 200 and h > 150 for _, w, h, *_ in o['art']), (mid, 'art decodes', o['art']))
             ok(all((w > h) == (mid == 'jihoon') and wide == (mid == 'jihoon') for _, w, h, wide in o['art']), (mid, 'tall art, gloves wide', o['art']))
-            ok(o['start'] == c['pre'] + 'starter' and o['otherStart'] == c['plain'], (mid, 'own starter; S.E.E.S. keep the plain one', o['start'], o['otherStart']))
+            ok(o['start'] == c['pre'] + 'starter' and o['otherStart'] == c['otherOwn'], (mid, 'own starter; S.E.E.S. have their own too (batch 23)', o['start'], o['otherStart']))
             ok(o['fits'] == [True, False] and o['candOther'] == [] and all(x.startswith(c['pre']) or not x.startswith(('jw_', 'jh_', 'mj_', 'hk_')) for x in o['cand']), (mid, o['fits'], o['candOther'], o['cand']))
-            ok(o['otherGear'] == c['plain'], (mid, 'a hand-edited save cannot arm', c['other']))
-            ok(o['migr'] == [c['pre'] + 'starter', c['plain']], (mid, 'starter swap', o['migr']))
+            ok(o['otherGear'] == c['otherOwn'], (mid, 'a hand-edited save cannot arm', c['other']))
+            ok(o['migr'] == [c['pre'] + 'starter', c['otherOwn']], (mid, 'starter swap', o['migr']))
             ok(o['refine'][1] == round(o['refine'][0] * 1.06) and o['refine'][2] is None, (mid, 'refine', o['refine']))
             ok(o['police'] == [[c['police'], mid.capitalize(), True, mid == 'jihoon']], (mid, 'Police Box, for them only', o['police']))
             ok(o['mayoido'] and o['chest'] and c['boss'][1] in o['boss'], (mid, 'Mayoido, locked chests, boss'))
@@ -480,7 +482,7 @@ try:
         b = r['bon']
         ok(b['tortoise'] == 20 and b['hyphen'] == [20, 10] and b['treasure'] == [5, 15] and b['hitscan'] == [14, 10] and b['theia'] == 20, b)
         ok(r['yen'] == [15, 0], ('Treasure yen only while Jihoon fights', r['yen']))
-        ok(r['backfill'] == [1, 1, 1, 1, 1, 0] and r['flag'] == 1 and r['again'] == 0, ('one-time boss backfill', r['backfill'], r['again']))
+        ok(r['backfill'] == [1, 1, 1, 1, 1, 0] and r['flag'] == 2 and r['again'] == 0, ('one-time boss backfill', r['backfill'], r['again']))
         # The menu: gifts arrive with the ranks; each list shows their own with art (gloves in the wide box).
         p.eval("(()=>{const G=FemcGame;G.progress('jungwon').rank=6;G.progress('jihoon').rank=6;G.progress('minji').rank=5;G.save();})()")
         menu(p, 'equip')
@@ -532,6 +534,172 @@ try:
         results['searchers']['finish'] = fin['src']
         errs = p.console(); ok(not errs, errs)
         print("Searchers' weapons: data, art, owner-only lists, sources, gifts, backfill, menu, refine, real fight, Minji's All-Out finish card OK", flush=True)
+
+    # ── S.E.E.S.'s own weapons (batch 23): the searchers' checks for all seven, Shinjiro's window, a real fight ──
+    if want('sees'):
+        SEES = {
+            'akihiko': {'pre': 'ak_', 'wtype': 'gloves', 'plain': 'gloves0', 'gift': ('ak_wolf', 6), 'police': 'ak_champion', 'mayoido': 'ak_midnight', 'chest': 'ak_lightning', 'boss': ('empress', 'ak_belt'), 'wide': True, 'noun': 'pairs of gloves'},
+            'yukari': {'pre': 'yk_', 'wtype': 'bow', 'plain': 'bow0', 'gift': ('yk_sakura', 6), 'police': 'yk_feather', 'mayoido': 'yk_angel', 'chest': 'yk_moon', 'boss': ('lovers', 'yk_heart'), 'wide': False, 'noun': 'bows'},
+            'junpei': {'pre': 'jp_', 'wtype': 'greatsword', 'plain': 'greatsword0', 'gift': ('jp_flame', 6), 'police': 'jp_katana', 'mayoido': 'jp_cleaver', 'chest': 'jp_neon', 'boss': ('priestess', 'jp_bat'), 'wide': False, 'noun': 'swords'},
+            'mitsuru': {'pre': 'mt_', 'wtype': 'rapier', 'plain': 'rapier0', 'gift': ('mt_rose', 6), 'police': 'mt_ice', 'mayoido': 'mt_crest', 'chest': 'mt_gold', 'boss': ('hierophant', 'mt_queen'), 'wide': False, 'noun': 'rapiers'},
+            'aigis': {'pre': 'ag_', 'wtype': 'gun', 'plain': 'gun0', 'gift': ('ag_heart', 7), 'police': 'ag_gold', 'mayoido': 'ag_butterfly', 'chest': 'ag_wing', 'boss': ('chariot', 'ag_cannon'), 'wide': True, 'noun': 'arm guns'},
+            'koromaru': {'pre': 'km_', 'wtype': 'knife', 'plain': 'knife0', 'gift': ('km_flame', 6), 'police': 'km_bone', 'mayoido': 'km_kunai', 'chest': 'km_tag', 'boss': ('hanged', 'km_shrine'), 'wide': False, 'noun': 'knives'},
+            'shinjiro': {'pre': 'sj_', 'wtype': 'axe', 'plain': 'axe0', 'gift': ('sj_cleaver', 5), 'police': 'sj_steel', 'mayoido': 'sj_ember', 'chest': None, 'boss': ('hermit', 'sj_chain'), 'wide': False, 'noun': 'axes'},
+        }
+        setup(p, day='9/1', ranks={m: 4 for m in SEES}, mats={'tarot_dust': 600, 'velvet_thread': 20, 'arcana_fragment': 2}, party=['akihiko', 'aigis', 'koromaru'])
+        r = p.eval(r"""(async()=>{
+          const B=FemcBuild,D=FEMC_BATTLE_DATA,BS=FemcBattleSave,E=FemcBattleEngine,G=FemcGame,SEES=%s,out={};
+          const bosses0=G.S.tartarus.bosses.slice(); G.S.tartarus.bosses=['magician','priestess','empress','hierophant','lovers'];
+          const police=G.shopStock('police'), mayoido=G.shopStock('mayoido');
+          for(const [mid,c] of Object.entries(SEES)){
+            const o=out[mid]={}, ids=Object.keys(D.gear).filter(k=>k.startsWith(c.pre));
+            o.ids=ids; o.gear=ids.map(id=>{const g=D.gear[id];return [id,g.wtype===c.wtype,g.owner===mid,!!g.art,!!g.look,!!g.desc||id.endsWith('starter'),g.tier]});
+            o.art=await Promise.all(ids.map(id=>new Promise(res=>{const i=new Image();i.onload=()=>res([id,i.naturalWidth,i.naturalHeight,!!D.gear[id].artWide]);i.onerror=()=>res([id,0,0,false]);i.src=D.gear[id].art;})));
+            o.start=D.startGear[mid].weapon;
+            o.hits=ids.map(id=>JSON.stringify(D.gear[id].hits||null));
+            const other=D.party.find(m=>m.wtype===c.wtype&&m.id!==mid);
+            o.fits=[B.fits(D.gear[c.mayoido],mid), other?B.fits(D.gear[c.mayoido],other.id):false];
+            const t=BS.normalize(BS.fresh()); ids.forEach(id=>{t.gear.owned[id]=1});
+            o.cand=BS.candidates(t,mid,'weapon').filter(x=>x.startsWith(c.pre)).length;
+            o.candOther=other?BS.candidates(t,other.id,'weapon').filter(x=>x.startsWith(c.pre)):[];
+            // An old save still on the plain tier-0 weapon swaps to the starter.
+            const old=BS.fromRaw({v:4,lvl:30,gear:{owned:{},eq:{[mid]:{weapon:c.plain,armor:'armor1',acc:null}}}});
+            o.migr=old.gear.eq[mid].weapon;
+            t.mats={tarot_dust:900,velvet_thread:30,arcana_fragment:4}; t.yen=999999; const a0=B.weaponAtk(t,c.mayoido); B.refineWeapon(t,c.mayoido); B.refineWeapon(t,c.mayoido);
+            o.refine=[a0,B.weaponAtk(t,c.mayoido),B.wrefOf(t,c.mayoido),B.wrefCost(t,o.start)];
+            o.police=police.filter(x=>x.id.startsWith(c.pre)).map(x=>[x.id,x.who,!!x.art,x.wide]);
+            o.mayoido=mayoido.filter(x=>x.id.startsWith(c.pre)).map(x=>x.id);
+            o.chest=D.map.chest.lockedRare.filter(x=>x.startsWith(c.pre)); o.boss=B.bossWeapons(c.boss[0]);
+            const g=BS.normalize(BS.fresh()); o.giftBefore=B.syncBonds(g,{[mid]:c.gift[1]-1}).length; o.gift=B.syncBonds(g,{[mid]:c.gift[1]}).map(x=>x.gear); o.giftAgain=B.syncBonds(g,{[mid]:10}).length;
+            const draws=party=>{const s=BS.normalize(BS.fresh()),R=E.rng(5),got=new Set();for(let i=0;i<120;i++){const res=B.applyShuffle(s,{kind:'minor',suit:'swords',rank:9},{R,tier:7,party});if(res.fx.gear)got.add(res.fx.gear);}return [...got]};
+            o.shufWithout=draws(['solar','haechan','jungwon']).filter(x=>x.startsWith(c.pre)); o.shufWith=draws(['solar',mid]).filter(x=>x.startsWith(c.pre)).sort();
+            o.tag=B.namedTag(c.mayoido); o.line=BS.gearLine(c.mayoido);
+          }
+          // Shinjiro leaves on 10/3: from then on no shop stocks his.
+          const day=G.S.day; G.S.day=G.dayOf('10/10');
+          out.after={police:G.shopStock('police').filter(x=>/^sj_/.test(x.id)).length, mayoido:G.shopStock('mayoido').filter(x=>/^sj_/.test(x.id)).length, aki:G.shopStock('police').some(x=>x.id==='ak_champion')};
+          G.S.day=day; G.S.tartarus.bosses=bosses0; // (a cleared full moon would play Fuuka's evolution on the next night)
+          // The one-time backfill, second round: a save from batch 22 (ownBoss 1) that cleared every full moon gets S.E.E.S.'s boss weapons once.
+          const all=['priestess','empress','hierophant','lovers','chariot','hermit','fortune','hanged'];
+          const bf=BS.fromRaw({v:4,lvl:50,ownBoss:1,ops:{cleared:all},gear:{owned:{mj_bunny:1},eq:{}}});
+          out.backfill={got:Object.values(SEES).map(c=>bf.gear.owned[c.boss[1]]||0), flag:bf.ownBoss};
+          delete bf.gear.owned.ak_belt; out.backfill.again=BS.normalize(bf).gear.owned.ak_belt||0;
+          // Aigis's arm guns hit twice like every gun; Jihoon's gloves stay his.
+          const ax=BS.normalize(BS.fresh()); ax.gear.owned.ag_cannon=1; ax.gear.eq.aigis={weapon:'ag_cannon',armor:'armor0',acc:null};
+          const au=E.buildUnit('aigis',ax); out.gun={whits:au.whits,atk:au.atk};
+          return out;})()""" % json.dumps(SEES))
+        for mid, c in SEES.items():
+            o = r[mid]
+            ok(len(o['ids']) == 6 and all(x[1] and x[2] and x[3] and x[4] and x[5] for x in o['gear']), (mid, o['gear']))
+            ok(all(w > 200 and h > 150 for _, w, h, _w in o['art']), (mid, 'art decodes', o['art']))
+            ok(all((w > h) == c['wide'] and wide == c['wide'] for _, w, h, wide in o['art']), (mid, 'tall art; gloves and arm guns wide', o['art']))
+            ok(o['start'] == c['pre'] + 'starter' and o['migr'] == c['pre'] + 'starter', (mid, 'own starter; old saves swap', o['start'], o['migr']))
+            ok(all(h == ('[2,2]' if mid == 'aigis' else 'null') for h in o['hits']), (mid, 'guns hit twice', o['hits']))
+            ok(o['fits'] == [True, False] and o['cand'] == 6 and o['candOther'] == [], (mid, 'owner only', o['fits'], o['cand'], o['candOther']))
+            ok(o['refine'][1] == round(o['refine'][0] * 1.12) and o['refine'][2] == 2 and o['refine'][3] is None, (mid, 'refine', o['refine']))
+            ok(o['police'] == [[c['police'], mid.capitalize(), True, c['wide']]], (mid, 'Police Box, for them only', o['police']))
+            ok(o['mayoido'] == [c['mayoido']], (mid, 'Mayoido', o['mayoido']))
+            ok(o['chest'] == ([c['chest']] if c['chest'] else []) and c['boss'][1] in o['boss'], (mid, 'locked chests and boss', o['chest'], o['boss']))
+            ok(o['giftBefore'] == 0 and o['gift'] == [c['gift'][0]] and o['giftAgain'] == 0, (mid, 'rank gift once', o['giftBefore'], o['gift'], o['giftAgain']))
+            ok(o['shufWithout'] == [] and o['shufWith'] and not set(o['shufWith']) & {c['pre'] + 'starter', c['gift'][0]}, (mid, 'Shuffle Swords only with them in the party', o['shufWithout'], o['shufWith']))
+            ok(o['tag'] == ' (one of %s’s %s!)' % (mid.capitalize(), c['noun']) and o['line'], (mid, o['tag'], o['line']))
+        ok(r['after'] == {'police': 0, 'mayoido': 0, 'aki': True}, ('nothing of Shinjiro’s on sale after he leaves', r['after']))
+        ok(r['backfill']['got'] == [1] * 7 and r['backfill']['flag'] == 2 and r['backfill']['again'] == 0, ('batch-23 boss backfill, once', r['backfill']))
+        ok(r['gun']['whits'] == [2, 2] and r['gun']['atk'] == 64, r['gun'])
+        # The menu: each gift arrives with its rank; each list has their own with art (gloves and arm guns in the wide box); refine.
+        p.eval("(()=>{const G=FemcGame;%s;G.save();})()" % ';'.join("G.progress('%s').rank=%d" % (m, c['gift'][1]) for m, c in SEES.items()))
+        menu(p, 'equip')
+        for mid, c in SEES.items():
+            click(p, '[data-eq="%s"]' % mid)
+            ok(p.eval(B + ".gear.owned.%s" % c['gift'][0]) == 1, (mid, 'gift synced'))
+            ok(p.eval("document.querySelector('[data-slot=weapon] img.g-eq-art').getAttribute('src').includes('weapons/%s-starter.webp')" % mid), (mid, 'starter equipped with art'))
+            click(p, '[data-slot="weapon"]')
+            ok(p.eval("!!document.querySelector('[data-pick=%s] img.g-eq-art')" % c['gift'][0]), (mid, 'gift in the list with art'))
+            click(p, '[data-pick="%s"]' % c['gift'][0])
+            ok(p.eval("document.querySelector('[data-slot=weapon] img.g-eq-art').classList.contains('wide')") == c['wide'], (mid, 'wide box only for gloves and arm guns'))
+            click(p, '[data-refine="%s"]' % c['gift'][0])
+            ok(p.eval(B + ".wref.%s" % c['gift'][0]) == 1, (mid, 'refine through the menu'))
+        for w, h, name in [(1000, 486, '1000x486'), (375, 812, '375x812'), (1440, 900, '1440x900')]:
+            view(p, w, h)
+            for mid in ('akihiko', 'aigis', 'koromaru', 'shinjiro'):
+                menu(p, 'equip'); click(p, '[data-eq="%s"]' % mid); click(p, '[data-slot="weapon"]'); no_scroll(p, mid + ' weapons ' + name)
+                p.eval("document.querySelectorAll('.g-toast').forEach(t=>t.remove())"); shot(p, 'sees-%s-%s' % (mid, name))
+        view(p, 1280, 850)
+        p.eval("FemcMenu.close()")
+        # A real Tartarus fight: Akihiko's Silver Wolf (+1), Aigis's Papillon Heart (two hits), Koromaru's Cerberus Flame on their units.
+        night(p, ['akihiko', 'aigis', 'koromaru'])
+        p.eval("window.__btGroup=['pesce','pesce'];window.__want='shadow';document.querySelector('[data-go=run],[data-go=cont]').click()")
+        drive(p, "FemcBattle.screen()==='battle' && !!FemcBattle.B", 90)
+        u = p.eval("(()=>{const P=FemcBattle.B.party(),f=m=>P.find(x=>x.mid===m);return {ak:[f('akihiko').atk,f('akihiko').critRate||f('akihiko').crit||0],ag:[f('aigis').atk,f('aigis').whits,f('aigis').hpRegen],km:[f('koromaru').atk,(f('koromaru').elBoost||{}).fire]}})()")
+        ok(u['ak'][0] == round(80 * 1.06) and u['ag'][0] == round(50 * 1.06) and u['ag'][1] == [2, 2] and u['km'][0] == round(80 * 1.06) and abs(u['km'][1] - (1 + 20 * 1.15 / 100)) < 1e-6, u)
+        p.eval("window.__hoStay=false;FemcBattle.hoFinish('retreat')"); p.top(); p.wait("!document.querySelector('.g-dh')", 30)
+        # The Police Box through the real shop screen: all seven on the shelf, the wide art beside (not over) its name.
+        p.eval("(()=>{const G=FemcGame;G.S.tartarus.bosses=['magician','priestess','empress','hierophant','lovers'];G.S.slot='after';G.S.spent={};G.save();})()")
+        for w, h, name in [(1000, 486, '1000x486'), (375, 812, '375x812'), (1440, 900, '1440x900')]:
+            view(p, w, h)
+            p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove());FemcGameUI.goOut('after','mall')")
+            click(p, '[data-act=police]')
+            p.wait("!!document.querySelector('.g-shop-list .g-act') || !!document.querySelector('.g-activity-preview:not(.out) [data-confirm]')", 10)
+            p.eval("document.querySelector('.g-activity-preview:not(.out) [data-confirm]')?.click()")
+            p.wait("!!document.querySelector('.g-shop-list .g-act')", 10)
+            shelf = p.eval(r"""(()=>{const rows=[...document.querySelectorAll('.g-shop-list .g-act')];
+              return {names:rows.map(r=>r.querySelector('b').textContent), overlap:rows.filter(r=>{const i=r.querySelector('img'),t=r.querySelector('span');return i&&t&&i.getBoundingClientRect().right>t.getBoundingClientRect().left+1}).map(r=>r.querySelector('b').textContent)}})()""")
+            want_names = ['Red Champion', 'Feather', 'Katana', 'Diamond Dust', 'Gold Plated', 'Bone', 'Black Steel']
+            ok(all(n in shelf['names'] for n in want_names) and not shelf['overlap'], (name, 'Police Box shelf', shelf))
+            p.eval("document.querySelectorAll('.g-toast').forEach(t=>t.remove());[...document.querySelectorAll('.g-shop-list .g-act')].find(r=>r.textContent.includes('Red Champion')).scrollIntoView({block:'center'})")
+            no_scroll(p, 'police ' + name); shot(p, 'sees-police-' + name)
+        view(p, 1280, 850)
+        p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove());FemcGame.S.tartarus.bosses=[];FemcGame.save()")
+        results['sees'] = {m: {'police': c['police'], 'mayoido': c['mayoido'], 'chest': c['chest'], 'boss': c['boss'], 'gift': c['gift'], 'shuffle': r[m]['shufWith']} for m, c in SEES.items()}
+        results['sees']['unit'] = u
+        errs = p.console(); ok(not errs, errs)
+        print("S.E.E.S. weapons: data, art, owner-only lists, starters and migration, sources, gifts, backfill, Shinjiro's window, menu, refine, real fight OK", flush=True)
+
+    # ── Revelation card art (batch 23): every set's art, the faces in the Cards menu, Shuffle Time's reveal and the results ──
+    if want('cardart'):
+        sizes = [(1000, 486, '1000x486'), (375, 812, '375x812'), (1440, 900, '1440x900')]
+        setup(p, ranks={'kiriko': 3}, mats={'tarot_dust': 300, 'velvet_thread': 8})
+        a = p.eval(r"""(async()=>{const B=FemcBuild;return Promise.all(Object.entries(B.SETS).map(([id,s])=>new Promise(res=>{const i=new Image();i.onload=()=>res([id,s.img,i.naturalWidth,i.naturalHeight]);i.onerror=()=>res([id,s.img,0,0]);i.src=s.img;})))})()""")
+        ok(len(a) == 13 and all(src.startswith('assets/femc/battle/art/cards/%s.webp' % k) and w == 540 and h == 700 for k, src, w, h in a), ('all 13 sets have art', a))
+        p.eval(r"""(()=>{const b=FemcGame.S.battleSave,B=FemcBuild,R=FemcBattleEngine.rng(23);
+          Object.keys(B.SETS).forEach((set,i)=>{const c=B.rollCard(R,{set,slot:B.SLOTS[i%6].id,r:3+i%3});B.addCard(b,c);if(i<6)B.equipCard(b,'solar',c.u);if(i===2)c.lock=true;});
+          FemcGame.saveQuiet();})()""")
+        # The face: the art fills the window (x 6–94, y 6–120); the slot plate sits below it (y 123–145), the marks in corners.
+        LAYOUT = r"""(()=>{const out=[];document.querySelectorAll('svg.g-cardface').forEach(svg=>{const im=svg.querySelector('image'),r=svg.getBoundingClientRect(),k=r.width/100;
+          const plate=[...svg.querySelectorAll('rect')].find(x=>x.getAttribute('y')==='123');
+          out.push({set:svg.dataset.set,img:!!im&&im.getAttribute('href').includes('/cards/'+svg.dataset.set+'.webp'),win:im?[+im.getAttribute('y'),+im.getAttribute('height')]:null,plateTop:plate?+plate.getAttribute('y'):null,w:Math.round(r.width),h:Math.round(r.height),ar:+(r.height/r.width).toFixed(2)})});return out})()"""
+        for w, h, name in sizes:
+            view(p, w, h)
+            menu(p, 'cards'); click(p, '.g-cbox-card')
+            faces = p.eval(LAYOUT)
+            ok(len(faces) >= 13 + 6 and all(f['img'] and f['win'] == [6, 114] and f['plateTop'] == 123 and f['ar'] == 1.5 for f in faces), (name, 'every face shows its art above the plate', faces[:3]))
+            ok(len({f['set'] for f in faces}) == 13, (name, 'all 13 sets on screen'))
+            no_scroll(p, 'cards ' + name); shot(p, 'cardart-menu-' + name)
+        view(p, 1280, 850)
+        p.eval("FemcMenu.close()")
+        # Shuffle Time: the Star gives a card; its face shows in the reveal and in the results.
+        night(p, ['akihiko', 'yukari', 'junpei'])
+        p.eval("window.__btShuffle=true;window.__btShuffleHand=[{kind:'major',id:'star',num:'XVII',name:'The Star',out:'card',minR:4,five:0.5},{kind:'minor',suit:'cups',rank:1,num:'I',name:'I of Cups'}];window.__btGroup=['maya'];window.__want='shadow';document.querySelector('[data-go=run],[data-go=cont]').click()")
+        drive(p, "FemcBattle.screen()==='shuffle' && FemcBattle.ctl?.kind==='shuffle'", 120)
+        # Pick the Star by hand (the driver would click Continue), then look at the reveal at each size.
+        p.eval("FemcBattle.ctl.pickValue(0)")
+        p.wait("!!document.querySelector('.bt-sh-out:not([hidden]) svg.bt-sh-rev image') && !!document.querySelector('[data-sh-ok]') && !document.querySelector('.bt-shuffle .row[hidden]')", 30)
+        for w, h, name in sizes:
+            view(p, w, h); p.eval("new Promise(r=>setTimeout(r,250))")
+            fit = p.eval("(()=>{const o=document.querySelector('.bt-sh-out').getBoundingClientRect(),c=document.querySelector('.bt-sh-rev').getBoundingClientRect(),b=document.querySelector('[data-sh-ok]').getBoundingClientRect();return {card:[Math.round(c.width),Math.round(c.height)],inside:c.left>=o.left-12&&c.right<=o.right+12&&c.top>=o.top-4&&c.bottom<=o.bottom+4,btn:b.bottom<=innerHeight+1,wide:document.documentElement.scrollWidth<=innerWidth+1}})()")
+            shot(p, 'cardart-shuffle-' + name)
+            ok(fit['inside'] and fit['btn'] and fit['wide'] and fit['card'][0] >= 40, (name, 'the reveal fits', fit))
+        view(p, 1280, 850)
+        p.eval("window.__stopResults=true;document.querySelector('[data-sh-ok]').click()")
+        drive(p, "FemcBattle.screen()==='results'", 30)
+        ok(p.eval("!!document.querySelector('.bt-res-extra .shuf.has-card svg.bt-res-card image')"), 'the results show the card')
+        for w, h, name in sizes:
+            view(p, w, h); p.eval("new Promise(r=>setTimeout(r,200))"); ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1'), 'results sideways ' + name); shot(p, 'cardart-results-' + name)
+        view(p, 1280, 850)
+        p.eval("window.__stopResults=false;window.__hoStay=false;FemcBattle.hoFinish('retreat')"); p.top(); p.wait("!document.querySelector('.g-dh')", 30)
+        results['cardart'] = {'sets': len(a), 'menu faces': len(faces), 'shuffle': 'reveal and results'}
+        errs = p.console(); ok(not errs, errs)
+        print('Card art: 13 sets, menu faces, Shuffle reveal and results at three sizes OK', flush=True)
 
     # ── Practice mode still works (its own save; Shuffle Time without the card menu's outcomes) ──
     if want('practice'):

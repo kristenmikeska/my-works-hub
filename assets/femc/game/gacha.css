@@ -28,6 +28,8 @@
 .g-ga-dup { color: var(--gold) !important; }
 .g-ga-done { color: var(--green) !important; font-weight: 700; }
 .g-ga-cardart { display: grid; place-items: center; width: 58px; height: 84px; border: 2px solid var(--rc); border-radius: 6px; background: linear-gradient(160deg, #2a1648, #0b1c3d); color: var(--rc); font-size: 30px; box-shadow: 0 0 18px color-mix(in srgb, var(--rc) 55%, transparent); }
+/* A Revelation card prize: its real face, with the rarity's glow. */
+.g-ga-art .g-ga-revcard { width: 76px; filter: drop-shadow(0 0 14px color-mix(in srgb, var(--rc) 55%, transparent)) drop-shadow(3px 3px 0 rgba(5, 2, 8, .6)); }
 @keyframes g-ga-prize { from { opacity: 0; transform: translateY(16px) scale(.94); } }
 
 /* ── The capsule machine ── */
@@ -147,6 +149,7 @@
   .g-cap-stage { grid-template-columns: 1fr; }
   .g-cap-machine { transform: scale(.82); transform-origin: 50% 0; height: 250px; margin-bottom: -10px; }
   .g-ga-prize { grid-template-columns: 70px minmax(0, 1fr); }
+  .g-ga-art .g-ga-revcard { width: 62px; }
   .g-vel-card { width: 82px; height: 120px; }
   .g-ga-yen { margin-left: 0; }
 }

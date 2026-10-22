@@ -148,5 +148,53 @@ window.FemcIcons = (() => {
     if (id === 'yen') return svg('yen', null, cls);
     return svg('room-unknown', null, cls);
   }
-  return { svg, of, names: Object.keys(I) };
+  /* ══════════ A Revelation card's face (build.js cards) ══════════
+     Kat's set art (SETS[set].img, art/cards/<set>.webp: the painting inside her printed frame, cut to the window's 88:114 by
+     tools/femc-cards.py revcard) fills the window; the frame, the rarity, the lock / new marks and the slot plate are drawn
+     here, around it and below it, so nothing sits on the subject. A set without art gets its glyph. Shared by the menu's
+     Cards tab (menu.js), Shuffle Time's reveal and results (battle.js) and the gacha (gacha.js).
+     opts: { cls, base (path prefix for the art: the life sim's G.base), label (aria) }. */
+  const RAR = { 3: '#7fb6ff', 4: '#c07bff', 5: '#ffd36b' };
+  const GLYPH = {
+    bell: '<path d="M50 38c-12 0-17 10-17 22v12l-7 8h48l-7-8V60c0-12-5-22-17-22z" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><circle cx="50" cy="84" r="5" fill="#fff4f9" stroke="#14070f" stroke-width="2"/><path d="M38 40l-6-10 10 5M62 40l6-10-10 5" fill="#ff8a3d" stroke="#14070f" stroke-width="2"/>',
+    stadium: '<ellipse cx="50" cy="74" rx="34" ry="13" fill="none" stroke="var(--g)" stroke-width="4"/><ellipse cx="50" cy="74" rx="20" ry="6" fill="var(--g)" opacity=".5"/><path d="M20 72V42M80 72V42" stroke="#fff4f9" stroke-width="3"/><circle cx="20" cy="40" r="5" fill="#fff"/><circle cx="80" cy="40" r="5" fill="#fff"/><path d="M40 34l3 3M58 30l3 3M50 46l3 3" stroke="#fff" stroke-width="2"/>',
+    headset: '<path d="M26 66V58c0-14 10-24 24-24s24 10 24 24v8" fill="none" stroke="var(--g)" stroke-width="5"/><rect x="20" y="60" width="13" height="22" rx="5" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><rect x="67" y="60" width="13" height="22" rx="5" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><path d="M27 82c0 8 8 12 16 12" fill="none" stroke="#fff4f9" stroke-width="2.5"/><circle cx="46" cy="94" r="3.5" fill="#fff"/>',
+    ring: '<circle cx="50" cy="66" r="18" fill="none" stroke="var(--g)" stroke-width="8"/><circle cx="50" cy="66" r="18" fill="none" stroke="#14070f" stroke-width="1.5"/><path d="M50 84c-4 14-16 20-24 22M50 84c4 14 16 20 24 22" fill="none" stroke="#ff3b4f" stroke-width="3"/>',
+    crane: '<path d="M30 100V44h6v56zM33 44L76 34v5L36 50zM68 37v24" stroke="var(--g)" stroke-width="3.5" fill="var(--g)"/><path d="M68 61v8" stroke="#fff" stroke-width="2"/><rect x="62" y="69" width="12" height="7" fill="#ff8a3d"/><circle cx="76" cy="88" r="9" fill="#ffd36b" opacity=".85"/>',
+    needle: '<path d="M30 96L70 40l3 2-38 56z" fill="#e8e8f0" stroke="#14070f" stroke-width="2"/><ellipse cx="68" cy="45" rx="2" ry="4" transform="rotate(35 68 45)" fill="#14070f"/><path d="M69 44c14-6 6 22-10 26s-26 16-14 28" fill="none" stroke="var(--g)" stroke-width="3"/>',
+    star: '<path d="M50 34l9 19 21 3-15 14 4 21-19-10-19 10 4-21-15-14 21-3z" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><circle cx="50" cy="62" r="5" fill="#fff4f9"/>',
+    ballot: '<rect x="28" y="54" width="44" height="38" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><rect x="40" y="52" width="20" height="4" fill="#14070f"/><path d="M44 36h14l-2 20H46z" fill="#fff4f9" stroke="#14070f" stroke-width="2"/><path d="M28 72c10 6 34 6 44 0M44 92l-6 12M56 92l6 12" stroke="#ff4f9e" stroke-width="3" fill="none"/>',
+    croissant: '<path d="M22 74c6-22 50-22 56 0-8-6-14-6-18-2-4-8-16-8-20 0-4-4-10-4-18 2z" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><path d="M40 60l2 12M50 56v14M60 60l-2 12" stroke="#8a5a2a" stroke-width="2"/><rect x="26" y="86" width="48" height="5" fill="#fff4f9" opacity=".6"/>',
+    evoker: '<path d="M22 56h48l8 4v8H58l-4 6h-8l-4-6H34v-8z" fill="#c9d0dc" stroke="#14070f" stroke-width="2.5"/><path d="M34 68h12l-6 24H28z" fill="#3a404e" stroke="#14070f" stroke-width="2.5"/><rect x="48" y="58" width="16" height="3" fill="var(--g)"/><path d="M14 92c22-8 50-8 72 0" stroke="var(--g)" stroke-width="4" fill="none" opacity=".7"/>',
+    moon: '<circle cx="50" cy="56" r="22" fill="var(--g)" stroke="#14070f" stroke-width="2.5"/><circle cx="58" cy="50" r="5" fill="#14070f" opacity=".12"/><path d="M38 104V78l6-4V66l6-4 6 4v8l6 4v26z" fill="#14070f" stroke="#7dffc0" stroke-width="1.5"/>',
+    butterfly: '<path d="M50 66C40 40 18 40 22 58c2 10 14 12 28 8zM50 66c10-26 32-26 28-8-2 10-14 12-28 8zM50 68c-8 14-24 22-24 10s14-12 24-10zM50 68c8 14 24 22 24 10s-14-12-24-10z" fill="var(--g)" stroke="#14070f" stroke-width="2"/><path d="M50 52v32" stroke="#14070f" stroke-width="3"/>',
+    coffin: '<path d="M50 30l16 10-6 64H40l-6-64z" fill="#1a2420" stroke="var(--g)" stroke-width="3"/><path d="M50 50v34M42 60h16" stroke="var(--g)" stroke-width="3"/><ellipse cx="50" cy="104" rx="26" ry="5" fill="var(--g)" opacity=".35"/>'
+  };
+  let faceN = 0;
+  const xe = t => String(t).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+  function revCard(c, opts = {}) {
+    const B = window.FemcBuild;
+    if (!B || !c) return '';
+    const st = B.SETS[c.set] || { color: '#ff4f9e', glyph: 'star', name: c.set }, sl = B.SLOTS.find(x => x.id === c.slot) || { n: '?', name: '' };
+    const id = 'rc' + (++faceN), r = RAR[c.r] || RAR[3];
+    // The art window: x 6–94, y 6–120 (88×114). Corners get gold brackets that also cover the last bits of Kat's printed frame.
+    const art = st.img
+      ? `<image href="${xe((opts.base || '') + st.img)}" x="6" y="6" width="88" height="114" preserveAspectRatio="xMidYMid slice" clip-path="url(#${id}c)"/>`
+      : `<rect x="6" y="6" width="88" height="114" rx="3" fill="url(#${id}g)"/><g>${GLYPH[st.glyph] || GLYPH.star}</g>`;
+    return `<svg class="g-cardface ${opts.cls || ''}" viewBox="0 0 100 150" role="img" aria-label="${xe(opts.label || B.cardName(c))}" style="--g:${st.color};--r:${r}" data-set="${xe(c.set)}">
+      <defs><linearGradient id="${id}g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${st.color}" stop-opacity=".55"/><stop offset=".55" stop-color="#1a0c24"/><stop offset="1" stop-color="#0b0612"/></linearGradient>
+        <clipPath id="${id}c"><rect x="6" y="6" width="88" height="114" rx="3"/></clipPath></defs>
+      <rect x="2" y="2" width="96" height="146" rx="6" fill="#0b0612" stroke="var(--r)" stroke-width="3"/>
+      ${art}
+      <rect x="6" y="6" width="88" height="114" rx="3" fill="none" stroke="#ffd36b" stroke-width="1.3"/>
+      <path d="M6 15V9a3 3 0 0 1 3-3h6M94 15V9a3 3 0 0 0-3-3h-6M6 111v6a3 3 0 0 0 3 3h6M94 111v6a3 3 0 0 1-3 3h-6" fill="none" stroke="#14070f" stroke-width="4.4" stroke-linecap="round"/>
+      <path d="M6 15V9a3 3 0 0 1 3-3h6M94 15V9a3 3 0 0 0-3-3h-6M6 111v6a3 3 0 0 0 3 3h6M94 111v6a3 3 0 0 1-3 3h-6" fill="none" stroke="#ffd36b" stroke-width="2" stroke-linecap="round"/>
+      <rect x="6" y="123" width="88" height="22" rx="2" fill="#14070f" stroke="#ffd36b" stroke-width="1"/>
+      <text x="50" y="132.5" fill="#fff4f9" font-family="Georgia, serif" font-size="8.6" font-weight="700" text-anchor="middle">${xe(sl.n)} · ${xe(sl.name.toUpperCase())}</text>
+      <text x="50" y="141.6" font-size="7" text-anchor="middle"><tspan fill="var(--r)" letter-spacing=".6">${'★'.repeat(c.r)}</tspan><tspan fill="#ffd36b" dx="3">Lv ${c.lvl}${c.ref ? ` · R${c.ref}` : ''}</tspan></text>
+      ${c.lock ? '<circle cx="86" cy="16" r="6" fill="#14070f" opacity=".85"/><path d="M82.5 15h7v5.5h-7zM84 15v-2.4a2 2 0 0 1 4 0V15" fill="#ffd36b" stroke="#14070f" stroke-width=".8"/>' : ''}
+      ${c.isNew ? '<circle cx="14" cy="14" r="4" fill="#ff4f9e" stroke="#fff" stroke-width="1.2"/>' : ''}
+    </svg>`;
+  }
+  return { svg, of, revCard, names: Object.keys(I) };
 })();

@@ -3450,6 +3450,496 @@
       ],
       "conversion": "tools/femc-cards.py finish (1600x900 WebP q86)",
       "placement": "battle.js finishArt (FINISH_CARDS)"
+    },
+    {
+      "batch": 23,
+      "source": "card-runners-foxbell.jpeg",
+      "sourceNow": "Added to Game/card-runners-foxbell.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "3b0ddeb4fd50fb023996159e62c299a67e59d32a574e629437f430f50dbef2e7",
+      "character": null,
+      "intendedUse": "Revelation card set art for Fox Bell (build.js SETS.bell.img); inspected: a gold fox charm with a bell and tassel on a swirling pink-violet night sky (Runners); the subject matches the set",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/cards/bell.webp"
+      ],
+      "outputSha256": [
+        "2c1801f3880d145cfa2b5cb6f899a605520308e875324ddf7d59b1c951768a37"
+      ],
+      "conversion": "tools/femc-cards.py revcard card-runners-foxbell.jpeg bell 0.1 0.08 0.9: the painting inside Kat's printed gold frame, cut to the face's 88:114 art window, 540x700 WebP q86 (the game draws its own frame, slot plate and marks around it)",
+      "placement": "build.js SETS[set].img -> icons.js revCard: menu.js Cards tab (cardFace), battle.js Shuffle Time reveal (.bt-sh-rev) and results (.bt-res-card), gacha.js prize (.g-ga-revcard)"
+    },
+    {
+      "batch": 23,
+      "source": "card-runners-stadium.jpeg",
+      "sourceNow": "Added to Game/card-runners-stadium.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "ff6b6872b5ee8b34410337a497a76d83db844769dce6856cf1010b4a9eae0a28",
+      "character": null,
+      "intendedUse": "Revelation card set art for Snow Stadium (build.js SETS.stadium.img); inspected: a football stadium under floodlights and falling snow, a glowing sigil on the field (Runners); the subject matches the set",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/cards/stadium.webp"
+      ],
+      "outputSha256": [
+        "2f7bf54bf2a5d6003627610a89a47ec792170c791ce4adb10bc2eb313aadf8cd"
+      ],
+      "conversion": "tools/femc-cards.py revcard card-runners-stadium.jpeg stadium 0.1 0.1 0.9: the painting inside Kat's printed gold frame, cut to the face's 88:114 art window, 540x700 WebP q86 (the game draws its own frame, slot plate and marks around it)",
+      "placement": "build.js SETS[set].img -> icons.js revCard: menu.js Cards tab (cardFace), battle.js Shuffle Time reveal (.bt-sh-rev) and results (.bt-res-card), gacha.js prize (.g-ga-revcard)"
+    },
+    {
+      "batch": 23,
+      "source": "card-runners-headset.jpeg",
+      "sourceNow": "Added to Game/card-runners-headset.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "e9f4259c092972297e625ab0a4900ac2bb5c20914f21e0bcf4c86c77b37e55b8",
+      "character": null,
+      "intendedUse": "Revelation card set art for Glow Headset (build.js SETS.headset.img); inspected: hot-pink gaming headphones with a fox emblem on the ear cup, pixel-sparked night (Runners); the subject matches the set",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/cards/headset.webp"
+      ],
+      "outputSha256": [
+        "612321a07f24f000c65ce9500852f29a757b61f6c2402175f8b1e950455cd28d"
+      ],
+      "conversion": "tools/femc-cards.py revcard card-runners-headset.jpeg headset 0.1 0.09 0.9: the painting inside Kat's printed gold frame, cut to the face's 88:114 art window, 540x700 WebP q86 (the game draws its own frame, slot plate and marks around it)",
+      "placement": "build.js SETS[set].img -> icons.js revCard: menu.js Cards tab (cardFace), battle.js Shuffle Time reveal (.bt-sh-rev) and results (.bt-res-card), gacha.js prize (.g-ga-revcard)"
+    },
+    {
+      "batch": 23,
+      "source": "card-strangers-jade.jpeg",
+      "sourceNow": "Added to Game/card-strangers-jade.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "749cfc5567e31145e06fa1809f173712dfce328613a300ec700986e0be54680e",
+      "character": null,
+      "intendedUse": "Revelation card set art for Jade Cord (build.js SETS.jade.img); inspected: a jade ring hanging on a red knotted silk cord over dark harbor water with lanterns (strangers); the subject matches the set",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/cards/jade.webp"
+      ],
+      "outputSha256": [
+        "928b0639d0bae4c602dbe351f7d003c6034be5047d31fbd88d6db62cb7878d90"
+      ],
+      "conversion": "tools/femc-cards.py revcard card-strangers-jade.jpeg jade 0.13 0.1 0.87: the painting inside Kat's printed gold frame, cut to the face's 88:114 art window, 540x700 WebP q86 (the game draws its own frame, slot plate and marks around it)",
+      "placement": "build.js SETS[set].img -> icons.js revCard: menu.js Cards tab (cardFace), battle.js Shuffle Time reveal (.bt-sh-rev) and results (.bt-res-card), gacha.js prize (.g-ga-revcard)"
+    },
+    {
+      "batch": 23,
+      "source": "card-strangers-crane.jpeg",
+      "sourceNow": "Added to Game/card-strangers-crane.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "481b85513cc018c154afcb7965ad56e66ede5098e38d0cbfe1e146bfb029db60",
+      "character": null,
+      "intendedUse": "Revelation card set art for Harbor Crane (build.js SETS.crane.img); inspected: a giant red harbor crane at a gold Incheon dawn with gulls (strangers); the subject matches the set",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/cards/crane.webp"
+      ],
+      "outputSha256": [
+        "0c59caa27a88a66dcc385555ba5e9234fc8e3bb89f5643586f5e247d4355bd51"
+      ],
+      "conversion": "tools/femc-cards.py revcard card-strangers-crane.jpeg crane 0.13 0.095 0.87: the painting inside Kat's printed gold frame, cut to the face's 88:114 art window, 540x700 WebP q86 (the game draws its own frame, slot plate and marks around it)",
+      "placement": "build.js SETS[set].img -> icons.js revCard: menu.js Cards tab (cardFace), battle.js Shuffle Time reveal (.bt-sh-rev) and results (.bt-res-card), gacha.js prize (.g-ga-revcard)"
+    },
+    {
+      "batch": 23,
+      "source": "card-strangers-needle.jpeg",
+      "sourceNow": "Added to Game/card-strangers-needle.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "ac7a83ee2f62f7af308af18a532eb5d34dacb0a93081f1e5f2c29887efd62531",
+      "character": null,
+      "intendedUse": "Revelation card set art for Red Thread (build.js SETS.needle.img); inspected: a silver needle trailing glowing red thread in a loose knot on dark velvet (strangers); the subject matches the set",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/cards/needle.webp"
+      ],
+      "outputSha256": [
+        "a0a4867a0e3f50ca8afb01535884b5b67262ac8004e81675f9833b2a046a9c02"
+      ],
+      "conversion": "tools/femc-cards.py revcard card-strangers-needle.jpeg needle 0.13 0.14 0.87: the painting inside Kat's printed gold frame, cut to the face's 88:114 art window, 540x700 WebP q86 (the game draws its own frame, slot plate and marks around it)",
+      "placement": "build.js SETS[set].img -> icons.js revCard: menu.js Cards tab (cardFace), battle.js Shuffle Time reveal (.bt-sh-rev) and results (.bt-res-card), gacha.js prize (.g-ga-revcard)"
+    },
+    {
+      "batch": 23,
+      "source": "card-hoax-star.jpeg",
+      "sourceNow": "Added to Game/card-hoax-star.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "f97c96c7e83d9a71d5d2da0f16bb2ca2d1973e0e94956ba14d357fa066b55894",
+      "character": null,
+      "intendedUse": "Revelation card set art for Star Pin (build.js SETS.pin.img); inspected: a gold star pin bursting with light on a navy blazer lapel (Hoax); the subject matches the set",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/cards/pin.webp"
+      ],
+      "outputSha256": [
+        "43d1744d928ca0ba3f06c9fd34f1e1861802d2b4d1a15af86aed0364c9bc7f63"
+      ],
+      "conversion": "tools/femc-cards.py revcard card-hoax-star.jpeg pin 0.13 0.14 0.87: the painting inside Kat's printed gold frame, cut to the face's 88:114 art window, 540x700 WebP q86 (the game draws its own frame, slot plate and marks around it)",
+      "placement": "build.js SETS[set].img -> icons.js revCard: menu.js Cards tab (cardFace), battle.js Shuffle Time reveal (.bt-sh-rev) and results (.bt-res-card), gacha.js prize (.g-ga-revcard)"
+    },
+    {
+      "batch": 23,
+      "source": "card-hoax-ballot.jpeg",
+      "sourceNow": "Added to Game/card-hoax-ballot.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "17c9f485c0ab45b61b1da37f8b8c084d956f88abc0762d5959640ceec9b5cd8f",
+      "character": null,
+      "intendedUse": "Revelation card set art for Ballot Box (build.js SETS.ballot.img); inspected: an ornate gold ballot box with folded ballots and ribbons in a gym with string lights (Hoax); the subject matches the set",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/cards/ballot.webp"
+      ],
+      "outputSha256": [
+        "df3398e4b0b1e6baae46bf9be65c99b1dc5deb54f088493f53902b8b7b25cd49"
+      ],
+      "conversion": "tools/femc-cards.py revcard card-hoax-ballot.jpeg ballot 0.13 0.14 0.87: the painting inside Kat's printed gold frame, cut to the face's 88:114 art window, 540x700 WebP q86 (the game draws its own frame, slot plate and marks around it)",
+      "placement": "build.js SETS[set].img -> icons.js revCard: menu.js Cards tab (cardFace), battle.js Shuffle Time reveal (.bt-sh-rev) and results (.bt-res-card), gacha.js prize (.g-ga-revcard)"
+    },
+    {
+      "batch": 23,
+      "source": "card-hoax-croissant.jpeg",
+      "sourceNow": "Added to Game/card-hoax-croissant.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "921c21521985262ea717101648ac6798a8262996700fb7d6944d5e7d9f22d889",
+      "character": null,
+      "intendedUse": "Revelation card set art for Council Croissant (build.js SETS.croissant.img); inspected: a glowing croissant on a white plate on a council desk with a lamp and papers (Hoax); the subject matches the set",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/cards/croissant.webp"
+      ],
+      "outputSha256": [
+        "e6486df6a5fdf5fadd6a2c6e1eb08b88ca7c91733dfee383c20e2d2eeda0c263"
+      ],
+      "conversion": "tools/femc-cards.py revcard card-hoax-croissant.jpeg croissant 0.13 0.14 0.87: the painting inside Kat's printed gold frame, cut to the face's 88:114 art window, 540x700 WebP q86 (the game draws its own frame, slot plate and marks around it)",
+      "placement": "build.js SETS[set].img -> icons.js revCard: menu.js Cards tab (cardFace), battle.js Shuffle Time reveal (.bt-sh-rev) and results (.bt-res-card), gacha.js prize (.g-ga-revcard)"
+    },
+    {
+      "batch": 23,
+      "source": "card-persona-evoker.jpeg",
+      "sourceNow": "Added to Game/card-persona-evoker.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "1314538c8c7c314fb0a6c0cc8330e75557c8b3247a0f112f9989454d6e5c777e",
+      "character": null,
+      "intendedUse": "Revelation card set art for Velvet Evoker (build.js SETS.evoker.img); inspected: a silver S.E.E.S. Evoker resting on blue velvet in the Velvet Room glow (Persona); the subject matches the set",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/cards/evoker.webp"
+      ],
+      "outputSha256": [
+        "b45dc95529d2a2dce2be6a04a820cdd8d950731415cd6fa3062d96d1c6284568"
+      ],
+      "conversion": "tools/femc-cards.py revcard card-persona-evoker.jpeg evoker 0.13 0.14 0.87: the painting inside Kat's printed gold frame, cut to the face's 88:114 art window, 540x700 WebP q86 (the game draws its own frame, slot plate and marks around it)",
+      "placement": "build.js SETS[set].img -> icons.js revCard: menu.js Cards tab (cardFace), battle.js Shuffle Time reveal (.bt-sh-rev) and results (.bt-res-card), gacha.js prize (.g-ga-revcard)"
+    },
+    {
+      "batch": 23,
+      "source": "card-persona-moon.jpeg",
+      "sourceNow": "Added to Game/card-persona-moon.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "095679c07e391d7932966268a1437029f69a49fdb9a5f2be73a7b6ca4043fb66",
+      "character": null,
+      "intendedUse": "Revelation card set art for Full Moon (build.js SETS.moon.img); inspected: a huge yellow-green full moon over the twisting tower of Tartarus (Persona); the subject matches the set",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/cards/moon.webp"
+      ],
+      "outputSha256": [
+        "42c075a2f109975fa414c969fc4959f1732406c0d4c0438f1f5226e9ee212a6a"
+      ],
+      "conversion": "tools/femc-cards.py revcard card-persona-moon.jpeg moon 0.13 0.095 0.87: the painting inside Kat's printed gold frame, cut to the face's 88:114 art window, 540x700 WebP q86 (the game draws its own frame, slot plate and marks around it)",
+      "placement": "build.js SETS[set].img -> icons.js revCard: menu.js Cards tab (cardFace), battle.js Shuffle Time reveal (.bt-sh-rev) and results (.bt-res-card), gacha.js prize (.g-ga-revcard)"
+    },
+    {
+      "batch": 23,
+      "source": "card-persona-butterfly.jpeg",
+      "sourceNow": "Added to Game/card-persona-butterfly.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "a35545c02bfe8b9aef9e4ca0bec0b5170b258b5a90ddd58b88616cb661adb742",
+      "character": null,
+      "intendedUse": "Revelation card set art for Blue Butterfly (build.js SETS.butterfly.img); inspected: a luminous blue butterfly in swirling blue light and sparks (Persona); the subject matches the set",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/cards/butterfly.webp"
+      ],
+      "outputSha256": [
+        "48211f3df0db05e16a3a01b68322e00578056c3effc47a9aee47de99a1cc9db8"
+      ],
+      "conversion": "tools/femc-cards.py revcard card-persona-butterfly.jpeg butterfly 0.13 0.13 0.87: the painting inside Kat's printed gold frame, cut to the face's 88:114 art window, 540x700 WebP q86 (the game draws its own frame, slot plate and marks around it)",
+      "placement": "build.js SETS[set].img -> icons.js revCard: menu.js Cards tab (cardFace), battle.js Shuffle Time reveal (.bt-sh-rev) and results (.bt-res-card), gacha.js prize (.g-ga-revcard)"
+    },
+    {
+      "batch": 23,
+      "source": "card-persona-coffin.png",
+      "sourceNow": "Added to Game/card-persona-coffin.png",
+      "size": [
+        674,
+        904
+      ],
+      "sha256": "f0e4c1c7d6599acabe5877027546c33dc61423a8f1090bfe081a9bc8477924f0",
+      "character": null,
+      "intendedUse": "Revelation card set art for Green Coffin (build.js SETS.coffin.img); inspected: an upright black coffin with chains in the Dark Hour green light and red stains (Persona); the subject matches the set",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/cards/coffin.webp"
+      ],
+      "outputSha256": [
+        "381d1fa1e83e4f28d053882f9d9c55ee381c0c89ef9209d06f862c944aa42f60"
+      ],
+      "conversion": "tools/femc-cards.py revcard card-persona-coffin.png coffin 0.13 0.135 0.87: the painting inside Kat's printed gold frame, cut to the face's 88:114 art window, 540x700 WebP q86 (the game draws its own frame, slot plate and marks around it)",
+      "placement": "build.js SETS[set].img -> icons.js revCard: menu.js Cards tab (cardFace), battle.js Shuffle Time reveal (.bt-sh-rev) and results (.bt-res-card), gacha.js prize (.g-ga-revcard)"
+    },
+    {
+      "batch": 23,
+      "source": "akihiko-weapons.jpeg",
+      "sourceNow": "Added to Game/akihiko-weapons.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "8b14790b00b7abe4764c2724cacd6dc255b7acc760a22d2c953d6051b1226c3a",
+      "character": "akihiko",
+      "intendedUse": "Akihiko's six pairs of boxing gloves, labelled on the sheet and matching the themes: Plain Starter (Old Reds), Red Champion, Lightning, Silver Wolf, Gold Belt, Midnight",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/weapons/akihiko-starter.webp",
+        "assets/femc/battle/art/weapons/akihiko-red-champion.webp",
+        "assets/femc/battle/art/weapons/akihiko-lightning.webp",
+        "assets/femc/battle/art/weapons/akihiko-silver-wolf.webp",
+        "assets/femc/battle/art/weapons/akihiko-gold-belt.webp",
+        "assets/femc/battle/art/weapons/akihiko-midnight.webp"
+      ],
+      "outputSha256": [
+        "b3ac11681f761618a2ec3a85024db98533c4369630cc04505322ca233982d88b",
+        "32dfd83aa729e6ec4532afb3b34bdfc8fc291e415be77c76cdffc5f6c12346d1",
+        "65e2430d281a6dba0046ebca001bb8ec7085f126d00cfa6d535a6563e9d38ab8",
+        "42f9e8139d730fc020b6573edd9b9c189d84b866847e4659f7f77087c5e37d3b",
+        "6463713bd3e8af872d63172ded8614778b5e9f3accb4e027b73618146b7279fc",
+        "7757b90959f03d2a27e64581261b5eb228b73b9616571a654a645d7d68eadbba"
+      ],
+      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": \"3a\", \"rotate\": 0, \"labels\": \"auto-wide\", \"wide\": true}): fixed card grid (the sheets' soft frame lines defeat card_boxes), printed names blanked, kept as drawn on the landscape canvas (artWide) (WebP q88)",
+      "placement": "build.js AK: ak_starter, ak_champion, ak_lightning, ak_wolf, ak_belt, ak_midnight (owner akihiko); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
+    },
+    {
+      "batch": 23,
+      "source": "yukari-weapons.jpeg",
+      "sourceNow": "Added to Game/yukari-weapons.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "af51eae38fb20ee22eededd69347b3b1fb9c125941143b047b8c782d410d73e4",
+      "character": "yukari",
+      "intendedUse": "Yukari's bows: the sheet has twelve cards (two takes on most themes, three angels); picked one per theme: plain lacquered starter (card 1), pink heart (2), feather (4), sakura with bell and tassel (8), crescent moon (9), glowing gold angel (12)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/weapons/yukari-starter.webp",
+        "assets/femc/battle/art/weapons/yukari-pink-heart.webp",
+        "assets/femc/battle/art/weapons/yukari-feather.webp",
+        "assets/femc/battle/art/weapons/yukari-sakura.webp",
+        "assets/femc/battle/art/weapons/yukari-moon.webp",
+        "assets/femc/battle/art/weapons/yukari-angel.webp"
+      ],
+      "outputSha256": [
+        "6ff778572f0486ead6fce5bc9156b6cf64c152573089ffadc25bd7f12a0d3142",
+        "b47cfd16f313b443597ff0a77b396103f2a556cc3d1e7db027d4786e61506ce0",
+        "fc23ef9df953af4976760c330866e0dd6119213d12da356a051ea742b9f0d4bc",
+        "4dea05a9b4cb6b6370ae970c656324d97f060d08277780b452c39141c0b16f49",
+        "c947cd4f13f071b889f8d8c99e2d6ef00594cddd6bb12a609b7995ca9831229e",
+        "0aaab92d9d75ca50b9b7bfd445a25914f4d94386d878cb5a081c12793b5115b0"
+      ],
+      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 6, \"pick\": [0, 1, 3, 7, 8, 11], \"rotate\": 18, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 18\u00b0 upright on the tall card shape (WebP q88)",
+      "placement": "build.js YK: yk_starter, yk_heart, yk_feather, yk_sakura, yk_moon, yk_angel (owner yukari); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
+    },
+    {
+      "batch": 23,
+      "source": "junpei-weapons.jpeg",
+      "sourceNow": "Added to Game/junpei-weapons.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "402e6aa7ffb0418ba1fa36e44e49289d86b4d83c5899be5afdeb3f5380835689",
+      "character": "junpei",
+      "intendedUse": "Junpei's six swords, unlabelled, in theme order: plain starter with a glove charm, baseball bat, katana, flame (winged-sandal charm), neon, giant graffiti cleaver (TRICKSTER)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/weapons/junpei-starter.webp",
+        "assets/femc/battle/art/weapons/junpei-baseball-bat.webp",
+        "assets/femc/battle/art/weapons/junpei-katana.webp",
+        "assets/femc/battle/art/weapons/junpei-flame.webp",
+        "assets/femc/battle/art/weapons/junpei-neon.webp",
+        "assets/femc/battle/art/weapons/junpei-cleaver.webp"
+      ],
+      "outputSha256": [
+        "31f0edd2b9547712b1d23048a09f39a958422248f326951dc502738d8c59b501",
+        "301c0d3b8971db28d020d5e1147c50750ca372387a43f845e1b9067fd70d166a",
+        "dcf8efa4c7f552efb93faec939732fbaae3938c20a54f66e553e290ea7269551",
+        "29864f2d146213c19625f0ca16cdb3e1fab27bbd31f732e201640211508d7b1b",
+        "77e2fbce86911bf77e7c5306e0cfb79876d6afb13429e98e1a99d68efc346c09",
+        "80bd813bc2f4b2a091fc1db927cc16697e168fb69adfb80191c680170ef3e1e0"
+      ],
+      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 3, \"rotate\": 43, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 43\u00b0 upright on the tall card shape (WebP q88)",
+      "placement": "build.js JP: jp_starter, jp_bat, jp_katana, jp_flame, jp_neon, jp_cleaver (owner junpei); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
+    },
+    {
+      "batch": 23,
+      "source": "mitsuru-weapons.jpeg",
+      "sourceNow": "Added to Game/mitsuru-weapons.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "12c7aa262193f2a7d96c8613d780687e153de92cd830f45dd8ba3d29f837dbe5",
+      "character": "mitsuru",
+      "intendedUse": "Mitsuru's rapiers: twelve cards (two takes per theme); picked plain silver starter (card 1), ice crystal (3), rose (4), gold filigree (7), snow queen crown with bow (10), Kirijo crest guard (11)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/weapons/mitsuru-starter.webp",
+        "assets/femc/battle/art/weapons/mitsuru-ice-crystal.webp",
+        "assets/femc/battle/art/weapons/mitsuru-rose.webp",
+        "assets/femc/battle/art/weapons/mitsuru-gold-filigree.webp",
+        "assets/femc/battle/art/weapons/mitsuru-snow-queen.webp",
+        "assets/femc/battle/art/weapons/mitsuru-kirijo-crest.webp"
+      ],
+      "outputSha256": [
+        "a83ac9ca8e8bdd0e28e735e3344dc4c7552ad15f212a5900331d96ea4f983cea",
+        "0946c8f57a1b621de5b40dfd5058d34cf1954d3c31bf76bcb9e0173e205dd7ae",
+        "2d1f7bed907147499a9bb9f5ca8b17e553c49d3914a4aa6137b9142345efda33",
+        "7a3640fbf4b2383abefb920f9d740b9017dfcd7e962815d85a56a3cb1df07cd9",
+        "321df81195a45131d52c17810334509addf6a3a78211d0619687bfe3fe0a09c4",
+        "10717f185c6310f396410a46b976b4e14852084983252ffc9518a8dc8dd4e7a9"
+      ],
+      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 6, \"pick\": [0, 2, 3, 6, 9, 10], \"rotate\": 17, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 17\u00b0 upright on the tall card shape (WebP q88)",
+      "placement": "build.js MT: mt_starter, mt_ice, mt_rose, mt_gold, mt_queen, mt_crest (owner mitsuru); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
+    },
+    {
+      "batch": 23,
+      "source": "aigis-weapons.jpeg",
+      "sourceNow": "Added to Game/aigis-weapons.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "c87f44a5f30a496ebcc44e5b534d4921d3d73ac654a6fe8a16c37ad6fd2c1676",
+      "character": "aigis",
+      "intendedUse": "Aigis's six arm guns, labelled: Starter Model, Gold Plated, Papillon Heart (heart), Angelic Wing (wing), Heavy Siege Cannon, Velvet Butterfly",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/weapons/aigis-starter.webp",
+        "assets/femc/battle/art/weapons/aigis-gold-plated.webp",
+        "assets/femc/battle/art/weapons/aigis-papillon-heart.webp",
+        "assets/femc/battle/art/weapons/aigis-angelic-wing.webp",
+        "assets/femc/battle/art/weapons/aigis-siege-cannon.webp",
+        "assets/femc/battle/art/weapons/aigis-velvet-butterfly.webp"
+      ],
+      "outputSha256": [
+        "cf862ed8e8b4919ca37d938d75acc8c07502f5191bc8a6f381d29cc36f9c1626",
+        "caf03e8d01b503d15b8ccb099699db1a434188c2e04c48a054dc4288098e5c55",
+        "0e2e96d313bdbbef732c384e2facf76b4648c3ce75e0cb714d669b2ce7f94c47",
+        "c740977e7218a4156eeecdebd38c9e264a1efac03ee14f905cc706e354c084a4",
+        "f96e7effa493afbe8f7c1f4a8b8fba21a52fbd662319023210e86863d5c8a3f1",
+        "567793e95c8e8c0ef6d99a81a4d4ce17cf29c3b01f6b36ecfa9e77d682de110a"
+      ],
+      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 3, \"rotate\": 0, \"labels\": \"auto-wide\", \"wide\": true}): fixed card grid (the sheets' soft frame lines defeat card_boxes), printed names blanked, kept as drawn on the landscape canvas (artWide) (WebP q88)",
+      "placement": "build.js AG: ag_starter, ag_gold, ag_heart, ag_wing, ag_cannon, ag_butterfly (owner aigis); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
+    },
+    {
+      "batch": 23,
+      "source": "koromaru-weapons.jpeg",
+      "sourceNow": "Added to Game/koromaru-weapons.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "a0fca493abaee5eb8cdf6122ea1522693225434c520d6fa93da11176a0fd313f",
+      "character": "koromaru",
+      "intendedUse": "Koromaru's knives: eleven cards (a spare purple one and three kunai); picked plain starter (card 1), bone (2), gold shrine bell with rope and bells (4), flame (7), collar tag with P3/S.E.E.S. dog tags (8), kunai (6)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/weapons/koromaru-starter.webp",
+        "assets/femc/battle/art/weapons/koromaru-bone.webp",
+        "assets/femc/battle/art/weapons/koromaru-shrine-bell.webp",
+        "assets/femc/battle/art/weapons/koromaru-flame.webp",
+        "assets/femc/battle/art/weapons/koromaru-collar-tag.webp",
+        "assets/femc/battle/art/weapons/koromaru-kunai.webp"
+      ],
+      "outputSha256": [
+        "a9a3afa95cf2ae15834636f87066b40793293fe00d9511421acf5dd325caf507",
+        "67d01d80db7a74be3aeb9ba0de5156eb4c7d310e3c4550afd9dc89cdf91e6047",
+        "775fad0c45775ba5ad7ff79c75d1d7a9eebf0868f8ef6a8a2df737a1cb3320b4",
+        "f1c37ccd48e31d29ba972a75dd6af87ef83cc992a7975096caa164733361563a",
+        "477022542a645079cdaefa39f161aebb641052318ecb3f2e561c6712373a2bdb",
+        "e5463553efea9c27592436b4906f7a804417fcaeedb1e130883f1d96efaee5cd"
+      ],
+      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 6, \"pick\": [0, 1, 3, 6, 7, 5], \"rotate\": 18, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 18\u00b0 upright on the tall card shape (WebP q88)",
+      "placement": "build.js KM: km_starter, km_bone, km_shrine, km_flame, km_tag, km_kunai (owner koromaru); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
+    },
+    {
+      "batch": 23,
+      "source": "shinjiro-weapons.jpeg",
+      "sourceNow": "Added to Game/shinjiro-weapons.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "3a19c045e40363e087c87c467f5d94985e48be53329906daabc9e04d7b2770e1",
+      "character": "shinjiro",
+      "intendedUse": "Shinjiro's six axes, unlabelled, in theme order: plain starter hatchet, black steel (spikes, skull, red chains), chain, kitchen cleaver, ember, moonlit",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/weapons/shinjiro-starter.webp",
+        "assets/femc/battle/art/weapons/shinjiro-black-steel.webp",
+        "assets/femc/battle/art/weapons/shinjiro-chain.webp",
+        "assets/femc/battle/art/weapons/shinjiro-kitchen-cleaver.webp",
+        "assets/femc/battle/art/weapons/shinjiro-ember.webp",
+        "assets/femc/battle/art/weapons/shinjiro-moonlit.webp"
+      ],
+      "outputSha256": [
+        "8bd70d3ad9e685f9b71ba44a9cadeea2f49d328955f17f4d5bb3cac950a09feb",
+        "90e233395389b2a812e5defd067f45603d04f2e9fbb410dd6a6cc86298530921",
+        "24969ff8ea4307a744a9b9da6da1b201b7c6d31beac323046c7fd559ff4e8eb9",
+        "c83ec9b18eeca82fde5c0332199b2530243ea2f1c3327fd36f80af5968ca8e5e",
+        "46432e93d2d5f09208a32bcb72e109f3a0389ecafd0fe362018abffa47c3ebe1",
+        "5e13eb332115a06a9e2741490bfce3fd29a00bf8f5fa477d097634aafea291a2"
+      ],
+      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 3, \"rotate\": 40, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 40\u00b0 upright on the tall card shape (WebP q88)",
+      "placement": "build.js SJ: sj_starter, sj_steel, sj_chain, sj_cleaver, sj_ember, sj_moonlit (owner shinjiro); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
     }
   ],
   "batch1Validation": {
@@ -3754,6 +4244,20 @@
     "phoneFraming": "equip screens for all three at 1000x486 and 375x812; Minji finish card screenshotted in a real All-Out",
     "tests": [
       "python3 tests/femc_building.py"
+    ],
+    "browserErrors": 0
+  },
+  "batch23Validation": {
+    "date": "2026-10-22",
+    "scope": "All 13 Revelation card set illustrations (wired to every set, shown in the Cards menu, Shuffle Time's reveal and results, and the gacha) and the seven S.E.E.S. weapon sheets (42 weapons: Akihiko, Yukari, Junpei, Mitsuru, Aigis, Koromaru, Shinjiro)",
+    "sourcesInspected": "all 20 viewed before wiring: each card's subject matches its set (needle = Red Thread, star = Star Pin); each weapon sheet matched to its FEMC-ART-TODO section-2 themes (twelve-card sheets: one take per theme picked); every cut reviewed (printed frame and names gone, no frame lines, nothing clipped)",
+    "sourcesIntegrated": 20,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold untouched",
+    "phoneFraming": "Cards menu, Shuffle reveal and results, S.E.E.S. equip lists and the Police Box at 1000x486, 375x812 and 1440x900; Velvet Room card prize at the same three sizes",
+    "tests": [
+      "python3 tests/femc_building.py",
+      "python3 tests/femc_extras.py"
     ],
     "browserErrors": 0
   }

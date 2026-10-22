@@ -862,11 +862,16 @@ window.FemcGame = (() => {
       if (!shop.sells.includes(kind)) return;
       Object.entries(B.gear || {}).forEach(([k, g]) => { if ((g.kind || g.slot) === kind && !g.rare && (g.tier ?? 1) <= tier && (g.tier ?? 1) > 0 && g.price && (kind !== 'weapon' || (wt.has(g.wtype) && (!g.owner || available().includes(g.owner))))) gear.push([k, g, kind]); });
     });
-    if (shop.sells.includes('rare')) (shop.stock || []).forEach(k => { const g = B.gear?.[k]; if (g && (g.tier ?? 1) <= tier) gear.push([k, g, g.slot]); });
-    gear.sort((a, b) => (b[1].tier - a[1].tier) || (a[2] > b[2] ? 1 : -1)).slice(0, 14).forEach(([k, g, kind]) => out.push({ id: k, kind, name: g.name, price: price(g.price, kind), desc: line(k), who: g.wtype ? (B.party || []).filter(m => m.wtype === g.wtype && (!g.owner || g.owner === m.id) && available().includes(m.id)).map(m => m.name).join(', ') : '', shop: id, art: g.art || null, wide: !!g.artWide }));
+    // Someone's own weapon (build.js OWNED) is only stocked while they're around: not before a searcher joins, not after Shinjiro leaves.
+    if (shop.sells.includes('rare')) (shop.stock || []).forEach(k => { const g = B.gear?.[k]; if (g && (g.tier ?? 1) <= tier && (!g.owner || available().includes(g.owner))) gear.push([k, g, g.slot]); });
+    // Newest tiers first, up to 22; someone's own weapon (named: build.js) always stays on the shelf, so the ordinary stock
+    // gives way first (S.E.E.S.'s own weapons joined the Police Box and Mayoido in batch 23). The list scrolls.
+    const byTier = (a, b) => (b[1].tier - a[1].tier) || (a[2] > b[2] ? 1 : -1);
+    const named = gear.filter(x => x[1].named), plain = gear.filter(x => !x[1].named).sort(byTier).slice(0, Math.max(8, 22 - named.length));
+    named.concat(plain).sort(byTier).forEach(([k, g, kind]) => out.push({ id: k, kind, name: g.name, price: price(g.price, kind), desc: line(k), who: g.wtype ? (B.party || []).filter(m => m.wtype === g.wtype && (!g.owner || g.owner === m.id) && available().includes(m.id)).map(m => m.name).join(', ') : '', shop: id, art: g.art || null, wide: !!g.artWide }));
     // Mayoido also sells sealed Revelation cards.
     if (cfg?.cards && W.FemcBuild) out.push({ id: 'card_pack', kind: 'cardpack', name: 'Sealed Revelation Card', price: 1500 + 500 * Math.min(6, tier), desc: `A random Revelation card (★3–★5; better as Tartarus opens up). Equip it from the menu’s Cards tab.`, shop: id });
-    return out.slice(0, 24);
+    return out.slice(0, 32);
   }
   function buy(entry) {
     if (S.yen < entry.price) return false;

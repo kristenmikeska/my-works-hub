@@ -2208,6 +2208,19 @@ html.bt-embed .bt-hub-ho .bt-hub-menu .bt-btn[data-go="dorm"] small { display: n
 .bt-sh-out > * { transform: skewX(8deg); }
 .bt-sh-out b { color: #ffd36b; font: italic 900 20px/1 var(--cond); letter-spacing: .06em; text-transform: uppercase; }
 .bt-sh-out span { color: #fff; font: 700 14px/1.3 var(--sans); }
+/* A Revelation card from the Fool / Empress / Star: its face (icons.js revCard) beside the lines. */
+.bt-sh-out.has-card { grid-template-columns: auto minmax(0, 1fr); column-gap: 14px; align-items: center; text-align: left; }
+.bt-sh-out.has-card > .bt-sh-rev { grid-row: 1 / span 6; }
+.bt-sh-rev { display: block; width: clamp(46px, 13vh, 96px); height: auto; filter: drop-shadow(3px 3px 0 rgba(5, 2, 12, .7)); }
+/* Short screens (a phone on its side, 1000x486): once a card is picked the hand steps back so the card face, its lines and
+   Continue all fit. */
+@media (max-height: 600px) {
+  .bt-shuffle.picked { --cw: clamp(52px, min(15vw, 17vh), 150px); }
+  .bt-sh-rev { width: clamp(40px, 11vh, 96px); }
+}
+.bt-res-extra span.shuf em { font-style: inherit; }
+.bt-res-extra span.shuf.has-card { display: inline-flex; align-items: center; gap: 10px; padding-left: 8px; }
+.bt-res-card { display: block; flex: none; width: 34px; height: auto; transform: skewX(12deg); }
 .bt-shuffle .row { display: flex; justify-content: center; }
 @keyframes bt-sh-deal { from { opacity: 0; transform: translateY(40px) rotate(-8deg) scale(.8); } }
 @keyframes bt-sh-bob { 0%, 100% { translate: 0 0; rotate: -2deg; } 50% { translate: 0 -10px; rotate: 2deg; } }
