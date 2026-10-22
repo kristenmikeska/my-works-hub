@@ -221,7 +221,7 @@ Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve th
 
 Haechan stays Universe and Jungwon stays Hierophant.
 
-**New links' arcana (picked 2026-10-22, for Kat to confirm; shared arcana are allowed):** Danielle: Devil (P5's Devil is the gossip journalist) · Jaemin: Sun (P5's Sun learns to sell himself honestly) · Chenle: Hermit (P3's online gamer, P5's shut-in hacker).
+**New links' arcana (confirmed by Kat, 2026-10-22; shared arcana are allowed):** Danielle: Devil (P5's Devil is the gossip journalist) · Jaemin: Sun (P5's Sun learns to sell himself honestly) · Chenle: Hermit (P3's online gamer, P5's shut-in hacker).
 
 ## Kat's rulings (2026-10-21): Haechan and the Hoax ending
 - **Haechan's rank becomes automatic** (story-driven, like Wren's): his ranks happen on set dates as the story moves, so his scenes always match where the player is. Choices inside his scenes still decide romance or friendship and which world he settles toward. Then he gets much more content: late nights through his whole stretch, dorm moments, texts, reactions to big story events, and scenes with Hanni, Hyein, Mark, Yunjin and Jungwon. Every special scene branches by the route the player is heading toward.
@@ -249,3 +249,7 @@ Haechan stays Universe and Jungwon stays Hierophant.
 - **Built (2026-10-21): removals and March.** Leon, Cloud, Noctis, Astarion and Shadowheart are out of the revamp (v1 keeps them). Scenes they were part of were trimmed to read well without them; old saves keep loading and keep anything they gave; the Black Rose naginata is now a boss's first-clear drop. The year runs to early March: February is a full extra month (the cold, Setsubun, Valentine's Day, graduation on 3/5), and the end of the year moved to match. February is where ranks 11–15 will go.
 - **Solar's parents (Jaesang and Solji):** maybe as texts or one scene, not full links. Undecided.
 - **Later idea:** cameos from Kat's other universes (e.g. Delicate) as Persona-world residents, like Soomi as a Rise-style celebrity.
+
+## Kat's rulings (2026-10-22): arcana and invented characters
+- **Arcana confirmed:** Danielle is Devil, Jaemin is Sun, Chenle is Hermit.
+- **The writer-invented characters stay:** Akihiko's fan club (Ōta, Hiyori, Maki, Sonoda), Shinjiro's stray cat and the ramen cook, and Haechan's Valentine's gloves.
