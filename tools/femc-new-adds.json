@@ -3940,6 +3940,105 @@
       ],
       "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 3, \"rotate\": 40, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 40\u00b0 upright on the tall card shape (WebP q88)",
       "placement": "build.js SJ: sj_starter, sj_steel, sj_chain, sj_cleaver, sj_ember, sj_moonlit (owner shinjiro); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
+    },
+    {
+      "batch": 24,
+      "source": "Danielle-Portraits.png",
+      "sourceNow": "Added to Game/Danielle-Portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "faadd17684894dbda233bc4ca1d8bdc02aa8189dea82f0896fe63cbe916baee6",
+      "character": "danielle",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/danielle/neutral.webp",
+      "conversion": "3x2 white-background sheet cut at the emptiest column near each cell boundary (touching shoulders split at the seam); backgrounds removed with the existing macOS Vision tool (tools/femc-lift.swift), non-white pixels Vision dropped restored, stray pieces dropped; per-emotion PNGs in Character Portraits/; tools/femc-portraits.py aligns faces on a shared canvas (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/danielle/flustered.webp": "912c96e2a3291039ce5571cb58a9606f01a44918a14ff4124d3b992676ca02ad",
+        "assets/femc/portraits/danielle/happy.webp": "5913656ac3ed527beaf3840b1298ff8597b60991ed9f1ea18b657b9ee4d56679",
+        "assets/femc/portraits/danielle/neutral.webp": "3cb08623c6c336243e9c7190d49d440a808104f149165e63b82054a6d3722ff5",
+        "assets/femc/portraits/danielle/sad.webp": "c96e781e762feba545454c8932af7d0c8b0a9453abb23b175c8f7e343ef31167",
+        "assets/femc/portraits/danielle/serious.webp": "e6729453ae04fb1a9530911a4893c36a67ff5d2caad12f9e33929d50d2d4bddb",
+        "assets/femc/portraits/danielle/surprised.webp": "e3c40ab586eb9ae2407e761c6ba7be36d671d5ca3a868ea528f12266eb5ed9a7"
+      },
+      "outputSha256": "3cb08623c6c336243e9c7190d49d440a808104f149165e63b82054a6d3722ff5",
+      "expressionMapping": {
+        "NEUTRAL": "neutral",
+        "HAPPY": "happy",
+        "SAD": "sad",
+        "ANGRY": "serious",
+        "SURPRISED": "surprised",
+        "EMBARRASSED": "flustered"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row angry, surprised, embarrassed",
+      "scale": 0.95
+    },
+    {
+      "batch": 24,
+      "source": "Jaemin-Portraits.png",
+      "sourceNow": "Added to Game/Jaemin-Portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "85a517b1cc12a91c303ad88ad1d5d496b3904ac6aef7bcd402998568a49db344",
+      "character": "jaemin",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jaemin/neutral.webp",
+      "conversion": "3x2 white-background sheet cut at the emptiest column near each cell boundary (touching shoulders split at the seam); backgrounds removed with the existing macOS Vision tool (tools/femc-lift.swift), non-white pixels Vision dropped restored, stray pieces dropped; per-emotion PNGs in Character Portraits/; tools/femc-portraits.py aligns faces on a shared canvas (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/jaemin/flustered.webp": "4d6a34a9d1aba65d2615d3a500a0d88fff4f3d564913f707834837862278ee95",
+        "assets/femc/portraits/jaemin/happy.webp": "e02df04b0040a90ce97a6c0d7d30d4578a64af7ce5e4d068aeb0e97f3d68ef31",
+        "assets/femc/portraits/jaemin/neutral.webp": "75b05b7480719843cc7be56f524185f884b5015cf0859627bdd01d8949d2496e",
+        "assets/femc/portraits/jaemin/sad.webp": "6a876ce3303d10b60542e4b7833695e34c3e048a978f5e67ab9ba03ec2f38f69",
+        "assets/femc/portraits/jaemin/serious.webp": "3cc5fdbb83572ff8e18ad2b28d9045161416a86f17d180cd284c4132e9ee9401",
+        "assets/femc/portraits/jaemin/surprised.webp": "4531207a07989a50d92a338c199e37b905f20a064fbf259e218607266a19827e"
+      },
+      "outputSha256": "75b05b7480719843cc7be56f524185f884b5015cf0859627bdd01d8949d2496e",
+      "expressionMapping": {
+        "NEUTRAL": "neutral",
+        "HAPPY": "happy",
+        "SAD": "sad",
+        "ANGRY": "serious",
+        "SURPRISED": "surprised",
+        "EMBARRASSED": "flustered"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row angry, surprised, embarrassed",
+      "scale": 1.1
+    },
+    {
+      "batch": 24,
+      "source": "chenle-portraits.png",
+      "sourceNow": "Added to Game/chenle-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "cd1b2ba5a8ed3891cbb3f4ad77a5e5cc27e9a9a0966fce96f0093f5cb5db30d7",
+      "character": "chenle",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/chenle/neutral.webp",
+      "conversion": "3x2 white-background sheet cut at the emptiest column near each cell boundary (touching shoulders split at the seam); backgrounds removed with the existing macOS Vision tool (tools/femc-lift.swift), non-white pixels Vision dropped restored, stray pieces dropped; per-emotion PNGs in Character Portraits/; tools/femc-portraits.py aligns faces on a shared canvas (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/chenle/flustered.webp": "bab348462a5260bbb26cdf79115009555adcda27cc558a7b3b2384782cdaa6b8",
+        "assets/femc/portraits/chenle/happy.webp": "00caf0f4f36c8903ac412d3981f91de17367ac007f4cc81ca2a4acc6a73ed84a",
+        "assets/femc/portraits/chenle/neutral.webp": "8fd7a78c901968dbc6419cd818bd9b2f010e3f8b304579001dcee922dd134db8",
+        "assets/femc/portraits/chenle/sad.webp": "d6119e00fc4719c48c7aab1a2711cc849b141304a360e969b8af8f0e54ff3b93",
+        "assets/femc/portraits/chenle/serious.webp": "bc42948dc1524b7ea4b2052765d4670099db6f308e5ad1abec0fa9beda71fb93",
+        "assets/femc/portraits/chenle/surprised.webp": "0aa39f359d406d9a3914ae256b44b336d1131202070a53c4f8a963769ccca656"
+      },
+      "outputSha256": "8fd7a78c901968dbc6419cd818bd9b2f010e3f8b304579001dcee922dd134db8",
+      "expressionMapping": {
+        "NEUTRAL": "neutral",
+        "HAPPY": "happy",
+        "SAD": "sad",
+        "ANGRY": "serious",
+        "SURPRISED": "surprised",
+        "EMBARRASSED": "flustered"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row angry, surprised, embarrassed",
+      "scale": 1.2
     }
   ],
   "batch1Validation": {
@@ -4258,6 +4357,20 @@
     "tests": [
       "python3 tests/femc_building.py",
       "python3 tests/femc_extras.py"
+    ],
+    "browserErrors": 0
+  },
+  "batch24Validation": {
+    "date": "2026-10-22",
+    "scope": "Portrait sets for the new links Danielle, Jaemin and Chenle (six expressions each)",
+    "sourcesInspected": "all 3 viewed before cutting: each sheet is a 3x2 grid of the right character in the six requested expressions; every cut and every output WebP reviewed on a dark background (no neighbouring face or shoulder, no chopped heads, no holes)",
+    "sourcesIntegrated": 3,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold and lantern files untouched",
+    "sizeCheck": "neutral faces compared at scene scale against Hanni and Haechan; scale.js danielle 0.95, jaemin 1.1, chenle 1.2",
+    "tests": [
+      "python3 tests/femc_cast_consistency.py",
+      "python3 tests/femc_links.py --links danielle,jaemin,chenle"
     ],
     "browserErrors": 0
   }

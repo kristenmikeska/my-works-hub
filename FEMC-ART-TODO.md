@@ -12,28 +12,6 @@ Use **ChatGPT** for anything with a face, and **Gemini** for places and objects.
 
 ---
 
-## 0. New link portraits ⭐ (needed for the new Runners links)
-**Danielle, Jaemin, Chenle:** a portrait set each, the same as the other searchers (six emotions: neutral, happy, sad, angry, surprised, embarrassed; Gemini 2×2 sheets work too).
-**Attach:** one finished searcher portrait for style (e.g. 🎨 `Character Portraits/Hanni/`), plus a face-claim photo of your own if you have one.
-```
-Persona 3 Reload style character portrait sheet, matching the attached portrait's art style exactly: [NAME], [LOOK], shown with six expressions (neutral, happy, sad, angry, surprised, embarrassed), bust shots, plain white background, evenly spaced.
-```
-Save each as `<name>-portraits.png`. Until these exist, their scenes use a silhouette.
-
-**Already wired (2026-10-22): the links are in the game and wait only for the files.** Every face they use resolves the
-moment these exist (no code change; the game reads `portraits/index.js`):
-- Cut each sheet into `~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits/<Name>/<Name>-<Emotion>.png`
-  (`Danielle/`, `Jaemin/`, `Chenle/`; angry and embarrassed are fine as names: the tool maps them to serious and flustered),
-  then run `python3 tools/femc-portraits.py danielle jaemin chenle`.
-- That writes `assets/femc/portraits/danielle/{neutral,happy,sad,serious,surprised,flustered}.webp` (the same for `jaemin/`
-  and `chenle/`) and lists them in `assets/femc/portraits/index.js`. Bump `portraits/index.js?v=` in femc-game.html, add a
-  size in `assets/femc/portraits/scale.js` if one looks off, and check each face in a scene.
-- Until then: scene speakers show the silhouette (core.js `pendingFace`, from each link's `portraitPending: true`, which can
-  stay); phone threads, Go Out cards and pickers show no face; battle perk cut-ins show a silhouette (battle.js
-  `perkFaceHtml`; the cut-in face is `happy` for Danielle and Jaemin and `neutral` for Chenle, `build.js WHO`).
-
----
-
 ## 1. Lantern windows (the last full-moon fight)
 Three small foes that hang beside the last boss. For now they're drawn in code; real art would make them look like the memory Shadows.
 **Attach (2 images):**
