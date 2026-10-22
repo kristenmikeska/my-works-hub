@@ -7,7 +7,7 @@ Also: the backgrounds in EXTRA, which Kat delivered through New Adds and which n
 Which place uses which background is set by hand in assets/femc/backgrounds.js (v1) and assets/femc/game/data/places.js.
 """
 import os, re
-from PIL import Image
+from PIL import Image, ImageOps
 
 SRC = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Background Images')
 DST = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets/femc/bg')
@@ -21,7 +21,28 @@ EXTRA = {
     'yakushima-villa': 'Added to Game/yukishima-villa.jpeg',
     'yakushima-forest': 'Added to Game/yukishima-forest.jpeg',
     'yakushima-beach-fireworks': 'Added to Game/yukishima-beach-fireworks.jpeg',
+    # batch 27 (2026-10-22)
+    'iwatodai-bathhouse': 'Added to Game/bathouse.jpeg',
+    'seaside-park-beach-cleanup': 'Added to Game/beachcleanup.jpeg',
+    'iwatodaidorm-livingroom-birthday': 'Added to Game/dormlounge-bday.jpeg',
+    'iwatodaidorm-roof-planters': 'Added to Game/dormroof-planters.jpeg',
+    'gamepanic-inside': 'Added to Game/gamepanic-inside.jpeg',
+    'gekkoukan-study-group': 'Added to Game/gekkoukan-studyroom.jpeg',
+    'hagakure-challenge-bowl': 'Added to Game/hagakure-challengebowl.jpeg',
+    'hagakure-ramen': 'Added to Game/hagakure-ramen-updated.jpeg',
+    'hospital-childrens-ward': 'Added to Game/hospital-childrensroom.jpeg',
+    'screenshot-theater': 'Added to Game/movietheater-inside.jpeg',
+    'port-island-museum': 'Added to Game/museumhall.jpeg',
+    'naganaki-shrine-autumn': 'Added to Game/naganakishrine-leaves.jpeg',
+    'paulownia-flower-shop': 'Added to Game/portisland-flowershop.png',
+    'record-shop-listening-booth': 'Added to Game/recordshop-listeningbooth.jpeg',
+    'iwatodai-riverside-night': 'Added to Game/riverside-night.jpeg',
+    'solar-desk-night': 'Added to Game/solars-desk.jpeg',
+    'yakushima-ferry': 'Added to Game/yakushima-ferrytopdeck.jpeg',
+    'yakushima-villa-balcony': 'Added to Game/yakushima-villabalcony.jpeg',
+    'yakushima-villa-terrace': 'Added to Game/yakushima-villaterrace.jpeg',
 }
+SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 
 
 def trim_bars(im):
@@ -34,10 +55,12 @@ def trim_bars(im):
     while left < right - 10 and dark((left, top, left + 1, bottom)): left += 1
     while right > left + 10 and dark((right - 1, top, right, bottom)): right -= 1
     return im.crop((left, top, right, bottom)) if (top, bottom, left, right) != (0, im.height, 0, im.width) else im
-def convert(path, slug):
+def convert(path, slug, size=None):
     im = trim_bars(Image.open(path).convert('RGB'))
     if im.width > 1920:
         im = im.resize((1920, round(im.height * 1920 / im.width)), Image.LANCZOS)
+    if size and im.size != size:
+        im = ImageOps.fit(im, size, Image.LANCZOS)
     im.save(os.path.join(DST, slug + '.webp'), 'WEBP', quality=82, method=5)
     print(f'{slug:32} {im.width}x{im.height}')
 
@@ -49,4 +72,4 @@ for f in sorted(os.listdir(SRC)):
     convert(os.path.join(SRC, f), re.sub(r'[^a-z0-9]+', '-', stem.lower()).strip('-'))
 for slug, rel in EXTRA.items():
     if os.path.exists(os.path.join(IMAGES, rel)):
-        convert(os.path.join(IMAGES, rel), slug)
+        convert(os.path.join(IMAGES, rel), slug, SIZE)

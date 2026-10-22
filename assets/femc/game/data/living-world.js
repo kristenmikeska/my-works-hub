@@ -36,6 +36,7 @@ window.FEMC_GAME_LODGING = {
     { music: 'joy' },
     { n: "The lounge was dark when she came in at seven. Not off. Dark, deliberately, every lamp out and the curtains drawn against the rain, and she stood in the doorway with her wet umbrella dripping on the mat and her hand already going to her pocket for the Evoker that wasn't there, because a dark room in this building had only ever meant one thing." },
     { n: "Then somebody hissed *NOW*, and somebody else said *I KNOW*, and the lights came on all at once." },
+    { bg: 'iwatodaidorm-livingroom-birthday' },
     { s: 'junpei', f: 'happy', t: "HAPPY BIRTHDAY!" },
     { n: "All of them. Junpei with a party popper he'd set off half a second early, so that the streamers landed on Yukari. Yukari picking them out of her hair and laughing anyway. Fuuka holding a cake with both hands like it might escape, a cake that leaned noticeably to the left and said *HAPPY BIRTHDAY SOLAR* in pink icing with the last two letters squeezed small against the edge. Mitsuru by the sofa, very straight, clapping in a measured way. Akihiko beside Fuuka holding the candles and a lighter with tremendous seriousness, as if he'd been put in charge of a detonation." },
     { ifMet: 'kiriko', then: [{ n: "Kiriko on the arm of the sofa in her hoodie, ringing a little bell she'd brought from the shrine every time anyone said the word birthday." }] },

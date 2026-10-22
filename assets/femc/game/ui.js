@@ -997,7 +997,7 @@
     const actCard = x => {
       const ok = G.activityOk(x, slot), pv = G.activityInfo(x), cost = x.club ? (G.clubState(x.id).joined ? 'Your club' : 'Join') : x.cost ? `¥${x.cost.toLocaleString()}` : x.gacha ? (x.gacha === 'velvet' ? 'Draw' : 'Gacha') : x.shop ? 'Shop' : 'Free';
       const who = free.filter(l => spotOf(l) === x.spot);
-      return card(`data-act="${x.id}" data-px="act:${x.id}"${ok.ok ? '' : ' aria-disabled="true"'}`, `place${ok.ok ? '' : ' off'}`, art(`${a.name} · ${x.spot}`),
+      return card(`data-act="${x.id}" data-px="act:${x.id}"${ok.ok ? '' : ' aria-disabled="true"'}`, `place${ok.ok ? '' : ' off'}`, art(x.place || `${a.name} · ${x.spot}`),
         `<span class="g-pc-txt"><small class="g-pc-kick">${esc(x.spot)}</small><b>${esc(x.name)}</b><small class="g-act-benefit">${esc(pv.benefit)} · ${esc(pv.time)}</small>${ok.ok ? '' : `<small class="g-pc-why">${esc(ok.why)}</small>`}<small class="g-px-more">${esc(x.about || '')}</small></span>`,
         `<em>${esc(cost)}</em>${who.length ? `<span class="g-px-faces">${who.map(l => faceOf(l.id)).join('')}</span>` : ''}`);
     };

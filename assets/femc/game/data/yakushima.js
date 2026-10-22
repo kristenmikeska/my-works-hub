@@ -3,7 +3,7 @@
    (the ♪ from its choices go to that person). The story's own scene (story-act3.js 'a3-yakushima', 7/22 late, "on the second
    evening") plays in its slot; the plan leads into it and out of it. S.E.E.S. only: Mitsuru, Akihiko, Yukari, Junpei and
    Fuuka, and the Chairman for the first night; Aigis from the morning of 7/23. Backgrounds: places.js 'Yakushima · …' rules
-   (the ferry reuses the harbor until Kat's new piece; FEMC-ART-TODO.md, Places). The first night's pick shows the beach fireworks. */
+   (the ferry, the villa, its balcony, the forest). The first night's pick shows the beach fireworks; the first dinner is on the terrace. */
 window.FEMC_GAME_TRIP = {
   yakushima: {
     cast: { captain: 'The Ferry Captain' },
@@ -83,7 +83,7 @@ window.FEMC_GAME_TRIP = {
             ] }
           ] }
         ] },
-        evening: { title: 'dinner at the villa', place: 'Yakushima · Kirijo Villa', time: 'Evening', music: 'joy', scene: [
+        evening: { title: 'dinner at the villa', place: 'Yakushima · Kirijo Villa', time: 'Evening', bg: 'yakushima-villa-terrace', music: 'joy', scene: [
           { n: "Dinner at the villa was eleven courses on a long table on the terrace under strings of lights, served by staff in white jackets who refilled your glass before you'd noticed it was empty, and S.E.E.S. sat down to it sunburned and salty and visibly terrified of the cutlery." },
           { s: 'junpei', f: 'surprised', t: "There's three forks. Why are there three forks. Which fork is for the fish? Is there a fish fork? Is the fish fork a spoon?" },
           { s: 'mitsuru', f: 'neutral', t: "Outside in, Iori. Every course, the outermost one." },
@@ -231,7 +231,7 @@ window.FEMC_GAME_TRIP = {
             ] }
           ] }
         ] },
-        after: { prompt: 'The ferry home. Who do you stand with at the rail?', sub: 'The island going green and then gray behind you.', bg: 'harbor', options: [
+        after: { prompt: 'The ferry home. Who do you stand with at the rail?', sub: 'The island going green and then gray behind you.', bg: 'yakushima-ferry', options: [
           { id: 'ferry-aigis', who: 'aigis', label: 'Aigis', sub: 'Exactly one arm’s length away. Watching you.', needs: { events: ['a3-yakushima'] }, place: 'Yakushima · Ferry', time: 'Afternoon', music: 'tender', scene: [
             { n: "Aigis stood at the rail one arm's length away, exactly, and every time the ferry rocked and Solar shifted her weight Aigis shifted hers to keep the distance the same, without looking, like a dance partner who'd only been taught the one step." },
             { s: 'aigis', f: 'neutral', t: "Solar-san. What is the dormitory like? I would like to prepare." },

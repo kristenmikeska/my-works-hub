@@ -98,7 +98,7 @@
           ] }
         ] }
       ] },
-    '1/1': { rank: 7, slot: 'evening', flag: 'year-goes-on', title: 'the first night of the year', place: 'Iwatodai · Riverside', time: 'Evening', bg: 'park-2', music: 'tender',
+    '1/1': { rank: 7, slot: 'evening', flag: 'year-goes-on', title: 'the first night of the year', place: 'Iwatodai · Riverside', time: 'Evening', bg: 'iwatodai-riverside-night', music: 'tender',
       ask: "everything's closed. hagakure's closed. i'm going to the river anyway. come", yes: 'coming', ok: 'bring a coat. the good one', sorry: 'not tonight. im sorry', no: "ok. happy new year. i'll run for both of us tomorrow",
       scene: [
         { n: "The whole city was closed for the new year. The Strip had its shutters down and Hagakure had a paper sign on the door in the cook's furious handwriting, *CLOSED. GO HOME. SEE YOU THE 4TH*, and the only things open were the convenience store on the corner and the river, and Akihiko had bought out most of the convenience store." },
@@ -330,7 +330,7 @@
   });
 
   add('jungwon', {
-    '11/3': { rank: 2, title: 'culture day', place: 'Port Island · Museum', time: 'Daytime', bg: 'elegant-buildingentrance', music: 'day',
+    '11/3': { rank: 2, title: 'culture day', place: 'Port Island · Museum', time: 'Daytime', bg: 'port-island-museum', music: 'day',
       ask: "the city museum is free today. culture day. i'd like to go. i'd like to go with you, specifically.", yes: 'MUSEUM DATE :D', ok: "it's not a date. it's an educational outing. noon. i'll be at the station.", sorry: 'cant today!! sorry!!', no: "that's fine. i'll take notes for you.",
       scene: [
         { n: "The city museum on Culture Day was free and half empty, a cool high building of glass cases and polished floors, and Jungwon walked it the way he did everything, slowly and in order, reading every placard all the way to the end, including the donor's name, with his hands clasped behind his back." },
@@ -367,7 +367,7 @@
   });
 
   add('haechan', {
-    '11/23': { rank: 2, title: 'labor thanksgiving', place: 'Paulownia Mall · Record Shop', time: 'Daytime', bg: 'inside-mall', music: 'tender',
+    '11/23': { rank: 2, title: 'labor thanksgiving', place: 'Paulownia Mall · Record Shop', time: 'Daytime', bg: 'record-shop-listening-booth', music: 'tender',
       ask: "holiday. record shop at the mall has listening booths. one booth's good. the rest are bad. come", yes: 'ok. which one is good', ok: "you'll hear it. 2", sorry: 'cant today, im sorry', no: 'mm. ok',
       scene: [
         { n: "The record shop on the mall's lower level had five listening booths along the back wall, glass boxes with a stool and a pair of old headphones each, and he walked past the first four without looking at them and stopped at the fifth and held the door for her." },

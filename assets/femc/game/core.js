@@ -852,7 +852,7 @@ window.FemcGame = (() => {
     if (S.slot === 'after' && perkOn('schedule') && weeklyFree('schedule')) { weekly('schedule'); toast('perk', 'It’s a schedule: there’s still time for one more thing.'); }
     else S.spent[`${S.day}-${S.slot}`] = `act:${a.id}`;
     save();
-    return { text: (w ? `${w.label}. ` : '') + text, place: `${areaById(a.area).name} · ${a.spot}` };
+    return { text: (w ? `${w.label}. ` : '') + text, place: a.place || `${areaById(a.area).name} · ${a.spot}` };
   }
   function shopStock(id) {
     const B = D.battle, cfg = D.places.shops[id], shop = B.shops?.[cfg?.battleShop];

@@ -1,4 +1,4 @@
-# Art to make (updated 2026-10-22: the Revelation cards, the S.E.E.S. weapon sheets, three tarot cards and six places are in the game)
+# Art to make (updated 2026-10-22: the Revelation cards, the S.E.E.S. weapon sheets, three tarot cards and twenty-five places are in the game)
 
 This file replaces `FEMC-ART-NEXT.md` and `FEMC-THEURGY-PROMPTS.md`. Everything already in the game is off this list.
 - Put finished pieces in **New Adds**.
@@ -47,28 +47,10 @@ A tarot card in exactly the same style, border and layout as the attached cards:
 ```
 Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: [PLACE].
 ```
-- [ ] Yakushima: the ferry's top deck, the island ahead in cloud (the trip's ferry scenes use the harbor until then)
-- [ ] Yakushima: the villa's long balcony at night over the sea
-- [ ] Yakushima: the villa terrace set for dinner at sunset, strings of lights
-- [ ] The dorm lounge decorated for a birthday: streamers, a cake, balloons, warm night light (the 6/24 party uses the lounge at night until then)
-- [ ] A record shop's listening booth, glass walls, old headphones (a holiday scene uses the mall until then)
-- [ ] A small city museum hall with old maps in glass cases (a holiday scene uses a building entrance until then)
-- *The five social stats' places (2026-10-21).* Each one works now on an existing background (in brackets); a new one would replace it:
-  - [ ] Inside the neighborhood bathhouse: tiled baths, a mural, steam, a small electric bath in the corner, evening (now `outside-daytime-neighborhood` / `outside-night`)
-  - [ ] Hagakure's challenge bowl on the counter: an enormous ramen bowl, a stopwatch, a wall of winners' photos (now `hagakureramen`)
-  - [ ] Inside Screen Shot: a small cinema with red seats and the projector beam, the late show (now `screen`)
-  - [ ] Inside Game Panic: rows of crane machines full of plushies, rhythm cabinets, neon (now `gameparade-outside`)
-  - [ ] The dorm roof with planters: tomatoes, basil, a watering can, the city at dusk (now `iwatodaidorm-roof-evening`)
-  - [ ] Solar's desk at night: a sewing kit, a half-fixed radio, an old game console, a small keyboard and headphones (now `solar-dormroom-night`)
-  - [ ] A flower stall by the Paulownia Mall fountain: buckets of flowers, a stool, wrapping paper (now `shopping-street`)
-  - [ ] Naganaki Shrine's grounds with a bamboo broom and a pile of leaves, afternoon (now `outside-shrine-day`)
-  - [ ] The seaside park's beach after a cleanup: bags, gloves, gulls, morning light (now `park-2`)
-  - [ ] Tatsumi Memorial's children's ward playroom: picture books, cards, a window, soft afternoon light (now `hospital-hallway-day`)
-  - [ ] A Gekkoukan classroom after school with a small study group's desks pushed together (now `gekkoukan-classroom-day`)
-  - [ ] The riverside path at night with a lamppost, for walking Koromaru (now `park-2`)
+- *(Optional)* Naganaki Shrine's grounds in spring, summer and winter, to go with the autumn one (the sweeping activity uses the plain shrine all year, since a place's background can't change by season yet)
 - *The living world, part 2 (2026-10-21).* Each works now on an existing background (in brackets); a new one would replace it:
   - [ ] Inside Chagall Café behind the counter: the espresso machine, the pastry case, mugs on hooks (now `lablanc`)
-  - [ ] Hagakure's kitchen during the dinner rush: steam, big stockpots, the ticket rail (now `hagakureramen`)
+  - [ ] Hagakure's kitchen during the dinner rush: steam, big stockpots, the ticket rail (now `hagakure-ramen`)
   - [ ] The amulet stall at Naganaki Shrine: a wooden counter of charms and ema plaques, paper lanterns (now `outside-shrine-day`)
   - [ ] Naganaki Shrine on New Year's: crowds, stalls, lanterns, a line for the bell (the amulet stall's New Year shifts use the shrine)
   - [ ] The dorm kitchen at night with an oven light on and a pound cake cooling (My Melody's scenes use `iwatodaidorm-kitchen`)
@@ -122,7 +104,7 @@ The full prompts are in `FEMC-CG-PROMPTS.md` under the number shown. For all of 
 ## Appendix (for Claude): how new art goes in
 ### Tarot cards and places
 - **A tarot card:** add `'<arcana key>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-tarot.py` (the key is the link's `arcana` lowercased without spaces) and run it: it writes `tarot/<key>.webp` and `tarot/index.js`, which the Bonds menu and the rank-up cards read (`core.js tarot`). Bump the `tarot/index.js ?v=` in `femc-game.html`.
-- **A place:** add `'<slug>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-backgrounds.py` and run it (WebP, at most 1920 wide), then point the place's rule in `game/data/places.js` (or a scene's or a pick's `bg`) at the slug and bump that file's `?v=`.
+- **A place:** add `'<slug>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-backgrounds.py` and run it (WebP, at most 1920 wide; New Adds pieces are fit to 1920×1072), then point the place's rule in `game/data/places.js` (or a scene's or a pick's `bg`) at the slug and bump that file's `?v=`. An activity that shares its spot with other scenes gets its own `place` (e.g. `'Iwatodai Strip · Hagakure · Challenge Bowl'`) and a rule above the spot's. Rules can't change by season, so seasonal art goes on dated scenes' `bg`. Night-lit art gets the same slug as its evening image too, or evening scenes dim it.
 
 ### Theurgy and strike-sheet art
 Everything is data plus one tool. The presentation is reusable: `battle.js theurgyCut` plays whatever a fighter has (see the comment above `TH` in `data.js`).

@@ -1171,7 +1171,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
     ],
     beats: [
       { id: 'hg-arc-1', at: 2, after: '4/25', scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure', time: 'Evening', bg: 'hagakure-challenge-bowl' },
         { n: "The Mega Bowl came out of the kitchen on a tray, carried by Daisuke with both arms, a bowl the size of a car's hubcap holding four portions of noodles and a heap of pork slices like a fallen building and six eggs and a whole sheet of nori sticking up at the back like a sail, and the whole shop went quiet to watch it go by." },
         { n: "It went to Mr. Gotou. Mr. Gotou was forty-five, a foreman on a site on the far side of the river, built like a refrigerator, and this, Daisuke said, setting it down in front of him with ceremony, was his thirteenth attempt." },
         { s: 'hgGotou', t: "Thirteen's lucky. In some countries. Somewhere. Start the clock." },

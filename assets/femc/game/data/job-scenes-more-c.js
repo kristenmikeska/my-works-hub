@@ -252,7 +252,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
       ] },
 
       { id: 'am-s-leaves', months: [10, 11], scene: [
-        { place: 'Naganaki Shrine · Amulet Stall' },
+        { place: 'Naganaki Shrine · Amulet Stall', bg: 'naganaki-shrine-autumn' },
         { n: "The ginkgo on the corner had turned all at once in the night, the way ginkgos do, gold from top to bottom like somebody had flipped a switch, and it was dropping its leaves and its fruit on the shrine path with total commitment, and the fruit smelled, there was no polite way to put it, like feet." },
         { s: 'kubo', t: "Every year. Every single year. Forty years I've been sweeping this path and every year that tree does this to me personally." },
         { n: "She swept. The leaves came down. She swept faster. The leaves came down faster. It was a war, and she had been losing it gracefully for four decades, and she seemed to enjoy it more than anything else in her week." },

@@ -539,6 +539,7 @@
 
     { after: '10/20', title: '9: whoever you are', place: 'Naganaki Shrine', time: 'After School', scene: [
       { music: 'tender' },
+      { bg: 'naganaki-shrine-autumn' },
       { n: "October, and the ginkgo by the offering hall had gone gold all at once, the way ginkgos do, every fan-shaped leaf at the same moment, and was dropping them now in a slow continuous shower so that the stones were half buried in yellow and the whole shrine smelled faintly, unfortunately, of the fruit. Kasumi was sweeping. She'd borrowed the broom from the shrine office. She was sweeping the flat stones clear so she could practice, and the tree was undoing it behind her, and she kept going anyway, with a kind of serene stubbornness Solar had come to recognize." },
       { s: 'kasumi', f: 'happy', t: "Senpai! Grab the other broom. If we both do it, we can beat the tree." },
       { choose: [

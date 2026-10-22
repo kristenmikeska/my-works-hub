@@ -4264,6 +4264,291 @@
       "destination": "assets/femc/bg/yakushima-beach-fireworks.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
       "outputSha256": "27427ab3e1c1682c7fcc71d6ff4af1026c1ab081795fc055ee3df49f2ea3e1f8"
+    },
+    {
+      "batch": 27,
+      "source": "bathouse.jpeg",
+      "sourceNow": "Added to Game/bathouse.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "dbe3ebe95551a2f902ffe9750f7a0cc5b49ae2efebdaea6231278c48267a3e27",
+      "place": "Iwatodai Strip \u00b7 Bathhouse \u00b7 Baths (the bathhouse and electric bath activities)",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodai-bathhouse.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "9232ecdcb1a82324b6e505738549189f4758948c082001804d71a47e5057affe"
+    },
+    {
+      "batch": 27,
+      "source": "beachcleanup.jpeg",
+      "sourceNow": "Added to Game/beachcleanup.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "831bfbe2fc7709556d9f4ce70a955105147c4dff8846f7322b475553171b0801",
+      "place": "Port Island \u00b7 Seaside Park \u00b7 Beach Cleanup (the beach cleanup activity)",
+      "status": "integrated",
+      "destination": "assets/femc/bg/seaside-park-beach-cleanup.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "c6f85791f86d18513bf4f82e6eddd094afd8a780001ed1be0fcf6cf774af44d1"
+    },
+    {
+      "batch": 27,
+      "source": "dormlounge-bday.jpeg",
+      "sourceNow": "Added to Game/dormlounge-bday.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "1c67d226f8b3d3e81c828a70d80eb5e1e6e6753e73317259e6fedc246bfb2137",
+      "place": "living-world.js lw-birthday (6/24 evening), a { bg } line once the lights come on",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodaidorm-livingroom-birthday.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "bb93e525ad10f825c110811a10ea47c4de1d14d3496c133735d25269d4f23b7b"
+    },
+    {
+      "batch": 27,
+      "source": "dormroof-planters.jpeg",
+      "sourceNow": "Added to Game/dormroof-planters.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "d89d6937ed7e1145137b64f96f691cbc8a0a95d5c8f2e466a1c4a3adb4412787",
+      "place": "Iwatodai Dorm \u00b7 Rooftop \u00b7 Garden (dorm act: water the roof garden)",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodaidorm-roof-planters.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "f30745299dbb3a410ad6ea26f1504290bae9303d8263f78f755a2c4d04ebfefe"
+    },
+    {
+      "batch": 27,
+      "source": "gamepanic-inside.jpeg",
+      "sourceNow": "Added to Game/gamepanic-inside.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "77397a868877fd939fd0de84c791e0557b702492b0d1eda70b104ad6576e590c",
+      "place": "Paulownia Mall \u00b7 Game Panic and Paulownia Mall \u00b7 Arcade (day and evening)",
+      "status": "integrated",
+      "destination": "assets/femc/bg/gamepanic-inside.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "e29167b61abe6a9549437c2510ce1cb41b2b1023c63b35ce453a30ec7ec258d3"
+    },
+    {
+      "batch": 27,
+      "source": "gekkoukan-studyroom.jpeg",
+      "sourceNow": "Added to Game/gekkoukan-studyroom.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "d2b7a51591752ae5f195c3367dfc5bd479ca546bf303704e1e277e6dc18bbb9c",
+      "place": "Gekkoukan High \u00b7 Classroom \u00b7 Study Group (the first-years' study group activity)",
+      "status": "integrated",
+      "destination": "assets/femc/bg/gekkoukan-study-group.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "769cd75a80f2506db23a53b77f3773a30b46ce9ab52173743088a89a77da28a5"
+    },
+    {
+      "batch": 27,
+      "source": "hagakure-challengebowl.jpeg",
+      "sourceNow": "Added to Game/hagakure-challengebowl.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "7f52ba139ddaf5c867b9fab9828d980195c9b978d4c8e622ace52a9d60805715",
+      "place": "Iwatodai Strip \u00b7 Hagakure \u00b7 Challenge Bowl (the Mega Bowl activity); job-scenes-more-b.js hg-arc-1 place line bg",
+      "status": "integrated",
+      "destination": "assets/femc/bg/hagakure-challenge-bowl.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "ef17aafee560cde503bd4686c4c04ddf9b8b17a80972eb1c133c137b2b790a96"
+    },
+    {
+      "batch": 27,
+      "source": "hagakure-ramen-updated.jpeg",
+      "sourceNow": "Added to Game/hagakure-ramen-updated.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "cb097e01a5e69276d7432c19d0c8db6ff2d7276753e7a46c5ff1e2152deb0ee7",
+      "place": "Iwatodai Strip \u00b7 Hagakure and Hagakure (replaces hagakureramen, which stays on disk for v1)",
+      "status": "integrated",
+      "destination": "assets/femc/bg/hagakure-ramen.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "421944bd0173e958c8987e039c5d6a4b8b08b3f57e3198e8bab7f4dd560efd8d"
+    },
+    {
+      "batch": 27,
+      "source": "hospital-childrensroom.jpeg",
+      "sourceNow": "Added to Game/hospital-childrensroom.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "e0ec7c2e005ecd4d0dfe4b0115147cedd78da98974faa970fcb1b13324e2bf98",
+      "place": "Tatsumi Memorial Hospital \u00b7 Children's Ward (the ward volunteering activity)",
+      "status": "integrated",
+      "destination": "assets/femc/bg/hospital-childrens-ward.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "6d19277124eadce38ca14eec68108a9acaabc142e4777d9c426316c685ca9556"
+    },
+    {
+      "batch": 27,
+      "source": "movietheater-inside.jpeg",
+      "sourceNow": "Added to Game/movietheater-inside.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "574f330bd90ec6658bc2d46bf925195f4d65f69a95ff9bf9f146a4b0402a826f",
+      "place": "Paulownia Mall \u00b7 Screen Shot (day and evening)",
+      "status": "integrated",
+      "destination": "assets/femc/bg/screenshot-theater.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "57e8039bdac691c92268bf92f2235f4a8620a77e1e7cbd9d112441278a778790"
+    },
+    {
+      "batch": 27,
+      "source": "museumhall.jpeg",
+      "sourceNow": "Added to Game/museumhall.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "a989cc3ad5e86d63f77d5bed7e846febc06eeceb1cb30245f76dc2f0ad3031a7",
+      "place": "Port Island \u00b7 Museum; living-holidays.js 11/3 bg",
+      "status": "integrated",
+      "destination": "assets/femc/bg/port-island-museum.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, centre-cropped to 1920x1072 (SIZE), WebP q82; source unchanged",
+      "outputSha256": "8fcb15ffa29a4c4f7ad3b834e325ed1fc9aff612538812e96fc8daf0ff0630bd"
+    },
+    {
+      "batch": 27,
+      "source": "naganakishrine-leaves.jpeg",
+      "sourceNow": "Added to Game/naganakishrine-leaves.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "66773248a45118927f03fe303f913406de7ef1b7fe157ffa6c81fce39156537b",
+      "place": "autumn only, by scene bg: kasumi.js rank 9 (after 10/20) and job-scenes-more-c.js am-s-leaves (months 10-11)",
+      "status": "integrated",
+      "destination": "assets/femc/bg/naganaki-shrine-autumn.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "1fe4f6bf1470e86d1438b179d0551219fb153e20a441768c0f2d82f6a305884b"
+    },
+    {
+      "batch": 27,
+      "source": "portisland-flowershop.png",
+      "sourceNow": "Added to Game/portisland-flowershop.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "9acfcbc81cce73f47889e892a310045da2143c73cf4c6ecfe9e1295c3b29fb6b",
+      "place": "Paulownia Mall \u00b7 Flower Stall (the flower stall job and its scenes)",
+      "status": "integrated",
+      "destination": "assets/femc/bg/paulownia-flower-shop.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), scaled up and centre-cropped to 1920x1072 (SIZE), WebP q82; source unchanged",
+      "outputSha256": "d5ea0c1a6538b94304f1ecc2536cf4660498135004d25fca81fae7d94c2a667c"
+    },
+    {
+      "batch": 27,
+      "source": "recordshop-listeningbooth.jpeg",
+      "sourceNow": "Added to Game/recordshop-listeningbooth.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "53664f8b5280362b13d1d6da63a002cb5295785b5f1af8702861835e5e58a9ba",
+      "place": "Paulownia Mall \u00b7 Record Shop; living-holidays.js 11/23 bg",
+      "status": "integrated",
+      "destination": "assets/femc/bg/record-shop-listening-booth.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "9bff6f2fc1dacc3c7b2822b4eec918a68fe867cb643fd91609baf2b07cbdc2f7"
+    },
+    {
+      "batch": 27,
+      "source": "riverside-night.jpeg",
+      "sourceNow": "Added to Game/riverside-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "a09a0cfcb91949abcb98d1f60491c2a397786fda65514ee232aa8775414c4975",
+      "place": "Iwatodai \u00b7 Riverside evening/night image (day keeps park-2); living-holidays.js 1/1 bg",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodai-riverside-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "f8e87e7d56ec2757ca8c4bd90b228b1926540f5463152ae2cbc632bd79211c6b"
+    },
+    {
+      "batch": 27,
+      "source": "solars-desk.jpeg",
+      "sourceNow": "Added to Game/solars-desk.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "ce3e17aa8611a84d0ae128008188de2a6e3e559666d07a48281e1c9dd14be98a",
+      "place": "Iwatodai Dorm \u00b7 Solar's Room \u00b7 Desk (the five desk acts)",
+      "status": "integrated",
+      "destination": "assets/femc/bg/solar-desk-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "5a23d8ee2e3abd6a52bb959388d8c1a061adf335aa6c8427f0f4107c494a2c5a"
+    },
+    {
+      "batch": 27,
+      "source": "yakushima-ferrytopdeck.jpeg",
+      "sourceNow": "Added to Game/yakushima-ferrytopdeck.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "c0b589366c88b8eb796605cfec20f4032fec30c3a33d08efdb53730f704cef3a",
+      "place": "Yakushima \u00b7 Ferry; yakushima.js 7/23 ferry pick screen bg",
+      "status": "integrated",
+      "destination": "assets/femc/bg/yakushima-ferry.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "ef6e44dbedf0f25cc88db42f5da173153f0dc7964c0241135c2873ddc337671d"
+    },
+    {
+      "batch": 27,
+      "source": "yakushima-villabalcony.jpeg",
+      "sourceNow": "Added to Game/yakushima-villabalcony.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "ff73dcfaae72f168a520e8e119b052438af9c5b5492cbf4811734aec63518d8e",
+      "place": "Yakushima \u00b7 Villa Balcony",
+      "status": "integrated",
+      "destination": "assets/femc/bg/yakushima-villa-balcony.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "1c23b737423350e8edb5a4f1618b9278e98013bdbef487934cff99ddc9d8dab7"
+    },
+    {
+      "batch": 27,
+      "source": "yakushima-villaterrace.jpeg",
+      "sourceNow": "Added to Game/yakushima-villaterrace.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "544eb0a04d611a38efddac10286b62d797241410f7cf29fcfbe9aa59d47a07df",
+      "place": "yakushima.js 7/21 evening (dinner at the villa) bg",
+      "status": "integrated",
+      "destination": "assets/femc/bg/yakushima-villa-terrace.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "6ec21e63d2da07081567a1130d1681868efe2f5de409d425136bc12fce4d8927"
     }
   ],
   "batch1Validation": {
@@ -4616,6 +4901,21 @@
       "python3 tests/femc_living.py",
       "python3 tests/femc_living2.py",
       "targeted headless check: G.tarot for aigis/yunjin/hanni and G.background for the five places plus the fireworks pick all load"
+    ],
+    "browserErrors": 0
+  },
+  "batch27Validation": {
+    "date": "2026-10-22",
+    "scope": "Nineteen place backgrounds: the five social stats' places, the birthday lounge, Game Panic, the cinema, the museum, the record shop, the riverside at night, Solar's desk, the new Hagakure, autumn at the shrine, and the Yakushima ferry, balcony and terrace",
+    "sourcesInspected": "all 19 viewed before converting; every output viewed as a contact sheet",
+    "sourcesIntegrated": 19,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold and the chibi All-Out files untouched",
+    "tests": [
+      "python3 tools/femc-check-scenes.py",
+      "python3 tests/femc_living.py",
+      "python3 tests/femc_living2.py",
+      "targeted jsc check: every activity, dorm act and changed place resolves to an existing background"
     ],
     "browserErrors": 0
   }
