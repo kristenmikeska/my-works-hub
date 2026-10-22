@@ -4126,6 +4126,144 @@
       "conversion": "v2 pose sheet; idle figure (top-left cell, box [73, 0, 272, 377]) keyed off white with tools/femc-theurgy.py key() (Vision mask + un-mix from white), pieces centred in that cell kept, trimmed with 6px padding, WebP q90; the other poses are unused for now; source unchanged",
       "outputSha256": "2f9cb67cf49aeec92093b76f26c467a33d989850d0c39309e95819eb1d3c12f5",
       "choice": "v2 over v1: the black ink wisps and painted finish match the Kegstand Shadow (memory-party-pose-0); v1 is a clean ornamental render"
+    },
+    {
+      "batch": 26,
+      "source": "aeon-tarot.webp",
+      "sourceNow": "Added to Game/aeon-tarot.webp",
+      "size": [
+        175,
+        248
+      ],
+      "sha256": "9bb81b115f98ba31db471c77a2ec368814d7b17f4a84772e9bf0a5b70e87b589",
+      "arcana": "Aeon",
+      "link": "aigis",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/aeon.webp",
+      "conversion": "tools/femc-tarot.py EXTRA: P3-shaped card, upscaled to 360px wide, WebP q85; source unchanged",
+      "outputSha256": "2bb78314b20bf143a9d9aec275b50bed3f797a64a7c6c1731ee1cb7474750848"
+    },
+    {
+      "batch": 26,
+      "source": "judgment-tarot.jpg",
+      "sourceNow": "Added to Game/judgment-tarot.jpg",
+      "size": [
+        375,
+        533
+      ],
+      "sha256": "c81e75c7d9fb9f7de64907c882a595d6cd41f02c19459f8f5fd65878cfefaf82",
+      "arcana": "Judgement",
+      "link": "yunjin",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/judgement.webp",
+      "conversion": "tools/femc-tarot.py EXTRA: P3-shaped card, resized to 360px wide, WebP q85; source unchanged",
+      "outputSha256": "61e794d96e7a29b678439d5d8eae1f8de3844a7b8e41c579697b12e9527570de"
+    },
+    {
+      "batch": 26,
+      "source": "Councillor-tarot.webp",
+      "sourceNow": "Added to Game/Councillor-tarot.webp",
+      "size": [
+        512,
+        1024
+      ],
+      "sha256": "945b99ea43d323c1af5b2109ff43b4e6b7143ba47d54e31a208d853dea702d2b",
+      "arcana": "Councillor",
+      "link": "hanni",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/councillor.webp",
+      "conversion": "tools/femc-tarot.py EXTRA: P5-style tall card, fit whole on a dark 360x507 P3-sized card (like Faith), WebP q85; source unchanged",
+      "outputSha256": "8725b2bec9313b46bc5ac1ade97344d56e2a9cd682ce61a074061bd117f3e3a5"
+    },
+    {
+      "batch": 26,
+      "source": "gekkoukan-tenniscourt.jpeg",
+      "sourceNow": "Added to Game/gekkoukan-tenniscourt.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "4a64eb2becb37c0f0596079455676758e45ff03b8d086c8a9eaae1a90eda9bd2",
+      "place": "Gekkoukan High \u00b7 Tennis Courts",
+      "status": "integrated",
+      "destination": "assets/femc/bg/gekkoukan-tennis-courts.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "bfeb4b5c2f186cc9525e460e7e39756576b901bf8116daacd4b212331844e9b4"
+    },
+    {
+      "batch": 26,
+      "source": "band-room.jpeg",
+      "sourceNow": "Added to Game/band-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "7557b060d2cfd7552d32a0466bb6593cf2ff175058c9172c23b8034fc7f391bc",
+      "place": "Gekkoukan High \u00b7 Music Room",
+      "status": "integrated",
+      "destination": "assets/femc/bg/gekkoukan-music-room.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "d99b65d825ea053fa9b3482946cee1de49e69bd3399d44f9579f78928f75f0a1"
+    },
+    {
+      "batch": 26,
+      "source": "gaming-room.jpeg",
+      "sourceNow": "Added to Game/gaming-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "5f454686e2c1fc34e81f184d499f3200581fdfacbebdf7cd4dec2f435470aa88",
+      "place": "Gekkoukan High \u00b7 Computer Room",
+      "status": "integrated",
+      "destination": "assets/femc/bg/gekkoukan-computer-room.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "4e0f1b68f251b3f359f1ceb12a8c2087e96e09c45cd4fb26a065c67eb36d788d"
+    },
+    {
+      "batch": 26,
+      "source": "yukishima-villa.jpeg",
+      "sourceNow": "Added to Game/yukishima-villa.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "0c2be1a62f39b8a6efc23825e0c29a435264707f676e752b6a81c81c4ae32a35",
+      "place": "Yakushima \u00b7 Kirijo Villa",
+      "status": "integrated",
+      "destination": "assets/femc/bg/yakushima-villa.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "2e1a654ecbea94e34b8dedf555b52e213092b940019856603537571f7491fb7b"
+    },
+    {
+      "batch": 26,
+      "source": "yukishima-forest.jpeg",
+      "sourceNow": "Added to Game/yukishima-forest.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "85fbdd7844787c45fc7ae1c4428b24b693c7ba17b447455958fb8bd9210306d9",
+      "place": "Yakushima \u00b7 Forest",
+      "status": "integrated",
+      "destination": "assets/femc/bg/yakushima-forest.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "b9cb932c1fae5c91c01f628629d7f93766e3f3a2cf1a6b32b8ae7e0c85cc6a03"
+    },
+    {
+      "batch": 26,
+      "source": "yukishima-beach-fireworks.jpeg",
+      "sourceNow": "Added to Game/yukishima-beach-fireworks.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "13450d94d4a1e60495a21cf93416a004fadd3b0b65afa49a3fdc668abdd4cb00",
+      "place": "yakushima.js 7/21 late pick screen (bg)",
+      "status": "integrated",
+      "destination": "assets/femc/bg/yakushima-beach-fireworks.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
+      "outputSha256": "27427ab3e1c1682c7fcc71d6ff4af1026c1ab081795fc055ee3df49f2ea3e1f8"
     }
   ],
   "batch1Validation": {
@@ -4466,5 +4604,19 @@
     "checks": "tests/femc_shadow_poses.py --only-finale-path: both finale paths, phase 2 at 1000x486, 375x812 and 1440x900; all three lantern arts load on screen, the route lantern open and the other two behind glass; no browser errors",
     "sourcesMoved": false,
     "sourcesNote": "sources left in New Adds (this session may not modify the images folder); move them to Added to Game by hand"
+  },
+  "batch26Validation": {
+    "date": "2026-10-22",
+    "scope": "Tarot cards for Aeon, Judgement and Councillor; backgrounds for the tennis club, light music club, gaming club and three Yakushima places",
+    "sourcesInspected": "all 9 viewed before converting, and every output viewed (cards beside star/moon, backgrounds as a contact sheet)",
+    "sourcesIntegrated": 9,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold and files added during the batch untouched",
+    "tests": [
+      "python3 tests/femc_living.py",
+      "python3 tests/femc_living2.py",
+      "targeted headless check: G.tarot for aigis/yunjin/hanni and G.background for the five places plus the fireworks pick all load"
+    ],
+    "browserErrors": 0
   }
 }

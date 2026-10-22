@@ -1,4 +1,4 @@
-# Art to make (updated 2026-10-22: the Revelation cards and the S.E.E.S. weapon sheets are in the game)
+# Art to make (updated 2026-10-22: the Revelation cards, the S.E.E.S. weapon sheets, three tarot cards and six places are in the game)
 
 This file replaces `FEMC-ART-NEXT.md` and `FEMC-THEURGY-PROMPTS.md`. Everything already in the game is off this list.
 - Put finished pieces in **New Adds**.
@@ -38,23 +38,15 @@ Bonds already work without art, using a stylized cut-in.
 ```
 A tarot card in exactly the same style, border and layout as the attached cards: [ARCANA], numbered [NUMBER], depicting [IMAGE].
 ```
-- [ ] **Aeon** (Aigis; hers is blank right now): XX, a winged mechanical angel holding an hourglass, a butterfly resting on it, sunrise
-- [ ] **Judgement** (Yunjin): XX, an angel blowing a trumpet above a harbor at dawn, people rising
-- [ ] **Councillor** (Hanni): an open book and a gentle hand holding a lantern, a lit path ahead
 - [ ] *(Optional)* alternates for shared cards: Lovers, Strength, Empress, Priestess, Justice, Magician, Moon, Emperor, Sun, Chariot, Fool
 
 ---
 
-## 5. Places (Gemini; no attachment needed)
+## 5. Places (Gemini)
+**Attach:** nothing needed.
 ```
 Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: [PLACE].
 ```
-- [ ] Gekkoukan tennis courts at sunset, a racket on the bench
-- [ ] A school band room: drum kit, keyboards, posters, afternoon light
-- [ ] A gaming club room: PCs with RGB light, headsets, a whiteboard of match notes, dusk
-- [ ] Yakushima: the Kirijo villa's grand lounge (the villa scenes use the hotel lobby until then)
-- [ ] Yakushima: a forest trail with mossy cedars (the forest scene uses the park until then)
-- [ ] Yakushima: the beach at night with fireworks
 - [ ] Yakushima: the ferry's top deck, the island ahead in cloud (the trip's ferry scenes use the harbor until then)
 - [ ] Yakushima: the villa's long balcony at night over the sea
 - [ ] Yakushima: the villa terrace set for dinner at sunset, strings of lights
@@ -75,9 +67,6 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
   - [ ] A Gekkoukan classroom after school with a small study group's desks pushed together (now `gekkoukan-classroom-day`)
   - [ ] The riverside path at night with a lamppost, for walking Koromaru (now `park-2`)
 - *The living world, part 2 (2026-10-21).* Each works now on an existing background (in brackets); a new one would replace it:
-  - [ ] Gekkoukan's tennis courts in autumn and winter, no cherry blossoms (the courts use `outside-school-2`, which shows spring blossoms all year)
-  - [ ] Gekkoukan's music room: a borrowed amp, a drum kit, a keyboard on a stand, afternoon light (now `gekkoukan-classroom-day`)
-  - [ ] Gekkoukan's computer room after hours: old monitors, a whiteboard of match notes (now `gekkoukan-classroom-day`)
   - [ ] Inside Chagall Café behind the counter: the espresso machine, the pastry case, mugs on hooks (now `lablanc`)
   - [ ] Hagakure's kitchen during the dinner rush: steam, big stockpots, the ticket rail (now `hagakureramen`)
   - [ ] The amulet stall at Naganaki Shrine: a wooden counter of charms and ema plaques, paper lanterns (now `outside-shrine-day`)
@@ -131,6 +120,10 @@ The full prompts are in `FEMC-CG-PROMPTS.md` under the number shown. For all of 
 ---
 
 ## Appendix (for Claude): how new art goes in
+### Tarot cards and places
+- **A tarot card:** add `'<arcana key>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-tarot.py` (the key is the link's `arcana` lowercased without spaces) and run it: it writes `tarot/<key>.webp` and `tarot/index.js`, which the Bonds menu and the rank-up cards read (`core.js tarot`). Bump the `tarot/index.js ?v=` in `femc-game.html`.
+- **A place:** add `'<slug>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-backgrounds.py` and run it (WebP, at most 1920 wide), then point the place's rule in `game/data/places.js` (or a scene's or a pick's `bg`) at the slug and bump that file's `?v=`.
+
 ### Theurgy and strike-sheet art
 Everything is data plus one tool. The presentation is reusable: `battle.js theurgyCut` plays whatever a fighter has (see the comment above `TH` in `data.js`).
 1. Add a line to `BUILD` in `tools/femc-theurgy.py`, then run `python3 tools/femc-theurgy.py all` (or one command: `cutin SRC slug`, `layers CHAR PERSONA BG slug`, `sheet SHEET slug`). Check the edges with `python3 tools/femc-theurgy.py check OUT.png <files>`.

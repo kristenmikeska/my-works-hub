@@ -3,7 +3,8 @@
 Run: python3 tools/femc-backgrounds.py
 Source: ~/Documents/UniverseHub-Images/Femc Mode Images/Background Images/<Name>.jpg|png|webp|avif
 Output: assets/femc/bg/<name>.webp (lowercased, spaces and underscores become hyphens), at most 1920px wide.
-Which place uses which background is set by hand in assets/femc/backgrounds.js.
+Also: the backgrounds in EXTRA, which Kat delivered through New Adds and which now live in Added to Game.
+Which place uses which background is set by hand in assets/femc/backgrounds.js (v1) and assets/femc/game/data/places.js.
 """
 import os, re
 from PIL import Image
@@ -11,6 +12,16 @@ from PIL import Image
 SRC = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Background Images')
 DST = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets/femc/bg')
 os.makedirs(DST, exist_ok=True)
+IMAGES = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images')
+# output slug -> source under IMAGES (batch 26, 2026-10-22). Kat's files say "yukishima"; the place is Yakushima.
+EXTRA = {
+    'gekkoukan-tennis-courts': 'Added to Game/gekkoukan-tenniscourt.jpeg',
+    'gekkoukan-music-room': 'Added to Game/band-room.jpeg',
+    'gekkoukan-computer-room': 'Added to Game/gaming-room.jpeg',
+    'yakushima-villa': 'Added to Game/yukishima-villa.jpeg',
+    'yakushima-forest': 'Added to Game/yukishima-forest.jpeg',
+    'yakushima-beach-fireworks': 'Added to Game/yukishima-beach-fireworks.jpeg',
+}
 
 
 def trim_bars(im):
@@ -23,13 +34,19 @@ def trim_bars(im):
     while left < right - 10 and dark((left, top, left + 1, bottom)): left += 1
     while right > left + 10 and dark((right - 1, top, right, bottom)): right -= 1
     return im.crop((left, top, right, bottom)) if (top, bottom, left, right) != (0, im.height, 0, im.width) else im
-for f in sorted(os.listdir(SRC)):
-    stem, ext = os.path.splitext(f)
-    if ext.lower() not in ('.jpg', '.jpeg', '.png', '.webp', '.avif'):
-        continue
-    slug = re.sub(r'[^a-z0-9]+', '-', stem.lower()).strip('-')
-    im = trim_bars(Image.open(os.path.join(SRC, f)).convert('RGB'))
+def convert(path, slug):
+    im = trim_bars(Image.open(path).convert('RGB'))
     if im.width > 1920:
         im = im.resize((1920, round(im.height * 1920 / im.width)), Image.LANCZOS)
     im.save(os.path.join(DST, slug + '.webp'), 'WEBP', quality=82, method=5)
     print(f'{slug:32} {im.width}x{im.height}')
+
+
+for f in sorted(os.listdir(SRC)):
+    stem, ext = os.path.splitext(f)
+    if ext.lower() not in ('.jpg', '.jpeg', '.png', '.webp', '.avif'):
+        continue
+    convert(os.path.join(SRC, f), re.sub(r'[^a-z0-9]+', '-', stem.lower()).strip('-'))
+for slug, rel in EXTRA.items():
+    if os.path.exists(os.path.join(IMAGES, rel)):
+        convert(os.path.join(IMAGES, rel), slug)

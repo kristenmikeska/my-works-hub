@@ -3,7 +3,7 @@
    (the ♪ from its choices go to that person). The story's own scene (story-act3.js 'a3-yakushima', 7/22 late, "on the second
    evening") plays in its slot; the plan leads into it and out of it. S.E.E.S. only: Mitsuru, Akihiko, Yukari, Junpei and
    Fuuka, and the Chairman for the first night; Aigis from the morning of 7/23. Backgrounds: places.js 'Yakushima · …' rules
-   (the villa and the forest reuse art until Kat's new pieces; FEMC-ART-TODO.md, Places). */
+   (the ferry reuses the harbor until Kat's new piece; FEMC-ART-TODO.md, Places). The first night's pick shows the beach fireworks. */
 window.FEMC_GAME_TRIP = {
   yakushima: {
     cast: { captain: 'The Ferry Captain' },
@@ -97,7 +97,7 @@ window.FEMC_GAME_TRIP = {
             ] }
           ] }
         ] },
-        late: { prompt: 'The first night on the island.', sub: 'The villa has too many rooms and nobody wants to sleep yet.', bg: 'yakushima-beach', options: [
+        late: { prompt: 'The first night on the island.', sub: 'Somebody is setting off fireworks over the water, the villa has too many rooms, and nobody wants to sleep yet.', bg: 'yakushima-beach-fireworks', options: [
           { id: 'akihiko-balcony', who: 'akihiko', label: 'The balcony', sub: 'Akihiko is out there. He can’t sleep somewhere new.', place: 'Yakushima · Villa Balcony', time: 'Night', music: 'night', scene: [
             { n: "The villa had a balcony on the second floor that ran the whole length of the building, facing the sea, and he was at the far end of it in a T-shirt with his forearms on the rail, watching the dark water come in, and he moved over when she came out without looking, as if he'd heard her coming down the hall, which he probably had." },
             { s: 'akihiko', f: 'neutral', t: "Can't sleep anywhere new. Never could. First night anywhere, I'm up till three." },

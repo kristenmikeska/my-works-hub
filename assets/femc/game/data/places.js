@@ -192,9 +192,9 @@ window.FEMC_GAME_PLACES = {
     ['Gekkoukan High · Library', 'school-library'],
     ['Gekkoukan High · Shoe Lockers', 'school-entryhallway'],
     ['Gekkoukan High · Front Gate', 'gekkoukanhigh'],
-    ['Gekkoukan High · Tennis Courts', 'outside-school-2'],
-    ['Gekkoukan High · Music Room', 'gekkoukan-classroom-day', 'gekkoukan-classroom-evening'],
-    ['Gekkoukan High · Computer Room', 'gekkoukan-classroom-day', 'gekkoukan-classroom-evening'],
+    ['Gekkoukan High · Tennis Courts', 'gekkoukan-tennis-courts'],
+    ['Gekkoukan High · Music Room', 'gekkoukan-music-room'],
+    ['Gekkoukan High · Computer Room', 'gekkoukan-computer-room'],
     ['Gekkoukan High · Archery Range', 'outside-school-2'],
     ['Gekkoukan High · Classroom', 'gekkoukan-classroom-day', 'gekkoukan-classroom-evening'],
     ['Gekkoukan High', 'school-hallway'],
@@ -261,9 +261,9 @@ window.FEMC_GAME_PLACES = {
     ['Naganaki Shrine · Night', 'naganaki-shrine-night'],
     ['Naganaki Shrine · Amulet Stall', 'outside-shrine-day', 'naganaki-shrine-night'],
     ['Naganaki Shrine', 'outside-shrine-day', 'naganaki-shrine-night'],
-    // Yakushima (data/yakushima.js): the villa, the forest and the ferry reuse art until Kat's own (FEMC-ART-TODO.md, Places).
-    ['Yakushima · Kirijo Villa', 'hotel-lobby'],
-    ['Yakushima · Forest', 'park'],
+    // Yakushima (data/yakushima.js): the ferry reuses art until Kat's own (FEMC-ART-TODO.md, Places); the balcony uses the beach.
+    ['Yakushima · Kirijo Villa', 'yakushima-villa'],
+    ['Yakushima · Forest', 'yakushima-forest'],
     ['Yakushima · Ferry', 'harbor'],
     ['Yakushima', 'yakushima-beach']
   ],

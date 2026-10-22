@@ -3,6 +3,7 @@
 Run: python3 tools/femc-tarot.py
 Source: ~/Documents/UniverseHub-Images/Femc Mode Images/Tarot Card Art/<Arcana>.jpg|png|webp (e.g. HangedMan.jpg)
 Output: assets/femc/tarot/<arcana>.webp (lowercase, no spaces, 360px wide) and assets/femc/tarot/index.js.
+Also: the cards in EXTRA, which Kat delivered through New Adds and which now live in Added to Game.
 A link's `arcana` ("Hanged Man") is matched by its lowercase name without spaces ("hangedman").
 """
 import os, re, json
@@ -12,6 +13,13 @@ SRC = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Tarot 
 DST = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets/femc/tarot')
 os.makedirs(DST, exist_ok=True)
 CARD = 360 / 507   # P3's card shape
+IMAGES = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images')
+# arcana key -> source under IMAGES (batch 26, 2026-10-22). A missing source keeps its existing card.
+EXTRA = {
+    'aeon': 'Added to Game/aeon-tarot.webp',
+    'judgement': 'Added to Game/judgment-tarot.jpg',
+    'councillor': 'Added to Game/Councillor-tarot.webp',
+}
 
 
 def trim(im):
@@ -24,13 +32,8 @@ def trim(im):
     while l < r - 10 and dark((l, t, l + 1, b)): l += 1
     while r > l + 10 and dark((r - 1, t, r, b)): r -= 1
     return im.crop((l, t, r, b))
-have = []
-for f in sorted(os.listdir(SRC)):
-    stem, ext = os.path.splitext(f)
-    if ext.lower() not in ('.jpg', '.jpeg', '.png', '.webp', '.avif'):
-        continue
-    key = re.sub(r'[^a-z0-9]', '', stem.lower())
-    im = trim(Image.open(os.path.join(SRC, f)).convert('RGB'))
+def card(path, key):
+    im = trim(Image.open(path).convert('RGB'))
     if abs(im.width / im.height - CARD) < 0.06:
         im = im.resize((360, round(im.height * 360 / im.width)), Image.LANCZOS)
     else:
@@ -39,8 +42,25 @@ for f in sorted(os.listdir(SRC)):
         im = Image.new('RGB', (360, 507), (20, 7, 15))
         im.paste(fit, ((360 - fit.width) // 2, (507 - fit.height) // 2))
     im.save(os.path.join(DST, key + '.webp'), 'WEBP', quality=85, method=5)
-    have.append(key)
     print(f'{key:12} {im.width}x{im.height}')
+
+
+have = []
+for f in sorted(os.listdir(SRC)):
+    stem, ext = os.path.splitext(f)
+    if ext.lower() not in ('.jpg', '.jpeg', '.png', '.webp', '.avif'):
+        continue
+    key = re.sub(r'[^a-z0-9]', '', stem.lower())
+    card(os.path.join(SRC, f), key)
+    have.append(key)
+for key, rel in EXTRA.items():
+    if os.path.exists(os.path.join(IMAGES, rel)):
+        card(os.path.join(IMAGES, rel), key)
+    elif not os.path.exists(os.path.join(DST, key + '.webp')):
+        print(f'{key:12} missing: {rel}')
+        continue
+    have.append(key)
+have.sort()
 for old in os.listdir(DST):
     if old.endswith('.webp') and old[:-5] not in have:
         os.remove(os.path.join(DST, old))
