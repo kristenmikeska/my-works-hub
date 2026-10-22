@@ -12,6 +12,16 @@ Use **ChatGPT** for anything with a face, and **Gemini** for places and objects.
 
 ---
 
+## 0. New link portraits ⭐ (needed for the new Runners links)
+**Danielle, Jaemin, Chenle:** a portrait set each, the same as the other searchers (six emotions: neutral, happy, sad, angry, surprised, embarrassed; Gemini 2×2 sheets work too).
+**Attach:** one finished searcher portrait for style (e.g. 🎨 `Character Portraits/Hanni/`), plus a face-claim photo of your own if you have one.
+```
+Persona 3 Reload style character portrait sheet, matching the attached portrait's art style exactly: [NAME], [LOOK], shown with six expressions (neutral, happy, sad, angry, surprised, embarrassed), bust shots, plain white background, evenly spaced.
+```
+Save each as `<name>-portraits.png`. Until these exist, their scenes use a silhouette.
+
+---
+
 ## 1–2. Theurgy cut-ins and strike sheets
 Every fighter's cut-in and strike sheet is in the game. One optional extra is left.
 

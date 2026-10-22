@@ -19,6 +19,10 @@ Other docs, if you ever want detail:
 - ✅ **Mercy, Kiriko and Sebastian, deeper:** choices in their ranks they remember later, more time together between ranks, texts after their ranks, two holiday invites and two late-night scenes each, and more to do after you max them. Their links now follow the visitors' whole year
 - ✅ **Haechan:** his ranks now arrive with the story (your choices with him still count, and old saves keep every rank), and he has much more life: late nights, dorm moments, run-ins around town, texts after every rank, holiday invites, reactions to big story moments and scenes with the people he knows. It all changes with where your story is heading. The Hoax ending is now a secret route, and the other routes play as before
 
+- ⏳ **Removing** Leon, Cloud, Noctis, Astarion and Shadowheart, and **extending the year to early March** (like P3)
+- ⬜ **Then:** rank 15 for Haechan, Jungwon, Akihiko (with the Gekkoukan buzz) and Shinjiro (waking up)
+- ⬜ **Then:** new links Danielle, Jaemin and Chenle (portraits needed: see the art list)
+
 ## Story and characters
 - ✅ More story after Hanni, Hyein and Jihoon arrive, including the three comparing notes on Solar
 - ✅ Searchers mention her love lives back home (Hyein's near-slip, the "come home" calls, Yunjin, Hoax)
