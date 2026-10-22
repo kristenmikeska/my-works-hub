@@ -107,7 +107,34 @@ A 2×3 grid of six weapon designs on a white background, each in its own card, i
 - [ ] **Aigis** (arm guns): gold plating, heart, wing, heavy cannon, butterfly
 - [ ] **Koromaru** (knife): bone, shrine bell, flame, collar tag, kunai
 - [ ] **Shinjiro** (axe): black steel, chain, kitchen cleaver, ember, moonlit
-- [ ] **Haechan** (knife), **Jungwon** (rapier), **Jihoon** (gloves), **Minji** (bow): themes from their worlds and Personas
+- [ ] **Haechan** (knife). Six designs, one per card:
+  1. **Starter:** a plain black tactical knife.
+  2. **Mixdown (Runners):** an audio waveform etched along the blade, a studio-fader guard, and a tiny headphone-jack charm on the cord.
+  3. **Widow's Kiss (Runners):** violet steel, a grappling-line wrapped grip, and a sniper-scope lens set in the pommel.
+  4. **Harbor Watch (strangers):** rust-red, a rope-wrapped grip, an anchor-shaped guard, and a sea-glass pommel.
+  5. **Old Disc (strangers):** black steel with a silver, CD-sheen disc as the guard and a scuffed vintage feel.
+  6. **Neo Sunlight (NCT nod):** a neon-green glowing edge, a guard of sun rays, and a sleek futuristic finish. His name means "full of sunlight".
+- [ ] **Jungwon** (thin rapier):
+  1. **Starter:** a plain silver rapier.
+  2. **Mandate (Hoax):** navy and gold, a council-crest swept guard, and a gold star pin charm.
+  3. **Maeumi (Hoax):** cream and brown, with a tiny dog-paw charm on the guard.
+  4. **Jade Heir (strangers):** a jade-green swept guard, a red cord tassel, and old-money elegance.
+  5. **Black Tortoise (strangers):** a tortoise-shell guard, a serpent coiling up the grip, and frost on the blade.
+  6. **Hyphen (ENHYPEN nod):** crimson and black, a bar-shaped link joining two halves of the blade, and a blood-red gem. Vampire elegance.
+- [ ] **Jihoon** (fingerless gloves):
+  1. **Starter:** plain black fingerless gloves.
+  2. **Capitalized (Hoax):** gold-lettered knuckle plates, loud and full of himself.
+  3. **Best Friend (Hoax):** a white fluffy-dog patch, a nod to Nana.
+  4. **Goblin Club:** gold studs and a red-and-gold sash wrap, a nod to Dokkaebi.
+  5. **Varsity:** leather with a jacket-patch look.
+  6. **Treasure (TREASURE nod):** sky-blue with gold jewel studs, like a treasure chest.
+- [ ] **Minji** (bow):
+  1. **Starter:** a plain recurve bow.
+  2. **Final Cut (Runners):** limbs shaped like film reels.
+  3. **Hitscan (Runners):** a sleek esports bow with a glowing crosshair sight.
+  4. **Muse:** pale gold, with a camera-lens charm.
+  5. **Theia:** white-gold with aperture rings.
+  6. **Bunny (NewJeans nod):** soft Y2K blue, a bunny-ear tip and a charm.
 
 ---
 
