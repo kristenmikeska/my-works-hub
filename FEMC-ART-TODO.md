@@ -89,7 +89,25 @@ Persona 3 Reload All-Out Attack finish card, the same bold graphic layout and st
 | ☐ | Jihoon | sky blue and gold | YOU'RE WELCOME. |
 | ☐ | Minji | warm gold and white | THAT'S A WRAP. |
 
-**The little figures in the All-Out cloud:** for now Claude uses each fighter's pose-sheet attack frame (no new art needed). *(Optional later: a chibi brawl sheet per character for a cuter P3R look.)*
+**The little figures in the All-Out cloud:** built (2026-10-21): each fighter's pose-sheet attack frame pops in and out of the cloud (no new art needed; Ken keeps the old silhouette). *(Optional later: a chibi brawl sheet per character for a cuter P3R look.)*
+
+---
+
+## 3D. Lantern windows (the last full-moon fight) ⭐
+Three small foes that hang beside the last boss. **For now** Claude draws them in code (a paper lantern in a dark wood frame with a girl asleep in its window, tinted gold, jade or pink; the ones you can't hit sit behind glass). Real art would make them look like the memory Shadows.
+**Attach (2 images):**
+1. 🎮 `battle/art/shadows/memory-party-pose-0.webp` (the Kegstand: the style and finish to match)
+2. 🎮 `battle/art/shadows/wren-shadow-last-train-pose-0.webp` (the lanterns it carries: the shape to match)
+```
+Persona 3 Reload Shadow enemy art, the same painted style, outline and glow as the FIRST attached image: a hanging paper lantern window like the ones in the SECOND image, an ornate dark-wood and brass frame with a hook on top and a tassel below, glowing warm [COLOR] light through the paper. In the window, the silhouette of a girl with long black hair curled up asleep. Full object visible, centered, on a plain white background with empty space around it. No text.
+```
+| ✓ | Save as (New Adds) | [COLOR] |
+|---|---|---|
+| ☐ | `lantern-runners.png` | gold |
+| ☐ | `lantern-strangers.png` | jade green |
+| ☐ | `lantern-hoax.png` | pink |
+
+*(Optional: a pose sheet per lantern, as in 3A, with the cells: idle glowing; flaring brighter; flickering; dimming after a hit; cracked; dark.)* The "behind glass" look stays in code, so one picture each is enough.
 
 ---
 
@@ -302,6 +320,9 @@ Everything is data plus one tool. The presentation is reusable: `battle.js theur
    - Fighters: frames go to `art/poses/<mid>-pose-0..5.webp`; add the member to `FIGHTER_POSES` in `battle.js` with a size factor (1 = contain in the stance box). Ken: `'ken'`.
 2. Bump `ART_V` in `battle.js` and the `battle.js` / `shadows/index.js` `?v=` in `femc-battle.html`, then run `python3 tests/femc_shadow_poses.py` (bosses) or `python3 tests/femc_field_poses.py` (fighters).
 3. Move the source to `Added to Game/` and add its entry to `tools/femc-new-adds.json`.
+
+### Lantern windows (3D)
+Cut each one to a transparent WebP in `battle/art/shadows/` (`memory-lantern-runners.webp` etc.) and add it to `art/shadows/index.js` (w, h). In `data.js`, give `lantern_r` / `lantern_s` / `lantern_h` an `img` (and drop `pic`). `battle.js addEnemy` draws the code lantern (`lanternSvg`) only while a lantern has no `img` art; with art it takes the Shadow-art branch and keeps its `.lantern` classes and place on the train (`--lo`), and `orderIcon` shows the art. The "behind glass" look for art lanterns needs a CSS rule on `.bt-enemy.lantern.unreachable .sh-pic` (dim plus a glass overlay). Bump `ART_V`, the `data.js` and `shadows/index.js ?v=` in both pages, and check the finale's phase 2 at 1000×486, 375×812 and 1440×900.
 
 ### Bond art
 The same pieces as a Theurgy (the steps above), in `assets/femc/battle/bonds.js`: on a bond (or one version of it, `tiers[i]` or `love`), add `img` with `focus: [x%, y%]`, `sheet: { frames: [three files] }` or `layers: { bg, persona, char }`. Cut it with `tools/femc-theurgy.py` (a bond still is a `cutin`; a 3-step combo sheet is a `sheet`). Bump `ART_V` in `battle.js` and the `bonds.js ?v=` in both pages, then run `python3 tests/femc_bonds.py --only art,shots`.

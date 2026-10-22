@@ -1844,7 +1844,7 @@
     await intro(spec, kinds);
     if (fx.openBuff) await play(B.openBuff(fx.openBuff));
     if (B.start) await play(B.start());
-    nav(spec.nav);
+    nav(spec.nav, spec.navVars || {});
     // A boss on the field: someone in the party says so.
     if (spec.boss || spec.reaper) { const who = B.party().filter(p => !p.dead && p !== B.leader()); bark(who.length ? who[Math.floor(Math.random() * who.length)] : B.leader(), 'boss', {}, { force: true }); }
     B.party().forEach(p => { if (p.tired) nav('tired', { name: p.name }, { once: true }); });
@@ -2007,6 +2007,47 @@
     }
     if (el._shadowToken === token) { el._shadowAction = false; restShadow(el); }
   }
+  /* The finale's lantern windows (until Kat's art: FEMC-ART-TODO.md, "Lantern windows"): a paper lantern in a dark wood frame,
+     glowing in its world's color, a girl asleep in the window. The glass pane only shows when it's out of reach (battle.css).
+     `key` keeps the gradient ids unique per copy (the field and the turn order draw it at once). */
+  const LANTERN_TINT = { R: ['#ffc94a', '#fff3c4'], S: ['#3fd6a0', '#d8fff0'], H: ['#ff6fae', '#ffe1ef'] };
+  function lanternSvg(world, key, cls = 'sh lantern-svg', label = '') {
+    const [c, l] = LANTERN_TINT[world] || LANTERN_TINT.R, k = 'ln' + String(key).replace(/\W/g, '');
+    return `<svg class="${cls}" viewBox="0 0 200 270" ${label ? `role="img" aria-label="${esc(label)}"` : 'aria-hidden="true"'} style="--lc:${c}">
+      <defs><radialGradient id="${k}p" cx="50%" cy="54%" r="62%"><stop offset="0" stop-color="${l}"/><stop offset=".55" stop-color="${c}"/><stop offset="1" stop-color="#3a1408"/></radialGradient>
+      <radialGradient id="${k}w" cx="50%" cy="62%" r="70%"><stop offset="0" stop-color="#fffbe8"/><stop offset=".6" stop-color="${l}"/><stop offset="1" stop-color="${c}"/></radialGradient>
+      <linearGradient id="${k}g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cfe6ff" stop-opacity=".34"/><stop offset=".5" stop-color="#7d93c4" stop-opacity=".16"/><stop offset="1" stop-color="#1b2550" stop-opacity=".5"/></linearGradient></defs>
+      <g class="ln-body">
+        <circle cx="100" cy="12" r="8" fill="none" stroke="#2a1810" stroke-width="4"/><path d="M100 20v10" stroke="#2a1810" stroke-width="4"/>
+        <path d="M58 30h84l14 20H44z" fill="#2a1810" stroke="${c}" stroke-width="2" stroke-linejoin="round"/>
+        <rect class="ln-paper" x="40" y="48" width="120" height="170" rx="18" fill="url(#${k}p)" stroke="#2a1810" stroke-width="5"/>
+        <path d="M44 78h112M42 108h116M42 158h116M44 188h112" stroke="#2a1810" stroke-opacity=".35" stroke-width="2"/>
+        <rect class="ln-win" x="60" y="74" width="80" height="118" rx="6" fill="url(#${k}w)" stroke="#2a1810" stroke-width="6"/>
+        <path d="M100 74v118M60 116h80" stroke="#2a1810" stroke-opacity=".55" stroke-width="2.5"/>
+        <g class="ln-girl" fill="#1d0c10" fill-opacity=".88">
+          <ellipse cx="100" cy="187" rx="32" ry="4"/>
+          <path d="M91 123c-12 3-19 22-19 44 0 11 3 19 10 20l3-27c1-14 7-24 15-28z"/>
+          <path d="M80 187c-4-18 0-34 12-42l22-9c8 0 11 10 7 20l-2 31z"/>
+          <circle cx="103" cy="129" r="12"/>
+        </g>
+        <path d="M44 218h112l-14 18H58z" fill="#2a1810" stroke="${c}" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M100 236v16" stroke="${c}" stroke-width="3"/><circle cx="100" cy="254" r="4" fill="${c}"/>
+        <path d="M94 256l-3 12M100 258v12M106 256l3 12" stroke="${c}" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <g class="ln-glass"><rect x="30" y="2" width="140" height="266" rx="10" fill="url(#${k}g)" stroke="#cfe6ff" stroke-opacity=".7" stroke-width="3"/>
+        <path d="M52 40l46-30M48 92l92-62M60 250l90-60" stroke="#fff" stroke-opacity=".38" stroke-width="5" stroke-linecap="round"/></g>
+    </svg>`;
+  }
+  // Turn-order icons: the lanterns' own window, story foes' portrait, Shadow art (a crop), the generic blob for SVG-only Shadows.
+  function orderIcon(u) {
+    const d = D.enemies[u.kind] || {};
+    const art = d.img && (window.FEMC_SHADOW_ART || {})[d.img];
+    if (d.gimmick === 'lantern' && !art) return lanternSvg(d.world, 'o' + u.id, 'oi-ln' + (u.unreachable ? ' far' : ''));
+    if (d.pic) return `<img class="oi" src="${d.pic}" alt="" style="object-position:50% 22%">`;
+    // Bosses: a close crop near the top (their heads); everyday Shadows: most of the figure.
+    if (art) return `<img class="oi art" src="${sart(art.poses ? art.poses.frames[0] : d.img)}" alt="" style="${d.gimmick === 'train' ? '--of:54% 18%;--oz:3.8' : d.boss || d.story ? '' : '--of:50% 45%;--oz:1.35'}">`;
+    return '';
+  }
   function addEnemy(u) {
     const d = D.enemies[u.kind];
     const el = document.createElement('div');
@@ -2014,7 +2055,16 @@
     el.dataset.id = u.id;
     let body;
     const art = d.img && (window.FEMC_SHADOW_ART || {})[d.img];
-    if (d.pic) {
+    if (d.gimmick === 'lantern') {
+      // A lantern window on the train's flank (the train's own layout places it: battle.css .trainyard). Drawn in code until
+      // it has Shadow art (`img`), which then takes the art branch below with the same classes and place.
+      el.classList.add('lantern', 'ln-' + (d.world || 'R'));
+      el.style.setProperty('--lo', B.foes().filter(f => D.enemies[f.kind].gimmick === 'lantern').indexOf(u) - 1);
+    }
+    if (d.gimmick === 'lantern' && !art) {
+      el.style.setProperty('--w', `${Math.round((d.h || 150) * 200 / 270)}px`);
+      body = lanternSvg(d.world, u.id, 'sh lantern-svg', u.name);
+    } else if (d.pic) {
       // Story fights: a portrait or a memory card instead of Shadow art (the finale's Wren and lanterns).
       const h = d.h || 220;
       el.style.setProperty('--w', `${Math.round(h * (d.picW || 1) / (d.picH || 1))}px`);
@@ -2026,6 +2076,8 @@
       const h = (d.h || 220) * (art.poses?.scale || 1);
       el.style.setProperty('--w', `${Math.round(h * art.w / art.h)}px`);
       if (art.small) el.classList.add('soft');
+      // The finale's train takes the field (battle.css .trainyard): big, with its lantern windows along it.
+      if (d.gimmick === 'train') { el.classList.add('train'); BT.field.classList.add('trainyard'); BT.field.style.setProperty('--ar', (art.w / art.h).toFixed(4)); }
       if (art.poses) {
         el._shadowPoses = art.poses;
         art.poses.frames.forEach(slug => {
@@ -2159,7 +2211,8 @@
     const ids = [cur && cur.id].concat(B.upcoming(curPerks.editMode ? 8 : 7)).filter(Boolean); // Judy's Edit Mode: one turn further
     BT.order.innerHTML = ids.map((id, i) => {
       const u = B.U(id); if (!u) return '';
-      return `<li class="${u.side === 'enemy' ? 'enemy' : 'party fcb'}${i === 0 ? ' now' : ''}${u.down ? ' down' : ''}${u.side === 'party' && (u.th || 0) >= 100 && !u.dead ? ' th' : ''}" title="${esc(u.name)}">${u.side === 'party' ? fimg(u.mid, member(u.mid).faces.idle) : ''}</li>`;
+      const oi = u.side === 'enemy' ? orderIcon(u) : '';
+      return `<li class="${u.side === 'enemy' ? 'enemy' + (oi ? ' art' : '') : 'party fcb'}${i === 0 ? ' now' : ''}${u.down ? ' down' : ''}${u.side === 'party' && (u.th || 0) >= 100 && !u.dead ? ' th' : ''}" title="${esc(u.name)}">${u.side === 'party' ? fimg(u.mid, member(u.mid).faces.idle) : oi}</li>`;
     }).join('');
   }
   function setActive(u) {
@@ -2207,8 +2260,10 @@
   function log(text, cls = '') { if (cls !== 'say') blogAdd(text, cls); BT.log.textContent = text; clearTimeout(log.t); log.t = setTimeout(() => { if (BT) BT.log.textContent = ''; }, 2200 * textHold() / Math.min(speed(), 2)); }
 
   /* ── Fuuka ────────────────────────────────────────── */
+  // Fuuka's lines for story fights that only this file knows (the finale's train: which targets can break; vars.tip).
+  const NAV_LOCAL = { finaleTrain: ['{tip}', 'neutral'] };
   function nav(key, vars = {}, { once = false } = {}) {
-    const line = D.nav[key];
+    const line = D.nav[key] || NAV_LOCAL[key];
     if (!line || !BT) return;
     if (curSpec && curSpec.rules && curSpec.rules.noNav) return;
     if (once && navSaid.has(key)) return;
@@ -3244,7 +3299,11 @@
       const x = ring ? 50 + Math.cos(ang) * 30 : 36 + (i - 9) * 14, y = ring ? 52 + Math.sin(ang) * 26 : 50;
       return `<i style="left:${x - s / 2}%;top:${y - s * 0.6}%;width:${s}%;aspect-ratio:1;animation-delay:${-i * 0.17}s"></i>`;
     }).join('');
-    const sils = parts.map((p, i) => `<img class="sil" src="${pimg(p.mid, member(p.mid).faces.idle)}" alt="" style="left:${[8, 64, 30, 78][i % 4]}%;top:${[2, 0, 58, 50][i % 4]}%;animation-delay:${i * 0.22}s">`).join('');
+    // The brawl (P3R): each fighter's pose-sheet attack frame pops in and out of the cloud, small, at a few spots each.
+    // Members without a pose sheet (Ken) keep the darkened portrait silhouette.
+    const sils = parts.map((p, i) => FIGHTER_POSES[p.mid]
+      ? [0, 1].map(k => { const j = (i + k * 2) % 4; return `<img class="sil pose${(i + k) % 2 ? ' flip' : ''}" src="${posedFrames(p.mid)[2]}" alt="" style="--pz:${FIGHTER_POSES[p.mid]};left:${[6, 66, 28, 80][j]}%;top:${[4, 0, 46, 40][j]}%;animation-delay:${(i * 0.19 + k * 0.5).toFixed(2)}s">`; }).join('')
+      : `<img class="sil" src="${pimg(p.mid, member(p.mid).faces.idle)}" alt="" style="left:${[8, 64, 30, 78][i % 4]}%;top:${[2, 0, 58, 50][i % 4]}%;animation-delay:${i * 0.22}s">`).join('');
     const words = ['BAM!', 'POW!', 'WHAM!', 'SMASH!'].map((w, i) => `<b style="left:${[2, 70, 18, 66][i]}%;top:${[10, 6, 74, 70][i]}%;animation-delay:${0.1 + i * 0.22}s">${w}</b>`).join('');
     const stars = [0, 1, 2, 3, 4, 5].map(i => `<span class="star" style="left:${[14, 84, 48, 0, 94, 40][i]}%;top:${[78, 30, -6, 44, 74, 92][i]}%;animation-delay:${-i * 0.15}s">${ART.icon('allout')}</span>`).join('');
     wrap.innerHTML = `<div class="bt-speedlines"></div><div class="bt-dust"><div class="cloud ol">${puffs}</div><div class="cloud">${puffs}</div>${sils}${words}${stars}</div>`;
@@ -3413,6 +3472,14 @@
 
   /* Choose a target. spec.target: one | all | ally | allies | dead | self | shift | scan. Resolves with an id, 'all', null (back)
      or RUSH. With Remember cursor on, it opens on this member's last target if it's still there. */
+  /* The finale: what can be broken and why it matters (mechanics only). */
+  function reachNote(f) {
+    const g = (D.enemies[f.kind] || {}).gimmick;
+    if (f.unreachable) return '<br><em class="bt-reach">Out of reach: behind glass. Attacks can’t touch it.</em>';
+    if (g === 'lantern') return '<br><em class="bt-reach ok">Breakable: breaking it weakens the train.</em>';
+    if (g === 'train' && B.foes().some(x => !x.dead && !x.unreachable && (D.enemies[x.kind] || {}).gimmick === 'lantern')) return '<br><em class="bt-reach">Break a lit lantern to weaken it.</em>';
+    return '';
+  }
   function pickTarget(u, spec, title) {
     const t = spec.target;
     if (t === 'self') return Promise.resolve(u.id);
@@ -3420,7 +3487,7 @@
     const L = letters();
     const foeItem = f => {
       const tg = affTag(f, spec.el);
-      return { v: f.id, label: f.name + L[f.id], icon: null, tag: tg, desc: `<b>${esc(f.name + L[f.id])}</b>${f.down ? 'Down. ' : ''}${f.ail ? esc(D.ailments[f.ail.id].name) + '. ' : ''}HP ${Math.round(f.hp / f.maxHp * 100)}%${tg ? ` · ${esc(D.elements[spec.el].name)}: ${tagHtml(tg)}` : ''}` };
+      return { v: f.id, label: f.name + L[f.id], icon: null, tag: tg, desc: `<b>${esc(f.name + L[f.id])}</b>${f.down ? 'Down. ' : ''}${f.ail ? esc(D.ailments[f.ail.id].name) + '. ' : ''}HP ${Math.round(f.hp / f.maxHp * 100)}%${tg ? ` · ${esc(D.elements[spec.el].name)}: ${tagHtml(tg)}` : ''}${reachNote(f)}` };
     };
     const allyItem = p => ({ v: p.id, label: p.name, right: p.dead ? 'KO' : `${p.ail ? D.ailments[p.ail.id].name.toUpperCase() + ' · ' : ''}${p.hp}/${p.maxHp}`, rcls: 'hp', desc: `<b>${esc(p.name)}</b>${esc(p.persona)} · SP ${p.sp}/${p.maxSp}${p.ail ? ' · ' + esc(D.ailments[p.ail.id].name) : ''}` });
     const aliveFoes = B.foes().filter(f => !f.dead), party = B.party();
@@ -4722,7 +4789,12 @@
       await message('NO STOPS', 'The train comes in with no lights in the lead car. Three windows glow along its side, and in each one a girl who looks like you is asleep.');
     }
     if (!seg || seg === 2) {
-      const p2 = await hoFight({ group: ['last_train', 'lantern_r', 'lantern_s', 'lantern_h'], bg, label: 'No Stops', block, boss: true, music: 'finale-train', title: 'The Last Train',
+      // Fuuka's opening tip says only which lanterns can break and that breaking them weakens the train.
+      const LCOL = { lantern_r: 'gold', lantern_s: 'jade', lantern_h: 'pink' };
+      const tip = open.length === 3 ? 'All three lanterns can be broken. Each one you break weakens the train!'
+        : open.length ? `Only the ${LCOL[open[0]]} lantern can be broken. Break it to weaken the train!`
+          : 'The lanterns are all behind glass. Focus on the train!';
+      const p2 = await hoFight({ group: ['last_train', 'lantern_r', 'lantern_s', 'lantern_h'], bg, label: 'No Stops', block, boss: true, music: 'finale-train', title: 'The Last Train', nav: 'finaleTrain', navVars: { tip },
         op: { id: 'finale', name: 'The Last Train', arcana: 'XVIII · Moon' },
         rules: { noEscape: true, setup: b => b.foes().forEach(f => { if (/^lantern_/.test(f.kind) && !open.includes(f.kind)) { f.unreachable = true; f.aff = Object.fromEntries(D.affinityOrder.map(el => [el, 'null'])); } }) } });
       mark('finale-route-' + route);
