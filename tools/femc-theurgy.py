@@ -77,6 +77,58 @@ HOLES = {'haechan-strikesheet.png': None, 'minji-strikesheet.png': 0.8}
 SOLID = {'junpei-strikesheet.png'}
 
 
+# Strike sheets with long hair whose strand gaps key() leaves white: (dark-ring limit, ring saturation limit).
+# Same rules as the fighter pose sheets (femc-shadow-poses.py STRANDS); red hair needs the saturation test off.
+# Brown hair with bright highlights (Solar's strike sheets) rings its gaps lighter, so the limit is looser and the ring
+# must be warm brown (third value: least mean red-minus-blue), which keeps the grey blade's highlights solid.
+STRANDS = {'solar-strikesheet-1.png': (0.72, 1.0, 0.07), 'solar-strikesheet-2.png': (0.72, 1.0, 0.07),
+           'minji-strikesheet.png': (0.68, 1.0), 'mitsuru-strikesheet.png': (0.55, 1.0),
+           'solar-evoker-animation.png': (0.55, 0.25)}
+
+
+def strands(src, a, ring_max=0.55, sat_max=0.25, warm_min=None):
+    """Clear the hair gaps key() and white_holes leave (see STRANDS here and in femc-shadow-poses.py), in place.
+    Pixels found take the un-mix alpha and colour (how far from white), so paper goes clear and strand edges stay soft."""
+    rgb = np.asarray(Image.open(src).convert('RGB'), np.float32) / 255
+    minc = rgb.min(2); sat = rgb.max(2) - minc
+    # skin: warm, light and broad (a hand, a face); opening drops the thin warm highlights on brown hair
+    skin = ndimage.binary_opening(((rgb[..., 0] - rgb[..., 2]) > 0.1) & (minc > 0.45), iterations=3)
+    # open gaps: pale pixels joined to the background paper through pale pixels (a strand tip). The art they touch must
+    # be dark hair, not a grey blade whose bright edge also runs out to the paper.
+    lab, _ = ndimage.label(minc > 0.88)
+    ext = np.isin(lab, np.unique(lab[(a[..., 3] < 0.05) & (minc > 0.88)])) & (lab > 0)
+    hole = np.zeros(minc.shape, bool)
+    warm = rgb[..., 0] - rgb[..., 2]
+
+    def hairy(art, y0, y1, x0, x1, open_gap):
+        v = minc[y0:y1, x0:x1][art]
+        return (art.sum() > 0 and v.mean() < ring_max and np.percentile(sat[y0:y1, x0:x1][art], 90) < sat_max
+                and (open_gap or warm_min is None or warm[y0:y1, x0:x1][art].mean() > warm_min))
+    for open_gap in (True, False):
+        # enclosed gaps also need to be wide enough (not white piping) and have no skin near (not cuffs or collars)
+        cand = (a[..., 3] > 0.5) & (minc > 0.93) & (ext if open_gap else ~ext)
+        l2, _ = ndimage.label(cand)
+        for k, sl in enumerate(ndimage.find_objects(l2), 1):
+            if sl is None:
+                continue
+            y0, y1 = max(0, sl[0].start - 12), sl[0].stop + 12
+            x0, x1 = max(0, sl[1].start - 12), sl[1].stop + 12
+            m = l2[y0:y1, x0:x1] == k
+            ring = ndimage.binary_dilation(m, iterations=3) & ~m
+            art = ring & (minc[y0:y1, x0:x1] < 0.88) & (a[y0:y1, x0:x1, 3] > 0.5)  # the art around it, past its pale edge
+            if not open_gap and (skin[y0:y1, x0:x1][ndimage.binary_dilation(m, iterations=10)].sum() > 8
+                                 or ndimage.distance_transform_edt(m).max() < 2.2):
+                continue
+            if hairy(art, y0, y1, x0, x1, open_gap):
+                hole[y0:y1, x0:x1] |= m
+    hole = ndimage.binary_dilation(hole, iterations=2) & (minc > 0.75)  # and their pale anti-aliased edge
+    aw = np.clip((1.0 - minc - 0.02) / 0.98, 0, 1); aw[aw < 0.05] = 0
+    unmixed = np.clip((rgb - (1 - aw[..., None])) / np.maximum(aw, 1e-3)[..., None], 0, 1)
+    a[..., 3] = np.where(hole, np.minimum(a[..., 3], aw), a[..., 3])
+    a[..., :3] = np.where(hole[..., None], unmixed, a[..., :3])
+    return hole
+
+
 def key(src, holes=True):
     """RGBA float array with the white background removed (see the module docstring)."""
     rgb = np.asarray(Image.open(src).convert('RGB'), np.float32) / 255.0
@@ -148,6 +200,8 @@ def figures(a, n):
 
 def sheet(src, slug, dst, panels=3, max_h=1000):
     a = key(src)
+    if os.path.basename(src) in STRANDS:
+        strands(src, a, *STRANDS[os.path.basename(src)])
     masks = figures(a, panels)
     H, W = a.shape[:2]
     info = []

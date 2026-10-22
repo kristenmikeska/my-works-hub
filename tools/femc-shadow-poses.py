@@ -131,6 +131,17 @@ def gaps(src,flat):
   if ring.any() and minc[y0:y1,x0:x1][ring].mean()<0.7:hole[y0:y1,x0:x1]|=mk
  return ndimage.binary_dilation(hole,iterations=1)
 
+# Hair gaps GAPS still leaves (2026-10-21, Kat: white between Solar's strands shows on the Tartarus floor). Paper in
+# long hair is often wider than GAPS allows, a touch grey from anti-aliasing (average 0.95-0.97), or opens onto the
+# background through a strand tip. femc-theurgy.py strands() gives these the un-mix alpha (paper clear, edges soft):
+#  - pale pixels joined to the background paper through pale (>0.88) pixels (a strand tip, a halo along a leg), and
+#  - enclosed near-white patches at least ~5px wide, ringed by dark art, with no skin within 10px (a gap in the hair).
+# Thin white piping, cuffs by the hands, collars by the face, shaded socks and shirts, blade highlights and teeth are
+# enclosed by outline or near skin and stay solid. Value: (dark-ring limit, ring saturation limit); red or brown
+# hair needs the saturation test off.
+STRANDS={'solar-posesheet.png':(0.55,0.25),'minji-posesheet.png':(0.55,0.25),'haechan-posesheet.png':(0.55,0.25),
+ 'mitsuru-posesheet.png':(0.55,1.0)}
+
 def theurgy_tool():
  spec=importlib.util.spec_from_file_location('femc_theurgy',ROOT/'tools/femc-theurgy.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
 
@@ -176,6 +187,8 @@ def white_frames(src,rim=False):
  a=TH.key(str(src),holes=bool(ring))
  if src.name in GAPS:
   h=gaps(src,GAPS[src.name]);a[...,3]*=~h
+ if src.name in STRANDS:
+  TH.strands(src,a,*STRANDS[src.name])
  if src.name in AURA:
   rgb=np.asarray(Image.open(src).convert('RGB'),np.float32)/255;minc=rgb.min(2)
   lab,n=ndimage.label(ndimage.binary_closing((minc<0.6)&(a[...,3]>0.5),iterations=3));sizes=np.bincount(lab.ravel());sizes[0]=0
