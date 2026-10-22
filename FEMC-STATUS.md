@@ -22,13 +22,14 @@ Other docs, if you ever want detail:
 - ✅ **Leon, Cloud, Noctis, Astarion and Shadowheart are gone** from the game: their links, scenes, run-ins, perks and art-list items. Scenes they were part of read fine without them, old saves keep loading (and keep anything they gave you), the Black Rose naginata now comes from another boss, and the v1 game and its Compendium pages are untouched
 - ✅ **The year runs to early March**, like P3: February is a whole extra month of school and free time (the cold, Setsubun, Valentine's Day invitations, new everyday moments and texts, job and club lines for the season), graduation is on 3/5, and the end of the year moved to match. A save from late January carries on into February
 - ✅ **Rank 15** for Haechan, Jungwon, Akihiko and Shinjiro: five more ranks each in February, different for every route you can be on and for romance or friendship, more time together in between, texts after every new rank, a few new late nights and February moments, and the Gekkoukan buzz around Akihiko all year (it changes as you get closer). His romance can start sooner now. Each of the four gets a new perk at 15, the fighters a new bond skill, and there's a Rank 15 stamp. Old saves pick it all up
+- ✅ **Rank 15 for Hanni, Hyein, Mark, Minji and Jihoon** too: five more ranks each in February, different for every route you can be on (and for romance or friendship with Minji and Jihoon), more time together in between, texts after every new rank and a few February moments. Each gets a new perk at 15, and Minji and Jihoon a new bond skill. Old saves pick it all up
 - ✅ **New links: Danielle, Jaemin and Chenle** (Runners). They arrive in November once you've followed enough Runners memories (miss them and they wait for New Game+), and each has ten ranks, time together between ranks, more after you max them, texts after their ranks, two holiday invites, everyday moments and run-ins around town, and five perks (one new skill). They live at the guesthouse. Arcana: Danielle Devil, Jaemin Sun, Chenle Hermit
 - ✅ **Their portraits:** all six expressions each, from your sheets, sized to match the other searchers
 
 - ✅ **Small battle fixes:** All-Out cloud figures use the fighters' pose-sheet attack frames, flicking and jittering (Ken keeps the silhouette); on phones, bond cut-ins show the whole picture so both faces fit
 
 - ✅ **Memories album and Theater:** a P3R-style album in the menu (and in Extras on the title screen) with every event picture and memory card you've unlocked, grouped, with blank tiles for the rest; tap one to see it full screen with its caption and flip through. The Theater replays scenes you've already watched (story, bonds and endings), by month; a replay never changes your save, choices are just for show and fights are skipped. Old saves fill in what they've already seen, and New Game+ keeps it all
-- ⬜ **Ideas to talk about:** rank 15 for Hanni, Hyein, Mark, Minji and Jihoon; the big push
+- ⬜ **Ideas to talk about:** the big push
 
 ## Story and characters
 - ✅ More story after Hanni, Hyein and Jihoon arrive, including the three comparing notes on Solar

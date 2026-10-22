@@ -216,6 +216,7 @@ Every social link earns named perks as it ranks up, the way Persona 5 Phantom X 
 | 4 | Tea Time | Tartarus | Access points restore 15% HP and SP. |
 | 6 | Grounded | Assist | Solar can't be inflicted with Fear or Distress. |
 | 10 | Tether | MAX · passive | While Solar is above 50% HP, no single hit can knock her out. She holds on at 1 HP. |
+| 15 | Good Things | Daily | Once a week (Sundays), Hanni's one good thing a day: +1 Kindness and +1 Charm, without using any free time. |
 
 ### Hyein Lee · Arcana TBD · *Runners*
 *Fashion major, the loudest in the room, and she can sew anything.*
@@ -227,6 +228,7 @@ Every social link earns named perks as it ranks up, the way Persona 5 Phantom X 
 | 5 | Spotlight | Assist | Foes are 20% less likely to target Solar. |
 | 7 | Sewing Machine | Daily | Sewing with her becomes an evening activity at Solar's desk: +3 Proficiency and +1 Charm. |
 | 10 | Showstopper | MAX · skill | Solar learns Showstopper: for 2 turns, every foe targets Solar. She gets defense up, and each hit she takes fills her Theurgy. |
+| 15 | Standing Order | Daily | Once a week (Saturdays), a fitting with Hyein: +2 Charm, without using any free time. |
 
 ### Jaehyun Lee · Arcana TBD · *Runners*
 *Big brother, quarterback, team captain. It's not a table, it's a schedule.*
@@ -249,6 +251,7 @@ Every social link earns named perks as it ranks up, the way Persona 5 Phantom X 
 | 5 | ★ Duo Cohesion | Battle | Paired with a primary attacker: a guaranteed follow-up when Solar lands a crit or a support heal. *(Kat's perk; placed on Minji because she's the DPS to Solar's support, and easy to move.)* |
 | 8 | ★ Behind the Lens | Battle | Once per battle, surviving a lethal blow leaves you at 1 HP and triggers an automatic counter-snipe. |
 | 10 | Cut, Print | MAX · passive | Once per battle, when Solar crits a Down foe, she gets One More even if she already had one, and the party heals 10%. |
+| 15 | That's a Wrap | Daily | Once a week (Thursdays), the day's footage with Minji: +1 Proficiency and +1 Charm, without using any free time. |
 
 Before Minji fights, her Battle perks could work as Assists so the early ranks still matter. Kat's call.
 
@@ -266,6 +269,7 @@ Before Minji fights, her Battle perks could work as Assists so the early ranks s
 | 6 | Setlist | Tartarus | The node map shows one extra layer ahead. |
 | 8 | Harmony | Assist | When two party members hit the same weakness back to back, the second hit deals 25% more damage. |
 | 10 | Key Change | MAX · passive | After Rise and Shine, Solar's Theurgy gauge restarts at 30%, and the party's next attacks deal 20% more damage. |
+| 15 | Title Track | Daily | Once a week (Mondays), a song with Mark: +1 Courage and +1 Proficiency, without using any free time. |
 
 ### Haechan · ∞ Universe · *Runners · strangers*
 *One boy, two registers: the dry Recruitment Chair who hears rooms, and the loud, warm dog of the house.*
@@ -318,6 +322,7 @@ Before Minji fights, her Battle perks could work as Assists so the early ranks s
 | 6 | Main Character | Battle | While Solar is under half HP, foes go after Jihoon instead (he insists). |
 | 8 | Almighty Hoon | Tartarus | After beating a strong Shadow group, the party starts the next fight with attack up. |
 | 10 | Center Stage | MAX · passive | At full HP, Solar deals 20% more damage, and every One More she earns gives the party +10 Theurgy. |
+| 15 | Number One | Daily | Once a week (Wednesdays), Jihoon reminds everyone who's number one: +2 Courage, without using any free time. |
 
 **Romance ideas** (romance route only)
 - *Battle (Solar lands a crit):* "Okay, that was almost as good as me. Almost."
@@ -560,3 +565,9 @@ Their tables are above (Searchers), in `build.js PERKS` with the hooks the remov
 new skill: Chenle's **Just Eat** (`build.js` MAX skills, `just_eat`: a once-per-battle Mediarama that also cures). They're
 non-fighters, so their Battle and Assist perks always apply. Their cut-ins show a silhouette until their portraits exist
 (`battle.js perkFaceHtml`, `build.js WHO`).
+
+## Built (2026-10-22): rank 15 for Hanni, Hyein, Mark, Minji and Jihoon
+Each gets a rank-15 daily perk (rows above; `build.js PERKS`, weekly like the first four's). The two who fight get a third bond
+tier at rank 15 and its romance version (`bonds.js`): Jihoon's **Main Event** / **Coronation**, Minji's **Wide Release** /
+**Last Frame**. (The first four's rank-15 perks, Five, Every Day, Up to the Knuckle, Room Tone and Motion Carried, are in
+`build.js`.)

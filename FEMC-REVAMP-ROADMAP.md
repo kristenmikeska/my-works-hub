@@ -280,7 +280,15 @@ Spoiler-free here; the story side is in the hidden plot doc (§20).
   and buzz gates, route branches, a February on every route reaching 15, a weaker player, migration, a year of routines with links
   moving, ~19,000 scene paths). Updated: femc_haechan (fifteen story ranks), femc_bonds (Akihiko's bond still), femc_extras and
   femc_living (fixtures), `tools/femc-check-scenes.py` (maxRank, stretch hangouts, late nights).
-- **Maybe later:** rank 15 for Hanni, Hyein, Mark, Minji, Jihoon (lower priority).
+- **Built (2026-10-22): rank 15 for Hanni, Hyein, Mark, Minji and Jihoon** (Kat approved). The same pattern: `maxRank: 15`,
+  meter ranks 11–15 (Hanni 2/1–3/1, Hyein 2/4–2/27, Mark 2/5–3/1 evenings, Minji 2/2–2/25, Jihoon 2/3–2/28), each branched by
+  the locked route (`ifHeading`) and, for Minji and Jihoon, by romance / friendship; three `stretchHangouts` each;
+  `data/living-r15-<id>.js` (texts after ranks 11–15 with heading variants, two February moments each: routines and late
+  nights). New at 15: a weekly daily perk each (Good Things, Standing Order, Title Track, That's a Wrap, Number One) and
+  bond tiers for the two fighters (Jihoon: Main Event / Coronation; Minji: Wide Release / Last Frame). Old saves: nothing
+  to migrate (engine as above). Tests: `tests/femc_rank15.py` covers all nine (`--only five` for these five);
+  `tests/femc_links.browser.js` now plays `ifHeading` branches on each locked route, the February hangouts, and gates past
+  rank 10.
 
 ### Overnight queue (2026-10-22, Kat asleep; Kat approved)
 1. Wire the 13 card sets and the S.E.E.S. weapons: running.

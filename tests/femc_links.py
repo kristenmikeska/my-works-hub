@@ -45,6 +45,17 @@ try:
           if(!l.portraitPending)bad.push(id+': portraitPending missing');if(!(l.storyEvents||[]).length)bad.push(id+': no arrival');}}
          return bad}})()''')
         assert not leaks, leaks
+    # Ranks 11-15 of the Runners links (2026-10-22): the same guard on what that batch added (the new ranks, February hangouts,
+    # texts after ranks 11-15 and the r15- moments); Mark's file also keeps its own banned words out.
+    r15 = [x for x in LINKS if x in ('hanni', 'hyein', 'mark', 'minji')]
+    if r15:
+        leaks = p.eval(f'''(()=>{{const G=FemcGame,bad=[],re=/girl I used to know|learned the hard way|hard lesson|Say it again|fits you better|THERE SHE IS|\\bdemo\\b|scholarship|recording/i;
+         for(const id of {json.dumps(r15)}){{const l=G.LINKS[id];if(G.maxOf(l)!==15)bad.push(id+': maxRank');
+          const ar=l.afterRank||{{}};const mine=[l.ranks.slice(10),l.stretchHangouts||[],[11,12,13,14,15].map(n=>ar[n]||null),(l.lateNights||[]).filter(e=>/^r15-/.test(e.id)),
+            G.D.dailyLife.filter(e=>/^r15-/.test(e.id)&&e.ranks&&id in e.ranks),G.D.runIns.filter(e=>/^r15-/.test(e.id)&&e.ranks&&id in e.ranks)];
+          const m=JSON.stringify(mine).match(re);if(m)bad.push(id+': '+m[0]);if(id==='mark'&&/\\bjk\\b|the gap\\b|mark-gap|mark-dad/i.test(JSON.stringify(mine)))bad.push('mark: banned word');}}
+         return bad}})()''')
+        assert not leaks, leaks
     # Link-local flags of the visitor depth pass (Mercy, Kiriko, Sebastian; prefix = id or seb-): every one a scene reads
     # is set by a choice somewhere in the same link.
     orphans = p.eval(f'''(()=>{{const L=FemcGame.LINKS,bad=[];const walk=(a,fn)=>(a||[]).forEach(l=>{{fn(l);walk(l.then,fn);walk(l.else,fn);(l.choose||[]).forEach(o=>{{fn(o);walk(o.then,fn);}});}});

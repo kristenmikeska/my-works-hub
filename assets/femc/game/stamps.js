@@ -36,9 +36,10 @@ window.FemcStamps = (() => {
     const b = S.battleSave || {}, feats = b.feats || {}, bosses = S.tartarus?.bosses || [];
     if (feats.summon || bosses.includes('magician') || (S.tartarus?.nights || 0) > 0) out.push('p3s-persona');
     MOONS.forEach(op => { if (bosses.includes(op) || S.flags?.[`op-${op}`]) out.push(`p3s-moon-${op}`); });
-    // Bond MAX: any link at its own top rank (maxRank: 15 for Haechan, Jungwon, Akihiko and Shinjiro since 2026-10-21; a save
-    // that earned the stamp at their old MAX keeps it). All of S.E.E.S. stays at rank 10, P3's MAX, for every member (Akihiko's
-    // and Shinjiro's 11–15 are a February epilogue, and Shinjiro's 15 is his waking). Rank 15: any link at 15.
+    // Bond MAX: any link at its own top rank (maxRank: 15 for Haechan, Jungwon, Akihiko and Shinjiro since 2026-10-21, and Hanni,
+    // Hyein, Mark, Minji and Jihoon since 2026-10-22; a save that earned the stamp at their old MAX keeps it). All of S.E.E.S.
+    // stays at rank 10, P3's MAX, for every member (Akihiko's and Shinjiro's 11–15 are a February epilogue, and Shinjiro's 15 is
+    // his waking). Rank 15: any link at 15.
     const top = id => (G.maxOf && G.LINKS[id] ? G.maxOf(G.LINKS[id]) : 10);
     if (Object.entries(S.links || {}).some(([id, p]) => G.LINKS[id] && (p.rank || 0) >= top(id))) out.push('p3s-max-link');
     if (SEES.every(id => rank(id) >= 10)) out.push('p3s-sees-max');

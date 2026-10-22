@@ -10,10 +10,17 @@
    She lives at the Kirijo guesthouse by the station (Kat's ruling): days at Game Panic, Seaside Park and the guesthouse
    window seat; texts Solar during school (r2, r7); the guesthouse hangout shows who she lives near (Jihoon, Mark, the desk
    lady). Haechan lives at the dorm (r7 meets him on its steps).
-   Arcana: '?' (open question for Kat, plot doc §16.6). afterMax and christmas use v1's field shapes. */
+   Arcana: '?' (open question for Kat, plot doc §16.6). afterMax and christmas use v1's field shapes.
+   Ranks 11-15 (maxRank 15; meter ranks, 2026-10-22 batch): 2/2 Seaside Park (the slate), 2/9 the dorm lounge (coverage;
+   Junpei, Koromaru, Mitsuru), 2/16 Game Panic (the last match), 2/21 the guesthouse common room (selects), 2/25 the riverside
+   lamp (the wrap). One film of the whole year, eleven minutes, finished 2/23 in Haechan's rank 14 (lounge): her ranks keep to
+   his scene on every heading (who the film is for and how many copies). Each rank has one key passage branched by heading
+   (H / S / R / stay / true) and an ending branched by romance / friendship; every path's best answers total 12 notes.
+   stretchHangouts: three February hangouts for a meter a rank scene didn't fill. Living content for these ranks (afterRank
+   11-15 texts, a late call, a breakfast routine): data/living-r15-minji.js. afterMax plays between rank 10 and 11 and after 15. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'minji', name: 'Minji Kim', short: 'Minji', arcana: 'Moon', numeral: '', from: 'Runners',
-  kind: 'searcher', world: 'R', romance: 'canon',
+  kind: 'searcher', world: 'R', romance: 'canon', maxRank: 15,
   starts: '9/26', gate: { R: 4 },
   home: { area: 'port', spot: 'Seaside Park', slot: 'after', days: [0, 2, 4, 6],
           hint: 'Afternoons at Port Island Seaside Park, with a camera, filming whatever the light is doing.' },
@@ -96,6 +103,58 @@
         { t: "Film the desk lady.", notes: 3, then: [
           { n: "Minji asked her. Properly, with her phrasebook and a great deal of bowing. The woman at the desk said absolutely not, and then fixed her hair, and then stood very straight behind the bell for nine seconds while Minji filmed her, and then said absolutely not again and went to get more rice crackers." },
           { s: 'minji', f: 'happy', t: "Nine seconds. Best footage I've gotten all week. Don't tell Fuuka. Fuuka thinks she's my best subject." }
+        ] }
+      ] }
+    ]
+  ],
+  stretchHangouts: [
+    [
+      { n: "It was too cold to film. Minji said so three times on the seawall, out loud, to nobody, and kept filming, with the camera inside a gray wool sock that had a hole cut in the toe for the lens, which she said was a professional technique and Solar was fairly sure was a sock." },
+      { s: 'minji', f: 'neutral', t: "Breath. Look. Everybody's breath shows in February. You can see exactly how much everybody's talking. It's the most honest month of the year." },
+      { choose: [
+        { t: "(Breathe out one big cloud for the camera.)", notes: 3, then: [
+          { s: 'minji', f: 'happy', t: "Perfect. Do it again. Do it sad. Okay, now do it like Junpei." },
+          { n: "She did it like Junpei, with her whole chest and a great deal of unnecessary arm, and Minji laughed so hard the sock slid off the lens and she had to chase it along the wall in the wind, still rolling." }
+        ] },
+        { t: "(Take the loose end of her scarf and wind it round your own neck.)", notes: 2, then: [
+          { s: 'minji', f: 'flustered', t: "That's my scarf. We're attached now. I can't film anything more than a meter away from you." },
+          { n: "She filmed everything inside a meter for the rest of the afternoon, gulls that came close, the rail, the toe of Solar's boot, and complained about it the entire time, and didn't once reach up to untie the scarf." }
+        ] },
+        { t: "Won't the camera freeze?", notes: 1, then: [
+          { s: 'minji', f: 'neutral', t: "It's been through worse. It's been through me." }
+        ] }
+      ] }
+    ],
+    [
+      { place: 'Kirijo Guesthouse · Common Room', time: 'After School', soft: true },
+      { n: "The window seat at the guesthouse had a roll of white tape on the sill now, and a marker, and Minji was labeling memory cards in their little plastic cases, a strip of tape across each one in her leaning capitals. *FEB. ROOF. COLD.* *FEB. KOROMARU. ASLEEP (AGAIN).* *FEB. SOL. ???*" },
+      { s: 'minji', f: 'neutral', t: "The question marks are for when I don't know what it is yet. You get a lot of question marks. Don't take it personally. You're just hard to label." },
+      { choose: [
+        { t: "(Take the marker. Fill in one of your question marks.)", notes: 3, then: [
+          { n: "She wrote *happy* under the question marks on the first one, small, so it fit, and Minji looked at it for a long time and didn't cross it out, and put that card at the very front of the box, where she'd find it first." }
+        ] },
+        { t: "(Label a blank one for her. *MINJI. ???*)", notes: 2, then: [
+          { s: 'minji', f: 'flustered', t: "I'm not on any of them. I'm never on them. ...Okay. One. It's going at the back. Where nobody looks." }
+        ] },
+        { t: "Why not just write the dates?", notes: 1, then: [
+          { s: 'minji', f: 'neutral', t: "Dates don't tell you anything. Everything happened on a date." }
+        ] }
+      ] }
+    ],
+    [
+      { place: 'Iwatodai Station · Monorail', time: 'After School', soft: true },
+      { n: "Minji wanted the monorail at the exact moment the sun went behind the bridge, which was, she said, one specific train, the 4:52, and they rode it twice, because the first time a businessman stood squarely in the shot and read his newspaper with a commitment she said she had to respect." },
+      { s: 'minji', f: 'serious', t: "He's in it now. He's in the year. I'm not cutting him. He worked so hard." },
+      { choose: [
+        { t: "(Ask the businessman, very politely, to sign a release.)", notes: 3, then: [
+          { n: "She asked him, in her most careful Japanese, and he looked at her, and at the camera, and at Minji pretending not to watch from behind it, and folded his newspaper, and signed the back of a receipt with enormous gravity, and got off at the next stop without a word." },
+          { s: 'minji', f: 'happy', t: "That's the most professional thing that's happened to me all year. I'm framing the receipt." }
+        ] },
+        { t: "(Stand where the sun hits the window, so she gets the flare.)", notes: 2, then: [
+          { s: 'minji', f: 'happy', t: "Flare. Yes. Professionals hate a flare. I'm not a professional. I'm in love with a flare." }
+        ] },
+        { t: "Can't you just ride it again tomorrow?", notes: 1, then: [
+          { s: 'minji', f: 'neutral', t: "Tomorrow the sun goes behind the bridge a minute later. It's never the same train twice." }
         ] }
       ] }
     ]
@@ -518,6 +577,615 @@
       ] },
       { s: 'minji', f: 'neutral', t: "...You're the same. In the frame. You were always the same." },
       { s: 'minji', f: 'happy', t: "I just never got to say it to your face." }
+    ] },
+
+    { after: '2/2', title: '11: slate', place: 'Port Island · Seaside Park', time: 'After School', scene: [
+      { n: "February at Seaside Park was the color of a sink full of dishwater, the sky and the bay the same flat gray with a seam of white where they met, and the wind came off the water in one long steady push that found every gap in a coat and moved in. Minji was on the seawall anyway, in two hoodies and a scarf wound three times, with a small black slate on her knees, the kind with a striped clapper hinged on top, and a stub of chalk she kept breathing on to keep her fingers working." },
+      { n: "She'd already written on it, in careful capitals that leaned to the right like they were walking into the wind. *THE YEAR. SC 1. TK 1.*" },
+      { s: 'minji', f: 'neutral', t: "I found it at the stationery shop on the Strip. In a box of things nobody wanted. The man gave it to me for a hundred yen because he said it was bad luck to sell a slate to a girl who looked that serious about it." },
+      { s: 'minji', f: 'serious', t: "I'm making one more. Not the project. The project's done. This is everything. Everything I shot here, since the lamp. All of it, cut into one thing." },
+      { n: "There was a notebook under the slate, held flat against the wind with her elbow, and when she slid it out Solar saw that it was a list. Pages of it. Dates down the left side in the same leaning capitals, a few words beside each, *riverside, lamp*, *pier, wind, no camera (doesn't count)*, *lounge, laughing, Junpei's fault*, and beside each of those a small empty box drawn in pen." },
+      { s: 'minji', f: 'neutral', t: "Every clip of you. Forty-one hours. I logged them all. There's a box next to each one." },
+      { s: 'minji', f: 'flustered', t: "You tick it if I can use it. You don't if I can't. You don't have to say why. I know I already asked you for every one of these once. Putting it in something is a different ask. It's a whole different ask, Sol." },
+      { choose: [
+        { t: "(Tick every box without reading them.)", notes: 3, then: [
+          { s: 'minji', f: 'surprised', t: "..." },
+          { s: 'minji', f: 'serious', t: "No. Okay. No. Read them. I need you to read them, that's the entire point of the boxes." },
+          { n: "So she read them, all of them, on a seawall in February with Minji holding each page down against the wind with the edge of the slate, and ticked every box anyway, slowly, one at a time, and Minji watched her do it the way you'd watch a fuse burn in exactly the direction you'd hoped." }
+        ] },
+        { t: "(Read every entry out loud before you tick it.)", notes: 3, then: [
+          { n: "She read them out loud. *Station, sunset, didn't know.* *Game Panic, cap backwards, losing.* *Roof, asleep (asked after, she said fine).* Minji listened to her whole year come back to her in Solar's voice with her chin buried in the scarf, and didn't interrupt once, and when the last box was ticked she let out a breath she had clearly been holding since October." }
+        ] },
+        { t: "Forty-one? You told me four hundred.", notes: 2, then: [
+          { s: 'minji', f: 'neutral', t: "Four hundred's everything. Home and here. Forty-one's here. Here's the one I'm cutting." },
+          { s: 'minji', f: 'sad', t: "Home's already cut. I did that one before you went. I just didn't know that's what I was doing." }
+        ] }
+      ] },
+      { s: 'solar', f: 'neutral', t: "Who's it for?" },
+      { ifHeading: 'H', then: [
+        { s: 'minji', f: 'neutral', t: "Us. The ones who aren't going where you're going. Which is, as far as I can tell, everybody I know." },
+        { s: 'minji', f: 'neutral', t: "Jihoon says you're vice president of something over there. He said it like it was a crime he'd personally witnessed and had been asked not to discuss. So you'll be busy, and important, and we'll be at home with no support and a slate." },
+        { choose: [
+          { t: "Then make it for all of you.", notes: 3, then: [
+            { s: 'minji', f: 'neutral', t: "It is. I'm going to show it in the lab with the lights off. Olivia's going to scream at the first frame. Haerin's going to giggle once, at the very end, and the whole room's going to go quiet like church." }
+          ] },
+          { t: "(Take the chalk. Write your name on the slate under the title.)", notes: 3, then: [
+            { n: "She wrote *SOL* under *THE YEAR* in her own round hand, and Minji looked at it and said that wasn't how slates worked, and then didn't wipe it off, and then, when Solar wasn't watching, went over the letters again so the wind wouldn't take them." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'S', then: [
+        { s: 'minji', f: 'neutral', t: "Me." },
+        { s: 'minji', f: 'neutral', t: "You're going somewhere I'm not. Yunjin told me a little. A big house, and people in it who've already decided things about you. I'm not going to be in that house. So I'm keeping this one. The you who lived here. I'm allowed one." },
+        { choose: [
+          { t: "(Draw one more box on the last page. Write *all of it* beside it. Tick it.)", notes: 3, then: [
+            { n: "She drew it small, in pencil, at the bottom of the last page, and Minji looked at it for a long time, and then put the notebook inside her hoodie, flat against her chest, and zipped it up over it, the way she'd once carried the camera on a windy pier." }
+          ] },
+          { t: "You're allowed more than one.", notes: 3, then: [
+            { s: 'minji', f: 'sad', t: "I'm not. I checked. I'm very strict with myself." },
+            { s: 'minji', f: 'neutral', t: "...Two. If you insist. I'll think about two." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'R', then: [
+        { s: 'minji', f: 'neutral', t: "Over there. It's for over there." },
+        { s: 'minji', f: 'neutral', t: "For when I'm in the honors dorm at four in the morning with a VOD open and I can't remember what you looked like when you weren't doing it for somebody. You're going to be so busy when we're home. You're going to be busy with a lot of things." },
+        { n: "She didn't say what things. She had been in a hallway once, at a party, for four seconds, with a camera up that she hadn't used, and she'd never told Solar which four seconds, and she wasn't going to start on a seawall in February." },
+        { choose: [
+          { t: "I'll want a copy over there too.", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "You get the first one. Obviously. You're in it. That's how it works." }
+          ] },
+          { t: "Then put both our names on the slate.", notes: 3, then: [
+            { s: 'minji', f: 'flustered', t: "That's not how— okay. Okay. Two names on the slate. I'm going to need more chalk." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'minji', f: 'neutral', t: "You." },
+        { s: 'minji', f: 'neutral', t: "It's for you. To keep. Here. So when we've all gone home you've got proof we were in the building. That we were real, and not something the hour made up to keep you company." },
+        { choose: [
+          { t: "Put yourself in it too. Not just behind it.", notes: 3, then: [
+            { s: 'minji', f: 'flustered', t: "I'm in it. Eleven seconds. I'm keeping the eleven seconds." },
+            { s: 'minji', f: 'neutral', t: "That's enough of me. The rest is you. That's the part you're keeping." }
+          ] },
+          { t: "(Take her cold hand off the slate and hold it.)", notes: 3, then: [
+            { n: "Her hand was freezing, chalk white to the knuckle, and she let Solar hold it without looking at her, and with her other hand drew a small square in the corner of the slate, and then a very small tick inside it." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'minji', f: 'happy', t: "Everywhere." },
+        { s: 'minji', f: 'neutral', t: "Fuuka says you're going home to all of it at once. I don't understand that. Nobody does. So I'm putting it on everything. A disc, my phone, a laptop. If one of them doesn't make it through, the others will." },
+        { s: 'minji', f: 'serious', t: "Somebody has to keep this one. The one with the lamp in it. In case it's the one that goes quiet." },
+        { choose: [
+          { t: "Then I'll watch it on every one of them.", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "You'd better. I'm going to check. I always check." }
+          ] },
+          { t: "(Tick the last box twice.)", notes: 3, then: [
+            { n: "She ticked it twice, the second tick on top of the first, and Minji looked at the doubled mark and laughed through her nose and said she was keeping that page as well, the notebook was evidence now." }
+          ] }
+        ] }
+      ] }] }] }] },
+      { s: 'minji', f: 'neutral', t: "Okay. Last thing. Every take starts with the slate. Somebody claps it so the sound lines up with the picture later. I've never had anybody to clap it. I've been doing it one-handed like a loser for six years." },
+      { choose: [
+        { t: "(Clap it.)", notes: 3, then: [
+          { n: "She held the slate up in front of the lens, and Minji said *rolling*, quietly, and Solar brought the clapper down, and it went off over the seawall like a starter's pistol, and three gulls lifted off the railing in protest and settled again, further away, offended." },
+          { s: 'minji', f: 'happy', t: "Perfect. You're so good at that. Why are you good at that." }
+        ] },
+        { t: "Call it first. *The year. Scene one. Take one.*", notes: 3, then: [
+          { n: "Solar said it into the wind, and Minji's mouth did something it had clearly not been given permission to do, and she had to look away at the bay for a second before she nodded, and Solar clapped it, and the sound went out over the water and came back very faintly off something on the far side." }
+        ] },
+        { t: "What do I do after I clap it?", notes: 2, then: [
+          { s: 'minji', f: 'neutral', t: "Nothing. That's the trick. You clap it and then you forget it's there." },
+          { s: 'minji', f: 'neutral', t: "You're the only person I know who's ever managed it. Twice." }
+        ] }
+      ] },
+      { ifRoute: 'romance', then: [
+        { n: "When the take was over she didn't lower the camera right away. She kept it on Solar one second longer than the take needed, on the seawall, in the gray, and then she did lower it, and looked at her over the top of it without it, the way she'd started doing in January, as if she'd decided some things were only allowed to be seen with the naked eye." },
+        { choose: [
+          { t: "(Lean over and wipe the chalk off her cheek with your thumb.)", notes: 3, then: [
+            { s: 'minji', f: 'flustered', t: "Was it there the whole time? Was it there for the whole take?" },
+            { s: 'solar', f: 'neutral', t: "The whole take." },
+            { s: 'minji', f: 'flustered', t: "...Okay. I'm keeping it. It's continuity now." }
+          ] },
+          { t: "(Kiss her cold cheek, once, where the chalk is.)", notes: 3, then: [
+            { n: "Her cheek was cold and tasted faintly of chalk, and she went completely still, the way she held still waiting for focus, and then let out a laugh that fogged in the air between them and hung there." },
+            { s: 'minji', f: 'happy', t: "That's not on the shot list. ...I'm adding it to the shot list." }
+          ] }
+        ] }
+      ], else: [
+        { n: "When the take was over, Minji lowered the camera and handed Solar the slate to hold while she packed the lens away, every piece in its own slot, and didn't ask for it back. Solar sat with it in her lap. It was warm where Minji's hands had been." },
+        { choose: [
+          { t: "Duo?", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "Duo. Scene one, take one." },
+            { s: 'minji', f: 'neutral', t: "Write it on the back. In chalk. So it gets all over your coat and you have to explain it to Mitsuru." }
+          ] },
+          { t: "(Draw a small sun on the back of the slate.)", notes: 3, then: [
+            { n: "She drew it badly, a lopsided circle with uneven rays, and Minji looked at it and said it was the worst sun she'd ever seen in her life and that it was staying on the back of the slate until the slate fell apart." }
+          ] }
+        ] }
+      ] },
+      { n: "Before they left, Minji wrote *TK 2* under *TK 1*, though nothing else had been shot, and when Solar asked why, she said you always write the next take before you go home. That way you have to come back for it." }
+    ] },
+
+    { after: '2/9', title: '12: coverage', place: 'Iwatodai Dorm · Lounge', time: 'After School', music: 'joy', scene: [
+      { n: "Minji had asked Mitsuru for permission to film the dorm for one whole afternoon, in writing, on a sheet of the dorm's own letterhead she'd had to ask for separately, and Mitsuru had read it twice at the breakfast table and signed it and dated it, and then, after a pause, initialed the margin, where Minji had written in small capitals *(this includes you)*." },
+      { n: "By four the lounge looked like a set. The tripod by the television, the lamp off Fuuka's desk clamped to the back of the sofa with a scarf over it to soften it, and a list taped to the wall. *JUNPEI (chair). KOROMARU (kotatsu). FUUKA (radio). MITSURU (laugh?)*. The question mark had been gone over a lot of times." },
+      { s: 'minji', f: 'serious', t: "Coverage. It means you shoot everything around the thing, so later you've got something to cut to. The thing is you. Everybody else is coverage." },
+      { s: 'minji', f: 'flustered', t: "That came out wrong. They're not less. They're the room. You can't have the thing without the room. Write that down somewhere I can't see it." },
+      { n: "Junpei had been in the deck chair by the window for an hour, being coverage, with the energy of a man auditioning for a part nobody would tell him the name of." },
+      { s: 'junpei', f: 'happy', t: "Okay, okay, Minji, check this. Natural. Totally natural. Just a guy in a chair. Just a guy, livin' his life, in a totally normal—" },
+      { n: "The deck chair, which had been folded and unfolded by four separate people since summer and had developed opinions about it, chose that moment. It went flat. Junpei went with it, all the way to the floor, in one long wooden collapse, and lay there among its slats with his cap over his face." },
+      { s: 'minji', f: 'neutral', t: "...And cut." },
+      { s: 'junpei', f: 'serious', t: "I'm gonna be famous for falling over. In another universe. That's my legacy. That's what they're gonna say about me over there." },
+      { choose: [
+        { t: "(Lie down on the floor next to him among the slats.)", notes: 3, then: [
+          { n: "She lay down beside him, and Junpei said *see, she gets it*, and Minji got both of them from above, standing on the sofa with Mitsuru's permission slip in her back pocket for exactly this kind of emergency." }
+        ] },
+        { t: "(Hold one of the slats up to the lens like evidence.)", notes: 3, then: [
+          { s: 'minji', f: 'happy', t: "Exhibit A. Hold it still. Okay, now look sad about it. Now look at Junpei. Now look at me like you're disappointed in all of us." },
+          { n: "She looked disappointed in all of them. Junpei, from the floor, said it was a very good look on her and a very bad look on him." }
+        ] },
+        { t: "(Help him up.)", notes: 2, then: [
+          { s: 'junpei', f: 'happy', t: "See, Minji? Sol's got the heart. She's the heart of the operation. You're just the eyes. Cold, cold eyes." }
+        ] }
+      ] },
+      { n: "Koromaru took his part very seriously, which was to be asleep under the kotatsu with only his tail out, and he did it for forty minutes in a single take without being asked, and Minji said he was the most professional person she had ever worked with and lay down on her stomach to get the tail at its own level." },
+      { n: "Mitsuru was the hard one. She came in from the council room at five in her coat and sat down at the long table with a stack of papers and a pen, and was perfectly polite to the camera, the way she was polite to a reporter, chin level, and Minji filmed her for three minutes and lowered it and looked at Solar with something close to despair." },
+      { s: 'minji', f: 'sad', t: "She's doing it. The face. The checking face. She's like you. I need her to forget." },
+      { choose: [
+        { t: "(Tell Mitsuru about Junpei and the deck chair. In detail.)", notes: 3, then: [
+          { n: "She told it the way it had happened, down to the sound the chair had made, and Junpei, from the sofa, supplied the sound again, with his whole chest. Mitsuru's mouth went. Her hand came up over it, too late, and her eyes shut, and her shoulders shook once, and then she was laughing, actually laughing, at the head of the long table with her hand over her mouth, and Minji had all of it before Mitsuru remembered the camera at all." },
+          { s: 'mitsuru', f: 'surprised', t: "...You were filming that." },
+          { s: 'minji', f: 'neutral', t: "I'll ask you twenty times if I can keep it." },
+          { s: 'mitsuru', f: 'neutral', t: "Once will do. ...Yes." }
+        ] },
+        { t: "(Ask Mitsuru what she'll remember about this year.)", notes: 3, then: [
+          { s: 'mitsuru', f: 'neutral', t: "...The noise. This house used to be very quiet." },
+          { n: "She said it looking at the lounge, at the deck chair in pieces, at the tail under the kotatsu, at the coats on the hooks by the door hung two deep since autumn, and for a moment she forgot to be polite to anybody, and Minji, very quietly, kept rolling." }
+        ] },
+        { t: "Leave her alone. You can't make somebody forget.", notes: 2, then: [
+          { s: 'minji', f: 'neutral', t: "You can. You just have to be more boring than whatever they're thinking about. I'll wait. I'm very boring. I'm a professional." }
+        ] }
+      ] },
+      { n: "Afterward Minji sat at the long table with the camera in her lap, scrolling back through the afternoon with the sound off, and the dorm went on around them, Fuuka's radio upstairs, the kettle starting to tick, somebody's feet on the stairs." },
+      { ifHeading: 'R', then: [
+        { s: 'minji', f: 'neutral', t: "Hanni wants this exact shot at home. The kitchen at the house. Same angle, same time of day. She says you can put them side by side and they'll look like the same place with the furniture moved." },
+        { s: 'minji', f: 'neutral', t: "They won't. The light's wrong there in a completely different way. I'm going to do it anyway. She's going to cry. Hyein's going to say she isn't crying while she's crying." },
+        { choose: [
+          { t: "Film me in both. Same chair.", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "That's the plan. I'm going to need you sitting exactly like that. At home. On the counter where you're not allowed to sit." }
+          ] },
+          { t: "(Look at the table once more, properly, so you'll know it.)", notes: 3, then: [
+            { n: "She looked at it. The rings left by a year of mugs. The place near the end where Junpei had carved something small and denied it. She didn't know she was framing it the way Minji framed things until Minji said *yeah, like that*, very quietly, beside her." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'S', then: [
+        { s: 'minji', f: 'neutral', t: "Yunjin says the house you're going to is quiet at dinner. Like, nobody talks. Everybody's just very careful with their chopsticks." },
+        { s: 'minji', f: 'serious', t: "So I'm putting the loudest table I've ever seen in it. On purpose. So you can watch it in that house with the sound all the way up." },
+        { choose: [
+          { t: "All the way up, then.", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "All the way. Junpei's chair is going to sound like a building coming down." }
+          ] },
+          { t: "(Ask her to film the empty chairs at the end, too.)", notes: 3, then: [
+            { n: "Minji filmed them one after another, the empty chairs at the far end of the long table, slowly, the way you'd take attendance, and didn't ask what they were for, and didn't need to." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'H', then: [
+        { s: 'minji', f: 'neutral', t: "Jihoon says your table at that school is seven people and a lot of yelling and somebody always storming off. I said that sounds like ours. He said ours is worse. I said which one, and he walked away." },
+        { s: 'minji', f: 'neutral', t: "This one's for us, though. When we're home and you're at that table, we've still got this one. The one you sat at with us." },
+        { choose: [
+          { t: "Save me a seat at yours.", notes: 3, then: [
+            { s: 'minji', f: 'sad', t: "...I'll save it. I'll put my bag on it. People are going to hate me." }
+          ] },
+          { t: "(Ask Minji to get in the shot. Just once.)", notes: 3, then: [
+            { n: "Minji set the timer and ran, and sat down beside her at the long table with her knee against Solar's, and they both looked at the lens, and then at each other, and then the little light went red on the two of them looking at each other." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'minji', f: 'neutral', t: "You're keeping the table. I'm taking the shot. That's fair, right? That feels fair." },
+        { s: 'minji', f: 'sad', t: "I'm going to be so annoyed at home when nobody yells at me about my shoes in the hall." },
+        { choose: [
+          { t: "Leave your shoes in the hall, then. Every day till you go.", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "That's sweet. That's also a threat. Mitsuru's going to kill me." }
+          ] },
+          { t: "(Promise to keep the deck chair.)", notes: 3, then: [
+            { n: "Junpei, from the floor, said it was his chair. Solar said she was keeping it anyway, slats and all. Minji filmed the whole argument and said it was going in right after the fall, like a sequel nobody had asked for." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'minji', f: 'neutral', t: "Fuuka says when you go, everything here might go quiet. Like the hour does. Like a dream you only half keep." },
+        { s: 'minji', f: 'serious', t: "So it's on three things. I told you. If this table goes quiet, I'll have it. I'll show it to you somewhere you can't remember sitting, and you'll know the chairs anyway." },
+        { choose: [
+          { t: "My hands will know them.", notes: 3, then: [
+            { s: 'minji', f: 'neutral', t: "Yeah. Your hands always know first. They knew the game before you did." }
+          ] },
+          { t: "(Put your palm flat on the table, so it remembers you back.)", notes: 3, then: [
+            { n: "She laid her hand flat on the wood, and after a second Minji put the camera down and laid hers beside it, not touching, two hands on a long table in a lounge in February, and neither of them said it was silly, and neither of them took her hand away first." }
+          ] }
+        ] }
+      ] }] }] }] },
+      { n: "On her way out, at the bottom of the stairs, Minji stopped, and lifted the camera, and called her name, just *Sol*, the way you'd call somebody back for a thing they'd forgotten. Solar was halfway up. She turned round." },
+      { ifRoute: 'romance', then: [
+        { n: "She turned round mid-laugh, at something Junpei had said from the lounge, and Minji got it, all of it, the turn and the laugh and Solar's face finding hers at the bottom of the stairs and doing nothing about it. Not checking. Not arranging. Just pleased." },
+        { choose: [
+          { t: "(Come back down. All the way.)", notes: 3, then: [
+            { n: "She came back down. Minji lowered the camera without stopping it, so the last of the take was the ceiling and the edge of a light fitting and the sound of two people being very quiet at the bottom of a staircase in a house full of people, and she kept that too." }
+          ] },
+          { t: "Did you get it?", notes: 3, then: [
+            { s: 'minji', f: 'flustered', t: "I got it. I got it and I'm never, ever showing you. You'd only argue with it." },
+            { s: 'minji', f: 'neutral', t: "...I'll show you. When it's done. You're first. You're always first." }
+          ] }
+        ] }
+      ], else: [
+        { n: "She turned round mid-laugh, at something Junpei had said from the lounge, and Minji got it, the turn, the laugh, Solar's face finding her at the bottom of the stairs, unarranged." },
+        { choose: [
+          { t: "Did you get it?", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "Two seconds. Nice." }
+          ] },
+          { t: "(Pull a face. Ruin the shot on purpose.)", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "Too late. I got the one before the face. I always get the one before the face." }
+          ] }
+        ] }
+      ] }
+    ] },
+
+    { after: '2/16', title: '13: last match', place: 'Paulownia Mall · Game Panic', time: 'After School', music: 'city', scene: [
+      { n: "The PC corner behind the bead curtain had been there all year, three sticky machines nobody else used, and sometime in the winter the man at the counter had started leaving the one by the wall logged in on Minji's days, with a paper cup of melon soda beside the keyboard that he denied, every time, knowing anything about." },
+      { n: "Today there were two cups. Minji's cap was on backwards." },
+      { s: 'minji', f: 'serious', t: "Ranked. Best of three. If we lose, it's your fault. If we win, it's mine." },
+      { s: 'minji', f: 'neutral', t: "And then I'm stopping. Here, I mean. This one. I want the last one to be a good one, and I want to know it's the last one while it's happening. Nobody ever gets to know that. I'm taking it." },
+      { choose: [
+        { t: "(Keep her alive. Every fight. Every second of every fight.)", notes: 3, then: [
+          { n: "She kept her alive. The little health bar dipped and her hand was already moving, the spark already in the air, landing a half-second before it was needed, every time, the whole first match, like a hand on a shoulder in a crowd." },
+          { s: 'minji', f: 'happy', t: "Nice. Nice. Nice. Okay, I'm going to stop saying it, it's losing all meaning. Nice." }
+        ] },
+        { t: "(Save the little bell for the exact moment she's sure she's dead.)", notes: 3, then: [
+          { s: 'minji', f: 'surprised', t: "I was GONE. I was so gone. Do that again. No. Don't. Yes. Do it again." }
+        ] },
+        { t: "(Hang back and let her carry. Watch her play.)", notes: 2, then: [
+          { n: "She hung back and watched her. Minji played the way she filmed, unhurried, patient, picking the one shot out of all the shots and taking it, and didn't notice she was being watched, which was, Solar thought, the closest she'd ever get to returning the favor." }
+        ] }
+      ] },
+      { n: "Between the second match and the third Minji pushed her headphones down round her neck and sat back in the sticky chair and looked up at the ceiling tiles, where somebody years ago had thrown a pencil hard enough to make it stick." },
+      { s: 'minji', f: 'neutral', t: "You know you heal me the same way in there? The tower. I didn't notice until January. Theia goes down on one knee and before I even know I'm hurt there's light on me. Same timing. To the frame." },
+      { s: 'minji', f: 'neutral', t: "I used to think the game made you like that. It isn't the game. It's you. The game just found out first." },
+      { choose: [
+        { t: "Then I'm keeping it. Whatever the game found.", notes: 3, then: [
+          { s: 'minji', f: 'neutral', t: "Good. Keep it. It's yours. It was never the game's." }
+        ] },
+        { t: "You notice everything.", notes: 3, then: [
+          { s: 'minji', f: 'flustered', t: "I notice you. That's different. Everything else I have to write down." }
+        ] }
+      ] },
+      { ifHeading: 'R', then: [
+        { s: 'minji', f: 'neutral', t: "If it's still November at home, we've got regionals in a few weeks. If it isn't, we missed them, and Doyoung is going to kill us both. Slowly. With the clipboard." },
+        { s: 'minji', f: 'serious', t: "Nobody here can tell me what day it'll be over there. I asked Fuuka. She said it's like a radio. You can't tell from the song what time it is where they're playing it." },
+        { s: 'minji', f: 'happy', t: "Either way you're playing. Your hands remember. I've been watching them all year." },
+        { choose: [
+          { t: "Then this isn't the last match. It's warm-up.", notes: 3, then: [
+            { s: 'minji', f: 'surprised', t: "..." },
+            { s: 'minji', f: 'happy', t: "Okay. Warm-up. I'm still stopping after today. I'll start again over there. With you. On the right chairs." }
+          ] },
+          { t: "(Promise her the first ranked queue the night you're home.)", notes: 3, then: [
+            { s: 'minji', f: 'neutral', t: "First night. Ranked. I'm not saying it twice." },
+            { s: 'minji', f: 'flustered', t: "I'm saying it twice. First night. Ranked." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'S', then: [
+        { s: 'minji', f: 'neutral', t: "I asked Yunjin if they have games where you're going. She looked at me like I'd asked if they had dragons." },
+        { s: 'minji', f: 'sad', t: "So this is it. The last time I get a support who knows where I'm going to be before I do. I'm going to be so bad without you. I'm going to die in every fight. Olivia's going to scream at my body." },
+        { choose: [
+          { t: "Teach me something to take with me, then.", notes: 3, then: [
+            { s: 'minji', f: 'neutral', t: "...Hold the angle. Don't chase. Let them come to you." },
+            { s: 'minji', f: 'neutral', t: "That's not for the game. That's for over there. Hold the angle, Sol." }
+          ] },
+          { t: "(Play the last fight like it's a final.)", notes: 3, then: [
+            { n: "She played it like a final. Minji felt the difference before the first engagement and sat up straighter, and they took it clean, and in the half-second of quiet after the last kill neither of them said anything at all, which in the lab at home, Minji said afterward, was the loudest thing you could say." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'H', then: [
+        { s: 'minji', f: 'neutral', t: "Jihoon says you're vice president of the whole school over there. I've seen you run a team fight. I believe it. I'm scared for them." },
+        { s: 'minji', f: 'serious', t: "He also says you're terrible at math, and that somebody tutors you, and then he made a face like the somebody personally owed him money. I didn't ask." },
+        { s: 'minji', f: 'sad', t: "So I'm the last person who gets to be your DPS. I'm putting that in writing somewhere. I'm putting it on a disc." },
+        { choose: [
+          { t: "You'll always be my DPS. Every world.", notes: 3, then: [
+            { s: 'minji', f: 'flustered', t: "Don't say every world to me like that, I'm in a public arcade." }
+          ] },
+          { t: "(Win the last fight for her. Not with her. For her.)", notes: 3, then: [
+            { n: "She won it for her. She went in ahead of Minji, which no support ever did, and kept everyone alive who needed it and a few who didn't deserve it, and when it was over Minji pushed her cap round to the front without thinking, the way you'd take off a jersey after the last game of a season." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'minji', f: 'neutral', t: "We'll queue with somebody else at home. Doyoung will make us. We'll leave your slot open for a while first. Olivia's going to yell at the empty slot like it can hear her." },
+        { s: 'minji', f: 'sad', t: "I hope it can. I hope you can hear her. All the way over here." },
+        { choose: [
+          { t: "I'll hear it.", notes: 3, then: [
+            { s: 'minji', f: 'neutral', t: "...Okay. Then I'll tell her to be loud enough. She won't need telling." }
+          ] },
+          { t: "(Ask her to leave the slot open for good.)", notes: 3, then: [
+            { s: 'minji', f: 'neutral', t: "For good's a long time to have a hole in a team." },
+            { s: 'minji', f: 'happy', t: "Okay. For good." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'minji', f: 'neutral', t: "Fuuka says you'll be home for all of it at once. Regionals and wherever else. You're going to be the only support in history playing three matches at the same time." },
+        { s: 'minji', f: 'happy', t: "I'm going to win mine, just so you know. I'm going to carry. You've got two other ones to worry about." },
+        { choose: [
+          { t: "Carry, then. I'll be watching all three.", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "Watch mine first. Mine's the good one. Mine has me in it." }
+          ] },
+          { t: "(Play the last fight with your eyes on her, not the screen.)", notes: 3, then: [
+            { n: "She played the last fight looking at Minji. She didn't miss a heal. Minji noticed halfway through and went red to the ears and didn't miss a shot either, out of spite, she said, out of spite for both of them." }
+          ] }
+        ] }
+      ] }] }] }] },
+      { n: "They won the third. Minji said it was her. Solar let her have it. On the way out, the old cabinet by the door, a shooter with a high-score table and a coin slot nobody had fed in years, was blinking at them, because somebody had left a credit in it and wandered off, and it was waiting for three letters. Minji stopped in front of it like it had said her name." },
+      { ifRoute: 'romance', then: [
+        { s: 'minji', f: 'neutral', t: "Three letters. Go." },
+        { choose: [
+          { t: "(Type SOL. Then make her type hers in the row underneath.)", notes: 3, then: [
+            { n: "She typed it and stood aside, and Minji typed hers one letter at a time, slowly, M, I, N, as if it were a form she had to get exactly right, and there they were on the screen, one name on top of the other, and the cabinet played a tinny little tune about it." },
+            { s: 'minji', f: 'flustered', t: "That's the worst song I've ever heard. That's our song now. ...That was a joke. I'm not taking it back." }
+          ] },
+          { t: "(Put your hand over hers on the joystick and spell it together.)", notes: 3, then: [
+            { n: "Minji let her. Neither of them was spelling anything in particular. The letters came out wrong, and they left them wrong, three nonsense letters at the top of a table nobody would ever read, and Minji filmed the screen for nine seconds, and asked, after, whether she could keep it." }
+          ] }
+        ] }
+      ], else: [
+        { choose: [
+          { t: "(Type DUO.)", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "DUO. Number one. That's going to be up there until they unplug it." }
+          ] },
+          { t: "(Type GGJ. For godgirlji.)", notes: 3, then: [
+            { s: 'minji', f: 'flustered', t: "Don't. Okay. Fine. Number one, godgirlji. Out of spite. Out of spite for YOU." }
+          ] }
+        ] }
+      ] }
+    ] },
+
+    { after: '2/21', title: '14: selects', place: 'Kirijo Guesthouse · Common Room', time: 'After School', music: 'tender', scene: [
+      { n: "The window seat in the guesthouse common room had turned into an editing suite somewhere around the second week of February, the way a desk turns into a bed for someone who's been sick: a borrowed laptop on a cushion, a nest of cables, a mug with a skin on it, and the desk lady's bowl of rice crackers, untouched, which the desk lady had plainly registered as a personal failing, because there were two bowls now, side by side, as if quantity might succeed where quality hadn't." },
+      { s: 'minji', f: 'neutral', t: "Sit. Don't look at the screen yet. I have to ask you something first, and if you look at the screen you'll just say yes to make me feel better." },
+      { n: "She had the timeline open. Solar knew what it was now without being told, a long strip of color along the bottom of the screen cut into pieces, every piece a moment, and above it, very small, a number. *11:00*." },
+      { s: 'minji', f: 'neutral', t: "Eleven minutes. Forty-one hours and it's eleven minutes. I took out so much, Sol. I took out so much good stuff." },
+      { s: 'minji', f: 'sad', t: "And it still needs sound. Not music. I've tried four songs. Every one of them turns it into a music video. I don't want a music video. I want it to sound like it sounded." },
+      { choose: [
+        { t: "Why eleven?", notes: 3, then: [
+          { s: 'minji', f: 'neutral', t: "You gave me eleven seconds. Under the lamp, in the snow. That was me. So eleven minutes is everyone." },
+          { s: 'minji', f: 'flustered', t: "That's a very pretentious reason. I know. I'm a film major. It's in the contract." }
+        ] },
+        { t: "(Ask her to show you what she took out.)", notes: 3, then: [
+          { n: "She showed her a few. Koromaru asleep on Akihiko's running shoes with Akihiko standing over him in his socks, not daring to move. Solar falling asleep in the middle of her own sentence in the lounge. Fuuka mouthing along to the radio with her eyes shut." },
+          { s: 'minji', f: 'neutral', t: "Those are the best ones. That's why they're out. The best ones are mine." }
+        ] },
+        { t: "It'll sound right. You'll find it.", notes: 2, then: [
+          { s: 'minji', f: 'neutral', t: "Maybe it'll find me. Some things you don't go and get. You wait until somebody hands them to you." }
+        ] }
+      ] },
+      { s: 'minji', f: 'serious', t: "Okay. Here's the ask. There's one clip I don't know about." },
+      { n: "She found it on the timeline without looking, the way you find a light switch in your own house. It was short. The dorm roof, at night, in December, by the look of the coats. Solar on the concrete with her back against the water tank and her knees pulled up and her face down in them, and she wasn't asleep, and she wasn't laughing, and the city behind her was orange and very far away." },
+      { s: 'minji', f: 'neutral', t: "You said I could film that night. You said, *I don't care, film whatever*, and I did, and I don't think you meant it, and I've been carrying it around in a folder for two months like a stone in my shoe." },
+      { s: 'minji', f: 'serious', t: "It's the truest thing I've got. And I don't get to decide that. You do." },
+      { choose: [
+        { t: "Keep it in. That was me too.", notes: 3, then: [
+          { s: 'minji', f: 'neutral', t: "Are you sure? I'm asking twice." },
+          { s: 'solar', f: 'neutral', t: "I'm sure. Twice." },
+          { n: "Minji nodded, slowly, and didn't move the clip, and didn't say anything for a while, and her hand on the trackpad was perfectly steady, which Solar had learned was how you could tell what something was costing her." }
+        ] },
+        { t: "(Take the trackpad. Cut it yourself.)", notes: 3, then: [
+          { n: "She cut it. Minji didn't stop her. The timeline closed up over the gap like water over a dropped stone, and the number at the top went down by four seconds, and Minji looked at it and said *ten fifty-six*, and then, very quietly, *thank you for doing it yourself*, and then she put four seconds of the lamp, flickering, where the roof had been, so that it still came out to eleven." }
+        ] },
+        { t: "What do you want to do with it?", notes: 2, then: [
+          { s: 'minji', f: 'sad', t: "I want you to have been okay that night. I can't fix that with a cut." },
+          { s: 'minji', f: 'neutral', t: "...I'll keep it. Not in it. Just kept." }
+        ] }
+      ] },
+      { ifHeading: 'R', then: [
+        { s: 'minji', f: 'neutral', t: "One copy for the lab. I'm going to show it with the lights off, and Doyoung's going to pretend he isn't crying behind his clipboard." },
+        { s: 'minji', f: 'serious', t: "Only if you say yes. I don't show anything without a yes. Not even to Doyoung. Especially not Doyoung. He'll want notes." },
+        { choose: [
+          { t: "Yes. Lights off.", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "Lights off. Olivia's going to scream at the very first frame. I'm counting on it. I timed a pause for it." }
+          ] },
+          { t: "Make one for the girls, too. For Hanni and Hyein.", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "Hyein already asked. She wants subtitles. I don't know what she thinks anybody says in it. I'm going to do them anyway. Just for her. They're going to say *nice*." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'S', then: [
+        { s: 'minji', f: 'neutral', t: "One copy. Mine." },
+        { s: 'minji', f: 'neutral', t: "You're going somewhere with a lot of things in it already. I'm not going to hand you one more thing to carry through a door. You can watch mine. Over my shoulder. Every day until the sixth." },
+        { choose: [
+          { t: "Make two.", notes: 3, then: [
+            { s: 'minji', f: 'sad', t: "...I'll think about it. Somebody else will probably say it to me too, and then I'll have to." }
+          ] },
+          { t: "(Watch it over her shoulder, then. Every day till the sixth.)", notes: 3, then: [
+            { s: 'minji', f: 'neutral', t: "Every day. I'll keep the window seat warm. The desk lady will make you eat rice crackers. That's the price of admission." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'H', then: [
+        { s: 'minji', f: 'neutral', t: "Copies for us. Hanni wants one. Hyein wants one with subtitles, don't ask me what she thinks anybody says in it." },
+        { s: 'minji', f: 'sad', t: "You'll have the real thing. Every day. In a different uniform, at a different table. You won't need eleven minutes of it." },
+        { choose: [
+          { t: "Make one for me too. For the days I miss you.", notes: 3, then: [
+            { s: 'minji', f: 'sad', t: "...Okay. One for you. For those days." },
+            { s: 'minji', f: 'neutral', t: "I hope there aren't many. I hope there are a few. Is that allowed? I'm asking." }
+          ] },
+          { t: "What happens to the slate?", notes: 3, then: [
+            { s: 'minji', f: 'neutral', t: "It goes on the lab wall. Over your chair. Doyoung's going to hate it. He's going to leave it up." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'minji', f: 'neutral', t: "One copy. It stays here. With you." },
+        { s: 'minji', f: 'sad', t: "I'll have the footage. All forty-one hours. You get the eleven minutes. That's the deal. You get the good part, I get the whole thing." },
+        { choose: [
+          { t: "That's a terrible deal for you.", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "I know. I made it anyway. I'm very bad at deals. Ask the desk lady. I owe her about four thousand rice crackers." }
+          ] },
+          { t: "(Ask her to write the dorm's address on the sleeve.)", notes: 3, then: [
+            { n: "She wrote it on the paper sleeve in pencil, in her leaning capitals, the whole address down to the room number, and then underneath it, smaller, *in case you forget where you live*, and then rubbed that part out, and then wrote it again." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'minji', f: 'neutral', t: "Three. A disc, my phone, a laptop. I told you." },
+        { s: 'minji', f: 'serious', t: "If you wake up somewhere and you don't remember the lamp, I'll have one of them on me. I'll find you. I'll sit you down and make you watch it." },
+        { choose: [
+          { t: "And I'll cry.", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "In all three places. I'm counting on it. I'm bringing tissues to three places." }
+          ] },
+          { t: "Promise you'll find me. All of me.", notes: 3, then: [
+            { s: 'minji', f: 'serious', t: "All of you. Even the ones I've never seen. I'll ask for directions." },
+            { s: 'minji', f: 'neutral', t: "I'm very persistent. Politely." }
+          ] }
+        ] }
+      ] }] }] }] },
+      { ifRoute: 'romance', then: [
+        { n: "When Solar got up to go, Minji caught her sleeve. Not hard. Two fingers, the way she held a lens cap." },
+        { s: 'minji', f: 'neutral', t: "Can I ask you something? You don't have to do anything with it." },
+        { choose: [
+          { t: "Yes.", notes: 3, then: [
+            { s: 'minji', f: 'flustered', t: "I didn't even—" },
+            { s: 'solar', f: 'neutral', t: "I know. Yes." },
+            { n: "Minji kissed her in the window seat with the timeline still open behind them, eleven minutes paused on a frame of the lamp, quickly and carefully, like checking focus, and then pulled back and looked at her as if she were deciding whether to keep the take." },
+            { s: 'minji', f: 'happy', t: "Keeping it." }
+          ] },
+          { t: "(Sit back down. Stay till the desk lady turns the lights off.)", notes: 3, then: [
+            { n: "She sat back down, and stayed, and at nine the desk lady came through and turned off the common room lights one by one, and left the one over the window seat on, and went to bed without a word." },
+            { s: 'minji', f: 'flustered', t: "That's the most romantic thing anyone's ever done for me, and it was a woman who disapproves of how I eat rice." }
+          ] }
+        ] }
+      ], else: [
+        { n: "When Solar got up to go, Minji stopped her with a hand up, the way she stopped people walking into a shot." },
+        { s: 'minji', f: 'neutral', t: "Hey. Thank you for looking. You looked at the hard one. Nobody ever looks at the hard one." },
+        { choose: [
+          { t: "Thank you for asking.", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "I'll always ask. Twenty times. You know that by now. You knew it before you knew me." }
+          ] },
+          { t: "(Take one rice cracker from the second bowl, so the desk lady wins one.)", notes: 3, then: [
+            { n: "She took one and ate it in front of the desk, slowly, and the desk lady, passing with a stack of towels, saw, and nodded once, gravely, like a general receiving news of a victory at last." }
+          ] }
+        ] }
+      ] }
+    ] },
+
+    { after: '2/25', title: '15: wrap', place: 'Iwatodai · Riverside', time: 'After School', music: 'tender', scene: [
+      { n: "The lamp at the bottom of the river path was still flickering. Of course it was. It had flickered since September and it was going to go on flickering after all of them, in its tired stuttering amber, and Minji was standing under it with the slate in one hand and the camera in the other and no tripod, nothing to set up, nothing to plug in, which was how Solar knew before she said anything." },
+      { s: 'minji', f: 'neutral', t: "It's done. Locked. Eleven minutes. I'm not touching it again. If I touch it again I'll never stop." },
+      { s: 'minji', f: 'neutral', t: "So this isn't for anything. This is the wrap. On the last day of a shoot somebody claps the slate one more time and says that's a wrap, and everybody goes home." },
+      { s: 'minji', f: 'sad', t: "I didn't want to do it on the last day. The last day's going to be terrible. I wanted to do it on a Thursday." },
+      { n: "It was a Thursday. The river was high and brown with snowmelt from somewhere upstream nobody could see, and the wind had dropped, for once, and the air had the very first edge of something softer in it. Not warm. Just less." },
+      { choose: [
+        { t: "(Take the slate from her.)", notes: 3, then: [
+          { n: "She took it. *TK 1* was still on it, from the seawall, and *TK 2* under it, and under that, in chalk that had been gone over more times than it needed, *TK 41*, for the hours. Then nothing. Room for one more line." }
+        ] },
+        { t: "Is the folder done too?", notes: 3, then: [
+          { s: 'minji', f: 'neutral', t: "The folder's never done. The folder's the folder." },
+          { s: 'minji', f: 'flustered', t: "I made a new one this morning. It's called *after*. It's empty. Don't ask me why I made it." }
+        ] },
+        { t: "Did you ever find the sound?", notes: 2, then: [
+          { s: 'minji', f: 'neutral', t: "Yeah. It got handed to me." },
+          { s: 'minji', f: 'happy', t: "I'll tell you sometime. It's a dumb story. It's the best story." }
+        ] }
+      ] },
+      { ifHeading: 'R', then: [
+        { s: 'minji', f: 'neutral', t: "Okay. Here's the thing I'm not going to say on the last day, so I'm saying it on a Thursday." },
+        { s: 'minji', f: 'neutral', t: "At home there's a lamp outside the honors dorm that flickers just like this one. When we get back, I want one walk under it. One. After practice. Like before." },
+        { s: 'minji', f: 'serious', t: "You've got a lot waiting for you over there. I know. I was in a hallway for four seconds once. I'm not asking you to put anything down. I'm asking for the walk." },
+        { choose: [
+          { t: "Every night, if you want.", notes: 3, then: [
+            { s: 'minji', f: 'sad', t: "Don't say every night. Say one. I can carry one." },
+            { s: 'solar', f: 'neutral', t: "One. Then another one." },
+            { s: 'minji', f: 'happy', t: "...Okay. Then another one." }
+          ] },
+          { t: "(Wait under the lamp for it to go out. Promise when it comes back on.)", notes: 3, then: [
+            { n: "They waited. It took eleven seconds, which Minji said was a sign and Solar said was a lamp, and when it went out and came back on, Solar said *one walk*, and Minji said *noted*, and wrote it on the slate in the room left under *TK 41*." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'S', then: [
+        { s: 'minji', f: 'neutral', t: "You're going where I can't film. That's okay. I've decided it's okay. I decided on the monorail. Twice." },
+        { s: 'minji', f: 'sad', t: "I'm going to stand under the lamp at home and wait for it to do something, and it's going to be just a lamp. I know that. I'm going to stand there anyway." },
+        { s: 'minji', f: 'serious', t: "And if anybody over there points anything at you that isn't asking, you look straight back at it. Like I showed you. Make them see they've been seen." },
+        { choose: [
+          { t: "I'll look straight at it.", notes: 3, then: [
+            { s: 'minji', f: 'neutral', t: "Good. That's the only thing I ever taught you that was mine and not yours first." }
+          ] },
+          { t: "(Write *asked* on the slate, in the room under her takes.)", notes: 3, then: [
+            { n: "She wrote it small, in the round hand, and Minji read it upside down and nodded slowly, like a director accepting a note she'd been hoping somebody would give her." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'H', then: [
+        { s: 'minji', f: 'neutral', t: "You're going to the school with the uniforms and the math and the boy with the dimples who forgets to eat. I'll go home, and you won't be on the team." },
+        { s: 'minji', f: 'neutral', t: "I'm going to leave your slot empty for a while. Then Doyoung's going to make me fill it. I'm going to hate whoever it is for exactly one week, and then I'm going to teach them your timing." },
+        { s: 'minji', f: 'serious', t: "I'm going to tell them about you. I won't show them. I'll just tell them. I'm allowed that." },
+        { choose: [
+          { t: "Show them. You've got my yes.", notes: 3, then: [
+            { s: 'minji', f: 'surprised', t: "..." },
+            { s: 'minji', f: 'neutral', t: "That's a big yes. I'm going to save it. I'm only going to use it once." }
+          ] },
+          { t: "Hate them for two weeks. I'm worth two.", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "Two weeks. You're so vain. ...Two weeks. Fine. You're worth two." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'minji', f: 'neutral', t: "You stay. We go. I keep thinking it should be the other way round, that the camera's the thing that stays put. It isn't. It's coming with me." },
+        { s: 'minji', f: 'sad', t: "So I'm going to be the one who looks back on the last day. I'm telling you now so you're ready. I'm going to look back the whole way down the platform. I'm going to be so embarrassing." },
+        { choose: [
+          { t: "I'll be looking too.", notes: 3, then: [
+            { s: 'minji', f: 'neutral', t: "Then we'll both be embarrassing. Okay. Two people looking at each other. That's a two-shot." }
+          ] },
+          { t: "(Promise to stand under this lamp on the first cold night next winter.)", notes: 3, then: [
+            { s: 'minji', f: 'sad', t: "...The first cold night. When the wind finds your collar." },
+            { s: 'minji', f: 'neutral', t: "I'll be under mine. Same night. It won't be the same night. It will to me." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'minji', f: 'neutral', t: "You're going home to all of it. I'm one of the all of it. I keep having to remind myself. I'm going to see you over there. Technically, for me, this isn't even goodbye." },
+        { s: 'minji', f: 'serious', t: "But this one's going to go quiet. The lamp. Fuuka said. The whole year might go soft, like a dream you keep for a morning and then don't." },
+        { s: 'minji', f: 'neutral', t: "So I'm going to remember it for you. That's my job. That's the whole job. I hold the camera and I remember." },
+        { choose: [
+          { t: "Then show me. Over there. When I've forgotten.", notes: 3, then: [
+            { s: 'minji', f: 'neutral', t: "First day. In the lab. Lights off. You won't know why you're crying. I'll know." }
+          ] },
+          { t: "(Stand under the lamp. Let her have one more shot.)", notes: 3, then: [
+            { n: "She stood under it, and Minji lifted the camera, and asked, and Solar nodded, and for once she didn't do anything with her shoulders at all. She just stood in the light being remembered, and let it happen to her." }
+          ] }
+        ] }
+      ] }] }] }] },
+      { s: 'minji', f: 'neutral', t: "Okay. Last thing. For real this time." },
+      { n: "She held the slate up in front of the lens and looked at Solar over the top of it." },
+      { choose: [
+        { t: "That's a wrap.", notes: 3, then: [
+          { n: "Solar said it, and clapped it, and the sound went out across the river and came back off the far bank half a second later, small and late, like a second clap from somebody who'd been watching the whole time from the other side." }
+        ] },
+        { t: "(Make her say it. It's her shoot.)", notes: 3, then: [
+          { s: 'minji', f: 'sad', t: "...That's a wrap." },
+          { n: "She clapped it herself, one-handed, like a loser, she said, the way she'd been doing it for six years, and laughed, and her eyes were wet, and she didn't do anything about it." }
+        ] }
+      ] },
+      { ifRoute: 'romance', then: [
+        { n: "The lamp went out. A whole second of real dark, the way it did now and then, and in the dark Minji said *Sol*, very quietly, and asked, the way she always asked, and Solar said yes before the question was finished, and the light came back on with the two of them already in it." },
+        { choose: [
+          { t: "(Kiss her under the lamp. Let the camera hang off its strap and film the ground.)", notes: 3, then: [
+            { n: "The camera swung on its strap against Minji's hip and filmed their shoes and the wet path and the stuttering light, and when she found it that night she texted that it was the best footage of shoes ever shot and that she was never deleting it, and that she'd watched it eleven times, which was a sign, and that Solar wasn't allowed to say it was a lamp." }
+          ] },
+          { t: "(Take the camera off her. Turn it on her. Ask.)", notes: 3, then: [
+            { s: 'solar', f: 'neutral', t: "Can I?" },
+            { s: 'minji', f: 'flustered', t: "...You're asking." },
+            { s: 'solar', f: 'neutral', t: "I always ask. I learned it from somebody." },
+            { n: "Minji stood under the lamp and let her, and didn't perform for a single frame, and looked at Solar instead of the lens the entire time, which meant the shot was technically ruined, and was the only shot of herself she ever framed." }
+          ] }
+        ] }
+      ], else: [
+        { n: "The lamp went out, a whole second of real dark, and came back on, and Minji was looking at her in the amber the way she had the very first afternoon, like someone she'd waited a long time to see, except that this time there wasn't any stranger left in it at all." },
+        { choose: [
+          { t: "Duo.", notes: 3, then: [
+            { s: 'minji', f: 'happy', t: "Duo. Wrap. Go home." },
+            { n: "Neither of them went home for another hour." }
+          ] },
+          { t: "(Hand her back the slate. Keep the chalk.)", notes: 3, then: [
+            { s: 'minji', f: 'neutral', t: "That's my chalk." },
+            { s: 'solar', f: 'neutral', t: "It's continuity." },
+            { s: 'minji', f: 'happy', t: "...You were listening. You were listening to me all year." }
+          ] }
+        ] }
+      ] },
+      { n: "When they did go, Minji leaned the slate against the foot of the lamp for one minute, *TK 1* facing out, and filmed it, and then picked it up and put it in her bag beside the camera, every piece in its slot, and walked Solar home the long way, over the river, though it was nowhere near on her way. It never had been." }
     ] }
   ],
 

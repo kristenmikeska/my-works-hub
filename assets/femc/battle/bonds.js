@@ -5,8 +5,8 @@
    How a bond works (engine.js bondInfo / bondAct; battle.js bondMenu / bondCut):
    - It unlocks at the partner's link rank (`tiers[].rank`: 5 for the first version, 9 for the upgrade). A romance partner on
      the romance route gets a special version at rank 9 instead (`love`). A reversed link pauses its bond.
-   - The links that go to rank 15 (2026-10-21) and still fight (Akihiko, Haechan, Jungwon) have a third tier at rank 15, and a
-     romance version of it (`love15`). Shinjiro's bond keeps its `until`: he doesn't fight again, whatever his rank.
+   - The links that go to rank 15 (2026-10-21) and still fight (Akihiko, Haechan, Jungwon; Jihoon and Minji since 2026-10-22)
+     have a third tier at rank 15, and a romance version of it (`love15`). Shinjiro's bond keeps its `until`: he doesn't fight again, whatever his rank.
    - Usable when Solar and the partner are both in the party, conscious and able to act. Either of them can start it from
      their own turn (menu: Bond).
    - Cost: both pay `sp`, and it takes both their turns (whoever didn't start it loses their next one). Once per battle each.
@@ -89,17 +89,25 @@ window.FemcBonds = (() => {
         { rank: 5, name: 'Star Power', sp: 14, target: 'all', steps: [P('wind', 46), S('almighty', 40)], after: { buffs: ['atk'] },
           line: ['Behold. Me. And Sol.', 'Mostly Sol.'], desc: 'Dokkaebi’s gale and Nike’s star on every foe; the party’s attack rises.' },
         { rank: 9, name: 'Supernova', sp: 18, target: 'all', steps: [P('wind', 60), S('almighty', 56)], after: { buffs: ['atk', 'def'] },
-          line: ['Everybody watch. Everybody.', 'They’re watching, Jihoon.'], desc: 'A bigger gale and a brighter star; the party’s attack and defense rise.' }],
+          line: ['Everybody watch. Everybody.', 'They’re watching, Jihoon.'], desc: 'A bigger gale and a brighter star; the party’s attack and defense rise.' },
+        { rank: 15, name: 'Main Event', sp: 20, target: 'all', steps: [P('wind', 70), S('almighty', 64)], after: { buffs: ['atk', 'def', 'agi'] },
+          line: ['Number one. Say it.', 'Number one. Now hit it.'], desc: 'The biggest gale and the brightest star on every foe; the party’s attack, defense and agility rise.' }],
       love: { rank: 9, name: 'Royal Pair', sp: 18, target: 'all', steps: [P('wind', 66), S('almighty', 64)], after: { buffs: ['atk', 'def', 'agi'], th: 10 },
-        line: ['Bow, peasants. To both of us.', 'Do NOT include me in this.'], desc: 'Their own combination. Wind and star on every foe; the party’s attack, defense and agility rise, and both Theurgy gauges fill a little.' } },
+        line: ['Bow, peasants. To both of us.', 'Do NOT include me in this.'], desc: 'Their own combination. Wind and star on every foe; the party’s attack, defense and agility rise, and both Theurgy gauges fill a little.' },
+      love15: { rank: 15, name: 'Coronation', sp: 20, target: 'all', steps: [P('wind', 74), S('almighty', 72)], after: { buffs: ['atk', 'def', 'agi'], th: 15 },
+        line: ['Crown’s heavy. Hold the other side.', 'Together, then. Show-off.'], desc: 'Their own combination, all the way: wind and star on every foe; the party’s attack, defense and agility rise, and both Theurgy gauges fill.' } },
     { id: 'minji', partner: 'minji', romance: true, loveFace: 'flustered', img: BA('bond-minji'), focus: [51, 23], look: ['light', 'sun'], colors: ['#ff4f9e', '#ffe6a8'],
       tiers: [
         { rank: 5, name: 'Two-Shot', sp: 12, target: 'one', steps: [P('pierce', 34, { multi: [2, 2], crit: 10 }), S('light', 60)],
           line: ['I’ve got you in frame.', 'Then roll.'], desc: 'Two arrows from Theia and Solar’s light, all on one foe.' },
         { rank: 9, name: 'Long Take', sp: 16, target: 'one', steps: [P('pierce', 40, { multi: [3, 3], crit: 12 }), S('light', 80)], after: { heal: 0.15 },
-          line: ['Don’t cut. Keep going.', 'I wasn’t going to.'], desc: 'Three arrows and a heavy sunrise on one foe; the party heals a little.' }],
+          line: ['Don’t cut. Keep going.', 'I wasn’t going to.'], desc: 'Three arrows and a heavy sunrise on one foe; the party heals a little.' },
+        { rank: 15, name: 'Wide Release', sp: 18, target: 'one', steps: [P('pierce', 44, { multi: [3, 4], crit: 15 }), S('light', 96, { down: 0.5 })], after: { heal: 0.2 },
+          line: ['Everybody’s going to see this one.', 'Then make it good.'], desc: 'Up to four arrows and the full sunrise on one foe; the party heals.' }],
       love: { rank: 9, name: 'Keep This One', sp: 16, target: 'one', steps: [P('pierce', 42, { multi: [3, 3], crit: 15 }), S('light', 90, { down: 0.5 })], after: { heal: 0.2, buffs: ['agi'] },
-        line: ['Hold still. The light’s good.', 'Take the shot.'], desc: 'Their own combination. Three arrows and the sun on one foe; the party heals and gets faster.' } },
+        line: ['Hold still. The light’s good.', 'Take the shot.'], desc: 'Their own combination. Three arrows and the sun on one foe; the party heals and gets faster.' },
+      love15: { rank: 15, name: 'Last Frame', sp: 18, target: 'one', steps: [P('pierce', 46, { multi: [3, 4], crit: 18 }), S('light', 104, { down: 0.6 })], after: { heal: 0.25, buffs: ['agi', 'atk'] },
+        line: ['Last take. Don’t look at the camera.', 'I’m looking at you.'], desc: 'Their own combination, all the way: arrows and the sun on one foe; the party heals and gets faster and stronger.' } },
     // ── Friendships: the S.E.E.S. members who fight
     { id: 'yukari', partner: 'yukari', look: ['wind', 'sun'], colors: ['#ff4f9e', '#ff8cc0'],
       tiers: [

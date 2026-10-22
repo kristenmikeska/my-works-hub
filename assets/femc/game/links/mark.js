@@ -25,10 +25,19 @@
      (r9; r10 and afterMax payoffs).
    Route awareness (ranks 8 and 10, afterMax): route-R or route-true sets mark-home ("she's coming home"), any other route sets
    mark-away. Each of those scenes sets them itself at the top, so they never depend on another file.
-   Rank 10 opens on 1/18, leaving six available evenings for all six after-MAX scenes before the finale. */
+   Rank 10 opens on 1/18, leaving six available evenings for all six after-MAX scenes before the finale.
+   Ranks 11-15 (maxRank 15; meter ranks, 2026-10-22 batch), evenings at his usual spots: 2/5 the station concourse (the
+   seagull piano's retirement notice and his month of requests), 2/12 the back streets (Valentine's windows, the scarf),
+   2/19 the Kirijo guesthouse kitchen (the cook's soft rice), 2/24 the dorm front steps (the first stair; a borrowed guitar,
+   with a nod to Haechan's 2/23 rank gated on ifEvent 'a4-mark' + ifRank haechan 14), 3/1 the concourse (the title). The
+   route is locked by then: each rank has one key passage branched by heading (H / S / R / stay / true; the final else is
+   true). He's a friendship link, so there's no romance branch. Every path's best answers total 12 notes (four choices of
+   3). No new flags. stretchHangouts: three February hangouts for a meter a rank scene didn't fill. Living content (afterRank
+   11-15 texts, a morning routine, a late-night call): data/living-r15-mark.js. The existing afterMax plays between rank 10
+   and rank 11 and again after 15, unchanged. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'mark', name: 'Mark Lee', short: 'Mark', arcana: 'Magician', numeral: '', from: 'Runners',
-  kind: 'searcher', world: 'R', romance: null,
+  kind: 'searcher', world: 'R', romance: null, maxRank: 15,
   starts: '11/18', gate: { R: 7 },
   home: { area: 'portisland', spot: 'Central Concourse', slot: 'evening', days: [1, 3, 5, 6],
           hint: 'Evenings at Port Island Station, at the public piano with the seagulls painted on it.' },
@@ -165,6 +174,58 @@
         { t: "Give it to the bad band.", notes: 3, then: [
           { s: 'mark', f: 'surprised', t: "...Oh, that's good. That's so good. They need a cymbal." },
           { n: "He tipped the whole thing back into a paper envelope from the bakery and wrote FOR THE CYMBAL on it in his neat capitals, and was, she could tell, already looking forward to their faces." }
+        ] }
+      ] }
+    ]
+  ],
+  stretchHangouts: [
+    [
+      { n: "The bad band was back outside the station, the four boys in matching windbreakers, and they had a cymbal now. A real one, brass, slightly dented, on a stand held together at the bottom with tape, and the drummer hit it at every possible opportunity and several impossible ones, and Mark stood at the front of their tiny February crowd with his hands in his sweatshirt pocket looking as proud as a parent at a recital." },
+      { s: 'mark', f: 'neutral', t: "They bought it. With the envelope. The bassist told me. He said a girl gave it to them. I said I know the girl." },
+      { s: 'mark', f: 'flustered', t: "He's still half a step flat. I'm never telling him. It's his sound now." },
+      { choose: [
+        { t: "(Request a song. Write it on a napkin and drop it in their case.)", notes: 3, then: [
+          { n: "She wrote *anything with the cymbal* on a napkin from the bakery and dropped it in, and the drummer read it, and looked at her, and nodded with the grave understanding of a professional who'd finally been asked for the thing he did best." },
+          { s: 'mark', f: 'neutral', t: "Oh, you've ruined them. You've made them unstoppable. I'm writing that down. That's going on the list." }
+        ] },
+        { t: "They're actually getting better.", notes: 2, then: [
+          { s: 'mark', f: 'surprised', t: "Don't. Don't say that. If they get good I lose my favorite band." }
+        ] },
+        { t: "It's freezing, Marky. Can we go in?", notes: 1, then: [
+          { s: 'mark', f: 'neutral', t: "One more song. One. For the cymbal. Okay, two." }
+        ] }
+      ] }
+    ],
+    [
+      { n: "Somebody had requested a song Mark didn't know. A man in a heavy coat, older, who'd asked for it by humming two bars at the piano and then gone to stand by the pillar to wait, as if he'd ordered something at a counter, and Mark was sitting at the keys trying to find the third bar with the expression of a man defusing something." },
+      { s: 'mark', f: 'flustered', t: "It goes up. Then it does a thing. I don't know what the thing is. He's waiting, Sol. He's just standing there. He believes in me. It's horrible." },
+      { choose: [
+        { t: "(Hum the two bars back, slowly, and let your voice find the third.)", notes: 3, then: [
+          { n: "She hummed them, slow, and the third bar came out of her the way the fifth note had in November, from somewhere she hadn't known she was keeping it, and Mark's hands caught it a beat behind her and played it through, and the man by the pillar closed his eyes." },
+          { s: 'mark', f: 'surprised', t: "...How. How do you keep doing that." }
+        ] },
+        { t: "Play the shape. He'll hear what he wants.", notes: 2, then: [
+          { n: "He played the shape, and made up the middle, and the man by the pillar listened all the way through and nodded at the end, satisfied, and went for his train, and Mark wrote him down as *a man in a coat, a song he knew better than me.*" }
+        ] },
+        { t: "Ask him the name.", notes: 1, then: [
+          { s: 'mark', f: 'neutral', t: "I did. He said I'd know it. I don't know it. That's the worst answer. That's the answer I give people." }
+        ] }
+      ] }
+    ],
+    [
+      { n: "At five to eight the woman from the bakery came out from behind her counter with her perm like a cloud and her face like a shut door, and handed Mark a paper bag without a word, and went back in. He opened it. There were three sweet breads in it instead of two." },
+      { s: 'mark', f: 'surprised', t: "Three. There's three. She's never done three. That's a whole new number." },
+      { s: 'mark', f: 'neutral', t: "...I think one's for you. I think she's decided you're a regular. That's huge. That took me a month." },
+      { choose: [
+        { t: "(Go and knock on the shutter. Thank her.)", notes: 3, then: [
+          { n: "The shutter came up a foot. A pair of slippers, and then the perm, bending down to look at who it was. Solar thanked her, and bowed. The baker looked at her for a long moment and said it was nobody's business, and the shutter came down again." },
+          { s: 'mark', f: 'neutral', t: "That's the nicest thing she's ever said to anybody. I'm so jealous. I'm so proud of you." }
+        ] },
+        { t: "(Split the third one with him.)", notes: 2, then: [
+          { n: "She broke it in half, unevenly, and gave him the bigger half without thinking, and he took it, this time, without looking at it like a receipt. He just ate it." }
+        ] },
+        { t: "She probably miscounted.", notes: 1, then: [
+          { s: 'mark', f: 'neutral', t: "She doesn't miscount. Nobody at this station miscounts. That's why I like it here." }
         ] }
       ] }
     ]
@@ -847,6 +908,679 @@
         { from: 'mark', t: "u get back ok?" }
       ], contact: 'markylee' },
       { n: "She looked at it for a long time. Then she typed *i got back,* the way she must have a hundred times, and this time she knew exactly whose sentence it was." }
+    ] },
+
+    { after: '2/5', title: '11: retired', place: 'Port Island Station · Central Concourse', time: 'Evening', music: 'tender', scene: [
+      { n: "February had got into the station the way it got into everything that month, under the doors and up through the soles of everybody's shoes, and the concourse at six smelled of wet wool and the oden pot at the kiosk and the last sweet bread from the bakery by the east gate, and the seagull piano had a piece of paper taped to its lid." },
+      { n: "It was printed, official, polite in the way only notices are polite. The piano, donated to the station some years ago by a local business, would be retired on March the eighth for the spring renovation, and the station thanked everyone who had played it. Somebody had already given one of the painted seagulls a frown in blue ballpoint. Mark was on the bench beside it with his arms crossed, glaring at the paper like it had said something about his mother." },
+      { s: 'mark', f: 'serious', t: "March eighth. They put a date on it. Like it's a person." },
+      { s: 'mark', f: 'flustered', t: "I asked the station guy. The nice one, not the one who pretends he doesn't like it. He said it's going to a school. In the mountains somewhere. He said it like it was good news." },
+      { choose: [
+        { t: "That is good news. Kids will play it.", notes: 3, then: [
+          { s: 'mark', f: 'neutral', t: "...Yeah. Kids. Playing the three songs kids play. Badly. Forever." },
+          { n: "He thought about it. She watched him think about it, his face giving by about one degree at a time, like ice on a step in the sun." },
+          { s: 'mark', f: 'neutral', t: "That's kind of the best thing that could happen to a piano, actually. Don't tell anybody I said that. I'm committed to being upset." }
+        ] },
+        { t: "(Sit down next to him and glare at the paper too.)", notes: 3, then: [
+          { n: "She sat, and crossed her arms, and glared. He looked at her sideways, and then at the paper, and laughed through his nose, and the two of them glared at the notice together until a man in a station uniform passing with a clipboard gave them a very wide berth." }
+        ] },
+        { t: "It's a piano, Marky.", notes: 2, then: [
+          { s: 'mark', f: 'sad', t: "It's not a piano. It's the piano. It's the first thing here that—" },
+          { s: 'mark', f: 'neutral', t: "...Okay. It's a piano. It's a piano I have feelings about." }
+        ] }
+      ] },
+      { n: "He had a notebook open on his knee, the staff-paper one, turned sideways, and down the first page in his neat small capitals he'd ruled a column for the date and a column for the song and a column for who'd asked, and at the top, underlined twice, REQUESTS." },
+      { s: 'mark', f: 'neutral', t: "One month. Anybody asks for anything, I play it, I write it down. Even if I don't know it. Especially if I don't know it. This piano's going to leave with a setlist. Like a résumé. *Played the cat song four hundred times. References available.*" },
+      { n: "It was counting. It was the thing he did with coins and lamps and steps between the station and her door, the thing he'd told her once, on a rainy night, made sure nothing could ever surprise him. And it was, she thought, watching him rule a straight line down the page with the side of a ticket, the kindest use she'd ever seen anybody put it to." },
+      { choose: [
+        { t: "Put Mrs. Hamada's song on it. Whatever she hums on her rounds.", notes: 3, then: [
+          { s: 'mark', f: 'neutral', t: "Which Mrs. Hamada? The bread one or the mop one?" },
+          { s: 'mark', f: 'neutral', t: "...Both. Both Mrs. Hamadas get a line. That's only fair. I'm going to have to find out what the bread one hums. That's going to take courage." }
+        ] },
+        { t: "(Read his column headings out loud, in a newsreader's voice.)", notes: 3, then: [
+          { n: "*Date. Song. Requested by.* She read them like the evening news, gravely, and he went red to the collar, and the boy at the oden kiosk laughed, and Mark bowed to him from the bench as if the laugh had been a request too, and wrote it down." }
+        ] },
+        { t: "You're going to play the cat song four hundred times.", notes: 2, then: [
+          { s: 'mark', f: 'neutral', t: "Four hundred and one. I'm going for a personal best." }
+        ] }
+      ] },
+      { s: 'mark', f: 'neutral', t: "Can I ask you something? You don't have to answer. The song. The crossing. Where does it go, after? After the sixth." },
+      { ifHeading: 'H', then: [
+        { s: 'mark', f: 'neutral', t: "You're going to the one none of us are in. Not me, not Hanni. Hyein made a face when she said it, like somebody stepped on her foot." },
+        { s: 'mark', f: 'sad', t: "I don't know what they listen to there. I don't know if there's even a piano. I keep trying to picture it and it's just a school with a gate and you on the other side of it, and me on this side, playing for nobody." },
+        { choose: [
+          { t: "(Tell him there's a piano in the music room. You're almost sure.)", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "Almost sure. Okay. Almost sure is good. Almost sure is how I wrote the whole thing." },
+            { n: "He wrote it in the margin, small. *a music room (almost sure).* As if it were an address." }
+          ] },
+          { t: "Play it loud enough and maybe I'll hear it.", notes: 3, then: [
+            { s: 'mark', f: 'surprised', t: "..." },
+            { s: 'mark', f: 'neutral', t: "That's not how anything works. I'm going to do it anyway. I'm going to play it so loud they ask me to leave the building." }
+          ] },
+          { t: "I don't know either.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "Yeah. That's fair. We'll not know together. I'm good at that now." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'S', then: [
+        { s: 'mark', f: 'neutral', t: "You're going somewhere with a harbor. That's what everybody says. I'm not in that one. I asked. I'm not in it at all." },
+        { s: 'mark', f: 'flustered', t: "So the crossing stays here. On this piano. And then this piano goes to the mountains. That's so stupid it's almost poetic. I hate that it's almost poetic." },
+        { choose: [
+          { t: "Then some kid in the mountains learns my line.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "...With one finger. Wrong. Forever." },
+            { s: 'mark', f: 'neutral', t: "Yeah. Okay. I'll take that. That's a better ending than most songs get." }
+          ] },
+          { t: "(Take his pen. Write the first request: *the crossing, for a girl at a harbor.*)", notes: 3, then: [
+            { n: "He read it upside down while she was still writing. He didn't say anything. When she gave the pen back he folded the corner of the page down, carefully, the way you'd mark a place you meant to come back to." }
+          ] },
+          { t: "You'll still have it.", notes: 2, then: [
+            { s: 'mark', f: 'sad', t: "I'll have it. You won't. That's the deal, I guess. I didn't get to read the deal." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'R', then: [
+        { s: 'mark', f: 'neutral', t: "Okay, I already know where mine goes. Practice room four. The upright with the sticky D. You'll sit on the radiator, because you always sit on the radiator, and I'll tell you to get off it, and you won't." },
+        { s: 'mark', f: 'serious', t: "And I'll play you the crossing there and nobody else in that whole building is going to know what the middle is. A train. Over water. There's no water like that at home. It's all just lake and snow and people complaining about the lake and the snow." },
+        { choose: [
+          { t: "Save me the radiator.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "Done. It's yours. I'll put a sign on it. People are going to think I've lost it." },
+            { n: "He wrote it in the request column, first line, before any stranger had asked for anything. *Radiator. Sol.* As if it were a song." }
+          ] },
+          { t: "(Hum the crossing. Quietly. So it knows it's going home.)", notes: 3, then: [
+            { n: "She hummed eight bars of it under the noise of the concourse, and nobody heard but him, and he wrote it down as request number one without being asked, and underlined the name next to it twice." }
+          ] },
+          { t: "Will it sound the same there?", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "No. Nothing will. That's okay. It'll sound like it came from somewhere. Most things don't." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'mark', f: 'neutral', t: "And you're staying. Here. With the piano. Except the piano's not. It goes on the eighth. That's two days after we do." },
+        { s: 'mark', f: 'sad', t: "So you're the last one. Whether you mean to be or not. You get the last two days of it, and I get to not know what you play." },
+        { choose: [
+          { t: "I'll play your four notes on the seventh.", notes: 3, then: [
+            { s: 'mark', f: 'surprised', t: "...With one finger? Badly?" },
+            { s: 'solar', f: 'neutral', t: "Badly." },
+            { s: 'mark', f: 'neutral', t: "Perfect. That's exactly how it should end. Don't you dare practice." }
+          ] },
+          { t: "(Write your name at the very bottom of the page. The last request.)", notes: 3, then: [
+            { n: "She wrote it at the foot of the page with nothing above it yet, a whole month of empty lines between his heading and her name, and he looked at the space for a long time, all those requests that hadn't happened, already shaped like a month." }
+          ] },
+          { t: "Will you miss it?", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "Which. The piano or—" },
+            { s: 'mark', f: 'sad', t: "...Yeah. Both. Everything in this building, honestly. Even the bad band." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'mark', f: 'neutral', t: "Everybody says you're coming home. And also not. Fuuka tried to explain it to me with a diagram. I got about half. You're home, and you're everywhere else too, and this—" },
+        { n: "He waved his hand at the concourse, the umbrellas, the oden steam, the seagulls with their one frown." },
+        { s: 'mark', f: 'serious', t: "—goes the way a dream goes when you've been awake for an hour. So I'm writing it down. If it all goes, at least for one month somebody kept the list." },
+        { choose: [
+          { t: "Then write fast.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "Yeah. Okay. Yeah." },
+            { n: "He wrote the date at the top of the page so hard the pen went through to the next one, and she thought that was probably the point." }
+          ] },
+          { t: "(Take his pen. Write the first request in your own hand.)", notes: 3, then: [
+            { n: "She wrote *the four notes* and her name beside it, in a handwriting that wasn't quite the one she'd had in April, and he looked at it like it might fade while he watched, and then, when it didn't, he laughed." }
+          ] },
+          { t: "Will you remember it?", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "I don't know. Will you?" },
+            { s: 'mark', f: 'neutral', t: "...Let's just play it a lot. Let's play it so much it sticks to something." }
+          ] }
+        ] }
+      ] }] }] }] },
+      { n: "He played the first request then, whatever was at the top of the page, and a woman with a shopping bag stopped to listen, and then a boy in a Port Island school blazer who asked, shyly, at the end, for the cat song, and Mark wrote him down too, with the date and a small drawing of a cat, as solemn as a clerk at a counter." },
+      { n: "When the chime went for the 6:40 he looked up at the board like a teacher had caught him passing notes, and then at her, and rubbed the back of his neck." },
+      { s: 'mark', f: 'neutral', t: "Same time Monday? I mean. Whenever. No pressure. Like negative pressure." },
+      { choose: [
+        { t: "Monday. Write it down.", notes: 3, then: [
+          { n: "He wrote it under the tally, *MON. SOL,* and after a second drew a very small sun next to it, the kind children draw, with the lines coming off it all the way round, and then pretended he hadn't." }
+        ] },
+        { t: "(Take his pen and give the frowning seagull a smile.)", notes: 3, then: [
+          { s: 'mark', f: 'surprised', t: "That's vandalism. Sol. That's public property." },
+          { n: "But he was grinning, and when the man with the clipboard came back past he stood up in front of the seagull with his hands behind his back, whistling, terribly, which was the most suspicious thing she'd ever seen a person do." }
+        ] },
+        { t: "Maybe.", notes: 2, then: [
+          { s: 'mark', f: 'neutral', t: "Maybe's good. Maybe's a whole note. I can hold a maybe for ages." }
+        ] }
+      ] }
+    ] },
+
+    { after: '2/12', title: '12: two suns', place: 'Port Island · Back Streets', time: 'Evening', music: 'night', scene: [
+      { n: "Two days before Valentine's the back streets behind the station had gone pink and red in every window that could manage it, the bakery, the dry cleaner's, the convenience store on its corner glowing like a fish tank with a pyramid of heart-shaped boxes stacked by the door, and the wind off the bay came between the buildings and went down her collar like it had a key." },
+      { s: 'mark', f: 'neutral', t: "Bodyguard Mark Lee, reporting for—" },
+      { s: 'solar', f: 'neutral', t: "Ugh." },
+      { s: 'mark', f: 'neutral', t: "There it is. You don't even think about it now. It just comes out of you. I love that for me." },
+      { n: "He stopped in front of the convenience store window and looked at the pyramid of boxes with the critical squint of a man judging a talent show." },
+      { s: 'mark', f: 'neutral', t: "So. Sunday. Hanni explained the whole thing to me with a diagram. There's the real kind and the friend kind and the kind you give your boss, which is insane." },
+      { s: 'mark', f: 'neutral', t: "You don't have to tell me who's getting the real kind. I've got a guess. I've had a guess since Halloween. Before Halloween, honestly. I'm not as dumb as I let people think, it's just restful." },
+      { choose: [
+        { t: "You don't get to guess.", notes: 3, then: [
+          { s: 'mark', f: 'neutral', t: "Guessing's free, Sol. Guessing's the only free thing I've got here." },
+          { n: "He said it lightly. He didn't say the name, again, and she watched him not say it, the same easy step around it he'd taken on the very first night, except that now she knew exactly what he was stepping around, and so did he, and neither of them looked down." }
+        ] },
+        { t: "(Go in. Buy him one of the friend kind.)", notes: 3, then: [
+          { n: "She came out with a small square box, the cheapest kind, a cartoon bear on the lid, the kind girls handed out by the dozen to a whole class. He held it for one second the way you'd hold the other kind, and she watched him decide, deliberately, not to." },
+          { s: 'mark', f: 'neutral', t: "Friend chocolate. Okay. I know what that is. There was a diagram." },
+          { s: 'mark', f: 'neutral', t: "...Thanks, Sol. Really." }
+        ] },
+        { t: "Maybe nobody.", notes: 2, then: [
+          { s: 'mark', f: 'neutral', t: "Okay. Sure. Nobody. Nobody's going to be really happy on Sunday." }
+        ] }
+      ] },
+      { n: "They walked. Somewhere between the store and the corner with the cat on the wall he pulled his hands out of his sweatshirt pocket and blew on them, and the cold made his knuckles go red, and she watched his hands, and something came loose." },
+      { n: "A Saturday. November, at home, a different cold, drier, with leaves in it. A ramen place with fogged-up windows. His hands at her throat, tying something navy around her neck, badly, crooked, while she told him it was crooked and he told her that was the style, two little gold suns stitched into the end of it, and the whole of that day had been good. She remembered that it had been good. It had been easy in the way nothing else that month had been easy." },
+      { n: "And at the end of it she had taken his hand. She remembered that too, the cold of his fingers and how surprised they'd been. She remembered, a little further off, behind a kind of frosted glass, that there had been a reason, and that the reason had not been entirely him." },
+      { s: 'mark', f: 'neutral', t: "You're doing the face. The remembering face. Which part?" },
+      { s: 'solar', f: 'neutral', t: "The scarf. The Saturday." },
+      { s: 'mark', f: 'surprised', t: "..." },
+      { s: 'mark', f: 'flustered', t: "Oh. Okay. Yeah. That was— you took my hand. At the end. I've thought about that like, every day. Is that weird? That's a little weird. I've never asked you about it. I didn't want to ask in case the answer was something else." },
+      { choose: [
+        { t: "It was a good day, Marky.", notes: 3, then: [
+          { n: "It was true. It was the truest thing she had that she could give him whole, without the rest of it attached, and she gave it to him, and watched him take it, carefully, like a man handed something warm in a cold street." },
+          { s: 'mark', f: 'neutral', t: "...It was. It was the best one." }
+        ] },
+        { t: "(Take his hand now. Here. For no reason at all.)", notes: 3, then: [
+          { n: "She took it. There was nobody across any street this time, nobody to see it, nobody it was for, and his fingers were cold and surprised exactly the way they'd been in November, and he looked down at their hands like a sum that had come out different from the one he'd done before and he couldn't find where." },
+          { n: "She knew which one this was. He didn't, and wouldn't, and it seemed to her the least she owed him that one of them did." }
+        ] },
+        { t: "Why do you think I did it?", notes: 2, then: [
+          { s: 'mark', f: 'neutral', t: "I don't know. I told you. I didn't ask." },
+          { s: 'mark', f: 'sad', t: "...That's the most me thing I've ever said out loud, huh." }
+        ] }
+      ] },
+      { n: "At the corner he stopped and took a paper bag out from under his arm, a shop bag from the Strip with a cat on the front of it, and held it out, and then, before she could take it, pulled it back an inch." },
+      { s: 'mark', f: 'neutral', t: "Okay. I'm asking first. You told me once I could've just asked. So I'm asking. I looked for one with suns. Every shop on the Strip. Nobody does suns here. They do cats. This one's just navy." },
+      { s: 'mark', f: 'flustered', t: "Do you want it? You can say no. I'll wear it. It'll look stupid on me. I'm prepared for that." },
+      { ifHeading: 'H', then: [
+        { s: 'mark', f: 'neutral', t: "Hanni says the place you're going has a uniform and a no-piercings rule and a whole list of stuff you're not allowed. Is a scarf allowed? Is a scarf a piercing? I don't know anything about that place, Sol. I just want you to be warm in it." },
+        { choose: [
+          { t: "It's allowed. It's navy. It'll go with the blazer.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "See, that's a real answer. I can do something with a real answer." },
+            { n: "He tied it on her. Crooked. He looked at it with deep professional satisfaction and said it was the style there too, now. He'd decided." }
+          ] },
+          { t: "(Let him tie it on you. Crooked. For the walk at least.)", notes: 3, then: [
+            { n: "He tied it badly, with his tongue between his teeth, standing too close and then stepping back too far, the way he always had, and when it was done it sat lopsided under her jaw, and it was warm, and she left it exactly as it was." }
+          ] },
+          { t: "Probably not.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "Then wear it till the gate. Take it off at the gate. That's a compromise. I'm great at compromises." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'S', then: [
+        { s: 'mark', f: 'neutral', t: "You're going somewhere I've never been. And I keep thinking you'll be cold there, which is stupid, you own about forty scarves, Hanni told me, she counted." },
+        { s: 'mark', f: 'sad', t: "So it's not the one. It's from here. It can just be from here. Somebody there can ask you where you got it, and you won't know, and you'll wear it anyway." },
+        { choose: [
+          { t: "Keep it ready. Tie it on me.", notes: 3, then: [
+            { n: "He tied it. Crooked, of course, with his tongue between his teeth, and stepped back to look at it, and she watched him look at her in a scarf that would go somewhere he couldn't, and smile anyway, a real one, a little worn at the edges." }
+          ] },
+          { t: "I'll wear it there. So somebody's warm who doesn't know why.", notes: 3, then: [
+            { s: 'mark', f: 'surprised', t: "..." },
+            { s: 'mark', f: 'neutral', t: "...Yeah. Okay. That's the right reason. That's a better reason than mine." }
+          ] },
+          { t: "I'll lose it, Marky.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "Then lose it somewhere cold. Somewhere it'll be useful to somebody. That's fine with me." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'R', then: [
+        { s: 'mark', f: 'neutral', t: "You've got the real one at home. With the suns. I know. This is a backup. Like a spare key. You don't need it till you do." },
+        { s: 'mark', f: 'neutral', t: "And when we're back I'm going to tie the real one on you again, outside the ramen place, and it's going to be crooked, and you're going to tell me it's crooked." },
+        { choose: [
+          { t: "Tie this one now. Practice.", notes: 3, then: [
+            { n: "He tied it with enormous concentration and got it wrong anyway, the knot sliding round to sit under her ear, and stepped back, and said it was perfect, and she said it was crooked, and he said, *there it is,* like he'd been waiting all month for the line." }
+          ] },
+          { t: "(Take it. Say thanks. Just thanks.)", notes: 3, then: [
+            { s: 'solar', f: 'neutral', t: "Thanks, Marky." },
+            { s: 'mark', f: 'neutral', t: "...See? Easy. No negotiation. Took you long enough." }
+          ] },
+          { t: "I can tie my own scarf.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "I know you can. That was never the point. Okay, it was a little bit the point." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'mark', f: 'neutral', t: "You're staying. So it's going to be cold here another month, and then it isn't. And I won't see it not be." },
+        { s: 'mark', f: 'sad', t: "So wear it till it's warm. Then put it somewhere. I don't need to know where. I just want it to be here when I'm not." },
+        { choose: [
+          { t: "(Let him tie it. Crooked.)", notes: 3, then: [
+            { n: "He tied it badly, with his tongue between his teeth, and stepped back to look, and his face did something she'd seen it do on the first night at the piano, a door opening, except slower now, and staying open a while." }
+          ] },
+          { t: "I'll wear it till it's warm. Then I'll keep it.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "Okay. Okay, good. Keep it somewhere that isn't the back of a drawer. I'm not saying a specific place. Just. Somewhere you'd look." }
+          ] },
+          { t: "You'll need it at the station.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "I've got a sweatshirt. I'm basically a radiator. Take the scarf, Sol." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'mark', f: 'neutral', t: "Everybody keeps saying you'll be home and you won't remember this street. So you'll have the one with the suns, and you won't know about this one." },
+        { s: 'mark', f: 'serious', t: "I want to give it to you anyway. Somebody should know about this one. Even if it's just me." },
+        { choose: [
+          { t: "I'll know. Somewhere.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "...Yeah? Somewhere's fine. Somewhere's a lot. I'll take somewhere." },
+            { n: "He tied it on her, crooked, and didn't step back afterward. He stood there with his hands still on the ends of it a second longer than tying took, and then let go." }
+          ] },
+          { t: "(Let him tie it. Crooked.)", notes: 3, then: [
+            { n: "He tied it badly, with his tongue between his teeth, and told her it was the style, and she told him it was crooked, word for word, two people saying their lines in a play neither of them had written down." }
+          ] },
+          { t: "Then why give it?", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "Because I'll know. That's all. One of us gets to." }
+          ] }
+        ] }
+      ] }] }] }] },
+      { n: "The cat on the wall watched them reach the last corner with the expression of somebody who had seen this exact walk thirty times and was beginning, against its will, to find it moving." },
+      { s: 'mark', f: 'neutral', t: "Text me when you get back. I know. You're right there. Text me anyway." },
+      { choose: [
+        { t: "(Text *i got back* before he's even turned around.)", notes: 3, then: [
+          { n: "His phone went in his pocket while he was still facing her. He took it out and read it and laughed out loud in the empty street, and put it away, and walked off backward for three whole steps, waving, before he turned round." }
+        ] },
+        { t: "Bodyguard Mark Lee, dismissed.", notes: 3, then: [
+          { s: 'mark', f: 'neutral', t: "Dismissed. Wow. Okay. Honorable discharge, though. Right? Tell me it's honorable." },
+          { s: 'solar', f: 'neutral', t: "It's honorable." },
+          { s: 'mark', f: 'neutral', t: "Good. I'm putting it on my résumé. Under the piano's." }
+        ] },
+        { t: "(Wave.)", notes: 2, then: [
+          { n: "She waved. He waved back with his whole arm, the way he always did, like somebody on a pier, until the corner took him." }
+        ] }
+      ] }
+    ] },
+
+    { after: '2/19', title: '13: soft rice', place: 'Kirijo Guesthouse', time: 'Evening', music: 'dorm', scene: [
+      { n: "The Kirijo guesthouse by the station had a lobby like a hotel that had forgotten it was one, all good carpet and nobody at the desk, and past the lobby a kitchen the boys weren't supposed to use after eight, and at a quarter past eight the light was on in it and something was steaming and Mark was standing over the rice cooker with a wooden paddle held in both hands like a man waiting to be knighted." },
+      { s: 'mark', f: 'neutral', t: "Okay. Don't come in loud. It's resting. You have to let it rest. Mrs. Kanda says if you open it early it knows." },
+      { n: "Mrs. Kanda was the guesthouse's cook, a small woman of about seventy with a cardigan buttoned to the neck and a face like a closed purse, and she was sitting on a stool in the corner with a cup of tea, supervising, and when Solar came in she looked her up and down once and went back to her tea, which Solar had a feeling was a compliment." },
+      { s: 'mark', f: 'flustered', t: "I complained about the rice. On the first night. I told you that, right? That it was way too soft. I said it to Fuuka, I said it to Jaehyun, I said it to basically everyone." },
+      { s: 'mark', f: 'serious', t: "So last week I just asked her. Why it's soft. You just ask. And she told me." },
+      { n: "He looked over at the old woman in the corner, who was pretending very thoroughly not to listen, and lowered his voice anyway, as if it were somebody else's secret and he'd only been lent it." },
+      { s: 'mark', f: 'neutral', t: "Every boy they put in here came in at midnight, in the green, sick to his stomach and a long way from home. She makes it soft like you'd make it for somebody who's ill. Like congee, almost. She did it for the first one and then she never stopped. She said, *you were all homesick. You still are.*" },
+      { s: 'mark', f: 'sad', t: "I complained about it for three months, Sol. Out loud. In front of her." },
+      { choose: [
+        { t: "So now you're learning it.", notes: 3, then: [
+          { s: 'mark', f: 'neutral', t: "So now I'm learning it. She let me. She said I talk too much and I measure the water like a scientist, but she let me." },
+          { n: "Mrs. Kanda, from the stool, said something short in a dry voice. Mark translated it with a straight face: she'd said he measured the water like a scientist who'd failed." }
+        ] },
+        { t: "(Look at Mrs. Kanda. Bow to her a little.)", notes: 3, then: [
+          { n: "She bowed, a small one, from the doorway. The old woman looked at her over her tea for a long moment and then inclined her head about a centimeter, which on that face was a parade." }
+        ] },
+        { t: "You didn't know.", notes: 2, then: [
+          { s: 'mark', f: 'neutral', t: "I didn't know. That's never stopped me saying stuff, though, has it." }
+        ] }
+      ] },
+      { n: "The rice cooker clicked over. He opened it. The steam came up into his face and fogged his glasses, which he'd forgotten were pushed up in his hair until they slid down into it, and he stood there blind and pleased while Mrs. Kanda made a sound into her cup that might have been a laugh." },
+      { s: 'mark', f: 'neutral', t: "Okay. You taste first. Then her. Then me. That's the order. She made the order." },
+      { n: "It was soft. It was soft and warm and plain and it tasted like being looked after by somebody who didn't need you to say thank you, and she stood in the kitchen of a building she didn't live in and held the bowl with both hands." },
+      { s: 'mark', f: 'neutral', t: "And I'm asking. Like Hanni said once. Not what you used to like. What you like now. Here." },
+      { choose: [
+        { t: "Hot milk tea from the machine at your station.", notes: 3, then: [
+          { s: 'mark', f: 'surprised', t: "Mine? The one I— okay." },
+          { s: 'mark', f: 'neutral', t: "That's not even a real answer. That's just me. You just said me with extra steps." },
+          { n: "He went red to the ears anyway, and wrote it down, on the back of a guesthouse menu, in his neat capitals. *Milk tea (my station).*" }
+        ] },
+        { t: "This. Soft rice, in a kitchen I don't live in.", notes: 3, then: [
+          { n: "He looked at her over the steam for a while without saying anything. Then he looked at Mrs. Kanda, who had stopped pretending not to listen, and who said one word to him, quietly, and went back to her tea." },
+          { s: 'mark', f: 'neutral', t: "She said *good.* That's two goods I've had in this world. One from your boxer and one from her." }
+        ] },
+        { t: "I don't know yet.", notes: 2, then: [
+          { s: 'mark', f: 'neutral', t: "That's okay. That's still the most you answer of all time. I've got a list going. It's mostly question marks." }
+        ] }
+      ] },
+      { s: 'mark', f: 'neutral', t: "I'm going to make it at home. That's the plan. Like the song. Something from here that comes with me." },
+      { ifHeading: 'H', then: [
+        { s: 'mark', f: 'serious', t: "Hanni says the kids at the place you're going skip lunch to study. Like, as a culture. ...Eat lunch, Sol. I'm serious. Find somebody who makes you rice. Make them make it soft on the bad days." },
+        { choose: [
+          { t: "Someone there already nags me about it.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "Good. Whoever it is, I like them. Tell them a guy from a guesthouse says hi and to use less water." }
+          ] },
+          { t: "(Promise. Pinky. Over the rice cooker.)", notes: 3, then: [
+            { n: "He hooked his little finger round hers over the steaming cooker with total solemnity, and Mrs. Kanda, in the corner, said something that Mark refused to translate, and went pink, and so did he." }
+          ] },
+          { t: "I'll try.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "Trying's fine. Trying's how I learned the water." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'S', then: [
+        { s: 'mark', f: 'neutral', t: "Where you're going, somebody else makes the rice. Probably somebody really good. Probably in a house with, like, staff. Fuuka said *the Lee house* and I pictured a castle." },
+        { s: 'mark', f: 'sad', t: "I hope they make it soft. On the bad days. I hope somebody in the castle knows to." },
+        { choose: [
+          { t: "Teach me. Then somebody will.", notes: 3, then: [
+            { n: "He taught her the water. The line on your knuckle, the way Mrs. Kanda did it, not the scientist's way, and Solar did it twice, wrong and then right, and the old woman watched her hand and nodded once, and Mark looked at the two of them with something on his face she didn't have a word for." }
+          ] },
+          { t: "(Eat the rest of the bowl. Slowly.)", notes: 3, then: [
+            { n: "She ate all of it, slowly, at the counter, with the steam on the windows and the old woman's tea gone cold, and he didn't say anything the whole time, which for him was a speech." }
+          ] },
+          { t: "I'll be fine.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "I know. You always are. That's kind of the problem with you." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'R', then: [
+        { s: 'mark', f: 'neutral', t: "In the house kitchen. At one in the morning. Ten guys wandering in, stealing half. Jeno's going to put hot sauce on it, I can already feel it." },
+        { s: 'mark', f: 'neutral', t: "And you're going to come over and complain it's too soft, and I'm going to tell you why, and you're not going to believe me." },
+        { choose: [
+          { t: "I'll believe you.", notes: 3, then: [
+            { s: 'mark', f: 'surprised', t: "..." },
+            { s: 'mark', f: 'neutral', t: "...Yeah? Okay. Write that down somewhere. I want proof." }
+          ] },
+          { t: "(Write *SOL'S* on a sticky note and put it on the rice cooker. Practice.)", notes: 3, then: [
+            { n: "He looked at the note. Mrs. Kanda looked at the note. The old woman got up off her stool, took it off her rice cooker, folded it in half, and handed it back to Solar without a word, and Mark laughed so hard he had to sit down on the floor." }
+          ] },
+          { t: "Jeno will ruin it.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "Jeno ruins everything. It's his whole thing. I'll hide a bowl." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'mark', f: 'neutral', t: "You've got a whole kitchen of people here. Koromaru gets more rice than me. You're going to be fine." },
+        { s: 'mark', f: 'sad', t: "I'm the one who's going to be— no. I'll be fine too. I'll make it badly at home and think about this kitchen. That's allowed." },
+        { choose: [
+          { t: "Make it badly on purpose. So it's yours.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "...Okay. Too much water. Every time. My signature." },
+            { n: "Mrs. Kanda, who had understood more of that than she'd let on, made a small offended noise, and he apologized to her very seriously, in two languages, both badly." }
+          ] },
+          { t: "(Ask Mrs. Kanda to write the measurements down for him.)", notes: 3, then: [
+            { n: "The old woman took the menu out of his hand, and the pen, and wrote three lines on the back in a quick, cramped hand, and gave it back to him, and he held it like sheet music he'd been waiting years to be allowed to see." }
+          ] },
+          { t: "You'll forget how.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "I won't. I counted. I always count." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'mark', f: 'neutral', t: "If you're home and you don't remember any of this, I'm going to make it for you anyway. Soft. And you're going to say it's too soft." },
+        { s: 'mark', f: 'serious', t: "And I'm going to know something you don't. Just for one bowl. Then I'll tell you. Or I won't. I haven't decided." },
+        { choose: [
+          { t: "Tell me.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "...Okay. I'll tell you. You won't believe me. I'll tell you anyway." }
+          ] },
+          { t: "(Eat the rest of the bowl so this one's on record.)", notes: 3, then: [
+            { n: "She finished it, every grain, and put the bowl down on the counter with a small click, like a full stop, and he looked at the empty bowl as if it were the date on a page." }
+          ] },
+          { t: "Maybe I'll remember.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "Maybe. I'd like that. I'm not counting on it. That's new for me, not counting on something." }
+          ] }
+        ] }
+      ] }] }] }] },
+      { ifMet: ['jaehyun'], then: [
+        { n: "The kitchen door opened. Jaehyun, in a quarter-zip, back from wherever Jaehyun went in the evenings, stopped in the doorway and looked at the rice cooker, and at Mark, and at Solar with a bowl in her hands, and his face did what it always did, which was finish thinking before anyone else had started." },
+        { s: 'mark', f: 'flustered', t: "Hey, man. It's— there's rice. If you want. It's soft. On purpose." },
+        { n: "Jaehyun took a bowl down from the shelf. Mrs. Kanda filled it. He ate it standing at the counter, the whole thing, without a word, and rinsed the bowl, and put it in the rack, and on his way out he stopped beside Mark for a second." },
+        { s: 'jaehyun', f: 'neutral', t: "Thanks." },
+        { n: "And went. Mark stood with the paddle in his hand looking at the doorway." },
+        { s: 'mark', f: 'surprised', t: "...He's never said that to me. Two years. Not once." }
+      ], else: [
+        { n: "Upstairs somebody turned on a television too loud and somebody else banged on a wall about it, and the guesthouse settled around them, warm and humming, a building full of people a long way from home who'd been fed." }
+      ] },
+      { choose: [
+        { t: "(Hold out your bowl. Seconds.)", notes: 3, then: [
+          { n: "He filled it before Mrs. Kanda could, and she let him, which Solar suspected was the first time she'd let anyone touch her paddle in thirty years, and he knew it too, and served the rice like it was a coronation." }
+        ] },
+        { t: "You're good at this, Marky.", notes: 3, then: [
+          { s: 'mark', f: 'neutral', t: "I'm good at asking. The rest is her." },
+          { s: 'mark', f: 'neutral', t: "...I'm a little good at it. Don't tell her I said that." }
+        ] },
+        { t: "(Help wash up.)", notes: 2, then: [
+          { n: "She washed and he dried and Mrs. Kanda put everything back exactly one centimeter from where they'd put it, and nobody said anything, and it was nice." }
+        ] }
+      ] }
+    ] },
+
+    { after: '2/24', title: '14: the first stair', place: 'Iwatodai Dorm · Front', time: 'Night', music: 'night', scene: [
+      { n: "He was at the bottom of the dorm steps when she came back from the station, standing where he always stood, a full step before the first stair, like there was a line painted there only he could see. It was cold enough that the streetlight had a ring round it. He had a guitar case leaning against his leg." },
+      { ifEvent: 'a4-mark', then: [{ ifRank: { haechan: 14 }, then: [
+        { s: 'mark', f: 'flustered', t: "Hey. Okay. Favor. This is the music room's guitar. From your school. I borrowed it for Minji's thing. I said I'd bring it back before anybody noticed, which means after, and I can't get in, I don't go there, I'd get arrested by your student council." },
+        { s: 'mark', f: 'neutral', t: "Also. Last night. He told me my G was flat. In front of everyone. On the floor." },
+        { n: "He said it to the guitar case. He said it like a man reporting the weather in a town he used to live in." },
+        { s: 'mark', f: 'neutral', t: "He's right. It's been flat since eighth grade. He's been not telling me for six years. I tuned it. He nodded." },
+        { s: 'mark', f: 'sad', t: "...That's the most we've said to each other since November. A G. And a nod." }
+      ], else: [
+        { s: 'mark', f: 'flustered', t: "Hey. Okay. Favor. It's a guitar. It's a long story. It's not a long story, I borrowed it and I need it to go back to a building I'm not allowed in. You're allowed in. You're very allowed in." }
+      ] }], else: [
+        { s: 'mark', f: 'flustered', t: "Hey. Okay. Favor. It's a guitar. It's a long story. It's not a long story, I borrowed it and I need it to go back to a building I'm not allowed in. You're allowed in. You're very allowed in." }
+      ] },
+      { n: "She took the case. He let go of it the way you let go of a handrail on a train, a second after you're sure. Then, instead of saying goodnight, instead of turning back toward the station with his hands in his sweatshirt, he looked at the steps." },
+      { n: "He sat down on the bottom one." },
+      { n: "It was so ordinary a thing, a boy sitting on a step, that she nearly didn't see it for what it was. Three months of stopping at the line. He'd sat down on the other side of it like it had never been there, and then looked up at her, quick, to see whether she'd noticed, and she had." },
+      { s: 'mark', f: 'neutral', t: "Don't make it a thing." },
+      { choose: [
+        { t: "(Sit down next to him. Make it a thing.)", notes: 3, then: [
+          { n: "She sat on the cold step beside him with the guitar case across both their knees like a bench in a park, and he looked at the street and laughed under his breath, and didn't move over, and neither did she." }
+        ] },
+        { t: "It's a thing.", notes: 3, then: [
+          { s: 'mark', f: 'flustered', t: "It's not a thing. It's a step. It's a normal step. I've sat on a million steps." },
+          { s: 'mark', f: 'neutral', t: "...It's a little bit a thing." }
+        ] },
+        { t: "(Say nothing.)", notes: 2, then: [
+          { n: "She said nothing about it. He seemed grateful, and then, a minute later, a little sorry she hadn't." }
+        ] }
+      ] },
+      { s: 'mark', f: 'serious', t: "Can I say something? And you won't get weird?" },
+      { s: 'mark', f: 'neutral', t: "I know. About you and him. I've known a long time. Longer than you think. I told you I had a guess. It was never really a guess." },
+      { s: 'mark', f: 'sad', t: "I'm not going to say anything about it. That's the thing I wanted to say. That I'm not going to say anything. I used to think I'd have a lot to say." },
+      { choose: [
+        { t: "I know you're not stupid, Marky.", notes: 3, then: [
+          { s: 'mark', f: 'neutral', t: "...Yeah. You always did. That was always the worst part about you." }
+        ] },
+        { t: "(Don't confirm it. Don't deny it.)", notes: 3, then: [
+          { n: "She looked at the street. He looked at the street. Somewhere above them a window was open a crack and somebody inside was listening to music with the bass turned up too far, and neither of them looked up at it." }
+        ] },
+        { t: "Known what?", notes: 2, then: [
+          { s: 'mark', f: 'neutral', t: "Okay. Sure. Known nothing. I'm the most normal guy on these steps." }
+        ] }
+      ] },
+      { ifHeading: 'H', then: [
+        { s: 'mark', f: 'neutral', t: "You're going where he isn't. Where I'm not. Where none of us are. And he knows. I watched him know it. He's being so normal about it it's actually scary. I've known him since we were kids and I've never seen him that normal." },
+        { s: 'mark', f: 'serious', t: "So I've got one thing. One thing that's mine to say. ...You picked yours. Nobody picked it for you. I want somebody to say that out loud before we all go. So, there. Somebody did." },
+        { choose: [
+          { t: "Thank you.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "Don't thank me. I've done the opposite of that my whole life. I'm trying it out." }
+          ] },
+          { t: "(Lean your shoulder into his. Just for a second.)", notes: 3, then: [
+            { n: "She leaned. He went still, the good still, and let her, and then leaned back by about the same amount, as if they were weighing the step between them and wanted it to come out level." }
+          ] },
+          { t: "Will he be okay?", notes: 2, then: [
+            { s: 'mark', f: 'sad', t: "I don't know. I'll be on the same train as him. I'll find out. I'm not going to ask him. I'll just be there." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'S', then: [
+        { s: 'mark', f: 'neutral', t: "He's going to the other one with you. The harbor one. He's going to be somebody there I've never met. That's so weird. I've known him since we were kids and there's a whole him I've never met." },
+        { s: 'mark', f: 'serious', t: "So I've got one thing. One thing that's mine to say. ...Tell that one hi. From me. He won't know who it's from. Tell him anyway." },
+        { choose: [
+          { t: "I'll tell him.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "Okay. Good. He'll say *who.* That's fine. That's honestly the best case." }
+          ] },
+          { t: "(Lean your shoulder into his. Just for a second.)", notes: 3, then: [
+            { n: "She leaned. He went still, the good still, and let her, and looked up at the window with the music in it for a long time, as if he could hear something in the bass she couldn't." }
+          ] },
+          { t: "You could tell him yourself.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "I could. You know I won't. You always know that about me. It's still very annoying." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'R', then: [
+        { s: 'mark', f: 'neutral', t: "You're both going back. Same place. Same campus. Same everything. People are going to have so many opinions. Everybody's phone is going to be on fire." },
+        { s: 'mark', f: 'serious', t: "I was going to say, be careful with him. I had it ready. I've had it ready for months." },
+        { s: 'mark', f: 'neutral', t: "...No. I'm not saying it. Be careful with you. That's the only one that's mine to say." },
+        { choose: [
+          { t: "I will.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "Okay. Good. I'll be around. Bodyguard Mark Lee. Just, like, in the general area. Not in the way." }
+          ] },
+          { t: "(Lean your shoulder into his. Just for a second.)", notes: 3, then: [
+            { n: "She leaned. He went still, the good still, and let her, and she felt him not say the thing he'd had ready for months, felt it go back into whatever pocket it lived in and stay there." }
+          ] },
+          { t: "What were you going to say about him?", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "Nothing. Something I'd have been saying for me. I'm trying to stop doing that." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'mark', f: 'neutral', t: "And you're staying, and he's not. So we go back, him and me. Same train. I don't know what I'm going to say to him for however many hours that is." },
+        { s: 'mark', f: 'serious', t: "So I've got one thing that's mine to say, and it's to you. ...You're allowed to be happy here. Nobody back home gets a vote. I'll tell them that, if anyone asks. I'll be very annoying about it." },
+        { choose: [
+          { t: "Thank you, Marky.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "Yeah. Don't thank me. Just be happy. That's the whole favor. Well, that and the guitar." }
+          ] },
+          { t: "(Lean your shoulder into his. Just for a second.)", notes: 3, then: [
+            { n: "She leaned. He went still, the good still, and let her, and looked up at the dorm windows, all of them lit, a whole building full of the people she'd chosen, and nodded at them, once, as if introducing himself." }
+          ] },
+          { t: "Say something to him. On the train.", notes: 2, then: [
+            { s: 'mark', f: 'sad', t: "Maybe. I'll say a G. That seems to be where we're at." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'mark', f: 'neutral', t: "Everybody's going everywhere, and he's going to be two people again, and you're going to be three, and I'm going to be one guy. Just one. The most normal one, in the middle of all of you. That's so funny. That's actually so funny." },
+        { s: 'mark', f: 'serious', t: "So I've got one thing that's mine to say, before it all goes wherever it goes. ...I'm glad it was you. On the first day. Under the tree. I'm glad it was you either way." },
+        { choose: [
+          { t: "Me too, Marky.", notes: 3, then: [
+            { s: 'mark', f: 'surprised', t: "..." },
+            { s: 'mark', f: 'neutral', t: "...Okay. Okay, I'm going to sit here a minute. You can go in. Don't go in." }
+          ] },
+          { t: "(Lean your shoulder into his. Just for a second.)", notes: 3, then: [
+            { n: "She leaned. He went still, the good still, and let her, and the two of them sat on a cold step under a ringed streetlight in a world that was, everybody said, going to fold up like a map, and for a minute neither of them counted anything." }
+          ] },
+          { t: "Either way?", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "Either way. Both ways. I told you. That's my whole problem. It's also kind of the nice part." }
+          ] }
+        ] }
+      ] }] }] }] },
+      { n: "He stood up off the step after a while and brushed off the back of his jeans and stood there, on the wrong side of his line, looking at the step like it had done something brave without him." },
+      { s: 'mark', f: 'neutral', t: "Okay. Guitar goes back to the music room. Third shelf. Tell them it's in tune now. Tell them a guy fixed the G. Don't tell them which guy." },
+      { choose: [
+        { t: "I'll tell them a guy and a guy.", notes: 3, then: [
+          { s: 'mark', f: 'surprised', t: "..." },
+          { s: 'mark', f: 'neutral', t: "...Yeah. Okay. A guy and a guy. That's accurate. That's weirdly accurate." }
+        ] },
+        { t: "(Walk him to the corner this time.)", notes: 3, then: [
+          { n: "She walked him to the corner, guitar case and all, and he said it was a reversal of the natural order and that he felt deeply unsafe, and at the corner he made her turn round and go back first and watched until the door shut, because some things, he said, were non-negotiable." }
+        ] },
+        { t: "Goodnight, Mark.", notes: 2, then: [
+          { s: 'mark', f: 'neutral', t: "Mark. Okay. Not in trouble, though. Right? That one sounded like a not-in-trouble Mark." }
+        ] }
+      ] }
+    ] },
+
+    { after: '3/1', title: '15: title track', place: 'Port Island Station · Central Concourse', time: 'Evening', music: 'tender', scene: [
+      { n: "On the first of March the station was warmer than it had any right to be, the doors at the east gate propped open for the first time since autumn, a smell coming in off the bay that wasn't salt and wasn't rain and was, she realized, just spring, arriving early and a little embarrassed about it. The notice was still on the piano. Somebody had added a second sad face. Somebody else had drawn the first one a hat." },
+      { n: "Mark's notebook was nearly full. He showed her without being asked, the pages riffling under his thumb, column after column in his neat small capitals: the date, the song, who'd asked. The cat song, eleven times. A businessman's wedding song, played for a stranger standing in the concourse at eight in the evening with his eyes shut. The dish soap concerto. A girl who'd asked for *something sad but not too sad* and cried anyway. Two hundred and some lines." },
+      { s: 'mark', f: 'neutral', t: "Two hundred and sixty-one. I'm not counting. I'm counting." },
+      { s: 'mark', f: 'neutral', t: "The piano's résumé is incredible, Sol. Whatever school gets it should be honored. I'm going to tape the list inside the lid. They'll find it in like ten years and think a ghost did it." },
+      { choose: [
+        { t: "A ghost with very neat handwriting.", notes: 3, then: [
+          { s: 'mark', f: 'flustered', t: "The neatest. The most organized ghost in the mountains. Haunting in alphabetical order." }
+        ] },
+        { t: "(Turn back to the first page. Find your name.)", notes: 3, then: [
+          { n: "She turned back to the beginning. Her name was there on the first line, where she'd known it would be, and beside it, in the margin, very small, the drawing of the sun he'd pretended he hadn't made, which he'd gone over again since, more than once, so that the lines had gone dark and glossy." },
+          { s: 'mark', f: 'flustered', t: "Don't look at the sun. The sun's private." }
+        ] },
+        { t: "You did all of them?", notes: 2, then: [
+          { s: 'mark', f: 'neutral', t: "Every one. Even the ones I didn't know. Especially those. You just play the shape and people hear the song they wanted." }
+        ] }
+      ] },
+      { s: 'mark', f: 'serious', t: "Okay. So. The last request is mine. I'm allowed one. It's my list." },
+      { n: "He turned to the piano and played it. All of it. The four notes, her fifth, the climb out of them, the crossing in the middle with the two chimes folded in at either end of the water. The concourse did what it did every night, went home around him, umbrellas and briefcases and a child dragging a backpack on wheels, and a few people slowed, and the cleaner leaned on her mop at the edge of it, and the bakery's shutter stayed halfway up, which it never did." },
+      { s: 'mark', f: 'neutral', t: "It doesn't have a name. I've written like nine. I crossed them all out. Every time I write one down it's the wrong size." },
+      { s: 'mark', f: 'neutral', t: "You name it. You're first on it anyway. You should get to pick what it's called." },
+      { choose: [
+        { t: "Call it *the crossing.*", notes: 3, then: [
+          { s: 'mark', f: 'neutral', t: "...The crossing. Yeah. The simple one. I had that one first and I crossed it out because it was too simple." },
+          { s: 'mark', f: 'neutral', t: "It's not too simple. It's just right. I was being a music major about it." }
+        ] },
+        { t: "Call it *four notes.*", notes: 3, then: [
+          { s: 'mark', f: 'surprised', t: "Four? Not five?" },
+          { s: 'solar', f: 'neutral', t: "The fifth one's mine. It doesn't go in the title." },
+          { s: 'mark', f: 'neutral', t: "...Oh, that's good. That's so good. That's so you I could scream." }
+        ] },
+        { t: "Call it *u get back ok?*", notes: 3, then: [
+          { s: 'mark', f: 'surprised', t: "..." },
+          { s: 'mark', f: 'flustered', t: "That's— Sol. That's a text. You can't name a song after a text. Lowercase? With no apostrophe?" },
+          { s: 'mark', f: 'neutral', t: "...Okay. Yeah. Yeah, it's that. It was always that." }
+        ] }
+      ] },
+      { n: "He wrote it at the top of the last page of the notebook, under all two hundred and sixty-one requests, and under it, the way the back of an album lines up, the credits. Her name. Then his. He went over hers twice." },
+      { ifHeading: 'H', then: [
+        { s: 'mark', f: 'neutral', t: "And it goes with me. With the middle empty. Every time anybody plays it, there's going to be eight bars of a train going over water with nobody on it, and they're going to think I forgot something." },
+        { s: 'mark', f: 'serious', t: "And I'm going to say, no. Somebody's on it. She's just on a different line. She picked the stop." },
+        { choose: [
+          { t: "(Sing the crossing. Once. Here. For the record that isn't one.)", notes: 3, then: [
+            { n: "He played the middle again and she sang it, eight bars, low, in a station going home around them, and he played under her with his eyes shut, and at the end the cleaner clapped once, and so did a man with a briefcase, and Mark kept his eyes shut a second longer than the song." },
+            { s: 'mark', f: 'sad', t: "...Okay. Now I know exactly what's missing. That's better. That's so much worse. It's better." }
+          ] },
+          { t: "Leave it empty. Don't give it to anyone else.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "I won't. I promised that already. I'm promising it again so it's in two places." }
+          ] },
+          { t: "Give it to someone who can sing it.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "Nobody can sing it. That's not a compliment. It's just a fact about the song. It's shaped like you." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'S', then: [
+        { s: 'mark', f: 'neutral', t: "It goes with me and the middle stays empty. And somewhere with a harbor you're going to hear a ferry horn in exactly the right key and not know why you stopped walking." },
+        { s: 'mark', f: 'serious', t: "That's going to be me. That's the only way I can get there. I'm going to be a ferry horn. That's fine. I've been worse things." },
+        { choose: [
+          { t: "(Sing the crossing. Once. Here. So the horn has something to match.)", notes: 3, then: [
+            { n: "He played the middle again and she sang it, eight bars, low, in a station going home around them, and he played under her with his eyes shut, and when it was done he didn't open them for a while, and the concourse kept going, and nobody hurried him." },
+            { s: 'mark', f: 'sad', t: "...Okay. Okay. I've got it. I'll know it if I ever hear it anywhere. That's enough." }
+          ] },
+          { t: "I'll stop walking. I promise.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "Good. Stop and stand there like an idiot. Make whoever's with you wait. That's an order from your bodyguard." }
+          ] },
+          { t: "I won't know it's you.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "No. That's okay. I'll know. That's what I keep landing on. One of us knowing is enough." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'R', then: [
+        { s: 'mark', f: 'neutral', t: "And at home we put it down for real. In a studio. With the door open. Your name where you can see it. Those were your terms. I wrote them on the inside of my hand once so I wouldn't forget. It came off in the shower. I remembered anyway." },
+        { s: 'mark', f: 'serious', t: "And if you still don't want to, then we don't. Then it's just a song I play in practice room four for a girl on a radiator. That's also a really good outcome. I want you to know I mean that. Both of me mean it, for once." },
+        { choose: [
+          { t: "Door open. My name where I can see it.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "Door open. Your name where you can see it. Okay." },
+            { n: "He wrote it under the credits, the terms, in his neat capitals, the way he'd once written the station chimes, as if they were part of the song now, and she supposed they were." }
+          ] },
+          { t: "(Sing the crossing. Once. Here. Before it goes home.)", notes: 3, then: [
+            { n: "He played the middle again and she sang it, eight bars, low, in a station going home around them, and he played under her with his eyes shut, and at the end the cleaner clapped once and went back to her mop, and Mark laughed, wet, and didn't wipe his face." }
+          ] },
+          { t: "Ask me again at home.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "I will. I'll ask so many times you'll get sick of it. Then I'll stop. I'll know when." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'mark', f: 'neutral', t: "And it goes with me, and you stay with the piano for two more days, and then the piano goes to the mountains, and then it's just you. Here. With your fifth note." },
+        { s: 'mark', f: 'serious', t: "Keep it. Your note. Hum it somewhere. Some Tuesday. In the shower, or at a crossing, or wherever. Somebody here should still have it." },
+        { choose: [
+          { t: "I'll hum it every time a train comes in.", notes: 3, then: [
+            { s: 'mark', f: 'sad', t: "...That's a lot of trains. That's like six an hour." },
+            { s: 'mark', f: 'neutral', t: "Good. Do all of them." }
+          ] },
+          { t: "(Sing the crossing. Once. Here. So he takes it with him whole.)", notes: 3, then: [
+            { n: "He played the middle again and she sang it, eight bars, low, in a station going home around them, and he played under her with his eyes shut, and when it was done he put his hands flat on the keys without pressing any, the way you'd put your hands on somebody's shoulders." }
+          ] },
+          { t: "I'll forget the middle.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "No you won't. You don't forget anything. Except me, once. You got me back, though." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'mark', f: 'neutral', t: "And if you're home and this is all gone, I'm going to play it for you in a practice room and you're going to say, huh, that's nice, where's it from. And I'm going to say, a station. And you're going to say, which station." },
+        { s: 'mark', f: 'serious', t: "And I'm not going to know either, maybe. Maybe it'll just be in my hands and not my head. That's okay. Hands remember stuff. Yours did." },
+        { choose: [
+          { t: "Then play it until somebody remembers.", notes: 3, then: [
+            { s: 'mark', f: 'neutral', t: "Okay. That's the plan. That was always basically my only plan. Play it till something gives." }
+          ] },
+          { t: "(Sing the crossing. Once. Here. So it's somewhere in both of you.)", notes: 3, then: [
+            { n: "He played the middle again and she sang it, eight bars, low, in a station going home around them, and he played under her with his eyes shut, and she thought that if anything in this world was going to survive the trip it would be this, eight bars, a train over water, something a body learned and didn't need permission to keep." }
+          ] },
+          { t: "Which station.", notes: 2, then: [
+            { s: 'mark', f: 'neutral', t: "...Yeah. Exactly like that. You've got the line already." }
+          ] }
+        ] }
+      ] }] }] }] },
+      { n: "The chime went for the last train to Iwatodai. He looked up at the board like a teacher had caught him passing notes, the way he had every single time since November, and went to the vending machine by the pillar, and came back, and pressed a can into her hands before she'd said whether she wanted one." },
+      { n: "Hot milk tea. Sweet. She knew he hadn't asked anyone this time. He'd just known. It had taken him three months of asking to get to the knowing, and she thought that counted, that it might be the thing that counted most." },
+      { s: 'mark', f: 'neutral', t: "Text me when you get back." },
+      { choose: [
+        { t: "I'll text you when I get back, Marky.", notes: 3, then: [
+          { s: 'mark', f: 'neutral', t: "...Yeah. You will. You always do." },
+          { n: "He stood at the gate the whole time she was going through it, the way he always did, and when she looked back from the escalator he was already turned toward the piano, sitting down, his hands going to the four notes, playing them for nobody, for the piano, for the last week of its job." }
+        ] },
+        { t: "(Hug him. Quickly. Before he can make it weird.)", notes: 3, then: [
+          { n: "She hugged him, quick and hard, and he made a sound like a startled bird and then hugged her back with the notebook still in one hand so that its corner dug into her shoulder blade, and she didn't care, and neither did he." },
+          { s: 'mark', f: 'flustered', t: "Okay. Okay. Go. You'll miss it. Go. Text me." }
+        ] },
+        { t: "Bye, Mark.", notes: 2, then: [
+          { s: 'mark', f: 'neutral', t: "Not bye. See you. There's a whole week. I've got two hundred and sixty-one requests' worth of goodbyes left in me, Sol, I'm pacing myself." }
+        ] }
+      ] },
+      { phone: [
+        { from: 'mark', t: "u get back ok?" }
+      ], contact: 'markylee' },
+      { n: "She typed *i got back* on the monorail, before she was anywhere near back, while the train was still out over the water in the dark with the city sliding past the windows, and sent it from the middle of the crossing, and thought he would know exactly where she'd been when she sent it. He'd timed it." }
     ] }
   ],
 

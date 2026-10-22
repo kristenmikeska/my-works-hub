@@ -25,10 +25,18 @@
    then rotates, at the café (she doesn't leave before the end, so there are no traces). Texting voice: @hanni, lowercase,
    "!!!", apologizes for being nosy. Kat's rulings: the girls know the secret, unlabelled thing with Haechan (Runners) and
    Haechan now lives in the dorm (r7). Hanni never hands it over: r8 she stops Hyein mid-sentence; r9 she took Hyein's
-   "make him ask her home" speech away. r3 notices Akihiko (gated on his rank). Arcana: '?' (open question, plot doc §16.6). */
+   "make him ask her home" speech away. r3 notices Akihiko (gated on his rank). Arcana: '?' (open question, plot doc §16.6).
+   Ranks 11-15 (maxRank 15; meter ranks, 2026-10-22 batch): 2/1 Chagall (the third receipt), 2/8 Chagall then the dorm kitchen
+   (her cold; Solar does the fruit), 2/15 the mall's flower stall (Solar picks her own graduation flowers; the bouquet Hanni
+   brings on 3/5 is ordered here), 2/22 the riverside (the heavy truth from rank 4), 3/1 Chagall (the notebook's last page;
+   sets hanni-r15). The route is locked by then: each rank has one key passage branched by heading (H / S / R / stay / true)
+   and reads hanni-pinky (r14) only in passing; she's a friendship link, so no romance branch. Every path's best answers
+   total 12 notes. stretchHangouts: three February hangouts for a meter a rank scene didn't fill. afterMax 'handover' steps
+   aside after rank 15 (noFlags hanni-r15) for 'one a day' (flags hanni-r15). Living content for these ranks (afterRank
+   11-15 texts, a morning routine, a late night): data/living-r15-hanni.js. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'hanni', name: 'Hanni Pham', short: 'Hanni', arcana: 'Councillor', numeral: '', from: 'Runners',
-  kind: 'searcher', world: 'R', romance: null,
+  kind: 'searcher', world: 'R', romance: null, maxRank: 15,
   starts: '9/12', gate: { R: 3 },
   home: { area: 'mall', spot: 'Chagall Café', slot: 'after', days: [0, 1, 3, 5],
           hint: 'Afternoons at Chagall Café in Paulownia Mall, at the window table, with two drinks already ordered.' },
@@ -162,6 +170,54 @@
         { t: "(Watch her do it instead.)", notes: 1, then: [
           { n: "Solar watched her. Two minutes, exactly, with her lashes resting on her cheeks and her dimples gone flat, and then she opened her eyes and smiled at nothing in particular, like she'd come back from a short trip somewhere with good weather." },
           { s: 'hanni', f: 'happy', t: "You didn't do it. I could feel you not doing it. Next time." }
+        ] }
+      ] }
+    ]
+  ],
+  stretchHangouts: [
+    [
+      { n: "Chagall's windows had fogged from the inside, the heaters going full against February, and Hanni had drawn on the glass beside their table with one fingertip while she waited: a cup with a straw beside it, a stick-figure girl with very straight bangs, and next to her a taller one with her arms folded, and a heart, and then, after some thought, a second heart, smaller, for Hyein, who wasn't there." },
+      { s: 'hanni', f: 'happy', t: "Your turn. Draw something. Anything. It'll be gone by the time we leave, so it doesn't count. That's the best kind of drawing." },
+      { choose: [
+        { t: "(Draw the owner, with his receipts.)", notes: 3, then: [
+          { n: "She drew him badly, a rectangle of apron and a long curl of paper coming out of one hand, and Hanni laughed so loud the owner looked over, and saw himself on his own window, and studied it with his arms folded for a long, judging moment, and then went and got a cloth, and did not wipe it off." }
+        ] },
+        { t: "(Draw a third stick figure. Taller than both. With a sewing needle.)", notes: 2, then: [
+          { s: 'hanni', f: 'happy', t: "That's Hyein! That's so Hyein. She's going to say her legs are too short. Her legs ARE too short. We're not fixing them." }
+        ] },
+        { t: "I can't draw.", notes: 1, then: [
+          { s: 'hanni', f: 'neutral', t: "Nobody can draw on a window. That's the point. It's just fog. Fog doesn't grade you." }
+        ] }
+      ] }
+    ],
+    [
+      { n: "Hanni was practicing. She had a scrap of paper with a sentence on it in careful katakana, copied from somewhere, and she was saying it under her breath over and over at the window table with her eyes shut, the way she said her meditation count, and every few tries she opened her eyes and checked it against the paper and looked betrayed." },
+      { s: 'hanni', f: 'flustered', t: "It's for the owner. For when. I want to say thank you for the receipts. Properly. In his language. Fuuka wrote it out for me and I've been saying it for four days and I still sound like a robot ordering soup." },
+      { choose: [
+        { t: "(Say it once with her. Slowly. Then let her say it alone.)", notes: 3, then: [
+          { n: "They said it together, slowly, twice, and then Solar stopped and let her go on alone, and Hanni got it, the whole sentence, without the paper, and opened her eyes, and her face did everything at once, and she whispered *I did it* like she'd landed a plane." }
+        ] },
+        { t: "He'll understand it in any language. He saves you the crooked ones.", notes: 2, then: [
+          { s: 'hanni', f: 'neutral', t: "I know he will. I want to say it right anyway. Some things you want to say right even if nobody would mind." }
+        ] },
+        { t: "You do sound a little like a robot.", notes: 1, then: [
+          { s: 'hanni', f: 'serious', t: "SOL. You promised the truth, not *that* truth." }
+        ] }
+      ] }
+    ],
+    [
+      { n: "The mall in February was full of couples, and Hanni had turned her chair round to face the atrium so she could watch them, the way other people watched sports, with her chin on the back of the chair and her coffee balanced on her knee and a running commentary in a low delighted voice." },
+      { s: 'hanni', f: 'happy', t: "Okay. Them. By the fountain. He's going to give her the box and she already knows it's chocolate and she's going to act surprised anyway. Watch. Watch her hands." },
+      { choose: [
+        { t: "(Play along. Narrate the next couple yourself.)", notes: 3, then: [
+          { n: "Solar took the pair by the escalator, a boy holding two drinks and a girl holding nothing, and gave them a whole history in three sentences, a fight in the morning and a sorry at lunch and the drinks as a treaty, and Hanni listened with her mouth open and then said it was the most romantic thing she'd ever heard and that Solar was secretly the biggest romantic in two worlds." },
+          { s: 'hanni', f: 'happy', t: "Secretly! I said secretly! Don't make the jaw face, I'm not telling anyone!" }
+        ] },
+        { t: "She's not acting. She's surprised it's from him.", notes: 2, then: [
+          { s: 'hanni', f: 'surprised', t: "...Oh. Oh, Sol. That's so much better than mine." }
+        ] },
+        { t: "How do you always know?", notes: 1, then: [
+          { s: 'hanni', f: 'neutral', t: "Everybody's got a place it comes out. I told you. I just look at the place." }
         ] }
       ] }
     ]
@@ -793,6 +849,603 @@
       ] },
       { s: 'hanni', f: 'neutral', t: "Whatever you pick. Whatever happens. I'll knock. Twice. Somewhere." },
       { s: 'hanni', f: 'happy', t: "That's the plan. It's not a very good plan. It's mine." }
+    ] },
+
+    { after: '2/1', title: '11: the third receipt', place: 'Paulownia Mall · Chagall Café', time: 'After School', music: 'tender', scene: [
+      { n: "February came in on a Monday, gray and stiff with cold, and the third-years at Gekkoukan went to free attendance, which meant half of Solar's class had simply stopped existing between one Friday and the next, and the other half came in anyway and sat at their desks with their coats on, and Solar, who could have stayed in bed, didn't, and went to the café after school the way you'd go home." },
+      { n: "Hanni was at the window table. Two iced coffees, in February, because the café was heated like a greenhouse and she refused, she said, to let the weather tell her what to drink. One straw still in its paper. And in front of her, smoothed flat on the wood under both hands, a new receipt, long and white and completely empty, the owner's latest crooked printing, still curling at the ends like it wanted to roll itself back up." },
+      { s: 'hanni', f: 'happy', t: "Sol! Look. It's the third one. He saved it for me on Friday and said *for February,* in English. He's been practicing. I nearly died at the counter." },
+      { s: 'hanni', f: 'neutral', t: "It's the last one. I mean, not the last receipt, he'd give me a hundred. It's the last one I'm starting here. So I want to do it properly." },
+      { choose: [
+        { t: "(Write the first good thing on it yourself.)", notes: 3, then: [
+          { n: "She took the pen out of Hanni's hand before Hanni could object and wrote, at the very top, in her spiky slanting hand, *the owner practiced english for her,* and turned it round." },
+          { s: 'hanni', f: 'surprised', t: "That's about someone else again. You keep doing that now. Do you know you keep doing that?" },
+          { s: 'hanni', f: 'happy', t: "...It's going at the top. Obviously. You put it at the top. I'm not moving it." }
+        ] },
+        { t: "Properly how?", notes: 3, then: [
+          { s: 'hanni', f: 'serious', t: "One a day. Every day until—" },
+          { n: "She stopped at the date. Everyone stopped at the date this month, Solar had noticed, in the lounge and at the shoe lockers and at the dinner table, the same small hitch, like a stair that turned out to be one shorter than your foot expected." },
+          { s: 'hanni', f: 'neutral', t: "Until. One a day. Even on the bad days. *Especially* the bad days. If you find one on a bad day it counts double. That's the rule." }
+        ] },
+        { t: "Isn't it bad luck? Starting something at the end?", notes: 2, then: [
+          { s: 'hanni', f: 'neutral', t: "Nothing's bad luck if you do it on purpose." },
+          { s: 'hanni', f: 'flustered', t: "That's not a real rule. I made it up just now. It's still a good rule." }
+        ] }
+      ] },
+      { n: "She uncapped her own pen and then didn't write anything. She sat with it held over the paper, and her face, which had never once in its life managed to keep anything to itself, went somewhere for a second, and came back." },
+      { s: 'hanni', f: 'neutral', t: "Can I tell you what I'm scared of? It's small. I promised you small ones." },
+      { ifHeading: 'H', then: [
+        { s: 'hanni', f: 'neutral', t: "Cherry says there's a big white dog at your house there. Fluffy. Silly legs. She showed me the legs with her hands, at the guesthouse, for about a minute." },
+        { s: 'hanni', f: 'sad', t: "I'm scared nobody there knows about the straw. That's it. That's the whole thing. Someone's going to hand you a coffee with the straw already in it, and you'll drink it, because you put up with things, and nobody will ever find out you minded." },
+        { choose: [
+          { t: "(Write *straw in the paper* on the receipt. For the girl there.)", notes: 3, then: [
+            { n: "She wrote it under the owner's line, small and plain, *straw in the paper,* and then, because it looked lonely, *(she minds),* and Hanni read it upside down and pressed her lips together very hard." },
+            { s: 'hanni', f: 'happy', t: "I'm giving that line to Cherry. Is that weird? I'm going to hand Cherry a receipt. She'll keep it in one of her bears." }
+          ] },
+          { t: "Cherry will know. She notices things like that.", notes: 3, then: [
+            { s: 'hanni', f: 'surprised', t: "...Yeah?" },
+            { s: 'hanni', f: 'happy', t: "Okay. Okay, good. She talks about you the way I do. Just louder. With more threats in it. I like her so much I get nervous." }
+          ] },
+          { t: "I don't mind things.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "You mind everything. You just mind it very quietly. That's worse. That's so much worse, Sol." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'S', then: [
+        { s: 'hanni', f: 'neutral', t: "Yunjin says there's a harbor. And a big house where everyone's very polite at dinner. She said *polite* like it was a swear word." },
+        { s: 'hanni', f: 'sad', t: "I'm scared you'll be polite. That's all. That you'll sit at a long table being so, so polite, and nobody will tell you your jaw's doing the thing, because nobody there will know it's a thing." },
+        { choose: [
+          { t: "(Write *my jaw does a thing* on the receipt. For Yunjin.)", notes: 3, then: [
+            { n: "She wrote it under the owner's line, *my jaw does a thing,* and drew an arrow to her own face like a diagram, and Hanni laughed so suddenly she had to put her coffee down." },
+            { s: 'hanni', f: 'happy', t: "I'm giving her that. Is that allowed? I'm going to give Yunjin a receipt. She's going to look at me like I'm a child. I am a child. Take it." }
+          ] },
+          { t: "Yunjin will tell me. She tells me everything to my face.", notes: 3, then: [
+            { s: 'hanni', f: 'surprised', t: "She does! She told me my bangs were *a choice.* I said thank you." },
+            { s: 'hanni', f: 'happy', t: "...Okay. Okay, good. Somebody who says it to your face. That's the only kind of somebody you need there." }
+          ] },
+          { t: "Maybe I'm good at polite.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "You're the best at polite. You're the best I've ever seen. That's the whole problem, girlie." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'R', then: [
+        { s: 'hanni', f: 'happy', t: "You're coming home. I know. I'm so happy I keep forgetting to be scared about anything, and then I remember, in the shower, like a bill." },
+        { s: 'hanni', f: 'neutral', t: "I'm scared you'll walk into the kitchen at home and it'll be too loud. After here. After all this quiet. That you'll stand in the doorway with your glass like you do, and it'll all be too much at once, and you won't say." },
+        { choose: [
+          { t: "Then make me stand next to you. At the counter. Like here.", notes: 3, then: [
+            { s: 'hanni', f: 'happy', t: "Deal. You get the stool next to my stool. I'll put your glass down first, before Hyein's, so you know it's yours." },
+            { s: 'hanni', f: 'neutral', t: "She's going to notice. She's going to say *why is hers first.* I'm going to say *because.*" }
+          ] },
+          { t: "(Write *the kitchen, seven a.m., before anyone's talking* on the receipt.)", notes: 3, then: [
+            { s: 'hanni', f: 'surprised', t: "That's mine. That's my one thing. From the meditation." },
+            { s: 'hanni', f: 'happy', t: "...You can have it. We'll share it. It's a big kitchen. It's an enormous pink kitchen, actually. You'll see." }
+          ] },
+          { t: "It won't be too loud. It'll be you guys.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "It'll be Hyein. Hyein's too loud. That's not an insult. That's just a fact about the house." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'hanni', f: 'neutral', t: "You're staying. I'm not going to cry about it at this table. I already cried about it at the other table, the one by the door, last week, so this one's clean." },
+        { s: 'hanni', f: 'sad', t: "I'm scared about the café. That's all. That I'll be gone and you'll come in and sit here and there won't be anything waiting, and you'll just. Order one. For yourself. Like a normal person." },
+        { choose: [
+          { t: "I'll order two. One with the straw in the paper.", notes: 3, then: [
+            { s: 'hanni', f: 'surprised', t: "For who?" },
+            { s: 'solar', f: 'neutral', t: "Whoever's late." },
+            { s: 'hanni', f: 'sad', t: "...That's a good one. That's going on the receipt. Don't look at me for a minute." }
+          ] },
+          { t: "(Write *order two* on the receipt. Underline it.)", notes: 3, then: [
+            { n: "She wrote it, *order two,* and underlined it twice, the second line going a little off the edge of the paper, and Hanni put her finger on it like she was holding it in place." },
+            { s: 'hanni', f: 'neutral', t: "Okay. It's in writing now. It's binding. That's how receipts work." }
+          ] },
+          { t: "I'll be fine, Hanni.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "I know. That's the scary part. You'll be so fine." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'hanni', f: 'neutral', t: "You've got the look again. The one like you're about to do something nobody's ever done. I'm not going to ask. You know I'm not going to ask." },
+        { s: 'hanni', f: 'sad', t: "I'm scared about this table. That's all. If you go all the ways at once, I don't know what happens to here. To the café. To him and his receipts. I try to think about it and it's like trying to remember a dream with your eyes open." },
+        { choose: [
+          { t: "Then let's fill the receipt. All of it. So it happened.", notes: 3, then: [
+            { s: 'hanni', f: 'serious', t: "Both sides. Every day. Okay. Yes. Okay." },
+            { s: 'hanni', f: 'neutral', t: "If it's written down, it happened. I don't know if that's true either. I'm deciding it is." }
+          ] },
+          { t: "(Write today's date at the top of the receipt.)", notes: 3, then: [
+            { n: "She wrote it, *2/1,* above the owner's line, firm, the way you'd sign for something, and Hanni looked at the date for a long time as if it might get up and leave." },
+            { s: 'hanni', f: 'happy', t: "There. Now it's a day. Nobody can say it wasn't a day." }
+          ] },
+          { t: "Maybe nothing happens to it.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "Maybe. You'd tell me, if you knew? ...No. You'd tell me if I asked. And I'm not asking. I'm so good." }
+          ] }
+        ] }
+      ] }] }] }] },
+      { n: "The owner came over with a plate nobody had ordered. Two small tarts, a strawberry on each cut into the shape of a heart, a practice run for the fourteenth, he said, which had to be tasted by someone honest, and he looked straight at Hanni when he said *honest,* and Hanni put both hands over her face." },
+      { choose: [
+        { t: "(Give him an honest review. In detail.)", notes: 3, stat: { charm: 1 }, then: [
+          { n: "Solar told him. The pastry was perfect, the cream was too sweet by about a teaspoon, and the heart was lovely but lopsided on the left, which she said was the humidity and not his fault. He listened to all of it with his arms folded, nodding, and then took a stub of pencil from behind his ear and wrote *one teaspoon* on his own wrist, and went away looking happier than she'd ever seen him." },
+          { s: 'hanni', f: 'happy', t: "You're so MEAN. Look at him. He's so happy. You're mean and he's happy. How do you do that?" }
+        ] },
+        { t: "(Let Hanni do the review.)", notes: 3, then: [
+          { s: 'hanni', f: 'happy', t: "It's perfect. It's the best thing I've ever eaten in my life." },
+          { n: "The owner said he didn't believe her. Hanni said her face was being completely honest. He looked at her face, which was honestly delighted, and honestly sorry about the cream, both at once, in plain view, and laughed, a short gruff surprised laugh like a door being kicked open, and took the plate back to fix the cream." }
+        ] },
+        { t: "(Eat the strawberry first.)", notes: 2, then: [
+          { s: 'hanni', f: 'neutral', t: "You always eat the best part first. In case something happens. Hyein says it's so dark. I think it's smart." }
+        ] }
+      ] },
+      { n: "When the plate was empty Hanni wrote on the receipt at last. One line, in her small round hand, and turned it so Solar could read it upside down." },
+      { n: "*2/1. she came even though she didn't have to.*" },
+      { choose: [
+        { t: "(Write underneath it. *2/1. so did you.*)", notes: 3, then: [
+          { n: "She wrote it, and Hanni read it, and did not say anything, and her ears went red, and she folded the receipt once, carefully, along a line that wasn't there yet, and put it in her wallet with the other two like money." }
+        ] },
+        { t: "That's the same good thing as every day.", notes: 3, then: [
+          { s: 'hanni', f: 'neutral', t: "It's never the same. It's a different day every time you come. That's the whole point of writing the date." },
+          { s: 'hanni', f: 'happy', t: "You'll see. At the end, you'll read it all at once and it'll be the same line twenty-eight times and it'll be the best thing you've ever read." }
+        ] }
+      ] },
+      { n: "Outside the window the mall had put up its hearts, pink and red and paper, strung across the atrium between the second-floor railings, and they moved a little in the warm air from the vents, all together, like something breathing in its sleep." }
+    ] },
+
+    { after: '2/8', title: '12: mom mode', place: 'Paulownia Mall · Chagall Café', time: 'After School', music: 'tender', scene: [
+      { n: "The window table at Chagall was empty. Two chairs and no coffees, and the owner looking at it from behind the counter with the face of a man looking at a clock that had stopped, and when Solar came in he pointed at it and lifted both hands, and she understood him perfectly without a single word of either language." },
+      { place: 'Iwatodai Dorm · Kitchen', time: 'After School' },
+      { n: "She found her in the dorm kitchen. In two cardigans, one over the other, and Hyein's pink fleece over both of those, standing at the counter with a knife and a cutting board and a bag of mandarins, peeling them, and stopping to sneeze into her elbow, and peeling them, with her nose gone red at the tip and her eyes shining in the way eyes only shone when there was a temperature behind them." },
+      { s: 'hanni', f: 'flustered', t: "I'm FINE. It's a cold. It's a little cold. I'm doing the fruit. Fuuka's been studying for something for three days and Ken has a test on Wednesday and Junpei only eats things that come out of a wrapper, so—" },
+      { choose: [
+        { t: "(Take the knife out of her hand.)", notes: 3, then: [
+          { n: "She took it. Hanni let go of it much too easily, which was how Solar knew how bad it was. On any other day there would have been a whole negotiation about it. Today her fingers just opened, and she looked at her own empty hand as if somebody else's had been on the end of her arm." }
+        ] },
+        { t: "Sit down, Hanni.", notes: 3, then: [
+          { s: 'hanni', f: 'surprised', t: "..." },
+          { s: 'hanni', f: 'flustered', t: "You said that exactly the way I say it. That's so rude. Who taught you that?" },
+          { n: "But she sat. On the stool, with her elbows on the counter and her chin in both hands, and watched Solar wash the knife." }
+        ] },
+        { t: "Who told you everyone needed fruit?", notes: 2, then: [
+          { s: 'hanni', f: 'neutral', t: "Nobody tells me. That's not how it works. You just see a person and know they haven't had any fruit." }
+        ] }
+      ] },
+      { n: "So Solar did the fruit. Apples into neat even pieces, which she was bad at, and then pear, which she was worse at, and then the mandarins, one at a time, taking every white string off every segment with the edge of her thumbnail, the way it had been done for her all year. It took twenty minutes. It took longer than twenty minutes. It was the kind of thing that took a person twenty minutes and that nobody ever noticed, and she noticed every single one of them, and somewhere around the fourth mandarin she understood something about the year that she couldn't have said out loud." },
+      { n: "Hanni watched her do it from the stool with her chin in her hands and her eyes too bright, not saying anything, which was how Solar knew she had a fever. Then she said something, which was how Solar knew it was a high one." },
+      { ifHeading: 'R', then: [
+        { s: 'hanni', f: 'neutral', t: "You're going to do this at home, aren't you. Now you know how long the strings take. You're going to stand in the pink kitchen and do it for Hyein and pretend it's nothing." },
+        { s: 'hanni', f: 'sad', t: "I don't want you to pretend it's nothing. That's all. It's twenty minutes. It's twenty whole minutes of your life. Somebody should say thank you." },
+        { choose: [
+          { t: "Then say thank you. When I do it for you.", notes: 3, then: [
+            { s: 'hanni', f: 'happy', t: "Every time. Out loud. In front of everyone. You're going to hate it so much." }
+          ] },
+          { t: "(Hand her the first segment.)", notes: 3, then: [
+            { n: "She held it out, a single clean segment, no strings, and Hanni took it and looked at it for a moment before she ate it, like a girl looking at a coin from another country, turning it over, working out what it was worth." }
+          ] },
+          { t: "I'll do it badly.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "You'll do it badly and it'll still be twenty minutes. That's the part that counts." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: ['S', 'H'], then: [
+        { s: 'hanni', f: 'sad', t: "There's no me there. In the house you're going to. I keep forgetting, and then I remember at night. It's like a stair that isn't there." },
+        { ifHeading: 'S', then: [
+          { s: 'hanni', f: 'neutral', t: "Yunjin says they have people there who cut fruit. Staff. Isn't that so stupid? I'm jealous of *staff,* Sol. I'm jealous of somebody's job." }
+        ], else: [
+          { s: 'hanni', f: 'neutral', t: "Cherry says you live on toast there. Toast and a dog and whatever Jihoon leaves in your fridge. Isn't that so stupid? I'm jealous of a toaster." }
+        ] },
+        { choose: [
+          { t: "(Show her. How you take the strings off. So she knows you know.)", notes: 3, then: [
+            { n: "She did one slowly, in front of her, the edge of the thumbnail and the little pull, segment by segment, and Hanni watched with her chin in her hands like she was being shown a card trick she'd invented herself." },
+            { s: 'hanni', f: 'sad', t: "...You do it the same as me. From the top. Okay. Okay, then somebody there does it right." }
+          ] },
+          { t: "I'll think of you every time I eat a mandarin.", notes: 3, then: [
+            { s: 'hanni', f: 'flustered', t: "That's so many times. That's every winter. You can't say that to someone with a fever, Sol, I'm going to cry into the fruit." }
+          ] },
+          { t: "Nobody cuts fruit like you.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "Nobody has to. That's not the point. The point is somebody does." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'hanni', f: 'neutral', t: "You'll be here. And I'll be there. And there's nobody at home who knows I like the strings off. I never told anybody. Isn't that funny? I do everybody's and then I do my own." },
+        { s: 'hanni', f: 'sad', t: "...That's not funny. I don't know why I said funny." },
+        { choose: [
+          { t: "Tell Hyein. Tonight. Before you forget you said it.", notes: 3, then: [
+            { s: 'hanni', f: 'surprised', t: "Tell her I like the strings off?" },
+            { s: 'solar', f: 'neutral', t: "Tell her somebody has to do yours." },
+            { s: 'hanni', f: 'sad', t: "...Okay. Okay. When she gets back. I'll say it with a straight face. I won't be able to." }
+          ] },
+          { t: "(Write it on a strip of tape and stick it to her container: *Hanni hates the strings too.*)", notes: 3, then: [
+            { n: "She found the masking tape in the drawer where Hanni kept it for labeling everyone's lunches, and wrote it in marker, and stuck it on the blue lid, crooked, and Hanni read it and laughed and then didn't, and then put her hand flat on the lid and left it there." }
+          ] },
+          { t: "That's not funny, Hanni.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "No. I know. It's the fever. The fever's very honest. Even more than me." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'hanni', f: 'neutral', t: "Whatever you're going to do, after. Will you remember this? This kitchen? It's such a nothing kitchen. The rice cooker clicks. The window sticks." },
+        { s: 'hanni', f: 'sad', t: "...I'm so tired. I don't know why I asked that. Forget I asked. No, don't. I don't know." },
+        { choose: [
+          { t: "I'll remember the strings.", notes: 3, then: [
+            { s: 'hanni', f: 'sad', t: "...The strings. Okay. That's a good one to keep. That's a small one. Small ones are easier to carry." }
+          ] },
+          { t: "(Put the bowl in her hands.)", notes: 3, then: [
+            { n: "She put the bowl in her hands, all of it, the clean segments in a heap and the apple going a little brown at the edges, and Hanni held it in her lap like something warm, though it wasn't, and ate one piece, and then another, and didn't ask again." }
+          ] },
+          { t: "I don't know.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "Okay. That's true. Thank you for saying the true thing. Even when it's a bad one." }
+          ] }
+        ] }
+      ] }] }] },
+      { n: "The front door went, and a voice came through the lounge ahead of its owner, complaining about the wind and the bus and a fabric shop that had run out of a thread that should, by law, never run out, and then Hyein was in the kitchen doorway with a bag over each shoulder, and stopped dead." },
+      { s: 'hyein', f: 'surprised', t: "Why is SHE cutting fruit. Why are YOU sitting down. Is this a coup? Did I miss a coup?" },
+      { s: 'hanni', f: 'flustered', t: "I have a cold." },
+      { s: 'hyein', f: 'serious', t: "You never have a cold. You don't *let* yourself have a cold. You had pneumonia once and called it a cough for a month." },
+      { s: 'hyein', f: 'neutral', t: "...Oh. Oh, she's doing mom mode. Sol's doing mom mode. On *you.*" },
+      { choose: [
+        { t: "(Make her tea. Barley. Leave it on the counter in front of her, like she does.)", notes: 3, then: [
+          { n: "She made it the way Hanni made it, too much water and the kettle left a beat too long, and set the mug down in front of her without a word, handle turned toward her right hand, and Hanni looked at the handle and then at Solar and her face did absolutely everything." },
+          { s: 'hyein', f: 'neutral', t: "She turned the HANDLE. Hanni. She turned the handle round for you." }
+        ] },
+        { t: "(Put a blanket round her and don't explain it.)", notes: 3, then: [
+          { n: "She got the throw off the lounge sofa and put it round Hanni's shoulders over the cardigans and the fleece, and tucked the corner in at the front, and Hanni sat there like a very small mountain and let her, which was the strangest thing of all." }
+        ] },
+        { t: "Hyein, help.", notes: 2, then: [
+          { s: 'hyein', f: 'happy', t: "I'm helping. I'm supervising. Supervising is helping. Ask Hanni, she supervises everything." }
+        ] }
+      ] },
+      { s: 'hanni', f: 'neutral', t: "You asked me once. On the roof. Who takes care of me." },
+      { s: 'hanni', f: 'sad', t: "I said you did it sideways. You're doing it straight on today. It's so weird. I don't know where to look." },
+      { choose: [
+        { t: "You're going to bed.", notes: 3, then: [
+          { s: 'hanni', f: 'surprised', t: "...It's four o'clock." },
+          { s: 'solar', f: 'neutral', t: "You're going to bed at four o'clock." },
+          { s: 'hanni', f: 'happy', t: "...Okay." },
+          { n: "She went. Up the stairs in her three layers with the blanket trailing, and Hyein followed with the tea, and Solar followed with the fruit, and they put her in bed at four in the afternoon like a child home from school, and Hyein sat on the end of it sewing a hem, and Solar sat on the floor with her back against the frame, and Hanni was asleep before the mug had cooled." }
+        ] },
+        { t: "(Walk her upstairs and stay till she sleeps.)", notes: 3, then: [
+          { n: "She took her up. Hanni talked the whole way, about the receipt and whose turn it was and the good thing for today, which she said was *this, obviously,* and fell asleep in the middle of a sentence about the owner's teaspoon, and Solar stayed on the floor by the bed until the window had gone dark, and didn't once look at her phone." }
+        ] }
+      ] }
+    ] },
+
+    { after: '2/15', title: '13: she hasn\'t picked', place: 'Paulownia Mall · Flower Stall', time: 'After School', music: 'day', scene: [
+      { n: "The flower stall in February had gone red for the fourteenth and was going back, slowly, a bucket at a time, the cellophane roses marked down to half and then to nothing and given away to anyone who looked like they needed one, and Hanni had walked Solar there from the café by the arm without saying where they were going, and stopped in front of it, and turned her by the shoulders to face the buckets, like the mirror." },
+      { s: 'hanni', f: 'happy', t: "Okay. Graduation's on the fifth. I'm bringing you flowers. That's not a question, that's happening, I've already got Hyein on wrapping." },
+      { s: 'hanni', f: 'serious', t: "But you told me once you've never picked. You didn't know what kind you liked. Nobody's ever asked you, they just handed you whatever went with the dress." },
+      { s: 'hanni', f: 'neutral', t: "So pick. Any of them. Take as long as you want. I'm not going to say anything. Look at my face. My face isn't saying anything." },
+      { n: "Her face was saying a great deal. It was saying *please pick the yellow ones* and *no, don't, pick what you want* and *oh, those are pretty* in quick succession, and she knew it, and turned around and looked at the bus stop instead, very hard, so as not to cheat." },
+      { choose: [
+        { t: "(Walk the whole stall. Every bucket. Take your time.)", notes: 3, then: [
+          { n: "She walked the whole stall. It took a long time, longer than she'd have believed a person could spend looking at flowers, and nobody hurried her. The stall woman went on wrapping a funeral spray with her back turned, and Hanni stood at the bus stop with her hands in her sleeves, and Solar looked at every bucket as if she'd been asked a question on an exam she'd actually studied for." }
+        ] },
+        { t: "What do you like?", notes: 2, then: [
+          { s: 'hanni', f: 'flustered', t: "No! That's the trick! You do that, you ask what I like and then you pick that and say you like it. I know you. Pick." }
+        ] },
+        { t: "(Close your eyes and point.)", notes: 3, then: [
+          { n: "She closed her eyes and pointed and opened them, and she was pointing at a bucket of something tight and green and not open yet, no color at all, just the promise of one, and Hanni turned round from the bus stop and saw it and burst out laughing." },
+          { s: 'hanni', f: 'happy', t: "Of course. Of COURSE you picked the ones that aren't anything yet. That's so you I can't even." }
+        ] }
+      ] },
+      { n: "In the end it was sweet peas. The stall had them early, in a bucket at the back, small and ruffled and every color at once, pink and white and a purple so dark it was nearly black, and they smelled like something she couldn't name, like the inside of a drawer in a house where somebody had loved her, and she stood in front of them and knew. Not why. Just that." },
+      { s: 'solar', f: 'neutral', t: "These." },
+      { n: "Hanni came over from the bus stop and looked at the sweet peas and then at Solar's face, and whatever she saw there, she didn't say. She just nodded, once, the way you nod when someone gives you the right answer to a question you didn't know the answer to either." },
+      { ifHeading: 'R', then: [
+        { s: 'hanni', f: 'happy', t: "Sweet peas. At home I'm going to put them on your desk in a jar. In spring. You're going to come back from a class and they're going to be there and you're going to pretend you don't know who did it." },
+        { s: 'hanni', f: 'neutral', t: "It was me. I'm telling you now so you can't pretend. I'm going to do it every spring. You picked. That means I get to." },
+        { choose: [
+          { t: "Put them next to the pink mugs.", notes: 3, then: [
+            { s: 'hanni', f: 'happy', t: "Next to the pink mugs. On the windowsill. Away from the candle. See? I can be responsible." }
+          ] },
+          { t: "(Buy a bunch now. For her.)", notes: 3, then: [
+            { n: "She bought a small bunch from the back bucket with her own yen and handed it over, and Hanni held it in both hands in the cold like it was something she'd been handed at an airport, and smelled it, and closed her eyes." }
+          ] },
+          { t: "I'll know who did it anyway.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "I know. That's the good part. Knowing, and getting to pretend anyway." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'hanni', f: 'sad', t: "Sweet peas. Okay. I'm going to leave money with the stall lady. Is that weird? So that in spring somebody puts them in your room. I'll write the room number on an envelope." },
+        { s: 'hanni', f: 'neutral', t: "Don't tell me it's weird. I know it's weird. You picked, and I won't be here, and somebody should know what you picked." },
+        { choose: [
+          { t: "It's not weird. Write the envelope. I'll pretend I don't know.", notes: 3, then: [
+            { s: 'hanni', f: 'sad', t: "You'll know. You'll know the second you see them." },
+            { s: 'hanni', f: 'happy', t: "...That's the point. You'll know." }
+          ] },
+          { t: "(Tell the stall woman yourself. In your own Japanese.)", notes: 3, then: [
+            { n: "She went and said it to the woman with the funeral spray, slowly, in the Japanese she had and Hanni didn't: sweet peas, in spring, for a room at the dormitory up the hill, from a friend. The woman wrote it in a little book with a pencil and looked past Solar at Hanni, at the bus stop, and nodded, as if this were a thing people arranged all the time." }
+          ] },
+          { t: "You don't have to, Hanni.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "I know. Nobody has to do anything. People still do things." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'true', then: [
+        { s: 'hanni', f: 'neutral', t: "Sweet peas. I'm writing it down. In the notebook. *She picked sweet peas.* So it's somewhere. So whatever happens to here, it's written down somewhere that she picked." },
+        { s: 'hanni', f: 'sad', t: "I don't know what I'm going to remember. I don't think anyone does. But I think I'll smell them somewhere one day and not know why I'm crying. That's okay. That's a good way to cry." },
+        { choose: [
+          { t: "(Hold the notebook while she writes it.)", notes: 3, then: [
+            { n: "She held it open against her own arm in the cold, the pale yellow page, and Hanni wrote it in her small round letters, the date, *she picked sweet peas,* and underlined *picked,* and blew on the ink as if it were wet, though it was ballpoint." }
+          ] },
+          { t: "Then I'll smell them too. Somewhere. And know.", notes: 3, then: [
+            { s: 'hanni', f: 'surprised', t: "...Somewhere?" },
+            { s: 'hanni', f: 'happy', t: "Okay. Somewhere. That's a plan. It's not a very good plan." }
+          ] },
+          { t: "You'll remember.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "Maybe. Don't promise me. You can't promise me that one. It's not yours." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'hanni', f: 'sad', t: "Sweet peas. Okay. I'm going to tell them. Whoever's there. Where you're going. I don't know how yet. I'll find a way. Hyein says there's always a way if you're annoying enough." },
+        { s: 'hanni', f: 'neutral', t: "Because somebody there's going to hand you roses one day because roses go with the dress. And you're going to stand there holding them. And I won't be there to say *she picked sweet peas.*" },
+        { choose: [
+          { t: "I'll say it. Myself. Out loud.", notes: 3, then: [
+            { s: 'hanni', f: 'surprised', t: "...You will?" },
+            { s: 'solar', f: 'neutral', t: "*I picked sweet peas.* I'll say it at the table." },
+            { s: 'hanni', f: 'happy', t: "Oh my gosh. At the table. In front of everyone. I'm going to think about that every day. I'm going to think about you being rude about flowers at a nice table." }
+          ] },
+          { t: "(Take a single stem. Keep it to press.)", notes: 3, then: [
+            { n: "She took one stem from the bucket, the nearly black one, and paid for it, and put it carefully inside her coat, and Hanni watched her do it and said nothing at all, which was louder than anything." }
+          ] },
+          { t: "Nobody will hand me roses.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "Somebody always hands you roses, Sol. You're a roses kind of person to everyone who doesn't know you." }
+          ] }
+        ] }
+      ] }] }] },
+      { n: "Hanni ordered the graduation bouquet. She did it at the counter with a notebook page of instructions in Japanese she had clearly made someone at the dorm write out for her, and the stall woman read it, and looked at Hanni, and looked at the instructions again, and asked, carefully, how big." },
+      { s: 'hanni', f: 'happy', t: "Big. Very big. Enormous. Can you say enormous? Sol, what's enormous?" },
+      { choose: [
+        { t: "(Translate *enormous.* Then add *as big as she is.*)", notes: 3, stat: { charm: 1 }, then: [
+          { n: "The stall woman looked down at Hanni, who came up roughly to the top of the tallest bucket, and laughed out loud, and wrote something in her book and underlined it twice, and Hanni didn't know what had been said and didn't care, and beamed at both of them like a girl at her own party." }
+        ] },
+        { t: "(Translate it exactly. Let her have her enormous.)", notes: 3, then: [
+          { n: "She said it exactly, *enormous,* and the stall woman nodded at the word like a carpenter given a measurement, and wrote it down, and Hanni beamed, and Solar decided not to tell her yet that she'd ordered something Hyein was going to have to help her carry." }
+        ] },
+        { t: "Hanni, it doesn't have to be big.", notes: 2, then: [
+          { s: 'hanni', f: 'serious', t: "It has to be big. It's the last one. Sorry. It just does. That's the rule." }
+        ] }
+      ] },
+      { n: "On the walk back she kept her arm through Solar's and talked about ribbon. Not once did she say *the fifth* or *the sixth* or any of the other dates, and Solar didn't either." },
+      { choose: [
+        { t: "(Ask her what she'd have picked. Now that you've gone first.)", notes: 3, then: [
+          { s: 'hanni', f: 'flustered', t: "Me? Nobody asks me that. I'm the one who asks." },
+          { n: "She thought about it the whole length of the river path, frowning, as if it were the hardest question anyone had put to her all year, and at the dorm steps she stopped and said *daisies,* very quietly, like a confession, and then *don't tell Hyein, she'll say they're basic,* and went in ahead of her with her ears red." }
+        ] },
+        { t: "(Walk on the street side. Let her talk about ribbon.)", notes: 3, then: [
+          { n: "She walked on the street side and let her talk, about satin and grosgrain and a ribbon Hyein had once called *a war crime,* the whole way up the hill to the dorm, and the cold, all the way up, smelled faintly of sweet peas, of a drawer in a house somewhere." }
+        ] }
+      ] }
+    ] },
+
+    { after: '2/22', title: '14: this one\'s heavy', place: 'Iwatodai · Riverside', time: 'After School', music: 'night', scene: [
+      { n: "They walked the river because Hanni wanted to see if the plum trees had started. They hadn't, not really. The buds were there, small and hard and red at the tips, like somebody had touched every branch with a match and changed their mind, and the river was low and slow and the color of a nickel, and the cold came up off it into their coats." },
+      { n: "Solar walked on the street side. She'd always done that, apparently. Hanni had told her so on the roof in December, *you walk on the street side,* like it was one of the ways she said things sideways, and since then she'd done it on purpose, and Hanni had noticed her doing it on purpose, and neither of them had said anything about it, which was its own conversation, conducted entirely in which side of a path you stood on." },
+      { s: 'hanni', f: 'neutral', t: "You're doing it again. The street side. Like a gentleman in an old movie. You're going to throw your coat over a puddle for me." },
+      { choose: [
+        { t: "If there's a puddle, I will.", notes: 3, then: [
+          { s: 'hanni', f: 'happy', t: "There's no puddles. It's been dry for a week. I checked. I wanted to see if you'd do it." },
+          { s: 'hanni', f: 'neutral', t: "...You would, though. Wouldn't you. You'd put your good coat in a puddle and say it was nothing." }
+        ] },
+        { t: "(Keep walking on the street side. Don't say anything.)", notes: 3, then: [
+          { n: "She kept walking. Hanni bumped her shoulder, once, gently, which in the language of the path meant *I see you,* and Solar bumped her back, which meant *I know,* and they went on like that for a while, two girls conducting an entire argument in bumps." }
+        ] },
+        { t: "You walk on the street side for Hyein.", notes: 2, then: [
+          { s: 'hanni', f: 'surprised', t: "I do?" },
+          { s: 'hanni', f: 'flustered', t: "...I do. Oh no. We're all just walking on the street side for each other. That's so embarrassing. Don't tell her." }
+        ] }
+      ] },
+      { n: "At the bench under the biggest plum, the one by the steps down to the water, Hanni stopped, and sat down, which she never did on a walk, Hanni being a person who walked until she was told to stop, and Solar sat beside her, and the bench was so cold through her skirt that it hurt, and neither of them got up." },
+      { s: 'hanni', f: 'neutral', t: "You remember what I said? At the café. In October. When you asked what if the truth was something you couldn't handle." },
+      { ifFlag: 'hanni-pinky', then: [
+        { s: 'hanni', f: 'serious', t: "And we did the pinky. So I'm bound. I've been bound since October." }
+      ] },
+      { s: 'hanni', f: 'serious', t: "I said I'd tell you. *This one's heavy.* And you could say *not today.* And I'd keep it." },
+      { s: 'hanni', f: 'sad', t: "...This one's heavy." },
+      { n: "She said it to the river. Her face was doing it already, all of it, before she'd said a word of whatever it was, crumpling at the chin, the way a paper cup gives when you hold it too tight, and she wasn't trying to stop it, and that was the frightening part. Hanni always tried. Even when it never worked she always tried." },
+      { choose: [
+        { t: "Not today.", notes: 3, then: [
+          { s: 'hanni', f: 'surprised', t: "..." },
+          { s: 'solar', f: 'neutral', t: "Not today. Tell me today. I mean it's not *not today.* Tell me." },
+          { s: 'hanni', f: 'sad', t: "That's not how the rule works. You're so bad at rules." },
+          { n: "But she laughed, a wet, surprised laugh, and wiped her face with the back of her mitten, and said it." }
+        ] },
+        { t: "Okay. I'm here.", notes: 3, then: [
+          { n: "Hanni nodded at the river. She took a breath like she did before her meditation, in through the nose, for a count, and let it out, and it didn't help, and she said it anyway." }
+        ] },
+        { t: "Is it about home?", notes: 2, then: [
+          { s: 'hanni', f: 'neutral', t: "It's about you. Everything's about you. That's sort of the problem, Sol. Just let me say it." }
+        ] }
+      ] },
+      { ifHeading: 'R', then: [
+        { s: 'hanni', f: 'sad', t: "You're coming home with us. And I'm so happy I can't sleep. And I'm scared you'll miss here so much you'll never say it. That you'll come back to the pink kitchen and stand in the doorway, and I'll look at your jaw, and I'll know you're thinking about a dog in a bow tie and a boy who yells at the shoe lockers, and you'll say *I'm fine.*" },
+        { s: 'hanni', f: 'serious', t: "I don't want you to be fine about here. I want you to miss it out loud. At me. I can take it. That's the heavy one. I'm scared you'll protect me from missing it." },
+        { choose: [
+          { t: "Then I'll miss it at you. Every day. You'll be sick of it.", notes: 3, then: [
+            { s: 'hanni', f: 'happy', t: "I'll never be sick of it. I'll make tea for it. I'll make a whole night for it. We'll call it Iwatodai night. Hyein'll make a banner." }
+          ] },
+          { t: "(Tell her one thing you'll miss. Right now. Out loud.)", notes: 3, then: [
+            { s: 'solar', f: 'neutral', t: "The owner. At the café. When he turned the television up for us." },
+            { n: "Hanni put both hands over her mouth and nodded, and nodded, and couldn't say anything at all for a while, and when she could she said that was hers too, that was exactly hers, and they'd have to share it." }
+          ] },
+          { t: "I won't be fine. I'll be home.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "Both. You can be both. Home and missing somewhere. That's what I've been all year." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'hanni', f: 'sad', t: "I'm going home without you. I know. You know. We've been so good about it. Everyone's been so good. And that's the heavy one, Sol. I'm tired of being good about it." },
+        { s: 'hanni', f: 'serious', t: "I'm happy for you. I mean it. I'm so happy you've got a face here. And I'm so sad. And I'm the nice one, so I'm only allowed to be the first one. I want to be both. Just once. Here. With you." },
+        { choose: [
+          { t: "Be both. I'll hold the sad one.", notes: 3, then: [
+            { n: "Hanni turned on the cold bench and put her face in Solar's shoulder and cried. Properly. Not the commercial kind, not the good kind, the other kind, the kind she'd been folding up small and putting in her pocket since December, and Solar put her arm round her and held the sad one, and let the happy one sit there too, on the other side, because it was also true." }
+          ] },
+          { t: "(Don't say anything. Just let her.)", notes: 3, then: [
+            { n: "Solar didn't say anything. She sat on the street side of the bench with her arm round a very small girl who was finally, after a whole year of being the nice one, being something else, and the river went by, and the buds on the plum didn't open, and nobody walked past, and that was the kindest thing the city had done for them all year." }
+          ] },
+          { t: "You don't have to be good about it.", notes: 2, then: [
+            { s: 'hanni', f: 'sad', t: "I know. I know. I just don't know how to be the other thing. Nobody ever showed me." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'true', then: [
+        { s: 'hanni', f: 'sad', t: "I don't know if I'll remember this. Here. The café. You walking on the street side. Whatever you're going to do, I've got this feeling it's going to be like waking up." },
+        { s: 'hanni', f: 'serious', t: "That's the heavy one. Not that I'll lose you. I don't think I will. That I'll get you back and not remember I ever had to find you. That you'll be in the kitchen at home and I'll just say *morning* like nothing happened. Like none of this was ever ours." },
+        { choose: [
+          { t: "Then I'll remember for both of us.", notes: 3, then: [
+            { s: 'hanni', f: 'surprised', t: "...You think you will?" },
+            { s: 'solar', f: 'neutral', t: "I think I'll be the one who knows why you put the straw in the paper." },
+            { s: 'hanni', f: 'sad', t: "...Okay. Okay. You hold onto it. You're good at holding things. You're the best at it." }
+          ] },
+          { t: "(Hold her hand. In the mitten. Hard.)", notes: 3, then: [
+            { n: "She took Hanni's mittened hand and held on, hard enough that it must have hurt a little, and Hanni held on back, and they sat on the cold bench holding hands through wool like two kids at a crossing, as if that would keep anything, and maybe it would." }
+          ] },
+          { t: "Maybe it won't matter. If we're together.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "Maybe. It matters to me now. That's the only now I've got." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'hanni', f: 'sad', t: "You're going somewhere that isn't ours. And I've been so good about it. I said you'd decide and you decided, and I meant it, I still mean it." },
+        { s: 'hanni', f: 'serious', t: "The heavy one is that I'm angry. Not at you. Never at you. At *there.* At the house, the table, whoever's waiting. They get you and they don't even know how lucky they are, and I'm going to be in the kitchen with a third glass for nobody." },
+        { choose: [
+          { t: "Be angry. Out loud. I'll hold your coat.", notes: 3, then: [
+            { s: 'hanni', f: 'serious', t: "I'm SO angry." },
+            { n: "She said it to the river, at full volume, which for Hanni was about the volume of a normal person asking for the salt, and a heron on the far bank lifted off in disgust, and Hanni watched it go and laughed so hard she cried, or cried so hard she laughed, and it didn't matter which." }
+          ] },
+          { t: "(Pour the third glass anyway. At home. Promise her.)", notes: 3, then: [
+            { s: 'solar', f: 'neutral', t: "Pour it anyway. The third glass. Every morning. I'll know." },
+            { s: 'hanni', f: 'sad', t: "...You'll know? From there?" },
+            { s: 'solar', f: 'neutral', t: "I'll know." },
+            { n: "It wasn't a thing anyone could promise. Hanni looked at her face, which she'd taught to do things, and seemed to find whatever she was looking for in it, and nodded, once, small, the way you sign for a package." }
+          ] },
+          { t: "They don't know, Hanni. You're right.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "Then somebody should tell them. I'm going to write a letter. It won't send. Nothing sends. I'll write it anyway." }
+          ] }
+        ] }
+      ] }] }] },
+      { n: "They sat until the cold won. Then Hanni stood up and wiped her face with both mittens, carefully, the way she'd taken Solar's makeup off once, and looked at the plum tree over them, and pointed at one bud, one single bud on the lowest branch, that had split at the tip and was showing a line of white." },
+      { s: 'hanni', f: 'happy', t: "Look. One. One's started. That's today's good thing. It counts double. It's a bad day." },
+      { choose: [
+        { t: "(Write it on the receipt for her. Against your knee.)", notes: 3, then: [
+          { n: "Hanni had the receipt in her coat pocket, because of course she did, and Solar wrote on it against her own knee, the pen skipping in the cold, *2/22. one started,* and underneath, smaller, *counts double,* and Hanni read it and put it back in her pocket and kept her hand on it all the way home." }
+        ] },
+        { t: "It's not a bad day. You told me the truth.", notes: 3, then: [
+          { s: 'hanni', f: 'sad', t: "...That's two good things." },
+          { s: 'hanni', f: 'happy', t: "That's four, actually. Because it's a bad day. Don't argue with my math, I've got a fever of the heart." }
+        ] }
+      ] }
+    ] },
+
+    { after: '3/1', title: '15: the last page', place: 'Paulownia Mall · Chagall Café', time: 'After School', music: 'tender', scene: [
+      { n: "March came in warm. Not warm, exactly, but the first day all year that the cold forgot itself for an afternoon, and the light through the mall's glass roof came down the color of weak tea, and Chagall had propped its door open, and at the window table there were two iced coffees, and one straw in its paper, and the pale yellow notebook, closed, with both of Hanni's hands flat on top of it." },
+      { s: 'hanni', f: 'neutral', t: "Hi. Sit. I'm nervous. You can see I'm nervous. I'm not going to pretend." },
+      { s: 'hanni', f: 'serious', t: "I'm going to show you the last page. The one at the back. The one you didn't ask to see." },
+      { n: "She'd been carrying it since September. The receipts and the name tag and the letters to her mother and, lately, a whole handover for the dorm, a page for every person in it. Solar had seen it a hundred times and never once asked, and Hanni had noticed her never asking, and had loved her for it in plain view, the way she did everything." },
+      { choose: [
+        { t: "You don't have to show me.", notes: 3, then: [
+          { s: 'hanni', f: 'neutral', t: "I know. That's why I can." }
+        ] },
+        { t: "(Put your hands flat on the notebook too. Over hers.)", notes: 3, then: [
+          { n: "She put her hands over Hanni's, on top of the notebook, and for a moment they just sat like that, four hands on a cartoon bear, like two people about to lift something heavy together on a count." },
+          { s: 'hanni', f: 'happy', t: "On three. One. Two." }
+        ] },
+        { t: "Is it bad?", notes: 2, then: [
+          { s: 'hanni', f: 'flustered', t: "It's not BAD. It's a lot. It's both sides. It's in three pens. I'm a lot on paper, I told you that in September." }
+        ] }
+      ] },
+      { n: "The last page was a list. Of course it was. Hanni's whole year was lists. At the top, in round careful letters, *Solar Lee,* and then it went down, line by line, all the way to the bottom and over onto the back, in blue and then black and then a pink gel pen that had clearly been Hyein's." },
+      { n: "*Iced coffee. Straw in the paper. Sparkling water mornings, refresher nights. Never coffee after dark.* *Her jaw goes tight when she's upset and she smiles.* *Walks on the street side.* *Brings you a drink halfway through.* *Hates the strings.* *Laughs one beat after everyone else, to check she's allowed.* *Picked sweet peas.* And further down, in a different pen, a different month: *Stood in front of all of us for a year and never once said so.* And at the very bottom, in the pink gel, small, *I'm so proud of her I could die. Don't tell her. — H.*" },
+      { s: 'hanni', f: 'flustered', t: "Hyein wrote the last one. She stole the notebook. I let her." },
+      { ifHeading: 'R', then: [
+        { s: 'hanni', f: 'happy', t: "I'm keeping it. Is that okay? I'm keeping the notebook. At home, when you're being *fine* at me, I'm going to open it to this page and read it out loud at the counter until you stop." },
+        { s: 'hanni', f: 'neutral', t: "And when you're a mess and you can't remember a single good thing about yourself, I'll read it then, too. Quietly. You won't have to say anything." },
+        { choose: [
+          { t: "Read it to me at home. The first morning.", notes: 3, then: [
+            { s: 'hanni', f: 'happy', t: "The first morning. Seven a.m. Before anyone's talking. Sparkling water. Then the page." },
+            { s: 'hanni', f: 'sad', t: "...I'm going to cry so much. Hyein's going to come down and say *who drank my water* and find us both crying at the counter." }
+          ] },
+          { t: "(Add a line to it. At the bottom.)", notes: 3, then: [
+            { n: "She took the pink pen and wrote, under Hyein's line, in her spiky slanting hand, *Went home with them.* Hanni read it and closed the notebook very fast, as if the words might get out." }
+          ] },
+          { t: "It's a lot, Hanni.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "You're a lot. It's the right amount. It's exactly the right amount of a lot." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'S', then: [
+        { s: 'hanni', f: 'neutral', t: "I'm tearing it out. Don't look like that. It's mine to tear, it's my notebook." },
+        { n: "She tore it out along the binding, slowly, so it came away clean, and folded it twice, and held it out across the table." },
+        { s: 'hanni', f: 'sad', t: "Take it there. To the house with the harbor. Put it somewhere nobody polite can find it. And when someone hands you roses, or puts the straw in, or doesn't notice your jaw, you go and read it. So you know somebody did." },
+        { choose: [
+          { t: "(Take it. Put it inside your coat, over your heart.)", notes: 3, then: [
+            { n: "She put it inside her coat, in the pocket on the left, where it sat flat against her and made a small square of warmth, or seemed to, and Hanni watched it go in and pressed her lips together and nodded and nodded." }
+          ] },
+          { t: "Keep half. Tear it in two.", notes: 3, then: [
+            { s: 'hanni', f: 'surprised', t: "...In two?" },
+            { s: 'solar', f: 'neutral', t: "The front's mine. The back's yours. Hyein's line goes with you." },
+            { s: 'hanni', f: 'happy', t: "Oh my gosh. Okay. Okay, that's fair. That's so fair. I hate how fair that is." }
+          ] },
+          { t: "I'll know it by heart anyway.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "Take it anyway. Paper's for the days your heart's being stupid." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'H', then: [
+        { s: 'hanni', f: 'neutral', t: "I'm tearing it out. Don't look like that. It's my notebook. I'm allowed." },
+        { n: "She tore it out along the binding, slowly, so it came away clean, and folded it twice, and held it out across the table." },
+        { s: 'hanni', f: 'sad', t: "Take it to the school with the uniforms. And if you lose it, give it to Cherry first. She'll keep it in one of her bears. She told me she keeps all the important things in the bears." },
+        { s: 'hanni', f: 'happy', t: "And there's a boy there who makes you lunch, Cherry says, and doesn't eat his own. Show him the page. Show him *hates the strings.* He looks like a boy who takes notes." },
+        { choose: [
+          { t: "(Take it. Put it inside your coat, over your heart.)", notes: 3, then: [
+            { n: "She put it inside her coat, in the pocket on the left, where it sat flat and made a small square of warmth, or seemed to, and Hanni watched it go and nodded, and nodded, like she was agreeing with something nobody had said." }
+          ] },
+          { t: "He'll photocopy it. He'll laminate it.", notes: 3, then: [
+            { s: 'hanni', f: 'happy', t: "GOOD. Laminated! Oh, I like him so much. I've never met him. I like him so much." }
+          ] },
+          { t: "I'll know it by heart anyway.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "Take it anyway. Paper's for the days your heart's being stupid." }
+          ] }
+        ] }
+      ], else: [{ ifHeading: 'stay', then: [
+        { s: 'hanni', f: 'neutral', t: "It's yours. The whole notebook. Not just the page. The handover's in the front, and the dorm, everybody, and my letters, you can read my letters, I don't care. And the page at the back." },
+        { s: 'hanni', f: 'sad', t: "You're staying. Someone has to be in charge of fun, and someone has to have a page that says who she is, in case she forgets again. So you get both. It's a binder. It's what you do." },
+        { choose: [
+          { t: "(Take the notebook. Hold it against your chest, the way she does.)", notes: 3, then: [
+            { n: "She took it and held it against her chest with both arms, the way she'd seen Hanni hold it a dozen times, and Hanni saw her do it and made a very small sound, like a teakettle starting, and looked out the window at the mall for a long time." }
+          ] },
+          { t: "Write one page for you. Before you go. So I've got yours.", notes: 3, then: [
+            { s: 'hanni', f: 'surprised', t: "My page? I don't have a page. I'm the one who does the pages." },
+            { s: 'solar', f: 'neutral', t: "I did one. In the handover. You didn't look." },
+            { s: 'hanni', f: 'sad', t: "...I looked. I looked every night. I'm a liar on paper. My face is honest. My paper's a liar." }
+          ] },
+          { t: "I won't forget again.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "I know. Take it anyway. It's heavy. I want you to have something heavy of mine." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'hanni', f: 'neutral', t: "I'm going to read it to you. Out loud. Now. All of it, both sides. Because I don't know what keeps, after. Paper, or people, or this table. So I'm going to put it in your ears. Ears are the safest place I can think of." },
+        { s: 'hanni', f: 'sad', t: "Don't stop me. You'll want to stop me around *picked sweet peas.* Don't." },
+        { choose: [
+          { t: "(Let her read every line. Don't stop her once.)", notes: 3, then: [
+            { n: "She read it. All of it, both sides, in her soft voice, in a café in a mall in a city neither of them was from, and the girl at the counter stopped wiping the counter, and the owner turned the television down instead of up, for once, and when Hanni got to the pink line at the bottom her voice went, and came back, and she read it anyway, *I'm so proud of her I could die,* and closed the book." }
+          ] },
+          { t: "(Read it back to her. Then read it again.)", notes: 3, then: [
+            { n: "When she'd finished Solar took the notebook and read it back to her, every line, from the top, in her own flat careful voice that didn't do anything, and then from the top again, and by the second time through she found she knew it, all of it, the way you know a song you didn't know you'd learned, and Hanni had both hands over her mouth." }
+          ] },
+          { t: "Read it again tomorrow. And the day after.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "Every day till. Okay. Every day till. Then we'll see." }
+          ] }
+        ] }
+      ] }] }] }] },
+      { flag: 'hanni-r15' },
+      { n: "The owner came over with the plate. The heart-shaped strawberry tarts, the cream fixed, a teaspoon less, and set it between them, and pointed at the receipt on the table, the third one, which was full now, both sides, a line a day for a month, in two hands, and said something in Japanese, slowly, to Solar, so she'd translate it." },
+      { s: 'hanni', f: 'surprised', t: "What did he say? Sol. What did he say?" },
+      { choose: [
+        { t: "(Translate it exactly. *He says he'll keep the window table for you.*)", notes: 3, then: [
+          { s: 'hanni', f: 'sad', t: "..." },
+          { n: "Hanni looked at him. He'd gone back behind the counter already, drying a cup that was already dry, very busy, not looking. She stood up and bowed to him across the whole café, a deep careful bow she'd practiced in a mirror, and held it, and he nodded once, gruffly, at the cup." }
+        ] },
+        { t: "(Translate it loosely. *He says the cream's fixed, because you were honest.*)", notes: 3, then: [
+          { s: 'hanni', f: 'surprised', t: "He did NOT say that. That was so much longer." },
+          { s: 'solar', f: 'neutral', t: "He said something like it. And that you're a terrible liar. With respect." },
+          { n: "Hanni laughed so hard she had to put her coffee down, and the owner, hearing her laugh, looked over from the counter, and for the first time all year, very briefly, he smiled at the two of them like everyone always smiled at Hanni." }
+        ] }
+      ] },
+      { s: 'hanni', f: 'happy', t: "Okay. Today's good thing. You go first. You always make me go first." },
+      { n: "Solar picked up the pen. There was one line left on the back of the third receipt, right at the bottom, where it curled. She thought about it for a long time, long enough that the ice in her coffee settled with a small clink." },
+      { choose: [
+        { t: "(Write: *3/1. she let me read the last page.*)", notes: 3, then: [
+          { n: "She wrote it and turned it round. Hanni read it, and then read it again, and then folded the receipt along all its old folds and put it in her wallet with the other two, and kept her hand on the wallet, on the table, for the rest of the afternoon, like it might get up and walk away." }
+        ] },
+        { t: "(Write: *3/1. course, girlie.*)", notes: 3, then: [
+          { n: "She wrote it and turned it round. Hanni read it and laughed, a wet bright laugh with both dimples in it, and said that wasn't a good thing, that was a *line,* that was HER line, and that it was absolutely going on the receipt anyway, and that it was the best one on there, and that she was never, ever going to tell Hyein." }
+        ] }
+      ] }
     ] }
   ],
 
@@ -964,7 +1617,7 @@
         ] }
       ] }
     ] },
-    { title: 'handover', place: 'Iwatodai Dorm · Lounge', time: 'Evening', scene: [
+    { title: 'handover', place: 'Iwatodai Dorm · Lounge', time: 'Evening', noFlags: ['hanni-r15'], scene: [
       { n: "Hanni had the pale yellow notebook open on the lounge table and was writing in it with the focus of a girl preparing for an exam, and when Solar sat down next to her she turned it so Solar could see." },
       { n: "It was the dorm. Everyone in it. A page each, in her round careful hand. *Junpei: everything (really). Allergic to nothing. Will eat anything left on a counter, so don't leave things on counters.* *Fuuka: horror films, through her fingers. Likes it when you ask what she's working on. Ask twice, she says no the first time.* *Ken: lose to him at cards, but not obviously.* *Koromaru: YES.* *Mitsuru: raise your hand.*" },
       { s: 'hanni', f: 'neutral', t: "It's a handover. When I was made Social Chair, the girl before me gave me a whole binder. Who likes what. Who can't be in a room with who. Where the good tape is. I'm doing one for here." },
@@ -983,6 +1636,27 @@
         { t: "Who did the binder for you? Before?", notes: 2, then: [
           { s: 'hanni', f: 'neutral', t: "A senior. She graduated. She wrote *you're going to be so good at this* on the last page and I cried in the stairwell." },
           { s: 'hanni', f: 'happy', t: "That's what this is, really. It's a page that says *you're going to be so good at this.* To a whole building." }
+        ] }
+      ] }
+    ] },
+    { title: 'one a day', place: 'Paulownia Mall · Chagall Café', time: 'After School', flags: ['hanni-r15'], scene: [
+      { n: "The third receipt was full, and the owner, without being asked, had started a fourth, and left it on the window table under the sugar jar with nothing written on it but the date in his own square pencil, as if to show he'd understood the system and was prepared to keep it going without her." },
+      { s: 'hanni', f: 'happy', t: "He did the date. He's never done the date. He's joined. He's part of it now. Sol, he's a member." },
+      { ifBefore: '3/5', then: [
+        { s: 'hanni', f: 'neutral', t: "One a day. Every day till. I'm not saying till what. You know till what." }
+      ], else: [
+        { s: 'hanni', f: 'neutral', t: "One a day. Even now. Especially now." }
+      ] },
+      { choose: [
+        { t: "(Write today's good thing first. Before she can.)", notes: 3, then: [
+          { n: "She wrote it under the owner's date before Hanni could reach for the pen, and covered it with her hand, and made her guess, and Hanni guessed eleven times, all wrong, all lovely, and then read it and said that was the twelfth thing she'd have guessed, and it was the best one." }
+        ] },
+        { t: "(Make her go first for once.)", notes: 3, then: [
+          { s: 'hanni', f: 'flustered', t: "Me first? Okay. Okay. Mine is." },
+          { n: "She thought about it with the pen in her teeth for a long time, and then wrote *she made me go first,* and looked very pleased with herself, and Solar said that was cheating, and Hanni said she'd learned it from the best." }
+        ] },
+        { t: "(Leave it blank today. Let him fill it in.)", notes: 2, then: [
+          { n: "They left it blank. When they came back from the bathroom the owner had written, in pencil, in very careful English, *two girls,* and nothing else, and gone back to the counter, and Hanni had to sit down." }
         ] }
       ] }
     ] }

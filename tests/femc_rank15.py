@@ -1,6 +1,9 @@
-"""Ranks 11-15 (2026-10-21, Kat's rulings): Haechan, Jungwon, Akihiko and Shinjiro go to rank 15 in February.
+"""Ranks 11-15 (2026-10-21, Kat's rulings): Haechan, Jungwon, Akihiko and Shinjiro go to rank 15 in February; since
+2026-10-22 Hanni, Hyein, Mark, Minji and Jihoon too (FIVE below: the same checks, their own February run, their perks, the
+fighters' bond tiers, their texts and moments, their migration).
 
-  python3 tests/femc_rank15.py [--screenshots /absolute/dir] [--quick]
+  python3 tests/femc_rank15.py [--screenshots /absolute/dir] [--quick] [--only five]
+  --only five skips the first four's own story checks (Shinjiro's waking, Akihiko's turn and buzz, their February runs).
 
 engine     maxRank: the four are 15, every other link stays 10; ranks 11-15 sit in February/early March (2/1-3/4) in order;
            Haechan's 11-15 are story ranks, Shinjiro's 15 is one; "MAX" (meter, rank card, menus, toasts, end screen,
@@ -30,6 +33,9 @@ OUT = pathlib.Path(sys.argv[sys.argv.index('--screenshots') + 1]) if '--screensh
 OUT.mkdir(parents=True, exist_ok=True)
 QUICK = '--quick' in sys.argv
 FOUR = ['haechan', 'jungwon', 'akihiko', 'shinjiro']
+FIVE = ['hanni', 'hyein', 'mark', 'minji', 'jihoon']
+ALL = FOUR + FIVE
+ONLY_FIVE = '--only' in sys.argv and sys.argv[sys.argv.index('--only') + 1] == 'five'
 checks = []
 
 
@@ -150,6 +156,8 @@ window.RQ = (() => {
         if (linkId) link(linkId, o.rank ?? 10, st.rt ? { route: st.rt } : {});
         if (o.setup) o.setup(st);
         G.S.route.frags = { R: 6, S: 6, H: st.h === 'H' ? 7 : 3 };
+        // Options with a stat requirement (needs) are open: every option should be reachable.
+        G.S.stats = { knowledge: 200, courage: 200, proficiency: 200, charm: 200, kindness: 200 };
       };
       n += enumerate(opts, key, setup, want, got).n;
     }
@@ -222,16 +230,17 @@ try:
 
     # ── engine ──
     shape = p.eval(r"""(()=>{const G=FemcGame,out={},in2=md=>G.dayOf(md)>=G.dayOf('2/1')&&G.dayOf(md)<=G.dayOf('3/4');
-      for(const id of ['haechan','jungwon','akihiko','shinjiro']){const l=G.LINKS[id],rs=l.ranks.slice(10);
+      for(const id of %s){const l=G.LINKS[id],rs=l.ranks.slice(10);
         out[id]={max:G.maxOf(l),n:l.ranks.filter(r=>r&&r.scene).length,dates:rs.map(r=>r.after),inFeb:rs.every(r=>in2(r.after)),
           order:rs.every((r,i)=>!i||G.dayOf(r.after)>G.dayOf(rs[i-1].after)),titles:rs.every((r,i)=>String(r.title||'').startsWith((i+11)+':')),forced:l.forced||[]};}
-      out.others=Object.values(G.LINKS).filter(l=>!['haechan','jungwon','akihiko','shinjiro'].includes(l.id)&&G.maxOf(l)!==10).map(l=>l.id);
-      out.shin=G.LINKS.shinjiro.stretch;return out})()""")
-    for id in FOUR:
+      out.others=Object.values(G.LINKS).filter(l=>!%s.includes(l.id)&&G.maxOf(l)!==10).map(l=>l.id);
+      out.shin=G.LINKS.shinjiro.stretch;return out})()""" % (json.dumps(ALL), json.dumps(ALL)))
+    for id in ALL:
         s = shape[id]
         ok(s['max'] == 15 and s['n'] == 15 and s['inFeb'] and s['order'] and s['titles'], f'{id}: fifteen written ranks, 11-15 in February/early March in order ({s["dates"]})')
     ok(shape['haechan']['forced'] == list(range(1, 16)) and 15 in shape['shinjiro']['forced'], 'Haechan\'s fifteen ranks are story ranks; Shinjiro\'s 15 is one')
     ok(not shape['others'], f'every other link stays at 10: {shape["others"]}')
+    ok(all(not shape[id]['forced'] for id in FIVE), 'the five later links\' February ranks are meter ranks, not story ranks')
     ok(shape['shin'] and shape['shin']['from'] == '2/1' and shape['shin']['home']['area'] == 'dorm', f"Shinjiro comes back from 2/1 at the dorm: {shape['shin']}")
 
     gap = p.eval(r"""(()=>{const G=FemcGame,out={};
@@ -257,170 +266,211 @@ try:
     ok(gap['at15'] == {'max': True, 'status': True, 'kind': 'after', 'bond': 0}, f"at 15 he is MAX: afterMax rotates, no ♪ ({gap['at15']})")
     ok(gap['hcGap'] == 'after' and gap['hcDue'] == 'haechan' and not gap['hcEarly'], f"Haechan: afterMax before 2/2, rank 11 due as story on its night, not the night before ({gap})")
     ok(gap['yukari'] == {'max': True, 'top': 10}, 'a ten-rank link is MAX at 10 as ever')
+    # The five later links: on a home day before rank 11's date, time together is afterMax (no ♪); on the first home day from
+    # it, the rank 11 scene, with ♪ counting again.
+    gap5 = p.eval(r"""(()=>{const G=FemcGame,out={};for(const id of %s){const l=G.LINKS[id],h=l.home,slot=h.slot==='evening'?'evening':'after',d11=G.dayOf(l.ranks[10].after);
+        const home=(d,dir)=>{while(!h.days.includes(G.dayInfo(d).dow)||G.D.events.some(e=>!e.unlock&&e.date===G.mdOf(d)&&(e.slot||'evening')===slot))d+=dir;return d};
+        const pre=home(d11-1,-1),on=home(d11,1);let s=RQ.at(G.mdOf(pre),slot);RQ.link(id,10,{route:'romance'});const a={st:G.linkStatus(l,pre,slot),kind:G.linkScene(l).kind,bond:G.bond(id,2)};
+        s=RQ.at(G.mdOf(on),slot);RQ.link(id,10,{route:'romance'});s.route.frags={R:9,S:9,H:9};const b={st:G.linkStatus(l,on,slot),kind:G.linkScene(l).kind,r:G.linkScene(l).r,bond:G.bond(id,1)};
+        out[id]={pre:G.mdOf(pre),on:G.mdOf(on),why:b.st.reason||null,before:a.st.ok&&a.st.after&&a.kind==='after'&&a.bond===0,rank:b.st.ok&&!b.st.after&&b.kind==='rank'&&b.r===10&&b.bond===1};}return out})()""" % json.dumps(FIVE))
+    ok(all(v['before'] and v['rank'] for v in gap5.values()), f"the five: afterMax before their rank 11 date, the rank 11 scene from it ({gap5})")
 
-    ui = p.eval(r"""(()=>{const G=FemcGame,out={};let s=RQ.at('2/8','after');RQ.link('akihiko',10,{route:'romance'});RQ.link('yukari',10);RQ.link('jungwon',15,{route:'romance'});G.saveQuiet();
+    ui = p.eval(r"""(()=>{const G=FemcGame,out={};let s=RQ.at('2/8','after');RQ.link('akihiko',10,{route:'romance'});RQ.link('yukari',10);RQ.link('jungwon',15,{route:'romance'});RQ.link('hanni',12);G.saveQuiet();
       document.querySelectorAll('.gs,.g-overlay').forEach(x=>x.remove());FemcGameUI.run();FemcMenu.open('links');
       const card=id=>[...document.querySelectorAll('[data-link]')].find(b=>b.dataset.link===id);
       out.akPips=card('akihiko')?.querySelectorAll('.g-pips i').length;out.akOn=card('akihiko')?.querySelectorAll('.g-pips i.on').length;out.akHint=card('akihiko')?.querySelector('.g-hint')?.textContent;
-      out.yuPips=card('yukari')?.querySelectorAll('.g-pips i').length;out.jwHint=card('jungwon')?.querySelector('.g-hint')?.textContent;
+      out.yuPips=card('yukari')?.querySelectorAll('.g-pips i').length;out.haPips=card('hanni')?.querySelectorAll('.g-pips i').length;out.jwHint=card('jungwon')?.querySelector('.g-hint')?.textContent;
       return out})()""")
     shots('status-links')
-    ui['bonds'] = p.eval(r"""(()=>{FemcMenu.close();FemcMenu.open('bonds');const t=document.body.textContent||'';return {rank15:/R15/.test(t),five:t.includes('Five, Every Day')}})()""")
+    ui['bonds'] = p.eval(r"""(()=>{FemcMenu.close();FemcMenu.open('bonds');const t=document.body.textContent||'';return {rank15:/R15/.test(t),five:t.includes('Five, Every Day'),hanni:t.includes('Good Things')}})()""")
     shots('bonds-tab')
     p.eval('FemcMenu.close()')
-    ok(ui['akPips'] == 15 and ui['akOn'] == 10 and ui['akHint'] != 'MAX' and ui['yuPips'] == 10 and ui['jwHint'] == 'MAX', f'Status: fifteen pips for the four (MAX only at 15), ten for everyone else ({ui})')
-    ok(ui['bonds']['rank15'] and ui['bonds']['five'], 'Bonds lists the rank-15 perks and bond tiers')
+    ok(ui['akPips'] == 15 and ui['akOn'] == 10 and ui['akHint'] != 'MAX' and ui['yuPips'] == 10 and ui['haPips'] == 15 and ui['jwHint'] == 'MAX', f'Status: fifteen pips for the nine (MAX only at 15), ten for everyone else ({ui})')
+    ok(ui['bonds']['rank15'] and ui['bonds']['five'] and ui['bonds']['hanni'], 'Bonds lists the rank-15 perks and bond tiers')
     p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove())")
 
     perks = p.eval(r"""(async()=>{const G=FemcGame,B=window.FemcBuild,BD=window.FemcBonds,out={};
-      out.perks=['haechan','jungwon','akihiko','shinjiro'].map(id=>B.perksAt(id,15).length);
+      out.perks=%s.map(id=>B.perksAt(id,15).length);
       let s=RQ.at('2/26','after');RQ.link('akihiko',14,{route:'romance'});G.takeToasts();const a=G.LINKS.akihiko;s.links.akihiko.ready=undefined;
       const sc=G.linkScene(a);const seen=[];const keep=G.takeToasts;const f=G.finishLink(a,sc.kind,sc.r,99);await new Promise(r=>setTimeout(r,400));out.toast=[...document.querySelectorAll('body *')].filter(e=>!e.children.length&&/Bond perk/.test(e.textContent)).map(e=>e.textContent).concat(G.takeToasts().filter(x=>x.kind==='perk').map(x=>x.text));out.up=f.up&&G.progress('akihiko').rank===15;
       const ctx=(r,love)=>({bonds:{akihiko:r,haechan:r,jungwon:r,shinjiro:r},love:love?['akihiko','haechan','jungwon']:[],rev:[],date:'2/26'});
       out.tier=['akihiko','haechan','jungwon'].map(id=>{const b=BD.byId(id);return [BD.status(b,ctx(14,false)).cur.tier,BD.status(b,ctx(15,false)).cur.tier,BD.status(b,ctx(15,true)).cur.name===b.love15.name]});
       out.shin=BD.status(BD.byId('shinjiro'),ctx(15,true)).state;
+      // Jihoon and Minji (2026-10-22): the same third tier and romance version.
+      const ctx5=(r,love)=>({bonds:{jihoon:r,minji:r},love:love?['jihoon','minji']:[],rev:[],date:'2/26'});
+      out.tier5=['jihoon','minji'].map(id=>{const b=BD.byId(id);return [BD.status(b,ctx5(14,false)).cur.tier,BD.status(b,ctx5(15,false)).cur.tier,BD.status(b,ctx5(15,true)).cur.name===b.love15.name,BD.status(b,ctx5(14,true)).cur.name===b.love.name]});
+      // A rank-15 perk of the five through a real rank-up (Hanni 14 → 15), announced as MAX.
+      s=RQ.at('3/1','after');RQ.link('hanni',14);G.takeToasts();const hn=G.LINKS.hanni,hs=G.linkScene(hn);const hf=G.finishLink(hn,hs.kind,hs.r,99);
+      await new Promise(r=>setTimeout(r,400));
+      out.hanni={up:hf.up&&G.progress('hanni').rank===15,toast:[...document.querySelectorAll('body *')].filter(e=>!e.children.length&&/Bond perk/.test(e.textContent)).map(e=>e.textContent).concat(G.takeToasts().filter(x=>x.kind==='perk').map(x=>x.text)).filter(t=>/Good Things/.test(t))};
       // Stamps: Bond MAX at a link's own top; Rank 15.
       RQ.at('2/26','after');G.S.links.wren.rank=9;G.S.links.elizabeth.rank=9;RQ.link('akihiko',10);out.st10=FemcStamps.earned().filter(x=>/max-link|rank-15/.test(x));
       RQ.link('akihiko',15);out.st15=FemcStamps.earned().filter(x=>/max-link|rank-15/.test(x));
-      return out})()""")
-    ok(perks['perks'] == [1, 1, 1, 1] and perks['up'] and any('MAX' in t for t in perks['toast']), f"each of the four earns a rank-15 perk, announced as MAX ({perks['toast']})")
+      return out})()""" % json.dumps(ALL))
+    ok(perks['perks'] == [1] * len(ALL) and perks['up'] and any('MAX' in t for t in perks['toast']), f"each of the nine earns a rank-15 perk, announced as MAX ({perks['toast']})")
+    ok(perks['hanni']['up'] and any('MAX' in t and 'Good Things' in t for t in perks['hanni']['toast']), f"Hanni's rank 15 announces her perk as MAX ({perks['hanni']})")
+    ok(all(t[0] == 2 and t[1] == 3 and t[2] and t[3] for t in perks['tier5']), f"Jihoon's and Minji's bond skills gain a rank-15 tier and its romance version ({perks['tier5']})")
     ok(all(t[0] == 2 and t[1] == 3 and t[2] for t in perks['tier']) and perks['shin'] == 'gone', f"the fighters' bond skills gain a rank-15 tier (and its romance version); Shinjiro's stays gone ({perks})")
     ok(perks['st10'] == [] and sorted(perks['st15']) == ['p3s-max-link', 'p3s-rank-15'], f"stamps: Bond MAX at the link's own top, and Rank 15 ({perks['st10']} → {perks['st15']})")
 
-    # ── shinjiro ──
-    sh = p.eval(r"""(()=>{const G=FemcGame,l=G.LINKS.shinjiro,out={};
-      let s=RQ.at('12/10','evening');RQ.link('shinjiro',10,{route:'romance'});out.dec=G.linkStatus(l,s.day,'evening').reason;out.decList=G.linksAt('dorm','evening').map(x=>x.id).includes('shinjiro');
-      out.trace=!!G.nextTrace(l);
-      s=RQ.at('2/1','evening');RQ.link('shinjiro',10,{route:'romance'});const st=G.linkStatus(l,s.day,'evening');out.feb={ok:st.ok,home:G.homeOf(l).area,kind:G.linkScene(l).kind,r:G.linkScene(l).r,list:G.linksAt('dorm','evening').map(x=>x.id).includes('shinjiro')};
-      s=RQ.at('1/31','evening');RQ.link('shinjiro',10);out.jan31=G.linkStatus(l,s.day,'evening').ok;
-      // Rank 15: due 2/27 after school at rank 14, not before, not in the evening, not at 13.
-      const w=l.ranks[14],slot=w.slot||'after';out.wake={date:w.after,slot};
-      s=RQ.at(w.after,slot);RQ.link('shinjiro',14,{route:'romance'});let d=G.dueEvent(slot);out.due=!!(d&&d.kind==='link'&&d.link.id==='shinjiro');
-      s=RQ.at(G.mdOf(G.dayOf(w.after)-1),slot);RQ.link('shinjiro',14);d=G.dueEvent(slot);out.early=!!(d&&d.kind==='link'&&d.link.id==='shinjiro');
-      s=RQ.at(w.after,slot==='after'?'evening':'after');RQ.link('shinjiro',14);d=G.dueEvent(G.S.slot);out.other=!!(d&&d.kind==='link'&&d.link.id==='shinjiro');
-      s=RQ.at(w.after,slot);RQ.link('shinjiro',13);d=G.dueEvent(slot);out.at13=!!(d&&d.kind==='link'&&d.link.id==='shinjiro');
-      s=RQ.at('3/1',slot);RQ.link('shinjiro',14);d=G.dueEvent(slot);out.late=!!(d&&d.kind==='link'&&d.link.id==='shinjiro');
-      return out})()""")
-    ok(sh['dec'] in ('max', 'closed') and not sh['decList'] and sh['jan31'] is False, f"after 10/4 Shinjiro is gone (not listed anywhere) until February ({sh['dec']})")
-    ok(sh['feb'] == {'ok': True, 'home': 'dorm', 'kind': 'rank', 'r': 10, 'list': True}, f"from 2/1 the dorm kitchen holds his rank 11 ({sh['feb']})")
-    ok(sh['due'] and not sh['early'] and not sh['other'] and not sh['at13'] and sh['late'], f"his waking (rank 15) is due on {sh['wake']} at rank 14 only, not a day early, not in another slot; a late save still gets it ({sh})")
+    if not ONLY_FIVE:
+        # ── shinjiro ──
+        sh = p.eval(r"""(()=>{const G=FemcGame,l=G.LINKS.shinjiro,out={};
+          let s=RQ.at('12/10','evening');RQ.link('shinjiro',10,{route:'romance'});out.dec=G.linkStatus(l,s.day,'evening').reason;out.decList=G.linksAt('dorm','evening').map(x=>x.id).includes('shinjiro');
+          out.trace=!!G.nextTrace(l);
+          s=RQ.at('2/1','evening');RQ.link('shinjiro',10,{route:'romance'});const st=G.linkStatus(l,s.day,'evening');out.feb={ok:st.ok,home:G.homeOf(l).area,kind:G.linkScene(l).kind,r:G.linkScene(l).r,list:G.linksAt('dorm','evening').map(x=>x.id).includes('shinjiro')};
+          s=RQ.at('1/31','evening');RQ.link('shinjiro',10);out.jan31=G.linkStatus(l,s.day,'evening').ok;
+          // Rank 15: due 2/27 after school at rank 14, not before, not in the evening, not at 13.
+          const w=l.ranks[14],slot=w.slot||'after';out.wake={date:w.after,slot};
+          s=RQ.at(w.after,slot);RQ.link('shinjiro',14,{route:'romance'});let d=G.dueEvent(slot);out.due=!!(d&&d.kind==='link'&&d.link.id==='shinjiro');
+          s=RQ.at(G.mdOf(G.dayOf(w.after)-1),slot);RQ.link('shinjiro',14);d=G.dueEvent(slot);out.early=!!(d&&d.kind==='link'&&d.link.id==='shinjiro');
+          s=RQ.at(w.after,slot==='after'?'evening':'after');RQ.link('shinjiro',14);d=G.dueEvent(G.S.slot);out.other=!!(d&&d.kind==='link'&&d.link.id==='shinjiro');
+          s=RQ.at(w.after,slot);RQ.link('shinjiro',13);d=G.dueEvent(slot);out.at13=!!(d&&d.kind==='link'&&d.link.id==='shinjiro');
+          s=RQ.at('3/1',slot);RQ.link('shinjiro',14);d=G.dueEvent(slot);out.late=!!(d&&d.kind==='link'&&d.link.id==='shinjiro');
+          return out})()""")
+        ok(sh['dec'] in ('max', 'closed') and not sh['decList'] and sh['jan31'] is False, f"after 10/4 Shinjiro is gone (not listed anywhere) until February ({sh['dec']})")
+        ok(sh['feb'] == {'ok': True, 'home': 'dorm', 'kind': 'rank', 'r': 10, 'list': True}, f"from 2/1 the dorm kitchen holds his rank 11 ({sh['feb']})")
+        ok(sh['due'] and not sh['early'] and not sh['other'] and not sh['at13'] and sh['late'], f"his waking (rank 15) is due on {sh['wake']} at rank 14 only, not a day early, not in another slot; a late save still gets it ({sh})")
 
-    # His waking through the real UI.
-    p.eval(r"""(()=>{const G=FemcGame,l=G.LINKS.shinjiro,w=l.ranks[14];const s=RQ.at(w.after,w.slot||'after');RQ.route('stay');RQ.link('shinjiro',14,{route:'romance'});RQ.link('akihiko',15,{route:'friend'});
-      G.saveQuiet();document.querySelectorAll('.gs,.g-overlay').forEach(x=>x.remove());FemcGameUI.run()})()""")
-    p.wait("!!document.querySelector('.gs:not(.out)')")
-    shots('shinjiro-wakes')
-    for _ in range(4000):
-        if p.eval("FemcGame.progress('shinjiro').rank===15 && !document.querySelector('.gs:not(.out)')"):
-            break
-        p.eval('RQ.step()')
-    wk = p.eval(r"""(()=>{const G=FemcGame,l=G.LINKS.shinjiro,a=G.LINKS.akihiko;const t=G.nextTrace(l);
-      const hosp=(a.afterMax||[]).findIndex(e=>/Tatsumi/.test(e.place||''));const list=G.afterList(a);
-      return {rank:G.progress('shinjiro').rank,flag:!!G.S.flags['shinji-awake'],trace:t?((t.entry.flags||[]).includes('shinji-awake')?'awake':t.i):null,akHosp:hosp<0||!list.includes(a.afterMax[hosp]),listed:G.linksAt('dorm','evening').map(x=>x.id).includes('shinjiro')}})()""")
-    ok(wk['rank'] == 15 and wk['flag'] and wk['trace'] in (None, 'awake') and wk['akHosp'] and not wk['listed'], f"he wakes through the real UI: rank 15, shinji-awake set, the bedside traces give way to the awake one, and Akihiko's hospital visit steps aside ({wk})")
+        # His waking through the real UI.
+        p.eval(r"""(()=>{const G=FemcGame,l=G.LINKS.shinjiro,w=l.ranks[14];const s=RQ.at(w.after,w.slot||'after');RQ.route('stay');RQ.link('shinjiro',14,{route:'romance'});RQ.link('akihiko',15,{route:'friend'});
+          G.saveQuiet();document.querySelectorAll('.gs,.g-overlay').forEach(x=>x.remove());FemcGameUI.run()})()""")
+        p.wait("!!document.querySelector('.gs:not(.out)')")
+        shots('shinjiro-wakes')
+        for _ in range(4000):
+            if p.eval("FemcGame.progress('shinjiro').rank===15 && !document.querySelector('.gs:not(.out)')"):
+                break
+            p.eval('RQ.step()')
+        wk = p.eval(r"""(()=>{const G=FemcGame,l=G.LINKS.shinjiro,a=G.LINKS.akihiko;const t=G.nextTrace(l);
+          const hosp=(a.afterMax||[]).findIndex(e=>/Tatsumi/.test(e.place||''));const list=G.afterList(a);
+          return {rank:G.progress('shinjiro').rank,flag:!!G.S.flags['shinji-awake'],trace:t?((t.entry.flags||[]).includes('shinji-awake')?'awake':t.i):null,akHosp:hosp<0||!list.includes(a.afterMax[hosp]),listed:G.linksAt('dorm','evening').map(x=>x.id).includes('shinjiro')}})()""")
+        ok(wk['rank'] == 15 and wk['flag'] and wk['trace'] in (None, 'awake') and wk['akHosp'] and not wk['listed'], f"he wakes through the real UI: rank 15, shinji-awake set, the bedside traces give way to the awake one, and Akihiko's hospital visit steps aside ({wk})")
 
-    mo = p.eval(r"""(()=>{const G=FemcGame,id='r15-shinjiro-awake-morning';const due=()=>{const d=G.dueEvent('early');return d&&d.kind==='event'?d.ev.id:null};
-      let s=RQ.at('2/28','early');s.events=s.events.filter(x=>x!==id);RQ.link('shinjiro',14);const before=due();
-      s=RQ.at('2/28','early');s.events=s.events.filter(x=>x!==id);RQ.link('shinjiro',15);s.flags['shinji-awake']=true;const after=due();
-      s=RQ.at('3/2','early');s.events=s.events.filter(x=>x!==id);RQ.link('shinjiro',15);s.flags['shinji-awake']=true;const late=due();
-      return {before,after,late}})()""")
-    ok(mo == {'before': None, 'after': 'r15-shinjiro-awake-morning', 'late': 'r15-shinjiro-awake-morning'}, f"the morning after he wakes plays only once he's awake, and still plays if the waking came late ({mo})")
+        mo = p.eval(r"""(()=>{const G=FemcGame,id='r15-shinjiro-awake-morning';const due=()=>{const d=G.dueEvent('early');return d&&d.kind==='event'?d.ev.id:null};
+          let s=RQ.at('2/28','early');s.events=s.events.filter(x=>x!==id);RQ.link('shinjiro',14);const before=due();
+          s=RQ.at('2/28','early');s.events=s.events.filter(x=>x!==id);RQ.link('shinjiro',15);s.flags['shinji-awake']=true;const after=due();
+          s=RQ.at('3/2','early');s.events=s.events.filter(x=>x!==id);RQ.link('shinjiro',15);s.flags['shinji-awake']=true;const late=due();
+          return {before,after,late}})()""")
+        ok(mo == {'before': None, 'after': 'r15-shinjiro-awake-morning', 'late': 'r15-shinjiro-awake-morning'}, f"the morning after he wakes plays only once he's awake, and still plays if the waking came late ({mo})")
 
-    # ── akihiko: the romance turn and the buzz ──
-    ak = p.eval(r"""(()=>{const G=FemcGame,l=G.LINKS.akihiko,out={};const r7=l.ranks[6],r9=l.ranks[8];
-      const routeOpts=sc=>{let n=0;RQ.walk(sc,(o,opt)=>{if(opt&&o.route==='romance')n++;});return n};
-      out.r7romance=routeOpts(r7.scene)>0;
-      // Play rank 7 to its end down every path, with and without Shinjiro's romance: romance becomes possible only without it.
-      const plays=shin=>{const routes=new Set();const want=new Set(),got=new Set();
-        RQ.enumerate({scene:RQ.noBattle(r7.scene),place:r7.place,time:r7.time,link:'akihiko'},'ak7',()=>{RQ.at('9/1','after');RQ.link('akihiko',6);RQ.link('shinjiro',6,shin?{route:'romance'}:{});},want,got);
-        const res=[];for(let k=0;k<200;k++){RQ.at('9/1','after');RQ.link('akihiko',6);RQ.link('shinjiro',6,shin?{route:'romance'}:{});const path=[...Array(12)].map((_,i)=>(k>>i)&1?1:(k%3===2&&i===5?2:0));RQ.once({scene:RQ.noBattle(r7.scene),link:'akihiko',place:r7.place},path,'ak7');routes.add(G.progress('akihiko').route||'none');}
-        return [...routes].sort()};
-      out.noShin=plays(false);out.withShin=plays(true);
-      // Rank 9 on the romance route offers no way out of it; unset, the old choice is there.
-      const opts9=rt=>{RQ.at('11/2','after');RQ.link('akihiko',8,rt?{route:rt}:{});const pl=FemcScene.play({scene:RQ.noBattle(r9.scene),link:'akihiko',place:r9.place,onDone:()=>{}}),el=pl.el;const seen=new Set();
-        for(let i=0;i<3000;i++){const bs=[...el.querySelectorAll('.gs-choices button')];if(bs.length){bs.forEach(b=>seen.add(b.textContent));bs[0].click();}else el.click();if(!el.isConnected)break;}
-        pl.close();el.remove();document.documentElement.classList.remove('g-in-scene');return {seen:[...seen],route:G.progress('akihiko').route||null}};
-      const a=opts9('romance'),b=opts9(null);out.r9romance={best:a.seen.some(t=>/best friend/i.test(t)),route:a.route};out.r9open={best:b.seen.some(t=>/best friend/i.test(t)),fallen:b.seen.some(t=>/fallen/i.test(t))};
-      return out})()""", timeout=600)
-    ok(ak['r7romance'] and 'romance' in ak['noShin'] and 'none' in ak['noShin'] and ak['withShin'] == ['none'], f"Akihiko's romance can start at rank 7 (9/1); not while Solar is on Shinjiro's romance route ({ak})")
-    ok(ak['r9romance']['route'] == 'romance' and not ak['r9romance']['best'] and ak['r9open']['best'] and ak['r9open']['fallen'], f"rank 9 keeps a started romance and still offers both answers to everyone else ({ak})")
+        # ── akihiko: the romance turn and the buzz ──
+        ak = p.eval(r"""(()=>{const G=FemcGame,l=G.LINKS.akihiko,out={};const r7=l.ranks[6],r9=l.ranks[8];
+          const routeOpts=sc=>{let n=0;RQ.walk(sc,(o,opt)=>{if(opt&&o.route==='romance')n++;});return n};
+          out.r7romance=routeOpts(r7.scene)>0;
+          // Play rank 7 to its end down every path, with and without Shinjiro's romance: romance becomes possible only without it.
+          const plays=shin=>{const routes=new Set();const want=new Set(),got=new Set();
+            RQ.enumerate({scene:RQ.noBattle(r7.scene),place:r7.place,time:r7.time,link:'akihiko'},'ak7',()=>{RQ.at('9/1','after');RQ.link('akihiko',6);RQ.link('shinjiro',6,shin?{route:'romance'}:{});},want,got);
+            const res=[];for(let k=0;k<200;k++){RQ.at('9/1','after');RQ.link('akihiko',6);RQ.link('shinjiro',6,shin?{route:'romance'}:{});const path=[...Array(12)].map((_,i)=>(k>>i)&1?1:(k%3===2&&i===5?2:0));RQ.once({scene:RQ.noBattle(r7.scene),link:'akihiko',place:r7.place},path,'ak7');routes.add(G.progress('akihiko').route||'none');}
+            return [...routes].sort()};
+          out.noShin=plays(false);out.withShin=plays(true);
+          // Rank 9 on the romance route offers no way out of it; unset, the old choice is there.
+          const opts9=rt=>{RQ.at('11/2','after');RQ.link('akihiko',8,rt?{route:rt}:{});const pl=FemcScene.play({scene:RQ.noBattle(r9.scene),link:'akihiko',place:r9.place,onDone:()=>{}}),el=pl.el;const seen=new Set();
+            for(let i=0;i<3000;i++){const bs=[...el.querySelectorAll('.gs-choices button')];if(bs.length){bs.forEach(b=>seen.add(b.textContent));bs[0].click();}else el.click();if(!el.isConnected)break;}
+            pl.close();el.remove();document.documentElement.classList.remove('g-in-scene');return {seen:[...seen],route:G.progress('akihiko').route||null}};
+          const a=opts9('romance'),b=opts9(null);out.r9romance={best:a.seen.some(t=>/best friend/i.test(t)),route:a.route};out.r9open={best:b.seen.some(t=>/best friend/i.test(t)),fallen:b.seen.some(t=>/fallen/i.test(t))};
+          return out})()""", timeout=600)
+        ok(ak['r7romance'] and 'romance' in ak['noShin'] and 'none' in ak['noShin'] and ak['withShin'] == ['none'], f"Akihiko's romance can start at rank 7 (9/1); not while Solar is on Shinjiro's romance route ({ak})")
+        ok(ak['r9romance']['route'] == 'romance' and not ak['r9romance']['best'] and ak['r9open']['best'] and ak['r9open']['fallen'], f"rank 9 keeps a started romance and still offers both answers to everyone else ({ak})")
 
-    buzz = p.eval(r"""(()=>{const G=FemcGame,out={rows:[],bad:[]};
-      const mine=G.D.dailyLife.filter(e=>(e.ranks&&'akihiko' in e.ranks)||(e.ranksBelow&&'akihiko' in e.ranksBelow)||(e.route&&'akihiko' in e.route));
-      for(const e of mine){
-        const lo=e.ranks?.akihiko??0,hi=e.ranksBelow?.akihiko??16,rt=e.route?.akihiko;
-        // Find a day in its window that fits everything else (slot, school/off, days), then flip each gate.
-        let day=null;for(let d=G.dayOf(e.after);d<=G.dayOf(e.until||G.mdOf(G.dayOf(e.after)+30));d++){const i=G.dayInfo(d);
-          if(e.schoolOnly&&i.type!=='school')continue;if(e.offOnly&&i.type!=='off')continue;if(e.days&&!e.days.includes(i.dow))continue;if(e.weather&&!e.weather.includes(i.weather))continue;
-          if(!G.slotsFor(i).includes(e.slot))continue;if(G.D.events.some(x=>x.date===i.md))continue;day=d;break;}
-        if(day==null){out.bad.push(e.id+': no day');continue;}
-        const fits=(rank,route)=>{RQ.at(G.mdOf(day),e.slot,{flags:Object.fromEntries((e.flags||[]).map(f=>[f,true]))});(e.events||[]).forEach(x=>{if(!G.S.events.includes(x))G.S.events.push(x)});
-          (e.met||[]).forEach(id=>RQ.link(id,Math.max(1,G.progress(id).rank)));Object.entries(e.ranks||{}).forEach(([id,r])=>{if(id!=='akihiko')RQ.link(id,r)});
-          const h=Array.isArray(e.heading)?e.heading[0]:e.heading;if(h&&G.dayOf(G.mdOf(day))>G.dayOf('12/21'))RQ.route(h);
-          RQ.link('akihiko',rank,route&&route!=='none'?{route}:{});G.S.dailyLife={seen:G.D.dailyLife.filter(x=>x.id!==e.id).map(x=>x.id),lastDay:-99};const r=G.dailyLife(e.slot,day);return r&&r.id===e.id};
-        const okIn=fits(lo,rt||'romance');const below=lo>0?!fits(lo-1,rt||'romance'):true;const above=hi<16?!fits(hi,rt||'romance'):true;
-        const wrong=rt?!fits(lo,rt==='romance'?'friend':'romance'):true;
-        out.rows.push([e.id,lo,hi,rt||'-',okIn,below,above,wrong]);if(!(okIn&&below&&above&&wrong))out.bad.push(e.id);}
-      const runs=G.D.runIns.filter(e=>(e.ranks&&'akihiko' in e.ranks)||(e.ranksBelow&&'akihiko' in e.ranksBelow)||(e.route&&'akihiko' in e.route));
-      out.runins=runs.map(e=>e.id);
-      for(const e of runs){const lo=e.ranks?.akihiko??0,hi=e.ranksBelow?.akihiko??16,rt=e.route?.akihiko,w=e.where||{},spot={act:(w.acts||[])[0],area:(w.areas||[])[0],job:(w.jobs||[])[0],club:(w.clubs||[])[0],slot:e.slot};
-        let day=null;for(let d=G.dayOf(e.after||'4/8');d<=G.dayOf(e.until||G.mdOf(G.dayOf(e.after||'4/8')+45));d++){RQ.at(G.mdOf(d),e.slot||'after');RQ.link('akihiko',lo,rt&&rt!=='none'?{route:rt}:{});(e.met||[]).forEach(id=>RQ.link(id,Math.max(1,G.progress(id).rank)));Object.assign(G.S.flags,Object.fromEntries((e.flags||[]).map(f=>[f,true])));if(G.runInFits(e,spot,d)){day=d;break;}}
-        if(day==null){out.bad.push(e.id+': never fits');continue;}
-        const fits=(rank,route)=>{RQ.at(G.mdOf(day),e.slot||'after');(e.met||[]).forEach(id=>RQ.link(id,1));Object.assign(G.S.flags,Object.fromEntries((e.flags||[]).map(f=>[f,true])));RQ.link('akihiko',rank,route&&route!=='none'?{route}:{});return G.runInFits(e,spot,day)};
-        const okr=fits(lo,rt)&&(lo===0||!fits(lo-1,rt))&&(hi===16||!fits(hi,rt))&&(!rt||!fits(lo,rt==='romance'?'friend':'romance'));
-        out.rows.push([e.id,lo,hi,rt||'-',okr]);if(!okr)out.bad.push(e.id);}
-      out.n=mine.length;return out})()""", timeout=600)
-    print('buzz', json.dumps(buzz['rows']))
-    ok(buzz['n'] >= 4 and not buzz['bad'], f"the Gekkoukan buzz: {buzz['n']} routines and {len(buzz['runins'])} run-ins play inside their rank / route gates and not outside them: {buzz['bad']}")
+        buzz = p.eval(r"""(()=>{const G=FemcGame,out={rows:[],bad:[]};
+          const mine=G.D.dailyLife.filter(e=>(e.ranks&&'akihiko' in e.ranks)||(e.ranksBelow&&'akihiko' in e.ranksBelow)||(e.route&&'akihiko' in e.route));
+          for(const e of mine){
+            const lo=e.ranks?.akihiko??0,hi=e.ranksBelow?.akihiko??16,rt=e.route?.akihiko;
+            // Find a day in its window that fits everything else (slot, school/off, days), then flip each gate.
+            let day=null;for(let d=G.dayOf(e.after);d<=G.dayOf(e.until||G.mdOf(G.dayOf(e.after)+30));d++){const i=G.dayInfo(d);
+              if(e.schoolOnly&&i.type!=='school')continue;if(e.offOnly&&i.type!=='off')continue;if(e.days&&!e.days.includes(i.dow))continue;if(e.weather&&!e.weather.includes(i.weather))continue;
+              if(!G.slotsFor(i).includes(e.slot))continue;if(G.D.events.some(x=>x.date===i.md))continue;day=d;break;}
+            if(day==null){out.bad.push(e.id+': no day');continue;}
+            const fits=(rank,route)=>{RQ.at(G.mdOf(day),e.slot,{flags:Object.fromEntries((e.flags||[]).map(f=>[f,true]))});(e.events||[]).forEach(x=>{if(!G.S.events.includes(x))G.S.events.push(x)});
+              (e.met||[]).forEach(id=>RQ.link(id,Math.max(1,G.progress(id).rank)));Object.entries(e.ranks||{}).forEach(([id,r])=>{if(id!=='akihiko')RQ.link(id,r)});
+              const h=Array.isArray(e.heading)?e.heading[0]:e.heading;if(h&&G.dayOf(G.mdOf(day))>G.dayOf('12/21'))RQ.route(h);
+              RQ.link('akihiko',rank,route&&route!=='none'?{route}:{});G.S.dailyLife={seen:G.D.dailyLife.filter(x=>x.id!==e.id).map(x=>x.id),lastDay:-99};const r=G.dailyLife(e.slot,day);return r&&r.id===e.id};
+            const okIn=fits(lo,rt||'romance');const below=lo>0?!fits(lo-1,rt||'romance'):true;const above=hi<16?!fits(hi,rt||'romance'):true;
+            const wrong=rt?!fits(lo,rt==='romance'?'friend':'romance'):true;
+            out.rows.push([e.id,lo,hi,rt||'-',okIn,below,above,wrong]);if(!(okIn&&below&&above&&wrong))out.bad.push(e.id);}
+          const runs=G.D.runIns.filter(e=>(e.ranks&&'akihiko' in e.ranks)||(e.ranksBelow&&'akihiko' in e.ranksBelow)||(e.route&&'akihiko' in e.route));
+          out.runins=runs.map(e=>e.id);
+          for(const e of runs){const lo=e.ranks?.akihiko??0,hi=e.ranksBelow?.akihiko??16,rt=e.route?.akihiko,w=e.where||{},spot={act:(w.acts||[])[0],area:(w.areas||[])[0],job:(w.jobs||[])[0],club:(w.clubs||[])[0],slot:e.slot};
+            let day=null;for(let d=G.dayOf(e.after||'4/8');d<=G.dayOf(e.until||G.mdOf(G.dayOf(e.after||'4/8')+45));d++){RQ.at(G.mdOf(d),e.slot||'after');RQ.link('akihiko',lo,rt&&rt!=='none'?{route:rt}:{});(e.met||[]).forEach(id=>RQ.link(id,Math.max(1,G.progress(id).rank)));Object.assign(G.S.flags,Object.fromEntries((e.flags||[]).map(f=>[f,true])));if(G.runInFits(e,spot,d)){day=d;break;}}
+            if(day==null){out.bad.push(e.id+': never fits');continue;}
+            const fits=(rank,route)=>{RQ.at(G.mdOf(day),e.slot||'after');(e.met||[]).forEach(id=>RQ.link(id,1));Object.assign(G.S.flags,Object.fromEntries((e.flags||[]).map(f=>[f,true])));RQ.link('akihiko',rank,route&&route!=='none'?{route}:{});return G.runInFits(e,spot,day)};
+            const okr=fits(lo,rt)&&(lo===0||!fits(lo-1,rt))&&(hi===16||!fits(hi,rt))&&(!rt||!fits(lo,rt==='romance'?'friend':'romance'));
+            out.rows.push([e.id,lo,hi,rt||'-',okr]);if(!okr)out.bad.push(e.id);}
+          out.n=mine.length;return out})()""", timeout=600)
+        print('buzz', json.dumps(buzz['rows']))
+        ok(buzz['n'] >= 4 and not buzz['bad'], f"the Gekkoukan buzz: {buzz['n']} routines and {len(buzz['runins'])} run-ins play inside their rank / route gates and not outside them: {buzz['bad']}")
 
     # ── branches ──
+    BR = FIVE if ONLY_FIVE else ALL
+    ROMANCE = set(p.eval("Object.values(FemcGame.LINKS).filter(l=>l.romance).map(l=>l.id)"))
     br = p.eval(r"""(()=>{const G=FemcGame,out={};
-      for(const id of ['haechan','jungwon','akihiko','shinjiro']){const l=G.LINKS[id];out[id]=[];
+      for(const id of %s){const l=G.LINKS[id];out[id]=[];
         l.ranks.slice(10).forEach((r,k)=>{let heads=false,routes=false;RQ.walk(r.scene,x=>{if(x.ifHeading)heads=true;if(x.ifRoute||x.ifRomance)routes=true;});
           const txt={};for(const h of ['R','S','H','stay','true'])for(const rt of ['romance','friend']){RQ.at(r.after,r.slot||'evening');RQ.route(h);RQ.link(id,10+k,{route:rt});
             ['hanni','hyein','yunjin','jungwon','mark','jihoon','cherry','minji','jaehyun','akihiko','haechan','ken','koromaru','sunoo'].forEach(x=>{if(x!==id)RQ.link(x,10)});
             txt[h+'/'+rt]=RQ.once({scene:RQ.noBattle(r.scene),link:id,place:r.place,time:r.time},[],id+'/'+(k+11)).text;}
           const byHead=new Set(['R','S','H','stay','true'].map(h=>txt[h+'/romance'])).size,byRoute=['R','S','H','stay','true'].filter(h=>txt[h+'/romance']!==txt[h+'/friend']).length;
           out[id].push({rank:k+11,heads,routes,byHead,byRoute});});}
-      return out})()""", timeout=900)
+      return out})()""" % json.dumps(BR), timeout=900)
     print('branches', json.dumps(br))
-    for id in FOUR:
+    for id in BR:
         for r in br[id]:
             ok(r['heads'] and r['byHead'] >= 3, f"{id} rank {r['rank']} branches by the locked route ({r['byHead']} different scenes over five routes)")
-            ok(r['routes'] and r['byRoute'] >= 1, f"{id} rank {r['rank']} differs between romance and friendship ({r['byRoute']}/5 routes)")
+            # Hanni, Hyein and Mark are friendship links: no romance to branch on.
+            if id in ROMANCE:
+                ok(r['routes'] and r['byRoute'] >= 1, f"{id} rank {r['rank']} differs between romance and friendship ({r['byRoute']}/5 routes)")
 
     # ── reach: a realistic February ──
     reach = {}
+    if not ONLY_FIVE:
+        for head in ['stay', 'R', 'S', 'H', 'true']:
+            for rt in (['romance', 'friend'] if not QUICK else ['romance']):
+                r = p.eval(r"""(()=>{const G=FemcGame,s=RQ.at('1/31','late');RQ.route('%s');
+                  ['haechan','jungwon','akihiko','shinjiro'].forEach(id=>RQ.link(id,10,{route:'%s',rankDay:{10:G.dayOf('1/20')}}));
+                  ['hanni','hyein','yunjin','mark','jihoon','cherry','minji','jaehyun','ken','koromaru','sunoo','junpei','yukari','mitsuru','fuuka','aigis'].forEach(x=>RQ.link(x,10));
+                  s.links.shinjiro.after=2;s.route.frags={R:6,S:6,H:6};const f=RQ.february(['haechan','jungwon','akihiko','shinjiro'],'best');return {reached:f.reached,ranks:f.ranks,n:f.log.length,log:f.log.slice(-6)}})()""" % (head, rt), timeout=1800)
+                reach[f'{head}/{rt}'] = r
+                ok(all(r['ranks'][id] == 15 for id in FOUR), f"a February on the {head} route ({rt}) takes all four to 15 with good answers: {r['reached']} {r['ranks']}")
+        plain = p.eval(r"""(()=>{const G=FemcGame,out={};for(const id of ['jungwon','akihiko','shinjiro']){const s=RQ.at('1/31','late');RQ.route('stay');RQ.link(id,10,{route:'friend'});s.route.frags={R:6,S:6,H:6};
+            const f=RQ.february([id],'plain');out[id]={rank:f.ranks[id],at:f.reached[id]||null,hang:f.log.filter(x=>x[3]==='hangout').length};}return out})()""", timeout=1800)
+        ok(all(v['rank'] == 15 for v in plain.values()), f"a player who answers less well still reaches 15 by 3/4 with hangouts: {plain}")
+    # The five later links together (2026-10-22): Hanni, Hyein, Minji and Jihoon share after school, Mark has the evenings.
     for head in ['stay', 'R', 'S', 'H', 'true']:
         for rt in (['romance', 'friend'] if not QUICK else ['romance']):
-            r = p.eval(r"""(()=>{const G=FemcGame,s=RQ.at('1/31','late');RQ.route('%s');
-              ['haechan','jungwon','akihiko','shinjiro'].forEach(id=>RQ.link(id,10,{route:'%s',rankDay:{10:G.dayOf('1/20')}}));
-              ['hanni','hyein','yunjin','mark','jihoon','cherry','minji','jaehyun','ken','koromaru','sunoo','junpei','yukari','mitsuru','fuuka','aigis'].forEach(x=>RQ.link(x,10));
-              s.links.shinjiro.after=2;s.route.frags={R:6,S:6,H:6};const f=RQ.february(['haechan','jungwon','akihiko','shinjiro'],'best');return {reached:f.reached,ranks:f.ranks,n:f.log.length,log:f.log.slice(-6)}})()""" % (head, rt), timeout=1800)
-            reach[f'{head}/{rt}'] = r
-            ok(all(r['ranks'][id] == 15 for id in FOUR), f"a February on the {head} route ({rt}) takes all four to 15 with good answers: {r['reached']} {r['ranks']}")
-    plain = p.eval(r"""(()=>{const G=FemcGame,out={};for(const id of ['jungwon','akihiko','shinjiro']){const s=RQ.at('1/31','late');RQ.route('stay');RQ.link(id,10,{route:'friend'});s.route.frags={R:6,S:6,H:6};
-        const f=RQ.february([id],'plain');out[id]={rank:f.ranks[id],at:f.reached[id]||null,hang:f.log.filter(x=>x[3]==='hangout').length};}return out})()""", timeout=1800)
-    ok(all(v['rank'] == 15 for v in plain.values()), f"a player who answers less well still reaches 15 by 3/4 with hangouts: {plain}")
+            r = p.eval(r"""(()=>{const G=FemcGame,s=RQ.at('1/31','late');RQ.route('%s');const ids=%s;
+              ids.forEach(id=>RQ.link(id,10,{route:'%s',rankDay:{10:G.dayOf('1/20')}}));
+              ['haechan','jungwon','akihiko','shinjiro','yunjin','cherry','jaehyun','ken','koromaru','sunoo','junpei','yukari','mitsuru','fuuka','aigis'].forEach(x=>RQ.link(x,10));
+              s.route.frags={R:9,S:9,H:9};const f=RQ.february(ids,'best');return {reached:f.reached,ranks:f.ranks,n:f.log.length,log:f.log.slice(-6)}})()""" % (head, json.dumps(FIVE), rt), timeout=1800)
+            reach[f'five/{head}/{rt}'] = r
+            ok(all(r['ranks'][id] == 15 for id in FIVE), f"a February on the {head} route ({rt}) takes all five later links to 15 with good answers: {r['reached']} {r['ranks']}")
+    plain5 = p.eval(r"""(()=>{const G=FemcGame,out={};for(const id of %s){const s=RQ.at('1/31','late');RQ.route('stay');RQ.link(id,10,{route:'friend'});s.route.frags={R:9,S:9,H:9};
+        const f=RQ.february([id],'plain');out[id]={rank:f.ranks[id],at:f.reached[id]||null,hang:f.log.filter(x=>x[3]==='hangout').length};}return out})()""" % json.dumps(FIVE), timeout=1800)
+    ok(all(v['rank'] == 15 for v in plain5.values()), f"the five: a player who answers less well still reaches 15 by 3/4 with hangouts: {plain5}")
 
     # ── migration ──
     mig = p.eval(r"""(()=>{const G=FemcGame,out={};
       // An old December save (made before this batch): the four at 10, afterMax partway, Shinjiro's traces partway.
-      let s=RQ.at('12/20','evening');['haechan','jungwon','akihiko'].forEach(id=>RQ.link(id,10,{route:'romance',after:2,rankDay:{10:G.dayOf('12/1')}}));RQ.link('shinjiro',10,{route:'romance',after:1,rankDay:{10:G.dayOf('10/3')}});
+      let s=RQ.at('12/20','evening');%s.forEach(id=>RQ.link(id,10,{route:'romance',after:1,rankDay:{10:G.dayOf('12/1')}}));['haechan','jungwon','akihiko'].forEach(id=>RQ.link(id,10,{route:'romance',after:2,rankDay:{10:G.dayOf('12/1')}}));RQ.link('shinjiro',10,{route:'romance',after:1,rankDay:{10:G.dayOf('10/3')}});
       const raw=RQ.copy(s);delete raw.yv;raw.yv=2;
       G.importCode(btoa(unescape(encodeURIComponent(JSON.stringify({state:raw})))));
       out.code=['haechan','jungwon','akihiko','shinjiro'].map(id=>[G.progress(id).rank,G.progress(id).after,G.progress(id).route]);
+      out.code5=%s.map(id=>[G.progress(id).rank,G.progress(id).after,G.linkScene(G.LINKS[id]).kind]);
       out.decAk=G.linkScene(G.LINKS.akihiko).kind;out.decTrace=G.nextTrace(G.LINKS.shinjiro)?.i??null;
       // The same save through a slot and the autosave key.
       localStorage.setItem('kg-femc-revamp-slot2',JSON.stringify({state:raw,at:Date.now()}));G.loadSlot(2);out.slot=G.progress('akihiko').rank===10&&G.progress('shinjiro').after===1;
       // An old save already in February, past several rank dates: everything picks up, one story rank a night.
-      s=RQ.at('2/18','late');['haechan','jungwon','akihiko','shinjiro'].forEach(id=>RQ.link(id,10,{route:'friend'}));const raw2=RQ.copy(s);
+      s=RQ.at('2/18','late');['haechan','jungwon','akihiko','shinjiro',...%s].forEach(id=>RQ.link(id,10,{route:'friend'}));s.route.frags={R:9,S:9,H:9};const raw2=RQ.copy(s);
       G.importCode(btoa(unescape(encodeURIComponent(JSON.stringify({state:raw2})))));
       const hc=G.dueEvent('late');out.feb={hc:hc&&hc.kind==='link'?[hc.link.id,G.linkScene(hc.link).r]:null};G.S.slot='after';G.S.day=G.dayOf('2/19');
       out.feb.ak=[G.linkScene(G.LINKS.akihiko).kind,G.linkScene(G.LINKS.akihiko).r];G.S.slot='evening';out.feb.sh=[G.linkStatus(G.LINKS.shinjiro).ok,G.linkScene(G.LINKS.shinjiro).r];
-      return out})()""")
+      // The five: on their first home day from 2/19, their rank 11 is up.
+      out.feb5={};for(const id of %s){const l=G.LINKS[id],slot=l.home.slot==='evening'?'evening':'after';let d=G.dayOf('2/19');while(!l.home.days.includes(G.dayInfo(d).dow)||G.D.events.some(e=>!e.unlock&&e.date===G.mdOf(d)&&(e.slot||'evening')===slot))d++;
+        G.S.day=d;G.S.slot=slot;G.S.spent={};out.feb5[id]=[G.linkStatus(l).ok,G.linkScene(l).kind,G.linkScene(l).r];}
+      return out})()""" % (json.dumps(FIVE), json.dumps(FIVE), json.dumps(FIVE), json.dumps(FIVE)))
     ok(mig['code'] == [[10, 2, 'romance'], [10, 2, 'romance'], [10, 2, 'romance'], [10, 1, 'romance']] and mig['decAk'] == 'after' and mig['decTrace'] == 1 and mig['slot'],
        f"an old December save loads unchanged (codes and slots): afterMax and traces carry on where they were ({mig})")
+    ok(all(v == [10, 1, 'after'] for v in mig['code5']), f"the five at 10 in an old December save: unchanged, afterMax carries on ({mig['code5']})")
+    ok(all(v == [True, 'rank', 10] for v in mig['feb5'].values()), f"an old save already in February picks up rank 11 for the five ({mig['feb5']})")
     ok(mig['feb']['hc'] == ['haechan', 10] and mig['feb']['ak'] == ['rank', 10] and mig['feb']['sh'] == [True, 10], f"an old save already in February picks up rank 11 for each of the four ({mig['feb']})")
     # The autosave key, read the way a page load reads it.
     p.eval(r"""(()=>{const G=FemcGame,s=RQ.at('2/2','late');['haechan','jungwon','akihiko','shinjiro'].forEach(id=>RQ.link(id,10,{route:'romance'}));const raw=RQ.copy(s);localStorage.setItem('kg-femc-revamp',JSON.stringify(raw))})()""")
@@ -430,47 +480,55 @@ try:
     p.eval(HELPERS)
 
     # ── capacity: a year whose links move on their dates still plays every routine, the buzz included ──
+    # Two groups (2026-10-22): the first four, then the five later links. Nobody can take all nine through February at once
+    # (they share the after-school slot), so each run moves one group on its dates; an r15- routine counts in the run that
+    # moves the links it's gated on, and the ungated routines must play in every run.
     cap = {}
-    for rt in ['romance', 'friend']:
-        cap[rt] = p.eval(r"""(()=>{const G=FemcGame,s=RQ.at('4/8','early');s.dailyLife={seen:[],lastDay:-99};const plays=[];const ids=['akihiko','shinjiro','jungwon','haechan'];
+    for grp, gids in ([('five', FIVE)] if ONLY_FIVE else [('four', FOUR), ('five', FIVE)]):
+      for rt in ['romance', 'friend']:
+        cap[grp + '/' + rt] = p.eval(r"""(()=>{const G=FemcGame,s=RQ.at('4/8','early');s.dailyLife={seen:[],lastDay:-99};const plays=[];const ids=%s;
           const rankOn=(l,d)=>l.ranks.filter(r=>r.after&&G.dayOf(r.after)<=d).length;
           for(let d=G.dayOf('4/8');d<=G.END();d++){s.day=d;const info=G.dayInfo(d);s.spent={};
             if(d>=G.dayOf('4/18'))s.flags['joined-junpei']=true;if(d>=G.dayOf('12/22'))Object.assign(s.flags,{'year-goes-on':true,'route-stay':true});
             RQ.link&&ids.forEach(id=>{const l=G.LINKS[id];let r=Math.min(15,rankOn(l,d));if(id==='shinjiro'&&d>=G.dayOf('10/4')&&d<G.dayOf('2/1'))r=10;
-              if(id==='haechan'&&d<=G.dayOf('11/4'))r=0;if(id==='jungwon'&&d<=G.dayOf('10/14'))r=0;
+              if(id==='haechan'&&d<=G.dayOf('11/4'))r=0;if(id==='jungwon'&&d<=G.dayOf('10/14'))r=0;if(d<G.dayOf(l.starts||'4/8'))r=0;
               if(r>0){if(!s.met.includes(id))s.met.push(id);const pr=G.progress(id);pr.rank=r;pr.route=(id==='akihiko'?(r>=7&&'%s'==='romance'||r>=9?'%s':undefined):(r>=8?'%s':undefined));}});
             if(d>=G.dayOf('10/4'))s.flags['shinjiro-coma']=true;if(G.progress('shinjiro').rank>=15)s.flags['shinji-awake']=true;
-            [['9/12','arrived-hanni'],['9/12','arrived-hyein'],['10/10','arrived-yunjin'],['10/14','arrived-jungwon'],['11/4','arrived-haechan'],['8/7','joined-shinjiro']].forEach(([w,f])=>{if(d>G.dayOf(w))s.flags[f]=true});
+            [['9/12','arrived-hanni'],['9/12','arrived-hyein'],['9/19','arrived-jihoon'],['9/26','arrived-minji'],['11/18','arrived-mark'],['10/10','arrived-yunjin'],['10/14','arrived-jungwon'],['11/4','arrived-haechan'],['8/7','joined-shinjiro']].forEach(([w,f])=>{if(d>G.dayOf(w))s.flags[f]=true});
             for(const slot of G.slotsFor(info)){s.slot=slot;
               const due=G.D.events.filter(e=>!e.unlock&&e.date===info.md&&({darkhour:'evening'}[e.slot]||e.slot||'evening')===slot&&!s.events.includes(e.id)&&(!e.flag||s.flags[e.flag]));
               if(due.length){due.forEach(e=>s.events.push(e.id));continue;}
               const r=G.dailyLife();if(r){G.finishDailyLife(r.id);plays.push(r.id);}}}
           const optional=G.D.events.filter(e=>e.unlock||(e.flag&&e.flag!=='year-goes-on')).map(e=>e.id);
           const wrong=e=>(e.route&&Object.entries(e.route).some(([id,r])=>id==='akihiko'&&(r==='none'?'%s'==='romance':r!=='%s')))||(e.ranksBelow&&Object.entries(e.ranksBelow).some(([id,r])=>rankOn(G.LINKS[id],G.dayOf(e.after))>=r));
-          const missing=G.D.dailyLife.filter(e=>!plays.includes(e.id)&&!(e.events||[]).some(id=>optional.includes(id))&&!wrong(e)&&(/^r15-/.test(e.id)||!e.ranks&&!e.ranksBelow&&!e.route)).map(e=>e.id);
-          return {missing,r15:plays.filter(x=>/^r15-/.test(x)),skip:G.D.dailyLife.filter(e=>/^r15-/.test(e.id)&&wrong(e)).map(e=>e.id)}})()""" % (rt, rt, rt, rt, rt), timeout=900)
-    every = set(cap['romance']['r15']) | set(cap['friend']['r15'])
-    allr15 = set(p.eval("FemcGame.D.dailyLife.filter(e=>/^r15-/.test(e.id)).map(e=>e.id)"))
+          const gated=e=>[...Object.keys(e.ranks||{}),...Object.keys(e.ranksBelow||{}),...Object.keys(e.route||{})];
+          const ours=e=>/^r15-/.test(e.id)&&gated(e).some(id=>ids.includes(id));
+          const missing=G.D.dailyLife.filter(e=>!plays.includes(e.id)&&!(e.events||[]).some(id=>optional.includes(id))&&!wrong(e)&&(ours(e)||!e.ranks&&!e.ranksBelow&&!e.route)).map(e=>e.id);
+          return {missing,r15:plays.filter(x=>/^r15-/.test(x)),skip:G.D.dailyLife.filter(e=>ours(e)&&wrong(e)).map(e=>e.id),mine:G.D.dailyLife.filter(ours).map(e=>e.id)}})()""" % (json.dumps(gids), rt, rt, rt, rt, rt), timeout=900)
     print('capacity', json.dumps({k: v['missing'] for k, v in cap.items()}))
-    ok(not cap['romance']['missing'] and not cap['friend']['missing'], f"a year whose links move on their dates still plays every routine (romance and friend runs): {cap['romance']['missing']} {cap['friend']['missing']}")
+    ok(not any(v['missing'] for v in cap.values()), f"a year whose links move on their dates still plays every routine (each group, romance and friend runs): { {k: v['missing'] for k, v in cap.items()} }")
     # (One that needs a link barely started, like the outsider's view in February, can't fit runs that max the links; the buzz check plays it.)
-    allr15 -= set(cap['romance']['skip']) & set(cap['friend']['skip'])
-    ok(every == allr15, f"between the two runs every rank-15 routine they allow plays: missing {sorted(allr15 - every)}")
+    for grp in sorted({k.split('/')[0] for k in cap}):
+        every = set(cap[grp + '/romance']['r15']) | set(cap[grp + '/friend']['r15'])
+        allr15 = set(cap[grp + '/romance']['mine']) - (set(cap[grp + '/romance']['skip']) & set(cap[grp + '/friend']['skip']))
+        ok(every == allr15, f"{grp}: between the two runs every rank-15 routine they allow plays: missing {sorted(allr15 - every)}")
 
     # ── scenes ──
     n_paths = 0
     jobs = []
-    for id in FOUR:
+    for id in (FIVE if ONLY_FIVE else ALL):
         jobs.append((f'{id}-ranks', f"const l=G.LINKS['{id}'];l.ranks.slice(10).forEach((r,k)=>{{n+=RQ.paths({{scene:r.scene,place:r.place,time:r.time}},'{id}/'+(k+11),r.after,'{id}',{{rank:10+k,slot:r.slot||'evening'}})}});"))
         jobs.append((f'{id}-stretch', f"const l=G.LINKS['{id}'];(l.stretchHangouts||[]).forEach((h,i)=>{{n+=RQ.paths({{scene:h,place:G.linkPlace(l)}},'{id}/stretch/'+i,'2/10','{id}',{{rank:11}})}});(l.afterMax||[]).forEach((e,i)=>{{n+=RQ.paths({{scene:e.scene,place:e.place,time:e.time}},'{id}/after/'+i,'2/10','{id}',{{rank:12}})}});"))
-    jobs.append(('akihiko-changed', "const l=G.LINKS.akihiko;[6,7,8].forEach(i=>{const r=l.ranks[i];n+=RQ.paths({scene:r.scene,place:r.place,time:r.time},'akihiko/'+(i+1),r.after,'akihiko',{rank:i,routes:[null,'romance','friend'],setup:st=>{if(!st.rt)G.S.links.shinjiro.route='romance';}})});n+=RQ.paths({scene:l.christmas.scene,place:l.christmas.place,time:l.christmas.time},'akihiko/christmas','12/24','akihiko',{rank:10});"))
-    jobs.append(('haechan-changed', "const l=G.LINKS.haechan;[8,9].forEach(i=>{const r=l.ranks[i];n+=RQ.paths({scene:r.scene,place:r.place,time:r.time},'haechan/'+(i+1),r.after,'haechan',{rank:i,slot:'late'})});"))
-    jobs.append(('living', r"""const ids=['haechan','jungwon','akihiko','shinjiro'];
+    if not ONLY_FIVE:
+        jobs.append(('akihiko-changed', "const l=G.LINKS.akihiko;[6,7,8].forEach(i=>{const r=l.ranks[i];n+=RQ.paths({scene:r.scene,place:r.place,time:r.time},'akihiko/'+(i+1),r.after,'akihiko',{rank:i,routes:[null,'romance','friend'],setup:st=>{if(!st.rt)G.S.links.shinjiro.route='romance';}})});n+=RQ.paths({scene:l.christmas.scene,place:l.christmas.place,time:l.christmas.time},'akihiko/christmas','12/24','akihiko',{rank:10});"))
+        jobs.append(('haechan-changed', "const l=G.LINKS.haechan;[8,9].forEach(i=>{const r=l.ranks[i];n+=RQ.paths({scene:r.scene,place:r.place,time:r.time},'haechan/'+(i+1),r.after,'haechan',{rank:i,slot:'late'})});"))
+    jobs.append(('living', r"""const ids=['haechan','jungwon','akihiko','shinjiro','hanni','hyein','mark','minji','jihoon'];
       const mineD=G.D.dailyLife.filter(e=>/^r15-/.test(e.id));mineD.forEach(e=>{n+=RQ.paths({scene:[...(e.bg?[{bg:e.bg}]:[]),...e.scene],place:e.place,time:e.time},'daily/'+e.id,e.after,null,{slot:e.slot,rank:Math.max(10,...Object.values(e.ranks||{}))>15?15:undefined,setup:st=>{Object.entries(e.ranks||{}).forEach(([id,r])=>RQ.link(id,Math.min(15,Math.max(r,(e.ranksBelow||{})[id]?(e.ranksBelow[id]-1):r))));Object.entries(e.ranksBelow||{}).forEach(([id,r])=>{if(G.progress(id).rank>=r)RQ.link(id,r-1)});Object.entries(e.route||{}).forEach(([id,r])=>{G.progress(id).route=r==='none'?undefined:r;});(e.flags||[]).forEach(f=>{G.S.flags[f]=true});(e.events||[]).forEach(x=>{if(!G.S.events.includes(x))G.S.events.push(x)});}})});
       const mineR=G.D.runIns.filter(e=>/^r15-/.test(e.id));mineR.forEach(e=>{n+=RQ.paths({scene:e.scene,place:e.place||'Iwatodai Strip',time:e.time||'After School'},'runin/'+e.id,e.after||'4/20',e.who,{slot:e.slot||'after',setup:st=>{Object.entries(e.ranks||{}).forEach(([id,r])=>RQ.link(id,r));Object.entries(e.ranksBelow||{}).forEach(([id,r])=>{if(G.progress(id).rank>=r)RQ.link(id,r-1)});Object.entries(e.route||{}).forEach(([id,r])=>{G.progress(id).route=r==='none'?undefined:r;});(e.flags||[]).forEach(f=>{G.S.flags[f]=true});}})});
       ids.forEach(id=>{const l=G.LINKS[id];(l.lateNights||[]).filter(e=>/^r15-/.test(e.id)).forEach(e=>{n+=RQ.paths({scene:[...(e.bg?[{bg:e.bg}]:[]),...e.scene],place:e.place,time:e.time},'night/'+e.id,e.after,id,{slot:'late',rank:Math.max(10,e.rank||10)})});
         Object.entries(l.holidays||{}).filter(([md,h])=>G.dayOf(md)>=G.dayOf('1/31')||/^r15-/.test(h.id||'')).forEach(([md,h])=>{n+=RQ.paths({scene:[...(h.bg?[{bg:h.bg}]:[]),...h.scene],place:h.place,time:h.time},'holiday/'+id+'/'+md,md,id,{rank:Math.max(10,h.rank||10)})});});"""))
-    jobs.append(('events', "['a6-graduation','end-ending','r15-shinjiro-awake-morning','a3-campus','a3-dinner'].forEach(id=>{const e=G.D.events.find(x=>x.id===id);n+=RQ.paths({scene:e.scene,place:e.place,time:e.time,event:true},'event/'+id,e.date,null,{slot:e.slot,setup:st=>{G.S.flags['shinji-awake']=!!st.flags['shinji-awake'];}})});"))
+    if not ONLY_FIVE:
+        jobs.append(('events', "['a6-graduation','end-ending','r15-shinjiro-awake-morning','a3-campus','a3-dinner'].forEach(id=>{const e=G.D.events.find(x=>x.id===id);n+=RQ.paths({scene:e.scene,place:e.place,time:e.time,event:true},'event/'+id,e.date,null,{slot:e.slot,setup:st=>{G.S.flags['shinji-awake']=!!st.flags['shinji-awake'];}})});"))
     for name, body in jobs:
         k = p.eval('(()=>{const G=FemcGame;let n=0;' + body + 'return n})()', timeout=3600)
         print(name, k, 'paths', flush=True)
