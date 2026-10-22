@@ -1,5 +1,7 @@
 /* Every character in the compendium, shown on compendium.html (FEMC mode only).
    unlock: 'met:<id>' (a social link you have met), 'reg:<id>' (registered in someone's scene), a stamp id, or 'always'.
+   v1only: a v1 link that isn't in the revamp (Leon, Cloud, Noctis, Astarion, Shadowheart, removed 2026-10-21). It opens only from
+   v1's save ('kg-femc-game') and is listed only when a v1 save exists, so revamp-only players never see a locked page forever.
    img is a portrait path; entries without one show a silhouette. Locked entries never show their notes. */
 window.FEMC_COMPENDIUM = [
  {
@@ -53,6 +55,7 @@ window.FEMC_COMPENDIUM = [
  },
  {
   "id": "shadowheart",
+  "v1only": true,
   "name": "Shadowheart",
   "from": "Baldur's Gate 3",
   "img": "assets/femc/portraits/shadowheart/neutral.webp",
@@ -73,6 +76,7 @@ window.FEMC_COMPENDIUM = [
  },
  {
   "id": "noctis",
+  "v1only": true,
   "name": "Noctis Lucis Caelum",
   "from": "Final Fantasy XV",
   "img": null,
@@ -113,6 +117,7 @@ window.FEMC_COMPENDIUM = [
  },
  {
   "id": "leon",
+  "v1only": true,
   "name": "Leon S. Kennedy",
   "from": "Resident Evil 4",
   "img": null,
@@ -153,6 +158,7 @@ window.FEMC_COMPENDIUM = [
  },
  {
   "id": "cloud",
+  "v1only": true,
   "name": "Cloud Strife",
   "from": "Final Fantasy VII",
   "img": null,
@@ -183,6 +189,7 @@ window.FEMC_COMPENDIUM = [
  },
  {
   "id": "astarion",
+  "v1only": true,
   "name": "Astarion",
   "from": "Baldur's Gate 3",
   "img": "assets/femc/portraits/astarion/neutral.webp",
@@ -582,6 +589,9 @@ window.FEMC_COMPENDIUM = [
  }
 ];
 
+// v1-only entries: hidden (like a secret) for a player with no v1 save; v1 players see them exactly as before.
+(() => { let v1 = false; try { v1 = !!localStorage.getItem('kg-femc-game'); } catch (err) {} if (!v1) window.FEMC_COMPENDIUM.forEach(e => { if (e.v1only) e.secret = true; }); })();
+
 // The shared Compendium reads progress without changing either game's saves.
 window.femcCompendiumOpen = e => {
   const read = key => { try { const value = JSON.parse(localStorage.getItem(key)); return value && typeof value === 'object' ? value : {}; } catch (err) { return {}; } };
@@ -590,6 +600,7 @@ window.femcCompendiumOpen = e => {
   const got = window.Achievements ? Achievements.unlocked() : {};
   if (e.unlock === 'always') return true;
   // v1 keeps prior discoveries in past; the revamp carries registered entries through New Game+.
+  if (e.v1only && e.unlock.startsWith('met:')) return ids(game.met, game.past?.met).includes(e.unlock.slice(4));
   if (e.unlock.startsWith('met:')) return ids(game.met, game.past?.met, revamp.met, revamp.registered).includes(e.unlock.slice(4));
   if (e.unlock.startsWith('reg:')) return ids(game.registered, game.past?.registered, revamp.registered).includes(e.unlock.slice(4));
   return !!got[e.unlock];

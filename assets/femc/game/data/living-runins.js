@@ -635,43 +635,6 @@ window.FEMC_GAME_RUNINS = [
       { bond: { aphrodite: 1 } }
     ] },
 
-  { id: 'ri-astarion-lateshow', who: 'astarion', where: { acts: ['lateshow'] }, slot: 'evening', met: ['astarion'],
-    after: '7/11', until: '12/19', scene: [
-      { n: "When the lights came up on the late show there was one other person left in the theater, in the very back row, legs crossed, applauding slowly, and it was Astarion, who had evidently enjoyed the film enormously and for all the wrong reasons." },
-      { s: 'astarion', f: 'happy', t: "Darling. Did you see the vampire? The *cape*. Nobody has worn a cape like that in two hundred years, and I would know." },
-      { s: 'astarion', f: 'neutral', t: "And he hissed at a crucifix. Hissed. Like a cat. Gods, the indignity. I'd have sued." },
-      { choose: [
-        { t: "What would you have done?", stat: { knowledge: 1 }, then: [
-          { s: 'astarion', f: 'happy', t: "Charmed the priest, obviously. Borrowed his crucifix. Returned it polished. It's about *presentation*, darling." },
-          { n: "He went on all the way out under the flickering exit sign, about lighting and cheekbones and the scandalous lack of decent wine in any film about vampires, and somewhere near the fountain Solar realized she was being walked home by a monster giving her a film review, and that it was a very good review." }
-        ] },
-        { t: "You were cheering for him.", then: [
-          { s: 'astarion', f: 'blushing', t: "...I was cheering for the *cape*. There's a difference." },
-          { n: "There wasn't. He knew it. He made her promise not to tell a soul, and then, on the steps outside, asked what was showing next Friday." }
-        ] }
-      ] },
-      { bond: { astarion: 1 } }
-    ] },
-
-  { id: 'ri-cloud-notebook', who: 'cloud', where: { acts: ['vending'], areas: ['station'] }, met: ['cloud'],
-    after: '7/11', until: '11/30', scene: [
-      { n: "On her way to the platform she passed the taxi stand, and Cloud was there, leaning on the railing with a small notebook open against his knee, writing something down very slowly with a pencil that was far too short." },
-      { s: 'cloud', f: 'neutral', t: "Solar." },
-      { s: 'cloud', f: 'neutral', t: "...Still Solar?" },
-      { choose: [
-        { t: "Still Solar.", then: [
-          { s: 'cloud', f: 'neutral', t: "Good." },
-          { n: "He wrote it down anyway, under a list of other names, the taxi drivers, the old woman with the noodle cart, the dog that waited by the turnstiles every evening, and underlined it once, and closed the notebook." }
-        ] },
-        { t: "Who else is in there?", stat: { kindness: 1 }, then: [
-          { s: 'cloud', f: 'neutral', t: "People I see. The guy at the stand. The lady with the cart. The dog by the gates. I don't know the dog's name. I gave him one." },
-          { s: 'cloud', f: 'flustered', t: "...Fenrir. Don't." },
-          { n: "She looked over at the turnstiles. The dog was an elderly shiba with a gray muzzle, asleep on a folded newspaper. She didn't say anything. It took everything she had." }
-        ] }
-      ] },
-      { bond: { cloud: 1 } }
-    ] },
-
   { id: 'ri-judy-booth', who: 'judy', where: { acts: ['karaoke'] }, slot: 'evening', met: ['judy'],
     after: '8/10', until: '11/30', scene: [
       { n: "Two songs in, her booth's speaker started buzzing on every bass note like a trapped wasp, and when she went out to tell the clerk he was already in the corridor holding a flashlight for someone lying under the panel of the booth next door, and the someone was Judy Alvarez." },
@@ -688,78 +651,6 @@ window.FEMC_GAME_RUNINS = [
         ] }
       ] },
       { bond: { judy: 1 } }
-    ] },
-
-  { id: 'ri-noctis-pier', who: 'noctis', where: { acts: ['pier'] }, slot: 'after', met: ['noctis'],
-    after: '8/10', until: '10/31', scene: [
-      { n: "At the far end of the pier a fishing rod was propped against the rail with its line in the water, and on the bench behind it, a cap over his face and his arms folded, Noctis was very deeply asleep." },
-      { n: "The line twitched. Then it went taut. Then the whole rod began, slowly, to slide toward the edge." },
-      { choose: [
-        { t: "(Grab the rod.)", stat: { courage: 1 }, then: [
-          { n: "She caught it by the handle an inch from the drop and it bucked in her hands like something alive and furious, and behind her the cap came off and Noctis was on his feet and at her side in one movement, his hands over hers on the reel." },
-          { s: 'noctis', f: 'surprised', t: "Don't let go. Don't let go. Okay. Okay, now slow—" },
-          { n: "It was a sea bass, silver and indignant and longer than her forearm, and he held it up in the sun with the purest delight she'd seen on anyone in Iwatodai, and then, very gently, let it go." },
-          { s: 'noctis', f: 'happy', t: "Too good to eat. ...Thanks. I owe you one." }
-        ] },
-        { t: "Noctis. NOCTIS. Your line.", then: [
-          { s: 'noctis', f: 'surprised', t: "...WHAT? Oh. Oh no no no—" },
-          { n: "He got it. Somehow. Half awake, one shoe untied, he reeled in a sea bass the length of her forearm and held it up and laughed out loud, a sound she'd never heard him make, and then let it go again, because, he said, it had earned it." }
-        ] }
-      ] },
-      { bond: { noctis: 1 } }
-    ] },
-
-  { id: 'ri-noctis-market', who: 'noctis', where: { jobs: ['fishmarket'] }, met: ['noctis'],
-    after: '10/11', until: '1/24', cast: { monger: 'Fishmonger' }, scene: [
-      { n: "In the gray before the auctions started, when the market was all hose water and ice and men shouting numbers, a figure in a black jacket stood in front of a tray of mackerel with his hands in his pockets and his eyes half shut, and it took her a moment to understand that Noctis wasn't asleep. He was appraising." },
-      { s: 'noctis', f: 'neutral', t: "That one. Third from the left. Caught yesterday, not today. Look at the eye." },
-      { s: 'monger', t: "...The kid's right. Who is this kid?" },
-      { choose: [
-        { t: "He's a regular. Sort of.", then: [
-          { n: "The fishmonger looked at Noctis with new respect and offered him a job on the spot, and Noctis said no thank you, very politely, he didn't do mornings, and the fishmonger pointed out that it was five a.m. and he was already here, and Noctis considered this for a long time and did not have an answer." }
-        ] },
-        { t: "(Pull the third one off the tray.)", stat: { proficiency: 1 }, then: [
-          { n: "She pulled it. Noctis nodded once, the nod of a man whose work here was done, went and sat on an upturned crate by the ice machine, and was asleep again before the first bell." }
-        ] }
-      ] },
-      { bond: { noctis: 1 } }
-    ] },
-
-  { id: 'ri-shadowheart-claps', who: 'shadowheart', where: { acts: ['pray'] }, slot: 'evening', met: ['shadowheart'],
-    after: '8/10', until: '12/20', scene: [
-      { n: "When she opened her eyes after the two claps, Shadowheart was standing at her shoulder in the dark of the courtyard with her arms folded, studying the offering box as if it were a lock she meant to pick." },
-      { s: 'shadowheart', f: 'neutral', t: "Two claps. Every time. Everyone does exactly two. Who decided on two?" },
-      { s: 'shadowheart', f: 'serious', t: "Where I'm from you'd at least kneel. Here you clap like you're calling for the bill." },
-      { choose: [
-        { t: "It's to get the god's attention. Politely.", stat: { knowledge: 1 }, then: [
-          { s: 'shadowheart', f: 'neutral', t: "...Politely. Hm." },
-          { n: "She considered the box. Then, when she thought Solar wasn't looking, she clapped twice, very softly, and stood with her eyes shut for about a breath and a half, and opened them looking faintly annoyed with herself, the way people look when something has worked a little." }
-        ] },
-        { t: "Want to try?", stat: { courage: 1 }, then: [
-          { s: 'shadowheart', f: 'surprised', t: "Me? To *your* god? I'm not sure that's—" },
-          { s: 'shadowheart', f: 'neutral', t: "...Fine. Once. For research." },
-          { n: "She clapped like it was a dare. Nothing happened, of course, except that the wind moved through the tree with the fortunes in it and every paper knot rustled at once, and Shadowheart looked up at it for a long moment and said nothing at all on the way down the steps." }
-        ] }
-      ] },
-      { bond: { shadowheart: 1 } }
-    ] },
-
-  { id: 'ri-leon-counter', who: 'leon', where: { acts: ['wildduck', 'hagakure'] }, met: ['leon'],
-    after: '9/9', until: '12/31', scene: [
-      { n: "She was halfway through when the stool beside her scraped, and a man in a leather jacket sat down, ordered without looking at the menu, and said hey without looking at her, and it was Leon, with the hollow look of a man who'd had a long day at a job nobody had given him." },
-      { s: 'leon', f: 'neutral', t: "Don't mind me. I'm just here for the calories." },
-      { s: 'leon', f: 'neutral', t: "Long day. Somebody's cat on a roof. Then somebody's grandmother on a different roof, going after the cat. This town has a lot of roofs." },
-      { choose: [
-        { t: "Welcome to Iwatodai.", stat: { charm: 1 }, then: [
-          { s: 'leon', f: 'happy', t: "Yeah. I'm starting to get that." },
-          { n: "He ate fast, the way people eat who have learned that meals get interrupted, and then partway through he slowed down, as if he'd remembered that nothing was going to interrupt this one, and that seemed to surprise him." }
-        ] },
-        { t: "Is the grandmother okay?", stat: { kindness: 1 }, then: [
-          { s: 'leon', f: 'neutral', t: "Grandma's fine. Grandma got the cat. I was mostly there for moral support." },
-          { s: 'leon', f: 'happy', t: "I'd hire her." }
-        ] }
-      ] },
-      { bond: { leon: 1 } }
     ] },
 
   { id: 'ri-rohan-electricbath', who: 'rohan', where: { acts: ['electricbath'] }, slot: 'evening', met: ['rohan'],

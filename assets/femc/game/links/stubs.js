@@ -19,12 +19,7 @@
   { id: 'mercy', name: 'Mercy', short: 'Mercy', arcana: 'Temperance', numeral: 'XIV', from: 'Overwatch', kind: 'visitor', romance: null, starts: '6/10', status: 'stub', todo: 'Ranks 1–10.' },
   { id: 'sebastian', name: 'Sebastian', short: 'Sebastian', arcana: 'Fool', numeral: '0', from: 'Stardew Valley', kind: 'visitor', romance: null, starts: '6/10', status: 'stub', todo: 'Ranks 1–10.' },
   { id: 'aphrodite', name: 'Aphrodite', short: 'Aphrodite', arcana: 'Sun', numeral: 'XIX', from: 'Smite', kind: 'visitor', romance: null, starts: '7/9', status: 'stub', todo: 'Ranks 1–10.' },
-  { id: 'astarion', name: 'Astarion', short: 'Astarion', arcana: 'Devil', numeral: 'XV', from: "Baldur's Gate 3", kind: 'visitor', romance: null, starts: '7/9', status: 'stub', todo: 'Ranks 1–10.' },
-  { id: 'cloud', name: 'Cloud Strife', short: 'Cloud', arcana: 'Hanged Man', numeral: 'XII', from: 'Final Fantasy VII', kind: 'visitor', romance: null, starts: '7/9', status: 'stub', todo: 'Ranks 1–10.' },
   { id: 'judy', name: 'Judy Alvarez', short: 'Judy', arcana: 'Justice', numeral: 'VIII', from: 'Cyberpunk 2077', kind: 'visitor', romance: 'side', starts: '8/8', status: 'stub', todo: 'Ranks 1–10.' },
-  { id: 'noctis', name: 'Noctis Lucis Caelum', short: 'Noctis', arcana: 'Emperor', numeral: 'IV', from: 'Final Fantasy XV', kind: 'visitor', romance: null, starts: '8/8', status: 'stub', todo: 'Ranks 1–10.' },
-  { id: 'shadowheart', name: 'Shadowheart', short: 'Shadowheart', arcana: 'Priestess', numeral: 'II', from: "Baldur's Gate 3", kind: 'visitor', romance: null, starts: '8/8', status: 'stub', todo: 'Ranks 1–10.' },
-  { id: 'leon', name: 'Leon S. Kennedy', short: 'Leon', arcana: 'Strength', numeral: 'XI', from: 'Resident Evil 4', kind: 'visitor', romance: null, starts: '9/7', status: 'stub', todo: 'Ranks 1–10.' },
   { id: 'rohan', name: 'Rohan Kishibe', short: 'Rohan', arcana: 'Magician', numeral: 'I', from: "JoJo's Bizarre Adventure", kind: 'visitor', romance: null, starts: '9/7', status: 'stub', todo: 'Ranks 1–10.' },
   { id: 'widowmaker', name: 'Widowmaker', short: 'Widowmaker', arcana: 'Death', numeral: 'XIII', from: 'Overwatch', kind: 'visitor', romance: null, starts: '10/6', status: 'stub', todo: 'Ranks 1–10.' },
   // Searchers (arcana for most is an open question)

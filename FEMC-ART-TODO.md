@@ -221,9 +221,7 @@ The full prompts are in `FEMC-CG-PROMPTS.md` under the number shown. For all of 
 - [ ] **Side romances** (#5): Solar plus Ann, Kasumi, Judy, Rio or Saori
 - [ ] **My Melody's portraits** exist; a **full body** for the Compendium would go with the others (attach her portrait and 🎨 `Added to Game/CherryFullBody.png` for style)
 - [ ] *(Optional)* **Kuromi's full body** for the Compendium, the same way
-- [ ] **Leon and Ada** (#6): Solar, Leon, Ada
 - [ ] **Mercy and Aphrodite doing Solar's hair** (#7): Solar, Mercy, Aphrodite
-- [ ] **Cloud, Tifa and Aerith** (#8): Solar, Cloud, Tifa, Aerith
 - [ ] **The dorm dinner** (#9): a few cast portraits
 - [ ] **Wren's Shadow phases 1 and 3** (#25, #26): Wren's portraits
 - [ ] *(Optional)* **New Year's at the shrine** (#24), **the train through Tartarus** (#23)

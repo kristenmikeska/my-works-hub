@@ -29,6 +29,8 @@ window.FemcGame = (() => {
   const KEY = 'kg-femc-revamp', SETTINGS_KEY = 'kg-femc-revamp-settings', HANDOFF_KEY = 'kg-femc-handoff';
   const LEGACY_BATTLE_KEY = 'kg-femc-revamp-battle', PREMERGE_KEY = 'kg-femc-revamp-premerge', MERGE_V = 2, STATS_V = 2;
   const SLOT_KEY = n => `${KEY}-slot${n}`;
+  // Links removed from the revamp (2026-10-21; migrateRemoved). Declared up here: load() runs before the rest of the file.
+  const REMOVED_LINKS = ['leon', 'cloud', 'noctis', 'astarion', 'shadowheart'];
   const VERSION = 1;
   const base = window.FemcMode?.base || new URL('../../../', document.currentScript.src).href;
   const W = window;
@@ -146,6 +148,7 @@ window.FemcGame = (() => {
     }
     if (!(s.sv >= STATS_V)) { migrateStats(out); migrated = true; } // fresh() says 2; the save itself decides
     if (migrateForced(out)) migrated = true;
+    if (migrateRemoved(out)) migrated = true;
     if (autosave) adoptHandoff(out);
     return out;
   }
@@ -191,6 +194,25 @@ window.FemcGame = (() => {
       }
       delete p.ready; changed = true;
     });
+    return changed;
+  }
+  /* Links removed on 2026-10-21 (Kat's ruling): Leon, Cloud, Noctis, Astarion and Shadowheart. An old save keeps loading: their
+     link progress, meeting, Compendium registration, phone threads and the battle side's ranks for perks (bonds, bondsRev,
+     bondsLove) are dropped quietly. Everything they already gave stays where it is: items, gear (Astarion's Black Rose), learned
+     MAX skills (build.js keeps their definitions), fragments (Leon's Suture Kit), stats and yen. Runs on every load; idempotent. */
+  function migrateRemoved(out) {
+    let changed = false;
+    const strip = (o, k) => { if (Array.isArray(o?.[k]) && o[k].some(x => REMOVED_LINKS.includes(x))) { o[k] = o[k].filter(x => !REMOVED_LINKS.includes(x)); changed = true; } };
+    const del = (o, k) => { if (o && typeof o === 'object' && k in o) { delete o[k]; changed = true; } };
+    REMOVED_LINKS.forEach(id => {
+      del(out.links, id);
+      ['threads', 'unread', 'pending'].forEach(k => del(out.phone?.[k], id));
+      if (out.phone?.invite?.link === id) { out.phone.invite = null; changed = true; }
+      [out.battleSave, out.battleCarry].forEach(b => del(b?.bonds, id));
+    });
+    ['met', 'registered'].forEach(k => strip(out, k));
+    if (out.holiday) strip(out.holiday, 'links');
+    [out.battleSave, out.battleCarry].forEach(b => { if (b) { strip(b, 'bondsRev'); strip(b, 'bondsLove'); } });
     return changed;
   }
   // A fight the old two-page game left pending or finished ('kg-femc-handoff'), for this state: it moves into S.handoff.
@@ -747,7 +769,7 @@ window.FemcGame = (() => {
     // The activity's own lines plus its variants (data/living-variants.js), walked without repeats (vary).
     const lines = (w && w.lines) || a.lines;
     let text = lines ? (w && w.lines ? lines[Math.floor(Math.random() * lines.length)] : vary(`activities.${a.id}`, lines)) : '';
-    // A bond can change what the activity is (Noctis's Fishing Trip turns the pier into fishing).
+    // A bond can change what the activity is (an `actLine`; the pier's Fishing Trip went with its link on 2026-10-21).
     const alt = perkVal('actLine').map(m => m[a.id]).filter(Boolean)[0];
     if (alt) text = alt;
     if (a.fortune) {
@@ -801,7 +823,7 @@ window.FemcGame = (() => {
     save();
     return true;
   }
-  /* Selling materials (Mayoido buys what Shadows drop; Astarion's Expensive Taste pays 20% more). They live in the battle save. */
+  /* Selling materials (Mayoido buys what Shadows drop; a `matSell` perk pays more; none does since 2026-10-21). They live in the battle save. */
   function matSellPrice(k) { const m = D.battle.materials?.[k]; if (!m) return 0; return Math.round(m.price * (1 + perkVal('matSell').reduce((a, v) => a + v, 0))); }
   function sellMat(k, n = 1) {
     const b = ensureBattleSave(); if (!b || !(b.mats[k] >= n)) return false;
@@ -983,7 +1005,7 @@ window.FemcGame = (() => {
     if (pick.beat && pick.index != null && pick.beat.lean) tally({ [`lean.${pick.beat.lean}`]: 1 });
     packDone(st, pick);
     st.lastDay = S.day;
-    const up = perkVal('jobPay').reduce((a, o) => a + (o.all || 0) + (o[j.id] || 0), 0); // Cloud, Jungwon, Sunoo
+    const up = perkVal('jobPay').reduce((a, o) => a + (o.all || 0) + (o[j.id] || 0), 0); // Jungwon, Sunoo
     addYen(Math.round(j.pay * (1 + up / 100)));
     addStats(sumStats(j.stats, ...perkVal('jobStat').map(m => m[j.id]))); // Sunoo's Staff Shift: +1 Kindness at Yeobo's
     S.spent[`${S.day}-${S.slot}`] = `job:${j.id}`;
@@ -1316,7 +1338,7 @@ window.FemcGame = (() => {
     save();
     return right;
   }
-  /* Class perks: Cherry's Back Row (half the doze chance), Shadowheart's Guidance (once a week, a retry), Haechan's
+  /* Class perks: Cherry's Back Row (half the doze chance), Guidance (once a week, a retry; unassigned since 2026-10-21), Haechan's
      Recruitment Pitch (once a day, a hint: one wrong answer crossed out). */
   const dozeChance = () => (D.stats.conditions[S.condition]?.doze || 0) * (perkOn('backRow') ? 0.5 : 1);
   function dozed() { perkVal('backRow').forEach(o => addStats(o.stat)); }
@@ -1661,7 +1683,7 @@ window.FemcGame = (() => {
     // Overnight: Tartarus tires her out; resting clears it.
     const t = S.tonight;
     if (t === 'tartarus') S.condition = S.condition === 'tired' || S.condition === 'sick' ? 'sick' : 'tired';
-    else if (t === 'rest') S.condition = S.condition === 'sick' ? 'tired' : (seeded(S.day) < 0.25 || perkOn('powerNap')) ? 'great' : 'good'; // Noctis's Power Nap
+    else if (t === 'rest') S.condition = S.condition === 'sick' ? 'tired' : (seeded(S.day) < 0.25 || perkOn('powerNap')) ? 'great' : 'good'; // Power Nap (unassigned since 2026-10-21)
     else if (S.condition === 'great') S.condition = 'good';
     else if (S.condition === 'tired' && seeded(S.day + 5) < 0.5) S.condition = 'good';
     S.tonight = null;

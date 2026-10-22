@@ -50,17 +50,13 @@ Everything still to make, in one place: the earlier art list plus the new scenes
 - **Saori:** between library shelves, two hands reaching for the same book
 
 ## 2. Friendship and matchmaking (from the earlier list)
-**6. Leon and Ada** · 📎 Solar, Leon, Ada
-> A rainy rooftop bar at night, city lights blurred behind glass. Leon S. Kennedy (leather jacket) and Ada Wong (red dress) stand at the railing an arm's length apart, both pretending not to look at each other. In the background, half hidden behind a pillar, Solar gives a tiny thumbs-up. Moody blue with a warm red accent, funny.
+*(#6, Leon and Ada, and #8, Cloud with Tifa and Aerith, were retired on 2026-10-21: those links were removed from the game.)*
 
 **7. Mercy and Aphrodite doing Solar's hair** · 📎 Solar, Mercy, Aphrodite
 > A cozy dorm bedroom, makeup and brushes on a vanity, string lights. Solar sits facing a mirror while Aphrodite (golden, glamorous) curls her long black hair and Mercy (blond, kind, in casual clothes) holds up a hair ribbon. Both are fussing like big sisters, and Solar laughs. Warm pink light.
 
-**8. Cloud, Tifa and Aerith** · 📎 Solar, Cloud, Tifa, Aerith
-> A sunny park bench at Port Island. Cloud Strife sits rigidly between Tifa and Aerith, who are both talking to him at once. He looks over at Solar, standing nearby with two drinks, for help. She is trying very hard not to laugh. Bright afternoon light.
-
 **9. The dorm dinner** · 📎 S.E.E.S. sheets plus a few visitors (Gemini can handle this one; faces are small)
-> A long crowded table in a dorm lounge at night, a hot pot steaming in the center, too many people squeezed together laughing: students in school uniforms, a girl in a white coat, a pale vampire-looking man, a fox-masked girl, a white dog. Solar sits at the center holding chopsticks, smiling in a way that looks like she's surprised to be happy. Warm yellow light, chaotic, cozy.
+> A long crowded table in a dorm lounge at night, a hot pot steaming in the center, too many people squeezed together laughing: students in school uniforms, a girl in a white coat, a glamorous golden-haired woman, a fox-masked girl, a white dog. Solar sits at the center holding chopsticks, smiling in a way that looks like she's surprised to be happy. Warm yellow light, chaotic, cozy.
 
 ## 3. ⚠️ New story scenes (mild spoilers in this section)
 **10. The Last Train on Moonlight Bridge** · Gemini is fine (no faces)

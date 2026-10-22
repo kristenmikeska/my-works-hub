@@ -423,11 +423,11 @@ try:
 
     # ── 7. The perks that waited on the five stats now work ──
     p.goto('femc-game.html'); p.eval(SETUP)
-    ids = ['aigis-2', 'koromaru-2', 'shinjiro-2', 'judy-6', 'noctis-2', 'hyein-7', 'haru-2', 'kasumi-2', 'jihoon-4', 'sunoo-2', 'sunoo-8']
+    ids = ['aigis-2', 'koromaru-2', 'shinjiro-2', 'judy-6', 'hyein-7', 'haru-2', 'kasumi-2', 'jihoon-4', 'sunoo-2', 'sunoo-8']
     st = p.eval("(()=>{const B=FemcBuild;return %s.map(id=>{const x=B.perkById(id);return [id,!!x&&!x.stub,B.perkState(x,{bonds:{[x.link]:10}})]})})()" % json.dumps(ids))
     ok(all(s[1] and s[2] != 'stub' for s in st), f'none of them is "coming later" any more: {st}')
     ok(p.eval("FemcBuild.PERKS.filter(p=>p.stub).map(p=>p.id).sort().join()") == 'jaehyun-4', 'the stub left is party switching (clubs came in the living world, part 2; Velvet Room draws in batch D)')
-    ranks = {'aigis': 2, 'koromaru': 2, 'shinjiro': 2, 'judy': 6, 'noctis': 2, 'hyein': 7, 'haru': 2, 'kasumi': 2, 'jihoon': 4, 'sunoo': 8}
+    ranks = {'aigis': 2, 'koromaru': 2, 'shinjiro': 2, 'judy': 6, 'hyein': 7, 'haru': 2, 'kasumi': 2, 'jihoon': 4, 'sunoo': 8}
     p.eval("T.fresh('%s','after',{ranks:%s});true" % (school_wed, json.dumps(ranks)))
     # Learning Mode: a hangout (not a rank scene) is +1 Kindness.
     lm = p.eval("(()=>{const G=FemcGame,l=G.LINKS.yukari;G.progress('yukari').rank=3;const a=G.S.stats.kindness;G.finishLink(l,'hangout',3,1);const h=G.S.stats.kindness-a;const b=G.S.stats.kindness;G.progress('yukari').rank=3;G.finishLink(l,'rank',3,3);const out=[h,G.S.stats.kindness-b];G.progress('yukari').rank=0;G.save();return out})()")
@@ -444,11 +444,7 @@ try:
     ok(dl == {'kindness': 3, 'proficiency': 2}, f'Garden Patch on the dorm roof (+ Editing Bay): {dl}')
     dl, _ = go_act('gekkoukan', 'schoolgarden', school_wed, 'after')
     ok(dl == {'kindness': 2, 'proficiency': 2}, f"Garden Patch in Haru's rooftop garden: {dl}")
-    # Fishing Trip: the pier becomes fishing.
-    pier_day = p.eval("T.day('9/7',3,'school')")
-    dl, prev = go_act('port', 'pier', pier_day, 'after')
-    ok(dl == {'charm': 1, 'courage': 1, 'proficiency': 2} and 'Proficiency +2' in prev, f'Fishing Trip: {dl} ({prev})')
-    ok('Noctis' in p.eval(f"T.at('{pier_day}','after');FemcGame.doActivity(FemcGame.actById('pier')).text"), 'Fishing Trip: the pier narration is fishing with Noctis')
+    # (Fishing Trip, the pier as fishing, went with Noctis's link on 2026-10-21; femc_march.py checks the removed links.)
     # Seven Croissants: Chagall is free and +1 Kindness.
     y = p.eval("FemcGame.S.yen")
     dl, prev = go_act('mall', 'chagall', school_wed, 'after')

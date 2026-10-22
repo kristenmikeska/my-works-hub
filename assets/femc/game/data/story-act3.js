@@ -95,10 +95,9 @@
     { s: 'junpei', f: 'flustered', t: "CONTROLLED." },
     { n: "They came out onto the boulevard laughing in the way people laugh when they were scared five minutes ago and haven't caught up, and the hour still had a while to run, and Solar, a step behind, looked up the street, and the street wasn't empty." },
     { n: "A woman was walking down the middle of the road toward them. Not walking. Processing. Tall, and dressed in something that moved like water and caught light that wasn't there, and her hair went on further than hair should, and the green of the hour bent away from her a little as she passed, the way heat bends the air over a road. She was looking around at the plaster castles and the dead neon hearts with an expression of enormous professional interest." },
-    { n: "On the steps of a hotel across the way, a pale young man with white curls sat with his elbows on his knees, not going in, as if he were waiting to be asked. And on the corner by the station, a man with hair like a struck match and a sword on his back that was taller than Junpei was standing perfectly still, looking at nothing, the way you look at a word you've forgotten the meaning of." },
-    { n: "Down at the end of the boulevard, under a bamboo pole hung with motionless wishes, a small figure in a coat too big for her lifted one long sleeve and pointed the man with the sword toward the station, and he went, and she was gone." },
-    { s: 'fuuka', f: 'neutral', t: "Three more. Solar, there are three more now. They just... arrived. Like doors opening." },
-    { n: "Nobody else had seen them. Solar didn't say anything. She stood under the bamboo on the way back to the station and read a wish that was hanging at the level of her eyes, in pencil, in very small neat letters, as if whoever wrote it hadn't wanted anyone to read it. *I don't want it to come.* That was all. No name. She didn't know what *it* was. She stood there reading it until Akihiko came back for her." },
+    { n: "Down at the end of the boulevard, under a bamboo pole hung with motionless wishes, a small figure in a coat too big for her lifted one long sleeve and pointed the woman toward the station, and she went, unhurried, as if it had been her idea, and the small figure was gone." },
+    { s: 'fuuka', f: 'neutral', t: "Another one. Solar, there's another one now. She just... arrived. Like a door opening." },
+    { n: "Nobody else had seen her. Solar didn't say anything. She stood under the bamboo on the way back to the station and read a wish that was hanging at the level of her eyes, in pencil, in very small neat letters, as if whoever wrote it hadn't wanted anyone to read it. *I don't want it to come.* That was all. No name. She didn't know what *it* was. She stood there reading it until Akihiko came back for her." },
     { dark: false }
   ] },
 
@@ -171,18 +170,7 @@
       { s: 'aphrodite', f: 'happy', t: "You will be loved, little mortal. Eventually. By someone. Probably." },
       { s: 'junpei', f: 'happy', t: "I'll TAKE it." }
     ] },
-    { ifRank: { astarion: 1 }, then: [
-      { n: "Astarion rang the bell after sunset and then simply stood on the front step, smiling, not coming in, while the door hung open and the cold air from the air conditioner ran out past his ankles." },
-      { s: 'astarion', f: 'happy', t: "Well? I'm waiting to be asked. It would be terribly rude to just barge in." },
-      { s: 'mitsuru', f: 'neutral', t: "...Come in." },
-      { s: 'astarion', f: 'happy', t: "What a gracious host." }
-    ] },
-    { ifRank: { cloud: 1 }, then: [
-      { n: "Cloud knocked once, at nine, and said he'd heard there was food. When Mitsuru asked how he'd found the place, he shrugged." },
-      { s: 'cloud', f: 'neutral', t: "Girl at the station told me. Small. Coat's too big for her." },
-      { n: "He ate three bowls without a word and left a bill on the table in a currency nobody recognized, and nobody had the heart to give it back." }
-    ] },
-    ...window.FEMC_STORY_KIT.anyRank('a3-dinner-guests', ['ann', 'haru', 'kasumi', 'kiriko', 'kuromi', 'mercy', 'sebastian', 'aphrodite', 'astarion', 'cloud'], 1),
+    ...window.FEMC_STORY_KIT.anyRank('a3-dinner-guests', ['ann', 'haru', 'kasumi', 'kiriko', 'kuromi', 'mercy', 'sebastian', 'aphrodite'], 1),
     { ifFlag: 'a3-dinner-guests', then: [
       { n: "By ten the dining room was louder than it had been since April, and warmer, and it smelled like soy and steam and somebody's perfume, and the extra bowls were all dirty. Mitsuru stood at the edge of it with a cup of tea she wasn't drinking, watching the room the way she watched the monitors upstairs, except that every so often the corner of her mouth moved." },
       { s: 'mitsuru', f: 'neutral', t: "So these are your strangers. They're much less alarming than their readings." }
@@ -264,8 +252,8 @@
     { battle: { id: 'chariot', op: 'chariot', title: 'Chariot & Justice', desc: 'Two Shadows in the middle of Moonlight Bridge: one that charges, and one that weighs.', forced: true, kind: 'operation' } },
     { music: 'night' },
     { n: "Afterwards they stood in the middle of the bridge breathing hard, the ash going up off the asphalt and out over the water in long soft ribbons. Akihiko had a cut over one eye that he was very pleased about. Junpei was lying flat on his back on the roof of a stopped taxi, saying he was never moving again." },
-    { n: "Further along, where the bridge met the far bank, there were people again. Awake. A woman with purple hair and a lot of tattoos sitting on the guardrail with her legs over the drop, smoking something that didn't glow because nothing glowed in the hour, looking down at the water like she was waiting for it to say something. A dark-haired young man in black, asleep, actually asleep, sitting up against a lamppost with his head tipped back. A woman with a pale serious face and her hair in a braid, standing apart from both of them, looking at the moon with an expression Solar couldn't read and didn't like." },
-    { s: 'fuuka', f: 'surprised', t: "Three more. Solar, they keep coming. And there's something else. There's something very big, and it's..." },
+    { n: "Further along, where the bridge met the far bank, there was somebody again. Awake. A woman with purple hair and a lot of tattoos sitting on the guardrail with her legs over the drop, smoking something that didn't glow because nothing glowed in the hour, looking down at the water like she was waiting for it to say something." },
+    { s: 'fuuka', f: 'surprised', t: "Another one. Solar, they keep coming. And there's something else. There's something very big, and it's..." },
     { n: "She stopped. Over the radio, Solar heard her draw a breath and not let it out." },
     { s: 'fuuka', f: 'surprised', t: "It's on the bridge." },
     { n: "She heard it before she saw it. The horn. The long low note she'd heard from her window on her first night here, far off, where no train should have been running. It came across the water and went right through the deck of the bridge and up through the soles of her shoes into her teeth, and every hair on her arms stood up." },

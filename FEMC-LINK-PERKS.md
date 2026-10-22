@@ -167,27 +167,6 @@ Every social link earns named perks as it ranks up, the way Persona 5 Phantom X 
 | 7 | Back Off! | Assist | Once per battle, the first foe to land a physical hit on Solar is shoved back and loses its next turn (50%). |
 | 10 | Undying Love | MAX · skill | Solar learns Undying Love (once per battle): for 2 turns, Solar and one ally can't drop below 1 HP. |
 
-### Astarion · XV Devil
-*Rogue, vampire, and charming in the way a knife is shiny.*
-
-| Rank | Perk | Type | Effect |
-|---|---|---|---|
-| 2 | Lockpick | Tartarus | Once per floor, a locked chest opens without a Tartarus Key. |
-| 4 | Sneak Attack | Assist | Solar's attacks on foes that haven't acted yet this battle crit 15% more often. |
-| 6 | A Little Taste | Battle | Solar's physical attacks restore HP equal to 5% of the damage they deal. |
-| 8 | Expensive Taste | Daily | Mayoido Antiques pays 20% more for materials. |
-| 10 | Fangs Out | MAX · skill | Solar learns Fangs Out: medium Almighty damage to one foe, and Solar recovers HP equal to half of it. |
-
-### Cloud Strife · XII Hanged Man
-*Ex-SOLDIER for hire. Big sword, few words.*
-
-| Rank | Perk | Type | Effect |
-|---|---|---|---|
-| 2 | Mercenary Rates | Daily | Every part-time job pays 10% more. |
-| 4 | Limit Break | Battle | Solar's Theurgy gauge gains +5 every time she takes damage. |
-| 7 | Buster Sword | Assist | The party's physical attacks on Down foes deal 20% more damage. |
-| 10 | Cross-Slash | MAX · skill | Solar learns Cross-Slash: heavy Slash damage to one foe, and it may Bind it. |
-
 ### Judy Alvarez · VIII Justice
 *Braindance editor, diver, techie, and fiercely loyal.*
 
@@ -202,38 +181,6 @@ Every social link earns named perks as it ranks up, the way Persona 5 Phantom X 
 **Romance ideas** (side romance route only)
 - *Battle cut-in (when a perk fires):* "Choom. That was gorgeous. Do it again."
 - *Text before Tartarus:* "come back in one piece, 'kay? got somethin to show you"
-
-### Noctis Lucis Caelum · IV Emperor
-*Royalty who would rather be fishing, or asleep.*
-
-| Rank | Perk | Type | Effect |
-|---|---|---|---|
-| 2 | Fishing Trip | Daily | Walking the pier with him becomes fishing: +2 Proficiency. |
-| 4 | Power Nap | Daily | Resting at the dorm makes Solar Great the next day, not just Good. |
-| 7 | Warp-Strike | Assist | Solar's first attack each battle always goes first and can't miss. |
-| 10 | Armiger | MAX · passive | While Solar's Theurgy gauge is full, each of her attacks adds a phantom-sword hit for +20% Almighty damage. |
-
-### Shadowheart · II Priestess
-*Cleric, secret-keeper, evenings at the shrine.*
-
-| Rank | Perk | Type | Effect |
-|---|---|---|---|
-| 2 | Guidance | Daily | Once a week, Solar can retry a wrong answer in class. |
-| 4 | Sanctuary | Assist | Once per battle, the first ally to fall below 20% HP can't be targeted until their next turn. |
-| 6 | Night Orchid | Tartarus | One empty room on each floor becomes a small shrine that restores 30% HP and SP. |
-| 8 | Spirit Guardians | Assist | Foes that hit Solar with a physical attack take light Light damage back. |
-| 10 | Warding Bond | MAX · skill | Solar learns Warding Bond: for 3 turns, one ally takes half damage and Solar takes the other half. |
-
-### Leon S. Kennedy · XI Strength
-*Government agent on permanent overtime, with jokes nobody laughs at.*
-
-| Rank | Perk | Type | Effect |
-|---|---|---|---|
-| 2 | First Aid Spray | Tartarus | Each night starts with one First Aid Spray that heals the whole party 40%. |
-| 4 | Knife Parry | Battle | When Solar Guards, physical hits are parried for no damage 40% of the time. |
-| 6 | Roundhouse | Assist | Once per battle, when Solar knocks a foe Down, Leon cuts in with a roundhouse that hits every other foe for light Strike damage. |
-| 8 | Mission Briefing | Tartarus | Full-moon operations start with the party's attack up for 3 turns. |
-| 10 | Suplex | MAX · skill | Solar learns Suplex: heavy Strike damage to one Down foe, always a crit. |
 
 ### Rohan Kishibe · I Magician
 *Manga artist who reads people like books, literally.*
@@ -555,7 +502,6 @@ The five stats (Knowledge, Courage, Proficiency, Charm, Kindness) are in the gam
 - **Koromaru · Walkies, Kasumi · Morning Stretch, Jihoon · Pilates Partner:** weekly bonds like Akihiko's Roadwork, on Thursdays, Tuesdays and Saturdays, with no free time used.
 - **Shinjiro · Kitchen Duty:** "Cook with Shinjiro" on the dorm's evening menu until he leaves (+3 Proficiency). The leftovers are a night-only item on the next Tartarus night ("Shinjiro's Leftovers", heals the party 20%), not an automatic heal, since the party starts each night at full HP.
 - **Judy · Editing Bay:** +1 Proficiency on every evening activity at the dorm (study, reading, cooking, the roof garden, Koromaru, the desk).
-- **Noctis · Fishing Trip:** the pier gives +2 Proficiency and its narration becomes fishing with him.
 - **Hyein · Sewing Machine:** "Sew with Hyein" at Solar's desk (+3 Proficiency, +1 Charm; plain sewing is +2 Proficiency).
 - **Haru · Garden Patch:** +1 Kindness and +1 Proficiency at both gardens (the school's rooftop garden, where she is, and the dorm roof).
 - **Sunoo · Seven Croissants and Staff Shift:** their +1 Kindness is on (Chagall coffee; Yeobo's shifts).
@@ -563,3 +509,15 @@ The five stats (Knowledge, Courage, Proficiency, Charm, Kindness) are in the gam
 ## Built (2026-10-21): the living world, part 2
 - **Rio · Practice Swing** works: every tennis club practice gives +1 Courage and +1 Proficiency on top of the club's own (`build.js` fx `clubStat`, read by `core.js actPerkStats` for clubs).
 - **My Melody** is a hidden link now (`links/mymelody.js`), so her three perks (Almond Pound Cake, Sweet Nature, Melody Hug) can be earned once she's found.
+
+## Removed links (2026-10-21, Kat's ruling)
+Leon, Cloud, Noctis, Astarion and Shadowheart are out of the game, and so are their 23 perks (their sections above are gone).
+- **Rehomed:** Astarion's rank-8 gift, the **Black Rose** naginata, is now **the Hermit's first-clear drop** (9/5's full moon;
+  `build.js BOSS_WEAPON`) and can turn up in Shuffle Time's Swords, so all twelve naginatas (and the Twelve Blades stamp) stay
+  reachable. An old save that already cleared the Hermit without it gets it once on load (`core.js migrateYear`).
+- **Kept for old saves:** the MAX skills they taught (Fangs Out, Cross-Slash, Warding Bond, Suplex) and Leon's night-only First
+  Aid Spray keep their definitions in `build.js`, so a save that learned or carried one still works; nothing teaches them now.
+- **Unassigned mechanics** (the hooks are still in the engine, waiting for a new link such as Danielle, Jaemin or Chenle):
+  Lockpick, Sneak Attack, A Little Taste, `matSell`, Mercenary Rates (`jobPay.all`), Limit Break, Buster Sword, Fishing Trip
+  (`actStat` + `actLine` on the pier), Power Nap, Warp-Strike, Armiger, Guidance, Sanctuary, Night Orchid, Spirit Guardians,
+  Knife Parry, Roundhouse, Mission Briefing. Give one to a link by adding a `PERKS` row with the same fx key.

@@ -49,9 +49,7 @@ Full-screen 16:9 illustrations for big moments, the way P3R and P5R show a paint
 - [ ] Side romances, (opt): Ann, Kasumi, Judy, Rio, Saori
 
 **Friendship and matchmaking**
-- [ ] Solar setting up Leon and Ada
 - [ ] Mercy and Aphrodite as big sisters, doing Solar's hair or makeup
-- [ ] Cloud with Tifa and Aerith
 - [ ] Group shot: the visitors at a dorm dinner
 
 ## 2. Battle art ⭐

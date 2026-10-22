@@ -163,7 +163,7 @@ try:
 
     # ── The menu: Cards (equip a set, level, refine, lock, dismantle, teach), Equipment (art, refine), Bonds, Links, toasts ──
     if want('menu'):
-        setup(p, ranks={'kiriko': 6, 'astarion': 8, 'aphrodite': 2, 'akihiko': 3}, mats={'tarot_dust': 400, 'velvet_thread': 12, 'arcana_fragment': 2})
+        setup(p, ranks={'kiriko': 6, 'kuromi': 7, 'aphrodite': 2, 'akihiko': 3}, mats={'tarot_dust': 400, 'velvet_thread': 12, 'arcana_fragment': 2})
         p.eval(r"""(()=>{const b=FemcGame.S.battleSave,B=FemcBuild,R=FemcBattleEngine.rng(4);
           B.SLOTS.slice(0,4).forEach(sl=>B.addCard(b,B.rollCard(R,{set:'pin',slot:sl.id,r:4})));
           for(let i=0;i<6;i++) B.addCard(b,B.rollCard(R,{tier:3}));
@@ -198,9 +198,10 @@ try:
         # A skill card taught to Akihiko (a ninth skill: the Skills tab opens on "forget which?").
         click(p, '[data-teach="mediarama"]'); click(p, '[data-teach="mediarama"][data-to="akihiko"]')
         ok('mediarama' in p.eval("FemcBattleEngine.skillsFor('akihiko',FemcGame.S.battleSave)") and not p.eval(B + ".skillCards.mediarama"), 'skill card taught')
-        # Equipment: the naginatas from Kiriko (rank 6) and Astarion (rank 8) arrived as gifts; art shows; refine.
+        # Equipment: the naginatas from Kiriko (rank 6) and Kuromi (rank 7) arrived as gifts; art shows; refine.
+        # (Astarion's Black Rose was a gift too until his link was removed on 2026-10-21; it's the Hermit's first-clear drop now.)
         menu(p, 'equip')
-        ok(p.eval(B + ".gear.owned.nag_fox===1 && " + B + ".gear.owned.nag_rose===1"), 'bond gifts')
+        ok(p.eval(B + ".gear.owned.nag_fox===1 && " + B + ".gear.owned.nag_kitty===1"), 'bond gifts')
         click(p, '[data-slot="weapon"]')
         ok(p.eval("!!document.querySelector('[data-pick=nag_fox] img.g-eq-art')"), 'naginata art in the list')
         click(p, '[data-pick="nag_fox"]')
@@ -219,7 +220,7 @@ try:
         p.eval("FemcMenu.close()")
         p.eval("(()=>{const G=FemcGame;G.S.met.push('fuuka');G.progress('fuuka').rank=1;G.finishLink(G.LINKS.fuuka,'rank',1,99);})()")
         p.wait("[...document.querySelectorAll('.g-toast.k-perk')].some(t=>t.textContent.includes('Experimental Bento'))", 10)
-        results['menu'] = {'set': 'Star Pin 4 in battle units', 'level/refine/lock/dismantle': 'ok', 'gifts': ['nag_fox', 'nag_rose'], 'toast': 'Experimental Bento'}
+        results['menu'] = {'set': 'Star Pin 4 in battle units', 'level/refine/lock/dismantle': 'ok', 'gifts': ['nag_fox', 'nag_kitty'], 'toast': 'Experimental Bento'}
         errs = p.console(); ok(not errs, errs)
         print('Menu: cards equip/set/level/refine/lock/dismantle, skill card, gifts, art, refine, bonds, toast OK', flush=True)
 
@@ -243,7 +244,7 @@ try:
 
     # ── A real Tartarus night: night kit, assists, Kiriko's MAX, naginata and set bonuses in battle, Shuffle Time, Tea Time ──
     if want('fight'):
-        setup(p, ranks={'kiriko': 10, 'fuuka': 8, 'mark': 4, 'hanni': 4, 'leon': 2}, lvl=40)
+        setup(p, ranks={'kiriko': 10, 'fuuka': 8, 'mark': 4, 'hanni': 4, 'ken': 6}, lvl=40)
         p.eval("FemcGame.setSetting('difficulty','story')")  # no Reaper while the test walks the floor
         p.eval(r"""(()=>{const b=FemcGame.S.battleSave,B=FemcBuild,R=FemcBattleEngine.rng(9);
           b.gear.owned.nag_ice=1; b.gear.eq.solar={weapon:'nag_ice',armor:'armor0',acc:null}; b.wref={nag_ice:2};
@@ -253,7 +254,7 @@ try:
         # The frame took the link ranks in (hoBegin): Kiriko's MAX puts Protective Suzu in Solar's kit without the Bell branch.
         kit = p.eval("FemcBattleEngine.kitFor('solar',FemcBattle.save).slots")
         ok('protective_suzu' in kit and 'bell6' not in p.eval('FemcBattle.save.nodes'), ('Kiriko MAX: Protective Suzu without the Bell branch', kit))
-        ok(p.eval("FemcBattle.save.items.night_bento===1 && FemcBattle.save.items.aid_spray===1"), 'night kit: Fuuka’s bento and Leon’s spray')
+        ok(p.eval("FemcBattle.save.items.night_bento===1 && FemcBattle.save.items.kit_bead===1"), 'night kit: Fuuka’s bento and Ken’s bead')
         p.eval("window.__btGroup=['pesce','pesce'];window.__want='shadow';window.__noUp=true;document.querySelector('[data-go=run],[data-go=cont]').click()")
         drive(p, "FemcBattle.screen()==='battle' && !!FemcBattle.B && FemcBattle.ctl?.kind==='menu'", 90)
         u = p.eval("(()=>{const B=FemcBattle.B,s=B.party()[0],bx=FemcBuild.unitBonus(FemcBattle.save,'solar','nag_ice');return {atk:s.atk,ice:s.elBoost.ice,bxIce:bx.el.ice,spRegen:s.spRegen,heal:s.healMult,perks:Object.keys(B.perks()),agi:B.party().map(p=>p.buffs.agi),marks:FemcBattle.marks}})()")
@@ -314,7 +315,7 @@ try:
         p.top()
         p.wait("!FemcGame.S.handoff || FemcGame.S.handoff.status==='done'", 30)
         p.wait("!document.querySelector('.g-dh')", 30)
-        ok(not p.eval("FemcGame.S.inventory.night_bento") and not p.eval("FemcGame.S.inventory.aid_spray"), 'night kits never come home')
+        ok(not p.eval("FemcGame.S.inventory.night_bento") and not p.eval("FemcGame.S.inventory.kit_bead"), 'night kits never come home')
         results['fight'] = {'night kit': True, 'Ice Crystal +2': u['atk'], 'Fox Bell 4pc': 'spRegen/heal', 'Count-In': True, 'Suzu SP': spent, 'Steady Signal': True, 'Shuffle': ['cups', 'tower', 'fool via Rush'], 'Tea Time': True}
         errs = p.console(); ok(not errs, errs)
         print('Real night: kit, assists, Kiriko MAX, naginata + set in battle, Shuffle Time (cups, penalty, Rush), Tea Time OK', json.dumps(results['fight']), flush=True)
@@ -384,7 +385,7 @@ try:
     if want('shots'):
         sizes = [(1000, 486, '1000x486'), (375, 812, '375x812'), (1440, 900, '1440x900')]
         p.ws.call('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'no-preference'}]})
-        setup(p, ranks={'kiriko': 10, 'astarion': 8, 'mark': 4, 'fuuka': 8, 'akihiko': 6, 'minji': 5}, mats={'tarot_dust': 300, 'velvet_thread': 8, 'arcana_fragment': 1})
+        setup(p, ranks={'kiriko': 10, 'kuromi': 7, 'mark': 4, 'fuuka': 8, 'akihiko': 6, 'minji': 5}, mats={'tarot_dust': 300, 'velvet_thread': 8, 'arcana_fragment': 1})
         p.eval(r"""(()=>{const b=FemcGame.S.battleSave,B=FemcBuild,R=FemcBattleEngine.rng(21);
           ['bell','bell','jade','jade','moon','needle'].forEach((set,i)=>{const c=B.rollCard(R,{set,slot:B.SLOTS[i].id,r:3+i%3});B.addCard(b,c);B.equipCard(b,'solar',c.u);});
           for(let i=0;i<10;i++) B.addCard(b,B.rollCard(R,{tier:5}));

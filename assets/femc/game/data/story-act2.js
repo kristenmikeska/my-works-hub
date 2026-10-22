@@ -8,7 +8,7 @@ window.FEMC_STORY_KIT ||= (() => {
   const anyMet = (f, ids) => ids.map(id => ({ ifMet: id, then: [set(f)] }));
   // Sets flag f if every flag in one of the groups is set (an OR of ANDs).
   const anyOf = (f, groups) => groups.map(g => ({ ifFlag: g, then: [set(f)] }));
-  const VISITORS = ['kiriko', 'kuromi', 'mercy', 'sebastian', 'aphrodite', 'astarion', 'cloud', 'judy', 'noctis', 'shadowheart', 'leon', 'rohan', 'widowmaker'];
+  const VISITORS = ['kiriko', 'kuromi', 'mercy', 'sebastian', 'aphrodite', 'judy', 'rohan', 'widowmaker'];
   return { set, anyRank, anyMet, anyOf, VISITORS };
 })();
 

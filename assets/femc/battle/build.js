@@ -34,7 +34,7 @@ window.FemcBuild = (() => {
     ['nag_moon', 'moon-and-stars', 'Moon and Stars', 4, 82, 0, { el: { light: 20 }, insta: 10 }, 'Navy lacquer, a crescent and a ringed planet. Light skills +20%; Hama lands 10% more often.', ['The Lovers (first clear)', 'Shuffle Time · Swords']],
     ['nag_fox', 'autumn-fox', 'Autumn Fox', 4, 84, 0, { crit: 12, critX: 20 }, 'Maple leaves and a fox charm. Critical rate +12%, and critical hits deal 20% more.', ['Kiriko’s bond (rank 6)']],
     ['nag_kitty', 'pink-kitty', 'Pink Kitty', 4, 80, 0, { heal: 25, nullAil: ['charm'] }, 'A pink ribbon, a kitty charm and an apple. Healing +25%, and Solar can’t be Charmed.', ['Kuromi’s bond (rank 7)']],
-    ['nag_rose', 'black-rose', 'Black Rose', 5, 104, 0, { el: { dark: 20 }, crit: 8, insta: 10 }, 'Red roses, a skull and a chain. Dark skills +20%, crits +8%, Mudo lands 10% more often.', ['Astarion’s bond (rank 8)']],
+    ['nag_rose', 'black-rose', 'Black Rose', 5, 104, 0, { el: { dark: 20 }, crit: 8, insta: 10 }, 'Red roses, a skull and a chain. Dark skills +20%, crits +8%, Mudo lands 10% more often.', ['The Hermit (first clear)', 'Shuffle Time · Swords']],
     ['nag_butterfly', 'violet-butterfly', 'Violet Butterfly', 5, 100, 11000, { evade: 12, stats: { ag: 4 }, th: 20 }, 'Lavender silk and a blue butterfly. +4 Ag, big evasion, and her Theurgy fills 20% faster.', ['Mayoido Antiques (tier 5)', 'Shuffle Time · Swords']],
     ['nag_prism', 'iridescent-orb', 'Prism Orb', 6, 124, 0, { el: { almighty: 20 }, stats: { ma: 4 } }, 'A holographic blade and a ringed orb. +4 Ma, and Almighty damage +20% (Rise and Shine too).', ['Fortune & Strength (first clear)', 'Shuffle Time · Swords']],
     ['nag_dragon', 'dragon', 'Silver Dragon', 7, 160, 24000, { phys: 12, stats: { st: 5 } }, 'Black lacquer and a silver dragon. The strongest of the twelve: +5 St and physical damage +12%.', ['Mayoido Antiques (tier 7)', 'The Hanged Man (first clear)']]
@@ -59,7 +59,8 @@ window.FemcBuild = (() => {
   if (D.shops.mayoido) D.shops.mayoido.stock = D.shops.mayoido.stock.concat(['nag_butterfly', 'nag_dragon']);
   // Locked chests can hold Crimson Lock; Shuffle Time's Swords and the bosses below give the rest.
   if (D.map && D.map.chest) D.map.chest.lockedRare = D.map.chest.lockedRare.concat(['nag_lock']);
-  const BOSS_WEAPON = { priestess: 'nag_ice', lovers: 'nag_moon', fortune: 'nag_prism', hanged: 'nag_dragon' };
+  // The Black Rose was Astarion's rank-8 gift until his link was removed (2026-10-21); it's the Hermit's now.
+  const BOSS_WEAPON = { priestess: 'nag_ice', lovers: 'nag_moon', hermit: 'nag_rose', fortune: 'nag_prism', hanged: 'nag_dragon' };
   const CHEST_WEAPON = { id: 'nag_mint', chance: 0.06, fromBlock: 1 };
 
   /* Weapon refining (any weapon above the starters): +1 … +5 with materials. */
@@ -497,34 +498,11 @@ window.FemcBuild = (() => {
     ['aphrodite', 4, 'Kiss', 'assist', { kiss: { share: 0.3 } }, 'Each battle, Solar is bonded to the ally with the lowest HP. Whenever Solar heals anyone, that ally also gets 30% of the heal.'],
     ['aphrodite', 7, 'Back Off!', 'assist', { backOff: { chance: 0.5 } }, 'Once per battle, the first foe to land a physical hit on Solar is shoved back and loses its next turn (50%).'],
     ['aphrodite', 10, 'Undying Love', 'max', { learn: 'undying_love' }, 'Solar learns Undying Love (once per battle): for 2 turns, Solar and one ally can’t drop below 1 HP.'],
-    ['astarion', 2, 'Lockpick', 'tartarus', { lockpick: 1 }, 'Once per floor, a locked chest opens without a Tartarus Key.'],
-    ['astarion', 4, 'Sneak Attack', 'assist', { sneak: { crit: 15 } }, 'Solar’s attacks on foes that haven’t acted yet this battle crit 15% more often.'],
-    ['astarion', 6, 'A Little Taste', 'battle', { taste: { drain: 0.05 } }, 'Solar’s physical attacks restore HP equal to 5% of the damage they deal.'],
-    ['astarion', 8, 'Expensive Taste', 'daily', { matSell: 0.2, gift: 'nag_rose' }, 'Mayoido Antiques pays 20% more for materials. He also leaves Solar the Black Rose naginata.'],
-    ['astarion', 10, 'Fangs Out', 'max', { learn: 'fangs_out' }, 'Solar learns Fangs Out: medium Almighty damage to one foe, and Solar recovers HP equal to half of it.'],
-    ['cloud', 2, 'Mercenary Rates', 'daily', { jobPay: { all: 10 } }, 'Every part-time job pays 10% more.'],
-    ['cloud', 4, 'Limit Break', 'battle', { limitBreak: { th: 5 } }, 'Solar’s Theurgy gauge gains +5 every time she takes damage.'],
-    ['cloud', 7, 'Buster Sword', 'assist', { buster: { dmg: 0.2 } }, 'The party’s physical attacks on Down foes deal 20% more damage.'],
-    ['cloud', 10, 'Cross-Slash', 'max', { learn: 'cross_slash' }, 'Solar learns Cross-Slash: heavy Slash damage to one foe, and it may Bind it.'],
     ['judy', 2, 'Edit Mode', 'assist', { editMode: 1 }, 'The turn-order strip shows one turn further ahead (Shadows’ HP bars and buffs are always on show already).'],
     ['judy', 4, 'Tech Savvy', 'tartarus', { techSavvy: 1 }, 'Locked chests roll one extra item.'],
     ['judy', 6, 'Editing Bay', 'daily', { dormStat: { proficiency: 1 } }, 'Evening activities at the dorm (studying, reading, cooking, the garden, the desk, walking Koromaru) give +1 Proficiency.'],
     ['judy', 8, 'Hotwire', 'assist', { hotwire: { th: 10 } }, 'A Shift also gives the receiver +10 Theurgy.'],
     ['judy', 10, 'Feel Everything', 'max', { feelEverything: { sp: 3 } }, 'Solar’s crits and weakness hits each restore 3 SP.'],
-    ['noctis', 2, 'Fishing Trip', 'daily', { actStat: { pier: { proficiency: 2 } }, actLine: { pier: 'Noctis had brought two rods and no bait and an unshakable belief that the bay owed him a fish. It took an hour and a borrowed bucket of shrimp, but she landed one first, and he made her hold it up for a photo.' } }, 'Walking the pier with him becomes fishing: +2 Proficiency.'],
-    ['noctis', 4, 'Power Nap', 'daily', { powerNap: 1 }, 'Resting at the dorm makes Solar Great the next day, not just Good.'],
-    ['noctis', 7, 'Warp-Strike', 'assist', { warpStrike: {} }, 'Solar’s first attack each battle always goes first and can’t miss.'],
-    ['noctis', 10, 'Armiger', 'max', { armiger: { pct: 0.2 } }, 'While Solar’s Theurgy gauge is full, each of her attacks adds a phantom-sword hit for +20% Almighty damage.'],
-    ['shadowheart', 2, 'Guidance', 'daily', { guidance: 1 }, 'Once a week, Solar can retry a wrong answer in class.'],
-    ['shadowheart', 4, 'Sanctuary', 'assist', { sanctuary: { below: 0.2 } }, 'Once per battle, the first ally to fall below 20% HP can’t be targeted until their next turn.'],
-    ['shadowheart', 6, 'Night Orchid', 'tartarus', { nightOrchid: 0.3 }, 'One empty room on each floor becomes a small shrine that restores 30% HP and SP.'],
-    ['shadowheart', 8, 'Spirit Guardians', 'assist', { spiritGuardians: { power: 24 } }, 'Foes that hit Solar with a physical attack take light Light damage back.'],
-    ['shadowheart', 10, 'Warding Bond', 'max', { learn: 'warding_bond' }, 'Solar learns Warding Bond: for 3 turns, one ally takes half damage and Solar takes the other half.'],
-    ['leon', 2, 'First Aid Spray', 'tartarus', { nightKit: { aid_spray: 1 } }, 'Each night starts with one First Aid Spray that heals the whole party 40%.'],
-    ['leon', 4, 'Knife Parry', 'battle', { knifeParry: { chance: 0.4 } }, 'When Solar Guards, physical hits are parried for no damage 40% of the time.'],
-    ['leon', 6, 'Roundhouse', 'assist', { roundhouse: { power: 30 } }, 'Once per battle, when Solar knocks a foe Down, Leon cuts in with a roundhouse that hits every other foe for light Strike damage.'],
-    ['leon', 8, 'Mission Briefing', 'tartarus', { missionBriefing: 3 }, 'Full-moon operations start with the party’s attack up for 3 turns.'],
-    ['leon', 10, 'Suplex', 'max', { learn: 'suplex' }, 'Solar learns Suplex: heavy Strike damage to one foe, always a crit against a Down foe.'],
     ['rohan', 2, 'Speed Reader', 'daily', { speedReader: 1 }, 'Books take one fewer night to finish (at least one).'],
     ['rohan', 4, 'Heaven’s Door', 'assist', { heavensDoor: { turns: 3 } }, 'Once per battle, Rohan writes a rule into one Shadow: it can’t target Solar for 3 turns.'],
     ['rohan', 7, 'Sketch the Floor', 'tartarus', { sketchFloor: {} }, 'Floors Solar has cleared before start with the whole map revealed on later climbs.'],
@@ -635,7 +613,8 @@ window.FemcBuild = (() => {
   ];
   const PERKS = P.map(([link, rank, name, type, fx, desc, stub]) => ({ id: `${link}-${rank}`, link, rank, name, type, fx: fx || {}, desc, stub: stub || null, kat: /^Kat’s perk/.test(desc) }));
   D.perks = PERKS;
-  /* MAX skills (and Kiriko's Protective Suzu tie-in). */
+  /* MAX skills (and Kiriko's Protective Suzu tie-in). fangs_out, cross_slash, warding_bond and suplex belonged to links removed
+     on 2026-10-21 (Astarion, Cloud, Shadowheart, Leon): no perk teaches them now, but an old save may have them learned, so they stay. */
   Object.assign(D.skills, {
     grand_slam: { name: 'Grand Slam', el: 'strike', type: 'dmg', target: 'one', power: 118, cost: { hp: 14 }, crit: 10, critDown: true, desc: 'Junpei’s swing. Heavy strike damage to one foe; always a critical against a Down foe.' },
     frozen_verdict: { name: 'Frozen Verdict', el: 'ice', type: 'dmg', target: 'all', power: 70, cost: { sp: 22 }, ail: { id: 'freeze', chance: 0.45 }, desc: 'Mitsuru’s verdict. Medium ice damage to all foes, with a high chance to Freeze.' },
@@ -645,7 +624,7 @@ window.FemcBuild = (() => {
     fangs_out: { name: 'Fangs Out', el: 'almighty', type: 'dmg', target: 'one', power: 78, cost: { sp: 16 }, drain: 0.5, desc: 'Medium Almighty damage to one foe; Solar recovers HP equal to half of it.' },
     cross_slash: { name: 'Cross-Slash', el: 'slash', type: 'dmg', target: 'one', power: 118, cost: { hp: 14 }, crit: 8, ail: { id: 'bind', chance: 0.4 }, desc: 'Heavy slash damage to one foe; it may Bind it.' },
     warding_bond: { name: 'Warding Bond', el: 'support', type: 'bond', target: 'ally', turns: 3, cost: { sp: 14 }, desc: 'For 3 turns, one ally takes half damage and Solar takes the other half.' },
-    suplex: { name: 'Suplex', el: 'strike', type: 'dmg', target: 'one', power: 122, cost: { hp: 14 }, critDown: true, desc: 'Leon’s suplex. Heavy strike damage to one foe; always a critical against a Down foe.' },
+    suplex: { name: 'Suplex', el: 'strike', type: 'dmg', target: 'one', power: 122, cost: { hp: 14 }, critDown: true, desc: 'Heavy strike damage to one foe; always a critical against a Down foe.' },
     widows_kiss: { name: 'Widow’s Kiss', el: 'pierce', type: 'dmg', target: 'one', power: 150, cost: { hp: 16 }, noResist: true, critFresh: true, desc: 'Severe pierce damage to one foe. Ignores Resist; always crits a foe that hasn’t acted this round.' },
     runway: { name: 'Showstopper', el: 'support', type: 'taunt', target: 'self', turns: 2, def: 1, thOnHit: 8, cost: { sp: 16 }, icon: 'sk-veneer', desc: 'Hyein’s runway. For 2 turns every foe targets Solar; her defense rises and each hit she takes fills her Theurgy.' },
     big_hug: { name: 'Big Hug', el: 'heal', type: 'heal', target: 'ally', full: true, cureAll: true, once: true, power: 999, cost: { sp: 8 }, desc: 'Once per battle. Fully heals one ally and cures all their ailments.' },
@@ -654,12 +633,13 @@ window.FemcBuild = (() => {
     megidolaon: { name: 'Megidolaon', el: 'almighty', type: 'dmg', target: 'all', power: 140, cost: { sp: 48 }, desc: 'Heavy Almighty damage to all foes.' }
   });
   ['grand_slam', 'frozen_verdict', 'featherman_strike', 'valkyrie', 'undying_love', 'fangs_out', 'cross_slash', 'warding_bond', 'suplex', 'widows_kiss', 'runway', 'big_hug', 'titanic_kiss', 'pirouette', 'megidolaon'].forEach(k => { D.skills[k].id = k; });
-  /* Night-only items (perk kits): used up or gone by morning. */
+  /* Night-only items (perk kits): used up or gone by morning. aid_spray was a removed link's kit (2026-10-21); kept so an old
+     night in progress still knows it. */
   Object.assign(D.items, {
     kit_bead: { name: 'Ken’s Revival Bead', type: 'revive', target: 'dead', hp: 0.5, price: 0, tier: 99, icon: 'revive', use: 'both', night: true, desc: 'From Ken’s emergency kit. Revives a fallen ally with half their HP. Only good tonight.' },
     kit_soul: { name: 'Sunoo’s Chewing Soul', type: 'sp', target: 'ally', sp: 50, price: 0, tier: 99, icon: 'soul', use: 'both', night: true, desc: 'From Sunoo’s takeout box. Restores 50 SP to one ally. Only good tonight.' },
     night_bento: { name: 'Fuuka’s Bento', type: 'spPct', target: 'allies', sp: 0.3, price: 0, tier: 99, icon: 'soul', use: 'both', night: true, desc: 'Experimental. Restores 30% SP to the whole party. Probably.' },
-    aid_spray: { name: 'First Aid Spray', type: 'heal', target: 'allies', hp: 0.4, price: 0, tier: 99, icon: 'medicine', use: 'both', night: true, desc: 'Leon’s spray. Heals the whole party 40%.' },
+    aid_spray: { name: 'First Aid Spray', type: 'heal', target: 'allies', hp: 0.4, price: 0, tier: 99, icon: 'medicine', use: 'both', night: true, desc: 'Heals the whole party 40%.' },
     night_leftovers: { name: 'Shinjiro’s Leftovers', type: 'heal', target: 'allies', hp: 0.2, price: 0, tier: 99, icon: 'medicine', use: 'both', night: true, desc: 'From the dorm kitchen, in a box with Solar’s name on it. Heals the whole party 20%. Only good tonight.' }
   });
   /* ══════════ Gacha prizes (gacha.js runs the capsule machine and the Velvet Room draws in the life sim) ══════════
@@ -700,8 +680,8 @@ window.FemcBuild = (() => {
   const WHO = {};
   [['akihiko', 'Akihiko', 'happy'], ['yukari', 'Yukari', 'neutral'], ['junpei', 'Junpei', 'happy'], ['mitsuru', 'Mitsuru', 'neutral'], ['fuuka', 'Fuuka', 'happy'],
     ['aigis', 'Aigis', 'happy'], ['ken', 'Ken', 'happy'], ['koromaru', 'Koromaru', 'happy'], ['shinjiro', 'Shinjiro', 'neutral'], ['kiriko', 'Kiriko', 'happy'],
-    ['mercy', 'Mercy', 'happy'], ['sebastian', 'Sebastian', 'happy'], ['aphrodite', 'Aphrodite', 'happy'], ['astarion', 'Astarion', 'happy'], ['cloud', 'Cloud', 'serious'],
-    ['judy', 'Judy', 'happy'], ['noctis', 'Noctis', 'neutral'], ['shadowheart', 'Shadowheart', 'serious'], ['leon', 'Leon', 'serious'], ['rohan', 'Rohan', 'serious'],
+    ['mercy', 'Mercy', 'happy'], ['sebastian', 'Sebastian', 'happy'], ['aphrodite', 'Aphrodite', 'happy'],
+    ['judy', 'Judy', 'happy'], ['rohan', 'Rohan', 'serious'],
     ['widowmaker', 'Widowmaker', 'serious'], ['hanni', 'Hanni', 'happy'], ['hyein', 'Hyein', 'happy'], ['jaehyun', 'Jaehyun', 'happy'], ['minji', 'Minji', 'happy'],
     ['mark', 'Mark', 'neutral'], ['haechan', 'Haechan', 'happy'], ['yunjin', 'Yunjin', 'happy'], ['jungwon', 'Jungwon', 'serious'], ['jihoon', 'Jihoon', 'happy'],
     ['junkyu', 'Junkyu', 'happy'], ['sunoo', 'Sunoo', 'happy'], ['cherry', 'Cherry', 'neutral'], ['rio', 'Rio', 'happy'], ['saori', 'Saori', 'neutral'],

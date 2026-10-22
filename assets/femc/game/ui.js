@@ -825,10 +825,10 @@
       box.querySelectorAll('[data-a]').forEach(b => b.addEventListener('click', () => {
         const right = G.answerClass(q, +b.dataset.a);
         const r = box.querySelector('.g-quiz-r'); r.hidden = false;
-        // Shadowheart's Guidance: once a week, a wrong answer can be taken back.
+        // Guidance (unassigned since 2026-10-21): once a week, a wrong answer can be taken back.
         if (!right && G.canRetryClass()) {
           G.useGuidance(); b.classList.add('wrong'); b.disabled = true;
-          r.textContent = 'Shadowheart’s Guidance: something tells her to look again. Try once more.';
+          r.textContent = 'Guidance: something tells her to look again. Try once more.';
           G.sfx('femc-back'); return;
         }
         box.querySelectorAll('[data-a]').forEach(x => { x.disabled = true; if (+x.dataset.a === q.correct) x.classList.add('right'); });

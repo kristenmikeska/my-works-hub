@@ -1333,7 +1333,7 @@
     stairs: { name: 'Stairs', icon: 'room-stairs', color: '#ff4f9e' }, event: { name: 'Something here', icon: 'room-event', color: '#ff8cc0' }, empty: { name: 'Corridor', icon: 'room-empty', color: '#8a7a9a' },
     shrine: { name: 'Night Orchid', icon: 'room-clock', color: '#c9b8ff' }
   };
-  /* Tartarus bond perks on a fresh floor (build.js): Koromaru's Good Nose (one more chest), Shadowheart's Night Orchid (a
+  /* Tartarus bond perks on a fresh floor (build.js): Koromaru's Good Nose (one more chest), the Night Orchid hook (unassigned since 2026-10-21) (a
      shrine), Judy's Tech Savvy (locked chests roll one more item), Fuuka's Oracle Ping (chests and events marked), Widowmaker's
      Infra-Sight (Shadow rooms marked), Mitsuru's Field Report (the way to the stairs), Rohan's Sketch the Floor (floors cleared
      before are fully mapped), Mark's Setlist (one more layer ahead). Mint Blossom can turn up in a chest from Arqa on. */
@@ -1622,10 +1622,10 @@
       const keys = save.items.tartarus_key || 0, pickOk = !!TP().lockpick && !run.map.picked;
       const v = await roomPanel({ bg: T, cls: 'chest locked', kicker: `${floor.label} · ${floor.block}`, title: 'LOCKED CHEST', name: 'locked',
         body: `<p>An iron-banded chest with an old brass lock. ${keys ? `You have ${keys} Tartarus Key${keys > 1 ? 's' : ''}.` : 'Mayoido Antiques sells Tartarus Keys.'}</p>`,
-        buttons: (pickOk ? [{ v: 'pick', label: 'Pick the lock', pink: true, small: 'Astarion’s Lockpick · once a floor' }] : []).concat([{ v: 'open', label: 'Use a Tartarus Key', pink: !pickOk, off: !keys }, { v: 'no', label: 'Leave it' }]), fuuka: navLine('locked') });
+        buttons: (pickOk ? [{ v: 'pick', label: 'Pick the lock', pink: true, small: 'Lockpick · once a floor' }] : []).concat([{ v: 'open', label: 'Use a Tartarus Key', pink: !pickOk, off: !keys }, { v: 'no', label: 'Leave it' }]), fuuka: navLine('locked') });
       if (v === 'pick' && pickOk) {
         run.map.picked = true; n.opened = true; grant(n.chest); sfx('unlock'); mark('lockpick'); mark('locked-open');
-        await roomPanel({ bg: T, cls: 'chest', kicker: 'Astarion’s Lockpick', title: 'RARE TREASURE', body: lootHtml(n.chest), name: 'chest-rare' });
+        await roomPanel({ bg: T, cls: 'chest', kicker: 'Lockpick', title: 'RARE TREASURE', body: lootHtml(n.chest), name: 'chest-rare' });
       } else if (v === 'open' && keys) {
         save.items.tartarus_key--; if (!save.items.tartarus_key) delete save.items.tartarus_key;
         n.opened = true; grant(n.chest); sfx('unlock'); mark('locked-open');
@@ -1634,10 +1634,10 @@
       return null;
     }
     if (n.type === 'shrine' && !n.used) {
-      // Shadowheart's Night Orchid: a small shrine in an empty room.
+      // Night Orchid (unassigned since 2026-10-21): a small shrine in an empty room.
       n.used = true; sfx('heal'); mark('night-orchid');
       carryEach(u => { u.hp = Math.min(u.maxHp, Math.round(u.hp + u.maxHp * 0.3)); u.sp = Math.min(u.maxSp, Math.round(u.sp + u.maxSp * 0.3)); });
-      await roomPanel({ bg: floor.bg, cls: 'clock', kicker: 'Shadowheart’s Night Orchid', title: 'A SMALL SHRINE', body: '<p>Night orchids around a little stone shrine. Everyone recovers 30% of their HP and SP.</p>', name: 'shrine' });
+      await roomPanel({ bg: floor.bg, cls: 'clock', kicker: 'Night Orchid', title: 'A SMALL SHRINE', body: '<p>Night orchids around a little stone shrine. Everyone recovers 30% of their HP and SP.</p>', name: 'shrine' });
       return null;
     }
     if (n.type === 'clock' && !n.used) {
@@ -1823,7 +1823,7 @@
     const perks = BLD && HO && !(RL && RL.noPerks) ? BLD.battlePerks(save, hoAvail()) : {};
     curPerks = perks;
     if (perks.thirdEye) kinds.forEach(k => { const d = D.enemies[k]; const kn = save.known[k]; if (!d || d.gimmick || !kn || !Object.keys(kn).length) return; D.affinityOrder.forEach(el => { kn[el] = true; }); });
-    // Tonight's extras: Yunjin's mood for this floor, Jihoon's Almighty Hoon after a strong win, Leon's Mission Briefing, the Moon's curse.
+    // Tonight's extras: Yunjin's mood for this floor, Jihoon's Almighty Hoon after a strong win, Mission Briefing (unassigned since 2026-10-21), the Moon's curse.
     const startBuffs = [], mods = Object.assign({}, fx.mods);
     if (run && run.mood && run.mood.fi === run.fi) { if (run.mood.stat === 'crit') mods.crit = (mods.crit || 0) + 15; else startBuffs.push(run.mood.stat); }
     if (run && run.hoon) { startBuffs.push('atk'); run.hoon = false; }
@@ -4420,7 +4420,7 @@
     if (save.reached) { const i = D.floors.findIndex(f => f.id === save.reached); if (i < 0 || D.floors[i].bi > hoBlockCap()) save.reached = null; }
     E.formsList().forEach(f => { if (!save.forms.includes(f) && E.formUnlocked(Object.assign({}, save, { forms: [] }), f)) save.forms.push(f); });
     HS = { items0: Object.assign({}, save.items), yen0: save.yen, exp: {}, frags: [], bosses: [], floor: 0, entered: false, scripted: false, finished: false, gifts };
-    // Night kits from bonds (Fuuka's bento, Ken's bead, Leon's spray, Sunoo's soul): only good tonight, never sent back.
+    // Night kits from bonds (Fuuka's bento, Ken's bead, Sunoo's soul): only good tonight, never sent back.
     // Night-only dishes the life sim packed (request.kits: Shinjiro's Kitchen Duty leftovers).
     if (HO.kind === 'tartarus' && R.kits) Object.entries(R.kits).forEach(([k, n]) => { if (D.items[k] && n > 0) { save.items[k] = (save.items[k] || 0) + n; mark('night-kit-' + k); } });
     if (BLD && HO.kind === 'tartarus') { const ctx = BLD.ctxOf(save, hoAvail()); BLD.PERKS.forEach(p => { if (p.fx.nightKit && ['own', 'party', 'assist'].includes(BLD.perkState(p, ctx))) Object.entries(p.fx.nightKit).forEach(([k, n]) => { if (D.items[k]) { save.items[k] = (save.items[k] || 0) + n; mark('night-kit-' + k); } }); }); }
