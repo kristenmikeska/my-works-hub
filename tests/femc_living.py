@@ -249,6 +249,18 @@ try:
       for(const id of ids){const t=G.D.texts.texts.find(x=>x.id===id);const s=LW.at(t.date,t.slot);s.phone.done=G.D.texts.texts.filter(x=>x.id!==id).map(x=>x.id);G.deliverTexts();if(!s.phone.done.includes(id))bad.push(id);}
       return bad})()""")
     ok(not dated, f'the night-before and birthday texts arrive on their dates: {dated}')
+    # Texts from Solar's parents (living-parents.js): each arrives on its date once its world's first contact (or call) has
+    # played, the graduation ones only on their route (or the true one), never before first contact, and every thread is named.
+    home = p.eval(r"""(()=>{const G=FemcGame;const ts=G.D.texts.texts.filter(t=>t.id.startsWith('home-'));const bad=[];let n=0;
+      const W={'home-father':'R','home-mother':'R','home-appa':'S','home-eomma':'S','home-mom':'H','home-dad':'H'};
+      for(const t of ts){if(!G.D.texts.threads[t.thread])bad.push('unnamed '+t.thread);
+        const route=t.heading?{['route-'+W[t.thread]]:true}:{};const s=LW.at(t.date,t.slot,{flags:route});
+        s.phone.done=G.D.texts.texts.filter(x=>x.id!==t.id).map(x=>x.id);G.deliverTexts();
+        if(!s.phone.done.includes(t.id)||!(s.phone.threads[t.thread]||[]).length)bad.push('missed '+t.id);else n++;
+        if(t.heading){const o=LW.at(t.date,t.slot,{flags:{'route-stay':true}});o.phone.done=G.D.texts.texts.filter(x=>x.id!==t.id).map(x=>x.id);G.deliverTexts();if((o.phone.threads[t.thread]||[]).length)bad.push('off-route '+t.id);}
+        const e=LW.at(t.date,t.slot);e.events=e.events.filter(x=>!(t.events||[]).includes(x));e.phone.done=G.D.texts.texts.filter(x=>x.id!==t.id).map(x=>x.id);G.deliverTexts();if((e.phone.threads[t.thread]||[]).length)bad.push('ungated '+t.id);}
+      return {n,total:ts.length,bad}})()""")
+    ok(not home['bad'] and home['n'] == home['total'] and home['total'] >= 15, f"parents' texts arrive on their dates and gates ({home['n']}/{home['total']}): {home['bad']}")
     # A real reply through the phone.
     p.eval(r"""(()=>{const G=FemcGame,s=LW.at('11/8','evening');LW.link('jungwon',4,{rankDay:{4:G.dayOf('11/7')}});s.phone.done=G.D.texts.texts.map(x=>x.id).concat(G.D.texts.ambient.map(x=>x.id));s.phone.lastInvite=9999;s.dailyLife.lastDay=s.day;G.deliverTexts();
       document.querySelectorAll('.gs,.g-overlay').forEach(x=>x.remove());FemcGameUI.run();FemcGameUI.openPhone()})()""")

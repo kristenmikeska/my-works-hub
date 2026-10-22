@@ -40,6 +40,7 @@ Other docs, if you ever want detail:
 - ✅ Haechan settles into one world as the ending nears
 - ✅ New, distinct awakenings (Haechan's is the epic one)
 - ✅ Solar texts like herself everywhere
+- ✅ Texts from Solar's parents back home, a few from each world across the year (texts only; they never appear in person)
 - ✅ SUnews notifications nobody can open
 - ✅ Mark's rank 1 avoids Haechan's name on purpose
 - ✅ Late-night scenes with the romances: Haechan, Akihiko, Jungwon and Jihoon, changing with the day and how close you are

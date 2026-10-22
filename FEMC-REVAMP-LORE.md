@@ -248,8 +248,16 @@ Haechan stays Universe and Jungwon stays Hierophant.
 - **Built (2026-10-22): Danielle, Jaemin and Chenle.** Three Runners searchers who cross in November once Solar has chased enough Runners memories (miss them and they wait for New Game+), each with ten ranks, texts, holidays, everyday moments around town and perks. They live at the Kirijo guesthouse. They're friendship links. Until Kat's portraits exist they appear as a silhouette; dropping the portrait files in (and running the portrait tool) shows their faces everywhere.
 - **Built (2026-10-21): removals and March.** Leon, Cloud, Noctis, Astarion and Shadowheart are out of the revamp (v1 keeps them). Scenes they were part of were trimmed to read well without them; old saves keep loading and keep anything they gave; the Black Rose naginata is now a boss's first-clear drop. The year runs to early March: February is a full extra month (the cold, Setsubun, Valentine's Day, graduation on 3/5), and the end of the year moved to match. February is where ranks 11–15 will go.
 - **Solar's parents (Jaesang and Solji):** maybe as texts or one scene, not full links. Undecided.
+  - **Decided (Kat, 2026-10-22): texts only.** The parents never appear in person. See "Texts from Solar's parents" below.
 - **Later idea:** cameos from Kat's other universes (e.g. Delicate) as Persona-world residents, like Soomi as a Rise-style celebrity.
 
 ## Kat's rulings (2026-10-22): arcana and invented characters
 - **Arcana confirmed:** Danielle is Devil, Jaemin is Sun, Chenle is Hermit.
 - **The writer-invented characters stay:** Akihiko's fan club (Ōta, Hiyori, Maki, Sonoda), Shinjiro's stray cat and the ramen cook, and Haechan's Valentine's gloves.
+
+## Texts from Solar's parents (built 2026-10-22)
+- **Every world has its own parents,** from each novel's current canon: *Runners*' father and mother (Upper East Side), *strangers*' Appa and Eomma (the Lee house in Incheon), *Hoax*'s Mom and Dad (the Kims, usually at work or on the road). Texts only; nobody comes through in person, and they don't have portraits (their threads show an initial).
+- **They come the way every text from home comes:** down her old number in that world, only after that world's first contact, late at night. Most are old, sent before she went missing and arriving out of order (her June birthday lands in September); a few are fresh, after that world's "come home" call. Solar's thumbs answer like she always did, in her own texting voice for that world, and nothing answers back. How long she's been gone stays unclear.
+- **Where they fall:** a handful per world across the year (first contact, her belated birthday, a family occasion, exams or holidays, the week of the calls). At graduation (3/5) the world her route is going home to sends one more; the true ending hears from all three; Stay hears nothing.
+- **Tone:** each family as its novel has it, and nothing that touches either novel's plot (dinners, dresses, soup, takeout money, holidays). The *Hoax* dad is barely on the page in the book, so his few lines are the game's own.
+- Data: `assets/femc/game/data/living-parents.js`.
