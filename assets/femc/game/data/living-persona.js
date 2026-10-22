@@ -9,7 +9,7 @@
   const add = (id, field, v) => { const o = (X[id] ||= {}); o[field] = { ...(o[field] || {}), ...v }; };
 
   add('ann', 'holidays', {
-    '5/4': { rank: 1, title: 'greenery day', place: 'Port Island · Pier', time: 'Daytime', bg: 'park-2', music: 'sun',
+    '5/4': { rank: 1, title: 'greenery day', place: 'Port Island · Pier', time: 'Daytime', bg: 'port-island-pier', music: 'sun',
       ask: "SOLAR. are u free today. i have a shoot on the pier and the assistant called in sick and u have arms", yes: 'i have arms', ok: 'YAY. pier, 11. bring nothing. ok bring sunscreen ☀️', sorry: 'cant today, sorry!!', no: "nooo ok. i'll hold the reflector with my FACE",
       scene: [
         { n: "Golden Week had emptied the offices and filled the pier, families with kites and grandfathers with fishing rods and small children in sun hats running the length of the boards and back, and at the far end, past a rope of yellow tape, a folding table of clothes on hangers flapped in the wind like a line of laundry with ambitions." },
@@ -173,7 +173,7 @@
         { s: 'solar', f: 'neutral', t: "There's a bakery by the bridge." },
         { s: 'kasumi', f: 'happy', t: "Two, then. One for me, and one for the head judge." }
       ] },
-    '1/1': { rank: 4, flag: 'year-goes-on', title: 'first sunrise', place: 'Port Island · Pier', time: 'Early Morning', bg: 'park-2', music: 'tender',
+    '1/1': { rank: 4, flag: 'year-goes-on', title: 'first sunrise', place: 'Port Island · Pier', time: 'Early Morning', bg: 'port-island-pier-night', music: 'tender',
       ask: "Happy New Year, Senpai!! 🎀 Spend the morning with me? The first sunrise from the pier, and then the shrine! I'll bring hot drinks!", yes: "happy new year. i'm coming", ok: "Yay!! Dress warm! The wind on the pier is very serious this early!", sorry: 'cant today, im sorry kasumi', no: "That's okay! I'll tell the sun you said hello! 🎀",
       scene: [
         { n: "It was still dark when Solar came out onto the pier, the real dark, the kind that only lasts an hour or so in winter before the sky starts to give up on it, and the cold off the bay went straight through her coat as though the coat had been a rumor. There were people along the rail already, a long patient row of them in hats and scarves, families and old couples and a man with a thermos, all of them facing east, waiting for the first sunrise of the year." },
@@ -191,6 +191,7 @@
             { n: "The sun came up out of the water all at once, the way it does over the sea, a sliver and then a curve and then too bright to look at, and it lit the whole row of faces along the rail gold, Kasumi's among them, her eyes shut, her lips moving, the pompom on her hat catching fire at the edges. She opened her eyes and caught Solar looking, and went pink, and pretended it was the cold." }
           ] }
         ] },
+        { bg: 'port-island-pier' },
         { s: 'kasumi', f: 'neutral', t: "My sister and I used to do this. Every year. Our father would drive us to the sea in the dark, and we'd sit on the hood of the car in blankets, and she'd always fall asleep right before, and I'd have to wake her up." },
         { s: 'kasumi', f: 'happy', t: "She never once saw it start. She only ever saw it already up. She said that was the best part anyway." },
         { s: 'solar', f: 'neutral', t: "Will you send her one? Of this?" },

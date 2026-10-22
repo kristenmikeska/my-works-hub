@@ -54,7 +54,7 @@
 
   /* ── B) Holidays ── */
   J.holidays = { ...(J.holidays || {}),
-    '11/23': { rank: 1, slot: 'evening', title: 'friendsgiving', place: 'Kirijo Guesthouse', time: 'Evening', bg: 'hotel-lobby', music: 'joy',
+    '11/23': { rank: 1, slot: 'evening', title: 'friendsgiving', place: 'Kirijo Guesthouse', time: 'Evening', bg: 'kirijo-guesthouse-night', music: 'joy',
       ask: "solar lee. its labor thanksgiving day. i dont know what that is. ive decided its thanksgiving. FRIENDSGIVING. guesthouse lobby. 6. bring a dish or ur heart",
       yes: 'im bringing rice. its the only dish i trust', ok: 'perfect. rice is a love language 🍗', sorry: 'cant tonight, sorry!!', no: 'ok 💔 ill save u a plate. a big one',
       scene: [
@@ -90,7 +90,7 @@
         { n: "They ate until the chickens were bones and the cake was a strawberry and a smear. The desk lady fell asleep upright in her chair of honor. And at nine, while everybody else carried plates to the little kitchen behind the desk, Jaemin went round the long table with a garbage bag, by himself, picking up the paper cups one at a time, and looking at each one, before it went in." }
       ] },
 
-    '12/31': { rank: 5, flag: 'year-goes-on', slot: 'evening', title: "new year's eve", place: 'Kirijo Guesthouse · Roof', time: 'Evening', bg: 'rooftop-citynight', music: 'joy',
+    '12/31': { rank: 5, flag: 'year-goes-on', slot: 'evening', title: "new year's eve", place: 'Kirijo Guesthouse · Roof', time: 'Evening', bg: 'kirijo-guesthouse-roof-night', music: 'joy',
       ask: "solar lee. new years eve. guesthouse roof. 8:45 sharp. we're counting down to NINE. dont ask questions. ask questions on the roof ✨",
       yes: 'why nine', ok: 'on the roof. bring a scarf. bring two. 🎉', sorry: 'cant tonight. happy new year jaemin', no: 'happy new year solar lee. ill count one for u',
       scene: [
@@ -189,7 +189,7 @@
       ] },
 
     { id: 'jaemin-president-kitchen', after: '11/20', until: '12/20', slot: 'evening', events: ['a4-twelve'],
-      place: 'Kirijo Guesthouse', time: 'Evening', bg: 'hotel-lobby', scene: [
+      place: 'Kirijo Guesthouse', time: 'Evening', bg: 'kirijo-guesthouse-night', scene: [
         { n: "There was a small kitchen behind the guesthouse front desk, meant for the desk lady's tea and nothing more, two burners and a rice cooker and a window onto the alley, and tonight Jaehyun Lee was standing in it with his sleeves rolled to the elbow, making fried rice for nine people, and Jaemin was standing in its doorway watching him do it, the way you'd watch a bear ride a bicycle." },
         { s: 'jaemin', f: 'surprised', t: "Solar. Solar, come here. Come look at this. Don't make any sudden movements." },
         { s: 'jaehyun', f: 'neutral', t: "I can hear you, Na." },

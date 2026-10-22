@@ -29,7 +29,7 @@ window.FEMC_GAME_JOBS = [
   { id: 'chagall', name: 'Chagall Café', role: 'Behind the counter at Chagall', area: 'mall', place: 'Paulownia Mall · Chagall Café',
     slot: 'after', days: [1, 2, 4, 6], pay: 2000, stats: { charm: 1, knowledge: 1 },
     blurb: 'The café with the strange coffee wants someone for the afternoon rush. The manager says the job is mostly memory: the orders, the regulars, which pastry goes with which mood.' },
-  { id: 'hagakure', name: 'Hagakure', role: 'The dinner rush in the ramen kitchen', area: 'strip', place: 'Iwatodai Strip · Hagakure',
+  { id: 'hagakure', name: 'Hagakure', role: 'The dinner rush in the ramen kitchen', area: 'strip', place: 'Iwatodai Strip · Hagakure · Kitchen',
     slot: 'evening', days: [0, 3, 5, 6], pay: 2600, stats: { proficiency: 1, courage: 1 },
     blurb: 'The ramen shop needs a pair of hands for the dinner rush: bowls, broth, the ticket machine, and the occasional customer attempting the Mega Bowl.' },
   { id: 'amulets', name: 'Amulet stall', role: 'Helping at the shrine’s amulet stall', area: 'shrine', place: 'Naganaki Shrine · Amulet Stall',

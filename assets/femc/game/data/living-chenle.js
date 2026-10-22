@@ -157,7 +157,7 @@
     ] },
 
   { id: 'chenle-minji', after: '11/21', until: '12/20', slot: 'after', events: ['a4-twelve'],
-    place: 'Iwatodai Station · Platform', time: 'After School', bg: 'subway', scene: [
+    place: 'Iwatodai Station · Platform', time: 'After School', bg: 'station-platform-day', scene: [
       { n: "On her way past the station Solar found two people from home at the very end of the platform, where the yellow line ran out and nobody stood. Minji had her camera up on its little tripod, pointed down the tracks toward the bend where the trains came out from behind the buildings. Chenle was beside her with his phone in one hand and his other hand in the air, flat, like someone about to start a race." },
       { s: 'minji', f: 'neutral', t: "I want it to come into frame on the beat. Exactly on it. The light's only right for about six more minutes." },
       { s: 'chenle', f: 'neutral', t: "Off peak they're eight minutes apart. Give or take twenty seconds. The next one's due in fifty-one seconds. It's going to be eleven seconds late. They're always eleven seconds late on this line in the afternoon." },

@@ -38,7 +38,7 @@
   });
 
   add('mercy', 'holidays', {
-    '7/20': { rank: 2, title: 'marine day', place: 'Port Island · Seaside Park', time: 'Daytime', bg: 'park-2', music: 'sun',
+    '7/20': { rank: 2, title: 'marine day', place: 'Port Island · Seaside Park', time: 'Daytime', bg: 'port-island-seaside-park', music: 'sun',
       ask: 'The night nurse has taken my pager and told me not to come back until tomorrow. She says it is a holiday. What does one do on a holiday?', yes: 'u go to the sea. im coming', ok: 'Very well. The sea. Seaside park, eleven. I will bring sunscreen and you will wear it.', sorry: 'cant today, im sorry!!', no: 'Then I will sit very still on a bench and see if that is a holiday.',
       scene: [
         { n: "Marine Day, and the seaside park on Port Island was full of people who had been told by the calendar to go and look at the water and were doing it with great seriousness, families on picnic sheets and old men with fishing rods and a whole elementary school class in matching yellow hats being herded along the railing by a teacher with a whistle." },

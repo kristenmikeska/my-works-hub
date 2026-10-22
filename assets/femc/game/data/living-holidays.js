@@ -157,7 +157,7 @@
   });
 
   add('fuuka', {
-    '7/20': { rank: 1, title: 'marine day', place: 'Port Island · Seaside Park', time: 'Daytime', bg: 'park-2', music: 'sun',
+    '7/20': { rank: 1, title: 'marine day', place: 'Port Island · Seaside Park', time: 'Daytime', bg: 'port-island-seaside-park', music: 'sun',
       ask: "senpai, it's marine day. i want to listen to the sea. is that strange? i'd like to listen to it with someone", yes: 'not strange. lets go', ok: 'thank you!! i’ll bring the radio. and lunch. attempt 41', sorry: 'cant today, sorry fuuka', no: 'that’s ok!! i’ll record it for you',
       scene: [
         { n: "Fuuka had brought an old portable radio from the dorm's storeroom and a small recorder of her own and a bento she'd labeled *Attempt 41: Marine Day*, and she set all three out on the sea wall at the edge of the park in a neat row and then just sat with her eyes closed and her hands in her lap, listening." },
@@ -256,7 +256,7 @@
   });
 
   add('jihoon', {
-    '9/22': { rank: 1, events: ['a4-ice-cream'], title: "citizens' holiday", place: 'Port Island · Pier', time: 'Daytime', bg: 'park-2', music: 'joy',
+    '9/22': { rank: 1, events: ['a4-ice-cream'], title: "citizens' holiday", place: 'Port Island · Pier', time: 'Daytime', bg: 'port-island-pier', music: 'joy',
       ask: 'SOL. holiday. i have Located the best ice cream in this entire city. this is a Summons', yes: 'HEHEHE omw', ok: 'pier. 2pm. Do Not Be Late. the ice cream waits for No One', sorry: 'cant today!! sorry!!', no: 'wow. #brocken. ill eat urs',
       scene: [
         { n: "The best ice cream in the entire city, as located by Park Jihoon after an investigation he described as exhaustive, turned out to be a van parked at the end of the Port Island pier with a hand-painted sign and one flavor, vanilla, which he ordered for both of them with the air of a man unveiling a monument." },

@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**95 items:** 2 quick fixes · 14 CGs · 31 places · 19 character pieces · 12 battle · 11 cards and icons · 6 screens. 22 are ⭐, 49 are optional.
+**81 items:** 2 quick fixes · 14 CGs · 17 places · 19 character pieces · 12 battle · 11 cards and icons · 6 screens. 15 are ⭐, 47 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -92,22 +92,8 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 
 ### 3A. Places that borrow another place's art
 Each works now on a stand-in (in brackets); the new one replaces it.
-- [ ] ⭐ **Iwatodai Station concourse:** a small commuter station's ticket gates, a departures board, a kiosk, a tiled floor, afternoon light. (Now a TV-anime screenshot full of people; it's Iwatodai Station, Port Island Station's concourse and the station's Go Out card.) **Fills:** `iwatodai-station`.
-- [ ] ⭐ **The station overpass:** a covered pedestrian footbridge over train tracks beside a station, chain-link sides, the platforms below, the town behind, late afternoon. (Danielle's spot, rank 10 included; now the concourse screenshot.) **Fills:** `iwatodai-station-overpass`.
-- [ ] ⭐ **The station platform by day:** a single wooden bench under a timetable board, a vending machine, open sky over the tracks. (Wren's link; now a subway interior. The night version exists.) **Fills:** `station-platform-day`.
 - [ ] ⭐ **The dorm's front, day and night:** a three-story red-brick dormitory with a small arched entrance and stone steps, a street lamp, a quiet residential street; then the same at night, warm windows and the lamp on. (The 55-scene image now is a watermarked game screenshot with people in it.) **Attach:** 🎮 `bg/iwotodaidorm-outside.webp` for the layout. **Fills:** `iwatodaidorm-front`, `iwatodaidorm-front-night`.
-- [ ] ⭐ **The hospital roof:** a fenced hospital rooftop with laundry lines of white sheets, a bench, the bay and city beyond. (Mercy's link, rank 10 included; now the school's roof or a hospital hallway.) **Fills:** `hospital-rooftop`.
-- [ ] ⭐ **A karaoke room:** a small private karaoke booth, a curved vinyl sofa, a table of drinks and song books, a big screen, colored lights. (Now the Club Escapade dance floor.) **Fills:** `paulownia-karaoke`.
-- [ ] ⭐ **Port Island pier, day and night:** a long concrete pier into the bay, railings, mooring posts, cranes across the water; then the same at night with lamps on the water. (Now the riverside park path, and a generic street at night.) **Fills:** `port-island-pier`, `port-island-pier-night`.
-- [ ] ⭐ **Gekkoukan's gym:** a high school gymnasium with a stage at one end, red curtains, rows of folding chairs, banners above. (Graduation and one story scene; now the school hallway.) **Fills:** `gekkoukan-gym`.
-- [ ] **Inside the convenience store:** bright aisles, a drinks fridge, the counter with a hot-snack case, night outside the glass. (The job; now a big-city street.) **Fills:** `port-island-konbini`.
-- [ ] **Inside Bookworms:** a cramped used bookstore, floor-to-ceiling shelves, stacks on the floor, a small counter with a bell. (The job; now the street outside.) **Fills:** `bookworms-inside`.
-- [ ] **Respawn's coffee bar:** an esports café, rows of gaming PCs with RGB lights, a small coffee bar with an espresso machine. (The job; now a mall walkway.) **Fills:** `respawn-cafe`.
-- [ ] **Hagakure's kitchen** during the dinner rush: steam, big stockpots, the ticket rail. (The job; now the dining room.) **Fills:** `hagakure-kitchen`.
-- [ ] **Gekkoukan's archery range:** a covered Japanese kyudo range, wooden floor, targets across a strip of grass. (Yukari's link; now a plain view of the school.) **Fills:** `gekkoukan-archery-range`.
-- [ ] *(Optional)* **The seaside park:** a seaside promenade with benches, palm trees and the bay. (Now shares the riverside path.) **Fills:** `port-island-seaside-park`.
-- [ ] *(Optional)* **The tutoring job's apartment:** a small family apartment's dining table with workbooks, a lamp, a fridge with drawings on it. (Now a generic bedroom.) **Fills:** `sakamoto-apartment`.
-- [ ] *(Optional)* **Kirijo Guesthouse lobby and roof:** an elegant small guesthouse lobby with a front desk and sofas; its rooftop terrace at night. (Now a generic hotel lobby and a city rooftop.) **Fills:** `kirijo-guesthouse`, `kirijo-guesthouse-roof`.
+- [ ] *(Optional)* **Kirijo Guesthouse lobby by day:** the same lobby as `bg/kirijo-guesthouse-night.webp`, in afternoon light. (The night one is in; after-school and daytime guesthouse scenes still use a generic hotel lobby.) **Attach:** 🎮 `bg/kirijo-guesthouse-night.webp`. **Fills:** `kirijo-guesthouse`.
 - [ ] *(Optional)* **Yeobo's Cafe and the fish market, today:** the same two places as their washed-out memory images, but clear and present-day. (The jobs use the memory images now, which may be on purpose.) **Attach:** 🎮 `bg/flashback-yeobos-cafe.webp` / `bg/flashback-fish-market.webp`. **Fills:** `yeobos-cafe`, `port-island-fish-market`.
 - [ ] *(Optional)* small ones, one or two scenes each: a supermarket aisle (`iwatodai-supermarket`), a school stairwell (`gekkoukan-stairwell`), a canal path behind the mall (`paulownia-canal`), a small flat near the station (`kirijo-flat`).
 

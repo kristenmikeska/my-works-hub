@@ -182,7 +182,7 @@
     ] },
 
     { after: '6/23', title: '2: the caduceus', place: 'Tatsumi Memorial Hospital · Rooftop', scene: [
-      { place: 'Tatsumi Memorial Hospital · Rooftop', time: 'Daytime', bg: 'rooftop-day' },
+      { place: 'Tatsumi Memorial Hospital · Rooftop', time: 'Daytime', bg: 'hospital-rooftop' },
       { music: 'day' },
       { n: "The hospital had a roof where the staff went to smoke, and on Tuesday afternoons, Solar had learned, where Dr. Ziegler went to drink terrible coffee and stand very still, with her face turned up to whatever weather there was, like someone who had read somewhere that this was what people did on breaks and was trying it out." },
       { n: "She had something leaning on the railing beside her. A staff, white and gold, a little set of wings at the top, humming faintly, like a refrigerator in another room. And Solar's umbrella." },
@@ -295,7 +295,7 @@
           { s: 'genji', f: 'neutral', t: "I don't look up. If I look up, she will step away from the glass." }
         ] }
       ] },
-      { place: 'Tatsumi Memorial Hospital · Rooftop', time: 'Daytime', bg: 'rooftop-day' },
+      { place: 'Tatsumi Memorial Hospital · Rooftop', time: 'Daytime', bg: 'hospital-rooftop' },
       { n: "On the roof, Angela didn't let her get a word out." },
       { s: 'mercy', f: 'serious', t: "I know he's there. I'm not blind. I'm a doctor." },
       { s: 'mercy', f: 'sad', t: "He answered the letter. The recall. Of course he did. He always answers. He came here because he answered it and then went looking for whoever hadn't, and he found me, and now he's sitting under a tree in a hospital car park in a world that isn't ours, waiting for me to say something I don't have." },
@@ -528,7 +528,7 @@
     ] },
 
     { after: '10/20', title: '9: the recall', place: 'Tatsumi Memorial Hospital · Rooftop', scene: [
-      { place: 'Tatsumi Memorial Hospital · Rooftop', time: 'Daytime', bg: 'rooftop-evening' },
+      { place: 'Tatsumi Memorial Hospital · Rooftop', time: 'Daytime', bg: 'hospital-rooftop' },
       { music: 'tender' },
       { n: "October, and the hospital roof was cold now. Angela had a scarf. It was very long and very ugly, mustard and brown and an unexpected stripe of purple, and a patient on the fourth floor had knitted it for her over six weeks of physical therapy, and she wore it every single day, with her white coat, with total dignity, as though it were a medal." },
       { n: "She'd been different, the last month. Lighter. She slept. She ate the bentos without being bullied into it, mostly. She'd been seen, by the night nurse, laughing in the courtyard under the ginkgo with a man made of metal who was trying to teach her to meditate and failing, because she kept opening one eye to check he was still there." },
@@ -574,7 +574,7 @@
     ] },
 
     { after: '11/19', title: '10: heroes never die', place: 'Tatsumi Memorial Hospital · Rooftop', scene: [
-      { place: 'Tatsumi Memorial Hospital · Rooftop', time: 'Daytime', bg: 'rooftop-evening' },
+      { place: 'Tatsumi Memorial Hospital · Rooftop', time: 'Daytime', bg: 'hospital-rooftop' },
       { music: 'tender' },
       { n: "November, and the first snow wouldn't come for weeks yet but you could smell it already, that clean metal edge in the air. Angela was waiting on the roof in her white coat and the ugly scarf, and the Caduceus was leaning on the rail beside her, humming, and Genji was sitting on the ledge at the far end with his back to them, very carefully not listening, the way only someone who could hear everything could not listen." },
       { s: 'mercy', f: 'neutral', t: "I have something for you. Hold out your hand. No, the other one. The one that holds the light." },

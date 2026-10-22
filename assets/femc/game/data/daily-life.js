@@ -37,7 +37,7 @@ window.FEMC_GAME_DAILY_LIFE = [
       { n: "Hanni came down with a basket of clean towels and asked which pile was for keeping. Hyein looked at every pile, then at Hanni. Hanni sighed and set the towels on the stairs. Solar moved the television remote out from under the newspaper and sat down." }
     ] },
   { id: 'jihoon-morning-route', after: '9/21', slot: 'early', schoolOnly: true, events: ['a4-ice-cream'],
-    place: 'Iwatodai Station', time: 'Morning', bg: '0d489c888283c69d5c7848eb84174bc6', scene: [
+    place: 'Iwatodai Station', time: 'Morning', bg: 'iwatodai-station', scene: [
       { n: "Jihoon was leaning on the dorm gate when Solar came out, as if he'd been there an hour, which he hadn't, because his hair was still wet. He'd walked over from the guesthouse with a folded street map in his pocket and two different socks on, and his guesthouse key on a ring Mitsuru had found in a drawer. It made a small noise against his coins all the way to the station." },
       { s: 'jihoon', f: 'happy', t: "I'm learning the city today. Very independent of me. You're welcome." },
       { s: 'solar', f: 'neutral', t: "Where are you going?" },

@@ -5005,6 +5005,276 @@
       "source": "solar-sees-bdaysurprise.png",
       "sourceNow": "Added to Game/solar-sees-bdaysurprise.png",
       "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/bookworms-inside.webp",
+      "outputSha256": "1db9611e3c110270c948100954c44a70f08ebe81af87de6f917688ea38ff0aae",
+      "place": "Iwatodai Strip \u00b7 Bookworms (day and evening; the job, Rohan's and other Bookworms scenes, the books shop), replacing shopping-street",
+      "sha256": "334cc1b44a3ba1da97cac8cac6c34726c9c7d210afb8a361c58d3d8cf4415b36",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "bookworms-inside.jpeg",
+      "sourceNow": "Added to Game/bookworms-inside.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/gekkoukan-archery-range.webp",
+      "outputSha256": "a404900e8f47b15bdf30cedf32fcaaac656ecd5ecf81c4bb44c9b5fd21a31b43",
+      "place": "Gekkoukan High \u00b7 Archery Range (Yukari's link; day image, evening dims it), replacing outside-school-2",
+      "sha256": "f6b21363c4bf455187b7e9a08a672cdc59138117510bce5d911e46e39f3eff36",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "gekkoukan-archery-range.jpeg",
+      "sourceNow": "Added to Game/gekkoukan-archery-range.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/gekkoukan-gym.webp",
+      "outputSha256": "94ff471feb7f3f578d73ca6b06d4f3379a1ccf459dcc15282ea069a95a94a1be",
+      "place": "Gekkoukan High \u00b7 Gym / Gymnasium rule (graduation) and a { bg } step in story-act4's Saturday gym scene once she reaches the gym (the walk there keeps school-hallway)",
+      "sha256": "fc156bfe37f1ecfeefb982e94f0207ccce1731d5c765177833890195c59adcf0",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "gekkoukan-gym.jpeg",
+      "sourceNow": "Added to Game/gekkoukan-gym.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/hagakure-kitchen.webp",
+      "outputSha256": "24572ba59a88cad43f9967dd8936fcdf98c3adeb68e8001702aaf7f68f29c968",
+      "place": "Iwatodai Strip \u00b7 Hagakure \u00b7 Kitchen (new place for the Hagakure job: jobs.js place and its job-scenes-more-b shift lines; the Mega Bowl shift keeps its challenge-bowl bg; customers' Hagakure scenes keep hagakure-ramen)",
+      "sha256": "6007a8b3b1de166f11e8c118d6cd1dd29e1a69a2d6d798a20374593c56863ffb",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "hagakure-kitchen.jpeg",
+      "sourceNow": "Added to Game/hagakure-kitchen.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/hospital-rooftop.webp",
+      "outputSha256": "546eb2d96c5f8fb7d33d2684a80d0eacae007450d9faeb2c26bf5f0a65a0b1d7",
+      "place": "Tatsumi Memorial Hospital \u00b7 Rooftop rule, and Mercy's four Daytime rooftop scenes (ranks 2, 9, 10 and one mid-scene step), replacing rooftop-day / rooftop-evening; her Dawn step keeps rooftop-evening (no dawn art)",
+      "sha256": "467a6b3b07f9f0faf4f484cb1fc141925d591c69187827c307eaa8f2eee8a90d",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "hospital-rooftop.jpeg",
+      "sourceNow": "Added to Game/hospital-rooftop.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/iwatodai-station.webp",
+      "outputSha256": "36a96dbf690adf7766ea0fdb5e9c359af22de7f91749612f1cc4c32f5858cadc",
+      "place": "Iwatodai Station rule and the station's Go Out card, and daily-life.js's morning station routine bg, replacing the anime screenshot 0d489c888283c69d5c7848eb84174bc6",
+      "sha256": "f5f957676ce9abc32dac23d0cdec9d2212b2bec5bcc509c66b83e4ba970135ab",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "iwatodai-station.jpeg",
+      "sourceNow": "Added to Game/iwatodai-station.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/iwatodai-station-overpass.webp",
+      "outputSha256": "12049ef01938ea4444b91b0712ea06ec62af4fd79bab678c6e40280e700cbd8a",
+      "place": "Iwatodai Station \u00b7 Overpass (Danielle's after-school spot, rank 10 included); the Dark Hour stairs keep the Dark Hour street",
+      "sha256": "29af0b9d470f1eb7597e76d97413a982f08b7455bb62bfd4366cf44b389916ee",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "iwatodai-station-overpass.jpeg",
+      "sourceNow": "Added to Game/iwatodai-station-overpass.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/station-concourse-busy.webp",
+      "outputSha256": "b997bba1efe5776e1342a13e8a48e0ea0df0b00a424b99741f09cbc23927d4c4",
+      "place": "Port Island Station \u00b7 Central Concourse (Mark's and Aphrodite's concourse scenes; evening dims it), replacing the screenshot. living-r15-mark.js's morning concourse scene still names the screenshot as its bg (another helper's uncommitted file; not edited)",
+      "sha256": "97281fb7b07b090cc83251d0df6a5011d0113320816bdd2633c14115c6a788e4",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "iwatodaistationconcourse-busy.jpeg",
+      "sourceNow": "Added to Game/iwatodaistationconcourse-busy.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/kirijo-guesthouse-night.webp",
+      "outputSha256": "35429e7159cbe064e8ad743024571e7bbc4f372a7bd9f3dd4f58080d862c0345",
+      "place": "Night-lit (moon in the window): evening image of the Kirijo Guesthouse and Iwatodai Station \u00b7 Kirijo Guesthouse rules, and living-jaemin.js's two Evening guesthouse bgs; daytime keeps hotel-lobby",
+      "sha256": "7d4b4aac0e5454b78879a65644755e95d6930b143d6cb480d7bb5e7c2b814d9c",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "kirijo-guesthouse.jpeg",
+      "sourceNow": "Added to Game/kirijo-guesthouse.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/kirijo-guesthouse-roof-night.webp",
+      "outputSha256": "efe57400eba09aa5f96f942a02b1728970f95cc1bc97fb9145117e363082464f",
+      "place": "Night: Kirijo Guesthouse \u00b7 Roof rule (evening image) and living-jaemin.js 12/31 evening bg, replacing rooftop-citynight",
+      "sha256": "3dc34b07e1e0f3a59d2ab15733c5020e75505507e3808b6de2c3bb1fa28bad0a",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "kirijo-guesthouse-roof.jpeg",
+      "sourceNow": "Added to Game/kirijo-guesthouse-roof.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/paulownia-karaoke.webp",
+      "outputSha256": "6b1841b81ca735c49edf0d7e4acb1d9438d667f6687a8ecc2e426aaa806f6e6f",
+      "place": "Paulownia Mall \u00b7 Karaoke (day and evening; windowless) and story-act4's Dark Hour karaoke step, replacing clubescapade (Club Escapade keeps it)",
+      "sha256": "277a8b93f837d69da92caa769fb6dd51d6491a315b76c91a01ad9655fe9a7626",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "paulownia-karaoke.jpeg",
+      "sourceNow": "Added to Game/paulownia-karaoke.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/port-island-konbini-night.webp",
+      "outputSha256": "ddc716d0f80f46f20f40a3b089e3f5be787b4208c86e95d3e1d547a833d5dd3a",
+      "place": "Night outside the glass: evening image of Port Island \u00b7 Convenience Store (the evening job and Mitsuru's evening scene); day keeps city (no day scenes)",
+      "sha256": "ae2a9f533a6e5de5b5734b83ce73dae3f69610fe1afc3d21dbbbd45fc8adcddc",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "port-island-konbini.jpeg",
+      "sourceNow": "Added to Game/port-island-konbini.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/port-island-pier.webp",
+      "outputSha256": "198a57c526ecc75b09247000a4a38e45a2a153008c428c2135bfe1fdea54017a",
+      "place": "Port Island \u00b7 Pier day image (the pier activity, a2-pier, links), and the Daytime bgs in living-holidays.js 9/22 and living-persona.js 5/4, plus a { bg } step once the sun is up in living-persona.js 1/1, replacing park-2",
+      "sha256": "0f400a85fecf0ffd86b35ef0b40a318715e73932c54ef60e1c893415cc6fbda7",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "port-island-pier.jpeg",
+      "sourceNow": "Added to Game/port-island-pier.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/port-island-pier-night.webp",
+      "outputSha256": "99b44c5d3dc097b0652fd439ea92706c34a4dfe51ee034f4bf430d8d130aa22f",
+      "place": "Port Island \u00b7 Pier evening image (replacing outside-night), and living-persona.js 1/1's pre-dawn opening bg",
+      "sha256": "168727465ba9119d0c6158dba424e13d3fddaecbf91a6f1649fedd42b5cd0a1a",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "port-island-pier-night.jpeg",
+      "sourceNow": "Added to Game/port-island-pier-night.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/port-island-seaside-park.webp",
+      "outputSha256": "8c1766f7193f613dc3052653531f45e42a32eced37ecdf1309545e97e9767a42",
+      "place": "Port Island \u00b7 Seaside Park (day; evening dims it) and the Daytime bgs in living-holidays.js and living-visitors.js, replacing park-2",
+      "sha256": "9a18239ea4aee66e7e0d0ff3d1e0ff8b01c99841ebbcf2e50b8a400f522c1e50",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "port-island-seaside-park.jpeg",
+      "sourceNow": "Added to Game/port-island-seaside-park.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/respawn-cafe-evening.webp",
+      "outputSha256": "3cd364ae045106bcc42235577eea044aac7d6e391df05c462d9e5a3edc0180ca",
+      "place": "Dusk outside the window: evening image of Port Island Station \u00b7 Respawn (every Respawn scene is evening); day keeps inside-mall",
+      "sha256": "bdb45ac1ea8a6cbe2194122501c485307f2ac878a9438544c54c16f10d508cf2",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "respawn-cafe.jpeg",
+      "sourceNow": "Added to Game/respawn-cafe.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/sakamoto-apartment-night.webp",
+      "outputSha256": "de07a922955aa1d7d66b6beca8ac8eea17f7320748c053cb2c0977a174387b99",
+      "place": "Night in the window: evening image of the Tutor rule (all tutoring shifts are evening); day keeps green-bedroom",
+      "sha256": "f77f0335f4de43e1481147fb252acb2abc5a25eb9edaf2e19e3cb6f04c1bf65a",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "sakamoto-apartment.jpeg",
+      "sourceNow": "Added to Game/sakamoto-apartment.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 30,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/station-platform-day.webp",
+      "outputSha256": "f5e5bb857eafcfe625f49ac89374bda0ed783b84d650f8648b8e3df9b2775091",
+      "place": "Iwatodai Station \u00b7 Platform / Bench / Photo Booth / Vending Machines day image (Wren, Elizabeth, Jihoon, Yunjin and others; evenings keep station-platform-night, now for the vending machines too) and living-chenle.js's after-school platform bg, replacing subway",
+      "sha256": "295d08df706530285f1f550a30f3c41195610f0fc4c8ad6c77ae2b9b8c409502",
+      "size": [
+        2752,
+        1536
+      ],
+      "source": "station-platform-day.jpeg",
+      "sourceNow": "Added to Game/station-platform-day.jpeg",
+      "status": "integrated"
     }
   ],
   "batch1Validation": {
@@ -5395,5 +5665,22 @@
       "Compendium: akihiko and yukari load profile/sees art (contain, has-profile) at 1280x800 and 390x844, no overflow, no errors (femc_compendium.py's fixture opens met:akihiko from its v1 save, so it can't take these ids)"
     ],
     "html": "femc-game.html places v19, core v25, ui v24, story-act6 v8, job-scenes-more-c v3, living-world v5, living-persona v3, fuuka v4, kuromi v4, mymelody v2; FEMC_ASSET_VERSION 134, femc-mode.js v100 (12 pages)"
+  },
+  "batch30Validation": {
+    "date": "2026-10-22",
+    "scope": "Eighteen place backgrounds from the art list's section 3A (stations, pier, seaside park, hospital roof, karaoke, job interiors, the guesthouse, gym, archery range)",
+    "sourcesInspected": "all 18 viewed before wiring; every output viewed as a contact sheet",
+    "sourcesIntegrated": 18,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold untouched",
+    "dayEvening": "night-lit art (-night / -evening slugs) is only an evening image or an evening/pre-dawn scene bg; daytime keeps the old stand-in where no day art exists",
+    "tests": [
+      "python3 tools/femc-check-scenes.py (OK)",
+      "python3 tests/femc_living.py (pass)",
+      "python3 tests/femc_living2.py (47 checks, 4,382 scene paths)",
+      "targeted check: every bg named in places.js and scene data exists; all 18 new slugs are used"
+    ],
+    "html": "femc-game.html places v21, jobs v4, job-scenes-more-b v3, daily-life v7, story-act4 v15, living-holidays v3, living-persona v4, living-visitors v3, living-jaemin v2, living-chenle v2, mercy v5",
+    "browserErrors": 0
   }
 }

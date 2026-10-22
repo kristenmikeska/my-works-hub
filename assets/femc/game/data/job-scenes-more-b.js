@@ -900,7 +900,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
       hgCaptain: 'Team Captain', hgAngry: 'Angry Customer', hgColdman: 'Customer in a Polo Shirt' },
     shifts: [
       { id: 'hg-s-first', scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "Hagakure's kitchen was a long narrow galley behind the counter, so hot and so loud with steam and the roll of the boiling pots that the first thing it did was take the breath out of her, and the second thing it did was smell like pork bone broth simmered since four in the morning, deep and milky and rich enough to stand a spoon in, a smell that got into her hair and her clothes and, she would find out later, her dreams." },
         { n: "The master was a short square man in his sixties with forearms like hams and a white towel knotted around his head, and he looked at her once across the steam, the way you'd look at a delivery you hadn't ordered, and then looked at her hands." },
         { s: 'hgMaster', t: "Hm." },
@@ -922,7 +922,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "At ten, when the last customer had gone and the noren curtain came down off the door, the master put a small bowl on the counter in front of her without a word, one ladle of broth, a few noodles, half an egg, and she ate it standing up in the sudden quiet with her whole body aching, and it was the best thing she had ever eaten in her life." }
       ] },
       { id: 'hg-s-rainyday', weather: ['rain'], scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "When it rained the master changed. She saw it happen. He came in from the back with the rain hammering the roof, and looked out at the Strip shining wet under the streetlights, and something in his square shoulders settled, the way a cat settles in front of a heater, and he went to the back shelf and took down a pot she'd never seen him use." },
         { s: 'hgDaisuke', t: "Rainy-day special. He only makes it when it rains. Nobody knows what's in it. Six years and I don't know. Sometimes I think I know and then it's different." },
         { n: "By seven the line went out the door and down the street, people standing under umbrellas in the rain for forty minutes because word had gone out across Iwatodai in the way word does, a text, a phone call, *it's raining, Hagakure's doing the special*, and the master moved through the kitchen in a kind of trance, silent, reaching for things without looking." },
@@ -941,7 +941,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "They sold out at nine-twenty. The people left in the line were told in the rain, and nobody was angry, only resigned, the way you're resigned to weather, and the master went out himself with an umbrella and gave the last six in line a free egg each, wrapped in paper, still warm, and came back in soaked and said nothing about it, ever." }
       ] },
       { id: 'hg-s-junpei', flags: ['joined-junpei'], scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "The door slid open at half past seven and Junpei came in on a gust of cold air with his cap on backward and his hands in his pockets, already talking, and saw her through the pass in a white kitchen bandana with a tray of bowls, and stopped." },
         { s: 'junpei', f: 'surprised', t: "No WAY. You work at *Hagakure*? Dude. DUDE. This is the best day of my life. This changes everything. You know what this means, right?" },
         { s: 'junpei', f: 'happy', t: "Staff discount. Friends and family. I'm family. I'm basically your brother. Ask the old man. Go on. Tell him I'm family." },
@@ -961,7 +961,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "Junpei looked at the photo wall for the rest of his meal the way he looked at the prize lottery and the sword girl, with a kind of longing that was half joke and half not, and she decided not to encourage him, and then caught herself, at the door, telling him it was thirty minutes, and you had to drink the broth too." }
       ] },
       { id: 'hg-s-akihiko', after: '5/12', scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "Akihiko came in after boxing practice with his hair still damp and his gym bag over one shoulder, and didn't use the ticket machine, because he didn't have to: he was, Daisuke explained in a reverent whisper, a regular, a *real* regular, the kind the master had a standing order for, which meant the master was already pulling noodles from the basket before Akihiko had sat down." },
         { n: "He saw her at the pass and his eyebrows went up, and then he nodded, approvingly, as if she'd joined a gym." },
         { s: 'akihiko', f: 'neutral', t: "Huh. You work here? Good. It's hard work. Heat, standing, lifting. It's basically training. You'll get good forearms." },
@@ -982,7 +982,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "He finished every drop, including the broth, and set the bowl down with both hands, and said thank you for the meal to the master's back, properly, the way he'd probably been raised to, and the master lifted one hand off the noodle basket, about an inch, which Daisuke said later was the warmest gesture he'd seen the man make in six years." }
       ] },
       { id: 'hg-s-critic', scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "The man came in alone at seven-fifteen, in a black turtleneck, with a leather notebook and a pen and a camera on a strap, and ordered the regular bowl and then photographed it from four angles before he touched it, and Daisuke, at the sink, went white." },
         { s: 'hgDaisuke', t: "That's him. That's the blog guy. *Ramen Wanderer*. He did a review of the place on the other side of the station and they closed in a month. A *month*." },
         { n: "The man tasted the broth, once, with the spoon, and wrote something. Tasted it again. Wrote something longer. Lifted the noodles to the light and looked at them like a jeweler looks at a stone. The master, at the pots, had not looked at him once, and did not look at him now, and the back of his neck had gone a dull brick red." },
@@ -1003,7 +1003,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "The master took the printout from him without a word and put it in the drawer under the register, where, Solar would find out much later, there was a folder with every review the shop had ever had, going back to 1971, in order." }
       ] },
       { id: 'hg-s-tanabe', days: [0], scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "Mrs. Tanabe came in at seven every Sunday, eighty-something, very small, in a fur-collared coat that had been fashionable at some point in the previous century, and sat on the same stool at the end of the counter, and ordered a small bowl, and complained about it." },
         { s: 'hgTanabe', t: "It's not as good as 1987. In 1987 this was the best bowl in the prefecture. I don't know what happened. Something happened." },
         { s: 'hgDaisuke', t: "She says that every week. Every week. She's been saying it since before I started." },
@@ -1024,7 +1024,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "Solar didn't tell her. She thought about it the whole way back to the dorm, though, under the streetlights, a recipe passing from one man to another, and the woman who ate it every Sunday, complaining, and never knowing why it tasted the way it did." }
       ] },
       { id: 'hg-s-burn', scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "At seven-thirty, right at the peak of the rush, Daisuke caught the back of his hand on the rim of the big stockpot and made a noise she'd never heard a grown man make, and the master, without looking, pointed at the sink, and Daisuke went and stood with his hand under the cold tap, his face screwed up, swearing in a whisper." },
         { n: "That left the master and the noodle baskets and eleven tickets on the rail and four more coming through the machine, and the master looked at the rail, and then at her, and held out a noodle basket by the long handle." },
         { s: 'hgMaster', t: "Up. Snap. Twice. Hard. Don't be polite with it." },
@@ -1042,7 +1042,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "Which was, she understood, as close as the master came to telling someone he loved them, and Daisuke seemed to understand it too, because he didn't say anything else for the rest of the night, and he was very careful." }
       ] },
       { id: 'hg-s-spring', months: [4, 5], scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "In spring the university baseball team came in after their first game of the season, twelve enormous young men in muddy practice uniforms who filled the whole counter and the two tables and the space by the door, laughing and shoving and smelling of grass and sweat and liniment, and all twelve of them hit the ticket machine at once." },
         { n: "The machine, which had been built sometime around the moon landing, made a grinding noise and spat out thirty-one tickets in a single stream, all over the floor, like a slot machine paying out." },
         { s: 'hgCaptain', t: "Uh. Sorry. Sorry! Okay, guys, everybody, find your ticket. FIND YOUR TICKET." },
@@ -1059,7 +1059,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { s: 'hgMaster', t: "Good team. Will lose a lot. Eats well." }
       ] },
       { id: 'hg-s-summer', months: [7, 8], scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "In high summer the kitchen was a sauna, the stockpots going full roll and the air so thick with steam it beaded on the ceiling and dripped down on the back of her neck, and the master stood in the middle of it in his towel headband looking completely, unnervingly comfortable, as if he were a lizard on a warm stone." },
         { n: "At seven a man in a polo shirt came in, red-faced from the heat outside, and read the menu on the wall from top to bottom twice, and then leaned over the counter." },
         { s: 'hgColdman', t: "Do you have cold ramen? Hiyashi chūka? It's thirty-one degrees out. Every ramen place on the Strip has it. Every single one." },
@@ -1078,7 +1078,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "The three of them ate it at the counter in the quiet with the fans going, and it was cold and sharp and perfect, and nobody said anything about it at all, and Daisuke, beside her, ate his with his eyes slightly wet, and she decided it was the heat." }
       ] },
       { id: 'hg-s-autumn', months: [10, 11], scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "In autumn the master was working on something. She knew because he came in an hour early every day for a week and went into the back alone, and the back started to smell different, a dark roasted smell, miso and sesame and something burnt on purpose, and Daisuke said he was not allowed in, and that this happened once every few years, and that it was, he said with real fear, *a new bowl*." },
         { n: "On Wednesday the master put a small bowl on the pass in front of her before the doors opened, dark brown broth, the noodles thicker than usual, a sheen of red chili oil on the top in a perfect circle, and stood back, arms crossed." },
         { s: 'hgMaster', t: "Taste. Tell me the truth. If you lie, I'll know. Then you're fired." },
@@ -1095,7 +1095,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "It went on the board the next week, chalk, the master's own blunt characters: *Autumn Miso. Limited.* The chili oil was half what it had been, in a thinner ring. The sweetness came through. It sold out by eight every night until the first frost, and he never said a word to her about it, but on the second night he gave her the first bowl." }
       ] },
       { id: 'hg-s-aigis', flags: ['joined-aigis'], scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "Aigis came in at eight, alone, and did not use the ticket machine, but stood in front of it reading every button from top to bottom with total attention, and then turned and walked to the counter and sat down very upright on a stool, hands folded, and looked through the pass at Solar." },
         { s: 'aigis', f: 'neutral', t: "I have come to observe your workplace. I am curious about the conditions. Also, Junpei-san said the food here is 'life-changing.' I would like to determine whether this is literal." },
         { s: 'aigis', f: 'neutral', t: "I do not require a bowl. I will sit here and observe. Please do not be alarmed." },
@@ -1114,7 +1114,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "Daisuke asked about her later, in a whisper, whether the blond girl with the strange voice was okay, and Solar said she was the most okay person she knew, which was not entirely true and not entirely false, and Daisuke nodded like that made perfect sense, because he worked for the master and was used to people who said exactly what they meant and nothing else." }
       ] },
       { id: 'hg-s-ticket', scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "The ticket machine ate a thousand-yen note at eight-fifteen, swallowed it whole with a mechanical gulp and then gave nothing back, no ticket, no change, no light, and the man who'd fed it, a big man in a construction jacket who'd clearly had a long day, hit the side of it with the flat of his hand, hard, and then again." },
         { s: 'hgAngry', t: "Hey! HEY. This thing just took my money. Somebody fix it. I'm not paying twice. I've been on site since six. I'm not *paying twice*." },
         { n: "The whole counter went quiet. The master did not turn around. Daisuke had gone into the back for green onions and was, she suspected, staying there on purpose." },
@@ -1132,7 +1132,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "He didn't say whether that was good. She decided that it was." }
       ] },
       { id: 'hg-s-yearend', months: [12], after: '12/19', scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "The last service before the New Year closing came cold and clear, the Strip lit up and full of people going somewhere, and Hagakure was packed all night with regulars coming in for one last bowl before the shop closed for the New Year, the windows so steamed up from inside you couldn't see the street." },
         { n: "Mrs. Tanabe came, in her fur collar, and stayed well past her usual hour. The baseball team came, all twelve, and sat on the floor by the door when there was no room. The blog man came and didn't take a single picture. Mr. Gotou came, and the regulars nodded to each other across the shop the way people do when they've seen each other every week for years and never learned each other's names." },
         { s: 'hgDaisuke', t: "Every year. Every year it's like this. I don't know how they all know it's the last night. He doesn't put up a sign. They just know." },
@@ -1151,7 +1151,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "She walked back up the Strip at half past ten with the cold on her face and the taste of the broth still in her mouth, her whole body warm from the inside out, and somewhere behind her the lights of Hagakure went off one at a time, and she didn't look back, but she knew exactly what it looked like anyway." }
       ] },
       { id: 'hg-s-closing', scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "On a slow Wednesday they closed early, and the master, instead of sending her home, put her on the stockpot: the bones for tomorrow, scrubbed and blanched and put on to simmer, a job he'd never let anyone do, not even Daisuke, and stood beside her while she skimmed the scum off the top, a gray foam that came up endlessly out of the bones." },
         { s: 'hgMaster', t: "Skim. Skim. Keep skimming. If you stop, it clouds. If it clouds, it's ruined. You can't fix it. Only start again." },
         { n: "It was, by his standards, a speech. She skimmed. It went on forever, the gray coming up, the ladle going down, the steam in her face, the kitchen quiet except for the low roll of the pot and the hum of the refrigerator." },
@@ -1193,7 +1193,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { s: 'hgDaisuke', t: "That's him. The master. 1970. He was the first one ever to finish it. Before he ran the place. He's never said one word about it." }
       ] },
       { id: 'hg-arc-2', at: 5, after: '7/1', prev: 'hg-arc-1', scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "Mr. Gotou had a plan. He came in on a slow Wednesday and laid it out on the counter for her in a small spiral notebook, written in carpenter's pencil, very square, the plan for attempt fourteen." },
         { s: 'hgGotou', t: "I've been doing it wrong. I go for the pork first. The pork's heavy. Then I'm full and the noodles are getting fat in the broth. So I'm going to train. Regular bowl, every Wednesday. You time me. I'm getting faster. I'm doing this properly." },
         { n: "So she timed him. Regular bowl, every Wednesday, the old kitchen timer on the counter, and Mr. Gotou eating with his eyes closed, breathing through his nose, like a man in a meditation retreat. Six minutes forty. Six minutes twelve. Five minutes fifty-eight." },
@@ -1213,7 +1213,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { s: 'hgGotou', t: "...This winter. Before the year's out, or near enough. I'll do it. You'll see. Everybody'll see." }
       ] },
       { id: 'hg-arc-3', at: 9, after: '10/1', prev: 'hg-arc-2', scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "Mr. Gotou didn't come in on Wednesday, for the first time since spring, and didn't come in on Friday, and on Saturday he came in late, at half past nine, in his work clothes, and sat at the end of the counter and didn't order anything at all." },
         { s: 'hgGotou', t: "They're moving me. The company. A site in Nagoya. Big job. Three years, maybe more. It's good. It's a promotion. I go at the end of January." },
         { s: 'hgGotou', t: "My wife's happy. Her mother's in Nagoya. It's good. It's all good." },
@@ -1233,7 +1233,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "He went back to the pots. Mr. Gotou sat for a moment with his mouth slightly open, and then closed it, and got out his small spiral notebook, and wrote down the date in carpenter's pencil, very square, and underlined it three times, and when he left he was standing up straighter than when he'd come in." }
       ] },
       { id: 'hg-arc-4', at: 13, after: '12/1', prev: 'hg-arc-3', scene: [
-        { place: 'Iwatodai Strip · Hagakure', time: 'Evening' },
+        { place: 'Iwatodai Strip · Hagakure · Kitchen', time: 'Evening' },
         { n: "It was seven o'clock on a cold night, and Mr. Gotou came in with his whole crew, five young men in work jackets who had come, they said, to see the boss die, and sat in a row along the wall under their own photographs, cheering, and Mrs. Tanabe was there on her end stool, and the blog man, and the baseball captain, and half the shop was people who'd heard." },
         { n: "The master carried the bowl out himself. He'd never done that. He set it down in front of Mr. Gotou with both hands, the hubcap bowl, the four portions and the pork and the six eggs and the sail of nori, and then he set the old kitchen timer next to it, and turned it to thirty, and let go." },
         { s: 'hgMaster', t: "Start." },

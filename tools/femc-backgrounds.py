@@ -50,6 +50,25 @@ EXTRA = {
     'naganaki-shrine-spring': 'Added to Game/naganakishrine-spring.jpeg',
     'naganaki-shrine-summer': 'Added to Game/naganakishrine-summer.jpeg',
     'naganaki-shrine-winter': 'Added to Game/naganakishrine-winter.jpeg',
+    # batch 30 (2026-10-22). "-night" / "-evening" ones are night-lit and only go in evening slots.
+    'bookworms-inside': 'Added to Game/bookworms-inside.jpeg',
+    'gekkoukan-archery-range': 'Added to Game/gekkoukan-archery-range.jpeg',
+    'gekkoukan-gym': 'Added to Game/gekkoukan-gym.jpeg',
+    'hagakure-kitchen': 'Added to Game/hagakure-kitchen.jpeg',
+    'hospital-rooftop': 'Added to Game/hospital-rooftop.jpeg',
+    'iwatodai-station': 'Added to Game/iwatodai-station.jpeg',
+    'iwatodai-station-overpass': 'Added to Game/iwatodai-station-overpass.jpeg',
+    'station-concourse-busy': 'Added to Game/iwatodaistationconcourse-busy.jpeg',
+    'kirijo-guesthouse-night': 'Added to Game/kirijo-guesthouse.jpeg',
+    'kirijo-guesthouse-roof-night': 'Added to Game/kirijo-guesthouse-roof.jpeg',
+    'paulownia-karaoke': 'Added to Game/paulownia-karaoke.jpeg',
+    'port-island-konbini-night': 'Added to Game/port-island-konbini.jpeg',
+    'port-island-pier': 'Added to Game/port-island-pier.jpeg',
+    'port-island-pier-night': 'Added to Game/port-island-pier-night.jpeg',
+    'port-island-seaside-park': 'Added to Game/port-island-seaside-park.jpeg',
+    'respawn-cafe-evening': 'Added to Game/respawn-cafe.jpeg',
+    'sakamoto-apartment-night': 'Added to Game/sakamoto-apartment.jpeg',
+    'station-platform-day': 'Added to Game/station-platform-day.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

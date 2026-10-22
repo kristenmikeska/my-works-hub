@@ -957,6 +957,7 @@
       { t: "(Follow the pin.)", flag: { 'xroad1-H': true }, tally: { crossroad1: 'H', 'lean.H': 1 }, then: [
         { place: 'Gekkoukan High · Gym', time: 'Afternoon', bg: 'school-hallway', music: 'school' },
         { n: "The school was empty on a Saturday afternoon, the corridors full of that hollow church echo, and her footsteps went ahead of her down the hall to the gym and came back to her from the far end." },
+        { bg: 'gekkoukan-gym' },
         { n: "Somebody had been decorating. Strands of silver twine hung from the rafters in long, loose swoops, catching the light from the high windows and throwing it around, and across the back wall a paper banner was half taped up, its last letters still curling off the brick, bubble letters filled in so carefully the marker had soaked through. Folding tables. A box of balloons nobody had blown up. And in the middle of the floor a ladder, three meters of it, still swaying, very slightly, like something had only just climbed down." },
         { n: "There was one strand of twine left in the box at the ladder's feet, and one bare stretch of rafter above it. You could see exactly where it was supposed to go." },
         { music: 'world-hoax' },
@@ -1437,7 +1438,7 @@
     { s: 'fuuka', f: 'neutral', t: "She's very loud. She's the loudest one yet. She's yelling a name that isn't yours. Solar, she's yelling Jihoon." },
     { n: "Jihoon was already putting his shoes on. His face had gone a color Solar had never seen on it." },
     { s: 'jihoon', f: 'surprised', t: "No. No, absolutely not. Not her. Anyone but her. Send her back. Can we send her back? Is there a form?" },
-    { place: 'Paulownia Mall · Karaoke · The Dark Hour', time: 'The Dark Hour', bg: 'clubescapade' },
+    { place: 'Paulownia Mall · Karaoke · The Dark Hour', time: 'The Dark Hour', bg: 'paulownia-karaoke' },
     { dark: true },
     { n: "The karaoke place was dark and green and every booth was full of coffins holding microphones, which was the single worst thing Solar had seen in the Dark Hour, and she'd seen a great deal. And from booth seven, at the end of the hall, a voice, at the absolute top of its range." },
     { s: 'cherry', f: 'neutral', t: "PARK JIHOON, I KNOW YOU'RE HERE, I CAN SMELL YOUR COLOGNE FROM THE PARKING LOT, YOU WENT WITHOUT ME, YOU WENT TO FIND HER WITHOUT ME, YOU ABSOLUTE FUCKING..." },
