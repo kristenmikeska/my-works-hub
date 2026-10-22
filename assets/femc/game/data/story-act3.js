@@ -104,6 +104,10 @@
   { id: 'a3-campus', date: '7/10', slot: 'after', title: 'the way to a building', place: 'Gekkoukan High · Library', time: 'After School', scene: [
     { music: 'school' },
     { n: "Finals started on Monday, and the library had become a field hospital, every table taken, every chair occupied by a third year in some stage of collapse, the air thick with the smell of highlighters and anxiety and somebody's convenience-store onigiri being eaten against the rules. Solar stayed until the librarian started turning lights off at them, one bank at a time, like a hint." },
+    // The Gekkoukan buzz (rank-15 batch): the night before his tournament, if she's said she'll be there (rank 4).
+    { ifRank: { akihiko: 4 }, then: [
+      { n: "At the table by the returns desk, four second-years in matching hair clips were not studying. They had a bedsheet spread across two chairs and the floor between them and were painting letters on it in pink, in a whisper, on their knees, SANADA-SEN, and had very clearly started too big. One of them looked up as Solar went past, and recognized her, and nudged the others, and all four watched her the whole way to the door with the steady, patient, slightly wounded attention of people guarding something they'd made." }
+    ] },
     { place: 'Gekkoukan High · Front Gate', time: 'Evening', soft: true },
     { music: 'tender' },
     { n: "Outside, it was dusk. The real kind, the long blue kind that only happens in summer, when the sun has gone but the light hasn't heard yet. The heat had finally broken. The air coming off the bay was almost cool against her arms, and the brick paths across the school grounds had gone the color of rust and dried roses, and somewhere above her the big clock on the main building cleared its throat and struck seven." },
@@ -131,6 +135,17 @@
     { music: 'joy' },
     { n: "Exam results went up on Saturday morning, and on Saturday evening Junpei declared hot pot, with the authority of a man whose name had appeared on the ranking board in a position he described as character-building. It was thirty-one degrees. The air conditioner was making a noise like a dying animal. Nobody pointed out that hot pot was a winter food, because Junpei had already bought the burner, and because there was something about the sight of him carrying it in from the convenience store like a trophy that made you want to let him have this." },
     { n: "Fuuka had volunteered to make the broth. Everyone had let her, out of kindness, and was now quietly afraid." },
+    // The Gekkoukan buzz (rank-15 batch): after the shoe lockers (rank 5).
+    { ifRank: { akihiko: 5 }, then: [
+      { n: "Before anyone had so much as lit the burner, Junpei had news, and he stood at the head of the table to deliver it." },
+      { s: 'junpei', f: 'happy', t: "Okay. So. The whole second floor is saying the Sanada-senpai fan club cornered our leader at the shoe lockers. Four of them. With hair clips. Is it true? Blink twice." },
+      { s: 'yukari', f: 'serious', t: "It's true. Half my class saw it. They had a clipboard. I've never been so embarrassed to live in a building." },
+      { s: 'akihiko', f: 'neutral', t: "They're not a fan club. They're just. They come to the tournaments." },
+      { s: 'yukari', f: 'serious', t: "They have a banner, senpai. With your name on it. In pink. It's a fan club." },
+      { s: 'junpei', f: 'happy', t: "Senpai. Real talk. Whatever they are, and whatever she is, you love me more, though. Right? I've been here since April." },
+      { s: 'akihiko', f: 'neutral', t: "You've been here since April because you live here." },
+      { n: "Which wasn't a no, Junpei pointed out, and kept pointing out, at intervals, for the rest of the night, and Akihiko ate his hot pot in thirty-one degrees with his ears going steadily redder, and didn't once look down the table at Solar, very carefully, all evening." }
+    ] },
     { n: "And Mitsuru had set out extra bowls. Six of them, white and stacked at the end of the long table, and she hadn't explained them and nobody had asked, and Solar had looked at them and felt, uncomfortably, like they were addressed to her." },
     { s: 'mitsuru', f: 'neutral', t: "You said some of your strangers have found their feet. I thought they might be hungry." },
     { ifRank: { ann: 1 }, then: [

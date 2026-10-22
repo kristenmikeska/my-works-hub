@@ -141,10 +141,24 @@
     { ifFlag: 'stay-shinjiro', then: [{ flag: { 'ending-shinjiro': true } }] },
     { ifFlag: 'xmas-shinjiro', then: [{ flag: { 'ending-shinjiro': true } }] },
     { ifFlag: 'ending-shinjiro', then: [
-      { n: "She went to the hospital at dawn. Visiting hours didn't start until ten. The nurse on duty looked at her face and let her in anyway." },
-      { n: "Tatsumi Memorial at sunrise. The light coming in through the blinds in long gold bars across the bed. The machines breathing. She sat in the chair and took his hand, the way she had at Christmas, and talked to him. About the top of the tower. About the platform. About the doors closing, one by one. She told him everyone had gone home but her. She told him she'd chosen. She told him she'd decided that was his fault too." },
-      { n: "Under her hand, his fingers moved. Not once. And then again. And then they closed, slowly, around hers, the way a hand closes around something it's been reaching for in its sleep for a very long time." },
-      { n: "She didn't call the nurse. Not yet. She sat in the gold light with her hand in his and the sun coming up over the bay and let it be just this, for one more minute, before the rest of the world came in." }
+      { ifFlag: 'shinji-awake', then: [
+        { n: "She went to the hospital at dawn. Visiting hours didn't start until ten. The nurse on duty looked at her face and let her in anyway, and said he was up, he was always up by now, he said the ward was too quiet to sleep in, which was a lie, and they both knew it." },
+        { n: "Tatsumi Memorial at sunrise. The light coming in through the blinds in long gold bars across the bed. He'd been awake a week, or near enough, and he was propped up against the pillows with the beanie on, crooked, because she'd put it there two days ago and he hadn't let anybody take it off, and he watched her come in the slow way he watched everything now, a beat behind, like a man watching a road from a moving car." },
+        { n: "She sat in the chair and took his hand, the way she had at Christmas, and talked to him. About the top of the tower. About the platform. About the doors closing, one by one. She told him everyone had gone home but her. She told him she'd chosen. She told him she'd decided that was his fault too." },
+        { n: "He didn't say anything for a long time. He looked at the window, at the bay going from gray to gold, with his jaw set, the way he looked at a pot he didn't trust." },
+        { s: 'shinjiro', f: 'neutral', t: "...Tch." },
+        { s: 'shinjiro', f: 'neutral', t: "...Stupid. ...Staying for a guy who can't... hold a spoon." },
+        { s: 'solar', f: 'neutral', t: "I didn't stay for you." },
+        { s: 'shinjiro', f: 'neutral', t: "...Good." },
+        { n: "Then his fingers closed around hers, slowly, all the way, as hard as the bad hand could manage, which wasn't very hard, which was everything. Not the way a sleeping hand moves. The way a hand holds on when it knows exactly what it's holding, and has decided, against all its better judgment, to keep it." },
+        { s: 'shinjiro', f: 'happy', t: "...You eat yet?" },
+        { n: "She hadn't. She didn't call the nurse. She sat in the gold light with her hand in his and the sun coming up over the bay and let it be just this, for one more minute, before the rest of the world came in with breakfast." }
+      ], else: [
+        { n: "She went to the hospital at dawn. Visiting hours didn't start until ten. The nurse on duty looked at her face and let her in anyway." },
+        { n: "Tatsumi Memorial at sunrise. The light coming in through the blinds in long gold bars across the bed. The machines breathing. She sat in the chair and took his hand, the way she had at Christmas, and talked to him. About the top of the tower. About the platform. About the doors closing, one by one. She told him everyone had gone home but her. She told him she'd chosen. She told him she'd decided that was his fault too." },
+        { n: "Under her hand, his fingers moved. Not once. And then again. And then they closed, slowly, around hers, the way a hand closes around something it's been reaching for in its sleep for a very long time." },
+        { n: "She didn't call the nurse. Not yet. She sat in the gold light with her hand in his and the sun coming up over the bay and let it be just this, for one more minute, before the rest of the world came in." }
+      ] }
     ], else: [
       { n: "Dawn on the dorm roof. All of them, because nobody could sleep, and somebody had to watch the sun come up on the first morning after the end of everything. Junpei with a plate of the worst breakfast anyone had ever cooked, which everybody ate. Yukari with her arms crossed against the cold, leaning on Fuuka. Mitsuru, at the railing, asking very politely if there were seconds, which made Junpei cry. Ken. Aigis, at exactly one arm's length. Koromaru, on Solar's feet." },
       { ifFlag: 'stay-akihiko', then: [{ flag: { 'ending-akihiko': true } }] },

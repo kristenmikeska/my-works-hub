@@ -78,7 +78,7 @@ window.HC = (() => {
       if (l.s) {
         const have = FEMC_PORTRAITS[l.s];
         if (have) { if (l.f && !have.includes(l.f)) bad.push(`${key}: ${l.s}/${l.f}`); }
-        else if (l.s !== 'solar' && G.name(l.s) === l.s[0].toUpperCase() + l.s.slice(1)) bad.push(`${key}: no cast name for ${l.s}`);
+        else if (l.s !== 'solar' && !G.castHas(l.s)) bad.push(`${key}: no cast name for ${l.s}`);
       }
     });
   }
@@ -174,7 +174,7 @@ try:
 
     # ── ranks ──
     rk = p.eval(r"""(()=>{const G=FemcGame,l=G.LINKS.haechan,bad=[];const slotOf=r=>r.slot||l.storySlot;
-      if(String(l.forced)!=='1,2,3,4,5,6,7,8,9,10')bad.push('not all forced');
+      if(String(l.forced)!==[...Array(15)].map((_,i)=>i+1).join(','))bad.push('not all forced');
       l.ranks.forEach((r,i)=>{const sl=slotOf(r);
         HC.at(r.after,sl);HC.link('haechan',i);const due=G.dueEvent(sl);if(due?.link?.id!=='haechan')bad.push('rank '+(i+1)+' not due on '+r.after+' got '+(due?.kind));
         HC.at(G.mdOf(G.dayOf(r.after)-1),sl);HC.link('haechan',i);const pre=G.dueEvent(sl);if(pre?.link?.id==='haechan')bad.push('rank '+(i+1)+' due a day early');
@@ -188,7 +188,7 @@ try:
       s=HC.at('11/8','evening');HC.link('haechan',1);const st=G.linkStatus(l,s.day,'evening');const sc=G.linkScene(l);const fin=G.finishLink(l,sc.kind,sc.r,3);const hang=st.ok&&sc.kind==='hangout'&&!fin.up&&G.progress('haechan').rank===1;
       s=HC.at('11/4','evening');const r0=G.linkStatus(l,s.day,'evening').ok;
       return {bad,taken:taken?.link?.id==='haechan',catchUp,hang,r0}})()""")
-    ok(not rk['bad'], f"all ten ranks are due on their dates in their slots, never a day early or in the wrong slot, never before his arrival: {rk['bad']}")
+    ok(not rk['bad'], f"all fifteen ranks are due on their dates in their slots, never a day early or in the wrong slot, never before his arrival: {rk['bad']}")
     ok(not rk['taken'], 'a late story rank waits when a story event already took that night')
     ok(rk['catchUp'], 'a save behind the dates catches up: the next rank (not a skipped one) plays that night')
     ok(rk['hang'] and not rk['r0'], 'time with him before a date is a hangout (no rank-up); he is not around before rank 1 and his arrival')
@@ -248,7 +248,7 @@ try:
           if(t.variants)vars.push(n+':'+(s.phone.vars?.[id]||'base'));
           G.replyText(t.thread||'haechan',0);}}
       return {n:ranks.length,bad,vars}})()""")
-    ok(not ar['bad'] and ar['n'] == 10, f"a text follows every one of his ten ranks, the sent variant matches its heading and its replies: {ar['bad'][:4]} ({ar['n']} ranks)")
+    ok(not ar['bad'] and ar['n'] == 15, f"a text follows every one of his fifteen ranks, the sent variant matches its heading and its replies: {ar['bad'][:4]} ({ar['n']} ranks)")
     print('afterRank variants', ar['vars'])
 
     # ── routes ──
@@ -330,7 +330,7 @@ try:
         runins:G.D.runIns.filter(e=>e.who==='akihiko').length,routines:G.D.dailyLife.filter(e=>JSON.stringify(e.scene).includes('"s":"akihiko"')).length},
       hcRoutinesAll:G.D.dailyLife.filter(e=>JSON.stringify(e.scene).includes('"s":"haechan"')).length}})()""")
     print('counts', json.dumps(counts))
-    ok(counts['nights'] >= 10 and counts['routines'] >= 14 and counts['afterRank'] == 10 and counts['holidays'] >= 4, f'his living-world content is in: {counts}')
+    ok(counts['nights'] >= 10 and counts['routines'] >= 14 and counts['afterRank'] == 15 and counts['holidays'] >= 4, f'his living-world content is in: {counts}')
 
     # ── capacity ──
     cap = p.eval(r"""(()=>{const G=FemcGame,s=HC.at('4/8','early');s.dailyLife={seen:[],lastDay:-99};const plays=[];
@@ -341,7 +341,8 @@ try:
           if(due.length){due.forEach(e=>s.events.push(e.id));continue;}
           const r=G.dailyLife();if(r){G.finishDailyLife(r.id);plays.push(r.id);}}}
       const optional=G.D.events.filter(e=>e.unlock||(e.flag&&e.flag!=='year-goes-on')).map(e=>e.id);
-      const missing=G.D.dailyLife.filter(e=>!plays.includes(e.id)&&!(e.events||[]).some(id=>optional.includes(id))).map(e=>e.id);
+      // Routines behind a link's rank or route (the rank-15 batch's buzz) need that link's progress; femc_rank15.py plays them.
+      const missing=G.D.dailyLife.filter(e=>!plays.includes(e.id)&&!(e.events||[]).some(id=>optional.includes(id))&&!e.ranks&&!e.ranksBelow&&!e.route).map(e=>e.id);
       // Late nights: each one can be the night's scene on at least one night in its window, at the rank he has by then.
       const l=G.LINKS.haechan,all=(l.lateNights||[]).map(x=>x.id),never=[];
       for(const e of (l.lateNights||[])){let fits=false;

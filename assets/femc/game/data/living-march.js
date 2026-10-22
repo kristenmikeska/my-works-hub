@@ -494,6 +494,11 @@
       { s: 'hanni', f: 'happy', t: "You graduated! Sol! You graduated! Hyein, she graduated!" },
       { s: 'hyein', f: 'sad', t: "I'm standing right next to you. I watched her come out the door. I'm crying, leave me alone." },
       { n: "Behind them, half a step back, the rest. People who'd come a very long way to stand outside a school gate in the cold with flowers and a sign and a dog in a bow tie, and who didn't say a word about tomorrow. Not one of them. Mitsuru came out with her diploma tube under her arm and stopped dead at the sight of them all, and Akihiko walked straight into her back." },
+      { ifFlag: 'shinji-awake', then: [
+        { n: "Akihiko had a disposable camera. He'd had it all morning, in his blazer pocket, against every rule in the program, and he'd taken pictures from his seat during the anthem and during Mitsuru's speech and during his own name, blind, over his shoulder, and now he stood at the gate and took one of everything. The gate. The buds. The sign that ran out of room. The dog in the bow tie. Solar, with her tube, squinting. Thirty-nine exposures, and he used every one." },
+        { s: 'akihiko', f: 'happy', t: "He told me not to bother. In about four words a minute. That's how I knew to buy the big one." },
+        { n: "He'd be at Tatsumi by two, with the camera and the paper flower off his chest and a full report, round by round, for a man in a bed who should have been standing in that gym too, and had never once in his life come to school when anyone wanted him to, and would say *tch* at every single picture, and keep them all." }
+      ] },
       { n: "Solar stood at the gate with the tube in her hand and the paper flower on her chest. Above her the buds were very close now. A week. Maybe less." }
     ] }
   );
