@@ -89,7 +89,7 @@ for jid, pack in list(D['more'].items()) + list(D['clubs'].items()):
     for s in pack.get('quiet', []): uid(s.get('id'), jid); walk(s.get('scene'), f'{jid}/{s.get("id")}', 'nonotes')
     if 'join' in pack: walk(pack['join'], f'{jid}/join', 'nonotes')
     op = pack.get('openers') or {}
-    if pack.get('quiet') and sorted(map(int, op.keys())) != [1, 4, 5, 6, 7, 8, 9, 10, 11, 12]: problems.append(f'{jid}: openers need months 4-12 and 1, got {sorted(op)}')
+    if pack.get('quiet') and sorted(map(int, op.keys())) != list(range(1, 13)): problems.append(f'{jid}: openers need every month (April to March; February and March since the year runs to March), got {sorted(op)}')
 for r_ in D['runins']:
     uid(r_.get('id'), 'runin'); walk(r_.get('scene'), 'runin/' + str(r_.get('id')))
     if r_.get('who') not in links and r_.get('who') not in P: problems.append(f'runin {r_.get("id")}: who {r_.get("who")} unknown')
