@@ -9,7 +9,7 @@ never repeat while a new one is available and only for people Solar has met; a V
 pick one), plume draws and the Compendium claim, Velvet pity; Compendium Credit (no longer stubbed, cheaper draws, listed in
 Bonds); Capsule Tickets from Shuffle Time's Hierophant, Tartarus results and Velvet Plumes from fights; stamps awarded from
 a save and from the battle frame's hook, the in-game toast, and the passport's Persona 3: Solstice section; achievements.js
-at v=20 everywhere; saves from before the gacha (autosave, slot, backup code) loading cleanly; zero console errors."""
+at one version everywhere; saves from before the gacha (autosave, slot, backup code) loading cleanly; zero console errors."""
 import argparse, base64, json, pathlib, re, subprocess, time
 from femc_browser import Page, REPO
 
@@ -258,13 +258,15 @@ try:
         p.eval("FemcGame.S.tartarus.bosses.push('chariot');FemcGame.save()")
         p.wait("!!JSON.parse(localStorage.getItem('kg-achievements'))['p3s-moon-chariot']", 5)
         # Every page loads the same achievements.js.
-        bad = []
+        bad, seen = [], set()
         tracked = subprocess.run(['git', 'ls-files', '*.html', '*.js'], cwd=REPO, capture_output=True, text=True).stdout.split()
         for f in (pathlib.Path(REPO, x) for x in tracked):
             if 'tests' not in f.parts and f.is_file():
                 for m in re.findall(r'achievements\.js\?v=(\d+)', f.read_text(errors='ignore')):
-                    if m != '20': bad.append((str(f), m))
-        ok(not bad and p.eval("FemcStamps.lib().then(()=>[...document.scripts].some(s=>/achievements\\.js\\?v=21/.test(s.src)))"), f'achievements.js?v=20 everywhere: {bad}')
+                    seen.add(m); bad.append((str(f), m))
+        cur = max(seen, key=int) if seen else '0'
+        bad = [b for b in bad if b[1] != cur]
+        ok(not bad and p.eval(f"FemcStamps.lib().then(()=>[...document.scripts].some(s=>/achievements\\.js\\?v={cur}\\b/.test(s.src)))"), f'achievements.js?v={cur} everywhere: {bad}')
         # The hub's passport shows them in their own section.
         p.ws.call('Page.navigate', {'url': f'http://127.0.0.1:{p.srv.server_port}/passport.html'})
         p.wait("document.readyState==='complete' && !!window.Achievements && !!document.querySelector('#solsticeGrid .secret-stamp')")
