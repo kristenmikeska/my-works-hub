@@ -26,7 +26,8 @@ Other docs, if you ever want detail:
 
 - ⬜ **Small battle fixes queued:** All-Out cloud figures use the pose-sheet attack frames instead of dark silhouettes; a phone layout so both faces fit in bond cut-ins
 
-- ⬜ **Ideas to talk about:** rank 15 for Hanni, Hyein, Mark, Minji and Jihoon; a Memories photo album (every CG and memory card you've unlocked); a Theater to replay scenes; the big push
+- ✅ **Memories album and Theater:** a P3R-style album in the menu (and in Extras on the title screen) with every event picture and memory card you've unlocked, grouped, with blank tiles for the rest; tap one to see it full screen with its caption and flip through. The Theater replays scenes you've already watched (story, bonds and endings), by month; a replay never changes your save, choices are just for show and fights are skipped. Old saves fill in what they've already seen, and New Game+ keeps it all
+- ⬜ **Ideas to talk about:** rank 15 for Hanni, Hyein, Mark, Minji and Jihoon; the big push
 
 ## Story and characters
 - ✅ More story after Hanni, Hyein and Jihoon arrive, including the three comparing notes on Solar

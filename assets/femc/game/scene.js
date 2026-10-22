@@ -30,7 +30,13 @@
      { ifReversed: 'linkId' }       -> then / else, when that link is reversed (the flag reversed-<id> mirrors it)
      choices may carry link: 'id' (whose bond reverse / route apply to); in story events a reverse that reaches 2 turns it now
      { act: { numeral, title } }    an act title card
-   G (the game) supplies portraits, names, backgrounds, settings and effects. */
+   G (the game) supplies portraits, names, backgrounds, settings and effects.
+   Replay (the Theater, menu.js; opts.replay): the same player, read-only. Effects ({ stat } { yen } { flag } { fragment } …),
+   choices' effects, dates and ♪ never reach the game; a { battle } is a one-line card; a CG shown is not recorded. Flags set
+   by the scene's own lines and choices go to a local overlay, so later { ifFlag } lines inside the replay still follow them.
+   opts.replayFlags (optional): the flags the replay reads instead of the save's (an ending from an earlier playthrough).
+   opts.date: { md, day } for the date plate. opts.branch(line, link, flagOn): a read-only stand-in for G.branch (returns
+   null for a line that isn't a condition). Leave (and Esc) ends it. A live scene reports CGs through G.seeCg(id). */
 window.FemcScene = (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -175,15 +181,23 @@ window.FemcScene = (() => {
   // opts: { scene: lines | queue, place, time, title, label, theme, music, link, resume: { queue, vis, gained },
   //         onBattle(battle, snapshot, resume), onDone({ finished, gained, choices }) }
   function play(opts) {
-    const vis = Object.assign({ place: opts.place || '', time: opts.time || '', bg: null, cg: null, dark: false, theme: opts.theme || '', date: null }, opts.resume?.vis || {});
+    const replay = !!opts.replay;
+    const vis = Object.assign({ place: opts.place || '', time: opts.time || '', bg: null, cg: null, dark: false, theme: opts.theme || '', date: replay ? opts.date || null : null }, opts.resume?.vis || {});
     let gained = opts.resume?.gained || 0;
+    // Replay: the flags this scene's own lines set, over the save's (or over opts.replayFlags, which then stand alone).
+    const over = {}, baseFlags = opts.replayFlags || null;
+    const flagOn = id => (id in over ? !!over[id] : baseFlags ? !!baseFlags[id] : G.flag(id));
+    const overFlags = v => { if (typeof v === 'string') over[v] = true; else if (Array.isArray(v)) v.forEach(k => { over[k] = true; }); else if (v && typeof v === 'object') Object.assign(over, v); };
+    const EFFECTS = ['stat', 'yen', 'flag', 'tally', 'fragment', 'item', 'gift', 'bond', 'later', 'register', 'join', 'end', 'unlock'];
+    const mdLabel = md => { const i = G.dayInfo(G.dayOf(md)); return { md: i.md, day: i.day }; };
+    if (replay) opts.canLeave = true;
     const el = document.createElement('div');
-    el.className = 'gs';
+    el.className = `gs${replay ? ' gs-replay' : ''}`;
     el.setAttribute('role', 'dialog');
     el.setAttribute('aria-modal', 'true');
     el.setAttribute('aria-label', opts.label || opts.title || 'Scene');
     el.innerHTML = `<div class="gs-bg"></div><img class="gs-cg" alt="" hidden><div class="gs-tint"></div>
-      <div class="gs-place"><b></b><span></span></div>
+      <div class="gs-place"><b></b><span></span></div>${replay ? '<p class="gs-replay-tag">Theater · replay</p>' : ''}
       <img class="gs-portrait" alt="" hidden><div class="gs-silhouette" hidden></div>
       <img class="gs-solar" alt="" hidden>
       <div class="gs-tools"><button type="button" data-t="log">Log</button><button type="button" data-t="auto" aria-pressed="false">Auto</button><button type="button" data-t="skip">Skip</button>${opts.canLeave ? '<button type="button" data-t="leave">Leave</button>' : ''}</div>
@@ -275,9 +289,10 @@ window.FemcScene = (() => {
       showMe(null);
       el.classList.remove('ready');
       waiting = null;
-      const shown = options.filter(o => !o.ifFlag || G.flag(o.ifFlag));
+      const shown = options.filter(o => !o.ifFlag || flagOn(o.ifFlag));
       const offered = shown.flatMap(o => (o.flag && typeof o.flag === 'object' && !Array.isArray(o.flag) ? Object.keys(o.flag) : []).map(k => /^xmas-(.+)$/.exec(k)?.[1]).filter(Boolean));
-      const list = shown.flatMap(o => (o.christmasOptions ? G.christmasChoices(offered) : [o]));
+      const list = shown.flatMap(o => (o.christmasOptions ? (replay ? [] : G.christmasChoices(offered)) : [o]));
+      if (replay && !list.length) list.push({ t: '(Carry on.)' });
       choices.replaceChildren(...list.map((o, i) => {
         const b = document.createElement('button');
         b.type = 'button';
@@ -291,8 +306,8 @@ window.FemcScene = (() => {
           if (lock) return;
           choices.replaceChildren();
           G.sfx('femc-click');
-          G.applyChoice(o, curLink, opts.event);
-          notes(o.notes || 0);
+          if (replay) { if (o.flag) overFlags(o.flag); } // for show: nothing reaches the save
+          else { G.applyChoice(o, curLink, opts.event); notes(o.notes || 0); }
           const spoken = o.say || (o.t.trim().startsWith('(') ? null : o.t);
           queue.unshift(...(spoken ? [{ s: 'solar', t: spoken }] : []), ...(o.christmas ? G.christmasLines(o.christmas) : []), ...(o.then || []));
           next();
@@ -307,7 +322,7 @@ window.FemcScene = (() => {
       if (line.music) Music.set(line.music); else if (!opts.music && line.place) Music.set(G.moodFor(line.place, line.time), { under: true });
       const apply = () => {
         vis.place = line.place; vis.time = line.time || ''; vis.bg = line.bg || null; vis.cg = null;
-        if (line.date) { G.setDate(line.date); vis.date = null; }
+        if (line.date) { if (replay) vis.date = mdLabel(line.date); else { G.setDate(line.date); vis.date = null; } }
         paintVis();
       };
       log.push({ name: '', text: '—' });
@@ -389,6 +404,13 @@ window.FemcScene = (() => {
       G.actCard(line.act, () => next());
     }
     function battle(line) {
+      if (replay) {
+        // The Theater doesn't refight: a line where the fight was.
+        const t = `— ${line.battle.title || 'A fight in the Dark Hour'} —`;
+        nameEl.textContent = ''; textEl.classList.add('narration'); img.classList.add('dim'); showMe(null);
+        log.push({ name: '', text: t });
+        return say(t, next);
+      }
       waiting = null; skipping = false;
       textEl.replaceChildren(); nameEl.textContent = '';
       const snapshot = { queue: [...queue], vis: { ...vis, link: curLink }, gained };
@@ -401,9 +423,13 @@ window.FemcScene = (() => {
       if (line.place !== undefined && line.n === undefined && line.t === undefined) return sceneBreak(line);
       if (line.music) { Music.set(line.music); return next(); }
       if (line.bg !== undefined && Object.keys(line).length === 1) { vis.bg = line.bg; paintVis(); return next(); }
-      if ('cg' in line) { vis.cg = line.cg; if (line.cg) { img.hidden = true; sil.hidden = true; currentFace = null; showMe(null); } paintVis(); return next(); }
+      if ('cg' in line) {
+        vis.cg = line.cg;
+        if (line.cg) { img.hidden = true; sil.hidden = true; currentFace = null; showMe(null); if (!replay) G.seeCg?.(line.cg); }
+        paintVis(); return next();
+      }
       if ('dark' in line) { vis.dark = !!line.dark; paintVis(); return next(); }
-      if (line.setDate) { G.setDate(line.setDate); paintVis(); return next(); }
+      if (line.setDate) { if (replay) vis.date = mdLabel(line.setDate); else G.setDate(line.setDate); paintVis(); return next(); }
       if ('asLink' in line) { curLink = line.asLink || opts.link; return next(); }
       if (line.phone) return phone(line);
       if (line.summon) return summon(line);
@@ -411,10 +437,15 @@ window.FemcScene = (() => {
       if (line.battle) return battle(line);
       if (line.choose) return ask(line.choose);
       if (line.route) return ask(line.route);
-      const branch = G.branch(line, curLink);
+      // In a replay, opts.branch(line, link, flagOn) answers conditions without touching the save (menu.js peek); without
+      // it, { ifFlag } reads the replay's flags and the rest goes to G.branch (which checks ifRank and ifStat first).
+      const branch = replay && opts.branch ? opts.branch(line, curLink, flagOn)
+        : replay && line.ifFlag && !line.ifRank && !line.ifStat ? ([].concat(line.ifFlag).every(flagOn) ? line.then : line.else) || [] : G.branch(line, curLink);
       if (branch !== null) { queue.unshift(...(branch || [])); return next(); }
       if (line.fragment) Music.fragment(line.fragment);
-      if (G.effect(line)) return next();
+      // (Same rule as G.effect: a line that carries an effect is only that effect.)
+      if (replay) { if (EFFECTS.some(k => line[k])) { if (line.flag) overFlags(line.flag); return next(); } }
+      else if (G.effect(line)) return next();
       if (line.n !== undefined) {
         nameEl.textContent = ''; textEl.classList.add('narration'); img.classList.add('dim'); sil.hidden = true; if (currentFace?.startsWith('sil/')) currentFace = null;
         log.push({ name: '', text: plain(G.sub(line.n)) });
@@ -462,6 +493,8 @@ window.FemcScene = (() => {
         G.sfx('femc-hover');
       }
       if ((e.key === 'a' || e.key === 'A') && !e.metaKey && !e.ctrlKey) { e.preventDefault(); autoBtn.click(); }
+      // A replay can be left any time (a controller's B is Escape too). The log closes first if it's open.
+      if (replay && e.key === 'Escape' && !document.querySelector('.g-actcard')) { e.preventDefault(); e.stopPropagation(); if (!$('.gs-log').hidden) $('.gs-log').hidden = true; else end(false); }
     };
     document.addEventListener('keydown', keys, true);
     $('[data-t="skip"]').addEventListener('click', e => { e.stopPropagation(); skipping = true; advanceClick(); const run = () => { if (skipping && waiting && !choices.children.length) { advanceClick(); setTimeout(run, 50); } }; setTimeout(run, 50); });

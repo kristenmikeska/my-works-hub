@@ -210,7 +210,9 @@
     base: G.base, settings: G.settings, setSetting: G.setSetting, textDelay: G.textDelay, sfx: G.sfx,
     background: G.background, portrait: G.portrait, scale: G.scale, name: G.name, silhouette: G.silhouette, sub: G.sub,
     dateLabel: G.dateLabel, setDate: G.setDate, moodFor: G.moodFor, applyChoice: G.applyChoice, lacking: G.lacking, flag: G.flag,
-    branch: G.branch, effect: G.effect, tarot: G.tarot, actCard, phoneSfx
+    branch: G.branch, effect: G.effect, tarot: G.tarot, actCard, phoneSfx,
+    // The Memories album (menu.js): every CG a live scene shows is kept in S.album.cg (a replay never calls this).
+    seeCg: id => { const a = S().album ||= { v: 1 }; const list = a.cg ||= []; if (id && !list.includes(id)) { list.push(id); G.saveQuiet(); } }
   });
   SC.init(bridge);
 
@@ -687,7 +689,7 @@
       <div class="g-title-moon" aria-hidden="true"></div><div class="g-title-fx" aria-hidden="true"></div>
       <div class="g-title-copy"><h1 class="g-logo" aria-label="Persona 3: Solstice"><span class="g-logo-text" aria-hidden="true">Solstice<small>Persona 3 · Every Universe</small></span></h1>
       <button type="button" class="g-title-press">${tap ? 'Tap to start' : 'Press any key'}</button>
-      <div class="g-title-menu" role="menu">${has ? '<button type="button" role="menuitem" data-t="continue">Continue</button>' : ''}<button type="button" role="menuitem" data-t="new">New Game</button><button type="button" role="menuitem" data-t="load">Load</button><button type="button" role="menuitem" data-t="settings">Settings</button></div>
+      <div class="g-title-menu" role="menu">${has ? '<button type="button" role="menuitem" data-t="continue">Continue</button>' : ''}<button type="button" role="menuitem" data-t="new">New Game</button><button type="button" role="menuitem" data-t="load">Load</button><button type="button" role="menuitem" data-t="extras">Extras</button><button type="button" role="menuitem" data-t="settings">Settings</button></div>
       <p class="g-title-foot">${has ? `Autosave · ${esc(autoLine())}` : 'No save yet'}</p></div>
       <a class="g-title-practice" href="femc-battle.html?practice=1" title="Practice mode: the battle game on its own, with its own save">Practice</a></section>`, 'is-title');
     const sec = main.querySelector('.g-title'), items = [...sec.querySelectorAll('.g-title-menu button')];
@@ -752,6 +754,8 @@
         } else leave(b, () => { G.newGame(); run(); });
       }
       if (t === 'load') openSaves(true);
+      // Extras: the Memories album and the Theater for the autosave's playthrough (menu.js; read only, nothing is saved).
+      if (t === 'extras') window.FemcMenu?.extras(() => b.isConnected && b.focus({ preventScroll: true }));
       if (t === 'settings') openSettings();
     }));
   }
@@ -871,7 +875,8 @@
         <p class="g-seg-sub">${frags} memory fragment${frags === 1 ? '' : 's'} · ${maxed} bond${maxed === 1 ? '' : 's'} at MAX · ${met} people met${S().ngp ? ` · New Game+ ${S().ngp}` : ''}</p>
         <div class="g-credits"><p><b>Persona 3: Solstice</b> Every Universe</p><p>Story, characters and worlds · Kat</p><p>Persona 3 · ATLUS (the year it borrows)</p><p>Endings seen · ${seen.map(esc).join(' · ')}</p></div></div>
       <div class="g-row"><button type="button" class="g-btn pink" data-t="ngp">New Game+</button><button type="button" class="g-btn" data-t="title">Back to title</button></div></section>`, 'is-seg');
-    main.querySelector('[data-t=ngp]').addEventListener('click', () => { G.newGamePlus(); cardDay = null; run(); });
+    // The album and the Theater come along into New Game+ (menu.js albumCarry: everything seen so far, in one list).
+    main.querySelector('[data-t=ngp]').addEventListener('click', () => { const keep = window.FemcMenu?.albumCarry?.(); G.newGamePlus(); if (keep) { S().album = keep; G.saveQuiet(); } cardDay = null; run(); });
     main.querySelector('[data-t=title]').addEventListener('click', () => { S().phase = 'title'; G.save(); run(); });
   }
 

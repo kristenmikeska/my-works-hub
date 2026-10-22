@@ -1280,3 +1280,81 @@ button.g-st-link:is(:hover, :focus-visible) { outline: none; border-color: #fff;
   .g-ss-stat { padding: 7px 14px 7px 18px; }
   .g-ss-rank { font-size: 22px; }
 }
+
+/* ── The Memories album and the Theater (menu.js ALBUM and THEATER; 2026-10-22) ── */
+.g-al { --w-runners: #ff8cc0; --w-strangers: #7fd6c9; --w-hoax: #ffd36b; }
+.g-al-sum { display: flex; flex-wrap: wrap; margin: 0 0 4px; }
+.g-al-sec h3 small, .g-th-filter small { margin-left: 6px; color: var(--ink); font-size: .85em; letter-spacing: .06em; opacity: .85; }
+.g-al-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(44%, 200px), 1fr)); gap: 12px; margin-bottom: 6px; }
+.g-al-grid.sq { grid-template-columns: repeat(auto-fill, minmax(min(46%, 128px), 1fr)); }
+.g-al-tile { position: relative; display: block; width: 100%; padding: 0; aspect-ratio: 16 / 9; overflow: hidden; border: 2px solid rgba(255, 140, 192, .42); background: #1a0a13; color: var(--ink); text-align: left; cursor: pointer; transition: transform .14s, box-shadow .14s, border-color .14s; }
+.g-al-grid.sq .g-al-tile { aspect-ratio: 1; border-color: color-mix(in srgb, var(--w, var(--pink-2)) 55%, transparent); }
+.g-al-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
+.g-al-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 10px 7px; background: linear-gradient(180deg, transparent, rgba(12, 3, 9, .94)); font: italic 800 13.5px/1.15 var(--cond); letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g-al-tile:not(.lock):is(:hover, :focus-visible) { outline: none; border-color: #fff; transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--pink); }
+.g-al-tile:not(.lock):is(:hover, :focus-visible) img { transform: scale(1.06); }
+.g-al-tile.lock { display: grid; place-items: center; cursor: default; border-style: dashed; border-color: rgba(255, 140, 192, .2); background: repeating-linear-gradient(-45deg, rgba(255, 79, 158, .06) 0 10px, transparent 10px 20px), #10050c; }
+.g-al-grid.sq .g-al-tile.lock { border-color: color-mix(in srgb, var(--w, var(--pink-2)) 25%, transparent); background: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--w, var(--pink)) 8%, transparent) 0 10px, transparent 10px 20px), #10050c; }
+.g-al-tile.lock i { color: rgba(255, 140, 192, .32); font: italic 900 32px/1 var(--cond); transform: skewX(-10deg); }
+
+/* The viewer: the picture over everything, a soft zoom in (a slide when browsing), the caption in a skewed plate. */
+.g-av-ov { padding: 0; background: rgba(6, 2, 5, .95); }
+.g-av-ov .g-panel { width: 100%; height: 100dvh; max-height: none; padding: 0; overflow: hidden; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.g-av { position: relative; width: 100%; height: 100%; }
+.g-av-stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 56px 64px 24px; overflow: hidden; touch-action: pan-y; cursor: zoom-out; }
+.g-av.bare .g-av-stage { cursor: zoom-in; }
+.g-av-img { display: block; min-width: 0; min-height: 0; max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 18px 60px rgba(0, 0, 0, .6), 8px 8px 0 rgba(255, 79, 158, .35); user-select: none; -webkit-user-drag: none; }
+.g-av-img.sq { max-height: min(100%, 72vh); }
+.g-av-img.in { animation: g-av-zoom 1.5s cubic-bezier(.16, .84, .24, 1) both; }
+.g-av-img.in.from-r { animation-name: g-av-zoom-r; }
+.g-av-img.in.from-l { animation-name: g-av-zoom-l; }
+@keyframes g-av-zoom { from { opacity: 0; transform: scale(1.08); } 30% { opacity: 1; } to { opacity: 1; transform: scale(1); } }
+@keyframes g-av-zoom-r { from { opacity: 0; transform: translateX(40px) scale(1.04); } to { opacity: 1; transform: none; } }
+@keyframes g-av-zoom-l { from { opacity: 0; transform: translateX(-40px) scale(1.04); } to { opacity: 1; transform: none; } }
+.g-av-cap { position: absolute; left: clamp(12px, 4vw, 48px); bottom: clamp(14px, 4vh, 40px); z-index: 2; max-width: min(560px, calc(100% - 24px)); padding: 12px 20px 13px; border-left: 4px solid var(--pink); background: rgba(20, 7, 15, .9); box-shadow: 6px 6px 0 rgba(255, 79, 158, .45); transform: skewX(-6deg); transition: opacity .25s, translate .25s; pointer-events: none; }
+.g-av-cap > * { transform: skewX(6deg); }
+.g-av-cap .g-kicker { margin: 0 0 4px; font-size: 12px; }
+.g-av-cap b { display: block; font: italic 900 clamp(20px, 2.6vw, 28px)/1.05 var(--cond); letter-spacing: .02em; }
+.g-av-cap span { display: block; margin-top: 5px; color: var(--muted); font-size: 14px; line-height: 1.35; }
+.g-av-cap span:empty, .g-av-cap b:empty { display: none; }
+.g-av.bare .g-av-cap, .g-av.bare .g-av-hint { opacity: 0; translate: 0 12px; }
+.g-av-count { position: absolute; top: 14px; left: 18px; z-index: 2; margin: 0; padding: 5px 14px; background: var(--pink); color: #14070f; font: italic 900 15px/1 var(--cond); letter-spacing: .12em; transform: skewX(-14deg); box-shadow: 3px 3px 0 #fff; }
+.g-av-close { position: absolute !important; top: 12px; right: 16px; z-index: 3; }
+.g-av-nav { position: absolute; top: 50%; z-index: 3; display: grid; place-items: center; width: 46px; height: 64px; margin-top: -32px; padding: 0; border: 0; background: rgba(20, 7, 15, .88); color: #fff; font: italic 900 38px/1 var(--cond); transform: skewX(-10deg); box-shadow: 4px 4px 0 var(--pink); transition: background .12s, color .12s, box-shadow .12s; }
+.g-av-nav > span { transform: skewX(10deg) translateY(-2px); }
+.g-av-nav.prev { left: 10px; }
+.g-av-nav.next { right: 10px; }
+.g-av-nav:is(:hover, :focus-visible) { background: #fff; color: var(--night); box-shadow: 6px 6px 0 var(--pink); outline: none; }
+.g-av.one .g-av-nav { display: none; }
+.g-av-hint { position: absolute; right: 18px; bottom: 12px; z-index: 2; margin: 0; transition: opacity .25s, translate .25s; }
+@media (max-width: 700px) {
+  .g-av-stage { padding: 58px 8px 150px; }
+  .g-av-nav { top: auto; bottom: 18px; margin: 0; width: 44px; height: 50px; font-size: 32px; }
+  .g-av-cap { left: 12px; right: 12px; bottom: 82px; max-width: none; }
+  .g-av-hint { display: none; }
+}
+@media (max-height: 560px) and (min-width: 701px) {
+  .g-av-stage { padding: 48px 64px 12px; }
+  .g-av-cap { padding: 8px 14px 9px; max-width: min(420px, 50vw); }
+  .g-av-cap span { font-size: 13px; }
+  .g-av-hint { display: none; }
+}
+
+/* The Theater: one row per scene, by month (story), by person (bonds), and the endings. */
+.g-th-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 4px; }
+.g-th-filter .g-chip { cursor: pointer; }
+.g-th-filter .g-chip:is(:hover, :focus-visible) { outline: none; border-color: #fff; box-shadow: 4px 4px 0 var(--pink); }
+.g-th-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 10px 14px; padding: 0 6px 6px 4px; }
+.g-th-row { display: grid; grid-template-columns: 54px minmax(0, 1fr) auto; align-items: center; gap: 12px; width: 100%; min-height: 54px; padding: 8px 16px; border: 0; background: rgba(20, 7, 15, .92); color: var(--ink); text-align: left; transform: skewX(-8deg); box-shadow: 4px 4px 0 rgba(255, 79, 158, .5); transition: background .12s, color .12s, box-shadow .12s, transform .12s; }
+.g-th-row > * { transform: skewX(8deg); min-width: 0; }
+.g-th-d { color: var(--pink-2); font: italic 900 19px/1 var(--cond); }
+.g-th-t b { display: block; font: italic 900 18px/1.1 var(--cond); letter-spacing: .03em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g-th-t small { display: block; margin-top: 2px; color: var(--pink-2); font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g-th-row i { color: var(--pink); font-size: 14px; font-style: normal; }
+.g-th-row:is(:hover, :focus-visible) { background: #fff; color: var(--night); box-shadow: 6px 6px 0 var(--pink); outline: none; transform: skewX(-8deg) translateX(4px); }
+.g-th-row:is(:hover, :focus-visible) small { color: #a0145a; }
+
+/* A replay's tag in the scene, under the tools (Leave ends it, as does Esc). */
+.gs-replay-tag { position: absolute; z-index: 6; top: 58px; right: 22px; margin: 0; padding: 4px 12px; background: var(--pink); color: #14070f; font: italic 900 12px/1 var(--cond); letter-spacing: .2em; text-transform: uppercase; transform: skewX(-14deg); box-shadow: 3px 3px 0 #fff; pointer-events: none; }
+@media (max-width: 700px), (max-aspect-ratio: 13/10) { .gs-replay-tag { top: 98px; right: 10px; } }
+@media (prefers-reduced-motion: reduce) { .g-av-img.in, .g-al-tile img { animation: none; transition: none; } }

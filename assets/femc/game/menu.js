@@ -2,7 +2,8 @@
    One menu for the whole game. Tabs: Party (who goes into Tartarus, levels, HP/SP, Personas), Personas (the current Persona,
    its skills and affinities; Haenim's forms), Skills (the skill system: see SKILLS below), Equipment (weapon, armor, accessory
    per member, from the gear bought in shops or found in Tartarus), Items (consumables, gear, books, jobs), Status (Solar's
-   social stats, condition, exams), Links (the social links), Journal (memory fragments), Calendar (this month), and the
+   social stats, condition, exams), Links (the social links), Journal (memory fragments), Album (the Memories album) and
+   Theater (replays; both described at ALBUM and THEATER below, not in the Dark Hour), Calendar (this month), and the
    Compendium page.
    The battle side's numbers come from the playthrough's battle save (core.js S.battleSave, shape in assets/femc/battle/save.js)
    through the battle engine (engine.js: levels, stats, skills, equipment math) and its data (data.js). Changes made here
@@ -44,7 +45,7 @@ window.FemcMenu = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const yen = n => `¥${Math.round(n || 0).toLocaleString('en-US')}`;
   const AFF = { normal: '–', weak: 'Wk', resist: 'Rs', null: 'Nu', drain: 'Dr', repel: 'Rp' };
-  const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['cards', 'Cards'], ['equip', 'Equipment'], ['items', 'Items'], ['collection', 'Collection'], ['status', 'Status'], ['links', 'Links'], ['bonds', 'Bonds'], ['journal', 'Journal'], ['calendar', 'Calendar'], ['compendium', 'Compendium']];
+  const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['cards', 'Cards'], ['equip', 'Equipment'], ['items', 'Items'], ['collection', 'Collection'], ['status', 'Status'], ['links', 'Links'], ['bonds', 'Bonds'], ['journal', 'Journal'], ['album', 'Album'], ['theater', 'Theater'], ['calendar', 'Calendar'], ['compendium', 'Compendium']];
   const BLD = () => window.FemcBuild || null;
   let o = null, tab = 'party', sel = {}, opts = {};
 
@@ -628,7 +629,320 @@ window.FemcMenu = (() => {
       <p class="g-note small">● full moon · days off are dimmed. ${today.moon.full ? 'Tonight is a full moon.' : today.moon.days != null ? `Full moon in ${today.moon.days} day${today.moon.days === 1 ? '' : 's'}.` : ''}</p></div>`;
   }
 
+  /* ── ALBUM and THEATER (2026-10-22): the Memories album and the Theater; tabs here, and the title screen's Extras ──
+     Album: every event CG (assets/femc/cg/<id>.webp) a scene can show, found by walking the scene data (the prologue, story
+     events, memory doors, links' ranks / hangouts / after-MAX / Christmas / late nights / holidays, everyday life), grouped by
+     id prefix (prologue- story- → Story; romance- link- → Romance & bonds; searchers-; ending-), and every memory fragment card
+     (data.js memories) by world. Unlocked: S.album.cg (each CG a live scene shows; scene.js → ui.js bridge seeCg) plus a
+     backfill for saves from before the album: the CGs on the path each scene the save has seen would take, as far as the save
+     can tell (conditions read the save through peek; a CG behind a choice counts when that choice's flags are set), and the
+     ending CGs of the endings in 'kg-femc-revamp-clears'. Fragments: S.fragments. Locked tiles are blank (no art loads).
+     The viewer: full screen, a soft zoom in, a caption only from what was seen (the scene's own title / rank, the ending's
+     name, a card's own text), ← → / swipe / the arrows, Esc / B / Close. Tap the picture to hide the caption.
+     Theater: the prologue, story events, memory doors and link ranks already watched (by month, and by link), and the endings
+     seen (the clears list: another playthrough's ending replays with that ending's route flags and Christmas pick). A replay
+     runs in scene.js's read-only mode (opts.replay, conditions through peek), so it never writes the save; the menu (or the
+     Extras panel) steps out of the page meanwhile and comes back after. Not in the Dark Hour.
+     New Game+ keeps all of it (albumCarry → the new S.album: cg, frags, events, doors, ranks, prologue). */
+  const ALB_V = 1, END_ID = 'end-ending', CLEARS_KEY = 'kg-femc-revamp-clears';
+  const EXTRA_TABS = ['album', 'theater'];
+  const albumOf = () => S().album || {};
+  const uniq = a => [...new Set(a)];
+  const flagKeys = v => (typeof v === 'string' ? [v] : Array.isArray(v) ? v.filter(k => typeof k === 'string') : v && typeof v === 'object' ? Object.keys(v).filter(k => v[k]) : []);
+  // G.branch's rules, read-only (G.branch makes a link record for any link it's asked about; a replay must change nothing).
+  function peek(line, link, flagOn = G.flag) {
+    const s = S(), lk = id => (s.links || {})[id] || {};
+    let ok = null;
+    if (line.ifRank) ok = Object.entries(line.ifRank).every(([id, r]) => (lk(id).rank || 0) >= r);
+    else if (line.ifStat) ok = Object.entries(line.ifStat).every(([id, r]) => G.statRank(id) >= r);
+    else if (line.ifFlag) ok = [].concat(line.ifFlag).every(flagOn);
+    else if (line.ifEvent) ok = [].concat(line.ifEvent).every(id => s.events.includes(id));
+    else if (line.ifMet) ok = [].concat(line.ifMet).every(id => s.met.includes(id));
+    else if (line.ifRoute) ok = !!link && lk(link).route === line.ifRoute;
+    else if (line.ifRomance) ok = lk(line.ifRomance).route === 'romance';
+    else if (line.ifReversed) ok = [].concat(line.ifReversed).every(id => !!lk(id).reversed);
+    else if (line.ifHeading) ok = G.headingIs(line.ifHeading);
+    else if (line.ifAfter) ok = s.day >= G.dayOf(line.ifAfter);
+    else if (line.ifBefore) ok = s.day < G.dayOf(line.ifBefore);
+    if (ok === null) return null;
+    return (ok ? line.then : line.else) || [];
+  }
+  const kidsOf = l => [l.then, l.else, ...[].concat(Array.isArray(l.choose) ? l.choose : [], Array.isArray(l.route) ? l.route : []).map(o => o && o.then)].filter(Array.isArray);
+  function cgsIn(lines, out = []) { (lines || []).forEach(l => { if (!l || typeof l !== 'object') return; if (typeof l.cg === 'string' && !out.includes(l.cg)) out.push(l.cg); kidsOf(l).forEach(k => cgsIn(k, out)); }); return out; }
+  // Every scene the game can play that the album or the Theater cares about, in story order.
+  let srcCache = null;
+  function sceneSources() {
+    if (srcCache) return srcCache;
+    const out = [], add = o => { if (Array.isArray(o.scene) && o.scene.length) out.push(o); }, P = window.FEMC_GAME_PROLOGUE;
+    if (P) add({ kind: 'prologue', key: 'prologue', scene: P.scene, title: 'Prologue', md: G.mdOf(0) });
+    G.D.events.forEach(e => add({ kind: 'event', key: e.id, scene: e.scene, link: e.link, title: e.title, md: e.date, place: e.place, time: e.time }));
+    Object.entries(G.D.flags.doorScenes || {}).forEach(([k, d]) => add({ kind: 'door', key: k, scene: d.scene, title: d.title || 'A memory', place: d.place, time: d.time }));
+    Object.values(G.LINKS).forEach(l => {
+      (l.ranks || []).forEach((rk, r) => rk && add({ kind: 'rank', key: `${l.id}:${r}`, link: l.id, r, scene: rk.scene, title: rk.title, place: rk.place, time: rk.time, music: rk.music }));
+      (l.hangouts || []).forEach((h, i) => add({ kind: 'hangout', key: `${l.id}:h${i}`, link: l.id, i, scene: Array.isArray(h) ? h : h && h.scene }));
+      (l.afterMax || []).forEach((e, i) => add({ kind: 'after', key: `${l.id}:a${i}`, link: l.id, i, scene: Array.isArray(e) ? e : e && e.scene, title: e && e.title }));
+      if (l.christmas) add({ kind: 'xmas', key: `${l.id}:xmas`, link: l.id, scene: l.christmas.scene });
+      (l.lateNights || []).forEach(e => e && add({ kind: 'late', key: e.id, link: l.id, scene: e.scene }));
+      Object.entries(l.holidays || {}).forEach(([md, e]) => e && add({ kind: 'holiday', key: `${l.id}:${md}`, link: l.id, md, scene: e.scene }));
+    });
+    (G.D.dailyLife || []).forEach(e => add({ kind: 'daily', key: e.id, scene: e.scene }));
+    return (srcCache = out);
+  }
+  // Has this scene been seen? `a` (the album) adds what earlier playthroughs saw (New Game+); null asks this save only.
+  function seenSrc(src, a) {
+    const s = S(), p = src.link ? (s.links || {})[src.link] || {} : {};
+    switch (src.kind) {
+      case 'prologue': return !!(a && a.prologue) || !!(s.started && s.day > 0);
+      case 'event': return s.events.includes(src.key) || !!(a && (a.events || []).includes(src.key));
+      case 'door': return (s.route.doorsSeen || []).includes(src.key) || !!(a && (a.doors || []).includes(src.key));
+      case 'rank': return (p.seen || []).includes(src.r) || !!(a && ((a.ranks || {})[src.link] || []).includes(src.r));
+      case 'hangout': return (p.hung || 0) > src.i;
+      case 'after': return (p.after || 0) > src.i;
+      case 'xmas': return s.route.choices.xmas === src.link;
+      case 'late': return (s.lateNights?.seen || []).includes(src.key);
+      case 'holiday': return (s.holidays || {})[src.md] === src.link;
+      case 'daily': return (s.dailyLife?.seen || []).includes(src.key);
+      default: return false;
+    }
+  }
+  // The CGs a scene shows on the path the save says it took (see the header). set(v): a { flag } line's flags (endings).
+  function reach(lines, link, flagOn, set, out) {
+    (lines || []).forEach(l => {
+      if (!l || typeof l !== 'object') return;
+      if (typeof l.cg === 'string') out.add(l.cg);
+      if ('asLink' in l) link = l.asLink || link;
+      if (l.flag && set) set(l.flag);
+      const opts = Array.isArray(l.choose) ? l.choose : Array.isArray(l.route) ? l.route : null;
+      if (opts) { opts.forEach(o => { const k = flagKeys(o && o.flag); if (k.length && k.every(flagOn)) reach(o.then, o.link || link, flagOn, set, out); }); return; }
+      const b = peek(l, link, flagOn);
+      if (b) reach(b, link, flagOn, set, out);
+    });
+  }
+  // Endings seen: this playthrough's own (its flags are the save's), then the clears list's, one per ending name.
+  const ENDING_FLAGS = { 'the last stop': ['route-bad'], 'I am thou': ['route-true', 'true-final'], 'where it begins': ['route-R'], 'low tide': ['route-S'], 'the unfated life': ['route-H'], here: ['route-stay'] };
+  function endingRuns() {
+    let list = []; try { list = JSON.parse(localStorage.getItem(CLEARS_KEY) || '[]') || []; } catch (e) { list = []; }
+    const s = S(), out = [], names = new Set();
+    if (s.events.includes(END_ID)) { const n = G.endingName(); names.add(n); out.push({ name: n, mine: true, xmas: s.route.choices.xmas || null }); }
+    (Array.isArray(list) ? list : []).forEach(c => {
+      const n = c && (c.ending === 'the count' ? 'the unfated life' : c.ending); // the Hoax ending's old name
+      if (!n || names.has(n) || !ENDING_FLAGS[n]) return;
+      names.add(n);
+      const f = {}; ENDING_FLAGS[n].forEach(k => { f[k] = true; }); if (c.xmas && c.xmas !== 'alone') f[`xmas-${c.xmas}`] = true;
+      out.push({ name: n, mine: false, flags: f, xmas: c.xmas || null });
+    });
+    return out;
+  }
+  const endEvent = () => G.D.events.find(e => e.id === END_ID);
+  const runFlags = run => { const f = { ...(run.flags || {}) }; return { on: k => !!f[k], set: v => flagKeys(v).forEach(k => { f[k] = true; }) }; };
+  function endingCgs(run) { const out = new Set(), ev = endEvent(); if (!ev) return out; if (run.mine) reach(ev.scene, null, G.flag, null, out); else { const f = runFlags(run); reach(ev.scene, null, f.on, f.set, out); } return out; }
+  const CG_GROUPS = [['story', 'Story'], ['romance', 'Romance & bonds'], ['searchers', 'Searchers'], ['endings', 'Endings']];
+  const WORLDS = [['Runners', 'Runners'], ['strangers', 'strangers'], ['Hoax', 'Hoax']];
+  const cgGroup = id => (/^(romance|link)-/.test(id) ? 'romance' : /^searchers-/.test(id) ? 'searchers' : /^ending-/.test(id) ? 'endings' : 'story');
+  let catCache = null;
+  function cgCatalog() {
+    if (catCache) return catCache;
+    const by = new Map();
+    sceneSources().forEach(src => cgsIn(src.scene).forEach(id => { if (!by.has(id)) by.set(id, { id, group: cgGroup(id), srcs: [] }); by.get(id).srcs.push(src); }));
+    return (catCache = [...by.values()]);
+  }
+  // id → what to call it: the first scene this save (or the album) has seen that shows it; an ending CG, the ending's name.
+  function srcCaption(src) {
+    const l = src.link && G.LINKS[src.link], rk = l && src.kind === 'rank' ? l.ranks[src.r] : null;
+    switch (src.kind) {
+      case 'prologue': return { kicker: src.md, title: 'Prologue' };
+      case 'event': return { kicker: `${src.md} · Story`, title: src.title || 'Story' };
+      case 'door': return { kicker: 'A memory', title: src.title };
+      case 'rank': return { kicker: `${l.short} · ${src.r + 1 >= G.maxOf(l) ? 'Rank MAX' : `Rank ${src.r + 1}`}`, title: (rk && rk.title) || l.arcana || l.short };
+      case 'hangout': return { kicker: l.short, title: 'Time together' };
+      case 'after': return { kicker: `${l.short} · MAX`, title: src.title || 'After' };
+      case 'xmas': return { kicker: l.short, title: 'Christmas Eve' };
+      case 'late': return { kicker: l.short, title: 'Late night' };
+      case 'holiday': return { kicker: `${src.md} · ${l.short}`, title: 'A day off together' };
+      default: return { kicker: 'Everyday life', title: '' };
+    }
+  }
+  function albumData() {
+    const a = albumOf(), s = S(), got = new Set(a.cg || []), runs = endingRuns(), cap = {};
+    const done = new Set();
+    cgCatalog().forEach(c => c.srcs.forEach(src => { if (done.has(src)) return; done.add(src); if (src.key !== END_ID && seenSrc(src, null)) reach(src.scene, src.link, G.flag, null, got); }));
+    runs.forEach(run => endingCgs(run).forEach(id => { got.add(id); if (!cap[id]) cap[id] = { kicker: 'Ending', title: `ENDING · ${run.name}` }; }));
+    const cgs = cgCatalog().map(c => {
+      const on = got.has(c.id), src = on && c.srcs.find(x => x.key !== END_ID && seenSrc(x, a));
+      const caption = cap[c.id] || (src ? srcCaption(src) : { kicker: CG_GROUPS.find(g => g[0] === c.group)[1], title: '' });
+      return { kind: 'cg', id: c.id, group: c.group, on, img: `${G.base}assets/femc/cg/${c.id}.webp`, ...caption };
+    });
+    const have = new Set([...(a.frags || []), ...s.fragments]);
+    const frags = (G.D.battle.memories || []).map(m => ({ kind: 'mem', id: m.id, group: m.world, on: have.has(m.id), img: G.base + m.img, big: G.base + (m.wide || m.img), kicker: `${m.world} · memory fragment`, title: m.title, text: m.text }));
+    return { cgs, frags };
+  }
+  // Everything seen so far, for New Game+ (ui.js endScreen): the album and the Theater carry over.
+  function albumCarry() {
+    const a = albumOf(), s = S(), ranks = {};
+    Object.entries(a.ranks || {}).forEach(([k, v]) => { ranks[k] = [...v]; });
+    Object.entries(s.links || {}).forEach(([k, p]) => { if ((p.seen || []).length) ranks[k] = uniq([...(ranks[k] || []), ...p.seen]); });
+    const { cgs } = albumData();
+    return { v: ALB_V, cg: cgs.filter(c => c.on).map(c => c.id), frags: uniq([...(a.frags || []), ...s.fragments]), events: uniq([...(a.events || []), ...s.events.filter(id => id !== END_ID)]),
+      doors: uniq([...(a.doors || []), ...(s.route.doorsSeen || [])]), ranks, prologue: !!a.prologue || !!(s.started && s.day > 0) };
+  }
+
+  /* The album's page. Tiles open the viewer; locked tiles are blank and can't be focused. */
+  const monthOf = md => G.dateOf(G.dayOf(md)).toLocaleString('en', { month: 'long' });
+  function albumHtml() {
+    const { cgs, frags } = albumData(), n = x => x.filter(c => c.on).length;
+    let k = 0;
+    const tile = (c, sq) => (c.on
+      ? `<button type="button" class="g-al-tile" data-al="${k++}" aria-label="${esc([c.kicker, c.title].filter(Boolean).join(' · '))}"${sq ? ` style="--w:var(--w-${esc(c.group.toLowerCase())})"` : ''}><img src="${esc(c.img)}" alt="" loading="lazy" decoding="async"><span class="g-al-cap">${esc(c.title || c.kicker)}</span></button>`
+      : `<div class="g-al-tile lock" aria-hidden="true"${sq ? ` style="--w:var(--w-${esc(c.group.toLowerCase())})"` : ''}><i>?</i></div>`);
+    const sec = (name, list, sq) => (list.length ? `<section class="g-al-sec"><h3>${esc(name)} <small>${n(list)} / ${list.length}</small></h3><div class="g-al-grid${sq ? ' sq' : ''}">${list.map(c => tile(c, sq)).join('')}</div></section>` : '');
+    return `<div class="g-al"><p class="g-al-sum"><span class="g-chip">Event CGs · ${n(cgs)} / ${cgs.length}</span><span class="g-chip">Memory cards · ${n(frags)} / ${frags.length}</span></p>
+      ${n(cgs) + n(frags) ? '' : '<p class="g-note">Nothing here yet. Scenes and memories she lives through will be kept here.</p>'}
+      ${CG_GROUPS.map(([g, name]) => sec(name, cgs.filter(c => c.group === g))).join('')}
+      ${WORLDS.map(([w, name]) => sec(`Memory cards · ${name}`, frags.filter(c => c.group === w), true)).join('')}</div>`;
+  }
+  // The unlocked entries in page order (data-al indexes this).
+  function albumList() { const { cgs, frags } = albumData(); return [...CG_GROUPS.flatMap(([g]) => cgs.filter(c => c.group === g)), ...WORLDS.flatMap(([w]) => frags.filter(c => c.group === w))].filter(c => c.on); }
+  function wireAlbum(el) {
+    el.querySelectorAll('[data-al]').forEach(bt => bt.addEventListener('click', () => {
+      G.sfx('femc-click');
+      viewer(albumList(), +bt.dataset.al, i => el.querySelector(`[data-al="${i}"]`)?.focus({ preventScroll: true }));
+    }));
+  }
+  /* The viewer: one picture at a time, full screen. back(i): where to put focus after (the tile of the last one shown). */
+  function viewer(list, start, back) {
+    if (!list.length) return null;
+    let i = Math.max(0, Math.min(list.length - 1, start));
+    const v = UI().overlay(`<div class="g-av" aria-roledescription="viewer"><div class="g-av-stage"><img class="g-av-img" alt=""></div>
+      <div class="g-av-cap"><p class="g-kicker"></p><b></b><span></span></div>
+      <p class="g-av-count" aria-live="polite"></p><button type="button" class="g-btn small g-av-close" data-close>Close</button>
+      <button type="button" class="g-av-nav prev" data-av="-1" aria-label="Previous"><span>‹</span></button><button type="button" class="g-av-nav next" data-av="1" aria-label="Next"><span>›</span></button>
+      <p class="g-hint g-av-hint">← → browse · Esc close</p></div>`, 'g-av-ov', () => { document.removeEventListener('keydown', onKey, true); back?.(i); });
+    const box = v.el.querySelector('.g-av'), img = box.querySelector('.g-av-img');
+    function show(n, dir = 0) {
+      i = (n + list.length) % list.length;
+      const c = list[i];
+      img.classList.remove('in', 'from-l', 'from-r');
+      img.alt = [c.title, c.kicker].filter(Boolean).join(' · ');
+      img.src = c.big || c.img;
+      img.classList.toggle('sq', c.kind === 'mem' && !c.big.endsWith('-wide.webp'));
+      void img.offsetWidth; // restart the zoom
+      img.classList.add('in'); if (dir) img.classList.add(dir > 0 ? 'from-r' : 'from-l');
+      box.querySelector('.g-av-cap .g-kicker').textContent = c.kicker || '';
+      box.querySelector('.g-av-cap b').textContent = c.title || '';
+      box.querySelector('.g-av-cap span').textContent = c.text || '';
+      box.querySelector('.g-av-count').textContent = `${i + 1} / ${list.length}`;
+      box.classList.toggle('one', list.length < 2);
+    }
+    const step = d => { if (list.length < 2) return; G.sfx('femc-hover'); show(i + d, d); };
+    box.querySelectorAll('[data-av]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); step(+b.dataset.av); }));
+    // Keys wherever focus is (a tap on the picture leaves it on the page), while the viewer is the top panel.
+    function onKey(e) {
+      if (!v.el.isConnected || v.el.classList.contains('out') || v.el !== [...document.querySelectorAll('.g-overlay')].pop()) return;
+      if (e.key === 'ArrowRight' || e.key === ']') { e.preventDefault(); e.stopPropagation(); step(1); }
+      else if (e.key === 'ArrowLeft' || e.key === '[') { e.preventDefault(); e.stopPropagation(); step(-1); }
+      else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') { e.preventDefault(); e.stopPropagation(); box.classList.toggle('bare', e.key === 'ArrowDown' ? !box.classList.contains('bare') : false); }
+    }
+    document.addEventListener('keydown', onKey, true);
+    // Touch: swipe left / right; a tap on the picture hides or shows the caption.
+    const stage = box.querySelector('.g-av-stage');
+    let sx = null, sy = 0;
+    stage.addEventListener('pointerdown', e => { sx = e.clientX; sy = e.clientY; });
+    stage.addEventListener('pointerup', e => {
+      if (sx === null) return;
+      const dx = e.clientX - sx, dy = e.clientY - sy; sx = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1);
+      else if (Math.abs(dx) < 8 && Math.abs(dy) < 8) box.classList.toggle('bare');
+    });
+    stage.addEventListener('pointercancel', () => { sx = null; });
+    show(i);
+    setTimeout(() => box.querySelector(list.length > 1 ? '.g-av-nav.next' : '.g-av-close')?.focus({ preventScroll: true }), 40);
+    return { el: v.el, show: n => show(n), close: v.close, index: () => i };
+  }
+
+  /* The Theater's list: { sec: story | bonds | endings, group, label, title, play } rows. */
+  function theaterItems() {
+    const a = albumOf(), out = [];
+    const srcs = sceneSources().filter(x => seenSrc(x, a));
+    srcs.filter(x => x.kind === 'prologue' || (x.kind === 'event' && x.key !== END_ID)).map((x, k) => ({ x, k, d: G.dayOf(x.md) })).sort((p, q) => p.d - q.d || p.k - q.k)
+      .forEach(({ x }) => out.push({ sec: 'story', group: monthOf(x.md), date: x.md, title: x.title || 'Story', sub: x.kind === 'prologue' ? '' : x.place || '', src: x }));
+    srcs.filter(x => x.kind === 'door').forEach(x => out.push({ sec: 'story', group: 'Memories', date: '', title: x.title, sub: 'A memory', src: x }));
+    srcs.filter(x => x.kind === 'rank').forEach(x => {
+      const l = G.LINKS[x.link], p = (S().links || {})[x.link] || {}, day = (p.rankDay || {})[x.r + 1];
+      out.push({ sec: 'bonds', group: `${l.short} · ${l.arcana}`, link: l.id, date: day != null ? G.mdOf(day) : '', title: x.title || l.short, sub: x.r + 1 >= G.maxOf(l) ? 'Rank MAX' : `Rank ${x.r + 1}`, src: x });
+    });
+    endingRuns().forEach(run => { const ev = endEvent(); if (ev) out.push({ sec: 'endings', group: 'Endings', date: ev.date, title: `ENDING · ${run.name}`, sub: run.mine ? 'This playthrough' : 'An earlier playthrough', src: { kind: 'ending', key: `ending:${run.name}`, scene: ev.scene, title: ev.title, place: ev.place, time: ev.time, md: ev.date, run } });
+    });
+    return out;
+  }
+  const TH_SECS = [['story', 'Story'], ['bonds', 'Bonds'], ['endings', 'Endings']];
+  function theaterHtml() {
+    const items = theaterItems();
+    if (!items.length) return '<p class="g-note">Nothing to replay yet. Scenes she has lived through wait here, to watch again.</p>';
+    const cur = sel.th && items.some(x => x.sec === sel.th) ? sel.th : items[0].sec;
+    sel.th = cur;
+    const groups = [];
+    items.forEach((x, k) => { if (x.sec !== cur) return; let g = groups.find(y => y.name === x.group); if (!g) groups.push(g = { name: x.group, rows: [] }); g.rows.push([x, k]); });
+    return `<div class="g-th"><p class="g-note">Watch a scene again. Nothing in a replay changes the game: choices are only for show, and fights are skipped.</p>
+      <div class="g-th-filter" role="tablist">${TH_SECS.map(([k, n]) => { const c = items.filter(x => x.sec === k).length; return c ? `<button type="button" role="tab" class="g-chip${k === cur ? ' on' : ''}" data-ths="${k}" aria-selected="${k === cur}">${n} <small>${c}</small></button>` : ''; }).join('')}</div>
+      ${groups.map(g => `<section class="g-th-sec"><h3>${esc(g.name)}</h3><div class="g-th-list">${g.rows.map(([x, k]) => `<button type="button" class="g-th-row" data-th="${k}"><span class="g-th-d">${esc(x.date)}</span><span class="g-th-t"><b>${esc(x.title)}</b><small>${esc(x.sub)}</small></span><i aria-hidden="true">▶</i></button>`).join('')}</div></section>`).join('')}</div>`;
+  }
+  function wireTheater(el, host, repaint) {
+    el.querySelectorAll('[data-ths]').forEach(b => b.addEventListener('click', () => { sel.th = b.dataset.ths; G.sfx('femc-hover'); repaint(`[data-ths="${sel.th}"]`); }));
+    el.querySelectorAll('[data-th]').forEach(b => b.addEventListener('click', () => {
+      const item = theaterItems()[+b.dataset.th]; if (!item) return;
+      G.sfx('femc-click');
+      replay(item, host, () => el.querySelector(`[data-th="${b.dataset.th}"]`)?.focus({ preventScroll: true }));
+    }));
+  }
+  // Play a Theater row through the real scene player, read-only. host: the panel to step aside (it's put back after).
+  function replay(item, host, back) {
+    const x = item.src, l = x.link && G.LINKS[x.link], mood = SC.Music.mood();
+    const parent = host && host.parentNode, after = host && host.nextSibling;
+    host?.remove();
+    const label = x.kind === 'rank' ? `${l.short} · ${item.sub}` : x.kind === 'ending' ? 'Ending' : x.kind === 'door' ? 'Memory' : x.kind === 'prologue' ? 'Prologue' : item.date;
+    const md = x.kind === 'rank' ? item.date : x.md;
+    const day = md ? G.dayInfo(G.dayOf(md)) : null;
+    return SC.play({
+      scene: x.scene, place: x.place || (l ? G.linkPlace(l) : ''), time: x.time || '', title: x.kind === 'prologue' ? null : x.title || null,
+      label: `Theater · ${label}`, link: x.link || null, event: x.kind === 'event', music: x.music || (l && /^Persona 5/.test(l.from || '') ? 'p5' : null),
+      replay: true, replayFlags: x.kind === 'ending' && !x.run.mine ? { ...x.run.flags } : null, date: day ? { md: day.md, day: day.day } : null,
+      branch: (line, link, flagOn) => peek(line, link, flagOn),
+      onDone: () => {
+        if (parent && host) parent.insertBefore(host, after && after.parentNode === parent ? after : null);
+        if (mood) SC.Music.set(mood);
+        back?.();
+      }
+    });
+  }
+  /* The title screen's Extras: the album and the Theater for the autosave's playthrough, in their own panel. */
+  function extras(onClose) {
+    let t = 'album';
+    const x = UI().overlay(`<div class="g-fm g-xt"><div class="g-fm-head"><div><p class="g-kicker">Persona 3: Solstice</p><h2>Extras</h2></div><button type="button" class="g-btn small" data-close>Close</button></div>
+      <nav class="g-tabs g-fm-tabs" role="tablist"><button type="button" role="tab" data-xt="album">Memories</button><button type="button" role="tab" data-xt="theater">Theater</button></nav>
+      <div class="g-fm-body" tabindex="-1"></div><p class="g-hint g-fm-hint">←→ on the tabs · Esc close</p></div>`, 'g-fm-ov g-xt-ov', () => onClose?.());
+    const body = x.el.querySelector('.g-fm-body');
+    const paint = focus => {
+      body.innerHTML = t === 'album' ? albumHtml() : theaterHtml();
+      if (t === 'album') wireAlbum(body); else wireTheater(body, x.el, paint);
+      x.el.querySelectorAll('[data-xt]').forEach(b => { b.classList.toggle('on', b.dataset.xt === t); b.setAttribute('aria-selected', b.dataset.xt === t); });
+      if (focus) body.querySelector(focus)?.focus({ preventScroll: true });
+    };
+    x.el.querySelectorAll('[data-xt]').forEach(b => b.addEventListener('click', () => { t = b.dataset.xt; G.sfx('femc-click'); paint(); }));
+    x.el.addEventListener('keydown', e => {
+      const onTab = e.target.closest?.('[data-xt]');
+      if (e.key === '[' || e.key === ']' || (onTab && (e.key === 'ArrowLeft' || e.key === 'ArrowRight'))) {
+        e.preventDefault(); e.stopPropagation(); t = t === 'album' ? 'theater' : 'album'; G.sfx('femc-hover'); paint(); x.el.querySelector(`[data-xt="${t}"]`)?.focus();
+      }
+    });
+    paint();
+    setTimeout(() => x.el.querySelector('[data-xt="album"]')?.focus({ preventScroll: true }), 40);
+    G.sfx('femc-click');
+    return x;
+  }
+
   /* ── The panel ── */
+  // The Album and the Theater stay out of the Dark Hour (a replay can't play over a fight).
+  const tabList = () => TABS.filter(([k]) => !(opts.inBattle && EXTRA_TABS.includes(k)));
   function render(focus) {
     if (!o) return;
     const body = o.el.querySelector('.g-fm-body');
@@ -644,6 +958,8 @@ window.FemcMenu = (() => {
     else if (tab === 'status') html = statusTab();
     else if (tab === 'links') html = linksTab();
     else if (tab === 'journal') html = journalTab();
+    else if (tab === 'album') html = albumHtml();
+    else if (tab === 'theater') html = theaterHtml();
     else if (tab === 'calendar') html = calendarTab();
     const top = body.scrollTop;
     body.innerHTML = html;
@@ -651,17 +967,21 @@ window.FemcMenu = (() => {
     if (tab === 'party') wireParty(body); else if (tab === 'personas') wirePersonas(body); else if (tab === 'equip') wireEquip(body); else if (tab === 'items') wireItems(body); else if (tab === 'skills') wireSkills(body);
     else if (tab === 'cards') wireCards(body); else if (tab === 'bonds') wireBonds(body); else if (tab === 'links') wireLinks(body);
     else if (tab === 'collection') window.FemcGacha?.wireCollection(body, render);
+    else if (tab === 'album') wireAlbum(body); else if (tab === 'theater') wireTheater(body, o.el, render);
     o.el.querySelectorAll('[data-tab]').forEach(b => { b.classList.toggle('on', b.dataset.tab === tab); b.setAttribute('aria-selected', b.dataset.tab === tab); });
+    // The tab strip scrolls sideways on narrow panels: keep the open tab in sight.
+    const on = o.el.querySelector('[data-tab].on'), strip = on?.parentElement;
+    if (on && strip && strip.scrollWidth > strip.clientWidth) { const l = on.offsetLeft - strip.offsetLeft, r = l + on.offsetWidth; if (l < strip.scrollLeft || r > strip.scrollLeft + strip.clientWidth) strip.scrollLeft = Math.max(0, l - 16); }
     if (focus) { const f = typeof focus === 'string' && focus.startsWith('[') ? body.querySelector(focus) : body.querySelector(`[data-pm="${focus}"]`); f?.focus({ preventScroll: true }); f?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' }); }
   }
   function open(startTab, options = {}) {
     if (o) return false;
     opts = options || {};
     if (startTab && TABS.some(([k]) => k === startTab)) tab = startTab;
-    if (tab === 'compendium') tab = 'party';
+    if (tab === 'compendium' || (opts.inBattle && EXTRA_TABS.includes(tab))) tab = 'party';
     const s = S(), i = G.dayInfo(), when = opts.inBattle ? 'The Dark Hour' : G.slotName(s.slot, i);
     o = UI().overlay(`<div class="g-fm${opts.inBattle ? ' dark' : ''}"><div class="g-fm-head"><div><p class="g-kicker">${esc(i.md)} ${esc(i.day)} · ${esc(when)}</p><h2>Menu</h2></div><span class="g-yen">${yen(opts.yen ?? s.yen)}</span><button type="button" class="g-btn small" data-close>${opts.inBattle ? 'Back' : 'Close'}</button></div>
-      <nav class="g-tabs g-fm-tabs" role="tablist">${TABS.map(([k, n]) => (k === 'compendium' ? `<a role="tab" href="${G.base}compendium.html" target="_blank" rel="noopener">${n} ↗</a>` : `<button type="button" role="tab" data-tab="${k}">${n}</button>`)).join('')}</nav>
+      <nav class="g-tabs g-fm-tabs" role="tablist">${tabList().map(([k, n]) => (k === 'compendium' ? `<a role="tab" href="${G.base}compendium.html" target="_blank" rel="noopener">${n} ↗</a>` : `<button type="button" role="tab" data-tab="${k}">${n}</button>`)).join('')}</nav>
       <div class="g-fm-body" tabindex="-1"></div>
       <p class="g-hint g-fm-hint">[ ] or ←→ on the tabs · Esc ${opts.inBattle ? 'back' : 'close'}</p></div>`, `g-fm-ov${opts.inBattle ? ' g-over-battle' : ''}`, () => { o = null; sel.slot = null; G.save(); const done = opts.onClose; opts = {}; done?.(); });
     sel.use = null; sel.velvet = null; sel.armed = null; sel.armedCard = null; sel.teach = null;
@@ -670,7 +990,7 @@ window.FemcMenu = (() => {
     sel.forget = skMembers().find(m => kitOf(m.id).pending.length)?.id || null;
     o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; sel.slot = null; sel.use = null; sel.velvet = null; G.sfx('femc-click'); render(); }));
     o.el.addEventListener('keydown', e => {
-      const keys = TABS.filter(([k]) => k !== 'compendium').map(([k]) => k);
+      const keys = tabList().filter(([k]) => k !== 'compendium').map(([k]) => k);
       const onTab = e.target.closest?.('[data-tab]');
       // Down from the tabs (keyboard or a pad's D-pad) steps into the Skills tab's tree, or its open prompt.
       if (onTab && e.key === 'ArrowDown' && tab === 'skills') {
@@ -689,5 +1009,7 @@ window.FemcMenu = (() => {
     G.sfx('femc-click');
     return true;
   }
-  return { open, close: () => o?.close(), isOpen: () => !!o, TABS };
+  return { open, close: () => o?.close(), isOpen: () => !!o, TABS, extras, albumCarry, peek,
+    // For tests: what the album and the Theater would show now.
+    albumData, albumList, theaterItems, replayRow: (k, back) => replay(theaterItems()[k], null, back), viewer };
 })();
