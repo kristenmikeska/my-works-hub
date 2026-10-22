@@ -39,7 +39,7 @@ window.FEMC_GAME_LODGING = {
     { bg: 'iwatodaidorm-livingroom-birthday' },
     { cg: 'story-birthday-surprise' },
     { s: 'junpei', f: 'happy', t: "HAPPY BIRTHDAY!" },
-    { n: "All of them. Junpei with a party popper he'd set off half a second early, so that the streamers landed on Yukari. Yukari picking them out of her hair and laughing anyway. Fuuka holding a cake with both hands like it might escape, a cake that leaned noticeably to the left and said *HAPPY BIRTHDAY SOLAR* in pink icing with the last two letters squeezed small against the edge. Mitsuru by the sofa, very straight, clapping in a measured way. Akihiko beside Fuuka holding the candles and a lighter with tremendous seriousness, as if he'd been put in charge of a detonation." },
+    { n: "All of them. Junpei with a party popper he'd set off half a second early, so that the streamers landed on Yukari. Yukari picking them out of her hair and laughing anyway. Akihiko holding the cake out in both hands, every candle already lit, with tremendous seriousness, as if he'd been put in charge of a detonation; it leaned noticeably to the left and said *HAPPY BIRTHDAY SOLAR* in pink icing with the last two letters squeezed small against the edge. Fuuka at his elbow with her hands hovering under the plate, ready to catch it if it tried to escape. Mitsuru by the sofa, very straight, clapping in a measured way. And Koromaru, the white dog from the shrine steps, who did not live here and was certainly not allowed in the lounge, in a paper party hat with paw prints on it, tail going like a flag. Junpei said later he'd been bribed down the hill with a hot dog, and that it was worth it." },
     { ifMet: 'kiriko', then: [{ n: "Kiriko on the arm of the sofa in her hoodie, ringing a little bell she'd brought from the shrine every time anyone said the word birthday." }] },
     { ifMet: 'mercy', then: [{ n: "Mercy by the window with a glass of something and the warm, slightly amused face of a woman who'd been to a great many parties and liked this one." }] },
     { ifMet: 'sebastian', then: [{ n: "Sebastian in the corner by the door, as close to the exit as a person could get while still technically being at a party, holding a wrapped square that was very obviously a CD." }] },
@@ -49,7 +49,7 @@ window.FEMC_GAME_LODGING = {
     { s: 'mitsuru', f: 'neutral', t: "The twenty-fourth of June. It was on your enrollment form. Date of birth." },
     { s: 'mitsuru', f: 'sad', t: "It was the only other line on it that was filled in. Besides your name. I've looked at that form a great many times." },
     { n: "Solar looked at the cake. At the date in her head, which meant nothing. And then, under that, somewhere much older than her head, something that turned over and sat up and said *yes*, the way your body says yes to a step it knows is there in the dark. It was. It was her birthday. She didn't remember a single one, and she was sure." },
-    { s: 'yukari', f: 'neutral', t: "Candles. Before Akihiko-senpai burns the building down. He's been holding that lighter for ten minutes." },
+    { s: 'yukari', f: 'neutral', t: "Candles. Before they melt into the icing. Akihiko-senpai's been holding that thing for ten minutes." },
     { s: 'akihiko', f: 'neutral', t: "Fifteen. Make a wish." },
     { choose: [
       { t: "(Close your eyes. Wish for everyone in this room.)", stat: { kindness: 1 }, then: [
