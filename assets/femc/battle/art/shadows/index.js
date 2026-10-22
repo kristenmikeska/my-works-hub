@@ -714,6 +714,21 @@ window.FEMC_SHADOW_ART = {
   "small": false,
   "w": 640
  },
+ "memory-lantern-hoax": {
+  "h": 377,
+  "small": false,
+  "w": 199
+ },
+ "memory-lantern-runners": {
+  "h": 367,
+  "small": false,
+  "w": 247
+ },
+ "memory-lantern-strangers": {
+  "h": 529,
+  "small": false,
+  "w": 324
+ },
  "memory-mirror-fox": {
   "h": 640,
   "poses": {

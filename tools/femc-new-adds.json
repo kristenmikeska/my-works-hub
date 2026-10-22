@@ -4039,6 +4039,93 @@
       },
       "sheetOrder": "top row neutral, happy, sad; bottom row angry, surprised, embarrassed",
       "scale": 1.2
+    },
+    {
+      "batch": 25,
+      "source": "lantern-runners.png",
+      "sourceNow": "New Adds/lantern-runners.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "497ae841b683dba5c656704dcc8845974f13525043f1249452e14dc66cdd8a70",
+      "enemy": "lantern_r",
+      "status": "reviewed",
+      "note": "v1 single render, kept as an alternative (v2 chosen for the Shadow style)"
+    },
+    {
+      "batch": 25,
+      "source": "lantern-runners-v2.png",
+      "sourceNow": "New Adds/lantern-runners-v2.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "68ab4f65ebeac8f1e535173558d46af4412a81ea88af01cdd65807ede297f3ee",
+      "enemy": "lantern_r",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/shadows/memory-lantern-runners.webp",
+      "conversion": "v2 pose sheet; idle figure (top-left cell, box [49, 0, 296, 367]) keyed off white with tools/femc-theurgy.py key() (Vision mask + un-mix from white), pieces centred in that cell kept, trimmed with 6px padding, WebP q90; the other poses are unused for now; source unchanged",
+      "outputSha256": "1aede9385e867e2c1f9003d4f285bd351bd8fff47c7e5e068be36852c8cb17eb",
+      "choice": "v2 over v1: the black ink wisps and painted finish match the Kegstand Shadow (memory-party-pose-0); v1 is a clean ornamental render"
+    },
+    {
+      "batch": 25,
+      "source": "lantern-strangers.png",
+      "sourceNow": "New Adds/lantern-strangers.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "773c25fb3698f22f8290d7518d9b4e9e6cfe4e3d2b40f46219b3431620633ec4",
+      "enemy": "lantern_s",
+      "status": "reviewed",
+      "note": "v1 single render, kept as an alternative (v2 chosen for the Shadow style)"
+    },
+    {
+      "batch": 25,
+      "source": "lantern-strangers-v2.png",
+      "sourceNow": "New Adds/lantern-strangers-v2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "dccc6d9f499b4ca8e1b9d254528235ac82ee3407cbe88e0ece65120676cf2188",
+      "enemy": "lantern_s",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/shadows/memory-lantern-strangers.webp",
+      "conversion": "v2 pose sheet; idle figure (top-left cell, box [88, 1, 412, 530]) keyed off white with tools/femc-theurgy.py key() (Vision mask + un-mix from white), pieces centred in that cell kept, trimmed with 6px padding, WebP q90; the other poses are unused for now; source unchanged",
+      "outputSha256": "f5703be32567ff7142145bf9bd01d7bc01a96747688d508d0157ced44d406d23",
+      "choice": "v2 over v1: the black ink wisps and painted finish match the Kegstand Shadow (memory-party-pose-0); v1 is a clean ornamental render"
+    },
+    {
+      "batch": 25,
+      "source": "lantern-hoax.png",
+      "sourceNow": "New Adds/lantern-hoax.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "cb182e63efa374f35d31e85e04c39853d9b5ff28bbb21cc406462a759e490114",
+      "enemy": "lantern_h",
+      "status": "reviewed",
+      "note": "v1 single render, kept as an alternative (v2 chosen for the Shadow style)"
+    },
+    {
+      "batch": 25,
+      "source": "lantern-hoax-v2.png",
+      "sourceNow": "New Adds/lantern-hoax-v2.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "ae16e006ba15e2a67498f01ddfc524d982e38c0f13f26b2fcc9c01a00422d06f",
+      "enemy": "lantern_h",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/shadows/memory-lantern-hoax.webp",
+      "conversion": "v2 pose sheet; idle figure (top-left cell, box [73, 0, 272, 377]) keyed off white with tools/femc-theurgy.py key() (Vision mask + un-mix from white), pieces centred in that cell kept, trimmed with 6px padding, WebP q90; the other poses are unused for now; source unchanged",
+      "outputSha256": "2f9cb67cf49aeec92093b76f26c467a33d989850d0c39309e95819eb1d3c12f5",
+      "choice": "v2 over v1: the black ink wisps and painted finish match the Kegstand Shadow (memory-party-pose-0); v1 is a clean ornamental render"
     }
   ],
   "batch1Validation": {
@@ -4373,5 +4460,11 @@
       "python3 tests/femc_links.py --links danielle,jaemin,chenle"
     ],
     "browserErrors": 0
+  },
+  "batch25Validation": {
+    "date": "2026-10-22",
+    "checks": "tests/femc_shadow_poses.py --only-finale-path: both finale paths, phase 2 at 1000x486, 375x812 and 1440x900; all three lantern arts load on screen, the route lantern open and the other two behind glass; no browser errors",
+    "sourcesMoved": false,
+    "sourcesNote": "sources left in New Adds (this session may not modify the images folder); move them to Added to Game by hand"
   }
 }

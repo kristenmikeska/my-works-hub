@@ -2068,7 +2068,7 @@ html.bt-perf .bt-amk.k-weak, html.bt-perf .bt-amk-ring, html.bt-perf .bt-enemy.a
 /* ── Handoff mode (the life sim's story fights): portraits and memory cards as foes, the finale's lanterns ── */
 .bt-enemy.pic .sh-pic img { border-radius: 6px; -webkit-mask: radial-gradient(ellipse 72% 78% at 50% 46%, #000 62%, transparent 100%); mask: radial-gradient(ellipse 72% 78% at 50% 46%, #000 62%, transparent 100%); filter: drop-shadow(0 0 10px rgba(125, 255, 192, .35)) saturate(.85); }
 .bt-enemy.pic .sh-pic::after { display: none; }
-.bt-enemy.lantern .sh-pic img { border-radius: 50%; -webkit-mask: radial-gradient(circle at 50% 50%, #000 58%, transparent 72%); mask: radial-gradient(circle at 50% 50%, #000 58%, transparent 72%); filter: sepia(.35) brightness(1.1) drop-shadow(0 0 18px #ffd36b); }
+.bt-enemy.lantern.pic .sh-pic img { border-radius: 50%; -webkit-mask: radial-gradient(circle at 50% 50%, #000 58%, transparent 72%); mask: radial-gradient(circle at 50% 50%, #000 58%, transparent 72%); filter: sepia(.35) brightness(1.1) drop-shadow(0 0 18px #ffd36b); }
 .bt-enemy.capfall .sh-pic img { filter: grayscale(.4) brightness(.92) drop-shadow(0 0 16px rgba(255, 140, 192, .55)); }
 .bt-enemy.unreachable .sh-pic img { filter: grayscale(1) brightness(.5) blur(.6px); opacity: .7; }
 .bt-hub-ho .bt-hub-menu .bt-btn[data-go="dorm"] small { opacity: .7; }
@@ -2306,6 +2306,14 @@ html.bt-embed .bt-hub-ho .bt-hub-menu .bt-btn[data-go="dorm"] small { display: n
   .trainyard .bt-enemy.ln-R .bt-plate { left: 0; transform: skewX(-10deg); }
   .trainyard .bt-enemy.ln-H .bt-plate { left: auto; right: 0; transform: skewX(-10deg); }
 }
+/* Lantern art (data.js img: art/shadows/memory-lantern-<world>.webp, Kat's): a glow in its world's colour; behind glass
+   (unreachable) it's dim and still, under a pane with a sheen. */
+.bt-enemy.ln-R { --lc: #ffc94a; } .bt-enemy.ln-S { --lc: #3fd6a0; } .bt-enemy.ln-H { --lc: #ff6fae; }
+.bt-enemy.lantern:not(.pic) .sh-pic img { filter: drop-shadow(0 0 3px var(--lc)) drop-shadow(0 0 16px var(--lc)); }
+.bt-enemy.lantern:not(.pic).unreachable .sh-pic img { filter: brightness(.68) saturate(.6) drop-shadow(0 0 6px rgba(160, 190, 255, .4)); opacity: .9; animation: none; }
+.bt-enemy.lantern:not(.pic).unreachable .sh-pic::before { content: ""; position: absolute; inset: 1% 2%; z-index: 2; pointer-events: none; border: 2px solid rgba(207, 230, 255, .6); border-radius: 10px;
+  background: linear-gradient(118deg, transparent 18%, rgba(255, 255, 255, .34) 21%, transparent 27%, transparent 58%, rgba(255, 255, 255, .22) 61%, transparent 65%), linear-gradient(135deg, rgba(207, 230, 255, .24), rgba(125, 147, 196, .08) 50%, rgba(27, 37, 80, .3)); }
+.bt-enemy.lantern:not(.pic).down .sh-pic img { filter: drop-shadow(0 0 4px var(--lc)) brightness(.7); }
 @media (prefers-reduced-motion: reduce) { .bt-enemy.lantern .ln-body, .bt-enemy.lantern .ln-win { animation: none; } }
 html.bt-perf .bt-enemy.lantern .ln-win { animation: none; }
 /* Target info: what can be broken (battle.js reachNote). */

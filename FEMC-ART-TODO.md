@@ -12,20 +12,6 @@ Use **ChatGPT** for anything with a face, and **Gemini** for places and objects.
 
 ---
 
-## 1. Lantern windows (the last full-moon fight)
-Three small foes that hang beside the last boss. For now they're drawn in code; real art would make them look like the memory Shadows.
-**Attach (2 images):**
-1. 🎮 `battle/art/shadows/memory-party-pose-0.webp` (the Kegstand: the style and finish to match)
-2. 🎮 `battle/art/shadows/wren-shadow-last-train-pose-0.webp` (the lanterns it carries: the shape to match)
-```
-Persona 3 Reload Shadow enemy art, the same painted style, outline and glow as the FIRST attached image: a hanging paper lantern window like the ones in the SECOND image, an ornate dark-wood and brass frame with a hook on top and a tassel below, glowing warm [COLOR] light through the paper. In the window, the silhouette of a girl with long black hair curled up asleep. Full object visible, centered, on a plain white background with empty space around it. No text.
-```
-- [ ] `lantern-runners.png`: gold
-- [ ] `lantern-strangers.png`: jade green
-- [ ] `lantern-hoax.png`: pink
-
----
-
 ## 2. Bond cut-ins still open
 **Attach:**
 1. 🎮 `cg/prologue-akihiko-finds-solar.webp` (style)
@@ -167,7 +153,7 @@ Everything is data plus one tool. The presentation is reusable: `battle.js theur
 3. Move the source to `Added to Game/` and add its entry to `tools/femc-new-adds.json`.
 
 ### Lantern windows (3D)
-Cut each one to a transparent WebP in `battle/art/shadows/` (`memory-lantern-runners.webp` etc.) and add it to `art/shadows/index.js` (w, h). In `data.js`, give `lantern_r` / `lantern_s` / `lantern_h` an `img` (and drop `pic`). `battle.js addEnemy` draws the code lantern (`lanternSvg`) only while a lantern has no `img` art; with art it takes the Shadow-art branch and keeps its `.lantern` classes and place on the train (`--lo`), and `orderIcon` shows the art. The "behind glass" look for art lanterns needs a CSS rule on `.bt-enemy.lantern.unreachable .sh-pic` (dim plus a glass overlay). Bump `ART_V`, the `data.js` and `shadows/index.js ?v=` in both pages, and check the finale's phase 2 at 1000×486, 375×812 and 1440×900.
+Done 2026-10-22 (batch 25: Kat's v2 sheets, idle figure each; the glass rule is in battle.css). For a redo: cut each one to a transparent WebP in `battle/art/shadows/` (`memory-lantern-runners.webp` etc.) and add it to `art/shadows/index.js` (w, h). In `data.js`, give `lantern_r` / `lantern_s` / `lantern_h` an `img` (and drop `pic`). `battle.js addEnemy` draws the code lantern (`lanternSvg`) only while a lantern has no `img` art; with art it takes the Shadow-art branch and keeps its `.lantern` classes and place on the train (`--lo`), and `orderIcon` shows the art. The "behind glass" look for art lanterns needs a CSS rule on `.bt-enemy.lantern.unreachable .sh-pic` (dim plus a glass overlay). Bump `ART_V`, the `data.js` and `shadows/index.js ?v=` in both pages, and check the finale's phase 2 at 1000×486, 375×812 and 1440×900.
 
 ### Bond art
 The same pieces as a Theurgy (the steps above), in `assets/femc/battle/bonds.js`: on a bond (or one version of it, `tiers[i]`, `love` or `love15`), add `img` with `focus: [x%, y%]`, `sheet: { frames: [three files] }` or `layers: { bg, persona, char }`. Cut it with `tools/femc-theurgy.py` (a bond still is a `cutin`; a 3-step combo sheet is a `sheet`). Bump `ART_V` in `battle.js` and the `bonds.js ?v=` in both pages, then run `python3 tests/femc_bonds.py --only art,shots`.

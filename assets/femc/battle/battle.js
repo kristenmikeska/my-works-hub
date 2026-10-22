@@ -72,7 +72,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 20;
+  const ART_V = 21;
   const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
   Object.values(D.personas).forEach(p => { if (p.art && !p.art.startsWith('data:') && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
   // Theurgy and Evoker sheet art (data.js paths are bare) get the art version too.

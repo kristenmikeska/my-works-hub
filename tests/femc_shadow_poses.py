@@ -7,7 +7,8 @@ The finale's Last Train is also checked the way the game plays it (--finale-path
 the life sim, phase 1 (Last Call) in its own battle frame and then phase 2 (No Stops) in the next; 'full' runs the
 whole finale in one frame. Each must show the train's own layout (.trainyard: the train big in the middle, never in a
 corner), open every battle frame at a fresh URL (so an old femc-battle.html can't come from the cache) with the
-battle.js version femc-battle.html names, and screenshot phase 2 at 1000x486 and 1440x900.
+battle.js version femc-battle.html names, and screenshot phase 2 at 1000x486, 375x812 and 1440x900; Kat's three lantern
+windows (art/shadows/memory-lantern-*.webp) load on screen at each size, the route's own open and the other two behind glass.
   python3 tests/femc_shadow_poses.py --only-finale-path        just the finale paths"""
 import sys,json,pathlib,hashlib,base64,tempfile,argparse,time
 from femc_browser import Page
@@ -143,6 +144,9 @@ try:
  LAYOUT=r"""(()=>{const f=document.querySelector('.bt-field'),t=document.querySelector('.bt-enemy.train'),fr=f.getBoundingClientRect(),r=t&&t.getBoundingClientRect();
   return {field:f.className,train:!!t,pos:t&&getComputedStyle(t).position,cx:r&&(r.left+r.width/2-fr.left)/fr.width,left:r&&(r.left-fr.left)/fr.width,top:r&&(r.top-fr.top)/fr.height,w:r&&r.width/fr.width,
    lanterns:[...document.querySelectorAll('.bt-enemy.lantern')].map(l=>getComputedStyle(l).position),js:[...document.scripts].map(s=>s.src).filter(s=>/battle\/battle\.js/.test(s)),url:location.href}})()"""
+ LANTERNS=r"""[...document.querySelectorAll('.bt-enemy.lantern')].map(l=>{const im=l.querySelector('.sh-pic img'),r=(im||l).getBoundingClientRect(),g=im&&getComputedStyle(l.querySelector('.sh-pic'),'::before');
+  return {world:[...l.classList].find(c=>/^ln-/.test(c))?.slice(3),art:!!im&&/memory-lantern-/.test(im.src),loaded:!!im&&im.complete&&im.naturalWidth>0,glass:!!g&&g.content!=='none'&&l.classList.contains('unreachable'),
+   inView:r.width>8&&r.left>=-2&&r.right<=innerWidth+2&&r.top>=-2&&r.bottom<=innerHeight+2}})"""
  finale={}
  for path in [x for x in options.finale_path.split(',') if x]:
   p.top();p.ws.call('Emulation.setDeviceMetricsOverride',{'width':1440,'height':900,'deviceScaleFactor':1,'mobile':False})
@@ -169,11 +173,15 @@ try:
   # The train's own layout: on the field, big, its middle right of center (the fighter has the left), not in a corner.
   shots={}
   p.eval('FemcBattle.freeze()')
-  for w,h in [(1000,486),(1440,900)]:
-   p.top();p.ws.call('Emulation.setDeviceMetricsOverride',{'width':w,'height':h,'deviceScaleFactor':1,'mobile':False});p.frame(10)
+  for w,h in [(1000,486),(375,812),(1440,900)]:
+   p.top();p.ws.call('Emulation.setDeviceMetricsOverride',{'width':w,'height':h,'deviceScaleFactor':1,'mobile':w<600});p.frame(10)
    p.eval('document.fonts.ready.then(()=>new Promise(r=>setTimeout(r,400)))');L=p.eval(LAYOUT)
    assert 'trainyard' in L['field'] and L['train'] and L['pos']=='absolute' and all(x=='absolute' for x in L['lanterns']) and len(L['lanterns'])==3,(path,w,L)
-   assert .45<L['cx']<.75 and L['left']>.2 and L['w']>.25,(path,w,'train out of place',L)
+   if w>=600:assert .45<L['cx']<.75 and L['left']>.2 and L['w']>.25,(path,w,'train out of place',L)
+   # Kat's lantern art (art/shadows/memory-lantern-<world>.webp): loaded, on screen; the locked route's (Runners here) is open, the others behind glass.
+   LA=p.eval(LANTERNS)
+   assert [x['world'] for x in LA]==['R','S','H'] and all(x['loaded'] and x['art'] and x['inView'] for x in LA),(path,w,LA)
+   assert [x['glass'] for x in LA]==[False,True,True],(path,w,LA)
    name=f'finale-{path}-phase2-{w}x{h}.png';(OUT/name).write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot',{'format':'png'})['data']));shots[f'{w}x{h}']={'cx':round(L['cx'],3),'left':round(L['left'],3),'w':round(L['w'],3),'shot':name}
   p.eval('FemcBattle.unfreeze()');p.top();p.ws.call('Emulation.clearDeviceMetricsOverride',{})
   finale[path]={'frames':len(frames),'battleJs':BATTLE_JS,**shots}
