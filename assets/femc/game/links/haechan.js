@@ -267,9 +267,11 @@
     { after: '11/5', title: '1: the dryer', place: 'Iwatodai Dorm · Laundry Room', time: 'Late Night', music: 'night', scene: [
       { n: "The laundry room door was open. Solar stopped outside it with one hand on the frame, listening to the empty dryer turn. She knew who was in there before she looked, which was different from remembering him and still, somehow, enough to bring her downstairs." },
       { n: "It was a quarter to three, and she was back, because her legs had brought her here and she'd stopped arguing with her legs sometime around April." },
+      { cg: 'romance-haechan-laundry' },
       { n: "He was on the dryer again. A black hoodie, sleeves shoved past the elbow, choppy dark hair in his eyes like he'd decided nobody was worth the effort of moving it, a pair of heavy black headphones around his neck with the cord coiled in his lap. The dryer was running with nothing in it. He'd decided, apparently, that it was the only warm thing in the building after midnight." },
       { n: "He lived here now, technically. Mitsuru had given him the empty room at the end of the top floor, the one with the radiator that knocked, and as far as Solar could tell he'd put his bag on the bed and not touched either of them since. He didn't come into the lounge. He ate standing up in the kitchen at hours when nobody else was in it. Hyein had already shouted his name across the breakfast table once and been stopped by Hanni's hand, and since then she'd taken to going very quiet and very pink whenever he walked past, which for Hyein was its own kind of shouting. Yunjin had met him on the stairs, stopped dead, said something under her breath in English that made Hanni snort, and kept going, and looked back twice. He'd nodded at all of them the way you nod at people across a party you've come to and have no intention of staying at." },
       { n: "He didn't say *there you are* this time. He didn't say anything. He looked at her for exactly as long as it took her to stop in the doorway, and then he looked at the other dryer, the cold one, and back at her, which was apparently an invitation." },
+      { cg: null },
       { register: 'haechan' },
       { choose: [
         { t: "(Sit on the cold dryer.)", notes: 3, then: [
