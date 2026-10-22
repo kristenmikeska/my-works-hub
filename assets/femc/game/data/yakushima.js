@@ -3,7 +3,7 @@
    (the ♪ from its choices go to that person). The story's own scene (story-act3.js 'a3-yakushima', 7/22 late, "on the second
    evening") plays in its slot; the plan leads into it and out of it. S.E.E.S. only: Mitsuru, Akihiko, Yukari, Junpei and
    Fuuka, and the Chairman for the first night; Aigis from the morning of 7/23. Backgrounds: places.js 'Yakushima · …' rules
-   (the villa and the forest reuse art until Kat's new pieces; FEMC-ART-TODO.md section 8). */
+   (the villa and the forest reuse art until Kat's new pieces; FEMC-ART-TODO.md, Places). */
 window.FEMC_GAME_TRIP = {
   yakushima: {
     cast: { captain: 'The Ferry Captain' },

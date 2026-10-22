@@ -12,7 +12,7 @@
    - Cost: both pay `sp`, and it takes both their turns (whoever didn't start it loses their next one). Once per battle each.
    - It never overlaps a perk: Duo Cohesion (Minji's rank 5 perk) is a free follow-up hit; her bond is its own move.
    - `until`: the last calendar day it can be used (Shinjiro's, the day the story uses for his exit). Practice has no date.
-   Art hook (FEMC-ART-TODO.md section 4): any bond, or any one version of it, can carry
+   Art hook (FEMC-ART-TODO.md appendix, Bond art): any bond, or any one version of it, can carry
      img: a full-screen cut-in still (with focus [x%, y%]), sheet: { frames: [wind-up, strike, follow-through] },
      layers: { bg, persona, char }, sequence: [{ src, focus, pan, hit }, ...] (several panels crossfading, P3R-style; img is
      then the last panel, for the short band and reduced motion): the same shapes as a Theurgy's (data.js comment above TH).

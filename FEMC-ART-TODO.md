@@ -1,4 +1,4 @@
-# Art to make (updated 2026-10-22)
+# Art to make (updated 2026-10-22, finished items removed)
 
 This file replaces `FEMC-ART-NEXT.md` and `FEMC-THEURGY-PROMPTS.md`. Everything already in the game is off this list.
 - Put finished pieces in **New Adds**.
@@ -22,123 +22,36 @@ Save each as `<name>-portraits.png`. Until these exist, their scenes use a silho
 
 ---
 
-## 1–2. Theurgy cut-ins and strike sheets
-Every fighter's cut-in and strike sheet is in the game. One optional extra is left.
+## 1. Revelation card art ⭐ (12 sets left)
+**Fox Bell is done.** Your `card-runners-foxbell.jpeg` is the first set's art, and the style every other card should match.
 
-### Solar's strike sheets per form *(optional)*
-Right now Haenim, Sunna, Mazu and Unveiled share one sheet, and Nike has her own. A sheet each would match each form's look.
+**How it works:** one picture per **set**; the game adds the frame, slot icon and stats. Each set needs **one clear subject**, so the sets look different at a glance.
 
-**Attach:** that form's cut-in from 🎨 `Added to Game/` (e.g. `theurgy-solar-sunna.png`).
+**Attach (1 image):** 🎨 `New Adds/card-runners-foxbell.jpeg` (it moves to `Added to Game/` once it's in, so attach it from there later).
 ```
-A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, nothing overlapping between panels. Character only: no Persona, no background, no effects.
+A NEW card illustration in exactly the same style, border, colors and level of detail as the attached card: an ornate gold filigree frame with jewels and star corners, Persona-style dark glamour, rich jewel tones, portrait 3:4. The centerpiece is [SUBJECT], large and glowing, with [BACKDROP] behind it. Only this one subject, no other objects from the attached card. No people, no text.
 ```
-- [ ] Haenim (`theurgy-solar-haenim.png`)
-- [ ] Sunna (`theurgy-solar-sunna.png`)
-- [ ] Mazu (`theurgy-solar-harbor.png`)
-- [ ] Unveiled (`theurgy-solar-haenimunveiled.png`)
 
-Save each as `solar-<form>-strikesheet.png` in New Adds.
+| ✓ | Set | Save as | [SUBJECT] | [BACKDROP] |
+|---|---|---|---|---|
+| ✓ | Fox Bell | `card-runners-foxbell` | *(done)* | |
+| ☐ | Snow Stadium | `card-runners-stadium` | a football stadium's floodlights blazing through falling snow, a golden goalpost | a night sky in deep violet with snowflakes |
+| ☐ | Glow Headset | `card-runners-headset` | a pair of gaming headphones glowing hot pink with a fox emblem | a dark room lit by a monitor's glow and floating pixels |
+| ☐ | Jade Cord | `card-strangers-jade` | a jade ring hanging on a red silk cord | dark harbor water with lantern reflections |
+| ☐ | Harbor Crane | `card-strangers-crane` | a giant red harbor crane | an Incheon dawn with gulls and pale gold light |
+| ☐ | Red Thread | `card-strangers-thread` | a silver sewing needle trailing glowing red thread | dark velvet, the thread forming a loose knot |
+| ☐ | Star Pin | `card-hoax-star` | a gold star pin on a navy school blazer lapel | a starburst of gold light |
+| ☐ | Ballot Box | `card-hoax-ballot` | an ornate ballot box with folded ballots and ribbons | a school gym with string lights |
+| ☐ | Council Croissant | `card-hoax-croissant` | a golden croissant on a white plate on a student-council desk | a warm lamp and papers |
+| ☐ | Velvet Evoker | `card-persona-evoker` | an ornate silver Evoker resting on blue velvet | the Velvet Room's deep blue glow |
+| ☐ | Full Moon | `card-persona-moon` | a huge yellow-green full moon | the twisting tower of Tartarus |
+| ☐ | Blue Butterfly | `card-persona-butterfly` | a glowing blue butterfly with luminous wings | swirling blue light and drifting sparks |
+| ☐ | Green Coffin | `card-persona-coffin` | an upright black coffin | the Dark Hour's sickly green light and dark red stains |
 
 ---
 
-## 3. Battle pose sheets: make bosses and fighters move ⭐
-
-**Done (2026-10-21):** all 11 full-moon boss sheets (the Last Train too), Justice's sheet and 12 fighter sheets are in the game; bosses and fighters now animate in battle. Nothing is left (Ken is skipped).
-
-**What this is.** A pose sheet is **one image with 6 drawings of the same character in a grid**. I cut it into 6 pictures, and the game flips between them during battle, so the character looks animated.
-
-**Every time:**
-- **One character per image**, in a grid of 3 across and 2 down.
-- **Plain white background** and **space between the drawings**, so nothing touches or overlaps. This is the most important part: it's what lets me cut them cleanly.
-- **The same size in every drawing.** If it comes out with a background, or poses overlapping, just ask ChatGPT to *"redo it on a plain white background with more space between the poses."*
-- **Save it** in New Adds: `justice-attack.png`.
-
----
-
-### 3A. Full-moon bosses
-**Attach (1 image):** that boss's current art from the 🎮 game folder: `battle/art/shadows/<file>`.
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME monster as the attached image in all six cells, same design, colors, size and lighting, nothing overlapping. Cell 1: idle, hovering menacingly. Cell 2: winding up, gathering power. Cell 3: lunging forward to attack. Cell 4: casting a spell, surrounded by [ELEMENT] effects. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Persona 3 Reload official art style. No text.
-```
-
-| ✓ | Boss | Attach this file | [ELEMENT] |
-|---|---|---|---|
-| ✓ | Justice | `justice-shadow.webp` | holy light and lightning |
-
-The Chariot sheet is the Chariot alone; Justice is its own Shadow in that fight, so it needs its own sheet.
-
----
-
-### 3B. Fighters
-All done. Ken is skipped (Kat's call: she won't use him), so he keeps no battlefield figure.
-
----
-
-## 3C. All-Out finish cards for the searchers ⭐
-**Done (2026-10-22):** every fighter has one now (Haechan's and Jungwon's went in 2026-10-21, Jihoon's and Minji's 2026-10-22).
-**Attach:**
-1. 🎮 `battle/art/finish/akihiko.webp` (layout and style)
-2. The searcher's full body from 🎨 `Added to Game/` (e.g. `JungwonFullBody.png`; for Haechan, his pose sheet)
-```
-Persona 3 Reload All-Out Attack finish card, the same bold graphic layout and style as the FIRST attached image: [NAME] (second attached image, keep face and outfit exactly) in a confident finishing pose against a [COLOR] background, with huge black stylized letters reading "[LINE]". 16:9.
-```
-| ✓ | Name | [COLOR] | [LINE] |
-|---|---|---|---|
-| ✓ | Haechan | deep violet and gold | TOO EASY. |
-| ✓ | Jungwon | jade green and ice white | MEETING ADJOURNED. |
-| ✓ | Jihoon | sky blue and gold | YOU'RE WELCOME. |
-| ✓ | Minji | warm gold and white | THAT'S A WRAP. |
-
-**The little figures in the All-Out cloud:** built (2026-10-21): each fighter's pose-sheet attack frame pops in and out of the cloud (no new art needed; Ken keeps the old silhouette). *(Optional later: a chibi brawl sheet per character for a cuter P3R look.)*
-
----
-
-## 3D. Lantern windows (the last full-moon fight) ⭐
-Three small foes that hang beside the last boss. **For now** Claude draws them in code (a paper lantern in a dark wood frame with a girl asleep in its window, tinted gold, jade or pink; the ones you can't hit sit behind glass). Real art would make them look like the memory Shadows.
-**Attach (2 images):**
-1. 🎮 `battle/art/shadows/memory-party-pose-0.webp` (the Kegstand: the style and finish to match)
-2. 🎮 `battle/art/shadows/wren-shadow-last-train-pose-0.webp` (the lanterns it carries: the shape to match)
-```
-Persona 3 Reload Shadow enemy art, the same painted style, outline and glow as the FIRST attached image: a hanging paper lantern window like the ones in the SECOND image, an ornate dark-wood and brass frame with a hook on top and a tassel below, glowing warm [COLOR] light through the paper. In the window, the silhouette of a girl with long black hair curled up asleep. Full object visible, centered, on a plain white background with empty space around it. No text.
-```
-| ✓ | Save as (New Adds) | [COLOR] |
-|---|---|---|
-| ☐ | `lantern-runners.png` | gold |
-| ☐ | `lantern-strangers.png` | jade green |
-| ☐ | `lantern-hoax.png` | pink |
-
-*(Optional: a pose sheet per lantern, as in 3A, with the cells: idle glowing; flaring brighter; flickering; dimming after a hit; cracked; dark.)* The "behind glass" look stays in code, so one picture each is enough.
-
----
-
-## 4. Bond skill cut-ins (Solar + a partner)
-**Attach:**
-1. 🎮 `cg/prologue-akihiko-finds-solar.webp` (style)
-2. 🎨 `Character Portraits/Solar/Solar-smiling.png`
-3. 🎨 the partner's portrait
-```
-Create a NEW 16:9 combo-attack cut-in matching the FIRST attached image's art style: Persona 3 Reload official art, cel shading, a bold diagonal layout, speed lines. Solar (second image: very long straight black hair, black Gekkoukan uniform, red bow, red S.E.E.S. armband) and [NAME] (third image) attack together side by side, mid-strike: her naginata and their [WEAPON], with [EFFECT], their two colors swirling together. Both confident. Keep both faces and outfits exactly. No text.
-```
-- [x] **Akihiko:** boxing gloves; lightning and sunrise gold; back to back
-- [x] **Haechan:** knife; violet moonlight and sun gold; he's relaxed and she's fierce
-- [x] **Jungwon:** rapier; ice and a jade glow; calm and precise
-- [x] **Jihoon:** fists; wind and pink star sparks; a smug grin
-- [x] **Minji:** bow; a camera flash freezing the moment as Solar strikes
-- [ ] **Shinjiro:** axe; dark red force; a single gruff nod, the weapons crossing
-- [ ] *(Optional)* Yukari, Junpei, Mitsuru, Aigis, Koromaru
-
-**Status (2026-10-21):** the bond skills are in the game with a stylized cut-in made from both portraits and Personas, so nothing waits on this art. The romance versions (on that route) can have their own art too.
-
-**Done (2026-10-21):** Akihiko, Haechan, Jungwon, Jihoon and Minji have their art (`art/theurgy/bond-*.webp`). Haechan and Jungwon have two: the side-by-side one for the regular bond, the close, smiling one (`ver2`) for the romance version. Akihiko, Jihoon and Minji use one still for every version. Still open: Shinjiro and the optional S.E.E.S. ones.
-
-**Done (2026-10-21, later):** Haechan's regular bond has an upgraded still at rank 9 (`solar-haechan-bond-ver3.png` → `bond-haechan-2`; rank 5 keeps the first one, Corona keeps `ver2`), and his rank-15 romance bond (Universe) plays `solar-haechan-pt1.png` … `pt5.png` as a five-panel sequence. Any bond or Theurgy can take a `sequence` now (see the appendix), so other multi-panel combos can follow the same way.
-
-
----
-
-## 5. Weapon sheets for the other fighters
-**Done:** Haechan (2026-10-21), Jungwon, Jihoon and Minji (2026-10-22). **Still to make:** the seven S.E.E.S. sheets below.
-
+## 2. Weapon sheets for S.E.E.S.
+The searchers' weapons are all in the game. These seven are left.
 **Attach:** 🎨 `Added to Game/SolarWeapons.png` (layout)
 ```
 A 2×3 grid of six weapon designs on a white background, each in its own card, in the same rendering style as the attached sheet: [WEAPON] for [NAME]. One plain starter, then themed designs: [THEMES].
@@ -150,63 +63,45 @@ A 2×3 grid of six weapon designs on a white background, each in its own card, i
 - [ ] **Aigis** (arm guns): gold plating, heart, wing, heavy cannon, butterfly
 - [ ] **Koromaru** (knife): bone, shrine bell, flame, collar tag, kunai
 - [ ] **Shinjiro** (axe): black steel, chain, kitchen cleaver, ember, moonlit
-- [x] **Haechan** (knife). Six designs, one per card. *(Done 2026-10-21: `haechan-weapons.png` → `art/weapons/haechan-*.webp`, his six knives in `build.js HK`.)*
-  1. **Starter:** a plain black tactical knife.
-  2. **Mixdown (Runners):** an audio waveform etched along the blade, a studio-fader guard, and a tiny headphone-jack charm on the cord.
-  3. **Widow's Kiss (Runners):** violet steel, a grappling-line wrapped grip, and a sniper-scope lens set in the pommel.
-  4. **Harbor Watch (strangers):** rust-red, a rope-wrapped grip, an anchor-shaped guard, and a sea-glass pommel.
-  5. **Old Disc (strangers):** black steel with a silver, CD-sheen disc as the guard and a scuffed vintage feel.
-  6. **Neo Sunlight (NCT nod):** a neon-green glowing edge, a guard of sun rays, and a sleek futuristic finish. His name means "full of sunlight".
-- [x] **Jungwon** (thin rapier). *(Done 2026-10-22: `jungwon-weapons.png` → `art/weapons/jungwon-*.webp`, his six rapiers in `build.js JW`.)*
-  1. **Starter:** a plain silver rapier.
-  2. **Mandate (Hoax):** navy and gold, a council-crest swept guard, and a gold star pin charm.
-  3. **Maeumi (Hoax):** cream and brown, with a tiny dog-paw charm on the guard.
-  4. **Jade Heir (strangers):** a jade-green swept guard, a red cord tassel, and old-money elegance.
-  5. **Black Tortoise (strangers):** a tortoise-shell guard, a serpent coiling up the grip, and frost on the blade.
-  6. **Hyphen (ENHYPEN nod):** crimson and black, a bar-shaped link joining two halves of the blade, and a blood-red gem. Vampire elegance.
-- [x] **Jihoon** (fingerless gloves). *(Done 2026-10-22: `jihoon-weapons.png` → `art/weapons/jihoon-*.webp`, kept landscape (`artWide`), his six pairs in `build.js JH`.)*
-  1. **Starter:** plain black fingerless gloves.
-  2. **Capitalized (Hoax):** gold-lettered knuckle plates, loud and full of himself.
-  3. **Best Friend (Hoax):** a white fluffy-dog patch, a nod to Nana.
-  4. **Goblin Club:** gold studs and a red-and-gold sash wrap, a nod to Dokkaebi.
-  5. **Varsity:** leather with a jacket-patch look.
-  6. **Treasure (TREASURE nod):** sky-blue with gold jewel studs, like a treasure chest.
-- [x] **Minji** (bow). *(Done 2026-10-22: `minji-weapons.png` → `art/weapons/minji-*.webp`, her six bows in `build.js MJ`.)*
-  1. **Starter:** a plain recurve bow.
-  2. **Final Cut (Runners):** limbs shaped like film reels.
-  3. **Hitscan (Runners):** a sleek esports bow with a glowing crosshair sight.
-  4. **Muse:** pale gold, with a camera-lens charm.
-  5. **Theia:** white-gold with aperture rings.
-  6. **Bunny (NewJeans nod):** soft Y2K blue, a bunny-ear tip and a charm.
 
 ---
 
-## 6. Revelation card art (13 sets; Gemini; no attachment needed)
+## 3. Lantern windows (the last full-moon fight)
+Three small foes that hang beside the last boss. For now they're drawn in code; real art would make them look like the memory Shadows.
+**Attach (2 images):**
+1. 🎮 `battle/art/shadows/memory-party-pose-0.webp` (the Kegstand: the style and finish to match)
+2. 🎮 `battle/art/shadows/wren-shadow-last-train-pose-0.webp` (the lanterns it carries: the shape to match)
 ```
-Ornate tarot-like card illustration, portrait 3:4, no people, no text: [SUBJECT], rich jewel colors, gold filigree border, Persona-style dark glamour.
+Persona 3 Reload Shadow enemy art, the same painted style, outline and glow as the FIRST attached image: a hanging paper lantern window like the ones in the SECOND image, an ornate dark-wood and brass frame with a hook on top and a tassel below, glowing warm [COLOR] light through the paper. In the window, the silhouette of a girl with long black hair curled up asleep. Full object visible, centered, on a plain white background with empty space around it. No text.
 ```
-Save each as `card-<set>.png`. *(For Claude: wire each to `assets/femc/battle/art/cards/<set>.webp` and set that set's `img` in `build.js`. Set ids: bell, stadium, headset, jade, crane, needle, pin, ballot, croissant, evoker, moon, butterfly, coffin.)*
-- [ ] **Runners:**
-  - Fox Bell (a gold bell on a fox charm)
-  - Snow Stadium (a stadium under falling snow, floodlights)
-  - Glow Headset (a gaming headset glowing pink)
-- [ ] **strangers:**
-  - Jade Cord (a jade ring on a red cord)
-  - Harbor Crane (a harbor crane at dawn)
-  - Red Thread (a needle with red thread)
-- [ ] **Hoax:**
-  - Star Pin (a gold star pin on a navy blazer)
-  - Ballot Box (a ballot box with ribbons)
-  - Council Croissant (a croissant on a council desk)
-- [ ] **Persona:**
-  - Velvet Evoker (an Evoker on blue velvet)
-  - Full Moon (a full moon over Tartarus)
-  - Blue Butterfly (a glowing blue butterfly)
-  - Green Coffin (a coffin under green Dark Hour light)
+- [ ] `lantern-runners.png`: gold
+- [ ] `lantern-strangers.png`: jade green
+- [ ] `lantern-hoax.png`: pink
 
 ---
 
-## 7. Tarot cards
+## 4. Bond cut-ins still open
+**Attach:**
+1. 🎮 `cg/prologue-akihiko-finds-solar.webp` (style)
+2. 🎨 `Character Portraits/Solar/Solar-smiling.png`
+3. 🎨 the partner's portrait
+```
+Create a NEW 16:9 combo-attack cut-in matching the FIRST attached image's art style: Persona 3 Reload official art, cel shading, a bold diagonal layout, speed lines. Solar (second image: very long straight black hair, black Gekkoukan uniform, red bow, red S.E.E.S. armband) and [NAME] (third image) attack together side by side, mid-strike: her naginata and their [WEAPON], with [EFFECT], their two colors swirling together. Both confident. Keep both faces and outfits exactly. No text.
+```
+- [ ] **Shinjiro:** axe; dark red force; a single gruff nod, the weapons crossing
+- [ ] *(Optional)* Yukari, Junpei, Mitsuru, Aigis, Koromaru
+
+Bonds already work without art, using a stylized cut-in.
+
+---
+
+## 5. Optional extras
+- [ ] **Solar's strike sheets per form.** Attach that form's cut-in from 🎨 `Added to Game/` (`theurgy-solar-haenim.png`, `-sunna`, `-harbor`, `-haenimunveiled`), using the 3-panel prompt: "A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, nothing overlapping. Character only." Save as `solar-<form>-strikesheet.png`.
+- [ ] **A chibi brawl sheet per character** for a cuter All-Out cloud.
+
+---
+
+## 6. Tarot cards
 **Attach:** 🎮 two existing cards, e.g. `tarot/star.webp` and `tarot/moon.webp`.
 ```
 A tarot card in exactly the same style, border and layout as the attached cards: [ARCANA], numbered [NUMBER], depicting [IMAGE].
@@ -218,7 +113,7 @@ A tarot card in exactly the same style, border and layout as the attached cards:
 
 ---
 
-## 8. Places (Gemini; no attachment needed)
+## 7. Places (Gemini; no attachment needed)
 ```
 Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: [PLACE].
 ```
@@ -260,7 +155,7 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 
 ---
 
-## 9. Characters and CGs
+## 8. Characters and CGs
 - [ ] **Shinjiro's Evoker shot** (your redo)
   - **Attach:** Shinjiro's portrait.
 - [ ] **Evoker poses** for Akihiko, Yukari, Junpei, Mitsuru and Aigis
@@ -284,7 +179,7 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 
 ---
 
-## 10. Older CG list
+## 9. Older CG list
 The full prompts are in `FEMC-CG-PROMPTS.md` under the number shown. For all of these, attach 🎮 `cg/prologue-akihiko-finds-solar.webp` first for style, then the portraits named.
 - [ ] **Fix:** edit `cg/prologue-elizabeth-blank-page.webp` to remove the armband (#0.1). Attach that CG only.
 - [ ] **Fix:** the Wren bench's socks (#0.2). Attach 🎨 `Event CGs/wren-meets-solar-bench-v1`.

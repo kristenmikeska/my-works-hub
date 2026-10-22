@@ -261,7 +261,7 @@ window.FEMC_GAME_PLACES = {
     ['Naganaki Shrine · Night', 'naganaki-shrine-night'],
     ['Naganaki Shrine · Amulet Stall', 'outside-shrine-day', 'naganaki-shrine-night'],
     ['Naganaki Shrine', 'outside-shrine-day', 'naganaki-shrine-night'],
-    // Yakushima (data/yakushima.js): the villa, the forest and the ferry reuse art until Kat's own (FEMC-ART-TODO.md section 8).
+    // Yakushima (data/yakushima.js): the villa, the forest and the ferry reuse art until Kat's own (FEMC-ART-TODO.md, Places).
     ['Yakushima · Kirijo Villa', 'hotel-lobby'],
     ['Yakushima · Forest', 'park'],
     ['Yakushima · Ferry', 'harbor'],

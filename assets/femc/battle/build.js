@@ -61,7 +61,7 @@ window.FemcBuild = (() => {
   /* ══════════ Haechan's knives (Kat's haechan-weapons.png, cut into art/weapons/haechan-*.webp by tools/femc-cards.py) ══════════
      The same system as the naginatas (bonus, refine, art, look, sources), but only Haechan can hold them (`owner`; every
      equip list and shop checks fits()). The Starter replaces his plain Combat Knife as the weapon he starts with (tier 0:
-     always his, never refined; old saves holding the Combat Knife keep it until they swap). FEMC-ART-TODO.md section 5. */
+     always his, never refined; old saves holding the Combat Knife keep it until they swap). FEMC-ART-TODO.md appendix, weapon sheets. */
   const HK = [
     ['hk_starter', 'starter', 'Black Tactical', 0, 32, 0, { crit: 3 }, 'A plain black tactical knife, his since before any of this. Crit +3%.', ['Haechan’s own (he starts with it)']],
     ['hk_harbor', 'harbor-watch', 'Harbor Watch', 3, 64, 4400, { stats: { en: 3 }, hpRegen: 3 }, 'Rust-red steel, a rope-wrapped grip, an anchor guard and a sea-glass pommel. +3 En, and he regains 3% HP each turn.', ['Police Box (tier 3)', 'Shuffle Time · Swords']],
@@ -71,7 +71,7 @@ window.FemcBuild = (() => {
     ['hk_sunlight', 'neo-sunlight', 'Neo Sunlight', 6, 128, 15000, { el: { light: 20 }, stats: { ma: 3 }, crit: 5 }, 'A neon-green edge and a guard of sun rays; his name means full of sunlight. +3 Ma, Light +20%, crit +5%.', ['Mayoido Antiques (tier 6)', 'Shuffle Time · Swords']]
   ];
   const HK_TINT = { hk_starter: '#6b6f7a', hk_harbor: '#c2553a', hk_mixdown: '#c9d0dc', hk_widow: '#9a6bff', hk_disc: '#d8e4ff', hk_sunlight: '#7dff6a' };
-  /* ══════════ Jungwon's rapiers, Jihoon's gloves, Minji's bows (Kat's <name>-weapons.png, batch 22; FEMC-ART-TODO.md section 5) ══════════
+  /* ══════════ Jungwon's rapiers, Jihoon's gloves, Minji's bows (Kat's <name>-weapons.png, batch 22; FEMC-ART-TODO.md appendix, weapon sheets) ══════════
      The same system as Haechan's knives: owner-only, a starter that replaces their plain tier-0 weapon, refines, art and a
      look. Extra bonus keys these use: acc (copied to the gear's own acc: gearLine shows it, refines don't scale it), yen (+% battle yen while he fights). */
   const JW = [
