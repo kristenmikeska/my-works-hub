@@ -31,6 +31,7 @@ Kat's fiction archive (13 worlds) plus FEMC mode, a Persona 3 Portable FeMC-styl
   - `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` are the image prompts Kat runs.
 - **Cache-busting:** after editing a script, bump its `?v=` in the HTML.
   - Battle art uses `ART_V` in `battle.js`.
+  - Story fights open `femc-battle.html` at a fresh URL every time (`ui.js battleSrc`, `&fresh=`), so the frame's page never comes from the browser cache; its scripts and styles still need their `?v=` bumps.
   - For v1, bump `FEMC_ASSET_VERSION` in `femc-mode.js`.
   - `achievements.js?v` is hard-coded in several files; bump all of them.
 - **Art tools are in `tools/`:**

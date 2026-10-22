@@ -2057,6 +2057,9 @@
     el.dataset.id = u.id;
     let body;
     const art = d.img && (window.FEMC_SHADOW_ART || {})[d.img];
+    // The finale's train takes the field (battle.css .trainyard): big, with its lantern windows along it. Set here, before
+    // any art branch, so the layout holds however the fight starts (the art adds its own aspect ratio, --ar, below).
+    if (d.gimmick === 'train') { el.classList.add('train'); BT.field.classList.add('trainyard'); }
     if (d.gimmick === 'lantern') {
       // A lantern window on the train's flank (the train's own layout places it: battle.css .trainyard). Drawn in code until
       // it has Shadow art (`img`), which then takes the art branch below with the same classes and place.
@@ -2078,8 +2081,7 @@
       const h = (d.h || 220) * (art.poses?.scale || 1);
       el.style.setProperty('--w', `${Math.round(h * art.w / art.h)}px`);
       if (art.small) el.classList.add('soft');
-      // The finale's train takes the field (battle.css .trainyard): big, with its lantern windows along it.
-      if (d.gimmick === 'train') { el.classList.add('train'); BT.field.classList.add('trainyard'); BT.field.style.setProperty('--ar', (art.w / art.h).toFixed(4)); }
+      if (d.gimmick === 'train') BT.field.style.setProperty('--ar', (art.w / art.h).toFixed(4));
       if (art.poses) {
         el._shadowPoses = art.poses;
         art.poses.frames.forEach(slug => {

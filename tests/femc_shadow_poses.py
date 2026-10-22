@@ -2,7 +2,13 @@
 bosses' pose sheets in their real fights (--ops; 'finale' is the Last Train): each boss's attack (wind-up, attack),
 cast (wind-up, cast), hurt, down and defeat frames through the battle's own event playback, back to idle after each,
 and one canvas per boss. --ops '' skips the bosses; --enemies '' skips the memory fights; --shots picks the boss fights
-to screenshot at desktop and phone size."""
+to screenshot at desktop and phone size.
+The finale's Last Train is also checked the way the game plays it (--finale-path): 'story' plays the 3/6 story event in
+the life sim, phase 1 (Last Call) in its own battle frame and then phase 2 (No Stops) in the next; 'full' runs the
+whole finale in one frame. Each must show the train's own layout (.trainyard: the train big in the middle, never in a
+corner), open every battle frame at a fresh URL (so an old femc-battle.html can't come from the cache) with the
+battle.js version femc-battle.html names, and screenshot phase 2 at 1000x486 and 1440x900.
+  python3 tests/femc_shadow_poses.py --only-finale-path        just the finale paths"""
 import sys,json,pathlib,hashlib,base64,tempfile,argparse,time
 from femc_browser import Page
 ROOT=pathlib.Path(__file__).resolve().parents[1]
@@ -18,7 +24,9 @@ for entry in data['entries']:
  assert hashlib.sha256(src.read_bytes()).hexdigest()==entry['sha256'],entry['source']
 source=(ROOT/'assets/femc/battle/battle.js').read_text()
 helpers=source[source.index('  const shadowFrames = new Map();'):source.index('  function addEnemy(u)')]
-args=argparse.ArgumentParser();args.add_argument("--art",default="");args.add_argument("--enemies",default="ballot_box,flash_shadow,tide_shadow,fox_shadow");args.add_argument("--ops",default="priestess,empress,hierophant,lovers,chariot,hermit,fortune,hanged,finale");args.add_argument("--shots",default="empress,finale");options=args.parse_args();art_filter=[x for x in options.art.split(",") if x]
+args=argparse.ArgumentParser();args.add_argument("--art",default="");args.add_argument("--enemies",default="ballot_box,flash_shadow,tide_shadow,fox_shadow");args.add_argument("--ops",default="priestess,empress,hierophant,lovers,chariot,hermit,fortune,hanged,finale");args.add_argument("--shots",default="empress,finale");args.add_argument("--finale-path",default="story,full");args.add_argument("--only-finale-path",action="store_true");options=args.parse_args()
+if options.only_finale_path:options.enemies=options.ops=''
+BATTLE_JS=__import__('re').search(r'battle/battle\.js\?v=(\d+)',(ROOT/'femc-battle.html').read_text()).group(1);art_filter=[x for x in options.art.split(",") if x]
 p=Page()
 try:
  p.goto('femc-game.html')
@@ -26,7 +34,7 @@ try:
  p.ws.call('Page.navigate',{'url':f'http://127.0.0.1:{p.srv.server_port}/femc-battle.html'})
  p.wait('!!window.FemcBattle && !!window.FEMC_SHADOW_ART')
  factory='new Function("FX","perf","sleep","sart","absUrl",'+json.dumps(helpers+';return {shadowFrames,setShadowFrame,restShadow,animateShadow};')+')'
- result=p.eval('''(async()=>{let reduced=false;const wait=ms=>new Promise(r=>setTimeout(r,ms));const api=('''+factory+''')({reduced:()=>reduced},()=>false,ms=>wait(ms/10),s=>'assets/femc/battle/art/shadows/'+s+'.webp',s=>new URL(s,location.href).href);const results=[];
+ result=[] if options.only_finale_path else p.eval('''(async()=>{let reduced=false;const wait=ms=>new Promise(r=>setTimeout(r,ms));const api=('''+factory+''')({reduced:()=>reduced},()=>false,ms=>wait(ms/10),s=>'assets/femc/battle/art/shadows/'+s+'.webp',s=>new URL(s,location.href).href);const results=[];
  for(const [slug,art] of Object.entries(FEMC_SHADOW_ART).filter(([k,a])=>a.poses&&('''+json.dumps(art_filter)+'''.length===0||'''+json.dumps(art_filter)+'''.includes(k)))){
   await Promise.all(art.poses.frames.map(s=>new Promise((resolve,reject)=>{const i=new Image();api.shadowFrames.set(s,i);i.onload=resolve;i.onerror=()=>reject(Error(s));i.src='assets/femc/battle/art/shadows/'+s+'.webp'})));
   const el=document.createElement('div');el.style.cssText='position:fixed;width:300px;left:0;top:0';el.innerHTML='<div class="sh-pic"><img width="640" height="640"><i class="flash"></i></div>';el._shadowPoses=art.poses;document.body.append(el);api.restShadow(el);
@@ -116,7 +124,61 @@ try:
    assert p.eval('poseEnemy.dataset.pose')==str(st['defeat'][0]),(kind,'defeat')
    bosses[kind]=r
   errors=p.console();assert not errors,(op,errors)
+ # ── The finale as the game plays it: phase 1, then the Last Train (see the docstring) ──
+ FIN=r"""(()=>{const G=FemcGame,copy=x=>JSON.parse(JSON.stringify(x));G.setSetting('text','instant');G.setSetting('music',0);G.setSetting('sfx',false);G.setSetting('auto','off');G.setSetting('dateCard',false);
+  G.newGame();const S=G.S,d=G.dayOf('3/6');S.phase='play';S.started=true;S.day=d;S.slot='evening';
+  S.events=G.D.events.filter(e=>G.dayOf(e.date)<d&&(!e.flag||e.flag==='year-goes-on')).map(e=>e.id).concat('lw-pre-last-train');
+  Object.assign(S.flags,{armband:true,'joined-junpei':true,'year-goes-on':true,'route-R':true});S.unlocked.tartarus=true;S.tartarus.bosses=G.D.cal.ops.filter(o=>G.dayOf(o.date)<d).map(o=>o.op);
+  S.joined=['solar','akihiko','yukari','junpei','mitsuru','aigis'];['wren','elizabeth'].forEach(id=>{S.links[id]={rank:10,xp:0,seen:[],rankDay:{},push:0,reversed:false}});
+  S.dailyLife={seen:G.D.dailyLife.map(e=>e.id),lastDay:9999};S.lateNights={seen:[],lastDay:9999};S.runIns={seen:G.D.runIns.map(e=>e.id),lastDay:9999,later:[]};
+  if(FULL)G.makeHandoff('scripted',{script:'finale',segment:0,forced:true,party:['solar','akihiko','yukari','junpei']});
+  G.save();document.querySelectorAll('.gs,.g-overlay').forEach(x=>x.remove());FemcGameUI.run()})()"""
+ STEP=r"""(()=>{const c=document.querySelector('.gs:not(.out) .gs-choices button:not(:disabled)');if(c){c.click();return}
+  const o=document.querySelector('.gs-title, .gs-summon.ready, .g-card, .g-actcard, .g-datecard');if(o){o.click();return}
+  const ov=[...document.querySelectorAll('.g-overlay:not(.out)')].pop();if(ov){const b=ov.querySelector('[data-close], .g-btn.pink, button');if(b){b.click();return}}
+  const g=document.querySelector('.gs:not(.out)');if(g){g.click();return}const n=document.querySelector('#g-app [data-next]:not(:disabled)');if(n)n.click()})()"""
+ # Phase 1 holds (Guard) until its rounds run out; everything else (prep, clock-in, cards) goes on.
+ FIGHT=r"""(()=>{const b=document.querySelector('.bt-clock-in button')||document.querySelector('[data-prep=begin]');if(b){b.click();return}
+  const c=FemcBattle.ctl;if(!c)return;if(c.kind==='menu'&&c.items?.some(i=>i.v==='guard'))c.pickValue('guard');else if(c.pick)c.pick()})()"""
+ LAYOUT=r"""(()=>{const f=document.querySelector('.bt-field'),t=document.querySelector('.bt-enemy.train'),fr=f.getBoundingClientRect(),r=t&&t.getBoundingClientRect();
+  return {field:f.className,train:!!t,pos:t&&getComputedStyle(t).position,cx:r&&(r.left+r.width/2-fr.left)/fr.width,left:r&&(r.left-fr.left)/fr.width,top:r&&(r.top-fr.top)/fr.height,w:r&&r.width/fr.width,
+   lanterns:[...document.querySelectorAll('.bt-enemy.lantern')].map(l=>getComputedStyle(l).position),js:[...document.scripts].map(s=>s.src).filter(s=>/battle\/battle\.js/.test(s)),url:location.href}})()"""
+ finale={}
+ for path in [x for x in options.finale_path.split(',') if x]:
+  p.top();p.ws.call('Emulation.setDeviceMetricsOverride',{'width':1440,'height':900,'deviceScaleFactor':1,'mobile':False})
+  p.goto('femc-game.html?speed=10&seed=1');p.eval(FIN.replace('FULL',json.dumps(path=='full')))
+  frames=[];layout=None;t0=time.time()
+  while layout is None:
+   assert time.time()-t0<300,('finale path timed out',path,frames)
+   p.top()
+   if not p.eval("!!document.querySelector('.g-dh.live .g-dh-iframe')"):p.eval(STEP);time.sleep(.03);continue
+   try:p.frame(10)
+   except Exception:continue
+   src=p.eval('location.href');frames.append(src)
+   while True:
+    try:
+     st=p.eval("(()=>{const B=FemcBattle.B;return {foes:B&&FemcBattle.screen()==='battle'?B.foes().map(f=>f.kind):[],menu:FemcBattle.ctl?.kind==='menu'}})()")
+     if 'last_train' in st['foes'] and st['menu']:layout=p.eval(LAYOUT);break
+     p.eval(FIGHT)
+    except RuntimeError:break  # the frame closed (phase 1 is over); back to the story
+    time.sleep(.04)
+  # Each frame opened at its own URL; phase 2 came after phase 1 (story) or in the same frame (full).
+  assert all('fresh=' in u for u in frames) and len(set(frames))==len(frames),frames
+  assert len(frames)==(2 if path=='story' else 1),(path,frames)
+  assert layout['js']==[layout['js'][0]] and layout['js'][0].endswith('battle.js?v='+BATTLE_JS),(layout['js'],BATTLE_JS)
+  # The train's own layout: on the field, big, its middle right of center (the fighter has the left), not in a corner.
+  shots={}
+  p.eval('FemcBattle.freeze()')
+  for w,h in [(1000,486),(1440,900)]:
+   p.top();p.ws.call('Emulation.setDeviceMetricsOverride',{'width':w,'height':h,'deviceScaleFactor':1,'mobile':False});p.frame(10)
+   p.eval('document.fonts.ready.then(()=>new Promise(r=>setTimeout(r,400)))');L=p.eval(LAYOUT)
+   assert 'trainyard' in L['field'] and L['train'] and L['pos']=='absolute' and all(x=='absolute' for x in L['lanterns']) and len(L['lanterns'])==3,(path,w,L)
+   assert .45<L['cx']<.75 and L['left']>.2 and L['w']>.25,(path,w,'train out of place',L)
+   name=f'finale-{path}-phase2-{w}x{h}.png';(OUT/name).write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot',{'format':'png'})['data']));shots[f'{w}x{h}']={'cx':round(L['cx'],3),'left':round(L['left'],3),'w':round(L['w'],3),'shot':name}
+  p.eval('FemcBattle.unfreeze()');p.top();p.ws.call('Emulation.clearDeviceMetricsOverride',{})
+  finale[path]={'frames':len(frames),'battleJs':BATTLE_JS,**shots}
+  errors=p.console();assert not errors,(path,errors)
  errors=p.console();assert not errors,errors
- summary={'bossPoses':{k:{s:v[s] for s in ('attack','cast','hurt','down')} for k,v in bosses.items()},'posePlayback':result,'actualBattleAttackAndCast':actual,'actualDefeatTransitions':defeats,'sourcesUnchanged':sum(e.get('status')=='integrated' for e in data['entries']),'browserErrors':errors,'screenshots':str(OUT)}
+ summary={'finalePaths':finale,'bossPoses':{k:{s:v[s] for s in ('attack','cast','hurt','down')} for k,v in bosses.items()},'posePlayback':result,'actualBattleAttackAndCast':actual,'actualDefeatTransitions':defeats,'sourcesUnchanged':sum(e.get('status')=='integrated' for e in data['entries']),'browserErrors':errors,'screenshots':str(OUT)}
  (OUT/'results.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary))
 finally:p.close()

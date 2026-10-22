@@ -16,8 +16,11 @@
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const $ = (s, r = document) => r.querySelector(s);
   const app = document.getElementById('g-app');
-  // The battle game, run inside this page. Test params (?seed, ?speed) pass through.
-  const battleSrc = () => { const p = new URLSearchParams(location.search), q = ['seed', 'speed'].filter(k => p.has(k)).map(k => `&${k}=${encodeURIComponent(p.get(k))}`).join(''); return `${G.base}femc-battle.html?embed=1${q}`; };
+  // The battle game, run inside this page. Test params (?seed, ?speed) pass through. `fresh` is new on every open: browsers
+  // keep a frame's page in their cache and don't check it again on a reload (python's http.server sends no Cache-Control,
+  // GitHub Pages caches for ten minutes), so without it an old femc-battle.html, with its old ?v= scripts and styles,
+  // could run inside the game after an update. The page is small; its scripts and styles still cache by their own ?v=.
+  const battleSrc = () => { const p = new URLSearchParams(location.search), q = ['seed', 'speed'].filter(k => p.has(k)).map(k => `&${k}=${encodeURIComponent(p.get(k))}`).join(''); return `${G.base}femc-battle.html?embed=1${q}&fresh=${Date.now().toString(36)}`; };
   // ?debug=1 keeps the Simulate buttons on fight cards (remembered for this tab's session, so it survives the round trip).
   const DEBUG = (() => { try { if (/[?&]debug=1\b/.test(location.search)) sessionStorage.setItem('kg-femc-debug', '1'); if (/[?&]debug=0\b/.test(location.search)) sessionStorage.removeItem('kg-femc-debug'); return sessionStorage.getItem('kg-femc-debug') === '1'; } catch (e) { return /[?&]debug=1\b/.test(location.search); } })();
 
