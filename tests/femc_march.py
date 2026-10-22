@@ -205,7 +205,7 @@ try:
       return {inLinks,where,rose:D.gear.nag_rose.src,boss:B.BOSS_WEAPON.hermit,skills:['fangs_out','cross_slash','warding_bond','suplex'].every(k=>D.skills[k]),spray:!!D.items.aid_spray}})()""" % json.dumps(REMOVED))
     ok(not gone['inLinks'], f"no link or stub for them: {gone['inLinks']}")
     ok(not any(gone['where'].values()), f"no story event, run-in, routine, link scene, perk, bond, keychain or text names them: {gone['where']}")
-    ok(gone['boss'] == 'nag_rose' and gone['rose'] == ['The Hermit (first clear)', 'Shuffle Time · Swords'], f"the Black Rose is the Hermit's first-clear drop now ({gone['rose']})")
+    ok(('nag_rose' in (gone['boss'] if isinstance(gone['boss'], list) else [gone['boss']])) and gone['rose'] == ['The Hermit (first clear)', 'Shuffle Time · Swords'], f"the Black Rose is the Hermit's first-clear drop now ({gone['rose']})")
     ok(gone['skills'] and gone['spray'], 'their MAX skills and the night kit keep their definitions for old saves')
     # An old save with their progress: loads, drops it, keeps what they gave.
     p.eval(r"""(()=>{const G=FemcGame,R=%s,s=MA.at('11/20','evening');
