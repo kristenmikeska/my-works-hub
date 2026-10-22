@@ -1,6 +1,6 @@
 """The building systems, played for real in headless Chrome (femc-game.html, isolated profile, localhost; no player saves).
 
-Run: python3 tests/femc_building.py [--only rules,menu,daily,fight,boss,knives,practice,migrate,shots] [--screenshots DIR]
+Run: python3 tests/femc_building.py [--only rules,menu,daily,fight,boss,knives,searchers,practice,migrate,shots] [--screenshots DIR]
 
 Covers: Shuffle Time (real draws through the UI: Cups, a Major Arcana Revelation card, a penalty, Rush's auto-pick, and every
 card type and penalty applied), Revelation cards (drops, equip through the menu, set bonuses applied in battle, level, refine,
@@ -8,7 +8,9 @@ lock, dismantle, skill cards taught), link perks (unlocking at the right ranks, 
 Tartarus perk at an access point, the night kit, a daily perk, Kiriko's MAX Protective Suzu at half SP without the Bell
 branch, searchers' Assists before they join, a reversed link pausing them), Solar's naginatas (stats, refines and bonuses in
 a fight, gifts from bonds, a boss drop), Haechan's six knives (his alone: every equip list, shop and Shuffle draw; art,
-bonuses and refines in a real fight; his starter; the rank-7 gift; the Chariot's drop; shops and chests), save migration (old battle and life-sim saves), zero console errors, and
+bonuses and refines in a real fight; his starter; the rank-7 gift; the Chariot's drop; shops and chests), Jungwon's rapiers,
+Jihoon's gloves and Minji's bows the same way (plus the one-time boss backfill, Treasure's battle yen, and Minji's finish card
+in a real All-Out, screenshotted), save migration (old battle and life-sim saves), zero console errors, and
 screenshots of the new screens at 1000x486, 375x812 and 1440x900."""
 import argparse, base64, json, pathlib, time
 from femc_browser import Page
@@ -415,6 +417,121 @@ try:
         results['knives'] = {'gear': [x[0] for x in r['gear']], 'police': r['police'], 'gift': r['gift7'], 'shuffle': r['shuffle'], 'unit': u}
         errs = p.console(); ok(not errs, errs)
         print("Haechan's knives: data, art, owner-only lists, sources, menu, refine, real fight OK", flush=True)
+
+    # ── Jungwon's rapiers, Jihoon's gloves, Minji's bows (batch 22): the knives' checks for each, a real fight, an All-Out ──
+    if want('searchers'):
+        SETS = {
+            'jungwon': {'pre': 'jw_', 'wtype': 'rapier', 'other': 'mitsuru', 'plain': 'rapier0', 'gift': ('jw_maeumi', 6), 'police': 'jw_mandate', 'mayoido': 'jw_hyphen', 'chest': 'jw_jade', 'boss': ('hierophant', 'jw_tortoise'), 'art': 'jungwon-starter', 'noun': 'rapiers'},
+            'jihoon': {'pre': 'jh_', 'wtype': 'gloves', 'other': 'akihiko', 'plain': 'gloves0', 'gift': ('jh_bestfriend', 6), 'police': 'jh_varsity', 'mayoido': 'jh_goblin', 'chest': 'jh_capitalized', 'boss': ('fortune', 'jh_treasure'), 'art': 'jihoon-starter', 'noun': 'pairs of gloves'},
+            'minji': {'pre': 'mj_', 'wtype': 'bow', 'other': 'yukari', 'plain': 'bow0', 'gift': ('mj_muse', 5), 'police': 'mj_finalcut', 'mayoido': 'mj_theia', 'chest': 'mj_hitscan', 'boss': ('empress', 'mj_bunny'), 'art': 'minji-starter', 'noun': 'bows'},
+        }
+        setup(p, day='12/12', ranks={'jungwon': 4, 'jihoon': 4, 'minji': 4}, mats={'tarot_dust': 400, 'velvet_thread': 12, 'arcana_fragment': 2}, party=['jungwon', 'jihoon', 'minji'])
+        r = p.eval(r"""(async()=>{
+          const B=FemcBuild,D=FEMC_BATTLE_DATA,BS=FemcBattleSave,E=FemcBattleEngine,SETS=%s,out={};
+          FemcGame.S.tartarus.bosses=['priestess','hierophant'];
+          const police=FemcGame.shopStock('police');
+          for(const [mid,c] of Object.entries(SETS)){
+            const o=out[mid]={}, ids=Object.keys(D.gear).filter(k=>k.startsWith(c.pre));
+            o.ids=ids; o.gear=ids.map(id=>{const g=D.gear[id];return [id,g.wtype===c.wtype,g.owner===mid,!!g.art,!!g.look,!!g.desc,g.tier]});
+            o.art=await Promise.all(ids.map(id=>new Promise(res=>{const i=new Image();i.onload=()=>res([id,i.naturalWidth,i.naturalHeight,!!D.gear[id].artWide]);i.onerror=()=>res([id,0,0]);i.src=D.gear[id].art;})));
+            o.start=D.startGear[mid].weapon; o.otherStart=D.startGear[c.other].weapon;
+            o.fits=[B.fits(D.gear[c.chest],mid),B.fits(D.gear[c.chest],c.other)];
+            const t=BS.normalize(BS.fresh()); ids.forEach(id=>{t.gear.owned[id]=1});
+            o.candOther=BS.candidates(t,c.other,'weapon').filter(x=>x.startsWith(c.pre));
+            o.cand=BS.candidates(t,mid,'weapon');
+            t.gear.eq[c.other]={weapon:c.mayoido,armor:'armor0',acc:null}; o.otherGear=E.gearOf(t,c.other).wid;
+            const old=BS.fromRaw({v:4,lvl:30,gear:{owned:{},eq:{[mid]:{weapon:c.plain,armor:'armor1',acc:null},[c.other]:{weapon:c.plain,armor:'armor0',acc:null}}}});
+            o.migr=[old.gear.eq[mid].weapon,old.gear.eq[c.other].weapon];
+            t.mats={tarot_dust:500,velvet_thread:20,arcana_fragment:2}; t.yen=99999; const a0=B.weaponAtk(t,c.chest); B.refineWeapon(t,c.chest);
+            o.refine=[a0,B.weaponAtk(t,c.chest),B.wrefCost(t,o.start)];
+            o.police=police.filter(x=>x.id.startsWith(c.pre)).map(x=>[x.id,x.who,!!x.art,x.wide]);
+            o.mayoido=D.shops.mayoido.stock.includes(c.mayoido); o.chest=D.map.chest.lockedRare.includes(c.chest); o.boss=B.bossWeapons(c.boss[0]);
+            const g=BS.normalize(BS.fresh()); o.giftBefore=B.syncBonds(g,{[mid]:c.gift[1]-1}).length; o.gift=B.syncBonds(g,{[mid]:c.gift[1]}).map(x=>x.gear); o.giftAgain=B.syncBonds(g,{[mid]:10}).length;
+            const draws=party=>{const s=BS.normalize(BS.fresh()),R=E.rng(5),got=new Set();for(let i=0;i<80;i++){const res=B.applyShuffle(s,{kind:'minor',suit:'swords',rank:9},{R,tier:6,party});if(res.fx.gear)got.add(res.fx.gear);}return [...got]};
+            o.shufWithout=draws(['solar','akihiko','yukari']).filter(x=>x.startsWith(c.pre)); o.shufWith=draws(['solar',mid]).filter(x=>x.startsWith(c.pre)).sort();
+            o.tag=B.namedTag(c.chest); o.line=BS.gearLine(c.chest);
+          }
+          // Bonuses the user asked for: Black Tortoise Ice, Hyphen Dark/crit, Treasure luck + yen, Hitscan crit + accuracy, Theia Light.
+          const t=BS.normalize(BS.fresh());
+          out.bon={tortoise:B.unitBonus(t,'jungwon','jw_tortoise').el.ice, hyphen:[B.unitBonus(t,'jungwon','jw_hyphen').el.dark,B.unitBonus(t,'jungwon','jw_hyphen').crit],
+            treasure:[D.gear.jh_treasure.stats.lu,D.gear.jh_treasure.bonus.yen], hitscan:[B.unitBonus(t,'minji','mj_hitscan').crit,D.gear.mj_hitscan.acc], theia:B.unitBonus(t,'minji','mj_theia').el.light};
+          t.gear.owned.jh_treasure=1; t.gear.eq.jihoon={weapon:'jh_treasure',armor:'armor0',acc:null};
+          out.yen=[B.yenBonus(t,['solar','jihoon']),B.yenBonus(t,['solar','akihiko'])];
+          // The one-time backfill: a save that already cleared the Empress, Hierophant and Fortune gets their owner weapons once.
+          const bf=BS.fromRaw({v:4,lvl:40,ops:{cleared:['priestess','empress','hierophant','lovers','chariot','hermit','fortune']},gear:{owned:{nag_prism:1},eq:{}}});
+          out.backfill=['mj_bunny','jw_tortoise','jh_treasure','hk_disc','nag_prism','nag_ice'].map(k=>bf.gear.owned[k]||0); out.flag=bf.ownBoss;
+          delete bf.gear.owned.mj_bunny; const again=BS.normalize(bf); out.again=again.gear.owned.mj_bunny||0;
+          return out;})()""" % json.dumps(SETS))
+        for mid, c in SETS.items():
+            o = r[mid]
+            ok(len(o['ids']) == 6 and all(x[1] and x[2] and x[3] and x[4] and (x[5] or x[0].endswith('starter')) for x in o['gear']), (mid, o['gear']))  # a starter's accuracy shows through gearLine, not desc
+            ok(all(w > 200 and h > 150 for _, w, h, *_ in o['art']), (mid, 'art decodes', o['art']))
+            ok(all((w > h) == (mid == 'jihoon') and wide == (mid == 'jihoon') for _, w, h, wide in o['art']), (mid, 'tall art, gloves wide', o['art']))
+            ok(o['start'] == c['pre'] + 'starter' and o['otherStart'] == c['plain'], (mid, 'own starter; S.E.E.S. keep the plain one', o['start'], o['otherStart']))
+            ok(o['fits'] == [True, False] and o['candOther'] == [] and all(x.startswith(c['pre']) or not x.startswith(('jw_', 'jh_', 'mj_', 'hk_')) for x in o['cand']), (mid, o['fits'], o['candOther'], o['cand']))
+            ok(o['otherGear'] == c['plain'], (mid, 'a hand-edited save cannot arm', c['other']))
+            ok(o['migr'] == [c['pre'] + 'starter', c['plain']], (mid, 'starter swap', o['migr']))
+            ok(o['refine'][1] == round(o['refine'][0] * 1.06) and o['refine'][2] is None, (mid, 'refine', o['refine']))
+            ok(o['police'] == [[c['police'], mid.capitalize(), True, mid == 'jihoon']], (mid, 'Police Box, for them only', o['police']))
+            ok(o['mayoido'] and o['chest'] and c['boss'][1] in o['boss'], (mid, 'Mayoido, locked chests, boss'))
+            ok(o['giftBefore'] == 0 and o['gift'] == [c['gift'][0]] and o['giftAgain'] == 0, (mid, 'rank gift once', o))
+            ok(o['shufWithout'] == [] and o['shufWith'] and not set(o['shufWith']) & {c['pre'] + 'starter', c['gift'][0]}, (mid, 'Shuffle Swords only with them in the party', o))
+            ok(o['tag'] == ' (one of %s’s %s!)' % (mid.capitalize(), c['noun']) and o['line'], (mid, o['tag'], o['line']))
+        b = r['bon']
+        ok(b['tortoise'] == 20 and b['hyphen'] == [20, 10] and b['treasure'] == [5, 15] and b['hitscan'] == [14, 10] and b['theia'] == 20, b)
+        ok(r['yen'] == [15, 0], ('Treasure yen only while Jihoon fights', r['yen']))
+        ok(r['backfill'] == [1, 1, 1, 1, 1, 0] and r['flag'] == 1 and r['again'] == 0, ('one-time boss backfill', r['backfill'], r['again']))
+        # The menu: gifts arrive with the ranks; each list shows their own with art (gloves in the wide box).
+        p.eval("(()=>{const G=FemcGame;G.progress('jungwon').rank=6;G.progress('jihoon').rank=6;G.progress('minji').rank=5;G.save();})()")
+        menu(p, 'equip')
+        for mid, c in SETS.items():
+            click(p, '[data-eq="%s"]' % mid)
+            ok(p.eval(B + ".gear.owned.%s" % c['gift'][0]) == 1, (mid, 'gift synced'))
+            ok(p.eval("document.querySelector('[data-slot=weapon] img.g-eq-art').getAttribute('src').includes('weapons/%s.webp')" % c['art']), (mid, 'starter equipped with art'))
+            click(p, '[data-slot="weapon"]')
+            ok(p.eval("!!document.querySelector('[data-pick=%s] img.g-eq-art')" % c['gift'][0]), (mid, 'gift in the list with art'))
+            click(p, '[data-pick="%s"]' % c['gift'][0])
+            ok(p.eval("document.querySelector('[data-slot=weapon] img.g-eq-art').classList.contains('wide')") == (mid == 'jihoon'), (mid, 'wide box only for gloves'))
+            click(p, '[data-refine="%s"]' % c['gift'][0])
+            ok(p.eval(B + ".wref.%s" % c['gift'][0]) == 1, (mid, 'refine through the menu'))
+        click(p, '[data-eq="akihiko"]'); click(p, '[data-slot="weapon"]')
+        ok(not p.eval("[...document.querySelectorAll('[data-pick]')].some(b=>/^jh_/.test(b.dataset.pick))"), 'none of Jihoon\'s gloves in Akihiko\'s list')
+        for w, h, name in [(1000, 486, '1000x486'), (375, 812, '375x812')]:
+            view(p, w, h)
+            for mid in SETS:
+                menu(p, 'equip'); click(p, '[data-eq="%s"]' % mid); click(p, '[data-slot="weapon"]'); no_scroll(p, mid + ' weapons ' + name); shot(p, 'weapons-%s-%s' % (mid, name))
+        view(p, 1280, 850)
+        p.eval("FemcMenu.close()")
+        # A real Tartarus fight: the gifts' bonuses are on the units; then Minji takes an All-Out and her finish card shows.
+        night(p, ['jungwon', 'jihoon', 'minji'])
+        p.eval("window.__btGroup=['pesce','pesce'];window.__want='shadow';document.querySelector('[data-go=run],[data-go=cont]').click()")
+        drive(p, "FemcBattle.screen()==='battle' && !!FemcBattle.B", 90)
+        u = p.eval("(()=>{const P=FemcBattle.B.party(),f=m=>P.find(x=>x.mid===m);return {jw:[f('jungwon').atk,f('jungwon').healMult],jh:[f('jihoon').atk,f('jihoon').def],mj:[f('minji').atk,f('minji').spRegen,f('minji').acc]}})()")
+        ok(u['jw'][0] == round(80 * 1.06) and u['jh'][0] == round(80 * 1.06) and u['mj'][0] == round(80 * 1.06) and u['mj'][1] >= 3 * 1.15 - 1e-6, u)
+        p.eval("FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=999999});window.__btFreezeAt='allout-finish'")
+        # On Minji's turn: every foe Down, and her hit counts as a One More, so the All-Out is hers.
+        t0 = time.time()
+        while not p.eval("FemcBattle.frozen"):
+            if time.time() - t0 > 120: raise TimeoutError('no All-Out finish')
+            p.eval(r"""(()=>{const F=FemcBattle,B=F.B,c=F.ctl;if(!B||!c)return;
+              if(c.kind==='allout'){c.pickValue('1');return}
+              if(c.kind==='menu'&&B.S.cur&&B.S.cur.mid==='minji'&&!window.__primed){B.foes().forEach(f=>{f.down=true});B.S.forceOneMore=true;window.__primed=true}
+              if(c.kind==='menu'&&B.S.cur&&B.S.cur.mid!=='minji'){const v=c.items.map(i=>i.v);c.pickValue(v.includes('guard')?'guard':v[0]);return}
+              if(c.kind==='menu'){const v=c.items.map(i=>i.v);c.pickValue(v.includes('attack')?'attack':v[0]);return}
+              if(c.kind==='buttons'){const b=document.querySelector('.bt-btn.pink:not(:disabled)')||document.querySelector('.bt-btn:not(:disabled)');b&&b.click()}})()""")
+            time.sleep(0.05)
+        p.eval("new Promise(r=>setTimeout(r,500))")
+        fin = p.eval("(()=>{const i=document.querySelector('.bt-finish.card img');return i?{src:i.getAttribute('src'),w:i.naturalWidth,alt:i.alt}:null})()")
+        ok(fin and 'art/finish/minji.webp' in fin['src'] and fin['w'] == 1600 and fin['alt'].startswith('Minji'), ('Minji\'s finish card in a real All-Out', fin))
+        shot(p, 'finish-minji-allout')
+        p.eval("window.__btFreezeAt=null;FemcBattle.unfreeze()")
+        p.eval("window.__hoStay=false;FemcBattle.hoFinish('retreat')"); p.top(); p.wait("!document.querySelector('.g-dh')", 30)
+        jh = p.eval("new Promise(r=>{const i=new Image();i.onload=()=>r(i.naturalWidth);i.onerror=()=>r(0);i.src='assets/femc/battle/art/finish/jihoon.webp'})")
+        ok(jh == 1600, 'Jihoon\'s finish card decodes')
+        results['searchers'] = {m: {'police': r[m]['police'][0][0], 'gift': r[m]['gift'][0], 'boss': SETS[m]['boss'], 'shuffle': r[m]['shufWith']} for m in SETS}
+        results['searchers']['finish'] = fin['src']
+        errs = p.console(); ok(not errs, errs)
+        print("Searchers' weapons: data, art, owner-only lists, sources, gifts, backfill, menu, refine, real fight, Minji's All-Out finish card OK", flush=True)
 
     # ── Practice mode still works (its own save; Shuffle Time without the card menu's outcomes) ──
     if want('practice'):

@@ -72,7 +72,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 18;
+  const ART_V = 19;
   const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
   Object.values(D.personas).forEach(p => { if (p.art && !p.art.startsWith('data:') && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
   // Theurgy and Evoker sheet art (data.js paths are bare) get the art version too.
@@ -86,9 +86,10 @@
   };
   D.party.forEach(m => { verTh(m.theurgy); Object.values((m.theurgy && m.theurgy.forms) || {}).forEach(verTh); if (m.evoker) m.evoker.frames = m.evoker.frames.map(artV); });
   const FINISH_DIR = 'assets/femc/battle/art/finish/', SUMMON_DIR = 'assets/femc/battle/art/summon/';
-  // Searchers' finish cards (Kat's <name>-alloutattack.png, cut by tools/femc-cards.py): the rest still use their portrait.
-  const FINISH_CARDS = new Set(['haechan', 'jungwon']);
-  const finishArt = mid => ((member(mid) || {}).searcher && !FINISH_CARDS.has(mid) ? pimg(mid, 'serious') : FINISH_DIR + mid + '.webp');
+  // Searchers' finish cards (Kat's <name>-alloutattack.png, cut by tools/femc-cards.py): all four have one now; a searcher
+  // without one would use their portrait. Searchers' cards carry ART_V (the S.E.E.S. ones are older and unchanged).
+  const FINISH_CARDS = new Set(['haechan', 'jungwon', 'jihoon', 'minji']);
+  const finishArt = mid => ((member(mid) || {}).searcher ? (FINISH_CARDS.has(mid) ? `${FINISH_DIR}${mid}.webp?v=${ART_V}` : pimg(mid, 'serious')) : FINISH_DIR + mid + '.webp');
   // Full-body weapon stances belong on the battlefield, separate from face crops and finish cards.
   const FIELD_POSES = new Set(['solar', 'akihiko', 'junpei', 'yukari', 'aigis', 'mitsuru', 'shinjiro', 'koromaru']);
   /* Fighter pose sheets (Kat's <name>-posesheet.png, cut by tools/femc-shadow-poses.py into poses/<mid>-pose-0..5.webp:
@@ -1163,15 +1164,15 @@
     const rew = out.rew || { exp: 0, yen: 0, drops: {} };
     if (strong) { rew.exp = Math.round(rew.exp * mult.exp); rew.yen = Math.round(rew.yen * mult.yen); if (tp.rivalsDare) notes.push('Rival’s Dare: double EXP'); }
     // Bond perks on the money: Jungwon's Stewardship (battles), Wren's Porter's Tip (Tartarus).
-    const yb = (tp.stewardship ? tp.stewardship.v : 0) + (tp.portersTip && run && !run.ops ? tp.portersTip.v : 0);
+    // Jihoon's Treasure gloves: battle yen +15% (refines raise it) while he's in the fight.
+    const yb = (tp.stewardship ? tp.stewardship.v : 0) + (tp.portersTip && run && !run.ops ? tp.portersTip.v : 0) + (BLD && BLD.yenBonus ? BLD.yenBonus(save, roster().map(m => m.id)) / 100 : 0);
     if (yb && rew.yen) { rew.yen = Math.round(rew.yen * (1 + yb)); notes.push(`Yen +${Math.round(yb * 100)}%`); }
     // Tarot Dust: what's left of Shadows in Tartarus (cards and refines run on it).
     if (BLD && run && !run.ops && !op && !story && rand() < 0.4 + (strong ? 0.3 : 0)) { const n = 1 + Math.floor(rand() * 3) + (strong ? 2 : 0) + Math.floor(run.fi / 6); rew.drops.tarot_dust = (rew.drops.tarot_dust || 0) + n; }
     // A Capsule Ticket, now and then (the life sim's capsule machine; gacha.js). Story mode only: practice has no mall.
     if (HO && run && !run.ops && !op && !story && D.items.capsule_ticket && rand() < (strong ? 0.12 : 0.05)) { addItem('capsule_ticket'); notes.push('A Capsule Ticket (the machine at Paulownia Mall)'); mark('capsule-ticket'); }
-    // A full moon's first clear can leave one of Solar's naginatas (or Haechan's knives) behind.
-    const bw = BLD && op && first && BLD.BOSS_WEAPON[op.id];
-    if (bw && !(save.gear.owned[bw] > 0)) { addGear(bw); notes.push(`${D.gear[bw].name}${BLD.namedTag(bw)}`); mark('boss-weapon'); }
+    // A full moon's first clear can leave one of Solar's naginatas (or a searcher's own weapon) behind; Fortune leaves two.
+    if (BLD && op && first) BLD.bossWeapons(op.id).forEach(bw => { if (D.gear[bw] && !(save.gear.owned[bw] > 0)) { addGear(bw); notes.push(`${D.gear[bw].name}${BLD.namedTag(bw)}`); mark('boss-weapon'); } });
     // Shuffle Time (P3P): after an All-Out finish, a clean fast win, Strong Shadows, the Reaper or a full moon, or by chance.
     let shuffle = null;
     const due = BLD && !story && out.rating ? (window.__btShuffle ? 'chance' : BLD.shuffleDue(Object.assign({ strong, reaper, boss: !!op }, out.rating), rand)) : null;
@@ -1588,7 +1589,7 @@
     const rows = [];
     if (c.yen) rows.push(`<div class="bt-loot">${ICON.svg('yen')}<b>${yen(c.yen)}</b></div>`);
     if (c.item) rows.push(`<div class="bt-loot">${ICON.of(c.item)}<b>${esc(D.items[c.item].name)}${c.n > 1 ? ` ×${c.n}` : ''}</b><span>${esc(D.items[c.item].desc)}</span></div>`);
-    if (c.gear) rows.push(`<div class="bt-loot${D.gear[c.gear].art ? ' art' : ''}">${D.gear[c.gear].art ? `<img src="${D.gear[c.gear].art}?v=${ART_V}" alt="">` : ICON.of(c.gear)}<b>${esc(D.gear[c.gear].name)}</b><span>${esc(gearLine(c.gear))}</span></div>`);
+    if (c.gear) rows.push(`<div class="bt-loot${D.gear[c.gear].art ? ' art' : ''}">${D.gear[c.gear].art ? `<img${D.gear[c.gear].artWide ? ' class="wide"' : ''} src="${D.gear[c.gear].art}?v=${ART_V}" alt="">` : ICON.of(c.gear)}<b>${esc(D.gear[c.gear].name)}</b><span>${esc(gearLine(c.gear))}</span></div>`);
     if (c.extra) rows.push(`<div class="bt-loot">${ICON.of(c.extra)}<b>${esc(D.items[c.extra].name)}</b><span>Tech Savvy: one more thing inside.</span></div>`);
     return rows.join('');
   };

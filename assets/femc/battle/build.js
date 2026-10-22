@@ -48,6 +48,8 @@ window.FemcBuild = (() => {
     if (b.bind) out.push(`Bind +${Math.round(b.bind)}%`); if (b.ail) out.push(`Ailments +${Math.round(b.ail)}%`); if (b.freeze) out.push(`Freeze +${Math.round(b.freeze)}%`);
     if (b.insta) out.push(`Instant kills +${Math.round(b.insta)}%`); if (b.evade) out.push(`Evasion +${Math.round(b.evade)}`); if (b.th) out.push(`Theurgy +${Math.round(b.th)}%`);
     if (b.nullAil) out.push(`No ${b.nullAil.map(a => D.ailments[a].name).join(', ')}`);
+    if (b.costCut) out.push(`SP costs −${Math.round(b.costCut)}%`); if (b.def) out.push(`Defense +${Math.round(b.def)}`);
+    if (b.down) out.push(`vs Down +${Math.round(b.down)}%`); if (b.yen) out.push(`Battle yen +${Math.round(b.yen)}%`);
     return out.join(' · ');
   };
   const TINT = { nag_ivory: '#fff2d6', nag_ice: '#9fe8ff', nag_bamboo: '#5fe0b0', nag_mint: '#a8ffd8', nag_lock: '#d2324f', nag_moon: '#5a6ad0', nag_fox: '#ff8a3d', nag_kitty: '#ff8cc0', nag_rose: '#c43b3b', nag_butterfly: '#c9b8ff', nag_prism: '#e0d0ff', nag_dragon: '#c9d0dc' };
@@ -69,23 +71,67 @@ window.FemcBuild = (() => {
     ['hk_sunlight', 'neo-sunlight', 'Neo Sunlight', 6, 128, 15000, { el: { light: 20 }, stats: { ma: 3 }, crit: 5 }, 'A neon-green edge and a guard of sun rays; his name means full of sunlight. +3 Ma, Light +20%, crit +5%.', ['Mayoido Antiques (tier 6)', 'Shuffle Time · Swords']]
   ];
   const HK_TINT = { hk_starter: '#6b6f7a', hk_harbor: '#c2553a', hk_mixdown: '#c9d0dc', hk_widow: '#9a6bff', hk_disc: '#d8e4ff', hk_sunlight: '#7dff6a' };
-  HK.forEach(([id, art, name, tier, atk, price, bonus, desc, src]) => {
-    D.gear[id] = { name, slot: 'weapon', wtype: 'knife', owner: 'haechan', atk, tier, price, rare: tier > 0 && (!price || tier >= 5), named: true, art: WART + 'haechan-' + art + '.webp', bonus, src, look: desc, tint: HK_TINT[id],
-      stats: bonus.stats || undefined, nullAil: bonus.nullAil || undefined, desc: bonusText(bonus) };
-  });
-  if (D.startGear && D.startGear.haechan) D.startGear.haechan.weapon = 'hk_starter';
+  /* ══════════ Jungwon's rapiers, Jihoon's gloves, Minji's bows (Kat's <name>-weapons.png, batch 22; FEMC-ART-TODO.md section 5) ══════════
+     The same system as Haechan's knives: owner-only, a starter that replaces their plain tier-0 weapon, refines, art and a
+     look. Extra bonus keys these use: acc (copied to the gear's own acc: gearLine shows it, refines don't scale it), yen (+% battle yen while he fights). */
+  const JW = [
+    ['jw_starter', 'starter', 'Plain Silver', 0, 32, 0, { acc: 4 }, 'A plain silver rapier, kept polished like a council pin. Accuracy +4.', ['Jungwon’s own (he starts with it)']],
+    ['jw_mandate', 'mandate', 'Mandate', 3, 64, 4400, { costCut: 10, stats: { ma: 3 } }, 'Navy and gold, a council-crest guard and a gold star pin. +3 Ma, and his skills cost 10% less SP.', ['Police Box (tier 3)', 'Shuffle Time · Swords']],
+    ['jw_maeumi', 'maeumi', 'Maeumi', 4, 80, 0, { heal: 20, hpRegen: 3 }, 'Cream and brown, a white flower and a tiny dog-paw charm on the guard. Healing +20%, and he regains 3% HP each turn.', ['Jungwon’s bond (rank 6)']],
+    ['jw_jade', 'jade-heir', 'Jade Heir', 4, 84, 0, { stats: { ag: 3 }, evade: 8, crit: 8 }, 'A jade-green swept guard and a red cord tassel: old money. +3 Ag, better evasion, crit +8%.', ['Locked chests (Arqa and up)', 'Shuffle Time · Swords']],
+    ['jw_tortoise', 'black-tortoise', 'Black Tortoise', 4, 82, 0, { el: { ice: 20 }, freeze: 12, stats: { en: 3 } }, 'A tortoise-shell guard, a serpent up the grip and frost down the blade (Hyeonmu). +3 En, Ice +20%, Freeze +12%.', ['The Hierophant (first clear)', 'Shuffle Time · Swords']],
+    ['jw_hyphen', 'hyphen', 'Hyphen', 6, 128, 15000, { el: { dark: 20 }, crit: 10, critX: 15 }, 'Crimson and black, two halves joined by a bar and a blood-red gem. Dark +20%, crit +10%, and critical hits deal 15% more.', ['Mayoido Antiques (tier 6)', 'Shuffle Time · Swords']]
+  ];
+  const JH = [
+    ['jh_starter', 'starter', 'Plain Black', 0, 32, 0, { phys: 3 }, 'Plain black fingerless gloves. Physical +3%.', ['Jihoon’s own (he starts with them)']],
+    ['jh_varsity', 'varsity', 'Varsity', 3, 64, 4400, { stats: { ag: 3 }, evade: 6, th: 15 }, 'Leather and a jacket patch: a big red J, a crown, a pennant and a baseball. +3 Ag, better evasion, Theurgy +15%.', ['Police Box (tier 3)', 'Shuffle Time · Swords']],
+    ['jh_bestfriend', 'best-friend', 'Best Friend', 4, 80, 0, { def: 8, hpRegen: 4 }, 'A white fluffy-dog patch and a gold bow, for Nana. Defense +8, and he regains 4% HP each turn.', ['Jihoon’s bond (rank 6)']],
+    ['jh_capitalized', 'capitalized', 'Capitalized', 4, 84, 0, { critX: 25, stats: { st: 3 } }, 'Gold knuckle plates spelling HOAX, loud and full of himself. +3 St, and critical hits deal 25% more.', ['Locked chests (Arqa and up)', 'Shuffle Time · Swords']],
+    ['jh_goblin', 'goblin-club', 'Goblin Club', 5, 104, 11000, { phys: 12, el: { wind: 15 }, stats: { st: 3 } }, 'Gold studs and a red-and-gold sash, a nod to Dokkaebi. +3 St, Physical +12%, Wind +15%.', ['Mayoido Antiques (tier 5)', 'Shuffle Time · Swords']],
+    ['jh_treasure', 'treasure', 'Treasure', 6, 126, 0, { stats: { lu: 5 }, yen: 15, crit: 5 }, 'Sky-blue with gold jewel studs, like a treasure chest. +5 Lu, crit +5%, and battle yen +15% while he fights.', ['Fortune & Strength (first clear)', 'Shuffle Time · Swords']]
+  ];
+  const MJ = [
+    ['mj_starter', 'starter', 'Plain Recurve', 0, 32, 0, { acc: 4 }, 'A plain recurve bow. Accuracy +4.', ['Minji’s own (she starts with it)']],
+    ['mj_bunny', 'bunny', 'Bunny', 3, 66, 0, { evade: 10, stats: { ag: 3 } }, 'Soft Y2K blue, a bunny-ear tip, ribbons and a bunny charm. +3 Ag and big evasion.', ['Empress & Emperor (first clear)', 'Shuffle Time · Swords']],
+    ['mj_finalcut', 'final-cut', 'Final Cut', 3, 64, 4400, { down: 20, th: 10 }, 'Limbs made of film reels and a clapperboard charm. 20% more damage to foes that are Down, Theurgy +10%.', ['Police Box (tier 3)', 'Shuffle Time · Swords']],
+    ['mj_muse', 'muse', 'Muse', 4, 80, 0, { heal: 20, spRegen: 3 }, 'Pale gold, with a camera-lens charm. Healing +20%, and 3 SP back each turn.', ['Minji’s bond (rank 5)']],
+    ['mj_hitscan', 'hitscan', 'Hitscan', 4, 84, 0, { crit: 14, acc: 10 }, 'A sleek esports bow with a glowing crosshair sight. Crit +14%, Accuracy +10.', ['Locked chests (Arqa and up)', 'Shuffle Time · Swords']],
+    ['mj_theia', 'theia', 'Theia', 5, 102, 11000, { el: { light: 20 }, insta: 10, stats: { ma: 3 } }, 'White-gold with aperture rings, like her Persona. +3 Ma, Light +20%, and Hama lands 10% more often.', ['Mayoido Antiques (tier 5)', 'Shuffle Time · Swords']]
+  ];
+  const OWN_TINT = { jw_starter: '#c9d0dc', jw_mandate: '#2a3a8c', jw_maeumi: '#d9b48a', jw_jade: '#4fbf7f', jw_tortoise: '#9fe8ff', jw_hyphen: '#c4203b',
+    jh_starter: '#3a3a40', jh_varsity: '#c4203b', jh_bestfriend: '#f4f0e8', jh_capitalized: '#e0b040', jh_goblin: '#b8202a', jh_treasure: '#7dc4ff',
+    mj_starter: '#7a5236', mj_bunny: '#9fc8ff', mj_finalcut: '#9aa0aa', mj_muse: '#e8cf8a', mj_hitscan: '#3a7dff', mj_theia: '#fff2d6' };
+  // What the drop and gift lines call a set ("one of Haechan’s knives!").
+  const SET_NOUN = { knife: 'knives', rapier: 'rapiers', gloves: 'pairs of gloves', bow: 'bows' };
+  const OWNED = [[HK, 'haechan', 'knife', HK_TINT], [JW, 'jungwon', 'rapier', OWN_TINT], [JH, 'jihoon', 'gloves', OWN_TINT], [MJ, 'minji', 'bow', OWN_TINT]];
+  OWNED.forEach(([list, owner, wtype, tints]) => list.forEach(([id, art, name, tier, atk, price, bonus, desc, src]) => {
+    D.gear[id] = { name, slot: 'weapon', wtype, owner, atk, tier, price, rare: tier > 0 && (!price || tier >= 5), named: true, art: WART + owner + '-' + art + '.webp', bonus, src, look: desc, tint: tints[id],
+      artWide: wtype === 'gloves' || undefined, acc: bonus.acc || undefined, stats: bonus.stats || undefined, nullAil: bonus.nullAil || undefined, desc: bonusText(bonus) };
+    if (tier === 0 && D.startGear && D.startGear[owner]) D.startGear[owner].weapon = id;
+  }));
   NAG.forEach(([id]) => { D.gear[id].named = true; });
   /* Who can hold a piece of gear: a weapon of their type, and a named one only by its owner. */
   const fits = (g, mid) => { const m = D.party.find(x => x.id === mid); return !!(g && m) && (g.slot !== 'weapon' || (g.wtype === m.wtype && (!g.owner || g.owner === mid))); };
   // "(one of Solar’s naginatas!)" / "(one of Haechan’s knives!)" for drops and gifts.
-  const namedTag = id => { const g = D.gear[id]; return !g || !g.named ? '' : g.owner ? ` (one of ${(D.party.find(x => x.id === g.owner) || {}).name || g.owner}’s knives!)` : ' (one of Solar’s naginatas!)'; };
+  const namedTag = id => { const g = D.gear[id]; return !g || !g.named ? '' : g.owner ? ` (one of ${(D.party.find(x => x.id === g.owner) || {}).name || g.owner}’s ${SET_NOUN[g.wtype] || 'weapons'}!)` : ' (one of Solar’s naginatas!)'; };
+  // Old saves: each owner's plain tier-0 weapon swaps for their own starter (save.js normalizeBuild).
+  const STARTER_SWAP = Object.fromEntries(OWNED.map(([list, owner, wtype]) => [owner, [wtype + '0', list[0][0]]]));
+  /* Battle yen from weapons (Jihoon's Treasure): the sum of `yen` on the weapons the fighters in `mids` hold, refines included. */
+  function yenBonus(save, mids) {
+    let v = 0;
+    (mids || []).forEach(mid => { const eq = Object.assign({}, D.startGear[mid], ((save.gear || {}).eq || {})[mid] || {}), g = D.gear[eq.weapon];
+      if (g && g.bonus && g.bonus.yen && fits(g, mid)) v += g.bonus.yen * (1 + WREF.bonus * wrefOf(save, eq.weapon)); });
+    return v;
+  }
 
   // Police Box stocks the early ones (practice mode's shop lists non-rare gear of the shop's tier); Mayoido the rare ones.
-  if (D.shops.mayoido) D.shops.mayoido.stock = D.shops.mayoido.stock.concat(['nag_butterfly', 'nag_dragon', 'hk_sunlight']);
+  if (D.shops.mayoido) D.shops.mayoido.stock = D.shops.mayoido.stock.concat(['nag_butterfly', 'nag_dragon', 'hk_sunlight', 'jw_hyphen', 'jh_goblin', 'mj_theia']);
   // Locked chests can hold Crimson Lock and Widow's Kiss; Shuffle Time's Swords and the bosses below give the rest.
-  if (D.map && D.map.chest) D.map.chest.lockedRare = D.map.chest.lockedRare.concat(['nag_lock', 'hk_widow']);
+  if (D.map && D.map.chest) D.map.chest.lockedRare = D.map.chest.lockedRare.concat(['nag_lock', 'hk_widow', 'jw_jade', 'jh_capitalized', 'mj_hitscan']);
   // The Black Rose was Astarion's rank-8 gift until his link was removed (2026-10-21); it's the Hermit's now.
-  const BOSS_WEAPON = { priestess: 'nag_ice', lovers: 'nag_moon', chariot: 'hk_disc', hermit: 'nag_rose', fortune: 'nag_prism', hanged: 'nag_dragon' };
+  // A first clear can leave more than one (Fortune: Solar's Prism Orb and Jihoon's Treasure).
+  const BOSS_WEAPON = { priestess: 'nag_ice', empress: 'mj_bunny', hierophant: 'jw_tortoise', lovers: 'nag_moon', chariot: 'hk_disc', hermit: 'nag_rose', fortune: ['nag_prism', 'jh_treasure'], hanged: 'nag_dragon' };
+  const bossWeapons = op => [].concat(BOSS_WEAPON[op] || []);
   const CHEST_WEAPON = { id: 'nag_mint', chance: 0.06, fromBlock: 1 };
 
   /* Weapon refining (any weapon above the starters): +1 … +5 with materials. */
@@ -557,7 +603,7 @@ window.FemcBuild = (() => {
     ['jaehyun', 10, 'Field General', 'max', { fieldGeneral: { step: 0.1 } }, 'Shifts chain through the whole party, and each pass adds another +10% damage.'],
     ['minji', 2, 'Golden Hour', 'daily', { goldenHour: { areas: ['port', 'portisland'], stat: { charm: 1 } } }, 'On clear days, after-school activities on Port Island give +1 Charm.'],
     ['minji', 3, 'Crosshair Sync', 'battle', { crosshair: { crit: 15 } }, 'Kat’s perk. The party’s crit rate is up (+15%) against knocked-down enemies.'],
-    ['minji', 5, 'Duo Cohesion', 'battle', { duo: { power: 34 } }, 'Kat’s perk. Paired with Solar: a guaranteed follow-up from Minji when Solar lands a crit or a support heal.'],
+    ['minji', 5, 'Duo Cohesion', 'battle', { duo: { power: 34 }, gift: 'mj_muse' }, 'Kat’s perk. Paired with Solar: a guaranteed follow-up from Minji when Solar lands a crit or a support heal. She also brings out her Muse bow (one of her six).'],
     ['minji', 8, 'Behind the Lens', 'battle', { behindLens: {} }, 'Kat’s perk. Once per battle, surviving a lethal blow leaves Solar at 1 HP and triggers an automatic counter-snipe.'],
     ['minji', 10, 'Cut, Print', 'max', { cutPrint: { heal: 0.1 } }, 'Once per battle, when Solar crits a Down foe, she gets One More even if she already had one, and the party heals 10%.'],
     ['mark', 2, 'Warm-Up', 'daily', { actStat: { karaoke: { charm: 2, courage: 1 } } }, 'Karaoke gives +2 Charm and +1 Courage.'],
@@ -578,13 +624,13 @@ window.FemcBuild = (() => {
     ['yunjin', 10, 'Ride or Die', 'max', { rideOrDie: {} }, 'Once per battle, when an ally falls, Solar gets a free turn right away, and her next revive heals in full.'],
     ['jungwon', 2, 'Tutor Session', 'daily', { jobPay: { tutor: 25 }, studyAny: { knowledge: 1 } }, 'The tutoring job pays 25% more, and studying anywhere gives +1 Knowledge.'],
     ['jungwon', 4, 'Order of Business', 'battle', { orderBiz: { turns: 1 } }, 'Debuffs from Solar and Jungwon last one extra turn.'],
-    ['jungwon', 6, 'Motion Denied', 'battle', { motionDenied: {} }, 'Once per battle, when a foe buffs itself, Jungwon strips it off at once.'],
+    ['jungwon', 6, 'Motion Denied', 'battle', { motionDenied: {}, gift: 'jw_maeumi' }, 'Once per battle, when a foe buffs itself, Jungwon strips it off at once. He also brings out his Maeumi rapier (one of his six).'],
     ['jungwon', 8, 'Stewardship', 'tartarus', { stewardship: 0.15 }, 'Yen from battles is +15%.'],
     ['jungwon', 10, 'Polite Fury', 'max', { politeFury: { dmg: 0.15, max: 3 } }, 'Each time an ally takes a crit or a weakness hit, Solar’s next skill deals 15% more damage (stacks 3 times).'],
     ['jungwon', 15, 'Motion Carried', 'daily', { weekly: 'motioncarried', stat: { knowledge: 2 }, dow: 2 }, 'Once a week (Tuesdays), the minutes kept together: +2 Knowledge, without using any free time.'],
     ['jihoon', 2, 'Hype Man', 'battle', { hypeMan: { turns: 2 } }, 'Jihoon’s buffs on Solar last 2 extra turns.'],
     ['jihoon', 4, 'Pilates Partner', 'daily', { weekly: 'pilates', stat: { proficiency: 2, courage: 1 }, dow: 6 }, 'Once a week (Saturdays), pilates with him gives +2 Proficiency and +1 Courage without using any free time.'],
-    ['jihoon', 6, 'Main Character', 'battle', { mainChar: { below: 0.5 } }, 'While Solar is under half HP, foes go after Jihoon instead (he insists).'],
+    ['jihoon', 6, 'Main Character', 'battle', { mainChar: { below: 0.5 }, gift: 'jh_bestfriend' }, 'While Solar is under half HP, foes go after Jihoon instead (he insists). He also brings out his Best Friend gloves (one of his six pairs).'],
     ['jihoon', 8, 'Almighty Hoon', 'tartarus', { almightyHoon: 'atk' }, 'After beating a strong Shadow group, the party starts the next fight with attack up.'],
     ['jihoon', 10, 'Center Stage', 'max', { centerStage: { dmg: 0.2, th: 10 } }, 'At full HP, Solar deals 20% more damage, and every One More she earns gives the party +10 Theurgy.'],
     ['junkyu', 2, '#teamsolar', 'daily', { teamSolar: 1 }, 'The first hangout each week, with anyone, gives +1 ♪.'],
@@ -782,7 +828,7 @@ window.FemcBuild = (() => {
   const TYPE_NAME = { battle: 'Battle', assist: 'Assist', tartarus: 'Tartarus', daily: 'Daily', max: 'MAX' };
 
   return {
-    NAG, HK, fits, namedTag, BOSS_WEAPON, CHEST_WEAPON, WREF, wrefOf, wrefCost, refineWeapon, weaponAtk, bonusText, canPay,
+    NAG, HK, JW, JH, MJ, OWNED, STARTER_SWAP, yenBonus, bossWeapons, fits, namedTag, BOSS_WEAPON, CHEST_WEAPON, WREF, wrefOf, wrefCost, refineWeapon, weaponAtk, bonusText, canPay,
     STATS, SLOTS, SETS, CARD, rollCard, rarityRoll, mainValue, cardName, statLine, addCard, cardById, wearerOf, equipCard, unequipCard, equippedCards,
     levelCost, refineCost, levelCard, refineCard, dismantleCard, cardBonus, setCounts, ensureCards,
     emptyBonus, addBonus, unitBonus, SKILL_CARDS, teachable, teach,

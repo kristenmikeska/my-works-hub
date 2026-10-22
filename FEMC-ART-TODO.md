@@ -1,4 +1,4 @@
-# Art to make (updated 2026-10-21)
+# Art to make (updated 2026-10-22)
 
 This file replaces `FEMC-ART-NEXT.md` and `FEMC-THEURGY-PROMPTS.md`. Everything already in the game is off this list.
 - Put finished pieces in **New Adds**.
@@ -75,7 +75,7 @@ All done. Ken is skipped (Kat's call: she won't use him), so he keeps no battlef
 ---
 
 ## 3C. All-Out finish cards for the searchers ⭐
-Solar, S.E.E.S., Haechan and Jungwon have one (Haechan's and Jungwon's went in 2026-10-21); **Jihoon and Minji** don't yet.
+**Done (2026-10-22):** every fighter has one now (Haechan's and Jungwon's went in 2026-10-21, Jihoon's and Minji's 2026-10-22).
 **Attach:**
 1. 🎮 `battle/art/finish/akihiko.webp` (layout and style)
 2. The searcher's full body from 🎨 `Added to Game/` (e.g. `JungwonFullBody.png`; for Haechan, his pose sheet)
@@ -86,8 +86,8 @@ Persona 3 Reload All-Out Attack finish card, the same bold graphic layout and st
 |---|---|---|---|
 | ✓ | Haechan | deep violet and gold | TOO EASY. |
 | ✓ | Jungwon | jade green and ice white | MEETING ADJOURNED. |
-| ☐ | Jihoon | sky blue and gold | YOU'RE WELCOME. |
-| ☐ | Minji | warm gold and white | THAT'S A WRAP. |
+| ✓ | Jihoon | sky blue and gold | YOU'RE WELCOME. |
+| ✓ | Minji | warm gold and white | THAT'S A WRAP. |
 
 **The little figures in the All-Out cloud:** built (2026-10-21): each fighter's pose-sheet attack frame pops in and out of the cloud (no new art needed; Ken keeps the old silhouette). *(Optional later: a chibi brawl sheet per character for a cuter P3R look.)*
 
@@ -137,6 +137,8 @@ Create a NEW 16:9 combo-attack cut-in matching the FIRST attached image's art st
 ---
 
 ## 5. Weapon sheets for the other fighters
+**Done:** Haechan (2026-10-21), Jungwon, Jihoon and Minji (2026-10-22). **Still to make:** the seven S.E.E.S. sheets below.
+
 **Attach:** 🎨 `Added to Game/SolarWeapons.png` (layout)
 ```
 A 2×3 grid of six weapon designs on a white background, each in its own card, in the same rendering style as the attached sheet: [WEAPON] for [NAME]. One plain starter, then themed designs: [THEMES].
@@ -155,21 +157,21 @@ A 2×3 grid of six weapon designs on a white background, each in its own card, i
   4. **Harbor Watch (strangers):** rust-red, a rope-wrapped grip, an anchor-shaped guard, and a sea-glass pommel.
   5. **Old Disc (strangers):** black steel with a silver, CD-sheen disc as the guard and a scuffed vintage feel.
   6. **Neo Sunlight (NCT nod):** a neon-green glowing edge, a guard of sun rays, and a sleek futuristic finish. His name means "full of sunlight".
-- [ ] **Jungwon** (thin rapier):
+- [x] **Jungwon** (thin rapier). *(Done 2026-10-22: `jungwon-weapons.png` → `art/weapons/jungwon-*.webp`, his six rapiers in `build.js JW`.)*
   1. **Starter:** a plain silver rapier.
   2. **Mandate (Hoax):** navy and gold, a council-crest swept guard, and a gold star pin charm.
   3. **Maeumi (Hoax):** cream and brown, with a tiny dog-paw charm on the guard.
   4. **Jade Heir (strangers):** a jade-green swept guard, a red cord tassel, and old-money elegance.
   5. **Black Tortoise (strangers):** a tortoise-shell guard, a serpent coiling up the grip, and frost on the blade.
   6. **Hyphen (ENHYPEN nod):** crimson and black, a bar-shaped link joining two halves of the blade, and a blood-red gem. Vampire elegance.
-- [ ] **Jihoon** (fingerless gloves):
+- [x] **Jihoon** (fingerless gloves). *(Done 2026-10-22: `jihoon-weapons.png` → `art/weapons/jihoon-*.webp`, kept landscape (`artWide`), his six pairs in `build.js JH`.)*
   1. **Starter:** plain black fingerless gloves.
   2. **Capitalized (Hoax):** gold-lettered knuckle plates, loud and full of himself.
   3. **Best Friend (Hoax):** a white fluffy-dog patch, a nod to Nana.
   4. **Goblin Club:** gold studs and a red-and-gold sash wrap, a nod to Dokkaebi.
   5. **Varsity:** leather with a jacket-patch look.
   6. **Treasure (TREASURE nod):** sky-blue with gold jewel studs, like a treasure chest.
-- [ ] **Minji** (bow):
+- [x] **Minji** (bow). *(Done 2026-10-22: `minji-weapons.png` → `art/weapons/minji-*.webp`, her six bows in `build.js MJ`.)*
   1. **Starter:** a plain recurve bow.
   2. **Final Cut (Runners):** limbs shaped like film reels.
   3. **Hitscan (Runners):** a sleek esports bow with a glowing crosshair sight.
@@ -331,5 +333,5 @@ The same pieces as a Theurgy (the steps above), in `assets/femc/battle/bonds.js`
 - **A sequence** (several full-screen panels, like Haechan's Universe): cut each panel as a `cutin`, then give the version `sequence: [{ src, focus, pan, hit }, ...]` and set its `img` / `focus` to the last panel (the short band and reduced motion show only that one). `hit: true` marks the strike panel (the impact and the name land there; default: the middle one); `pan: [x%, y%]` is where a panel's drift starts. Pick each `focus` so both faces stay inside the phone band (about 53% of a panel's width at 375×812); the test freezes each panel there and checks. A Theurgy takes the same `sequence` field (`data.js` comment above `TH`).
 
 ### Weapon sheets and finish cards
-- **Weapons (section 5):** add the sheet to `BUILD` in `tools/femc-cards.py` (`weapons`, the file and the six names in reading order) and run `python3 tools/femc-cards.py all`; it finds the card frames, blanks the printed names and turns a diagonal blade upright. Then add the six to `build.js` like `HK` (Haechan's): an `owner` keeps them to that fighter in every list, shop and Shuffle draw; sources go in shops, `lockedRare`, `BOSS_WEAPON`, a perk's `gift` and `Shuffle Time · Swords`. Run `python3 tests/femc_building.py`.
+- **Weapons (section 5):** add the sheet to `BUILD` in `tools/femc-cards.py` (`weapons`, the file, the six names in reading order, and options: `rotate` for how far to turn a diagonal weapon upright, `auto_names` to blank only the printed names when art reaches the card's bottom, `wide` for landscape art like a pair of gloves) and run `python3 tools/femc-cards.py all`. Then add the six to `build.js` as a list like `HK` / `JW` / `JH` / `MJ` and one line in `OWNED` (owner, weapon type): that sets `owner` (only that fighter, in every list, shop and Shuffle draw), makes the tier-0 one their starter (old saves swap through `STARTER_SWAP`), and `artWide` for gloves. Sources go in shops (a price below tier 5 = Police Box; Mayoido's `stock`), `lockedRare`, `BOSS_WEAPON` (a value may be a list; saves that already cleared that full moon get it once in `save.js`), a perk's `gift` and `Shuffle Time · Swords`. Add the noun to `SET_NOUN` for a new weapon type. Run `python3 tests/femc_building.py` (`--only knives,searchers`).
 - **Finish cards (3C):** add `('finish', '<name>-alloutattack.png', '<mid>')` to the same `BUILD`, run it, and add the member to `FINISH_CARDS` in `battle.js`.

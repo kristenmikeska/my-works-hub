@@ -2237,6 +2237,7 @@ html.bt-embed .bt-hub-ho .bt-hub-menu .bt-btn[data-go="dorm"] small { display: n
 .bt-res-extra span.perk { background: #1d6b4a; color: #fff; box-shadow: 4px 4px 0 var(--green, #7dffc0); text-transform: none; }
 .bt-perknote { margin: 6px 0 0; padding: 6px 10px; border-left: 4px solid var(--green, #7dffc0); background: rgba(29, 107, 74, .25); color: #d9ffef; font-size: 14px; }
 .bt-loot.art img { width: 34px; height: 76px; object-fit: cover; border: 2px solid #ffd36b; transform: rotate(-8deg); }
+.bt-loot.art img.wide { width: 64px; height: 44px; transform: rotate(-4deg); } /* a pair of gloves (build.js artWide) */
 .bt-mapsvg .sticker { stroke: #05060c; stroke-width: 2.5; }
 .bt-mapsvg .sticker.g { fill: #7dffc0; } .bt-mapsvg .sticker.r { fill: #ff3b6b; }
 .bt-mapsvg .route { fill: none; stroke: #ffd36b; stroke-width: 2; stroke-dasharray: 3 3; opacity: .8; }

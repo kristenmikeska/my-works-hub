@@ -1028,6 +1028,9 @@ button.g-st-link:is(:hover, :focus-visible) { outline: none; border-color: #fff;
 .g-eq-slot .g-eq-art { width: 46px; height: 102px; object-fit: cover; border: 2px solid var(--gold); transform: rotate(-6deg); float: left; margin: 2px 12px 2px 4px; box-shadow: 3px 3px 0 var(--night); }
 .g-eq-item.art { grid-template-columns: 30px minmax(0, 1fr) auto; }
 .g-eq-art.sm { width: 26px; height: 56px; object-fit: cover; border: 1.5px solid var(--gold); }
+/* A pair of gloves (Jihoon's; build.js artWide) is landscape art: a wide box instead of the tall weapon one. */
+.g-eq-slot .g-eq-art.wide { width: 92px; height: 64px; transform: rotate(-4deg); }
+.g-eq-art.sm.wide { width: 52px; height: 36px; }
 .g-eq-slot b span.look { color: var(--pink-3); font-style: italic; }
 .g-refine { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; align-items: center; padding: 8px 12px; border: 1.5px dashed rgba(255, 211, 107, .5); background: rgba(255, 211, 107, .06); }
 .g-refine p { margin: 0; }
@@ -1038,6 +1041,7 @@ button.g-st-link:is(:hover, :focus-visible) { outline: none; border-color: #fff;
 /* Life sim shops: art rows, the Sell tab, the class hint */
 .g-act.has-art { grid-template-columns: 30px minmax(0, 1fr) auto; }
 .g-shop-art { width: 26px; height: 58px; object-fit: cover; border: 1.5px solid var(--gold); }
+.g-shop-art.wide { width: 54px; height: 38px; }
 .g-shop-tabs { gap: 6px; margin: 4px 0 8px; }
 .g-shop-tabs:empty { display: none; }
 .g-quiz-a .g-btn.hinted { opacity: .35; text-decoration: line-through; }

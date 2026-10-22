@@ -3315,6 +3315,141 @@
       ],
       "conversion": "tools/femc-cards.py finish (1600x900 WebP q86)",
       "placement": "battle.js finishArt (FINISH_CARDS)"
+    },
+    {
+      "batch": 22,
+      "source": "jungwon-weapons.png",
+      "sourceNow": "Added to Game/jungwon-weapons.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "50a979ef1275c863568bbd5b1c84c50508eadefa09722ace7063f65edf6b2263",
+      "character": "jungwon",
+      "intendedUse": "Jungwon's six rapiers (FEMC-ART-TODO section 5), matched to their themes by inspection in sheet order: Starter (plain silver), Mandate (navy and gold, star-crest guard, star pin charm), Maeumi (cream and brown, flower, dog-paw charm), Jade Heir (jade swept guard, red tassel), Black Tortoise (tortoise-shell guard, serpent grip, frost blade), Hyphen (crimson and black, bar-joined blade, red gem)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/weapons/jungwon-starter.webp",
+        "assets/femc/battle/art/weapons/jungwon-mandate.webp",
+        "assets/femc/battle/art/weapons/jungwon-maeumi.webp",
+        "assets/femc/battle/art/weapons/jungwon-jade-heir.webp",
+        "assets/femc/battle/art/weapons/jungwon-black-tortoise.webp",
+        "assets/femc/battle/art/weapons/jungwon-hyphen.webp"
+      ],
+      "outputSha256": [
+        "6d91569bdbd54e1162dafa9d130e858a33e83127eb30454e8a93661b73035275",
+        "2d22d02297668e726a849fa18ed84c5b4ca1cd7adc76f71c480d292d70234176",
+        "51ec83dc52ea3000b70879b0f0f2f9e00fe2e7cf4b5bf0dd87d4bac9821412dd",
+        "7d460c3b8819a1fc0827bfe75c7238775e41839dd9a77188ccec8bb26d704869",
+        "5f50255e2592f73d0300ba3c8a8a9ba0a80d049e82415dcded7c120e4c8bbc04",
+        "d5cae70aa2f9a561fea831eefc01a4efd3c5eb0a5121906eb54466d04a71fba2"
+      ],
+      "conversion": "tools/femc-cards.py weapons --labels auto: card frames found from their grey lines, only the printed names blanked (found in the bottom strip), turned 45\u00b0 upright on the tall card shape (WebP q88)",
+      "placement": "build.js JW: jw_starter, jw_mandate, jw_maeumi, jw_jade, jw_tortoise, jw_hyphen (owner jungwon); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
+    },
+    {
+      "batch": 22,
+      "source": "jihoon-weapons.png",
+      "sourceNow": "Added to Game/jihoon-weapons.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "af4ab5fba1fee4d7f496cf92497d0892eca2206dd80c3b3021dc8324d08865f5",
+      "character": "jihoon",
+      "intendedUse": "Jihoon's six pairs of fingerless gloves, matched by inspection in sheet order: Starter (plain black), Capitalized (gold HOAX knuckle plates), Best Friend (white fluffy-dog patch), Goblin Club (gold studs, red-and-gold sash), Varsity (leather jacket-patch look, red J), Treasure (sky-blue, gold, jewel studs)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/weapons/jihoon-starter.webp",
+        "assets/femc/battle/art/weapons/jihoon-capitalized.webp",
+        "assets/femc/battle/art/weapons/jihoon-best-friend.webp",
+        "assets/femc/battle/art/weapons/jihoon-goblin-club.webp",
+        "assets/femc/battle/art/weapons/jihoon-varsity.webp",
+        "assets/femc/battle/art/weapons/jihoon-treasure.webp"
+      ],
+      "outputSha256": [
+        "695fbd1c8f0d207a99873394e2c92458f118bf950e917dc5dfe61fc8a4e8ff78",
+        "6e1f20b8cf5c09d0c9bbf6e6e4f3fc54eef584f88f0ec38b811aecf5007ed31f",
+        "332dee8530ca09663041c1d1b1a94da32ce414697f34a44f8d7d52af1b9b1da0",
+        "2c4d08d3f1a2bb63e87d8cb33ce52512d72d131ab986db8ece9bf6df4a0e9db0",
+        "a5b74f506a1ea9ea58dfa4f848f3a1ad5a5acf0447519d9b9f51478587083925",
+        "4366679985815e55a002410203ce2ed59cb04ad7e535913025100d4382d1fe31"
+      ],
+      "conversion": "tools/femc-cards.py weapons --labels auto: card frames found from their grey lines, only the printed names blanked (found in the bottom strip), kept as drawn on a landscape canvas (aspect 1.45; a pair of gloves would be lost in the tall weapon box); gear artWide -> .wide boxes in game.css / battle.css (WebP q88)",
+      "placement": "build.js JH: jh_starter, jh_capitalized, jh_bestfriend, jh_goblin, jh_varsity, jh_treasure (owner jihoon); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
+    },
+    {
+      "batch": 22,
+      "source": "minji-weapons.png",
+      "sourceNow": "Added to Game/minji-weapons.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "31762a6a851b2c40c7bb7048ff4a769e91079f734f9696cc782e1d83ab2f9082",
+      "character": "minji",
+      "intendedUse": "Minji's six bows, matched by inspection in sheet order: Starter (plain recurve), Final Cut (film-reel limbs, clapperboard), Hitscan (black-blue esports bow, glowing crosshair sight), Muse (pale gold, camera-lens charm), Theia (white-gold, aperture rings), Bunny (Y2K blue, bunny-ear tip and charm)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/weapons/minji-starter.webp",
+        "assets/femc/battle/art/weapons/minji-final-cut.webp",
+        "assets/femc/battle/art/weapons/minji-hitscan.webp",
+        "assets/femc/battle/art/weapons/minji-muse.webp",
+        "assets/femc/battle/art/weapons/minji-theia.webp",
+        "assets/femc/battle/art/weapons/minji-bunny.webp"
+      ],
+      "outputSha256": [
+        "fa7d6e6b12f1bb5952ddd7d3015939aa1377fae806c24ca207a89dca2d4a4ef2",
+        "271f3b0b8668f7e0829e98a0f00883581d18bdd2dc435459746df5f8008f988a",
+        "ea0136592eb9400906dc7bbd7ec38c95a5aa759b5df4dae04922bf7d717bb208",
+        "2844ce248cb53d49aa4cd1c21c094c2727bbed9d35cbbedaaebe0de92243ed73",
+        "d58e5966c761de63cd76623689c783ddff8fd1907cf94f7e545324fbb525d961",
+        "314f013c8c81ce238d9d10684bb88bc409d4298d3af32228f9137c1e40f5e93e"
+      ],
+      "conversion": "tools/femc-cards.py weapons --labels auto: card frames found from their grey lines, only the printed names blanked (found in the bottom strip), turned 37\u00b0 upright on the tall card shape (WebP q88)",
+      "placement": "build.js MJ: mj_starter, mj_finalcut, mj_hitscan, mj_muse, mj_theia, mj_bunny (owner minji); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
+    },
+    {
+      "batch": 22,
+      "source": "jihoon-alloutattack.png",
+      "sourceNow": "Added to Game/jihoon-alloutattack.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "263f68e244a9f9edf7d1d4dd1ac681ed18b18f82654cd16e963a1e735ac835df",
+      "character": "jihoon",
+      "intendedUse": "All-Out finish card (YOU'RE WELCOME)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/finish/jihoon.webp"
+      ],
+      "outputSha256": [
+        "8fddfbc8a09f208e109ce3ded13441c6fd151ee485d3a3641cbd9f249d059a4f"
+      ],
+      "conversion": "tools/femc-cards.py finish (1600x900 WebP q86)",
+      "placement": "battle.js finishArt (FINISH_CARDS)"
+    },
+    {
+      "batch": 22,
+      "source": "minji-alloutattack.png",
+      "sourceNow": "Added to Game/minji-alloutattack.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a23d28b608207207f0d89408ec67da0c0f1f07af9739230be07f9c486795238e",
+      "character": "minji",
+      "intendedUse": "All-Out finish card (THAT'S A WRAP)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/finish/minji.webp"
+      ],
+      "outputSha256": [
+        "c1abc4bf62973e1cf3d386be775ed5afbb5c5500b02cc05a165bf80b7e5f175e"
+      ],
+      "conversion": "tools/femc-cards.py finish (1600x900 WebP q86)",
+      "placement": "battle.js finishArt (FINISH_CARDS)"
     }
   ],
   "batch1Validation": {
@@ -3606,6 +3741,19 @@
       "python3 tests/femc_bonds.py --only art,shots",
       "python3 tests/femc_building.py",
       "python3 tests/femc_theurgy.py"
+    ],
+    "browserErrors": 0
+  },
+  "batch22Validation": {
+    "date": "2026-10-22",
+    "scope": "Jungwon's rapiers, Jihoon's gloves, Minji's bows (18 weapons) and Jihoon's and Minji's All-Out finish cards",
+    "sourcesInspected": "all 5 viewed before wiring: each weapon sheet has six labelled cards matching the section-5 themes in order; both finish cards show the right searcher, outfit, weapon and line; every cut card reviewed (names gone, nothing clipped)",
+    "sourcesIntegrated": 5,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold untouched",
+    "phoneFraming": "equip screens for all three at 1000x486 and 375x812; Minji finish card screenshotted in a real All-Out",
+    "tests": [
+      "python3 tests/femc_building.py"
     ],
     "browserErrors": 0
   }
