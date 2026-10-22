@@ -74,6 +74,25 @@ All done. Ken is skipped (Kat's call: she won't use him), so he keeps no battlef
 
 ---
 
+## 3C. All-Out finish cards for the searchers ⭐
+Solar and S.E.E.S. have one; **Haechan, Jungwon, Jihoon and Minji** don't yet.
+**Attach:**
+1. 🎮 `battle/art/finish/akihiko.webp` (layout and style)
+2. The searcher's full body from 🎨 `Added to Game/` (e.g. `JungwonFullBody.png`; for Haechan, his pose sheet)
+```
+Persona 3 Reload All-Out Attack finish card, the same bold graphic layout and style as the FIRST attached image: [NAME] (second attached image, keep face and outfit exactly) in a confident finishing pose against a [COLOR] background, with huge black stylized letters reading "[LINE]". 16:9.
+```
+| ✓ | Name | [COLOR] | [LINE] |
+|---|---|---|---|
+| ☐ | Haechan | deep violet and gold | TOO EASY. |
+| ☐ | Jungwon | jade green and ice white | MEETING ADJOURNED. |
+| ☐ | Jihoon | sky blue and gold | YOU'RE WELCOME. |
+| ☐ | Minji | warm gold and white | THAT'S A WRAP. |
+
+**The little figures in the All-Out cloud:** for now Claude uses each fighter's pose-sheet attack frame (no new art needed). *(Optional later: a chibi brawl sheet per character for a cuter P3R look.)*
+
+---
+
 ## 4. Bond skill cut-ins (Solar + a partner)
 **Attach:**
 1. 🎮 `cg/prologue-akihiko-finds-solar.webp` (style)
