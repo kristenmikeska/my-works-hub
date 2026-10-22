@@ -19,8 +19,9 @@ Other docs, if you ever want detail:
 - ✅ **Mercy, Kiriko and Sebastian, deeper:** choices in their ranks they remember later, more time together between ranks, texts after their ranks, two holiday invites and two late-night scenes each, and more to do after you max them. Their links now follow the visitors' whole year
 - ✅ **Haechan:** his ranks now arrive with the story (your choices with him still count, and old saves keep every rank), and he has much more life: late nights, dorm moments, run-ins around town, texts after every rank, holiday invites, reactions to big story moments and scenes with the people he knows. It all changes with where your story is heading. The Hoax ending is now a secret route, and the other routes play as before
 
-- ⏳ **Removing** Leon, Cloud, Noctis, Astarion and Shadowheart, and **extending the year to early March** (like P3)
-- ⬜ **Then:** rank 15 for Haechan, Jungwon, Akihiko (with the Gekkoukan buzz) and Shinjiro (waking up)
+- ✅ **Leon, Cloud, Noctis, Astarion and Shadowheart are gone** from the game: their links, scenes, run-ins, perks and art-list items. Scenes they were part of read fine without them, old saves keep loading (and keep anything they gave you), the Black Rose naginata now comes from another boss, and the v1 game and its Compendium pages are untouched
+- ✅ **The year runs to early March**, like P3: February is a whole extra month of school and free time (the cold, Setsubun, Valentine's Day invitations, new everyday moments and texts, job and club lines for the season), graduation is on 3/5, and the end of the year moved to match. A save from late January carries on into February
+- ⬜ **Next:** rank 15 for Haechan, Jungwon, Akihiko (with the Gekkoukan buzz) and Shinjiro (waking up); February has room for them now
 - ⬜ **Then:** new links Danielle, Jaemin and Chenle (portraits needed: see the art list)
 
 ## Story and characters
@@ -44,10 +45,10 @@ Other docs, if you ever want detail:
 - ✅ Kasumi's timeline fixed (she stays all year); Mercy, Kiriko and Sebastian are deeper (see above)
 
 ## Daily life *(living world)*
-- ✅ Daily routines all year that change as people arrive (77): teachers, students, S.E.E.S. moments and the searchers' days
+- ✅ Daily routines all year that change as people arrive (86, February included): teachers, students, S.E.E.S. moments and the searchers' days
 - ✅ Texts through the day: texts reacting to your last time with someone, daytime texts and group chats, and the night before a full moon
 - ✅ Job scenes that don't repeat (over 100 new shifts, regulars and a small story at every job), plus three new jobs: Chagall Café, Hagakure and the shrine's amulet stall
-- ✅ Running into people while out, working or at a club (54 short run-ins, as people arrive)
+- ✅ Running into people while out, working or at a club (51 short run-ins, as people arrive)
 - ✅ Holiday invites you only get by spending the day with someone
 - ✅ Solar's birthday on 6/24, with a surprise party
 - ✅ Yakushima trip gameplay (three days, and who you spend them with)
@@ -57,7 +58,7 @@ Other docs, if you ever want detail:
 - ✅ One merged game (battles inside the story, one save, one menu)
 - ✅ Skill tree: Haenim's branches, keystones and forms, party trees, 8 slots, your six skills
 - ✅ Buff stacking, smarter Rush, and the All-Out flash removed
-- ✅ Shuffle Time, Revelation cards, 193 link perks, your 12 naginatas as weapons
+- ✅ Shuffle Time, Revelation cards, 170 link perks, your 12 naginatas as weapons
 - ✅ Bond skills (12), a new signature skill for every fighter, battle reactions, romance banter
 - ✅ Animated Theurgies (Solar's change with her form), and the animated Evoker summon
 - ✅ The searcher Personas: Dalnim, Hyeonmu, Dokkaebi, Theia

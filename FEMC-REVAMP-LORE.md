@@ -69,7 +69,7 @@ From the Korean tale of the sister who became the sun: she was afraid of being l
 ## Who arrives, and why (in this order)
 
 1. **Only Solar sees it at first.** Small impossible things: a song she knows, a smell, a name on the tip of her tongue, things that feel too familiar. Even Elizabeth can't explain them.
-2. **Game characters arrive.** Her Shadow's pull caught other people who were running from their own endings (Noctis's crown, Leon's next mission, Cloud's memories...). They are *visitors*. They don't know her.
+2. **Game characters arrive.** Her Shadow's pull caught other people who were running from their own endings (Widowmaker's chair, Judy's Night City, Sebastian's small town...). They are *visitors*. They don't know her.
 3. **People from her novels slip in. They are *searchers*.** They know her because she *is* their Solar: Hanni and Hyein, Jaehyun, Minji, Mark, Haechan, Yunjin, Jungwon and his friends, Jihoon and his crew, Cherry. Back home, their Solar is missing, and they followed the hole she left.
 
 **How the searchers get here:**
@@ -134,7 +134,7 @@ P3 keeps happening, lightly:
 
 **Everyone else is a friendship.** Some links become something more than "just friends":
 - **Mentors and older sisters:** Mercy and Aphrodite.
-- **Solar helps them with their own love lives:** Leon and Ada, Cloud with Tifa and Aerith, Aphrodite and Ares, Mercy and Genji, Sebastian and Abigail, and others like them. These scenes often trigger her flashbacks, because watching someone else's love story reminds her of her own.
+- **Solar helps them with their own love lives:** Aphrodite and Ares, Mercy and Genji, Sebastian and Abigail, and others like them. These scenes often trigger her flashbacks, because watching someone else's love story reminds her of her own.
 
 ## Searchers fight too
 
@@ -241,5 +241,6 @@ Haechan stays Universe and Jungwon stays Hierophant.
 - **Maybe rank 15 later (lower priority):** Hanni, Hyein, Mark, Minji, Jihoon.
 - **Remove fully:** Leon, Cloud, Noctis, Astarion, Shadowheart. Rehome their extras (e.g. Astarion's black-rose naginata), keep old saves working, and drop their perks, matchmaking threads and art-list items. **Sebastian stays.**
 - **New links:** Danielle, Jaemin and Chenle (Runners searchers). Jeno: not now.
+- **Built (2026-10-21): removals and March.** Leon, Cloud, Noctis, Astarion and Shadowheart are out of the revamp (v1 keeps them). Scenes they were part of were trimmed to read well without them; old saves keep loading and keep anything they gave; the Black Rose naginata is now a boss's first-clear drop. The year runs to early March: February is a full extra month (the cold, Setsubun, Valentine's Day, graduation on 3/5), and the end of the year moved to match. February is where ranks 11–15 will go.
 - **Solar's parents (Jaesang and Solji):** maybe as texts or one scene, not full links. Undecided.
 - **Later idea:** cameos from Kat's other universes (e.g. Delicate) as Persona-world residents, like Soomi as a Rise-style celebrity.

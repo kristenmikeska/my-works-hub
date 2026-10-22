@@ -198,7 +198,7 @@ try:
     ok(year['gap'] <= 10, f"no stretch longer than ten days without one ({year['gap']} days, {year['where']})")
     ok(year['trip'] == 0, 'no routine on the Yakushima trip')
     ok(set(year['slots']) >= {'early', 'morning', 'lunch', 'afternoon', 'after', 'evening', 'late'}, f"routines in every kind of slot: {year['slots']}")
-    ok(year['months'] == 10, 'routines in every month from April to January')
+    ok(year['months'] == 12, f"routines in every month from April to March ({year['months']})")
     print('year', json.dumps(year))
 
     # ── scenes: every new scene down every path ──

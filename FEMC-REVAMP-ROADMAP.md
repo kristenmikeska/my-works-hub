@@ -225,3 +225,46 @@ Moods live in `assets/femc/game/data/places.js` (`music`, `screens`, `worldMusic
    - **P5R-style social stats** (menu → Status): a radar with one corner per stat, and a card per stat with its rank name, rank in suns and the meter to the next rank. A rank-up plays a level-up card with Solar's sun (waits for a scene to end; reduced motion gets a still version). Both read `stats.js`; they show the five stats (built 2026-10-21, section 7).
    - **P5X-style Go Out:** slanted art cards per area (and per place inside one) with who's there today (met links' faces); hover or focus fills a side panel with what the place is, who's around, what you'd get and what it costs; on phones the cards carry that themselves. Keyboard, pad, mouse and touch. Choosing still opens the review before any time or yen is spent. Descriptions are `about` fields in `places.js`.
    - Test: `python3 tests/femc_polish.py` (screenshots at 1000×486, 375×812 and 1440×900).
+
+## 9. The year to March, and five links removed (Kat's rulings, built 2026-10-21)
+Spoiler-free here; the story side is in the hidden plot doc (§20).
+
+**Removed: Leon, Cloud, Noctis, Astarion, Shadowheart** (Sebastian stays).
+- Gone: their link files and stubs, six run-ins, their lines in group scenes (trimmed so the scenes still read well), 23 perks (`build.js PERKS`), their cut-in entries, the Leon/Ada and
+  Cloud/Tifa/Aerith CGs (art lists and prompts). They had no bonds, keychains, Christmas options or stamps of their own.
+- Rehomed: the **Black Rose** naginata (Astarion's rank-8 gift) is **the Hermit's first-clear drop** (`build.js BOSS_WEAPON`)
+  and is in Shuffle Time's Swords; the **Suture Kit** fragment (Leon's rank 7) still comes from the 12/12 crossroad's jade
+  path, and any missing fragment can turn up in a Tartarus memory room.
+- Old saves (`core.js migrateRemoved`, every load, slots and codes too): their progress, meeting, registration, phone threads
+  and battle-side ranks are dropped; everything they gave stays (items, gear, the Black Rose, learned MAX skills, fragments).
+  `migrateYear` gives the Black Rose once to a save that cleared the Hermit without it.
+- The engine's perk hooks they used are kept, unassigned, for new links (list at the end of `FEMC-LINK-PERKS.md`).
+- v1 is untouched (`femc-social.js`, `assets/femc/links/`, `story.js`, `secrets/`, codes, portraits). The shared Compendium
+  marks their entries `v1only`: they open only from v1's save and are listed only when a v1 save exists.
+
+**The year runs to early March** (`calendar.js end: '3/7'`, `finalStretch`).
+- February is ordinary third term: 2/3 Setsubun, 2/11 National Foundation Day (off), 2/14 Valentine's Day (a Sunday). 3/5 is
+  graduation. 1/30 is a full moon with no operation (Tartarus closes); 3/6 is the last full moon and the finale's operation;
+  3/7 is the last night (the endings, the bad ending's jump, the end screen, then New Game+).
+- Everything up to the winter solstice kept its date. After it, the last week moved five weeks on with its weekdays
+  (the plot doc has the list), and content windows that meant "until the end" moved with it (seasonal January ones stayed).
+- `core.js endingDue`: the endings follow the finale; a save that played the finale on the old 1/30 (or was in its fight)
+  is marked `finale-early` by `migrateYear` and goes straight to its ending. A save
+  whose ending already played sits on the new last night. Everything else just plays on into February (`migrateYear`, S.yv 2).
+- The fill (`data/living-march.js`): February and March openers for every job and club, 9 routines (one in late January), 7 texts, Valentine's
+  invitations (Akihiko, Yukari, Hanni, Jihoon, Jungwon), a quiet full moon on 1/30 and graduation on 3/5.
+- Tests: `python3 tests/femc_march.py` (calendar, endings on the new dates through the UI, late-January saves walking into
+  February, the removed links and their old saves, the Compendium). Updated for 1/31 → 3/7 or the removed links:
+  femc_building, femc_stats, femc_haechan, femc_living (routines through March), femc_living2 (twelve openers),
+  femc_preparation, femc_shadow_poses; and
+  `tools/femc-check-scenes.py` wants openers for all twelve months.
+
+**Hooks for ranks 11–15** (the next batch):
+- Where: February, 2/1–3/4 (3/5–3/7 belong to the story). A link's `ranks` entries 11–15 with `after` dates there; story ranks
+  (Haechan's `forced`) the same way. Gate new February content on `year-goes-on`.
+- What assumes rank 10 is MAX today: `core.js` linkStatus / linkScene (`p.rank >= 10` → afterMax), finishLink, bond()
+  (no ♪ at MAX), farewellDue, nextTrace / leavesAtMax (`ranks[9]`), migrateForced (`r < 10`), perkToasts ('MAX' label);
+  `menu.js` (MAX evolution of signature skills, `rank >= 10`); `stamps.js` (Bond MAX, All of S.E.E.S.); `build.js` perks
+  (MAX perks sit at rank 10) and `bonds.js` tiers; `ui.js` end screen ("bonds at MAX"); story checks `anyRank(..., 10)` for
+  the true ending (story-act6). Decide per link whether 15 or 10 is "MAX" before changing these.
+- Shinjiro's rank 15 (waking) needs his `closes: '10/4'` and `bonds.js until: '10/3'` rethought for his late ranks.

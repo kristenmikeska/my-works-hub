@@ -6,7 +6,7 @@
    What's in it:
    - Openers for months 2 and 3 on every job / club scene pack that has `openers` (FEMC_GAME_JOB_SCENES, _MORE, CLUBS;
      core.js packPick). A pack's own line for a month always wins (`||=`).
-   - Daily-life routines (format: daily-life.js header, core.js dailyLife), 2/3 to 3/3: Setsubun beans (2/3), the kotatsu,
+   - Daily-life routines (format: daily-life.js header, core.js dailyLife), late January (Fuuka's planner) and 2/3 to 3/3: Setsubun beans (2/3), the kotatsu,
      free attendance, Yunjin on the roof, Mitsuru's council room, the calendar by the fridge, Akihiko's second button, a
      warm March morning.
    - Ambient texts (FEMC_GAME_TEXTS.ambient, core.js nextAmbient), 2/1 to 3/4.
@@ -89,6 +89,23 @@
 
   /* ── Daily life: February to the first days of March ── */
   (W.FEMC_GAME_DAILY_LIFE ||= []).push(
+    // The last days of January: the third term goes on, and February is still all there.
+    { id: 'pages-left', after: '1/26', until: '1/31', slot: 'evening', flags: ['year-goes-on'], events: ['a4-household-introductions'],
+      place: 'Iwatodai Dorm · Lounge', time: 'Evening', bg: 'iwatodaidorm-livingroom-night', scene: [
+        { n: "Fuuka's planner lay open on the lounge table under the lamp, the kind with a week across two pages and a ribbon to keep your place, and she had filled January so full of small neat handwriting that the last week ran up the margins. Readings. Test dates. Somebody's birthday with a star. A grocery list that had wandered in from somewhere else." },
+        { s: 'junpei', f: 'neutral', t: "Huh. I always forget there's a February. Like, January ends and my brain goes, okay, that's it, see you in spring." },
+        { s: 'yukari', f: 'neutral', t: "It's the shortest month, Junpei. It's not hiding." },
+        { n: "Fuuka turned the ribbon over to the next page, the way you lift a lid to check, and February was there, clean, every square empty, the paper still stiff from never having been opened." },
+        { choose: [
+          { t: "(Look at February for a while.)", stat: { kindness: 1 }, then: [
+            { n: "She looked at it longer than a planner deserved. A whole month, untouched. It seemed like a lot, suddenly, and also like nothing, and she let Fuuka close the book over it without saying which." }
+          ] },
+          { t: "Leave it. It'll come on its own.", then: [
+            { s: 'fuuka', f: 'happy', t: "It always does. That's the nice thing about months." },
+            { n: "Fuuka laid the ribbon back across January and closed the planner, and put her pen on top of it, ready for tomorrow." }
+          ] }
+        ] }
+      ] },
     { id: 'setsubun-beans', after: '2/3', until: '2/3', slot: 'evening', flags: ['year-goes-on'], events: ['a4-household-introductions'],
       place: 'Iwatodai Dorm · Lounge', time: 'Evening', bg: 'iwatodaidorm-livingroom-night', scene: [
         { n: "Junpei had lost the vote for oni six to one, the one being Junpei, and he stood in the lounge doorway in a red paper mask from the convenience store with the elastic cutting into his ears and his arms out like a man who had made peace with his fate. Ken had the beans. Ken had read the instructions twice. Ken was going to do this properly." },
@@ -139,7 +156,7 @@
         ] }
       ] },
 
-    { id: 'yunjin-roof', after: '2/10', until: '2/24', slot: 'late', flags: ['year-goes-on', 'arrived-yunjin'],
+    { id: 'yunjin-roof', after: '2/10', until: '2/24', slot: 'late', flags: ['year-goes-on'], events: ['a4-low-tide'],
       place: 'Iwatodai Dorm · Rooftop', time: 'Late Night', bg: 'iwatodaidorm-roof-night', scene: [
         { n: "Yunjin was on the roof at one in the morning in her yellow puffer with the hood up and two cans of hot corn soup from the machine at the station, one in each pocket, as if she'd known exactly who would come up the stairs, which she said she had." },
         { s: 'yunjin', f: 'neutral', t: "The walls here are paper, babe. You've been awake since Tuesday. I can hear you turning over. You turn over like you're losing an argument." },

@@ -225,11 +225,13 @@ window.FemcGame = (() => {
        end screen instead of into a February nobody wrote for it;
      - the Black Rose naginata is the Hermit's first-clear drop now (it was Astarion's rank-8 gift): a save that cleared the
        Hermit without it gets it.
-     A save past the old finale but before its ending needs no move: endingDue() sends it to the ending (see below). A save
-     before the old finale just plays on into February. */
+     - a save that already played the old finale (or is in the middle of its fight) is marked 'finale-early': once the finale
+       is in its events, endingDue() sends it to the ending on the new last night instead of on into February.
+     A save before the old finale just plays on into February. */
   function migrateYear(out, from) {
     if (from >= YEAR_V) return false;
     if ((out.events || []).includes('end-ending')) { out.day = END(); out.slot = 'late'; out.tonight = null; }
+    else if ((out.events || []).includes('a6-last-train') || [out.handoff?.request?.op, out.handoff?.request?.script].includes('finale')) (out.flags ||= {})['finale-early'] = true;
     const owned = out.battleSave?.gear?.owned;
     if (owned && !(owned.nag_rose > 0) && ((out.tartarus?.bosses || []).includes('hermit') || out.flags?.['op-hermit'])) owned.nag_rose = 1;
     out.yv = YEAR_V;
@@ -1240,9 +1242,10 @@ window.FemcGame = (() => {
   /* ── The end of the year ── */
   // { end: 'id' } in a scene (or the solstice's route-bad flag) stops the calendar: the game jumps to the last night (calendar
   // `end`, 3/7, late), where the endings event plays, then the end screen. The finale (a6-last-train) normally plays the night
-  // before; if it played earlier (a save from before the year ran to March, finished on the old date), its ending is due too.
+  // before; a save from before the year ran to March that played it on the old date ('finale-early', migrateYear) goes to its
+  // ending too.
   const FINALE = 'a6-last-train';
-  const endingDue = () => !!(S.flags['the-end'] || S.flags['route-bad'] || (S.events.includes(FINALE) && S.day < END() - 1)) && S.day < END();
+  const endingDue = () => !!(S.flags['the-end'] || S.flags['route-bad'] || (S.flags['finale-early'] && S.events.includes(FINALE))) && S.day < END();
   function jumpToEnd() { S.day = END(); S.slot = 'late'; S.tonight = null; save(); }
   function endingName() {
     const f = S.flags;

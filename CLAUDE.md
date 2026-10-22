@@ -43,8 +43,8 @@ Kat's fiction archive (13 worlds) plus FEMC mode, a Persona 3 Portable FeMC-styl
 
 ## Where things stand (updated 2026-10-21, after the rewards batch)
 The existing revamp baseline is built (the latest friend-link improvements below are held locally):
-- all 44 links
-- the full story through every ending, plus the bad ending and New Game+
+- all 39 links (44 until Leon, Cloud, Noctis, Astarion and Shadowheart were removed, 2026-10-21)
+- the full story through every ending, plus the bad ending and New Game+ (the year runs 4/6 → 3/7 since 2026-10-21)
 - the battle game (Tartarus node map, 8 full-moon operations, Theurgy, shops, evolutions, Haenim's route forms, difficulty, settings, save slots)
 - a single Christmas Eve picker (the 12/24 story event)
 
@@ -133,7 +133,12 @@ Art is in `art/theurgy/` and `art/summon/solar-evoke-*`, made with `tools/femc-t
 - *Stamps:* 28 `p3s-*` stamps in `achievements.js` (group "Persona 3: Solstice"; `unlock(id, { quiet })` and `byId` are new). `assets/femc/game/stamps.js` checks the save after every save and awards with an in-game toast (more than three at once collapse into a count); battle.js awards the first summon / bond skill through `parent.FemcStamps` and sets `save.feats`. The passport has a Persona 3: Solstice section, shown once one is earned or FEMC mode was entered.
 - Only Jaehyun's Audible is still stubbed. `python3 tests/femc_extras.py` covers it; femc_building (shuffle card count 21, one stub), femc_stats (one stub) updated. HTML: achievements v20 everywhere, femc-mode v97 (all pages), femc-social v97, femc-menu v41, femc-eggs v19, passport.js v7, build v5 (both pages), battle v28, core v17, menu v9, ui v17, places v16; new gacha.js, stamps.js, gacha.css (v1).
 
-**Next:** the rest of batch A in section 7 of `FEMC-REVAMP-ROADMAP.md` (remaining New Adds art), and the rest of batch D (weapons with looks for the other fighters, per-character reward lists).
+**Five links removed and the year to March: built (2026-10-21), Kat's rulings in the lore bible.** Details in roadmap section 9 (spoiler-free) and the plot doc §20 (story side).
+- *Removed:* Leon, Cloud, Noctis, Astarion, Shadowheart (link files, stubs, story lines, run-ins, 23 perks, cut-in list, art-list CGs). Black Rose naginata → the Hermit's first-clear drop (`build.js BOSS_WEAPON`) and Shuffle Time. Old saves: `core.js migrateRemoved` (every load) drops their progress, keeps what they gave. Unassigned perk hooks stay in the engine for new links. v1 untouched; the shared Compendium's entries for them are `v1only` (open from v1's save only, listed only with a v1 save).
+- *The year:* `calendar.js end: '3/7'` and `finalStretch` (2/1, graduation 3/5, finale 3/6, end 3/7); 1/30 is a full moon with no operation. Post-solstice story re-paced (dates in the plot doc). `core.js endingDue` follows the finale; `migrateYear` (S.yv 2) keeps late-January saves playing on and marks ones that played the old finale `finale-early` so they go to their ending. `data/living-march.js` is the February / early-March fill (openers, routines, texts, Valentine's invites, two story events) and documents where ranks 11–15 plug in (also roadmap section 9).
+- `python3 tests/femc_march.py`. Updated: femc_building, femc_stats, femc_haechan, femc_living, femc_living2, femc_preparation, femc_shadow_poses, tools/femc-check-scenes.py. HTML: femc-mode v98 (FEMC_ASSET_VERSION 133, all pages), core v18, ui v18, calendar v4, daily-life v5, story-act2..6 and endings bumped, living-* bumped, build v6 (both pages), new living-march (v1).
+
+**Next:** ranks 11–15 (Haechan, Jungwon, Akihiko, Shinjiro) in February, then the new links Danielle, Jaemin and Chenle; and the rest of batch A in section 7 of `FEMC-REVAMP-ROADMAP.md` (remaining New Adds art), and the rest of batch D (weapons with looks for the other fighters, per-character reward lists).
 
 ## Roadmap after the current art pivot
 1. **Merge the two halves into one game.** Kat wants it to feel like one game.

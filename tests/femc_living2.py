@@ -203,7 +203,7 @@ try:
       return {jobs,clubs,runIns:G.D.runIns.length,variants:Object.keys(G.D.variants).length}})()""")
     print(json.dumps(counts))
     ok(len(counts['jobs']) == 10, f"ten jobs: {list(counts['jobs'])}")
-    ok(all(v['shifts'] >= 10 and v['beats'] >= 3 and v['quiet'] >= 10 and v['openers'] == 10 for v in counts['jobs'].values()), f"every job has 10+ full shifts, an arc, quiet moments and an opener a month: {counts['jobs']}")
+    ok(all(v['shifts'] >= 10 and v['beats'] >= 3 and v['quiet'] >= 10 and v['openers'] == 12 for v in counts['jobs'].values()), f"every job has 10+ full shifts, an arc, quiet moments and an opener a month (April to March): {counts['jobs']}")
     ok(sum(v['shifts'] for v in counts['jobs'].values()) - 21 >= 90, 'at least 90 new full shift scenes')
     ok(len(counts['clubs']) == 4 and all(v['join'] and v['shifts'] >= 8 and v['beats'] >= 3 for v in counts['clubs'].values()), f"four clubs with a join scene, sessions and an arc: {counts['clubs']}")
     ok(counts['runIns'] >= 40, f"{counts['runIns']} run-ins")

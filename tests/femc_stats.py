@@ -474,7 +474,7 @@ try:
     p.eval("T.fresh('%s','after',{ranks:%s});FemcMenu.open('bonds');true" % (school_wed, json.dumps(ranks)))
     time.sleep(0.4)
     txt = p.eval("document.querySelector('.g-fm-body')?.textContent||''")
-    ok(all(n in txt for n in ['Learning Mode', 'Walkies', 'Kitchen Duty', 'Editing Bay', 'Fishing Trip', 'Sewing Machine', 'Garden Patch', 'Morning Stretch', 'Pilates Partner']), 'the Bonds tab lists the new perks')
+    ok(all(n in txt for n in ['Learning Mode', 'Walkies', 'Kitchen Duty', 'Editing Bay', 'Sewing Machine', 'Garden Patch', 'Morning Stretch', 'Pilates Partner']), 'the Bonds tab lists the new perks')
     shot('bonds-desktop')
     p.eval("FemcMenu.close();true")
 
