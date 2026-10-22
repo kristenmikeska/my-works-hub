@@ -150,6 +150,7 @@ The dorm and Kirijo guesthouse are separate homes. Visiting the dorm, eating the
 | Kirijo guesthouse by the station | Minji, Jungwon, Jihoon, Jaehyun, Mark, Cherry |
 | Kirijo guesthouse by the station | Junkyu, Asahi, Hyunsuk, Jaehyuk |
 | Kirijo guesthouse by the station | Sunoo, Heeseung, Sunghoon, Jay, Jake, Niki |
+| Kirijo guesthouse by the station | Danielle, Jaemin, Chenle (2026-10-22) |
 | Iwatodai dorm (not searchers) | Kuromi (from June) and My Melody (from July), exchange students |
 
 Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve this split to keep the dorm cast manageable. The others follow their existing room references. Hanni and Hyein have separate rooms. No new Gekkoukan enrollment is implied by lodging or a school visit.
@@ -220,6 +221,8 @@ Kat explicitly chose Yunjin at the dorm and Minji at the guesthouse. Preserve th
 
 Haechan stays Universe and Jungwon stays Hierophant.
 
+**New links' arcana (picked 2026-10-22, for Kat to confirm; shared arcana are allowed):** Danielle: Devil (P5's Devil is the gossip journalist) · Jaemin: Sun (P5's Sun learns to sell himself honestly) · Chenle: Hermit (P3's online gamer, P5's shut-in hacker).
+
 ## Kat's rulings (2026-10-21): Haechan and the Hoax ending
 - **Haechan's rank becomes automatic** (story-driven, like Wren's): his ranks happen on set dates as the story moves, so his scenes always match where the player is. Choices inside his scenes still decide romance or friendship and which world he settles toward. Then he gets much more content: late nights through his whole stretch, dorm moments, texts, reactions to big story events, and scenes with Hanni, Hyein, Mark, Yunjin and Jungwon. Every special scene branches by the route the player is heading toward.
 - **The Hoax ending is "the unfated life."** Hoax is the one world without Haechan, so it's Solar choosing a life nobody arranged for her. Destiny isn't a cage; being drawn to someone isn't the same as being bound to them. It's bittersweet, not tragic: Haechan, who understands the pull best, is the one who lets her choose. Jungwon is the bridge, existing in both Hoax and strangers. Friend-zoning Haechan is possible, and Kat finds it hilarious.
@@ -242,6 +245,7 @@ Haechan stays Universe and Jungwon stays Hierophant.
 - **Maybe rank 15 later (lower priority):** Hanni, Hyein, Mark, Minji, Jihoon.
 - **Remove fully:** Leon, Cloud, Noctis, Astarion, Shadowheart. Rehome their extras (e.g. Astarion's black-rose naginata), keep old saves working, and drop their perks, matchmaking threads and art-list items. **Sebastian stays.**
 - **New links:** Danielle, Jaemin and Chenle (Runners searchers). Jeno: not now.
+- **Built (2026-10-22): Danielle, Jaemin and Chenle.** Three Runners searchers who cross in November once Solar has chased enough Runners memories (miss them and they wait for New Game+), each with ten ranks, texts, holidays, everyday moments around town and perks. They live at the Kirijo guesthouse. They're friendship links. Until Kat's portraits exist they appear as a silhouette; dropping the portrait files in (and running the portrait tool) shows their faces everywhere.
 - **Built (2026-10-21): removals and March.** Leon, Cloud, Noctis, Astarion and Shadowheart are out of the revamp (v1 keeps them). Scenes they were part of were trimmed to read well without them; old saves keep loading and keep anything they gave; the Black Rose naginata is now a boss's first-clear drop. The year runs to early March: February is a full extra month (the cold, Setsubun, Valentine's Day, graduation on 3/5), and the end of the year moved to match. February is where ranks 11–15 will go.
 - **Solar's parents (Jaesang and Solji):** maybe as texts or one scene, not full links. Undecided.
 - **Later idea:** cameos from Kat's other universes (e.g. Delicate) as Persona-world residents, like Soomi as a Rise-style celebrity.

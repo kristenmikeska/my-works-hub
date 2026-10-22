@@ -731,6 +731,22 @@ window.FemcBuild = (() => {
     ['cherry', 6, 'On Ice', 'battle', { onIce: {} }, 'Solar resists Ice and gets agility up for the first turn of every battle.'],
     ['cherry', 8, 'Try Me', 'assist', { tryMe: {} }, 'Once per battle, an attack aimed at Solar while she’s Down is cancelled, and the attacker is Distressed.'],
     ['cherry', 10, 'Bestie Clause', 'max', { bestie: { dmg: 0.2 } }, 'Solar’s crits on a debuffed foe Distress it, and Distressed foes take 20% more crit damage.'],
+    // The late Runners arrivals (2026-10-22). Their perks reuse hooks that were unassigned since the 2026-10-21 removals.
+    ['danielle', 2, 'Line Items', 'daily', { matSell: 0.2 }, 'Mayoido Antiques pays 20% more for materials. She audits the counter while you sell.'],
+    ['danielle', 4, 'First Look', 'assist', { sneak: { crit: 15 } }, 'Solar’s attacks on foes that haven’t acted yet this battle crit 15% more often.'],
+    ['danielle', 6, 'Open Door', 'tartarus', { lockpick: 1 }, 'Once per floor, a locked chest opens without a Tartarus Key.'],
+    ['danielle', 8, 'The Folder', 'tartarus', { missionBriefing: 3 }, 'Full-moon operations start with the party’s attack up for 3 turns.'],
+    ['danielle', 10, 'Read Faster', 'max', { warpStrike: {} }, 'Solar’s first attack each battle always goes first and can’t miss.'],
+    ['jaemin', 2, 'The Pitch', 'daily', { jobPay: { all: 10 } }, 'Every part-time job pays 10% more.'],
+    ['jaemin', 4, 'Hype Man', 'assist', { limitBreak: { th: 5 } }, 'Solar’s Theurgy gauge gains +5 every time she takes damage.'],
+    ['jaemin', 6, 'Recovery Party', 'tartarus', { nightOrchid: 0.3 }, 'One empty room on each floor becomes a small rest stop that restores 30% HP and SP.'],
+    ['jaemin', 8, 'Sleep It Off', 'daily', { powerNap: 1 }, 'Resting at the dorm makes Solar Great the next day, not just Good.'],
+    ['jaemin', 10, 'Afterparty', 'max', { armiger: { pct: 0.2 } }, 'While Solar’s Theurgy gauge is full, each of her attacks adds an encore hit for +20% Almighty damage.'],
+    ['chenle', 2, 'Respectfully, Though', 'daily', { guidance: 1 }, 'Once a week, Solar can retry a wrong answer in class.'],
+    ['chenle', 4, 'Bubble', 'assist', { sanctuary: { below: 0.2 } }, 'Once per battle, the first ally to fall below 20% HP can’t be targeted until their next turn.'],
+    ['chenle', 6, 'Hold the Corner', 'battle', { knifeParry: { chance: 0.4 } }, 'When Solar Guards, physical hits are blocked for no damage 40% of the time.'],
+    ['chenle', 8, 'On My Call', 'assist', { buster: { dmg: 0.2 } }, 'The party’s physical attacks on Down foes deal 20% more damage.'],
+    ['chenle', 10, 'Just Eat', 'max', { learn: 'just_eat' }, 'Solar learns Just Eat (once per battle, low SP): restores a lot of HP to the whole party and cures their ailments.'],
     // ── Other links
     ['rio', 2, 'Practice Swing', 'daily', { clubStat: { 'club-tennis': { courage: 1, proficiency: 1 } } }, 'Tennis club practice gives +1 Courage and +1 Proficiency.'],
     ['rio', 4, 'Second Serve', 'assist', { secondServe: {} }, 'Once per battle, if Solar’s attack misses, she gets an immediate retry.'],
@@ -789,9 +805,10 @@ window.FemcBuild = (() => {
     big_hug: { name: 'Big Hug', el: 'heal', type: 'heal', target: 'ally', full: true, cureAll: true, once: true, power: 999, cost: { sp: 8 }, desc: 'Once per battle. Fully heals one ally and cures all their ailments.' },
     titanic_kiss: { name: 'Titanic Kiss', el: 'support', type: 'charge', target: 'allies', mult: 2.5, cost: { sp: 18 }, desc: 'The party’s next magic attack deals 2.5× damage.' },
     pirouette: { name: 'Pirouette', el: 'pierce', type: 'dmg', target: 'all', power: 66, cost: { hp: 14 }, crit: 6, dodgeNext: true, desc: 'Medium pierce damage to all foes; Solar dodges the next attack aimed at her.' },
-    megidolaon: { name: 'Megidolaon', el: 'almighty', type: 'dmg', target: 'all', power: 140, cost: { sp: 48 }, desc: 'Heavy Almighty damage to all foes.' }
+    megidolaon: { name: 'Megidolaon', el: 'almighty', type: 'dmg', target: 'all', power: 140, cost: { sp: 48 }, desc: 'Heavy Almighty damage to all foes.' },
+    just_eat: { name: 'Just Eat', el: 'heal', type: 'heal', target: 'allies', power: 70, cureAll: true, once: true, cost: { sp: 10 }, desc: 'Chenle’s arrangement. Once per battle: restores a lot of HP to the whole party and cures their ailments.' }
   });
-  ['grand_slam', 'frozen_verdict', 'featherman_strike', 'valkyrie', 'undying_love', 'fangs_out', 'cross_slash', 'warding_bond', 'suplex', 'widows_kiss', 'runway', 'big_hug', 'titanic_kiss', 'pirouette', 'megidolaon'].forEach(k => { D.skills[k].id = k; });
+  ['grand_slam', 'frozen_verdict', 'featherman_strike', 'valkyrie', 'undying_love', 'fangs_out', 'cross_slash', 'warding_bond', 'suplex', 'widows_kiss', 'runway', 'big_hug', 'titanic_kiss', 'pirouette', 'megidolaon', 'just_eat'].forEach(k => { D.skills[k].id = k; });
   /* Night-only items (perk kits): used up or gone by morning. aid_spray was a removed link's kit (2026-10-21); kept so an old
      night in progress still knows it. */
   Object.assign(D.items, {
@@ -845,7 +862,9 @@ window.FemcBuild = (() => {
     ['mark', 'Mark', 'neutral'], ['haechan', 'Haechan', 'happy'], ['yunjin', 'Yunjin', 'happy'], ['jungwon', 'Jungwon', 'serious'], ['jihoon', 'Jihoon', 'happy'],
     ['junkyu', 'Junkyu', 'happy'], ['sunoo', 'Sunoo', 'happy'], ['cherry', 'Cherry', 'neutral'], ['rio', 'Rio', 'happy'], ['saori', 'Saori', 'neutral'],
     ['ann', 'Ann', 'happy'], ['haru', 'Haru', 'happy'], ['kasumi', 'Kasumi', 'happy'], ['kuromi', 'Kuromi', 'happy'], ['mymelody', 'My Melody', 'happy'],
-    ['elizabeth', 'Elizabeth', 'happy'], ['wren', 'Wren', 'neutral']].forEach(([id, name, face]) => { WHO[id] = { name, face }; });
+    ['elizabeth', 'Elizabeth', 'happy'], ['wren', 'Wren', 'neutral'],
+    // No portraits yet (2026-10-22): battle.js shows a silhouette until portraits/index.js lists their faces.
+    ['danielle', 'Danielle', 'happy'], ['jaemin', 'Jaemin', 'happy'], ['chenle', 'Chenle', 'neutral']].forEach(([id, name, face]) => { WHO[id] = { name, face }; });
 
   /* ── Perk rules ── */
   const fighter = id => D.party.some(m => m.id === id && id !== 'solar');

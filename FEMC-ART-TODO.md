@@ -20,6 +20,18 @@ Persona 3 Reload style character portrait sheet, matching the attached portrait'
 ```
 Save each as `<name>-portraits.png`. Until these exist, their scenes use a silhouette.
 
+**Already wired (2026-10-22): the links are in the game and wait only for the files.** Every face they use resolves the
+moment these exist (no code change; the game reads `portraits/index.js`):
+- Cut each sheet into `~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits/<Name>/<Name>-<Emotion>.png`
+  (`Danielle/`, `Jaemin/`, `Chenle/`; angry and embarrassed are fine as names: the tool maps them to serious and flustered),
+  then run `python3 tools/femc-portraits.py danielle jaemin chenle`.
+- That writes `assets/femc/portraits/danielle/{neutral,happy,sad,serious,surprised,flustered}.webp` (the same for `jaemin/`
+  and `chenle/`) and lists them in `assets/femc/portraits/index.js`. Bump `portraits/index.js?v=` in femc-game.html, add a
+  size in `assets/femc/portraits/scale.js` if one looks off, and check each face in a scene.
+- Until then: scene speakers show the silhouette (core.js `pendingFace`, from each link's `portraitPending: true`, which can
+  stay); phone threads, Go Out cards and pickers show no face; battle perk cut-ins show a silhouette (battle.js
+  `perkFaceHtml`; the cut-in face is `happy` for Danielle and Jaemin and `neutral` for Chenle, `build.js WHO`).
+
 ---
 
 ## 1. Lantern windows (the last full-moon fight)

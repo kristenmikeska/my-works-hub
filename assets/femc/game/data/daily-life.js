@@ -256,7 +256,8 @@ window.FEMC_GAME_DAILY_LIFE = [
       { s: 'yunjin', f: 'serious', t: "He was NOT laughing at my accent, babe. Nothing about that boy is a coincidence." }
     ] },
 
-  { id: 'sunews-chairs', after: '11/9', slot: 'evening', events: ['a4-household-introductions', 'a4-names'],
+  // Once Chenle has crossed (a4-twelve, 2026-10-22) his calls from that night have been answered; this one is for before.
+  { id: 'sunews-chairs', after: '11/9', slot: 'evening', events: ['a4-household-introductions', 'a4-names'], noFlags: ['arrived-chenle'],
     place: 'Iwatodai Dorm · Lounge', time: 'Evening', bg: 'iwatodaidorm-livingroom-night', scene: [
       { n: "It happened again one night, the bright little chime from an app none of them had, and this time there were four phones. Solar's. Hanni's. Hyein's. And one more, at the far end of the lounge, in the pocket of the boy sitting on the arm of the chair nearest the stairs, which chimed exactly when theirs did." },
       { phone: [

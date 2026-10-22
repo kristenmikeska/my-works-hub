@@ -84,6 +84,7 @@ window.LW = (() => {
     if (d > G.dayOf('12/21')) F['year-goes-on'] = true;
     [['9/12', 'arrived-hanni'], ['9/12', 'arrived-hyein'], ['9/19', 'arrived-jihoon'], ['9/26', 'arrived-minji'], ['10/10', 'arrived-yunjin'], ['10/14', 'arrived-jungwon'],
      ['10/24', 'arrived-jaehyun'], ['10/31', 'arrived-crew'], ['11/4', 'arrived-haechan'], ['11/7', 'arrived-sunoo'], ['11/13', 'arrived-cherry'], ['11/18', 'arrived-mark'],
+     ['11/10', 'arrived-danielle'], ['11/16', 'arrived-jaemin'], ['11/16', 'arrived-chenle'],
      ['10/17', 'awake-jihoon'], ['10/31', 'awake-minji'], ['11/28', 'awake-jungwon'], ['12/5', 'awake-haechan']].forEach(([w, f]) => { if (d > G.dayOf(w)) F[f] = true; });
     // Story-forced links (Wren, Elizabeth) are kept out of the way: their ranks are the story's, not this test's.
     Object.values(G.LINKS).filter(l => l.forced).forEach(l => { G.S.links[l.id] = { rank: 10, xp: 0, seen: [], rankDay: {}, push: 0, reversed: false }; });

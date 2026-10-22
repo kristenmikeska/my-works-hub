@@ -1,6 +1,9 @@
 window.LinkAudit = (() => {
  const G=FemcGame, SC=FemcScene, copy=x=>JSON.parse(JSON.stringify(x));
- const assets=new Set(), covered=new Set(), errors=[], seenFaces=new Set();
+ const assets=new Set(), covered=new Set(), errors=[], seenFaces=new Set(), seenSil=new Set(), silBad=[];
+ // Speakers whose portraits aren't drawn yet (a link's portraitPending, core.js pendingFace): shown by name in the box.
+ const pendingNames=()=>new Map(Object.values(G.LINKS).filter(l=>G.pendingFace(l.id)).map(l=>[G.name(l.id),l.id]));
+ const checkSil=(el,key)=>{const who=pendingNames().get(el.querySelector('.gs-name')?.textContent||'');if(!who||el.querySelector('.gs-text')?.classList.contains('narration'))return;const sil=el.querySelector('.gs-silhouette'),img=el.querySelector('.gs-portrait');if(sil&&!sil.hidden&&!sil.classList.contains('art')&&img.hidden)seenSil.add(who);else silBad.push(key+': '+who+' without a silhouette');};
  const original=copy(G.S), base=copy(G.S); base.phase='play'; base.started=true;
  G.setSetting('text','instant'); G.setSetting('music',0); G.setSetting('sfx',false); G.setSetting('auto','off');
  const assert=(ok,msg)=>{if(!ok) throw Error(msg)};
@@ -8,7 +11,9 @@ window.LinkAudit = (() => {
  const walk=(a,fn,p='')=>(a||[]).forEach((l,i)=>{const key=p+'/'+i;fn(l,key);walk(l.then,fn,key+'/then');walk(l.else,fn,key+'/else');(l.choose||l.route||[]).forEach((o,j)=>{fn(o,key+'/option'+j,true);walk(o.then,fn,key+'/option'+j)});});
  const reset=(id,e,p)=>{
   Object.keys(G.S).forEach(k=>delete G.S[k]);Object.assign(G.S,copy(base));
-  G.S.flags={armband:true,...p.flags};G.S.met=p.met||[];G.S.events=p.events||[];{const v=p.low?0:200;G.S.stats={knowledge:v,courage:v,proficiency:v,charm:v,kindness:v};}
+  // A link with an arrival story event (storyEvents, e.g. Danielle's a4-light-on) can only be met after it: it has played.
+  const arrival=G.LINKS[id]?.storyEvents||[];
+  G.S.flags={armband:true,...Object.fromEntries(arrival.length?[['arrived-'+id,true]]:[]),...p.flags};G.S.met=p.met||[];G.S.events=[...new Set([...(p.events||[]),...arrival])];{const v=p.low?0:200;G.S.stats={knowledge:v,courage:v,proficiency:v,charm:v,kindness:v};}
   G.S.day=G.dayOf(p.date||e.after||'1/24');G.S.slot=id==='mark'?'evening':'after';G.S.route.frags={R:9,S:9,H:9};
   G.S.links[id]={rank:p.rank??(e.kind==='rank'?e.i:e.kind==='after'?10:5),xp:0,seen:[],rankDay:{},hung:e.i,after:e.i,push:0,reversed:false,route:p.route||'friend'};
   for(const [cid,r] of Object.entries(p.ranks||{}))G.S.links[cid]={rank:r,xp:0,seen:[],rankDay:{},push:0,reversed:false};
@@ -59,6 +64,7 @@ window.LinkAudit = (() => {
    for(const img of el.querySelectorAll('img:not([hidden])'))if(img.getAttribute('src'))assets.add(img.src);
    const bg=el.querySelector('.gs-bg').style.backgroundImage.match(/url\("?(.*?)"?\)/);if(bg)assets.add(bg[1]);
    const img=el.querySelector('.gs-portrait');if(!phone&&!img.hidden&&img.alt)seenFaces.add(img.alt+' '+img.getAttribute('src'));
+   if(!phone)checkSil(el,key);
    el.click();
   }
   el.querySelector('[data-t=log]').click();
@@ -81,6 +87,7 @@ window.LinkAudit = (() => {
    for(const img of el.querySelectorAll('img:not([hidden])'))if(img.getAttribute('src'))assets.add(img.src);
    const bg=el.querySelector('.gs-bg').style.backgroundImage.match(/url\("?(.*?)"?\)/);if(bg)assets.add(bg[1]);
    const img=el.querySelector('.gs-portrait');if(!phone&&!img.hidden&&img.alt)seenFaces.add(img.alt+' '+img.getAttribute('src'));
+   if(!phone)checkSil(el,key);
    el.click();
   }
   el.querySelector('[data-t=log]').click();
@@ -102,8 +109,12 @@ window.LinkAudit = (() => {
   return {key,presets:configs.length,paths,linesAndChoices:staticNodes.length,min,max};
  }
  async function assetCheck(){return {count:assets.size,missing:(await Promise.all([...assets].map(u=>fetch(u,{method:'HEAD'}).then(r=>r.ok?null:u).catch(()=>u)))).filter(Boolean),faces:seenFaces.size};}
- function faces(ids=['hyein','mark']){const bad=[];for(const id of ids)for(const e of sceneList(id))walk(e.scene,l=>{if(l.s&&l.f&&!(FEMC_PORTRAITS[l.s]||[]).includes(l.f))bad.push(l.s+'/'+l.f);});return bad;}
- return {one,sceneList,assetCheck,faces,reset,play,playA,expected,original,base};
+ // A speaker whose portraits aren't drawn yet may use only the six expressions tools/femc-portraits.py writes (Kat's sheets:
+ // neutral, happy, sad, angry → serious, surprised, embarrassed → flustered), so every face resolves once the files exist.
+ const SIX=['neutral','happy','sad','serious','surprised','flustered'];
+ function faces(ids=['hyein','mark']){const bad=[];for(const id of ids)for(const e of sceneList(id))walk(e.scene,l=>{if(l.s&&l.f&&!(G.pendingFace(l.s)?SIX:(FEMC_PORTRAITS[l.s]||[])).includes(l.f))bad.push(l.s+'/'+l.f);});return bad;}
+ const silhouettes=()=>({seen:[...seenSil],bad:silBad.slice(0,8)});
+ return {one,sceneList,assetCheck,faces,silhouettes,reset,play,playA,expected,original,base};
 })();
 LinkAudit.progression = async (id,low=false,requireAll=true) => {
  const G=FemcGame, A=LinkAudit,L=G.LINKS[id], trace=[];

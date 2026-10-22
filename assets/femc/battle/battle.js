@@ -1339,7 +1339,7 @@
     stairs: { name: 'Stairs', icon: 'room-stairs', color: '#ff4f9e' }, event: { name: 'Something here', icon: 'room-event', color: '#ff8cc0' }, empty: { name: 'Corridor', icon: 'room-empty', color: '#8a7a9a' },
     shrine: { name: 'Night Orchid', icon: 'room-clock', color: '#c9b8ff' }
   };
-  /* Tartarus bond perks on a fresh floor (build.js): Koromaru's Good Nose (one more chest), the Night Orchid hook (unassigned since 2026-10-21) (a
+  /* Tartarus bond perks on a fresh floor (build.js): Koromaru's Good Nose (one more chest), Jaemin's Recovery Party (the nightOrchid hook) (a
      shrine), Judy's Tech Savvy (locked chests roll one more item), Fuuka's Oracle Ping (chests and events marked), Widowmaker's
      Infra-Sight (Shadow rooms marked), Mitsuru's Field Report (the way to the stairs), Rohan's Sketch the Floor (floors cleared
      before are fully mapped), Mark's Setlist (one more layer ahead). Mint Blossom can turn up in a chest from Arqa on. */
@@ -1640,7 +1640,7 @@
       return null;
     }
     if (n.type === 'shrine' && !n.used) {
-      // Night Orchid (unassigned since 2026-10-21): a small shrine in an empty room.
+      // Recovery Party (Jaemin; the nightOrchid hook): a small shrine in an empty room.
       n.used = true; sfx('heal'); mark('night-orchid');
       carryEach(u => { u.hp = Math.min(u.maxHp, Math.round(u.hp + u.maxHp * 0.3)); u.sp = Math.min(u.maxSp, Math.round(u.sp + u.maxSp * 0.3)); });
       await roomPanel({ bg: floor.bg, cls: 'clock', kicker: 'Night Orchid', title: 'A SMALL SHRINE', body: '<p>Night orchids around a little stone shrine. Everyone recovers 30% of their HP and SP.</p>', name: 'shrine' });
@@ -1829,7 +1829,7 @@
     const perks = BLD && HO && !(RL && RL.noPerks) ? BLD.battlePerks(save, hoAvail()) : {};
     curPerks = perks;
     if (perks.thirdEye) kinds.forEach(k => { const d = D.enemies[k]; const kn = save.known[k]; if (!d || d.gimmick || !kn || !Object.keys(kn).length) return; D.affinityOrder.forEach(el => { kn[el] = true; }); });
-    // Tonight's extras: Yunjin's mood for this floor, Jihoon's Almighty Hoon after a strong win, Mission Briefing (unassigned since 2026-10-21), the Moon's curse.
+    // Tonight's extras: Yunjin's mood for this floor, Jihoon's Almighty Hoon after a strong win, Danielle's The Folder (missionBriefing), the Moon's curse.
     const startBuffs = [], mods = Object.assign({}, fx.mods);
     if (run && run.mood && run.mood.fi === run.fi) { if (run.mood.stat === 'crit') mods.crit = (mods.crit || 0) + 15; else startBuffs.push(run.mood.stat); }
     if (run && run.hoon) { startBuffs.push('atk'); run.hoon = false; }
@@ -2799,6 +2799,11 @@
      portrait cut-in; the Persona cut-in setting decides how often (always / the first time per friend each battle / off, and
      never during Rush). quiet perks only log and pop a label. */
   const PERK_FACE = l => { const w = BLD && BLD.WHO[l]; return `${D.portraits}${l}/${w ? w.face : 'neutral'}.webp?v=${V()}`; };
+  /* A link whose portraits aren't drawn yet (Danielle, Jaemin, Chenle, 2026-10-22) cuts in as a silhouette: the life sim's
+     portrait index (portraits/index.js, loaded by femc-game.html, the frame's parent) has no faces for it. Once Kat's files
+     are in and the index lists them, the portrait shows. Without an index to ask (the practice page), the face is tried. */
+  const PERK_INDEX = () => { try { return window.FEMC_PORTRAITS || (window.parent !== window && window.parent.FEMC_PORTRAITS) || null; } catch (e) { return null; } };
+  const perkFaceHtml = l => { const ix = PERK_INDEX(); return ix && !(ix[l] || []).length ? '<div class="pk-face fcb sil" aria-hidden="true"></div>' : `<div class="pk-face fcb"><img src="${PERK_FACE(l)}" alt=""></div>`; };
   async function perkCut(e) {
     const who = (BLD && BLD.WHO[e.link]) || { name: e.link }, tgt = e.tgt && B.U(e.tgt);
     blogAdd(`${who.name}: ${e.name}${e.assist ? ' (assist)' : ''}${e.what ? ` · ${e.what}` : ''}`, 'perk');
@@ -2813,7 +2818,7 @@
     const el = document.createElement('div');
     el.className = `bt-perkcut${reduced ? ' reduced' : ''}${e.assist ? ' assist' : ''}`;
     el.style.setProperty('--spd', speed());
-    el.innerHTML = `<div class="pk-band"><div class="pk-face fcb"><img src="${PERK_FACE(e.link)}" alt=""></div><p><small>${e.assist ? 'Assist' : e.by ? 'Bond' : 'Bond · ' + esc(who.name)}</small><b>${esc(e.name)}</b><em>${esc(who.name)}</em></p></div>`;
+    el.innerHTML = `<div class="pk-band">${perkFaceHtml(e.link)}<p><small>${e.assist ? 'Assist' : e.by ? 'Bond' : 'Bond · ' + esc(who.name)}</small><b>${esc(e.name)}</b><em>${esc(who.name)}</em></p></div>`;
     BT.cut.appendChild(el);
     sfx('summon');
     mark('perk-cut'); mark('perk-cut-' + e.link);

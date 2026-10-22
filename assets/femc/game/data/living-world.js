@@ -6,7 +6,8 @@
    scenes (data/living-nights.js) hold to it: a guesthouse resident's late night is a visit that ends, a walk, or a call. */
 window.FEMC_GAME_LODGING = {
   dorm: ['hanni', 'hyein', 'yunjin', 'haechan'],
-  guesthouse: ['minji', 'jungwon', 'jihoon', 'jaehyun', 'mark', 'cherry', 'junkyu', 'asahi', 'hyunsuk', 'jaehyuk', 'sunoo', 'heeseung', 'sunghoon', 'jay', 'jake', 'niki'],
+  guesthouse: ['minji', 'jungwon', 'jihoon', 'jaehyun', 'mark', 'cherry', 'junkyu', 'asahi', 'hyunsuk', 'jaehyuk', 'sunoo', 'heeseung', 'sunghoon', 'jay', 'jake', 'niki',
+    'danielle', 'jaemin', 'chenle'], // the late Runners arrivals (2026-10-22)
   // S.E.E.S. live in the dorm (Shinjiro from 8/7, Ken and Koromaru from 8/7, Aigis from Yakushima).
   sees: ['akihiko', 'mitsuru', 'yukari', 'junpei', 'fuuka', 'aigis', 'ken', 'koromaru', 'shinjiro']
 };

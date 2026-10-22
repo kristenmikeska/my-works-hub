@@ -741,7 +741,13 @@ window.FemcGame = (() => {
   const faceId = id => SAME_FACE[id] || id;
   // Speakers shown only as a black silhouette, drawn from someone's portrait: { speaker: portrait id }.
   const SILHOUETTES = { porter: 'wren' };
-  const silhouette = id => SILHOUETTES[id] || null;
+  /* A link whose portraits aren't drawn yet (its file says `portraitPending: true`; Danielle, Jaemin and Chenle since
+     2026-10-22) speaks as the plain silhouette (scene.js: a silhouette whose portrait doesn't exist is the drawn shape, no
+     art). It needs nothing else: once assets/femc/portraits/<id>/<face>.webp exist and portraits/index.js lists them
+     (tools/femc-portraits.py writes both), the index has faces for the id and its real portrait shows everywhere at once
+     (scenes, phone, Go Out, pickers: they all ask portrait(), which returns null until then). */
+  const pendingFace = id => !!LINKS[id]?.portraitPending && !(PORTRAITS()[faceId(id)] || []).length;
+  const silhouette = id => SILHOUETTES[id] || (pendingFace(id) ? id : null);
   function portrait(id, face) {
     // Solar's art wears the S.E.E.S. armband, so she has no portrait until she's given one.
     if (id === 'solar' && !S.flags.armband) return null;
@@ -885,7 +891,7 @@ window.FemcGame = (() => {
     save();
     return true;
   }
-  /* Selling materials (Mayoido buys what Shadows drop; a `matSell` perk pays more; none does since 2026-10-21). They live in the battle save. */
+  /* Selling materials (Mayoido buys what Shadows drop; a `matSell` perk pays more: Danielle's Line Items). They live in the battle save. */
   function matSellPrice(k) { const m = D.battle.materials?.[k]; if (!m) return 0; return Math.round(m.price * (1 + perkVal('matSell').reduce((a, v) => a + v, 0))); }
   function sellMat(k, n = 1) {
     const b = ensureBattleSave(); if (!b || !(b.mats[k] >= n)) return false;
@@ -1411,7 +1417,7 @@ window.FemcGame = (() => {
     save();
     return right;
   }
-  /* Class perks: Cherry's Back Row (half the doze chance), Guidance (once a week, a retry; unassigned since 2026-10-21), Haechan's
+  /* Class perks: Cherry's Back Row (half the doze chance), Chenle's Respectfully, Though (guidance: once a week, a retry), Haechan's
      Recruitment Pitch (once a day, a hint: one wrong answer crossed out). */
   const dozeChance = () => (D.stats.conditions[S.condition]?.doze || 0) * (perkOn('backRow') ? 0.5 : 1);
   function dozed() { perkVal('backRow').forEach(o => addStats(o.stat)); }
@@ -1757,7 +1763,7 @@ window.FemcGame = (() => {
     // Overnight: Tartarus tires her out; resting clears it.
     const t = S.tonight;
     if (t === 'tartarus') S.condition = S.condition === 'tired' || S.condition === 'sick' ? 'sick' : 'tired';
-    else if (t === 'rest') S.condition = S.condition === 'sick' ? 'tired' : (seeded(S.day) < 0.25 || perkOn('powerNap')) ? 'great' : 'good'; // Power Nap (unassigned since 2026-10-21)
+    else if (t === 'rest') S.condition = S.condition === 'sick' ? 'tired' : (seeded(S.day) < 0.25 || perkOn('powerNap')) ? 'great' : 'good'; // Jaemin's Sleep It Off (powerNap)
     else if (S.condition === 'great') S.condition = 'good';
     else if (S.condition === 'tired' && seeded(S.day + 5) < 0.5) S.condition = 'good';
     S.tonight = null;
@@ -1940,7 +1946,7 @@ window.FemcGame = (() => {
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
     homeOf, leavesAtMax, maxOf, isMaxed, stretchOn, afterGap, afterList, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,
     flag, effect, branch, applyChoice, addFragment, fragmentInfo, worldOf,
-    portrait, scale, name, castHas, silhouette, tarot, background, moodFor, sub, setDate, dateLabel,
+    portrait, scale, name, castHas, silhouette, pendingFace, tarot, background, moodFor, sub, setDate, dateLabel,
     activities, actById, showing, activityOk, activityInfo, doActivity, dormActs, dormInfo, dormOk, doDorm, doStudy, studyInfo, shopStock, buy, bookById, readTonight, matSellPrice, sellMat,
     perkOn, bondRank, dailyPerks, actCost, dozeChance, dozed, canRetryClass, useGuidance, classHint, studyBonus, weekly,
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift, packs, packPick, packFits,

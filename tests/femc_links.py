@@ -37,10 +37,18 @@ try:
      const r1=JSON.stringify(L.hyein.ranks[0].scene);if(/talking like that|waiting for instructions/.test(r1))bad.push('hyein r1: shared formal accusation');
      return bad})()''')
     assert not content, content
+    # The late Runners links (2026-10-22): the book's locked truths and catchphrases stay out of them (spoiler-free guard).
+    late = [x for x in LINKS if x in ('danielle', 'jaemin', 'chenle')]
+    if late:
+        leaks = p.eval(f'''(()=>{{const bad=[],re=/girl I used to know|learned the hard way|hard lesson|Say it again|fits you better|THERE SHE IS|\\bdemo\\b|scholarship|recording/i;
+         for(const id of {json.dumps(late)}){{const l=FemcGame.LINKS[id];const m=JSON.stringify([l.ranks,l.hangouts,l.afterMax,l.holidays||{{}},l.afterRank||{{}},l.invite]).match(re);if(m)bad.push(id+': '+m[0]);
+          if(!l.portraitPending)bad.push(id+': portraitPending missing');if(!(l.storyEvents||[]).length)bad.push(id+': no arrival');}}
+         return bad}})()''')
+        assert not leaks, leaks
     # Link-local flags of the visitor depth pass (Mercy, Kiriko, Sebastian; prefix = id or seb-): every one a scene reads
     # is set by a choice somewhere in the same link.
     orphans = p.eval(f'''(()=>{{const L=FemcGame.LINKS,bad=[];const walk=(a,fn)=>(a||[]).forEach(l=>{{fn(l);walk(l.then,fn);walk(l.else,fn);(l.choose||[]).forEach(o=>{{fn(o);walk(o.then,fn);}});}});
-     for(const id of {json.dumps([x for x in LINKS if x in ('mercy', 'kiriko', 'sebastian')])}){{const l=L[id],read=new Set(),set=new Set(),scenes=[...l.ranks.map(r=>r.scene),...l.hangouts,...l.afterMax.map(e=>e.scene),...Object.values(l.holidays||{{}}).map(h=>h.scene),...(l.lateNights||[]).map(e=>e.scene)];
+     for(const id of {json.dumps([x for x in LINKS if x in ('mercy', 'kiriko', 'sebastian', 'danielle', 'jaemin', 'chenle')])}){{const l=L[id],read=new Set(),set=new Set(),scenes=[...l.ranks.map(r=>r.scene),...l.hangouts,...l.afterMax.map(e=>e.scene),...Object.values(l.holidays||{{}}).map(h=>h.scene),...(l.lateNights||[]).map(e=>e.scene)];
       scenes.forEach(s=>walk(s,x=>{{[].concat(x.ifFlag||[]).forEach(f=>read.add(f));if(x.flag)(typeof x.flag==='string'?[x.flag]:Array.isArray(x.flag)?x.flag:Object.keys(x.flag)).forEach(f=>set.add(f));}}));
       (l.lateNights||[]).forEach(e=>[].concat(e.flag||[]).forEach(f=>read.add(f)));
       const mine=f=>f.startsWith(id+'-')||f.startsWith(id.slice(0,3)+'-');
@@ -63,6 +71,19 @@ try:
             every = 'true' if link in ('hyein', 'mark') else 'false'
             r = p.eval(f"LinkAudit.progression('{link}',{low},{every})")
             print(f"  {'Lower-scoring' if low == 'true' else 'First-choice'} calendar run: MAX, {r['trace'][-1]['after']} of {p.eval(f'FemcGame.LINKS.{link}.afterMax.length')} post-MAX scenes, save/load passed", flush=True)
+    # Speakers without portraits yet (portraitPending) were shown as the silhouette on every spoken line, and the moment their
+    # portraits are listed in portraits/index.js the real face takes over (simulated here; no files are written).
+    pending = p.eval(f"{json.dumps(LINKS)}.filter(id=>FemcGame.pendingFace(id))")
+    if pending:
+        sil = p.eval('LinkAudit.silhouettes()')
+        assert not sil['bad'], sil['bad']
+        assert set(pending) <= set(sil['seen']), sil
+        swap = p.eval(f'''(()=>{{const G=FemcGame,out=[];for(const id of {json.dumps(pending)}){{const was=FEMC_PORTRAITS[id];
+          FEMC_PORTRAITS[id]=['flustered','happy','neutral','sad','serious','surprised'];
+          const ok=!G.pendingFace(id)&&G.silhouette(id)===null&&G.portrait(id,'serious').endsWith('assets/femc/portraits/'+id+'/serious.webp')&&G.portrait(id,'blushing').endsWith('/'+id+'/flustered.webp');
+          if(was)FEMC_PORTRAITS[id]=was;else delete FEMC_PORTRAITS[id];if(!ok||!G.pendingFace(id))out.push(id);}}return out}})()''')
+        assert not swap, swap
+        print(f"{len(pending)} speakers without portraits shown as silhouettes on every line; their real portraits take over once listed", flush=True)
     assets = p.eval('LinkAudit.assetCheck()')
     assert not assets['missing'], assets
     print(f"{assets['count']} scene assets load; {assets['faces']} displayed portraits checked", flush=True)

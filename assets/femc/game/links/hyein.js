@@ -530,7 +530,11 @@
       { s: 'hyein', f: 'sad', t: "She sent that the morning after. I was typing back in the dining hall, and somebody said something, and I put my phone down, and I never picked the sentence back up. And then you were gone, and then we were here. *And.* And what. I don't even know what I was going to say." },
       { s: 'hyein', f: 'sad', t: "My first real client and I left her on *and.* She's been waiting on *and* for however long this is. Forty breakfasts." },
       { s: 'hyein', f: 'neutral', t: "And Jaemin. Jaemin Na asked me for a December piece. Festive, but not ugly festive, he refuses to look like a department store. I said deposit up front and no friend discount, because he called my wings a hazard." },
-      { s: 'hyein', f: 'sad', t: "I never got the deposit. That's my career right now. One girl on *and* and one boy who owes me money in another universe." },
+      { ifEvent: 'a4-twelve', then: [
+        { s: 'hyein', f: 'serious', t: "I never got the deposit. He's at the guesthouse now. Two streets away. He waves at me. He still hasn't paid. That's my career right now: one girl on *and* and one boy who owes me money from across the street." }
+      ], else: [
+        { s: 'hyein', f: 'sad', t: "I never got the deposit. That's my career right now. One girl on *and* and one boy who owes me money in another universe." }
+      ] },
       { choose: [
         { t: "Answer her. Finish it.", notes: 3, then: [
           { n: "Hyein looked at her, and then at the phone, and then, slowly, she typed. *and we'll talk prices. sorry for the wait. it's been a weird week.* She pressed send. The little clock came up beside it, next to the other little clock, and stayed there, patient, turning, the way it would turn forever in a city where her phone couldn't reach anyone." },

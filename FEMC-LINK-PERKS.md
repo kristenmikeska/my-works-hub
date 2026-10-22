@@ -356,6 +356,39 @@ Before Minji fights, her Battle perks could work as Assists so the early ranks s
 | 8 | Try Me | Assist | Once per battle, an attack aimed at Solar while she's Down is cancelled, and the attacker is Distressed. |
 | 10 | Bestie Clause | MAX · passive | Solar's crits on a debuffed foe Distress it, and Distressed foes take 20% more crit damage. |
 
+### Danielle Marsh · XV Devil · *Runners*
+*Alpha Phi's treasurer. Takes authority one line item at a time, and never needed to glance.*
+
+| Rank | Perk | Type | Effect |
+|---|---|---|---|
+| 2 | Line Items | Daily | Mayoido Antiques pays 20% more for materials. |
+| 4 | First Look | Assist | Solar's attacks on foes that haven't acted yet this battle crit 15% more often. |
+| 6 | Open Door | Tartarus | Once per floor, a locked chest opens without a Tartarus Key. |
+| 8 | The Folder | Tartarus | Full-moon operations start with the party's attack up for 3 turns. |
+| 10 | Read Faster | MAX · passive | Solar's first attack each battle always goes first and can't miss. |
+
+### Na Jaemin · XIX Sun · *Runners*
+*Sigma's social chair. Sells anything, himself included, and has never once let a room go quiet.*
+
+| Rank | Perk | Type | Effect |
+|---|---|---|---|
+| 2 | The Pitch | Daily | Every part-time job pays 10% more. |
+| 4 | Hype Man | Assist | Solar's Theurgy gauge gains +5 every time she takes damage. |
+| 6 | Recovery Party | Tartarus | One empty room on each floor becomes a small rest stop that restores 30% HP and SP. |
+| 8 | Sleep It Off | Daily | Resting at the dorm makes Solar Great the next day, not just Good. |
+| 10 | Afterparty | MAX · passive | While Solar's Theurgy gauge is full, each of her attacks adds an encore hit for +20% Almighty damage. |
+
+### Zhong Chenle · IX Hermit · *Runners*
+*Her tank. Always early, always counting, and he said it quietly on purpose.*
+
+| Rank | Perk | Type | Effect |
+|---|---|---|---|
+| 2 | Respectfully, Though | Daily | Once a week, Solar can retry a wrong answer in class. |
+| 4 | Bubble | Assist | Once per battle, the first ally to fall below 20% HP can't be targeted until their next turn. |
+| 6 | Hold the Corner | Battle | When Solar Guards, physical hits are blocked for no damage 40% of the time. |
+| 8 | On My Call | Assist | The party's physical attacks on Down foes deal 20% more damage. |
+| 10 | Just Eat | MAX · skill | Solar learns Just Eat (once per battle, low SP): restores a lot of HP to the whole party and cures their ailments. |
+
 ---
 
 ## Other links
@@ -517,7 +550,13 @@ Leon, Cloud, Noctis, Astarion and Shadowheart are out of the game, and so are th
   reachable. An old save that already cleared the Hermit without it gets it once on load (`core.js migrateYear`).
 - **Kept for old saves:** the MAX skills they taught (Fangs Out, Cross-Slash, Warding Bond, Suplex) and Leon's night-only First
   Aid Spray keep their definitions in `build.js`, so a save that learned or carried one still works; nothing teaches them now.
-- **Unassigned mechanics** (the hooks are still in the engine, waiting for a new link such as Danielle, Jaemin or Chenle):
-  Lockpick, Sneak Attack, A Little Taste, `matSell`, Mercenary Rates (`jobPay.all`), Limit Break, Buster Sword, Fishing Trip
-  (`actStat` + `actLine` on the pier), Power Nap, Warp-Strike, Armiger, Guidance, Sanctuary, Night Orchid, Spirit Guardians,
-  Knife Parry, Roundhouse, Mission Briefing. Give one to a link by adding a `PERKS` row with the same fx key.
+- **Unassigned mechanics** (the hooks are still in the engine, waiting for a new link): A Little Taste (`taste`), Fishing Trip
+  (`actStat` + `actLine` on the pier), Spirit Guardians, Roundhouse. Give one to a link by adding a `PERKS` row with the same fx
+  key. (Lockpick, Sneak Attack, `matSell`, Warp-Strike and Mission Briefing went to Danielle; Mercenary Rates, Limit Break,
+  Night Orchid, Power Nap and Armiger to Jaemin; Guidance, Sanctuary, Knife Parry and Buster Sword to Chenle, 2026-10-22.)
+
+## Built (2026-10-22): Danielle, Jaemin and Chenle
+Their tables are above (Searchers), in `build.js PERKS` with the hooks the removed links left behind, renamed for them. One
+new skill: Chenle's **Just Eat** (`build.js` MAX skills, `just_eat`: a once-per-battle Mediarama that also cures). They're
+non-fighters, so their Battle and Assist perks always apply. Their cut-ins show a silhouette until their portraits exist
+(`battle.js perkFaceHtml`, `build.js WHO`).

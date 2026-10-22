@@ -175,7 +175,11 @@
         ] }
       ] },
       { n: "They played. Minji took the long shots, calm, unhurried, the way she held a camera, picking off the far end of the screen. Solar kept her alive. She didn't know how. She'd see Minji's little health bar dip and her hand would already be moving, already throwing a small bright spark across the map to land on her a half-second before she needed it, like a hand on a shoulder." },
-      { s: 'minji', f: 'neutral', t: "It's weird without the team. At home there's five of us. Chenle on tank, he talks about rotations like a professor. Olivia screams the entire time, even when we're winning, especially when we're winning. Haerin's the other support. She giggles maybe once a semester. When she does, the whole lab goes quiet like church." },
+      { ifEvent: 'a4-twelve', then: [
+        { s: 'minji', f: 'neutral', t: "It's weird without the team. Even with Chenle here, it's not the team, it's two of us at an arcade. At home there's five. Chenle on tank, he talks about rotations like a professor. Olivia screams the entire time, especially when we're winning. Haerin's the other support. She giggles maybe once a semester. When she does, the whole lab goes quiet like church." }
+      ], else: [
+        { s: 'minji', f: 'neutral', t: "It's weird without the team. At home there's five of us. Chenle on tank, he talks about rotations like a professor. Olivia screams the entire time, even when we're winning, especially when we're winning. Haerin's the other support. She giggles maybe once a semester. When she does, the whole lab goes quiet like church." }
+      ] },
       { s: 'minji', f: 'happy', t: "And Doyoung. Coach. Clipboard. Six years coaching. He said one of your plays was the best he's ever seen in person. He doesn't say that. He doesn't say anything." },
       { choose: [
         { t: "Which play?", notes: 3, then: [

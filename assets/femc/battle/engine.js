@@ -613,7 +613,7 @@ window.FemcBattleEngine = (() => {
     function hits(src, tgt, sk) {
       if (tgt.dodgeNext && src.side !== tgt.side) { tgt.dodgeNext = false; return false; } // Pirouette
       if (sk.sure || helpless(tgt)) return true;
-      if (isLead(src) && S.warp) return true; // Warp-Strike (unassigned since 2026-10-21): her first attack can't miss
+      if (isLead(src) && S.warp) return true; // Danielle's Read Faster (the Warp-Strike hook): her first attack can't miss
       const base = (sk.acc || (PHYS.has(sk.el) ? 93 : 97)) + (src.acc || 0);
       const ag = u => u.ag * (kitsuneOn(u) ? 1.5 : 1);
       let chance = base + (ag(src) - ag(tgt)) * 0.8 + BRu.agi * (src.buffs.agi - tgt.buffs.agi);
@@ -1570,7 +1570,7 @@ window.FemcBattleEngine = (() => {
       }
     }
     /* The start of a battle: cards' opening buffs and Theurgy, set bonuses, the night's buffs (battle.js setup.startBuffs:
-       Yunjin's mood, Mission Briefing (unassigned since 2026-10-21), Jihoon's Almighty Hoon) and the start-of-battle perks. */
+       Yunjin's mood, Danielle's The Folder (missionBriefing), Jihoon's Almighty Hoon) and the start-of-battle perks. */
     function start() {
       const ev = [], L = leader();
       let p;
@@ -1804,7 +1804,7 @@ window.FemcBattleEngine = (() => {
     }
     foes().forEach(f => { const h = G(f, 'init'); if (h) h(f); });
     /* Bond perks that change the units themselves (build.js): Rio's Stamina, Hyein's Tailor Made, Cherry's On Ice,
-       Warp-Strike (Solar first; unassigned since 2026-10-21), and the Moon's curse from Shuffle Time (setup.foeHpMult). */
+       Read Faster (Solar first; the warpStrike hook, Danielle), and the Moon's curse from Shuffle Time (setup.foeHpMult). */
     (() => {
       const L = leader(); let p;
       if (L) {
