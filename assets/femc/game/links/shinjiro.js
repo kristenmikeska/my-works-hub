@@ -809,6 +809,16 @@
 
     { after: '9/19', title: '9: the recipe card', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'tender', scene: [
       { n: "He'd been strange all week. Quieter, even for him, which she wouldn't have said was possible, and doing things in an order, like a man going down a list he'd written somewhere and wasn't showing anyone. He fixed the hinge on the second-floor bathroom door that had squealed since April. He took every jar off the spice shelf and wiped it and put it back in an order that made sense to him alone. He taught Junpei to make rice, which nobody in the dorm had believed was possible, least of all Junpei, who stood at the sink with his cap on backward washing it until the water ran clear and said *dude* softly to himself, like a man in church." },
+      { ifRoute: 'romance', then: [
+        { place: 'Iwatodai Dorm · Lounge', time: 'Afternoon' },
+        { n: "Earlier, in the long gold end of the afternoon, she'd found him on the lounge sofa, which was strange in itself, because he didn't sit in the lounge, he passed through it. Coat on, beanie on, the way he wore them in any weather, one arm along the back of the sofa, the sun coming in low through the window and lying across the floor in bars. The rest of the dorm was out. He didn't move when she sat down beside him. Then he did, the arm coming down off the back of the sofa and around her shoulders, as if it had only been waiting up there for somewhere to go." },
+        { cg: 'link-shinjiro-lounge' },
+        { s: 'shinjiro', f: 'neutral', t: "Don't make it a thing." },
+        { n: "She didn't make it a thing. She leaned into his side with her head on his shoulder, and his coat smelled of ginger and outside air, and he looked down at her the way he looked at a pot he'd decided to trust, and neither of them said anything until the sun had moved off the floor." },
+        { s: 'shinjiro', f: 'happy', t: "...Tch. Fine. It's a thing." },
+        { cg: null },
+        { place: 'Iwatodai Dorm · Kitchen', time: 'Evening' }
+      ] },
       { n: "Tonight he made the dish from the shrine." },
       { n: "Rice and egg and pork braised until it gave up, ginger somewhere, spring onion cut thin enough to read through. He didn't say why. He made enough for two, which in that kitchen was a statement, because he always made enough for the building, and he put one bowl in front of her at the counter and stood across from her with his own and didn't eat it, just watched her eat, the way he had on the shrine steps in May with the rain ticking off everything." },
       { s: 'shinjiro', f: 'neutral', t: "Well?" },

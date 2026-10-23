@@ -61,7 +61,7 @@ One template; fill it from the item's Must match line, not from the setting name
 ```
 Solar and [NAME] at [SETTING], [TIME AND LIGHT]. [WHO ELSE IS THERE, OR "just the two of them"]. [CLOTHES]. [POSE AND DISTANCE]. [SEASON AND WEATHER]. [PROPS]. [MOOD].
 ```
-- [ ] ⭐ **Rank 15** for Shinjiro, the last link without one. **Fills:** `cg/link-shinjiro-r15.webp`.
+- [ ] ⭐ **Rank 15** for Shinjiro, the last link without one. **Fills:** `cg/link-shinjiro-r15.webp`. (The lounge-sofa art went into his rank 9 instead; this one is still needed.)
   - **Attach:** style, Solar, Shinjiro, Akihiko.
   - After the style block (Solar in her winter uniform):
     ```

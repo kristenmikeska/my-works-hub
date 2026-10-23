@@ -5387,6 +5387,25 @@
       "source": "solar-jungwon-studentcouncil-moment.png",
       "sourceNow": "Added to Game/solar-jungwon-studentcouncil-moment.png",
       "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-shinjiro-lounge.webp",
+      "link": "shinjiro",
+      "rank": 9,
+      "placement": "links/shinjiro.js rank 9 ('9: the recipe card', 9/19): new romance-only beat before the kitchen, in the dorm lounge in the afternoon ({ place } there and back to the kitchen), { cg } on it and { cg: null } before the kitchen; friendship route unchanged and shows no CG; Memories album (Romance & bonds group). Not an art-list item (his rank 15 is a different scene and stays on the list)",
+      "textCheck": "checked 2026-10-22; art final per Kat: the new beat has him on the lounge sofa in coat and beanie in low afternoon sun, his arm round her, her head on his shoulder; non-explicit; nothing else in the rank changed",
+      "mobileFocus": "42% 25%",
+      "outputSha256": "f8ef2312dab8aa021b4819fae2ecf6e54852242dee29e48edaa039f20103eb62",
+      "sha256": "0d777495185c3f6642a8edf6c1348907f0de412e29d3b86dd766926ce5d397cc",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "solar-shinjiro-moment.png",
+      "sourceNow": "Added to Game/solar-shinjiro-moment.png",
+      "status": "integrated"
     }
   ],
   "batch1Validation": {
@@ -5814,6 +5833,7 @@
     "yakushimaRedo": "Kat's edit yakushima-beach-edit.png replaced the first Yakushima art (yakushima-beach-friends.png, first output b467ae3c..., source still in Added to Game); story-act3 v9; femc-check-scenes OK, femc_living pass, targeted CG walk. solar-haechan-dormhallway-moment.png left in New Adds (no scene fits; see the report)",
     "haechanR15": "link-haechan-r15 added (romance only); places v23, haechan v9; femc-check-scenes --links haechan OK, femc_rank15 --quick pass, targeted walk both routes",
     "xmasJungwon": "romance-haechan-christmas and link-jungwon-r15 added (romance only); places v24, haechan v10, jungwon v11; femc-check-scenes --links haechan,jungwon OK, femc_haechan pass, femc_rank15 --quick pass, femc_gallery 94, targeted walks. solar-shinjiro-moment.png left in New Adds (no scene fits; see the report)",
+    "shinjiroLounge": "link-shinjiro-lounge added to rank 9 (romance only); places v25, shinjiro v6; femc-check-scenes --links shinjiro OK, femc_gallery 94, femc_links --links shinjiro played 5,578 scene paths with every line reached, then stopped on its gate check (shinjiro afterMax before rank date 10), which fails the same way without this change; targeted walk both routes",
     "textFollowUp": "Kat approved adjusting graduation and Akihiko rank 15 to the art; Yakushima unchanged (Koromaru conflict reported). Re-ran femc-check-scenes --links akihiko, femc_march (44), femc_rank15 --quick (pass) and the targeted CG walk",
     "browserErrors": 0
   }
