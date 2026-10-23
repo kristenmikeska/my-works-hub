@@ -782,10 +782,12 @@
         { n: "Then there was a knock. On her own door. Twice. Soft." }
       ] },
       { n: "She opened the door." },
+      { cg: 'link-hanni-r10' },
       { n: "Hanni was standing in the hallway in the green light in her cream cardigan, and the whole dorm was silent around her, every other door shut, every other sleeper gone into a coffin in their bed, the clocks stopped, the hall light dead, and Hanni just standing there, warm, breathing, awake, with a mug of something in one hand and a plate in the other, a plate of fruit, cut small, an orange taken apart into segments with every white string pulled off." },
       { s: 'hanni', f: 'happy', t: "Sol, it's us. We come in peace!" },
       { n: "There was no *us.* Hyein was asleep in her coffin in her room down the hall. Hanni had said it anyway, out of habit, the plural, the way you'd set a third glass on a counter for a girl who wasn't up yet." },
       { s: 'hanni', f: 'neutral', t: "I brought snacks. Well. Fruit. Hyein's the snacks. I realized you went to the tower and didn't eat." },
+      { cg: null },
       { n: "And Solar knew her." },
       { n: "Not the way she'd known the iced coffee, or the braids, or the pink mugs, or the candle, in pieces, one at a time, like coins found down the back of a sofa. All of her. All at once. A knock on a dark pink door in a house where every door was dark pink, and that soft voice through it, *Sol, it's us, we come in peace,* and Hyein beside her, *we brought snacks,* and Solar at her desk with her headphones half off and a game paused on the screen and her whole stupid week sitting on her chest, saying *you can come in* a little brighter than she felt, because it was them." },
       { n: "A girl with a plate of fruit she'd cut because she'd known, without being told, that Solar hadn't eaten. A girl who sat on the end of her bed with her knees pulled up and said one quiet thing that went straight in under every defense Solar owned, and then went back to the television like she hadn't. A girl who'd raised her hand in a room full of sorority sisters to say the thing nobody else would. A girl whose face couldn't lie, who had never once tried to, who had made her laugh in kitchens and walked her home on cold nights and stood in the middle of the party with a trash bag at two in the morning, waiting, because she knew Solar would come back to help." },

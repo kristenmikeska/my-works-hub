@@ -557,7 +557,9 @@
       { s: 'minji', f: 'neutral', t: "Of everything. You remember that one." },
       { choose: [
         { t: "I believe you too. Minji. I always will.", notes: 3, then: [
-          { n: "Minji put the remote down on the carpet very carefully, like it might break. Then she put her face in her hands, and her shoulders went, and Solar slid down off the sofa onto the floor beside her and put both arms around her and held on." }
+          { cg: 'link-minji-r10' },
+          { n: "Minji put the remote down on the carpet very carefully, like it might break. Then she put her face in her hands, and her shoulders went, and Solar slid down off the sofa onto the floor beside her and put both arms around her and held on." },
+          { cg: null }
         ] },
         { t: "You're in it. You put yourself in it.", notes: 3, then: [
           { s: 'minji', f: 'flustered', t: "Yeah. Well. You told me to. Somebody once told me some of it had to be me, too. On a bench. Like a condition." },

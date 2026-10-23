@@ -43,18 +43,9 @@ One template; fill it from the item's Must match line, not from the setting name
 ```
 Solar and [NAME] at [SETTING], [TIME AND LIGHT]. [WHO ELSE IS THERE, OR "just the two of them"]. [CLOTHES]. [POSE AND DISTANCE]. [SEASON AND WEATHER]. [PROPS]. [MOOD].
 ```
-- [ ] *(Optional)* **Rank 10 (MAX)**, one per link (30 still to make). **Fills:** `cg/link-<id>-r10.webp`. **Attach:** style, Solar, the partner. Solar's clothes go by the season unless the line says otherwise.
+- [ ] *(Optional)* **Rank 10 (MAX)**, one per link (21 still to make). **Fills:** `cg/link-<id>-r10.webp`. **Attach:** style, Solar, the partner. Solar's clothes go by the season unless the line says otherwise.
   - **S.E.E.S.**
-    - **Koromaru** (Naganaki Shrine): early-January evening, dry, very cold, sharp stars; New Year decorations still up, a crowded rack of wooden wish plaques; Solar on a cold step with a wooden plaque on her knee and a pen, her forehead to Koromaru's; Koromaru in a little quilted coat; town windows lit below.
   - **Searchers**
-    - **Jihoon** (the dorm's front steps): mid-January, night, very cold, no snow; side by side on the stone steps; Jihoon elbows on knees in an unbuttoned coat, Solar in her skirt; a nearly empty tub of cookies-and-cream ice cream on the step, him holding out one spoon.
-    - **Minji** (the dorm lounge): late January, night, lamplight only, the TV dark, an old laptop open; Minji sitting on the carpet with her back against the sofa, Solar on the floor beside her with both arms round her; nobody else there.
-    - **Hanni** (the dorm's 2F hallway): midnight, an eerie green light, the hall light off, every other door shut; Solar in her open doorway; Hanni in the hall in a cream cardigan with a mug of tea and a plate of orange segments.
-    - **Hyein** (the dorm roof): a January night, bitter wind, white city lights, black bay; a tall mirror propped against the water tank; Solar in an orange satin costume with small suns on the hem, a gold arm cuff, a thin gold band with a sun and moon in her hair, two small wings, a long dark coat open over it with the collar up; Hyein at her shoulder straightening a wing; just the two of them.
-    - **Yunjin** (the harbor seawall): 6pm in late January, dark, sodium lights; low tide, shining gray mud, boats sitting on their keels, gulls; close together on the seawall with cans of coffee, one dented; Yunjin in a red puffer.
-    - **Mark** (the station concourse): a January evening, busy, wet umbrellas, a bakery shutter coming down; a public piano painted with grinning seagulls; side by side on its bench, both playing; Solar in her coat.
-    - **Jaehyun** (the dorm's front steps): midnight, eerie green light, streetlamps dark down the hill, the street empty; he stands on the step, she's in the open doorway, his hand resting on top of her head.
-    - **Cherry** (the dorm's front steps): a late-January night, one buzzing streetlight, snow falling, the bay black; both sitting on the step; Cherry's coat buttoned to the throat, arms folded, snow in her hair; her lit phone on the step between them.
     - **Sunoo** (Yeobo's Cafe): after school in January, windows lightly fogged; just the two of them at the window table with a lot of croissants and coffees and a paper bag with a smiling sun drawn on it; Sunoo in his grandmother's apron.
     - **Junkyu** (the arcade): a January evening, loud and neon, planets on the carpet, a dance machine; Junkyu hugging Solar round the middle, cheek on her shoulder; not alone: Asahi, Hyunsuk, Jaehyuk and Jihoon (by the crane game) are nearby.
     - **Danielle** (the station overpass): about 4pm in late January, light fading, a long cold glass corridor above the ticket gates; Danielle sitting very straight on a bench in her coat, a closed folder on her knees; Solar at the far end, the folder between them, not touching.

@@ -752,8 +752,10 @@
           { n: "Cherry laughed. It came out of her like something breaking, wet and loud and ugly, in the empty street, and she grabbed Solar by the collar with both hands and put her forehead against Solar's shoulder and laughed and cried into it at the same time, and said *you bitch, you bitch, thank you,* over and over, until it stopped being words." }
         ] }
       ] },
+      { cg: 'link-cherry-r10' },
       { s: 'cherry', f: 'neutral', t: "Okay. You're not a knockoff anymore. I'm retiring it. It's going on the wall with the poster. Next to the darts." },
       { s: 'cherry', f: 'neutral', t: "Listen. Whatever door you go through. Whatever happens. Here's the only thing I know." },
+      { cg: null },
       { s: 'cherry', f: 'serious', t: "If I see you, anywhere, I'm going to run at you. I don't run. Running is for Jihoon and people who do pilates. I'll run. Across a gym. Across a parking lot. Across a whole fucking universe." },
       { ifFlag: 'route-H', then: [
         { s: 'cherry', f: 'neutral', t: "It'll be school, probably. That's where the door goes, Jihoon thinks. Hanlim. Everybody. You'll be standing in the middle of the hallway in that armband looking like an idiot." },

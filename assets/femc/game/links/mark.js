@@ -883,8 +883,10 @@
           ] }
         ] },
         { t: "(Sit down and play the four notes with him.)", notes: 3, then: [
+          { cg: 'link-mark-r10' },
           { n: "She sat down beside him on the bench and put her hands on the keys and played the four notes, badly, and he played the fifth, and then the chord, and it opened, and they played the whole thing through together, the way they'd never once done at home, and at the end he didn't look at her like a sum. He just looked at her." },
-          { s: 'mark', f: 'neutral', t: "...Yeah. Okay. Yeah." }
+          { s: 'mark', f: 'neutral', t: "...Yeah. Okay. Yeah." },
+          { cg: null }
         ] },
         { t: "Ask me again. The crossing.", ifFlag: 'mark-ask-again', notes: 3, then: [
           { s: 'mark', f: 'surprised', t: "..." },

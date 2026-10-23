@@ -725,7 +725,9 @@
           { s: 'yunjin', f: 'happy', t: "I said I'd borrow yours. I borrowed yours. Ages ago. You never asked for them back, so legally they're mine, and legally I can ruin them saving your life." }
         ] }
       ] },
-      { n: "They sat down on the seawall, close, the can that had rolled away fetched and dented and handed over, and for a while neither of them said anything at all, because they didn't need to, and Solar understood for the first time that this, the not needing to, was what Yunjin had been doing for her all along, every afternoon on this wall, talking and talking so that one day Solar could come back to a place where she didn't have to." },
+      { cg: 'link-yunjin-r10' },
+      { n: "They sat down on the seawall, close, the can that had rolled away fetched and dented and handed over, and laughed, at nothing, at the gulls coming back, until it ran out, and then for a while neither of them said anything at all, because they didn't need to, and Solar understood for the first time that this, the not needing to, was what Yunjin had been doing for her all along, every afternoon on this wall, talking and talking so that one day Solar could come back to a place where she didn't have to." },
+      { cg: null },
       { s: 'yunjin', f: 'neutral', t: "Okay. Okay. Listen. Here's the thing." },
       { ifFlag: 'route-S', then: [
         { s: 'yunjin', f: 'happy', t: "When we go home, I'm driving. You're paying. We're stopping at the machine by the ferry terminal for two of the bad ones and we're drinking them in the car with the heater on until it turns, and then I'm climbing your wall, and then I'm sleeping on your floor, and I'm wearing the rabbits, and nobody can stop me." },

@@ -571,7 +571,14 @@
       { n: "It was nearly empty. They'd eaten it all winter. A spoonful at a time, on the roof, in the lounge, at the dorm kitchen table at two in the morning while Mitsuru pretended not to hear them. It had never melted, and it had never run out, and tonight, when she sat down beside him and looked into it, there was exactly one spoonful left." },
       { s: 'jihoon', f: 'neutral', t: "I think that's it. I think that's the last one." },
       { s: 'jihoon', f: 'neutral', t: "Whatever it was waiting for, I think it's done waiting." },
+      { ifRoute: 'romance', then: [
+        { cg: 'link-jihoon-r10-romance' },
+        { n: "She leaned her head on his shoulder while he worked the spoon round the bottom of the tub, and he let her, and didn't say a word about it, which for Jihoon was a speech." }
+      ], else: [
+        { cg: 'link-jihoon-r10' }
+      ] },
       { n: "He held out the spoon. Handle first. To her." },
+      { cg: null },
       { choose: [
         { t: "(Eat it.)", notes: 3, then: [
           { n: "She ate it. Cookies and cream. It was the best and worst spoonful of ice cream she'd ever had, and halfway through it something came up through her the way the cold came up through the step, all at once, from the ground." }

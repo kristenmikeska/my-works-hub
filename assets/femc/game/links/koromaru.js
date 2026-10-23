@@ -532,13 +532,15 @@
     { after: '1/5', title: '10: ema', place: 'Naganaki Shrine', time: 'Evening', scene: [
       { music: 'tender' },
       { n: "The shrine still looked like New Year's. The big straw rope over the offering hall had been replaced with a fresh one, thick and gold and bristling, and the pine-and-bamboo arrangements by the gate were still standing, and the rack by the hall where people hung their wish plaques was so crowded with them now that they overlapped, hundreds of small wooden boards with the year's tiger painted on one side and people's handwriting on the other, clacking against each other in the cold wind like a wooden wind chime." },
-      { n: "It was very cold, a dry, clear, bright cold that made the stars over the shrine look sharp enough to cut yourself on, and Koromaru wore the little quilted coat Fuuka had bought him, which he hated, and which he wore with the dignity of a general made to wear a paper hat at a party. The old caretaker had kept her word. There was a rice ball end waiting for him on the top step, on a saucer, under a cloth, with his name written on a scrap of paper weighted down by a pebble. He ate it facing the house. Then he came and sat on Solar's feet." },
+      { n: "It was very cold, a dry, clear, bright cold over the last of the week's snow that made the stars over the shrine look sharp enough to cut yourself on, and Koromaru wore the little quilted coat Fuuka had bought him, which he hated, and which he wore with the dignity of a general made to wear a paper hat at a party. The old caretaker had kept her word. There was a rice ball end waiting for him on the top step, on a saucer, under a cloth, with his name written on a scrap of paper weighted down by a pebble. He ate it facing the house. Then he came and sat on Solar's feet." },
       { n: "She'd bought a plaque. She hadn't meant to. She'd stood in front of the shrine office window with her money in her hand and the shrine maiden looking at her, and bought one, and now she was sitting on the cold step with it on her knee and a pen in her hand, and no idea what to write." },
       { n: "Everybody else's wishes were easy to read, if you looked. Pass the entrance exams. Find a good husband. Grandma's hip. Make the team. Hers was blank. It was the same blankness as the page Elizabeth kept showing her, the same blankness as the box on her school forms where her surname should have gone. She was getting used to it, she thought. That was the frightening part." },
       { choose: [
         { t: "(Write a wish for him instead.)", notes: 3, then: [
-          { n: "She turned the plaque over, to the side with the picture, and then back, and wrote, not for herself, for him. *For Koromaru. A long life. A full bowl. The end with the plum. And someone to wait for who always comes back.*" },
-          { n: "She read it over. Her eyes stung, in the cold. She didn't cross anything out." }
+          { cg: 'link-koromaru-r10' },
+          { n: "She turned the plaque over, to the side with the picture, and then back, and with her forehead resting against his, wrote, not for herself, for him. *For Koromaru. A long life. A full bowl. The end with the plum. And someone to wait for who always comes back.*" },
+          { n: "She read it over. Her eyes stung, in the cold. She didn't cross anything out." },
+          { cg: null }
         ] },
         { t: "(Write nothing. Hang it blank.)", notes: 2, then: [
           { n: "She hung it blank. It looked strange on the rack among all the full ones, clean and bare. Then Koromaru stood up on his hind legs, his paws on the rack, and looked at it, and sneezed on it, and that, she decided, would have to count as handwriting." }

@@ -929,7 +929,9 @@
       { s: 'solar', f: 'happy', t: "You're not wearing enough layers." },
       { s: 'jaehyun', f: 'surprised', t: "..." },
       { s: 'jaehyun', f: 'sad', t: "...Very funny, Solar." },
+      { cg: 'link-jaehyun-r10' },
       { n: "His voice cracked down the middle of her name. She'd never once heard it crack. Not here, not there, not anywhere in a whole life of being his little sister. He heard it too, and put his raised hand down slowly, very carefully, on top of her head, and left it there." },
+      { cg: null },
       { choose: [
         { t: "Do not be hostile.", notes: 3, then: [
           { n: "He laughed. Out loud, on the dorm step, in the Dark Hour, his hand still on her head, a real laugh, surprised out of him, and it went out over the green silent street where nobody else was awake to hear it, and she thought it might be the first time she'd ever made her brother laugh on purpose." },
