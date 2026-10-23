@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**64 items:** 2 quick fixes · 7 CGs · 7 places · 19 character pieces · 12 battle · 11 cards and icons · 6 screens. 7 are ⭐, 38 are optional.
+**113 items:** 2 quick fixes · 7 CGs · 7 places · 68 character pieces (50 of them regulars' faces in 4D) · 12 battle · 11 cards and icons · 6 screens. 7 are ⭐ (plus 13 ⭐ regulars inside 4D), 87 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -153,12 +153,398 @@ Edit this portrait. Keep the framing, crop, size, art style, hair and outfit exa
 - **Fills:** `portraits/<id>/<expression>.webp`.
 
 ### 4D. *(Optional)* Faces for the regulars
-The most-heard people without a portrait (28 to 67 lines each, shown as a name only): Kenta, Mrs. Okada, Tsuji, Mr. Maeda, Ōta, Mitsuko, Chiba, Mrs. Kubo, Bunkichi, Mr. Tanabe.
-- **Attach:** one finished portrait for style, e.g. 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png`.
+Everyone below talks in scenes but has no portrait, so today they show as a name only. 47 speakers (7 to 67 lines each, counted 2026-10-23 across `assets/femc/game/**/*.js`), plus 3 teachers who need a small change to show. Looks marked *(invented)* aren't in the game text, so change anything you like; the rest come from the text or from P3 canon.
+
+**Do these first ⭐** (most lines): Kenta 67, Mrs. Okada 43, The Master 36, Ōta 35, Mr. Maeda 33, Mitsuko 32, Ms. Kagami 31, Mrs. Kubo 31, Tsuji 31, Chiba 31, Clerk 29, Bunkichi 28, Mr. Tanabe 28.
+
+**How to make them**
+- **One neutral each** is enough. For the ⭐ regulars, a second **happy** face is a nice extra: use the 4C edit prompt with the neutral you made and `[EXPRESSION]` = a warm, open smile. **Fills:** `portraits/<id>/happy.webp`.
+- **Save usage with a sheet:** ask for a 2×2 or 3×2 sheet of several regulars at once (the sheet prompt below), for example a whole job's regulars. Claude cuts it with `tools/femc-sheet.py` and files each face under its person.
+- **Attach** (every item): one finished portrait for style, 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png`. For canon NPCs, also attach a P3R screenshot of them if you have one.
+- **The template.** Each item below is this line already filled in, so paste the item's whole line:
 ```
-A Persona 3 Reload style character portrait in exactly the same framing, style and size as the attached one: [WHO THEY ARE], neutral expression, transparent background.
+A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): [WHO THEY ARE AND WHAT THEY LOOK LIKE], neutral expression, transparent background.
 ```
-- [ ] One neutral each; Claude can tell you who each one is. **Fills:** `portraits/<id>/neutral.webp`.
+- **Sheet version** (plain white background, so the tool can cut it):
+```
+A Persona 3 Reload style character sheet, 3 columns by 2 rows, six different people, each a separate head-and-shoulders portrait in exactly the same framing, crop, art style and size as the attached one, evenly spaced on a plain white background, no labels, neutral expressions. Top row, left to right: (1) [WHO], (2) [WHO], (3) [WHO]. Bottom row: (4) [WHO], (5) [WHO], (6) [WHO].
+```
+
+**Tutoring (the Sakamoto apartment)**
+- [ ] ⭐ **Kenta** · `kenta` · 67 lines · *(invented)*
+  - **Who:** The thirteen-year-old Solar tutors in English and maths. Sharp, proud, hates being seen trying; his ears go red when he's caught out.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a thirteen-year-old Japanese boy, skinny and a little small for his age, messy black hair that sticks up at the crown, a gray hoodie over a middle-school white shirt, a pencil tucked behind one ear, arms folded, a stubborn set jaw and clever, unimpressed eyes, the tips of his ears faintly pink, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/kenta/neutral.webp` (and optional `happy.webp`)
+
+**The mall (Paulownia Mall jobs)**
+- [ ] ⭐ **Mrs. Okada** · `okada` · 43 lines
+  - **Who:** Runs the flower stall by the fountain from her stool. Says little, misses nothing, quietly generous.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese woman in her sixties, short and sturdy, gray hair cut in a practical bob, a dark green work apron with a yellow cloth tape measure in the pocket, a pair of flower scissors hanging on a ribbon round her neck, a sprig of something blue tucked in the apron strap, arms folded, a dry, watchful face with a hint of a smile she's hiding, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/okada/neutral.webp` (and optional `happy.webp`)
+- [ ] ⭐ **Ms. Kagami** · `chKagami` · 31 lines
+  - **Who:** Manager of Chagall Café. Exacting, dry, and fond of people in a way she'd never admit; one raised eyebrow is her highest praise.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese woman in her forties, slim, black hair pulled back in a neat low knot, thin reading glasses on a fine chain, a crisp white shirt with the sleeves rolled and a long black café apron, one eyebrow very slightly raised, a cool appraising look, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/chKagami/neutral.webp` (and optional `happy.webp`)
+- [ ] **Mr. Okuda** · `chOkuda` · 14 lines
+  - **Who:** A Chagall regular who does the crossword at the window over black coffee. Courtly and quietly funny.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): an elderly Japanese gentleman, thin, silver hair neatly combed, round wire glasses he looks over the top of, a tweed jacket and a knitted vest over a pressed shirt, a fountain pen in his breast pocket, a very dry little smile, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/chOkuda/neutral.webp`
+- [ ] **Hinata** · `chHinata` · 14 lines
+  - **Who:** A young man who studies every afternoon in the café's corner behind a wall of workbooks.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese young man of nineteen, slight and tired-looking, black hair grown a little too long and pushed off his forehead, a plain navy coat over a gray sweater, a mechanical pencil in his hand, shadows under earnest, anxious eyes, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/chHinata/neutral.webp`
+- [ ] **Yuu** · `chYuu` · 11 lines · *(invented)*
+  - **Who:** Chagall's weekday-afternoon barista, a university student who believes in lucky coffee and can fix anything with a paperclip.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese university student of about twenty, lanky, soft brown hair falling over one eye, a white shirt with a black Chagall apron, a pair of pliers poking out of the apron pocket, an easygoing, slightly dreamy grin, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/chYuu/neutral.webp`
+
+**The Strip (Iwatodai Strip jobs)**
+- [ ] ⭐ **The Master (Hagakure)** · `hgMaster` · 36 lines
+  - **Who:** The owner and chef of Hagakure ramen. Wordless, exacting, proud of his broth; the kitchen goes still when he looks at you.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a short, square Japanese man in his sixties with thick forearms, a white towel knotted around his head, a white cook's jacket with the sleeves pushed up, arms crossed, a flat, unreadable stare across the steam, deep lines at the corners of his eyes, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/hgMaster/neutral.webp` (and optional `happy.webp`)
+- [ ] ⭐ **Mitsuko** · `mitsuko` · 32 lines
+  - **Who:** Half of the elderly couple who run Bookworms. Brisk, warm, keeps the ledger and the tea going. *(P3/P3R canon NPC.)*
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style), plus a P3R screenshot of Mitsuko if you have one.
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): Mitsuko from Persona 3, the elderly lady of the Bookworms used bookstore, as she looks in P3 Reload: small and round-shouldered, gray hair in a neat bun, glasses she looks over the top of, a cardigan over a plain blouse and an apron, a gentle, knowing half-smile, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/mitsuko/neutral.webp` (and optional `happy.webp`)
+- [ ] ⭐ **Bunkichi** · `bunkichi` · 28 lines
+  - **Who:** Mitsuko's husband at Bookworms. Gentle, dreamy, laughs easily, polishes his glasses when he's moved. *(P3/P3R canon NPC.)*
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style), plus a P3R screenshot of Bunkichi if you have one.
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): Bunkichi from Persona 3, the elderly gentleman of the Bookworms used bookstore, as he looks in P3 Reload: a kind old man, balding with white hair at the sides, round glasses, a soft knitted cardigan over a collared shirt, hands clasped behind his back, a pleased, grandfatherly smile, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/bunkichi/neutral.webp` (and optional `happy.webp`)
+- [ ] **Daisuke (Hagakure)** · `hgDaisuke` · 15 lines
+  - **Who:** The Master's young cook. Tall, loud, eager, and a little scared of his boss.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a tall Japanese man in his twenties, short spiky black hair under a navy bandana, a white cook's jacket with the sleeves shoved up over forearms dotted with small kitchen burns, a ladle in one hand, a big open grin, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/hgDaisuke/neutral.webp`
+- [ ] **Mr. Gotou (Hagakure)** · `hgGotou` · 13 lines
+  - **Who:** A Hagakure regular, a site foreman who keeps taking on the giant-bowl challenge.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese man of forty-five built like a refrigerator, buzz-cut hair, a thick neck, a navy work jacket with a reflective stripe over a gray T-shirt, a towel round his neck, a solemn, determined face, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/hgGotou/neutral.webp`
+- [ ] **Mrs. Ueda (Yeobo's Cafe)** · `ueda` · 9 lines · *(invented)*
+  - **Who:** A young mother who comes into Yeobo's with her toddler asleep in the stroller.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese woman in her early thirties, shoulder-length dark hair tied back loosely with strands escaping, a beige winter coat she hasn't taken off, a knitted scarf, tired soft eyes and a small, worn-out smile, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/ueda/neutral.webp`
+- [ ] **Shiori (Bookworms)** · `shiori` · 8 lines · *(invented)*
+  - **Who:** A Gekkoukan first-year who buys one mystery a week at Bookworms and judges everything.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a fifteen-year-old Japanese girl, small, straight black hair to the chin with blunt bangs, square black glasses, Gekkoukan High winter uniform (black blazer, white shirt, red ribbon), a paperback mystery held to her chest, a narrow-eyed, measuring look, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/shiori/neutral.webp`
+
+**The fan club and classmates**
+- [ ] ⭐ **Ōta (Akihiko's fan club)** · `ota` · 35 lines
+  - **Who:** The leader of the Akihiko Sanada fan club, a second-year. Formal, brave when it counts, does everything by committee.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a sixteen-year-old Japanese girl, glossy black hair to the shoulders with a small plastic star hair clip, Gekkoukan High winter uniform (black blazer, white shirt, red ribbon) and a winter scarf, a school bag held in front of her in both hands like a shield, a solemn, earnest, very determined face, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/ota/neutral.webp` (and optional `happy.webp`)
+- [ ] **Maki (Akihiko's fan club)** · `maki` · 21 lines · *(invented)*
+  - **Who:** An underclassman who runs bets on everyone's love life (for juice) and wants it all on the record.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a fifteen-year-old Japanese girl, a high side ponytail with a matching hair clip, Gekkoukan High winter uniform (black blazer, white shirt, red ribbon) with the sleeves of a pastel cardigan pulled over her hands, chin propped on her fists, a sly, delighted grin, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/maki/neutral.webp`
+- [ ] **Natsuki Moriyama** · `natsuki` · 18 lines
+  - **Who:** A sharp-tongued Gekkoukan girl in Fuuka's year. *(P3/P3R canon NPC.)*
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style), plus a P3R screenshot of Natsuki if you have one.
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): Natsuki Moriyama from Persona 3, as she looks in P3 Reload: a Gekkoukan girl with wavy, shoulder-length light-brown hair, sharp eyes with a bit of gal-style makeup, Gekkoukan High winter uniform (black blazer, white shirt, red ribbon) with the blazer open and the ribbon loosened, hands in her pockets, a guarded, defiant look, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/natsuki/neutral.webp`
+- [ ] **Classmate** · `classmate` · 10 lines · *(invented)*
+  - **Who:** Solar's generic classmate (several different students share this id). *(generic; optional)*
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a seventeen-year-old Japanese girl, plain shoulder-length black hair with a side part, Gekkoukan High winter uniform (black blazer, white shirt, red ribbon), a friendly, ordinary, slightly curious face, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/classmate/neutral.webp`
+- [ ] **Sonoda (Akihiko's fan club)** · `sonoda` · 7 lines · *(invented)*
+  - **Who:** Maki's partner in betting; a boy who always pays up.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a fifteen-year-old Japanese boy, lanky, short neat black hair, Gekkoukan High winter uniform (black blazer over a white shirt), a coin between his fingers, the long-suffering face of someone who has just lost a bet, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/sonoda/neutral.webp`
+
+**The shrine (amulet stall)**
+- [ ] ⭐ **Mr. Maeda** · `maeda` · 33 lines
+  - **Who:** Chairman of the shrine association who runs the amulet stall: fussy, proper, keeps a ledger older than Solar.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese man in his late sixties, thin and upright, white hair carefully combed, rimless glasses, a dark gray cardigan over a white shirt and tie with a shrine-association armband, a clipboard and a pencil in hand, a prim, faintly worried expression, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/maeda/neutral.webp` (and optional `happy.webp`)
+- [ ] ⭐ **Mrs. Kubo** · `kubo` · 31 lines
+  - **Who:** A neighbor who sweeps the shrine and teaches Solar the knots. Brisk, strict, secretly soft.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese woman in her seventies, small and wiry, gray hair under a cotton headscarf, reading glasses on the end of her nose, a quilted indigo work jacket and cotton gloves, a bamboo broom over one shoulder, a stern mouth and kind eyes, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/kubo/neutral.webp` (and optional `happy.webp`)
+- [ ] **Shota** · `shota` · 21 lines
+  - **Who:** A nine-year-old who's become a regular at the stall without buying anything. Very serious, very formal.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a nine-year-old Japanese boy, a neat bowl haircut, round cheeks, a new navy puffer jacket, holding a small white paper envelope in both hands, a grave, very serious little face, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/shota/neutral.webp`
+- [ ] **Shrine caretaker** · `caretaker` · 14 lines
+  - **Who:** An old woman who has looked after Naganaki Shrine for a long time.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a small, bent Japanese woman in her eighties, white hair under a dark headscarf, a quilted winter jacket and knitted mittens, a deeply lined face with bright, kind eyes, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/caretaker/neutral.webp`
+
+**School clubs**
+- [ ] ⭐ **Tsuji (tennis club)** · `tsuji` · 31 lines · *(invented)*
+  - **Who:** The tennis club's loudest member: talks through every point and turns every loss into a drama. *(shares an id; see the note below)*
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a sixteen-year-old Japanese girl, a high bouncy ponytail with a bright yellow scrunchie, a terry sweatband on her forehead, Gekkoukan tennis whites, a smudge of paint on her neck, mid-chatter with a mischievous, theatrical grin, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/tsuji/neutral.webp` (and optional `happy.webp`)
+- [ ] ⭐ **Chiba (tennis club)** · `chiba` · 31 lines
+  - **Who:** Runs the relaxed tennis club. Tall, unhurried, faintly amused, never takes her cardigan off.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a seventeen-year-old Japanese girl, tall, dark hair in a low loose knot, a cream cardigan over Gekkoukan tennis whites, a calm, faintly amused half-smile, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/chiba/neutral.webp` (and optional `happy.webp`)
+- [ ] **Kuga (library committee)** · `kuga` · 24 lines
+  - **Who:** A third-year on the library committee who has read every nonfiction book in the building and found most of them lacking.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a seventeen-year-old Japanese boy, thin, neat black hair, a gray cardigan buttoned all the way up over his uniform shirt and tie, a pencil behind each ear, a severe, critical, faintly superior look, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/kuga/neutral.webp`
+- [ ] **Hoshino (library committee)** · `hoshino` · 21 lines · *(invented)*
+  - **Who:** A cheerful first-year in the book club who reads the first page of everything.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a fifteen-year-old Japanese girl, wavy light-brown hair in two low pigtails, a few freckles, Gekkoukan High winter uniform (black blazer, white shirt, red ribbon) with a cardigan, a hardback hugged to her chest, a bright, eager face, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/hoshino/neutral.webp`
+- [ ] **Aoi (light music club)** · `aoi` · 21 lines
+  - **Who:** The band's singer: a second-year who cuts her own hair and writes lyrics up her arm in ballpoint.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a sixteen-year-old Japanese girl, a short, ragged self-cut black haircut, Gekkoukan High winter uniform (black blazer, white shirt, red ribbon) with the ribbon loose and the sleeve pushed up to show lines of ballpoint lyrics up her left forearm, an intense, guarded stare, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/aoi/neutral.webp`
+- [ ] **Hayato (gaming club)** · `hayato` · 21 lines · *(invented)*
+  - **Who:** Leads the gaming club; quiet strategist who writes everything in a notebook.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a seventeen-year-old Japanese boy, black hair with a long fringe, rectangular glasses, Gekkoukan High winter uniform (black blazer over a white shirt) with the tie loosened, a small spiral notebook and pen in hand, a calm, analytical look, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/hayato/neutral.webp`
+- [ ] **Yuzu (gaming club)** · `yuzu` · 16 lines · *(invented)*
+  - **Who:** The gaming club's rhythm-game ace; loud, conspiracy-minded, explains everything.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a fifteen-year-old Japanese girl, short choppy pink-dyed bob with a cat-ear hair clip, Gekkoukan High winter uniform (black blazer, white shirt, red ribbon) with an oversized hoodie over it, drumsticks for an arcade drum game tucked under her arm, a smug, excitable grin, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/yuzu/neutral.webp`
+- [ ] **Kousuke (light music club)** · `kousuke` · 13 lines · *(invented)*
+  - **Who:** The band's guitarist, who argues for covers and fights the amp.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a seventeen-year-old Japanese boy, floppy dyed-brown hair, Gekkoukan High winter uniform (black blazer over a white shirt) with the blazer open, a guitar strap over one shoulder and a plectrum between his teeth, a harried, exasperated look, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/kousuke/neutral.webp`
+- [ ] **Nishi (tennis club)** · `nishi` · 11 lines · *(invented)*
+  - **Who:** A shy tennis-club girl who goes red at any attention and keeps trying anyway.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a fifteen-year-old Japanese girl, small, a straight black bob with a white hairband, Gekkoukan tennis whites, a racket held close to her chest, flushed cheeks and a shy, startled look, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/nishi/neutral.webp`
+- [ ] **Gen (light music club)** · `gen` · 10 lines · *(invented)*
+  - **Who:** The band's bassist; quiet, sits on a crate, talks to his strings.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a seventeen-year-old Japanese boy, broad and quiet, a buzz cut, Gekkoukan High winter uniform (black blazer over a white shirt) with the sleeves rolled, a bass guitar strap across his chest, a reserved, sleepy-eyed face, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/gen/neutral.webp`
+- [ ] **Mika (light music club)** · `mika` · 10 lines · *(invented)*
+  - **Who:** The band's drummer, always a little too fast.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a sixteen-year-old Japanese girl, a messy half-up ponytail, Gekkoukan High winter uniform (black blazer, white shirt, red ribbon) with a track jacket tied round her waist, a pair of drumsticks in one hand, a restless, bright-eyed grin, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/mika/neutral.webp`
+- [ ] **Kenji (gaming club)** · `kenji` · 10 lines · *(invented)*
+  - **Who:** A gaming-club member with an online game he lives in and a theory about everything.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a sixteen-year-old Japanese boy, slightly chubby, round glasses, short messy hair, Gekkoukan High winter uniform (black blazer over a white shirt), a lopsided plush mascot keychain on his bag strap, an earnest, excitable face, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/kenji/neutral.webp`
+- [ ] **Ryoko (tennis team)** · `ryoko` · 9 lines · *(invented)*
+  - **Who:** A second-year on the competitive tennis team; kind to opponents, steady with her team.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a sixteen-year-old Japanese girl, athletic, dark hair in a tight braid, Gekkoukan tennis whites with a strip of white overgrip wrapped round one wrist, a composed, quietly determined face, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/ryoko/neutral.webp`
+- [ ] **Mori (tennis team)** · `mori` · 9 lines
+  - **Who:** A tennis-team player whose family runs the old bathhouse on the Strip.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a fifteen-year-old Japanese girl, round face, short dark hair pinned back with plain clips, Gekkoukan tennis whites, a towel round her neck, a quiet, self-contained expression, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/mori/neutral.webp`
+
+**Port Island (konbini, Respawn, fish market)**
+- [ ] ⭐ **Clerk (convenience store)** · `clerk` · 29 lines · *(invented)*
+  - **Who:** The night clerk Solar works beside at the station convenience store. Laid-back, a little lazy, kind underneath. *(generic id; see the note below)*
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese man in his mid-twenties, lean, slightly shaggy brown-dyed hair with dark roots, a blue-and-white striped convenience store uniform shirt with a name tag, a pen behind one ear, sleepy half-lidded eyes and an easy, lopsided smile, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/clerk/neutral.webp` (and optional `happy.webp`)
+- [ ] ⭐ **Mr. Tanabe (fish market)** · `tanabe` · 28 lines
+  - **Who:** Runs the stall Solar works at the harbor fish market. Gruff, sharp-eyed, judges a fish (and a worker) at a glance.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a weathered Japanese man in his late fifties, wiry, gray stubble, short gray hair under a knitted navy watch cap, a heavy rubber apron over a quilted work jacket, a stub of chalk in his fingers, squinting, clear, appraising eyes, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/tanabe/neutral.webp` (and optional `happy.webp`)
+- [ ] **Old Oka (fish market)** · `oka` · 16 lines
+  - **Who:** The man at the next stall: sixty-something, looks older, speaks thick dialect, teaches with his hands.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a small, leathery Japanese man in his sixties who looks older, deep sun wrinkles, a few missing teeth in a crooked grin, a faded towel twisted round his head, a worn padded vest over a long-sleeved undershirt, a rough hand raised in an auction hand-sign, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/oka/neutral.webp`
+- [ ] **Respawn's manager** · `manager` · 14 lines
+  - **Who:** Runs Respawn, the net café under Port Island Station; has been losing an argument with the building for six years.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese man in his late thirties, slightly heavy, unshaven, black hair flattened by a headset pushed down round his neck, a black polo shirt with the Respawn logo, a mop handle over his shoulder, a long-suffering, deadpan face, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/manager/neutral.webp`
+- [ ] **Nurse Ono (convenience store)** · `kbOno` · 10 lines
+  - **Who:** A nurse from the hospital on the island who stops in after her shift. Tired, polite, a short surprised laugh.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese woman in her forties, dark hair in a low practical ponytail, a cardigan over pale blue hospital scrubs, a lanyard with an ID card, faint tiredness under the eyes and a polite, reserved smile, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/kbOno/neutral.webp`
+- [ ] **Mr. Hattori (convenience store)** · `kbHattori` · 9 lines
+  - **Who:** A taxi driver in his fifties who buys a black coffee and a pork bun every night. Shy, decent, ducks his head when he smiles.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese man in his fifties, a neat graying side-part, a dark navy taxi driver's uniform jacket and tie, white driving gloves folded into his breast pocket, a shy, slightly bashful face, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/kbHattori/neutral.webp`
+- [ ] **The regular (Respawn)** · `regular` · 9 lines · *(invented)*
+  - **Who:** One of Respawn's night regulars; always seat fourteen.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese man in his late twenties, pale, black hair in a short messy cut, a hooded zip jacket over a band T-shirt, big headphones round his neck, a can of energy drink in hand, a friendly, slightly sheepish half-smile, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/regular/neutral.webp`
+- [ ] **Daichi (Respawn)** · `daichi` · 8 lines · *(invented)*
+  - **Who:** The loud middle-schooler in seat four who yells at his games.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a thirteen-year-old Japanese boy, round-faced, spiky black hair, a hoodie with the sleeves shoved up over a middle-school uniform shirt, a gaming headset round his neck, a scowl he's trying very hard to keep, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/daichi/neutral.webp`
+- [ ] **Tanabe's nephew (fish market)** · `nephew` · 8 lines
+  - **Who:** Mr. Tanabe's nineteen-year-old nephew. Reckless, cheerful, soaked half the time.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese young man of nineteen, tanned, bleached-orange hair spiking out from under a backwards cap, a rubber apron over a soaked T-shirt, a big careless grin, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/nephew/neutral.webp`
+
+**Others**
+- [ ] **Ramen cook** · `cook` · 17 lines
+  - **Who:** The man who runs the little back-street ramen counter with the half-dead sign. Gruff, talks to strangers in the cold.
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese man in his fifties, gaunt, graying stubble, black hair under a grubby white cook's cap, a stained apron over a long-sleeved shirt, a cigarette tucked behind one ear, tired, wary, kind eyes, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/cook/neutral.webp`
+- [ ] **Salaryman** · `salaryman` · 14 lines · *(invented)*
+  - **Who:** Generic office worker customers at the konbini and the flower stall. *(generic; optional)*
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese office worker in his thirties, neat short black hair, a dark gray suit, white shirt and loosened navy tie, a briefcase strap over his shoulder, a harried, polite, tired face, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/salaryman/neutral.webp`
+
+**Teachers** *(needs a small change to show: class questions show the teacher's name only; see the note for Claude)*
+- [ ] **Mr. Ono** · `ono` (teacher key in `questions.js`) · 10 class questions
+  - **Who:** World History teacher who wears a samurai helmet to class and derails into the Sengoku period. *(P3/P3R canon NPC.)*
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style), plus a P3R screenshot of him if you have one.
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): Mr. Ono, the Gekkoukan history teacher from Persona 3, as he looks in P3 Reload: a middle-aged man in a brown suit and tie wearing a samurai kabuto helmet, an excited, lecturing expression, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/ono/neutral.webp`
+- [ ] **Mr. Ekoda** · `ekoda` (teacher key in `questions.js`) · 10 class questions
+  - **Who:** Classic Literature teacher; a stickler who reads the Heian classics in a flat monotone. *(P3/P3R canon NPC.)*
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style), plus a P3R screenshot of him if you have one.
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): Mr. Ekoda, the Gekkoukan classics teacher from Persona 3, as he looks in P3 Reload: a sour middle-aged man in a plain suit and tie, thinning hair, narrow eyes and a permanent frown, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/ekoda/neutral.webp`
+- [ ] **Mr. Edogawa** · `edogawa` (teacher key in `questions.js`) · 10 class questions
+  - **Who:** The school nurse who teaches Health and turns every lesson into the occult. *(P3/P3R canon NPC.)*
+  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style), plus a P3R screenshot of him if you have one.
+  ```
+  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): Mr. Edogawa, the Gekkoukan school nurse from Persona 3, as he looks in P3 Reload: a thin man in a rumpled white lab coat, untidy black hair, round glasses, a sly, unsettling grin, neutral expression, transparent background.
+  ```
+  - **Fills:** `portraits/edogawa/neutral.webp`
+
+*Not listed:* Mrs. Kanda (the guesthouse cook), Hiyori (fan club) and the other teachers have no spoken lines yet, so a face wouldn't show anywhere. Kid, girl, boy and others under 7 lines are left out too.
+
+*Note for Claude (wiring):*
+- **CamelCase ids:** `femc-portraits.py` lowercases folder names (`cid = folder.lower()`), so `hgMaster`, `hgDaisuke`, `hgGotou`, `chKagami`, `chOkuda`, `chHinata`, `chYuu`, `kbOno` and `kbHattori` would be indexed as e.g. `hgmaster` and never found. Add `SAME_FACE` entries in `core.js` (`hgMaster: 'hgmaster'`, ...) or teach the tool to keep the id's case. The disk is case-insensitive, so the folder name itself is fine either way.
+- **Shared ids:** a portrait shows for every speaker with that id. `tsuji` is both tennis-club Tsuji (31 lines) and Mrs. Tsuji at Yeobo's (6); `ueda` is Mrs. Ueda (9) and library-club Ueda (2); `daichi` is the Respawn kid (8) and Kenta's friend at tutoring (2); `clerk` is the konbini clerk (27) plus one line each in `mitsuru.js` and `prologue.js`. Give the minor one its own id (with a `cast` name) before adding the face.
+- **Teachers:** `ui.js classPeriod` builds the question box with the teacher's name only. Showing a face means adding `G.portrait(q.teacher)` to that box (and the quiet-class line).
+- After cutting, check `portraits/scale.js` and see each face in a scene (`femc-check-scenes.py`).
 
 ---
 
