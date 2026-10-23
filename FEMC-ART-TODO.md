@@ -29,7 +29,7 @@ Edits, not new pictures. The prompts are in `FEMC-CG-PROMPTS.md` section 0.
 
 Every CG prompt starts with this style block:
 ```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, moody lighting with one dominant color. Use the other attached images only for the characters' faces, hair and clothes. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition. Solar: very long straight black hair, black Gekkoukan uniform, red bow, white earbuds around her neck, white knee socks, red S.E.E.S. armband.
+Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, moody lighting with one dominant color. Use the other attached images only for the characters' faces, hair and clothes. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition. Solar: very long straight black hair, black Gekkoukan uniform, red bow, white earbuds around her neck, white knee socks. No S.E.E.S. armband (she only wears it in battle and the Dark Hour; add it back only for those scenes).
 ```
 
 ### How to use the "Must match" lines
