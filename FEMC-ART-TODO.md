@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**76 items:** 2 quick fixes · 9 CGs · 17 places · 19 character pieces · 12 battle · 11 cards and icons · 6 screens. 9 are ⭐, 48 are optional.
+**66 items:** 2 quick fixes · 9 CGs · 7 places · 19 character pieces · 12 battle · 11 cards and icons · 6 screens. 7 are ⭐, 40 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -107,31 +107,15 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 
 ### 3A. Places that borrow another place's art
 Each works now on a stand-in (in brackets); the new one replaces it.
-- [ ] ⭐ **The dorm's front, day and night:** a three-story red-brick dormitory with a small arched entrance and stone steps, a street lamp, a quiet residential street; then the same at night, warm windows and the lamp on. (The 55-scene image now is a watermarked game screenshot with people in it.) **Attach:** 🎮 `bg/iwotodaidorm-outside.webp` for the layout. **Fills:** `iwatodaidorm-front`, `iwatodaidorm-front-night`.
 - [ ] *(Optional)* **Kirijo Guesthouse lobby by day:** the same lobby as `bg/kirijo-guesthouse-night.webp`, in afternoon light. (The night one is in; after-school and daytime guesthouse scenes still use a generic hotel lobby.) **Attach:** 🎮 `bg/kirijo-guesthouse-night.webp`. **Fills:** `kirijo-guesthouse`.
 - [ ] *(Optional)* **Yeobo's Cafe and the fish market, today:** the same two places as their washed-out memory images, but clear and present-day. (The jobs use the memory images now, which may be on purpose.) **Attach:** 🎮 `bg/flashback-yeobos-cafe.webp` / `bg/flashback-fish-market.webp`. **Fills:** `yeobos-cafe`, `port-island-fish-market`.
 - [ ] *(Optional)* small ones, one or two scenes each: a supermarket aisle (`iwatodai-supermarket`), a school stairwell (`gekkoukan-stairwell`), a canal path behind the mall (`paulownia-canal`), a small flat near the station (`kirijo-flat`).
 
 ### 3B. Night versions
-Evening scenes dim the day image for these. **Attach:** the day image from 🎮 `bg/`.
-```
-Edit this image. Keep the place, layout and camera exactly the same, but change it to night: [DETAILS]. No people, no readable text.
-```
-- [ ] *(Optional)* Paulownia Mall: shop signs and string lights on (`paulownia-mall` → `paulownia-mall-night`)
-- [ ] *(Optional)* Iwatodai Strip: lanterns and shop lights (`location-2` → `iwatodai-strip-night`)
-- [ ] *(Optional)* Port Island Station: the plaza lit up (`location-1` → `portisland-station-night`)
-- [ ] *(Optional)* the bathhouse's street (`outside-daytime-neighborhood` → `bathhouse-night`; now a generic street)
-- [ ] *(Optional)* Kirijo Guesthouse's front (`elegant-buildingentrance` → `kirijo-guesthouse-front-night`; now a generic street)
+All done.
 
 ### 3C. Seasons
-A day image can change by season now (`places.js seasons`), so these show wherever the place is used. **Attach:** the current image from 🎮 `bg/`.
-```
-Edit this image. Keep the place, layout and camera exactly the same, but change the season to [SEASON]: [DETAILS]. No people, no readable text.
-```
-- [ ] ⭐ **Gekkoukan's front gate** in summer, autumn and winter. It has cherry blossoms all year now (15 scenes, graduation included). (`gekkoukanhigh` → `gekkoukanhigh-summer`, `-autumn`, `-winter`)
-- [ ] *(Optional)* the riverside in autumn and winter (`park-2`, 45 scenes → `park-2-autumn`, `-winter`)
-- [ ] *(Optional)* the dorm's front in winter (after its redo in 3A → `iwatodaidorm-front-winter`)
-- [ ] *(Optional)* the school roof in winter (`rooftop-day` → `rooftop-day-winter`)
+All done (`places.js seasons`: the shrine, the front gate, the riverside, the school roof and the dorm's front).
 
 ### 3D. Dark Hour arenas
 Two July full-moon fights use ordinary daytime art. **Attach:** the image named.
@@ -341,7 +325,7 @@ Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 
 
 ### Tarot cards and places
 - **A tarot card:** add `'<arcana key>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-tarot.py` (the key is the link's `arcana` lowercased without spaces) and run it: it writes `tarot/<key>.webp` and `tarot/index.js`, which the Bonds menu and the rank-up cards read (`core.js tarot`). Bump the `tarot/index.js ?v=` in `femc-game.html`.
-- **A place:** add `'<slug>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-backgrounds.py` and run it (WebP, at most 1920 wide; New Adds pieces are fit to 1920×1072), then point the place's rule in `game/data/places.js` (or a scene's or a pick's `bg`) at the slug and bump that file's `?v=`. An activity that shares its spot with other scenes gets its own `place` (e.g. `'Iwatodai Strip · Hagakure · Challenge Bowl'`) and a rule above the spot's. A rule can't change by season, but a day image can: `places.js seasons` maps one (now `outside-shrine-day`) to [first month, slug] pairs, and `core.js seasonal` swaps it wherever it's used (rules, scene `bg`, Go Out); other seasonal art goes on dated scenes' `bg`. A story event's own `bg` field isn't read (ui.js `sceneFor`), so an event sets its art with a `{ bg }` step. Night-lit art gets the same slug as its evening image too, or evening scenes dim it.
+- **A place:** add `'<slug>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-backgrounds.py` and run it (WebP, at most 1920 wide; New Adds pieces are fit to 1920×1072), then point the place's rule in `game/data/places.js` (or a scene's or a pick's `bg`) at the slug and bump that file's `?v=`. An activity that shares its spot with other scenes gets its own `place` (e.g. `'Iwatodai Strip · Hagakure · Challenge Bowl'`) and a rule above the spot's. A rule can't change by season, but a day image can: `places.js seasons` maps one (now `outside-shrine-day`, `gekkoukanhigh`, `park-2`, `rooftop-day`, `iwotodaidorm-outside`) to [first month, slug] pairs, and `core.js seasonal` swaps it wherever it's used (rules, scene `bg`, Go Out); other seasonal art goes on dated scenes' `bg`. A story event's own `bg` field isn't read (ui.js `sceneFor`), so an event sets its art with a `{ bg }` step. Night-lit art gets the same slug as its evening image too, or evening scenes dim it.
 
 ### Theurgy and strike-sheet art
 Everything is data plus one tool. The presentation is reusable: `battle.js theurgyCut` plays whatever a fighter has (see the comment above `TH` in `data.js`).

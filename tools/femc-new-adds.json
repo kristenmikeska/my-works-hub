@@ -5885,6 +5885,186 @@
       "source": "yunjin-rank10.png",
       "sourceNow": "Added to Game/yunjin-rank10.png",
       "status": "integrated"
+    },
+    {
+      "batch": 35,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/bathhouse-night.webp",
+      "outputSha256": "fab2d284b48467f995793bacbbc257ce73df92d15179fb8440b67afcdeb8f5df",
+      "place": "place rule 'Iwatodai Strip · Bathhouse' evening image (was outside-night); day keeps outside-daytime-neighborhood",
+      "sha256": "d4e4ea8b4cdaa87f7fbfb63ec5cad7a79763692679a6cce019257b01169f1183",
+      "size": [
+        2722,
+        1536
+      ],
+      "source": "bathhouse-night.jpeg",
+      "sourceNow": "Added to Game/bathhouse-night.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 35,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/iwatodai-strip-night.webp",
+      "outputSha256": "8e2eab09a058e3c433b107fb6a455c48ac68a577501f594d344dfbcfd6f42f5d",
+      "place": "place rule 'Iwatodai Strip' evening image and the strip area's Go Out bgEvening; day keeps location-2",
+      "sha256": "c4c25830b98ad157820c1ce044ea03b133aa20e04c531fb3ffceb312450d1ee3",
+      "size": [
+        2730,
+        1536
+      ],
+      "source": "iwatodai-strip-night.jpeg",
+      "sourceNow": "Added to Game/iwatodai-strip-night.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 35,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/kirijo-guesthouse-front-night.webp",
+      "outputSha256": "8c32d46e82aa2640c4f0214fb05f6ad46083e200273fba7dd0dbb64f2fb1da6e",
+      "place": "place rule 'Kirijo Guesthouse · Front' evening image (was outside-night); day keeps elegant-buildingentrance",
+      "sha256": "bcdc5bd64339a03787f3a7b7ca488e8b6482803bafb5b576d0df854bea4809a4",
+      "size": [
+        2836,
+        1504
+      ],
+      "source": "kirijo-guesthouse-front-night.jpeg",
+      "sourceNow": "Added to Game/kirijo-guesthouse-front-night.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 35,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/paulownia-mall-night.webp",
+      "outputSha256": "9949e8f603c159d770f6aa22096a0d9ce7bf832b8af303090f50cd6dd0a219df",
+      "place": "place rules 'Paulownia Mall · Fountain' and 'Paulownia Mall' evening image, the mall area's Go Out bgEvening, and cr-jh-fountain's own bg (an evening scene with the winter lights; crush-jihoon-minji.js)",
+      "sha256": "87f7c004b4d154dd98631bfa15a2dbd6f7885e32c07bb3f35b3d9b477648275d",
+      "size": [
+        2730,
+        1536
+      ],
+      "source": "paulownia-mall-night.jpeg",
+      "sourceNow": "Added to Game/paulownia-mall-night.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 35,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/portisland-station-night.webp",
+      "outputSha256": "fe98dc22ee3916f0168bfda5ad8827bf1bf5fe71eac22d0a6246ba14e0cfebe7",
+      "place": "place rule 'Port Island Station' evening image, the portisland area's Go Out bgEvening, and cr-shin-lozenges' own bg (evening; crush-shinjiro.js)",
+      "sha256": "629d9bc5caa67a39d4a0b41cc8bc68bcc5e85ac5e8fd16b970b09cc301cb7410",
+      "size": [
+        2730,
+        1536
+      ],
+      "source": "portisland-station-night.jpeg",
+      "sourceNow": "Added to Game/portisland-station-night.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 35,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/gekkoukanhigh-summer.webp",
+      "outputSha256": "4bb7344c5290eff1b82dcfb5538c389243510b37329240fa51d2a397d8a7772b",
+      "place": "places.js seasons gekkoukanhigh, Jun-Sep (front gate rule and scenes' own bg)",
+      "sha256": "bbc30827f7342ea1123ed8b7b8f01cd777ae7f7536f52b258eb5bfddccfb8552",
+      "size": [
+        2730,
+        1536
+      ],
+      "source": "gekkoukanhigh-summer.jpeg",
+      "sourceNow": "Added to Game/gekkoukanhigh-summer.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 35,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/gekkoukanhigh-autumn.webp",
+      "outputSha256": "f6bfc94f5c2311a128eff66863c4526279a4dbc98ba2a6a43d2e6ca43d661f70",
+      "place": "places.js seasons gekkoukanhigh, Oct-Nov",
+      "sha256": "52e80bb977a502c3d3a7465c407ee1609ebb8b7dd087e966fb65e2f29376013a",
+      "size": [
+        2730,
+        1536
+      ],
+      "source": "gekkoukanhigh-autumn.jpeg",
+      "sourceNow": "Added to Game/gekkoukanhigh-autumn.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 35,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/gekkoukanhigh-winter.webp",
+      "outputSha256": "4654ab58d101a875cb36a3b556b13a69880cc77d77f25a0d5d8f5e8ecc188c99",
+      "place": "places.js seasons gekkoukanhigh, Dec-Feb (spring art stays Mar-May, so graduation on 3/5 keeps its blossoms)",
+      "sha256": "ea0b5016fc84f75c40621a360fcf99e689c51a4eba43f687e24130d8c55343f4",
+      "size": [
+        2730,
+        1536
+      ],
+      "source": "gekkoukanhigh-winter.jpeg",
+      "sourceNow": "Added to Game/gekkoukanhigh-winter.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 35,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/park-2-autumn.webp",
+      "outputSha256": "b687bec7dcc2fe9e6a95a597a81c517557bccc9dc6a25c38f1b6b53fc761e5d6",
+      "place": "places.js seasons park-2, Oct-Nov (the riverside by day and scenes' own bg)",
+      "sha256": "d57ad3de84e5fdf61b0b040a474fdacff7f7462349eee1f3caa22ad76dd97949",
+      "size": [
+        2730,
+        1536
+      ],
+      "source": "park-2-autumn.jpeg",
+      "sourceNow": "Added to Game/park-2-autumn.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 35,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/park-2-winter.webp",
+      "outputSha256": "cbf9e8c335d92e0f178e0726289527f849c2438dc4d8177e906b304ea188a5c8",
+      "place": "places.js seasons park-2, Dec-Feb",
+      "sha256": "b563003cde03ed741d1d3c53e00e0712417e07870a24fa757429a4c11a1b44fc",
+      "size": [
+        2730,
+        1536
+      ],
+      "source": "park-2-winter.jpeg",
+      "sourceNow": "Added to Game/park-2-winter.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 35,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/rooftop-day-winter.webp",
+      "outputSha256": "445a72d29af149fe2161c31c3cc771a5b6e46cac9ebf477453b962f3f7b0452e",
+      "place": "places.js seasons rooftop-day, Dec-Feb (the school roof and roof garden by day)",
+      "sha256": "7284369a4066fa2009048332c67ee6abb14c024efa53136821d8c4be3c642a29",
+      "size": [
+        2720,
+        1536
+      ],
+      "source": "rooftop-day-winter.jpeg",
+      "sourceNow": "Added to Game/rooftop-day-winter.jpeg",
+      "status": "integrated"
+    },
+    {
+      "batch": 35,
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "destination": "assets/femc/bg/iwatodaidorm-front-winter.webp",
+      "outputSha256": "0bd0146928599a83200bc1f1287cd6e602e5df535978853396aa62d7c7fdddd3",
+      "place": "places.js seasons iwotodaidorm-outside, Dec-Feb (Kat keeps the current dorm front; this is its winter version)",
+      "sha256": "c6c2d6931e0676a5bba1b44456d42b7485cdee22e27c092f60a9df7b288de3e7",
+      "size": [
+        2730,
+        1536
+      ],
+      "source": "iwatodaidorm-front-winter.jpeg",
+      "sourceNow": "Added to Game/iwatodaidorm-front-winter.jpeg",
+      "status": "integrated"
     }
   ],
   "batch1Validation": {
@@ -6349,6 +6529,25 @@
     ],
     "html": "femc-game.html places v31, koromaru v4, jihoon v11, minji v12, hanni v13, hyein v13, yunjin v9, mark v10, jaehyun v8, cherry v10",
     "textTweaks": "Hyein: old snow on the roof, Hyein straightening a wing; Jihoon: one romance-only line; Koromaru: snow, forehead to his while writing; Yunjin: they laugh before the quiet",
+    "browserErrors": 0
+  },
+  "batch35Validation": {
+    "date": "2026-10-23",
+    "scope": "Five night versions and seven seasonal day images (art list sections 3B and 3C)",
+    "sourcesInspected": "all 12 viewed before wiring, beside the current art; outputs viewed as a contact sheet",
+    "sourcesIntegrated": 12,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold untouched",
+    "seasons": "spring Mar-May, summer Jun-Sep, autumn Oct-Nov, winter Dec-Feb, as the shrine's; the riverside has no summer image and the school roof and dorm front only a winter one, so they keep their own art until then",
+    "dayEvening": "night-lit art only in evening images and two evening scenes' own bg; seasonal art is day art (core.js seasonal only swaps the day image)",
+    "artListDecision": "Kat keeps the current dorm front (iwotodaidorm-outside); its redo item was removed from the art list",
+    "tests": [
+      "python3 tools/femc-check-scenes.py (OK)",
+      "python3 tests/femc_living.py (45 checks, 1,685 scene paths)",
+      "python3 tests/femc_living2.py (47 checks, 4,382 scene paths)",
+      "targeted check: every seasons slug exists for all 12 months"
+    ],
+    "html": "femc-game.html places v32, crush-shinjiro v2, crush-jihoon-minji v2",
     "browserErrors": 0
   }
 }

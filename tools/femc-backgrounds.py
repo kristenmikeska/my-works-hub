@@ -69,6 +69,19 @@ EXTRA = {
     'respawn-cafe-evening': 'Added to Game/respawn-cafe.jpeg',
     'sakamoto-apartment-night': 'Added to Game/sakamoto-apartment.jpeg',
     'station-platform-day': 'Added to Game/station-platform-day.jpeg',
+    # batch 35 (2026-10-23): night versions (evening slots only) and seasonal day art (places.js seasons)
+    'bathhouse-night': 'Added to Game/bathhouse-night.jpeg',
+    'iwatodai-strip-night': 'Added to Game/iwatodai-strip-night.jpeg',
+    'kirijo-guesthouse-front-night': 'Added to Game/kirijo-guesthouse-front-night.jpeg',
+    'paulownia-mall-night': 'Added to Game/paulownia-mall-night.jpeg',
+    'portisland-station-night': 'Added to Game/portisland-station-night.jpeg',
+    'gekkoukanhigh-summer': 'Added to Game/gekkoukanhigh-summer.jpeg',
+    'gekkoukanhigh-autumn': 'Added to Game/gekkoukanhigh-autumn.jpeg',
+    'gekkoukanhigh-winter': 'Added to Game/gekkoukanhigh-winter.jpeg',
+    'park-2-autumn': 'Added to Game/park-2-autumn.jpeg',
+    'park-2-winter': 'Added to Game/park-2-winter.jpeg',
+    'rooftop-day-winter': 'Added to Game/rooftop-day-winter.jpeg',
+    'iwatodaidorm-front-winter': 'Added to Game/iwatodaidorm-front-winter.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

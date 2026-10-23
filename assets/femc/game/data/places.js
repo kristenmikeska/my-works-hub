@@ -6,10 +6,10 @@ window.FEMC_GAME_PLACES = {
      blurb: the short line on the area's card; about: the longer description in the Go Out panel (hover or focus). */
   areas: [
     { id: 'gekkoukan', name: 'Gekkoukan High', bg: 'outside-school', slots: ['after'], schoolOnly: true, blurb: 'Clubs, the library, and whoever is still around.', about: "School after the last bell: the library's quiet tables, the rooftop garden, a study group for first-years, the club rooms, and whoever hasn't gone home yet." },
-    { id: 'strip', name: 'Iwatodai Strip', bg: 'location-2', slots: ['after', 'evening'], blurb: 'Ramen, burgers, used books and the bathhouse.', about: 'The narrow street by the station. Cheap food that fixes a bad day (and one bowl that dares you), a pharmacy, used books, and the bathhouse after dark.' },
-    { id: 'mall', name: 'Paulownia Mall', bg: 'paulownia-mall', slots: ['after', 'evening'], blurb: 'Shops, karaoke, the arcade and the police box.', about: 'Coffee, boutiques, karaoke, the arcade and its crane games, and a small cinema, plus the Police Box, Be Blue V and Mayoido for gear and rare goods.' },
+    { id: 'strip', name: 'Iwatodai Strip', bg: 'location-2', bgEvening: 'iwatodai-strip-night', slots: ['after', 'evening'], blurb: 'Ramen, burgers, used books and the bathhouse.', about: 'The narrow street by the station. Cheap food that fixes a bad day (and one bowl that dares you), a pharmacy, used books, and the bathhouse after dark.' },
+    { id: 'mall', name: 'Paulownia Mall', bg: 'paulownia-mall', bgEvening: 'paulownia-mall-night', slots: ['after', 'evening'], blurb: 'Shops, karaoke, the arcade and the police box.', about: 'Coffee, boutiques, karaoke, the arcade and its crane games, and a small cinema, plus the Police Box, Be Blue V and Mayoido for gear and rare goods.' },
     { id: 'station', name: 'Iwatodai Station', bg: 'iwatodai-station', slots: ['after', 'evening'], blurb: 'Benches, vending machines, the last train.', about: 'Benches, a row of vending machines, and people waiting for trains with somewhere to be.' },
-    { id: 'portisland', name: 'Port Island Station', bg: 'location-1', slots: ['after', 'evening'], blurb: 'The busy side of the bay. Some of it is less busy.', about: 'The busy side of the bay: crowds on the concourse, and a back alley most people walk around.' },
+    { id: 'portisland', name: 'Port Island Station', bg: 'location-1', bgEvening: 'portisland-station-night', slots: ['after', 'evening'], blurb: 'The busy side of the bay. Some of it is less busy.', about: 'The busy side of the bay: crowds on the concourse, and a back alley most people walk around.' },
     { id: 'port', name: 'Port Island', bg: 'park', slots: ['after'], blurb: 'The pier, the park and the harbor.', about: 'The pier, the seaside park and the harbor. Wind off the bay, room to think, and a beach cleanup on weekend mornings.' },
     { id: 'shrine', name: 'Naganaki Shrine', bg: 'outside-shrine-day', bgEvening: 'naganaki-shrine-night', slots: ['after', 'evening'], blurb: 'Quiet steps, a fortune box, a playground.', about: 'Stone steps, an offering box, fortunes tied to the tree and the playground behind it. Quiet most days; the neighbors take turns sweeping.' },
     { id: 'hospital', name: 'Tatsumi Memorial Hospital', bg: 'hospital-outside', slots: ['after'], blurb: 'If she isn’t feeling well.', about: 'Tatsumi Memorial. The clinic can fix being tired or sick, for a price, and the children’s ward always wants volunteers.' },
@@ -215,7 +215,7 @@ window.FEMC_GAME_PLACES = {
     ['Iwatodai Dorm · Rooftop', 'iwatodaidorm-roof-evening', 'iwatodaidorm-roof-night'],
     ['Iwatodai Dorm · Front', 'iwotodaidorm-outside'],
     ['Iwatodai Dorm', 'iwatodaidorm-livingroom', 'iwatodaidorm-livingroom-night'],
-    ['Kirijo Guesthouse · Front', 'elegant-buildingentrance', 'outside-night'],
+    ['Kirijo Guesthouse · Front', 'elegant-buildingentrance', 'kirijo-guesthouse-front-night'],
     ['Kirijo Guesthouse · Roof', 'rooftop-citynight', 'kirijo-guesthouse-roof-night'],
     ['Kirijo Guesthouse', 'hotel-lobby', 'kirijo-guesthouse-night'],
     ['Iwatodai Station · Kirijo Guesthouse', 'hotel-lobby', 'kirijo-guesthouse-night'],
@@ -236,13 +236,13 @@ window.FEMC_GAME_PLACES = {
     ["Iwatodai Strip · Yeobo's Cafe", 'flashback-yeobos-cafe'],
     ['Iwatodai Strip · Aohige Pharmacy', 'aohigepharmacy-outside'],
     ['Iwatodai Strip · Bathhouse · Baths', 'iwatodai-bathhouse', 'iwatodai-bathhouse'],
-    ['Iwatodai Strip · Bathhouse', 'outside-daytime-neighborhood', 'outside-night'],
-    ['Iwatodai Strip', 'location-2'],
+    ['Iwatodai Strip · Bathhouse', 'outside-daytime-neighborhood', 'bathhouse-night'],
+    ['Iwatodai Strip', 'location-2', 'iwatodai-strip-night'],
     ['Iwatodai · Riverside', 'park-2', 'iwatodai-riverside-night'],
     ['Hagakure', 'hagakure-ramen'],
     ['Tutor', 'green-bedroom', 'sakamoto-apartment-night'],
     ['Paulownia Mall · Chagall Café', 'chagall-cafe-inside', 'chagall-cafe-inside'],
-    ['Paulownia Mall · Fountain', 'paulownia-mall'],
+    ['Paulownia Mall · Fountain', 'paulownia-mall', 'paulownia-mall-night'],
     ['Paulownia Mall · Shop Windows', 'clothing-store'],
     ['Paulownia Mall · Flower Stall', 'paulownia-flower-shop'],
     ['Paulownia Mall · Game Panic', 'gamepanic-inside', 'gamepanic-inside'],
@@ -257,11 +257,11 @@ window.FEMC_GAME_PLACES = {
     ['Paulownia Mall · Photo Booth', 'inside-mall'],
     ['Paulownia Mall · Central Atrium', 'inside-mall'],
     ['Paulownia Mall · Velvet Door', 'paulownia-velvet-door'],
-    ['Paulownia Mall', 'paulownia-mall'],
+    ['Paulownia Mall', 'paulownia-mall', 'paulownia-mall-night'],
     ['Port Island Station · Back Alley', 'outside-nightdistrict'],
     ['Port Island Station · Respawn', 'inside-mall', 'respawn-cafe-evening'],
     ['Port Island Station · Central Concourse', 'station-concourse-busy'],
-    ['Port Island Station', 'location-1'],
+    ['Port Island Station', 'location-1', 'portisland-station-night'],
     ['Port Island · Convenience Store', 'city', 'port-island-konbini-night'],
     ['Port Island · Fish Market', 'flashback-fish-market'],
     ['Port Island · Museum', 'port-island-museum'],
@@ -292,9 +292,15 @@ window.FEMC_GAME_PLACES = {
   ],
   /* Seasonal day art: wherever a scene's day background is one of these (a rule's or a scene's own bg), the month picks
      the version: [first month, image] pairs, the latest one not after this month (January and February wrap to the last).
-     core.js background(); evening images and other backgrounds are unchanged. */
+     core.js background(); evening images and other backgrounds are unchanged. Spring Mar-May, summer Jun-Sep, autumn
+     Oct-Nov, winter Dec-Feb (a place without a summer or autumn version keeps its own art until the next one). */
   seasons: {
-    'outside-shrine-day': [[3, 'naganaki-shrine-spring'], [6, 'naganaki-shrine-summer'], [10, 'naganaki-shrine-autumn'], [12, 'naganaki-shrine-winter']]
+    'outside-shrine-day': [[3, 'naganaki-shrine-spring'], [6, 'naganaki-shrine-summer'], [10, 'naganaki-shrine-autumn'], [12, 'naganaki-shrine-winter']],
+    // the front gate: blossoms stay for March (graduation's early blossoms) through May
+    'gekkoukanhigh': [[3, 'gekkoukanhigh'], [6, 'gekkoukanhigh-summer'], [10, 'gekkoukanhigh-autumn'], [12, 'gekkoukanhigh-winter']],
+    'park-2': [[3, 'park-2'], [10, 'park-2-autumn'], [12, 'park-2-winter']],
+    'rooftop-day': [[3, 'rooftop-day'], [12, 'rooftop-day-winter']],
+    'iwotodaidorm-outside': [[3, 'iwotodaidorm-outside'], [12, 'iwatodaidorm-front-winter']]
   },
   /* CG focus: which part of each CG (assets/femc/cg) to keep in view when a tall, narrow window has to crop it. */
   cgFocus: {

@@ -178,7 +178,7 @@
 
     /* ── After his rank 8 (late November on): dating, a friendship, or she's with someone else. ── */
     { id: 'cr-jh-fountain', who: 'jihoon', crush: J(['dating', 'faded']), slot: 'evening', after: '11/22', until: '12/31',
-      place: 'Paulownia Mall · Fountain', time: 'Evening', bg: 'paulownia-mall', scene: [
+      place: 'Paulownia Mall · Fountain', time: 'Evening', bg: 'paulownia-mall-night', scene: [
         { n: "The mall had put its winter lights up early, the way malls did, little white bulbs wound round the rim of the fountain and up the pillars, and Jihoon was sitting on the rim under them eating soft-serve in a coat, because seasons, he said, were a social construct, and because the soft-serve place by the escalator gave him extra now, out of either pity or love." },
         { ifCrush: J('dating'), then: [
           { n: "He saw her coming and held the cone out without a word so she could bite the top off, which was a thing she did, apparently, which was a thing he'd stopped complaining about sometime around the age of eleven." },

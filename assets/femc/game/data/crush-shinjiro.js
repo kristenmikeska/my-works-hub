@@ -58,7 +58,7 @@
 
     /* ── Before he's back (met in the alley, June to early August). ── */
     { id: 'cr-shin-lozenges', who: 'shinjiro', crush: S(P.BUILD), slot: 'evening', after: '6/18', until: '8/6', met: ['shinjiro'],
-      place: 'Port Island Station', time: 'Evening', bg: 'location-1', scene: [
+      place: 'Port Island Station', time: 'Evening', bg: 'portisland-station-night', scene: [
         { n: "She saw him from the far end of the station concourse before he saw her, which was rare, a tall long-coated shape at the convenience store's magazine rack, not reading, coughing into his shoulder in a way that made two salarymen beside him move away without looking." },
         { n: "She went into the store by the other door. She bought a bag of honey lozenges, the soft kind, the expensive kind, and came up behind him at the rack, and, while he was coughing, dropped the bag into the pocket of his coat, and walked away before he'd straightened up." },
         { n: "She got as far as the ticket gates." },
