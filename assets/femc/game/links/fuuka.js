@@ -704,8 +704,10 @@
           { n: "She said it gently and without any apology at all, and pulled out Solar's chair for her." }
         ] }
       ] },
+      { cg: 'link-fuuka-r10' },
       { n: "It was good. It was all good, every bowl, not good-for-Fuuka but good, the soup clean and salty, the nikujaga dark and sweet, the tamagoyaki layered like the pages of a book, and Solar ate slowly, because she wanted it to last and because Fuuka was watching her eat with an expression she'd never seen on her before. Not braced. Not hopeful. Just watching. The way you'd watch someone you liked open a present you already knew they'd like." },
-      { n: "The radiators clanked. Outside, the street was empty and gold under the lamps. They talked about nothing, the cold, whether it would snow, Junpei's latest theory about the vending machines, and the nothing was warm and easy and went on for a long time." },
+      { n: "The radiators clanked. Outside, the street was empty and gold under the lamps, with the first snow of the year lying thin along it. They talked about nothing, the cold, whether there'd be more snow, Junpei's latest theory about the vending machines, and the nothing was warm and easy and went on for a long time." },
+      { cg: null },
       { s: 'fuuka', f: 'neutral', t: "The night of the cookies. You came down because of the smell. You could have just opened another window and gone back to bed." },
       { s: 'fuuka', f: 'neutral', t: "You stayed in the kitchen. You were the first person who ever stayed in the kitchen. Everyone else came to the door and said something nice and left." },
       { s: 'fuuka', f: 'happy', t: "I found the place where I'm useful this year. In Tartarus, and in here. I think I'd have found the first one anyway. I don't think I'd have found this one without someone staying." },

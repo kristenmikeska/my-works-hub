@@ -43,9 +43,8 @@ One template; fill it from the item's Must match line, not from the setting name
 ```
 Solar and [NAME] at [SETTING], [TIME AND LIGHT]. [WHO ELSE IS THERE, OR "just the two of them"]. [CLOTHES]. [POSE AND DISTANCE]. [SEASON AND WEATHER]. [PROPS]. [MOOD].
 ```
-- [ ] *(Optional)* **Rank 10 (MAX)**, one per link (31 still to make). **Fills:** `cg/link-<id>-r10.webp`. **Attach:** style, Solar, the partner. Solar's clothes go by the season unless the line says otherwise.
+- [ ] *(Optional)* **Rank 10 (MAX)**, one per link (30 still to make). **Fills:** `cg/link-<id>-r10.webp`. **Attach:** style, Solar, the partner. Solar's clothes go by the season unless the line says otherwise.
   - **S.E.E.S.**
-    - **Fuuka** (the dorm dining room): December evening; only one end of the long table lit and set for two, the rest of the room dark; a cloth, good bowls (miso soup, nikujaga, rice, tamagoyaki), a small blue vase with one sprig; Fuuka in a clean apron across from Solar; lamplit street outside.
     - **Koromaru** (Naganaki Shrine): early-January evening, dry, very cold, sharp stars; New Year decorations still up, a crowded rack of wooden wish plaques; Solar on a cold step with a wooden plaque on her knee and a pen, her forehead to Koromaru's; Koromaru in a little quilted coat; town windows lit below.
   - **Searchers**
     - **Jihoon** (the dorm's front steps): mid-January, night, very cold, no snow; side by side on the stone steps; Jihoon elbows on knees in an unbuttoned coat, Solar in her skirt; a nearly empty tub of cookies-and-cream ice cream on the step, him holding out one spoon.

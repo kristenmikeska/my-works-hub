@@ -5698,6 +5698,23 @@
       "source": "aigis-rank10.png",
       "sourceNow": "Added to Game/aigis-rank10.png",
       "status": "integrated"
+    },
+    {
+      "batch": 32,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-fuuka-r10.webp",
+      "placement": "links/fuuka.js rank 10 ('10: the priestess'): { cg } from the meal itself through the easy talk, cleared before she starts on the cookies; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: snow shows in the window, so the street now has the first snow lying thin and they wonder about more; otherwise matches",
+      "mobileFocus": "54% 35%",
+      "outputSha256": "2565c9417eaf0996122b8e9322ea7bc747a4d8f0badfe3b260ad1d58bd331480",
+      "sha256": "7aea5801bb02eeecec67d524362861630bdda3c3406d52531c2dfb796583c778",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "fuuka-rank10.png",
+      "sourceNow": "Added to Game/fuuka-rank10.png",
+      "status": "integrated"
     }
   ],
   "batch1Validation": {
@@ -6133,18 +6150,19 @@
   },
   "batch32Validation": {
     "date": "2026-10-23",
-    "scope": "Rank 10 CGs for Junpei, Mitsuru, Yukari and Aigis (art list section 2B)",
-    "sourcesInspected": "all 4 viewed before wiring",
-    "sourcesIntegrated": 4,
+    "scope": "Rank 10 CGs for Junpei, Mitsuru, Yukari, Aigis and Fuuka (art list section 2B)",
+    "sourcesInspected": "all 5 viewed before wiring",
+    "sourcesIntegrated": 5,
     "sourcesUnchanged": true,
     "sourcesMoved": "New Adds -> Added to Game (same names); On Hold untouched",
     "tests": [
       "python3 tools/femc-check-scenes.py --links junpei,mitsuru,yukari (OK)",
       "python3 tools/femc-check-scenes.py --links aigis (OK)",
+      "python3 tools/femc-check-scenes.py --links fuuka (OK)",
       "python3 tests/femc_gallery.py (94 checks)"
     ],
-    "html": "femc-game.html places v29 (v28 before Aigis), yukari v4, junpei v4, mitsuru v5, aigis v4",
-    "textTweak": "Junpei rank 10: one narration line gains a shared smile; Aigis rank 10: Solar takes her hand off the rail (was on it); both to match the art",
+    "html": "femc-game.html places v30 (v28, v29 before Aigis, Fuuka), yukari v4, junpei v4, mitsuru v5, aigis v4, fuuka v6",
+    "textTweak": "Junpei rank 10: one narration line gains a shared smile; Aigis rank 10: Solar takes her hand off the rail (was on it); Fuuka rank 10: first snow on the street outside; all to match the art",
     "browserErrors": 0
   }
 }
