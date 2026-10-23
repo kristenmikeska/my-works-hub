@@ -1152,7 +1152,7 @@ window.FEMC_GAME_DAILY_LIFE = [
 
   { id: 'third-term-gate', after: '1/8', until: '1/16', slot: 'early', schoolOnly: true, flags: ['year-goes-on'],
     place: 'Gekkoukan High · Front Gate', time: 'Morning', bg: 'gekkoukanhigh', scene: [
-      { n: "There was frost on the gate on the first day of the third term, and the cherry trees along the path were black and bare, and Solar stood at the bottom of the steps with her bag over her shoulder and looked at it all the way she'd looked at it in April, as if she'd woken up inside it." },
+      { n: "There was frost on the gate on the first day of the third term, and the cherry trees along the path held snow along every branch, pale as if they had bloomed early, and Solar stood at the bottom of the steps with her bag over her shoulder and looked at it all the way she'd looked at it in April, as if she'd woken up inside it." },
       { n: "In April she'd known the building and not her own name. It was a strange thing to stand in the same place and know them both a little better and still not be sure which one she'd be taking home." },
       { s: 'aigis', f: 'neutral', t: "Solar-san. You have stopped. Is something wrong with the gate?" },
       { choose: [
