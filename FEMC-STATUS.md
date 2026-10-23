@@ -31,6 +31,7 @@ Other docs, if you ever want detail:
 - ✅ **Small battle fixes:** All-Out cloud figures use the fighters' pose-sheet attack frames, flicking and jittering (Ken keeps the silhouette); on phones, bond cut-ins show the whole picture so both faces fit
 
 - ✅ **Memories album and Theater:** a P3R-style album in the menu (and in Extras on the title screen) with every event picture and memory card you've unlocked, grouped, with blank tiles for the rest; tap one to see it full screen with its caption and flip through. The Theater replays scenes you've already watched (story, bonds and endings), by month; a replay never changes your save, choices are just for show and fights are skipped. Old saves fill in what they've already seen, and New Game+ keeps it all
+- ✅ **Weather like Persona 5:** rain (drizzle, rain and storms with lightning), snow (light and heavy) and fog over the scenes and the map, rain on the window indoors, rain and wind sounds made in the game (softer indoors), a rainy season in June and snow in winter, a five-day forecast on the phone (tap the weather by the date), weather lines through the day, small rainy-day perks, and two settings (Weather effects, Weather sound). The festival hallway and the July hotel now match their art, and the regulars' and teachers' faces will show as soon as you make them
 - ⬜ **Ideas to talk about:** the big push
 
 ## Story and characters

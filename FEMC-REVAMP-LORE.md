@@ -283,3 +283,10 @@ Haechan stays Universe and Jungwon stays Hierophant.
 - **Romance stays open, Persona-style:** Solar can still romance anyone, including Haechan at rank 8, while she's dating someone else, e.g. Akihiko. Never lock a romance choice just because she's already with someone.
 - **Only the canon romances get story acknowledgement:** the triangle scenes, the pull, the talks and the dorm noticing. Those romances are Akihiko, Shinjiro, Haechan, Jungwon, Jihoon and Minji. Other romances play as their own links without the cross-acknowledgement.
 - **Writer inventions:** Kat approved all of the multi-romance batch's inventions. Solar calling Jungwon "Won" is canon.
+
+## Weather and two art fits (2026-10-23)
+- **The weather is P5-style:** Iwatodai has a rainy season in June, typhoon storms in late summer and early autumn, and snow in winter. It comes in spells, and the phone has a five-day forecast.
+- **Rainy days change the day a little:** small sales at Aohige and Be Blue V, a quieter, better library and Hagakure's rainy-day special, a snow-day soak at the bathhouse, and the pier, the shrine sweeping and the beach cleanup shut in bad weather.
+- **The culture festival is held** in this game, through the 10/30 storm (the stalls moved indoors), and it ends in rain on 10/31. The decorated hallway (sunlit art) is up on the prep days 10/28-29.
+- **The July hotel on Shirakawa Boulevard is The Cape:** palm trees and a curved awning outside, and a modern lobby with sofas and a big moon window (the Dark Hour art is final).
+- *Writer inventions to confirm:* Akihiko doing push-ups in the lounge on rain days (no roadwork); Shinjiro's two bowls on a rainy evening; Haechan's snow photo from the guesthouse roof; Jungwon keeping Solar's umbrella dry in the guesthouse lobby.
