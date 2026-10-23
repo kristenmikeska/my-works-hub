@@ -33,15 +33,28 @@ Create a NEW illustration that matches the art style of the FIRST attached image
 ```
 
 ### How to use the "Must match" lines
-Each CG below has a **Must match** line taken from its scene: time and light, who's in the picture (and who isn't), clothes, poses, setting, season and props. Paste it into the prompt after the style block. The style block's outfit for Solar is only the default; when a Must match line gives her different clothes, use those. A few late-story CGs say **ask Claude first**: their scene details would give the story away, so ask for the prompt instead of writing it from this list.
+Each CG below has a **Must match** line taken from its scene: time and light, who's in the picture (and who isn't), clothes, poses, setting, season and props. Paste it into the prompt after the style block. The style block's outfit for Solar is only the default; when a Must match line gives her different clothes, use those. Items with their own prompt already carry it.
 
 ### 2A. Big story beats
-- [ ] ⭐ **The true ending** (`FEMC-CG-PROMPTS.md` #20 is aimed at the wrong moment; don't run it as written)
+- [ ] ⭐ **The true ending** (use this, not `FEMC-CG-PROMPTS.md` #20)
   - **Attach:** style, Solar. **Fills:** `cg/ending-true.webp` (the only ending without a CG).
-  - **Must match:** ask Claude first.
+  - After the style block (drop its uniform line):
+    ```
+    One quiet early morning shown as three rooms at once, blended into a single wide image like a soft triptych: on the left, a bedroom window with snow on the sill; in the middle, a window over the sea with the tide coming in; on the right, a window onto a quiet residential street. Solar, alone, sitting up in bed in plain sleepwear, her very long straight black hair loose and down, looking toward the light. A phone on the nightstand. No uniform, no armband, no Evoker, nobody else in the frame. Soft pale-gold morning light, still and calm.
+    ```
+  - **Must match:** early morning, soft light; Solar alone, hair loose, in sleepwear; three windows (snow, the sea at high tide, a quiet street); a phone on the nightstand; nobody else.
 - [ ] ⭐ **Two late-story scenes at a station** (`FEMC-CG-PROMPTS.md` #18 and #19; their poses and props don't match the scenes)
   - **Attach:** style, Solar, Wren. **Fills:** `cg/story-wren-clock.webp`, `cg/story-wren-cap.webp`.
-  - **Must match:** ask Claude first.
+  - `story-wren-clock`, after the style block:
+    ```
+    A small train station platform at midnight on the longest night of winter: frost on the rails, plastic holly, a small sad Christmas tree by the ticket gate, and an eerie green light coming down over everything. Overhead, a big iron-armed station clock with no hands. Wren, in an oversized navy wool porter's coat with brass buttons, collar up, sleeves to her knuckles, and a porter's cap pulled low over her hair, sits upright on the bench under the clock with a train ticket in one bare hand; Solar sits beside her on the same bench. Nobody else on the platform. Quiet, cold, still.
+    ```
+  - **Must match:** midnight, green light; both seated side by side under the handless clock (one path has Wren standing straight and Solar standing facing her instead); Wren's coat and cap as above, ticket in her bare hand; frost, holly, the small tree; nobody else.
+  - `story-wren-cap`, after the style block (Solar in a winter coat over her uniform):
+    ```
+    Close on a dark station platform in eerie green light, snowflakes and raindrops hanging motionless in the air. Behind, an old black-green train settled on its rails, steaming, every window lit gold. Wren on her knees on the platform in her too-big navy porter's coat, her porter's cap lying where it rolled, her very long straight black hair fallen loose over her shoulders and face; her face is the same as Solar's, frightened and crying. Solar stands over her in a winter coat, an Evoker in her hand. Far back by the stairs, a few figures in coats, faint and faded. A handless clock overhead. Quiet and devastating.
+    ```
+  - **Must match:** green light, snow and rain frozen mid-air, the gold-windowed train behind; Wren kneeling, cap on the ground, hair loose; Solar standing over her in a coat holding an Evoker; others far back and faint; no torn pages.
 
 ### 2B. Romance and link moments
 One template; fill it from the item's Must match line, not from the setting name alone.
@@ -49,14 +62,18 @@ One template; fill it from the item's Must match line, not from the setting name
 Solar and [NAME] at [SETTING], [TIME AND LIGHT]. [WHO ELSE IS THERE, OR "just the two of them"]. [CLOTHES]. [POSE AND DISTANCE]. [SEASON AND WEATHER]. [PROPS]. [MOOD].
 ```
 - [ ] ⭐ **Rank 15** for Shinjiro, the last link without one. **Fills:** `cg/link-shinjiro-r15.webp`.
-  - **Attach:** style, Solar, Shinjiro.
-  - **Must match:** ask Claude first. (It isn't "a quiet room in soft morning light", and it isn't just the two of them.)
+  - **Attach:** style, Solar, Shinjiro, Akihiko.
+  - After the style block (Solar in her winter uniform):
+    ```
+    A hospital room on a late-February afternoon, low pale light coming through the blinds in bars across the blanket. Shinjiro in the hospital bed in a loose gown, thinner than usual, knuckles sharp, his dark hair pushed the wrong way on the pillow, eyes open and half-focused on Solar. Solar standing beside the bed, close, looking down at him. Behind her, Akihiko in the bedside chair, leaning far forward with his elbows on his knees. On the side table, a folded black beanie, a cold paper cup of tea, a monitor. Quiet, tender, hushed.
+    ```
+  - **Must match:** late-February afternoon, pale light through the blinds; a hospital room (not a dorm); Shinjiro in bed in a gown; Solar beside the bed in her winter uniform; Akihiko in the chair behind her; the folded beanie, a paper cup, a monitor; Ken and Koromaru not there.
 - [ ] ⭐ **Christmas Eve (12/24)** for each romance that has one, besides Akihiko's and Haechan's (done). **Fills:** `cg/romance-<id>-christmas.webp` (the `romance-` prefix files it under Romance & bonds in Memories).
   - **Attach:** style, Solar, the partner. Snow falls only where the line says so; indoor scenes have none.
   - **Jungwon** (Iwatodai Strip, under the bookstore awning): evening; big slow snowflakes past the ramen shop's lanterns and a karaoke sign; shoppers passing; snow in his hair; he's holding a paper bag and a plain dark scarf (it can be looped round both their necks); a watch on his wrist.
   - **Jihoon** (Paulownia Mall, central atrium): indoor evening; white paper flakes drifting from a machine above a big tree (no real snow); Jihoon under it with two gift bags; two lopsided crane-game keychains, a dog and a sun.
   - **Minji** (Iwatodai riverside): evening; an empty river path, blue with snow; a flickering lamp with fairy lights wound round the post; Minji holding a glossy postcard-sized print, her camera with her. It's close to the existing camera-and-lamp CG, so change the framing.
-  - **Shinjiro:** ask Claude first. (It isn't "a quiet room with snow at the window".)
+  - **Shinjiro** (a hospital room at night, not the dorm): warm and dim, the overhead light off, the door open a crack; snow falling past the courtyard lights outside the window, a paper snowflake taped to the glass, a small cactus on the sill; Shinjiro lying still in the bed, eyes closed; Solar in the bedside chair holding his hand on top of the blanket, her head resting on the edge of the bed, a thin hospital blanket over her shoulders; his beanie folded on the side table beside half a slice of strawberry shortcake in a plastic triangle; Akihiko not there.
   - *(Optional)* **Ann** (the mall fountain): indoor evening, no falling snow; gold lights up every pillar, a tree up to the skylight, fountain spray catching the light; Ann in a white coat, red scarf, knitted hat over her pigtails; Solar in her warmest coat; holding hands, walking; carolers, a cocoa seller in a reindeer hat.
   - *(Optional)* **Kasumi** (Naganaki Shrine): night, orange sky, fresh snow, flakes lit by the offering hall; both lying side by side on the snowy flagstones holding hands, her red glove, Solar's bare hand; Kasumi in a red scarf and pompom hat; Solar in her good coat, hair tied up with a pale pink ribbon; stone foxes capped with snow.
   - *(Optional)* **Judy** (Club Escapade): the club dark except the jukebox, hundreds of tiny white lights on fishing line over the dance floor, no snow; both sitting on the edge of the stage, feet dangling; a bucket of fried chicken and a strawberry cake; Solar's head on Judy's shoulder.
@@ -120,7 +137,11 @@ Solar and [NAME] at [SETTING], [TIME AND LIGHT]. [WHO ELSE IS THERE, OR "just th
 - [ ] **The dorm dinner** (#9's setting doesn't match; use this). **Attach:** style, Solar, a few cast portraits. **Fills:** `cg/story-dorm-dinner.webp`.
   - **Must match:** a hot July night in the dining room (not the lounge), an air conditioner groaning; hot pot on a portable burner on the long table, extra white bowls at the end; guests round the table, among them Aphrodite at the head, Mercy rewrapping Junpei's wrist, Kiriko handing out fortune slips, Haru at the stove, Kuromi on the couch, Sebastian against the wall with a soda; Mitsuru standing at the edge with an untouched cup of tea; summer clothes.
 - [ ] **The train through Tartarus** (#23, Gemini). **Attach:** 🎮 `cg/story-moonlight-train.webp` (style). **Fills:** `cg/story-train-tartarus.webp`.
-  - **Must match:** ask Claude first. (#23's rails, speed and where everyone stands don't match.)
+  - Use this, not #23:
+    ```
+    Inside a strange tower, a long fortieth-floor corridor with a checkerboard floor. Black iron rails rise up out of the floor and spiral away overhead. An old black-green steam train passes slowly along them, an arm's length from the watchers, its paper-lantern windows glowing gold and full of sleeping passengers: a woman in a blue coat holding a long black case, a man in armor under a cloak, a young girl with a schoolbag. Solar at the front, her hand reaching toward the glass. Behind her, watching: Akihiko, Mitsuru, Yukari, Junpei, Fuuka, Aigis, Jihoon, Minji filming on a camera, Jungwon, and Haechan empty-handed. Green Dark Hour light and lantern gold, eerie and hushed.
+    ```
+  - **Must match:** a checkerboard corridor (not a broken landing); black iron rails (not light); the train passing slowly, close enough to touch; sleepers in the windows as above; the group standing in the corridor; Hanni, Hyein and Yunjin not there.
 
 ---
 
@@ -344,7 +365,7 @@ Checked and fine as they are: the title screen's key art, the Velvet Room, the G
 None left: the 2026-10-22 audit's list was all wired in.
 
 ### CGs
-CG prompts must carry the scene's visual details; check the text before writing a prompt. (Time and light, who's there and who isn't, clothes, poses and distance, setting, season and weather, props, as plain visual direction with no plot. Late-story items are marked "ask Claude first" instead.)
+CG prompts must carry the scene's visual details; check the text before writing a prompt. (Time and light, who's there and who isn't, clothes, poses and distance, setting, season and weather, props, as plain visual direction with no plot.)
 
 Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 1920 wide), then show it with a `{ cg: '<slug>' }` scene step and clear it with `{ cg: null }`. Add the face's crop point to `places.js cgFocus` for tall phone windows. The album and Theater find CGs in the scene data (`menu.js albumData`), so nothing else is needed. Endings live in `story-endings.js` (one event, branching by route); Christmas Eve scenes are each link's `christmas`; rank 10 / 15 are the link's ranks; graduation is `a6-graduation` in `living-march.js`; Yakushima is `yakushima.js` (the album doesn't walk its trip-plan scenes, so a CG there needs `story-act3.js a3-yakushima` or a `menu.js sceneSources` kind). Record the source in `tools/femc-new-adds.json` and move it to `Added to Game/`.
 
