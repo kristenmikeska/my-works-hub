@@ -982,6 +982,10 @@
       { s: 'akihiko', f: 'serious-3', t: "That's not me asking for anything. It's just a pair of gloves." },
       { n: "It was not just a pair of gloves. She knew it and he knew it and the lights knew it, humming in their sagging line across the dark window, and outside, over the bay, it had finally started to snow, the first of the year, fat and slow, drifting past the glass like something taking its time on purpose." },
       { n: "She thought about the voices on the stairs. About everybody who'd come through at midnight with her name in their mouths and their arms open and the word home ready, and how every single one of them was right, probably, and how none of them had ever once given her something and then told her she didn't have to want it." },
+      // Honest and torn (crush batch, 2026-10-23): dating him while the pull to Haechan plays.
+      { ifCrush: { akihiko: 'dating', haechan: ['crush', 'puppy', 'almost'] }, then: [
+        { n: "And one of them in particular, the one in the laundry room at three, the one she couldn't explain and hadn't tried to explain to him. He'd seen it. She knew he had, the way he saw a split time drop before she'd felt it in her legs. And he was holding out his gloves anyway, *wherever you end up*, with his whole face, which was the bravest thing she had ever watched him do in a building full of brave people." }
+      ] },
       { choose: [
         { t: "I'd stay for this.", notes: 3, tally: { here: 1 }, then: [
           { n: "It came out of her quiet and plain, and she heard it land in the room, and so did he." },

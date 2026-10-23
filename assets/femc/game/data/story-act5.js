@@ -666,6 +666,10 @@ window.FEMC_STORY_KIT.badEnding = [
     { n: "On the fourteenth coin he stopped, with his hand on the joystick, and didn't push the button. He didn't look at her. He looked at the plush dog." },
     { s: 'jihoon', f: 'neutral', t: "Everybody back home wants you, Sol. The school. The council. Your parents, whenever they remember they've got a daughter. Everybody wants the vice president. Solar Kim, loyal vice pres. You sign it on every post. It's a disease." },
     { s: 'jihoon', f: 'neutral', t: "And Yang. Obviously. Your boyfriend. Yeah. Him. The math competition in a blazer. He's here, you know he's here, he lives at the end of my corridor and he irons his socks. Go home to him if that's what it takes. I don't care." },
+    // The crush batch (2026-10-23): she'd been falling for him without knowing what he was to her.
+    { ifCrush: { jungwon: ['crush', 'puppy', 'almost', 'dating'] }, then: [
+      { n: "*Your boyfriend.* The word went into her and found a place already cut to fit it. A cup of tea in October with one and a half sugars in it that she hadn't asked for. A boy who'd been asking her things he knew the answers to for two months, so that she'd get to say them herself. It wasn't news, exactly. It was more like being handed the receipt for something she'd already bought." }
+    ] },
     { s: 'jihoon', f: 'sad', t: "I care so much it's honestly embarrassing for me. Don't look at me like that." },
     { n: "He fed the machine another coin without looking at it. The claw went down, and closed, and came up empty, and he watched it come up empty like it was the most interesting thing in the room." },
     { s: 'jihoon', f: 'sad', t: "I know I've been a piece of shit, back home. Don't say it. You already said it, like four hundred times, and you were right every time, and that's the worst thing about you, you're always right about me. You kissed me at homecoming, and then I spent the whole rest of the year making you sorry you did. You don't remember any of that. Great. Perfect. That's perfect for me." },

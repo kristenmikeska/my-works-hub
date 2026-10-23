@@ -21,6 +21,11 @@
     { n: "Hanni and Hyein were waiting by it, in their coats, holding hands. Minji, with her camera. Jaehyun, a step back, watching the hallway the way he watched everything, and when she came up the stairs he moved, without a word, so that he was between her and nothing at all, and for the first time she let him." },
     { n: "S.E.E.S. came up the stairs behind her. She turned round on the top step and looked at them. All of them. In the green. Yukari with her arms crossed so tight it hurt. Junpei crying and pretending it was the hour. Mitsuru, very straight. Ken. Koromaru. Fuuka, smiling, her eyes wet. Aigis, at exactly one arm's length. Akihiko, at the bottom of the stairs, not coming up, his hands in his pockets, letting her go the way he'd promised, by not asking." },
     { n: "She went down three steps and hugged every one of them. It took a long time. The hour waited." },
+    // Honest and torn (the crush batch, 2026-10-23): she was with him here, and it was real.
+    { ifCrush: { akihiko: 'dating' }, then: [
+      { n: "Akihiko was last, because he'd made sure of it, standing a step back so everybody else could go first, the way he'd stood at the back of every line all year. She held onto him in the green until her arms hurt. It had been real. All of it, the river at five and the gloves and the roof, every morning of it, and she wasn't going to let the place she was going make it smaller than it was, not even in her own head. It was real love, in this world. It just wasn't the only world she was." },
+      { s: 'akihiko', f: 'sad-2', t: "...Go home. I mean it. I knew the whole time. I'd rather you go knowing I knew." }
+    ] },
     { n: "Then she went through." },
     { dark: false },
     { music: 'tender' },
@@ -55,6 +60,10 @@
     { n: "There was a door in the dorm kitchen that had never been there. Old. Wooden. With a line of gray light under it, and through the gap, cold, salt, diesel, and the smell of barley tea." },
     { n: "Yunjin was waiting by it, in the red puffer, bouncing on her toes. Haechan and Jungwon stood at either side of the door, a careful distance apart, not looking at each other, the way two men stand outside a room where someone they'd both die for is about to wake up." },
     { n: "S.E.E.S. came into the kitchen behind her. She turned round and looked at them. All of them. In the green, around the table where they'd eaten all year. She hugged every one of them. Akihiko last, at the door to the hallway, who didn't ask, who never asked, who held on for exactly as long as she did and not one second longer, because he'd promised." },
+    // Honest and torn (the crush batch, 2026-10-23): she was with him here, and it was real.
+    { ifCrush: { akihiko: 'dating' }, then: [
+      { n: "She'd loved him. She would go on having loved him, in a house by the sea, on mornings when the tide was out and the gulls were loud, and it would never once feel like a mistake, because it hadn't been one. He'd been real love in a world that was going to let her go. That was all. That was everything." }
+    ] },
     { n: "Then she went through." },
     { dark: false },
     { music: 'tender' },
@@ -168,7 +177,11 @@
         { n: "He hadn't asked. He'd never asked. He'd stood on a roof the night before the solstice and refused to be one more person deciding for her, and she'd decided, and here she was." },
         { s: 'solar', f: 'neutral', t: "I'm staying." },
         { n: "He was quiet for a long moment. The sun came up. Then, only then, only after she had, he said it." },
-        { s: 'akihiko', f: 'blushing', t: "...Stay." }
+        { s: 'akihiko', f: 'blushing', t: "...Stay." },
+        // The crush batch (2026-10-23): the pull, and what she did with it.
+        { ifCrushed: { haechan: 'crush' }, then: [
+          { n: "Last night, on the platform, a boy with headphones round his neck had stood at a door and not asked her either. In every world she had ever been, he found her, and she'd found him in this one too, and let him go home, and she knew, the way she knew which stair creaked, that in the next one he'd find her again. That was his. This was hers. A roof, and a bench, and a boy who'd waited for her to say it first. It wasn't the consolation. It was her life, and she'd chosen it with her eyes open." }
+        ] }
       ], else: [
         { n: "She sat on the bench by the railing with Koromaru's chin on her knee and watched the sun come up over the bay, the first morning she'd ever chosen, and it was very ordinary, and it was hers." }
       ] }
@@ -188,6 +201,10 @@
     { n: "She went down to them first. She hugged every one of them, the whole long line, Junpei and Yukari and Mitsuru and Fuuka and Ken and Aigis and Koromaru, and every one of them held on, and every one of them let go." },
     { n: "Akihiko was last. At the bottom of the stairs. He didn't ask. He'd never asked. He looked at her for a long time in the green, the way he'd looked at her on a floor in a tower in April, like two pieces of something had clicked together behind his eyes, and she knew, somehow, that he knew what was going to happen to him. To all of them. To this year. That it would close behind her like water. That they'd wake up tomorrow and not remember the hour, or the tower, or her." },
     { s: 'akihiko', f: 'sad-2', t: "...Go on. Before I do something stupid like ask." },
+    // Honest and torn (the crush batch, 2026-10-23): she was with him here, and it was real.
+    { ifCrush: { akihiko: 'dating' }, then: [
+      { n: "She'd loved him. Here, in this one, for real, all the way through, and she wanted him to have that even if he wasn't going to be allowed to keep it. She told him so, in four words, in his ear, in the green. He nodded against her hair like a man taking a count, and didn't let go until she did." }
+    ] },
     { n: "She put something in his hand. She didn't decide to. A scrap of pink ribbon, untied from a ticket that had finally, at the very end, taken ink. He closed his glove around it without looking." },
     { n: "Then she went up the stairs and stood in front of the three doors, and put out both hands, and the hand inside her chest, small and frightened and hers, reached out too." },
     { n: "All three charms rang. The chord. And all three doors opened at once." },

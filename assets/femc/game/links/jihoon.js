@@ -495,7 +495,11 @@
           { s: 'solar', f: 'happy', t: "I need you to not be a dick for like three seconds." },
           { n: "The words came out of her fully formed, from somewhere else, from a curb outside a gym with lights strung in its windows and bugs in the air. She leaned in and kissed him, quickly, to shut him up, and he went absolutely silent for the longest stretch of time she'd ever known him to, which was about four seconds." },
           { s: 'jihoon', f: 'happy-2', t: "...No fucking way." },
-          { s: 'jihoon', f: 'happy', t: "I'm going to need you to do that again so I can be sure it wasn't the wind. For science. For the record. For me." }
+          { s: 'jihoon', f: 'happy', t: "I'm going to need you to do that again so I can be sure it wasn't the wind. For science. For the record. For me." },
+          // The crush batch (2026-10-23): a build-up she lived through.
+          { ifCrushed: { jihoon: 'crush' }, then: [
+            { n: "Somewhere under the noise she thought of a bowl of ramen made exactly right in a kitchen he'd never been invited to, and of his face for the one second before the bit came down over it, and understood she'd been answering this question since September without once being asked it out loud." }
+          ] }
         ] },
         { t: "You're my best friend. That's not a bit either.", route: 'friend', notes: 3, then: [
           { s: 'jihoon', f: 'neutral', t: "..." },

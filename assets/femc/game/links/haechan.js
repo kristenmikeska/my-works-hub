@@ -793,6 +793,15 @@
       { s: 'haechan', f: 'sad', t: "In one of them it's what the people who hate me call me. In the other one it's what I gave you. Same name. You're the only one who ever said it like it was a present." },
       { s: 'haechan', f: 'serious', t: "I didn't give it to you here. I didn't. I was waiting to see if it'd come back on its own." },
       { s: 'haechan', f: 'flustered', t: "...Say it again." },
+      // Honest and torn (crush batch, 2026-10-23): she's with someone else. The choice stays hers; the scene doesn't pretend.
+      { ifTaken: 'haechan', then: [
+        { ifCrush: { akihiko: 'dating' }, then: [
+          { n: "Two floors up Akihiko was asleep, with his alarm set for half past four and his running shoes lined up by the door, and she loved him. That had never once been the question, not on the roof, not on the stairs, not here. She knew exactly what she was holding, and whose, and that whatever she did with this next, he would hear it from her own mouth, in daylight, before he heard it anywhere else." }
+        ], else: [
+          { n: "Somewhere in this city someone she had chosen was asleep, and she loved them, and that had never been the question. Whatever she did with this next, they would hear it from her, in daylight, with her face." }
+        ] },
+        { n: "Haechan knew. He didn't say so. He waited, the way he'd waited since November, and didn't make it any easier, because making it easier would have been deciding for her." }
+      ] },
       { route: [
         { t: "(Say it again. Then kiss him.)", route: 'romance', notes: 3, then: [
           { s: 'solar', f: 'flustered', t: "Donghyuck." },

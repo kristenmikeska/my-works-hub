@@ -493,7 +493,11 @@
           { n: "Solar kissed her. Carefully, a question instead of an answer, and Minji held perfectly still for one second, like a camera waiting for focus, and then breathed out all at once and kissed her back, and her cold hand came up and held the side of Solar's face like it was the only frame she'd ever needed to get right." },
           { s: 'minji', f: 'flustered', t: "...Okay. Okay. That was— I'm going to need you to know that the camera is still running." },
           { s: 'solar', f: 'flustered', t: "It's pointed at the bay." },
-          { s: 'minji', f: 'flustered', t: "I KNOW it's pointed at the bay. It's the best footage of the bay ever shot. I'm never deleting it." }
+          { s: 'minji', f: 'flustered', t: "I KNOW it's pointed at the bay. It's the best footage of the bay ever shot. I'm never deleting it." },
+          // The crush batch (2026-10-23): a build-up she lived through.
+          { ifCrushed: { minji: 'crush' }, then: [
+            { n: "She thought of the dorm steps in the autumn, a silver sunshade in her hands that was supposed to light the dog and had ended up lighting Minji instead, and of how long ago, it turned out, she'd stopped minding which of them was being looked at." }
+          ] }
         ] },
         { t: "You're my favorite person to be looked at by.", route: 'friend', notes: 3, then: [
           { s: 'minji', f: 'surprised', t: "..." },
