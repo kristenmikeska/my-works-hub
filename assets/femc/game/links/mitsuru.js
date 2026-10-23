@@ -40,7 +40,7 @@
       { choose: [
         { t: "(Buy her a drink with your coins.)", notes: 3, then: [
           { n: "Solar fed it two coins and pressed the button for the canned milk tea, and the can thunked down into the tray, and Mitsuru looked at it the way you'd look at a magician who had just pulled a coin from behind your ear." },
-          { s: 'mitsuru', f: 'neutral', t: "...Thank you. I'll repay you." },
+          { s: 'mitsuru', f: 'surprised', t: "...Thank you. I'll repay you." },
           { n: "She did, the next day, with a ten-thousand-yen note in an envelope. Solar gave it back. They went around like that for most of a week." }
         ] },
         { t: "It only takes coins and small bills.", notes: 2, then: [
@@ -119,7 +119,7 @@
         ] }
       ] },
       { n: "The light moved across the table while they worked and turned from gold to the color of weak tea. Somewhere below, the tennis club was losing a long rally, the pock of the ball going back and forth and back and then stopping. At some point Mitsuru said her name, to ask for the stapler, and paused on it, half a breath, like a word in a language she was practicing." },
-      { s: 'mitsuru', f: 'neutral', t: "Forgive me. I call everyone by their family name. Takeba. Iori. You're the first person I've had to call by their given name since I was a child, other than Akihiko, and that was his doing." },
+      { s: 'mitsuru', f: 'sad', t: "Forgive me. I call everyone by their family name. Takeba. Iori. You're the first person I've had to call by their given name since I was a child, other than Akihiko, and that was his doing." },
       { s: 'mitsuru', f: 'neutral', t: "It sounds very familiar in my mouth. I'll get used to it." },
       { n: "Solar handed her the stapler and said she didn't mind. She found, a little to her own surprise, that she meant it." }
     ] },
@@ -137,7 +137,7 @@
           { n: "Solar slurped. Loudly. On purpose. It was, she thought, possibly the least composed thing she had done since waking up on a tiled floor, and the cook behind the counter gave her a thumbs-up with a ladle." },
           { n: "Mitsuru watched her the way you'd watch someone step off a high board. Then, slowly, with her eyes half closed as if she were about to sign something she couldn't take back, she tried it." },
           { s: 'mitsuru', f: 'surprised', t: "...Oh." },
-          { s: 'mitsuru', f: 'neutral', t: "It's much better that way. Why didn't anyone tell me it was much better that way?" }
+          { s: 'mitsuru', f: 'surprised', t: "It's much better that way. Why didn't anyone tell me it was much better that way?" }
         ] },
         { t: "It's a compliment to the cook.", notes: 2, then: [
           { s: 'mitsuru', f: 'neutral', t: "A compliment. I see. Then it would be rude not to." },
@@ -148,7 +148,7 @@
         ] }
       ] },
       { n: "Halfway through the bowl, Mitsuru set her chopsticks down and folded her hands on the counter, which was how she began most sentences that mattered, and looked at the steam on the window instead of at Solar." },
-      { s: 'mitsuru', f: 'neutral', t: "I'm told I'm difficult to approach. By the council, by the fencing team. By my father's staff, though they're paid not to say it." },
+      { s: 'mitsuru', f: 'sad', t: "I'm told I'm difficult to approach. By the council, by the fencing team. By my father's staff, though they're paid not to say it." },
       { s: 'mitsuru', f: 'sad', t: "I've never been sure what I'm meant to do about it. I don't know how to be approached. I was taught how to receive people." },
       { choose: [
         { t: "You're not difficult. You just look like you don't need anything.", notes: 3, then: [
@@ -175,7 +175,7 @@
       { n: "By the afternoon the rain had come back, a steady gray rinse that turned the window of the council room into a smeared watercolor of the bay, and Mitsuru was sitting very straight at the head of the long table with her phone held to her ear, and she raised one finger when Solar came in. Wait. So Solar waited, by the door, and tried not to listen, and listened." },
       { s: 'mitsuru', f: 'neutral', t: "Yes, Father. First. Yes." },
       { s: 'mitsuru', f: 'neutral', t: "No, there's nothing to report. The operations are proceeding as planned." },
-      { s: 'mitsuru', f: 'neutral', t: "...Yes. I understand. Thank you, Father." },
+      { s: 'mitsuru', f: 'sad', t: "...Yes. I understand. Thank you, Father." },
       { n: "She ended the call. She didn't put the phone down. She sat holding it against the table under her palm with her back exactly as straight as before, every line of her composed, and her thumb moving very slightly back and forth over the edge of the screen, back and forth, the only part of her that hadn't been told to stop." },
       { n: "Solar recognized it. On her first night in the dorm she had lain on top of the covers with the door shut and let her whole body do that, quietly, where nobody could see, and she had a feeling Mitsuru had been doing it in rooms like this one for a great deal longer." },
       { choose: [
@@ -196,10 +196,10 @@
       { s: 'solar', f: 'neutral', t: "I know you noticed. You didn't say anything." },
       { s: 'mitsuru', f: 'neutral', t: "It wasn't mine to say. And I didn't need to ask why. I do it too." },
       { s: 'mitsuru', f: 'sad', t: "I was eight. There was a man from the Group's security staff who walked me through the house and made me point to every door and every window, in every room, until I could do it with my eyes shut. In case someone came for the heir." },
-      { s: 'mitsuru', f: 'neutral', t: "I've never once stopped. I don't suppose you remember who taught you." },
+      { s: 'mitsuru', f: 'sad', t: "I've never once stopped. I don't suppose you remember who taught you." },
       { choose: [
         { t: "(Count them out loud.)", notes: 3, then: [
-          { s: 'solar', f: 'neutral', t: "The door." },
+          { s: 'solar', f: 'serious', t: "The door." },
           { n: "Mitsuru looked up. For a second she didn't move. Then she set down her pen." },
           { s: 'mitsuru', f: 'neutral', t: "The window. It opens onto the gutter. I've never tried it." },
           { s: 'solar', f: 'neutral', t: "The door to the supply closet. It connects to the next classroom." },
@@ -208,7 +208,7 @@
           { s: 'mitsuru', f: 'neutral', t: "Four, then. Four ways out." }
         ] },
         { t: "No. But it helps.", notes: 2, then: [
-          { s: 'mitsuru', f: 'neutral', t: "Yes. It does. That's the worst part, I think. It always helps." },
+          { s: 'mitsuru', f: 'sad', t: "Yes. It does. That's the worst part, I think. It always helps." },
           { n: "They sat with that for a moment, two girls with very good posture in a room with very few ways out of it, and neither of them looked at the door." }
         ] },
         { t: "In case I need to leave.", notes: 2, then: [
@@ -246,7 +246,7 @@
       { s: 'mitsuru', f: 'surprised', t: "...Brilliant." },
       { n: "She said it the way she said it to Solar in Tartarus, after a clean call, and the girl in the paper hat, wiping the next table, looked over and very nearly smiled." },
       { s: 'mitsuru', f: 'neutral', t: "I sent my report to the Group this morning. I send one every month. Operations, figures, anomalies. Yamagishi's recruitment. The readings from the tower. All of it." },
-      { s: 'mitsuru', f: 'neutral', t: "I've written them since I was fifteen. My father reads every one. He used to correct my grammar in red ink and send them back." },
+      { s: 'mitsuru', f: 'sad', t: "I've written them since I was fifteen. My father reads every one. He used to correct my grammar in red ink and send them back." },
       { s: 'mitsuru', f: 'sad', t: "I left out the people." },
       { n: "She meant the ones who had started turning up since the night Fuuka came home. Awake in the green hour, when everyone else in the city was a coffin. People who didn't belong to this city and had nowhere else to stand. Mitsuru turned the burger a quarter turn in her hands and didn't eat it." },
       { s: 'mitsuru', f: 'neutral', t: "I was taught that an omission is a lie in better clothes. I've never left anything out of a report in my life." },
@@ -254,7 +254,7 @@
       { choose: [
         { t: "You marked it pending.", notes: 3, then: [
           { n: "Mitsuru went very still. Then she looked at Solar across the little plastic table, over the fries, for a long moment, the level look that went in and kept going." },
-          { s: 'mitsuru', f: 'neutral', t: "...Yes. I suppose I did. You're a terrible influence." },
+          { s: 'mitsuru', f: 'surprised', t: "...Yes. I suppose I did. You're a terrible influence." },
           { s: 'solar', f: 'neutral', t: "You stamped mine first." },
           { s: 'mitsuru', f: 'neutral', t: "So I did. Then I've no one to blame but myself. I find that I don't mind." }
         ] },
@@ -318,7 +318,7 @@
         { t: "Do you want to?", notes: 3, then: [
           { n: "Mitsuru opened her mouth, and closed it. It took her a long time to answer. The fan went all the way across the room and back." },
           { s: 'mitsuru', f: 'surprised', t: "Want." },
-          { s: 'mitsuru', f: 'neutral', t: "I'm not sure the word applies. I don't believe anyone has ever used it in a sentence with my name in it. Not about this." }
+          { s: 'mitsuru', f: 'sad', t: "I'm not sure the word applies. I don't believe anyone has ever used it in a sentence with my name in it. Not about this." }
         ] },
         { t: "(Wait for her to say more.)", notes: 2, then: [
           { n: "Solar waited. Mitsuru, who was not used to being waited for, filled the silence the only way she knew how, with figures." },
@@ -330,7 +330,7 @@
       ] },
       { s: 'mitsuru', f: 'neutral', t: "I was born knowing where I'd end. The head of the table. I've never minded. I've been proud of it. I am proud of it." },
       { s: 'mitsuru', f: 'sad', t: "I simply hadn't understood that the chair came with someone already seated beside it." },
-      { s: 'mitsuru', f: 'neutral', t: "Do you think me cold? For reading it like a budget?" },
+      { s: 'mitsuru', f: 'sad', t: "Do you think me cold? For reading it like a budget?" },
       { choose: [
         { t: "I think you read everything like a budget. It keeps it from touching you.", notes: 3, then: [
           { s: 'mitsuru', f: 'surprised', t: "...Does it?" },
@@ -362,7 +362,7 @@
       { n: "The introduction had been in the first week of August. Nobody in the dorm had mentioned it. Mitsuru had come home from it late, in a dress nobody had seen her wear before or since, and gone straight up to the fourth floor, and her light had been on until the Dark Hour put it out." },
       { place: 'Port Island · Pier', time: 'Night' },
       { n: "She drove the way she always drove, precisely and much too fast, across the bridge with the whole bay lit up on either side of them, and the wind came off the water at last, hot and then not, and took the city's breath out of Solar's lungs and gave her the sea's instead. Mitsuru didn't say where they were going. She parked at the end of the Port Island pier, where it was dark, and there was nobody but a fisherman asleep in a folding chair, and took off her helmet, and leaned on the rail." },
-      { s: 'mitsuru', f: 'neutral', t: "It went very well. Everyone said so. My father said so in the car, afterward. It went very well." },
+      { s: 'mitsuru', f: 'sad', t: "It went very well. Everyone said so. My father said so in the car, afterward. It went very well." },
       { choose: [
         { t: "And you? What did you say?", notes: 3, then: [
           { s: 'mitsuru', f: 'neutral', t: "In the car? Nothing. He didn't ask." },
@@ -370,14 +370,14 @@
         ] },
         { t: "What's he like?", notes: 2, then: [
           { s: 'mitsuru', f: 'neutral', t: "Kind. Punctual. Very well briefed. He asked whether I liked horses." },
-          { s: 'mitsuru', f: 'neutral', t: "I said yes. I've no idea whether I like horses. No one's ever asked me before." }
+          { s: 'mitsuru', f: 'sad', t: "I said yes. I've no idea whether I like horses. No one's ever asked me before." }
         ] },
         { t: "(Lean on the rail beside her and wait.)", notes: 2, then: [
           { n: "Solar leaned on the rail beside her. The metal was still warm from the day. Mitsuru looked at the water for a while, and then went on, as if she'd only paused for breath." }
         ] }
       ] },
       { s: 'mitsuru', f: 'neutral', t: "It was a private room in a hotel. Very good fish. His father and mine at the ends of the table, and the two of us in the middle, across from one another, like the two halves of a contract." },
-      { s: 'mitsuru', f: 'neutral', t: "They spoke about the spring after my graduation the way you'd speak about the weather. Whether it would be a good spring. Whether March was too soon. Across me. Over my plate." },
+      { s: 'mitsuru', f: 'sad', t: "They spoke about the spring after my graduation the way you'd speak about the weather. Whether it would be a good spring. Whether March was too soon. Across me. Over my plate." },
       { n: "Solar's hands had gone cold." },
       { n: "It was August. It was twenty-nine degrees at ten at night and the rail under her palms was still warm from the sun, and her hands had gone cold anyway, from the fingertips in, the way they'd gone cold on the tiles the first night, and she found that her right thumb had gone looking for something at the base of her left ring finger and was pressing there, against the bare skin, as if checking whether something was or wasn't there. She didn't know which. A date somebody else had circled. A table set for two families. It didn't come as a picture. It came as a temperature, and then it was gone, and she was standing on a pier with a fisherman snoring behind her and her hand flat on the rail to make it stop." },
       { s: 'mitsuru', f: 'surprised', t: "Solar? You've gone white." },
@@ -426,7 +426,7 @@
         { t: "(Reach over and wipe it off with your thumb.)", notes: 3, then: [
           { n: "Solar reached over and wiped it off with her thumb. Mitsuru stopped walking." },
           { s: 'mitsuru', f: 'surprised', t: "..." },
-          { s: 'mitsuru', f: 'neutral', t: "Thank you. No one's done that since I was very small. My mother, I think. I'd forgotten it was a thing people did." }
+          { s: 'mitsuru', f: 'sad', t: "Thank you. No one's done that since I was very small. My mother, I think. I'd forgotten it was a thing people did." }
         ] },
         { t: "You have cream on your nose.", notes: 2, then: [
           { s: 'mitsuru', f: 'surprised', t: "I have what?" },
@@ -434,7 +434,7 @@
         ] },
         { t: "(Say nothing. It's too good.)", notes: 1, then: [
           { n: "Mitsuru discovered it herself, five minutes later, reflected in the window of Be Blue V." },
-          { s: 'mitsuru', f: 'neutral', t: "You let me walk past an entire jewelry store." }
+          { s: 'mitsuru', f: 'surprised', t: "You let me walk past an entire jewelry store." }
         ] }
       ] },
       { s: 'mitsuru', f: 'neutral', t: "He writes to me. Every week. Good letters. On good paper. He asked about my fencing and remembered my answer the following week." },
@@ -459,7 +459,7 @@
         ] }
       ] },
       { s: 'mitsuru', f: 'neutral', t: "May I ask you something unrelated? You needn't answer." },
-      { s: 'mitsuru', f: 'neutral', t: "Have you ever wanted something you weren't allowed to want?" },
+      { s: 'mitsuru', f: 'sad', t: "Have you ever wanted something you weren't allowed to want?" },
       { choose: [
         { t: "I don't remember. But my body acts like I have.", notes: 3, then: [
           { n: "Mitsuru looked at her for a long moment, at her hands, at the way she was sitting on the edge of the fountain with her weight forward, ready to stand." },
@@ -513,13 +513,13 @@
         ] },
         { t: "What do you want it to mean?", notes: 2, then: [
           { s: 'mitsuru', f: 'neutral', t: "That word again. Want. You keep handing it to me as if I'll know what to do with it." },
-          { s: 'mitsuru', f: 'neutral', t: "...I want it to mean he's proud of me. There. That was unpleasant." }
+          { s: 'mitsuru', f: 'sad', t: "...I want it to mean he's proud of me. There. That was unpleasant." }
         ] },
         { t: "Does it matter? You said it.", notes: 2, then: [
           { s: 'mitsuru', f: 'neutral', t: "It matters. But you're right that I said it. I keep forgetting that part. I said it out loud, to him, and the line held." }
         ] }
       ] },
-      { s: 'mitsuru', f: 'neutral', t: "It's been a difficult few weeks. For Akihiko especially. I make lists when things are bad. I've made a great many lists." },
+      { s: 'mitsuru', f: 'sad', t: "It's been a difficult few weeks. For Akihiko especially. I make lists when things are bad. I've made a great many lists." },
       { choose: [
         { t: "(Put a coin in her hand. Rematch.)", notes: 3, then: [
           { n: "Solar took a coin out of her pocket and put it in Mitsuru's palm and closed her fingers over it." },
@@ -562,18 +562,18 @@
           { n: "Solar said nothing. She stayed. She sat in the other chair with her hands in her lap and let the room be quiet, and after a long time Mitsuru's thumb slowed, and stopped, and lay still on the edge of the phone, and Mitsuru breathed out, once, all the way to the bottom." }
         ] },
         { t: "I'm sorry.", notes: 2, then: [
-          { s: 'mitsuru', f: 'neutral', t: "Yes. Everyone is. It's very kind of everyone." },
+          { s: 'mitsuru', f: 'sad', t: "Yes. Everyone is. It's very kind of everyone." },
           { n: "She didn't say it unkindly. She said it like someone who'd been handed the same flower a hundred times and was still, somehow, grateful for each one." }
         ] },
         { t: "Do you want to talk about him?", notes: 1, then: [
           { s: 'mitsuru', f: 'sad', t: "Not yet. Perhaps not for a long time." },
-          { s: 'mitsuru', f: 'neutral', t: "But thank you for using the present tense. Most people have stopped." }
+          { s: 'mitsuru', f: 'sad', t: "But thank you for using the present tense. Most people have stopped." }
         ] }
       ] },
       { s: 'mitsuru', f: 'neutral', t: "So I went myself. On Saturday. To the board." },
       { s: 'mitsuru', f: 'neutral', t: "I sat at the end of the table, where he used to sit, which no one had told me I could. And I told twelve men that I'll choose who stands beside me, and when, and whether. And that I'll be standing at the head of the table when I do." },
       { s: 'mitsuru', f: 'neutral', t: "One of them laughed. I let him finish. Then I told him, to the yen, what his division lost in the second quarter, and why." },
-      { s: 'mitsuru', f: 'neutral', t: "The engagement is off. I wrote to the young man myself. He was very gracious about it. I'm told my father would have been proud. I'm told a great many things this month." },
+      { s: 'mitsuru', f: 'sad', t: "The engagement is off. I wrote to the young man myself. He was very gracious about it. I'm told my father would have been proud. I'm told a great many things this month." },
       { n: "Something in Solar's chest let go when she said it, something Solar hadn't known was clenched, a fist she'd been carrying since a pier in August without noticing, and that made no sense at all, because it wasn't hers. It wasn't her engagement. She let it go anyway, and didn't look at why." },
       { choose: [
         { t: "Execution.", notes: 3, then: [
@@ -585,7 +585,7 @@
           { s: 'mitsuru', f: 'neutral', t: "I count the exits. You know that. I didn't count a single one." }
         ] },
         { t: "What happens now?", notes: 2, then: [
-          { s: 'mitsuru', f: 'neutral', t: "Now I'm the head of the table. Which I always was going to be. I simply thought I'd have longer to practice." }
+          { s: 'mitsuru', f: 'sad', t: "Now I'm the head of the table. Which I always was going to be. I simply thought I'd have longer to practice." }
         ] }
       ] },
       { s: 'mitsuru', f: 'neutral', t: "Takeba came. On the Friday. I don't know if she told you. She sat beside me for three hours and didn't say a single word." },
@@ -651,7 +651,7 @@
         ] }
       ] },
       { s: 'mitsuru', f: 'neutral', t: "I was born knowing where I'd end. You were given nothing to go on at all. For a long time I thought yours was the crueler of the two." },
-      { s: 'mitsuru', f: 'neutral', t: "I'm no longer sure. I think you may have been given the only thing I ever wanted. Which is the choosing." },
+      { s: 'mitsuru', f: 'sad', t: "I'm no longer sure. I think you may have been given the only thing I ever wanted. Which is the choosing." },
       { n: "She swung her leg over the motorcycle and pulled on her own helmet and sat there, waiting, the engine ticking in the cold. Solar put on hers, the one with her name inside it, and got on behind her, and Mitsuru asked over her shoulder, the way she'd asked once on a pier in August, whether they should take the long way." },
       { n: "They took the long way. They'd always, Solar thought, holding on, been going to take the long way." }
     ] }

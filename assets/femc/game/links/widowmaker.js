@@ -23,7 +23,7 @@
   hangouts: [
     [
       { n: "Solar brought coffee, black, two cans from the vending machine at the bottom of the bridge, which she'd decided months ago Widowmaker would like, purely on the evidence of her personality. Widowmaker came down the cable to take one, upside down, hanging by her boots, and took the can, and went back up, and didn't say thank you, and drank it." },
-      { s: 'widowmaker', f: 'neutral', t: "It is terrible. Bring this one again." },
+      { s: 'widowmaker', f: 'happy', t: "It is terrible. Bring this one again." },
       { choose: [
         { t: "(Sit on the walkway and drink yours.)", notes: 3, then: [
           { n: "Solar sat on the walkway with her back against the rail and drank hers, and forty meters above her Widowmaker drank hers on a cable, and neither of them said anything for twenty minutes, and when Solar got up to go a voice came down out of the dark, very dry, and said, \"Same time,\" as if it were an order and a question at once." }
@@ -41,7 +41,7 @@
           { n: "Solar climbed. It took a long time and her hands hurt. At the top, holding on to a maintenance rail with both fists, she leaned into the wind, and it held her up, almost, the way water holds you, and Widowmaker watched her do it with an expression Solar had never seen on her, like someone watching a person they liked try a food they loved." }
         ] },
         { t: "I'll feel it from down here.", notes: 2, then: [
-          { s: 'widowmaker', f: 'neutral', t: "Coward. ...Sensible. Both. Stay there. I will tell you what it feels like." }
+          { s: 'widowmaker', f: 'happy', t: "Coward. ...Sensible. Both. Stay there. I will tell you what it feels like." }
         ] }
       ] }
     ]
@@ -66,7 +66,7 @@
           { s: 'widowmaker', f: 'neutral', t: "Then you are allowed to be loud. Here. Nobody will hear you up here except me. And I will not tell." }
         ] },
         { t: "It's the wind.", notes: 2, then: [
-          { s: 'widowmaker', f: 'neutral', t: "Of course. The wind. It is very sad tonight, the wind." }
+          { s: 'widowmaker', f: 'sad', t: "Of course. The wind. It is very sad tonight, the wind." }
         ] },
         { t: "Who are you?", notes: 1, then: [
           { s: 'widowmaker', f: 'neutral', t: "That is a long question. I will give you the short answer and you will be satisfied with it." }
@@ -105,8 +105,8 @@
       { s: 'widowmaker', f: 'serious', t: "It is not the same as being in them. You understand? I can see everything. I am in none of it." },
       { choose: [
         { t: "That sounds lonely.", notes: 3, then: [
-          { s: 'widowmaker', f: 'neutral', t: "Loneliness is a feeling. I do not have those." },
-          { s: 'widowmaker', f: 'neutral', t: "...That is what I am told." }
+          { s: 'widowmaker', f: 'serious', t: "Loneliness is a feeling. I do not have those." },
+          { s: 'widowmaker', f: 'sad', t: "...That is what I am told." }
         ] },
         { t: "You could come down sometime. Into it.", notes: 2, then: [
           { s: 'widowmaker', f: 'neutral', t: "Down there? With the people? ...We will see. They are very loud. They smell of fried food." }
@@ -121,7 +121,7 @@
       { choose: [
         { t: "I like it up here.", notes: 3, then: [
           { s: 'widowmaker', f: 'neutral', t: "Of course you do. You are a watcher too. I saw it the first night. You count the doors." },
-          { s: 'widowmaker', f: 'neutral', t: "The difference is you go down afterward. And sit in the room with them. I have never learned that part." }
+          { s: 'widowmaker', f: 'sad', t: "The difference is you go down afterward. And sit in the room with them. I have never learned that part." }
         ] },
         { t: "Do you ever watch the dorm?", notes: 2, then: [
           { s: 'widowmaker', f: 'neutral', t: "Every night, petite. It is the loudest window in the city. Somebody is always awake in it." }
@@ -177,8 +177,8 @@
       { choose: [
         { t: "That wasn't you. Not really.", notes: 2, then: [
           { s: 'widowmaker', f: 'serious', t: "It was my hands. My rifle. My shot. Whose would it be?" },
-          { s: 'solar', f: 'neutral', t: "Theirs. The people who took the rest out." },
-          { s: 'widowmaker', f: 'neutral', t: "...That is a very convenient philosophy, petite. I wish I could afford it." }
+          { s: 'solar', f: 'serious', t: "Theirs. The people who took the rest out." },
+          { s: 'widowmaker', f: 'sad', t: "...That is a very convenient philosophy, petite. I wish I could afford it." }
         ] },
         { t: "(Put your hand next to hers on the railing.)", notes: 3, then: [
           { n: "Solar put her hand on the railing. Not touching Widowmaker's. Just near it. A few inches. Close enough to feel how cold she was, colder than the steel, cold like something that had been in the sea." },
@@ -233,13 +233,13 @@
       { choose: [
         { t: "(Put two fingers on her wrist and count.)", notes: 3, then: [
           { n: "Solar put two fingers on the cold inside of her wrist and counted. Her own watch, in the light from the bridge lamps. Fifteen seconds. Eight beats. Nine. She counted again. Nine. Again. Ten." },
-          { s: 'solar', f: 'neutral', t: "...Forty. That's forty." },
+          { s: 'solar', f: 'surprised', t: "...Forty. That's forty." },
           { s: 'widowmaker', f: 'surprised', t: "No. Thirty. It is always thirty." },
-          { s: 'solar', f: 'neutral', t: "Forty." },
+          { s: 'solar', f: 'serious', t: "Forty." },
           { n: "Widowmaker looked at her own wrist under Solar's fingers for a long, strange moment, as if it belonged to someone else, as if it had done something without asking her. Then she took it back, and put it in her lap, and didn't say anything else for a while, and touched the scarf." }
         ] },
         { t: "I don't need to count. I believe you.", notes: 1, then: [
-          { s: 'widowmaker', f: 'neutral', t: "Hm. You should never believe a sniper about her own heart. We lie about it. Professionally." }
+          { s: 'widowmaker', f: 'flustered', t: "Hm. You should never believe a sniper about her own heart. We lie about it. Professionally." }
         ] }
       ] }
     ] },
@@ -307,7 +307,7 @@
       { choose: [
         { t: "Mine too.", notes: 3, then: [
           { s: 'widowmaker', f: 'neutral', t: "Yours is supposed to. You are a person. You are allowed." },
-          { s: 'solar', f: 'neutral', t: "So are you." },
+          { s: 'solar', f: 'serious', t: "So are you." },
           { n: "Widowmaker looked at her for a long moment in the last of the green, and something went across her face, very fast, and was gone, too fast to read, like a bird crossing a window." }
         ] },
         { t: "Thank you for covering me.", notes: 2, then: [
@@ -329,7 +329,7 @@
       { n: "And the strange thing was, Solar understood. Not Talon. Not the chair. The shape of it. Something waiting at the end of the line to take you back and make you into what everyone needs. Make you smooth. Make you perform. She didn't know where she knew it from. She knew it the way she knew where to stand." },
       { choose: [
         { t: "Then I'll remember for both of us.", notes: 3, then: [
-          { s: 'widowmaker', f: 'neutral', t: "That is very stupid. It is the nicest stupid thing anyone has ever said to me." }
+          { s: 'widowmaker', f: 'happy', t: "That is very stupid. It is the nicest stupid thing anyone has ever said to me." }
         ] },
         { t: "Some things grow back no matter what.", notes: 3, then: [
           { s: 'widowmaker', f: 'neutral', t: "...Perhaps. Weeds do." },
@@ -337,7 +337,7 @@
         ] },
         { t: "Don't go back.", notes: 1, then: [
           { s: 'widowmaker', f: 'serious', t: "And stay here? In the green, where nothing ends? I have seen the train, petite. On this bridge. All those people asleep in the windows. I know what staying looks like." },
-          { s: 'widowmaker', f: 'neutral', t: "I would rather be cut down than kept." }
+          { s: 'widowmaker', f: 'serious', t: "I would rather be cut down than kept." }
         ] }
       ] },
       { ifRank: { mercy: 1 }, then: [
@@ -353,7 +353,7 @@
           { n: "Solar stayed. They stood at the rail at the same height for the first time, side by side, and watched the lights on the far shore go out one by one as the city went to bed, and neither of them said anything about the chair, or the doors, or January, and the red scarf blew against Solar's shoulder every time the wind came, and stayed there." }
         ] },
         { t: "I'll come back tomorrow.", notes: 2, then: [
-          { s: 'widowmaker', f: 'neutral', t: "Good. I will be here. I am always here. For a little while longer, I am always here." }
+          { s: 'widowmaker', f: 'sad', t: "Good. I will be here. I am always here. For a little while longer, I am always here." }
         ] }
       ] }
     ] },
@@ -365,7 +365,7 @@
       { s: 'kiriko', f: 'happy', t: "Fortune! For you! I'm not asking! You can't stop me, I'm up a tower!" },
       { s: 'widowmaker', f: 'neutral', t: "I can shoot the paper out of your hand from here." },
       { s: 'kiriko', f: 'neutral', t: "You WON'T, though. Dai-kichi. Great blessing. \"The cold heart thaws in the company of fools.\"" },
-      { s: 'widowmaker', f: 'neutral', t: "...I am insulted by that. And by how accurate it is." },
+      { s: 'widowmaker', f: 'flustered', t: "...I am insulted by that. And by how accurate it is." },
       { n: "Kiriko dropped the slip. It fluttered down ten meters in the snow, turning over and over, and Widowmaker caught it without looking, between two fingers, and put it in the pocket at her hip, where, Solar knew, there was already another one, from October, very soft at the folds now." },
       { n: "Later, when Kiriko had gone home, Widowmaker stood on the rail with two fingers pressed to the inside of her own wrist under the scarf, and her eyes closed, counting, the way Solar had taught her, by her own watch, for fifteen seconds. Then she opened her eyes." },
       { s: 'widowmaker', f: 'surprised', t: "Ninety-two. My heart. Right now. It is supposed to be thirty." },
@@ -391,7 +391,7 @@
         ] },
         { t: "I'm going to miss you.", notes: 3, then: [
           { s: 'widowmaker', f: 'surprised', t: "..." },
-          { s: 'widowmaker', f: 'neutral', t: "...Ninety-four. You see what you have done. Stop it." }
+          { s: 'widowmaker', f: 'flustered', t: "...Ninety-four. You see what you have done. Stop it." }
         ] },
         { t: "Your posture's slipping.", notes: 1, then: [
           { s: 'widowmaker', f: 'serious', t: "It is NOT." },
@@ -410,7 +410,7 @@
       { s: 'widowmaker', f: 'serious', t: "If they take everything else when I go back, I want this to be somewhere they cannot reach. With someone who will remember what it was for." },
       { choose: [
         { t: "I'll keep it. I'll remember what it was for.", notes: 3, then: [
-          { s: 'widowmaker', f: 'neutral', t: "Good. Then it was real. That is all I wanted, I think. For someone to know it was real. That there was a girl in Paris who danced." }
+          { s: 'widowmaker', f: 'sad', t: "Good. Then it was real. That is all I wanted, I think. For someone to know it was real. That there was a girl in Paris who danced." }
         ] },
         { t: "Dance with me. One more time.", notes: 3, then: [
           { s: 'widowmaker', f: 'happy', t: "...You cannot dance, petite. I have watched you walk. You walk like someone expecting an ambush." },
@@ -419,7 +419,7 @@
       ] },
       { n: "She did. There on the bridge, in the snow, under the moon. A slow, patient waltz, Widowmaker leading, Solar's feet getting everything wrong and Widowmaker correcting them, silently, with her own, so that by the third turn Solar was getting it nearly right, and by the fifth, right, and they turned in the middle of the empty walkway under the bridge lamps with the snow coming down through the light, and Widowmaker's hand was cold in hers, and her heart, under Solar's fingers at the back of her shoulder, was going, Solar could feel it, very fast." },
       { s: 'widowmaker', f: 'neutral', t: "I came here running from the chair. From going back and being made into nothing again. I thought, if I stay here, in the green, they can never reach me." },
-      { s: 'widowmaker', f: 'neutral', t: "But I would rather be cut down than kept, petite. I told you. I am going back. And they will put me in the chair. And I will forget you, probably. Most of you." },
+      { s: 'widowmaker', f: 'sad', t: "But I would rather be cut down than kept, petite. I told you. I am going back. And they will put me in the chair. And I will forget you, probably. Most of you." },
       { s: 'widowmaker', f: 'happy', t: "But my feet will remember this waltz. They remember everything. And one day, on some rooftop, waiting, I will find myself doing three steps of it without knowing why. And that will be you. Growing back. Through the concrete." },
       { choose: [
         { t: "I'll remember. Every single bit of it.", notes: 3, then: [
@@ -445,7 +445,7 @@
         ] },
         { t: "Maybe he's looking for you.", notes: 2, then: [
           { s: 'widowmaker', f: 'neutral', t: "No one is looking for me, petite. Except the people I would rather did not find me." },
-          { s: 'widowmaker', f: 'neutral', t: "...And you. You keep coming up the bridge. I suppose you count." }
+          { s: 'widowmaker', f: 'happy', t: "...And you. You keep coming up the bridge. I suppose you count." }
         ] }
       ] }
     ] },
@@ -458,8 +458,8 @@
           { n: "Solar pushed. Widowmaker allowed herself to be pushed, which was the only way she could ever have gone in. In the first frame she looked like a hostage. In the second, like a hostage who'd been told a joke. In the third Kiriko had stuck a fox-ear headband on her and she was looking at it in the camera with naked horror. In the fourth she was laughing. She'd never once laughed in front of a camera, she said afterward. She kept that one. She kept all four." }
         ] },
         { t: "She doesn't have to.", notes: 2, then: [
-          { s: 'widowmaker', f: 'neutral', t: "...No. I do not." },
-          { s: 'widowmaker', f: 'neutral', t: "...Move over, fox. I am taking the middle." }
+          { s: 'widowmaker', f: 'flustered', t: "...No. I do not." },
+          { s: 'widowmaker', f: 'happy', t: "...Move over, fox. I am taking the middle." }
         ] }
       ] }
     ] }

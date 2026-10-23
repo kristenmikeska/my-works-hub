@@ -191,7 +191,7 @@
       { s: 'mitsuru', f: 'neutral', t: "So these are your strangers. They're much less alarming than their readings." }
     ], else: [
       { n: "Nobody came to fill the extra bowls. Mitsuru put them away at nine without comment, one at a time, the way you'd put away a guest list, and the hot pot was very good anyway, and Junpei fell asleep at the table with a mushroom on his chopsticks." },
-      { s: 'mitsuru', f: 'neutral', t: "Your strangers didn't come. Next time, perhaps. I'll keep the bowls where I can reach them." }
+      { s: 'mitsuru', f: 'sad', t: "Your strangers didn't come. Next time, perhaps. I'll keep the bowls where I can reach them." }
     ] },
     { s: 'mitsuru', f: 'neutral', t: "Is there anyone else?" },
     { choose: [

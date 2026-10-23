@@ -144,13 +144,13 @@
         { n: "February was free attendance for the third year, which meant the classroom had gone thin. Half the desks empty every day, their owners at cram school or exams or home in bed pretending to be at cram school, and the ones who came in came in tired, with flashcards on rings and the flat gray faces of people sleeping four hours a night." },
         { n: "Aigis came every day. She sat in her seat in perfect posture through every empty period, and when a teacher didn't turn up she read the textbook from the beginning, and at lunch she turned her chair round to face Solar's with the air of someone keeping an appointment." },
         { s: 'classmate', t: "You're here again? You don't have exams? Lucky. I've got three next week. I've stopped dreaming in Japanese. I dream in multiple choice." },
-        { s: 'aigis', f: 'neutral', t: "Solar-san attends because the room is here. I attend because Solar-san is here. It is a very simple system." },
+        { s: 'aigis', f: 'happy', t: "Solar-san attends because the room is here. I attend because Solar-san is here. It is a very simple system." },
         { choose: [
           { t: "(Quiz the classmate on her flashcards.)", stat: { knowledge: 1 }, then: [
             { n: "She took the ring of cards and went through them while the girl ate, and the girl got eleven out of twenty, and then fourteen, and then, on the third pass, nineteen, and stared at Solar like she'd performed a minor miracle, and asked if she could come back tomorrow, and did." }
           ] },
           { t: "Somebody should be here. To keep the room company.", then: [
-            { s: 'aigis', f: 'neutral', t: "Yes. That is exactly what I meant. You said it better." },
+            { s: 'aigis', f: 'happy', t: "Yes. That is exactly what I meant. You said it better." },
             { n: "They ate their lunches in the half-empty room with the radiator ticking and the light coming in white off the frost on the field, and the empty desks didn't feel lonely, exactly, more like chairs pulled out at a table for people who'd be back in a minute." }
           ] }
         ] }
@@ -179,11 +179,11 @@
         { ifMet: 'jungwon', then: [
           { n: "Somebody had already been through the binders on the shelf and squared every one of them to the edge. Solar knew the hand. So, apparently, did Mitsuru, who said Jungwon had come by at lunch to carry boxes and had stayed to alphabetize the archive, unasked, and that she'd let him, because it seemed to be helping one of them." }
         ] },
-        { s: 'mitsuru', f: 'neutral', t: "Two years. I handed it over this afternoon. It took four minutes. I signed a form, and she signed a form, and I gave her the key. I timed it. I don't know why I timed it." },
+        { s: 'mitsuru', f: 'sad', t: "Two years. I handed it over this afternoon. It took four minutes. I signed a form, and she signed a form, and I gave her the key. I timed it. I don't know why I timed it." },
         { s: 'mitsuru', f: 'sad', t: "She asked me if I had any advice. I told her to eat lunch. I don't know where that came from either." },
         { choose: [
           { t: "(Pull out the president's chair. Sit her in it, one last time.)", stat: { courage: 1 }, then: [
-            { s: 'mitsuru', f: 'surprised', t: "Solar. It isn't mine anymore." },
+            { s: 'mitsuru', f: 'sad', t: "Solar. It isn't mine anymore." },
             { n: "But she sat. Coat and all, at the head of an empty table, her hands folded on the wood, and looked down the length of it at the chairs where two years of people had argued about budgets, and for about a minute she didn't say anything, and her face did something it didn't do in public. Then she stood, and pushed the chair in square, and picked up the box that said *PERSONAL*." }
           ] },
           { t: "(Pick up the other box. Walk her out.)", stat: { kindness: 1 }, then: [
@@ -302,7 +302,7 @@
             { ifRoute: 'romance', then: [
               { n: "She put it on the table in front of him, not with the others. A plain brown box, no letter. He looked at it for a long moment, the way he looked at a punch coming, and then picked it up with both hands." },
               { s: 'akihiko', f: 'blushing', t: "You made this." },
-              { s: 'solar', f: 'neutral', t: "I made it." },
+              { s: 'solar', f: 'flustered', t: "I made it." },
               { n: "He didn't put it with the others. He put it inside his jacket, against his chest, and zipped the jacket up over it, and went red from the collar to the ears, and went back to his letters, and couldn't write a single word for ten minutes, and didn't pretend he could." }
             ], else: [
               { n: "She put it on the table in front of him. He looked at it, and at her, and his mouth did something at one corner." },
@@ -416,7 +416,7 @@
       ask: "Sunoo has made heart-shaped croissants. He says I'm not allowed to eat one alone. Are you free this afternoon?", yes: 'WON YES. omw!!', ok: "Two o'clock. I've reserved the window table. He laughed at me for reserving it.", sorry: 'CANT TODAY IM SORRY :(', no: "Understood. I'll save you one. He's watching me save it. It's very uncomfortable.",
       scene: [
         { n: "Every croissant in Yeobo's case had a heart piped on it in red icing, and Sunoo was behind the counter piping more with his tongue between his teeth, and at the window table, which had a small folded card on it that said *RESERVED* in Jungwon's handwriting, Jungwon was sitting very straight in front of three boxes of chocolate he clearly didn't know what to do with." },
-        { s: 'jungwon', f: 'neutral', t: "They were in the council room. On Friday. From first-years. I don't go to this school. I don't know how they knew I'd be there. I've written thank-you notes. I can't accept them without giving something back. I've drafted a schedule." },
+        { s: 'jungwon', f: 'flustered', t: "They were in the council room. On Friday. From first-years. I don't go to this school. I don't know how they knew I'd be there. I've written thank-you notes. I can't accept them without giving something back. I've drafted a schedule." },
         { s: 'sunoo', f: 'happy', t: "He has a White Day SPREADSHEET, Solar. It has a column for budget." },
         { s: 'jungwon', f: 'flustered', t: "At Hanlim they were in my locker. In the other place they came by courier, with a card from somebody's mother. This is the first year anyone's handed me one and run away. It's very disorienting." },
         { n: "She had hers in her bag. She'd wrapped it herself. It had taken three tries, and it still wasn't square, and she knew before she took it out that he would notice that first." },
@@ -457,7 +457,7 @@
       { n: "Nobody moved. The moon sat over the bay enormous and white and empty, and the green lay on the city like water standing on a floor, and nothing came up the stairs, and nothing came out of the dark, and the dorm sat in the middle of it, awake, all together, listening to nothing at all." },
       { n: "Then, a long way off, from somewhere over the water or under the city or neither, a train horn. One long low note, the kind that carries for miles on a cold night. It went on, and on, and faded. It didn't come any closer. Nothing arrived." },
       { n: "Aigis turned her head toward the window. Koromaru's ears went up and stayed up. Solar found her hand had closed hard around the arm of the sofa, and that she wasn't afraid, exactly. It was more like hearing your name called in a crowd, and turning round, and nobody being there." },
-      { s: 'solar', f: 'neutral', t: "Not yet." },
+      { s: 'solar', f: 'serious', t: "Not yet." },
       { n: "She hadn't known she was going to say it. Nobody asked her what she meant. Mitsuru looked at her across the dark lounge for a long moment and then went back to her book, which she couldn't have been reading, not in the green, and turned a page anyway." },
       { choose: [
         { t: "(Stay on the sofa with everyone until it's over.)", then: [
@@ -475,7 +475,7 @@
       { place: 'Gekkoukan High · Gymnasium', time: 'Morning' },
       { n: "The gym had been turned into somewhere else for the morning. Red and white bunting on every wall, folding chairs in long straight rows, the heaters ticking under the windows and losing. The graduates at the front, the parents behind them in good coats, and at the back, with the rest of the second year, Yukari with a handkerchief already in her fist, Junpei with something rolled up under his chair he'd been told twice he couldn't unroll, and Fuuka, who wasn't graduating, who had nothing to graduate from, crying steadily since the anthem." },
       { n: "Mitsuru gave the graduates' address. She walked to the podium with a folded paper she never once unfolded and spoke for four minutes in the clear carrying voice that had been running this school for two years, about the building and the teachers and the years, and every word was exactly right, the way every word she said in public was." },
-      { s: 'mitsuru', f: 'neutral', t: "...And to those of us who came here not knowing whether we belonged. You did. I'm told it's customary to say so. I'm saying it because it's true." },
+      { s: 'mitsuru', f: 'sad', t: "...And to those of us who came here not knowing whether we belonged. You did. I'm told it's customary to say so. I'm saying it because it's true." },
       { n: "She bowed. For one second at the bottom of the bow, where only the front rows could see, her composure went, completely, and came back, and she walked to her seat with her chin up and sat down beside Akihiko, who didn't look at her, and leaned his shoulder against hers, once, and let her be." },
       { n: "Then the names. Class by class, each graduate standing at their own and answering and sitting down again, a long patient wave going through the rows. Akihiko answered his so loud the microphone squealed. Somebody's grandmother laughed. He went red to the ears and didn't sit down one bit faster." },
       { n: "Her homeroom. Her row. Aigis upright beside her. Their teacher read down the list in the careful voice of someone who'd practiced it in the staff room to be sure, and came to her, and stopped." },

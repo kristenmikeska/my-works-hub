@@ -240,7 +240,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { place: 'Iwatodai Strip · Bookworms' },
         { n: "By July the gray notebook had gone soft at the corners from living in her bag, and it had eleven entries in it, most of which said some version of *leaves, bigger*, one of which said *a first-year was crying under it, I didn't write down why because it's not my business*, and the last of which Bunkichi had been waiting for her to read out loud since she walked in." },
         { n: "He sat on the stool by the counter with his hands folded on his knees. Mitsuko had stopped pretending to do the ledger." },
-        { s: 'solar', f: 'neutral', t: "“June. Flowers. Little pale ones, yellow-white, four petals, hiding under the leaves. You'd miss them if you weren't looking. I almost did.”" },
+        { s: 'solar', f: 'happy', t: "“June. Flowers. Little pale ones, yellow-white, four petals, hiding under the leaves. You'd miss them if you weren't looking. I almost did.”" },
         { s: 'solar', f: 'neutral', t: "“July. Fruit. Small and green and hard, like marbles. I counted nineteen. Then a crow came, and I counted eighteen.”" },
         { n: "Bunkichi didn't say anything. He took off his glasses and polished them on the front of his cardigan, very thoroughly, for longer than glasses have ever needed to be polished, and put them back on." },
         { s: 'bunkichi', t: "Eighteen. Well. The crow's entitled to one. He was there first." },
@@ -609,7 +609,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { choose: [
           { t: "You read that whole passage in the rain. You're ready enough.", stat: { courage: 1 }, then: [
             { s: 'kenta', t: "That was in my house. Nobody was there. That was you." },
-            { s: 'solar', f: 'neutral', t: "Then we practice until it's like I'm the only one there." },
+            { s: 'solar', f: 'serious', t: "Then we practice until it's like I'm the only one there." },
             { n: "He put his face back in his arms. But he didn't say no, and from the counter, chopping, Mrs. Sakamoto made a small, careful, delighted sound she pretended was a cough." }
           ] },
           { t: "(Ask him what he'd want to say, if he had to say something.)", stat: { kindness: 1 }, then: [
@@ -943,7 +943,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { choose: [
           { t: "(Stand there and be her. Play it absolutely straight.)", stat: { courage: 1 }, then: [
             { n: "She stood by the fountain with her hands folded and a perfectly neutral face, and he got down on one knee on the tiles, right there in the plaza, in front of the shoe shop and three passing schoolgirls and a security guard, and said it, all of it, stumbling and then not stumbling, and somewhere in the middle he forgot to be practicing, and when he finished the schoolgirls were clapping." },
-            { s: 'solar', f: 'neutral', t: "She's going to say yes. I'm not her and I almost said yes." }
+            { s: 'solar', f: 'happy', t: "She's going to say yes. I'm not her and I almost said yes." }
           ] },
           { t: "(Get the flowers right first. The words will come.)", stat: { proficiency: 1 }, then: [
             { n: "She made him tell her about the girlfriend while she worked, and he forgot to be nervous telling her, and by the time the bouquet was done, red ranunculus and white sweet peas, nothing too big for a restaurant table, he had said everything he needed to say about her without noticing he'd said any of it, and she pointed that out, and he went very quiet and then said, oh." }

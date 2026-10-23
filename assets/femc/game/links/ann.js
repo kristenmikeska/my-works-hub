@@ -586,7 +586,7 @@
         ] }
       ] },
       { s: 'ann', f: 'sad', t: "That's what my friends would do. If I just... stopped answering. They'd text me in capital letters at midnight until somebody took their phones away. Somebody misses you so much, Solar." },
-      { s: 'solar', f: 'neutral', t: "I don't know who they are." },
+      { s: 'solar', f: 'sad', t: "I don't know who they are." },
       { s: 'ann', f: 'sad', t: "I know. That's the worst part, huh. They know you." },
       { n: "It went into Solar somewhere under the sternum and sat there, cold and exact, the way it did every time the phone buzzed. She'd been carrying it around for three weeks like a stone in a shoe, walking on it, not taking the shoe off. It was a strange relief to have someone else look at it." },
       { s: 'ann', f: 'neutral', t: "Or it's a cult. A really caring cult. Did you eat? Are you settling in? That's the scariest cult I've ever heard of. I'd join immediately." },

@@ -250,7 +250,7 @@
       { fragment: 'strangers-rabbit-socks' },
       { n: "The jade ring on Haenim's sash clicked, small and green, a stone in a bowl." },
       { s: 'yunjin', f: 'surprised', t: "...Sol?" },
-      { s: 'solar', f: 'neutral', t: "Pink. With gray rabbits. I have some." },
+      { s: 'solar', f: 'surprised', t: "Pink. With gray rabbits. I have some." },
       { s: 'yunjin', f: 'sad', t: "..." },
       { n: "Yunjin's face did something. It didn't crumple. It went very still and very bright, like a window when the sun hits it at the wrong angle, and she put her feet down off the fountain's edge, rabbits and all, and looked at the floor." },
       { s: 'yunjin', f: 'neutral', t: "...Yeah. You do. You wear them at home when nobody's looking. You never told me that. I worked it out. You wear the rabbits when it's bad." },
@@ -676,7 +676,7 @@
       { choose: [
         { t: "Yes, elder.", notes: 3, then: [
           { s: 'yunjin', f: 'happy', t: "GOOD. Oh, that felt amazing. Again. Louder. Bow a little." },
-          { s: 'solar', f: 'neutral', t: "Yes, elder. Wife. Jin." },
+          { s: 'solar', f: 'happy', t: "Yes, elder. Wife. Jin." },
           { s: 'yunjin', f: 'sad', t: "...Okay, that one got me. Don't do that one. That's cheating." }
         ] },
         { t: "You'll be cold.", notes: 3, then: [
@@ -697,7 +697,7 @@
       { n: "She didn't stop singing when Solar came down the steps. She held up one can, without looking, the way you'd hold out a hand to someone you knew would take it." },
       { n: "And Solar knew her." },
       { n: "Not in pieces. Not the socks and the codes and the scarf, one at a time. All of it, the way the tide comes back in over a mudflat, not in a line but everywhere at once, from underneath. Tenth-grade English, a classroom that smelled of whiteboard markers, a lazy teacher reading names off a list, and the girl in the next seat, just back from New York with an accent and a purple backpack, leaning over on the first morning to whisper *you look like you hate everyone. me too.* A little purple car with three doors and a horn that played La Cucaracha, on a boardwalk in winter with the heater on and the windows fogged, a song on the radio for the fourth time, a girl doing a horse dance from the waist up with her face completely serious. Two hot cans from the machine by the ferry terminal. *I'll fight them all. I'll beat them with my Prada.* *You don't have a Prada.* *I'll borrow yours.* A phone face-down on a carpet at one in the morning, buzzing, *(u wont)*, *(its low tide)*. A white rabbit, bowing. A girl bent to her ear in a quiet room, saying the worst and kindest thing anybody had ever said to her, and a door Solar had closed all the way. And under all of it, every bad night of her life, a voice she didn't have to look at the phone to know, *I'm up. I'm always up.*" },
-      { s: 'solar', f: 'neutral', t: "...Jin." },
+      { s: 'solar', f: 'surprised', t: "...Jin." },
       { n: "Yunjin stopped singing." },
       { n: "She didn't turn around. She sat on the seawall with the can held out behind her and her shoulders gone very still, the way they'd gone still in the green light the first night, for five seconds, a personal record." },
       { ifFlag: 'yunjin-jin', then: [
@@ -706,9 +706,9 @@
       ], else: [
         { s: 'yunjin', f: 'neutral', t: "...Babe. Do that one more time. Slower. I wasn't ready." }
       ] },
-      { s: 'solar', f: 'neutral', t: "Jin. You look like you hate everyone." },
+      { s: 'solar', f: 'happy', t: "Jin. You look like you hate everyone." },
       { n: "There was a sound from Yunjin like something tearing very quietly." },
-      { s: 'solar', f: 'neutral', t: "Me too." },
+      { s: 'solar', f: 'happy', t: "Me too." },
       { n: "Yunjin turned around. Her face was doing the thing it did when the sun hit it at the wrong angle, still and bright and about to break, and then it broke, and she was laughing, and crying, and up off the seawall, and the can went rolling away along the concrete, and she had both arms around Solar's neck before Solar could put the other can down." },
       { s: 'yunjin', f: 'sad', t: "You remembered the first thing. You remembered MY thing. That was mine. I was saving it, I was saving it in case you never..." },
       { choose: [
@@ -868,7 +868,7 @@
         { t: "(Send the crying cat.)", notes: 2, then: [
           { n: "She didn't mean it. She only wanted to see. The door opened before the phone had finished buzzing in the next room. Yunjin was already in her coat, with her car key in her fist out of pure habit." },
           { s: 'yunjin', f: 'serious', t: "Where. Who. Tell me who." },
-          { s: 'solar', f: 'neutral', t: "...Nobody. I wanted to know if you'd come." },
+          { s: 'solar', f: 'sad', t: "...Nobody. I wanted to know if you'd come." },
           { s: 'yunjin', f: 'sad', t: "...Babe. I'd come. I'll always come. You don't have to test it. You never have to test it." },
           { n: "She took the coat off anyway, and got into the bed, and stayed." }
         ] }

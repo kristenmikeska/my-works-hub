@@ -235,7 +235,7 @@
       ] },
       { s: 'solar', f: 'neutral', t: "Everything's been like that lately. Like I already know how things go, before they've happened." },
       { s: 'wren', f: 'neutral', t: "Maybe you're remembering forward." },
-      { s: 'solar', f: 'neutral', t: "That's not a thing." },
+      { s: 'solar', f: 'happy', t: "That's not a thing." },
       { s: 'wren', f: 'happy', t: "It is where I'm from. It's when you know the way somewhere before you've been. Everybody does it a little. You just don't notice, usually, because you're busy walking." },
       { n: "She said it so easily, with so little worry in it, like it was a fact about weather, that something in Solar's chest which had been clenched for two weeks let go by about a centimeter." },
       { choose: [
@@ -424,7 +424,7 @@
       { n: "It had been doing it for three weeks now. Messages from numbers she didn't know, from people she didn't know, who knew her. Old ones, mostly, things that felt like they'd been sent a long time ago and taken the long way round. And now, since last night, two girls sleeping in the empty rooms on the second floor of the dorm who had looked at her across a mall and screamed her name." },
       { n: "Wren watched her take the phone out of her pocket, look at the screen, and put it away again without reading it, three times in five minutes. On the fourth time, she put out one long sleeve and laid it gently over the phone, and over Solar's hand." },
       { s: 'wren', f: 'neutral', t: "They're the ones from the mall. Aren't they. The girls who know you." },
-      { s: 'solar', f: 'neutral', t: "Hanni and Hyein. They say they're my sisters. Not my real sisters. My... they say it like it's more than that." },
+      { s: 'solar', f: 'sad', t: "Hanni and Hyein. They say they're my sisters. Not my real sisters. My... they say it like it's more than that." },
       { s: 'wren', f: 'sad', t: "I saw them. On the way here. They were walking up from the dorm with their arms linked, talking over each other, and the tall one was crying a little and pretending she wasn't." },
       { s: 'wren', f: 'neutral', t: "They looked at me. When I passed. The one with the long hair looked at me and stopped talking, and then said something about the food, and they walked on." },
       { n: "Wren took her sleeve back. She held the ticket in both hands in her lap and looked at it." },

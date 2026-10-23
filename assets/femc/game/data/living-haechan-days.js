@@ -23,7 +23,7 @@
         { t: "Where do you actually go?", then: [
           { ifHeading: 'R', then: [
             { s: 'haechan', f: 'neutral', t: "The station. First train's at five fifty-two. Nobody on it. You can hear the whole car breathe." },
-            { s: 'haechan', f: 'neutral', t: "It's a good room. That's all. Don't make it a thing, princess." },
+            { s: 'haechan', f: 'flustered', t: "It's a good room. That's all. Don't make it a thing, princess." },
             { n: "He said it like a confession and a weather report at the same time, and then heard how it had sounded, and looked at the door handle like it had said it instead of him." }
           ], else: [{ ifHeading: 'S', then: [
             { s: 'haechan', f: 'happy', t: "Down to the water. Somebody I know gets up at five to beat rugs off a balcony, and if I'm still in bed when she starts I hear about it for a week." },
@@ -33,7 +33,7 @@
             { s: 'haechan', f: 'neutral', t: "Past the guesthouse. The long way round." },
             { n: "She waited for the rest of it. He looked through the glass in the door, at the dark street, in the direction of the station and the tall lit block beside it where half the people who'd come looking for her slept." },
             { s: 'haechan', f: 'neutral', t: "Your people up there get up early. The loud one does stretches on the front step in a headband. I walk the other side of the road." },
-            { s: 'haechan', f: 'serious', t: "They're yours. I'm just not one of them. That's fine. I like the walk." }
+            { s: 'haechan', f: 'sad', t: "They're yours. I'm just not one of them. That's fine. I like the walk." }
           ] }] }
         ] },
         { t: "(Hand him half the toast.)", stat: { kindness: 1 }, then: [
@@ -43,7 +43,7 @@
           ], else: [{ ifHeading: 'S', then: [
             { s: 'haechan', f: 'happy', t: "Agasshi. Bed. You've got an hour. If you're late, somebody's going to say it's my fault, and they'll be right." }
           ], else: [
-            { s: 'haechan', f: 'neutral', t: "Go back to bed. You've got an hour, and you're going to spend it at the guesthouse anyway. I can tell from the toast." }
+            { s: 'haechan', f: 'happy', t: "Go back to bed. You've got an hour, and you're going to spend it at the guesthouse anyway. I can tell from the toast." }
           ] }] }
         ] }
       ] },
@@ -66,18 +66,18 @@
         { s: 'haechan', f: 'neutral', t: "Where I'm from the family eats first. The rest of us eat after, in the kitchen. Standing, mostly. The housekeeper says sitting down makes you slow." },
         { n: "He said it easily, no complaint in it, the way you'd describe the weather in a town you grew up in, and Fuuka put her hand over her mouth, and Junpei looked at the chair like it had personally let somebody down." }
       ], else: [
-        { s: 'haechan', f: 'neutral', t: "I keep thinking somebody else is going to need it." },
+        { s: 'haechan', f: 'sad', t: "I keep thinking somebody else is going to need it." },
         { n: "He didn't say who. He glanced once toward the lounge window, toward the street and the station and the guesthouse lit up beyond it, where the visitors went home at eight, and Solar had the odd feeling he was counting a table she couldn't see, and leaving a place at it that wasn't his." }
       ] }] },
       { choose: [
         { t: "(Hook the chair with your foot and drag it out.)", then: [
           { n: "She hooked the chair leg with her foot and dragged it out, loud on the floor, and left it sticking into the middle of the kitchen where nobody could pretend it wasn't there. He looked at it. He looked at her. Then he came and sat on it all at once, like a man sitting down on a bench in the rain, with his bowl held up near his chin." },
           { s: 'junpei', f: 'happy', t: "He SAT. Fuuka. Fuuka, he sat." },
-          { s: 'haechan', f: 'neutral', t: "Don't narrate me." }
+          { s: 'haechan', f: 'flustered', t: "Don't narrate me." }
         ] },
         { t: "(Take your bowl and go stand at the counter next to him.)", stat: { charm: 1 }, then: [
           { n: "She took her bowl and went and stood at the counter beside him, her shoulder an inch from his, and ate standing up. After a minute Junpei did the same, complaining the whole way, and then Fuuka, apologizing, and then Akihiko, who had no idea what was happening but didn't want to be left out of it, until the entire dorm was eating at the counter and the table sat behind them with its one laid place like a joke nobody would explain." },
-          { s: 'haechan', f: 'neutral', t: "...This is worse. You know that. You've made it worse." }
+          { s: 'haechan', f: 'flustered', t: "...This is worse. You know that. You've made it worse." }
         ] }
       ] },
       { n: "Later, when the kitchen was empty, she noticed the bowl at the end of the table had been washed and dried and put back exactly where Fuuka had laid it, the chopsticks squared beside it. In case." },
@@ -107,7 +107,7 @@
       ], else: [
         { s: 'haechan', f: 'neutral', t: "Make hers first." },
         { s: 'hyein', f: 'neutral', t: "Hers is done. Hers has been done since September." },
-        { s: 'haechan', f: 'neutral', t: "Then make it warmer. She's going to stand outside that guesthouse some night arguing with a boy in a blazer, and she'll forget she's cold." },
+        { s: 'haechan', f: 'sad', t: "Then make it warmer. She's going to stand outside that guesthouse some night arguing with a boy in a blazer, and she'll forget she's cold." },
         { n: "Hyein blinked at him. Solar didn't know what he meant, and from the way he went back to studying his water glass, she didn't think he'd meant to say it out loud." }
       ] }] },
       { choose: [
@@ -144,9 +144,9 @@
       ], else: [
         { s: 'haechan', f: 'neutral', t: "None. Not here." },
         { s: 'yunjin', f: 'neutral', t: "Mm. And where's she going every morning with her hair done? Not here either, I notice." },
-        { s: 'haechan', f: 'neutral', t: "The guesthouse. The cafe on the Strip. Wherever the blazer is." },
+        { s: 'haechan', f: 'sad', t: "The guesthouse. The cafe on the Strip. Wherever the blazer is." },
         { s: 'yunjin', f: 'serious', t: "You hate the blazer. And you're just letting her..." },
-        { s: 'haechan', f: 'neutral', t: "She's not mine to let, Jin." },
+        { s: 'haechan', f: 'sad', t: "She's not mine to let, Jin." },
         { n: "Yunjin looked at him for a long second with the joke gone out of her face. Then she looked at Solar, who had been at that guesthouse twice already that week, and back at him, and for once didn't say anything at all, which from Yunjin was the loudest thing in the kitchen." }
       ] }] },
       { choose: [
@@ -156,7 +156,7 @@
         ] },
         { t: "You two are like siblings.", then: [
           { s: 'yunjin', f: 'neutral', t: "We're like a cat and the dog it lives with. Guess which one I am." },
-          { s: 'haechan', f: 'neutral', t: "She's the cat. She sits on everything I need." }
+          { s: 'haechan', f: 'happy', t: "She's the cat. She sits on everything I need." }
         ] }
       ] },
       { n: "Yunjin got a bowl down from the cupboard, set it on the counter in front of him with a click, took the serving spoon out of his hand, filled the bowl, and stood there with her arms folded until he ate out of it like a person. He did. Solar had been trying for a week." },
@@ -184,12 +184,12 @@
         { s: 'hanni', f: 'surprised', t: "Pays you?" },
         { s: 'haechan', f: 'happy', t: "Badly. In rice and yelling." },
         { n: "He said it loud and easy and Hanni laughed despite herself, and then he stopped laughing all at once, the way he did, and looked at the floor between his feet." },
-        { s: 'haechan', f: 'neutral', t: "You did it for nothing. With nothing. That's different. That's better than me." }
+        { s: 'haechan', f: 'sad', t: "You did it for nothing. With nothing. That's different. That's better than me." }
       ], else: [
         { s: 'haechan', f: 'neutral', t: "I'd have tried. I'd have been late." },
-        { s: 'haechan', f: 'neutral', t: "Everybody who came for her came first. I came last. I'm always going to be the last one through the door." },
+        { s: 'haechan', f: 'sad', t: "Everybody who came for her came first. I came last. I'm always going to be the last one through the door." },
         { s: 'hanni', f: 'sad', t: "That's not a bad place to be." },
-        { s: 'haechan', f: 'neutral', t: "No. You get to see who she runs to." },
+        { s: 'haechan', f: 'sad', t: "No. You get to see who she runs to." },
         { n: "He didn't look at Solar when he said it. He looked at the high wet window, at the dark beyond it, in the direction of the station." }
       ] }] },
       { choose: [
@@ -198,7 +198,7 @@
         ] },
         { t: "You were incredible, Hanni.", then: [
           { s: 'hanni', f: 'sad', t: "I was scared out of my mind." },
-          { s: 'haechan', f: 'neutral', t: "Same thing. Nobody tells you that. It's the same thing." }
+          { s: 'haechan', f: 'serious', t: "Same thing. Nobody tells you that. It's the same thing." }
         ] }
       ] },
       { n: "Hanni went up first, at four. On her way past the dryer she put her hand on the top of Haechan's head, briefly, the way you'd touch somebody's little brother, and he let her, which Solar wouldn't have believed if she hadn't been sitting right there." },
@@ -218,7 +218,7 @@
       { s: 'haechan', f: 'neutral', t: "It wasn't kind." },
       { ifHeading: 'R', then: [
         { s: 'jungwon', f: 'neutral', t: "You sound different lately. You don't sound like the house." },
-        { s: 'haechan', f: 'neutral', t: "I sound like somewhere you've never been, Yang. Somewhere you're not." },
+        { s: 'haechan', f: 'serious', t: "I sound like somewhere you've never been, Yang. Somewhere you're not." },
         { s: 'jungwon', f: 'neutral', t: "Then I'm glad for you. Truly." },
         { n: "He said it so courteously that Solar's pencil stopped moving on the page. She had learned, without knowing how, that Yang Jungwon got more polite the angrier he got, and this was very polite indeed." }
       ], else: [{ ifHeading: 'S', then: [
@@ -230,13 +230,13 @@
         { s: 'haechan', f: 'neutral', t: "You're in all of hers I'm not in." },
         { s: 'jungwon', f: 'neutral', t: "...Yes." },
         { s: 'haechan', f: 'serious', t: "Then don't be careless with it." },
-        { s: 'jungwon', f: 'neutral', t: "I have never once in my life been careless." },
+        { s: 'jungwon', f: 'serious', t: "I have never once in my life been careless." },
         { s: 'haechan', f: 'neutral', t: "I know. That's why I can't stand you." },
         { n: "Neither of them turned round. Solar had the strangest feeling that something had just been handed across the kitchen behind her back, heavy and fragile, and that both of them would have denied it under oath." }
       ], else: [{ ifHeading: 'stay', then: [
         { s: 'jungwon', f: 'neutral', t: "She's staying." },
         { s: 'haechan', f: 'neutral', t: "Yeah." },
-        { s: 'jungwon', f: 'neutral', t: "Then neither of us was reason enough to go." },
+        { s: 'jungwon', f: 'sad', t: "Then neither of us was reason enough to go." },
         { s: 'haechan', f: 'neutral', t: "First thing you've said I agree with. Don't get used to it." }
       ], else: [
         { s: 'jungwon', f: 'neutral', t: "All of it, then. Every world at once, I'm told. Including the ones with you in them." },
@@ -275,20 +275,20 @@
       { ifHeading: 'R', then: [
         { s: 'haechan', f: 'neutral', t: "Nothing yet. That's where the track ends. I haven't finished it." },
         { s: 'aigis', f: 'neutral', t: "Why not?" },
-        { s: 'haechan', f: 'neutral', t: "Lost the thing I was writing it about. Then I found it. Now I'm scared of finishing, so I don't." },
+        { s: 'haechan', f: 'sad', t: "Lost the thing I was writing it about. Then I found it. Now I'm scared of finishing, so I don't." },
         { n: "He said it to Aigis in the dry flat voice, every word handed over like it cost money, as if a machine were the only safe person in the building to tell, and then he heard Solar not turning her page, and his ears went red." }
       ], else: [{ ifHeading: 'S', then: [
         { s: 'haechan', f: 'happy', t: "After the four bars it turns into a trot song. I'm joking. I'm not joking. It turns into something a man sings in a car with the windows down, and I'm not allowed to change the station." },
         { s: 'aigis', f: 'serious', t: "That is not how music works." },
         { s: 'haechan', f: 'happy', t: "It's how that car works." }
       ], else: [{ ifHeading: 'H', then: [
-        { s: 'haechan', f: 'neutral', t: "After the four bars it's somebody else's." },
+        { s: 'haechan', f: 'sad', t: "After the four bars it's somebody else's." },
         { s: 'aigis', f: 'neutral', t: "Whose?" },
-        { s: 'haechan', f: 'neutral', t: "Whoever she goes home to. I can write it up to there. I can't write the part I'm not in." },
+        { s: 'haechan', f: 'sad', t: "Whoever she goes home to. I can write it up to there. I can't write the part I'm not in." },
         { n: "Aigis tilted her head and filed that somewhere, and Solar sat very still in the armchair with the page she wasn't reading." }
       ], else: [{ ifHeading: 'stay', then: [
         { s: 'haechan', f: 'neutral', t: "After the four bars it's this room. The fridge. The stairs. Junpei snoring. I'm going to record it before I go, so she's got the end." },
-        { s: 'aigis', f: 'neutral', t: "You will not be here for the end." },
+        { s: 'aigis', f: 'sad', t: "You will not be here for the end." },
         { s: 'haechan', f: 'neutral', t: "No. That's the point. It's hers." }
       ], else: [
         { s: 'haechan', f: 'happy', t: "After the four bars it's everything at once. Snow and a car radio and this sofa. It's a mess. It sounds like a house with too many people in it." },
@@ -302,7 +302,7 @@
         ] },
         { t: "(Hum it yourself. Don't stop where it stops.)", stat: { charm: 1 }, then: [
           { n: "She hummed it, up to the place it always stopped, and then, without deciding to, four more bars. They came out of her as if they'd always been there. Aigis turned her head from her to Haechan and back. Haechan stood holding a towel by two corners and didn't move at all." },
-          { s: 'aigis', f: 'neutral', t: "...Now there are two of you who know it." },
+          { s: 'aigis', f: 'happy', t: "...Now there are two of you who know it." },
           { s: 'kuromi', f: 'surprised', t: "Know WHAT? What did I miss? Why is everybody's face like that?" }
         ] }
       ] },
@@ -347,7 +347,7 @@
       { n: "She hadn't slept. Minji's camera had been under her pillow all night like a stone, and at six she gave up and went down in her socks to do something with her hands, and he was already in the kitchen, at the counter, with the kettle going and a paper filter balanced in a funnel over a mug, which was not a thing she had known the dorm owned." },
       { s: 'haechan', f: 'neutral', t: "Don't say anything." },
       { s: 'solar', f: 'neutral', t: "I didn't." },
-      { s: 'haechan', f: 'neutral', t: "Your face was getting ready to. I could hear it." },
+      { s: 'haechan', f: 'happy', t: "Your face was getting ready to. I could hear it." },
       { n: "He poured the water in a slow circle, slower than anybody needed to, watching it drip through, and when it was done he pushed the mug across the counter to her instead of keeping it, and started another." },
       { n: "He didn't ask why she was up. He looked at her once, at her eyes, at whatever the night had done to them, and then back at the filter, and she understood that he wasn't going to ask. Not today. Not ever, unless she put it in his hands herself." },
       { choose: [
@@ -390,7 +390,7 @@
     place: 'Iwatodai · Riverside', time: 'Daytime', bg: 'park-2', scene: [
       { n: "Koromaru had chosen. Nobody had asked him to. Ken held the lead, technically, but for weeks now the dog had walked the whole length of the river path pressed against Haechan's left leg, as if Haechan were the one being walked and needed watching, and today Ken had simply handed the lead over at the door and said, with enormous dignity, that he had homework." },
       { n: "So it was the three of them on the river path in the cold, the water flat and gray, joggers going past in pairs, and Haechan holding the lead loose in his right hand and not using it at all." },
-      { s: 'haechan', f: 'neutral', t: "He doesn't need a lead. He's Boss. Boss goes where Boss goes. I'm staff." },
+      { s: 'haechan', f: 'happy', t: "He doesn't need a lead. He's Boss. Boss goes where Boss goes. I'm staff." },
       { n: "Koromaru looked back at the sound of his title and huffed, once, a noise of deep professional approval, and kept going." },
       { ifHeading: 'R', then: [
         { s: 'haechan', f: 'neutral', t: "Where I'm from there's a house full of guys and nobody's really in charge. Your brother is, technically. He's out of town half the time and the rest of them go feral." },
@@ -403,7 +403,7 @@
         { s: 'haechan', f: 'neutral', t: "Smart dog. Knows where his part stops. Goes as far as he's allowed and lets you do the rest." },
         { n: "He wasn't talking about the dog. They both knew he wasn't talking about the dog, and Koromaru, who knew everything, leaned his whole weight against Haechan's shin and stayed there." }
       ], else: [{ ifHeading: 'stay', then: [
-        { s: 'haechan', f: 'neutral', t: "He'll walk you after I'm gone. I've told him. Sundays, this path, past the bench, home by four." },
+        { s: 'haechan', f: 'sad', t: "He'll walk you after I'm gone. I've told him. Sundays, this path, past the bench, home by four." },
         { n: "Koromaru looked up at him, and Haechan looked down, and some agreement passed between them that Solar wasn't party to and couldn't have broken if she'd tried." }
       ], else: [
         { s: 'haechan', f: 'happy', t: "Boss runs this building. Somebody else runs a port. Somebody else runs a frat. I work for all of them. Most employed man in three cities." }
@@ -413,7 +413,7 @@
           { n: "She let him choose. He chose the long way, past the bench under the bridge to the vending machine at the foot of the steps, where he sat down and looked at the machine and then at Haechan, pointedly, until Haechan bought a bottle of water and poured it into his own cupped hand and stood there with his hand held out in the cold while Boss took his time." }
         ] },
         { t: "Does he call you anything back?", then: [
-          { s: 'haechan', f: 'neutral', t: "Yeah. He calls me *that one*. With his eyebrows." },
+          { s: 'haechan', f: 'happy', t: "Yeah. He calls me *that one*. With his eyebrows." },
           { n: "Koromaru, hearing this, lifted his eyebrows. Solar had to sit down on the river wall." }
         ] }
       ] },
@@ -462,13 +462,13 @@
         { s: 'haechan', f: 'neutral', t: "Yeah. That's the plan." }
       ], else: [{ ifHeading: 'S', then: [
         { s: 'hyein', f: 'sad', t: "...You're going to the other one. Aren't you. Both of you. The one with the harbor." },
-        { s: 'haechan', f: 'neutral', t: "Looks like it." },
+        { s: 'haechan', f: 'sad', t: "Looks like it." },
         { s: 'hyein', f: 'serious', t: "Then you'd better make her wear a coat there. I'll send patterns. I don't know how. I'll find a way." }
       ], else: [{ ifHeading: 'H', then: [
         { s: 'hyein', f: 'sad', t: "She's going somewhere neither of us is. Isn't she." },
-        { s: 'haechan', f: 'neutral', t: "Yeah." },
+        { s: 'haechan', f: 'sad', t: "Yeah." },
         { s: 'hyein', f: 'sad', t: "And you're just letting her." },
-        { s: 'haechan', f: 'neutral', t: "It's not letting. She's not mine to let. You told me to tell her to come home. I'm not telling her anything. That's the most I've got." },
+        { s: 'haechan', f: 'serious', t: "It's not letting. She's not mine to let. You told me to tell her to come home. I'm not telling her anything. That's the most I've got." },
         { n: "Hyein looked at him for a long moment with her eyes wet. Then she went and sat on the arm of his chair, where there was no room at all, and leaned on him, and he let her." }
       ], else: [{ ifHeading: 'stay', then: [
         { s: 'hyein', f: 'sad', t: "She's staying here. Isn't she. With the boxer." },
@@ -519,7 +519,7 @@
         { s: 'akihiko', f: 'neutral', t: "She's staying." },
         { s: 'haechan', f: 'neutral', t: "Yeah." },
         { s: 'akihiko', f: 'blushing', t: "...I didn't ask her to." },
-        { s: 'haechan', f: 'neutral', t: "I know. That's why it took." },
+        { s: 'haechan', f: 'serious', t: "I know. That's why it took." },
         { n: "Akihiko looked at him over the table for a long moment, and Haechan looked back, flat, and there was nothing in it, no edge, nothing at all but a man handing another man something heavy and stepping back." }
       ], else: [
         { s: 'akihiko', f: 'neutral', t: "Mitsuru says you're all going everywhere at once. I don't understand it." },
@@ -531,7 +531,7 @@
         ] },
         { t: "You two would be really good friends.", then: [
           { s: 'akihiko', f: 'neutral', t: "No." },
-          { s: 'haechan', f: 'neutral', t: "No." },
+          { s: 'haechan', f: 'flustered', t: "No." },
           { n: "They said it in step, like everything else, and neither of them would look at her the rest of the way." }
         ] }
       ] },
@@ -563,7 +563,7 @@
         { s: 'junpei', f: 'surprised', t: "You buy drinks for the GUESTHOUSE? You don't even like those guys." },
         { s: 'haechan', f: 'neutral', t: "They're her people. Same thing." }
       ], else: [{ ifHeading: 'stay', then: [
-        { s: 'haechan', f: 'neutral', t: "I'm teaching the machine. Somebody's got to know which can after I'm gone." },
+        { s: 'haechan', f: 'sad', t: "I'm teaching the machine. Somebody's got to know which can after I'm gone." },
         { s: 'junpei', f: 'sad', t: "...Dude." },
         { s: 'haechan', f: 'neutral', t: "Don't *dude* me at seven in the morning." }
       ], else: [
@@ -610,13 +610,13 @@
         { s: 'mark', f: 'neutral', t: "So you're going to the other one. The harbor thing. The one I'm not in." },
         { s: 'haechan', f: 'neutral', t: "Yeah." },
         { s: 'mark', f: 'sad', t: "Funny. I always figured I'd be in all of yours." },
-        { s: 'haechan', f: 'neutral', t: "You're in the one where we were eleven. That one's not going anywhere." },
+        { s: 'haechan', f: 'sad', t: "You're in the one where we were eleven. That one's not going anywhere." },
         { n: "Mark laughed, short, like something catching in his throat, and looked down at the tangerine in his hands as if the next line might be written on it." }
       ], else: [{ ifHeading: 'H', then: [
         { s: 'mark', f: 'neutral', t: "And she's going to the one neither of us is in." },
         { s: 'haechan', f: 'neutral', t: "Yeah." },
         { s: 'mark', f: 'sad', t: "Doesn't that kill you?" },
-        { s: 'haechan', f: 'neutral', t: "Some. Not the way you think." },
+        { s: 'haechan', f: 'sad', t: "Some. Not the way you think." },
         { n: "Mark waited for more. He'd always waited for more, Solar thought; she could see the shape of a hundred other times, on a hundred other floors, him waiting for Haechan to finish a sentence. Haechan didn't finish it. He took another segment off the plate instead, and Mark let him." }
       ], else: [{ ifHeading: 'stay', then: [
         { s: 'mark', f: 'neutral', t: "She's staying, huh." },
@@ -636,7 +636,7 @@
         ] },
         { t: "How long have you two known each other?", then: [
           { s: 'mark', f: 'neutral', t: "Since forever. Since before we had opinions." },
-          { s: 'haechan', f: 'neutral', t: "He had opinions. I had him." },
+          { s: 'haechan', f: 'sad', t: "He had opinions. I had him." },
           { n: "Mark looked at the back of Haechan's head for a long time after that, and didn't say anything, and peeled the next tangerine very slowly." }
         ] }
       ] },
@@ -665,11 +665,11 @@
         { n: "Haechan laughed, the loud one, the house one, and for once didn't switch it off halfway through." }
       ], else: [{ ifHeading: 'H', then: [
         { s: 'yunjin', f: 'sad', t: "She's not going to either of ours. Is she." },
-        { s: 'haechan', f: 'neutral', t: "No." },
+        { s: 'haechan', f: 'sad', t: "No." },
         { s: 'yunjin', f: 'neutral', t: "The Yang boy's over there, though. In hers." },
         { s: 'haechan', f: 'serious', t: "He's in both. That's the only reason I don't hate it worse." },
         { s: 'yunjin', f: 'neutral', t: "...Babe. That's the nicest thing you've ever said about him." },
-        { s: 'haechan', f: 'neutral', t: "Don't tell him." }
+        { s: 'haechan', f: 'flustered', t: "Don't tell him." }
       ], else: [{ ifHeading: 'stay', then: [
         { s: 'yunjin', f: 'sad', t: "She's staying here. With these people. With the push-up." },
         { s: 'haechan', f: 'neutral', t: "Yeah. Good people. Bad bowing." },
@@ -681,7 +681,7 @@
       ] }] }] }] },
       { ifRomance: 'haechan', then: [
         { s: 'yunjin', f: 'neutral', t: "And you two. Don't think I didn't see you on the stairs at midnight, sharing one scarf like a pair of thieves." },
-        { s: 'haechan', f: 'neutral', t: "It was cold." },
+        { s: 'haechan', f: 'flustered', t: "It was cold." },
         { s: 'yunjin', f: 'serious', t: "It's ALWAYS cold. That's not an EXCUSE, that's a CLIMATE." }
       ], else: [
         { s: 'yunjin', f: 'neutral', t: "And you two. Friends, she tells me. FRIENDS. I've watched you look at her across a table like a man reading a menu he can't afford." },
@@ -726,14 +726,14 @@
         { s: 'hanni', f: 'sad', t: "Promise me that's you." },
         { s: 'haechan', f: 'neutral', t: "It's me. Over there it's my actual job. They pay me." }
       ], else: [{ ifHeading: 'H', then: [
-        { s: 'haechan', f: 'neutral', t: "No. Not really." },
+        { s: 'haechan', f: 'sad', t: "No. Not really." },
         { s: 'haechan', f: 'neutral', t: "But you can be not okay and still be right. She's going somewhere I'm not. I'm the one who'd know if that was wrong, and it isn't." },
         { s: 'hanni', f: 'sad', t: "How do you know?" },
-        { s: 'haechan', f: 'neutral', t: "Because I've been pulled toward her my whole life, in two places. That's not the same thing as her being mine. Took me a while. I got there." },
+        { s: 'haechan', f: 'sad', t: "Because I've been pulled toward her my whole life, in two places. That's not the same thing as her being mine. Took me a while. I got there." },
         { n: "Hanni put her hand on his arm, over the blanket, and left it there, and he let her, and the three of them stood like that a long time, not looking at each other, all looking at the same lights." }
       ], else: [{ ifHeading: 'stay', then: [
         { s: 'haechan', f: 'neutral', t: "No. But I'm going to be." },
-        { s: 'haechan', f: 'neutral', t: "She's staying. I'm going home without her. I said out loud it was allowed and I meant it. I just didn't know it'd be this cold." },
+        { s: 'haechan', f: 'sad', t: "She's staying. I'm going home without her. I said out loud it was allowed and I meant it. I just didn't know it'd be this cold." },
         { s: 'hanni', f: 'sad', t: "We're going home without her too." },
         { s: 'haechan', f: 'neutral', t: "Then sit with me on the way. Don't talk." },
         { s: 'hanni', f: 'sad', t: "I'm going to talk the whole way." },
@@ -751,7 +751,7 @@
       { choose: [
         { t: "Ask me too.", then: [
           { s: 'hanni', f: 'neutral', t: "Are you okay, Sol?" },
-          { s: 'solar', f: 'neutral', t: "Fine." },
+          { s: 'solar', f: 'sad', t: "Fine." },
           { s: 'hanni', f: 'neutral', t: "Are you okay, Sol?" },
           { n: "The second time, she told her. Not in words. She put her head down on Hanni's shoulder, and Hanni said *okay, okay*, and that was the answer, and Haechan turned and looked out at the city to give them the roof." }
         ] },

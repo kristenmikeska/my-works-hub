@@ -66,13 +66,13 @@
     { id: 'aki-ln-landing', kind: 'dorm', rank: 9, route: 'romance', after: '11/3', until: '12/20', when: 'quiet', place: 'Iwatodai Dorm · 2F Hallway', time: 'Late Night', music: 'romance', scene: [
       { n: "Midnight, and the hallway light on the landing had been flickering for a week and nobody had changed it, and he was standing under it at her door with his hand up to knock and not knocking, like a man who'd walked up the stairs on purpose and only just realized where he was." },
       { s: 'akihiko', f: 'blushing', t: "...I wasn't going to knock. I was just. Checking. That you were back. From wherever." },
-      { s: 'solar', f: 'neutral', t: "I live here, senpai." },
+      { s: 'solar', f: 'happy', t: "I live here, senpai." },
       { s: 'akihiko', f: 'blushing', t: "I know you live here. I know where you live. That's the problem. I keep walking past it." },
       { choose: [
         { t: "(Step out. Put your forehead against his chest.)", notes: 2, then: [
           { n: "She stepped out into the hallway in her socks and leaned her forehead on his chest, just that, and felt him stop breathing, and then start again, carefully, and his hand came up to the back of her head and stayed there, warm, the way it had stayed on the back of her coat on the roof." },
           { s: 'akihiko', f: 'neutral', t: "...Five. Tomorrow. I'll be out front." },
-          { s: 'solar', f: 'neutral', t: "I know." },
+          { s: 'solar', f: 'flustered', t: "I know." },
           { n: "He went up the stairs to his floor slowly, looking back once from the turn. She stood under the flickering light until his door closed, and then a while longer, for no reason, and then went in and lay awake until four, smiling at the ceiling like an idiot." }
         ] },
         { t: "Goodnight, Akihiko.", notes: 2, then: [
@@ -90,7 +90,7 @@
         ] },
         { t: "One more night. And then another one after that.", notes: 2, then: [
           { s: 'akihiko', f: 'happy', t: "...That's not how one more works." },
-          { s: 'solar', f: 'neutral', t: "It's how I'm doing it." },
+          { s: 'solar', f: 'happy', t: "It's how I'm doing it." },
           { n: "He laughed into her hair, quietly, so the roof wouldn't hear, and pulled the coat tighter round both of them, and said fine, then, another one, and another one after that, and they stood there in the snow being two people who weren't doing the math." }
         ] }
       ] }
@@ -114,14 +114,14 @@
     ] },
     { id: 'jw-ln-call', kind: 'call', rank: 4, after: '11/7', until: '12/12', when: 'quiet', place: "Iwatodai Dorm · Solar's Room", time: 'Night · 12 AM', music: 'night', scene: [
       { n: "Her phone rang at midnight. Not a text. A call. Nobody here called. She looked at the name for two full rings before she picked up." },
-      { s: 'jungwon', f: 'neutral', t: "I'm sorry. It's late. I found an error. On your worksheet. Question nine. I corrected it wrong. I couldn't sleep knowing I'd corrected it wrong." },
+      { s: 'jungwon', f: 'flustered', t: "I'm sorry. It's late. I found an error. On your worksheet. Question nine. I corrected it wrong. I couldn't sleep knowing I'd corrected it wrong." },
       { n: "His voice down the line was very quiet, the guesthouse voice, the voice of someone in a room with thin walls, and behind it she could hear the trains going into the depot by the station, one and then another, slow." },
       { choose: [
         { t: "Read me the right answer, then.", notes: 2, then: [
           { n: "He read it to her. All of it, step by step, the way he did at the table, and she wrote it in the margin in the dark by the light of the phone, and when he was done neither of them hung up. He said, after a while, that the trains here were very punctual. She said she knew. They listened to two more. Then he said goodnight, formally, in full, and she said it back, and neither of them hung up for another minute, and then he did, and she lay there with the warm phone on her chest." }
         ] },
         { t: "Jungwon. Did you eat dinner?", notes: 2, then: [
-          { s: 'jungwon', f: 'neutral', t: "...That's not relevant to question nine." },
+          { s: 'jungwon', f: 'flustered', t: "...That's not relevant to question nine." },
           { s: 'solar', f: 'neutral', t: "Did you?" },
           { s: 'jungwon', f: 'neutral', t: "No." },
           { n: "She stayed on the line while he went down to the guesthouse kitchen, which the polite woman locked at nine, and found it locked, and went to the vending machine in the lobby instead, and bought a rice ball and ate it on the stairs while she listened to him eat it, and asked him what flavor, and he said salmon, and said it like a confession." }
@@ -131,7 +131,7 @@
     { id: 'jw-ln-halfway', kind: 'visit', rank: 6, after: '11/21', until: '12/20', place: 'Iwatodai · Riverside', time: 'Late Night', music: 'night', scene: [
       { n: "She walked him halfway. That was the arrangement now, unspoken. Out of the dorm at curfew, down the hill, along the river to the bridge, where the lamp flickered and the guesthouse lights showed on the far side, and there he would stop and send her back, and she would go, and he would watch her go, and then he would go." },
       { n: "Tonight he stopped at the bridge and didn't send her back. He stood with his hand around the watch on his wrist, the one that had stopped, and looked at the water." },
-      { s: 'jungwon', f: 'neutral', t: "At home it's still the night before the exams. It's been the night before for six weeks. I keep thinking I'll walk into the morning and it'll all be waiting." },
+      { s: 'jungwon', f: 'sad', t: "At home it's still the night before the exams. It's been the night before for six weeks. I keep thinking I'll walk into the morning and it'll all be waiting." },
       { s: 'jungwon', f: 'neutral', t: "I'm not in a hurry. I wanted you to know that. I'm not in any hurry at all." },
       { choose: [
         { t: "(Walk him the rest of the way.)", notes: 2, then: [

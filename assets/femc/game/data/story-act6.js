@@ -64,7 +64,7 @@
         { s: 'haechan', f: 'serious', t: "Don't. Don't do that. That's the one thing you're not allowed to do tonight." }
       ] },
       { t: "You heard it?", then: [
-        { s: 'haechan', f: 'neutral', t: "I hear everything. It's a condition. I heard you not pick me in two languages." },
+        { s: 'haechan', f: 'happy', t: "I hear everything. It's a condition. I heard you not pick me in two languages." },
         { n: "The corner of his mouth went up a quarter of an inch, which on him was a laugh you could have heard from the street." }
       ] },
       { t: "(Stand next to him. Wait.)", then: [
@@ -83,7 +83,7 @@
       { choose: [
         { t: "(Kiss him. Once. Like a goodbye you both agreed on.)", then: [
           { n: "She kissed him. Once, in the cold, with the city going on being Christmas underneath them. He held her face in both hands the way he had in the laundry room, and they weren't shaking this time. That was the worst part, and the best one. He'd already decided. He'd decided before she came up the stairs." },
-          { s: 'haechan', f: 'neutral', t: "...There you go." },
+          { s: 'haechan', f: 'sad', t: "...There you go." },
           { n: "Not *there you are*. She heard the difference. She'd hear it for the rest of her life." }
         ] },
         { t: "Donghyuck.", then: [
@@ -93,7 +93,7 @@
       ] }
     ], else: [
       { n: "Then, finally, he turned and looked at her, and his face did something she'd never seen it do, which was sulk." },
-      { s: 'haechan', f: 'neutral', t: "You understand this is the second time. In one week. You friend-zoned me in a laundry room on the eighteenth and now you're moving to a dimension I'm not in." },
+      { s: 'haechan', f: 'sad', t: "You understand this is the second time. In one week. You friend-zoned me in a laundry room on the eighteenth and now you're moving to a dimension I'm not in." },
       { s: 'haechan', f: 'neutral', t: "I want it on the record that I've been very mature about both." },
       { choose: [
         { t: "You've been extremely mature.", then: [
@@ -197,7 +197,7 @@
       { t: "(Text Jungwon.)", ifFlag: 'xc-jungwon', flag: { 'xmas-jungwon': true }, tally: { xmas: 'jungwon' }, then: [
         { place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'date' },
         { n: "He was already in the dorm kitchen. He'd asked Mitsuru, three days before, formally, in writing, whether he might use it on the twenty-fourth. He had an apron on. He had a fish." },
-        { s: 'jungwon', f: 'neutral', t: "Please sit. You're not to help. You'll only cut yourself, and then I'll have to watch you stitch it, and I won't be able to concentrate." },
+        { s: 'jungwon', f: 'happy', t: "Please sit. You're not to help. You'll only cut yourself, and then I'll have to watch you stitch it, and I won't be able to concentrate." },
         { n: "She sat on the counter and watched him cook. He was very good. He cooked the way he did everything, precisely, without wasted movement, the knife going through the fish like a sentence he'd planned, and he didn't talk, and she didn't, and the snow came down outside the window, and it was the most peaceful hour she'd spent all year." },
         { n: "Sea bream rice, in a pot he'd found somewhere. Two bowls. He served her first. He sat across from her and watched her eat the first mouthful with his face perfectly still, which she knew by now meant everything." },
         { choose: [
@@ -562,13 +562,13 @@
       { n: "She put the Evoker away." },
       { n: "She knelt down on the cold platform, in front of the girl in the coat, close, face to face, and reached out, and took her hand. It was cold. It was small. It was hers. It was exactly as cold as her own hands had been every morning since April, pinning her hair up for a world that had made a place for her." },
       { s: 'wren', f: 'surprised', t: "...What are you doing? You're supposed to... you're supposed to beat me. That's how it goes. You beat the part of you that can't, and you go home, and you're fine. You're always fine." },
-      { s: 'solar', f: 'neutral', t: "I'm not fine." },
+      { s: 'solar', f: 'sad', t: "I'm not fine." },
       { n: "It came out of her in her own voice. Not the polite one. Not the presidential one. Not the one she used for a dinner over the sea, or a pink hallway, or a gym full of plastic chairs. The other one. The one she didn't use much." },
       { s: 'solar', f: 'sad', t: "I'm not fine. I'm scared of every ending. All of them. At once. I don't know how to choose. I've never known how." },
-      { s: 'solar', f: 'neutral', t: "So I'm not going to leave you here. You're not the part of me I have to beat. You're the part of me I have to bring." },
+      { s: 'solar', f: 'serious', t: "So I'm not going to leave you here. You're not the part of me I have to beat. You're the part of me I have to bring." },
       { n: "Wren looked at their two hands. At her own face, looking back at her, without a cap, without a veil, without anything over it at all. And Solar watched her understand, the way you'd watch someone finally read the back of a page." },
       { s: 'wren', f: 'neutral', t: "...Thou art I." },
-      { s: 'solar', f: 'neutral', t: "And I am thou." },
+      { s: 'solar', f: 'serious', t: "And I am thou." },
       { n: "She held on. Wren held on back. And the girl in the porter's coat didn't fade, and didn't vanish, and didn't go anywhere at all. She came in. The way warmth comes into cold hands. Into Solar's palm, and up her arm, and into her chest, and settled there, small and frightened and hers, the way a bird settles into a hand that's been held out long enough." },
       { summon: 'haenim-unveiled' },
       { cg: 'story-haenim-unveiled' },
@@ -636,7 +636,7 @@
       { n: "And Haechan. His door was two doors, a pink hallway and a house by the sea, both at once, and he didn't go to it first. He came down the platform to her through the waking strangers with his hands in his pockets, and stopped half a step away, to the side, the way he'd stood next to her all winter." },
       { s: 'haechan', f: 'neutral', t: "Don't make the face. You picked the one nobody picked for you. Good. Somebody in this building had to." },
       { n: "He didn't hug her. He took one of her hands out of her coat pocket and put something in it, and closed her fingers round it with his own. A can. Pink and black, cold, a logo like claw marks. The last one in any world that wasn't his." },
-      { s: 'haechan', f: 'neutral', t: "Don't waste it." },
+      { s: 'haechan', f: 'sad', t: "Don't waste it." },
       { n: "Then he walked back up the platform to his door, and stood in it for a second, half in one life and half in the other, and looked at her down the whole length of the station, flat, and then not flat at all. He hummed something. She couldn't hear it from there. She knew which song. She knew it ended now. He went through, and the door that was two doors closed on both of them at once." },
       { n: "Jihoon didn't go to any door. Neither did Cherry, or the crew, or Jungwon, who stood a little apart from them with his hands behind his back and his watch running again. They stood in a loud untidy knot at the far end of the platform by a door with a dog barking behind it, arguing about nothing, the way you argue at a bus stop when the bus is coming, and every so often all of them looked over at her at once, to check she was still there." }
     ], [

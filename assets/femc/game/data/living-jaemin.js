@@ -79,7 +79,7 @@
             { n: "She put it in her pocket. On the walk home she found she had her hand round it, in the cold, like a ticket." }
           ] },
           { t: "That Jaehyun didn't let anyone else carve.", notes: 2, stat: { charm: 1 }, then: [
-            { s: 'jaehyun', f: 'neutral', t: "Nobody else could be trusted with it." },
+            { s: 'jaehyun', f: 'happy', t: "Nobody else could be trusted with it." },
             { s: 'jaemin', f: 'happy', t: "He's not wrong. I tried. They took it off me. Chenle took it off me. *Chenle.*" },
             { s: 'chenle', f: 'neutral', t: "You were holding it like a microphone." }
           ] },
@@ -100,7 +100,7 @@
         { s: 'jaemin', f: 'serious', t: "Midnight's taken. Midnight belongs to the green and the coffins and the monster tower. Nobody's counting down to *that.* So we're counting to nine." },
         { s: 'hyein', f: 'neutral', t: "Why nine?" },
         { s: 'jaemin', f: 'happy', t: "Because at home that's when the party actually starts. Nobody good shows up before nine. Nine's the real midnight. Ask anybody." },
-        { s: 'chenle', f: 'neutral', t: "That's not how time works." },
+        { s: 'chenle', f: 'serious', t: "That's not how time works." },
         { s: 'jaemin', f: 'happy', t: "It's how *parties* work, Le. Time can take it up with me." },
         { s: 'hanni', f: 'happy', t: "And at home it's still that night anyway! So technically we're early for everything! We're early for a whole year!" },
         { n: "Jaemin pointed at Hanni with both hands like she'd scored a goal, and Hanni held up the matches like a torch, and somewhere below them in the street a man on a bicycle looked up at six people on a roof cheering about nothing at a quarter to nine and kept going." },
@@ -192,7 +192,7 @@
       place: 'Kirijo Guesthouse', time: 'Evening', bg: 'kirijo-guesthouse-night', scene: [
         { n: "There was a small kitchen behind the guesthouse front desk, meant for the desk lady's tea and nothing more, two burners and a rice cooker and a window onto the alley, and tonight Jaehyun Lee was standing in it with his sleeves rolled to the elbow, making fried rice for nine people, and Jaemin was standing in its doorway watching him do it, the way you'd watch a bear ride a bicycle." },
         { s: 'jaemin', f: 'surprised', t: "Solar. Solar, come here. Come look at this. Don't make any sudden movements." },
-        { s: 'jaehyun', f: 'neutral', t: "I can hear you, Na." },
+        { s: 'jaehyun', f: 'happy', t: "I can hear you, Na." },
         { s: 'jaemin', f: 'surprised', t: "He *cooks.* He has a *technique.* He did a thing with the pan, a flip thing, I thought he was going to throw it at me." },
         { n: "Jaehyun didn't turn round. He moved between the two burners and the cutting board with the economy of a man running a play he'd drawn up himself, egg, rice, a handful of something green, the pan tipped and turned, and there was nothing wasted in any of it, not a step, not a word." },
         { s: 'jaehyun', f: 'neutral', t: "Mitsuru's people left a cookbook in the lobby. I read it. Someone has to feed the second floor." },
@@ -205,7 +205,7 @@
           ] },
           { t: "Jae. Is this what you're like at home?", then: [
             { s: 'jaehyun', f: 'neutral', t: "At home there's a dining hall. Nobody needs me to make rice." },
-            { s: 'jaehyun', f: 'neutral', t: "Here they do." },
+            { s: 'jaehyun', f: 'happy', t: "Here they do." },
             { n: "He tipped the rice onto the first plate, and the second, and handed the first one to her without looking, and the second to Jaemin, and Jaemin held it like it was an award." }
           ] },
           { t: "(Stand in the doorway with Jaemin. Watch.)", then: [

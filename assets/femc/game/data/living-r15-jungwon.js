@@ -90,10 +90,10 @@
     { id: 'r15-jungwon-ln-trains', kind: 'call', rank: 11, after: '2/3', until: '3/2', when: 'quiet', flag: 'year-goes-on', place: "Iwatodai Dorm · Solar's Room", time: 'Night · 12 AM', music: 'night', scene: [
       { n: "Her phone lit up at midnight. A call, not a text. In this whole world he was still the only person who called, and she knew it was him before she looked, the way you know a knock." },
       { s: 'jungwon', f: 'neutral', t: "I'm sorry. It's late. I'm not calling about a worksheet. I want to be clear about that from the start." },
-      { s: 'jungwon', f: 'neutral', t: "I started counting the nights. Until the sixth. I got to a number and stopped, because I'd have had to say it, and I don't want to have said it." },
+      { s: 'jungwon', f: 'sad', t: "I started counting the nights. Until the sixth. I got to a number and stopped, because I'd have had to say it, and I don't want to have said it." },
       { n: "Behind his voice the trains were going into the depot by the station, one and then a long gap and then another, slow, the sound she'd heard behind him in November and hadn't known she'd been listening for until it came." },
       { ifHeading: 'H', then: [
-        { s: 'jungwon', f: 'neutral', t: "I keep thinking about the morning. You in row three. Me pretending not to turn round. It's the first morning in my life I've wanted to get to." }
+        { s: 'jungwon', f: 'happy', t: "I keep thinking about the morning. You in row three. Me pretending not to turn round. It's the first morning in my life I've wanted to get to." }
       ], else: [{ ifHeading: 'S', then: [
         { s: 'jungwon', f: 'neutral', t: "In the other house the clock starts again the minute we're back. I'd like to be the one person in it who isn't counting." }
       ], else: [{ ifHeading: 'R', then: [
@@ -126,7 +126,7 @@
       { ifHeading: 'S', then: [
         { s: 'jungwon', f: 'neutral', t: "You'll go home to the tables. I'd like you to know there'll be one person in that house who checks them for you. Without being asked. Every night." }
       ], else: [{ ifHeading: 'H', then: [
-        { s: 'jungwon', f: 'neutral', t: "There's no sea at Hanlim. You'll sleep. I checked that too. I'm told you'll sleep through your alarm, which is the other problem." }
+        { s: 'jungwon', f: 'happy', t: "There's no sea at Hanlim. You'll sleep. I checked that too. I'm told you'll sleep through your alarm, which is the other problem." }
       ], else: [
         { s: 'jungwon', f: 'neutral', t: "Wherever you sleep after the sixth, I hope it's somewhere the tide doesn't get a vote." }
       ] }] },
@@ -135,8 +135,8 @@
           { n: "They sat on the cold step with the thermos between them and drank out of its one cup, taking turns, the barley tea toasted and bitter and hot enough to feel all the way down. At ten past one exactly he looked at his stopped watch out of habit, and then at her, and she yawned, enormously, and he looked so pleased with himself that she didn't tell him it was the tea." }
         ] },
         { t: "(Take the thermos. Send him home before he freezes.)", notes: 2, then: [
-          { s: 'jungwon', f: 'neutral', t: "I'm not cold." },
-          { s: 'solar', f: 'neutral', t: "Your ears are purple." },
+          { s: 'jungwon', f: 'flustered', t: "I'm not cold." },
+          { s: 'solar', f: 'happy', t: "Your ears are purple." },
           { n: "He went. At the corner he turned round and bowed, a full proper bow, to the girl in socks at the gate holding his thermos, and was gone. She drank the tea at her window. She slept at a quarter past one, and didn't wake until Fuuka knocked." }
         ] }
       ] }

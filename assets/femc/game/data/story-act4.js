@@ -439,7 +439,7 @@
       { t: "Jihoon?", then: [
         { n: "It came out of her like a hiccup. She had no idea where it came from. It was just there, in her mouth, a name, and his face lit up so fast and so bright it was like watching a building's lights come on all at once." },
         { s: 'jihoon', f: 'happy', t: "YES. Jihoon. Your Jihoon. The best thing that's ever happened to you. Thank God, I thought you were doing a bit." },
-        { s: 'solar', f: 'neutral', t: "I don't... I'm sorry. I don't know why I said that. I don't know you." },
+        { s: 'solar', f: 'sad', t: "I don't... I'm sorry. I don't know why I said that. I don't know you." },
         { n: "The lights went out again, one floor at a time." }
       ] }
     ] },
@@ -599,13 +599,13 @@
     { n: "He'd stood in front of the boy. That was the shape of it. You could see the shape of it in where everyone was, the way you can see in a room where a fight has been. He'd stepped in front." },
     { s: 'ken', f: 'sad', t: "Why... why did you... I was going to... why would you do that?" },
     { n: "Shinjiro's eyes were open. His hand had found the front of his coat and was pressed there, flat, and something dark was coming between his fingers and spreading on the wet ground under him, very slowly, the way the tide comes in. He looked up at Ken, and something in his face that had been clenched for two years, for as long as any of them had known him, let go." },
-    { s: 'shinjiro', f: 'neutral', t: "...Don't make that face. It's fine. This is how it should go." },
+    { s: 'shinjiro', f: 'sad', t: "...Don't make that face. It's fine. This is how it should go." },
     { s: 'shinjiro', f: 'sad', t: "You keep living. That's all you owe anybody. You hear me? That's the whole thing." },
     { n: "Akihiko came into the alley behind her and stopped like he'd hit a wall. Then he was on his knees beside Shinjiro with both hands over Shinjiro's, pressing, saying his name, Shinji, Shinji, over and over, not loud, like a man saying a word to keep his place in it." },
-    { s: 'shinjiro', f: 'neutral', t: "Aki. You're getting your gloves dirty. Idiot." },
+    { s: 'shinjiro', f: 'sad', t: "Aki. You're getting your gloves dirty. Idiot." },
     { ifRank: { shinjiro: 9 }, then: [
       { n: "His eyes moved. Past Akihiko, past Ken. They found Solar standing at the mouth of the alley with the rain hanging all around her, and stayed, and the corner of his mouth did the thing it did in the kitchen at one in the morning when she stole a piece of whatever he was cooking off the board." },
-      { s: 'shinjiro', f: 'neutral', t: "...You've still got the card. Good. Don't let Iori near it." },
+      { s: 'shinjiro', f: 'happy', t: "...You've still got the card. Good. Don't let Iori near it." },
       { n: "She nodded. She couldn't do anything else. He looked at her nodding as though that was all he'd wanted, and closed his eyes." }
     ], else: [
       { n: "His eyes went past all of them, up, to the strip of green sky between the roofs, like he was looking for something he'd lost up there a long time ago and had just remembered where he'd put it. Then they closed." }
@@ -770,12 +770,12 @@
     { cg: 'searchers-jungwon-finds-solar' },
     { n: "A boy was standing in the doorway with his arms full of paper. Slight and neat, dark hair that had been combed and had then been through a long night, a navy blazer with a crest she'd seen yesterday on a poster, and a stack of documents held against his chest the way some people hold a shield. He'd stopped dead. He'd seen her. The light was in his face and he didn't blink." },
     { n: "For a moment nobody said anything. The papers in his arms shifted, and one slid off the top and seesawed down to the floor, and he didn't look at it. He was looking at her the way people look at a house they grew up in, from the street, years later, to see if the lights are on." },
-    { s: 'jungwon', f: 'neutral', t: "It's you." },
+    { s: 'jungwon', f: 'surprised', t: "It's you." },
     { n: "Two words. Very quiet. Perfectly polite. And then, as she watched, his face did something she didn't have the language for yet. It went still. Completely still, all at once, the way water goes still when the wind drops, and she understood without knowing how that this was not him being calm. This was the opposite of calm. This was a boy holding something so tightly it had stopped moving." },
     { choose: [
       { t: "I'm sorry. Do I know you?", then: [
         { n: "He didn't flinch. He'd expected it. She could see that he'd expected it, sitting up all night with the committee minutes, rehearsing. It landed anyway. She watched it land and go somewhere very deep and be put away." },
-        { s: 'jungwon', f: 'neutral', t: "Yes. You do. It's all right. I didn't imagine you would." },
+        { s: 'jungwon', f: 'sad', t: "Yes. You do. It's all right. I didn't imagine you would." },
         { s: 'jungwon', f: 'neutral', t: "I'm Yang Jungwon. I'm very sorry for interrupting your work." }
       ] },
       { t: "You're the one who sorted the minutes.", then: [
@@ -793,7 +793,7 @@
     { s: 'jungwon', f: 'neutral', t: "It stopped. At midnight. When I came through. It's never stopped before. It belonged to someone who... it's never stopped." },
     { n: "Mitsuru had come in behind him. She went to the cabinet by the window without a word and took out a sheet of card, and laid it on the table between them. Glitter. A yellow sun. VOTE SOLAR KIM, and the practiced smile." },
     { n: "Jungwon looked at it. For the first time since he'd come into the room, his face did something. Very small. Like a door being closed quietly so as not to wake anyone." },
-    { s: 'jungwon', f: 'neutral', t: "...She made that in a weekend. She didn't sleep. Her friends glued it crooked." },
+    { s: 'jungwon', f: 'sad', t: "...She made that in a weekend. She didn't sleep. Her friends glued it crooked." },
     { s: 'jungwon', f: 'neutral', t: "You did. You made it. I'm sorry. I'll get the tenses right eventually." },
     { s: 'mitsuru', f: 'neutral', t: "How do you know her? If you don't mind my asking." },
     { n: "He thought about it. Visibly. He took longer over it than he'd taken over anything else, and when he answered, he answered Mitsuru with perfect courtesy and his eyes on Solar." },
@@ -804,7 +804,7 @@
         { n: "He bowed. A real one, from the waist, formal and old-fashioned and completely unironic, to her and not to Mitsuru, and when he straightened up his face had gone still again. His hands relaxed at his sides." }
       ] },
       { t: "That's not my decision.", then: [
-        { s: 'jungwon', f: 'neutral', t: "No. Of course not. It never is, is it." },
+        { s: 'jungwon', f: 'sad', t: "No. Of course not. It never is, is it." },
         { n: "He said it so gently that it took her a second to feel it go in. Then it was in, and she couldn't get it out, and he'd already turned to Mitsuru to ask, with great courtesy, where he might find a pencil sharpener." }
       ] }
     ] },
@@ -820,7 +820,7 @@
     { s: 'jihoon', f: 'happy', t: "She doesn't know you. Does she. Look at her. She has no idea who you are." },
     { s: 'jihoon', f: 'happy', t: "That's the best thing that's happened to me all year." },
     { s: 'jungwon', f: 'neutral', t: "No. She doesn't know me." },
-    { s: 'jungwon', f: 'neutral', t: "She doesn't know you either, Jihoon. I'd keep that in mind before I enjoyed it." },
+    { s: 'jungwon', f: 'serious', t: "She doesn't know you either, Jihoon. I'd keep that in mind before I enjoyed it." },
     { n: "It was said so politely. It was said so politely that Solar felt it go past her like a blade going past a cheek, and Jihoon's face did a thing she had never seen it do, and Mitsuru, who had been watching all of it with the expression of someone reading a budget proposal with a hole in it, stepped between them." },
     { s: 'mitsuru', f: 'neutral', t: "Opposite ends of the corridor, then. Jihoon, you're in the way of the door." },
     { n: "Jihoon got out of the way of the door. He went up the stairs two at a time and slammed something on the second floor, and the music got louder, and then, after a while, quieter, and then stopped." },
@@ -855,7 +855,7 @@
     { n: "Junpei was still staring at her. So was half the class. She bent down and picked up her pen and put it back on the desk, exactly parallel to the edge, the way she'd been taught to arrange things on a podium so nobody could see your hands shake, and smiled at the room, the practiced smile, presidential, and the room looked away." },
     { n: "At lunch she went up to the council room. Jungwon was there, alphabetizing something, and he looked up as she came in, and she could tell from his face that the speaker in the council room had played it too." },
     { s: 'jungwon', f: 'neutral', t: "You went second. You always went second. You said going first was for people who wanted to get it over with." },
-    { s: 'jungwon', f: 'neutral', t: "...It was a good speech. I never told you that. I should have told you that." }
+    { s: 'jungwon', f: 'sad', t: "...It was a good speech. I never told you that. I should have told you that." }
   ] },
 
   { id: 'a4-jihoon-awakens', date: '10/17', slot: 'evening', title: 'recount', place: 'Iwatodai Dorm · Command Room', time: 'Evening', cast: {}, scene: [
@@ -968,7 +968,7 @@
         { n: "She tied the twine. She came down. There was nobody at the bottom of the ladder. There was nobody in the gym at all, and the banner on the back wall was gone, and so were the balloons, and the twine she'd just tied was the only silver thing in the rafters." },
         { n: "In the doorway, though, there was Jungwon. He'd come to find her, he said, because she'd said she'd be at the dorm at one and it was a quarter to two. He looked up at the single strand of silver in the rafters for a long moment, and then at her, and his hand went to his watch." },
         { s: 'jungwon', f: 'neutral', t: "You held the ladder for me. Once. Then I held it for you, and I let go. I never thanked you for the first one." },
-        { s: 'jungwon', f: 'neutral', t: "...You should have let me fall, frankly. I was being impossible." }
+        { s: 'jungwon', f: 'happy', t: "...You should have let me fall, frankly. I was being impossible." }
       ] }
     ] },
     { n: "That night the other one was quiet. She lay awake and listened for it, the one she hadn't followed, and it wasn't there. Not gone. Just further. Like a radio station drifting off the edge of the dial, still playing, somewhere, to someone else." }
@@ -1014,17 +1014,17 @@
         { s: 'jaehyun', f: 'neutral', t: "I did. Nobody answered. So I came to look." },
         { s: 'jaehyun', f: 'serious', t: "You never answer the first time. You make people knock until they mean it." },
         { n: "Then, quieter, as if it cost him something to put it into words and he'd decided to pay it anyway." },
-        { s: 'jaehyun', f: 'neutral', t: "I'm Jaehyun. I'm your brother. You don't know that. I can see you don't." }
+        { s: 'jaehyun', f: 'sad', t: "I'm Jaehyun. I'm your brother. You don't know that. I can see you don't." }
       ] },
       { t: "(Hold out the umbrella.)", then: [
         { n: "She held it out over him. She had to reach up to do it. He looked at the umbrella over his head for a long moment, rain running off the end of his nose, and something happened in his jaw." },
-        { s: 'jaehyun', f: 'neutral', t: "...You used to do that. When you were little. Hold your umbrella over me outside school while we waited for the car, even though you couldn't reach. You'd stand on the step." },
+        { s: 'jaehyun', f: 'sad', t: "...You used to do that. When you were little. Hold your umbrella over me outside school while we waited for the car, even though you couldn't reach. You'd stand on the step." },
         { s: 'jaehyun', f: 'neutral', t: "I'm Jaehyun. I'm your brother." }
       ] }
     ] },
     { cg: null },
     { n: "Her brother. The word went into her like a key into a lock that had been painted over. She felt it catch. She felt it not turn." },
-    { s: 'jaehyun', f: 'neutral', t: "You don't remember me. Fine." },
+    { s: 'jaehyun', f: 'sad', t: "You don't remember me. Fine." },
     { s: 'jaehyun', f: 'serious', t: "I remember enough for both of us." },
     { n: "Then, without asking, without a word, he moved. Not toward her. Around her. He stepped in on the road side of the pavement, between her and the traffic, between her and the crowd, between her and everything, the way he'd read a whole field in a second and put himself where the hit was going to come, and stood there, a step ahead and to the side, waiting for her to walk." },
     { n: "She knew that move. She knew it in her teeth. She'd been walking behind it her whole life, and she hated it, and she didn't know why she hated it, and she walked anyway, because he was waiting, and because it was raining, and because some small, terrible, stupid part of her was glad." },
@@ -1130,7 +1130,7 @@
     { s: 'jihoon', f: 'surprised', t: "No, no, no, NO, I know that noise. That's not... they can't..." },
     { n: "The arcade's shutter was halfway up. Under it, in the green, four boys were standing in the middle of the dead cabinets in the middle of a fight, the way you stand in a fight you've been having since middle school." },
     { s: 'junkyu', f: 'happy', t: "I'm just SAYING, we should've turned left at the..." },
-    { s: 'asahi', f: 'neutral', t: "There was no left, Junkyu. There was a wall. You wanted us to turn into a wall." },
+    { s: 'asahi', f: 'serious', t: "There was no left, Junkyu. There was a wall. You wanted us to turn into a wall." },
     { s: 'hyunsuk', f: 'neutral', t: "Guys. Guys. Everyone's in a box. Can we focus on the fact that everyone's in a box." },
     { s: 'jaehyuk', f: 'serious', t: "I'd like to note for the record that I said this was a bad idea at the start." },
     { s: 'asahi', f: 'neutral', t: "You say that at the start of everything." },
@@ -1147,7 +1147,7 @@
       ] },
       { t: "I'm sorry. Do I know you?", then: [
         { n: "The four of them looked at each other. Then at Jihoon, who shook his head, once, very small, and put his hands in his pockets." },
-        { s: 'asahi', f: 'neutral', t: "...Oh. That's bad." },
+        { s: 'asahi', f: 'sad', t: "...Oh. That's bad." },
         { s: 'hyunsuk', f: 'sad', t: "Asahi." },
         { s: 'asahi', f: 'sad', t: "What? It is bad. I'm allowed to say it's bad." }
       ] },
@@ -1243,7 +1243,7 @@
     { n: "The light was off. Somebody was sitting on the dryer." },
     { n: "He had his elbows on his knees and his head down. He'd come back. He'd come back from the guesthouse at some point in the night and let himself in somehow and come straight here, to the laundry room, as if he'd known exactly where it would be, and sat down on the dryer in the dark to wait. As if this were where you waited. As if he'd done it a hundred times." },
     { n: "He looked up when the door opened. The light from the hall fell across his face. Something in it, finally, after the whole bridge, after the whole silent walk, came loose." },
-    { s: 'haechan', f: 'neutral', t: "...There you are." },
+    { s: 'haechan', f: 'sad', t: "...There you are." },
     { n: "Three words. Low. Rough at the edges, like he hadn't used his voice in a long time. Like he'd been saying them in his head for so long that saying them out loud surprised him." },
     { choose: [
       { t: "Here I am.", then: [
@@ -1283,7 +1283,7 @@
         { n: "Something warm, put into her hands on a cold night. She held it and didn't close her fingers on it." },
         { s: 'haechan', f: 'neutral', t: "...Agasshi." },
         { n: "A hand around a wrist, hard and familiar. She felt it, and didn't pull against it, and didn't go with it either. She just let it be a hand." },
-        { s: 'solar', f: 'neutral', t: "Solar. It's just Solar." },
+        { s: 'solar', f: 'serious', t: "Solar. It's just Solar." },
         { n: "It came out of her quiet and very even, the voice somebody had once told her to use when she meant a thing, from a stage, with a sheet of paper gone soft in her fist. He looked at her for a long moment. He didn't file it anywhere. She watched him not know where to put it." },
         { s: 'haechan', f: 'neutral', t: "...Yeah. Okay. Solar." },
         { n: "He said it like somebody trying a key in a door he'd assumed was his and finding it turned from the other side too." }
@@ -1319,7 +1319,7 @@
       { t: "Are we what?", then: [
         { n: "Hanni took her hand away from Hyein's mouth. Hyein opened it. Hanni looked at her. Hyein closed it." },
         { s: 'hyein', f: 'neutral', t: "...Friends. Are you two friends. That's what I was going to say. Friends." },
-        { s: 'haechan', f: 'neutral', t: "No." },
+        { s: 'haechan', f: 'flustered', t: "No." },
         { n: "He said it flat, into his bowl, and didn't look up, and the tips of his ears had gone a very particular color." }
       ] },
       { t: "(Look at Haechan.)", then: [

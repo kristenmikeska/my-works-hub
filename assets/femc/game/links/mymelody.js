@@ -46,7 +46,7 @@
       { n: "Solar's fork stopped halfway to her mouth. Something in her chest went small and careful, the way it always did, the way you hold still when a bee lands on your arm." },
       { s: 'mymelody', f: 'neutral', t: "I'm only saying it because I think it would be lonely, if everybody knew and nobody said. So now I've said. And now it isn't a secret thing. It's just a thing." },
       { n: "It was, Solar thought, the strangest kindness anyone had ever done her, and she had no idea what to do with it, so she ate the rest of the cake, which seemed to be the right answer, because My Melody beamed." },
-      { s: 'solar', f: 'neutral', t: "...Kuromi talks about me?" },
+      { s: 'solar', f: 'surprised', t: "...Kuromi talks about me?" },
       { s: 'mymelody', f: 'happy', t: "Kuromi talks about everybody. She has a notebook. You're on the good page. Please don't tell her I told you." },
       { n: "She wrapped two slices in wax paper and folded the ends under, neat as a present, and pressed them into Solar's hands." },
       { s: 'mymelody', f: 'happy', t: "Come next Wednesday. I always make too much. My mama bakes for six people, and there's only me." },
@@ -193,7 +193,7 @@
       { n: "Solar sat at the table while the cake baked and put her head down on her folded arms for a second, only a second, because the kitchen was warm and the light was low and it had been a long week, and longer nights. When she lifted it again My Melody was sitting across from her with her chin on her hands, studying her." },
       { s: 'mymelody', f: 'neutral', t: "Senpai. You always look tired. Not sleepy tired. The other kind." },
       { s: 'mymelody', f: 'neutral', t: "My mama looks like that at the end of festival week, when she's been carrying chairs for three days and smiling at everybody. Like she's been carrying chairs." },
-      { s: 'solar', f: 'neutral', t: "...It's exams." },
+      { s: 'solar', f: 'flustered', t: "...It's exams." },
       { s: 'mymelody', f: 'neutral', t: "It's the summer holidays." },
       { n: "There was no malice in it at all. That was the terrible thing. She just said it, the true thing, the way you'd point out that someone had their shirt on inside out, and waited, with her soft round face entirely open, for whatever Solar would say next." },
       { choose: [
@@ -290,7 +290,7 @@
       ] },
       { n: "People came, the way people come to a kitchen. Junpei first, drawn by the smell, who stood in the doorway with his cap in his hands and then sat down and ate three rolls and didn't make a single joke. Then Akihiko, still in his running clothes, who took two and stood by the window eating them and looking out at nothing. Fuuka, who cried a little, quietly, into a roll, and said it was very good bread." },
       { n: "Last of all, near ten, Mitsuru, who came down the stairs in her uniform still with a folder under her arm, and stopped in the doorway, and took in the table and the trays and the girl at the end of it with the flour on her sleeves." },
-      { s: 'mitsuru', f: 'neutral', t: "...Did you make all of this, Melody?" },
+      { s: 'mitsuru', f: 'surprised', t: "...Did you make all of this, Melody?" },
       { s: 'mymelody', f: 'happy', t: "Yes! Please take some, Kirijo-senpai. You look like you've been carrying chairs." },
       { n: "Mitsuru looked at her for a moment with an expression Solar had never seen on her face and couldn't name. Then she took a roll, and held it in both hands, and said thank you, very quietly, and went back upstairs with it without eating it, and Solar was nearly sure she knew why." },
       { n: "Kuromi didn't come in. She stood in the hall at the bottom of the stairs with her hands jammed in her hoodie pocket for a long time, long enough that Solar could see the toes of her boots past the door frame, and then came in fast and took two rolls without looking at anybody and went back up, and they heard her door shut, and then, a minute later, the door next to it, Melody's, open and close again, very softly." },
@@ -403,7 +403,7 @@
       { choose: [
         { t: "Then find out.", notes: 3, stat: { courage: 1 }, then: [
           { s: 'mymelody', f: 'surprised', t: "Find out if I'd be all right?" },
-          { s: 'solar', f: 'neutral', t: "Find out what you'd make. The bad part's just the cost of finding out." },
+          { s: 'solar', f: 'serious', t: "Find out what you'd make. The bad part's just the cost of finding out." },
           { n: "My Melody looked at her for a long time with her mouth a little open, like someone who'd been handed a map of a town she'd lived in all her life and seen a street she'd never noticed." }
         ] },
         { t: "Your mama's cake is yours too. You learned it.", notes: 2, then: [
@@ -439,7 +439,7 @@
         ] },
         { t: "The strawberry part is good.", notes: 2, then: [
           { s: 'mymelody', f: 'surprised', t: "Is it? Really? Not just nice-good. Good-good?" },
-          { s: 'solar', f: 'neutral', t: "About a centimeter of it. Yes." },
+          { s: 'solar', f: 'happy', t: "About a centimeter of it. Yes." },
           { s: 'mymelody', f: 'happy', t: "A centimeter! I'll take a centimeter!" }
         ] },
         { t: "(Chew very slowly and say nothing.)", notes: 1, then: [

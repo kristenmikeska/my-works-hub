@@ -69,7 +69,7 @@
     [
       { n: "Sunoo was trying a new recipe. That was what he called it. It was a croissant with something orange in the middle that he wouldn't name until she'd tasted it, set on a saucer in the exact center of the counter like evidence." },
       { s: 'sunoo', f: 'happy', t: "Okay! Eat it! Tell me the truth! Be honest! Be nice!" },
-      { s: 'solar', f: 'neutral', t: "Which one?" },
+      { s: 'solar', f: 'happy', t: "Which one?" },
       { s: 'sunoo', f: 'serious', t: "Both. At the same time. That's what friends are for." },
       { choose: [
         { t: "It's amazing.", notes: 2, then: [
@@ -357,7 +357,7 @@
       { n: "She took Jungwon the soup. She sat down across from him and didn't say anything, and he looked at the soup and at her and at Sunoo behind the counter, who was very busily not looking, and sighed like a man conceding a count, and ate it. All of it." },
       { s: 'jungwon', f: 'neutral', t: "He sent you." },
       { s: 'solar', f: 'neutral', t: "He sent me." },
-      { s: 'jungwon', f: 'neutral', t: "...It's good soup. Don't tell him." },
+      { s: 'jungwon', f: 'happy', t: "...It's good soup. Don't tell him." },
       { n: "Sunoo did a small silent dance behind the till that he thought nobody saw. Jungwon saw. He looked at it over the rim of the bowl for a long second, very straight-faced, and then looked down at the soup again, and his ears went a color." }
     ] },
 
@@ -522,7 +522,7 @@
       { choose: [
         { t: "Then give it now. I'll be the whole school.", notes: 3, needs: { kindness: 2 }, flag: { 'sunoo-speech': true }, then: [
           { s: 'sunoo', f: 'surprised', t: "Now? Here? On the FLOOR?" },
-          { s: 'solar', f: 'neutral', t: "Stand up if you want. I'll clap either way." },
+          { s: 'solar', f: 'happy', t: "Stand up if you want. I'll clap either way." },
           { n: "He stood up. He brushed the flour off his apron, both sides. He looked out over the empty café, the chairs up on the tables, the gold windows gone dark, the one light left on over the till, as if it were a gym full of people, and opened his mouth, and closed it, and opened it again." },
           { s: 'sunoo', f: 'neutral', t: "Hello. My name is Kim Sunoo. I'm running for... I'm running for..." },
           { s: 'sunoo', f: 'sad', t: "...I can't. I can't, I'm sorry. Not yet. Ask me again. Ask me again some other time and I'll do one more word." },
@@ -533,7 +533,7 @@
           { s: 'sunoo', f: 'flustered', t: "...Okay. I just made one up. Right now. In my head. \"Sunoo for you.\" With a sun on it. It's so bad. Don't look at me." },
           { s: 'solar', f: 'neutral', t: "I'd have voted for you." },
           { s: 'sunoo', f: 'sad', t: "...You'd have voted for anyone with a sun on it." },
-          { s: 'solar', f: 'neutral', t: "That's true. I'd still have voted for you." }
+          { s: 'solar', f: 'happy', t: "That's true. I'd still have voted for you." }
         ] },
         { t: "You weren't a coward. You were a kid.", notes: 2, then: [
           { s: 'sunoo', f: 'neutral', t: "...I was. Thank you. That's a nicer word for it. I'm going to use your word." }
@@ -632,7 +632,7 @@
         { s: 'sunoo', f: 'surprised', t: "...You remembered that?" },
         { s: 'sunoo', f: 'flustered', t: "That was a joke. That was a weekday joke. I can't take a day off. Who'd open? Who'd do the milk for your senpai?" }
       ], else: [
-        { s: 'solar', f: 'neutral', t: "Your turn. What do you want?" },
+        { s: 'solar', f: 'serious', t: "Your turn. What do you want?" },
         { s: 'sunoo', f: 'surprised', t: "Me? Oh, I don't— the café's not really about what I want. That's kind of the point of it." }
       ] },
       { choose: [
@@ -703,7 +703,7 @@
       { ifFlag: 'sunoo-recommend', then: [
         { n: "*They're pretty big in size and loved by our regulars.* He'd said it to her twice now. Once in each life. Both times like it was the most important sentence he knew." }
       ] },
-      { s: 'solar', f: 'neutral', t: "...Seven croissants and seven coffees, please." },
+      { s: 'solar', f: 'happy', t: "...Seven croissants and seven coffees, please." },
       { n: "His hands stopped on the coffee machine." },
       { s: 'sunoo', f: 'surprised', t: "..." },
       { s: 'sunoo', f: 'sad', t: "...And the name for the order?" },
@@ -813,7 +813,7 @@
         ] },
         { t: "You've got my vote.", notes: 3, then: [
           { s: 'sunoo', f: 'surprised', t: "You'd vote for anyone with a sun on it." },
-          { s: 'solar', f: 'neutral', t: "There wasn't a sun on it." },
+          { s: 'solar', f: 'happy', t: "There wasn't a sun on it." },
           { s: 'sunoo', f: 'surprised', t: "...There wasn't. I forgot the sun. I gave a whole speech without a sun." }
         ] }
       ] },
@@ -834,7 +834,7 @@
         { t: "(Write one for him.)", notes: 3, then: [
           { n: "She took the pen and a fresh note and wrote it while he tried to read it upside down. *Sunoo. Opens at six-ten. Says he's fine. Isn't always. Make him sit down. Make him something for once.*" },
           { s: 'sunoo', f: 'surprised', t: "...That's not a regular. That's me." },
-          { s: 'solar', f: 'neutral', t: "You're the most regular person in here." },
+          { s: 'solar', f: 'happy', t: "You're the most regular person in here." },
           { n: "He put it on the till, at the front, above all the others, and pressed it flat with his thumb twice so it wouldn't come off." }
         ] },
         { t: "Who's going to read them?", notes: 2, then: [

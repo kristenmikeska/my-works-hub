@@ -185,7 +185,7 @@
       { n: "They ate. The Strip went by outside the fogged glass in smears of color, umbrellas and school bags and a man with a sandwich board advertising a massage parlor whom Cherry glared at through the window until he walked faster. She didn't ask Solar anything. She didn't look at her much. She just ate her fries and stole Solar's and sat with her arms in a way that looked, Solar slowly realized, less like a girl being rude and more like a girl holding herself together with both hands." },
       { s: 'cherry', f: 'neutral', t: "Three weeks. That's how long it's been. Jihoon says one night, because his phone stopped at midnight, but Jihoon can't count. He does pilates instead of math." },
       { s: 'cherry', f: 'serious', t: "Three weeks of nobody answering the chat. Junkyu sending crying faces at four in the morning. Me in the back row with an empty seat next to me like an idiot." },
-      { s: 'solar', f: 'neutral', t: "I've been here since April." },
+      { s: 'solar', f: 'serious', t: "I've been here since April." },
       { s: 'cherry', f: 'surprised', t: "..." },
       { s: 'cherry', f: 'neutral', t: "Okay. Don't tell me things like that. I'll deal with that one later. I'm putting it in a drawer." },
       { choose: [
@@ -230,7 +230,7 @@
           { s: 'jihoon', f: 'happy', t: "Light of her disgusting life. Never forget." }
         ] },
         { t: "(Stand at the end of the table. Referee.)", notes: 2, then: [
-          { s: 'asahi', f: 'neutral', t: "Smart. That's the only position in this friend group where nobody hits you." },
+          { s: 'asahi', f: 'happy', t: "Smart. That's the only position in this friend group where nobody hits you." },
           { s: 'cherry', f: 'neutral', t: "Referees get hit. I'll hit the referee." }
         ] }
       ] },
@@ -498,7 +498,7 @@
       { choose: [
         { t: "Okay.", notes: 2, then: [
           { s: 'cherry', f: 'surprised', t: "...Okay? Okay what? Okay you'll come, or okay you heard me?" },
-          { s: 'solar', f: 'neutral', t: "Okay, I heard you." },
+          { s: 'solar', f: 'sad', t: "Okay, I heard you." },
           { s: 'cherry', f: 'sad', t: "...Yeah. That's fair. That's the honest one. I hate it." }
         ] },
         { t: "Yell it again. I'm listening.", notes: 3, then: [
@@ -517,7 +517,7 @@
       { choose: [
         { t: "I forgive you. Again.", notes: 3, flag: { 'cherry-forgave': true }, then: [
           { s: 'cherry', f: 'serious', t: "Don't. You don't even know what it was." },
-          { s: 'solar', f: 'neutral', t: "I know you." },
+          { s: 'solar', f: 'serious', t: "I know you." },
           { n: "Cherry looked at her. Then she looked up at the station clock for a long time, very hard, the way you look at something bright when you're trying to make your eyes do something else." }
         ] },
         { t: "Tell me what you did.", notes: 2, then: [
@@ -735,9 +735,9 @@
       { ifFlag: 'cherry-forgave', then: [
         { n: "And a bed. Two girls cross-legged on it, one of them more frightened than Solar had ever seen her, and Solar's own voice saying *it's okay, it's okay, I love you, it's okay,* as many times as it took. More times than it took. Just to be sure." }
       ] },
-      { s: 'solar', f: 'neutral', t: "...You're in first." },
+      { s: 'solar', f: 'surprised', t: "...You're in first." },
       { n: "She said it in the voice. The real one. Bored, flat, like she was reading it off a receipt. Cherry's whole body went still on the step." },
-      { s: 'solar', f: 'neutral', t: "You were always in first. Cherry fucking Kim." },
+      { s: 'solar', f: 'happy', t: "You were always in first. Cherry fucking Kim." },
       { s: 'cherry', f: 'surprised', t: "..." },
       { s: 'cherry', f: 'sad', t: "Don't. Don't you dare do it like that. Don't come back in the middle of a sentence. That's not fair. I already cried in front of you once this year. In a karaoke bar. Full of coffins. That was the allowance." },
       { choose: [

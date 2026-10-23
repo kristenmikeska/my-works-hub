@@ -74,7 +74,7 @@
           { n: "Asahi bought Junkyu three more rings with his own money, without a word, and looked away while he threw them." }
         ] },
         { t: "You're being accurate.", notes: 2, then: [
-          { s: 'asahi', f: 'neutral', t: "Thank you. Finally. A fair and impartial judge." },
+          { s: 'asahi', f: 'happy', t: "Thank you. Finally. A fair and impartial judge." },
           { s: 'junkyu', f: 'sad', t: "Sol!!!" }
         ] },
         { t: "(Take a ring and throw it yourself.)", notes: 3, then: [
@@ -121,7 +121,7 @@
         ] }
       ] },
       { n: "Jaehyuk drifted past at some point with a tray, glanced down at the two of them, set the tray on the next table, sat, took Junkyu's pencil out of his hand without a word, and fixed all of it, both of theirs, in about four minutes, and gave the pencil back." },
-      { s: 'jaehyuk', f: 'neutral', t: "You carried the wrong number. Both of you. The same wrong number, actually, which is impressive." },
+      { s: 'jaehyuk', f: 'happy', t: "You carried the wrong number. Both of you. The same wrong number, actually, which is impressive." },
       { s: 'junkyu', f: 'happy', t: "We're a TEAM." },
       { s: 'jaehyuk', f: 'neutral', t: "That is not the word I would use." }
     ],
@@ -197,7 +197,7 @@
       { s: 'junkyu', f: 'happy', t: "It's the thought that counts!" },
       { s: 'hyunsuk', f: 'neutral', t: "The thought owes me six hundred yen." },
       { n: "Asahi was up on the railing of the mezzanine above them with his hood up, watching, not coming down. He caught Solar's eye, and held up one hand with the fingers spread, and folded them down, one at a time, counting, and pointed at Junkyu." },
-      { s: 'asahi', f: 'neutral', t: "He's going to cry. Five seconds. Watch." },
+      { s: 'asahi', f: 'happy', t: "He's going to cry. Five seconds. Watch." },
       { s: 'junkyu', f: 'sad', t: "I'm NOT going to cry. I'm EATING." },
       { n: "They ate it on the rim of the fountain. He'd picked her flavor without asking, and picked right, and she couldn't have said how she knew it was right, only that her mouth knew, the way her thumbs had known how to type in that chat at two in the morning. He watched her eat it with his chin on his fist and his own ice cream melting down his wrist, forgotten." },
       { s: 'junkyu', f: 'neutral', t: "I'm not going to make you remember. That's the rule. Jihoon made a whole speech about it at the guesthouse. Standing on a chair. Asahi timed it. Eleven minutes." },
@@ -206,7 +206,7 @@
         { t: "You're already really nice.", notes: 3, then: [
           { s: 'junkyu', f: 'surprised', t: "..." },
           { s: 'junkyu', f: 'sad', t: "Oh no. I'm going to cry. That's so nice. You barely know me and you're already being nice to me." },
-          { s: 'asahi', f: 'neutral', t: "Told you." }
+          { s: 'asahi', f: 'happy', t: "Told you." }
         ] },
         { t: "Your ice cream's melting.", notes: 2, then: [
           { s: 'junkyu', f: 'surprised', t: "OH NO." },
@@ -317,7 +317,7 @@
         { t: "And you?", notes: 3, then: [
           { s: 'junkyu', f: 'surprised', t: "Me?" },
           { s: 'junkyu', f: 'neutral', t: "I'm the one who asks if you're okay. That's my job. Everyone has a job. I'm the one who checks." },
-          { s: 'asahi', f: 'neutral', t: "He's the heart. Don't tell him I said that." },
+          { s: 'asahi', f: 'flustered', t: "He's the heart. Don't tell him I said that." },
           { s: 'junkyu', f: 'happy', t: "ASAHI. I HEARD THAT." }
         ] },
         { t: "What was my job?", notes: 3, then: [
@@ -341,11 +341,11 @@
       { choose: [
         { t: "Thank you, Asahi.", notes: 3, then: [
           { s: 'asahi', f: 'surprised', t: "..." },
-          { s: 'asahi', f: 'neutral', t: "...Don't thank me. Gross. Junkyu, she thanked me. Count it." },
+          { s: 'asahi', f: 'flustered', t: "...Don't thank me. Gross. Junkyu, she thanked me. Count it." },
           { s: 'junkyu', f: 'happy', t: "That doesn't count! She has to thank ME!" }
         ] },
         { t: "You look stupid in that hood.", notes: 3, then: [
-          { s: 'asahi', f: 'neutral', t: "...Okay. There she is. That's the one." },
+          { s: 'asahi', f: 'happy', t: "...Okay. There she is. That's the one." },
           { n: "He went back to his bench. He looked, for one second, very pleased, and then very carefully didn't." }
         ] },
         { t: "(Challenge him to the rhythm game.)", notes: 3, needs: { proficiency: 2 }, flag: { 'junkyu-rhythm': true }, then: [
@@ -440,7 +440,7 @@
       { choose: [
         { t: "You counted us. When we came in.", notes: 3, flag: { 'junkyu-counter': true }, then: [
           { s: 'junkyu', f: 'surprised', t: "...You saw that?" },
-          { s: 'solar', f: 'neutral', t: "Somebody needs to be here to count. So we know we all came back. That's a job." },
+          { s: 'solar', f: 'serious', t: "Somebody needs to be here to count. So we know we all came back. That's a job." },
           { s: 'junkyu', f: 'sad', t: "..." },
           { s: 'junkyu', f: 'happy', t: "...Okay. Okay. That's my job. I'm the counter. I'll be here every night. I'll count everybody." },
           { n: "Mitsuru, in the doorway to the command room with her coat still on, said nothing at all, and went upstairs, and came back down five minutes later with a second blanket and a proper pillow and put them on the end of the sofa without a word, which was, in Mitsuru, the equivalent of a medal." }
@@ -537,7 +537,7 @@
         ] },
         { t: "It's perfect. Don't change it.", notes: 3, then: [
           { s: 'junkyu', f: 'surprised', t: "Really?" },
-          { s: 'solar', f: 'neutral', t: "It looks like you made it. That's the point." },
+          { s: 'solar', f: 'happy', t: "It looks like you made it. That's the point." },
           { s: 'junkyu', f: 'happy', t: "...Okay. Okay! That's for Akihiko. He'll understand. He's got a face like that reindeer when he's thinking." }
         ] },
         { t: "Why so many?", notes: 2, then: [
@@ -565,7 +565,7 @@
         ] },
         { t: "Leave it blank. Like my page.", notes: 2, then: [
           { s: 'junkyu', f: 'surprised', t: "Your page?" },
-          { s: 'solar', f: 'neutral', t: "Long story. Somebody keeps a book with everyone in it. Mine's empty." },
+          { s: 'solar', f: 'sad', t: "Long story. Somebody keeps a book with everyone in it. Mine's empty." },
           { s: 'junkyu', f: 'serious', t: "...Then I'll write in mine for both of us. Until you can. That's allowed. That's what cards are for." }
         ] }
       ] },
@@ -599,7 +599,7 @@
       { s: 'asahi', f: 'sad', t: "I didn't tell her I was going out that night. I just went. Because Jihoon texted in caps. I didn't even leave a note." },
       { choose: [
         { t: "It's still the same night there.", notes: 3, then: [
-          { s: 'asahi', f: 'neutral', t: "You don't know that." },
+          { s: 'asahi', f: 'serious', t: "You don't know that." },
           { s: 'solar', f: 'neutral', t: "No. But your phone says so. Everyone's does. Let's believe the phones." },
           { s: 'asahi', f: 'neutral', t: "...Fine. We believe the phones. That's stupid. Fine." }
         ] },
@@ -624,11 +624,11 @@
       ], else: [
         { ifFlag: 'route-true', then: [
           { s: 'junkyu', f: 'neutral', t: "The star's doing a chord. With the other two. Jaehyuk says it's a chord. Jaehyuk knows things." },
-          { s: 'asahi', f: 'neutral', t: "Nobody knows what that means. Not even her. Look at her face. She doesn't know either." },
+          { s: 'asahi', f: 'happy', t: "Nobody knows what that means. Not even her. Look at her face. She doesn't know either." },
           { s: 'junkyu', f: 'happy', t: "It sounds like everybody. That's what it sounds like. Everybody at once." }
         ], else: [
-          { s: 'asahi', f: 'neutral', t: "It went quiet. The star. On the night with the bells." },
-          { s: 'asahi', f: 'neutral', t: "Junkyu cried for an hour in the guesthouse bathroom with the fan on so we wouldn't hear. We heard. He's not going to tell you. I'm telling you." },
+          { s: 'asahi', f: 'sad', t: "It went quiet. The star. On the night with the bells." },
+          { s: 'asahi', f: 'sad', t: "Junkyu cried for an hour in the guesthouse bathroom with the fan on so we wouldn't hear. We heard. He's not going to tell you. I'm telling you." },
           { s: 'junkyu', f: 'surprised', t: "ASAHI." },
           { s: 'junkyu', f: 'sad', t: "...It's okay. It's okay! I support you in whatever. I said that at home. I meant it at home. I mean it here. That's how meaning it works." }
         ] }
@@ -700,12 +700,12 @@
       { n: "*glad ur ok sol and i support you in whatever.*" },
       { n: "*i care!*" },
       { n: "She said it before he reached her. She said it first. For once." },
-      { s: 'solar', f: 'neutral', t: "Are you okay, Junkyu? Do you need ice cream and hugs?" },
+      { s: 'solar', f: 'happy', t: "Are you okay, Junkyu? Do you need ice cream and hugs?" },
       { n: "He stopped. In the middle of the arcade, a meter from her, arms already out. He stopped so suddenly that a boy behind him with a cup of tokens nearly ran into his back." },
       { s: 'junkyu', f: 'surprised', t: "..." },
       { s: 'junkyu', f: 'sad', t: "That's my line." },
       { s: 'junkyu', f: 'sad', t: "That's my line, Sol. That's mine. I say that. I always say that. You never say that. You just say *YES that is exactly what i need* in capitals." },
-      { s: 'solar', f: 'neutral', t: "I know. I remember. It's your turn." },
+      { s: 'solar', f: 'happy', t: "I know. I remember. It's your turn." },
       { n: "He burst into tears. In the middle of the arcade, under the lights, with his arms still out, and then he was hugging her, around the middle, his cheek against her shoulder, the whole of him warm and solid and shaking and not letting go, and she held on back and didn't let go either, and somewhere behind them Asahi said, very quietly, *oh my God,* and Hyunsuk laughed, wet, and Jaehyuk said nothing at all and looked very hard at a claw machine for a very long time, and Jihoon, by the crane game, put his forehead against the glass and stayed there." },
       { choose: [
         { t: "Ice cream first or hugs first?", notes: 3, then: [
@@ -713,7 +713,7 @@
         ] },
         { t: "Thank you, Junkyu.", notes: 3, then: [
           { s: 'junkyu', f: 'sad', t: "...For what? You have to say for what. That's the rule." },
-          { s: 'solar', f: 'neutral', t: "For asking first. Every time. Even when I said yes in capitals." },
+          { s: 'solar', f: 'happy', t: "For asking first. Every time. Even when I said yes in capitals." },
           { s: 'junkyu', f: 'happy', t: "...That one's going on the list. That one's going at the top. I'm moving everything down. I'm counting it forever." }
         ] },
         { t: "You said don't look. I looked.", notes: 3, then: [
@@ -803,7 +803,7 @@
         { t: "(Get on the other platform.)", notes: 3, then: [
           { n: "She got on. He made a sound like a kettle. The song was something fast and stupid and very pink, and they were both terrible, gloriously, in completely different directions, and by the second chorus a small crowd of middle schoolers had gathered to watch, and by the third they were cheering, for him, mostly, because he was cheering for them back between arrows." },
           { s: 'junkyu', f: 'happy', t: "WE'RE DANCING. Sol! We're DANCING! At a dance!" },
-          { s: 'solar', f: 'neutral', t: "This is an arcade." },
+          { s: 'solar', f: 'happy', t: "This is an arcade." },
           { s: 'junkyu', f: 'happy', t: "IT COUNTS." }
         ] },
         { t: "(Hold out your hand, like it's the gym.)", notes: 3, then: [

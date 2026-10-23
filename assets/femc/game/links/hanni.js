@@ -135,7 +135,7 @@
     [
       { n: "Hanni had brought fruit. In a plastic container with a blue lid, from the dorm, cut that morning into neat even pieces, apple and pear and a mandarin pulled apart into segments with every white thread taken off, which was the kind of thing that took a person twenty minutes and that nobody ever noticed, and she slid it across the table without comment and took the lid off for her." },
       { s: 'hanni', f: 'neutral', t: "I realized you probably went to the tower last night and didn't eat. Then you went to school and didn't eat. Then you came here." },
-      { s: 'solar', f: 'neutral', t: "I ate." },
+      { s: 'solar', f: 'flustered', t: "I ate." },
       { s: 'hanni', f: 'serious', t: "What did you eat?" },
       { n: "Solar opened her mouth and found nothing in it, not even a good lie, and Hanni watched her come up empty with an expression of such patient, total unsurprise that it was almost worse than being scolded." },
       { choose: [
@@ -351,7 +351,7 @@
         ] },
         { t: "I don't want to put words in her mouth.", notes: 2, then: [
           { s: 'hanni', f: 'surprised', t: "...Her?" },
-          { s: 'solar', f: 'neutral', t: "The girl in the chat. She'd know what to say. I'd get it wrong." },
+          { s: 'solar', f: 'sad', t: "The girl in the chat. She'd know what to say. I'd get it wrong." },
           { s: 'hanni', f: 'sad', t: "You're her, Sol. You couldn't get her wrong if you tried. But okay. Okay. It'll keep." }
         ] }
       ] }
@@ -418,7 +418,7 @@
       { n: "It was useful. That was the ugly part, the part Solar didn't like in herself. It was useful to sit across from a face like that when you were a girl who couldn't remember anything, because Hanni's face was a map of everything she wasn't saying, and Solar had been reading it for a month the way you'd read the weather off a lake, and Hanni knew it, and had let her." },
       { n: "There had been the night of the fourth. The bridge in the rain, and what came after, the hospital, the long quiet days when nobody in the dorm said Shinjiro's name at the table, and Hanni, who'd met him exactly twice, had made tea every evening that week for whoever came down, eight cups, and left them on the counter, and washed them all at midnight whether anyone had drunk them or not." },
       { n: "So she asked the question she'd been saving." },
-      { s: 'solar', f: 'neutral', t: "How long have I been gone? At home." },
+      { s: 'solar', f: 'serious', t: "How long have I been gone? At home." },
       { n: "Hanni's whole face moved at once." },
       { s: 'hanni', f: 'sad', t: "I don't know." },
       { s: 'hanni', f: 'neutral', t: "That's the truth. I don't. My phone says it's still the same night. Hyein says it's been a week, because she counts her sleeps. Minji says it doesn't matter and then checks her camera's clock every hour." },
@@ -657,10 +657,10 @@
       ] },
       { n: "The kitchen was gray and quiet and smelled of the rice cooker on its keep-warm setting and the cold coming off the window, and Solar sat with the glass of sparkling water in her hand, and something happened." },
       { n: "A different kitchen. Bigger. Brighter. Pink, absurdly pink, pink mugs on a pink shelf, morning sun coming through a window over a sink full of somebody's dishes, a candle burning on the windowsill that smelled like fake strawberries and absolutely should not have been lit that close to the curtains. Three girls at a counter in pajamas. One with wet hair saying *who drank my water.* One laughing. One, her, in a sweatshirt too big for her, not laughing, holding a glass of sparkling water exactly like this one and thinking, very clearly, *this is the only part of the day I like.*" },
-      { s: 'solar', f: 'neutral', t: "...The candle. You leave it on the windowsill. By the curtains. It's going to burn the whole house down." },
+      { s: 'solar', f: 'surprised', t: "...The candle. You leave it on the windowsill. By the curtains. It's going to burn the whole house down." },
       { s: 'hanni', f: 'surprised', t: "..." },
-      { s: 'solar', f: 'neutral', t: "And there are pink mugs. I bought pink mugs. You said I hated the pink when I moved in. I didn't tell anyone why I bought them." },
-      { s: 'solar', f: 'neutral', t: "It's because I liked the mornings. With you two. In the kitchen. I wanted something there that was mine that was the same color as everything else." },
+      { s: 'solar', f: 'sad', t: "And there are pink mugs. I bought pink mugs. You said I hated the pink when I moved in. I didn't tell anyone why I bought them." },
+      { s: 'solar', f: 'sad', t: "It's because I liked the mornings. With you two. In the kitchen. I wanted something there that was mine that was the same color as everything else." },
       { n: "Hanni put her glass down on the counter. She didn't say anything. Her face was going through all of it, one feeling stepping on the heels of the next, and she put both hands flat on the counter like she needed to hold on to it." },
       { ifFlag: 'hanni-eyes-open', then: [
         { n: "It was the face from the bathroom mirror. The one that had looked back at Solar over her own shoulder, doing everything. Solar didn't look away from it this time either. She'd been practicing." }
@@ -1171,7 +1171,7 @@
         { choose: [
           { t: "I'll say it. Myself. Out loud.", notes: 3, then: [
             { s: 'hanni', f: 'surprised', t: "...You will?" },
-            { s: 'solar', f: 'neutral', t: "*I picked sweet peas.* I'll say it at the table." },
+            { s: 'solar', f: 'happy', t: "*I picked sweet peas.* I'll say it at the table." },
             { s: 'hanni', f: 'happy', t: "Oh my gosh. At the table. In front of everyone. I'm going to think about that every day. I'm going to think about you being rude about flowers at a nice table." }
           ] },
           { t: "(Take a single stem. Keep it to press.)", notes: 3, then: [
@@ -1254,7 +1254,7 @@
             { s: 'hanni', f: 'happy', t: "I'll never be sick of it. I'll make tea for it. I'll make a whole night for it. We'll call it Iwatodai night. Hyein'll make a banner." }
           ] },
           { t: "(Tell her one thing you'll miss. Right now. Out loud.)", notes: 3, then: [
-            { s: 'solar', f: 'neutral', t: "The owner. At the café. When he turned the television up for us." },
+            { s: 'solar', f: 'sad', t: "The owner. At the café. When he turned the television up for us." },
             { n: "Hanni put both hands over her mouth and nodded, and nodded, and couldn't say anything at all for a while, and when she could she said that was hers too, that was exactly hers, and they'd have to share it." }
           ] },
           { t: "I won't be fine. I'll be home.", notes: 2, then: [
@@ -1300,7 +1300,7 @@
             { n: "She said it to the river, at full volume, which for Hanni was about the volume of a normal person asking for the salt, and a heron on the far bank lifted off in disgust, and Hanni watched it go and laughed so hard she cried, or cried so hard she laughed, and it didn't matter which." }
           ] },
           { t: "(Pour the third glass anyway. At home. Promise her.)", notes: 3, then: [
-            { s: 'solar', f: 'neutral', t: "Pour it anyway. The third glass. Every morning. I'll know." },
+            { s: 'solar', f: 'serious', t: "Pour it anyway. The third glass. Every morning. I'll know." },
             { s: 'hanni', f: 'sad', t: "...You'll know? From there?" },
             { s: 'solar', f: 'neutral', t: "I'll know." },
             { n: "It wasn't a thing anyone could promise. Hanni looked at her face, which she'd taught to do things, and seemed to find whatever she was looking for in it, and nodded, once, small, the way you sign for a package." }
@@ -1432,7 +1432,7 @@
         ] },
         { t: "(Translate it loosely. *He says the cream's fixed, because you were honest.*)", notes: 3, then: [
           { s: 'hanni', f: 'surprised', t: "He did NOT say that. That was so much longer." },
-          { s: 'solar', f: 'neutral', t: "He said something like it. And that you're a terrible liar. With respect." },
+          { s: 'solar', f: 'happy', t: "He said something like it. And that you're a terrible liar. With respect." },
           { n: "Hanni laughed so hard she had to put her coffee down, and the owner, hearing her laugh, looked over from the counter, and for the first time all year, very briefly, he smiled at the two of them like everyone always smiled at Hanni." }
         ] }
       ] },
@@ -1560,7 +1560,7 @@
           ] },
           { t: "(Do one braid. Make her wait for the other.)", notes: 2, then: [
             { s: 'hanni', f: 'surprised', t: "Hey! You can't leave me lopsided!" },
-            { s: 'solar', f: 'neutral', t: "I'm keeping it hostage. You have to come back for it." },
+            { s: 'solar', f: 'happy', t: "I'm keeping it hostage. You have to come back for it." },
             { s: 'hanni', f: 'happy', t: "That's MY bit. You stole my bit. I love you. Do the other one." }
           ] }
         ] }
@@ -1594,7 +1594,7 @@
         ] },
         { t: "(Put the chips on the pancake. On purpose.)", notes: 3, then: [
           { s: 'hanni', f: 'surprised', t: "...You're putting them ON?" },
-          { s: 'solar', f: 'neutral', t: "I'm trying something new. Somebody told me I'm allowed to pick." },
+          { s: 'solar', f: 'happy', t: "I'm trying something new. Somebody told me I'm allowed to pick." },
           { s: 'hanni', f: 'happy', t: "Oh my gosh. Oh, I hate it. I love it. I'm writing it down." }
         ] },
         { t: "(Get on a chair and help with the ceiling.)", notes: 2, then: [

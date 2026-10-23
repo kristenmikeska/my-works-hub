@@ -88,8 +88,8 @@
           ] },
           { t: "(Chase the little one. Trust your hands.)", notes: 2, stat: { courage: 1 }, then: [
             { n: "In the final she chased the little one. She couldn't help it. He baited so beautifully that her hands went before she did, and the big brother stepped out to punish her for it, and Chenle, who had known she'd do it, she realized afterwards, from the moment he'd told her not to, was already standing in exactly the place the big brother stepped into." },
-            { s: 'chenle', f: 'neutral', t: "You chased him." },
-            { s: 'solar', f: 'neutral', t: "I chased him." },
+            { s: 'chenle', f: 'happy', t: "You chased him." },
+            { s: 'solar', f: 'flustered', t: "I chased him." },
             { s: 'chenle', f: 'happy', t: "You always chase him. I planned for it. I just didn't want you to know I'd planned for it." }
           ] }
         ] },
@@ -114,7 +114,7 @@
           { t: "Buy it. Some things you just open.", notes: 3, then: [
             { n: "He bought it. He held it in both hands on the pavement outside like it might go off. Then he opened it right there, against every principle he had, and took things out one at a time and announced each one in the voice of a man reading results off an instrument. A memory stick, four gigabytes. Earphones, white, still sealed. A tiny digital photo frame that played a slideshow of the shop's own logo. A keyboard cleaning kit. A second, identical memory stick." },
             { s: 'chenle', f: 'happy', t: "Fourteen thousand yen of things. Retail. I won. I won by forty percent. I won a gamble with no data." },
-            { s: 'chenle', f: 'neutral', t: "I'm never doing that again. I didn't like how it felt. I'm going to think about it every day for a year." }
+            { s: 'chenle', f: 'serious', t: "I'm never doing that again. I didn't like how it felt. I'm going to think about it every day for a year." }
           ] },
           { t: "Don't. You'll hate not knowing.", notes: 2, then: [
             { s: 'chenle', f: 'neutral', t: "...I'll hate not knowing more if I don't." },
@@ -160,7 +160,7 @@
     place: 'Iwatodai Station · Platform', time: 'After School', bg: 'station-platform-day', scene: [
       { n: "On her way past the station Solar found two people from home at the very end of the platform, where the yellow line ran out and nobody stood. Minji had her camera up on its little tripod, pointed down the tracks toward the bend where the trains came out from behind the buildings. Chenle was beside her with his phone in one hand and his other hand in the air, flat, like someone about to start a race." },
       { s: 'minji', f: 'neutral', t: "I want it to come into frame on the beat. Exactly on it. The light's only right for about six more minutes." },
-      { s: 'chenle', f: 'neutral', t: "Off peak they're eight minutes apart. Give or take twenty seconds. The next one's due in fifty-one seconds. It's going to be eleven seconds late. They're always eleven seconds late on this line in the afternoon." },
+      { s: 'chenle', f: 'serious', t: "Off peak they're eight minutes apart. Give or take twenty seconds. The next one's due in fifty-one seconds. It's going to be eleven seconds late. They're always eleven seconds late on this line in the afternoon." },
       { s: 'minji', f: 'happy', t: "He's been timing them for four days. He has a spreadsheet. On his phone. For trains." },
       { s: 'chenle', f: 'neutral', t: "You asked me to." },
       { s: 'minji', f: 'neutral', t: "I asked you once." },
@@ -168,7 +168,7 @@
         { t: "(Stand out of the frame and watch.)", then: [
           { n: "She stood out of the frame. Minji's finger rested on the record button, and Chenle's flat hand stayed up in the air, and his lips moved, counting, and at the end of the count he dropped the hand, and Minji pressed, and the train came round the bend into the low gold light exactly then, exactly on it, its windows going past the lens one by one like frames of film." },
           { s: 'minji', f: 'happy', t: "*Le.* That was perfect. That was so perfect I'm going to be insufferable about it." },
-          { s: 'chenle', f: 'neutral', t: "Eleven seconds late. Told you." }
+          { s: 'chenle', f: 'happy', t: "Eleven seconds late. Told you." }
         ] },
         { t: "Let me call one.", then: [
           { s: 'chenle', f: 'neutral', t: "...Okay. Next one. Eight minutes. You call it. I'll check." },
@@ -233,7 +233,7 @@
       { n: "Her can thudded into the flap, and while she was still bent to get it there was a second thud from the next machine along, and then a third, and a fourth, somebody buying in a slow careful rhythm, one can at a time, reading each label before pressing." },
       { n: "It was Chenle. He had four cans lined up on the ledge above the coin slot and was considering a fifth with his finger hovering over the buttons, the way he hovered over a choice in a game he hadn't played before. A can of energy drink with a lightning bolt on it. A green tea. A can of sweet milk coffee. A grape soda. He pressed the button for a lemon soda and it thudded down and he put it at the end of the row." },
       { s: 'chenle', f: 'neutral', t: "The team fridge. At the lab. Everybody's drink. One each. Olivia's the lightning one. Haerin's the tea. Minji's the coffee. Mine." },
-      { s: 'chenle', f: 'neutral', t: "...There's no lab. Two of these people aren't here. I knew that before I started. I bought them anyway." },
+      { s: 'chenle', f: 'sad', t: "...There's no lab. Two of these people aren't here. I knew that before I started. I bought them anyway." },
       { choose: [
         { t: "Which one's mine?", then: [
           { n: "He looked at the row. Then he put another coin in the machine and pressed the iced coffee, the plain black kind, and it thudded down, and he handed it to her without a word." },
@@ -263,7 +263,7 @@
         ] }
       ] },
       { n: "Behind the men's curtain, faintly, a voice that was unmistakably Jaemin's hit a note in a ballad that the bathhouse's tiled walls did very generous things to, and somebody inside applauded, and Chenle closed his eyes and drank his coffee milk in one long go." },
-      { s: 'chenle', f: 'neutral', t: "Don't tell him it sounds good in there. It's the tiles. It's the reverb. It's not him." },
+      { s: 'chenle', f: 'happy', t: "Don't tell him it sounds good in there. It's the tiles. It's the reverb. It's not him." },
       { bond: { chenle: 1 } }
     ] }
 );

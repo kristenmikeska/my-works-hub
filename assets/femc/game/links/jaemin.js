@@ -127,7 +127,7 @@
     [
       { n: "Chenle was losing at a game on his phone, which was rare enough that Jaemin had stopped singing to watch, and was narrating it over Chenle's shoulder in a hushed golf-commentator voice that was getting on everybody's nerves, including, from the set of his jaw, the man who'd invented the voice." },
       { s: 'jaemin', f: 'neutral', t: "And he's down. He's down to one life. The crowd goes silent. Zhong Chenle, tank, computer science major, never once in his life been fun at a party, and it all comes down to—" },
-      { s: 'chenle', f: 'neutral', t: "I lost because you're breathing on me." },
+      { s: 'chenle', f: 'serious', t: "I lost because you're breathing on me." },
       { s: 'jaemin', f: 'happy', t: "I'm breathing *for* you." },
       { choose: [
         { t: "(Take Chenle's side. Move Jaemin to the other couch.)", notes: 2, then: [
@@ -260,7 +260,7 @@
       { n: "It was, for twenty minutes, a party. A small one, a strange one, a party with one tinny speaker and a desk lady and a girl filming the paper chains, but Jaemin moved through it like it was three hundred people, a hand on a shoulder here, a cracker put into a palm there, and it was working, the way a song works in a room before anybody admits they like it, until the elevator went *ding.*" },
       { n: "Jaehyun stepped out of it in a gray sweatshirt and socks, with a book under his arm and his reading face on, the face of a man who'd come down to the lobby for the quiet, and stopped." },
       { n: "Jaemin's cup went behind his back. It was oolong. It went behind his back anyway, by itself, the way a hand goes up to block a ball, a reflex older than this world." },
-      { s: 'jaehyun', f: 'neutral', t: "What is this?" },
+      { s: 'jaehyun', f: 'serious', t: "What is this?" },
       { choose: [
         { t: "It's a study group.", notes: 3, flag: { 'jaemin-covered': true }, then: [
           { n: "It came out of her easy and level and pleasant, the right length, the right tone, the faintest note of surprise that anyone would ask, and it was so good that for a second she heard it from outside, the way you hear your own voice played back on a voicemail, and didn't entirely like who'd said it." },
@@ -281,7 +281,7 @@
       { n: "For forty minutes the first ever Kirijo Guesthouse Social was the quietest party in the history of the Social Chair. Chenle read the speaker's instruction manual. Minji filmed the back of Jaehyun's head, which, she said under her breath, had good light on it. Jaemin sat very straight in an armchair across from his president with his hands on his knees like a boy outside the principal's office, and didn't touch the volume, and didn't stand on anything." },
       { n: "At ten Jaehyun closed his book, finished his tea, put the cup in the bin, and stood." },
       { s: 'jaehyun', f: 'neutral', t: "Goodnight." },
-      { s: 'jaehyun', f: 'neutral', t: "Na. The music was fine." },
+      { s: 'jaehyun', f: 'happy', t: "Na. The music was fine." },
       { n: "The elevator took him. The doors closed. Jaemin stayed exactly where he was until the little light above them had climbed all the way to three, and then slid down the armchair, slowly, until he was mostly on the floor." },
       { s: 'jaemin', f: 'surprised', t: "He said the music was fine." },
       { s: 'jaemin', f: 'surprised', t: "Jaehyun Lee said *the music was fine.* To me. On purpose. Minji, did you get that? Tell me you got that." },
@@ -485,7 +485,7 @@
           { n: "She hauled him up by the elbow and they did the last seventy-one together, badly, Jaemin narrating every step as a tragedy in three acts, and at the top he lay down flat on the cold stone between the guardian dogs with his arms out like a snow angel, and Jaehyun stepped neatly over him to start his tenth." }
         ] },
         { t: "Jae, he's dying.", notes: 2, then: [
-          { s: 'jaehyun', f: 'neutral', t: "He's not dying. He's complaining. From up here they look similar." },
+          { s: 'jaehyun', f: 'happy', t: "He's not dying. He's complaining. From up here they look similar." },
           { s: 'jaemin', f: 'surprised', t: "Did he just make a joke? Solar. Was that a joke? I can't see his face, I'm on the floor." }
         ] }
       ] },
@@ -493,7 +493,7 @@
       { ifFlag: 'jaemin-covered', then: [
         { s: 'jaehyun', f: 'neutral', t: "It wasn't a study group." },
         { n: "He said it to the gravel, mildly. Jaemin went the color of the stone." },
-        { s: 'jaehyun', f: 'neutral', t: "You said it very well, sister. You always did. That's not a compliment, exactly." },
+        { s: 'jaehyun', f: 'serious', t: "You said it very well, sister. You always did. That's not a compliment, exactly." },
         { n: "It landed somewhere under her collarbone, small and cold, the feeling of being caught at something she hadn't known was a thing you could be caught at, and she didn't answer, and he didn't seem to need her to." }
       ], else: [
         { s: 'jaehyun', f: 'neutral', t: "That party. In the lobby. With the chains." },
@@ -502,7 +502,7 @@
       ] },
       { s: 'jaehyun', f: 'neutral', t: "Na. Before March. Before anyone goes anywhere. Something at the guesthouse. For everyone who's there. A dinner, with music. Not too loud." },
       { s: 'jaemin', f: 'surprised', t: "...Jaehyun. That's a party." },
-      { s: 'jaehyun', f: 'neutral', t: "Then it's a party." },
+      { s: 'jaehyun', f: 'happy', t: "Then it's a party." },
       { s: 'jaehyun', f: 'neutral', t: "Please." },
       { n: "He stood, and nodded to both of them, and went off down the shrine path toward the street lamps with his hands in his jacket pockets, an ordinary tall boy walking home in the cold, and Jaemin sat on the bottom step with the sports drink in both hands and watched him the whole way, the way you'd watch a horse you'd been sure couldn't jump do it." },
       { choose: [
@@ -594,7 +594,7 @@
       ], else: [
         { s: 'chenle', f: 'neutral', t: "He hasn't done one without a bit since he was nine." },
         { s: 'jaemin', f: 'neutral', t: "You didn't know me when I was nine." },
-        { s: 'chenle', f: 'neutral', t: "I can tell." }
+        { s: 'chenle', f: 'happy', t: "I can tell." }
       ] },
       { choose: [
         { t: "Say it to me. Not the camera.", notes: 3, flag: { 'jaemin-plain': true }, then: [
@@ -627,7 +627,7 @@
         ] },
         { t: "Can I be in the next one?", notes: 3, then: [
           { n: "Minji turned the camera round without a word, and asked with her eyebrows, and Solar nodded, and stood in the gold light with the river behind her, and didn't know what to say to a house full of people she couldn't remember, and said it anyway." },
-          { s: 'solar', f: 'neutral', t: "Hi. I'm told I've been to your parties. I'm told they were good. Please look after him." },
+          { s: 'solar', f: 'flustered', t: "Hi. I'm told I've been to your parties. I'm told they were good. Please look after him." },
           { s: 'jaemin', f: 'surprised', t: "...Minji. Minji, keep that one. Put it first." },
           { s: 'chenle', f: 'neutral', t: "Take twelve." }
         ] }

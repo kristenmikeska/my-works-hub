@@ -283,7 +283,7 @@
       { n: "On her way out through the mall, past the police box with its little lit sign and its counter, she saw a long coat and a straight back and a folder, and slowed, and then stopped, because Danielle was leaning on the counter with one elbow, chatting with Officer Kurosawa as if they were old colleagues, and Officer Kurosawa was looking at her the way a man looks at weather coming in over the hills." },
       { s: 'kurosawa', t: "...Can I help you." },
       { s: 'danielle', f: 'happy', t: "You can. The lost-property book. I'd just like to read it. Nothing more. Who lost what, and where, and whether they came back for it." },
-      { s: 'kurosawa', t: "That's private." },
+      { s: 'kurosawa', f: 'serious', t: "That's private." },
       { s: 'danielle', f: 'happy', t: "Of course it is. That's why it's interesting." },
       { n: "The book was open on the counter in front of him, upside down to her. Solar watched Danielle read it upside down, line by line, without once looking down at it, while she smiled at him about the weather." },
       { choose: [
@@ -293,7 +293,7 @@
         ] },
         { t: "(Close the book. Politely. For him.)", stat: { courage: 1 }, then: [
           { n: "She reached over the counter and closed the book, gently, with one hand. Officer Kurosawa looked at her with something close to gratitude. Danielle looked at her with something much more interesting than that." },
-          { s: 'kurosawa', t: "...Thank you." },
+          { s: 'kurosawa', f: 'happy', t: "...Thank you." },
           { s: 'danielle', f: 'neutral', t: "*Solar.* That's not how we speak to our sorority sisters." }
         ] },
         { t: "(Pull her away by the sleeve.)", then: [

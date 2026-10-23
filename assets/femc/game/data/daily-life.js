@@ -132,7 +132,7 @@ window.FEMC_GAME_DAILY_LIFE = [
     place: 'Iwatodai Dorm · Lounge', time: 'Evening', bg: 'iwatodaidorm-livingroom-night', scene: [
       { n: "Akihiko came in from a run at nine with his hood up and his face red from the cold and said good evening to the lounge in general, and then, a half second later and slightly differently, to Solar. He went upstairs. Hanni and Hyein, on the sofa, watched him go all the way up, in total silence, like two people watching the last minute of a game." },
       { s: 'hyein', f: 'neutral', t: "So. The boxer." },
-      { s: 'solar', f: 'neutral', t: "What about him?" },
+      { s: 'solar', f: 'flustered', t: "What about him?" },
       { s: 'hyein', f: 'happy', t: "Nothing. Nothing at all. He just says good evening to you like it's a whole different word. That's all. I'm a fashion major. I notice fit." },
       { choose: [
         { t: "He's my senpai. He trains me.", then: [
@@ -190,7 +190,7 @@ window.FEMC_GAME_DAILY_LIFE = [
       { n: "Jihoon came in last, behind them, like a sheepdog. He sat at the end of the table nearest the four of them, and Solar watched him, under the table, kick each of them in turn before they'd finished sitting down." },
       { s: 'junkyu', f: 'flustered', t: "Ow! Jihoon, what..." },
       { s: 'jihoon', f: 'serious', t: "Rules. Listen. I'm only saying them once, and then I'm kicking. Don't crowd her. Don't make her remember. Don't hug her without asking. Junkyu, I'm looking at you. Asahi, I'm not looking at you, you'd never." },
-      { s: 'asahi', f: 'neutral', t: "Wow. Thank you. Finally, respect." },
+      { s: 'asahi', f: 'happy', t: "Wow. Thank you. Finally, respect." },
       { s: 'jaehyuk', f: 'neutral', t: "Those are actually very sensible rules. I'm a little worried about where you got them." },
       { s: 'jihoon', f: 'neutral', t: "I'm very sensible. I've always been very sensible. Eat your rice." },
       { n: "They ate. Junkyu looked up every time Solar moved, like a dog listening for its name, and didn't say anything, and every time he opened his mouth there was a small thud under the table and he shut it again. Hyunsuk ate three bowls and complimented Fuuka on every one. Mitsuru watched the clock." },
@@ -221,7 +221,7 @@ window.FEMC_GAME_DAILY_LIFE = [
           { n: "It was the song. Hers. With no words. It went past the place where it always stopped and four bars further, and stopped there, and she sat on the stairs with half of it in her ear and the other half in his, and neither of them said anything until the song had played three times." }
         ] },
         { t: "Can't sleep?", then: [
-          { s: 'haechan', f: 'neutral', t: "Never could. Not in either place." },
+          { s: 'haechan', f: 'sad', t: "Never could. Not in either place." },
           { n: "He said it to his hands. Then, after a while, flatter, as if it cost nothing, which was how she knew it cost something:" },
           { s: 'haechan', f: 'neutral', t: "You can't either. Go back to bed, princess. I'll be here." }
         ] },
@@ -276,12 +276,12 @@ window.FEMC_GAME_DAILY_LIFE = [
         { from: 'lockscreen', t: "chenle · 11 missed calls" }
       ], contact: "Haechan's lock screen" },
       { s: 'hanni', f: 'sad', t: "Eleven." },
-      { s: 'haechan', f: 'neutral', t: "He counts." },
+      { s: 'haechan', f: 'sad', t: "He counts." },
       { n: "He said it flat, to the phone, the way you'd say a fact about weather. But he didn't put it away. He held it in his lap with the screen up and let it light, and go dark, and light again, until it stopped, like somebody standing at a window watching a friend walk away down a street and not calling out." },
       { choose: [
         { t: "He sounds like a good friend.", then: [
           { n: "Haechan looked up at her. For a second his face didn't do the flat thing. Then it did." },
-          { s: 'haechan', f: 'neutral', t: "Better than I deserve." },
+          { s: 'haechan', f: 'sad', t: "Better than I deserve." },
           { n: "He went upstairs. Hanni and Hyein looked at each other, and didn't say anything, and Hanni reached over and turned Solar's phone face down for her, gently, the way you'd close a door on a sleeping room." }
         ] },
         { t: "(Say nothing. Watch the screen with him.)", then: [
@@ -319,20 +319,20 @@ window.FEMC_GAME_DAILY_LIFE = [
       { s: 'jaehyun', f: 'serious', t: "We've had this conversation." },
       { s: 'haechan', f: 'neutral', t: "Twice." },
       { s: 'jaehyun', f: 'serious', t: "I told you I wasn't having it a third time." },
-      { s: 'haechan', f: 'neutral', t: "Then don't." },
+      { s: 'haechan', f: 'serious', t: "Then don't." },
       { n: "It was all very quiet. Jaehyun's voice was low and even and perfectly controlled, and Haechan's was flat, and neither of them had raised a single thing, and Solar, sitting between them on the sofa with a mug in her hands, felt the back of her neck go hot with a fury she had no reason for. She knew this. She knew it bodily. Two men deciding something about her, across her, over her head, as if she were the field." },
       { choose: [
         { t: "I live here too. If you're having it, have it with me.", then: [
           { n: "Both of them looked at her. Jaehyun's face did the thing it did, the play read and the conclusion arrived at, and then, for once, it didn't arrive. It stopped halfway, and stayed there, uncertain, which she suspected she had never once seen on it in her life." },
           { s: 'jaehyun', f: 'neutral', t: "...Fine. That's fair." },
-          { s: 'haechan', f: 'neutral', t: "She's always been the one you should've been talking to." },
+          { s: 'haechan', f: 'serious', t: "She's always been the one you should've been talking to." },
           { s: 'jaehyun', f: 'serious', t: "Don't." },
           { n: "But he didn't say anything else, and Haechan came down the rest of the stairs and went into the kitchen and got his water and went back up, and Jaehyun sat back down, and asked her about her chemistry grade, and his hand on his own knee didn't unclench for the rest of the hour." }
         ] },
         { t: "(Get up and stand on the stairs between them.)", then: [
           { n: "She got up and went and stood on the bottom step, between them, with her mug, and didn't say anything at all. Haechan looked down at her, and the corner of his mouth moved. Jaehyun looked at her back, and she felt him read it, all of it, and arrive somewhere he hadn't planned to go." },
-          { s: 'jaehyun', f: 'neutral', t: "...You used to do that. When we were kids. Stand between me and whoever I was angry at. You couldn't reach either of us." },
-          { s: 'haechan', f: 'neutral', t: "She can now." },
+          { s: 'jaehyun', f: 'sad', t: "...You used to do that. When we were kids. Stand between me and whoever I was angry at. You couldn't reach either of us." },
+          { s: 'haechan', f: 'happy', t: "She can now." },
           { n: "Then he went back upstairs without his water, and Jaehyun sat down, and the hour went on, and neither of them mentioned it, and Solar's hands were shaking on the mug the whole time and she didn't know whose fault that was." }
         ] }
       ] }
@@ -367,7 +367,7 @@ window.FEMC_GAME_DAILY_LIFE = [
       { n: "Then Haechan came down the stairs." },
       { n: "Mark saw him and something happened to his whole body, very quickly, and then he was smiling. Bigger than the morning needed. Easy, warm, casual, so casual it was almost loud." },
       { s: 'mark', f: 'surprised', t: "Hyuck! Man. Hey. Of course you're here. Of course you are." },
-      { s: 'haechan', f: 'neutral', t: "Mark." },
+      { s: 'haechan', f: 'serious', t: "Mark." },
       { s: 'mark', f: 'neutral', t: "You good? You look good. You're living here? Here, in the dorm? With..." },
       { n: "His eyes went to Solar, and back, so fast it was almost nothing. Haechan's didn't move at all." },
       { s: 'haechan', f: 'neutral', t: "Yeah." },
@@ -476,7 +476,7 @@ window.FEMC_GAME_DAILY_LIFE = [
   { id: 'ikutsuki-golden-week', after: '5/1', until: '5/8', slot: 'evening', events: ['a1-armband'],
     place: 'Iwatodai Dorm · Lounge', time: 'Evening', bg: 'iwatodaidorm-livingroom-night', scene: [
       { n: "The Chairman dropped by after dinner with a box of manju from a department store and his glasses steamed up from the rain, and stood in the lounge beaming at all of them as if they were a garden he'd planted himself." },
-      { s: 'ikutsuki', f: 'happy', t: "Golden Week! Do try to rest. A week this golden shouldn't be spent... *tarnishing* yourselves. Ha ha! No? Tarnishing? Golden?" },
+      { s: 'ikutsuki', f: 'flustered', t: "Golden Week! Do try to rest. A week this golden shouldn't be spent... *tarnishing* yourselves. Ha ha! No? Tarnishing? Golden?" },
       { s: 'junpei', f: 'neutral', t: "...I got it. I just didn't, like, *get* it." },
       { choose: [
         { t: "(Laugh. It was a little funny.)", stat: { charm: 1 }, then: [
@@ -565,7 +565,7 @@ window.FEMC_GAME_DAILY_LIFE = [
         { t: "(Open the door. Hum it for her.)", stat: { charm: 1 }, then: [
           { n: "Yukari stood in the hallway in her pajamas with her arms crossed and listened to the whole thing, as much of it as there was, which ended in the same place it always ended, four bars short of something." },
           { s: 'yukari', f: 'blushing', t: "It stops." },
-          { s: 'solar', f: 'neutral', t: "It always stops there." }
+          { s: 'solar', f: 'sad', t: "It always stops there." }
         ] }
       ] }
     ] },
@@ -783,11 +783,11 @@ window.FEMC_GAME_DAILY_LIFE = [
     place: 'Iwatodai Dorm · Kitchen', time: 'Early Morning', bg: 'iwatodaidorm-kitchen', scene: [
       { n: "Somebody was making breakfast at six. Real breakfast. Miso and grilled fish and rice, the smell of it coming up the stairwell like a hand on her shoulder, and when Solar came down in her socks the kitchen was empty and the pot was on low and there were nine bowls set out on the counter in a row." },
       { n: "Shinjiro was in the doorway to the back steps with his coat on, halfway out, like a man caught leaving a crime scene." },
-      { s: 'shinjiro', f: 'neutral', t: "...It was there when I got up." },
+      { s: 'shinjiro', f: 'surprised', t: "...It was there when I got up." },
       { choose: [
         { t: "Thank you for breakfast, Shinjiro.", stat: { kindness: 1 }, then: [
           { s: 'shinjiro', f: 'neutral', t: "Didn't make it." },
-          { s: 'shinjiro', f: 'neutral', t: "Fish needs another minute. Don't let Iori take the big one, he always takes the big one." },
+          { s: 'shinjiro', f: 'happy', t: "Fish needs another minute. Don't let Iori take the big one, he always takes the big one." },
           { n: "He left. She gave the fish another minute. She gave Junpei the small one, and when he complained she said the cook had left instructions, and Junpei said what cook, and nobody at the table answered him, and Akihiko smiled into his bowl." }
         ] },
         { t: "(Get a tenth bowl down. Hold it out to him.)", then: [
@@ -1005,7 +1005,7 @@ window.FEMC_GAME_DAILY_LIFE = [
       { s: 'junkyu', f: 'happy', t: "SOL! Hi! We're not here! We're just looking at your school! It's so big! You have a POOL?" },
       { s: 'asahi', f: 'neutral', t: "He made us come. I'd like that on the record." },
       { s: 'hyunsuk', f: 'neutral', t: "I'm assessing the academic environment. For myself. For when I come back. As a teacher. Possibly." },
-      { s: 'jaehyuk', f: 'neutral', t: "We'll go. We're going. I've apologized to the gentleman with the whistle twice. He was very understanding." },
+      { s: 'jaehyuk', f: 'flustered', t: "We'll go. We're going. I've apologized to the gentleman with the whistle twice. He was very understanding." },
       { choose: [
         { t: "(Wave at all of them. Even Asahi.)", stat: { charm: 1 }, then: [
           { n: "She waved. Junkyu waved back with both arms, Hyunsuk with one, Jaehyuk with a little polite bow, and Asahi, after a long moment of visible struggle, lifted two fingers from the fence, which Junkyu immediately told everyone about, all the way back to the station, as the greatest victory of his life." }
@@ -1069,7 +1069,7 @@ window.FEMC_GAME_DAILY_LIFE = [
       { n: "The council room at lunch, and Jungwon was at the long table with the athletic budget and a red pen and no lunch at all, which she could tell, because there was a single wrapped rice cracker by his elbow that he'd been not eating since nine." },
       { s: 'jungwon', f: 'neutral', t: "I've eaten." },
       { s: 'solar', f: 'neutral', t: "What did you eat?" },
-      { s: 'jungwon', f: 'neutral', t: "...Breakfast. Conceptually." },
+      { s: 'jungwon', f: 'flustered', t: "...Breakfast. Conceptually." },
       { choose: [
         { t: "(Put half your lunch in front of him. Sit. Wait.)", stat: { kindness: 1 }, then: [
           { n: "She sat across from him and waited, with her chopsticks, the way you'd wait for a cat to come to a dish. He looked at the food and then at her and then capped his pen, very precisely, and ate, not quickly, with a small furrow between his eyebrows like it was a problem she'd set him, and when it was gone he said thank you to the table in the voice he used for formal correspondence." },
@@ -1157,7 +1157,7 @@ window.FEMC_GAME_DAILY_LIFE = [
       { s: 'aigis', f: 'neutral', t: "Solar-san. You have stopped. Is something wrong with the gate?" },
       { choose: [
         { t: "Nothing's wrong. I'm just looking at it.", then: [
-          { s: 'aigis', f: 'neutral', t: "Then I will look at it too." },
+          { s: 'aigis', f: 'happy', t: "Then I will look at it too." },
           { n: "She stood beside Solar and looked at the gate, gravely, as if it might do something, until the bell went, and then said it had been a very good gate, and they went in." }
         ] },
         { t: "(Take her arm. Go in together.)", stat: { kindness: 1 }, then: [

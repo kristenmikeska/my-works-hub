@@ -73,7 +73,7 @@
         ] },
         { t: "(Keep eating it from the wrong end, maintaining eye contact.)", notes: 3, then: [
           { s: 'jihoon', f: 'serious', t: "Monster. You're a monster. I've known you were a monster since preschool. I just thought you'd grow out of it. Like your bangs." },
-          { s: 'solar', f: 'neutral', t: "What's wrong with my bangs?" },
+          { s: 'solar', f: 'surprised', t: "What's wrong with my bangs?" },
           { s: 'jihoon', f: 'neutral', t: "Nothing, now. I'm talking about the first time. Tragic. Your mom still has the pictures. I've seen them. I've seen them more than once, on purpose." }
         ] }
       ] }
@@ -438,20 +438,20 @@
       { s: 'jihoon', f: 'serious', t: "I do NOT have the ice cream money. I've spent the ice cream money. I've invested the ice cream money in a crane game. Do Not question my portfolio." },
       { s: 'asahi', f: 'neutral', t: "He's been investing in that crane game for a month. It's the worst portfolio in Asia. Nobody asked, by the way. Nobody ever asks." },
       { s: 'hyunsuk', f: 'happy', t: "LMAO. Asahi. Asahi." },
-      { s: 'jaehyuk', f: 'neutral', t: "Please don't say *LMAO* out loud, Hyunsuk." },
+      { s: 'jaehyuk', f: 'serious', t: "Please don't say *LMAO* out loud, Hyunsuk." },
       { n: "She knew the chat. It had gone off on her desk in September like a smoke alarm, a whole room of strangers being loud at her in capitals. *Park Jihoon Hate Club.* Jihoon claimed he'd named it himself, to save everyone time. Asahi said that was a lie. Jihoon said Asahi was jealous of his branding." },
       { s: 'jihoon', f: 'happy', t: "Look at this. Look at all of them. All these losers, here, because of you. You're welcome, Sol. I'm the reason. I texted them all first. I'm a leader. Some would say a visionary." },
       { s: 'asahi', f: 'neutral', t: "He did not text us all first. He texted the group chat twenty-four times in capitals. Then he texted it about pilates." },
       { choose: [
         { t: "Thank you. All of you. For coming.", notes: 3, then: [
           { n: "It went very quiet. Even the arcade seemed to dip. Asahi looked at her from under his hood like a cat that had been unexpectedly picked up." },
-          { s: 'asahi', f: 'neutral', t: "...Okay, that's weird. She's never thanked anyone in her life. She's thanked Junkyu maybe twice." },
+          { s: 'asahi', f: 'surprised', t: "...Okay, that's weird. She's never thanked anyone in her life. She's thanked Junkyu maybe twice." },
           { s: 'junkyu', f: 'happy', t: "Three times! I keep count!" },
           { s: 'jihoon', f: 'neutral', t: "Leave her alone. She's allowed to be weird. She's been through a lot. She's been to a whole other school. With uniforms that don't even suit her." }
         ] },
         { t: "Is the club for hating him, or for him?", notes: 3, then: [
           { s: 'hyunsuk', f: 'happy', t: "Both. Mostly hating. A little bit for." },
-          { s: 'jaehyuk', f: 'neutral', t: "It was for you, actually. Originally. It was for when you were sad. He just named it." },
+          { s: 'jaehyuk', f: 'happy', t: "It was for you, actually. Originally. It was for when you were sad. He just named it." },
           { n: "Jihoon's arm around her neck went very tight, and then let go, and he walked off to the crane game without a word, and everyone pretended not to have noticed his ears." }
         ] },
         { t: "(Hug Junkyu back. Properly.)", notes: 2, then: [
@@ -466,7 +466,7 @@
       { n: "Jihoon was waiting on the other side. He fell into step beside her on the platform and bumped her shoulder with his, on purpose, the way you'd knock on a door you knew was open." },
       { s: 'jihoon', f: 'neutral', t: "They're all scared. Just so you know. They're being loud because they're scared. Junkyu cried in the bathroom the first night. Asahi made Hyunsuk sleep on his floor." },
       { s: 'jihoon', f: 'serious', t: "I'm not scared. I'm the only one who's not scared. Someone has to be the strong one, and obviously it's going to be the one with the body." },
-      { s: 'solar', f: 'neutral', t: "You're the most scared." },
+      { s: 'solar', f: 'happy', t: "You're the most scared." },
       { s: 'jihoon', f: 'neutral', t: "...Okay, I see you got your mouth back before your memory. Great. Love that for me." }
     ] },
 
@@ -492,7 +492,7 @@
           { s: 'jihoon', f: 'surprised', t: "..." },
           { n: "It came out of her certain, a thing she'd always known and never said, the way you know the shape of your own front door in the dark. She didn't remember. She didn't need to. Her whole body had been listening to him say it loud for fourteen years." },
           { s: 'jihoon', f: 'happy-2', t: "You— since when. Since WHEN. Did you just— are you messing with me right now? On the ROOF? In NOVEMBER? After that whole speech?" },
-          { s: 'solar', f: 'neutral', t: "I need you to not be a dick for like three seconds." },
+          { s: 'solar', f: 'happy', t: "I need you to not be a dick for like three seconds." },
           { n: "The words came out of her fully formed, from somewhere else, from a curb outside a gym with lights strung in its windows and bugs in the air. She leaned in and kissed him, quickly, to shut him up, and he went absolutely silent for the longest stretch of time she'd ever known him to, which was about four seconds." },
           { s: 'jihoon', f: 'happy-2', t: "...No fucking way." },
           { s: 'jihoon', f: 'happy', t: "I'm going to need you to do that again so I can be sure it wasn't the wind. For science. For the record. For me." }
@@ -556,7 +556,7 @@
       { ifRoute: 'romance', then: [
         { n: "He bumped her shoulder with his. Then, like he'd thought better of it, he laced his fingers through hers, in the middle of the mall, in front of the Christmas tree, and swung their hands a little, and didn't say anything about it, loudly." },
         { s: 'jihoon', f: 'happy', t: "Light of your disgusting life." },
-        { s: 'solar', f: 'neutral', t: "Light of my disgusting life." },
+        { s: 'solar', f: 'happy', t: "Light of my disgusting life." },
         { s: 'jihoon', f: 'happy-2', t: "...Yeah. Okay. I'm going to need a minute. Don't look at me. I'm having a moment. It's a very attractive moment." }
       ], else: [
         { n: "He bumped her shoulder with his, on purpose, hard enough to make her stagger into a display of scented candles, and then caught her by the back of her blazer before she could take any down with her." },
@@ -583,7 +583,7 @@
       { n: "A preschool, and a boy she had apparently never once been rid of since. A tub of ice cream on her doorstep and a boy shoving it into her arms and going straight past her into her kitchen for spoons, yelling about where his beloved was, taking the stairs two at a time to wake her dog. A string of polaroids, hundreds of them, their whole lives in little squares, hikes and road trips and her family's parties where every aunt asked if he was her boyfriend. A letter tied to a ribbon. *if u wanted a clue, it's the world.* A needle and a boy holding her hand through it, telling her it'd be fine, telling her she looked like a ghost. A curb, a gym full of lights, her own voice telling him not to be a dick for three seconds." },
       { n: "And the rest. She had all of it, all at once, the way you have a song. A bedroom door she knocked on three times. A fist going into a wall beside her head, not into her, and the hole it left. An alley with smoke in it. A phone lighting up at midnight with capitals that didn't spell anything, all of them meaning *come over*, all of them meaning *sorry*." },
       { n: "His voice, under all of it. Not this one, here, careful on a cold step. The loud one. In her ear on the phone, in the group chat, across a classroom, in front of her house. Every day of her life." },
-      { s: 'solar', f: 'neutral', t: "...Jihoon." },
+      { s: 'solar', f: 'surprised', t: "...Jihoon." },
       { n: "It wasn't how she'd been saying it for four months. Polite, careful, like a name off a list. It came out flat and tired and exactly right, the way you'd say the name of someone who'd been in your house so long he'd worn a groove in your sofa." },
       { s: 'jihoon', f: 'surprised', t: "..." },
       { n: "He looked at her face, and kept looking, the way he'd looked at it on the Strip in September for the joke that wasn't there. This time he found something. She watched him find it. She watched him understand that it was all there, the good and the rest, and that she was still sitting on the step." },
@@ -598,7 +598,7 @@
           { s: 'jihoon', f: 'surprised', t: "OW. Okay. Yeah. That's fair. That's the most fair thing that's ever happened to me." }
         ] }
       ] },
-      { s: 'solar', f: 'neutral', t: "Park Jihoon. You absolute idiot. You came through a hole in the world with a tub of ice cream." },
+      { s: 'solar', f: 'happy', t: "Park Jihoon. You absolute idiot. You came through a hole in the world with a tub of ice cream." },
       { n: "He laughed. He laughed so hard he had to put his head down on his knees, and the laugh turned into something else halfway through, and then back into a laugh, and she put her arm around him and held on and let him do both." },
       { s: 'jihoon', f: 'happy', t: "Of course I did. Of course I did. As your best friend it is RIGHTFULLY MY JOB." },
       { ifRoute: 'romance', then: [

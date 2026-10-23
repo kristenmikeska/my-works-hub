@@ -124,7 +124,7 @@
       { choose: [
         { t: "That's a good dream.", notes: 3, then: [
           { s: 'judy', f: 'neutral', t: "...Yeah. It is. Thanks. People usually tell me it's naive." },
-          { s: 'solar', f: 'neutral', t: "It is naive." },
+          { s: 'solar', f: 'happy', t: "It is naive." },
           { s: 'judy', f: 'happy', t: "HA. Okay. Okay, I like you. You're the first person who said both." }
         ] },
         { t: "What's it like? Being inside someone else's feelings?", notes: 2, then: [
@@ -204,7 +204,7 @@
       { choose: [
         { t: "I think so. I don't remember who.", notes: 3, then: [
           { s: 'judy', f: 'sad', t: "...That's worse, choom. That's so much worse. Having the thirty seconds and not the face." },
-          { s: 'solar', f: 'neutral', t: "I have the feeling. Sometimes. Like a song I can't place." },
+          { s: 'solar', f: 'sad', t: "I have the feeling. Sometimes. Like a song I can't place." },
           { s: 'judy', f: 'neutral', t: "Then keep the feeling. Feelings are the real recording. Everything else is just pictures." }
         ] },
         { t: "I'd keep this. Tonight.", notes: 2, then: [

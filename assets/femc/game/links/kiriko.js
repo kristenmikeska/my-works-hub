@@ -162,7 +162,7 @@
       { n: "Something went down the back of Solar's neck, light and quick. Not fear. It was the feeling of walking into a room and knowing where the light switch is before you've reached for it. She knew the set of those shoulders. She knew the way the girl was going to swing her legs down off the box, a half second before she did it, and how she would land, and that she would land grinning." },
       { s: 'kiriko', f: 'happy', t: "Oh! A visitor! Finally. I was starting to think this place was haunted. Well. More haunted." },
       { n: "The name was in Solar's mouth before she'd decided to say anything. It came up whole and easy, the way your own phone number does, and she heard herself say it out loud to a girl she had never seen in her life." },
-      { s: 'solar', f: 'neutral', t: "...Kiriko." },
+      { s: 'solar', f: 'surprised', t: "...Kiriko." },
       { s: 'kiriko', f: 'surprised', t: "Yeah? Wait. Yeah, that's me. Have we met?" },
       { choose: [
         { t: "No. I don't think so.", notes: 2, then: [
@@ -542,8 +542,8 @@
       { n: "Kiriko's hands stopped on the melon pan wrapper. Solar watched her decide whether to make a joke. She watched her not." },
       { s: 'kiriko', f: 'sad', t: "...I was on the top step. With the rope in my hand. And I thought, if I ring it, it's mine. Forever. And everybody who could help me is going to stand at the back and then go home. And I didn't want to be the last one." },
       { s: 'kiriko', f: 'sad', t: "So I didn't ring it. And then I was here. And I swept somebody else's shrine for three months instead, because it was easier than mine." },
-      { s: 'genji', f: 'neutral', t: "I ran from my family's house with half a body. I know something about easier." },
-      { s: 'genji', f: 'neutral', t: "The thing I learned, very slowly, from a very patient man, is that the shrine does not need your mother. It does not need me. It needs someone who stays. That is all a protector is. Someone who is still there in the morning." },
+      { s: 'genji', f: 'sad', t: "I ran from my family's house with half a body. I know something about easier." },
+      { s: 'genji', f: 'serious', t: "The thing I learned, very slowly, from a very patient man, is that the shrine does not need your mother. It does not need me. It needs someone who stays. That is all a protector is. Someone who is still there in the morning." },
       { choose: [
         { t: "She's been here every morning since June.", notes: 3, then: [
           { s: 'genji', f: 'happy', t: "Yes. I noticed. The gravel is very well raked." },
@@ -551,7 +551,7 @@
           { n: "But she was smiling, with her face turned away toward the cedars, and her ears had gone pink at the tips, and she didn't tell them to stop again." }
         ] },
         { t: "Who taught you to stay?", notes: 2, then: [
-          { s: 'genji', f: 'neutral', t: "My master. And a doctor who would not let me die, though I asked her many times." },
+          { s: 'genji', f: 'sad', t: "My master. And a doctor who would not let me die, though I asked her many times." },
           { n: "He said it lightly. The lights in his armor went a shade warmer, and he looked down the hill toward the Port Island side, toward the white bulk of the hospital, and Solar thought she understood something, and kept it to herself." }
         ] },
         { t: "(Stay quiet and let them have it.)", notes: 2, then: [
@@ -605,7 +605,7 @@
           { s: 'widowmaker', f: 'neutral', t: "I am not working tonight. You may relax. Both of you." }
         ] },
         { t: "I've never played with a sniper.", notes: 3, then: [
-          { s: 'widowmaker', f: 'neutral', t: "Mm. Then your feet are liars. Or you are." },
+          { s: 'widowmaker', f: 'happy', t: "Mm. Then your feet are liars. Or you are." },
           { n: "She didn't say it like an accusation. She said it like an observation about the weather. Solar's ears went hot and she didn't know why, again, the way they had on the shrine steps in July, as if her whole body had been briefed on something and she hadn't been invited to the meeting." }
         ] },
         { t: "(Step in front of Kiriko.)", notes: 1, then: [

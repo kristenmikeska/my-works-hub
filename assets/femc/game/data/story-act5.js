@@ -250,8 +250,8 @@ window.FEMC_STORY_KIT.badEnding = [
     { n: "Haechan was on the stairs. He'd come halfway down at the sound of the bell and stopped there, in the dark above the lounge light, with one hand on the banister, the way he stopped everywhere in this building, halfway, as if he hadn't decided yet whether he lived in it. He was looking at the watch too." },
     { s: 'haechan', f: 'neutral', t: "Both of them." },
     { n: "Jungwon turned his head. Not all the way. Just enough." },
-    { s: 'jungwon', f: 'neutral', t: "You can hear them." },
-    { s: 'haechan', f: 'neutral', t: "Every night." },
+    { s: 'jungwon', f: 'surprised', t: "You can hear them." },
+    { s: 'haechan', f: 'serious', t: "Every night." },
     { n: "That was all. Neither of them said anything else. But something went between the stairs and the lounge that Solar, standing by the door with her armband half on, felt go past her like a draft. Two boys who couldn't stand each other, who had both crossed twice to get here, looking at each other for one second like the only two people in the building who knew exactly what the other one was carrying." },
     { n: "Then Haechan went back up the stairs. His door closed at the far end of the top floor, very quietly. Mitsuru picked up her Evoker." },
     { s: 'mitsuru', f: 'neutral', t: "Stay beside Solar." },
@@ -285,7 +285,7 @@ window.FEMC_STORY_KIT.badEnding = [
     { s: 'jungwon', f: 'neutral', t: "Excuse me. I'm afraid you've misunderstood the assignment." },
     { s: 'jungwon', f: 'serious', t: "In one life, I'm the boy she ran against, who won, and then made her my vice president, because there was nobody else in that school I'd trust to tell me when I was wrong. In the other, I'm the son who's to marry her in April because two families shook hands over a table. I didn't ask for that one either. I've stopped wishing nobody had given it to me." },
     { s: 'jungwon', f: 'serious', t: "I have been both of them every hour since I came through that door. I don't put one down to carry the other. I'm not built like that. Neither is she. Neither, God help me, is he." },
-    { s: 'jungwon', f: 'neutral', t: "So I won't choose. And I won't let you make her choose. Give them back. Both halves. They were never two." },
+    { s: 'jungwon', f: 'serious', t: "So I won't choose. And I won't let you make her choose. Give them back. Both halves. They were never two." },
     { music: 'awakening' },
     { cg: 'searchers-jungwon-awakening' },
     { n: "Something came up out of him, very quiet. Not loud like Jihoon's, not a light like Minji's. A shape that built itself the way a bridge is built, span by span, very fast, very exact, a figure of command and stillness standing over him with its arms crossed, and where it stood, the seam in the floor closed. Mud and lamplight knitted together under his feet. Every piece that had lifted off him stopped in the air, mid-flight, both colors, and came back, one at a time, each into its exact place, the way you'd put pieces back on a board after someone's knocked it, and when the last one landed, the watch on his wrist stopped going backward, and went still." },
@@ -295,7 +295,7 @@ window.FEMC_STORY_KIT.badEnding = [
     { battle: { id: 'memory-jungwon', kind: 'scripted', script: 'memory-jungwon', segment: 2, title: 'Tartarus · Two Floors at Once', desc: 'Jungwon has a Persona. Finish it.', notes: 'Segment 2: Jungwon joins the party (party id jungwon). His Persona is pending design with Kat; use placeholder skills.', forced: true } },
     { music: 'night' },
     { n: "Afterward the floor faded, mud and lamplight and glitter, and he was standing in the checkerboard hall straightening his cuffs, exactly, one and then the other. His hands were shaking. He saw her see it. He put them behind his back." },
-    { s: 'jungwon', f: 'neutral', t: "I apologize. That was very undignified. And I said a great deal more than I meant to, in front of a great many people." },
+    { s: 'jungwon', f: 'flustered', t: "I apologize. That was very undignified. And I said a great deal more than I meant to, in front of a great many people." },
     { choose: [
       { t: "That was the bravest thing I've ever seen.", then: [
         { n: "He looked at her. The dimples didn't come. His face went completely still instead, which she'd learned by now, slowly, reading him like a language, was what his face did when something meant too much to be polite about." },
@@ -433,7 +433,7 @@ window.FEMC_STORY_KIT.badEnding = [
       { t: "Donghyuck.", flag: { 'hc-awaken-R': true }, tally: { 'haechan.R': 1 }, then: [
         { n: "She didn't know where it came from. She'd heard Jungwon say it at breakfast, once, a month ago, like an accusation. It didn't sound like that in her mouth. It came out of her quiet and certain, in the voice she used for the things that mattered, like a door she was opening on purpose." },
         { n: "He went very still. All of him. Then, very carefully, the way you'd put something fragile back on a shelf, he looked away, down the hall." },
-        { s: 'haechan', f: 'neutral', t: "...Yeah. You don't get to say that one in front of people, princess." },
+        { s: 'haechan', f: 'flustered', t: "...Yeah. You don't get to say that one in front of people, princess." },
         { n: "His ears had gone red. She heard, under the flatness, that he'd been waiting a very long time for her to say it at all." }
       ] },
       { t: "You were supposed to be keeping your distance.", flag: { 'hc-awaken-S': true }, tally: { 'haechan.S': 1 }, then: [
@@ -448,7 +448,7 @@ window.FEMC_STORY_KIT.badEnding = [
       { t: "Thank you. (Then step back, out of the light.)", ifFlag: 'home-H3', flag: { 'pull-no-awaken': true }, then: [
         { n: "She meant it. It came out of her plain and whole, the way you'd thank someone who'd pulled you out of a river, which he had. Then she stepped back. One step, off the edge of the gold he was still giving off without meaning to, into the ordinary checkerboard dark of the hall, where the light didn't reach and her own two feet were holding her up." },
         { n: "The bell and the jade ring were still humming on Haenim's sash, together, the way they'd rung on the bridge. She let them hum. She didn't go back toward the light." },
-        { s: 'haechan', f: 'neutral', t: "...Yeah. You always did that too. Took the hand and then gave it back." },
+        { s: 'haechan', f: 'sad', t: "...Yeah. You always did that too. Took the hand and then gave it back." },
         { n: "He didn't sound hurt. He sounded like somebody who'd been watching a door for a long time and had just seen which way it opened, and found, to his own surprise, that he didn't mind." }
       ] }
     ] },
@@ -617,9 +617,9 @@ window.FEMC_STORY_KIT.badEnding = [
     { n: "Hyein stopped. Hanni said her name. Hyein didn't listen." },
     { s: 'hyein', f: 'serious', t: "Tell her." },
     { s: 'hyein', f: 'serious', t: "Tell her to come home. She'd listen to you. You know she'd listen to you. You, of all people, you could just..." },
-    { s: 'haechan', f: 'neutral', t: "Not my call." },
+    { s: 'haechan', f: 'serious', t: "Not my call." },
     { s: 'hyein', f: 'surprised', t: "It's literally your..." },
-    { s: 'haechan', f: 'neutral', t: "Not my call." },
+    { s: 'haechan', f: 'serious', t: "Not my call." },
     { n: "He said it flat, to the carpet, twice, exactly the same, the way you'd shut a door twice to make sure it had caught. Then he looked up. Not at Hyein. At Solar, standing at the top of the stairs behind her with an empty can still in her hand, and held it for one second longer than he usually let himself, and got up, and went into his room, and closed the door, very quietly." },
     { n: "Hyein turned round with her face red and her eyes wet and her mouth open to say something terrible about him, and Hanni put an arm round her shoulders and steered her down the stairs." },
     { s: 'hanni', f: 'sad', t: "He's right. That's the worst part. He's completely right." }

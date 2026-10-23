@@ -488,7 +488,7 @@ window.FEMC_GAME_JOB_SCENES = {
         { s: 'yunjin', f: 'sad', t: "Sol." },
         { s: 'yunjin', f: 'sad', t: "I know everything about you. That's my whole job. That's, like, my entire personality." },
         { n: "Out past the roof the water was nearly all the way out, the pilings standing bare and black and dripping in the gray light, and Solar felt it before she saw it, a small loosening somewhere under her ribs, like a breath she'd been holding all night let go." },
-        { s: 'solar', f: 'neutral', t: "It's turning." },
+        { s: 'solar', f: 'sad', t: "It's turning." },
         { n: "Yunjin looked out at the harbor, and then back at her, and her face did something complicated and quiet that she covered almost at once with her coffee." },
         { s: 'yunjin', f: 'neutral', t: "...Yeah. You always know first. You can't sleep till it turns. You never could." },
         { choose: [
@@ -684,7 +684,7 @@ window.FEMC_GAME_JOB_SCENES = {
         ] },
         { n: "For a second he didn't say anything at all. Then he looked past her to the counter, where Sunoo had suddenly become extremely busy polishing a clean cup, and when he spoke his voice was so polite, so gentle and correct and even, that it raised the hair on her arms." },
         { s: 'jungwon', f: 'neutral', t: "Thank you, Sunoo. That's very thoughtful of you." },
-        { s: 'jungwon', f: 'neutral', t: "Please don't ever do that again." },
+        { s: 'jungwon', f: 'serious', t: "Please don't ever do that again." },
         { s: 'sunoo', f: 'sad', t: "...Sorry, Jungwon." },
         { n: "But Solar wasn't really listening anymore. She was looking at the croissant, at the red, at the spot on top where Sunoo had started to pipe something in white and then stopped, a single curl of icing like the beginning of a letter, and something in her went very still." },
         { music: 'tender' },
@@ -695,7 +695,7 @@ window.FEMC_GAME_JOB_SCENES = {
         { choose: [
           { t: "(Sit down across from him, and split it in half.)", then: [
             { n: "He watched her tear it, the red icing cracking down the middle, and took his half when she held it out, and ate it in small, careful, formal bites, like a boy at a state dinner, and didn't look at her once, and his ears were red right to the tips." },
-            { s: 'jungwon', f: 'neutral', t: "...It's good. Don't tell him." }
+            { s: 'jungwon', f: 'happy', t: "...It's good. Don't tell him." }
           ] },
           { t: "I think I've seen one of these before.", then: [
             { n: "His pen went down on the table. Very quietly, very precisely, lined up with the edge of the page." },

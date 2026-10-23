@@ -72,7 +72,7 @@
     [
       { n: "He was teaching himself a fighting game, which was not, he wanted her to understand, the same thing as playing one. He had the move list for the cabinet by the door written out on the back of a receipt in tiny careful handwriting, and next to every move a number, and he was putting coins in and doing each one over and over against the computer without trying to win, just watching the screen, the way you'd watch a kettle to find out exactly when it boiled." },
       { s: 'chenle', f: 'serious', t: "This one comes out on frame six. That one's on frame four but you can't cancel it. The guy in the next seat has been doing the six one all day and losing to the four one and he doesn't know why." },
-      { s: 'chenle', f: 'neutral', t: "I'm not going to tell him. He's eleven. He'll figure it out in about a year. That's how you learn it properly." },
+      { s: 'chenle', f: 'happy', t: "I'm not going to tell him. He's eleven. He'll figure it out in about a year. That's how you learn it properly." },
       { choose: [
         { t: "How do you see frames? It's a screen.", notes: 3, then: [
           { s: 'chenle', f: 'neutral', t: "You count. A second's sixty. You get used to it. Then you can't stop and every movie looks slow." },
@@ -167,7 +167,7 @@
         { t: "(Bet on Chenle.)", notes: 3, then: [
           { n: "It was over in about ninety seconds. Junpei played loudly, with his whole body, leaning into every punch and shouting the names of the moves, and Chenle played without moving anything above the wrist, and won both rounds without being hit more than twice, and Junpei stared at the screen and then at him and then at Solar." },
           { s: 'junpei', f: 'surprised', t: "You BET on him? Leader. LEADER. Where's the loyalty?" },
-          { s: 'chenle', f: 'neutral', t: "She bet on data. Ramen's on you." }
+          { s: 'chenle', f: 'happy', t: "She bet on data. Ramen's on you." }
         ] },
         { t: "(Bet on Junpei.)", notes: 2, then: [
           { n: "Junpei lost anyway, both rounds, spectacularly, and turned to her with tears of gratitude in his eyes for having believed in him, and insisted on buying all three of them ramen, which Chenle accepted with grave politeness and then ate in eleven minutes flat with his glasses fogged white." },
@@ -215,7 +215,7 @@
       ], else: [
         { n: "Minji came down the back row with her camera already up, and then stopped, and lowered it, and asked, the way she always asked, whether she could." },
         { s: 'minji', f: 'neutral', t: "Hands only. Both of you. I want the hands." },
-        { s: 'chenle', f: 'neutral', t: "...Not my face." },
+        { s: 'chenle', f: 'flustered', t: "...Not my face." },
         { s: 'minji', f: 'happy', t: "Nobody wants your face, Le." },
         { choose: [
           { t: "(Play for the camera.)", notes: 2, then: [
@@ -234,7 +234,7 @@
       { s: 'chenle', f: 'neutral', t: "I told Mitsuru it was a genuinely upsetting violation of physics. She said that was a very good description of the whole year." },
       { choose: [
         { t: "Does it bother you?", notes: 3, then: [
-          { s: 'chenle', f: 'neutral', t: "Everything I know says it should be dying. It's not. So either everything I know is wrong, or this isn't a place where it applies." },
+          { s: 'chenle', f: 'serious', t: "Everything I know says it should be dying. It's not. So either everything I know is wrong, or this isn't a place where it applies." },
           { s: 'chenle', f: 'neutral', t: "I'm going with the second one. The first one's worse." }
         ] },
         { t: "What game?", notes: 2, then: [
@@ -256,7 +256,7 @@
       { s: 'chenle', f: 'neutral', t: "Practice is Monday, Tuesday, Thursday and Saturday." },
       { n: "He said it to the screen, like the end of a sentence he'd started before she got there." },
       { s: 'solar', f: 'neutral', t: "Practice for what?" },
-      { s: 'chenle', f: 'neutral', t: "Nothing. There's no lab. There's no coach. There isn't even the game, I asked the guy at the counter and he thought I was making it up." },
+      { s: 'chenle', f: 'sad', t: "Nothing. There's no lab. There's no coach. There isn't even the game, I asked the guy at the counter and he thought I was making it up." },
       { s: 'chenle', f: 'neutral', t: "I didn't see a reason to stop." },
       { n: "He nodded at the seat beside him. On the screen four roles sat in a row in cheerful red letters, something with a rifle and something with a shield and something fast, and at the end, the one nobody picked, a little wrench, its button so worn the sticker had gone almost white." },
       { choose: [
@@ -277,14 +277,14 @@
       { n: "They won. Then they won again. On the third a pair of high schoolers in the next cabinet joined on the other side and lost loudly, and one of them came round to see who was beating him and found a short blonde foreigner and a Gekkoukan third-year sitting perfectly still, and said something to his friend about cheating, and Chenle pushed his glasses up with one finger and didn't look at him." },
       { s: 'chenle', f: 'neutral', t: "Sixty." },
       { s: 'solar', f: 'neutral', t: "What?" },
-      { s: 'chenle', f: 'neutral', t: "You repair me at sixty percent. Every time. Not fifty. Not when I'm low. Not when I ask. Sixty." },
+      { s: 'chenle', f: 'serious', t: "You repair me at sixty percent. Every time. Not fifty. Not when I'm low. Not when I ask. Sixty." },
       { s: 'solar', f: 'neutral', t: "Is that good?" },
       { s: 'chenle', f: 'neutral', t: "It's what you do." },
       { n: "He took the phone out again. She watched him type. A column of numbers, she saw, upside down from where she sat, dates down one side and something else down the other, and it wasn't a long column, and the top of it was today." },
       { choose: [
         { t: "What are you writing down?", notes: 2, then: [
           { s: 'chenle', f: 'neutral', t: "Your hands." },
-          { s: 'solar', f: 'neutral', t: "Not me?" },
+          { s: 'solar', f: 'sad', t: "Not me?" },
           { s: 'chenle', f: 'neutral', t: "I don't have any data on you." },
           { n: "He said it flat and true and without any meanness in it, the way he'd have told her a cooldown, and it went in under her ribs anyway, the way the true things did here, and sat there." }
         ] },
@@ -312,7 +312,7 @@
       { n: "Through the glass door behind him a song she half-knew was coming out of the lounge with Jaemin's voice laid over the top of it, very confident and a quarter tone flat, and under that the murmur of several people who lived in the building deciding whether to be annoyed or join in. Solar sat on the step above him. The stone was so cold it felt wet." },
       { n: "He took the phone from home out of his hoodie pocket. Lit, battery full, the clock in the corner stuck at the minute he'd crossed. He opened the call log and turned the screen so she could see, and didn't say anything, and let her read it." },
       { n: "Her name, in a column. *Solar. Solar. Solar.* The times beside each one going down the screen like the rungs of a ladder, one every twelve minutes, the gaps as even as stitches, nine of them, and then nothing for an hour and a half, and then, alone at the bottom, a minute before midnight, one more." },
-      { s: 'chenle', f: 'neutral', t: "Nine. Before." },
+      { s: 'chenle', f: 'sad', t: "Nine. Before." },
       { s: 'chenle', f: 'neutral', t: "The tenth one went through. I don't count the tenth the same." },
       { s: 'solar', f: 'neutral', t: "Why not?" },
       { s: 'chenle', f: 'neutral', t: "Because it worked." },
@@ -323,7 +323,7 @@
         ] },
         { t: "I'm sorry I didn't pick up.", notes: 2, then: [
           { s: 'chenle', f: 'neutral', t: "You didn't have your phone. You didn't have anything. It's not a sorry thing." },
-          { s: 'chenle', f: 'neutral', t: "I just wanted it written down somewhere that isn't me. That it was nine." }
+          { s: 'chenle', f: 'sad', t: "I just wanted it written down somewhere that isn't me. That it was nine." }
         ] },
         { t: "(Read the times. All of them.)", notes: 3, then: [
           { n: "She read them. Eight forty-seven. Eight fifty-nine. Nine eleven. On and on, regular as a lighthouse, and she found her eyes going down them the way you'd go down a list of names on a wall, and at the gap she stopped." },
@@ -338,7 +338,7 @@
       { s: 'solar', f: 'neutral', t: "That's not what I asked." },
       { s: 'chenle', f: 'neutral', t: "It's what I answered." },
       { n: "He put the phone face down on his knee. Behind them Jaemin went for a note and didn't get there and somebody in the lounge cheered anyway, and Chenle closed his eyes very briefly, like a man feeling a draft." },
-      { s: 'chenle', f: 'neutral', t: "I'd been looking for you for three hours and eleven minutes when I crossed. That's the only number I'm sure of. The phone stopped at twelve. I don't know what time it is at home. Nobody here agrees. Minji checks her camera like it's going to tell her." },
+      { s: 'chenle', f: 'sad', t: "I'd been looking for you for three hours and eleven minutes when I crossed. That's the only number I'm sure of. The phone stopped at twelve. I don't know what time it is at home. Nobody here agrees. Minji checks her camera like it's going to tell her." },
       { s: 'chenle', f: 'sad', t: "Three eleven. I keep that one." },
       { choose: [
         { t: "(Call him. On the phone Mitsuru gave you.)", notes: 3, flag: { 'chenle-one': true }, then: [
@@ -359,7 +359,7 @@
       { s: 'jaemin', f: 'happy', t: "LE. Is that— is that SOLAR LEE on our STEP? Come in. Come in, come in, I'm doing a duet, I need a—" },
       { s: 'chenle', f: 'neutral', t: "No." },
       { s: 'jaemin', f: 'surprised', t: "I didn't even finish the sentence!" },
-      { s: 'chenle', f: 'neutral', t: "I know." },
+      { s: 'chenle', f: 'happy', t: "I know." },
       { n: "Jaemin looked from one of them to the other, and something in his face did a quick bright calculation, and then he backed into the hall and closed the door very slowly, like a man leaving a nursery. Chenle put the phone from home back in his pocket. Not the way people put away something they were finished with. The way you put away a receipt you meant to keep." }
     ] },
 
@@ -399,7 +399,7 @@
       { s: 'minji', f: 'neutral', t: "The last practice. Doyoung had Le call first map." },
       { s: 'solar', f: 'neutral', t: "Who's Doyoung?" },
       { s: 'minji', f: 'neutral', t: "Coach. Clipboard. He'd hate it here." },
-      { s: 'chenle', f: 'neutral', t: "He'd love it here. He'd hate that he loved it." },
+      { s: 'chenle', f: 'happy', t: "He'd love it here. He'd hate that he loved it." },
       { s: 'minji', f: 'happy', t: "Every call was right. Every one. I've never been so annoyed in my life." },
       { choose: [
         { t: "Then Chenle calls it.", notes: 3, flag: { 'chenle-calls': true }, then: [
@@ -410,7 +410,7 @@
         ] },
         { t: "Minji's captain. Minji calls.", notes: 2, then: [
           { s: 'minji', f: 'happy', t: "Hear that? Still mine." },
-          { s: 'chenle', f: 'neutral', t: "True." },
+          { s: 'chenle', f: 'happy', t: "True." },
           { n: "She called the rest of it. He said *true* once more, under his breath, at a call she made that he'd clearly have made himself, and Minji heard it and didn't say anything and smiled at the screen for a full minute." }
         ] },
         { t: "I'll call it.", notes: 2, stat: { courage: 1 }, then: [
@@ -420,7 +420,7 @@
         ] }
       ] },
       { n: "Later Minji went off down the row to film the light the crane machines threw on the carpet, which she said was the best light in the building, and Chenle watched her go with his chin on his fist." },
-      { s: 'chenle', f: 'neutral', t: "She doesn't sleep. At the guesthouse. I hear her door at three." },
+      { s: 'chenle', f: 'sad', t: "She doesn't sleep. At the guesthouse. I hear her door at three." },
       { s: 'chenle', f: 'neutral', t: "It's not my business. I'm just saying I hear it." },
       { n: "Without looking, he put one of the chocolate sticks, or the last shrimp chip, whichever was nearest, into Solar's hand, and went back to the screen, and she understood she'd just been told something about Minji in the only language he had for it, and that he'd expected her to do something with it, and trusted her to work out what." }
     ] },
@@ -447,14 +447,14 @@
         ] }
       ] },
       { n: "Chenle didn't stand up. That was what she'd remember. He didn't stand, or raise his voice, or turn round in the seat. He leaned, very slightly, to his left, so that his shoulder was between her and the aisle, and kept his hands on the stick." },
-      { s: 'chenle', f: 'neutral', t: "Practice is till five." },
+      { s: 'chenle', f: 'serious', t: "Practice is till five." },
       { s: 'jaehyun', f: 'neutral', t: "This isn't practice." },
       { s: 'chenle', f: 'neutral', t: "It's practice to her. If she wants to go, she can say so. I'm just sitting here." },
       { n: "Jaehyun looked at him. It was the look he gave things on a field, she'd learn later, the look that read eleven people at once and arrived somewhere, and it went from Chenle's shoulder to Chenle's hands to Chenle's face, which was doing absolutely nothing, and then to hers." },
       { n: "It was, she would think afterwards, the nearest thing to a play anyone had ever called against her brother in her hearing, and it had been called by a boy sitting down." },
       { choose: [
         { t: "Five. Then I'll eat. I'll tell Mitsuru myself.", notes: 3, then: [
-          { s: 'jaehyun', f: 'neutral', t: "...Five." },
+          { s: 'jaehyun', f: 'surprised', t: "...Five." },
           { s: 'jaehyun', f: 'neutral', t: "Then you eat." },
           { n: "He didn't argue. He'd come in with the whole evening already decided, and it was hers now, and he let her have it, the way you'd let somebody take a bag off you that you'd been carrying for them without asking." }
         ] },
@@ -482,7 +482,7 @@
           { n: "She bought him a grape soda from the machine by the fire door. He took it and turned it round and read the whole label, ingredients and all, very slowly, until his heart had evidently come down to something he could live with, and then opened it, and said *thanks* to the can." }
         ] },
         { t: "He likes you, you know.", notes: 2, then: [
-          { s: 'chenle', f: 'neutral', t: "I know. It's the worst thing that's ever happened to me." }
+          { s: 'chenle', f: 'flustered', t: "I know. It's the worst thing that's ever happened to me." }
         ] }
       ] },
       { n: "At four fifty-nine he logged out without being asked. At five he stood up, and picked up his can, and looked at her." },
@@ -495,8 +495,8 @@
       { n: "Mitsuru had said yes in eleven words, nine of which were conditions. He stayed in the lobby. He never went past the foot of the stairs. He didn't touch anything that glowed." },
       { n: "So tonight, somewhere far above that lobby, in a corridor that wasn't the same corridor twice, Solar stood with Akihiko on her left and Junpei on her right and something large and many-handed turning in the dark at the end of the hall, and Fuuka's voice in her ear, soft and steady, and then, behind it, a second voice." },
       { s: 'fuuka', f: 'neutral', t: "It's gathering something. I can feel it gathering. I can't tell you when it lets go, I'm sorry, it's—" },
-      { s: 'chenle', f: 'neutral', t: "Four point two seconds. Every turn. It's been four point two all fight. It charges on the third. That's the next one." },
-      { s: 'chenle', f: 'neutral', t: "Back two steps. Don't use anything." },
+      { s: 'chenle', f: 'serious', t: "Four point two seconds. Every turn. It's been four point two all fight. It charges on the third. That's the next one." },
+      { s: 'chenle', f: 'serious', t: "Back two steps. Don't use anything." },
       { n: "Low and exact. It came into her ear so quietly that for one second her body obeyed it before her head had worked out whose it was, her feet already taking the two steps back, the way they would have in a room full of computers in a building she couldn't remember, and Akihiko, beside her, half-turned, and stared at the air." },
       { s: 'akihiko', f: 'surprised', t: "Who is that?" },
       { s: 'junpei', f: 'flustered', t: "Dude's a metronome. Is he a robot? Fuuka, is he a robot?" },
@@ -508,13 +508,13 @@
         ] },
         { t: "(Go on your own read. Half a second early.)", notes: 2, stat: { courage: 1 }, then: [
           { n: "She went half a second before he said to. She couldn't have told anyone why. She saw it, the way you see a glass about to tip, and went, and Akihiko went with her because Akihiko always went with her, and the thing's turn came down a heartbeat too late on the place where they'd been." },
-          { s: 'chenle', f: 'neutral', t: "...Or that. That works." },
+          { s: 'chenle', f: 'happy', t: "...Or that. That works." },
           { n: "There was a sound in her ear after it, very small, a breath with a laugh at the top of it, quickly put away." }
         ] }
       ] },
       { place: 'Tartarus · Lobby', time: 'The Dark Hour', soft: true },
       { n: "He was sitting on the bottom step when they came down, exactly where Mitsuru had said, next to Fuuka, whose light was going out slowly around her like a lamp somebody had turned down instead of off. His hands were perfectly still on his knees. His voice had been perfectly steady the whole way up and the whole way down. It was only when Solar sat beside him that she saw his left knee going under his still hands, very fast, very small, like a sewing machine." },
-      { s: 'chenle', f: 'neutral', t: "You were at eleven percent. On the fourth turn." },
+      { s: 'chenle', f: 'serious', t: "You were at eleven percent. On the fourth turn." },
       { s: 'solar', f: 'neutral', t: "I felt fine." },
       { s: 'chenle', f: 'neutral', t: "Eleven." },
       { s: 'fuuka', f: 'happy', t: "He counts the way I listen. I didn't know anybody else did it like that. I always thought I was just being nervous." },
@@ -528,10 +528,10 @@
       { choose: [
         { t: "You sounded like you'd done it a hundred times.", notes: 2, then: [
           { s: 'chenle', f: 'neutral', t: "Once. At home. One map. This is the second." },
-          { s: 'chenle', f: 'neutral', t: "The first one was easier. Nobody could die." }
+          { s: 'chenle', f: 'sad', t: "The first one was easier. Nobody could die." }
         ] },
         { t: "Thank you for the call.", notes: 3, then: [
-          { s: 'chenle', f: 'neutral', t: "Don't. If you thank me I'll think about it, and if I think about it I'll get worse." },
+          { s: 'chenle', f: 'flustered', t: "Don't. If you thank me I'll think about it, and if I think about it I'll get worse." },
           { n: "But he looked down at his knee, and it had stopped, and he looked at it like it belonged to somebody else who'd finally behaved." }
         ] },
         { t: "(Put your hand on his knee till it stops.)", notes: 3, then: [
@@ -540,7 +540,7 @@
         ] }
       ] },
       { s: 'chenle', f: 'neutral', t: "I asked Fuuka if I've got one. A Persona. She looked. I don't." },
-      { s: 'chenle', f: 'neutral', t: "So I can't stand in front of you up there." },
+      { s: 'chenle', f: 'sad', t: "So I can't stand in front of you up there." },
       { n: "He said it to the stairs, to the dark at the top of them where she'd just been, and then he pushed his glasses up and stood, because Mitsuru was looking at her watch, and the hour wasn't going to wait for anyone to finish a sentence." },
       { s: 'chenle', f: 'neutral', t: "Twenty-two floors tonight. That's a lot. Go to sleep." }
     ] },
@@ -562,7 +562,7 @@
       { s: 'solar', f: 'neutral', t: "And the two?" },
       { n: "He folded the paper back up along its creases, very precisely, half and half again, and put it under his soda can on the ledge, and looked at the screen instead of at her." },
       { s: 'chenle', f: 'sad', t: "The two is that your hands know where I'm going to be, and you don't know what I'm like when we lose." },
-      { s: 'chenle', f: 'neutral', t: "Nobody here does. I'm terrible. I don't talk for a day and then I make a document." },
+      { s: 'chenle', f: 'flustered', t: "Nobody here does. I'm terrible. I don't talk for a day and then I make a document." },
       { n: "He didn't say anything else, and he didn't need to. He'd done the only thing he knew how to do with it, which was to put a number on it so it would hold still, and the number was ninety-eight, and the number was unbearable, and he'd said it out loud anyway, in a back row, under a ribbon, to the person it was about." },
       { choose: [
         { t: "Then teach me the two percent.", notes: 3, then: [
@@ -582,7 +582,7 @@
         { s: 'chenle', f: 'neutral', t: "You're coming home anyway. So it's fine. It's ninety-eight now and it'll be a hundred later." },
         { s: 'chenle', f: 'neutral', t: "Regionals is in December. At home it's still November. I checked. That's a lot of practice days." }
       ], else: [{ ifFlag: 'route-true', then: [
-        { s: 'chenle', f: 'neutral', t: "You're coming home. Fuuka says it's more complicated than that. I don't care how complicated. Home's home." },
+        { s: 'chenle', f: 'serious', t: "You're coming home. Fuuka says it's more complicated than that. I don't care how complicated. Home's home." },
         { s: 'chenle', f: 'neutral', t: "Regionals is in December. At home it's still November. That's a lot of practice days." }
       ], else: [
         { s: 'chenle', f: 'neutral', t: "So I'm writing it all down. Properly. Every number." },
@@ -595,7 +595,7 @@
         ] },
         { t: "What's in the document? After you lose.", notes: 3, then: [
           { s: 'chenle', f: 'happy', t: "Every fight. Who died first. What it cost. What we should've done instead. It's usually about forty pages." },
-          { s: 'chenle', f: 'neutral', t: "Nobody reads it. Minji reads the first page and the last page. You read all of it, at home. You were the only one." },
+          { s: 'chenle', f: 'sad', t: "Nobody reads it. Minji reads the first page and the last page. You read all of it, at home. You were the only one." },
           { n: "He said the last part to the screen, quickly, the way you'd step over a crack in the pavement, and pressed start before she could answer." }
         ] }
       ] }
@@ -628,7 +628,7 @@
       { s: 'jaemin', f: 'happy', t: "Le. You're in the bracket." },
       { s: 'chenle', f: 'neutral', t: "I'm not." },
       { s: 'jaemin', f: 'happy', t: "You're seeded first." },
-      { s: 'chenle', f: 'neutral', t: "...I'm not, Jaemin." },
+      { s: 'chenle', f: 'flustered', t: "...I'm not, Jaemin." },
       { ifEvent: 'a4-light-on', then: [
         { s: 'danielle', f: 'happy', t: "And what is it you *do,* Chenle? At home. I don't think I've ever heard." },
         { s: 'chenle', f: 'neutral', t: "Tank." },
@@ -656,8 +656,8 @@
       { place: 'Kirijo Guesthouse · Front', time: 'Night', soft: true },
       { n: "He was on the step. It was well below zero. The street was empty and the sky had that hard winter clearness to it that made every streetlight look like it had been cut out with scissors, and he was sitting in it with his hood up and his hands in his sleeves, a boy who hated being outside, outside." },
       { s: 'chenle', f: 'neutral', t: "At home I'd go upstairs. My room. Door shut. Nobody comes in except to tell me there's food." },
-      { s: 'chenle', f: 'neutral', t: "Here upstairs is a room with a number on the door. It's fine. It's not upstairs." },
-      { s: 'chenle', f: 'neutral', t: "Renjun would've come out. If he was here. He'd have brought a cigarette and not smoked it because I hate the smell, and complained the whole time about how cold it was. He'd have said *I'll come, Le.* And then he'd have come." },
+      { s: 'chenle', f: 'sad', t: "Here upstairs is a room with a number on the door. It's fine. It's not upstairs." },
+      { s: 'chenle', f: 'sad', t: "Renjun would've come out. If he was here. He'd have brought a cigarette and not smoked it because I hate the smell, and complained the whole time about how cold it was. He'd have said *I'll come, Le.* And then he'd have come." },
       { s: 'solar', f: 'neutral', t: "Who's Renjun?" },
       { s: 'chenle', f: 'neutral', t: "The one I'd invite." },
       { n: "He didn't say anything about why Renjun wasn't here. He didn't say anything about how far away the house was where Renjun was, or what time it was there, or whether anyone had told him to stay. He just said the one true thing and let it sit on the step between them in the cold, the way he'd let the call log sit." },
@@ -666,13 +666,13 @@
           { n: "She sat. She didn't talk. The cold came up through the stone and into her legs and she let it. After a while he took one hand out of his sleeve and set it flat on the step between them, not touching her, just there, the way you'd set a cup down where someone could reach it." }
         ] },
         { t: "Tell me about him.", notes: 2, then: [
-          { s: 'chenle', f: 'neutral', t: "He's the secretary. He writes everything down. He watches things happen from the kitchen window and doesn't say anything until it's over, and then he says one sentence, and it's right." },
+          { s: 'chenle', f: 'happy', t: "He's the secretary. He writes everything down. He watches things happen from the kitchen window and doesn't say anything until it's over, and then he says one sentence, and it's right." },
           { s: 'chenle', f: 'happy', t: "He'd have hated Jaemin's bracket. He'd have been on it anyway. Seeded last." }
         ] },
         { t: "Do you want to go home?", notes: 3, then: [
           { s: 'chenle', f: 'neutral', t: "Yes." },
           { n: "No pause in front of it. No softening after it. It was the plainest thing she'd heard anyone from home say out loud, and he didn't take it back, and he didn't add anything to make it easier for her to hear." },
-          { s: 'chenle', f: 'neutral', t: "Not by myself, though. That's not a condition I'd agree to." }
+          { s: 'chenle', f: 'serious', t: "Not by myself, though. That's not a condition I'd agree to." }
         ] }
       ] },
       { n: "Inside, faintly through the door, Jaemin announced a winner, and a cheer went up that sounded like it was mostly Jaemin, and Chenle closed his eyes for a second and let out a breath that smoked white in the air in front of him and hung there, and went." }
@@ -688,12 +688,12 @@
       { s: 'chenle', f: 'neutral', t: "I don't know. That's why I'm not asking." },
       { n: "He said it so plainly that she almost laughed, and then didn't, because he wasn't joking, he was just being exact, and the exactness had something behind it that he wasn't putting into words and wasn't going to. He looked at the bag. Rice balls, she could see through the plastic, two of them, and a carton of something, and a box of the thin chocolate sticks with the bare ends, which he evidently considered a food group." },
       { s: 'chenle', f: 'neutral', t: "He eats if I hand it to him. Not if I leave it outside his door. Not if I tell him there's food downstairs. If I put it in his hand. That's the only version that works." },
-      { s: 'chenle', f: 'neutral', t: "At home it's the same. I don't know what else works. I've only got the one thing." },
+      { s: 'chenle', f: 'sad', t: "At home it's the same. I don't know what else works. I've only got the one thing." },
       { choose: [
         { t: "Cold air. He goes up to the roof when it's cold.", notes: 3, flag: { 'chenle-roof': true }, then: [
           { s: 'chenle', f: 'surprised', t: "...Cold air." },
           { n: "He took out his phone and typed it in, two words, under something else she couldn't see, and looked at the screen for a moment as though the list had just doubled in length and he wasn't sure yet if that was good news." },
-          { s: 'chenle', f: 'neutral', t: "That's two things. Okay. Two's better than one." }
+          { s: 'chenle', f: 'happy', t: "That's two things. Okay. Two's better than one." }
         ] },
         { t: "I don't know either.", notes: 2, then: [
           { s: 'chenle', f: 'neutral', t: "Okay. That's useful too. It means it's not just me." }
@@ -719,7 +719,7 @@
         { t: "You can ask me things, you know. Anything. I'll tell you if I can't.", notes: 3, flag: { 'chenle-ask': true }, then: [
           { s: 'chenle', f: 'surprised', t: "Anything?" },
           { s: 'solar', f: 'neutral', t: "Anything." },
-          { s: 'chenle', f: 'neutral', t: "...Okay. Not today. I'll save it." },
+          { s: 'chenle', f: 'happy', t: "...Okay. Not today. I'll save it." },
           { n: "He said it like a man putting a coin in his pocket instead of a machine. She had a feeling he'd know exactly where it was when he wanted it." }
         ] },
         { t: "(Don't say anything. Watch him go.)", notes: 2, then: [
@@ -735,7 +735,7 @@
       { n: "There was a konbini bag on the bench beside him. He held it out before she'd sat down." },
       { s: 'chenle', f: 'neutral', t: "Eat." },
       { n: "Two rice balls, salmon and tuna. A can of corn soup, still hot, wrapped in a napkin so it wouldn't burn her. A bottle of water. He'd lined them up in the bag in the order she should have them in, she realized, when she looked." },
-      { s: 'chenle', f: 'neutral', t: "You said *fine* four times at breakfast. Nobody else at the table said it at all." },
+      { s: 'chenle', f: 'serious', t: "You said *fine* four times at breakfast. Nobody else at the table said it at all." },
       { choose: [
         { t: "(Eat.)", notes: 3, then: [
           { n: "She ate. The salmon first, because it was on top, and then the soup, which was so hot it hurt in the good way, all the way down, and he didn't watch her do it. He watched the port. He watched a ship's lights move along the horizon so slowly you could only see they'd moved if you looked away and back." }
@@ -756,8 +756,8 @@
       { s: 'chenle', f: 'neutral', t: "No." },
       { s: 'chenle', f: 'neutral', t: "The team. You're the team." },
       { n: "He said it the way he'd have said the name of a map, and she thought of the call log, her name going down the screen every twelve minutes like the rungs of a ladder, and the longer ladder under it, and understood that she wasn't the first person he'd sat beside in a cold place with a bag of food, and that he was never going to tell her who the others had been, and that this was, in its way, a kind of manners." },
-      { s: 'chenle', f: 'neutral', t: "I asked Mitsuru again. If I could go in. Further than the lobby. She said no in four words." },
-      { s: 'chenle', f: 'neutral', t: "So it's this. This is what I've got." },
+      { s: 'chenle', f: 'sad', t: "I asked Mitsuru again. If I could go in. Further than the lobby. She said no in four words." },
+      { s: 'chenle', f: 'sad', t: "So it's this. This is what I've got." },
       { choose: [
         { t: "It's enough.", notes: 3, then: [
           { s: 'chenle', f: 'neutral', t: "It's not. But it's what I've got. Those are different numbers." }
@@ -767,13 +767,13 @@
         ] },
         { t: "Who taught you to do this?", notes: 2, then: [
           { s: 'chenle', f: 'neutral', t: "Nobody. I figured it out. It took about a year." },
-          { s: 'chenle', f: 'neutral', t: "It works about sixty percent of the time. That's a good rate. You'd know." }
+          { s: 'chenle', f: 'happy', t: "It works about sixty percent of the time. That's a good rate. You'd know." }
         ] }
       ] },
       { n: "They walked back along the pier to the station with the wind behind them now, pushing, and at the turnstiles he stopped and looked at her through his misted glasses, and she thought he was going to say goodnight." },
       { s: 'chenle', f: 'neutral', t: "Zero." },
       { s: 'solar', f: 'neutral', t: "What?" },
-      { s: 'chenle', f: 'neutral', t: "Since the rice balls. Times you said *fine.* Zero." }
+      { s: 'chenle', f: 'happy', t: "Since the rice balls. Times you said *fine.* Zero." }
     ] },
 
     { after: '1/21', title: '10: tank', place: 'Paulownia Mall · Game Panic', time: 'After School', music: 'tender', scene: [
@@ -792,12 +792,12 @@
         ] }
       ] },
       { n: "Between rounds, with the countdown going on the screen and the next match loading, he took both hands off the stick and put them in his hoodie pocket, which he never did between rounds, and looked at the cabinet instead of at her." },
-      { s: 'chenle', f: 'neutral', t: "I'm going to say a thing. Once. Don't make it weird." },
+      { s: 'chenle', f: 'flustered', t: "I'm going to say a thing. Once. Don't make it weird." },
       { s: 'solar', f: 'neutral', t: "Okay." },
       { s: 'chenle', f: 'neutral', t: "I'm your tank." },
       { s: 'solar', f: 'neutral', t: "I know." },
       { s: 'chenle', f: 'serious', t: "No. You know it in here. On the screen. I mean everywhere. If something comes at you, I'm in front. I can't fight, I checked, I asked twice, I don't have one. I'll be in front anyway. That's the whole job. It doesn't stop because you forgot the game." },
-      { s: 'chenle', f: 'neutral', t: "That's it. That's the thing." },
+      { s: 'chenle', f: 'flustered', t: "That's it. That's the thing." },
       { n: "He'd said it at the same volume he said everything, to the screen, with his hands in his pocket, and it had cost him, she could see that, it had cost him exactly as much as it would have cost anyone else to shout it from a roof, and he'd paid it in full and wasn't going to ask for change." },
       { ifFlag: 'chenle-one', then: [
         { n: "He took the pink phone out of his pocket, the one from here, and opened it, and showed her the call log without comment. Her name, once, near the bottom, from a step outside the guesthouse in November. One." },
@@ -808,7 +808,7 @@
           { n: "She didn't say anything. She put a coin in, and then another one, for him, before he could, and he looked at the two credits on the screen and made a small sound in his throat that might, in somebody louder, have been a laugh, or might have been something else, and she didn't look at him to find out which, because he'd have hated that." }
         ] },
         { t: "Then I'm your support. Everywhere.", notes: 3, then: [
-          { s: 'chenle', f: 'neutral', t: "You already were. I have the data." },
+          { s: 'chenle', f: 'happy', t: "You already were. I have the data." },
           { s: 'chenle', f: 'sad', t: "...But thanks for saying it out loud. Nobody on this team says anything out loud except Olivia, and she only says it at a volume where it stops meaning anything." }
         ] },
         { t: "That was very plain.", notes: 2, then: [
@@ -816,14 +816,14 @@
         ] }
       ] },
       { ifFlag: 'route-R', then: [
-        { s: 'chenle', f: 'neutral', t: "Practice is Monday. At home. The lab's going to smell like Olivia's cereal and Doyoung's going to have a clipboard full of things about you and I'm going to have fourteen pages." },
+        { s: 'chenle', f: 'happy', t: "Practice is Monday. At home. The lab's going to smell like Olivia's cereal and Doyoung's going to have a clipboard full of things about you and I'm going to have fourteen pages." },
         { s: 'chenle', f: 'neutral', t: "Regionals is in December." }
       ], else: [{ ifFlag: 'route-true', then: [
         { s: 'chenle', f: 'neutral', t: "Practice is Monday. At home. Fuuka says your way back is more complicated than ours. I don't care how complicated. I'll be there first. I'll have the pages." },
         { s: 'chenle', f: 'neutral', t: "Regionals is in December." }
       ], else: [
-        { s: 'chenle', f: 'neutral', t: "If you're not coming back with us, I'll leave the support slot open. Doyoung's going to hate it. I'll make him." },
-        { s: 'chenle', f: 'neutral', t: "I'll call first map like you're on comms. Nobody'll know but me." }
+        { s: 'chenle', f: 'serious', t: "If you're not coming back with us, I'll leave the support slot open. Doyoung's going to hate it. I'll make him." },
+        { s: 'chenle', f: 'sad', t: "I'll call first map like you're on comms. Nobody'll know but me." }
       ] }] },
       { n: "He pressed start. The cabinet counted down from ten in big red numbers, and he said each one under his breath along with it, like a man who couldn't have stopped if he'd tried, and at one he went forward, and she was already behind him." }
     ] }
@@ -833,7 +833,7 @@
       { n: "She came on a Saturday at five to one, on purpose, to beat him there, just once. He was already in the left seat. He'd been there, the man at the counter told her without being asked, since twelve thirty-eight." },
       { s: 'chenle', f: 'neutral', t: "You're early." },
       { s: 'solar', f: 'neutral', t: "You're earlier." },
-      { s: 'chenle', f: 'neutral', t: "I'm always earlier. It's not a competition. If it was a competition I'd have already won it." },
+      { s: 'chenle', f: 'happy', t: "I'm always earlier. It's not a competition. If it was a competition I'd have already won it." },
       { choose: [
         { t: "Tomorrow I'll come at noon.", notes: 3, then: [
           { s: 'chenle', f: 'neutral', t: "The mall opens at ten." },
@@ -874,10 +874,10 @@
       { n: "This time she texted him. *pier. 7.* No question mark. He came at six fifty-one in the same too-thin coat with the hood pulled down to a small circle, and found her on the bench with a bag beside her, and stopped." },
       { ifFlag: 'chenle-outside', then: [
         { s: 'chenle', f: 'neutral', t: "I hate being outside." },
-        { s: 'solar', f: 'neutral', t: "I know. It's minus one. The wind's eight meters a second. I checked." },
+        { s: 'solar', f: 'happy', t: "I know. It's minus one. The wind's eight meters a second. I checked." },
         { n: "He sat down. He looked at her for a long second through the small circle of his hood, and then he laughed, actually laughed, the high quick one he never let anybody hear, and the wind took it out over the water before it could embarrass him." }
       ], else: [
-        { s: 'chenle', f: 'neutral', t: "...Is this the thing? Are you doing the thing at me?" },
+        { s: 'chenle', f: 'happy', t: "...Is this the thing? Are you doing the thing at me?" },
         { s: 'solar', f: 'neutral', t: "Eat." },
         { n: "He sat down. He looked in the bag. He said *you put the soup on top, the soup's supposed to be second,* and then ate it first anyway, and didn't say anything else for a long time." }
       ] },
@@ -885,7 +885,7 @@
         { t: "(Give him a number.)", notes: 3, then: [
           { s: 'solar', f: 'neutral', t: "You checked your phone eleven times at lunch." },
           { s: 'chenle', f: 'surprised', t: "...Twelve. You missed one." },
-          { s: 'chenle', f: 'neutral', t: "But that's close. That's very close. Okay." }
+          { s: 'chenle', f: 'happy', t: "But that's close. That's very close. Okay." }
         ] },
         { t: "(Just sit. Let the wind do it.)", notes: 2, then: [
           { n: "They sat. The wind did it. A ship moved along the horizon so slowly you could only tell if you looked away and back, and they both kept looking away and back, and neither of them said what they were checking." }
@@ -899,7 +899,7 @@
       { s: 'chenle', f: 'neutral', t: "It's more efficient. Same trip." },
       { ifFlag: 'chenle-roof', then: [
         { n: "Haechan finished the rice ball. Then he went back inside, and up, and she heard the roof door at the top of the building open, and close, and Chenle tilted his head at the sound like a man hearing a theory confirmed in a lab two floors away." },
-        { s: 'chenle', f: 'neutral', t: "Two things. Both of them worked. Same night." }
+        { s: 'chenle', f: 'happy', t: "Two things. Both of them worked. Same night." }
       ], else: [
         { n: "Haechan sat down on the top step, which he never did, and finished the rice ball, and sat there for the rest of the fifteen minutes with his elbows on his knees, saying nothing, while Chenle said nothing and Solar said nothing and the streetlight at the gate buzzed." }
       ] },
@@ -910,7 +910,7 @@
         { t: "Same time next week?", notes: 2, then: [
           { s: 'chenle', f: 'neutral', t: "It's not a schedule." },
           { s: 'haechan', f: 'neutral', t: "It's a schedule." },
-          { s: 'chenle', f: 'neutral', t: "...It's a schedule." }
+          { s: 'chenle', f: 'flustered', t: "...It's a schedule." }
         ] }
       ] }
     ] },
@@ -930,7 +930,7 @@
           { n: "He didn't write it down. He just sat there, very still, looking at the screen, as though writing it down would have made it smaller." }
         ] },
         { t: "I don't know. Tell me which one.", notes: 2, then: [
-          { s: 'chenle', f: 'neutral', t: "No. It doesn't count if I tell you." },
+          { s: 'chenle', f: 'happy', t: "No. It doesn't count if I tell you." },
           { s: 'chenle', f: 'neutral', t: "It'll come. Your hands'll get there first. They always do. I'll wait." }
         ] }
       ] }
@@ -938,8 +938,8 @@
     { title: 'home', place: 'Paulownia Mall · Game Panic', time: 'After School', scene: [
       { ifFlag: 'route-R', then: [
         { n: "He was making a list. A real one, on the back of a flyer, under the heading *WHEN WE GET BACK,* and when she sat down he turned it so she could read it. *Practice Monday. Tell Doyoung about the wrench. Olivia, explain nothing. Haerin, one sentence. Renjun, everything.*" },
-        { s: 'chenle', f: 'neutral', t: "It's still November there. If the math's right we walk out of one night and into the next morning. I've done the math. Don't make me show you the math." },
-        { s: 'chenle', f: 'neutral', t: "I'm going to be so tired. I don't care." }
+        { s: 'chenle', f: 'happy', t: "It's still November there. If the math's right we walk out of one night and into the next morning. I've done the math. Don't make me show you the math." },
+        { s: 'chenle', f: 'happy', t: "I'm going to be so tired. I don't care." }
       ], else: [{ ifFlag: 'route-true', then: [
         { n: "He was making a list. A real one, on the back of a flyer, under the heading *WHEN WE GET BACK.* At the bottom, last item, underlined twice, *left seat. hers.*" },
         { s: 'chenle', f: 'neutral', t: "Fuuka says it's more complicated for you. Going home. More than one door." },
@@ -955,7 +955,7 @@
         ] },
         { t: "You're going to miss this place.", notes: 2, then: [
           { s: 'chenle', f: 'neutral', t: "The back row doesn't lag. Nowhere else I've ever been has a back row that doesn't lag." },
-          { s: 'chenle', f: 'neutral', t: "So. Yes. That's what I'm saying. That's the whole sentence." }
+          { s: 'chenle', f: 'flustered', t: "So. Yes. That's what I'm saying. That's the whole sentence." }
         ] }
       ] }
     ] }

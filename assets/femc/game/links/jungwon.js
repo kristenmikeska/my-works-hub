@@ -102,7 +102,7 @@
     [
       { n: "Someone had to carry the box of old ballots down to the storeroom, and Jungwon, who could not allow anything to be decided by anything less than a fair and transparent process, proposed rock-paper-scissors." },
       { n: "He lost. He proposed best of three. He lost. He proposed, with a face like a closed door, best of eleven." },
-      { s: 'jungwon', f: 'serious', t: "You're reading me. Stop reading me. You've always read me. It's unsporting." },
+      { s: 'jungwon', f: 'flustered', t: "You're reading me. Stop reading me. You've always read me. It's unsporting." },
       { choose: [
         { t: "(Throw rock. You've thrown rock every single time.)", notes: 3, then: [
           { n: "She threw rock. He threw scissors, again, because he'd been so certain she'd switch that he'd switched himself, and he stared at his own hand like it had testified against him." },
@@ -241,23 +241,23 @@
       ] },
       { s: 'jungwon', f: 'neutral', t: "Have you eaten?" },
       { n: "It was such a strange question to be asked by him, of all people, that she laughed before she could decide not to, and he looked at her laughing like he was watching someone walk across a bridge he'd been told was out." },
-      { s: 'solar', f: 'neutral', t: "Why is that funny? Why is it funny that you asked me that?" },
-      { s: 'jungwon', f: 'neutral', t: "Because people usually ask me. Constantly. I have a friend who asks me eleven times a day. I don't answer him." },
-      { s: 'jungwon', f: 'serious', t: "You used to ask too. You were meaner about it." },
+      { s: 'solar', f: 'happy', t: "Why is that funny? Why is it funny that you asked me that?" },
+      { s: 'jungwon', f: 'happy', t: "Because people usually ask me. Constantly. I have a friend who asks me eleven times a day. I don't answer him." },
+      { s: 'jungwon', f: 'happy', t: "You used to ask too. You were meaner about it." },
       { n: "He said it lightly. He touched the watch on his left wrist while he said it, a heavy steel watch, too old for him, too big for him, and she saw that the second hand wasn't moving. It had stopped. It sat on the eleven like it was waiting to be let go." },
       { n: "Her math homework was in her bag. She knew it was in her bag because she'd been carrying it around for two days like a stone, and she took it out, because she needed to do something with her hands too, and he looked at it upside down across the table and his whole face changed." },
       { s: 'jungwon', f: 'serious', t: "...Number four. You carried the sign wrong." },
-      { s: 'solar', f: 'neutral', t: "I didn't—" },
+      { s: 'solar', f: 'flustered', t: "I didn't—" },
       { s: 'jungwon', f: 'serious', t: "You did. You always carry it wrong. You do it right in your head and then you write it down and something in your hand gets nervous and flips it. You did it on the—" },
       { n: "He stopped. He capped and uncapped the pen. The dimples were gone, and what was left of his face was very still and very young." },
-      { s: 'jungwon', f: 'neutral', t: "I'm sorry. That was rude." },
+      { s: 'jungwon', f: 'sad', t: "I'm sorry. That was rude." },
       { choose: [
         { t: "Show me. Where I flip it.", notes: 3, tally: { 'jungwon.H': 1 }, then: [
           { n: "He came around the table and sat beside her, not too close, and took the worksheet, and talked her through number four in a low, even, patient voice, and when she did it right he didn't say anything. He just put a small neat tick in the margin in red, the kind of tick that took up exactly as much room as it needed to." },
           { n: "She looked at the tick for much longer than it deserved. Somebody had made that tick on her homework before. She knew the shape of it like her own handwriting." }
         ] },
         { t: "You don't have to apologize. I'm the one who doesn't—", notes: 3, tally: { 'jungwon.S': 1 }, then: [
-          { s: 'jungwon', f: 'neutral', t: "Please don't." },
+          { s: 'jungwon', f: 'sad', t: "Please don't." },
           { n: "He said it so quietly, so formally, with such perfect courtesy, that it landed like a door shut in her face, and she understood that he'd meant it to stop the sentence before she could finish it, and that he'd been afraid of the end of it." },
           { s: 'jungwon', f: 'neutral', t: "You don't have to finish that. I heard it the first time. Thank you." }
         ] },
@@ -297,7 +297,7 @@
       { s: 'jungwon', f: 'happy', t: "Section four, paragraph two. Ribbons should be the school issue. That's a nicer one. I'd keep it. I'd just keep it in my bag on inspection days." },
       { n: "Yukari opened her mouth, closed it, looked at Solar with an expression of profound betrayal, as if Solar had personally brought him here to do this, and went away down the corridor at speed. A moment later they heard her voice from the stairwell saying, to someone, *at a school he doesn't even GO to.*" },
       { s: 'jungwon', f: 'flustered', t: "...That was rude of me. I'll apologize. I can't help it. My hands want a clipboard." },
-      { s: 'jungwon', f: 'neutral', t: "That was the most frightening conversation I've had this year, and I've had several." },
+      { s: 'jungwon', f: 'happy', t: "That was the most frightening conversation I've had this year, and I've had several." },
       { choose: [
         { t: "You were more polite the angrier you got.", notes: 3, then: [
           { s: 'jungwon', f: 'surprised', t: "..." },
@@ -314,7 +314,7 @@
           { n: "He said *her* the way you'd set down a cup you were afraid of chipping, and didn't look at Solar at all while he said it, which was how she knew exactly who he meant, and that he was waiting to see whether she did." }
         ] },
         { t: "You're both somebody's heir.", notes: 3, tally: { 'jungwon.S': 1 }, then: [
-          { s: 'jungwon', f: 'neutral', t: "Somebody's what's left, in my case." },
+          { s: 'jungwon', f: 'sad', t: "Somebody's what's left, in my case." },
           { n: "He touched the watch. The second hand sat on the eleven." },
           { s: 'jungwon', f: 'happy', t: "I'm sorry. That's not a conversation to have over committee minutes. Would you like some tea? The kettle in here is terrible. I've grown fond of it." }
         ] }
@@ -357,7 +357,7 @@
         ] },
         { t: "What were you doing? That night.", notes: 2, then: [
           { s: 'jungwon', f: 'neutral', t: "Walking from the cafe to the school. To get my notes. I'd left them in the council room the night before an exam. I don't leave things. I'd left them." },
-          { s: 'jungwon', f: 'serious', t: "I think I wanted a reason to be somewhere alone for ten minutes. I got one. It's been a month." }
+          { s: 'jungwon', f: 'sad', t: "I think I wanted a reason to be somewhere alone for ten minutes. I got one. It's been a month." }
         ] }
       ] },
       { n: "There was a second phone beside the first one. She hadn't noticed it, which she suspected was the point. Older, black, a folding one with a stub of an antenna, the kind nobody she'd ever seen at Gekkoukan carried, and its little outside screen was dark." },
@@ -375,7 +375,7 @@
         ] },
         { t: "You're allowed to be both. I'm three.", notes: 3, tally: { 'jungwon.S': 1 }, then: [
           { s: 'jungwon', f: 'surprised', t: "..." },
-          { s: 'jungwon', f: 'neutral', t: "Yes. You are. I keep forgetting that I'm the simple case." },
+          { s: 'jungwon', f: 'flustered', t: "Yes. You are. I keep forgetting that I'm the simple case." },
           { n: "He said it with perfect courtesy, and his ears went red anyway, the way they did when something got past the courtesy before he could stop it at the door." }
         ] },
         { t: "(Turn the old phone face up, so it isn't alone.)", notes: 2, then: [
@@ -393,8 +393,8 @@
           { s: 'jungwon', f: 'neutral', t: "Now there are twelve." }
         ] },
         { t: "Do you want to go home?", notes: 2, then: [
-          { s: 'jungwon', f: 'neutral', t: "That's a very large question to ask at four in the afternoon." },
-          { s: 'jungwon', f: 'serious', t: "Yes. No. Not without— Yes." },
+          { s: 'jungwon', f: 'flustered', t: "That's a very large question to ask at four in the afternoon." },
+          { s: 'jungwon', f: 'flustered', t: "Yes. No. Not without— Yes." },
           { n: "He put the phone face down. The answer stayed in the room like a fourth person." }
         ] }
       ] },
@@ -427,7 +427,7 @@
           { n: "That was all he said. His face had gone completely still. No dimples. Nothing at all, and she knew, without knowing how she knew, that this was what it looked like when he was happy." }
         ] },
         { t: "I don't know how.", notes: 2, then: [
-          { s: 'jungwon', f: 'neutral', t: "You do." },
+          { s: 'jungwon', f: 'sad', t: "You do." },
           { s: 'jungwon', f: 'neutral', t: "But that's all right. Watch me, then. You can tell me when I do it wrong. You will." }
         ] },
         { t: "Who taught you to cook?", notes: 2, then: [
@@ -438,7 +438,7 @@
       { n: "The rice went into a heavy clay pot she'd never seen in the dorm and would never see again, with the kombu and the fillets laid over it skin up, and he turned the flame down so low it was barely a blue ring, and stood watching it with his arms folded and his hand around his own left wrist." },
       { n: "Footsteps on the stairs. Akihiko came in in a T-shirt and track pants, with his hair flat on one side from the pillow, for water, the way he came down for water every night at one, and stopped in the doorway, and looked at the counter, and at the knife in Jungwon's hand." },
       { n: "Something went across his face and stayed there. Solar knew that knife. Everyone in the dorm knew that knife. It had lived in the drawer by the stove since the first week of October and nobody had touched it." },
-      { s: 'jungwon', f: 'neutral', t: "...I'm sorry. Is this someone's? I should have asked. I'll put it back." },
+      { s: 'jungwon', f: 'flustered', t: "...I'm sorry. Is this someone's? I should have asked. I'll put it back." },
       { s: 'akihiko', f: 'serious', t: "It's Shinji's." },
       { n: "He didn't say anything else for a moment. He looked at the fish, and the two neat fillets, and the pot, and the low blue flame, the whole careful midnight business of somebody making food for somebody else in a kitchen that had been very quiet since October." },
       { s: 'akihiko', f: 'neutral', t: "No. Use it. He'd want somebody to. He'd hate that it's been sitting in a drawer." },
@@ -447,13 +447,13 @@
       { n: "Someone else went past the door a minute later, on the way to the back stairs, in a black hoodie with the hood up. He didn't come in. He slowed in the doorway just long enough to look at the fish, and the pot, and the knife, and Jungwon, in that order, the way you'd read a menu you had no intention of ordering from." },
       { s: 'jungwon', f: 'neutral', t: "Donghyuck." },
       { s: 'haechan', f: 'neutral', t: "Yang." },
-      { s: 'haechan', f: 'neutral', t: "Midnight fish. Very normal. Lock your door, agasshi, the young master's cooking." },
+      { s: 'haechan', f: 'happy', t: "Midnight fish. Very normal. Lock your door, agasshi, the young master's cooking." },
       { n: "Then he was gone, down toward the laundry room, his steps not hurrying at all, and Jungwon laid the next fillet down skin-side up with a precision that was, she thought, very slightly louder than it had been before." },
       { s: 'jungwon', f: 'neutral', t: "He'll have told you he has two lives. He's right. So do I. I'd only ask you not to assume they're the same two." },
       { s: 'jungwon', f: 'neutral', t: "We have one in common. It's the one where we're not friends." },
       { s: 'solar', f: 'neutral', t: "Your watch stopped." },
       { s: 'jungwon', f: 'neutral', t: "When I came through. Eleven fifty-eight and some seconds." },
-      { s: 'jungwon', f: 'neutral', t: "It was my brother's. There's a link taken out so it fits me. He gave it to me the night he went, and told me it had never fit him. It had. I've only lately found out how much he lied to me." },
+      { s: 'jungwon', f: 'sad', t: "It was my brother's. There's a link taken out so it fits me. He gave it to me the night he went, and told me it had never fit him. It had. I've only lately found out how much he lied to me." },
       { s: 'jungwon', f: 'neutral', t: "I wind it every night anyway. In case." },
       { choose: [
         { t: "In case of what?", notes: 2, then: [
@@ -472,7 +472,7 @@
         ] }
       ] },
       { n: "They ate it at the kitchen table at one in the morning with the overhead light off and the stove light on, out of two bowls he'd found at the back of a cupboard. It was the best thing she had ever eaten. She knew it with her whole body." },
-      { s: 'solar', f: 'neutral', t: "...It's terrible." },
+      { s: 'solar', f: 'happy', t: "...It's terrible." },
       { n: "She had no idea why she said it. It came out like a line she'd been handed. He put his chopsticks down and looked at her for a long time across the table, and then he laughed, quietly, into his hand, the first real laugh she'd heard out of him, and his ears went red." },
       { s: 'jungwon', f: 'flustered', t: "Yes. Thank you. That's exactly what you say." },
       { n: "In the morning the pot was gone. Both bowls were washed and set upside down on the rack, which nobody in this dorm had done in their lives." }
@@ -499,7 +499,7 @@
       { s: 'jungwon', f: 'neutral', t: "Would you play?" },
       { choose: [
         { t: "I don't know how.", notes: 2, then: [
-          { s: 'jungwon', f: 'neutral', t: "No. I don't suppose you do. Not here." },
+          { s: 'jungwon', f: 'sad', t: "No. I don't suppose you do. Not here." },
           { s: 'jungwon', f: 'neutral', t: "Sit anyway. Put a stone wherever you like. It's very hard to do it wrong in the first five moves. It's very easy after that." }
         ] },
         { t: "(Sit down and take the black stones.)", notes: 3, then: [
@@ -519,7 +519,7 @@
         ] },
         { t: "And at home? The other home?", notes: 3, tally: { 'jungwon.H': 1 }, then: [
           { s: 'jungwon', f: 'neutral', t: "At the other one you don't play baduk. You play a crane game at the mall for forty minutes and lose and call it an investment." },
-          { s: 'jungwon', f: 'serious', t: "I didn't come with you. I'm not invited to that one. I heard about it. Everyone hears about everything." }
+          { s: 'jungwon', f: 'sad', t: "I didn't come with you. I'm not invited to that one. I heard about it. Everyone hears about everything." }
         ] },
         { t: "I'm sorry. For being rude.", notes: 2, then: [
           { s: 'jungwon', f: 'neutral', t: "Don't be. It's the most honest thing about the way you play." }
@@ -535,7 +535,7 @@
       { n: "He wasn't working. That was the first thing. The binders were stacked at the end of the table, squared, untouched, and the red pen was capped, and he was sitting with his blazer open and his hands flat on the table in front of him like a man waiting for a verdict he'd already read in the jury's faces." },
       { n: "On the lapel of the navy blazer, the way it always was, was a small enamel pin. Blue and gold. A single word on it, very small, in neat capitals. She'd seen it every day for a month and never really looked." },
       { s: 'jungwon', f: 'neutral', t: "There are exams in the morning. At home." },
-      { s: 'jungwon', f: 'neutral', t: "It's always the night before, at home. I left the cafe to get my notes from the council room, and opened the door, and it was this one, and I've been here a month, and it's still the night before. My parents are still waiting up. Sunoo is still asking if I ate." },
+      { s: 'jungwon', f: 'sad', t: "It's always the night before, at home. I left the cafe to get my notes from the council room, and opened the door, and it was this one, and I've been here a month, and it's still the night before. My parents are still waiting up. Sunoo is still asking if I ate." },
       { n: "He took the pin off. It took him a second, his fingers clumsy on the catch in a way his fingers were never clumsy, and then he set it on the table between them and pushed it a few centimeters toward her with one finger, the way you'd move a stone on a board." },
       { n: "He reached into the inside pocket of the blazer and took out two folded sheets of paper, soft at the creases from being carried, and laid them on the table side by side, and squared them. His handwriting. The same neat slanted print. One was a page and a half. The other was four lines." },
       { s: 'jungwon', f: 'neutral', t: "Results day. One for winning. One for losing. I wrote them both the night before. I always write both." },
@@ -557,9 +557,9 @@
       { n: "She picked up the pin. It was small and absurdly heavy, heavier than enamel had any right to be, and her thumb found the catch on the back without looking, the way it would find the catch on something she'd held a hundred times, turning it over and over at night, deciding whether she wanted it." },
       { fragment: 'hoax-president-pin' },
       { n: "The star on Haenim's sash ticked, once. A tiny metal sound, like a pin dropped on a desk in an empty room." },
-      { s: 'solar', f: 'neutral', t: "I didn't want to win." },
+      { s: 'solar', f: 'sad', t: "I didn't want to win." },
       { n: "It came out of her before she knew it was in her. He looked at her like she'd read aloud a sentence from his own diary." },
-      { s: 'jungwon', f: 'neutral', t: "...No. I know. You didn't." },
+      { s: 'jungwon', f: 'sad', t: "...No. I know. You didn't." },
       { s: 'jungwon', f: 'serious', t: "And then I made you my vice president anyway, in front of everyone, and you told me you couldn't possibly be. You were right to be angry. The others told me it was a good idea. I'm supposed to be smarter than that." },
       { choose: [
         { t: "Did I stay angry?", notes: 2, tally: { 'jungwon.H': 1 }, then: [
@@ -573,13 +573,13 @@
       ] },
       { n: "Outside the window the sky was going the dark blue of four-thirty in November, and the lights were coming on across the courtyard one by one. He watched them come on. His hand went to the watch and stayed there." },
       { s: 'jungwon', f: 'serious', t: "Something keeps talking to me. In the Dark Hour. When I'm walking back to the guesthouse." },
-      { s: 'jungwon', f: 'neutral', t: "It's very courteous. It offers to let me forget the morning. The exams, and the house with the lights on, and my mother's voice through a door, and whatever's waiting on the other side of any of it. It says I've done enough." },
-      { s: 'jungwon', f: 'neutral', t: "It says I could forget you too, and it would stop hurting, the way you are now. Not knowing me." },
+      { s: 'jungwon', f: 'serious', t: "It's very courteous. It offers to let me forget the morning. The exams, and the house with the lights on, and my mother's voice through a door, and whatever's waiting on the other side of any of it. It says I've done enough." },
+      { s: 'jungwon', f: 'sad', t: "It says I could forget you too, and it would stop hurting, the way you are now. Not knowing me." },
       { n: "He said it in the same even, formal voice he'd use to read out a budget line. He didn't look at her. His knuckles on the watch had gone white." },
       { choose: [
         { t: "What did you tell it?", notes: 3, then: [
           { s: 'jungwon', f: 'happy', t: "I said, *No, thank you.*" },
-          { s: 'jungwon', f: 'neutral', t: "It was the most polite I've ever been in my life. You'd have been frightened." }
+          { s: 'jungwon', f: 'happy', t: "It was the most polite I've ever been in my life. You'd have been frightened." }
         ] },
         { t: "You have done enough. And you're not allowed to forget me.", notes: 3, then: [
           { s: 'jungwon', f: 'surprised', t: "..." },
@@ -613,9 +613,9 @@
       ] },
       { n: "She sat down on the step beside him. Koromaru moved over to put his chin on her knee, which was, she thought, fair." },
       { s: 'solar', f: 'neutral', t: "In September I heard a boy's voice up here. Saying a dog's name. Then nobody was here." },
-      { s: 'solar', f: 'neutral', t: "*Maeumi.*" },
+      { s: 'solar', f: 'serious', t: "*Maeumi.*" },
       { n: "He went so still that Koromaru lifted his head." },
-      { s: 'jungwon', f: 'neutral', t: "That's my dog." },
+      { s: 'jungwon', f: 'surprised', t: "That's my dog." },
       { s: 'jungwon', f: 'neutral', t: "He's very small. He gets out. He was out the night I left. I was calling him at the end of our road and then I was calling him somewhere I didn't recognize, and the steps were whiter, and there were more of them." },
       { s: 'jungwon', f: 'serious', t: "I thought I'd dreamed it." },
       { n: "He looked down at his hands. They were cold, and very clean, and the left one had a fresh scrape across the back of it that hadn't been there a week ago. She knew where it had come from. She'd been there, on Saturday, in the tower, when something had stood up behind him out of the gap like a bridge built in a single night, and he'd raised one arm without looking and every Shadow on the floor had stopped." },
@@ -639,7 +639,7 @@
       { s: 'ken', f: 'neutral', t: "...With what?" },
       { s: 'jungwon', f: 'neutral', t: "An apology. He was very patient." },
       { n: "Ken looked at him for a long, measuring moment, a small serious boy weighing a much taller serious boy, and then nodded, once, like a colleague, and clipped the leash on, and Koromaru went with him looking back over his shoulder at Jungwon the whole way down the street." },
-      { s: 'jungwon', f: 'neutral', t: "I like him. He has a schedule. I respect a schedule." },
+      { s: 'jungwon', f: 'happy', t: "I like him. He has a schedule. I respect a schedule." },
       { n: "They walked down the steps together with Koromaru trotting ahead and stopping on every landing to make sure they were still coming. He counted under his breath. So did she. They came out at the bottom on the same number." }
     ] },
 
@@ -655,7 +655,7 @@
       { n: "The worksheet in front of her went double. There was another one under it, a different paper, a different school's letterhead, the corners soft from being carried around in a bag for days, every problem covered in this exact red, these exact ticks, the same tiny notes, *you knew this, you knew this, you knew this,* and someone sitting across from her at a table that wasn't this one, very patiently, at eleven at night, saying she wasn't bad at it, she was just afraid of it, and those were different things." },
       { fragment: 'hoax-math-homework' },
       { n: "The star on Haenim's sash ticked, a small bright sound she felt in her back teeth." },
-      { s: 'solar', f: 'neutral', t: "You did this before." },
+      { s: 'solar', f: 'surprised', t: "You did this before." },
       { s: 'jungwon', f: 'neutral', t: "Every week. Since the election." },
       { s: 'jungwon', f: 'serious', t: "You were so annoyed about it. That I was better at it. That I'd offered. That I was right. You said I looked after everyone in the school beautifully and never once let anyone look after me." },
       { s: 'jungwon', f: 'neutral', t: "You were right. I was going to tell you that. I was going to tell you that after exams." },
@@ -664,7 +664,7 @@
         { t: "(Put your hand over his.)", route: 'romance', notes: 3, then: [
           { n: "She put her hand over his. Just that. Her palm on the back of his hand on a library table with forty people in the room not looking at them. His fingers went still under hers, and then, very slowly, the way you'd turn over a card you weren't sure you were allowed to see, he turned his hand over, and held on." },
           { s: 'jungwon', f: 'flustered', t: "...This is a library." },
-          { s: 'solar', f: 'neutral', t: "I know." },
+          { s: 'solar', f: 'flustered', t: "I know." },
           { s: 'jungwon', f: 'flustered', t: "I'm noting it for the minutes. I'm not going to stop you. I'm only noting it." },
           { n: "His ears had gone red to the tips. His face was absolutely still, no dimples, nothing, and she'd learned to read it backward. He was happier than she'd ever seen him. He didn't let go until the librarian rang the closing bell." }
         ] },
@@ -672,7 +672,7 @@
           { n: "She picked up the red pen and leaned over his own notebook, the one with his study schedule in it, and circled the place where he'd scheduled himself nine hours a day and no lunch, and wrote in the margin in her own messier hand, *you knew this.*" },
           { s: 'jungwon', f: 'surprised', t: "..." },
           { s: 'jungwon', f: 'happy', t: "That's insubordination." },
-          { s: 'solar', f: 'neutral', t: "That's tutoring." },
+          { s: 'solar', f: 'happy', t: "That's tutoring." },
           { n: "He looked at the circle for a long time. Then he took the pen back, and drew a line through one of the nine hours, and wrote *lunch* beside it, and showed her, like a student turning in homework, and she gave it a tick." }
         ] }
       ] },
@@ -701,7 +701,7 @@
         ] },
         { t: "(Leave the gap. Sign only Solar.)", notes: 3, then: [
           { n: "She wrote *Solar* in the gap, by itself, and nothing in front of it, and handed the pen back." },
-          { s: 'jungwon', f: 'neutral', t: "...That's fair. That's the most honest minute in the whole book." }
+          { s: 'jungwon', f: 'happy', t: "...That's fair. That's the most honest minute in the whole book." }
         ] }
       ] },
       { s: 'jungwon', f: 'neutral', t: "Because it's your life. It's the only thing in either place that's actually yours. I'd like at least one person to treat it that way." },
@@ -719,11 +719,11 @@
         { n: "She came around the table. He watched her come. When she stood in front of his chair he looked up at her with the snow-light on the side of his face, and she put her forehead down against his, very carefully, the way you'd set something down on a surface you weren't sure would hold." },
         { n: "He didn't move. He breathed out, once, slow, and the breath was shaking, and she felt the shake go through her too." },
         { s: 'jungwon', f: 'flustered', t: "...I'm not noting this one." },
-        { s: 'solar', f: 'neutral', t: "No?" },
+        { s: 'solar', f: 'flustered', t: "No?" },
         { s: 'jungwon', f: 'flustered', t: "No. Some things don't go in the minutes. I'm told." }
       ], else: [
         { n: "She came around the table and sat on the edge of it beside his chair, the way she'd never have been allowed to sit on a table at the other school, and swung her feet, and watched the snow with him." },
-        { s: 'jungwon', f: 'neutral', t: "That's against at least two rules." },
+        { s: 'jungwon', f: 'happy', t: "That's against at least two rules." },
         { s: 'solar', f: 'neutral', t: "Note it." },
         { s: 'jungwon', f: 'happy', t: "I'm noting that my best friend sat on the table and I didn't say anything. That's going in. That's a historic record." }
       ] },
@@ -749,7 +749,7 @@
         { t: "(Pin it on him yourself.)", notes: 3, tally: { 'jungwon.S': 1 }, then: [
           { n: "She stepped in and pinned it on him herself, carefully, her cold fingers fumbling the catch on the navy wool, and he stood absolutely still while she did it, the way he'd stand still for a tailor, or a priest, or a photographer at a dinner neither of them had chosen." },
           { s: 'jungwon', f: 'neutral', t: "...Thank you." },
-          { s: 'jungwon', f: 'neutral', t: "Nobody's ever put anything on me that I was allowed to take off." }
+          { s: 'jungwon', f: 'sad', t: "Nobody's ever put anything on me that I was allowed to take off." }
         ] }
       ] },
       { s: 'jungwon', f: 'neutral', t: "When I first came through the door, I kept thinking you looked like someone. On the street. On the stairs. A girl with her collar up on a bench at the station, once. I'd turn around and think, *that's her*, and it never was." },
@@ -760,7 +760,7 @@
         { n: "She kissed his cheek. Once, quickly, on the cold skin just above where a dimple would have been if he'd been being polite, and he wasn't." },
         { n: "He made a very small sound, almost nothing, like a breath let out in a held room, and his hand came up and covered the place where she'd kissed him, as if to keep it from blowing away in the wind." },
         { s: 'jungwon', f: 'flustered', t: "...Motion carried." },
-        { s: 'solar', f: 'neutral', t: "Nobody seconded it." },
+        { s: 'solar', f: 'happy', t: "Nobody seconded it." },
         { s: 'jungwon', f: 'flustered', t: "I'm seconding it now. I'm seconding it for the rest of my life. Please be quiet. I'm committing this to memory." },
         { n: "Then he took his hand away from his cheek, and looked at her for a second longer than he'd ever let himself, no dimples, no minutes, nothing to hold, and leaned in and kissed her properly, briefly, carefully, on the mouth, the way you'd sign something you had read every word of first." },
         { s: 'jungwon', f: 'flustered', t: "...That one's not going in the minutes either." }
@@ -768,7 +768,7 @@
         { n: "She held out her hand. He looked at it, and took it, and they shook, very formally, on the roof in the wind, like two presidents at the end of a summit, and neither of them let go when a handshake would have ended." },
         { s: 'jungwon', f: 'happy', t: "Motion carried." },
         { s: 'solar', f: 'neutral', t: "What motion?" },
-        { s: 'jungwon', f: 'neutral', t: "That I keep you. As a friend. In both places. Whatever morning it is. It was unanimous. I counted." }
+        { s: 'jungwon', f: 'happy', t: "That I keep you. As a friend. In both places. Whatever morning it is. It was unanimous. I counted." }
       ] },
       { n: "They stayed until the light went. Going down, he held the stairwell door for her, the way he held every door, and on the landing he stopped, and took his watch off, and wound it, and put it back on, and looked at it." },
       { n: "It still said eleven fifty-eight. He didn't seem to mind tonight. He looked at it like a man looking at a train timetable for a trip he'd decided, finally, to take." }
@@ -807,7 +807,7 @@
         { n: "March in the black book was empty. Not blank the way February had been blank, a day here and there on principle, but empty, every page, as though he'd stopped writing in it on one particular night in December and hadn't been able to make himself pick the pen back up." },
         { n: "March in the red book was full. *3/6. The station.* And on the line for the seventh, for the morning after the night they'd all left from, in his tidiest print, *Exams, 8:00. Seat (Heeseung).* And below that, smaller, as if he'd been afraid the page would hear him, *Solar. VP. Row 3.*" },
         { s: 'jungwon', f: 'neutral', t: "You picked the one where you ran against me. I've been told it was the hardest door to find. I didn't know it was hidden. I thought it was just the one I lived in." },
-        { s: 'jungwon', f: 'neutral', t: "In the other house there'll be a chair at a dinner. I'll be the only person at that table who knows why it's empty. I've decided not to write that down." },
+        { s: 'jungwon', f: 'sad', t: "In the other house there'll be a chair at a dinner. I'll be the only person at that table who knows why it's empty. I've decided not to write that down." },
         { choose: [
           { t: "(Take a pencil. Write *I chose* on the first page of March, in the black book.)", notes: 3, then: [
             { n: "She wrote it in pencil, so it could be rubbed out if anyone ever had to, small and upright, the way a different hand of hers wrote things in a different house. He looked at it for a long time. He didn't touch it." },
@@ -822,7 +822,7 @@
             { s: 'jungwon', f: 'flustered', t: "...Now it's in the minutes." }
           ] },
           { t: "Will you miss the other house?", notes: 2, then: [
-            { s: 'jungwon', f: 'neutral', t: "I'll be the other house. That's the part I can't make fit on a page." }
+            { s: 'jungwon', f: 'sad', t: "I'll be the other house. That's the part I can't make fit on a page." }
           ] }
         ] }
       ], else: [{ ifHeading: 'S', then: [
@@ -833,7 +833,7 @@
         { choose: [
           { t: "(Take a pencil. Write *I don't know* under the circled date.)", notes: 3, then: [
             { n: "She wrote it under the circle in pencil, small and upright and unreadable to anyone who didn't already know what it said. He read it anyway. He didn't rub it out. He closed the book over it the way you'd close a door very quietly on a room where somebody was asleep." },
-            { s: 'jungwon', f: 'neutral', t: "Thank you. That's the first thing in this book I'm glad of." }
+            { s: 'jungwon', f: 'happy', t: "Thank you. That's the first thing in this book I'm glad of." }
           ] },
           { t: "(Turn back to January. Write *ask her* over his pencil, in ink.)", notes: 3, then: [
             { n: "She found the page and went over his two pencil words in ink, so they'd stay, and turned the book around and pushed it back at him across the table." },
@@ -867,7 +867,7 @@
         ] }
       ], else: [{ ifHeading: 'stay', then: [
         { n: "March in both books had the same line, on the sixth, in red in one and in black in the other, the only entry the two of them had ever agreed on. *Solar. Here.*" },
-        { s: 'jungwon', f: 'neutral', t: "Both of them lose you. The exam hall and the dinner. I've been trying to work out which one of me minds more. It's a tie. I counted twice." },
+        { s: 'jungwon', f: 'sad', t: "Both of them lose you. The exam hall and the dinner. I've been trying to work out which one of me minds more. It's a tie. I counted twice." },
         { s: 'jungwon', f: 'neutral', t: "I'm glad it's here. I want that in writing. I've put it in writing. Twice." },
         { choose: [
           { t: "(Write *here* under his, in both books, in your own hand.)", notes: 3, then: [
@@ -973,7 +973,7 @@
           { s: 'jihoon', f: 'happy-2', t: "Oh, he HATED that. Look at him. Look how polite he is. Do it again." }
         ] },
         { t: "I'm with Jihoon. It's a hotel.", notes: 2, then: [
-          { s: 'jungwon', f: 'neutral', t: "It's a guesthouse." },
+          { s: 'jungwon', f: 'flustered', t: "It's a guesthouse." },
           { s: 'jihoon', f: 'happy', t: "SEE. He can't even let that go. That's who you're defending." }
         ] }
       ] },
@@ -1002,7 +1002,7 @@
         { s: 'jihoon', f: 'neutral', t: "You know she's not even going to be in the exam, Yang. She's going to the other one. The one with the boats and the dinners and the—" },
         { s: 'cherry', f: 'serious', t: "Jihoon." },
         { s: 'jihoon', f: 'neutral', t: "What. I'm saying it. Somebody has to say it. He's making her do chapter seven for a test she's not going to be at." },
-        { s: 'jungwon', f: 'neutral', t: "In case." },
+        { s: 'jungwon', f: 'sad', t: "In case." },
         { n: "He said it to the textbook. Two words, very politely. Jihoon looked at him for a long moment, and whatever he'd been going to say next he didn't, and instead he picked up the ugliest croissant off the left side of the tray and ate it in two bites, angrily, which was, Solar understood, the nicest thing he was able to do right then." },
         { choose: [
           { t: "(Do problem eleven anyway. Get it right, for a row three you won't sit in.)", notes: 3, then: [
@@ -1026,7 +1026,7 @@
         ] }] },
         { s: 'cherry', f: 'serious', t: "Jihoon." },
         { s: 'jihoon', f: 'neutral', t: "What. I'm saying it. Somebody has to. He's making her do chapter seven like it's a normal Tuesday." },
-        { s: 'jungwon', f: 'neutral', t: "In case." },
+        { s: 'jungwon', f: 'sad', t: "In case." },
         { n: "He said it to the textbook, very politely, the way he'd say a budget line. Jihoon opened his mouth and shut it and picked the ugliest croissant off the left side of the tray and ate it in two bites, angrily, which was, Solar understood, the nicest thing he could do right then." },
         { choose: [
           { t: "(Do problem eleven anyway. Get it right.)", notes: 3, then: [
@@ -1043,7 +1043,7 @@
       ] }] },
       { place: 'Kirijo Guesthouse · Front', time: 'Evening', soft: true },
       { n: "He walked her out at six. The station lights were on and the cold had come down hard the way it did in February, all at once, as if somebody had opened a door to a room that had been shut all winter, and he stood on the guesthouse steps without his coat with his hands in his blazer pockets, and his breath went up white, and he didn't go back in." },
-      { s: 'jungwon', f: 'neutral', t: "It's the night before an exam at home. It's always the night before an exam at home. My mother will be at the kitchen table with the light on. Not for me. For the morning." },
+      { s: 'jungwon', f: 'sad', t: "It's the night before an exam at home. It's always the night before an exam at home. My mother will be at the kitchen table with the light on. Not for me. For the morning." },
       { s: 'jungwon', f: 'neutral', t: "Maeumi will be asleep on my bed, because nobody's told him not to. He knows nobody's going to tell him. He's very small and he has never once in his life been wrong about a loophole." },
       { choose: [
         { t: "Show me him.", notes: 3, then: [
@@ -1070,7 +1070,7 @@
           { t: "(Take the card out of his hand and read it.)", notes: 3, then: [
             { n: "She read it under the guesthouse lamp. It was in Sunoo's handwriting, with hearts over the i's, and it was terrible, and it was perfect, and at the bottom, in Jungwon's slanted print, someone had crossed out one of Sunoo's lines and written a different one, and it was the different one she'd remember." },
             { s: 'jungwon', f: 'flustered', t: "You weren't supposed to— that's not— I'm going to have to write a whole new one now." },
-            { s: 'solar', f: 'neutral', t: "Don't. Say that one. When it's time. I'll act surprised." },
+            { s: 'solar', f: 'happy', t: "Don't. Say that one. When it's time. I'll act surprised." },
             { s: 'jungwon', f: 'flustered', t: "You can't act. You've never once been able to act." }
           ] },
           { t: "(Kiss his cheek before he can read it again.)", notes: 3, then: [
@@ -1103,12 +1103,12 @@
       { s: 'mitsuru', f: 'neutral', t: "Yang. Solar." },
       { s: 'jungwon', f: 'happy', t: "Kirijo-san. Good afternoon. I have something of yours." },
       { n: "He stood when she came in, of course he did, and held the key out to her on his flat palm, the way he'd once pushed a pin across this same table, and Mitsuru looked at it for a long moment and didn't take it." },
-      { s: 'mitsuru', f: 'neutral', t: "It isn't mine anymore. Nothing in here is. That's what Monday was." },
+      { s: 'mitsuru', f: 'sad', t: "It isn't mine anymore. Nothing in here is. That's what Monday was." },
       { s: 'mitsuru', f: 'neutral', t: "Give it to her yourself. Tomorrow, properly. She's terrified of you, so be kind about it." },
       { s: 'jungwon', f: 'neutral', t: "I've never done it. Handed something over." },
-      { s: 'mitsuru', f: 'neutral', t: "No. I didn't think you had. Neither had I, until Monday. I timed it. I don't recommend timing it." },
+      { s: 'mitsuru', f: 'sad', t: "No. I didn't think you had. Neither had I, until Monday. I timed it. I don't recommend timing it." },
       { n: "They looked at each other across the bare end of the table, two people who'd each been told what they were before they could read, and something went between them that Solar wasn't part of and didn't need to be. Then Mitsuru touched the back of the president's chair with two fingers, once, the way you'd touch a horse you used to ride, and went to the door, and on her way past she touched Solar's elbow, which made three times now, and Solar was counting." },
-      { s: 'mitsuru', f: 'sad', t: "He's going to make a speech. Stop him." },
+      { s: 'mitsuru', f: 'neutral', t: "He's going to make a speech. Stop him." },
       { s: 'jungwon', f: 'flustered', t: "...I was going to make a speech." },
       { choose: [
         { t: "(Hold out your hand. Make him practice on you.)", notes: 3, then: [
@@ -1128,7 +1128,7 @@
         ] }
       ] },
       { n: "He sat down again. He put the key back in the center of the bare wood and looked at it, and then, without seeming to decide to, unbuckled the watch on his left wrist and laid it beside the key. Steel, heavy, too old for him. The second hand on the eleven, where it had sat since October." },
-      { s: 'jungwon', f: 'neutral', t: "My brother would have been very good at this. Handing over. He'd have made a speech and everyone would have cried, and then he'd have taken them all out to eat and not let anyone pay." },
+      { s: 'jungwon', f: 'sad', t: "My brother would have been very good at this. Handing over. He'd have made a speech and everyone would have cried, and then he'd have taken them all out to eat and not let anyone pay." },
       { s: 'jungwon', f: 'neutral', t: "He never had to. He went, and I got everything. In one of my houses that's what *heir* means. Whatever's left standing." },
       { s: 'jungwon', f: 'serious', t: "He gave me this the night he went. I told you he said it had never fit him, and that I'd only lately found out that wasn't true." },
       { s: 'jungwon', f: 'neutral', t: "It fit him. I've seen the photographs. It sat on his wrist like it had been made there. He took a link out so it would fit me, and told me it had never fit him, so I'd believe it had always been mine." },
@@ -1136,7 +1136,7 @@
       { choose: [
         { t: "(Let him.)", notes: 3, then: [
           { s: 'jungwon', f: 'serious', t: "I don't want to give anything back. Not this key. Not this room. Not the afternoons. Not you." },
-          { s: 'jungwon', f: 'neutral', t: "I'm going to anyway. Both of me were raised to. I wanted one person to know it's a lie when I do it politely." }
+          { s: 'jungwon', f: 'sad', t: "I'm going to anyway. Both of me were raised to. I wanted one person to know it's a lie when I do it politely." }
         ] },
         { t: "Tell me something true about him instead.", notes: 3, then: [
           { s: 'jungwon', f: 'neutral', t: "He couldn't cook. He bought a cookbook on a school trip to Osaka, secondhand, with a red cover, and translated the whole thing in pencil in the margins, and never made a single thing in it." },
@@ -1178,7 +1178,7 @@
           { t: "Do you mean it, Yang Jungwon-ssi?", notes: 3, then: [
             { s: 'jungwon', f: 'neutral', t: "You're trying to make me angry." },
             { s: 'solar', f: 'neutral', t: "No. I'm asking." },
-            { s: 'jungwon', f: 'neutral', t: "...Yes. I mean it. I've never meant anything more in a council room, and I've meant a great many things in council rooms." }
+            { s: 'jungwon', f: 'serious', t: "...Yes. I mean it. I've never meant anything more in a council room, and I've meant a great many things in council rooms." }
           ] },
           { t: "You can't hand me anything. I'm not yours.", notes: 2, then: [
             { s: 'jungwon', f: 'neutral', t: "No. That's the point. I'm practicing." }
@@ -1186,7 +1186,7 @@
         ] }
       ], else: [{ ifHeading: 'R', then: [
         { s: 'jungwon', f: 'neutral', t: "You're handing both of me back at once. Very efficiently. I'd admire it in anybody else." },
-        { s: 'jungwon', f: 'neutral', t: "You're going to a city neither of me has ever stood in, where Donghyuck is. One of him. I'm sure he'll be very—" },
+        { s: 'jungwon', f: 'sad', t: "You're going to a city neither of me has ever stood in, where Donghyuck is. One of him. I'm sure he'll be very—" },
         { n: "He stopped. He smiled, with both dimples, sweet and immediate and deep, which was how she knew exactly how much it was costing him." },
         { s: 'jungwon', f: 'happy', t: "I hope he's kind to you. I've never in my life wanted to say a sentence less, and I mean every word of it." },
         { choose: [
@@ -1213,20 +1213,20 @@
           ] },
           { t: "(Turn his watch face up. Wind it for him.)", notes: 3, then: [
             { n: "She wound it, the little crown cold and ridged under her thumb, the way she'd watched him do it every night since October. It didn't start. She hadn't thought it would." },
-            { s: 'solar', f: 'neutral', t: "In case." },
-            { s: 'jungwon', f: 'neutral', t: "...In case." }
+            { s: 'solar', f: 'sad', t: "In case." },
+            { s: 'jungwon', f: 'sad', t: "...In case." }
           ] },
           { t: "Will you be all right?", notes: 2, then: [
             { s: 'jungwon', f: 'happy', t: "I'll be very polite about it." }
           ] }
         ] }
       ], else: [
-        { s: 'jungwon', f: 'neutral', t: "You're going home to everyone at once. Including me. Both of me. I've never once in my life been handed something I wanted. I don't know what my face does." },
+        { s: 'jungwon', f: 'flustered', t: "You're going home to everyone at once. Including me. Both of me. I've never once in my life been handed something I wanted. I don't know what my face does." },
         { s: 'jungwon', f: 'serious', t: "And this room. Nobody can tell me what happens to this room." },
         { choose: [
           { t: "(Put the key in his hand. *Practice receiving, then.*)", notes: 3, then: [
             { n: "He looked down at the key in his hand, and then up at her, and his face went completely still, no dimples, nothing, the stillness she'd learned to read backward." },
-            { s: 'solar', f: 'neutral', t: "That. That's what your face does." }
+            { s: 'solar', f: 'happy', t: "That. That's what your face does." }
           ] },
           { t: "(Turn his watch face up. Wind it for him.)", notes: 3, then: [
             { n: "She wound it, the little crown cold and ridged under her thumb. It didn't start. She hadn't thought it would. He watched her hands the whole time, as if he were memorizing a recipe." },
@@ -1255,7 +1255,7 @@
             { n: "She did it one hole too tight. He noticed at once. He didn't fix it. He said it was perfectly comfortable in the voice he used to tell Yukari her ribbon was out of dress code, and wore it like that until he got to the door." }
           ] },
           { t: "(Make him promise to eat lunch tomorrow. Before the speech.)", notes: 3, then: [
-            { s: 'jungwon', f: 'neutral', t: "That's not related." },
+            { s: 'jungwon', f: 'flustered', t: "That's not related." },
             { s: 'solar', f: 'neutral', t: "Promise." },
             { s: 'jungwon', f: 'happy', t: "...Promise. Lunch, then speech. You're worse than Sunoo. You've always been worse than Sunoo." }
           ] }
@@ -1298,7 +1298,7 @@
         { n: "Yunjin was sitting on the bollard in the yellow puffer with the hood up and her boots swinging, and beside her, standing, with his hands in his jacket and his face doing nothing at all, was Donghyuck, who had very obviously been dragged down here to look at a sea that wasn't the right one and had found something better to look at." },
         { s: 'haechan', f: 'neutral', t: "Don't clap. It encourages him." },
         { s: 'jungwon', f: 'neutral', t: "Donghyuck." },
-        { s: 'haechan', f: 'neutral', t: "Young master. Nice coat. Very low-key. Nobody'll ever guess." },
+        { s: 'haechan', f: 'happy', t: "Young master. Nice coat. Very low-key. Nobody'll ever guess." },
         { s: 'jungwon', f: 'happy', t: "Thank you. I'm sure nobody's ever said that to you." },
         { n: "Yunjin slid off the bollard and hooked her arm through Haechan's before either of them could say anything that would have to be answered, and steered him away up the pier, and over her shoulder, in the gravel that was all that was left of her voice, she told Solar to call her if the young master started reciting the family tree." },
         { s: 'yunjin', f: 'neutral', t: "Come on, babe. They're having a register." }
@@ -1306,7 +1306,7 @@
       { n: "When it was quiet again he stood at the rail with his gloved hands on the cold iron and looked across the water at the lights coming on along the far shore, one at a time, and she understood he wasn't looking at Iwatodai." },
       { ifHeading: 'S', then: [
         { s: 'jungwon', f: 'neutral', t: "From my window at home you can see your house across the water. I've stood there a great deal." },
-        { s: 'jungwon', f: 'neutral', t: "When you go home, everything that stopped starts again. The date in spring hasn't moved. Nothing here moves it. I'll be at the end of it. I'd like you to know what's at the end of it before you get there." },
+        { s: 'jungwon', f: 'serious', t: "When you go home, everything that stopped starts again. The date in spring hasn't moved. Nothing here moves it. I'll be at the end of it. I'd like you to know what's at the end of it before you get there." },
         { s: 'jungwon', f: 'serious', t: "It's me. That's all. Not a contract. Not my father, or yours. Just a man in a coat who is going to ask you, every time, whether you want to be standing where you're standing." },
         { s: 'jungwon', f: 'neutral', t: "Your collar's down. The wind's coming off the water. May I?" },
         { choose: [
@@ -1339,7 +1339,7 @@
         ] }
       ], else: [{ ifHeading: 'R', then: [
         { s: 'jungwon', f: 'neutral', t: "From my window at home I could see your house across the water. Now you're going across a much bigger one, to a city with snow on the windowsills, where neither of me has ever been." },
-        { s: 'jungwon', f: 'neutral', t: "There's a date in spring in the other house. It won't have you at the end of it. I don't know what it'll have. I find I don't want to know without you." },
+        { s: 'jungwon', f: 'sad', t: "There's a date in spring in the other house. It won't have you at the end of it. I don't know what it'll have. I find I don't want to know without you." },
         { s: 'jungwon', f: 'neutral', t: "Your collar's down. The wind's coming off the water. May I?" },
         { choose: [
           { t: "(Let him.)", notes: 3, then: [
@@ -1354,7 +1354,7 @@
           ] }
         ] }
       ], else: [{ ifHeading: 'stay', then: [
-        { s: 'jungwon', f: 'neutral', t: "This is the water you're keeping. It's very gray. It smells like a fish market and somebody's cooler. I approve." },
+        { s: 'jungwon', f: 'happy', t: "This is the water you're keeping. It's very gray. It smells like a fish market and somebody's cooler. I approve." },
         { s: 'jungwon', f: 'neutral', t: "There's a date in spring in the other house that won't have you at the end of it, and an exam in the morning in the other that won't have you in row three. Both of me have to go home and be polite about that." },
         { s: 'jungwon', f: 'neutral', t: "Your collar's down. The wind's coming off the water. May I?" },
         { choose: [
@@ -1379,7 +1379,7 @@
           ] },
           { t: "You'll be at the end of it. That's enough.", notes: 3, then: [
             { s: 'jungwon', f: 'surprised', t: "..." },
-            { s: 'jungwon', f: 'neutral', t: "Please don't say things like that to me in this coat. I don't have the face for them in this coat." }
+            { s: 'jungwon', f: 'flustered', t: "Please don't say things like that to me in this coat. I don't have the face for them in this coat." }
           ] },
           { t: "Are you scared?", notes: 2, then: [
             { s: 'jungwon', f: 'neutral', t: "Very politely." }
@@ -1408,7 +1408,7 @@
             { n: "She took her glove off with her teeth, which made him close his eyes as if in pain, and put her bare hand in his, and his fingers closed round hers, cold and then not cold, and he didn't say anything at all, and his face went still, all the way, the way it only ever went when he was happier than he knew what to do with." }
           ] },
           { t: "(Say yes. Out loud. So he hears it.)", notes: 3, then: [
-            { s: 'solar', f: 'neutral', t: "Yes." },
+            { s: 'solar', f: 'flustered', t: "Yes." },
             { n: "He took her hand as if the word had been a key, and held it, and walked her back down the pier like that, his bare hand around hers in the wind, past the abandoned cooler and the gulls and the fishermen, at an even, unhurried pace, the way you'd walk somebody down an aisle you'd chosen." }
           ] }
         ] }
@@ -1421,7 +1421,7 @@
           { t: "(Take it like a vice president. Bump his shoulder.)", notes: 3, then: [
             { n: "She hooked her arm through his and shoved him with her shoulder, the way somebody in a different uniform would have, and the camel coat lurched sideways a step, and he looked down at her with an expression of profound betrayal and didn't let go of her arm." },
             { s: 'jungwon', f: 'happy', t: "That's not how this coat works." },
-            { s: 'solar', f: 'neutral', t: "It is now." }
+            { s: 'solar', f: 'happy', t: "It is now." }
           ] }
         ] }
       ] },
@@ -1451,7 +1451,7 @@
         { n: "He unfolded the top of the paper bag. Inside, on a napkin, was a croissant, a little crushed from his bag, with a heart piped on it in red icing, and in the heart, in Sunoo's careful hand, two letters. *VP.*" },
         { s: 'jungwon', f: 'neutral', t: "The motion is that the vice president come home." },
         { s: 'jungwon', f: 'neutral', t: "Exams at eight. Row three. I won't look at you. I'll look at you. My mother will be at the kitchen table and Maeumi will be on my bed and Sunoo will ask me whether I've eaten, and I'll say yes, and it'll be true, because I'll have sat down at a table and eaten all of it." },
-        { s: 'jungwon', f: 'neutral', t: "In one house I was arranged for you. You picked the one where I wasn't. I'm going to spend the rest of my life being very quietly smug about that, at a polite volume." },
+        { s: 'jungwon', f: 'happy', t: "In one house I was arranged for you. You picked the one where I wasn't. I'm going to spend the rest of my life being very quietly smug about that, at a polite volume." },
         { choose: [
           { t: "(Second the motion.)", notes: 3, then: [
             { s: 'solar', f: 'neutral', t: "Seconded." },
@@ -1460,16 +1460,16 @@
           ] },
           { t: "(Amend it. *And the president eats breakfast.*)", notes: 3, then: [
             { s: 'jungwon', f: 'neutral', t: "That's already decided. I decided it in January." },
-            { s: 'solar', f: 'neutral', t: "Now it's in the minutes." },
+            { s: 'solar', f: 'happy', t: "Now it's in the minutes." },
             { s: 'jungwon', f: 'flustered', t: "...So moved. As amended. You'd have made a terrible president. You're a perfect vice president. I've always said so. Mostly to myself." }
           ] },
           { t: "What if I'm bad at it? Being home?", notes: 2, then: [
-            { s: 'jungwon', f: 'neutral', t: "You'll be late and disorganized and you'll argue with my agenda. That's what being good at it looks like. I've checked." }
+            { s: 'jungwon', f: 'happy', t: "You'll be late and disorganized and you'll argue with my agenda. That's what being good at it looks like. I've checked." }
           ] }
         ] }
       ], else: [{ ifHeading: 'S', then: [
         { s: 'jungwon', f: 'neutral', t: "The motion is that we go home to the date and find out what it is when we get there." },
-        { s: 'solar', f: 'neutral', t: "I don't know what it is." },
+        { s: 'solar', f: 'sad', t: "I don't know what it is." },
         { s: 'jungwon', f: 'neutral', t: "Noted. It's the most honest minute in the book. I'm writing it down exactly the way you said it." },
         { n: "He did. *She doesn't know.* In red, very neat, with nothing after it. Then he set the pen down parallel to the edge of the page and folded his hands." },
         { s: 'jungwon', f: 'serious', t: "There's a word I've said to you only a handful of times, in that house, in a register I almost never use with you. I'm not going to say it in a borrowed room at a school I don't attend. I'd like to say it somewhere it can't be mistaken for anything else." },
@@ -1488,7 +1488,7 @@
           ] }
         ] }
       ], else: [{ ifHeading: 'R', then: [
-        { s: 'jungwon', f: 'neutral', t: "The motion is that the vice president go somewhere I've never been, and that I don't follow, and that I'm gracious about it." },
+        { s: 'jungwon', f: 'sad', t: "The motion is that the vice president go somewhere I've never been, and that I don't follow, and that I'm gracious about it." },
         { n: "He took the minutes book and, very carefully, along a ruler he'd brought for exactly this, tore out the first page. October fifteenth. *Present.* His name, and hers, and the torn place where a surname had been. He folded it once and held it out to her across the table." },
         { s: 'jungwon', f: 'neutral', t: "Wherever you're going, somebody should have a record that you were here first. Before anyone else wrote you down." },
         { choose: [
@@ -1500,7 +1500,7 @@
           { t: "(Vote against it. Make him count.)", notes: 3, then: [
             { s: 'jungwon', f: 'surprised', t: "..." },
             { s: 'jungwon', f: 'neutral', t: "One in favor. One against. The chair breaks the tie." },
-            { s: 'jungwon', f: 'neutral', t: "...Carried. I'm sorry. I'm the chair. I've always been the chair. Thank you for voting against it. I'll keep that too." }
+            { s: 'jungwon', f: 'sad', t: "...Carried. I'm sorry. I'm the chair. I've always been the chair. Thank you for voting against it. I'll keep that too." }
           ] },
           { t: "Will you be all right?", notes: 2, then: [
             { s: 'jungwon', f: 'happy', t: "I'll be gracious. I said so in the motion. It's binding." }
@@ -1550,11 +1550,11 @@
         ] },
         { t: "(Knock twice on the table yourself, before he can.)", notes: 3, then: [
           { s: 'jungwon', f: 'surprised', t: "That's the chair's job." },
-          { s: 'solar', f: 'neutral', t: "I'm the vice. The chair looked tired." },
+          { s: 'solar', f: 'happy', t: "I'm the vice. The chair looked tired." },
           { s: 'jungwon', f: 'happy', t: "...The chair was tired. The chair thanks the vice." }
         ] },
         { t: "No other business.", notes: 2, then: [
-          { s: 'jungwon', f: 'neutral', t: "No. There never is, at the end. That's how you know it's the end." }
+          { s: 'jungwon', f: 'sad', t: "No. There never is, at the end. That's how you know it's the end." }
         ] }
       ] },
       { ifRoute: 'romance', then: [
@@ -1577,7 +1577,7 @@
         ] }
       ], else: [
         { n: "He wrote the time the meeting closed. Then he capped the red pen and stood, and held out his hand across the table, the way he had on the roof in January, two presidents at the end of a summit, and then, before she could take it, drew it back an inch and looked at it with a frown." },
-        { s: 'jungwon', f: 'neutral', t: "I'm told friends hug. At the end of things. I've never done it on purpose." },
+        { s: 'jungwon', f: 'flustered', t: "I'm told friends hug. At the end of things. I've never done it on purpose." },
         { choose: [
           { t: "(Hug him.)", notes: 3, then: [
             { n: "She came round the table and hugged him, and he stood rigid for exactly one second, like a man being fitted for a suit, and then put his arms around her very carefully, as though following written instructions, and then less carefully, and then held on." },
@@ -1619,7 +1619,7 @@
     ] },
     { title: 'twelve-thirty', place: 'Gekkoukan High · Rooftop', time: 'Lunchtime', scene: [
       { n: "He'd put it in his schedule. She'd seen it. In the little grid on the inside cover of his notebook, in red, between *budget, athletics* and *council minutes, draft*: 12:30 to 12:55, *lunch (Solar).*" },
-      { s: 'jungwon', f: 'neutral', t: "Twenty-five minutes. I'm told that's normal. Sunoo says normal people take a whole hour. I'm working up to it." },
+      { s: 'jungwon', f: 'happy', t: "Twenty-five minutes. I'm told that's normal. Sunoo says normal people take a whole hour. I'm working up to it." },
       { n: "He'd brought a bento. He'd made it. Rolled egg, cut so evenly it looked printed, rice, a little pickled radish, and two of the small octopus-shaped sausages, which he moved to her side of the box without comment." },
       { choose: [
         { t: "You cut the sausages into octopuses.", notes: 3, then: [
@@ -1636,7 +1636,7 @@
   christmas: { place: 'Iwatodai Strip', time: 'Evening', scene: [
     { n: "It was snowing on the strip, big slow flakes that came down past the ramen shop's lanterns and the karaoke sign and settled on the shoulders of everyone walking past with their shopping, and Jungwon was standing under the awning of the bookstore with a paper bag in one hand and the expression of a man who had planned this to the minute and been ambushed by weather." },
     { s: 'jungwon', f: 'neutral', t: "I had a schedule. The snow wasn't on it." },
-    { s: 'jungwon', f: 'neutral', t: "Merry Christmas. I didn't know what to get you. I made a list. I crossed everything off it. This was the only thing left." },
+    { s: 'jungwon', f: 'flustered', t: "Merry Christmas. I didn't know what to get you. I made a list. I crossed everything off it. This was the only thing left." },
     { n: "Inside the bag was a scarf. Plain, dark, very warm. Folded into it was a small card in his neat slanted print. *You never wear one. Please wear this one.*" },
     { choose: [
       { t: "(Put it on. Then put it around both of you.)", notes: 3, then: [
@@ -1645,7 +1645,7 @@
       ] },
       { t: "(Give him yours: a pocket watch-stand, so he can set the watch down at night.)", notes: 3, then: [
         { s: 'jungwon', f: 'surprised', t: "..." },
-        { s: 'jungwon', f: 'neutral', t: "So I'd stop sleeping with it on." },
+        { s: 'jungwon', f: 'flustered', t: "So I'd stop sleeping with it on." },
         { s: 'jungwon', f: 'flustered', t: "How did you know I sleep with it on." }
       ] }
     ] },

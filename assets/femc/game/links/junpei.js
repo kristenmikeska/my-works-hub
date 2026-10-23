@@ -285,7 +285,7 @@
       { n: "They got back from the tower at ten past one, which was early, because Solar had called it early, because Junpei had gone left when she'd said right and taken a hit meant for a wall. Yukari had patched him up in the lobby with her mouth pressed into a line that said they would be discussing this later, and Mitsuru had said nothing at all, which was worse. Now the others had gone up, and it was the two of them in the lounge with the lamps low and a bag of frozen edamame balanced on Junpei's shoulder, because the dorm had run out of ice." },
       { n: "It was June, wet and heavy, the rainy season settled over the city like a lid. The windows sweated. Somewhere in the walls a pipe knocked twice and gave up. Fuuka's voice was still in Solar's ears a little, the way a song stays after you switch off the radio. Since she'd come to them she had been their navigator, a soft careful voice in the dark, Solar-san, left, Solar-san, there's one behind you, Solar-san, that was amazing, and every time she'd said it, Solar had felt Junpei hear it." },
       { s: 'junpei', f: 'neutral', t: "You didn't have to pull everybody out. I was fine." },
-      { s: 'solar', f: 'neutral', t: "You were bleeding." },
+      { s: 'solar', f: 'serious', t: "You were bleeding." },
       { s: 'junpei', f: 'flustered', t: "A little! A regular amount! People bleed! It's like, eighty percent of what blood's for!" },
       { n: "He shifted the edamame and winced and pretended he hadn't." },
       { s: 'junpei', f: 'serious', t: "I had it. One more floor. If you'd just let me go one more floor." },
@@ -494,7 +494,7 @@
       { choose: [
         { t: "How are you doing with all of it?", notes: 3, then: [
           { s: 'junpei', f: 'surprised', t: "Me? You're asking how I'm doing? Dude, you're the one with people crossing, like, dimensions to come get you." },
-          { s: 'solar', f: 'neutral', t: "And you're the one sitting on a notebook." },
+          { s: 'solar', f: 'happy', t: "And you're the one sitting on a notebook." },
           { n: "He laughed, a real one, short, surprised out of him." }
         ] },
         { t: "It's a lot.", notes: 2, then: [

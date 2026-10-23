@@ -313,7 +313,7 @@ window.FEMC_GAME_CLUBS = {
         { choose: [
           { t: "Nishi, you're in. I'll practice with you every week until then.", stat: { kindness: 1 }, then: [
             { s: 'nishi', t: "I... you can't just put me in." },
-            { s: 'solar', f: 'neutral', t: "I'm a third-year. I can do anything." },
+            { s: 'solar', f: 'happy', t: "I'm a third-year. I can do anything." },
             { n: "Nishi looked at her, and then, very slowly, held out her hand to Tsuji for the pen, and wrote her own name on the back of Tsuji's other hand, in tiny careful letters, under Tsuji's." }
           ] },
           { t: "(Write your name first. Let her see it's not scary.)", stat: { courage: 1 }, then: [
@@ -365,7 +365,7 @@ window.FEMC_GAME_CLUBS = {
           ] },
           { t: "Keep the old wheel. It should stay.", stat: { kindness: 1 }, then: [
             { s: 'chiba', t: "You're sentimental. I didn't know that about you." },
-            { s: 'solar', f: 'neutral', t: "I'm not. It's just the cart." },
+            { s: 'solar', f: 'flustered', t: "I'm not. It's just the cart." },
             { n: "Chiba looked at her a long moment and then put the new wheel back in the bag and handed it to Nishi, for later, for whoever came after, and patted the old cart on its handle like an old dog, and it shrieked, and they all laughed, and Tsuji cried a little anyway." }
           ] }
         ] },
@@ -412,7 +412,7 @@ window.FEMC_GAME_CLUBS = {
         ] },
         { n: "Then it was the two of them and the ball cart and the white box of light, and they picked up the last balls together, working toward each other from opposite baselines without having to discuss it, and met at the cart, and reached into it for the same ball at the same moment." },
         { s: 'rio', f: 'neutral', t: "Your hands are freezing." },
-        { s: 'solar', f: 'neutral', t: "So are yours." },
+        { s: 'solar', f: 'flustered', t: "So are yours." },
         { s: 'rio', f: 'flustered', t: "Mine are always like this. Even in July. Ryoko says I've got the circulation of a lizard." },
         { choose: [
           { t: "(Don't let go. Hold the ball and her hand both.)", stat: { courage: 1 }, then: [
@@ -1464,7 +1464,7 @@ window.FEMC_GAME_CLUBS = {
         { place: 'Paulownia Mall · Game Panic', time: 'After School' },
         { n: "He'd come in for a can of coffee from the machine by the door. That was what he said afterward, anyway, and it might even have been true. But when the club looked up from the fighting cabinet in the back, where Hayato had been defending his title against all comers for an hour, Haechan was standing at the edge of the little crowd with the can unopened in one hand and the other in his hoodie pocket, watching the screen with an expression of profound, flat boredom." },
         { s: 'yuzu', t: "Senpai. Senpai. Who is THAT. Why does he look like that. Is he famous? He looks like he's famous and he's sad about it." },
-        { s: 'solar', f: 'neutral', t: "He's a friend. He lives at my dorm." },
+        { s: 'solar', f: 'flustered', t: "He's a friend. He lives at my dorm." },
         { n: "Hayato won his eleventh in a row. The challenger slunk off. Hayato glanced up at the crowd for the next one, and nobody moved, and then Haechan, still holding his coffee, put a coin on the cabinet ledge without saying anything, and sat down." },
         { s: 'haechan', f: 'neutral', t: "I don't know this game. Just so you know. I'm going to lose." },
         { s: 'hayato', t: "...Understood." },
@@ -1476,7 +1476,7 @@ window.FEMC_GAME_CLUBS = {
           ] },
           { t: "(Say nothing. Watch him. Just this once let him have it.)", stat: { courage: 1 }, then: [
             { n: "She said nothing, and watched, and Haechan won the second round too with the can still in his hand and his face never changing once, and set the controls down, and stood up, and Hayato sat there looking at the screen that said YOU LOSE, and then at his notebook, and then, astonishingly, laughed, a real laugh, the first anyone in the club had ever heard from him." },
-            { s: 'haechan', f: 'neutral', t: "Beginner's luck. Write that down." }
+            { s: 'haechan', f: 'happy', t: "Beginner's luck. Write that down." }
           ] }
         ] },
         { n: "He opened his coffee at last, and drank half of it in one go, and looked down the row at the four of them, the president with his notebook and the rhythm girl in her wristbands and the first-year with his headphones round his neck, and at Solar among them, in the middle of it, as if he were checking which room she'd walked into this time." },
@@ -1515,7 +1515,7 @@ window.FEMC_GAME_CLUBS = {
           { t: "(Climb into the pod beside him. Sit there until he's ready.)", stat: { kindness: 1 }, then: [
             { n: "She climbed into the pod beside his and sat there, not playing, not talking, while the arcade went on shrieking around them, and after a while he took his hands off the controls and put them in his lap and looked at them." },
             { s: 'hayato', t: "Every time. Every tournament. I know every number, and the second it matters, the numbers just go. Like someone turned off a light." },
-            { s: 'solar', f: 'neutral', t: "Then don't use the numbers. Use us. Call one thing. Just one." }
+            { s: 'solar', f: 'serious', t: "Then don't use the numbers. Use us. Call one thing. Just one." }
           ] },
           { t: "Hayato. The numbers are in the notebook. You don't have to carry them.", stat: { knowledge: 1 }, then: [
             { n: "He looked at her. Then down at the notebook on the cabinet ledge beside him, where he'd left it, and she watched him understand, slowly, that it would still be there if he took his eyes off it, and he took a breath, and let it out, and nodded." }

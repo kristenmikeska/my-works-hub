@@ -139,12 +139,12 @@
       { choose: [
         { t: "I don't want to know.", notes: 3, then: [
           { s: 'classmate', t: "...Seriously? It's a good one." },
-          { s: 'solar', f: 'neutral', t: "Then save it for someone who likes them." },
+          { s: 'solar', f: 'serious', t: "Then save it for someone who likes them." },
           { n: "The girl's mouth stayed open a second longer than it needed to, and then she laughed, a little uncertainly, and went to find someone who did." }
         ] },
         { t: "Did you see her do it?", notes: 2, then: [
           { s: 'classmate', t: "Well, no. But everybody—" },
-          { s: 'solar', f: 'neutral', t: "Then you don't know either." }
+          { s: 'solar', f: 'serious', t: "Then you don't know either." }
         ] },
         { t: "(Close your locker and walk off mid-sentence.)", notes: 1, then: [
           { n: "She shut the locker, not hard, and walked off while the girl was still on the word apparently, and felt the look between her shoulder blades all the way to the stairs." }
@@ -469,7 +469,7 @@
         ] },
         { t: "That was the bravest thing I've seen all year.", notes: 2, then: [
           { s: 'saori', f: 'surprised', t: "Braver than you? You come home at one in the morning. Apparently." },
-          { s: 'solar', f: 'neutral', t: "That's not brave. That's just a bad commute." },
+          { s: 'solar', f: 'happy', t: "That's not brave. That's just a bad commute." },
           { n: "Saori laughed, wet and wobbly, and wiped her eyes on her sleeve." }
         ] },
         { t: "You didn't have to defend me.", notes: 1, then: [
@@ -519,7 +519,7 @@
       { choose: [
         { t: "I think I might have. I don't remember.", notes: 3, then: [
           { s: 'saori', f: 'surprised', t: "You don't remember?" },
-          { s: 'solar', f: 'neutral', t: "Not really. It's a long story. It's mostly blank pages." },
+          { s: 'solar', f: 'sad', t: "Not really. It's a long story. It's mostly blank pages." },
           { s: 'saori', f: 'neutral', t: "...Was it better? Here? Where nobody knew you?" },
           { s: 'solar', f: 'neutral', t: "It was quieter. I don't know if that's the same thing." },
           { n: "Saori looked at her across the green lamp for a long time, the way she looked at a torn page, and didn't ask anything else, and Solar was more grateful for that than for anything anybody had said to her in weeks." }
@@ -663,7 +663,7 @@
           ] },
           { t: "Starting with the one about the lighthouse.", notes: 3, then: [
             { s: 'saori', f: 'surprised', t: "How did you know there's one about a lighthouse?" },
-            { s: 'solar', f: 'neutral', t: "There's always one about a lighthouse, with you." },
+            { s: 'solar', f: 'happy', t: "There's always one about a lighthouse, with you." },
             { s: 'saori', f: 'happy', t: "...There's three. Sorry. You've got a lot of reading." }
           ] },
           { t: "Twenty-six is a lot of books.", notes: 2, then: [
@@ -710,7 +710,7 @@
       { n: "Bookworms was the secondhand shop on the Strip with the bell over the door and the old couple behind the counter, the husband asleep in a chair with a newspaper over his chest and the wife reading with her glasses on the end of her nose, and it smelled of dust and paper and the kerosene heater ticking in the back. Saori came here, she said, the way other people went to the shrine. Solar had come with her because she'd been asked, and because it was cold out, and because she'd stopped needing reasons." },
       { n: "They'd been there an hour. Saori had found a lighthouse book and a book about the history of umbrellas, which she said was a sign, and was standing in the poetry aisle with both of them held against her chest when she went very quiet, and stayed quiet, and Solar turned around." },
       { s: 'saori', f: 'sad', t: "You're a third-year." },
-      { s: 'solar', f: 'neutral', t: "...I've been a third-year all year." },
+      { s: 'solar', f: 'sad', t: "...I've been a third-year all year." },
       { s: 'saori', f: 'sad', t: "I know. I knew. I just didn't do the math. I always do the math. I didn't do it on purpose. Third-years leave in March. You'll graduate and the chair will just be a chair." },
       { n: "The heater ticked. The old man behind the counter turned a page in his sleep. Solar looked at Saori in the narrow aisle with the books held against her like a shield, and thought about March, and about everything between here and March that she couldn't see the far side of, and didn't know what to say that would be true." },
       { choose: [

@@ -242,7 +242,7 @@
       { choose: [
         { t: "I don't know.", notes: 3, then: [
           { s: 'mercy', f: 'neutral', t: "You don't know." },
-          { s: 'solar', f: 'neutral', t: "I don't remember learning it. I don't remember a lot of things." },
+          { s: 'solar', f: 'sad', t: "I don't remember learning it. I don't remember a lot of things." },
           { n: "Angela looked at her. Not at the orange now. At her face. The look went on long enough that Junpei opened his mouth to make a joke and Mitsuru, from the armchair, very quietly put a hand on his arm, and he closed it again." },
           { s: 'mercy', f: 'neutral', t: "Then whoever taught you was patient, and you practiced for a long time, alone. Those are not beginner's knots. Those are the knots of someone who has done it in bad light with someone hurting." }
         ] },
@@ -292,7 +292,7 @@
         ] },
         { t: "She's watching you. From the window.", notes: 2, then: [
           { s: 'genji', f: 'happy', t: "I know. Third floor, fourth window. She has been there since ten. Her coffee went cold an hour ago." },
-          { s: 'genji', f: 'neutral', t: "I don't look up. If I look up, she will step away from the glass." }
+          { s: 'genji', f: 'sad', t: "I don't look up. If I look up, she will step away from the glass." }
         ] }
       ] },
       { place: 'Tatsumi Memorial Hospital · Rooftop', time: 'Daytime', bg: 'hospital-rooftop' },
@@ -327,7 +327,7 @@
       { place: 'Tatsumi Memorial Hospital · Treatment Room', time: '3:00 AM', bg: 'hospital-room', soft: true },
       { n: "Angela took one look at the arm and said a word in German that Solar didn't know and could translate perfectly. Then she took his wrist in one hand, the way you take a child's, without asking, and turned it to the light, and her face went still and professional and completely calm, and her other hand was shaking very slightly, and only Solar was standing close enough to see it." },
       { s: 'mercy', f: 'serious', t: "You were going to tape this." },
-      { s: 'genji', f: 'neutral', t: "It was a very good tape." },
+      { s: 'genji', f: 'happy', t: "It was a very good tape." },
       { s: 'mercy', f: 'serious', t: "Sit. Don't talk. Solar, the overhead light is broken in here. There's a penlight in the drawer. Hold it for me. Here. And here. Don't move it." },
       { n: "Solar held the light. She stood at Angela's shoulder with the little beam steady on Genji's arm, on the torn place where metal met skin, and Angela threaded the curved needle by touch without looking at it and began." },
       { n: "And somewhere around the third stitch, the room went away." },
@@ -346,7 +346,7 @@
       { n: "Angela was tying off. She hadn't noticed. Genji had. He was looking at Solar, not at his arm, the visor tilted, and he didn't say anything, and Solar was grateful in a way that made her throat hurt." },
       { s: 'genji', f: 'neutral', t: "You've never let anyone stitch you, Angela. Not once. In all those years. You do it yourself, in the mirror, badly, at night." },
       { s: 'mercy', f: 'blushing', t: "I do it very well, thank you, and that is none of your business." },
-      { s: 'genji', f: 'neutral', t: "I'd let you. Stitch me. Anytime. Every time. I just wanted you to know that I'd let you, and I'd hold still." },
+      { s: 'genji', f: 'sad', t: "I'd let you. Stitch me. Anytime. Every time. I just wanted you to know that I'd let you, and I'd hold still." },
       { n: "Angela's hands stopped on the last knot. They stayed stopped. Solar watched the back of her neck go pink from the collar up." },
       { choose: [
         { t: "(Turn the penlight off. Quietly leave the room.)", notes: 3, then: [
@@ -372,7 +372,7 @@
         { t: "I remembered holding a needle. In a laundry room. For someone.", notes: 3, then: [
           { s: 'mercy', f: 'neutral', t: "Someone you loved?" },
           { n: "Solar opened her mouth to say no, and couldn't, and couldn't say yes either. Something in her chest had gone hot and furious and tender all at once, an argument with no one, and she didn't know who it was for." },
-          { s: 'solar', f: 'neutral', t: "...Someone I wasn't supposed to." },
+          { s: 'solar', f: 'sad', t: "...Someone I wasn't supposed to." },
           { s: 'mercy', f: 'neutral', t: "Ah. Those are the ones you stitch best. You're terrified the whole time." }
         ] },
         { t: "I don't want to talk about it.", notes: 2, then: [
@@ -600,7 +600,7 @@
           ] }
         ] }
       ] },
-      { s: 'genji', f: 'neutral', t: "She also wants you to know that she will be sleeping eight hours a night. I will be personally enforcing it. It's in the terms." },
+      { s: 'genji', f: 'happy', t: "She also wants you to know that she will be sleeping eight hours a night. I will be personally enforcing it. It's in the terms." },
       { s: 'mercy', f: 'blushing', t: "You said you weren't listening." },
       { s: 'genji', f: 'happy', t: "I said I would sit at the far end. I am at the far end. I have very good hearing. You built it." },
       { n: "Angela made an exasperated noise and turned her back on him and looked at Solar, and her eyes were wet, and she was smiling, both at once, the face of someone who has been very tired for a very long time and has just, this minute, been told she can sit down." },
@@ -671,7 +671,7 @@
       { n: "Genji had texted her at a quarter to seven, which he had never once done, three words and a room number. *She is stitching.* Then, a minute later, *her own hand.* Then, *in the mirror.*" },
       { n: "Treatment room two. Angela was standing at the sink in front of the little steel mirror with her left hand flat on the counter and a curved needle in her right, and there was a long clean cut across the heel of her left palm from a vial that had broken in her grip, and she had very clearly been about to do exactly what Genji had said she always did. Genji was in the corner, sitting on the examination bed, not interfering, with the air of a man who had sent for reinforcements and was now innocent of everything." },
       { s: 'mercy', f: 'serious', t: "I'm fine. It's three stitches. I've done this in a field with a torch in my teeth. He shouldn't have called you." },
-      { s: 'genji', f: 'neutral', t: "I did not call. I texted. There is a difference. The monks were very clear about it." },
+      { s: 'genji', f: 'happy', t: "I did not call. I texted. There is a difference. The monks were very clear about it." },
       { ifFlag: 'mercy-lessons', then: [
         { n: "Solar didn't say anything. She washed her hands at the other sink, the way she'd been taught on Thursdays, all the way to the elbow, and dried them, and held one out for the needle." },
         { s: 'mercy', f: 'neutral', t: "...You've been coming on Thursdays since July. I suppose I can't pretend you don't know how." }

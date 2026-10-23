@@ -432,10 +432,10 @@
       scene: [
         { n: "The shrine was full of twenty-year-olds in their best, girls in long-sleeved furisode in every color like a garden that had decided to walk, boys in suits that didn't fit yet, parents everywhere taking photographs, and Jaehyun stood at the edge of all of it with his hands in his coat pockets reading the crowd the way he read a field." },
         { s: 'jaehyun', f: 'neutral', t: "They make a day of it here. Becoming an adult. A ceremony. A photograph. And then it's done, and you are one." },
-        { s: 'jaehyun', f: 'neutral', t: "Nobody did that for us. You just woke up one day and Father had decided you were one. And what kind." },
+        { s: 'jaehyun', f: 'sad', t: "Nobody did that for us. You just woke up one day and Father had decided you were one. And what kind." },
         { choose: [
           { t: "Then let's decide what kind ourselves. Today.", notes: 3, then: [
-            { s: 'jaehyun', f: 'neutral', t: "...You always did say things like that. I never had an answer." },
+            { s: 'jaehyun', f: 'sad', t: "...You always did say things like that. I never had an answer." },
             { s: 'jaehyun', f: 'neutral', t: "I still don't. But I'd like to have one. Before we're home." },
             { n: "He bought two ema at the stall and gave her one and didn't look at what she wrote, and she didn't look at his, and they hung them side by side on the rack among a hundred others, and walked home the long way, past the field, without saying much, which was, she thought, the most grown-up thing she'd seen either of them do." }
           ] },

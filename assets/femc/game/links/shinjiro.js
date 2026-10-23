@@ -43,7 +43,7 @@
       { choose: [
         { t: "It could use a little less salt.", notes: 3, then: [
           { n: "He took the chopsticks out of her hand, tried a piece himself, and chewed with his eyes on the middle distance, frowning, as if the sauce had said something personal." },
-          { s: 'shinjiro', f: 'neutral', t: "...Yeah. It could." },
+          { s: 'shinjiro', f: 'happy', t: "...Yeah. It could." },
           { n: "He looked almost pleased. She had the feeling nobody had told him the truth about his food in a long time, mostly because nobody had been around to eat it." }
         ] },
         { t: "It's perfect.", notes: 2, then: [
@@ -59,7 +59,7 @@
     [
       { n: "He was sitting on an overturned crate by the karaoke place's back door with his coat across his knees, and it took her a second to understand what he was doing, because it was the last thing she would have guessed. He was sewing on a button." },
       { n: "A hotel sewing kit lay open on the crate beside him, the tiny kind with six colors of thread wound around a card, and he was holding the needle up to the streetlight and squinting at the eye of it with the same total, unfriendly focus he gave to onions." },
-      { s: 'shinjiro', f: 'neutral', t: "Don't say anything." },
+      { s: 'shinjiro', f: 'surprised', t: "Don't say anything." },
       { choose: [
         { t: "(Hold the coat flat for him.)", notes: 3, then: [
           { n: "She sat on the end of the crate and held the heavy wool flat in both hands. He didn't thank her. He just got faster, the needle going in and out in small neat stitches, and when his knuckles brushed her fingers neither of them made anything of it, very carefully, both at once." }
@@ -83,7 +83,7 @@
       { choose: [
         { t: "(Pretend not to see him slip the dog something out of his pocket.)", notes: 3, then: [
           { n: "She studied the vending machine with enormous interest. Behind her there was the small rustle of a paper wrapper, and then the wet, grateful sound of a dog getting away with something." },
-          { s: 'shinjiro', f: 'neutral', t: "...You didn't see that." },
+          { s: 'shinjiro', f: 'surprised', t: "...You didn't see that." },
           { s: 'solar', f: 'neutral', t: "See what." }
         ] },
         { t: "I think he followed you, actually.", notes: 2, then: [
@@ -214,7 +214,7 @@
       { choose: [
         { t: "Then what are you doing here?", notes: 3, then: [
           { s: 'shinjiro', f: 'neutral', t: "..." },
-          { s: 'shinjiro', f: 'neutral', t: "That's my business." },
+          { s: 'shinjiro', f: 'sad', t: "That's my business." },
           { n: "He turned his face away before she could see what the question had done to it. She saw anyway. It was all in his shoulders, which went up, and then very deliberately down, like a man setting a heavy box on a step." }
         ] },
         { t: "(Say the dorm. Notice that it takes you a second.)", notes: 2, then: [
@@ -264,7 +264,7 @@
           { s: 'shinjiro', f: 'neutral', t: "The old priest here had him. Priest died. Dog didn't get the message." }
         ] },
         { t: "So this is your business.", notes: 2, then: [
-          { s: 'shinjiro', f: 'neutral', t: "Tch." },
+          { s: 'shinjiro', f: 'surprised', t: "Tch." },
           { n: "He looked away. The tips of his ears had gone red, which might have been the cold, if it had been cold." }
         ] }
       ] },
@@ -313,7 +313,7 @@
       { s: 'solar', f: 'neutral', t: "Is anybody waiting for you? Somewhere?" },
       { s: 'shinjiro', f: 'neutral', t: "No." },
       { n: "No pause, and no weight on it either. He said it the way you'd say no to a plastic bag at a register." },
-      { s: 'shinjiro', f: 'neutral', t: "Less to let down." },
+      { s: 'shinjiro', f: 'sad', t: "Less to let down." },
       { n: "Koromaru turned his head from the steps and looked at him, the way dogs look at you when your voice does something you didn't mean it to, and Shinjiro put his hand down without looking, and the dog came over and put his head under it, and stayed." },
       { s: 'shinjiro', f: 'happy', t: "...He likes you. Don't let it go to your head." },
       { n: "It was the first time she'd seen him smile. It was small and crooked and gone almost before it got there, the way a match goes in wind, and she found that she wanted, fairly badly, to see it again, and filed that under problems for later, which was getting to be a thick file." }
@@ -326,7 +326,7 @@
       { n: "He had a basket on his arm and his coat dark at the shoulders from the rain. The basket was full of real things, things you had to do something to, a daikon like a club, onions, a slab of pork wrapped in white paper, a bunch of something green she couldn't have named under oath, and he was looking at the two cups in her hands as if they had said something about his mother." },
       { choose: [
         { t: "It's a balanced meal. One of each flavor.", notes: 3, then: [
-          { s: 'shinjiro', f: 'neutral', t: "...That's not what balanced means." },
+          { s: 'shinjiro', f: 'happy', t: "...That's not what balanced means." },
           { n: "There was something under it that was almost a laugh, buried so deep she'd have needed a shovel." }
         ] },
         { t: "I don't really know how to cook.", notes: 2, then: [
@@ -442,7 +442,7 @@
         ] },
         { t: "You should go with him.", notes: 1, then: [
           { s: 'shinjiro', f: 'sad', t: "..." },
-          { s: 'shinjiro', f: 'neutral', t: "Don't you start." },
+          { s: 'shinjiro', f: 'sad', t: "Don't you start." },
           { n: "He didn't say it unkindly. He said it like she'd picked up something of his she couldn't have known was broken, and he was taking it back before it cut her." }
         ] }
       ] },
@@ -580,7 +580,7 @@
           { n: "Something went across his face and was gone, too fast to name, the way a bird crosses a window. He shut the fridge." }
         ] },
         { t: "Cup ramen. Junpei calls it a food group.", notes: 2, then: [
-          { s: 'shinjiro', f: 'neutral', t: "Tch. Course he does." },
+          { s: 'shinjiro', f: 'sad', t: "Tch. Course he does." },
           { n: "He started a list on the back of the receipt, standing at the open fridge with the cold falling out around his ankles. It was long. It got longer while she watched." }
         ] }
       ] },
@@ -592,7 +592,7 @@
       { choose: [
         { t: "(Don't see the piece of pork that falls, entirely by accident, off the board.)", notes: 3, then: [
           { n: "It fell off the board by accident. It fell off the board by accident with a precise little flick of the knife, toward the doorway, and Koromaru caught it out of the air without lifting his chin, and Solar studied the rice cooker with enormous interest." },
-          { s: 'shinjiro', f: 'neutral', t: "...You didn't see that." },
+          { s: 'shinjiro', f: 'surprised', t: "...You didn't see that." },
           { s: 'solar', f: 'neutral', t: "See what." }
         ] },
         { t: "He missed you.", notes: 2, then: [
@@ -694,7 +694,7 @@
       { s: 'shinjiro', f: 'neutral', t: "Aki doesn't drink water at seven. Aki drinks protein at seven. Out of a tub. With a spoon." },
       { choose: [
         { t: "Maybe he's checking on you.", notes: 2, then: [
-          { s: 'shinjiro', f: 'neutral', t: "...Sure. Me." },
+          { s: 'shinjiro', f: 'happy', t: "...Sure. Me." },
           { n: "He said it the way you'd agree with a kid about the tooth fairy, and stirred the pot, which did not need stirring, and she understood that he'd decided to let her have that one, and that it had cost him nothing at all, and that he'd done the math on that a long time before she walked in." }
         ] },
         { t: "(Look at the pot. Very hard.)", notes: 3, then: [
@@ -710,7 +710,7 @@
       { n: "He'd come down for something, a glass of water, a book left in the lounge, and he stopped on the line where the hall floor turned into kitchen tile with his slippers lined up exactly along it, and looked in. At the pot. At Solar in her ridiculous Kirijo apron. At Shinjiro." },
       { n: "Something happened to his face. It was only for a second, and it didn't belong on a face that young, something flat and old and patient, like a stone at the bottom of clear water. Then it was gone, and he was ten again, and polite." },
       { s: 'ken', f: 'happy', t: "That smells wonderful. Good evening, Aragaki-san." },
-      { s: 'shinjiro', f: 'neutral', t: "...Evening." },
+      { s: 'shinjiro', f: 'sad', t: "...Evening." },
       { n: "Ken got his water and said goodnight, Solar-san, and went back up the stairs, each step the same weight as the last. Shinjiro didn't move until the steps had stopped. Then he turned the flame off under the pot, carefully, all the way, and took off his apron and folded it in half and in half again and laid it on the counter, and went out through the hall, and she heard the front door." },
       { choose: [
         { t: "(Turn off the rice. Then go after him.)", notes: 3, then: [
@@ -778,7 +778,7 @@
       { s: 'shinjiro', f: 'sad', t: "Two years ago I hurt somebody." },
       { s: 'shinjiro', f: 'sad', t: "Not a fight. Not on purpose. Doesn't matter. Somebody was standing in the wrong place, and I couldn't hold back what I was carrying, and she's not standing anywhere now." },
       { n: "He didn't say who. He didn't say how. She thought of a pair of slippers lined up exactly on the edge of the kitchen tile, and a face that young doing something that old, and felt the cold go down her back one vertebra at a time, like somebody counting." },
-      { s: 'shinjiro', f: 'neutral', t: "I'm not telling you so you'll say it wasn't me. It was." },
+      { s: 'shinjiro', f: 'sad', t: "I'm not telling you so you'll say it wasn't me. It was." },
       { s: 'shinjiro', f: 'neutral', t: "I'm telling you 'cause you keep coming back. You oughta know what you're coming back to." },
       { route: [
         { t: "(Put your hand over his on the rail. Don't say anything.)", route: 'romance', notes: 3, then: [
@@ -787,7 +787,7 @@
           { s: 'shinjiro', f: 'surprised', t: "..." },
           { n: "He didn't. He turned it over, slowly, under hers, until they were palm to palm on the cold rail, and his fingers closed, not hard, the way you'd close your hand around something you'd been told you weren't allowed to keep, just to find out what it felt like." },
           { s: 'shinjiro', f: 'sad', t: "...You've got terrible taste." },
-          { s: 'solar', f: 'neutral', t: "I wouldn't know. I can't remember having any before." },
+          { s: 'solar', f: 'flustered', t: "I wouldn't know. I can't remember having any before." },
           { s: 'shinjiro', f: 'happy', t: "Tch." }
         ] },
         { t: "I know what I'm coming back to. My friend. I'm going to keep coming.", route: 'friend', notes: 3, then: [
@@ -824,7 +824,7 @@
       { s: 'shinjiro', f: 'neutral', t: "Well?" },
       { choose: [
         { t: "It's the shrine.", notes: 3, then: [
-          { s: 'shinjiro', f: 'neutral', t: "...Yeah. It's the shrine." },
+          { s: 'shinjiro', f: 'happy', t: "...Yeah. It's the shrine." },
           { n: "He looked pleased, the way he looked pleased, which was to say almost not at all, and only around the eyes, and only if you'd spent four months learning where to look." }
         ] },
         { t: "It could use a little less salt.", notes: 3, then: [
@@ -841,7 +841,7 @@
       { n: "An index card. Plain white, a little stained at one corner, written on both sides in his handwriting, which she had never seen before and which was exactly what she'd have guessed, blocky and careful and pressed hard into the card, as if he'd wanted it to still be there if somebody spilled something on it." },
       { n: "It was the recipe. This one. Every step, every measurement, in the order he did it. Wash the rice till the water runs clear. Up to the first knuckle, which he'd drawn, badly, as a little finger. Ginger, how much, sliced which way. Don't lift the lid, underlined. And at the very bottom, underlined twice, so hard the pen had nearly gone through, *stop poking it*." },
       { s: 'shinjiro', f: 'neutral', t: "So you can make it." },
-      { s: 'shinjiro', f: 'neutral', t: "If I'm not around." },
+      { s: 'shinjiro', f: 'sad', t: "If I'm not around." },
       { n: "*If I'm not around.* He said it the way he'd said the bus didn't run past nine. Her chest went tight and cold in the same instant, the body knowing something first and the mind standing very still in a corner of her, refusing to turn around and look." },
       { choose: [
         { t: "(Put the card in your inside pocket, flat, where it won't bend.)", notes: 3, then: [
@@ -956,7 +956,7 @@
         ] }
       ] },
       { ifRoute: 'romance', then: [
-        { s: 'shinjiro', f: 'neutral', t: "Spent two years figuring I didn't get to have anything. Fine. Made sense. Then you start turning up in my alley, counting the exits." },
+        { s: 'shinjiro', f: 'sad', t: "Spent two years figuring I didn't get to have anything. Fine. Made sense. Then you start turning up in my alley, counting the exits." },
         { s: 'shinjiro', f: 'sad', t: "Best few months I've had. Wanted you to hear it from me. Tonight. Not from Aki." },
         { n: "It was more words in a row about himself than she had ever heard him say. He looked faintly sick from it, the way he looked after the cough, and he set the beanie down on the counter between them as if he needed his hands free." },
         { choose: [
@@ -975,7 +975,7 @@
           ] },
           { t: "(Put your head on his shoulder.)", notes: 2, then: [
             { n: "She put her head on his shoulder. The coat was rough under her cheek and smelled of cold air and soy and the clean dish soap, and his shoulder went stiff, and then, slowly, the way a fist opens, it didn't." },
-            { s: 'shinjiro', f: 'neutral', t: "...Solar." },
+            { s: 'shinjiro', f: 'sad', t: "...Solar." },
             { n: "It was the first time he had said her name. He didn't say anything after it. It seemed to be the whole sentence." }
           ] }
         ] },
@@ -988,7 +988,7 @@
         { s: 'shinjiro', f: 'happy', t: "You'll be alright, the two of you. Long as you've got each other. ...Don't make it weird." },
         { n: "Then he went upstairs. She stayed in the dark kitchen with the beanie on. It was too big. She didn't take it off." }
       ], else: [
-        { s: 'shinjiro', f: 'neutral', t: "Look after Aki. He'll act like he's fine. He won't be." },
+        { s: 'shinjiro', f: 'sad', t: "Look after Aki. He'll act like he's fine. He won't be." },
         { s: 'shinjiro', f: 'neutral', t: "And the dog. Real food. It's on the fridge." },
         { choose: [
           { t: "I'll look after both of them. Idiots.", notes: 3, then: [
@@ -1005,7 +1005,7 @@
           ] }
         ] },
         { n: "He got down off the counter and stood in front of her and, after a second's hesitation she would think about for a long time, ruffled her hair, hard, the way you'd do it to a kid or a dog, which he had never once done, and which he did like he'd been wanting to for months and had been waiting for a night when it wouldn't matter." },
-        { s: 'shinjiro', f: 'neutral', t: "You and Aki. You'll be okay. Long as you've got each other." },
+        { s: 'shinjiro', f: 'sad', t: "You and Aki. You'll be okay. Long as you've got each other." },
         { s: 'shinjiro', f: 'happy', t: "...Night, Solar." },
         { n: "It was the first time he had said her name. Five months. He went upstairs. She sat on the counter until the moon had gone off the window, and then she got down, and took the good pot off the back burner, and hung it on its hook with the others, handle out." }
       ] }
@@ -1074,7 +1074,7 @@
           ] },
           { t: "I'll buy a good pot. Wherever it is.", notes: 2, then: [
             { s: 'akihiko', f: 'happy', t: "Hang it up handle out. Or he'll know." },
-            { s: 'solar', f: 'neutral', t: "He won't be there to know." },
+            { s: 'solar', f: 'sad', t: "He won't be there to know." },
             { s: 'akihiko', f: 'sad-2', t: "He'll know." }
           ] }
         ] }
@@ -1242,7 +1242,7 @@
           { choose: [
             { t: "I'll take nine o'clock. Thursdays and Sundays.", notes: 3, then: [
               { s: 'cook', t: "...You will, huh." },
-              { s: 'solar', f: 'neutral', t: "I'm not going anywhere." },
+              { s: 'solar', f: 'serious', t: "I'm not going anywhere." },
               { n: "It came out of her plain and sure, to a man she didn't know in an alley that smelled of frying oil, and he looked at her for a long second through the smoke and nodded, the way you'd nod at somebody telling you the bus schedule, as if he believed it." },
               { s: 'cook', t: "Thursdays and Sundays. I'll make the rice. You stand there." }
             ] },
@@ -1311,7 +1311,7 @@
       { s: 'akihiko', f: 'happy', t: "There was a dog behind the kitchens. Three legs. Ugliest dog you've ever seen. Shinji gave it half his dinner every night for a year and told the staff he was a slow eater." },
       { s: 'akihiko', f: 'happy', t: "They believed him. He was the fastest eater in the building. He'd finish, and go sit on the back step with his bowl, and wait for that dog like it was an appointment." },
       { n: "Solar thought about a cat on a dry patch of concrete with her eyes on the mouth of an alley, and a bowl set down by a vending machine at nine o'clock every night, like an appointment." },
-      { s: 'solar', f: 'neutral', t: "There's a cat. Behind the station. He fed her every night." },
+      { s: 'solar', f: 'sad', t: "There's a cat. Behind the station. He fed her every night." },
       { s: 'akihiko', f: 'surprised', t: "..." },
       { s: 'akihiko', f: 'sad-2', t: "...Of course there's a cat." },
       { n: "He laughed, short and wet, and looked at the bed, and shook his head at it slowly, the way you'd shake your head at somebody who had kept a secret from you for twelve years and done it so well you couldn't even be angry." },
@@ -1445,7 +1445,7 @@
         { s: 'ken', f: 'neutral', t: "Will you remember it? The note? So someone there knows how?" },
         { choose: [
           { t: "(Say it back to him. Word for word.)", notes: 3, then: [
-            { s: 'solar', f: 'neutral', t: "Dog. Real food. One cup. Not the canned garbage." },
+            { s: 'solar', f: 'serious', t: "Dog. Real food. One cup. Not the canned garbage." },
             { s: 'ken', f: 'serious', t: "You have to say it in capitals." },
             { s: 'solar', f: 'neutral', t: "I said it in capitals." },
             { n: "Ken considered that, and the way she'd said it, and decided that she had." },
@@ -1517,7 +1517,7 @@
         { choose: [
           { t: "(Show him. Up to the first knuckle.)", notes: 3, then: [
             { n: "She put a cup of rice in the pot and washed it with him until the water ran clear, and then took his hand and laid it flat on the surface of the rice, the way somebody had once laid hers, and pressed her thumb to the first joint of his middle finger. Up to here. His hand was small and cold and very still under hers, paying attention with every part of itself." },
-            { s: 'solar', f: 'neutral', t: "Somebody showed me that. Then he did." },
+            { s: 'solar', f: 'sad', t: "Somebody showed me that. Then he did." },
             { s: 'ken', f: 'neutral', t: "...Then you did." }
           ] },
           { t: "(Write it down for him instead.)", notes: 2, then: [
@@ -1552,22 +1552,22 @@
       { cg: 'link-shinjiro-r15' },
       { n: "They didn't close. They went to the ceiling first, unfocused, swimming, the way eyes go when they've been somewhere with no light in it. Then to the window, and flinched from it. Then sideways, slowly, so slowly, across the side table and the beanie and the cold tea and Akihiko's knees and Akihiko's face, and stayed there a moment, and moved on, and found her." },
       { n: "His mouth worked. Nothing came out of it. He swallowed, and it obviously hurt, and he tried again, and what came out was barely a voice at all, a dry rasp dragged up over gravel, a word at a time with breath between them, like a man climbing stairs." },
-      { s: 'shinjiro', f: 'neutral', t: "...You... eat yet." },
+      { s: 'shinjiro', f: 'happy', t: "...You... eat yet." },
       { n: "Five months. Five months and the whole long winter, and that was the first thing. Not where am I. Not what happened. The only hello he had ever had, coming back up out of the dark the way a hand comes up out of water, still holding on to the one thing it had taken down with it." },
       { cg: null },
       { n: "Behind her Akihiko laughed. It came out of him like something breaking, half a laugh and half the other thing, and he put both hands over his face, and Shinjiro's eyes went to the sound, slowly, and narrowed at it, which was the most like himself anything had been since October." },
       { s: 'shinjiro', f: 'neutral', t: "...Aki." },
-      { s: 'shinjiro', f: 'neutral', t: "...You look... like crap." },
+      { s: 'shinjiro', f: 'happy', t: "...You look... like crap." },
       { choose: [
         { t: "I ate.", notes: 3, then: [
-          { s: 'shinjiro', f: 'neutral', t: "...Liar." },
+          { s: 'shinjiro', f: 'happy', t: "...Liar." },
           { n: "It took him three breaths to get it out. It was worth every one of them. Something at the corner of his mouth tried to move and couldn't quite, the muscles of his face not taking orders yet, and she watched him notice that, and be annoyed by it, and that was so much like him too that she had to look at the window for a second." }
         ] },
         { t: "(Press the call button. Keep your other hand where he can see it.)", notes: 3, then: [
           { n: "She pressed the call button by the bed without looking away from him, and put her other hand on the blanket beside his, not on it, where he could see it if he wanted to. His eyes went down to it. His fingers moved toward it, a centimeter, as if the distance were a kilometer, and stopped, and he looked at them with deep personal disgust." }
         ] },
         { t: "(Say his name.)", notes: 2, then: [
-          { s: 'solar', f: 'neutral', t: "...Shinjiro." },
+          { s: 'solar', f: 'surprised', t: "...Shinjiro." },
           { n: "He blinked at her, slowly, the way you blink at a light somebody has switched on in your room without asking. He didn't answer. He'd heard it. That was enough to be going on with." }
         ] }
       ] },
@@ -1616,12 +1616,12 @@
       { n: "Akihiko looked at her. She looked at Shinjiro. Somewhere under her ribs, something that had been clenched since October let go a notch." },
       { s: 'solar', f: 'neutral', t: "She's fed. Every night. Nine o'clock." },
       { s: 'shinjiro', f: 'neutral', t: "...Not the canned—" },
-      { s: 'solar', f: 'neutral', t: "Not the canned garbage." },
+      { s: 'solar', f: 'happy', t: "Not the canned garbage." },
       { n: "It didn't get as far as a smile. It got about as far as a smile's street, looked at the house, and turned back. But it got that far. She saw it." },
       { ifHeading: ['R', 'S', 'H'], then: [
         { n: "He looked at her for a long time, the slow way he could look now, and she knew he was seeing something on her face, because he had always seen everything on it, even before." },
-        { s: 'shinjiro', f: 'neutral', t: "...You're... going." },
-        { s: 'solar', f: 'neutral', t: "The sixth. Home." },
+        { s: 'shinjiro', f: 'sad', t: "...You're... going." },
+        { s: 'solar', f: 'sad', t: "The sixth. Home." },
         { n: "He took that in the way he took everything, flat, into the middle distance, as if somebody had told him when the last bus ran. Then his eyes came back to her." },
         { s: 'shinjiro', f: 'neutral', t: "...Good." },
         { s: 'shinjiro', f: 'neutral', t: "...Eat first." },
@@ -1662,7 +1662,7 @@
           { s: 'shinjiro', f: 'neutral', t: "...Your people. ...They come?" },
           { s: 'solar', f: 'neutral', t: "They came. They're going home on the sixth." },
           { s: 'shinjiro', f: 'neutral', t: "...And you." },
-          { s: 'solar', f: 'neutral', t: "I'm staying." },
+          { s: 'solar', f: 'serious', t: "I'm staying." },
           { n: "He took that in the way he took everything, flat, into the middle distance. Then his eyes came back, and narrowed." },
           { s: 'shinjiro', f: 'neutral', t: "...Not for me." },
           { choose: [
@@ -1671,7 +1671,7 @@
               { s: 'shinjiro', f: 'neutral', t: "...Better... be." }
             ] },
             { t: "A little for you.", notes: 2, then: [
-              { s: 'shinjiro', f: 'neutral', t: "...Idiot." },
+              { s: 'shinjiro', f: 'happy', t: "...Idiot." },
               { n: "He said it so exactly the way he'd said it to Akihiko all year that Akihiko, by the window, laughed out loud and had to turn around." }
             ] },
             { t: "For the cat, mostly.", notes: 2, then: [
@@ -1682,7 +1682,7 @@
       ] },
       { ifRoute: 'romance', then: [
         { n: "His eyes went to the side table. To the beanie, folded there by his hand, where it had been since the fifth of October." },
-        { s: 'shinjiro', f: 'neutral', t: "...You kept it." },
+        { s: 'shinjiro', f: 'sad', t: "...You kept it." },
         { choose: [
           { t: "(Put it on. Crooked. Low over one eyebrow.)", notes: 3, then: [
             { n: "She put it on, crooked, too big, low over one eyebrow, the way he'd pulled it down over her ears in the dark kitchen with the moon in the window. He looked at it for a long moment." },
@@ -1723,7 +1723,7 @@
       { n: "Akihiko stood by the bed and didn't seem to know where to put his hands. In the end he laid two fingers on the back of Shinjiro's hand, the way he had every evening since October, like touching gloves before a round. This time the hand under them turned over, slowly, so slowly, and the fingers closed around his." },
       { s: 'akihiko', f: 'sad-4', t: "...Hey, Shinji." },
       { s: 'shinjiro', f: 'neutral', t: "...Hey." },
-      { s: 'shinjiro', f: 'neutral', t: "...Quit crying on... my blanket. ...Idiot." },
+      { s: 'shinjiro', f: 'happy', t: "...Quit crying on... my blanket. ...Idiot." },
       { n: "Akihiko stayed. Family stayed. Solar went down the three flights of stairs on her own and out through the doors into the last of the afternoon, where the air had something in it that wasn't quite cold anymore." },
       { place: 'Tatsumi Memorial Hospital · Front Steps', time: 'Evening', bg: 'hospital-outside' },
       { n: "Koromaru was on the steps. He stood up when he saw her face, all at once, every hair on him, and looked past her at the doors, and then up, at the third floor, at one window." },
@@ -1828,7 +1828,7 @@
       { n: "They had him sitting up in a chair by the window for twenty minutes every evening now, which he hated, with a blanket over his knees, which he hated more, and a physical therapist who came at six and made him close his right hand around a rubber ball ten times, which he hated most of all and did anyway, every time, with his jaw set, glaring at the ball as if it had said something about his mother." },
       { n: "The hospital let him have rice porridge. He called it wallpaper paste, in the three words a minute he had, and wouldn't eat it, and so Solar had made it in the dorm kitchen that afternoon, in the good pot, and brought it across the bay in a thermos wrapped in a dish towel, and she unscrewed the lid by his chair and the room filled up with the smell of rice and a little ginger and broth." },
       { n: "He looked at it for a long time. Then he took the spoon in his left hand, because the right wasn't ready, and got some of it to his mouth, slowly, spilling, refusing all help with his eyes, and tasted it the way he tasted everything, eyes on the middle distance, frowning, as if it had said something personal." },
-      { s: 'shinjiro', f: 'neutral', t: "...Could use... less salt." },
+      { s: 'shinjiro', f: 'happy', t: "...Could use... less salt." },
       { choose: [
         { t: "It's perfect.", notes: 3, then: [
           { s: 'shinjiro', f: 'neutral', t: "...Nothing's perfect." },
@@ -1840,7 +1840,7 @@
           { n: "He finished it anyway. All of it. Slowly. She didn't say anything about that, and he didn't either." }
         ] },
         { t: "Akihiko salted it.", notes: 1, then: [
-          { s: 'shinjiro', f: 'neutral', t: "...Tastes like it." },
+          { s: 'shinjiro', f: 'happy', t: "...Tastes like it." },
           { n: "Out in the hall, where he'd been pretending not to listen, Akihiko said *hey*, very wounded, and Shinjiro's mouth did the thing that wasn't quite a smile, and got a little further than it had the first day." }
         ] }
       ] },
@@ -1871,7 +1871,7 @@
     { n: "The room was warm and dim and smelled of floor polish and of him, a little, still, from the beanie folded on the side table by his hand, exactly where it had been since October. Mitsuru's Monday lilies were in the hall. Yukari's cactus was on the sill, still alive, as promised. Somebody, probably Ken, had taped a paper snowflake to the window, cut so carefully that every arm of it matched." },
     { n: "He looked the way he had looked for weeks. She had stopped expecting anything else, and had not stopped checking." },
     { n: "She had brought a cake. Of course she had. It was the convenience-store kind, one slice of strawberry shortcake in a plastic triangle with a single strawberry on top looking deeply sorry for itself, because that was what you did on Christmas Eve in this country, and she had decided at the register that he was getting the full experience whether he liked it or not." },
-    { s: 'solar', f: 'neutral', t: "Merry Christmas. Before you say anything, I know. The cream's from a can." },
+    { s: 'solar', f: 'sad', t: "Merry Christmas. Before you say anything, I know. The cream's from a can." },
     { n: "He didn't say anything. She could hear exactly what he would have said, though. She could hear the *tch*. She ate half of it with the little plastic fork and left the other half, and the strawberry, on the side table beside the beanie, which was ridiculous, and which she did anyway." },
     { n: "Then she took out the other thing, wrapped in a dish towel to keep it warm, a plastic container from the dorm kitchen with the lid on tight." },
     { choose: [

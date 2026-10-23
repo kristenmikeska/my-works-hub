@@ -143,7 +143,7 @@
         { t: "(Pay for the next one before she can.)", notes: 3, then: [
           { n: "She had the coins on the counter before Danielle's hand reached her bag. Danielle watched the old man take them. Then she took the receipt from him, unfolded the pen, and wrote on the back of it, in her small upright hand, *S. paid. 160.*" },
           { s: 'danielle', f: 'neutral', t: "There. Now we're even." },
-          { s: 'solar', f: 'neutral', t: "We're not even." },
+          { s: 'solar', f: 'serious', t: "We're not even." },
           { s: 'danielle', f: 'happy', t: "No. But it's written down that we are. That's the version that lasts." }
         ] },
         { t: "(Drink it. Say thank you.)", notes: 1, then: [
@@ -204,7 +204,7 @@
       { choose: [
         { t: "How many times have you tried?", notes: 3, then: [
           { s: 'danielle', f: 'neutral', t: "Two hundred and twelve." },
-          { s: 'solar', f: 'neutral', t: "...Today?" },
+          { s: 'solar', f: 'surprised', t: "...Today?" },
           { s: 'danielle', f: 'neutral', t: "In total. I'm not unhinged, Solar." },
           { n: "She said it with total serenity, and tapped it again. Two hundred and thirteen." }
         ] },
@@ -484,7 +484,7 @@
       ] },
       { n: "He came down the last flight and checked his watch and didn't look pleased and saw them both at once, and his face did the thing it did, which was nothing, finished, a conclusion already filed." },
       { s: 'jaehyun', f: 'neutral', t: "Solar." },
-      { s: 'jaehyun', f: 'neutral', t: "...Danielle." },
+      { s: 'jaehyun', f: 'serious', t: "...Danielle." },
       { s: 'danielle', f: 'happy', t: "Jaehyun. I'm so sorry to interrupt. The grocery fund. Second signature. It'll take a minute." },
       { n: "He took the pen. He read the whole page first, which was like him, and signed it at the bottom in a hand like his voice, level, without flourish, and handed back the pen, and Danielle took it as if he'd handed her something that had been in a museum." },
       { s: 'jaehyun', f: 'neutral', t: "You're running the fund now?" },
@@ -495,7 +495,7 @@
       { choose: [
         { t: "We're sorority sisters.", notes: 2, then: [
           { n: "It was Danielle's phrase. Solar heard herself use it. Danielle heard it too, and her smile changed by perhaps a single degree, the way a thermostat clicks." },
-          { s: 'jaehyun', f: 'neutral', t: "Good. That's good. Someone from the house." }
+          { s: 'jaehyun', f: 'happy', t: "Good. That's good. Someone from the house." }
         ] },
         { t: "No.", notes: 3, then: [
           { s: 'jaehyun', f: 'neutral', t: "...Alright." },
@@ -512,7 +512,7 @@
       { s: 'danielle', f: 'neutral', t: "Tell him I said goodnight. He won't remember I did. He never does." },
       { n: "And then she was walking, at her even administrative pace, out under the torii and down toward the road, and gone before Solar could get any of the three things she wanted to say into the right order, because Danielle always left at the exact moment before a sentence could reach her, as if exits were where she kept her best material." },
       { n: "Jaehyun came down again ten minutes later. He stood beside her at the bottom of the steps getting his breath back, and looked at the bench where Danielle had been." },
-      { s: 'jaehyun', f: 'neutral', t: "She signs everything twice. At home. Every form, every sheet the house sends over. Twice. I always thought that was careful of her." },
+      { s: 'jaehyun', f: 'serious', t: "She signs everything twice. At home. Every form, every sheet the house sends over. Twice. I always thought that was careful of her." },
       { choose: [
         { t: "Did you?", notes: 3, then: [
           { s: 'jaehyun', f: 'neutral', t: "...Yes. Why?" },
@@ -532,7 +532,7 @@
       { choose: [
         { t: "Don't.", notes: 3, then: [
           { s: 'danielle', f: 'neutral', t: "You always say *don't.* You never once say why." },
-          { s: 'solar', f: 'neutral', t: "There are things out there." },
+          { s: 'solar', f: 'serious', t: "There are things out there." },
           { s: 'danielle', f: 'happy', t: "There are things everywhere, Solar. That's what cameras are for." }
         ] },
         { t: "Then I'm coming with you.", notes: 2, then: [
@@ -639,7 +639,7 @@
           { s: 'danielle', f: 'surprised', t: "..." },
           { n: "Something moved behind Danielle's eyes. It wasn't disappointment, and it wasn't anger, nothing like that. It was interest. A chart being updated, a figure carried into a column it hadn't been in before." },
           { s: 'danielle', f: 'neutral', t: "You'd rather not know something about yourself than buy it from me." },
-          { s: 'solar', f: 'neutral', t: "I'd rather not buy anything from you." },
+          { s: 'solar', f: 'serious', t: "I'd rather not buy anything from you." },
           { s: 'danielle', f: 'neutral', t: "Hm." },
           { s: 'danielle', f: 'neutral', t: "...Interesting." },
           { n: "She said it slowly, the way she'd said nothing else, and looked at Solar with something on her face that was, horribly, almost adjacent to respect." }
@@ -655,7 +655,7 @@
         { t: "Make it two. One of you.", notes: 2, then: [
           { s: 'danielle', f: 'neutral', t: "No." },
           { s: 'danielle', f: 'neutral', t: "Nobody takes mine." },
-          { s: 'solar', f: 'neutral', t: "Then there's no deal." },
+          { s: 'solar', f: 'serious', t: "Then there's no deal." },
           { s: 'danielle', f: 'happy', t: "Then there's no deal. You've always negotiated like someone who's never once had to. On principle, and out loud." },
           { n: "She didn't seem unhappy about it. She seemed, if anything, entertained, a woman watching a hand she'd already seen played out to the last card anyway, for the pleasure of the form." }
         ] }
@@ -740,7 +740,7 @@
         { t: "Keep them. They're yours, not mine.", notes: 3, then: [
           { s: 'danielle', f: 'surprised', t: "..." },
           { s: 'danielle', f: 'neutral', t: "They're not mine. They're everyone's. That was the whole point of them." },
-          { s: 'solar', f: 'neutral', t: "Then they're not mine either." },
+          { s: 'solar', f: 'serious', t: "Then they're not mine either." },
           { n: "Danielle took the phone back. She didn't turn it face down. She looked at it for a moment as if the wall of tiny squares had become, very slightly, a different shape, and then she locked it, and the screen went dark, and she kept her hand on it." }
         ] }
       ] },

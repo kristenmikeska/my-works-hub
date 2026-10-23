@@ -228,7 +228,7 @@ window.FEMC_GAME_RUNINS = [
   { id: 'ri-aigis-music-room', who: 'aigis', where: { clubs: ['club-band'] },
     after: '9/1', until: '12/20', flags: ['joined-aigis'], scene: [
       { n: "When the last chord died and the band started arguing about whose fault the bridge was, Solar opened the music room door to let some air in and found Aigis standing directly outside it, perfectly upright, hands folded, as if someone had placed her there." },
-      { s: 'aigis', f: 'neutral', t: "I was not eavesdropping. I was listening from an adjacent position." },
+      { s: 'aigis', f: 'flustered', t: "I was not eavesdropping. I was listening from an adjacent position." },
       { s: 'aigis', f: 'neutral', t: "The drummer said the song needs more groove. I have searched my memory. I do not have a definition of groove." },
       { choose: [
         { t: "It's when your foot moves without asking you.", stat: { charm: 1 }, then: [
@@ -297,7 +297,7 @@ window.FEMC_GAME_RUNINS = [
   { id: 'ri-shinjiro-konbini', who: 'shinjiro', where: { jobs: ['konbini'] }, slot: 'evening',
     after: '8/8', until: '10/3', flags: ['joined-shinjiro'], noFlags: ['shinjiro-coma'], scene: [
       { n: "Near the end of her shift the door chimed and Shinjiro came in, did not look at her, and walked the aisles with a basket like a man on a mission he'd never admit to: eggs, a bag of flour, milk, green onions, and, last, set down on the counter with a defiant thump, a can of premium dog food." },
-      { s: 'shinjiro', f: 'neutral', t: "Don't say anything." },
+      { s: 'shinjiro', f: 'surprised', t: "Don't say anything." },
       { choose: [
         { t: "(Say nothing. Bag it carefully, eggs on top.)", stat: { kindness: 1 }, then: [
           { n: "She bagged the eggs on top. He watched her do it, and something in his face moved half a millimeter toward approval, and he paid in exact change and left without a word, the bag held level the whole way out the door." }
@@ -603,8 +603,8 @@ window.FEMC_GAME_RUNINS = [
     after: '6/13', until: '9/30', scene: [
       { n: "A little before eleven a black hoodie came in out of the dark, made one slow lap of the store, and set on the counter two pizza buns, an energy drink and, carefully, as if it might break, a sheet of frog stickers from the stationery rack." },
       { s: 'sebastian', f: 'surprised', t: "...Oh. It's you. Hey." },
-      { s: 'sebastian', f: 'neutral', t: "The stickers are for a guy. A guy I know. He's into frogs. It's a whole thing." },
-      { s: 'sebastian', f: 'neutral', t: "...Okay. I'm the guy." },
+      { s: 'sebastian', f: 'flustered', t: "The stickers are for a guy. A guy I know. He's into frogs. It's a whole thing." },
+      { s: 'sebastian', f: 'flustered', t: "...Okay. I'm the guy." },
       { choose: [
         { t: "Good pick. Tree frogs are the best ones.", stat: { charm: 1 }, then: [
           { s: 'sebastian', f: 'happy', t: "Right? Everybody goes for the big green ones. The little guys are where it's at." },
@@ -846,7 +846,7 @@ window.FEMC_GAME_RUNINS = [
   { id: 'ri-jaehyun-bookworms', who: 'jaehyun', where: { jobs: ['bookworms'] }, flags: ['arrived-jaehyun'],
     after: '10/26', until: '2/28', scene: [
       { n: "Near closing the bell over the door rang and Jaehyun came in, dark hair in a neat side part, scarf knotted exactly, and went straight to the games-and-strategy shelf and stood in front of the Go manuals with his hands behind his back as if they were a field he meant to read." },
-      { s: 'jaehyun', f: 'neutral', t: "Sister. You work here." },
+      { s: 'jaehyun', f: 'surprised', t: "Sister. You work here." },
       { s: 'jaehyun', f: 'neutral', t: "Your shelving's alphabetical by author, within subject. That's good. That's a system." },
       { choose: [
         { t: "It's not my system. It's theirs.", then: [
@@ -854,7 +854,7 @@ window.FEMC_GAME_RUNINS = [
           { n: "He bought a Go manual for beginners and another for somebody who wasn't one, and didn't say which was his, and on the way out, in passing, he rested his hand on the top of her head for exactly one second, where nobody could see." }
         ] },
         { t: "Don't wanna hear it, Jae.", stat: { courage: 1 }, then: [
-          { s: 'jaehyun', f: 'neutral', t: "I wasn't grading. I was approving. There's a difference." },
+          { s: 'jaehyun', f: 'happy', t: "I wasn't grading. I was approving. There's a difference." },
           { n: "With him there wasn't, and he knew she knew it. He paid in exact change and told her she wasn't wearing enough layers, because apparently it was a law of nature that he had to, and left." }
         ] }
       ] },
@@ -883,7 +883,7 @@ window.FEMC_GAME_RUNINS = [
     flags: ['arrived-haechan'], after: '11/5', until: '2/28', scene: [
       { n: "On her way out into the cold she found Haechan on the curb across the street under the one streetlight that worked, an unlit cigarette between two fingers and the look of somebody in the middle of a long conversation with it." },
       { s: 'haechan', f: 'neutral', t: "I'm quitting." },
-      { s: 'haechan', f: 'neutral', t: "This is what quitting looks like. You hold it. You don't light it. It's very visual. It's a whole performance." },
+      { s: 'haechan', f: 'happy', t: "This is what quitting looks like. You hold it. You don't light it. It's very visual. It's a whole performance." },
       { choose: [
         { t: "(Sit on the curb next to him.)", then: [
           { n: "She sat. The curb was freezing. He didn't say anything and neither did she, and after a while he slid the cigarette back into the pack, carefully, like something he'd be needing again, and they watched the Strip's neon flicker, his shoulder about an inch from hers and warm through his jacket." }

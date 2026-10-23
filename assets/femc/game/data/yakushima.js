@@ -58,7 +58,7 @@ window.FEMC_GAME_TRIP = {
           { id: 'junpei', who: 'junpei', label: 'Junpei', sub: 'Operation Wingwoman. It goes badly.', place: 'Yakushima · Beach', time: 'Afternoon', music: 'joy', scene: [
             { n: "Junpei had a plan. He'd had it since the ferry. It was called Operation Summer and it involved walking down to the public end of the beach, where the tourists were, and being, in his words, *casual and interesting*, and it had one flaw, which was that he'd asked Akihiko first, and Akihiko had said *no* and gone swimming." },
             { s: 'junpei', f: 'serious', t: "So it's you. You're my wingwoman. You go first. You say I'm cool. You say I'm the field leader." },
-            { s: 'solar', f: 'neutral', t: "I'm the field leader." },
+            { s: 'solar', f: 'happy', t: "I'm the field leader." },
             { s: 'junpei', f: 'flustered', t: "THEY don't know that." },
             { choose: [
               { t: "(Wing for him. Commit to the bit.)", notes: 3, stat: { charm: 1 }, then: [
@@ -71,7 +71,7 @@ window.FEMC_GAME_TRIP = {
           ] },
           { id: 'mitsuru', who: 'mitsuru', label: 'Mitsuru', sub: 'Under the parasol. She doesn’t swim.', place: 'Yakushima · Beach', time: 'Afternoon', music: 'tender', scene: [
             { n: "Mitsuru was under the biggest parasol on the beach in a white dress and a wide hat with a book, not swimming, not reading, watching the others in the water with the faint, polite expression of a woman at a concert she hadn't chosen." },
-            { s: 'mitsuru', f: 'neutral', t: "I came here every summer as a child. With my father, when he could get away. I never went in. There were always people watching. Someone would have written it down." },
+            { s: 'mitsuru', f: 'sad', t: "I came here every summer as a child. With my father, when he could get away. I never went in. There were always people watching. Someone would have written it down." },
             { s: 'mitsuru', f: 'sad', t: "I don't think I know how to be on a beach. I only know how to be seen on one." },
             { choose: [
               { t: "(Take her hand. Walk her to the water. Just to the ankles.)", notes: 3, stat: { courage: 1 }, then: [
@@ -148,7 +148,7 @@ window.FEMC_GAME_TRIP = {
       '7/22': {
         early: { title: 'phone calls', place: 'Yakushima · Kirijo Villa', time: 'Morning', music: 'day', scene: [
           { n: "Breakfast on the terrace, and Mitsuru's phone rang three times before the rice was served, and each time she excused herself and took it inside, and came back each time a little more composed, which with Mitsuru was how you knew something was wrong." },
-          { s: 'mitsuru', f: 'neutral', t: "There's a facility on the island. The Group's. Some kind of research. I wasn't told. Apparently I wasn't meant to be told." },
+          { s: 'mitsuru', f: 'sad', t: "There's a facility on the island. The Group's. Some kind of research. I wasn't told. Apparently I wasn't meant to be told." },
           { s: 'mitsuru', f: 'neutral', t: "It doesn't concern us. We're on holiday. Please enjoy yourselves." },
           { n: "She said it in the operation-briefing voice, and everybody at the table heard it, and went back to their rice, and the Chairman said something cheerful about the weather, and nobody laughed at it, and Akihiko looked at the green mountains behind the villa for a long time without eating." },
           { choose: [
@@ -220,7 +220,7 @@ window.FEMC_GAME_TRIP = {
         early: { title: 'one arm’s length', place: 'Yakushima · Kirijo Villa', time: 'Morning', music: 'mystery', scene: [
           { n: "There were men in Kirijo uniforms in the villa's front hall at breakfast, and phone calls, and Mitsuru's voice gone flat and courteous in another room, and at the end of the long table, not eating, because she didn't, sat the girl from the beach. Aigis. Very straight, hands on her knees, watching Solar across the table with calm, total attention, as if Solar were a sunrise she'd been told to log." },
           { s: 'junpei', f: 'surprised', t: "So we're just... she's... coming with us? Like, home? To the dorm?" },
-          { s: 'aigis', f: 'neutral', t: "Yes. I have been assigned. By myself. It is the first assignment I have given myself. I find it very satisfying." },
+          { s: 'aigis', f: 'happy', t: "Yes. I have been assigned. By myself. It is the first assignment I have given myself. I find it very satisfying." },
           { choose: [
             { t: "(Pass her a bowl of rice. Even if she doesn't eat.)", stat: { kindness: 1 }, then: [
               { n: "Aigis looked at the bowl. Then she held it, carefully, in both hands, the way you'd hold something someone had given you, and didn't eat it, and didn't put it down, all through breakfast, and at the end of it said *thank you for the rice* as if it had been a gift, which, Solar supposed, it had." }

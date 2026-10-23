@@ -28,7 +28,7 @@
         { t: "I count things too.", notes: 3, then: [
           { s: 'aigis', f: 'surprised', t: "Is that so?" },
           { s: 'aigis', f: 'happy', t: "Then we may compare totals. I will start with the stairwell. Fourteen steps between the third floor and the roof." },
-          { s: 'solar', f: 'neutral', t: "Fifteen. You missed the little one at the top." },
+          { s: 'solar', f: 'happy', t: "Fifteen. You missed the little one at the top." },
           { n: "Aigis went and looked. She came back with an expression of deep and silent respect." }
         ] },
         { t: "Why do you count them?", notes: 2, then: [
@@ -37,7 +37,7 @@
         ] },
         { t: "You're missing one. There, by the water tower.", notes: 2, then: [
           { s: 'aigis', f: 'serious', t: "That is a satellite." },
-          { s: 'aigis', f: 'neutral', t: "...But I will allow it. Two hundred and thirteen." }
+          { s: 'aigis', f: 'happy', t: "...But I will allow it. Two hundred and thirteen." }
         ] }
       ] },
       { n: "They stood there until the ninth window on the third floor of the building opposite went dark, and Aigis said eight, quietly, as if she were sorry about it, and they went in." }
@@ -45,7 +45,7 @@
     [
       { n: "Solar found her own laundry already folded on the dryer in the laundry room, which was alarming, because she had left it in the machine, damp and tangled, twenty minutes ago." },
       { n: "It wasn't just folded. It had been folded to a standard, every shirt the same width, every sock paired and turned into itself, the stack squared off at the edges with a precision usually reserved for bricks. On top, folded into a perfect small rectangle, was the black hoodie she slept in." },
-      { s: 'aigis', f: 'neutral', t: "I was passing. Your laundry was in a state of disorder." },
+      { s: 'aigis', f: 'flustered', t: "I was passing. Your laundry was in a state of disorder." },
       { choose: [
         { t: "Thank you. Will you show me how?", notes: 3, then: [
           { s: 'aigis', f: 'happy', t: "Affirmative." },
@@ -150,7 +150,7 @@
         ] },
         { t: "Why?", notes: 2, then: [
           { s: 'aigis', f: 'neutral', t: "So that if something happens, I will already be there." },
-          { s: 'aigis', f: 'neutral', t: "I would like to already be there. For once." },
+          { s: 'aigis', f: 'sad', t: "I would like to already be there. For once." },
           { n: "She didn't explain the *for once*. Solar didn't think she knew she'd said it." }
         ] },
         { t: "No.", notes: 1, then: [
@@ -163,7 +163,7 @@
       { s: 'solar', f: 'neutral', t: "Do you like sunsets?" },
       { s: 'aigis', f: 'neutral', t: "I do not know what I like yet. I would like to find out. Will you tell me if I am doing it correctly?" },
       { s: 'solar', f: 'neutral', t: "Nobody does it correctly." },
-      { s: 'aigis', f: 'surprised', t: "Is that so?" },
+      { s: 'aigis', f: 'happy', t: "Is that so?" },
       { n: "She looked genuinely relieved. Solar went down to bed and lay there in the room nobody had asked for, with the towel that had been folded at the end of the bed long since used and washed and folded again by her own hands, and above her, on the roof, she was almost sure, somebody stood very still at a rail and didn't sit down." },
       { n: "Later she counted windows from the street and worked out where on the roof Aigis had been standing. It was directly above her room. She found she didn't mind that as much as she probably should have." }
     ] },
@@ -177,7 +177,7 @@
       { choose: [
         { t: "I'd sink too, I think.", notes: 3, then: [
           { s: 'aigis', f: 'surprised', t: "Your density is within the normal human range." },
-          { s: 'solar', f: 'neutral', t: "I'd still sink." },
+          { s: 'solar', f: 'sad', t: "I'd still sink." },
           { n: "She didn't know how she knew. She looked at the green water and her body simply informed her, the way it informed her about stairs in the dark, flat and absolute. Deep water was not a place she went. Somebody, somewhere, had always been the one to go in after things." },
           { s: 'aigis', f: 'neutral', t: "...Then we are both dead weight." },
           { s: 'aigis', f: 'happy', t: "I find that I like this." }
@@ -238,7 +238,7 @@
       { n: "The cicadas at Naganaki had reached the stage of August where they no longer sounded like insects but like a single huge machine running somewhere under the trees, and the shrine grounds smelled of hot cedar and dust and the sweet rot of fallen persimmons nobody had swept up. The little playground by the steps was full of children making the most of the light." },
       { n: "Aigis had stopped moving forty minutes ago." },
       { n: "She was standing by the stone basin with one hand held out at shoulder height, palm up, as still as the lanterns, and on the tips of her fingers sat a butterfly. A big black swallowtail, its wings edged with blue that looked painted on, opening and closing very slowly, as if it were breathing through them." },
-      { s: 'aigis', f: 'neutral', t: "Please do not move suddenly. It landed. I did not ask it to." },
+      { s: 'aigis', f: 'serious', t: "Please do not move suddenly. It landed. I did not ask it to." },
       { choose: [
         { t: "(Sit on the steps and wait with her.)", notes: 3, then: [
           { n: "Solar sat on the warm stone step and waited. It was easy, in the end. The cicadas did the talking. The butterfly opened and closed, and Aigis held perfectly still, and Solar watched the two of them the way you watch somebody else's candle in a power cut, quietly, so as not to be the one who breathes on it." }
@@ -290,13 +290,13 @@
           { s: 'aigis', f: 'sad', t: "I was too slow. Or too fast. I do not know which." }
         ] },
         { t: "She'll get over it.", notes: 1, then: [
-          { s: 'aigis', f: 'neutral', t: "That is not the variable I am trying to protect." },
+          { s: 'aigis', f: 'serious', t: "That is not the variable I am trying to protect." },
           { n: "She didn't move her hand, and the girl got bored and left, and the butterfly stayed, and Aigis looked, somehow, as if she had lost anyway." }
         ] }
       ] },
       { n: "The light went orange and then went. The children were called home one by one by name from the bottom of the steps, and the cicadas stopped as suddenly as if someone had found the switch." },
       { s: 'aigis', f: 'neutral', t: "Solar-san. I was made to last a very long time." },
-      { s: 'aigis', f: 'neutral', t: "Today, for forty-three minutes, I would have traded some of it." },
+      { s: 'aigis', f: 'sad', t: "Today, for forty-three minutes, I would have traded some of it." },
       { n: "She said it plainly, as a finding, the way you'd read out a temperature. Then she lowered her hand at last, and flexed the fingers that didn't get tired, and they walked down the steps together into the blue evening, and neither of them said anything else, and Solar thought about two weeks the whole way home." }
     ] },
 
@@ -331,14 +331,14 @@
       { s: 'aigis', f: 'neutral', t: "Mostly the ceiling of the laboratory." },
       { s: 'aigis', f: 'neutral', t: "And since Yakushima, a room. A made bed. A lamp. A towel folded on the end of the bed. Nobody in it." },
       { n: "The streetlight lay across the floor in its bars. Somewhere outside a car went by, very slowly, the way cars go at two in the morning, as if they were embarrassed to be up." },
-      { s: 'solar', f: 'neutral', t: "That's my room." },
+      { s: 'solar', f: 'surprised', t: "That's my room." },
       { s: 'aigis', f: 'neutral', t: "I know." },
       { s: 'aigis', f: 'neutral', t: "I have never been inside it." },
       { n: "The cold started at the back of Solar's neck and went down, one vertebra at a time. She held the glass of water against her chest in both hands. She thought of the room on her first night, made up, waiting, the lamp on, the corner of the sheet turned down for somebody, and of Mitsuru counting Evokers in a black case and getting five where there should have been four." },
       { choose: [
         { t: "Okay. That's okay.", notes: 3, then: [
           { s: 'aigis', f: 'surprised', t: "Is it?" },
-          { s: 'solar', f: 'neutral', t: "No. But I don't know what else to do with it. So it's okay." },
+          { s: 'solar', f: 'sad', t: "No. But I don't know what else to do with it. So it's okay." },
           { s: 'aigis', f: 'neutral', t: "...That is a very human method." },
           { s: 'aigis', f: 'happy', t: "I will try it." }
         ] },
@@ -354,7 +354,7 @@
       { s: 'aigis', f: 'neutral', t: "Your heart rate is elevated. You will not sleep at this rate." },
       { s: 'solar', f: 'neutral', t: "I don't sleep great anyway." },
       { s: 'aigis', f: 'neutral', t: "Then go upstairs and lie down. I will return to standby here." },
-      { s: 'aigis', f: 'neutral', t: "If anything comes up the stairs, it will have to go past me first." },
+      { s: 'aigis', f: 'serious', t: "If anything comes up the stairs, it will have to go past me first." },
       { n: "She said it the way you'd say the bus stopped outside, a plain description of how things were going to be. Solar went up. She lay down in the room that had been ready for her, under the lamp nobody had asked for, and listened, and heard nothing, nothing at all, and slept until the alarm, for the first time in weeks." }
     ] },
 
@@ -391,9 +391,9 @@
       { n: "Aigis sat down on the couch next to her. She did it more easily now, after two weeks of classroom chairs; the couch hardly complained. She held the letter in her lap and turned it over and over, front, back, front, the way Solar had once watched a man turn a ruler end to end in the light of a gym window." },
       { s: 'aigis', f: 'neutral', t: "Do you receive letters, Solar-san?" },
       { n: "Her phone was in her pocket. She didn't take it out. She didn't need to; she could feel it there, the way you feel a stone in your shoe, the little stack of messages from numbers she didn't know, from people who wrote to her as if she'd only stepped out of the room for a minute." },
-      { s: 'solar', f: 'neutral', t: "Sort of." },
+      { s: 'solar', f: 'flustered', t: "Sort of." },
       { s: 'aigis', f: 'neutral', t: "When you read them, your heart rate increases by eleven beats per minute." },
-      { s: 'solar', f: 'surprised', t: "Don't tell me that." },
+      { s: 'solar', f: 'flustered', t: "Don't tell me that." },
       { s: 'aigis', f: 'neutral', t: "Understood. I will not tell you that." },
       { s: 'aigis', f: 'flustered', t: "...I have already told you that. I apologize. The order of operations was incorrect." },
       { choose: [
@@ -409,7 +409,7 @@
         ] },
         { t: "Can you turn the heart monitor off?", notes: 1, then: [
           { s: 'aigis', f: 'neutral', t: "No." },
-          { s: 'aigis', f: 'neutral', t: "I can stop reporting it. That is not the same as not knowing." }
+          { s: 'aigis', f: 'serious', t: "I can stop reporting it. That is not the same as not knowing." }
         ] }
       ] },
       { s: 'aigis', f: 'neutral', t: "What should I tell him?" },
@@ -422,7 +422,7 @@
         ] },
         { t: "Tell him thank you. That's the important part.", notes: 2, then: [
           { s: 'aigis', f: 'neutral', t: "Thank you for what?" },
-          { s: 'solar', f: 'neutral', t: "For being brave on a very small data set." },
+          { s: 'solar', f: 'happy', t: "For being brave on a very small data set." },
           { s: 'aigis', f: 'happy', t: "...Affirmative. I will thank him for that specifically." }
         ] },
         { t: "Tell him you're a weapon.", notes: 1, then: [
@@ -438,7 +438,7 @@
       { n: "Aigis was on the roof. She was standing at the rail in the cold with her hands at her sides and her lips moving very slightly, the way they moved when she was counting, and she didn't turn when the stairwell door opened, which she always did, and that was how Solar knew." },
       { s: 'aigis', f: 'neutral', t: "Forty-one meters." },
       { s: 'aigis', f: 'neutral', t: "My maximum speed over forty-one meters, from a standing start, is four point two seconds. The interval was shorter than that." },
-      { s: 'aigis', f: 'neutral', t: "I could not have reached him in time." },
+      { s: 'aigis', f: 'sad', t: "I could not have reached him in time." },
       { n: "She didn't say who. She didn't say in time for what. She said it to the city the way you read back a figure to make sure you've written it down right, and then her lips started moving again, and Solar understood that she was doing it over. The same sum. From the top." },
       { choose: [
         { t: "(Stand next to her. Don't interrupt the count.)", notes: 3, then: [
@@ -456,9 +456,9 @@
       { s: 'aigis', f: 'sad', t: "I recorded everything. I can replay it at any speed. I have not replayed it." },
       { s: 'aigis', f: 'sad', t: "I do not want to. I did not know there could be a file I did not want to open." },
       { n: "The wind came over the bay with winter already in it. Down in the street a scooter went by, and then it was quiet, and the city's windows were lit all the way out to the water, all those people who had slept through the fourth like any other Sunday and would never know there had been anything to sleep through." },
-      { s: 'solar', f: 'neutral', t: "That's what it's like." },
+      { s: 'solar', f: 'sad', t: "That's what it's like." },
       { s: 'aigis', f: 'neutral', t: "What is?" },
-      { s: 'solar', f: 'neutral', t: "When you lose something. You do the sum again. You know the answer. You do it again anyway." },
+      { s: 'solar', f: 'sad', t: "When you lose something. You do the sum again. You know the answer. You do it again anyway." },
       { s: 'aigis', f: 'surprised', t: "...Is that what this is?" },
       { choose: [
         { t: "Yeah. I think that's what this is.", notes: 3, then: [
@@ -501,7 +501,7 @@
       { s: 'aigis', f: 'neutral', t: "I do not have those names on file. I only have Solar." },
       { choose: [
         { t: "Solar's the one I have too.", notes: 3, then: [
-          { s: 'aigis', f: 'surprised', t: "...Then we have the same file." },
+          { s: 'aigis', f: 'happy', t: "...Then we have the same file." },
           { n: "She sounded so relieved that Solar had to look at the television, which was off, for a while." }
         ] },
         { t: "Do you want to know them?", notes: 2, then: [
@@ -510,7 +510,7 @@
         ] },
         { t: "They're not my names. Not yet.", notes: 2, then: [
           { s: 'aigis', f: 'neutral', t: "Not yet." },
-          { s: 'aigis', f: 'neutral', t: "I have noted the *yet*." }
+          { s: 'aigis', f: 'happy', t: "I have noted the *yet*." }
         ] }
       ] },
       { s: 'aigis', f: 'neutral', t: "May I tell you something I have not told Mitsuru-san? It is not a malfunction. I have checked." },
@@ -525,13 +525,13 @@
         { t: "No. It's not wrong. It's yours.", notes: 3, then: [
           { s: 'aigis', f: 'surprised', t: "Mine." },
           { s: 'aigis', f: 'neutral', t: "I was not aware I was permitted to own one." },
-          { s: 'solar', f: 'neutral', t: "You are. I'm in it. I'm not going to argue with it." },
+          { s: 'solar', f: 'happy', t: "You are. I'm in it. I'm not going to argue with it." },
           { s: 'aigis', f: 'happy', t: "...Affirmative." },
           { n: "The hand on her skirt let go. She smoothed the fabric out flat afterwards, very precisely, as though putting something back the way she'd found it." }
         ] },
         { t: "Newer doesn't mean less. I'm newer than all of them.", notes: 3, then: [
           { s: 'aigis', f: 'neutral', t: "You have been here since April." },
-          { s: 'solar', f: 'neutral', t: "That's what I mean. Everything I've got is from April. Is any of it worth less?" },
+          { s: 'solar', f: 'serious', t: "That's what I mean. Everything I've got is from April. Is any of it worth less?" },
           { s: 'aigis', f: 'neutral', t: "..." },
           { s: 'aigis', f: 'happy', t: "No. None of it. I have reviewed it." }
         ] },
@@ -543,7 +543,7 @@
       { s: 'solar', f: 'neutral', t: "Aigis. Who made it? The place." },
       { s: 'aigis', f: 'neutral', t: "I do not know." },
       { s: 'aigis', f: 'neutral', t: "The room was ready. The place was ready. You arrived and fit both. I do not know who prepares a world for somebody." },
-      { s: 'aigis', f: 'neutral', t: "...But I am glad that someone did. I would not have known where to look." },
+      { s: 'aigis', f: 'happy', t: "...But I am glad that someone did. I would not have known where to look." },
       { n: "She said it and sat back. That was the whole of it. No explanation came after, and Solar realized, sitting there with the lamp humming and the new girl laughing again upstairs, that none was going to, ever, from anyone, and that Aigis had known that before she started talking and had told her anyway, because she'd decided Solar should have whatever there was." },
       { choose: [
         { t: "(Lean your shoulder against hers.)", notes: 3, then: [
@@ -601,7 +601,7 @@
         ] }
       ] },
       { s: 'aigis', f: 'neutral', t: "I was built to protect. I have always assumed that meant I did not have a choice." },
-      { s: 'aigis', f: 'neutral', t: "If I have a choice, then I could stop. If I could stop and I do not, then it is mine. I am not sure I was prepared to own something so heavy." },
+      { s: 'aigis', f: 'serious', t: "If I have a choice, then I could stop. If I could stop and I do not, then it is mine. I am not sure I was prepared to own something so heavy." },
       { n: "Solar thought of a girl in a beanie on a kitchen counter, of a boy with a ruler, of everybody in this building who had picked something up that nobody told them to carry and hadn't put it down. She thought, too, of the messages on her phone, people on the far side of something asking her to come home, and of how badly she wanted, every day, for somebody to just tell her what to do, so that it wouldn't be hers." },
       { ifRomance: 'shinjiro', else: [] },
       { choose: [
@@ -613,7 +613,7 @@
         { t: "I'm still learning it too.", notes: 2, then: [
           { s: 'aigis', f: 'neutral', t: "You?" },
           { s: 'solar', f: 'neutral', t: "Every day. Mostly I'm bad at it." },
-          { s: 'aigis', f: 'neutral', t: "...Then we will be bad at it together. That is the arrangement. You said so in July." }
+          { s: 'aigis', f: 'happy', t: "...Then we will be bad at it together. That is the arrangement. You said so in July." }
         ] },
         { t: "You could always just follow me. I'll decide.", notes: 1, then: [
           { s: 'aigis', f: 'neutral', t: "I could." },
@@ -641,7 +641,7 @@
           { s: 'aigis', f: 'sad', t: "...That is a different question. I am still working on the other one." }
         ] },
         { t: "Nice hand.", notes: 1, then: [
-          { s: 'aigis', f: 'neutral', t: "Thank you. It is a very good hand. It is not mine yet." }
+          { s: 'aigis', f: 'sad', t: "Thank you. It is a very good hand. It is not mine yet." }
         ] }
       ] },
       { s: 'aigis', f: 'neutral', t: "The hand that held the rail on the twenty-seventh of July is not mine anymore. It is in a drawer, in a building on the other side of the bay. I asked to keep it. I was told it was not a reasonable request." },
@@ -667,7 +667,7 @@
       { s: 'aigis', f: 'sad', t: "But at one point, I was afraid. I have no record of having been afraid before. I checked. I checked very thoroughly." },
       { n: "The wind came over the rail and lifted her hair and put it down again. Below them the whole city was strung with lights for the season, white and gold along the strip, a tree the size of a building outside Paulownia Mall, and none of it reached up here except as a glow." },
       { s: 'solar', f: 'neutral', t: "What were you afraid of?" },
-      { s: 'aigis', f: 'neutral', t: "That I would not come back up these stairs." },
+      { s: 'aigis', f: 'sad', t: "That I would not come back up these stairs." },
       { s: 'aigis', f: 'neutral', t: "...Not that I would stop. That I would not come back up these stairs. Those were different. I did not know they were different." },
       { choose: [
         { t: "You came back up them.", notes: 3, then: [
@@ -681,14 +681,14 @@
         ] },
         { t: "I'd have come and got you.", notes: 2, then: [
           { s: 'aigis', f: 'surprised', t: "You do not know where the building is." },
-          { s: 'solar', f: 'neutral', t: "I'd have found it." },
-          { s: 'aigis', f: 'neutral', t: "...Yes. I believe you would. I believe it without a reason. I am getting used to that." }
+          { s: 'solar', f: 'serious', t: "I'd have found it." },
+          { s: 'aigis', f: 'happy', t: "...Yes. I believe you would. I believe it without a reason. I am getting used to that." }
         ] }
       ] },
       { s: 'aigis', f: 'neutral', t: "The people who came through at midnight want you to go home. I hear them in the hallway. They are careful. They speak quietly. My hearing is very good." },
-      { s: 'solar', f: 'neutral', t: "...Do you want me to go?" },
-      { s: 'aigis', f: 'neutral', t: "I am not permitted to want that." },
-      { s: 'solar', f: 'neutral', t: "Who says?" },
+      { s: 'solar', f: 'sad', t: "...Do you want me to go?" },
+      { s: 'aigis', f: 'sad', t: "I am not permitted to want that." },
+      { s: 'solar', f: 'serious', t: "Who says?" },
       { n: "Aigis opened her mouth to answer, and closed it, and Solar watched her go looking through whatever she kept instead of memories for the name of whoever it was who said, and come back empty. It was, she thought, the same face she herself made at roll call when a teacher said a surname." },
       { s: 'aigis', f: 'neutral', t: "...I will think about it." },
       { s: 'aigis', f: 'neutral', t: "I have decided I am allowed to think about it. That is all I have decided tonight. It is enough for one night. I believe that is also a human method." },
@@ -718,14 +718,14 @@
       { s: 'aigis', f: 'sad', t: "Not the same ones. Different ones. The ones from August are gone. Two weeks, as I calculated." },
       { s: 'aigis', f: 'neutral', t: "I stood there anyway for forty-three minutes. I wanted to see what it was like without one." },
       { s: 'solar', f: 'neutral', t: "What was it like?" },
-      { s: 'aigis', f: 'neutral', t: "Cold. And I still did not want to move." },
+      { s: 'aigis', f: 'sad', t: "Cold. And I still did not want to move." },
       { n: "Solar didn't say anything. She came and stood at the rail beside her, close, so their sleeves touched, and they looked out at the bay together, gray and still under the snow-light, with the monorail going across it in its slow silver line the way it had every night since April." },
       { s: 'aigis', f: 'neutral', t: "The name of my arcana is *Aeon*. Mitsuru-san told me. It means a very long time. An age. Longer than people." },
       { s: 'aigis', f: 'neutral', t: "I was made to last a very long time. I was made to protect. Those were the two things on my list, in July." },
       { s: 'aigis', f: 'neutral', t: "I have made a third one. Nobody ordered it." },
       { choose: [
         { t: "What's the third one?", notes: 3, then: [
-          { s: 'aigis', f: 'neutral', t: "I will tell you. Please do not move suddenly." },
+          { s: 'aigis', f: 'serious', t: "I will tell you. Please do not move suddenly." },
           { n: "She said it the way she'd said it at the stone basin with the swallowtail on her fingers, and Solar, who understood, held still." }
         ] },
         { t: "(Wait. Don't make her rush it.)", notes: 3, then: [
@@ -740,7 +740,7 @@
       { s: 'aigis', f: 'happy', t: "If both are possible, I will do both. I have excellent load capacity." },
       { n: "Solar's throat did something it hadn't asked permission for. She looked at the bay very hard until it stopped. It didn't quite stop." },
       { s: 'aigis', f: 'neutral', t: "And I have decided to remove the honorific." },
-      { s: 'aigis', f: 'neutral', t: "Is that permitted?" },
+      { s: 'aigis', f: 'flustered', t: "Is that permitted?" },
       { choose: [
         { t: "It's permitted.", notes: 3, then: [
           { s: 'aigis', f: 'neutral', t: "Thank you." },
@@ -761,7 +761,7 @@
       { s: 'aigis', f: 'neutral', t: "One more thing. Then I will stop. I have been speaking for a long time, for me." },
       { s: 'aigis', f: 'neutral', t: "The place shaped like you. I checked it while you were not here. Over winter break. On the night you went to the station and did not come back until two." },
       { s: 'aigis', f: 'neutral', t: "It did not get smaller." },
-      { s: 'aigis', f: 'neutral', t: "Whatever you do. Wherever you go, or do not go. It will still be here. I do not lose things." },
+      { s: 'aigis', f: 'serious', t: "Whatever you do. Wherever you go, or do not go. It will still be here. I do not lose things." },
       { n: "It went into her somewhere below the ribs and stayed, the way the stopwatch had gone into her pocket in April and the card had gone into her blazer in September, a small solid thing that was hers now whether she'd asked for it or not." },
       { n: "She didn't say anything. She took Aigis's hand on the rail, the new one, which was not new anymore, which had a faint scuff along the side of the index finger now, from holding a rail too hard on a roof in December, and it was cold, and it went the same temperature as hers after a while, and they stood like that until the monorail had gone across the bay and back twice, and Aigis counted it, both times, out loud, so Solar wouldn't have to." }
     ] }
@@ -774,7 +774,7 @@
       { s: 'koromaru', f: 'neutral', t: "Woof." },
       { s: 'aigis', f: 'neutral', t: "He says the snow smells like the shrine in the year he was very young. He says it is a good smell. He says you are late." },
       { s: 'solar', f: 'neutral', t: "He did not say I was late." },
-      { s: 'aigis', f: 'neutral', t: "He implied it. Some of his statements are implied." },
+      { s: 'aigis', f: 'happy', t: "He implied it. Some of his statements are implied." },
       { s: 'koromaru', f: 'happy', t: "Woof!" },
       { s: 'aigis', f: 'happy', t: "...He says he forgives you." },
       { n: "Solar sat down in the snow on Koromaru's other side, which was a mistake she'd regret in about four minutes, and he leaned on her at once, the whole warm weight of him, the way he'd leaned on her at the top of the shrine steps a long time ago, in May, before any of this, when he'd still been waiting for someone." },
@@ -787,7 +787,7 @@
         ] },
         { t: "Are you making all of this up?", notes: 2, then: [
           { s: 'aigis', f: 'serious', t: "I am not equipped to make things up." },
-          { s: 'aigis', f: 'neutral', t: "...I am, however, equipped to round up. Slightly. When it is kind." }
+          { s: 'aigis', f: 'happy', t: "...I am, however, equipped to round up. Slightly. When it is kind." }
         ] },
         { t: "(Just scratch his ears.)", notes: 2, then: [
           { n: "She scratched him behind the ears, and he closed his eyes and groaned like an old man lowering himself into a bath, and Aigis watched the two of them with the attentiveness she brought to everything that she couldn't feel herself, and then, very carefully, scratched the other ear." }
@@ -796,8 +796,8 @@
       { n: "Down in the street the lights came on along the strip. A train went over the bridge. Somebody in the dorm below opened a window and the sound of Junpei and somebody new arguing about a card game came up through the cold, loud and happy and completely ordinary, and then the window shut." },
       { s: 'aigis', f: 'neutral', t: "He asks whether you will be here in the spring." },
       { n: "Solar looked at Aigis. Aigis looked at the bay. Koromaru looked at nobody, which was to say at the stairs." },
-      { s: 'solar', f: 'neutral', t: "Did he really ask that?" },
-      { s: 'aigis', f: 'neutral', t: "...I rounded up." },
+      { s: 'solar', f: 'surprised', t: "Did he really ask that?" },
+      { s: 'aigis', f: 'flustered', t: "...I rounded up." },
       { n: "Solar didn't answer. Aigis didn't press her. She'd learned that from somebody too, and Solar thought she knew who. They sat in the snow, the three of them, until Solar's skirt was soaked through and she had to go in, and Aigis carried Koromaru down the stairs in her arms like a parcel, which he permitted, and which he would not have permitted from anybody else." }
     ] },
     { place: 'Iwatodai Station · Photo Booth', time: 'Evening', scene: [
@@ -820,7 +820,7 @@
       { n: "Four frames came out of the slot in a damp strip, still warm. In one of them Aigis was smiling. In one Solar was laughing too hard to have a face. In one they were both looking at each other instead of the camera, which neither of them remembered doing. In the last one Aigis had her hand up, the new one, against the glass, palm out, the way you'd put your hand on a window to say hello to somebody on the platform as the train pulled out." },
       { s: 'aigis', f: 'neutral', t: "We will cut it. Two for you. Two for me." },
       { s: 'solar', f: 'neutral', t: "Which two do you want?" },
-      { s: 'aigis', f: 'neutral', t: "The one where we are looking at each other." },
+      { s: 'aigis', f: 'happy', t: "The one where we are looking at each other." },
       { s: 'aigis', f: 'neutral', t: "...And the one with my hand. You may have the one with my hand if you want it. I would understand." },
       { n: "Solar took the one with the laughing and the one with the smile. She didn't say why. Aigis didn't ask. She put her two frames in the inside pocket of her coat, flat, where they wouldn't bend, the way somebody else had once put a card, and then she put her new hand over the pocket, briefly, as if checking it was there." },
       { n: "On the platform the train came in with its doors already opening and its windows full of tired people going home, and Aigis stood half a step behind her and slightly to the left, and they got on, and the doors closed, and the station went away behind them into the dark, and that was all. It was a photo booth. Solar was being ridiculous. She kept her two frames in her phone case for the rest of her life, wherever that turned out to be." }

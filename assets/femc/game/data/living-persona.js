@@ -251,7 +251,7 @@
         ] },
         { n: "They sat afterward on the one bench at the back of the greenhouse, under a banana plant with leaves like folded green umbrellas, and Haru opened the thermos and poured, and then took out of her bag a small lacquered box and set it on the bench between them and lifted the lid." },
         { n: "Ohagi. Four of them, round and soft, sweet rice wrapped in red bean paste, two plain and two rolled in sesame, set in the box as neatly as eggs in a nest." },
-        { s: 'solar', f: 'neutral', t: "You made these?" },
+        { s: 'solar', f: 'surprised', t: "You made these?" },
         { s: 'haru', f: 'neutral', t: "For the equinox. You eat them at higan, for the people who came before you. I asked the hotel kitchen if I might borrow it for an hour this morning. The chef stood behind me the whole time looking frightened." },
         { s: 'haru', f: 'neutral', t: "At home they were always bought. Very expensive ones, from a very famous shop, in a box with a ribbon. I never once saw anyone make them. I wanted to make them once. With my own hands. For somebody." },
         { s: 'haru', f: 'happy', t: "Day and night the same length today. Everything in balance, for one day of the year. I thought that was a good day to do something with my own hands." },

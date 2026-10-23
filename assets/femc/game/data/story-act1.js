@@ -76,13 +76,13 @@
     { music: 'sees' },
     { n: "The fourth floor had a heavy door with a keypad, and behind it a long table and a wall of monitors, all dark, and the smell of new electronics and old carpet, and a window with the blinds half drawn so the afternoon came in striped. A spring wind was rattling the glass in its frame. Solar counted the exits without meaning to. One. The door she'd come in by. She didn't love that." },
     { n: "Akihiko was in a chair by the wall with a bandage taped across his hairline and the wounded dignity of a man who'd been yelled at, at length. Yukari sat beside him with her hands in her lap. Mitsuru stood at the head of the table. And in the middle of it all sat the Chairman, beaming, like he'd organized the whole thing as a surprise party." },
-    { s: 'ikutsuki', t: "Ah! Our heroine of the hour. The Dark Hour, I should say. Ha ha." },
+    { s: 'ikutsuki', f: 'happy', t: "Ah! Our heroine of the hour. The Dark Hour, I should say. Ha ha." },
     { s: 'mitsuru', f: 'neutral', t: "Chairman." },
-    { s: 'ikutsuki', t: "Yes, yes, to business. Last night you summoned your Persona of your own accord, before you've been with us a week, against a Shadow most of our members would have preferred not to meet on their third year." },
-    { s: 'ikutsuki', t: "So I'll put it plainly. We'd like you to join the Specialized Extracurricular Execution Squad. Officially. Tartarus, the Dark Hour, all of it." },
+    { s: 'ikutsuki', f: 'serious', t: "Yes, yes, to business. Last night you summoned your Persona of your own accord, before you've been with us a week, against a Shadow most of our members would have preferred not to meet on their third year." },
+    { s: 'ikutsuki', f: 'serious', t: "So I'll put it plainly. We'd like you to join the Specialized Extracurricular Execution Squad. Officially. Tartarus, the Dark Hour, all of it." },
     { n: "Mitsuru took something from the table and held it out across the wood. A red armband, plain, with S.E.E.S. stitched into it in neat black letters, the kind of thing you'd wear for hall monitor duty if hall monitors fought monsters." },
     { s: 'mitsuru', f: 'neutral', t: "It's yours if you want it." },
-    { s: 'ikutsuki', t: "And of course, you're under no obligation at all. It must be your own decision, entirely of your own free will." },
+    { s: 'ikutsuki', f: 'neutral', t: "And of course, you're under no obligation at all. It must be your own decision, entirely of your own free will." },
     { n: "Free will. The words caught on something in her. She had read them before, on a sheet of heavy cream paper in a blue room, written in an old hand by someone who had believed very much in the idea, and she had stopped there then, too, with her jaw set and something in her chest gone hard and still, at the idea of anyone writing down for her what she had chosen." },
     { n: "Then she looked at the armband. Nobody had written anything down. Mitsuru was simply holding it out, and waiting, and her arm was very steady, and she would, Solar understood, have waited like that all afternoon." },
     { choose: [
@@ -92,7 +92,7 @@
         { n: "That was the answer she'd needed, it turned out. She took it." }
       ] },
       { t: "Is there a form?", notes: 0, then: [
-        { s: 'ikutsuki', t: "Ha! No, no. Well. There's one. It's very short. It's mostly a waiver." },
+        { s: 'ikutsuki', f: 'flustered', t: "Ha! No, no. Well. There's one. It's very short. It's mostly a waiver." },
         { s: 'mitsuru', f: 'neutral', t: "There's no form." },
         { n: "She took it." }
       ] }
@@ -113,8 +113,8 @@
       ] },
       { t: "(Nod.)", notes: 0, then: [] }
     ] },
-    { s: 'ikutsuki', t: "Wonderful! Well. I must say, it looks like we've found a leader who really shines." },
-    { s: 'ikutsuki', t: "Solar? Shines? ...No? I'll workshop it." },
+    { s: 'ikutsuki', f: 'happy', t: "Wonderful! Well. I must say, it looks like we've found a leader who really shines." },
+    { s: 'ikutsuki', f: 'flustered', t: "Solar? Shines? ...No? I'll workshop it." },
     { n: "Nobody laughed. Akihiko made a small noise into his fist that might have been a cough. Through the striped window the wind kept worrying at the glass, and the afternoon went on outside, ordinary, all the way to the water." }
   ] },
 
@@ -161,9 +161,9 @@
     { n: "Golden Week had emptied the city of everyone with somewhere to go, and by the third night of it the dorm was the only building on the street with its lights on. Everyone else had gone home to their families, or to the beach, or to a grandmother in the countryside. S.E.E.S. had either nowhere to go or somewhere they'd decided not to, and nobody asked anybody which." },
     { n: "It had been Junpei's idea. He came back from the rental place on the strip with a plastic bag and four DVDs and the look of a man who had been thinking about this all day, and announced, to the lounge in general, that it was movie night, and that attendance was mandatory, and that this came from the leader, which it did not." },
     { n: "The Chairman put his head round the front door on his way past, smelling of the night air and somebody's office, and looked at the five of them arranged around the coffee table." },
-    { s: 'ikutsuki', t: "Movie night? How wonderful. I'd stay, but I'd hate to reel you in. Reel! Like a film reel. Ha ha." },
+    { s: 'ikutsuki', f: 'happy', t: "Movie night? How wonderful. I'd stay, but I'd hate to reel you in. Reel! Like a film reel. Ha ha." },
     { s: 'mitsuru', f: 'neutral', t: "Goodnight, Chairman." },
-    { s: 'ikutsuki', t: "Goodnight, goodnight." },
+    { s: 'ikutsuki', f: 'neutral', t: "Goodnight, goodnight." },
     { n: "There were three candidates. Junpei had a horror movie with a girl on the cover screaming into a well. Yukari had a romance with a couple on the cover not quite kissing in the rain. Akihiko had a boxing movie, obviously, and was holding it like a man holding a winning lottery ticket. Mitsuru hadn't brought one. She had asked, quietly, whether the store let you take them home, and when Junpei said yes, that was the whole point, she'd looked faintly scandalized and said nothing more." },
     { s: 'junpei', f: 'happy', t: "Okay, it's a tie, everybody's being stubborn, so the leader decides. That's how it works. Leader. Decide." },
     { choose: [

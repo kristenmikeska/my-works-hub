@@ -153,7 +153,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
           ] },
           { t: "(Bag the eggs on top, separately, the careful way.)", stat: { proficiency: 1 }, then: [
             { n: "She bagged the tofu flat on the bottom, the scallions along the side, the eggs on top in their own bag so nothing could lean on them, and he watched her hands do it with an expression that didn't change at all, except that something in it did." },
-            { s: 'shinjiro', f: 'neutral', t: "...Somebody taught you right." }
+            { s: 'shinjiro', f: 'happy', t: "...Somebody taught you right." }
           ] }
         ] },
         { n: "When he'd gone the clerk leaned over from the cigarettes." },
@@ -170,7 +170,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { choose: [
           { t: "Junpei. Put the wallet away. I'm saying this as your field leader.", stat: { courage: 1 }, then: [
             { s: 'junpei', f: 'sad', t: "...You can't pull field leader on me at the *convenience store*." },
-            { s: 'solar', f: 'neutral', t: "I can pull field leader anywhere." },
+            { s: 'solar', f: 'happy', t: "I can pull field leader anywhere." },
             { n: "He put the wallet away. He looked at the sword girl for a long time on his way out, like a man leaving a lover at the station, and then he wore the hand towel around his neck all the way back to the dorm, which she heard about later from Yukari, at length." }
           ] },
           { t: "(Count the tickets left in the box. Do the math out loud.)", stat: { knowledge: 1 }, then: [
@@ -751,7 +751,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { s: 'chHinata', t: "So I'm a ronin. That's the word. Like the samurai with no master. It sounds cooler than it is. It means you sit in a café all day with one coffee and everybody you went to school with is having a life." },
         { s: 'chHinata', t: "I can't study at home. My mom keeps bringing me tea and looking at me. Here nobody looks at me." },
         { n: "Behind them Ms. Kagami turned off the espresso machine, and the long hiss of it went quiet, and the café went quiet with it, and Solar thought about saying something useful and didn't have anything, so she said what was true." },
-        { s: 'solar', f: 'neutral', t: "Ms. Kagami's been refilling your cup for free since April. She looks at you. She just doesn't let you see." },
+        { s: 'solar', f: 'serious', t: "Ms. Kagami's been refilling your cup for free since April. She looks at you. She just doesn't let you see." },
         { n: "Hinata turned around and looked at Ms. Kagami, who was very busy with a cloth and the steam wand and did not look back, and he stood there holding his bag against his chest, nineteen and tired and crumpled, and bowed to her back, deeply, and she didn't turn around, and he left." },
         { s: 'chKagami', t: "...Don't tell people things about me." }
       ] },
@@ -1107,7 +1107,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
           ] },
           { t: "Watch the noodle basket. That's the best part.", stat: { knowledge: 1 }, then: [
             { n: "Aigis watched the master swing the noodle basket up out of the water and snap it down, twice, the water flying off in a single sheet, and watched him do it again, and again, and her head moved very slightly with each snap, tracking it, and at the end of twenty minutes she turned to Solar." },
-            { s: 'aigis', f: 'neutral', t: "His motion is exactly the same each time. Within one centimeter. This is very rare in a human. I think he is very good." },
+            { s: 'aigis', f: 'happy', t: "His motion is exactly the same each time. Within one centimeter. This is very rare in a human. I think he is very good." },
             { s: 'hgMaster', t: "...Hm." }
           ] }
         ] },

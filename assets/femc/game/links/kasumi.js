@@ -185,7 +185,7 @@
       { n: "Solar held it still. Kasumi went in and out of the frame, a red flicker, then the ribbon, then her, then the ribbon again, and Solar watched the whole routine on the tiny screen instead of in front of her, which was a strange thing to do with a person standing ten feet away, and which made the girl on the screen feel very far off, like someone on television in another room." },
       { n: "Afterwards they sat on the steps with their heads together and played it back. Kasumi watched it three times without saying anything. On the fourth she spoke very quietly, to the screen, not to Solar." },
       { s: 'kasumi', f: 'neutral', t: "She's good, isn't she." },
-      { s: 'solar', f: 'neutral', t: "She?" },
+      { s: 'solar', f: 'surprised', t: "She?" },
       { s: 'kasumi', f: 'surprised', t: "Me. I meant me. Sorry." },
       { s: 'kasumi', f: 'sad', t: "I always do that with these. I watch, and I think, she's good, she's doing everything right, I wonder how she does it. And then I remember it's me, and it's like... like coming back into a room and not being sure I'm the one who left it." },
       { s: 'kasumi', f: 'neutral', t: "Do you ever feel that, Senpai? Like there's the one on the screen, and the one watching, and you don't know which version of you is the real one?" },
@@ -396,7 +396,7 @@
       ] },
       { n: "Later, when the shade from the big tree had come all the way across the stones, she did it one more time, just to cool down, she said, not trying. And it was different. Slower into the turn. A little pause at the top that wasn't a mistake at all, her arm coming round lower and softer, the ribbon following it like a sigh instead of a whip. She came down out of the walkover and caught the stick and stood, and didn't skid." },
       { n: "She didn't seem to notice she'd landed it." },
-      { s: 'solar', f: 'neutral', t: "You landed it." },
+      { s: 'solar', f: 'happy', t: "You landed it." },
       { s: 'kasumi', f: 'surprised', t: "I did? ...That wasn't the routine. That's not how it goes. I just did whatever my body wanted to do." },
       { s: 'kasumi', f: 'neutral', t: "Which one did you like better, Senpai? Honestly." },
       { choose: [
@@ -499,7 +499,7 @@
       { s: 'solar', f: 'neutral', t: "I think so." },
       { s: 'kasumi', f: 'neutral', t: "When they call you that, do you turn around?" },
       { n: "It went into Solar the way a draft goes in under a door, low and cold and across the floor before you've noticed. She thought of the first time she'd read it, in her room, the phone open on her knee. How her whole body had turned toward it, before anything in her head had agreed to." },
-      { s: 'solar', f: 'neutral', t: "...Yes. Before I've decided to." },
+      { s: 'solar', f: 'sad', t: "...Yes. Before I've decided to." },
       { s: 'kasumi', f: 'sad', t: "Sometimes I dream somebody's calling me from a long way off. A name. And I turn around before I've decided to, and I wake up before I see who it is." },
       { choose: [
         { t: "(Don't ask what the name is.)", notes: 3, then: [
@@ -583,13 +583,13 @@
         { t: "I've fallen for you. Whoever you turn out to be.", route: 'romance', notes: 3, then: [
           { s: 'kasumi', f: 'surprised', t: "..." },
           { s: 'kasumi', f: 'blushing', t: "Whoever? Even if I'm... even if I'm not exactly who I said?" },
-          { s: 'solar', f: 'neutral', t: "Even then." },
+          { s: 'solar', f: 'serious', t: "Even then." },
           { n: "Kasumi made a sound that wasn't a word and came up off the stones and threw both arms around Solar's neck so hard they nearly went backwards up the steps, broom and all, and held on with her face pressed into Solar's shoulder, and Solar's hand found the back of her head, the warm hair under the bow, and stayed there." },
           { s: 'kasumi', f: 'blushing', t: "Me too, Senpai. Me too. Whoever I am. She does too." }
         ] },
         { t: "My friend. Whoever you turn out to be, I'm on your side.", route: 'friend', notes: 3, then: [
           { s: 'kasumi', f: 'surprised', t: "...Whoever. Even the real one?" },
-          { s: 'solar', f: 'neutral', t: "Especially her." },
+          { s: 'solar', f: 'happy', t: "Especially her." },
           { s: 'kasumi', f: 'happy', t: "Senpai. You're the best. You've always been the best. I'm going to cry on a broom." },
           { n: "She did, a little, laughing, with the broom held upright in both hands like a flag, and then she wiped her face on her wrist and said that was enough of that, and that they still had light, and that Solar was learning the circle again whether she liked it or not." }
         ] }
@@ -784,7 +784,7 @@
     { s: 'solar', f: 'neutral', t: "Kasumi." },
     { n: "Something went across Kasumi's face and was gone, too fast to read, like a bird across a window. She was still smiling. She held on harder." },
     { s: 'kasumi', f: 'sad', t: "...Again?" },
-    { s: 'solar', f: 'neutral', t: "Kasumi." },
+    { s: 'solar', f: 'sad', t: "Kasumi." },
     { s: 'kasumi', f: 'sad', t: "Thank you. I think I needed to hear someone say it. While they still could." },
     { ifRoute: 'romance', then: [
       { choose: [

@@ -489,7 +489,7 @@
       { n: "He'd brought her an iced coffee at four in the afternoon on Tuesday, and a sparkling water on the dorm steps on Thursday morning, and tonight, at the station, at eight, a can of the pink refresher from the one machine in Port Island that sold anything close to it, and he held it out to her with his face doing the thing where it wanted very much to be thanked and was trying to look like it didn't care." },
       { s: 'mark', f: 'neutral', t: "Refresher. At night. You don't drink coffee late, you'll be up till four." },
       { n: "It was exactly right. Every single one of them had been exactly right, the right drink at the right hour, and she stood in the concourse holding the cold can and felt something that was warm and something that wasn't, both at once, in the same place." },
-      { s: 'solar', f: 'neutral', t: "How do you know my drinks?" },
+      { s: 'solar', f: 'surprised', t: "How do you know my drinks?" },
       { s: 'mark', f: 'neutral', t: "I asked. Hanni told me. A while ago. At home." },
       { s: 'mark', f: 'neutral', t: "She knows everything about you. She's like a database. A really nice database who bakes." },
       { n: "He said it easily, proudly almost, the way you'd say you'd done your homework. And it was kind. It was a kind thing to do, to go and ask someone what a girl liked so you could get it right. She knew that." },
@@ -665,7 +665,7 @@
       { n: "He walked her home again. It had become a thing they did without either of them deciding it, a look at the station exit and a shrug and the two of them falling into step through the cold back streets toward the bay, the windows of the little houses still hung with New Year's pine." },
       { s: 'mark', f: 'neutral', t: "Bodyguard Mark Lee, reporting for—" },
       { ifFlag: 'mark-bodyguard', then: [
-        { s: 'solar', f: 'neutral', t: "Ugh." },
+        { s: 'solar', f: 'happy', t: "Ugh." },
         { s: 'mark', f: 'neutral', t: "Wow. You didn't even let me finish. You never let me finish. That's how I know it's you." }
       ], else: [
         { n: "He waited a beat at the end of it, a gap, the way you'd leave a gap for a second voice, and when nothing came he laughed and filled it himself." },
@@ -685,7 +685,7 @@
           { s: 'mark', f: 'sad', t: "..." },
           { s: 'mark', f: 'neutral', t: "Oh." },
           { s: 'mark', f: 'neutral', t: "Okay. No. Okay. That's yours. That's your call. I'm not going to— where? Can I ask where?" },
-          { s: 'solar', f: 'neutral', t: "Somewhere you can't follow." },
+          { s: 'solar', f: 'sad', t: "Somewhere you can't follow." },
           { n: "He nodded. He kept nodding a beat too long, the way you keep clapping after everyone else has stopped. She watched the warm boy take it, and she watched the other one take it too, the one who'd been counting, and she watched them both arrive at the same number and not know what to do with it." }
         ] },
         { t: "Do you want me to?", notes: 3, then: [
@@ -834,7 +834,7 @@
       { n: "And then she remembered him." },
       { n: "A first day. A campus in late summer, heat coming up off the paths and everyone staring, and her under a tree on the grass with a pair of shoes she hated in one hand. A boy who'd stopped in front of her with his hands up, sorry to bother you, and sat down in the grass across from her, and asked if she was famous or something, like he didn't know, and she'd let him not know. A building with a room for everything, and her hands flat on the cold glass of a gaming lab like she could reach through it. *Do I need to tell you my name, or have you already heard?* And him, scratching the back of his head. *Well, yeah, I heard. But it'd still be nice.* And then, *like the solar system?*" },
       { n: "A boy who walked her home. Who texted *u get back ok?* Who meant it. Who was also, somewhere behind his eyes, always, doing a sum." },
-      { s: 'solar', f: 'neutral', t: "...You knew who I was. On the first day. Before I said a word." },
+      { s: 'solar', f: 'surprised', t: "...You knew who I was. On the first day. Before I said a word." },
       { n: "His hands came off the keys." },
       { s: 'mark', f: 'surprised', t: "..." },
       { s: 'mark', f: 'neutral', t: "...Yeah. I did. Everybody did. You're Jaehyun's sister. You're your dad's daughter. You were all over everybody's phone before you'd unpacked." },
@@ -890,13 +890,13 @@
           { s: 'mark', f: 'surprised', t: "..." },
           { s: 'mark', f: 'neutral', t: "...You remember me now. Okay. So I'm asking. Would you sing it?" },
           { ifFlag: 'mark-home', then: [
-            { s: 'solar', f: 'neutral', t: "At home. In a studio. With the door open, and my name on it where I can see it." },
+            { s: 'solar', f: 'serious', t: "At home. In a studio. With the door open, and my name on it where I can see it." },
             { s: 'mark', f: 'serious', t: "Door open. Your name where you can see it. Okay. Yeah. Those are the right terms. Those are exactly the right terms." },
             { n: "He said it like he was writing it down. She thought he probably was, somewhere behind his eyes, in neat capitals, and for once she thought that might be a good thing." }
           ], else: [
-            { s: 'solar', f: 'neutral', t: "I can't sing it where I'm going, Marky." },
+            { s: 'solar', f: 'sad', t: "I can't sing it where I'm going, Marky." },
             { s: 'mark', f: 'sad', t: "...Yeah. No. I figured. I think I figured." },
-            { s: 'solar', f: 'neutral', t: "Leave it empty. Don't give it to anyone else." },
+            { s: 'solar', f: 'sad', t: "Leave it empty. Don't give it to anyone else." },
             { s: 'mark', f: 'serious', t: "...Okay. I won't. It'll just be the train. Eight bars of the train going over the water, every time, and nobody on it. People are going to think I forgot something." },
             { n: "He laughed, and it broke in the middle, and he let it." }
           ] }
@@ -1046,7 +1046,7 @@
     { after: '2/12', title: '12: two suns', place: 'Port Island · Back Streets', time: 'Evening', music: 'night', scene: [
       { n: "Two days before Valentine's the back streets behind the station had gone pink and red in every window that could manage it, the bakery, the dry cleaner's, the convenience store on its corner glowing like a fish tank with a pyramid of heart-shaped boxes stacked by the door, and the wind off the bay came between the buildings and went down her collar like it had a key." },
       { s: 'mark', f: 'neutral', t: "Bodyguard Mark Lee, reporting for—" },
-      { s: 'solar', f: 'neutral', t: "Ugh." },
+      { s: 'solar', f: 'happy', t: "Ugh." },
       { s: 'mark', f: 'neutral', t: "There it is. You don't even think about it now. It just comes out of you. I love that for me." },
       { n: "He stopped in front of the convenience store window and looked at the pyramid of boxes with the critical squint of a man judging a talent show." },
       { s: 'mark', f: 'neutral', t: "So. Sunday. Hanni explained the whole thing to me with a diagram. There's the real kind and the friend kind and the kind you give your boss, which is insane." },
@@ -1126,7 +1126,7 @@
             { n: "He tied it with enormous concentration and got it wrong anyway, the knot sliding round to sit under her ear, and stepped back, and said it was perfect, and she said it was crooked, and he said, *there it is,* like he'd been waiting all month for the line." }
           ] },
           { t: "(Take it. Say thanks. Just thanks.)", notes: 3, then: [
-            { s: 'solar', f: 'neutral', t: "Thanks, Marky." },
+            { s: 'solar', f: 'happy', t: "Thanks, Marky." },
             { s: 'mark', f: 'neutral', t: "...See? Easy. No negotiation. Took you long enough." }
           ] },
           { t: "I can tie my own scarf.", notes: 2, then: [
@@ -1684,7 +1684,7 @@
         { t: "Solar. Like the solar system?", notes: 3, then: [
           { s: 'mark', f: 'surprised', t: "..." },
           { s: 'mark', f: 'flustered', t: "Oh, no. No. You remember that? That was the worst thing I've ever said to a girl. I said it in front of a whole building." },
-          { s: 'solar', f: 'neutral', t: "My parents aren't space nerds, Marky." },
+          { s: 'solar', f: 'happy', t: "My parents aren't space nerds, Marky." },
           { s: 'mark', f: 'neutral', t: "I know. I know. You told me. You said you wished they were that cool." },
           { n: "He laughed into the dark over the water, the real one, and she laughed too, at a joke from another life, two worlds away, that had somehow survived the trip." }
         ] },

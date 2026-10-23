@@ -129,7 +129,7 @@
         { t: "(Count it out loud. Three times round the wrist.)", notes: 3, then: [
           { n: "One, two, three. She said it the way he had in June, low, one pass laid down over the last so neatly it looked printed, and he went quiet so that hers could be the only count in the room, and when she smoothed the end down flat with her thumb he looked at it for a long time the way you look at your own name in somebody else's handwriting." },
           { s: 'akihiko', f: 'happy', t: "...That's better than mine." },
-          { s: 'solar', f: 'neutral', t: "I had a good coach." }
+          { s: 'solar', f: 'happy', t: "I had a good coach." }
         ] },
         { t: "(Do it perfectly. Exactly the way he showed you.)", notes: 3, then: [
           { n: "She did it perfectly, over and under and across and back, and he watched every pass with the absorbed, careful face of a man watching somebody defuse something, and when she was done he made a fist and opened it and made a fist again and said nothing, and then hit the heavy bag with it, once, a flat clean crack, and turned round to her looking about twelve years old." }
@@ -458,7 +458,7 @@
       { choose: [
         { t: "Who's going to wrap your hands?", notes: 3, then: [
           { s: 'akihiko', f: 'surprised', t: "...I do my own hands." },
-          { s: 'solar', f: 'neutral', t: "Not that day." },
+          { s: 'solar', f: 'serious', t: "Not that day." },
           { n: "He opened his mouth and closed it and looked at the strap of his bag for a long time, and his ears did something she would think about later, in bed, when she should have been sleeping." }
         ] },
         { t: "I'll be there.", notes: 3, then: [
@@ -632,7 +632,7 @@
         ] },
         { t: "You could just text me. Like a normal person.", notes: 2, then: [
           { s: 'akihiko', f: 'happy', t: "I do text you. At five. You call that harassment." },
-          { s: 'solar', f: 'neutral', t: "It is harassment." },
+          { s: 'solar', f: 'happy', t: "It is harassment." },
           { s: 'akihiko', f: 'happy', t: "You answer, though." }
         ] },
         { t: "Who said I came up for you?", notes: 2, then: [
@@ -710,7 +710,7 @@
         ] },
         { t: "Thank you for not finishing that sentence.", notes: 3, then: [
           { s: 'akihiko', f: 'surprised', t: "...You noticed that." },
-          { s: 'solar', f: 'neutral', t: "I notice when you don't do things. It's very loud." }
+          { s: 'solar', f: 'happy', t: "I notice when you don't do things. It's very loud." }
         ] },
         { t: "Maybe I don't want to know.", notes: 2, then: [
           { s: 'akihiko', f: 'neutral', t: "Okay." },
@@ -748,7 +748,7 @@
           { t: "(Catch his hand before he can take it back.)", route: 'romance', notes: 3, then: [
             { n: "She caught it. His hand was still at her ear, his knuckles cold from the railing, and she put hers over it and held it there against the side of her face, and felt him stop breathing, the whole of him, the way he stopped at the top of a lap before he let the air go, and then felt him remember how." },
             { s: 'akihiko', f: 'surprised', t: "..." },
-            { s: 'solar', f: 'neutral', t: "It's not the wind. In case you were wondering." },
+            { s: 'solar', f: 'flustered', t: "It's not the wind. In case you were wondering." },
             { s: 'akihiko', f: 'blushing', t: "...I wasn't wondering. I was hoping. That's different. I've been hoping since about April." },
             { s: 'akihiko', f: 'blushing', t: "The ruler. Four centimeters. I thought, oh no." },
             { n: "He didn't do anything else. He didn't kiss her, he didn't say anything that needed a second sentence after it, he just turned his hand over under hers so that it was holding hers instead, rough from the tape and warm now, and they stood at the railing with the wind going straight through both of them while the second bell went, and then the end of the second bell, and the stairwell below them went quiet the way stairwells do when everybody else is already where they're supposed to be." },
@@ -790,11 +790,11 @@
           { s: 'akihiko', f: 'sad-3', t: "He couldn't cook when we were kids. He taught himself. Because somebody had to." },
           { s: 'akihiko', f: 'sad-2', t: "Burned everything for a year straight. Rice, eggs, everything. We ate it anyway. Miki said it tasted like camping." },
           { ifRank: { shinjiro: 7 }, then: [
-            { s: 'solar', f: 'neutral', t: "He told me I cut onions like I was mad at them." },
+            { s: 'solar', f: 'happy', t: "He told me I cut onions like I was mad at them." },
             { s: 'akihiko', f: 'sad-4', t: "...He said that to me. When I was eight. Word for word." },
             { s: 'akihiko', f: 'sad-3', t: "Guess he only ever had the one complaint." }
           ], else: [
-            { s: 'solar', f: 'neutral', t: "He told me to eat something. Every single time he saw me. Like it was hello." },
+            { s: 'solar', f: 'sad', t: "He told me to eat something. Every single time he saw me. Like it was hello." },
             { s: 'akihiko', f: 'sad-3', t: "...Yeah. It was. That was the only hello he had." }
           ] },
           { n: "He laughed, wet and broken in the middle, and didn't hide it, and she didn't look away, and the old man's dog in its coat barked once at the far end of the path as though it had heard something funny." }
@@ -826,7 +826,7 @@
         { t: "Then let's find something else to hit. Something that hits back softer.", notes: 2, then: [
           { s: 'akihiko', f: 'surprised', t: "...Ha." },
           { s: 'akihiko', f: 'happy', t: "Batting cages open at ten. You're terrible at baseball." },
-          { s: 'solar', f: 'neutral', t: "So are you." },
+          { s: 'solar', f: 'happy', t: "So are you." },
           { s: 'akihiko', f: 'happy', t: "So we'll be terrible together. Okay." }
         ] }
       ] },
@@ -855,7 +855,7 @@
       { s: 'akihiko', f: 'neutral', t: "Five tomorrow?" },
       { s: 'solar', f: 'neutral', t: "Five." },
       { s: 'akihiko', f: 'neutral', t: "We'll walk." },
-      { s: 'solar', f: 'neutral', t: "We'll run. You need it." },
+      { s: 'solar', f: 'serious', t: "We'll run. You need it." },
       { n: "He laughed. It wasn't the old one. It was the first one since, though, and he looked surprised to hear it come out of himself, and went inside first so she wouldn't see his face, and she stood on the step in the cold a little longer, holding the shape of his wrists in her hands." }
     ] },
     { after: '11/2', title: '9: what am i to you', place: 'Gekkoukan High · Boxing Club', time: 'After School', scene: [
@@ -902,7 +902,7 @@
         { n: "He said it to the can, and then, because that was cowardly and he knew it, he made himself look up and say it again with his eyes, and she watched it cost him, the whole of it, a boy who would walk into a ring with anybody asking one question he couldn't block." },
         { choose: [
           { t: "It holds.", notes: 3, then: [
-            { s: 'solar', f: 'neutral', t: "It holds. They came for me. I know they did. It still holds." },
+            { s: 'solar', f: 'serious', t: "It holds. They came for me. I know they did. It still holds." },
             { s: 'akihiko', f: 'surprised', t: "..." },
             { s: 'akihiko', f: 'blushing', t: "...Okay. Okay. I." },
             { n: "He put the can down on the ledge. He picked it up again. He put it down, and left it there, like a man who'd finally found somewhere to put his hands and didn't trust himself with anything else in them." }
@@ -1041,7 +1041,7 @@
         { n: "It was the same question. The same lockers, the same four faces, the same bright hungry patience, and she felt it again, the click in another room, her chin starting up a fraction and her mouth getting ready to curve, the good face, the hallway face, sliding toward her like a coat somebody was holding out for her to step into. It was right there. It had always been right there." },
         { choose: [
           { t: "(Leave the coat where it is. Answer with your own face.)", notes: 3, then: [
-            { s: 'solar', f: 'neutral', t: "Yes." },
+            { s: 'solar', f: 'serious', t: "Yes." },
             { n: "That was all. No smile to go with it, nothing warm and easy and well-made, just her face, the one she had at five in the morning, telling them. It felt like stepping out of a warm room without a jacket. It felt, she noticed, completely fine." },
             { n: "Nobody said anything for a second. Then the smallest of them, at the back, burst into tears, all at once and with tremendous dignity, and Ōta put an arm round her without looking and kept her eyes on Solar." },
             { s: 'ota', t: "...Okay. Thank you. For saying it like that. Nobody ever says anything to us like that." }
@@ -1060,7 +1060,7 @@
         { n: "It was nearly the same question. The same lockers, the same four faces, the same bright hungry patience, and she felt it again, the click in another room, her chin starting up a fraction and her mouth getting ready to curve, the good face, the hallway face, sliding toward her like a coat somebody was holding out for her to step into. It was right there. It had always been right there." },
         { choose: [
           { t: "(Leave the coat where it is.) He's my best friend. That's the whole thing.", notes: 3, then: [
-            { s: 'solar', f: 'neutral', t: "He's my best friend. That's the whole thing. It's not a small thing." },
+            { s: 'solar', f: 'serious', t: "He's my best friend. That's the whole thing. It's not a small thing." },
             { n: "No smile with it. Just her face, the five a.m. one, telling them, and it felt like stepping out of a warm room without a jacket, and it felt, she noticed, completely fine." },
             { s: 'ota', t: "...Okay. We believe you. Nobody's ever said it to us like that." },
             { s: 'ota', t: "Then you're the only person in this school who can tell us what he actually likes. Not protein. Everybody gives him protein." }
@@ -1121,13 +1121,13 @@
         { choose: [
           { t: "You still owe me a seat in the back. Where it's dark.", notes: 3, then: [
             { s: 'akihiko', f: 'surprised', t: "...You remember that?" },
-            { s: 'solar', f: 'neutral', t: "You said next year. Like it was a place on a map." },
+            { s: 'solar', f: 'sad', t: "You said next year. Like it was a place on a map." },
             { s: 'akihiko', f: 'happy', t: "It is. It's July. Back row, left side, by the fire door. I'll save it with my bag." },
             { n: "Next year. He said it the way he'd said it in July, easily, a known distance, somewhere you could run to before breakfast, and this time she didn't have to not correct him. She just let it be true, and walked down the hill inside it." }
           ] },
           { t: "I'll sit in the front. Under the lights. I'll count for you.", notes: 3, then: [
             { s: 'akihiko', f: 'surprised', t: "Under the lights?" },
-            { s: 'solar', f: 'neutral', t: "I'll bring a hat." },
+            { s: 'solar', f: 'happy', t: "I'll bring a hat." },
             { n: "He laughed so hard he had to stop walking and put a hand on the wall, and said that was the best thing he'd heard all year, a hat, and then, when he'd stopped, looked at her for a second longer than the joke needed, like someone who'd been handed a time on a lap that was better than he'd thought she had in her." }
           ] },
           { t: "Go. They need you.", notes: 2, then: [
@@ -1307,7 +1307,7 @@
           { s: 'junpei', f: 'surprised', t: "I'm WHAT?" },
           { choose: [
             { t: "(Tell Ken yes. Make it sound like a promise.)", notes: 3, then: [
-              { s: 'solar', f: 'neutral', t: "They will. Every Saturday. And I'll know if they don't." },
+              { s: 'solar', f: 'serious', t: "They will. Every Saturday. And I'll know if they don't." },
               { s: 'ken', f: 'neutral', t: "...How?" },
               { s: 'solar', f: 'neutral', t: "I'll know." },
               { n: "Ken believed her. She watched him believe her, the way kids do, all the way down, and it was the hardest thing she did all day, and she did it without her voice moving once." }
@@ -1340,7 +1340,7 @@
         { choose: [
           { t: "Since a roof.", notes: 3, then: [
             { s: 'maki', t: "Which roof?" },
-            { s: 'solar', f: 'neutral', t: "A windy one." },
+            { s: 'solar', f: 'flustered', t: "A windy one." },
             { s: 'akihiko', f: 'blushing', t: "It was very windy." },
             { n: "He said it like that explained everything, and to him, she suspected, it did. Maki and Sonoda looked at each other. Neither of them had won the juice. They seemed, on the whole, delighted about it." }
           ] },
@@ -1383,7 +1383,7 @@
         { t: "(Show him the window. The track, and the monorail past it.)", notes: 3, then: [
           { n: "She pointed. From her desk, if you leaned, you could see the end of the track and the corner of the fence and, past it, the monorail crossing to Port Island every eleven minutes, silver and soundless at this distance, like a needle going through cloth. He leaned. He watched one whole crossing." },
           { s: 'akihiko', f: 'neutral', t: "You can see the track from here." },
-          { s: 'solar', f: 'neutral', t: "I can see you run laps at lunch. Every day." },
+          { s: 'solar', f: 'flustered', t: "I can see you run laps at lunch. Every day." },
           { s: 'akihiko', f: 'blushing', t: "...Every day?" },
           { s: 'solar', f: 'neutral', t: "You lead with your shoulders when you're tired." }
         ] },
@@ -1537,7 +1537,7 @@
       { s: 'akihiko', f: 'neutral', t: "Protein." },
       { choose: [
         { t: "(Put it back in his bowl. Say it back to him.)", notes: 3, then: [
-          { s: 'solar', f: 'neutral', t: "Protein." },
+          { s: 'solar', f: 'sad', t: "Protein." },
           { s: 'akihiko', f: 'sad-2', t: "..." },
           { n: "He looked down at it. She knew what he was looking at. She'd known since August, a long table and a little girl stealing her brother's egg every night and her brother letting her. He looked at it for a long time. Then he laughed, wet at the edges, the way he had on the dorm roof in the summer, and ate it in two bites, and said it was the best egg he'd ever had, and that she was never allowed to do that again, and that she should do it again." }
         ] },
@@ -1574,7 +1574,7 @@
             ] },
             { t: "Remember this one. The best bowl.", notes: 3, then: [
               { s: 'akihiko', f: 'happy', t: "Every one's the best bowl." },
-              { s: 'solar', f: 'neutral', t: "This one, though." },
+              { s: 'solar', f: 'sad', t: "This one, though." },
               { s: 'akihiko', f: 'neutral', t: "...Okay. This one." },
               { n: "He looked round the place properly then, the counter and the steam and the old man's back and the radio, the way he looked round a gym before a fight, because she'd asked him to, without asking why." }
             ] },
@@ -1689,7 +1689,7 @@
           ] },
           { t: "Only if you don't let me win.", notes: 2, then: [
             { s: 'akihiko', f: 'happy', t: "I've never once let you win." },
-            { s: 'solar', f: 'neutral', t: "April. The ruler. Five and a half." },
+            { s: 'solar', f: 'happy', t: "April. The ruler. Five and a half." },
             { s: 'akihiko', f: 'surprised', t: "...That was the ruler. That's not winning. That's physics." }
           ] }
         ] }
@@ -1700,7 +1700,7 @@
         { choose: [
           { t: "Five. And the day after. And every day after that.", notes: 3, then: [
             { s: 'akihiko', f: 'happy', t: "That's not how five works." },
-            { s: 'solar', f: 'neutral', t: "It's how I'm doing it." },
+            { s: 'solar', f: 'happy', t: "It's how I'm doing it." },
             { n: "He looked at her for a long time in the last of the light, and then nodded, once, the way he did when she read him a time on a lap, a good one, a personal best, and put it away somewhere behind his eyes to keep." }
           ] },
           { t: "(Take the stopwatch out. Start it. Don't stop it.)", notes: 3, then: [
@@ -1718,9 +1718,9 @@
       ], else: [
         { ifHeading: 'true', then: [
           { n: "At the bridge she stopped and took the stopwatch out of her pocket and put it in his hand." },
-          { s: 'solar', f: 'neutral', t: "Time me. One lap. Bridge and back. Don't tell me the number." },
+          { s: 'solar', f: 'serious', t: "Time me. One lap. Bridge and back. Don't tell me the number." },
           { s: 'akihiko', f: 'surprised', t: "Why not?" },
-          { s: 'solar', f: 'neutral', t: "I don't know. Keep it. Just keep it." },
+          { s: 'solar', f: 'sad', t: "I don't know. Keep it. Just keep it." },
           { choose: [
             { t: "(Run. Everything you have.)", notes: 3, then: [
               { n: "She ran. Everything she had, the whole lap, the lampposts going by and the cold tearing at her lungs and her legs filing their complaints and being overruled, and when she came back to him under the lamp at the bridge he was looking down at the stopwatch with a face she couldn't read." },
@@ -1913,7 +1913,7 @@
     { s: 'akihiko', f: 'neutral', t: "But wherever you are. Whatever happens in March. I'm texting you at five. Every day." },
     { s: 'akihiko', f: 'blushing', t: "If it doesn't go through, I'll text anyway. I'm warning you now." },
     { n: "Something in her chest went very still at that, and she didn't know why, a little cold place under the warmth like a stone in a shoe, the picture of a phone somewhere lighting up in an empty room with nobody there to read it. Then it was gone, and he was looking at her, and the snow was in his eyelashes." },
-    { s: 'solar', f: 'neutral', t: "Is that a promise or a threat?" },
+    { s: 'solar', f: 'happy', t: "Is that a promise or a threat?" },
     { s: 'akihiko', f: 'happy', t: "Yes." },
     { n: "He kissed her then, in the middle of the bridge, in the middle of the snow, the scarf pulling them closer every time either of them moved, so that there was nowhere to go but in. His hands were cold on her face. His mouth wasn't. Snow caught on his eyelashes and melted against her cheek, and somewhere across the water a bell began to ring in Port Island, ten slow strokes, and for the first time she could remember, she didn't count them." },
     { cg: null },

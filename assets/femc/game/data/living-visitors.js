@@ -50,7 +50,7 @@
           { t: "(Teach her to do nothing. Lie back on the bench and look at the sky.)", notes: 3, then: [
             { n: "Solar leaned back against the bench and tipped her face up and shut her eyes, and after a long, deeply suspicious minute, she heard Angela do the same, the bench creaking, a breath going out of her that sounded like it had been in there since spring." },
             { s: 'mercy', f: 'neutral', t: "...This is very difficult." },
-            { s: 'solar', f: 'neutral', t: "You're doing great." },
+            { s: 'solar', f: 'happy', t: "You're doing great." },
             { s: 'mercy', f: 'happy', t: "Don't patronize me. I'm a surgeon. I'll get the hang of it." }
           ] },
           { t: "You buy ice cream. That's the first step.", notes: 2, then: [
@@ -261,7 +261,7 @@
     { id: 'kiriko-ln-call', kind: 'call', rank: 9, after: '11/8', until: '3/5', when: 'quiet', place: "Iwatodai Dorm · Solar's Room", time: 'Late Night', music: 'tender', scene: [
       { n: "The phone rang at eleven. Rang. Solar stared at it. Kiriko had never once called her. Kiriko conducted her entire life through four-minute texts and pebbles." },
       { s: 'kiriko', f: 'surprised', t: "Sol-chan. Sol-chan. Phones are for CALLING. You push the green button and it's just a person. In your ear. Why did nobody tell me this. I've been typing like an animal for five months." },
-      { s: 'solar', f: 'neutral', t: "...You didn't know you could call?" },
+      { s: 'solar', f: 'surprised', t: "...You didn't know you could call?" },
       { s: 'kiriko', f: 'flustered', t: "I knew. Technically. I thought it was for emergencies. Like, Mitsuru-emergencies. Genji-nii called me to ask if I'd eaten and it changed my life." },
       { n: "She was outside. Solar could hear wind, and the creak of something wooden, and crows complaining far off about being woken, and Kiriko's breath going in and out like she'd just landed." },
       { s: 'kiriko', f: 'neutral', t: "I'm on the shrine roof. The office one. You can see your dorm from here if you squint. Which window's yours? Turn your light on." },
@@ -327,7 +327,7 @@
         ] },
         { n: "Afterwards Abigail got a sticker that said PARTICIPANT and put it on Sebastian's forehead, and he let her, and wore it for the rest of the afternoon, all the way through the barley tea and the tug-of-war he refused to join and the walk back along the river." },
         { s: 'sebastian', f: 'neutral', t: "In Pelican Town there's the Flower Dance every spring. Everybody dances in the meadow. I always stand at the edge and say I don't dance." },
-        { s: 'sebastian', f: 'neutral', t: "...I ran a relay. In front of people. With a sticker on my head. I think something's broken in me. In a good way. Maybe." },
+        { s: 'sebastian', f: 'happy', t: "...I ran a relay. In front of people. With a sticker on my head. I think something's broken in me. In a good way. Maybe." },
         { s: 'abigail', f: 'happy', t: "He's going to dance this spring. I've decided. Solar's my witness." }
       ] },
 
@@ -357,7 +357,7 @@
         ] },
         { n: "Abigail came round the corner of the fountain a while later in a borrowed furisode, purple, of course, with a stole and her hair up in two crooked flowers Hyein had pinned in that morning, walking very carefully in zori she clearly hated, and stopped in front of the awning, and spread her arms." },
         { s: 'abigail', f: 'happy', t: "I'm not twenty in this world, technically. Nobody checked. I look amazing. Seb. Say I look amazing." },
-        { s: 'sebastian', f: 'neutral', t: "...You look like an adult." },
+        { s: 'sebastian', f: 'happy', t: "...You look like an adult." },
         { s: 'abigail', f: 'surprised', t: "That's the nicest thing you've ever said to me. That's horrible. I love it. Take a picture." },
         { n: "He took a picture with the folding phone, badly, her head half out of the frame, and she made him take another, and then she pulled Solar into the third one, and the picture they ended up keeping was the fourth, all three of them under the arcade awning on a dry day for no reason at all, blurred, because Sam had run up behind them at the last second and jumped." }
       ] }
@@ -377,11 +377,11 @@
           { s: 'sebastian', f: 'neutral', t: "Out here's fine. Out here's the best part." }
         ] },
         { t: "Is something wrong?", notes: 2, then: [
-          { s: 'sebastian', f: 'neutral', t: "No. That's the weird part. Nothing's wrong. I just didn't want to be by myself with nothing being wrong. It feels like I'm not doing it right." }
+          { s: 'sebastian', f: 'sad', t: "No. That's the weird part. Nothing's wrong. I just didn't want to be by myself with nothing being wrong. It feels like I'm not doing it right." }
         ] }
       ] },
       { s: 'sebastian', f: 'neutral', t: "At home I'd be in the basement right now with the window open, listening to it on the lawn. You can hear the rain better underground. Everything sounds like it's happening to somebody else." },
-      { s: 'sebastian', f: 'neutral', t: "Here you're just in it. On a step. It's worse. I kind of like it more." },
+      { s: 'sebastian', f: 'happy', t: "Here you're just in it. On a step. It's worse. I kind of like it more." },
       { n: "At midnight minus ten he stood up and pulled his hood further down and stepped out into the rain without an umbrella, the way he always did, and turned around at the gate and lifted one hand, flat, the same wave as off the motorcycle, and went, and Solar sat on the step a while longer by herself, listening to it happen to her." }
     ] },
     { id: 'seb-ln-call', kind: 'call', rank: 7, after: '9/13', until: '3/5', when: 'quiet', place: "Iwatodai Dorm · Solar's Room", time: 'Late Night', music: 'dorm', scene: [
@@ -404,7 +404,7 @@
         ] },
         { t: "TALK TO THE NARRATOR.", notes: 3, then: [
           { s: 'sebastian', f: 'neutral', t: "\"The narrator does not like being talked to.\"" },
-          { s: 'sebastian', f: 'neutral', t: "\"...The narrator says thank you for being the laptop. The narrator has never once had someone to test things on who didn't laugh at the wrong part.\"" }
+          { s: 'sebastian', f: 'sad', t: "\"...The narrator says thank you for being the laptop. The narrator has never once had someone to test things on who didn't laugh at the wrong part.\"" }
         ] }
       ] },
       { n: "They played until nearly midnight, Solar lying on her back in the dark typing out loud and Sebastian narrating her into rooms he'd made up that evening, a lighthouse, a train with no driver that he cut short and wouldn't explain, a kitchen where a man with a beanie made soup and grumbled at you to stir it, and when he hung up she didn't put the phone down for a long time, as if the game might still be on the line." }

@@ -364,7 +364,7 @@
       { choose: [
         { t: "I'd get off. Eventually. I think that's the point.", notes: 3, then: [
           { s: 'elizabeth', f: 'neutral', t: "Is it? I had understood that the point was the arriving." },
-          { s: 'solar', f: 'neutral', t: "You can't arrive if you don't get off." },
+          { s: 'solar', f: 'serious', t: "You can't arrive if you don't get off." },
           { n: "Elizabeth considered this for long enough that a train came in and went out again in front of them, and then she took out her notebook." }
         ] },
         { t: "I don't know.", notes: 2, then: [
@@ -526,7 +526,7 @@
         { t: "What happens to the unclaimed ones?", notes: 3, then: [
           { s: 'kurosawa', t: "Some get sold. Some get thrown out. The umbrellas, I give to people who come in wet." },
           { s: 'elizabeth', f: 'happy', t: "So they are found again by somebody else. Not the one who lost them. Somebody who needed them." },
-          { s: 'kurosawa', t: "...If you want to put it like that." },
+          { s: 'kurosawa', f: 'happy', t: "...If you want to put it like that." },
           { s: 'elizabeth', f: 'happy', t: "I do want to put it like that. I want to put it exactly like that." }
         ] },
         { t: "(Pick up the plush rabbit.)", notes: 2, then: [
@@ -534,16 +534,16 @@
           { s: 'elizabeth', f: 'sad', t: "Somebody will be very sorry about him, someday, very suddenly, years from now." }
         ] },
         { t: "Most of this stuff, nobody wants back.", notes: 1, then: [
-          { s: 'kurosawa', t: "You'd be surprised." },
+          { s: 'kurosawa', f: 'sad', t: "You'd be surprised." },
           { n: "He said it shortly, the way he said everything, and pointed his chin at the wedding album on the top shelf, and didn't explain, and didn't need to." }
         ] }
       ] },
       { n: "Back at the counter Elizabeth set the compendium down on it with a solid thump and drew herself up very tall, and Solar had exactly enough time to see it coming and not enough time to stop it." },
       { s: 'elizabeth', f: 'serious', t: "I should like to report a found person." },
       { n: "Kurosawa took his glasses off. He looked at Elizabeth. He looked at Solar. He looked back at Elizabeth, and put his glasses on again, and pulled a form toward him with the air of a man whose day had just become a great deal longer." },
-      { s: 'kurosawa', t: "...Found where." },
+      { s: 'kurosawa', f: 'serious', t: "...Found where." },
       { s: 'elizabeth', f: 'neutral', t: "On the floor of a tower, in April. In a green hour. By a boy who was not supposed to be there." },
-      { s: 'kurosawa', t: "And the owner." },
+      { s: 'kurosawa', f: 'serious', t: "And the owner." },
       { s: 'elizabeth', f: 'serious', t: "Several have come forward. Their descriptions match. Some of them match a great deal better than I would like." },
       { choose: [
         { t: "(Take the pen and fill in the form yourself.)", notes: 3, then: [
@@ -739,7 +739,7 @@
       { choose: [
         { t: "(Stand, hold the book against your chest, and say it properly.)", notes: 3, then: [
           { n: "Solar stood up. She picked up the compendium, which was heavier than it looked and warm, and held it against her chest the way Elizabeth held it, and drew herself up very straight, and looked down at the attendant on the guest's seat." },
-          { s: 'solar', f: 'neutral', t: "Welcome to the Velvet Room." },
+          { s: 'solar', f: 'happy', t: "Welcome to the Velvet Room." },
           { s: 'elizabeth', f: 'happy', t: "Oh. Oh, it's lovely from here. You look terribly mysterious. No wonder they all stare." }
         ] },
         { t: "Welcome to the Velvet Room, I guess.", notes: 2, then: [

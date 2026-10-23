@@ -61,7 +61,7 @@
           { s: 'jaehyun', f: 'neutral', t: "At home they round up. To be kind. I don't need kind. I need the tenths." }
         ] },
         { t: "(Tell him he was slower than he was.)", notes: 2, then: [
-          { s: 'jaehyun', f: 'serious', t: "I wasn't. I know I wasn't. You do that to make me go again." },
+          { s: 'jaehyun', f: 'happy', t: "I wasn't. I know I wasn't. You do that to make me go again." },
           { n: "He went again. He was faster. He didn't say anything about it, and neither did she, and when he came down the last step he held out his hand for the watch without looking, as if she'd been handing it back to him her whole life." }
         ] },
         { t: "(Run it with him.)", notes: 3, then: [
@@ -78,12 +78,12 @@
         ] },
         { t: "You've never been in there.", notes: 3, then: [
           { s: 'jaehyun', f: 'neutral', t: "No. I watch film. I listen to the radio. It's the same thing." },
-          { s: 'jaehyun', f: 'serious', t: "...It isn't the same thing. I know that. I'm doing the only part I can do." }
+          { s: 'jaehyun', f: 'sad', t: "...It isn't the same thing. I know that. I'm doing the only part I can do." }
         ] },
         { t: "(Take the pencil. Draw where you actually go.)", notes: 3, then: [
           { n: "She took the pencil out of his hand. He let her. She drew the way the floor really went, the corridor that wasn't on Fuuka's map because it moved, the corner where the light was wrong, the place they always stopped so Junpei could complain, and he watched every line she made with his chin on his fist and didn't correct a single one." },
-          { s: 'jaehyun', f: 'neutral', t: "...That's better than mine." },
-          { s: 'jaehyun', f: 'neutral', t: "Don't look at me like that. I'm capable of saying it. I just don't get many chances." }
+          { s: 'jaehyun', f: 'surprised', t: "...That's better than mine." },
+          { s: 'jaehyun', f: 'flustered', t: "Don't look at me like that. I'm capable of saying it. I just don't get many chances." }
         ] }
       ] }
     ],
@@ -106,12 +106,12 @@
       { n: "Junpei, two stools down, had stopped eating his own to watch, chopsticks in the air, with the expression of a man witnessing a natural disaster he'd only read about." },
       { s: 'junpei', f: 'surprised', t: "Dude. Dude. That's three. That's a whole family's worth of ramen. Where does it GO?" },
       { s: 'jaehyun', f: 'neutral', t: "I run the steps for two hours a day. At home I lift before class. I eat six times a day and I'm still told I'm underweight." },
-      { s: 'jaehyun', f: 'neutral', t: "...This is the first time in three years I've eaten something that wasn't on a sheet." },
+      { s: 'jaehyun', f: 'happy', t: "...This is the first time in three years I've eaten something that wasn't on a sheet." },
       { choose: [
         { t: "(Order him a fourth. Pay for it.)", notes: 3, then: [
           { n: "She slid her yen across the counter and held up one finger at the cook, and pointed at her brother, and the cook looked at Jaehyun, and at the three bowls, and back at her, and shrugged the shrug of a man who'd seen everything." },
           { s: 'jaehyun', f: 'surprised', t: "..." },
-          { s: 'jaehyun', f: 'neutral', t: "You've never once paid for anything I've eaten. Not in your life." },
+          { s: 'jaehyun', f: 'flustered', t: "You've never once paid for anything I've eaten. Not in your life." },
           { s: 'jaehyun', f: 'happy', t: "...I'm going to eat all of it out of spite." }
         ] },
         { t: "What's on the sheet?", notes: 2, then: [
@@ -121,19 +121,19 @@
         ] },
         { t: "(Steal his egg.)", notes: 2, then: [
           { n: "She reached over with her chopsticks and took the soft-boiled egg out of his bowl, and he watched her do it without moving, the way a large dog watches a small one take its toy, and then went on eating as if the egg had never existed." },
-          { s: 'jaehyun', f: 'neutral', t: "You did that when you were five. Every egg. Every time. Mother thought it was a phase." }
+          { s: 'jaehyun', f: 'happy', t: "You did that when you were five. Every egg. Every time. Mother thought it was a phase." }
         ] }
       ] }
     ],
     [
       { n: "He was sitting on the third step from the bottom with a roll of white athletic tape between his teeth and his left hand spread on his knee, trying to tape two fingers together one-handed, and failing at it in a slow, patient, deeply offended way." },
-      { s: 'jaehyun', f: 'neutral', t: "It's jammed. Not broken. I fell on it. On the steps. Don't tell anyone I fell on the steps." },
+      { s: 'jaehyun', f: 'flustered', t: "It's jammed. Not broken. I fell on it. On the steps. Don't tell anyone I fell on the steps." },
       { s: 'jaehyun', f: 'neutral', t: "The trainers do this. At home. I've never once had to do my own." },
       { choose: [
         { t: "(Take the tape. Do it for him.)", notes: 3, then: [
           { n: "She took the roll out of his mouth and sat down on the step below him and taped his fingers, the middle and the ring, buddy-wrapped, two turns above the knuckle and two below, and her hands knew how. That was the thing. They didn't hesitate. They tore the tape clean with a little twist she'd never been taught and smoothed the end flat with her thumb." },
           { n: "He looked at his hand when she was done. He turned it over. He bent the fingers, once." },
-          { s: 'jaehyun', f: 'serious', t: "...You watched them do it. The trainers. You'd sit on the bench outside the facility when you were fourteen and wait for the car, and watch. I didn't think you were paying attention." },
+          { s: 'jaehyun', f: 'surprised', t: "...You watched them do it. The trainers. You'd sit on the bench outside the facility when you were fourteen and wait for the car, and watch. I didn't think you were paying attention." },
           { s: 'jaehyun', f: 'neutral', t: "You're always paying attention. You just don't let anyone catch you at it." }
         ] },
         { t: "Show me how and I'll do it.", notes: 2, then: [
@@ -153,7 +153,7 @@
       { choose: [
         { t: "(Switch sides again. And again.)", notes: 3, then: [
           { n: "She switched. He switched. She switched back. He switched back. By the fourth time a woman with a shopping bag had stopped to watch them, and by the sixth Solar was laughing so hard she had to stop walking, and he was standing on the street side with his hands in his coat pockets looking down at her with no expression at all, except the very corner of his mouth." },
-          { s: 'jaehyun', f: 'neutral', t: "You did this when you were nine. On Madison. For eleven blocks. You lost then, too." },
+          { s: 'jaehyun', f: 'happy', t: "You did this when you were nine. On Madison. For eleven blocks. You lost then, too." },
           { s: 'jaehyun', f: 'happy', t: "...You've never won. I want you to know you'll never win." }
         ] },
         { t: "Why do you do that?", notes: 3, then: [
@@ -171,7 +171,7 @@
       { n: "When she sat down next to him he turned the screen toward her without a word. The clock in the corner said the same minute it always said. Under it, a column of messages, all his, to a contact called *Mother*, one a day, every day since he'd crossed, each with a small red mark beside it that meant it hadn't gone anywhere." },
       { n: "*She's safe.* *She's safe.* *She's well. She's eating.* *She's safe.*" },
       { s: 'jaehyun', f: 'neutral', t: "Nothing goes out. Not to Mother. Not to the team. Not to Johnny, and Johnny answers everything." },
-      { s: 'jaehyun', f: 'neutral', t: "I send them anyway. In case it goes through all at once one day. I want there to be a record." },
+      { s: 'jaehyun', f: 'sad', t: "I send them anyway. In case it goes through all at once one day. I want there to be a record." },
       { choose: [
         { t: "(Take the phone. Type one yourself.)", notes: 3, then: [
           { n: "She took it. He let her. She typed with her thumbs, the way she apparently always had, fast and sloppy, and didn't capitalize anything, and sent it, and watched the red mark come up beside it like all the others." },
@@ -214,7 +214,7 @@
         ] },
         { t: "Do not lecture me.", notes: 3, then: [
           { s: 'jaehyun', f: 'neutral', t: "I'm not lecturing. I'm briefing." },
-          { s: 'jaehyun', f: 'serious', t: "...You said that to me too. The not-lecturing thing. Usually right before I lecture you." }
+          { s: 'jaehyun', f: 'happy', t: "...You said that to me too. The not-lecturing thing. Usually right before I lecture you." }
         ] }
       ] },
       { s: 'jaehyun', f: 'neutral', t: "You live in a dormitory with eight other people and a dog. You fight something at midnight, with a gun that isn't a gun, and you lead them. The redhead runs it. The man in the glasses who makes puns pays for it, or his company does. You're good at it. Better than good. Fuuka played me a recording." },
@@ -222,7 +222,7 @@
       { s: 'jaehyun', f: 'serious', t: "Where am I wrong." },
       { choose: [
         { t: "Nowhere. That's what's annoying.", notes: 3, then: [
-          { s: 'jaehyun', f: 'neutral', t: "Yes. I'm told it's my worst quality." }
+          { s: 'jaehyun', f: 'happy', t: "Yes. I'm told it's my worst quality." }
         ] },
         { t: "You're wrong about the happy part.", notes: 2, then: [
           { s: 'jaehyun', f: 'neutral', t: "No, I'm not." },
@@ -230,17 +230,17 @@
         ] },
         { t: "Who are you? To me. Say it.", notes: 3, then: [
           { s: 'jaehyun', f: 'neutral', t: "Your brother. Older. By two years. You'd tell me it feels like ten." },
-          { s: 'jaehyun', f: 'neutral', t: "Jaehyun. You call me Jae when you want something or when you're furious. You don't call me anything when you're furious enough." }
+          { s: 'jaehyun', f: 'happy', t: "Jaehyun. You call me Jae when you want something or when you're furious. You don't call me anything when you're furious enough." }
         ] }
       ] },
       { n: "A crow landed on the torii above them and said something rude, and he glanced up at it the way he glanced at everything, once, filed, done, and back to her." },
       { s: 'solar', f: 'neutral', t: "How did you find me? Fuuka says the others heard a bell." },
       { s: 'jaehyun', f: 'neutral', t: "I didn't hear a bell. I'm not musical. You'd tell me that too." },
       { s: 'jaehyun', f: 'neutral', t: "I read where things are going. It's most of my job. Everyone else was looking where you'd been. I stopped doing that, and looked where you'd go if you could go anywhere." },
-      { s: 'jaehyun', f: 'serious', t: "...It took me longer than I'd like to admit to think of *anywhere.*" },
+      { s: 'jaehyun', f: 'sad', t: "...It took me longer than I'd like to admit to think of *anywhere.*" },
       { n: "He took a folded square of paper out of the pocket of his quarter-zip and held it out. A phone number, in neat, impatient pen. The guesthouse. A room number. And under it, *J.*" },
       { s: 'jaehyun', f: 'neutral', t: "Call if you need anything." },
-      { s: 'jaehyun', f: 'neutral', t: "You won't. But the offer stands." },
+      { s: 'jaehyun', f: 'happy', t: "You won't. But the offer stands." },
       { n: "It went through her like cold water. Not the words. The rhythm of them. The exact shape. As if she'd heard it so many times it had worn a groove somewhere in her that she'd been walking around with all year without knowing what it was for." },
       { n: "He turned and went back up the steps at a run before she could say anything, which she suspected was the point." },
       { place: "Iwatodai Dorm · Solar's Room", time: 'Night', music: 'night' },
@@ -300,7 +300,7 @@
           { s: 'jaehyun', f: 'surprised', t: "..." },
           { s: 'jaehyun', f: 'neutral', t: "...No. I don't." },
           { n: "He closed the notebook. He looked at it in his lap for a moment, like a man who'd been told the film he'd been studying was of a different game." },
-          { s: 'jaehyun', f: 'neutral', t: "It's habit. I watch everyone. I tell them where they were late. I've never once been in the tower. You're right." }
+          { s: 'jaehyun', f: 'sad', t: "It's habit. I watch everyone. I tell them where they were late. I've never once been in the tower. You're right." }
         ] },
         { t: "Four seconds?", notes: 2, then: [
           { s: 'jaehyun', f: 'neutral', t: "You waited to see if he'd get up on his own. You always do that. You give people the chance to not need you." },
@@ -308,11 +308,11 @@
         ] },
         { t: "What would you have done?", notes: 3, then: [
           { s: 'jaehyun', f: 'neutral', t: "Called it on the first hit. Pulled everyone. Decided for him." },
-          { s: 'jaehyun', f: 'neutral', t: "...Which is why they listen to you and not to me." }
+          { s: 'jaehyun', f: 'sad', t: "...Which is why they listen to you and not to me." }
         ] }
       ] },
       { s: 'jaehyun', f: 'neutral', t: "I'm a quarterback. At home. I read the field before the snap and I change the play if I don't like it. Everybody else runs what I call. That's the job. I'm good at it." },
-      { s: 'jaehyun', f: 'serious', t: "And I sat here for three hours tonight listening to you get hit, and I couldn't call anything. I couldn't change a single assignment. I've never been so useless in my life." },
+      { s: 'jaehyun', f: 'sad', t: "And I sat here for three hours tonight listening to you get hit, and I couldn't call anything. I couldn't change a single assignment. I've never been so useless in my life." },
       { n: "He said it to the dark monitors, flat, calm, the way he said everything, and his clasped hands were white at the knuckles, and Solar saw it and didn't say anything, which was, she was beginning to learn, the only way to say anything to him at all." },
       { choose: [
         { t: "You can listen. That's not useless.", notes: 3, then: [
@@ -339,8 +339,8 @@
           { s: 'jaehyun', f: 'neutral', t: "...Good. Keep it the same. It doesn't matter what you say in the huddle. It matters that it's the same thing, every time, so they know which voice to listen for when it's loud." }
         ] },
         { t: "(Nothing. I count the stairs.)", notes: 2, then: [
-          { s: 'jaehyun', f: 'neutral', t: "...You did that at home. The stairs at the house. Out loud, when you were small. Under your breath when you got older. You thought nobody heard." },
-          { s: 'jaehyun', f: 'neutral', t: "I heard. There are thirty-one. You always said thirty-two, on the last one, like you were adding one for luck." }
+          { s: 'jaehyun', f: 'sad', t: "...You did that at home. The stairs at the house. Out loud, when you were small. Under your breath when you got older. You thought nobody heard." },
+          { s: 'jaehyun', f: 'happy', t: "I heard. There are thirty-one. You always said thirty-two, on the last one, like you were adding one for luck." }
         ] },
         { t: "What do you say? At home. Before a game.", notes: 3, then: [
           { s: 'jaehyun', f: 'neutral', t: "The same thing every time. It doesn't matter what. I'm not going to tell you what." },
@@ -402,11 +402,11 @@
       { fragment: 'runners-stadium' },
       { n: "The bell on Haenim's sash rang once, clear, and she turned her head to look for it in the empty stands." },
       { s: 'jaehyun', f: 'neutral', t: "Solar?" },
-      { s: 'solar', f: 'neutral', t: "...I was behind glass. Up high. Next to someone who didn't stand up. I think I yelled for you." },
+      { s: 'solar', f: 'surprised', t: "...I was behind glass. Up high. Next to someone who didn't stand up. I think I yelled for you." },
       { s: 'jaehyun', f: 'surprised', t: "..." },
       { n: "He'd been walking toward her to get the ball. He stopped on the track, ten meters off, under the white lights, and stood there with his hands at his sides, and for the first time since he'd knocked on the door at midnight his face did something he hadn't decided it would do." },
       { s: 'jaehyun', f: 'neutral', t: "The suite. Father's. You sat next to him. Nobody can hear anything from the suite. That's the point of the suite." },
-      { s: 'jaehyun', f: 'neutral', t: "I looked up at it anyway. Every time I came off the field. Every home game. I couldn't see anything. The glass reflects the lights. I looked anyway." },
+      { s: 'jaehyun', f: 'sad', t: "I looked up at it anyway. Every time I came off the field. Every home game. I couldn't see anything. The glass reflects the lights. I looked anyway." },
       { s: 'jaehyun', f: 'serious', t: "...I never told you that. I never told anyone that." },
       { choose: [
         { t: "Why didn't you tell me?", notes: 3, then: [
@@ -420,7 +420,7 @@
         ] },
         { t: "Did you like it? All of that. The noise.", notes: 2, then: [
           { s: 'jaehyun', f: 'neutral', t: "The noise, no. The noise is for the people in the stands." },
-          { s: 'jaehyun', f: 'neutral', t: "I like the four seconds before the snap. When it's quiet in the helmet and I can see all of it and nobody else can yet. That's the only part that's mine." },
+          { s: 'jaehyun', f: 'happy', t: "I like the four seconds before the snap. When it's quiet in the helmet and I can see all of it and nobody else can yet. That's the only part that's mine." },
           { s: 'jaehyun', f: 'serious', t: "...I love it. I don't say that out loud at home. It's easier if they think it's a duty. Then nobody asks what I'd give up for it." }
         ] }
       ] },
@@ -431,21 +431,21 @@
     { after: '11/16', title: '4: fine', place: 'Naganaki Shrine', time: 'After School', scene: [
       { n: "He wasn't running. That was how she knew. He was sitting on the bottom step of Naganaki with his right arm across his knees and his left hand holding his right shoulder, not hard, just resting there, the way you'd rest a hand on a dog you didn't want to wake." },
       { n: "He took the hand away when he saw her. Fast. And smiled, a small, closed smile, the measured one, the one he used for photographers." },
-      { s: 'jaehyun', f: 'neutral', t: "Solar. You're early." },
-      { s: 'solar', f: 'neutral', t: "What's wrong with your shoulder?" },
+      { s: 'jaehyun', f: 'flustered', t: "Solar. You're early." },
+      { s: 'solar', f: 'serious', t: "What's wrong with your shoulder?" },
       { s: 'jaehyun', f: 'neutral', t: "Fine." },
       { n: "It was the whole answer. She'd been handed enough whole answers to know the shape of one, a door being closed politely, all the way, from the other side. She couldn't remember being handed one by him, which wasn't saying much, since she couldn't remember him, and still she knew this exact door, the paint on it, the sound it made." },
       { choose: [
         { t: "Don't do that. Don't give me *fine.*", notes: 3, then: [
           { s: 'jaehyun', f: 'surprised', t: "..." },
           { s: 'jaehyun', f: 'neutral', t: "...That's your word. *Fine.* You use it on me. I got it from you." },
-          { s: 'solar', f: 'neutral', t: "Then give it back." },
+          { s: 'solar', f: 'serious', t: "Then give it back." },
           { n: "He looked at her for a long moment. Then he let out a breath through his nose and moved his right arm, carefully, the first movement of it careful in a way that told her everything, and rolled the shoulder twice." },
           { s: 'jaehyun', f: 'neutral', t: "It's old. Throwing shoulder. It gets loud in the cold. I've been hit a lot. It's the job. It's nothing." }
         ] },
         { t: "(Sit down beside him. Put your hand on his shoulder.)", notes: 3, then: [
           { n: "She sat beside him and put her hand flat on his right shoulder without asking. He went rigid for a second. Then he didn't. The muscle under her palm was hot and knotted, and she pressed, the way she'd seen Akihiko press on his own, and he made a very small sound and closed his eyes." },
-          { s: 'jaehyun', f: 'neutral', t: "...Nobody does that. At home. Nobody's allowed to see it." }
+          { s: 'jaehyun', f: 'sad', t: "...Nobody does that. At home. Nobody's allowed to see it." }
         ] },
         { t: "Okay. Fine.", notes: 1, then: [
           { s: 'jaehyun', f: 'neutral', t: "Thank you." },
@@ -457,18 +457,18 @@
         { s: 'kiriko', f: 'neutral', t: "Can's for the shoulder. Not to drink. Well. Also to drink. The paper's for the rest of you. Don't open it, it's shy." },
         { n: "She went back up before he could thank her. He sat holding the can against his shoulder and the charm in his other hand, very carefully, like a man who'd been given two things he didn't know the rules for, and Solar watched him put the charm, after a long moment, into the inside pocket of his quarter-zip, over his heart, where he'd put the paper with the number on it the first day." }
       ] },
-      { s: 'jaehyun', f: 'neutral', t: "There's a game. At home. I'm supposed to be at it. I don't know if I'm missing it. I don't know which Saturday it is. My phone says it's the same night it's always said." },
+      { s: 'jaehyun', f: 'sad', t: "There's a game. At home. I'm supposed to be at it. I don't know if I'm missing it. I don't know which Saturday it is. My phone says it's the same night it's always said." },
       { s: 'jaehyun', f: 'serious', t: "I've never missed a game. Not in three years. Not with a fever. Not with this." },
       { n: "He moved the shoulder again. It clicked, audibly, and he didn't wince, which was its own kind of wince." },
       { choose: [
         { t: "Does anyone know? At home. About the shoulder.", notes: 3, then: [
           { s: 'jaehyun', f: 'neutral', t: "The trainers. The doctor. The coaches know what the trainers tell them, which is less." },
           { s: 'jaehyun', f: 'serious', t: "Father knows I'm the starting quarterback. That's what Father knows." },
-          { s: 'jaehyun', f: 'neutral', t: "...You knew. You always knew. You'd look at me across the table at Thanksgiving, at the exact shoulder, and not say anything. I used to think you didn't care. I think now you were the only one who was looking." }
+          { s: 'jaehyun', f: 'sad', t: "...You knew. You always knew. You'd look at me across the table at Thanksgiving, at the exact shoulder, and not say anything. I used to think you didn't care. I think now you were the only one who was looking." }
         ] },
         { t: "Do you miss it? Right now?", notes: 3, then: [
           { s: 'jaehyun', f: 'neutral', t: "Every minute. The film room. The cold. The ten minutes after a game when you're too tired to be anybody." },
-          { s: 'jaehyun', f: 'neutral', t: "...And I don't. Both. I didn't know you could do both. You're going to say you could have told me that." },
+          { s: 'jaehyun', f: 'happy', t: "...And I don't. Both. I didn't know you could do both. You're going to say you could have told me that." },
           { s: 'solar', f: 'neutral', t: "I could have told you that." }
         ] }
       ] },
@@ -476,7 +476,7 @@
       { choose: [
         { t: "Don't say *bring.* I'm not a ball.", notes: 3, flag: { 'jaehyun-ball': true }, then: [
           { s: 'jaehyun', f: 'surprised', t: "..." },
-          { s: 'jaehyun', f: 'neutral', t: "...To come home with you. If you come. That's what I meant." },
+          { s: 'jaehyun', f: 'flustered', t: "...To come home with you. If you come. That's what I meant." },
           { s: 'jaehyun', f: 'neutral', t: "I'm going to have to learn to say it like that. It's going to take me a while." }
         ] },
         { t: "That's the nicest thing you've ever said to me. Probably.", notes: 3, then: [
@@ -545,8 +545,8 @@
           { n: "She walked past him. Down the steps, onto the street. She didn't look back. She heard him not follow her, and she knew, the way you know which stair creaks, that he was standing there with his hands at his sides watching her go, and that it was costing him everything he had not to call her back." }
         ] }
       ] },
-      { s: 'jaehyun', f: 'neutral', t: "I'm trying to keep you safe." },
-      { s: 'solar', f: 'neutral', t: "I know. That's the worst part. I know you are." },
+      { s: 'jaehyun', f: 'sad', t: "I'm trying to keep you safe." },
+      { s: 'solar', f: 'sad', t: "I know. That's the worst part. I know you are." },
       { n: "She went to find the boy in the black hoodie. She didn't know what she was going to say to him. She only knew that if she didn't go, she'd have let someone else decide, and some part of her, older than April, older than any of it, would never forgive her." },
       { place: "Iwatodai Dorm · Solar's Room", time: 'Late Night', music: 'night' },
       { n: "She didn't sleep. She lay on her side in the black hoodie with the sleeves over her hands and the phone face down on the pillow, and at twenty past one it buzzed, once, against the cotton, like something knocking from inside a wall." },
@@ -632,7 +632,7 @@
       ] },
       { n: "She went down. He straightened when he saw her, the way you'd straighten for a coach." },
       { ifFlag: 'jaehyun-walked', then: [
-        { s: 'jaehyun', f: 'neutral', t: "You walked past me." },
+        { s: 'jaehyun', f: 'sad', t: "You walked past me." },
         { s: 'jaehyun', f: 'neutral', t: "You've never walked past me. You yell. You hang up on me. You did it this fall, in the middle of my sentence, and I sat there holding a dead phone, and at least I knew where I stood. I know what to do with yelling." },
         { s: 'jaehyun', f: 'serious', t: "I didn't know what to do with your back. I've been standing here a week trying to work it out." }
       ], else: [
@@ -669,7 +669,7 @@
       { n: "He said it to the shrine gate, flat, the way you'd confess to something you'd done with your hands. And it went into her like a bell. Not the game. Not the team. *I didn't tell him.* She'd waited her whole life, some part of her knew, for her brother to keep one thing on her side of the table." },
       { choose: [
         { t: "Why?", notes: 3, then: [
-          { s: 'jaehyun', f: 'neutral', t: "Because you found something you love outside the route they drew for you. I found mine inside it. That's not fair. I've always known that's not fair." },
+          { s: 'jaehyun', f: 'sad', t: "Because you found something you love outside the route they drew for you. I found mine inside it. That's not fair. I've always known that's not fair." },
           { s: 'jaehyun', f: 'neutral', t: "It's the only play I've ever called that wasn't for me or for him." }
         ] },
         { t: "(Hug him.)", notes: 3, then: [
@@ -677,10 +677,10 @@
         ] },
         { t: "What game?", notes: 2, then: [
           { s: 'jaehyun', f: 'neutral', t: "I don't know the name of it. I'm not going to pretend I do. There are heroes. You're the one who keeps the others alive." },
-          { s: 'jaehyun', f: 'neutral', t: "Somebody told me you made a play nobody in the building saw coming. I didn't understand a word of how they described it. I understood the part where they said your name like it belonged to you and not to us." }
+          { s: 'jaehyun', f: 'happy', t: "Somebody told me you made a play nobody in the building saw coming. I didn't understand a word of how they described it. I understood the part where they said your name like it belonged to you and not to us." }
         ] }
       ] },
-      { s: 'jaehyun', f: 'neutral', t: "I sent you a text that morning. Before. You didn't answer it." },
+      { s: 'jaehyun', f: 'sad', t: "I sent you a text that morning. Before. You didn't answer it." },
       { s: 'solar', f: 'neutral', t: "What did it say?" },
       { s: 'jaehyun', f: 'neutral', t: "*Good luck today, sister.*" },
       { n: "Four words. With a period at the end, she knew without seeing it. And her face did something, right there at the bottom of the shrine steps, that she hadn't decided it would do, a small sharp heat behind the eyes and a smile underneath it she couldn't push down, for a split second, before she got it back under control." },
@@ -721,7 +721,7 @@
       { s: 'jaehyun', f: 'serious', t: "The keeper's cheating left." },
       { n: "He said it to no one, quietly, like a man reading a line item. Down on the field the boy with the ball looked left, and the keeper went left, and the ball went right, between a backpack and a rolled-up jacket, and half the field screamed." },
       { s: 'jaehyun', f: 'neutral', t: "He's been doing it all game. He thinks if he guesses first, he's in charge." },
-      { s: 'jaehyun', f: 'neutral', t: "...I know someone like that." },
+      { s: 'jaehyun', f: 'happy', t: "...I know someone like that." },
       { choose: [
         { t: "So do I. He's standing next to me.", notes: 3, then: [
           { s: 'jaehyun', f: 'happy', t: "Mm. Very funny, Solar." },
@@ -744,7 +744,7 @@
       { s: 'jaehyun', f: 'neutral', t: "You're agreeing with me. Did you sleep?" },
       { s: 'jaehyun', f: 'neutral', t: "You're supposed to say *is not.* You always say *is not.* And then *I'm fine, Jae.* In that order." },
       { s: 'solar', f: 'neutral', t: "...Is not." },
-      { s: 'jaehyun', f: 'neutral', t: "Thank you. I was worried." },
+      { s: 'jaehyun', f: 'happy', t: "Thank you. I was worried." },
       { n: "The light went orange, then gray. He checked his watch, and she watched him decide something, the whole process taking about four seconds, and he pulled off his gloves, thick black running gloves with a small orange letter on the cuff, and held them out, and didn't lower his hand until she took them." },
       { s: 'jaehyun', f: 'neutral', t: "I have four more miles. I'll be warm. You won't." },
       { choose: [
@@ -796,10 +796,10 @@
       { n: "There was a choir in the atrium. A school choir, twenty kids in navy blazers and red scarves standing in three rows on the steps by the fountain under the enormous Christmas tree, singing carols in careful four-part harmony while the mall went by around them with its bags and its strollers and didn't stop." },
       { n: "Solar stopped. She didn't decide to. Her feet stopped and the rest of her came along, and she stood at the edge of the crowd with her bag on her shoulder, and her mouth was moving. She noticed that after a while. She was singing the alto line. Under her breath, very quietly, every word, in a language she didn't know she knew the carols in." },
       { n: "Jaehyun had been walking beside her. He'd stopped too. He was looking at her, not at the choir." },
-      { s: 'jaehyun', f: 'neutral', t: "...Alto. You always took the alto line. You said the melody was for people who wanted to be looked at." },
+      { s: 'jaehyun', f: 'happy', t: "...Alto. You always took the alto line. You said the melody was for people who wanted to be looked at." },
       { s: 'solar', f: 'surprised', t: "I sang?" },
       { s: 'jaehyun', f: 'neutral', t: "In school. For years. In choir. You loved it. You'd come home and keep singing in the shower until someone told you to stop." },
-      { s: 'jaehyun', f: 'serious', t: "And then Father decided it was a hobby. Not a direction. And you stopped. Not all at once. You just. Stopped coming home singing." },
+      { s: 'jaehyun', f: 'sad', t: "And then Father decided it was a hobby. Not a direction. And you stopped. Not all at once. You just. Stopped coming home singing." },
       { n: "The choir finished the carol. The mall clapped, briefly, the way malls clap. Solar stood at the edge of the crowd with her mouth closed and her chest full of something she couldn't name, like a breath taken for a note that had never come." },
       { choose: [
         { t: "Did you ever say anything? When I stopped?", notes: 3, then: [
@@ -812,7 +812,7 @@
         ] },
         { t: "Was I any good?", notes: 2, then: [
           { s: 'jaehyun', f: 'neutral', t: "I don't know. I'm the wrong person to ask. I can't tell a good note from a bad one." },
-          { s: 'jaehyun', f: 'neutral', t: "I can tell you that when you sang, the house sounded like someone lived in it. And when you stopped, it sounded like a very expensive hotel." }
+          { s: 'jaehyun', f: 'sad', t: "I can tell you that when you sang, the house sounded like someone lived in it. And when you stopped, it sounded like a very expensive hotel." }
         ] }
       ] },
       { n: "Somebody in a red scarf in the front row was looking at her. A girl about thirteen, small, with her music folder clutched to her chest between carols, staring at Solar with the frank fascination of someone who'd heard an alto line from the crowd and wanted very badly to know whose it was. Solar looked away first. Like she always did. Like she'd apparently always done." },
@@ -837,7 +837,7 @@
         { n: "He was looking down the platform at the bench. Not the way he looked at things. Not reading. He looked the way a man looks at a word he's seen a thousand times that has suddenly, for no reason, stopped looking like a word. And his jaw did something. A small hard movement, once, under the skin, and then again." },
         { s: 'jaehyun', f: 'serious', t: "Who is that." },
         { s: 'solar', f: 'neutral', t: "Wren. She's... at the station. She misses her train a lot. She's nice." },
-        { s: 'jaehyun', f: 'neutral', t: "...She sits like you." },
+        { s: 'jaehyun', f: 'surprised', t: "...She sits like you." },
         { n: "That was all. He didn't say anything else about it. He stood beside her until her train came, and when the doors opened he put his hand on her head for half a second, the way he did, and when the doors closed she looked back through the glass, and he wasn't looking at her. He was still looking down the platform at the bench, with his hands at his sides, and for the first time since she'd met him, he didn't seem to arrive anywhere at all." }
       ], else: [
         { n: "He stood beside her until her train came, and didn't say anything, and when the doors opened he put his hand on her head for half a second, the way he did, so fast nobody on the platform could have seen it." },
@@ -852,7 +852,7 @@
       { s: 'jaehyun', f: 'neutral', t: "The girls asked you on the roof. I heard. The whole dorm heard. Hyein doesn't know how to ask quietly." },
       { s: 'jaehyun', f: 'serious', t: "I haven't asked. You've noticed." },
       { s: 'solar', f: 'neutral', t: "I noticed." },
-      { s: 'jaehyun', f: 'neutral', t: "It's the hardest thing I've ever done. I want you to know that. It's harder than the shoulder. It's harder than anything Father's ever put in front of me." },
+      { s: 'jaehyun', f: 'sad', t: "It's the hardest thing I've ever done. I want you to know that. It's harder than the shoulder. It's harder than anything Father's ever put in front of me." },
       { choose: [
         { t: "Then why are you doing it?", notes: 3, then: [
           { s: 'jaehyun', f: 'neutral', t: "Because every time I've called a play for you, you've run the other way. Every time. Since you were six." },
@@ -862,7 +862,7 @@
           { n: "She leaned. Into the left one, the one that didn't click, and he went still the way he always did, and then didn't, and after a while his arm came around and stayed there, heavy and warm through two coats, and neither of them looked at the other, and the snow on the steps below them went on being snow." }
         ] },
         { t: "You're bad at it. Not asking.", notes: 2, then: [
-          { s: 'jaehyun', f: 'neutral', t: "I know. You can see it on me. Everyone can. Junpei asked if I was constipated." },
+          { s: 'jaehyun', f: 'flustered', t: "I know. You can see it on me. Everyone can. Junpei asked if I was constipated." },
           { s: 'jaehyun', f: 'happy', t: "...I'll get better. I get better at everything. It's the only thing I've got going for me." }
         ] }
       ] },
@@ -870,7 +870,7 @@
       { ifFlag: 'route-R', then: [
         { s: 'jaehyun', f: 'neutral', t: "The bell. I saw it. Hyein says it hasn't stopped shining since." },
         { s: 'jaehyun', f: 'serious', t: "I'm not going to say anything about it. You said it on a platform in front of everyone. That's yours. I'm not going to touch it." },
-        { s: 'jaehyun', f: 'neutral', t: "...I'd be lying if I said I didn't sleep that night for the first time since October." }
+        { s: 'jaehyun', f: 'happy', t: "...I'd be lying if I said I didn't sleep that night for the first time since October." }
       ], else: [
         { ifFlag: 'route-true', then: [
           { s: 'jaehyun', f: 'neutral', t: "All three of them. Fuuka says she's never heard anything like it. She says it sounded like a chord. I don't know what that means. You'd have to explain it to me, and I still wouldn't hear it." },
@@ -878,11 +878,11 @@
         ], else: [
           { ifFlag: 'route-stay', then: [
             { s: 'jaehyun', f: 'neutral', t: "Nothing shone. On the platform. I was at the top of the stairs. I read it before I got there." },
-            { s: 'jaehyun', f: 'serious', t: "You're staying. I know. You don't have to say it to me. You don't have to manage my face about it. I'm managing it." },
+            { s: 'jaehyun', f: 'sad', t: "You're staying. I know. You don't have to say it to me. You don't have to manage my face about it. I'm managing it." },
             { n: "He wasn't. Not entirely. She watched a muscle in his jaw go, once, and he watched her watch it, and neither of them did anything about it, and the streamers moved in the cold above them." }
           ], else: [
             { s: 'jaehyun', f: 'neutral', t: "It wasn't the bell. On the platform. I was at the top of the stairs. I read it before I got there." },
-            { s: 'jaehyun', f: 'serious', t: "You're going home. Not to mine. To one of the others. I know. You don't have to say it to me. You don't have to manage my face about it. I'm managing it." },
+            { s: 'jaehyun', f: 'sad', t: "You're going home. Not to mine. To one of the others. I know. You don't have to say it to me. You don't have to manage my face about it. I'm managing it." },
             { n: "He wasn't. Not entirely. She watched a muscle in his jaw go, once, and he watched her watch it, and neither of them did anything about it, and the streamers moved in the cold above them." }
           ] }
         ] }
@@ -906,11 +906,11 @@
       ] },
       { ifFlag: 'jaehyun-ball', then: [
         { s: 'jaehyun', f: 'neutral', t: "I've been practicing. The thing you said. In November. About the ball." },
-        { s: 'jaehyun', f: 'neutral', t: "I haven't said *bring* once since. Not about you. Not about anyone. Junpei asked me to bring him a drink yesterday and I said *I'll get you one* and he looked at me like I'd had a stroke." },
+        { s: 'jaehyun', f: 'happy', t: "I haven't said *bring* once since. Not about you. Not about anyone. Junpei asked me to bring him a drink yesterday and I said *I'll get you one* and he looked at me like I'd had a stroke." },
         { s: 'solar', f: 'neutral', t: "Jae. That's not what I meant." },
         { s: 'jaehyun', f: 'happy', t: "I know. I'm overcorrecting. I do that. It's the only way I know how to learn anything." }
       ] },
-      { s: 'jaehyun', f: 'neutral', t: "Whatever happens. Wherever you go. I'm going home either way. Someone has to be at the table when you call. Even if you don't." },
+      { s: 'jaehyun', f: 'sad', t: "Whatever happens. Wherever you go. I'm going home either way. Someone has to be at the table when you call. Even if you don't." },
       { s: 'jaehyun', f: 'neutral', t: "...But the offer stands." },
       { n: "They sat on the top step until the snow started again, thin, coming down past the shrine lanterns, and neither of them said anything, which was, she had finally learned, the only way the two of them had ever known how to say anything at all." }
     ] },
@@ -919,16 +919,16 @@
       { n: "Midnight. The Dark Hour came up green over the street, the streetlamps going dark one after another down the hill like someone walking ahead of the night switching them off, and he was standing on the dorm's front step, exactly where he'd stood the night he came through, with his hand raised to knock." },
       { n: "She opened the door before he could." },
       { s: 'jaehyun', f: 'surprised', t: "...Solar." },
-      { s: 'jaehyun', f: 'neutral', t: "I was going to knock. Three times. Like the first night. And then wait, this time. I knocked and walked off, that night. I didn't trust anyone to answer. I went to look for you myself." },
+      { s: 'jaehyun', f: 'sad', t: "I was going to knock. Three times. Like the first night. And then wait, this time. I knocked and walked off, that night. I didn't trust anyone to answer. I went to look for you myself." },
       { s: 'jaehyun', f: 'neutral', t: "I wanted to see what happened if I stayed on the step." },
       { n: "And she knew him." },
       { n: "All at once, standing in the doorway in the green. Not in pieces, the gloves, the alto line, the stadium, one at a time. All of it, everything, a whole childhood coming up through her like the floor of a house when you come home after years: a tall boy who was always somewhere else, at practice, at a dinner, at a table with Father, who never once came to her room and always, every single time she'd ever been somewhere frightening, a party, a gala, a camera, turned up at the edge of it, at the back, saying nothing, already there. A text at the start of a school year. *Are you settling in alright?* A hand on top of her head for half a second in front of a crowd, so fast nobody saw. *Thanks for doing this, sister.*" },
       { n: "Thirty-one stairs at the house, and her saying thirty-two. A suite with glass. A morning text with a period at the end. A table that was a schedule. Every argument they'd ever had, in the right order, the order it had happened in, the way he'd have wanted it filed." },
-      { s: 'solar', f: 'neutral', t: "...Jae." },
+      { s: 'solar', f: 'surprised', t: "...Jae." },
       { n: "His hand was still raised to knock. He didn't put it down. He stood there in the green with his fist in the air like a man who'd forgotten what he'd lifted it for." },
-      { s: 'solar', f: 'neutral', t: "You're not wearing enough layers." },
+      { s: 'solar', f: 'happy', t: "You're not wearing enough layers." },
       { s: 'jaehyun', f: 'surprised', t: "..." },
-      { s: 'jaehyun', f: 'neutral', t: "...Very funny, Solar." },
+      { s: 'jaehyun', f: 'sad', t: "...Very funny, Solar." },
       { n: "His voice cracked down the middle of her name. She'd never once heard it crack. Not here, not there, not anywhere in a whole life of being his little sister. He heard it too, and put his raised hand down slowly, very carefully, on top of her head, and left it there." },
       { choose: [
         { t: "Do not be hostile.", notes: 3, then: [
@@ -941,7 +941,7 @@
         { t: "Don't wanna hear it, Jae.", notes: 3, then: [
           { s: 'jaehyun', f: 'surprised', t: "..." },
           { n: "It came out of her in exactly the voice. The bored one. The one with her chin up and her eyes somewhere else, the one she'd used on him across tailgates and dinner tables and the back seats of cars since she was old enough to roll her eyes, and she heard it come out, and so did he." },
-          { s: 'jaehyun', f: 'flustered', t: "...There you are." },
+          { s: 'jaehyun', f: 'sad', t: "...There you are." },
           { n: "He said it so quietly she almost didn't hear it. He looked away, at the street, at the dark lamps, at anything, and blinked twice, hard, and when he looked back his face was arranged again, almost. Almost." }
         ] }
       ] },
@@ -950,7 +950,7 @@
         { n: "*big bro.* She'd typed it in October without knowing why, in the dark, with her thumbs. It had been right the whole time. Her hands had known before she had. They usually did." },
         { s: 'jaehyun', f: 'neutral', t: "What are you smiling at." },
         { n: "She turned the screen to him. He read it. He didn't say anything for a while." },
-        { s: 'jaehyun', f: 'neutral', t: "...You've had me as that since you were twelve. You've never once told me. Hyein told me. Hyein tells me everything she shouldn't." }
+        { s: 'jaehyun', f: 'happy', t: "...You've had me as that since you were twelve. You've never once told me. Hyein told me. Hyein tells me everything she shouldn't." }
       ], else: [
         { ifFlag: 'jaehyun-named', then: [
           { n: "*Jaehyun.* Capital J. Very formal. Very correct. It looked, now, like a name tag on a stranger's coat." },
@@ -966,7 +966,7 @@
       ] },
       { ifFlag: 'jaehyun-call-it', then: [
         { s: 'jaehyun', f: 'neutral', t: "I haven't forgotten. The singing. I said I'd call it. With Father. I've been planning what I'll say since December." },
-        { s: 'jaehyun', f: 'neutral', t: "It's eleven pages. I'm going to cut it to one sentence. He respects one sentence." }
+        { s: 'jaehyun', f: 'happy', t: "It's eleven pages. I'm going to cut it to one sentence. He respects one sentence." }
       ], else: [
         { ifFlag: 'jaehyun-own-play', then: [
           { s: 'jaehyun', f: 'neutral', t: "When you tell Father. About the singing. You said you'd do it yourself." },
@@ -1010,7 +1010,7 @@
         { t: "(Make Akihiko-senpai race him instead.)", notes: 3, then: [
           { n: "Akihiko was there in eleven minutes, stretching. They raced the steps four times. Jaehyun won three. Akihiko demanded a fifth. Solar timed all of it, with the tenths, and didn't round once." },
           { s: 'akihiko', f: 'serious', t: "Again. You were favoring the shoulder on the turn. I'm not taking a win off a guy favoring the shoulder." },
-          { s: 'jaehyun', f: 'neutral', t: "I wasn't favoring it." },
+          { s: 'jaehyun', f: 'flustered', t: "I wasn't favoring it." },
           { s: 'akihiko', f: 'happy', t: "You were. Your sister told me which one to watch." },
           { n: "Jaehyun turned his head and looked at her, very slowly, at the bottom of the steps, with the stopwatch in her hand and her face perfectly innocent, and she held the look for a full three seconds before she lost it and had to sit down on the gravel, and he stood over her not laughing, very deliberately not laughing, which was worse." }
         ] }
@@ -1031,7 +1031,7 @@
         { t: "Sit down, Jae. Eat with us.", notes: 3, then: [
           { n: "He looked at the chair she'd pulled out. He looked at the table, all of them, Junpei already on seconds, Ken cutting his meat into perfect squares, Koromaru's chin on Aigis's knee, Mitsuru pouring tea for people who hadn't asked, the whole loud overfull room that wasn't his, that he'd been feeding every Sunday for three months standing up." },
           { n: "He took the apron off. He folded it. He sat down." },
-          { s: 'jaehyun', f: 'neutral', t: "...At home we eat in a room that seats twenty. It's usually four of us. Father at one end. Nobody talks." },
+          { s: 'jaehyun', f: 'sad', t: "...At home we eat in a room that seats twenty. It's usually four of us. Father at one end. Nobody talks." },
           { s: 'junpei', f: 'happy', t: "Dude, nobody talks here either! We just yell!" },
           { s: 'jaehyun', f: 'happy', t: "I noticed. I like it." }
         ] }
@@ -1047,7 +1047,7 @@
         { s: 'jaehyun', f: 'neutral', t: "I couldn't stop writing something down. I'm not built that way. So I wrote down the only part that was mine. When you came back." }
       ], else: [
         { n: "Ticks, and crosses, and notes in the margin, *four seconds late, stairs open, too generous.* And then, as the pages went on, through November and into December, fewer crosses. Then fewer notes. And then, sometime in January, a page with nothing on it but a column of ticks, every single call, and at the bottom, underlined twice, in a hand that had pressed so hard it went through to the next page, *Better than me.*" },
-        { s: 'jaehyun', f: 'neutral', t: "I watch everyone. I tell them where they were late. I stopped finding anywhere you were late." },
+        { s: 'jaehyun', f: 'happy', t: "I watch everyone. I tell them where they were late. I stopped finding anywhere you were late." },
         { s: 'jaehyun', f: 'serious', t: "I don't know when that happened. I'd like to think I'd have noticed, at home. I'm not sure I would have." }
       ] },
       { choose: [
@@ -1065,7 +1065,7 @@
       { n: "She threw it back. A real one. Tight. He caught it against his chest and nodded once." },
       { ifFlag: 'route-R', then: [
         { s: 'jaehyun', f: 'neutral', t: "Next fall. The home opener. Father will want you in the suite." },
-        { s: 'solar', f: 'neutral', t: "I'll be in the student section. With the girls. With stars on my face." },
+        { s: 'solar', f: 'happy', t: "I'll be in the student section. With the girls. With stars on my face." },
         { s: 'jaehyun', f: 'serious', t: "He won't like it." },
         { s: 'solar', f: 'neutral', t: "I know." },
         { s: 'jaehyun', f: 'happy', t: "...I'll know where to look, then. I won't have to look at the glass." }
@@ -1076,7 +1076,7 @@
           { s: 'jaehyun', f: 'happy', t: "...If you're there, yell. Behind glass or not. I'll hear it. I don't know how. I'll find out." }
         ], else: [
           { s: 'jaehyun', f: 'neutral', t: "Next fall. The home opener. I'll come off the field after the first series and look up at the suite. Out of habit." },
-          { s: 'jaehyun', f: 'serious', t: "You won't be there. I know. I'll look anyway. I've decided. It's a better habit than most of mine." },
+          { s: 'jaehyun', f: 'sad', t: "You won't be there. I know. I'll look anyway. I've decided. It's a better habit than most of mine." },
           { n: "He threw the ball back to her before she could answer, which she understood was the point, and she caught it, and they threw it until the timer clicked the lights off, all four at once, and stood there in the sudden dark, and he didn't laugh this time. He just stood there being her brother in the dark, where nobody, not even she, could see his face." }
         ] }
       ] },
@@ -1088,7 +1088,7 @@
           { s: 'jaehyun', f: 'neutral', t: "...Stand here. Look at the field. All of it. Don't look at any one thing." },
           { s: 'jaehyun', f: 'neutral', t: "Now tell me where everyone's going to be." },
           { n: "She looked. The empty field. The cones. The white light. The dark beyond it. And she found she could see it, not the field, the shape of the thing, the way a fight looked from the back of the party just before it started, where the gap would open and who would fall into it, and she told him, and he listened, and when she was done he was quiet for a long time." },
-          { s: 'jaehyun', f: 'neutral', t: "That's the four seconds. You've always had them. You just use them on people." }
+          { s: 'jaehyun', f: 'happy', t: "That's the four seconds. You've always had them. You just use them on people." }
         ] }
       ] }
     ] },

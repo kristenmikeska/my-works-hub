@@ -116,7 +116,7 @@
         ] },
         { t: "I'm on my way home.", notes: 2, then: [
           { s: 'rio', f: 'serious', t: "You've been standing at that fence for five minutes." },
-          { s: 'solar', f: 'neutral', t: "I'm on my way home slowly." },
+          { s: 'solar', f: 'flustered', t: "I'm on my way home slowly." },
           { s: 'rio', f: 'neutral', t: "Then feed me balls for twenty minutes and go home slowly after." }
         ] },
         { t: "Where's the rest of your team?", notes: 1, then: [
@@ -229,7 +229,7 @@
       { choose: [
         { t: "Don't be nicer. Tell her you trust her. Then let her hit one.", notes: 3, then: [
           { s: 'rio', f: 'surprised', t: "...Just one?" },
-          { s: 'solar', f: 'neutral', t: "Start with one. You can work up to two." },
+          { s: 'solar', f: 'happy', t: "Start with one. You can work up to two." },
           { s: 'rio', f: 'happy', t: "Ha." },
           { n: "It came out of her short and rough and surprised, like it had been stuck behind something all afternoon, and she put the back of her wrist over her mouth like she could catch it." }
         ] },
@@ -304,7 +304,7 @@
       { choose: [
         { t: "Tell her that. Tomorrow. Before she decides she's done.", notes: 3, then: [
           { s: 'rio', f: 'surprised', t: "Tomorrow? She won't want to see me." },
-          { s: 'solar', f: 'neutral', t: "Probably not. Go anyway." },
+          { s: 'solar', f: 'serious', t: "Probably not. Go anyway." },
           { s: 'rio', f: 'serious', t: "...You're very annoying when you're right." }
         ] },
         { t: "Kawai benched you on purpose, you know.", notes: 2, then: [
@@ -322,7 +322,7 @@
     { after: '6/18', title: '5: the rehearsal', place: 'Gekkoukan High · Rooftop', time: 'After School', scene: [
       { n: "Rio found her on the roof after the last bell, which she had never done before, and stood in front of the bench with her bag held out in both hands like a diploma and her jaw set. The roof was still wet from the morning, the rainy season doing what it did, and the puddles in the low corners held a flat white sky, and every so often the wind shook a few drops off the fence onto both of them, and neither of them moved." },
       { s: 'rio', f: 'serious', t: "I need you to be Mori." },
-      { s: 'solar', f: 'neutral', t: "...Sorry?" },
+      { s: 'solar', f: 'surprised', t: "...Sorry?" },
       { s: 'rio', f: 'serious', t: "She hasn't come back. It's been three weeks. The qualifiers came and went and she wasn't there, and we lost in the second round, and Kawai cried on the bus and then told me to look after the first-years, and I said yes, and then I remembered I'd chased one of them off a court." },
       { s: 'rio', f: 'serious', t: "I'm going to apologize to her. Tonight. I need to practice first. You're the only one I can practice on. She's shorter than you, so slouch." },
       { choose: [
@@ -338,7 +338,7 @@
         ] }
       ] },
       { n: "The first draft was a scouting report. Rio stood with her feet shoulder-width apart and explained, in three clear points, the error she had made, its impact on team cohesion and the corrective measures she would take going forward. She had, Solar was nearly certain, written it on an index card, and the index card was in her blazer pocket, and she touched the pocket twice." },
-      { s: 'solar', f: 'neutral', t: "That's a match report." },
+      { s: 'solar', f: 'happy', t: "That's a match report." },
       { s: 'rio', f: 'flustered', t: "...It's organized." },
       { n: "The second draft was shorter. Rio took a breath and shut her eyes and said I'M SORRY, OKAY, so loudly that a pigeon left the railing and two first-years by the stairwell door turned around to stare." },
       { s: 'rio', f: 'flustered', t: "That came out wrong. That came out like a serve." },
@@ -415,7 +415,7 @@
       { s: 'rio', f: 'surprised', t: "What kind of club meets late?" },
       { s: 'solar', f: 'neutral', t: "The kind you don't ask about." },
       { s: 'rio', f: 'serious', t: "...Fine. Do they listen to you?" },
-      { s: 'solar', f: 'neutral', t: "When it matters. Not because I'm right. I'm wrong all the time. They listen because I go first." },
+      { s: 'solar', f: 'serious', t: "When it matters. Not because I'm right. I'm wrong all the time. They listen because I go first." },
       { n: "Rio turned that over. Solar could see her do it, could practically see her turn it over like a ball in her hand, checking the seams." },
       { choose: [
         { t: "So go first. Ask them what time practice should start.", notes: 3, then: [
@@ -515,7 +515,7 @@
         ] },
         { t: "I'll come tomorrow. Right after class.", notes: 2, then: [
           { s: 'rio', f: 'neutral', t: "They're letting me out at ten." },
-          { s: 'solar', f: 'neutral', t: "Then I'll come to your house and bring you pudding you won't eat." },
+          { s: 'solar', f: 'happy', t: "Then I'll come to your house and bring you pudding you won't eat." },
           { s: 'rio', f: 'flustered', t: "...Okay. Fine. Bring the good kind." }
         ] },
         { t: "You'll be fine, Rio.", notes: 1, then: [
@@ -671,7 +671,7 @@
       { choose: [
         { t: "Being right was never the job.", notes: 3, then: [
           { s: 'rio', f: 'neutral', t: "Kawai said that. You said that. Ryoko's been saying it since we were twelve. I'm slow." },
-          { s: 'solar', f: 'neutral', t: "You're not slow. You just don't like being told." },
+          { s: 'solar', f: 'happy', t: "You're not slow. You just don't like being told." },
           { s: 'rio', f: 'happy', t: "...That's fair. That's extremely fair." }
         ] },
         { t: "You're still right a lot.", notes: 2, then: [
@@ -746,7 +746,7 @@
       { s: 'rio', f: 'sad', t: "You're graduating in March. I did the math in class yesterday. I got so mad I broke my pencil, and the teacher asked if I was alright, and I said I hated fractions." },
       { s: 'rio', f: 'neutral', t: "Where are you going? After. University? Work? You never say. You never say anything about after. You never say anything about before, either." },
       { n: "Solar didn't know. She didn't know in a way she couldn't have explained to anybody on this side of the bay, and she sat there on the cold seawall with the question in her lap like the unopened can, and the not-knowing was very loud, and Rio, for once in her life, waited." },
-      { s: 'solar', f: 'neutral', t: "I don't know yet." },
+      { s: 'solar', f: 'sad', t: "I don't know yet." },
       { s: 'rio', f: 'neutral', t: "...Okay. You don't have to. I'm bad at not knowing. You're allowed to be good at it." },
       { ifRoute: 'romance', then: [
         { n: "Her hands were cold. They were always cold, even in July. She looked at them, and then, without asking, pulled off her gloves and pushed both bare hands into the pockets of Solar's coat, where Solar's own hands already were, and held on, staring straight ahead at the bay with her face set like she was serving at match point." },
@@ -770,7 +770,7 @@
         { t: "I'll try.", notes: 3, then: [
           { n: "Rio stopped pushing. She looked across the court at Solar, through the thin falling snow, for a long time." },
           { s: 'rio', f: 'surprised', t: "You never say try. You say yes or you say no. Since April. I've counted." },
-          { s: 'solar', f: 'neutral', t: "I'm saying try." },
+          { s: 'solar', f: 'serious', t: "I'm saying try." },
           { s: 'rio', f: 'neutral', t: "...Okay. Then try hard. Try like it's match point." },
           { n: "She didn't ask why. That was the thing about Rio, Solar thought, that nobody on the team had understood in April. She'd push you through a wall, but she never once pushed you through a door." }
         ] },

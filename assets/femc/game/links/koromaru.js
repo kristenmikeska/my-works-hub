@@ -166,12 +166,12 @@
         { n: "Footsteps on the stone behind her, heavy, unhurried. Koromaru's tail started going before she'd even turned around." },
         { s: 'shinjiro', f: 'neutral', t: "Tch. He's not gonna eat that crap from the bag." },
         { n: "Shinjiro Aragaki came up the last steps with his hands in the pockets of his long coat and a plastic container under one arm, and stopped when he saw the rice ball wrapper in her lap, and the dog licking the stone. Something went across his face, quick, and was gone." },
-        { s: 'shinjiro', f: 'neutral', t: "Huh. You gave him the end." },
+        { s: 'shinjiro', f: 'surprised', t: "Huh. You gave him the end." },
         { s: 'solar', f: 'neutral', t: "The plum end. My hand picked it." },
         { s: 'shinjiro', f: 'neutral', t: "Old man used to do that. Every night, right here. Gave him the sour bit and ate the rest himself. Dog's got no sense. Loves it." },
         { choose: [
           { t: "How do you know that?", notes: 2, then: [
-            { s: 'shinjiro', f: 'neutral', t: "Used to come by. Before. Whatever." },
+            { s: 'shinjiro', f: 'sad', t: "Used to come by. Before. Whatever." },
             { n: "He said whatever like a door shutting, and crouched down, and opened the container, and the smell of rice and egg and broth came up warm into the cooling evening, and Koromaru, who had just eaten, looked at it like he'd been starving for a week." }
           ] },
           { t: "(Move over on the step to make room for him.)", notes: 3, then: [
@@ -251,7 +251,7 @@
       { ifRank: { aigis: 1 }, then: [
         { s: 'aigis', f: 'neutral', t: "He is telling the house about his day." },
         { s: 'solar', f: 'surprised', t: "You can understand him?" },
-        { s: 'aigis', f: 'neutral', t: "Yes. He is not complicated. That is not an insult. It is the highest compliment I know how to give." },
+        { s: 'aigis', f: 'happy', t: "Yes. He is not complicated. That is not an insult. It is the highest compliment I know how to give." },
         { s: 'aigis', f: 'neutral', t: "He says the old man smelled of incense and pickled plums and the oil he put on the hinges in winter. He says the old man talked to him every evening about nothing, and that it was the best part of the day." },
         { s: 'aigis', f: 'neutral', t: "He says you smell of the dorm, and of rain, and of something else he does not have a word for. Something from a long way down the line. He says he does not mind it." },
         { n: "Solar didn't move. The skin on her arms had come up all at once under her sleeves." },
@@ -274,7 +274,7 @@
         ] },
         { t: "Ask him if he wants to go home.", notes: 1, then: [
           { s: 'aigis', f: 'neutral', t: "He would not understand the question. He is already at home. He is also at home at the dorm. He does not think this is a contradiction." },
-          { s: 'aigis', f: 'neutral', t: "I am beginning to think he may be right." }
+          { s: 'aigis', f: 'happy', t: "I am beginning to think he may be right." }
         ] }
       ] },
       { n: "On the way down, Aigis walked half a body behind them on the stairs, Solar noticed, the whole way to the street. Koromaru noticed too. He looked back at her on the last landing, and his tail went once, approving, the way a senior officer nods at a recruit who has done something right without being told." }
@@ -442,7 +442,7 @@
           { n: "Solar said nothing. Mitsuru wrapped the paw in clean gauze, round and round, tight and neat, and taped it, and smoothed the tape down with her thumb more times than it needed, and the room was quiet except for the dog's breathing and the tape and the radiator." }
         ] },
         { t: "You're good at this.", notes: 2, then: [
-          { s: 'mitsuru', f: 'neutral', t: "I was taught. A long time ago." },
+          { s: 'mitsuru', f: 'sad', t: "I was taught. A long time ago." },
           { n: "She didn't say by whom. Her thumb went on smoothing the tape down, more times than it needed." }
         ] },
         { t: "Thank you, Mitsuru-senpai.", notes: 2, then: [
@@ -548,9 +548,9 @@
         ] }
       ] },
       { n: "She sat back down on the step. Koromaru leaned on her. Below them the town was full of lit windows, and up the hill the dorm was lit too, every window in it, the busiest it had ever been, full of people from this world and other ones, eating out of each other's bowls." },
-      { s: 'solar', f: 'neutral', t: "I don't know what happens at the end of this month." },
+      { s: 'solar', f: 'sad', t: "I don't know what happens at the end of this month." },
       { n: "She said it to him because she couldn't say it to anybody else, the same way she'd said he'll wake up on the hospital steps. Everybody in the dorm had some piece of it. Nobody had all of it. Least of all her." },
-      { s: 'solar', f: 'neutral', t: "Wherever I end up. Whatever happens. Somebody will feed you right. I'll make sure. Rice and egg. The plum end. I'll write it down." },
+      { s: 'solar', f: 'serious', t: "Wherever I end up. Whatever happens. Somebody will feed you right. I'll make sure. Rice and egg. The plum end. I'll write it down." },
       { s: 'koromaru', f: 'neutral', t: "Wuff." },
       { choose: [
         { t: "(Put your forehead against his.)", notes: 3, then: [

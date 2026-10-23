@@ -44,10 +44,10 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { place: 'Naganaki Shrine · Amulet Stall' },
         { n: "The white dog was on the top step again, the way he was every day, his back to the street and his face to the shuttered house behind the offering hall, so still that people coming up the stairs sometimes took him for one of the stone foxes until his ear moved." },
         { n: "Hina from the playground had a sausage. She had gotten it from somewhere, a convenience-store sausage on a stick, and she had decided, with the moral certainty of a six-year-old, that the dog needed it more than she did, and she was standing three steps below him holding it out at arm's length and trembling slightly with the effort of being generous." },
-        { s: 'hina', t: "Doggy. Doggy, it's for you. It's pork. You like pork. Everybody likes pork." },
+        { s: 'hina', f: 'happy', t: "Doggy. Doggy, it's for you. It's pork. You like pork. Everybody likes pork." },
         { n: "He didn't turn around. His tail moved, once, politely, on the stone, the way you'd nod at someone on a train, and that was all." },
         { s: 'kubo', t: "He won't take it from your hand, sweetheart. He never takes anything from anybody's hand." },
-        { s: 'hina', t: "...Why not?" },
+        { s: 'hina', f: 'surprised', t: "...Why not?" },
         { n: "Mrs. Kubo didn't answer that. She went back to sweeping, a little harder than before, and nobody at the stall said anything at all, the way nobody talks about a grave they walk past every morning." },
         { choose: [
           { t: "(Show Hina how to leave it on the step and walk away.)", then: [
@@ -55,7 +55,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
             { stat: { kindness: 1 } }
           ] },
           { t: "Maybe he's not hungry. Maybe he's just waiting.", then: [
-            { s: 'hina', t: "For what?" },
+            { s: 'hina', f: 'sad', t: "For what?" },
             { n: "Solar didn't know. She found she didn't want to guess out loud, not here, not with him listening, and Hina looked at her and then at the dog and then ate the sausage herself, slowly, sitting on the bottom step, keeping him company, which seemed, all things considered, like the right answer." },
             { stat: { charm: 1 } }
           ] }
@@ -205,7 +205,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { place: 'Naganaki Shrine · Amulet Stall' },
         { n: "Somebody was running the shrine steps. Up, touch the top, down, touch the bottom, up again, at a pace that made the old men on the bench by the torii stop their shogi game to watch, and on the fourth pass Solar realized the somebody had silver hair and was wearing a Gekkoukan track jacket and was counting under his breath." },
         { s: 'kubo', t: "Oh, *look* at him. Look at those legs. Is he yours?" },
-        { s: 'solar', f: 'surprised', t: "He's... my senpai. He trains." },
+        { s: 'solar', f: 'flustered', t: "He's... my senpai. He trains." },
         { s: 'kubo', t: "That's not what I asked." },
         { n: "On the thirtieth pass he stopped at the top, hands on his knees, breath steaming, and saw her behind the table in the stall's white happi coat, and straightened up so fast it looked like it hurt." },
         { s: 'akihiko', f: 'surprised', t: "Solar. You work here? Since when?" },
@@ -790,7 +790,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         ] },
         { n: "When the sheet came back to the corkboard the fifth line had a name on it, small, in neat pencil, squeezed right into the corner like it was apologizing for taking up room. *Ayane.*" },
         { n: "On her way out at ten the girl stopped at the bar. It was the first time she'd stopped at the bar. She stood there with her bag over her shoulder, not quite looking at Solar, looking at the menu board instead." },
-        { s: 'ayane', t: "...He shouts." },
+        { s: 'ayane', f: 'serious', t: "...He shouts." },
         { s: 'solar', f: 'neutral', t: "He's working on it." },
         { s: 'ayane', t: "Okay." },
         { n: "And she went up the stairs into the real night. And Daichi came to the bar a second later at a speed that suggested he'd been watching the whole time, and leaned across it on both elbows." },
@@ -805,11 +805,11 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "Ayane died first in every fight. Not because she was bad. Because she was early. She went to people the instant they were hurt, every time, flinging herself toward them across the map like she could catch them falling, and the enemy saw her coming every time and was waiting for her, every time." },
         { n: "On the fourth loss in a row Daichi's neck started to go red, and his hand came up off the mouse in a fist, and hovered over the desk. And stayed there. And came back down, open, onto his knee. He took a breath that the whole row could hear, and let it out, and said *okay* to nobody, very quietly, and Solar, behind the bar, found that she'd stopped wiping the same cup a full minute ago." },
         { n: "On the break Ayane came to the bar by herself, for the first time without being sent, and asked for hot water, just hot water, and held it in both hands without drinking it." },
-        { s: 'ayane', t: "I'm bad at this. I should give him the spot back. He can find someone." },
+        { s: 'ayane', f: 'sad', t: "I'm bad at this. I should give him the spot back. He can find someone." },
         { s: 'solar', f: 'neutral', t: "You're not bad. You're early." },
         { n: "It was out of her mouth before she'd decided to say it, the way the pink drink had come out of her hands, the way the tide times came, and it kept coming, quiet and sure, from somewhere a long way under her ribs." },
-        { s: 'solar', f: 'neutral', t: "You go when you see somebody get hurt. Go when you see somebody *about* to. Watch the one who's going to need you, not the one who already does. By the time they need you, you should already be there." },
-        { s: 'ayane', t: "...How do you know that?" },
+        { s: 'solar', f: 'serious', t: "You go when you see somebody get hurt. Go when you see somebody *about* to. Watch the one who's going to need you, not the one who already does. By the time they need you, you should already be there." },
+        { s: 'ayane', f: 'serious', t: "...How do you know that?" },
         { choose: [
           { t: "I don't know.", then: [
             { n: "Ayane looked at her over the cup, and for a second Solar thought she'd laugh, or not believe her. She didn't do either. She just nodded, slowly, like that was an answer she'd heard before and had found to be true more often than people liked to admit." },
@@ -818,7 +818,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
           { t: "(Show her. Sit at seat eight on your break.)", then: [
             { n: "She sat down at the empty seat beside Ayane's and put her hands on the keys, and they went where they always went, three fingers and a thumb, and she played one fight, just one, a healer at the back of a map she didn't know, and moved late, and was there, every time, a half second before she was needed, and once her thumb went down hard on a key that did nothing in this game, nothing at all, and Ayane saw it." },
             { s: 'ayane', t: "What's that one? That key?" },
-            { s: 'solar', f: 'neutral', t: "...Habit." },
+            { s: 'solar', f: 'sad', t: "...Habit." },
             { stat: { proficiency: 1 } }
           ] }
         ] },
@@ -955,7 +955,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { s: 'fujii', t: "Coffee. Coffee. Hot tea. Omelet. No, you've had two. I'm counting. I see everything." },
         { n: "Mrs. Fujii was small and round and wore three cardigans and a plastic apron, and had run the cart at the market's mouth for longer than anyone could remember, and fed the men on credit, and knew who drank and who had a new baby and who was lying about both, and she pressed a hot can of coffee into Solar's hands without being asked and didn't take her money." },
         { s: 'tanabe', t: "It's not stopping. Radio says all morning. We'll be soaked to the shorts by nine." },
-        { s: 'solar', f: 'neutral', t: "It'll ease at the turn. About seven-twenty." },
+        { s: 'solar', f: 'serious', t: "It'll ease at the turn. About seven-twenty." },
         { n: "Nobody answered that. Oka, at the corner of the awning, looked at her sideways, and then out at the harbor through the gray curtain of the rain, and seemed to consider the water for a while, and grunted." },
         { choose: [
           { t: "(Help Mrs. Fujii pull her tarp over the cart before it floods.)", then: [
@@ -1105,7 +1105,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "Old Oka had never asked her anything. In all her Sundays at the market he had passed her lighter crates, shown her the auction numbers, laughed at her in dialect, and once given her half a rice ball without a word, but he had never asked her a question, and so when he came over from his stall at a quarter to seven and stood in front of her with his cap in his hands she thought for a second something was wrong." },
         { s: 'oka', t: "When's the turn?" },
         { n: "Not the board. Not the paper. Her. He was looking at her and not at the chalkboard by the office door, where Tanabe had written up the day's tides in his square hand an hour ago." },
-        { s: 'solar', f: 'neutral', t: "Eight-oh-five. Slow, with the wind like this. It'll drag." },
+        { s: 'solar', f: 'serious', t: "Eight-oh-five. Slow, with the wind like this. It'll drag." },
         { s: 'oka', t: "Hm." },
         { n: "He nodded. He turned his cap around once in his hands. His eyes, she noticed for the first time, up close, had a milky film over them at the edges, like breath on a window, and he was looking at her face from about thirty centimeters away, the way people look at something they're having trouble seeing." },
         { s: 'oka', t: "Forty years I've had a boat. Forty years I've had to look at the paper every morning. You just know." },
@@ -1357,7 +1357,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
           { t: "(Take a plate of croissants to the booth and stand there until he eats one.)", then: [
             { s: 'jungwon', f: 'flustered', t: "I'm in the middle of... thank you. After this problem." },
             { n: "She didn't move. The first-years looked up at her, and then at him, with enormous interest. He looked at the plate, and then at her, and then, with the dignity of a man surrendering a city, picked up a croissant and ate it, all of it, under supervision, while three first-years watched him the way you'd watch a lion eat at the zoo." },
-            { s: 'jungwon', f: 'neutral', t: "...Thank you. Please tell Sunoo it's good. Please don't tell him I said please." },
+            { s: 'jungwon', f: 'flustered', t: "...Thank you. Please tell Sunoo it's good. Please don't tell him I said please." },
             { stat: { kindness: 1 } }
           ] },
           { t: "(Ask Jungwon to quiz you too.)", then: [

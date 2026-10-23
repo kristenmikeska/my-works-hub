@@ -33,7 +33,7 @@
       { n: "He'd come in a different way, over there. She didn't ask how. He didn't say." },
       { n: "At the back of her closet, behind everything, there was a jacket that wasn't hers and fit her better. And in her head, all the way to the end, there was a song, and she knew now how it finished. She'd always known. She'd just been waiting for somebody to play her the last bars." },
       { n: "He looked at her. Flat. Then not." },
-      { s: 'haechan', f: 'neutral', t: "...Morning, princess." }
+      { s: 'haechan', f: 'happy', t: "...Morning, princess." }
     ] },
     { ifFlag: 'xmas-minji', then: [
       { n: "Later, in the afternoon, when the snow had stopped and the light had gone long and gold, she walked across the quad to the honors dorm without deciding to. There was a lamppost outside it. It flickered. It had always flickered. Minji was under it with her camera already rolling, cap on frontwards, and when she saw Solar coming she didn't ask. She'd asked twenty times. She'd asked a thousand." },
@@ -65,7 +65,7 @@
     { ifFlag: 'xmas-haechan', then: [
       { n: "Haechan was in the sewing room. The little room under the eaves across the hall from hers, with the door open, the way it was always open. He was sitting on the narrow bed with a battered Discman in his hands, the one with the cracked lid, the same old disc still inside it and the batteries dead for years, and he had the earbuds in anyway." },
       { n: "He took them out when she came to the door." },
-      { s: 'solar', f: 'neutral', t: "I hate you." },
+      { s: 'solar', f: 'sad', t: "I hate you." },
       { s: 'haechan', f: 'neutral', t: "I know, agasshi." },
       { n: "He looked at her. Hair down. Barefoot. Back. And then his face stopped performing entirely, all of it, the way it only ever did when nobody else could see, and he said her name. Not agasshi. Not anything else." },
       { s: 'haechan', f: 'sad', t: "...Solar." }
@@ -147,7 +147,7 @@
         { n: "She sat in the chair and took his hand, the way she had at Christmas, and talked to him. About the top of the tower. About the platform. About the doors closing, one by one. She told him everyone had gone home but her. She told him she'd chosen. She told him she'd decided that was his fault too." },
         { n: "He didn't say anything for a long time. He looked at the window, at the bay going from gray to gold, with his jaw set, the way he looked at a pot he didn't trust." },
         { s: 'shinjiro', f: 'neutral', t: "...Tch." },
-        { s: 'shinjiro', f: 'neutral', t: "...Stupid. ...Staying for a guy who can't... hold a spoon." },
+        { s: 'shinjiro', f: 'sad', t: "...Stupid. ...Staying for a guy who can't... hold a spoon." },
         { s: 'solar', f: 'neutral', t: "I didn't stay for you." },
         { s: 'shinjiro', f: 'neutral', t: "...Good." },
         { n: "Then his fingers closed around hers, slowly, all the way, as hard as the bad hand could manage, which wasn't very hard, which was everything. Not the way a sleeping hand moves. The way a hand holds on when it knows exactly what it's holding, and has decided, against all its better judgment, to keep it." },

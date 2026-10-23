@@ -93,7 +93,7 @@
         { s: 'yunjin', f: 'sad', t: "...It's the quiet one, isn't it. That's the one going home with her." },
         { s: 'haechan', f: 'neutral', t: "He's not quiet. He's saving it." },
         { s: 'hyein', f: 'happy', t: "He IS quiet. He's the quietest. I love him. Don't tell him." },
-        { s: 'haechan', f: 'neutral', t: "I'm right here." }
+        { s: 'haechan', f: 'flustered', t: "I'm right here." }
       ], else: [{ ifHeading: 'S', then: [
         { s: 'hyein', f: 'sad', t: "And the loud one's the one going home with her. Isn't he. The trot one." },
         { s: 'haechan', f: 'happy', t: "Through the toll booth. Every time." },
@@ -116,7 +116,7 @@
         ] },
         { t: "Tell me about the car.", notes: 3, then: [
           { s: 'yunjin', f: 'happy', t: "Black. Leather seats that stick to your legs in summer. Mr. Oh driving with his hands at ten and two, your appa in the back with his window down, singing, and this one in the front pretending he isn't, and then the chorus comes, and he can't help it." },
-          { s: 'haechan', f: 'neutral', t: "I can help it." },
+          { s: 'haechan', f: 'flustered', t: "I can help it." },
           { s: 'yunjin', f: 'happy', t: "He cannot help it." }
         ] },
         { t: "(Throw a mikan at him. See which one of him catches it.)", notes: 2, then: [
@@ -135,21 +135,21 @@
       scene: [
         { n: "It was two holidays at once, which he said was the worst thing that could happen to a man with two calendars in his head. Valentine's Day in one of them, and in the other the new year, the lunar one, which had started at lunch with Yunjin's rice-cake soup and ended at four with the kitchen taken over by Hanni and Hyein and a kilo of melted chocolate, so that by nine at night the whole dorm smelled faintly of both." },
         { n: "He was on the warm dryer when she came down, and there was a small paper bag on the cold one opposite, and he was not looking at it so hard that she knew at once it was for her." },
-        { s: 'haechan', f: 'neutral', t: "Don't. It's not chocolate. In one of my countries the girl gives the chocolate. In the other one everybody gives everybody chocolate and a card the size of a door. I couldn't work out whose rules we're under. So it isn't chocolate." },
+        { s: 'haechan', f: 'flustered', t: "Don't. It's not chocolate. In one of my countries the girl gives the chocolate. In the other one everybody gives everybody chocolate and a card the size of a door. I couldn't work out whose rules we're under. So it isn't chocolate." },
         { n: "It was gloves. Cheap ones, pink knit, from the kiosk at the station, the left one already gone thin at the thumb where somebody had tried them on before him." },
         { s: 'haechan', f: 'neutral', t: "You forget those too. Everywhere. It's the second thing. I've been keeping a list." },
         { ifHeading: 'R', then: [
           { s: 'haechan', f: 'neutral', t: "Over there the house makes a whole thing of today. Roses in buckets. A slow song at the end. I'm usually gone before the slow song." },
-          { s: 'haechan', f: 'neutral', t: "...This year I'd stay for it. Don't hold me to that. Hold me to that." }
+          { s: 'haechan', f: 'flustered', t: "...This year I'd stay for it. Don't hold me to that. Hold me to that." }
         ], else: [{ ifHeading: 'S', then: [
           { s: 'haechan', f: 'happy', t: "Over there you'd give me nothing, and I'd give you nothing, and Mrs. Bang would give us both rice cakes and a lecture about the stairs. Perfect day. Best day of the year." },
           { n: "He said it loud and pleased, his heels drumming once on the dryer door, and then caught himself drumming and stopped, and didn't stop smiling." }
         ], else: [{ ifHeading: 'H', then: [
-          { s: 'haechan', f: 'neutral', t: "Next year, wherever you are, somebody's going to give you something better than gloves. Let them. Then wear the gloves anyway. They're warm. That's all they're for." }
+          { s: 'haechan', f: 'sad', t: "Next year, wherever you are, somebody's going to give you something better than gloves. Let them. Then wear the gloves anyway. They're warm. That's all they're for." }
         ], else: [{ ifHeading: 'true', then: [
           { s: 'haechan', f: 'happy', t: "Next year it's three holidays on one day. I've checked every calendar. I've cleared my schedule for all of them." }
         ], else: [
-          { s: 'haechan', f: 'neutral', t: "Next year somebody gives you something on this roof. Or in this room. Let them. I'll have been first. That's all I wanted out of it. First." }
+          { s: 'haechan', f: 'sad', t: "Next year somebody gives you something on this roof. Or in this room. Let them. I'll have been first. That's all I wanted out of it. First." }
         ] }] }] }] },
         { choose: [
           { t: "(Give him the box you made. Plain, no card.)", notes: 3, then: [
@@ -159,7 +159,7 @@
             ], else: [
               { n: "He took it, and turned it over, and read the small tag on the ribbon, which said, in Hanni's round careful handwriting because Solar had asked her to write it, *tomo*." },
               { s: 'haechan', f: 'neutral', t: "Friend chocolate. You looked it up. You had it labeled. By a professional." },
-              { s: 'haechan', f: 'neutral', t: "...It's the best one I've ever been given. That's not a joke. Don't tell anyone. I'll eat it in front of Junpei so he knows what he's missing." }
+              { s: 'haechan', f: 'flustered', t: "...It's the best one I've ever been given. That's not a joke. Don't tell anyone. I'll eat it in front of Junpei so he knows what he's missing." }
             ] }
           ] },
           { t: "(Put the gloves on. Right now.)", notes: 3, then: [

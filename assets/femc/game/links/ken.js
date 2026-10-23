@@ -248,7 +248,7 @@
       { choose: [
         { t: "I don't remember them. My page would be blank too.", notes: 3, then: [
           { s: 'ken', f: 'serious', t: "Blank?" },
-          { s: 'solar', f: 'neutral', t: "All four hundred squares." },
+          { s: 'solar', f: 'sad', t: "All four hundred squares." },
           { n: "She thought of a book in a blue room, and a page with nothing on it, and a woman in blue holding it up to a lamp. She didn't tell Ken about that. He looked at his own sheet, and then at her, and something in his face changed, as if he'd found out they were in the same class." },
           { s: 'ken', f: 'neutral', t: "...Then we both have a blank page." }
         ] },
@@ -322,7 +322,7 @@
       { choose: [
         { t: "I think I might be angry at someone I can't remember.", notes: 3, then: [
           { s: 'ken', f: 'serious', t: "...Someone who did something to you?" },
-          { s: 'solar', f: 'neutral', t: "Someone took everything I had and left me on a floor. I don't know who. Sometimes I'm so angry I can't breathe, and I don't even know where to point it." },
+          { s: 'solar', f: 'serious', t: "Someone took everything I had and left me on a floor. I don't know who. Sometimes I'm so angry I can't breathe, and I don't even know where to point it." },
           { n: "It came out of her before she could check it, which was rare, and Ken looked at her with his mouth slightly open, and then nodded, very slowly, like she'd just shown him a scar that matched his." },
           { s: 'ken', f: 'neutral', t: "That's worse. Not knowing where to point it." }
         ] },
@@ -466,7 +466,7 @@
         { t: "He didn't think so. That's why he did it.", notes: 3, then: [
           { n: "Ken turned and looked at her, really looked, for the first time since she'd sat down, his eyes enormous and wet and furious and lost all at once." },
           { s: 'ken', f: 'sad', t: "That's not fair. That's not *fair*." },
-          { s: 'solar', f: 'neutral', t: "No. It isn't." },
+          { s: 'solar', f: 'sad', t: "No. It isn't." },
           { n: "He put his face down into the top of his backpack, and his shoulders went, and Solar put her hand on his back and kept it there, and the nurse at the station down the corridor looked up and then, very kindly, looked away." }
         ] },
         { t: "(Put your arm around him.)", notes: 3, then: [
@@ -474,7 +474,7 @@
         ] },
         { t: "Nobody should be in there. It's not a trade.", notes: 2, then: [
           { s: 'ken', f: 'serious', t: "Everything's a trade. That's what I learned. You do something and something else happens." },
-          { s: 'solar', f: 'neutral', t: "Then he made his. You don't get to make it for him." },
+          { s: 'solar', f: 'serious', t: "Then he made his. You don't get to make it for him." },
           { n: "Ken stared at her. Then he looked down at his backpack, and his face crumpled, slowly, and he let it." }
         ] }
       ] },
@@ -536,7 +536,7 @@
       { choose: [
         { t: "You were very brave today.", notes: 2, then: [
           { s: 'ken', f: 'neutral', t: "I wasn't brave. I was scared the whole time. My legs were shaking. You could probably see." },
-          { s: 'solar', f: 'neutral', t: "That's what brave is, Ken." },
+          { s: 'solar', f: 'serious', t: "That's what brave is, Ken." },
           { n: "He thought about that for a long time. He seemed to file it somewhere careful." }
         ] },
         { t: "You were like him today.", notes: 3, then: [
@@ -560,7 +560,7 @@
         ] },
         { t: "None of it was a lie, really.", notes: 2, then: [
           { s: 'ken', f: 'neutral', t: "You're not my sister. That part was." },
-          { s: 'solar', f: 'neutral', t: "Today I was." },
+          { s: 'solar', f: 'happy', t: "Today I was." },
           { n: "He seemed to accept that as a technicality, which, for Ken, was a high form of approval." }
         ] },
         { t: "It was easier than explaining.", notes: 1, then: [
@@ -600,7 +600,7 @@
         { t: "Thank you for telling me.", notes: 3, then: [
           { n: "Ken looked at her as if she'd said something in a language he hadn't expected her to know." },
           { s: 'ken', f: 'neutral', t: "...That's what you say? Not that I'm terrible?" },
-          { s: 'solar', f: 'neutral', t: "You were ten and someone killed your mother. You told me the truth. That's what I say." },
+          { s: 'solar', f: 'serious', t: "You were ten and someone killed your mother. You told me the truth. That's what I say." },
           { n: "He stared at the gravel. His jaw worked. He didn't cry. He'd done that already, she thought, a great deal, alone, with the door shut, the way you did." }
         ] },
         { t: "You were a kid. You were grieving.", notes: 2, then: [

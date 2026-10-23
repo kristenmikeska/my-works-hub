@@ -181,7 +181,7 @@ window.FEMC_STORY_KIT ||= (() => {
     { n: "Then Mitsuru was in the doorway, which made the whole room go quiet in the particular way rooms did when a student council president appeared at lunch, the way a pond goes quiet when a heron lands. She found Solar with her eyes and tilted her head a few degrees toward the hall." },
     { place: 'Gekkoukan High · 2F Hallway', time: 'Lunchtime', soft: true },
     { s: 'mitsuru', f: 'neutral', t: "You've heard." },
-    { s: 'mitsuru', f: 'neutral', t: "Her homeroom teacher filed nothing. Her parents are abroad, and the school took their word for it on the telephone. A girl has been missing for a week, and the only people who've noticed are the ones telling ghost stories." },
+    { s: 'mitsuru', f: 'sad', t: "Her homeroom teacher filed nothing. Her parents are abroad, and the school took their word for it on the telephone. A girl has been missing for a week, and the only people who've noticed are the ones telling ghost stories." },
     { s: 'mitsuru', f: 'sad', t: "There's a reading at the school at night that I don't like. It's faint. It's been faint for days. I've been telling myself it was the rain." },
     { choose: [
       { t: "We'll find her.", then: [

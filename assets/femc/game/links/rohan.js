@@ -261,7 +261,7 @@
       { s: 'jotaro', f: 'neutral', t: "Rohan. Koichi said you were here." },
       { n: "Jotaro Kujo was enormous, and stoic, and spoke the way glaciers move, slowly, certainly, carving things. He'd come through, he said, looking for Koichi, who'd come looking for Rohan, who'd come looking for nobody. A girl in a porter's coat had pointed him to the pier. She'd apologized. He'd said, \"Yare yare,\" and she'd laughed, a little, and gone." },
       { s: 'jotaro', f: 'neutral', t: "You're the girl with the Persona." },
-      { s: 'jotaro', f: 'neutral', t: "This hour. This tower. The moon. You're fighting something that wants to end things. At your age." },
+      { s: 'jotaro', f: 'serious', t: "This hour. This tower. The moon. You're fighting something that wants to end things. At your age." },
       { n: "He wasn't asking. He was looking at her the way people looked at something that shouldn't be happening, and was, and would go on happening whether anyone approved of it or not." },
       { choose: [
         { t: "Somebody has to.", notes: 3, then: [
@@ -269,12 +269,12 @@
           { s: 'jotaro', f: 'sad', t: "Not all of them came home. I'd go again. I'd still go. But you should know that before you say somebody has to." }
         ] },
         { t: "I'm not doing it alone.", notes: 3, then: [
-          { s: 'jotaro', f: 'neutral', t: "Good. Don't. That's the only way any of us made it out." }
+          { s: 'jotaro', f: 'serious', t: "Good. Don't. That's the only way any of us made it out." }
         ] }
       ] },
       { s: 'jotaro', f: 'neutral', t: "Rohan. Your editor called the house. Before I came. He wants the last page." },
       { s: 'rohan', f: 'serious', t: "My editor can wait." },
-      { s: 'jotaro', f: 'neutral', t: "He's been waiting. Everybody's been waiting. You're the one who ran." },
+      { s: 'jotaro', f: 'serious', t: "He's been waiting. Everybody's been waiting. You're the one who ran." },
       { n: "Rohan didn't say anything. Solar watched his hands, in his jacket pockets, close into fists, and open, and close." },
       { s: 'jotaro', f: 'neutral', t: "...Yare yare. Be careful. Both of you." },
       { n: "He left without saying goodbye. The gulls came off the railing in a white cloud as he passed, and resettled the moment he'd gone. Rohan watched him all the way down the pier, and for a long time after." },

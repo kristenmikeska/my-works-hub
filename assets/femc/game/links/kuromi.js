@@ -450,7 +450,7 @@
         ] },
         { t: "Mitsuru would want me to say I don't know what you mean.", notes: 2, then: [
           { s: 'kuromi', f: 'neutral', t: "Then say it." },
-          { s: 'solar', f: 'neutral', t: "I don't know what you mean." },
+          { s: 'solar', f: 'flustered', t: "I don't know what you mean." },
           { s: 'kuromi', f: 'happy', t: "Wow. Super convincing. Ten out of ten. Never go into crime." },
           { n: "But something in her shoulders came down an inch, the way they do when you find out you're not the only one holding the heavy end." }
         ] },
@@ -506,7 +506,7 @@
       { choose: [
         { t: "It isn't because you fell asleep.", notes: 3, then: [
           { s: 'kuromi', f: 'serious', t: "You don't KNOW that." },
-          { s: 'solar', f: 'neutral', t: "I know you. You'd have sat there forever if it would've helped." },
+          { s: 'solar', f: 'serious', t: "I know you. You'd have sat there forever if it would've helped." },
           { n: "Kuromi's mouth did something complicated. She looked down at the notebook so hard it was a wonder the page didn't catch fire." }
         ] },
         { t: "(Don't answer. Sit down on the floor beside her.)", notes: 2, stat: { kindness: 1 }, then: [
@@ -610,7 +610,7 @@
         ] },
         { t: "Dare accepted. Shake on it.", notes: 3, then: [
           { s: 'kuromi', f: 'serious', t: "Rivals spit on it." },
-          { s: 'solar', f: 'neutral', t: "We are not spitting on it." },
+          { s: 'solar', f: 'happy', t: "We are not spitting on it." },
           { s: 'kuromi', f: 'flustered', t: "...Fine. Pinky. Pinky's binding. Pinky's MORE binding." },
           { n: "They hooked pinkies over the pink haft, and Kuromi shook once, very hard, like sealing a treaty between two small hostile countries." }
         ] },
@@ -657,7 +657,7 @@
           { s: 'kuromi', f: 'neutral', t: "...Is that a rule?" },
           { s: 'solar', f: 'neutral', t: "It's in my notebook." },
           { s: 'kuromi', f: 'happy', t: "Your notebook only has like four grudges in it." },
-          { s: 'solar', f: 'neutral', t: "And one rule. Now." }
+          { s: 'solar', f: 'happy', t: "And one rule. Now." }
         ] }
       ] },
       { s: 'junpei', f: 'happy', t: "Okay, okay, before anybody cries more, she has to blow out the candles. Kuromi. Wish. Make it evil." },
@@ -699,7 +699,7 @@
         ] },
         { t: "Friend. You're stuck with me.", notes: 3, then: [
           { s: 'kuromi', f: 'neutral', t: "...But if I'm your friend I can't beat you at things anymore." },
-          { s: 'solar', f: 'neutral', t: "You've never beaten me at anything." },
+          { s: 'solar', f: 'happy', t: "You've never beaten me at anything." },
           { s: 'kuromi', f: 'serious', t: "THAT'S IT. Rival AND friend. You leave me no choice." }
         ] },
         { t: "You noticed I count the doors?", notes: 2, then: [

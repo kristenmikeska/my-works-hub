@@ -264,7 +264,7 @@
           { n: "Solar put her outdoor shoes on, one and then the other, without hurrying, and shut her locker, and walked over to the umbrella stand." },
           { n: "She didn't decide what to do with her face. It decided for her. It wasn't the bright one or the crooked one, it was something she hadn't worn yet in this city, warm and attentive and enormously polite, the face of someone who was delighted to meet you and had already memorized your name, and it settled over her features like a coat she'd owned for years." },
           { s: 'solar', f: 'happy', t: "Hi! I'm the transfer. Solar. Just Solar, I'm afraid. There isn't any more of it." },
-          { s: 'solar', f: 'neutral', t: "I didn't catch your names. I'd really love to. That way I'll know exactly who to thank." },
+          { s: 'solar', f: 'happy', t: "I didn't catch your names. I'd really love to. That way I'll know exactly who to thank." },
           { n: "The girl with the pink pen went the color of her pen. Nobody offered a name. All three of them discovered at once that any umbrella would do and went out into the rain under one between the three of them, which didn't work, and Solar watched them go with the polite face still on until the glass doors swung shut." },
           { n: "Then she let it go. It came off easily. That was the part that bothered her, a little, later." },
           { s: 'yukari', f: 'surprised', t: "What was that. What did you just do?" },
@@ -404,7 +404,7 @@
       { choose: [
         { t: "I think about that too. About who I was.", notes: 3, then: [
           { s: 'yukari', f: 'surprised', t: "...You do?" },
-          { s: 'solar', f: 'neutral', t: "Some nights. What if I find out, and I don't like her." },
+          { s: 'solar', f: 'sad', t: "Some nights. What if I find out, and I don't like her." },
           { s: 'yukari', f: 'serious', t: "Okay, that's stupid. You weren't, like, awful." },
           { s: 'solar', f: 'neutral', t: "You don't know that." },
           { s: 'yukari', f: 'serious', t: "I know you. Geez. I know you now, I don't need the rest of it to..." },
@@ -583,7 +583,7 @@
       { choose: [
         { t: "Give some of it to me.", notes: 3, then: [
           { s: 'yukari', f: 'serious', t: "You can't just take somebody's stuff." },
-          { s: 'solar', f: 'neutral', t: "I've got room. There's not a lot else in here." },
+          { s: 'solar', f: 'sad', t: "I've got room. There's not a lot else in here." },
           { n: "She tapped her own temple when she said it, lightly, where the Evoker went, and Yukari stared at her for a second and then made a sound halfway between a laugh and something wetter." },
           { s: 'yukari', f: 'sad', t: "That's the saddest thing anybody's ever said to me." },
           { s: 'solar', f: 'neutral', t: "It's useful, though." },
@@ -626,7 +626,7 @@
       { choose: [
         { t: "(Point at the photo booth by the arcade.)", notes: 3, then: [
           { s: 'yukari', f: 'surprised', t: "...That was three. How did you know that was three?" },
-          { s: 'solar', f: 'neutral', t: "You looked at it twice while you were reading." },
+          { s: 'solar', f: 'happy', t: "You looked at it twice while you were reading." },
           { s: 'yukari', f: 'blushing', t: "I hate you. Okay. Fine. Yes. Three first." }
         ] },
         { t: "The coat. It's freezing.", notes: 2, then: [

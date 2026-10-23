@@ -655,7 +655,7 @@
         ] },
         { t: "She misses you.", notes: 3, then: [
           { s: 'fuuka', f: 'surprised', t: "She didn't say that." },
-          { s: 'solar', f: 'neutral', t: "She underlined properly twice." },
+          { s: 'solar', f: 'happy', t: "She underlined properly twice." },
           { n: "Fuuka looked at the letter for a long moment, and then at Solar, and then back at the letter, and her face went slowly pink all the way to the ears, the way it had once over a television, and she didn't say anything else, and didn't need to." }
         ] },
         { t: "(Keep your eyes on the egg.)", notes: 1, then: [
@@ -692,7 +692,7 @@
       { choose: [
         { t: "Fuuka. This is beautiful.", notes: 3, then: [
           { s: 'fuuka', f: 'surprised', t: "It's— it's just dinner." },
-          { s: 'solar', f: 'neutral', t: "It's beautiful dinner." },
+          { s: 'solar', f: 'happy', t: "It's beautiful dinner." },
           { n: "Fuuka sat down very fast, as if her knees had made the decision, and looked at the table, and at Solar, and at the table, and had to press her lips together hard to keep her face where it was." }
         ] },
         { t: "Is this a test? Am I the data?", notes: 2, then: [

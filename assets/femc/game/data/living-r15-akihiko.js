@@ -255,7 +255,7 @@
       { choose: [
         { t: "New hand wraps. Red. He'll pretend he doesn't need them.", stat: { kindness: 1 }, then: [
           { s: 'ota', t: "...Red. Why red?" },
-          { s: 'solar', f: 'neutral', t: "He just likes red." },
+          { s: 'solar', f: 'flustered', t: "He just likes red." },
           { n: "Ōta looked at her for a long moment the way you look at somebody who knows the answer to a question you didn't think had one, and wrote *RED* in the catalogue margin and underlined it, and the committee rose as one and went off toward the sports shop, and Hiyori turned round halfway there and waved." }
         ] },
         { t: "Honestly? A quiet afternoon. You can't buy that.", stat: { charm: 1 }, then: [
@@ -342,7 +342,7 @@
           { n: "She took the needle out of his fingers, gently, the way you'd take something sharp off a child, and sat down and sewed the button on, through and through and round the shank, the way her hands apparently knew how, and bit the thread off at the end. He watched every stitch the way he watched a combination." },
           { ifRoute: 'romance', then: [
             { s: 'akihiko', f: 'blushing', t: "...That's on there forever now. Nobody's getting that off. Not with scissors." },
-            { s: 'solar', f: 'neutral', t: "That was the idea." },
+            { s: 'solar', f: 'flustered', t: "That was the idea." },
             { n: "He looked at the button. He looked at her. He went red from the collar up, slowly, as the idea arrived, and put the jacket on right there over his T-shirt, at one in the morning, and buttoned it, just that one, and sat there in it, and didn't take it off until she'd gone up." }
           ], else: [
             { s: 'akihiko', f: 'happy', t: "...That's better than Shinji's. Don't tell him I said that. Don't tell anybody." },
@@ -352,7 +352,7 @@
         { t: "(Sit across from him. Thread the next needle when he drops this one.)", notes: 2, then: [
           { n: "She sat across the table and held the reel, and when he dropped the needle, which he did twice, she found it, and threaded it, and handed it back, and he did the whole button himself, badly and very thoroughly, with the tip of his tongue between his teeth, and it took forty minutes and it would never, ever come off." },
           { s: 'akihiko', f: 'happy', t: "There. That's not going anywhere. Spreadsheet or no spreadsheet." },
-          { s: 'solar', f: 'neutral', t: "What spreadsheet?" },
+          { s: 'solar', f: 'surprised', t: "What spreadsheet?" },
           { s: 'akihiko', f: 'neutral', t: "...Forget I said that." }
         ] }
       ] }

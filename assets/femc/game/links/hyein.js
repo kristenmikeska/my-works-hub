@@ -302,7 +302,7 @@
       { s: 'hyein', f: 'serious', t: "I don't want the file. I want the truth. Arms out." },
       { n: "Yukari said no, flatly, from the armchair, without looking up from her phone, and Hyein said *respect*, and meant it, and didn't ask again, which made Yukari look up after all, slightly thrown, like someone who'd braced against a door that turned out to be open." },
       { s: 'hyein', f: 'happy', t: "Mitsuru-senpai. Can I measure you? You can say no. You're going to say no." },
-      { s: 'mitsuru', f: 'neutral', t: "...What would it be for?" },
+      { s: 'mitsuru', f: 'surprised', t: "...What would it be for?" },
       { s: 'hyein', f: 'serious', t: "Nothing. Yet. I just want to know. You stand like you've been fitted since you were a baby. I want to know if I'm right." },
       { n: "Mitsuru looked at her for a long moment over the top of a teacup. Then she set it down, and stood, and held out her arms, and the whole lounge went silent like a church." },
       { s: 'hyein', f: 'surprised', t: "...Oh my God. Okay. Okay. Nobody breathe." },
@@ -409,7 +409,7 @@
       { s: 'hyein', f: 'happy', t: "So that's us. Me, Bloom, red hair, fire, obviously, she's the main character. Hanni, Flora, nature, the nice one. Minji, Musa, music, she made me promise to protect her cargo pants, which, to be clear, I did. I'm a woman of my word." },
       { n: "She turned the page. A fourth fairy in orange and gold, a satin top and a green skirt that was, Solar couldn't help noticing, very short, and a gold cuff around one arm, and very small wings." },
       { s: 'hyein', f: 'serious', t: "And you. Stella. The fairy of the sun and the moon." },
-      { s: 'solar', f: 'neutral', t: "...That skirt is short." },
+      { s: 'solar', f: 'flustered', t: "...That skirt is short." },
       { s: 'hyein', f: 'happy', t: "You said that! You said *if I bend over, the entire house is going to learn things about me,* and I said *don't bend over, simple.* Word for word. You just did the first half. Do you want to do the second half? I'll do mine." },
       { choose: [
         { t: "Fantastic solution.", notes: 3, then: [
@@ -525,7 +525,7 @@
       { choose: [
         { t: "It's the first thing anyone gave me here that I chose.", notes: 3, then: [
           { s: 'hyein', f: 'surprised', t: "..." },
-          { s: 'solar', f: 'neutral', t: "They asked. They asked if I wanted it. There was a contract. It said *free will.* I stopped on that line for a long time." },
+          { s: 'solar', f: 'serious', t: "They asked. They asked if I wanted it. There was a contract. It said *free will.* I stopped on that line for a long time." },
           { n: "Hyein's needle stopped. She looked down at the armband, the torn red fabric, the stitches she was putting into it one at a time, and didn't say anything for a while." },
           { s: 'hyein', f: 'sad', t: "...Nobody ever asks you. At home. They just hand you the dress." }
         ] },
@@ -581,11 +581,11 @@
       { s: 'hyein', f: 'neutral', t: "We won, you know. At home. Best costume. At Sigma. Me and Hanni, anyway, you'd already gone home by then. Jaemin was standing on a chair doing the worst accent I've ever heard in my life, and the award was so ugly, Sol, it was so poorly made, I held it up like it was a trophy at the Olympics." },
       { s: 'hyein', f: 'happy', t: "I told the mic my rates had gone up, but this was proof of my legacy. And Hanni leaned in and went *um, she means thank you!* You missed my best line. You missed it by two minutes." },
       { n: "And Solar could see something. Not that. Earlier. A living room full of people in costumes, a hundred of them, the floor sticky, purple bulbs screwed into every light, and a tall girl with red extensions clipped into her brown hair talking into a microphone for much, much too long about how hard she'd worked and how you couldn't find these anywhere else, and Solar herself coming down off a makeshift stage in orange satin and small gold wings, trying to push the tall girl off her, and failing, and laughing." },
-      { s: 'solar', f: 'neutral', t: "...*So long as you paid the appropriate price.*" },
+      { s: 'solar', f: 'surprised', t: "...*So long as you paid the appropriate price.*" },
       { s: 'hyein', f: 'surprised', t: "..." },
       { n: "She swung her legs down off the back of the chair and sat up so fast her hair whipped over her face, and pushed it back with both hands, and stared." },
       { s: 'hyein', f: 'surprised', t: "I DID say that. Before the judging. On the stage. You were RIGHT there, you were trying to get away from me." },
-      { s: 'solar', f: 'neutral', t: "You wouldn't get off me." },
+      { s: 'solar', f: 'happy', t: "You wouldn't get off me." },
       { s: 'hyein', f: 'happy', t: "I would NOT get off you. Oh my God. You remember me being amazing. Of all the things. You remember me being amazing." },
       { n: "She got her phone out of her back pocket. It still said twelve oh one. She went into her messages, past the girls' chat, into a little folder of requests from people she didn't follow, and held it out, and it was a single message from a girl with a profile picture too small to see." },
       { n: "*hiii are u taking commissions?? how much for a set like ur winx ones.* And under it, Hyein's answer, typed out and never sent, with a tiny clock beside it where the delivered mark should be. *yes!!! omg. dm me ur measurements and*" },
@@ -818,10 +818,10 @@
         { s: 'hyein', f: 'serious', t: "Nobody asked me to. I know. I did it anyway. I've been doing it since October in the room at the end of the hall. Hanni kept watch. She's a terrible lookout. She kept coming in to tell me she was keeping watch." }
       ] },
       { n: "And she knew. All at once, the way the cold came up off the roof. A different mirror, in a bathroom full of steam and four girls and two curling irons going and costume bags hanging off the shower rod, and this exact face looking back at her, and for once not checking itself for damage, and a voice behind her, loud, delighted, too much, in her ear." },
-      { s: 'solar', f: 'neutral', t: "...Oh my God. I'm literally Stella." },
+      { s: 'solar', f: 'surprised', t: "...Oh my God. I'm literally Stella." },
       { n: "Hyein made a sound she had never made before. It wasn't a scream. It was smaller and worse than a scream. She put both hands over her mouth and stood behind the mirror shaking." },
       { s: 'hyein', f: 'sad', t: "That's my line. That's MY line. You stole my line. You never say my line. You always tell me to stop saying it." },
-      { s: 'solar', f: 'neutral', t: "Please don't start calling me that." },
+      { s: 'solar', f: 'happy', t: "Please don't start calling me that." },
       { s: 'hyein', f: 'sad', t: "...I won't, Stella." },
       { n: "Hyein laughed through the sound she'd been making, wet, from behind both hands, and Solar didn't check her face afterward to see whether any of it had been all right. She knew it had. That was new, too." },
       { choose: [
@@ -1018,7 +1018,7 @@
       { choose: [
         { t: "(Read it. All of it.)", notes: 3, then: [
           { n: "She read it. Mitsuru stood very still by the humidifier, and then, without a word, rolled her left shoulder back, once, slowly, as though trying it, and looked at Hyein over the top of the machine for a long moment with something in her face that didn't have a word in either language they were all using." },
-          { s: 'mitsuru', f: 'neutral', t: "...Get well, Hyein. That's an instruction." }
+          { s: 'mitsuru', f: 'sad', t: "...Get well, Hyein. That's an instruction." }
         ] },
         { t: "(Hand Mitsuru the sketchbook instead. Let her read it herself.)", notes: 3, then: [
           { n: "Mitsuru took it, and read it, and handed it back, and said only *thank you* in a voice so quiet it was nearly Hyein's, and went back upstairs, and Solar would have sworn she was walking a little differently on the stairs." }
@@ -1131,7 +1131,7 @@
         ] }
       ] },
       { n: "Aigis came last. She held the sweater out, and then didn't let go of it when Hyein took it, so for a second they were both holding it, across the machine." },
-      { s: 'aigis', f: 'neutral', t: "Inside. Not on the collar, where it is customary. Inside, on the left. Against the place where a heart would be, if one had been fitted." },
+      { s: 'aigis', f: 'serious', t: "Inside. Not on the collar, where it is customary. Inside, on the left. Against the place where a heart would be, if one had been fitted." },
       { s: 'hyein', f: 'surprised', t: "..." },
       { choose: [
         { t: "(Hold the sweater open for her, inside out, so she can reach.)", notes: 3, then: [
@@ -1188,7 +1188,7 @@
           ] },
           { t: "I'll write your name on the blank one.", notes: 3, then: [
             { s: 'hyein', f: 'flustered', t: "You can't write on ribbon. It bleeds." },
-            { s: 'solar', f: 'neutral', t: "Then I'll sew it. Badly." },
+            { s: 'solar', f: 'happy', t: "Then I'll sew it. Badly." },
             { s: 'hyein', f: 'sad', t: "...Badly. Yes. Do it badly. I'll know it's you." }
           ] },
           { t: "Three's a lot of labels.", notes: 2, then: [
@@ -1267,9 +1267,9 @@
       { s: 'hyein', f: 'neutral', t: "You said ask you later. Not on a good day. It's not a bad day. It's not a good day either. It's a Tuesday. I think a Tuesday's allowed." },
       { s: 'hyein', f: 'serious', t: "The sixth. Wherever you're going. Did you pick it? Or did somebody hand you the dress?" },
       { ifHeading: 'R', then: [
-        { s: 'solar', f: 'neutral', t: "I picked it." },
+        { s: 'solar', f: 'serious', t: "I picked it." },
         { s: 'hyein', f: 'surprised', t: "...You did?" },
-        { s: 'solar', f: 'neutral', t: "I picked Syracuse. I picked it before. I picked it when I said no to the other school. I'm picking it again." },
+        { s: 'solar', f: 'serious', t: "I picked Syracuse. I picked it before. I picked it when I said no to the other school. I'm picking it again." },
         { n: "It came out of her plain and certain, and she didn't know where the second sentence had come from, only that it was true, a door she'd once walked through with her whole family looking at her back, and Hyein's face did something complicated and enormous and then went very still, which was how Solar knew it had landed." },
         { s: 'hyein', f: 'serious', t: "Okay. Then when we get there, and the email comes from your dad's office about what to wear to some dinner, you still picked. You picked first. Say it to me now so I can remind you later." },
         { choose: [
@@ -1284,7 +1284,7 @@
           ] }
         ] }
       ], else: [{ ifHeading: 'S', then: [
-        { s: 'solar', f: 'neutral', t: "I picked the house where everything's already decided." },
+        { s: 'solar', f: 'sad', t: "I picked the house where everything's already decided." },
         { n: "She heard how it sounded the second it was out. Hyein didn't say anything for a long time. A man came out of the bathhouse in a cloud of steam with a towel round his neck and walked between them and the bike rack, and the string went taut over his head, and he ducked it without looking up." },
         { s: 'hyein', f: 'sad', t: "...Then you picked the dress. That's allowed. People pick the dress. I'd never have picked it for you. But you're allowed." },
         { s: 'hyein', f: 'serious', t: "Pick the coat, too, though. Promise me. Whatever they hand you, the coat's yours. The coat you pick." },
@@ -1302,7 +1302,7 @@
           ] }
         ] }
       ], else: [{ ifHeading: 'H', then: [
-        { s: 'solar', f: 'neutral', t: "I picked the one where none of you are." },
+        { s: 'solar', f: 'sad', t: "I picked the one where none of you are." },
         { n: "It came out quiet. Hyein looked at her for a long moment in the blue light with the string in her hand, and Solar braced, and then watched something go across her face she hadn't expected at all. Not hurt. Something that looked a lot more like being impressed against her will." },
         { s: 'hyein', f: 'serious', t: "...Good." },
         { s: 'hyein', f: 'sad', t: "No, I mean it. That's the most *you* thing you've ever done. Picking the one nobody saw coming. Picking it on purpose. At home you'd never. At home you pick whatever makes the fewest people look at you." },
@@ -1319,9 +1319,9 @@
           ] }
         ] }
       ], else: [{ ifHeading: 'stay', then: [
-        { s: 'solar', f: 'neutral', t: "I picked here." },
+        { s: 'solar', f: 'serious', t: "I picked here." },
         { s: 'hyein', f: 'serious', t: "I know. I wanted to hear you say it. I wanted to know you didn't just get left here like a coat on a chair." },
-        { s: 'solar', f: 'neutral', t: "I picked it." },
+        { s: 'solar', f: 'serious', t: "I picked it." },
         { s: 'hyein', f: 'sad', t: "Okay. Okay. Then it's yours. Then I can go home and tell everybody you picked it. That you weren't taken. That you weren't lost. That you picked." },
         { choose: [
           { t: "Tell them I picked it. All of them.", notes: 3, then: [
@@ -1337,7 +1337,7 @@
       ], else: [
         { s: 'solar', f: 'neutral', t: "All of it." },
         { s: 'hyein', f: 'surprised', t: "...All of it?" },
-        { s: 'solar', f: 'neutral', t: "I picked all of it. Every one." },
+        { s: 'solar', f: 'happy', t: "I picked all of it. Every one." },
         { s: 'hyein', f: 'happy', t: "Greedy. You're so greedy. I love that for you." },
         { n: "She said it the way she'd said it in December about the pockets, *both, you're so greedy*, and then heard herself, and looked down at the string, and Solar could see her doing a sum in her head that didn't come out." },
         { s: 'hyein', f: 'sad', t: "Does all of it have room in it? For here? For the window and the jar and the label that says *HYENI*?" },
@@ -1377,7 +1377,7 @@
       { s: 'hyein', f: 'neutral', t: "Okay. Last fitting. I've got one thing left and I need a body. Stand there. Don't move." },
       { s: 'solar', f: 'neutral', t: "No." },
       { s: 'hyein', f: 'surprised', t: "...No?" },
-      { s: 'solar', f: 'neutral', t: "Your turn. You stand there. You hold still." },
+      { s: 'solar', f: 'happy', t: "Your turn. You stand there. You hold still." },
       { choose: [
         { t: "(Take the parcel off her. Point at the mark in front of the mirror.)", notes: 3, then: [
           { n: "Hyein looked at the mark on the floor in front of the shop's long mirror as if it were the edge of a diving board. Then she stood on it. She stood on it like a mannequin, rigid, chin up, hands at her sides, and Solar said *like a girl on a Saturday*, in Hyein's own voice, and Hyein's shoulders came down an inch, and she laughed, and was furious about laughing." }
@@ -1402,12 +1402,12 @@
         { choose: [
           { t: "Every Saturday. At home. You hold still.", notes: 3, then: [
             { s: 'hyein', f: 'surprised', t: "EVERY Saturday?" },
-            { s: 'solar', f: 'neutral', t: "Standing order." },
+            { s: 'solar', f: 'happy', t: "Standing order." },
             { n: "Hyein's face went through four things at once in the mirror, and settled on the one with her mouth pressed flat and her eyes very bright, the one she'd had on the roof in January." }
           ] },
           { t: "(Tell her she looks like herself.)", notes: 3, then: [
             { s: 'hyein', f: 'sad', t: "...I always look like myself." },
-            { s: 'solar', f: 'neutral', t: "You look like yourself when nobody's looking at you. You never let anybody see that one." },
+            { s: 'solar', f: 'serious', t: "You look like yourself when nobody's looking at you. You never let anybody see that one." },
             { n: "Hyein didn't answer. She looked at the girl in the mirror for a long time without fixing anything." }
           ] },
           { t: "Hanni can take the picture.", notes: 2, then: [
