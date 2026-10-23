@@ -43,11 +43,8 @@ One template; fill it from the item's Must match line, not from the setting name
 ```
 Solar and [NAME] at [SETTING], [TIME AND LIGHT]. [WHO ELSE IS THERE, OR "just the two of them"]. [CLOTHES]. [POSE AND DISTANCE]. [SEASON AND WEATHER]. [PROPS]. [MOOD].
 ```
-- [ ] *(Optional)* **Rank 10 (MAX)**, one per link. **Fills:** `cg/link-<id>-r10.webp`. **Attach:** style, Solar, the partner. Solar's clothes go by the season unless the line says otherwise.
+- [ ] *(Optional)* **Rank 10 (MAX)**, one per link (32 still to make). **Fills:** `cg/link-<id>-r10.webp`. **Attach:** style, Solar, the partner. Solar's clothes go by the season unless the line says otherwise.
   - **S.E.E.S.**
-    - **Yukari** (the mall atrium): after school in December, indoor mall light; a three-story tree with white lights and a gold star where the fountain usually runs; side by side on the rim of the dry fountain with paper cups of hot chocolate, Yukari stealing Solar's marshmallows; shoppers around.
-    - **Junpei** (the dorm roof): a clear, very cold late-November night, lit only by the stairwell door, small stars over the bay; shoulder to shoulder on the planter; Junpei in his school jacket and cap with a folded square of paper in the band, a bat across his knees, a soft blue notebook labelled HIGHLIGHT REEL beside him.
-    - **Mitsuru** (a Port Island convenience store, better than the council room): December evening under the shop sign's orange light, dry and cold, breath showing; both in coats, standing beside her motorcycle eating steaming nikuman from paper wrappers; Solar holding a spare helmet.
     - **Aigis** (the dorm roof): mid-January evening, gray snow-light, snow stopped, the roof white with one line of footprints to the rail; standing at the rail holding hands, sleeves touching; snow on Aigis's shoulders; Solar in gloves with her breath showing, Aigis's not; the gray bay and the monorail beyond.
     - **Fuuka** (the dorm dining room): December evening; only one end of the long table lit and set for two, the rest of the room dark; a cloth, good bowls (miso soup, nikujaga, rice, tamagoyaki), a small blue vase with one sprig; Fuuka in a clean apron across from Solar; lamplit street outside.
     - **Koromaru** (Naganaki Shrine): early-January evening, dry, very cold, sharp stars; New Year decorations still up, a crowded rack of wooden wish plaques; Solar on a cold step with a wooden plaque on her knee and a pen, her forehead to Koromaru's; Koromaru in a little quilted coat; town windows lit below.

@@ -624,7 +624,9 @@
       { n: "She found him on the roof. It was the coldest night yet, the first that really meant winter, the concrete hard as iron under her shoes and the stars over the bay small and white and much too many. The laundry line was empty. He was sitting on the planter in his school jacket with the bat across his knees and the notebook beside him, and he didn't startle when she came out. He'd been waiting for her. She could tell from how he'd left her room on the planter." },
       { choose: [
         { t: "(Sit down next to him.)", notes: 3, then: [
-          { n: "She sat down next to him on the cold planter. He didn't say anything, and she didn't make him, and after a while he bumped her shoulder with his, once, the way he had in April, a thank-you he still couldn't get his mouth around." }
+          { cg: 'link-junpei-r10' },
+          { n: "She sat down next to him on the cold planter. He didn't say anything, and she didn't make him, and after a while he bumped her shoulder with his, once, the way he had in April, a thank-you he still couldn't get his mouth around, so he smiled it at her instead, small and crooked, and she smiled back." },
+          { cg: null }
         ] },
         { t: "It's freezing. Come inside.", notes: 2, then: [
           { s: 'junpei', f: 'neutral', t: "In a minute. Sit for a minute. Please." },

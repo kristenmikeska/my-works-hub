@@ -678,7 +678,9 @@
           { n: "But she was smiling when she said it, the real one, tired and bright at once, and she knocked her shoulder into Solar's and left it there." }
         ] }
       ] },
+      { cg: 'link-yukari-r10' },
       { n: "They bought gloves. They bought hot chocolate in paper cups and drank it on the edge of the dry fountain under the enormous tree, and Yukari stole the marshmallows out of Solar's, which Solar allowed." },
+      { cg: null },
       { n: "That night, in her room, Solar put the half strip in the back of her student handbook, behind the page with her name on it, the one with the blank where the rest of her name was supposed to go. She wasn't sure why there. It just seemed like the place for it. Two frames of a girl with no surname looking sideways at a friend, which was, she thought, turning off the lamp, more than most people had to go on." }
     ] }
   ],

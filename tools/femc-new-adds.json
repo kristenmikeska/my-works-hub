@@ -5630,6 +5630,57 @@
       "source": "romance-shinjiro-christmas.png",
       "sourceNow": "Added to Game/romance-shinjiro-christmas.png",
       "status": "integrated"
+    },
+    {
+      "batch": 32,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-junpei-r10.webp",
+      "placement": "links/junpei.js rank 10 ('10: director's cut'), first choice's sit-down branch: { cg } on its one narration line, cleared at the end of the branch; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: the sit-down line now ends with a shared smile to match the art; otherwise matches",
+      "mobileFocus": "46% 25%",
+      "outputSha256": "3de613de67cdde165df5c5037cd4e7d708fa8a761302904f253b7d4804333315",
+      "sha256": "efc7499159d10443f5a1b69033df9fa510516366186eed1af4a19456929b82bd",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "junpei-rank10.png",
+      "sourceNow": "Added to Game/junpei-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 32,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-mitsuru-r10.webp",
+      "placement": "links/mitsuru.js rank 10 ('10: the spare helmet'), convenience store: { cg } from eating outside by the motorcycle through her offer, cleared before the choice; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: matches the scene",
+      "mobileFocus": "52% 30%",
+      "outputSha256": "3a0175cb07261ba749bcf1f35edbb2f6f9f6f41b2630de5495a25be399174b33",
+      "sha256": "6f36051c701f6fa4355a9bdba89787b74f4f5aa010568dd66d3a6a46a9a63ab0",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "mitsuru-rank10.png",
+      "sourceNow": "Added to Game/mitsuru-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 32,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-yukari-r10.webp",
+      "placement": "links/yukari.js rank 10 ('10: proof'): { cg } on the hot chocolate at the dry fountain, cleared before the night-time line; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: matches the scene",
+      "mobileFocus": "50% 28%",
+      "outputSha256": "911443fe5b264c34d7fa276b538ebb1145ed3db15562d60739510ad7d4770aea",
+      "sha256": "d26123f3b5698c165d0a5074ce3dd3cd428b5258f8ac5e1ca609acb584602f4c",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "yukari-rank10.png",
+      "sourceNow": "Added to Game/yukari-rank10.png",
+      "status": "integrated"
     }
   ],
   "batch1Validation": {
@@ -6061,6 +6112,21 @@
     "lateStory": "ending-true, story-wren-clock, story-wren-cap added; places v26, story-act5 v12, story-act6 v9, story-endings v10; femc-check-scenes OK, femc_march 44, femc_gallery 94, femc_haechan pass, targeted replays of the solstice (both branches), the last train and the true ending",
     "christmasBatch": "link-shinjiro-r15 and nine romance-<id>-christmas CGs added; places v27 and nine link files bumped; femc-check-scenes OK, femc_gallery 94, femc_rank15 --quick, targeted walks of all ten",
     "textFollowUp": "Kat approved adjusting graduation and Akihiko rank 15 to the art; Yakushima unchanged (Koromaru conflict reported). Re-ran femc-check-scenes --links akihiko, femc_march (44), femc_rank15 --quick (pass) and the targeted CG walk",
+    "browserErrors": 0
+  },
+  "batch32Validation": {
+    "date": "2026-10-23",
+    "scope": "Rank 10 CGs for Junpei, Mitsuru and Yukari (art list section 2B)",
+    "sourcesInspected": "all 3 viewed before wiring",
+    "sourcesIntegrated": 3,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold untouched",
+    "tests": [
+      "python3 tools/femc-check-scenes.py --links junpei,mitsuru,yukari (OK)",
+      "python3 tests/femc_gallery.py (94 checks)"
+    ],
+    "html": "femc-game.html places v28, yukari v4, junpei v4, mitsuru v5",
+    "textTweak": "Junpei rank 10: one narration line gains a shared smile to match the art",
     "browserErrors": 0
   }
 }

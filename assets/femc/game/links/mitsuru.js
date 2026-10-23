@@ -633,10 +633,12 @@
       ] },
       { place: 'Port Island · Convenience Store', time: 'Evening' },
       { n: "The last item, whoever's handwriting it had ended up in, turned out to be nikuman. Two of them, from the steamer by the register of a convenience store on Port Island, the same store, Solar realized as they walked in, where a boy in a baseball cap had once hidden behind the magazine rack in the green dark, a lifetime ago in April. The clerk said welcome without looking up. Mitsuru said good evening back, which startled him badly." },
+      { cg: 'link-mitsuru-r10' },
       { n: "They ate them outside, standing up, in the cold, beside the motorcycle, with the paper wrappers burning their fingers and their breath and the steam going up together into the orange light of the sign. Mitsuru bit into hers and closed her eyes." },
       { s: 'mitsuru', f: 'neutral', t: "Oh. That's the best one. That's the best item on the list. I should have started here." },
       { s: 'mitsuru', f: 'neutral', t: "Your name, by the way. I said in April I'd get used to it. It doesn't sound strange in my mouth anymore. I'm not sure when that happened." },
       { s: 'mitsuru', f: 'neutral', t: "And the other offer stands. The surname. I'd stamp it myself." },
+      { cg: null },
       { choose: [
         { t: "Pending.", notes: 3, then: [
           { n: "Mitsuru laughed. Properly, out loud, in a convenience-store parking lot on Port Island in December, with steam coming off the nikuman in her hand, the laugh that had been pressed flat against the inside of her lips since April, finally allowed to finish." },
