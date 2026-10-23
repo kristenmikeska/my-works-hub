@@ -150,18 +150,30 @@ LinkAudit.gates = id => {
  assert(probe(G.dayOf(L.starts)-1,L.home.slot,9).reason==='away','before start');
  // Visitors and the Persona cast have no fragment gate.
  if(L.gate)assert(probe(G.dayOf(L.starts)+10,L.home.slot,L.gate[world]-1).reason==='away','fragment gate');
+ // A closed link that comes back (Shinjiro: closes 10/4, stretch.from 2/1) has another home from stretch.from, and a rank may
+ // keep its own slot (rank.slot); nothing is available between closes and stretch.from.
+ const homeAt=day=>(L.stretch&&day>=G.dayOf(L.stretch.from))?L.stretch.home:L.home;
+ const closedOn=day=>!!(L.closes&&day>=G.dayOf(L.closes)&&!(L.stretch&&day>=G.dayOf(L.stretch.from)));
  for(let r=0;r<G.maxOf(L);r++){
-  const earliest=G.dayOf(L.ranks[r].after);
-  // Ranks 11+ (maxRank 15): the day before the next rank's date, time together is afterMax (no rank scene yet).
-  if(r>=10){let pd=earliest-1;while(!L.home.days.includes(G.dayInfo(pd).dow))pd--;const st=probe(pd,L.home.slot,9,r);assert(st.ok&&st.after&&G.linkScene(L).kind==='after','afterMax before rank date '+r);}
-  else assert(!probe(earliest-1,L.home.slot,9,r).ok,'rank date '+r);
-  let d=earliest;while(!L.home.days.includes(G.dayInfo(d).dow))d++;
-  assert(probe(d,L.home.slot,9,r).ok&&!G.linkStatus(L).after,'rank available '+r);
-  assert(!probe(d,L.home.slot==='after'?'evening':'after',9,r).ok,'wrong slot '+r);
-  probe(d,L.home.slot,9,r);G.S.spent[d+'-'+L.home.slot]=id;
+  const earliest=G.dayOf(L.ranks[r].after),H=homeAt(earliest),slot=L.ranks[r].slot||H.slot;
+  // Ranks 11+ (maxRank 15): the day before the next rank's date, time together is afterMax (no rank scene yet),
+  // unless the link is closed that day (then it's simply away).
+  if(r>=10){let pd=earliest-1;while(!homeAt(pd).days.includes(G.dayInfo(pd).dow))pd--;
+   if(closedOn(pd))assert(!probe(pd,homeAt(pd).slot,9,r).ok,'closed before rank date '+r);
+   // A link that left at rank 10 and came back on a stretch (core.js linkStatus) is hidden while its next rank isn't open.
+   else if(L.stretch&&G.leavesAtMax(L)){const st=probe(pd,homeAt(pd).slot,9,r);assert(!st.ok&&st.reason==='max','hidden before rank date '+r);}
+   else{const st=probe(pd,homeAt(pd).slot,9,r);assert(st.ok&&st.after&&G.linkScene(L).kind==='after','afterMax before rank date '+r);}}
+  else assert(!probe(earliest-1,slot,9,r).ok,'rank date '+r);
+  let d=earliest;while(!H.days.includes(G.dayInfo(d).dow))d++;
+  // A story rank (L.forced, e.g. Shinjiro's 15) plays on its date through dueEvent, not from the map.
+  if(L.forced&&L.forced.includes(r+1)){assert(probe(d,slot,9,r).reason==='story','story rank on its date '+r);continue;}
+  assert(probe(d,slot,9,r).ok&&!G.linkStatus(L).after,'rank available '+r);
+  assert(!probe(d,slot==='after'?'evening':'after',9,r).ok,'wrong slot '+r);
+  probe(d,slot,9,r);G.S.spent[d+'-'+slot]=id;
   assert(G.linkStatus(L).reason==='spent','spent slot '+r);
  }
- assert(!G.leavesAtMax(L),'stays after MAX');
+ // A link that closes (Shinjiro, 10/4) leaves at MAX by design; every other link stays.
+ if(!L.closes)assert(!G.leavesAtMax(L),'stays after MAX');
  A.reset(id,A.sceneList(id)[0],{flags:{},rank:10});
  // afterMax entries gated by flags / noFlags (a rank-15 link's, e.g. after its rank 15) rotate within the ones that apply.
  const rotation=[],list=G.afterList?G.afterList(L):L.afterMax;for(let n=0;n<=list.length;n++){G.S.links[id].after=n;rotation.push(G.linkScene(L).scene===list[n%list.length].scene)};

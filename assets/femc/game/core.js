@@ -606,7 +606,11 @@ window.FemcGame = (() => {
     if (kind === 'hangout') perkVal('learningMode').forEach(o => addStats(o));
     const story = l.ranks[r]?.story || l.forced?.includes(r + 1);
     if (story && kind === 'hangout') { p.hung = (p.hung || 0) + 1; p.xp = (p.xp || 0) + gained; save(); return { up: false, req: 0 }; }
-    const req = story ? 0 : need(l, r);
+    // A link that closes (Shinjiro, 10/4) with no home day left before it: this rank scene is the last chance, so it ranks up
+    // whatever the answers (otherwise a short meter could never be filled and the link would stay a rank short for good).
+    const lastChance = kind === 'rank' && !!l.closes && S.day < dayOf(l.closes) && !stretchOn(l)
+      && !Array.from({ length: Math.max(0, dayOf(l.closes) - S.day - 1) }, (_, i) => S.day + 1 + i).some(d => { const h = homeOf(l, d); return atHome(l, d, h.slot === 'evening' ? 'evening' : 'after'); });
+    const req = story || lastChance ? 0 : need(l, r);
     const from = Math.min(p.xp || 0, req);
     // Junkyu's #teamsolar: the first hangout each week, with anyone, gives +1 ♪.
     if (kind === 'hangout' && perkOn('teamSolar') && weekly('teamsolar')) { gained += 1; toast('perk', '#teamsolar: +1 ♪'); }
