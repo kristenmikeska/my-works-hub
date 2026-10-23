@@ -763,7 +763,8 @@
       { s: 'aigis', f: 'neutral', t: "It did not get smaller." },
       { s: 'aigis', f: 'serious', t: "Whatever you do. Wherever you go, or do not go. It will still be here. I do not lose things." },
       { n: "It went into her somewhere below the ribs and stayed, the way the stopwatch had gone into her pocket in April and the card had gone into her blazer in September, a small solid thing that was hers now whether she'd asked for it or not." },
-      { n: "She didn't say anything. She took Aigis's hand on the rail, the new one, which was not new anymore, which had a faint scuff along the side of the index finger now, from holding a rail too hard on a roof in December, and it was cold, and it went the same temperature as hers after a while, and they stood like that until the monorail had gone across the bay and back twice, and Aigis counted it, both times, out loud, so Solar wouldn't have to." }
+      { cg: 'link-aigis-r10' },
+      { n: "She didn't say anything. She took Aigis's hand off the rail, the new one, which was not new anymore, which had a faint scuff along the side of the index finger now, from holding a rail too hard on a roof in December, and it was cold, and it went the same temperature as hers after a while, and they stood like that until the monorail had gone across the bay and back twice, and Aigis counted it, both times, out loud, so Solar wouldn't have to." }
     ] }
   ],
 
