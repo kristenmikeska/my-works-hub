@@ -521,6 +521,7 @@
     ]),
     { cg: null },
     { n: "It came down. Not into ash. The train came down out of the air carriage by carriage onto its rails, slow, heavy, groaning, and stopped, and stood there, steaming, all its windows lit. The giant woman came apart into rain. Real rain, cold, falling for one second through the green and then hanging there with all the frozen snow. And out of it, onto the platform, small, on her knees, in a porter's coat much too big for her, Wren." },
+    { cg: 'story-wren-cap' },
     { n: "Her cap fell off." },
     { n: "It just fell. It slid off the back of her head and rolled once on the platform and lay there, and her hair came down. Long, and black, and falling over her shoulders and her face, exactly the length and the color and the weight of the hair Solar pinned up every morning without asking her hands to." },
     { n: "She looked up. Without the cap. Without anything over it. Solar's face. Softer. More tired. Frightened all the way through, the way it had been frightened on a floor in a tower in April, looking up at a girl in a corridor who said, *I'm sorry. It was supposed to be quiet here.*" },
@@ -531,6 +532,7 @@
     { s: 'wren', f: 'sad', t: "I took you out of all of them. All three. The night you couldn't bear it anymore, I heard you, and I took you somewhere nothing of yours ever had to end, and I made a room for you, and a uniform, and a bench, and I thought, if I'm very quiet, and very kind, and I never let her see my face, she'll stay. She'll stay and she'll never have to choose and she'll never have to be anybody." },
     { s: 'wren', f: 'sad', t: "I'm you. I'm the part of you that couldn't do it. I'm so sorry. I was so scared." },
     { n: "Solar stood over her on the platform. The Evoker was in her hand. She didn't remember drawing it." },
+    { cg: null },
     // Final requirements for the true ending (checked here, on the true path only).
     ...window.FEMC_STORY_KIT.anyRank('d10-rN', ['minji', 'hanni', 'hyein', 'jaehyun'], 10),
     ...window.FEMC_STORY_KIT.anyRank('d10-sN', ['yunjin'], 10),

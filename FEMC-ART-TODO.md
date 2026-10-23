@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**79 items:** 2 quick fixes · 12 CGs · 17 places · 19 character pieces · 12 battle · 11 cards and icons · 6 screens. 13 are ⭐, 47 are optional.
+**77 items:** 2 quick fixes · 10 CGs · 17 places · 19 character pieces · 12 battle · 11 cards and icons · 6 screens. 11 are ⭐, 47 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -36,25 +36,7 @@ Create a NEW illustration that matches the art style of the FIRST attached image
 Each CG below has a **Must match** line taken from its scene: time and light, who's in the picture (and who isn't), clothes, poses, setting, season and props. Paste it into the prompt after the style block. The style block's outfit for Solar is only the default; when a Must match line gives her different clothes, use those. Items with their own prompt already carry it.
 
 ### 2A. Big story beats
-- [ ] ⭐ **The true ending** (use this, not `FEMC-CG-PROMPTS.md` #20)
-  - **Attach:** style, Solar. **Fills:** `cg/ending-true.webp` (the only ending without a CG).
-  - After the style block (drop its uniform line):
-    ```
-    One quiet early morning shown as three rooms at once, blended into a single wide image like a soft triptych: on the left, a bedroom window with snow on the sill; in the middle, a window over the sea with the tide coming in; on the right, a window onto a quiet residential street. Solar, alone, sitting up in bed in plain sleepwear, her very long straight black hair loose and down, looking toward the light. A phone on the nightstand. No uniform, no armband, no Evoker, nobody else in the frame. Soft pale-gold morning light, still and calm.
-    ```
-  - **Must match:** early morning, soft light; Solar alone, hair loose, in sleepwear; three windows (snow, the sea at high tide, a quiet street); a phone on the nightstand; nobody else.
-- [ ] ⭐ **Two late-story scenes at a station** (`FEMC-CG-PROMPTS.md` #18 and #19; their poses and props don't match the scenes)
-  - **Attach:** style, Solar, Wren. **Fills:** `cg/story-wren-clock.webp`, `cg/story-wren-cap.webp`.
-  - `story-wren-clock`, after the style block:
-    ```
-    A small train station platform at midnight on the longest night of winter: frost on the rails, plastic holly, a small sad Christmas tree by the ticket gate, and an eerie green light coming down over everything. Overhead, a big iron-armed station clock with no hands. Wren, in an oversized navy wool porter's coat with brass buttons, collar up, sleeves to her knuckles, and a porter's cap pulled low over her hair, sits upright on the bench under the clock with a train ticket in one bare hand; Solar sits beside her on the same bench. Nobody else on the platform. Quiet, cold, still.
-    ```
-  - **Must match:** midnight, green light; both seated side by side under the handless clock (one path has Wren standing straight and Solar standing facing her instead); Wren's coat and cap as above, ticket in her bare hand; frost, holly, the small tree; nobody else.
-  - `story-wren-cap`, after the style block (Solar in a winter coat over her uniform):
-    ```
-    Close on a dark station platform in eerie green light, snowflakes and raindrops hanging motionless in the air. Behind, an old black-green train settled on its rails, steaming, every window lit gold. Wren on her knees on the platform in her too-big navy porter's coat, her porter's cap lying where it rolled, her very long straight black hair fallen loose over her shoulders and face; her face is the same as Solar's, frightened and crying. Solar stands over her in a winter coat, an Evoker in her hand. Far back by the stairs, a few figures in coats, faint and faded. A handless clock overhead. Quiet and devastating.
-    ```
-  - **Must match:** green light, snow and rain frozen mid-air, the gold-windowed train behind; Wren kneeling, cap on the ground, hair loose; Solar standing over her in a coat holding an Evoker; others far back and faint; no torn pages.
+All done.
 
 ### 2B. Romance and link moments
 One template; fill it from the item's Must match line, not from the setting name alone.

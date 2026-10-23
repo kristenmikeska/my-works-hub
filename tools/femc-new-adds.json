@@ -5406,6 +5406,60 @@
       "source": "solar-shinjiro-moment.png",
       "sourceNow": "Added to Game/solar-shinjiro-moment.png",
       "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/ending-true.webp",
+      "event": "end-ending (story-endings.js trueEnding)",
+      "placement": "story-endings.js trueEnding: { cg } on the waking lines, cleared before the next passage; the true ending only; Memories album (Endings group)",
+      "textCheck": "checked 2026-10-22 against the image: matches the scene's lines; no text change",
+      "mobileFocus": "42% 30%",
+      "outputSha256": "d533538e5654c500017970233635ecf8ebe5379a91093f411ae42d7579807d05",
+      "sha256": "1e9f2604f787bd5cffdc49e4d4bfc183954b4ae3aa5d341776765dce4e7d955f",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "ending-true.png",
+      "sourceNow": "Added to Game/ending-true.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/story-wren-clock.webp",
+      "event": "a5-solstice",
+      "placement": "story-act5.js a5-solstice (12/21): { cg } inside the Wren-rank-9 branch (both seated under the clock, as in the art), cleared before the choice; the other branch (both standing) shows none; Memories album (Story group)",
+      "textCheck": "checked 2026-10-22 against the image: matches the scene's lines; no text change",
+      "mobileFocus": "62% 35%",
+      "outputSha256": "38437c17ec8ecc684e7241626a58107e2b33fdcdc2b8b481dad66e0bcba75d0e",
+      "sha256": "148dc8fe4a1a048c481559f3903a8c26192b66b7a07220a17e943e599968a096",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "story-wren-clock.png",
+      "sourceNow": "Added to Game/story-wren-clock.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/story-wren-cap.webp",
+      "event": "a6-last-train",
+      "placement": "story-act6.js a6-last-train (3/6): { cg } from the cap line through the Evoker line, cleared after it; every route; Memories album (Story group)",
+      "textCheck": "checked 2026-10-22 against the image: matches the scene's lines; no text change",
+      "mobileFocus": "45% 30%",
+      "outputSha256": "20880a12673c15e74523b65111b08317256b9c211b282715268ae82540396056",
+      "sha256": "ed08691bf609301627c7b3c62fed7302bc881b1b28b9ce3e50c10de60b1ffc8c",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "story-wren-cap.png",
+      "sourceNow": "Added to Game/story-wren-cap.png",
+      "status": "integrated"
     }
   ],
   "batch1Validation": {
@@ -5834,6 +5888,7 @@
     "haechanR15": "link-haechan-r15 added (romance only); places v23, haechan v9; femc-check-scenes --links haechan OK, femc_rank15 --quick pass, targeted walk both routes",
     "xmasJungwon": "romance-haechan-christmas and link-jungwon-r15 added (romance only); places v24, haechan v10, jungwon v11; femc-check-scenes --links haechan,jungwon OK, femc_haechan pass, femc_rank15 --quick pass, femc_gallery 94, targeted walks. solar-shinjiro-moment.png left in New Adds (no scene fits; see the report)",
     "shinjiroLounge": "link-shinjiro-lounge added to rank 9 (romance only); places v25, shinjiro v6; femc-check-scenes --links shinjiro OK, femc_gallery 94, femc_links --links shinjiro played 5,578 scene paths with every line reached, then stopped on its gate check (shinjiro afterMax before rank date 10), which fails the same way without this change; targeted walk both routes",
+    "lateStory": "ending-true, story-wren-clock, story-wren-cap added; places v26, story-act5 v12, story-act6 v9, story-endings v10; femc-check-scenes OK, femc_march 44, femc_gallery 94, femc_haechan pass, targeted replays of the solstice (both branches), the last train and the true ending",
     "textFollowUp": "Kat approved adjusting graduation and Akihiko rank 15 to the art; Yakushima unchanged (Koromaru conflict reported). Re-ran femc-check-scenes --links akihiko, femc_march (44), femc_rank15 --quick (pass) and the targeted CG walk",
     "browserErrors": 0
   }

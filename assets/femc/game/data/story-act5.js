@@ -758,6 +758,7 @@ window.FEMC_STORY_KIT.badEnding = [
     { ifRomance: 'akihiko', then: [{ ifRank: { akihiko: 8 }, then: [{ ifFlag: 'here2', then: [{ flag: { 'stay-akihiko-ok': true } }] }] }] },
     { ifRank: { shinjiro: 10 }, then: [{ flag: { 'stay-shinjiro-ok': true } }] },
     { ifRank: { wren: 9 }, then: [
+      { cg: 'story-wren-clock' },
       { n: "Midnight came while they were sitting under the clock. She felt it coming the way you feel a train in the rails before you hear it, and then the green came up out of nowhere and laid itself over the platform, the plastic holly, the sad little tree by the gate, the frost on the rails, and Wren, beside her, didn't become a coffin. Of course she didn't. She sat up straighter, if anything. She took her head off Solar's shoulder and turned the ticket over in her bare hand, face up." }
     ], else: [
       { n: "She came to the station at a quarter to midnight because she couldn't not. The bench was empty. Wren was at the end of the platform under the big clock on its iron arm, the clock with no hands, standing very straight in the cold with her ticket held in one bare hand, and when Solar came along the platform toward her she didn't look surprised. She looked like someone whose train was late, and who'd known it would be." },
@@ -773,6 +774,7 @@ window.FEMC_STORY_KIT.badEnding = [
     { s: 'wren', f: 'neutral', t: "When it comes. The train. It's coming. You can hear it." },
     { s: 'wren', f: 'serious', t: "When it comes, will you get on with me?" },
     { n: "Everything Solar had went still. The bells were still ringing. She could hear, somewhere behind her, on the stairs, running feet. She didn't turn around. Whatever she said next, she knew, was going to be the thing she'd said. The sun stood still. It couldn't stay that way." },
+    { cg: null },
     { choose: [
       { t: "(The bell rings.) I have to go home.", ifFlag: 'elig-R', flag: { 'route-R': true }, tally: { solstice: 'R' }, then: [
         { n: "The bell rang over all the others. Gold and small and clear, like a cat's collar three rooms away, like a bell thrown to someone who's already decided they're going to die, half a second before they know they need it. A pink hallway. A rooftop. A valley at two in the morning. A girls' chat saying *drink water*. She heard herself say it, and it was hers." },
