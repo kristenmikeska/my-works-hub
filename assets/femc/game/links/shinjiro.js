@@ -1549,10 +1549,12 @@
       { n: "At twenty to four, his eyes opened." },
       { n: "Not all at once. They opened the way a window opens when the latch has rusted, a little, and then stuck, and then a little more, and the monitor changed its pace by a beat, and Akihiko made a sound she had never heard come out of a person, very small, and didn't move, didn't breathe, as if any movement in the room might close them again." },
       { flag: { 'shinji-awake': true } },
+      { cg: 'link-shinjiro-r15' },
       { n: "They didn't close. They went to the ceiling first, unfocused, swimming, the way eyes go when they've been somewhere with no light in it. Then to the window, and flinched from it. Then sideways, slowly, so slowly, across the side table and the beanie and the cold tea and Akihiko's knees and Akihiko's face, and stayed there a moment, and moved on, and found her." },
       { n: "His mouth worked. Nothing came out of it. He swallowed, and it obviously hurt, and he tried again, and what came out was barely a voice at all, a dry rasp dragged up over gravel, a word at a time with breath between them, like a man climbing stairs." },
       { s: 'shinjiro', f: 'neutral', t: "...You... eat yet." },
       { n: "Five months. Five months and the whole long winter, and that was the first thing. Not where am I. Not what happened. The only hello he had ever had, coming back up out of the dark the way a hand comes up out of water, still holding on to the one thing it had taken down with it." },
+      { cg: null },
       { n: "Behind her Akihiko laughed. It came out of him like something breaking, half a laugh and half the other thing, and he put both hands over his face, and Shinjiro's eyes went to the sound, slowly, and narrowed at it, which was the most like himself anything had been since October." },
       { s: 'shinjiro', f: 'neutral', t: "...Aki." },
       { s: 'shinjiro', f: 'neutral', t: "...You look... like crap." },
@@ -1886,6 +1888,7 @@
       ] }
     ] },
     { n: "Outside the window the snow came down past the streetlights in the courtyard, slow and thick, and somewhere across the bay a bell started ringing for Christmas Eve, late and unhurried. She didn't count the strokes. She had nearly stopped counting things." },
+    { cg: 'romance-shinjiro-christmas' },
     { n: "His hand was on top of the blanket where it always was. She took it, because there was nobody to ask." },
     { n: "It was cold. Not the cold of the street, a slower one, the particular cold of a hand nobody had been holding. She put it between both of hers and held on and waited, and it warmed, slowly, the way a room does when the heating finally comes on, and she understood perfectly well that the warmth was only hers coming back to her, and held on anyway." },
     { choose: [
