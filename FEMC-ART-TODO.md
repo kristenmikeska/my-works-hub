@@ -43,12 +43,12 @@ One template; fill in the name, setting and light. Nothing in it is from the sce
 ```
 Solar and [NAME] at [SETTING], [LIGHT]. A quiet, close moment between just the two of them, both of them clearly at ease with each other. [MOOD].
 ```
-- [ ] ⭐ **Rank 15** for the two links still without one (Akihiko's and Haechan's are done). **Fills:** `cg/link-<id>-r15.webp`.
-  - **Attach:** style, Solar, the partner.
-  - Jungwon: the student council room · Shinjiro: a quiet room in soft morning light
-- [ ] ⭐ **Christmas Eve (12/24)** for each romance that has one, besides Akihiko's (done). It snows that night. **Fills:** `cg/xmas-<id>.webp`.
+- [ ] ⭐ **Rank 15** for Shinjiro, the last link without one. **Fills:** `cg/link-shinjiro-r15.webp`.
+  - **Attach:** style, Solar, Shinjiro.
+  - Shinjiro: a quiet room in soft morning light
+- [ ] ⭐ **Christmas Eve (12/24)** for each romance that has one, besides Akihiko's and Haechan's (done). It snows that night. **Fills:** `cg/romance-<id>-christmas.webp` (the `romance-` prefix files it under Romance & bonds in Memories).
   - **Attach:** style, Solar, the partner. Use `[MOOD]` = "snow falling, warm lights, a little shy".
-  - Haechan: the dorm laundry room at night · Jungwon: Iwatodai's shopping street in the evening · Jihoon: the mall's central atrium · Minji: the riverside in the evening · Shinjiro: a quiet room with snow at the window
+  - Jungwon: Iwatodai's shopping street in the evening · Jihoon: the mall's central atrium · Minji: the riverside in the evening · Shinjiro: a quiet room with snow at the window
   - *(Optional)* the side romances' Christmas Eves: Ann (the mall fountain), Kasumi (the shrine), Judy (Club Escapade), Rio (Port Island Station), Saori (the used bookstore)
 - [ ] *(Optional)* **Rank 10 (MAX)**, one per link. **Fills:** `cg/link-<id>-r10.webp`. **Attach:** style, Solar, the partner.
   - S.E.E.S.: Yukari (the mall atrium) · Junpei (the dorm roof at night) · Mitsuru (the student council room) · Aigis (the dorm roof) · Fuuka (the dorm dining room) · Koromaru (the shrine)

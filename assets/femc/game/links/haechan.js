@@ -1930,10 +1930,11 @@
   ],
 
   // Christmas Eve (plot doc §12: the route partner's evening). v1 shape; the revamp engine doesn't schedule it yet.
-  christmas: { place: 'Iwatodai Dorm · Laundry Room', time: 'Night', scene: [
+  christmas: { place: 'Iwatodai Dorm · Lounge', time: 'Evening', scene: [
     { n: "The lounge was having a party, which meant Junpei had a Santa hat and a great many opinions, Fuuka had made a cake that had slumped gently to one side, and someone had put on a Christmas CD that skipped on the third track every single time. It was warm and loud and full of people she loved. She stayed exactly an hour." },
-    { n: "The laundry room light was off. It wasn't dark. Somebody had found a string of fairy lights, the cheap kind, half the bulbs blue and the other half dead, and wound them over the top of the dryer, and the whole room glowed an uneven blue like the inside of a fish tank." },
-    { s: 'haechan', f: 'neutral', t: "It's warmer when it's on. Don't tell Mitsuru. She has a speech about electricity." },
+    { place: 'Port Island Station', time: 'Night', bg: 'portisland-christmas' },
+    { n: "Port Island had done Christmas properly. The plaza in front of the station was strung with warm white lights, wreaths with red bows on every pillar, blue snowflake banners down the stone steps, a tree as tall as the second floor with a star on top, and it was snowing on all of it, slow and fat, settling on the steps and the planters and the shoulders of his long black coat. He was waiting at the bottom of the steps with his hands in his pockets and a white shirt and a black tie under the coat, as if he'd dressed for something and wasn't going to say what. She'd come in her coat over her uniform with a scarf wound twice round her neck, and he looked at her the way he looked at a room before he decided where to stand in it." },
+    { s: 'haechan', f: 'neutral', t: "Last train before the crowd. Don't tell Mitsuru. She has a speech about curfew." },
     { s: 'haechan', f: 'neutral', t: "Got you something. Lower your expectations." },
     { n: "A lump, wrapped in the lounge newspaper's weather page. Inside was one can, black and pink, a logo like claw marks. The real one, again, in a world that didn't make them yet. She'd have bet anything there wasn't another one in this city, and she'd have lost." },
     { s: 'haechan', f: 'serious', t: "The machine at the station. Bottom row. It had one more in it, after the girls cleaned it out. I checked it every day for a week. Don't ask me how it got there. It's yours." },
@@ -1961,14 +1962,17 @@
     { s: 'haechan', f: 'sad', t: "Christmas was always somebody else's party. In both places. I just remember being cold." },
     { choose: [
       { t: "You're not cold now.", notes: 3, then: [
-        { s: 'haechan', f: 'flustered', t: "Dryer's on. That's why." },
+        { s: 'haechan', f: 'flustered', t: "Coat's new. That's why." },
         { n: "It was not why. They both knew it was not why." }
       ] },
       { t: "(Put your head on his shoulder.)", notes: 3, then: [
         { n: "He went still for the first second, the way he always did, and then tipped his head down until his cheek was on her hair, and stayed." }
       ] }
     ] },
+    { cg: 'romance-haechan-christmas' },
+    { n: "He took her hands out of her coat sleeves, both of them, without asking, and held them between his in the middle of the plaza with the snow coming down on them, and looked down at her, and for once didn't look anywhere else." },
     { s: 'haechan', f: 'happy', t: "Merry Christmas, Solar." },
-    { n: "In the morning it turned out he'd left the dryer running all night, and Mitsuru gave the speech." }
+    { cg: null },
+    { n: "They caught the last train back with snow melting in their hair, and in the morning Mitsuru, who knew exactly what time the last train got in, gave the speech anyway." }
   ] }
 });

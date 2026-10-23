@@ -1558,18 +1558,20 @@
         ] }
       ] },
       { ifRoute: 'romance', then: [
-        { n: "He wrote the time the meeting closed. Then he capped the red pen and put it down, parallel to the edge of the page, and stood, and came around the table, and stood in front of her chair the way she'd once stood in front of his, with the mild light from the window on the side of his face." },
+        { cg: 'link-jungwon-r15' },
+        { n: "He wrote the time the meeting closed. Then he capped the red pen and put it down, parallel to the edge of the page, and stood, and came around the table in the Gekkoukan blazer he'd borrowed for the afternoon so nobody would have to explain him to a teacher, and sat down in the chair beside hers instead of the one across from it. The sun had got low while they weren't looking. It came in orange through the window and lay across the table and the minutes book and the side of his face, and he put his chin on his hand, the way she had hers, and looked at her from a foot away for long enough that she started to smile." },
         { ifHeading: 'H', then: [
           { s: 'jungwon', f: 'flustered', t: "Sunoo planned the croissant. I want to be honest. I planned this part myself. I've never planned anything less well." }
         ] },
+        { cg: null },
         { s: 'jungwon', f: 'neutral', t: "May I?" },
         { choose: [
           { t: "(Yes.)", notes: 3, then: [
-            { n: "He bent and kissed her, briefly, carefully, the way he'd done it on the roof in January, the way you'd sign something you'd read every word of first, and when he straightened up his ears had gone red to the tips and his face was completely still, no dimples, nothing at all, which was the happiest she'd ever seen it." },
+            { n: "He leaned in and kissed her, briefly, carefully, the way he'd done it on the roof in January, the way you'd sign something you'd read every word of first, and when he sat back his ears had gone red to the tips and his face was completely still, no dimples, nothing at all, which was the happiest she'd ever seen it." },
             { s: 'jungwon', f: 'flustered', t: "...That's not going in the minutes." }
           ] },
-          { t: "(Stand up and kiss him first.)", notes: 3, then: [
-            { n: "She stood and kissed him before he'd finished asking, briefly, and felt him go absolutely still against her, and then laugh, once, through his nose, against her mouth, as though he'd been outvoted in a meeting he'd been hoping all along to lose." },
+          { t: "(Lean in and kiss him first.)", notes: 3, then: [
+            { n: "She leaned in and kissed him before he'd finished asking, briefly, and felt him go absolutely still against her, and then laugh, once, through his nose, against her mouth, as though he'd been outvoted in a meeting he'd been hoping all along to lose." },
             { s: 'jungwon', f: 'flustered', t: "Out of order. Completely out of order. ...Carried." }
           ] }
         ] }
