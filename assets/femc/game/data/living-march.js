@@ -471,7 +471,7 @@
 
     { id: 'a6-graduation', date: '3/5', slot: 'morning', flag: 'year-goes-on', title: 'graduation', place: 'Gekkoukan High · Front Gate', time: 'Morning', scene: [
       { music: 'tender' },
-      { n: "The cherry trees along the path to the gate weren't out yet. They were close, the buds gone fat and pink at the ends of the black branches, a week off, maybe two, and every third-year coming up the hill in a pressed uniform with a paper flower pinned to their chest looked up at them on the way in and did the same small arithmetic, and came out with the same answer. They'd just miss it." },
+      { n: "The cherry trees along the path to the gate had come out early, a week ahead of anybody's arithmetic. Not all the way, just the first blossoms open and pale at the ends of the black branches and the rest still deciding, and every third-year coming up the hill in a pressed uniform with a paper flower pinned to their chest looked up at them on the way in and did the same small arithmetic anyway, and came out with an answer nobody had expected. They'd made it. Just." },
       { place: 'Gekkoukan High · Gymnasium', time: 'Morning' },
       { n: "The gym had been turned into somewhere else for the morning. Red and white bunting on every wall, folding chairs in long straight rows, the heaters ticking under the windows and losing. The graduates at the front, the parents behind them in good coats, and at the back, with the rest of the second year, Yukari with a handkerchief already in her fist, Junpei with something rolled up under his chair he'd been told twice he couldn't unroll, and Fuuka, who wasn't graduating, who had nothing to graduate from, crying steadily since the anthem." },
       { n: "Mitsuru gave the graduates' address. She walked to the podium with a folded paper she never once unfolded and spoke for four minutes in the clear carrying voice that had been running this school for two years, about the building and the teachers and the years, and every word was exactly right, the way every word she said in public was." },
@@ -495,12 +495,14 @@
       { s: 'hyein', f: 'sad', t: "I'm standing right next to you. I watched her come out the door. I'm crying, leave me alone." },
       { n: "Behind them, half a step back, the rest. People who'd come a very long way to stand outside a school gate in the cold with flowers and a sign and a dog in a bow tie, and who didn't say a word about tomorrow. Not one of them. Mitsuru came out with her diploma tube under her arm and stopped dead at the sight of them all, and Akihiko walked straight into her back." },
       { ifFlag: 'shinji-awake', then: [
-        { n: "Akihiko had a disposable camera. He'd had it all morning, in his blazer pocket, against every rule in the program, and he'd taken pictures from his seat during the anthem and during Mitsuru's speech and during his own name, blind, over his shoulder, and now he stood at the gate and took one of everything. The gate. The buds. The sign that ran out of room. The dog in the bow tie. Solar, with her tube, squinting. Thirty-nine exposures, and he used every one." },
+        { n: "Akihiko had a disposable camera. He'd had it all morning, in his blazer pocket, against every rule in the program, and he'd taken pictures from his seat during the anthem and during Mitsuru's speech and during his own name, blind, over his shoulder, and now he stood at the gate and took one of everything. The gate. The blossoms. The sign that ran out of room. The dog in the bow tie. Solar, with her tube, squinting. Thirty-nine exposures, and he used every one." },
         { s: 'akihiko', f: 'happy', t: "He told me not to bother. In about four words a minute. That's how I knew to buy the big one." },
         { n: "He'd be at Tatsumi by two, with the camera and the paper flower off his chest and a full report, round by round, for a man in a bed who should have been standing in that gym too, and had never once in his life come to school when anyone wanted him to, and would say *tch* at every single picture, and keep them all." }
       ] },
+      { n: "Then somebody's mother in a good coat, with a real camera, the kind with a lens, waved at the five of them to squeeze in, and they did, the way you do for a stranger, all at once and badly." },
       { cg: 'story-graduation' },
-      { n: "Solar stood at the gate with the tube in her hand and the paper flower on her chest. Above her the buds were very close now. A week. Maybe less." }
+      { n: "Yukari took Akihiko's diploma tube off him so he'd stop pointing with it, and Junpei had Aigis's, because Aigis had handed it to him at the gym doors to have both hands free for Koromaru and had not, so far, asked for it back, and Mitsuru kept hold of her own, and Solar ended up in the middle with hers, laughing at something Junpei said that she would never, afterwards, be able to remember." },
+      { n: "Solar stood at the gate with the tube in her hand and the paper flower on her chest. Above her the early blossoms had started coming down, one at a time, in no hurry at all, as if they had a week. Maybe less." }
     ] }
   );
 })();

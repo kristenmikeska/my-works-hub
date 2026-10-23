@@ -1609,11 +1609,9 @@
     ] },
 
     { after: '2/26', title: '15: five', place: 'Gekkoukan High · Boxing Club', time: 'After School', music: 'tender', scene: [
-      { ifRoute: 'romance', then: [{ cg: 'link-akihiko-r15' }] },
       { n: "His locker in the boxing club had his name on it on a strip of white tape gone gray at the edges from three years of everybody's thumbs, and on the last Friday in February, a week before graduation, he emptied it." },
       { n: "Three rolls of tape. A protein shake two months out of date, which he looked at with real regret. A single hand wrap with no partner. A towel that should have been burned. A photograph, face down on the top shelf. And the ruler, thirty centimeters, with somebody's initials gouged into the end." },
       { n: "He took everything out one thing at a time and looked at it and put it in a cardboard box, slowly, the way he'd unwound her wraps in June, as if there was something in each one worth keeping. The club worked around them and very carefully didn't watch." },
-      { cg: null },
       { choose: [
         { t: "(Hand him things out of the locker one at a time.)", notes: 3, then: [
           { n: "She handed him things, one at a time, and he took each one and looked at it and told her what it was, the tape from the first tournament, the towel from the second, as if he were reading her his record. The photograph she handed him face down, the way she'd found it. He turned it over. Three kids on a concrete step in the sun, two boys and a girl in the middle with a gap in her teeth and her hand on the smaller boy's head like a crown. He looked at it a long time. He didn't put it in the box. He put it in the inside pocket of his blazer, and buttoned the pocket." }
@@ -1643,6 +1641,15 @@
         { t: "It should only say his. I'm not a member.", notes: 2, then: [
           { s: 'akihiko', f: 'serious', t: "It says the record. You're the record. That's how records work." }
         ] }
+      ] },
+      { ifRoute: 'romance', then: [
+        { n: "The club went home by twos and threes the way it always did, towels round their necks, bows at the door that got less formal the closer they got to the street, and Kondo went last with the paint can and turned off the big lights on his way out without being asked, and left the one over the ring." },
+        { cg: 'link-akihiko-r15' },
+        { n: "They sat on the bench at the end of the ring with the cardboard box at their feet and somebody's forgotten gloves beside her, and the high windows went orange and then violet, and he put his arm round her shoulders, carefully, like something he'd been meaning to do since about April and had only now found the room for." },
+        { n: "His other hand found hers on her knee. Neither of them looked at it. He leaned his head down until it was nearly on hers and didn't say anything for a long time, which, for him, was its own sentence." },
+        { s: 'akihiko', f: 'blushing', t: "I'm going to miss the smell in here. Don't tell anyone. It's disgusting." },
+        { n: "She laughed into his shoulder. He didn't move his arm. The heater under the window ticked, and the violet went out of the glass a little at a time, and they sat there until it was nearly gone." },
+        { cg: null }
       ] },
       { place: 'Iwatodai · Riverside', time: 'Evening' },
       { n: "They walked the river without running, which was rare enough that she noticed it, the way she had in July, and so did he, and neither of them said so. The plum trees along the bank were still black sticks. The water was low and gray and slow, and the cold came up off it into their faces, and the streetlights along the path came on one after another ahead of them as they walked, as if somebody up the river were lighting the way." },
