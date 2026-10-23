@@ -89,6 +89,9 @@ window.FEMC_GAME_LODGING = {
       { s: 'akihiko', f: 'neutral', t: "You run like you're late for something. You'll get blisters. That's all." },
       { gift: { from: 'Akihiko', keepsake: 'running socks (and a protein bar)' } }
     ] },
+    { ifCrush: { akihiko: ['noticed', 'crush', 'puppy', 'almost'] }, then: [
+      { n: "Of everything in her lap, it was the one she was still holding when the second slice had been argued over and eaten. She noticed that. So, from the doorway, did Yukari, who noticed everything and was saving it." }
+    ] },
     { choose: [
       { t: "Thank you. All of you. I didn't know.", stat: { charm: 1 }, then: [
         { s: 'yukari', f: 'neutral', t: "Well. Now you do. Every year. We're putting it on Mitsuru-senpai's fridge schedule." },
@@ -120,7 +123,10 @@ window.FEMC_GAME_LODGING = {
       { n: "The roof at one in the morning, after the rain, everything wet and shining and the city washed clean below it. She stood at the rail with a slice of the lopsided cake on a napkin and ate it slowly, with her fingers, and said happy birthday to herself under her breath, to see what it sounded like." },
       { n: "It sounded like somebody else's. And then, after a minute, it didn't. It sounded like hers, a little, the way a coat you've borrowed for a month starts to fall into the shape of your shoulders." }
     ] },
-    { n: "She went down at two. On her door somebody had stuck a pink sticky note, at eye level, in four different handwritings. *happy birthday leader* · *happy birthday!!* · *Happy birthday.* · *happy birthday. sleep.*" }
+    { n: "She went down at two. On her door somebody had stuck a pink sticky note, at eye level, in four different handwritings. *happy birthday leader* · *happy birthday!!* · *Happy birthday.* · *happy birthday. sleep.*" },
+    { ifCrush: { akihiko: ['noticed', 'crush', 'puppy', 'almost'] }, then: [
+      { n: "She knew whose the last one was. Square, blunt, pressed so hard into the paper it came through the back. She took the note off the door before anybody else was up, which was a strange thing to do with a sticky note, and did it anyway, and it went in her handbook, where she'd started keeping things." }
+    ] }
   ] },
 
   /* ── Before the full moons: a short build-up on the day (or the morning), consistent with each operation's own scene. ── */
@@ -138,6 +144,10 @@ window.FEMC_GAME_LODGING = {
         { s: 'akihiko', f: 'sad', t: "I hate sitting in a room while somebody else goes in. I've done it before. I'm not good at it." },
         { n: "He didn't say who'd gone in the last time. He looked at the bay for a while, and then at her, and said that at least tonight it was her, and that he didn't know why that made it better, but it did." }
       ] }
+    ] },
+    // Crushes (data/crush.js): a line for the phase she's in with him.
+    { ifCrush: { akihiko: ['noticed', 'crush', 'puppy', 'almost'] }, then: [
+      { n: "All afternoon she found she had his list by heart. Left, back, early, home. She said it under her breath on the stairs and in the corridor and in the last lesson, like a song stuck on its first line, and couldn't have said whether it was for the operation or for the voice that had said it." }
     ] }
   ] },
 
@@ -156,6 +166,9 @@ window.FEMC_GAME_LODGING = {
       { t: "(Stand with them a while. Don't say anything.)", then: [
         { n: "The three of them stood at the window until the bell went, looking at a desk with a pencil case on it. It wasn't a plan. It was something you did before a plan, and they all knew it, and nobody moved until they had to." }
       ] }
+    ] },
+    { ifCrush: { akihiko: ['crush', 'puppy', 'almost'] }, then: [
+      { n: "*Both of you.* He'd said it to both of them and looked at one. Yukari had noticed which. She didn't say anything about it, because there was a girl missing and it wasn't the day, but on the way back to class she nudged Solar's shoe with her own, once, sideways, which said all of it." }
     ] }
   ] },
 
@@ -174,6 +187,9 @@ window.FEMC_GAME_LODGING = {
         { s: 'akihiko', f: 'blushing', t: "...That's not how this works. I ask. You answer." },
         { n: "But he'd gone a little red at the ears, which meant no, and they both knew it, and he pressed the end of the tape down with his thumb and said *go eat something*, gruffly, to the wall behind her." }
       ] }
+    ] },
+    { ifCrush: { akihiko: ['puppy', 'almost'] }, then: [
+      { n: "She counted the turns of the tape after he'd gone, two and a cross, and stood on the landing looking at her own wrist the way you look at a word you've written a hundred times and suddenly can't read. The second-years with their Tanabata wishes had all seen. One of them had a pen out." }
     ] }
   ] },
 
@@ -193,6 +209,10 @@ window.FEMC_GAME_LODGING = {
         { s: 'aigis', f: 'neutral', t: "My priority tonight is unchanged. It is the same as yesterday's. It is you." },
         { n: "Akihiko looked at Aigis. Aigis looked at Akihiko. Something passed between them that was very nearly an agreement, and Akihiko went back to his push-ups, and Aigis went back to the window, and Solar sat between them in the heat with the cold can against her neck and, for the first time all day, felt cool." }
       ] }
+    ] },
+    { ifCrush: { akihiko: ['puppy', 'almost'] }, then: [
+      { s: 'aigis', f: 'neutral', t: "Solar-san. For the record. Your pulse rises by eleven beats per minute each time Sanada-san finishes a set and looks at the sofa. I have logged this as well." },
+      { n: "On the floor, Akihiko collapsed onto his face in the middle of a push-up and stayed there. Solar put the cold can against her own forehead instead and held it there for a long time." }
     ] }
   ] },
 
@@ -208,6 +228,13 @@ window.FEMC_GAME_LODGING = {
       { t: "What if one of them's important?", then: [
         { s: 'akihiko', f: 'neutral', t: "Then it'll still be important at one in the morning. They've waited this long." },
         { n: "He said it gently. He was right, and she hated it a little, and put the phone face down on the bench between them, and he kept one finger on the corner of it for the rest of lunch, lightly, like a paperweight." }
+      ] }
+    ] },
+    { ifCrush: { akihiko: 'dating' }, then: [
+      { n: "Under the bench, out of sight of the rest of the roof, his little finger had found hers and hooked round it. He kept it there until the bell, looking at the sky with total innocence, as though his hand were somebody else's business." }
+    ], else: [
+      { ifCrush: { akihiko: 'almost' }, then: [
+        { n: "He didn't take his hand back for a while after that. Neither of them mentioned that it had stopped being on the phone some time ago and was resting, very lightly, on the back of hers." }
       ] }
     ] }
   ] },
@@ -226,6 +253,13 @@ window.FEMC_GAME_LODGING = {
       ] },
       { t: "(Go and sit with Ken.)", stat: { kindness: 1 }, then: [
         { n: "She sat on the other end of the sofa. Ken didn't look at her. After a while he said, to his bag, that it was raining like the last time, and she asked the last time what, and he said nothing, sorry, nothing, and opened his math workbook to a page and didn't turn it all afternoon. Koromaru came and lay across both their feet and stayed there." }
+      ] }
+    ] },
+    { ifCrush: { shinjiro: 'dating' }, then: [
+      { n: "Before they left, Shinjiro stopped her in the front hall and fixed the collar of her jacket, which didn't need fixing, one side and then the other, slowly, with the same care he gave a knot on a bag of rice, and didn't say anything at all, and went out ahead of her into the rain." }
+    ], else: [
+      { ifCrush: { akihiko: ['noticed', 'crush', 'puppy', 'almost'], shinjiro: ['noticed', 'crush', 'puppy', 'almost'] }, then: [
+        { n: "When she went out to the back step to call them in, Shinjiro looked up at her, and then at Akihiko beside him, and said, to her, quietly, *look after him tonight*. Akihiko said *I heard that*. Shinjiro said *good*, and got up, and held the door for both of them." }
       ] }
     ] }
   ] },

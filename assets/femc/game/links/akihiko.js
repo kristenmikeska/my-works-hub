@@ -497,6 +497,10 @@
           { n: "They retreated in a flurry of hair clips. The smile stayed on her face a beat too long after they'd gone, and she noticed it there the way you notice you've left a light on in an empty room." }
         ] }
       ] },
+      // Crushes (data/crush.js): if she's been falling for him since the spring, the question lands somewhere else too.
+      { ifCrush: { akihiko: ['crush', 'puppy', 'almost'] }, then: [
+        { n: "*Dating.* The word stayed behind after they'd gone, in the cool air by the lockers, and she found she'd been holding her breath around it the whole time, the way you hold your breath going past a dog you aren't sure of, and that the face had been the only thing standing between those four girls and the truth, and that it was a very good face, and that she was tired of it." }
+      ] },
       { n: "When she turned around Akihiko was standing at the end of the row of lockers with his bag over one shoulder and a strip of tape still stuck to the back of his hand, and he had clearly been standing there for some time." },
       { place: 'Iwatodai · Riverside', time: 'Evening' },
       { n: "They walked the river without running, which was rare enough that she noticed it. The heat had finally broken a little. The water was the color of weak tea and full of the sky, and the cicadas had started up in the trees along the bank, a few at a time, testing the season, like an orchestra tuning." },
@@ -751,6 +755,9 @@
             { s: 'solar', f: 'flustered', t: "It's not the wind. In case you were wondering." },
             { s: 'akihiko', f: 'blushing', t: "...I wasn't wondering. I was hoping. That's different. I've been hoping since about April." },
             { s: 'akihiko', f: 'blushing', t: "The ruler. Four centimeters. I thought, oh no." },
+            { ifCrushed: { akihiko: 'crush' }, then: [
+              { n: "She'd been telling herself it was the wind since the spring. On every landing and in every stairwell, at every lunch on the roof and every five in the morning, and the whole school had stopped believing her by June. She stopped telling herself." }
+            ] },
             { n: "He didn't do anything else. He didn't kiss her, he didn't say anything that needed a second sentence after it, he just turned his hand over under hers so that it was holding hers instead, rough from the tape and warm now, and they stood at the railing with the wind going straight through both of them while the second bell went, and then the end of the second bell, and the stairwell below them went quiet the way stairwells do when everybody else is already where they're supposed to be." },
             { s: 'akihiko', f: 'blushing', t: "We're late. I've never been late. Not once. Three years." },
             { s: 'solar', f: 'happy', t: "How does it feel?" },
@@ -930,6 +937,9 @@
           { s: 'akihiko', f: 'blushing', t: "I think I fell first. The ruler. Four centimeters. I thought, oh no." },
           { s: 'solar', f: 'happy', t: "That was the first day." },
           { s: 'akihiko', f: 'blushing', t: "I'm fast. You know I'm fast." },
+          { ifCrushed: { akihiko: 'crush' }, then: [
+            { n: "It hadn't been the first day for her. It had been a shuttle run in April, if she was honest, a count from the other end of a gym, and then a whole summer of pretending it was nothing, and she didn't tell him that, and he didn't ask, and that was the most like him she'd ever been." }
+          ] },
           { n: "He reached over and took her hand, the one that wasn't holding the coffee, and laced his fingers through hers slowly and carefully, like a wrap going on, one pass at a time, and she felt him counting under his breath and didn't say so. His hand was warm. Hers wasn't. He fixed that." },
           { n: "He leaned down until his forehead rested against hers, and stayed there, his breath warm and coffee-bitter in the cold between them, his eyes closed, and he didn't do anything else at all. He just stayed. It was the most decided she had ever seen him be about anything that wasn't a punch." },
           { cg: null },

@@ -357,6 +357,9 @@
     { s: 'shinjiro', f: 'neutral', t: "Don't make it a thing, Aki." },
     { n: "Akihiko didn't make it a thing. He made it a thing for exactly one second, in his face, the whole of him lit up like a stadium, and then he put it away and picked up his glass and said something about the towels being in the cupboard on the second floor, and Shinjiro said he knew where the damn towels were, and went upstairs, and on the way past Ken he stopped." },
     { n: "It was very small. A hitch in his step. His eyes went to the boy and away again, fast, the way your hand comes off a hot pan, and Ken didn't look up from his suitcase, and Shinjiro went on up the stairs. Solar was the only one who saw it. She filed it, the way she filed exits." },
+    { ifCrush: { shinjiro: ['noticed', 'crush', 'puppy', 'almost'] }, then: [
+      { n: "On the landing he looked down once, over the banister, not at Akihiko and not at Ken. At her. The way you check a stove you already know you turned off. Then the door upstairs, and the dorm let out a breath." }
+    ] },
     { join: 'shinjiro' },
     { s: 'yukari', f: 'neutral', t: "Okay. So we're a family now. A big weird family with a dog." },
     { s: 'junpei', f: 'happy', t: "We were always a family. Now we're a family with a dog. It's a whole different tier." },

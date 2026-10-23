@@ -21,7 +21,10 @@ window.FEMC_GAME_TRIP = {
             ] },
             { t: "(Stand at the front with Akihiko. Face the wind.)", stat: { courage: 1 }, then: [
               { s: 'akihiko', f: 'happy', t: "Coast road goes all the way around. Hundred and thirty kilometers. Not all of it. Some of it. Tomorrow." },
-              { n: "He said it like a promise, to the island, and the wind took his hair straight back, and she laughed into it." }
+              { n: "He said it like a promise, to the island, and the wind took his hair straight back, and she laughed into it." },
+              { ifCrush: { akihiko: ['noticed', 'crush', 'puppy', 'almost'] }, then: [
+                { n: "Behind them, on the bench by the cabin door, Yukari said something to Fuuka with her sunglasses on and her face very still, and Fuuka covered her mouth, and Solar didn't turn round and kept her eyes on the island and the wind and nothing else, very hard." }
+              ] }
             ] }
           ] },
           { n: "The Kirijo villa sat at the top of its own beach behind a wall of palms, white and enormous, with staff in a line on the steps to meet them like a scene from a film about rich people, and Junpei stopped dead at the bottom of the steps with his bag on his shoulder and said, very quietly, *senpai, are you a princess*, and Mitsuru, with great dignity, did not answer." }
@@ -109,6 +112,9 @@ window.FEMC_GAME_TRIP = {
               { t: "(Lean on the rail next to him. Count the waves.)", notes: 2, then: [
                 { n: "She counted out loud. He joined in at eleven. They got to two hundred and something before Junpei opened a window two rooms down and asked them, in a voice thick with sleep, what they were counting, and Akihiko said *waves*, and Junpei said *why*, and neither of them had an answer that would have made sense to him, and Junpei shut the window." }
               ] }
+            ] },
+            { ifCrush: { akihiko: ['crush', 'puppy', 'almost'] }, then: [
+              { n: "Somewhere around two his arm on the rail was against hers, from the shoulder to the elbow, and had been for a while, and neither of them had moved it, and neither of them was going to be the one who did. The sea came in. The sea went out. She'd stopped counting it." }
             ] }
           ] },
           { id: 'girls-room', who: 'yukari', label: "The girls' room", sub: 'Yukari and Fuuka, and pillows, and the lights out.', place: 'Yakushima · Kirijo Villa', time: 'Night', music: 'tender', scene: [
@@ -258,6 +264,9 @@ window.FEMC_GAME_TRIP = {
               { t: "(Stand beside him. Watch it go.)", notes: 2, then: [
                 { n: "She stood beside him until the island was a line on the horizon, and then nothing. He didn't say anything else. When she finally turned to go in, he said, without turning around, *thanks for coming*, as if she'd had a choice, as if he'd been the one who invited her, and she had the strange feeling he meant something else, and that he didn't know what yet either." }
               ] }
+            ] },
+            { ifCrush: { akihiko: ['puppy', 'almost'] }, then: [
+              { n: "In the cabin, later, Junpei showed everybody the photos on his phone, and in nine of them, he pointed out, loudly, with a pen, she was looking at Akihiko, and in the other three Akihiko was looking at her, and Mitsuru took the phone out of his hand and put it in her bag and said he'd get it back in Kagoshima." }
             ] }
           ] },
           { id: 'ferry-girls', who: 'yukari', label: 'Yukari and Fuuka', sub: 'In the cabin, with the shells and the photos.', place: 'Yakushima · Ferry', time: 'Afternoon', music: 'joy', scene: [

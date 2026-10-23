@@ -788,7 +788,14 @@
           { n: "He didn't. He turned it over, slowly, under hers, until they were palm to palm on the cold rail, and his fingers closed, not hard, the way you'd close your hand around something you'd been told you weren't allowed to keep, just to find out what it felt like." },
           { s: 'shinjiro', f: 'sad', t: "...You've got terrible taste." },
           { s: 'solar', f: 'flustered', t: "I wouldn't know. I can't remember having any before." },
-          { s: 'shinjiro', f: 'happy', t: "Tch." }
+          { s: 'shinjiro', f: 'happy', t: "Tch." },
+          // Crushes (data/crush.js): the summer of spoons and lists, and, if she'd been falling for Aki too, Aki.
+          { ifCrushed: { shinjiro: 'crush' }, then: [
+            { n: "It wasn't news to her hand. It had been finding reasons to be near his since a can of corn soup in the rain, a spoon held out across a stove, a list with *whatever you want* at the bottom. It was only news to the rest of her, and the rest of her had been the last to know about most things this year." }
+          ] },
+          { ifCrushed: { akihiko: 'crush' }, then: [
+            { s: 'shinjiro', f: 'neutral', t: "...Aki's gonna look at me funny for a week. Let him. He'll get over it. He's fast." }
+          ] }
         ] },
         { t: "I know what I'm coming back to. My friend. I'm going to keep coming.", route: 'friend', notes: 3, then: [
           { s: 'shinjiro', f: 'surprised', t: "..." },
