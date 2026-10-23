@@ -30,8 +30,14 @@
     cloudy: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .5-8 6 6 0 0 0-11.3 1.5A3.3 3.3 0 0 0 7 18z" fill="#e8dce4"/></svg>',
     rain: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14h10a4 4 0 0 0 .5-8 6 6 0 0 0-11.3 1.5A3.3 3.3 0 0 0 7 14z" fill="#c9d6ec"/><g stroke="#7fb6ff" stroke-width="2" stroke-linecap="round"><path d="M8 17l-1 3M12 17l-1 3M16 17l-1 3"/></g></svg>',
     snow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14h10a4 4 0 0 0 .5-8 6 6 0 0 0-11.3 1.5A3.3 3.3 0 0 0 7 14z" fill="#e8eef8"/><g fill="#fff"><circle cx="8" cy="18.5" r="1.3"/><circle cx="12" cy="20" r="1.3"/><circle cx="16" cy="18.5" r="1.3"/></g></svg>',
-    storm: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14h10a4 4 0 0 0 .5-8 6 6 0 0 0-11.3 1.5A3.3 3.3 0 0 0 7 14z" fill="#9aa3b8"/><path d="M12 14l-3 5h3l-1 4 4-6h-3l1-3z" fill="#ffe14d"/></svg>'
+    storm: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14h10a4 4 0 0 0 .5-8 6 6 0 0 0-11.3 1.5A3.3 3.3 0 0 0 7 14z" fill="#9aa3b8"/><path d="M12 14l-3 5h3l-1 4 4-6h-3l1-3z" fill="#ffe14d"/></svg>',
+    // By level (core.js wx): a drizzle's two short drops, heavy snow's six flakes, fog's bands.
+    drizzle: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14h10a4 4 0 0 0 .5-8 6 6 0 0 0-11.3 1.5A3.3 3.3 0 0 0 7 14z" fill="#d6dfee"/><g stroke="#9cc6ff" stroke-width="1.8" stroke-linecap="round"><path d="M9.5 17.5l-.5 1.6M14.5 17.5l-.5 1.6"/></g></svg>',
+    heavy: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 13h10a4 4 0 0 0 .5-8 6 6 0 0 0-11.3 1.5A3.3 3.3 0 0 0 7 13z" fill="#eef3fb"/><g fill="#fff"><circle cx="7" cy="16.5" r="1.3"/><circle cx="12" cy="16.5" r="1.3"/><circle cx="17" cy="16.5" r="1.3"/><circle cx="9.5" cy="20.5" r="1.3"/><circle cx="14.5" cy="20.5" r="1.3"/><circle cx="4.8" cy="20.3" r="1"/></g></svg>',
+    fog: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10a4 4 0 0 0 .5-8 6 6 0 0 0-11.3 1.5A3.3 3.3 0 0 0 7 12z" fill="#dfe4ec"/><g stroke="#c4ccd8" stroke-width="2" stroke-linecap="round"><path d="M4 15.5h16M6 19h12M8 22.2h8"/></g></svg>'
   };
+  // The icon for a day's weather (G.wx): its level first (drizzle, heavy snow, fog), else its kind.
+  const wxIcon = w => ICON[w.level] || ICON[w.kind] || ICON.clear;
   function moonSvg(phase) {
     const k = Math.cos(phase * 2 * Math.PI), rx = (9 * Math.abs(k)).toFixed(2);
     const lit = phase < 0.5 ? `M10 1A9 9 0 0 1 10 19A${rx} 9 0 0 ${k > 0 ? 0 : 1} 10 1` : `M10 1A9 9 0 0 0 10 19A${rx} 9 0 0 ${k > 0 ? 1 : 0} 10 1`;
@@ -53,7 +59,7 @@
     if (!base || !['school', 'class', 'after', 'evening'].includes(key)) return base;
     const i = G.dayInfo(), d = i.d;
     if (i.type === 'trip' || i.label === 'Culture Festival') return 'trip';
-    if (key === 'evening') return i.weather === 'rain' ? 'rain' : base;
+    if (key === 'evening') return G.wxIn(['rain'], i.weather) ? 'rain' : base;
     if (i.type === 'exam') return 'exam';
     if (TERMS.some(md => d >= G.dayOf(md) && d < G.dayOf(md) + 7)) return 'fresh';
     if (d >= G.dayOf('12/1')) return 'late';
@@ -221,7 +227,7 @@
     <header class="g-hud" hidden></header>
     <main class="g-main" id="g-main" tabindex="-1"></main>`;
   const main = $('#g-main'), hud = $('.g-hud');
-  function setBg(slug, mood = '') { const b = $('.g-bg'); b.style.backgroundImage = slug ? `url("${bgUrl(slug)}")` : ''; b.className = `g-bg${mood ? ` ${mood}` : ''}`; }
+  function setBg(slug, mood = '') { const b = $('.g-bg'); b.style.backgroundImage = slug ? `url("${bgUrl(slug)}")` : ''; b.className = `g-bg${mood ? ` ${mood}` : ''}`; window.FemcWeather?.field(slug ? G.seasonal(slug) : '', $('.g-stage')); }
   function show(html, cls = '') { main.className = `g-main ${cls}`; main.innerHTML = html; main.scrollTop = 0; return main; }
 
   function paintHud() {
@@ -231,13 +237,13 @@
     const m = i.moon, moonTip = m.full ? 'Full moon tonight' : m.days != null ? `${m.name} · full moon in ${m.days} day${m.days === 1 ? '' : 's'}` : m.name;
     hud.innerHTML = `<div class="g-date"><b>${esc(i.md)}</b><small>${esc(i.day)}</small></div>
       <div class="g-when"><span class="g-slot">${esc(G.slotName(S().slot, i))}</span>${i.label ? `<span class="g-label">${esc(i.label)}</span>` : ''}</div>
-      <div class="g-sky"><span class="g-wx" title="${esc(G.D.cal.weatherNames[i.weather])}" aria-label="${esc(G.D.cal.weatherNames[i.weather])}">${ICON[i.weather] || ''}</span><span class="g-moon" title="${esc(moonTip)}" aria-label="${esc(moonTip)}">${moonSvg(m.phase)}</span></div>
+      <div class="g-sky"><button type="button" class="g-wx" data-ui="forecast" title="${esc(i.wx.name)} · forecast" aria-label="${esc(i.wx.name)}. Open the forecast">${wxIcon(i.wx)}</button><span class="g-moon" title="${esc(moonTip)}" aria-label="${esc(moonTip)}">${moonSvg(m.phase)}</span></div>
       <div class="g-me"><span class="g-cond" style="--c:${c.color}" title="${esc(c.desc)}">${esc(c.name)}</span><span class="g-yen">¥${S().yen.toLocaleString()}</span></div>
       <nav class="g-menu" aria-label="Menu"><button type="button" data-ui="menu" class="g-menu-main" title="Menu (M)">Menu</button><button type="button" data-ui="phone">Phone${G.unread() ? `<em>${G.unread()}</em>` : ''}</button><button type="button" data-ui="save">Save</button><button type="button" data-ui="settings" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="display:block;transform:skewX(14deg)"><path fill="currentColor" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" transform="translate(-1 0)"/></svg></button></nav>`;
   }
   hud.addEventListener('click', e => {
     const b = e.target.closest('[data-ui]'); if (!b) return;
-    ({ phone: () => openPhone(), menu: () => openStatus(), status: () => openStatus(), save: () => openSaves(), settings: () => openSettings() })[b.dataset.ui]?.();
+    ({ phone: () => openPhone(), forecast: () => openPhone(), menu: () => openStatus(), status: () => openStatus(), save: () => openSaves(), settings: () => openSettings() })[b.dataset.ui]?.();
   });
 
   /* ── Overlays ── */
@@ -267,7 +273,7 @@
       <div class="g-dc-inner">
         <p class="g-dc-month">${i.date.toLocaleString('en', { month: 'long' }).toUpperCase()} ${i.date.getFullYear()}</p>
         <div class="g-dc-roll"><div class="g-dc-days"><span>${esc(prev.md)}<small>${esc(prev.day)}</small></span><span>${esc(i.md)}<small>${esc(i.day)}</small></span></div></div>
-        <div class="g-dc-info"><span class="g-dc-wx">${ICON[i.weather] || ''}<b>${esc(G.D.cal.weatherNames[i.weather])}</b></span><span class="g-dc-moon">${moonSvg(m.phase)}<b>${esc(m.full ? 'Full Moon' : m.name)}</b></span></div>
+        <div class="g-dc-info"><span class="g-dc-wx">${wxIcon(i.wx)}<b>${esc(i.wx.name)}</b></span><span class="g-dc-moon">${moonSvg(m.phase)}<b>${esc(m.full ? 'Full Moon' : m.name)}</b></span></div>
         ${i.label ? `<p class="g-dc-label">${esc(i.label)}</p>` : ''}
       </div>`;
     document.body.appendChild(el);
@@ -394,6 +400,7 @@
     const title = R.title || (kind === 'tartarus' ? 'Tartarus' : 'Battle');
     document.querySelectorAll('.g-overlay').forEach(x => x.remove());
     SC.Music.duck(true);
+    window.FemcWeather?.pause(true);
     const el = document.createElement('div');
     el.className = `g-dh${reduced.matches ? ' calm' : ''}`;
     el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', title);
@@ -439,6 +446,7 @@
       st.el.classList.add('gone');
       document.documentElement.classList.remove('g-in-battle');
       dh = null;
+      window.FemcWeather?.pause(false);
       setTimeout(() => st.el.remove(), 650);
       afterBattle(st.cont);
     }, reduced.matches ? 60 : 560);
@@ -803,6 +811,19 @@
     // The screen adds its own quotation marks, so strip any the line already carries.
     return pool.length ? pick(pool, S().day + kind.length).t.trim().replace(/^["“]+|["”]+$/g, '') : '';
   }
+  /* The world reacts to the weather: a spot's weather pool (living-weather.js `weather.<spot>.<rain|storm|snow>`: late, home,
+     lunch) takes over on most wet, snowy or stormy days (a storm falls back to the rain pool). A crush's line for the spot's
+     usual path still comes first (core.js crushLine; some of those need the weather too). `usual`: that path. */
+  function wxLine(spot, usual, info = G.dayInfo()) {
+    const w = info.weather;
+    if (!['rain', 'storm', 'snow'].includes(w)) return '';
+    const cl = usual && G.crushLine(usual);
+    if (cl) return cl;
+    const V = G.D.variants.weather?.[spot] || {};
+    const pool = (w === 'storm' ? ['storm', 'rain'] : [w]).find(k => V[k]?.length);
+    if (!pool || Math.abs(Math.sin((S().day + 3) * 12.9898 + spot.length)) > 0.7) return '';
+    return G.vary(`weather.${spot}.${pool}`, []);
+  }
   function earlyMorning(info) {
     screenMusic('school');
     if (info.type === 'trip') return segment({ slot: 'early', bg: 'yakushima-beach', place: info.trip.place, text: info.trip.note, button: 'The day goes by', next: () => { if (info.trip.slots) return advance(); S().slot = 'late'; G.save(); run(); } });
@@ -813,13 +834,18 @@
       return segment({ slot: 'early', bg: 'solar-dormroom-day', place: 'Iwatodai Dorm', text: off.replace(/\{holiday\}/g, info.holiday || '').replace(/\{break\}/g, info.brk?.name || '') });
     }
     const exam = G.D.cal.exams.find(e => e.results === info.md);
-    const walk = G.vary(`monorail.${['rain', 'snow', 'cloudy'].includes(info.weather) ? info.weather : 'clear'}`, info.weather === 'rain' ? 'Rain on the monorail windows, umbrellas everywhere.' : info.weather === 'snow' ? 'Snow on the rails. The monorail crept across the bay like it was being careful.' : 'The monorail across the bay, the city falling away behind it.');
+    // The commute by weather (living-variants.js monorail.*; a storm has its own pool, living-weather.js).
+    const mk = ['rain', 'snow', 'cloudy', 'storm'].includes(info.weather) ? info.weather : 'clear';
+    const walk = G.vary(`monorail.${mk}`, mk === 'storm' ? 'The monorail crossed the bay in a gray roar of rain, the cars swaying on the gusts, and everyone pretended not to notice.' : G.wxIn(['rain'], info.weather) ? 'Rain on the monorail windows, umbrellas everywhere.' : info.weather === 'snow' ? 'Snow on the rails. The monorail crept across the bay like it was being careful.' : 'The monorail across the bay, the city falling away behind it.');
     const chatter = ambient('morning');
     return segment({ slot: 'early', bg: 'train-car-inside', place: 'Monorail', text: walk, sub: chatter ? `<i>“${esc(chatter)}”</i>` : '', next: exam ? () => resultsBoard(exam.id, advance) : advance });
   }
   function lunch(info) {
     const line = ambient('lunch');
-    const rain = ['rain', 'snow'].includes(info.weather);
+    const rain = ['rain', 'snow', 'storm'].includes(info.weather);
+    // Rain, snow and storms get their own lunch lines most of those days (living-weather.js weather.lunch).
+    const own = wxLine('lunch', 'lunch.rain', info);
+    if (own) return segment({ slot: 'lunch', bg: 'school-hallway', place: 'Gekkoukan High', text: own, sub: line ? `<i>“${esc(line)}”</i>` : '' });
     segment({ slot: 'lunch', bg: 'school-hallway', place: 'Gekkoukan High', text: G.vary(`lunch.${rain ? 'rain' : 'clear'}`, rain ? 'Lunch indoors, the hallway loud with everybody who’d meant to eat on the roof.' : 'Lunch. The roof was crowded and the cafeteria was worse.'), sub: line ? `<i>“${esc(line)}”</i>` : '' });
   }
   function classPeriod(slot, info) {
@@ -833,7 +859,9 @@
       const t = T[q.teacher] || { name: 'The teacher', subject: '' };
       // Haechan's Recruitment Pitch: once a day, one wrong answer is crossed out.
       const hint = G.classHint(q);
-      const box = segment({ slot, bg: 'gekkoukan-classroom-day', place: t.subject || 'Class', text: `${cap(t.name)} turned from the board and looked straight at her.`, extra: `<div class="g-quiz"><p class="g-quiz-q"><b>${esc(t.name)}</b>${esc(q.q)}</p><div class="g-quiz-a">${q.a.map((a, i) => `<button type="button" class="g-btn${i === hint ? ' hinted' : ''}" data-a="${i}"${i === hint ? ' disabled' : ''}>${esc(a)}</button>`).join('')}</div>${hint != null ? '<p class="g-quiz-hint">Haechan, under his breath: “Not that one.”</p>' : ''}<p class="g-quiz-r" hidden></p></div>`, button: 'Continue' });
+      // The teacher's face once their portrait exists (portraits/<teacher key>/); the name alone until then.
+      const face = G.portrait(q.teacher, 'neutral');
+      const box = segment({ slot, bg: 'gekkoukan-classroom-day', place: t.subject || 'Class', text: `${cap(t.name)} turned from the board and looked straight at her.`, extra: `<div class="g-quiz${face ? ' has-face' : ''}">${face ? `<img class="g-quiz-face" src="${face}" alt="${esc(cap(t.name))}">` : ''}<p class="g-quiz-q"><b>${esc(t.name)}</b>${esc(q.q)}</p><div class="g-quiz-a">${q.a.map((a, i) => `<button type="button" class="g-btn${i === hint ? ' hinted' : ''}" data-a="${i}"${i === hint ? ' disabled' : ''}>${esc(a)}</button>`).join('')}</div>${hint != null ? '<p class="g-quiz-hint">Haechan, under his breath: “Not that one.”</p>' : ''}<p class="g-quiz-r" hidden></p></div>`, button: 'Continue' });
       const next = box.querySelector('[data-next]'); next.hidden = true;
       box.querySelectorAll('[data-a]').forEach(b => b.addEventListener('click', () => {
         const right = G.answerClass(q, +b.dataset.a);
@@ -855,17 +883,19 @@
     if (G.settings().quickClass && !(seed < cond.doze)) return advance();
     const dozed = Math.abs(Math.sin(S().day * 7.7 + slot.length)) < cond.doze;
     if (dozed) G.dozed(); // Cherry's Back Row: dozing still earns +1 Courage
-    const t = pick(Object.values(T), S().day + slot.length) || { name: 'The teacher', quirk: '' };
+    const tk = pick(Object.keys(T), S().day + slot.length), t = T[tk] || { name: 'The teacher', quirk: '' };
+    const tface = tk && G.portrait(tk, 'neutral');
     const QUIET = ['Chalk dust, the clock above the door, and the specific drone of a lesson that had decided to take its time.', 'She took notes in neat small handwriting she didn’t remember learning, and the period went by.', 'Someone behind her was passing notes. The teacher pretended not to see. The period went by anyway.', 'Rain or sun outside, the classroom had its own weather, warm and stale and slow.'];
     const text = dozed ? 'The lecture went somewhere warm and far away, and so did she. When she lifted her head, the board was full and her notes were a single long line where the pen had slid.' : G.vary('classQuiet', QUIET, `classQuiet.${slot}`);
     const listened = !dozed && Math.abs(Math.sin(S().day * 2.1 + slot.length)) < 0.3;
     if (listened) G.addStat('knowledge', 1);
-    segment({ slot, bg: 'gekkoukan-classroom-day', place: t.subject || 'Class', text, sub: dozed ? '' : `<b>${esc(cap(t.name))}.</b> ${esc(t.quirk || '')}${listened ? ' <i>She caught something worth writing down.</i>' : ''}` });
+    segment({ slot, bg: 'gekkoukan-classroom-day', place: t.subject || 'Class', text, sub: dozed ? '' : `${tface ? `<img class="g-quiz-face small" src="${tface}" alt="">` : ''}<b>${esc(cap(t.name))}.</b> ${esc(t.quirk || '')}${listened ? ' <i>She caught something worth writing down.</i>' : ''}` });
   }
   function lateNight(info) {
     screenMusic('dorm');
     const t = S().tonight;
-    const text = t === 'battled' ? G.vary('late.battled', 'Back from the tower, she fell into bed with her boots half off. Her body felt every floor.') : t === 'rest' ? G.vary('late.rest', 'She was asleep before her head finished settling into the pillow.') : info.moon.full ? G.vary('late.fullMoon', 'The moon outside was enormous. She lay awake for a while and listened to the dorm be quiet.') : G.vary('late.plain', 'The dorm settled around her. Somewhere down the hall, a door, and then nothing.');
+    const wl = t !== 'battled' && t !== 'rest' && !info.moon.full ? wxLine('late', 'late.plain', info) : '';
+    const text = wl ? wl : t === 'battled' ? G.vary('late.battled', 'Back from the tower, she fell into bed with her boots half off. Her body felt every floor.') : t === 'rest' ? G.vary('late.rest', 'She was asleep before her head finished settling into the pillow.') : info.moon.full ? G.vary('late.fullMoon', 'The moon outside was enormous. She lay awake for a while and listened to the dorm be quiet.') : G.vary('late.plain', 'The dorm settled around her. Somewhere down the hall, a door, and then nothing.');
     segment({ slot: 'late', bg: 'solar-dormroom-night', place: "Solar's Room", text, button: 'Sleep', next: () => { const r = G.sleep(); if (r.end) return endScreen(); run(); } });
   }
   // The end of the year: the ending's name, credits, and New Game+ (social stats, half the yen, the Compendium and books carry
@@ -975,7 +1005,7 @@
     main.querySelectorAll('[data-area]').forEach(b => b.addEventListener('click', () => {
       const a = G.areaById(b.dataset.area);
       G.sfx('femc-click');
-      if (a.home) { S().spent[`${S().day}-${slot}`] = 'home'; G.save(); return segment({ slot, bg: 'iwotodaidorm-outside', place: 'Iwatodai Dorm', text: G.vary('home', ['She went straight home and let the afternoon go by without asking anything of it.']), next: advance }); }
+      if (a.home) { S().spent[`${S().day}-${slot}`] = 'home'; G.save(); return segment({ slot, bg: 'iwotodaidorm-outside', place: 'Iwatodai Dorm', text: wxLine('home', 'home') || G.vary('home', ['She went straight home and let the afternoon go by without asking anything of it.']), next: advance }); }
       areaView(slot, a);
     }));
     const first = main.querySelector('.g-px-card.busy') || main.querySelector('.g-px-card');
@@ -1276,6 +1306,13 @@
     const auto = { off: 1, slow: 1.4, normal: 1, fast: 0.65 }[st.auto] ?? 1;
     return { text, auto, instant: !text || reduced.matches };
   }
+  // The phone's weather app, P5-style: today and the next four days (core.js forecast), and the spell it's part of.
+  function forecastHtml() {
+    const days = G.forecast(5); if (!days.length) return '';
+    const spell = days[0].spell, wet = days.filter(d => d.wet).length;
+    const note = days[0].kind === 'storm' ? 'Storm warning today. The pier and the beach are closed.' : days[0].wet && G.D.places.rainyDay?.note ? G.D.places.rainyDay.note : wet >= 3 ? 'A wet few days ahead. Take an umbrella.' : days.some(d => d.kind === 'snow') ? 'Snow in the forecast.' : '';
+    return `<section class="g-ph-wx" aria-label="Forecast"><p class="g-ph-wx-h">Iwatodai weather${spell ? `<small>${esc(spell)}</small>` : ''}</p><ol>${days.map((d, k) => `<li class="${k ? '' : 'today'}" data-wx="${esc(d.level)}"><b>${k ? esc(d.day) : 'Today'}</b>${wxIcon(d)}<small>${esc(d.name)}</small></li>`).join('')}</ol>${note ? `<p>${esc(note)}</p>` : ''}</section>`;
+  }
   function openPhone(thread) {
     const s = S();
     let goLink = null; // an invitation said yes to: the hangout starts when the phone closes
@@ -1308,12 +1345,12 @@
       const n = G.unread();
       bar.innerHTML = `<span>${n ? `${n} unread` : ids.length ? 'All caught up' : ''}</span><button type="button" class="g-ph-readall" data-readall${n ? '' : ' disabled'}>Read all</button>`;
       bar.hidden = !ids.length;
-      body.innerHTML = ids.length ? ids.map(id => {
+      body.innerHTML = forecastHtml() + (ids.length ? ids.map(id => {
         const th = s.phone.threads[id], last = th[th.length - 1], pic = threadPic(id), u = s.phone.unread[id];
         const m = last ? msgParts(id, last) : { text: '' };
         const lead = !last ? '' : m.me ? 'You: ' : m.group && !m.notice ? `${m.name}: ` : '';
         return `<button type="button" class="g-ph-row${u ? ' unread' : ''}" data-th="${id}"><i>${pic ? `<img src="${pic}" alt="">` : esc(threadName(id)[0])}</i><span><b>${esc(threadName(id))}</b><small>${esc(lead + m.text)}</small></span>${u ? `<em>${u}</em>` : pending(id) ? '<em class="g-ph-due">Reply</em>' : ''}</button>`;
-      }).join('') : '<p class="g-note">No messages.</p>';
+      }).join('') : '<p class="g-note">No messages.</p>');
       body.querySelectorAll('[data-th]').forEach(b => b.addEventListener('click', () => open(b.dataset.th)));
       bar.querySelector('[data-readall]').addEventListener('click', () => {
         if (!G.markAllRead()) return;
@@ -1467,7 +1504,7 @@
     const pic = shopData.portrait ? G.portrait(shopData.portrait, 'neutral') : null;
     const o = overlay(`<div class="g-shop"${shopData.bg ? ` style="--pic:url('${G.base}${shopData.bg}')"` : ''}><div class="g-st-head"><h2>${esc(shopData.name)}<small>${esc(shopData.sub || '')}</small></h2><button type="button" class="g-btn small" data-close>Leave</button></div>
       <div class="g-shop-top">${pic ? `<img src="${pic}" alt="">` : ''}<p class="g-shop-say">${esc(pick(shopData.lines?.hi || ['Welcome.'], S().day))}</p><b class="g-shop-yen"></b></div>
-      <p class="g-note small">${books ? 'Read them at the dorm in the evening.' : 'Whatever you buy goes with you into Tartarus.'}</p><div class="g-shop-tabs g-row"></div><div class="g-shop-list"></div></div>`, 'g-shop-ov', done);
+      <p class="g-note small">${books ? 'Read them at the dorm in the evening.' : 'Whatever you buy goes with you into Tartarus.'}${!books && G.D.places.rainyDay?.sale?.[id] && G.wet() ? ` <b>Rainy-day sale: ${G.D.places.rainyDay.sale[id].pct}% off today.</b>` : ''}</p><div class="g-shop-tabs g-row"></div><div class="g-shop-list"></div></div>`, 'g-shop-ov', done);
     render();
   }
 
@@ -1529,6 +1566,7 @@
       { k: 'auto', label: 'Auto-advance', opts: [['off', 'Off'], ['slow', 'Slow'], ['normal', 'Normal'], ['fast', 'Fast']], desc: () => 'Scenes move on by themselves after each line. The Auto button in a scene cycles it too.' },
       { k: 'dateCard', label: 'Date card', opts: ONOFF, desc: () => 'The calendar flip each morning.' },
       { k: 'quickClass', label: 'Quiet class periods', opts: [[false, 'Show'], [true, 'Skip']], desc: () => 'Skip class periods where nothing happens.' },
+      { k: 'wxFx', label: 'Weather effects', opts: ONOFF, desc: () => 'Rain, snow, fog and lightning over the scenes and the map. Lightning follows Reduce flashes; reduced motion shows it still.' },
       { h: 'Battle' },
       { k: 'difficulty', label: 'Difficulty', opts: Object.keys(DF).map(id => [id, DF[id].name]), desc: v => DF[v]?.desc || '' },
       { k: 'battleSpeed', label: 'Battle speed', opts: [[1, '1x'], [2, '2x'], [3, '3x']], desc: () => 'How fast battle animations play. Rush doubles it.' },
@@ -1545,7 +1583,8 @@
       { h: 'Sound' },
       { k: 'music', label: 'Music volume', range: true, desc: v => (v ? 'Music, everywhere.' : 'Music is off.') },
       { k: 'sfx', label: 'Sound effects', opts: ONOFF, desc: () => 'Menu sounds, text blips and battle sounds.' },
-      { k: 'sfxVol', label: 'SFX volume', range: true, desc: () => 'Battle sound effect volume. Below 100% the menu sounds in battle use softer built-in versions.' }
+      { k: 'sfxVol', label: 'SFX volume', range: true, desc: () => 'Battle sound effect volume. Below 100% the menu sounds in battle use softer built-in versions.' },
+      { k: 'wxSound', label: 'Weather sound', range: true, desc: v => (v ? 'Rain, storms and wind under the music, softer indoors. Sound effects and SFX volume apply too.' : 'Weather is silent.') }
     ];
   };
   // opts: { inBattle, onClose, startKey }
@@ -1571,6 +1610,7 @@
     const rowEl = r => list.querySelector(`[data-k="${r.k}"]`);
     function set(r, v) {
       G.setSetting(r.k, v);
+      window.FemcWeather?.refresh();
       if (r.k === 'sfx') G.sfx('femc-click');
       paint(true);
     }

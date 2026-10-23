@@ -56,14 +56,54 @@ window.FemcGame = (() => {
   const END = () => dayOf(D.cal.end);
   const inRange = (d, from, to) => d >= dayOf(from) && d <= dayOf(to);
   function seeded(n) { let x = Math.sin(n * 9301 + 49297) * 233280; return x - Math.floor(x); }
-  function weather(d) {
-    const md = mdOf(d), fixed = D.cal.weather[md];
-    if (fixed) return fixed;
-    const m = dateOf(d).getMonth() + 1, c = D.cal.climate[m] || {};
-    let r = seeded(d + 11);
-    for (const k of ['snow', 'rain', 'cloudy']) { if (c[k] && r < c[k]) return k; r -= c[k] || 0; }
-    return 'clear';
+  /* Weather (calendar.js weather, weatherLevels, climate, spells, persist). Each day has a kind (clear, cloudy, rain, storm,
+     snow: what gates, art and lines read) and a level, how it looks and sounds (wx: clear, overcast, fog, drizzle, rain,
+     storm, light, heavy). Fixed dates win; every other day rolls from its month's chances (or a spell's: the rainy season,
+     typhoon season) with a seed, and a grey or wet day sometimes carries on into the next, so weather comes in spells and
+     never changes for a day once the calendar is set. The whole year is worked out once (WX) and kept. */
+  let WX = null;
+  function wxYear() {
+    if (WX) return WX;
+    const C = D.cal, out = [], days = dayOf(C.end) + 8;
+    const kindOk = (k, c) => !!(c[k] || (k === 'storm' && c.rain));
+    for (let d = 0; d <= days; d++) {
+      const md = mdOf(d), m = dateOf(d).getMonth() + 1;
+      const spell = (C.spells || []).find(sp => inRange(d, sp.from, sp.to));
+      const c = { ...(C.climate[m] || {}), ...(spell || {}) };
+      let kind = C.weather[md];
+      if (!kind) {
+        const prev = out[d - 1]?.kind;
+        // A spell of weather: yesterday's grey or wet day carries on (a storm passes, leaving rain behind).
+        if (prev && prev !== 'clear' && seeded(d + 503) < (C.persist ?? 0) && kindOk(prev === 'storm' ? 'rain' : prev, c)) kind = prev === 'storm' ? 'rain' : prev;
+        else {
+          let r = seeded(d + 11);
+          kind = 'clear';
+          for (const k of ['storm', 'snow', 'rain', 'cloudy']) { if (c[k] && r < c[k]) { kind = k; break; } r -= c[k] || 0; }
+        }
+      }
+      const lr = seeded(d + 77);
+      let level = (C.weatherLevels || {})[md];
+      if (!level) level = kind === 'rain' ? (lr < (spell?.drizzle ?? C.drizzle ?? 0.4) ? 'drizzle' : 'rain')
+        : kind === 'snow' ? (lr < (C.heavySnow ?? 0.35) ? 'heavy' : 'light')
+        : kind === 'cloudy' ? ((C.fogMonths || []).includes(m) && lr < (C.fog ?? 0.2) ? 'fog' : 'overcast')
+        : kind;
+      out.push({ kind, level, spell: spell?.name || null });
+    }
+    return (WX = out);
   }
+  const weather = d => (wxYear()[d] || { kind: 'clear' }).kind;
+  // Today's weather in full: kind, level, its name ('Drizzle', 'Heavy snow'), the spell it's part of ('Rainy season').
+  function wx(d = S?.day || 0) {
+    const w = wxYear()[d] || { kind: 'clear', level: 'clear', spell: null };
+    return { ...w, d, md: mdOf(d), name: (D.cal.levelNames || {})[w.level] || D.cal.weatherNames[w.kind] || w.kind, wet: w.kind === 'rain' || w.kind === 'storm' };
+  }
+  // The next n days' weather from d (the phone's forecast).
+  function forecast(n = 5, d = S?.day || 0) { const last = dayOf(D.cal.end); return Array.from({ length: n }, (_, i) => d + i).filter(x => x <= last).map(x => ({ ...wx(x), day: DAYS[dateOf(x).getDay()] })); }
+  // Gates: a storm is rain too ({ weather: ['rain'] } plays on a storm day; ['storm'] only on one).
+  const wxIn = (list, w) => !list || list.includes(w) || (w === 'storm' && list.includes('rain'));
+  // A by-weather table's entry for today (activities' `weather`): a storm uses the rain one when it has none of its own.
+  const wxPick = (o, w) => o?.[w] || (w === 'storm' ? o?.rain : null) || null;
+  const wet = (d = S.day) => wxIn(['rain'], weather(d));
   function moon(d) {
     const fulls = D.cal.fullMoons.map(dayOf).sort((a, b) => a - b);
     const next = fulls.find(f => f >= d), prev = [...fulls].reverse().find(f => f <= d);
@@ -89,7 +129,7 @@ window.FemcGame = (() => {
     if (trip) type = 'trip';
     if (d < dayOf(D.cal.firstFree)) type = 'prologue';
     return { d, date: t, md, dow, day: DAYS[dow], dayName: DAY_NAMES[dow], type, holiday, brk, trip, exam, label: holiday || D.cal.events[md] || (brk ? brk.name : '') || (exam ? 'Exams' : ''),
-      weather: weather(d), moon: moon(d), ops: D.cal.ops.filter(o => o.date === md) };
+      weather: weather(d), wx: wx(d), moon: moon(d), ops: D.cal.ops.filter(o => o.date === md) };
   }
   const SLOT_ORDER = ['early', 'morning', 'lunch', 'afternoon', 'after', 'evening', 'late'];
   function slotsFor(info) {
@@ -272,7 +312,7 @@ window.FemcGame = (() => {
   // One store for the whole game. Story: text, auto, dateCard, quickClass. Battle (battle.js pullSettings maps these onto its
   // own names): battleSpeed, cutins, difficulty, remember, rushWhere, rushStop, shake, calm, numbers, tips, pad, perf. Both:
   // text (also the battle's text speed), music (0-100, 0 = off; musicLast remembers the volume), sfx, sfxVol.
-  const DEFAULTS = { text: 'normal', music: 60, musicLast: 60, sfx: true, sfxVol: 100, auto: 'off', dateCard: true, battles: 'ask', quickClass: false,
+  const DEFAULTS = { text: 'normal', music: 60, musicLast: 60, sfx: true, sfxVol: 100, auto: 'off', dateCard: true, battles: 'ask', quickClass: false, wxFx: true, wxSound: 60,
     battleSpeed: 1, cutins: 'first', difficulty: 'normal', remember: true, rushWhere: 'normal', rushStop: 30, shake: true, calm: false, numbers: true, tips: true, pad: 'auto', perf: false };
   let settingsRaw = (() => { try { return JSON.parse(lsGet(SETTINGS_KEY) || '{}') || {}; } catch (e) { return {}; } })();
   // The merge: battle preferences come from the playthrough's battle save the first time (difficulty, Rush, cut-ins…).
@@ -315,7 +355,7 @@ window.FemcGame = (() => {
     const mult = raw ? 1 : (D.stats.conditions[S.condition]?.gain ?? 1);
     let n = Math.max(1, Math.round(pts * mult));
     // Sebastian's Rain Check (rainy days) and Elizabeth's Sunday Best (Sundays): every gain +1.
-    if (!raw && pts > 0) { if (weather(S.day) === 'rain' && perkOn('rainCheck')) n++; if (dateOf(S.day).getDay() === 0 && perkOn('sundayBest')) n++; }
+    if (!raw && pts > 0) { if (wet() && perkOn('rainCheck')) n++; if (dateOf(S.day).getDay() === 0 && perkOn('sundayBest')) n++; }
     const before = statRank(id);
     S.stats[id] = statPts(id) + n;
     const after = statRank(id);
@@ -346,7 +386,13 @@ window.FemcGame = (() => {
   function shopDiscount(shop, kind) {
     let pct = 0;
     perkVal('shopOff').forEach(o => { if (o.shop === shop && (!o.kinds || o.kinds.includes(kind))) pct += o.pct; });
+    pct += rainSale(shop, kind);
     return Math.min(30, pct);
+  }
+  // places.js rainyDay.sale: a rainy (or stormy) day's sale at some shops, like P5's (percent off; 0 on other days).
+  function rainSale(shop, kind) {
+    const o = D.places.rainyDay?.sale?.[shop];
+    return o && wet() && (!o.kinds || o.kinds.includes(kind)) ? o.pct : 0;
   }
   function actCost(a) {
     if (!a.cost) return 0;
@@ -760,7 +806,9 @@ window.FemcGame = (() => {
   /* ── Portraits, names, art ── */
   const PORTRAITS = () => W.FEMC_PORTRAITS || {};
   const SAME_FACE = { 'hx-flower': 'sunghoon', 'hx-jacket': 'jay', 'hx-tall': 'heeseung' };
-  const faceId = id => SAME_FACE[id] || id;
+  // Portrait folders are lowercase (tools/femc-portraits.py: the disk is case-insensitive, the site isn't), so camelCase speaker
+  // ids (chKagami, hgMaster, kbOno) find theirs: chKagami → portraits/chkagami/.
+  const faceId = id => String(SAME_FACE[id] || id || '').toLowerCase();
   // Speakers shown only as a black silhouette, drawn from someone's portrait: { speaker: portrait id }.
   const SILHOUETTES = { porter: 'wren' };
   /* A link whose portraits aren't drawn yet (its file says `portraitPending: true`; Danielle, Jaemin and Chenle since
@@ -797,7 +845,7 @@ window.FemcGame = (() => {
     const list = D.places.today?.[img];
     if (!list || !S) return img;
     const d = S.day || 0, md = mdOf(d);
-    const hit = list.find(e => (!e.dates || e.dates.includes(md)) && (!e.weather || e.weather.includes(weather(d))));
+    const hit = list.find(e => (!e.dates || e.dates.includes(md)) && (!e.weather || wxIn(e.weather, weather(d))));
     return hit ? hit.img : img;
   }
   function background(place = '', time = '', override) {
@@ -839,6 +887,8 @@ window.FemcGame = (() => {
     if (areaById(a.area)?.schoolOnly && info.type !== 'school') return { ok: false, why: 'School’s out' };
     if (a.needs && lacking(a.needs)) return { ok: false, why: `Needs ${lacking(a.needs)}` };
     if (a.from && S.day < dayOf(a.from)) return { ok: false, why: 'Not yet' };
+    // closedIn: weather that shuts it (the pier and the beach in a storm).
+    if (a.closedIn && wxIn(a.closedIn, info.weather)) return { ok: false, why: `Closed: ${(D.cal.weatherNames[info.weather] || info.weather).toLowerCase()}` };
     if (actCost(a) && S.yen < actCost(a)) return { ok: false, why: 'Not enough yen' };
     if (S.spent[`${S.day}-${slot}`] && !a.shop) return { ok: false, why: 'No time left' };
     return { ok: true };
@@ -846,7 +896,7 @@ window.FemcGame = (() => {
   // Preview the same weather and condition-adjusted gains the activity will award.
   const gainText = stats => Object.entries(stats || {}).map(([id, points]) => `${statDef(id).name} +${Math.max(1, Math.round(points * (D.stats.conditions[S.condition]?.gain ?? 1)))}`).join(', ');
   function activityInfo(a) {
-    const w = a.weather?.[dayInfo().weather] || (a.showings ? { ...showing(a), label: `Now showing: ${showing(a).title}` } : null);
+    const w = wxPick(a.weather, dayInfo().weather) || (a.showings ? { ...showing(a), label: `Now showing: ${showing(a).title}` } : null);
     const gains = gainText;
     const bonus = actPerkStats(a);
     const merged = sumStats(w ? w.stats : a.stats, bonus);
@@ -864,7 +914,7 @@ window.FemcGame = (() => {
     if (actCost(a)) addYen(-actCost(a));
     let stats = a.stats;
     const sh = showing(a);
-    const w = a.weather?.[info.weather] || (sh ? { ...sh, label: `Now showing: ${sh.title}` } : null);
+    const w = wxPick(a.weather, info.weather) || (sh ? { ...sh, label: `Now showing: ${sh.title}` } : null);
     if (w) stats = w.stats;
     if (a.random) { const k = Object.keys(a.random); const pick = k[Math.floor(Math.random() * k.length)]; stats = { [pick]: a.random[pick] }; }
     // The activity's own lines plus its variants (data/living-variants.js), walked without repeats (vary).
@@ -978,13 +1028,13 @@ window.FemcGame = (() => {
   }
   // Study at the dorm: rainy nights are a little better; Mitsuru's Study Hall and Jungwon's Tutor Session add to it.
   function doStudy() {
-    const d = D.places.dorm.study, rain = weather(S.day) === 'rain';
+    const d = D.places.dorm.study, rain = wet();
     addStats(sumStats(d.stats, rain ? d.rain : null, studyBonus(), dormPerkStats({ id: 'study' })));
     (S.done ||= {}).study = (S.done.study || 0) + 1;
     S.spent[`${S.day}-evening`] = 'study';
     save();
   }
-  function studyInfo() { const d = D.places.dorm.study; return gainText(sumStats(d.stats, weather(S.day) === 'rain' ? d.rain : null, studyBonus(), dormPerkStats({ id: 'study' }))); }
+  function studyInfo() { const d = D.places.dorm.study; return gainText(sumStats(d.stats, wet() ? d.rain : null, studyBonus(), dormPerkStats({ id: 'study' }))); }
 
   /* ── Scene packs: job shifts and club practices (living world, part 2) ──
      A pack (data/job-scenes.js + data/job-scenes-more*.js for a job id; data/clubs.js for a club id):
@@ -1018,7 +1068,7 @@ window.FemcGame = (() => {
   function packFits(e, d = S.day) {
     const info = dayInfo(d), m = info.date.getMonth() + 1;
     if (e.months && !e.months.includes(m)) return false;
-    if (e.weather && !e.weather.includes(info.weather)) return false;
+    if (e.weather && !wxIn(e.weather, info.weather)) return false;
     if (e.days && !e.days.includes(info.dow)) return false;
     if (e.after && d < dayOf(e.after)) return false;
     if (e.until && d > dayOf(e.until)) return false;
@@ -1196,7 +1246,7 @@ window.FemcGame = (() => {
      vary(path, base, key): the spot's line today; the whole pool is walked in a fixed shuffled order, moving on once per day
      the spot shows to the next line that fits today's month and weather, so nothing repeats until the walk has gone round.
      Entries are strings or { t, months, weather }. ── */
-  const varyFits = (x, m, w) => typeof x === 'string' || ((!x.months || x.months.includes(m)) && (!x.weather || x.weather.includes(w)));
+  const varyFits = (x, m, w) => typeof x === 'string' || ((!x.months || x.months.includes(m)) && (!x.weather || wxIn(x.weather, w)));
   function varyAll(path, base = []) {
     let v = D.variants; path.split('.').forEach(k => { v = v && v[k]; });
     return [...[].concat(base || []), ...(Array.isArray(v) ? v : [])].filter(Boolean);
@@ -1283,7 +1333,7 @@ window.FemcGame = (() => {
     if (e.schoolOnly && info.type !== 'school') return false;
     if (e.offOnly && info.type !== 'off') return false;
     if (e.days && !e.days.includes(info.dow)) return false;
-    if (e.weather && !e.weather.includes(info.weather)) return false;
+    if (e.weather && !wxIn(e.weather, info.weather)) return false;
     if (!(e.events || []).every(id => S.events.includes(id))) return false;
     if (!(e.flags || []).every(flag) || (e.noFlags || []).some(flag)) return false;
     if (!(e.met || []).every(isMet)) return false;
@@ -1428,7 +1478,8 @@ window.FemcGame = (() => {
     if (slot === 'late' && (info.moon.full || S.tonight === 'rest' || S.lateNights?.lastDay === d || lateNightDue(d))) return null;
     const fit = M.map((m, i) => ({ m, i })).filter(({ m }) => !c.seen.includes(m.id) && crushFits(m, slot, d, info));
     if (!fit.length) return null;
-    fit.sort((a, b) => (b.m.optIn ? 1 : 0) - (a.m.optIn ? 1 : 0) || crushUntil(a.m) - crushUntil(b.m) || a.i - b.i);
+    // A moment that needs today's weather (the umbrella in the rain) goes before the others: that weather may not come again.
+    fit.sort((a, b) => (b.m.optIn ? 1 : 0) - (a.m.optIn ? 1 : 0) || (b.m.weather ? 1 : 0) - (a.m.weather ? 1 : 0) || crushUntil(a.m) - crushUntil(b.m) || a.i - b.i);
     const m = fit[0].m;
     return { ...m, link: m.who || null, label: m.label || LINKS[m.who]?.short || 'Everyday life' };
   }
@@ -1838,7 +1889,7 @@ window.FemcGame = (() => {
     if (e.days && !e.days.includes(info.dow)) return false;
     const battled = S.tonight === 'battled';
     if (e.when === 'tartarus' ? !battled : battled) return false;
-    if (e.when === 'rain' && info.weather !== 'rain') return false;
+    if (e.when === 'rain' && !wxIn(['rain'], info.weather)) return false;
     if (e.heading && !headingIs(e.heading)) return false;
     if (e.noFlags && [].concat(e.noFlags).some(flag)) return false;
     if (l.closes && d >= dayOf(l.closes) && !stretchOn(l, d)) return false;
@@ -2121,7 +2172,7 @@ window.FemcGame = (() => {
   indexLinks();
   return {
     KEY, HANDOFF_KEY, base, D, get S() { return S; }, save, saveQuiet, newGame, onChange, settings, setSetting, setSettings, DEFAULTS, textDelay, sfx,
-    dayOf, dateOf, mdOf, dayInfo, seasonal, dressed, slotsFor, slotName, weather, moon, END, SLOT_ORDER,
+    dayOf, dateOf, mdOf, dayInfo, seasonal, dressed, slotsFor, slotName, weather, wx, forecast, wxIn, wet, rainSale, moon, END, SLOT_ORDER,
     statRank, statRankName, statProgress, statId, sumStats, gainText, addStat, addStats, lacking, addYen, takeToasts, toast, migrateStats,
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
     homeOf, leavesAtMax, maxOf, isMaxed, stretchOn, afterGap, afterList, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,

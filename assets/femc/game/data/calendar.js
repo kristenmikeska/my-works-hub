@@ -11,7 +11,8 @@
      (handed to the battle game, see FEMC-GAME-HANDOFF.md). An op whose date has a story event with a battle line
      is played from that event instead.
    - `trips`: days with no free time (the whole day is one scene or a summary).
-   - `weather`: fixed weather for some dates; every other day rolls from `climate` with a seed, so it never changes. */
+   - `weather`: fixed weather for some dates; every other day rolls from `climate` (or a `spells` range) with a seed, so it
+     never changes, and `persist` lets a gray or wet day carry on. core.js wx() adds how strong it is (`weatherLevels`). */
 window.FEMC_GAME_CALENDAR = {
   start: '4/6', firstFree: '4/8', end: '3/7',
   finalStretch: { from: '2/1', graduation: '3/5', finale: '3/6', end: '3/7' },
@@ -71,14 +72,33 @@ window.FEMC_GAME_CALENDAR = {
   ],
   // Tartarus floors the battle game should allow by date (P3 opens blocks as the year goes on). Passed in the handoff.
   floorCaps: [['4/18', 16], ['5/10', 36], ['6/9', 64], ['7/8', 92], ['8/7', 118], ['9/6', 144], ['10/5', 172], ['11/4', 204], ['12/3', 230], ['1/1', 254]],
+  // Fixed weather (kinds: clear, cloudy, rain, storm, snow). The culture festival (10/30-10/31) is held through the storm
+  // and ends in rain, as the story has it; its hallway art shows on the sunny prep days before (places.js today).
   weather: { '4/6': 'clear', '4/7': 'clear', '4/8': 'clear', '12/24': 'snow', '12/25': 'snow', '10/30': 'storm', '10/31': 'rain',
-    '3/3': 'snow', '3/6': 'snow', '3/7': 'clear' },
-  // Chance of each weather by month (the rest is clear). Rainy season in June; snow is possible in winter.
+    '3/3': 'snow', '3/6': 'snow', '3/7': 'clear',
+    // Natural fits (2026-10-23): sun on Yakushima and the summer festival, the festival's prep days, graduation.
+    '7/21': 'clear', '7/22': 'clear', '7/23': 'clear', '8/16': 'clear', '10/28': 'clear', '10/29': 'clear', '3/5': 'clear',
+    // Days whose story scenes say what the sky is doing (checked 2026-10-23).
+    '6/8': 'rain', '6/24': 'rain', '10/24': 'storm', '1/9': 'snow' },
+  // How strong a fixed day is (levels below); other days roll it (drizzle, heavySnow, fog, fogMonths).
+  weatherLevels: { '12/24': 'light', '12/25': 'heavy', '3/3': 'light', '3/6': 'heavy' },
+  // Chance of each weather by month (the rest is clear). Snow is possible in winter; storms come with typhoon season.
   climate: {
-    4: { cloudy: 0.25, rain: 0.18 }, 5: { cloudy: 0.25, rain: 0.2 }, 6: { cloudy: 0.25, rain: 0.45 }, 7: { cloudy: 0.2, rain: 0.2 },
-    8: { cloudy: 0.15, rain: 0.12 }, 9: { cloudy: 0.25, rain: 0.25 }, 10: { cloudy: 0.25, rain: 0.18 }, 11: { cloudy: 0.3, rain: 0.15 },
-    12: { cloudy: 0.3, rain: 0.1, snow: 0.08 }, 1: { cloudy: 0.3, rain: 0.08, snow: 0.12 }, 2: { cloudy: 0.3, rain: 0.1, snow: 0.12 },
+    4: { cloudy: 0.25, rain: 0.18 }, 5: { cloudy: 0.25, rain: 0.2 }, 6: { cloudy: 0.25, rain: 0.3 }, 7: { cloudy: 0.2, rain: 0.2 },
+    8: { cloudy: 0.15, rain: 0.12, storm: 0.03 }, 9: { cloudy: 0.25, rain: 0.22, storm: 0.05 }, 10: { cloudy: 0.25, rain: 0.18, storm: 0.02 }, 11: { cloudy: 0.3, rain: 0.15 },
+    12: { cloudy: 0.3, rain: 0.1, snow: 0.08 }, 1: { cloudy: 0.3, rain: 0.06, snow: 0.14 }, 2: { cloudy: 0.3, rain: 0.08, snow: 0.14 },
     3: { cloudy: 0.3, rain: 0.18, snow: 0.03 }
   },
-  weatherNames: { clear: 'Clear', cloudy: 'Cloudy', rain: 'Rain', snow: 'Snow', storm: 'Storm' }
+  // Spells: dates whose chances replace the month's (the forecast names them). The rainy season, tsuyu, is mostly gray and
+  // wet with long drizzles; typhoon season adds storms.
+  spells: [
+    { from: '6/6', to: '7/14', name: 'Rainy season', cloudy: 0.3, rain: 0.5, storm: 0.02, drizzle: 0.55 },
+    { from: '8/25', to: '10/10', name: 'Typhoon season', cloudy: 0.25, rain: 0.2, storm: 0.07 }
+  ],
+  // A gray or wet day carries on into the next this often (so weather comes in spells, not coin flips).
+  persist: 0.4,
+  drizzle: 0.4, heavySnow: 0.35, fog: 0.2, fogMonths: [11, 12, 1, 2, 3],
+  weatherNames: { clear: 'Clear', cloudy: 'Cloudy', rain: 'Rain', snow: 'Snow', storm: 'Storm' },
+  // Names for how strong it is (core.js wx): the date box, the date card and the forecast.
+  levelNames: { clear: 'Clear', overcast: 'Cloudy', fog: 'Fog', drizzle: 'Drizzle', rain: 'Rain', storm: 'Storm', light: 'Light snow', heavy: 'Heavy snow' }
 };

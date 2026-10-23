@@ -1359,3 +1359,56 @@ button.g-st-link:is(:hover, :focus-visible) { outline: none; border-color: #fff;
 .gs-replay-tag { position: absolute; z-index: 6; top: 58px; right: 22px; margin: 0; padding: 4px 12px; background: var(--pink); color: #14070f; font: italic 900 12px/1 var(--cond); letter-spacing: .2em; text-transform: uppercase; transform: skewX(-14deg); box-shadow: 3px 3px 0 #fff; pointer-events: none; }
 @media (max-width: 700px), (max-aspect-ratio: 13/10) { .gs-replay-tag { top: 98px; right: 10px; } }
 @media (prefers-reduced-motion: reduce) { .g-av-img.in, .g-al-tile img { animation: none; transition: none; } }
+
+/* ── Weather (weather.js): rain, snow, fog and lightning over the backdrop, under faces and text ── */
+.g-wxfx { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.g-wxfx[hidden] { display: none; }
+.g-wxfx canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.g-wxfx i { position: absolute; inset: 0; display: none; }
+.g-stage .g-wxfx { z-index: 0; }
+.gs.gs-cg-on .g-wxfx { display: none; }
+/* Gray skies: a cool tint; rain and storms darker; snow a pale haze. */
+.g-wxfx:is(.wx-overcast, .wx-fog, .wx-drizzle, .wx-rain, .wx-storm, .wx-light, .wx-heavy) .g-wx-tint { display: block; }
+.wx-overcast .g-wx-tint { background: linear-gradient(180deg, rgba(60, 70, 90, .22), rgba(40, 46, 60, .1)); }
+.wx-drizzle .g-wx-tint { background: linear-gradient(180deg, rgba(50, 62, 84, .26), rgba(30, 36, 52, .14)); }
+.wx-rain .g-wx-tint { background: linear-gradient(180deg, rgba(40, 52, 76, .34), rgba(20, 26, 42, .2)); }
+.wx-storm .g-wx-tint { background: linear-gradient(180deg, rgba(24, 30, 50, .46), rgba(12, 14, 26, .3)); }
+.wx-light .g-wx-tint { background: linear-gradient(180deg, rgba(220, 230, 245, .1), rgba(180, 196, 220, .06)); }
+.wx-heavy .g-wx-tint { background: linear-gradient(180deg, rgba(225, 233, 246, .2), rgba(190, 204, 226, .12)); }
+.at-in .g-wx-tint { opacity: .55; }
+/* Fog: two soft banks drifting slowly (transform only); still under reduced motion. */
+.wx-fog .g-wx-fog { display: block; inset: -10% -30%; background: radial-gradient(ellipse 40% 26% at 30% 62%, rgba(226, 232, 240, .34), transparent 70%), radial-gradient(ellipse 46% 30% at 72% 48%, rgba(220, 226, 236, .28), transparent 70%), linear-gradient(180deg, rgba(210, 218, 230, .08), rgba(210, 218, 230, .26)); animation: g-wx-fog 38s ease-in-out infinite alternate; }
+.at-in.wx-fog .g-wx-fog { display: none; }
+@keyframes g-wx-fog { to { transform: translate3d(12%, -2%, 0); } }
+/* Lightning: two quick pulses; Reduce flashes makes it one soft brightening. */
+.g-wx-flash { background: radial-gradient(ellipse at 50% 0%, rgba(235, 240, 255, .95), rgba(200, 212, 255, .55) 60%, rgba(180, 190, 240, .3)); opacity: 0; }
+.g-wx-flash.on, .g-wx-flash.soft { display: block; }
+.g-wx-flash.on { animation: g-wx-flash 1.1s ease-out both; }
+.g-wx-flash.soft { animation: g-wx-soft 1.2s ease-in-out both; }
+.at-in .g-wx-flash.on { animation-name: g-wx-flash-in; }
+@keyframes g-wx-flash { 0% { opacity: 0; } 4% { opacity: .75; } 10% { opacity: .1; } 16% { opacity: .55; } 100% { opacity: 0; } }
+@keyframes g-wx-flash-in { 0% { opacity: 0; } 5% { opacity: .3; } 12% { opacity: .05; } 18% { opacity: .22; } 100% { opacity: 0; } }
+@keyframes g-wx-soft { 0%, 100% { opacity: 0; } 30% { opacity: .12; } }
+.g-wxfx.still .g-wx-fog, .g-wxfx.still .g-wx-flash { animation: none !important; }
+@media (prefers-reduced-motion: reduce) { .g-wx-fog { animation: none !important; } .g-wx-flash { display: none !important; } }
+
+/* The date box's weather (a button: the forecast) and the phone's forecast. */
+.g-sky button.g-wx { display: grid; place-items: center; width: 34px; height: 34px; padding: 0; background: rgba(20, 7, 15, .9); border: 1.5px solid rgba(255, 140, 192, .4); transform: skewX(-10deg); color: inherit; cursor: pointer; }
+.g-sky button.g-wx:is(:hover, :focus-visible) { border-color: var(--pink); outline: none; }
+.g-ph-wx { display: grid; gap: 6px; margin: 0 0 10px; padding: 10px 12px 12px; background: linear-gradient(135deg, #2a0d1e, #4a1736); color: #fff; border-radius: 12px; }
+.g-ph-wx-h { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin: 0; font: 800 12px/1.2 -apple-system, "Helvetica Neue", sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #ffb3d4; }
+.g-ph-wx-h small { font-weight: 600; letter-spacing: .02em; text-transform: none; color: #f3d7e4; }
+.g-ph-wx ol { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; margin: 0; padding: 0; list-style: none; }
+.g-ph-wx li { display: grid; justify-items: center; gap: 2px; padding: 6px 2px; border-radius: 8px; background: rgba(255, 255, 255, .06); text-align: center; font-size: 11px; line-height: 1.15; }
+.g-ph-wx li.today { background: rgba(255, 79, 158, .28); box-shadow: inset 0 0 0 1.5px rgba(255, 140, 192, .7); }
+.g-ph-wx li b { font-size: 12px; }
+.g-ph-wx li svg { width: 26px; height: 26px; }
+.g-ph-wx li small { color: #f3d7e4; font-size: 10.5px; overflow-wrap: anywhere; }
+.g-ph-wx p { margin: 0; font-size: 12px; color: #f3d7e4; }
+
+/* A teacher's face in the class question (once their portrait exists; questions.js teachers). */
+.g-quiz.has-face { display: grid; grid-template-columns: 76px minmax(0, 1fr); column-gap: 14px; align-items: start; }
+.g-quiz.has-face > :not(.g-quiz-face) { grid-column: 2; }
+.g-quiz-face { grid-row: 1 / span 4; width: 76px; height: 92px; object-fit: cover; object-position: center top; border: 2px solid rgba(255, 140, 192, .6); background: rgba(20, 7, 15, .8); transform: skewX(-6deg); }
+.g-seg-sub .g-quiz-face.small { float: left; width: 46px; height: 54px; margin: 0 10px 4px 0; grid-row: auto; }
+@media (max-width: 520px) { .g-quiz.has-face { grid-template-columns: 54px minmax(0, 1fr); } .g-quiz-face { width: 54px; height: 66px; } }

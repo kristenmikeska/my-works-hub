@@ -16,13 +16,14 @@ window.FEMC_GAME_PLACES = {
     { id: 'dorm', name: 'Iwatodai Dorm', bg: 'iwotodaidorm-outside', slots: ['after'], home: true, blurb: 'Go home and let the day wind down.', about: 'Head straight home. The rest of this time passes quietly; nothing else happens.' }
   ],
   /* Things to do. One activity uses up the time slot. cost: yen. stats: social stat points (before the condition multiplier).
-     place: the scene's place when it isn't "<area> · <spot>" (for its background rule). days: 0 Sun ... 6 Sat. weather: a bonus that applies in that weather. cures: conditions it fixes. needs: stat ranks.
+     place: the scene's place when it isn't "<area> · <spot>" (for its background rule). days: 0 Sun ... 6 Sat. weather: a bonus that applies in that weather (a storm uses the rain one). closedIn: weather that shuts it. cures: conditions it fixes. needs: stat ranks.
      showings: a rotating bill, one per week ({ title, stats, lines }; the cinema). from: the first day it's open.
      lines: one is picked at random as the narration. about: what the place is, shown in the Go Out panel beside the
      benefit preview (core.js activityInfo). The five stats and every way to raise them: FEMC-REVAMP-ROADMAP.md section 7. */
   activities: [
     // ── Gekkoukan (after school, school days)
     { id: 'library', area: 'gekkoukan', spot: 'Library', name: 'Study in the library', about: 'Quiet tables by the window and the smell of old paper.', icon: 'book', slots: ['after'], stats: { knowledge: 3 },
+      weather: { rain: { stats: { knowledge: 4 }, label: 'Rainy-day quiet', lines: ['Rain on the long library windows, and the whole room had gone quiet the way rooms do when it rains, the radiators ticking, pages turning, nobody in any hurry to go out in it. She got through twice what she meant to.', 'The library on a wet afternoon was half empty and smelled of damp coats and old paper, and she took the table under the window and worked to the sound of the rain until the light went.'] } },
       lines: ['The library was warm and smelled like old paper and floor wax, and someone two tables over was sighing at a chemistry textbook in a way that made her feel better about her own.', 'She claimed a table by the window and worked through a page of problems until the light went long and orange across the desk.'] },
     { id: 'tutoring', area: 'gekkoukan', spot: 'Classroom', place: 'Gekkoukan High · Classroom · Study Group', name: 'Help the first-years study', about: 'A volunteer study group for first-years who are falling behind. Nobody gets paid; everybody gets snacks.', icon: 'book', slots: ['after'], days: [1, 3, 5], stats: { kindness: 2, knowledge: 1 },
       lines: ['A first-year with a cowlick had been stuck on the same equation for a week. She stayed until he got it, and he looked at the answer like it had personally apologized to him.', 'Three first-years, one textbook and a bag of rice crackers. By the end of it they could all do the problem set, and one of them could explain it back to her, which was the real test.'] },
@@ -37,6 +38,7 @@ window.FEMC_GAME_PLACES = {
     { id: 'wildduck', area: 'strip', spot: 'Wild-Duck Burger', name: 'Wild-Duck Burger', about: 'Loud, greasy and home of the Mystery Burger. Finishing a large takes nerve.', icon: 'food', slots: ['after', 'evening'], cost: 500, stats: { courage: 2 },
       lines: ['The Mystery Burger lived up to its name in every way, and she finished it out of spite.', 'Wild-Duck smelled like fryer oil and teenage ambition. She ordered the large without blinking, which felt like a personal victory.'] },
     { id: 'bathhouse', area: 'strip', spot: 'Bathhouse', place: 'Iwatodai Strip · Bathhouse · Baths', name: 'Soak at the bathhouse', about: 'The neighborhood bathhouse. Hot water that takes the day off you, and you walk out glowing.', icon: 'bath', slots: ['evening'], cost: 400, stats: { charm: 2 }, cures: ['tired'],
+      weather: { snow: { stats: { charm: 3 }, label: 'Snow-day soak', lines: ['Snow coming down past the high bathhouse window and melting before it reached the steam, and the water so hot after the cold walk that she laughed out loud when she got in. The old woman at the counter said snow days were the best days, and she was right.', 'She came in with snow in her hair and went out an hour later pink to the ears, and the cold on the walk home felt like nothing at all.'] } },
       lines: ['The water was hot enough to sting and then not, and she sank into it to her chin and let the day come off her like a coat.', 'She came out pink to the ears with her hair wrapped in a towel, and the old woman at the counter told her she looked like a peach, which she decided to believe.'] },
     { id: 'electricbath', area: 'strip', spot: 'Bathhouse', place: 'Iwatodai Strip · Bathhouse · Baths', name: 'Try the electric bath', about: 'The bathhouse’s famous electric bath: a mild current through the water. The regulars swear by it. The first-timers swear.', icon: 'bath', slots: ['evening'], cost: 400, stats: { courage: 2 },
       lines: ['The electric bath buzzed through her like a swarm of very polite bees. She lasted three minutes. The grandmother next to her had been in for twenty and was doing a crossword.', 'She lowered herself in one inch at a time while a row of regulars watched with professional interest. When she made it to her shoulders, somebody said “oh, good,” and went back to their newspaper.'] },
@@ -80,15 +82,15 @@ window.FEMC_GAME_PLACES = {
     { id: 'alley', area: 'portisland', spot: 'Back Alley', name: 'Cut through the back alley', about: 'The alley behind the station. Not a place to linger, unless you have the nerve.', icon: 'alley', slots: ['evening'], stats: { courage: 3 }, needs: { courage: 2 },
       lines: ['The alley behind the station was the kind of place that watched you walk through it. She walked through it slowly, on purpose, and nobody said a word.'] },
     // ── Port Island
-    { id: 'pier', area: 'port', spot: 'Pier', name: 'Walk the pier', about: 'Salt wind, gulls and a long rail over the water.', icon: 'wave', slots: ['after'], stats: { charm: 1, courage: 1 },
+    { id: 'pier', area: 'port', spot: 'Pier', name: 'Walk the pier', about: 'Salt wind, gulls and a long rail over the water.', icon: 'wave', slots: ['after'], stats: { charm: 1, courage: 1 }, closedIn: ['storm'],
       lines: ['The wind off the bay was cold and smelled like salt and diesel, and she stood at the rail longer than she meant to.'] },
-    { id: 'beachclean', area: 'port', spot: 'Seaside Park', place: 'Port Island · Seaside Park · Beach Cleanup', name: 'Volunteer: the beach cleanup', about: 'Weekend mornings, a neighborhood group cleans the seaside park and the strip of beach below it. Gloves and bags provided.', icon: 'leaf', slots: ['after'], days: [0, 6], stats: { kindness: 2 },
+    { id: 'beachclean', area: 'port', spot: 'Seaside Park', place: 'Port Island · Seaside Park · Beach Cleanup', name: 'Volunteer: the beach cleanup', about: 'Weekend mornings, a neighborhood group cleans the seaside park and the strip of beach below it. Gloves and bags provided.', icon: 'leaf', slots: ['after'], days: [0, 6], stats: { kindness: 2 }, closedIn: ['rain'],
       lines: ['She filled two bags with bottle caps and fishing line and one unexplained shoe, and an old man in a fishing hat gave her a can of tea and said the gulls would thank her if gulls did that sort of thing.', 'The volunteers were mostly retirees and one very serious ten-year-old with a clipboard. By noon the sand was clean and the ten-year-old let her hold the clipboard.'] },
     // ── Naganaki Shrine
     { id: 'pray', area: 'shrine', spot: 'Offering Box', name: 'Make a wish', about: 'Ten yen in the offering box, two claps and a wish.', icon: 'shrine', slots: ['after', 'evening'], cost: 10, stats: { courage: 1 },
       lines: ['She clapped twice and stood with her eyes shut, and found she didn’t know what to wish for, so she wished for that.'] },
     { id: 'fortune', area: 'shrine', spot: 'Omikuji', name: 'Draw a fortune', about: 'Paper fortunes tied to the tree. Good luck can lift a stat or her mood.', icon: 'shrine', slots: ['after'], cost: 100, fortune: true },
-    { id: 'shrinesweep', area: 'shrine', spot: 'Grounds', name: 'Volunteer: sweep the grounds', about: 'The shrine has no full-time priest. Neighbors take turns sweeping the leaves and wiping down the offering box.', icon: 'shrine', slots: ['after'], stats: { kindness: 2 },
+    { id: 'shrinesweep', area: 'shrine', spot: 'Grounds', name: 'Volunteer: sweep the grounds', about: 'The shrine has no full-time priest. Neighbors take turns sweeping the leaves and wiping down the offering box.', icon: 'shrine', slots: ['after'], stats: { kindness: 2 }, closedIn: ['storm'],
       lines: ['She swept the stone path from the gate to the offering box and back, and the leaves kept coming down, and she kept sweeping, and somewhere in the middle of it the sweeping stopped being a chore.', 'A grandmother who sweeps here every week showed her how to hold the broom so it didn’t hurt her back, and talked about her grandson the whole time, and gave her a mandarin when they were done.'] },
     // ── Tatsumi Memorial Hospital
     { id: 'clinic', area: 'hospital', spot: 'Clinic', name: 'See a doctor', about: 'The hospital clinic. Expensive, but it gets her back on her feet.', icon: 'cross', slots: ['after'], cost: 1000, cures: ['tired', 'sick'],
@@ -162,6 +164,14 @@ window.FEMC_GAME_PLACES = {
     { id: 'listening', name: 'The Art of Listening', price: 1700, nights: 3, stats: { kindness: 5, charm: 1 } }
   ],
   // Shops reuse the battle game's shop list (assets/femc/battle/data.js, read only). These say where each one is.
+  /* Rainy days, a little like P5 (2026-10-23; kept light): on rain or storm days Aohige Pharmacy and Be Blue V take 10% off
+     (core.js rainSale, inside the 30% cap with friends' discounts); the library and Hagakure have rainy-day bonuses and the
+     bathhouse a snow-day one (activities' `weather`); the dorm desk studies better on wet nights (dorm.study.rain); storms
+     shut the pier and the shrine sweeping, and rain the beach cleanup (`closedIn`). The phone's forecast says so. */
+  rainyDay: {
+    sale: { aohige: { pct: 10 }, bebluev: { pct: 10 } },
+    note: 'Rainy-day sale today at Aohige and Be Blue V. The library and Hagakure are better in the rain.'
+  },
   shops: {
     police: { area: 'mall', battleShop: 'police' },
     aohige: { area: 'strip', battleShop: 'aohige' },
@@ -304,12 +314,32 @@ window.FEMC_GAME_PLACES = {
   },
   /* Today's art: wherever a background is one of these images (a rule's day or evening image, a scene's own bg, Go Out), the
      first entry that fits today swaps it: `dates` ['M/D', ...] and / or `weather` (calendar.js: clear, cloudy, rain, snow,
-     storm). Applied after the season (core.js dressed). The festival hallway is only for the festival's two days. */
+     storm; a 'rain' entry covers storms too). Applied after the season (core.js dressed).
+     The festival hallway is sunlit art: the festival itself (10/30-10/31) is held through a storm and ends in rain (the
+     story's own days), so the decorated hallway shows on the sunny prep days before it (10/28-10/29, fixed clear in
+     calendar.js) and on any festival day that isn't wet; the plain hallway with the storm at the windows on the others. */
   today: {
-    'school-hallway': [{ dates: ['10/30', '10/31'], img: 'gekkoukan-culture-festival' }],
-    'school-hallwaysecondfloor': [{ dates: ['10/30', '10/31'], img: 'gekkoukan-culture-festival' }],
+    'school-hallway': [{ dates: ['10/28', '10/29', '10/30', '10/31'], weather: ['clear', 'cloudy'], img: 'gekkoukan-culture-festival' }],
+    'school-hallwaysecondfloor': [{ dates: ['10/28', '10/29', '10/30', '10/31'], weather: ['clear', 'cloudy'], img: 'gekkoukan-culture-festival' }],
     'location-2': [{ weather: ['rain', 'storm'], img: 'iwatodai-strip-rain' }],
     'iwatodai-strip-night': [{ weather: ['rain', 'storm'], img: 'iwatodai-strip-rain' }]
+  },
+  /* Weather over a backdrop (weather.js), by the background image's name (prefixes). `outdoor`: rain and snow fall, fog
+     drifts, lightning flashes. `sealed`: rooms with no window to it, where nothing shows and the sound is faint. `none`:
+     no weather at all (the Dark Hour, Tartarus, the Velvet Room, other worlds' memories). Everything else is a room with a
+     window: a few drops run down the glass, the sound is muffled, a storm's lightning is dimmer. */
+  weatherFx: {
+    outdoor: ['city', 'park', 'location-', 'portisland', 'station-platform', 'hospital-outside', 'hospital-rooftop', 'outside-', 'shopping-street',
+      'naganaki-', 'gekkoukanhigh', 'gekkoukan-tennis-courts', 'gekkoukan-rooftop-night', 'rooftop-', 'iwatodaidorm-roof-', 'iwotodaidorm-outside',
+      'iwatodaidorm-front-winter', 'iwatodai-strip-', 'iwatodai-riverside-night', 'iwatodai-station-overpass', 'harbor', 'junkyard-', 'moonlightbridge',
+      'port-island-pier', 'port-island-seaside-park', 'seaside-park-', 'kirijo-guesthouse-front-night', 'kirijo-guesthouse-roof-night',
+      'aohigepharmacy-outside', 'policestation-outside', 'bebluev-outside', 'clubescapade-outside', 'gameparade-outside', 'mayoidoantiques-outside',
+      'bathhouse-night', 'hotel-outside', 'yakushima-beach', 'yakushima-forest', 'yakushima-ferry', 'yakushima-villa-balcony', 'yakushima-villa-terrace'],
+    sealed: ['gamepanic-inside', 'clubescapade', 'screenshot-theater', 'screen', 'paulownia-karaoke', 'iwatodai-bathhouse', 'record-shop-listening-booth',
+      'hagakure-', 'hagakureramen', 'ramen-shop', 'respawn-cafe-evening', 'subway', 'iwatodaidorm-laundryroom', 'iwatodaidorm-commandroom', 'gekkoukan-gym',
+      'gekkoukan-boxing-club', 'inside-mall', 'clothing-store', 'hospital-childrens-ward', 'botanical-garden-greenhouse'],
+    none: ['tartarus', 'velvetroom', 'darkhour-', 'flashback-alphaphi', 'flashback-frat', 'flashback-hamlim', 'flashback-incheon', 'flashback-lee', 'flashback-syracuse',
+      'empyrean', 'adamah', 'arya', 'harabah', 'lablanc', 'outside-leblanc', '0d48', 'chatgpt-image']
   },
   /* CG focus: which part of each CG (assets/femc/cg) to keep in view when a tall, narrow window has to crop it. */
   cgFocus: {

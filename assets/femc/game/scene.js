@@ -234,6 +234,8 @@ window.FemcScene = (() => {
       $('.gs-place b').innerHTML = d ? `${esc(d.md)}<small>${esc(d.day)}</small>` : '';
       $('.gs-place b').hidden = !d;
       $('.gs-place span').textContent = [vis.time, vis.place].filter(Boolean).join(' · ');
+      // Weather over the backdrop (weather.js): not over a CG, in the Dark Hour, the Velvet Room or a replay.
+      window.FemcWeather?.scene(el, { url: b?.url, place: vis.place, time: vis.time, dark: vis.dark, cg: vis.cg, replay, velvet: el.classList.contains('gs-velvet') });
     }
     paintVis();
     if (opts.music) Music.set(opts.music);
@@ -529,6 +531,7 @@ window.FemcScene = (() => {
 
     function close() {
       closed = true;
+      window.FemcWeather?.sceneEnd(el);
       clearTimeout(titleTimer); titleGo = null;
       document.removeEventListener('keydown', keys, true);
       el.classList.add('out');
