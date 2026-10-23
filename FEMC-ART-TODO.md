@@ -32,43 +32,95 @@ Every CG prompt starts with this style block:
 Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, moody lighting with one dominant color. Use the other attached images only for the characters' faces, hair and clothes. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition. Solar: very long straight black hair, black Gekkoukan uniform, red bow, white earbuds around her neck, white knee socks, red S.E.E.S. armband.
 ```
 
+### How to use the "Must match" lines
+Each CG below has a **Must match** line taken from its scene: time and light, who's in the picture (and who isn't), clothes, poses, setting, season and props. Paste it into the prompt after the style block. The style block's outfit for Solar is only the default; when a Must match line gives her different clothes, use those. A few late-story CGs say **ask Claude first**: their scene details would give the story away, so ask for the prompt instead of writing it from this list.
+
 ### 2A. Big story beats
-- [ ] ⭐ **The true ending** (`FEMC-CG-PROMPTS.md` #20)
-  - **Attach:** style, Solar, Wren, 🎨 `Personas/Haenim-Unveiled.png`. **Fills:** `cg/ending-true.webp` (the only ending without a CG).
-- [ ] ⭐ **Two late-story scenes at a station** (`FEMC-CG-PROMPTS.md` #18 and #19; section 3 of that file has spoilers, so copy just those two prompts)
+- [ ] ⭐ **The true ending** (`FEMC-CG-PROMPTS.md` #20 is aimed at the wrong moment; don't run it as written)
+  - **Attach:** style, Solar. **Fills:** `cg/ending-true.webp` (the only ending without a CG).
+  - **Must match:** ask Claude first.
+- [ ] ⭐ **Two late-story scenes at a station** (`FEMC-CG-PROMPTS.md` #18 and #19; their poses and props don't match the scenes)
   - **Attach:** style, Solar, Wren. **Fills:** `cg/story-wren-clock.webp`, `cg/story-wren-cap.webp`.
+  - **Must match:** ask Claude first.
 
 ### 2B. Romance and link moments
-One template; fill in the name, setting and light. Nothing in it is from the scene itself.
+One template; fill it from the item's Must match line, not from the setting name alone.
 ```
-Solar and [NAME] at [SETTING], [LIGHT]. A quiet, close moment between just the two of them, both of them clearly at ease with each other. [MOOD].
+Solar and [NAME] at [SETTING], [TIME AND LIGHT]. [WHO ELSE IS THERE, OR "just the two of them"]. [CLOTHES]. [POSE AND DISTANCE]. [SEASON AND WEATHER]. [PROPS]. [MOOD].
 ```
 - [ ] ⭐ **Rank 15** for Shinjiro, the last link without one. **Fills:** `cg/link-shinjiro-r15.webp`.
   - **Attach:** style, Solar, Shinjiro.
-  - Shinjiro: a quiet room in soft morning light
-- [ ] ⭐ **Christmas Eve (12/24)** for each romance that has one, besides Akihiko's and Haechan's (done). It snows that night. **Fills:** `cg/romance-<id>-christmas.webp` (the `romance-` prefix files it under Romance & bonds in Memories).
-  - **Attach:** style, Solar, the partner. Use `[MOOD]` = "snow falling, warm lights, a little shy".
-  - Jungwon: Iwatodai's shopping street in the evening · Jihoon: the mall's central atrium · Minji: the riverside in the evening · Shinjiro: a quiet room with snow at the window
-  - *(Optional)* the side romances' Christmas Eves: Ann (the mall fountain), Kasumi (the shrine), Judy (Club Escapade), Rio (Port Island Station), Saori (the used bookstore)
-- [ ] *(Optional)* **Rank 10 (MAX)**, one per link. **Fills:** `cg/link-<id>-r10.webp`. **Attach:** style, Solar, the partner.
-  - S.E.E.S.: Yukari (the mall atrium) · Junpei (the dorm roof at night) · Mitsuru (the student council room) · Aigis (the dorm roof) · Fuuka (the dorm dining room) · Koromaru (the shrine)
-  - Searchers: Jihoon (the dorm's front steps) · Minji (the dorm lounge) · Hanni (the dorm's 2F hallway) · Hyein (the dorm roof) · Yunjin (the harbor) · Mark (the station concourse) · Jaehyun (the dorm's front steps) · Cherry (the dorm's front steps at night) · Sunoo (Yeobo's Cafe) · Junkyu (the arcade) · Danielle (the station overpass) · Jaemin (karaoke) · Chenle (Game Panic)
-  - Everyone else: Elizabeth (the Velvet door) · Kuromi (the dorm lounge) · My Melody (the dorm kitchen) · Mercy (the hospital roof) · Kiriko (the shrine) · Ann (the mall fountain) · Kasumi (the shrine) · Rio (the tennis courts) · Saori (the library) · Haru (the dorm kitchen) · Judy (the junkyard) · Sebastian (Game Panic) · Aphrodite (the mall atrium) · Widowmaker (Moonlight Bridge) · Rohan (the used bookstore) · Wren (the dorm roof)
+  - **Must match:** ask Claude first. (It isn't "a quiet room in soft morning light", and it isn't just the two of them.)
+- [ ] ⭐ **Christmas Eve (12/24)** for each romance that has one, besides Akihiko's and Haechan's (done). **Fills:** `cg/romance-<id>-christmas.webp` (the `romance-` prefix files it under Romance & bonds in Memories).
+  - **Attach:** style, Solar, the partner. Snow falls only where the line says so; indoor scenes have none.
+  - **Jungwon** (Iwatodai Strip, under the bookstore awning): evening; big slow snowflakes past the ramen shop's lanterns and a karaoke sign; shoppers passing; snow in his hair; he's holding a paper bag and a plain dark scarf (it can be looped round both their necks); a watch on his wrist.
+  - **Jihoon** (Paulownia Mall, central atrium): indoor evening; white paper flakes drifting from a machine above a big tree (no real snow); Jihoon under it with two gift bags; two lopsided crane-game keychains, a dog and a sun.
+  - **Minji** (Iwatodai riverside): evening; an empty river path, blue with snow; a flickering lamp with fairy lights wound round the post; Minji holding a glossy postcard-sized print, her camera with her. It's close to the existing camera-and-lamp CG, so change the framing.
+  - **Shinjiro:** ask Claude first. (It isn't "a quiet room with snow at the window".)
+  - *(Optional)* **Ann** (the mall fountain): indoor evening, no falling snow; gold lights up every pillar, a tree up to the skylight, fountain spray catching the light; Ann in a white coat, red scarf, knitted hat over her pigtails; Solar in her warmest coat; holding hands, walking; carolers, a cocoa seller in a reindeer hat.
+  - *(Optional)* **Kasumi** (Naganaki Shrine): night, orange sky, fresh snow, flakes lit by the offering hall; both lying side by side on the snowy flagstones holding hands, her red glove, Solar's bare hand; Kasumi in a red scarf and pompom hat; Solar in her good coat, hair tied up with a pale pink ribbon; stone foxes capped with snow.
+  - *(Optional)* **Judy** (Club Escapade): the club dark except the jukebox, hundreds of tiny white lights on fishing line over the dance floor, no snow; both sitting on the edge of the stage, feet dangling; a bucket of fried chicken and a strawberry cake; Solar's head on Judy's shoulder.
+  - *(Optional)* **Rio** (Port Island pier, not the station): night, snow slanting in off the bay under the walkway lamps, black water, a lit ship passing; Rio in a big navy coat, knitted pompom hat and gloves; the two of them close under one lamp; a shoebox, white tennis shoes with a navy stripe.
+  - *(Optional)* **Saori** (inside Bookworms, closed for the night): warm, dark narrow aisles, a ticking kerosene heater, a small table at the back; snow falling past paper lanterns outside the front window; Saori's hand holding the front of Solar's coat, foreheads close; two small strawberry cakes on the counter, a gray cloth notebook.
+- [ ] *(Optional)* **Rank 10 (MAX)**, one per link. **Fills:** `cg/link-<id>-r10.webp`. **Attach:** style, Solar, the partner. Solar's clothes go by the season unless the line says otherwise.
+  - **S.E.E.S.**
+    - **Yukari** (the mall atrium): after school in December, indoor mall light; a three-story tree with white lights and a gold star where the fountain usually runs; side by side on the rim of the dry fountain with paper cups of hot chocolate, Yukari stealing Solar's marshmallows; shoppers around.
+    - **Junpei** (the dorm roof): a clear, very cold late-November night, lit only by the stairwell door, small stars over the bay; shoulder to shoulder on the planter; Junpei in his school jacket and cap with a folded square of paper in the band, a bat across his knees, a soft blue notebook labelled HIGHLIGHT REEL beside him.
+    - **Mitsuru** (a Port Island convenience store, better than the council room): December evening under the shop sign's orange light, dry and cold, breath showing; both in coats, standing beside her motorcycle eating steaming nikuman from paper wrappers; Solar holding a spare helmet.
+    - **Aigis** (the dorm roof): mid-January evening, gray snow-light, snow stopped, the roof white with one line of footprints to the rail; standing at the rail holding hands, sleeves touching; snow on Aigis's shoulders; Solar in gloves with her breath showing, Aigis's not; the gray bay and the monorail beyond.
+    - **Fuuka** (the dorm dining room): December evening; only one end of the long table lit and set for two, the rest of the room dark; a cloth, good bowls (miso soup, nikujaga, rice, tamagoyaki), a small blue vase with one sprig; Fuuka in a clean apron across from Solar; lamplit street outside.
+    - **Koromaru** (Naganaki Shrine): early-January evening, dry, very cold, sharp stars; New Year decorations still up, a crowded rack of wooden wish plaques; Solar on a cold step with a wooden plaque on her knee and a pen, her forehead to Koromaru's; Koromaru in a little quilted coat; town windows lit below.
+  - **Searchers**
+    - **Jihoon** (the dorm's front steps): mid-January, night, very cold, no snow; side by side on the stone steps; Jihoon elbows on knees in an unbuttoned coat, Solar in her skirt; a nearly empty tub of cookies-and-cream ice cream on the step, him holding out one spoon.
+    - **Minji** (the dorm lounge): late January, night, lamplight only, the TV dark, an old laptop open; Minji sitting on the carpet with her back against the sofa, Solar on the floor beside her with both arms round her; nobody else there.
+    - **Hanni** (the dorm's 2F hallway): midnight, an eerie green light, the hall light off, every other door shut; Solar in her open doorway; Hanni in the hall in a cream cardigan with a mug of tea and a plate of orange segments.
+    - **Hyein** (the dorm roof): a January night, bitter wind, white city lights, black bay; a tall mirror propped against the water tank; Solar in an orange satin costume with small suns on the hem, a gold arm cuff, a thin gold band with a sun and moon in her hair, two small wings, a long dark coat open over it with the collar up; Hyein at her shoulder straightening a wing; just the two of them.
+    - **Yunjin** (the harbor seawall): 6pm in late January, dark, sodium lights; low tide, shining gray mud, boats sitting on their keels, gulls; close together on the seawall with cans of coffee, one dented; Yunjin in a red puffer.
+    - **Mark** (the station concourse): a January evening, busy, wet umbrellas, a bakery shutter coming down; a public piano painted with grinning seagulls; side by side on its bench, both playing; Solar in her coat.
+    - **Jaehyun** (the dorm's front steps): midnight, eerie green light, streetlamps dark down the hill, the street empty; he stands on the step, she's in the open doorway, his hand resting on top of her head.
+    - **Cherry** (the dorm's front steps): a late-January night, one buzzing streetlight, snow falling, the bay black; both sitting on the step; Cherry's coat buttoned to the throat, arms folded, snow in her hair; her lit phone on the step between them.
+    - **Sunoo** (Yeobo's Cafe): after school in January, windows lightly fogged; just the two of them at the window table with a lot of croissants and coffees and a paper bag with a smiling sun drawn on it; Sunoo in his grandmother's apron.
+    - **Junkyu** (the arcade): a January evening, loud and neon, planets on the carpet, a dance machine; Junkyu hugging Solar round the middle, cheek on her shoulder; not alone: Asahi, Hyunsuk, Jaehyuk and Jihoon (by the crane game) are nearby.
+    - **Danielle** (the station overpass): about 4pm in late January, light fading, a long cold glass corridor above the ticket gates; Danielle sitting very straight on a bench in her coat, a closed folder on her knees; Solar at the far end, the folder between them, not touching.
+    - **Jaemin** (karaoke): a January evening, the biggest booth, a long vinyl couch, a mirror ball, a dish of rice crackers, a folded napkin propped against the mic stand, an intro playing to an empty mic; side by side on the couch, him elbows on knees holding out an index card.
+    - **Chenle** (Game Panic): after school in January, the back row, old carpet, a fire door, a four-seat cabinet; side by side at it, a countdown on the screen; Chenle in a hoodie with his hands in the pocket, eyes on the screen.
+  - **Everyone else**
+    - **Elizabeth** (inside the Velvet Room, not at the door): the blue velvet elevator, numbers over the brass doors; side by side on the long velvet seat, close; Elizabeth gloved, the compendium on her knees and a small cloth notebook; Solar holding her handbook.
+    - **Kuromi** (the dorm lounge): a January evening, a few tinsel strands still up; Kuromi on the couch in a hoodie and her jester hat with a new white notebook with a pink skull; her old black notebook beside her, fat and covered in stickers; a glitter pen; Solar close beside her writing in the new one.
+    - **My Melody** (the dorm kitchen): a January night; My Melody hugging Solar, both arms; rabbit oven mitts on the counter; a dark sesame cake with a pink strawberry swirl on a rack, one slice cut from the middle; an open notebook full of crossed-out pages.
+    - **Mercy** (the hospital roof): daytime in November, cold and clear, no snow; Angela in her white coat and an ugly scarf with a hospital badge; her staff leaning on the rail; Solar holding a gold-and-white metal feather; Genji sitting on the ledge at the far end with his back to them.
+    - **Kiriko** (Naganaki Shrine courtyard): daytime in December, first snow thin on the gravel and the stone foxes' red bibs; Kiriko mid-courtyard, face up, catching snowflakes, snow in her eyelashes; a small brass bell on a red cord on her palm.
+    - **Ann** (the mall fountain): a late-October evening under the mall lights, fountain spray; Ann on the rim in a red jacket and high pigtails; two crepes in paper cones; Solar beside her on the rim.
+    - **Kasumi** (Naganaki Shrine steps): about 4pm in late November, bare trees, thin silver light going gray, breath showing; Solar on the middle step, Kasumi on the step below leaning back against Solar's knees; Kasumi in a track jacket, hair low in a plain black band, a ribbon stick in her hand, a red bow in her pocket.
+    - **Rio** (the tennis courts, after dark): about 6pm in late November, white floodlights in a blue-black evening, breath clouds, a fenced court, a ball cart; only the two of them; an old racket in a faded blue cover; Solar in a coat.
+    - **Saori** (the school library): after school in December, frost at the window edges, dim light at the back of the stacks; Saori kneeling on the carpet sliding a faded gray notebook onto the bottom shelf; Solar beside her in her blazer.
+    - **Haru** (the dorm kitchen): December, after school into early dark, windows fogged white; across the kitchen table with two cups; Haru chin in hand, cheeks red from the cold, a scarf and skirt; a paper coffee bag labelled "Solar", a hand grinder, a steel thermos; Koromaru asleep across Haru's feet.
+    - **Judy** (the Port Island junkyard): an evening the week after Christmas, thin snow on rusted cars and oil drums, snow falling through a yellow work light; a workbench made from a door; a cat in a badly knitted sweater on a dead sedan; Judy closing Solar's fingers over a small data chip with both hands.
+    - **Sebastian** (outside Game Panic, under the awning): a December evening, cold rain on the awning, wet pavement; Sebastian in a hoodie with the hood up, holding a slightly damp pencil sketch of a frog; a worn dark-green twenty-sided die; Solar in her uniform; close but not touching.
+    - **Aphrodite** (the mall atrium): a December evening, a three-story tree in gold, white and pink; Aphrodite in white and gold, glowing, sitting on the planter rim under the tree with a golden apple in her hands; Solar beside her.
+    - **Widowmaker** (Moonlight Bridge): a late-January night, snow falling through the bridge lamps, a moon, an empty walkway; a slow waltz, Widowmaker leading in a red scarf, hands joined; a long frayed black satin ribbon.
+    - **Rohan** (inside Bookworms, closed): late December, snow falling past the window; a cat asleep on the counter; Rohan in his green headband holding a pen; Solar turning the pages of a hand-bound book with a painted cover; just the two of them.
+    - **Wren** (the dorm roof): about 11pm in early March, very cold, ice down one side of the water tank, city lights below, the station lights small in the distance; Wren sitting against the tank, coat pulled round her knees, cap on; Solar beside her, both facing the station lights.
 
 ### 2C. Holidays and group shots *(optional)*
 - [ ] **New Year's at the shrine** (`FEMC-CG-PROMPTS.md` #24). **Attach:** style, Solar, 3–4 friends, and 🎮 `bg/naganaki-shrine-newyear.webp` for the setting. **Fills:** `cg/holiday-new-year.webp`.
-- [ ] **The summer festival (8/16).** **Attach:** style, Solar, 3–4 friends, 🎮 `bg/naganaki-shrine-festival.webp`. **Fills:** `cg/holiday-summer-festival.webp`.
-  ```
-  A summer night festival at a hilltop shrine: paper lanterns, food stalls, goldfish scooping. Solar in a dark yukata with her friends in yukata around her, one holding a candy apple, fireworks just starting overhead. Warm lantern light, joyful.
-  ```
-- [ ] **Valentine's Day (2/14).** **Attach:** style, Solar. **Fills:** `cg/holiday-valentines.webp`.
-  ```
-  Solar in the school hallway on Valentine's Day, holding a small hand-wrapped box of chocolates behind her back, looking down the hall at someone just out of frame. Winter light through the windows, hopeful and nervous.
-  ```
-- [ ] **Side romances** (`FEMC-CG-PROMPTS.md` #5): Ann, Kasumi, Judy, Rio, Saori. **Attach:** style, Solar, the partner. **Fills:** `cg/romance-<id>.webp`.
-- [ ] **Mercy and Aphrodite doing Solar's hair** (#7). **Attach:** style, Solar, Mercy, Aphrodite. **Fills:** `cg/link-mercy-aphrodite-hair.webp`.
-- [ ] **The dorm dinner** (#9). **Attach:** style, Solar, a few cast portraits. **Fills:** `cg/story-dorm-dinner.webp`.
+  - **Must match:** daytime on 1/1; twenty-odd people in coats coming up the shrine steps, half in rented yukata over sweaters; Solar at the offering box, eyes closed, hands together; coins in the air; old women selling amazake by the gate; Kiriko by the fortune stand.
+- [ ] **The summer festival (8/16).** **Attach:** style, Solar, Ann, 🎮 `bg/naganaki-shrine-festival.webp`. **Fills:** `cg/holiday-summer-festival.webp`. There's no group festival scene; this goes on Ann's festival day.
+  - **Must match:** early evening; red-and-white lanterns up the steps and through the trees; stalls smoking (grilled squid, corn); a crowd in yukata and geta; Solar in a gray yukata with pale blue morning glories (not dark); Ann in deep blue with white goldfish and a peach obi; Yukari there; Junpei at the squid stall; candy apples; no fireworks.
+- [ ] **Valentine's Day (2/14).** **Attach:** style, Solar, Yukari, Fuuka. **Fills:** `cg/holiday-valentines.webp`. No 2/14 scene is set at school (it's a Sunday), so this goes on Yukari's Valentine's day at the mall.
+  - **Must match:** daytime; Paulownia Mall pink from the escalators down, paper hearts over the fountain, a line at the chocolate shop; Solar, Yukari and Fuuka in coats on the fountain edge swapping chocolates; Fuuka's lunchbox of partly burnt truffles; Yukari's paper bag from an expensive shop; no snow.
+- [ ] **Side romances** (`FEMC-CG-PROMPTS.md` #5's settings don't match; use these). **Attach:** style, Solar, the partner. **Fills:** `cg/romance-<id>.webp`.
+  - **Ann** (the mall fountain): a late-October evening, violet sky, the mall's evening lights, fountain spray; Ann on the rim in a red jacket and high pigtails; two crepes in paper cones; close together on the rim.
+  - **Kasumi** (Naganaki Shrine, not a rooftop): late November after school, thin silver light through bare trees; Kasumi on the step below Solar's, Solar leaning down to her; track jacket, hair low in a plain black band.
+  - **Judy** (the Port Island junkyard, no scooter, no neon): evening, thin snow on rusted cars, snow falling through a yellow work light; a door-on-oil-drums workbench; Judy holding two small chips; a cat in a knitted sweater on a dead sedan.
+  - **Rio** (the tennis courts at night, not dusk): around 6pm, one court light left on over the net in the blue dark, breath clouds; Rio's hand holding the front of Solar's coat; an old racket in a faded blue cover; a ball cart.
+  - **Saori** (the school library): early December, thin blue light coming sideways between the shelves, frost at the window edges; Saori standing between the stacks, face pink, her hand catching the front of Solar's blazer.
+- [ ] **Mercy and Aphrodite doing Solar's hair** (#7's setting doesn't match; use this). **Attach:** style, Solar, Mercy, Aphrodite. **Fills:** `cg/link-mercy-aphrodite-hair.webp`.
+  - **Must match:** an early-September afternoon in Solar's room; Solar on her desk chair in the middle of the room, a towel round her shoulders, hair loose and very long down her back; Mercy behind her in white with scissors and a comb; Aphrodite in gold kneeling in front with a makeup palette (or standing behind with a hand mirror); no curling iron, no ribbon, no string lights.
+- [ ] **The dorm dinner** (#9's setting doesn't match; use this). **Attach:** style, Solar, a few cast portraits. **Fills:** `cg/story-dorm-dinner.webp`.
+  - **Must match:** a hot July night in the dining room (not the lounge), an air conditioner groaning; hot pot on a portable burner on the long table, extra white bowls at the end; guests round the table, among them Aphrodite at the head, Mercy rewrapping Junpei's wrist, Kiriko handing out fortune slips, Haru at the stove, Kuromi on the couch, Sebastian against the wall with a soda; Mitsuru standing at the edge with an untouched cup of tea; summer clothes.
 - [ ] **The train through Tartarus** (#23, Gemini). **Attach:** 🎮 `cg/story-moonlight-train.webp` (style). **Fills:** `cg/story-train-tartarus.webp`.
+  - **Must match:** ask Claude first. (#23's rails, speed and where everyone stands don't match.)
 
 ---
 
@@ -292,6 +344,8 @@ Checked and fine as they are: the title screen's key art, the Velvet Room, the G
 None left: the 2026-10-22 audit's list was all wired in.
 
 ### CGs
+CG prompts must carry the scene's visual details; check the text before writing a prompt. (Time and light, who's there and who isn't, clothes, poses and distance, setting, season and weather, props, as plain visual direction with no plot. Late-story items are marked "ask Claude first" instead.)
+
 Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 1920 wide), then show it with a `{ cg: '<slug>' }` scene step and clear it with `{ cg: null }`. Add the face's crop point to `places.js cgFocus` for tall phone windows. The album and Theater find CGs in the scene data (`menu.js albumData`), so nothing else is needed. Endings live in `story-endings.js` (one event, branching by route); Christmas Eve scenes are each link's `christmas`; rank 10 / 15 are the link's ranks; graduation is `a6-graduation` in `living-march.js`; Yakushima is `yakushima.js` (the album doesn't walk its trip-plan scenes, so a CG there needs `story-act3.js a3-yakushima` or a `menu.js sceneSources` kind). Record the source in `tools/femc-new-adds.json` and move it to `Added to Game/`.
 
 ### Characters
