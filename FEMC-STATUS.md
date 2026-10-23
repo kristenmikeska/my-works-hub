@@ -26,6 +26,7 @@ Other docs, if you ever want detail:
 - ✅ **New links: Danielle, Jaemin and Chenle** (Runners). They arrive in November once you've followed enough Runners memories (miss them and they wait for New Game+), and each has ten ranks, time together between ranks, more after you max them, texts after their ranks, two holiday invites, everyday moments and run-ins around town, and five perks (one new skill). They live at the guesthouse. Arcana: Danielle Devil, Jaemin Sun, Chenle Hermit
 - ✅ **Their portraits:** all six expressions each, from your sheets, sized to match the other searchers
 - ✅ **Crushes:** from April you can fall for Akihiko (and, once he's in your life, Shinjiro) the slow way: small moments at school, in the dorm and on big nights, texts that change as it grows, and everyone around you noticing. It's your choice, it can be both (it leans Akihiko), and it settles when you pick a romance. Old saves pick it up from the next day
+- ✅ **More than one romance, for real:** slow burns for Haechan, Jungwon, Jihoon and Minji from when they arrive (Haechan's starts on its own), new scenes with Akihiko and Haechan, talks, and the whole dorm noticing. Being with someone holds, and the story stays honest about how it feels. Old saves pick it up
 
 - ✅ **Small battle fixes:** All-Out cloud figures use the fighters' pose-sheet attack frames, flicking and jittering (Ken keeps the silhouette); on phones, bond cut-ins show the whole picture so both faces fit
 

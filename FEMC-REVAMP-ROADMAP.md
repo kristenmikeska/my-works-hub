@@ -298,8 +298,8 @@ Spoiler-free here; the story side is in the hidden plot doc (§20).
    - **A Theater:** replay key story scenes already seen.
 3. Then one full test run.
 
-## Queued: multi-romance realism (Kat, 2026-10-23)
-Next batch after the Akihiko/Shinjiro crush tracks land. Reuse their crush system.
+## ✅ Done: multi-romance realism (Kat, 2026-10-23)
+**Built 2026-10-23** on the crush system (data/crush-haechan.js, crush-triangle.js, crush-jungwon.js, crush-jihoon-minji.js; details in CLAUDE.md). Kat's brief, as queued:
 - **Haechan and Jungwon get full slow-burn tracks** after their arrivals. Jihoon and Minji get lighter ones.
   - Haechan's track carries the "drawn to each other in every universe" thread, including déjà vu before she remembers him.
 - **Solar loving both Akihiko and Haechan is "honest and torn."**
