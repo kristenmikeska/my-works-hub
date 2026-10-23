@@ -297,3 +297,15 @@ Spoiler-free here; the story side is in the hidden plot doc (§20).
    - **A Memories photo album:** every CG and memory card unlocked, P3R-style gallery.
    - **A Theater:** replay key story scenes already seen.
 3. Then one full test run.
+
+## Queued: multi-romance realism (Kat, 2026-10-23)
+Next batch after the Akihiko/Shinjiro crush tracks land. Reuse their crush system.
+- **Haechan and Jungwon get full slow-burn tracks** after their arrivals. Jihoon and Minji get lighter ones.
+  - Haechan's track carries the "drawn to each other in every universe" thread, including déjà vu before she remembers him.
+- **Solar loving both Akihiko and Haechan is "honest and torn."**
+  - She stays with Akihiko and truly loves him, but the pull to Haechan is undeniable and she can't explain it. Everyone feels it, and nobody is a villain.
+  - The ending she picks resolves it. Haechan is the love of her life across universes; Akihiko is real love in this one.
+- **New scenes:**
+  - Akihiko and Haechan go from rivals to respect: early friction (sparring, the roof, who walks her home) turns into real mutual respect, ending in a late talk about what she means to each of them.
+  - Solar talks to Akihiko about Haechan, and to Haechan about Akihiko, at different points.
+  - The dorm reacts: S.E.E.S. and the searchers notice the triangle.
