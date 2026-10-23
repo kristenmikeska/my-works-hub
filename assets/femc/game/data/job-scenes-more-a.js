@@ -394,7 +394,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
      eight-year-old from next door who is sent over on Wednesdays; Daichi, Kenta's friend, who keeps needing an eraser.
      Arc: the English recitation contest. ── */
   tutor: {
-    cast: { kenta: 'Kenta', sakamoto: 'Mrs. Sakamoto', hana: 'Hana', daichi: 'Daichi' },
+    cast: { kenta: 'Kenta', sakamoto: 'Mrs. Sakamoto', hana: 'Hana', tuDaichi: 'Daichi' },
     shifts: [
       { id: 'tu-s-book-covers', months: [4, 5], scene: [
         { place: 'Tutor · The Sakamoto Apartment', time: 'Evening' },
@@ -471,7 +471,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
       { id: 'tu-s-daichi-eraser', scene: [
         { place: 'Tutor · The Sakamoto Apartment', time: 'Evening' },
         { n: "At ten past seven the doorbell rang, and it was a boy Kenta's age with a buzz cut and a baseball cap on backwards, standing on the walkway outside with the air of someone who had rehearsed a sentence on the way up the stairs." },
-        { s: 'daichi', t: "Hi. I'm Daichi. I'm in Kenta's class. I need to borrow an eraser. Mine's broken." },
+        { s: 'tuDaichi', t: "Hi. I'm Daichi. I'm in Kenta's class. I need to borrow an eraser. Mine's broken." },
         { s: 'kenta', t: "He has like nine erasers. He collects them. He has one shaped like a pork cutlet." },
         { n: "Daichi was, within five minutes, sitting at the low table. Within ten he had his own workbook open. Within fifteen it had become extremely clear that the reason he had come was that he was much, much worse at math than Kenta, and knew it, and had heard about the tutor." },
         { choose: [
@@ -482,7 +482,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
             { n: "It got very loud. Daichi lost, but only by one, and only because he spent four minutes arguing that his seven was a one, and Kenta was so pleased with himself he washed the cups anyway, which Solar suspected was the first time in his life he had washed a cup without being asked." }
           ] }
         ] },
-        { s: 'daichi', t: "Can I come next time too? I'll bring my own eraser." },
+        { s: 'tuDaichi', t: "Can I come next time too? I'll bring my own eraser." },
         { s: 'kenta', t: "No. ...Maybe. Ask her, it's her job." },
         { n: "He didn't give the eraser back, Solar noticed. He didn't give back the one he borrowed the next week, either." }
       ] },

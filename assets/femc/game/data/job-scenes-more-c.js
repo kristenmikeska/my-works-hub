@@ -1254,7 +1254,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
 
   /* ── Yeobo's Cafe (Iwatodai Strip) · world H ── */
   yeobos: {
-    cast: { tsuji: 'Mrs. Tsuji', saeki: 'Mr. Saeki', miho: 'Miho', rika: 'Rika', ueda: 'Mrs. Ueda', kou: 'Kou',
+    cast: { ybTsuji: 'Mrs. Tsuji', saeki: 'Mr. Saeki', miho: 'Miho', rika: 'Rika', ueda: 'Mrs. Ueda', kou: 'Kou',
             newspaper: 'Newspaper man', officewoman: 'Office worker', firstyears: 'First-years' },
     shifts: [
       { id: 'yb-s-tsuji', scene: [
@@ -1262,18 +1262,18 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "Mrs. Tsuji had run the tobacco stand at the far end of the Strip for fifty years, a booth the size of a wardrobe with a sliding window and a cat asleep on the cigarettes, and on the café's second week she came in out of the wind, took off her scarf, and sat down at the little table by the radiator, the one with the worn spot on the seat that Solar had noticed on her very first day and wondered about, and said, without looking at the menu, that she'd have the usual." },
         { s: 'sunoo', f: 'happy', t: "Of course! Your usual! Coming right up!" },
         { s: 'sunoo', f: 'surprised', t: "Solar. Solar. What's her usual? I've never seen her before in my life. She's never seen me before in my life. She thinks she has." },
-        { s: 'tsuji', t: "Walnut cake, dear, and a hot milk coffee. Same as always. Same as I've had since the Olympics." },
+        { s: 'ybTsuji', t: "Walnut cake, dear, and a hot milk coffee. Same as always. Same as I've had since the Olympics." },
         { n: "There was no walnut cake. There had never been a walnut cake. Sunoo looked at the display case, full of croissants and nothing else, with the expression of a man looking for his car in a car park where he is beginning to suspect he never parked a car." },
         { choose: [
           { t: "(Play along. Tell her the walnut cake's sold out today.)", then: [
-            { s: 'tsuji', t: "Already? Well. It's popular. It always was. Just the coffee, then. The usual way." },
+            { s: 'ybTsuji', t: "Already? Well. It's popular. It always was. Just the coffee, then. The usual way." },
             { n: "Solar made it the usual way. She didn't know what the usual way was. Her hands did, apparently, a little more milk than anyone would ask for and the sugar stirred in before it went across, and Mrs. Tsuji tasted it and nodded as if a long-standing agreement had been honored." },
             { n: "The next Thursday there was a walnut cake in the display case. A small one, slightly lopsided, with a label in round gel-pen letters, and Sunoo had dark circles under his eyes and would not discuss what time he'd gone to bed." },
             { stat: { charm: 1 } }
           ] },
           { t: "Mrs. Tsuji, what was here before the café?", then: [
-            { s: 'tsuji', t: "Before? A café, dear. This café. Are you feeling all right? You look pale." },
-            { s: 'tsuji', t: "Sunoo-kun, she looks pale. Feed her something." },
+            { s: 'ybTsuji', t: "Before? A café, dear. This café. Are you feeling all right? You look pale." },
+            { s: 'ybTsuji', t: "Sunoo-kun, she looks pale. Feed her something." },
             { n: "Sunoo, behind the counter, had gone very still at the sound of his own name, and then smiled, wide and instant, and said he would, he'd feed her right away, and did, and didn't look at Solar for a full minute afterward, and when he did his eyes were a little too bright." },
             { stat: { knowledge: 1 } }
           ] }
@@ -1395,7 +1395,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { place: "Iwatodai Strip · Yeobo's Cafe" },
         { n: "In the first days of the year Sunoo made soup. A big pot of it on the back burner, rice cakes sliced thin as coins in a clear broth with egg and green onion and seaweed on top, and he gave a bowl to every regular who came in whether they'd ordered it or not, and stood over each of them until they started eating, with his hands clasped and his face very serious." },
         { s: 'sunoo', f: 'neutral', t: "Rice cake soup. For the new year. You eat it and you're a year older. That's the rule. Everybody gets older together, on the same day. So nobody's left behind." },
-        { s: 'tsuji', t: "It's ozoni. It's just ozoni. In a café. In a *bowl*." },
+        { s: 'ybTsuji', t: "It's ozoni. It's just ozoni. In a café. In a *bowl*." },
         { s: 'sunoo', f: 'happy', t: "It's not ozoni! It's... okay, it's a little bit ozoni. It's ozoni's cousin. They'd get along." },
         { n: "Mrs. Tsuji ate two bowls. Mr. Saeki ate his standing up, in four minutes flat, and then, unprecedented, asked for more. The newspaper man ate his behind his paper, silently, and left the bowl so clean it looked unused." },
         { n: "Solar's bowl was waiting for her on the counter when she came out of the back, and the broth was hot and plain and tasted of something she couldn't name, a morning, a table, too many people talking at once, and she stood very still with the spoon in her hand for a moment, and then kept eating." },
@@ -1548,7 +1548,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
       ] },
       { id: 'yb-q-tsuji', scene: [
         { n: "Mrs. Tsuji at the radiator table with her milk coffee, the usual way, and the cat from the tobacco stand asleep on her lap, which she had apparently brought with her, and which nobody felt it was their place to mention." },
-        { s: 'tsuji', t: "He likes the radiator. Everybody likes the radiator. It's the best seat on the Strip, and it always was." }
+        { s: 'ybTsuji', t: "He likes the radiator. Everybody likes the radiator. It's the best seat on the Strip, and it always was." }
       ] },
       { id: 'yb-q-bag', scene: [
         { n: "At closing the display case was emptied into a paper bag, every leftover croissant, and Sunoo pressed it on whoever was standing nearest the door. Tonight that was a startled salaryman who'd only come in to ask for directions." },

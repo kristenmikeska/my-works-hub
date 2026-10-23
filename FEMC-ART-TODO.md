@@ -118,7 +118,11 @@ Close-up of [NAME] raising an ornate silver Evoker to their temple, [EXPRESSION]
 - [ ] Aigis, expressionless
 - [ ] *(Optional)* Haechan, Jungwon, Jihoon, Minji
 - **Fills:** `battle/art/summon/<name>-evoker.webp`.
-- *(Optional)* **Evoker sheets** like Solar's (raise, shot, lower), so the summon also plays on the battlefield. **Attach:** 🎨 `Added to Game/solar-evoker-animation.png` and the portrait. Use the strike-sheet prompt in 4D with "(1) raising an ornate silver Evoker to their temple, (2) the shot, hair and coat lifting in blue wind and glass shards, (3) lowering it". **Fills:** `battle/art/summon/<name>-evoke-0..2.webp`.
+- *(Optional)* **Evoker sheets** like Solar's (raise, shot, lower), so the summon also plays on the battlefield. **Attach:** 🎨 `Added to Game/solar-evoker-animation.png` (style) and the character's portrait.
+  ```
+  A 3-panel horizontal sheet on a plain white background showing the same character from the attached portrait in three moments of summoning their Persona: (1) raising an ornate silver Evoker to their temple, (2) the shot, hair and coat lifting in blue wind and glass shards, (3) lowering it. Same face, outfit, art style and scale in every panel, matching the attached Evoker sheet's style, nothing overlapping. Character only.
+  ```
+  (It's the strike-sheet prompt from 5D with the three summon moments filled in.) **Fills:** `battle/art/summon/<name>-evoke-0..2.webp`.
 
 ### 4B. Full bodies for the Compendium
 - **Attach:** their portrait, plus 🎨 `Added to Game/akihiko-fullbody.png` (S.E.E.S.) or `Added to Game/CherryFullBody.png` (everyone else) for style.
@@ -147,9 +151,9 @@ Edit this portrait. Keep the framing, crop, size, art style, hair and outfit exa
 - **Fills:** `portraits/<id>/<expression>.webp`.
 
 ### 4D. *(Optional)* Faces for the regulars
-Everyone below talks in scenes but has no portrait, so today they show as a name only. 47 speakers (7 to 67 lines each, counted 2026-10-23 across `assets/femc/game/**/*.js`), plus 3 teachers who need a small change to show. Looks marked *(invented)* aren't in the game text, so change anything you like; the rest come from the text or from P3 canon.
+Everyone below talks in scenes but has no portrait, so today they show as a name only. 47 speakers (7 to 67 lines each, counted 2026-10-23 across `assets/femc/game/**/*.js`), plus 3 teachers (their faces show in class questions once made). Looks marked *(invented)* aren't in the game text, so change anything you like; the rest come from the text or from P3 canon.
 
-**Do these first ⭐** (most lines): Kenta 67, Mrs. Okada 43, The Master 36, Ōta 35, Mr. Maeda 33, Mitsuko 32, Ms. Kagami 31, Mrs. Kubo 31, Tsuji 31, Chiba 31, Clerk 29, Bunkichi 28, Mr. Tanabe 28.
+**Do these first ⭐** (most lines): Kenta 67, Mrs. Okada 43, The Master 36, Ōta 35, Mr. Maeda 33, Mitsuko 32, Ms. Kagami 31, Mrs. Kubo 31, Tsuji 31, Chiba 31, Clerk 28, Bunkichi 28, Mr. Tanabe 28.
 
 **How to make them**
 - **One neutral each** is enough. For the ⭐ regulars, a second **happy** face is a nice extra: use the 4C edit prompt with the neutral you made and `[EXPRESSION]` = a warm, open smile. **Fills:** `portraits/<id>/happy.webp`.
@@ -187,28 +191,28 @@ A Persona 3 Reload style character sheet, 3 columns by 2 rows, six different peo
   ```
   A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese woman in her forties, slim, black hair pulled back in a neat low knot, thin reading glasses on a fine chain, a crisp white shirt with the sleeves rolled and a long black café apron, one eyebrow very slightly raised, a cool appraising look, neutral expression, transparent background.
   ```
-  - **Fills:** `portraits/chKagami/neutral.webp` (and optional `happy.webp`)
+  - **Fills:** `portraits/chkagami/neutral.webp` (and optional `happy.webp`)
 - [ ] **Mr. Okuda** · `chOkuda` · 14 lines
   - **Who:** A Chagall regular who does the crossword at the window over black coffee. Courtly and quietly funny.
   - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
   ```
   A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): an elderly Japanese gentleman, thin, silver hair neatly combed, round wire glasses he looks over the top of, a tweed jacket and a knitted vest over a pressed shirt, a fountain pen in his breast pocket, a very dry little smile, neutral expression, transparent background.
   ```
-  - **Fills:** `portraits/chOkuda/neutral.webp`
+  - **Fills:** `portraits/chokuda/neutral.webp`
 - [ ] **Hinata** · `chHinata` · 14 lines
   - **Who:** A young man who studies every afternoon in the café's corner behind a wall of workbooks.
   - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
   ```
   A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese young man of nineteen, slight and tired-looking, black hair grown a little too long and pushed off his forehead, a plain navy coat over a gray sweater, a mechanical pencil in his hand, shadows under earnest, anxious eyes, neutral expression, transparent background.
   ```
-  - **Fills:** `portraits/chHinata/neutral.webp`
+  - **Fills:** `portraits/chhinata/neutral.webp`
 - [ ] **Yuu** · `chYuu` · 11 lines · *(invented)*
   - **Who:** Chagall's weekday-afternoon barista, a university student who believes in lucky coffee and can fix anything with a paperclip.
   - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
   ```
   A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese university student of about twenty, lanky, soft brown hair falling over one eye, a white shirt with a black Chagall apron, a pair of pliers poking out of the apron pocket, an easygoing, slightly dreamy grin, neutral expression, transparent background.
   ```
-  - **Fills:** `portraits/chYuu/neutral.webp`
+  - **Fills:** `portraits/chyuu/neutral.webp`
 
 **The Strip (Iwatodai Strip jobs)**
 - [ ] ⭐ **The Master (Hagakure)** · `hgMaster` · 36 lines
@@ -217,7 +221,7 @@ A Persona 3 Reload style character sheet, 3 columns by 2 rows, six different peo
   ```
   A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a short, square Japanese man in his sixties with thick forearms, a white towel knotted around his head, a white cook's jacket with the sleeves pushed up, arms crossed, a flat, unreadable stare across the steam, deep lines at the corners of his eyes, neutral expression, transparent background.
   ```
-  - **Fills:** `portraits/hgMaster/neutral.webp` (and optional `happy.webp`)
+  - **Fills:** `portraits/hgmaster/neutral.webp` (and optional `happy.webp`)
 - [ ] ⭐ **Mitsuko** · `mitsuko` · 32 lines
   - **Who:** Half of the elderly couple who run Bookworms. Brisk, warm, keeps the ledger and the tea going. *(P3/P3R canon NPC.)*
   - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style), plus a P3R screenshot of Mitsuko if you have one.
@@ -238,14 +242,14 @@ A Persona 3 Reload style character sheet, 3 columns by 2 rows, six different peo
   ```
   A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a tall Japanese man in his twenties, short spiky black hair under a navy bandana, a white cook's jacket with the sleeves shoved up over forearms dotted with small kitchen burns, a ladle in one hand, a big open grin, neutral expression, transparent background.
   ```
-  - **Fills:** `portraits/hgDaisuke/neutral.webp`
+  - **Fills:** `portraits/hgdaisuke/neutral.webp`
 - [ ] **Mr. Gotou (Hagakure)** · `hgGotou` · 13 lines
   - **Who:** A Hagakure regular, a site foreman who keeps taking on the giant-bowl challenge.
   - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
   ```
   A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese man of forty-five built like a refrigerator, buzz-cut hair, a thick neck, a navy work jacket with a reflective stripe over a gray T-shirt, a towel round his neck, a solemn, determined face, neutral expression, transparent background.
   ```
-  - **Fills:** `portraits/hgGotou/neutral.webp`
+  - **Fills:** `portraits/hggotou/neutral.webp`
 - [ ] **Mrs. Ueda (Yeobo's Cafe)** · `ueda` · 9 lines · *(invented)*
   - **Who:** A young mother who comes into Yeobo's with her toddler asleep in the stroller.
   - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
@@ -429,8 +433,8 @@ A Persona 3 Reload style character sheet, 3 columns by 2 rows, six different peo
   - **Fills:** `portraits/mori/neutral.webp`
 
 **Port Island (konbini, Respawn, fish market)**
-- [ ] ⭐ **Clerk (convenience store)** · `clerk` · 29 lines · *(invented)*
-  - **Who:** The night clerk Solar works beside at the station convenience store. Laid-back, a little lazy, kind underneath. *(generic id; see the note below)*
+- [ ] ⭐ **Clerk (convenience store)** · `clerk` · 28 lines · *(invented)*
+  - **Who:** The night clerk Solar works beside at the station convenience store. Laid-back, a little lazy, kind underneath. He's also the tired clerk in the prologue's store.
   - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
   ```
   A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese man in his mid-twenties, lean, slightly shaggy brown-dyed hair with dark roots, a blue-and-white striped convenience store uniform shirt with a name tag, a pen behind one ear, sleepy half-lidded eyes and an easy, lopsided smile, neutral expression, transparent background.
@@ -463,14 +467,14 @@ A Persona 3 Reload style character sheet, 3 columns by 2 rows, six different peo
   ```
   A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese woman in her forties, dark hair in a low practical ponytail, a cardigan over pale blue hospital scrubs, a lanyard with an ID card, faint tiredness under the eyes and a polite, reserved smile, neutral expression, transparent background.
   ```
-  - **Fills:** `portraits/kbOno/neutral.webp`
+  - **Fills:** `portraits/kbono/neutral.webp`
 - [ ] **Mr. Hattori (convenience store)** · `kbHattori` · 9 lines
   - **Who:** A taxi driver in his fifties who buys a black coffee and a pork bun every night. Shy, decent, ducks his head when he smiles.
   - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
   ```
   A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese man in his fifties, a neat graying side-part, a dark navy taxi driver's uniform jacket and tie, white driving gloves folded into his breast pocket, a shy, slightly bashful face, neutral expression, transparent background.
   ```
-  - **Fills:** `portraits/kbHattori/neutral.webp`
+  - **Fills:** `portraits/kbhattori/neutral.webp`
 - [ ] **The regular (Respawn)** · `regular` · 9 lines · *(invented)*
   - **Who:** One of Respawn's night regulars; always seat fourteen.
   - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
@@ -509,7 +513,7 @@ A Persona 3 Reload style character sheet, 3 columns by 2 rows, six different peo
   ```
   - **Fills:** `portraits/salaryman/neutral.webp`
 
-**Teachers** *(needs a small change to show: class questions show the teacher's name only; see the note for Claude)*
+**Teachers** *(their face shows beside the class question once it exists)*
 - [ ] **Mr. Ono** · `ono` (teacher key in `questions.js`) · 10 class questions
   - **Who:** World History teacher who wears a samurai helmet to class and derails into the Sengoku period. *(P3/P3R canon NPC.)*
   - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style), plus a P3R screenshot of him if you have one.
@@ -535,9 +539,9 @@ A Persona 3 Reload style character sheet, 3 columns by 2 rows, six different peo
 *Not listed:* Mrs. Kanda (the guesthouse cook), Hiyori (fan club) and the other teachers have no spoken lines yet, so a face wouldn't show anywhere. Kid, girl, boy and others under 7 lines are left out too.
 
 *Note for Claude (wiring):*
-- **CamelCase ids:** `femc-portraits.py` lowercases folder names (`cid = folder.lower()`), so `hgMaster`, `hgDaisuke`, `hgGotou`, `chKagami`, `chOkuda`, `chHinata`, `chYuu`, `kbOno` and `kbHattori` would be indexed as e.g. `hgmaster` and never found. Add `SAME_FACE` entries in `core.js` (`hgMaster: 'hgmaster'`, ...) or teach the tool to keep the id's case. The disk is case-insensitive, so the folder name itself is fine either way.
-- **Shared ids:** a portrait shows for every speaker with that id. `tsuji` is both tennis-club Tsuji (31 lines) and Mrs. Tsuji at Yeobo's (6); `ueda` is Mrs. Ueda (9) and library-club Ueda (2); `daichi` is the Respawn kid (8) and Kenta's friend at tutoring (2); `clerk` is the konbini clerk (27) plus one line each in `mitsuru.js` and `prologue.js`. Give the minor one its own id (with a `cast` name) before adding the face.
-- **Teachers:** `ui.js classPeriod` builds the question box with the teacher's name only. Showing a face means adding `G.portrait(q.teacher)` to that box (and the quiet-class line).
+- **CamelCase ids work (fixed 2026-10-23):** `femc-portraits.py` writes lowercase folders (`Character Portraits/chKagami/` → `portraits/chkagami/`, the key in `portraits/index.js`), and `core.js faceId` lowercases every speaker id before looking it up, so `hgMaster`, `chKagami`, `kbOno` and the rest find their faces. The source folder can be named either way.
+- **Shared ids split (2026-10-23):** each id above is one person now. The minor ones got their own ids and `cast` names: `ybTsuji` (Mrs. Tsuji at Yeobo's), `lbUeda` (Ueda in the library committee), `tuDaichi` (Kenta's friend at tutoring), `wdClerk` (the Wild-Duck clerk in Mitsuru's rank 4). The prologue's convenience-store clerk is the same man as the konbini job's (the job opens on the same "...Welcome?"), so he stays `clerk` on purpose. The minor ones have under 7 lines, so they aren't listed above; a face for any of them goes in `portraits/<id lowercased>/`.
+- **Teachers (wired 2026-10-23):** `ui.js classPeriod` shows `G.portrait(<teacher key>)` beside a class question (and small beside the quiet-class line) once `portraits/<key>/` exists; until then the name alone, as before.
 - After cutting, check `portraits/scale.js` and see each face in a scene (`femc-check-scenes.py`).
 
 ---

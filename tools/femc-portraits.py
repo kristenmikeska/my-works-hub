@@ -9,6 +9,8 @@ Run: python3 tools/femc-portraits.py [name ...]   (no names = everyone; takes a 
 Source: ~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits/<Name>/<Name>-<Emotion>[-N].png|webp
         (the name prefix is optional: plain <emotion>.png works too, e.g. Kiriko/smiling.png)
 Output: assets/femc/portraits/<id>/<emotion>.webp and assets/femc/portraits/index.js
+        <id> is the folder name lowercased (the site is case-sensitive, the Mac isn't): a camelCase speaker id like
+        chKagami is found by core.js faceId, which lowercases ids the same way.
 """
 import os, re, sys, json
 from PIL import Image, ImageChops, ImageFilter, ImageStat

@@ -7,7 +7,7 @@
   needs: { knowledge: 2 },
   home: { area: 'Gekkoukan High', spot: 'Student Council Room', slot: 'after', days: [2, 4],
           hint: 'After school on Tuesdays and Thursdays, in the student council room.' },
-  cast: { 'mk-vp': 'Vice President' },
+  cast: { 'mk-vp': 'Vice President', wdClerk: 'Clerk' },
   approach: "The student council room door is open an inch, and through the gap you can see a curtain of red hair bent over a stack of paper that looks, from here, like it's losing.",
   invite: {
     ask: ["Are you free this afternoon? There's a matter I'd value your opinion on.", "The council room has two chairs, and only one of them is occupied. If you're nearby.", "I've been told there is a crêpe stand at Paulownia Mall. I would like to verify this. Would you accompany me?", "Solar. If you have an hour, I would appreciate the company. This is not an order.", "I have tea, and far too much of it. Join me?"],
@@ -226,7 +226,7 @@
       { n: "Hagakure had been item one. There were, she admitted on the walk down the strip, rather a lot of items. She'd kept them for years in the back of her council planner, in very small handwriting, on a page with no heading at all, as if giving it a title would have made it something she was allowed to want." },
       { n: "Wild-Duck at five on a rainy weekday was steam on the windows and fryer oil and a baseball team and a radio, and a girl behind the counter in a paper hat with the thousand-yard stare of someone in the last hour of a shift. Mitsuru stood in front of the menu board with her hands folded and read it the way she read budget requests, top to bottom, twice, and then stepped up to the counter." },
       { s: 'mitsuru', f: 'neutral', t: "Good evening. I'll have the Wild-Duck. Is the duck seasonal?" },
-      { s: 'clerk', t: "...It's a burger." },
+      { s: 'wdClerk', t: "...It's a burger." },
       { choose: [
         { t: "(Order for both of you, fast, before she asks about wine.)", notes: 3, then: [
           { n: "Solar ordered two sets, large, the Mystery Burger, two colas, in one breath, and slid the money across, and the girl in the paper hat looked at her with something like love." },

@@ -518,7 +518,7 @@ window.FEMC_GAME_CLUBS = {
 
   /* ── Library committee and book club (Tue / Thu) ── */
   'club-library': {
-    cast: { ozawa: 'Ms. Ozawa', kuga: 'Kuga', hoshino: 'Hoshino', tamura: 'Tamura', ueda: 'Ueda', omori: 'Ōmori' },
+    cast: { ozawa: 'Ms. Ozawa', kuga: 'Kuga', hoshino: 'Hoshino', tamura: 'Tamura', lbUeda: 'Ueda', omori: 'Ōmori' },
     join: [
       { place: 'Gekkoukan High · Library', time: 'After School' },
       { n: "The library on a Tuesday afternoon smelled of floor wax and warm radiators and the particular dust that comes off paper nobody has opened in a long time, and the light came in through the tall windows at a slant and lay across the long tables in pale stripes, and the only sound was the brass date stamp at the desk going down, and down, and down, like a slow and very polite heartbeat." },
@@ -798,7 +798,7 @@ window.FEMC_GAME_CLUBS = {
         { n: "The quiet first-year from the window chair was at the desk again, returning something, and Solar watched him do it, and watched him not leave, and watched him look at the corkboard and then at the big table and then at his own shoes, the way you stand at the edge of a pool deciding about the water." },
         { choose: [
           { t: "(Go over. Ask him what he thought of the blind date.)", stat: { charm: 1 }, then: [
-            { s: 'ueda', t: "...It was about a man walking a long way with a letter. I didn't want to call anyone after. I wanted to write one. Is that wrong?" },
+            { s: 'lbUeda', t: "...It was about a man walking a long way with a letter. I didn't want to call anyone after. I wanted to write one. Is that wrong?" },
             { s: 'solar', f: 'neutral', t: "Tell Tamura. He wrote the label." },
             { n: "The boy looked at the big table, where Tamura was very nearly asleep, and back at her, and then walked over, all the way, and stood beside Tamura's chair until Tamura opened one eye, and said it. Tamura sat up. Nobody had ever told him his label had done anything. He looked like a man who'd been handed a medal." }
           ] },
@@ -806,7 +806,7 @@ window.FEMC_GAME_CLUBS = {
             { n: "Solar picked up the pen from the big table and held it out across the desk toward him, not saying anything, just holding it, the way you'd hold out a hand to someone stepping off a boat, and he looked at it for a long time, and took it." }
           ] }
         ] },
-        { s: 'ueda', t: "Ueda. First-year. I've been reading in the window chair since April. I didn't know you were allowed to just... sit at the big table." },
+        { s: 'lbUeda', t: "Ueda. First-year. I've been reading in the window chair since April. I didn't know you were allowed to just... sit at the big table." },
         { s: 'hoshino', t: "You're allowed! You're SO allowed! Kuga-senpai, tell him he's allowed!" },
         { s: 'kuga', t: "...You're allowed." },
         { n: "He wrote his name on the fifth line, small, and Kuga took the form and looked at it for a long time without speaking." },
