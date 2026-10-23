@@ -236,6 +236,8 @@ try:
     ok(ar['sent'] >= 45, f"{ar['sent']} reactive texts across the links")
     amb = p.eval(r"""(()=>{const G=FemcGame;const bad=[];let n=0;
       for(const t of G.D.texts.ambient){const s=LW.at(t.to,'early');s.phone.done=G.D.texts.texts.map(x=>x.id).concat(G.D.texts.ambient.filter(x=>x!==t).map(x=>x.id));(t.events||[]).forEach(e=>{if(!s.events.includes(e))s.events.push(e)});Object.entries(t.route||{}).forEach(([id,r])=>LW.link(id,10,{route:r}));if(t.rank&&typeof t.rank==='object')Object.entries(t.rank).forEach(([id,r])=>{if(!t.route?.[id])LW.link(id,r)});
+        // Crush-gated texts (data/crush.js, 2026-10-23): the track in the gate's first phase, and whoever must be met.
+        (t.met||[]).forEach(id=>{if(!s.met.includes(id))s.met.push(id)});Object.entries(t.crush||{}).forEach(([id,ph])=>{s.crush.t[id]={opt:'in',phase:[].concat(ph)[0],warmth:0,peak:5,since:{}}});
         let got=false;for(let d=G.dayOf(t.to)-1;d<=G.dayOf(t.to)&&!got;d++){s.day=d;s.phone.ambientDay=-1;for(const slot of G.slotsFor(G.dayInfo(d))){s.slot=slot;G.deliverTexts();if(s.phone.done.includes(t.id)&&(s.phone.threads[t.thread]||[]).length){got=true;break;}}}
         if(got)n++;else bad.push(t.id);}
       // At most one a day: a day with several open windows.

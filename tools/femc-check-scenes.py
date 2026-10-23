@@ -24,7 +24,9 @@ print("JSON:" + JSON.stringify({
   jobScenes: window.FEMC_GAME_JOB_SCENES, more: window.FEMC_GAME_JOB_SCENES_MORE || {}, clubs: window.FEMC_GAME_CLUBS || {},
   runins: window.FEMC_GAME_RUNINS || [], variants: window.FEMC_GAME_VARIANTS || {}, extras: window.FEMC_GAME_LINK_EXTRAS || {},
   links: (window.FEMC_GAME_LINKS || []).filter(function(l){ return l.status !== 'stub'; }),
-  events: (window.FEMC_GAME_EVENTS || []).map(function(e){ return { id: e.id, cast: e.cast }; })
+  events: (window.FEMC_GAME_EVENTS || []).map(function(e){ return { id: e.id, cast: e.cast }; }),
+  crush: window.FEMC_GAME_CRUSH || { tracks: {}, moments: [], world: {} },
+  ambient: ((window.FEMC_GAME_TEXTS || {}).ambient || []).map(function(t){ return { id: t.id, crush: t.crush || null }; })
 }));
 '''
 tmp = tempfile.NamedTemporaryFile('w', suffix='.js', delete=False); tmp.write(out); tmp.close()
@@ -44,6 +46,8 @@ for e in D['events']:
     cast.update(e.get('cast') or {})
 for r_ in D['runins']:
     cast.update(r_.get('cast') or {})
+for m in D['crush'].get('moments', []):
+    cast.update(m.get('cast') or {})
 BASE_CAST = ['mitsuru-radio', 'porter', 'clerk', 'ikutsuki', 'teacher', 'fuuka', 'koromaru', 'ken', 'aigis', 'elizabeth', 'wren', 'kurosawa']
 for c in BASE_CAST: cast.setdefault(c, c)
 bg = D['places']['bg']
@@ -96,6 +100,37 @@ for r_ in D['runins']:
 for lid, x in D['extras'].items():
     for md, h in (x.get('holidays') or {}).items(): walk(h.get('scene'), f'holiday/{lid}/{md}')
     for e in (x.get('lateNights') or []): walk(e.get('scene'), f'night/{e.get("id")}')
+# Crushes (2026-10-23, data/crush*.js): moments, the world's lines and the texts' gates.
+CR = D['crush']; TRACKS = set(CR.get('tracks', {})); PH = {'none', 'out', 'noticed', 'crush', 'puppy', 'almost', 'dating', 'faded'}
+def gate_ok(g, key):
+    for tid, ph in (g or {}).items():
+        if tid not in TRACKS: problems.append(f'{key}: crush gate names unknown track {tid}')
+        for x in ([ph] if isinstance(ph, str) else ph if isinstance(ph, list) else []):
+            if x not in PH: problems.append(f'{key}: unknown phase {x}')
+def crush_lines(lines, key):
+    for l in lines or []:
+        if not isinstance(l, dict): continue
+        if 'ifCrush' in l: gate_ok(l['ifCrush'], key)
+        if 'ifCrushed' in l: gate_ok(l['ifCrushed'], key)
+        for k in ('then', 'else'): crush_lines(l.get(k), key)
+        for o in l.get('choose', []) or []:
+            for tid in (o.get('crush') or {}):
+                if tid not in TRACKS: problems.append(f'{key}: choice crush names unknown track {tid}')
+            crush_lines(o.get('then'), key)
+for m in CR.get('moments', []):
+    k = 'crush/' + str(m.get('id')); uid(m.get('id'), 'crush')
+    if m.get('who') not in links: problems.append(f'{k}: who {m.get("who")} is not a link')
+    if not m.get('optIn') and not m.get('crush'): problems.append(f'{k}: needs optIn or a crush gate')
+    if m.get('optIn') and m['optIn'] not in TRACKS: problems.append(f'{k}: optIn names unknown track')
+    if m.get('slot') not in ('early', 'morning', 'lunch', 'afternoon', 'after', 'evening', 'late'): problems.append(f'{k}: bad slot {m.get("slot")}')
+    if not m.get('place') or not bg_ok(m['place']): problems.append(f'{k}: no background rule for place "{m.get("place")}"')
+    gate_ok(m.get('crush'), k); walk(m.get('scene'), k); crush_lines(m.get('scene'), k)
+for path, lst in CR.get('world', {}).items():
+    for i, x in enumerate(lst):
+        if not (isinstance(x, str) or x.get('t')): problems.append(f'world/{path}#{i}: no text')
+        if isinstance(x, dict): gate_ok(x.get('crush'), f'world/{path}#{i}')
+for t in D['ambient']:
+    if t.get('crush'): gate_ok(t['crush'], 'text/' + t['id'])
 want = sys.argv[sys.argv.index('--links') + 1].split(',') if '--links' in sys.argv else []
 for lid in want:
     l = links.get(lid)
@@ -114,4 +149,5 @@ print('\n'.join(errs))
 print('\n'.join(problems) if problems else 'OK: no problems')
 print(json.dumps({'jobPacks': {k: {kk: len(v) for kk, v in p.items() if isinstance(v, list)} for k, p in D['more'].items()},
                   'clubs': {k: {kk: len(v) for kk, v in p.items() if isinstance(v, list)} for k, p in D['clubs'].items()},
-                  'runins': len(D['runins'])}))
+                  'runins': len(D['runins']), 'crushMoments': {w: sum(1 for m in CR.get('moments', []) if m.get('who') == w) for w in sorted(TRACKS)},
+                  'crushWorld': sum(len(v) for v in CR.get('world', {}).values())}))

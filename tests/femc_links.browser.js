@@ -19,10 +19,17 @@ window.LinkAudit = (() => {
   G.S.links[id]={rank:p.rank??(e.kind==='rank'?e.i:e.kind==='after'||e.kind==='stretch'?10:5),xp:0,seen:[],rankDay:{},hung:e.i,after:e.i,push:0,reversed:false,route:p.route||'friend'};
   for(const [cid,r] of Object.entries(p.ranks||{}))G.S.links[cid]={rank:r,xp:0,seen:[],rankDay:{},push:0,reversed:false};
   for(const [cid,value] of Object.entries(p.romances||{})){const state=G.S.links[cid]||={rank:8,xp:0,seen:[],rankDay:{},push:0,reversed:false};state.route=value?'romance':'friend';}
+  // Crushes (2026-10-23): a track set to a phase its ifCrush names (a growing one with no route on that link yet), and
+  // ifCrushed's peak reached or not.
+  G.S.crush={t:{},seen:[],lastDay:-99};
+  for(const [cid,ph] of Object.entries(p.crush||{})){if(!ph)continue;const peak=['noticed','crush','puppy','almost','dating'].indexOf(ph)+1;G.S.crush.t[cid]={opt:'in',phase:ph,warmth:0,peak,since:{}};
+   if(['noticed','crush','puppy','almost'].includes(ph)&&G.S.links[cid])delete G.S.links[cid].route;}
+  for(const cid of Object.keys(p.crushed||{})){const t=G.S.crush.t[cid]||={opt:'in',phase:'faded',warmth:0,peak:0,since:{}};t.peak=5;}
  };
  function presets(e,id) {
-  const flags=new Set(),written=new Set(),met=new Set(),events=new Set(),romances=new Set(),dates=new Set(),others={};let rank=false,date=false,needs=false,route=false,heading=false;
+  const flags=new Set(),written=new Set(),met=new Set(),events=new Set(),romances=new Set(),dates=new Set(),others={},crushes={},crushed=new Set();let rank=false,date=false,needs=false,route=false,heading=false;
   walk(e.scene,l=>{[].concat(l.ifFlag||[]).forEach(f=>flags.add(f));[].concat(l.ifMet||[]).forEach(m=>met.add(m));[].concat(l.ifEvent||[]).forEach(ev=>events.add(ev));if(l.ifRank)Object.entries(l.ifRank).forEach(([cid,r])=>{if(cid===id||!id)rank=true;else others[cid]=Math.max(others[cid]||0,r);});if(l.ifRoute)route=true;if(l.ifHeading)heading=true;if(l.ifRomance)romances.add(l.ifRomance);if(l.ifBefore||l.ifAfter){date=true;dates.add(l.ifBefore||l.ifAfter);}if(l.needs)needs=true;
+   if(l.ifCrush)Object.entries(l.ifCrush).forEach(([cid,ph])=>{crushes[cid]||=[].concat(ph)[0];});if(l.ifCrushed)Object.keys(l.ifCrushed).forEach(cid=>crushed.add(cid));
    if(l.flag) (typeof l.flag==='string'?[l.flag]:Array.isArray(l.flag)?l.flag:Object.keys(l.flag)).forEach(f=>written.add(f));});
   // These are derived inside the scene from the selected route, never independent player choices.
   ['mark-home','mark-away'].forEach(f=>flags.delete(f));
@@ -44,6 +51,8 @@ window.LinkAudit = (() => {
   // Each date gate is played on its threshold day and the day before (e.g. ifBefore 12/23 -> 12/22 and 12/23).
   if(date){const ds=[...new Set([...dates].flatMap(t=>[G.mdOf(G.dayOf(t)-1),t]))];out=out.flatMap(p=>ds.map(d=>({...p,date:d})));}
   if(needs)out=out.flatMap(p=>[p,{...p,low:true}]);
+  for(const [cid,ph] of Object.entries(crushes))out=out.flatMap(p=>[p,{...p,crush:{...p.crush,[cid]:ph}}]);
+  for(const cid of crushed)out=out.flatMap(p=>[p,{...p,crushed:{...p.crushed,[cid]:true}}]);
   return out;
  }
  function expected(id,e,path,key){let pick=0,notes=0;const text=[],nodes=[];

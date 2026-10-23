@@ -15,6 +15,7 @@
      { phone: [{ from, t }], contact }        a text conversation
      { stat } { yen } { flag } { tally } { fragment } { register } { join } { unlock } { setDate }   effects (via the game)
      { ifRank } { ifStat } { ifFlag } { ifMet } { ifRoute } { ifRomance } -> then / else
+     { ifCrush: { id: [phases] } } { ifCrushed: { id: 'phase' } } -> then / else; { crush: { id: 'in' | 'out' | n } } an effect (core.js crushes)
      { ifEvent: 'event-id' }     -> then / else, only if that story event is recorded in the save
      { ifAfter: 'M/D', then, else }   today is on or after M/D (same rule as a rank's `after`)
      { ifBefore: 'M/D', then, else }  today is strictly before M/D (so ifBefore X is exactly ifAfter X's else)
@@ -188,7 +189,7 @@ window.FemcScene = (() => {
     const over = {}, baseFlags = opts.replayFlags || null;
     const flagOn = id => (id in over ? !!over[id] : baseFlags ? !!baseFlags[id] : G.flag(id));
     const overFlags = v => { if (typeof v === 'string') over[v] = true; else if (Array.isArray(v)) v.forEach(k => { over[k] = true; }); else if (v && typeof v === 'object') Object.assign(over, v); };
-    const EFFECTS = ['stat', 'yen', 'flag', 'tally', 'fragment', 'item', 'gift', 'bond', 'later', 'register', 'join', 'end', 'unlock'];
+    const EFFECTS = ['stat', 'yen', 'flag', 'tally', 'fragment', 'item', 'gift', 'bond', 'later', 'register', 'join', 'end', 'unlock', 'crush'];
     const mdLabel = md => { const i = G.dayInfo(G.dayOf(md)); return { md: i.md, day: i.day }; };
     if (replay) opts.canLeave = true;
     const el = document.createElement('div');

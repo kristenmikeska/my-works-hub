@@ -40,7 +40,7 @@ window.FemcGame = (() => {
     get texts() { return W.FEMC_GAME_TEXTS || { threads: {}, texts: [] }; }, get q() { return W.FEMC_GAME_QUESTIONS || { classes: [], exams: {}, teachers: {}, rivals: [], ambient: {} }; },
     get dailyLife() { return W.FEMC_GAME_DAILY_LIFE || []; }, get trip() { return W.FEMC_GAME_TRIP || {}; }, get lodging() { return W.FEMC_GAME_LODGING || {}; },
     get clubs() { return W.FEMC_GAME_CLUBS || {}; }, get runIns() { return W.FEMC_GAME_RUNINS || []; }, get variants() { return W.FEMC_GAME_VARIANTS || {}; },
-    get events() { return W.FEMC_GAME_EVENTS || []; }, get battle() { return W.FEMC_BATTLE_DATA || {}; }
+    get events() { return W.FEMC_GAME_EVENTS || []; }, get crush() { return W.FEMC_GAME_CRUSH || { tracks: {}, moments: [], world: {} }; }, get battle() { return W.FEMC_BATTLE_DATA || {}; }
   };
   const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   const lsSet = (k, v) => { try { v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); return true; } catch (e) { return false; } };
@@ -114,6 +114,8 @@ window.FemcGame = (() => {
     // Part 2: clubs joined (clubs[id] = { joined, sessions, seen, beats, quiet }), run-ins seen and the texts they leave for
     // later (runIns.later), and which variant line each often-seen spot showed last (vary[key] = { n, d }).
     clubs: {}, runIns: { seen: [], lastDay: -99, later: [] }, vary: {},
+    // Crushes (data/crush*.js, 2026-10-23): each track's phase, the moments seen and the last day one played (see crushTick).
+    crush: { t: {}, seen: [], lastDay: -99 },
     perks: { week: {}, pitchDay: -1 }, // bond perks' once-a-week / once-a-day uses (build.js; FEMC-LINK-PERKS.md)
     jobs: {}, events: [], spent: {}, exams: {}, classSeen: [], phone: { threads: {}, unread: {}, done: [], pending: {}, invite: null, lastInvite: -9, vars: {} },
     tartarus: { nights: 0, maxFloor: 0, bosses: [], lastParty: null }, battle: { exp: {}, levels: {} },
@@ -139,7 +141,7 @@ window.FemcGame = (() => {
     const f = fresh(), legacy = !(s.mv >= MERGE_V);
     if (!s.runId) s.runId = newRunId();
     if (legacy && autosave && !lsGet(PREMERGE_KEY)) lsSet(PREMERGE_KEY, JSON.stringify({ at: Date.now(), revamp: lsGet(KEY), handoff: lsGet(HANDOFF_KEY) }));
-    const out = { ...f, ...s, route: { ...f.route, ...(s.route || {}) }, phone: { ...f.phone, ...(s.phone || {}) }, books: { ...f.books, ...(s.books || {}) }, tartarus: { ...f.tartarus, ...(s.tartarus || {}) }, battle: { ...f.battle, ...(s.battle || {}) } };
+    const out = { ...f, ...s, route: { ...f.route, ...(s.route || {}) }, phone: { ...f.phone, ...(s.phone || {}) }, books: { ...f.books, ...(s.books || {}) }, tartarus: { ...f.tartarus, ...(s.tartarus || {}) }, battle: { ...f.battle, ...(s.battle || {}) }, crush: normCrush(s.crush) };
     if (legacy) {
       // One save: fold this playthrough's battle save in (New Game+: the previous playthrough's, to carry over).
       const runs = readLegacyBattle(), mine = runs[out.runId];
@@ -154,6 +156,16 @@ window.FemcGame = (() => {
     if (migrateYear(out, s.yv)) migrated = true; // the save itself decides (fresh() says YEAR_V)
     if (autosave) adoptHandoff(out);
     return out;
+  }
+  /* Crushes (2026-10-23): a save from before them has no S.crush; it gets an empty one here, and each track settles the
+     first time it's read (crushTick): a save already past a track's opt-in window reads as 'out' (a friendship), a save
+     already on that link's romance route reads as 'dating'. A malformed field is rebuilt. Runs on every load; idempotent. */
+  function normCrush(c) {
+    const o = c && typeof c === 'object' ? { ...c } : {};
+    o.t = o.t && typeof o.t === 'object' ? o.t : {};
+    o.seen = Array.isArray(o.seen) ? o.seen : [];
+    o.lastDay = typeof o.lastDay === 'number' ? o.lastDay : -99;
+    return o;
   }
   /* The five social stats (once per save, saves from before 2026-10-21 have P3P's Academics / Charm / Courage).
      Academics becomes Knowledge; Charm and Courage keep their names. Each keeps its place on the ladder: the old rank and the
@@ -461,6 +473,7 @@ window.FemcGame = (() => {
     Object.values(packs()).forEach(j => Object.assign(CAST, j.cast || {})); // job and club scene packs (job-scenes*, clubs)
     D.runIns.forEach(e => Object.assign(CAST, e.cast || {}));
     D.dailyLife.forEach(e => Object.assign(CAST, e.cast || {}));
+    (D.crush.moments || []).forEach(e => Object.assign(CAST, e.cast || {})); // crush moments (data/crush*.js)
     Object.values(D.trip).forEach(t => Object.assign(CAST, t.cast || {}));
     D.events.forEach(e => Object.assign(CAST, e.cast || {}));
   }
@@ -680,6 +693,7 @@ window.FemcGame = (() => {
     if (line.gift) { gift(line.gift); did = true; }
     if (line.bond) { Object.entries(line.bond).forEach(([k, v]) => bond(k, v)); did = true; }
     if (line.later) { laterText(line.later); did = true; }
+    if (line.crush) { crushApply(line.crush); did = true; }
     if (line.register) { if (!S.registered.includes(line.register)) { S.registered.push(line.register); if (!line.quiet) toast('register', `Registered to the Compendium: ${CAST[line.register] || line.register}`); } did = true; }
     if (line.join) { if (!S.joined.includes(line.join)) { S.joined.push(line.join); S.flags[`joined-${line.join}`] = true; toast('join', `${CAST[line.join] || line.join} joined S.E.E.S.`); } did = true; }
     if (line.end) { S.flags['the-end'] = line.end; did = true; }
@@ -715,6 +729,8 @@ window.FemcGame = (() => {
     else if (line.ifRomance) ok = progress(line.ifRomance).route === 'romance';
     else if (line.ifReversed) ok = [].concat(line.ifReversed).every(id => !!progress(id).reversed);
     else if (line.ifHeading) ok = headingIs(line.ifHeading);
+    else if (line.ifCrush) ok = crushIs(line.ifCrush);
+    else if (line.ifCrushed) ok = crushedAt(line.ifCrushed);
     // Dates: ifAfter is "on or after" (like a rank's `after`), ifBefore is "strictly before"; they're each other's else.
     else if (line.ifAfter) ok = S.day >= dayOf(line.ifAfter);
     else if (line.ifBefore) ok = S.day < dayOf(line.ifBefore);
@@ -730,6 +746,7 @@ window.FemcGame = (() => {
     if (o.flag) setFlags(o.flag);
     if (o.tally) tally(o.tally);
     if (o.stat) addStats(o.stat);
+    if (o.crush) crushApply(o.crush);
     if (typeof o.route === 'string' && linkId) progress(linkId).route = o.route;
     if (o.reverse && linkId) {
       const p = progress(linkId), l = LINKS[linkId];
@@ -1181,6 +1198,9 @@ window.FemcGame = (() => {
   }
   // key: a separate walk for one spot that shares a pool (class in the morning and the afternoon).
   function vary(path, base = [], key = path) {
+    // The world reacts (crushes): a phase's own line for this spot, some days, instead of the usual one (crushLine).
+    const cl = crushLine(path, key);
+    if (cl) return cl;
     const all = varyAll(path, base);
     if (!all.length) return '';
     const m = dateOf(S.day).getMonth() + 1, w = weather(S.day);
@@ -1283,10 +1303,132 @@ window.FemcGame = (() => {
     return fit[0]?.e || null;
   }
   function finishDailyLife(id) {
+    if ((D.crush.moments || []).some(m => m.id === id)) return finishCrush(id); // a crush moment plays through playDailyLife too
     const e = D.dailyLife.find(e => e.id === id); if (!e) return;
     const state = S.dailyLife ||= { seen: [], lastDay: -99 };
     if (!Array.isArray(state.seen)) state.seen = [];
     if (!state.seen.includes(id)) { state.seen.push(id); state.lastDay = S.day; save(); }
+  }
+
+  /* ── Crushes (data/crush.js and data/crush-<id>.js → window.FEMC_GAME_CRUSH; 2026-10-23, Kat's ruling in the lore bible):
+     the stretch before a link's romance route, lived at school, in the dorm, in the story and by text. Data-driven per
+     character, so any link can have one (CLAUDE.md "Adding a crush track").
+     tracks[id]: { optIn: { from, until }, steps: [{ phase, after, rank, warmth, by }], closes }
+       optIn: the window for the track's first moment (a moment with optIn: id), whose choices carry { crush: { id: 'in' } }
+         (lean in) or { crush: { id: 'out' } } (don't). A save that's past `until` without one reads as 'out'.
+       steps, in order ('crush', 'puppy', 'almost'): reached on or after `after` when the link's rank is at least `rank`, OR
+         the warmth from Solar's choices is at least `warmth`, OR `by` has passed and she hasn't cooled (warmth >= 0).
+       closes: a track that isn't 'dating' by then fades (Shinjiro, 10/4).
+     Phases: 'none' (not asked yet) · 'out' (said no, or missed it) · 'noticed' → 'crush' → 'puppy' → 'almost' (the steps)
+       · 'dating' (the link's route is 'romance', from any phase, settled) · 'faded' (a friendship now, settled: the link's
+       route is 'friend', another link's route is 'romance', { crush: { id: 'out' } } after leaning in, or `closes`).
+       Two tracks can grow at once (the triangle); a romance route on one settles every other growing track into 'faded'.
+     Save: S.crush = { t: { id: { opt: null | 'in' | 'out', phase, warmth, peak (highest of noticed..dating reached, 1-5),
+       since: { phase: day } } }, seen: [moment ids], lastDay }. crushTick(id) brings a track up to date and never goes back;
+       everything that reads a phase calls it, so old saves settle on first read (normCrush gives them the empty field).
+     Moments (moments[]): { id, who, optIn: id, crush: { id: [phases] | 'phase' } (all must hold), slot, after, until (default
+       after + 21), schoolOnly, offOnly, days, weather, when ('tartarus' | 'quiet'), events, flags, noFlags, met, ranks,
+       ranksBelow, route, heading, label, place, time, bg, cast, scene }. One plays like an everyday-life routine (ui.js
+       playDailyLife: in the slot's place, never spending a free slot), at most one every three days, never on a day a routine
+       already played (a late-night one excepted) or a story scene played, a trip, a held holiday, a full-moon or rest night (late), or a night a
+       link's late night is due or has played;
+       the opt-in first, then stale-first.
+     The world reacts (world['path']: [{ t, crush, months, weather, after, until, chance }]): phase lines for often-seen spots
+       (living-variants paths: lunch.clear, classQuiet, late.battled, study, home…; and 'chatter.morning' / 'chatter.lunch' /
+       'evening.sub' read by ui.js). On about half the days one fits (chance, default 0.5), it shows instead of the usual line.
+     Scenes: { ifCrush: { id: [phases] | 'phase' }, then, else }; { ifCrushed: { id: 'phase' } } (that phase was reached at some
+       point, e.g. a rank scene acknowledging the build-up after the route has made it 'dating'); { crush: { id: 'in' | 'out'
+       | ±n } } as a line, on a choice or on a text reply (n: warmth). Texts (dated, ambient, afterRank) take a `crush` gate. */
+  const CRUSH = ['noticed', 'crush', 'puppy', 'almost', 'dating'];
+  const crushState = () => (S.crush = normCrush(S.crush));
+  function crushTrack(id) { const c = crushState(), t = (c.t[id] ||= { opt: null, phase: 'none', warmth: 0, peak: 0, since: {} }); t.since ||= {}; return t; }
+  function crushTick(id, d = S.day) {
+    const T = D.crush.tracks?.[id];
+    if (!T) return 'none';
+    const t = crushTrack(id), p = S.links[id] || {};
+    let ph = t.phase || 'none';
+    if (p.route === 'romance') ph = 'dating';
+    else if (['dating', 'faded', 'out'].includes(ph)) { /* settled */ }
+    else if (t.opt === 'out') ph = 'out';
+    else if (!t.opt) { if (T.optIn?.until && d > dayOf(T.optIn.until)) { t.opt = 'out'; ph = 'out'; } }
+    else if (p.route === 'friend' || Object.entries(S.links).some(([k, q]) => k !== id && q?.route === 'romance') || (T.closes && d >= dayOf(T.closes))) ph = 'faded';
+    else {
+      if (ph === 'none') ph = 'noticed';
+      for (const st of T.steps || []) {
+        if (CRUSH.indexOf(st.phase) <= CRUSH.indexOf(ph)) continue;
+        const w = t.warmth || 0;
+        if (!(d >= dayOf(st.after) && ((p.rank || 0) >= (st.rank ?? 99) || w >= (st.warmth ?? 99) || (st.by && d >= dayOf(st.by) && w >= 0)))) break;
+        ph = st.phase;
+      }
+    }
+    if (ph !== t.phase) { t.phase = ph; t.since[ph] = d; }
+    const i = CRUSH.indexOf(ph) + 1;
+    if (i > (t.peak || 0)) t.peak = i;
+    return ph;
+  }
+  const crushIs = want => Object.entries(want || {}).every(([id, ph]) => [].concat(ph).includes(crushTick(id)));
+  const crushedAt = want => Object.entries(want || {}).every(([id, ph]) => { crushTick(id); return (crushTrack(id).peak || 0) >= CRUSH.indexOf(ph) + 1; });
+  // { id: 'in' | 'out' | n }: lean in (a track not asked yet, or said no, starts at 'noticed'), let it go ('out', or 'faded'
+  // once it had started), or warmth.
+  function crushApply(v) {
+    Object.entries(v || {}).forEach(([id, x]) => {
+      if (!D.crush.tracks?.[id]) return;
+      const t = crushTrack(id);
+      crushTick(id);
+      if (x === 'in') { if (['none', 'out'].includes(t.phase)) { t.opt = 'in'; t.phase = 'noticed'; t.since.noticed = S.day; } }
+      else if (x === 'out') {
+        if (t.phase === 'none') { t.opt = 'out'; t.phase = 'out'; t.since.out = S.day; }
+        else if (['noticed', 'crush', 'puppy', 'almost'].includes(t.phase)) { t.opt = 'out'; t.phase = 'faded'; t.since.faded = S.day; }
+      } else if (typeof x === 'number') t.warmth = (t.warmth || 0) + x;
+      crushTick(id);
+    });
+  }
+  const crushPhases = () => Object.fromEntries(Object.keys(D.crush.tracks || {}).map(id => [id, crushTick(id)]));
+  const crushUntil = m => (m.until ? dayOf(m.until) : dayOf(m.after) + 21);
+  function crushFits(m, slot, d = S.day, info = dayInfo(d)) {
+    if (m.slot !== slot || d < dayOf(m.after) || d > crushUntil(m)) return false;
+    if (m.optIn) { if (crushTick(m.optIn, d) !== 'none') return false; }
+    else if (m.crush && !Object.entries(m.crush).every(([id, ph]) => [].concat(ph).includes(crushTick(id, d)))) return false;
+    if (m.who && LINKS[m.who] && progress(m.who).reversed) return false;
+    if (m.when === 'tartarus' ? S.tonight !== 'battled' : m.when === 'quiet' && S.tonight === 'battled') return false;
+    return dailyFits({ ...m, until: mdOf(crushUntil(m)) }, slot, d, info);
+  }
+  function crushDue(slot = S.slot, d = S.day) {
+    const M = D.crush.moments || [], c = crushState(), info = dayInfo(d);
+    if (!M.length || S.phase !== 'play' || ['trip', 'prologue'].includes(info.type) || d - c.lastDay < 3 || (S.dailyLife?.lastDay === d && slot !== 'late')) return null;
+    if (D.events.some(e => e.date === info.md && S.events.includes(e.id))) return null;
+    if (['after', 'evening'].includes(slot) && S.spent[`${d}-${slot}`]) return null;
+    if (holidayDue(slot, d)) return null;
+    // Late: a link's own late night (lateNightDue) goes first; a crush moment only takes a night nobody else has.
+    if (slot === 'late' && (info.moon.full || S.tonight === 'rest' || S.lateNights?.lastDay === d || lateNightDue(d))) return null;
+    const fit = M.map((m, i) => ({ m, i })).filter(({ m }) => !c.seen.includes(m.id) && crushFits(m, slot, d, info));
+    if (!fit.length) return null;
+    fit.sort((a, b) => (b.m.optIn ? 1 : 0) - (a.m.optIn ? 1 : 0) || crushUntil(a.m) - crushUntil(b.m) || a.i - b.i);
+    const m = fit[0].m;
+    return { ...m, link: m.who || null, label: m.label || LINKS[m.who]?.short || 'Everyday life' };
+  }
+  function finishCrush(id) {
+    const c = crushState();
+    if (!c.seen.includes(id)) c.seen.push(id);
+    c.lastDay = S.day;
+    crushPhases();
+    save();
+  }
+  // The world reacts: today's phase line for a spot, or null (about half the days a line fits; walks them in order).
+  function crushLine(path, key = path) {
+    const pool = D.crush.world?.[path];
+    if (!pool?.length || S.phase !== 'play') return null;
+    const m = dateOf(S.day).getMonth() + 1, w = weather(S.day);
+    const ok = x => varyFits(x, m, w) && (!x.after || S.day >= dayOf(x.after)) && (!x.until || S.day <= dayOf(x.until)) && (!x.crush || crushIs(x.crush))
+      && (!x.flags || x.flags.every(flag)) && (!x.events || x.events.every(id => S.events.includes(id)));
+    const fits = pool.map((x, i) => ({ x, i })).filter(({ x }) => ok(x));
+    if (!fits.length) return null;
+    const salt = [...key].reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) % 9973, 11);
+    if (seeded(S.day * 13 + salt) >= (fits[0].x.chance ?? 0.5)) return null;
+    const st = ((S.vary ||= {})[`${key}~crush`] ||= { n: -1, d: -1 });
+    if (st.d !== S.day) { st.d = S.day; st.n += 1; }
+    const x = fits[st.n % fits.length].x;
+    return typeof x === 'string' ? x : x.t;
   }
   const markEvent = id => { if (!S.events.includes(id)) S.events.push(id); save(); };
   // An event's `unlock` holds it until a condition is met, then it plays on the first matching slot on or after its `date`:
@@ -1522,6 +1664,7 @@ window.FemcGame = (() => {
     if (t.events && !t.events.every(id => S.events.includes(id))) return false;
     if (t.route && !Object.entries(t.route).every(([id, r]) => progress(id).route === r)) return false;
     if (t.heading && !headingIs(t.heading)) return false;
+    if (t.crush && !crushIs(t.crush)) return false;
     return true;
   }
   function sendText(t) {
@@ -1581,6 +1724,7 @@ window.FemcGame = (() => {
     const o = t.reply[i];
     appendPhone(thread, [...(!o.silent ? [{ from: 'solar', t: o.t }] : []), ...(o.then || [])]);
     if (o.link && o.notes && isMet(o.link)) progress(o.link).xp += o.notes;
+    if (o.crush) crushApply(o.crush);
     if (o.stat) addStats(o.stat);
     delete S.phone.pending[thread];
     save();
@@ -1963,6 +2107,7 @@ window.FemcGame = (() => {
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift, packs, packPick, packFits,
     clubById, clubState, clubStats, clubScene, joinClub, finishClub, runInDue, runInFits, finishRunIn, vary, varyPool, secretsDue, findSecret,
     heading, headingIs, migrateForced,
+    crushTick, crushIs, crushedAt, crushApply, crushPhases, crushTrack, crushFits, crushDue, finishCrush, crushLine,
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, textById, answerInvite, gift, bond,

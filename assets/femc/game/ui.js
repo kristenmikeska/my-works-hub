@@ -545,6 +545,9 @@
     if (hol) return holidayPicker(hol, info);
     const daily = G.dailyLife();
     if (daily) return playDailyLife(daily, info);
+    // A crush moment (core.js crushes, data/crush*.js): plays the same way, in a slot no routine took.
+    const crush = G.crushDue();
+    if (crush) return playDailyLife(crush, info);
     switch (s.slot) {
       case 'early': return earlyMorning(info);
       case 'morning': return info.exam ? examSession(info) : classPeriod('morning', info);
@@ -558,7 +561,7 @@
   }
   function playDailyLife(e, info) {
     const slot = S().slot;
-    return SC.play({ ...e, scene: [{ bg: e.bg }, ...e.scene], label: 'Everyday life', onDone: () => {
+    return SC.play({ ...e, scene: [{ bg: e.bg }, ...e.scene], label: e.label || 'Everyday life', onDone: () => {
       G.finishDailyLife(e.id);
       if (slot === 'evening') return evening(info);
       if (slot === 'after') return G.freeSlotSpent('after') ? advance() : goOut('after');
@@ -792,6 +795,9 @@
   const cap = t => String(t || '').replace(/^./, c => c.toUpperCase());
   const pick = (arr, seed) => arr[Math.floor(Math.abs(Math.sin(seed * 9.13)) * arr.length) % arr.length];
   function ambient(kind) {
+    // The world reacts (core.js crushLine): some days, what she overhears is about her and him.
+    const cl = G.crushLine(`chatter.${kind}`);
+    if (cl) return cl.trim().replace(/^["“]+|["”]+$/g, '');
     const m = G.dayInfo().date.getMonth() + 1;
     const pool = (G.D.q.ambient?.[kind] || []).filter(a => !a.months || a.months.includes(m));
     // The screen adds its own quotation marks, so strip any the line already carries.
@@ -1158,7 +1164,7 @@
     const secrets = s.spent[`${s.day}-evening`] ? [] : G.secretsDue(); // a hidden link's quiet option (My Melody)
     const opt = (id, label, sub, ok = true, cls = '') => `<button type="button" class="g-night ${cls}" data-n="${id}"${ok ? '' : ' disabled'}><b>${label}</b><small>${esc(sub)}</small></button>`;
     show(`<section class="g-dorm"><div class="g-map-head"><p class="g-kicker">Evening · Iwatodai Dorm</p><h1>Tonight</h1>
-      <p class="g-map-sub">${info.moon.days != null && info.moon.days <= 3 && !info.moon.full ? `The moon is almost full. ${info.moon.days} day${info.moon.days === 1 ? '' : 's'} to go.` : 'The lounge smells like instant ramen. What now?'}</p></div>
+      <p class="g-map-sub">${info.moon.days != null && info.moon.days <= 3 && !info.moon.full ? `The moon is almost full. ${info.moon.days} day${info.moon.days === 1 ? '' : 's'} to go.` : esc(G.crushLine('evening.sub') || 'The lounge smells like instant ramen. What now?')}</p></div>
       <div class="g-nights">
         ${s.unlocked.tartarus ? opt('tartarus', 'Tartarus', tt.ok ? `Climb tonight. Solar will be tired tomorrow.${s.condition === 'tired' ? ' She’s already tired.' : ''}` : tt.why, tt.ok, 'tt') : ''}
         ${opt('study', 'Study', G.studyInfo(), true)}
