@@ -775,8 +775,10 @@
       { n: "The overpass in January at four in the afternoon, the glass cold enough to feel from a foot away, the light already going, the gates below working through the school crowd and the early shift with their tired beige patience, and Danielle on her bench with her back perfectly straight and her folder closed on her knees, and no pen out. For the first time since November, no pen out." },
       { s: 'danielle', f: 'neutral', t: "I've given the grocery column back to Mitsuru." },
       { s: 'danielle', f: 'neutral', t: "Balanced. To the yen. She checked it twice. She found nothing. She looked so disappointed. I don't think I've ever liked anyone more." },
-      { n: "She said it with real pleasure, the only kind she seemed to have, the pleasure of a figure coming out where it should, and then she said nothing for a while, and the gates went on, and Solar sat down at the far end of the bench, and Danielle set the folder down on the bench between them, an inch nearer the middle than it needed to be. A measurement." },
+      { cg: 'link-danielle-r10' },
+      { n: "She said it with real pleasure, the only kind she seemed to have, the pleasure of a figure coming out where it should, and then she said nothing for a while, and the gates went on, and Solar sat down at the far end of the bench, and Danielle took a second folder from under the first and set it down on the bench between them, an inch nearer the middle than it needed to be. A measurement." },
       { s: 'danielle', f: 'neutral', t: "Did you ever want to know? Honestly. The one thing." },
+      { cg: null },
       { choose: [
         { t: "Every day.", notes: 3, then: [
           { s: 'danielle', f: 'neutral', t: "Good. Honest. That's two of your qualities I can count now." }

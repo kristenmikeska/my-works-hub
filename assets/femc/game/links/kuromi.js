@@ -755,17 +755,21 @@
       { n: "She held out the glitter pen. She was very obviously terrified. Her hand shook a little, which on Kuromi looked almost exactly like rage." },
       { choose: [
         { t: "(Write: My rival is the bravest person I know. S.)", notes: 3, then: [
+          { cg: 'link-kuromi-r10' },
           { n: "Kuromi read it upside down while Solar was still writing it, which was cheating, and by the time Solar dotted the period she'd gone completely red from the jester hat down." },
           { s: 'kuromi', f: 'flustered', t: "...That's the most embarrassing thing anybody has ever written in my notebook. I'm keeping it forever. I'm going to read it before the festival. I'm going to read it OUT LOUD. On the STAGE." }
         ] },
         { t: "(Draw a skull with a party hat. Sign it.)", notes: 2, then: [
+          { cg: 'link-kuromi-r10' },
           { s: 'kuromi', f: 'happy', t: "PERFECT. Ten out of ten. You're a genius. Best rival." },
           { n: "She looked at it for a long time. Then she drew one of her own beside it, the same skull, the same hat, a little crooked, so there were two." }
         ] },
         { t: "(Write: Asked about the rest. Liked all of it.)", notes: 3, then: [
+          { cg: 'link-kuromi-r10' },
           { n: "Kuromi read it. Then she read it again. Then she took the pen out of Solar's hand without a word and wrote, underneath, in huge glittery letters that took up half the page: ME TOO. YOU. ALL YOUR BITS. And she underlined it twice, and the second line went off the edge of the paper." }
         ] }
       ] },
+      { cg: null },
       { s: 'kuromi', f: 'neutral', t: "Rule one of grudges, by the way. Since I'm leaving you in charge of yours. Anybody hurts you, you write it down. And then you pay it back. With interest. Every time. That's the only rule that matters." },
       { s: 'kuromi', f: 'serious', t: "And I'm going to text you every day. EVERY day. I don't care if you're busy. I don't care if you're doing your long-bag thing. If you don't answer, I'm getting on the 6:40 and three trains and a bus, and I'm coming here, and I'm drawing on your face." },
       { n: "She opened the new notebook to the inside of the back cover and showed her. She had already written the route there. Every change. Every platform. The bus from the station at the bottom of the mountain, and how long it waited, and which seat had the good window. She'd worked it out to the minute, and then worked out the way back, and then, in smaller letters at the bottom, the way back again." },

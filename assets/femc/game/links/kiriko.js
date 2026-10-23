@@ -736,9 +736,11 @@
         { s: 'kiriko', f: 'neutral', t: "I'm not going to be the last one, Sol-chan. I worked it out on the steps, in the green, with you at the back. I'm going to be the next one. And then somebody's going to be next after me, and I'm going to stand at the back for them. And I'm going to be so annoying about it." }
       ] },
       { s: 'kiriko', f: 'flustered', t: "Okay. So. I made you something. Well. I didn't make it. I had it. And now it's yours. Don't argue." },
-      { n: "She held it out on her flat palm. A suzu. A little brass shrine bell on a red cord, the kind that hung from the ropes outside every shrine in the world, the one that had been on her belt every day since June. It was worn smooth on one side where her thumb went." },
+      { cg: 'link-kiriko-r10' },
+      { n: "She held it out on her flat palm, her face still tipped up to the falling snow. A suzu. A little brass shrine bell on a red cord, the kind that hung from the ropes outside every shrine in the world, the one that had been on her belt every day since June. It was worn smooth on one side where her thumb went." },
       { s: 'kiriko', f: 'neutral', t: "That's mine. My Protection Suzu. Or it was. If you ring it, I'll hear it. Doesn't matter which world. I'll hear it, and I'll know you're okay." },
       { s: 'kiriko', f: 'happy', t: "And you've already got one on your Persona, so now you've got two, and I've got none, so I guess I'll have to go home and get a new one blessed. Which is a whole ceremony. Which I'm doing myself. Because it's my shrine." },
+      { cg: null },
       { ifFlag: 'kiriko-borrowed', then: [
         { s: 'kiriko', f: 'neutral', t: "You said you borrowed the first one. So this one's a loan too. Same terms. You give them both back to me in some other world, someday, when you're old, and I'll be annoyed you kept them so long." }
       ] },

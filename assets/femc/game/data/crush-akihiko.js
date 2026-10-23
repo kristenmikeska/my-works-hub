@@ -166,11 +166,13 @@
         { n: "She had an umbrella. It was a cheap clear one from the station kiosk with one bent rib and it was about big enough for one and a half people if both of them were thin and neither of them breathed, and she was standing there holding it, and he was standing there not looking at it, and behind her somewhere she could feel Maki and Sonoda not leaving." },
         { choose: [
           { t: "(Open it. Hold it up between you. Don't say anything.)", crush: WARM(2), then: [
+            { cg: 'crush-akihiko-umbrella' },
             { n: "She opened it and held it up and stood there, and after a second he ducked under it, and took it out of her hand without asking, because he was taller and it made sense, and they walked to the station under one umbrella with the rain drumming on it like fingers, his shoulder getting soaked on the outside, hers dry, all six minutes." },
             { n: "Behind them, from the overhang, she distinctly heard Maki say *SONODA* in a strangled whisper, and Sonoda say *I see it, I see it*." },
             { s: 'akihiko', f: 'neutral', t: "Your side dry?" },
             { s: 'solar', f: 'neutral', t: "Yes." },
-            { s: 'akihiko', f: 'happy', t: "Good. That's the only side that matters." }
+            { s: 'akihiko', f: 'happy', t: "Good. That's the only side that matters." },
+            { cg: null }
           ] },
           { t: "Five, running. Bet I'm faster.", crush: WARM(1), then: [
             { s: 'akihiko', f: 'surprised', t: "...You're on." },

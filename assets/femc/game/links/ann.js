@@ -690,9 +690,11 @@
       ], contact: 'Ann' },
       { music: 'tender' },
       { n: "The last of October had come in cold, and the trees along the street outside the mall had finally given up, gold and then brown and then down, so that the leaves lay ankle-deep in every corner where the wind had put them, and the light went early now, the sky over the bay turning violet before five. Ann's text had come at noon. No emoji. That was how Solar knew it was serious." },
-      { n: "She was on the rim of the fountain in the red jacket with her pigtails high and a train ticket to Tokyo tucked into the back of her phone case, the way you'd mark a page you meant to come back to. She had two crepes in paper cones from the stand by the escalator. She held one out without getting up." },
+      { cg: 'link-ann-r10' },
+      { n: "She was on the rim of the fountain in the red jacket with her pigtails high and a train ticket to Tokyo tucked into the back of her phone case, the way you'd mark a page you meant to come back to. She had two crepes in paper cones from the stand by the escalator. She held one out without getting up, and Solar sat down beside her on the rim and took it." },
       { s: 'ann', f: 'happy', t: "Okay. Official results. Six months of research. Forty-one crepes. And number one, after everything, after all of that, is this stand. Right here. The one I said was terrible the day I met you." },
       { s: 'ann', f: 'flustered', t: "I know! I know. It got better. Or something did. The crepe lady swears she changed nothing. I think she's lying. I think she changed the cream for me." },
+      { cg: null },
       { choose: [
         { t: "(Eat it very seriously, then give it five strawberries.)", notes: 3, then: [
           { n: "Solar ate it like an exam, slowly, with her eyes narrowed, while Ann watched her mouth with total suspense, and at the end she held up one hand with all five fingers spread." },

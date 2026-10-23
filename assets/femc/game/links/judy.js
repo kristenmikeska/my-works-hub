@@ -452,6 +452,7 @@
           ] }
         ] }
       ] },
+      { cg: 'link-judy-r10' },
       { n: "When she put the chip in Solar's hand, she closed Solar's fingers over it with both of hers, and held them closed, a long time, the way you'd hold someone's hand over a wound to keep the pressure on." }
     ] }
   ],

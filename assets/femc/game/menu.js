@@ -631,8 +631,8 @@ window.FemcMenu = (() => {
 
   /* ── ALBUM and THEATER (2026-10-22): the Memories album and the Theater; tabs here, and the title screen's Extras ──
      Album: every event CG (assets/femc/cg/<id>.webp) a scene can show, found by walking the scene data (the prologue, story
-     events, memory doors, links' ranks / hangouts / after-MAX / Christmas / late nights / holidays, everyday life), grouped by
-     id prefix (prologue- story- → Story; romance- link- → Romance & bonds; searchers-; ending-), and every memory fragment card
+     events, memory doors, links' ranks / hangouts / after-MAX / Christmas / late nights / holidays, everyday life, crush moments), grouped by
+     id prefix (prologue- story- → Story; romance- link- crush- → Romance & bonds; searchers-; ending-), and every memory fragment card
      (data.js memories) by world. Unlocked: S.album.cg (each CG a live scene shows; scene.js → ui.js bridge seeCg) plus a
      backfill for saves from before the album: the CGs on the path each scene the save has seen would take, as far as the save
      can tell (conditions read the save through peek; a CG behind a choice counts when that choice's flags are set), and the
@@ -689,6 +689,7 @@ window.FemcMenu = (() => {
       Object.entries(l.holidays || {}).forEach(([md, e]) => e && add({ kind: 'holiday', key: `${l.id}:${md}`, link: l.id, md, scene: e.scene }));
     });
     (G.D.dailyLife || []).forEach(e => add({ kind: 'daily', key: e.id, scene: e.scene }));
+    (G.D.crush.moments || []).forEach(e => add({ kind: 'crush', key: e.id, link: e.who, scene: e.scene })); // crush moments (data/crush*.js)
     return (srcCache = out);
   }
   // Has this scene been seen? `a` (the album) adds what earlier playthroughs saw (New Game+); null asks this save only.
@@ -705,6 +706,7 @@ window.FemcMenu = (() => {
       case 'late': return (s.lateNights?.seen || []).includes(src.key);
       case 'holiday': return (s.holidays || {})[src.md] === src.link;
       case 'daily': return (s.dailyLife?.seen || []).includes(src.key);
+      case 'crush': return (s.crush?.seen || []).includes(src.key);
       default: return false;
     }
   }
@@ -741,7 +743,7 @@ window.FemcMenu = (() => {
   function endingCgs(run) { const out = new Set(), ev = endEvent(); if (!ev) return out; if (run.mine) reach(ev.scene, null, G.flag, null, out); else { const f = runFlags(run); reach(ev.scene, null, f.on, f.set, out); } return out; }
   const CG_GROUPS = [['story', 'Story'], ['romance', 'Romance & bonds'], ['searchers', 'Searchers'], ['endings', 'Endings']];
   const WORLDS = [['Runners', 'Runners'], ['strangers', 'strangers'], ['Hoax', 'Hoax']];
-  const cgGroup = id => (/^(romance|link)-/.test(id) ? 'romance' : /^searchers-/.test(id) ? 'searchers' : /^ending-/.test(id) ? 'endings' : 'story');
+  const cgGroup = id => (/^(romance|link|crush)-/.test(id) ? 'romance' : /^searchers-/.test(id) ? 'searchers' : /^ending-/.test(id) ? 'endings' : 'story');
   let catCache = null;
   function cgCatalog() {
     if (catCache) return catCache;
@@ -762,6 +764,7 @@ window.FemcMenu = (() => {
       case 'xmas': return { kicker: l.short, title: 'Christmas Eve' };
       case 'late': return { kicker: l.short, title: 'Late night' };
       case 'holiday': return { kicker: `${src.md} · ${l.short}`, title: 'A day off together' };
+      case 'crush': return { kicker: l ? l.short : 'Everyday life', title: 'A moment' };
       default: return { kicker: 'Everyday life', title: '' };
     }
   }

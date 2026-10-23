@@ -673,6 +673,7 @@
           { s: 'haru', f: 'happy', t: "It was. That was never the question, though, was it?" }
         ] }
       ] },
+      { cg: 'link-haru-r10' },
       { n: "They drank it at the kitchen table with the windows fogged white and the radiators knocking and somebody upstairs playing music too loud, and Koromaru asleep across both of Haru's feet, and Junpei's voice coming faintly from the lounge, telling someone it was illegal. It was dark, and a little sweet, and warmer than she expected." },
       { n: "She didn't say so. Haru knew anyway. Haru was watching her drink it with her chin in her hand, the way she watched a row come up." }
     ] }

@@ -6065,6 +6065,336 @@
       "source": "iwatodaidorm-front-winter.jpeg",
       "sourceNow": "Added to Game/iwatodaidorm-front-winter.jpeg",
       "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-ann-r10.webp",
+      "placement": "links/ann.js rank 10 ('10: spring'): { cg } from Ann on the fountain rim with the crepes through her results, cleared before the choice; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: Solar now sits down beside her on the rim to match the art; otherwise matches",
+      "mobileFocus": "50% 25%",
+      "outputSha256": "11bb64f4c0a14592d58fd95b5b7e69f4e16fc906329e13935b75d038acc89428",
+      "sha256": "c3a45ac11d770a416d88377f0e10791f3a03b25123a330290d9e10ae8616f37b",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "ann-rank10.png",
+      "sourceNow": "Added to Game/ann-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-chenle-r10.webp",
+      "placement": "links/chenle.js rank 10 ('10: tank'): { cg } from the countdown between rounds through 'That's the thing' and the line after, cleared before the call-log beat; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: they now stand up from the stools as he pockets his hands (they stand in the art); otherwise matches",
+      "mobileFocus": "47% 20%",
+      "outputSha256": "af076ca68639c99eccefc9ab518882447812bb2eff8597a0ef6df21c2a2d3986",
+      "sha256": "208dce8b107cb17ff5aeb62dcf3a578d23b760005db416a2bd90e9fa7cebc513",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "chenle-rank10.png",
+      "sourceNow": "Added to Game/chenle-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-danielle-r10.webp",
+      "placement": "links/danielle.js rank 10 ('10: unspent'): { cg } from Solar sitting at the far end through Danielle's question, cleared before the choice; Romance & bonds; v2 chosen over v1 (same poses; v2 has the glass corridor the scene describes)",
+      "textCheck": "checked 2026-10-23 against the image: the art has a folder on her knees and one on the bench, so she now sets a second folder down between them; otherwise matches",
+      "mobileFocus": "24% 30%",
+      "outputSha256": "83eea8eccae49b797b45ec0618afa4136643ccafd592622bd66c04d402fad6c3",
+      "sha256": "6333c4fbe849f9ec7171c2c93bd89e30dfc20f0b6b55efed2ea81ee9933e8d45",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "danielle-rank10-v2.png",
+      "sourceNow": "Added to Game/danielle-rank10-v2.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-elizabeth-r10.webp",
+      "placement": "links/elizabeth.js rank 10 ('10: an open request'): { cg } on a new line after the first choice (Solar's handbook open, the notebook on the compendium) through 'read back', cleared before she reads the notebook; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: one narration line added: Solar's handbook open on her knees, Elizabeth's notebook resting on the compendium; otherwise matches",
+      "mobileFocus": "45% 25%",
+      "outputSha256": "265477996c4f389c1488eeff59761075dfb853d4177df3290b10b1943feea099",
+      "sha256": "6d99b80139de549ef5e9f6f2f7beb460c50f16133eb4de7a006aedf1ee8f4b8a",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "elizabeth-rank10.png",
+      "sourceNow": "Added to Game/elizabeth-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-haru-r10.webp",
+      "placement": "links/haru.js rank 10 ('10: house blend'): { cg } from drinking it at the kitchen table to the end of the scene; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: matches the scene",
+      "mobileFocus": "68% 30%",
+      "outputSha256": "d75c98f911dd8290d73bbd96385e74ddbdcb367e4391bd956963c595f734ee0d",
+      "sha256": "0fbe4056308413692fc1744cfedeaa73b00c7f26fba15d6564102eeeec5662e8",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "haru-rank10.png",
+      "sourceNow": "Added to Game/haru-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-jaemin-r10.webp",
+      "placement": "links/jaemin.js rank 10 ('10: plus one'): { cg } from him holding out the card through the card's text, cleared before the route lines; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: Solar now sits down beside him before he holds out the card; otherwise matches",
+      "mobileFocus": "54% 28%",
+      "outputSha256": "457002b85ffd0b25ab9a3a8062b52b5fe72af4e502065f0372135e528956201c",
+      "sha256": "e2e49875e1dbf8da2302e72fcc3615d9aab3978ef5f741f75c9ce11a60658fe2",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "jaemin-rank10.png",
+      "sourceNow": "Added to Game/jaemin-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-judy-r10.webp",
+      "placement": "links/judy.js rank 10 ('10: somewhere new'): { cg } on the closing line, Judy closing Solar's fingers over the chip, to the end of the scene; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: matches the scene",
+      "mobileFocus": "48% 35%",
+      "outputSha256": "bbee9ff6568d2f09952c92393de5ab15eecd0c68dceb57d6b05187ad0b0e4dd8",
+      "sha256": "1d947704df8b911df59c2d580188ea2c9d944d0258e7bf9b519bf21e6ff58be6",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "judy-rank10.png",
+      "sourceNow": "Added to Game/judy-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-junkyu-r10.webp",
+      "placement": "links/junkyu.js rank 10 ('10: icecreamandhugs'): { cg } on a new line after the card and counting beats (everyone round the bench, Jihoon and Cherry at the crane game), cleared before the ice cream; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: the art shows the group laughing round a bench with Cherry there, not the hug: one narration line added, and the counting line now has Cherry at the crane game instead of absent",
+      "mobileFocus": "50% 30%",
+      "outputSha256": "acf5049a3909f90e3fcfb3d22403df30108e73623e3be1c4e85b1f5a275f4390",
+      "sha256": "27bdc562ba8982175684954e56446b7f16b567872fa7fc04145b57a7a9f5efa4",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "junkyu-rank10.png",
+      "sourceNow": "Added to Game/junkyu-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-kasumi-r10.webp",
+      "placement": "links/kasumi.js rank 10 ('10: her own routine'), first choice's 'I saw her' branch: { cg } on its two lines, cleared at the end of the branch; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: snow dusting the shrine roofs, and Solar's hand on Kasumi's hair; otherwise matches",
+      "mobileFocus": "37% 35%",
+      "outputSha256": "11036b4fea922df2056b0189a28eddeadc9ae41567e2305a6589744ac50a3880",
+      "sha256": "84cf00da22f7e42f62a48df9213fd4da796bcab5932a3e8b35f23efc3b4cae63",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "kasumi-rank10.png",
+      "sourceNow": "Added to Game/kasumi-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-kiriko-r10.webp",
+      "placement": "links/kiriko.js rank 10 ('10: the suzu'): { cg } from the suzu on her palm through the new-bell lines, cleared before the loan line; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: her face is still tipped up to the falling snow as she holds out the bell; otherwise matches",
+      "mobileFocus": "52% 35%",
+      "outputSha256": "f326fe48181ba24d721d98daa3489711170cbfa7a9016c8e08d02878bd05e600",
+      "sha256": "64fd55bf31c645ea76f7055436116eee89c1e16fa9d74c4351c6f9ffdc419ff7",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "kiriko-rank10.png",
+      "sourceNow": "Added to Game/kiriko-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-kuromi-r10.webp",
+      "placement": "links/kuromi.js rank 10 ('10: the entry form'), the first-page choice: { cg } at the start of each of its three branches (Solar writing in the new notebook), cleared after the choice; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: matches the scene",
+      "mobileFocus": "51% 30%",
+      "outputSha256": "665e9ff3813ed5db2a99139583b1a56b472f6ac3f2b5037a9761ebd551632039",
+      "sha256": "ef837b22a5a6f80130896c3e348a5830560e6d4b034c6e0561aa7ce7285c5573",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "kuromi-rank10.png",
+      "sourceNow": "Added to Game/kuromi-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-mercy-r10.webp",
+      "placement": "links/mercy.js rank 10 ('10: heroes never die'): { cg } from the feather through 'and kept coming', cleared before the choice; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: they now sit on the bench by the rail, Angela's arm round Solar, as the feather is given; otherwise matches",
+      "mobileFocus": "40% 28%",
+      "outputSha256": "f081bde5fbc947ef3e4dcd0c1b65e96868446f3f19c7225b38a224b27d9a8720",
+      "sha256": "22acf90c2f16cdd4bb6d4271223eb5fe96b45b1091854aa65870ff889e32d189",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "mercy-rank10.png",
+      "sourceNow": "Added to Game/mercy-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-mymelody-r10.webp",
+      "placement": "links/mymelody.js rank 10 ('10: my recipe'), the Wednesday choice: { cg } in both branches on a laugh, cleared at the end of each; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: the art shows them laughing over the cut cake with the mitts off, not the hug: one laugh line added to each branch of the Wednesday choice",
+      "mobileFocus": "49% 25%",
+      "outputSha256": "5a5821e263972832c1e37081b20070261998282a1070367f91aee00424b047b9",
+      "sha256": "ee62a40863c15e82d630f288c16fcd2c543b54d2ffe40987fefcc4e5db2cef54",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "mymelody-rank10.png",
+      "sourceNow": "Added to Game/mymelody-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-rio-r10.webp",
+      "placement": "links/rio.js rank 10 ('10: the middle'): { cg } on a new line (the racket pushed into Solar's arms, Rio leaning on the ball cart) through 'lucky for somebody', cleared before the choice; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: one narration line added: Solar holding the covered racket, Rio leaning on the ball cart",
+      "mobileFocus": "50% 30%",
+      "outputSha256": "bf3c68ec68b901c25145497ce2e943683cee33dc9664c8bfaaf59ae3c26495d6",
+      "sha256": "aa819d86bcea8b0bca953822b1549796ec1a22cca1ee9aaaedea1bd1705da5d4",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "rio-rank10.png",
+      "sourceNow": "Added to Game/rio-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-saori-r10.webp",
+      "placement": "links/saori.js rank 10 ('10: due date'): { cg } from Saori kneeling at the bottom shelf through her library line, cleared before the romance branch; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: Solar now stands over her, hands on her knees, watching; otherwise matches",
+      "mobileFocus": "49% 30%",
+      "outputSha256": "9cb33ed6a736a6ba45a5bd207819578bf34b47d20865d865479b7259b1c3db10",
+      "sha256": "ab72cd291f4b7efd58539ec36bb4bcf58cfd81fdb7c5e690d64d832c21ca9a65",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "saori-rank10.png",
+      "sourceNow": "Added to Game/saori-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-sunoo-r10.webp",
+      "placement": "links/sunoo.js rank 10 ('10: solar!'): { cg } from eating at the window table through the sun on the bag, cleared before the photo beat and his last line; Romance & bonds",
+      "textCheck": "checked 2026-10-23 against the image: snow lying outside the window; otherwise matches",
+      "mobileFocus": "51% 28%",
+      "outputSha256": "1197fbdfdad5651e2fbb39cd7ad5f65db54b844169f6c79bc9cdb1eb180bfcff",
+      "sha256": "e7c3698ed2adb69ed97915bc1653697dec4613b958dccf5c31b687f867a80046",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "sunoo-rank10.png",
+      "sourceNow": "Added to Game/sunoo-rank10.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/crush-akihiko-umbrella.webp",
+      "placement": "data/crush-akihiko.js cr-aki-umbrella, first choice (open the umbrella): { cg } through the end of the branch; Romance & bonds (crush moments now count in the album: menu.js sceneSources kind 'crush'); the closer framing chosen over crush-akihiko-umbrella-zoomedout.png (bigger faces, both fit the phone crop)",
+      "textCheck": "checked 2026-10-23 against the image: matches the scene",
+      "mobileFocus": "38% 22%",
+      "outputSha256": "7672b6ccfe0e8d00383d034e075b3eabb529e083ec43ad4181f75d7703609c4c",
+      "sha256": "3724a2dcec1f560ef7670d5ff6f91ae6e8182cafdf2def77e3066d3c657c625b",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "crush-akihiko-umbrella.png",
+      "sourceNow": "Added to Game/crush-akihiko-umbrella.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/crush-two-ends.webp",
+      "placement": "data/crush-triangle.js cr-ah-railing: { cg } from 'Two people at the railing' through the three-way branch, cleared before the choice of where to stand; Romance & bonds (album kind 'crush')",
+      "textCheck": "checked 2026-10-23 against the image: matches the scene",
+      "mobileFocus": "60% 40%",
+      "outputSha256": "b64f1695afc5d3aa7f7f8429c61a1f9bd87e293595829bf3accbd71a4e3affb8",
+      "sha256": "994de75672fb5b4baf5a77421e1861a020a0836225b02f4a7a8fdd7ef84991cc",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "crush-two-ends.png",
+      "sourceNow": "Added to Game/crush-two-ends.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 34,
+      "note": "alternate of danielle-rank10-v2.png (same poses, sunset light, chain-link instead of glass); v2 used",
+      "sha256": "ec3ea986275fc521d3f733bf022bfeff4bc6648b035bb354eea762659218b5a0",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "danielle-rank10-v1.png",
+      "sourceNow": "Added to Game/danielle-rank10-v1.png",
+      "status": "not used (alternate)"
+    },
+    {
+      "batch": 34,
+      "note": "alternate framing of crush-akihiko-umbrella.png; the closer one used",
+      "sha256": "2f0efc4e62c90896db61978365920fdccd0b859906d3e9fdf7eb42d629aa72dd",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "crush-akihiko-umbrella-zoomedout.png",
+      "sourceNow": "Added to Game/crush-akihiko-umbrella-zoomedout.png",
+      "status": "not used (alternate)"
     }
   ],
   "batch1Validation": {
@@ -6548,6 +6878,27 @@
       "targeted check: every seasons slug exists for all 12 months"
     ],
     "html": "femc-game.html places v32, crush-shinjiro v2, crush-jihoon-minji v2",
+    "browserErrors": 0
+  },
+  "batch34Validation": {
+    "date": "2026-10-23",
+    "scope": "Rank 10 CGs for Ann, Chenle, Danielle, Elizabeth, Haru, Jaemin, Judy, Junkyu, Kasumi, Kiriko, Kuromi, Mercy, My Melody, Rio, Saori and Sunoo, and the two crush CGs (art list section 2B)",
+    "sourcesInspected": "all 20 viewed before wiring",
+    "sourcesIntegrated": 18,
+    "sourcesUnused": 2,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names, the two alternates too); On Hold untouched",
+    "danielle": "v1 and v2 share the poses (neither romantic); v2 used (the glass corridor; Kat's usual pick)",
+    "umbrella": "the closer framing used; the zoomed-out one is smaller in the phone crop",
+    "romance": "none of the 18 is romantic; all show on every route",
+    "album": "menu.js sceneSources now walks crush moments (kind 'crush', seen from S.crush.seen, caption '<name> · A moment'); cgGroup sends crush- to Romance & bonds",
+    "tests": [
+      "python3 tools/femc-check-scenes.py --links ann,chenle,danielle,elizabeth,haru,jaemin,judy,junkyu,kasumi,kiriko,kuromi,mymelody,mercy,rio,saori,sunoo,akihiko,haechan (OK)",
+      "python3 tests/femc_gallery.py (94 checks)",
+      "python3 tests/femc_crush.py (74 checks, 1,598 scene paths)",
+      "targeted: albumData lists both crush CGs in Romance & bonds and unlocks crush-two-ends from S.crush.seen"
+    ],
+    "html": "femc-game.html places v33, menu v16, crush-akihiko v2, crush-triangle v2, ann v8, chenle v3, danielle v3, elizabeth v5, haru v7, jaemin v3, judy v7, junkyu v11, kasumi v7, kiriko v5, kuromi v6, mercy v7, mymelody v4, rio v5, saori v5, sunoo v11",
     "browserErrors": 0
   }
 }

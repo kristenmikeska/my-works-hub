@@ -499,10 +499,16 @@
       { choose: [
         { t: "Every Wednesday. I promise.", notes: 3, then: [
           { s: 'mymelody', f: 'happy', t: "Even if it's terrible?" },
-          { s: 'solar', f: 'happy', t: "Especially if it's terrible." }
+          { s: 'solar', f: 'happy', t: "Especially if it's terrible." },
+          { cg: 'link-mymelody-r10' },
+          { n: "My Melody laughed out loud, delighted, both hands up, and Solar laughed too, helplessly, over the cut cake and the crossed-out pages, which she didn't often do." },
+          { cg: null }
         ] },
         { t: "I'll need the recipe.", notes: 2, then: [
-          { s: 'mymelody', f: 'happy', t: "No! You have to make your own. That's the whole thing. I'll lend you the notebook for the crossing-out part." }
+          { cg: 'link-mymelody-r10' },
+          { s: 'mymelody', f: 'happy', t: "No! You have to make your own. That's the whole thing. I'll lend you the notebook for the crossing-out part." },
+          { n: "She said it so fiercely, both hands up, that Solar laughed out loud, and then so did she." },
+          { cg: null }
         ] }
       ] },
       { n: "From the lounge, through the open door, came the sound of somebody blowing their nose very loudly, and then a voice, thick and furious, at a volume calibrated to sound like it was addressed to the television, saying that the TV was making her eyes water and somebody needed to dust it." },

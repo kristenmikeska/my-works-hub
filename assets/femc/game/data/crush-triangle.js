@@ -86,6 +86,7 @@
     { id: 'cr-ah-railing', who: 'haechan', crush: BOTH, slot: 'late', when: 'quiet', after: '11/12', until: '12/10', events: MET,
       place: 'Iwatodai Dorm · Rooftop', time: 'Late Night', bg: 'iwatodaidorm-roof-night', scene: [
         { n: "Midnight had come and gone without turning anything green, and she went up to the roof because the house was asleep and her head wasn't, and pushed the door open onto the cold, and stopped." },
+        { cg: 'crush-two-ends' },
         { n: "Two people at the railing, one at each end. Akihiko at the east end by the water tank, running jacket, hood down, forearms on the rail. Haechan at the west end by the satellite dish, hood up, headphones round his neck, gum. Between them eleven meters of railing with nobody on it, and she knew it was eleven meters because it was exactly the kind of thing both of them would have measured." },
         { n: "Neither of them was looking at the other. Both of them knew to the centimeter where the other one was, the way you know where a strange dog is in a room." },
         { s: 'akihiko', f: 'neutral', t: "He was here when I came up." },
@@ -105,6 +106,7 @@
         ], [
           { n: "And then, because Akihiko had never in his life been able to stand a silence for long, he called down the eleven meters, *you box?*, and Haechan said *no*, and Akihiko said *you should*, and Haechan said *no*, and Akihiko laughed out loud, delighted, like a man who'd been handed a wall to run at." }
         ]),
+        { cg: null },
         { choose: [
           { t: "(Stand at Akihiko's end.)", crush: { akihiko: 1 }, then: [
             { n: "She went to his end. He moved over without looking, the way he'd been moving over on ledges for her since spring, and their sleeves touched on the rail, and at the far end Haechan put his headphones on with both hands, slowly, like a man closing a door very quietly so as not to wake anybody." }

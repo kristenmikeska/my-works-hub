@@ -682,8 +682,10 @@
       { n: "The biggest booth. The long couch, the mirror ball, the clerk's dish of rice crackers on the table and the napkin from November still propped against the mic stand, gone soft at the folds. Jaemin wasn't standing on anything. He was sitting in the middle of the couch with his elbows on his knees and an index card in his hands, turning it over, and over, like a boy in a hallway before a speech." },
       { n: "He'd bought it at the stationery shop on the Strip. A whole pack, he said, for one card, because they didn't sell one, and he'd ruined eleven of them, and Chenle had counted, and had said so, and had then gone to Game Panic and left him to ruin the twelfth in peace." },
       { s: 'jaemin', f: 'neutral', t: "Okay. I'm not doing a pitch. I want that noted. No pitch. I've been practicing not doing a pitch. It's the hardest thing I've ever done. Harder than the stairs." },
-      { n: "He held out the card. It was a guest list. A real one, the kind he must have written a hundred times on the backs of a hundred flyers and receipts, with a line across the top for the event and a column for names, and the event line was blank, and there was one name in the column, at the top." },
+      { cg: 'link-jaemin-r10' },
+      { n: "She sat down beside him, and he held out the card. It was a guest list. A real one, the kind he must have written a hundred times on the backs of a hundred flyers and receipts, with a line across the top for the event and a column for names, and the event line was blank, and there was one name in the column, at the top." },
       { n: "*SOLAR LEE.* And beside it, in the space for a plus-one, *whoever.* And under that, where a date would go, in his capitals, *EXPIRES: NO.*" },
+      { cg: null },
       { ifFlag: 'route-R', then: [
         { s: 'jaemin', f: 'neutral', t: "When we get home. The first one back. Not the guest list. The door list. There's a difference. The guest list is for people I want at the party. The door list is for people who don't have to knock." },
         { s: 'jaemin', f: 'neutral', t: "You've never had to knock. You just didn't know it." }

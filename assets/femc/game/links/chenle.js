@@ -791,7 +791,8 @@
           { n: "She was bad at it. She was terrible at it, she stood in all the wrong places with the shield up at all the wrong angles, and he played the wrench behind her and kept her alive through every one of her mistakes, at sixty percent, every time, as though he'd learned it off somebody, and on the third round she turned in the seat and looked at him and he was smiling at the screen with his whole face, without making a sound." }
         ] }
       ] },
-      { n: "Between rounds, with the countdown going on the screen and the next match loading, he took both hands off the stick and put them in his hoodie pocket, which he never did between rounds, and looked at the cabinet instead of at her." },
+      { cg: 'link-chenle-r10' },
+      { n: "Between rounds, with the countdown going on the screen and the next match loading, he took both hands off the stick and got up off the stool, and she got up with him, and he put his hands in his hoodie pocket, which he never did between rounds, and looked at the cabinet instead of at her." },
       { s: 'chenle', f: 'flustered', t: "I'm going to say a thing. Once. Don't make it weird." },
       { s: 'solar', f: 'neutral', t: "Okay." },
       { s: 'chenle', f: 'neutral', t: "I'm your tank." },
@@ -799,6 +800,7 @@
       { s: 'chenle', f: 'serious', t: "No. You know it in here. On the screen. I mean everywhere. If something comes at you, I'm in front. I can't fight, I checked, I asked twice, I don't have one. I'll be in front anyway. That's the whole job. It doesn't stop because you forgot the game." },
       { s: 'chenle', f: 'flustered', t: "That's it. That's the thing." },
       { n: "He'd said it at the same volume he said everything, to the screen, with his hands in his pocket, and it had cost him, she could see that, it had cost him exactly as much as it would have cost anyone else to shout it from a roof, and he'd paid it in full and wasn't going to ask for change." },
+      { cg: null },
       { ifFlag: 'chenle-one', then: [
         { n: "He took the pink phone out of his pocket, the one from here, and opened it, and showed her the call log without comment. Her name, once, near the bottom, from a step outside the guesthouse in November. One." },
         { s: 'chenle', f: 'neutral', t: "I never needed a second one. Just so you know. One was the number." }

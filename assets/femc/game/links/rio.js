@@ -653,7 +653,10 @@
       { n: "Mori said it without any irony at all, waving her whole arm, and Rio froze for a second like she'd been hit with a ball she didn't see coming, and then lifted one hand and waved back, stiffly. Ryoko, behind Mori, gave Solar a look of enormous, unbearable meaning, and took Mori by the hood of her jacket, and towed her away." },
       { n: "Then it was the two of them, and the white box of light, and the ball cart, and the hum of the lamps. Rio had a long, thin bag with her, an old racket cover faded from blue to the color of a vein, and she'd been looking at it all practice." },
       { s: 'rio', f: 'neutral', t: "This was my first racket. Ryoko gave it to me when we were twelve, because mine was from a supermarket and she said it was embarrassing her. It's been in every tournament I ever lost." },
+      { cg: 'link-rio-r10' },
+      { n: "She pushed it into Solar's arms, cover and all, and then leaned on the ball cart as though she needed something to hold instead." },
       { s: 'rio', f: 'flustered', t: "I had it restrung. It's yours. So you stop using the club's. The club's are terrible. And this one's been unlucky long enough. It's time it was lucky for somebody." },
+      { cg: null },
       { choose: [
         { t: "(Take a swing with it. Right now.)", notes: 3, then: [
           { n: "Solar took it out of the cover and swung it, once, at nothing, and it was lighter than the club's, and the grip was worn smooth in two places exactly the shape of a twelve-year-old's hand, and it moved through the cold air like it had been waiting to." },

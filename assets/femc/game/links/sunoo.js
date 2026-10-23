@@ -733,7 +733,9 @@
       { s: 'sunoo', f: 'neutral', t: "Can I tell you why I liked you? The first time? Heeseung-hyung told you once it was rare. For me to come back from the counter and say somebody was really nice. I say everyone's nice. I don't mean it about everyone." },
       { s: 'sunoo', f: 'happy', t: "You apologized for being indecisive. To the guy at the counter. Nobody does that. And then you said sorry for maybe making my friend look bad, before you even knew who my friend was. You were scared and you were still being careful with everybody." },
       { s: 'sunoo', f: 'neutral', t: "I thought, oh. She's like me. She makes the room nicer and nobody checks if she's tired." },
-      { n: "He made seven croissants and seven coffees. There were only two of them in the café. They ate as many as they could at the window table, and wrapped the rest in paper for the dorm, and on the bag, in his round hand, under her name, he drew a sun with a face on it, and two pink cheeks, and a little heart." },
+      { cg: 'link-sunoo-r10' },
+      { n: "He made seven croissants and seven coffees. There were only two of them in the café. They ate as many as they could at the window table, with the last of the week's snow lying blue outside the glass, and wrapped the rest in paper for the dorm, and on the bag, in his round hand, under her name, he drew a sun with a face on it, and two pink cheeks, and a little heart." },
+      { cg: null },
       { ifFlag: 'sunoo-photo', then: [
         { n: "And in the bag, when she got it back to the dorm, tucked between the croissants in a napkin so it wouldn't get buttery, there was a photo, printed small and grainy at the convenience store on the corner, the one she'd taken in December. On the back, in his round hand: *proof i was there. — s.*" }
       ] },

@@ -599,7 +599,7 @@
 
     { after: '11/24', title: '10: her own routine', place: 'Naganaki Shrine', time: 'After School', scene: [
       { music: 'tender' },
-      { n: "Late November, and the cold had come in for good, the kind that got into the stones and stayed there, so that sitting on the shrine steps was like sitting on a block of ice with a cushion of good intentions. The trees were bare. The light came straight through them now, thin and silver and low. Kasumi had asked Solar to come at four exactly, and to sit in the middle of the steps, and not to say anything at all until the end." },
+      { n: "Late November, and the cold had come in for good, the kind that got into the stones and stayed there, so that sitting on the shrine steps was like sitting on a block of ice with a cushion of good intentions. The trees were bare, and a dusting of early snow had settled on the shrine roofs and stayed. The light came straight through them now, thin and silver and low. Kasumi had asked Solar to come at four exactly, and to sit in the middle of the steps, and not to say anything at all until the end." },
       { s: 'kasumi', f: 'serious', t: "The middle, Senpai. Exactly the middle. That's where the head judge sits." },
       { choose: [
         { t: "(Count the steps and sit on exactly the middle one.)", notes: 3, then: [
@@ -621,8 +621,10 @@
       { s: 'kasumi', f: 'neutral', t: "I think one day soon I'm going to wake up. I don't know how I know. And I don't know who I'll be when I do. I think she might be sadder than me. But I wanted somebody to see her first. So somebody saw her." },
       { choose: [
         { t: "I saw her.", notes: 3, then: [
-          { n: "Kasumi's face did something complicated and then simple. She came and sat on the step below Solar's, close, with her back against Solar's knees, the way you'd lean on a wall you trusted, and breathed out a long white breath into the cold." },
-          { s: 'kasumi', f: 'sad', t: "...Okay. Okay. Then she's real." }
+          { cg: 'link-kasumi-r10' },
+          { n: "Kasumi's face did something complicated and then simple. She came and sat on the step below Solar's, close, with her back against Solar's knees, the way you'd lean on a wall you trusted, and breathed out a long white breath into the cold, and Solar put a hand on her hair." },
+          { s: 'kasumi', f: 'sad', t: "...Okay. Okay. Then she's real." },
+          { cg: null }
         ] },
         { t: "(Clap. Three times.)", notes: 2, then: [
           { n: "Solar clapped three times, which in the empty shrine, in the cold, sounded like a great deal more than three, exactly as it had in May. Kasumi curtsied. She very clearly hadn't planned to. This time she didn't look mortified about it at all." }

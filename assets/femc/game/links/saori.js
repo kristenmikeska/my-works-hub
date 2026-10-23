@@ -631,8 +631,10 @@
           { s: 'saori', f: 'neutral', t: "Put it somewhere it belongs." }
         ] }
       ] },
-      { n: "She walked to the back of the stacks, where the light from the windows didn't quite reach, and knelt on the carpet, and found the place on the bottom shelf beside a cloth-bound book with a cracked green spine, the one that had waited eleven years for a girl to come asking about a tiger, and slid the old gray notebook in next to it, spine out, between the foxes and the cranes." },
+      { cg: 'link-saori-r10' },
+      { n: "She walked to the back of the stacks, where the light from the windows didn't quite reach, and knelt on the carpet, and found the place on the bottom shelf beside a cloth-bound book with a cracked green spine, the one that had waited eleven years for a girl to come asking about a tiger, and slid the old gray notebook in next to it, spine out, between the foxes and the cranes, and Solar, who had followed her, stood over her with her hands on her knees and watched it go in." },
       { s: 'saori', f: 'neutral', t: "A library is where you keep things nobody's borrowed in a long time. In case somebody comes back for them." },
+      { cg: null },
       { ifRoute: 'romance', then: [
         { n: "The committee had gone. Ms. Ozawa was in the back office with the door closed and the radio on low. The light coming in sideways between the shelves was blue and thin and going, and Saori stood up from the carpet and didn't go back to the desk. She stood between the shelves with her back to the literature and her face pink and her hands, for once, not in her sleeves." },
         { s: 'saori', f: 'flustered', t: "I've read about this so many times. I always skipped ahead. I wanted to know how it went before it went." },

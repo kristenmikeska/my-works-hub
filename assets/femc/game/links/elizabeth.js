@@ -668,8 +668,11 @@
           { n: "She sat beside Solar on the velvet seat, which she had never done in this room, and took out the small cloth notebook." }
         ] }
       ] },
+      { cg: 'link-elizabeth-r10' },
+      { n: "Solar had her handbook open on her knees, the way she always held it in here, and Elizabeth laid the small cloth notebook on top of the compendium and kept her gloved hand on it." },
       { s: 'elizabeth', f: 'neutral', t: "I have no page, you know. Attendants are not in the compendium. We are the ones who hold it. I had never once in all my time thought that was odd. And then a guest walked in whose page was as empty as mine, and I looked at it, and for the first time I saw what I looked like." },
       { s: 'elizabeth', f: 'neutral', t: "So I went out to read you the long way. And it seems I have been read back." },
+      { cg: null },
       { n: "She opened the little notebook and read from it, aloud, in order, the way she had read the timetable and the menu at Hagakure. *A person is what she wants. What others remember of her. What she is running from. Where she is written down. Where she is going. A song somebody else wrote. The story other people know. What is found, and who comes for it. What she keeps.*" },
       { s: 'elizabeth', f: 'happy', t: "I went out to find those things about you, and I have found them out about me instead. I like fountains. I like a man who knows how you take your egg. I like curses. I like timetables, and the dark in a cinema, and being helped down from a jungle gym, and umbrellas nobody claimed, and feeding a year. I did not know any of that in April. I did not know I was the sort of thing that could like." },
       { n: "She closed the notebook. Then she opened the compendium on her knees and turned it to Solar's page, the one with the fine blue border and the flourish at the corners and nothing inside, and they looked at it together. Neither of them turned it over. They both knew what was on the back of it, or knew that something was, in that writing neither of them had held up to a mirror, and neither of them reached for it." },

@@ -578,10 +578,12 @@
       { music: 'tender' },
       { n: "November, and the first snow wouldn't come for weeks yet but you could smell it already, that clean metal edge in the air. Angela was waiting on the roof in her white coat and the ugly scarf, and the Caduceus was leaning on the rail beside her, humming, and Genji was sitting on the ledge at the far end with his back to them, very carefully not listening, the way only someone who could hear everything could not listen." },
       { s: 'mercy', f: 'neutral', t: "I have something for you. Hold out your hand. No, the other one. The one that holds the light." },
-      { n: "She put something in Solar's palm. A feather. Not a real one. A single segment of the gold and white wings, a long thin blade of light metal, warm, and when Solar's fingers closed around it, it hummed, very faintly, the same note as the staff." },
+      { cg: 'link-mercy-r10' },
+      { n: "She sat Solar down on the bench by the rail, beside her, an arm round her shoulders, and put something in Solar's palm. A feather. Not a real one. A single segment of the gold and white wings, a long thin blade of light metal, warm, and when Solar's fingers closed around it, it hummed, very faintly, the same note as the staff." },
       { s: 'mercy', f: 'neutral', t: "It's tuned to the Caduceus. So I always know where you are. And so you always know where I am. In this world or any of the others. I can't promise it'll work across the gap. I've never tried. But I've never done anything this year I'd tried before." },
       { s: 'mercy', f: 'sad', t: "I've spent my whole life choosing who to save. Every day, every patient, every battlefield. I'm very good at it." },
       { s: 'mercy', f: 'neutral', t: "And this year, for the first time, someone chose me. Not because I was hurt. Not because I could do something. She just came back up three flights of stairs for an umbrella, and kept coming." },
+      { cg: null },
       { choose: [
         { t: "You'd have done the same for me.", notes: 2, then: [
           { s: 'mercy', f: 'happy', t: "I'd have done it worse. I can't make tamagoyaki. I tried. Junpei saw it and asked if it was an omelette or a crime." }

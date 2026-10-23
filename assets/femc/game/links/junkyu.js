@@ -728,8 +728,11 @@
       ] },
       { ifFlag: 'junkyu-counter', then: [
         { n: "The others had drifted over by then, all the boys, the way they always ended up in one loud knot wherever she was. Junkyu looked around at them, and she watched his lips move, one, two, three, four, five, all the way along, and stop on her. Six." },
-        { s: 'junkyu', f: 'happy', t: "Everybody. That's everybody here. Cherry makes seven, wherever she is. I counted her anyway." }
+        { s: 'junkyu', f: 'happy', t: "Everybody. That's everybody here. Cherry makes seven. She's at the crane game pretending she came on her own. I counted her anyway." }
       ] },
+      { cg: 'link-junkyu-r10' },
+      { n: "They ended up side by side on the padded bench by the dance machine, red-eyed and laughing at nothing, with everybody crowded round: Asahi and Jaehyuk leaning over the back of it, Hyunsuk crouched at Junkyu's knee with his chin in his hand, and over at the crane game Jihoon and Cherry arguing about which plush was rigged." },
+      { cg: null },
       { n: "He didn't have money for the ice cream. He found this out at the stand by the fountain, patting every pocket twice, and turned around and yelled across the atrium for Hyunsuk, who came over, and sighed, and paid, and bought one for everyone, and didn't say anything about the six hundred yen at all." },
       { ifFlag: 'route-H', then: [
         { s: 'junkyu', f: 'happy', t: "When we're home I'm going to ask you to every dance. Every single one. And you're going to say it's a waste of time and Asahi's going to say it's a waste of time and we're going to GO." },
