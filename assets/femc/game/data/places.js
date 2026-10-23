@@ -302,6 +302,15 @@ window.FEMC_GAME_PLACES = {
     'rooftop-day': [[3, 'rooftop-day'], [12, 'rooftop-day-winter']],
     'iwotodaidorm-outside': [[3, 'iwotodaidorm-outside'], [12, 'iwatodaidorm-front-winter']]
   },
+  /* Today's art: wherever a background is one of these images (a rule's day or evening image, a scene's own bg, Go Out), the
+     first entry that fits today swaps it: `dates` ['M/D', ...] and / or `weather` (calendar.js: clear, cloudy, rain, snow,
+     storm). Applied after the season (core.js dressed). The festival hallway is only for the festival's two days. */
+  today: {
+    'school-hallway': [{ dates: ['10/30', '10/31'], img: 'gekkoukan-culture-festival' }],
+    'school-hallwaysecondfloor': [{ dates: ['10/30', '10/31'], img: 'gekkoukan-culture-festival' }],
+    'location-2': [{ weather: ['rain', 'storm'], img: 'iwatodai-strip-rain' }],
+    'iwatodai-strip-night': [{ weather: ['rain', 'storm'], img: 'iwatodai-strip-rain' }]
+  },
   /* CG focus: which part of each CG (assets/femc/cg) to keep in view when a tall, narrow window has to crop it. */
   cgFocus: {
     'story-birthday-surprise': '38% 45%', 'story-graduation': '48% 30%', 'trip-yakushima-beach': '45% 35%', 'link-akihiko-r15': '45% 32%', 'link-haechan-r15': '60% 28%', 'romance-haechan-christmas': '50% 25%', 'link-jungwon-r15': '50% 32%', 'link-shinjiro-lounge': '42% 25%', 'ending-true': '42% 30%', 'story-wren-clock': '62% 35%', 'story-wren-cap': '45% 30%', 'link-shinjiro-r15': '55% 35%', 'romance-ann-christmas': '40% 25%', 'romance-jihoon-christmas': '45% 25%', 'romance-judy-christmas': '42% 25%', 'romance-jungwon-christmas': '38% 20%', 'romance-kasumi-christmas': '48% 55%', 'romance-minji-christmas': '42% 28%', 'romance-rio-christmas': '40% 25%', 'romance-saori-christmas': '47% 28%', 'romance-shinjiro-christmas': '50% 25%', 'link-junpei-r10': '46% 25%', 'link-mitsuru-r10': '52% 30%', 'link-yukari-r10': '50% 28%', 'link-aigis-r10': '33% 28%', 'link-fuuka-r10': '54% 35%', 'link-cherry-r10': '49% 28%', 'link-hanni-r10': '50% 25%', 'link-hyein-r10': '60% 22%', 'link-jaehyun-r10': '55% 20%', 'link-jihoon-r10': '46% 28%', 'link-jihoon-r10-romance': '45% 30%', 'link-koromaru-r10': '44% 35%', 'link-mark-r10': '45% 30%', 'link-minji-r10': '40% 32%', 'link-yunjin-r10': '61% 28%',

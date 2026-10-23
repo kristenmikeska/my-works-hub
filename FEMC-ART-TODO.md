@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**113 items:** 2 quick fixes · 7 CGs · 7 places · 68 character pieces (50 of them regulars' faces in 4D) · 12 battle · 11 cards and icons · 6 screens. 7 are ⭐ (plus 13 ⭐ regulars inside 4D), 87 are optional.
+**106 items:** 2 quick fixes · 7 CGs · 3 places · 68 character pieces (50 of them regulars' faces in 4D) · 12 battle · 8 cards and icons · 6 screens. 4 are ⭐ (plus 13 ⭐ regulars inside 4D), 83 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -96,16 +96,10 @@ All done.
 All done (`places.js seasons`: the shrine, the front gate, the riverside, the school roof and the dorm's front).
 
 ### 3D. Dark Hour arenas
-Two July full-moon fights use ordinary daytime art. **Attach:** the image named.
-```
-Edit this image. Keep the place, layout and camera exactly the same, but change it to the Dark Hour from Persona 3: the whole scene tinted a sickly green-yellow, a huge yellow-green full moon, the lights dead, deep hard shadows, upright black coffins where people would be, dark red stains on the ground. No people.
-```
-- [ ] ⭐ the hotel street (🎮 `bg/hotel-outside.webp` → `darkhour-hotel-outside`)
-- [ ] ⭐ the hotel lobby (🎮 `bg/hotel-lobby.webp` → `darkhour-hotel-lobby`)
+All done (the two July full moons, batch 36).
 
-### 3E. Events *(optional)*
-- [ ] **The culture festival (10/30–31):** a school hallway decorated for a festival, class stalls, paper banners, balloons. **Fills:** `gekkoukan-culture-festival`.
-- [ ] **A rainy evening street:** Iwatodai's shopping street in the rain, puddles reflecting the shop lights. **Fills:** `iwatodai-strip-rain`.
+### 3E. Events
+All done (`places.js today`: the festival hallway on 10/30–31, the Strip on rainy days).
 
 ---
 
@@ -608,7 +602,6 @@ A 3-panel horizontal sheet on a plain white background showing the same characte
 ```
 A tarot card in exactly the same style, border and layout as the attached cards: [ARCANA], numbered [NUMBER], depicting [IMAGE].
 ```
-- [ ] ⭐ **The Velvet Room** (Elizabeth's arcana): it has no card, so her Bonds page and rank-up card show none. Unnumbered; a blue door standing open on a starry void, a key in the lock. **Fills:** `tarot/velvetroom.webp`.
 - [ ] *(Optional)* alternates for shared cards: Lovers, Strength, Empress, Priestess, Justice, Magician, Moon, Emperor, Sun, Chariot, Fool. **Fills:** `tarot/<arcana>-2.webp`.
 
 ### 6B. Item and gear art *(optional)*
@@ -627,8 +620,6 @@ A 2×3 grid of six [KIND] on a white background, each in its own card, in the sa
 
 ### 6C. Icons *(optional)*
 **Attach:** nothing needed.
-- [ ] **Status icons:** the eight ailments (charm, fear, freeze, shock, poison, distress, bind, disorient) and up/down arrows for attack, defense and agility. Now colored text tags.
-- [ ] **Tartarus map rooms:** fight, chest, locked chest, clock, access point, stairs, event, the Reaper. Now code glyphs.
 - [ ] **Menu tabs:** Party, Personas, Skills, Cards, Equipment, Items, Collection, Status, Links, Bonds, Journal, Album, Theater. Now text only.
 ```
 A set of [N] flat game UI icons in Persona 3 Reload's style (bold shapes, heavy ink outline, one accent color, a white rim), each on its own square, transparent background, no text: [LIST].
@@ -678,7 +669,7 @@ Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 
 
 ### Battle art
 - **New Shadow or boss art:** `tools/femc-shadows.py` cuts it into `battle/art/shadows/<slug>.webp` and `index.js`; point the enemy's `img` at the slug (the April boss is `magician`, the memory boss `memory_car`). Wren's phases: swap `wren_call` / `wren_last`'s `pic` for an `img`. Then pose sheets as below.
-- **Gear and item art:** weapons already read a gear's `art` (equip lists, shops, Shuffle Time); armor and accessories need the same field checked in each list. Items, materials and status icons are `icons.js` SVGs: add an `img` hook in `FemcIcons.of` before wiring art.
+- **Gear and item art:** weapons already read a gear's `art` (equip lists, shops, Shuffle Time); armor and accessories need the same field checked in each list. Items and materials are `icons.js` SVGs: add an `img` hook in `FemcIcons.of` before wiring art. Status icons and map rooms are art since batch 36 (`tools/femc-icons.py` → `battle/art/icons/`, read by `battle.js stIco` / `ROOM_ART`).
 
 ### Cards, screens and keepsakes
 - **Tarot:** Elizabeth's arcana key is `velvetroom` (see Tarot cards and places below).
@@ -689,7 +680,7 @@ Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 
 
 ### Tarot cards and places
 - **A tarot card:** add `'<arcana key>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-tarot.py` (the key is the link's `arcana` lowercased without spaces) and run it: it writes `tarot/<key>.webp` and `tarot/index.js`, which the Bonds menu and the rank-up cards read (`core.js tarot`). Bump the `tarot/index.js ?v=` in `femc-game.html`.
-- **A place:** add `'<slug>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-backgrounds.py` and run it (WebP, at most 1920 wide; New Adds pieces are fit to 1920×1072), then point the place's rule in `game/data/places.js` (or a scene's or a pick's `bg`) at the slug and bump that file's `?v=`. An activity that shares its spot with other scenes gets its own `place` (e.g. `'Iwatodai Strip · Hagakure · Challenge Bowl'`) and a rule above the spot's. A rule can't change by season, but a day image can: `places.js seasons` maps one (now `outside-shrine-day`, `gekkoukanhigh`, `park-2`, `rooftop-day`, `iwotodaidorm-outside`) to [first month, slug] pairs, and `core.js seasonal` swaps it wherever it's used (rules, scene `bg`, Go Out); other seasonal art goes on dated scenes' `bg`. A story event's own `bg` field isn't read (ui.js `sceneFor`), so an event sets its art with a `{ bg }` step. Night-lit art gets the same slug as its evening image too, or evening scenes dim it.
+- **A place:** add `'<slug>': 'Added to Game/<file>'` to `EXTRA` in `tools/femc-backgrounds.py` and run it (WebP, at most 1920 wide; New Adds pieces are fit to 1920×1072), then point the place's rule in `game/data/places.js` (or a scene's or a pick's `bg`) at the slug and bump that file's `?v=`. An activity that shares its spot with other scenes gets its own `place` (e.g. `'Iwatodai Strip · Hagakure · Challenge Bowl'`) and a rule above the spot's. A rule can't change by season, but a day image can: `places.js seasons` maps one (now `outside-shrine-day`, `gekkoukanhigh`, `park-2`, `rooftop-day`, `iwotodaidorm-outside`) to [first month, slug] pairs, and `core.js seasonal` swaps it wherever it's used (rules, scene `bg`, Go Out); other seasonal art goes on dated scenes' `bg`. `places.js today` swaps any image for certain dates or weather (`{ dates, weather, img }`, `core.js dressed`, day and evening images both): the festival hallway, the Strip in the rain. A story event's own `bg` field isn't read (ui.js `sceneFor`), so an event sets its art with a `{ bg }` step. Night-lit art gets the same slug as its evening image too, or evening scenes dim it.
 
 ### Theurgy and strike-sheet art
 Everything is data plus one tool. The presentation is reusable: `battle.js theurgyCut` plays whatever a fighter has (see the comment above `TH` in `data.js`).

@@ -86,6 +86,7 @@ Other docs, if you ever want detail:
 - ✅ Five more of your CGs: rank 10 for Yukari, Junpei, Mitsuru, Aigis and Fuuka (in Memories too)
 - ✅ Ten more rank 10 CGs: Cherry, Hanni, Hyein, Jaehyun, Jihoon, Koromaru, Mark, Minji and Yunjin (in Memories too)
 - ✅ Sixteen more rank 10 CGs (Ann, Chenle, Danielle, Elizabeth, Haru, Jaemin, Judy, Junkyu, Kasumi, Kiriko, Kuromi, Mercy, My Melody, Rio, Saori, Sunoo) and both crush CGs, the umbrella and the railing (all in Memories too)
+- ✅ Your Dark Hour art for the two July full moons, Elizabeth's Velvet Room tarot card, the culture festival hallway (on its two days), the Strip in the rain (on rainy days), and your status and Tartarus map icons in battle
 - ✅ Your chibi art in the All-Out Attack cloud: all 12 fighters brawl through their chibi frames (Ken keeps his silhouette)
 - ✅ Bosses and fighters move in battle: the full-moon bosses (the Last Train too), Justice and 12 fighters have pose sheets (Ken is skipped). The April boss still borrows a regular Shadow's art (see the art list)
 - ✅ Weapons for the other fighters: Haechan, Jungwon, Jihoon and Minji, and now Akihiko, Yukari, Junpei, Mitsuru, Aigis, Koromaru and Shinjiro each have six of their own, with your art (a starter, then shops, chests, a full-moon drop, a gift from their link, and Shuffle Time while they're in the party). Old saves get their starters and any full-moon drops they missed. Only Ken is still on plain weapons

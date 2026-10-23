@@ -784,12 +784,21 @@ window.FemcGame = (() => {
   const name = id => CAST[id] || (id ? id[0].toUpperCase() + id.slice(1) : '');
   const castHas = id => id in CAST;
   function tarot(l) { const k = String(l?.arcana || '').toLowerCase().replace(/[^a-z0-9]/g, ''); return (W.FEMC_TAROT || []).includes(k) ? `${base}assets/femc/tarot/${k}.webp` : null; }
-  // places.js seasons: the plain day art that has a version per season (the shrine).
+  // places.js seasons: the plain day art that has a version per season (the shrine). Then today's art (dressed).
   function seasonal(img) {
     const list = D.places.seasons?.[img];
-    if (!list) return img;
+    if (!list) return dressed(img);
     const m = dateOf(S?.day || 0).getMonth() + 1;
-    return ([...list].reverse().find(([from]) => from <= m) || list[list.length - 1])[1];
+    return dressed(([...list].reverse().find(([from]) => from <= m) || list[list.length - 1])[1]);
+  }
+  // places.js today: art for one day or one kind of weather (the culture festival's hallway, the Strip in the rain). The first
+  // entry whose `dates` (M/D list) and / or `weather` (calendar.js names) fit today replaces the image, day or evening.
+  function dressed(img) {
+    const list = D.places.today?.[img];
+    if (!list || !S) return img;
+    const d = S.day || 0, md = mdOf(d);
+    const hit = list.find(e => (!e.dates || e.dates.includes(md)) && (!e.weather || e.weather.includes(weather(d))));
+    return hit ? hit.img : img;
   }
   function background(place = '', time = '', override) {
     if (override) return { url: `${base}assets/femc/bg/${seasonal(override)}.webp`, mood: '' };
@@ -798,7 +807,7 @@ window.FemcGame = (() => {
     const [, day, evening, look] = rule;
     const late = /Evening|Night|PM|AM/.test(time) && !/Morning/.test(time);
     const special = /Dark Hour|Velvet|Tartarus/.test(place + time);
-    const img = late && evening ? evening : seasonal(day);
+    const img = late && evening ? dressed(evening) : seasonal(day);
     return { url: `${base}assets/femc/bg/${img}.webp`, mood: look || (special || (late && evening) ? '' : late ? 'night' : '') };
   }
   function moodFor(place = '', time = '') {
@@ -2112,7 +2121,7 @@ window.FemcGame = (() => {
   indexLinks();
   return {
     KEY, HANDOFF_KEY, base, D, get S() { return S; }, save, saveQuiet, newGame, onChange, settings, setSetting, setSettings, DEFAULTS, textDelay, sfx,
-    dayOf, dateOf, mdOf, dayInfo, seasonal, slotsFor, slotName, weather, moon, END, SLOT_ORDER,
+    dayOf, dateOf, mdOf, dayInfo, seasonal, dressed, slotsFor, slotName, weather, moon, END, SLOT_ORDER,
     statRank, statRankName, statProgress, statId, sumStats, gainText, addStat, addStats, lacking, addYen, takeToasts, toast, migrateStats,
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
     homeOf, leavesAtMax, maxOf, isMaxed, stretchOn, afterGap, afterList, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,

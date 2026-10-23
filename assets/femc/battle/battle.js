@@ -72,7 +72,13 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 22;
+  const ART_V = 23;
+  /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
+     glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
+  const ICON_DIR = 'assets/femc/battle/art/icons/';
+  const stIco = k => `<img class="bt-sti" src="${ICON_DIR}${k}.webp?v=${ART_V}" alt="" draggable="false">`;
+  const buffIco = (k, v) => stIco(`${k}-${v > 0 ? 'up' : 'down'}`);
+  const ROOM_ART = new Set(['room-shadow', 'room-chest', 'room-locked', 'room-clock', 'room-access', 'room-stairs', 'room-event']);
   const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
   Object.values(D.personas).forEach(p => { if (p.art && !p.art.startsWith('data:') && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
   // Theurgy and Evoker sheet art (data.js paths are bare) get the art version too.
@@ -1342,8 +1348,8 @@
      ════════════════════════════════════════════════════ */
   const ROOM = {
     start: { name: 'Arrival', icon: 'room-start' }, shadow: { name: 'Shadow', icon: 'room-shadow', color: '#4b9bff' }, chest: { name: 'Treasure', icon: 'room-chest', color: '#ffd36b' },
-    locked: { name: 'Locked chest', icon: 'room-locked', color: '#b07bff' }, clock: { name: 'Clock', icon: 'room-clock', color: '#7dffc0' }, access: { name: 'Access point', icon: 'room-access', color: '#5fe0b0' },
-    stairs: { name: 'Stairs', icon: 'room-stairs', color: '#ff4f9e' }, event: { name: 'Something here', icon: 'room-event', color: '#ff8cc0' }, empty: { name: 'Corridor', icon: 'room-empty', color: '#8a7a9a' },
+    locked: { name: 'Locked chest', icon: 'room-locked', color: '#4fb3ff' }, clock: { name: 'Clock', icon: 'room-clock', color: '#ff9a3d' }, access: { name: 'Access point', icon: 'room-access', color: '#5fe0b0' },
+    stairs: { name: 'Stairs', icon: 'room-stairs', color: '#a77bff' }, event: { name: 'Something here', icon: 'room-event', color: '#ff8cc0' }, empty: { name: 'Corridor', icon: 'room-empty', color: '#8a7a9a' },
     shrine: { name: 'Night Orchid', icon: 'room-clock', color: '#c9b8ff' }
   };
   /* Tartarus bond perks on a fresh floor (build.js): Koromaru's Good Nose (one more chest), Jaemin's Recovery Party (the nightOrchid hook) (a
@@ -1530,7 +1536,7 @@
       const cls = ['node', `t-${known ? n.type : 'unknown'}`, n.visited ? 'visited' : '', cur ? 'cur' : '', opt ? 'opt' : '', (n.cleared || n.opened || n.used) ? 'done' : '', n.strong && !n.cleared && known ? 'strong' : ''].join(' ');
       const label = !known ? '???' : n.type === 'shadow' ? (n.cleared ? 'Cleared' : n.strong ? 'Strong' : 'Shadow') : r.name;
       const IS = S * (n.type === 'empty' && known ? 0.9 : 1.42);
-      const ic = ICON.svg(icon, known && n.type === 'shadow' && n.strong && !n.cleared ? '#ff3b6b' : null, 'glyph').replace('<svg class="bt-icon ', `<svg x="${p.x - IS / 2}" y="${p.y - IS / 2}" width="${IS}" height="${IS}" class="bt-icon `);
+      const ic = ROOM_ART.has(icon) ? `<image class="glyph art" href="${ICON_DIR}${icon}.webp?v=${ART_V}" x="${p.x - IS / 2}" y="${p.y - IS / 2}" width="${IS}" height="${IS}"/>` : ICON.svg(icon, known && n.type === 'shadow' && n.strong && !n.cleared ? '#ff3b6b' : null, 'glyph').replace('<svg class="bt-icon ', `<svg x="${p.x - IS / 2}" y="${p.y - IS / 2}" width="${IS}" height="${IS}" class="bt-icon `);
       return `<g class="${cls}" ${opt ? `data-node="${n.id}" role="button" tabindex="-1" aria-label="${esc(label)}"` : ''} style="--c:${col}">
         ${opt ? `<polygon class="ring" points="${p.x},${p.y - S - 9} ${p.x + S + 9},${p.y} ${p.x},${p.y + S + 9} ${p.x - S - 9},${p.y}"/>` : ''}
         <g class="nt" style="transform-origin:${p.x}px ${p.y}px"><polygon class="tile" points="${p.x},${p.y - S} ${p.x + S},${p.y} ${p.x},${p.y + S} ${p.x - S},${p.y}"/><polygon class="tile-in" points="${p.x},${p.y - S + 6} ${p.x + S - 6},${p.y} ${p.x},${p.y + S - 6} ${p.x - S + 6},${p.y}"/>${ic}</g>
@@ -2170,11 +2176,11 @@
     return ['atk', 'def', 'agi'].filter(k => u.buffs[k]).map(k => {
       const v = u.buffs[k], lv = Math.min(D.buffRules.cap, Math.abs(v)), t = u.buffT[k], lasting = t >= 90;
       const title = `${STAT_NAME[k]} ${v > 0 ? 'up' : 'down'} ${lv} level${lv > 1 ? 's' : ''}${lasting ? ', lasting' : `, ${t} turn${t === 1 ? '' : 's'} left`}`;
-      return tag === 'i' ? `<i class="bf ${v > 0 ? 'up' : 'dn'} lv${lv}${lasting ? ' last' : ''}" title="${title}" data-buff="${k}${v}">${STAT_SHORT[k]}<b>${(v > 0 ? '▲' : '▼').repeat(lv)}</b>${lasting ? '' : `<sub>${t}</sub>`}</i>`
-        : `<span class="bt-tag bf ${v > 0 ? 'up' : 'dn'} lv${lv}" title="${title}" data-buff="${k}${v}">${STAT_SHORT[k]} <b>${(v > 0 ? '▲' : '▼').repeat(lv)}</b>${lasting ? '' : `<em>${t}</em>`}</span>`;
+      return tag === 'i' ? `<i class="bf ${v > 0 ? 'up' : 'dn'} lv${lv}${lasting ? ' last' : ''}" title="${title}" data-buff="${k}${v}">${buffIco(k, v)}<b>${(v > 0 ? '▲' : '▼').repeat(lv)}</b>${lasting ? '' : `<sub>${t}</sub>`}</i>`
+        : `<span class="bt-tag bf ${v > 0 ? 'up' : 'dn'} lv${lv}" title="${title}" data-buff="${k}${v}">${buffIco(k, v)}<b>${(v > 0 ? '▲' : '▼').repeat(lv)}</b>${lasting ? '' : `<em>${t}</em>`}</span>`;
     });
   }
-  const ailTag = a => { const d = D.ailments[a.id]; return `<span class="bt-tag ail" style="--c:${d.color}" title="${esc(d.desc)}">${ART.icon(a.id)}<span>${esc(d.name)}</span><em>${a.t}</em></span>`; };
+  const ailTag = a => { const d = D.ailments[a.id]; return `<span class="bt-tag ail" style="--c:${d.color}" title="${esc(d.desc)}">${stIco(a.id)}<span>${esc(d.name)}</span><em>${a.t}</em></span>`; };
   function paintCard(u, o = {}) {
     const c = BT.cards.get(u.id); if (!c) return;
     const hp = o.hp != null ? o.hp : u.hp, sp = o.sp != null ? o.sp : u.sp, dead = o.dead != null ? o.dead : u.dead;
@@ -2193,7 +2199,7 @@
     const st = [];
     if (u.down && !dead) st.push('<i class="dw">DOWN</i>');
     if (u.guard) st.push('<i class="gd">GUARD</i>');
-    if (u.ail && !dead) { const d = D.ailments[u.ail.id]; st.push(`<i class="ail" style="--c:${d.color}" title="${esc(d.name)}">${ART.icon(u.ail.id)}${esc(d.name.toUpperCase())}</i>`); }
+    if (u.ail && !dead) { const d = D.ailments[u.ail.id]; st.push(`<i class="ail" style="--c:${d.color}" title="${esc(d.name)}" aria-label="${esc(d.name)}">${stIco(u.ail.id)}<sub>${u.ail.t}</sub></i>`); }
     const tac = tacticOf(u);
     if (tac !== 'direct' && !dead) st.push(`<i class="tc" title="${esc(D.tactics[tac].name)}">${esc(D.tactics[tac].short.toUpperCase())}</i>`);
     if (u.tired && !dead) st.push('<i class="tired" title="Tired: weaker, and may lose turns">TIRED</i>');
@@ -3741,7 +3747,7 @@
   }
   function statusLine(u, immune) {
     const a = u.ail && D.ailments[u.ail.id];
-    return `<div class="bt-status">${a ? `<span class="bt-tag ail" style="--c:${a.color}">${ART.icon(u.ail.id)}<span>${esc(a.name)}</span><em>${u.ail.t}</em></span><p>${esc(a.desc)} ${u.ail.t} turn${u.ail.t === 1 ? '' : 's'} left.</p>` : '<p><b>Status</b> No ailments.</p>'}${immune && immune.length ? `<p class="imm">Immune to ${immune.map(x => esc(D.ailments[x].name)).join(', ')}.</p>` : ''}</div>`;
+    return `<div class="bt-status">${a ? `<span class="bt-tag ail" style="--c:${a.color}">${stIco(u.ail.id)}<span>${esc(a.name)}</span><em>${u.ail.t}</em></span><p>${esc(a.desc)} ${u.ail.t} turn${u.ail.t === 1 ? '' : 's'} left.</p>` : '<p><b>Status</b> No ailments.</p>'}${immune && immune.length ? `<p class="imm">Immune to ${immune.map(x => esc(D.ailments[x].name)).join(', ')}.</p>` : ''}</div>`;
   }
   function analyzePanel(id) {
     const u = B.U(id);

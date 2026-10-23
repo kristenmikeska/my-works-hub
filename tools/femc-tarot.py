@@ -19,6 +19,8 @@ EXTRA = {
     'aeon': 'Added to Game/aeon-tarot.webp',
     'judgement': 'Added to Game/judgment-tarot.jpg',
     'councillor': 'Added to Game/Councillor-tarot.webp',
+    # batch 36 (2026-10-23): Elizabeth's arcana (links/elizabeth.js arcana 'Velvet Room')
+    'velvetroom': 'Added to Game/elizabeth-tarot.jpeg',
 }
 
 

@@ -6395,6 +6395,112 @@
       "source": "crush-akihiko-umbrella-zoomedout.png",
       "sourceNow": "Added to Game/crush-akihiko-umbrella-zoomedout.png",
       "status": "not used (alternate)"
+    },
+    {
+      "source": "darkhour-hotel-outside.jpeg",
+      "sourceNow": "Added to Game/darkhour-hotel-outside.jpeg",
+      "size": [
+        2730,
+        1536
+      ],
+      "sha256": "a137f137a5918f59b827ffc9f0af0d26b0cb2e425845e654c59d684385b951f2",
+      "batch": 36,
+      "status": "integrated",
+      "destination": "assets/femc/bg/darkhour-hotel-outside.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "place": "battle/data.js ops hierophant arena (was hotel-outside); story-act3 a3-hierophant's Dark Hour bg, and again after the second fight",
+      "note": "small dark figures stand on the steps and the crossing (no other people; coffins elsewhere)"
+    },
+    {
+      "source": "darkhour-hotel-lobby.jpeg",
+      "sourceNow": "Added to Game/darkhour-hotel-lobby.jpeg",
+      "size": [
+        2720,
+        1536
+      ],
+      "sha256": "5c74080d11b8b3b9e9e23f59396c6f2a9dc907482d6f85cdee3e3f5ce00a8977",
+      "batch": 36,
+      "status": "integrated",
+      "destination": "assets/femc/bg/darkhour-hotel-lobby.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "place": "battle/data.js ops lovers arena (was hotel-lobby); story-act3 a3-hierophant: a { bg } step before the lobby line"
+    },
+    {
+      "source": "elizabeth-tarot.jpeg",
+      "sourceNow": "Added to Game/elizabeth-tarot.jpeg",
+      "size": [
+        1728,
+        2414
+      ],
+      "sha256": "a382fc92a0a3239e5ffdbd1d54b9dcf50ac09227459b52a719dfb5d1280b5260",
+      "batch": 36,
+      "status": "integrated",
+      "arcana": "Velvet Room",
+      "link": "elizabeth",
+      "destination": "assets/femc/tarot/velvetroom.webp",
+      "conversion": "tools/femc-tarot.py EXTRA: P3-shaped card, resized to 360px wide (360x503), WebP q85; source unchanged",
+      "place": "core.js tarot (the Bonds menu and the rank-up card); tarot/index.js lists velvetroom"
+    },
+    {
+      "source": "gekkoukan-culture-festival.jpeg",
+      "sourceNow": "Added to Game/gekkoukan-culture-festival.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "5db03bd067973a6a2ca1b3cef0954bc20335aa7c0de75385786a95fce908bdd5",
+      "batch": 36,
+      "status": "integrated",
+      "destination": "assets/femc/bg/gekkoukan-culture-festival.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "place": "places.js today: school-hallway and school-hallwaysecondfloor on 10/30 and 10/31 only (the 'Gekkoukan High' and '2F Hallway' rules, the lunch screen, scenes' own bg); classrooms unchanged",
+      "note": "the art is warmly lit; the calendar has a storm on 10/30 and rain on 10/31"
+    },
+    {
+      "source": "iwatodai-strip-rain.jpeg",
+      "sourceNow": "Added to Game/iwatodai-strip-rain.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "fb695c26e1c9d2e9c27f3428aec4b43267c69b52ed5757fd677a332d1221f1ab",
+      "batch": 36,
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodai-strip-rain.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim, 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
+      "place": "places.js today: location-2 and iwatodai-strip-night on rain and storm days (the 'Iwatodai Strip' rule day and evening, the Go Out card, scenes' own bg)",
+      "note": "dusk-lit with the lanterns on; used for rainy afternoons too"
+    },
+    {
+      "source": "status-icons.jpeg",
+      "sourceNow": "Added to Game/status-icons.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "1ffef4bfa86ed3c04ca77ee90528711c5f33063b86ab360bfa4d8ff42548a299",
+      "batch": 36,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/icons/<charm|fear|freeze|shock|poison|distress|bind|disorient|atk-up|atk-down|def-up|def-down|agi-up|agi-down>.webp",
+      "conversion": "tools/femc-icons.py status: each white sticker card cut whole (rim kept, label and painted checkerboard dropped), square 96px, WebP q90; source unchanged",
+      "place": "battle.js stIco / buffIco: party cards' status chips (icon + turns), Shadows' tags and the status panel (icon + name), buff chips (arrow icon + levels + turns)",
+      "cellsUsed": "reading order 0,1,2,3,5,7,8,9,10,11,12,14,16,17",
+      "cellsUnused": "4 and 6 (green poison alternates; the purple one matches the game's poison colour), 13 (labelled DEF UP but drawn as a red down arrow with an A), 15 (a second DEF DOWN)"
+    },
+    {
+      "source": "tartarus-map-rooms.jpeg",
+      "sourceNow": "Added to Game/tartarus-map-rooms.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "0285b94e034de1a5eab99e805afdae3070da43ba566007fa421d25445b0d11f4",
+      "batch": 36,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/icons/room-<shadow|chest|locked|clock|access|stairs|event>.webp",
+      "conversion": "tools/femc-icons.py rooms: each neon glyph cut out of its dark tile (outline and inside kept), square 128px, WebP q90; source unchanged",
+      "place": "battle.js ROOM_ART: the Tartarus node map's room glyphs (start, corridor, unknown and the Night Orchid shrine keep their code glyphs); locked, clock and stairs tile colours changed to match the art",
+      "cellsUnused": "7 (the Reaper: the map's Reaper marker already shows the Reaper's Shadow art and the code glyph was unused) and 8 (a cyan sigil with no matching room)"
     }
   ],
   "batch1Validation": {
@@ -6899,6 +7005,25 @@
       "targeted: albumData lists both crush CGs in Romance & bonds and unlocks crush-two-ends from S.crush.seen"
     ],
     "html": "femc-game.html places v33, menu v16, crush-akihiko v2, crush-triangle v2, ann v8, chenle v3, danielle v3, elizabeth v5, haru v7, jaemin v3, judy v7, junkyu v11, kasumi v7, kiriko v5, kuromi v6, mercy v7, mymelody v4, rio v5, saori v5, sunoo v11",
+    "browserErrors": 0
+  },
+  "batch36Validation": {
+    "date": "2026-10-23",
+    "scope": "The July Dark Hour arenas (3D), the culture festival and the rainy Strip (3E), Elizabeth's tarot card (6A), status and Tartarus map icons (6C)",
+    "sourcesInspected": "all 7 viewed before wiring; icon cuts viewed as a contact sheet at 128/32/20px on dark and light; the tarot card beside star and aeon",
+    "sourcesIntegrated": 7,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold untouched",
+    "engine": "places.js today + core.js dressed (date / weather art swaps, day and evening images)",
+    "tests": [
+      "python3 tools/femc-check-scenes.py (OK)",
+      "python3 tests/femc_shadow_poses.py --enemies '' --ops hierophant,lovers --shots hierophant,lovers (both arenas on screen, desktop and phone)",
+      "python3 tests/femc_living.py (45 checks, 1,685 scene paths)",
+      "python3 tests/femc_skills.py --only fight (buff HUD with icons)",
+      "targeted headless check: rain / clear Strip, festival days vs 10/29 and 11/1, hotel bg steps, Elizabeth's tarot, all load",
+      "headless battle screenshots with every ailment and buff icon at 1440x900 and 375x812; Tartarus map at 1440x900"
+    ],
+    "html": "femc-battle.html battle.css v27, data v25, battle v40; femc-game.html tarot index v130, data v25, places v34, story-act3 v12, core v29; ART_V 23",
     "browserErrors": 0
   }
 }

@@ -82,6 +82,12 @@ EXTRA = {
     'park-2-winter': 'Added to Game/park-2-winter.jpeg',
     'rooftop-day-winter': 'Added to Game/rooftop-day-winter.jpeg',
     'iwatodaidorm-front-winter': 'Added to Game/iwatodaidorm-front-winter.jpeg',
+    # batch 36 (2026-10-23): the July full-moon arenas (battle/data.js ops, story-act3 a3-hierophant), the culture festival
+    # (places.js today: the school hallway on 10/30-31) and the Strip in the rain (places.js today: rain and storm days)
+    'darkhour-hotel-outside': 'Added to Game/darkhour-hotel-outside.jpeg',
+    'darkhour-hotel-lobby': 'Added to Game/darkhour-hotel-lobby.jpeg',
+    'gekkoukan-culture-festival': 'Added to Game/gekkoukan-culture-festival.jpeg',
+    'iwatodai-strip-rain': 'Added to Game/iwatodai-strip-rain.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 
