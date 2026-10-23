@@ -1609,9 +1609,11 @@
     ] },
 
     { after: '2/26', title: '15: five', place: 'Gekkoukan High · Boxing Club', time: 'After School', music: 'tender', scene: [
+      { ifRoute: 'romance', then: [{ cg: 'link-akihiko-r15' }] },
       { n: "His locker in the boxing club had his name on it on a strip of white tape gone gray at the edges from three years of everybody's thumbs, and on the last Friday in February, a week before graduation, he emptied it." },
       { n: "Three rolls of tape. A protein shake two months out of date, which he looked at with real regret. A single hand wrap with no partner. A towel that should have been burned. A photograph, face down on the top shelf. And the ruler, thirty centimeters, with somebody's initials gouged into the end." },
       { n: "He took everything out one thing at a time and looked at it and put it in a cardboard box, slowly, the way he'd unwound her wraps in June, as if there was something in each one worth keeping. The club worked around them and very carefully didn't watch." },
+      { cg: null },
       { choose: [
         { t: "(Hand him things out of the locker one at a time.)", notes: 3, then: [
           { n: "She handed him things, one at a time, and he took each one and looked at it and told her what it was, the tape from the first tournament, the towel from the second, as if he were reading her his record. The photograph she handed him face down, the way she'd found it. He turned it over. Three kids on a concrete step in the sun, two boys and a girl in the middle with a gap in her teeth and her hand on the smaller boy's head like a crown. He looked at it a long time. He didn't put it in the box. He put it in the inside pocket of his blazer, and buttoned the pocket." }

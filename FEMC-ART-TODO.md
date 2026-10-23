@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**81 items:** 2 quick fixes · 14 CGs · 17 places · 19 character pieces · 12 battle · 11 cards and icons · 6 screens. 15 are ⭐, 47 are optional.
+**79 items:** 2 quick fixes · 12 CGs · 17 places · 19 character pieces · 12 battle · 11 cards and icons · 6 screens. 13 are ⭐, 47 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -37,27 +37,15 @@ Create a NEW illustration that matches the art style of the FIRST attached image
   - **Attach:** style, Solar, Wren, 🎨 `Personas/Haenim-Unveiled.png`. **Fills:** `cg/ending-true.webp` (the only ending without a CG).
 - [ ] ⭐ **Two late-story scenes at a station** (`FEMC-CG-PROMPTS.md` #18 and #19; section 3 of that file has spoilers, so copy just those two prompts)
   - **Attach:** style, Solar, Wren. **Fills:** `cg/story-wren-clock.webp`, `cg/story-wren-cap.webp`.
-- [ ] ⭐ **Graduation (3/5), Gekkoukan's front gate**
-  - **Attach:** style, Solar, Akihiko, Mitsuru, Yukari, Junpei. **Fills:** `cg/story-graduation.webp`.
-  - After the style block:
-    ```
-    Graduation morning at a Japanese high school's front gate: a cold, bright March day, a few early blossoms, students in black uniforms holding diploma tubes. Solar stands in the middle of her friends from the dorm, mid-laugh, while someone off to the side takes their picture. Warm, bittersweet, proud.
-    ```
-- [ ] ⭐ **Yakushima (7/21–7/23)**
-  - **Attach:** style, Solar, Akihiko, Yukari, Junpei, Mitsuru. **Fills:** `cg/trip-yakushima-beach.webp`.
-  - After the style block:
-    ```
-    A summer beach on a green island: white sand, turquoise water, a big blue sky, a beach umbrella and a cooler. Solar and her dorm friends in summer clothes, one splashing another, someone asleep under the umbrella, a white dog running along the waterline. Bright, loud, carefree.
-    ```
 
 ### 2B. Romance and link moments
 One template; fill in the name, setting and light. Nothing in it is from the scene itself.
 ```
 Solar and [NAME] at [SETTING], [LIGHT]. A quiet, close moment between just the two of them, both of them clearly at ease with each other. [MOOD].
 ```
-- [ ] ⭐ **Rank 15** for the four links that have one. **Fills:** `cg/link-<id>-r15.webp`.
+- [ ] ⭐ **Rank 15** for the three links still without one (Akihiko's is done). **Fills:** `cg/link-<id>-r15.webp`.
   - **Attach:** style, Solar, the partner.
-  - Akihiko: the boxing club after school · Haechan: the dorm hallway · Jungwon: the student council room · Shinjiro: a quiet room in soft morning light
+  - Haechan: the dorm hallway · Jungwon: the student council room · Shinjiro: a quiet room in soft morning light
 - [ ] ⭐ **Christmas Eve (12/24)** for each romance that has one, besides Akihiko's (done). It snows that night. **Fills:** `cg/xmas-<id>.webp`.
   - **Attach:** style, Solar, the partner. Use `[MOOD]` = "snow falling, warm lights, a little shy".
   - Haechan: the dorm laundry room at night · Jungwon: Iwatodai's shopping street in the evening · Jihoon: the mall's central atrium · Minji: the riverside in the evening · Shinjiro: a quiet room with snow at the window
@@ -304,7 +292,7 @@ Checked and fine as they are: the title screen's key art, the Velvet Room, the G
 None left: the 2026-10-22 audit's list was all wired in.
 
 ### CGs
-Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 1920 wide), then show it with a `{ cg: '<slug>' }` scene step and clear it with `{ cg: null }`. Add the face's crop point to `places.js cgFocus` for tall phone windows. The album and Theater find CGs in the scene data (`menu.js albumData`), so nothing else is needed. Endings live in `story-endings.js` (one event, branching by route); Christmas Eve scenes are each link's `christmas`; rank 10 / 15 are the link's ranks; graduation is `a6-graduation` in `living-march.js`; Yakushima is `yakushima.js`. Record the source in `tools/femc-new-adds.json` and move it to `Added to Game/`.
+Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 1920 wide), then show it with a `{ cg: '<slug>' }` scene step and clear it with `{ cg: null }`. Add the face's crop point to `places.js cgFocus` for tall phone windows. The album and Theater find CGs in the scene data (`menu.js albumData`), so nothing else is needed. Endings live in `story-endings.js` (one event, branching by route); Christmas Eve scenes are each link's `christmas`; rank 10 / 15 are the link's ranks; graduation is `a6-graduation` in `living-march.js`; Yakushima is `yakushima.js` (the album doesn't walk its trip-plan scenes, so a CG there needs `story-act3.js a3-yakushima` or a `menu.js sceneSources` kind). Record the source in `tools/femc-new-adds.json` and move it to `Added to Game/`.
 
 ### Characters
 - **Portraits:** cut with `tools/femc-portraits.py` (sheets: `femc-sheet.py` / `femc-lift.swift`); it rewrites `portraits/index.js`. Check `portraits/scale.js` and every face in a scene.

@@ -499,6 +499,7 @@
         { s: 'akihiko', f: 'happy', t: "He told me not to bother. In about four words a minute. That's how I knew to buy the big one." },
         { n: "He'd be at Tatsumi by two, with the camera and the paper flower off his chest and a full report, round by round, for a man in a bed who should have been standing in that gym too, and had never once in his life come to school when anyone wanted him to, and would say *tch* at every single picture, and keep them all." }
       ] },
+      { cg: 'story-graduation' },
       { n: "Solar stood at the gate with the tube in her hand and the paper flower on her chest. Above her the buds were very close now. A week. Maybe less." }
     ] }
   );

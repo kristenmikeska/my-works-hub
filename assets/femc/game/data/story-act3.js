@@ -226,7 +226,9 @@
 
   { id: 'a3-yakushima', date: '7/22', slot: 'late', title: 'someone she was looking for', place: 'Yakushima', time: 'Night', cast: {}, scene: [
     { music: 'sun' },
+    { cg: 'trip-yakushima-beach' },
     { n: "Yakushima was green the way a held breath is green, all moss and cedar and wet stone, the forest coming right down to the sand like it wanted to see the sea for itself. The Kirijo villa had a beach, and the beach had a great deal of sun, and Junpei had a sunburn on exactly half of his face from falling asleep on his side, which he was calling a look." },
+    { cg: null },
     { n: "On the second evening, walking the far end of the sand on her own with her sandals in her hand, Solar found a girl standing in the water." },
     { n: "Not swimming. Standing, up to her shins, very straight, looking out at the horizon, with the low gold sun on her and the waves breaking around her legs and pulling back and not moving her at all. She was blonde, and very pale, and dressed in something that wasn't a swimsuit and wasn't clothes, and as Solar came closer she saw the seams at her shoulders, and the joints at her wrists, fine as watch-parts, and understood that whatever this was, it wasn't a girl in the way she was a girl." },
     { n: "The girl turned her head. Her eyes were very blue and perfectly calm, and when they landed on Solar they stopped, the way a compass needle stops." },

@@ -298,7 +298,7 @@ window.FEMC_GAME_PLACES = {
   },
   /* CG focus: which part of each CG (assets/femc/cg) to keep in view when a tall, narrow window has to crop it. */
   cgFocus: {
-    'story-birthday-surprise': '38% 45%',
+    'story-birthday-surprise': '38% 45%', 'story-graduation': '48% 30%', 'trip-yakushima-beach': '45% 35%', 'link-akihiko-r15': '45% 32%',
     'prologue-waking-in-tartarus': '24% 70%', 'prologue-akihiko-finds-solar': '42% 55%', 'prologue-first-night-dorm': '55% 45%',
     'prologue-elizabeth-blank-page': '58% 45%', 'prologue-first-day-gekkoukan': '24% 40%',
     'searchers-jihoon-arrives': '35% 35%', 'searchers-yunjin-low-tide': '65% 45%',

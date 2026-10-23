@@ -5275,6 +5275,61 @@
       "source": "station-platform-day.jpeg",
       "sourceNow": "Added to Game/station-platform-day.jpeg",
       "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/story-graduation.webp",
+      "event": "a6-graduation",
+      "placement": "living-march.js a6-graduation (3/5, morning): { cg } on the scene's last line at the front gate, after the shinji-awake branch, so every route and ending sees it; the scene's end clears it; Memories album (Story group) via the scene walk",
+      "textCheck": "checked 2026-10-22 against the image: listed for Kat (cherry blossoms in full bloom vs. the text's unopened buds; Yukari and Junpei, second-years, holding diploma tubes; the Searchers, Koromaru and the paper flowers named at the gate but not drawn)",
+      "mobileFocus": "48% 30%",
+      "outputSha256": "31d68afc749b28b32d5c8d1156c364c8ff2525e7909937637f4b1683ecd85133",
+      "sha256": "a6b92181dd4301fb77110b6605c04e297d1c1e7791f387caf95f7ecc2aa8ef7a",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "gekkoukan-graduation.png",
+      "sourceNow": "Added to Game/gekkoukan-graduation.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-akihiko-r15.webp",
+      "link": "akihiko",
+      "rank": 15,
+      "placement": "links/akihiko.js rank 15 ('15: five', Boxing Club, after school): { ifRoute: 'romance', then: [{ cg }] } at the scene's start, cleared ({ cg: null }) before the first choice; romance route only; Memories album (Romance & bonds group) via the scene walk",
+      "textCheck": "checked 2026-10-22 against the image: listed for Kat (the art is the two alone on the bench at dusk, his arm round her; the text has him emptying his locker with the club working around them; the art reads as romance, so the friend route doesn't show it)",
+      "mobileFocus": "45% 32%",
+      "outputSha256": "1ec16c0579096e70834e9439fc27c0b458f3d541a63b6eb4dbdcb4b9cf791827",
+      "sha256": "5de37560eed74de22985bb0ac19ce6fcc4a2206433cee7038f652c557fbdcac3",
+      "size": [
+        1678,
+        937
+      ],
+      "source": "solar-akihiko-boxinggym-moment.png",
+      "sourceNow": "Added to Game/solar-akihiko-boxinggym-moment.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/trip-yakushima-beach.webp",
+      "event": "a3-yakushima",
+      "placement": "story-act3.js a3-yakushima (7/22, late; the trip's story event, every route): { cg } on the opening beach-days line, cleared ({ cg: null }) before the second-evening walk; the trip plan (yakushima.js) has no shared group beach moment and the album doesn't walk trip scenes; Memories album (Story group) via the scene walk",
+      "textCheck": "checked 2026-10-22 against the image: listed for Kat (Koromaru is drawn but isn't on the trip; Fuuka is on the trip but not drawn)",
+      "mobileFocus": "45% 35%",
+      "outputSha256": "b467ae3cfc0827767f6d741eaa7ea3c281705a7146715f4e174e6c053f9c1ae2",
+      "sha256": "0e0f90e43408b0bc94ba54d089be77da5534ec6c70bca84b725acac6d620f135",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "yakushima-beach-friends.png",
+      "sourceNow": "Added to Game/yakushima-beach-friends.png",
+      "status": "integrated"
     }
   ],
   "batch1Validation": {
@@ -5681,6 +5736,24 @@
       "targeted check: every bg named in places.js and scene data exists; all 18 new slugs are used"
     ],
     "html": "femc-game.html places v21, jobs v4, job-scenes-more-b v3, daily-life v7, story-act4 v15, living-holidays v3, living-persona v4, living-visitors v3, living-jaemin v2, living-chenle v2, mercy v5",
+    "browserErrors": 0
+  },
+  "batch31Validation": {
+    "date": "2026-10-22",
+    "scope": "Three story CGs from the art list's section 2 (graduation, Yakushima, Akihiko's rank 15)",
+    "sourcesInspected": "all 3 viewed before wiring",
+    "sourcesIntegrated": 3,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold untouched",
+    "tests": [
+      "python3 tools/femc-check-scenes.py --links akihiko (OK)",
+      "python3 tests/femc_gallery.py (94 checks)",
+      "python3 tests/femc_living.py (pass)",
+      "python3 tests/femc_march.py (44 checks)",
+      "python3 tests/femc_rank15.py --quick (pass)",
+      "targeted: each scene played headless; each CG shows on its lines with its focus and clears where placed; Akihiko's friend route shows none; album groups story / story / romance"
+    ],
+    "html": "femc-game.html places v22, story-act3 v8, living-march v3, akihiko v6",
     "browserErrors": 0
   }
 }
