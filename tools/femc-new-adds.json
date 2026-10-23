@@ -5330,6 +5330,25 @@
       "source": "yakushima-beach-edit.png",
       "sourceNow": "Added to Game/yakushima-beach-edit.png",
       "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-haechan-r15.webp",
+      "link": "haechan",
+      "rank": 15,
+      "placement": "links/haechan.js rank 15 ('15: untitled', dorm hallway, late night): romance-only hallway beat after the first choice, { cg } on it and { cg: null } before the roof; friendship route unchanged and shows no CG; Memories album (Romance & bonds group) via the scene walk",
+      "textCheck": "checked 2026-10-22; art final per Kat, text adjusted on the romance route only: his shirt, tie and open jacket and her uniform (door line and the coat choice), plus the new beat (amber night lights, her back to the wall, his hand on the wall above her; non-explicit)",
+      "mobileFocus": "60% 28%",
+      "outputSha256": "76dd5555e07c99242d491f99e063fedc8785f8bf5f81fdb109927c625836fec1",
+      "sha256": "90f69116cb27889e1dfe1264997b353f50bd607460b58a0b88323e5bcc893782",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "solar-haechan-dormhallway-moment.png",
+      "sourceNow": "Added to Game/solar-haechan-dormhallway-moment.png",
+      "status": "integrated"
     }
   ],
   "batch1Validation": {
@@ -5755,6 +5774,7 @@
     ],
     "html": "femc-game.html places v22, story-act3 v8, living-march v4, akihiko v7 (v3 / v6 before the text follow-up)",
     "yakushimaRedo": "Kat's edit yakushima-beach-edit.png replaced the first Yakushima art (yakushima-beach-friends.png, first output b467ae3c..., source still in Added to Game); story-act3 v9; femc-check-scenes OK, femc_living pass, targeted CG walk. solar-haechan-dormhallway-moment.png left in New Adds (no scene fits; see the report)",
+    "haechanR15": "link-haechan-r15 added (romance only); places v23, haechan v9; femc-check-scenes --links haechan OK, femc_rank15 --quick pass, targeted walk both routes",
     "textFollowUp": "Kat approved adjusting graduation and Akihiko rank 15 to the art; Yakushima unchanged (Koromaru conflict reported). Re-ran femc-check-scenes --links akihiko, femc_march (44), femc_rank15 --quick (pass) and the targeted CG walk",
     "browserErrors": 0
   }

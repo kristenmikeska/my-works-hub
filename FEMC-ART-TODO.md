@@ -43,9 +43,9 @@ One template; fill in the name, setting and light. Nothing in it is from the sce
 ```
 Solar and [NAME] at [SETTING], [LIGHT]. A quiet, close moment between just the two of them, both of them clearly at ease with each other. [MOOD].
 ```
-- [ ] ⭐ **Rank 15** for the three links still without one (Akihiko's is done). **Fills:** `cg/link-<id>-r15.webp`.
+- [ ] ⭐ **Rank 15** for the two links still without one (Akihiko's and Haechan's are done). **Fills:** `cg/link-<id>-r15.webp`.
   - **Attach:** style, Solar, the partner.
-  - Haechan: the dorm hallway · Jungwon: the student council room · Shinjiro: a quiet room in soft morning light
+  - Jungwon: the student council room · Shinjiro: a quiet room in soft morning light
 - [ ] ⭐ **Christmas Eve (12/24)** for each romance that has one, besides Akihiko's (done). It snows that night. **Fills:** `cg/xmas-<id>.webp`.
   - **Attach:** style, Solar, the partner. Use `[MOOD]` = "snow falling, warm lights, a little shy".
   - Haechan: the dorm laundry room at night · Jungwon: Iwatodai's shopping street in the evening · Jihoon: the mall's central atrium · Minji: the riverside in the evening · Shinjiro: a quiet room with snow at the window

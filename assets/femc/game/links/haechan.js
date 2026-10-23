@@ -1648,14 +1648,22 @@
       { n: "It had turned warm. Not spring, nothing so committed. Just a night in the first week of March when the wind came off the bay without any teeth in it for the first time since November, and the radiator under her window had clicked off on its own at midnight and not come back on, and she'd lain on top of the covers instead of under them, awake, like always, listening to the building." },
       { n: "At ten to three there was a knock on her door. Two knocks. Flat." },
       { n: "Nobody knocked on her door at ten to three. He never had. All year, every night, he'd been the one who waited at the bottom, of the stairs, of a ladder, of a gate, wherever there was a bottom to wait at, and let her be the one who came down. It was, she'd understood sometime around December, the whole of his manners." },
-      { n: "She opened the door. He was standing in the hallway in a T-shirt and bare feet, like a man who'd come straight from bed or never gone to it, with his laptop under one arm and his other hand empty, a step back from the threshold, exactly far enough that she'd have to come out to reach him." },
+      { ifRoute: 'romance', then: [
+        { n: "She opened the door. He was standing in the hallway in a white shirt and a black tie with his jacket open over them, like a man who'd come back from somewhere or never gone to bed, with his laptop under one arm and his other hand empty, a step back from the threshold, exactly far enough that she'd have to come out to reach him. She was still in her uniform herself, bow and armband and all. She'd lain down in it after the last class and never got round to anything else." }
+      ], else: [
+        { n: "She opened the door. He was standing in the hallway in a T-shirt and bare feet, like a man who'd come straight from bed or never gone to it, with his laptop under one arm and his other hand empty, a step back from the threshold, exactly far enough that she'd have to come out to reach him." }
+      ] },
       { s: 'haechan', f: 'neutral', t: "I know. I don't come up here. I'm making an exception. It's March." },
       { s: 'haechan', f: 'neutral', t: "Bring the headphones. Don't bring a coat." },
       { s: 'solar', f: 'neutral', t: "I always bring a coat." },
       { s: 'haechan', f: 'neutral', t: "You never bring a coat. Tonight you won't need one. First time all year. I want to see what your face does." },
       { choose: [
         { t: "(Leave the coat on the hook. On purpose.)", notes: 3, then: [
-          { n: "Hyein's coat hung on the back of her door, finished, hemmed, the sleeves on. She looked at it, and left it there, on purpose, and stepped out into the hallway in her pajamas with his headphones round her neck, and he looked past her at the coat on its hook, and then at her, and the corner of his mouth went up a quarter of an inch." }
+          { ifRoute: 'romance', then: [
+            { n: "Hyein's coat hung on the back of her door, finished, hemmed, the sleeves on. She looked at it, and left it there, on purpose, and stepped out into the hallway in her uniform with his headphones round her neck, and he looked past her at the coat on its hook, and then at her, and the corner of his mouth went up a quarter of an inch." }
+          ], else: [
+            { n: "Hyein's coat hung on the back of her door, finished, hemmed, the sleeves on. She looked at it, and left it there, on purpose, and stepped out into the hallway in her pajamas with his headphones round her neck, and he looked past her at the coat on its hook, and then at her, and the corner of his mouth went up a quarter of an inch." }
+          ] }
         ] },
         { t: "You came up the stairs.", notes: 3, then: [
           { s: 'haechan', f: 'neutral', t: "I came up the stairs." },
@@ -1664,6 +1672,13 @@
         { t: "Is something wrong?", notes: 2, then: [
           { s: 'haechan', f: 'neutral', t: "No. That's the thing. Nothing is. I wanted to see what that feels like with you in it." }
         ] }
+      ] },
+      { ifRoute: 'romance', then: [
+        { n: "The hallway had gone to its night setting, every other ceiling light off and the rest turned down to a low amber that made the carpet look warmer than it was, and she leaned back against the wall beside her own door with her hands behind her, and he came the one step in, finally, and put his hand flat on the wall above her head, and stayed there, looking down at her, in no hurry to be anywhere, as if he'd decided that for one night he was done being the one who waited at the bottom of things." },
+        { cg: 'link-haechan-r15' },
+        { s: 'haechan', f: 'neutral', t: "Give me a second. I'm keeping this one. The light. The wall. You, standing still for once." },
+        { n: "She laughed at him, quietly, because of the hour and the doors on either side, and he let her, and didn't move his hand. Then he did, and said the roof was waiting, as if the roof had ever waited for anybody in its life." },
+        { cg: null }
       ] },
       { place: 'Iwatodai Dorm · Rooftop', time: 'Late Night' },
       { n: "The roof had kept some of the day. The concrete gave it back slowly, still there under her bare feet, faint, like a hand that had only just left a table. The city lay out below in its lights with the bay black beyond it, and over Port Island a plane was coming in low, blinking red, the way one had in January, and she watched it all the way down to somewhere she couldn't see." },
