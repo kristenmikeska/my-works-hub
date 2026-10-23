@@ -1,4 +1,5 @@
-"""Crushes (2026-10-23): Akihiko's and Shinjiro's crush tracks (core.js "Crushes", data/crush*.js).
+"""Crushes (2026-10-23): the crush tracks (core.js "Crushes", data/crush*.js): Akihiko's and Shinjiro's, and the
+multi-romance batch (Haechan's pull, Jungwon full, Jihoon and Minji lighter, Akihiko and Haechan's triangle).
 
   python3 tests/femc_crush.py [--screenshots /absolute/dir]
 
@@ -16,6 +17,13 @@ scenes     every moment down every choice path in every phase it can play in (fi
 world      phase lines replace the usual ones some days (vary, chatter, the evening menu line) and never for 'none'.
 texts      crush-gated texts arrive only in their phase; a reply's warmth counts.
 ui         the opt-in through the real UI at 4/21 from a 4/20 save, then the next school days.
+searchers  Haechan's track starts by itself (9/1, after the first texts) and steps on his dates; it's a pull: dating
+           Akihiko holds while it plays, his rank 8 settles it (romance: both dating; friend: faded); his romance
+           settles any other growing track. Jungwon / Jihoon / Minji: opt-ins after their arrivals, offered only while
+           she isn't with anyone (free), steps by rank or warmth (two for the lighter ones), faded by another romance.
+           ifTaken. The triangle moments fit for every phase combination they're written for.
+season     Sept to February for a player with no romance who leans into everyone, and one dating Akihiko from 9/1:
+           no repeats, three days apart, Haechan's pull, the triangle and the searchers' tracks reached.
 Isolated browser profile and server; never the player's saves."""
 import base64, json, pathlib, sys, tempfile
 from femc_browser import Page
@@ -31,6 +39,11 @@ def ok(cond, what):
 
 
 p = Page()
+
+
+def G_MD(md):
+    m, d = map(int, md.split('/'))
+    return (m - 4) % 12 * 31 + d
 
 
 def G_DAY(md):
@@ -122,18 +135,27 @@ try:
 
     # ── counts ──
     counts = p.eval(r"""(()=>{const G=FemcGame,M=G.D.crush.moments,d=md=>G.dayOf(md);
-      const aki=M.filter(m=>m.who==='akihiko'),shin=M.filter(m=>m.who==='shinjiro');
+      const aki=M.filter(m=>m.who==='akihiko'&&m.id.startsWith('cr-aki-')),shin=M.filter(m=>m.who==='shinjiro');
       const amb=(G.D.texts.ambient||[]).filter(t=>t.crush);
       return {akiSpring:aki.filter(m=>d(m.after)<d('9/1')).length, akiAfter:aki.filter(m=>d(m.after)>=d('9/1')).length,
         shin:shin.length, tri:M.filter(m=>m.id.startsWith('cr-tri-')).length,
+        hc:M.filter(m=>m.id.startsWith('cr-hc-')).length,hcBefore:M.filter(m=>m.id.startsWith('cr-hc-')&&d(m.until)<d('11/4')).length,
+        ah:M.filter(m=>m.id.startsWith('cr-ah-')).length,jw:M.filter(m=>m.id.startsWith('cr-jw-')).length,
+        jh:M.filter(m=>m.id.startsWith('cr-jh-')).length,mj:M.filter(m=>m.id.startsWith('cr-mj-')).length,
+        newTexts:Object.fromEntries(['haechan','jungwon','jihoon','minji'].map(k=>[k,amb.filter(t=>t.crush[k]).length])),
+        newWorld:Object.fromEntries(['haechan','jungwon','jihoon','minji'].map(k=>[k,Object.values(G.D.crush.world).flat().filter(x=>x.crush&&x.crush[k]).length])),
         world:Object.values(G.D.crush.world).reduce((a,v)=>a+v.length,0), texts:amb.length,
-        textsAki:amb.filter(t=>t.crush.akihiko&&!t.crush.shinjiro).length, textsShin:amb.filter(t=>t.crush.shinjiro).length,
+        textsAki:amb.filter(t=>t.crush.akihiko&&Object.keys(t.crush).length===1).length, textsShin:amb.filter(t=>t.crush.shinjiro).length,
         byGate:Object.fromEntries(['noticed','crush','puppy','almost','dating','out','faded'].map(ph=>[ph,M.filter(m=>m.crush&&Object.values(m.crush).some(v=>[].concat(v).includes(ph))).length]))}})()""")
     print(json.dumps(counts))
     ok(25 <= counts['akiSpring'] <= 35, f"Akihiko: {counts['akiSpring']} moments April to August (25-35)")
     ok(10 <= counts['akiAfter'] <= 15, f"Akihiko: {counts['akiAfter']} lighter moments after the arrivals (10-15)")
     ok(12 <= counts['shin'] <= 18, f"Shinjiro (with the triangle): {counts['shin']} moments (12-18)")
     ok(counts['texts'] >= 20 and counts['textsShin'] >= 4, f"{counts['texts']} phase texts ({counts['textsShin']} with Shinjiro)")
+    ok(12 <= counts['hc'] <= 18 and counts['hcBefore'] >= 3, f"Haechan: {counts['hc']} moments, {counts['hcBefore']} of them déjà vu before he arrives")
+    ok(8 <= counts['ah'] <= 14, f"Akihiko and Haechan, the talks and the household: {counts['ah']} triangle moments")
+    ok(9 <= counts['jw'] <= 15 and 4 <= counts['jh'] <= 7 and 4 <= counts['mj'] <= 7, f"Jungwon {counts['jw']} (full), Jihoon {counts['jh']} and Minji {counts['mj']} (lighter)")
+    ok(all(v >= 3 for v in counts['newTexts'].values()) and all(v >= 4 for v in counts['newWorld'].values()), f"texts {counts['newTexts']} and world lines {counts['newWorld']} for each new track")
 
     # ── opt-in ──
     r = p.eval(r"""(()=>{const G=FemcGame,s=CR.at('4/21','afternoon');const due=G.crushDue();
@@ -203,6 +225,52 @@ try:
     ok(t['sRom'] == ['faded', 'dating'] and t['aRom'] == ['dating', 'faded'], "choosing one's romance route settles the other")
     ok(t['lean'][0] in ('puppy', 'almost') and t['lean'][1] in ('noticed', 'crush', 'puppy') and ['noticed', 'crush', 'puppy', 'almost'].index(t['lean'][0]) > ['noticed', 'crush', 'puppy', 'almost'].index(t['lean'][1]), f"the triangle leans Akihiko: {t['lean']}")
 
+    # ── searchers: Haechan's pull, the searchers' opt-ins, coexistence ──
+    sr = p.eval(r"""(()=>{const G=FemcGame,o={},M=id=>G.D.crush.moments.find(m=>m.id===id);
+      CR.at('8/30','evening');o.before=G.crushTick('haechan');
+      CR.at('9/2','evening');o.auto=G.crushTick('haechan');o.autoOpt=G.crushTrack('haechan').opt;
+      CR.at('9/2','evening');G.S.events=G.S.events.filter(e=>e!=='a4-first-text');o.noText=G.crushTick('haechan');
+      o.steps=['11/10','11/11','11/25','12/8'].map(md=>{CR.at(md,'evening');return G.crushTick('haechan');});
+      CR.at('11/20','evening');CR.link('akihiko',9,{route:'romance'});o.pull=[G.crushTick('akihiko'),G.crushTick('haechan')];
+      o.pullFits=G.crushFits(M('cr-hc-landing'),'late',G.dayOf('11/20'))||G.crushFits(M('cr-hc-landing'),'late',G.dayOf('11/21'))||G.crushFits(M('cr-hc-landing'),'late',G.dayOf('11/22'));
+      CR.at('12/20','evening');CR.link('akihiko',9,{route:'romance'});CR.link('haechan',8,{route:'romance'});o.both=[G.crushTick('akihiko'),G.crushTick('haechan')];
+      CR.at('12/20','evening');CR.link('akihiko',9,{route:'romance'});CR.link('haechan',8,{route:'friend'});o.friend=[G.crushTick('akihiko'),G.crushTick('haechan')];
+      CR.at('12/20','evening');CR.track('akihiko','almost');CR.track('jungwon','puppy');CR.link('haechan',8,{route:'romance'});o.hRom=[G.crushTick('akihiko'),G.crushTick('jungwon'),G.crushTick('haechan')];
+      CR.at('11/10','evening');CR.track('jungwon','crush');CR.link('akihiko',9,{route:'romance'});o.jwFades=[G.crushTick('jungwon'),G.crushTick('haechan')];
+      CR.at('11/10','evening');CR.link('rio',8,{route:'romance'});o.rioPull=G.crushTick('haechan');
+      // ifTaken: someone other than the named link is on a romance route
+      CR.at('11/20','evening');const T={ifTaken:'haechan',then:[1],else:[]};o.tNone=G.branch(T).length;CR.link('haechan',8,{route:'romance'});o.tSelf=G.branch(T).length;CR.link('akihiko',9,{route:'romance'});o.tAki=G.branch(T).length;
+      // the opt-ins, after the arrivals, only while she isn't with anyone
+      const fitOn=(id,from,to)=>{for(let d=G.dayOf(from);d<=G.dayOf(to);d++){const m=M(id);CR.at(G.mdOf(d),m.slot);if(G.crushFits(m,m.slot,d))return G.mdOf(d);}return null;};
+      o.jwOpt=fitOn('cr-jw-optin','10/12','10/24');o.jhOpt=fitOn('cr-jh-optin','9/17','9/30');o.mjOpt=fitOn('cr-mj-optin','9/24','10/6');
+      const takenFit=(id,md)=>{const m=M(id);CR.at(md,m.slot);CR.link('akihiko',9,{route:'romance'});return G.crushFits(m,m.slot,G.dayOf(md));};
+      o.jwTaken=takenFit('cr-jw-optin',o.jwOpt);o.jhTaken=takenFit('cr-jh-optin',o.jhOpt);o.mjTaken=takenFit('cr-mj-optin',o.mjOpt);
+      CR.at('10/20','after');G.crushApply({jungwon:'in'});o.jwIn=G.crushTick('jungwon');CR.at('10/20','after');G.crushApply({jungwon:'out'});o.jwOut=G.crushTick('jungwon');
+      CR.at('12/6','after');o.jwLate=G.crushTick('jungwon');
+      CR.at('10/25','after');G.crushApply({jungwon:'in'});CR.link('jungwon',2);o.jwCrush=G.crushTick('jungwon');
+      G.S.day=G.dayOf('11/7');CR.link('jungwon',4);o.jwPuppy=G.crushTick('jungwon');G.S.day=G.dayOf('11/21');CR.link('jungwon',6);o.jwAlmost=G.crushTick('jungwon');
+      CR.at('9/28','evening');G.crushApply({jihoon:'in'});CR.link('jihoon',2);o.jh=[G.crushTick('jihoon')];G.S.day=G.dayOf('10/19');CR.link('jihoon',5);o.jh.push(G.crushTick('jihoon'));G.S.day=G.dayOf('11/20');CR.link('jihoon',7);o.jh.push(G.crushTick('jihoon'));
+      CR.at('10/4','evening');G.crushApply({minji:'in'});G.crushApply({minji:2});o.mj=[G.crushTick('minji')];G.S.day=G.dayOf('10/25');G.crushApply({minji:2});o.mj.push(G.crushTick('minji'));
+      CR.at('11/22','evening');G.crushApply({jihoon:'in'});CR.link('jihoon',8,{route:'romance'});o.jhRom=[G.crushTick('jihoon'),G.crushTick('haechan')];
+      // the triangle moments fit while she's with Akihiko and the pull plays, and after Haechan's rank 8 either way
+      CR.at('11/10','evening');CR.link('akihiko',9,{route:'romance'});o.triAki=G.crushFits(M('cr-ah-pads'),'evening',G.dayOf('11/10'))||G.crushFits(M('cr-ah-pads'),'evening',G.dayOf('11/11'));
+      CR.at('12/22','early');G.S.flags['year-goes-on']=true;CR.link('akihiko',9,{route:'romance'});CR.link('haechan',8,{route:'romance'});o.riverBoth=G.crushFits(M('cr-ah-river'),'early',G.dayOf('12/22'))||G.crushFits(M('cr-ah-river'),'early',G.dayOf('12/24'));
+      CR.at('12/22','early');G.S.flags['year-goes-on']=true;CR.link('haechan',8,{route:'friend'});o.riverFriend=G.crushFits(M('cr-ah-river'),'early',G.dayOf('12/22'))||G.crushFits(M('cr-ah-river'),'early',G.dayOf('12/24'));
+      return o})()""")
+    print('searchers', json.dumps(sr))
+    ok(sr['before'] == 'none' and sr['auto'] == 'noticed' and sr['autoOpt'] == 'in' and sr['noText'] == 'none', f"Haechan's pull starts by itself on 9/1 once the first texts have come, at noticed, with no opt-in: {sr}")
+    ok(sr['steps'] == ['noticed', 'crush', 'puppy', 'almost'], f"it steps on his dates: {sr['steps']}")
+    ok(sr['pull'] == ['dating', 'crush'] and sr['pullFits'] and sr['rioPull'] == 'noticed', 'dating Akihiko (or anyone) holds, and the pull keeps playing beside it')
+    ok(sr['both'] == ['dating', 'dating'] and sr['friend'] == ['dating', 'faded'], "his rank 8 settles it: romance keeps both, friend fades his and Akihiko's holds")
+    ok(sr['hRom'] == ['faded', 'faded', 'dating'] and sr['jwFades'] == ['faded', 'noticed'], "his romance settles any other growing track; another romance fades Jungwon's but never his")
+    ok(sr['tNone'] == 0 and sr['tSelf'] == 0 and sr['tAki'] == 1, 'ifTaken: someone other than the named link')
+    ok(all(sr[k] for k in ('jwOpt', 'jhOpt', 'mjOpt')) and not any(sr[k] for k in ('jwTaken', 'jhTaken', 'mjTaken')), f"the searchers' opt-ins come after their arrivals ({sr['jhOpt']}, {sr['mjOpt']}, {sr['jwOpt']}) and never while she's with someone")
+    ok(sr['jwIn'] == 'noticed' and sr['jwOut'] == 'out' and sr['jwLate'] == 'out', "Jungwon: in, out, and a save past the window reads out")
+    ok([sr['jwCrush'], sr['jwPuppy'], sr['jwAlmost']] == ['crush', 'puppy', 'almost'], 'Jungwon grows by his ranks')
+    ok(sr['jh'] == ['crush', 'puppy', 'puppy'] and sr['mj'] == ['crush', 'puppy'], f"the lighter tracks have two steps (rank or warmth), never 'almost': {sr['jh']} {sr['mj']}")
+    ok(sr['jhRom'] == ['dating', 'crush'], "Jihoon's romance makes his track dating; Haechan's pull stays")
+    ok(sr['triAki'] and sr['riverBoth'] and sr['riverFriend'], 'the triangle moments fit while she dates Akihiko, and after his rank 8 either way')
+
     # ── old saves ──
     o = p.eval(r"""(()=>{const G=FemcGame,out={};
       const s=CR.at('4/20','late');CR.link('akihiko',1);delete s.crush;G.saveSlot(3);
@@ -234,23 +302,26 @@ try:
         for(const slot of G.slotsFor(info)){s.slot=slot;
           const due=G.D.events.filter(e=>!e.unlock&&e.date===info.md&&({darkhour:'evening'}[e.slot]||e.slot||'evening')===slot&&!s.events.includes(e.id)&&(!e.flag||s.flags[e.flag]));
           if(due.length){due.forEach(e=>s.events.push(e.id));continue;}
+          // A link's late night takes the night first (ui.js), and plays (so the next nights are free again).
+          if(slot==='late'){const ln=G.lateNightDue();if(ln){G.finishLateNight(ln.e.id);continue;}}
           const r=G.dailyLife();if(r){G.finishDailyLife(r.id);continue;}
           const c=G.crushDue();if(c){
             if(c.optIn)G.crushApply({[c.optIn]:kind==='out'?'out':'in'});else if(kind!=='out')G.crushApply(Object.fromEntries(Object.keys(c.crush||{}).map(k=>[k,1])));
             const ph=G.crushPhases();G.finishCrush(c.id);ids.push(c.id);plays.push([info.md,slot,c.id,d,ph.akihiko,ph.shinjiro,s.dailyLife.lastDay===d]);}
         }}
-      let gap=99,week={};for(let i=1;i<plays.length;i++)gap=Math.min(gap,plays[i][3]-plays[i-1][3]);
-      plays.forEach(x=>{const w=Math.floor((x[3]+1)/7);week[w]=(week[w]||0)+1;});
+      // Three days apart in the spring and summer, two from 9/1 (the searchers' autumn).
+      const S9=G.dayOf('9/1');let gap=99,gapAut=99,week={},weekAut={};for(let i=1;i<plays.length;i++){const g=plays[i][3]-plays[i-1][3];if(plays[i][3]<S9)gap=Math.min(gap,g);else gapAut=Math.min(gapAut,g);}
+      plays.forEach(x=>{const w=Math.floor((x[3]+1)/7),W=x[3]<S9?week:weekAut;W[w]=(W[w]||0)+1;});
       const M=G.D.crush.moments,spring=M.filter(m=>m.who==='akihiko'&&G.dayOf(m.after)<G.dayOf('9/1')).map(m=>m.id);
-      return {n:plays.length,unique:new Set(ids).size,gap,maxWeek:Math.max(...Object.values(week)),routineSameDay:plays.filter(x=>x[6]&&x[1]!=='late').length,
+      return {n:plays.length,unique:new Set(ids).size,gap,gapAut,maxWeek:Math.max(...Object.values(week)),maxWeekAut:Math.max(0,...Object.values(weekAut)),routineSameDay:plays.filter(x=>x[6]&&x[1]!=='late').length,
         springSeen:spring.filter(id=>ids.includes(id)).length,springMissed:spring.filter(id=>!ids.includes(id)),
         tri:ids.filter(i=>i.startsWith('cr-tri-')).length,shin:ids.filter(i=>i.startsWith('cr-shin-')).length,
-        after:ids.filter(i=>M.find(m=>m.id===i&&m.who==='akihiko'&&G.dayOf(m.after)>=G.dayOf('9/1'))).length,
+        after:ids.filter(i=>i.startsWith('cr-aki-')&&G.dayOf(M.find(m=>m.id===i).after)>=G.dayOf('9/1')).length,
         phases:[...new Set(plays.map(x=>x[4]))],firstAki:plays.find(x=>x[2].startsWith('cr-aki'))?.[0],ends:[G.crushTick('akihiko'),G.crushTick('shinjiro')]}})"""
     lean = p.eval(YEAR + "('in')", timeout=300)
     print('lean', json.dumps(lean))
-    ok(lean['n'] == lean['unique'] and lean['gap'] >= 3 and lean['routineSameDay'] == 0, f"leaning in: {lean['n']} moments, none repeats, at least three days apart, never on a routine's day (a late night excepted)")
-    ok(lean['maxWeek'] <= 3, f"at most three in any week ({lean['maxWeek']})")
+    ok(lean['n'] == lean['unique'] and lean['gap'] >= 3 and lean['gapAut'] >= 2 and lean['routineSameDay'] == 0, f"leaning in: {lean['n']} moments, none repeats, at least three days apart (two from September), never on a routine's day (a late night excepted)")
+    ok(lean['maxWeek'] <= 3 and lean['maxWeekAut'] <= 4, f"at most three in any week, four in the autumn ({lean['maxWeek']}, {lean['maxWeekAut']})")
     ok(lean['springSeen'] >= 24, f"leaning in reaches {lean['springSeen']} of Akihiko's spring and summer moments (missed: {lean['springMissed']})")
     ok(set(lean['phases']) >= {'noticed', 'crush', 'puppy', 'almost', 'dating'} and lean['after'] >= 8, f"every phase is lived, then the lighter flow after the arrivals ({lean['after']}): {lean['phases']}")
     ok(G_DAY(lean['firstAki']) <= 4, f"the first moment comes within days of 4/21 ({lean['firstAki']})")
@@ -262,28 +333,89 @@ try:
     ok(tri['tri'] >= 3 and tri['shin'] >= 5, f"the triangle plays out ({tri['tri']} triangle moments, {tri['shin']} of Shinjiro's)")
     ok(tri['ends'] == ['dating', 'faded'], f"leaning Akihiko into his romance at rank 9 settles it: {tri['ends']}")
 
+    # ── season: September to February with the searchers ──
+    SEASON = r"""((kind)=>{const G=FemcGame,s=CR.at('9/1','early');const plays=[],ids=[];
+      if(kind==='aki')CR.link('akihiko',7,{route:'romance'});
+      const R={jungwon:[['10/15',1],['10/24',2],['10/29',3],['11/6',4],['11/13',5],['11/20',6],['12/1',7]],
+        jihoon:[['9/20',1],['9/27',2],['10/7',3],['10/11',4],['10/18',5],['10/26',6],['11/7',7]],
+        minji:[['9/27',1],['10/3',2],['10/10',3],['10/17',4],['10/24',5],['11/2',6],['11/12',7]]};
+      for(let d=G.dayOf('9/1');d<=G.dayOf('2/28');d++){s.day=d;const info=G.dayInfo(d);s.spent={};s.tonight=(d%5===0)?'battled':null;
+        if(d>=G.dayOf('12/22'))s.flags['year-goes-on']=true;
+        for(const [id,list] of Object.entries(R))list.forEach(([md,r])=>{if(d===G.dayOf(md))CR.link(id,r);});
+        if(d===G.dayOf('12/18'))G.S.links.haechan.route=kind==='free'?'romance':'friend';
+        for(const slot of G.slotsFor(info)){s.slot=slot;
+          const due=G.D.events.filter(e=>!e.unlock&&e.date===info.md&&({darkhour:'evening'}[e.slot]||e.slot||'evening')===slot&&!s.events.includes(e.id)&&(!e.flag||s.flags[e.flag]));
+          if(due.length){due.forEach(e=>s.events.push(e.id));continue;}
+          // A link's late night takes the night first (ui.js), and plays (so the next nights are free again).
+          if(slot==='late'){const ln=G.lateNightDue();if(ln){G.finishLateNight(ln.e.id);continue;}}
+          const r=G.dailyLife();if(r){G.finishDailyLife(r.id);continue;}
+          const c=G.crushDue();if(c){if(c.optIn)G.crushApply({[c.optIn]:'in'});else G.crushApply(Object.fromEntries(Object.keys(c.crush||{}).map(k=>[k,1])));
+            G.finishCrush(c.id);ids.push(c.id);plays.push([info.md,slot,c.id,d,s.dailyLife.lastDay===d]);}
+        }}
+      let gap=99;for(let i=1;i<plays.length;i++)gap=Math.min(gap,plays[i][3]-plays[i-1][3]);
+      const n=pre=>ids.filter(i=>i.startsWith(pre)).length;
+      return {n:plays.length,unique:new Set(ids).size,gap,routineSameDay:plays.filter(x=>x[4]&&x[1]!=='late').length,
+        hc:n('cr-hc-'),ah:n('cr-ah-'),jw:n('cr-jw-'),jh:n('cr-jh-'),mj:n('cr-mj-'),aki:n('cr-aki-'),
+        optins:ids.filter(i=>/optin/.test(i)),firstHc:plays.find(x=>x[2].startsWith('cr-hc-'))?.[0],
+        ends:Object.fromEntries(['akihiko','haechan','jungwon','jihoon','minji'].map(k=>[k,G.crushTick(k)]))}})"""
+    free = p.eval(SEASON + "('free')", timeout=300)
+    print('season free', json.dumps(free))
+    ok(free['n'] == free['unique'] and free['gap'] >= 2 and free['routineSameDay'] == 0, f"a free season: {free['n']} moments, none repeats, two days apart, never on a routine's day")
+    ok(set(free['optins']) >= {'cr-jh-optin', 'cr-mj-optin', 'cr-jw-optin'}, f"every searcher's opt-in comes up for someone who isn't with anyone: {free['optins']}")
+    ok(free['hc'] >= 9 and free['ah'] >= 6 and free['jw'] >= 6 and free['jh'] >= 3 and free['mj'] >= 3, f"Haechan {free['hc']}, the triangle {free['ah']}, Jungwon {free['jw']}, Jihoon {free['jh']}, Minji {free['mj']} reached")
+    ok(free['ends']['haechan'] == 'dating' and all(free['ends'][k] == 'faded' for k in ('jungwon', 'jihoon', 'minji')), f"choosing Haechan at rank 8 settles the others: {free['ends']}")
+    aki = p.eval(SEASON + "('aki')", timeout=300)
+    print('season aki', json.dumps(aki))
+    ok(aki['n'] == aki['unique'] and aki['gap'] >= 2 and aki['routineSameDay'] == 0, f"dating Akihiko from 9/1: {aki['n']} moments, none repeats, two days apart")
+    ok(not any(i in aki['optins'] for i in ('cr-jh-optin', 'cr-mj-optin', 'cr-jw-optin')) and all(aki['ends'][k] == 'out' for k in ('jungwon', 'jihoon', 'minji')), f"while she's with Akihiko nobody asks her to lean toward someone new: {aki['optins']} {aki['ends']}")
+    ok(aki['hc'] >= 9 and aki['ah'] >= 6 and aki['aki'] >= 6, f"and Haechan's pull still plays beside him ({aki['hc']}), with the triangle ({aki['ah']}) and his own ({aki['aki']})")
+    ok(aki['ends']['akihiko'] == 'dating' and aki['ends']['haechan'] == 'faded' and aki['firstHc'] and G_MD(aki['firstHc']) < G_MD('11/4'), f"Haechan's friend route leaves Akihiko's holding: {aki['ends']}; the déjà vu starts before he arrives ({aki['firstHc']})")
+
     # ── scenes ──
     n_paths = p.eval(r"""(()=>{const G=FemcGame;let n=0;const ALL=['out','noticed','crush','puppy','almost','dating','faded'];
       G.D.crush.moments.forEach(m=>{
         const ids=Object.keys(m.crush||{[m.optIn]:1});
         const lists=ids.map(id=>m.optIn?['none']:[].concat(m.crush[id]));
-        const states=lists[0].map((ph,i)=>()=>{CR.at(m.after,m.slot);G.S.tonight=m.when==='tartarus'?'battled':null;
+        // What else the scene branches on (the multi-romance batch): someone else's romance (ifTaken / ifRomance), and
+        // where the story is heading (ifHeading; no flag = R).
+        let taken=false,heads=false;const roms=new Set();
+        CR.walk(m.scene,l=>{if(l.ifTaken)taken=true;if(l.ifRomance)roms.add(l.ifRomance);if(l.ifHeading)heads=true;});
+        const extras=[null,...(taken||roms.size?['akihiko','rio',...roms]:[])].filter((x,i,a)=>x!==m.who&&a.indexOf(x)===i);
+        const H=heads?[null,'S','H','stay','true']:[null];
+        const states=[];
+        lists[0].forEach((ph,i)=>extras.forEach(ex=>(ex?[null]:H).forEach(h=>states.push(()=>{CR.at(m.after,m.slot);G.S.tonight=m.when==='tartarus'?'battled':null;
           ids.forEach((id,k)=>CR.track(id,lists[k][Math.min(i,lists[k].length-1)]));
           if(lists[0][i]==='dating')CR.link(m.who,9,{route:'romance'});
-          CR.link('akihiko',Math.max(G.S.links.akihiko?.rank||0,i%2?4:1),G.S.links.akihiko?.route?{route:G.S.links.akihiko.route}:{});});
+          CR.link('akihiko',Math.max(G.S.links.akihiko?.rank||0,i%2?4:1),G.S.links.akihiko?.route?{route:G.S.links.akihiko.route}:{});
+          if(ex)CR.link(ex,9,{route:'romance'});
+          if(h)G.S.flags['route-'+h]=true;}))));
         n+=CR.paths({scene:[{bg:m.bg},...m.scene],place:m.place,time:m.time,label:m.label||'x',link:m.who},'crush/'+m.id,states);
       });
       // story and link lines that branch on a crush: each with its gate on and off
       const evIds=['lw-pre-priestess','lw-pre-empress','lw-birthday','lw-birthday-late','lw-pre-hierophant','lw-pre-chariot','lw-pre-hermit','lw-pre-fortune','a3-full-house'];
       evIds.forEach(id=>{const e=G.D.events.find(x=>x.id===id);const st=['out','noticed','puppy','almost','dating'].map(ph=>()=>{CR.at(e.date,'evening');CR.track('akihiko',ph);CR.track('shinjiro',ph==='dating'?'dating':ph);CR.link('akihiko',4);CR.link('shinjiro',3);});
         n+=CR.paths({scene:e.scene,place:e.place,time:e.time,event:true},'event/'+id,st);});
+      // the multi-romance batch: the 12/16 call with Jungwon's track at each phase, and the endings with Akihiko dating
+      // and Haechan's pull (each ending, with and without).
+      const call=G.D.events.find(x=>x.id==='a5-call-hoax');
+      n+=CR.paths({scene:call.scene,place:call.place,time:call.time,event:true},'event/a5-call-hoax',['out','crush','almost','dating'].map(ph=>()=>{CR.at('12/16','evening');CR.track('jungwon',ph);if(ph==='dating')CR.link('jungwon',8,{route:'romance'});}));
+      const end=G.D.events.find(x=>x.id==='end-ending');
+      const endStates=[['route-R'],['route-S'],['route-stay','stay-akihiko'],['route-true','true-final']].flatMap(fl=>[false,true].map(aki=>()=>{CR.at('3/7','late');fl.forEach(f=>G.S.flags[f]=true);CR.track('haechan','almost');if(aki){CR.link('akihiko',15,{route:'romance'});}}));
+      n+=CR.paths({scene:end.scene,place:end.place,time:end.time,event:true},'event/end-ending',endStates);
+      // rank scenes that acknowledge the tracks (with the track on and off, and with someone else for Haechan's rank 8)
+      const rank=(id,r,states)=>{const R=G.LINKS[id].ranks[r-1];n+=CR.paths({scene:R.scene,place:R.place,time:R.time,link:id},`rank/${id}${r}`,states);};
+      rank('haechan',8,[null,'akihiko','rio'].map(ex=>()=>{CR.at('12/18','late');CR.link('haechan',7);if(ex)CR.link(ex,9,{route:'romance'});}));
+      rank('akihiko',10,[['romance','out'],['romance','almost'],['friend','almost']].map(([rt,hp])=>()=>{CR.at('12/1','evening');CR.link('akihiko',9,{route:rt});CR.track('akihiko',rt==='romance'?'dating':'faded');CR.track('haechan',hp);}));
+      [['jungwon',8,'12/9'],['jihoon',8,'11/21'],['minji',8,'11/26']].forEach(([id,r,md])=>rank(id,r,['out','puppy'].map(ph=>()=>{CR.at(md,'evening');CR.link(id,r-1);CR.track(id,ph);})));
       return n})()""", timeout=900)
     bad = p.eval('CR.bad')
     ok(not bad, f'every crush moment and crush-branched story line finishes, reaches every option, with real faces and names: {bad[:6]}')
     ok(n_paths > 300, f'{n_paths} scene paths played')
-    lines = p.eval(r"""(()=>{const G=FemcGame,hit={};const want=["She'd been telling herself it was the wind","It hadn't been the first day for her","It wasn't news to her hand","*Dating.* The word stayed","Under the bench, out of sight","Your pulse rises by eleven"];
+    lines = p.eval(r"""(()=>{const G=FemcGame,hit={};const want=["She'd been telling herself it was the wind","It hadn't been the first day for her","It wasn't news to her hand","*Dating.* The word stayed","Under the bench, out of sight","Your pulse rises by eleven",
+        "Two floors up Akihiko was asleep","And one of them in particular, the one in the laundry room","Her hand had been ahead of her since a cup of tea","a bowl of ramen made exactly right","a silver sunshade in her hands",
+        "*Your boyfriend.* The word went into her","It was real love, in this world","She would go on having loved him","In every world she had ever been, he found her","Here, in this one, for real"];
       const scan=(lines)=>{CR.walk(lines,l=>{const t=l.n||l.t||'';want.forEach(w=>{if(t.includes(w))hit[w]=(hit[w]||0)+1;});});};
-      ['akihiko','shinjiro'].forEach(id=>G.LINKS[id].ranks.forEach(r=>scan(r.scene)));G.D.events.forEach(e=>scan(e.scene));return want.filter(w=>!hit[w])})()""")
+      ['akihiko','shinjiro','haechan','jungwon','jihoon','minji'].forEach(id=>G.LINKS[id].ranks.forEach(r=>scan(r.scene)));G.D.events.forEach(e=>scan(e.scene));return want.filter(w=>!hit[w])})()""")
     ok(not lines, f'the link and story acknowledgments are in place: missing {lines}')
 
     # ── world ──
@@ -305,6 +437,24 @@ try:
       return out})()""")
     ok(tx['yes'] and not tx['no'] and not tx['none'], f"a phase text arrives only in its phase: {tx}")
     ok(tx['warm'] == 1, "a reply's warmth counts")
+    tx2 = p.eval(r"""(()=>{const G=FemcGame,out={};const send=(md,id,ph,flag,taken)=>{md=G.D.texts.ambient.find(x=>x.id===id).to;const s=CR.at(md,'evening');for(const [k,v] of Object.entries(ph))CR.track(k,v);if(flag)s.flags[flag]=true;if(taken)CR.link(taken,9,{route:'romance'});
+        const t=G.D.texts.ambient.find(x=>x.id===id);s.slot=t.slot||'evening';s.phone.done=G.D.texts.texts.map(x=>x.id).concat(G.D.texts.ambient.filter(x=>x.id!==id).map(x=>x.id));s.phone.lastInvite=9999;s.runIns={seen:[],lastDay:-99,later:[]};G.deliverTexts();return s.phone.done.includes(id);};
+      out.hc=send('11/8','cr-tx-hc-stair',{},'arrived-haechan');out.hcNoFlag=send('11/8','cr-tx-hc-stair',{},null);
+      out.hcTaken=send('11/8','cr-tx-hc-stair',{},'arrived-haechan','akihiko');
+      out.jw=send('10/20','cr-tx-jw-finished',{jungwon:'noticed'},'arrived-jungwon');out.jwOut=send('10/20','cr-tx-jw-finished',{jungwon:'out'},'arrived-jungwon');
+      out.ah=send('11/20','cr-tx-ah-agasshi',{},'arrived-haechan','akihiko');out.ahFree=send('11/20','cr-tx-ah-agasshi',{},'arrived-haechan');
+      return out})()""")
+    ok(tx2['hc'] and not tx2['hcNoFlag'] and tx2['hcTaken'], f"Haechan's texts come once he's here, whoever she's with: {tx2}")
+    ok(tx2['jw'] and not tx2['jwOut'], "Jungwon's come in his phase only")
+    ok(tx2['ah'] and not tx2['ahFree'], "the dorm's triangle texts need Akihiko dating her")
+    wl = p.eval(r"""(()=>{const G=FemcGame,o={hcBefore:0,hcAfterNoticed:0,jw:0};const W=G.D.crush.world;
+      const hcNoticed=new Set(Object.values(W).flat().filter(x=>x.crush&&x.crush.haechan==='noticed'&&!x.crush.akihiko).map(x=>x.t));
+      for(let d=G.dayOf('9/10');d<G.dayOf('10/30');d++){CR.at(G.mdOf(d),'late');const x=G.crushLine('late.plain');if(x&&hcNoticed.has(x))o.hcBefore++;}
+      for(let d=G.dayOf('11/5');d<G.dayOf('11/10');d++){CR.at(G.mdOf(d),'late');const x=G.crushLine('late.plain');if(x&&hcNoticed.has(x))o.hcAfterNoticed++;}
+      CR.at('10/26','lunch');CR.track('jungwon','crush');for(let d=G.dayOf('10/26');d<G.dayOf('11/30');d++){G.S.day=d;const x=G.crushLine('chatter.lunch');if(x&&W['chatter.lunch'].some(y=>y.t===x&&y.crush&&y.crush.jungwon))o.jw++;}
+      return o})()""")
+    ok(wl['hcBefore'] > 0 and wl['hcAfterNoticed'] == 0, f"the uncanny lines play before Haechan arrives and stop once he has: {wl}")
+    ok(wl['jw'] > 0, 'the Gekkoukan buzz about the boy in the council room')
 
     # ── ui ──
     p.eval(r"""(()=>{const G=FemcGame,s=CR.at('4/20','late');CR.link('akihiko',1);delete s.crush;G.saveSlot(3);G.loadSlot(3);G.S.dailyLife={seen:G.D.dailyLife.map(e=>e.id),lastDay:-99};

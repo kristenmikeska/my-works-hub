@@ -27,9 +27,9 @@ window.LinkAudit = (() => {
   for(const cid of Object.keys(p.crushed||{})){const t=G.S.crush.t[cid]||={opt:'in',phase:'faded',warmth:0,peak:0,since:{}};t.peak=5;}
  };
  function presets(e,id) {
-  const flags=new Set(),written=new Set(),met=new Set(),events=new Set(),romances=new Set(),dates=new Set(),others={},crushes={},crushed=new Set();let rank=false,date=false,needs=false,route=false,heading=false;
+  const flags=new Set(),written=new Set(),met=new Set(),events=new Set(),romances=new Set(),dates=new Set(),others={},crushes={},crushed=new Set();let rank=false,taken=false,date=false,needs=false,route=false,heading=false;
   walk(e.scene,l=>{[].concat(l.ifFlag||[]).forEach(f=>flags.add(f));[].concat(l.ifMet||[]).forEach(m=>met.add(m));[].concat(l.ifEvent||[]).forEach(ev=>events.add(ev));if(l.ifRank)Object.entries(l.ifRank).forEach(([cid,r])=>{if(cid===id||!id)rank=true;else others[cid]=Math.max(others[cid]||0,r);});if(l.ifRoute)route=true;if(l.ifHeading)heading=true;if(l.ifRomance)romances.add(l.ifRomance);if(l.ifBefore||l.ifAfter){date=true;dates.add(l.ifBefore||l.ifAfter);}if(l.needs)needs=true;
-   if(l.ifCrush)Object.entries(l.ifCrush).forEach(([cid,ph])=>{crushes[cid]||=[].concat(ph)[0];});if(l.ifCrushed)Object.keys(l.ifCrushed).forEach(cid=>crushed.add(cid));
+   if(l.ifCrush)Object.entries(l.ifCrush).forEach(([cid,ph])=>{crushes[cid]||=[].concat(ph)[0];});if(l.ifTaken)taken=true;if(l.ifCrushed)Object.keys(l.ifCrushed).forEach(cid=>crushed.add(cid));
    if(l.flag) (typeof l.flag==='string'?[l.flag]:Array.isArray(l.flag)?l.flag:Object.keys(l.flag)).forEach(f=>written.add(f));});
   // These are derived inside the scene from the selected route, never independent player choices.
   ['mark-home','mark-away'].forEach(f=>flags.delete(f));
@@ -53,6 +53,8 @@ window.LinkAudit = (() => {
   if(needs)out=out.flatMap(p=>[p,{...p,low:true}]);
   for(const [cid,ph] of Object.entries(crushes))out=out.flatMap(p=>[p,{...p,crush:{...p.crush,[cid]:ph}}]);
   for(const cid of crushed)out=out.flatMap(p=>[p,{...p,crushed:{...p.crushed,[cid]:true}}]);
+  // ifTaken (the multi-romance batch, 2026-10-23): she's with someone else, Akihiko (named) or anyone (unnamed).
+  if(taken)out=out.flatMap(p=>[p,...['akihiko','rio'].filter(c=>c!==id).map(c=>({...p,romances:{...p.romances,[c]:true}}))]);
   return out;
  }
  function expected(id,e,path,key){let pick=0,notes=0;const text=[],nodes=[];
@@ -161,19 +163,23 @@ LinkAudit.gates = id => {
  if(L.gate)assert(probe(G.dayOf(L.starts)+10,L.home.slot,L.gate[world]-1).reason==='away','fragment gate');
  // A closed link that comes back (Shinjiro: closes 10/4, stretch.from 2/1) has another home from stretch.from, and a rank may
  // keep its own slot (rank.slot); nothing is available between closes and stretch.from.
- const homeAt=day=>(L.stretch&&day>=G.dayOf(L.stretch.from))?L.stretch.home:L.home;
+ // Breaks too (summerHome / winterHome, e.g. Akihiko's rank 6 on the dorm roof in August): core.js homeOf is the truth.
+ const homeAt=day=>G.homeOf?G.homeOf(L,day):(L.stretch&&day>=G.dayOf(L.stretch.from))?L.stretch.home:L.home;
  const closedOn=day=>!!(L.closes&&day>=G.dayOf(L.closes)&&!(L.stretch&&day>=G.dayOf(L.stretch.from)));
  for(let r=0;r<G.maxOf(L);r++){
   const earliest=G.dayOf(L.ranks[r].after),H=homeAt(earliest),slot=L.ranks[r].slot||H.slot;
   // Ranks 11+ (maxRank 15): the day before the next rank's date, time together is afterMax (no rank scene yet),
   // unless the link is closed that day (then it's simply away).
-  if(r>=10){let pd=earliest-1;while(!homeAt(pd).days.includes(G.dayInfo(pd).dow))pd--;
+  // A holiday closes a school home (Akihiko's boxing club on 2/11): he's elsewhere, so step past it.
+  const shut=(day,rr)=>probe(day,homeAt(day).slot,9,rr).reason==='elsewhere';
+  if(r>=10){let pd=earliest-1;while(!homeAt(pd).days.includes(G.dayInfo(pd).dow)||shut(pd,r))pd--;
    if(closedOn(pd))assert(!probe(pd,homeAt(pd).slot,9,r).ok,'closed before rank date '+r);
    // A link that left at rank 10 and came back on a stretch (core.js linkStatus) is hidden while its next rank isn't open.
    else if(L.stretch&&G.leavesAtMax(L)){const st=probe(pd,homeAt(pd).slot,9,r);assert(!st.ok&&st.reason==='max','hidden before rank date '+r);}
    else{const st=probe(pd,homeAt(pd).slot,9,r);assert(st.ok&&st.after&&G.linkScene(L).kind==='after','afterMax before rank date '+r);}}
-  else assert(!probe(earliest-1,slot,9,r).ok,'rank date '+r);
-  let d=earliest;while(!H.days.includes(G.dayInfo(d).dow))d++;
+  // A story rank (L.forced) isn't on the map before its date: time with him there is a hangout (Haechan).
+  else if(!(L.forced&&L.forced.includes(r+1)))assert(!probe(earliest-1,slot,9,r).ok,'rank date '+r);
+  let d=earliest;while(!H.days.includes(G.dayInfo(d).dow)||(!(L.forced&&L.forced.includes(r+1))&&shut(d,r)))d++;
   // A story rank (L.forced, e.g. Shinjiro's 15) plays on its date through dueEvent, not from the map.
   if(L.forced&&L.forced.includes(r+1)){assert(probe(d,slot,9,r).reason==='story','story rank on its date '+r);continue;}
   assert(probe(d,slot,9,r).ok&&!G.linkStatus(L).after,'rank available '+r);
