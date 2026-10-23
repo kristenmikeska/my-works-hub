@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**75 items:** 2 quick fixes · 8 CGs · 17 places · 19 character pieces · 12 battle · 11 cards and icons · 6 screens. 9 are ⭐, 47 are optional.
+**76 items:** 2 quick fixes · 9 CGs · 17 places · 19 character pieces · 12 battle · 11 cards and icons · 6 screens. 9 are ⭐, 48 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -77,6 +77,8 @@ Solar and [NAME] at [SETTING], [TIME AND LIGHT]. [WHO ELSE IS THERE, OR "just th
     - **Widowmaker** (Moonlight Bridge): a late-January night, snow falling through the bridge lamps, a moon, an empty walkway; a slow waltz, Widowmaker leading in a red scarf, hands joined; a long frayed black satin ribbon.
     - **Rohan** (inside Bookworms, closed): late December, snow falling past the window; a cat asleep on the counter; Rohan in his green headband holding a pen; Solar turning the pages of a hand-bound book with a painted cover; just the two of them.
     - **Wren** (the dorm roof): about 11pm in early March, very cold, ice down one side of the water tank, city lights below, the station lights small in the distance; Wren sitting against the tank, coat pulled round her knees, cap on; Solar beside her, both facing the station lights.
+- [ ] *(Optional)* **Crush moment: one umbrella** (Akihiko's crush track, spring, `data/crush-akihiko.js` `cr-aki-umbrella`). **Fills:** `cg/crush-akihiko-umbrella.webp` (Claude wires it into the moment's first choice as `{ cg }` once it's in). **Attach:** style, Solar, Akihiko.
+  - **Must match:** a rainy late-May afternoon just after school, heavy rain, gray light; Gekkoukan's front gate behind them, the school's glass entrance doors and a covered overhang far behind with two blurry classmates watching; Solar and Akihiko walking toward the viewer under ONE cheap clear plastic umbrella with one bent rib, Akihiko holding it (he's taller), tilted over Solar so her side is dry and his outer shoulder is soaked dark; both in the black Gekkoukan winter uniform (blazers), Akihiko's hair wet at the ends, a sports bag over his far shoulder; close but not touching, her hand near his sleeve; he's looking ahead and very red at the ears, she's looking up at the rain on the plastic with a small held-in smile; puddles, rain streaking past the umbrella's edge; no armbands; mood: shy, warm, the first time everyone could see it.
 
 ### 2C. Holidays and group shots *(optional)*
 - [ ] **New Year's at the shrine** (`FEMC-CG-PROMPTS.md` #24). **Attach:** style, Solar, 3–4 friends, and 🎮 `bg/naganaki-shrine-newyear.webp` for the setting. **Fills:** `cg/holiday-new-year.webp`.

@@ -262,3 +262,12 @@ Haechan stays Universe and Jungwon stays Hierophant.
 - **Where they fall:** a handful per world across the year (first contact, her belated birthday, a family occasion, exams or holidays, the week of the calls). At graduation (3/5) the world her route is going home to sends one more; the true ending hears from all three; Stay hears nothing.
 - **Tone:** each family as its novel has it, and nothing that touches either novel's plot (dinners, dresses, soup, takeout money, holidays). The *Hoax* dad is barely on the page in the book, so his few lines are the game's own.
 - Data: `assets/femc/game/data/living-parents.js`.
+
+## Kat's rulings (2026-10-23): crushes, before the romance
+- **The crush and puppy-love stretch is lived, not skipped.** P3P's FeMC romances with Akihiko and Shinjiro feel canon, but the year never felt like crushing on, seeing or dating them. Now it does, and it coincides with the story: at school (Solar and Akihiko are both third-years), in the dorm, in the story's big nights, and by text.
+- **It's opt-in.** A small moment in April (from 4/21) lets Solar lean toward Akihiko or not. Shinjiro has his own, once she's met him or once he's back in the dorm. Leaning in starts a track: noticed, then a crush, then puppy love, then almost, then dating once that link's romance starts (Akihiko's rank 7 or 9, Shinjiro's rank 8). Not leaning in keeps him a friend she still lives alongside; his link's romance is still there.
+- **Both at once is the triangle**, leaning Akihiko. Choosing one's romance settles the other into friendship, and so does choosing any other romance later.
+- **The world reacts:** classmates, the fan club and the dorm notice as it gets obvious, in their own lines and in the everyday ones.
+- **After the arrivals** it keeps going more lightly, true to where it went (dating him, still unresolved, or friends), alongside whichever romance she's on. Nothing from August on was removed.
+- **Reusable:** the next batch can give Haechan and Jungwon full tracks and Jihoon and Minji lighter ones.
+- **Built (2026-10-23).** Writer inventions to confirm: Akihiko's classroom is next door to Solar's (PE is with that class); Shinjiro's is across the corridor, and he comes to school some days in September; the stray cat can be named Lid.
