@@ -731,6 +731,7 @@ window.FemcGame = (() => {
     else if (line.ifHeading) ok = headingIs(line.ifHeading);
     else if (line.ifCrush) ok = crushIs(line.ifCrush);
     else if (line.ifCrushed) ok = crushedAt(line.ifCrushed);
+    else if (line.ifTaken) ok = takenBy(line.ifTaken);
     // Dates: ifAfter is "on or after" (like a rank's `after`), ifBefore is "strictly before"; they're each other's else.
     else if (line.ifAfter) ok = S.day >= dayOf(line.ifAfter);
     else if (line.ifBefore) ok = S.day < dayOf(line.ifBefore);
@@ -1319,6 +1320,11 @@ window.FemcGame = (() => {
        steps, in order ('crush', 'puppy', 'almost'): reached on or after `after` when the link's rank is at least `rank`, OR
          the warmth from Solar's choices is at least `warmth`, OR `by` has passed and she hasn't cooled (warmth >= 0).
        closes: a track that isn't 'dating' by then fades (Shinjiro, 10/4).
+       auto: { after, events, flags } (2026-10-23, multi-romance batch): no opt-in; the track starts at 'noticed' by itself
+         once these hold (Haechan: the pull isn't something she chooses). A track with `auto` and no optIn never reads 'out'.
+       pull: true: another link's romance route doesn't settle this track (Haechan, Kat's "honest and torn": dating
+         Akihiko holds while the pull plays). Only its own route (friend → 'faded', romance → 'dating'), letting it go
+         ({ crush: { id: 'out' } }) or `closes` settle it. A pull track's own romance still settles every other growing track.
      Phases: 'none' (not asked yet) · 'out' (said no, or missed it) · 'noticed' → 'crush' → 'puppy' → 'almost' (the steps)
        · 'dating' (the link's route is 'romance', from any phase, settled) · 'faded' (a friendship now, settled: the link's
        route is 'friend', another link's route is 'romance', { crush: { id: 'out' } } after leaning in, or `closes`).
@@ -1328,8 +1334,9 @@ window.FemcGame = (() => {
        everything that reads a phase calls it, so old saves settle on first read (normCrush gives them the empty field).
      Moments (moments[]): { id, who, optIn: id, crush: { id: [phases] | 'phase' } (all must hold), slot, after, until (default
        after + 21), schoolOnly, offOnly, days, weather, when ('tartarus' | 'quiet'), events, flags, noFlags, met, ranks,
-       ranksBelow, route, heading, label, place, time, bg, cast, scene }. One plays like an everyday-life routine (ui.js
-       playDailyLife: in the slot's place, never spending a free slot), at most one every three days, never on a day a routine
+       ranksBelow, route, heading, free (true: only while no link is on its romance route; the searchers' opt-ins, so
+       nobody is asked to lean toward someone new while she's with someone), label, place, time, bg, cast, scene }. One plays like an everyday-life routine (ui.js
+       playDailyLife: in the slot's place, never spending a free slot), at most one every three days (two from 9/1), never on a day a routine
        already played (a late-night one excepted) or a story scene played, a trip, a held holiday, a full-moon or rest night (late), or a night a
        link's late night is due or has played;
        the opt-in first, then stale-first.
@@ -1338,7 +1345,8 @@ window.FemcGame = (() => {
        'evening.sub' read by ui.js). On about half the days one fits (chance, default 0.5), it shows instead of the usual line.
      Scenes: { ifCrush: { id: [phases] | 'phase' }, then, else }; { ifCrushed: { id: 'phase' } } (that phase was reached at some
        point, e.g. a rank scene acknowledging the build-up after the route has made it 'dating'); { crush: { id: 'in' | 'out'
-       | ±n } } as a line, on a choice or on a text reply (n: warmth). Texts (dated, ambient, afterRank) take a `crush` gate. */
+       | ±n } } as a line, on a choice or on a text reply (n: warmth). Texts (dated, ambient, afterRank) take a `crush` gate.
+       { ifTaken: id | [ids], then, else }: some link other than those is on its romance route (she's with someone else). */
   const CRUSH = ['noticed', 'crush', 'puppy', 'almost', 'dating'];
   const crushState = () => (S.crush = normCrush(S.crush));
   function crushTrack(id) { const c = crushState(), t = (c.t[id] ||= { opt: null, phase: 'none', warmth: 0, peak: 0, since: {} }); t.since ||= {}; return t; }
@@ -1350,8 +1358,10 @@ window.FemcGame = (() => {
     if (p.route === 'romance') ph = 'dating';
     else if (['dating', 'faded', 'out'].includes(ph)) { /* settled */ }
     else if (t.opt === 'out') ph = 'out';
+    else if (!t.opt && T.auto && autoMet(T.auto, d)) { t.opt = 'in'; ph = 'noticed'; }
     else if (!t.opt) { if (T.optIn?.until && d > dayOf(T.optIn.until)) { t.opt = 'out'; ph = 'out'; } }
-    else if (p.route === 'friend' || Object.entries(S.links).some(([k, q]) => k !== id && q?.route === 'romance') || (T.closes && d >= dayOf(T.closes))) ph = 'faded';
+    if (p.route === 'romance' || ['dating', 'faded', 'out'].includes(ph) || t.opt !== 'in') { /* settled, or not asked yet */ }
+    else if (p.route === 'friend' || (!T.pull && takenBy(id)) || (T.closes && d >= dayOf(T.closes))) ph = 'faded';
     else {
       if (ph === 'none') ph = 'noticed';
       for (const st of T.steps || []) {
@@ -1366,6 +1376,8 @@ window.FemcGame = (() => {
     if (i > (t.peak || 0)) t.peak = i;
     return ph;
   }
+  const takenBy = except => { const not = [].concat(except); return Object.entries(S.links).some(([k, q]) => !not.includes(k) && q?.route === 'romance'); };
+  const autoMet = (a, d) => d >= dayOf(a.after || '4/6') && (!a.events || a.events.every(e => S.events.includes(e))) && (!a.flags || [].concat(a.flags).every(flag));
   const crushIs = want => Object.entries(want || {}).every(([id, ph]) => [].concat(ph).includes(crushTick(id)));
   const crushedAt = want => Object.entries(want || {}).every(([id, ph]) => { crushTick(id); return (crushTrack(id).peak || 0) >= CRUSH.indexOf(ph) + 1; });
   // { id: 'in' | 'out' | n }: lean in (a track not asked yet, or said no, starts at 'noticed'), let it go ('out', or 'faded'
@@ -1388,14 +1400,18 @@ window.FemcGame = (() => {
   function crushFits(m, slot, d = S.day, info = dayInfo(d)) {
     if (m.slot !== slot || d < dayOf(m.after) || d > crushUntil(m)) return false;
     if (m.optIn) { if (crushTick(m.optIn, d) !== 'none') return false; }
+    if (m.free && takenBy([])) return false;
     else if (m.crush && !Object.entries(m.crush).every(([id, ph]) => [].concat(ph).includes(crushTick(id, d)))) return false;
     if (m.who && LINKS[m.who] && progress(m.who).reversed) return false;
     if (m.when === 'tartarus' ? S.tonight !== 'battled' : m.when === 'quiet' && S.tonight === 'battled') return false;
     return dailyFits({ ...m, until: mdOf(crushUntil(m)) }, slot, d, info);
   }
+  // Days between moments: three in the spring and summer (Akihiko and Shinjiro), two from September, when the searchers
+  // arrive and the house fills up (the multi-romance batch, 2026-10-23: five tracks share the autumn).
+  const crushGap = d => (d >= dayOf('9/1') ? 2 : 3);
   function crushDue(slot = S.slot, d = S.day) {
     const M = D.crush.moments || [], c = crushState(), info = dayInfo(d);
-    if (!M.length || S.phase !== 'play' || ['trip', 'prologue'].includes(info.type) || d - c.lastDay < 3 || (S.dailyLife?.lastDay === d && slot !== 'late')) return null;
+    if (!M.length || S.phase !== 'play' || ['trip', 'prologue'].includes(info.type) || d - c.lastDay < crushGap(d) || (S.dailyLife?.lastDay === d && slot !== 'late')) return null;
     if (D.events.some(e => e.date === info.md && S.events.includes(e.id))) return null;
     if (['after', 'evening'].includes(slot) && S.spent[`${d}-${slot}`]) return null;
     if (holidayDue(slot, d)) return null;
@@ -2107,7 +2123,7 @@ window.FemcGame = (() => {
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift, packs, packPick, packFits,
     clubById, clubState, clubStats, clubScene, joinClub, finishClub, runInDue, runInFits, finishRunIn, vary, varyPool, secretsDue, findSecret,
     heading, headingIs, migrateForced,
-    crushTick, crushIs, crushedAt, crushApply, crushPhases, crushTrack, crushFits, crushDue, finishCrush, crushLine,
+    crushTick, crushIs, crushedAt, crushApply, crushPhases, crushTrack, crushFits, crushDue, finishCrush, crushLine, takenBy,
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, textById, answerInvite, gift, bond,

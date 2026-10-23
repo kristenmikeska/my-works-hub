@@ -35,11 +35,52 @@
     closes: '10/4'
   };
 
+  /* The searchers (2026-10-23, Kat's "multi-romance realism"; lore bible). Each starts from the arrival.
+     Haechan: no opt-in. The pull starts by itself with the first texts from home (a4-first-text, 8/24; from 9/1): déjà vu
+     before he's here, then his story ranks carry it (they're forced, so the steps fall on his dates). `pull`: dating
+     someone else doesn't settle it (Kat: "honest and torn"; dating Akihiko holds while the pull plays). His own rank 8
+     settles it: romance → 'dating', friend → 'faded'. Moments in crush-haechan.js; Akihiko and Haechan together, the
+     talks and the dorm in crush-triangle.js.
+     Jungwon (full), Jihoon and Minji (lighter): opt-in after their arrivals, offered only while she isn't with anyone
+     (moment `free`), steps by rank or warmth; another romance settles them, as Akihiko's and Shinjiro's do. Rank 8 is each
+     one's romance turn (Jihoon 11/21, Minji 11/26, Jungwon 12/9). Moments in crush-jungwon.js and crush-jihoon-minji.js. */
+  C.tracks.haechan = {
+    auto: { after: '9/1', events: ['a4-first-text'] }, pull: true,
+    steps: [
+      { phase: 'crush', after: '11/11', rank: 2, warmth: 3, by: '11/14' },
+      { phase: 'puppy', after: '11/25', rank: 4, warmth: 6, by: '11/28' },
+      { phase: 'almost', after: '12/8', rank: 6, warmth: 9, by: '12/11' }
+    ]
+  };
+  C.tracks.jungwon = {
+    optIn: { from: '10/15', until: '12/5' },
+    steps: [
+      { phase: 'crush', after: '10/24', rank: 2, warmth: 2, by: '11/8' },
+      { phase: 'puppy', after: '11/6', rank: 4, warmth: 5, by: '11/24' },
+      { phase: 'almost', after: '11/20', rank: 6, warmth: 8 }
+    ]
+  };
+  C.tracks.jihoon = {
+    optIn: { from: '9/20', until: '11/14' },
+    steps: [
+      { phase: 'crush', after: '9/27', rank: 2, warmth: 2, by: '10/12' },
+      { phase: 'puppy', after: '10/18', rank: 5, warmth: 4 }
+    ]
+  };
+  C.tracks.minji = {
+    optIn: { from: '9/27', until: '11/20' },
+    steps: [
+      { phase: 'crush', after: '10/3', rank: 2, warmth: 2, by: '10/18' },
+      { phase: 'puppy', after: '10/24', rank: 5, warmth: 4 }
+    ]
+  };
+
   /* ── The world reacts: phase lines for spots the player sees every day (core.js crushLine). On about half the days a line
      fits it replaces the usual one. Classmates: Maki and Sonoda sit behind her; the fan club is four second-years, Ōta
      their president (living-r15-akihiko.js). His classroom is next door to hers. ── */
   const A = ph => ({ akihiko: ph }), S = ph => ({ shinjiro: ph });
   const add = (path, list) => { C.world[path] = [...(C.world[path] || []), ...list]; };
+  C.add = add; // for crush-<id>.js files
   const SCHOOL_TERM1 = { months: [4, 5, 6, 7] }, AUTUMN = { months: [9, 10, 11, 12, 1, 2] };
 
   add('lunch.clear', [
