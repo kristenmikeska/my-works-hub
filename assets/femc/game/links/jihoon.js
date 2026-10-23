@@ -1289,6 +1289,7 @@
   christmas: { place: 'Paulownia Mall · Central Atrium', time: 'Evening', scene: [
     { n: "Christmas Eve, and the mall was snowing indoors, little white paper flakes from a machine above the tree, and Jihoon was standing under it with two gift bags and the face of a man about to win an argument he'd started." },
     { s: 'jihoon', f: 'happy', t: "Okay. Okay. On three. Stupidest gift wins. I'm going to win. I've been planning this since November. One, two—" },
+    { cg: 'romance-jihoon-christmas' },
     { n: "Hers was a keychain from the crane game, a small lopsided dog, because she'd lost on purpose until it came out. His was a keychain from the crane game, a small lopsided sun, because he'd lost on purpose until it came out." },
     { s: 'jihoon', f: 'surprised', t: "..." },
     { s: 'jihoon', f: 'neutral', t: "How much did you spend." },

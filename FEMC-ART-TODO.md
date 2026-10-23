@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**77 items:** 2 quick fixes · 10 CGs · 17 places · 19 character pieces · 12 battle · 11 cards and icons · 6 screens. 11 are ⭐, 47 are optional.
+**75 items:** 2 quick fixes · 8 CGs · 17 places · 19 character pieces · 12 battle · 11 cards and icons · 6 screens. 9 are ⭐, 47 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -43,24 +43,6 @@ One template; fill it from the item's Must match line, not from the setting name
 ```
 Solar and [NAME] at [SETTING], [TIME AND LIGHT]. [WHO ELSE IS THERE, OR "just the two of them"]. [CLOTHES]. [POSE AND DISTANCE]. [SEASON AND WEATHER]. [PROPS]. [MOOD].
 ```
-- [ ] ⭐ **Rank 15** for Shinjiro, the last link without one. **Fills:** `cg/link-shinjiro-r15.webp`. (The lounge-sofa art went into his rank 9 instead; this one is still needed.)
-  - **Attach:** style, Solar, Shinjiro, Akihiko.
-  - After the style block (Solar in her winter uniform):
-    ```
-    A hospital room on a late-February afternoon, low pale light coming through the blinds in bars across the blanket. Shinjiro in the hospital bed in a loose gown, thinner than usual, knuckles sharp, his dark hair pushed the wrong way on the pillow, eyes open and half-focused on Solar. Solar standing beside the bed, close, looking down at him. Behind her, Akihiko in the bedside chair, leaning far forward with his elbows on his knees. On the side table, a folded black beanie, a cold paper cup of tea, a monitor. Quiet, tender, hushed.
-    ```
-  - **Must match:** late-February afternoon, pale light through the blinds; a hospital room (not a dorm); Shinjiro in bed in a gown; Solar beside the bed in her winter uniform; Akihiko in the chair behind her; the folded beanie, a paper cup, a monitor; Ken and Koromaru not there.
-- [ ] ⭐ **Christmas Eve (12/24)** for each romance that has one, besides Akihiko's and Haechan's (done). **Fills:** `cg/romance-<id>-christmas.webp` (the `romance-` prefix files it under Romance & bonds in Memories).
-  - **Attach:** style, Solar, the partner. Snow falls only where the line says so; indoor scenes have none.
-  - **Jungwon** (Iwatodai Strip, under the bookstore awning): evening; big slow snowflakes past the ramen shop's lanterns and a karaoke sign; shoppers passing; snow in his hair; he's holding a paper bag and a plain dark scarf (it can be looped round both their necks); a watch on his wrist.
-  - **Jihoon** (Paulownia Mall, central atrium): indoor evening; white paper flakes drifting from a machine above a big tree (no real snow); Jihoon under it with two gift bags; two lopsided crane-game keychains, a dog and a sun.
-  - **Minji** (Iwatodai riverside): evening; an empty river path, blue with snow; a flickering lamp with fairy lights wound round the post; Minji holding a glossy postcard-sized print, her camera with her. It's close to the existing camera-and-lamp CG, so change the framing.
-  - **Shinjiro** (a hospital room at night, not the dorm): warm and dim, the overhead light off, the door open a crack; snow falling past the courtyard lights outside the window, a paper snowflake taped to the glass, a small cactus on the sill; Shinjiro lying still in the bed, eyes closed; Solar in the bedside chair holding his hand on top of the blanket, her head resting on the edge of the bed, a thin hospital blanket over her shoulders; his beanie folded on the side table beside half a slice of strawberry shortcake in a plastic triangle; Akihiko not there.
-  - *(Optional)* **Ann** (the mall fountain): indoor evening, no falling snow; gold lights up every pillar, a tree up to the skylight, fountain spray catching the light; Ann in a white coat, red scarf, knitted hat over her pigtails; Solar in her warmest coat; holding hands, walking; carolers, a cocoa seller in a reindeer hat.
-  - *(Optional)* **Kasumi** (Naganaki Shrine): night, orange sky, fresh snow, flakes lit by the offering hall; both lying side by side on the snowy flagstones holding hands, her red glove, Solar's bare hand; Kasumi in a red scarf and pompom hat; Solar in her good coat, hair tied up with a pale pink ribbon; stone foxes capped with snow.
-  - *(Optional)* **Judy** (Club Escapade): the club dark except the jukebox, hundreds of tiny white lights on fishing line over the dance floor, no snow; both sitting on the edge of the stage, feet dangling; a bucket of fried chicken and a strawberry cake; Solar's head on Judy's shoulder.
-  - *(Optional)* **Rio** (Port Island pier, not the station): night, snow slanting in off the bay under the walkway lamps, black water, a lit ship passing; Rio in a big navy coat, knitted pompom hat and gloves; the two of them close under one lamp; a shoebox, white tennis shoes with a navy stripe.
-  - *(Optional)* **Saori** (inside Bookworms, closed for the night): warm, dark narrow aisles, a ticking kerosene heater, a small table at the back; snow falling past paper lanterns outside the front window; Saori's hand holding the front of Solar's coat, foreheads close; two small strawberry cakes on the counter, a gray cloth notebook.
 - [ ] *(Optional)* **Rank 10 (MAX)**, one per link. **Fills:** `cg/link-<id>-r10.webp`. **Attach:** style, Solar, the partner. Solar's clothes go by the season unless the line says otherwise.
   - **S.E.E.S.**
     - **Yukari** (the mall atrium): after school in December, indoor mall light; a three-story tree with white lights and a gold star where the fountain usually runs; side by side on the rim of the dry fountain with paper cups of hot chocolate, Yukari stealing Solar's marshmallows; shoppers around.

@@ -804,11 +804,13 @@
     { n: "They did not walk fast. They walked through the whole tunnel slower than any couple in it, because halfway through Rio took Solar's hand and put it, with her own, into the pocket of her coat, and then seemed to forget entirely how walking worked." },
     { place: 'Port Island · Pier', time: 'Night', music: 'tender' },
     { n: "Past the station, past the lights, the walkway ran along the water in the dark, and the snow was coming in off the bay in long slants under the lamps, fine and steady, and nobody else was out here. The water below the rail was black and loud, and the far shore was a smear of gold, and the cold made everything very clear and very close, the way cold does." },
-    { n: "Rio stopped under a lamp and held out the shoebox in both hands, stiffly, at arm's length, the way she'd once held out a bag to a girl on a roof." },
+    { cg: 'romance-rio-christmas' },
+    { n: "Rio stopped at a bench under a lamp, brushed the snow off it with her glove, sat, waited for Solar to sit beside her, and held out the shoebox in both hands, stiffly, the way she'd once held out a bag to a girl on a roof." },
     { s: 'rio', f: 'flustered', t: "Open it. Don't say anything until you've opened it." },
     { n: "Tennis shoes. White, with a navy stripe, the good brand, the one the whole team wore, in exactly her size." },
     { s: 'rio', f: 'flustered', t: "You've been playing in your gym shoes since April. They're terrible. They have no grip. Your feet deserve better than that." },
     { s: 'rio', f: 'flustered', t: "...I checked your shoe locker for the size. That sounds bad. Ryoko said it sounded bad. I did it anyway." },
+    { cg: null },
     { choose: [
       { t: "(Give her a photo in a frame. The team at the bench in October, every wrist taped.)", notes: 3, then: [
         { n: "Yukari had taken it from the fence without telling anyone, and Solar had found it on her camera in November and had it printed at the shop by the station. The whole Gekkoukan team in a heap at the bench, crying, laughing, every wrist wrapped in white tape with a smudged R, and in the middle of all of it, crushed and soaked and grinning, Rio." },

@@ -79,6 +79,7 @@ Other docs, if you ever want detail:
 - ✅ Eighteen more of your backgrounds: Iwatodai Station, its overpass, the platform by day and the busy concourse, the pier by day and by night, the seaside park, the hospital roof, the karaoke room, Bookworms, Hagakure's kitchen, the convenience store, Respawn, the tutoring apartment, the guesthouse lobby and roof, the gym and the archery range
 - ✅ Seven more of your CGs: graduation, the Yakushima beach, rank 15 for Akihiko, Haechan and Jungwon, Haechan's Christmas Eve (now at Port Island), and a Shinjiro moment (in Memories too)
 - ✅ Three more of your CGs for the last part of the story, including the true ending's (in Memories too)
+- ✅ Every romance's Christmas Eve has its CG now, and Shinjiro's rank 15 too (in Memories too)
 - ✅ Your chibi art in the All-Out Attack cloud: all 12 fighters brawl through their chibi frames (Ken keeps his silhouette)
 - ✅ Bosses and fighters move in battle: the full-moon bosses (the Last Train too), Justice and 12 fighters have pose sheets (Ken is skipped). The April boss still borrows a regular Shadow's art (see the art list)
 - ✅ Weapons for the other fighters: Haechan, Jungwon, Jihoon and Minji, and now Akihiko, Yukari, Junpei, Mitsuru, Aigis, Koromaru and Shinjiro each have six of their own, with your art (a starter, then shops, chests, a full-moon drop, a gift from their link, and Shuffle Time while they're in the party). Old saves get their starters and any full-moon drops they missed. Only Ken is still on plain weapons

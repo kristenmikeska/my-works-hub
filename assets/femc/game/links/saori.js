@@ -783,9 +783,11 @@
     { s: 'saori', f: 'sad', t: "This year I thought I was writing to nobody. For so long. Sitting at the desk, waiting for someone to come, and nobody coming. And then somebody asked for a story about a tiger." },
     { s: 'saori', f: 'flustered', t: "Wherever you are next year, I'm going to keep a chair. By a window. With a book on it. Wherever I live, for the rest of my life, there'll be a chair that's yours. That's a promise. I don't make many. I'm told I'm very good at keeping them." },
     { n: "Solar thought about next year, which she couldn't see, and about the chair, which she could, very clearly, in a hundred rooms she'd never be in, waiting, with a book on it. She didn't know where she'd be. She knew, with a certainty that sat under her ribs like something warm she'd swallowed, that the chair would be there anyway. It was the first thing about the future she'd been sure of all year." },
+    { cg: 'romance-saori-christmas' },
     { n: "Saori kissed her at the back of Bookworms, between the art books and the window, with the snow coming down outside on the paper lanterns and the heater ticking and the two little cakes forgotten on the counter. Her hand caught in the front of Solar's coat and held on. When they broke apart she rested her forehead against Solar's and laughed, small and astonished, like a girl reading the last line of a book she'd been afraid to finish and finding out it was kind." },
     { s: 'saori', f: 'happy', t: "Merry Christmas. Nothing went wrong." },
     { s: 'solar', f: 'happy', t: "Merry Christmas, Saori. Nothing went wrong." },
+    { cg: null },
     { n: "They ate the cakes. They locked up, and the key didn't stick, which Saori said was a Christmas miracle, and outside she put up the enormous navy umbrella, or her own small blue one, it didn't matter which, and held it over both of them, and they walked down the Strip in the snow under it, slowly, listening to the snow land on it from underneath, which sounded exactly like being inside something." }
   ] }
 });

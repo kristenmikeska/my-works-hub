@@ -1640,6 +1640,7 @@
     { n: "Inside the bag was a scarf. Plain, dark, very warm. Folded into it was a small card in his neat slanted print. *You never wear one. Please wear this one.*" },
     { choose: [
       { t: "(Put it on. Then put it around both of you.)", notes: 3, then: [
+        { cg: 'romance-jungwon-christmas' },
         { n: "It was long enough. He'd measured, she realized. He'd bought it long enough on purpose, and stood there with the other end around his own neck and snow on his hair looking like a man caught in the middle of a crime he'd committed very carefully." }
       ] },
       { t: "(Give him yours: a pocket watch-stand, so he can set the watch down at night.)", notes: 3, then: [

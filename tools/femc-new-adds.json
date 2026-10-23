@@ -5460,6 +5460,176 @@
       "source": "story-wren-cap.png",
       "sourceNow": "Added to Game/story-wren-cap.png",
       "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/link-shinjiro-r15.webp",
+      "placement": "links/shinjiro.js rank 15 ('15: you eat yet', 2/27): { cg } from the eyes-open line through the first lines he speaks, cleared before the next beat; Romance & bonds",
+      "textCheck": "checked 2026-10-22 against the image: matches the scene",
+      "mobileFocus": "55% 35%",
+      "outputSha256": "0ff526c4c3f3de05cb4b5c7049c5fb8c19b346208c01940cd30d0d63ade3dbf0",
+      "sha256": "e5487fd9707c8e2097820724f9403b93467aa417f568ee68c72808a6f5358271",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "link-shinjiro-r15.png",
+      "sourceNow": "Added to Game/link-shinjiro-r15.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/romance-ann-christmas.webp",
+      "placement": "links/ann.js christmas, romance branch: { cg } on the walk round the atrium, cleared before the choice; Memories album (Romance & bonds group)",
+      "textCheck": "checked 2026-10-22 against the image: matches the scene",
+      "mobileFocus": "40% 25%",
+      "outputSha256": "5501d7cfbf73d84b7eff1d4180324d2f3eb56a7364c906953c7b6a71cdee4843",
+      "sha256": "455e650cd412f85bbc58d8418921ae1e10fe45cadc4428d21a11266671b8e5f4",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "romance-ann-christmas.png",
+      "sourceNow": "Added to Game/romance-ann-christmas.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/romance-jihoon-christmas.webp",
+      "placement": "links/jihoon.js christmas: { cg } from the keychain swap to the end (no route split); Memories album (Romance & bonds group)",
+      "textCheck": "checked 2026-10-22 against the image: matches the scene",
+      "mobileFocus": "45% 25%",
+      "outputSha256": "2ad4b6d0c6d522b388ce6419645671f20cb696453957b278a48e7d0c0407c714",
+      "sha256": "5455b1f5a6da59ca1902b4940f22b79d641f145605e2f48a8798a036c0ad4ebd",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "romance-jihoon-christmas.png",
+      "sourceNow": "Added to Game/romance-jihoon-christmas.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/romance-judy-christmas.webp",
+      "placement": "links/judy.js christmas, romance branch: { cg } from its first line through its choice, then cleared; Memories album (Romance & bonds group)",
+      "textCheck": "checked 2026-10-22 against the image: matches the scene",
+      "mobileFocus": "42% 25%",
+      "outputSha256": "f3a08f5a09f478032dbe3b84d251f41748c8f14076a1cfca569d0da191151e50",
+      "sha256": "975cacd287adce2fc309c5ca32fed676bee4619d0bd5333751b9dc6a70993899",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "romance-judy-christmas.png",
+      "sourceNow": "Added to Game/romance-judy-christmas.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/romance-jungwon-christmas.webp",
+      "placement": "links/jungwon.js christmas: { cg } inside the scarf-round-both choice, through to the end; Memories album (Romance & bonds group)",
+      "textCheck": "checked 2026-10-22 against the image: matches the scene",
+      "mobileFocus": "38% 20%",
+      "outputSha256": "f34fbf9e57a7e6fba662ebcc38e0ffbd4462d34fd7a3fa63d5e95fe833be408f",
+      "sha256": "9f8b78b3614807bc90f12bf53ba53bf91f1fcd1fc928d60467a991143e81bb8a",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "romance-jungwon-christmas.png",
+      "sourceNow": "Added to Game/romance-jungwon-christmas.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/romance-kasumi-christmas.webp",
+      "placement": "links/kasumi.js christmas: { cg } from lying in the snow to the end (shared); Memories album (Romance & bonds group)",
+      "textCheck": "checked 2026-10-22 against the image: matches the scene",
+      "mobileFocus": "48% 55%",
+      "outputSha256": "c9c894e79b863de4c3665459ee08dcee978c4a95ad265587d63c1e23528e0eba",
+      "sha256": "9d78bcba2cf509fb7bcab5da78e17089ea77fdc3c03c204a6750db10a60ead5b",
+      "size": [
+        1672,
+        940
+      ],
+      "source": "romance-kasumi-christmas.png",
+      "sourceNow": "Added to Game/romance-kasumi-christmas.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/romance-minji-christmas.webp",
+      "placement": "links/minji.js christmas: { cg } from the photograph to the end (no route split); Memories album (Romance & bonds group)",
+      "textCheck": "checked 2026-10-22 against the image: matches the scene",
+      "mobileFocus": "42% 28%",
+      "outputSha256": "fc38c80a36ac515847f47da96e73295bf73866c31bd427171a0067161cf422a6",
+      "sha256": "cdf5f4a6217a76946502ff219c770309f1d3dac6b1e9d4158c1bfec8de6e702d",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "romance-minji-christmas.png",
+      "sourceNow": "Added to Game/romance-minji-christmas.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/romance-rio-christmas.webp",
+      "placement": "links/rio.js christmas (Port Island pier): { cg } from the shoebox through the shoes lines, cleared before the gift choice; Memories album (Romance & bonds group)",
+      "textCheck": "checked 2026-10-22 against the image: matches the scene; Rio now sits on a bench under the lamp to hand over the box (it was standing)",
+      "mobileFocus": "40% 25%",
+      "outputSha256": "8b1e171decd3ad010cc524816b5f07182718007484ccb47a6873d2a800008f9f",
+      "sha256": "6554d47473543fb94d152161029b31a542067f24d45cd7ebc0da6e5e3297ae98",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "romance-rio-christmas.png",
+      "sourceNow": "Added to Game/romance-rio-christmas.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/romance-saori-christmas.webp",
+      "placement": "links/saori.js christmas: { cg } from the kiss line through 'Merry Christmas', cleared before the last line; Memories album (Romance & bonds group)",
+      "textCheck": "checked 2026-10-22 against the image: matches the scene",
+      "mobileFocus": "47% 28%",
+      "outputSha256": "d914145953af23465074f7d5d1f21959c00a70491168eea34a7cb165e4134038",
+      "sha256": "c997c4b3fc79681ecb0810b71d393fabb240b72387b9363ed77e1d0ae729768e",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "romance-saori-christmas.png",
+      "sourceNow": "Added to Game/romance-saori-christmas.png",
+      "status": "integrated"
+    },
+    {
+      "batch": 31,
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "destination": "assets/femc/cg/romance-shinjiro-christmas.webp",
+      "placement": "links/shinjiro.js christmas: { cg } from taking his hand to the end; Memories album (Romance & bonds group)",
+      "textCheck": "checked 2026-10-22 against the image: matches the scene",
+      "mobileFocus": "50% 25%",
+      "outputSha256": "b541b65fb4da2cab7547d9a8c0cea441e4666c3ce3b2c9ca4b3abf969bf12c09",
+      "sha256": "f0d7159da176b300ac283a8fdd499c2c16b5debdde0187cceb2a0e86b1c88ed6",
+      "size": [
+        1672,
+        941
+      ],
+      "source": "romance-shinjiro-christmas.png",
+      "sourceNow": "Added to Game/romance-shinjiro-christmas.png",
+      "status": "integrated"
     }
   ],
   "batch1Validation": {
@@ -5889,6 +6059,7 @@
     "xmasJungwon": "romance-haechan-christmas and link-jungwon-r15 added (romance only); places v24, haechan v10, jungwon v11; femc-check-scenes --links haechan,jungwon OK, femc_haechan pass, femc_rank15 --quick pass, femc_gallery 94, targeted walks. solar-shinjiro-moment.png left in New Adds (no scene fits; see the report)",
     "shinjiroLounge": "link-shinjiro-lounge added to rank 9 (romance only); places v25, shinjiro v6; femc-check-scenes --links shinjiro OK, femc_gallery 94, femc_links --links shinjiro played 5,578 scene paths with every line reached, then stopped on its gate check (shinjiro afterMax before rank date 10), which fails the same way without this change; targeted walk both routes",
     "lateStory": "ending-true, story-wren-clock, story-wren-cap added; places v26, story-act5 v12, story-act6 v9, story-endings v10; femc-check-scenes OK, femc_march 44, femc_gallery 94, femc_haechan pass, targeted replays of the solstice (both branches), the last train and the true ending",
+    "christmasBatch": "link-shinjiro-r15 and nine romance-<id>-christmas CGs added; places v27 and nine link files bumped; femc-check-scenes OK, femc_gallery 94, femc_rank15 --quick, targeted walks of all ten",
     "textFollowUp": "Kat approved adjusting graduation and Akihiko rank 15 to the art; Yakushima unchanged (Koromaru conflict reported). Re-ran femc-check-scenes --links akihiko, femc_march (44), femc_rank15 --quick (pass) and the targeted CG walk",
     "browserErrors": 0
   }

@@ -507,6 +507,7 @@
     { n: "She'd brought food. Convenience store fried chicken in a bucket and a cake from the bakery by the station with a strawberry on top, and they ate it on the edge of the stage with their feet hanging over the dance floor and the lights falling up all around them, and the jukebox played all twelve of Judy's songs, twice, and somewhere in the second time round Judy stopped talking about wiring." },
     { s: 'judy', f: 'neutral', t: "Last Christmas I spent in the workshop. Alone. Editing. I didn't even notice it was Christmas till the guy downstairs knocked to give me a beer." },
     { ifRoute: 'romance', then: [
+      { cg: 'romance-judy-christmas' },
       { s: 'judy', f: 'neutral', t: "This one I noticed. This one I'm gonna notice for the rest of my life." },
       { choose: [
         { t: "(Lean your head on her shoulder.)", notes: 3, then: [
@@ -515,7 +516,8 @@
         { t: "Merry Christmas, Judy.", notes: 3, then: [
           { n: "Judy turned and kissed her, softly, tasting of strawberries and fried chicken, which she said afterward was the least romantic combination in any dimension, and did it again anyway." }
         ] }
-      ] }
+      ] },
+      { cg: null }
     ], else: [
       { s: 'judy', f: 'happy', t: "This one I noticed. Best choom Christmas. Gonna be hard to beat. I'll have to build something bigger next year in another universe." },
       { choose: [

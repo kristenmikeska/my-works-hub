@@ -808,6 +808,7 @@
         ] }
       ] }
     ] },
+    { cg: 'romance-kasumi-christmas' },
     { n: "They fell over, eventually, into the snow, both of them, sideways, laughing, and lay there on the white stones looking up at the snow coming out of the orange dark straight down at them, every flake turning once in the light from the offering hall before it landed. Kasumi's hand found Solar's and held it, red glove in bare fingers, between them in the snow." },
     { s: 'kasumi', f: 'neutral', t: "Senpai. Whatever happens. I'm glad it was this shrine. I'm glad the light was good here." },
     { n: "Solar didn't say anything. She lay in the snow with her hair tied up in pink, holding on, and watched it fall, and didn't count it, and for once didn't want to be anywhere else at all, which was its own kind of dangerous, and which she decided, tonight, to let be." }

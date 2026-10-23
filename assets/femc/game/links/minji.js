@@ -1226,6 +1226,7 @@
     { n: "Christmas Eve, and the river path was empty and blue with snow and the lamp at the bottom of it was flickering the way it always did, except Minji had wound a string of fairy lights around the post, which meant it now flickered in two different rhythms at once, like an argument." },
     { s: 'minji', f: 'flustered', t: "I know. I know. I wanted it to look nice and I made it worse. That's my whole year." },
     { s: 'minji', f: 'neutral', t: "I got you something. It's not wrapped. I don't wrap. It ruins the reveal." },
+    { cg: 'romance-minji-christmas' },
     { n: "A photograph. A real one, printed at the photo shop on the strip, glossy, the size of a postcard. Solar on the roof in November with a thermos lid in her hand, laughing at something just out of frame, in the orange light of the whole city." },
     { s: 'minji', f: 'neutral', t: "You can't buy a print here of anything from home. So I made you one from here. So you have one." },
     { choose: [

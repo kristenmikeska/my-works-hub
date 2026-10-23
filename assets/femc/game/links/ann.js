@@ -897,8 +897,10 @@
     { s: 'ann', f: 'sad', t: "Volume two. Oh my god. You made volume two. He has sunglasses. You drew him sunglasses." },
     { s: 'ann', f: 'happy', t: "He looks like he's in witness protection. I love him. He's the best thing I've ever been given, and my dad once gave me a handbag that cost more than a car." },
     { ifRoute: 'romance', then: [
+      { cg: 'romance-ann-christmas' },
       { n: "They walked the long way round the atrium with the album under Solar's arm and the notebook under Ann's, past the tree and the carolers and a man in a reindeer hat selling hot cocoa out of a thermos, and somewhere around the second lap Ann's hand found Solar's and stayed there, in the open, under all the lights, with everybody looking, and for once Ann wasn't the one being looked at, and neither was Solar. It was just the two of them, being looked at together, which was a different thing entirely." },
       { s: 'ann', f: 'blushing', t: "Solar. Can I have one picture? Of you. Not posed. Just you, now, on Christmas. For me. Not for anybody else." },
+      { cg: null },
       { choose: [
         { t: "(Kiss her first. Then she can have the picture.)", notes: 3, then: [
           { n: "Solar kissed her by the fountain with the tree's lights going up and coming down in the water beside them, and Ann's nose was cold and her mouth tasted like cocoa, and she laughed against Solar's mouth halfway through, surprised, delighted, and held on by the front of the sweater." },
