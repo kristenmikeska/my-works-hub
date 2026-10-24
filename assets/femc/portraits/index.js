@@ -589,5 +589,29 @@ window.FEMC_PORTRAITS = {
   "sad",
   "serious",
   "surprised"
+ ],
+ "chhinata": [
+  "neutral"
+ ],
+ "chkagami": [
+  "neutral"
+ ],
+ "chokuda": [
+  "neutral"
+ ],
+ "chyuu": [
+  "neutral"
+ ],
+ "hgmaster": [
+  "neutral"
+ ],
+ "kenta": [
+  "neutral"
+ ],
+ "mitsuko": [
+  "neutral"
+ ],
+ "okada": [
+  "neutral"
  ]
 };

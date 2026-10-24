@@ -16,6 +16,40 @@ window.FEMC_SHADOW_ART = {
   "small": false,
   "w": 440
  },
+ "arcana-magician": {
+  "h": 1002,
+  "poses": {
+   "frames": [
+    "arcana-magician-pose-0",
+    "arcana-magician-pose-1",
+    "arcana-magician-pose-2",
+    "arcana-magician-pose-3",
+    "arcana-magician-pose-4"
+   ],
+   "scale": 1.1361,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     4
+    ],
+    "down": [
+     4
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 1102
+ },
  "arcane-turret": {
   "h": 456,
   "small": true,

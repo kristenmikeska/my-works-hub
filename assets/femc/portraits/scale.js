@@ -81,5 +81,14 @@ window.FEMC_PORTRAIT_SCALE = {
   widowmaker: 1.18,
   wren: 0.95,
   yukari: 1.1,
-  yunjin: 1.0
+  yunjin: 1.0,
+  // the regulars (batch 37; their art is framed closer than the cast's)
+  chhinata: 0.8,
+  chkagami: 0.84,
+  chokuda: 0.84,
+  chyuu: 0.8,
+  hgmaster: 0.75,
+  kenta: 0.95,
+  mitsuko: 0.8,
+  okada: 0.95
 };

@@ -9,6 +9,7 @@ Checks:
     shown in order, the impact on the hit panel); the stylized fallback for someone without art;
   - every S.E.E.S. member's cut-in + strike sheet (Akihiko .. Shinjiro): the art loads and the whole cut-in plays;
   - Solar's Evoker sheet: in the summon cut-in and on the battlefield figure for repeat / Off summons;
+  - the Evoker prop for members without their own Evoker art (Junpei), and its SVG fallback;
   - settings: Always, 1st per battle, Off, Rush (short versions), reduced motion (a fade), battle speed scaling;
   - all art loads, no browser errors; screenshots mid-animation at 1000x486, 375x812 and 1440x900.
 Run: python3 tests/femc_theurgy.py [--shots DIR]
@@ -277,6 +278,34 @@ try:
     p.wait("document.querySelector('.bt-fighter img').src.includes('/poses/solar-pose-0.webp')", 10)
     errs = p.console(); check(not errs, errs)
     results['evoker'] = {'cutInBody': body, 'fieldFrames': ff}
+
+    # 4b. The Evoker prop (batch 37): someone without their own Evoker art summons with Kat's prop (evoker-prop.webp),
+    #     loaded on screen; a prop that fails to load falls back to the code-drawn SVG. Screenshots at two sizes.
+    evk = {}
+    for (w, h, mobile) in [(1440, 900, False), (375, 812, True)]:
+        p.top()
+        p.ws.call('Emulation.setDeviceMetricsOverride', {'width': w, 'height': h, 'deviceScaleFactor': 1, 'mobile': mobile})
+        fight(p, ['solar', 'junpei'], speed=0)
+        p.eval("window.__btFreezeAt = 'evoke-junpei'")
+        act(p, 'junpei', ['skill', 'fire'])
+        p.wait('FemcBattle.frozen', 30)
+        p.wait("(() => { const g = document.querySelector('.bt-evk-band .gun'); return g && g.complete && g.naturalWidth > 0; })()", 10)
+        time.sleep(1.0)  # the gun's slide-in (CSS) finishes; the battle itself waits on the freeze
+        p.eval("document.getAnimations().forEach(a => a.pause())")
+        g = p.eval("(() => { const g = document.querySelector('.bt-evk-band .gun'), r = g.getBoundingClientRect(), f = document.querySelector('.bt-evk-band .face').getBoundingClientRect(); return { src: g.getAttribute('src'), nw: g.naturalWidth, right: r.right, faceLeft: f.left, faceRight: f.right }; })()")
+        check('evoker-prop.webp' in g['src'] and g['nw'] == 800, g)
+        p.top()
+        name = f'{w}x{h}-evoker-prop.png'
+        (OUT / name).write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot', {'format': 'png'})['data']))
+        evk[f'{w}x{h}'] = g
+    p.frame()
+    p.eval("(() => { const g = document.querySelector('.bt-evk-band .gun'); g.src = 'assets/femc/battle/art/summon/missing-evoker.webp'; })()")
+    p.wait("document.querySelector('.bt-evk-band .gun').getAttribute('src').startsWith('data:image/svg+xml')", 10)
+    check(p.eval("FemcBattle.marks['evoker-svg'] || 0") >= 1, 'svg fallback mark')
+    errs = [e for e in p.console() if 'missing-evoker' not in str(e)]; check(not errs, errs)  # only the planted 404
+    p.eval('FemcBattle.unfreeze()')
+    p.ws.call('Emulation.clearDeviceMetricsOverride', {})
+    results['evokerProp'] = {'sizes': evk, 'fallback': 'svg'}
 
     # 5. Screenshots mid-animation: the strike (Haechan's sheet over his bg, Persona rising) and the closing impact,
     #    at three window sizes. The battle freezes on the mark; CSS animations are paused where they are.

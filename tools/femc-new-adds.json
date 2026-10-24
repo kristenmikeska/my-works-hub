@@ -6516,6 +6516,249 @@
       "outputSha256": "b947fc76eb985cfb02f962f24aa8f0ddae9535e65909a88b0680357b173524ef",
       "conversion": "tools/femc-fx.py all (SOURCES 'pierce'): fixed 3 x 2 grid of 512px cells, black turned into alpha (alpha = brightest channel, colour divided back out; soft glows kept), each frame's hot core aligned to the centre (ALIGN 'core': frames 4-6 sat ~100px left in the source) on a 1.3x padded canvas, 256px frames, one 768 x 512 WebP sheet (q90); source unchanged",
       "place": "fx.js sheet player (FEMC-ART-TODO 5F): every pierce hit (the basic Attacks of Solar, Yukari, Mitsuru, Aigis, Ken, Minji and Jungwon, Twin Shot, Arrow Rain and the rest, the Shadows' arrows) plays the six frames with the damage number on frame 3; the code thrust effect stays as the fallback"
+    },
+    {
+      "source": "pierce.png",
+      "sourceNow": "Added to Game/pierce.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8ef1ee0ecfb21b5e493ec5cf4a2b87162a4c9de5a2598936a37f8acf2ce6c29d",
+      "batch": 37,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/pierce.webp",
+      "outputSha256": "b947fc76eb985cfb02f962f24aa8f0ddae9535e65909a88b0680357b173524ef",
+      "conversion": "tools/femc-fx.py all (SOURCES 'pierce'): fixed 3 x 2 grid of 512px cells, black turned into alpha (alpha = brightest channel, colour divided back out; soft glows kept), each frame's hot core aligned to the centre (ALIGN 'core': frames 4-6 sat ~100px left in the source) on a 1.3x padded canvas, 256px frames, one 768 x 512 WebP sheet (q90); source unchanged",
+      "place": "fx.js sheet player (FEMC-ART-TODO 5F): every pierce hit (the basic Attacks of Solar, Yukari, Mitsuru, Aigis, Ken, Minji and Jungwon, Twin Shot, Arrow Rain and the rest, the Shadows' arrows) plays the six frames with the damage number on frame 3; the code thrust effect stays as the fallback"
+    },
+    {
+      "batch": 37,
+      "source": "kenta.png",
+      "sourceNow": "Added to Game/kenta.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "022db2e7d60e46f68c14dd5a0abc55dee91be21bbc91f6830281735e005c179b",
+      "character": "kenta",
+      "speakerId": "kenta",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/kenta/neutral.webp",
+      "conversion": "single neutral head-and-shoulders portrait, already transparent (no background cut needed); copied unchanged to Character Portraits/kenta/kenta-Neutral.png; tools/femc-portraits.py trims and places it on its canvas (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/kenta/neutral.webp": "ada0af6535e3960760fbcf57d999de2274576ae6aff90e5a7451e96cc2ff9aaf"
+      },
+      "outputSha256": "ada0af6535e3960760fbcf57d999de2274576ae6aff90e5a7451e96cc2ff9aaf",
+      "scale": 0.95,
+      "note": "Kenta (tutoring, the Sakamoto apartment); scale.js matched by eye-to-chin height against Fuuka, Mitsuru, Junpei and Ikutsuki"
+    },
+    {
+      "batch": 37,
+      "source": "okada.png",
+      "sourceNow": "Added to Game/okada.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "07306b275d3548ae71b92efc82f8d61dd8872b13c4a9256a97abae450938f2bb",
+      "character": "okada",
+      "speakerId": "okada",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/okada/neutral.webp",
+      "conversion": "single neutral head-and-shoulders portrait, already transparent (no background cut needed); copied unchanged to Character Portraits/okada/okada-Neutral.png; tools/femc-portraits.py trims and places it on its canvas (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/okada/neutral.webp": "f8d473dfd61067b640d61a3023755066aea86c50e784169f7db24ae922e6a5ab"
+      },
+      "outputSha256": "f8d473dfd61067b640d61a3023755066aea86c50e784169f7db24ae922e6a5ab",
+      "scale": 0.95,
+      "note": "Mrs. Okada (the flower stall); scale.js matched by eye-to-chin height against Fuuka, Mitsuru, Junpei and Ikutsuki"
+    },
+    {
+      "batch": 37,
+      "source": "mitsuko.png",
+      "sourceNow": "Added to Game/mitsuko.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "3c4c7d5fc7d9f3d36bbee3f335fa23ca2677adee194cd30b5d20d00076ea60e6",
+      "character": "mitsuko",
+      "speakerId": "mitsuko",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/mitsuko/neutral.webp",
+      "conversion": "single neutral head-and-shoulders portrait, already transparent (no background cut needed); copied unchanged to Character Portraits/mitsuko/mitsuko-Neutral.png; tools/femc-portraits.py trims and places it on its canvas (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/mitsuko/neutral.webp": "a6a4ca12b72111a2595434641c1769b7617e3c5dfde9c2ef6d84e05ce40e062d"
+      },
+      "outputSha256": "a6a4ca12b72111a2595434641c1769b7617e3c5dfde9c2ef6d84e05ce40e062d",
+      "scale": 0.8,
+      "note": "Mitsuko (Bookworms); scale.js matched by eye-to-chin height against Fuuka, Mitsuru, Junpei and Ikutsuki"
+    },
+    {
+      "batch": 37,
+      "source": "hgMaster.png",
+      "sourceNow": "Added to Game/hgMaster.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "8da5fa628e4cced9051558986449756822dbeb42fe9146903de420e67b011add",
+      "character": "hgmaster",
+      "speakerId": "hgMaster",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/hgmaster/neutral.webp",
+      "conversion": "single neutral head-and-shoulders portrait, already transparent (no background cut needed); copied unchanged to Character Portraits/hgMaster/hgMaster-Neutral.png; tools/femc-portraits.py trims and places it on its canvas (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/hgmaster/neutral.webp": "74c4e88f314d65aca1c3e3a78a05a92d649911e0bc26ac684b9c456fc9bb84f0"
+      },
+      "outputSha256": "74c4e88f314d65aca1c3e3a78a05a92d649911e0bc26ac684b9c456fc9bb84f0",
+      "scale": 0.75,
+      "note": "The Master (Hagakure); scale.js matched by eye-to-chin height against Fuuka, Mitsuru, Junpei and Ikutsuki"
+    },
+    {
+      "batch": 37,
+      "source": "chKagami.png",
+      "sourceNow": "Added to Game/chKagami.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "390f9fc5aef7312088fcbe7d1f79760d9affb9601ca3085805c364956395a4bb",
+      "character": "chkagami",
+      "speakerId": "chKagami",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/chkagami/neutral.webp",
+      "conversion": "single neutral head-and-shoulders portrait, already transparent (no background cut needed); copied unchanged to Character Portraits/chKagami/chKagami-Neutral.png; tools/femc-portraits.py trims and places it on its canvas (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/chkagami/neutral.webp": "68646166a36337f6517da87dfad34ea8033a1ff0802226708534cb6ed88d0a0d"
+      },
+      "outputSha256": "68646166a36337f6517da87dfad34ea8033a1ff0802226708534cb6ed88d0a0d",
+      "scale": 0.84,
+      "note": "Ms. Kagami (Chagall Caf\u00e9 manager); scale.js matched by eye-to-chin height against Fuuka, Mitsuru, Junpei and Ikutsuki"
+    },
+    {
+      "batch": 37,
+      "source": "chHinata.png",
+      "sourceNow": "Added to Game/chHinata.png",
+      "size": [
+        1187,
+        1325
+      ],
+      "sha256": "6e6a3ddcbecd8425c6b903b248353e2fc9aa6831f64e4a67cb3fd3346b5ebfd2",
+      "character": "chhinata",
+      "speakerId": "chHinata",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/chhinata/neutral.webp",
+      "conversion": "single neutral head-and-shoulders portrait, already transparent (no background cut needed); copied unchanged to Character Portraits/chHinata/chHinata-Neutral.png; tools/femc-portraits.py trims and places it on its canvas (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/chhinata/neutral.webp": "1a1efbd3465770b69f0a91a361033df2e1f4f346d7cfe378f75a61ab65ecc341"
+      },
+      "outputSha256": "1a1efbd3465770b69f0a91a361033df2e1f4f346d7cfe378f75a61ab65ecc341",
+      "scale": 0.8,
+      "note": "Hinata (Chagall regular); scale.js matched by eye-to-chin height against Fuuka, Mitsuru, Junpei and Ikutsuki"
+    },
+    {
+      "batch": 37,
+      "source": "chOkuda.png",
+      "sourceNow": "Added to Game/chOkuda.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "9269b1c68e328b46b109c6f201d38692445f5eb4259cc2e2e7e32e26f23bcb8e",
+      "character": "chokuda",
+      "speakerId": "chOkuda",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/chokuda/neutral.webp",
+      "conversion": "single neutral head-and-shoulders portrait, already transparent (no background cut needed); copied unchanged to Character Portraits/chOkuda/chOkuda-Neutral.png; tools/femc-portraits.py trims and places it on its canvas (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/chokuda/neutral.webp": "d949be0b6acd42966b9fbeff1d450ecdae319309807652a933e8fe41d7a5c826"
+      },
+      "outputSha256": "d949be0b6acd42966b9fbeff1d450ecdae319309807652a933e8fe41d7a5c826",
+      "scale": 0.84,
+      "note": "Mr. Okuda (Chagall regular); scale.js matched by eye-to-chin height against Fuuka, Mitsuru, Junpei and Ikutsuki"
+    },
+    {
+      "batch": 37,
+      "source": "chYuu.png",
+      "sourceNow": "Added to Game/chYuu.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "431c1ce1044f887db354ebbe0a10e35e2215a0384f530533abe7ecd6d3983624",
+      "character": "chyuu",
+      "speakerId": "chYuu",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/chyuu/neutral.webp",
+      "conversion": "single neutral head-and-shoulders portrait, already transparent (no background cut needed); copied unchanged to Character Portraits/chYuu/chYuu-Neutral.png; tools/femc-portraits.py trims and places it on its canvas (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/chyuu/neutral.webp": "d51d79059824480e96de498ae74423fa02d9a2fee3fe06be0746e30c7ae6c58e"
+      },
+      "outputSha256": "d51d79059824480e96de498ae74423fa02d9a2fee3fe06be0746e30c7ae6c58e",
+      "scale": 0.8,
+      "note": "Yuu (Chagall barista); scale.js matched by eye-to-chin height against Fuuka, Mitsuru, Junpei and Ikutsuki"
+    },
+    {
+      "batch": 37,
+      "source": "arcana-magician.jpeg",
+      "sourceNow": "Added to Game/arcana-magician.jpeg",
+      "size": [
+        2128,
+        2016
+      ],
+      "sha256": "d1b70246447c58c3be2840fe1a4c5ffb7fc045853dcba313b88720d164f12378",
+      "character": "Arcana Magician (the April full-moon boss)",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/shadows/arcana-magician.webp (and pose-0, the idle frame)",
+      "conversion": "tools/femc-shadow-poses.py QUADS: keyed with tools/femc-theurgy.py key() (Vision + un-mix from white), near-white pixels Vision fills (the glow inside the card ring) take the un-mix alpha only; whole picture trimmed, thin dark rim, at most 900 tall (WebP q90); as the idle frame it is scaled so its dark figure matches the sheet's Arcane Barrage figure (x0.477)",
+      "placement": "data.js enemies.magician img 'arcana-magician' (was the borrowed 'magical-magus'), h 272 (the card ring makes it wide); battle.js Shadow pose controller frame 0",
+      "outputs": {
+        "assets/femc/battle/art/shadows/arcana-magician.webp": "5ba6defd4433abdbc644935c1ef1267e97b696f6f502617a78dc97d55b0c5551",
+        "assets/femc/battle/art/shadows/arcana-magician-pose-0.webp": "0bad4b7691d95ebfe25e061cdeb57016768bba0e07e59cf4cc96295a3e86c6da"
+      }
+    },
+    {
+      "batch": 37,
+      "source": "arcana-magician-poses.jpeg",
+      "sourceNow": "Added to Game/arcana-magician-poses.jpeg",
+      "size": [
+        2128,
+        2016
+      ],
+      "sha256": "a4c3b5ec5b4b9a691b8ee46817de13404d86a747d4522e4a3d0051be1b261fcf",
+      "character": "Arcana Magician",
+      "intendedUse": "Full-moon boss pose sheet: 2x2 on grid paper, labelled Prepare, Arcane Barrage, Rift Step, Damage Reaction (plus a cropped thumbnail in the corner)",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/shadows/arcana-magician-pose-1..4.webp",
+      "conversion": "tools/femc-shadow-poses.py QUADS (new): grid paper turned white (pale pixels joined to the edges, plus warm bright paper shut between tails), labels and corner thumbnail blanked, keyed like the white boss sheets, each quadrant one figure, all five frames on one fixed canvas (body mass centred, lowest solid row on one baseline) with the Shadow rim, WebP q90",
+      "placement": "art/shadows/index.js 'arcana-magician'.poses: 0 idle (the separate picture), 1 Prepare (wind-up), 2 Rift Step (attack), 3 Arcane Barrage (cast), 4 Damage Reaction (hurt, also down and defeat: the sheet has no down pose); attack [1,2], cast [1,3]",
+      "outputs": {
+        "assets/femc/battle/art/shadows/arcana-magician-pose-1.webp": "ff3e64c1801940ef160183366867a7b3af543b0a37227c11c80293aec007b1b4",
+        "assets/femc/battle/art/shadows/arcana-magician-pose-2.webp": "81b45d24d30d02a104b4adafa0a02191c4d7bce8fbc64d5873c522b6688b82a9",
+        "assets/femc/battle/art/shadows/arcana-magician-pose-3.webp": "1acad4c40f50a30b41faf1231b40fb6eeebd03e1113d7bf3f96338da23c240bc",
+        "assets/femc/battle/art/shadows/arcana-magician-pose-4.webp": "f190bee927c31a3d548474b4003d3097e7fda31efa5473bbdfe96f07c5197321"
+      }
+    },
+    {
+      "batch": 37,
+      "source": "evoker-prop.jpeg",
+      "sourceNow": "Added to Game/evoker-prop.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "3b7dbd873ab64abe1b6730de3afa5b472ad51c261b19c35e075226341041b0bf",
+      "character": "Evoker prop (members without their own Evoker art)",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/summon/evoker-prop.webp",
+      "conversion": "tools/femc-evoker-prop.py (new): Vision cut-out of the painted checkerboard, the trigger-guard hole and the cylinder gap cleared, edge tightened and defringed, trimmed, 800 wide (WebP q90). Not flipped: grip left, muzzle right, the same way the code-drawn SVG is drawn and used (the gun sits left of the face, muzzle into it)",
+      "placement": "battle.js EVOKER_ART in the summon cut-in band (.bt-evk-band .gun); EVOKER_SVG stays as the fallback when the art fails to load",
+      "outputs": {
+        "assets/femc/battle/art/summon/evoker-prop.webp": "d6f380e3d6be7b128a549108e426ce77d6afa3ff07793f6a92ace39708d11ed2"
+      },
+      "outputSha256": "d6f380e3d6be7b128a549108e426ce77d6afa3ff07793f6a92ace39708d11ed2"
     }
   ],
   "batch1Validation": {
@@ -7039,6 +7282,22 @@
       "headless battle screenshots with every ailment and buff icon at 1440x900 and 375x812; Tartarus map at 1440x900"
     ],
     "html": "femc-battle.html battle.css v27, data v25, battle v40; femc-game.html tarot index v130, data v25, places v34, story-act3 v12, core v29; ART_V 23",
+    "browserErrors": 0
+  },
+  "batch37Validation": {
+    "date": "2026-10-23",
+    "scope": "Faces for eight regulars (4D), the April full-moon boss's own art and pose sheet (5B), the Evoker prop (4A)",
+    "sourcesInspected": "all 11 viewed before wiring; portraits on a contact sheet against the cast at their scale.js sizes; boss frames with the edge check (pink, purple, white); the Evoker cut on dark and light",
+    "sourcesIntegrated": 11,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold and pierce.png untouched",
+    "tests": [
+      "python3 tools/femc-check-scenes.py (OK)",
+      "python3 tests/femc_cast_consistency.py (4,578 scene paths, no browser errors)",
+      "python3 tests/femc_shadow_poses.py --enemies '' --ops magician --shots magician (attack, cast, hurt, down, defeat frames in the real April operation; desktop and phone)",
+      "python3 tests/femc_theurgy.py (new Evoker prop check: Junpei summons with the prop at 1440x900 and 375x812; a failed load falls back to the SVG)"
+    ],
+    "html": "femc-game.html portraits index v131, scale v131, battle data v26; femc-battle.html shadows index v11, data v26, battle v42; ART_V 25",
     "browserErrors": 0
   }
 }

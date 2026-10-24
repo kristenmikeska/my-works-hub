@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**135 items:** 2 quick fixes · 7 CGs · 3 places · 68 character pieces (50 of them regulars' faces in 4D) · 41 battle (30 of them skill effects in 5F) · 8 cards and icons · 6 screens. 12 are ⭐ (plus 13 ⭐ regulars inside 4D), 90 are optional.
+**125 items:** 2 quick fixes · 7 CGs · 3 places · 60 character pieces (42 of them regulars' faces in 4D) · 39 battle (30 of them skill effects in 5F) · 8 cards and icons · 6 screens. 11 are ⭐ (plus 8 ⭐ regulars inside 4D), 81 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -105,7 +105,7 @@ All done (`places.js today`: the festival hallway on 10/30–31, the Strip on ra
 
 ## 4. Characters (ChatGPT)
 ### 4A. Evoker shots ⭐
-Only Solar has one. Everyone else's summon shows their face beside a code-drawn gun.
+Only Solar has one. Everyone else's summon shows their face beside the Evoker prop (batch 37).
 - **Attach:** 🎮 `battle/art/summon/solar-evoker.webp` (style) and the character's portrait.
 ```
 Close-up of [NAME] raising an ornate silver Evoker to their temple, [EXPRESSION], hair lifting in a rush of blue wind, glowing glass shards around them, a huge full moon behind. Persona 3 Reload style, 16:9.
@@ -151,9 +151,9 @@ Edit this portrait. Keep the framing, crop, size, art style, hair and outfit exa
 - **Fills:** `portraits/<id>/<expression>.webp`.
 
 ### 4D. *(Optional)* Faces for the regulars
-Everyone below talks in scenes but has no portrait, so today they show as a name only. 47 speakers (7 to 67 lines each, counted 2026-10-23 across `assets/femc/game/**/*.js`), plus 3 teachers (their faces show in class questions once made). Looks marked *(invented)* aren't in the game text, so change anything you like; the rest come from the text or from P3 canon.
+Everyone below talks in scenes but has no portrait, so today they show as a name only. 39 speakers (7 to 35 lines each, counted 2026-10-23; eight more got faces in batch 37 across `assets/femc/game/**/*.js`), plus 3 teachers (their faces show in class questions once made). Looks marked *(invented)* aren't in the game text, so change anything you like; the rest come from the text or from P3 canon.
 
-**Do these first ⭐** (most lines): Kenta 67, Mrs. Okada 43, The Master 36, Ōta 35, Mr. Maeda 33, Mitsuko 32, Ms. Kagami 31, Mrs. Kubo 31, Tsuji 31, Chiba 31, Clerk 28, Bunkichi 28, Mr. Tanabe 28.
+**Do these first ⭐** (most lines): Ōta 35, Mr. Maeda 33, Mrs. Kubo 31, Tsuji 31, Chiba 31, Clerk 28, Bunkichi 28, Mr. Tanabe 28.
 
 **How to make them**
 - **One neutral each** is enough. For the ⭐ regulars, a second **happy** face is a nice extra: use the 4C edit prompt with the neutral you made and `[EXPRESSION]` = a warm, open smile. **Fills:** `portraits/<id>/happy.webp`.
@@ -168,67 +168,7 @@ A Persona 3 Reload style character portrait in exactly the same framing, crop, a
 A Persona 3 Reload style character sheet, 3 columns by 2 rows, six different people, each a separate head-and-shoulders portrait in exactly the same framing, crop, art style and size as the attached one, evenly spaced on a plain white background, no labels, neutral expressions. Top row, left to right: (1) [WHO], (2) [WHO], (3) [WHO]. Bottom row: (4) [WHO], (5) [WHO], (6) [WHO].
 ```
 
-**Tutoring (the Sakamoto apartment)**
-- [ ] ⭐ **Kenta** · `kenta` · 67 lines · *(invented)*
-  - **Who:** The thirteen-year-old Solar tutors in English and maths. Sharp, proud, hates being seen trying; his ears go red when he's caught out.
-  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
-  ```
-  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a thirteen-year-old Japanese boy, skinny and a little small for his age, messy black hair that sticks up at the crown, a gray hoodie over a middle-school white shirt, a pencil tucked behind one ear, arms folded, a stubborn set jaw and clever, unimpressed eyes, the tips of his ears faintly pink, neutral expression, transparent background.
-  ```
-  - **Fills:** `portraits/kenta/neutral.webp` (and optional `happy.webp`)
-
-**The mall (Paulownia Mall jobs)**
-- [ ] ⭐ **Mrs. Okada** · `okada` · 43 lines
-  - **Who:** Runs the flower stall by the fountain from her stool. Says little, misses nothing, quietly generous.
-  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
-  ```
-  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese woman in her sixties, short and sturdy, gray hair cut in a practical bob, a dark green work apron with a yellow cloth tape measure in the pocket, a pair of flower scissors hanging on a ribbon round her neck, a sprig of something blue tucked in the apron strap, arms folded, a dry, watchful face with a hint of a smile she's hiding, neutral expression, transparent background.
-  ```
-  - **Fills:** `portraits/okada/neutral.webp` (and optional `happy.webp`)
-- [ ] ⭐ **Ms. Kagami** · `chKagami` · 31 lines
-  - **Who:** Manager of Chagall Café. Exacting, dry, and fond of people in a way she'd never admit; one raised eyebrow is her highest praise.
-  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
-  ```
-  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese woman in her forties, slim, black hair pulled back in a neat low knot, thin reading glasses on a fine chain, a crisp white shirt with the sleeves rolled and a long black café apron, one eyebrow very slightly raised, a cool appraising look, neutral expression, transparent background.
-  ```
-  - **Fills:** `portraits/chkagami/neutral.webp` (and optional `happy.webp`)
-- [ ] **Mr. Okuda** · `chOkuda` · 14 lines
-  - **Who:** A Chagall regular who does the crossword at the window over black coffee. Courtly and quietly funny.
-  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
-  ```
-  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): an elderly Japanese gentleman, thin, silver hair neatly combed, round wire glasses he looks over the top of, a tweed jacket and a knitted vest over a pressed shirt, a fountain pen in his breast pocket, a very dry little smile, neutral expression, transparent background.
-  ```
-  - **Fills:** `portraits/chokuda/neutral.webp`
-- [ ] **Hinata** · `chHinata` · 14 lines
-  - **Who:** A young man who studies every afternoon in the café's corner behind a wall of workbooks.
-  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
-  ```
-  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese young man of nineteen, slight and tired-looking, black hair grown a little too long and pushed off his forehead, a plain navy coat over a gray sweater, a mechanical pencil in his hand, shadows under earnest, anxious eyes, neutral expression, transparent background.
-  ```
-  - **Fills:** `portraits/chhinata/neutral.webp`
-- [ ] **Yuu** · `chYuu` · 11 lines · *(invented)*
-  - **Who:** Chagall's weekday-afternoon barista, a university student who believes in lucky coffee and can fix anything with a paperclip.
-  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
-  ```
-  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese university student of about twenty, lanky, soft brown hair falling over one eye, a white shirt with a black Chagall apron, a pair of pliers poking out of the apron pocket, an easygoing, slightly dreamy grin, neutral expression, transparent background.
-  ```
-  - **Fills:** `portraits/chyuu/neutral.webp`
-
 **The Strip (Iwatodai Strip jobs)**
-- [ ] ⭐ **The Master (Hagakure)** · `hgMaster` · 36 lines
-  - **Who:** The owner and chef of Hagakure ramen. Wordless, exacting, proud of his broth; the kitchen goes still when he looks at you.
-  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
-  ```
-  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a short, square Japanese man in his sixties with thick forearms, a white towel knotted around his head, a white cook's jacket with the sleeves pushed up, arms crossed, a flat, unreadable stare across the steam, deep lines at the corners of his eyes, neutral expression, transparent background.
-  ```
-  - **Fills:** `portraits/hgmaster/neutral.webp` (and optional `happy.webp`)
-- [ ] ⭐ **Mitsuko** · `mitsuko` · 32 lines
-  - **Who:** Half of the elderly couple who run Bookworms. Brisk, warm, keeps the ledger and the tea going. *(P3/P3R canon NPC.)*
-  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style), plus a P3R screenshot of Mitsuko if you have one.
-  ```
-  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): Mitsuko from Persona 3, the elderly lady of the Bookworms used bookstore, as she looks in P3 Reload: small and round-shouldered, gray hair in a neat bun, glasses she looks over the top of, a cardigan over a plain blouse and an apron, a gentle, knowing half-smile, neutral expression, transparent background.
-  ```
-  - **Fills:** `portraits/mitsuko/neutral.webp` (and optional `happy.webp`)
 - [ ] ⭐ **Bunkichi** · `bunkichi` · 28 lines
   - **Who:** Mitsuko's husband at Bookworms. Gentle, dreamy, laughs easily, polishes his glasses when he's moved. *(P3/P3R canon NPC.)*
   - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style), plus a P3R screenshot of Bunkichi if you have one.
@@ -561,12 +501,6 @@ Create a NEW 16:9 combo-attack cut-in matching the FIRST attached image's art st
 - **Fills:** `battle/art/theurgy/bond-<name>.webp` (romance: `bond-<name>-love.webp`).
 
 ### 5B. Bosses
-- [ ] ⭐ **The April full-moon boss** has no art of its own: it borrows a regular Shadow's (Magical Magus) and doesn't move. Make its art, then its pose sheet.
-  - Art (Gemini). **Attach:** 🎮 `battle/art/shadows/priestess-shadow.webp` (style).
-    ```
-    Persona 3 Reload style boss Shadow design, full body, transparent background, in the style of the attached boss: the Arcana Magician, a tall thin black-bodied figure in a ragged magician's coat, the blue Persona 3 Shadow mask, long clawed hands, a ring of floating cards and blades around it.
-    ```
-  - **Fills:** `battle/art/shadows/arcana-magician.webp`, then `arcana-magician-pose-0..5.webp`.
 - [ ] **A memory-floor boss that borrows a regular Shadow's art** (`memory_car`, now Rampage Drive). Claude will describe it when you're ready (it's a story fight). **Attach:** 🎮 `battle/art/shadows/memory-party.webp` (style). **Fills:** `battle/art/shadows/memory-sleeper-car.webp`.
 - [ ] *(Optional)* pose sheets for the Reaper and the Hanged Man's effigies (the effigies borrow Corrupt Tower). **Attach:** 🎮 `battle/art/shadows/reaper.webp` / `corrupt-tower.webp`. **Fills:** `reaper-pose-0..5.webp`; the effigies first need their own art (`hanging-effigy.webp`).
 - **Pose sheet prompt.** **Attach:** that boss's art from 🎮 `battle/art/shadows/`.
@@ -588,10 +522,6 @@ A 3-panel horizontal sheet on a plain white background showing the same characte
 - [ ] Haenim · Sunna · Mazu · Unveiled. **Fills:** `solar-<form>-strikesheet.png` → `battle/art/theurgy/solar-<form>-strike-0..2.webp`.
 
 ### 5E. Battle objects *(optional)*
-- [ ] **The Evoker itself** (Gemini). The gun in every summon but Solar's is a code drawing. **Attach:** 🎮 `battle/art/summon/solar-evoker.webp` (to match the gun). **Fills:** `battle/art/summon/evoker-prop.webp`.
-  ```
-  A single ornate silver Evoker pistol from Persona 3, side view, pointing right, engraved silver barrel, black grip, a thin red stripe, no trigger guard clutter. Clean game-asset render, transparent background, no hands.
-  ```
 - [ ] **Bigger renders for the 33 small Shadows** (upscaled from tiny sources, so they look soft). The list is every `small: true` in 🎮 `battle/art/shadows/index.js`. **Attach:** that Shadow's current art. **Fills:** the same file.
   ```
   Redraw the attached Persona 3 Shadow at high resolution: same design, pose, colors and mask, clean sharp lines, transparent background.
@@ -825,10 +755,10 @@ Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 
 ### Characters
 - **Portraits:** cut with `tools/femc-portraits.py` (sheets: `femc-sheet.py` / `femc-lift.swift`); it rewrites `portraits/index.js`. Check `portraits/scale.js` and every face in a scene.
 - **Full bodies:** `tools/femc-profiles.py` writes `profile/<id>.webp` and `profile/index.js`; S.E.E.S. and searcher art goes in `profile/sees/` or `profile/searchers/` with `img` and `profile: true` on the `compendium.js` entry. Fuuka, Sunoo, Junkyu, Wren, Danielle, Jaemin and Chenle have no entry yet: add one (`unlock: 'met:<id>'`, `secret: true`, a note from their introduction, no new prose). Bump `FEMC_ASSET_VERSION` and run `python3 tests/femc_compendium.py --ids <ids>`.
-- **Evoker shots:** `battle.js evoker()` shows a face plus the code-drawn `EVOKER_SVG` for everyone but Solar. Give a member `evoker: { shot: 'assets/femc/battle/art/summon/<mid>-evoker.webp' }` in `data.js` and render it in the `.bt-evk-shot` slot like Solar's (small change). Evoker sheets already work: `('evoker', '<file>', '<mid>-evoke')` in `tools/femc-theurgy.py BUILD`, then `evoker.frames`. The Evoker prop replaces `EVOKER_SVG`.
+- **Evoker shots:** `battle.js evoker()` shows a face plus Kat's Evoker prop (`EVOKER_ART`, `art/summon/evoker-prop.webp` from `tools/femc-evoker-prop.py`; the code-drawn `EVOKER_SVG` is its fallback) for everyone but Solar. Give a member `evoker: { shot: 'assets/femc/battle/art/summon/<mid>-evoker.webp' }` in `data.js` and render it in the `.bt-evk-shot` slot like Solar's (small change). Evoker sheets already work: `('evoker', '<file>', '<mid>-evoke')` in `tools/femc-theurgy.py BUILD`, then `evoker.frames`.
 
 ### Battle art
-- **New Shadow or boss art:** `tools/femc-shadows.py` cuts it into `battle/art/shadows/<slug>.webp` and `index.js`; point the enemy's `img` at the slug (the April boss is `magician`, the memory boss `memory_car`). Wren's phases: swap `wren_call` / `wren_last`'s `pic` for an `img`. Then pose sheets as below.
+- **New Shadow or boss art:** `tools/femc-shadows.py` cuts it into `battle/art/shadows/<slug>.webp` and `index.js`; point the enemy's `img` at the slug (the memory boss is `memory_car`). A boss that comes as its own picture plus a labelled 2×2 sheet (the April boss, batch 37) goes in `QUADS` in `tools/femc-shadow-poses.py`, which writes both the static art and the frames. Wren's phases: swap `wren_call` / `wren_last`'s `pic` for an `img`. Then pose sheets as below.
 - **Gear and item art:** weapons already read a gear's `art` (equip lists, shops, Shuffle Time); armor and accessories need the same field checked in each list. Items and materials are `icons.js` SVGs: add an `img` hook in `FemcIcons.of` before wiring art. Status icons and map rooms are art since batch 36 (`tools/femc-icons.py` → `battle/art/icons/`, read by `battle.js stIco` / `ROOM_ART`).
 
 ### Cards, screens and keepsakes

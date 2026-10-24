@@ -1,4 +1,4 @@
-"""Extract the approved 3x2 New Adds Shadow sheets without modifying sources.
+"""Extract the approved 3x2 New Adds Shadow sheets (and the 2x2 QUADS sheets, below) without modifying sources.
 Uses fixed 512px cells; removes disconnected border fragments from neighboring cells.
 Keeps source scale and aligns each cell's main silhouette at bottom center on a 640px canvas.
 Sheets in SPREAD have attacks that cross the 512px cell lines: every piece of art goes to the nearest of the six figures,
@@ -207,23 +207,28 @@ def white_frames(src,rim=False):
   aw=np.clip((1-minc-0.02)/0.98,0,1);unmixed=np.clip((rgb-(1-aw[...,None]))/np.maximum(aw,1e-3)[...,None],0,1)
   t=np.clip((lum-GLOW[src.name])/0.08,0,1)
   a[...,3]=a[...,3]*(1-t)+aw*t;a[...,:3]=a[...,:3]*(1-t[...,None])+unmixed*t[...,None]
- masks=grid_figures(a);H,W=a.shape[:2]
+ masks=grid_figures(a)
+ return place(TH,[a[...,3]*ndimage.binary_dilation(mk,iterations=2) for mk in masks],[a]*len(masks),rim)
+
+def place(TH,alphas,arrays,rim=False):
+ """Put each figure (its alpha over its RGBA array) on one fixed canvas: body mass centred, lowest solid row on one
+ baseline. Returns the frames and the idle (first) figure's height on the canvas."""
  info=[]
- for mk in masks:
-  al=a[...,3]*ndimage.binary_dilation(mk,iterations=2)
+ for al,a in zip(alphas,arrays):
+  W=a.shape[1]
   ys,xs=np.nonzero(al>0.02)
   solid=al>0.8
   lab,_=ndimage.label(solid);sizes=np.bincount(lab.ravel());sizes[0]=0;body=lab==sizes.argmax()
   by=np.nonzero(body.any(1))[0].max()+1  # baseline: the body's lowest solid row (glows and sparks below it don't lift it)
   w=al*body;cx=float((w.sum(0)*np.arange(W)).sum()/w.sum())
-  info.append((al,xs.min(),xs.max()+1,ys.min(),ys.max()+1,cx,by))
+  info.append((al,xs.min(),xs.max()+1,ys.min(),ys.max()+1,cx,by,a))
  pad=6+(4 if rim else 0)
- left=max(cx-x0 for _,x0,x1,y0,y1,cx,by in info);right=max(x1-cx for _,x0,x1,y0,y1,cx,by in info)
- up=max(by-y0 for _,x0,x1,y0,y1,cx,by in info);down=max(max(0,y1-by) for _,x0,x1,y0,y1,cx,by in info)
+ left=max(cx-x0 for _,x0,x1,y0,y1,cx,by,_a in info);right=max(x1-cx for _,x0,x1,y0,y1,cx,by,_a in info)
+ up=max(by-y0 for _,x0,x1,y0,y1,cx,by,_a in info);down=max(max(0,y1-by) for _,x0,x1,y0,y1,cx,by,_a in info)
  cw=int(np.ceil(left+right))+2*pad;ch=int(np.ceil(up+down))+2*pad
  cw+=cw%2;ch+=ch%2
  out=[]
- for al,x0,x1,y0,y1,cx,by in info:
+ for al,x0,x1,y0,y1,cx,by,a in info:
   b=a.copy();b[...,3]=al
   b=TH.AC.bleed(b)
   piece=b[y0:y1,x0:x1]
@@ -252,6 +257,75 @@ def build_white(only=()):
   frames,idle_h=white_frames(find(name))
   for i,f in enumerate(frames):f.save(ROOT/f'assets/femc/battle/art/poses/{mid}-pose-{i}.webp','WEBP',quality=90,method=5)
   print(name,'->',mid,frames[0].size,'idle',idle_h)
+
+# Labelled 2x2 sheets with a separate idle picture (batch 37, 2026-10-23): Kat's April boss came as one full figure
+# (arcana-magician.jpeg, white) and a 2x2 sheet on grid paper (Prepare, Arcane Barrage / Rift Step, Damage Reaction)
+# with printed labels and a thumbnail in a corner. The paper is turned white (pale grey pixels joined to the edges),
+# the labels and thumbnail are blanked (`blank` boxes), every piece of art goes to its quadrant (row split `row`,
+# column split per row `cols`), and the idle picture is scaled so its dark figure is as tall as the `match` cell's.
+# `white`: near-white pixels Vision fills (the glow inside the card ring, paper between tails) take the un-mix alpha
+# only. The idle picture is also written whole as the static <slug>.webp. Frames: idle, then `cells` in sheet
+# reading order (frame numbers), so 0 idle, 1 wind-up, 2 attack, 3 cast, 4 hurt (also down and defeat).
+QUADS={'arcana-magician-poses.jpeg':{'slug':'arcana-magician','idle':'arcana-magician.jpeg','cells':[1,3,2,4],'row':1000,
+ 'cols':(880,1130),'blank':[(60,80,285,175),(860,80,1220,175),(50,1110,295,1200),(1040,1110,1385,1200),(1890,1750,2128,2016)],
+ 'match':1,'white':0.93,'states':{'attack':[1,2],'cast':[1,3],'hurt':[4],'down':[4],'defeat':[4]}}}
+
+def key_white(TH,src,white):
+ a=TH.key(str(src),holes=True)
+ rgb=np.asarray(Image.open(src).convert('RGB'),np.float32)/255;minc=rgb.min(2)
+ aw=np.clip((1-minc-0.02)/0.98,0,1);unmixed=np.clip((rgb-(1-aw[...,None]))/np.maximum(aw,1e-3)[...,None],0,1)
+ t=np.clip((minc-white)/0.04,0,1)
+ a[...,3]=a[...,3]*(1-t)+aw*t;a[...,:3]=a[...,:3]*(1-t[...,None])+unmixed*t[...,None]
+ return a
+
+def dark_height(a):
+ """Height of the biggest dark solid piece (the figure's body, not a pale glow around it)."""
+ lab,_=ndimage.label(ndimage.binary_closing((a[...,:3].min(2)<0.45)&(a[...,3]>0.8),iterations=2));sizes=np.bincount(lab.ravel());sizes[0]=0
+ rows=np.nonzero((lab==sizes.argmax()).any(1))[0];return rows.max()+1-rows.min()
+
+def quad_frames(name,q):
+ import tempfile
+ TH=theurgy_tool();src=find(name)
+ rgb=np.asarray(Image.open(src).convert('RGB'),np.uint8).copy();f=rgb.astype(np.float32)/255
+ pale=(f.min(2)>0.78)&(f.max(2)-f.min(2)<0.1)
+ lab,_=ndimage.label(pale);edge=np.unique(np.concatenate((lab[0],lab[-1],lab[:,0],lab[:,-1])));edge=edge[edge>0]
+ rgb[np.isin(lab,edge)]=255
+ # Paper shut in between tails and ribbons: warm (red over blue) and bright on average; the scrolls are greyer and darker.
+ ids=np.arange(1,lab.max()+1);mr=ndimage.mean(f[...,0],lab,ids);warm=ndimage.mean(f[...,0]-f[...,2],lab,ids)
+ shut=ids[(mr>0.925)&(warm>0.015)];rgb[np.isin(lab,shut)]=255
+ for x0,y0,x1,y1 in q['blank']:rgb[y0:y1,x0:x1]=255
+ tmp=Path(tempfile.mkdtemp())/(Path(name).stem+'.png');Image.fromarray(rgb).save(tmp)
+ a=key_white(TH,tmp,q['white']);H,W=a.shape[:2]
+ lab,n=ndimage.label(ndimage.binary_dilation(a[...,3]>0.06,iterations=2));lab=lab*(a[...,3]>0.06)
+ quad=np.zeros(n+1,int)-1
+ for k,(cy,cx) in enumerate(ndimage.center_of_mass(np.ones((H,W)),lab,range(1,n+1)),1):
+  r=int(cy>=q['row']);quad[k]=r*2+int(cx>=q['cols'][r])
+ cells=[a[...,3]*ndimage.binary_dilation((quad[lab]==c)&(lab>0),iterations=2) for c in range(4)]
+ idle=key_white(TH,find(q['idle']),q['white'])
+ ref=a.copy();ref[...,3]=cells[q['match']]
+ k=dark_height(ref)/dark_height(idle)
+ big=TH.to_img(idle);static=big
+ small=big.resize((round(big.width*k),round(big.height*k)),Image.LANCZOS);ia=np.asarray(small,np.float32)/255
+ alphas=[ia[...,3]]+[None]*4;arrays=[ia]+[None]*4
+ for c,fr in enumerate(q['cells']):alphas[fr]=cells[c];arrays[fr]=a
+ frames,idle_h=place(TH,alphas,arrays,rim=True)
+ return frames,idle_h,static,k
+
+def build_quads(only=()):
+ p=ROOT/'assets/femc/battle/art/shadows/index.js';s=p.read_text();index=json.loads(s[s.index('{'):s.rindex('}')+1])
+ for name,q in QUADS.items():
+  if only and name not in only:continue
+  slug=q['slug'];frames,idle_h,static,k=quad_frames(name,q)
+  for i,f in enumerate(frames):f.save(ROOT/f'assets/femc/battle/art/shadows/{slug}-pose-{i}.webp','WEBP',quality=90,method=5)
+  # The static picture (Compendium-style uses, analysis): trimmed, rimmed like every Shadow, at most 900 tall.
+  TH=theurgy_tool();st=np.asarray(static,np.float32)/255;bb=static.getchannel('A').point(lambda v:255 if v>8 else 0).getbbox()
+  st=st[bb[1]:bb[3],bb[0]:bb[2]];r=min(1,900/st.shape[0])
+  im=TH.to_img(TH.AC.rim(np.asarray(TH.to_img(st).resize((round(st.shape[1]*r),round(st.shape[0]*r)),Image.LANCZOS),np.float32)/255,1.6))
+  im.save(ROOT/f'assets/femc/battle/art/shadows/{slug}.webp','WEBP',quality=90,method=5)
+  w,h=frames[0].size
+  index[slug]={'w':w,'h':h,'small':False,'poses':{'scale':round(h/idle_h,4),'frames':[f'{slug}-pose-{i}' for i in range(len(frames))],'states':q['states']}}
+  print(name,'->',slug,(w,h),'idle',idle_h,'idle art x',round(k,3),'static',im.size)
+ p.write_text(s[:s.index('window.FEMC_SHADOW_ART')]+'window.FEMC_SHADOW_ART = '+json.dumps(index,sort_keys=True,indent=1)+';\n')
 
 def main():
  p=ROOT/'assets/femc/battle/art/shadows/index.js';s=p.read_text();index=json.loads(s[s.index('{'):s.rindex('}')+1])
@@ -282,9 +356,11 @@ if __name__=='__main__':
  if sys.argv[1:2]==['check']:
   out=sys.argv[2];files=[]
   for name in sys.argv[3:]:
-   slug=BOSSES.get(name);files+=[str(ROOT/f'assets/femc/battle/art/shadows/{slug}-pose-{i}.webp') if slug else str(ROOT/f'assets/femc/battle/art/poses/{name.split("-")[0]}-pose-{i}.webp') for i in range(6)]
+   slug=BOSSES.get(name) or QUADS.get(name,{}).get('slug');n=len(QUADS[name]['cells'])+1 if name in QUADS else 6
+   files+=[str(ROOT/f'assets/femc/battle/art/shadows/{slug}-pose-{i}.webp') if slug else str(ROOT/f'assets/femc/battle/art/poses/{name.split("-")[0]}-pose-{i}.webp') for i in range(n)]
   theurgy_tool().check(out,files)
  else:
   only=set(sys.argv[1:]);white=set(BOSSES)|{f'{m}-posesheet.png' for m in FIGHTERS}
-  if not only or only-white:main()
+  if not only or only-white-set(QUADS):main()
   if not only or only&white:build_white(only&white)
+  if not only or only&set(QUADS):build_quads(only&set(QUADS))

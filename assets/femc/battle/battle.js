@@ -72,7 +72,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 24;
+  const ART_V = 25;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -116,7 +116,10 @@
   const brawlFrames = mid => (CHIBI[mid] ? Array.from({ length: CHIBI[mid] }, (_, i) => `assets/femc/battle/art/chibi/${mid}-${i}.webp?v=${ART_V}`)
     : FIGHTER_POSES[mid] ? BRAWL.map(i => posedFrames(mid)[i]) : null);
   const AWAKEN = ['solar-01-resolve', 'solar-02-focus', 'solar-03-awakening', 'solar-04-manifestation', 'solar-05-command', 'solar-06-summoned'];
-  /* A stylized Evoker for members without their own Evoker art (muzzle on the left, at the temple). */
+  /* The Evoker for members without their own Evoker art: Kat's prop (batch 37, tools/femc-evoker-prop.py), drawn like the SVG
+     below (grip left, barrel to the right, pointing into the face beside it). The SVG stays as the fallback if the art fails. */
+  const EVOKER_ART = `${SUMMON_DIR}evoker-prop.webp?v=${ART_V}`;
+  /* A stylized Evoker (the fallback). */
   const EVOKER_SVG = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 110"><defs><linearGradient id="m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f9ff"/><stop offset=".35" stop-color="#c9d0dc"/><stop offset=".7" stop-color="#8a93a6"/><stop offset="1" stop-color="#4b5263"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a404e"/><stop offset="1" stop-color="#14171f"/></linearGradient></defs><path d="M214 30H70l-10 5v22h34l6 7h20l7-7h87z" fill="url(#m)" stroke="#12151c" stroke-width="3" stroke-linejoin="round"/><path d="M214 30v27" stroke="#12151c" stroke-width="5"/><path d="M78 36h126" stroke="#fff" stroke-opacity=".85" stroke-width="2"/><path d="M84 44h120M84 50h120" stroke="#5a6274" stroke-width="1.2"/><path d="M62 57h32l-16 48H38z" fill="url(#g)" stroke="#0b0d12" stroke-width="3" stroke-linejoin="round"/><path d="M50 70h30M46 80h30M42 90h30" stroke="#5a6274" stroke-width="1.5"/><path d="M98 57q-2 18 16 18h6" fill="none" stroke="#12151c" stroke-width="4"/><path d="M104 60l4 10" stroke="#12151c" stroke-width="3"/><rect x="150" y="40" width="40" height="4" rx="1" fill="#ff4f9e"/></svg>`);
   const tacticOf = u => (u.mid === 'solar' ? 'direct' : (save.tactics[u.mid] || 'direct'));
   /* The navigator: Fuuka, or Mitsuru before Fuuka joins (handoff request.navigator). Mitsuru has no 'happy' face. */
@@ -2516,7 +2519,7 @@
   }
   async function evoker(u, skillName, fp = null) {
     const m = member(u.mid), per = D.personas[u.personaId] || D.personas[m.persona], reduced = !FX || FX.reduced() || perf(), solar = u.mid === 'solar';
-    await stills((solar ? [SUMMON_DIR + 'solar-evoker.webp', per.art] : [per.art, pimg(u.mid, m.faces.idle)]).concat(evokeFrames(u.mid) || []), 900);
+    await stills((solar ? [SUMMON_DIR + 'solar-evoker.webp', per.art] : [per.art, pimg(u.mid, m.faces.idle), EVOKER_ART]).concat(evokeFrames(u.mid) || []), 900);
     const wrap = document.createElement('div');
     wrap.className = `bt-evoke${solar ? ' solar' : ''}`;
     wrap.style.setProperty('--spd', speed());
@@ -2525,7 +2528,7 @@
     const useS = sclip && await sclip.ready(250);
     const shot = solar
       ? `<div class="bt-evk-shot">${useS ? '' : `<img src="${SUMMON_DIR}solar-evoker.webp" alt="">`}</div>`
-      : `<div class="bt-evk-band" style="--c:${m.color}">${fimg(u.mid, m.faces.idle, '', 'face')}<img class="gun" src="${EVOKER_SVG}" alt=""></div>`;
+      : `<div class="bt-evk-band" style="--c:${m.color}">${fimg(u.mid, m.faces.idle, '', 'face')}<img class="gun" src="${EVOKER_ART}" alt=""></div>`;
     // With an Evoker sheet: after the glass breaks, the full-body shot stands beside the Persona, then the Evoker lowers.
     const body = !fp && evokeFrames(u.mid) && !reduced && evokeFrames(u.mid).every(f => { const im = still(f).im; return im.complete && im.naturalWidth; }) ? evokeFrames(u.mid) : null;
     wrap.innerHTML = `<div class="bt-evk-light"></div><img class="per" src="${per.art}" alt="">${body ? `<div class="bt-evk-body"><img data-i="1" src="${body[1]}" alt=""><img data-i="2" src="${body[2]}" alt=""></div>` : ''}<b class="bt-evk-name"><span class="pn">${esc(per.name.toUpperCase())}</span><small>${esc(skillName)}</small></b>${shot}`;
@@ -2533,6 +2536,9 @@
     // With the fighter on the field the cut-in starts at the figure's right edge, so the figure stays in view.
     const sideX = fp ? Math.max(0, Math.round(fp.getBoundingClientRect().right - BT.root.getBoundingClientRect().left)) : 0;
     if (sideX) { wrap.classList.add('side'); wrap.style.left = `${sideX}px`; mark('evoke-side'); }
+    // The prop art falls back to the code-drawn Evoker if it can't load.
+    const gun = wrap.querySelector('.bt-evk-band .gun');
+    if (gun) { gun.onerror = () => { gun.onerror = null; gun.src = EVOKER_SVG; mark('evoker-svg'); }; if (gun.complete && !gun.naturalWidth) gun.onerror(); }
     BT.cut.appendChild(wrap);
     BT.root.classList.add('evoking');
     sfx('click');
