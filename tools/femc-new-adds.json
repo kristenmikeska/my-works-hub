@@ -6759,6 +6759,69 @@
         "assets/femc/battle/art/summon/evoker-prop.webp": "d6f380e3d6be7b128a549108e426ce77d6afa3ff07793f6a92ace39708d11ed2"
       },
       "outputSha256": "d6f380e3d6be7b128a549108e426ce77d6afa3ff07793f6a92ace39708d11ed2"
+    },
+    {
+      "batch": 39,
+      "source": "bunkichi.png",
+      "sourceNow": "Added to Game/bunkichi.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "69692d103ea53bfc469edba9774cb7123ca7a39b9c5fc85bcd2c000489dfe533",
+      "character": "bunkichi",
+      "speakerId": "bunkichi",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/bunkichi/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/bunkichi/bunkichi-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/bunkichi/neutral.webp": "3c69b8ee8a7199998bc8956efa39108bbff610133e46d29a45d68cafad0a4d06"
+      },
+      "outputSha256": "3c69b8ee8a7199998bc8956efa39108bbff610133e46d29a45d68cafad0a4d06",
+      "scale": 0.82,
+      "note": "Bunkichi (Bookworms)"
+    },
+    {
+      "batch": 39,
+      "source": "hgDaisuke.png",
+      "sourceNow": "Added to Game/hgDaisuke.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "bd30f2e4f2d95d89354ac6d563b9f2ea8dff945d5f6a07ceeddc3e53c137030a",
+      "character": "hgdaisuke",
+      "speakerId": "hgDaisuke",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/hgdaisuke/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/hgDaisuke/hgDaisuke-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/hgdaisuke/neutral.webp": "4ee07616d17dd4e4d9869f3a07e2563a533ba14e158cfa551e18e5f3a61fbeb4"
+      },
+      "outputSha256": "4ee07616d17dd4e4d9869f3a07e2563a533ba14e158cfa551e18e5f3a61fbeb4",
+      "scale": 0.85,
+      "note": "Daisuke (Hagakure cook); drawn grinning with his ladle, used as his neutral"
+    },
+    {
+      "batch": 39,
+      "source": "hgGotou.png",
+      "sourceNow": "Added to Game/hgGotou.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "2238b6296c4c4a3b254f20cb3e1f912e73169b87691c4585a7f8846107757506",
+      "character": "hggotou",
+      "speakerId": "hgGotou",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/hggotou/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/hgGotou/hgGotou-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/hggotou/neutral.webp": "752b843f0d2689bf4cde844ad3ae740ab7ec4d9e7cefb9ab89dc90614c643f43"
+      },
+      "outputSha256": "752b843f0d2689bf4cde844ad3ae740ab7ec4d9e7cefb9ab89dc90614c643f43",
+      "scale": 0.78,
+      "note": "Mr. Gotou (Hagakure regular)"
     }
   ],
   "batch1Validation": {
@@ -7298,6 +7361,23 @@
       "python3 tests/femc_theurgy.py (new Evoker prop check: Junpei summons with the prop at 1440x900 and 375x812; a failed load falls back to the SVG)"
     ],
     "html": "femc-game.html portraits index v131, scale v131, battle data v26; femc-battle.html shadows index v11, data v26, battle v42; ART_V 25",
+    "browserErrors": 0
+  },
+  "batch39Validation": {
+    "date": "2026-10-23",
+    "scope": "Three more regulars' faces (4D); the April boss drawn a little smaller on phones; the Evoker prop aimed at the temple",
+    "sourcesInspected": "all 3 viewed; sizes compared with batch 37 regulars and the cast; each face seen in a scene at 1000x486 and 375x812",
+    "sourcesIntegrated": 3,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold and the effect sheets untouched",
+    "engine": "data.js enemy phoneK (battle.js --pk, battle.css phone width) for the Magician (0.82); battle.js evoker aims the muzzle at the band face's temple (0.56 face-widths left of its centre), kept inside the cut-in, the face shifted to match (mark evoker-temple)",
+    "tests": [
+      "python3 tools/femc-check-scenes.py (OK)",
+      "headless scene check: bunkichi, hgDaisuke, hgGotou faces load at 1000x486 and 375x812, no errors",
+      "python3 tests/femc_shadow_poses.py --enemies '' --ops magician --shots magician --finale-path '' (phone: the ring clears the right edge)",
+      "python3 tests/femc_theurgy.py (Evoker prop on screen, inside the cut-in, at the temple, at 1440x900 and 375x812; SVG fallback)"
+    ],
+    "html": "femc-game.html portraits index v132, scale v132, battle data v27; femc-battle.html battle.css v29, data v27, battle v43",
     "browserErrors": 0
   }
 }

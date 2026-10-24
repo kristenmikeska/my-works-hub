@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**125 items:** 2 quick fixes · 7 CGs · 3 places · 60 character pieces (42 of them regulars' faces in 4D) · 39 battle (30 of them skill effects in 5F) · 8 cards and icons · 6 screens. 11 are ⭐ (plus 8 ⭐ regulars inside 4D), 81 are optional.
+**122 items:** 2 quick fixes · 7 CGs · 3 places · 57 character pieces (39 of them regulars' faces in 4D) · 39 battle (30 of them skill effects in 5F) · 8 cards and icons · 6 screens. 11 are ⭐ (plus 7 ⭐ regulars inside 4D), 78 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -151,9 +151,9 @@ Edit this portrait. Keep the framing, crop, size, art style, hair and outfit exa
 - **Fills:** `portraits/<id>/<expression>.webp`.
 
 ### 4D. *(Optional)* Faces for the regulars
-Everyone below talks in scenes but has no portrait, so today they show as a name only. 39 speakers (7 to 35 lines each, counted 2026-10-23; eight more got faces in batch 37 across `assets/femc/game/**/*.js`), plus 3 teachers (their faces show in class questions once made). Looks marked *(invented)* aren't in the game text, so change anything you like; the rest come from the text or from P3 canon.
+Everyone below talks in scenes but has no portrait, so today they show as a name only. 36 speakers (7 to 35 lines each, counted 2026-10-23 across `assets/femc/game/**/*.js`; eleven more got faces in batches 37 and 39), plus 3 teachers (their faces show in class questions once made). Looks marked *(invented)* aren't in the game text, so change anything you like; the rest come from the text or from P3 canon.
 
-**Do these first ⭐** (most lines): Ōta 35, Mr. Maeda 33, Mrs. Kubo 31, Tsuji 31, Chiba 31, Clerk 28, Bunkichi 28, Mr. Tanabe 28.
+**Do these first ⭐** (most lines): Ōta 35, Mr. Maeda 33, Mrs. Kubo 31, Tsuji 31, Chiba 31, Clerk 28, Mr. Tanabe 28.
 
 **How to make them**
 - **One neutral each** is enough. For the ⭐ regulars, a second **happy** face is a nice extra: use the 4C edit prompt with the neutral you made and `[EXPRESSION]` = a warm, open smile. **Fills:** `portraits/<id>/happy.webp`.
@@ -169,27 +169,6 @@ A Persona 3 Reload style character sheet, 3 columns by 2 rows, six different peo
 ```
 
 **The Strip (Iwatodai Strip jobs)**
-- [ ] ⭐ **Bunkichi** · `bunkichi` · 28 lines
-  - **Who:** Mitsuko's husband at Bookworms. Gentle, dreamy, laughs easily, polishes his glasses when he's moved. *(P3/P3R canon NPC.)*
-  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style), plus a P3R screenshot of Bunkichi if you have one.
-  ```
-  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): Bunkichi from Persona 3, the elderly gentleman of the Bookworms used bookstore, as he looks in P3 Reload: a kind old man, balding with white hair at the sides, round glasses, a soft knitted cardigan over a collared shirt, hands clasped behind his back, a pleased, grandfatherly smile, neutral expression, transparent background.
-  ```
-  - **Fills:** `portraits/bunkichi/neutral.webp` (and optional `happy.webp`)
-- [ ] **Daisuke (Hagakure)** · `hgDaisuke` · 15 lines
-  - **Who:** The Master's young cook. Tall, loud, eager, and a little scared of his boss.
-  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
-  ```
-  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a tall Japanese man in his twenties, short spiky black hair under a navy bandana, a white cook's jacket with the sleeves shoved up over forearms dotted with small kitchen burns, a ladle in one hand, a big open grin, neutral expression, transparent background.
-  ```
-  - **Fills:** `portraits/hgdaisuke/neutral.webp`
-- [ ] **Mr. Gotou (Hagakure)** · `hgGotou` · 13 lines
-  - **Who:** A Hagakure regular, a site foreman who keeps taking on the giant-bowl challenge.
-  - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).
-  ```
-  A Persona 3 Reload style character portrait in exactly the same framing, crop, art style and size as the attached one (head and shoulders, same angle and lighting): a Japanese man of forty-five built like a refrigerator, buzz-cut hair, a thick neck, a navy work jacket with a reflective stripe over a gray T-shirt, a towel round his neck, a solemn, determined face, neutral expression, transparent background.
-  ```
-  - **Fills:** `portraits/hggotou/neutral.webp`
 - [ ] **Mrs. Ueda (Yeobo's Cafe)** · `ueda` · 9 lines · *(invented)*
   - **Who:** A young mother who comes into Yeobo's with her toddler asleep in the stroller.
   - **Attach:** 🎨 `Character Portraits/Fuuka/Fuuka-Neutral.png` (style).

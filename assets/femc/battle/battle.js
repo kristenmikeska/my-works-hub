@@ -2103,6 +2103,7 @@
     } else if (art) {
       const h = (d.h || 220) * (art.poses?.scale || 1);
       el.style.setProperty('--w', `${Math.round(h * art.w / art.h)}px`);
+      if (d.phoneK) el.style.setProperty('--pk', d.phoneK); // a wide boss drawn a little smaller on phones (battle.css)
       if (art.small) el.classList.add('soft');
       if (d.gimmick === 'train') BT.field.style.setProperty('--ar', (art.w / art.h).toFixed(4));
       if (art.poses) {
@@ -2541,6 +2542,20 @@
     if (gun) { gun.onerror = () => { gun.onerror = null; gun.src = EVOKER_SVG; mark('evoker-svg'); }; if (gun.complete && !gun.naturalWidth) gun.onerror(); }
     BT.cut.appendChild(wrap);
     BT.root.classList.add('evoking');
+    // The Evoker at the temple (batch 37b): the band's face is drawn far bigger than the band (it shows the eyes), so the
+    // temple is about 0.56 face-widths left of the face's centre. The muzzle goes there, but never so far left that the gun
+    // leaves the cut-in (it starts at the fighter's edge with a 48px fade); then the face moves right to keep the muzzle at
+    // its temple. The SVG fallback is the same element, so it sits in the same spot.
+    if (gun) {
+      const band = wrap.querySelector('.bt-evk-band'), fc = band && band.querySelector('.fc');
+      if (fc && band.offsetWidth) {
+        const bw = band.offsetWidth, fw = fc.offsetWidth * focusOf(u.mid, m.faces.idle).s / 100, gw = gun.offsetWidth || 130;
+        const muzzle = Math.max(bw / 2 - fw * 0.56, gw + (wrap.classList.contains('side') ? 56 : 16));
+        band.style.setProperty('--zx', `${Math.round(muzzle + fw * 0.56)}px`);
+        gun.style.right = `${Math.round(bw - muzzle)}px`;
+        mark('evoker-temple');
+      }
+    }
     sfx('click');
     mark('evoke');
     mark('evoke-' + u.mid);

@@ -292,8 +292,10 @@ try:
         p.wait("(() => { const g = document.querySelector('.bt-evk-band .gun'); return g && g.complete && g.naturalWidth > 0; })()", 10)
         time.sleep(1.0)  # the gun's slide-in (CSS) finishes; the battle itself waits on the freeze
         p.eval("document.getAnimations().forEach(a => a.pause())")
-        g = p.eval("(() => { const g = document.querySelector('.bt-evk-band .gun'), r = g.getBoundingClientRect(), f = document.querySelector('.bt-evk-band .face').getBoundingClientRect(); return { src: g.getAttribute('src'), nw: g.naturalWidth, right: r.right, faceLeft: f.left, faceRight: f.right }; })()")
+        g = p.eval("(() => { const g = document.querySelector('.bt-evk-band .gun'), r = g.getBoundingClientRect(), f = document.querySelector('.bt-evk-band .face').getBoundingClientRect(); const w = document.querySelector('.bt-evoke').getBoundingClientRect(); return { src: g.getAttribute('src'), nw: g.naturalWidth, left: r.left, right: r.right, cutLeft: w.left, vw: innerWidth, aimed: FemcBattle.marks['evoker-temple'] || 0 }; })()")
         check('evoker-prop.webp' in g['src'] and g['nw'] == 800, g)
+        # Whole gun on screen and inside the cut-in, past its 48px fade-in edge, aimed by evoker-temple.
+        check(g['aimed'] >= 1 and g['left'] >= g['cutLeft'] + 40 and g['right'] <= g['vw'], g)
         p.top()
         name = f'{w}x{h}-evoker-prop.png'
         (OUT / name).write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot', {'format': 'png'})['data']))

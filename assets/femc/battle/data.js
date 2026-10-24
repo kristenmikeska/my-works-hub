@@ -800,7 +800,7 @@ window.FEMC_BATTLE_DATA = (() => {
       note: 'The one that hung back. It flinches from light.' },
     magician: Object.assign(S(7, { hp: 3.2, ma: 1.1 }), { name: 'Arcana Magician', arcana: 'Magician', boss: true, story: true,
       aff: { light: 'weak', dark: 'null', fire: 'resist' }, skills: ['lunge', 'e_agi', 'e_maragi', 'e_tarunda'], ai: 'random', exp: 520, yen: 1200,
-      img: 'arcana-magician', h: 272, idle: 'float', svg: 'priestess', alloutResist: 0.7, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'],
+      img: 'arcana-magician', h: 272, phoneK: 0.82, idle: 'float', svg: 'priestess', alloutResist: 0.7, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'],
       note: 'The first full moon. It climbed the dorm wall and it is waiting on the roof.' }),
     memory_car: Object.assign(S(44, { hp: 6.4 }), { name: 'The Sleeper Car', arcana: 'Moon', boss: true, story: true,
       aff: { light: 'weak', dark: 'null', ice: 'resist', strike: 'resist' }, skills: ['e_mabufula', 'e_mazionga', 'still'], ai: 'carriage', exp: 0, yen: 0,

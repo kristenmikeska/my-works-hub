@@ -688,7 +688,7 @@ html.femc:not(.femc-reader) body.bt-page::after { display: none; }
   .bt-floorlabel b { white-space: nowrap; }
   .bt-tool { padding: 6px 10px; font-size: 12px; }
   .bt-field { left: 0; right: 0; top: 60px; bottom: 372px; height: auto; padding: 0 6px 18px; gap: 2px; }
-  .bt-enemy .sh { width: min(calc(var(--w) * .8), calc((100vw - 24px) / var(--n, 3))); }
+  .bt-enemy .sh { width: min(calc(var(--w) * .8 * var(--pk, 1)), calc((100vw - 24px) / var(--n, 3))); }
   .bt-plate { min-width: 0; bottom: calc(100% + 28px); padding: 6px 10px 8px; }
   .bt-plate b { font-size: 15px; }
   .bt-affs { gap: 1px; }

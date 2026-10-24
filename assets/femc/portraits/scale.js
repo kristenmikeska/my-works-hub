@@ -83,10 +83,13 @@ window.FEMC_PORTRAIT_SCALE = {
   yukari: 1.1,
   yunjin: 1.0,
   // the regulars (batch 37; their art is framed closer than the cast's)
+  bunkichi: 0.82,
   chhinata: 0.8,
   chkagami: 0.84,
   chokuda: 0.84,
   chyuu: 0.8,
+  hgdaisuke: 0.85,
+  hggotou: 0.78,
   hgmaster: 0.75,
   kenta: 0.95,
   mitsuko: 0.8,

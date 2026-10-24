@@ -613,5 +613,14 @@ window.FEMC_PORTRAITS = {
  ],
  "okada": [
   "neutral"
+ ],
+ "bunkichi": [
+  "neutral"
+ ],
+ "hgdaisuke": [
+  "neutral"
+ ],
+ "hggotou": [
+  "neutral"
  ]
 };
