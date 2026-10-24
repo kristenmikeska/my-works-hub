@@ -8260,6 +8260,23 @@
       "textCheck": "checked 2026-10-24 against the image: Akihiko (in uniform) added via a short run-in with a candy apple, ifCrush branch for his crush track; Yukari's outfit unstated; fireworks come after the CG clears; otherwise matches",
       "mobileFocus": "48% 22%",
       "outputSha256": "bbd79909015a0d496886ea1d1e46d0efbc68cdbf1ccad7202f031a37cedd51e8"
+    },
+    {
+      "batch": 42,
+      "source": "holiday-new-year.png",
+      "sourceNow": "Added to Game/holiday-new-year.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "354d9725071794923316c00eb45c9449cc08639597ce30cf9b5e3f00f48ddead",
+      "status": "integrated",
+      "destination": "assets/femc/cg/holiday-new-year.webp",
+      "conversion": "WebP quality 90 (Pillow), original dimensions, no cropping or retouching; source unchanged",
+      "placement": "data/story-act6.js a6-new-year (1/1, Naganaki Shrine): { cg } after the crowd-up-the-steps line through the coin and offering-box lines, cleared before the omikuji beat; Memories → Story",
+      "textCheck": "checked 2026-10-24 against the image: added a short narration line naming Minji (filming), Hyein (rental bag) and Koromaru (rope collar), a Kiriko-at-the-bell line (ifMet kiriko; else an unnamed girl in a fox mask), and a Haechan-at-her-shoulder line; Solar's outfit unstated; otherwise matches",
+      "mobileFocus": "36% 45%",
+      "outputSha256": "8974c1725d4e997fc6f74bed1780d610e385f29f31ce307053530d09b5d2aa0c"
     }
   ],
   "batch1Validation": {

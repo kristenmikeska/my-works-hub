@@ -88,6 +88,7 @@ Other docs, if you ever want detail:
 - ✅ Ten more rank 10 CGs: Cherry, Hanni, Hyein, Jaehyun, Jihoon, Koromaru, Mark, Minji and Yunjin (in Memories too)
 - ✅ Sixteen more rank 10 CGs (Ann, Chenle, Danielle, Elizabeth, Haru, Jaemin, Judy, Junkyu, Kasumi, Kiriko, Kuromi, Mercy, My Melody, Rio, Saori, Sunoo) and both crush CGs, the umbrella and the railing (all in Memories too)
 - ✅ The summer festival CG, on Ann's festival day (in Memories too)
+- ✅ The New Year's CG at the shrine, on New Year's Day (in Memories too)
 - ✅ Your Dark Hour art for the two July full moons, Elizabeth's Velvet Room tarot card, the culture festival hallway (on its two days), the Strip in the rain (on rainy days), and your status and Tartarus map icons in battle
 - ✅ Your chibi art in the All-Out Attack cloud: all 12 fighters brawl through their chibi frames (Ken keeps his silhouette)
 - ✅ Your skill-effect sheets play in battle: 30 of them, every hit, heal, buff, ailment and burst, plus the crit and weakness bursts, the Theurgy impact, the All-Out cloud and the Shuffle Time flip. Only Dark is still drawn in code, and a new sheet works as soon as it's dropped in New Adds and the tool runs. Reduce flashes and reduced motion apply.

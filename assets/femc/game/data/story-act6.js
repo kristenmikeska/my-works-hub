@@ -283,8 +283,17 @@
     { bg: 'naganaki-shrine-newyear' },
     { music: 'joy' },
     { n: "The whole impossible household went to Naganaki Shrine on New Year's Day, which meant a crowd of twenty-odd people in coats coming up the shrine steps at once, half of them in borrowed yukata over their sweaters because Hyein had found a rental shop, and the old women selling amazake by the gate stopping to stare." },
+    { cg: 'holiday-new-year' },
+    { n: "Minji filmed the whole climb and narrated it under her breath like a nature documentary. Hyein swung the rental shop's paper bag like a trophy. Koromaru wore a red-and-white rope collar somebody had tied on him at the gate and was very proud of it." },
+    { ifMet: 'kiriko', then: [
+      { n: "Kiriko, who had shrine duties nobody had given her, kept one hand on the bell rope and rang it for anyone who hesitated." }
+    ], else: [
+      { n: "A girl in a fox mask kept one hand on the bell rope and rang it for anyone who hesitated, as if it were her job. It might have been." }
+    ] },
     { n: "Everyone threw coins. Everyone clapped twice. Jihoon threw a five-hundred-yen coin and announced it was an investment. Cherry said the gods could see through him. Junpei made a wish out loud by accident and then had to throw another coin to cancel it." },
     { n: "Solar stood in front of the offering box with her eyes closed and her hands together and found, like the first time, that she didn't know what to wish for. Not because there was nothing. Because there was too much, in too many directions, and every one of them had a face." },
+    { n: "Haechan stood at her shoulder with his scarf up to his nose and didn't say anything, which for him was nearly a prayer." },
+    { cg: null },
     { ifMet: 'kiriko', then: [
       { n: "Kiriko found her by the omikuji stand. She'd been sweeping the shrine since dawn because she couldn't help it, and she had a fortune folded small between two fingers, already drawn, and she held it out." },
       { s: 'kiriko', f: 'neutral', t: "Yours. I drew it this morning. Don't freak out." },
