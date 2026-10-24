@@ -6513,22 +6513,7 @@
       "batch": 37,
       "status": "integrated",
       "destination": "assets/femc/battle/art/fx/pierce.webp",
-      "outputSha256": "b947fc76eb985cfb02f962f24aa8f0ddae9535e65909a88b0680357b173524ef",
-      "conversion": "tools/femc-fx.py all (SOURCES 'pierce'): fixed 3 x 2 grid of 512px cells, black turned into alpha (alpha = brightest channel, colour divided back out; soft glows kept), each frame's hot core aligned to the centre (ALIGN 'core': frames 4-6 sat ~100px left in the source) on a 1.3x padded canvas, 256px frames, one 768 x 512 WebP sheet (q90); source unchanged",
-      "place": "fx.js sheet player (FEMC-ART-TODO 5F): every pierce hit (the basic Attacks of Solar, Yukari, Mitsuru, Aigis, Ken, Minji and Jungwon, Twin Shot, Arrow Rain and the rest, the Shadows' arrows) plays the six frames with the damage number on frame 3; the code thrust effect stays as the fallback"
-    },
-    {
-      "source": "pierce.png",
-      "sourceNow": "Added to Game/pierce.png",
-      "size": [
-        1536,
-        1024
-      ],
-      "sha256": "8ef1ee0ecfb21b5e493ec5cf4a2b87162a4c9de5a2598936a37f8acf2ce6c29d",
-      "batch": 37,
-      "status": "integrated",
-      "destination": "assets/femc/battle/art/fx/pierce.webp",
-      "outputSha256": "b947fc76eb985cfb02f962f24aa8f0ddae9535e65909a88b0680357b173524ef",
+      "outputSha256": "3430e8d37fda0cff3fd2a1951a41fa16a91ff09da3ece6d6cbd8e40a1ac1871d",
       "conversion": "tools/femc-fx.py all (SOURCES 'pierce'): fixed 3 x 2 grid of 512px cells, black turned into alpha (alpha = brightest channel, colour divided back out; soft glows kept), each frame's hot core aligned to the centre (ALIGN 'core': frames 4-6 sat ~100px left in the source) on a 1.3x padded canvas, 256px frames, one 768 x 512 WebP sheet (q90); source unchanged",
       "place": "fx.js sheet player (FEMC-ART-TODO 5F): every pierce hit (the basic Attacks of Solar, Yukari, Mitsuru, Aigis, Ken, Minji and Jungwon, Twin Shot, Arrow Rain and the rest, the Shadows' arrows) plays the six frames with the damage number on frame 3; the code thrust effect stays as the fallback"
     },
@@ -6822,6 +6807,623 @@
       "outputSha256": "752b843f0d2689bf4cde844ad3ae740ab7ec4d9e7cefb9ab89dc90614c643f43",
       "scale": 0.78,
       "note": "Mr. Gotou (Hagakure regular)"
+    },
+    {
+      "source": "slash.jpeg",
+      "sourceNow": "Added to Game/slash.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "38c44c41faf843a0a95a60f3391aa60b9b837c6906c4521a120cc744a3625779",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/slash.webp",
+      "outputSha256": "31d39a0d135e8a6f4d7c18ce286abb0f7a267139b01e284ca127c5aff6845a53",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'slash' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "strike.jpeg",
+      "sourceNow": "Added to Game/strike.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "b46d8804fdd4dd921af20dc8abf313a2142cd54f904acb58b776e9bfa344b0fb",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/strike.webp",
+      "outputSha256": "bee4d070bd5886622a47704000970b7356d6e58d50c6562445d0f67baaf498db",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'strike' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "ice.jpeg",
+      "sourceNow": "Added to Game/ice.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "ec12993b0ac625c7f1ee71437516ae7b1a29b0d7bb6d50332dbf33bea758b847",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/ice.webp",
+      "outputSha256": "d5183726c7baf682eaeda798d7c55b1c2c2ec2889911dd0d5fa7fe66978e61fb",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'ice' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "elec.jpeg",
+      "sourceNow": "Added to Game/elec.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "90d4dda5706882bb6a6b894fd3a704f3b3f13605974830bd73e2f04fc4e426b5",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/elec.webp",
+      "outputSha256": "651bfaf9643e5b1a3ec237d956c384c8d31ec2c27e0805070d1f75069761c87a",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'elec' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')",
+      "pick": "v1: stays inside its cells; v2 frame 3 branches hit the sides and frame 4 drops a bolt in from the cell top"
+    },
+    {
+      "source": "fire-v2.jpeg",
+      "sourceNow": "Added to Game/fire-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "a7f1d31214485579d885b0af5efd2d7ab28992b53ff37b9ee583589e7562e0b7",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/fire.webp",
+      "outputSha256": "e10e84358c77fd1899dd8b7e17f7c10a7141fa381653d21fe1088dd58e34d693",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'fire' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')",
+      "pick": "v2: v1 has white boxes drawn round every frame"
+    },
+    {
+      "source": "wind-v2.jpeg",
+      "sourceNow": "Added to Game/wind-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "621dfae98faa42d0ee0adb7085bbe33fed6ab1a98978bdbc3db9913fec9c3c09",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/wind.webp",
+      "outputSha256": "9e466977b8f568587cd9843a80175df28d89f3a48bfea93174bdbbe99dacfd3b",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'wind' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')",
+      "pick": "v2: v1 has white lines along its border; fuller peak swirl"
+    },
+    {
+      "source": "light-v2.jpeg",
+      "sourceNow": "Added to Game/light-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "9e296f3aa15eee711993cab36b9562c0283aa7276a2c79ed757d17cf708f92cc",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/light.webp",
+      "outputSha256": "cf82f9011e14470f0b1ddb7281066ec30eafc28655d721d82cb3453a87c5ec76",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'light' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')",
+      "pick": "v2: v1 has white boxes round every frame"
+    },
+    {
+      "source": "almighty.jpeg",
+      "sourceNow": "Added to Game/almighty.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "5cc2be1ddd91f4483f1635c3e4d1c27320901fbfe8851efc9469155481ac20c3",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/almighty.webp",
+      "outputSha256": "5e401d5015311fe6a84af89cc14240736570f13e3bdc335fa5b86230685a9ea9",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'almighty' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')",
+      "pick": "v1: crisper hard-edged rings like Pierce; v2 peaks as a soft bloom"
+    },
+    {
+      "source": "critical.jpeg",
+      "sourceNow": "Added to Game/critical.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "c083d5316bcb97efdb72c814a1ad944f70c0e104f26b830374034257400c5511",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/crit.webp",
+      "outputSha256": "75d31cc875e990eafd535d56a4bd6a7f94dd62f8de290406433822d47ebbec7f",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 384px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'crit' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')",
+      "pick": "v1: clean black; v2 leaves dim maroon smudges in frames 5-6"
+    },
+    {
+      "source": "weakness.jpeg",
+      "sourceNow": "Added to Game/weakness.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "a5252ab721aad654b2c984c035b17252658bb31d10d2ed5519e414d6fa025717",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/weak.webp",
+      "outputSha256": "142b8051e74dd260cef325784f4205552c179dae9128f83defa6a0b527c50291",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 384px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'weak' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "shatter.jpeg",
+      "sourceNow": "Added to Game/shatter.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "fc8086b3287fb59b4d44eb6b3a407e55f18fd1e164d2a1fb1031964cebb16cb0",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/shatter.webp",
+      "outputSha256": "f909d38f4de6fb65c0d1e446f8cb63a1781299887340c7255633a89a96b6083e",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'shatter' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "heal-v2.jpeg",
+      "sourceNow": "Added to Game/heal-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "54b741a691ef6a77dae4488fee3f82e430649ec0186c1b96404a448e5fb515f9",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/heal.webp",
+      "outputSha256": "5dd131fb0a5db2fb33b2041d0fb3ad058582292974e6797b0c94772ef32b653f",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'heal' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')",
+      "pick": "v2: the gold-and-mint ring the prompt asked for, clean black (v1 has grid seams)"
+    },
+    {
+      "source": "buff.jpeg",
+      "sourceNow": "Added to Game/buff.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "1648a24927f93d4d833876c2b5c4702820c1e82ac1a6b4b959599af2fa1bdf0d",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/buff.webp",
+      "outputSha256": "f5c11739b682e1af44ece7837a6a484ee41818042798f639ddb0512d42b1cd41",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; made greyscale for the stat tint; source unchanged",
+      "place": "fx.js sheet player: the 'buff' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "debuff.jpeg",
+      "sourceNow": "Added to Game/debuff.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "0fdad3b988123acd7cae09f6d7d944acdbb7f4857dfaeb60c9272dd81fe51280",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/debuff.webp",
+      "outputSha256": "6a2057e21efa25f36f08aa66ea7cb46498313b2dca6adabe9a293a2ce3ac3bce",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'debuff' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "revive.jpeg",
+      "sourceNow": "Added to Game/revive.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "ee77c0b485cb992f7eb28a12013b9c8ee70cd4d614ed29d4e6e3043e2e8e3da1",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/revive.webp",
+      "outputSha256": "91572dd568949904167002f0ed1242579f3d2dadfb8beb60a2f11903b562c3f8",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'revive' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "cure.jpeg",
+      "sourceNow": "Added to Game/cure.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "b95b5e0c47071f983b4d75e27611cd264a1cdc2467b7e6024d1d2d179253ca92",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/cure.webp",
+      "outputSha256": "dee7ce244283dba2848df417cac9cb47ed3840a5866a9f321a72e0c3a7471330",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'cure' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "charm.jpeg",
+      "sourceNow": "Added to Game/charm.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "313408e36c36bdca334b45a56b1a6a8ae78f7c520ea14c86e446d7960f88638c",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/charm.webp",
+      "outputSha256": "4ba71b7a61aae03221adf9b985a54dbde9cf0181461980ccb17faf3a6920c004",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'charm' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "fear.jpeg",
+      "sourceNow": "Added to Game/fear.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "17fd98e95a1677df30864e381b95eea1bd4cf5c0476ea11396a971ae2eed857e",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/fear.webp",
+      "outputSha256": "fccc7dd21adeab24efe584113139a2e8a65d9f13b1d156ab8ea88515ba8533f3",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'fear' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "poison.jpeg",
+      "sourceNow": "Added to Game/poison.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "1677b9ff53cc4de941f6f2340d344687678a03ba5eda6b2f78da39d80f3baaf9",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/poison.webp",
+      "outputSha256": "69b4ca923a4a56b7275733ed50976ad7c09d7a060f50106859dd5e0d2774277d",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'poison' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')",
+      "pick": "v1: v2 has white boxes round every frame"
+    },
+    {
+      "source": "distress.jpeg",
+      "sourceNow": "Added to Game/distress.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "03866e157fb82afea3be3248b30253559a0873a27ff900e272a38a8f37ba4a6c",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/distress.webp",
+      "outputSha256": "d5d6067f4825778c310dd41b25d049b6c3e9849d3d38b358254cedc6f9d0fe42",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'distress' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "freeze-v2.jpeg",
+      "sourceNow": "Added to Game/freeze-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "5c786898349969537eec07478ce61296fa6c6c6217f159442e65c901517e7585",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/freeze.webp",
+      "outputSha256": "f262be161067e6b53c54ebeabb111b16ed9a475f4733f8818c5419369983fd20",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'freeze' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')",
+      "pick": "v2: compact frost ring in frames 1-2 (v1 spikes hit the top), sparkle on the peak"
+    },
+    {
+      "source": "shock.jpeg",
+      "sourceNow": "Added to Game/shock.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "b39b9fcb5d5f8fe16a077d5ecd438f6b98a7d07ade772fe17876e8f3d419a537",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/shock.webp",
+      "outputSha256": "4181727c186cdd7ff52faba86e14c57792e91a90915a7b5d3975ec193c4e16f9",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'shock' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "bind-v2.jpeg",
+      "sourceNow": "Added to Game/bind-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "2f73ede63257cbdc3ef2a0645d977587b89166f1d6f882a9db44d1e1a018c3b5",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/bind.webp",
+      "outputSha256": "c421b22d1b7733f6452ebf1820dec8591078301015d45b1a047d403f981dcde8",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'bind' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')",
+      "pick": "v2: compact rope X (v1 ropes run to the cell corners)"
+    },
+    {
+      "source": "disorient-v2.jpeg",
+      "sourceNow": "Added to Game/disorient-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "67226e7fb8ec8c2e89b0fc4f61e0fef069f4c9b147441adf7907f280e5b80fce",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/disorient.webp",
+      "outputSha256": "bc1c85928ff33c9b104c2df8bec51738b529c88c11e2c7e84263f05b28fde840",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'disorient' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')",
+      "pick": "v2: v1 has a white bar along the bottom edge"
+    },
+    {
+      "source": "hama.jpeg",
+      "sourceNow": "Added to Game/hama.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "9657c1a27e772aa27ee37af66fbb189edde4f201f15a7488596a9d9b48f9e15f",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/hama.webp",
+      "outputSha256": "b527947b83b4d0c20ca9c28b83b907eee2ef400e414a04d85726bb7f4b07cdca",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'hama' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "mudo-v2.jpeg",
+      "sourceNow": "Added to Game/mudo-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "3728dde2ddd34740fa8e7f2110df80b3019c8b2c864ae594c3ddc42a14db3cea",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/mudo.webp",
+      "outputSha256": "0335e6c2cbbf421838285fa068b6e98df569c7b517aa486983fc8cd754624c84",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'mudo' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')",
+      "pick": "v2: the sigil stays in its cell (v1 hangs from the top edge)"
+    },
+    {
+      "source": "theurgy-burst.jpeg",
+      "sourceNow": "Added to Game/theurgy-burst.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "ee4cfeb40a42d61eacbcb63827440b82ef8434685193069119372d16e55fc439",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/theurgy-burst.webp",
+      "outputSha256": "7ec2e56b1679bfa1cf05bcb239854cd9f8e69c51dde9f345e98c7dfcf5d68ece",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 384px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'theurgy-burst' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "alloutcloud.jpeg",
+      "sourceNow": "Added to Game/alloutcloud.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "4976683aafe77f7dfbe619155ef10f24f6e43b3648f4f42a829d3b30a8f66e10",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/allout-cloud.webp",
+      "outputSha256": "af40ad431cf62529effbf59b46decc3704698c287c36fd132f18d663c2096fed",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid on flat green, green keyed out with despill, seams cleared, 384px frames, WebP; loops in the All-Out brawl; source unchanged",
+      "place": "fx.js sheet player: the 'allout-cloud' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')",
+      "pick": "v1: round and centred; v2 has a speech-bubble tail"
+    },
+    {
+      "source": "shuffle-flip.jpeg",
+      "sourceNow": "Added to Game/shuffle-flip.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "89f5894f719f9c0cabb6b0cff9f087b021def6bde7d948dcfce4cbde55e8e31c",
+      "batch": 38,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/shuffle-flip.webp",
+      "outputSha256": "cfad2024821bc761cae52ef34db0a229df6e843eff7b0fe326ce5b26d81ef9f6",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, grid seams / frame boxes cleared, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'shuffle-flip' effect (FEMC-ART-TODO 5F; appendix 'Skill-effect sheets (5F)')"
+    },
+    {
+      "source": "fire.jpeg",
+      "sourceNow": "Added to Game/fire.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "c65dd78c0b3c2d98e1e0f7763bf55ad55703dbcf31951c4fb1b5f18c9818949a",
+      "batch": 38,
+      "status": "alternate (unused)",
+      "destination": null,
+      "note": "Kat's other version of 'fire'; not used (pick: v2: v1 has white boxes drawn round every frame). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
+    },
+    {
+      "source": "wind.jpeg",
+      "sourceNow": "Added to Game/wind.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "b95229754e1564ea1eb288f8ee25fe973f6845e2bef5413d62e1cab7c1376dd2",
+      "batch": 38,
+      "status": "alternate (unused)",
+      "destination": null,
+      "note": "Kat's other version of 'wind'; not used (pick: v2: v1 has white lines along its border; fuller peak swirl). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
+    },
+    {
+      "source": "light.jpeg",
+      "sourceNow": "Added to Game/light.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "48f8cd67bd9b8002d2867fe0686dbea758300500d62d15db2bf9917a56216188",
+      "batch": 38,
+      "status": "alternate (unused)",
+      "destination": null,
+      "note": "Kat's other version of 'light'; not used (pick: v2: v1 has white boxes round every frame). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
+    },
+    {
+      "source": "almighty-v2.jpeg",
+      "sourceNow": "Added to Game/almighty-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "0aca6983120d0f652f7ccda923ce4c8d5a23e42fa44ae4eff667d94b41c054cd",
+      "batch": 38,
+      "status": "alternate (unused)",
+      "destination": null,
+      "note": "Kat's other version of 'almighty'; not used (pick: v1: crisper hard-edged rings like Pierce; v2 peaks as a soft bloom). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
+    },
+    {
+      "source": "critica-v2.jpeg",
+      "sourceNow": "Added to Game/critica-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "1f3268a6e7ba37bb4f9678cf2367aad7ab1fab23fee54cab36e930856e9e40e8",
+      "batch": 38,
+      "status": "alternate (unused)",
+      "destination": null,
+      "note": "Kat's other version of 'crit'; not used (pick: v1: clean black; v2 leaves dim maroon smudges in frames 5-6). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
+    },
+    {
+      "source": "heal.jpeg",
+      "sourceNow": "Added to Game/heal.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "924ccbeb201d5b990965e04338b65ca622fd9e46c137fd29c6cf0f5767ce95d9",
+      "batch": 38,
+      "status": "alternate (unused)",
+      "destination": null,
+      "note": "Kat's other version of 'heal'; not used (pick: v2: the gold-and-mint ring the prompt asked for, clean black (v1 has grid seams)). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
+    },
+    {
+      "source": "elec-v2.jpeg",
+      "sourceNow": "Added to Game/elec-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "4426965062e24a8d9255c9ee13c429d2c470bec31978bea9192283e89de2f201",
+      "batch": 38,
+      "status": "alternate (unused)",
+      "destination": null,
+      "note": "Kat's other version of 'elec'; not used (pick: v1: stays inside its cells; v2 frame 3 branches hit the sides and frame 4 drops a bolt in from the cell top). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
+    },
+    {
+      "source": "poison-v2.jpeg",
+      "sourceNow": "Added to Game/poison-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "9e65eedea41692df47ae513143967d40c20b7fd210395d67f622ae9599e54486",
+      "batch": 38,
+      "status": "alternate (unused)",
+      "destination": null,
+      "note": "Kat's other version of 'poison'; not used (pick: v1: v2 has white boxes round every frame). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
+    },
+    {
+      "source": "freeze.jpeg",
+      "sourceNow": "Added to Game/freeze.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "6a7bea13c1a256486b6994b0fe9a9e61a60ee68898e0262725f0660059d4ec8a",
+      "batch": 38,
+      "status": "alternate (unused)",
+      "destination": null,
+      "note": "Kat's other version of 'freeze'; not used (pick: v2: compact frost ring in frames 1-2 (v1 spikes hit the top), sparkle on the peak). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
+    },
+    {
+      "source": "bind.jpeg",
+      "sourceNow": "Added to Game/bind.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "655f0495a51d385c0a8868cabca61aea0110a285492fae4977987cdc1749e9b8",
+      "batch": 38,
+      "status": "alternate (unused)",
+      "destination": null,
+      "note": "Kat's other version of 'bind'; not used (pick: v2: compact rope X (v1 ropes run to the cell corners)). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
+    },
+    {
+      "source": "disorient.jpeg",
+      "sourceNow": "Added to Game/disorient.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "02333560cc9a79449a70c28e133d34491a2d2f777aae31263654d4cd18f347e9",
+      "batch": 38,
+      "status": "alternate (unused)",
+      "destination": null,
+      "note": "Kat's other version of 'disorient'; not used (pick: v2: v1 has a white bar along the bottom edge). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
+    },
+    {
+      "source": "mudo.jpeg",
+      "sourceNow": "Added to Game/mudo.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "ab0832e58a0017332e996701dedd3b62076904754e153ac8b450a9f86c04350f",
+      "batch": 38,
+      "status": "alternate (unused)",
+      "destination": null,
+      "note": "Kat's other version of 'mudo'; not used (pick: v2: the sigil stays in its cell (v1 hangs from the top edge)). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
+    },
+    {
+      "source": "alloutcloud-v2.jpeg",
+      "sourceNow": "Added to Game/alloutcloud-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "70d8dc684176c70aeab12c74362384408e65d64f488b48437e3950abfd26c660",
+      "batch": 38,
+      "status": "alternate (unused)",
+      "destination": null,
+      "note": "Kat's other version of 'allout-cloud'; not used (pick: v1: round and centred; v2 has a speech-bubble tail). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
     }
   ],
   "batch1Validation": {

@@ -1190,7 +1190,7 @@ window.FemcFX = (() => {
     if (o.insta) names = kind === 'light' ? ['hama', 'light'] : ['mudo', 'dark'];
     return names.find(n => artImg(n)) || null;
   }
-  /* Tinted copies (buff per stat, theurgy-burst per element), made once: multiply keeps the art's shading, then its own alpha. */
+  /* Tinted copies (buff per stat; any sheet the index marks `tint`, coloured by o.tint), made once: multiply keeps the art's shading, then its own alpha. */
   const tints = new Map();
   function tinted(im, name, col) {
     const key = name + col;
@@ -1214,7 +1214,7 @@ window.FemcFX = (() => {
     let side = sizeOf(at) * 2.4 * (meta.scale || 1) * (big ? 2.2 : 1) * (o.small ? 0.6 : 1) * (kind !== name ? BORROWED[kind] || 1 : 1);
     if (calm && (name === 'crit' || name === 'theurgy-burst')) side *= 0.75;
     side = Math.min(side, Math.max(W, H) * 1.2 * (meta.scale || 1));
-    const col = meta.tint ? (name === 'buff' ? STAT_COL[o.stat] : o.tint) : null;
+    const col = meta.tint ? (name === 'buff' ? STAT_COL[o.stat] || '#ffd36b' : o.tint) : null; // the buff sheet is grey: always coloured
     const src = col ? tinted(im, name, col) : im;
     const sw = (src.naturalWidth || src.width) / cols, sh = (src.naturalHeight || src.height) / rows;
     const log = { name, kind, frames: [], peakAlpha: 0, side: Math.round(side), tint: col || null };
@@ -1496,7 +1496,7 @@ window.FemcFX = (() => {
     pause() { paused = true; }, resume() { paused = false; last = performance.now(); kick(); }, get paused() { return paused; },
     setCalm(b) { calm = !!b; },
     // Skill-effect sheets: hasArt(name) once loaded; artFor(kind, o) = the sheet play() would use; artSrc for DOM sprites.
-    hasArt, artFor, artSrc: name => (artImg(name) ? artSrc(name) : null), preloadArt, sheetLog,
+    hasArt, artFor, artSrc: name => (artImg(name) ? new URL(artSrc(name), document.baseURI).href : null), preloadArt, sheetLog, // absolute: a CSS var url() would resolve against battle.css
     setQuality(q) { pinned = q === 'low' ? LEVELS.length - 1 : null; resize(); }, quality: () => ['full', 'reduced', 'low'][pinned != null ? pinned : level],
     get count() { return parts.length; }
   };

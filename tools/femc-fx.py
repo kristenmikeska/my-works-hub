@@ -40,13 +40,17 @@ NAMES = ['pierce', 'slash', 'strike', 'ice', 'elec', 'fire', 'wind', 'light', 'd
          'theurgy-burst', 'allout-cloud', 'shuffle-flip']
 BIG = {'crit', 'weak', 'theurgy-burst', 'allout-cloud'}  # 384-px frames; fx.js also draws them 2.2x bigger
 SOLID = {'allout-cloud'}                                  # solid art with real alpha, not light on black
-TINT = {'buff', 'theurgy-burst'}                          # silver/white art the game tints (stat colour, element colour)
+TINT = {'buff'}                                           # art the game tints (the stat colour). Kat's theurgy-burst is
+                                                          # gold-white and plays as drawn; the element's own hit adds colour
+GREY = {'buff'}                                           # made greyscale first (Kat's buff came pink), so any stat colour reads
 LOOP = {'allout-cloud'}
 # How the six frames are lined up. Default: one shared shift (the peak frame's brightness centre to the middle), so the
 # effect keeps its own motion. 'core': every frame's hot core (the impact point) on the middle, for sheets whose frames
 # drift in the source (Kat's pierce: frames 4-6 sit left while their streaks fly right). Core sheets get a padded canvas
 # (PAD x the cell) so nothing clips; the index's `scale` tells fx.js to draw them that much bigger.
-ALIGN = {'pierce': 'core'}
+# 'peak': one shared shift from the peak frame's hot core rather than its brightness centre (Elec: the bolt from above
+# would otherwise pull the impact down).
+ALIGN = {'pierce': 'core', 'elec': 'peak'}
 PAD = 1.3
 
 # name -> source file, under Added to Game/ or New Adds/ (whichever has it now). Without an entry, a file named
@@ -54,7 +58,25 @@ PAD = 1.3
 # found on its own, so a new sheet only needs dropping in New Adds and `all`. Add a line here for any other file name.
 SOURCES = {
     'pierce': 'Added to Game/pierce.png',  # Kat's first sheet (2026-10-23)
+    # Batch 38 (2026-10-23): the rest of the set. Where Kat made two versions, the pick is here and the other is in ALTERNATES.
+    'slash': 'Added to Game/slash.jpeg', 'strike': 'Added to Game/strike.jpeg', 'ice': 'Added to Game/ice.jpeg',
+    'elec': 'Added to Game/elec.jpeg', 'fire': 'Added to Game/fire-v2.jpeg', 'wind': 'Added to Game/wind-v2.jpeg',
+    'light': 'Added to Game/light-v2.jpeg', 'almighty': 'Added to Game/almighty.jpeg',
+    'crit': 'Added to Game/critical.jpeg', 'weak': 'Added to Game/weakness.jpeg', 'shatter': 'Added to Game/shatter.jpeg',
+    'heal': 'Added to Game/heal-v2.jpeg', 'buff': 'Added to Game/buff.jpeg', 'debuff': 'Added to Game/debuff.jpeg',
+    'revive': 'Added to Game/revive.jpeg', 'cure': 'Added to Game/cure.jpeg',
+    'charm': 'Added to Game/charm.jpeg', 'fear': 'Added to Game/fear.jpeg', 'poison': 'Added to Game/poison.jpeg',
+    'distress': 'Added to Game/distress.jpeg', 'freeze': 'Added to Game/freeze-v2.jpeg', 'shock': 'Added to Game/shock.jpeg',
+    'bind': 'Added to Game/bind-v2.jpeg', 'disorient': 'Added to Game/disorient-v2.jpeg',
+    'hama': 'Added to Game/hama.jpeg', 'mudo': 'Added to Game/mudo-v2.jpeg',
+    'theurgy-burst': 'Added to Game/theurgy-burst.jpeg', 'allout-cloud': 'Added to Game/alloutcloud.jpeg',
+    'shuffle-flip': 'Added to Game/shuffle-flip.jpeg',
 }
+# Kat's other versions, kept in Added to Game unused (swap one into SOURCES and run `all` to try it).
+ALTERNATES = {'fire': 'fire.jpeg', 'wind': 'wind.jpeg', 'light': 'light.jpeg', 'almighty': 'almighty-v2.jpeg',
+              'crit': 'critica-v2.jpeg', 'heal': 'heal.jpeg', 'elec': 'elec-v2.jpeg', 'poison': 'poison-v2.jpeg',
+              'freeze': 'freeze.jpeg', 'bind': 'bind.jpeg', 'disorient': 'disorient.jpeg', 'mudo': 'mudo.jpeg',
+              'allout-cloud': 'alloutcloud-v2.jpeg'}
 EXTS = ('.png', '.jpg', '.jpeg', '.webp')
 
 
@@ -92,6 +114,42 @@ def cells(im):
     return out
 
 
+def strip_lines(rgb, band=0.1):
+    """Clear grid seams and the frame boxes ChatGPT sometimes draws: straight bright bars (up to ~3% of the cell thick)
+    running most of a cell's length in its outer band. Effects never run a straight bar along a cell's edge."""
+    m = rgb.max(2)
+    n = m.shape[0]
+    b, thick = int(n * band), max(4, int(n * 0.03))
+    out = rgb.copy()
+    hit = 0
+    for axis in (0, 1):
+        frac = (m > 0.35).mean(axis=1 - axis)  # per row (axis 0) / per column (axis 1): bright share of its length
+        on = frac > 0.45
+        i = 0
+        while i < n:
+            if on[i] and (i < b or i >= n - b):
+                j = i
+                while j < n and on[j]: j += 1
+                if j - i <= thick:  # a bar, not a big shape
+                    lo, hi = max(0, i - 4), min(n, j + 4)
+                    if axis == 0: out[lo:hi] = 0
+                    else: out[:, lo:hi] = 0
+                    hit += 1
+                i = j
+            else:
+                i += 1
+    return out, hit
+
+
+def feather(a, frac=0.05):
+    """Fade alpha to zero over the outer `frac` of the cell, so light that ran off the source cell (a beam from above,
+    a flare to the corner) ends softly instead of on a hard cut."""
+    n = a.shape[0]
+    f = max(2, int(n * frac))
+    r = np.clip(np.minimum(np.arange(n), np.arange(n)[::-1]) / f, 0, 1)
+    return a * np.minimum.outer(r, r)
+
+
 def light_alpha(rgb):
     """Light on black -> unpremultiplied RGBA: alpha = brightest channel (minus a noise floor), colour divided back out."""
     m = rgb.max(2)
@@ -107,7 +165,7 @@ def solid_alpha(rgba, name):
     rgb = rgba[..., :3]
     corners = np.concatenate([rgb[:8, :8].reshape(-1, 3), rgb[-8:, -8:].reshape(-1, 3), rgb[:8, -8:].reshape(-1, 3), rgb[-8:, :8].reshape(-1, 3)])
     bg = corners.mean(0)
-    if not (bg[1] > 0.6 and bg[0] < 0.4 and bg[2] < 0.4):
+    if not (bg[1] > 0.35 and bg[1] > 2 * max(bg[0], bg[2])):
         raise SystemExit(f'{name}: no transparency and the background is not flat green {np.round(bg * 255)}; '
                          'ask for a transparent PNG (or a flat #00ff00 background)')
     g = rgb[..., 1] - np.maximum(rgb[..., 0], rgb[..., 2])  # how green a pixel is beyond its other channels
@@ -157,8 +215,21 @@ def build(src, name, dst=DST):
     side = cs[0].shape[0]
     if name in SOLID:
         frames = [solid_alpha(c, name) for c in cs]
+        for f in frames:  # the grid seams between the cells (not green, so they'd stay solid): the outer 3% is margin
+            e = int(side * 0.03); f[:e, :, 3] = 0; f[-e:, :, 3] = 0; f[:, :e, 3] = 0; f[:, -e:, 3] = 0
     else:
-        frames = [light_alpha(c[..., :3]) for c in cs]
+        lines = 0
+        frames = []
+        for c in cs:
+            rgb, h = strip_lines(c[..., :3]); lines += h
+            frames.append(light_alpha(rgb))
+        if lines:
+            print(f'  {name}: cleared {lines} grid / box line(s) along cell edges')
+        if name in GREY:
+            # Drawn for tinting: keep each pixel's brightness, drop its hue (the game multiplies in the stat colour).
+            for f in frames:
+                lum = f[..., 0] * 0.3 + f[..., 1] * 0.59 + f[..., 2] * 0.11
+                f[..., :3] = np.clip(lum / np.maximum(f[..., :3].max(2), 1e-4), 0, 1)[..., None] ** 0.6
     # Bled frames: light touching a cell's border probably crossed into its neighbour.
     for i, f in enumerate(frames):
         edge = np.concatenate([f[:3, :, 3].ravel(), f[-3:, :, 3].ravel(), f[:, :3, 3].ravel(), f[:, -3:, 3].ravel()])
@@ -169,14 +240,23 @@ def build(src, name, dst=DST):
         shifts = [core_shift(f[..., 3], side) for f in frames]
         pad = PAD
     else:
-        # One shared shift: the peak frame's (frame 3) brightness centre to the middle.
-        shifts = [centroid_shift(frames[2][..., 3], side)] * 6
+        # One shared shift: the peak frame's (frame 3) brightness centre (or its hot core, ALIGN 'peak') to the middle,
+        # but never so far that any frame's light would leave the cell (a falling or rising effect keeps its room).
+        dx, dy = (core_shift if ALIGN.get(name) == 'peak' else centroid_shift)(frames[2][..., 3], side)
+        ys, xs = np.nonzero(np.max([f[..., 3] for f in frames], 0) > 0.08)
+        if len(xs):
+            mg = int(side * 0.04)
+            dx = max(mg - xs.min(), min(side - mg - 1 - xs.max(), dx)) if xs.max() - xs.min() < side - 2 * mg else 0
+            dy = max(mg - ys.min(), min(side - mg - 1 - ys.max(), dy)) if ys.max() - ys.min() < side - 2 * mg else 0
+        shifts = [(int(dx), int(dy))] * 6
         pad = 1.0
     P = int(round(side * pad))
     out = 384 if name in BIG else 256
     sheet = Image.new('RGBA', (out * 3, out * 2), (0, 0, 0, 0))
     for i, (f, (dx, dy)) in enumerate(zip(frames, shifts)):
         f = place(f, P, (P - side) // 2 + dx, (P - side) // 2 + dy)
+        if name not in SOLID:
+            f[..., 3] = feather(f[..., 3])
         # Premultiply for the resize (no dark fringes from colour under zero alpha), then divide back out.
         pm = np.dstack([f[..., :3] * f[..., 3:], f[..., 3]])
         cell = Image.fromarray((pm * 255 + 0.5).astype(np.uint8)).resize((out, out), Image.LANCZOS)

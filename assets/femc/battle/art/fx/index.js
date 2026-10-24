@@ -2,12 +2,217 @@
    (3 x 2 frames, peak = frame index of the impact, v = content hash for the cache). fx.js plays a sheet
    when its name is here and the image has loaded, and its code effect otherwise. */
 window.FEMC_FX_ART = {
+ "allout-cloud": {
+  "blend": "source-over",
+  "cell": 384,
+  "frames": 6,
+  "loop": true,
+  "peak": 2,
+  "v": "0c458d34"
+ },
+ "almighty": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "db8fd637"
+ },
+ "bind": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "b383894c"
+ },
+ "buff": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "tint": true,
+  "v": "8d67ce4f"
+ },
+ "charm": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "e6e7bc99"
+ },
+ "crit": {
+  "blend": "lighter",
+  "cell": 384,
+  "frames": 6,
+  "peak": 2,
+  "v": "210b1d8d"
+ },
+ "cure": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "aaeafa4b"
+ },
+ "debuff": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "25dabb65"
+ },
+ "disorient": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "6c30a335"
+ },
+ "distress": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "d1861655"
+ },
+ "elec": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "365e0c75"
+ },
+ "fear": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "39304e66"
+ },
+ "fire": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "12de9c92"
+ },
+ "freeze": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "ca7b2002"
+ },
+ "hama": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "3be72e9f"
+ },
+ "heal": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "9855f6dd"
+ },
+ "ice": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "183c8c18"
+ },
+ "light": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "4f50f091"
+ },
+ "mudo": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "81ce877b"
+ },
  "pierce": {
   "blend": "lighter",
   "cell": 256,
   "frames": 6,
   "peak": 2,
   "scale": 1.3,
-  "v": "a10f6cd4"
+  "v": "0fdc32fd"
+ },
+ "poison": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "1daf9690"
+ },
+ "revive": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "f08759b6"
+ },
+ "shatter": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "6f5277b4"
+ },
+ "shock": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "ad2c38fd"
+ },
+ "shuffle-flip": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "8a8b01d8"
+ },
+ "slash": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "1a75744b"
+ },
+ "strike": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "e9da5a20"
+ },
+ "theurgy-burst": {
+  "blend": "lighter",
+  "cell": 384,
+  "frames": 6,
+  "peak": 2,
+  "v": "b224238b"
+ },
+ "weak": {
+  "blend": "lighter",
+  "cell": 384,
+  "frames": 6,
+  "peak": 2,
+  "v": "56d42b5d"
+ },
+ "wind": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "5399e623"
  }
 };
