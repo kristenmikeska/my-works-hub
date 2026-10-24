@@ -143,6 +143,8 @@ try:
     p.eval("T.fresh('5/1','after');true")
 
     def go_act(area, aid, day, slot, via='click', expect=None, before_ui=None):
+        # Weather can close outdoor activities (storms, rain): move to the same weekday a week on until it's dry.
+        if aid in ('shrinesweep', 'beachclean', 'pierwalk'): day = p.eval(f"(()=>{{let d=FemcGame.dayOf('{day}');for(let i=0;i<8&&['rain','storm'].includes(FemcGame.weather(d));i++)d+=7;return FemcGame.mdOf(d)}})()")
         p.eval(f"T.at('{day}','{slot}');document.querySelectorAll('.g-overlay').forEach(x=>x.remove());FemcGameUI.goOut('{slot}','{area}');true")
         if before_ui: p.eval(before_ui)
         p.wait(f"!!document.querySelector('[data-act={aid}]')", 5)
@@ -152,7 +154,9 @@ try:
         elif via == 'touch': tap(f'[data-act={aid}]')
         elif via == 'key': p.eval(f"document.querySelector('[data-act={aid}]').focus();true"); key('Enter')
         else: p.eval(f"document.querySelector('[data-act={aid}]').click();true")
-        p.wait("!!document.querySelector('.g-activity-preview:not(.out) [data-confirm]:not([disabled])')", 5)
+        try: p.wait("!!document.querySelector('.g-activity-preview:not(.out) [data-confirm]:not([disabled])')", 5)
+        except TimeoutError:
+            print('STUCK', aid, day, p.eval("FemcGame.weather(FemcGame.S.day)+' | '+(document.querySelector('.g-activity-preview')?.innerText||'no preview').slice(0,300)")); raise
         if via == 'key':
             p.wait("document.activeElement?.matches('.g-activity-preview:not(.out) [data-confirm]')", 3)
             key('Enter')
