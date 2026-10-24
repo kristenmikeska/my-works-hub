@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**54 items:** 2 quick fixes · 7 CGs · 3 places · 18 character pieces · 10 battle (1 of them a skill effect in 5F) · 8 cards and icons · 6 screens. 3 are ⭐, 31 are optional.
+**53 items:** 2 quick fixes · 6 CGs · 3 places · 18 character pieces · 10 battle (1 of them a skill effect in 5F) · 8 cards and icons · 6 screens. 3 are ⭐, 31 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -54,8 +54,6 @@ Solar and [NAME] at [SETTING], [TIME AND LIGHT]. [WHO ELSE IS THERE, OR "just th
 ### 2C. Holidays and group shots *(optional)*
 - [ ] **New Year's at the shrine** (`FEMC-CG-PROMPTS.md` #24). **Attach:** style, Solar, 3–4 friends, and 🎮 `bg/naganaki-shrine-newyear.webp` for the setting. **Fills:** `cg/holiday-new-year.webp`.
   - **Must match:** daytime on 1/1; twenty-odd people in coats coming up the shrine steps, half in rented yukata over sweaters; Solar at the offering box, eyes closed, hands together; coins in the air; old women selling amazake by the gate; Kiriko by the fortune stand.
-- [ ] **The summer festival (8/16).** **Attach:** style, Solar, Ann, 🎮 `bg/naganaki-shrine-festival.webp`. **Fills:** `cg/holiday-summer-festival.webp`. There's no group festival scene; this goes on Ann's festival day.
-  - **Must match:** early evening; red-and-white lanterns up the steps and through the trees; stalls smoking (grilled squid, corn); a crowd in yukata and geta; Solar in a gray yukata with pale blue morning glories (not dark); Ann in deep blue with white goldfish and a peach obi; Yukari there; Junpei at the squid stall; candy apples; no fireworks.
 - [ ] **Valentine's Day (2/14).** **Attach:** style, Solar, Yukari, Fuuka. **Fills:** `cg/holiday-valentines.webp`. No 2/14 scene is set at school (it's a Sunday), so this goes on Yukari's Valentine's day at the mall.
   - **Must match:** daytime; Paulownia Mall pink from the escalators down, paper hearts over the fountain, a line at the chocolate shop; Solar, Yukari and Fuuka in coats on the fountain edge swapping chocolates; Fuuka's lunchbox of partly burnt truffles; Yukari's paper bag from an expensive shop; no snow.
 - [ ] **Side romances** (`FEMC-CG-PROMPTS.md` #5's settings don't match; use these). **Attach:** style, Solar, the partner. **Fills:** `cg/romance-<id>.webp`.

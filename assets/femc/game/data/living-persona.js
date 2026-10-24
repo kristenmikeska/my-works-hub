@@ -61,7 +61,15 @@
         { s: 'yukari', f: 'neutral', t: "Okay, give it here. Arms out. Don't breathe. ...I said don't breathe, Takamaki-san." },
         { n: "Yukari tied her in the lee of the big stone lantern by the gate with brisk efficient tugs, like somebody wrapping a present she had strong opinions about, having already done Solar's at the dorm, a gray one with pale blue morning glories that Yukari said she never wore anyway, which Solar suspected wasn't true. When the two of them started up the steps together, Junpei, at the squid stall, looked up and dropped his skewer." },
         { n: "The shrine was lanterns all the way up, red and white, strung over the steps and through the trees, and stalls down both sides breathing out smoke and sugar and soy sauce, grilled squid and corn and something frying in a great iron pan, and the crowd moving up the hill slow and warm in its yukata and geta, the wooden sandals clacking on the stone like rain on a roof." },
+        { n: "Halfway up they ran into Akihiko coming down against the crowd, still in his uniform from the gym, a fresh bandage over one eyebrow, holding a candy apple like it was evidence of something. He saw Solar's yukata and stopped, and held the apple out to her." },
+        { ifCrush: { akihiko: ['noticed', 'crush', 'puppy', 'almost', 'dating'] }, then: [
+          { s: 'akihiko', f: 'blushing', t: "Here. I bought it and then remembered I don't eat sugar in season. ...The yukata's good. That's all." }
+        ], else: [
+          { s: 'akihiko', f: 'neutral', t: "Here. I bought it and then remembered I don't eat sugar in season. Iori's at the squid stall, right? I'll go bother him." }
+        ] },
+        { cg: 'holiday-summer-festival' },
         { s: 'ann', f: 'happy', t: "Candy apples. Right now. I'm ranking them. This is a whole new index. It's a sister index." },
+        { cg: null },
         { choose: [
           { t: "(Buy two and score yours very seriously.)", notes: 3, then: [
             { n: "Solar bit into hers with the expression of a judge and chewed and considered and held up three fingers, and then, after a long pause, a fourth, and Ann gasped as though a verdict had been read in court." },

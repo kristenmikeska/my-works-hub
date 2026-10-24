@@ -8243,6 +8243,23 @@
       "outputSha256": "def459a4810592bf9dfb2e26a4646bc2990b9f219f73dd7466be82cbe6d56007",
       "scale": 0.81,
       "note": "Yuzu (gaming club)"
+    },
+    {
+      "batch": 41,
+      "source": "holiday-summer-festival.png",
+      "sourceNow": "Added to Game/holiday-summer-festival.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "d7c8be78adcf73b6d06352522d9be1ca4ac5f42092e0448874480e149bc3ce13",
+      "status": "integrated",
+      "destination": "assets/femc/cg/holiday-summer-festival.webp",
+      "conversion": "WebP quality 90 (Pillow), original dimensions, no cropping or retouching; source unchanged",
+      "placement": "data/living-persona.js Ann holidays '8/16' (summer festival): { cg } after the Akihiko run-in through Ann's candy-apple line, cleared before the choice; Memories → Story",
+      "textCheck": "checked 2026-10-24 against the image: Akihiko (in uniform) added via a short run-in with a candy apple, ifCrush branch for his crush track; Yukari's outfit unstated; fireworks come after the CG clears; otherwise matches",
+      "mobileFocus": "48% 22%",
+      "outputSha256": "bbd79909015a0d496886ea1d1e46d0efbc68cdbf1ccad7202f031a37cedd51e8"
     }
   ],
   "batch1Validation": {
