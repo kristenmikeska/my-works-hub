@@ -482,7 +482,7 @@ html.femc:not(.femc-reader) body.bt-page::after { display: none; }
 @keyframes bt-bgdrift { from { transform: scale(1.02) translateX(-1%); } to { transform: scale(1.08) translateX(1%); } }
 @keyframes bt-shake { 10%, 90% { transform: translate(-3px, 1px); } 20%, 80% { transform: translate(6px, -2px); } 30%, 50%, 70% { transform: translate(-10px, 3px); } 40%, 60% { transform: translate(10px, -3px); } }
 @keyframes bt-shake-big { 10%, 90% { transform: translate(-6px, 3px) rotate(-.4deg); } 20%, 80% { transform: translate(12px, -5px) rotate(.5deg); } 30%, 50%, 70% { transform: translate(-18px, 6px) rotate(-.6deg); } 40%, 60% { transform: translate(18px, -6px) rotate(.6deg); } }
-@keyframes bt-flash { 0% { opacity: .85; } 100% { opacity: 0; } }
+@keyframes bt-flash { 0% { opacity: calc(.85 * var(--fk, 1)); } 100% { opacity: 0; } } /* --fk: battle.js flash() strength */
 @keyframes bt-enemy-in { from { opacity: 0; transform: translateY(30px) scale(.8); } }
 @keyframes bt-lunge { 40% { transform: translateY(6%) scale(1.12); } }
 @keyframes bt-recoil { 0% { transform: translateX(0); } 25% { transform: translateX(-6%) rotate(-4deg); } 60% { transform: translateX(4%) rotate(2deg); } }
@@ -1531,7 +1531,7 @@ html.bt-pad .bt-rushtag span { display: none; }
 
 /* ── Reduce flashes, screen shake off ── */
 html.bt-calm .bt-flash.go { animation-name: bt-flash-calm; }
-@keyframes bt-flash-calm { 0% { opacity: .16; } 100% { opacity: 0; } }
+@keyframes bt-flash-calm { 0% { opacity: calc(.16 * var(--fk, 1)); } 100% { opacity: 0; } }
 html.bt-calm .bt-evoke.broke .bt-evk-light { animation-name: bt-evk-light-calm; }
 @keyframes bt-evk-light-calm { 0% { opacity: 0; } 30% { opacity: .4; } 100% { opacity: .4; } }
 html.bt-calm .bt-theurgy.st-full.f-hit .th-burst { animation-name: th-burst-calm; }
@@ -2379,3 +2379,16 @@ html.bt-perf .bt-enemy.lantern .ln-win { animation: none; }
   .bt-card .st i.ail .bt-sti, .bt-card .st i.bf .bt-sti { width: 15px; height: 15px; }
   .bt-tag .bt-sti { width: 16px; height: 16px; }
 }
+
+/* ── Skill-effect sheets (Kat's art in art/fx/, FEMC-ART-TODO 5F; fx.js plays them on the field canvas) ── */
+/* Theurgy: with the burst sheet, the CSS burst and rays step aside. */
+.bt-theurgy.has-fx .th-burst, .bt-theurgy.has-fx .th-rays { display: none; }
+/* All-Out: the looping cloud sheet (3 x 2 frames, stepped by battle.js) in place of the CSS puffs. */
+.bt-dust .cloud.art { inset: auto; left: 50%; top: 50%; height: 135%; aspect-ratio: 1; translate: -50% -50%; background: no-repeat 0 0 / 300% 200%; }
+/* Shuffle Time: the flip flare over the card as it turns face up (black drops out with screen). */
+.bt-shuffle.has-flip .bt-sh-card.up::after { content: ''; position: absolute; left: 50%; top: 50%; z-index: 4; width: 230%; aspect-ratio: 1; translate: -50% -50%; pointer-events: none;
+  background: var(--flip) no-repeat 0 0 / 300% 200%; mix-blend-mode: screen; animation: bt-sh-flare calc(420ms / var(--spd, 1)) steps(1, end) forwards; }
+@keyframes bt-sh-flare { 0% { background-position: 0 0; } 16.67% { background-position: 50% 0; } 33.33% { background-position: 100% 0; }
+  50% { background-position: 0 100%; } 66.67% { background-position: 50% 100%; } 83.33% { background-position: 100% 100%; } 100% { background-position: 100% 100%; opacity: 0; } }
+html.bt-calm .bt-shuffle.has-flip .bt-sh-card.up::after { opacity: .4; }
+.bt-shuffle.reduced .bt-sh-card::after { display: none; }

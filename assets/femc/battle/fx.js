@@ -42,6 +42,10 @@ window.FemcFX = (() => {
     return () => { done = true; cancelAnimationFrame(r); clearTimeout(tm); };
   }
   const reduced = () => RM.matches;
+  /* Images (the Evoker snapshot's art and the skill-effect sheets), loaded once. */
+  const imgCache = new Map();
+  function preload(src) { if (!src || imgCache.has(src)) return; const im = new Image(); im.decoding = 'async'; im.src = src; imgCache.set(src, im); }
+  const ready = im => im && im.complete && im.naturalWidth > 0;
   let calm = false; // Settings → Reduce flashes: full-screen flashes drop to a fifth
   const flashK = () => (calm ? 0.2 : 1);
 
@@ -83,6 +87,7 @@ window.FemcFX = (() => {
     el.appendChild(cv);
     ctx = cv.getContext('2d');
     resize();
+    preloadArt();
   }
   function detach() { if (raf) raf(); raf = 0; effects = []; parts = []; if (cv) cv.remove(); cv = ctx = host = null; if (hooks.size) kick(); }
   function resize() {
@@ -1155,6 +1160,82 @@ window.FemcFX = (() => {
     return 0;
   }
 
+  /* ── Skill-effect sheets (Kat's art, FEMC-ART-TODO 5F) ──
+     art/fx/index.js (tools/femc-fx.py) lists the sheets that exist: window.FEMC_FX_ART[name] = { cell, frames, peak,
+     blend, v, loop?, tint?, scale? } (scale: the tool padded the frames, so draw them that much bigger). A sheet is 3 x 2 frames; play() uses one only once its image has loaded, so a missing file,
+     a 404 or a sheet still loading falls through to the code effect unchanged. Reduced motion never reaches here. */
+  const FX_DIR = 'assets/femc/battle/art/fx/';
+  const ART = () => window.FEMC_FX_ART || {};
+  const artSrc = name => { const a = ART()[name]; return a ? a.src || `${FX_DIR}${name}.webp?v=${a.v || 1}` : null; };
+  function preloadArt() { Object.keys(ART()).forEach(n => preload(artSrc(n))); }
+  function artImg(name) {
+    const src = artSrc(name);
+    if (!src) return null;
+    const im = imgCache.get(src);
+    if (!im) { preload(src); return null; }
+    return ready(im) ? im : null;
+  }
+  const hasArt = name => !reduced() && !!artImg(name);
+  // A kind's sheets in order of preference (fear plays its own sheet, then borrows Dark's; the code effect after that).
+  const ART_KINDS = { fear: ['fear', 'dark'], freeze: ['freeze', 'ice'], shock: ['shock', 'elec'], shatter: ['shatter', 'ice'] };
+  const ART_OK = new Set(['fire', 'ice', 'elec', 'wind', 'light', 'dark', 'almighty', 'slash', 'strike', 'pierce', 'heal', 'cure', 'revive', 'buff',
+    'charm', 'poison', 'distress', 'bind', 'disorient', 'fear', 'freeze', 'shock', 'shatter', 'crit', 'weak', 'theurgy-burst']);
+  const SHEET_BIG = new Set(['crit', 'weak', 'theurgy-burst', 'allout-cloud']);
+  const BORROWED = { fear: 0.6, freeze: 0.7, shock: 0.6 }; // a borrowed sheet plays at the code effect's small size
+  /* The sheet a play(kind, at, o) would use right now, or null (the code effect plays). */
+  function artFor(kind, o = {}) {
+    if (reduced() || !ART_OK.has(kind)) return null;
+    let names = ART_KINDS[kind] || [kind];
+    if (kind === 'buff') names = [(o.dir || 1) < 0 ? 'debuff' : 'buff'];
+    if (o.insta) names = kind === 'light' ? ['hama', 'light'] : ['mudo', 'dark'];
+    return names.find(n => artImg(n)) || null;
+  }
+  /* Tinted copies (buff per stat, theurgy-burst per element), made once: multiply keeps the art's shading, then its own alpha. */
+  const tints = new Map();
+  function tinted(im, name, col) {
+    const key = name + col;
+    let t = tints.get(key);
+    if (t) return t;
+    t = mk(im.naturalWidth, im.naturalHeight);
+    const g = t.getContext('2d');
+    g.drawImage(im, 0, 0);
+    g.globalCompositeOperation = 'multiply'; g.fillStyle = col; g.fillRect(0, 0, t.width, t.height);
+    g.globalCompositeOperation = 'destination-in'; g.drawImage(im, 0, 0);
+    tints.set(key, t);
+    return t;
+  }
+  const FD = 0.07; // seconds per frame at 1x (the loop's dt carries battle speed)
+  const sheetLog = []; // test hook: one entry per sheet played ({ name, frames drawn, peak alpha, size })
+  function sheet(name, at, o = {}, kind = name) {
+    const im = artImg(name), meta = ART()[name] || {};
+    const n = meta.frames || 6, peak = meta.peak != null ? meta.peak : 2, cols = 3, rows = Math.ceil(n / cols);
+    const fd = (meta.fd || FD) * (o.slow || 1);
+    const big = at.big || SHEET_BIG.has(name);
+    let side = sizeOf(at) * 2.4 * (meta.scale || 1) * (big ? 2.2 : 1) * (o.small ? 0.6 : 1) * (kind !== name ? BORROWED[kind] || 1 : 1);
+    if (calm && (name === 'crit' || name === 'theurgy-burst')) side *= 0.75;
+    side = Math.min(side, Math.max(W, H) * 1.2 * (meta.scale || 1));
+    const col = meta.tint ? (name === 'buff' ? STAT_COL[o.stat] : o.tint) : null;
+    const src = col ? tinted(im, name, col) : im;
+    const sw = (src.naturalWidth || src.width) / cols, sh = (src.naturalHeight || src.height) / rows;
+    const log = { name, kind, frames: [], peakAlpha: 0, side: Math.round(side), tint: col || null };
+    sheetLog.push(log); if (sheetLog.length > 40) sheetLog.shift();
+    add({ dur: n * fd, delay: o.delay || 0, draw(c, t) {
+      const f = Math.min(n - 1, Math.floor(t / fd));
+      // Reduce flashes: the peak frames (2-4) at 0.45; the last frame fades out.
+      let a = calm && f >= 1 && f <= 3 ? 0.45 : 1;
+      if (f === n - 1) a *= c01(1 - (t - f * fd) / fd);
+      if (log.frames[log.frames.length - 1] !== f) log.frames.push(f);
+      if (f === peak) log.peakAlpha = Math.max(log.peakAlpha, a);
+      if (a <= 0.01) return;
+      c.globalCompositeOperation = meta.blend || 'lighter'; c.globalAlpha = a;
+      c.drawImage(src, (f % cols) * sw, Math.floor(f / cols) * sh, sw, sh, at.x - side / 2, at.y - side / 2, side, side);
+    } });
+    // A few of the code's sparks on top at the impact (not in Performance mode).
+    if (pinned == null && !meta.loop && name !== 'buff' && name !== 'debuff')
+      add({ dur: 0.01, delay: (o.delay || 0) + peak * fd, draw() { burst(at.x, at.y, phone() ? 5 : 8, { color: col || COLORS[kind] || '#fff', min: 120, max: 420 }); } });
+    return (o.delay || 0) * 1000 + peak * fd * 1000;
+  }
+
   /* A soft colored flash: the reduced-motion version of everything. */
   function simple(at, color) {
     const R = sizeOf(at);
@@ -1172,6 +1253,9 @@ window.FemcFX = (() => {
     // o.track(): a fresh box for the target each frame, so long effects follow a Shadow if the field shifts.
     if (o.track && !reduced()) { at = Object.assign({}, at); const tr = o.track; add({ dur: 1.3, draw() { const b = tr(); if (b) { const dx = b.x - at.x, dy = b.y - at.y; at.x = b.x; at.y = b.y; if (at.shift) at.shift(dx, dy); } } }); }
     if (reduced()) return simple(at, COLORS[kind] || '#fff');
+    const art = artFor(kind, o);
+    if (art) return sheet(art, at, o, kind);
+    if (kind === 'crit' || kind === 'weak' || kind === 'theurgy-burst') return 0; // sheet-only kinds: callers check hasArt first
     switch (kind) {
       case 'fire': return fire(at, o);
       case 'ice': return ice(at, o);
@@ -1268,9 +1352,6 @@ window.FemcFX = (() => {
   }
 
   /* ── Evoker: a rough snapshot of the battle, then glass that breaks ── */
-  const imgCache = new Map();
-  function preload(src) { if (!src || imgCache.has(src)) return; const im = new Image(); im.decoding = 'async'; im.src = src; imgCache.set(src, im); }
-  const ready = im => im && im.complete && im.naturalWidth > 0;
   function coverDraw(g, im, x, y, w, h) {
     const r = Math.max(w / im.naturalWidth, h / im.naturalHeight), iw = im.naturalWidth * r, ih = im.naturalHeight * r;
     g.drawImage(im, x + (w - iw) / 2, y + (h - ih) / 2, iw, ih);
@@ -1414,6 +1495,8 @@ window.FemcFX = (() => {
     attach, detach, resize, play, stream, setSpeed(fn) { speedFn = fn; }, ash, snapshot, shatter, preload, reduced,
     pause() { paused = true; }, resume() { paused = false; last = performance.now(); kick(); }, get paused() { return paused; },
     setCalm(b) { calm = !!b; },
+    // Skill-effect sheets: hasArt(name) once loaded; artFor(kind, o) = the sheet play() would use; artSrc for DOM sprites.
+    hasArt, artFor, artSrc: name => (artImg(name) ? artSrc(name) : null), preloadArt, sheetLog,
     setQuality(q) { pinned = q === 'low' ? LEVELS.length - 1 : null; resize(); }, quality: () => ['full', 'reduced', 'low'][pinned != null ? pinned : level],
     get count() { return parts.length; }
   };

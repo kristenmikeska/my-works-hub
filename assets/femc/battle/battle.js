@@ -72,7 +72,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 23;
+  const ART_V = 24;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -1302,6 +1302,9 @@
         cardEl.classList.add('chosen'); sfx('ok');
         shState.phase = 'reveal'; shState.picked = i;
         await sleep(reduced ? 120 : 380);
+        // Kat's card-flip flare (art/fx/shuffle-flip.webp, 5F): a CSS sprite on the card; off with reduced motion.
+        const flare = !reduced && FX && FX.artSrc && FX.artSrc('shuffle-flip');
+        if (flare) { el.style.setProperty('--flip', `url('${flare}')`); el.classList.add('has-flip'); mark('fx-art-shuffle-flip'); }
         cardEl.classList.add('up');
         const res = BLD.applyShuffle(save, c, { R: rand, tier: ctx.tier, party: roster().map(m => m.id) });
         shState.res = res;
@@ -2351,11 +2354,19 @@
   function fxPlay(kind, id, o = {}) {
     mark('fx-' + kind);
     if (!FX) { strikeFx(id, kind); return 0; }
+    const art = FX.artFor && FX.artFor(kind, o);
+    if (art) mark('fx-art-' + art); // Kat's sheet for it (art/fx/, 5F) plays instead of the code effect
     return FX.play(kind, fxAt(id), Object.assign({ track: () => { if (!BT || !(BT.enemies.has(id) || BT.cards.has(id))) return null; const b = fxAt(id); return b.w > 0 ? b : null; } }, o)) || 0;
   }
   // Signature skills with their own effect (data.js skills[].fx → fx.js).
   const SIG_FX = new Set(['corkscrew', 'galearrow', 'fastball', 'fleche', 'salvo', 'lance', 'bite', 'haymaker', 'moonstatic', 'goblinfire', 'aperture', 'crescent', 'serpent', 'club', 'theia', 'shell']);
+  /* A hit's effect; a crit also gets the crit sheet over the target when it exists, its peak on the hit's own impact. */
   function fxHit(e) {
+    const t = fxHitKind(e);
+    if (e.crit && !e.insta && FX && FX.hasArt && FX.hasArt('crit')) fxPlay('crit', e.tgt, { delay: Math.max(0, t - 140) / 1000 });
+    return t;
+  }
+  function fxHitKind(e) {
     const src = B.U(e.src), el = e.el, o = { crit: e.crit, color: (D.elements[el] || {}).color };
     if (e.skill === 'golden_rope') { const c = BT.cards.get(e.src), R = BT.root.getBoundingClientRect(); if (c) { const r = c.getBoundingClientRect(); o.from = { x: r.left + r.width * 0.4 - R.left, y: r.top - R.top }; } return fxPlay('rope', e.tgt, o); }
     if (e.insta) return fxPlay(el === 'light' ? 'light' : 'dark', e.tgt, Object.assign(o, { holy: el === 'light' }));
@@ -2388,8 +2399,9 @@
     en.classList.add('dead');
     setTimeout(() => { en.classList.add('gone'); sizeField(); }, Math.max(900, ms + 300) / speed());
   }
-  function flash(pink) {
+  function flash(pink, k = 1) { // k: strength (a third when a crit sheet already carries the flash)
     BT.flash.classList.toggle('pink', !!pink);
+    BT.flash.style.setProperty('--fk', k);
     BT.flash.classList.remove('go'); void BT.flash.offsetWidth; BT.flash.classList.add('go');
   }
   function shake(big) {
@@ -2795,6 +2807,13 @@
       mark('theurgy-final');
       await sleep(sheet ? 450 : seq ? 650 : kind === 'layers' ? 1050 : kind === 'cut' ? 700 : 900);
       w.classList.add('f-hit'); mark('theurgy-impact');
+      // Kat's Theurgy burst sheet (5F) replaces the CSS burst and rays when it exists; tinted to the element, Solar's sun untinted.
+      if (FX && !perf() && FX.hasArt && FX.hasArt('theurgy-burst')) {
+        w.classList.add('has-fx'); mark('fx-art-theurgy-burst');
+        const r = stage(), R = BT.root.getBoundingClientRect();
+        FX.play('theurgy-burst', { x: r.left - R.left + r.width * fx / 100, y: r.top - R.top + r.height * fy / 100, w: r.width * 0.6, h: r.height * 0.8, big: true },
+          { tint: look === 'sun' ? null : (D.elements[look] || {}).color || m.color });
+      }
       // Beside the face, toward the Persona's side of the art, so the burst never sits on someone's face.
       impact(!sheet && !seq, beside);
       await sleep(sheet ? 1300 : 1600);
@@ -3125,9 +3144,9 @@
         }
         const el = onEnemy ? BT.enemies.get(e.tgt) : BT.cards.get(e.tgt);
         if (el && onEnemy && e.aff === 'weak' && e.amount > 0) {
-          // Weakness: a yellow ring bursts off the Shadow and the moment holds for a beat (hit-stop).
-          el.insertAdjacentHTML('beforeend', '<i class="bt-wburst" aria-hidden="true"></i>');
-          const wb = el.lastElementChild; setTimeout(() => wb.remove(), 700);
+          // Weakness: a yellow ring bursts off the Shadow (or Kat's weak sheet) and the moment holds for a beat (hit-stop).
+          if (FX && FX.hasArt && FX.hasArt('weak')) fxPlay('weak', e.tgt);
+          else { el.insertAdjacentHTML('beforeend', '<i class="bt-wburst" aria-hidden="true"></i>'); const wb = el.lastElementChild; setTimeout(() => wb.remove(), 700); }
           el.classList.add('hitstop'); await sleep(85); el.classList.remove('hitstop');
         }
         if (el && e.amount > 0 && e.aff !== 'drain') { el.classList.remove('hit'); void el.offsetWidth; el.classList.add('hit'); if (onEnemy) animateShadow(el, 'hurt', 360); else { const fp = posedFighter(t); if (fp && !e.killed) { animateShadow(fp, 'hurt', 420); mark('fighter-hurt'); } } setTimeout(() => el.classList.remove('hit'), 420); }
@@ -3138,7 +3157,7 @@
         else if (e.aff === 'drain') popup(e.tgt, { label: 'DRAIN', lcls: 'drain', n: e.amount, cls: 'heal' });
         else popup(e.tgt, { n: e.amount, label, lcls, cls: `${onEnemy ? '' : 'party'} ${e.crit ? 'crit' : ''} ${e.aff === 'weak' ? 'big' : ''}` });
         if (onEnemy) paintEnemy(t, { hp: e.hp }); else paintCard(t, { hp: e.hp, dead: e.killed });
-        if (e.crit) { shake(true); flash(); sfx('crit'); }
+        if (e.crit) { shake(true); flash(false, FX && FX.hasArt && FX.hasArt('crit') ? 1 / 3 : 1); sfx('crit'); }
         else if (e.aff === 'weak') { shake(false); flash(true); sfx('weak'); }
         else if (e.amount) sfx('hit');
         if (e.downed) { sfx('down'); if (onEnemy) { const en = BT.enemies.get(e.tgt); en.classList.add('down'); tip('down'); } }
@@ -3364,7 +3383,11 @@
       : `<img class="sil" src="${pimg(p.mid, member(p.mid).faces.idle)}" alt="" style="left:${[8, 64, 30, 78][i % 4]}%;top:${[2, 0, 58, 50][i % 4]}%;animation-delay:${i * 0.22}s">`; }).join('');
     const words = ['BAM!', 'POW!', 'WHAM!', 'SMASH!'].map((w, i) => `<b style="left:${[2, 70, 18, 66][i]}%;top:${[10, 6, 74, 70][i]}%;animation-delay:${0.1 + i * 0.22}s">${w}</b>`).join('');
     const stars = [0, 1, 2, 3, 4, 5].map(i => `<span class="star" style="left:${[14, 84, 48, 0, 94, 40][i]}%;top:${[78, 30, -6, 44, 74, 92][i]}%;animation-delay:${-i * 0.15}s">${ART.icon('allout')}</span>`).join('');
-    wrap.innerHTML = `<div class="bt-speedlines"></div><div class="bt-dust"><div class="cloud ol">${puffs}</div><div class="cloud">${puffs}</div>${sils}${words}${stars}</div>`;
+    // Kat's looping cloud sheet (art/fx/allout-cloud.webp, 5F) replaces the CSS puffs when it has loaded.
+    const cloudArt = FX && FX.artSrc && FX.artSrc('allout-cloud');
+    const cloud = cloudArt ? `<div class="cloud art" style="background-image:url('${cloudArt}')" data-f="0"></div>` : `<div class="cloud ol">${puffs}</div><div class="cloud">${puffs}</div>`;
+    if (cloudArt) mark('fx-art-allout-cloud');
+    wrap.innerHTML = `<div class="bt-speedlines"></div><div class="bt-dust">${cloud}${sils}${words}${stars}</div>`;
     const fr = BT.field.getBoundingClientRect(), rr = BT.root.getBoundingClientRect();
     const dust = wrap.querySelector('.bt-dust');
     dust.style.left = `${fr.left - rr.left + fr.width / 2}px`;
@@ -3374,9 +3397,12 @@
     shake(true);
     mark('allout-dust');
     // Frames cycle (preloaded with the field poses); reduced motion holds each figure's first frame.
-    const flick = FX && FX.reduced() ? 0 : setInterval(() => wrap.querySelectorAll('.sil.pose').forEach(im => {
-      const fs = brawlFrames(im.dataset.mid), f = (+im.dataset.f + 1) % fs.length; im.dataset.f = f; im.src = fs[f];
-    }), Math.round(170 / speed()));
+    // The cloud sheet steps its six frames at the same beat (frame 1 held under reduced motion).
+    const cloudEl = wrap.querySelector('.cloud.art');
+    const flick = FX && FX.reduced() ? 0 : setInterval(() => {
+      wrap.querySelectorAll('.sil.pose').forEach(im => { const fs = brawlFrames(im.dataset.mid), f = (+im.dataset.f + 1) % fs.length; im.dataset.f = f; im.src = fs[f]; });
+      if (cloudEl) { const f = (+cloudEl.dataset.f + 1) % 6; cloudEl.dataset.f = f; cloudEl.style.backgroundPosition = `${(f % 3) * 50}% ${Math.floor(f / 3) * 100}%`; }
+    }, Math.round(170 / speed()));
     await sleep(500); shake(true); await sleep(500); shake(true); await sleep(500);
     clearInterval(flick);
     wrap.innerHTML = '';
@@ -3394,7 +3420,8 @@
     blogAdd(`All-Out Attack! ${e.hits.map(h => `${B.U(h.tgt).name} −${h.amount}${h.killed ? ' (defeated)' : ''}`).join(', ')}`, 'pf');
     e.hits.forEach((h, i) => setTimeout(() => {
       const t = B.U(h.tgt);
-      fxPlay('strike', h.tgt, { crit: true });
+      const lands = fxPlay('strike', h.tgt, { crit: true });
+      if (FX && FX.hasArt && FX.hasArt('crit')) fxPlay('crit', h.tgt, { delay: Math.max(0, lands - 140) / 1000 });
       popup(h.tgt, { n: h.amount, cls: 'big crit' });
       paintEnemy(t, { hp: h.hp });
       const en = BT.enemies.get(h.tgt);

@@ -6501,6 +6501,21 @@
       "conversion": "tools/femc-icons.py rooms: each neon glyph cut out of its dark tile (outline and inside kept), square 128px, WebP q90; source unchanged",
       "place": "battle.js ROOM_ART: the Tartarus node map's room glyphs (start, corridor, unknown and the Night Orchid shrine keep their code glyphs); locked, clock and stairs tile colours changed to match the art",
       "cellsUnused": "7 (the Reaper: the map's Reaper marker already shows the Reaper's Shadow art and the code glyph was unused) and 8 (a cyan sigil with no matching room)"
+    },
+    {
+      "source": "pierce.png",
+      "sourceNow": "Added to Game/pierce.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8ef1ee0ecfb21b5e493ec5cf4a2b87162a4c9de5a2598936a37f8acf2ce6c29d",
+      "batch": 37,
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/pierce.webp",
+      "outputSha256": "b947fc76eb985cfb02f962f24aa8f0ddae9535e65909a88b0680357b173524ef",
+      "conversion": "tools/femc-fx.py all (SOURCES 'pierce'): fixed 3 x 2 grid of 512px cells, black turned into alpha (alpha = brightest channel, colour divided back out; soft glows kept), each frame's hot core aligned to the centre (ALIGN 'core': frames 4-6 sat ~100px left in the source) on a 1.3x padded canvas, 256px frames, one 768 x 512 WebP sheet (q90); source unchanged",
+      "place": "fx.js sheet player (FEMC-ART-TODO 5F): every pierce hit (the basic Attacks of Solar, Yukari, Mitsuru, Aigis, Ken, Minji and Jungwon, Twin Shot, Arrow Rain and the rest, the Shadows' arrows) plays the six frames with the damage number on frame 3; the code thrust effect stays as the fallback"
     }
   ],
   "batch1Validation": {

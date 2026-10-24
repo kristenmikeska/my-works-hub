@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**136 items:** 2 quick fixes · 7 CGs · 3 places · 68 character pieces (50 of them regulars' faces in 4D) · 42 battle (31 of them skill effects in 5F) · 8 cards and icons · 6 screens. 13 are ⭐ (plus 13 ⭐ regulars inside 4D), 90 are optional.
+**135 items:** 2 quick fixes · 7 CGs · 3 places · 68 character pieces (50 of them regulars' faces in 4D) · 41 battle (30 of them skill effects in 5F) · 8 cards and icons · 6 screens. 12 are ⭐ (plus 13 ⭐ regulars inside 4D), 90 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -607,19 +607,15 @@ Every spell, hit, heal, buff, ailment and burst is drawn in code now: `fx.js` pa
 - **On solid black, not transparent.** `fx.js` already draws its effects with additive blending (`lighter`), so black adds nothing. A black sheet drops straight in with no cutting-out, and soft glows keep their fade. ChatGPT's "transparent" glows often come back with a pale halo or a fake checkerboard, and the white-keying our cutting tools use would eat white-hot cores (light, elec, crits). One exception: the All-Out cloud is solid white with black ink, so it needs a real transparent background (prompt below).
 - **What black means for the art:** additive light can only brighten. Dark, poison and fear are drawn as glowing violet edges around empty black, and the game keeps its own dim shade under them.
 - **No text, no characters, no Shadow, no ground.** Each frame is centred at the same spot and size, with a wide empty margin so nothing crosses into the next square.
-- **Make ⭐ Pierce first,** then attach it to every later sheet so the set matches.
+- **Pierce is in the game** (Kat's first sheet, 2026-10-23): attach it to every later sheet so the set matches. Name each file `<name>.png` as in its **Fills** line (e.g. `slash.png`) and put it in New Adds.
 
 **Template** (each effect below is this one with its blanks filled, ready to paste):
 ```
 A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: [SPARK]. Frame 2: [BUILD-UP]. Frame 3, the peak: [IMPACT]. Frame 4: [SPREAD]. Frame 5: [BREAK-UP]. Frame 6: [LAST WISPS]. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, [COLOURS], high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
 ```
-**Attach for every sheet:** 1. a P3R screenshot of that skill landing, if you have one (🎨 `Inspo/` or your own captures); 2. 🎮 `battle/art/fx/pierce.webp` once it exists (to match the set). For the first sheet only, attach 🎮 `battle/art/theurgy/akihiko-strike-1.webp` for P3R's line and colour.
+**Attach for every sheet:** 1. a P3R screenshot of that skill landing, if you have one (🎨 `Inspo/` or your own captures); 2. 🎨 `Added to Game/pierce.png` (to match the set). For the first sheet only, attach 🎮 `battle/art/theurgy/akihiko-strike-1.webp` for P3R's line and colour.
 
 #### Element hits (every turn)
-- [ ] ⭐ **Pierce.** Uses: every basic Attack by Solar, Yukari, Mitsuru, Aigis, Ken, Minji and Jungwon, plus Twin Shot, Arrow Rain, Myriad Shots, Triple Down and the Shadows' arrows, pecks and horns. Now: thrust lines and a spark. **Fills:** `battle/art/fx/pierce.webp`.
-  ```
-  A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: a single pinpoint of white light with a thin needle of pale blue streaking in from the left. Frame 2: three long razor-thin thrust lines converging on the centre, pale ice-blue. Frame 3, the peak: a sharp four-pointed star burst at the centre, white-hot core, with a narrow diamond-shaped shockwave and a straight spear of light punching through left to right. Frame 4: the spear line splits into fine parallel streaks flying out to the right, small angular sparks scattering. Frame 5: the streaks thin out and fade, a few triangular sparks drifting. Frame 6: two or three faint blue specks and a dim afterglow line. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, pale steel blue (#9fd3ff) and white with a hint of cyan, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
-  ```
 - [ ] ⭐ **Slash.** Uses: every basic Attack by Junpei, Koromaru and Haechan, plus Cleave, Power Slash, Vorpal Blade, Double Fangs, Lunge, Home Run and the Shadows' slashes. Now: one white crescent arc. **Fills:** `battle/art/fx/slash.webp`.
   ```
   A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: a thin bright line starting at the upper left, the leading edge of a blade's path. Frame 2: a sharp crescent slash sweeping diagonally from upper left to lower right, tapering to points at both ends. Frame 3, the peak: the full crescent at its brightest, white-hot along the cutting edge, with a second thinner crescent crossing it and a short burst of angular sparks where they meet. Frame 4: the crescents widen and split into ribbon-like after-images, sparks flying along the cut. Frame 5: the ribbons thin and break into short dashes. Frame 6: a faint silver trace of the arc and a few drifting sparks. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, silver white (#e8e8f0) with cool lavender shading and a thin hot-pink (#ff4f9e) edge glow, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
@@ -880,36 +876,32 @@ The same pieces as a Theurgy (the steps above), in `assets/femc/battle/bonds.js`
 - **Finish cards (3C):** add `('finish', '<name>-alloutattack.png', '<mid>')` to the same `BUILD`, run it, and add the member to `FINISH_CARDS` in `battle.js`.
 
 ### Skill-effect sheets (5F)
-Not built yet: this is the plan for the first sheet that arrives. Everything stays data plus one tool, like the Theurgy art, and every effect keeps its code version as the fallback.
-1. **Cut.** A new `tools/femc-fx.py` (same shape as `femc-theurgy.py`: a `BUILD` list of `('fx', '<source>.png', '<name>')`, plus `check`):
-   - Split the 3:2 source into a fixed 3 × 2 grid (ChatGPT's 1536 × 1024 gives 512-px squares). Warn if any cell's bright pixels touch its edge, because the effect bled into the next frame.
-   - Align all six frames to the peak frame's (frame 3) brightness centroid with one shared shift, so the effect doesn't jitter, and scale each cell to 256 px (384 for `crit`, `weak`, `theurgy-burst` and `allout-cloud`).
-   - Turn black into alpha: alpha = max(r, g, b), with colour divided by alpha (unpremultiplied). The frame then looks the same drawn with `lighter` or normal blending, and stray dark-grey noise drops out. Skip this for `allout-cloud`: keep its real alpha, or key out the flat green if it came on green.
-   - Write one 3 × 2 WebP sheet to `battle/art/fx/<name>.webp`, and `battle/art/fx/index.js` (`window.FEMC_FX_ART = { <name>: { cell, frames: 6, peak: 2, blend: 'lighter' | 'source-over', loop?, tint? } }`). Load it before `fx.js` in both pages.
-2. **Play** (`fx.js`):
-   - `attach()` preloads every sheet in `FEMC_FX_ART` through the existing `preload` / `imgCache`.
-   - A new `sheet(name, at, o)` adds one effect that draws frame `floor(t / fd)` with a `drawImage` source rect, centred on `at.x`, `at.y`, sized from `sizeOf(at)` (× 2.2 for `at.big` and the four big sheets), in the sheet's blend. `fd` is about 70 ms at 1x. The loop's `dt` already carries battle speed, so 2x battles play it twice as fast.
-   - It returns `peak × fd × 1000`, the "lands" time, so `battle.js` drops the damage number on frame 3 the way it does for the code effects.
-   - `buff` gets its stat colour (`STAT_COL`, from `o.stat`) through an offscreen `source-in` wash before the `lighter` draw (`tint: true`). `theurgy-burst` takes the Theurgy's element colour the same way, except for Solar's sun, which stays untinted.
-3. **Hook in, fallback kept.** In `play()`, after the reduced-motion line and before the `switch`, add `const art = artFor(kind, o); if (art) return sheet(art, at, o);`. `artFor` gives back a name only when its image is loaded (`ready(im)`). A missing file, a 404 or a sheet still loading falls through to the code version, unchanged. Mapping:
-   - Element kinds map one to one.
-   - `buff` maps to `debuff` when `o.dir < 0`.
-   - `revive`, `cure`, `charm`, `poison`, `distress`, `bind` and `shatter` map to the sheets of the same name.
-   - `fear` / `freeze` / `shock` play their own sheets before borrowing Dark / Ice / Elec.
-   - `fxHit`'s `e.insta` branch passes `insta: true`, so Hama / Mudo play `hama` / `mudo` when present.
-   - The signature kinds stay code.
-   - A low-cost extra: keep 6 to 10 of the code's sparks on top of the sheet (skip them in Performance mode, `setQuality('low')`).
-4. **Crit and weakness** (`battle.js` hit case):
-   - With `crit` art, `fxHit` also plays `crit` big over the target when `e.crit`. `flash()` still fires but at a third of its strength, since the sheet carries the flash. The shake stays.
-   - With `weak` art, play `weak` instead of inserting `.bt-wburst`. Keep the CSS ring when the sheet is missing, and keep the hit-stop either way.
-5. **Theurgy, All-Out, Shuffle Time** (DOM, not the field canvas):
-   - **Theurgy:** at `f-hit`, `theurgyCut` adds class `has-fx` and calls `FX.play('theurgy-burst', { x, y, big: true })` at `--fx` / `--fy`. `.has-fx .th-burst, .has-fx .th-rays { display: none }`, so without the art the CSS burst and rays run as now.
-   - **All-Out:** `allOutSequence` swaps the two `.cloud` puff layers for one `<img class="cloud art">` and steps its six frames with the chibi `flick` interval (170 ms / speed). A CSS sprite (`background-position` with `steps(1)`) is the alternative.
-   - **Shuffle Time:** the flip flare is a CSS sprite on `.bt-sh-card.up::after` (6 steps, `mix-blend-mode: screen`, so the black drops out over the card). Shuffle Time is its own screen, away from the field canvas.
-6. **Reduce flashes** (`calm`, `flashK()`): a sheet's frames 2–4 (the peak) draw at 0.45 alpha, and the `crit` / `theurgy-burst` sheets also scale to 0.75. Full-screen flashes keep their own `flashK` (a fifth). The All-Out cloud isn't a flash, so it's unchanged. Shuffle's flare uses the existing `html.bt-calm` hook (opacity .4).
-7. **Reduced motion:** `play()` already returns `simple()` (one soft flash) before any effect is chosen. Keep that, so no sheet animates. The All-Out cloud shows frame 1 still (as the chibi frames do now), the Theurgy keeps its reduced-motion fade, and Shuffle's flare is off with `.bt-shuffle.reduced`.
-8. **Ship:**
-   - Bump `ART_V` in `battle.js` and the `fx.js` / `fx/index.js` `?v=` in both pages.
-   - Add `mark('fx-art-<name>')` next to the existing `fx-<kind>` mark.
-   - Extend `tests/femc_theurgy.py` (or a new `tests/femc_fx_art.py`) to check four cases: each sheet loads and plays its frames; a missing sheet falls back to the code version; `calm` lowers the peak alpha; reduced motion plays no sheet. Do it at 1000×486, 375×812 and 1440×900.
-   - Move the source to `Added to Game/` and add its entry (hash, outputs) to `tools/femc-new-adds.json`.
+**Built (2026-10-23).** The sheet player is in the game, and every effect keeps its code version as the fallback. Pierce is the first real sheet.
+
+**Adding a sheet:**
+1. Drop the 3 × 2 source in **New Adds**, named as its **Fills** line says (`slash.png`; `fx-slash.png` works too).
+2. Run `python3 tools/femc-fx.py all`. It builds every sheet whose source is in New Adds or Added to Game, rewrites `battle/art/fx/index.js`, and points `femc-battle.html`'s `fx/index.js?v=` at the new list. No other bump is needed, because each sheet's URL carries its own content hash.
+3. Look at it: run `python3 tools/femc-fx.py check OUT.png slash` (the sheet on black, field purple and white), then play a hit in a battle.
+4. Move the source to Added to Game (same name), add its manifest entry to `tools/femc-new-adds.json`, and tick it off in 5F. `all` still finds it there, so the tool stays re-runnable.
+
+**The tool** (`tools/femc-fx.py`; its header has the details):
+- It cuts the fixed 3 × 2 grid and warns when a frame's light touches its cell edge.
+- Black becomes alpha (alpha = brightest channel, colour divided back out), so soft glows keep their fade and white-hot cores stay solid. `allout-cloud` keeps its own alpha, or keys out flat #00ff00.
+- Frames go to 256 px (384 for crit, weak, theurgy-burst and allout-cloud), in one WebP per effect.
+- `SOURCES` maps a name to an oddly named file.
+- `ALIGN`: the default is one shared shift (the peak frame's brightness centre to the middle). `'core'` puts each frame's hot core on the middle, on a 1.3× padded canvas (the index's `scale`). Use it for a sheet whose frames drift in the source, like Pierce (frames 4–6 sat left).
+
+**The player** (`fx.js`, "Skill-effect sheets"):
+- `play()` checks `artFor(kind, o)` after the reduced-motion line. A listed sheet that has loaded plays its six frames (70 ms each at 1x; battle speed applies) and returns 140 ms, so the damage number lands on frame 3. A missing sheet, a 404 or one still loading plays the code effect, unchanged.
+- **Mapping:** element kinds are one to one. `buff` uses `debuff` when `dir < 0`. Fear, freeze and shock play their own sheet first, then borrow Dark, Ice or Elec at the small size. Shatter uses its own sheet, then Ice. Instant kills use `hama` / `mudo`, then Light / Dark. Signature kinds stay code.
+- **Extras:** a few code sparks are drawn on top at the impact (not in Performance mode). The buff sheet is tinted per stat (`STAT_COL`), and theurgy-burst per element (Solar's sun stays untinted). Sheets are preloaded in `attach()`.
+- **Hooks in `battle.js`:**
+  - Crit: the `crit` sheet over the target, peaking on the hit, including the All-Out's final hits. The white flash drops to a third (`flash(pink, k)`, `--fk`).
+  - Weakness: the `weak` sheet in place of `.bt-wburst`; the hit-stop stays either way.
+  - Theurgy: `theurgy-burst` at `f-hit` (class `has-fx` hides the CSS burst and rays).
+  - All-Out: `allout-cloud` becomes `.cloud.art`, stepped with the chibi beat, and holds frame 1 under reduced motion.
+  - Shuffle Time: `shuffle-flip` is a CSS sprite on `.bt-sh-card.up::after` (`has-flip`, screen blend).
+  - Marks: `fx-art-<name>`.
+- **Reduce flashes:** frames 2–4 draw at 0.45, and crit / theurgy-burst at 0.75 size. Shuffle's flare is at .4.
+- **Reduced motion:** no sheet plays; it keeps the single soft flash.
+- **Test:** `python3 tests/femc_fx_art.py`. It makes its own sheet in the page, so it needs no shipped art.
