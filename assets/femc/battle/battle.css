@@ -583,7 +583,7 @@ html.femc:not(.femc-reader) body.bt-page::after { display: none; }
 .bt-evoke.out { opacity: 0; transition: opacity calc(200ms / var(--spd)); }
 /* Solar: Kat's close-up of the Evoker at her temple, on a slanted panel. */
 .bt-evk-shot { position: absolute; inset: 0; z-index: 8; clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%); background: #05060c; animation: bt-evk-in calc(160ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; }
-.bt-evk-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 30%; animation: bt-evk-push calc(400ms / var(--spd)) ease-out both; }
+.bt-evk-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--op, 62% 30%); animation: bt-evk-push calc(400ms / var(--spd)) ease-out both; }
 /* Everyone else: a band with their eyes and an Evoker at the temple. */
 .bt-evk-band { --c: var(--pink); position: absolute; left: 0; right: 0; top: 28%; height: 200px; z-index: 8; clip-path: polygon(0 18%, 100% 0, 100% 82%, 0 100%); background: linear-gradient(90deg, #14070f, #2a0c1e 50%, #14070f); animation: bt-evk-in calc(160ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; }
 .bt-evk-band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 30%, rgba(255, 255, 255, .06) 50%, transparent 70%); }
@@ -824,7 +824,7 @@ html.femc:not(.femc-reader) body.bt-page::after { display: none; }
   .bt-evk-band { --zk: .78; }
   .bt-evk-band .gun { right: calc(50% + 34px); width: 130px; top: 34%; }
   .bt-evk-shot { top: 14%; bottom: 30%; }
-  .bt-evk-shot img { object-position: 66% 20%; }
+  .bt-evk-shot img { object-position: var(--opm, 66% 20%); }
   .bt-evoke > img.per { right: -24vw; height: 80vh; bottom: 10vh; }
   .bt-evk-name { left: 6vw; top: 16%; font-size: 60px; }
   .bt-awk-f img { object-position: 52% 30%; }

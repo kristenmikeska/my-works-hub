@@ -72,7 +72,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 25;
+  const ART_V = 26;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -90,7 +90,7 @@
     if (T.sequence) T.sequence = T.sequence.map(f => (f && typeof f === 'object' ? Object.assign({}, f, { src: artV(f.src) }) : artV(f)));
     if (T.layers) ['bg', 'persona', 'char'].forEach(k => { const v = T.layers[k]; if (v && typeof v === 'object') v.src = artV(v.src); else if (v) T.layers[k] = artV(v); });
   };
-  D.party.forEach(m => { verTh(m.theurgy); Object.values((m.theurgy && m.theurgy.forms) || {}).forEach(verTh); if (m.evoker) m.evoker.frames = m.evoker.frames.map(artV); });
+  D.party.forEach(m => { verTh(m.theurgy); Object.values((m.theurgy && m.theurgy.forms) || {}).forEach(verTh); if (m.evoker) { if (m.evoker.frames) m.evoker.frames = m.evoker.frames.map(artV); if (m.evoker.shot) m.evoker.shot = artV(m.evoker.shot); } });
   const FINISH_DIR = 'assets/femc/battle/art/finish/', SUMMON_DIR = 'assets/femc/battle/art/summon/';
   // Searchers' finish cards (Kat's <name>-alloutattack.png, cut by tools/femc-cards.py): all four have one now; a searcher
   // without one would use their portrait. Searchers' cards carry ART_V (the S.E.E.S. ones are older and unchanged).
@@ -2520,15 +2520,17 @@
   }
   async function evoker(u, skillName, fp = null) {
     const m = member(u.mid), per = D.personas[u.personaId] || D.personas[m.persona], reduced = !FX || FX.reduced() || perf(), solar = u.mid === 'solar';
-    await stills((solar ? [SUMMON_DIR + 'solar-evoker.webp', per.art] : [per.art, pimg(u.mid, m.faces.idle), EVOKER_ART]).concat(evokeFrames(u.mid) || []), 900);
+    // A close-up Evoker shot (Solar's, or a member's evoker.shot) fills the cut-in; everyone else gets their face and the prop.
+    const ev = m.evoker || {}, shotSrc = solar ? SUMMON_DIR + 'solar-evoker.webp' : ev.shot || null;
+    await stills((shotSrc ? [shotSrc, per.art] : [per.art, pimg(u.mid, m.faces.idle), EVOKER_ART]).concat(evokeFrames(u.mid) || []), 900);
     const wrap = document.createElement('div');
     wrap.className = `bt-evoke${solar ? ' solar' : ''}`;
     wrap.style.setProperty('--spd', speed());
     // A summon clip (data.clips.summon) replaces Solar's Evoker still when it's loaded and ready.
     const sclip = solar && !reduced && prepClip('summon');
     const useS = sclip && await sclip.ready(250);
-    const shot = solar
-      ? `<div class="bt-evk-shot">${useS ? '' : `<img src="${SUMMON_DIR}solar-evoker.webp" alt="">`}</div>`
+    const shot = shotSrc
+      ? `<div class="bt-evk-shot"${ev.pos ? ` style="--op:${ev.pos};--opm:${ev.posPhone || ev.pos}"` : ''}>${useS ? '' : `<img src="${shotSrc}" alt="">`}</div>`
       : `<div class="bt-evk-band" style="--c:${m.color}">${fimg(u.mid, m.faces.idle, '', 'face')}<img class="gun" src="${EVOKER_ART}" alt=""></div>`;
     // With an Evoker sheet: after the glass breaks, the full-body shot stands beside the Persona, then the Evoker lowers.
     const body = !fp && evokeFrames(u.mid) && !reduced && evokeFrames(u.mid).every(f => { const im = still(f).im; return im.complete && im.naturalWidth; }) ? evokeFrames(u.mid) : null;
@@ -2559,6 +2561,7 @@
     sfx('click');
     mark('evoke');
     mark('evoke-' + u.mid);
+    if (shotSrc && !solar) mark('evoke-shot');
     await sleep(reduced ? 140 : 320);
     const sh = wrap.querySelector('.bt-evk-shot, .bt-evk-band');
     sfx('evoker');
@@ -2566,9 +2569,10 @@
     if (!reduced) {
       const R = BT.root.getBoundingClientRect();
       let cx, cy, extras;
-      if (solar) {
+      if (shotSrc) {
         const im = sh.querySelector('img'), cb = im ? coverBox(im) : { x: 0, y: 0, w: BT.root.clientWidth, h: BT.root.clientHeight };
-        cx = cb.x + cb.w * 0.515; cy = cb.y + cb.h * 0.18; // the Evoker's muzzle at her temple
+        const at = ev.at || [51.5, 18]; // the Evoker's muzzle at the temple, in % of the shot
+        cx = cb.x + cb.w * at[0] / 100; cy = cb.y + cb.h * at[1] / 100;
         extras = [{ el: sh, clip: [[0, 6], [100, 0], [100, 94], [0, 100]], fill: '#05060c', cover: true }];
       } else {
         const g = sh.querySelector('.gun').getBoundingClientRect();

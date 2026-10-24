@@ -8277,6 +8277,453 @@
       "textCheck": "checked 2026-10-24 against the image: added a short narration line naming Minji (filming), Hyein (rental bag) and Koromaru (rope collar), a Kiriko-at-the-bell line (ifMet kiriko; else an unnamed girl in a fox mask), and a Haechan-at-her-shoulder line; Solar's outfit unstated; otherwise matches",
       "mobileFocus": "36% 45%",
       "outputSha256": "8974c1725d4e997fc6f74bed1780d610e385f29f31ce307053530d09b5d2aa0c"
+    },
+    {
+      "batch": 43,
+      "source": "akihiko-evoker.png",
+      "sourceNow": "Added to Game/akihiko-evoker.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "9e0bf8447aef1387ccac6ad8748ec6523a3d82c9856d02906ca7d8b2985af396",
+      "status": "integrated",
+      "character": "akihiko",
+      "destination": "assets/femc/battle/art/summon/akihiko-evoker.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "placement": "data.js party akihiko: evoker.shot (muzzle at [42.9, 29.6] %, pos / posPhone object-position); battle.js evoker() fills the summon cut-in with it like Solar's close-up (.bt-evk-shot) instead of the face-and-prop band, and the glass breaks at the muzzle",
+      "outputSha256": "28a68b9da6c3a5913d1e04f1eb2c67b2943e68faa5bf0d7528148174a4989351"
+    },
+    {
+      "batch": 43,
+      "source": "shinjiro-evoker.png",
+      "sourceNow": "Added to Game/shinjiro-evoker.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e0a43b18aced535262f1af1df2cd1eeecd0bfea5d51b618147a5eba3c39a1007",
+      "status": "integrated",
+      "character": "shinjiro",
+      "destination": "assets/femc/battle/art/summon/shinjiro-evoker.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "placement": "data.js party shinjiro: evoker.shot (muzzle at [24, 24] %, pos / posPhone object-position); battle.js evoker() fills the summon cut-in with it like Solar's close-up (.bt-evk-shot) instead of the face-and-prop band, and the glass breaks at the muzzle; Shinjiro had no earlier shot (the redo replaces the prop version)",
+      "outputSha256": "b6e140b27d354eb228d47f49eee0946ba45c5083573b0a07bb9ccafa7ad842f6"
+    },
+    {
+      "batch": 43,
+      "source": "dark.jpeg",
+      "sourceNow": "Added to Game/dark.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "ebb2a81180df6e7768b76f952a3b596f8ea4f635c8d7d4c6be1b0b25365a8a93",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/dark.webp",
+      "conversion": "tools/femc-fx.py all: 3 x 2 grid, black to alpha (brightest channel, colour divided out), shared alignment kept inside the cell, edges feathered, 256px frames, WebP q90; source unchanged",
+      "place": "fx.js sheet player: the 'dark' effect (FEMC-ART-TODO 5F, the last of the 31); Dark hits, Dark insta-kills after mudo, Dark Theurgy and bond hits",
+      "outputSha256": "c75535c05af22e9c635093b0a1f35124b2bc437c953f6f9ee815dea4f86936d0"
+    },
+    {
+      "batch": 43,
+      "source": "junpei-fullbody.png",
+      "sourceNow": "Added to Game/junpei-fullbody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "a37cebf0fa013e68fd28af22d531a5d96effd73e1b25c0ead9668c5bf5ea54c2",
+      "status": "integrated",
+      "character": "junpei",
+      "destination": "assets/femc/profile/sees/junpei.webp",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "conversion": "Opaque grey background removed: macOS Vision subject mask (tools/femc-lift.swift), eroded 1px against the fringe; trimmed; 1400px tall; WebP q90; source unchanged",
+      "placement": "compendium.js entry junpei: img profile/sees/junpei.webp, profile: true (existing entry; name, note and unlock unchanged)",
+      "outputSha256": "c63ec5523055f3f1c8d5b5605bb63418fedd3f0461d4cedfaad09aafe2c9beee"
+    },
+    {
+      "batch": 43,
+      "source": "fuuka-fullbody.png",
+      "sourceNow": "Added to Game/fuuka-fullbody.png",
+      "size": [
+        1002,
+        1570
+      ],
+      "sha256": "fe02442f9e1f01e741dd33d3b9a74ffbbed95219599168334354e4b2099249c2",
+      "status": "integrated",
+      "character": "fuuka",
+      "destination": "assets/femc/profile/sees/fuuka.webp",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "conversion": "Already transparent; alpha under 8 dropped; trimmed; 1400px tall; WebP q90; source unchanged",
+      "placement": "compendium.js entry fuuka: img profile/sees/fuuka.webp, profile: true (new entry: unlock met:fuuka, secret, the note is the link's own approach line)",
+      "outputSha256": "2e1654c92d9e36e0e42f7bd42ce50f94607d1008080381164be70d63275788f7"
+    },
+    {
+      "batch": 43,
+      "source": "sunoo-fullbody.png",
+      "sourceNow": "Added to Game/sunoo-fullbody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "20fdad3b5e2d33809907ffe2ae63de65ec1823823fd47f66aa5393b8e0dce1a1",
+      "status": "integrated",
+      "character": "sunoo",
+      "destination": "assets/femc/profile/searchers/sunoo.webp",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "conversion": "Already transparent; alpha under 8 dropped; trimmed; 1400px tall; WebP q90; source unchanged",
+      "placement": "compendium.js entry sunoo: img profile/searchers/sunoo.webp, profile: true (new entry: unlock met:sunoo, secret, the note is the link's own approach line)",
+      "outputSha256": "1c77d3b43c4b7f5d8222e83c626532d511ddf08375b163963b5c0e77b15970d3"
+    },
+    {
+      "batch": 43,
+      "source": "junkyu-fullbody.png",
+      "sourceNow": "Added to Game/junkyu-fullbody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "193b1ad5f0fa79f06d42352f17ad59d3753effd4f887b09e0677db4e6172fc96",
+      "status": "integrated",
+      "character": "junkyu",
+      "destination": "assets/femc/profile/searchers/junkyu.webp",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "conversion": "Already transparent; alpha under 8 dropped; trimmed; 1400px tall; WebP q90; source unchanged",
+      "placement": "compendium.js entry junkyu: img profile/searchers/junkyu.webp, profile: true (new entry: unlock met:junkyu, secret, the note is the link's own approach line)",
+      "outputSha256": "5496e42ad906f8cf85b78284e3ddd67ee8e50213f4ebe3390d231d2b70ce5586"
+    },
+    {
+      "batch": 43,
+      "source": "chenle-fullbody.png",
+      "sourceNow": "Added to Game/chenle-fullbody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "20d2b429f5ff3c3215af17dea60b1b6d9d4ecb57dc76e510243fe15564f51fdc",
+      "status": "integrated",
+      "character": "chenle",
+      "destination": "assets/femc/profile/searchers/chenle.webp",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "conversion": "Already transparent; alpha under 8 dropped; trimmed; 1400px tall; WebP q90; source unchanged",
+      "placement": "compendium.js entry chenle: img profile/searchers/chenle.webp, profile: true (new entry: unlock met:chenle, secret, the note is the link's own approach line)",
+      "outputSha256": "0ed070cb0ce8f94f7e5c4fbcc4b824a6fe561eeb5367b4a355765f79b16448c0"
+    },
+    {
+      "batch": 43,
+      "source": "danielle-fullbody.png",
+      "sourceNow": "Added to Game/danielle-fullbody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b42e4c664fa0975c3975f88a9c0f54769891fba1d4d575db979716f5ff718032",
+      "status": "integrated",
+      "character": "danielle",
+      "destination": "assets/femc/profile/searchers/danielle.webp",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "conversion": "Already transparent; alpha under 8 dropped; trimmed; 1400px tall; WebP q90; source unchanged",
+      "placement": "compendium.js entry danielle: img profile/searchers/danielle.webp, profile: true (new entry: unlock met:danielle, secret, the note is the link's own approach line)",
+      "outputSha256": "c0fc0ecb33415e7c9233fbd8a1ef6ed747b36909849c2ed4b098809ae156c141"
+    },
+    {
+      "batch": 43,
+      "source": "jaemin-fullbody.png",
+      "sourceNow": "Added to Game/jaemin-fullbody.png",
+      "size": [
+        887,
+        1774
+      ],
+      "sha256": "66ab48e9b6ba9a75256488f358a4e175a0656dc1b1e0fee855cc322d99989224",
+      "status": "integrated",
+      "character": "jaemin",
+      "destination": "assets/femc/profile/searchers/jaemin.webp",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "conversion": "Already transparent; alpha under 8 dropped; trimmed; 1400px tall; WebP q90; source unchanged",
+      "placement": "compendium.js entry jaemin: img profile/searchers/jaemin.webp, profile: true (new entry: unlock met:jaemin, secret, the note is the link's own approach line)",
+      "outputSha256": "4afcf11c70531061c9e5f70487d8819c21795f3e904de442065ef5a0c6645545"
+    },
+    {
+      "batch": 43,
+      "source": "wren-fullbody.png",
+      "sourceNow": "Added to Game/wren-fullbody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e0d9118a1938b9851a35b9bfd15fc00505cdb90ec5d1b195712499c183767a42",
+      "status": "integrated",
+      "character": "wren",
+      "destination": "assets/femc/profile/wren.webp",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "conversion": "Already transparent; alpha under 8 dropped; trimmed; 1400px tall; WebP q90; source unchanged",
+      "placement": "compendium.js entry wren: img profile/wren.webp, profile: true (new entry: unlock met:wren, secret, the note is the link's own approach line); not in profile/index.js, so v1's pages are unchanged",
+      "outputSha256": "a5ef673075a4da6b98a018602359e21a1d187b2f6883f600b1c1c9001c2556ab"
+    },
+    {
+      "batch": 43,
+      "source": "elizabeth-fullbody.png",
+      "sourceNow": "Added to Game/elizabeth-fullbody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "7e96ed7fef21f0cb0018e8b8fd4912310a983e581dd7eeb812d60b30c7ab3881",
+      "status": "integrated",
+      "character": "elizabeth",
+      "destination": "assets/femc/profile/elizabeth.webp",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "conversion": "Already transparent; alpha under 8 dropped; trimmed; 1400px tall; WebP q90; source unchanged",
+      "placement": "compendium.js entry elizabeth: img profile/elizabeth.webp, profile: true (existing entry; name, note and unlock unchanged); not in profile/index.js, so v1's pages are unchanged",
+      "outputSha256": "f3fa6e9c76dd5141d7b01d95ea63a6535a3c26f0028587d7d25e1e8fe3d20a79"
+    },
+    {
+      "batch": 43,
+      "source": "mymelody-fullbody.png",
+      "sourceNow": "Added to Game/mymelody-fullbody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "12f3e9b83e17870033d006363beb600a36406c90fab7492a1e0f2a2ee22eb360",
+      "status": "integrated",
+      "character": "mymelody",
+      "destination": "assets/femc/profile/mymelody.webp",
+      "intendedUse": "Compendium full-body art, as specified by Kat",
+      "conversion": "Already transparent; alpha under 8 dropped; trimmed; 1400px tall; WebP q90; source unchanged",
+      "placement": "compendium.js entry mymelody: img profile/mymelody.webp, profile: true (existing entry; name, note and unlock unchanged); not in profile/index.js, so v1's pages are unchanged",
+      "outputSha256": "7638d5b0cbc027e7674839cf4fad7efe11ff426005de02efaafaae8d883726d3"
+    },
+    {
+      "batch": 43,
+      "source": "story-train-tartarus.png",
+      "sourceNow": "Added to Game/story-train-tartarus.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "b91a578a0a38b4dc729f2bf02195605e7c45bf8b02192d2c8ff92be8d113534f",
+      "status": "integrated",
+      "destination": "assets/femc/cg/story-train-tartarus.webp",
+      "event": "a5-train",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "placement": "story-act5.js a5-train (12/2, Tartarus): { cg } from the train passing close through the sleepers and Haechan's window line, cleared before the train goes on up the tower; Memories -> Story",
+      "mobileFocus": "55% 40%",
+      "textCheck": "checked 2026-10-24 against the image: Haechan stands behind her, not beside her (one word); Minji's camera and the absent Ken / Koromaru are fine; otherwise matches",
+      "outputSha256": "caab6659e728e1cb142739506e7c21b6d96209712807e70bece14a979009ade0"
+    },
+    {
+      "batch": 43,
+      "source": "link-mercy-aphrodite-hair.png",
+      "sourceNow": "Added to Game/link-mercy-aphrodite-hair.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e3142677f6bfaf37965b2c291bf55f52e54f09864388c502cdef8cd7074deeb7",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-mercy-aphrodite-hair.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "placement": "links/mercy.js rank 7 ('7: big sisters', the shared Mercy / Aphrodite afternoon): { cg } from Solar on the desk chair through the haircut-and-makeup line, cleared before the mirror line; Memories -> Romance & bonds",
+      "mobileFocus": "52% 30%",
+      "textCheck": "checked 2026-10-24 against the image: Aphrodite arrives in gold and violet (was white and gold, both branches); otherwise matches (Mercy behind with scissors and comb, Aphrodite kneeling in front with the palette)",
+      "outputSha256": "8e3e1d870863d3e121a64f582e99a9620608ef76fea4a4e06d479323ec41b594"
+    },
+    {
+      "batch": 43,
+      "source": "menu tabs/album.png",
+      "sourceNow": "Added to Game/menu tabs/album.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "cbeb9960dc12b8be12d2f3faf8d2b2c652eeb80b2b7c8982ca145c20811dbcbe",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/icons/album.webp",
+      "outputSha256": "3a86d70af253839249b607d592ae44fca2330049f7034afd331475771560acb9",
+      "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the 'album' field-menu tab's label (and the title-screen Extras tab); text-only if the file fails (onerror removes it)"
+    },
+    {
+      "batch": 43,
+      "source": "menu tabs/bonds.png",
+      "sourceNow": "Added to Game/menu tabs/bonds.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "2090c5e13a41bbebb34f3542176bb4dda95c311e27a4d3e414cbe1202d778fcc",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/icons/bonds.webp",
+      "outputSha256": "68fe2164680cb186e7a9dbc5433f4c7756c43cc9a750fd7dbf5d3c4f4c0986a4",
+      "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the 'bonds' field-menu tab's label; text-only if the file fails (onerror removes it)"
+    },
+    {
+      "batch": 43,
+      "source": "menu tabs/cards.png",
+      "sourceNow": "Added to Game/menu tabs/cards.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "01e6c2c02faf5b4e63f2735098ab50cdc392b3dd37ab22e0294930e99cfef885",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/icons/cards.webp",
+      "outputSha256": "7967337775b80df5c16c126a3fcf201e90f354da66520e7adea62f51080b6af3",
+      "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the 'cards' field-menu tab's label; text-only if the file fails (onerror removes it)"
+    },
+    {
+      "batch": 43,
+      "source": "menu tabs/collection.png",
+      "sourceNow": "Added to Game/menu tabs/collection.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "d2b0df10237efc893cee82c0965b7927c9286b09a562bdcf5f6c37d41ba2f484",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/icons/collection.webp",
+      "outputSha256": "552028f19ba2454d61991007acb9c1b0e5a593a9976e1a1bfdecfd9115bb477c",
+      "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the 'collection' field-menu tab's label; text-only if the file fails (onerror removes it)"
+    },
+    {
+      "batch": 43,
+      "source": "menu tabs/equipment.png",
+      "sourceNow": "Added to Game/menu tabs/equipment.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "acec4146656791781452d95c66fa8c24ca296f30849feea76e9f4e9b9e6bed3b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/icons/equip.webp",
+      "outputSha256": "6964b3f7e999472c635a74a9bc9a8db405020913dfb3e27b9cda7d6b6a66ffb0",
+      "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the 'equip' field-menu tab's label; text-only if the file fails (onerror removes it)"
+    },
+    {
+      "batch": 43,
+      "source": "menu tabs/items.png",
+      "sourceNow": "Added to Game/menu tabs/items.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "04958813365f4a8e894960d5e385ef16ccd107b9cf6ba59722629aaf0f9b2a8b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/icons/items.webp",
+      "outputSha256": "436c7b5e19e1723fe2f7a686cf4d11efc3b2b09341ab8038c393b3a8b4f7dfdf",
+      "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the 'items' field-menu tab's label; text-only if the file fails (onerror removes it)"
+    },
+    {
+      "batch": 43,
+      "source": "menu tabs/journal.png",
+      "sourceNow": "Added to Game/menu tabs/journal.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "2e0508a5f5b810af30d0b5d69873c3813a77079b6b0a0d39c171732892fa8997",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/icons/journal.webp",
+      "outputSha256": "fe9c4403dfd9bf13c5b2775990430ed35b647c9b09123f80dba541f89ecc5ae8",
+      "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the 'journal' field-menu tab's label; text-only if the file fails (onerror removes it)"
+    },
+    {
+      "batch": 43,
+      "source": "menu tabs/links.png",
+      "sourceNow": "Added to Game/menu tabs/links.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "83ff3bb19596cb3e9c0a425e5192e34fe224fba36451782ad2970a55365245dc",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/icons/links.webp",
+      "outputSha256": "e9b246de8359d34c668200e80c0306274d436f2b1a34771a936e252d80bc6176",
+      "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the 'links' field-menu tab's label; text-only if the file fails (onerror removes it)"
+    },
+    {
+      "batch": 43,
+      "source": "menu tabs/party.png",
+      "sourceNow": "Added to Game/menu tabs/party.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "83b2b58994201c438571ef189d62dabc769611f86ed42d8d5ba182829f3c26a9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/icons/party.webp",
+      "outputSha256": "59119aff35743374ac134b8482a8df9fbe60863d99671ab02f27cca216ce82b9",
+      "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the 'party' field-menu tab's label; text-only if the file fails (onerror removes it)"
+    },
+    {
+      "batch": 43,
+      "source": "menu tabs/personas.png",
+      "sourceNow": "Added to Game/menu tabs/personas.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "bdf7dfa9a8a7db0bb916c456e6e832913d15775c016ca4554dc7fcd6fdc1d22f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/icons/personas.webp",
+      "outputSha256": "766004be0aefdb458261d822d137c95f5cc40717a49d82710eb5613c0299cbd3",
+      "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the 'personas' field-menu tab's label; text-only if the file fails (onerror removes it)"
+    },
+    {
+      "batch": 43,
+      "source": "menu tabs/skills.png",
+      "sourceNow": "Added to Game/menu tabs/skills.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "432d048d7ac70ac8b10c2b0fe7ced4b025dc3ad78ec2f37f8698628a906b2498",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/icons/skills.webp",
+      "outputSha256": "712e37b1f0c3ca237721b12dc1f134cecc56035b5b3d7f95847cbaff88b6a2d8",
+      "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the 'skills' field-menu tab's label; text-only if the file fails (onerror removes it)"
+    },
+    {
+      "batch": 43,
+      "source": "menu tabs/status.png",
+      "sourceNow": "Added to Game/menu tabs/status.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "a5f0523e3d2c582d2e91da553a286959dde661fcd84bbbb459f8e25f4a267ef2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/icons/status.webp",
+      "outputSha256": "5ea7882f480951a594b14ef6ee2713a1303e9e0b80ab1ab0913bf3dcb9b589d7",
+      "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the 'status' field-menu tab's label; text-only if the file fails (onerror removes it)"
+    },
+    {
+      "batch": 43,
+      "source": "menu tabs/theater.png",
+      "sourceNow": "Added to Game/menu tabs/theater.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "9216414c79b69007654cecc2b630970e4277dc2681bec7d3c7ff2d12bdd7fdb3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/icons/theater.webp",
+      "outputSha256": "52edf2d8aaefc9045790d791d4c8bd622b38c6386092baff84898bbe9a3327a1",
+      "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the 'theater' field-menu tab's label (and the title-screen Extras tab); text-only if the file fails (onerror removes it)"
     }
   ],
   "batch1Validation": {
@@ -8851,5 +9298,22 @@
     ],
     "html": "femc-game.html portraits index v133, scale v133",
     "browserErrors": 0
+  },
+  "batch43Validation": {
+    "date": "2026-10-24",
+    "scope": "Evoker close-ups for Akihiko and Shinjiro (4A), the Dark skill sheet (5F, last), ten Compendium full bodies (4B), the train-through-Tartarus and Mercy/Aphrodite CGs (2), thirteen menu-tab icons (6)",
+    "sourcesInspected": "all 28 viewed; the Dark sheet on its femc-fx.py check contact sheet; Evoker shots in real summons; CGs at 1280x720 and 375x812; Compendium cards; menu tabs at 1280x720 and 375x812",
+    "sourcesIntegrated": 28,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; menu tabs/ to Added to Game/menu tabs/); On Hold untouched",
+    "unusedTabIcons": "none: all 13 map to existing tabs (equipment.png -> equip); Calendar and Compendium stay text-only",
+    "tests": [
+      "python3 tools/femc-check-scenes.py --links mercy,aphrodite (OK)",
+      "python3 tests/femc_gallery.py (94 checks)",
+      "python3 tests/femc_compendium.py --ids junpei,fuuka,sunoo,junkyu,wren (23 unlock checks, 5 profiles) plus Elizabeth's card with the femc stamp at 1280x800 / 390x844",
+      "python3 tests/femc_fx_art.py (new section 5: the shipped Dark sheet plays all six frames on a real Dark hit through the menu)",
+      "python3 tests/femc_theurgy.py (new 4c: Akihiko's and Shinjiro's shots in real summons at 1440x900, 1000x486, 375x812)"
+    ],
+    "html": "femc-game.html places v38, story-act5 v15, mercy v8, game.css v19, menu v17, data v28; femc-battle.html battle.css v30, data v28, battle v44, fx/index.js hash; femc-mode.js v101 on 12 pages (FEMC_ASSET_VERSION 135); ART_V 26"
   }
 }

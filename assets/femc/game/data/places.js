@@ -351,7 +351,7 @@ window.FEMC_GAME_PLACES = {
     'searchers-jungwon-awakening': '37% 35%', 'searchers-haechan-awakening': '39% 35%',
     'link-jihoon-crane': '45% 40%', 'link-jungwon-croissant': '67% 45%', 'link-minji-camera-lamp': '68% 40%', 'link-shinjiro-cooking': '50% 40%',
     'story-moonlight-train': '55% 35%', 'story-city-of-the-awake': '50% 40%', 'ending-last-stop': '40% 35%', 'story-haenim-unveiled': '50% 35%',
-    'story-facing-wrens-shadow': '40% 35%',
+    'story-facing-wrens-shadow': '40% 35%', 'story-train-tartarus': '55% 40%', 'link-mercy-aphrodite-hair': '52% 30%',
     'link-ann-r10': '50% 25%', 'link-chenle-r10': '47% 20%', 'link-danielle-r10': '24% 30%', 'link-elizabeth-r10': '45% 25%', 'link-haru-r10': '68% 30%',
     'link-jaemin-r10': '54% 28%', 'link-judy-r10': '48% 35%', 'link-junkyu-r10': '50% 30%', 'link-kasumi-r10': '37% 35%', 'link-kiriko-r10': '52% 35%',
     'link-kuromi-r10': '51% 30%', 'link-mercy-r10': '40% 28%', 'link-mymelody-r10': '49% 25%', 'link-rio-r10': '50% 30%', 'link-saori-r10': '49% 30%',

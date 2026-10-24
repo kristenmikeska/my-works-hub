@@ -9,6 +9,7 @@ Checks:
   - the buff sheet takes its stat colour;
   - Reduce flashes: peak frames at 0.45, crit drawn at 0.75 size;
   - reduced motion: no sheet, the single soft flash;
+  - Kat's shipped Dark sheet plays on a real Dark skill hit  through the menu;
   - no browser errors; screenshots of a sheet mid-play at 1000x486, 375x812 and 1440x900.
 Run: python3 tests/femc_fx_art.py [--shots DIR]
 """
@@ -138,6 +139,24 @@ try:
     ok(t_rm == 0 and logn(p) == n2 and p.eval("FemcFX.artFor('pierce')") is None and not p.eval("FemcFX.hasArt('crit')"), 'reduced motion: no sheet')
     p.ws.call('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'no-preference'}]})
     results['reduced motion'] = 'soft flash only'
+
+    # 5. Kat's shipped Dark sheet (batch 43): reload the real index, then a real Dark hit through the menu plays it.
+    #    The party's own Dark damage skills have signature effects, so the hit is a plain test skill (Eiha-like).
+    p.eval("(() => { const s = document.createElement('script'); s.src = 'assets/femc/battle/art/fx/index.js?t=' + Date.now(); s.onload = () => FemcFX.preloadArt(); document.head.appendChild(s); })()")
+    p.wait("FemcFX.hasArt('dark')", 20)
+    ok(p.eval("FemcFX.artFor('dark')") == 'dark', 'dark uses its sheet')
+    p.wait("!!(FemcBattle.ctl && FemcBattle.ctl.items && FemcBattle.ctl.items.some(i => i.v === 'skill'))", 60)
+    p.eval("(() => { const b = FemcBattle.B, u = b.U(b.S.cur.id); FEMC_BATTLE_DATA.skills.t_dark = { name: 'Test Dark', el: 'dark', type: 'dmg', target: 'one', power: 30, cost: { sp: 4 }, desc: '' }; u.skills.unshift('t_dark'); u.sp = Math.max(u.sp, 99); FemcBattle.ctl.pickValue('skill'); })()")
+    p.wait("FemcBattle.ctl && FemcBattle.ctl.items && FemcBattle.ctl.items.some(i => i.v === 't_dark')", 10)
+    before = p.eval("FemcBattle.marks['fx-art-dark'] || 0")
+    p.eval("FemcBattle.ctl.pickValue('t_dark')")
+    time.sleep(0.2)
+    p.eval("(() => { const c = FemcBattle.ctl, f = FemcBattle.B.foes().find(f => !f.dead); if (c && c.pickValue) c.pickValue(f.id); })()")
+    p.wait(f"(FemcBattle.marks['fx-art-dark'] || 0) > {before}", 30)
+    p.wait("FemcFX.sheetLog.filter(l => l.name === 'dark').pop().frames.length >= 6", 10)
+    lg = p.eval("FemcFX.sheetLog.filter(l => l.name === 'dark').pop()")
+    ok(lg and lg['frames'] == [0, 1, 2, 3, 4, 5], lg)
+    results['dark (shipped)'] = {'real hit': 'fx-art-dark', 'frames': lg['frames']}
 
     errs = p.console(); ok(not errs, errs)
     print(json.dumps({'ok': True, 'results': results, 'screenshots': str(OUT)}, indent=1))

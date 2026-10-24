@@ -671,6 +671,7 @@ html.g-in-battle .g-hud, html.g-in-battle .g-toasts { visibility: hidden; }
 .g-fm-head h2 { margin: 0; font: italic 900 clamp(28px, 3.6vw, 40px)/1 var(--cond); transform: skewX(-6deg); text-shadow: .06em .06em 0 var(--pink); }
 .g-fm-tabs { margin: 0; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: thin; padding-bottom: 4px; }
 .g-fm-tabs > * { flex: none; white-space: nowrap; }
+.g-tabs .g-tab-ico { width: 20px; height: 20px; margin: -5px 7px -5px -5px; vertical-align: middle; object-fit: contain; transform: skewX(14deg); pointer-events: none; }
 .g-tabs a { padding: 8px 16px; background: rgba(255, 255, 255, .08); color: var(--pink-2); font: italic 900 15px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; transform: skewX(-12deg); }
 .g-tabs a:is(:hover, :focus-visible) { background: #fff; color: var(--night); outline: none; }
 .g-fm-body { overflow-y: auto; overscroll-behavior: contain; padding-right: 4px; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }

@@ -429,10 +429,11 @@
       { music: 'joy' },
       { n: "It had started as a haircut. Solar's ends were split, Angela had observed at lunch on Tuesday, with the same tone she used for a sprained ankle, and she happened to have very sharp scissors and a steady hand and an afternoon off, and it was frankly a public health matter." },
       { ifRank: { aphrodite: 1 }, then: [
-        { n: "Then Aphrodite had heard. Solar never found out how. Aphrodite heard things the way other people breathed, without trying, and she had arrived at the dorm door at two o'clock in white and gold with a bag of cosmetics the size of a suitcase and announced that she would be supervising, and also doing everything else." }
+        { n: "Then Aphrodite had heard. Solar never found out how. Aphrodite heard things the way other people breathed, without trying, and she had arrived at the dorm door at two o'clock in gold and violet with a bag of cosmetics the size of a suitcase and announced that she would be supervising, and also doing everything else." }
       ], else: [
-        { n: "Then there had been a knock at the dorm door at two o'clock, and a woman Solar had seen once on the Port Island concourse, a woman in white and gold with a whole crowd going quiet around her, had been standing on the step with a bag of cosmetics the size of a suitcase, explaining to Yukari that Angela had mentioned a haircut, and that she would be supervising, and also doing everything else." }
+        { n: "Then there had been a knock at the dorm door at two o'clock, and a woman Solar had seen once on the Port Island concourse, a woman in gold and violet with a whole crowd going quiet around her, had been standing on the step with a bag of cosmetics the size of a suitcase, explaining to Yukari that Angela had mentioned a haircut, and that she would be supervising, and also doing everything else." }
       ] },
+      { cg: 'link-mercy-aphrodite-hair' },
       { n: "So now Solar was sitting on her own desk chair in the middle of her own room with a towel around her shoulders, and Angela was behind her with the scissors and a comb, and Aphrodite was in front of her kneeling on the floor with a palette of colors open on her lap like a painter in a park, and Solar had stopped being consulted about twenty minutes ago." },
       { s: 'aphrodite', f: 'happy', t: "Look up. No, up. At the ceiling, little sun, not at me. Mortals always look at the goddess. It ruins the line." },
       { s: 'mercy', f: 'neutral', t: "Stop calling her that. She has a name." },
@@ -456,6 +457,7 @@
         ] }
       ] },
       { n: "So they left it down. Angela cut two centimeters off the ends and nothing else, very slowly, with the same total concentration she'd given Genji's arm, and Aphrodite did Solar's face with soft brushes and her fingertips, humming, and none of it was the face Solar would have done. It was softer. Warmer at the cheeks. Less armor. When Aphrodite was done she didn't hand Solar a mirror. She held it up herself, and stood behind her, next to Angela, so there were three of them in it." },
+      { cg: null },
       { n: "A girl with her hair down. And two women behind her, one in white with scissors, one in gold with a brush, both looking at the girl in the mirror the way older sisters look at the little one on the first day of something." },
       { n: "Solar didn't recognize her. That was the strange part. She'd spent months not recognizing things, but this was the first time it didn't frighten her. The girl in the mirror looked like somebody who didn't have anywhere to be. Somebody nobody needed anything from, this afternoon. She looked, Solar thought, tired in a way she'd been too busy to notice, and younger than she felt, and fine. Just fine." },
       { s: 'aphrodite', f: 'happy', t: "There she is. I knew she was in there. The pins were holding her down." },

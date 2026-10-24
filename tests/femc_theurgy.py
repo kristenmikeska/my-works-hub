@@ -309,6 +309,31 @@ try:
     p.ws.call('Emulation.clearDeviceMetricsOverride', {})
     results['evokerProp'] = {'sizes': evk, 'fallback': 'svg'}
 
+    # 4c. Evoker close-ups (batch 43): Akihiko's and Shinjiro's summons fill the cut-in with Kat's shot (evoker.shot)
+    #     like Solar's, no face-and-prop band; the glass breaks at the muzzle. Screenshots at three sizes.
+    shotsEv = {}
+    for mid, skill in [('akihiko', 'elec'), ('shinjiro', 'strike')]:
+        for (w, h, mobile) in [(1440, 900, False), (1000, 486, False), (375, 812, True)]:
+            p.top()
+            p.ws.call('Emulation.setDeviceMetricsOverride', {'width': w, 'height': h, 'deviceScaleFactor': 1, 'mobile': mobile})
+            fight(p, ['solar', mid], speed=0, day='9/12')
+            p.eval(f"window.__btFreezeAt = 'evoke-{mid}'")
+            act(p, mid, ['skill', skill])
+            p.wait('FemcBattle.frozen', 30)
+            p.wait("(() => { const i = document.querySelector('.bt-evk-shot img'); return i && i.complete && i.naturalWidth > 0; })()", 10)
+            time.sleep(0.6)
+            p.eval("document.getAnimations().forEach(a => a.pause())")
+            g = p.eval("(() => { const i = document.querySelector('.bt-evk-shot img'); return { src: i.getAttribute('src'), nw: i.naturalWidth, band: !!document.querySelector('.bt-evk-band'), shot: FemcBattle.marks['evoke-shot'] || 0 }; })()")
+            check(f'{mid}-evoker.webp' in g['src'] and g['nw'] == 1672 and not g['band'] and g['shot'] >= 1, g)
+            p.top()
+            (OUT / f'{w}x{h}-evoker-{mid}.png').write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot', {'format': 'png'})['data']))
+            p.frame(); p.eval('FemcBattle.unfreeze()')
+            p.wait(f"(FemcBattle.marks['evoke-shatter'] || 0) >= 1", 20)
+            shotsEv[f'{mid} {w}x{h}'] = g
+    errs = p.console(); check(not errs, errs)
+    p.ws.call('Emulation.clearDeviceMetricsOverride', {})
+    results['evokerShots'] = shotsEv
+
     # 5. Screenshots mid-animation: the strike (Haechan's sheet over his bg, Persona rising) and the closing impact,
     #    at three window sizes. The battle freezes on the mark; CSS animations are paused where they are.
     shots = []

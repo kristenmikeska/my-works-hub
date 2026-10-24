@@ -11,7 +11,7 @@ try:
  p.eval('localStorage.setItem("kg-femc","on");localStorage.setItem("kg-femc-game",JSON.stringify({met:["akihiko"],past:{met:["haechan"],registered:["yukari"]},sentinel:"keep-v1"}));localStorage.setItem("kg-femc-revamp",JSON.stringify({met:'+json.dumps(IDS)+',registered:'+json.dumps(IDS)+',sentinel:"keep-revamp"}));localStorage.setItem("kg-femc-revamp-slot1",JSON.stringify({met:["slot-only"],sentinel:"keep-slot"}));window.saveBefore=Object.fromEntries(["kg-femc-game","kg-femc-revamp","kg-femc-revamp-slot1"].map(k=>[k,localStorage.getItem(k)]));sessionStorage.setItem("compendium-test-saves",JSON.stringify(saveBefore))')
  p.ws.call('Page.navigate',{'url':f'http://127.0.0.1:{p.srv.server_port}/compendium.html'})
  p.wait("!!window.FEMC_COMPENDIUM && !document.getElementById('open').hidden && document.querySelectorAll('#list button').length>0")
- cases=p.eval('''(()=>{const key='kg-femc-revamp',saved=localStorage.getItem(key),ids='''+json.dumps(IDS)+''',check=(unlock)=>femcCompendiumOpen({unlock}),own=id=>FEMC_COMPENDIUM.find(e=>e.id===id).unlock;let n=0;function ok(x){n++;if(!x)throw Error('Unlock case '+n)}
+ cases=p.eval('''(()=>{const key='kg-femc-revamp',saved=localStorage.getItem(key),ids0='''+json.dumps(IDS)+''',check=(unlock)=>femcCompendiumOpen({unlock}),own=id=>FEMC_COMPENDIUM.find(e=>e.id===id).unlock,ids=ids0.filter(id=>/^(met|reg):/.test(own(id)));let n=0;function ok(x){n++;if(!x)throw Error('Unlock case '+n)}
  ok(check('met:akihiko'));ok(check('met:haechan'));ok(check('reg:yukari'));ok(check('always'));ok(!check('met:slot-only'));
  for(const id of ids)ok(check(own(id)));
  localStorage.setItem(key,JSON.stringify({met:[],registered:ids,ngp:1}));for(const id of ids)ok(check(own(id)));
@@ -22,8 +22,8 @@ try:
  for cid in IDS:
   p.eval('(()=>{const e=FEMC_COMPENDIUM.find(e=>e.id==='+json.dumps(cid)+');if(!e?.profile||(e.unlock.startsWith("met:")&&!e.secret))throw Error("Bad profile metadata");const b=[...document.querySelectorAll("#list button")].find(b=>b.querySelector("b").textContent===e.name);if(!b)throw Error("Entry not visible");b.click()})()')
   p.wait("document.querySelector('#card img').complete && document.querySelector('#card img').naturalWidth>0")
-  # Searchers' art is in profile/searchers/, S.E.E.S. members' New Adds art in profile/sees/.
-  assert p.eval('/\\/profile\\/(searchers|sees)\\/'+cid+'\\.webp/.test(document.querySelector("#card img").src) && getComputedStyle(document.querySelector("#card img")).objectFit==="contain"')
+  # Searchers' art is in profile/searchers/, S.E.E.S. members' New Adds art in profile/sees/, anyone else's in profile/.
+  assert p.eval('/\\/profile\\/((searchers|sees)\\/)?'+cid+'\\.webp/.test(document.querySelector("#card img").src) && getComputedStyle(document.querySelector("#card img")).objectFit==="contain"')
   assert p.eval("document.querySelector('#card img').getBoundingClientRect().height<=620")
   assert p.eval('document.querySelector("#card h2").textContent===FEMC_COMPENDIUM.find(e=>e.id==='+json.dumps(cid)+').name')
   assert p.eval('(document.querySelector("#card a")?.getAttribute("href")||undefined)===FEMC_COMPENDIUM.find(e=>e.id==='+json.dumps(cid)+').link')

@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**88 items:** 5 CGs · 3 places · 18 character pieces · 50 battle (18 bond Showtimes in 5A, 1 skill effect in 5F, 25 effect variants in 5G) · 8 cards and icons · 6 screens. 3 are ⭐, 70 are optional.
+**79 items:** 3 CGs · 3 places · 12 character pieces · 49 battle (18 bond Showtimes in 5A, 25 effect variants in 5G) · 8 cards and icons · 6 screens. 2 are ⭐, 68 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -51,16 +51,8 @@ Solar and [NAME] at [SETTING], [TIME AND LIGHT]. [WHO ELSE IS THERE, OR "just th
   - **Judy** (the Port Island junkyard, no scooter, no neon): evening, thin snow on rusted cars, snow falling through a yellow work light; a door-on-oil-drums workbench; Judy holding two small chips; a cat in a knitted sweater on a dead sedan.
   - **Rio** (the tennis courts at night, not dusk): around 6pm, one court light left on over the net in the blue dark, breath clouds; Rio's hand holding the front of Solar's coat; an old racket in a faded blue cover; a ball cart.
   - **Saori** (the school library): early December, thin blue light coming sideways between the shelves, frost at the window edges; Saori standing between the stacks, face pink, her hand catching the front of Solar's blazer.
-- [ ] **Mercy and Aphrodite doing Solar's hair** (#7's setting doesn't match; use this). **Attach:** style, Solar, Mercy, Aphrodite. **Fills:** `cg/link-mercy-aphrodite-hair.webp`.
-  - **Must match:** an early-September afternoon in Solar's room; Solar on her desk chair in the middle of the room, a towel round her shoulders, hair loose and very long down her back; Mercy behind her in white with scissors and a comb; Aphrodite in gold kneeling in front with a makeup palette (or standing behind with a hand mirror); no curling iron, no ribbon, no string lights.
 - [ ] **The dorm dinner** (#9's setting doesn't match; use this). **Attach:** style, Solar, a few cast portraits. **Fills:** `cg/story-dorm-dinner.webp`.
   - **Must match:** a hot July night in the dining room (not the lounge), an air conditioner groaning; hot pot on a portable burner on the long table, extra white bowls at the end; guests round the table, among them Aphrodite at the head, Mercy rewrapping Junpei's wrist, Kiriko handing out fortune slips, Haru at the stove, Kuromi on the couch, Sebastian against the wall with a soda; Mitsuru standing at the edge with an untouched cup of tea; summer clothes.
-- [ ] **The train through Tartarus** (#23, Gemini). **Attach:** 🎮 `cg/story-moonlight-train.webp` (style). **Fills:** `cg/story-train-tartarus.webp`.
-  - Use this, not #23:
-    ```
-    Inside a strange tower, a long fortieth-floor corridor with a checkerboard floor. Black iron rails rise up out of the floor and spiral away overhead. An old black-green steam train passes slowly along them, an arm's length from the watchers, its paper-lantern windows glowing gold and full of sleeping passengers: a woman in a blue coat holding a long black case, a man in armor under a cloak, a young girl with a schoolbag. Solar at the front, her hand reaching toward the glass. Behind her, watching: Akihiko, Mitsuru, Yukari, Junpei, Fuuka, Aigis, Jihoon, Minji filming on a camera, Jungwon, and Haechan empty-handed. Green Dark Hour light and lantern gold, eerie and hushed.
-    ```
-  - **Must match:** a checkerboard corridor (not a broken landing); black iron rails (not light); the train passing slowly, close enough to touch; sleepers in the windows as above; the group standing in the corridor; Hanni, Hyein and Yunjin not there.
 
 ---
 
@@ -92,13 +84,11 @@ All done (`places.js today`: the festival hallway on 10/30–31, the Strip on ra
 
 ## 4. Characters (ChatGPT)
 ### 4A. Evoker shots ⭐
-Only Solar has one. Everyone else's summon shows their face beside the Evoker prop (batch 37).
+Solar, Akihiko and Shinjiro have one (Akihiko's and Shinjiro's since batch 43). Everyone else's summon shows their face beside the Evoker prop (batch 37).
 - **Attach:** 🎮 `battle/art/summon/solar-evoker.webp` (style) and the character's portrait.
 ```
 Close-up of [NAME] raising an ornate silver Evoker to their temple, [EXPRESSION], hair lifting in a rush of blue wind, glowing glass shards around them, a huge full moon behind. Persona 3 Reload style, 16:9.
 ```
-- [ ] Shinjiro, reluctant (your redo)
-- [ ] Akihiko, a fierce grin
 - [ ] Yukari, eyes squeezed shut
 - [ ] Junpei, cocky
 - [ ] Mitsuru, icy calm
@@ -116,10 +106,6 @@ Close-up of [NAME] raising an ornate silver Evoker to their temple, [EXPRESSION]
 ```
 Full-body character art of [NAME], standing in a relaxed signature pose, outfit matching the attached portrait, in the same style as the attached full body, transparent background.
 ```
-- [ ] ⭐ Junpei, Fuuka and Elizabeth (the main cast without one)
-- [ ] Sunoo, Junkyu, Wren
-- [ ] Danielle, Jaemin, Chenle
-- [ ] My Melody
 - [ ] *(Optional)* the guests who only drop by: Ryuji, Futaba, Makoto, Maruki
 - **Fills:** `profile/sees/<id>.webp` or `profile/searchers/<id>.webp` (others: `profile/<id>.webp`).
 
@@ -362,7 +348,7 @@ A 3-panel horizontal sheet on a plain white background showing the same characte
 - Skill effect sprites moved to their own list: 5F, just below.
 
 ### 5F. Skill effects
-**Kat's sheets are in the game (2026-10-23): 30 of the 31, every effect but Dark.** Effects without a sheet are still drawn in code (`fx.js` and `battle.css`). Dark is the one left. The format and template below are for it and for any redo (the appendix note "Skill-effect sheets (5F)" says how to add one).
+**Kat's sheets are in the game: all 31 (Dark in batch 43, 2026-10-24).** Effects without a sheet are still drawn in code (`fx.js` and `battle.css`). The format and template below are for any redo (the appendix note "Skill-effect sheets (5F)" says how to add one).
 
 **The sheet format (the same for every effect):**
 - **A 3 × 2 grid of six square frames**, read left to right, top to bottom. Ask ChatGPT for a **landscape 3:2 image (1536 × 1024)**, which splits into six 512 × 512 squares. A 6-frame strip would be 6:1, and ChatGPT can't make that shape.
@@ -377,12 +363,6 @@ A 3-panel horizontal sheet on a plain white background showing the same characte
 A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: [SPARK]. Frame 2: [BUILD-UP]. Frame 3, the peak: [IMPACT]. Frame 4: [SPREAD]. Frame 5: [BREAK-UP]. Frame 6: [LAST WISPS]. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, [COLOURS], high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
 ```
 **Attach for every sheet:** 1. a P3R screenshot of that skill landing, if you have one (🎨 `Inspo/` or your own captures); 2. 🎨 `Added to Game/pierce.png` (to match the set). For the first sheet only, attach 🎮 `battle/art/theurgy/akihiko-strike-1.webp` for P3R's line and colour.
-
-#### Still to make
-- [ ] **Dark.** Uses: the Fear ailment's hit, Mudo and Die for Me until they have their own sheet, and Dark Theurgy and bond hits. Now: ink tendrils curling in on a ring. **Fills:** `battle/art/fx/dark.webp`.
-  ```
-  A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: a thin violet ring glowing faintly around an empty centre. Frame 2: curling tendrils of glowing violet energy rising from the ring and bending inward, like ink drawn into a drain. Frame 3, the peak: a vortex of sharp curved tendrils snapping shut over the centre, their edges glowing bright violet and magenta, the inside left empty black, a crisp sigil-like ring of thorny points around it. Frame 4: the tendrils twist and tighten, small magenta sparks shedding off them. Frame 5: the tendrils unravel into thin wisps sinking downward. Frame 6: a few faint purple wisps and a dim ring. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, glowing violet (#c07bff) and deep purple (#7a2bd0) edges with magenta (#ff5ab0) highlights; darkness is shown only as empty black framed by glowing edges, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
-  ```
 
 ### 5G. Effect variants *(optional, for later)*
 More versions of the 5F sheets, so a big spell doesn't look like a small one and each fighter's magic has its own flavour. The game keeps playing the sheet that's in now for everything a variant doesn't cover (appendix: "Effect variants (5G)").
@@ -496,7 +476,7 @@ A 3 × 2 grid of six game item cards (3 columns, 2 rows) on a plain pure white b
   - A small silver voice recorder with a headphone cord (Fuuka's recording of the dorm roof) · a birthday omamori in good patterned paper (Kiriko) · a burned CD in a clear slim case, blank disc, no writing (Sebastian) · a coiled red cord for a stopwatch (Akihiko) · rolled running socks with a protein bar (Akihiko).
 
 ### 6C. Icons *(optional)*
-- [ ] **Menu tabs** (15): Party, Personas, Skills, Cards, Equipment, Items, Collection, Status, Links, Bonds, Journal, Album, Theater, Calendar, Compendium. The tabs are slanted text buttons now; an icon would sit about 18–20 px tall before each label (and could stand alone on narrow phones). One sheet, Gemini or ChatGPT. **Attach:** 🎨 `Added to Game/status-icons.jpeg` (style). **Fills:** `game/art/icons/<tab>.webp` (`party`, `personas`, …, `compendium`).
+- [ ] **Menu tabs** (2 left): Calendar and Compendium. Kat's other 13 are in the game (batch 43); these two are still text-only. An icon sits 20 px tall before each label. One sheet, Gemini or ChatGPT. **Attach:** 🎨 `Added to Game/status-icons.jpeg` (style). **Fills:** `game/art/icons/<tab>.webp` (`party`, `personas`, …, `compendium`).
   ```
   A 4 × 4 grid of sixteen flat game UI icons on a flat pure green background (#00FF00), square 1:1 (1024 × 1024), in Persona 3 Reload's menu style: bold simple glyphs, a heavy dark ink outline, one hot-pink (#ff4f9e) accent, a thick white rim, each centred in its own square with wide green space round it, readable at 18 pixels. No text, no letters, no green in the icons. In reading order: Party (three heads), Personas (a mask), Skills (a branching star), Cards (a fanned trio of cards), Equipment (a naginata crossed with a vest), Items (a medicine bottle), Collection (a capsule toy), Status (a heartbeat line), Links (two linked rings), Bonds (two hands clasped), Journal (an open notebook), Album (a photo with a corner), Theater (a film reel), Calendar (a page with a crescent), Compendium (a thick book with a moon clasp); the last square empty.
   ```
@@ -559,8 +539,8 @@ Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 
 ### Characters
 - **Portraits:** cut with `tools/femc-portraits.py` (sheets: `femc-sheet.py` / `femc-lift.swift`); it rewrites `portraits/index.js`. Check `portraits/scale.js` and every face in a scene.
   - *Gemini landscape busts (batch 40, 2816×1536 on white or a baked-in checkerboard):* lift with `femc-lift.swift`, then flood away the pale fringe and the art's soft outer glow from the outside (≤14 px, light and low-saturation), put back small holes Vision punched in white collars, and crop a 0.89-wide box from the top of the hair to 1.05 face-heights below the chin (Vision's face box works on these, not on the flatter ChatGPT art). Size in `scale.js` by eye-to-chin against Fuuka, Junpei and the batch 37 regulars.
-- **Full bodies:** `tools/femc-profiles.py` writes `profile/<id>.webp` and `profile/index.js`; S.E.E.S. and searcher art goes in `profile/sees/` or `profile/searchers/` with `img` and `profile: true` on the `compendium.js` entry. Fuuka, Sunoo, Junkyu, Wren, Danielle, Jaemin and Chenle have no entry yet: add one (`unlock: 'met:<id>'`, `secret: true`, a note from their introduction, no new prose). Bump `FEMC_ASSET_VERSION` and run `python3 tests/femc_compendium.py --ids <ids>`.
-- **Evoker shots:** `battle.js evoker()` shows a face plus Kat's Evoker prop (`EVOKER_ART`, `art/summon/evoker-prop.webp` from `tools/femc-evoker-prop.py`; the code-drawn `EVOKER_SVG` is its fallback) for everyone but Solar. Give a member `evoker: { shot: 'assets/femc/battle/art/summon/<mid>-evoker.webp' }` in `data.js` and render it in the `.bt-evk-shot` slot like Solar's (small change). Evoker sheets already work: `('evoker', '<file>', '<mid>-evoke')` in `tools/femc-theurgy.py BUILD`, then `evoker.frames`.
+- **Full bodies:** `tools/femc-profiles.py` writes `profile/<id>.webp` and `profile/index.js`; S.E.E.S. and searcher art goes in `profile/sees/` or `profile/searchers/` with `img` and `profile: true` on the `compendium.js` entry. A character without an entry gets one (`unlock: 'met:<id>'`, `secret: true`, the link's `approach` line as the note, no new prose); batch 43 added Fuuka, Sunoo, Junkyu, Wren, Danielle, Jaemin and Chenle. Elizabeth, Wren and My Melody use `profile/<id>.webp` named on the entry, so `profile/index.js` (and v1) is unchanged. Bump `FEMC_ASSET_VERSION` and run `python3 tests/femc_compendium.py --ids <ids>`.
+- **Evoker shots:** `battle.js evoker()` shows a face plus Kat's Evoker prop (`EVOKER_ART`, `art/summon/evoker-prop.webp` from `tools/femc-evoker-prop.py`; the code-drawn `EVOKER_SVG` is its fallback) for members without a close-up. A close-up is `evoker: { shot: 'assets/femc/battle/art/summon/<mid>-evoker.webp', at: [muzzle x%, y%], pos, posPhone }` in `data.js` (built in batch 43; Akihiko and Shinjiro have one): it fills the `.bt-evk-shot` slot like Solar's, the glass breaks at `at`, and `pos` / `posPhone` are its object-position on wide and phone screens. Evoker sheets already work: `('evoker', '<file>', '<mid>-evoke')` in `tools/femc-theurgy.py BUILD`, then `evoker.frames`.
 
 ### Battle art
 - **New Shadow or boss art:** `tools/femc-shadows.py` cuts it into `battle/art/shadows/<slug>.webp` and `index.js`; point the enemy's `img` at the slug (the memory boss is `memory_car`). A boss that comes as its own picture plus a labelled 2×2 sheet (the April boss, batch 37) goes in `QUADS` in `tools/femc-shadow-poses.py`, which writes both the static art and the frames. Wren's phases: swap `wren_call` / `wren_last`'s `pic` for an `img`. Then pose sheets as below.
@@ -611,7 +591,7 @@ The same pieces as a Theurgy (the steps above), in `assets/femc/battle/bonds.js`
 - **Finish cards (3C):** add `('finish', '<name>-alloutattack.png', '<mid>')` to the same `BUILD`, run it, and add the member to `FINISH_CARDS` in `battle.js`.
 
 ### Skill-effect sheets (5F)
-**Built (2026-10-23).** The sheet player is in the game, and every effect keeps its code version as the fallback. 30 of Kat's 31 sheets are in (all but Dark). Her picks between two versions are in `tools/femc-fx.py SOURCES`, and the other versions are in `ALTERNATES` (in Added to Game, unused).
+**Built (2026-10-23).** The sheet player is in the game, and every effect keeps its code version as the fallback. All 31 of Kat's sheets are in (Dark since batch 43). Her picks between two versions are in `tools/femc-fx.py SOURCES`, and the other versions are in `ALTERNATES` (in Added to Game, unused).
 
 **Adding a sheet:**
 1. Drop the 3 × 2 source in **New Adds**, named as its **Fills** line says (`dark.png` or `.jpeg`; `fx-dark.png` works too). Any size near 3:2 works.
@@ -660,4 +640,4 @@ Most of it already works with today's `sequence` field (`battle.js playSeq` / `s
 
 ### Cards, items and screens (sections 6 and 7): wiring notes
 - **Green-screen sheets** (item and material icons, menu icons, keychains, phone cases, group avatars): key out flat #00FF00 (the way `femc-fx.py` does for `allout-cloud`), cut each cell, trim, and save transparent WebP. White-background sheets (gear, books, keepsakes) go through `tools/femc-cards.py` like the weapons; the plain-weapon sheets are 3 × 3, so that tool needs a nine-card mode (or `pick`).
-- **Hooks still to add:** armor and accessories need the weapons' `art` field read in each list; items and materials an `img` hook in `FemcIcons.of`; Bookworms' books and the keepsakes an `img` (keepsakes have no ids yet: give each gift an id); the menu tabs an icon slot in `menu.js TABS`; group-chat pictures a group map in `ui.js threadPic` (without the portrait's `scale(1.6)` crop); the album's locked tile picks the 16:9 or square file by the grid it's in; the loading stills need a place in the Dark Hour fade.
+- **Hooks still to add:** armor and accessories need the weapons' `art` field read in each list; items and materials an `img` hook in `FemcIcons.of`; Bookworms' books and the keepsakes an `img` (keepsakes have no ids yet: give each gift an id); the menu tabs' icons are in (`menu.js TAB_ICONS` / `tabIco`, `game/art/icons/<tab>.webp`, text-only fallback); group-chat pictures a group map in `ui.js threadPic` (without the portrait's `scale(1.6)` crop); the album's locked tile picks the 16:9 or square file by the grid it's in; the loading stills need a place in the Dark Hour fade.

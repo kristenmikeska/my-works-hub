@@ -53,6 +53,13 @@ window.FEMC_FX_ART = {
   "peak": 2,
   "v": "aaeafa4b"
  },
+ "dark": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "ade7b912"
+ },
  "debuff": {
   "blend": "lighter",
   "cell": 256,
