@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**52 items:** 2 quick fixes · 5 CGs · 3 places · 18 character pieces · 10 battle (1 of them a skill effect in 5F) · 8 cards and icons · 6 screens. 3 are ⭐, 30 are optional.
+**88 items:** 5 CGs · 3 places · 18 character pieces · 50 battle (18 bond Showtimes in 5A, 1 skill effect in 5F, 25 effect variants in 5G) · 8 cards and icons · 6 screens. 3 are ⭐, 70 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -12,15 +12,6 @@ This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` 
 - 🎮 **Game folder:** `my-works-hub/assets/femc/`. Backgrounds (`bg/`), CGs (`cg/`), battle art (`battle/art/`), tarot cards (`tarot/`).
 
 Use **ChatGPT** for anything with a face, and **Gemini** for places and objects.
-
----
-
-## 1. Quick fixes to finished art ⭐
-Edits, not new pictures. The prompts are in `FEMC-CG-PROMPTS.md` section 0.
-- [ ] **Elizabeth's blank page:** the armband is still on Solar's arm (#0.1).
-  - **Attach:** 🎮 `cg/prologue-elizabeth-blank-page.webp` only. **Fills:** the same file.
-- [ ] **Wren's bench:** the socks and skirt (#0.2). It isn't in the game yet; once fixed it goes on her first meeting.
-  - **Attach:** 🎨 `Event CGs/wren-meets-solar-bench-v1.webp` only. **Fills:** `cg/wren-meets-solar-bench.webp`.
 
 ---
 
@@ -162,18 +153,185 @@ Edit this portrait. Keep the framing, crop, size, art style, hair and outfit exa
 ---
 
 ## 5. Battle
-### 5A. Bond cut-ins
-**Attach:**
+### 5A. Bond Showtimes
+Every bond becomes a **Showtime**, like Persona 5 Royal's duo moves (Morgana and Ann's): a short, funny or charged mini-scene of the two of them that ends in the attack. Each one is 4 or 5 full-screen panels that the game already plays one after another (Haechan's *Universe* works this way now). Spoiler-free, nothing explicit; the romance versions are sweeter or more charged.
+
+**Panel format: one 16:9 image per panel, not a sheet.** The game's sequence player (`battle.js playSeq`, the same one Universe uses) crossfades separate full-screen pictures, each with its own crop point, drift and zoom. A 3×2 sheet would give 512-pixel squares, the wrong shape and far too small for a full screen. To keep usage down, make all of a Showtime's panels **in one ChatGPT chat**: paste the prompt once, get panel 1, then type **"Panel 2 now: same characters, same style."** and so on. One prompt, and the faces stay consistent.
+
+**Your current bond art stays.** Where a pair already has a still, it becomes **panel 1** (you don't remake it). The short version (Persona cut-ins Off, Rush, repeats) and reduced motion keep showing a still, so nothing is lost if a Showtime never gets made. Haechan's Version 3 (`bond-haechan-2`) opens his friendship Showtime and stays his short-version still. *Universe* is already a Showtime and doesn't change.
+
+**Attach for every Showtime:**
 1. 🎮 `cg/prologue-akihiko-finds-solar.webp` (style)
 2. 🎨 `Character Portraits/Solar/Solar-smiling.png`
-3. 🎨 the partner's portrait
+3. 🎨 the partner's portrait (`Character Portraits/<Name>/`)
+4. When panel 1 is an existing still: 🎮 `battle/art/theurgy/<that still>.webp` (named in each item)
+
+**Showtime base block** (paste it first, then the pair's own block under it):
 ```
-Create a NEW 16:9 combo-attack cut-in matching the FIRST attached image's art style: Persona 3 Reload official art, cel shading, a bold diagonal layout, speed lines. Solar (second image: very long straight black hair, black Gekkoukan uniform, red bow, red S.E.E.S. armband) and [NAME] (third image) attack together side by side, mid-strike: her naginata and their [WEAPON], with [EFFECT], their two colors swirling together. Both confident. Keep both faces and outfits exactly. No text.
+Create a "Showtime" combo-attack sequence for a Persona 3 Reload-style game: [N] full-screen panels, one image per panel, which play one after another like Persona 5 Royal's Showtime duo attacks. Match the FIRST attached image's art style exactly: Persona 3 Reload official cut-in art, cel shading with hard-edged shadows, bold diagonal compositions, speed lines, Dark Hour green moonlight with the pair's colours as accents. Every panel: exactly 16:9 landscape (1672 × 941), full-bleed, no borders, no panel frames, no text, no speech bubbles, no sound-effect lettering, no watermark. Solar (second image): very long straight black hair, black Gekkoukan uniform, red bow, white earbuds around her neck, red S.E.E.S. armband on her left arm (this is a battle), her naginata. [NAME] (third image) exactly as in their portrait. Keep both faces, hair, outfits and proportions identical in every panel. Keep both faces inside the middle half of the picture's width (the game crops the sides on phones) and at a similar size from panel to panel. Expressive anime-comedy acting, big readable poses, fun. [PANEL 1 NOTE]
+I'll ask for each panel in turn. Make panel 1 now (or, if panel 1 is attached, make panel 2).
 ```
-- [ ] ⭐ **Shinjiro:** axe; dark red force; a single gruff nod, the weapons crossing
-- [ ] *(Optional)* Yukari (bow; pink wind) · Junpei (greatsword; fire) · Mitsuru (rapier; ice) · Aigis (arm guns; golden tracer fire) · Koromaru (knife; fire)
-- [ ] *(Optional)* own stills for the romance versions that reuse the regular one: Akihiko (rank 9 and 15), Jihoon (9), Minji (9), Shinjiro (9). Same prompt, "close and protective" instead of "side by side".
-- **Fills:** `battle/art/theurgy/bond-<name>.webp` (romance: `bond-<name>-love.webp`).
+- `[PANEL 1 NOTE]`: when panel 1 is an existing still, write: *Panel 1 is the FOURTH attached image; match its lighting and colours.* Otherwise leave it out.
+- **Fills:** each panel's source goes in New Adds as `solar-<id>-show-<n>.png` (romance: `solar-<id>-love-show-<n>.png`), and in the game it becomes `battle/art/theurgy/bond-<id>-show-<n>.webp` (`bond-<id>-love-show-<n>.webp`). Panel 1 keeps its old file when it's an existing still.
+- **★ = the strike panel** (the impact and the bond's name land on it).
+
+#### Friendships (the bond's every version uses it)
+- [ ] ⭐ **Shinjiro · "Seconds"** (replaces the code-drawn cut-in; no still exists). *Concept: Shinji is cooking in the middle of Tartarus, and anything that reaches for the pot meets the axe.* `[N]` = 4, `[NAME]` = Shinjiro Aragaki (beanie, long dark coat, axe).
+  - **Attach:** style, Solar, Shinjiro. **Fills:** `battle/art/theurgy/bond-shinjiro-show-1..4.webp`. Replaces the code-drawn duo cut-in (no art yet); its last panel becomes the short-version still.
+  ```
+  Panel 1: a stylized dorm kitchen set floating in the green Dark Hour dark, Shinjiro in his beanie and long coat stirring a big pot, steam rising; Solar sneaking a taste with a spoon; without even looking, he catches her wrist. Warm orange stove light against the green.
+  Panel 2: a black Shadow hand creeps into frame toward the pot. Shinjiro's eyes narrow under the beanie; he hands Solar the ladle and swings his axe onto his shoulder, one arm out to keep her back.
+  Panel 3 ★: Castor's colossal charge: Shinjiro mid-swing, coat flaring, a dark red shockwave ramming through the Shadow; Solar behind him raising her naginata, gold light gathering.
+  Panel 4: Solar's light sweeping the whole field in a gold arc; Shinjiro already turned away, lifting the pot lid again, deadpan; Solar grinning and holding out her bowl for seconds.
+  ```
+- [ ] *(Optional)* **Akihiko · "Roadwork"** (panel 1 = 🎮 `bond-akihiko.webp`; its other panels are new). *Concept: Akihiko turns the fight into a timed training round, and Solar breaks his record.* `[N]` = 5, `[NAME]` = Akihiko Sanada (boxing gloves).
+  - **Attach:** style, Solar, Akihiko, then 🎮 `battle/art/theurgy/bond-akihiko.webp` (4th). **Fills:** `battle/art/theurgy/bond-akihiko-show-2..5.webp`. Replaces the single still `bond-akihiko` in the full cut-in; that still stays as panel 1 and as the short-version still.
+  ```
+  Panel 1 is the attached still.
+  Panel 2: close on Akihiko's gloved fist holding up a silver stopwatch, thumb on the button, a cocky grin; behind him Solar rolls her eyes and re-grips her naginata.
+  Panel 3: Akihiko's lightning jab flurry, three blurred punches crackling pink-white with electricity; he cups his gloves and boosts Solar up off them, and she launches into the air, naginata raised.
+  Panel 4 ★: Solar's sunrise slash coming down on the Shadow, an orange-gold arc across the whole frame; below, Akihiko stares at the stopwatch with his jaw dropped.
+  Panel 5: Solar plucks the stopwatch out of his glove, smug; Akihiko laughs and they bump fists, sparks popping between his glove and her hand.
+  ```
+- [ ] *(Optional)* **Haechan · "Eclipse"** (panel 1 = 🎮 `bond-haechan-2.webp`, your Version 3). *Concept: the show-off moon keeps stealing the sun's spotlight, and they eclipse together.* `[N]` = 5, `[NAME]` = Haechan (knife; his Persona Dalnim is the moon).
+  - **Attach:** style, Solar, Haechan, then 🎮 `battle/art/theurgy/bond-haechan-2.webp` (4th). **Fills:** `battle/art/theurgy/bond-haechan-show-2..5.webp`. Replaces the single still `bond-haechan-2` in the full cut-in; that still stays as panel 1 and as the short-version still.
+  ```
+  Panel 1 is the attached still.
+  Panel 2: Haechan twirls his knife and winks straight at the camera; Solar pushes his face out of the shot with her palm to take centre stage, unimpressed.
+  Panel 3: behind him a pale moon slides over the blazing sun behind her; Haechan points up at it proudly ("mine"), Solar glares at him sideways.
+  Panel 4 ★: the eclipse locks into a blazing corona ring; his thrown knife trails violet static through it and Solar's naginata strike bursts through the centre in white-gold light.
+  Panel 5: back to back after the hit, Solar posing; Haechan sneaks bunny-ear fingers behind her head, and she has clearly already caught him out of the corner of her eye.
+  ```
+- [ ] *(Optional)* **Jungwon · "Unanimous"** (panel 1 = 🎮 `bond-jungwon.webp`). *Concept: Jungwon runs the fight like a council meeting, and the angrier he is, the politer.* `[N]` = 5, `[NAME]` = Yang Jungwon (rapier).
+  - **Attach:** style, Solar, Jungwon, then 🎮 `battle/art/theurgy/bond-jungwon.webp` (4th). **Fills:** `battle/art/theurgy/bond-jungwon-show-2..5.webp`. Replaces the single still `bond-jungwon` in the full cut-in; that still stays as panel 1 and as the short-version still.
+  ```
+  Panel 1 is the attached still.
+  Panel 2: Jungwon bows very correctly to the Shadow, holding out a clipboard of formal papers, perfectly polite with a dangerous calm smile; Solar beside him biting back a laugh.
+  Panel 3: Solar slams a gold council seal onto the paper with a burst of light; Jungwon touches his rapier tip to it and pale blue frost races out across the floor.
+  Panel 4 ★: Hyeonmu's frost and Solar's golden rope bind the Shadow, freezing it mid-step in jade-blue ice wound with gold.
+  Panel 5: both raise one hand as if voting, both perfectly deadpan, while the frozen Shadow cracks apart behind them.
+  ```
+- [ ] *(Optional)* **Jihoon · "Main Event"** (panel 1 = 🎮 `bond-jihoon.webp`). *Concept: the almighty Hoon declares himself the star; Solar does the actual work.* `[N]` = 5, `[NAME]` = Park Jihoon (gloves).
+  - **Attach:** style, Solar, Jihoon, then 🎮 `battle/art/theurgy/bond-jihoon.webp` (4th). **Fills:** `battle/art/theurgy/bond-jihoon-show-2..5.webp`. Replaces the single still `bond-jihoon` in the full cut-in; that still stays as panel 1 and as the short-version still.
+  ```
+  Panel 1 is the attached still.
+  Panel 2: Jihoon stands on a toppled block like a throne, a paper crown on his head, his jacket worn as a cape, arms spread under spotlights; Solar below him with her face in her palm.
+  Panel 3: the Shadow is staring at Jihoon's pose; behind it, Solar tiptoes around with her naginata, glancing at the camera.
+  Panel 4 ★: a blue gale from Jihoon's Persona Dokkaebi and a white-gold star burst from Solar slam into the Shadow from both sides.
+  Panel 5: Jihoon takes a deep bow to an imaginary crowd; Solar shoves his paper crown down over his eyes.
+  ```
+- [ ] *(Optional)* **Minji · "Long Take"** (panel 1 = 🎮 `bond-minji.webp`). *Concept: Minji directs the attack like a film shoot.* `[N]` = 5, `[NAME]` = Minji (bow, video camera).
+  - **Attach:** style, Solar, Minji, then 🎮 `battle/art/theurgy/bond-minji.webp` (4th). **Fills:** `battle/art/theurgy/bond-minji-show-2..5.webp`. Replaces the single still `bond-minji` in the full cut-in; that still stays as panel 1 and as the short-version still.
+  ```
+  Panel 1 is the attached still.
+  Panel 2: Minji snaps a blank clapperboard between them with a huge grin; Solar strikes an over-the-top movie-star pose.
+  Panel 3: the view through Minji's camera viewfinder (corner brackets and a red record dot, no letters): the Shadow framed dead centre, Minji's Persona Theia drawing a bow of light behind it.
+  Panel 4 ★: arrows of light streak into the Shadow and Solar's sunrise slash follows, lens flare and film-grain streaks.
+  Panel 5: the two of them crouched over the camera's little screen watching the playback, Minji glowing with pride, Solar impressed.
+  ```
+- [ ] *(Optional)* **Yukari · "Second Opinion"** *Concept: Yukari needs Solar's honest opinion right now, Shadows or not.* `[N]` = 4, `[NAME]` = Yukari Takeba (bow, pink).
+  - **Attach:** style, Solar, Yukari. **Fills:** `battle/art/theurgy/bond-yukari-show-1..4.webp`. Replaces the code-drawn duo cut-in (no art yet); its last panel becomes the short-version still.
+  ```
+  Panel 1: in the middle of Tartarus, Yukari holds up two different skirts on hangers and looks at Solar for a verdict; Solar points at one; Shadows loom behind them, ignored.
+  Panel 2: a Shadow roars and interrupts; Yukari's face flips to pure annoyance as she draws her bow, pink wind swirling around her.
+  Panel 3 ★: arrows of pink wind and Solar's sweep of light hit every Shadow at once.
+  Panel 4: a healing breeze of pink petals and soft light washes over them; Yukari winks with a peace sign, Solar holds up the chosen skirt.
+  ```
+- [ ] *(Optional)* **Junpei · "Walk-Off"** *Concept: bottom of the ninth: Solar pitches the sun and Junpei swings for the fences.* `[N]` = 4, `[NAME]` = Junpei Iori (cap, greatsword).
+  - **Attach:** style, Solar, Junpei. **Fills:** `battle/art/theurgy/bond-junpei-show-1..4.webp`. Replaces the code-drawn duo cut-in (no art yet); its last panel becomes the short-version still.
+  ```
+  Panel 1: a moonlit Tartarus floor drawn like a baseball diamond; Junpei in the batter's spot, cap on backwards, pointing his greatsword at the outfield (a called shot); Solar on a pitcher's mound holding a glowing little sun.
+  Panel 2: Solar's big wind-up, leg high, the sun ball blazing in her hand; Junpei's eyes go wide.
+  Panel 3 ★: the swing connects with a huge flash; the ball rockets into the Shadow trailing fire, Junpei's Persona Hermes flaring behind him.
+  Panel 4: Junpei jogging the bases with both arms up, Solar clapping slowly and deadpan, the Shadow burning in the background.
+  ```
+- [ ] *(Optional)* **Mitsuru · "Verification"** *Concept: Mitsuru gives the Shadow the same serious attention she gave her first crêpe.* `[N]` = 4, `[NAME]` = Mitsuru Kirijo (rapier, red hair).
+  - **Attach:** style, Solar, Mitsuru. **Fills:** `battle/art/theurgy/bond-mitsuru-show-1..4.webp`. Replaces the code-drawn duo cut-in (no art yet); its last panel becomes the short-version still.
+  ```
+  Panel 1: Mitsuru studies a crêpe in her hand with perfect seriousness, as if it were a report; Solar beside her holding her own crêpe, laughing.
+  Panel 2: Mitsuru hands Solar her crêpe without looking and snaps her fingers; ice blooms across the floor around them.
+  Panel 3 ★: Artemisia's frost crystallises the Shadow, and Solar's flare refracts through the ice like a prism into gold and red.
+  Panel 4: Mitsuru with her rapier raised in her signature pose as the ice shatters into glittering snow; Solar copying the pose exactly, a crêpe in each hand.
+  ```
+- [ ] *(Optional)* **Aigis · "Papillon"** *Concept: Aigis is learning friendship gestures and turns one into firepower.* `[N]` = 4, `[NAME]` = Aigis (arm guns).
+  - **Attach:** style, Solar, Aigis. **Fills:** `battle/art/theurgy/bond-aigis-show-1..4.webp`. Replaces the code-drawn duo cut-in (no art yet); its last panel becomes the short-version still.
+  ```
+  Panel 1: on a moonlit rooftop set, a blue butterfly lands on Aigis's finger; Solar shows her a peace sign, and Aigis studies it very seriously, head tilted.
+  Panel 2: Aigis's arms unfold into guns, eyes locked on the Shadows; Solar already sprinting past her.
+  Panel 3 ★: a storm of golden tracer fire, and Solar striking through the gap with a slash of light.
+  Panel 4: Aigis holding up a stiff, perfectly copied peace sign; Solar laughing and ruffling her hair, blue butterflies drifting around them.
+  ```
+- [ ] *(Optional)* **Ken · "Featherman"** *Concept: Ken finally gets a real hero pose, with his favourite senpai.* `[N]` = 4, `[NAME]` = Ken Amada (spear).
+  - **Attach:** style, Solar, Ken. **Fills:** `battle/art/theurgy/bond-ken-show-1..4.webp`. Replaces the code-drawn duo cut-in (no art yet); its last panel becomes the short-version still.
+  ```
+  Panel 1: Ken in a dramatic sentai transformation pose with his spear; Solar beside him striking an even bigger pose.
+  Panel 2: coloured smoke explodes behind them like a hero show finale (red, blue, yellow, pink), both holding the pose.
+  Panel 3 ★: Ken's Persona Nemesis drives a lightning spear into the Shadow and Solar's light slash follows it.
+  Panel 4: Ken looking up at Solar, trying very hard to look cool and failing, blushing; she pats his head.
+  ```
+- [ ] *(Optional)* **Koromaru · "Fetch"** *Concept: Koromaru wants one throw. Solar throws the sun.* `[N]` = 4, `[NAME]` = Koromaru (white dog, red collar, knife).
+  - **Attach:** style, Solar, Koromaru. **Fills:** `battle/art/theurgy/bond-koromaru-show-1..4.webp`. Replaces the code-drawn duo cut-in (no art yet); its last panel becomes the short-version still.
+  ```
+  Panel 1: Koromaru drops a worn tennis ball on Solar's shoe and backs up, tail wagging, eyes shining.
+  Panel 2: Solar winds up and throws; the ball becomes a little sun; Koromaru leaps after it with his knife in his mouth.
+  Panel 3 ★: Cerberus's hellfire and Solar's light explode over every Shadow.
+  Panel 4: Koromaru trotting back proudly with a scorched tennis ball; Solar kneeling and laughing, scratching his ears.
+  ```
+
+#### Romance versions (the `love` version, and `love15` where it exists)
+Same base block, with **"tender and a little charged, never explicit"** added after "fun". The `love15` version reuses its pair's Showtime; where a fifth panel is given, it's that version's own ending.
+- [ ] *(Optional)* **Akihiko · "Five A.M."** (Sunrise Cadenza; Five A.M. adds panel 5; no still to replace, the regular one stays the short-version still). *Concept: their dawn run turns into the combo; he's always on her left.* `[N]` = 4 (5 for Five A.M.).
+  - **Attach:** style, Solar, Akihiko. **Fills:** `battle/art/theurgy/bond-akihiko-love-show-1..4 (+ `-5` for Five A.M.).webp`. Replaces the regular still/duo fallback this romance version borrows now; the regular still stays the short-version still.
+  ```
+  Panel 1: a stylized riverside at five in the morning, pale pink dawn, the two of them jogging side by side; Akihiko on her left matching her pace exactly, glancing sideways at her; she pretends not to notice.
+  Panel 2: back in Tartarus, back to back; his gloved hand closes over hers on the naginata shaft to fix her grip, faces close, her cheeks pink, his steady smile.
+  Panel 3 ★: lightning and sunlight braided into one spiral, his punches and her sweep landing on the Shadow together.
+  Panel 4: foreheads almost touching, both out of breath; he holds the stopwatch up between them and she taps it, warm gold light, pink sparks.
+  Panel 5 (Five A.M. only): sunrise breaking across the Tartarus floor behind them; he holds out his hand, and she takes it.
+  ```
+- [ ] *(Optional)* **Shinjiro · "Warm Hands"** *Concept: he'd never say it, so he feeds her and gets in front of her.* `[N]` = 4.
+  - **Attach:** style, Solar, Shinjiro. **Fills:** `battle/art/theurgy/bond-shinjiro-love-show-1..4.webp`. Replaces the regular still/duo fallback this romance version borrows now; the regular still stays the short-version still.
+  ```
+  Panel 1: the dorm kitchen set at night; Shinjiro blows on a spoonful of soup and holds it out to her, looking away, ears red under the beanie; Solar leans in.
+  Panel 2: he steps in front of her, coat sweeping, one arm back to keep her behind him, looking over his shoulder at her, worried.
+  Panel 3 ★: Castor's red charge and Solar's gold light hitting together.
+  Panel 4: afterwards he takes her cold hands and shoves them into his coat pockets with his own, scowling at nothing; she smiles up at him. Warm red-gold light.
+  ```
+- [ ] *(Optional)* **Haechan · "Corona"** (panel 1 = 🎮 `bond-haechan-love.webp`; *Universe* keeps its own five panels). *Concept: the moon and the sun line up, and he can't stop showing off for her.* `[N]` = 4.
+  - **Attach:** style, Solar, Haechan, then 🎮 `battle/art/theurgy/bond-haechan-love.webp` (4th). **Fills:** `battle/art/theurgy/bond-haechan-love-show-2..4.webp`. Replaces the single still `bond-haechan-love` in the full cut-in; that still stays as panel 1 and as the short-version still.
+  ```
+  Panel 1 is the attached still.
+  Panel 2: he catches her wrist and spins her across the Tartarus floor like a dance step, both laughing, the moon rising behind him.
+  Panel 3 ★: the eclipse aligns and a blazing corona ring erupts; his violet static and her light pour through it onto every Shadow, his arm round her waist inside the ring.
+  Panel 4: a quiet beat: he tucks a strand of her hair behind her ear, foreheads close; she's calling him a show-off with a smile. Gold and violet corona glowing behind them.
+  ```
+- [ ] *(Optional)* **Jungwon · "Jade Ring"** (panel 1 = 🎮 `bond-jungwon-love.webp`; Signed in Full adds panel 5). *Concept: formal even now, and very much in love.* `[N]` = 4 (5).
+  - **Attach:** style, Solar, Jungwon, then 🎮 `battle/art/theurgy/bond-jungwon-love.webp` (4th). **Fills:** `battle/art/theurgy/bond-jungwon-love-show-2..4 (+ `-5` for Signed in Full).webp`. Replaces the single still `bond-jungwon-love` in the full cut-in; that still stays as panel 1 and as the short-version still.
+  ```
+  Panel 1 is the attached still.
+  Panel 2: mid-fight he stops to straighten her red bow, very formally; she teases him; his face goes perfectly still (he's pleased), the tips of his ears pink.
+  Panel 3 ★: ice and light hit every Shadow while Hyeonmu's tortoise shell closes over Solar as a glowing jade hexagon dome.
+  Panel 4: inside the jade glow he's still holding her hand, a man's wristwatch on his wrist, his thumb on her knuckles; she smiles at him.
+  Panel 5 (Signed in Full only): he offers her a fountain pen, and they sign the bottom of one glowing page together: two strokes of light, no letters.
+  ```
+- [ ] *(Optional)* **Jihoon · "Royal Pair"** (Coronation adds panel 5). *Concept: he made a crown for himself, then gives it to her.* `[N]` = 4 (5).
+  - **Attach:** style, Solar, Jihoon. **Fills:** `battle/art/theurgy/bond-jihoon-love-show-1..4 (+ `-5` for Coronation).webp`. Replaces the regular still/duo fallback this romance version borrows now; the regular still stays the short-version still.
+  ```
+  Panel 1: Jihoon holds up a paper crown, then, unusually earnest, sets it on Solar's head instead; she's caught off guard.
+  Panel 2: he ruins the moment with a smug grin and a second paper crown for himself; she rolls her eyes but she's smiling.
+  Panel 3 ★: wind and star hit every Shadow together, both crowns glowing.
+  Panel 4: back to back, crowns tilted, arms linked; she hides a smile, he doesn't bother.
+  Panel 5 (Coronation only): one heavy gold crown, each of them holding one side of it, lifting it together.
+  ```
+- [ ] *(Optional)* **Minji · "Keep This One"** (Last Frame adds panel 5). *Concept: looked at, not watched.* `[N]` = 4 (5).
+  - **Attach:** style, Solar, Minji. **Fills:** `battle/art/theurgy/bond-minji-love-show-1..4 (+ `-5` for Last Frame).webp`. Replaces the regular still/duo fallback this romance version borrows now; the regular still stays the short-version still.
+  ```
+  Panel 1: Minji filming Solar, then slowly lowering the camera to look at her directly; Solar caught mid-smile.
+  Panel 2: Solar takes the camera and turns it on both of them; Minji flustered, laughing.
+  Panel 3 ★: arrows of light and the sun on the Shadow, lens flare.
+  Panel 4: a little instant photo of the two of them (no writing); Minji tucks it into her jacket pocket, over her heart.
+  Panel 5 (Last Frame only): her camera pointed at the sunrise, both silhouetted, and Minji looking at Solar instead of the shot.
+  ```
 
 ### 5B. Bosses
 - [ ] **A memory-floor boss that borrows a regular Shadow's art** (`memory_car`, now Rampage Drive). Claude will describe it when you're ready (it's a story fight). **Attach:** 🎮 `battle/art/shadows/memory-party.webp` (style). **Fills:** `battle/art/shadows/memory-sleeper-car.webp`.
@@ -226,51 +384,158 @@ A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frame
   A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: a thin violet ring glowing faintly around an empty centre. Frame 2: curling tendrils of glowing violet energy rising from the ring and bending inward, like ink drawn into a drain. Frame 3, the peak: a vortex of sharp curved tendrils snapping shut over the centre, their edges glowing bright violet and magenta, the inside left empty black, a crisp sigil-like ring of thorny points around it. Frame 4: the tendrils twist and tighten, small magenta sparks shedding off them. Frame 5: the tendrils unravel into thin wisps sinking downward. Frame 6: a few faint purple wisps and a dim ring. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, glowing violet (#c07bff) and deep purple (#7a2bd0) edges with magenta (#ff5ab0) highlights; darkness is shown only as empty black framed by glowing edges, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
   ```
 
+### 5G. Effect variants *(optional, for later)*
+More versions of the 5F sheets, so a big spell doesn't look like a small one and each fighter's magic has its own flavour. The game keeps playing the sheet that's in now for everything a variant doesn't cover (appendix: "Effect variants (5G)").
+
+**Same format as 5F:** a 3 × 2 grid, landscape 3:2 (1536 × 1024), solid black, frame 3 the peak, no text. **Attach:** 1. the sheet it's a variant of, from 🎨 `Added to Game/` (named in each item; Dark's once it exists); 2. 🎨 `Added to Game/pierce.png`. Name the new sheet after its **Fills** line and put it in New Adds.
+
+**Variant template** (fill in `[CHANGE]`):
+```
+Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: [CHANGE]. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
+```
+
+#### Heavy and critical, per element
+Each item is two sheets. **Heavy** is for the -ma / -dyne and all-foe versions; **crit** for a critical hit of that element (it replaces the generic crit flash on that element's hits).
+- [ ] **Slash** (from `slash.jpeg`). Heavy: *two crossing slashes instead of one, each twice as long and thicker, with a shockwave ring at the crossing in frame 3 and longer shards in frames 4–5.* Crit: *the slash cuts the frame in a single razor-thin white line in frame 3, then splits into a pink-white X with sparks spraying along it.* **Fills:** `battle/art/fx/slash-heavy.webp`, `slash-crit.webp`.
+- [ ] **Strike** (from `strike.jpeg`). Heavy: *a bigger impact star with a thick shockwave ring and cracked-ground-style radial lines (light only, no ground), debris streaks flying outward.* Crit: *a sharp hit-stop: frame 3 a pure white starburst with heavy black-edged comic impact lines, frame 4 a ring of gold sparks.* **Fills:** `strike-heavy.webp`, `strike-crit.webp`.
+- [ ] **Pierce** (from `pierce.png`). Heavy: *three parallel piercing streaks instead of one, with a wider muzzle-flare ring at the peak.* Crit: *one long needle of white light punching straight through the centre, a small pink-white burst out the other side and a thin ring around the point of entry.* **Fills:** `pierce-heavy.webp`, `pierce-crit.webp`.
+- [ ] **Fire** (from `fire-v2.jpeg`). Heavy (Maragi / Agidyne): *a towering pillar of fire with a ring of flames at its base, twice the height of the original peak, embers swirling up in frames 4–6.* Crit: *the fire collapses into a white-hot core in frame 3 and blasts out as a sharp eight-pointed flare.* **Fills:** `fire-heavy.webp`, `fire-crit.webp`.
+- [ ] **Ice** (from `ice.jpeg`). Heavy (Bufudyne): *a cluster of huge ice crystals bursting up around the centre, frost fog rolling out, shards flying in frame 4.* Crit: *a single giant crystal forms in frame 3 and shatters into glittering diamond fragments in frame 4.* **Fills:** `ice-heavy.webp`, `ice-crit.webp`.
+- [ ] **Elec** (from `elec.jpeg`). Heavy (Ziodyne): *several thick bolts striking from above at once, a dome of branching lightning at the peak.* Crit: *one blinding white bolt with a hard black-edged outline, static arcs crawling around the centre in frames 4–5.* **Fills:** `elec-heavy.webp`, `elec-crit.webp`.
+- [ ] **Wind** (from `wind-v2.jpeg`). Heavy (Garudyne): *a full tornado of green-white blades, twice as tall, with a ring of cutting gusts at its base.* Crit: *the wind folds into a single crescent blade of white light in frame 3, then bursts into feathers of green light.* **Fills:** `wind-heavy.webp`, `wind-crit.webp`.
+- [ ] **Light** (from `light-v2.jpeg`). Heavy (Kougaon): *a tall column of holy light with a ring of glowing sigils at its base, rays fanning out.* Crit: *a white-gold cross-shaped flare with a sharp halo ring.* **Fills:** `light-heavy.webp`, `light-crit.webp`.
+- [ ] **Dark** (from Dark's sheet once 5F's is in). Heavy (Eigaon): *a wider vortex with two rings of thorny points and longer tendrils, the empty black centre twice as big.* Crit: *the tendrils snap shut into a sharp violet star-shape in frame 3 with magenta cracks radiating out.* **Fills:** `dark-heavy.webp`, `dark-crit.webp`.
+- [ ] **Almighty** (from `almighty.jpeg`). Heavy (Megidolaon): *a huge expanding sphere of white light with a ring of smaller blasts around it, the shockwave reaching the frame margins in frame 4.* Crit: *a single pin-point of light in frame 2 that detonates into a perfect white ring with a rainbow-tinted edge.* **Fills:** `almighty-heavy.webp`, `almighty-crit.webp`.
+
+#### Fighter flavours
+One sheet each, used for that fighter's own spells of that element (and their Theurgy and bond hits).
+- [ ] **Solar, sun fire** (from `fire-v2.jpeg`): *the fire is a small sun: a gold-white disc with flame petals and thin sun rays, pink (#ff4f9e) at the flame tips, a ring of tiny gold pins and ribbons in frame 4.* **Fills:** `fire-solar.webp`.
+- [ ] **Solar, sunrise light** (from `light-v2.jpeg`): *a sunrise: a half-sun rising behind a flat line of light, gold and blush pink, rays sweeping up and out.* **Fills:** `light-solar.webp`.
+- [ ] **Haechan, moon dark** (from Dark's sheet): *a crescent moon of violet light cutting through the tendrils, silver-white highlights, a thin eclipse ring.* **Fills:** `dark-haechan.webp`.
+- [ ] **Haechan, static** (from `elec.jpeg`): *violet and white static instead of yellow, crackling around a crescent moon outline, small knife-shaped sparks.* **Fills:** `elec-haechan.webp`.
+- [ ] **Akihiko, lightning punch** (from `elec.jpeg`): *a fist-shaped burst of yellow-white lightning with three fast jab streaks, pink-red sparks.* **Fills:** `elec-akihiko.webp`.
+- [ ] **Mitsuru, rose ice** (from `ice.jpeg`): *ice crystals blooming like a rose, deep red (#ff5b5b) light inside the clear ice, petals of frost.* **Fills:** `ice-mitsuru.webp`.
+- [ ] **Jungwon, jade frost** (from `ice.jpeg`): *jade-green and pale blue ice in a hexagon shell pattern like a tortoise shell, a thin gold thread winding through it.* **Fills:** `ice-jungwon.webp`.
+- [ ] **Yukari, pink gale** (from `wind-v2.jpeg`): *pink and white wind with heart-shaped gusts and feather shapes.* **Fills:** `wind-yukari.webp`.
+- [ ] **Jihoon, goblin gale** (from `wind-v2.jpeg`): *a blue-and-cyan gale with blue goblin-fire wisps (dokkaebi flames) riding it, a small star sparkle at the peak.* **Fills:** `wind-jihoon.webp`.
+- [ ] **Junpei, home-run fire** (from `fire-v2.jpeg`): *a fireball streaking in with a baseball's stitched seam drawn in white light, exploding in frame 3.* **Fills:** `fire-junpei.webp`.
+- [ ] **Koromaru, hellhound fire** (from `fire-v2.jpeg`): *dark red and orange fire shaped like three snapping dog heads, then paw-print embers.* **Fills:** `fire-koromaru.webp`.
+- [ ] **Minji, film light** (from `pierce.png`): *arrows of soft gold-white light with a film-strip edge pattern, a lens flare ring at the peak.* **Fills:** `pierce-minji.webp`.
+- [ ] **Aigis, tracer fire** (from `pierce.png`): *golden tracer rounds in a tight spread with blue butterfly-shaped sparks at the impact.* **Fills:** `pierce-aigis.webp`.
+- [ ] **Ken, justice spear** (from `elec.jpeg`): *a single straight spear of lightning from above, orange-white (#ffb36b), with a ring at the impact.* **Fills:** `elec-ken.webp`.
+- [ ] **Shinjiro, Castor's charge** (from `strike.jpeg`): *a dark red (#c43b3b) charging impact with heavy horizontal speed streaks, like something enormous hit at full gallop.* **Fills:** `strike-shinjiro.webp`.
+
 ## 6. Cards, items and icons
-### 6A. Tarot cards
-**Attach:** 🎮 two existing cards, e.g. `tarot/star.webp` and `tarot/moon.webp`.
+**Backgrounds, in short:** gear and book cards on **plain white** (the way `SolarWeapons.png` came, which the card tool already cuts); small icons, stickers and charms on **flat pure green (#00FF00)**, which keys out cleanly (no fake checkerboards, no white halo); full pictures (tarot, album tile, loading stills, memory cards) **full-bleed**, no background at all. Sheets of six save usage wherever the game shows the art small.
+
+### 6A. Tarot cards *(optional)*
+**How the game shows them:** the Bonds menu and the rank-up card, 360 × 507 (P3's card shape, about 5:7). `tools/femc-tarot.py` crops and resizes, so a portrait 2:3 picture works. One card per image: they're detailed and seen big.
+**Attach:** 🎮 `tarot/star.webp` and `tarot/moon.webp` (style, border and layout).
 ```
-A tarot card in exactly the same style, border and layout as the attached cards: [ARCANA], numbered [NUMBER], depicting [IMAGE].
+A tarot card in exactly the same art style, border, colours and layout as the attached cards: the [ARCANA] arcana, numbered [NUMERAL], depicting [IMAGE]. The card fills the whole image edge to edge, portrait 2:3, nothing around it. No people's faces. No extra text beyond the numeral and title band the attached cards have.
 ```
-- [ ] *(Optional)* alternates for shared cards: Lovers, Strength, Empress, Priestess, Justice, Magician, Moon, Emperor, Sun, Chariot, Fool. **Fills:** `tarot/<arcana>-2.webp`.
+- [ ] Alternates for the arcana two or more links share (each fills the blanks above). **Fills:** `tarot/<arcana>-2.webp` (Claude matches each to the link that gets it).
+  - **Lovers** (VI; Yukari, Ann, Hyein): two hands reaching for each other under an arch of pink blossoms, a small winged silhouette above.
+  - **Strength** (XI): a gentle hand resting on a white lion's mane, a red ribbon loosely tied round its neck.
+  - **Empress** (III; Mitsuru, Haru): an empty throne in a garden of red roses and ripe wheat, a crown resting on a cushion.
+  - **Priestess** (II; Fuuka): a crescent moon between a dark and a light pillar, a scroll and a pair of headphones on the step.
+  - **Justice** (VIII; Ken, Judy): balanced scales hanging from an upright sword, a small gear in one pan and a feather in the other.
+  - **Magician** (I; Junpei, Mark, Rohan): a hand raising a fountain pen like a wand over a table with a cup, a coin, a sword and a baseball.
+  - **Moon** (XVIII; Shinjiro, Minji): a full moon over two towers, a dog and a wolf howling at it, a winding path out of a still pool.
+  - **Emperor** (IV): a stone throne carved with ram heads, a sceptre and an orb resting on its arms.
+  - **Sun** (XIX; Aphrodite, Jaemin, Sunoo): a huge sun over a field of sunflowers, a white horse with a red banner.
+  - **Chariot** (VII; Cherry, Rio): a chariot drawn by a black and a white sphinx under a starry canopy.
+  - **Fool** (0; Sebastian, Junkyu): a traveller's bundle and a white rose at a cliff edge, a small white dog leaping beside it, a bright sky.
 
 ### 6B. Item and gear art *(optional)*
-All of these are small code-drawn icons now. Gemini, as sheets of six (the weapon-sheet way).
-**Attach:** 🎨 `Added to Game/SolarWeapons.png` (style).
+**How the game shows them:**
+- **Armor and accessories** would show like the weapons do: a tall card cropped to fill a 46 × 102 box in the equip screen (26 × 56 in lists, 34 × 76 in battle loot), turned slightly. Something wide (a belt, a coat laid flat) gets a 92 × 64 box. So draw each item **upright and centred, filling about 70% of its card's height**.
+- **Battle items and materials** are tiny icons (about 26 px in lists, 64 px big). They need bold, simple silhouettes, not detail.
+
+**Gear sheet prompt** (Gemini; armor and accessories). **Attach:** 🎨 `Added to Game/SolarWeapons.png` (style).
 ```
-A 2×3 grid of six [KIND] on a white background, each in its own card, in the same rendering style as the attached sheet: [LIST]. Game item art, no text.
+A 3 × 2 grid of six game item cards (3 columns, 2 rows) on a plain pure white background, landscape 3:2 (1536 × 1024), in exactly the same rendering style as the attached sheet: each item alone in its own card framed by a thin light-grey line, centred and upright, filling about 70% of the card's height, with clear white space between cards. Polished Persona 3 Reload item art, soft shading, one accent colour per item. No printed names, no text, no hands, no people. In reading order: [SIX ITEMS].
 ```
-- [ ] Armor (13): school blazers, vests and coats by tier
-- [ ] Accessories (26): rings, charms, barrettes, earrings, bangles, belts
-- [ ] Items (19) and materials (10): medicine, gems, beads, Soma, Tarot Dust, Velvet Thread and the rest
-- [ ] The plain weapons each type still has (8–9 per type): naginata, gloves, bow, greatsword, rapier, gun, spear, knife, axe
-- [ ] Bookworms' 10 books: covers, one per card
-- [ ] The five birthday keepsakes
-- **Fills:** `battle/art/gear/<id>.webp` and `game/art/items/<id>.webp` (Claude has the id list).
+- [ ] **Armor** (12 + the Velvet coat below), two sheets. **Fills:** `battle/art/gear/<id>.webp`.
+  - Sheet 1: a black Gekkoukan school blazer (`armor0`) · a chain-mail vest (`armor1`) · a black riot vest (`armor2`) · a long battle coat (`armor3`) · a kevlar jacket (`armor4`) · ceramic plate armor (`armor5`).
+  - Sheet 2: sleek cyber plate armor with glowing seams (`armor6`) · Soul Mail, dark armor with a faint blue soul-glow (`armor7`) · a pale blue Frost Coat with fur trim (`frost_coat`) · a yellow-and-black Insulated Vest (`insulated_vest`) · a red Fireproof Suit (`fireproof_suit`) · a green Gale Cloak with a hood (`gale_cloak`).
+- [ ] **Accessories** (26), five sheets. **Fills:** `battle/art/gear/<id>.webp`.
+  - Sheet 1: red Power Ring (`power_ring`) · blue Magic Ring (`magic_ring`) · green Guard Ring (`guard_ring`) · yellow Speed Ring (`speed_ring`) · a four-leaf Lucky Charm (`lucky_charm`) · a purple Antidote Charm (`antidote_charm`).
+  - Sheet 2: a Rose Barrette (`rose_barrette`) · a Calm Amulet with a pale blue stone (`calm_amulet`) · a silver Holy Cross (`holy_cross`) · a Black Earring (`black_earring`) · a Spirit Bangle with blue stones (`sp_bangle`) · a red Power Bangle (`power_bangle`).
+  - Sheet 3: a blue Magic Bangle (`magic_bangle`) · a Sniper Scope (`sniper_scope`) · a Vitality Belt (`vitality_belt`, wide) · a gold Sunburst Charm (`theurgy_charm`) · a Star Brooch (`star_brooch`) · a Velvet Ribbon in deep blue (`vel_ribbon`).
+  - Sheet 4 (capsule prizes): a white dog Koro-chan Charm (`cap_koro_charm`) · a Featherman Pin (`cap_feather_pin`) · a Frosty Hairclip shaped like a little snowman sprite (`cap_jack_frost`) · a silver Moon Locket (`cap_moon_locket`) · a Golden Sun Keyring (`cap_gold_sun`) · a Blue Butterfly Brooch (`vel_butterfly`).
+  - Sheet 5 (Velvet Room, three cards, leave the other three empty): an ornate Contract Key (`vel_key`) · a small blue Pocket Compendium book (`vel_compendium`) · a velvet-blue Attendant's Coat (armor, `vel_coat`).
+- [ ] **Battle items (13) and materials (10)**, four sheets (6, 6, 6, 5), Gemini. **Attach:** 🎨 `Added to Game/status-icons.jpeg` (the sticker style the status icons use). **Fills:** `battle/art/items/<id>.webp`.
+  ```
+  A 3 × 2 grid of six square game icons (3 columns, 2 rows) on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024), in the same sticker style as the attached sheet: each item a bold, simple shape with a heavy dark outline and a thick white rim, centred in its own square with wide green space around it, readable at 32 pixels. No text, no labels, no checkerboard, no shadows on the background, no green in the items. In reading order: [SIX ITEMS].
+  ```
+  - Sheet 1: a medicine bottle (`medicine`) · a single glowing bead (`bead`) · a string of glowing beads (`bead_chain`) · Snuff Soul, a small tin with a blue wisp (`snuff_soul`) · Chewing Soul, a wrapped sweet with a blue wisp (`chewing_soul`) · Soma, an ornate golden flask (`soma`).
+  - Sheet 2: a Revival Bead, gold with a feather (`revival_bead`) · a pink Patra Gem (`patra_gem`) · a green Dis-Poison bottle (`dis_poison`) · a blue Dekaja Gem (`dekaja_gem`) · a red Dekunda Gem (`dekunda_gem`) · a violet Traesto Gem (`traesto_gem`).
+  - Sheet 3: an old iron Tartarus Key (`tartarus_key`) · a pile of grey Shadow Ash (`shadow_ash`) · a Blue Mask Shard (`mask_shard`) · a drop of Crimson Lacquer (`crimson_lacquer`) · a Mirror Shard (`mirror_shard`) · a Rusted Cog (`rusted_cog`).
+  - Sheet 4 (five; leave the last square empty): a Stone Heart (`stone_heart`) · a Moonlit Feather (`moon_feather`) · an Arcana Fragment, a torn piece of a tarot card (`arcana_fragment`) · violet Tarot Dust in a little heap (`tarot_dust`) · a spool of blue Velvet Thread (`velvet_thread`).
+- [ ] **The plain weapons** (8 tiers per type, plus the five element weapons), one sheet of nine per type, Gemini. **Attach:** 🎨 `Added to Game/SolarWeapons.png` and that fighter's set (e.g. `aigis-weapons.jpeg`). **Fills:** `battle/art/weapons/plain-<id>.webp` (`naginata0`, `gloves3`, `sun_naginata`, …).
+  ```
+  A 3 × 3 grid of nine weapon cards on a plain pure white background, square 1:1 (1024 × 1024), in exactly the same rendering style as the attached sheets: each [TYPE] alone in its own card framed by a thin light-grey line, upright (diagonal only if it can't fit), filling most of the card's height, getting visibly finer and more powerful from first to last. No printed names, no text, no hands. In reading order: [NINE NAMES].
+  ```
+  - Naginata: Practice, Steel, Tomoe, Kikkō, Iwatōshi, Moon Reaper, Hōzōin Glaive, Daybreak Glaive, Sun Naginata (gold, glowing).
+  - Gloves (draw pairs, wide): Leather, Brass Knuckles, Iron Fists, Kaiser Knuckles, Cestus, Titan Fists, Champion Gloves, Caesar's Cestus, Thunder Fist (crackling).
+  - Bow: Practice, Short, Composite, Yumi, Siren, Moon, Artemis, Gandiva, Gale Bow (green wind).
+  - Greatsword: Practice Sword, Zweihänder, Claymore, Flamberge, Nodachi, Muramasa, Executioner, Masakado, Blaze Blade (burning).
+  - Rapier: Rapier, Épée, Estoc, Saber, Colichemarde, Tizona, Joyeuse, Fleuret Glacial, Glacial Rapier (frosted).
+  - Gun (eight; leave the last card empty; arm-mounted, wide): Finger Rounds, 9mm Rounds, Gatling Arm, Rail Rounds, Plasma Arm, Orgia Cannon, Palladion Arm, Athena's Aegis.
+  - Spear (eight): Toy Spear, Short Spear, Trident, Halberd, Partisan, Brionac, Longinus, Gungnir.
+  - Knife (eight): Combat Knife, Tantō, Kodachi, Hell Fang, Wolf's Bane, Cerberus Fang, Orthrus Fang, Underworld Fang.
+  - Axe (eight): Lead Pipe, Iron Club, War Hammer, Battle Axe, Great Axe, Bardiche, Labrys, Castor's Wrath.
+- [ ] **Bookworms' 10 books**, two sheets (6 + 4), Gemini. Covers only; the game prints the title. **Fills:** `game/art/books/<id>.webp`.
+  ```
+  A 3 × 2 grid of six book covers (3 columns, 2 rows) on a plain pure white background, landscape 3:2 (1536 × 1024), each a portrait 2:3 hardback or paperback seen straight on, centred in its cell with white space all round, a slight page-edge shadow. Late-2000s Japanese bookshop style, flat painted cover art, a blank title plate where a title would go. No readable text anywhere. In reading order: [SIX COVERS].
+  ```
+  - Sheet 1: a classical court lady with a brush and pillow, manga style (`manga-school`) · a woman's silhouette balancing a book on her head (`poise`) · a tiger and a coiled rope (`tiger`) · neat equations fading into a calm sky (`algebra`) · a microphone and a spotlight (`speech`) · a needle, thread and fabric squares (`handmade`).
+  - Sheet 2 (four; leave the last two cells empty): a wrench and screwdriver crossed (`fixit`) · an envelope and a nurse's cap (`letters`) · a steaming pot on a dorm hot plate (`kitchen`) · a cupped ear and soft sound waves (`listening`).
+- [ ] **The five birthday keepsakes**, one sheet (leave the last cell empty), Gemini; same gear-sheet prompt on white. They show only in a toast now, so they need a small keepsake hook (appendix). **Fills:** `game/art/items/keepsake-<name>.webp`.
+  - A small silver voice recorder with a headphone cord (Fuuka's recording of the dorm roof) · a birthday omamori in good patterned paper (Kiriko) · a burned CD in a clear slim case, blank disc, no writing (Sebastian) · a coiled red cord for a stopwatch (Akihiko) · rolled running socks with a protein bar (Akihiko).
 
 ### 6C. Icons *(optional)*
-**Attach:** nothing needed.
-- [ ] **Menu tabs:** Party, Personas, Skills, Cards, Equipment, Items, Collection, Status, Links, Bonds, Journal, Album, Theater. Now text only.
-```
-A set of [N] flat game UI icons in Persona 3 Reload's style (bold shapes, heavy ink outline, one accent color, a white rim), each on its own square, transparent background, no text: [LIST].
-```
-- **Fills:** `game/art/icons/<name>.webp`.
+- [ ] **Menu tabs** (15): Party, Personas, Skills, Cards, Equipment, Items, Collection, Status, Links, Bonds, Journal, Album, Theater, Calendar, Compendium. The tabs are slanted text buttons now; an icon would sit about 18–20 px tall before each label (and could stand alone on narrow phones). One sheet, Gemini or ChatGPT. **Attach:** 🎨 `Added to Game/status-icons.jpeg` (style). **Fills:** `game/art/icons/<tab>.webp` (`party`, `personas`, …, `compendium`).
+  ```
+  A 4 × 4 grid of sixteen flat game UI icons on a flat pure green background (#00FF00), square 1:1 (1024 × 1024), in Persona 3 Reload's menu style: bold simple glyphs, a heavy dark ink outline, one hot-pink (#ff4f9e) accent, a thick white rim, each centred in its own square with wide green space round it, readable at 18 pixels. No text, no letters, no green in the icons. In reading order: Party (three heads), Personas (a mask), Skills (a branching star), Cards (a fanned trio of cards), Equipment (a naginata crossed with a vest), Items (a medicine bottle), Collection (a capsule toy), Status (a heartbeat line), Links (two linked rings), Bonds (two hands clasped), Journal (an open notebook), Album (a photo with a corner), Theater (a film reel), Calendar (a page with a crescent), Compendium (a thick book with a moon clasp); the last square empty.
+  ```
 
 ---
 
 ## 7. Screens and keepsakes *(optional)*
-- [ ] **Capsule keychains** (30 cast members). The 12 fighters' charms show their chibi victory frame now (`gacha.js KEY_CHIBI`); the other 18 (searchers and the Persona cast) are a CSS charm with their face. Acrylic chibi charms would look real for them; a proper charm for the 12 can replace their chibi frame too. **Attach:** 🎮 `battle/art/chibi/solar-0.webp` (style) and the portrait. **Fills:** `game/art/keys/<id>.webp`.
+- [ ] **Capsule keychains** (30 cast members), five sheets of six, ChatGPT (faces). The charm sits in a 64 × 88 slot (a 56 px circle face under a ring and chain now), 76 px cells in the Collection, swinging slightly in the prize reveal. A finished charm image replaces the whole slot. The 12 fighters show their chibi victory frame now (`gacha.js KEY_CHIBI`); the other 18 show a CSS charm with their face. **Attach:** 🎮 `battle/art/chibi/solar-0.webp` (chibi style), then the six portraits for that sheet. **Fills:** `game/art/keys/<id>.webp`.
   ```
-  A small acrylic keychain charm of [NAME] as a cute chibi, same chibi style as the attached image, clear acrylic edge, a metal ring at the top, transparent background.
+  A 3 × 2 grid of six acrylic keychain charms (3 columns, 2 rows) on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each charm is a cute chibi of one character, in exactly the chibi style of the first attached image, cut out in clear acrylic with a thick glossy white edge and a light blue shine (draw the edge solid, not see-through), a small silver ring and a short chain at the top centre. Each charm upright, centred in its cell, the same size, with wide green space around it. Faces, hair and outfits from the attached portraits, in order. No text, no green in the charms. In reading order: [SIX NAMES].
   ```
-- [ ] **Phone cases** (6, CSS now): Sakura, Featherman R, Paw Print, Moonlight, Velvet, Golden Sun. **Attach:** nothing needed. **Fills:** `game/art/cases/<id>.webp`.
+  - Sheet 1: Fuuka, Ken, Hanni, Hyein, Yunjin, Mark.
+  - Sheet 2: Jaehyun, Cherry, Sunoo, Junkyu, Ann, Kasumi.
+  - Sheet 3: Haru, Kuromi, My Melody, Rio, Saori, Kiriko.
+  - Sheets 4–5 (to replace the chibi frames): Solar, Akihiko, Yukari, Junpei, Mitsuru, Aigis · Koromaru, Shinjiro, Haechan, Jungwon, Jihoon, Minji. Solar's charm: no armband.
+- [ ] **Phone cases** (6), one sheet, Gemini. The phone shows a case as a 40 × 72 rounded rectangle (×1.25 and tilted in the prize reveal), so each needs one bold pattern that reads tiny. **Attach:** nothing needed. **Fills:** `game/art/cases/<id>.webp`.
   ```
-  A flip-phone case design, front view, flat game asset, transparent background, no text: [DESIGN].
+  A 3 × 2 grid of six back covers for a late-2000s flip phone, closed, seen straight on from the back, on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each is a tall rounded rectangle (about 5:9) with a small camera lens and a tiny external screen near the top, centred in its cell, same size, with wide green space around it. Flat glossy game-asset style, one bold pattern each that still reads at 40 pixels wide. No logos, no text, no green in the cases. In reading order: Sakura (pale pink with falling cherry petals) · Featherman R (loud red with a white-and-gold heroic wing emblem and a lightning stripe) · Paw Print (white with a trail of little grey paw prints) · Moonlight (midnight navy with one large silver crescent) · Velvet (deep velvet blue with a thin gold border and a small gold key) · Golden Sun (shining gold all over with an embossed sun).
   ```
-- [ ] **Group-chat pictures** for the phone (they show a letter now): S.E.E.S., the sisters, the search party, the hate club. **Attach:** nothing needed; use the icon prompt in 6C with "a round group-chat avatar". **Fills:** `game/art/phone/<group>.webp`.
-- [ ] **The album's locked tile** (a blank tile now): one card back, a silver frame with a small crescent moon. **Attach:** 🎮 `memories/runners-rooftop.webp` (to match the cards). **Fills:** `game/art/album-locked.webp`.
-- [ ] **Loading and Dark Hour transition art:** one or two wide stills (Tartarus from below at midnight; the dorm clock at 12:00). Now a plain fade. **Attach:** nothing needed; use the places prompt in section 3. **Fills:** `title/loading-<n>.webp`.
-- [ ] **Two more memory cards:** #25 barley tea and #30 ballot box (`FEMC-GEMINI-PROMPTS.md` section D). They need new memory ids, so Claude adds a place for them when they arrive. **Attach:** nothing needed. **Fills:** `memories/<id>.webp`.
+  Ids in order: `sakura`, `featherman`, `koro`, `moonlight`, `velvet`, `gold`.
+- [ ] **Group-chat pictures** (4), one sheet. The phone shows a 44 px circle per thread (a letter for groups now). **Attach:** 🎨 `Added to Game/status-icons.jpeg` (style). **Fills:** `game/art/phone/<group>.webp`.
+  ```
+  A 2 × 2 grid of four round group-chat avatars on a flat pure green background (#00FF00), square 1:1 (1024 × 1024). Each is a filled circle with a white rim, centred in its quarter with wide green space round it, holding one bold simple emblem in Persona 3 Reload's flat UI style with a heavy dark outline, readable at 44 pixels. No text, no letters, no green in the avatars. In reading order: [FOUR].
+  ```
+  - `sees` (S.E.E.S., no seniors): a red armband stripe across a crescent moon on dark blue · `sisters` (Hanni and Hyein): two small matching bunny hairclips, one pink, one sky blue, on soft lilac · `searchparty` (Sol's search party): a flashlight beam finding a little sun on night blue · `hateclub` (the Park Jihoon hate club): a paper crown with a big red "no" slash through it on hot pink.
+- [ ] **The album's locked tile** (a blank "?" tile now). The album has 16:9 tiles (event CGs) and square ones (memory cards), so make **two** images from one prompt: a 16:9 (1672 × 941) and a square (1024 × 1024). Full-bleed, no background around it. **Attach:** 🎮 `memories/runners-rooftop.webp` (to match the cards). **Fills:** `game/art/album-locked.webp` (16:9) and `game/art/album-locked-sq.webp` (square).
+  ```
+  The back of a locked memory card, matching the soft painterly style and film grain of the attached image: deep navy fading to dusky pink, a thin ornate silver frame inset from the edges, a small silver crescent moon in the centre with a faint glow, nothing else. Full-bleed, no text. First a 16:9 version, then a square version with the same design.
+  ```
+- [ ] **Loading and Dark Hour transition art** (2), Gemini. Full-screen behind a fade (a plain fade now), so 16:9, full-bleed, nothing important near the edges. **Attach:** 🎮 `title/keyart.webp` (style). **Fills:** `title/loading-1.webp`, `title/loading-2.webp`.
+  - Use the places prompt in section 3, with:
+    1. *Tartarus seen from the foot of Gekkoukan High's gate at midnight: the tower twisting up out of the school into a huge green-yellow full moon, the sky sickly green, coffins standing where people were in the street, puddles shining like blood-red glass. Vast, silent, eerie.*
+    2. *The Iwatodai dorm lounge at the stroke of midnight: the wall clock's hands both on twelve, the room washing from warm lamplight to Dark Hour green from one side to the other, the TV gone dark, the couch empty. Quiet, uncanny.*
+- [ ] **Two more memory cards**, Gemini. Square cards like the others (the game shows 560 to 2048 px squares; a 16:9 `-wide` version is optional for the big view). **Attach:** 🎮 `memories/strangers-jade-ring.webp` (#25) or `memories/hoax-president-pin.webp` (#30) for style. **Fills:** `memories/strangers-barley-tea.webp`, `memories/hoax-ballot-box.webp` (Claude adds the ids).
+  ```
+  Soft painterly anime vignette, square, dreamy and slightly faded like a half-remembered memory, light film grain, vignetted edges, no people's faces. [SCENE]
+  ```
+  - #25 (strangers): *A cup of barley tea on a low wooden table, steam rising, morning light.*
+  - #30 (Hoax): *A ballot box with folded ballots, on a school gym table, string lights behind.*
 
 Checked and fine as they are: the title screen's key art, the Velvet Room, the Go Out cards (they use the place backgrounds above), Tartarus's seven blocks, every Persona, all weapon sheets, finish cards, chibi frames and memory cards in the game.
 
@@ -376,3 +641,23 @@ The same pieces as a Theurgy (the steps above), in `assets/femc/battle/bonds.js`
 - **Reduce flashes:** frames 2–4 draw at 0.45, and crit / theurgy-burst at 0.75 size. Shuffle's flare is at .4.
 - **Reduced motion:** no sheet plays; it keeps the single soft flash.
 - **Test:** `python3 tests/femc_fx_art.py`. It makes its own sheet in the page, so it needs no shipped art.
+
+### Bond Showtimes (5A): how they'd play *(a note, nothing built yet)*
+Most of it already works with today's `sequence` field (`battle.js playSeq` / `seqHtml` / `bondCut`); the rest is small additions there.
+- **Wiring with today's code:** cut each panel as a `cutin` (`tools/femc-theurgy.py`, 1600 × 900). A friendship Showtime goes on the bond itself (`sequence` on the `BONDS` entry), so every tier uses it (`arts()` reads `v.sequence || b.sequence`); a romance one goes on `love` (and `love15`, adding its fifth panel). Panel 1 is the existing still where there is one. Mark the ★ panel `hit: true`. Keep the version's `img` as the short-version still: the existing still where there is one (Haechan's Version 3, `bond-haechan-2`, stays his), else the last panel. Universe keeps its current sequence. Pick each `focus` so both faces stay in the phone band; `tests/femc_bonds.py --only art,shots` checks it.
+- **Timing:** now every panel gets `SEQ_STEP` (640 ms) and the strike panel 160 ms more, scaled by battle speed. Showtimes want comic timing, so let a panel carry `ms` (e.g. a 900 ms hold on a setup gag, 400 ms on a fast cut) and have `playSeq` sleep `f.ms || SEQ_STEP`. A 4–5 panel Showtime should run about 3–4 s at 1x before the lines and the closing punch, and Rush and Off still get the short band.
+- **Camera:** `seqHtml` already gives each panel its own `focus` and drift (`pan`, as `--px` / `--py`, with the slow zoom in CSS). Add an optional `zoom` (start scale, as `--z`) for a punch-in on a reaction face, and `shake: true` for a non-strike panel that should shake (Junpei's swing, Shinjiro's charge).
+- **Lines:** now both lines show at the end. P5R puts them over the panels: an optional `say: 0 | 1` on a panel could show the partner's or Solar's line on that panel instead (the end card then shows only the name).
+- **SFX:** `bondCut` plays `summon` at the start and the element's sound on impact. A per-panel `sfx` (an existing `sfx()` key: `summon`, `light`, `almighty`, the element sounds; new comic ones like a whistle or a bat crack would need files) would play as the panel comes in.
+- **Skipping:** the full version only plays under Persona cut-ins Always or 1st per battle (bonds always get the full one there), and never in Rush or reduced motion. Add a setting, **Bond Showtimes: On / Still only**, in the same settings group: "Still only" makes `seqOf` return null for bonds, so the version's `img` plays as today's single still. And a tap or Enter during the panels could jump to the strike panel (call `strike()` once, add `q-hit q-last`, go straight to the lines), so a player who has seen it can cut it short without turning it off.
+
+### Effect variants (5G): how the player would pick one *(a note, nothing built yet)*
+- **Building:** add each variant to `SOURCES` in `tools/femc-fx.py` under its own name (`fire-heavy`, `fire-crit`, `fire-solar`, …) and run `all`; the index lists it like any other sheet, and no other bump is needed.
+- **Picking:** `fx.js artFor(kind, o)` already walks a list of names and takes the first sheet that has loaded. A variant goes at the front of that list: the caster's flavour first (`<kind>-<o.by>`, which needs `battle.js fxPlay` to pass the caster's member id as `o.by`), then `<kind>-crit` when `o.crit`, then `<kind>-heavy` when the skill is a -ma / -dyne / all-foe one (a `heavy` flag on those skills in `data.js`, or `o.big` from the caller), then the plain sheet, then the code effect. So a missing variant just falls back to today's sheet.
+- **Order of preference to settle with Kat:** flavour beats heavy (Solar's Agidyne would show her sun fire, not the generic pillar), and crit beats both; or a flavour could get its own `-heavy` later.
+- **Crit overlay:** the generic `crit` sheet still plays over a crit; with an element crit sheet the overlay could drop to a small flash so the two don't stack.
+- **Test:** `tests/femc_fx_art.py` builds its own sheets in the page, so it can add a variant and check the pick order without shipped art.
+
+### Cards, items and screens (sections 6 and 7): wiring notes
+- **Green-screen sheets** (item and material icons, menu icons, keychains, phone cases, group avatars): key out flat #00FF00 (the way `femc-fx.py` does for `allout-cloud`), cut each cell, trim, and save transparent WebP. White-background sheets (gear, books, keepsakes) go through `tools/femc-cards.py` like the weapons; the plain-weapon sheets are 3 × 3, so that tool needs a nine-card mode (or `pick`).
+- **Hooks still to add:** armor and accessories need the weapons' `art` field read in each list; items and materials an `img` hook in `FemcIcons.of`; Bookworms' books and the keepsakes an `img` (keepsakes have no ids yet: give each gift an id); the menu tabs an icon slot in `menu.js TABS`; group-chat pictures a group map in `ui.js threadPic` (without the portrait's `scale(1.6)` crop); the album's locked tile picks the 16:9 or square file by the grid it's in; the loading stills need a place in the Dark Hour fade.
