@@ -242,7 +242,7 @@ try:
 
     # ── portraits ──
     pt = p.eval("""(()=>{const G=FemcGame,P=window.FEMC_PORTRAITS;const keep=JSON.stringify(P);P.chkagami=['neutral'];P.hgmaster=['neutral','happy'];P.ono=['neutral'];
-      const r={kagami:G.portrait('chKagami','neutral'),master:G.portrait('hgMaster','happy'),none:G.portrait('kbHattori','neutral'),
+      const r={kagami:G.portrait('chKagami','neutral'),master:G.portrait('hgMaster','happy'),none:G.portrait('kbGonda','neutral'),
         names:['tsuji','ybTsuji','ueda','lbUeda','daichi','tuDaichi','clerk','wdClerk'].map(id=>G.name(id))};return r})()""")
     ok(pt['kagami'].endswith('portraits/chkagami/neutral.webp') and pt['master'].endswith('portraits/hgmaster/happy.webp') and pt['none'] is None, f'camelCase ids find lowercase folders: {pt}')
     ok(pt['names'] == ['Tsuji', 'Mrs. Tsuji', 'Mrs. Ueda', 'Ueda', 'Daichi', 'Daichi', 'Clerk', 'Clerk'], f"each shared id is one person with its own name: {pt['names']}")

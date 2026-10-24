@@ -7424,6 +7424,825 @@
       "status": "alternate (unused)",
       "destination": null,
       "note": "Kat's other version of 'allout-cloud'; not used (pick: v1: round and centred; v2 has a speech-bubble tail). Swap it into tools/femc-fx.py SOURCES and run `all` to use it."
+    },
+    {
+      "batch": 40,
+      "source": "caretaker.png",
+      "sourceNow": "Added to Game/caretaker.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "0203824cdddf364bfab4cde921be0d5d78b61fb1d30aa8478a89482490ddea45",
+      "character": "caretaker",
+      "speakerId": "caretaker",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/caretaker/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/caretaker/caretaker-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/caretaker/neutral.webp": "a0777884e61a3e3549bb72595ba44504b62d0443c9e6fcddb99d90bce58ec83e"
+      },
+      "outputSha256": "a0777884e61a3e3549bb72595ba44504b62d0443c9e6fcddb99d90bce58ec83e",
+      "scale": 0.8,
+      "note": "the shrine caretaker"
+    },
+    {
+      "batch": 40,
+      "source": "chiba.png",
+      "sourceNow": "Added to Game/chiba.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "6fbbd1e10297aa2e6000d2f058a52ce61d449de0d921e9a929e75dda1a1dc770",
+      "character": "chiba",
+      "speakerId": "chiba",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/chiba/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/chiba/chiba-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/chiba/neutral.webp": "5c6a6a8bd079bec36b27ed0d44d4a0bb5f26e11341b345f515cbd4956e91f7f2"
+      },
+      "outputSha256": "5c6a6a8bd079bec36b27ed0d44d4a0bb5f26e11341b345f515cbd4956e91f7f2",
+      "scale": 0.82,
+      "note": "Chiba (tennis club)"
+    },
+    {
+      "batch": 40,
+      "source": "classmate.png",
+      "sourceNow": "Added to Game/classmate.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "d972dbfc9e22e989630e8d6c577f80ac0112c0e9664ca1432b978befa939ede1",
+      "character": "classmate",
+      "speakerId": "classmate",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/classmate/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/classmate/classmate-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/classmate/neutral.webp": "6838a48e95fdaa4901bfc10f9c1b529cd8396444158539b03634ae85a2b01d84"
+      },
+      "outputSha256": "6838a48e95fdaa4901bfc10f9c1b529cd8396444158539b03634ae85a2b01d84",
+      "scale": 0.82,
+      "note": "Solar's classmate (shared generic id)"
+    },
+    {
+      "batch": 40,
+      "source": "kubo.png",
+      "sourceNow": "Added to Game/kubo.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "e1c59c013f707afe4173ccd946f3b43f5d12d8caaf359fd6c6911dca4475997e",
+      "character": "kubo",
+      "speakerId": "kubo",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/kubo/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/kubo/kubo-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/kubo/neutral.webp": "f01570caf6de16986b735b8a102914667af8d168a89ed70e130885a6f2dc290c"
+      },
+      "outputSha256": "f01570caf6de16986b735b8a102914667af8d168a89ed70e130885a6f2dc290c",
+      "scale": 0.82,
+      "note": "Mrs. Kubo (shrine)"
+    },
+    {
+      "batch": 40,
+      "source": "kuga.png",
+      "sourceNow": "Added to Game/kuga.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "f39e1700e0028745b8cc3d6ed06dcbed95f602d70b63ca333fbf8dbe8523d6ce",
+      "character": "kuga",
+      "speakerId": "kuga",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/kuga/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/kuga/kuga-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/kuga/neutral.webp": "26da7a565e342dcccbe0c61ec4c812e9957f0932734859237b84b518f615dd2b"
+      },
+      "outputSha256": "26da7a565e342dcccbe0c61ec4c812e9957f0932734859237b84b518f615dd2b",
+      "scale": 0.82,
+      "note": "Kuga (library committee)"
+    },
+    {
+      "batch": 40,
+      "source": "maeda.png",
+      "sourceNow": "Added to Game/maeda.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "505bd54aab77f2d2bf43b673aac8e9eef0088bfb56ff6c2b777d204ee3f71a50",
+      "character": "maeda",
+      "speakerId": "maeda",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/maeda/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/maeda/maeda-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/maeda/neutral.webp": "d3b036052718bfb4ae76393b6847fc5b15fc87e2af2da2f653ce491631e76b4e"
+      },
+      "outputSha256": "d3b036052718bfb4ae76393b6847fc5b15fc87e2af2da2f653ce491631e76b4e",
+      "scale": 0.82,
+      "note": "Mr. Maeda (shrine amulet stall)"
+    },
+    {
+      "batch": 40,
+      "source": "maki.png",
+      "sourceNow": "Added to Game/maki.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "1ddeb859acb311cc8611af9b1fad81e98fc314e490b825ce0f6a1f241da1ca5e",
+      "character": "maki",
+      "speakerId": "maki",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/maki/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/maki/maki-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/maki/neutral.webp": "44936af84c5b4caa1dba25eab1db3a99664c6ba7ffce6d022324225ab5a018b7"
+      },
+      "outputSha256": "44936af84c5b4caa1dba25eab1db3a99664c6ba7ffce6d022324225ab5a018b7",
+      "scale": 0.82,
+      "note": "Maki (Akihiko's fan club)"
+    },
+    {
+      "batch": 40,
+      "source": "natsuki.png",
+      "sourceNow": "Added to Game/natsuki.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "fea6a820d4fa89563526462741064968e0906c80b120122b4eeb06d4346d07e5",
+      "character": "natsuki",
+      "speakerId": "natsuki",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/natsuki/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/natsuki/natsuki-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/natsuki/neutral.webp": "ee60818e204e7197922bf252abec18b54f1af0e4e398270573c02f500c1e0ba6"
+      },
+      "outputSha256": "ee60818e204e7197922bf252abec18b54f1af0e4e398270573c02f500c1e0ba6",
+      "scale": 0.82,
+      "note": "Natsuki Moriyama"
+    },
+    {
+      "batch": 40,
+      "source": "ono.png",
+      "sourceNow": "Added to Game/ono.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "e5148eb263eeab5f82547092eaef86a4c16221ed9c126a3deb479e2da2e509a9",
+      "character": "ono",
+      "speakerId": "ono",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/ono/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/ono/ono-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/ono/neutral.webp": "6196bca39b3aae929295b540d372f0b683913cd1e40a3f503f9cc76f59d1a3b7"
+      },
+      "outputSha256": "6196bca39b3aae929295b540d372f0b683913cd1e40a3f503f9cc76f59d1a3b7",
+      "scale": 0.88,
+      "note": "Mr. Ono, World History teacher (speaker and questions.js teacher key)"
+    },
+    {
+      "batch": 40,
+      "source": "ota.png",
+      "sourceNow": "Added to Game/ota.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "23bf657c8afce88763ea2f6f3b076faaa5d651cf06a86c549d6bea7992994031",
+      "character": "ota",
+      "speakerId": "ota",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/ota/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/ota/ota-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/ota/neutral.webp": "5392ad4365e8194b24062870f127d8bd32a844ea75394ce6c93a872aed57fdbd"
+      },
+      "outputSha256": "5392ad4365e8194b24062870f127d8bd32a844ea75394ce6c93a872aed57fdbd",
+      "scale": 0.82,
+      "note": "\u014cta (Akihiko's fan club)"
+    },
+    {
+      "batch": 40,
+      "source": "shiori.png",
+      "sourceNow": "Added to Game/shiori.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "4c068db91538d3ef37e740dbbcc85b045befca2207b543cf464c69fff77f06fd",
+      "character": "shiori",
+      "speakerId": "shiori",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/shiori/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/shiori/shiori-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/shiori/neutral.webp": "5fa69887394193f8e166c19341bb606c02a941ee7e8f52effc9a94dd7388e702"
+      },
+      "outputSha256": "5fa69887394193f8e166c19341bb606c02a941ee7e8f52effc9a94dd7388e702",
+      "scale": 0.82,
+      "note": "Shiori (Bookworms)"
+    },
+    {
+      "batch": 40,
+      "source": "shota.png",
+      "sourceNow": "Added to Game/shota.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "8131b7dbe3233d32bacecc54cb4aad84b2c3e69ae18c643a2726911168fad630",
+      "character": "shota",
+      "speakerId": "shota",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/shota/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/shota/shota-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/shota/neutral.webp": "bfc8443f25741efbc2fb009c662995da4e8516f6f0efbe6890c6c6b86e294299"
+      },
+      "outputSha256": "bfc8443f25741efbc2fb009c662995da4e8516f6f0efbe6890c6c6b86e294299",
+      "scale": 0.8,
+      "note": "Shota (shrine)"
+    },
+    {
+      "batch": 40,
+      "source": "sonoda.png",
+      "sourceNow": "Added to Game/sonoda.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "cd4a961e198b6b022614595782d357445b8735589c292ce3c54333a53bd5f4f6",
+      "character": "sonoda",
+      "speakerId": "sonoda",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/sonoda/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/sonoda/sonoda-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/sonoda/neutral.webp": "9424c42f6b47b04a57ee89657e7057318a1b1ee2fc1c7cce07b6542b9018fcc8"
+      },
+      "outputSha256": "9424c42f6b47b04a57ee89657e7057318a1b1ee2fc1c7cce07b6542b9018fcc8",
+      "scale": 0.82,
+      "note": "Sonoda (Akihiko's fan club)"
+    },
+    {
+      "batch": 40,
+      "source": "tsuji.png",
+      "sourceNow": "Added to Game/tsuji.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "916e3ccbd7e1e04df290109c6c4aa04dd8da0cc53fb92d3d69ccb51f657d0723",
+      "character": "tsuji",
+      "speakerId": "tsuji",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/tsuji/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/tsuji/tsuji-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/tsuji/neutral.webp": "7c6770c2967ba91f0fa0f9fd2017bdd4f468c5bc9632710e25acfc0de16a346b"
+      },
+      "outputSha256": "7c6770c2967ba91f0fa0f9fd2017bdd4f468c5bc9632710e25acfc0de16a346b",
+      "scale": 0.82,
+      "note": "Tsuji (tennis club; not ybTsuji)"
+    },
+    {
+      "batch": 40,
+      "source": "ueda.png",
+      "sourceNow": "Added to Game/ueda.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "sha256": "5f6938490fa2cd478a12b0833e857fb6be95f4d9d1711d6266b480fae666dc23",
+      "character": "ueda",
+      "speakerId": "ueda",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/ueda/neutral.webp",
+      "conversion": "single head-and-shoulders portrait, already transparent; copied unchanged to Character Portraits/ueda/ueda-Neutral.png; tools/femc-portraits.py (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/ueda/neutral.webp": "062889f72ddc1158a5cec5bc6800bafc0e125a1ed1ba2713c090af39c9f3f2a1"
+      },
+      "outputSha256": "062889f72ddc1158a5cec5bc6800bafc0e125a1ed1ba2713c090af39c9f3f2a1",
+      "scale": 0.82,
+      "note": "Mrs. Ueda (Yeobo's; not lbUeda)"
+    },
+    {
+      "batch": 40,
+      "source": "aoi.jpeg",
+      "sourceNow": "Added to Game/aoi.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "c69afe52b6bef9691a7ac0336310fba5b1b89d2d4f158802c70c75d304f68edd",
+      "character": "aoi",
+      "speakerId": "aoi",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/aoi/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [918, 0, 1954, 1164]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/aoi/aoi-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/aoi/neutral.webp": "716884aa695c47da829254612d5db4f59ecd8f46cd53d91758d7385f86f03bd2"
+      },
+      "outputSha256": "716884aa695c47da829254612d5db4f59ecd8f46cd53d91758d7385f86f03bd2",
+      "scale": 0.86,
+      "note": "Aoi (light music club)"
+    },
+    {
+      "batch": 40,
+      "source": "clerk.jpeg",
+      "sourceNow": "Added to Game/clerk.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "211b40b0f1584f39c0ff72dfd3ba5ddbe6b72b08b0fd60270fbd2740a41ee838",
+      "character": "clerk",
+      "speakerId": "clerk",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/clerk/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [856, 0, 1909, 1183]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/clerk/clerk-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/clerk/neutral.webp": "bf91edacd117400a85be4b7a0d20dfc922b23eb36be5beec232fc1e6cf826a23"
+      },
+      "outputSha256": "bf91edacd117400a85be4b7a0d20dfc922b23eb36be5beec232fc1e6cf826a23",
+      "scale": 0.77,
+      "note": "the konbini / prologue clerk (not wdClerk)"
+    },
+    {
+      "batch": 40,
+      "source": "cook.jpeg",
+      "sourceNow": "Added to Game/cook.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "310982d6be86fe0b3c50752136efd16e1dc88445b7d0f3e53a33a63c1dc3fe1c",
+      "character": "cook",
+      "speakerId": "cook",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/cook/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background a baked-in checkerboard: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [952, 22, 1980, 1177]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/cook/cook-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/cook/neutral.webp": "ff57300c1638f41d0264a7c3c75803bfc91af3df6430f058a6d69f94a7bc5a78"
+      },
+      "outputSha256": "ff57300c1638f41d0264a7c3c75803bfc91af3df6430f058a6d69f94a7bc5a78",
+      "scale": 0.74,
+      "note": "the ramen cook"
+    },
+    {
+      "batch": 40,
+      "source": "daichi.jpeg",
+      "sourceNow": "Added to Game/daichi.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "a3efbc819b616e7247bb2efb68d38f79020ecd702392e1d42be7b2d6c658303f",
+      "character": "daichi",
+      "speakerId": "daichi",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/daichi/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [744, 11, 1923, 1336]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/daichi/daichi-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/daichi/neutral.webp": "61bc9907391674012d8fd2f20f62f9cca37cfa358508f68ce69c62da2cd9fece"
+      },
+      "outputSha256": "61bc9907391674012d8fd2f20f62f9cca37cfa358508f68ce69c62da2cd9fece",
+      "scale": 0.82,
+      "note": "Daichi (Respawn; not tuDaichi)"
+    },
+    {
+      "batch": 40,
+      "source": "edogawa.jpeg",
+      "sourceNow": "Added to Game/edogawa.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "98bf055afccf0b45e3dad8f2ef1bf3dcfc64285c633975560999faedd3e43ec7",
+      "character": "edogawa",
+      "speakerId": "edogawa",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/edogawa/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [738, 13, 2022, 1456]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/edogawa/edogawa-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/edogawa/neutral.webp": "322ffd1d260f8f0c4728631b049126560624eed1b7825d4143d71d9a6885c66a"
+      },
+      "outputSha256": "322ffd1d260f8f0c4728631b049126560624eed1b7825d4143d71d9a6885c66a",
+      "scale": 0.82,
+      "note": "Mr. Edogawa, Health teacher (speaker and questions.js teacher key)"
+    },
+    {
+      "batch": 40,
+      "source": "ekoda.jpeg",
+      "sourceNow": "Added to Game/ekoda.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "776a9de4aaeb41a39adcdd22f101751105eb3845a32254aa0a007921657aa466",
+      "character": "ekoda",
+      "speakerId": "ekoda",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/ekoda/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [646, 8, 2006, 1536]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/ekoda/ekoda-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/ekoda/neutral.webp": "5befc00cae47cfb94d762704bc2e96b22c6564fd0e48ce417272d594bbd6e0c7"
+      },
+      "outputSha256": "5befc00cae47cfb94d762704bc2e96b22c6564fd0e48ce417272d594bbd6e0c7",
+      "scale": 0.76,
+      "note": "Mr. Ekoda, Classic Literature teacher (speaker and questions.js teacher key)"
+    },
+    {
+      "batch": 40,
+      "source": "gen.jpeg",
+      "sourceNow": "Added to Game/gen.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "174fa16517097140929ce6d8479e39e93e392cb5e7f59fc6bbc0959937d6b009",
+      "character": "gen",
+      "speakerId": "gen",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/gen/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [938, 0, 1884, 1063]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/gen/gen-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/gen/neutral.webp": "bcd3efd585f77338cde69f6485c1cb9b6a5039231274d2a4d6e612d77f81bd08"
+      },
+      "outputSha256": "bcd3efd585f77338cde69f6485c1cb9b6a5039231274d2a4d6e612d77f81bd08",
+      "scale": 0.79,
+      "note": "Gen (light music club)"
+    },
+    {
+      "batch": 40,
+      "source": "hayato.jpeg",
+      "sourceNow": "Added to Game/hayato.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "ec64fc552808bcd2c3982e08e586c5c2d81e5990a522258397a0ef918ab068a0",
+      "character": "hayato",
+      "speakerId": "hayato",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/hayato/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background a baked-in checkerboard: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [1031, 16, 2031, 1140]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/hayato/hayato-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/hayato/neutral.webp": "de0ceb485a33d4893b0c824ce09358a9fdf9d261079d8fb70e8f465772616035"
+      },
+      "outputSha256": "de0ceb485a33d4893b0c824ce09358a9fdf9d261079d8fb70e8f465772616035",
+      "scale": 0.85,
+      "note": "Hayato (gaming club)"
+    },
+    {
+      "batch": 40,
+      "source": "hoshino.jpeg",
+      "sourceNow": "Added to Game/hoshino.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "6d83a19a00bd8a7a7d1808861ee24300bceec16bb3844339c04a4bf692ab9883",
+      "character": "hoshino",
+      "speakerId": "hoshino",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/hoshino/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background a baked-in checkerboard: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; checker squares baked into the gap between her hair and neck removed; cropped to the bust (box [846, 20, 1941, 1250]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/hoshino/hoshino-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/hoshino/neutral.webp": "eaacffb8b5e8e42d356454b27848a681cd918b30ecd7dde5c50cbe6b5ec3aec8"
+      },
+      "outputSha256": "eaacffb8b5e8e42d356454b27848a681cd918b30ecd7dde5c50cbe6b5ec3aec8",
+      "scale": 0.8,
+      "note": "Hoshino (library committee)"
+    },
+    {
+      "batch": 40,
+      "source": "kbHattori.jpeg",
+      "sourceNow": "Added to Game/kbHattori.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "3f46f90d156712d4439f71daf68282d076b1d4db0ccabada3fc4f9012f888ff3",
+      "character": "kbhattori",
+      "speakerId": "kbHattori",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/kbhattori/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background a baked-in checkerboard: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [826, 49, 1935, 1295]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/kbHattori/kbHattori-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/kbhattori/neutral.webp": "fdbe08f2067fd4f97e1c665231e68a7cecd6689937d7f814e3c89c32d1d7efab"
+      },
+      "outputSha256": "fdbe08f2067fd4f97e1c665231e68a7cecd6689937d7f814e3c89c32d1d7efab",
+      "scale": 0.74,
+      "note": "Mr. Hattori (konbini)"
+    },
+    {
+      "batch": 40,
+      "source": "kbOno.jpeg",
+      "sourceNow": "Added to Game/kbOno.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "886496f80c531c47af2204805464c0aceaf9ab71009eadfa7ba16f33d81f3a41",
+      "character": "kbono",
+      "speakerId": "kbOno",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/kbono/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [774, 8, 1878, 1248]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/kbOno/kbOno-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/kbono/neutral.webp": "ae18ab21e4d4bc7cf6eb695224e2d973a55430fc28081b9728d9a49e2e118644"
+      },
+      "outputSha256": "ae18ab21e4d4bc7cf6eb695224e2d973a55430fc28081b9728d9a49e2e118644",
+      "scale": 0.78,
+      "note": "Nurse Ono (konbini; not the teacher)"
+    },
+    {
+      "batch": 40,
+      "source": "kenji.jpeg",
+      "sourceNow": "Added to Game/kenji.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "e9100eba6386e283be0358ee0df704623f2df1f16c92584c8e268afb9736f65f",
+      "character": "kenji",
+      "speakerId": "kenji",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/kenji/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [790, 34, 1890, 1270]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/kenji/kenji-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/kenji/neutral.webp": "f6c56c0608b91df34dfe20f975f3c3a102e66b011de6fa8f8ed943583b2e9618"
+      },
+      "outputSha256": "f6c56c0608b91df34dfe20f975f3c3a102e66b011de6fa8f8ed943583b2e9618",
+      "scale": 0.78,
+      "note": "Kenji (gaming club)"
+    },
+    {
+      "batch": 40,
+      "source": "kousuke.jpeg",
+      "sourceNow": "Added to Game/kousuke.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "8b06e5834203c484294ff2b2c707ca6d79a4e6c962acd97f79852432c1ae54a0",
+      "character": "kousuke",
+      "speakerId": "kousuke",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/kousuke/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background a baked-in checkerboard: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [734, 2, 1993, 1417]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/kousuke/kousuke-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/kousuke/neutral.webp": "b03ec3cf87cebdc7c15b27b452194d274bbd064e636cee9bf222d38eb64e4bc7"
+      },
+      "outputSha256": "b03ec3cf87cebdc7c15b27b452194d274bbd064e636cee9bf222d38eb64e4bc7",
+      "scale": 0.76,
+      "note": "Kousuke (light music club)"
+    },
+    {
+      "batch": 40,
+      "source": "manager.jpeg",
+      "sourceNow": "Added to Game/manager.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "303ecfe6a453dee4e28de465e789cb0f4556bde2599c9b9fbf5f2d148a32bb0f",
+      "character": "manager",
+      "speakerId": "manager",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/manager/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background flat gray: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [608, 19, 1958, 1536]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/manager/manager-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/manager/neutral.webp": "ea1f4d1a990c037f19c4e7c4cf06271cc3af6025b6f337d057bdd59cec8cf534"
+      },
+      "outputSha256": "ea1f4d1a990c037f19c4e7c4cf06271cc3af6025b6f337d057bdd59cec8cf534",
+      "scale": 0.74,
+      "note": "Respawn's manager"
+    },
+    {
+      "batch": 40,
+      "source": "mika.jpeg",
+      "sourceNow": "Added to Game/mika.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "dbd8169d1d11a2f0d8dcf17ce23e3004bbba432d5901686ff28b4bc563a6385b",
+      "character": "mika",
+      "speakerId": "mika",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/mika/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; the white collar Vision made half transparent put back from the source; cropped to the bust (box [976, 0, 1751, 871]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/mika/mika-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/mika/neutral.webp": "2782b74831fcf480a2dd831bee4c9b2d03ce2774cdb6090135929026255ef404"
+      },
+      "outputSha256": "2782b74831fcf480a2dd831bee4c9b2d03ce2774cdb6090135929026255ef404",
+      "scale": 0.8,
+      "note": "Mika (light music club; not kbMika)"
+    },
+    {
+      "batch": 40,
+      "source": "mori.jpeg",
+      "sourceNow": "Added to Game/mori.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "edd7af735f1ad6d9bb867f9a32929bc901e5d8dcc772cd2e1c82325b0fa9bc20",
+      "character": "mori",
+      "speakerId": "mori",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/mori/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [872, 4, 1886, 1143]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/mori/mori-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/mori/neutral.webp": "572f711bd676355f5cbf4b9d7a94826aa00567b4a0b2e5d19c69780d7bc1c197"
+      },
+      "outputSha256": "572f711bd676355f5cbf4b9d7a94826aa00567b4a0b2e5d19c69780d7bc1c197",
+      "scale": 0.8,
+      "note": "Mori (tennis team)"
+    },
+    {
+      "batch": 40,
+      "source": "nephew.jpeg",
+      "sourceNow": "Added to Game/nephew.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "c121e94a5c077f40544e32be759fbd7a5b5418ef7a8be698a28973dcbbefabd0",
+      "character": "nephew",
+      "speakerId": "nephew",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/nephew/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [774, 15, 2034, 1431]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/nephew/nephew-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/nephew/neutral.webp": "42826b85d107eb1f78e48f5a178769c3255b2b8b411535b100d0a811af3cdbc1"
+      },
+      "outputSha256": "42826b85d107eb1f78e48f5a178769c3255b2b8b411535b100d0a811af3cdbc1",
+      "scale": 0.71,
+      "note": "Tanabe's nephew (fish market)"
+    },
+    {
+      "batch": 40,
+      "source": "nishi.jpeg",
+      "sourceNow": "Added to Game/nishi.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "a3ac374b62a2b43384e4f5dcd74f475163d28b9b354d9b9d5d7dcec0a61c4ca9",
+      "character": "nishi",
+      "speakerId": "nishi",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/nishi/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; white background through the racket strings keyed out; cropped to the bust (box [952, 19, 1817, 991]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/nishi/nishi-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/nishi/neutral.webp": "1024b855b7bf90c1a96bad7bf464b392a7c1f3f48f0f88832f067a6b296d0bad"
+      },
+      "outputSha256": "1024b855b7bf90c1a96bad7bf464b392a7c1f3f48f0f88832f067a6b296d0bad",
+      "scale": 0.83,
+      "note": "Nishi (tennis club)"
+    },
+    {
+      "batch": 40,
+      "source": "oka.jpeg",
+      "sourceNow": "Added to Game/oka.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "f29973f8ef19dade4d6ae610ddcc465de46bc04b823772843738e35c9b32a4d1",
+      "character": "oka",
+      "speakerId": "oka",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/oka/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [816, 0, 2031, 1365]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/oka/oka-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/oka/neutral.webp": "8a909a313ca145691cac30577bc129432f7a6112138523a843e16782399b1aa2"
+      },
+      "outputSha256": "8a909a313ca145691cac30577bc129432f7a6112138523a843e16782399b1aa2",
+      "scale": 0.78,
+      "note": "Old Oka (fish market)"
+    },
+    {
+      "batch": 40,
+      "source": "regular.jpeg",
+      "sourceNow": "Added to Game/regular.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "3c8c1fc505ee72aa97c6d0937382165d969ce4996013b09f478d499ba6489fc5",
+      "character": "regular",
+      "speakerId": "regular",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/regular/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [822, 0, 1983, 1304]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/regular/regular-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/regular/neutral.webp": "238c839e509f4a0c4bf6950e040b746d449f939f6361e4385d330fd7084c0bf2"
+      },
+      "outputSha256": "238c839e509f4a0c4bf6950e040b746d449f939f6361e4385d330fd7084c0bf2",
+      "scale": 0.76,
+      "note": "the Respawn regular"
+    },
+    {
+      "batch": 40,
+      "source": "ryoko.jpeg",
+      "sourceNow": "Added to Game/ryoko.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "6fcdab4fab156b7e5275db865c115175be2b9d6c8fe54e1f9b86d7a312ffc5bc",
+      "character": "ryoko",
+      "speakerId": "ryoko",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/ryoko/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [792, 47, 1824, 1207]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/ryoko/ryoko-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/ryoko/neutral.webp": "7159c8e926f915c733ab4cf197c7f6857d8e47095d5ef83e492c06a73f607ffc"
+      },
+      "outputSha256": "7159c8e926f915c733ab4cf197c7f6857d8e47095d5ef83e492c06a73f607ffc",
+      "scale": 0.79,
+      "note": "Ryoko (tennis team)"
+    },
+    {
+      "batch": 40,
+      "source": "salaryman.jpeg",
+      "sourceNow": "Added to Game/salaryman.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "77f9ff5bdea9068d811fafbc419c2cd4f50581191873ae7c8138de214e1b9315",
+      "character": "salaryman",
+      "speakerId": "salaryman",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/salaryman/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [689, 9, 1960, 1437]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/salaryman/salaryman-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/salaryman/neutral.webp": "7a2896e40ee637a95bd828fd38b9c2feab0027e109440d2f3b7b939e5b991719"
+      },
+      "outputSha256": "7a2896e40ee637a95bd828fd38b9c2feab0027e109440d2f3b7b939e5b991719",
+      "scale": 0.77,
+      "note": "the salaryman (shared generic id)"
+    },
+    {
+      "batch": 40,
+      "source": "tanabe.jpeg",
+      "sourceNow": "Added to Game/tanabe.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "5a0556c08b598308b5e5b438fed71eb542521bd66f51bec8cdeff52399fd4f3e",
+      "character": "tanabe",
+      "speakerId": "tanabe",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/tanabe/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background white: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [840, 0, 1823, 1104]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/tanabe/tanabe-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/tanabe/neutral.webp": "4820cae776cc48aec195dcac6f84ae05b1508d98099fb70ca0383f7700d455d1"
+      },
+      "outputSha256": "4820cae776cc48aec195dcac6f84ae05b1508d98099fb70ca0383f7700d455d1",
+      "scale": 0.81,
+      "note": "Mr. Tanabe (fish market)"
+    },
+    {
+      "batch": 40,
+      "source": "yuzu.jpeg",
+      "sourceNow": "Added to Game/yuzu.jpeg",
+      "size": [
+        2816,
+        1536
+      ],
+      "sha256": "c86aeeefed0ea28476d778abae644d690781c8f22c3f73f43f6a1274a52fed3a",
+      "character": "yuzu",
+      "speakerId": "yuzu",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/yuzu/neutral.webp",
+      "conversion": "Gemini 2816x1536 landscape bust, background a baked-in checkerboard: figure lifted with tools/femc-lift.swift (macOS Vision), pale fringe and the art's soft outer glow flooded away from the outside (<=14 px), small holes Vision punched inside put back; cropped to the bust (box [982, 8, 2076, 1237]: top of the hair to 1.05 face-heights below the chin, 0.89 wide, from Vision's face box) and saved as Character Portraits/yuzu/yuzu-Neutral.png; tools/femc-portraits.py (WebP q86); no distortion; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/yuzu/neutral.webp": "def459a4810592bf9dfb2e26a4646bc2990b9f219f73dd7466be82cbe6d56007"
+      },
+      "outputSha256": "def459a4810592bf9dfb2e26a4646bc2990b9f219f73dd7466be82cbe6d56007",
+      "scale": 0.81,
+      "note": "Yuzu (gaming club)"
     }
   ],
   "batch1Validation": {
@@ -7980,6 +8799,23 @@
       "python3 tests/femc_theurgy.py (Evoker prop on screen, inside the cut-in, at the temple, at 1440x900 and 375x812; SVG fallback)"
     ],
     "html": "femc-game.html portraits index v132, scale v132, battle data v27; femc-battle.html battle.css v29, data v27, battle v43",
+    "browserErrors": 0
+  },
+  "batch40Validation": {
+    "date": "2026-10-23",
+    "scope": "Faces for the rest of the regulars and the three teachers (4D): 15 ChatGPT portraits and 24 Gemini landscape busts",
+    "sourcesInspected": "all 39 viewed, each output compared with Fuuka, Junpei and the batch 37/39 regulars on a contact sheet and in scenes at 1280x720 and 375x812",
+    "sourcesIntegrated": 39,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names); On Hold untouched",
+    "ids": "ono.png is the teacher Mr. Ono (speaker and questions.js teacher key); kbOno.jpeg is Nurse Ono at the konbini; tsuji, ueda, daichi and clerk are the plain ids (not ybTsuji, lbUeda, tuDaichi, wdClerk)",
+    "tests": [
+      "python3 tools/femc-check-scenes.py --all (OK)",
+      "python3 tests/femc_cast_consistency.py (passed, no browser errors)",
+      "python3 tests/femc_weather.py (passed; its 'no face yet' camelCase check now uses kbGonda, since kbHattori has a face)",
+      "headless scene check: all 39 faces load in a real scene where that person speaks, and Mr. Ono, Mr. Ekoda and Mr. Edogawa each beside a real class question, at 1280x720 and 375x812, no errors"
+    ],
+    "html": "femc-game.html portraits index v133, scale v133",
     "browserErrors": 0
   }
 }

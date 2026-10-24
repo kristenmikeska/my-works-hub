@@ -622,5 +622,122 @@ window.FEMC_PORTRAITS = {
  ],
  "hggotou": [
   "neutral"
+ ],
+ "aoi": [
+  "neutral"
+ ],
+ "caretaker": [
+  "neutral"
+ ],
+ "chiba": [
+  "neutral"
+ ],
+ "classmate": [
+  "neutral"
+ ],
+ "clerk": [
+  "neutral"
+ ],
+ "cook": [
+  "neutral"
+ ],
+ "daichi": [
+  "neutral"
+ ],
+ "edogawa": [
+  "neutral"
+ ],
+ "ekoda": [
+  "neutral"
+ ],
+ "gen": [
+  "neutral"
+ ],
+ "hayato": [
+  "neutral"
+ ],
+ "hoshino": [
+  "neutral"
+ ],
+ "kbhattori": [
+  "neutral"
+ ],
+ "kbono": [
+  "neutral"
+ ],
+ "kenji": [
+  "neutral"
+ ],
+ "kousuke": [
+  "neutral"
+ ],
+ "kubo": [
+  "neutral"
+ ],
+ "kuga": [
+  "neutral"
+ ],
+ "maeda": [
+  "neutral"
+ ],
+ "maki": [
+  "neutral"
+ ],
+ "manager": [
+  "neutral"
+ ],
+ "mika": [
+  "neutral"
+ ],
+ "mori": [
+  "neutral"
+ ],
+ "natsuki": [
+  "neutral"
+ ],
+ "nephew": [
+  "neutral"
+ ],
+ "nishi": [
+  "neutral"
+ ],
+ "oka": [
+  "neutral"
+ ],
+ "ono": [
+  "neutral"
+ ],
+ "ota": [
+  "neutral"
+ ],
+ "regular": [
+  "neutral"
+ ],
+ "ryoko": [
+  "neutral"
+ ],
+ "salaryman": [
+  "neutral"
+ ],
+ "shiori": [
+  "neutral"
+ ],
+ "shota": [
+  "neutral"
+ ],
+ "sonoda": [
+  "neutral"
+ ],
+ "tanabe": [
+  "neutral"
+ ],
+ "tsuji": [
+  "neutral"
+ ],
+ "ueda": [
+  "neutral"
+ ],
+ "yuzu": [
+  "neutral"
  ]
 };
