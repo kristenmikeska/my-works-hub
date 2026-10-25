@@ -188,9 +188,9 @@ try:
         bs = p.eval("({ love: FemcGame.S.battleSave.bondsLove, date: FemcGame.S.battleSave.bondDate, arts: FemcBonds.arts(FemcGame.S.battleSave).map(a => a.name) })")
         ok(bs['love'] == ['akihiko'] and bs['date'] == '12/12' and 'Sunrise Cadenza' in bs['arts'] and 'Sun and Moon' in bs['arts'], bs)
         p.eval("FemcMenu.close()")
-        # The new tree nodes (tier 2, link rank 4) teach each fighter's signature skill.
+        # The signature nodes (tier 3 since the deeper trees, link rank 4) teach each fighter's signature skill.
         taught = p.eval(r'''(() => { const E = FemcBattleEngine, D = FEMC_BATTLE_DATA, out = {};
-          Object.entries(D.ptrees).forEach(([mid, t]) => { const n = t.tiers[1][2]; const save = { lvl: 60, mem: { [mid]: { lvl: 60 } }, ptree: { [mid]: [t.tiers[0][0].id] }, ranks: { [mid]: 4 }, forgot: {}, order: {}, nodes: [], forms: [], evo: {}, ops: { cleared: [] }, gear: { eq: {}, owned: {} } };
+          Object.entries(D.ptrees).forEach(([mid, t]) => { const n = t.tiers[2][2]; const save = { lvl: 60, mem: { [mid]: { lvl: 60 } }, ptree: { [mid]: [t.tiers[0][0].id, t.tiers[1][0].id] }, ranks: { [mid]: 4 }, forgot: {}, order: {}, nodes: [], forms: [], evo: {}, ops: { cleared: [] }, gear: { eq: {}, owned: {} } };
             const before = E.ptreeState(save, mid, n.id, 3), r = E.ptreeBuy(save, mid, n.id, 4); out[mid] = { before, ok: r.ok, learned: r.learned[0], inKit: E.skillsFor(mid, save).includes(n.fx.learn), icon: !!(D.skills[n.fx.learn].icon && D.skills[n.fx.learn].fx) }; });
           return out; })()''')
         for mid, v in taught.items(): ok(v['before'] == 'rank' and v['ok'] and v['inKit'] and v['icon'], (mid, v))

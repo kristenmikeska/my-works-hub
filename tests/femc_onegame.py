@@ -166,7 +166,7 @@ try:
         tac = p.eval("JSON.stringify(FemcGame.S.battleSave.tactics)")
         # The Skills tab is the skill system itself (Haenim's tree), in the Dark Hour too.
         p.eval("document.querySelector('.g-fm-ov:not(.out) [data-tab=skills]').click()")
-        assert p.eval("document.querySelectorAll('.g-fm-ov:not(.out) .g-ht-col').length") == 5, 'tree in the Skills tab'
+        assert p.eval("document.querySelectorAll('.g-fm-ov:not(.out) .sun-vp [data-hn]').length") == 97, 'the sun in the Skills tab'
         p.eval("document.querySelector('.g-fm-ov:not(.out) [data-close]').click()")
         p.frame(); p.wait("FemcBattle.screen()==='hub' && FemcBattle.ctl?.kind==='buttons'")
         assert p.eval("JSON.stringify(FemcBattle.save.tactics)") == tac, 'tactic not handed back'
