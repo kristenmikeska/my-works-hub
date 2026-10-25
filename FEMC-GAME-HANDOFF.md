@@ -45,7 +45,8 @@ Until the battle side is wired up, every fight shows a placeholder card ("Battle
     yen: 12450,                  // the life sim owns money
     items: { medicine: 3 },      // consumables bought in the life sim (battle data.js `items` ids)
     gear: ['naginata1'],         // gear bought in the life sim (battle data.js `gear` ids)
-    maxFloor: 36,                // highest Tartarus floor allowed today (P3-style blocks open by date)
+    maxFloor: 36,                // highest Tartarus floor allowed today (P3-style blocks open by date). Since 2026-10-25 the battle
+                                 //   game's floors carry these real numbers (data.js blocks[].floors); Monad's open floor by floor
     bestFloor: 22,               // highest floor reached so far
     bossesCleared: ['magician', 'priestess'],
     fragments: ['strangers-harbor'],   // memory fragments Solar already has (don't award these again)
@@ -71,7 +72,8 @@ result: {
   gear: ['naginata1', 'bow2'],  // optional: the full owned-gear list after the run
   fatigue: 'tired',             // Solar's condition afterwards. Omit to let the game decide. Tartarus normally → 'tired';
                                 //   going while already tired → 'sick' (P3). Scripted fights: omit.
-  fragments: ['runners-monitor'],                  // memory fragments found (event rooms), ids from data.js `memories`
+  fragments: ['runners-monitor'],                  // memory fragments found (event rooms, hidden rooms), ids from data.js `memories`
+  plumes: 1,                    // Tartarus only, optional: Velvet Plumes found (vaults, guardians, rare Shadows, hidden rooms); core.js adds them to S.gacha
   bossesCleared: ['priestess'], // operations won (also unlocks shop tiers: 1 + bosses cleared)
   floorsReached: 25             // highest floor reached this run
 }
