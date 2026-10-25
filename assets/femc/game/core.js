@@ -825,6 +825,9 @@ window.FemcGame = (() => {
   function portrait(id, face) {
     // Solar's art wears the S.E.E.S. armband, so she has no portrait until she's given one.
     if (id === 'solar' && !S.flags.armband) return null;
+    // An outfit from the Wardrobe with its own portraits, when "Outfits in scene portraits" is on (cosmetics.js).
+    const worn = W.FemcCosmetics && W.FemcCosmetics.portrait(faceId(id), face);
+    if (worn) return worn;
     id = faceId(id);
     const have = PORTRAITS()[id] || [];
     const b = face && face.replace(/-\d+$/, '');
@@ -1592,7 +1595,10 @@ window.FemcGame = (() => {
     S.books.owned = [...old.books.owned]; S.books.done = [...old.books.done]; S.ngp = (old.ngp || 0) + 1; S.ngFrom = old.runId; S.flags.ngplus = true;
     S.battleCarry = old.battleSave || old.battleCarry || null;
     // The keychains and phone cases are a collection, so they come along (gacha.js); counters and plumes start over.
-    if (old.gacha) Object.assign(S.gacha, { keys: { ...(old.gacha.keys || {}) }, cases: [...(old.gacha.cases || [])], caseOn: old.gacha.caseOn || null, stars: old.gacha.stars || 0 });
+    // Since the skins batch: series keychains, finished series and the Wardrobe (owned looks, what's worn) come along too.
+    if (old.gacha) Object.assign(S.gacha, { keys: { ...(old.gacha.keys || {}) }, cases: [...(old.gacha.cases || [])], caseOn: old.gacha.caseOn || null, stars: old.gacha.stars || 0,
+      skeys: { ...(old.gacha.skeys || {}) }, done: [...(old.gacha.done || [])], cos: old.gacha.cos ? { own: [...(old.gacha.cos.own || [])], on: { ...(old.gacha.cos.on || {}) }, portraits: old.gacha.cos.portraits !== false } : undefined });
+    if (S.gacha && S.gacha.cos === undefined) delete S.gacha.cos;
     save();
   }
 

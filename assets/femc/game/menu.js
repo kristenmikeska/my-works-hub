@@ -47,7 +47,7 @@ window.FemcMenu = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const yen = n => `¥${Math.round(n || 0).toLocaleString('en-US')}`;
   const AFF = { normal: '–', weak: 'Wk', resist: 'Rs', null: 'Nu', drain: 'Dr', repel: 'Rp' };
-  const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['cards', 'Cards'], ['equip', 'Equipment'], ['items', 'Items'], ['collection', 'Collection'], ['status', 'Status'], ['links', 'Links'], ['bonds', 'Bonds'], ['journal', 'Journal'], ['album', 'Album'], ['theater', 'Theater'], ['calendar', 'Calendar'], ['compendium', 'Compendium']];
+  const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['cards', 'Cards'], ['equip', 'Equipment'], ['items', 'Items'], ['collection', 'Collection'], ['wardrobe', 'Wardrobe'], ['status', 'Status'], ['links', 'Links'], ['bonds', 'Bonds'], ['journal', 'Journal'], ['album', 'Album'], ['theater', 'Theater'], ['calendar', 'Calendar'], ['compendium', 'Compendium']];
   const BLD = () => window.FemcBuild || null;
   // Kat's tab icons (batch 43, art/icons/<tab>.webp) sit before each label; a tab without one (or a file that fails) is text only.
   const TAB_ICONS = new Set(['party', 'personas', 'skills', 'cards', 'equip', 'items', 'collection', 'status', 'links', 'bonds', 'journal', 'album', 'theater']);
@@ -424,7 +424,7 @@ window.FemcMenu = (() => {
       <div class="g-pv-who">${list.map(x => `<button type="button" class="g-who-mini${x.id === id ? ' on' : ''}" data-eq="${x.id}" title="${esc(x.name)}"><i>${face(x.id, x.faces?.idle || 'serious')}</i><b>${esc(x.name)}<small>Lv ${lvOf(x.id)}</small></b></button>`).join('')}</div>
       <div class="g-eq-main">
         <div class="g-eq-head"><h2>${esc(m.name)}<small>${esc(personaOf(id)?.name || '')}</small></h2>${u ? `<p class="g-pv-stats">${[['HP', u.maxHp], ['SP', u.maxSp], ['ATK', u.atk], ['DEF', u.def], ['St', u.st], ['Ma', u.ma], ['En', u.en], ['Ag', u.ag], ['Lu', u.lu]].map(([k, v]) => `<span><small>${k}</small><b>${Math.round(v)}</b></span>`).join('')}</p>` : ''}</div>
-        <div class="g-eq-slots">${SL.map(([k, label]) => { const g = D().gear[eq[k]], rf = g && BLD() ? BLD().wrefOf(b, eq[k]) : 0; return `<button type="button" class="g-eq-slot${open === k ? ' open' : ''}${g && g.art ? ' art' : ''}" data-slot="${k}"><small>${label}</small>${g && g.art ? `<img class="g-eq-art${g.artWide ? ' wide' : ''}" src="${G.base}${g.art}" alt="">` : `<i>${g ? icon(eq[k]) : ''}</i>`}<b>${g ? esc(g.name) + (rf ? ` +${rf}` : '') : '—'}<span>${g ? esc(BS().gearLine(eq[k], b)) : 'Nothing equipped'}</span>${g && g.look ? `<span class="look">${esc(g.look)}</span>` : ''}</b></button>`; }).join('')}</div>
+        <div class="g-eq-slots">${SL.map(([k, label]) => { const g0 = D().gear[eq[k]], wa = k === 'weapon' && g0 && window.FemcCosmetics?.weaponArt(id), g = wa ? Object.assign({}, g0, { art: wa, artWide: false }) : g0, rf = g && BLD() ? BLD().wrefOf(b, eq[k]) : 0; return `<button type="button" class="g-eq-slot${open === k ? ' open' : ''}${g && g.art ? ' art' : ''}" data-slot="${k}"><small>${label}</small>${g && g.art ? `<img class="g-eq-art${g.artWide ? ' wide' : ''}" src="${G.base}${g.art}" alt="">` : `<i>${g ? icon(eq[k]) : ''}</i>`}<b>${g ? esc(g.name) + (rf ? ` +${rf}` : '') : '—'}<span>${g ? esc(BS().gearLine(eq[k], b)) : 'Nothing equipped'}</span>${g && g.look ? `<span class="look">${esc(g.look)}</span>` : ''}</b></button>`; }).join('')}</div>
         ${refineHtml(b, eq.weapon)}
         ${open ? `<ul class="g-eq-list">${cands.map(x => { const g = x && D().gear[x]; return `<li><button type="button" class="g-eq-item${x === eq[open] ? ' cur' : ''}${g && g.art ? ' art' : ''}" data-pick="${x || ''}">${g && g.art ? `<img class="g-eq-art sm${g.artWide ? ' wide' : ''}" src="${G.base}${g.art}" alt="">` : `<i>${g ? icon(x) : ''}</i>`}<b>${g ? esc(g.name) : 'Remove'}<span>${g ? esc(BS().gearLine(x, b)) : 'Take it off'}</span></b><em>${x === eq[open] ? 'E' : g && g.tier ? `×${BS().spare(b, x)}` : ''}</em></button></li>`; }).join('') || '<li class="g-note">Nothing that fits. Shops are on the Strip and at the Mall.</li>'}</ul>` : '<p class="g-note small">Pick a slot to change it. Gear bought in town goes here.</p>'}
       </div></div>`;
@@ -712,7 +712,7 @@ window.FemcMenu = (() => {
      Extras panel) steps out of the page meanwhile and comes back after. Not in the Dark Hour.
      New Game+ keeps all of it (albumCarry → the new S.album: cg, frags, events, doors, ranks, prologue). */
   const ALB_V = 1, END_ID = 'end-ending', CLEARS_KEY = 'kg-femc-revamp-clears';
-  const EXTRA_TABS = ['album', 'theater'];
+  const EXTRA_TABS = ['album', 'theater', 'wardrobe'];
   const albumOf = () => S().album || {};
   const uniq = a => [...new Set(a)];
   const flagKeys = v => (typeof v === 'string' ? [v] : Array.isArray(v) ? v.filter(k => typeof k === 'string') : v && typeof v === 'object' ? Object.keys(v).filter(k => v[k]) : []);
@@ -1030,6 +1030,7 @@ window.FemcMenu = (() => {
     else if (tab === 'bonds') html = bondsTab();
     else if (tab === 'items') html = itemsTab();
     else if (tab === 'collection') html = window.FemcGacha ? window.FemcGacha.collectionHtml() : '<p class="g-note">Nothing collected yet.</p>';
+    else if (tab === 'wardrobe') html = window.FemcCosmetics ? window.FemcCosmetics.html() : '<p class="g-note">Nothing to wear yet.</p>';
     else if (tab === 'status') html = statusTab();
     else if (tab === 'links') html = linksTab();
     else if (tab === 'journal') html = journalTab();
@@ -1042,6 +1043,7 @@ window.FemcMenu = (() => {
     if (tab === 'party') wireParty(body); else if (tab === 'personas') wirePersonas(body); else if (tab === 'equip') wireEquip(body); else if (tab === 'items') wireItems(body); else if (tab === 'skills') wireSkills(body);
     else if (tab === 'cards') wireCards(body); else if (tab === 'bonds') wireBonds(body); else if (tab === 'links') wireLinks(body);
     else if (tab === 'collection') window.FemcGacha?.wireCollection(body, render);
+    else if (tab === 'wardrobe') window.FemcCosmetics?.wire(body, render);
     else if (tab === 'album') wireAlbum(body); else if (tab === 'theater') wireTheater(body, o.el, render);
     o.el.querySelectorAll('[data-tab]').forEach(b => { b.classList.toggle('on', b.dataset.tab === tab); b.setAttribute('aria-selected', b.dataset.tab === tab); });
     // The tab strip scrolls sideways on narrow panels: keep the open tab in sight.

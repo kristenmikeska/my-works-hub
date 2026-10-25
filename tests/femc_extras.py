@@ -105,7 +105,7 @@ try:
         ok(p.eval('FemcGame.S.yen') == y0 - 500 and g['pulls'] == 1 and g['last'], f'a turn costs ¥500 and is recorded: {g}')
         ok(g['pity']['cap']['sr'] + g['pity']['cap']['ur'] >= 1, 'pity counters move')
         ok(p.eval("document.querySelector('.g-ga-pity').textContent.includes('within')"), 'pity is shown on the machine')
-        ok(p.eval("document.querySelectorAll('.g-ga-odds li').length") == 4, 'odds shown')
+        ok(p.eval("document.querySelectorAll('.g-ga-odds li').length") == 5, 'odds shown (five rarities since the series batch)')
         shot(p, 'capsule-desktop')
         # A ticket turn (reduced motion: straight to the prize).
         motion(p, True)
@@ -115,7 +115,7 @@ try:
         click(p, '.g-cap-ov [data-pull=ticket]:not([disabled])')
         p.wait("FemcGame.S.gacha.pulls===2 && !!document.querySelector('.g-cap-ov .g-ga-prize')")
         ok(p.eval('FemcGame.S.inventory.capsule_ticket') == 1 and p.eval('FemcGame.S.yen') == y1, 'a ticket turn uses a ticket, not yen')
-        # Capsule Stars trade for a ticket.
+        # Capsule Tokens (the old Capsule Stars) trade for a ticket.
         p.eval("FemcGame.S.gacha.stars=11;document.querySelector('.g-cap-ov [data-close]').click()")
         open_act(p, 'capsule')
         click(p, '.g-cap-ov [data-trade]')
@@ -131,7 +131,7 @@ try:
           for(let i=0;i<60;i++){out.push(GA.pull('yen').r);} return out;})()""")
         ok([i + 1 for i, x in enumerate(r) if x == 'SR'] == [10, 20, 30, 40, 50] and r[59] == 'UR' and r.count('C') == 54, f'pity: {r}')
         # Odds over many turns (seeded): close to the printed odds.
-        r = p.eval(SEED + r"""(()=>{const G=FemcGame,GA=FemcGacha;G.S.yen=1e7;G.S.gacha=GA.fresh();GA.rng=__seed(99);const n={C:0,R:0,SR:0,UR:0};
+        r = p.eval(SEED + r"""(()=>{const G=FemcGame,GA=FemcGacha;G.S.yen=1e7;G.S.gacha=GA.fresh();GA.rng=__seed(99);const n={C:0,R:0,SR:0,UR:0,SEC:0};
           const save=G.save;G.save=()=>{};try{for(let i=0;i<3000;i++)n[GA.pull('yen').r]++;}finally{G.save=save;}return n;})()""")
         ok(1550 <= r['C'] <= 1900 and 780 <= r['R'] <= 1000 and 300 <= r['SR'] <= 480 and 30 <= r['UR'] <= 100, f'odds with pity: {r}')
         results['capsule odds (3000 turns)'] = r
@@ -295,7 +295,7 @@ try:
         ok(r['g'] and r['inv'] == {'medicine': 3} and r['links'] == 2, f'autosave from before the gacha loads: {r}')
         p.eval("document.querySelectorAll('.gs,.g-overlay').forEach(x=>x.remove());FemcGame.S.phase='play';FemcMenu.open('collection')")
         p.wait("!!document.querySelector('.g-fm-ov .g-col-set')")
-        ok(p.eval("document.querySelectorAll('.g-keys li').length") == 30, 'Collection lists 30 keychains')
+        ok(p.eval("document.querySelectorAll('.g-keys:not(.g-skeys) li').length") == 30, 'Collection lists 30 cast keychains (series below them: tests/femc_cosmetics.py)')
         ok(p.eval("[...document.querySelectorAll('.g-keys li small')].filter(s=>s.textContent==='???').length") > 0, 'unmet people stay ???')
         p.eval("FemcMenu.close()")
         ok(p.eval("FemcGacha.pull('yen')!==null && FemcGacha.draw('yen')!==null"), 'old save can turn and draw')

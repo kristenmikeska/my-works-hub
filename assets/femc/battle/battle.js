@@ -107,7 +107,11 @@
   // others' height (their canvases are wide for the weapon), Aigis about 85%; they were raised to match (tests/femc_bonds.py --only poses).
   const FIGHTER_POSES = { solar: 1.3, akihiko: 1, yukari: 1.04, junpei: 1.42, mitsuru: 1.4, aigis: 1.18, koromaru: 0.87, shinjiro: 1.51, haechan: 1, jungwon: 0.87, jihoon: 0.77, minji: 0.97 };
   const FIGHTER_STATES = { attack: [2], cast: [3], hurt: [4], evoke: [1], win: [5] };
-  const posedFrames = mid => [0, 1, 2, 3, 4, 5].map(i => `assets/femc/battle/art/poses/${mid}-pose-${i}.webp?v=${ART_V}`);
+  /* Wardrobe looks from the life sim (game/cosmetics.js battle(), read once per frame): an outfit's pose folder per member
+     (same six frames and canvas as the member's own sheet) and CSS for the battle theme and Evoker tint. Practice: none. */
+  const LOOKS = (() => { try { return window.parent !== window && window.parent.FemcCosmetics ? window.parent.FemcCosmetics.battle() : null; } catch (e) { return null; } })();
+  if (LOOKS && LOOKS.css) { const st = document.createElement('style'); st.id = 'bt-looks'; st.textContent = LOOKS.css; document.head.appendChild(st); }
+  const posedFrames = mid => [0, 1, 2, 3, 4, 5].map(i => (LOOKS && LOOKS.pose[mid] ? `${LOOKS.pose[mid]}${mid}-pose-${i}.webp?v=${ART_V}` : `assets/femc/battle/art/poses/${mid}-pose-${i}.webp?v=${ART_V}`));
   const fieldPose = mid => (FIGHTER_POSES[mid] ? posedFrames(mid)[0] : `assets/femc/battle/art/poses/${mid}.webp?v=${ART_V}`);
   const hasField = mid => FIELD_POSES.has(mid) || !!FIGHTER_POSES[mid];
   /* Chibi brawl sheets (Kat's <name>-chibi-alloutattack.png, cut by tools/femc-chibi.py into chibi/<mid>-<i>.webp, one

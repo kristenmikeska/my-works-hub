@@ -1,0 +1,322 @@
+/* Persona 3: Solstice · cosmetics: the Wardrobe (Menu → Wardrobe) and the Boutique banner (2026-10-25, Kat's skins batch).
+   Looks only, never stats. No real money: the banner takes Velvet Plumes (gacha.js), earned by playing.
+
+   ── Kinds (KINDS; one equipped per slot, `slotOf`) ──
+     skin      an outfit for a fighter (`who`): replaces their battle pose sheet (battle.js asks battle() for a pose folder)
+               and, with "Outfits in scene portraits" on, their scene portraits (core.js portrait asks portrait()).
+               Art: game/art/skins/<id>/<who>-pose-0..5.webp (the pose-sheet format: idle, Evoker, attack, spell, hurt,
+               victory) and optional game/art/skins/<id>/portraits/<who>/<face>.webp.
+     weapon    a weapon look for a fighter: game/art/skins/<id>/weapon.webp (the Equipment tab shows it for her weapon slot).
+     evoker    a tint on the Evoker prop in summons (CSS filter; code only).
+     battleui  battle colours (CSS variables injected into the battle frame; code only).
+     title     the title screen's colours (also kept in localStorage, since the title shows before a save loads; code only).
+     wallpaper the menu's backdrop: a place background, the key art or a CSS pattern (code only).
+     uitheme   the field UI's colours (CSS variables on :root; code only).
+   ── Art-pending items ──
+     An item with `art: true` exists in the Wardrobe as "Art coming" and is never in the banner pool until its files are
+     listed in game/art/ready.js (FEMC_ART_READY; tools/femc-wardrobe.py cuts sheets and rewrites it). The moment they're
+     listed it's a normal item: it joins the pool, can be equipped, and shows up in battle and scenes. Nothing else changes.
+   ── The Boutique banner (Menu → Wardrobe → Boutique) ──
+     2 Velvet Plumes a pull (BAN.cost). Odds BAN.odds (Rare / Super Rare / Ultra), Super Rare or better within BAN.pitySR,
+     an Ultra within BAN.pityUR. Featured items rotate by month (BANNERS; P5X-style rate-up: half of each rarity's pulls
+     land on that rarity's featured item, and an Ultra that wasn't featured makes the next Ultra featured). Repeats give back
+     Velvet Plumes (BAN.refund). Series rewards (gacha.js SERIES[].reward) are `pool: false`: only completing the series
+     gives them.
+   Save: S.gacha.cos = { own: [ids], on: { slot: id }, portraits, pulls, pity: { sr, ur }, guar, last }. NG+ keeps own / on /
+   portraits (core.js newGamePlus). Tests: FemcCosmetics.rng is replaceable; tests/femc_cosmetics.py. */
+window.FemcCosmetics = (() => {
+  const G = window.FemcGame;
+  if (!G) return null;
+  const S = () => G.S;
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const api = { rng: Math.random };
+  const R = () => api.rng();
+  const pick = a => a[Math.floor(R() * a.length)];
+  const RAR = { R: { name: 'Rare', color: '#6ab0ff', sfx: 'femc-advance' }, SR: { name: 'Super Rare', color: '#c58bff', sfx: 'femc-rankup' }, UR: { name: 'Ultra', color: '#ffd36b', sfx: 'femc-moon' } };
+  const BAN = { cost: 2, odds: { R: 0.76, SR: 0.2, UR: 0.04 }, pitySR: 10, pityUR: 40, refund: { R: 1, SR: 1, UR: 2 } };
+  const KINDS = {
+    skin: { name: 'Outfit', order: 1 }, weapon: { name: 'Weapon skin', order: 2 }, evoker: { name: 'Evoker skin', order: 3 },
+    battleui: { name: 'Battle theme', order: 4 }, title: { name: 'Title screen', order: 5 }, wallpaper: { name: 'Menu wallpaper', order: 6 }, uitheme: { name: 'Menu colours', order: 7 }
+  };
+  const BG = slug => `assets/femc/bg/${slug}.webp`;
+  const c = (id, kind, name, r, desc, more = {}) => Object.assign({ id, kind, name, r, desc }, more);
+  // Colour sets: pink, pink-2, pink-3, night (the game's own tokens, game.css / battle.css :root).
+  const PAL = {
+    moonlight: ['#6ab0ff', '#a8d0ff', '#dcebff', '#070b18'], sakura: ['#ff7fb0', '#ffb3cf', '#ffe3ee', '#1a0811'], velvet: ['#2b5fd0', '#6a9bff', '#cfe3ff', '#050b20'],
+    sunrise: ['#ffb030', '#ffd36b', '#fff0c4', '#1a0e03'], mint: ['#2fd39a', '#7dffc0', '#d8fff0', '#03140d'], summer: ['#1fc4e8', '#6fe3ff', '#d8f7ff', '#031319'],
+    pumpkin: ['#ff8a1f', '#ffb766', '#ffe2c2', '#140904'], jade: ['#2fd39a', '#8fffc0', '#dcfff0', '#04120c'], gold: ['#e8a41c', '#ffd36b', '#fff2c8', '#160d02']
+  };
+  const ITEMS = [
+    // Outfits for Solar (art pending: FEMC-ART-TODO section 8A).
+    c('sk-yukata', 'skin', 'Summer Yukata', 'UR', 'Sunflower yukata, hair pinned up, a paper fan tucked in the obi.', { who: 'solar', art: true }),
+    c('sk-wintercoat', 'skin', 'Winter Coat', 'SR', 'Cream wool coat, pink scarf, white earmuffs.', { who: 'solar', art: true }),
+    c('sk-halloween', 'skin', 'Halloween Witch', 'SR', 'A little witch: pointed hat, star-lined cape, striped stockings.', { who: 'solar', art: true }),
+    c('sk-date', 'skin', 'Date Day', 'SR', 'Off-shoulder knit top, pleated skirt, white sneakers.', { who: 'solar', art: true }),
+    c('sk-phantom', 'skin', 'Phantom Thief', 'UR', 'A long black coat, red gloves and a white domino mask. Take your heart.', { who: 'solar', art: true }),
+    // Weapon skins (art pending: 8C).
+    c('wpn-sakura', 'weapon', 'Sakura Naginata', 'SR', 'A pale wood haft wrapped in pink silk, blossoms etched on the blade.', { who: 'solar', art: true }),
+    c('wpn-phantom', 'weapon', 'Phantom Naginata', 'UR', 'Black lacquer and a red tassel, to go with the coat.', { who: 'solar', art: true }),
+    // Code-only: Evokers.
+    c('evk-rose', 'evoker', 'Rose Gold Evoker', 'R', 'Warm rose-gold plating.', { filter: 'sepia(.8) saturate(2.4) hue-rotate(-28deg) brightness(1.05)' }),
+    c('evk-midnight', 'evoker', 'Midnight Evoker', 'R', 'Gunmetal blue, nearly black.', { filter: 'brightness(.6) sepia(.6) hue-rotate(185deg) saturate(3)' }),
+    c('evk-jade', 'evoker', 'Jade Evoker', 'SR', 'Polished green stone.', { filter: 'sepia(.8) hue-rotate(95deg) saturate(2.6)' }),
+    c('evk-gold', 'evoker', 'Golden Sun Evoker', 'UR', 'Solid gold. Very loud.', { filter: 'sepia(1) saturate(3.2) hue-rotate(-8deg) brightness(1.1)' }),
+    c('evk-heart', 'evoker', 'Sweetheart Evoker', 'SR', 'Candy pink. The Valentine’s Series reward.', { filter: 'sepia(.9) saturate(4) hue-rotate(-50deg) brightness(1.1)', pool: false }),
+    // Code-only: battle themes.
+    c('bui-moonlight', 'battleui', 'Moonlight Battle', 'R', 'Cool blues over the Dark Hour.', { pal: 'moonlight' }),
+    c('bui-jade', 'battleui', 'Jade Battle', 'R', 'Calm greens.', { pal: 'jade' }),
+    c('bui-velvet', 'battleui', 'Velvet Battle', 'SR', 'The Velvet Room’s blue.', { pal: 'velvet' }),
+    c('bui-gold', 'battleui', 'Golden Battle', 'UR', 'Every bar and button in gold.', { pal: 'gold' }),
+    // Code-only: title screens.
+    c('tt-snow', 'title', 'Snowfall Title', 'R', 'Pale blue sky, a navy band.', { title: ['#bfe3ff', '#0b1c3d'] }),
+    c('tt-sakura', 'title', 'Sakura Title', 'R', 'Blossom pink.', { title: ['#ffb3cf', '#3a1028'] }),
+    c('tt-darkhour', 'title', 'Dark Hour Title', 'SR', 'Sickly green, like midnight.', { title: ['#3fbf6a', '#04110a'], titleFilter: 'hue-rotate(80deg) saturate(.8)' }),
+    c('tt-velvet', 'title', 'Velvet Title', 'SR', 'A room with no doors.', { title: ['#2b5fd0', '#050b20'] }),
+    c('tt-sunburst', 'title', 'Sunburst Title', 'UR', 'Gold on gold. The Cast Keychains reward.', { title: ['#ffd36b', '#2a1400'], pool: false }),
+    // Code-only: menu wallpapers (place backgrounds and the key art; nothing from the story's CGs).
+    c('wp-dorm', 'wallpaper', 'Dorm Lounge', 'R', 'The lounge at night.', { bg: BG('iwatodaidorm-livingroom-night') }),
+    c('wp-mall', 'wallpaper', 'Paulownia Mall', 'R', 'The mall after dark.', { bg: BG('paulownia-mall-night') }),
+    c('wp-rooftop', 'wallpaper', 'School Rooftop', 'R', 'The city from the roof.', { bg: BG('rooftop-citynight') }),
+    c('wp-shrine', 'wallpaper', 'Shrine Festival', 'SR', 'Lanterns at Naganaki Shrine.', { bg: BG('naganaki-shrine-festival') }),
+    c('wp-velvet', 'wallpaper', 'Velvet Room', 'SR', 'Blue all the way down.', { bg: BG('velvetroom-1') }),
+    c('wp-xmas', 'wallpaper', 'Port Island Lights', 'SR', 'Christmas on Port Island.', { bg: BG('portisland-christmas') }),
+    c('wp-fireworks', 'wallpaper', 'Beach Fireworks', 'SR', 'Fireworks over the sea.', { bg: BG('yakushima-beach-fireworks') }),
+    c('wp-keyart', 'wallpaper', 'Solstice Key Art', 'UR', 'The title screen’s painting.', { bg: 'assets/femc/title/keyart.webp' }),
+    c('wp-hearts', 'wallpaper', 'Hearts', 'SR', 'Little pink hearts. The Sweethearts & Sidekicks reward.', { css: 'radial-gradient(circle at 25% 25%, #ff8cc0 0 6px, transparent 7px) 0 0 / 46px 46px, radial-gradient(circle at 75% 75%, #ff4f9e 0 5px, transparent 6px) 0 0 / 46px 46px, linear-gradient(160deg, #3a1028, #14070f)', pool: false }),
+    c('wp-snow', 'wallpaper', 'Snowfall', 'SR', 'Soft snow on navy. The Winter Series reward.', { css: 'radial-gradient(circle, #fff 0 2px, transparent 3px) 0 0 / 34px 34px, radial-gradient(circle, rgba(255,255,255,.6) 0 1.5px, transparent 2.5px) 17px 17px / 34px 34px, linear-gradient(180deg, #0b1c3d, #050b20)', pool: false }),
+    // Code-only: field UI colours.
+    c('ui-sakura', 'uitheme', 'Sakura Colours', 'R', 'Softer pinks.', { pal: 'sakura' }),
+    c('ui-mint', 'uitheme', 'Mint Colours', 'R', 'Fresh greens.', { pal: 'mint' }),
+    c('ui-moonlight', 'uitheme', 'Moonlight Colours', 'SR', 'Silver and blue.', { pal: 'moonlight' }),
+    c('ui-velvet', 'uitheme', 'Velvet Colours', 'SR', 'Elizabeth would approve.', { pal: 'velvet' }),
+    c('ui-sunrise', 'uitheme', 'Sunrise Colours', 'UR', 'Gold and amber.', { pal: 'sunrise' }),
+    c('ui-summer', 'uitheme', 'Summer Colours', 'SR', 'Sea blue. The Summer Series reward.', { pal: 'summer', pool: false }),
+    c('ui-pumpkin', 'uitheme', 'Pumpkin Colours', 'SR', 'Jack-o’-lantern orange. The Halloween Series reward.', { pal: 'pumpkin', pool: false })
+  ];
+  const byId = id => ITEMS.find(x => x.id === id) || null;
+  // Featured rotation by the game's month (P5X-style banners).
+  const BANNERS = [
+    { id: 'bloom', name: 'Spring Bloom', months: [4, 5], color: '#ff8cc0', featured: ['sk-date', 'tt-sakura', 'ui-sakura'] },
+    { id: 'summer', name: 'Summer Nights', months: [6, 7, 8], color: '#4fd8ff', featured: ['sk-yukata', 'wp-fireworks', 'ui-mint'] },
+    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade'] },
+    { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose'] },
+    { id: 'sunrise', name: 'Golden Sunrise', months: [2, 3], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart'] }
+  ];
+
+  /* ── Art ── */
+  const readyArt = () => window.FEMC_ART_READY || {};
+  // Is an item usable: code-only always; an art item once ready.js lists its files.
+  function ready(x) {
+    if (!x) return false;
+    if (!x.art) return true;
+    const A = readyArt();
+    if (x.kind === 'skin') return ((A.skins || {})[x.id]?.poses || []).includes(x.who);
+    if (x.kind === 'weapon') return (A.weapons || []).includes(x.id);
+    return false;
+  }
+  const skinDir = id => `assets/femc/game/art/skins/${id}/`;
+
+  /* ── State ── */
+  function cs() {
+    const g = window.FemcGacha ? window.FemcGacha.gs() : (S().gacha = S().gacha || {});
+    const f = { own: [], on: {}, portraits: true, pulls: 0, pity: { sr: 0, ur: 0 }, guar: false, last: null };
+    if (!g.cos || typeof g.cos !== 'object') g.cos = f;
+    const s = g.cos;
+    Object.keys(f).forEach(k => { if (s[k] === undefined || (f[k] !== null && typeof s[k] !== typeof f[k])) s[k] = f[k]; });
+    if (!Array.isArray(s.own)) s.own = []; s.pity = Object.assign({ sr: 0, ur: 0 }, s.pity || {});
+    return s;
+  }
+  const owns = id => cs().own.includes(id);
+  const slotOf = x => (x.who ? `${x.kind}:${x.who}` : x.kind);
+  // The equipped item in a slot, only while it's still usable.
+  const onIn = slot => { const x = byId(cs().on[slot]); return x && ready(x) && owns(x.id) ? x : null; };
+  function grantItem(id) { const x = byId(id); if (!x) return null; const s = cs(); if (!s.own.includes(id)) s.own.push(id); return x; }
+  function equip(id) {
+    const x = byId(id); if (!x || !owns(id) || !ready(x)) return false;
+    cs().on[slotOf(x)] = id; G.save(); apply(); return true;
+  }
+  function unequip(slot) { delete cs().on[slot]; G.save(); apply(); return true; }
+  function setPortraits(v) { cs().portraits = !!v; G.save(); return cs().portraits; }
+
+  /* ── The banner ── */
+  const monthOf = d => { try { return G.dateOf(d ?? S().day).getMonth() + 1; } catch (e) { return 4; } };
+  const banner = d => BANNERS.find(b => b.months.includes(monthOf(d))) || BANNERS[0];
+  const pool = () => ITEMS.filter(x => x.pool !== false && ready(x));
+  const featured = d => banner(d).featured.map(byId).filter(x => x && x.pool !== false && ready(x));
+  const plumes = () => (window.FemcGacha ? window.FemcGacha.gs().plumes : 0);
+  const canPull = () => plumes() >= BAN.cost && pool().length > 0;
+  function rollR() {
+    let x = R();
+    for (const k of ['UR', 'SR']) { if (x < BAN.odds[k]) return k; x -= BAN.odds[k]; }
+    return 'R';
+  }
+  /* One pull. Returns { item, r, dup, refund, feat } or null. */
+  function pull() {
+    if (!canPull()) return null;
+    const s = cs(), g = window.FemcGacha.gs(), p = s.pity;
+    g.plumes -= BAN.cost;
+    let r = rollR();
+    if (r !== 'UR' && p.ur + 1 >= BAN.pityUR) r = 'UR';
+    else if (r === 'R' && p.sr + 1 >= BAN.pitySR) r = 'SR';
+    // A rarity with nothing in the pool steps down (Ultra → Super Rare → Rare), then up.
+    const order = { UR: ['UR', 'SR', 'R'], SR: ['SR', 'R', 'UR'], R: ['R', 'SR', 'UR'] }[r];
+    const rr = order.find(k => pool().some(x => x.r === k));
+    p.ur = rr === 'UR' ? 0 : p.ur + 1;
+    p.sr = rr === 'UR' || rr === 'SR' ? 0 : p.sr + 1;
+    const all = pool().filter(x => x.r === rr), feat = featured().filter(x => x.r === rr);
+    let item, isFeat = false;
+    if (feat.length && (rr === 'UR' ? (s.guar || R() < 0.5) : R() < 0.5)) { item = pick(feat); isFeat = true; }
+    else { const rest = all.filter(x => !feat.includes(x)); item = pick(rest.length ? rest : all); isFeat = feat.includes(item); }
+    if (rr === 'UR') s.guar = !isFeat && feat.length > 0;
+    const dup = owns(item.id), refund = dup ? BAN.refund[rr] : 0;
+    if (dup) g.plumes += refund; else s.own.push(item.id);
+    s.pulls += 1; s.last = { at: S().day, id: item.id, r: rr };
+    G.save();
+    return { item, r: rr, dup, refund, feat: isFeat };
+  }
+
+  /* ── Applying looks ── */
+  const varsCss = pal => { const v = PAL[pal]; return v ? `--pink:${v[0]};--pink-2:${v[1]};--pink-3:${v[2]};--night:${v[3]};` : ''; };
+  let styled = false;
+  function styleSheet() {
+    if (styled) return; styled = true;
+    const css = ITEMS.map(x => {
+      if (x.kind === 'uitheme') return `:root[data-uitheme="${x.id}"]{${varsCss(x.pal)}}`;
+      if (x.kind === 'title') return `:root[data-titletheme="${x.id}"] .g-title{background:${x.title[0]}}:root[data-titletheme="${x.id}"] .g-title::before{background:${x.title[1]}}${x.titleFilter ? `:root[data-titletheme="${x.id}"] .g-title-art{filter:${x.titleFilter}}` : ''}`;
+      return '';
+    }).join('\n');
+    const el = document.createElement('style'); el.id = 'g-cos-style'; el.textContent = css; document.head.appendChild(el);
+  }
+  const wallCss = x => (x.css ? x.css : `url('${G.base}${x.bg}') center / cover no-repeat`);
+  const TITLE_KEY = 'kg-femc-title-theme';
+  function apply() {
+    styleSheet();
+    const root = document.documentElement, has = !!S();
+    if (!has) return;
+    const ui = onIn('uitheme'), wall = onIn('wallpaper'), title = onIn('title');
+    if (ui) root.dataset.uitheme = ui.id; else delete root.dataset.uitheme;
+    if (wall) { root.dataset.wall = wall.id; root.style.setProperty('--g-wall', wallCss(wall)); } else { delete root.dataset.wall; root.style.removeProperty('--g-wall'); }
+    if (title) root.dataset.titletheme = title.id; else delete root.dataset.titletheme;
+    try { if (title) localStorage.setItem(TITLE_KEY, title.id); else localStorage.removeItem(TITLE_KEY); } catch (e) {}
+  }
+  // The title shows before a save loads: use the last theme this browser saw.
+  function applyTitleEarly() { styleSheet(); try { const t = localStorage.getItem(TITLE_KEY); if (t && byId(t)) document.documentElement.dataset.titletheme = t; } catch (e) {} }
+  /* For the battle frame (battle.js reads parent.FemcCosmetics.battle() once at load): pose folders for skins, and CSS. */
+  function battle() {
+    if (!S()) return null;
+    const pose = {}, out = { pose, css: '' };
+    ITEMS.filter(x => x.kind === 'skin').forEach(x => { const o = onIn(slotOf(x)); if (o && !pose[o.who]) pose[o.who] = G.base + skinDir(o.id); });
+    const bui = onIn('battleui'), evk = onIn('evoker');
+    if (bui) out.css += `:root{${varsCss(bui.pal)}}`;
+    if (evk) out.css += `.bt-evk-band .gun{filter:${evk.filter}}`;
+    return out;
+  }
+  /* For scenes (core.js portrait): an outfit's portrait, when it has one and the toggle is on. */
+  function portrait(id, face) {
+    const s = S() && S().gacha && S().gacha.cos;
+    if (!s || !s.portraits) return null;
+    const x = onIn(`skin:${id}`); if (!x) return null;
+    const have = ((readyArt().skins || {})[x.id]?.portraits || {})[id] || [];
+    const f = [face, face && face.replace(/-\d+$/, ''), 'neutral', have[0]].find(k => k && have.includes(k));
+    return f ? `${G.base}${skinDir(x.id)}portraits/${id}/${f}.webp` : null;
+  }
+  // The Equipment tab's picture for a fighter's weapon slot (a path from the site root, like a gear's `art`).
+  function weaponArt(who) { const x = onIn(`weapon:${who}`); return x ? `${skinDir(x.id)}weapon.webp` : null; }
+
+  /* ── Menu → Wardrobe ── */
+  let view = 'wardrobe', sel = null, fresh = null;
+  const starsHtml = r => `<span class="g-ga-stars" style="--rc:${RAR[r].color}" aria-label="${RAR[r].name}">${'★'.repeat({ R: 2, SR: 3, UR: 4 }[r])}</span>`;
+  const DEFAULT_POSE = 'assets/femc/battle/art/poses/solar-pose-0.webp';
+  const EVOKER = 'assets/femc/battle/art/summon/evoker-prop.webp';
+  function thumb(x) {
+    if (x.kind === 'skin') return ready(x) ? `<img src="${G.base}${skinDir(x.id)}${x.who}-pose-0.webp" alt="">` : `<span class="g-wd-ico">👗</span>`;
+    if (x.kind === 'weapon') return ready(x) ? `<img src="${G.base}${skinDir(x.id)}weapon.webp" alt="">` : `<span class="g-wd-ico">⚔</span>`;
+    if (x.kind === 'evoker') return `<img src="${G.base}${EVOKER}" alt="" style="filter:${x.filter}">`;
+    if (x.kind === 'wallpaper') return `<span class="g-wd-sw" style="background:${wallCss(x)}"></span>`;
+    if (x.kind === 'title') return `<span class="g-wd-sw" style="background:linear-gradient(110deg, ${x.title[1]} 0 42%, ${x.title[0]} 42%)"></span>`;
+    const v = PAL[x.pal]; return `<span class="g-wd-sw" style="background:linear-gradient(135deg, ${v[3]} 0 30%, ${v[0]} 30% 60%, ${v[1]} 60% 80%, ${v[2]} 80%)"></span>`;
+  }
+  // The big preview: the wallpaper (selected or worn), Solar in her outfit, and the item itself.
+  function preview(x) {
+    const wall = x && x.kind === 'wallpaper' ? x : onIn('wallpaper');
+    const skin = x && x.kind === 'skin' ? x : onIn('skin:solar');
+    const pose = skin && ready(skin) ? `${G.base}${skinDir(skin.id)}solar-pose-0.webp` : `${G.base}${DEFAULT_POSE}`;
+    const pal = x && (x.kind === 'uitheme' || x.kind === 'battleui') ? x.pal : (onIn('uitheme') || {}).pal;
+    const evk = x && x.kind === 'evoker' ? x : onIn('evoker');
+    let extra = '';
+    if (x && x.kind === 'title') extra = `<span class="g-wd-pv-title" style="--a:${x.title[0]};--b:${x.title[1]}"><img src="${G.base}assets/femc/title/keyart.webp" alt="" style="${x.titleFilter ? `filter:${x.titleFilter}` : ''}"><b>Solstice</b></span>`;
+    else if (x && x.kind === 'weapon') extra = ready(x) ? `<img class="g-wd-pv-wpn" src="${G.base}${skinDir(x.id)}weapon.webp" alt="">` : '';
+    else if (x && x.kind === 'battleui') extra = `<span class="g-wd-pv-hud" style="${varsCss(x.pal)}"><i style="--w:80%"></i><i class="sp" style="--w:55%"></i><b>Attack</b><b>Skill</b><b>Guard</b></span>`;
+    const pending = x && x.art && !ready(x);
+    return `<div class="g-wd-stage"${wall ? ` style="--wall:${esc(wallCss(wall))}"` : ''} data-pv="${x ? x.id : ''}">
+      <img class="g-wd-pv-solar${pending && x.kind === 'skin' ? ' pending' : ''}" src="${pose}" alt="">
+      ${evk ? `<img class="g-wd-pv-evk" src="${G.base}${EVOKER}" alt="" style="filter:${evk.filter}">` : ''}
+      ${extra}${pal ? `<span class="g-wd-pv-pal" style="${varsCss(pal)}"><i></i><i></i><i></i></span>` : ''}
+      ${pending ? '<span class="g-wd-pending">Art coming</span>' : ''}</div>`;
+  }
+  function wardrobeHtml() {
+    const s = cs(), x = byId(sel);
+    const kinds = Object.keys(KINDS).sort((a, b) => KINDS[a].order - KINDS[b].order);
+    const lists = kinds.map(k => {
+      const items = ITEMS.filter(i => i.kind === k);
+      const slots = [...new Set(items.map(slotOf))];
+      return slots.map(slot => {
+        const worn = onIn(slot);
+        return `<section class="g-wd-kind"><h3>${esc(KINDS[k].name)}${items[0].who ? ` <small>Solar</small>` : ''}</h3><ul class="g-wd-items">
+          <li><button type="button" class="g-wd-item${worn ? '' : ' on'}" data-wd-off="${slot}"><span class="g-wd-th"><span class="g-wd-ico">○</span></span><b>Default</b><small>${worn ? 'Take it off' : 'Wearing'}</small></button></li>
+          ${items.filter(i => slotOf(i) === slot).map(i => { const own = owns(i.id), rd = ready(i), on = worn && worn.id === i.id; const st = !rd ? 'Art coming' : on ? 'Wearing' : own ? 'Owned' : i.pool === false ? 'Series reward' : 'Boutique'; return `<li><button type="button" class="g-wd-item${own ? ' own' : ''}${on ? ' on' : ''}${rd ? '' : ' pending'}${sel === i.id ? ' sel' : ''}" data-wd="${i.id}" style="--rc:${RAR[i.r].color}"><span class="g-wd-th">${thumb(i)}</span><b>${esc(i.name)}</b><small>${starsHtml(i.r)} ${st}</small></button></li>`; }).join('')}</ul></section>`;
+      }).join('');
+    }).join('');
+    const can = x && owns(x.id) && ready(x), wearing = x && onIn(slotOf(x))?.id === x.id;
+    return `<div class="g-wd-grid"><div class="g-wd-side">${preview(x)}
+        <div class="g-wd-info">${x ? `<b>${esc(x.name)}</b><small>${starsHtml(x.r)} ${esc(RAR[x.r].name)} · ${esc(KINDS[x.kind].name)}</small><p>${esc(x.desc)}</p>
+          ${!ready(x) ? '<p class="g-note small">Art coming: it joins the Boutique once its pictures are in.</p>' : !owns(x.id) ? `<p class="g-note small">${x.pool === false ? 'Complete its capsule series to get it.' : 'Pull for it in the Boutique.'}</p>` : ''}
+          ${can ? `<button type="button" class="g-btn pink small" data-wd-equip="${x.id}"${wearing ? ' disabled' : ''}><span>${wearing ? 'Wearing' : 'Equip'}</span></button>` : ''}` : '<b>Wardrobe</b><p>Pick something to preview it. Looks only: nothing here changes a fight.</p>'}</div>
+        <label class="g-wd-toggle"><input type="checkbox" data-wd-portraits${s.portraits ? ' checked' : ''}> Outfits in scene portraits</label></div>
+      <div class="g-wd-list">${lists}</div></div>`;
+  }
+  function bannerHtml() {
+    const s = cs(), b = banner(), f = featured(), p = s.pity, MON = m => new Date(2009, m - 1, 1).toLocaleString('en', { month: 'long' });
+    const res = fresh || (s.last && byId(s.last.id) ? { item: byId(s.last.id), r: s.last.r, old: true } : null);
+    const n = pool().length;
+    return `<div class="g-wd-banner" style="--c:${b.color}"><div class="g-wd-bhead"><b>${esc(b.name)}</b><small>Featured ${esc(MON(b.months[0]))}${b.months.length > 1 ? `–${esc(MON(b.months[b.months.length - 1]))}` : ''}</small></div>
+      <ul class="g-wd-feat">${f.map(x => `<li style="--rc:${RAR[x.r].color}"><span class="g-wd-th">${thumb(x)}</span><b>${esc(x.name)}</b><small>${starsHtml(x.r)}${owns(x.id) ? ' · owned' : ''}</small></li>`).join('') || '<li class="g-note">Nothing featured is ready yet.</li>'}</ul>
+      <ul class="g-ga-odds">${Object.entries(BAN.odds).map(([k, v]) => `<li style="--rc:${RAR[k].color}">${starsHtml(k)} ${RAR[k].name} <b>${(v * 100).toFixed(0)}%</b></li>`).join('')}</ul>
+      <p class="g-ga-pity">Super Rare or better within <b>${BAN.pitySR - p.sr}</b> pull${BAN.pitySR - p.sr === 1 ? '' : 's'} · an Ultra within <b>${BAN.pityUR - p.ur}</b>${s.guar ? ' · the next Ultra is featured' : ''}.</p>
+      <p class="g-note small">Half of each rarity's pulls land on its featured item. ${n} looks are in the pool (outfits still waiting on art aren't). Repeats give Velvet Plumes back.</p>
+      <div class="g-row g-ga-btns"><button type="button" class="g-btn pink" data-wd-pull${canPull() ? '' : ' disabled'}><span>Pull · ${BAN.cost} Velvet Plumes</span></button><span class="g-ga-own"><span>Velvet Plumes <b>${plumes()}</b></span><span>Pulls <b>${s.pulls}</b></span></span></div>
+      <div class="g-wd-reveal" aria-live="polite">${res ? revealHtml(res) : ''}</div></div>`;
+  }
+  function revealHtml(res) {
+    const x = res.item, anim = !res.old && !reduced();
+    return `<div class="g-wd-card r-${res.r}${anim ? ' anim' : ''}" style="--rc:${RAR[res.r].color}"><div class="g-wd-card-in"><span class="g-wd-card-back"><i></i></span>
+      <span class="g-wd-card-face"><span class="g-wd-th">${thumb(x)}</span><span>${starsHtml(res.r)}<small>${RAR[res.r].name}${res.feat ? ' · Featured' : ''}</small><b>${esc(x.name)}</b><em>${esc(KINDS[x.kind].name)}</em>
+      ${res.dup ? `<em class="g-ga-dup">Already had it: +${res.refund} Velvet Plume${res.refund === 1 ? '' : 's'}.</em>` : res.old ? '' : '<em class="g-ga-done">New! Equip it in the Wardrobe.</em>'}</span></span></div></div>`;
+  }
+  function html() {
+    gsafe();
+    return `<div class="g-wd"><div class="g-tabs g-wd-sub" role="tablist"><button type="button" role="tab" data-wd-view="wardrobe" class="${view === 'wardrobe' ? 'on' : ''}">Wardrobe</button><button type="button" role="tab" data-wd-view="banner" class="${view === 'banner' ? 'on' : ''}">Boutique · ${esc(banner().name)}</button></div>
+      ${view === 'banner' ? bannerHtml() : wardrobeHtml()}</div>`;
+  }
+  const gsafe = () => cs();
+  function wire(el, rerender) {
+    el.querySelectorAll('[data-wd-view]').forEach(b => b.addEventListener('click', () => { view = b.dataset.wdView; fresh = null; G.sfx('femc-click'); rerender(`[data-wd-view="${view}"]`); }));
+    el.querySelectorAll('[data-wd]').forEach(b => b.addEventListener('click', () => { sel = b.dataset.wd; G.sfx('femc-hover'); rerender(`[data-wd="${sel}"]`); }));
+    el.querySelectorAll('[data-wd-off]').forEach(b => b.addEventListener('click', () => { unequip(b.dataset.wdOff); sel = null; G.sfx('femc-back'); rerender(`[data-wd-off="${b.dataset.wdOff}"]`); }));
+    el.querySelector('[data-wd-equip]')?.addEventListener('click', e => { if (equip(e.currentTarget.dataset.wdEquip)) { G.sfx('femc-on'); rerender('[data-wd-equip]'); } });
+    el.querySelector('[data-wd-portraits]')?.addEventListener('change', e => { setPortraits(e.target.checked); G.sfx('femc-click'); });
+    el.querySelector('[data-wd-pull]')?.addEventListener('click', () => {
+      const res = pull(); if (!res) return;
+      fresh = res; G.sfx('femc-click');
+      setTimeout(() => G.sfx(RAR[res.r].sfx), reduced() ? 0 : { R: 650, SR: 900, UR: 1200 }[res.r]);
+      rerender('[data-wd-pull]');
+      fresh = Object.assign({}, res, { old: true }); // later re-renders show it still, without replaying
+    });
+  }
+
+  G.onChange(kind => { if (kind !== 'toast') apply(); });
+  applyTitleEarly();
+  setTimeout(apply, 0);
+  return Object.assign(api, { KINDS, ITEMS, BANNERS, BAN, PAL, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, pool, featured, canPull, pull, apply, battle, portrait, weaponArt, html, wire, preview });
+})();

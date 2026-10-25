@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**72 items:** 3 CGs · 3 places · 12 character pieces · 44 battle (14 bond Showtimes in 5A, 24 effect variants in 5G) · 7 cards and icons · 5 screens. 1 is ⭐, 62 are optional.
+**92 items:** 3 CGs · 3 places · 12 character pieces · 44 battle (14 bond Showtimes in 5A, 24 effect variants in 5G) · 7 cards and icons · 5 screens · 20 Wardrobe and keychain-series pieces (section 8). 1 is ⭐, 82 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -482,6 +482,126 @@ Checked and fine as they are: the title screen's key art, the Velvet Room, the G
 
 ---
 
+## 8. Wardrobe outfits and capsule keychain series *(optional)*
+Everything here already works in the game without its art. Outfits and weapon skins show as **"Art coming"** in Menu → Wardrobe and stay out of the Boutique banner; the series keychains are drawn from the characters' faces. Once a piece is cut in, it appears by itself (no other change). Put finished pieces in **New Adds** under the file name each item gives.
+
+**Solar's clothes:** Kat varies Solar's outfits for fun, so never treat a different outfit as a mismatch. Each item's **Must match** line gives the outfit for that picture. **No S.E.E.S. armband outside battle:** the pose sheets are battle art, so they keep the red armband on her left arm; keychains and scene portraits never have it.
+
+### 8A. Solar's outfit pose sheets (5)
+These replace her battle figure while she wears the outfit (idle, Evoker, attack, spell, hurt and victory), exactly like her current pose sheet. Same rules as every pose sheet: **one character, 3 across and 2 down, plain white background, space between the drawings, the same size in every drawing.** If it comes out with a background or overlapping poses, ask ChatGPT to *"redo it on a plain white background with more space between the poses."*
+
+**Attach (2 images):**
+1. 🎨 `Added to Game/solar-posesheet.png` (her current sheet: poses, size and framing to copy)
+2. 🎨 `Character Portraits/Solar/Solar-smiling.png` (her face)
+
+**Prompt** (paste it, then the outfit's **Must match** line):
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly; change only her clothes to the outfit described below. Solar: very long straight black hair, her naginata, a red S.E.E.S. armband on her left arm (this is battle art). Cell 1: battle-ready stance. Cell 2: raising an ornate silver Evoker to her temple. Cell 3: attacking with her naginata. Cell 4: casting a spell with one hand out, golden sunlight effects. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+- [ ] **Summer Yukata** (`sk-yukata`). **Must match:** *a cream summer yukata printed with big sunflowers, a sunflower-yellow obi with a paper fan tucked in it, her hair pinned up in a loose bun with long strands falling, wooden geta sandals; the armband tied over the yukata sleeve.* **Save as:** `skin-sk-yukata-posesheet.png`. **Fills:** `game/art/skins/sk-yukata/solar-pose-0..5.webp`.
+- [ ] **Winter Coat** (`sk-wintercoat`). **Must match:** *a knee-length cream wool coat buttoned up, a long pink knit scarf, white earmuffs, black tights and short brown boots; the armband over the coat sleeve.* **Save as:** `skin-sk-wintercoat-posesheet.png`. **Fills:** `game/art/skins/sk-wintercoat/solar-pose-0..5.webp`.
+- [ ] **Halloween Witch** (`sk-halloween`). **Must match:** *a little witch: a tall black pointed hat with a pink band, a short black cape lined with gold stars, a black dress, purple-and-black striped stockings, buckled shoes; the armband over the cape on her left arm.* **Save as:** `skin-sk-halloween-posesheet.png`. **Fills:** `game/art/skins/sk-halloween/solar-pose-0..5.webp`.
+- [ ] **Date Day** (`sk-date`). **Must match:** *a casual date outfit: a soft pink off-shoulder knit top, a pleated cream skirt, white sneakers, a thin gold necklace, her white earbuds around her neck; the armband on her left arm.* **Save as:** `skin-sk-date-posesheet.png`. **Fills:** `game/art/skins/sk-date/solar-pose-0..5.webp`.
+- [ ] **Phantom Thief** (`sk-phantom`), Persona 5 style for fun. **Must match:** *a long black tailcoat with a high collar, red gloves, black fitted trousers and pointed black boots, a white domino mask over her eyes; the armband over the coat sleeve.* **Save as:** `skin-sk-phantom-posesheet.png`. **Fills:** `game/art/skins/sk-phantom/solar-pose-0..5.webp`.
+
+### 8B. *(Optional)* Outfit portraits for scenes (5)
+With **Outfits in scene portraits** on (the Wardrobe's toggle), Solar's scene portrait wears the outfit too, for any face that exists; faces that don't fall back to neutral, then to her normal portrait. Neutral alone is enough to start.
+- **Attach:** 🎨 `Character Portraits/Solar/Solar-neutral.png` (then her other faces, one at a time).
+```
+Edit this portrait. Keep the framing, crop, size, art style, face, expression and hair exactly the same; change only her clothes to [OUTFIT]. No S.E.E.S. armband. Transparent background.
+```
+- [ ] One set per outfit in 8A, using that item's **Must match** clothes (no armband, no naginata). **Fills:** `game/art/skins/<outfit id>/portraits/solar/<face>.webp` (cut them like her other portraits, then `python3 tools/femc-wardrobe.py portraits <outfit id> solar <folder>`).
+
+### 8C. *(Optional)* Weapon skins (2)
+A different look for her naginata (Menu → Wardrobe; the Equipment tab shows it). One weapon per image, Gemini or ChatGPT.
+- **Attach:** 🎮 `battle/art/weapons/moon-and-stars.webp` (style).
+```
+One ornate naginata, the whole weapon from the tip of the blade to the end of the haft, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. [DESIGN]
+```
+- [ ] **Sakura Naginata** (`wpn-sakura`). *A pale ash-wood haft wrapped in pink silk cord, cherry blossoms etched along a silver blade, a small pink tassel.* **Save as:** `skin-wpn-sakura.png`. **Fills:** `game/art/skins/wpn-sakura/weapon.webp`.
+- [ ] **Phantom Naginata** (`wpn-phantom`). *Glossy black lacquer haft, a dark steel blade with a red edge, a long red tassel, a small silver mask charm at the collar.* **Save as:** `skin-wpn-phantom.png`. **Fills:** `game/art/skins/wpn-phantom/weapon.webp`.
+
+### 8D. Capsule keychain series (8 sheets)
+The same acrylic charms as the 30 already in the game, in the same sheet format and green screen. Couple charms are **two people on one charm** (the Collection shows them a little wider); the S.E.E.S. Photo has six. Ids are in reading order for `python3 tools/femc-wardrobe.py keys <sheet> <six ids>`. **Fills:** `game/art/keys/series/<id>.webp`. The Halloween singles already use your Halloween charms, so only its two new ones are here.
+
+**Attach for every sheet:**
+1. 🎮 `game/art/keys/solar.webp` (the finished charm look: acrylic edge, ring, chain)
+2. 🎮 `battle/art/chibi/solar-0.webp` (chibi style)
+3. The existing charm of each person on the sheet, in order: 🎮 `game/art/keys/<id>.webp` (faces, hair and chibi likeness). If ChatGPT won't take that many, attach the people for the top row, make it, then say *"Bottom row now, same style"* with the other three.
+
+**Sheet prompt:**
+```
+A 3 × 2 grid of six acrylic keychain charms (3 columns, 2 rows) on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each charm is a cute chibi of the character or characters named, in exactly the chibi style of the first two attached images, cut out in clear acrylic with a thick glossy white edge and a light blue shine (draw the edge solid, not see-through), a small silver ring and a short chain at the top centre. When a charm has two or more people, they share ONE charm shape (one outline around them all, one ring and chain), standing close together. Each charm upright, centred in its cell, the same size, with wide green space around it. Faces and hair from the attached charms of each person; outfits and poses exactly as described for each cell. No S.E.E.S. armband on anyone. No text, no green in the charms. In reading order: [SIX CELLS].
+```
+Paste each sheet's six cells in place of [SIX CELLS]. Each cell is its **Must match** (who, outfit, pose).
+
+- [ ] **Sheet 1, Solar's sweethearts** (Sweethearts & Sidekicks). **Save as:** `keychain-series-1.png`. **Attach 3:** Solar, Akihiko, Shinjiro, Haechan, Jungwon, Jihoon, Minji. **Must match:**
+  1. Solar & Akihiko: her uniform, his own outfit; sharing one protein shake with two straws.
+  2. Solar & Shinjiro: her uniform, his beanie and long coat; he holds a soup ladle, she leans in to steal a taste.
+  3. Solar & Haechan: her uniform, his own outfit; heads together, sharing one pair of white earbuds.
+  4. Solar & Jungwon: her uniform, his own outfit; sharing one croissant, both taking a bite.
+  5. Solar & Jihoon: her uniform, his own outfit; he grins holding up a crane-game plush, she pretends not to be impressed.
+  6. Solar & Minji: her uniform, Minji's own outfit; Minji holds up a camera for a selfie of the two of them, both smiling.
+  Ids: `cp-solar-akihiko cp-solar-shinjiro cp-solar-haechan cp-solar-jungwon cp-solar-jihoon cp-solar-minji`
+- [ ] **Sheet 2, best pairs** (Sweethearts & Sidekicks). **Save as:** `keychain-series-2.png`. **Attach 3:** Hanni, Hyein, Kuromi, My Melody, Ken, Koromaru, Junpei, Yukari, Akihiko, Shinjiro, Haechan, Mark. **Must match:**
+  1. Hanni & Hyein: their own outfits with matching bunny hairclips (pink for Hanni, sky blue for Hyein), cheek to cheek.
+  2. Kuromi & My Melody: back to back, Kuromi smug with arms crossed, My Melody sweet with hands clasped.
+  3. Ken & Koromaru: Ken in his own clothes hugging Koromaru, both looking proud.
+  4. Junpei & Yukari: his cap and blue shirt, her pink cardigan; mid-bicker, Junpei pointing, Yukari rolling her eyes.
+  5. Akihiko & Shinjiro: back to back, arms crossed, old friends, both smirking.
+  6. Haechan & Mark: their own outfits, an arm over the other's shoulder, both laughing.
+  Ids: `cp-hanni-hyein cp-kuromi-melody cp-ken-koro cp-junpei-yukari cp-aki-shinji cp-haechan-mark`
+- [ ] **Sheet 3, the specials** (one Ultra or Secret from each series). **Save as:** `keychain-series-3.png`. **Attach 3:** Solar, Akihiko, Yukari, Junpei, Mitsuru, Fuuka, Haechan, Elizabeth, Shinjiro, Jungwon. **Must match:**
+  1. S.E.E.S. Photo: Solar, Akihiko, Yukari, Junpei, Mitsuru and Fuuka in their uniforms, squeezed together inside one little photo frame, all smiling (one charm, one ring).
+  2. Solar & Haechan, Halloween: trick-or-treating, Solar as a little witch (pointed hat, star-lined cape), Haechan as a vampire (cape, fake fangs), sharing one pumpkin candy bucket.
+  3. Elizabeth, Halloween: a witch's hat over her blue Velvet Room uniform, sitting on her big Compendium book like a broom.
+  4. Solar & Akihiko, Summer: Solar in a sunflower yukata, Akihiko in swim trunks with a towel round his neck, building a lopsided sandcastle.
+  5. Solar & Shinjiro, Winter: Solar in a cream coat and pink scarf, Shinjiro in his beanie, each holding a mug of hot cocoa, one long scarf wrapped round both of them.
+  6. Solar & Jungwon, Valentine's: Solar in a pink sweater, Jungwon in his own outfit, each holding half of one heart-shaped chocolate.
+  Ids: `cp-sees-photo hw-solar-haechan hw-elizabeth su-solar-akihiko wi-solar-shinjiro va-solar-jungwon`
+- [ ] **Sheet 4, Summer** (Summer Series). **Save as:** `keychain-series-4.png`. **Attach 3:** Akihiko, Yukari, Junpei, Mitsuru, Fuuka, Jungwon. **Must match:**
+  1. Akihiko: swim trunks, a towel over his shoulders, a confident grin.
+  2. Yukari: a pink sundress and a wide straw hat.
+  3. Junpei: a loud Hawaiian shirt and shorts, holding a watermelon slice.
+  4. Mitsuru: a white summer dress, a white sun hat and a lace parasol.
+  5. Fuuka: a sailor-collar summer dress, holding a paper fan.
+  6. Jungwon: a beach shirt, sunglasses pushed up into his hair.
+  Ids: `su-akihiko su-yukari su-junpei su-mitsuru su-fuuka su-jungwon`
+- [ ] **Sheet 5, festival and mascots** (Summer, Winter, Valentine's and Cast Secrets). **Save as:** `keychain-series-5.png`. **Attach 3:** Solar, Haechan, Koromaru, Kuromi, My Melody, Elizabeth. **Must match:**
+  1. Solar: a cream yukata with big sunflowers, sunflower-yellow obi, hair pinned up.
+  2. Haechan: a navy festival yukata, holding a lit sparkler.
+  3. Koromaru: sitting inside a hollowed-out watermelon half, tongue out.
+  4. Koromaru: reindeer antlers and a tiny red nose.
+  5. Kuromi & My Melody: Kuromi holding an "anti" sign with a crossed-out heart (a drawn symbol, no letters), My Melody holding a heart balloon.
+  6. Elizabeth: her blue Velvet Room uniform, holding her Compendium open, a polite smile.
+  Ids: `su-solar su-haechan su-koro-melon wi-koro-reindeer va-kuromi-melody cast-elizabeth`
+- [ ] **Sheet 6, Winter** (Winter Series). **Save as:** `keychain-series-6.png`. **Attach 3:** Akihiko, Shinjiro, Mitsuru, Fuuka, Aigis, Jihoon. **Must match:**
+  1. Akihiko: a red scarf over a running jacket, his breath puffing.
+  2. Shinjiro: his beanie and long winter coat, hands in his pockets.
+  3. Mitsuru: a white fur-trimmed winter coat.
+  4. Fuuka: mittens and fluffy earmuffs, holding a cup of cocoa.
+  5. Aigis: a Santa hat, very serious about it.
+  6. Jihoon: a puffer jacket, a snowball ready in one hand.
+  Ids: `wi-akihiko wi-shinjiro wi-mitsuru wi-fuuka wi-aigis wi-jihoon`
+- [ ] **Sheet 7, winter and sweets** (Winter, Valentine's and Cast Secrets). **Save as:** `keychain-series-7.png`. **Attach 3:** Minji, Solar, Jungwon, Akihiko. **Must match:**
+  1. Minji: a knit hat, a camera round her neck.
+  2. Solar: a cream winter coat, a pink scarf, snowflakes in her hair.
+  3. Jungwon: a long dark coat, holding a gift box tied with ribbon.
+  4. Solar: a chocolate-stained apron over a pink sweater, holding a tray of heart chocolates.
+  5. Akihiko: his red vest, holding out a protein bar wrapped in a red ribbon.
+  6. Golden Solar: Solar in her uniform, the whole charm gold-plated acrylic with sun rays fanning out behind her.
+  Ids: `wi-minji wi-solar wi-jungwon va-solar va-akihiko cast-goldsun`
+- [ ] **Sheet 8, Valentine's** (Valentine's Series). **Save as:** `keychain-series-8.png`. **Attach 3:** Yukari, Junpei, Mitsuru, Hanni, Hyein, Jungwon. **Must match:**
+  1. Yukari: holding a pink gift box behind her back, shy.
+  2. Junpei: hopefully holding out an empty hand.
+  3. Mitsuru: holding a very fancy gold chocolate box.
+  4. Hanni: heart-shaped sunglasses, a peace sign.
+  5. Hyein: holding a bouquet of pink tulips.
+  6. Jungwon: holding a ribboned box of homemade chocolates.
+  Ids: `va-yukari va-junpei va-mitsuru va-hanni va-hyein va-jungwon`
+
+---
+
 ## Still to decide
 - **Stamps:** the 29 Persona 3: Solstice stamps are line drawings like every stamp on the hub. Illustrated ones would only fit if the whole passport changed. Keep as is?
 - (The name, **Persona 3: Solstice**, and its logo are done: `assets/femc/title/solstice-logo.svg`.)
@@ -510,6 +630,7 @@ Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 
 ### Cards, screens and keepsakes
 - **Tarot:** Elizabeth's arcana key is `velvetroom` (see Tarot cards and places below).
 - **Gacha:** keychains are `gacha.js keychain` (Kat's charms since batch 45: `tools/femc-keys.py` → `game/art/keys/<id>.webp` and `<id>-halloween.webp`, worn in October on the game's calendar, `halloween()`; the drawn charm / `keyFace` is the fallback); phone cases are `.g-case-art[data-case]` in `gacha.css`. The phone wears a case via `ui.js openPhone`.
+- **Wardrobe and series art (section 8):** `tools/femc-wardrobe.py` cuts every kind and rewrites `game/art/ready.js` (`FEMC_ART_READY`), which is the only thing the game checks: `skin <sheet> <outfit id> [who]` (pose sheets, cut like the fighters' in `femc-shadow-poses.py` → `game/art/skins/<id>/<who>-pose-0..5.webp`; battle.js reads the folder through `parent.FemcCosmetics.battle()`), `portraits <outfit id> <who> <folder>` (scene portraits, `core.js portrait` asks `FemcCosmetics.portrait`), `weapon <image> <id>` (`skins/<id>/weapon.webp`, menu.js Equipment), `keys <sheet> <six ids>` (series charms, cut like `femc-keys.py` → `game/art/keys/series/<id>.webp`), `scan` (re-list only). Bump `ready.js?v=` in `femc-game.html`. An outfit drawn bigger or smaller than her own sheet can get a size factor later (battle.js `FIGHTER_POSES` is per member, not per outfit). `python3 tests/femc_cosmetics.py --only pending` copies frames into a temporary outfit folder to check the whole path.
 - **Phone groups:** `ui.js threadPic` reads a portrait; add a group picture map for `texts.js groups`.
 - **Album locked tile:** `menu.js` album (locked tiles load no art now).
 - **Memory cards:** add the id to `battle/data.js memories` (and award it somewhere); `memories/<id>.webp` shows up on its own.
