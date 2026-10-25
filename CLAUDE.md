@@ -7,7 +7,7 @@ Kat's fiction archive (13 worlds) plus FEMC mode, a Persona 3 Portable FeMC-styl
 - **No spoilers for Kat.** She plays the game herself. Never summarize the story, routes or endings to her, and keep routes and scenes a surprise. Give spoiler-free progress reports, like "Act IV is written," not what happens in it.
 - **Hidden plot files** (`DO-NOT-OPEN-*.md` in the repo root) are for Claude and story writers only. They're gitignored and must never be committed or pushed. If they're missing on this machine, ask Kat to copy them over; they aren't on GitHub.
 - Never read `Runners.md` (read `Runners_text.md`). Never use `~/Claude/Projects/Writing/_oneshots`. In `~/Claude/Projects/Writing/strangers/`, don't open `DO-NOT-OPEN-*` unless the other strangers files aren't enough, and keep their contents out of anything that would spoil the novel.
-- Solar is 18, a third-year. Romance stays non-explicit. Sparse cursing is fine.
+- Solar is 18, a third-year. Romance can be spicy (Kat, 2026-10-24): real tension, making out, sneaking into rooms, waking up together, sensual detail and morning-after fallout are all welcome; scenes cut away before anything graphic (no explicit sex on the page). Sparse cursing is fine.
 - No Tailwind CDN. Write CSS directly.
 - Don't overwrite Kat's source images. Her macOS filesystem is case-insensitive, so `foo.png` and `Foo.png` are the same file.
 - Commits end with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
