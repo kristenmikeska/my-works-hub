@@ -15,6 +15,8 @@
         A Revelation card set's art (Kat's card-<world>-<subject>) -> assets/femc/battle/art/cards/SET.webp: the painting inside
         her printed gold frame (the game draws its own frame), cut at X0..X1 across and from Y0 down (fractions of the source),
         as tall as the card face's art window (88:114, menu.js / icons.js revCard) needs. 540x700.
+  python3 tools/femc-cards.py gear SHEET.png id1 ... id6
+        A 3x2 sheet of armor / accessory cards on white (no names) -> assets/femc/battle/art/gear/<id>.webp (wide canvas).
   python3 tools/femc-cards.py all
         Rebuild everything in BUILD below from New Adds/ or Added to Game/ (wherever each source is now).
 """
@@ -118,8 +120,18 @@ def weapons(src, prefix, names, rotate=45, dst=WEAPONS, auto_names=False, wide=F
     for box, name in zip(boxes, names):
         print(' ', name, 'card', box)
         cut = weapon_cut(im.crop(box), rotate, aspect=WIDE if wide else 0.46, names=labels or ('auto' if auto_names else 'box'))
-        save(cut, os.path.join(dst, f'{prefix}-{name}.webp'), q=88)
+        save(cut, os.path.join(dst, f'{prefix}-{name}.webp' if prefix else f'{name}.webp'), q=88)
     return boxes
+
+
+GEAR = os.path.join(ROOT, 'assets/femc/battle/art/gear')
+
+
+def gear(src, ids):
+    """A 3x2 sheet of armor or accessory cards on white (FEMC-ART-TODO 6B: no printed names) -> art/gear/<id>.webp, in
+    reading order. Kept upright on the wide canvas: the items are about square, so the wide box (build.js GEAR_ART sets
+    artWide) shows them whole."""
+    return weapons(src, None, ids, rotate=0, dst=GEAR, wide=True, labels='none')
 
 
 CARDS = os.path.join(ROOT, 'assets/femc/battle/art/cards')
@@ -177,6 +189,11 @@ BUILD = [
     ('weapons', 'aigis-weapons.jpeg', ('aigis', ['starter', 'gold-plated', 'papillon-heart', 'angelic-wing', 'siege-cannon', 'velvet-butterfly'], {'grid': 3, 'rotate': 0, 'labels': 'auto-wide', 'wide': True})),
     ('weapons', 'koromaru-weapons.jpeg', ('koromaru', ['starter', 'bone', 'shrine-bell', 'flame', 'collar-tag', 'kunai'], {'grid': 6, 'pick': [0, 1, 3, 6, 7, 5], 'rotate': 18, 'labels': 'none'})),
     ('weapons', 'shinjiro-weapons.jpeg', ('shinjiro', ['starter', 'black-steel', 'chain', 'kitchen-cleaver', 'ember', 'moonlit'], {'grid': 3, 'rotate': 40, 'labels': 'none'})),
+    # Batch 45 (2026-10-24): armor and accessories (6B), ids in the art list's reading order. Accessory sheets 3-5 still to come.
+    ('gear', 'armor-sheet1.png', ['armor0', 'armor1', 'armor2', 'armor3', 'armor4', 'armor5']),
+    ('gear', 'armor-sheet2.png', ['armor6', 'armor7', 'frost_coat', 'insulated_vest', 'fireproof_suit', 'gale_cloak']),
+    ('gear', 'accessories-sheet1.png', ['power_ring', 'magic_ring', 'guard_ring', 'speed_ring', 'lucky_charm', 'antidote_charm']),
+    ('gear', 'accessories-sheet2.png', ['rose_barrette', 'calm_amulet', 'holy_cross', 'black_earring', 'sp_bangle', 'power_bangle']),
 ]
 
 
@@ -192,11 +209,13 @@ def main():
     sub = ap.add_subparsers(dest='cmd', required=True)
     p = sub.add_parser('weapons'); p.add_argument('src'); p.add_argument('prefix'); p.add_argument('names', nargs='+'); p.add_argument('--rotate', type=float, default=45)
     p.add_argument('--labels', choices=['box', 'auto'], default='box'); p.add_argument('--wide', action='store_true')
+    p = sub.add_parser('gear'); p.add_argument('src'); p.add_argument('ids', nargs='+')
     p = sub.add_parser('finish'); p.add_argument('src'); p.add_argument('mid')
     p = sub.add_parser('revcard'); p.add_argument('src'); p.add_argument('set'); p.add_argument('x0', type=float); p.add_argument('y0', type=float); p.add_argument('x1', type=float)
     sub.add_parser('all')
     a = ap.parse_args()
     if a.cmd == 'weapons': weapons(a.src, a.prefix, a.names, a.rotate, auto_names=a.labels == 'auto', wide=a.wide)
+    elif a.cmd == 'gear': gear(a.src, a.ids)
     elif a.cmd == 'finish': finish(a.src, a.mid)
     elif a.cmd == 'revcard': revcard(a.src, a.set, a.x0, a.y0, a.x1)
     else:
@@ -204,6 +223,7 @@ def main():
             print(kind, src)
             if kind == 'weapons': weapons(source(src), arg[0], arg[1], **(arg[2] if len(arg) > 2 else {}))
             elif kind == 'revcard': revcard(source(src), *arg)
+            elif kind == 'gear': gear(source(src), arg)
             else: finish(source(src), arg)
 
 

@@ -21,6 +21,9 @@ EXTRA = {
     'councillor': 'Added to Game/Councillor-tarot.webp',
     # batch 36 (2026-10-23): Elizabeth's arcana (links/elizabeth.js arcana 'Velvet Room')
     'velvetroom': 'Added to Game/elizabeth-tarot.jpeg',
+    # batch 45 (2026-10-24): alternates for shared arcana (FEMC-ART-TODO 6A). core.js TAROT_ALT says which link shows each.
+    'lovers-2': 'Added to Game/lovers-2.jpeg',
+    'strength-2': 'Added to Game/strength-2.jpeg',
 }
 
 

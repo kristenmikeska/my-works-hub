@@ -37,7 +37,9 @@ FOLDERS = ('Added to Game', 'New Adds')
 NAMES = ['pierce', 'slash', 'strike', 'ice', 'elec', 'fire', 'wind', 'light', 'dark', 'almighty',
          'crit', 'weak', 'shatter', 'heal', 'buff', 'debuff', 'revive', 'cure',
          'charm', 'fear', 'poison', 'distress', 'freeze', 'shock', 'bind', 'disorient', 'hama', 'mudo',
-         'theurgy-burst', 'allout-cloud', 'shuffle-flip']
+         'theurgy-burst', 'allout-cloud', 'shuffle-flip',
+         # 5G variants (fx.js artFor tries <kind>-crit on a crit and <kind>-heavy when the caller passes o.heavy, then the plain sheet)
+         'slash-heavy', 'slash-crit']
 BIG = {'crit', 'weak', 'theurgy-burst', 'allout-cloud'}  # 384-px frames; fx.js also draws them 2.2x bigger
 SOLID = {'allout-cloud'}                                  # solid art with real alpha, not light on black
 TINT = {'buff'}                                           # art the game tints (the stat colour). Kat's theurgy-burst is
@@ -71,6 +73,10 @@ SOURCES = {
     'hama': 'Added to Game/hama.jpeg', 'mudo': 'Added to Game/mudo-v2.jpeg',
     'theurgy-burst': 'Added to Game/theurgy-burst.jpeg', 'allout-cloud': 'Added to Game/alloutcloud.jpeg',
     'shuffle-flip': 'Added to Game/shuffle-flip.jpeg',
+    # Batch 45 (2026-10-24): Kat's two new slash sheets match the 5G prompts, so they are variants and slash.jpeg stays the
+    # plain one. slashv2: two crossing slashes with a shockwave ring in frame 3 (Heavy). slash.png: one razor line in
+    # frame 3 that splits into a pink-white X (Crit; its widest frame is 4 by design).
+    'slash-heavy': 'Added to Game/slashv2.png', 'slash-crit': 'Added to Game/slash.png',
 }
 # Kat's other versions, kept in Added to Game unused (swap one into SOURCES and run `all` to try it).
 ALTERNATES = {'fire': 'fire.jpeg', 'wind': 'wind.jpeg', 'light': 'light.jpeg', 'almighty': 'almighty-v2.jpeg',

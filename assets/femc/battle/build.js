@@ -843,6 +843,14 @@ window.FemcBuild = (() => {
     vel_compendium: { name: 'Pocket Compendium', slot: 'acc', icon: 'bangle', stats: { st: 5, ma: 5, en: 5, ag: 5, lu: 5 }, tier: 6, price: 0, rare: true, gacha: 'velvet', desc: 'Elizabeth’s smallest book, lent indefinitely.' },
     vel_coat: { name: 'Attendant’s Coat', slot: 'armor', def: 64, stats: { en: 4 }, tier: 6, price: 0, rare: true, gacha: 'velvet', desc: 'Blue, impeccably pressed, and surprisingly warm.' }
   });
+  /* Armor and accessory art (FEMC-ART-TODO 6B; batch 45: two armor sheets, accessory sheets 1-2; tools/femc-cards.py gear).
+     Every list that shows weapon art reads the same `art` (menu Equipment, Police Box / Mayoido shelves, chest loot), and
+     icons.js FemcIcons.of shows it in the battle shop, the battle equip screen and gacha prizes. The items are about square,
+     so they use the wide box (artWide). Gear without a file keeps its drawn icon. Add new ids here as sheets arrive. */
+  const GEAR_ART = ['armor0', 'armor1', 'armor2', 'armor3', 'armor4', 'armor5', 'armor6', 'armor7', 'frost_coat', 'insulated_vest', 'fireproof_suit', 'gale_cloak',
+    'power_ring', 'magic_ring', 'guard_ring', 'speed_ring', 'lucky_charm', 'antidote_charm',
+    'rose_barrette', 'calm_amulet', 'holy_cross', 'black_earring', 'sp_bangle', 'power_bangle'];
+  GEAR_ART.forEach(id => { const g = D.gear[id]; if (g && !g.art) { g.art = `assets/femc/battle/art/gear/${id}.webp`; g.artWide = true; } });
   // Fuuka's lines for the new systems, the glossary and one-time tips.
   Object.assign(D.nav, {
     shuffle: [['Shuffle Time! Pick a card, quick!', 'The cards are turning… pick one!'], 'happy'],

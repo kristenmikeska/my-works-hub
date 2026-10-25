@@ -200,7 +200,7 @@ window.FemcGacha = (() => {
 
   /* ── Drawing things ── */
   const starsHtml = r => `<span class="g-ga-stars" aria-label="${RARITY[r].name}">${'★'.repeat(RARITY[r].stars)}</span>`;
-  /* The 12 fighters' charms show their chibi victory pose (the last frame of Kat's brawl sheet, battle/art/chibi, cut but
+  /* Fallback when a charm's art can't load: the 12 fighters' charms show their chibi victory pose (the last frame of Kat's brawl sheet, battle/art/chibi, cut but
      unused in the All-Out cloud); everyone else shows a portrait until their own keychain art exists. */
   const KEY_CHIBI = { solar: 5, akihiko: 5, yukari: 5, junpei: 5, mitsuru: 5, aigis: 5, koromaru: 5, shinjiro: 5, haechan: 7, jungwon: 5, jihoon: 5, minji: 5 };
   function keyFace(id) {
@@ -208,10 +208,16 @@ window.FemcGacha = (() => {
     const src = G.portrait(id, 'happy') || G.portrait(id, 'neutral') || (id === 'solar' ? `${G.base}assets/femc/portraits/solar/happy.webp` : null);
     return src ? `<img src="${src}" alt="">` : `<b>${esc(keyName(id)[0] || '?')}</b>`;
   }
-  // An acrylic keychain: ring, chain, a round charm with the face, rimmed in the set's color.
+  /* Kat's acrylic charms (batch 45; tools/femc-keys.py -> game/art/keys/<id>.webp) replace the whole slot once owned. In
+     October on the game's calendar they wear their Halloween costumes (<id>-halloween.webp). If a file fails, the img
+     removes itself and the drawn charm below shows again. */
+  const KEY_ART = new Set(SETS.flatMap(st => st.ids));
+  const halloween = () => { try { return G.dateOf(S().day).getMonth() === 9; } catch (e) { return false; } };
+  const keyArt = id => `${G.base}assets/femc/game/art/keys/${id}${halloween() ? '-halloween' : ''}.webp`;
+  // An acrylic keychain: ring, chain, a round charm with the face, rimmed in the set's color (or Kat's charm art over it).
   function keychain(id, own = true) {
-    const st = keySet(id);
-    return `<span class="g-key${own ? '' : ' lock'}" style="--c:${st.color}"><i class="g-key-ring"></i><i class="g-key-chain"></i><span class="g-key-face">${own ? keyFace(id) : '<b>?</b>'}</span></span>`;
+    const st = keySet(id), art = own && KEY_ART.has(id);
+    return `<span class="g-key${own ? '' : ' lock'}${art ? ' art' : ''}" style="--c:${st.color}"><i class="g-key-ring"></i><i class="g-key-chain"></i><span class="g-key-face">${own ? keyFace(id) : '<b>?</b>'}</span>${art ? `<img class="g-key-art" src="${keyArt(id)}" alt="" onerror="this.parentNode.classList.remove('art');this.remove()">` : ''}</span>`;
   }
   function prizeArt(p) {
     if (p.kind === 'key') return keychain(p.id);
@@ -368,5 +374,5 @@ window.FemcGacha = (() => {
   /* From the Go Out list (ui.js doActivity). */
   function open(kind, done) { return kind === 'velvet' ? openVelvet(done) : openCapsule(done); }
 
-  return Object.assign(api, { RARITY, CAP, VEL, SETS, CASES, fresh, gs, pull, draw, claim, unclaimed, tradeStars, afterFight, velCost, rarity, setCount, setDone, keyEligible, tickets, open, openCapsule, openVelvet, collectionHtml, wireCollection, phoneCase, keychain });
+  return Object.assign(api, { RARITY, CAP, VEL, SETS, CASES, fresh, gs, pull, draw, claim, unclaimed, tradeStars, afterFight, velCost, rarity, setCount, setDone, keyEligible, tickets, open, openCapsule, openVelvet, collectionHtml, wireCollection, phoneCase, keychain, halloween });
 })();

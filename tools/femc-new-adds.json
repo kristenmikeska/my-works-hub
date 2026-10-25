@@ -8724,6 +8724,584 @@
       "outputSha256": "52edf2d8aaefc9045790d791d4c8bd622b38c6386092baff84898bbe9a3327a1",
       "conversion": "already transparent; trimmed, centred on a square, 128px, WebP q90; source unchanged",
       "placement": "menu.js TAB_ICONS / tabIco: before the 'theater' field-menu tab's label (and the title-screen Extras tab); text-only if the file fails (onerror removes it)"
+    },
+    {
+      "batch": 45,
+      "source": "armor-sheet1.png",
+      "sourceNow": "Added to Game/armor-sheet1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4ec7c5eb38fe8843d7f52aa8f4337735fc5bd9a2277cd6a0d5ea7cfc8a3f2b95",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/gear/armor0.webp",
+        "assets/femc/battle/art/gear/armor1.webp",
+        "assets/femc/battle/art/gear/armor2.webp",
+        "assets/femc/battle/art/gear/armor3.webp",
+        "assets/femc/battle/art/gear/armor4.webp",
+        "assets/femc/battle/art/gear/armor5.webp"
+      ],
+      "outputSha256": {
+        "armor0.webp": "d82f1486b81779aa3c5e7fcb629b8f59c0d6367f5ee31738c3b3606a045dea08",
+        "armor1.webp": "c80967f816bf5aa92565fe5d405a5dac8d2685789901eabef67eaaca88918aeb",
+        "armor2.webp": "78e5bdec1cbb386c0384b06063aa34d48360bbf71096ade2421e5130e1954b0a",
+        "armor3.webp": "381993844c1c31f5e47c51b7a6ce32d0333df80536daa488333dbe20bc834910",
+        "armor4.webp": "841e4d53e19ea97aeae474c754d9655aa46c6cf73bb221414190b71dc67d38ea",
+        "armor5.webp": "15548b281845f482a432a73e9f424c03fea53dcf6962872b6be8272a5033ce87"
+      },
+      "conversion": "tools/femc-cards.py gear: cards found from their grey frame lines, item trimmed and centred upright on a white 1.45:1 canvas (the wide gear box), max 560px, WebP q88",
+      "placement": "build.js GEAR_ART sets art + artWide: menu Equipment slots and lists, life-sim shop shelves (core.js shopStock), chest loot (battle.js), icons.js FemcIcons.of (battle shop, battle equip screen, gacha prizes; drawn icon if the file fails)",
+      "ids": [
+        "armor0",
+        "armor1",
+        "armor2",
+        "armor3",
+        "armor4",
+        "armor5"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "armor-sheet2.png",
+      "sourceNow": "Added to Game/armor-sheet2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7a7e3697c4cd4ee2b3617c6aabaa55014fd76281fa0f79a794f1f1723c32ec31",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/gear/armor6.webp",
+        "assets/femc/battle/art/gear/armor7.webp",
+        "assets/femc/battle/art/gear/frost_coat.webp",
+        "assets/femc/battle/art/gear/insulated_vest.webp",
+        "assets/femc/battle/art/gear/fireproof_suit.webp",
+        "assets/femc/battle/art/gear/gale_cloak.webp"
+      ],
+      "outputSha256": {
+        "armor6.webp": "a903e9dbc8ccfb4ce3d8a1c82e7dfd077f584d600e314a99084b28b1f6cf4a45",
+        "armor7.webp": "875ed26a75e5fa27ab291d903fcddc206fe548481a7ab9ba3a55c6c20d32eaf0",
+        "frost_coat.webp": "3b0f3c0373aa2eb250d6ec247daf664cf54d29e50b4e01551df636949f8c28ff",
+        "insulated_vest.webp": "b69d60e55415089bb4ccb6581204ef7d956db60af2b4c3b821b583631b21ba5a",
+        "fireproof_suit.webp": "cfd4ae75e226a7710ddbd6167b50ea9412fdab0f850ad6228a36c51891fd069a",
+        "gale_cloak.webp": "00193feb04636c885ae1ca694e65cf86f7ac9e63327fd3a11df96a74a4b36fa1"
+      },
+      "conversion": "tools/femc-cards.py gear: cards found from their grey frame lines, item trimmed and centred upright on a white 1.45:1 canvas (the wide gear box), max 560px, WebP q88",
+      "placement": "build.js GEAR_ART sets art + artWide: menu Equipment slots and lists, life-sim shop shelves (core.js shopStock), chest loot (battle.js), icons.js FemcIcons.of (battle shop, battle equip screen, gacha prizes; drawn icon if the file fails)",
+      "ids": [
+        "armor6",
+        "armor7",
+        "frost_coat",
+        "insulated_vest",
+        "fireproof_suit",
+        "gale_cloak"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "accessories-sheet1.png",
+      "sourceNow": "Added to Game/accessories-sheet1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "edd04941ef632c5d084e7ea5f1acdf2fed27d68a0693c4e23f4238639ba587cd",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/gear/power_ring.webp",
+        "assets/femc/battle/art/gear/magic_ring.webp",
+        "assets/femc/battle/art/gear/guard_ring.webp",
+        "assets/femc/battle/art/gear/speed_ring.webp",
+        "assets/femc/battle/art/gear/lucky_charm.webp",
+        "assets/femc/battle/art/gear/antidote_charm.webp"
+      ],
+      "outputSha256": {
+        "power_ring.webp": "e967771583358094d4815e10ffa9bd5d2014ae29dff21b313763218afa9fea5b",
+        "magic_ring.webp": "37762a90d67a229fad0b3a8d4e0a272f10a27fc77f388d339ae63af107a0c11e",
+        "guard_ring.webp": "cc2ed7c2f82f0208a838f2fe8ab955b2466795fa84ad9ff727e58fc08ac2671f",
+        "speed_ring.webp": "3f4287d7fbeb06381d8f959adb107503f21f7d77d629d0552f43f8bbb6431cb0",
+        "lucky_charm.webp": "c2015bd48afe939fda97d7b1c958a50a40b98520499f03cf38d582065dfada6b",
+        "antidote_charm.webp": "19df4c0bfa1fd78e25648c7cb14a3fb59c3d7bca683ef0c0bff9ec80eb2f0bfd"
+      },
+      "conversion": "tools/femc-cards.py gear: cards found from their grey frame lines, item trimmed and centred upright on a white 1.45:1 canvas (the wide gear box), max 560px, WebP q88",
+      "placement": "build.js GEAR_ART sets art + artWide: menu Equipment slots and lists, life-sim shop shelves (core.js shopStock), chest loot (battle.js), icons.js FemcIcons.of (battle shop, battle equip screen, gacha prizes; drawn icon if the file fails)",
+      "ids": [
+        "power_ring",
+        "magic_ring",
+        "guard_ring",
+        "speed_ring",
+        "lucky_charm",
+        "antidote_charm"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "accessories-sheet2.png",
+      "sourceNow": "Added to Game/accessories-sheet2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c0df141217bcc99c65e1449ef8a648ad2a15d9472088f8f422dbebee7f5373d2",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/gear/rose_barrette.webp",
+        "assets/femc/battle/art/gear/calm_amulet.webp",
+        "assets/femc/battle/art/gear/holy_cross.webp",
+        "assets/femc/battle/art/gear/black_earring.webp",
+        "assets/femc/battle/art/gear/sp_bangle.webp",
+        "assets/femc/battle/art/gear/power_bangle.webp"
+      ],
+      "outputSha256": {
+        "rose_barrette.webp": "47b9b4ccdec2056029ab1940e289b10c22fbebedb1a7b907ff6700faf83546b1",
+        "calm_amulet.webp": "0063a0bd76c7a3540385d96c45c85121405f2145d996508c11d22d0129e844ff",
+        "holy_cross.webp": "6fdfa1269ee748d2832ac3e4172c6b01468694ba67e43f894bb13f4f9bee7f6a",
+        "black_earring.webp": "c0758ed048a82a2ec5dcc369718b1280b567b0ef08e3febd045b4e7078a170f6",
+        "sp_bangle.webp": "bd584622faa14e01ce7d29abe27650f72f85b36dd6c60e91734b68a475ee18a8",
+        "power_bangle.webp": "28b2b39a189e633ff3a7e9614622e10efaf737e9923a8c879dfcd6836db9dca9"
+      },
+      "conversion": "tools/femc-cards.py gear: cards found from their grey frame lines, item trimmed and centred upright on a white 1.45:1 canvas (the wide gear box), max 560px, WebP q88",
+      "placement": "build.js GEAR_ART sets art + artWide: menu Equipment slots and lists, life-sim shop shelves (core.js shopStock), chest loot (battle.js), icons.js FemcIcons.of (battle shop, battle equip screen, gacha prizes; drawn icon if the file fails)",
+      "ids": [
+        "rose_barrette",
+        "calm_amulet",
+        "holy_cross",
+        "black_earring",
+        "sp_bangle",
+        "power_bangle"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "keychain-sheet1.png",
+      "sourceNow": "Added to Game/keychain-sheet1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "f2c42b1f20b77a2fcda7d4f0f3e3f3c34c40c116b67d0425eac23a344214826e",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/game/art/keys/fuuka.webp",
+        "assets/femc/game/art/keys/ken.webp",
+        "assets/femc/game/art/keys/hanni.webp",
+        "assets/femc/game/art/keys/hyein.webp",
+        "assets/femc/game/art/keys/yunjin.webp",
+        "assets/femc/game/art/keys/mark.webp"
+      ],
+      "outputSha256": {
+        "fuuka.webp": "bc193575498a52cef23e8defdb7753c472f534c8b1f25b18fd3b0a145962e410",
+        "ken.webp": "300635ed3729e335f736562a2cc641d3c3fbaae95de971813bda467187d7d476",
+        "hanni.webp": "86e067bc9b067c43c5b920ff84e9b0eef1a995bca656140311786feb2265ac9d",
+        "hyein.webp": "6c40ea933054f751250540e0e48a1ac593c0509b3848b09e714b6c945d507fe0",
+        "yunjin.webp": "452584c2682facabe3f92fb309c4e4f4e99394cac03ea7beeaaeae2686be528a",
+        "mark.webp": "82bbdc017b59cd02e5c65a7cfa4f8c940256576450e5c85415d5be51689bd041"
+      },
+      "conversion": "tools/femc-keys.py: flat #00ff00 keyed out (soft edge, spill clamped), each charm = the connected pieces in its cell, trimmed, transparent, max 360px tall, WebP q88",
+      "placement": "gacha.js keychain: Kat's charm replaces the whole slot once owned (Collection, prize reveal); every month but October; drawn charm if the file fails",
+      "ids": [
+        "fuuka",
+        "ken",
+        "hanni",
+        "hyein",
+        "yunjin",
+        "mark"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "keychain-sheet1-halloween.png",
+      "sourceNow": "Added to Game/keychain-sheet1-halloween.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2ad5e4a7926730bb6099b5bcb9318668b2a1ebf3bcdc0a3385016ff7b0b15d69",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/game/art/keys/fuuka-halloween.webp",
+        "assets/femc/game/art/keys/ken-halloween.webp",
+        "assets/femc/game/art/keys/hanni-halloween.webp",
+        "assets/femc/game/art/keys/hyein-halloween.webp",
+        "assets/femc/game/art/keys/yunjin-halloween.webp",
+        "assets/femc/game/art/keys/mark-halloween.webp"
+      ],
+      "outputSha256": {
+        "fuuka-halloween.webp": "c091e644b62e450efb0947eb2bdd2c961beefbdca951336cd31cc8601ca40571",
+        "ken-halloween.webp": "b8b9ab9f4e55e729deee8b59d2f995b3bb57e91f34158149008cd25529cc609d",
+        "hanni-halloween.webp": "1dd6e2dc1fa059b9081d87e4d7a6dc1da99280c2d6120b017524e0bacc2a2dfd",
+        "hyein-halloween.webp": "4f920acef20e86628728b2b4e73525cca3e9d218fcc29d5a61a1be27848ea28a",
+        "yunjin-halloween.webp": "2bca4d433c78afc18d9bce22e219f5f19fc9f13c6aa3ea5ce7bdd3c34973ce0a",
+        "mark-halloween.webp": "8c0334c0d5670db6276f15d98273560846df2aeb413751cdb71f3ca2e988e095"
+      },
+      "conversion": "tools/femc-keys.py: flat #00ff00 keyed out (soft edge, spill clamped), each charm = the connected pieces in its cell, trimmed, transparent, max 360px tall, WebP q88",
+      "placement": "gacha.js keychain: Kat's charm replaces the whole slot once owned (Collection, prize reveal); shown when the game's date is in October (FemcGacha.halloween); drawn charm if the file fails",
+      "ids": [
+        "fuuka",
+        "ken",
+        "hanni",
+        "hyein",
+        "yunjin",
+        "mark"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "keychain-sheet2.png",
+      "sourceNow": "Added to Game/keychain-sheet2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c9efc9363849401dbeea9fb3a76b5dc8bc1265861329c0270b80f72ebc780ab4",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/game/art/keys/jaehyun.webp",
+        "assets/femc/game/art/keys/cherry.webp",
+        "assets/femc/game/art/keys/sunoo.webp",
+        "assets/femc/game/art/keys/junkyu.webp",
+        "assets/femc/game/art/keys/ann.webp",
+        "assets/femc/game/art/keys/kasumi.webp"
+      ],
+      "outputSha256": {
+        "jaehyun.webp": "9d16ac76b7ee485bb5521c475f1955d81dd1c597dd2e47f2288fc9b6361a39df",
+        "cherry.webp": "baca8803ea52001ee51a8152df76e7dc6d0f9d7f7cf4260e7b2d3b71c5f4776b",
+        "sunoo.webp": "91aba6a487b4242317bab115127e60ffa018554ee714a894aa53a5067ad1a120",
+        "junkyu.webp": "eddec8aa39f21a60325d49faeb9d6e5d388fd5dd2eb48e400539d68781bfbe20",
+        "ann.webp": "865d318ffc8b6b717475f1d950233cb111d1366ad10861826d01539bb49c04c1",
+        "kasumi.webp": "4be47bb5cbc27d782b879405aedbd0445f2832293593c43cc0a75805d181f0df"
+      },
+      "conversion": "tools/femc-keys.py: flat #00ff00 keyed out (soft edge, spill clamped), each charm = the connected pieces in its cell, trimmed, transparent, max 360px tall, WebP q88",
+      "placement": "gacha.js keychain: Kat's charm replaces the whole slot once owned (Collection, prize reveal); every month but October; drawn charm if the file fails",
+      "ids": [
+        "jaehyun",
+        "cherry",
+        "sunoo",
+        "junkyu",
+        "ann",
+        "kasumi"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "keychain-sheet2-halloween.png",
+      "sourceNow": "Added to Game/keychain-sheet2-halloween.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "bf795dacaefbc52c72f3e10ffbbc68b753ee830f6644ade8f0b873a2c157b443",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/game/art/keys/jaehyun-halloween.webp",
+        "assets/femc/game/art/keys/cherry-halloween.webp",
+        "assets/femc/game/art/keys/sunoo-halloween.webp",
+        "assets/femc/game/art/keys/junkyu-halloween.webp",
+        "assets/femc/game/art/keys/ann-halloween.webp",
+        "assets/femc/game/art/keys/kasumi-halloween.webp"
+      ],
+      "outputSha256": {
+        "jaehyun-halloween.webp": "903ab009e3267897df9db04902e7b64c3c4f9a98be61dab1bde82d752379e908",
+        "cherry-halloween.webp": "cca79b580eb0b1ba5efa35f6b3980e131864c4cde448d66c4dd8bc042ad266d2",
+        "sunoo-halloween.webp": "7c7836fa51bc196018ad2126977b0cf54ba4932a54e05025ac62f3ada73f7e9c",
+        "junkyu-halloween.webp": "f2b83bbc89f2fcef054fb7d7f9553bc2b43d783bffa19aed946f494372074c82",
+        "ann-halloween.webp": "d0bd9226afcdac2fd4a3ce7a4f8a78077932642c84b805e3c0c32a57be1ae70c",
+        "kasumi-halloween.webp": "8662f98f83aba6270bbdbd30544dc8b674b21b8e0e269a61942622937b1b637b"
+      },
+      "conversion": "tools/femc-keys.py: flat #00ff00 keyed out (soft edge, spill clamped), each charm = the connected pieces in its cell, trimmed, transparent, max 360px tall, WebP q88",
+      "placement": "gacha.js keychain: Kat's charm replaces the whole slot once owned (Collection, prize reveal); shown when the game's date is in October (FemcGacha.halloween); drawn charm if the file fails",
+      "ids": [
+        "jaehyun",
+        "cherry",
+        "sunoo",
+        "junkyu",
+        "ann",
+        "kasumi"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "keychain-sheet3.png",
+      "sourceNow": "Added to Game/keychain-sheet3.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c602e4006faaad66466cfdc2c7b3d0799f89833642f39cc7ab84b8b5d443577c",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/game/art/keys/haru.webp",
+        "assets/femc/game/art/keys/kuromi.webp",
+        "assets/femc/game/art/keys/mymelody.webp",
+        "assets/femc/game/art/keys/rio.webp",
+        "assets/femc/game/art/keys/saori.webp",
+        "assets/femc/game/art/keys/kiriko.webp"
+      ],
+      "outputSha256": {
+        "haru.webp": "b7b4a7f9d1c00b0124976a648f1aa7007d96aff6c7818229ab41b257acc05e83",
+        "kuromi.webp": "d047b415796738308419f59434a706f1d071faec5e8f2e631c77f487939b8fd8",
+        "mymelody.webp": "0a6d3afb65ff2011952fffb82c539fc91a8d0258851e86526b08f695bf7f5b5a",
+        "rio.webp": "60f802057882664e1ae00ee353300f27bad3fbae73d725fef77ebb7e1f6bfa24",
+        "saori.webp": "88d857b20f32d6a5fefb3bd31241f646d9d4f42be3ea376c637f24a18fbfd3c1",
+        "kiriko.webp": "af470fb7bbf944709b599d45be1481d3504f65362f87f30ad49508c8f11ecaaf"
+      },
+      "conversion": "tools/femc-keys.py: flat #00ff00 keyed out (soft edge, spill clamped), each charm = the connected pieces in its cell, trimmed, transparent, max 360px tall, WebP q88",
+      "placement": "gacha.js keychain: Kat's charm replaces the whole slot once owned (Collection, prize reveal); every month but October; drawn charm if the file fails",
+      "ids": [
+        "haru",
+        "kuromi",
+        "mymelody",
+        "rio",
+        "saori",
+        "kiriko"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "keychain-sheet3-halloween.png",
+      "sourceNow": "Added to Game/keychain-sheet3-halloween.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2fee3dc4d0a8d56cdfd1ca9a7e3e1723822e4c074ee22a22d5d764c995948ffe",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/game/art/keys/haru-halloween.webp",
+        "assets/femc/game/art/keys/kuromi-halloween.webp",
+        "assets/femc/game/art/keys/mymelody-halloween.webp",
+        "assets/femc/game/art/keys/rio-halloween.webp",
+        "assets/femc/game/art/keys/saori-halloween.webp",
+        "assets/femc/game/art/keys/kiriko-halloween.webp"
+      ],
+      "outputSha256": {
+        "haru-halloween.webp": "2940e7f81fb8109595b366923bd4059a7eda3bf6a9744b21edd657d47cf8815c",
+        "kuromi-halloween.webp": "e95043a47caab949c549431c23e19ba63e2c0c56a78edb2016e427c4794d0f63",
+        "mymelody-halloween.webp": "deb65e93a09086507e4e788d1bc75d8a8fab9013c646a1f1051c7eaf194f32aa",
+        "rio-halloween.webp": "78bae6e90374989448229dedef6ccb859c2f1b8ac0e893ebe777ddcc040c89b2",
+        "saori-halloween.webp": "32be735b6942dc3f8db1cdf2f43b08e9701b5fdbcda1df8e51acad28c4fd5e5f",
+        "kiriko-halloween.webp": "c817cbe3f0ed99686ac05f17ccc4da5d0d24fdf164a1cf40cb0f79dea49d2e17"
+      },
+      "conversion": "tools/femc-keys.py: flat #00ff00 keyed out (soft edge, spill clamped), each charm = the connected pieces in its cell, trimmed, transparent, max 360px tall, WebP q88",
+      "placement": "gacha.js keychain: Kat's charm replaces the whole slot once owned (Collection, prize reveal); shown when the game's date is in October (FemcGacha.halloween); drawn charm if the file fails",
+      "ids": [
+        "haru",
+        "kuromi",
+        "mymelody",
+        "rio",
+        "saori",
+        "kiriko"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "keychain-sheet4.png",
+      "sourceNow": "Added to Game/keychain-sheet4.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4072028c6187b39349904f59bbca29740cfa44735c0ecd192b5f2a032814c7e9",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/game/art/keys/solar.webp",
+        "assets/femc/game/art/keys/akihiko.webp",
+        "assets/femc/game/art/keys/yukari.webp",
+        "assets/femc/game/art/keys/junpei.webp",
+        "assets/femc/game/art/keys/mitsuru.webp",
+        "assets/femc/game/art/keys/aigis.webp"
+      ],
+      "outputSha256": {
+        "solar.webp": "d791d4c208cda9cc97644cbcd0684f9374a9217807e2530146cde81664920da4",
+        "akihiko.webp": "69468ce1b4be6a5019bca8c3cce6d184f331bd0aad9b562ad28d3a29afa35d71",
+        "yukari.webp": "5b463f420aada1868d26c5adee8e76eff045d32eac30884edc43f6cffb5cee7e",
+        "junpei.webp": "d242cb2a88e35b495b3d0a0afbb8f107ebe3ff8aacc0dccaef56276da21aee8b",
+        "mitsuru.webp": "315049788fac0ff93923c76a8399bc0559178cefe04792456a52ececfd1c9b2b",
+        "aigis.webp": "fcef36cbbe38a5834dbf19a0ee1b4cb4dcbefc3a15f79b28ce053cd37df9bb7d"
+      },
+      "conversion": "tools/femc-keys.py: flat #00ff00 keyed out (soft edge, spill clamped), each charm = the connected pieces in its cell, trimmed, transparent, max 360px tall, WebP q88",
+      "placement": "gacha.js keychain: Kat's charm replaces the whole slot once owned (Collection, prize reveal); every month but October; drawn charm if the file fails",
+      "ids": [
+        "solar",
+        "akihiko",
+        "yukari",
+        "junpei",
+        "mitsuru",
+        "aigis"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "keychain-sheet4-halloween.png",
+      "sourceNow": "Added to Game/keychain-sheet4-halloween.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7c91d104ea1be22804c9151c926ca28b025af3c69af6db8f4e9d81fe4e324286",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/game/art/keys/solar-halloween.webp",
+        "assets/femc/game/art/keys/akihiko-halloween.webp",
+        "assets/femc/game/art/keys/yukari-halloween.webp",
+        "assets/femc/game/art/keys/junpei-halloween.webp",
+        "assets/femc/game/art/keys/mitsuru-halloween.webp",
+        "assets/femc/game/art/keys/aigis-halloween.webp"
+      ],
+      "outputSha256": {
+        "solar-halloween.webp": "62016421c2864169f7809e8c5be06ddcf59cb37ec7dc0317a017d4e0e8ea4f3f",
+        "akihiko-halloween.webp": "2d313a55092a6183bda87100705c9ae8ec4a8c37606b125501c01653e46d8f51",
+        "yukari-halloween.webp": "583948f15082b4d305fc060e4c919527cce03f66a6c3a39a88c46da9758d5b25",
+        "junpei-halloween.webp": "3e449dfd954ad2e81efc38d59e960e8d2cc5fdb8e227461f3e8f484c403b27ed",
+        "mitsuru-halloween.webp": "b468eec1e33a666a1be727696857f28d8f690d801f2c56881448b8e94eae7fb8",
+        "aigis-halloween.webp": "c3a17e066829a83a594898d5eb6ed1a46c93f0a2a5d11c9c2a863dbe1128b825"
+      },
+      "conversion": "tools/femc-keys.py: flat #00ff00 keyed out (soft edge, spill clamped), each charm = the connected pieces in its cell, trimmed, transparent, max 360px tall, WebP q88",
+      "placement": "gacha.js keychain: Kat's charm replaces the whole slot once owned (Collection, prize reveal); shown when the game's date is in October (FemcGacha.halloween); drawn charm if the file fails",
+      "ids": [
+        "solar",
+        "akihiko",
+        "yukari",
+        "junpei",
+        "mitsuru",
+        "aigis"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "keychain-sheet5.png",
+      "sourceNow": "Added to Game/keychain-sheet5.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "bd9fbe61161a47403511ce6aa64a5bf9d3d2e552361e1c6206859c6f8f266fba",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/game/art/keys/koromaru.webp",
+        "assets/femc/game/art/keys/shinjiro.webp",
+        "assets/femc/game/art/keys/haechan.webp",
+        "assets/femc/game/art/keys/jungwon.webp",
+        "assets/femc/game/art/keys/jihoon.webp",
+        "assets/femc/game/art/keys/minji.webp"
+      ],
+      "outputSha256": {
+        "koromaru.webp": "3ed7307074b296a5b62d71522850d4dda5cc33a466568a1b150b49cc7c8626a4",
+        "shinjiro.webp": "fb6b3c2f208e20c2d910315ac24f56ffff181d9648465963acfed8f38369af8f",
+        "haechan.webp": "3ed2d822f4767b0296fbadf027b8d288f7ea6abb25854aa632b304814923e6c5",
+        "jungwon.webp": "053c1990f5f88b2aa095f072e39979e379d9b886ad95bb089fc4cf46e835b091",
+        "jihoon.webp": "40341b518f194a73b5ede604ba392a8f6ed47c55c2cc3dcb6435ab377f19f800",
+        "minji.webp": "cc43a85fea3907c8dd6f6ad2a9c015c7b1fe8bde68b627e9efdf00eeff820099"
+      },
+      "conversion": "tools/femc-keys.py: flat #00ff00 keyed out (soft edge, spill clamped), each charm = the connected pieces in its cell, trimmed, transparent, max 360px tall, WebP q88",
+      "placement": "gacha.js keychain: Kat's charm replaces the whole slot once owned (Collection, prize reveal); every month but October; drawn charm if the file fails",
+      "ids": [
+        "koromaru",
+        "shinjiro",
+        "haechan",
+        "jungwon",
+        "jihoon",
+        "minji"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "keychain-sheet5-halloween.png",
+      "sourceNow": "Added to Game/keychain-sheet5-halloween.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ab4cce3ae350deba4750773ef42f1148a6c42f981a47933b9c8752f5e1911edc",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/game/art/keys/koromaru-halloween.webp",
+        "assets/femc/game/art/keys/shinjiro-halloween.webp",
+        "assets/femc/game/art/keys/haechan-halloween.webp",
+        "assets/femc/game/art/keys/jungwon-halloween.webp",
+        "assets/femc/game/art/keys/jihoon-halloween.webp",
+        "assets/femc/game/art/keys/minji-halloween.webp"
+      ],
+      "outputSha256": {
+        "koromaru-halloween.webp": "6b948d23612b3459583584f898db5301f636bfe8d92cd23d8c38f553e54e3230",
+        "shinjiro-halloween.webp": "88297d16565face5c667172f608741dbef19f0cdb8d7081e47f78942727ec914",
+        "haechan-halloween.webp": "d175fb30a886cee7ae5e048624dc635ba005cbeb1668a4b5b01f6aa5aa72a0b8",
+        "jungwon-halloween.webp": "662749010073fc15af38f9157b50b7a04bd926dc345a4bc66d6dada6508c5ebc",
+        "jihoon-halloween.webp": "27c7bea592ce0799ee45bd84d095e5025e0fef0b18077a97ad847feca54ac004",
+        "minji-halloween.webp": "a6e8a18e28c0d0b7a387a0ec1baf64d3956dab581c2e096a28eefe9fcd3ebd61"
+      },
+      "conversion": "tools/femc-keys.py: flat #00ff00 keyed out (soft edge, spill clamped), each charm = the connected pieces in its cell, trimmed, transparent, max 360px tall, WebP q88",
+      "placement": "gacha.js keychain: Kat's charm replaces the whole slot once owned (Collection, prize reveal); shown when the game's date is in October (FemcGacha.halloween); drawn charm if the file fails",
+      "ids": [
+        "koromaru",
+        "shinjiro",
+        "haechan",
+        "jungwon",
+        "jihoon",
+        "minji"
+      ]
+    },
+    {
+      "batch": 45,
+      "source": "lovers-2.jpeg",
+      "sourceNow": "Added to Game/lovers-2.jpeg",
+      "size": [
+        1696,
+        2528
+      ],
+      "sha256": "14179c2c14493bbfddffca16f5368e5cdf53c53a115d26d05f98e83abde1bbff",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/lovers-2.webp",
+      "outputSha256": "8c5c9d3eba48e897ef0eff45232d3b70acac160cc24106713031847bbf8ead70",
+      "conversion": "tools/femc-tarot.py EXTRA lovers-2: 360px wide WebP q85",
+      "placement": "core.js TAROT_ALT: Hyein's card (Bonds menu, rank-up card); Yukari and Ann keep lovers.webp"
+    },
+    {
+      "batch": 45,
+      "source": "strength-2.jpeg",
+      "sourceNow": "Added to Game/strength-2.jpeg",
+      "size": [
+        1696,
+        2528
+      ],
+      "sha256": "82e7435637010adbec0f5bc09658b44b0bc3b56dcb9b41ad7a3c12369da10959",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/strength-2.webp",
+      "outputSha256": "128f7e898883dbf4e98ffee563c43b9b07661f1ddf00c122014341ef0e8d26b5",
+      "conversion": "tools/femc-tarot.py EXTRA strength-2: 360px wide WebP q85",
+      "placement": "core.js TAROT_ALT: Koromaru's card (the only Strength link; delete his TAROT_ALT line to go back to strength.webp)"
+    },
+    {
+      "batch": 45,
+      "source": "slashv2.png",
+      "sourceNow": "Added to Game/slashv2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c79792fb98270f69651e7f7883c0caae35bc3262c73d2397535e18af1fadea91",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/slash-heavy.webp",
+      "outputSha256": "d9d9775eba2f94358361a591ed2f76c1c75465e4f72dbac55eb817be0c611087",
+      "conversion": "tools/femc-fx.py SOURCES slash-heavy: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Slash Heavy (two crossing slashes, shockwave ring in frame 3). fx.js artFor tries <kind>-heavy when o.heavy; nothing passes it yet, so it is built but not played"
+    },
+    {
+      "batch": 45,
+      "source": "slash.png",
+      "sourceNow": "Added to Game/slash.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "42d8f6817c08c7245cc9840af03592a8f803a2681d937378010c3fac1c145422",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/slash-crit.webp",
+      "outputSha256": "9a0fa6a5750fa17c327ee2e0fe642ed97b1aac97bdb6d1595e4a58bdb31fb582",
+      "conversion": "tools/femc-fx.py SOURCES slash-crit: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Slash Crit (razor line in frame 3 splitting into a pink-white X): fx.js artFor plays it on a critical Slash hit (o.crit); the plain slash.jpeg sheet stays for every other Slash hit"
     }
   ],
   "batch1Validation": {
@@ -9315,5 +9893,23 @@
       "python3 tests/femc_theurgy.py (new 4c: Akihiko's and Shinjiro's shots in real summons at 1440x900, 1000x486, 375x812)"
     ],
     "html": "femc-game.html places v38, story-act5 v15, mercy v8, game.css v19, menu v17, data v28; femc-battle.html battle.css v30, data v28, battle v44, fx/index.js hash; femc-mode.js v101 on 12 pages (FEMC_ASSET_VERSION 135); ART_V 26"
+  },
+  "batch45Validation": {
+    "date": "2026-10-24",
+    "scope": "Armor (2 sheets) and accessories (sheets 1-2 of 5) for 6B, the 30 capsule keychains plus their Halloween set (7), Lovers and Strength tarot alternates (6A), two new Slash sheets (5G heavy and crit)",
+    "sourcesInspected": "all 18 viewed; gear and keychain cuts on contact sheets; slash sheets on the femc-fx.py check contact sheet beside the current slash; Equipment menu and Collection at 1280x850 and 375x812",
+    "sourcesIntegrated": 18,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked after the move); On Hold, Showtime folders, showtime-solar-jungwon-* and Solar-Haechan-Bond-Stills untouched",
+    "slashPick": "slash.jpeg stays the plain Slash: slashv2.png and slash.png match the 5G Heavy and Crit prompts exactly, so they went in as slash-heavy and slash-crit",
+    "notes": "Solar's keychain wears her armband (the prompt asked for none). Accessory sheets 3-5 (14 accessories incl. the capsule and Velvet gear, and vel_coat) still pending; those keep their drawn icons.",
+    "tests": [
+      "python3 tests/femc_building.py --only menu,sees,practice (0 console errors)",
+      "python3 tests/femc_extras.py (all checks passed: capsule, velvet, Collection, saves)",
+      "python3 tests/femc_menu.py (equipment and party; no browser errors)",
+      "python3 tests/femc_fx_art.py (passed)",
+      "headless batch check: 24 gear pieces carry art and load in the Equipment slots and lists (1280x850, 375x812, no sideways scroll), FemcIcons.of art with drawn fallback, Police Box shelf art, Hyein/Koromaru tarot alternates load (Yukari, Ann keep Lovers), all 30 charms in the Collection, Halloween set on 10/20 and not on 8/3 or 11/1, a missing charm falls back to the drawn one, FemcFX.artFor('slash', {crit}) = slash-crit and plain hits keep slash"
+    ],
+    "html": "femc-game.html game.css v20, gacha.css v4, tarot index v131, build v13, icons v7, core v31, gacha v4; femc-battle.html battle.css v31, build v13, icons v7, fx.js v9, fx/index.js hash"
   }
 }

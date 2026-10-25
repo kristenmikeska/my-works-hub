@@ -831,7 +831,14 @@ window.FemcGame = (() => {
   const scale = id => (W.FEMC_PORTRAIT_SCALE || {})[faceId(id)] || 1;
   const name = id => CAST[id] || (id ? id[0].toUpperCase() + id.slice(1) : '');
   const castHas = id => id in CAST;
-  function tarot(l) { const k = String(l?.arcana || '').toLowerCase().replace(/[^a-z0-9]/g, ''); return (W.FEMC_TAROT || []).includes(k) ? `${base}assets/femc/tarot/${k}.webp` : null; }
+  /* Alternate card art for an arcana two links share (FEMC-ART-TODO 6A; tools/femc-tarot.py EXTRA -> tarot/<arcana>-2.webp).
+     A link listed here shows its alternate; everyone else (and this link, if the file isn't listed) keeps the arcana's card. */
+  const TAROT_ALT = { hyein: 'lovers-2', koromaru: 'strength-2' };
+  function tarot(l) {
+    const have = W.FEMC_TAROT || [], alt = l && TAROT_ALT[l.id];
+    const k = alt && have.includes(alt) ? alt : String(l?.arcana || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    return have.includes(k) ? `${base}assets/femc/tarot/${k}.webp` : null;
+  }
   // places.js seasons: the plain day art that has a version per season (the shrine). Then today's art (dressed).
   function seasonal(img) {
     const list = D.places.seasons?.[img];

@@ -194,6 +194,20 @@ window.FEMC_FX_ART = {
   "peak": 2,
   "v": "1a75744b"
  },
+ "slash-crit": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "2987007a"
+ },
+ "slash-heavy": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "23a76617"
+ },
  "strike": {
   "blend": "lighter",
   "cell": 256,

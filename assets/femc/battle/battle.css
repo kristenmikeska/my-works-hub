@@ -850,6 +850,7 @@ html.femc:not(.femc-reader) body.bt-page::after { display: none; }
    ════════════════════════════════════════════════════ */
 .bt-icon { width: 1.6em; height: 1.6em; flex: none; overflow: visible; }
 .bt-icon.big { width: 64px; height: 64px; filter: drop-shadow(3px 3px 0 rgba(255, 79, 158, .55)); }
+img.bt-icon.gear-art { object-fit: contain; background: #fff; border: 1.5px solid #ffd36b; border-radius: 4px; box-sizing: border-box; } /* armor / accessory art (icons.js of, build.js GEAR_ART) */
 .bt-yen { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--night); color: var(--gold); font: italic 900 15px/1 var(--cond); letter-spacing: .06em; transform: skewX(-14deg); box-shadow: 3px 3px 0 rgba(255, 211, 107, .45); white-space: nowrap; }
 .bt-yen > * { transform: skewX(14deg); }
 .bt-yen .bt-icon { width: 18px; height: 18px; }

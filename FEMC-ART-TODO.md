@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**79 items:** 3 CGs · 3 places · 12 character pieces · 49 battle (18 bond Showtimes in 5A, 25 effect variants in 5G) · 8 cards and icons · 6 screens. 2 are ⭐, 68 are optional.
+**76 items:** 3 CGs · 3 places · 12 character pieces · 48 battle (18 bond Showtimes in 5A, 24 effect variants in 5G) · 7 cards and icons · 5 screens. 2 are ⭐, 65 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -376,7 +376,6 @@ Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of s
 
 #### Heavy and critical, per element
 Each item is two sheets. **Heavy** is for the -ma / -dyne and all-foe versions; **crit** for a critical hit of that element (it replaces the generic crit flash on that element's hits).
-- [ ] **Slash** (from `slash.jpeg`). Heavy: *two crossing slashes instead of one, each twice as long and thicker, with a shockwave ring at the crossing in frame 3 and longer shards in frames 4–5.* Crit: *the slash cuts the frame in a single razor-thin white line in frame 3, then splits into a pink-white X with sparks spraying along it.* **Fills:** `battle/art/fx/slash-heavy.webp`, `slash-crit.webp`.
 - [ ] **Strike** (from `strike.jpeg`). Heavy: *a bigger impact star with a thick shockwave ring and cracked-ground-style radial lines (light only, no ground), debris streaks flying outward.* Crit: *a sharp hit-stop: frame 3 a pure white starburst with heavy black-edged comic impact lines, frame 4 a ring of gold sparks.* **Fills:** `strike-heavy.webp`, `strike-crit.webp`.
 - [ ] **Pierce** (from `pierce.png`). Heavy: *three parallel piercing streaks instead of one, with a wider muzzle-flare ring at the peak.* Crit: *one long needle of white light punching straight through the centre, a small pink-white burst out the other side and a thin ring around the point of entry.* **Fills:** `pierce-heavy.webp`, `pierce-crit.webp`.
 - [ ] **Fire** (from `fire-v2.jpeg`). Heavy (Maragi / Agidyne): *a towering pillar of fire with a ring of flames at its base, twice the height of the original peak, embers swirling up in frames 4–6.* Crit: *the fire collapses into a white-hot core in frame 3 and blasts out as a sharp eight-pointed flare.* **Fills:** `fire-heavy.webp`, `fire-crit.webp`.
@@ -414,9 +413,7 @@ One sheet each, used for that fighter's own spells of that element (and their Th
 ```
 A tarot card in exactly the same art style, border, colours and layout as the attached cards: the [ARCANA] arcana, numbered [NUMERAL], depicting [IMAGE]. The card fills the whole image edge to edge, portrait 2:3, nothing around it. No people's faces. No extra text beyond the numeral and title band the attached cards have.
 ```
-- [ ] Alternates for the arcana two or more links share (each fills the blanks above). **Fills:** `tarot/<arcana>-2.webp` (Claude matches each to the link that gets it).
-  - **Lovers** (VI; Yukari, Ann, Hyein): two hands reaching for each other under an arch of pink blossoms, a small winged silhouette above.
-  - **Strength** (XI): a gentle hand resting on a white lion's mane, a red ribbon loosely tied round its neck.
+- [ ] Alternates for the arcana two or more links share (each fills the blanks above). **Fills:** `tarot/<arcana>-2.webp` (Claude matches each to the link that gets it). Lovers (Hyein) and Strength (Koromaru) are in (batch 45).
   - **Empress** (III; Mitsuru, Haru): an empty throne in a garden of red roses and ripe wheat, a crown resting on a cushion.
   - **Priestess** (II; Fuuka): a crescent moon between a dark and a light pillar, a scroll and a pair of headphones on the step.
   - **Justice** (VIII; Ken, Judy): balanced scales hanging from an upright sword, a small gear in one pan and a feather in the other.
@@ -436,12 +433,7 @@ A tarot card in exactly the same art style, border, colours and layout as the at
 ```
 A 3 × 2 grid of six game item cards (3 columns, 2 rows) on a plain pure white background, landscape 3:2 (1536 × 1024), in exactly the same rendering style as the attached sheet: each item alone in its own card framed by a thin light-grey line, centred and upright, filling about 70% of the card's height, with clear white space between cards. Polished Persona 3 Reload item art, soft shading, one accent colour per item. No printed names, no text, no hands, no people. In reading order: [SIX ITEMS].
 ```
-- [ ] **Armor** (12 + the Velvet coat below), two sheets. **Fills:** `battle/art/gear/<id>.webp`.
-  - Sheet 1: a black Gekkoukan school blazer (`armor0`) · a chain-mail vest (`armor1`) · a black riot vest (`armor2`) · a long battle coat (`armor3`) · a kevlar jacket (`armor4`) · ceramic plate armor (`armor5`).
-  - Sheet 2: sleek cyber plate armor with glowing seams (`armor6`) · Soul Mail, dark armor with a faint blue soul-glow (`armor7`) · a pale blue Frost Coat with fur trim (`frost_coat`) · a yellow-and-black Insulated Vest (`insulated_vest`) · a red Fireproof Suit (`fireproof_suit`) · a green Gale Cloak with a hood (`gale_cloak`).
-- [ ] **Accessories** (26), five sheets. **Fills:** `battle/art/gear/<id>.webp`.
-  - Sheet 1: red Power Ring (`power_ring`) · blue Magic Ring (`magic_ring`) · green Guard Ring (`guard_ring`) · yellow Speed Ring (`speed_ring`) · a four-leaf Lucky Charm (`lucky_charm`) · a purple Antidote Charm (`antidote_charm`).
-  - Sheet 2: a Rose Barrette (`rose_barrette`) · a Calm Amulet with a pale blue stone (`calm_amulet`) · a silver Holy Cross (`holy_cross`) · a Black Earring (`black_earring`) · a Spirit Bangle with blue stones (`sp_bangle`) · a red Power Bangle (`power_bangle`).
+- [ ] **Accessories** (14 left of 26; sheets 1–2 and all 12 armor are in, batch 45), three more sheets. **Fills:** `battle/art/gear/<id>.webp`, files named `accessories-sheet3.png` and so on.
   - Sheet 3: a blue Magic Bangle (`magic_bangle`) · a Sniper Scope (`sniper_scope`) · a Vitality Belt (`vitality_belt`, wide) · a gold Sunburst Charm (`theurgy_charm`) · a Star Brooch (`star_brooch`) · a Velvet Ribbon in deep blue (`vel_ribbon`).
   - Sheet 4 (capsule prizes): a white dog Koro-chan Charm (`cap_koro_charm`) · a Featherman Pin (`cap_feather_pin`) · a Frosty Hairclip shaped like a little snowman sprite (`cap_jack_frost`) · a silver Moon Locket (`cap_moon_locket`) · a Golden Sun Keyring (`cap_gold_sun`) · a Blue Butterfly Brooch (`vel_butterfly`).
   - Sheet 5 (Velvet Room, three cards, leave the other three empty): an ornate Contract Key (`vel_key`) · a small blue Pocket Compendium book (`vel_compendium`) · a velvet-blue Attendant's Coat (armor, `vel_coat`).
@@ -484,14 +476,6 @@ A 3 × 2 grid of six game item cards (3 columns, 2 rows) on a plain pure white b
 ---
 
 ## 7. Screens and keepsakes *(optional)*
-- [ ] **Capsule keychains** (30 cast members), five sheets of six, ChatGPT (faces). The charm sits in a 64 × 88 slot (a 56 px circle face under a ring and chain now), 76 px cells in the Collection, swinging slightly in the prize reveal. A finished charm image replaces the whole slot. The 12 fighters show their chibi victory frame now (`gacha.js KEY_CHIBI`); the other 18 show a CSS charm with their face. **Attach:** 🎮 `battle/art/chibi/solar-0.webp` (chibi style), then the six portraits for that sheet. **Fills:** `game/art/keys/<id>.webp`.
-  ```
-  A 3 × 2 grid of six acrylic keychain charms (3 columns, 2 rows) on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each charm is a cute chibi of one character, in exactly the chibi style of the first attached image, cut out in clear acrylic with a thick glossy white edge and a light blue shine (draw the edge solid, not see-through), a small silver ring and a short chain at the top centre. Each charm upright, centred in its cell, the same size, with wide green space around it. Faces, hair and outfits from the attached portraits, in order. No text, no green in the charms. In reading order: [SIX NAMES].
-  ```
-  - Sheet 1: Fuuka, Ken, Hanni, Hyein, Yunjin, Mark.
-  - Sheet 2: Jaehyun, Cherry, Sunoo, Junkyu, Ann, Kasumi.
-  - Sheet 3: Haru, Kuromi, My Melody, Rio, Saori, Kiriko.
-  - Sheets 4–5 (to replace the chibi frames): Solar, Akihiko, Yukari, Junpei, Mitsuru, Aigis · Koromaru, Shinjiro, Haechan, Jungwon, Jihoon, Minji. Solar's charm: no armband.
 - [ ] **Phone cases** (6), one sheet, Gemini. The phone shows a case as a 40 × 72 rounded rectangle (×1.25 and tilted in the prize reveal), so each needs one bold pattern that reads tiny. **Attach:** nothing needed. **Fills:** `game/art/cases/<id>.webp`.
   ```
   A 3 × 2 grid of six back covers for a late-2000s flip phone, closed, seen straight on from the back, on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each is a tall rounded rectangle (about 5:9) with a small camera lens and a tiny external screen near the top, centred in its cell, same size, with wide green space around it. Flat glossy game-asset style, one bold pattern each that still reads at 40 pixels wide. No logos, no text, no green in the cases. In reading order: Sakura (pale pink with falling cherry petals) · Featherman R (loud red with a white-and-gold heroic wing emblem and a lightning stripe) · Paw Print (white with a trail of little grey paw prints) · Moonlight (midnight navy with one large silver crescent) · Velvet (deep velvet blue with a thin gold border and a small gold key) · Golden Sun (shining gold all over with an embossed sun).
@@ -548,7 +532,7 @@ Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 
 
 ### Cards, screens and keepsakes
 - **Tarot:** Elizabeth's arcana key is `velvetroom` (see Tarot cards and places below).
-- **Gacha:** keychains are `gacha.js keychain` / `keyFace`; phone cases are `.g-case-art[data-case]` in `gacha.css`. The phone wears a case via `ui.js openPhone`.
+- **Gacha:** keychains are `gacha.js keychain` (Kat's charms since batch 45: `tools/femc-keys.py` → `game/art/keys/<id>.webp` and `<id>-halloween.webp`, worn in October on the game's calendar, `halloween()`; the drawn charm / `keyFace` is the fallback); phone cases are `.g-case-art[data-case]` in `gacha.css`. The phone wears a case via `ui.js openPhone`.
 - **Phone groups:** `ui.js threadPic` reads a portrait; add a group picture map for `texts.js groups`.
 - **Album locked tile:** `menu.js` album (locked tiles load no art now).
 - **Memory cards:** add the id to `battle/data.js memories` (and award it somewhere); `memories/<id>.webp` shows up on its own.
@@ -631,7 +615,8 @@ Most of it already works with today's `sequence` field (`battle.js playSeq` / `s
 - **SFX:** `bondCut` plays `summon` at the start and the element's sound on impact. A per-panel `sfx` (an existing `sfx()` key: `summon`, `light`, `almighty`, the element sounds; new comic ones like a whistle or a bat crack would need files) would play as the panel comes in.
 - **Skipping:** the full version only plays under Persona cut-ins Always or 1st per battle (bonds always get the full one there), and never in Rush or reduced motion. Add a setting, **Bond Showtimes: On / Still only**, in the same settings group: "Still only" makes `seqOf` return null for bonds, so the version's `img` plays as today's single still. And a tap or Enter during the panels could jump to the strike panel (call `strike()` once, add `q-hit q-last`, go straight to the lines), so a player who has seen it can cut it short without turning it off.
 
-### Effect variants (5G): how the player would pick one *(a note, nothing built yet)*
+### Effect variants (5G): how the player picks one *(crit pick built in batch 45; the rest is a note)*
+- **Built:** Slash's Heavy and Crit sheets (`slash-heavy`, `slash-crit` in `femc-fx.py SOURCES`). `fx.js artFor` tries `<kind>-crit` when `o.crit` (battle.js already passes it) and `<kind>-heavy` when `o.heavy`, then the plain sheet; nothing passes `o.heavy` yet (one flag in `battle.js fxHitKind` for -ma / all-foe skills). The generic `crit` overlay still plays on top.
 - **Building:** add each variant to `SOURCES` in `tools/femc-fx.py` under its own name (`fire-heavy`, `fire-crit`, `fire-solar`, …) and run `all`; the index lists it like any other sheet, and no other bump is needed.
 - **Picking:** `fx.js artFor(kind, o)` already walks a list of names and takes the first sheet that has loaded. A variant goes at the front of that list: the caster's flavour first (`<kind>-<o.by>`, which needs `battle.js fxPlay` to pass the caster's member id as `o.by`), then `<kind>-crit` when `o.crit`, then `<kind>-heavy` when the skill is a -ma / -dyne / all-foe one (a `heavy` flag on those skills in `data.js`, or `o.big` from the caller), then the plain sheet, then the code effect. So a missing variant just falls back to today's sheet.
 - **Order of preference to settle with Kat:** flavour beats heavy (Solar's Agidyne would show her sun fire, not the generic pillar), and crit beats both; or a flavour could get its own `-heavy` later.
@@ -639,5 +624,6 @@ Most of it already works with today's `sequence` field (`battle.js playSeq` / `s
 - **Test:** `tests/femc_fx_art.py` builds its own sheets in the page, so it can add a variant and check the pick order without shipped art.
 
 ### Cards, items and screens (sections 6 and 7): wiring notes
-- **Green-screen sheets** (item and material icons, menu icons, keychains, phone cases, group avatars): key out flat #00FF00 (the way `femc-fx.py` does for `allout-cloud`), cut each cell, trim, and save transparent WebP. White-background sheets (gear, books, keepsakes) go through `tools/femc-cards.py` like the weapons; the plain-weapon sheets are 3 × 3, so that tool needs a nine-card mode (or `pick`).
-- **Hooks still to add:** armor and accessories need the weapons' `art` field read in each list; items and materials an `img` hook in `FemcIcons.of`; Bookworms' books and the keepsakes an `img` (keepsakes have no ids yet: give each gift an id); the menu tabs' icons are in (`menu.js TAB_ICONS` / `tabIco`, `game/art/icons/<tab>.webp`, text-only fallback); group-chat pictures a group map in `ui.js threadPic` (without the portrait's `scale(1.6)` crop); the album's locked tile picks the 16:9 or square file by the grid it's in; the loading stills need a place in the Dark Hour fade.
+- **Green-screen sheets** (item and material icons, menu icons, keychains, phone cases, group avatars): key out flat #00FF00, cut each cell, trim, and save transparent WebP (`tools/femc-keys.py` does this for the keychains and can be copied for the rest). White-background sheets (gear, books, keepsakes) go through `tools/femc-cards.py` like the weapons; the plain-weapon sheets are 3 × 3, so that tool needs a nine-card mode (or `pick`).
+- **Gear art (in since batch 45):** `tools/femc-cards.py gear SHEET ids…` (or a `('gear', file, ids)` line in its `BUILD`) cuts a white sheet onto the wide canvas; add the ids to `build.js GEAR_ART`, which sets `art` + `artWide` (menu Equipment, shop shelves, chest loot read it; `icons.js of` shows it in the battle shop / equip screen and gacha prizes, drawn icon if the file fails). **Tarot alternates:** an `EXTRA` key `<arcana>-2` in `tools/femc-tarot.py`, then the link in `core.js TAROT_ALT`.
+- **Hooks still to add:** items and materials an `img` hook in `FemcIcons.of`; Bookworms' books and the keepsakes an `img` (keepsakes have no ids yet: give each gift an id); the menu tabs' icons are in (`menu.js TAB_ICONS` / `tabIco`, `game/art/icons/<tab>.webp`, text-only fallback); group-chat pictures a group map in `ui.js threadPic` (without the portrait's `scale(1.6)` crop); the album's locked tile picks the 16:9 or square file by the grid it's in; the loading stills need a place in the Dark Hour fade.

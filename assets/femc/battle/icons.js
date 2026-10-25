@@ -135,12 +135,14 @@ window.FemcIcons = (() => {
   defs();
   const svg = (name, color, cls = '') => `<svg class="bt-icon ${cls}" viewBox="0 0 32 32" aria-hidden="true"><g filter="url(#${RIM})">${(I[name] || I['room-empty'])(color)}</g></svg>`;
   /* Icon for any id from data.js: an item, a piece of gear, or a material. */
-  function of(id, cls = '') {
+  function of(id, cls = '', noArt = false) {
     const D = window.FEMC_BATTLE_DATA;
     if (D.items[id]) return svg(D.items[id].icon || 'medicine', null, cls);
     if (D.materials[id]) return svg(D.materials[id].icon || 'mat-ash', D.materials[id].tint || null, cls);
     const g = D.gear[id];
     if (g) {
+      // Armor / accessory art (build.js GEAR_ART); weapons keep their drawn icon here, as before.
+      if (g.art && !noArt && g.slot !== 'weapon') return `<img class="bt-icon gear-art ${cls}" src="${g.art}" alt="" onerror="this.outerHTML=window.FemcIcons.svgOf('${id}', '${cls}')">`;
       if (g.slot === 'weapon') return svg(g.wtype, g.tint || (g.el ? D.elements[g.el].color : null), cls); // tint: Solar's naginatas (build.js)
       if (g.slot === 'armor') return svg('armor', g.aff ? D.elements[Object.keys(g.aff)[0]].color : null, cls);
       return svg(g.icon || 'ring', null, cls);
@@ -196,5 +198,5 @@ window.FemcIcons = (() => {
       ${c.isNew ? '<circle cx="14" cy="14" r="4" fill="#ff4f9e" stroke="#fff" stroke-width="1.2"/>' : ''}
     </svg>`;
   }
-  return { svg, of, revCard, names: Object.keys(I) };
+  return { svg, of, svgOf: (id, cls = '') => of(id, cls, true), revCard, names: Object.keys(I) };
 })();

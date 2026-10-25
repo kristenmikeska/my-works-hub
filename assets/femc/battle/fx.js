@@ -1188,6 +1188,10 @@ window.FemcFX = (() => {
     let names = ART_KINDS[kind] || [kind];
     if (kind === 'buff') names = [(o.dir || 1) < 0 ? 'debuff' : 'buff'];
     if (o.insta) names = kind === 'light' ? ['hama', 'light'] : ['mudo', 'dark'];
+    // Effect variants (5G): a crit tries <kind>-crit, a heavy skill (o.heavy) <kind>-heavy, before the plain sheet. Only the
+    // ones in the index are tried, so a kind without variants is unchanged. (Nothing passes o.heavy yet: battle.js fxHitKind.)
+    const V = ART();
+    names = [o.crit && `${kind}-crit`, o.heavy && `${kind}-heavy`].filter(n => n && V[n]).concat(names);
     return names.find(n => artImg(n)) || null;
   }
   /* Tinted copies (buff per stat; any sheet the index marks `tint`, coloured by o.tint), made once: multiply keeps the art's shading, then its own alpha. */

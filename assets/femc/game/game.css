@@ -733,6 +733,7 @@ html.g-in-battle .g-hud, html.g-in-battle .g-toasts { visibility: hidden; }
 .g-eq-slot i, .g-eq-item i { display: inline-flex; width: 28px; height: 28px; }
 .g-eq-slot i:empty { display: none; }
 .g-eq-slot .bt-icon, .g-eq-item .bt-icon { width: 28px; height: 28px; }
+img.bt-icon.gear-art { object-fit: contain; background: #fff; border: 1.5px solid #ffd36b; border-radius: 4px; box-sizing: border-box; } /* armor / accessory art (icons.js of, build.js GEAR_ART) */
 .g-eq-slot b, .g-eq-item b { font: italic 900 17px/1.1 var(--cond); }
 .g-eq-slot b span, .g-eq-item b span { display: block; color: var(--muted); font: 12px/1.3 var(--sans); }
 .g-eq-slot.open { border-color: var(--pink); box-shadow: 4px 4px 0 var(--pink); }
