@@ -869,7 +869,10 @@
       { n: "November made everything look like a photograph of itself. The light came in low and pale and gold even at lunchtime, slanting through the high windows of the boxing club in long bars that the dust turned slowly in, and the first-years had started wearing their tracksuits over their uniforms, and the radiator under the window knocked twice an hour like somebody wanting to be let in." },
       { n: "He was at the heavy bag. He'd been at the heavy bag a lot lately, not the raw-knuckled October way, not at night, nothing she'd have to take his wrists for. Just steady. Rhythmic. Left, left, right, pivot. The bag swinging on its chain and coming back to him like it had somewhere else to be and kept changing its mind." },
       { n: "There had been a morning last week when her phone hadn't gone off at five. And another two days after. She'd lain there in the dark both times with her heart doing something stupid, and both times she'd gone down at ten past and found him already out front, stretching, and both times he'd looked up at her with a face that was trying very hard to be surprised." },
-      { s: 'akihiko', f: 'neutral', t: "Hey. Didn't know if you'd come." },
+      { ifRoute: 'romance', then: [
+        { s: 'akihiko', f: 'neutral', t: "Hey. Didn't know if you'd come. You've been busy." },
+        { n: "He said it like a boyfriend who'd decided it wasn't his place to be hurt about it, which was worse, somehow, than if he'd just been hurt." }
+      ], else: [{ s: 'akihiko', f: 'neutral', t: "Hey. Didn't know if you'd come." }] },
       { s: 'solar', f: 'neutral', t: "You didn't text." },
       { s: 'akihiko', f: 'neutral', t: "Figured you might have people to see." },
       { n: "People. He meant the voices on the stairs at all hours now, the shoes by the door she didn't know the owners of and then did, the strangers who came through at midnight and looked at her across the lounge like she was a house they'd grown up in that somebody had painted a different color. They said her name like they had been saying it their whole lives. Some of them cried. Some of them were very polite about it, which was worse. All of them knew things about her that she didn't, and every one of them, sooner or later, said the word home." },
@@ -899,7 +902,9 @@
       { n: "The wind pulled at his hair. He looked at the can in his hands like it might have the rest of the sentence written on it somewhere in small print." },
       { s: 'akihiko', f: 'serious-3', t: "This isn't me asking you for anything. Everybody's asking you for something lately. I can see it on you at breakfast." },
       { s: 'akihiko', f: 'blushing', t: "I just want to know one thing, and then I'll shut up and drink this coffee, which is cold now." },
-      { s: 'akihiko', f: 'neutral', t: "What am I to you?" },
+      { ifRoute: 'romance', then: [
+        { s: 'akihiko', f: 'neutral', t: "Where do I stand? With you. Now." }
+      ], else: [{ s: 'akihiko', f: 'neutral', t: "What am I to you?" }] },
       { n: "There it was. The thing underneath every text at five and every bench he'd made her sprint to and every egg in every bowl. She had known it was coming the way you know the bottom of a staircase in the dark, by the feeling of having run out of steps, and she had come up here anyway, and she hadn't let herself think about why she had come up here anyway until this exact second, which she supposed was its own answer." },
       // A couple since rank 7 (9/1) gets his question as what it is now: does it still hold, with all of them in the house.
       { ifRoute: 'romance', then: [
