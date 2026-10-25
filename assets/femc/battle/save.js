@@ -27,6 +27,10 @@ window.FemcBattleSave = (() => {
   //          floorsMapped [floor ids] (Rohan's Sketch the Floor), shuffles (Shuffle Times played).
 // Bond skills (bonds.js, 2026-10-20; defaults, so older saves load as they were): bondsLove [link ids on their romance route],
 //          bondDate (the life sim's "m/d" at the last sync: a bond's last day).
+// tv 2 (Tartarus with real floor numbers, 2026-10-25): floor ids are 'f' + the P3 floor (f2 … f172, Monad f176 … f254).
+//          An older save's access point (and Sketch the Floor's list) moves to the same game floor it showed (moveFloor).
+//          tt { guardians [floor ids beaten], monad (the secret block found), secrets [secret floors / hidden rooms found],
+//          puzzles (solved), rares (rare Shadows beaten) }.
   const SETTINGS = { textSpeed: 'normal', musicVol: 100, sfxVol: 100, remember: true, rushWhere: 'normal', rushStop: 30, difficulty: 'normal', shake: true, calm: false, numbers: true, pad: 'auto', tips: true, showtimes: 'on' };
   const SETTING_OK = { textSpeed: ['slow', 'normal', 'fast', 'instant'], rushWhere: ['normal', 'strong', 'all'], rushStop: [30, 50], difficulty: ['story', 'normal', 'hard'], pad: ['auto', 'xbox', 'ps'], showtimes: ['on', 'still'] };
   const PREFS = ['settings', 'tipsSeen', 'cursor', 'music', 'sfx', 'speed', 'cutins', 'perf']; // device preferences: kept when a slot or backup is loaded
@@ -34,7 +38,8 @@ window.FemcBattleSave = (() => {
     party: D.defaultParty.slice(), mem: {}, tactics: {}, cutins: 'first', awakened: false,
     yen: D.startYen, items: Object.assign({}, D.startItems), gear: { owned: {}, eq: {} }, mats: {}, memories: [], evo: {}, form: 'haenim', forms: [], ops: { cleared: [] }, th: {}, perf: false,
     ptree: {}, ranks: {}, forgot: {}, order: {}, equip: {}, seen: {}, fresh: {}, // treeV is set by normalize (an older save without one is migrated)
-    cards: { list: [], eq: {}, uid: 0 }, wref: {}, pboost: {}, skillCards: {}, taught: {}, bonds: {}, bondsRev: [], bondGifts: [], floorsMapped: [], shuffles: 0, bondsLove: [], bondDate: null });
+    cards: { list: [], eq: {}, uid: 0 }, wref: {}, pboost: {}, skillCards: {}, taught: {}, bonds: {}, bondsRev: [], bondGifts: [], floorsMapped: [], shuffles: 0, bondsLove: [], bondDate: null,
+    tv: 2, tt: { guardians: [], monad: false, secrets: [], puzzles: 0, rares: 0 } });
   /* The first Haenim tree (three branches of five, before the skill system): its node costs, and the form each branch gave. */
   const OLD_TREE = { bell: { form: 'haenim-sunna', cost: [1, 1, 2, 2, 3] }, jade: { form: 'haenim-mazu', cost: [1, 1, 2, 2, 3] }, star: { form: 'haenim-nike', cost: [1, 1, 2, 2, 3] } };
   function migrateTree(s) {
@@ -105,6 +110,18 @@ window.FemcBattleSave = (() => {
   /* Fills in anything missing, so v1/v2 saves (and hand-edited ones) load cleanly. Members who were already fighting
      keep Solar's level; new recruits join one level behind her. */
   const OLD_FLOORS = ['f2', 'f4', 'f6']; // batch-1 floors 2F/5F/9F → the first three floors of Thebel
+  /* A floor id from before tv 2 → today's floor at the same game floor (the life sim showed block b's floor k as
+     lo + (k + 1) × (hi − lo) / 3, lo and hi the block's floor caps). Not an old id: null. */
+  function moveFloor(id) {
+    const O = D.oldFloors;
+    if (typeof id !== 'string' || !O) return null;
+    const bi = O.ids.findIndex(r => r.includes(id));
+    if (bi < 0) return null;
+    const fi = O.ids[bi].indexOf(id), lo = bi === 0 ? 1 : O.caps[bi - 1], hi = O.caps[bi], g = Math.round(lo + (fi + 1) * (hi - lo) / 3);
+    const block = D.floors.filter(f => f.bi === bi && !f.secret);
+    const hit = block.filter(f => f.gameFloor <= g).pop() || block[0];
+    return hit ? hit.id : null;
+  }
   function normalize(s) {
     const was = s.v || 1;
     if (!Array.isArray(s.party)) s.party = D.defaultParty.slice();
@@ -127,7 +144,16 @@ window.FemcBattleSave = (() => {
       s.reached = s.clears > 0 ? 'f9' : (r > 0 ? OLD_FLOORS[Math.min(r, OLD_FLOORS.length - 1)] : null);
       if (!s.items || typeof s.items !== 'object') s.items = Object.assign({}, D.startItems);
     }
+    // tv 2: the old three-floors-a-block ids become the game floors they stood for (f9 → f23, f60 → f172).
+    if (!(s.tv >= 2)) {
+      s.reached = moveFloor(s.reached);
+      if (Array.isArray(s.floorsMapped)) s.floorsMapped = s.floorsMapped.map(moveFloor).filter(Boolean);
+      s.tv = 2;
+    }
     if (typeof s.reached !== 'string' || !D.floors.some(f => f.id === s.reached)) s.reached = null;
+    const tt = s.tt && typeof s.tt === 'object' && !Array.isArray(s.tt) ? s.tt : {};
+    s.tt = { guardians: [...new Set((Array.isArray(tt.guardians) ? tt.guardians : []).filter(id => D.floors.some(f => f.id === id)))], monad: !!tt.monad,
+      secrets: [...new Set((Array.isArray(tt.secrets) ? tt.secrets : []).filter(x => typeof x === 'string'))], puzzles: tt.puzzles >= 0 ? Math.floor(tt.puzzles) : 0, rares: tt.rares >= 0 ? Math.floor(tt.rares) : 0 };
     s.ops.cleared = s.ops.cleared.filter(id => D.ops.some(o => o.id === id));
     if (!(s.cycle >= 0)) s.cycle = 0;
     if (!(s.yen >= 0)) s.yen = D.startYen;
@@ -178,8 +204,8 @@ window.FemcBattleSave = (() => {
   /* Any object that looks like a save (from storage, a slot or a pasted backup) → a clean v4 save, or null. */
   function fromRaw(s) {
     if (!s || typeof s !== 'object' || Array.isArray(s) || !(s.lvl >= 1)) return null;
-    const v = [1, 2, 3, 4].includes(s.v) ? s.v : 1;
-    return normalize(Object.assign(fresh(), JSON.parse(JSON.stringify(s)), { v }));
+    const v = [1, 2, 3, 4].includes(s.v) ? s.v : 1, tv = s.tv >= 2 ? s.tv : 1; // tv: a save from before tv 2 still has old floor ids
+    return normalize(Object.assign(fresh(), JSON.parse(JSON.stringify(s)), { v, tv }));
   }
   // Solar's level by the game's day (0 = 4/6): a little under each full moon's recommended level (data.js ops: Priestess 10
   // on 5/9, Empress 15 on 6/8 … Hanged Man 43 on 11/3), so a playthrough that starts using the battle game late isn't stuck at 5.
@@ -202,7 +228,7 @@ window.FemcBattleSave = (() => {
   function carry(old) {
     const s = fromRaw(old);
     if (!s) return null;
-    s.reached = null; s.ops = { cleared: [] }; s.memories = []; s.ngp = (s.ngp || 0) + 1;
+    s.reached = null; s.ops = { cleared: [] }; s.tt = { guardians: [], monad: false, secrets: [], puzzles: 0, rares: 0 }; s.memories = []; s.ngp = (s.ngp || 0) + 1;
     return s;
   }
   /* The battle save for a story playthrough: { save, made } (made: true when it was carried over or seeded just now). */
@@ -251,5 +277,5 @@ window.FemcBattleSave = (() => {
     return out.join(' · ');
   }
 
-  return { SETTINGS, SETTING_OK, PREFS, fresh, normalize, fromRaw, seedLevel, seed, carry, forRun, eqOf, equippedCount, spare, candidates, equip, syncGear, gearLine, member };
+  return { SETTINGS, SETTING_OK, PREFS, fresh, normalize, fromRaw, moveFloor, seedLevel, seed, carry, forRun, eqOf, equippedCount, spare, candidates, equip, syncGear, gearLine, member };
 })();

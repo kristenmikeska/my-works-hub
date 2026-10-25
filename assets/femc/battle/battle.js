@@ -30,6 +30,7 @@
   const D = window.FEMC_BATTLE_DATA, E = window.FemcBattleEngine, ART = window.FemcBattleArt, FX = window.FemcFX, MAP = window.FemcTartarusMap, ICON = window.FemcIcons, BS = window.FemcBattleSave;
   const BLD = window.FemcBuild || null; // naginatas, Revelation cards, Shuffle Time, bond perks (build.js)
   const BDS = window.FemcBonds || null; // bond skills: Solar and a partner (bonds.js)
+  const TT = window.FemcTartarus || null; // Tartarus's newer rooms, puzzles, events, loot and chatter (tartarus.js)
   const PROTO_KEY = 'kg-femc-battle-proto', UNI_KEY = 'kg-femc-revamp-settings';
   // The old page-jump handoff: the life sim now runs the fight in its own page.
   if (/[?&]from=game\b/.test(location.search)) { location.replace('femc-game.html'); return; }
@@ -72,7 +73,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 27;
+  const ART_V = 28;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -895,7 +896,7 @@
         <h1>TARTARUS<small>Full Moon Operation</small></h1>
         <div class="bt-hub-menu">
           ${cont ? `<button type="button" class="bt-btn pink" data-go="cont"><span>Continue from ${esc(cont.label)}</span><small>Access point · ${esc(cont.block)}</small></button>` : ''}
-          <button type="button" class="bt-btn${cont ? '' : ' pink'}" data-go="run"><span>${cont ? 'Start from the bottom' : 'Enter Tartarus'}</span><small>${save.cycle ? `Climbed ×${save.cycle}` : `${D.blocks.length} blocks`}</small></button>
+          <button type="button" class="bt-btn${cont ? '' : ' pink'}" data-go="run"><span>${cont ? 'Start from the bottom' : 'Enter Tartarus'}</span><small>${save.cycle ? `Climbed ×${save.cycle}` : `${D.blocks.filter(b => !b.secret).length} blocks`}</small></button>
           <button type="button" class="bt-btn" data-go="ops"><span>Full Moon Operations</span><small>${opsDone} / ${D.ops.length}</small></button>
           <button type="button" class="bt-btn" data-go="mall"><span>Paulownia Mall</span><small>${yen(save.yen)}</small></button>
           <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="party"><span>Party</span><small>${save.party.length + 1} / 4</small></button><button type="button" class="bt-btn" data-go="equip"><span>Equip</span></button></div>
@@ -1051,27 +1052,33 @@
     save.runs++;
     persist();
     for (;;) {
-      const floor = D.floors[run.fi];
+      // A hidden floor (a cracked wall's stairwell) sits between this floor and the next; it has no number of its own.
+      const base = D.floors[run.fi], floor = TT && run.hiddenOf === base.id ? TT.hiddenFloor(base) : base;
       if (HS) { HS.entered = true; HS.floor = Math.max(HS.floor, floor.gameFloor || 0); }
-      // Test hook: window.__btMap forces a seed for the floor's layout.
-      run.map = MAP.generate(floor, { rand, strongChance: D.map.strongChance * diff().strong });
+      // Test hook: window.__btMap forces a seed for the floor's layout. tartarus.js plans the guardian and the cracked wall.
+      run.map = MAP.generate(floor, { rand, strongChance: D.map.strongChance * diff().strong, plan: TT ? TT.plan(floor, ttCtx(floor)) : {} });
+      if (TT) TT.dress(run.map, floor, ttCtx(floor));
       mapPerks(floor, run.map);
+      if (TT && !floor.hiddenFloor) tip('rooms');
       const r = await explore(floor);
+      if (r === 'secret') { run.hiddenOf = base.id; continue; }
+      if (r === 'monad') { run.hiddenOf = null; run.fi = D.floors.findIndex(f => f.secret); continue; }
       // Sebastian's Save Point: the party wakes at the last access point instead of a Game Over (once a night).
       if (r === 'savepoint') { const ai = save.reached ? D.floors.findIndex(f => f.id === save.reached) : -1; run.fi = ai >= 0 && ai <= run.fi ? ai : run.fi; run.carry = null; run.tired = {}; run.fights = {}; continue; }
       if (r !== 'up') { run = null; if (HO) return hoFinish(r === 'over' ? 'lose' : 'win'); hub(); return; }
       // Rohan's Sketch the Floor remembers floors whose stairs were taken; Kiriko's Fox Spirit heals on the way up.
-      if (!save.floorsMapped.includes(floor.id)) { save.floorsMapped.push(floor.id); persist(); }
+      if (!floor.hiddenFloor && !save.floorsMapped.includes(floor.id)) { save.floorsMapped.push(floor.id); persist(); }
+      if (floor.hiddenFloor) { run.hiddenOf = null; if (!save.tt.secrets.includes(floor.id)) { save.tt.secrets.push(floor.id); persist(); } }
       const tpu = TP();
       if (tpu.foxSpirit) carryEach(u => { u.hp = Math.min(u.maxHp, Math.round(u.hp + u.maxHp * tpu.foxSpirit.v)); });
-      if (floor.top) {
+      if (floor.top && floor.op) {
         const op = D.ops.find(o => o.id === floor.op);
         if (!opCleared(op.id) || run.refight) {
           run.refight = false;
           const res = await fullMoon(op, { climb: true });
           if (res !== 'win') { run = null; if (HO) return hoFinish('lose'); hub(); return; }
         }
-        if (run.fi >= D.floors.length - 1) {
+        if (floor.last) {
           save.cycle++; save.reached = null; persist();
           await complete('top');
           run = null; if (HO) return hoFinish('win'); hub(); return;
@@ -1132,11 +1139,13 @@
     });
   }
 
-  /* One Tartarus fight (a Shadow room or the Reaper). Handles game over → retry. Returns 'win' | 'escaped' | 'over'. */
-  async function fight(floor, { group, strong = false, reaper = false }) {
+  /* One Tartarus fight (a Shadow room, the Reaper, or one of tartarus.js's rooms). Handles game over → retry.
+     Returns 'win' | 'escaped' | 'fled' (a rare Shadow got away: rules.fleeAt) | 'over' | 'savepoint'. */
+  async function fight(floor, { group, strong = false, reaper = false, rules = null, music: tune = null, nav: navKey = null }) {
     for (;;) {
       const snap = JSON.stringify({ carry: run.carry, items: save.items, th: save.th, fights: run.fights, tired: run.tired });
-      const out = await battle({ group, bg: floor.bg, label: floor.label, block: floor.block, boss: reaper, reaper, strong, music: reaper || strong ? 'danger' : 'battle', nav: reaper ? 'reaper' : floor.nav, heat: reaper ? 0 : save.cycle * D.progression.heat });
+      const out = await battle({ group, bg: floor.bg, label: floor.label, block: floor.block, boss: reaper, reaper, strong, rules, music: tune || (reaper || strong ? 'danger' : 'battle'), nav: reaper ? 'reaper' : navKey || floor.nav, heat: reaper ? 0 : save.cycle * D.progression.heat });
+      if (out.result === 'fled') return 'fled';
       if (out.result === 'win') {
         await afterWin(out, { title: `${floor.label} · ${floor.block}`, strong, reaper, back: 'Back to the map' });
         return 'win';
@@ -1190,8 +1199,9 @@
     // Jihoon's Treasure gloves: battle yen +15% (refines raise it) while he's in the fight.
     const yb = (tp.stewardship ? tp.stewardship.v : 0) + (tp.portersTip && run && !run.ops ? tp.portersTip.v : 0) + (BLD && BLD.yenBonus ? BLD.yenBonus(save, roster().map(m => m.id)) / 100 : 0);
     if (yb && rew.yen) { rew.yen = Math.round(rew.yen * (1 + yb)); notes.push(`Yen +${Math.round(yb * 100)}%`); }
+    if (TT && run && !run.ops && !op && !story) TT.expBoost(run, rew, notes); // a moon shrine's Moon's Favour
     // Tarot Dust: what's left of Shadows in Tartarus (cards and refines run on it).
-    if (BLD && run && !run.ops && !op && !story && rand() < 0.4 + (strong ? 0.3 : 0)) { const n = 1 + Math.floor(rand() * 3) + (strong ? 2 : 0) + Math.floor(run.fi / 6); rew.drops.tarot_dust = (rew.drops.tarot_dust || 0) + n; }
+    if (BLD && run && !run.ops && !op && !story && rand() < 0.4 + (strong ? 0.3 : 0)) { const n = 1 + Math.floor(rand() * 3) + (strong ? 2 : 0) + Math.floor((D.floors[run.fi].bi || 0) / 2); rew.drops.tarot_dust = (rew.drops.tarot_dust || 0) + n; }
     // A Capsule Ticket, now and then (the life sim's capsule machine; gacha.js). Story mode only: practice has no mall.
     if (HO && run && !run.ops && !op && !story && D.items.capsule_ticket && rand() < (strong ? 0.12 : 0.05)) { addItem('capsule_ticket'); notes.push('A Capsule Ticket (the machine at Paulownia Mall)'); mark('capsule-ticket'); }
     // A full moon's first clear can leave one of Solar's naginatas (or a searcher's own weapon) behind; Fortune leaves two.
@@ -1365,6 +1375,7 @@
     stairs: { name: 'Stairs', icon: 'room-stairs', color: '#a77bff' }, event: { name: 'Something here', icon: 'room-event', color: '#ff8cc0' }, empty: { name: 'Corridor', icon: 'room-empty', color: '#8a7a9a' },
     shrine: { name: 'Night Orchid', icon: 'room-clock', color: '#c9b8ff' }
   };
+  if (TT) Object.assign(ROOM, TT.ROOMS); // guardian, vault, puzzle, rest, rare, trap, altar, crack
   /* Tartarus bond perks on a fresh floor (build.js): Koromaru's Good Nose (one more chest), Jaemin's Recovery Party (the nightOrchid hook) (a
      shrine), Judy's Tech Savvy (locked chests roll one more item), Fuuka's Oracle Ping (chests and events marked), Widowmaker's
      Infra-Sight (Shadow rooms marked), Mitsuru's Field Report (the way to the stairs), Rohan's Sketch the Floor (floors cleared
@@ -1430,7 +1441,9 @@
         if (busy) return;
         if (a === 'scan') {
           if (!map.scans) { sfx('back'); return; }
-          MAP.scan(map, hasJuno() ? 99 : 3); sfx('ok'); say(hasJuno() ? 'mapScanJuno' : 'mapScan'); mark('map-scan'); render(); return;
+          const found = MAP.scan(map, hasJuno() ? 99 : 3); sfx('ok'); say(hasJuno() ? 'mapScanJuno' : 'mapScan'); mark('map-scan');
+          if (TT) TT.afterScan(ttCtx(floor, say), found); // hidden rooms found, traps marked
+          render(); return;
         }
         if (a === 'items') {
           busy = true; sfx('ok');
@@ -1460,6 +1473,7 @@
         } else res = MAP.move(map, id, { noReaper: !diff().reaper, reaperSteps: D.map.reaperSteps + (tp.timetable ? tp.timetable.v : 0) });
         if (!res.ok) { busy = false; return; }
         if (tp.setlist) extraSight(map);
+        if (TT) TT.afterMove(ttCtx(floor, say)); // walls noticed in passing, golden Shadows running off, Fuuka and the party talking
         sfx('move'); mark('map-move');
         animFrom = from;
         render();
@@ -1500,6 +1514,9 @@
   /* What Fuuka can tell about a room before you step in. */
   function roomInfo(n) {
     if (!n.known) return `<b>???</b><span>Fuuka can’t read this room yet.</span>`;
+    const tti = TT && TT.info(n);
+    if (tti) return tti;
+    if (TT && TT.look(n) === 'empty' && n.type === 'trap') return `<b>Corridor</b><span>An empty corridor.</span>`;
     const r = ROOM[n.type] || ROOM.empty;
     if (n.type === 'shadow') {
       if (n.cleared) return `<b>Cleared</b><span>Nothing left but ash.</span>`;
@@ -1539,16 +1556,18 @@
       const b = MAP.get(map, id);
       if (a.id > b.id || !a.seen || !b.seen) return;
       const pa = pos(a), pb = pos(b), walked = a.visited && b.visited, live = (a.id === map.pos && optIds.includes(b.id)) || (b.id === map.pos && optIds.includes(a.id));
-      edges.push(`<line x1="${pa.x}" y1="${pa.y}" x2="${pb.x}" y2="${pb.y}" class="e${walked ? ' walked' : ''}${live ? ' live' : ''}${a.known && b.known ? '' : ' fog'}"/>`);
+      const sc = map.shortcut && map.shortcut.includes(a.id) && map.shortcut.includes(b.id), hid = a.hidden || b.hidden;
+      edges.push(`<line x1="${pa.x}" y1="${pa.y}" x2="${pb.x}" y2="${pb.y}" class="e${walked ? ' walked' : ''}${live ? ' live' : ''}${a.known && b.known ? '' : ' fog'}${sc ? ' shortcut' : ''}${hid ? ' crack' : ''}"/>`);
     }));
     const S = vert ? 22 : 27;
     const nodeSvg = n => {
-      const p = pos(n), r = ROOM[n.type] || ROOM.empty, opt = optIds.includes(n.id), cur = n.id === map.pos;
-      const known = n.known, icon = !known ? 'room-unknown' : n.type === 'shadow' && n.cleared ? 'room-empty' : r.icon;
-      const col = !known ? '#3a2a3a' : n.type === 'shadow' && n.strong && !n.cleared ? '#ff3b6b' : (r.color || '#8a7a9a');
-      const cls = ['node', `t-${known ? n.type : 'unknown'}`, n.visited ? 'visited' : '', cur ? 'cur' : '', opt ? 'opt' : '', (n.cleared || n.opened || n.used) ? 'done' : '', n.strong && !n.cleared && known ? 'strong' : ''].join(' ');
-      const label = !known ? '???' : n.type === 'shadow' ? (n.cleared ? 'Cleared' : n.strong ? 'Strong' : 'Shadow') : r.name;
-      const IS = S * (n.type === 'empty' && known ? 0.9 : 1.42);
+      const t = TT ? TT.look(n) : n.type; // an unspotted trap looks like a corridor
+      const p = pos(n), r = ROOM[t] || ROOM.empty, opt = optIds.includes(n.id), cur = n.id === map.pos;
+      const known = n.known, icon = !known ? 'room-unknown' : (t === 'shadow' || t === 'guardian' || t === 'rare') && n.cleared ? 'room-empty' : r.icon;
+      const col = !known ? '#3a2a3a' : t === 'shadow' && n.strong && !n.cleared ? '#ff3b6b' : (r.color || '#8a7a9a');
+      const cls = ['node', `t-${known ? t : 'unknown'}`, n.visited ? 'visited' : '', cur ? 'cur' : '', opt ? 'opt' : '', (n.cleared || n.opened || n.used) ? 'done' : '', n.strong && !n.cleared && known ? 'strong' : '', n.hidden ? 'hidden-room' : '', n.risky && known ? 'risky' : ''].join(' ');
+      const label = !known ? '???' : t === 'shadow' ? (n.cleared ? 'Cleared' : n.strong ? 'Strong' : 'Shadow') : t === 'rare' && !n.cleared && n.flee != null ? `Rare · ${n.flee}` : t === 'guardian' && n.cleared ? 'Beaten' : r.name;
+      const IS = S * (t === 'empty' && known ? 0.9 : 1.42);
       const ic = ROOM_ART.has(icon) ? `<image class="glyph art" href="${ICON_DIR}${icon}.webp?v=${ART_V}" x="${p.x - IS / 2}" y="${p.y - IS / 2}" width="${IS}" height="${IS}"/>` : ICON.svg(icon, known && n.type === 'shadow' && n.strong && !n.cleared ? '#ff3b6b' : null, 'glyph').replace('<svg class="bt-icon ', `<svg x="${p.x - IS / 2}" y="${p.y - IS / 2}" width="${IS}" height="${IS}" class="bt-icon `);
       return `<g class="${cls}" ${opt ? `data-node="${n.id}" role="button" tabindex="-1" aria-label="${esc(label)}"` : ''} style="--c:${col}">
         ${opt ? `<polygon class="ring" points="${p.x},${p.y - S - 9} ${p.x + S + 9},${p.y} ${p.x},${p.y + S + 9} ${p.x - S - 9},${p.y}"/>` : ''}
@@ -1565,7 +1584,7 @@
       const rn = MAP.get(map, map.reaper.node), rp = pos(rn);
       reaper = `<g class="reaper-mark" transform="translate(${rp.x} ${rp.y})"><circle r="${S + 12}" class="rm-aura"/><image href="${sart('reaper')}" x="-${S + 6}" y="-${S + 22}" width="${(S + 6) * 2}" height="${(S + 6) * 2.4}" preserveAspectRatio="xMidYMid meet"/><text y="${S + 22}" class="lbl reaper">THE REAPER</text></g>`;
     }
-    const svg = `<svg class="bt-mapsvg${vert ? ' vert' : ''}" viewBox="0 0 ${W} ${H}" role="group" aria-label="${esc(floor.label)} map">
+    const svg = `<svg class="bt-mapsvg${vert ? ' vert' : ''}" style="--bt:${floor.color};--bt2:${floor.tint || floor.color}" viewBox="0 0 ${W} ${H}" role="group" aria-label="${esc(floor.label)} map">
       <defs><pattern id="mgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(125,255,192,.07)" stroke-width="1"/></pattern></defs>
       <rect width="${W}" height="${H}" fill="url(#mgrid)"/>
       ${edges.join('')}${nodes.map(nodeSvg).join('')}${reaper}${marker}</svg>`;
@@ -1577,15 +1596,19 @@
         <span class="bar hp"><i style="width:${u.hp / u.maxHp * 100}%"></i></span><span class="bar sp"><i style="width:${u.sp / u.maxSp * 100}%"></i></span><span class="bar th${u.th >= 100 ? ' full' : ''}"><i style="width:${u.th}%"></i></span></div></div>`;
     }).join('');
     const line = mapLine || ['…', 'neutral'];
+    // A line can be someone in the party's (tartarus.js chatter: [text, face, member id]); else it's the navigator's.
+    const spk = line[2] && member(line[2]) ? member(line[2]) : null;
     const cur = opts[sel];
-    return `<div class="bt-map-bg" style="background-image:url('${floor.bg}')"></div><div class="bt-map-shade" style="--bc:${floor.color}"></div>
+    const gl = TT ? TT.goal(map) : null;
+    return `<div class="bt-map-bg" style="background-image:url('${floor.bg}')"></div><div class="bt-map-shade${floor.hiddenFloor ? ' tt-hidden' : ''}" style="--bc:${floor.color};--bc2:${floor.tint || floor.color}"></div>
       <header class="bt-top bt-map-top">
-        <div class="bt-floorlabel"><b>${esc(floor.label)}</b><span>${esc(floor.block)}<em><br>Tartarus${floor.top ? ' · block top' : ''}</em></span></div>
+        <div class="bt-floorlabel"><b>${esc(floor.label)}</b><span>${esc(floor.hiddenFloor ? 'Hidden floor' : floor.block)}<em><br>Tartarus${floor.top ? ' · block top' : ''}${floor.hiddenFloor ? ` · ${esc(floor.block)}` : ''}</em></span></div>
         <div class="bt-steps${map.reaper ? ' hunted' : danger > 0.75 ? ' near' : ''}" title="Linger too long and the Reaper comes."><span>Steps <b>${steps}</b>${tp.timetable && !map.reaper && !map.reaperGone && !calmFloor ? ` / ${R + tp.timetable.v}` : ''}</span><i style="--p:${danger}"></i><em>${map.reaper ? (diff().reaper ? 'THE REAPER IS HERE' : 'The Reaper isn’t chasing') : map.reaperGone ? 'The Reaper is gone' : calmFloor ? 'Story · no Reaper' : danger > 0.75 ? 'Something is coming…' : 'Quiet'}</em></div>
         <div class="bt-tools"><span class="bt-yen">${ICON.svg('yen')}${yen(save.yen)}</span>${tools()}</div>
       </header>
       <div class="bt-map-stage">${svg}</div>
       <aside class="bt-map-side">
+        ${gl ? `<div class="tt-goal"><span class="${gl.stairs ? 'ok' : ''}"><b>Goal</b>Find the stairs</span><span><b>Side rooms</b>${gl.done} of ${gl.side} done${gl.side && gl.done >= gl.side ? ' ✓' : ''}</span></div>` : ''}
         <div class="bt-map-info">${cur ? roomInfo(cur) : ''}</div>
         <div class="bt-map-party">${partyHtml}</div>
         <div class="bt-map-acts">
@@ -1596,7 +1619,7 @@
         </div>
         <p class="bt-hint">${phone() ? 'Tap a lit room to move' : '←→ pick a room · Enter move · S scan · I items'}</p>
       </aside>
-      <div class="bt-map-nav"><div class="pic fcb">${fimg(NAVI.id, navFace(line[1]))}</div><p><b>${esc(NAVI.name)}</b><span class="tx">${esc(line[0])}</span></p></div>`;
+      <div class="bt-map-nav${spk ? ' mate' : ''}"${spk ? ` style="--mc:${spk.color || '#ff8cc0'}"` : ''}><div class="pic fcb">${spk ? fimg(spk.id, line[1]) : fimg(NAVI.id, navFace(line[1]))}</div><p><b>${esc(spk ? spk.name : NAVI.name)}</b><span class="tx">${esc(line[0])}</span></p></div>`;
   }
 
   /* A full-screen room panel (chest, access point, clock, stairs, events). Resolves with the chosen button's value. */
@@ -1614,6 +1637,18 @@
     });
   }
   const navLine = key => { const l = D.nav[key]; return l ? [String(pickOne(l[0])), l[1]] : null; };
+  /* What tartarus.js gets to work with on a floor (its rooms, puzzles and chatter). say: the map's Fuuka line (explore). */
+  function ttCtx(floor, say = () => {}) {
+    return {
+      D, MAP, ICON, BLD, HO, ART_V, rand, floor, say, navLine, roomPanel, carryEach, rest, memoryFound, roster, member, fimg, esc, yen, gearLine, phone, sfx, mark, tip, persist, addItem, addMat, addGear, show,
+      get save() { return save; }, get run() { return run; },
+      fight: o => fight(floor, o),
+      line: l => { mapLine = l; },
+      sleep, speed, setCtl: c => { ctl = c; },
+      solarAg: () => memberStats(D.party[0], save.lvl, treeFx()).ag,
+      plumes: n => { if (HS) HS.plumes = (HS.plumes || 0) + n; }
+    };
+  }
   const lootHtml = c => {
     const rows = [];
     if (c.yen) rows.push(`<div class="bt-loot">${ICON.svg('yen')}<b>${yen(c.yen)}</b></div>`);
@@ -1626,6 +1661,8 @@
   /* Resolve the room the party just walked into. Returns 'up' | 'leave' | 'over' to end the floor, else nothing. */
   async function room(floor, n, say) {
     const T = 'assets/femc/bg/tartarus-treasure.webp', AP = 'assets/femc/bg/tartarus-access-point.webp';
+    // tartarus.js's rooms (and its event scenes; the stairs on hidden floors and in Monad).
+    if (TT && TT.rooms[n.type] && (n.type !== 'stairs' || TT.ownsStairs(floor))) return TT.rooms[n.type](ttCtx(floor, say), floor, n);
     if (n.type === 'shadow' && !n.cleared) {
       // Kasumi's Light Feet: sometimes the party can slip past (Solar chooses).
       const tpl = TP();
@@ -1832,6 +1869,7 @@
     const R = spec.rules;
     if (!R || !B) return null;
     if (R.interruptAt && B.S.round >= R.interruptAt) return 'interrupt';
+    if (R.fleeAt && B.S.round >= R.fleeAt && B.foes().some(f => !f.dead)) return 'fled'; // a rare Shadow runs
     if (R.roundsMax && B.S.round > R.roundsMax) return 'phase';
     if (at !== 'act') return null;
     const solar = B.party()[0];
@@ -1859,6 +1897,7 @@
     const startBuffs = [], mods = Object.assign({}, fx.mods);
     if (run && run.mood && run.mood.fi === run.fi) { if (run.mood.stat === 'crit') mods.crit = (mods.crit || 0) + 15; else startBuffs.push(run.mood.stat); }
     if (run && run.hoon) { startBuffs.push('atk'); run.hoon = false; }
+    if (TT && run && !spec.op && !RL) TT.battleMods(run, startBuffs); // a moon shrine's blessing, a trap's snare
     if (spec.op && perks.missionBriefing) startBuffs.push({ stat: 'atk', turns: perks.missionBriefing.v });
     const foeHpMult = run && run.curse ? 1 + run.curse : 1;
     if (run) run.curse = 0;
@@ -1908,7 +1947,8 @@
     }
     if (ended) {
       // A story fight that ends on its own terms (an interrupt, or a phase of the finale running out).
-      blogAdd(ended === 'interrupt' ? 'The fight stops.' : 'Something changes.', 'sys');
+      blogAdd(ended === 'interrupt' ? 'The fight stops.' : ended === 'fled' ? 'It got away!' : 'Something changes.', 'sys');
+      if (ended === 'fled') { nav('fled'); B.foes().forEach(f => { const e = BT.enemies.get(f.id); if (e && !f.dead) e.classList.add('tt-fleeing'); }); }
       setActive(null); hideMenu();
       B.party().forEach(p => { save.th[p.mid] = Math.round(p.th); });
       if (run) run.carry = Object.fromEntries(B.party().map(p => [p.mid, { hp: p.dead ? 1 : p.hp, sp: p.sp, th: p.th }]));
@@ -2084,6 +2124,7 @@
     const d = D.enemies[u.kind];
     const el = document.createElement('div');
     el.className = 'bt-enemy';
+    if (d.cls) el.classList.add(d.cls); // tartarus.js: 'golden' rare Shadows, 'guardian' block guardians
     el.dataset.id = u.id;
     let body;
     const art = d.img && (window.FEMC_SHADOW_ART || {})[d.img];
@@ -4691,7 +4732,8 @@
   const hoAvail = () => (HO ? ['solar'].concat((HO.request.available || []).filter(id => id !== 'solar' && member(id))) : D.party.filter(m => !m.searcher).map(m => m.id));
   const hoTired = () => (HO && ['tired', 'sick'].includes(HO.request.condition) ? { solar: true } : {});
   // calendar.js floorCaps, in order; block b of the prototype's Tartarus opens with the b-th cap.
-  const HO_CAPS = [16, 36, 64, 92, 118, 144, 172];
+  // = each climbable block's top floor (16, 36, 64, 92, 118, 144, 172); Monad's floors are opened one by one (tartarus.js floorOpen).
+  const HO_CAPS = D.blocks.filter(b => !b.secret).map(b => b.floors[b.floors.length - 1]);
   function hoBlockCap() { const mf = +(HO && HO.request.maxFloor) || 0; let b = 0; HO_CAPS.forEach((c, i) => { if (mf >= c) b = i; }); return Math.min(b, D.blocks.length - 1); }
   // The entrance of the newest block that's open: its date has come and the full moon below it is cleared.
   function hoStartFi() {
@@ -4701,11 +4743,7 @@
   }
   function hoBegin() {
     const R = HO.request;
-    D.floors.forEach(f => {
-      const lo = f.bi === 0 ? 1 : HO_CAPS[f.bi - 1] || HO_CAPS[HO_CAPS.length - 1], hi = HO_CAPS[f.bi] || lo + 30;
-      f.gameFloor = Math.round(lo + (f.fi + 1) * (hi - lo) / 3);
-      f.label = `${f.gameFloor}F`;
-    });
+    // Floors carry their real numbers since 2026-10-25 (data.js blocks[].floors): nothing to relabel.
     // The life sim owns the party, money, items, gear, operations and fragments. Unknown ids are skipped.
     const avail = hoAvail();
     catchUpRecruits(save, avail, 'available');
@@ -4725,9 +4763,9 @@
     // Bond skills (bonds.js): the links on their romance route, and today's date (a bond's last day).
     const gifts = BLD ? BLD.syncBonds(save, ranks || {}, (R.social && R.social.reversed) || [], (R.social && Array.isArray(R.social.romance)) ? R.social.romance : null, (HO.date && HO.date.md) || null) : [];
     delete save.forceForm;
-    if (save.reached) { const i = D.floors.findIndex(f => f.id === save.reached); if (i < 0 || D.floors[i].bi > hoBlockCap()) save.reached = null; }
+    if (save.reached) { const i = D.floors.findIndex(f => f.id === save.reached), f = D.floors[i]; if (i < 0 || (f.secret ? !(TT && TT.floorOpen(ttCtx(f), f)) : f.bi > hoBlockCap())) save.reached = null; }
     E.formsList().forEach(f => { if (!save.forms.includes(f) && E.formUnlocked(Object.assign({}, save, { forms: [] }), f)) save.forms.push(f); });
-    HS = { items0: Object.assign({}, save.items), yen0: save.yen, exp: {}, frags: [], bosses: [], floor: 0, entered: false, scripted: false, finished: false, gifts };
+    HS = { items0: Object.assign({}, save.items), yen0: save.yen, exp: {}, frags: [], bosses: [], floor: 0, entered: false, scripted: false, finished: false, gifts, plumes: 0 };
     // Night kits from bonds (Fuuka's bento, Ken's bead, Sunoo's soul): only good tonight, never sent back.
     // Night-only dishes the life sim packed (request.kits: Shinjiro's Kitchen Duty leftovers).
     if (HO.kind === 'tartarus' && R.kits) Object.entries(R.kits).forEach(([k, n]) => { if (D.items[k] && n > 0) { save.items[k] = (save.items[k] || 0) + n; mark('night-kit-' + k); } });
@@ -4785,6 +4823,7 @@
     if (HO.kind === 'tartarus') {
       r.fatigue = HS.entered ? (['tired', 'sick'].includes(R.condition) ? 'sick' : 'tired') : (R.condition || 'good');
       r.floorsReached = HS.floor || 0;
+      if (HS.plumes) r.plumes = HS.plumes; // Velvet Plumes from vaults, guardians, rare Shadows and hidden rooms (core.js applyResult)
     } else if (HO.kind === 'operation' && !HS.scripted && outcome !== 'interrupt') r.fatigue = R.condition === 'sick' ? 'sick' : 'tired';
     return Object.assign(r, extra);
   }
@@ -5023,7 +5062,7 @@
     openSettings: k => openSettings(k), openHelp: t => openHelp(t), openLog, toggleRush, exportCode, parseCode, diff,
     screen: () => screen, marks, freeze() { frozen = true; if (FX) FX.pause(); }, unfreeze() { frozen = false; if (FX) FX.resume(); },
     awakening: () => awakening(app.firstElementChild || app),
-    get handoff() { return HO; }, get hs() { return HS; }, hoFinish: (o, x) => hoFinish(o, x),
+    get handoff() { return HO; }, get hs() { return HS; }, hoFinish: (o, x) => hoFinish(o, x), tt: f => ttCtx(f || D.floors[0]), climb: id => startRun(id || null), get mapLine() { return mapLine; }, // tests
     reloadSave() { save = loadSave(); }, settingsChanged, get embedded() { return !!BR; },
     playEvents: evs => play(evs), // tests: play engine-shaped events through the real presentation (battle lines, cut-ins)
     music: { state: () => music.state(), play: (k, o) => music.play(k, o), world: n => music.world(n), endWorld: () => music.endWorld() }

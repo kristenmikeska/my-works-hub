@@ -888,40 +888,74 @@ window.FEMC_BATTLE_DATA = (() => {
       note: 'The cap is gone. Her hair is down. She looks like you.' })
   };
 
-  /* ── Tartarus: seven blocks, three floors each, a full moon at the top of each block.
-     Each floor is a node map (map.js). pool: Shadow groups; strong: rarer, tougher groups. The last floor's stairs lead to the
-     block's full-moon operation (`op`); once that's cleared the barrier stays open. */
+  /* ── Tartarus: seven blocks you climb, plus Monad (secret), a full moon at the top of each of the seven.
+     Floors carry their real P3 numbers (2F … 172F; Monad 176F … 254F), the same numbers the life sim's calendar opens by date
+     (calendar.js floorCaps): a block's floors open together on its date, and its top waits for its full moon. Each floor
+     is a node map (map.js); its rooms come from tartarus.js (room types, puzzles, events, loot).
+     A block's identity: color + tint (its palette on the map), pool / strong (its Shadows: a floor gets a sliding window of
+     the pool, so the mix turns over as you climb), rooms (how often each room type turns up, ×1 when not listed), guardian
+     ({ at: [floor numbers], kind }: a mini-boss that stands between the stairs and the rest of that floor), lvl (the level
+     its rare Shadows and loot are tuned for). The last floor's stairs lead to the block's full-moon operation (`op`); once
+     that's cleared the barrier stays open. Monad (`secret`) is only found through a cracked wall at the very top. */
   const blocks = [
-    { id: 'thebel', name: 'Thebel', bg: BG + 'tartarus-scene.webp', color: '#7dffc0', op: 'priestess', floors: ['2F', '4F', '6F'],
+    { id: 'thebel', name: 'Thebel', bg: BG + 'tartarus-scene.webp', color: '#7dffc0', tint: '#1d6b4a', op: 'priestess', lvl: 6,
+      floors: [2, 4, 6, 8, 11, 13, 16], guardian: { at: [11], kind: 'guard_thebel' },
+      rooms: { chest: 1.3, event: 1.2, rest: 1.3, puzzle: 1.1, trap: 0.5, vault: 0.6, rare: 0.8, altar: 0.4 },
       pool: [['maya', 'maya', 'maya'], ['maya', 'slime', 'maya'], ['hand', 'beetle', 'hand'], ['snake', 'beetle', 'slime'], ['hand', 'snake'], ['table', 'maya', 'slime'], ['cupid', 'table', 'hand']],
-      strong: [['cupid', 'twins@8'], ['table', 'beetle', 'snake'], ['magus@8', 'cupid']], tiers: [[0, 3], [2, 5], [3, 7]] },
-    { id: 'arqa', name: 'Arqa', bg: BG + 'arya.webp', color: '#ff8cc0', op: 'empress', floors: ['9F', '12F', '15F'],
+      strong: [['cupid', 'twins@8'], ['table', 'beetle', 'snake'], ['magus@8', 'cupid']] },
+    { id: 'arqa', name: 'Arqa', bg: BG + 'arya.webp', color: '#ff8cc0', tint: '#7a1f4f', op: 'empress', lvl: 12,
+      floors: [17, 20, 23, 26, 29, 31, 33, 36], guardian: { at: [29], kind: 'guard_arqa' },
+      rooms: { puzzle: 1.6, event: 1.3, chest: 1.1, rest: 1, trap: 0.8, altar: 0.8 },
       pool: [['venus', 'cupid@10', 'hand@10'], ['magus', 'papillon'], ['twins', 'venus'], ['papillon', 'pesce'], ['magus', 'twins', 'cupid@10'], ['pesce', 'venus', 'papillon']],
-      strong: [['pesce@14', 'magus@13'], ['twins@14', 'papillon@13', 'venus@13']], tiers: [[0, 2], [1, 4], [2, 6]] },
-    { id: 'yabbashah', name: 'Yabbashah', bg: BG + 'tartarus-yabbashah.webp', color: '#ff5b5b', op: 'hierophant', floors: ['18F', '21F', '24F'],
+      strong: [['pesce@14', 'magus@13'], ['twins@14', 'papillon@13', 'venus@13']] },
+    { id: 'yabbashah', name: 'Yabbashah', bg: BG + 'tartarus-yabbashah.webp', color: '#ff5b5b', tint: '#6b1010', op: 'hierophant', lvl: 17,
+      floors: [37, 41, 45, 48, 52, 55, 58, 61, 64], guardian: { at: [52], kind: 'guard_yabbashah' },
+      rooms: { trap: 1.7, vault: 1.3, shadow: 1.1, strong: 1.2, rest: 0.8, puzzle: 0.8 },
       pool: [['dice', 'relic'], ['mother', 'dice'], ['hablerie', 'balance'], ['relic', 'mother', 'dice'], ['balance', 'hablerie', 'relic'], ['mother', 'balance']],
-      strong: [['mother@19', 'balance@19'], ['hablerie@19', 'dice@19', 'relic@19']], tiers: [[0, 2], [1, 4], [2, 5]] },
-    { id: 'tziah', name: 'Tziah', bg: BG + 'tartarus-tziah.webp', color: '#c9d6ff', op: 'lovers', floors: ['27F', '30F', '33F'],
+      strong: [['mother@19', 'balance@19'], ['hablerie@19', 'dice@19', 'relic@19']] },
+    { id: 'tziah', name: 'Tziah', bg: BG + 'tartarus-tziah.webp', color: '#c9d6ff', tint: '#3a4a7a', op: 'lovers', lvl: 22,
+      floors: [65, 69, 73, 76, 80, 83, 86, 89, 92], guardian: { at: [80], kind: 'guard_tziah' },
+      rooms: { puzzle: 1.5, crack: 1.8, event: 1.2, rare: 1.1, trap: 1 },
       pool: [['dancer', 'king'], ['turret', 'bambino'], ['pot', 'dancer'], ['king', 'turret', 'bambino'], ['pot', 'bambino', 'dancer'], ['king', 'pot']],
-      strong: [['turret@24', 'pot@24'], ['dancer@24', 'king@24', 'bambino@24']], tiers: [[0, 2], [1, 4], [2, 5]] },
-    { id: 'harabah', name: 'Harabah', bg: BG + 'harabah.webp', color: '#ffd36b', op: 'chariot', floors: ['36F', '39F', '42F'],
+      strong: [['turret@24', 'pot@24'], ['dancer@24', 'king@24', 'bambino@24']] },
+    { id: 'harabah', name: 'Harabah', bg: BG + 'harabah.webp', color: '#ffd36b', tint: '#6b4a10', op: 'chariot', lvl: 27,
+      floors: [93, 97, 101, 105, 109, 112, 115, 118], guardian: { at: [109], kind: 'guard_harabah' },
+      rooms: { shadow: 1.2, strong: 1.4, vault: 1.5, altar: 1.3, puzzle: 0.8 },
       pool: [['drive', 'giant'], ['beast', 'niceguy'], ['basalt', 'drive'], ['giant', 'beast', 'drive'], ['niceguy', 'basalt', 'beast'], ['giant', 'niceguy']],
-      strong: [['giant@29', 'basalt@29'], ['drive@29', 'beast@29', 'niceguy@29']], tiers: [[0, 2], [1, 4], [2, 5]] },
-    { id: 'adamah', name: 'Adamah', bg: BG + 'adamah.webp', color: '#b07bff', op: 'hermit', floors: ['45F', '48F', '51F'],
+      strong: [['giant@29', 'basalt@29'], ['drive@29', 'beast@29', 'niceguy@29']] },
+    { id: 'adamah', name: 'Adamah', bg: BG + 'adamah.webp', color: '#b07bff', tint: '#3e1a6b', op: 'hermit', lvl: 32,
+      floors: [119, 123, 127, 131, 135, 138, 141, 144], guardian: { at: [135], kind: 'guard_adamah' },
+      rooms: { rare: 1.8, trap: 1.3, crack: 1.3, event: 1.1, rest: 0.9 },
       pool: [['knight', 'machine'], ['castle', 'tower'], ['knight', 'tower'], ['machine', 'castle', 'knight'], ['tower', 'machine', 'castle'], ['knight', 'beast@31']],
-      strong: [['castle@34', 'tower@34'], ['seeker@33']], tiers: [[0, 2], [1, 4], [2, 5]] },
-    { id: 'empyrean', name: 'Empyrean', bg: BG + 'empyrean.webp', color: '#fff2b0', op: 'fortune', floors: ['54F', '57F', '60F'],
+      strong: [['castle@34', 'tower@34'], ['seeker@33']] },
+    { id: 'empyrean', name: 'Empyrean', bg: BG + 'empyrean.webp', color: '#fff2b0', tint: '#7a6a2a', op: 'fortune', lvl: 37,
+      floors: [145, 149, 153, 157, 160, 163, 166, 169, 172], guardian: { at: [160], kind: 'guard_empyrean' },
+      rooms: { strong: 1.5, altar: 1.6, rare: 1.3, vault: 1.2, trap: 1.1 },
       pool: [['knight@35', 'tower@35'], ['machine@36', 'castle@35'], ['giant@35', 'dancer@35', 'pot@35'], ['seeker', 'knight@35'], ['basalt@36', 'turret@36', 'bambino@36']],
-      strong: [['seeker@39', 'tower@38'], ['seeker@38', 'seeker@38']], tiers: [[0, 2], [1, 3], [2, 4]] }
+      strong: [['seeker@39', 'tower@38'], ['seeker@38', 'seeker@38']] },
+    // Monad: the secret block above the tower's top (a cracked wall on 172F leads in, once the date opens it: 204F on 11/4,
+    // 230F on 12/3, 254F on 1/1). No full moon at its top; its last stairs end at a sealed door.
+    { id: 'monad', name: 'Monad', bg: BG + 'tartarus-coffins.webp', color: '#6ab0ff', tint: '#0b2a5c', op: null, lvl: 47, secret: true,
+      floors: [176, 184, 192, 204, 212, 222, 230, 238, 246, 254], guardian: { at: [204, 246], kind: 'guard_monad' },
+      rooms: { strong: 1.8, vault: 1.5, crack: 1.4, rare: 1.4, trap: 1.3, rest: 1.2, altar: 1.2, chest: 0.8 },
+      pool: [['seeker@44', 'knight@45'], ['castle@45', 'tower@46'], ['giant@46', 'basalt@46', 'machine@45'], ['seeker@47', 'seeker@46'], ['dancer@47', 'pot@47', 'turret@46'], ['tower@48', 'castle@48'], ['beast@48', 'drive@48', 'niceguy@48'], ['seeker@50', 'tower@49', 'knight@49']],
+      strong: [['seeker@52', 'seeker@51'], ['castle@52', 'tower@52', 'knight@51']] }
   ];
-  /* Floors, in climbing order. id: f + number (2F → f2). access: chance of an access point (the first floor of a block always has one). */
+  /* Floors, in climbing order (Monad last). id: f + number (16F → f16). access: chance of an access point (the first floor of a
+     block always has one). top: the block's last floor (its barrier). last: the top of the climb (172F). */
   const floors = [];
-  blocks.forEach((b, bi) => b.floors.forEach((label, fi) => {
-    const t = b.tiers[fi];
-    floors.push({ id: 'f' + parseInt(label, 10), label, block: b.name, blockId: b.id, bi, fi, bg: b.bg, color: b.color,
-      pool: b.pool.slice(t[0], t[1] + 1), strong: b.strong, nav: fi === 0 ? 'block_' + b.id : 'floor', top: fi === b.floors.length - 1, op: fi === b.floors.length - 1 ? b.op : null,
-      access: fi === 0 ? 1 : 0.6, layers: 5 + Math.min(2, Math.floor(bi / 2)) });
+  blocks.forEach((b, bi) => b.floors.forEach((n, fi) => {
+    const N = b.floors.length, P = b.pool.length, win = Math.max(2, Math.ceil(P * 0.6)), at = N > 1 ? Math.round(fi * (P - win) / (N - 1)) : 0;
+    const top = fi === N - 1;
+    floors.push({ id: 'f' + n, label: n + 'F', gameFloor: n, block: b.name, blockId: b.id, bi, fi, bg: b.bg, color: b.color, tint: b.tint,
+      pool: b.pool.slice(at, at + win), strong: b.strong, nav: fi === 0 ? 'block_' + b.id : 'floor', top, op: top ? b.op : null,
+      access: fi === 0 ? 1 : 0.55, layers: b.secret ? 7 : 5 + Math.min(2, Math.floor(bi / 2)), rooms: b.rooms || {}, lvl: b.lvl,
+      guardian: b.guardian && b.guardian.at.includes(n) ? b.guardian.kind : null, secret: !!b.secret, last: !b.secret && top && bi === blocks.filter(x => !x.secret).length - 1 });
   }));
+  /* Saves from before 2026-10-25 (three floors a block: f2 f4 f6 · f9 f12 f15 · … · f54 f57 f60). The life sim showed them as
+     game floors; save.js (tv 2) moves an access point there to the same game floor, which is a floor of the new list. */
+  const oldFloors = { ids: [['f2', 'f4', 'f6'], ['f9', 'f12', 'f15'], ['f18', 'f21', 'f24'], ['f27', 'f30', 'f33'], ['f36', 'f39', 'f42'], ['f45', 'f48', 'f51'], ['f54', 'f57', 'f60']],
+    caps: [16, 36, 64, 92, 118, 144, 172] };
 
   /* Full Moon Operations, in order. Each unlocks when the one before it is cleared; all can be replayed.
      arena: the battle background. lvl: the level the fight is tuned for. */
@@ -944,10 +978,13 @@ window.FEMC_BATTLE_DATA = (() => {
       brief: 'It hides behind its effigies. While any of them stand, nothing touches it. Knock them all Down, then go for the Hanged Man.' }
   ];
 
-  /* Node map settings (map.js). steps: when the Reaper comes. weights: how often each room appears in the middle layers. */
+  /* Node map settings (map.js). steps: when the Reaper comes. weights: how often each room appears in the middle layers
+     (a block's `rooms` multiplies them; `max` caps each type on a floor). The new room types (2026-10-25) are tartarus.js's. */
   const map = {
-    reaperSteps: 22, reaperWarn: 5, clockChance: 0.55, lockedChance: 0.45,
-    weights: { shadow: 5, chest: 2, event: 1.5, empty: 1.2 },
+    reaperSteps: 22, reaperWarn: 5, clockChance: 0.35, lockedChance: 0.35,
+    weights: { shadow: 5, chest: 1.6, event: 1.2, empty: 1, trap: 0.8, puzzle: 0.9, rest: 0.6, vault: 0.5, rare: 0.45, altar: 0.25 },
+    max: { chest: 2, event: 2, trap: 2, puzzle: 1, rest: 1, vault: 1, rare: 1, altar: 1 },
+    crackChance: 0.4, shortcutChance: 0.45,
     strongChance: 0.18,
     // Chest contents by block index: yen range, item ids, gear tier offset. Locked chests roll twice on the better table.
     chest: { yen: [[120, 360], [400, 900], [700, 1500], [1100, 2200], [1600, 3000], [2200, 4000], [3000, 5200]],
@@ -1504,5 +1541,5 @@ window.FEMC_BATTLE_DATA = (() => {
   };
 
   return { portraits: P, faceFocus, elements, affinityOrder, skills, ailments, tactics, attack, personas, party, defaultParty, theurgyGain, items, startItems, startYen, materials,
-    gear, startGear, shops, enemies, blocks, floors, ops, map, events, memories, memoryPlaceholder, music, clips, navigator, nav, tree, treeCenter, ptrees, ptreeRanks, ptreeChoice, chains, buffRules, skillSlots, progression, difficulty, glossary, tips };
+    gear, startGear, shops, enemies, blocks, floors, oldFloors, ops, map, events, memories, memoryPlaceholder, music, clips, navigator, nav, tree, treeCenter, ptrees, ptreeRanks, ptreeChoice, chains, buffRules, skillSlots, progression, difficulty, glossary, tips };
 })();

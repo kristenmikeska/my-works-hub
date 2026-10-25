@@ -1,7 +1,13 @@
 /* FEMC Tartarus node maps: rules only, no DOM. Each floor is a small branching graph of rooms from the arrival point to the stairs.
-   battle.js draws it (SVG) and resolves rooms; this file builds the graph, tracks fog of war and moves the Reaper.
-   Node: { id, layer, row, x, y (0..1), type, links, seen, known, visited, cleared, group, strong, chest, used }
-   type: start | shadow | chest | locked | clock | access | stairs | event | empty */
+   battle.js draws it (SVG) and resolves rooms (tartarus.js the newer ones); this file builds the graph, tracks fog of war and
+   moves the Reaper.
+   Node: { id, layer, row, x, y (0..1), type, links, seen, known, visited, cleared, group, strong, chest, used,
+           hidden (a room behind a cracked wall: invisible until `found` by a scan or by walking past it), secret (what's behind it),
+           risky (the far end of a shortcut) }
+   type: start | shadow | chest | locked | clock | access | stairs | event | empty, and since 2026-10-25 (tartarus.js):
+         guardian (a mini-boss between the stairs and the rest of the floor) | vault | puzzle | rest | rare | trap | altar | crack
+   generate(floor, { rand, strongChance, plan }): plan (tartarus.js plan()) = { guardian: kind, crack: 'loot' | 'memory' |
+   'floor' | 'monad', force: [types next to the start] (tests) }. */
 window.FemcTartarusMap = (() => {
   const D = () => window.FEMC_BATTLE_DATA;
 
@@ -33,9 +39,9 @@ window.FemcTartarusMap = (() => {
     return { yen: Math.round((a + R() * (b - a)) / 10) * 10 };
   }
 
-  /* Build a floor. floor: an entry of data.floors. opts: { rand, strongChance (difficulty override) } */
-  function generate(floor, { rand = Math.random, strongChance = null } = {}) {
-    const R = rand, M = D().map, L = floor.layers || 5;
+  /* Build a floor. floor: an entry of data.floors. opts: { rand, strongChance (difficulty override), plan (above) } */
+  function generate(floor, { rand = Math.random, strongChance = null, plan = {} } = {}) {
+    const R = rand, M = D().map, L = floor.layers || 5, bias = floor.rooms || {};
     const nodes = [], byLayer = [];
     let uid = 0;
     const add = (layer, row, n) => {
@@ -47,6 +53,7 @@ window.FemcTartarusMap = (() => {
       return node;
     };
     const link = (a, b) => { if (a === b || a.links.includes(b.id)) return; a.links.push(b.id); b.links.push(a.id); };
+    const unlink = (a, b) => { a.links = a.links.filter(x => x !== b.id); b.links = b.links.filter(x => x !== a.id); };
     for (let l = 0; l < L; l++) {
       const n = l === 0 || l === L - 1 ? 1 : (R() < 0.55 ? 3 : 2);
       for (let r = 0; r < n; r++) add(l, r, n);
@@ -76,6 +83,11 @@ window.FemcTartarusMap = (() => {
     const mid = nodes.filter(n => n !== start && n !== stairs);
     const free = () => mid.filter(n => n.type === 'empty' && !n.fixed);
     const place = (type, filter) => { const c = free().filter(filter || (() => true)); if (!c.length) return null; const n = pick(R, c); n.type = type; n.fixed = true; return n; };
+    // A block guardian stands in the room before the stairs, and it's the only way to them.
+    if (plan.guardian) {
+      const g = place('guardian', n => n.layer === L - 2);
+      if (g) { stairs.links.slice().forEach(id => { const o = nodes.find(x => x.id === id); if (o !== g) unlink(o, stairs); }); link(g, stairs); g.kind = plan.guardian; }
+    }
     if (R() < (floor.access != null ? floor.access : 0.6)) place('access', n => n.layer <= Math.max(1, Math.floor(L / 2)));
     if (R() < M.clockChance) place('clock', n => n.layer >= 2);
     if (R() < M.lockedChance) place('locked', n => n.layer >= 2);
@@ -84,31 +96,65 @@ window.FemcTartarusMap = (() => {
     // Two Shadows at least, one of them guarding the way to the stairs.
     place('shadow', n => n.layer === L - 2);
     place('shadow', n => n.layer <= 2);
+    // The rest by weight: the block's `rooms` bias times the base weights, each type capped per floor.
+    const W = {};
+    Object.keys(M.weights).forEach(k => { W[k] = M.weights[k] * (bias[k] != null ? bias[k] : 1); });
+    const cap = M.max || {};
+    const count = t => nodes.filter(x => x.type === t).length;
     free().forEach(n => {
-      const counts = t => nodes.filter(x => x.type === t).length;
-      let t = pickW(R, M.weights);
-      if (t === 'chest' && counts('chest') >= 2) t = 'shadow';
-      if (t === 'event' && counts('event') >= 2) t = 'empty';
+      let t = pickW(R, W);
+      for (let tries = 0; cap[t] != null && count(t) >= cap[t] && tries < 6; tries++) t = pickW(R, W);
+      if (cap[t] != null && count(t) >= cap[t]) t = R() < 0.6 ? 'shadow' : 'empty';
       n.type = t;
     });
+    // Tests: put these room types right next to the arrival point.
+    if (Array.isArray(plan.force) && plan.force.length) {
+      const near = mid.filter(n => start.links.includes(n.id) && n.type !== 'guardian');
+      plan.force.forEach((t, i) => { const n = near[i % Math.max(1, near.length)]; if (n) { n.type = t; n.forced = true; } });
+    }
+    // A shortcut: a passage from the first rooms straight to the last layer before the stairs. It saves steps (the Reaper)
+    // but something waits where it comes out.
+    let shortcut = null;
+    if (L >= 5 && R() < M.shortcutChance) {
+      const A = byLayer[1].filter(n => !n.forced), Bs = byLayer[L - 2].filter(n => ['shadow', 'empty', 'chest', 'event', 'trap'].includes(n.type) && !n.forced);
+      const a = A.length && pick(R, A), b = Bs.length && pick(R, Bs);
+      if (a && b && !a.links.includes(b.id)) {
+        link(a, b); shortcut = [a.id, b.id]; b.risky = true;
+        b.type = R() < 0.5 ? 'trap' : 'shadow'; if (b.type === 'shadow') b.strongForce = true;
+      }
+    }
+    // A cracked wall: a hidden room off the top or bottom row (a dead end), only seen once found.
+    if (plan.crack) {
+      const rows = mid.filter(n => n.layer >= 1 && n.layer <= L - 2 && n.type !== 'guardian' && (byLayer[n.layer][0] === n || byLayer[n.layer][byLayer[n.layer].length - 1] === n));
+      const par = rows.length ? pick(R, rows) : null;
+      if (par) {
+        const up = byLayer[par.layer].length === 1 ? R() < 0.5 : byLayer[par.layer][0] === par;
+        const c = { id: 'n' + uid++, layer: par.layer, row: -1, x: Math.max(0.04, Math.min(0.96, par.x + 0.05)), y: up ? Math.max(0.0, par.y - 0.19) : Math.min(1.0, par.y + 0.19),
+          type: 'crack', secret: plan.crack, hidden: true, found: false, links: [], seen: false, known: false, visited: false, cleared: false };
+        nodes.push(c); link(par, c);
+      }
+    }
     const bi = floor.bi || 0;
     nodes.forEach(n => {
       delete n.fixed;
       if (n.type === 'shadow') {
-        n.strong = !!(floor.strong && floor.strong.length && R() < (strongChance != null ? strongChance : M.strongChance));
+        n.strong = !!(n.strongForce || (floor.strong && floor.strong.length && R() < (strongChance != null ? strongChance : M.strongChance) * (bias.strong || 1)));
+        if (n.strong && !(floor.strong && floor.strong.length)) n.strong = false;
         n.group = (n.strong ? pick(R, floor.strong) : pick(R, floor.pool)).slice();
       }
+      delete n.strongForce;
       if (n.type === 'chest') n.chest = rollChest(R, bi, false);
       if (n.type === 'locked') n.chest = rollChest(R, bi, true);
     });
-    const map = { floor: floor.id, nodes, start: start.id, stairs: stairs.id, pos: start.id, prev: null, steps: 0, reaper: null, warned: false, scans: 1, layers: L };
+    const map = { floor: floor.id, nodes, start: start.id, stairs: stairs.id, pos: start.id, prev: null, steps: 0, reaper: null, warned: false, scans: 1, layers: L, shortcut };
     visit(map, start.id);
     get(map, stairs.id).known = true; get(map, stairs.id).seen = true; // Fuuka always senses the stairs
     return map;
   }
 
   const get = (map, id) => map.nodes.find(n => n.id === id);
-  const neighbors = (map, id) => get(map, id).links.map(x => get(map, x));
+  const open = n => !n.hidden || n.found; // a room behind a cracked wall stays out of reach until it's found
+  const neighbors = (map, id) => get(map, id).links.map(x => get(map, x)).filter(open);
   /* Visiting reveals the room's neighbours (their type) and, faintly, the rooms beyond (position only). */
   function visit(map, id) {
     const n = get(map, id);
@@ -118,12 +164,21 @@ window.FemcTartarusMap = (() => {
       neighbors(map, a.id).forEach(b => { b.seen = true; });
     });
   }
-  /* Fuuka's scan: reveal everything within `depth` steps (Infinity for Juno). */
+  /* Fuuka's scan: reveal everything within `depth` steps (Infinity for Juno). Hidden rooms in range are found, traps spotted.
+     Returns { found: [hidden rooms found], traps: [traps spotted] }. */
   function scan(map, depth = 3) {
-    const dist = bfs(map, map.pos).dist;
-    map.nodes.forEach(n => { if (dist[n.id] <= depth) { n.seen = true; n.known = true; } });
+    const dist = bfs(map, map.pos).dist, out = { found: [], traps: [] };
+    map.nodes.forEach(n => {
+      if (!(dist[n.id] <= depth)) return;
+      if (n.hidden && !n.found) { n.found = true; out.found.push(n); }
+      if (n.type === 'trap' && !n.spotted && !n.used) { n.spotted = true; out.traps.push(n); }
+      n.seen = true; n.known = true;
+    });
     map.scans = Math.max(0, map.scans - 1);
+    return out;
   }
+  /* Reveal a hidden room (walking past it, a perk, a test). */
+  function find(map, id) { const n = get(map, id); if (n && n.hidden && !n.found) { n.found = true; n.seen = n.known = true; return true; } return false; }
   function bfs(map, from) {
     const dist = { [from]: 0 }, prev = {}, q = [from];
     while (q.length) {
@@ -139,8 +194,8 @@ window.FemcTartarusMap = (() => {
   /* Move the party to an adjacent room. Returns what happened: { ok, caught, spawned, warn, reaperMoved }.
      noReaper (Story difficulty): the Reaper never comes, and one that's already here stops chasing. */
   function move(map, to, { reaperSteps = D().map.reaperSteps, warnAt = D().map.reaperWarn, noReaper = false } = {}) {
-    const here = get(map, map.pos);
-    if (!here.links.includes(to)) return { ok: false };
+    const here = get(map, map.pos), dest = get(map, to);
+    if (!here.links.includes(to) || !dest || !open(dest)) return { ok: false };
     map.prev = map.pos;
     map.pos = to;
     map.steps++;
@@ -150,7 +205,7 @@ window.FemcTartarusMap = (() => {
     if (noReaper) return out;
     if (!map.reaper && !map.reaperGone && map.steps >= reaperSteps) {
       const { dist } = bfs(map, to);
-      const far = map.nodes.filter(n => n.id !== to && n.type !== 'start').sort((a, b) => (dist[b.id] || 0) - (dist[a.id] || 0))[0];
+      const far = map.nodes.filter(n => n.id !== to && n.type !== 'start' && !n.hidden && dist[n.id] != null).sort((a, b) => (dist[b.id] || 0) - (dist[a.id] || 0))[0];
       map.reaper = { node: far.id, moves: 0 };
       out.spawned = true;
     } else if (map.reaper) {
@@ -165,5 +220,5 @@ window.FemcTartarusMap = (() => {
   /* After beating the Reaper: it's gone for this floor. */
   const banishReaper = map => { map.reaper = null; map.reaperGone = true; };
 
-  return { generate, get, neighbors, visit, scan, bfs, move, retreat, banishReaper, rollChest };
+  return { generate, get, neighbors, visit, scan, find, open, bfs, move, retreat, banishReaper, rollChest, pickW };
 })();

@@ -1691,7 +1691,7 @@ window.FemcBattleEngine = (() => {
         if (f) { f.heard = true; ev.push({ t: 'heard', tgt: f.id }); if (S.round === 1) perkEv(ev, 'hearRoom', { tgt: f.id, quiet: true }); }
       }
     }
-    /* The start of a battle: cards' opening buffs and Theurgy, set bonuses, the night's buffs (battle.js setup.startBuffs:
+    /* The start of a battle: cards' opening buffs and Theurgy, set bonuses, the night's buffs (battle.js setup.startBuffs, { stat, v: -1 } a debuff:
        Yunjin's mood, Danielle's The Folder (missionBriefing), Jihoon's Almighty Hoon) and the start-of-battle perks. */
     function start() {
       const ev = [], L = leader();
@@ -1702,7 +1702,7 @@ window.FemcBattleEngine = (() => {
         (u.openBuff || []).forEach(st => buff(u, st, 1, ev));
       });
       [...new Set([].concat(...alive(party()).map(u => u.partyOpen || [])))].forEach(st => alive(party()).forEach(u => buff(u, st, 1, ev)));
-      (setup.startBuffs || []).forEach(b => alive(party()).forEach(u => { buff(u, b.stat || b, 1, ev); if (b.turns) u.buffT[b.stat || b] = Math.max(u.buffT[b.stat || b], b.turns); }));
+      (setup.startBuffs || []).forEach(b => alive(party()).forEach(u => { buff(u, b.stat || b, b.v || 1, ev); if (b.turns) u.buffT[b.stat || b] = Math.max(u.buffT[b.stat || b], b.turns); }));
       if ((p = perkOn('countIn'))) { perkEv(ev, 'countIn', { quiet: true }); [].concat(p.v).forEach(st => alive(party()).forEach(u => buff(u, st, 1, ev))); }
       if (L && (p = perkOn('onIce'))) { buff(L, 'agi', 1, ev); L.buffT.agi = 1; }
       if ((p = perkOn('sunnySide'))) { perkEv(ev, 'sunnySide', { quiet: true }); alive(party()).forEach(u => { if (u.hp < u.maxHp) heal(null, u, u.maxHp * p.heal, ev); }); }

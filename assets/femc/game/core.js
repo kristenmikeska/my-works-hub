@@ -2176,6 +2176,8 @@ window.FemcGame = (() => {
     else if (h.kind === 'operation' && r.outcome === 'win') addStat('courage', 3, true);
     // Velvet Plumes for Elizabeth's draws (gacha.js): a Tartarus night, a full moon won.
     W.FemcGacha?.afterFight(h.kind, r.outcome);
+    // Velvet Plumes found in Tartarus (vaults, guardians, rare Shadows, hidden rooms: battle tartarus.js).
+    if (r.plumes > 0 && W.FemcGacha?.gs) { W.FemcGacha.gs().plumes += r.plumes; sum.plumes = r.plumes; toast('perk', `Velvet Plume${r.plumes > 1 ? 's' : ''} +${r.plumes} (found in Tartarus)`); }
     let fat = r.fatigue;
     // Hanni's Mom Mode (Good instead of Tired) and Jaehyun's Wear Layers (Tired instead of Sick), once a week each.
     if (fat === 'sick' && perkOn('wearLayers') && weekly('wearLayers')) { fat = 'tired'; toast('perk', 'Wear Layers: Jaehyun’s jacket. She’s only Tired.'); }
