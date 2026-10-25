@@ -312,6 +312,8 @@ try:
         drive(p, "FemcBattle.marks['shuffle-major']>0", 120)
         ok(p.eval("FemcBattle.save.cards.list.length") == n0 + 1, 'the Fool gave a Revelation card (Rush picked)')
         # Tea Time (Hanni, Tartarus) at the access point every first floor has.
+        # (the walk to the Shadows may have passed the access point already: its once-per-point Tea Time is reset for this check)
+        p.eval("FemcBattle.run.map.nodes.forEach(n=>{if(n.type==='access')n.restored=false})")
         p.eval("window.__want='access';window.__stopAt='access';FemcBattle.run.carry=Object.fromEntries(FemcBattle.B.party().map(p=>[p.mid,{hp:Math.round(p.maxHp*0.4),sp:Math.round(p.maxSp*0.4),th:0}]))")
         drive(p, "FemcBattle.screen()==='room' && !!document.querySelector('.bt-room.access')", 120)
         tea = p.eval("(()=>{const s=FemcBattle.B.party()[0];return {note:document.querySelector('.bt-room.access').textContent.includes('Tea Time'),hp:FemcBattle.run.carry.solar.hp,max:s.maxHp}})()")

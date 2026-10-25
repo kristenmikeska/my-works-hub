@@ -66,7 +66,9 @@ FIGHT = r"""(()=>{
   }
   if (c.kind === 'map') {
     const o = c.opts || [];
-    const score = n => (n.type === 'access' && !n.visited ? 100 : 0) + (n.type === 'stairs' ? 50 : 0) + (n.visited ? 0 : 10) + n.layer;
+    // A fight first (the night should earn EXP), then the access point, then the stairs.
+    const fought = (F.marks['battle-start'] || 0) > 0;
+    const score = n => (n.type === 'shadow' && !n.cleared && !fought ? 150 : 0) + (n.type === 'access' && !n.visited ? 100 : 0) + (n.type === 'stairs' ? 50 : 0) + (n.visited ? 0 : 10) + n.layer;
     const best = o.slice().sort((a, b) => score(b) - score(a))[0];
     if (best) { c.go(best.id); return 'map:' + best.type; }
     return 'map-stuck';
