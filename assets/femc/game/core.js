@@ -156,6 +156,8 @@ window.FemcGame = (() => {
     clubs: {}, runIns: { seen: [], lastDay: -99, later: [] }, vary: {},
     // Crushes (data/crush*.js, 2026-10-23): each track's phase, the moments seen and the last day one played (see crushTick).
     crush: { t: {}, seen: [], lastDay: -99 },
+    // The morning after (data/spice-*.js, 2026-10-24): { who, kind, day } from a scene's { glow } (see glowIs), or null.
+    glow: null,
     perks: { week: {}, pitchDay: -1 }, // bond perks' once-a-week / once-a-day uses (build.js; FEMC-LINK-PERKS.md)
     jobs: {}, events: [], spent: {}, exams: {}, classSeen: [], phone: { threads: {}, unread: {}, done: [], pending: {}, invite: null, lastInvite: -9, vars: {} },
     tartarus: { nights: 0, maxFloor: 0, bosses: [], lastParty: null }, battle: { exp: {}, levels: {} },
@@ -740,6 +742,7 @@ window.FemcGame = (() => {
     if (line.bond) { Object.entries(line.bond).forEach(([k, v]) => bond(k, v)); did = true; }
     if (line.later) { laterText(line.later); did = true; }
     if (line.crush) { crushApply(line.crush); did = true; }
+    if (line.glow) { setGlow(line.glow); did = true; }
     if (line.register) { if (!S.registered.includes(line.register)) { S.registered.push(line.register); if (!line.quiet) toast('register', `Registered to the Compendium: ${CAST[line.register] || line.register}`); } did = true; }
     if (line.join) { if (!S.joined.includes(line.join)) { S.joined.push(line.join); S.flags[`joined-${line.join}`] = true; toast('join', `${CAST[line.join] || line.join} joined S.E.E.S.`); } did = true; }
     if (line.end) { S.flags['the-end'] = line.end; did = true; }
@@ -778,6 +781,7 @@ window.FemcGame = (() => {
     else if (line.ifCrush) ok = crushIs(line.ifCrush);
     else if (line.ifCrushed) ok = crushedAt(line.ifCrushed);
     else if (line.ifTaken) ok = takenBy(line.ifTaken);
+    else if (line.ifGlow) ok = glowIs(line.ifGlow);
     // Dates: ifAfter is "on or after" (like a rank's `after`), ifBefore is "strictly before"; they're each other's else.
     else if (line.ifAfter) ok = S.day >= dayOf(line.ifAfter);
     else if (line.ifBefore) ok = S.day < dayOf(line.ifBefore);
@@ -1358,6 +1362,8 @@ window.FemcGame = (() => {
       D.events.some(e => e.date === info.md && S.events.includes(e.id))) return null;
     if (['after', 'evening'].includes(slot) && S.spent[`${d}-${slot}`]) return null;
     if (holidayDue(slot, d)) return null;
+    // A morning-after crush moment (glow) has only today: a routine waits for it.
+    if (glowing(d) && (D.crush.moments || []).some(m => m.glow && !crushState().seen.includes(m.id) && crushFits(m, slot, d, info))) return null;
     const seen = state.seen || [];
     const fit = D.dailyLife.map((e, i) => ({ e, i })).filter(({ e }) => !seen.includes(e.id) && dailyFits(e, slot, d, info));
     fit.sort((a, b) => dailyUntil(a.e) - dailyUntil(b.e) || a.i - b.i);
@@ -1401,7 +1407,9 @@ window.FemcGame = (() => {
      Moments (moments[]): { id, who, optIn: id, crush: { id: [phases] | 'phase' } (all must hold), slot, after, until (default
        after + 21), schoolOnly, offOnly, days, weather, when ('tartarus' | 'quiet'), events, flags, noFlags, met, ranks,
        ranksBelow, route, heading, free (true: only while no link is on its romance route; the searchers' opt-ins, so
-       nobody is asked to lean toward someone new while she's with someone), label, place, time, bg, cast, scene }. One plays like an everyday-life routine (ui.js
+       nobody is asked to lean toward someone new while she's with someone), taken (true: only while some other link is on its
+       romance route; the spice batch's "we can't" moments), glow (the day after a scene's { glow }: see glowIs), label,
+       place, time, bg, cast, scene }. One plays like an everyday-life routine (ui.js
        playDailyLife: in the slot's place, never spending a free slot), at most one every three days (two from 9/1), never on a day a routine
        already played (a late-night one excepted) or a story scene played, a trip, a held holiday, a full-moon or rest night (late), or a night a
        link's late night is due or has played;
@@ -1469,6 +1477,8 @@ window.FemcGame = (() => {
     if (m.free && takenBy([])) return false;
     else if (m.crush && !Object.entries(m.crush).every(([id, ph]) => [].concat(ph).includes(crushTick(id, d)))) return false;
     if (m.who && LINKS[m.who] && progress(m.who).reversed) return false;
+    if (m.taken && !takenBy([m.who])) return false;
+    if (m.glow && !glowIs(m.glow, d)) return false;
     if (m.when === 'tartarus' ? S.tonight !== 'battled' : m.when === 'quiet' && S.tonight === 'battled') return false;
     return dailyFits({ ...m, until: mdOf(crushUntil(m)) }, slot, d, info);
   }
@@ -1477,16 +1487,20 @@ window.FemcGame = (() => {
   const crushGap = d => (d >= dayOf('9/1') ? 2 : 3);
   function crushDue(slot = S.slot, d = S.day) {
     const M = D.crush.moments || [], c = crushState(), info = dayInfo(d);
-    if (!M.length || S.phase !== 'play' || ['trip', 'prologue'].includes(info.type) || d - c.lastDay < crushGap(d) || (S.dailyLife?.lastDay === d && slot !== 'late')) return null;
+    if (!M.length || S.phase !== 'play' || ['trip', 'prologue'].includes(info.type)) return null;
+    // A morning-after moment (glow, the spice batch) doesn't wait for the gap or a routine: it only has the one day.
+    const spaced = d - c.lastDay >= crushGap(d) && !(S.dailyLife?.lastDay === d && slot !== 'late');
+    if (!spaced && !glowing(d)) return null;
     if (D.events.some(e => e.date === info.md && S.events.includes(e.id))) return null;
     if (['after', 'evening'].includes(slot) && S.spent[`${d}-${slot}`]) return null;
     if (holidayDue(slot, d)) return null;
     // Late: a link's own late night (lateNightDue) goes first; a crush moment only takes a night nobody else has.
     if (slot === 'late' && (info.moon.full || S.tonight === 'rest' || S.lateNights?.lastDay === d || lateNightDue(d))) return null;
-    const fit = M.map((m, i) => ({ m, i })).filter(({ m }) => !c.seen.includes(m.id) && crushFits(m, slot, d, info));
+    const fit = M.map((m, i) => ({ m, i })).filter(({ m }) => !c.seen.includes(m.id) && (spaced || m.glow) && crushFits(m, slot, d, info));
     if (!fit.length) return null;
     // A moment that needs today's weather (the umbrella in the rain) goes before the others: that weather may not come again.
-    fit.sort((a, b) => (b.m.optIn ? 1 : 0) - (a.m.optIn ? 1 : 0) || (b.m.weather ? 1 : 0) - (a.m.weather ? 1 : 0) || crushUntil(a.m) - crushUntil(b.m) || a.i - b.i);
+    // A morning-after one (glow) goes first of all.
+    fit.sort((a, b) => (b.m.glow ? 1 : 0) - (a.m.glow ? 1 : 0) || (b.m.optIn ? 1 : 0) - (a.m.optIn ? 1 : 0) || (b.m.weather ? 1 : 0) - (a.m.weather ? 1 : 0) || crushUntil(a.m) - crushUntil(b.m) || a.i - b.i);
     const m = fit[0].m;
     return { ...m, link: m.who || null, label: m.label || LINKS[m.who]?.short || 'Everyday life' };
   }
@@ -1503,15 +1517,37 @@ window.FemcGame = (() => {
     if (!pool?.length || S.phase !== 'play') return null;
     const m = dateOf(S.day).getMonth() + 1, w = weather(S.day);
     const ok = x => varyFits(x, m, w) && (!x.after || S.day >= dayOf(x.after)) && (!x.until || S.day <= dayOf(x.until)) && (!x.crush || crushIs(x.crush))
-      && (!x.flags || x.flags.every(flag)) && (!x.events || x.events.every(id => S.events.includes(id)));
-    const fits = pool.map((x, i) => ({ x, i })).filter(({ x }) => ok(x));
+      && (!x.flags || x.flags.every(flag)) && (!x.events || x.events.every(id => S.events.includes(id))) && (!x.glow || glowIs(x.glow)) && (!x.heading || headingIs(x.heading));
+    let fits = pool.map((x, i) => ({ x, i })).filter(({ x }) => ok(x));
+    // The day after a night (glow, the spice batch): those lines win the spot, every time.
+    const glowFits = fits.filter(({ x }) => x.glow);
+    if (glowFits.length) fits = glowFits;
     if (!fits.length) return null;
     const salt = [...key].reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) % 9973, 11);
-    if (seeded(S.day * 13 + salt) >= (fits[0].x.chance ?? 0.5)) return null;
+    if (!glowFits.length && seeded(S.day * 13 + salt) >= (fits[0].x.chance ?? 0.5)) return null;
     const st = ((S.vary ||= {})[`${key}~crush`] ||= { n: -1, d: -1 });
     if (st.d !== S.day) { st.d = S.day; st.n += 1; }
     const x = fits[st.n % fits.length].x;
     return typeof x === 'string' ? x : x.t;
+  }
+  /* ── The morning after (2026-10-24, the spice batch; data/spice-*.js). A scene's { glow: 'akihiko' } (or 'akihiko:caught',
+     or { who, kind }; kind 'night' by default, 'caught' for a near miss) marks tonight. Only the next day, gates read it:
+     `glow` on crush moments, late nights and world lines, and { ifGlow, then, else } in scenes, each true (anyone), 'id',
+     'id:kind', '*:kind', a list of those, or { who, kind } (each a value or a list). On that day a glow moment skips the
+     crush gap and a routine's day (it goes first, and a routine waits for it), and glow world lines win their spot. ── */
+  function setGlow(v) {
+    const o = typeof v === 'string' ? { who: v.split(':')[0], kind: v.split(':')[1] } : { ...(v || {}) };
+    S.glow = { who: o.who || null, kind: o.kind || 'night', day: S.day };
+  }
+  const glowing = (d = S.day) => !!S.glow && d === S.glow.day + 1;
+  function glowIs(want, d = S.day) {
+    const g = S.glow;
+    if (!g || d !== g.day + 1) return false;
+    if (want === true) return true;
+    return [].concat(want).some(w => {
+      const o = typeof w === 'string' ? { who: w.split(':')[0], kind: w.split(':')[1] } : (w || {});
+      return (!o.who || o.who === '*' || [].concat(o.who).includes(g.who)) && (!o.kind || [].concat(o.kind).includes(g.kind));
+    });
   }
   const markEvent = id => { if (!S.events.includes(id)) S.events.push(id); save(); };
   // An event's `unlock` holds it until a condition is met, then it plays on the first matching slot on or after its `date`:
@@ -1883,7 +1919,8 @@ window.FemcGame = (() => {
   /* ── Late nights (a link's `lateNights`): [{ id, after, until, rank, route ('romance' | 'friend' | 'none' = no route yet),
      flag, events, days: [0-6], when: 'tartarus' (after a night in the tower) | 'quiet' (not after one) | 'rain', kind:
      'dorm' (they live in the dorm) | 'visit' (a guesthouse resident's visit that ends tonight) | 'call' (by phone),
-     place, time, music, bg, scene }]. One may play in the late slot instead of the plain bedtime line, at most every third
+     place, time, music, bg, scene, and since the spice batch (2026-10-24) crush: { id: [phases] }, taken, free, glow }]. One may
+     play in the late slot instead of the plain bedtime line, at most every third
      night, never on a trip, a full-moon night or a night a story scene already took. Each plays once. Who lives where is
      data/living-world.js FEMC_GAME_LODGING: only dorm residents get 'dorm' scenes (the test holds every file to it). ── */
   function lateNightFits(l, e, d = S.day) {
@@ -1899,6 +1936,11 @@ window.FemcGame = (() => {
     if (e.when === 'rain' && !wxIn(['rain'], info.weather)) return false;
     if (e.heading && !headingIs(e.heading)) return false;
     if (e.noFlags && [].concat(e.noFlags).some(flag)) return false;
+    // The spice batch (2026-10-24): a crush phase, someone else's romance (taken), the night after another (glow).
+    if (e.crush && !crushIs(e.crush)) return false;
+    if (e.taken && !takenBy([l.id])) return false;
+    if (e.free && takenBy([])) return false;
+    if (e.glow && !glowIs(e.glow, d)) return false;
     if (l.closes && d >= dayOf(l.closes) && !stretchOn(l, d)) return false;
     return true;
   }
@@ -2190,7 +2232,7 @@ window.FemcGame = (() => {
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift, packs, packPick, packFits,
     clubById, clubState, clubStats, clubScene, joinClub, finishClub, runInDue, runInFits, finishRunIn, vary, varyPool, secretsDue, findSecret,
     heading, headingIs, migrateForced,
-    crushTick, crushIs, crushedAt, crushApply, crushPhases, crushTrack, crushFits, crushDue, finishCrush, crushLine, takenBy,
+    crushTick, crushIs, crushedAt, crushApply, crushPhases, crushTrack, crushFits, crushDue, finishCrush, crushLine, takenBy, glowIs, setGlow,
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, textById, answerInvite, gift, bond,

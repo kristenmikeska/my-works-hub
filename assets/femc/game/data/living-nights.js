@@ -2,7 +2,9 @@
    Haechan's are his own hangouts (links/haechan.js). Housing (data/living-world.js FEMC_GAME_LODGING): Akihiko lives in the
    dorm, so his are 'dorm' nights; Jungwon and Jihoon live at the guesthouse by the station, so theirs are visits that end
    tonight (the gate, the walk back) or calls. They vary by day (after a night in Tartarus, a quiet night) and by stage (rank;
-   `route: 'romance'` only after the romance turn). Romance stays non-explicit. Each plays once. */
+   `route: 'romance'` only after the romance turn). Romance stays non-explicit. Each plays once.
+   aki-ln-landing (he walks past her door, not knocking) skips a save where he already knocked (spice-akihiko.js sets
+   'sp-aki-curfew'). */
 (() => {
   const X = (window.FEMC_GAME_LINK_EXTRAS ||= {});
   const add = (id, list) => { (X[id] ||= {}).lateNights = [...((X[id] || {}).lateNights || []), ...list]; };
@@ -63,7 +65,7 @@
         ] }
       ] }
     ] },
-    { id: 'aki-ln-landing', kind: 'dorm', rank: 9, route: 'romance', after: '11/3', until: '12/20', when: 'quiet', place: 'Iwatodai Dorm · 2F Hallway', time: 'Late Night', music: 'romance', scene: [
+    { id: 'aki-ln-landing', kind: 'dorm', rank: 9, route: 'romance', after: '11/3', until: '12/20', when: 'quiet', noFlags: ['sp-aki-curfew'], place: 'Iwatodai Dorm · 2F Hallway', time: 'Late Night', music: 'romance', scene: [
       { n: "Midnight, and the hallway light on the landing had been flickering for a week and nobody had changed it, and he was standing under it at her door with his hand up to knock and not knocking, like a man who'd walked up the stairs on purpose and only just realized where he was." },
       { s: 'akihiko', f: 'blushing', t: "...I wasn't going to knock. I was just. Checking. That you were back. From wherever." },
       { s: 'solar', f: 'happy', t: "I live here, senpai." },
