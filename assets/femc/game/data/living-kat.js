@@ -53,7 +53,7 @@
   // One run-in that might find them. o: { key, where, slot, after, until, before (narration), stopT, passT, first, again, stop, pass }.
   const meet = o => ({
     id: `ri-kat-${o.key}`, who: 'kat', label: 'Two huskies', finds: 'kat', met: [], noFlags: ['found-kat'],
-    where: { acts: [], areas: [], jobs: [], clubs: [], ...o.where }, slot: o.slot, after: o.after, until: o.until,
+    where: { acts: [], areas: [], jobs: [], clubs: [], ...o.where, any: true }, slot: o.slot, after: o.after, until: o.until,
     scene: [
       ...o.before.slice(0, 1).filter(l => l.place), // the scene break to where they are, first
       { ifCount: { of: SEEN, min: 1 }, then: [{ n: "The huskies again. She'd have known them anywhere by now, the grey one and the black one, and the two people attached to them, at an angle." }] },

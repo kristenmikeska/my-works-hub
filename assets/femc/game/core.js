@@ -1228,7 +1228,7 @@ window.FemcGame = (() => {
   function runInFits(e, w, d = S.day) {
     const where = e.where || {};
     const hit = (where.acts || []).includes(w.act) || (where.areas || []).includes(w.area) || (where.jobs || []).includes(w.job) || (where.clubs || []).includes(w.club);
-    if (!hit) return false;
+    if (!hit && !where.any) return false; // where.any: out anywhere in town (the huskies)
     if (e.slot && w.slot && e.slot !== w.slot) return false;
     if (d > runUntil(e)) return false;
     if (!(e.met || [e.who]).every(isMet)) return false;
@@ -1241,7 +1241,7 @@ window.FemcGame = (() => {
     if (!force && d - (st.lastDay ?? -99) < 2) return null;
     const fit = D.runIns.map((e, i) => ({ e, i })).filter(({ e }) => !st.seen.includes(e.id) && runInFits(e, w, d));
     if (!fit.length) return null;
-    fit.sort((a, b) => runUntil(a.e) - runUntil(b.e) || a.i - b.i);
+    fit.sort((a, b) => (!!b.e.finds - !!a.e.finds) || runUntil(a.e) - runUntil(b.e) || a.i - b.i); // a hidden link's run-ins go first
     const urgent = runUntil(fit[0].e) - d <= 3;
     const key = String(w.act || w.job || w.club || w.area || '').length;
     if (!force && !urgent && seeded(d * 7 + key * 13) < 0.5) return null;
