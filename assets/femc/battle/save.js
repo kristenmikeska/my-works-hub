@@ -16,6 +16,10 @@ window.FemcBattleSave = (() => {
   // treeV 2 (the skill system, 2026-10-20): nodes are the new Haenim tree's (data.js tree / treeCenter); ptree { mid: [ids] }
   //          (party trees), ranks { mid: link rank } (from the life sim), forgot / order { mid: [chain roots] } (8 skill slots).
   //          An older save's tree is refunded as skill points into the new tree; forms it had already unlocked stay.
+  // treeV 3 (Haenim's sun, 2026-10-25): every treeV 2 node id is still in the sun (moved onto a ray), so nothing is refunded or
+  //          lost; points and nodes carry over as they are. equip / seen / fresh { solar: [chain roots] }: Solar's skill list
+  //          (engine.js solarKit). Her slots start as her old kit; skills she had forgotten come back into her list (forgot.solar
+  //          is cleared). The party trees kept their ids too (they gained tiers 2 and 5 and more points per level).
   // The building systems (build.js, 2026-10-20; every field defaults, so older saves load as they were):
   //          cards { list: [card], eq: { mid: { slot: uid } }, uid } (Revelation cards), wref { gearId: 0-5 } (weapon refines),
   //          pboost { mid: { stat: n } } (Persona boosts), skillCards { skillId: n }, taught { mid: [skillIds] },
@@ -29,7 +33,7 @@ window.FemcBattleSave = (() => {
   const fresh = () => ({ v: 4, settings: Object.assign({}, SETTINGS), tipsSeen: [], cursor: {}, lvl: D.progression.startLevel, exp: 0, pts: 0, nodes: [], known: {}, clears: 0, cycle: 0, runs: 0, reached: null, music: null, sfx: true, speed: 1,
     party: D.defaultParty.slice(), mem: {}, tactics: {}, cutins: 'first', awakened: false,
     yen: D.startYen, items: Object.assign({}, D.startItems), gear: { owned: {}, eq: {} }, mats: {}, memories: [], evo: {}, form: 'haenim', forms: [], ops: { cleared: [] }, th: {}, perf: false,
-    ptree: {}, ranks: {}, forgot: {}, order: {},
+    ptree: {}, ranks: {}, forgot: {}, order: {}, equip: {}, seen: {}, fresh: {}, // treeV is set by normalize (an older save without one is migrated)
     cards: { list: [], eq: {}, uid: 0 }, wref: {}, pboost: {}, skillCards: {}, taught: {}, bonds: {}, bondsRev: [], bondGifts: [], floorsMapped: [], shuffles: 0, bondsLove: [], bondDate: null });
   /* The first Haenim tree (three branches of five, before the skill system): its node costs, and the form each branch gave. */
   const OLD_TREE = { bell: { form: 'haenim-sunna', cost: [1, 1, 2, 2, 3] }, jade: { form: 'haenim-mazu', cost: [1, 1, 2, 2, 3] }, star: { form: 'haenim-nike', cost: [1, 1, 2, 2, 3] } };
@@ -47,6 +51,15 @@ window.FemcBattleSave = (() => {
     s.nodes = [];
     s.treeRefund = back;
     s.treeV = 2;
+  }
+  /* Solar's skill list (treeV 3): her slots start as the kit she had; anything she'd forgotten waits in her list. */
+  function normalizeEquip(s) {
+    ['equip', 'seen', 'fresh'].forEach(k => {
+      if (!obj(s[k])) s[k] = {};
+      Object.keys(s[k]).forEach(m => { if (m !== 'solar' || !Array.isArray(s[k][m])) delete s[k][m]; else s[k][m] = [...new Set(s[k][m].filter(x => typeof x === 'string'))]; });
+    });
+    try { E.kitFor('solar', s); } catch (e) { return; }
+    if (s.forgot && s.forgot.solar) delete s.forgot.solar;
   }
   /* The building systems' fields (build.js): cards, refines, boosts, skill cards, bonds. Unknown ids are dropped. */
   const STATKEYS = ['st', 'ma', 'en', 'ag', 'lu'];
@@ -126,7 +139,8 @@ window.FemcBattleSave = (() => {
     Object.keys(s.gear.owned).forEach(k => { if (!D.gear[k] || !(s.gear.owned[k] > 0)) delete s.gear.owned[k]; });
     if (!s.mats || typeof s.mats !== 'object') s.mats = {};
     // The skill system: an older tree is refunded once (migrateTree), then the new tree's fields are cleaned.
-    if (s.treeV !== 2) migrateTree(s);
+    if (!(s.treeV >= 2)) migrateTree(s);
+    if (s.treeV === 2) { if ((s.nodes || []).length) s.sunFrom = 2; s.treeV = 3; } // the sun keeps every old node id: nothing to refund
     const nodeIds = new Set(E.treeNodes().map(n => n.id));
     s.nodes = [...new Set((Array.isArray(s.nodes) ? s.nodes : []).filter(id => nodeIds.has(id)))];
     if (!(s.pts >= 0)) s.pts = 0;
@@ -153,6 +167,7 @@ window.FemcBattleSave = (() => {
       else if (typeof v === 'number' && v >= 0 && v <= 100) s.settings[k] = Math.round(v);
     });
     if (![1, 2, 3].includes(s.speed)) s.speed = 1;
+    normalizeEquip(s);
     if (!Array.isArray(s.tipsSeen)) s.tipsSeen = [];
     s.tipsSeen = s.tipsSeen.filter(k => D.tips[k]);
     if (!s.cursor || typeof s.cursor !== 'object') s.cursor = {};

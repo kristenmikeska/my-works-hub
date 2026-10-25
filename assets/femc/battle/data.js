@@ -200,6 +200,27 @@ window.FEMC_BATTLE_DATA = (() => {
       desc: 'Dokkaebibul: blue goblin lights dancing over the field. Light fire damage to random foes, 3 to 4 times.' },
     focus_pull: { name: 'Focus Pull', el: 'pierce', type: 'dmg', target: 'one', power: 60, cost: { hp: 8 }, crit: 8, debuffOnHit: 'agi', scan: true, icon: 'sk-aperture', fx: 'aperture',
       desc: 'Minji racks focus onto one foe. Medium pierce damage; its agility drops a level, and every affinity it has is revealed.' },
+    // ── The sun (Haenim's radial tree, 2026-10-25): new actives. Effects reuse fx.js kinds (fx); icons fall back to the element.
+    sun_thrust: { name: 'Sun Thrust', el: 'pierce', type: 'dmg', target: 'one', power: 62, cost: { hp: 8 }, crit: 8, fx: 'fleche',
+      desc: 'The naginata, straight and bright. Medium pierce damage to one foe.' },
+    flare_thrust: { name: 'Flare Thrust', el: 'pierce', type: 'dmg', target: 'one', power: 104, cost: { hp: 12 }, crit: 10, fx: 'fleche',
+      desc: 'A thrust with the sun behind it. Heavy pierce damage to one foe.' },
+    solstice_edge: { name: 'Solstice Edge', el: 'pierce', type: 'dmg', target: 'one', power: 145, cost: { hp: 16 }, crit: 12, fx: 'fleche',
+      desc: 'The longest day in one cut. Severe pierce damage to one foe; crits often.' },
+    gather_light: { name: 'Gather Light', el: 'support', type: 'charge', target: 'self', phys: true, mult: 2, cost: { sp: 10 }, fx: 'buff',
+      desc: 'She draws the sun into the blade. Her next physical skill or attack deals double damage.' },
+    concentrate: { name: 'Concentrate', el: 'support', type: 'charge', target: 'self', mult: 2, cost: { sp: 12 }, fx: 'buff',
+      desc: 'She goes very still. Her next magic skill deals double damage.' },
+    bewitch: { name: 'Bewitch', el: 'charm', type: 'ailment', target: 'one', ail: { id: 'charm', chance: 0.45 }, cost: { sp: 8 }, fx: 'charm',
+      desc: 'A fox’s smile. May Charm one foe.' },
+    fox_mask: { name: 'Fox Mask', el: 'fear', type: 'ailment', target: 'all', ail: { id: 'fear', chance: 0.3 }, cost: { sp: 12 },
+      desc: 'The mask slips, and what’s under it isn’t her face. May inflict Fear on every foe.' },
+    fox_fang: { name: 'Fox Fang', el: 'pierce', type: 'dmg', target: 'one', power: 92, cost: { hp: 12 }, crit: 10, critX: 2.4, critIf: true, fx: 'bite',
+      desc: 'Heavy pierce damage to one foe. Against an ailing or debuffed foe, or a weak spot, it crits far more often and a crit hits ×2.4.' },
+    kitsunebi: { name: 'Kitsunebi', el: 'fire', type: 'dmg', target: 'all', power: 50, cost: { sp: 16 }, ail: { id: 'disorient', chance: 0.2 }, fx: 'goblinfire',
+      desc: 'Fox lights over the field. Medium fire damage to all foes; each may be Disoriented.' },
+    spring_rain: { name: 'Spring Rain', el: 'ice', type: 'dmg', target: 'all', power: 48, cost: { sp: 18 }, partyHeal: 0.08,
+      desc: 'Cold rain, warm afterward. Medium ice damage to all foes, then the party heals 8%.' },
 
     // ── Shadows
     bash: { name: 'Bash', el: 'strike', type: 'dmg', target: 'one', power: 30, desc: '' },
@@ -299,7 +320,8 @@ window.FEMC_BATTLE_DATA = (() => {
     ['zio', 'zionga', 'ziodyne'], ['mazio', 'mazionga', 'maziodyne'], ['garu', 'garula', 'garudyne'], ['magaru', 'magarula', 'magarudyne'],
     ['hama', 'hamaon'], ['mudo', 'mudoon'], ['dia', 'diarama', 'diarahan'], ['media', 'mediarama', 'mediarahan'], ['recarm', 'samarecarm'], ['patra', 'me_patra'],
     ['tarukaja', 'matarukaja'], ['rakukaja', 'marakukaja'], ['tarunda', 'matarunda'], ['rakunda', 'marakunda'],
-    ['cleave', 'power_slash'], ['arrow_rain', 'myriad_shots'], ['daybreak', 'morning_glory', 'high_noon'], ['golden_rope', 'golden_tether', 'heavens_rope']
+    ['cleave', 'power_slash'], ['arrow_rain', 'myriad_shots'], ['daybreak', 'morning_glory', 'high_noon'], ['golden_rope', 'golden_tether', 'heavens_rope'],
+    ['sun_thrust', 'flare_thrust', 'solstice_edge']
   ];
   const skillSlots = 8; // P3: eight skills per Persona; a ninth asks which one to forget
 
@@ -1168,8 +1190,8 @@ window.FEMC_BATTLE_DATA = (() => {
     { id: 'reaper', name: 'The Reaper', text: 'Linger too long on one floor and the Reaper comes, and it hunts you room by room. It’s far stronger than anything else here. Find the stairs, or run if it catches you. Story difficulty keeps it away.' },
     { id: 'access', name: 'Access points', text: 'Green terminals that save your progress. Next time you can start from the highest one you’ve touched, and you can leave Tartarus from any of them.' },
     { id: 'evolutions', name: 'Evolutions', text: 'Some Personas evolve when their user reaches a level, or after a full moon: Polydeuces into Caesar, Io into Isis, and more. An evolved Persona is stronger and learns new skills.' },
-    { id: 'forms', name: 'Haenim’s forms', text: 'Each world branch of Haenim’s tree ends in a keystone that unlocks one of her forms (Sunna, Mazu, Nike), each with its own affinities and a signature skill. All three keystones and a full moon cleared open the center: Haenim, Unveiled. Switch forms on the Personas screen.' },
-    { id: 'skills', name: 'Skills', text: 'A Persona holds eight skills. Learning a ninth asks which one to forget (a forgotten skill never comes back by itself). Skills upgrade in place: Agi becomes Agilao in the same slot. Haenim’s tree and each friend’s small tree live in the menu’s Skills tab; a friend’s tiers open at link ranks 4 and 7, and at MAX one signature skill evolves.' },
+    { id: 'forms', name: 'Haenim’s forms', text: 'Three rays of Haenim’s sun end in a keystone that unlocks one of her forms (Healer: Sunna, Mage: Mazu, Support: Nike), each with its own affinities and a signature skill. All three and a full moon cleared open the crown: Haenim, Unveiled. Switch forms on the Personas screen.' },
+    { id: 'skills', name: 'Skills', text: 'A Persona holds eight skills. Solar keeps every skill she learns in her skill list and swaps any of them into her eight slots outside battle (Skills → Skill list); a friend learning a ninth asks which one to forget. Skills upgrade in place: Agi becomes Agilao in the same slot. Haenim’s sun and each friend’s tree live in the menu’s Skills tab; a friend’s tiers open at link ranks 2, 4, 7 and 9, and at MAX one signature skill evolves.' },
     { id: 'buffs', name: 'Buffs and debuffs', text: 'They stack up to three levels (▲▲▲). Casting the same one again adds a level and refreshes it to 3 turns. Dekaja and Call the Bluff strip a foe’s buffs; Dekunda clears the party’s debuffs.' },
     { id: 'analyze', name: 'Analyze', text: 'A free action: Fuuka reveals a Shadow’s affinities and status. What you learn (by Analyze or by hitting it) is remembered, and the skill list marks each skill WEAK, RESIST, NULL, DRAIN or REPEL against the selected Shadow; “?” means you haven’t found out yet.' },
     { id: 'rush', name: 'Rush', text: 'Auto-battle for easy fights: everyone attacks (members with a Tactic follow it) at double speed. It stops by itself when someone gets hurt or on fights it isn’t allowed in (see Settings). Press R or the Rush button.' }
@@ -1190,157 +1212,277 @@ window.FEMC_BATTLE_DATA = (() => {
     rush: ['rush', 'Easy fight? Press R (or the Rush button) and the party fights on its own.']
   };
 
-  /* ── Haenim's tree (the skill system; Kat's picks, 2026-10-20). Lives in the field menu's Skills tab (menu.js); rules in engine.js.
-     A core trunk (Sun: Haenim's own growth) and four branches: Bell (Runners, healing, keystone Sunna), Jade (strangers, offense,
-     keystone Mazu), Star (Hoax, support, keystone Nike) and Veil (Haenim's own passives). Unveiled sits at the center.
+  /* ── Haenim's sun (the skill system: Kat's picks 2026-10-20, made a radial sun 2026-10-25). Lives in the field menu's Skills
+     tab (menu.js, drawn by sun.js); rules in engine.js. Lady Sun (sun1) is the core; the rest of the Sun trunk is the corona ring
+     around it. Six rays are build paths: Striker (her naginata), Trickster (the fox), Mage (Jade: strangers, keystone Mazu),
+     Healer (Bell: Runners, keystone Sunna), Guard (the Veil) and Support (Star: Hoax, keystone Nike). Each ray ends in a keystone
+     at its tip; where two rays meet, hybrid nodes need a node from each. Unveiled crowns the sun at the top.
+     Every node id from the old five-branch tree is still here (moved onto a ray), so saves keep every node they bought.
      Node: { id, name, cost (skill points), needs: [all of], any: [one of], lvl (Solar's level), choice (pick one of the nodes
-     sharing it), memory (a fragment id: hidden until it's found), keystone (unlocks `form`), desc, fx }.
+     sharing it), memory (a fragment id: hidden until it's found), keystone (a ray's tip; `form` awakens one of her forms; a
+     keystone without a form refunds on a respec), at (where sun.js draws it: [ring, lane] along its ray, or { a: degrees, r }),
+     desc, fx }.
      fx (engine.js treeFx): stats (st ma en ag lu hp sp), learn (a skill; a later tier in its chain upgrades in place), healMult,
-     crit, bind, ropeCrit, bindTurns, weakMult, critMult, shiftMult, shiftSp, shiftTh, alloutMult, regen, openBuff, autoAnalyze,
-     flank (Off Angle Flank), and Solar's own passives: counter, spRegen, resist (an element she stops being weak to), quick
-     (acts first on the first turn), firstFree (the first skill each battle costs nothing), endure (once per battle, 1 HP left). */
+     party-wide: crit, bind, ropeCrit, weakMult, critMult, shiftMult, shiftSp, shiftTh, alloutMult, regen, openBuff, autoAnalyze,
+     flank; and Solar's own passives (engine.js PASSIVE, capped there): counter, spRegen, hpRegen, resist, quick, firstFree,
+     endure, critUp, evade, haste, firstCut, weakUp, ailUp, followUp, openBuff [self], partyOpen [party], ailDmg, lowHpUp, physUp,
+     magicUp, thStart, buffTurns, debuffTurns, weakSp, critAdd, critIf, ailTurns, freezeUp, guardHeal, corona, guardianBell,
+     nullAil, momentum, boost { el: mult }. */
   const tree = [
-    { id: 'sun', name: 'Sun', world: 'Haenim', color: '#ffb35c', theme: 'Her own growth · Daybreak · the Golden Rope', trunk: true,
-      blurb: 'Lady Sun herself. Daybreak and the golden rope grow brighter with her.',
+    { id: 'sun', core: true, name: 'Sun', world: 'Haenim', color: '#ffb35c', theme: 'Her own growth · Daybreak · the Golden Rope',
+      blurb: 'Lady Sun herself. Every ray starts here; Daybreak and the golden rope grow brighter around her.',
       nodes: [
-        { id: 'sun1', name: 'Lady Sun', cost: 1, desc: '+10 max HP and +8 max SP. Every branch starts here.', fx: { hp: 10, sp: 8 } },
-        { id: 'sun2', name: 'Morning Glory', cost: 2, needs: ['sun1'], desc: 'Daybreak becomes Morning Glory (same slot): heavy light damage.', fx: { learn: 'morning_glory' } },
-        { id: 'sun3', name: 'Golden Tether', cost: 2, needs: ['sun1'], desc: 'The Golden Rope becomes the Golden Tether (same slot): heavier, binds more often.', fx: { learn: 'golden_tether' } },
-        { id: 'sun4', name: 'Sunlit Will', cost: 2, needs: ['sun2', 'sun3'], desc: '+2 Ma, +2 En and +12 max SP.', fx: { ma: 2, en: 2, sp: 12 } },
-        { id: 'sun5', name: 'High Noon', cost: 3, needs: ['sun4'], lvl: 30, desc: 'Morning Glory becomes High Noon (same slot): severe light damage.', fx: { learn: 'high_noon' } },
-        { id: 'sun6', name: 'Heaven’s Rope', cost: 3, needs: ['sun4'], lvl: 30, desc: 'The Tether becomes Heaven’s Rope (same slot): two heavy lashes, each may Bind.', fx: { learn: 'heavens_rope' } },
-        { id: 'sun7', name: 'Zenith', cost: 3, needs: ['sun5', 'sun6'], lvl: 40, desc: '+3 St, Ma, En, Ag and Lu, +25 max HP and +15 max SP.', fx: { st: 3, ma: 3, en: 3, ag: 3, lu: 3, hp: 25, sp: 15 } }
+        { id: 'sun1', name: 'Lady Sun', cost: 1, at: { a: 0, r: 0 }, desc: '+10 max HP and +8 max SP. Every ray starts here.', fx: { hp: 10, sp: 8 } },
+        { id: 'sun2', name: 'Morning Glory', cost: 2, needs: ['sun1'], at: { a: 150, r: 1.3 }, desc: 'Daybreak becomes Morning Glory (same slot): heavy light damage.', fx: { learn: 'morning_glory' } },
+        { id: 'sun3', name: 'Golden Tether', cost: 2, needs: ['sun1'], at: { a: 30, r: 1.3 }, desc: 'The Golden Rope becomes the Golden Tether (same slot): heavier, binds more often.', fx: { learn: 'golden_tether' } },
+        { id: 'sun4', name: 'Sunlit Will', cost: 2, needs: ['sun2', 'sun3'], at: { a: 90, r: 1.3 }, desc: '+2 Ma, +2 En and +12 max SP.', fx: { ma: 2, en: 2, sp: 12 } },
+        { id: 'sun5', name: 'High Noon', cost: 3, needs: ['sun2'], lvl: 30, at: { a: 210, r: 1.3 }, desc: 'Morning Glory becomes High Noon (same slot): severe light damage.', fx: { learn: 'high_noon' } },
+        { id: 'sun6', name: 'Heaven’s Rope', cost: 3, needs: ['sun3'], lvl: 30, at: { a: 330, r: 1.3 }, desc: 'The Tether becomes Heaven’s Rope (same slot): two heavy lashes, each may Bind.', fx: { learn: 'heavens_rope' } },
+        { id: 'sun7', name: 'Zenith', cost: 3, needs: ['sun5', 'sun6'], lvl: 40, at: { a: 270, r: 1.3 }, desc: '+3 St, Ma, En, Ag and Lu, +25 max HP and +15 max SP.', fx: { st: 3, ma: 3, en: 3, ag: 3, lu: 3, hp: 25, sp: 15 } }
       ] },
-    { id: 'bell', name: 'Bell', world: 'Runners', who: 'Kiriko', color: '#ffd36b', theme: 'Healing · Revival · Speed', form: 'haenim-sunna',
-      blurb: 'A gold bell from Kiriko. It rings like the end of a race.',
+    { id: 'striker', ray: true, angle: 0, name: 'Striker', world: 'Naginata', color: '#ff5d7e', theme: 'Physical · Crits · Follow-ups',
+      blurb: 'Her own naginata. Nobody taught her to hold it like that.',
       nodes: [
-        { id: 'bell1', name: 'Gold Bell', cost: 1, needs: ['sun1'], desc: '+15 max SP. Haenim’s healing is 25% stronger.', fx: { sp: 15, healMult: 1.25 } },
-        { id: 'bell2', name: 'Diarama', cost: 1, needs: ['bell1'], desc: 'Dia becomes Diarama (same slot): a lot of HP to one ally.', fx: { learn: 'diarama' } },
-        { id: 'bell3', name: 'Kunai Flick', cost: 2, needs: ['bell2'], desc: 'Learn Kunai Flick: light pierce damage; ×3.5 crits on a debuffed or ailing foe, or a weak spot.', fx: { learn: 'kunai_flick' } },
-        { id: 'bell4a', name: 'Recarm', cost: 2, needs: ['bell3'], choice: 'bell', desc: 'Choice: learn Recarm, revive a fallen ally with half their HP.', fx: { learn: 'recarm' } },
-        { id: 'bell4b', name: 'Runner’s High', cost: 2, needs: ['bell3'], choice: 'bell', desc: 'Choice: after each of Solar’s turns the party regains 6% HP.', fx: { regen: 0.06 } },
-        { id: 'bell5', name: 'Mediarama', cost: 2, any: ['bell4a', 'bell4b'], desc: 'Learn Mediarama: a lot of HP to the whole party.', fx: { learn: 'mediarama' } },
-        { id: 'bell6', name: 'Protective Suzu', cost: 3, needs: ['bell5'], desc: 'Learn Protective Suzu: the party can’t be hurt until their next turn, and every ailment is cured.', fx: { learn: 'protective_suzu' } },
-        { id: 'bell7', name: 'Diarahan', cost: 3, needs: ['bell6'], lvl: 32, desc: 'Diarama becomes Diarahan (same slot): fully heals one ally.', fx: { learn: 'diarahan' } },
-        { id: 'bell-key', name: 'Sunna', cost: 3, needs: ['bell7'], keystone: true, form: 'haenim-sunna', desc: 'Keystone: Haenim’s Runners form, Sunna. Support and speed, and her Encore.', fx: {} },
-        { id: 'bell-m1', name: 'Kitsune Rush', cost: 4, needs: ['bell6'], memory: 'runners-stadium', desc: 'Ultimate: learn Kitsune Rush. For 3 turns the party moves first, +50% agility and accuracy, HP/SP costs halved.', fx: { learn: 'kitsune_rush' } },
-        { id: 'bell-m2', name: 'Samarecarm', cost: 2, needs: ['bell5'], memory: 'runners-rooftop', desc: 'Learn Samarecarm (or Recarm becomes it, same slot): revive with full HP.', fx: { learn: 'samarecarm' } }
+        { id: 'st1', name: 'Naginata Form', cost: 1, needs: ['sun1'], at: [1, 0], desc: '+2 St and +12 max HP.', fx: { st: 2, hp: 12 } },
+        { id: 'st2', name: 'Sun Thrust', cost: 1, needs: ['st1'], at: [2, 0], desc: 'Learn Sun Thrust: medium pierce damage to one foe.', fx: { learn: 'sun_thrust' } },
+        { id: 'st3', name: 'Follow Through', cost: 2, needs: ['st2'], at: [3, 0], desc: 'After her single-target hits, a 20% chance her blade follows with a free strike.', fx: { followUp: 0.2 } },
+        { id: 'st4a', name: 'Brute Force', cost: 2, needs: ['st3'], choice: 'striker', at: [4, -1], desc: 'Choice: her physical skills and attacks hit 15% harder.', fx: { physUp: 0.15 } },
+        { id: 'st4b', name: 'Keen Edge', cost: 2, needs: ['st3'], choice: 'striker', at: [4, 1], desc: 'Choice: her critical rate rises by 12%.', fx: { critUp: 12 } },
+        { id: 'st5', name: 'Flare Thrust', cost: 2, any: ['st4a', 'st4b'], at: [5, 0], desc: 'Sun Thrust becomes Flare Thrust (same slot): heavy pierce damage.', fx: { learn: 'flare_thrust' } },
+        { id: 'st-m1', name: 'Last Lap', cost: 2, needs: ['st5'], memory: 'runners-trophy', at: [6, -1], desc: 'Below a third of her HP, Solar hits 30% harder.', fx: { lowHpUp: 0.3 } },
+        { id: 'st6', name: 'Gather Light', cost: 2, needs: ['st5'], at: [6, 0], desc: 'Learn Gather Light: her next physical skill or attack deals double damage.', fx: { learn: 'gather_light' } },
+        { id: 'veil5', name: 'Quick Draw', cost: 2, needs: ['st5'], at: [6, 1], desc: 'Evoker trick: Solar always acts first on the first turn of a battle.', fx: { quick: true } },
+        { id: 'st8', name: 'Pressure Point', cost: 2, needs: ['st6'], at: [7, -1], desc: 'Her critical hits deal 30% more.', fx: { critAdd: 0.3 } },
+        { id: 'st7', name: 'Solstice Edge', cost: 3, needs: ['st6'], lvl: 40, at: [7, 0], desc: 'Flare Thrust becomes Solstice Edge (same slot): severe pierce damage; crits often.', fx: { learn: 'solstice_edge' } },
+        { id: 'st-key', name: 'Daystar', cost: 3, needs: ['st7'], keystone: true, at: [8, 0], desc: 'Keystone: her physical skills hit 15% harder, her follow-up chance rises by 10%, and she starts every battle with attack up.', fx: { physUp: 0.15, followUp: 0.1, openBuff: ['atk'] } }
       ] },
-    { id: 'jade', name: 'Jade', world: 'strangers', who: 'Incheon', color: '#5fe0b0', theme: 'Ice · Crits · Binds · Weakness reading', form: 'haenim-mazu',
+    { id: 'trickster', ray: true, angle: 60, name: 'Trickster', world: 'Fox', color: '#b98cff', theme: 'Ailments · Crits · Binds',
+      blurb: 'A fox’s habits: the smile, the feint, the knife she flicks without looking.',
+      nodes: [
+        { id: 'tr1', name: 'Fox Tail', cost: 1, needs: ['sun1'], at: [1, 0], desc: '+2 Lu and +2 Ag.', fx: { lu: 2, ag: 2 } },
+        { id: 'bell3', name: 'Kunai Flick', cost: 2, needs: ['tr1'], at: [2, 0], desc: 'Learn Kunai Flick: light pierce damage; ×3.5 crits on a debuffed or ailing foe, or a weak spot.', fx: { learn: 'kunai_flick' } },
+        { id: 'tr2', name: 'Bewitch', cost: 2, needs: ['bell3'], at: [3, 0], desc: 'Learn Bewitch: may Charm one foe.', fx: { learn: 'bewitch' } },
+        { id: 'jade3', name: 'Red Cord', cost: 2, needs: ['tr2'], at: [4, 0], desc: 'The Golden Rope and its upgrades bind 25% more often and crit more.', fx: { bind: 0.25, ropeCrit: 12 } },
+        { id: 'jade-m2', name: 'Fine Stitch', cost: 2, needs: ['jade3'], memory: 'strangers-needle', at: [4, 1.1], desc: 'Binds from the Golden Rope, its upgrades and Undertow last 2 turns.', fx: { bindTurns: 2 } },
+        { id: 'tr3a', name: 'Sly Grin', cost: 2, needs: ['jade3'], choice: 'trickster', at: [5, -1], desc: 'Choice: her ailments land 12% more often.', fx: { ailUp: 0.12 } },
+        { id: 'tr3b', name: 'Opportunist', cost: 2, needs: ['jade3'], choice: 'trickster', at: [5, 1], desc: 'Choice: she hits an ailing foe 25% harder.', fx: { ailDmg: 0.25 } },
+        { id: 'tr4', name: 'Fox Mask', cost: 2, any: ['tr3a', 'tr3b'], at: [6, 0], desc: 'Learn Fox Mask: may inflict Fear on every foe.', fx: { learn: 'fox_mask' } },
+        { id: 'tr5', name: 'Nimble Fingers', cost: 2, needs: ['tr4'], at: [7, -1], desc: '+2 Ag, and she moves 15% sooner in the turn order.', fx: { ag: 2, haste: 0.15 } },
+        { id: 'veil6', name: 'Double Tap', cost: 3, needs: ['tr4'], at: [7, 0], desc: 'Evoker trick: the first skill Solar uses in each battle costs nothing.', fx: { firstFree: true } },
+        { id: 'tr-m1', name: 'Lantern Trick', cost: 2, needs: ['tr4'], memory: 'strangers-lanterns', at: [7, 1], desc: 'Her ailments (all but Bind) last a turn longer.', fx: { ailTurns: 1 } },
+        { id: 'tr-key', name: 'Sunshower', cost: 3, needs: ['veil6'], keystone: true, at: [8, 0], desc: 'Keystone: a fox’s wedding. Her ailments land 15% more often, and she hits ailing foes 20% harder.', fx: { ailUp: 0.15, ailDmg: 0.2 } }
+      ] },
+    { id: 'mage', ray: true, angle: 120, name: 'Mage', world: 'Jade', who: 'strangers', color: '#6fc8ff', theme: 'Ice · Magic · Weakness reading', form: 'haenim-mazu',
       blurb: 'A jade ring on her right hand. Cold, exact; she turns it a quarter turn when she’s counting.',
       nodes: [
-        { id: 'jade1', name: 'Jade Ring', cost: 1, needs: ['sun1'], desc: '+2 St. Party critical rate +8%.', fx: { st: 2, crit: 8 } },
-        { id: 'jade2', name: 'Bufu', cost: 1, needs: ['jade1'], desc: 'Learn Bufu: ice damage to one foe.', fx: { learn: 'bufu' } },
-        { id: 'jade3', name: 'Red Cord', cost: 2, needs: ['jade2'], desc: 'The Golden Rope and its upgrades bind 25% more often and crit more.', fx: { bind: 0.25, ropeCrit: 12 } },
-        { id: 'jade4a', name: 'Cold Read', cost: 2, needs: ['jade3'], choice: 'jade', desc: 'Choice: every foe’s affinities are known at the start of battle, and weakness damage is 25% higher for the party.', fx: { autoAnalyze: true, weakMult: 1.25 } },
-        { id: 'jade4b', name: 'Cut Deep', cost: 2, needs: ['jade3'], choice: 'jade', desc: 'Choice: the party’s critical hits deal ×2 instead of ×1.6.', fx: { critMult: 2 } },
-        { id: 'jade5', name: 'Bufula', cost: 2, any: ['jade4a', 'jade4b'], desc: 'Bufu becomes Bufula (same slot): heavier ice damage.', fx: { learn: 'bufula' } },
-        { id: 'jade6', name: 'Mabufula', cost: 2, needs: ['jade5'], desc: 'Learn Mabufula: medium ice damage to all foes.', fx: { learn: 'mabufula' } },
-        { id: 'jade7', name: 'Bufudyne', cost: 3, needs: ['jade6'], lvl: 32, desc: 'Bufula becomes Bufudyne (same slot): heavy ice damage.', fx: { learn: 'bufudyne' } },
-        { id: 'jade-key', name: 'Mazu', cost: 3, needs: ['jade7'], keystone: true, form: 'haenim-mazu', desc: 'Keystone: Haenim’s strangers form, Mazu. Ice, precision and her Low Tide.', fx: {} },
-        { id: 'jade-m1', name: 'Undertow', cost: 3, needs: ['jade3'], memory: 'strangers-harbor', desc: 'Learn Undertow: heavy ice damage to one foe, and the tide may Bind it.', fx: { learn: 'undertow' } },
-        { id: 'jade-m2', name: 'Fine Stitch', cost: 2, needs: ['jade5'], memory: 'strangers-needle', desc: 'Binds from the Golden Rope, its upgrades and Undertow last 2 turns.', fx: { bindTurns: 2 } }
+        { id: 'jade1', name: 'Jade Ring', cost: 1, needs: ['sun1'], at: [1, 0], desc: '+2 St. Party critical rate +8%.', fx: { st: 2, crit: 8 } },
+        { id: 'jade2', name: 'Bufu', cost: 1, needs: ['jade1'], at: [2, 0], desc: 'Learn Bufu: ice damage to one foe.', fx: { learn: 'bufu' } },
+        { id: 'mg1', name: 'Cold Focus', cost: 2, needs: ['jade2'], at: [3, 0], desc: '+3 Ma and +10 max SP; her magic skills hit 10% harder.', fx: { ma: 3, sp: 10, magicUp: 0.1 } },
+        { id: 'jade4a', name: 'Cold Read', cost: 2, needs: ['mg1'], choice: 'jade', at: [4, -1], desc: 'Choice: every foe’s affinities are known at the start of battle, and weakness damage is 25% higher for the party.', fx: { autoAnalyze: true, weakMult: 1.25 } },
+        { id: 'jade4b', name: 'Cut Deep', cost: 2, needs: ['mg1'], choice: 'jade', at: [4, 1], desc: 'Choice: the party’s critical hits deal ×2 instead of ×1.6.', fx: { critMult: 2 } },
+        { id: 'jade5', name: 'Bufula', cost: 2, any: ['jade4a', 'jade4b'], at: [5, 0], desc: 'Bufu becomes Bufula (same slot): heavier ice damage.', fx: { learn: 'bufula' } },
+        { id: 'mg2', name: 'Agidyne', cost: 3, needs: ['jade5'], lvl: 34, at: [6, -1], desc: 'Her Agi line becomes Agidyne (same slot): heavy fire damage.', fx: { learn: 'agidyne' } },
+        { id: 'jade6', name: 'Mabufula', cost: 2, needs: ['jade5'], at: [6, 0], desc: 'Learn Mabufula: medium ice damage to all foes.', fx: { learn: 'mabufula' } },
+        { id: 'jade-m1', name: 'Undertow', cost: 3, needs: ['jade5'], memory: 'strangers-harbor', at: [6, 1], desc: 'Learn Undertow: heavy ice damage to one foe, and the tide may Bind it.', fx: { learn: 'undertow' } },
+        { id: 'mg3', name: 'Concentrate', cost: 2, needs: ['jade6'], at: [7, -1], desc: 'Learn Concentrate: her next magic skill deals double damage.', fx: { learn: 'concentrate' } },
+        { id: 'jade7', name: 'Bufudyne', cost: 3, needs: ['jade6'], lvl: 32, at: [7, 0], desc: 'Bufula becomes Bufudyne (same slot): heavy ice damage.', fx: { learn: 'bufudyne' } },
+        { id: 'mg4', name: 'Resonance', cost: 2, needs: ['jade6'], at: [7, 1], desc: 'Hitting a weakness gives her back 3 SP (once a skill), and her weakness damage is 10% higher.', fx: { weakSp: 3, weakUp: 0.1 } },
+        { id: 'jade-key', name: 'Mazu', cost: 3, needs: ['jade7'], keystone: true, form: 'haenim-mazu', at: [8, 0], desc: 'Keystone: Haenim’s strangers form, Mazu. Ice, precision and her Low Tide.', fx: {} }
       ] },
-    { id: 'star', name: 'Star', world: 'Hoax', who: 'Hanlim', color: '#ff8cc0', theme: 'Support · Buffs · Rally · All-Out', form: 'haenim-nike',
-      blurb: 'A star pin from the campaign. Everyone looks to her when she wears it.',
+    { id: 'healer', ray: true, angle: 180, name: 'Healer', world: 'Bell', who: 'Runners', color: '#ffd36b', theme: 'Healing · Regen · Revival · Speed', form: 'haenim-sunna',
+      blurb: 'A gold bell from Kiriko. It rings like the end of a race.',
       nodes: [
-        { id: 'star1', name: 'Star Pin', cost: 1, needs: ['sun1'], desc: '+2 Ag and +10 max HP.', fx: { ag: 2, hp: 10 } },
-        { id: 'star2', name: 'Matarukaja', cost: 1, needs: ['star1'], desc: 'Learn Matarukaja: party attack up a level.', fx: { learn: 'matarukaja' } },
-        { id: 'star3', name: 'Public Veneer', cost: 2, needs: ['star2'], desc: 'Learn Public Veneer: single-target attacks go to Solar for 3 turns; her defense rises and she may counter.', fx: { learn: 'public_veneer' } },
-        { id: 'star4a', name: 'Campaign Trail', cost: 2, needs: ['star3'], choice: 'star', desc: 'Choice: Shift’s boost rises from ×1.25 to ×1.5, and the one who takes it regains 5 SP.', fx: { shiftMult: 1.5, shiftSp: 5 } },
-        { id: 'star4b', name: 'Rally', cost: 2, needs: ['star3'], choice: 'star', desc: 'Choice: learn Rally: party attack, defense and agility up a level, and +6 SP each.', fx: { learn: 'rally' } },
-        { id: 'star5', name: 'Call the Bluff', cost: 2, any: ['star4a', 'star4b'], desc: 'Learn Call the Bluff: strip every buff from a foe and Disorient it for a turn.', fx: { learn: 'call_the_bluff' } },
-        { id: 'star6', name: 'Landslide', cost: 2, needs: ['star5'], desc: 'All-Out Attacks hit 50% harder.', fx: { alloutMult: 1.5 } },
-        { id: 'star7', name: 'Opening Statement', cost: 3, needs: ['star6'], lvl: 30, desc: 'The party starts every battle with attack up a level.', fx: { openBuff: 'atk' } },
-        { id: 'star-key', name: 'Nike', cost: 3, needs: ['star7'], keystone: true, form: 'haenim-nike', desc: 'Keystone: Haenim’s Hoax form, Nike. Buffs, Almighty force and her Victory Lap.', fx: {} },
-        { id: 'star-m1', name: 'Mandate', cost: 3, needs: ['star5'], memory: 'hoax-president-pin', desc: 'Learn Mandate: party attack, defense and agility up a level, and every Theurgy gauge +15.', fx: { learn: 'mandate' } },
-        { id: 'star-m2', name: 'Group Chat', cost: 2, any: ['star4a', 'star4b'], memory: 'hoax-group-chat', desc: 'Whoever takes a Shift also gains 15 Theurgy.', fx: { shiftTh: 15 } }
+        { id: 'bell1', name: 'Gold Bell', cost: 1, needs: ['sun1'], at: [1, 0], desc: '+15 max SP. Haenim’s healing is 25% stronger.', fx: { sp: 15, healMult: 1.25 } },
+        { id: 'bell2', name: 'Diarama', cost: 1, needs: ['bell1'], at: [2, 0], desc: 'Dia becomes Diarama (same slot): a lot of HP to one ally.', fx: { learn: 'diarama' } },
+        { id: 'hl1', name: 'Soft Landing', cost: 2, needs: ['bell2'], at: [3, 0], desc: 'Solar regains 4% of her HP at the start of each of her turns.', fx: { hpRegen: 0.04 } },
+        { id: 'bell4a', name: 'Recarm', cost: 2, needs: ['hl1'], choice: 'bell', at: [4, -1], desc: 'Choice: learn Recarm, revive a fallen ally with half their HP.', fx: { learn: 'recarm' } },
+        { id: 'bell4b', name: 'Runner’s High', cost: 2, needs: ['hl1'], choice: 'bell', at: [4, 1], desc: 'Choice: after each of Solar’s turns the party regains 6% HP.', fx: { regen: 0.06 } },
+        { id: 'bell5', name: 'Mediarama', cost: 2, any: ['bell4a', 'bell4b'], at: [5, 0], desc: 'Learn Mediarama: a lot of HP to the whole party.', fx: { learn: 'mediarama' } },
+        { id: 'hl2', name: 'Me Patra', cost: 1, needs: ['bell5'], at: [6, -1], desc: 'Learn Me Patra: cure Charm, Fear, Distress, Freeze and Shock on the whole party.', fx: { learn: 'me_patra' } },
+        { id: 'bell6', name: 'Protective Suzu', cost: 3, needs: ['bell5'], at: [6, 0], desc: 'Learn Protective Suzu: the party can’t be hurt until their next turn, and every ailment is cured.', fx: { learn: 'protective_suzu' } },
+        { id: 'bell-m2', name: 'Samarecarm', cost: 2, needs: ['bell5'], memory: 'runners-rooftop', at: [6, 1], desc: 'Learn Samarecarm (or Recarm becomes it, same slot): revive with full HP.', fx: { learn: 'samarecarm' } },
+        { id: 'bell-m1', name: 'Kitsune Rush', cost: 4, needs: ['bell6'], memory: 'runners-stadium', at: [7, -1], desc: 'Ultimate: learn Kitsune Rush. For 3 turns the party moves first, +50% agility and accuracy, HP/SP costs halved.', fx: { learn: 'kitsune_rush' } },
+        { id: 'bell7', name: 'Diarahan', cost: 3, needs: ['bell6'], lvl: 32, at: [7, 0], desc: 'Diarama becomes Diarahan (same slot): fully heals one ally.', fx: { learn: 'diarahan' } },
+        { id: 'hl3', name: 'Cooldown Lap', cost: 2, needs: ['bell6'], at: [7, 1], desc: 'Her healing is 20% stronger, and she regains 2 SP at the start of each turn.', fx: { healMult: 1.2, spRegen: 2 } },
+        { id: 'bell-key', name: 'Sunna', cost: 3, needs: ['bell7'], keystone: true, form: 'haenim-sunna', at: [8, 0], desc: 'Keystone: Haenim’s Runners form, Sunna. Support and speed, and her Encore.', fx: {} }
       ] },
-    { id: 'veil', name: 'Veil', world: 'Haenim', color: '#c9b8ff', theme: 'Passives · Counters · Evoker tricks',
+    { id: 'guard', ray: true, angle: 240, name: 'Guard', world: 'Veil', color: '#8fb8ff', theme: 'Counters · Endurance · Taunts',
       blurb: 'What the veil hides: the habits she doesn’t remember learning.',
       nodes: [
-        { id: 'veil1', name: 'Counterstrike', cost: 1, needs: ['sun1'], desc: 'Solar has a 15% chance to hit back when a Shadow strikes her alone.', fx: { counter: 0.15 } },
-        { id: 'veil2', name: 'Morning Dew', cost: 2, needs: ['veil1'], desc: 'Solar regains 3 SP at the start of each of her turns.', fx: { spRegen: 3 } },
-        { id: 'veil3', name: 'Off Angle Flank', cost: 2, needs: ['veil2'], desc: 'Passive: while someone in the party draws aggro (Public Veneer, Provoke), everyone else gets big evasion and +30% critical rate.', fx: { flank: true }, icon: 'sk-flank' },
-        { id: 'veil4a', name: 'Veil of Dusk', cost: 2, needs: ['veil3'], choice: 'veil', desc: 'Choice: Solar is no longer weak to Dark (in every form): she resists it.', fx: { resist: 'dark' } },
-        { id: 'veil4b', name: 'High Counter', cost: 2, needs: ['veil3'], choice: 'veil', desc: 'Choice: Solar’s counter chance rises by 15% more.', fx: { counter: 0.15 } },
-        { id: 'veil5', name: 'Quick Draw', cost: 2, any: ['veil4a', 'veil4b'], desc: 'Evoker trick: Solar always acts first on the first turn of a battle.', fx: { quick: true } },
-        { id: 'veil6', name: 'Double Tap', cost: 3, needs: ['veil5'], desc: 'Evoker trick: the first skill Solar uses in each battle costs nothing.', fx: { firstFree: true } },
-        { id: 'veil7', name: 'Endure', cost: 3, needs: ['veil6'], lvl: 30, desc: 'Once per battle, a blow that would knock Solar out leaves her at 1 HP.', fx: { endure: true } }
+        { id: 'veil1', name: 'Counterstrike', cost: 1, needs: ['sun1'], at: [1, 0], desc: 'Solar has a 15% chance to hit back when a Shadow strikes her alone.', fx: { counter: 0.15 } },
+        { id: 'gd1', name: 'Iron Posture', cost: 1, needs: ['veil1'], at: [2, 0], desc: '+3 En and +20 max HP.', fx: { en: 3, hp: 20 } },
+        { id: 'veil2', name: 'Morning Dew', cost: 2, needs: ['gd1'], at: [3, -1], desc: 'Solar regains 3 SP at the start of each of her turns.', fx: { spRegen: 3 } },
+        { id: 'star3', name: 'Public Veneer', cost: 2, needs: ['gd1'], at: [3, 0], desc: 'Learn Public Veneer: single-target attacks go to Solar for 3 turns; her defense rises and she may counter.', fx: { learn: 'public_veneer' } },
+        { id: 'veil3', name: 'Off Angle Flank', cost: 2, needs: ['star3'], at: [4, 0], desc: 'Passive: while someone in the party draws aggro (Public Veneer, Provoke), everyone else gets big evasion and +30% critical rate.', fx: { flank: true }, icon: 'sk-flank' },
+        { id: 'veil4a', name: 'Veil of Dusk', cost: 2, needs: ['veil3'], choice: 'veil', at: [5, -1], desc: 'Choice: Solar is no longer weak to Dark (in every form): she resists it.', fx: { resist: 'dark' } },
+        { id: 'veil4b', name: 'High Counter', cost: 2, needs: ['veil3'], choice: 'veil', at: [5, 1], desc: 'Choice: Solar’s counter chance rises by 15% more.', fx: { counter: 0.15 } },
+        { id: 'gd2', name: 'Marakukaja', cost: 2, any: ['veil4a', 'veil4b'], at: [6, 0], desc: 'Learn Marakukaja: the party’s defense up a level.', fx: { learn: 'marakukaja' } },
+        { id: 'gd-m1', name: 'Hold the Podium', cost: 2, needs: ['gd2'], memory: 'hoax-debate-stage', at: [6, 1], desc: 'When Solar Guards she regains 8% of her HP and 4 SP.', fx: { guardHeal: 0.08 } },
+        { id: 'gd3', name: 'Sidestep', cost: 2, needs: ['gd2'], at: [7, -1], desc: 'Big evasion for Solar (+12).', fx: { evade: 12 } },
+        { id: 'veil7', name: 'Endure', cost: 3, needs: ['gd2'], lvl: 30, at: [7, 0], desc: 'Once per battle, a blow that would knock Solar out leaves her at 1 HP.', fx: { endure: true } },
+        { id: 'gd4', name: 'Bastion', cost: 2, needs: ['gd2'], at: [7, 1], desc: 'Solar starts every battle with defense up.', fx: { openBuff: ['def'] } },
+        { id: 'gd-key', name: 'Corona', cost: 3, needs: ['veil7'], keystone: true, at: [8, 0], desc: 'Keystone: while Solar stands, the party takes 10% less damage, and her counter chance rises by 10%.', fx: { corona: 0.1, counter: 0.1 } }
+      ] },
+    { id: 'support', ray: true, angle: 300, name: 'Support', world: 'Star', who: 'Hoax', color: '#ff8cc0', theme: 'Buffs · Debuffs · Shift · All-Out', form: 'haenim-nike',
+      blurb: 'A star pin from the campaign. Everyone looks to her when she wears it.',
+      nodes: [
+        { id: 'star1', name: 'Star Pin', cost: 1, needs: ['sun1'], at: [1, 0], desc: '+2 Ag and +10 max HP.', fx: { ag: 2, hp: 10 } },
+        { id: 'star2', name: 'Matarukaja', cost: 1, needs: ['star1'], at: [2, 0], desc: 'Learn Matarukaja: party attack up a level.', fx: { learn: 'matarukaja' } },
+        { id: 'sp1', name: 'Talking Points', cost: 2, needs: ['star2'], at: [3, 0], desc: 'The first skill she uses on each of her turns costs 25% less (a One More pays in full).', fx: { firstCut: 0.25 } },
+        { id: 'star4a', name: 'Campaign Trail', cost: 2, needs: ['sp1'], choice: 'star', at: [4, -1], desc: 'Choice: Shift’s boost rises from ×1.25 to ×1.5, and the one who takes it regains 5 SP.', fx: { shiftMult: 1.5, shiftSp: 5 } },
+        { id: 'star4b', name: 'Rally', cost: 2, needs: ['sp1'], choice: 'star', at: [4, 1], desc: 'Choice: learn Rally: party attack, defense and agility up a level, and +6 SP each.', fx: { learn: 'rally' } },
+        { id: 'star5', name: 'Call the Bluff', cost: 2, any: ['star4a', 'star4b'], at: [5, 0], desc: 'Learn Call the Bluff: strip every buff from a foe and Disorient it for a turn.', fx: { learn: 'call_the_bluff' } },
+        { id: 'star-m2', name: 'Group Chat', cost: 2, any: ['star4a', 'star4b'], memory: 'hoax-group-chat', at: [5, 1.2], desc: 'Whoever takes a Shift also gains 15 Theurgy.', fx: { shiftTh: 15 } },
+        { id: 'sp2', name: 'Long Speech', cost: 2, needs: ['star5'], at: [6, -1], desc: 'Buffs she casts last a turn longer, and so do debuffs she puts on foes.', fx: { buffTurns: 1, debuffTurns: 1 } },
+        { id: 'star6', name: 'Landslide', cost: 2, needs: ['star5'], at: [6, 0], desc: 'All-Out Attacks hit 50% harder.', fx: { alloutMult: 1.5 } },
+        { id: 'sp3', name: 'Debilitate', cost: 3, needs: ['star5'], lvl: 34, at: [6, 1], desc: 'Learn Debilitate: one foe’s attack, defense and agility down a level.', fx: { learn: 'debilitate' } },
+        { id: 'star-m1', name: 'Mandate', cost: 3, needs: ['sp2'], memory: 'hoax-president-pin', at: [7, -1], desc: 'Learn Mandate: party attack, defense and agility up a level, and every Theurgy gauge +15.', fx: { learn: 'mandate' } },
+        { id: 'star7', name: 'Opening Statement', cost: 3, needs: ['star6'], lvl: 30, at: [7, 0], desc: 'The party starts every battle with attack up a level.', fx: { openBuff: 'atk' } },
+        { id: 'sp4', name: 'Heat Riser', cost: 2, needs: ['sp3'], at: [7, 1], desc: 'Learn Heat Riser: one ally’s attack, defense and agility up a level.', fx: { learn: 'heat_riser' } },
+        { id: 'star-key', name: 'Nike', cost: 3, needs: ['star7'], keystone: true, form: 'haenim-nike', at: [8, 0], desc: 'Keystone: Haenim’s Hoax form, Nike. Buffs, Almighty force and her Victory Lap.', fx: {} }
+      ] },
+    // Where two rays meet: each hybrid needs one node on each side (`between` names the rays; drawn in the gap between them).
+    { id: 'hybrid', hybrid: true, name: 'Hybrids', world: 'Where rays meet', color: '#ffe9a8', theme: 'Two paths at once',
+      blurb: 'Where two of her habits cross, something new.',
+      nodes: [
+        { id: 'hy-st-tr1', name: 'Pounce', cost: 2, needs: ['st3', 'tr2'], between: ['striker', 'trickster'], at: { a: 30, r: 4.6 }, desc: 'Her critical rate rises by 15% against a Down or ailing foe.', fx: { critIf: 15 } },
+        { id: 'hy-st-tr2', name: 'Fox Fang', cost: 3, needs: ['st6', 'tr4'], between: ['striker', 'trickster'], at: { a: 30, r: 7.1 }, desc: 'Learn Fox Fang: heavy pierce damage; against an ailing or debuffed foe, or a weak spot, it crits far more often.', fx: { learn: 'fox_fang' } },
+        { id: 'hy-tr-mg1', name: 'Frostbite', cost: 2, needs: ['tr2', 'mg1'], between: ['trickster', 'mage'], at: { a: 90, r: 4.6 }, desc: 'Her Freeze chance rises by 15%.', fx: { freezeUp: 0.15 } },
+        { id: 'hy-tr-mg2', name: 'Kitsunebi', cost: 3, needs: ['tr4', 'jade6'], between: ['trickster', 'mage'], at: { a: 90, r: 7.1 }, desc: 'Learn Kitsunebi: fire damage to all foes; each may be Disoriented.', fx: { learn: 'kitsunebi' } },
+        { id: 'hy-mg-hl1', name: 'Still Water', cost: 2, needs: ['mg1', 'hl1'], between: ['mage', 'healer'], at: { a: 150, r: 4.6 }, desc: 'Solar regains 3 SP at the start of each of her turns.', fx: { spRegen: 3 } },
+        { id: 'hy-mg-hl2', name: 'Spring Rain', cost: 3, needs: ['jade6', 'bell6'], between: ['mage', 'healer'], at: { a: 150, r: 7.1 }, desc: 'Learn Spring Rain: ice damage to all foes, then the party heals 8%.', fx: { learn: 'spring_rain' } },
+        { id: 'hy-hl-gd1', name: 'First-Aid Tin', cost: 2, needs: ['hl1', 'gd1'], between: ['healer', 'guard'], at: { a: 210, r: 4.6 }, desc: '+2 En; Solar regains 3% of her HP at the start of each turn.', fx: { en: 2, hpRegen: 0.03 } },
+        { id: 'hy-hl-gd2', name: 'Guardian Bell', cost: 3, needs: ['bell6', 'gd2'], between: ['healer', 'guard'], at: { a: 210, r: 7.1 }, desc: 'Once per battle, the first ally (or Solar) who would fall stays up with 1 HP.', fx: { guardianBell: true } },
+        { id: 'hy-gd-sp1', name: 'Security Detail', cost: 2, needs: ['star3', 'sp1'], between: ['guard', 'support'], at: { a: 270, r: 4.6 }, desc: 'The party starts every battle with defense up.', fx: { partyOpen: ['def'] } },
+        { id: 'hy-gd-sp2', name: 'Poker Face', cost: 2, needs: ['gd2', 'star6'], between: ['guard', 'support'], at: { a: 270, r: 7.1 }, desc: 'Solar can’t be Charmed or made afraid.', fx: { nullAil: ['charm', 'fear'] } },
+        { id: 'hy-sp-st1', name: 'Opening Act', cost: 2, needs: ['sp1', 'st3'], between: ['support', 'striker'], at: { a: 330, r: 4.6 }, desc: 'Her Theurgy gauge starts every battle 20% full.', fx: { thStart: 20 } },
+        { id: 'hy-sp-st2', name: 'Momentum', cost: 2, needs: ['star6', 'st6'], between: ['support', 'striker'], at: { a: 330, r: 7.1 }, desc: 'Each time Solar earns a One More, she regains 4 SP.', fx: { momentum: 4 } }
       ] }
   ];
-  /* The center: Haenim, Unveiled. Needs all three keystones and the story moment that already gated the form (a full moon cleared). */
-  const treeCenter = { id: 'unveiled', name: 'Unveiled', cost: 5, needs: ['bell-key', 'jade-key', 'star-key'], op: true, keystone: true, form: 'haenim-unveiled', center: true,
+  /* The crown: Haenim, Unveiled. Needs all three form keystones and the story moment that already gated the form (a full moon cleared). */
+  const treeCenter = { id: 'unveiled', name: 'Unveiled', cost: 5, needs: ['bell-key', 'jade-key', 'star-key'], op: true, keystone: true, form: 'haenim-unveiled', center: true, at: { a: 270, r: 9.9 },
     desc: 'The sun you can look at. Needs Sunna, Mazu and Nike, and a full moon cleared. Unlocks Haenim, Unveiled.', fx: {} };
 
-  /* ── Party trees: a compact three tiers for each S.E.E.S. member and each searcher who fights. Tier 1 is open at once,
-     tier 2 opens at their Social Link rank 4 (its third node is the fighter's signature skill), tier 3 at rank 7 (tier 3 is a choice of two). Their own points come from their
-     level (progression.partyPts). At MAX (rank 10) a signature skill evolves on its own (max: { from: chain root, to }).
-     Node fx: stats, learn, counter, crit, evade, acc, endure, healMult, aff { el: resist }, boost { el: mult }. */
-  const T = (a, b, c) => [a, b, c];
+  /* ── Party trees (deeper since 2026-10-25): five tiers for each S.E.E.S. member and each searcher who fights, the same depth for
+     everyone. Tier 1 is open at once; tiers 2-5 open at Social Link ranks 2, 4, 7 and 9 (ptreeRanks), and each needs something
+     bought in the tier before it (or anything higher). Tier 3 holds the signature skill; tiers 4 and 5 are a choice of two.
+     Their own points come from their level (progression.partyPts). At MAX (rank 10) a signature skill evolves on its own
+     (max: { from: chain root, to }). Old node ids (tiers 1, 3 and 4 here) never changed, so saves keep what they bought.
+     Node fx: stats, learn, crit, acc, healMult, aff { el: resist }, boost { el: mult }, and the passives engine.js PASSIVE lists
+     (counter, evade, endure, spRegen, hpRegen, haste, quick, followUp, openBuff, partyOpen, weakUp, ailUp, ailDmg, lowHpUp, physUp,
+     magicUp, bossUp, thStart, buffTurns, debuffTurns, weakSp, critAdd, freezeUp, corona, guardianBell, nullAil…). */
   const ptrees = {
-    akihiko: { tiers: T(
-      [{ id: 'ak1', name: 'Roadwork', cost: 1, desc: '+2 St, +2 Ag and +15 max HP.', fx: { st: 2, ag: 2, hp: 15 } }, { id: 'ak2', name: 'Counterpunch', cost: 1, desc: '15% chance to hit back when a Shadow strikes him alone.', fx: { counter: 0.15 } }],
+    akihiko: { tiers: [
+      [{ id: 'ak1', name: 'Roadwork', cost: 1, desc: '+2 St, +2 Ag and +15 max HP.', fx: { st: 2, ag: 2, hp: 15 } }, { id: 'ak2', name: 'Counterpunch', cost: 1, desc: '15% chance to hit back when a Shadow strikes him alone.', fx: { counter: 0.15 } },
+        { id: 'ak7', name: 'Footwork', cost: 1, desc: '+1 Ag and a little evasion (+8).', fx: { ag: 1, evade: 8 } }],
+      [{ id: 'ak8', name: 'Jab', cost: 2, desc: 'A 20% chance of a quick follow-up punch after his single-target hits.', fx: { followUp: 0.2 } }, { id: 'ak9', name: 'Morning Run', cost: 1, desc: 'He regains 3% of his HP at the start of each turn.', fx: { hpRegen: 0.03 } },
+        { id: 'ak10', name: 'Speed Bag', cost: 2, desc: 'He starts every battle with agility up.', fx: { openBuff: ['agi'] } }],
       [{ id: 'ak3', name: 'Ziodyne', cost: 1, desc: 'His Zio line becomes Ziodyne (same slot).', fx: { learn: 'ziodyne' } }, { id: 'ak4', name: 'Main Event', cost: 2, desc: 'Critical rate +10%.', fx: { crit: 10 } }, { id: 'ak6', name: 'Corkscrew Thunder', cost: 2, desc: 'Learn Corkscrew Thunder, his signature: three punches and a twist of lightning.', fx: { learn: 'corkscrew' } }],
-      [{ id: 'ak5a', name: 'Maziodyne', cost: 3, desc: 'His Mazio line becomes Maziodyne (same slot).', fx: { learn: 'maziodyne' } }, { id: 'ak5b', name: 'Shadow Boxing', cost: 3, desc: 'Big evasion, and his counter chance rises by 10%.', fx: { evade: 20, counter: 0.1 } }]),
+      [{ id: 'ak5a', name: 'Maziodyne', cost: 3, desc: 'His Mazio line becomes Maziodyne (same slot).', fx: { learn: 'maziodyne' } }, { id: 'ak5b', name: 'Shadow Boxing', cost: 3, desc: 'Big evasion, and his counter chance rises by 10%.', fx: { evade: 20, counter: 0.1 } }],
+      [{ id: 'ak11', name: 'Title Fight', cost: 3, desc: 'Bosses take 20% more from him, and his critical rate rises by 5%.', fx: { bossUp: 0.2, crit: 5 } }, { id: 'ak12', name: 'Combination', cost: 3, desc: 'His follow-up chance rises by 15%, and his crits hit 30% harder.', fx: { followUp: 0.15, critAdd: 0.3 } }]],
       max: { from: 'sonic_punch', to: 'sonic_blitz', name: 'Sonic Blitz' } },
-    yukari: { tiers: T(
-      [{ id: 'yu1', name: 'Archery Club', cost: 1, desc: '+2 Ma and +15 max SP.', fx: { ma: 2, sp: 15 } }, { id: 'yu2', name: 'Mediarama', cost: 1, desc: 'Media becomes Mediarama (same slot).', fx: { learn: 'mediarama' } }],
+    yukari: { tiers: [
+      [{ id: 'yu1', name: 'Archery Club', cost: 1, desc: '+2 Ma and +15 max SP.', fx: { ma: 2, sp: 15 } }, { id: 'yu2', name: 'Mediarama', cost: 1, desc: 'Media becomes Mediarama (same slot).', fx: { learn: 'mediarama' } },
+        { id: 'yu7', name: 'Steady Aim', cost: 1, desc: 'Accuracy +8 and critical rate +4%.', fx: { acc: 8, crit: 4 } }],
+      [{ id: 'yu8', name: 'Bedside Manner', cost: 2, desc: 'Her healing is 15% stronger, and she regains 2 SP at the start of each turn.', fx: { healMult: 1.15, spRegen: 2 } }, { id: 'yu9', name: 'Tailwind', cost: 2, desc: 'The party starts every battle with agility up.', fx: { partyOpen: ['agi'] } },
+        { id: 'yu10', name: 'Sharpshooter', cost: 1, desc: 'She hits a weakness 15% harder.', fx: { weakUp: 0.15 } }],
       [{ id: 'yu3', name: 'Diarahan', cost: 1, desc: 'Her Dia line becomes Diarahan (same slot): a full heal.', fx: { learn: 'diarahan' } }, { id: 'yu4', name: 'Healing Light', cost: 2, desc: 'Her healing is 30% stronger.', fx: { healMult: 1.3 } }, { id: 'yu6', name: 'Gale Arrow', cost: 2, desc: 'Learn Gale Arrow, her signature: an arrow on the wind that heals the party a little.', fx: { learn: 'gale_arrow' } }],
-      [{ id: 'yu5a', name: 'Samarecarm', cost: 3, desc: 'Recarm becomes Samarecarm (same slot): revive with full HP.', fx: { learn: 'samarecarm' } }, { id: 'yu5b', name: 'Magarudyne', cost: 3, desc: 'Her Magaru line becomes Magarudyne (same slot).', fx: { learn: 'magarudyne' } }]),
+      [{ id: 'yu5a', name: 'Samarecarm', cost: 3, desc: 'Recarm becomes Samarecarm (same slot): revive with full HP.', fx: { learn: 'samarecarm' } }, { id: 'yu5b', name: 'Magarudyne', cost: 3, desc: 'Her Magaru line becomes Magarudyne (same slot).', fx: { learn: 'magarudyne' } }],
+      [{ id: 'yu11', name: 'Guardian Angel', cost: 3, desc: 'Once per battle a knockout blow leaves her at 1 HP, and she regains 3% HP each turn.', fx: { endure: true, hpRegen: 0.03 } }, { id: 'yu12', name: 'Gale Force', cost: 3, desc: 'Her wind skills hit 30% harder, and her magic 10% harder.', fx: { boost: { wind: 1.3 }, magicUp: 0.1 } }]],
       max: { from: 'media', to: 'mediarahan', name: 'Mediarahan' } },
-    junpei: { tiers: T(
-      [{ id: 'jp1', name: 'Batting Practice', cost: 1, desc: '+2 St and +20 max HP.', fx: { st: 2, hp: 20 } }, { id: 'jp2', name: 'Provoke', cost: 1, desc: 'Learn Provoke: he draws every single-target attack for 3 turns.', fx: { learn: 'provoke' } }],
+    junpei: { tiers: [
+      [{ id: 'jp1', name: 'Batting Practice', cost: 1, desc: '+2 St and +20 max HP.', fx: { st: 2, hp: 20 } }, { id: 'jp2', name: 'Provoke', cost: 1, desc: 'Learn Provoke: he draws every single-target attack for 3 turns.', fx: { learn: 'provoke' } },
+        { id: 'jp7', name: 'Pinch Hitter', cost: 1, desc: 'Below a third of his HP he hits 25% harder.', fx: { lowHpUp: 0.25 } }],
+      [{ id: 'jp8', name: 'Rally Cap', cost: 2, desc: 'His Theurgy gauge starts every battle 20% full.', fx: { thStart: 20 } }, { id: 'jp9', name: 'Hot Streak', cost: 2, desc: 'A 15% chance of a follow-up swing after his single-target hits.', fx: { followUp: 0.15 } },
+        { id: 'jp10', name: 'Tarukaja', cost: 1, desc: 'Learn Tarukaja: one ally’s attack up a level.', fx: { learn: 'tarukaja' } }],
       [{ id: 'jp3', name: 'Agidyne', cost: 1, desc: 'His Agi line becomes Agidyne (same slot).', fx: { learn: 'agidyne' } }, { id: 'jp4', name: 'Clutch Hitter', cost: 2, desc: 'Critical rate +12%.', fx: { crit: 12 } }, { id: 'jp6', name: 'Fastball', cost: 2, desc: 'Learn Fastball, his signature: fire to one foe, 50% more on a Down foe.', fx: { learn: 'fastball' } }],
-      [{ id: 'jp5a', name: 'Maragidyne', cost: 3, desc: 'His Maragi line becomes Maragidyne (same slot).', fx: { learn: 'maragidyne' } }, { id: 'jp5b', name: 'Endure', cost: 3, desc: 'Once per battle, a knockout blow leaves him at 1 HP.', fx: { endure: true } }]),
+      [{ id: 'jp5a', name: 'Maragidyne', cost: 3, desc: 'His Maragi line becomes Maragidyne (same slot).', fx: { learn: 'maragidyne' } }, { id: 'jp5b', name: 'Endure', cost: 3, desc: 'Once per battle, a knockout blow leaves him at 1 HP.', fx: { endure: true } }],
+      [{ id: 'jp11', name: 'Grand Slam', cost: 3, desc: 'His physical skills hit 15% harder, and his crits 20% harder.', fx: { physUp: 0.15, critAdd: 0.2 } }, { id: 'jp12', name: 'Comeback Kid', cost: 3, desc: 'He regains 5% HP each turn and has a 15% chance to counter.', fx: { hpRegen: 0.05, counter: 0.15 } }]],
       max: { from: 'cleave', to: 'home_run', name: 'Home Run' } },
-    mitsuru: { tiers: T(
-      [{ id: 'mi1', name: 'Fencing Form', cost: 1, desc: '+2 Ma and +2 Ag.', fx: { ma: 2, ag: 2 } }, { id: 'mi2', name: 'Bufula', cost: 1, desc: 'Bufu becomes Bufula (same slot).', fx: { learn: 'bufula' } }],
+    mitsuru: { tiers: [
+      [{ id: 'mi1', name: 'Fencing Form', cost: 1, desc: '+2 Ma and +2 Ag.', fx: { ma: 2, ag: 2 } }, { id: 'mi2', name: 'Bufula', cost: 1, desc: 'Bufu becomes Bufula (same slot).', fx: { learn: 'bufula' } },
+        { id: 'mi7', name: 'Poise', cost: 1, desc: 'Accuracy +6 and a little evasion (+6).', fx: { acc: 6, evade: 6 } }],
+      [{ id: 'mi8', name: 'Executioner', cost: 2, desc: 'She hits an ailing foe (a frozen one most of all) 20% harder.', fx: { ailDmg: 0.2 } }, { id: 'mi9', name: 'Cold Front', cost: 2, desc: 'Her Freeze chance rises by 12%.', fx: { freezeUp: 0.12 } },
+        { id: 'mi10', name: 'Matarunda', cost: 2, desc: 'Learn Matarunda: every foe’s attack down a level.', fx: { learn: 'matarunda' } }],
       [{ id: 'mi3', name: 'Mabufula', cost: 1, desc: 'Mabufu becomes Mabufula (same slot).', fx: { learn: 'mabufula' } }, { id: 'mi4', name: 'Frost Edge', cost: 2, desc: 'Her ice skills hit 25% harder.', fx: { boost: { ice: 1.25 } } }, { id: 'mi6', name: 'Glacial Flèche', cost: 2, desc: 'Learn Glacial Flèche, her signature: two freezing lunges.', fx: { learn: 'glacial_fleche' } }],
-      [{ id: 'mi5a', name: 'Mabufudyne', cost: 3, desc: 'Her Mabufu line becomes Mabufudyne (same slot).', fx: { learn: 'mabufudyne' } }, { id: 'mi5b', name: 'Marakunda', cost: 3, desc: 'Learn Marakunda: lower every foe’s defense.', fx: { learn: 'marakunda' } }]),
+      [{ id: 'mi5a', name: 'Mabufudyne', cost: 3, desc: 'Her Mabufu line becomes Mabufudyne (same slot).', fx: { learn: 'mabufudyne' } }, { id: 'mi5b', name: 'Marakunda', cost: 3, desc: 'Learn Marakunda: lower every foe’s defense.', fx: { learn: 'marakunda' } }],
+      [{ id: 'mi11', name: 'Absolute Zero', cost: 3, desc: 'Her magic hits 15% harder.', fx: { magicUp: 0.15 } }, { id: 'mi12', name: 'The Kirijo Line', cost: 3, desc: 'The party starts every battle with defense up, and her buffs and debuffs last a turn longer.', fx: { partyOpen: ['def'], buffTurns: 1, debuffTurns: 1 } }]],
       max: { from: 'bufu', to: 'niflheim', name: 'Niflheim' } },
-    aigis: { tiers: T(
-      [{ id: 'ai1', name: 'Firmware Update', cost: 1, desc: '+2 St, +2 En and +20 max HP.', fx: { st: 2, en: 2, hp: 20 } }, { id: 'ai2', name: 'Provoke', cost: 1, desc: 'Learn Provoke: she draws every single-target attack for 3 turns.', fx: { learn: 'provoke' } }],
+    aigis: { tiers: [
+      [{ id: 'ai1', name: 'Firmware Update', cost: 1, desc: '+2 St, +2 En and +20 max HP.', fx: { st: 2, en: 2, hp: 20 } }, { id: 'ai2', name: 'Provoke', cost: 1, desc: 'Learn Provoke: she draws every single-target attack for 3 turns.', fx: { learn: 'provoke' } },
+        { id: 'ai7', name: 'Targeting', cost: 1, desc: 'Accuracy +8 and critical rate +4%.', fx: { acc: 8, crit: 4 } }],
+      [{ id: 'ai8', name: 'Auto Repair', cost: 1, desc: 'She regains 4% of her HP at the start of each turn.', fx: { hpRegen: 0.04 } }, { id: 'ai9', name: 'Covering Fire', cost: 2, desc: 'A 15% chance of a follow-up burst after her single-target hits.', fx: { followUp: 0.15 } },
+        { id: 'ai10', name: 'Shield Mode', cost: 2, desc: 'She starts every battle with defense up.', fx: { openBuff: ['def'] } }],
       [{ id: 'ai3', name: 'Myriad Shots', cost: 1, desc: 'Arrow Rain becomes Myriad Shots (same slot).', fx: { learn: 'myriad_shots' } }, { id: 'ai4', name: 'Armor Plating', cost: 2, desc: 'Resists Slash.', fx: { aff: { slash: 'resist' } } }, { id: 'ai6', name: 'Missile Salvo', cost: 2, desc: 'Learn Missile Salvo, her signature: every launcher at once, at every foe.', fx: { learn: 'missile_salvo' } }],
-      [{ id: 'ai5a', name: 'Marakukaja', cost: 3, desc: 'Learn Marakukaja (or Rakukaja becomes it, same slot): party defense up.', fx: { learn: 'marakukaja' } }, { id: 'ai5b', name: 'Endure', cost: 3, desc: 'Once per battle, a knockout blow leaves her at 1 HP.', fx: { endure: true } }]),
+      [{ id: 'ai5a', name: 'Marakukaja', cost: 3, desc: 'Learn Marakukaja (or Rakukaja becomes it, same slot): party defense up.', fx: { learn: 'marakukaja' } }, { id: 'ai5b', name: 'Endure', cost: 3, desc: 'Once per battle, a knockout blow leaves her at 1 HP.', fx: { endure: true } }],
+      [{ id: 'ai11', name: 'Overdrive', cost: 3, desc: 'Her physical skills hit 15% harder, and she moves 10% sooner.', fx: { physUp: 0.15, haste: 0.1 } }, { id: 'ai12', name: 'Aegis', cost: 3, desc: 'While she stands, the party takes 8% less damage.', fx: { corona: 0.08 } }]],
       max: { from: 'twin_shot', to: 'triple_down', name: 'Triple Down' } },
-    ken: { tiers: T(
-      [{ id: 'ke1', name: 'Spear Drills', cost: 1, desc: '+2 Ma and +2 Lu.', fx: { ma: 2, lu: 2 } }, { id: 'ke2', name: 'Zionga', cost: 1, desc: 'Zio becomes Zionga (same slot).', fx: { learn: 'zionga' } }],
+    ken: { tiers: [
+      [{ id: 'ke1', name: 'Spear Drills', cost: 1, desc: '+2 Ma and +2 Lu.', fx: { ma: 2, lu: 2 } }, { id: 'ke2', name: 'Zionga', cost: 1, desc: 'Zio becomes Zionga (same slot).', fx: { learn: 'zionga' } },
+        { id: 'ke7', name: 'Study Hall', cost: 1, desc: '+10 max SP; he regains 1 SP each turn.', fx: { sp: 10, spRegen: 1 } }],
+      [{ id: 'ke8', name: 'Righteous', cost: 2, desc: 'He hits a weakness 12% harder.', fx: { weakUp: 0.12 } }, { id: 'ke9', name: 'Kendo Footwork', cost: 1, desc: 'A little evasion (+8).', fx: { evade: 8 } },
+        { id: 'ke10', name: 'Pure Heart', cost: 2, desc: 'He can’t be Charmed or made afraid.', fx: { nullAil: ['charm', 'fear'] } }],
       [{ id: 'ke3', name: 'Hamaon', cost: 1, desc: 'Hama becomes Hamaon (same slot).', fx: { learn: 'hamaon' } }, { id: 'ke4', name: 'Mediarama', cost: 2, desc: 'Media becomes Mediarama (same slot).', fx: { learn: 'mediarama' } }, { id: 'ke6', name: 'Lance of Justice', cost: 2, desc: 'Learn Lance of Justice, his signature: light damage that heals him.', fx: { learn: 'justice_lance' } }],
-      [{ id: 'ke5a', name: 'Diarahan', cost: 3, desc: 'His Dia line becomes Diarahan (same slot).', fx: { learn: 'diarahan' } }, { id: 'ke5b', name: 'Ziodyne', cost: 3, desc: 'His Zio line becomes Ziodyne (same slot).', fx: { learn: 'ziodyne' } }]),
+      [{ id: 'ke5a', name: 'Diarahan', cost: 3, desc: 'His Dia line becomes Diarahan (same slot).', fx: { learn: 'diarahan' } }, { id: 'ke5b', name: 'Ziodyne', cost: 3, desc: 'His Zio line becomes Ziodyne (same slot).', fx: { learn: 'ziodyne' } }],
+      [{ id: 'ke11', name: 'Ultimate Justice', cost: 3, desc: 'His light skills hit 25% harder.', fx: { boost: { light: 1.25 } } }, { id: 'ke12', name: 'Grown Up', cost: 3, desc: 'His healing is 20% stronger, and he regains 3% HP each turn.', fx: { healMult: 1.2, hpRegen: 0.03 } }]],
       max: { from: 'hama', to: 'samsara', name: 'Samsara' } },
-    koromaru: { tiers: T(
-      [{ id: 'ko1', name: 'Fetch', cost: 1, desc: '+2 Ag and +2 Lu.', fx: { ag: 2, lu: 2 } }, { id: 'ko2', name: 'Agilao', cost: 1, desc: 'Agi becomes Agilao (same slot).', fx: { learn: 'agilao' } }],
+    koromaru: { tiers: [
+      [{ id: 'ko1', name: 'Fetch', cost: 1, desc: '+2 Ag and +2 Lu.', fx: { ag: 2, lu: 2 } }, { id: 'ko2', name: 'Agilao', cost: 1, desc: 'Agi becomes Agilao (same slot).', fx: { learn: 'agilao' } },
+        { id: 'ko7', name: 'Good Boy', cost: 1, desc: '+20 max HP.', fx: { hp: 20 } }],
+      [{ id: 'ko8', name: 'Pack Hunt', cost: 2, desc: 'A 20% chance of a follow-up bite after his single-target hits.', fx: { followUp: 0.2 } }, { id: 'ko9', name: 'Scent of Fear', cost: 2, desc: 'His ailments land 10% more often.', fx: { ailUp: 0.1 } },
+        { id: 'ko10', name: 'Guard Dog', cost: 2, desc: '15% chance to bite back when a Shadow strikes him alone.', fx: { counter: 0.15 } }],
       [{ id: 'ko3', name: 'Mudoon', cost: 1, desc: 'Mudo becomes Mudoon (same slot).', fx: { learn: 'mudoon' } }, { id: 'ko4', name: 'Pack Instinct', cost: 2, desc: 'Critical rate +10%.', fx: { crit: 10 } }, { id: 'ko6', name: 'Three Heads', cost: 2, desc: 'Learn Three Heads, his signature: three bites that may frighten a foe.', fx: { learn: 'three_heads' } }],
-      [{ id: 'ko5a', name: 'Maragidyne', cost: 3, desc: 'His Maragi line becomes Maragidyne (or he learns it).', fx: { learn: 'maragidyne' } }, { id: 'ko5b', name: 'Evil Smile', cost: 3, desc: 'Learn Evil Smile: Fear on every foe.', fx: { learn: 'evil_smile' } }]),
+      [{ id: 'ko5a', name: 'Maragidyne', cost: 3, desc: 'His Maragi line becomes Maragidyne (or he learns it).', fx: { learn: 'maragidyne' } }, { id: 'ko5b', name: 'Evil Smile', cost: 3, desc: 'Learn Evil Smile: Fear on every foe.', fx: { learn: 'evil_smile' } }],
+      [{ id: 'ko11', name: 'Hellhound', cost: 3, desc: 'His fire skills hit 25% harder, and he hits ailing foes 15% harder.', fx: { boost: { fire: 1.25 }, ailDmg: 0.15 } }, { id: 'ko12', name: 'Loyal to the End', cost: 3, desc: 'Once per battle, the first of the party who would fall stays up with 1 HP.', fx: { guardianBell: true } }]],
       max: { from: 'mudo', to: 'die_for_me', name: 'Die for Me!' } },
-    shinjiro: { tiers: T(
-      [{ id: 'sh1', name: 'Street Fighter', cost: 1, desc: '+3 St and +25 max HP.', fx: { st: 3, hp: 25 } }, { id: 'sh2', name: 'Provoke', cost: 1, desc: 'Learn Provoke: he draws every single-target attack for 3 turns.', fx: { learn: 'provoke' } }],
+    shinjiro: { tiers: [
+      [{ id: 'sh1', name: 'Street Fighter', cost: 1, desc: '+3 St and +25 max HP.', fx: { st: 3, hp: 25 } }, { id: 'sh2', name: 'Provoke', cost: 1, desc: 'Learn Provoke: he draws every single-target attack for 3 turns.', fx: { learn: 'provoke' } },
+        { id: 'sh7', name: 'Thick Skin', cost: 1, desc: '+2 En.', fx: { en: 2 } }],
+      [{ id: 'sh8', name: 'Back Alley', cost: 2, desc: 'Below a third of his HP he hits 30% harder.', fx: { lowHpUp: 0.3 } }, { id: 'sh9', name: 'Short Fuse', cost: 2, desc: '15% chance to hit back when a Shadow strikes him alone.', fx: { counter: 0.15 } },
+        { id: 'sh10', name: 'Home Cooking', cost: 1, desc: 'He regains 4% of his HP at the start of each turn.', fx: { hpRegen: 0.04 } }],
       [{ id: 'sh3', name: 'Steady Swing', cost: 1, desc: 'Accuracy +12.', fx: { acc: 12 } }, { id: 'sh4', name: 'Endure', cost: 2, desc: 'Once per battle, a knockout blow leaves him at 1 HP.', fx: { endure: true } }, { id: 'sh6', name: 'Haymaker', cost: 2, desc: 'Learn Haymaker, his signature: it lands harder the more hurt he is.', fx: { learn: 'haymaker' } }],
-      [{ id: 'sh5a', name: 'Gigantic Fist', cost: 3, desc: 'Learn Gigantic Fist: heavy strike damage to one foe.', fx: { learn: 'gigantic_fist' } }, { id: 'sh5b', name: 'Counterstrike', cost: 3, desc: '25% chance to hit back when a Shadow strikes him alone.', fx: { counter: 0.25 } }]),
+      [{ id: 'sh5a', name: 'Gigantic Fist', cost: 3, desc: 'Learn Gigantic Fist: heavy strike damage to one foe.', fx: { learn: 'gigantic_fist' } }, { id: 'sh5b', name: 'Counterstrike', cost: 3, desc: '25% chance to hit back when a Shadow strikes him alone.', fx: { counter: 0.25 } }],
+      [{ id: 'sh11', name: 'Berserker', cost: 3, desc: 'His physical skills hit 20% harder.', fx: { physUp: 0.2 } }, { id: 'sh12', name: 'Big Brother', cost: 3, desc: 'While he stands, the party takes 8% less damage.', fx: { corona: 0.08 } }]],
       max: { from: 'fatal_end', to: 'gods_hand', name: 'God’s Hand' } },
-    jihoon: { tiers: T(
-      [{ id: 'jh1', name: 'Center Stage', cost: 1, desc: '+2 St and +15 max HP.', fx: { st: 2, hp: 15 } }, { id: 'jh2', name: 'Matarukaja', cost: 1, desc: 'Tarukaja becomes Matarukaja (same slot): the whole party.', fx: { learn: 'matarukaja' } }],
+    jihoon: { tiers: [
+      [{ id: 'jh1', name: 'Center Stage', cost: 1, desc: '+2 St and +15 max HP.', fx: { st: 2, hp: 15 } }, { id: 'jh2', name: 'Matarukaja', cost: 1, desc: 'Tarukaja becomes Matarukaja (same slot): the whole party.', fx: { learn: 'matarukaja' } },
+        { id: 'jh7', name: 'Crowd Pleaser', cost: 1, desc: 'His Theurgy gauge starts every battle 15% full.', fx: { thStart: 15 } }],
+      [{ id: 'jh8', name: 'Goblin Grin', cost: 2, desc: 'His ailments land 10% more often.', fx: { ailUp: 0.1 } }, { id: 'jh9', name: 'Encore', cost: 2, desc: 'A 15% chance of a follow-up swing after his single-target hits.', fx: { followUp: 0.15 } },
+        { id: 'jh10', name: 'Spotlight Hog', cost: 2, desc: 'Buffs he casts last a turn longer.', fx: { buffTurns: 1 } }],
       [{ id: 'jh3', name: 'Look At Me', cost: 1, desc: 'Learn Provoke: everybody watch him (for 3 turns, every single-target attack does).', fx: { learn: 'provoke' } }, { id: 'jh4', name: 'Magarula', cost: 2, desc: 'His Magaru line becomes Magarula (or he learns it).', fx: { learn: 'magarula' } }, { id: 'jh6', name: 'Goblin Fire', cost: 2, desc: 'Learn Goblin Fire, his second signature: blue goblin lights at random foes.', fx: { learn: 'goblin_fire' } }],
-      [{ id: 'jh5a', name: 'Magarudyne', cost: 3, desc: 'His Magaru line becomes Magarudyne (or he learns it).', fx: { learn: 'magarudyne' } }, { id: 'jh5b', name: 'Heat Riser', cost: 3, desc: 'Learn Heat Riser: one ally’s attack, defense and agility up a level.', fx: { learn: 'heat_riser' } }]),
+      [{ id: 'jh5a', name: 'Magarudyne', cost: 3, desc: 'His Magaru line becomes Magarudyne (or he learns it).', fx: { learn: 'magarudyne' } }, { id: 'jh5b', name: 'Heat Riser', cost: 3, desc: 'Learn Heat Riser: one ally’s attack, defense and agility up a level.', fx: { learn: 'heat_riser' } }],
+      [{ id: 'jh11', name: 'Main Character', cost: 3, desc: 'The party starts every battle with attack up.', fx: { partyOpen: ['atk'] } }, { id: 'jh12', name: 'Goblin King', cost: 3, desc: 'His physical skills hit 15% harder, and his crits 20% harder.', fx: { physUp: 0.15, critAdd: 0.2 } }]],
       max: { from: 'garu', to: 'showstopper', name: 'Showstopper' } },
-    minji: { tiers: T(
-      [{ id: 'mj1', name: 'Rolling', cost: 1, desc: '+2 Ma and +15 max SP.', fx: { ma: 2, sp: 15 } }, { id: 'mj2', name: 'Media', cost: 1, desc: 'Learn Media: heal the whole party.', fx: { learn: 'media' } }],
+    minji: { tiers: [
+      [{ id: 'mj1', name: 'Rolling', cost: 1, desc: '+2 Ma and +15 max SP.', fx: { ma: 2, sp: 15 } }, { id: 'mj2', name: 'Media', cost: 1, desc: 'Learn Media: heal the whole party.', fx: { learn: 'media' } },
+        { id: 'mj7', name: 'Viewfinder', cost: 1, desc: 'Accuracy +8.', fx: { acc: 8 } }],
+      [{ id: 'mj8', name: 'Exposure', cost: 2, desc: 'She hits a weakness 15% harder.', fx: { weakUp: 0.15 } }, { id: 'mj9', name: 'Soft Focus', cost: 2, desc: 'Her healing is 15% stronger.', fx: { healMult: 1.15 } },
+        { id: 'mj10', name: 'Me Patra', cost: 1, desc: 'Learn Me Patra: cure Charm, Fear, Distress, Freeze and Shock on the whole party.', fx: { learn: 'me_patra' } }],
       [{ id: 'mj3', name: 'Diarama', cost: 1, desc: 'Dia becomes Diarama (same slot).', fx: { learn: 'diarama' } }, { id: 'mj4', name: 'Hamaon', cost: 2, desc: 'Hama becomes Hamaon (same slot).', fx: { learn: 'hamaon' } }, { id: 'mj6', name: 'Focus Pull', cost: 2, desc: 'Learn Focus Pull, her second signature: a shot that slows a foe and reads every affinity.', fx: { learn: 'focus_pull' } }],
-      [{ id: 'mj5a', name: 'Mediarama', cost: 3, desc: 'Her Media line becomes Mediarama (or she learns it).', fx: { learn: 'mediarama' } }, { id: 'mj5b', name: 'Samarecarm', cost: 3, desc: 'Learn Samarecarm: revive with full HP.', fx: { learn: 'samarecarm' } }]),
+      [{ id: 'mj5a', name: 'Mediarama', cost: 3, desc: 'Her Media line becomes Mediarama (or she learns it).', fx: { learn: 'mediarama' } }, { id: 'mj5b', name: 'Samarecarm', cost: 3, desc: 'Learn Samarecarm: revive with full HP.', fx: { learn: 'samarecarm' } }],
+      [{ id: 'mj11', name: 'Golden Hour', cost: 3, desc: 'The party starts every battle with agility up, and she regains 2 SP each turn.', fx: { partyOpen: ['agi'], spRegen: 2 } }, { id: 'mj12', name: 'Long Exposure', cost: 3, desc: 'Debuffs she puts on foes last a turn longer, and her light skills hit 20% harder.', fx: { debuffTurns: 1, boost: { light: 1.2 } } }]],
       max: { from: 'dia', to: 'salvation', name: 'Salvation' } },
-    jungwon: { tiers: T(
-      [{ id: 'jw1', name: 'Etiquette', cost: 1, desc: '+2 Ag and +2 Ma.', fx: { ag: 2, ma: 2 } }, { id: 'jw2', name: 'Bufula', cost: 1, desc: 'Bufu becomes Bufula (same slot).', fx: { learn: 'bufula' } }],
+    jungwon: { tiers: [
+      [{ id: 'jw1', name: 'Etiquette', cost: 1, desc: '+2 Ag and +2 Ma.', fx: { ag: 2, ma: 2 } }, { id: 'jw2', name: 'Bufula', cost: 1, desc: 'Bufu becomes Bufula (same slot).', fx: { learn: 'bufula' } },
+        { id: 'jw7', name: 'Posture', cost: 1, desc: '+2 En and +15 max HP.', fx: { en: 2, hp: 15 } }],
+      [{ id: 'jw8', name: 'Shell', cost: 2, desc: 'He starts every battle with defense up.', fx: { openBuff: ['def'] } }, { id: 'jw9', name: 'Order', cost: 2, desc: 'Debuffs he puts on foes last a turn longer.', fx: { debuffTurns: 1 } },
+        { id: 'jw10', name: 'Composed', cost: 1, desc: 'He can’t be made afraid or Distressed.', fx: { nullAil: ['fear', 'distress'] } }],
       [{ id: 'jw3', name: 'Marakunda', cost: 1, desc: 'Rakunda becomes Marakunda (same slot): every foe.', fx: { learn: 'marakunda' } }, { id: 'jw4', name: 'Poise', cost: 2, desc: 'Critical rate +10%.', fx: { crit: 10 } }, { id: 'jw6', name: 'Black Tortoise', cost: 2, desc: 'Learn Black Tortoise, his second signature: the party’s defense up while he draws the attacks.', fx: { learn: 'black_tortoise' } }],
-      [{ id: 'jw5a', name: 'Bufudyne', cost: 3, desc: 'His Bufu line becomes Bufudyne (same slot).', fx: { learn: 'bufudyne' } }, { id: 'jw5b', name: 'Debilitate', cost: 3, desc: 'Learn Debilitate: one foe’s attack, defense and agility down a level.', fx: { learn: 'debilitate' } }]),
+      [{ id: 'jw5a', name: 'Bufudyne', cost: 3, desc: 'His Bufu line becomes Bufudyne (same slot).', fx: { learn: 'bufudyne' } }, { id: 'jw5b', name: 'Debilitate', cost: 3, desc: 'Learn Debilitate: one foe’s attack, defense and agility down a level.', fx: { learn: 'debilitate' } }],
+      [{ id: 'jw11', name: 'North Wind', cost: 3, desc: 'His ice skills hit 25% harder, and his Freeze chance rises by 10%.', fx: { boost: { ice: 1.25 }, freezeUp: 0.1 } }, { id: 'jw12', name: 'Guardian of the North', cost: 3, desc: 'While he stands the party takes 8% less damage, and he may counter (15%).', fx: { corona: 0.08, counter: 0.15 } }]],
       max: { from: 'bufu', to: 'diamond_dust', name: 'Diamond Dust' } },
-    haechan: { tiers: T(
-      [{ id: 'hc1', name: 'Showoff', cost: 1, desc: '+2 St and +2 Ag.', fx: { st: 2, ag: 2 } }, { id: 'hc2', name: 'Zionga', cost: 1, desc: 'Zio becomes Zionga (same slot).', fx: { learn: 'zionga' } }],
+    haechan: { tiers: [
+      [{ id: 'hc1', name: 'Showoff', cost: 1, desc: '+2 St and +2 Ag.', fx: { st: 2, ag: 2 } }, { id: 'hc2', name: 'Zionga', cost: 1, desc: 'Zio becomes Zionga (same slot).', fx: { learn: 'zionga' } },
+        { id: 'hc7', name: 'Stage Presence', cost: 1, desc: 'He moves 10% sooner in the turn order.', fx: { haste: 0.1 } }],
+      [{ id: 'hc8', name: 'Moonwalk', cost: 2, desc: 'A little evasion (+8).', fx: { evade: 8 } }, { id: 'hc9', name: 'Ad-Lib', cost: 2, desc: 'A 15% chance of a follow-up slash after his single-target hits.', fx: { followUp: 0.15 } },
+        { id: 'hc10', name: 'Lunar Charge', cost: 2, desc: 'Hitting a weakness gives him back 3 SP (once a skill).', fx: { weakSp: 3 } }],
       [{ id: 'hc3', name: 'Mazionga', cost: 1, desc: 'His Mazio line becomes Mazionga (or he learns it).', fx: { learn: 'mazionga' } }, { id: 'hc4', name: 'Quick Wit', cost: 2, desc: 'Big evasion.', fx: { evade: 15 } }, { id: 'hc6', name: 'Moonlit Static', cost: 2, desc: 'Learn Moonlit Static, his second signature: lightning on every foe, harder on a Down one.', fx: { learn: 'moon_static' } }],
-      [{ id: 'hc5a', name: 'Ziodyne', cost: 3, desc: 'His Zio line becomes Ziodyne (same slot).', fx: { learn: 'ziodyne' } }, { id: 'hc5b', name: 'Power Slash', cost: 3, desc: 'Cleave becomes Power Slash (same slot).', fx: { learn: 'power_slash' } }]),
+      [{ id: 'hc5a', name: 'Ziodyne', cost: 3, desc: 'His Zio line becomes Ziodyne (same slot).', fx: { learn: 'ziodyne' } }, { id: 'hc5b', name: 'Power Slash', cost: 3, desc: 'Cleave becomes Power Slash (same slot).', fx: { learn: 'power_slash' } }],
+      [{ id: 'hc11', name: 'Eclipse', cost: 3, desc: 'His electric skills hit 20% harder, and his magic 10% harder.', fx: { boost: { elec: 1.2 }, magicUp: 0.1 } }, { id: 'hc12', name: 'Night Shift', cost: 3, desc: 'A 15% chance to counter, and a little more evasion (+6).', fx: { counter: 0.15, evade: 6 } }]],
       max: { from: 'zio', to: 'thunder_reign', name: 'Thunder Reign' } }
   };
-  const ptreeRanks = [0, 4, 7]; // the link rank each tier needs; MAX (rank 10) evolves the signature skill
+  const ptreeRanks = [0, 2, 4, 7, 9]; // the link rank each tier needs; MAX (rank 10) evolves the signature skill
+  const ptreeChoice = [false, false, false, true, true]; // tiers that are a choice of two
 
   const progression = {
     startLevel: 5,
@@ -1351,7 +1493,7 @@ window.FEMC_BATTLE_DATA = (() => {
     pointsPerLevel: 2,
     bossBonusPoints: 2,
     memoryPoints: 1, // each memory fragment gives Haenim's tree a skill point
-    partyPts: lvl => Math.max(0, Math.floor((lvl - 4) / 4)), // a party member's own tree points come from their level (8 buys a whole tree, about Lv 36)
+    partyPts: lvl => Math.max(0, Math.floor((lvl - 4) / 3)), // a party member's own tree points come from their level (12 at Lv 40; a whole tree is 19, about Lv 61)
     respecFee: { solar: 100, party: 150, min: 500 }, // the Velvet Room rewrites a tree for yen: per point refunded (at least `min`)
     heat: 0.3, // each full climb to the top makes Tartarus Shadows this much stronger (and worth more EXP)
     benchShare: 0.6, // members sitting out still get this share of the EXP
@@ -1362,5 +1504,5 @@ window.FEMC_BATTLE_DATA = (() => {
   };
 
   return { portraits: P, faceFocus, elements, affinityOrder, skills, ailments, tactics, attack, personas, party, defaultParty, theurgyGain, items, startItems, startYen, materials,
-    gear, startGear, shops, enemies, blocks, floors, ops, map, events, memories, memoryPlaceholder, music, clips, navigator, nav, tree, treeCenter, ptrees, ptreeRanks, chains, buffRules, skillSlots, progression, difficulty, glossary, tips };
+    gear, startGear, shops, enemies, blocks, floors, ops, map, events, memories, memoryPlaceholder, music, clips, navigator, nav, tree, treeCenter, ptrees, ptreeRanks, ptreeChoice, chains, buffRules, skillSlots, progression, difficulty, glossary, tips };
 })();
