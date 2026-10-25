@@ -84,7 +84,7 @@ window.FEMC_PORTRAIT_SCALE = {
   wanda: 0.92,
   widowmaker: 1.18,
   wren: 0.95,
-  yukari: 1.1,
+  yukari: 1.04,
   yunjin: 1.0,
   // the regulars (batch 37; their art is framed closer than the cast's)
   bunkichi: 0.82,
