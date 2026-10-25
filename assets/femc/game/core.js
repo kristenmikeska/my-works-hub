@@ -310,10 +310,10 @@ window.FemcGame = (() => {
 
   /* ── Settings ── */
   // One store for the whole game. Story: text, auto, dateCard, quickClass. Battle (battle.js pullSettings maps these onto its
-  // own names): battleSpeed, cutins, difficulty, remember, rushWhere, rushStop, shake, calm, numbers, tips, pad, perf. Both:
+  // own names): battleSpeed, cutins, showtimes, difficulty, remember, rushWhere, rushStop, shake, calm, numbers, tips, pad, perf. Both:
   // text (also the battle's text speed), music (0-100, 0 = off; musicLast remembers the volume), sfx, sfxVol.
   const DEFAULTS = { text: 'normal', music: 60, musicLast: 60, sfx: true, sfxVol: 100, auto: 'off', dateCard: true, battles: 'ask', quickClass: false, wxFx: true, wxSound: 60,
-    battleSpeed: 1, cutins: 'first', difficulty: 'normal', remember: true, rushWhere: 'normal', rushStop: 30, shake: true, calm: false, numbers: true, tips: true, pad: 'auto', perf: false };
+    battleSpeed: 1, cutins: 'first', showtimes: 'on', difficulty: 'normal', remember: true, rushWhere: 'normal', rushStop: 30, shake: true, calm: false, numbers: true, tips: true, pad: 'auto', perf: false };
   let settingsRaw = (() => { try { return JSON.parse(lsGet(SETTINGS_KEY) || '{}') || {}; } catch (e) { return {}; } })();
   // The merge: battle preferences come from the playthrough's battle save the first time (difficulty, Rush, cut-ins…).
   if (!('difficulty' in settingsRaw) && S.battleSave && S.battleSave.settings) {

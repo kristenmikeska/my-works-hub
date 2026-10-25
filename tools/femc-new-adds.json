@@ -8546,6 +8546,403 @@
       "placement": "menu.js TAB_ICONS / tabIco: before the 'album' field-menu tab's label (and the title-screen Extras tab); text-only if the file fails (onerror removes it)"
     },
     {
+      "batch": 44,
+      "source": "Showtime-Solar-Akihiko/panel-02.png",
+      "sourceNow": "Added to Game/Showtime-Solar-Akihiko/panel-02.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "50850437f9688314cacea58678f62b69e3f029ef5c51e553885846da4cd8c17a",
+      "character": "solar + akihiko",
+      "intendedUse": "Akihiko friendship Showtime \"Roadwork\" (bonds.js akihiko.sequence, every tier; borrowed by his romance versions), panel 2: the stopwatch: \"New drill. I\u2019m timing you.\"",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-akihiko-show-2.webp"
+      ],
+      "outputSha256": [
+        "2b2859c1ffe235fbe21be3563be52ddf5103aff004570733bd422b816476526c"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "Showtime-Solar-Akihiko/panel-03.png",
+      "sourceNow": "Added to Game/Showtime-Solar-Akihiko/panel-03.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "77c779aa46639f9f326c40685d0cd2dc2149d7581b7a5e5869cb50a7f84d102b",
+      "character": "solar + akihiko",
+      "intendedUse": "Akihiko friendship Showtime \"Roadwork\" (bonds.js akihiko.sequence, every tier; borrowed by his romance versions), panel 3: the launch off his gloves",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-akihiko-show-3.webp"
+      ],
+      "outputSha256": [
+        "28ab3bee76af7bd80b51c21a3ee6224f10ca36c758b86551fea5cc5478f6b639"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "Showtime-Solar-Akihiko/panel-04.png",
+      "sourceNow": "Added to Game/Showtime-Solar-Akihiko/panel-04.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4fb5f241a1246336ea0bbfcd528b86d54ab593da1b7788ef2c6feaa3b2d00368",
+      "character": "solar + akihiko",
+      "intendedUse": "Akihiko friendship Showtime \"Roadwork\" (bonds.js akihiko.sequence, every tier; borrowed by his romance versions), panel 4: the strike: her sunrise slash, his jaw on the floor; the strike panel (hit)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-akihiko-show-4.webp"
+      ],
+      "outputSha256": [
+        "d1a9501ea4f0689ed96e5717dd430d573066fdde10b0939211738d7d28ccefa0"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "Showtime-Solar-Akihiko/panel-05.png",
+      "sourceNow": "Added to Game/Showtime-Solar-Akihiko/panel-05.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "12c71a01d58c2334463d2c9b5a59671f345becd81d1bd3585fc47aa03d26df8d",
+      "character": "solar + akihiko",
+      "intendedUse": "Akihiko friendship Showtime \"Roadwork\" (bonds.js akihiko.sequence, every tier; borrowed by his romance versions), panel 5: she takes the stopwatch; fist bump",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-akihiko-show-5.webp"
+      ],
+      "outputSha256": [
+        "503b2f5bf340d5624bd2b4b468db86b9d07082c0957781995df880e2b61d62ee"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "Showtime-Solar-Shinjiro/showtime-01.png",
+      "sourceNow": "Added to Game/Showtime-Solar-Shinjiro/showtime-01.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "cecfcde76e0083f923b0037c85aebf1398f615601ceb7e2ac7247fda35332ea1",
+      "character": "solar + shinjiro",
+      "intendedUse": "Shinjiro friendship Showtime \"Seconds\" (bonds.js shinjiro.sequence), panel 1: he catches her wrist at the pot",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-shinjiro-show-1.webp"
+      ],
+      "outputSha256": [
+        "d15cba8bee97aec92396690790b26c2d0a20c8693a20064685c450fde65cce71"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "Showtime-Solar-Shinjiro/showtime-02.png",
+      "sourceNow": "Added to Game/Showtime-Solar-Shinjiro/showtime-02.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "d59cc9499612b26a40cfad21d34b5765bea00e52f7212dca846277e1d7d69da3",
+      "character": "solar + shinjiro",
+      "intendedUse": "Shinjiro friendship Showtime \"Seconds\" (bonds.js shinjiro.sequence), panel 2: the Shadow hand; ladle handed over, axe up",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-shinjiro-show-2.webp"
+      ],
+      "outputSha256": [
+        "c79d92458bcf3c0f5da4dd5157bbf3ad1e46482ca800aacedca89a3914fe1366"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "Showtime-Solar-Shinjiro/showtime-03.png",
+      "sourceNow": "Added to Game/Showtime-Solar-Shinjiro/showtime-03.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "526fd3d64f83978f242c2a4d3469bc4be70d8ef06e3f10b2f323af65f6119b68",
+      "character": "solar + shinjiro",
+      "intendedUse": "Shinjiro friendship Showtime \"Seconds\" (bonds.js shinjiro.sequence), panel 3: the strike: Castor\u2019s charge; the strike panel (hit)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-shinjiro-show-3.webp"
+      ],
+      "outputSha256": [
+        "5469db0f747668b19fe0c9d642c0ee64e2703046592b8adc1dce08536c4a48fe"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "Showtime-Solar-Shinjiro/showtime-04.png",
+      "sourceNow": "Added to Game/Showtime-Solar-Shinjiro/showtime-04.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "9fdaecdcdcc6c8b32a972429deb60b562ac4cfd27283510f192c09c121adbe9f",
+      "character": "solar + shinjiro",
+      "intendedUse": "Shinjiro friendship Showtime \"Seconds\" (bonds.js shinjiro.sequence), panel 4: seconds, please (also the short-version still)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-shinjiro-show-4.webp"
+      ],
+      "outputSha256": [
+        "831f71e70e921ceea78c14d4b7ad50704b226887557bee5dce7605f40ef914e7"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "showtime-solar-jungwon-1.png",
+      "sourceNow": "Added to Game/showtime-solar-jungwon-1.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "1fea3983b939f79f4c76cab945a1d95429497d08e1615170c45289fc096f2d94",
+      "character": "solar + jungwon",
+      "intendedUse": "Jungwon friendship Showtime \"Unanimous\" (bonds.js jungwon.sequence; panel 1 is the old bond-jungwon still), panel 2: the clipboard for the Shadow",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-jungwon-show-2.webp"
+      ],
+      "outputSha256": [
+        "9a6c019ad1633a5e45cc047100ac9a603137c020a46646d484b989f4663a6de7"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "showtime-solar-jungwon-2.png",
+      "sourceNow": "Added to Game/showtime-solar-jungwon-2.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "01de7f4d96f5491c9464ff45d394760142fe399eecf5073a012aa71226db7310",
+      "character": "solar + jungwon",
+      "intendedUse": "Jungwon friendship Showtime \"Unanimous\" (bonds.js jungwon.sequence; panel 1 is the old bond-jungwon still), panel 3: the seal and the frost",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-jungwon-show-3.webp"
+      ],
+      "outputSha256": [
+        "f2e91447d547c690dc65df4a820b668b7718c3cd03aa17b898ad9b19d85cb558"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "showtime-solar-jungwon-3.png",
+      "sourceNow": "Added to Game/showtime-solar-jungwon-3.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ebb66a0990c313bab54accf3139721845a13559cbc51b57b6225456030decae2",
+      "character": "solar + jungwon",
+      "intendedUse": "Jungwon friendship Showtime \"Unanimous\" (bonds.js jungwon.sequence; panel 1 is the old bond-jungwon still), panel 4: the strike: frost and golden rope bind it; the strike panel (hit)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-jungwon-show-4.webp"
+      ],
+      "outputSha256": [
+        "a05bdd04daf3ee7ee98235d33a3b5f752eb386b0b5d68152fefdd0f4fefe03fc"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "showtime-solar-jungwon-4.png",
+      "sourceNow": "Added to Game/showtime-solar-jungwon-4.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "9cce14306e1cbf60702e3ea9eb2ccbe5ea47259b932a67f2d2a8c6a9c154208f",
+      "character": "solar + jungwon",
+      "intendedUse": "Jungwon friendship Showtime \"Unanimous\" (bonds.js jungwon.sequence; panel 1 is the old bond-jungwon still), panel 5: both vote; unanimous",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-jungwon-show-5.webp"
+      ],
+      "outputSha256": [
+        "5959ce87ceaa75900210455d1416eef8ee9d7421a6f6994ea5b0fb7c8dc83a3e"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "Solar-Haechan-Bond-Stills/revised-sequence/01-solar-prepares.png",
+      "sourceNow": "Added to Game/Solar-Haechan-Bond-Stills/revised-sequence/01-solar-prepares.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "6da9e0192fe5a598b2af5a55689fd6284249ee094d5ea2ea16c87ab860d22107",
+      "character": "solar + haechan",
+      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat\u2019s revised take on the Universe beats), panel 1: solar prepares",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-haechan-love-show-1.webp"
+      ],
+      "outputSha256": [
+        "2432e3bfb8febb2f3a5ea59656595630482a679a4813fdd1d8159b1b68172517"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "Solar-Haechan-Bond-Stills/revised-sequence/02-haechan-shields.png",
+      "sourceNow": "Added to Game/Solar-Haechan-Bond-Stills/revised-sequence/02-haechan-shields.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e643e8de2cfdadacc0263367af8d3cc24e01ef659df2fb5c1c5462b114b87522",
+      "character": "solar + haechan",
+      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat\u2019s revised take on the Universe beats), panel 2: haechan shields",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-haechan-love-show-2.webp"
+      ],
+      "outputSha256": [
+        "5d243577fcae162258506dea623642c328cc1f8524e30c86efd7ed84d47f7939"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "Solar-Haechan-Bond-Stills/revised-sequence/03-knife-throw.png",
+      "sourceNow": "Added to Game/Solar-Haechan-Bond-Stills/revised-sequence/03-knife-throw.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "836b4235f8636122413c6e675c42d00ae87a9fa36bf183e1bcad334504820b7e",
+      "character": "solar + haechan",
+      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat\u2019s revised take on the Universe beats), panel 3: knife throw; the strike panel (hit)",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-haechan-love-show-3.webp"
+      ],
+      "outputSha256": [
+        "b08f0261be5bfdbc4083242fd1c6ffc903ddd48b6c2d5415addc1057002e7dee"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "Solar-Haechan-Bond-Stills/revised-sequence/04-turns-to-solar.png",
+      "sourceNow": "Added to Game/Solar-Haechan-Bond-Stills/revised-sequence/04-turns-to-solar.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "2ca75ff9f170be9cc09d42998eb1997f0032db520e0c881f94d5f33b7e0f4610",
+      "character": "solar + haechan",
+      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat\u2019s revised take on the Universe beats), panel 4: turns to solar",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-haechan-love-show-4.webp"
+      ],
+      "outputSha256": [
+        "cb8d63e8fac8a07992fea494494ad2cb4fabcdc2a098761da394c66357955bd7"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "Solar-Haechan-Bond-Stills/revised-sequence/05-kiss.png",
+      "sourceNow": "Added to Game/Solar-Haechan-Bond-Stills/revised-sequence/05-kiss.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "697fd9d1e4dbc35f89f5edd6ea3412c69ad27909cc09cd886af876515af7c98d",
+      "character": "solar + haechan",
+      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat\u2019s revised take on the Universe beats), panel 5: kiss",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/battle/art/theurgy/bond-haechan-love-show-5.webp"
+      ],
+      "outputSha256": [
+        "e8f5cc244232951824f8aab017b2a7309169b91b9c8ae868e3faf3c05c7ca44a"
+      ],
+      "conversion": "tools/femc-theurgy.py cutin (1600x900 WebP q86, framing kept, no crop)",
+      "placement": "battle.js bondCut kind-seq (playSeq Showtime: per-panel ms / zoom / shake / say / sfx, skippable); focus per panel keeps both faces in the 375x812 band"
+    },
+    {
+      "batch": 44,
+      "source": "Showtime-Solar-Akihiko/panel-01.png",
+      "sourceNow": "Added to Game/Showtime-Solar-Akihiko/panel-01.png",
+      "sha256": "b99faa4e77308a1a95e7d85c89b35a914b270132b1fc7a9157a00b1b546d6ff4",
+      "status": "reference",
+      "note": "panel 1 of Roadwork is the existing still bond-akihiko (unchanged); this resized copy is unused"
+    },
+    {
+      "batch": 44,
+      "source": "Showtime-Solar-Akihiko/generation-prompts.txt",
+      "sourceNow": "Added to Game/Showtime-Solar-Akihiko/generation-prompts.txt",
+      "sha256": "08bd0d2012f2a77d94439346bec9d76f29cb04b2be294deff8b8d68e4db6c7b5",
+      "status": "reference",
+      "note": "the prompts Kat used; read for the panel order and the strike panel"
+    },
+    {
+      "batch": 44,
+      "source": "Showtime-Solar-Shinjiro/prompts.txt",
+      "sourceNow": "Added to Game/Showtime-Solar-Shinjiro/prompts.txt",
+      "sha256": "4305f7f2549f4625d5261a0b18d7a3f254bd6fe76bf32e5794c65ffa0cf5d4f6",
+      "status": "reference",
+      "note": "the prompts Kat used; read for the panel order and the strike panel"
+    },
+    {
+      "batch": 44,
+      "source": "Solar-Haechan-Bond-Stills/revised-sequence/generation-prompts.txt",
+      "sourceNow": "Added to Game/Solar-Haechan-Bond-Stills/revised-sequence/generation-prompts.txt",
+      "sha256": "cda58df839f432e0be8491c01892da4dc2b689ba7352763cd2725beaf45b8a16",
+      "status": "reference",
+      "note": "the prompts Kat used; read for the panel order and the strike panel"
+    },
+    {
+      "batch": 44,
+      "source": "Solar-Haechan-Bond-Stills/solar-haechan-bond-revised.zip",
+      "sourceNow": "Added to Game/Solar-Haechan-Bond-Stills/solar-haechan-bond-revised.zip",
+      "sha256": "7d74b46f081cf447aaa4f9217d7923fc62a3bb790021a8de55bafa5d0f0cca6d",
+      "status": "reference",
+      "note": "a zip of the same five PNGs; unused"
+    },
+    {
       "batch": 43,
       "source": "menu tabs/bonds.png",
       "sourceNow": "Added to Game/menu tabs/bonds.png",

@@ -283,6 +283,26 @@ BUILD = [
     ('cutin', 'solar-haechan-pt1.png', 'bond-haechan-seq-1'), ('cutin', 'solar-haechan-pt2.png', 'bond-haechan-seq-2'),
     ('cutin', 'solar-haechan-pt3.png', 'bond-haechan-seq-3'), ('cutin', 'solar-haechan-pt4.png', 'bond-haechan-seq-4'),
     ('cutin', 'solar-haechan-pt5.png', 'bond-haechan-seq-5'),
+    # Bond Showtimes (FEMC-ART-TODO 5A; batch 44, 2026-10-24): one 16:9 panel each (bonds.js `sequence`). Panel 1 keeps
+    # the old still where the pair had one (bond-akihiko, bond-jungwon).
+    ('cutin', 'Showtime-Solar-Akihiko/panel-02.png', 'bond-akihiko-show-2'),
+    ('cutin', 'Showtime-Solar-Akihiko/panel-03.png', 'bond-akihiko-show-3'),
+    ('cutin', 'Showtime-Solar-Akihiko/panel-04.png', 'bond-akihiko-show-4'),
+    ('cutin', 'Showtime-Solar-Akihiko/panel-05.png', 'bond-akihiko-show-5'),
+    ('cutin', 'Showtime-Solar-Shinjiro/showtime-01.png', 'bond-shinjiro-show-1'),
+    ('cutin', 'Showtime-Solar-Shinjiro/showtime-02.png', 'bond-shinjiro-show-2'),
+    ('cutin', 'Showtime-Solar-Shinjiro/showtime-03.png', 'bond-shinjiro-show-3'),
+    ('cutin', 'Showtime-Solar-Shinjiro/showtime-04.png', 'bond-shinjiro-show-4'),
+    ('cutin', 'showtime-solar-jungwon-1.png', 'bond-jungwon-show-2'),
+    ('cutin', 'showtime-solar-jungwon-2.png', 'bond-jungwon-show-3'),
+    ('cutin', 'showtime-solar-jungwon-3.png', 'bond-jungwon-show-4'),
+    ('cutin', 'showtime-solar-jungwon-4.png', 'bond-jungwon-show-5'),
+    # Haechan's romance Showtime (Corona): Kat's revised take on the five beats, ending in the kiss.
+    ('cutin', 'Solar-Haechan-Bond-Stills/revised-sequence/01-solar-prepares.png', 'bond-haechan-love-show-1'),
+    ('cutin', 'Solar-Haechan-Bond-Stills/revised-sequence/02-haechan-shields.png', 'bond-haechan-love-show-2'),
+    ('cutin', 'Solar-Haechan-Bond-Stills/revised-sequence/03-knife-throw.png', 'bond-haechan-love-show-3'),
+    ('cutin', 'Solar-Haechan-Bond-Stills/revised-sequence/04-turns-to-solar.png', 'bond-haechan-love-show-4'),
+    ('cutin', 'Solar-Haechan-Bond-Stills/revised-sequence/05-kiss.png', 'bond-haechan-love-show-5'),
 ]
 
 

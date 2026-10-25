@@ -15,7 +15,15 @@
    Art hook (FEMC-ART-TODO.md appendix, Bond art): any bond, or any one version of it, can carry
      img: a full-screen cut-in still (with focus [x%, y%]), sheet: { frames: [wind-up, strike, follow-through] },
      layers: { bg, persona, char }, sequence: [{ src, focus, pan, hit }, ...] (several panels crossfading, P3R-style; img is
-     then the last panel, for the short band and reduced motion): the same shapes as a Theurgy's (data.js comment above TH).
+     then the short-version still, for the short band and reduced motion): the same shapes as a Theurgy's (data.js comment above TH).
+   Showtimes (FEMC-ART-TODO 5A, P5R-style duo scenes): a bond's `sequence` with these extra per-panel fields (battle.js playSeq):
+     ms (how long the panel holds at 1x; default 640, the strike panel 800), zoom (start scale for a punch-in, e.g. 1.2),
+     shake: true (a small screen shake as a non-strike panel comes in), hit: true (the strike panel: the impact and the
+     bond's name land there), sfx (a battle sfx() key played as the panel comes in), say: [who, text] or a list of them
+     (who: 'partner' | 'solar'; an optional third item 'l' / 'r' picks the side, else Solar's is left and the partner's
+     right; the line shows over that panel, and the end card then shows only the name). A friendship
+     Showtime sits on the bond itself, so every tier plays it; a version with its own art (img / sheet / layers) doesn't
+     borrow it. Settings → Bond Showtimes: Still only plays the version's img instead. Aim for about 3–4 s of panels at 1x.
    Without art, battle.js builds a stylized cut-in from both portraits, both Personas and both colors.
    Steps: { by: 'solar' | 'partner', el, power, target: 'one' | 'all' | 'rand', multi, ail, down, crit, fx }. Each is a sure
    hit using the better of St or Ma (like a Theurgy). after: { heal (party, fraction of max HP), cure, buffs [party stats],
@@ -28,10 +36,16 @@ window.FemcBonds = (() => {
   const P = (el, power, o = {}) => Object.assign({ by: 'partner', el, power }, o);
   /* Kat's bond stills (tools/femc-theurgy.py cutin; BUILD lists the sources). battle.js doesn't version bond art, so the ?v= is
      here: bump it with ART_V when a still changes. focus: between the two faces, set so both stay in the phone band. */
-  const BA = slug => `assets/femc/battle/art/theurgy/${slug}.webp?v=18`;
+  const BA = slug => `assets/femc/battle/art/theurgy/${slug}.webp?v=27`;
   const BONDS = [
     // ── Romances: special combos, and a special version on the romance route
     { id: 'akihiko', partner: 'akihiko', romance: true, loveFace: 'blushing', img: BA('bond-akihiko'), focus: [55, 24], look: ['elec', 'sun'], colors: ['#ff4f9e', '#ff9a3d'],
+      // Showtime "Roadwork" (5A): he turns the fight into a timed drill, and she breaks his record. Panel 1 is the old still.
+      sequence: [{ src: BA('bond-akihiko'), focus: [50, 30], ms: 760, say: ['partner', 'Up you get. Warm-up’s over.'] }, // faces at x 36% / 58%
+        { src: BA('bond-akihiko-show-2'), focus: [48, 30], zoom: 1.16, ms: 820, sfx: 'click', say: ['partner', 'New drill. I’m timing you.'] }, // 31% / 62%
+        { src: BA('bond-akihiko-show-3'), focus: [54, 32], shake: true, ms: 560, sfx: 'elec', say: ['solar', 'Boost me. Now!'] }, // 44% / 64%
+        { src: BA('bond-akihiko-show-4'), focus: [52, 34], hit: true, ms: 900, say: ['partner', 'Wait— that can’t be right.'] }, // 39% / 68%
+        { src: BA('bond-akihiko-show-5'), focus: [50, 30], pan: [0, 1.5], say: ['solar', 'New record. Mine now.'] }], // 32% / 71%
       tiers: [
         { rank: 5, name: 'Daybreak One-Two', sp: 12, target: 'one', steps: [P('elec', 46, { multi: [2, 2], ail: { id: 'shock', chance: 0.2 } }), S('light', 64, { down: 0.3 })],
           line: ['On three. One—', '—two. Keep up.'], desc: 'Akihiko’s lightning jabs, then Solar’s sunrise on the same foe. May Shock it.' },
@@ -44,6 +58,13 @@ window.FemcBonds = (() => {
       love15: { rank: 15, name: 'Five A.M.', sp: 18, target: 'one', steps: [P('elec', 60, { multi: [3, 4], ail: { id: 'shock', chance: 0.35 } }), S('light', 110, { down: 0.6 })], after: { buffs: ['atk', 'agi', 'def'], heal: 0.2 },
         line: ['Same time tomorrow?', 'Every day.'], desc: 'Their own combination, all the way: lightning and the sun on one foe; the party heals and gets stronger, faster and tougher.' } },
     { id: 'shinjiro', partner: 'shinjiro', romance: true, loveFace: 'happy', until: '10/3', look: ['strike', 'sun'], colors: ['#ff4f9e', '#c43b3b'],
+      // Showtime "Seconds" (5A): he's cooking in the middle of Tartarus, and anything that reaches for the pot meets the axe.
+      // No still came before it, so its last panel is the short-version still.
+      img: BA('bond-shinjiro-show-4'), focus: [50, 30],
+      sequence: [{ src: BA('bond-shinjiro-show-1'), focus: [50, 30], ms: 900, say: ['partner', 'Hands off. It ain’t done.', 'l'] }, // faces at x 38% / 62%
+        { src: BA('bond-shinjiro-show-2'), focus: [56, 30], zoom: 1.12, ms: 800, say: ['solar', 'Hey! That’s OUR dinner!', 'r'] }, // 44% / 72%
+        { src: BA('bond-shinjiro-show-3'), focus: [58, 32], hit: true, ms: 900, say: ['partner', 'Nobody touches the pot.', 'l'] }, // 51% / 71%
+        { src: BA('bond-shinjiro-show-4'), focus: [50, 30], pan: [0, 1.5], sfx: 'heal', say: ['solar', 'So… seconds?', 'r'] }], // 37% / 61%
       tiers: [
         { rank: 5, name: 'Back Alley Sunrise', sp: 10, target: 'one', steps: [P('strike', 120, { crit: 15 }), S('light', 40, { target: 'all' })], after: { heal: 0.15 },
           line: ['Stay back. I’ll make the openin’.', 'I’ll make it count.'], desc: 'Castor runs one foe down, then Solar’s light sweeps the field and the party heals a little.' },
@@ -62,7 +83,15 @@ window.FemcBonds = (() => {
           line: ['Don’t look directly at it.', 'Too late.'], desc: 'Moon, then static, then the sun, on every foe; the party’s attack rises.' },
         { rank: 15, name: 'Two Suns', img: BA('bond-haechan-2'), focus: [71, 25], sp: 20, target: 'all', steps: [P('dark', 48), P('elec', 48, { ail: { id: 'shock', chance: 0.25 } }), S('light', 80, { down: 0.45 })], after: { buffs: ['atk', 'agi'] },
           line: ['Which one of me is this?', 'Both. Keep up.'], desc: 'Moon, static and a brighter sun on every foe; the party’s attack and agility rise.' }],
-      love: { rank: 9, name: 'Corona', img: BA('bond-haechan-love'), focus: [55, 25], sp: 18, target: 'all', steps: [P('dark', 44, { ail: { id: 'fear', chance: 0.2 } }), P('elec', 48, { ail: { id: 'shock', chance: 0.25 } }), S('light', 76, { down: 0.45 })], after: { buffs: ['atk', 'agi'], th: 10 },
+      // Corona's Showtime is Kat's revised take on the five beats (ready → he shields her → his throw → he turns to her → the
+      // kiss); its still stays the short version. Universe keeps the first five panels.
+      love: { rank: 9, name: 'Corona', img: BA('bond-haechan-love'), focus: [55, 25],
+        sequence: [{ src: BA('bond-haechan-love-show-1'), focus: [60, 28], ms: 760, say: ['partner', 'Go on. I’ve got your back.'] }, // faces at x 43% / 76%
+          { src: BA('bond-haechan-love-show-2'), focus: [44, 28], zoom: 1.12, ms: 780, say: ['partner', 'Not her. Try me.'] }, // 26% / 61%
+          { src: BA('bond-haechan-love-show-3'), focus: [30, 30], pan: [-3, 0], hit: true, ms: 860, say: ['partner', 'Don’t blink.'] }, // 21% / 43%
+          { src: BA('bond-haechan-love-show-4'), focus: [44, 30], ms: 900, say: [['partner', 'Admit it. That was cool.'], ['solar', '…Show-off.']] }, // 37% / 52%
+          { src: BA('bond-haechan-love-show-5'), focus: [48, 30], pan: [0, 1.5] }], // the kiss at 49%
+        sp: 18, target: 'all', steps: [P('dark', 44, { ail: { id: 'fear', chance: 0.2 } }), P('elec', 48, { ail: { id: 'shock', chance: 0.25 } }), S('light', 76, { down: 0.45 })], after: { buffs: ['atk', 'agi'], th: 10 },
         line: ['You and me. Every sky.', 'Show-off.'], desc: 'Their own combination: the light around an eclipse. Heavy damage to every foe; the party gets stronger and faster, and both Theurgy gauges fill a little.' },
       love15: { rank: 15, name: 'Universe', img: BA('bond-haechan-seq-5'), focus: [33, 30],
         sequence: [{ src: BA('bond-haechan-seq-1'), focus: [70, 28] }, // faces at x 42% / 77%
@@ -73,6 +102,13 @@ window.FemcBonds = (() => {
         sp: 20, target: 'all', steps: [P('dark', 52, { ail: { id: 'fear', chance: 0.25 } }), P('elec', 56, { ail: { id: 'shock', chance: 0.3 } }), S('light', 90, { down: 0.55 })], after: { buffs: ['atk', 'agi', 'def'], th: 15 },
         line: ['Don’t ask me which one of me is translating.', 'Both of you. Every time.'], desc: 'Their own combination, all the way: every sky at once on every foe; the party gets stronger, faster and tougher, and both Theurgy gauges fill.' } },
     { id: 'jungwon', partner: 'jungwon', romance: true, loveFace: 'flustered', img: BA('bond-jungwon'), focus: [60, 22], look: ['ice', 'jade'], colors: ['#ff4f9e', '#9fe8ff'],
+      // Showtime "Unanimous" (5A): he runs the fight like a council meeting, and the angrier he is, the politer. Panel 1 is
+      // the old still. Jade Ring and Signed in Full have their own still, so they don't borrow it.
+      sequence: [{ src: BA('bond-jungwon'), focus: [54, 28], ms: 720, say: ['partner', 'Shall we call this meeting to order?'] }, // faces at x 38% / 70%
+        { src: BA('bond-jungwon-show-2'), focus: [46, 28], zoom: 1.14, ms: 900, say: ['partner', 'Your paperwork. Please read it carefully.'] }, // 36% / 56%
+        { src: BA('bond-jungwon-show-3'), focus: [47, 30], shake: true, ms: 620, sfx: 'ice', say: ['solar', 'Stamped. Approved!'] }, // 38% / 56%
+        { src: BA('bond-jungwon-show-4'), focus: [48, 32], hit: true, ms: 860, say: ['partner', 'Motion carried.'] }, // 34% / 62%
+        { src: BA('bond-jungwon-show-5'), focus: [48, 26], pan: [0, 1.5], say: [['partner', 'All in favor?'], ['solar', 'Unanimous.']] }], // 35% / 62%
       tiers: [
         { rank: 5, name: 'Jade Frost', sp: 12, target: 'one', steps: [P('ice', 60, { ail: { id: 'freeze', chance: 0.2 } }), S('strike', 56, { ail: { id: 'bind', chance: 0.3, rope: true } })],
           line: ['After you.', 'Together, Jungwon.'], desc: 'Hyeonmu’s frost, then the golden rope. Heavy damage to one foe; may Freeze or Bind it.' },
@@ -175,7 +211,7 @@ window.FemcBonds = (() => {
       const v = st.cur;
       return { id: b.id, partner: b.partner, name: v.name, tier: v.tier, love: !!v.love, sp: v.sp, target: v.target, steps: v.steps, after: v.after || {}, line: v.line || null, desc: v.desc,
         look: b.look, colors: b.colors, face: v.love ? b.loveFace || null : null, img: v.img || b.img || null, focus: v.focus || b.focus || null, sheet: v.sheet || b.sheet || null,
-        sequence: v.sequence || b.sequence || null, layers: v.layers || b.layers || null, romance: !!b.romance };
+        sequence: v.sequence || (v.img || v.sheet || v.layers ? null : b.sequence) || null, layers: v.layers || b.layers || null, romance: !!b.romance };
     }).filter(Boolean);
   }
   return { BONDS, byId, status, ctxOf, arts, ord, pastUntil };

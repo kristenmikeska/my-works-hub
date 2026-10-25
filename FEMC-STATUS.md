@@ -90,6 +90,7 @@ Other docs, if you ever want detail:
 - ✅ The summer festival CG, on Ann's festival day (in Memories too)
 - ✅ The New Year's CG at the shrine, on New Year's Day (in Memories too)
 - ✅ Art batch 43: Evoker close-ups for Akihiko and Shinjiro, the Dark skill effect (all 31 now), ten more Compendium full bodies, two more CGs (in Memories too) and icons on the menu tabs
+- ✅ Art batch 44: bond Showtimes. Akihiko, Shinjiro and Jungwon's bonds and Haechan's Corona play your panels as little scenes with lines over them before the strike (tap or Enter skips to the strike; Settings → Bond Showtimes: Still only keeps the single picture). Junpei, Mitsuru, Shinjiro and Aigis are the same size as everyone else in battle now
 - ✅ Art batch 45: your art on all 12 armor pieces and 12 accessories (Equipment, shops, chest drops, prizes), all 30 capsule keychains (in Halloween costumes in October), Lovers and Strength alternate tarot cards, and Slash's heavy and critical versions (a critical slash plays the new one)
 - ✅ Your Dark Hour art for the two July full moons, Elizabeth's Velvet Room tarot card, the culture festival hallway (on its two days), the Strip in the rain (on rainy days), and your status and Tartarus map icons in battle
 - ✅ Your chibi art in the All-Out Attack cloud: all 12 fighters brawl through their chibi frames (Ken keeps his silhouette)

@@ -72,7 +72,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 26;
+  const ART_V = 27;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -103,7 +103,9 @@
      idle frame is the stance. The number scales the figure so its size matches the stance it replaces (or, for the
      searchers, the S.E.E.S. figures): frames sit on one canvas per member, framed in the stance box like the stances.
      Members without a sheet keep their static stance (or nothing, like Ken). */
-  const FIGHTER_POSES = { solar: 1.3, akihiko: 1, yukari: 1.04, junpei: 0.84, mitsuru: 0.87, aigis: 1.1, koromaru: 0.87, shinjiro: 0.91, haechan: 1, jungwon: 0.87, jihoon: 0.77, minji: 0.97 };
+  // Measured 2026-10-24 (figure height on the field, head to feet, idle frame): Junpei, Mitsuru and Shinjiro drew about 60% of the
+  // others' height (their canvases are wide for the weapon), Aigis about 85%; they were raised to match (tests/femc_bonds.py --only poses).
+  const FIGHTER_POSES = { solar: 1.3, akihiko: 1, yukari: 1.04, junpei: 1.42, mitsuru: 1.4, aigis: 1.18, koromaru: 0.87, shinjiro: 1.51, haechan: 1, jungwon: 0.87, jihoon: 0.77, minji: 0.97 };
   const FIGHTER_STATES = { attack: [2], cast: [3], hurt: [4], evoke: [1], win: [5] };
   const posedFrames = mid => [0, 1, 2, 3, 4, 5].map(i => `assets/femc/battle/art/poses/${mid}-pose-${i}.webp?v=${ART_V}`);
   const fieldPose = mid => (FIGHTER_POSES[mid] ? posedFrames(mid)[0] : `assets/femc/battle/art/poses/${mid}.webp?v=${ART_V}`);
@@ -168,7 +170,7 @@
   /* Settings: the game's one store. Story fights read it from the life sim; practice reads the same key directly. */
   const readUni = () => { if (BR) { try { return JSON.parse(JSON.stringify(BR.settings() || {})); } catch (e) { return {}; } } try { return JSON.parse(localStorage.getItem(UNI_KEY) || '{}') || {}; } catch (e) { return {}; } };
   // battle setting (save.settings.<k>) → the store's key
-  const UNI = { textSpeed: 'text', sfxVol: 'sfxVol', difficulty: 'difficulty', remember: 'remember', rushWhere: 'rushWhere', rushStop: 'rushStop', shake: 'shake', calm: 'calm', numbers: 'numbers', tips: 'tips', pad: 'pad' };
+  const UNI = { textSpeed: 'text', sfxVol: 'sfxVol', difficulty: 'difficulty', remember: 'remember', rushWhere: 'rushWhere', rushStop: 'rushStop', shake: 'shake', calm: 'calm', numbers: 'numbers', tips: 'tips', pad: 'pad', showtimes: 'showtimes' };
   function pullSettings() {
     const u = readUni(), st = save.settings;
     Object.entries(UNI).forEach(([k, uk]) => {
@@ -620,6 +622,7 @@
     { k: 'speed', top: true, label: 'Battle speed', opts: [[1, '1x'], [2, '2x'], [3, '3x']], desc: () => 'How fast battle animations play. Rush doubles it.' },
     { k: 'textSpeed', label: 'Text speed', opts: [['slow', 'Slow'], ['normal', 'Normal'], ['fast', 'Fast'], ['instant', 'Instant']], desc: () => 'How fast Fuuka’s lines type out, and how long lines stay on screen.' },
     { k: 'cutins', top: true, label: 'Persona cut-ins', opts: [['always', 'Always'], ['first', '1st per battle'], ['off', 'Off']], desc: () => 'The Evoker summon before a Persona skill and the full Theurgy cut-in: every time, the first time per member each battle, or never (Theurgy then plays a short version, as it does in Rush).' },
+    { k: 'showtimes', label: 'Bond Showtimes', opts: [['on', 'On'], ['still', 'Still only']], desc: () => 'A bond with a Showtime plays its little scene before the strike (tap or Enter skips to the strike). Still only shows the bond’s single picture instead.' },
     { k: 'music', label: 'Music', opts: ON_OFF, get: () => musicOn(), set: v => { save.music = v; }, desc: () => 'The same switch as the ♪ button.' },
     { k: 'musicVol', label: 'Music volume', range: true, desc: () => (musicOn() ? 'Music volume.' : 'Music volume (music is switched off).') },
     { k: 'sfx', label: 'Sound effects', opts: ON_OFF, get: () => save.sfx !== false, set: v => { save.sfx = v; }, desc: () => (lsGet('kg-femc-sound') === 'off' ? 'Sound effects (FEMC’s sound switch is off, so they stay quiet).' : 'The same switch as the SFX button.') },
@@ -2371,7 +2374,9 @@
     return t;
   }
   function fxHitKind(e) {
-    const src = B.U(e.src), el = e.el, o = { crit: e.crit, color: (D.elements[el] || {}).color };
+    // heavy (5G): a -ma / -dyne / all-foe damage skill tries the element's <kind>-heavy sheet (fx.js artFor: crit, then heavy, then plain).
+    const sk0 = D.skills[e.skill], heavy = !!(sk0 && sk0.type === 'dmg' && (sk0.target === 'all' || /dyne$/.test(e.skill)));
+    const src = B.U(e.src), el = e.el, o = { crit: e.crit, heavy, color: (D.elements[el] || {}).color };
     if (e.skill === 'golden_rope') { const c = BT.cards.get(e.src), R = BT.root.getBoundingClientRect(); if (c) { const r = c.getBoundingClientRect(); o.from = { x: r.left + r.width * 0.4 - R.left, y: r.top - R.top }; } return fxPlay('rope', e.tgt, o); }
     if (e.insta) return fxPlay(el === 'light' ? 'light' : 'dark', e.tgt, Object.assign(o, { holy: el === 'light' }));
     if (e.theurgy) { const look = (B.U(e.src) && member(B.U(e.src).mid).theurgy.look) || el; return fxPlay(look === 'sun' ? 'light' : (D.elements[look] ? look : 'almighty'), e.tgt, Object.assign(o, { holy: look === 'sun' })); }
@@ -2739,18 +2744,58 @@
      panel as a still (the entry's img, which should be that panel). Test marks: <kind>-seq-<i>, <kind>-seq-hit. */
   const SEQ_STEP = 640;
   const seqOf = (e, style) => (style === 'full' && Array.isArray(e.sequence) && e.sequence.length >= 2 ? e.sequence.map(f => (f && typeof f === 'object' ? f : { src: f })) : null);
+  // Showtime extras per panel (bonds.js comment): zoom (start scale, --z / --z2), and say lines drawn over the panels.
   const seqHtml = (seq, focus) => `<div class="th-seq">${seq.map((f, i) => { const [x, y] = f.focus || focus || [50, 40], [px, py] = f.pan || [i % 2 ? -2.5 : 2.5, 0];
-    return `<div class="th-sf${i === seq.length - 1 ? ' last' : ''}" data-i="${i}" style="--fx:${x}%;--fy:${y}%;--px:${px}%;--py:${py}%;z-index:${i + 1}"><img src="${thSrc(f.src)}" alt=""></div>`; }).join('')}</div>`;
-  // Plays the panels (the cut-in already has f-in); strike(): the impact on the strike panel. Resolves on the last panel.
-  async function playSeq(w, seq, tag, strike) {
+    const z = +f.zoom > 0 ? `;--z:${+f.zoom};--z2:${(+f.zoom + 0.06).toFixed(2)}` : '';
+    return `<div class="th-sf${i === seq.length - 1 ? ' last' : ''}${f.hit ? ' hit' : ''}" data-i="${i}" style="--fx:${x}%;--fy:${y}%;--px:${px}%;--py:${py}%${z};z-index:${i + 1}"><img src="${thSrc(f.src)}" alt=""></div>`; }).join('')}</div>`;
+  // A line: [who, text, side]; side 'l' / 'r' puts it on that side of the screen (default: Solar left, the partner right).
+  const seqSays = seq => seq.map((f, i) => (!f.say ? [] : Array.isArray(f.say[0]) ? f.say : [f.say]).map((x, k) => { const who = x[0] === 'solar' ? 'solar' : 'partner';
+    return { i, k, who, side: ['l', 'r'].includes(x[2]) ? x[2] : who === 'solar' ? 'l' : 'r', text: String(x[1] || '') }; })).flat().filter(x => x.text);
+  const sayHtml = (says, names) => (says.length ? `<div class="th-says" aria-hidden="true">${says.map(x => `<p class="th-say ${x.who === 'solar' ? 's' : 'p'} ${x.side}${x.k ? ' late' : ''}" data-i="${x.i}"><em>${esc(x.who === 'solar' ? names[1] : names[0])}</em>${esc(x.text)}</p>`).join('')}</div>` : '');
+  /* Plays the panels (the cut-in already has f-in); strike(): the impact on the strike panel. Resolves on the last panel
+     with { skipped }. Each panel holds f.ms (else SEQ_STEP, the strike panel 160 ms more), scaled by battle speed; its say
+     lines show while it's up, its sfx plays and a `shake` panel shakes as it comes in. skippable (bond Showtimes): a tap
+     or Enter / Space jumps to the strike panel (the impact lands once), then the last panel. Marks: <kind>-seq-skip. */
+  async function playSeq(w, seq, tag, strike, { skippable = false } = {}) {
     const frames = [...w.querySelectorAll('.th-sf')], at = seq.findIndex(f => f.hit), hit = at >= 0 ? at : Math.floor((seq.length - 1) / 2);
-    for (let i = 0; i < frames.length; i++) {
+    const says = [...w.querySelectorAll('.th-say')], last = frames.length - 1;
+    let struck = false, skip = false, wake = null;
+    const nap = ms => new Promise(r => { wake = r; sleep(ms).then(r); });
+    const show = i => {
+      const f = seq[i] || {};
       frames[i].classList.add('go'); mark(`${tag}-seq-${i}`);
-      if (i === hit) { w.classList.add('q-hit'); mark(`${tag}-seq-hit`); strike(); }
-      if (i < frames.length - 1) await sleep(i === hit ? SEQ_STEP + 160 : SEQ_STEP);
+      says.forEach(x => x.classList.toggle('on', +x.dataset.i === i));
+      if (f.sfx) sfx(f.sfx);
+      if (i === hit && !struck) { struck = true; w.classList.add('q-hit'); mark(`${tag}-seq-hit`); strike(); }
+      else if (f.shake) shake(false);
+    };
+    const onSkip = ev => {
+      if (skip || !w.isConnected) return;
+      if (ev.type === 'keydown' && ![' ', 'Enter', 'z', 'Z'].includes(ev.key)) return;
+      if (ev.type === 'pointerdown' && ev.target && ev.target.closest && ev.target.closest('.bt-tool, button')) return;
+      if (ev.type === 'keydown') { ev.preventDefault(); ev.stopPropagation(); }
+      skip = true; mark(`${tag}-seq-skip`); if (wake) wake();
+    };
+    if (skippable) { document.addEventListener('keydown', onSkip, true); document.addEventListener('pointerdown', onSkip, true); w.classList.add('can-skip'); }
+    try {
+      for (let i = 0; i <= last; i++) {
+        if (skip) {
+          // Skipped: straight to the strike panel (if it hasn't played), a beat on it, then the last panel.
+          if (!struck) { show(hit); await sleep(520); }
+          if (last !== hit) show(last);
+          break;
+        }
+        show(i);
+        if (i < last) { const f = seq[i] || {}; await nap(+f.ms > 0 ? +f.ms : i === hit ? SEQ_STEP + 160 : SEQ_STEP); }
+      }
+    } finally {
+      if (skippable) { document.removeEventListener('keydown', onSkip, true); document.removeEventListener('pointerdown', onSkip, true); w.classList.remove('can-skip'); }
     }
     w.classList.add('q-hit', 'q-last');
+    return { skipped: skip };
   }
+  // How long a sequence's panels take at 1x (for the particle stream under them).
+  const seqMs = seq => seq.slice(0, -1).reduce((a, f, i) => a + (+f.ms > 0 ? +f.ms : f.hit ? SEQ_STEP + 160 : SEQ_STEP), 0);
   let thSeen = new Set();
   async function theurgyCut(e) {
     const u = B.U(e.src), m = member(u.mid), per = D.personas[u.personaId] || D.personas[m.persona];
@@ -3011,7 +3056,9 @@
     const reduced = !FX || FX.reduced(), setting = save.cutins || 'first';
     const style = reduced ? 'fade' : rushActive() || setting === 'off' ? 'short' : 'full';
     const Lr = e.layers || null, sheet = style === 'full' && e.sheet && e.sheet.frames && e.sheet.frames.length >= 3 ? e.sheet.frames : null;
-    const seq = seqOf(e, style);
+    // Settings → Bond Showtimes: Still only plays the version's img (its short-version still) as a single still.
+    const seq = ST().showtimes === 'still' ? null : seqOf(e, style);
+    const says = seq ? seqSays(seq) : [];
     const kind = Lr ? 'layers' : seq ? 'seq' : e.img ? 'cut' : 'duo';
     const perS = D.personas[L.personaId] || D.personas.haenim, perP = D.personas[P.personaId] || D.personas[mp.persona];
     const fS = e.love ? 'happy' : ms.faces.idle, fP = e.face || (e.love ? 'happy' : mp.faces.win);
@@ -3019,7 +3066,7 @@
     const [fx, fy] = e.focus || [50, 42];
     const look = e.look || ['almighty', 'sun'], c1 = (e.colors || [])[0] || ms.color, c2 = (e.colors || [])[1] || mp.color;
     const w = document.createElement('div');
-    w.className = `bt-theurgy bt-bond kind-${kind} st-${style}${sheet ? ' has-sheet' : ''} look-${look[0]}${e.love ? ' love' : ''}${reduced ? ' reduced' : ''}`;
+    w.className = `bt-theurgy bt-bond kind-${kind} st-${style}${sheet ? ' has-sheet' : ''}${says.length ? ' has-say' : ''} look-${look[0]}${e.love ? ' love' : ''}${reduced ? ' reduced' : ''}`;
     w.style.cssText = `--c:${c2};--c2:${c1};--spd:${speed()};--fx:${fx}%;--fy:${fy}%`;
     w.dataset.bond = e.id; w.dataset.mid = P.mid;
     const piece = (x, cls) => { const o = typeof x === 'object' ? x : {}; return `<div class="th-pl ${cls}" style="--x:${o.x || 0}%;--y:${o.y || 0}%;--s:${o.s || 1}"><img src="${thSrc(x)}" alt=""></div>`; };
@@ -3037,14 +3084,16 @@
     w.innerHTML = `<div class="th-stage">${prelude}<div class="th-final">${final}<div class="th-sweep"></div><div class="th-burst"></div>${look.includes('sun') ? '<div class="th-rays"></div>' : ''}</div></div>
       <div class="th-stripes" aria-hidden="true"><i></i><i></i></div>
       <b class="th-name"><small>Bond · Solar & ${esc(mp.name)}${e.love ? ' · ♥' : ''}</small>${esc(e.name.toUpperCase())}</b>
-      <p class="th-line bd-l1">“${esc(line[0])}”<em>${esc(mp.name)}</em></p><p class="th-line bd-l2">“${esc(line[1])}”<em>Solar</em></p>`;
+      <p class="th-line bd-l1">“${esc(line[0])}”<em>${esc(mp.name)}</em></p><p class="th-line bd-l2">“${esc(line[1])}”<em>Solar</em></p>
+      ${sayHtml(says, [mp.name, 'Solar'])}${seq ? '<span class="th-skip" aria-hidden="true">Tap · Enter ▸ skip</span>' : ''}`;
     BT.cut.appendChild(w);
     BT.root.classList.add('evoking', 'th-fx');
     document.documentElement.classList.add('bt-cutin');
     sfx('summon');
     blogAdd(`Bond: Solar & ${mp.name} · ${e.name}${e.love ? ' ♥' : ''}`, 'pf');
-    blogAdd(`${mp.name}: “${line[0]}”`, 'say'); blogAdd(`Solar: “${line[1]}”`, 'say');
-    mark('bond-' + style); mark('bond-kind-' + kind);
+    if (says.length) says.forEach(x => blogAdd(`${x.who === 'solar' ? 'Solar' : mp.name}: “${x.text}”`, 'say'));
+    else { blogAdd(`${mp.name}: “${line[0]}”`, 'say'); blogAdd(`Solar: “${line[1]}”`, 'say'); }
+    mark('bond-' + style); mark('bond-kind-' + kind); if (says.length) mark('bond-showtime');
     const impact = big => {
       flash(!look.includes('sun')); if (big) shake(true); sfx(look.includes('sun') ? 'light' : 'almighty');
       if (!FX || perf()) return;
@@ -3054,7 +3103,7 @@
     if (style === 'fade') await sleep(1200);
     else if (style === 'short') { await sleep(700); impact(false); await sleep(140); }
     else {
-      const dur = seq ? 2.9 + (seq.length - 1) * SEQ_STEP / 1000 : sheet ? 3.4 : 2.9;
+      const dur = seq ? 2.9 + seqMs(seq) / 1000 : sheet ? 3.4 : 2.9;
       if (FX && !perf()) { look.forEach(k => FX.stream(k === 'jade' ? 'jade' : k, { dur, n: 0.6 })); if (e.love) FX.stream('love', { dur, n: 0.7 }); }
       if (sheet) {
         w.classList.add('p-in'); await sleep(140);
@@ -3063,12 +3112,12 @@
         w.classList.add('p-follow'); await sleep(470);
       }
       w.classList.add('f-in');
-      if (seq) await playSeq(w, seq, 'bond', () => impact(true));
+      const ran = seq ? await playSeq(w, seq, 'bond', () => impact(true), { skippable: true }) : null;
       mark('bond-final');
-      await sleep(kind === 'duo' ? 1150 : seq ? 650 : 800);
+      await sleep(kind === 'duo' ? 1150 : seq ? (ran.skipped ? 380 : 650) : 800);
       w.classList.add('f-hit'); mark('bond-impact');
       impact(!sheet && !seq);
-      await sleep(1700);
+      await sleep(ran && ran.skipped ? 1100 : 1700);
     }
     w.classList.add('out');
     BT.root.classList.remove('evoking');

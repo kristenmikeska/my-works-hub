@@ -9,11 +9,11 @@ from femc_merge import drive, BSTEP
 
 URL='femc-game.html?seed=42'  # No speed override: exercise the actual setting.
 FIRST=dict(text='fast',auto='slow',dateCard=False,quickClass=True,difficulty='hard',
-           battleSpeed=3,cutins='off',rushWhere='all',rushStop=50,remember=False,
+           battleSpeed=3,cutins='off',showtimes='still',rushWhere='all',rushStop=50,remember=False,
            numbers=False,tips=False,shake=False,calm=True,perf=True,pad='ps',
            music=35,sfx=False,sfxVol=25)
 SECOND=dict(text='instant',auto='off',dateCard=True,quickClass=False,difficulty='story',
-            battleSpeed=2,cutins='always',rushWhere='strong',rushStop=30,remember=True,
+            battleSpeed=2,cutins='always',showtimes='on',rushWhere='strong',rushStop=30,remember=True,
             numbers=True,tips=True,shake=True,calm=False,perf=False,pad='auto',
             music=0,sfx=True,sfxVol=80)
 FRAME="document.querySelector('.g-dh-iframe').contentWindow"
@@ -46,7 +46,7 @@ def assert_shared(p, expected):
 
 def assert_battle(p,expected):
     b=p.eval('JSON.parse(JSON.stringify('+FRAME+'.FemcBattle.save))')
-    for key in ('difficulty','rushWhere','rushStop','remember','numbers','tips','shake','calm','pad','sfxVol'):
+    for key in ('difficulty','rushWhere','rushStop','remember','numbers','tips','shake','calm','pad','sfxVol','showtimes'):
         assert b['settings'][key]==expected[key],key
     assert b['settings']['textSpeed']==expected['text']
     assert b['speed']==expected['battleSpeed']
@@ -74,7 +74,7 @@ def main():
         p.wait("__settingsAudio.some(a=>a.loop&&!a.paused&&Math.abs(a.volume-.175)<.001)")
         enter(p);assert_battle(p,FIRST)
         p.wait("__settingsAudio.filter(a=>a.loop&&!a.paused).every(a=>a.volume===0)")
-        print('All 19 settings save through the UI and carry from the story into battle.',flush=True)
+        print('All 20 settings save through the UI and carry from the story into battle.',flush=True)
 
         # Battle opens the same parent panel and restores its previous controls afterward.
         p.eval(FRAME+".document.querySelector('[data-tool=settings]').click()")

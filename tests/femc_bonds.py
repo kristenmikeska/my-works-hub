@@ -1,7 +1,7 @@
 """Bond skills, signature skills and battle lines, played for real in headless Chrome (femc-game.html and its Dark Hour battle
 frame, isolated profile, localhost; never the player's saves).
 
-Run: python3 tests/femc_bonds.py [--only rules,menu,fight,partner,art,settings,sigs,lines,banter,rush,shots] [--shots DIR]
+Run: python3 tests/femc_bonds.py [--only rules,menu,fight,partner,art,showtime,showshots,poses,settings,sigs,lines,banter,rush,shots] [--shots DIR]
 
 Covers:
   - rules: every bond unlocks at its rank (5, then 9), the romance version only on the romance route at rank 9, a reversed
@@ -16,6 +16,14 @@ Covers:
   - art: the data hook: bond.img → a still cut-in, bond.sheet → the strike sheet; Haechan's real art by tier (rank 5 and
     rank 9 stills; rank 15 on the romance route: Kat's five-panel sequence, every panel in order with the impact on the
     strike panel, the name and both lines; Off → the short band and reduced motion → a fade, both on the last panel only).
+  - showtime: Kat's Showtimes (bonds.js; FEMC-ART-TODO 5A): each one's panel timing (3-4 s at 1x), every panel in order with
+    its say lines on that panel only, the strike on its flagged panel and the damage landing; tap and Enter skip to the
+    strike; Settings → Bond Showtimes: Still only plays the short-version still (and through the game's settings panel);
+    reduced motion a fade; Reduce flashes the calm flash; Off the short band; Jade Ring keeps its own still.
+  - showshots: each Showtime frozen on every panel at 375x812 (the whole panel shows, both faces inside it, the lines on
+    screen under the band), 1440x900 and 1000x486, with screenshots mid-Showtime.
+  - poses: every fighter's field pose figure (head to feet, idle frame) within 14% of the others' median height at 1440x900
+    and 375x812 (Koromaru, a dog, smaller); screenshots of the ones that were rescaled.
   - settings: Persona cut-ins Off → the short band, reduced motion → a fade, battle speed scales it.
   - sigs: each of the 16 signature skills cast through the menu plays its own effect and does what it says.
   - lines: weakness, Solar hurt, an ally low and down, knocked down, Theurgy ready, a boss appearing, victory.
@@ -230,8 +238,9 @@ try:
         p.wait("FemcBattle.ctl && FemcBattle.ctl.items && FemcBattle.ctl.items.some(i => FemcBattle.B.U(i.v) && FemcBattle.B.U(i.v).side === 'enemy')")
         pick(p, first_foe(p))
         r = wait_cut(p, 1)
-        # Akihiko's bond has Kat's still since the bond-art batch (bonds.js img), so the cut-in is the still, not the duo fallback.
-        ok('kind-cut' in r['cls'] and 'st-full' in r['cls'] and 'love' in r['cls'] and r['loaded'] and 'SUNRISE CADENZA' in r['name'], r)
+        # Akihiko's bond has Kat's art (the still, and since batch 44 his Roadwork Showtime, which Sunrise Cadenza borrows: it has
+        # no art of its own), so the cut-in is never the duo fallback.
+        ok('kind-seq' in r['cls'] and any('bond-akihiko-show-' in x for x in r['imgs']) and 'st-full' in r['cls'] and 'love' in r['cls'] and r['loaded'] and 'SUNRISE CADENZA' in r['name'], r)
         ok(any('theurgy/bond-akihiko' in s for s in r['imgs']), r['imgs'])
         ok(any('Stay on my left' in l for l in r['lines']) and any('I always do' in l for l in r['lines']), r['lines'])
         p.wait("FemcBattle.marks['bond-done'] >= 1")
@@ -239,7 +248,7 @@ try:
         ok(sp1[0] == sp0[0] - 16 and sp1[1] == sp0[1] - 16 and sp1[2] == sp0[2], (sp0, sp1))
         ok(hp1 < hp0, 'no damage')
         m = marks(p)
-        for k in ('bond', 'bond-akihiko', 'bond-love', 'bond-full', 'bond-kind-cut', 'bond-final', 'bond-impact', 'bond-done'): ok(m.get(k, 0) >= 1, (k, m))
+        for k in ('bond', 'bond-akihiko', 'bond-love', 'bond-full', 'bond-kind-seq', 'bond-final', 'bond-impact', 'bond-done'): ok(m.get(k, 0) >= 1, (k, m))
         ok(any('Bond: Solar & Akihiko · Sunrise Cadenza' in x['t'] for x in p.eval('FemcBattle.blog')), 'battle log')
         # Akihiko's next turn is spent; the bond can't be used twice.
         guard_until(p, "(FemcBattle.marks['bond-rest'] || 0) >= 1")
@@ -329,6 +338,203 @@ try:
         clean(p, 'art')
         results['art'] = {'hooks': 'bond.img → still cut-in; bond.sheet → strike sheet', 'haechan': 'rank 5 still, rank 9 ver3, rank 15 romance: 5-panel sequence (hit on panel 3), Off short / reduced fade on panel 5', 'order': order}
         print('art OK', flush=True)
+
+    # ── Showtimes: Kat's first four (Roadwork, Seconds, Unanimous, Corona) ──
+    SHOWS = {  # bond id: (fight kwargs, the version's name, panel count, strike panel, each panel's file stem, the short-version still)
+        'akihiko': (dict(ranks={'akihiko': 5}), 'DAYBREAK ONE-TWO', 5, 3, ['bond-akihiko.'] + [f'bond-akihiko-show-{i}.' for i in range(2, 6)], 'bond-akihiko.'),
+        'shinjiro': (dict(ranks={'shinjiro': 5}, day='9/25'), 'BACK ALLEY SUNRISE', 4, 2, [f'bond-shinjiro-show-{i}.' for i in range(1, 5)], 'bond-shinjiro-show-4.'),
+        'jungwon': (dict(ranks={'jungwon': 9}), 'WINTER JADE', 5, 3, ['bond-jungwon.'] + [f'bond-jungwon-show-{i}.' for i in range(2, 6)], 'bond-jungwon.'),
+        'haechan': (dict(ranks={'haechan': 9}, love=['haechan']), 'CORONA', 5, 2, [f'bond-haechan-love-show-{i}.' for i in range(1, 6)], 'bond-haechan-love.'),
+    }
+    SHOW_LOG = r"""(() => { window.seqLog = []; window.sayLog = {}; new MutationObserver(() => { const w = document.querySelector('.bt-bond'); if (!w) return;
+      w.querySelectorAll('.th-sf.go').forEach(f => { if (!seqLog.includes('p' + f.dataset.i)) seqLog.push('p' + f.dataset.i); });
+      const top = [...w.querySelectorAll('.th-sf.go')].pop(); if (top) { const k = top.dataset.i; sayLog[k] = [...new Set((sayLog[k] || []).concat([...w.querySelectorAll('.th-say.on')].map(x => x.dataset.i + ':' + x.textContent)))]; }
+      ['q-hit', 'q-last', 'f-hit'].forEach(c => { if (w.classList.contains(c) && !seqLog.includes(c)) seqLog.push(c); });
+    }).observe(document.querySelector('.bt-cut'), { subtree: true, attributes: true, attributeFilter: ['class'], childList: true }); return true; })()"""
+
+    def show_fight(bid, speed=3, setup='', **extra):
+        kw = dict(SHOWS[bid][0]); kw.update(extra)
+        fight(p, ['solar', bid], speed=speed, setup=setup, **kw)
+        p.eval(SHOW_LOG)
+        my_menu(p, 'solar'); pick(p, 'bond'); p.wait(f"FemcBattle.ctl.items.some(i => i.v === '{bid}')")
+
+    def start_bond(bid):
+        """Pick the bond; a one-foe bond then asks for a target (the first standing foe)."""
+        pick(p, bid)
+        for _ in range(40):
+            if p.eval("cutLog.length > 0"): return
+            if p.eval("!!(FemcBattle.ctl && FemcBattle.ctl.items && FemcBattle.ctl.items.some(i => FemcBattle.B.U(i.v) && FemcBattle.B.U(i.v).side === 'enemy'))"): pick(p, first_foe(p)); return
+            time.sleep(0.05)
+
+    if want('showtime'):
+        # Data: every Showtime's panels run about 3-4 s at 1x, with one strike panel, and every line has a speaker.
+        p.top(); p.goto('femc-game.html')
+        data = p.eval(r"""(() => FemcBonds.BONDS.flatMap(b => [['', b], ['love', b.love], ['love15', b.love15]].concat((b.tiers || []).map((t, i) => ['t' + i, t])).filter(x => x[1] && x[1].sequence && x[1].sequence.some(f => f.say))
+          .map(([k, v]) => ({ id: b.id + (k ? '.' + k : ''), n: v.sequence.length, ms: v.sequence.slice(0, -1).reduce((a, f) => a + (f.ms || (f.hit ? 800 : 640)), 0), hits: v.sequence.filter(f => f.hit).length,
+            says: v.sequence.flatMap(f => !f.say ? [] : Array.isArray(f.say[0]) ? f.say : [f.say]).every(x => ['partner', 'solar'].includes(x[0]) && x[1].length <= 48) }))))()""")
+        ok(sorted(d['id'] for d in data) == ['akihiko', 'haechan.love', 'jungwon', 'shinjiro'], data)
+        ok(all(2400 <= d['ms'] <= 4200 and d['hits'] == 1 and d['says'] for d in data), data)
+        out = {'panelsMs': {d['id']: d['ms'] for d in data}}
+        for bid, (kw, name, n, hit, stems, still) in SHOWS.items():
+            show_fight(bid)
+            hp0 = p.eval("FemcBattle.B.foes().reduce((a, f) => a + f.hp, 0)")
+            start_bond(bid)
+            r = wait_cut(p, 1); m = marks(p); order = p.eval('seqLog'); says = p.eval('sayLog')
+            ok('kind-seq' in r['cls'] and 'st-full' in r['cls'] and 'has-say' in r['cls'] and name in r['name'] and r['loaded'], (bid, r))
+            ok(all(any(st in x for x in r['imgs']) for st in stems), (bid, 'every panel', r['imgs']))
+            ok([x for x in order if x.startswith('p')] == [f'p{i}' for i in range(n)], (bid, order))
+            ok(order.index('q-hit') == order.index(f'p{hit}') + 1 and order.index('f-hit') > order.index(f'p{n - 1}'), (bid, 'strike on its panel', order))
+            ok(all(m.get(f'bond-seq-{i}') == 1 for i in range(n)) and m.get('bond-seq-hit') == 1 and m.get('bond-showtime') == 1 and not m.get('bond-seq-skip'), (bid, m))
+            # Each panel shows only its own lines, and the end card has no lines (they were on the panels).
+            ok(all(all(x.split(':')[0] == k for x in v) for k, v in says.items()) and sum(len(v) for v in says.values()) >= n - 1, (bid, says))
+            p.wait("FemcBattle.B.foes().reduce((a, f) => a + f.hp, 0) < " + str(hp0), 20)
+            out[bid] = {'order': order, 'says': {k: [x.split(':', 1)[1] for x in v] for k, v in says.items()}}
+        # Skip: Enter, then a tap, at 1x, early in the panels → the strike panel (the impact once), then the last one.
+        for how in ('enter', 'tap'):
+            show_fight('akihiko', speed=0, setup='FemcBattle.save.speed = 1;')
+            start_bond('akihiko')
+            p.wait("(FemcBattle.marks['bond-seq-0'] || 0) >= 1", 20)
+            time.sleep(0.25)
+            if how == 'enter': p.eval("document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true }))")
+            else: p.eval("document.querySelector('.bt-bond').dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }))")
+            r = wait_cut(p, 1); m = marks(p); order = p.eval('seqLog')
+            ok(m.get('bond-seq-skip') == 1 and m.get('bond-seq-hit') == 1 and m.get('bond-impact') == 1, (how, m))
+            ok([x for x in order if x.startswith('p')] == ['p0', 'p3', 'p4'] and order.index('q-hit') > order.index('p3'), (how, order))
+            out['skip-' + how] = {'order': order, 'ms': round(r['done'] - r['t0'])}
+        # Unskipped at 1x, for comparison.
+        show_fight('akihiko', speed=0, setup='FemcBattle.save.speed = 1;')
+        start_bond('akihiko')
+        r = wait_cut(p, 1); full_ms = r['done'] - r['t0']
+        ok(full_ms > out['skip-enter']['ms'] + 1500 and 5000 < full_ms < 9000, ('the full Showtime at 1x', full_ms, out))
+        out['full-1x-ms'] = round(full_ms)
+        # Still only: the version's still, as a single cut-in with both lines.
+        for bid in ('akihiko', 'shinjiro'):
+            show_fight(bid, setup="FemcBattle.save.settings.showtimes = 'still';")
+            start_bond(bid)
+            r = wait_cut(p, 1); stl = SHOWS[bid][5]
+            ok('kind-cut' in r['cls'] and 'st-full' in r['cls'] and any(stl in x for x in r['imgs']) and not p.eval("FemcBattle.marks['bond-seq-0'] || 0"), (bid, 'still only', r))
+            ok(not any('-show-' in x for x in r['imgs'] if stl not in x) and len(r['lines']) == 2 and 'has-say' not in r['cls'], (bid, 'still: one picture, both lines on the end card', r))
+        # Reduced motion: a fade on the still, no panels.
+        p.ws.call('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'reduce'}]})
+        for bid in ('akihiko', 'haechan'):
+            show_fight(bid)
+            start_bond(bid)
+            r = wait_cut(p, 1); stl = SHOWS[bid][5]
+            ok('st-fade' in r['cls'] and any(stl in x for x in r['imgs']) and not any('-show-' in x for x in r['imgs']) and r['done'] - r['t0'] < 2500, (bid, 'reduced motion', r))
+        p.ws.call('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'no-preference'}]})
+        # Reduce flashes: the Showtime still plays, and the strike's flash is the calm one.
+        show_fight('jungwon', setup="FemcBattle.save.settings.calm = true; FemcBattle.applyPerf && FemcBattle.applyPerf();")
+        p.eval("document.documentElement.classList.add('bt-calm')")
+        start_bond('jungwon')
+        p.wait("(FemcBattle.marks['bond-seq-hit'] || 0) >= 1", 20)
+        fl = p.eval("getComputedStyle(document.querySelector('.bt-flash')).animationName")
+        r = wait_cut(p, 1)
+        ok('kind-seq' in r['cls'] and 'calm' in fl, ('calm flash on the strike', fl))
+        # Jade Ring has its own still, so it doesn't borrow Jungwon's friendship Showtime.
+        fight(p, ['solar', 'jungwon'], ranks={'jungwon': 9}, love=['jungwon'])
+        my_menu(p, 'solar'); pick(p, 'bond'); p.wait("FemcBattle.ctl.items.some(i => i.v === 'jungwon')"); pick(p, 'jungwon')
+        r = wait_cut(p, 1)
+        ok('kind-cut' in r['cls'] and any('bond-jungwon-love.' in x for x in r['imgs']) and not any('-show-' in x for x in r['imgs']), ('Jade Ring keeps its still', r))
+        # Persona cut-ins Off: the short band on the still.
+        show_fight('shinjiro', cutins='off')
+        start_bond('shinjiro')
+        r = wait_cut(p, 1)
+        ok('st-short' in r['cls'] and any('bond-shinjiro-show-4.' in x for x in r['imgs']) and not any(f'bond-shinjiro-show-{i}.' in x for x in r['imgs'] for i in (1, 2, 3)), ('Off: short band', r))
+        # 5G heavy variant (not a Showtime, but battle.js fxHitKind): an all-foe slash plays slash-heavy, a single one plain slash.
+        p.wait("FemcBattle.marks['bond-done'] >= 1 && FemcFX.hasArt('slash-heavy') && FemcFX.hasArt('slash')", 20)
+        ids = p.eval("Object.fromEntries(FemcBattle.B.party().map(u => [u.mid, u.id]))"); foe = first_foe(p)
+        for sk, want_art in (('vorpal_blade', 'slash-heavy'), ('cleave', 'slash')):
+            before = p.eval(f"FemcBattle.marks['fx-art-{want_art}'] || 0")
+            p.eval("FemcBattle.playEvents(" + json.dumps([{'t': 'hit', 'src': ids['solar'], 'tgt': foe, 'el': 'slash', 'skill': sk, 'aff': 'normal', 'amount': 30, 'hp': 8e6, 'maxHp': 9e6}]) + ")", timeout=60)
+            ok(p.eval(f"FemcBattle.marks['fx-art-{want_art}'] || 0") == before + 1, (sk, want_art, {k: v for k, v in marks(p).items() if k.startswith('fx-art')}))
+        # The setting through the game's settings panel reaches the battle.
+        p.top(); p.goto('femc-game.html')
+        p.eval("FemcGameUI.openSettings()"); p.wait("!!document.querySelector('.g-settings-ov [data-k=showtimes]')")
+        ok(p.eval("FemcGame.settings().showtimes") == 'on', 'default On')
+        p.eval("document.querySelector('.g-settings-ov [data-k=showtimes] [data-d=\"1\"]').click()")
+        ok(p.eval("FemcGame.settings().showtimes") == 'still' and 'Still only' in p.eval("document.querySelector('.g-settings-ov [data-k=showtimes]').textContent"), 'panel → still')
+        p.eval("document.querySelector('.g-settings-ov [data-close]').click()")
+        show_fight('akihiko')
+        ok(p.eval("FemcBattle.save.settings.showtimes") == 'still', 'the battle reads the setting')
+        start_bond('akihiko')
+        ok('kind-cut' in wait_cut(p, 1)['cls'], 'still only from the panel')
+        p.top(); p.eval("FemcGame.setSettings({ showtimes: 'on' })")
+        clean(p, 'showtime')
+        results['showtime'] = out
+        print('showtime OK', flush=True)
+
+    # ── Showtimes frozen on every panel, at three sizes (the phone shows the whole panel) ──
+    if want('showshots'):
+        FACES = {'akihiko': [[36, 58], [31, 62], [44, 64], [39, 68], [32, 71]], 'shinjiro': [[38, 62], [44, 72], [51, 71], [37, 61]],
+                 'jungwon': [[38, 70], [36, 56], [38, 56], [34, 62], [35, 62]], 'haechan': [[43, 76], [26, 61], [21, 43], [37, 52], [49]]}
+        VIS = r"""(() => { const i = %d, faces = %s, w = document.querySelector('.bt-bond'), st = w.querySelector('.th-stage').getBoundingClientRect(), im = w.querySelector('.th-sf[data-i="' + i + '"] img'), R = im.getBoundingClientRect();
+          const s = Math.max(R.width / im.naturalWidth, R.height / im.naturalHeight), cw = im.naturalWidth * s, px = parseFloat(getComputedStyle(im).objectPosition) / 100, left = R.left + (R.width - cw) * px;
+          const lo = Math.max(st.left, 0, R.left), hi = Math.min(st.right, innerWidth, R.right);
+          const says = [...w.querySelectorAll('.th-say.on')].map(x => x.getBoundingClientRect()).map(r => ({ inside: r.left >= 0 && r.right <= innerWidth + 1 && r.top >= 0 && r.bottom <= innerHeight, below: r.top >= st.bottom - 2, r: [r.left, r.top, r.right, r.bottom].map(Math.round) }));
+          const sg = w.querySelector('.th-stage'), whole = innerWidth > 600 || innerHeight < innerWidth || (Math.abs(sg.offsetWidth / sg.offsetHeight - 16 / 9) < 0.06 && sg.offsetWidth >= innerWidth - 1);
+          return { faces: faces.map(f => { const x = left + f / 100 * cw; return x >= lo + 6 && x <= hi - 6; }), top: getComputedStyle(w.querySelector('.th-sf[data-i="' + i + '"]')).opacity, says, whole,
+                   scroll: document.documentElement.scrollWidth <= innerWidth }; })()"""
+        shots = []
+        for (w, h, mobile) in [(375, 812, True), (1440, 900, False), (1000, 486, False)]:
+            p.top()
+            p.ws.call('Emulation.setDeviceMetricsOverride', {'width': w, 'height': h, 'deviceScaleFactor': 1, 'mobile': mobile})
+            for bid in SHOWS:
+                n = SHOWS[bid][2]
+                show_fight(bid, speed=0)
+                p.eval("window.__btFreezeAt = 'bond-seq-0'")
+                start_bond(bid)
+                for i in range(n):
+                    p.wait('FemcBattle.frozen', 30)
+                    time.sleep(0.45)
+                    p.eval("document.getAnimations().forEach(a => a.pause())")
+                    vis = p.eval(VIS % (i, json.dumps(FACES[bid][i])))
+                    ok(all(vis['faces']) and float(vis['top']) > 0.95 and vis['whole'] and vis['scroll'], (w, h, bid, f'panel {i + 1}', vis))
+                    ok(all(x['inside'] for x in vis['says']) and (not mobile or all(x['below'] for x in vis['says'])), (w, h, bid, f'panel {i + 1} lines', vis['says']))
+                    if mobile or i in (1, SHOWS[bid][3]):
+                        p.top(); name = f'{w}x{h}-showtime-{bid}-panel{i + 1}.png'
+                        (OUT / name).write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot', {'format': 'png'})['data'])); shots.append(name)
+                        p.frame()
+                    p.eval("window.__btFreezeAt = %s; FemcBattle.unfreeze(); document.getAnimations().forEach(a => a.play())" % json.dumps(f'bond-seq-{i + 1}' if i < n - 1 else None))
+                p.wait("(FemcBattle.marks['bond-done'] || 0) >= 1", 30)
+            clean(p, f'showshots {w}x{h}')
+        p.ws.call('Emulation.setDeviceMetricsOverride', {'width': 1280, 'height': 800, 'deviceScaleFactor': 1, 'mobile': False})
+        results['showshots'] = {'dir': str(OUT), 'files': shots}
+        print('showshots OK', flush=True)
+
+    # ── Field pose figures: every fighter's drawn height (head to feet) matches the others' (FIGHTER_POSES scales) ──
+    if want('poses'):
+        FIG = r"""(() => { const box = document.querySelector('.bt-fighter'), im = box && box.querySelector('img.posed'); if (!im || box.hidden || !im.complete || !im.naturalWidth || im.style.visibility === 'hidden') return null;
+          const c = document.createElement('canvas'); c.width = im.naturalWidth; c.height = im.naturalHeight; const g = c.getContext('2d'); g.drawImage(im, 0, 0);
+          const d = g.getImageData(0, 0, c.width, c.height).data; let y0 = -1, y1 = -1;
+          for (let y = 0; y < c.height; y++) { let any = false; for (let x = 0; x < c.width; x++) if (d[(y * c.width + x) * 4 + 3] > 20) { any = true; break; } if (any) { if (y0 < 0) y0 = y; y1 = y; } }
+          const R = im.getBoundingClientRect(), s = Math.min(R.width / im.naturalWidth, R.height / im.naturalHeight);
+          return { mid: im.dataset.mid || box.querySelector('img').dataset.mid, h: Math.round(s * (y1 - y0 + 1)), top: Math.round(R.bottom - s * (im.naturalHeight - y0)) }; })()"""
+        FIGHTERS = ['solar', 'akihiko', 'yukari', 'junpei', 'mitsuru', 'aigis', 'koromaru', 'shinjiro', 'haechan', 'jungwon', 'jihoon', 'minji']
+        out = {}
+        for (w, h, mobile) in [(1440, 900, False), (375, 812, True)]:
+            p.top(); p.ws.call('Emulation.setDeviceMetricsOverride', {'width': w, 'height': h, 'deviceScaleFactor': 1, 'mobile': mobile})
+            got = {}
+            for mid in FIGHTERS[1:] + ['solar']:
+                party = ['solar', mid] if mid != 'solar' else ['solar', 'akihiko']
+                fight(p, party, ranks={}, day='9/25' if mid == 'shinjiro' else '12/12')
+                my_menu(p, mid)
+                p.wait("(() => { const b = document.querySelector('.bt-fighter img.posed'); return !!b && b.complete && b.style.visibility !== 'hidden' && !document.querySelector('.bt-fighter').hidden; })()", 20)
+                time.sleep(0.6)
+                r = p.eval(FIG)
+                ok(r and r['top'] >= 0, (w, h, mid, 'figure on screen', r))
+                got[mid] = r['h']
+                if mid in ('junpei', 'mitsuru', 'shinjiro', 'aigis', 'akihiko'):
+                    p.top(); name = f'{w}x{h}-field-{mid}.png'
+                    (OUT / name).write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot', {'format': 'png'})['data']))
+            people = sorted(v for k, v in got.items() if k != 'koromaru'); med = people[len(people) // 2]
+            off = {k: round(v / med, 2) for k, v in got.items() if k != 'koromaru' and not 0.86 <= v / med <= 1.14}
+            ok(not off, (w, h, 'fighters off the median height', off, got))
+            ok(0.5 <= got['koromaru'] / med <= 0.8, (w, h, 'Koromaru stays dog-sized', got))
+            out[f'{w}x{h}'] = got
+        p.ws.call('Emulation.setDeviceMetricsOverride', {'width': 1280, 'height': 800, 'deviceScaleFactor': 1, 'mobile': False})
+        clean(p, 'poses')
+        results['poses'] = out
+        print('poses OK', flush=True)
 
     # ── Settings: Off → short band; reduced motion → fade; speed ──
     if want('settings'):

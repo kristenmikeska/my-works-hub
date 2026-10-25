@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**76 items:** 3 CGs · 3 places · 12 character pieces · 48 battle (18 bond Showtimes in 5A, 24 effect variants in 5G) · 7 cards and icons · 5 screens. 2 are ⭐, 65 are optional.
+**72 items:** 3 CGs · 3 places · 12 character pieces · 44 battle (14 bond Showtimes in 5A, 24 effect variants in 5G) · 7 cards and icons · 5 screens. 1 is ⭐, 62 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -144,6 +144,8 @@ Every bond becomes a **Showtime**, like Persona 5 Royal's duo moves (Morgana and
 
 **Panel format: one 16:9 image per panel, not a sheet.** The game's sequence player (`battle.js playSeq`, the same one Universe uses) crossfades separate full-screen pictures, each with its own crop point, drift and zoom. A 3×2 sheet would give 512-pixel squares, the wrong shape and far too small for a full screen. To keep usage down, make all of a Showtime's panels **in one ChatGPT chat**: paste the prompt once, get panel 1, then type **"Panel 2 now: same characters, same style."** and so on. One prompt, and the faces stay consistent.
 
+**In the game now (batch 44):** Akihiko's *Roadwork*, Shinjiro's *Seconds*, Jungwon's *Unanimous* and Haechan's *Corona* (your revised five panels). The player is built (appendix), so a new Showtime only needs its panels.
+
 **Your current bond art stays.** Where a pair already has a still, it becomes **panel 1** (you don't remake it). The short version (Persona cut-ins Off, Rush, repeats) and reduced motion keep showing a still, so nothing is lost if a Showtime never gets made. Haechan's Version 3 (`bond-haechan-2`) opens his friendship Showtime and stays his short-version still. *Universe* is already a Showtime and doesn't change.
 
 **Attach for every Showtime:**
@@ -162,23 +164,6 @@ I'll ask for each panel in turn. Make panel 1 now (or, if panel 1 is attached, m
 - **★ = the strike panel** (the impact and the bond's name land on it).
 
 #### Friendships (the bond's every version uses it)
-- [ ] ⭐ **Shinjiro · "Seconds"** (replaces the code-drawn cut-in; no still exists). *Concept: Shinji is cooking in the middle of Tartarus, and anything that reaches for the pot meets the axe.* `[N]` = 4, `[NAME]` = Shinjiro Aragaki (beanie, long dark coat, axe).
-  - **Attach:** style, Solar, Shinjiro. **Fills:** `battle/art/theurgy/bond-shinjiro-show-1..4.webp`. Replaces the code-drawn duo cut-in (no art yet); its last panel becomes the short-version still.
-  ```
-  Panel 1: a stylized dorm kitchen set floating in the green Dark Hour dark, Shinjiro in his beanie and long coat stirring a big pot, steam rising; Solar sneaking a taste with a spoon; without even looking, he catches her wrist. Warm orange stove light against the green.
-  Panel 2: a black Shadow hand creeps into frame toward the pot. Shinjiro's eyes narrow under the beanie; he hands Solar the ladle and swings his axe onto his shoulder, one arm out to keep her back.
-  Panel 3 ★: Castor's colossal charge: Shinjiro mid-swing, coat flaring, a dark red shockwave ramming through the Shadow; Solar behind him raising her naginata, gold light gathering.
-  Panel 4: Solar's light sweeping the whole field in a gold arc; Shinjiro already turned away, lifting the pot lid again, deadpan; Solar grinning and holding out her bowl for seconds.
-  ```
-- [ ] *(Optional)* **Akihiko · "Roadwork"** (panel 1 = 🎮 `bond-akihiko.webp`; its other panels are new). *Concept: Akihiko turns the fight into a timed training round, and Solar breaks his record.* `[N]` = 5, `[NAME]` = Akihiko Sanada (boxing gloves).
-  - **Attach:** style, Solar, Akihiko, then 🎮 `battle/art/theurgy/bond-akihiko.webp` (4th). **Fills:** `battle/art/theurgy/bond-akihiko-show-2..5.webp`. Replaces the single still `bond-akihiko` in the full cut-in; that still stays as panel 1 and as the short-version still.
-  ```
-  Panel 1 is the attached still.
-  Panel 2: close on Akihiko's gloved fist holding up a silver stopwatch, thumb on the button, a cocky grin; behind him Solar rolls her eyes and re-grips her naginata.
-  Panel 3: Akihiko's lightning jab flurry, three blurred punches crackling pink-white with electricity; he cups his gloves and boosts Solar up off them, and she launches into the air, naginata raised.
-  Panel 4 ★: Solar's sunrise slash coming down on the Shadow, an orange-gold arc across the whole frame; below, Akihiko stares at the stopwatch with his jaw dropped.
-  Panel 5: Solar plucks the stopwatch out of his glove, smug; Akihiko laughs and they bump fists, sparks popping between his glove and her hand.
-  ```
 - [ ] *(Optional)* **Haechan · "Eclipse"** (panel 1 = 🎮 `bond-haechan-2.webp`, your Version 3). *Concept: the show-off moon keeps stealing the sun's spotlight, and they eclipse together.* `[N]` = 5, `[NAME]` = Haechan (knife; his Persona Dalnim is the moon).
   - **Attach:** style, Solar, Haechan, then 🎮 `battle/art/theurgy/bond-haechan-2.webp` (4th). **Fills:** `battle/art/theurgy/bond-haechan-show-2..5.webp`. Replaces the single still `bond-haechan-2` in the full cut-in; that still stays as panel 1 and as the short-version still.
   ```
@@ -187,15 +172,6 @@ I'll ask for each panel in turn. Make panel 1 now (or, if panel 1 is attached, m
   Panel 3: behind him a pale moon slides over the blazing sun behind her; Haechan points up at it proudly ("mine"), Solar glares at him sideways.
   Panel 4 ★: the eclipse locks into a blazing corona ring; his thrown knife trails violet static through it and Solar's naginata strike bursts through the centre in white-gold light.
   Panel 5: back to back after the hit, Solar posing; Haechan sneaks bunny-ear fingers behind her head, and she has clearly already caught him out of the corner of her eye.
-  ```
-- [ ] *(Optional)* **Jungwon · "Unanimous"** (panel 1 = 🎮 `bond-jungwon.webp`). *Concept: Jungwon runs the fight like a council meeting, and the angrier he is, the politer.* `[N]` = 5, `[NAME]` = Yang Jungwon (rapier).
-  - **Attach:** style, Solar, Jungwon, then 🎮 `battle/art/theurgy/bond-jungwon.webp` (4th). **Fills:** `battle/art/theurgy/bond-jungwon-show-2..5.webp`. Replaces the single still `bond-jungwon` in the full cut-in; that still stays as panel 1 and as the short-version still.
-  ```
-  Panel 1 is the attached still.
-  Panel 2: Jungwon bows very correctly to the Shadow, holding out a clipboard of formal papers, perfectly polite with a dangerous calm smile; Solar beside him biting back a laugh.
-  Panel 3: Solar slams a gold council seal onto the paper with a burst of light; Jungwon touches his rapier tip to it and pale blue frost races out across the floor.
-  Panel 4 ★: Hyeonmu's frost and Solar's golden rope bind the Shadow, freezing it mid-step in jade-blue ice wound with gold.
-  Panel 5: both raise one hand as if voting, both perfectly deadpan, while the frozen Shadow cracks apart behind them.
   ```
 - [ ] *(Optional)* **Jihoon · "Main Event"** (panel 1 = 🎮 `bond-jihoon.webp`). *Concept: the almighty Hoon declares himself the star; Solar does the actual work.* `[N]` = 5, `[NAME]` = Park Jihoon (gloves).
   - **Attach:** style, Solar, Jihoon, then 🎮 `battle/art/theurgy/bond-jihoon.webp` (4th). **Fills:** `battle/art/theurgy/bond-jihoon-show-2..5.webp`. Replaces the single still `bond-jihoon` in the full cut-in; that still stays as panel 1 and as the short-version still.
@@ -282,14 +258,6 @@ Same base block, with **"tender and a little charged, never explicit"** added af
   Panel 2: he steps in front of her, coat sweeping, one arm back to keep her behind him, looking over his shoulder at her, worried.
   Panel 3 ★: Castor's red charge and Solar's gold light hitting together.
   Panel 4: afterwards he takes her cold hands and shoves them into his coat pockets with his own, scowling at nothing; she smiles up at him. Warm red-gold light.
-  ```
-- [ ] *(Optional)* **Haechan · "Corona"** (panel 1 = 🎮 `bond-haechan-love.webp`; *Universe* keeps its own five panels). *Concept: the moon and the sun line up, and he can't stop showing off for her.* `[N]` = 4.
-  - **Attach:** style, Solar, Haechan, then 🎮 `battle/art/theurgy/bond-haechan-love.webp` (4th). **Fills:** `battle/art/theurgy/bond-haechan-love-show-2..4.webp`. Replaces the single still `bond-haechan-love` in the full cut-in; that still stays as panel 1 and as the short-version still.
-  ```
-  Panel 1 is the attached still.
-  Panel 2: he catches her wrist and spins her across the Tartarus floor like a dance step, both laughing, the moon rising behind him.
-  Panel 3 ★: the eclipse aligns and a blazing corona ring erupts; his violet static and her light pour through it onto every Shadow, his arm round her waist inside the ring.
-  Panel 4: a quiet beat: he tucks a strand of her hair behind her ear, foreheads close; she's calling him a show-off with a smile. Gold and violet corona glowing behind them.
   ```
 - [ ] *(Optional)* **Jungwon · "Jade Ring"** (panel 1 = 🎮 `bond-jungwon-love.webp`; Signed in Full adds panel 5). *Concept: formal even now, and very much in love.* `[N]` = 4 (5).
   - **Attach:** style, Solar, Jungwon, then 🎮 `battle/art/theurgy/bond-jungwon-love.webp` (4th). **Fills:** `battle/art/theurgy/bond-jungwon-love-show-2..4 (+ `-5` for Signed in Full).webp`. Replaces the single still `bond-jungwon-love` in the full cut-in; that still stays as panel 1 and as the short-version still.
@@ -606,17 +574,16 @@ The same pieces as a Theurgy (the steps above), in `assets/femc/battle/bonds.js`
 - **Reduced motion:** no sheet plays; it keeps the single soft flash.
 - **Test:** `python3 tests/femc_fx_art.py`. It makes its own sheet in the page, so it needs no shipped art.
 
-### Bond Showtimes (5A): how they'd play *(a note, nothing built yet)*
-Most of it already works with today's `sequence` field (`battle.js playSeq` / `seqHtml` / `bondCut`); the rest is small additions there.
-- **Wiring with today's code:** cut each panel as a `cutin` (`tools/femc-theurgy.py`, 1600 × 900). A friendship Showtime goes on the bond itself (`sequence` on the `BONDS` entry), so every tier uses it (`arts()` reads `v.sequence || b.sequence`); a romance one goes on `love` (and `love15`, adding its fifth panel). Panel 1 is the existing still where there is one. Mark the ★ panel `hit: true`. Keep the version's `img` as the short-version still: the existing still where there is one (Haechan's Version 3, `bond-haechan-2`, stays his), else the last panel. Universe keeps its current sequence. Pick each `focus` so both faces stay in the phone band; `tests/femc_bonds.py --only art,shots` checks it.
-- **Timing:** now every panel gets `SEQ_STEP` (640 ms) and the strike panel 160 ms more, scaled by battle speed. Showtimes want comic timing, so let a panel carry `ms` (e.g. a 900 ms hold on a setup gag, 400 ms on a fast cut) and have `playSeq` sleep `f.ms || SEQ_STEP`. A 4–5 panel Showtime should run about 3–4 s at 1x before the lines and the closing punch, and Rush and Off still get the short band.
-- **Camera:** `seqHtml` already gives each panel its own `focus` and drift (`pan`, as `--px` / `--py`, with the slow zoom in CSS). Add an optional `zoom` (start scale, as `--z`) for a punch-in on a reaction face, and `shake: true` for a non-strike panel that should shake (Junpei's swing, Shinjiro's charge).
-- **Lines:** now both lines show at the end. P5R puts them over the panels: an optional `say: 0 | 1` on a panel could show the partner's or Solar's line on that panel instead (the end card then shows only the name).
-- **SFX:** `bondCut` plays `summon` at the start and the element's sound on impact. A per-panel `sfx` (an existing `sfx()` key: `summon`, `light`, `almighty`, the element sounds; new comic ones like a whistle or a bat crack would need files) would play as the panel comes in.
-- **Skipping:** the full version only plays under Persona cut-ins Always or 1st per battle (bonds always get the full one there), and never in Rush or reduced motion. Add a setting, **Bond Showtimes: On / Still only**, in the same settings group: "Still only" makes `seqOf` return null for bonds, so the version's `img` plays as today's single still. And a tap or Enter during the panels could jump to the strike panel (call `strike()` once, add `q-hit q-last`, go straight to the lines), so a player who has seen it can cut it short without turning it off.
+### Bond Showtimes (5A): the player *(built 2026-10-24, batch 44)*
+The player is `battle.js playSeq` / `seqHtml` / `seqSays` (used by `bondCut`); the data shape is in the comment at the top of `bonds.js`.
+- **Adding one:** cut each panel with `tools/femc-theurgy.py` (add `('cutin', '<source>', 'bond-<id>[-love]-show-<n>')` to `BUILD` and run `all`, or `cutin SRC SLUG`; 1600 × 900, the framing kept). A friendship Showtime goes on the bond itself (`sequence` on the `BONDS` entry), so every tier plays it, and a romance version without its own art borrows it; a version with its own `img` / `sheet` / `layers` doesn't. A romance one goes on `love` (and `love15`). Panel 1 is the existing still where there is one. Keep the version's `img` as the short-version still (the existing still, else the last panel). Universe keeps its own sequence. Then add the bond to `SHOWS` (and its face x-positions to `FACES`) in `tests/femc_bonds.py` and run `--only showtime,showshots`.
+- **Per panel:** `src`, `focus` (keep both faces in the phone band), `pan`, `ms` (the hold at 1x; default 640, the strike 800), `zoom` (start scale for a punch-in), `shake: true` (a non-strike panel), `hit: true` (the ★ strike: impact, flash, the bond's name), `sfx` (an existing `sfx()` key), `say: [who, text, side?]` or a list of those (`who` is `'partner'` or `'solar'`; `side` `'l'` / `'r'` overrides Solar-left / partner-right). Aim for 3–4 s of panels at 1x.
+- **Lines:** P5R-style boxes at the top corners over each panel (under the band on phones, where the band shows the whole panel); with lines on the panels the end card shows only the name. The battle log gets the panel lines.
+- **Skipping:** tap, Enter, Space or the pad's A jumps to the strike panel (the impact lands once), then the last panel and a shorter end card (marks `bond-seq-skip`).
+- **Settings:** Bond Showtimes **On / Still only** (game settings → Battle, and the practice settings): Still only plays the version's `img`. Persona cut-ins Off, Rush and reduced motion show the still as before; Reduce flashes softens the strike flash as everywhere.
 
 ### Effect variants (5G): how the player picks one *(crit pick built in batch 45; the rest is a note)*
-- **Built:** Slash's Heavy and Crit sheets (`slash-heavy`, `slash-crit` in `femc-fx.py SOURCES`). `fx.js artFor` tries `<kind>-crit` when `o.crit` (battle.js already passes it) and `<kind>-heavy` when `o.heavy`, then the plain sheet; nothing passes `o.heavy` yet (one flag in `battle.js fxHitKind` for -ma / all-foe skills). The generic `crit` overlay still plays on top.
+- **Built:** Slash's Heavy and Crit sheets (`slash-heavy`, `slash-crit` in `femc-fx.py SOURCES`). `fx.js artFor` tries `<kind>-crit` when `o.crit` (battle.js already passes it) and `<kind>-heavy` when `o.heavy`, then the plain sheet; `battle.js fxHitKind` sets `o.heavy` for -ma / -dyne / all-foe damage skills (batch 44). The generic `crit` overlay still plays on top.
 - **Building:** add each variant to `SOURCES` in `tools/femc-fx.py` under its own name (`fire-heavy`, `fire-crit`, `fire-solar`, …) and run `all`; the index lists it like any other sheet, and no other bump is needed.
 - **Picking:** `fx.js artFor(kind, o)` already walks a list of names and takes the first sheet that has loaded. A variant goes at the front of that list: the caster's flavour first (`<kind>-<o.by>`, which needs `battle.js fxPlay` to pass the caster's member id as `o.by`), then `<kind>-crit` when `o.crit`, then `<kind>-heavy` when the skill is a -ma / -dyne / all-foe one (a `heavy` flag on those skills in `data.js`, or `o.big` from the caller), then the plain sheet, then the code effect. So a missing variant just falls back to today's sheet.
 - **Order of preference to settle with Kat:** flavour beats heavy (Solar's Agidyne would show her sun fire, not the generic pillar), and crit beats both; or a flavour could get its own `-heavy` later.
