@@ -4063,43 +4063,41 @@
 
   /* ════════════════════════════════════════════════════
      HAENIM'S SKILL TREE
-     Story fights: the field menu's Skills tab (menu.js) is the tree. Practice mode keeps this screen: the same tree and rules
-     (engine.js treeState / treeBuy), a free Refund all, and the party trees left to the story.
+     Story fights: the field menu's Skills tab (menu.js) is the sun. Practice mode keeps this screen: the same sun (sun.js draws
+     it), the same rules (engine.js treeState / treeBuy), a free Refund all, and the party trees left to the story.
      ════════════════════════════════════════════════════ */
-  const treeCols = () => D.tree.map(b => ({ b, nodes: b.nodes.slice() })).concat([{ b: { id: 'center', name: 'Unveiled', world: 'The center', color: '#fff2b0', theme: 'Sunna · Mazu · Nike', blurb: 'All three keystones and a full moon cleared.' }, nodes: [D.treeCenter] }]);
   function treeScreen(onClose) {
     if (BR) { fieldMenu('skills').then(() => { save = loadSaveFromBridge() || save; onClose(); }); return; }
     screen = 'tree';
     root.classList.remove('bt-in-battle');
     if (onClose === hub) music.play('title'); else music.play('floor');
-    const cols = treeCols();
-    let bi = 0, ni = 0, just = null, formBusy = false;
+    const SUN = window.FemcSun, all = E.treeNodes();
+    let cur = null, just = null, formBusy = false;
     const frags = () => E.fragSet(save);
     const st = n => E.treeState(save, n.id, frags());
     // Start on the first node you can buy.
-    cols.some((c, x) => c.nodes.some((n, y) => { if (st(n) === 'avail') { bi = x; ni = y; return true; } return false; }));
+    cur = (all.find(n => st(n) === 'avail') || all[0]).id;
     const label = n => (st(n) === 'hidden' ? '? ? ?' : n.name);
+    const rayOf = n => (n.center ? { name: 'Unveiled', world: 'The crown' } : SUN.groupOf(n.id) || {});
     const render = () => {
       screen = 'tree';
       const fx = treeFx();
-      const node = cols[bi].nodes[ni], s0 = st(node), afford = save.pts >= node.cost, why = E.treeWhy(save, node.id, frags());
+      const node = E.treeNode(cur), s0 = st(node), afford = save.pts >= node.cost, why = E.treeWhy(save, node.id, frags()), ray = rayOf(node);
       const btn = s0 === 'own' ? 'Unlocked' : s0 === 'avail' ? (afford ? `Unlock · ${node.cost} SP` : `Need ${node.cost} SP`) : s0 === 'taken' ? 'Not chosen' : s0 === 'hidden' ? 'A memory first' : 'Locked';
       const el = show(`${ART.defs()}<img class="bt-tree-art" src="${D.personas.haenim.art}" alt="">
         <div class="bt-tree-head"><button type="button" class="bt-tool" data-act="back"><span>‹ Back</span></button>
           <h1>HAENIM<small>해님 · Fool</small></h1>
           <div class="bt-pts"><span><small>Skill Points</small>${save.pts}</span></div></div>
-        <div class="bt-branches n6">${cols.map((c, x) => `<section class="bt-branch${c.b.id === 'center' ? ' center' : ''}" style="--c:${c.b.color}" aria-label="${esc(c.b.name)} branch">
-          <div class="bt-branch-h">${['bell', 'jade', 'star'].includes(c.b.id) ? ART.charm(c.b.id) : `<span class="bt-branch-glyph">${c.b.id === 'center' ? '☀' : c.b.id === 'veil' ? '◐' : '✺'}</span>`}<div><b>${esc(c.b.name)}</b><span>${esc(c.b.world)} · ${esc(c.b.theme)}</span></div></div>
-          ${c.nodes.map((n, y) => `<button type="button" class="bt-node ${st(n)}${n.keystone ? ' key' : ''}${n.memory ? ' mem' : ''}${n.choice ? ' choice' : ''}${x === bi && y === ni ? ' sel' : ''}${just === n.id ? ' just' : ''}" data-b="${x}" data-n="${y}"><span class="gem"></span><b>${esc(label(n))}</b><span class="cost">${st(n) === 'own' ? '✓' : `${n.cost} SP`}</span></button>`).join('')}
-        </section>`).join('')}</div>
-        <div class="bt-tree-foot"><div><h3>${esc(label(node))}<small>${esc(cols[bi].b.name)} · ${esc(cols[bi].b.world)} · ${node.cost} SP${node.choice ? ' · choose one' : ''}${node.memory ? ' · memory' : ''}${node.keystone ? ' · keystone' : ''}</small></h3><p>${s0 === 'hidden' ? '' : esc(node.desc)}${why ? ` <em>${esc(why)}</em>` : ''}</p></div>
+        <div class="bt-sun sun-vp">${SUN.html({ state: id => E.treeState(save, id, frags()), sel: cur, base: 'bt-sn' })}</div>
+        <div class="bt-tree-foot"><div><h3>${esc(label(node))}<small>${esc(ray.name || '')} · ${esc(ray.world || '')} · ${node.cost} SP${node.choice ? ' · choose one' : ''}${node.memory ? ' · memory' : ''}${node.keystone ? ' · keystone' : ''}</small></h3><p>${s0 === 'hidden' ? '' : esc(node.desc)}${why ? ` <em>${esc(why)}</em>` : ''}</p></div>
           <div class="btns"><button type="button" class="bt-btn pink" data-act="buy"${s0 !== 'avail' || !afford ? ' disabled' : ''}><span>${btn}</span></button>
           <button type="button" class="bt-btn" data-act="refund"${E.treeSpent(save) ? '' : ' disabled'}><span>Refund all</span><small>Practice: free</small></button></div>
           <ul class="bt-chips bt-tree-skills"><li class="lbl"><span>Haenim knows</span></li>${solarSkills(fx).map(id => `<li>${skIcon(id)}<span>${esc(D.skills[id].name)}</span></li>`).join('')}</ul></div>`, 'bt-tree');
-      el.querySelectorAll('.bt-node').forEach(b => {
+      SUN.mount(el.querySelector('.bt-sun'), cur);
+      el.querySelectorAll('[data-hn]').forEach(b => {
         b.addEventListener('click', () => {
-          const x = +b.dataset.b, y = +b.dataset.n;
-          if (x === bi && y === ni) buy(); else { bi = x; ni = y; sfx('move'); just = null; render(); }
+          const id = b.dataset.hn;
+          if (id === cur) buy(); else { cur = id; sfx('move'); just = null; render(); }
         });
       });
       el.querySelector('[data-act="back"]').addEventListener('click', close);
@@ -4108,19 +4106,19 @@
       ctl = {
         kind: 'tree',
         key(e) {
-          const k = e.key;
-          if (k === 'ArrowLeft' || k === 'ArrowRight') { bi = (bi + (k === 'ArrowLeft' ? -1 : 1) + cols.length) % cols.length; ni = Math.min(ni, cols[bi].nodes.length - 1); sfx('move'); just = null; render(); return true; }
-          if (k === 'ArrowUp' || k === 'ArrowDown') { const L = cols[bi].nodes.length; ni = (ni + (k === 'ArrowUp' ? -1 : 1) + L) % L; sfx('move'); just = null; render(); return true; }
-          return false;
+          if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return false;
+          const nx = SUN.move(cur, e.key);
+          if (nx !== cur) { cur = nx; sfx('move'); just = null; render(); }
+          return true;
         },
         move() {}, pick: buy, back: close
       };
-      el.querySelector('.bt-node.sel')?.scrollIntoView?.({ block: 'nearest' });
+      if (just) el.querySelector(`[data-hn="${just}"]`)?.classList.add('just');
       mark('tree');
     };
     function buy() {
       if (formBusy) return;
-      const n = cols[bi].nodes[ni];
+      const n = E.treeNode(cur);
       const r = E.treeBuy(save, n.id, frags());
       if (!r.ok) { sfx('back'); return; }
       persist();
@@ -4187,7 +4185,7 @@
     const u = D.personas[f].unlock || {};
     if (u.node === 'unveiled') return 'All three keystones and a full moon cleared';
     const b = D.tree.find(x => x.nodes.some(n => n.id === u.node));
-    return b ? `The ${b.name} branch’s keystone (${b.world})` : '';
+    return b ? `The ${b.name} ray’s keystone (${b.world})` : '';
   };
   function personaScreen(onClose, start = 0) {
     if (BR) { fieldMenu('personas').then(onClose); return; }

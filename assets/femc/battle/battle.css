@@ -2421,3 +2421,7 @@ html.bt-perf .bt-enemy.lantern .ln-win { animation: none; }
   50% { background-position: 0 100%; } 66.67% { background-position: 50% 100%; } 83.33% { background-position: 100% 100%; } 100% { background-position: 100% 100%; opacity: 0; } }
 html.bt-calm .bt-shuffle.has-flip .bt-sh-card.up::after { opacity: .4; }
 .bt-shuffle.reduced .bt-sh-card::after { display: none; }
+
+/* Haenim's sun in practice mode (battle.js treeScreen; sun.js draws it and brings its own node CSS). */
+.bt-sun { position: relative; z-index: 2; margin: 4px clamp(10px, 3vw, 40px); min-height: 240px; }
+.bt-tree .bt-sun.sun-vp { min-height: 240px; }
