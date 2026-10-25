@@ -350,6 +350,8 @@ try:
           HC.at(G.mdOf(d),'late',{flags:d>G.dayOf('12/21')?{'year-goes-on':true}:{}});const r=l.ranks.filter(x=>G.dayOf(x.after)<=d).length;
           HC.link('haechan',r,e.route&&e.route!=='none'?{route:e.route}:{});if(e.when==='tartarus')G.S.tonight='battled';
           (e.events||[]).forEach(x=>{if(!G.S.events.includes(x))G.S.events.push(x)});G.S.lateNights={seen:all.filter(x=>x!==e.id),lastDay:-99};
+          // The spice batch's gates (2026-10-24; femc_spice.py plays them): flags it needs, the world it's for, someone else's romance.
+          [].concat(e.flag||[]).forEach(f=>{G.S.flags[f]=true});if(e.heading)G.S.flags['route-'+[].concat(e.heading)[0]]=true;if(e.taken)HC.link('akihiko',9,{route:'romance'});
           fits=G.lateNightDue()?.e.id===e.id;}
         if(!fits)never.push(e.id);}
       return {missing,hc:plays.filter(x=>x.startsWith('hc-day-')).length,never}})()""", timeout=600)

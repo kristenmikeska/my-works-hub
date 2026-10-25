@@ -135,7 +135,7 @@ try:
 
     # ── counts ──
     counts = p.eval(r"""(()=>{const G=FemcGame,M=G.D.crush.moments,d=md=>G.dayOf(md);
-      const aki=M.filter(m=>m.who==='akihiko'&&m.id.startsWith('cr-aki-')),shin=M.filter(m=>m.who==='shinjiro');
+      const aki=M.filter(m=>m.who==='akihiko'&&m.id.startsWith('cr-aki-')),shin=M.filter(m=>m.who==='shinjiro'&&!m.id.startsWith('sp-'));  // the spice batch counts its own (femc_spice.py)
       const amb=(G.D.texts.ambient||[]).filter(t=>t.crush);
       return {akiSpring:aki.filter(m=>d(m.after)<d('9/1')).length, akiAfter:aki.filter(m=>d(m.after)>=d('9/1')).length,
         shin:shin.length, tri:M.filter(m=>m.id.startsWith('cr-tri-')).length,
