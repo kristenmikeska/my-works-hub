@@ -92,14 +92,17 @@ window.FemcTartarusMap = (() => {
     if (R() < M.clockChance) place('clock', n => n.layer >= 2);
     if (R() < M.lockedChance) place('locked', n => n.layer >= 2);
     place('chest');
-    place('event');
+    // The block's favored rooms (bias 1.4 or more): often one on every floor.
+    Object.keys(bias).filter(k => bias[k] >= 1.4 && M.weights[k] != null && !['shadow', 'empty', 'chest'].includes(k)).forEach(k => { if (R() < 0.45) place(k); });
+    if (R() < 0.6) place('event');
     // Two Shadows at least, one of them guarding the way to the stairs.
     place('shadow', n => n.layer === L - 2);
     place('shadow', n => n.layer <= 2);
     // The rest by weight: the block's `rooms` bias times the base weights, each type capped per floor.
     const W = {};
     Object.keys(M.weights).forEach(k => { W[k] = M.weights[k] * (bias[k] != null ? bias[k] : 1); });
-    const cap = M.max || {};
+    // A block that favors a room type (bias 1.4 or more) can have one more of it on a floor.
+    const cap = Object.fromEntries(Object.entries(M.max || {}).map(([k, v]) => [k, v + ((bias[k] || 1) >= 1.4 ? 1 : 0)]));
     const count = t => nodes.filter(x => x.type === t).length;
     free().forEach(n => {
       let t = pickW(R, W);
@@ -129,7 +132,7 @@ window.FemcTartarusMap = (() => {
       const par = rows.length ? pick(R, rows) : null;
       if (par) {
         const up = byLayer[par.layer].length === 1 ? R() < 0.5 : byLayer[par.layer][0] === par;
-        const c = { id: 'n' + uid++, layer: par.layer, row: -1, x: Math.max(0.04, Math.min(0.96, par.x + 0.05)), y: up ? Math.max(0.0, par.y - 0.19) : Math.min(1.0, par.y + 0.19),
+        const c = { id: 'n' + uid++, layer: par.layer, row: -1, x: Math.max(0.04, Math.min(0.96, par.x + 0.45 / Math.max(1, L - 1))), y: up ? Math.max(0.0, par.y - 0.14) : Math.min(1.0, par.y + 0.14),
           type: 'crack', secret: plan.crack, hidden: true, found: false, links: [], seen: false, known: false, visited: false, cleared: false };
         nodes.push(c); link(par, c);
       }
