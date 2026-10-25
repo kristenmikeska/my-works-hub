@@ -70,7 +70,7 @@
   });
 
   (window.FEMC_GAME_RUNINS ||= []).push(
-    meet({ key: 'river', where: { areas: ['strip', 'station'] }, after: '5/6', until: '6/20',
+    meet({ key: 'river', where: { areas: ['strip', 'station'] }, after: '5/6', until: '2/28',
       before: [
         { place: 'Iwatodai · Riverside', soft: true },
         { n: "She took the long way home, by the river, where the path ran under the cherry trees that had already finished being pink and gone green, and somewhere ahead of her somebody was yelling in English, which you didn't hear much in Iwatodai, and getting closer fast." },
@@ -115,7 +115,7 @@
         { n: "She went around them, down the side of the steps. Behind her the white dog held the high ground with total authority, and the grey husky refused to lose a staring contest to a dog half his size, and nobody involved seemed likely to go home any time soon." }
       ] }),
 
-    meet({ key: 'vending', where: { acts: ['vending'] }, after: '6/15', until: '8/20',
+    meet({ key: 'vending', where: { acts: ['vending'] }, after: '6/15', until: '2/28',
       before: [
         { place: 'Iwatodai Station · Vending Machines', soft: true },
         { n: "There was a man at the next vending machine who had been there, she was fairly sure, since before she'd arrived, standing in front of the glowing rows of cans with his hands in his pockets and his head tilted, reading every single label, while a black and white husky sat at his feet and licked the side of the machine with long, slow, loving strokes." },
@@ -134,7 +134,7 @@
         { n: "She got her can and went. When she glanced back from the bottom of the stairs, he was still reading labels, and the husky was still in love with the machine, and the girl had sat down on the top step to wait it out." }
       ] }),
 
-    meet({ key: 'pier', where: { areas: ['port'] }, after: '7/10', until: '9/20',
+    meet({ key: 'pier', where: { areas: ['port'] }, after: '7/10', until: '2/28',
       before: [
         { place: 'Port Island · Pier', soft: true },
         { n: "Out on the pier somebody was trying to take a photograph, and losing." },
@@ -152,7 +152,7 @@
         { n: "She kept to the other railing. Behind her the photograph did not happen, and the black husky climbed back up the steps soaking and proud of herself, and the girl put her face in her hands and laughed into them." }
       ] }),
 
-    meet({ key: 'mall', where: { areas: ['mall'] }, after: '8/20', until: '10/31',
+    meet({ key: 'mall', where: { areas: ['mall'] }, after: '8/20', until: '2/28',
       before: [
         { place: 'Paulownia Mall · Fountain', soft: true },
         { n: "By the fountain at Paulownia there was a grey husky lying flat on his belly, refusing." },
@@ -173,7 +173,7 @@
         { n: "She let them be. When she came back past the fountain later, the tall guy was carrying the grey husky across the floor in his arms like a bride, and the husky looked happier than she'd ever seen anything look." }
       ] }),
 
-    meet({ key: 'portisland', where: { areas: ['portisland'] }, after: '9/20', until: '12/10',
+    meet({ key: 'portisland', where: { areas: ['portisland'] }, after: '9/20', until: '2/28',
       before: [
         { place: 'Port Island Station · Central Concourse', soft: true },
         { n: "In the middle of the concourse at rush hour a girl in a smart black blazer and a skirt with a lot of little chains on it was on a call, in what was very obviously her work voice, bright and calm and slightly too warm, the voice of someone who'd once been told to smile in emails, while a black and white husky at her feet sang." },
@@ -194,7 +194,7 @@
         { n: "The crowd carried her past them. The last thing she heard, over the announcements, was the work voice saying *no, totally, she'll stop in a second,* and the husky not stopping." }
       ] }),
 
-    meet({ key: 'strip', where: { areas: ['strip'] }, slot: 'evening', after: '10/25', until: '1/20',
+    meet({ key: 'strip', where: { areas: ['strip'] }, slot: 'evening', after: '10/25', until: '2/28',
       before: [
         { place: 'Iwatodai Strip', soft: true },
         { n: "Outside Hagakure at night, in the steam that came out of the vent and drifted across the street like weather, there were two huskies tied to the bike rail and two people in the line with their faces lit by the menu in the window." },
