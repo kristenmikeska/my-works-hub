@@ -1244,7 +1244,7 @@ window.FemcGame = (() => {
     fit.sort((a, b) => (!!b.e.finds - !!a.e.finds) || runUntil(a.e) - runUntil(b.e) || a.i - b.i); // a hidden link's run-ins go first
     const urgent = runUntil(fit[0].e) - d <= 3;
     const key = String(w.act || w.job || w.club || w.area || '').length;
-    if (!force && !urgent && seeded(d * 7 + key * 13) < 0.5) return null;
+    if (!force && !urgent && !fit[0].e.finds && seeded(d * 7 + key * 13) < 0.5) return null; // a hidden link's run-ins skip the coin flip
     return fit[0].e;
   }
   function finishRunIn(id) {
