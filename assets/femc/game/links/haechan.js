@@ -307,7 +307,7 @@
       ] },
       { s: 'haechan', f: 'neutral', t: "Here's the deal." },
       { s: 'haechan', f: 'neutral', t: "I'm not going to ask you to remember anything. Not a name. Not a place. Not me. Everybody else who came through that door is going to look at you like you owe them something, and you don't." },
-      { s: 'haechan', f: 'neutral', t: "Your girls already know me. The loud one nearly said so over breakfast. The other one's going to make her wait until you ask. Yunjin's going to say it to my face, probably at dinner, probably with her mouth full." },
+      { s: 'haechan', f: 'neutral', t: "You saw them. Half that lounge said my name before I'd put my bag down. Your girls are going to keep saying it, at breakfast, at dinner, Yunjin probably with her mouth full, until something in you says it back." },
       { s: 'haechan', f: 'serious', t: "Let them. I'm not going to." },
       { s: 'haechan', f: 'serious', t: "I'm just going to be in here. Most nights. You can come down or not." },
       { choose: [
