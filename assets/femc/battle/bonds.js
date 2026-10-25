@@ -94,11 +94,11 @@ window.FemcBonds = (() => {
         sp: 18, target: 'all', steps: [P('dark', 44, { ail: { id: 'fear', chance: 0.2 } }), P('elec', 48, { ail: { id: 'shock', chance: 0.25 } }), S('light', 76, { down: 0.45 })], after: { buffs: ['atk', 'agi'], th: 10 },
         line: ['You and me. Every sky.', 'Show-off.'], desc: 'Their own combination: the light around an eclipse. Heavy damage to every foe; the party gets stronger and faster, and both Theurgy gauges fill a little.' },
       love15: { rank: 15, name: 'Universe', img: BA('bond-haechan-seq-5'), focus: [33, 30],
-        sequence: [{ src: BA('bond-haechan-seq-1'), focus: [70, 28] }, // faces at x 42% / 77%
-          { src: BA('bond-haechan-seq-2'), focus: [40, 28] }, // 27% / 63%
-          { src: BA('bond-haechan-seq-3'), focus: [22, 30], pan: [-3, 0], hit: true }, // 20% / 41%; the knife leaves his hand
-          { src: BA('bond-haechan-seq-4'), focus: [35, 32] }, // 34% / 51%
-          { src: BA('bond-haechan-seq-5'), focus: [33, 30], pan: [0, 1.5] }], // the kiss at 42%
+        sequence: [{ src: BA('bond-haechan-love-show-1'), focus: [60, 28], ms: 760, say: ['partner', 'Go on. I’ve got your back.'] }, // faces at x 43% / 76%
+          { src: BA('bond-haechan-love-show-2'), focus: [44, 28], zoom: 1.12, ms: 780, say: ['partner', 'Not her. Try me.'] }, // 26% / 61%
+          { src: BA('bond-haechan-love-show-3'), focus: [30, 30], pan: [-3, 0], hit: true, ms: 860, say: ['partner', 'Don’t blink.'] }, // 21% / 43%
+          { src: BA('bond-haechan-love-show-4'), focus: [44, 30], ms: 900, say: [['partner', 'Admit it. That was cool.'], ['solar', '…Show-off.']] }, // 37% / 52%
+          { src: BA('bond-haechan-love-show-5'), focus: [48, 30], pan: [0, 1.5] }], // Kat's revised panels (2026-10-24): Universe plays the same Showtime as Corona, // the kiss at 42%
         sp: 20, target: 'all', steps: [P('dark', 52, { ail: { id: 'fear', chance: 0.25 } }), P('elec', 56, { ail: { id: 'shock', chance: 0.3 } }), S('light', 90, { down: 0.55 })], after: { buffs: ['atk', 'agi', 'def'], th: 15 },
         line: ['Don’t ask me which one of me is translating.', 'Both of you. Every time.'], desc: 'Their own combination, all the way: every sky at once on every foe; the party gets stronger, faster and tougher, and both Theurgy gauges fill.' } },
     { id: 'jungwon', partner: 'jungwon', romance: true, loveFace: 'flustered', img: BA('bond-jungwon'), focus: [60, 22], look: ['ice', 'jade'], colors: ['#ff4f9e', '#9fe8ff'],
