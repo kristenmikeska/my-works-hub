@@ -496,6 +496,10 @@ window.FemcGame = (() => {
          everywhere until `flag` is set. While its gates hold, the dorm's evening menu shows one quiet extra option (label /
          sub); playing it (secretsDue / findSecret) plays `scene`, sets the flag and counts as meeting them. Skip it and the
          link never appears.
+       secret: { flag, via: 'runin', count: { of: [flags], min }, gained }  a hidden link found out in town instead (Kat &
+         Ethan, 2026-10-25): never in the evening menu. Its run-ins carry `finds: '<link id>'`; when one ends with `count`
+         met (that many of those flags set, one per run-in where Solar stopped), the link is found (findSecret, the slot
+         stays the activity's). Walk past enough of them and it never is.
        kind 'persona': Persona-world people from other Persona games (and Kuromi / My Melody, exchange students). They live
          around here: no `closes`, no goodbye texts, ordinary texts (Kat's ruling, 2026-10-20).
      Where the story is heading (heading(): 'R' | 'S' | 'H' | 'stay' | 'true' | 'bad'): the solstice's route once it's
@@ -685,6 +689,9 @@ window.FemcGame = (() => {
 
   /* ── Effects and branches used by scenes ── */
   const flag = id => !!S.flags[id];
+  // { of: [flags], min, max }: how many of those flags are set (a hidden link's tally of run-ins Solar stopped for, links/kat.js).
+  // Scenes { ifCount }, run-in and routine gates `count`, and a secret's `count`. f: the flag reader (menu.js peek passes its own).
+  const countOk = (c, f = flag) => { const n = [].concat(c?.of || []).filter(f).length; return n >= (c?.min ?? 0) && n <= (c?.max ?? Infinity); };
   // { flag: { id: true } } (the usual form), or { flag: 'id' } / { flag: ['a', 'b'] } to set flags to true.
   function setFlags(v) {
     if (typeof v === 'string') S.flags[v] = true;
@@ -782,6 +789,7 @@ window.FemcGame = (() => {
     else if (line.ifCrushed) ok = crushedAt(line.ifCrushed);
     else if (line.ifTaken) ok = takenBy(line.ifTaken);
     else if (line.ifGlow) ok = glowIs(line.ifGlow);
+    else if (line.ifCount) ok = countOk(line.ifCount);
     // Dates: ifAfter is "on or after" (like a rank's `after`), ifBefore is "strictly before"; they're each other's else.
     else if (line.ifAfter) ok = S.day >= dayOf(line.ifAfter);
     else if (line.ifBefore) ok = S.day < dayOf(line.ifBefore);
@@ -1089,6 +1097,7 @@ window.FemcGame = (() => {
     if (e.met && !e.met.every(isMet)) return false;
     if (e.flags && !e.flags.every(flag)) return false;
     if (e.noFlags && e.noFlags.some(flag)) return false;
+    if (e.count && !countOk(e.count)) return false;
     if (e.events && !e.events.every(id => S.events.includes(id))) return false;
     if (e.ranks && !Object.entries(e.ranks).every(([id, r]) => progress(id).rank >= r && !progress(id).reversed)) return false;
     if (e.ranksBelow && !Object.entries(e.ranksBelow).every(([id, r]) => progress(id).rank < r)) return false;
@@ -1210,7 +1219,8 @@ window.FemcGame = (() => {
 
   /* ── Run-ins (data/living-runins.js): after an activity, a shift or a club practice, sometimes someone turns up.
      { id, who, where: { acts, areas, jobs, clubs }, slot, after, until (default after + 45), days, weather, months, met
-     (default [who]), flags, noFlags, events, ranks, route, cast, scene }. At most one every other day, each once; one whose
+     (default [who]), flags, noFlags, count, events, ranks, route, cast, scene, label (the scene's tag instead of who's name,
+     for someone not met yet), finds (a hidden link found by run-ins, see `secret` in the link header) }. At most one every other day, each once; one whose
      window is about to close comes first and surely, otherwise about half the time. The scene plays on the end of the scene
      that was already playing; its effects are scene lines ({ bond }, { stat }, { later }: a text that arrives later). ── */
   const runState = () => { const r = (S.runIns ||= { seen: [], lastDay: -99, later: [] }); if (!Array.isArray(r.seen)) r.seen = []; if (!Array.isArray(r.later)) r.later = []; return r; };
@@ -1241,6 +1251,9 @@ window.FemcGame = (() => {
     const st = runState();
     if (!st.seen.includes(id)) st.seen.push(id);
     st.lastDay = S.day;
+    // A hidden link found out in town (secret.via 'runin'): enough stops, and this run-in finds them.
+    const e = D.runIns.find(x => x.id === id), l = e?.finds && LINKS[e.finds];
+    if (l?.secret && !flag(l.secret.flag) && (!l.secret.count || countOk(l.secret.count))) findSecret(l.id, l.secret.gained || 0, true);
     save();
   }
   // { later: { delay, slot, thread, msgs } } in a scene: a text that arrives `delay` days on (in that slot, or the first one).
@@ -1625,7 +1638,7 @@ window.FemcGame = (() => {
   function secretsDue(d = S.day) {
     const info = dayInfo(d);
     return Object.values(LINKS).filter(l => {
-      const x = l.secret; if (!x || flag(x.flag) || l.status === 'stub') return false;
+      const x = l.secret; if (!x || x.via || flag(x.flag) || l.status === 'stub') return false;
       if (x.after && d < dayOf(x.after)) return false;
       if (x.until && d > dayOf(x.until)) return false;
       if (x.days && !x.days.includes(info.dow)) return false;
@@ -1634,14 +1647,15 @@ window.FemcGame = (() => {
       return info.type !== 'trip';
     });
   }
-  // After its scene: the flag, met and registered; the evening is spent with them.
-  function findSecret(id, gained = 0) {
+  // After its scene: the flag, met and registered; the evening is spent with them (keepSlot: found on a run-in, so the slot
+  // stays the activity's).
+  function findSecret(id, gained = 0, keepSlot = false) {
     const l = LINKS[id]; if (!l?.secret) return null;
     S.flags[l.secret.flag] = true;
     if (!S.met.includes(id)) S.met.push(id);
     bond(id, gained); // the discovery's ♪ count toward rank 1
     if (!S.registered.includes(id)) { S.registered.push(id); toast('register', `Registered to the Compendium: ${l.name}`); }
-    S.spent[`${S.day}-${S.slot}`] = `secret:${id}`;
+    if (!keepSlot) S.spent[`${S.day}-${S.slot}`] = `secret:${id}`;
     save();
     return l;
   }
@@ -2238,7 +2252,7 @@ window.FemcGame = (() => {
     activities, actById, showing, activityOk, activityInfo, doActivity, dormActs, dormInfo, dormOk, doDorm, doStudy, studyInfo, shopStock, buy, bookById, readTonight, matSellPrice, sellMat,
     perkOn, bondRank, dailyPerks, actCost, dozeChance, dozed, canRetryClass, useGuidance, classHint, studyBonus, weekly,
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift, packs, packPick, packFits,
-    clubById, clubState, clubStats, clubScene, joinClub, finishClub, runInDue, runInFits, finishRunIn, vary, varyPool, secretsDue, findSecret,
+    clubById, clubState, clubStats, clubScene, joinClub, finishClub, runInDue, runInFits, finishRunIn, countOk, vary, varyPool, secretsDue, findSecret,
     heading, headingIs, migrateForced,
     crushTick, crushIs, crushedAt, crushApply, crushPhases, crushTrack, crushFits, crushDue, finishCrush, crushLine, takenBy, glowIs, setGlow,
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,

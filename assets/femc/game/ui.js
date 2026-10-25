@@ -1111,7 +1111,7 @@
     const r = G.doActivity(x);
     // Sometimes someone turns up (data/living-runins.js): their scene plays on the end of this one.
     const ri = G.runInDue({ act: x.id, area: a.id, slot });
-    SC.play({ scene: [{ n: r.text }, ...(ri ? ri.scene : [])], place: r.place, time: slot === 'evening' ? 'Evening' : G.slotName(slot), label: ri ? `${x.name} · ${G.name(ri.who)}` : undefined,
+    SC.play({ scene: [{ n: r.text }, ...(ri ? ri.scene : [])], place: r.place, time: slot === 'evening' ? 'Evening' : G.slotName(slot), label: ri ? `${x.name} · ${ri.label || G.name(ri.who)}` : undefined,
       onDone: () => { if (ri) G.finishRunIn(ri.id); advance(); } });
   }
   /* ── Clubs (places.js clubs, data/clubs.js): join on a club day (the first practice), then practice on its days. ── */

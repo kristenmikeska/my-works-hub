@@ -782,6 +782,11 @@ window.FemcBuild = (() => {
     ['mymelody', 3, 'Almond Pound Cake', 'daily', { weekly: 'poundcake', cond: 1, dow: 3 }, 'Once a week, Solar’s condition improves one step.'],
     ['mymelody', 6, 'Sweet Nature', 'assist', { sweetNature: ['charm'] }, 'Charm on the party wears off at once.'],
     ['mymelody', 10, 'Melody Hug', 'max', { melodyHug: {} }, 'Solar’s heals also give defense up.'],
+    // Kat & Ethan (hidden, 2026-10-25): Fishing Trip's pier hook (actStat + actLine) and Leon's Roundhouse went to them.
+    ['kat', 3, 'Dog People', 'daily', { weekly: 'huskies', stat: { kindness: 1, courage: 1 }, dow: 0 }, 'Once a week (Sundays), Cosmo and Wanda drag Solar along the river: +1 Kindness and +1 Courage without using any free time.'],
+    ['kat', 6, 'The Ramen List', 'daily', { discount: { acts: ['hagakure'], pct: 10 } }, 'Ramen at Hagakure costs 10% less (Kat’s spreadsheet says it’s top three).'],
+    ['kat', 8, 'Pier Walks', 'daily', { actStat: { pier: { kindness: 1 } }, actLine: { pier: 'She walked the pier with Kat, Ethan and the huskies, all the way to the end and back, and Wanda tried to go in the sea twice, and Cosmo sat by the railing with his face in the wind like a figurehead.' } }, 'Walking the pier gives +1 Kindness, and the dogs come too.'],
+    ['kat', 10, 'Pack Rush', 'max', { roundhouse: { power: 30 } }, 'Once per battle, when Solar knocks a foe Down, the huskies’ energy carries her straight on: a light Strike hit on every other foe.'],
     ['elizabeth', 2, 'Compendium Credit', 'daily', { velvetCredit: { pct: 25, plumes: 1 } }, 'Velvet Room draws cost 25% less yen and one Velvet Plume less.'],
     ['elizabeth', 4, 'Velvet Key', 'battle', { gift: 'pts' }, '+1 skill point for Haenim’s tree.'],
     ['elizabeth', 7, 'Sunday Best', 'daily', { sundayBest: 1 }, 'On Sundays, every social stat gain is +1.'],
@@ -877,7 +882,8 @@ window.FemcBuild = (() => {
     ['ann', 'Ann', 'happy'], ['haru', 'Haru', 'happy'], ['kasumi', 'Kasumi', 'happy'], ['kuromi', 'Kuromi', 'happy'], ['mymelody', 'My Melody', 'happy'],
     ['elizabeth', 'Elizabeth', 'happy'], ['wren', 'Wren', 'neutral'],
     // No portraits yet (2026-10-22): battle.js shows a silhouette until portraits/index.js lists their faces.
-    ['danielle', 'Danielle', 'happy'], ['jaemin', 'Jaemin', 'happy'], ['chenle', 'Chenle', 'neutral']].forEach(([id, name, face]) => { WHO[id] = { name, face }; });
+    ['danielle', 'Danielle', 'happy'], ['jaemin', 'Jaemin', 'happy'], ['chenle', 'Chenle', 'neutral'],
+    ['kat', 'Kat & Ethan', 'happy']].forEach(([id, name, face]) => { WHO[id] = { name, face }; });
 
   /* ── Perk rules ── */
   const fighter = id => D.party.some(m => m.id === id && id !== 'solar');

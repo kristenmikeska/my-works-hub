@@ -734,6 +734,7 @@ window.FemcMenu = (() => {
     else if (line.ifCrushed) ok = Object.entries(line.ifCrushed).every(([id, ph]) => (s.crush?.t?.[id]?.peak || 0) >= ['noticed', 'crush', 'puppy', 'almost', 'dating'].indexOf(ph) + 1);
     else if (line.ifTaken) ok = Object.entries(s.links || {}).some(([k, q]) => ![].concat(line.ifTaken).includes(k) && q?.route === 'romance');
     else if (line.ifGlow) ok = G.glowIs(line.ifGlow);
+    else if (line.ifCount) ok = G.countOk(line.ifCount, flagOn);
     else if (line.ifAfter) ok = s.day >= G.dayOf(line.ifAfter);
     else if (line.ifBefore) ok = s.day < G.dayOf(line.ifBefore);
     if (ok === null) return null;

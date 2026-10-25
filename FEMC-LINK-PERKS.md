@@ -555,9 +555,9 @@ Leon, Cloud, Noctis, Astarion and Shadowheart are out of the game, and so are th
   reachable. An old save that already cleared the Hermit without it gets it once on load (`core.js migrateYear`).
 - **Kept for old saves:** the MAX skills they taught (Fangs Out, Cross-Slash, Warding Bond, Suplex) and Leon's night-only First
   Aid Spray keep their definitions in `build.js`, so a save that learned or carried one still works; nothing teaches them now.
-- **Unassigned mechanics** (the hooks are still in the engine, waiting for a new link): A Little Taste (`taste`), Fishing Trip
-  (`actStat` + `actLine` on the pier), Spirit Guardians, Roundhouse. Give one to a link by adding a `PERKS` row with the same fx
-  key. (Lockpick, Sneak Attack, `matSell`, Warp-Strike and Mission Briefing went to Danielle; Mercenary Rates, Limit Break,
+- **Unassigned mechanics** (the hooks are still in the engine, waiting for a new link): A Little Taste (`taste`) and Spirit
+  Guardians (Fishing Trip's pier hook and Roundhouse went to Kat & Ethan, 2026-10-25). Give one to a link by adding a `PERKS`
+  row with the same fx key. (Lockpick, Sneak Attack, `matSell`, Warp-Strike and Mission Briefing went to Danielle; Mercenary Rates, Limit Break,
   Night Orchid, Power Nap and Armiger to Jaemin; Guidance, Sanctuary, Knife Parry and Buster Sword to Chenle, 2026-10-22.)
 
 ## Built (2026-10-22): Danielle, Jaemin and Chenle
@@ -571,3 +571,12 @@ Each gets a rank-15 daily perk (rows above; `build.js PERKS`, weekly like the fi
 tier at rank 15 and its romance version (`bonds.js`): Jihoon's **Main Event** / **Coronation**, Minji's **Wide Release** /
 **Last Frame**. (The first four's rank-15 perks, Five, Every Day, Up to the Knuckle, Room Tone and Motion Carried, are in
 `build.js`.)
+
+## Built (2026-10-25): Kat & Ethan (hidden, XII Hanged Man)
+Small, like the other hidden link's. Rows in `build.js PERKS`; cut-ins show Kat's face (`build.js WHO`).
+| Rank | Perk | Type | What it does |
+|---|---|---|---|
+| 3 | Dog People | Daily | Once a week (Sundays), Cosmo and Wanda drag Solar along the river: +1 Kindness and +1 Courage, no free time (`weekly` + `stat`, like Walkies). |
+| 6 | The Ramen List | Daily | Hagakure's ramen costs 10% less (`discount`, inside the 30% cap). |
+| 8 | Pier Walks | Daily | Walking the pier gives +1 Kindness and its line becomes a walk with them and the dogs (Fishing Trip's old `actStat` + `actLine`). |
+| 10 | Pack Rush | MAX | Once per battle, when Solar knocks a foe Down, a light Strike hit on every other foe (Leon's old `roundhouse`). |

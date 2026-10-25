@@ -739,5 +739,37 @@ window.FEMC_PORTRAITS = {
  ],
  "yuzu": [
   "neutral"
+ ],
+ "ethan": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "kat": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "cosmo": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "wanda": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
  ]
 };

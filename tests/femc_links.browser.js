@@ -14,7 +14,9 @@ window.LinkAudit = (() => {
   Object.keys(G.S).forEach(k=>delete G.S[k]);Object.assign(G.S,copy(base));
   // A link with an arrival story event (storyEvents, e.g. Danielle's a4-light-on) can only be met after it: it has played.
   const arrival=G.LINKS[id]?.storyEvents||[];
-  G.S.flags={armband:true,...Object.fromEntries(arrival.length?[['arrived-'+id,true]]:[]),...p.flags};G.S.met=p.met||[];G.S.events=[...new Set([...(p.events||[]),...arrival])];{const v=p.low?0:200;G.S.stats={knowledge:v,courage:v,proficiency:v,charm:v,kindness:v};}
+  // A hidden link (secret: My Melody, Kat & Ethan) is audited as found; how it's found is femc_living2's / femc_kat's.
+  const found=G.LINKS[id]?.secret?.flag;
+  G.S.flags={armband:true,...Object.fromEntries(arrival.length?[['arrived-'+id,true]]:[]),...(found?{[found]:true}:{}),...p.flags};G.S.met=p.met||[];G.S.events=[...new Set([...(p.events||[]),...arrival])];{const v=p.low?0:200;G.S.stats={knowledge:v,courage:v,proficiency:v,charm:v,kindness:v};}
   G.S.day=G.dayOf(p.date||e.after||'1/24');G.S.slot=id==='mark'?'evening':'after';G.S.route.frags={R:9,S:9,H:9};
   G.S.links[id]={rank:p.rank??(e.kind==='rank'?e.i:e.kind==='after'||e.kind==='stretch'?10:5),xp:0,seen:[],rankDay:{},hung:e.i,after:e.i,push:0,reversed:false,route:p.route||'friend'};
   for(const [cid,r] of Object.entries(p.ranks||{}))G.S.links[cid]={rank:r,xp:0,seen:[],rankDay:{},push:0,reversed:false};
@@ -126,7 +128,7 @@ window.LinkAudit = (() => {
  // A speaker whose portraits aren't drawn yet may use only the six expressions tools/femc-portraits.py writes (Kat's sheets:
  // neutral, happy, sad, angry → serious, surprised, embarrassed → flustered), so every face resolves once the files exist.
  const SIX=['neutral','happy','sad','serious','surprised','flustered'];
- function faces(ids=['hyein','mark']){const bad=[];for(const id of ids)for(const e of sceneList(id))walk(e.scene,l=>{if(l.s&&l.f&&!(G.pendingFace(l.s)?SIX:(FEMC_PORTRAITS[l.s]||[])).includes(l.f))bad.push(l.s+'/'+l.f);});return bad;}
+ function faces(ids=['hyein','mark']){const bad=[];for(const id of ids)for(const e of sceneList(id))walk(e.scene,l=>{if(l.s&&l.f&&!(G.pendingFace(l.s)?SIX:(FEMC_PORTRAITS[String(l.s).toLowerCase()]||[])).includes(l.f))bad.push(l.s+'/'+l.f);});return bad;}
  const silhouettes=()=>({seen:[...seenSil],bad:silBad.slice(0,8)});
  return {one,sceneList,assetCheck,faces,silhouettes,reset,play,playA,expected,original,base};
 })();

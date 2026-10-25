@@ -2,6 +2,7 @@
    differently. 1 = default; below 1 shows the character smaller, above 1 bigger. Calibrated by eye from each
    neutral portrait's eye-to-chin height in a real scene. Adjust a number if someone still looks too big or small. */
 window.FEMC_PORTRAIT_SCALE = {
+  cosmo: 1.08,
   ikutsuki: 0.82,
   abigail: 1.04,
   ada: 1.1,
@@ -22,6 +23,7 @@ window.FEMC_PORTRAIT_SCALE = {
   cloud: 1.17,
   danielle: 0.95,
   elizabeth: 0.98,
+  ethan: 0.92,
   evelyn: 1.2,
   futaba: 1.12,
   fuuka: 1.08,
@@ -48,6 +50,7 @@ window.FEMC_PORTRAIT_SCALE = {
   junpei: 0.97,
   karlach: 1.03,
   kasumi: 0.88,
+  kat: 0.9,
   kiriko: 0.97,
   koichi: 1.07,
   koromaru: 1.1,
@@ -78,6 +81,7 @@ window.FEMC_PORTRAIT_SCALE = {
   sunghoon: 0.95,
   sunoo: 1.0,
   tifa: 1.03,
+  wanda: 0.92,
   widowmaker: 1.18,
   wren: 0.95,
   yukari: 1.1,

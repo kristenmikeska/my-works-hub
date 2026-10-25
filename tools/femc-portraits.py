@@ -6,6 +6,9 @@ and scaling its silhouette until the head and hair line up best, then everything
 shared canvas. Swapping expressions in a scene then never makes the character jump or change size.
 
 Run: python3 tools/femc-portraits.py [name ...]   (no names = everyone; takes a minute or two)
+     --same-scale name[,name]: those characters' expressions were drawn at one scale on one sheet (Cosmo and Wanda, the
+     huskies): no matching (a turned head or flattened ears fools it); every expression keeps the sheet's scale, centered
+     and standing on the bottom edge. SAME_SCALE below lists the ones that always need it.
 Source: ~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits/<Name>/<Name>-<Emotion>[-N].png|webp
         (the name prefix is optional: plain <emotion>.png works too, e.g. Kiriko/smiling.png)
 Output: assets/femc/portraits/<id>/<emotion>.webp and assets/femc/portraits/index.js
@@ -21,6 +24,7 @@ EMO = {'mad': 'serious', 'angry': 'serious', 'embarrassed': 'flustered', 'smilin
 TARGET_H = 860      # height of the reference portrait on the canvas
 WORK_H = 140        # matching happens on small silhouettes this tall
 HEAD = 0.55         # only the top part of the reference (head and hair) is compared
+SAME_SCALE = {'cosmo', 'wanda'}
 
 
 def trimmed(path):
@@ -145,7 +149,7 @@ def refine(ref, cand, s0, x0, y0):
     return best[1], best[2] / f, best[3] / f
 
 
-def process(folder, cid):
+def process(folder, cid, same=False):
     items = [(trimmed(p), names) for p, names in entries(folder)]
     if not items:
         return None
@@ -158,6 +162,12 @@ def process(folder, cid):
     for i, (im, names) in enumerate(items):
         if i == ref_i:
             sc, s, dx, dy = 1, 1, 0, 0
+        elif same:
+            # The sheet's own scale: as tall relative to the reference as on the sheet, centered, on the bottom edge.
+            s = im.height / ref.height
+            w_out, h_out = im.width * TARGET_H / ref.height, TARGET_H * s
+            ref_w = ref.width * TARGET_H / ref.height
+            sc, dx, dy = 1, (ref_w - w_out) / 2 / k, (TARGET_H - h_out) / k
         else:
             sc, s, dx, dy = match(ref_m, im, region)
             s, dx, dy = refine(ref, im, s, dx, dy)
@@ -191,13 +201,18 @@ if os.path.exists(manifest_path):
     m = re.search(r'=\s*(\{.*\});', open(manifest_path).read(), re.S)
     if m:
         manifest = json.loads(m.group(1))
-only = {a.lower() for a in sys.argv[1:]}
+args = sys.argv[1:]
+if '--same-scale' in args:
+    i = args.index('--same-scale')
+    SAME_SCALE |= {x.lower() for x in args[i + 1].split(',')}
+    del args[i:i + 2]
+only = {a.lower() for a in args}
 for folder in sorted(os.listdir(SRC)):
     path = os.path.join(SRC, folder)
     cid = folder.lower()
     if not os.path.isdir(path) or (only and cid not in only):
         continue
-    have = process(path, cid)
+    have = process(path, cid, cid in SAME_SCALE)
     if have:
         manifest[cid] = have
 with open(manifest_path, 'w') as fh:

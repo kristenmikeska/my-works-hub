@@ -9699,6 +9699,142 @@
       "outputSha256": "9a0fa6a5750fa17c327ee2e0fe642ed97b1aac97bdb6d1595e4a58bdb31fb582",
       "conversion": "tools/femc-fx.py SOURCES slash-crit: 3x2 light on black -> alpha, 256px frames",
       "placement": "5G Slash Crit (razor line in frame 3 splitting into a pink-white X): fx.js artFor plays it on a critical Slash hit (o.crit); the plain slash.jpeg sheet stays for every other Slash hit"
+    },
+    {
+      "batch": 46,
+      "source": "kat-portraits.png",
+      "sourceNow": "Added to Game/kat-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c647fe68bd803af58ed58e9cbc150db89f60200fc06428a2aa66adfbf4b52b08",
+      "character": "kat",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/kat/neutral.webp",
+      "conversion": "3x2 white-background sheet cut at the emptiest column/row near each cell boundary; backgrounds removed with the existing macOS Vision tool (tools/femc-lift.swift), non-white pixels Vision dropped next to the figure restored, white pockets between stray hair strands that open onto the background removed and the white matte taken out of anti-aliased edges, stray pieces dropped; per-emotion PNGs in Character Portraits/; tools/femc-portraits.py aligns faces on a shared canvas (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/kat/flustered.webp": "4f35f0f53b951c0ea7e3064c1cda4a1d571d5982be51d41b2166182d13e8bd89",
+        "assets/femc/portraits/kat/happy.webp": "493c5176e5b1203693249f57200090e0f84e8dc03162ea4bf3e74376f3a7553f",
+        "assets/femc/portraits/kat/neutral.webp": "de910623c221e4cab4288dc3fbb2c9ff0c1fab1ede5d000a0b819776c90fe6b3",
+        "assets/femc/portraits/kat/sad.webp": "a130aaa1ac3a42d7b2f8614afd42161fbaf4b7beba324ddb0e65fe21bfbeaf0e",
+        "assets/femc/portraits/kat/serious.webp": "3a8c794615c0e3a25e95cf53b265342e699d82c9be394aecdaa16cfa5dd15508",
+        "assets/femc/portraits/kat/surprised.webp": "912b4b417020a08f36631615cb6315b8c377917fff213b84a026e41c6aed0c63"
+      },
+      "outputSha256": "de910623c221e4cab4288dc3fbb2c9ff0c1fab1ede5d000a0b819776c90fe6b3",
+      "expressionMapping": {
+        "NEUTRAL": "neutral",
+        "HAPPY": "happy",
+        "SAD": "sad",
+        "ANGRY": "serious",
+        "SURPRISED": "surprised",
+        "EMBARRASSED": "flustered"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row angry, surprised, embarrassed",
+      "scale": 0.9,
+      "usedBy": "links/kat.js and data/living-kat.js (the hidden Kat & Ethan link)"
+    },
+    {
+      "batch": 46,
+      "source": "ethan-portraits.png",
+      "sourceNow": "Added to Game/ethan-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "17a8fd541488eee76ae7124e7886fc9c09694a711ccfd6d9e5c8a9557ccb243c",
+      "character": "ethan",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/ethan/neutral.webp",
+      "conversion": "3x2 white-background sheet cut at the emptiest column/row near each cell boundary; backgrounds removed with the existing macOS Vision tool (tools/femc-lift.swift), non-white pixels Vision dropped next to the figure restored, white pockets between stray hair strands that open onto the background removed and the white matte taken out of anti-aliased edges, stray pieces dropped; per-emotion PNGs in Character Portraits/; tools/femc-portraits.py aligns faces on a shared canvas (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/ethan/flustered.webp": "cc658af73233051cb1f781de977de168ca3749d8ce39222815d2c3cef3d8075a",
+        "assets/femc/portraits/ethan/happy.webp": "6e9dffe637a2a5c3751208514e92b000c88cd22b87b60f7e0f70a028c452c806",
+        "assets/femc/portraits/ethan/neutral.webp": "c1fbdb4a1550e74060ad7c5bc531bc3f724f1509d76f07ef5d5513fa7edeeb60",
+        "assets/femc/portraits/ethan/sad.webp": "a9863f6b177fd72f21ec82e5b60feb6641902b51854feb638ab9ecfe34d1cfa2",
+        "assets/femc/portraits/ethan/serious.webp": "392a86b090e3ee6593c8f68a13993c606e1f89733e3fbc3dc7df18bea3087069",
+        "assets/femc/portraits/ethan/surprised.webp": "999331dd045fcbe95325bd792014cdb8f92ad9c09eba862d00f9328e7047d99a"
+      },
+      "outputSha256": "c1fbdb4a1550e74060ad7c5bc531bc3f724f1509d76f07ef5d5513fa7edeeb60",
+      "expressionMapping": {
+        "NEUTRAL": "neutral",
+        "HAPPY": "happy",
+        "SAD": "sad",
+        "ANGRY": "serious",
+        "SURPRISED": "surprised",
+        "EMBARRASSED": "flustered"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row angry, surprised, embarrassed",
+      "scale": 0.92,
+      "usedBy": "links/kat.js and data/living-kat.js (the hidden Kat & Ethan link)"
+    },
+    {
+      "batch": 46,
+      "source": "cosmo-portraits.png",
+      "sourceNow": "Added to Game/cosmo-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c3fc2d24108513db19590ac5788a9421da612c45ffb5829cce706cbf0afb9485",
+      "character": "cosmo",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/cosmo/neutral.webp",
+      "conversion": "3x2 white-background sheet cut at the emptiest column/row near each cell boundary; backgrounds removed with the existing macOS Vision tool (tools/femc-lift.swift) alone (white fur and the white bandana stay), stray pieces dropped; per-emotion PNGs in Character Portraits/; tools/femc-portraits.py --same-scale (SAME_SCALE: the sheet's own scale, centered and on the bottom edge, since turned heads and flattened ears fool the face matching) (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/cosmo/flustered.webp": "9cfe3c7d129d21e3f4ad1e385716018b426c7cbec50db1386a59a0000e5311c9",
+        "assets/femc/portraits/cosmo/happy.webp": "a0505a289de5eb362a3f6da6da30ebcc208edba79248d27847a44903f1becf5e",
+        "assets/femc/portraits/cosmo/neutral.webp": "5c88ec673f60f8277351daa2e1241827b2e1a4304407e3f79ef8da799d2cac9e",
+        "assets/femc/portraits/cosmo/sad.webp": "77b494e8b85ccebce455a3001ff50bfac03ac64204cc1a131cbc92b1f6a411ff",
+        "assets/femc/portraits/cosmo/serious.webp": "609ff15fb4dd5550ea9b88102a84ce3fae57811bcc5bc42d71d990d14e40654a",
+        "assets/femc/portraits/cosmo/surprised.webp": "251a73ea7535583de463fb5d281aea6ac6eba94c415472954bdffd3c3169590a"
+      },
+      "outputSha256": "5c88ec673f60f8277351daa2e1241827b2e1a4304407e3f79ef8da799d2cac9e",
+      "expressionMapping": {
+        "NEUTRAL": "neutral",
+        "HAPPY": "happy",
+        "SAD": "sad",
+        "ANGRY": "serious",
+        "SURPRISED": "surprised",
+        "EMBARRASSED": "flustered"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row angry, surprised, embarrassed",
+      "scale": 1.08,
+      "usedBy": "links/kat.js and data/living-kat.js (the hidden Kat & Ethan link)"
+    },
+    {
+      "batch": 46,
+      "source": "wanda-portraits.png",
+      "sourceNow": "Added to Game/wanda-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a9df3bc676df3ce47845c436ce7f7520f5942aa66fa0f66d24b1a13970741621",
+      "character": "wanda",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/wanda/neutral.webp",
+      "conversion": "3x2 white-background sheet cut at the emptiest column/row near each cell boundary; backgrounds removed with the existing macOS Vision tool (tools/femc-lift.swift) alone (white fur and the white bandana stay), stray pieces dropped; per-emotion PNGs in Character Portraits/; tools/femc-portraits.py --same-scale (SAME_SCALE: the sheet's own scale, centered and on the bottom edge, since turned heads and flattened ears fool the face matching) (WebP q86); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/wanda/flustered.webp": "0a82e3c5c9511710b406449a165af500b81f14949fac79e4d0a28c96b89b7606",
+        "assets/femc/portraits/wanda/happy.webp": "9332f4c948c717ea98e6024ae0017eaca5899c87a79ba9f7926f7e54ea828664",
+        "assets/femc/portraits/wanda/neutral.webp": "6ea8eb419ccaffdce7262a3254f9fbda8ddf4e82d1a999601e56010efc1fb67a",
+        "assets/femc/portraits/wanda/sad.webp": "a2dd5b881c87d02d6ed69afecb2ddaba73c8752391471e9d53e2691c67e12916",
+        "assets/femc/portraits/wanda/serious.webp": "ab44a5e147b01642eef078db895f8755a0a4a223e6e15459edfa40ff2fb6b77e",
+        "assets/femc/portraits/wanda/surprised.webp": "afd8012bfbfff131ad83b8ce9347bc67e395c5f6b05daf9bc8d10cff15bee65f"
+      },
+      "outputSha256": "6ea8eb419ccaffdce7262a3254f9fbda8ddf4e82d1a999601e56010efc1fb67a",
+      "expressionMapping": {
+        "NEUTRAL": "neutral",
+        "HAPPY": "happy",
+        "SAD": "sad",
+        "ANGRY": "serious",
+        "SURPRISED": "surprised",
+        "EMBARRASSED": "flustered"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row angry, surprised, embarrassed",
+      "scale": 0.92,
+      "usedBy": "links/kat.js and data/living-kat.js (the hidden Kat & Ethan link)"
     }
   ],
   "batch1Validation": {
@@ -10308,5 +10444,22 @@
       "headless batch check: 24 gear pieces carry art and load in the Equipment slots and lists (1280x850, 375x812, no sideways scroll), FemcIcons.of art with drawn fallback, Police Box shelf art, Hyein/Koromaru tarot alternates load (Yukari, Ann keep Lovers), all 30 charms in the Collection, Halloween set on 10/20 and not on 8/3 or 11/1, a missing charm falls back to the drawn one, FemcFX.artFor('slash', {crit}) = slash-crit and plain hits keep slash"
     ],
     "html": "femc-game.html game.css v20, gacha.css v4, tarot index v131, build v13, icons v7, core v31, gacha v4; femc-battle.html battle.css v31, build v13, icons v7, fx.js v9, fx/index.js hash"
+  },
+  "batch46Validation": {
+    "date": "2026-10-25",
+    "scope": "Portrait sets for the hidden couple link Kat & Ethan and their huskies Cosmo and Wanda (six expressions each)",
+    "sourcesInspected": "all 4 viewed before cutting: each sheet is a 3x2 grid of the right character in the six batch-24 expressions; every cut reviewed on a dark contact sheet (no neighbouring face, no chopped heads, no white halo or holes)",
+    "sourcesIntegrated": 4,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked after the move); On Hold untouched",
+    "sizeCheck": "neutral faces compared at scene scale against Hanni, Danielle, Jaemin and Haechan (kat 0.9, ethan 0.92) and the dogs against Koromaru in a real scene at 1440x900 and 375x812 (cosmo 1.08, wanda 0.92: the one-year-old a little smaller)",
+    "tests": [
+      "python3 tools/femc-check-scenes.py --links kat",
+      "python3 tests/femc_links.py --links kat",
+      "python3 tests/femc_cast_consistency.py",
+      "python3 tests/femc_kat.py",
+      "python3 tests/femc_living2.py"
+    ],
+    "browserErrors": 0
   }
 }

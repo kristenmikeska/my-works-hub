@@ -18,6 +18,7 @@
      { ifCrush: { id: [phases] } } { ifCrushed: { id: 'phase' } } -> then / else; { crush: { id: 'in' | 'out' | n } } an effect (core.js crushes)
      { ifTaken: id | [ids] } -> then / else; { glow: 'id' | 'id:kind' } an effect and { ifGlow } its next-day condition (core.js glowIs)
      { ifEvent: 'event-id' }     -> then / else, only if that story event is recorded in the save
+     { ifCount: { of: [flags], min, max } } -> then / else, by how many of those flags are set (core.js countOk)
      { ifAfter: 'M/D', then, else }   today is on or after M/D (same rule as a rank's `after`)
      { ifBefore: 'M/D', then, else }  today is strictly before M/D (so ifBefore X is exactly ifAfter X's else)
      { flag: { id: true } }           sets flags; { flag: 'id' } and { flag: ['a', 'b'] } set them to true. Works in story
