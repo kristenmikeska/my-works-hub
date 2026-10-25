@@ -145,17 +145,29 @@ window.FemcCosmetics = (() => {
   const pool = () => ITEMS.filter(x => x.pool !== false && ready(x));
   const featured = d => banner(d).featured.map(byId).filter(x => x && x.pool !== false && ready(x));
   const plumes = () => (window.FemcGacha ? window.FemcGacha.gs().plumes : 0);
-  const canPull = () => plumes() >= BAN.cost && pool().length > 0;
+  const canPull = (n = 1) => plumes() >= BAN.cost * n && pool().length > 0;
+  const pullWhy = (n = 1) => (canPull(n) ? '' : !pool().length ? 'Nothing in the pool' : `Needs ${BAN.cost * n} plumes (${plumes()})`);
   function rollR() {
     let x = R();
     for (const k of ['UR', 'SR']) { if (x < BAN.odds[k]) return k; x -= BAN.odds[k]; }
     return 'R';
   }
   /* One pull. Returns { item, r, dup, refund, feat } or null. */
-  function pull() {
-    if (!canPull()) return null;
+  function pull() { const x = pullN(1); return x ? x[0] : null; }
+  /* n pulls paid at once (×10 = 20 plumes). Each one counts pity on its own, so a ×10 always holds a Super Rare or
+     better (BAN.pitySR is 10). Saved once. */
+  function pullN(n = 1) {
+    if (!canPull(n)) return null;
+    window.FemcGacha.gs().plumes -= BAN.cost * n;
+    const out = [], save = G.save;
+    G.save = () => {};
+    try { for (let i = 0; i < n; i++) out.push(roll()); } finally { G.save = save; }
+    G.save();
+    return out;
+  }
+  const pull10 = () => pullN(10);
+  function roll() {
     const s = cs(), g = window.FemcGacha.gs(), p = s.pity;
-    g.plumes -= BAN.cost;
     let r = rollR();
     if (r !== 'UR' && p.ur + 1 >= BAN.pityUR) r = 'UR';
     else if (r === 'R' && p.sr + 1 >= BAN.pitySR) r = 'SR';
@@ -225,7 +237,7 @@ window.FemcCosmetics = (() => {
   function weaponArt(who) { const x = onIn(`weapon:${who}`); return x ? `${skinDir(x.id)}weapon.webp` : null; }
 
   /* ── Menu → Wardrobe ── */
-  let view = 'wardrobe', sel = null, fresh = null;
+  let view = 'wardrobe', sel = null, fresh = null, sfxT = null;
   const starsHtml = r => `<span class="g-ga-stars" style="--rc:${RAR[r].color}" aria-label="${RAR[r].name}">${'★'.repeat({ R: 2, SR: 3, UR: 4 }[r])}</span>`;
   const DEFAULT_POSE = 'assets/femc/battle/art/poses/solar-pose-0.webp';
   const EVOKER = 'assets/femc/battle/art/summon/evoker-prop.webp';
@@ -285,14 +297,23 @@ window.FemcCosmetics = (() => {
       <ul class="g-ga-odds">${Object.entries(BAN.odds).map(([k, v]) => `<li style="--rc:${RAR[k].color}">${starsHtml(k)} ${RAR[k].name} <b>${(v * 100).toFixed(0)}%</b></li>`).join('')}</ul>
       <p class="g-ga-pity">Super Rare or better within <b>${BAN.pitySR - p.sr}</b> pull${BAN.pitySR - p.sr === 1 ? '' : 's'} · an Ultra within <b>${BAN.pityUR - p.ur}</b>${s.guar ? ' · the next Ultra is featured' : ''}.</p>
       <p class="g-note small">Half of each rarity's pulls land on its featured item. ${n} looks are in the pool (outfits still waiting on art aren't). Repeats give Velvet Plumes back.</p>
-      <div class="g-row g-ga-btns"><button type="button" class="g-btn pink" data-wd-pull${canPull() ? '' : ' disabled'}><span>Pull · ${BAN.cost} Velvet Plumes</span></button><span class="g-ga-own"><span>Velvet Plumes <b>${plumes()}</b></span><span>Pulls <b>${s.pulls}</b></span></span></div>
-      <div class="g-wd-reveal" aria-live="polite">${res ? revealHtml(res) : ''}</div></div>`;
+      <div class="g-row g-ga-btns"><button type="button" class="g-btn pink" data-wd-pull${canPull() ? '' : ' disabled'}><span>Pull · ${BAN.cost} Velvet Plumes</span></button>
+        <button type="button" class="g-btn g-ga-x10" data-wd-pull10${canPull(10) ? '' : ` disabled title="${esc(pullWhy(10))}"`}><span>×10 · ${BAN.cost * 10} Plumes${canPull(10) ? '' : `<small>${esc(pullWhy(10))}</small>`}</span></button><span class="g-ga-own"><span>Velvet Plumes <b>${plumes()}</b></span><span>Pulls <b>${s.pulls}</b></span></span></div>
+      <div class="g-wd-reveal" aria-live="polite">${res ? (res.list ? tenHtml(res) : revealHtml(res)) : ''}</div></div>`;
   }
   function revealHtml(res) {
     const x = res.item, anim = !res.old && !reduced();
     return `<div class="g-wd-card r-${res.r}${anim ? ' anim' : ''}" style="--rc:${RAR[res.r].color}"><div class="g-wd-card-in"><span class="g-wd-card-back"><i></i></span>
       <span class="g-wd-card-face"><span class="g-wd-th">${thumb(x)}</span><span>${starsHtml(res.r)}<small>${RAR[res.r].name}${res.feat ? ' · Featured' : ''}</small><b>${esc(x.name)}</b><em>${esc(KINDS[x.kind].name)}</em>
       ${res.dup ? `<em class="g-ga-dup">Already had it: +${res.refund} Velvet Plume${res.refund === 1 ? '' : 's'}.</em>` : res.old ? '' : '<em class="g-ga-done">New! Equip it in the Wardrobe.</em>'}</span></span></div></div>`;
+  }
+  // A ×10: the best pull gets the reveal card (its rarity's animation, once), the ten sit in a grid under it; Skip shows all.
+  function tenHtml(res) {
+    const order = ['R', 'SR', 'UR'], top = res.list.reduce((b, x) => (order.indexOf(x.r) > order.indexOf(b.r) ? x : b), res.list[0]);
+    const anim = !res.old && !reduced(), refund = res.list.reduce((n, x) => n + x.refund, 0), fresh = res.list.filter(x => !x.dup).length;
+    return `${anim ? '<button type="button" class="g-btn small g-ga-skip" data-wd-skip><span>Skip</span></button>' : ''}${revealHtml(Object.assign({}, top, { old: !anim, dup: false }))}
+      <div class="g-ga-grid${anim ? ' late' : ' fast'}">${res.list.map((x, i) => `<div class="g-ga-cell r-${x.r}${x === top ? ' best' : ''}" style="--rc:${RAR[x.r].color};--i:${i}"><div class="g-ga-cell-art"><span class="g-wd-th">${thumb(x.item)}</span></div>${starsHtml(x.r)}<b>${esc(x.item.name)}</b>${x.dup ? `<small class="g-ga-dup">+${x.refund} plume${x.refund === 1 ? '' : 's'}</small>` : '<small class="g-ga-done">New</small>'}</div>`).join('')}</div>
+      <p class="g-ga-sum">${fresh} new look${fresh === 1 ? '' : 's'}${refund ? ` · +${refund} Velvet Plumes back` : ''}.</p>`;
   }
   function html() {
     gsafe();
@@ -306,10 +327,22 @@ window.FemcCosmetics = (() => {
     el.querySelectorAll('[data-wd-off]').forEach(b => b.addEventListener('click', () => { unequip(b.dataset.wdOff); sel = null; G.sfx('femc-back'); rerender(`[data-wd-off="${b.dataset.wdOff}"]`); }));
     el.querySelector('[data-wd-equip]')?.addEventListener('click', e => { if (equip(e.currentTarget.dataset.wdEquip)) { G.sfx('femc-on'); rerender('[data-wd-equip]'); } });
     el.querySelector('[data-wd-portraits]')?.addEventListener('change', e => { setPortraits(e.target.checked); G.sfx('femc-click'); });
+    el.querySelector('[data-wd-pull10]')?.addEventListener('click', () => {
+      const list = pull10(); if (!list) return;
+      const top = list.reduce((b, x) => (['R', 'SR', 'UR'].indexOf(x.r) > ['R', 'SR', 'UR'].indexOf(b.r) ? x : b), list[0]);
+      fresh = { list }; G.sfx('femc-click');
+      clearTimeout(sfxT); sfxT = setTimeout(() => { sfxT = null; G.sfx(RAR[top.r].sfx); }, reduced() ? 0 : { R: 650, SR: 900, UR: 1200 }[top.r]);
+      rerender('[data-wd-pull10]');
+      fresh = { list, old: true };
+    });
+    el.querySelector('[data-wd-skip]')?.addEventListener('click', e => {
+      const box = el.querySelector('.g-wd-reveal'); box.classList.add('skip'); e.currentTarget.remove();
+      if (sfxT) { clearTimeout(sfxT); sfxT = null; const r = (fresh && fresh.list || []).reduce((b, x) => (['R', 'SR', 'UR'].indexOf(x.r) > ['R', 'SR', 'UR'].indexOf(b) ? x.r : b), 'R'); G.sfx(RAR[r].sfx); }
+    });
     el.querySelector('[data-wd-pull]')?.addEventListener('click', () => {
       const res = pull(); if (!res) return;
       fresh = res; G.sfx('femc-click');
-      setTimeout(() => G.sfx(RAR[res.r].sfx), reduced() ? 0 : { R: 650, SR: 900, UR: 1200 }[res.r]);
+      clearTimeout(sfxT); sfxT = setTimeout(() => { sfxT = null; G.sfx(RAR[res.r].sfx); }, reduced() ? 0 : { R: 650, SR: 900, UR: 1200 }[res.r]);
       rerender('[data-wd-pull]');
       fresh = Object.assign({}, res, { old: true }); // later re-renders show it still, without replaying
     });
@@ -318,5 +351,5 @@ window.FemcCosmetics = (() => {
   G.onChange(kind => { if (kind !== 'toast') apply(); });
   applyTitleEarly();
   setTimeout(apply, 0);
-  return Object.assign(api, { KINDS, ITEMS, BANNERS, BAN, PAL, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, pool, featured, canPull, pull, apply, battle, portrait, weaponArt, html, wire, preview });
+  return Object.assign(api, { KINDS, ITEMS, BANNERS, BAN, PAL, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, portrait, weaponArt, html, wire, preview });
 })();

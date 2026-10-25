@@ -1,7 +1,7 @@
 """The capsule series, rarities and tokens (gacha.js) and the Wardrobe / Boutique cosmetics (cosmetics.js), 2026-10-25.
 Headless Chrome, isolated profile, localhost; no player saves.
 
-Run: python3 tests/femc_cosmetics.py [--only odds,rotation,tokens,banner,equip,pending,ui,shots] [--screenshots DIR]
+Run: python3 tests/femc_cosmetics.py [--only odds,rotation,tokens,banner,equip,pending,ui,x10,shots] [--screenshots DIR]
 
 Covers: five rarities over many turns (Secret included) and pity kept per series; which machines stand in the Corner by
 date (each season, and a turn on a series that isn't on falls back to the Cast machine); only people Solar has met;
@@ -11,7 +11,8 @@ wallpaper, title theme kept for the title screen, battle theme and Evoker tint h
 whose art is missing staying out of the pool and unequippable, then appearing by itself once its files exist (the test
 copies Solar's own pose frames into a temporary skin folder, runs tools/femc-wardrobe.py scan, and removes both after),
 worn in a real fight and in scene portraits behind the toggle; New Game+ keeping it all; Wardrobe, Boutique reveal and a
-Secret capsule reveal at desktop and phone size; zero console errors."""
+Secret capsule reveal at desktop and phone size; ×10 rolls on every machine (cost, pity counted per turn, the results grid with
+one best-rarity reveal, Skip, the disabled reason) with grids at desktop and phone size; zero console errors."""
 import argparse, base64, json, pathlib, shutil, subprocess, sys, time
 from femc_browser import Page, REPO
 
@@ -313,6 +314,86 @@ try:
         p.eval("FemcMenu.close&&FemcMenu.close()")
         clean(p, 'ui')
         results['ui'] = 'equip / Default / toggle / pull through the menu; NG+ keeps looks and series'
+
+    # ── ×10 rolls: cost, pity per turn, the grid, Skip, the disabled reason ──
+    if want('x10'):
+        setup(p, day='10/12')
+        p.eval("FemcGame.progress('elizabeth').rank=1;FemcGame.save()")
+        r = p.eval(r"""(()=>{const G=FemcGame,GA=FemcGacha;G.S.gacha=GA.fresh();G.S.yen=60000;GA.rng=()=>0.99;const y0=G.S.yen,runs=[];
+          for(let k=0;k<6;k++)runs.push(GA.pull10('yen','halloween').map(x=>x.r));
+          const out={yen:y0-G.S.yen,pulls:GA.gs().pulls,runs,pity:JSON.parse(JSON.stringify(GA.gs().pity.series.halloween))};
+          G.S.inventory.capsule_ticket=12;const t=GA.pull10('ticket','cast');out.tickets=G.S.inventory.capsule_ticket;out.tn=t.length;out.cast=JSON.parse(JSON.stringify(GA.gs().pity.cap));
+          G.S.yen=4999;out.broke=GA.pull10('yen','cast')===null;out.why=GA.capWhy('yen',10);GA.rng=Math.random;return out;})()""")
+        flat = [x for run in r['runs'] for x in run]
+        ok(r['yen'] == 30000 and r['pulls'] == 60 and [i + 1 for i, x in enumerate(flat) if x == 'SR'] == [10, 20, 30, 40, 50] and flat[59] == 'UR', f'capsule ×10 cost and pity per turn: {r}')
+        ok(r['pity'] == {'sr': 0, 'ur': 0} and r['cast'] == {'sr': 0, 'ur': 10} and all(any(x != 'C' for x in run) for run in r['runs']), f'pity per series in a ×10: {r}')
+        ok(r['tickets'] == 2 and r['tn'] == 10 and r['broke'] and 'Needs' in r['why'], f'ticket ×10 and the reason: {r}')
+        r = p.eval(r"""(()=>{const G=FemcGame,GA=FemcGacha;G.S.yen=1e6;GA.gs().pity.vel={sr:0,ur:0};GA.rng=()=>0.99;const y0=G.S.yen,d0=GA.gs().draws;const x=GA.draw10('yen').map(p=>p.r);
+          const o={x,yen:y0-G.S.yen,draws:GA.gs().draws-d0};GA.gs().plumes=29;o.why=GA.velWhy('plumes',10);o.none=GA.draw10('plumes')===null;GA.rng=Math.random;return o;})()""")
+        ok(r['yen'] == 30000 and r['draws'] == 10 and [i + 1 for i, x in enumerate(r['x']) if x == 'SR'] == [5, 10] and r['none'] and 'Needs 30' in r['why'], f'Velvet ×10: {r}')
+        r = p.eval(r"""(()=>{const C=FemcCosmetics,GA=FemcGacha;GA.gs().plumes=45;C.cs().pity={sr:0,ur:0};C.rng=()=>0.99;const x=C.pull10().map(p=>p.r);
+          const o={x,left:GA.gs().plumes,p:JSON.parse(JSON.stringify(C.cs().pity))};GA.gs().plumes=19;o.why=C.pullWhy(10);o.none=C.pull10()===null;C.rng=Math.random;return o;})()""")
+        ok(r['x'][9] == 'SR' and r['x'].count('SR') == 1 and r['p'] == {'sr': 0, 'ur': 10} and 25 <= r['left'] <= 40 and r['none'] and 'Needs 20' in r['why'], f'Boutique ×10: {r}')
+        # Through the UI: the capsule machine (one reveal for the best, then ten tiles), with and without Skip.
+        p.eval("FemcGame.S.yen=50000;FemcGacha.gs().pity.series.halloween={sr:0,ur:0};FemcGame.save()")
+        motion(p, False)
+        open_capsule(p)
+        click(p, '.g-cap-ser[data-series=halloween]')
+        y0 = p.eval('FemcGame.S.yen')
+        click(p, '.g-cap-ov [data-pull10=yen]')
+        p.wait("document.querySelector('.g-cap-machine').classList.contains('turn')", 5)
+        p.wait("document.querySelectorAll('.g-cap-ov .g-ga-cell').length===10", 10)
+        r = p.eval("({best:document.querySelector('.g-ga-grid').dataset.best,machine:document.querySelector('.g-cap-machine').dataset.r,bestCells:document.querySelectorAll('.g-ga-cell.best').length,yen:FemcGame.S.yen,fast:document.querySelector('.g-ga-grid').classList.contains('fast')})")
+        ok(r['best'] == r['machine'] and r['bestCells'] >= 1 and r['yen'] == y0 - 5000 and not r['fast'], f'capsule ×10 UI: {r}')
+        for w, h, tag in [(1280, 800, 'desktop'), (375, 812, 'phone')]:
+            view(p, w, h)
+            p.eval("document.querySelector('.g-cap-ov .g-ga-grid')?.scrollIntoView({block:'center'})")
+            ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1'), tag + ': ×10 grid, no sideways scroll')
+            shot(p, f'capsule-x10-{tag}')
+        view(p, 1280, 850)
+        click(p, '.g-cap-ov [data-pull10=yen]')
+        click(p, '.g-cap-ov [data-skip]')
+        t0 = time.time()
+        p.wait("!!document.querySelector('.g-cap-ov .g-ga-grid.fast')", 3)
+        ok(time.time() - t0 < 1.5, 'Skip jumps to the grid')
+        p.eval("FemcGame.S.yen=4000")
+        p.eval("document.querySelector('.g-cap-ser[data-series=cast]').click()")
+        r = p.eval("(()=>{const b=document.querySelector('.g-cap-ov [data-pull10=yen]');return {dis:b.disabled,txt:b.innerText,title:b.title}})()")
+        ok(r['dis'] and 'Needs' in r['txt'] and 'Needs' in r['title'], f'disabled with a reason: {r}')
+        p.eval("document.querySelector('.g-cap-ov [data-close]').click()")
+        # The Velvet Room.
+        p.eval("FemcGame.S.yen=100000;FemcGame.save()")
+        p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove());FemcGameUI.goOut('after','mall')")
+        click(p, '[data-act=velvet]')
+        click(p, '.g-activity-preview:not(.out) [data-confirm]')
+        click(p, '.g-vel-ov [data-draw10=yen]')
+        p.wait("document.querySelectorAll('.g-vel-ov .g-ga-cell').length===10", 10)
+        ok(p.eval("document.querySelector('.g-vel-card.up')!==null && FemcGame.S.yen===70000"), 'Velvet ×10 UI: one card turned, ¥30,000')
+        p.eval("document.querySelector('.g-vel-ov [data-close]').click()")
+        # The Boutique: best card plus ten tiles; Skip; the reason when plumes are short.
+        p.eval("FemcGacha.gs().plumes=40;FemcGame.save()")
+        menu(p, 'wardrobe')
+        click(p, '[data-wd-view=banner]')
+        click(p, '[data-wd-pull10]')
+        p.wait("document.querySelectorAll('.g-wd-reveal .g-ga-cell').length===10 && !!document.querySelector('.g-wd-reveal .g-wd-card.anim')", 5)
+        for w, h, tag in [(1280, 800, 'desktop'), (375, 812, 'phone')]:
+            view(p, w, h)
+            p.eval("new Promise(r=>setTimeout(r,1600))")
+            p.eval("document.querySelector('.g-wd-reveal').scrollIntoView({block:'start'})")
+            ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1'), tag + ': Boutique ×10, no sideways scroll')
+            shot(p, f'boutique-x10-{tag}')
+        view(p, 1280, 850)
+        click(p, '[data-wd-pull10]')
+        click(p, '[data-wd-skip]')
+        ok(p.eval("document.querySelector('.g-wd-reveal').classList.contains('skip') && !document.querySelector('[data-wd-skip]')"), 'Boutique Skip')
+        p.eval("FemcGacha.gs().plumes=3;FemcMenu.close()")
+        menu(p, 'wardrobe')
+        click(p, '[data-wd-view=banner]')
+        ok(p.eval("(()=>{const b=document.querySelector('[data-wd-pull10]');return b.disabled&&b.innerText.includes('Needs 20')})()"), 'Boutique ×10 disabled with a reason')
+        p.eval("FemcMenu.close()")
+        motion(p, True)
+        clean(p, 'x10')
+        results['x10'] = 'capsule (yen, tickets, per-series pity), Velvet and Boutique ×10: cost, pity, grid, best reveal, Skip, reasons'
 
     # ── Screens ──
     if want('shots'):

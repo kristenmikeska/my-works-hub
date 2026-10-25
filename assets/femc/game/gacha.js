@@ -272,20 +272,32 @@ window.FemcGacha = (() => {
     const share = { R: 0.85, SR: 0.6, UR: 0.6 }[r];
     return (R() < share && seriesKey(s, r)) || (r === 'R' ? pick(CAP_R_ITEMS) : capPrize(r));
   }
-  const capCan = how => (how === 'ticket' ? tickets() > 0 : S().yen >= CAP.price);
+  const capCan = (how, n = 1) => (how === 'ticket' ? tickets() >= n : S().yen >= CAP.price * n);
+  // Why a turn can't be paid for ('' when it can): the ×10 buttons show it.
+  const capWhy = (how, n = 1) => (capCan(how, n) ? '' : how === 'ticket' ? `Needs ${n} ticket${n === 1 ? '' : 's'} (${tickets()})` : `Needs ${yen(CAP.price * n - S().yen)} more`);
   /* One turn of a machine. how: 'yen' | 'ticket'; sid: a series on today ('cast' by default). Returns the prize (see grant) or null. */
-  function pull(how = 'yen', sid = 'cast') {
-    if (!capCan(how)) return null;
+  function pull(how = 'yen', sid = 'cast') { const x = pullN(how, sid, 1); return x ? x[0] : null; }
+  /* n turns in a row, paid at once (×10 = 10× the price). Every turn rolls and counts pity on its own, so a ×10 always holds
+     a Super Rare or better (CAP.pitySR is 10): that is the P5X-style guarantee, with no extra rule. Returns the prizes, or null. */
+  function pullN(how = 'yen', sid = 'cast', n = 1) {
+    if (!capCan(how, n)) return null;
     if (!activeSeries().some(s => s.id === sid)) sid = 'cast';
-    if (how === 'ticket') { S().inventory.capsule_ticket -= 1; if (!S().inventory.capsule_ticket) delete S().inventory.capsule_ticket; }
-    else S().yen -= CAP.price;
-    const g = gs(), r = rarity('cap', sid), prize = grant(r, seriesPrize(sid, r));
-    prize.r = r; prize.from = sid;
-    g.pulls += 1; g.last = { at: S().day, r, name: prize.name, series: sid };
-    if (prize.kind === 'key') prize.complete = setDone(keySet(prize.id)) && !prize.dup;
+    if (how === 'ticket') { S().inventory.capsule_ticket -= n; if (!S().inventory.capsule_ticket) delete S().inventory.capsule_ticket; }
+    else S().yen -= CAP.price * n;
+    const g = gs(), out = [];
+    for (let i = 0; i < n; i++) {
+      const r = rarity('cap', sid), prize = grant(r, seriesPrize(sid, r));
+      prize.r = r; prize.from = sid;
+      if (prize.kind === 'key') prize.complete = setDone(keySet(prize.id)) && !prize.dup;
+      g.pulls += 1; g.last = { at: S().day, r, name: prize.name, series: sid };
+      out.push(prize);
+    }
     G.save();
-    return prize;
+    return out;
   }
+  const pull10 = (how = 'yen', sid = 'cast') => pullN(how, sid, 10);
+  const ORDER = ['C', 'R', 'SR', 'UR', 'SEC'];
+  const best = list => list.reduce((b, x) => (ORDER.indexOf(x.r) > ORDER.indexOf(b) ? x.r : b), 'C');
   function tradeStars() { const g = gs(); if (g.stars < CAP.starsPerTicket) return false; g.stars -= CAP.starsPerTicket; S().inventory.capsule_ticket = tickets() + 1; G.save(); return true; }
   /* The token shop: any missing keychain from a machine on today, for Capsule Tokens (TOKEN_PRICE by rarity; cast keychains
      are Rare). Only people she has met. */
@@ -310,7 +322,8 @@ window.FemcGacha = (() => {
   /* Velvet Room. */
   const credit = () => { const l = G.perkOn('velvetCredit'); return l ? l[0].fx.velvetCredit : null; };
   const velCost = () => { const c = credit(); return { yen: Math.round(VEL.price * (1 - (c ? c.pct : 0) / 100)), plumes: Math.max(1, VEL.plumes - (c ? c.plumes : 0)), credit: !!c }; };
-  const velCan = how => (how === 'plumes' ? gs().plumes >= velCost().plumes : S().yen >= velCost().yen);
+  const velCan = (how, n = 1) => (how === 'plumes' ? gs().plumes >= velCost().plumes * n : S().yen >= velCost().yen * n);
+  const velWhy = (how, n = 1) => (velCan(how, n) ? '' : how === 'plumes' ? `Needs ${velCost().plumes * n} plumes (${gs().plumes})` : `Needs ${yen(velCost().yen * n - S().yen)} more`);
   const skillTier = () => Math.min(3, Math.floor((S().tartarus.bosses || []).length / 2));
   function velPrize(r) {
     const SK = B().SKILL_CARDS, t = skillTier();
@@ -321,15 +334,22 @@ window.FemcGacha = (() => {
     return R() < 0.6 ? ['card', null, 5] : ['skill', pick(SK[3])];
   }
   /* One of Elizabeth's draws. how: 'yen' | 'plumes'. Returns the prize, or null. */
-  function draw(how = 'yen') {
-    if (!velCan(how)) return null;
-    const c = velCost(), g = gs();
-    if (how === 'plumes') g.plumes -= c.plumes; else S().yen -= c.yen;
-    const r = rarity('vel'), prize = grant(r, velPrize(r));
-    g.draws += 1; g.last = { at: S().day, r, name: prize.name, velvet: true };
+  function draw(how = 'yen') { const x = drawN(how, 1); return x ? x[0] : null; }
+  /* n draws paid at once (×10 = 10× the price, Compendium Credit applies to each). Each counts pity (VEL.pitySR 5: a ×10
+     holds at least two Super Rares or better). */
+  function drawN(how = 'yen', n = 1) {
+    if (!velCan(how, n)) return null;
+    const c = velCost(), g = gs(), out = [];
+    if (how === 'plumes') g.plumes -= c.plumes * n; else S().yen -= c.yen * n;
+    for (let i = 0; i < n; i++) {
+      const r = rarity('vel'), prize = grant(r, velPrize(r));
+      g.draws += 1; g.last = { at: S().day, r, name: prize.name, velvet: true };
+      out.push(prize);
+    }
     G.save();
-    return prize;
+    return out;
   }
+  const draw10 = (how = 'yen') => drawN(how, 10);
   const unclaimed = () => (S().registered || []).filter(id => !gs().credited.includes(id));
   function claim() { const g = gs(), n = unclaimed(); n.forEach(id => g.credited.push(id)); g.plumes += n.length; if (n.length) { G.toast('perk', `Velvet Plumes +${n.length} (Compendium pages)`); G.save(); } return n.length; }
   /* Plumes from the Dark Hour (core.js applyResult). */
@@ -392,6 +412,14 @@ window.FemcGacha = (() => {
   const oddsHtml = odds => `<ul class="g-ga-odds">${Object.entries(odds).map(([k, v]) => `<li style="--rc:${RARITY[k].color}">${starsHtml(k)} ${RARITY[k].name} <b>${(v * 100).toFixed(v * 100 % 1 ? 1 : 0)}%</b></li>`).join('')}</ul>`;
   const SPARKS = n => Array.from({ length: n }, (_, i) => `<i style="--a:${Math.round(i * 360 / n)}deg;--d:${70 + (i % 3) * 22}px"></i>`).join('');
   let skip = false;
+  /* The ×10 results grid: every prize as a small tile (the best ringed), tokens and series rewards under it; `fast` skips the
+     tiles' pop-in (Skip, reduced motion). Shared by the capsule machines and the Velvet Room. */
+  function gridHtml(list, fast) {
+    const b = best(list), tokens = list.reduce((n, x) => n + (x.stars || 0), 0), rewards = list.map(x => x.reward).filter(Boolean);
+    return `<div class="g-ga-grid${fast ? ' fast' : ''}" data-best="${b}">${list.map((x, i) => `<div class="g-ga-cell r-${x.r}${x.r === b ? ' best' : ''}" style="--rc:${RARITY[x.r].color};--i:${i}"><div class="g-ga-cell-art">${prizeArt(x)}</div>${starsHtml(x.r)}<b>${esc(x.name)}</b>${x.dup ? `<small class="g-ga-dup">+${x.stars} token${x.stars === 1 ? '' : 's'}</small>` : ['key', 'skey', 'case', 'gear'].includes(x.kind) ? '<small class="g-ga-done">New</small>' : ''}</div>`).join('')}</div>
+      <p class="g-ga-sum">Best: <b style="color:${RARITY[b].color}">${RARITY[b].name}</b>${tokens ? ` · +${tokens} Capsule Tokens` : ''}</p>${rewards.map(t => `<p class="g-ga-done">${esc(t)}</p>`).join('')}`;
+  }
+  const btn10 = (attr, how, label, why) => `<button type="button" class="g-btn g-ga-x10" ${attr}="${how}"${why ? ` disabled title="${esc(why)}"` : ''}><span>${label}${why ? `<small>${esc(why)}</small>` : ''}</span></button>`;
   const wait = ms => new Promise(res => { const t0 = Date.now(); const tick = () => (skip || Date.now() - t0 >= ms ? res() : setTimeout(tick, 30)); tick(); });
 
   /* ── The capsule machine ── */
@@ -425,10 +453,13 @@ window.FemcGacha = (() => {
         <p class="g-note small">Repeats turn into Capsule Tokens: ten for a ticket, or buy a missing keychain in the token shop. Tickets drop in Tartarus and from Shuffle Time.</p>`;
       $('.g-ga-btns').innerHTML = `<button type="button" class="g-btn pink" data-pull="yen"${capCan('yen') && !busy ? '' : ' disabled'}><span>Turn · ${yen(CAP.price)}</span></button>
         <button type="button" class="g-btn" data-pull="ticket"${capCan('ticket') && !busy ? '' : ' disabled'}><span>Use a ticket (${tickets()})</span></button>
+        ${btn10('data-pull10', 'yen', `×10 · ${yen(CAP.price * 10)}`, busy ? 'Busy' : capWhy('yen', 10))}
+        ${tickets() >= 10 ? btn10('data-pull10', 'ticket', '×10 · 10 tickets', busy ? 'Busy' : '') : ''}
         <button type="button" class="g-btn small" data-shop${busy ? ' disabled' : ''}><span>${shop ? 'Back to the machine' : 'Token shop'}</span></button>
         ${g.stars >= CAP.starsPerTicket ? `<button type="button" class="g-btn small" data-trade${busy ? ' disabled' : ''}><span>Trade ${CAP.starsPerTicket} tokens for a ticket</span></button>` : ''}
         <span class="g-yen g-ga-yen">${yen(S().yen)}</span>`;
       o.el.querySelectorAll('[data-pull]').forEach(b => b.addEventListener('click', () => turn(b.dataset.pull)));
+      o.el.querySelectorAll('[data-pull10]').forEach(b => b.addEventListener('click', () => turn10(b.dataset.pull10)));
       o.el.querySelectorAll('[data-series]').forEach(b => b.addEventListener('click', () => { if (busy) return; sid = b.dataset.series; shop = false; $('.g-ga-result').innerHTML = ''; G.sfx('femc-click'); paint(); }));
       $('[data-shop]').addEventListener('click', () => { shop = !shop; G.sfx('femc-click'); paint(); });
       o.el.querySelectorAll('[data-buy]').forEach(b => b.addEventListener('click', () => {
@@ -444,23 +475,44 @@ window.FemcGacha = (() => {
         ${list.length ? `<ul class="g-cap-shop">${list.map(x => `<li style="--rc:${RARITY[x.r].color}"><span>${starsHtml(x.r)}<b>${esc(x.name)}</b>${x.look ? `<small>${esc(x.look)}</small>` : ''}</span><button type="button" class="g-btn small" data-buy="${x.kind}:${x.id}"${g.stars >= x.price && !busy ? '' : ' disabled'}><span>${x.price} tokens</span></button></li>`).join('')}</ul>` : '<p class="g-note">Nothing missing from today’s machines. Check back next season.</p>'}
         <p class="g-note small">Any keychain you’re missing from a machine that’s here today. Only people Solar has met.</p>`;
     }
+    // The machine's reveal for a rarity: turn, drop, pop (reduced motion: the sound only). Skippable (stage click, Skip).
+    async function reveal(r) {
+      const m = $('.g-cap-machine');
+      m.className = 'g-cap-machine'; m.dataset.r = r; m.style.setProperty('--rc', RARITY[r].color);
+      o.el.querySelector('.g-cap-stage').addEventListener('click', () => { skip = true; }, { once: true });
+      G.sfx('femc-click');
+      if (!reduced() && !skip) {
+        void m.offsetWidth; m.classList.add('turn'); await wait(r === 'SEC' ? 1300 : 950);
+        G.sfx(r === 'SEC' ? 'femc-darkhour' : 'femc-hover'); m.classList.add('drop'); await wait(r === 'C' || r === 'R' ? 800 : 1100);
+        m.classList.add('pop'); G.sfx(RARITY[r].sfx); await wait(r === 'UR' || r === 'SEC' ? 900 : 650);
+      } else G.sfx(RARITY[r].sfx);
+      m.classList.add('shown', `r-${r}`);
+    }
+    /* Ten turns: one reveal for the best capsule, then the grid. */
+    async function turn10(how) {
+      if (busy || !capCan(how, 10)) return;
+      busy = true; skip = false; shop = false; o.el.dataset.locked = '1';
+      const list = pull10(how, sid);
+      if (!list) { busy = false; delete o.el.dataset.locked; return paint(); }
+      paint();
+      const res = $('.g-ga-result'), r = best(list);
+      res.innerHTML = '<button type="button" class="g-btn small g-ga-skip" data-skip><span>Skip</span></button>';
+      res.querySelector('[data-skip]').addEventListener('click', e => { e.stopPropagation(); skip = true; });
+      await reveal(r);
+      res.innerHTML = gridHtml(list, skip || reduced());
+      $('.g-ga-say').textContent = `Ten capsules tumble out, one after another. The best is ${RARITY[r].name}.`;
+      busy = false; delete o.el.dataset.locked; paint();
+      o.el.querySelector('[data-pull10]:not([disabled]), [data-pull]:not([disabled])')?.focus({ preventScroll: true });
+    }
     async function turn(how) {
       if (busy || !capCan(how)) return;
       busy = true; skip = false; shop = false; o.el.dataset.locked = '1';
       const prize = pull(how, sid);
       if (!prize) { busy = false; delete o.el.dataset.locked; return paint(); }
       paint();
-      const m = $('.g-cap-machine'), res = $('.g-ga-result');
-      res.innerHTML = ''; m.className = 'g-cap-machine'; m.dataset.r = prize.r;
-      m.style.setProperty('--rc', RARITY[prize.r].color);
-      o.el.querySelector('.g-cap-stage').addEventListener('click', () => { skip = true; }, { once: true });
-      G.sfx('femc-click');
-      if (!reduced()) {
-        void m.offsetWidth; m.classList.add('turn'); await wait(prize.r === 'SEC' ? 1300 : 950);
-        G.sfx(prize.r === 'SEC' ? 'femc-darkhour' : 'femc-hover'); m.classList.add('drop'); await wait(prize.r === 'C' || prize.r === 'R' ? 800 : 1100);
-        m.classList.add('pop'); G.sfx(RARITY[prize.r].sfx); await wait(prize.r === 'UR' || prize.r === 'SEC' ? 900 : 650);
-      } else G.sfx(RARITY[prize.r].sfx);
-      m.classList.add('shown', `r-${prize.r}`);
+      const res = $('.g-ga-result');
+      res.innerHTML = '';
+      await reveal(prize.r);
       res.innerHTML = prizeCard(prize);
       $('.g-ga-say').textContent = prize.r === 'SEC' ? 'The lights flicker. A capsule nobody has seen before rolls out, shimmering every colour at once.' : prize.r === 'UR' ? 'The whole machine lights up gold. People turn to look.' : prize.r === 'SR' ? 'A purple capsule. That’s a good one.' : prize.dup ? 'One she already has. Still cute.' : 'Pop. Something small and new.';
       busy = false; delete o.el.dataset.locked; paint();
@@ -488,11 +540,35 @@ window.FemcGacha = (() => {
         <p class="g-note small">Plumes: one for every Tartarus night, three for a full moon won, one for every new Compendium page.</p>`;
       $('.g-ga-btns').innerHTML = `<button type="button" class="g-btn pink" data-draw="yen"${velCan('yen') && !busy ? '' : ' disabled'}><span>Draw · ${yen(c.yen)}${c.credit ? ` <s>${yen(VEL.price)}</s>` : ''}</span></button>
         <button type="button" class="g-btn" data-draw="plumes"${velCan('plumes') && !busy ? '' : ' disabled'}><span>Draw · ${c.plumes} Plume${c.plumes === 1 ? '' : 's'}</span></button>
+        ${btn10('data-draw10', 'yen', `×10 · ${yen(c.yen * 10)}`, busy ? 'Busy' : velWhy('yen', 10))}
+        ${btn10('data-draw10', 'plumes', `×10 · ${c.plumes * 10} Plumes`, busy ? 'Busy' : velWhy('plumes', 10))}
         ${n ? `<button type="button" class="g-btn small" data-claim${busy ? ' disabled' : ''}><span>Show her the Compendium (+${n})</span></button>` : ''}
         <span class="g-yen g-ga-yen">${yen(S().yen)}</span>`;
       o.el.querySelectorAll('[data-draw]').forEach(b => b.addEventListener('click', () => deal(b.dataset.draw)));
+      o.el.querySelectorAll('[data-draw10]').forEach(b => b.addEventListener('click', () => deal10(b.dataset.draw10)));
       $('[data-claim]')?.addEventListener('click', () => { if (claim()) { G.sfx('femc-rankup'); say(LINES.velClaim[0]); paint(); } });
     };
+    /* Ten draws: Elizabeth turns over the best card, then the grid (no picking: she deals the ten herself). */
+    async function deal10(how) {
+      if (busy) return;
+      if (!velCan(how, 10)) { say(LINES.velBroke[0]); return; }
+      busy = true; skip = false; o.el.dataset.locked = '1';
+      const list = draw10(how);
+      if (!list) { busy = false; delete o.el.dataset.locked; return paint(); }
+      paint();
+      const table = $('.g-vel-table'), res = $('.g-ga-result'), r = best(list);
+      res.innerHTML = '<button type="button" class="g-btn small g-ga-skip" data-skip><span>Skip</span></button>';
+      res.querySelector('[data-skip]').addEventListener('click', () => { skip = true; });
+      table.innerHTML = `<div class="g-vel-hand${reduced() ? ' calm' : ''}"><span class="g-vel-card chosen" style="--i:1"><span class="in"><span class="back"><i></i></span><span class="face"><span class="g-vel-face r-${r}" style="--rc:${RARITY[r].color}">${starsHtml(r)}<b>${esc(RARITY[r].name)}</b></span></span></span></span></div>`;
+      say('Elizabeth deals ten cards in one sweep and turns over the best of them.');
+      G.sfx('femc-hover');
+      await wait(reduced() ? 60 : 450);
+      table.querySelector('.g-vel-card').classList.add('up', `r-${r}`); G.sfx(RARITY[r].sfx);
+      await wait(reduced() ? 60 : 700);
+      res.innerHTML = gridHtml(list, skip || reduced());
+      say(pick(LINES.velPick));
+      busy = false; delete o.el.dataset.locked; paint();
+    }
     async function deal(how) {
       if (busy) return;
       if (!velCan(how)) { say(LINES.velBroke[0]); return; }
@@ -557,6 +633,6 @@ window.FemcGacha = (() => {
   /* From the Go Out list (ui.js doActivity). */
   function open(kind, done) { return kind === 'velvet' ? openVelvet(done) : openCapsule(done); }
 
-  return Object.assign(api, { RARITY, CAP, VEL, SETS, CASES, SERIES, TOKEN_PRICE, fresh, gs, pull, draw, claim, unclaimed, tradeStars, afterFight, velCost, rarity, setCount, setDone, keyEligible, tickets, open, openCapsule, openVelvet, collectionHtml, wireCollection, phoneCase, keychain, skeychain, halloween,
+  return Object.assign(api, { pullN, pull10, drawN, draw10, best, capCan, velCan, capWhy, velWhy, gridHtml, RARITY, CAP, VEL, SETS, CASES, SERIES, TOKEN_PRICE, fresh, gs, pull, draw, claim, unclaimed, tradeStars, afterFight, velCost, rarity, setCount, setDone, keyEligible, tickets, open, openCapsule, openVelvet, collectionHtml, wireCollection, phoneCase, keychain, skeychain, halloween,
     activeSeries, seriesPity, seriesDone, itemEligible, itemById, shopList, buy, completeSeries });
 })();

@@ -294,3 +294,35 @@
   .g-wd-card.anim, .g-wd-card.anim .g-wd-card-face { animation: none; }
   .g-wd-card.anim .g-wd-card-back { display: none; }
 }
+
+/* ── ×10 rolls: the button's reason and the results grid (gacha.js gridHtml, cosmetics.js tenHtml) ── */
+.g-ga-x10 > span { display: grid; gap: 1px; }
+.g-ga-x10 small { display: block; font: 600 11px/1.1 var(--sans); letter-spacing: 0; text-transform: none; opacity: .9; }
+.g-ga-skip { margin: 4px 0; }
+.g-ga-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin: 8px 0 4px; }
+.g-ga-cell { display: grid; justify-items: center; align-content: start; gap: 2px; min-width: 0; padding: 6px 4px; border: 2px solid color-mix(in srgb, var(--rc) 50%, transparent); background: linear-gradient(160deg, color-mix(in srgb, var(--rc) 18%, transparent), rgba(20, 7, 15, .9) 70%); text-align: center; animation: g-ga-cell .3s calc(var(--i) * .06s) cubic-bezier(.2, 1.4, .4, 1) both; }
+.g-ga-grid.late .g-ga-cell { animation-delay: calc(1.2s + var(--i) * .06s); }
+.g-ga-cell.best { border-color: var(--rc); box-shadow: 0 0 16px color-mix(in srgb, var(--rc) 70%, transparent); }
+.g-ga-cell.r-SEC { border-image: linear-gradient(90deg, #ff6be6, #6ab0ff, #7dffc0, #ffd36b) 1; }
+.g-ga-cell-art { display: grid; place-items: center; width: 100%; height: 58px; overflow: hidden; }
+.g-ga-cell-art > * { flex: none; transform: scale(.62); }
+.g-ga-cell-art > .g-ga-revcard { width: 40px; transform: none; }
+.g-ga-cell-art > .g-wd-th { width: 56px; height: 46px; transform: none; }
+.g-ga-cell-art > .g-ga-ico { transform: none; width: 36px; height: 36px; }
+.g-ga-cell .g-ga-stars { font-size: 10px; }
+.g-ga-cell b { display: -webkit-box; max-width: 100%; overflow: hidden; font: italic 800 11px/1.1 var(--cond); -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.g-ga-cell small { font-size: 10px; }
+.g-ga-sum { margin: 4px 0; font: italic 700 14px/1.2 var(--cond); }
+.g-ga-grid.fast .g-ga-cell, .g-wd-reveal.skip .g-ga-cell, .g-wd-reveal.skip .g-wd-card, .g-wd-reveal.skip .g-wd-card-face { animation: none !important; }
+.g-wd-reveal.skip .g-wd-card-back { display: none !important; }
+@keyframes g-ga-cell { from { opacity: 0; transform: translateY(10px) scale(.8); } }
+@media (max-width: 620px) {
+  .g-ga-grid { gap: 4px; }
+  .g-ga-cell { padding: 4px 2px; }
+  .g-ga-cell b { display: none; }
+  .g-ga-cell-art { height: 46px; }
+  .g-ga-cell-art > * { transform: scale(.5); }
+}
+@media (prefers-reduced-motion: reduce) { .g-ga-cell { animation: none; } }
+.g-wd-reveal .g-ga-skip { animation: g-ga-hide 0s 2.6s forwards; }
+@keyframes g-ga-hide { to { visibility: hidden; } }
