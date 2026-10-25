@@ -260,7 +260,7 @@ window.FemcScene = (() => {
       if (key === currentFace) { img.classList.remove('dim'); return; }
       const swap = currentFace && currentFace.split('/')[0] !== who;
       currentFace = key;
-      const apply = () => { img.style.setProperty('--ps', G.scale(who)); if (src) { img.src = src; img.hidden = false; } else img.hidden = true; img.alt = G.name(who); img.classList.remove('swap', 'dim'); };
+      const apply = () => { img.style.setProperty('--ps', G.scale(who)); img.style.setProperty('--pd', (window.FEMC_PORTRAIT_DROP || {})[String(who).toLowerCase()] || 0); if (src) { img.src = src; img.hidden = false; } else img.hidden = true; img.alt = G.name(who); img.classList.remove('swap', 'dim'); };
       if (swap && !reduced.matches) { img.classList.add('swap'); setTimeout(apply, 180); } else apply();
     }
     function say(text, done) {

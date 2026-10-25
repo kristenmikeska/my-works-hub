@@ -139,3 +139,6 @@ window.FEMC_PORTRAIT_SCALE = {
   ueda: 0.82,
   yuzu: 0.81
 };
+
+/* Per-character drop: moves a portrait down by this share of its height, cropping the bottom (Kat, 2026-10-25). */
+window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08 };
