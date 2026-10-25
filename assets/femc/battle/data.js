@@ -1211,7 +1211,9 @@ window.FEMC_BATTLE_DATA = (() => {
   const difficulty = {
     story: { name: 'Story', pdmg: 1.3, edmg: 0.6, heal: 1, reaper: false, strong: 1, desc: 'For the story. You hit 30% harder, Shadows hit 40% softer, and the Reaper never comes.' },
     normal: { name: 'Normal', pdmg: 1, edmg: 1, heal: 1, reaper: true, strong: 1, desc: 'The intended balance.' },
-    hard: { name: 'Hard', pdmg: 1, edmg: 1.4, heal: 0.75, reaper: true, strong: 2, desc: 'Shadows hit 40% harder, healing is 25% weaker, and Strong rooms turn up twice as often.' }
+    hard: { name: 'Hard', pdmg: 0.9, edmg: 1.55, heal: 0.7, reaper: true, strong: 2, tough: true, desc: 'You hit 10% softer, Shadows hit 55% harder, healing is 30% weaker, and Strong rooms turn up twice as often.' },
+    expert: { name: 'Expert', pdmg: 0.8, edmg: 1.8, heal: 0.6, reaper: true, strong: 3, tough: true, desc: 'You hit 20% softer, Shadows hit 80% harder, healing is 40% weaker, and Strong rooms turn up three times as often.' },
+    merciless: { name: 'Merciless', pdmg: 0.7, edmg: 2.2, heal: 0.5, reaper: true, strong: 4, tough: true, desc: 'For people who want to suffer. You hit 30% softer, Shadows hit more than twice as hard, healing is halved, and Strong rooms are everywhere.' }
   };
 
   /* The "?" glossary (help panel) and Fuuka's one-time tips. Statuses and tactics are listed from ailments/tactics. */

@@ -32,7 +32,7 @@ window.FemcBattleSave = (() => {
 //          tt { guardians [floor ids beaten], monad (the secret block found), secrets [secret floors / hidden rooms found],
 //          puzzles (solved), rares (rare Shadows beaten) }.
   const SETTINGS = { textSpeed: 'normal', musicVol: 100, sfxVol: 100, remember: true, rushWhere: 'normal', rushStop: 30, difficulty: 'normal', shake: true, calm: false, numbers: true, pad: 'auto', tips: true, showtimes: 'on' };
-  const SETTING_OK = { textSpeed: ['slow', 'normal', 'fast', 'instant'], rushWhere: ['normal', 'strong', 'all'], rushStop: [30, 50], difficulty: ['story', 'normal', 'hard'], pad: ['auto', 'xbox', 'ps'], showtimes: ['on', 'still'] };
+  const SETTING_OK = { textSpeed: ['slow', 'normal', 'fast', 'instant'], rushWhere: ['normal', 'strong', 'all'], rushStop: [30, 50], difficulty: ['story', 'normal', 'hard', 'expert', 'merciless'], pad: ['auto', 'xbox', 'ps'], showtimes: ['on', 'still'] };
   const PREFS = ['settings', 'tipsSeen', 'cursor', 'music', 'sfx', 'speed', 'cutins', 'perf']; // device preferences: kept when a slot or backup is loaded
   const fresh = () => ({ v: 4, settings: Object.assign({}, SETTINGS), tipsSeen: [], cursor: {}, lvl: D.progression.startLevel, exp: 0, pts: 0, nodes: [], known: {}, clears: 0, cycle: 0, runs: 0, reached: null, music: null, sfx: true, speed: 1,
     party: D.defaultParty.slice(), mem: {}, tactics: {}, cutins: 'first', awakened: false,

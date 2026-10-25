@@ -1277,7 +1277,7 @@
   function shuffleTime(why, ctx) {
     return new Promise(async resolve => {
       const tp = TP(), extra = tp.goodFortune ? 1 : 0, reduced = !FX || FX.reduced();
-      const hand = Array.isArray(window.__btShuffleHand) ? window.__btShuffleHand.splice(0) : BLD.deal(rand, { tier: ctx.tier, extra, hard: ST().difficulty === 'hard', boss: why === 'boss', practice: !HO });
+      const hand = Array.isArray(window.__btShuffleHand) ? window.__btShuffleHand.splice(0) : BLD.deal(rand, { tier: ctx.tier, extra, hard: !!(D.difficulty[ST().difficulty] || {}).tough, boss: why === 'boss', practice: !HO });
       const auto = rushActive();
       shState = { why, hand, phase: 'show', picked: null, res: null };
       save.shuffles = (save.shuffles || 0) + 1;
