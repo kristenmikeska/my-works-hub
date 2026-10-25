@@ -69,6 +69,7 @@ Other docs, if you ever want detail:
 ## Battle and building
 - ✅ One merged game (battles inside the story, one save, one menu)
 - ✅ Skill tree: Haenim's branches, keystones and forms, party trees, 8 slots, your six skills
+- ✅ Haenim's sun: her tree is now a radial sun with six rays to build her your way (Striker, Trickster, Mage, Healer, Guard, Support), keystones at the tips, hybrids where rays meet, and pan and zoom on any screen. She keeps every skill she learns and swaps any of them into her eight slots outside a fight. Every fighter's tree is deeper (five tiers, the same depth for everyone), with many new passives: crits, speed, evasion, counters, opening buffs, regen, follow-ups, cheaper first skills and more. Old saves keep every skill and point
 - ✅ Buff stacking, smarter Rush, and the All-Out flash removed
 - ✅ Shuffle Time, Revelation cards, 170 link perks, your 12 naginatas as weapons
 - ✅ Your art on all 13 Revelation card sets: in the Cards menu, when Shuffle Time or Elizabeth hands you one, and in the results
