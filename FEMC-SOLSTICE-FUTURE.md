@@ -118,3 +118,7 @@ Check every novel character against current canon before building them.
 **Carry-over:** Equinox opens the same way whatever happened. The epilogue's route only adds flavour: Solar's first memory and a few lines. That way nothing branches into a mess.
 
 **Mark:** before planning, check how much Mark's estrangement already shows in the game. The epilogue can open mid-fallout, as if the Personaverse year were a pause, so the main game probably needs only a few small Mark lines, not a rewrite.
+
+**Kat, 2026-10-26:**
+- The strangers and HOAX cover stories above are approved.
+- In strangers, both Haechan and Jungwon notice the glitches, since both are in that world.
