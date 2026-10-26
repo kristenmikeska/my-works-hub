@@ -41,13 +41,22 @@ Kat's brainstorm doc. Ideas only, nothing is built. Spoiler-free about the main 
 - In Solstice 2 they could be among the people who wake up.
 - It only gets messy if it's dropped into the Personaverse year itself. Keep it in Runners' future.
 
-**Open questions for Kat:**
-- Epilogue length: about a month per route, or a few key days?
-- Does the epilogue play like the main game (calendar, links, battles), or is it more story-driven with occasional "glitch" fights?
-- Solstice 2: is Solar the protagonist again, or is the cast playable in rotation?
-- Solstice 2: do characters remember Solstice? Does Solar's chosen world decide who remembers?
-- Are the parents playable, links or story-only?
-- The LE SSERAFIM thread: is it Runners-route only, or teased on every route?
+**Kat's answers (2026-10-25):**
+- **Epilogue length:** a few weeks per route as the middle ground, so there's a substantial story and the subtle psychological horror and tension don't drag. It could stretch to a month if there's enough content. There's lots of room for romance in each world.
+- **How the epilogue plays:** still to be decided once the plan is more thorough. It could work either way.
+  - If it plays like the main game, the battles are part of the glitches.
+  - The signs start very small, and battles only come much later, near the end. Solar gets half pulled into Tartarus fights, only partly there and glitching between the worlds.
+  - Options for S.E.E.S.: they see her; or only Solar knows; or they can't see her at all, but she's somehow helping them fight.
+- **Solstice 2 protagonist:** Solar.
+- **Memory in Solstice 2:** everyone remembers each other. That's the most fun.
+- **Parents in Solstice 2:** probably links.
+- **The LE SSERAFIM thread:** probably teased on every route, so the new characters work in Solstice 2.
+
+**Still open:**
+- the epilogue's format (the full calendar, or story with glitch fights)
+- S.E.E.S.'s side of the half-present battles
+- why everyone is brought back in Solstice 2
+- how each route's epilogue teases LE SSERAFIM without breaking that world's canon
 
 ---
 
