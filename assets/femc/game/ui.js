@@ -141,18 +141,21 @@
     return { group, me, name, handle: handle && handle.toLowerCase() !== name.toLowerCase() ? handle : null, text };
   }
   const threadName = id => G.D.texts.threads[id] || G.name(id);
-  const threadPic = id => G.portrait(id, 'neutral');
+  // Kat's group-chat pictures (batch 48, tools/femc-greens.py -> game/art/phone/<group>.webp); everyone else is a portrait.
+  const GROUP_PICS = ['sees', 'sisters', 'searchparty', 'hateclub'];
+  const threadPic = id => GROUP_PICS.includes(id) ? `${G.base}assets/femc/game/art/phone/${id}.webp` : G.portrait(id, 'neutral');
+  const picImg = (id, pic) => GROUP_PICS.includes(id) ? `<img class="g-grp-pic" src="${pic}" alt="" onerror="this.remove()">` : `<img src="${pic}" alt="">`;
   // A text arriving: the notification chime and a banner from the top. Tap / Enter opens the conversation.
   function textBanner(t, i, chime) {
     const th = S().phone.threads[t.thread] || [], last = th[th.length - (t.count || 1)] || { from: t.from, t: t.msg || t.text };
     const m = msgParts(t.thread, { from: t.from || last.from, t: t.msg || last.t });
-    const pic = threadPic(t.thread) || threadPic(t.from || last.from);
+    const picId = threadPic(t.thread) ? t.thread : t.from || last.from, pic = threadPic(picId);
     const el = document.createElement('div');
     el.className = `g-banner${reduced.matches ? ' calm' : ''}${t.invite ? ' invite' : ''}`;
     el.setAttribute('role', 'button'); el.tabIndex = 0;
     el.dataset.thread = t.thread;
     const more = (t.count || 1) > 1 ? ` · ${t.count} new` : '';
-    el.innerHTML = `<i class="g-bn-pic">${pic ? `<img src="${pic}" alt="">` : esc(threadName(t.thread)[0] || '✉')}</i><span class="g-bn-body"><span class="g-bn-top"><b>${esc(threadName(t.thread))}</b><small>now${esc(more)}</small></span><span class="g-bn-msg">${m.group && !m.notice ? `<em>${esc(m.name)}:</em> ` : ''}${esc(m.text)}</span></span>`;
+    el.innerHTML = `<i class="g-bn-pic">${pic ? picImg(picId, pic) : esc(threadName(t.thread)[0] || '✉')}</i><span class="g-bn-body"><span class="g-bn-top"><b>${esc(threadName(t.thread))}</b><small>now${esc(more)}</small></span><span class="g-bn-msg">${m.group && !m.notice ? `<em>${esc(m.name)}:</em> ` : ''}${esc(m.text)}</span></span>`;
     el.setAttribute('aria-label', `New message. ${threadName(t.thread)}: ${m.text}. Open the phone.`);
     const go = () => {
       if (el.classList.contains('out')) return;
@@ -405,7 +408,7 @@
     el.className = `g-dh${reduced.matches ? ' calm' : ''}`;
     el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', title);
     el.innerHTML = `<div class="g-dh-frame"></div>
-      <div class="g-dh-fx" aria-hidden="true"><div class="g-dh-wash"></div><div class="g-dh-black"></div><div class="g-dh-glass">${shardsHtml()}</div>
+      <div class="g-dh-fx" aria-hidden="true"><div class="g-dh-wash"></div><div class="g-dh-black"></div><div class="g-dh-still" style="background-image:url('${G.base}assets/femc/title/loading-1.webp')"></div><div class="g-dh-glass">${shardsHtml()}</div>
         <svg class="g-dh-cracks" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M50 48 L8 6 M50 48 L92 10 M50 48 L97 60 M50 48 L70 98 M50 48 L22 96 M50 48 L2 58 M50 48 L60 2 M30 27 L41 22 M74 30 L68 22 M74 55 L80 46 M38 72 L30 66 M18 52 L22 44" /></svg>
         <div class="g-dh-title"><small>${esc(kicker)}</small><b>${esc(title)}</b>${h.date ? `<span>${esc(h.date.md)} · ${esc(h.date.weekday || '')}</span>` : ''}</div></div>
       <p class="g-dh-wait" aria-live="polite"></p>`;
@@ -1349,7 +1352,7 @@
         const th = s.phone.threads[id], last = th[th.length - 1], pic = threadPic(id), u = s.phone.unread[id];
         const m = last ? msgParts(id, last) : { text: '' };
         const lead = !last ? '' : m.me ? 'You: ' : m.group && !m.notice ? `${m.name}: ` : '';
-        return `<button type="button" class="g-ph-row${u ? ' unread' : ''}" data-th="${id}"><i>${pic ? `<img src="${pic}" alt="">` : esc(threadName(id)[0])}</i><span><b>${esc(threadName(id))}</b><small>${esc(lead + m.text)}</small></span>${u ? `<em>${u}</em>` : pending(id) ? '<em class="g-ph-due">Reply</em>' : ''}</button>`;
+        return `<button type="button" class="g-ph-row${u ? ' unread' : ''}" data-th="${id}"><i>${pic ? picImg(id, pic) : esc(threadName(id)[0])}</i><span><b>${esc(threadName(id))}</b><small>${esc(lead + m.text)}</small></span>${u ? `<em>${u}</em>` : pending(id) ? '<em class="g-ph-due">Reply</em>' : ''}</button>`;
       }).join('') : '<p class="g-note">No messages.</p>');
       body.querySelectorAll('[data-th]').forEach(b => b.addEventListener('click', () => open(b.dataset.th)));
       bar.querySelector('[data-readall]').addEventListener('click', () => {
@@ -1487,8 +1490,8 @@
       const tabs = o.el.querySelector('.g-shop-tabs');
       if (tabs) tabs.innerHTML = buys ? `<button type="button" class="g-chip${tab === 'buy' ? ' on' : ''}" data-tab="buy">Buy</button><button type="button" class="g-chip${tab === 'sell' ? ' on' : ''}" data-tab="sell">Sell materials</button>` : '';
       o.el.querySelector('.g-shop-list').innerHTML = tab === 'sell'
-        ? (mats.length ? mats.map(([k, n]) => `<button type="button" class="g-act" data-sell="${esc(k)}"><span><b>${esc(G.D.battle.materials[k].name)} ×${n}</b><small>${esc(G.D.battle.materials[k].desc || '')}</small></span><em>¥${G.matSellPrice(k).toLocaleString()} each</em></button>`).join('') : '<p class="g-note">Nothing to sell. Shadows drop materials in Tartarus.</p>')
-        : stock.length ? stock.map((x, i) => `<button type="button" class="g-act${x.art ? ' has-art' : ''}" data-i="${i}"${S().yen < x.price ? ' disabled' : ''}>${x.art ? `<img class="g-shop-art${x.wide ? ' wide' : ''}" src="${G.base}${x.art}" alt="">` : ''}<span><b>${esc(x.name)}</b><small>${esc(x.desc || '')}${x.who ? ` · for ${esc(x.who)}` : ''}</small></span><em>¥${x.price.toLocaleString()}${!books && x.kind === 'item' && S().inventory[x.id] ? ` · own ${S().inventory[x.id]}` : ''}${!books && !['item', 'cardpack'].includes(x.kind) && S().gear.includes(x.id) ? ' · owned' : ''}</em></button>`).join('') : '<p class="g-note">Nothing for sale right now.</p>';
+        ? (mats.length ? mats.map(([k, n]) => `<button type="button" class="g-act${G.D.battle.materials[k].art ? ' has-art' : ''}" data-sell="${esc(k)}">${G.D.battle.materials[k].art ? `<img class="g-shop-art icon" src="${G.base}${G.D.battle.materials[k].art}" alt="">` : ''}<span><b>${esc(G.D.battle.materials[k].name)} ×${n}</b><small>${esc(G.D.battle.materials[k].desc || '')}</small></span><em>¥${G.matSellPrice(k).toLocaleString()} each</em></button>`).join('') : '<p class="g-note">Nothing to sell. Shadows drop materials in Tartarus.</p>')
+        : stock.length ? stock.map((x, i) => `<button type="button" class="g-act${x.art ? ' has-art' : ''}" data-i="${i}"${S().yen < x.price ? ' disabled' : ''}>${x.art ? `<img class="g-shop-art${x.wide ? ' wide' : ''}${x.icon ? ' icon' : ''}" src="${G.base}${x.art}" alt="">` : ''}<span><b>${esc(x.name)}</b><small>${esc(x.desc || '')}${x.who ? ` · for ${esc(x.who)}` : ''}</small></span><em>¥${x.price.toLocaleString()}${!books && x.kind === 'item' && S().inventory[x.id] ? ` · own ${S().inventory[x.id]}` : ''}${!books && !['item', 'cardpack'].includes(x.kind) && S().gear.includes(x.id) ? ' · owned' : ''}</em></button>`).join('') : '<p class="g-note">Nothing for sale right now.</p>';
       o.el.querySelector('.g-shop-yen').textContent = `¥${S().yen.toLocaleString()}`;
       o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; G.sfx('femc-hover'); render(); }));
       o.el.querySelectorAll('[data-sell]').forEach(b => b.addEventListener('click', () => { if (G.sellMat(b.dataset.sell, 1)) { o.el.querySelector('.g-shop-say').textContent = shopData.lines?.sold || 'A pleasure.'; G.sfx('femc-click'); } render(); }));

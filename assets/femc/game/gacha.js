@@ -126,6 +126,8 @@ window.FemcGacha = (() => {
     { id: 'old', name: 'Old Friends', color: '#ff4f9e', ids: ['haechan', 'jungwon', 'jihoon', 'minji', 'hanni', 'hyein', 'yunjin', 'mark', 'jaehyun', 'cherry', 'sunoo', 'junkyu'] },
     { id: 'new', name: 'New Friends', color: '#7dffc0', ids: ['ann', 'kasumi', 'haru', 'kuromi', 'mymelody', 'rio', 'saori', 'kiriko'] }
   ];
+  /* Kat's phone cases (batch 48, tools/femc-greens.py -> game/art/cases/<id>.webp); the drawn case if the file fails. */
+  const caseArt = id => `<span class="g-case-art" data-case="${id}"><img src="${G.base}assets/femc/game/art/cases/${id}.webp" alt="" onerror="this.remove()"><i></i></span>`;
   const CASES = [
     { id: 'sakura', name: 'Sakura Phone Case', r: 'R', desc: 'Pale pink with falling petals.' },
     { id: 'featherman', name: 'Featherman R Case', r: 'R', desc: 'Red, loud and heroic. Ken approves.' },
@@ -397,7 +399,7 @@ window.FemcGacha = (() => {
   function prizeArt(p) {
     if (p.kind === 'key') return keychain(p.id);
     if (p.kind === 'skey') return skeychain(itemById(p.id)[0]);
-    if (p.kind === 'case') return `<span class="g-case-art" data-case="${p.id}"><i></i></span>`;
+    if (p.kind === 'case') return caseArt(p.id);
     const ICON = window.FemcIcons;
     // A Revelation card shows its face (Kat's set art; icons.js revCard); a full box (it turned to dust) keeps the plain back.
     if (p.kind === 'card') return p.card && ICON && ICON.revCard ? ICON.revCard(p.card, { cls: 'g-ga-revcard', base: G.base }) : `<span class="g-ga-cardart">✦</span>`;
@@ -610,7 +612,7 @@ window.FemcGacha = (() => {
       return `<section class="g-col-set" style="--c:${st.color}"><h3>${esc(st.name)} <small>${n}/${st.ids.length}${n === st.ids.length ? ' · complete' : ''}</small></h3>
         <ul class="g-keys">${st.ids.map(id => { const own = g.keys[id] > 0, known = keyEligible(id); return `<li class="${own ? 'own' : ''}" title="${own ? esc(keyName(id)) + (g.keys[id] > 1 ? ` ×${g.keys[id]}` : '') : known ? 'Not yet' : '???'}">${keychain(id, own)}<small>${own || known ? esc(keyName(id)) : '???'}</small></li>`; }).join('')}</ul></section>`;
     }).join('');
-    const cases = CASES.map(c => { const own = g.cases.includes(c.id), on = g.caseOn === c.id; return `<li><button type="button" class="g-col-case${on ? ' on' : ''}" data-case-pick="${own ? c.id : ''}"${own ? '' : ' disabled'}><span class="g-case-art" data-case="${own ? c.id : 'none'}"><i></i></span><b>${own ? esc(c.name) : '???'}</b><small>${own ? (on ? 'On her phone' : 'Put it on') : RARITY[c.r].name}</small></button></li>`; }).join('');
+    const cases = CASES.map(c => { const own = g.cases.includes(c.id), on = g.caseOn === c.id; return `<li><button type="button" class="g-col-case${on ? ' on' : ''}" data-case-pick="${own ? c.id : ''}"${own ? '' : ' disabled'}>${own ? caseArt(c.id) : '<span class="g-case-art" data-case="none"><i></i></span>'}<b>${own ? esc(c.name) : '???'}</b><small>${own ? (on ? 'On her phone' : 'Put it on') : RARITY[c.r].name}</small></button></li>`; }).join('');
     const on = activeSeries().map(s => s.id), MON = m => new Date(2009, m - 1, 1).toLocaleString('en', { month: 'short' });
     const series = SERIES.map(s => {
       const n = itemCount(s), C = window.FemcCosmetics, rw = C && s.reward ? C.byId(s.reward) : null;

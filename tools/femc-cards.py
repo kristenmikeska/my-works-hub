@@ -16,7 +16,7 @@
         her printed gold frame (the game draws its own frame), cut at X0..X1 across and from Y0 down (fractions of the source),
         as tall as the card face's art window (88:114, menu.js / icons.js revCard) needs. 540x700.
   python3 tools/femc-cards.py gear SHEET.png id1 ... id6
-        A 3x2 sheet of armor / accessory cards on white (no names) -> assets/femc/battle/art/gear/<id>.webp (wide canvas).
+        A 3x2 sheet (or 3x1 strip) of armor / accessory cards on white (no names) -> assets/femc/battle/art/gear/<id>.webp (wide canvas).
   python3 tools/femc-cards.py all
         Rebuild everything in BUILD below from New Adds/ or Added to Game/ (wherever each source is now).
 """
@@ -53,7 +53,7 @@ def card_boxes(a):
     cols = runs(grey.sum(0) > a.shape[0] * 0.45)
     rows = runs(grey.sum(1) > a.shape[1] * 0.45)
     # Each card has its own frame, so the lines come in order: left, right, left, right, ...
-    if len(cols) != 6 or len(rows) != 4:
+    if len(cols) != 6 or len(rows) not in (2, 4):  # 3x2, or a 3x1 strip (accessories sheet 4 came in two halves)
         raise SystemExit(f'expected a 3x2 grid of framed cards, found column lines {cols} and row lines {rows}')
     lefts, rights = [c[1] for c in cols[0::2]], [c[0] for c in cols[1::2]]
     tops, bottoms = [r[1] for r in rows[0::2]], [r[0] for r in rows[1::2]]
@@ -127,11 +127,11 @@ def weapons(src, prefix, names, rotate=45, dst=WEAPONS, auto_names=False, wide=F
 GEAR = os.path.join(ROOT, 'assets/femc/battle/art/gear')
 
 
-def gear(src, ids):
+def gear(src, ids, pick=None):
     """A 3x2 sheet of armor or accessory cards on white (FEMC-ART-TODO 6B: no printed names) -> art/gear/<id>.webp, in
     reading order. Kept upright on the wide canvas: the items are about square, so the wide box (build.js GEAR_ART sets
     artWide) shows them whole."""
-    return weapons(src, None, ids, rotate=0, dst=GEAR, wide=True, labels='none')
+    return weapons(src, None, ids, rotate=0, dst=GEAR, wide=True, labels='none', pick=pick)
 
 
 CARDS = os.path.join(ROOT, 'assets/femc/battle/art/cards')
@@ -194,6 +194,11 @@ BUILD = [
     ('gear', 'armor-sheet2.png', ['armor6', 'armor7', 'frost_coat', 'insulated_vest', 'fireproof_suit', 'gale_cloak']),
     ('gear', 'accessories-sheet1.png', ['power_ring', 'magic_ring', 'guard_ring', 'speed_ring', 'lucky_charm', 'antidote_charm']),
     ('gear', 'accessories-sheet2.png', ['rose_barrette', 'calm_amulet', 'holy_cross', 'black_earring', 'sp_bangle', 'power_bangle']),
+    # Batch 48: the rest. Sheet 4 came as two 3x1 strips; sheet 5 has three cards and three empty ones.
+    ('gear', 'accessories-sheet3.png', ['magic_bangle', 'sniper_scope', 'vitality_belt', 'theurgy_charm', 'star_brooch', 'vel_ribbon']),
+    ('gear', 'accessories-sheet4.1.png', ['cap_koro_charm', 'cap_feather_pin', 'cap_jack_frost']),
+    ('gear', 'accessories-sheet4.2.png', ['cap_moon_locket', 'cap_gold_sun', 'vel_butterfly']),
+    ('gear', 'accessories-sheet5.png', (['vel_key', 'vel_compendium', 'vel_coat'], [0, 1, 2])),
 ]
 
 
@@ -223,7 +228,7 @@ def main():
             print(kind, src)
             if kind == 'weapons': weapons(source(src), arg[0], arg[1], **(arg[2] if len(arg) > 2 else {}))
             elif kind == 'revcard': revcard(source(src), *arg)
-            elif kind == 'gear': gear(source(src), arg)
+            elif kind == 'gear': gear(source(src), *(arg if isinstance(arg, tuple) else (arg,)))
             else: finish(source(src), arg)
 
 

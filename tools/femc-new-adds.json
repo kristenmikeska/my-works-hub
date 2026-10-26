@@ -9835,6 +9835,311 @@
       "sheetOrder": "top row neutral, happy, sad; bottom row angry, surprised, embarrassed",
       "scale": 0.92,
       "usedBy": "links/kat.js and data/living-kat.js (the hidden Kat & Ethan link)"
+    },
+    {
+      "batch": 48,
+      "source": "accessories-sheet3.png",
+      "sourceNow": "Added to Game/accessories-sheet3.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "153e1c579e0dfc66ae8194e63a241e0bb3673f1efc899c7dfb315ae3e005d9d5",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/gear/",
+      "intendedUse": "Accessory art, sheet 3 (FEMC-ART-TODO 6B), build.js GEAR_ART",
+      "conversion": "tools/femc-cards.py gear (BUILD), white keyed, upright on the wide canvas; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/gear/magic_bangle.webp": "26712421f428cb5f15f084f2f066587ccea02c624e658947c538a6dcb9da6d59",
+        "assets/femc/battle/art/gear/sniper_scope.webp": "e06d9dc408f5e415b2876a43fe76c5fce9f869512de887eb4818353e2cc33e44",
+        "assets/femc/battle/art/gear/vitality_belt.webp": "04e4f7fae78f72c800062c7b3a05452fa44d66b4ce2306784a8497e501ba0d37",
+        "assets/femc/battle/art/gear/theurgy_charm.webp": "2ea68288b989ed49428f8070260a3dbe0f42d3b5ae05981d09c3554be0303e4d",
+        "assets/femc/battle/art/gear/star_brooch.webp": "584e2f62f6a19f0fd26d55e864bfcc8fc2dd25e0146d5a09fb64c10ce2e62c0b",
+        "assets/femc/battle/art/gear/vel_ribbon.webp": "094a65b151fd585b4ffcc6aa29933a7fb77928410dda8c82eb4d74ec0e1d0684"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "accessories-sheet4.1.png",
+      "sourceNow": "Added to Game/accessories-sheet4.1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "fa495ad6cb7cec813fe9922f4a75b7c847c1d60da426d1f175b3d6ba5d30751b",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/gear/",
+      "intendedUse": "Accessory art, sheet 4 part 1 (capsule prizes), build.js GEAR_ART",
+      "conversion": "tools/femc-cards.py gear (BUILD), white keyed, upright on the wide canvas; source unchanged (a 3x1 strip)",
+      "outputs": {
+        "assets/femc/battle/art/gear/cap_koro_charm.webp": "32a92fe400f2267a332c825460b90374df40c13e808eb4f17f5a7a1f0c7d9dae",
+        "assets/femc/battle/art/gear/cap_feather_pin.webp": "22d5ed4f44272460a56b131f283cb0fadb3ec74d4b0a08a49a1582cb6a05dbd6",
+        "assets/femc/battle/art/gear/cap_jack_frost.webp": "15c866830f96f72d602194b649c3f4962f38f8286e2dca947f594b20a4c1d315"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "accessories-sheet4.2.png",
+      "sourceNow": "Added to Game/accessories-sheet4.2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "6febb7528b9d74f35f69015bdb77360f0b133a4056e35a6d0b1d035725ee9bc3",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/gear/",
+      "intendedUse": "Accessory art, sheet 4 part 2 (capsule and Velvet prizes), build.js GEAR_ART",
+      "conversion": "tools/femc-cards.py gear (BUILD), white keyed, upright on the wide canvas; source unchanged (a 3x1 strip)",
+      "outputs": {
+        "assets/femc/battle/art/gear/cap_moon_locket.webp": "177ace140ec70ddda543252751bd8fb6ca475aef28cb5cf0d839b7aab52f0ed7",
+        "assets/femc/battle/art/gear/cap_gold_sun.webp": "3bd6895d7a3c1c9aeda10c2d2383b29d842b810009c4385731c3731b373a74fe",
+        "assets/femc/battle/art/gear/vel_butterfly.webp": "14a6d2af717175324f372fe83c2a88bf07114108c7ca542021803d5f4cfb45e1"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "accessories-sheet5.png",
+      "sourceNow": "Added to Game/accessories-sheet5.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9bccb2383626fa5a67bd728bf5a441abe81385ba57903de6ccc72b3a34f0b72e",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/gear/",
+      "intendedUse": "Velvet Room gear (Contract Key, Pocket Compendium, Attendant\u2019s Coat), build.js GEAR_ART",
+      "conversion": "tools/femc-cards.py gear (BUILD), white keyed, upright on the wide canvas; source unchanged (cards 0-2; three empty cards skipped)",
+      "outputs": {
+        "assets/femc/battle/art/gear/vel_key.webp": "58d5c061370368023a9adc11e289cf628297255aba39c41b821aae3bf96d4d0e",
+        "assets/femc/battle/art/gear/vel_compendium.webp": "713a9d23632355d12c310d3b809b314daa34a43856689a62433a56e5338baffd",
+        "assets/femc/battle/art/gear/vel_coat.webp": "647bba924e24ce617e9c9704ff217a3fc6bcafb64275f3827e689b2f68e56e3d"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "battleitems-sheet1.png",
+      "sourceNow": "Added to Game/battleitems-sheet1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "45416af6e88559dd301cd6a3466340b71417f97d7e2997bc36b8b6f024b5e153",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/items/",
+      "intendedUse": "Battle item and material icons (FEMC-ART-TODO 6B): build.js ITEM_ART / tartarus.js -> icons.js FemcIcons.of (items menu, shops, chests, drops, results, gacha)",
+      "conversion": "tools/femc-greens.py all: flat green keyed (edge-connected plus enclosed holes of the same green), trimmed, transparent WebP; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/items/medicine.webp": "cab423a0e82390594774d2f9ed30900dd60dd600cbc008466b205cd9455e7d7b",
+        "assets/femc/battle/art/items/bead.webp": "68bd8156692ea2dc7824768a6c9c400c8c81d616a66c0bc77cfe13d0617a75b7",
+        "assets/femc/battle/art/items/bead_chain.webp": "7ef1f44f2ddfc694155343ed0707c7ab0a7d675fa09109454ccde245893fe0af",
+        "assets/femc/battle/art/items/snuff_soul.webp": "159c9ee3caad5d1f4cccd339e371fd5080aae645c36237f856a6e992555e7368",
+        "assets/femc/battle/art/items/chewing_soul.webp": "8565bb5cc34e82a4c487c8e0f23f8b4291d85dc01ed661c90e2cd0f9d4e53481",
+        "assets/femc/battle/art/items/soma.webp": "a0616260ba8e48f08ed99c63c81e6dca92edc080b12f37df0aa811c1df782efb"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "battleitems-sheet2.png",
+      "sourceNow": "Added to Game/battleitems-sheet2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8d60b0647e217d3b77911bee65b213d6b92a41c031632dd06d0b9081702f2b2d",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/items/",
+      "intendedUse": "Battle item and material icons (FEMC-ART-TODO 6B): build.js ITEM_ART / tartarus.js -> icons.js FemcIcons.of (items menu, shops, chests, drops, results, gacha)",
+      "conversion": "tools/femc-greens.py all: flat green keyed (edge-connected plus enclosed holes of the same green), trimmed, transparent WebP; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/items/revival_bead.webp": "54eaacdc1df22cf50036ce1dc5a425f4d2e4d3ba81b03d71c695865a64742933",
+        "assets/femc/battle/art/items/patra_gem.webp": "6f590ad4e918688d58dec5222995ff64e444f93821a9d1c205f20d48ce2d85ff",
+        "assets/femc/battle/art/items/dis_poison.webp": "9922936bc917cda7a71954b6aa1f22647f692684fdf403fbb22b5d145962ea67",
+        "assets/femc/battle/art/items/dekaja_gem.webp": "2d887b1614d968820c55baad9e4337854aa283bc6ed119428355416941054fd6",
+        "assets/femc/battle/art/items/dekunda_gem.webp": "ab0252b1221712a8d806c178229f267710c3472b978f81d8bf597a3b24bccfae",
+        "assets/femc/battle/art/items/traesto_gem.webp": "a0d01984c13dcb58b2b0a27bbccb0a0b1eff514e03ca74aaba239707781af2a5"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "battleitems-sheet3.png",
+      "sourceNow": "Added to Game/battleitems-sheet3.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "48d853dcdb82bf69345cd0887d825b4747e6e4b72a762dc9f34e06b0bc06737c",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/items/",
+      "intendedUse": "Battle item and material icons (FEMC-ART-TODO 6B): build.js ITEM_ART / tartarus.js -> icons.js FemcIcons.of (items menu, shops, chests, drops, results, gacha)",
+      "conversion": "tools/femc-greens.py all: flat green keyed (edge-connected plus enclosed holes of the same green), trimmed, transparent WebP; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/items/tartarus_key.webp": "f5929cc154d67c8fdda89eada6e79517a5ac3e9bce9569580afe4e672ebc62c3",
+        "assets/femc/battle/art/items/shadow_ash.webp": "8eded0f620139f97a7e506924975eccf3b95a0017c3544106cb3eb302d8cc177",
+        "assets/femc/battle/art/items/mask_shard.webp": "eb84a1c35450d296b89338cc7b7569b9e97b8bb3e232f96e4b28d435b2c04fa0",
+        "assets/femc/battle/art/items/crimson_lacquer.webp": "2407e4f4946a5859d854f6170d755602934535e6c4f9fadd5e44baf4d746534d",
+        "assets/femc/battle/art/items/mirror_shard.webp": "82dc1e941422af708887be831bd0de48593db816fdb8e45bbd88803266e2d0ed",
+        "assets/femc/battle/art/items/rusted_cog.webp": "ee9c8806e71787d4e04cd8dd023f52901c6605db9a5c3e8b9d132ec81266c22a"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "battleitems-sheet4.png",
+      "sourceNow": "Added to Game/battleitems-sheet4.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4889f14c42e279b35eafaecbee31566a9c65e0b02260adc1a2d0f8b1cef81aae",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/items/",
+      "intendedUse": "Battle item and material icons (FEMC-ART-TODO 6B): build.js ITEM_ART / tartarus.js -> icons.js FemcIcons.of (items menu, shops, chests, drops, results, gacha)",
+      "conversion": "tools/femc-greens.py all: flat green keyed (edge-connected plus enclosed holes of the same green), trimmed, transparent WebP; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/items/stone_heart.webp": "613ea3c57faa0b59397ae0b2e72b03e6c6b994f21279a293d7d3cdb0be2b532c",
+        "assets/femc/battle/art/items/moon_feather.webp": "1ae0888f3a325e27d8d8c234e47f4c803c5495251af708d3811d5190410a93fd",
+        "assets/femc/battle/art/items/arcana_fragment.webp": "ab94858d1abc6088c5447b87715f9f19f53b7185e67ebead6ccddeed37f41b1f",
+        "assets/femc/battle/art/items/tarot_dust.webp": "88816e0bee0dc66c78c0f0dab5f8bfcf357de023bc7cc8dcd35f75f0f987383c",
+        "assets/femc/battle/art/items/velvet_thread.webp": "8ef468c73c614ac7c3ace3b6953c256d9c389ca123deba2bb366527d9626002f",
+        "assets/femc/battle/art/items/lantern_glass.webp": "bae25a204f9fee17d25445f43301f7432a385d1b466c10a532f0ebda5cf364de"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "battleitems-sheet5.png",
+      "sourceNow": "Added to Game/battleitems-sheet5.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3cda77ede83757b22b63c3bb5710d118f6b7938977b6a5fe81a9ab4fbda41716",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/items/",
+      "intendedUse": "Battle item and material icons (FEMC-ART-TODO 6B): build.js ITEM_ART / tartarus.js -> icons.js FemcIcons.of (items menu, shops, chests, drops, results, gacha)",
+      "conversion": "tools/femc-greens.py all: flat green keyed (edge-connected plus enclosed holes of the same green), trimmed, transparent WebP; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/items/echo_shell.webp": "a20f15b35888a8faf3a3e8fd8280c0bfa3ade3f54aecfeb97fa4b98e8b9e4818",
+        "assets/femc/battle/art/items/gilded_scale.webp": "e4840f1924f82a78e6eb8486011d0b297d573325df5c01c8bd8ee7745845a541",
+        "assets/femc/battle/art/items/guardian_crest.webp": "4b20bef2edf0d061f2c81216573eefd6c01783f336d2c2667be33acca6d76252",
+        "assets/femc/battle/art/items/monad_sand.webp": "d5f6a74d317e43104d4b11403a884cb67fff6eecf1405b600199ae0cd0312952"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "groupchaticons.png",
+      "sourceNow": "Added to Game/groupchaticons.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "8b78195137c10c032b8580f18ad3a3fd74f3981bf69d1b539d2753759275275d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/phone/",
+      "intendedUse": "Group-chat pictures (FEMC-ART-TODO 7): ui.js GROUP_PICS / threadPic (phone list and text banners)",
+      "conversion": "tools/femc-greens.py all: flat green keyed (edge-connected plus enclosed holes of the same green), trimmed, transparent WebP; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/phone/sees.webp": "27a1ffaedbfe7c6076f89fccf5785e3e89910894be4fb7007ac496b311449a7a",
+        "assets/femc/game/art/phone/sisters.webp": "2f637c3572e28b3f70894d3ed1fb611fb3d83456da89ba0f7b0ad9af188de407",
+        "assets/femc/game/art/phone/searchparty.webp": "1c6bf3c1172a14640211dcc63a44a1b14420d7c13206b53416f0e2e414419d8a",
+        "assets/femc/game/art/phone/hateclub.webp": "3cee56fee84430a160b0029b755ed4b1aec87b404ea36c459da2c0a4fd710503"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "phonecases.png",
+      "sourceNow": "Added to Game/phonecases.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "276271edb5bb6319cefe0e6ffddb8d176fea8b3f274f02936508ed853263812f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/cases/",
+      "intendedUse": "Phone cases (FEMC-ART-TODO 7): gacha.js caseArt (prize reveal, Collection)",
+      "conversion": "tools/femc-greens.py all: flat green keyed (edge-connected plus enclosed holes of the same green), trimmed, transparent WebP; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/cases/sakura.webp": "37a43f8f95ee828e8c2c8cd5bf1ae0424f292dd6ff9c3b9be872c2e0d941e7ec",
+        "assets/femc/game/art/cases/featherman.webp": "e796b9e375cdfe9a0c49858be1e4d789eecd179976fa35803700de25311e8b0e",
+        "assets/femc/game/art/cases/koro.webp": "aa2522fb39616b55875c55e2501b4bd485464b2a4d74bd70fe5573863d46154e",
+        "assets/femc/game/art/cases/moonlight.webp": "040ff1f8df07d9a8f2f785e40031abb9fa8bad48f6440c2f563106a6b7468e70",
+        "assets/femc/game/art/cases/velvet.webp": "e266adbeea7c248f80c499d8b9c9d2e7ed3965fa148f8ff3efbaf649f0e261cc",
+        "assets/femc/game/art/cases/gold.webp": "49b318aac1e061b9c0ebad39eb19e80e08c4c29f364632fec8f5612871984b66"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "tartarusmapicons-sheet2.png",
+      "sourceNow": "Added to Game/tartarusmapicons-sheet2.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "9aa4c5708ccfde5845295f93531e29a5b02610790551f6c05581e989cde19204",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/icons/",
+      "intendedUse": "Tartarus map rooms sheet 2 (FEMC-ART-TODO 6C): battle.js ROOM_ART, Night Orchid icon",
+      "conversion": "tools/femc-icons.py rooms2: each glyph cut out of its tile like sheet 1, green ignored; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/icons/room-guardian.webp": "f1ba4e5bbb7c48a0e3907e0441955dc5cae2dd2188cb0254c3e745fb5dc5a879",
+        "assets/femc/battle/art/icons/room-vault.webp": "f06e67bae72e9d549da4b6040953bbede616f9d0152e63a41f0813e527c2eab2",
+        "assets/femc/battle/art/icons/room-puzzle.webp": "c86ab49db7dbe5836de32af67e660cd56550590d8ffd142945994aba2d576516",
+        "assets/femc/battle/art/icons/room-rest.webp": "e7a8d5f51e78641d048126ba12a9f0298131494c5ab4067b6459e18ce401ced8",
+        "assets/femc/battle/art/icons/room-rare.webp": "b6d53ac9d37adf5a44b9a0bff8b53d3254dcae1a4d6ff7ca759e18f38b8062a5",
+        "assets/femc/battle/art/icons/room-trap.webp": "2adeb9798600314ff1064a5f362d88b8db905301c6790092786c400c842f96ca",
+        "assets/femc/battle/art/icons/room-altar.webp": "b1e08b5bf97aad7b248c2e0474688fd3ecd3685839b97e70c86d9614c9533db2",
+        "assets/femc/battle/art/icons/room-crack.webp": "d634ef22fcbc8acdd80819c374432b7d3f605da1a02465e4978ee2dc2b0a40a3",
+        "assets/femc/battle/art/icons/room-orchid.webp": "38f24b51b02adfc0eaec60fba580101c07e185ff391c42dca97702e9e6c85066"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "tartarus-gekkoukan-loadingscreen.png",
+      "sourceNow": "Added to Game/tartarus-gekkoukan-loadingscreen.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "b30cda072154c64786462a380acdd668199c3969d2da0f7aba66da2977772d7b",
+      "status": "integrated",
+      "destination": "assets/femc/title/loading-1.webp",
+      "intendedUse": "Loading still 1 (FEMC-ART-TODO 7): ui.js openBattle .g-dh-still behind the Dark Hour title",
+      "conversion": "WebP q86, 1672x941, framing kept; source unchanged",
+      "outputs": {
+        "assets/femc/title/loading-1.webp": "1aaf4f549ea384a3fe9e72e7fc8765fb9402c3e1bb613705880d8249a4bc187d"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "link-rio-r10.png",
+      "sourceNow": "Added to Game/link-rio-r10.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0d9ed969a7f78cfb5d23a53175b1b21b734cfd0c4ef790afb1113fb7d5c9adeb",
+      "status": "integrated",
+      "destination": "assets/femc/cg/romance-rio.webp",
+      "intendedUse": "Rio side-romance moment (FEMC-ART-TODO 2C), not a rank 10 replacement: links/rio.js rank 10 romance branch under the last court light; link-rio-r10 (batch 34) unchanged",
+      "conversion": "WebP q86, 1672x941, composition untouched; source unchanged",
+      "outputs": {
+        "assets/femc/cg/romance-rio.webp": "378e3ab1875f999683e1d8525dd7d455251116cad1514f78801d7ccd27414581"
+      }
+    },
+    {
+      "batch": 48,
+      "source": "link-saori-r10.png",
+      "sourceNow": "Added to Game/link-saori-r10.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "451138fff514c0256c92934c17cf8e4112674bb69d800e6ee3d23b3d723b36d8",
+      "status": "integrated",
+      "destination": "assets/femc/cg/romance-saori.webp",
+      "intendedUse": "Saori side-romance moment (FEMC-ART-TODO 2C), not a rank 10 replacement: links/saori.js rank 10 romance branch between the stacks; link-saori-r10 (batch 34) unchanged",
+      "conversion": "WebP q86, 1672x940, composition untouched; source unchanged",
+      "outputs": {
+        "assets/femc/cg/romance-saori.webp": "bfd042e3e50d9e5f7976632ce141a3a86310df34e31d78e8f579ae8b16459776"
+      }
     }
   ],
   "batch1Validation": {
@@ -10459,6 +10764,24 @@
       "python3 tests/femc_cast_consistency.py",
       "python3 tests/femc_kat.py",
       "python3 tests/femc_living2.py"
+    ],
+    "browserErrors": 0
+  },
+  "batch48Validation": {
+    "date": "2026-10-25",
+    "scope": "the last accessories, battle items and materials, Tartarus map rooms sheet 2, group-chat pictures, phone cases, loading still 1, and Rio and Saori side-romance stills",
+    "sourcesInspected": "all 15 viewed before cutting; every cut reviewed on a contact sheet (dark and white grounds)",
+    "sourcesIntegrated": 15,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked after the move); On Hold untouched",
+    "textTweaks": "rio.js: one line (her hand on Solar\u2019s blazer, breath clouds) and coat -> blazer; saori.js: one clause (her hand catches Solar\u2019s blazer) and the kiss line\u2019s hand tightens instead; build.js: Koro-chan Charm and Contract Key descriptions match the art",
+    "tests": [
+      "femc_building --only menu,shots",
+      "femc_extras",
+      "femc_tartarus",
+      "femc_phone_activities",
+      "femc_gallery (94 checks)",
+      "screenshots: Items menu, Aohige shop (phone), Collection cases, phone group threads, Tartarus map, both romance stills on desktop and phone, the Dark Hour fade"
     ],
     "browserErrors": 0
   }

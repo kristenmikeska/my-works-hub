@@ -4,6 +4,7 @@ Run: python3 tools/femc-icons.py
 Sources (under Femc Mode Images; Added to Game once integrated, New Adds before):
   status-icons.jpeg       3 x 6 white sticker cards with a printed label under each, on a painted checkerboard.
                           Each card is cut whole (white face, dark rim, rounded corners); the label and the board are dropped.
+  tartarusmapicons-sheet2.png  3 x 3 more glyphs on dark tiles, on flat #00ff00; cut the same way, the green ignored.
   tartarus-map-rooms.jpeg 3 x 3 neon glyphs on dark tiles, on a painted checkerboard. Each glyph is cut out of its tile
                           (its coloured outline and everything inside it are kept; the tile and the board are dropped).
 Output: assets/femc/battle/art/icons/<name>.webp (square, transparent). battle.js reads them: STATUS_ART (ailments and
@@ -21,6 +22,9 @@ DST = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
 STATUS = {0: 'charm', 1: 'fear', 2: 'freeze', 3: 'shock', 5: 'poison', 7: 'distress', 8: 'bind', 9: 'disorient',
           10: 'atk-up', 11: 'atk-down', 12: 'def-up', 14: 'def-down', 16: 'agi-up', 17: 'agi-down'}
 ROOMS = {0: 'room-shadow', 1: 'room-chest', 2: 'room-locked', 3: 'room-clock', 4: 'room-access', 5: 'room-stairs', 6: 'room-event'}
+# Sheet 2 (batch 48, FEMC-ART-TODO 6C): the deeper Tartarus's rooms, 3 x 3 on flat green, cells 0-8 in reading order.
+ROOMS2 = {0: 'room-guardian', 1: 'room-vault', 2: 'room-puzzle', 3: 'room-rest', 4: 'room-rare', 5: 'room-trap',
+          6: 'room-altar', 7: 'room-crack', 8: 'room-orchid'}
 
 
 def source(name):
@@ -92,6 +96,26 @@ def rooms():
         save(rgb, alpha, (t, l, b, r), 128, name, 8)
 
 
+def rooms2():
+    rgb = np.asarray(Image.open(source('tartarusmapicons-sheet2.png')).convert('RGB')).astype(int)
+    H, W = rgb.shape[:2]
+    board = (rgb[..., 1] - np.maximum(rgb[..., 0], rgb[..., 2]) > 60)  # the flat green
+    lit = (rgb.max(2) - rgb.min(2) > 60) & (rgb.max(2) > 90) & ~nd.binary_dilation(board, iterations=6)
+    glyph = nd.binary_fill_holes(nd.binary_closing(lit, iterations=3))
+    lab, n = nd.label(glyph)
+    sizes = nd.sum(glyph, lab, range(1, n + 1))
+    objs = nd.find_objects(lab)
+    for k, name in ROOMS2.items():
+        r, c = divmod(k, 3)
+        # every piece whose centre is in this cell (the rare Shadow's sparkles are separate pieces)
+        ks = [i + 1 for i, sl in enumerate(objs) if sizes[i] > 120
+              and int((sl[0].start + sl[0].stop) / 2 / (H / 3)) == r and int((sl[1].start + sl[1].stop) / 2 / (W / 3)) == c]
+        m = np.isin(lab, ks)
+        ys, xs = np.nonzero(m)
+        save(rgb, soft(m, 2), (ys.min(), xs.min(), ys.max() + 1, xs.max() + 1), 128, name, 8)
+
+
 os.makedirs(DST, exist_ok=True)
 status()
 rooms()
+rooms2()

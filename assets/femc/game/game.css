@@ -332,6 +332,7 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
 .g-ph-row:is(:hover, :focus-visible) { background: #f0e4ea; outline: none; }
 .g-ph-row i { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; overflow: hidden; background: var(--pink); color: #fff; font: italic 900 20px/1 var(--cond); }
 .g-ph-row i img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; transform: scale(1.6); transform-origin: 50% 12%; background: #3a1028; }
+.g-ph-row i img.g-grp-pic, .g-bn-pic img.g-grp-pic { object-fit: contain; transform: none; background: transparent; } /* group-chat pictures (ui.js GROUP_PICS) */
 .g-ph-row b { display: block; font-size: 15px; }
 .g-ph-row small { display: block; overflow: hidden; color: #8a7080; font-size: 13px; white-space: nowrap; text-overflow: ellipsis; }
 .g-ph-row em { padding: 3px 8px; border-radius: 99px; background: var(--pink); color: #fff; font: 700 11px/1.2 -apple-system, sans-serif; font-style: normal; }
@@ -614,6 +615,11 @@ html.g-in-battle .g-hud, html.g-in-battle .g-toasts { visibility: hidden; }
 .g-dh-black { position: absolute; inset: 0; background: #040208; opacity: 0; }
 .g-dh.go .g-dh-black { animation: g-dh-black .5s .9s ease both; }
 @keyframes g-dh-black { to { opacity: 1; } }
+/* Kat's loading still (batch 48, title/loading-1.webp): Tartarus over the school gate, behind the title while the frame loads. */
+.g-dh-still { position: absolute; inset: 0; background: #040208 center / cover no-repeat; opacity: 0; }
+.g-dh-still::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(4, 2, 8, .55), rgba(4, 2, 8, .1) 70%); }
+.g-dh.go .g-dh-still { animation: g-dh-still .6s 1.05s ease both; }
+@keyframes g-dh-still { to { opacity: 1; } }
 .g-dh-cracks { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; }
 .g-dh-cracks path { fill: none; stroke: #e9fff2; stroke-width: .35; stroke-linecap: round; stroke-dasharray: 400; stroke-dashoffset: 400; filter: drop-shadow(0 0 1px #7dffc0); }
 .g-dh.go .g-dh-cracks { animation: g-dh-cracks 2.6s .3s both; }
@@ -734,6 +740,7 @@ html.g-in-battle .g-hud, html.g-in-battle .g-toasts { visibility: hidden; }
 .g-eq-slot i:empty { display: none; }
 .g-eq-slot .bt-icon, .g-eq-item .bt-icon { width: 28px; height: 28px; }
 img.bt-icon.gear-art { object-fit: contain; background: #fff; border: 1.5px solid #ffd36b; border-radius: 4px; box-sizing: border-box; } /* armor / accessory art (icons.js of, build.js GEAR_ART) */
+img.bt-icon.item-art { object-fit: contain; } /* item and material stickers (build.js ITEM_ART) */
 .g-eq-slot b, .g-eq-item b { font: italic 900 17px/1.1 var(--cond); }
 .g-eq-slot b span, .g-eq-item b span { display: block; color: var(--muted); font: 12px/1.3 var(--sans); }
 .g-eq-slot.open { border-color: var(--pink); box-shadow: 4px 4px 0 var(--pink); }
@@ -742,6 +749,8 @@ img.bt-icon.gear-art { object-fit: contain; background: #fff; border: 1.5px soli
 .g-eq-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
 .g-eq-item.cur { border-color: var(--pink-2); }
 .g-eq-item em { color: var(--gold); font: italic 900 13px/1 var(--cond); }
+.g-list li > .bt-icon.g-li-ico { width: 28px; height: 28px; flex: none; align-self: center; } /* menu Items: icons.js of */
+.g-list li:has(> .g-li-ico) > b { flex: 1; min-width: 0; }
 .g-list li b small { display: block; color: var(--muted); font: 12px/1.3 var(--sans); }
 .g-cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
 .g-cal-grid > span { padding: 4px 0; color: var(--pink-2); font: italic 900 12px/1 var(--cond); letter-spacing: .1em; text-align: center; }
@@ -1094,6 +1103,7 @@ button.g-st-link:is(:hover, :focus-visible) { outline: none; border-color: #fff;
 .g-act.has-art { grid-template-columns: 30px minmax(0, 1fr) auto; }
 .g-shop-art { width: 26px; height: 58px; object-fit: cover; border: 1.5px solid var(--gold); }
 .g-shop-art.wide { width: 54px; height: 38px; }
+.g-shop-art.icon { width: 30px; height: 30px; object-fit: contain; border: 0; } /* item and material stickers (build.js ITEM_ART) */
 .g-act.has-art:has(.g-shop-art.wide) { grid-template-columns: 58px minmax(0, 1fr) auto; }
 .g-shop-tabs { gap: 6px; margin: 4px 0 8px; }
 .g-shop-tabs:empty { display: none; }

@@ -132,6 +132,9 @@
 .g-case-art { --case: #1b0b15; --case-2: #3a1028; display: inline-block; width: 40px; height: 72px; padding: 5px; border-radius: 9px; background: linear-gradient(160deg, var(--case), var(--case-2)); box-shadow: 3px 3px 0 var(--night); }
 .g-case-art i { display: block; width: 100%; height: 100%; border-radius: 5px; background: #f7f2f5; opacity: .9; }
 .g-ga-art .g-case-art { transform: scale(1.25) rotate(-8deg); }
+.g-case-art:has(img) { padding: 0; background: none; box-shadow: none; } /* Kat's case art (gacha.js caseArt) */
+.g-case-art img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(3px 3px 0 var(--night)); }
+.g-case-art img + i { display: none; }
 [data-case="none"] { --case: #2a2a33; --case-2: #15151b; }
 [data-case="sakura"] { --case: #ffc4dc; --case-2: #ff8cc0; }
 [data-case="featherman"] { --case: #e8322f; --case-2: #ffd36b; }

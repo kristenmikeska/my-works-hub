@@ -146,6 +146,9 @@ window.FemcIcons = (() => {
   /* Icon for any id from data.js: an item, a piece of gear, or a material. */
   function of(id, cls = '', noArt = false) {
     const D = window.FEMC_BATTLE_DATA;
+    // Kat's item and material stickers (build.js ITEM_ART); the drawn icon if the file fails.
+    const it = D.items[id] || D.materials[id];
+    if (it && it.art && !noArt) return `<img class="bt-icon item-art ${cls}" src="${it.art}" alt="" onerror="this.outerHTML=window.FemcIcons.svgOf('${id}', '${cls}')">`;
     if (D.items[id]) return svg(D.items[id].icon || 'medicine', null, cls);
     if (D.materials[id]) return svg(D.materials[id].icon || 'mat-ash', D.materials[id].tint || null, cls);
     const g = D.gear[id];

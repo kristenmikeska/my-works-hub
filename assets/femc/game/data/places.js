@@ -354,7 +354,7 @@ window.FEMC_GAME_PLACES = {
     'story-facing-wrens-shadow': '40% 35%', 'story-train-tartarus': '55% 40%', 'link-mercy-aphrodite-hair': '52% 30%',
     'link-ann-r10': '50% 25%', 'link-chenle-r10': '47% 20%', 'link-danielle-r10': '24% 30%', 'link-elizabeth-r10': '45% 25%', 'link-haru-r10': '68% 30%',
     'link-jaemin-r10': '54% 28%', 'link-judy-r10': '48% 35%', 'link-junkyu-r10': '50% 30%', 'link-kasumi-r10': '37% 35%', 'link-kiriko-r10': '52% 35%',
-    'link-kuromi-r10': '51% 30%', 'link-mercy-r10': '40% 28%', 'link-mymelody-r10': '49% 25%', 'link-rio-r10': '50% 30%', 'link-saori-r10': '49% 30%',
+    'link-kuromi-r10': '51% 30%', 'link-mercy-r10': '40% 28%', 'link-mymelody-r10': '49% 25%', 'link-rio-r10': '50% 30%', 'link-saori-r10': '49% 30%', 'romance-rio': '50% 25%', 'romance-saori': '48% 25%',
     'link-sunoo-r10': '51% 28%', 'crush-akihiko-umbrella': '38% 22%', 'crush-two-ends': '60% 40%', 'holiday-summer-festival': '48% 22%', 'holiday-new-year': '36% 45%'
   },
   /* Music (assets/femc/music/<file>.mp3) by mood. Scenes pick a mood; screens use the `screens` map.

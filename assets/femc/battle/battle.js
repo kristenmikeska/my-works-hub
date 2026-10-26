@@ -73,13 +73,14 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 28;
+  const ART_V = 29;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
   const stIco = k => `<img class="bt-sti" src="${ICON_DIR}${k}.webp?v=${ART_V}" alt="" draggable="false">`;
   const buffIco = (k, v) => stIco(`${k}-${v > 0 ? 'up' : 'down'}`);
-  const ROOM_ART = new Set(['room-shadow', 'room-chest', 'room-locked', 'room-clock', 'room-access', 'room-stairs', 'room-event']);
+  const ROOM_ART = new Set(['room-shadow', 'room-chest', 'room-locked', 'room-clock', 'room-access', 'room-stairs', 'room-event',
+    'room-guardian', 'room-vault', 'room-puzzle', 'room-rest', 'room-rare', 'room-trap', 'room-altar', 'room-crack', 'room-orchid']); // sheet 2: batch 48
   const sart = slug => `${SHADOW_DIR}${slug}.webp?v=${V()}.${ART_V}`;
   Object.values(D.personas).forEach(p => { if (p.art && !p.art.startsWith('data:') && !p.art.includes('?')) p.art += `?v=${ART_V}`; });
   // Theurgy and Evoker sheet art (data.js paths are bare) get the art version too.
@@ -1373,7 +1374,7 @@
     start: { name: 'Arrival', icon: 'room-start' }, shadow: { name: 'Shadow', icon: 'room-shadow', color: '#4b9bff' }, chest: { name: 'Treasure', icon: 'room-chest', color: '#ffd36b' },
     locked: { name: 'Locked chest', icon: 'room-locked', color: '#4fb3ff' }, clock: { name: 'Clock', icon: 'room-clock', color: '#ff9a3d' }, access: { name: 'Access point', icon: 'room-access', color: '#5fe0b0' },
     stairs: { name: 'Stairs', icon: 'room-stairs', color: '#a77bff' }, event: { name: 'Something here', icon: 'room-event', color: '#ff8cc0' }, empty: { name: 'Corridor', icon: 'room-empty', color: '#8a7a9a' },
-    shrine: { name: 'Night Orchid', icon: 'room-clock', color: '#c9b8ff' }
+    shrine: { name: 'Night Orchid', icon: 'room-orchid', color: '#c9b8ff' }
   };
   if (TT) Object.assign(ROOM, TT.ROOMS); // guardian, vault, puzzle, rest, rare, trap, altar, crack
   /* Tartarus bond perks on a fresh floor (build.js): Koromaru's Good Nose (one more chest), Jaemin's Recovery Party (the nightOrchid hook) (a

@@ -686,11 +686,13 @@
       ] },
       { ifRoute: 'romance', then: [
         { n: "The lamps clicked over on their timer, and the bank over the far courts went out, and then the next, until there was only the one light over this net and the two of them under it, and the long shadows of the posts lying across the concrete like the hands of a clock." },
+        { cg: 'romance-rio' },
+        { n: "Rio reached out and took hold of the front of Solar's blazer, as if Solar might go somewhere. Her breath clouded between them." },
         { s: 'rio', f: 'flustered', t: "I've been trying to work out how to do the next part slowly. I promised myself I'd do things slower. Say things slower." },
         { s: 'rio', f: 'flustered', t: "I don't think I'm going to manage it." },
         { choose: [
           { t: "Then don't.", notes: 3, then: [
-            { n: "She didn't. She kissed Solar the way she played, all at once, no wasted motion, one hand fisted in the front of Solar's coat, and then, after a second, much more slowly, like she'd remembered the promise halfway through and decided she'd keep it after all." },
+            { n: "She didn't. She kissed Solar the way she played, all at once, no wasted motion, one hand fisted in the front of Solar's blazer, and then, after a second, much more slowly, like she'd remembered the promise halfway through and decided she'd keep it after all." },
             { n: "When she pulled back she was laughing under her breath, red to the ears, and she put her forehead against Solar's and said, very quietly, a thing she would never have said in daylight, which was that she'd wanted to do that since the hospital, and had been furious about it for two months." }
           ] },
           { t: "(Take her hand first. Slowly.)", notes: 3, then: [
@@ -703,6 +705,7 @@
             { s: 'rio', f: 'flustered', t: "...That was fast. Next one's slower. I promise." }
           ] }
         ] },
+        { cg: null },
         { n: "The timer took the last light. Neither of them moved for a while. Somewhere in the dark a ball rolled off the cart and bounced, once, twice, and Rio said, without letting go of anything, that it could wait until spring." }
       ], else: [
         { s: 'rio', f: 'neutral', t: "Spring. The qualifiers. My last real year. I want you in the stands, and if you learn a real serve by then, I'll put you in a practice match myself. On the far side. With that racket." },

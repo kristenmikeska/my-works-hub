@@ -598,7 +598,7 @@ window.FemcMenu = (() => {
   function useRow(k, n) {
     const it = D().items?.[k] || {}, hp = opts.hp || {};
     const who = sel.use === k && needsTarget(k) ? `<div class="g-use-who">${Object.keys(hp).map(id => `<button type="button" class="g-btn small" data-use="${k}" data-tgt="${id}">${esc(member(id)?.name || id)} <small>${hp[id].hp}/${hp[id].maxHp}</small></button>`).join('')}<button type="button" class="g-btn small" data-use-cancel>Cancel</button></div>` : '';
-    return `<li class="g-use"><b>${esc(it.name || k)}<small>${esc(it.desc || '')}</small></b><span>×${n}</span>${usable(k) && sel.use !== k ? `<button type="button" class="g-btn small pink" data-use="${k}"${needsTarget(k) ? ' data-pick-target' : ''}>Use</button>` : ''}${who}</li>`;
+    return `<li class="g-use">${window.FemcIcons ? window.FemcIcons.of(k, 'g-li-ico') : ''}<b>${esc(it.name || k)}<small>${esc(it.desc || '')}</small></b><span>×${n}</span>${usable(k) && sel.use !== k ? `<button type="button" class="g-btn small pink" data-use="${k}"${needsTarget(k) ? ' data-pick-target' : ''}>Use</button>` : ''}${who}</li>`;
   }
   function wireItems(el) {
     el.querySelectorAll('[data-use]').forEach(bt => bt.addEventListener('click', () => {
@@ -622,9 +622,9 @@ window.FemcMenu = (() => {
     const gear = [...new Set([...s.gear, ...Object.keys(b.gear.owned).filter(k => b.gear.owned[k] > 0)])].filter(k => D().gear[k]);
     const mats = Object.entries(b.mats || {}).filter(([, n]) => n > 0);
     return `<div class="g-cols">
-      <div class="g-col"><h3>Items</h3>${inv.length ? `<ul class="g-list">${inv.map(([k, n]) => `<li><b>${esc(D().items?.[k]?.name || k)}<small>${esc(D().items?.[k]?.desc || '')}</small></b><span>×${n}</span></li>`).join('')}</ul>` : '<p class="g-note">Nothing yet. Aohige Pharmacy is on the Strip.</p>'}
-        ${mats.length ? `<h3>Materials</h3><ul class="g-list">${mats.map(([k, n]) => `<li><b>${esc(D().materials?.[k]?.name || k)}</b><span>×${n}</span></li>`).join('')}</ul>` : ''}</div>
-      <div class="g-col"><h3>Gear</h3>${gear.length ? `<ul class="g-list">${gear.map(k => `<li><b>${esc(D().gear[k].name)}<small>${esc(BS().gearLine(k))}</small></b><span>${BS().equippedCount(b, k) ? 'E' : ''}</span></li>`).join('')}</ul>` : '<p class="g-note">No gear yet. The Police Box and Be Blue V sell it.</p>'}
+      <div class="g-col"><h3>Items</h3>${inv.length ? `<ul class="g-list">${inv.map(([k, n]) => `<li>${window.FemcIcons ? window.FemcIcons.of(k, 'g-li-ico') : ''}<b>${esc(D().items?.[k]?.name || k)}<small>${esc(D().items?.[k]?.desc || '')}</small></b><span>×${n}</span></li>`).join('')}</ul>` : '<p class="g-note">Nothing yet. Aohige Pharmacy is on the Strip.</p>'}
+        ${mats.length ? `<h3>Materials</h3><ul class="g-list">${mats.map(([k, n]) => `<li>${window.FemcIcons ? window.FemcIcons.of(k, 'g-li-ico') : ''}<b>${esc(D().materials?.[k]?.name || k)}</b><span>×${n}</span></li>`).join('')}</ul>` : ''}</div>
+      <div class="g-col"><h3>Gear</h3>${gear.length ? `<ul class="g-list">${gear.map(k => `<li>${window.FemcIcons ? window.FemcIcons.of(k, 'g-li-ico') : ''}<b>${esc(D().gear[k].name)}<small>${esc(BS().gearLine(k))}</small></b><span>${BS().equippedCount(b, k) ? 'E' : ''}</span></li>`).join('')}</ul>` : '<p class="g-note">No gear yet. The Police Box and Be Blue V sell it.</p>'}
         <h3>Books</h3>${s.books.owned.length ? `<ul class="g-list">${s.books.owned.map(k => { const bk = G.bookById(k); return `<li><b>${esc(bk?.name || k)}</b><span>${s.books.done.includes(k) ? 'Read' : `${s.books.progress[k] || 0}/${bk?.nights}`}</span></li>`; }).join('')}</ul>` : '<p class="g-note">Bookworms on the Strip sells used books.</p>'}
         ${Object.values(s.jobs).some(j => j.hired) ? `<h3>Jobs</h3><ul class="g-list">${G.D.jobs.filter(j => G.jobState(j.id).hired).map(j => `<li><b>${esc(j.name)}</b><span>${G.jobState(j.id).shifts} shifts</span></li>`).join('')}</ul>` : ''}</div></div>`;
   }

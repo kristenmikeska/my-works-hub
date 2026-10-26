@@ -39,6 +39,8 @@ window.FemcTartarus = (() => {
     guardian_crest: { name: 'Guardian Crest', price: 1500, icon: 'mat-arcana', tint: '#ff5b5b', desc: 'The seal a block guardian wore. Mayoido pays well for these.' },
     monad_sand: { name: 'Monad Sand', price: 1300, icon: 'mat-ash', tint: '#6ab0ff', desc: 'Blue sand that falls upward when no one is looking.' }
   });
+  // Kat's stickers (batch 48; build.js ITEM_ART covers the rest, but these are added after it runs).
+  ['lantern_glass', 'echo_shell', 'gilded_scale', 'guardian_crest', 'monad_sand'].forEach(id => { D.materials[id].art = `assets/femc/battle/art/items/${id}.webp`; });
 
   /* ══════════ Shadows: the rare golden ones and the block guardians ══════════ */
   const S = (lvl, k = {}) => ({ lvl, hp: Math.round((26 + lvl * 13.5) * (k.hp || 1)), st: +(4 + lvl * 0.95 * (k.st || 1)).toFixed(1), ma: +(4 + lvl * 0.95 * (k.ma || 1)).toFixed(1),
@@ -110,8 +112,8 @@ window.FemcTartarus = (() => {
   });
   if (D.music) D.music.monad = 'assets/femc/music/deep-mentality.mp3';
 
-  /* What the map shows for the new rooms (battle.js ROOM). icon: a glyph in icons.js (drawn in code until the art exists:
-     FEMC-ART-TODO 6C, the second Tartarus map rooms sheet). */
+  /* What the map shows for the new rooms (battle.js ROOM). icon: Kat's map-rooms sheet 2 (batch 48, tools/femc-icons.py ROOMS2 ->
+     art/icons/<icon>.webp, listed in battle.js ROOM_ART); the glyph of the same name in icons.js is the fallback. */
   const ROOMS = {
     guardian: { name: 'Guardian', icon: 'room-guardian', color: '#ff3b6b' },
     vault: { name: 'Vault', icon: 'room-vault', color: '#ffb347' },

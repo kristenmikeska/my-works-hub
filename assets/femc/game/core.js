@@ -970,7 +970,7 @@ window.FemcGame = (() => {
     const tier = 1 + S.tartarus.bosses.length;
     const out = [], line = k => (W.FemcBattleSave ? W.FemcBattleSave.gearLine(k) : (B.gear[k].desc || ''));
     const price = (p, kind) => Math.round(p * (1 - shopDiscount(id, kind) / 100));
-    if (shop.sells.includes('item')) (shop.stock || Object.keys(B.items || {})).forEach(k => { const it = B.items?.[k]; if (it && !it.night && (it.tier || 1) <= tier) out.push({ id: k, kind: 'item', name: it.name, price: price(it.price, 'item'), desc: it.desc, shop: id }); });
+    if (shop.sells.includes('item')) (shop.stock || Object.keys(B.items || {})).forEach(k => { const it = B.items?.[k]; if (it && !it.night && (it.tier || 1) <= tier) out.push({ id: k, kind: 'item', name: it.name, price: price(it.price, 'item'), desc: it.desc, shop: id, art: it.art || null, icon: !!it.art }); });
     // Gear: weapons for whoever is fighting this season (newest tiers first), armor, accessories; Mayoido's rare stock.
     const wt = new Set(available().map(m => (B.party || []).find(x => x.id === m)?.wtype).filter(Boolean));
     const gear = [];

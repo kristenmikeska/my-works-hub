@@ -836,7 +836,7 @@ window.FemcBuild = (() => {
   });
   Object.assign(D.gear, {
     // Capsule machine (Super Rare and up)
-    cap_koro_charm: { name: 'Koro-chan Charm', slot: 'acc', icon: 'charm', stats: { lu: 4, ag: 2 }, tier: 2, price: 0, rare: true, gacha: 'capsule', desc: 'A tiny felt Koromaru on a bell.' },
+    cap_koro_charm: { name: 'Koro-chan Charm', slot: 'acc', icon: 'charm', stats: { lu: 4, ag: 2 }, tier: 2, price: 0, rare: true, gacha: 'capsule', desc: 'A tiny Koromaru with a bell on his collar.' },
     cap_feather_pin: { name: 'Featherman Pin', slot: 'acc', icon: 'star', stats: { st: 3, en: 3 }, crit: 4, tier: 3, price: 0, rare: true, gacha: 'capsule', desc: 'Ken would trade anything for it.' },
     cap_jack_frost: { name: 'Frosty Hairclip', slot: 'acc', icon: 'barrette', nullAil: ['freeze'], stats: { ma: 3 }, tier: 3, price: 0, rare: true, gacha: 'capsule', desc: 'Hee-ho.' },
     cap_moon_locket: { name: 'Moon Locket', slot: 'acc', icon: 'amulet', spRegen: 2, stats: { ma: 2, lu: 2 }, tier: 4, price: 0, rare: true, gacha: 'capsule', desc: 'A crescent that opens on nothing. Restores 2 SP each turn.' },
@@ -844,7 +844,7 @@ window.FemcBuild = (() => {
     // Elizabeth's cards (rare gear)
     vel_ribbon: { name: 'Velvet Ribbon', slot: 'acc', icon: 'barrette', spRegen: 4, stats: { ma: 4 }, tier: 4, price: 0, rare: true, gacha: 'velvet', desc: 'The exact blue of the Velvet Room. Restores 4 SP each turn.' },
     vel_butterfly: { name: 'Blue Butterfly Brooch', slot: 'acc', icon: 'star', stats: { ag: 6, lu: 4 }, crit: 6, tier: 5, price: 0, rare: true, gacha: 'velvet', desc: 'It flutters when nobody is looking.' },
-    vel_key: { name: 'Contract Key', slot: 'acc', icon: 'amulet', nullAil: ['charm', 'fear', 'distress'], stats: { en: 5 }, tier: 5, price: 0, rare: true, gacha: 'velvet', desc: 'A small silver key on a blue cord.' },
+    vel_key: { name: 'Contract Key', slot: 'acc', icon: 'amulet', nullAil: ['charm', 'fear', 'distress'], stats: { en: 5 }, tier: 5, price: 0, rare: true, gacha: 'velvet', desc: 'A small silver key set with a blue stone.' },
     vel_compendium: { name: 'Pocket Compendium', slot: 'acc', icon: 'bangle', stats: { st: 5, ma: 5, en: 5, ag: 5, lu: 5 }, tier: 6, price: 0, rare: true, gacha: 'velvet', desc: 'Elizabeth’s smallest book, lent indefinitely.' },
     vel_coat: { name: 'Attendant’s Coat', slot: 'armor', def: 64, stats: { en: 4 }, tier: 6, price: 0, rare: true, gacha: 'velvet', desc: 'Blue, impeccably pressed, and surprisingly warm.' }
   });
@@ -854,8 +854,19 @@ window.FemcBuild = (() => {
      so they use the wide box (artWide). Gear without a file keeps its drawn icon. Add new ids here as sheets arrive. */
   const GEAR_ART = ['armor0', 'armor1', 'armor2', 'armor3', 'armor4', 'armor5', 'armor6', 'armor7', 'frost_coat', 'insulated_vest', 'fireproof_suit', 'gale_cloak',
     'power_ring', 'magic_ring', 'guard_ring', 'speed_ring', 'lucky_charm', 'antidote_charm',
-    'rose_barrette', 'calm_amulet', 'holy_cross', 'black_earring', 'sp_bangle', 'power_bangle'];
+    'rose_barrette', 'calm_amulet', 'holy_cross', 'black_earring', 'sp_bangle', 'power_bangle',
+    // batch 48: the rest of the accessories, the capsule and Velvet prizes, and the Attendant's Coat
+    'magic_bangle', 'sniper_scope', 'vitality_belt', 'theurgy_charm', 'star_brooch', 'vel_ribbon',
+    'cap_koro_charm', 'cap_feather_pin', 'cap_jack_frost', 'cap_moon_locket', 'cap_gold_sun', 'vel_butterfly',
+    'vel_key', 'vel_compendium', 'vel_coat'];
   GEAR_ART.forEach(id => { const g = D.gear[id]; if (g && !g.art) { g.art = `assets/femc/battle/art/gear/${id}.webp`; g.artWide = true; } });
+  /* Kat's battle item and material stickers (batch 48, tools/femc-greens.py -> art/items/<id>.webp, transparent squares).
+     icons.js FemcIcons.of shows them everywhere an item shows (the items menu, both shops, chests, drops, results, gacha). */
+  const ITEM_ART = ['medicine', 'bead', 'bead_chain', 'snuff_soul', 'chewing_soul', 'soma', 'revival_bead', 'patra_gem', 'dis_poison',
+    'dekaja_gem', 'dekunda_gem', 'traesto_gem', 'tartarus_key', 'shadow_ash', 'mask_shard', 'crimson_lacquer', 'mirror_shard', 'rusted_cog',
+    'stone_heart', 'moon_feather', 'arcana_fragment', 'tarot_dust', 'velvet_thread', 'lantern_glass', 'echo_shell', 'gilded_scale',
+    'guardian_crest', 'monad_sand'];
+  ITEM_ART.forEach(id => { const it = D.items[id] || D.materials[id]; if (it && !it.art) it.art = `assets/femc/battle/art/items/${id}.webp`; });
   // Fuuka's lines for the new systems, the glossary and one-time tips.
   Object.assign(D.nav, {
     shuffle: [['Shuffle Time! Pick a card, quick!', 'The cards are turning… pick one!'], 'happy'],

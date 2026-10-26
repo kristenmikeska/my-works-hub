@@ -636,12 +636,13 @@
       { s: 'saori', f: 'neutral', t: "A library is where you keep things nobody's borrowed in a long time. In case somebody comes back for them." },
       { cg: null },
       { ifRoute: 'romance', then: [
-        { n: "The committee had gone. Ms. Ozawa was in the back office with the door closed and the radio on low. The light coming in sideways between the shelves was blue and thin and going, and Saori stood up from the carpet and didn't go back to the desk. She stood between the shelves with her back to the literature and her face pink and her hands, for once, not in her sleeves." },
+        { cg: 'romance-saori' },
+        { n: "The committee had gone. Ms. Ozawa was in the back office with the door closed and the radio on low. The light coming in sideways between the shelves was blue and thin and going, and Saori stood up from the carpet and didn't go back to the desk. She stood between the shelves with her back to the literature and her face pink and her hands, for once, not in her sleeves. One of them caught the front of Solar's blazer." },
         { s: 'saori', f: 'flustered', t: "I've read about this so many times. I always skipped ahead. I wanted to know how it went before it went." },
         { s: 'saori', f: 'neutral', t: "I'm not skipping ahead this time." },
         { choose: [
           { t: "(Kiss her.)", notes: 3, then: [
-            { n: "It smelled of old paper and floor wax and the radiator and her shampoo, which was something with peaches in it. She went very still, the way she always did, and then she didn't. Her hand came up and caught in the front of Solar's blazer and held on, the way it had held the notebook against her chest." },
+            { n: "It smelled of old paper and floor wax and the radiator and her shampoo, which was something with peaches in it. She went very still, the way she always did, and then she didn't. Her hand tightened in the front of Solar's blazer and held on, the way it had held the notebook against her chest." },
             { n: "When they broke apart she put her forehead against Solar's shoulder and laughed, small and astonished, into the wool, like a girl reading the last line of a book she'd been afraid to finish and finding it was kind." }
           ] },
           { t: "Then don't.", notes: 3, then: [
@@ -652,7 +653,8 @@
           { t: "(Take her hand first, so she sees it coming.)", notes: 2, then: [
             { n: "Solar took her hand, slowly, and Saori looked down at it and then up, and kissed her, once, quickly, on the corner of the mouth, and then hid her whole face in Solar's shoulder and stayed there and said sorry into the wool, and then, very firmly, not sorry." }
           ] }
-        ] }
+        ] },
+        { cg: null }
       ], else: [
         { n: "She stood up and brushed the carpet off her knees and went back to the desk, and took something out of the drawer and slid it across to Solar face down. Her library card, laminated, the corner worn white. On the back, in very small handwriting, there were call numbers. Twenty-six of them." },
         { s: 'saori', f: 'neutral', t: "My favorites. Every quiet book on every shelf that nobody else checks out. If nobody borrows a book for a year, it gets sent to the basement. So somebody has to keep borrowing them." },
