@@ -841,7 +841,7 @@ window.FemcGame = (() => {
     const b = face && face.replace(/-\d+$/, '');
     const CLOSE = { blushing: ['flustered', 'happy'], flustered: ['blushing', 'happy'], serious: ['sad', 'neutral'], happy: ['neutral'] };
     const pick = [face, b, ...(CLOSE[b] || []), 'neutral', have[0]].find(f => f && have.includes(f));
-    return pick ? `${base}assets/femc/portraits/${id}/${pick}.webp` : null;
+    return pick ? `${base}assets/femc/portraits/${id}/${pick}.webp?v=${W.FEMC_PORTRAIT_V || 1}` : null;
   }
   const scale = id => (W.FEMC_PORTRAIT_SCALE || {})[faceId(id)] || 1;
   const name = id => CAST[id] || (id ? id[0].toUpperCase() + id.slice(1) : '');

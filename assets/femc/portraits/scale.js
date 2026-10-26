@@ -142,3 +142,6 @@ window.FEMC_PORTRAIT_SCALE = {
 
 /* Per-character drop: moves a portrait down by this share of its height, cropping the bottom (Kat, 2026-10-25). */
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14, jungwon: 0.1 };
+
+/* Bump when portrait images change, so browsers fetch the new faces. */
+window.FEMC_PORTRAIT_V = 2;
