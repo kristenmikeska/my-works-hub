@@ -1,6 +1,6 @@
 # Art to make
 
-**127 items:** 7 story CGs · 8 places · 22 character pieces · 47 battle · 23 cards, items and icons · 4 screens · 16 wardrobe and keychains. 8 are ⭐, 112 are optional.
+**136 items:** 7 story CGs · 8 places · 22 character pieces · 47 battle · 23 cards, items and icons · 4 screens · 25 wardrobe and keychains. 8 are ⭐, 121 are optional.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -1284,5 +1284,140 @@ A 3 × 2 grid of six acrylic keychain charms (3 columns, 2 rows) on a flat pure 
 4. Hanni: heart-shaped sunglasses, a peace sign.
 5. Hyein: holding a bouquet of pink tulips.
 6. Jungwon: holding a ribboned box of homemade chocolates.
+```
+If ChatGPT won't take all the pictures at once, attach the people for the top row, make it, then say "Bottom row now, same style" with the rest.
+
+**[ ] Keychain sheet 9: Solchan, everyday** *(optional)*  
+The Solchan Series (Solar and Haechan), part one.  
+Attach: the style image, Solar, Haechan, Kiriko, Widowmaker (her portrait)  
+Save as: `keychain-series-9.png`
+```
+A 3 × 2 grid of six acrylic keychain charms (3 columns, 2 rows) on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each charm is a cute chibi of the character or characters named, in exactly the chibi style of the attached charms, cut out in clear acrylic with a thick glossy white edge and a light blue shine (draw the edge solid, not see-through), a small silver ring and a short chain at the top centre. When a charm has two or more people, they share ONE charm shape (one outline around them all, one ring and chain), standing close together. Each charm upright, centred in its cell, the same size, with wide green space around it. Faces and hair from the attached charm of each person; outfits and poses exactly as described for each cell. No S.E.E.S. armband on anyone. No text, no green in the charms. In reading order:
+1. Haechan: a loose hoodie, big headphones round his neck, holding a silver Discman, a lazy grin.
+2. Haechan as a round, squishy plush toy version of himself: stubby arms, sleepy eyes, a little crescent moon stitched on his tummy.
+3. Solar & Haechan, the dryer: both sitting on top of a laundry-room dryer, his headphones over her ears, him leaning back on his hands.
+4. Solar & Haechan, sharing earbuds: one white earbud each, the wire between them, heads tipped together, eyes closed.
+5. Solar & Haechan, player two: both in gaming headsets holding controllers, a tiny chibi Widowmaker perched on his shoulder, a tiny chibi Kiriko on hers.
+6. Solar & Haechan, five more minutes: a sleepy morning, bed hair, one fluffy blanket round both of them, her yawning on his shoulder.
+```
+If ChatGPT won't take all the pictures at once, attach the people for the top row, make it, then say "Bottom row now, same style" with the rest.
+
+**[ ] Keychain sheet 10: Solchan, sweet** *(optional)*  
+The Solchan Series, part two.  
+Attach: the style image, Solar, Haechan  
+Save as: `keychain-series-10.png`
+```
+A 3 × 2 grid of six acrylic keychain charms (3 columns, 2 rows) on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each charm is a cute chibi of the character or characters named, in exactly the chibi style of the attached charms, cut out in clear acrylic with a thick glossy white edge and a light blue shine (draw the edge solid, not see-through), a small silver ring and a short chain at the top centre. When a charm has two or more people, they share ONE charm shape (one outline around them all, one ring and chain), standing close together. Each charm upright, centred in its cell, the same size, with wide green space around it. Faces and hair from the attached charm of each person; outfits and poses exactly as described for each cell. No S.E.E.S. armband on anyone. No text, no green in the charms. In reading order:
+1. Solar & Haechan, rooftop night: sitting side by side on a rooftop ledge, little city lights below their feet, a crescent moon behind them.
+2. Solar & Haechan, his jacket: his dark jacket round her shoulders, him in a T-shirt pretending he isn't cold.
+3. Solar & Haechan, forehead touch: foreheads together, eyes closed, both smiling.
+4. Solar & Haechan, Christmas on Port Island: matching red scarves, a string of fairy lights looped round them, sharing one cup of cocoa.
+5. Solar & Haechan, strangers version: long dark coats, rain on a city street, her clear umbrella held over both of them.
+6. Solar & Haechan, Runners version: college hoodies and backpacks, an iced coffee each, walking in step.
+```
+If ChatGPT won't take all the pictures at once, attach the people for the top row, make it, then say "Bottom row now, same style" with the rest.
+
+**[ ] Keychain sheet 11: Solchan specials and the hidden charms** *(optional)*  
+The Solchan Ultra and Secret, and the four hidden charms (the rarest prizes in the game: make them extra pretty, a touch of gold in the acrylic edge).  
+Attach: the style image, Solar, Haechan  
+Save as: `keychain-series-11.png`
+```
+A 3 × 2 grid of six acrylic keychain charms (3 columns, 2 rows) on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each charm is a cute chibi of the character or characters named, in exactly the chibi style of the attached charms, cut out in clear acrylic with a thick glossy white edge and a light blue shine (draw the edge solid, not see-through), a small silver ring and a short chain at the top centre. When a charm has two or more people, they share ONE charm shape (one outline around them all, one ring and chain), standing close together. Each charm upright, centred in its cell, the same size, with wide green space around it. Faces and hair from the attached charm of each person; outfits and poses exactly as described for each cell. No S.E.E.S. armband on anyone. No text, no green in the charms. In reading order:
+1. Solar & Haechan, two suns: back to back in a cool battle pose, two little suns blazing behind them, warm gold light.
+2. Solar & Haechan, hold on: he holds her close from behind, eyes shut, while a soft ribbon of golden light curls round her and gently tugs her away; he isn't letting go.
+3. Solar & Haechan, asleep on the couch: asleep together on a dorm sofa, his arm round her, a blanket half off, the glow of a TV on their faces.
+4. Their hands only: two hands with fingers laced, matching thin silver rings, a tiny sparkle on each ring.
+5. A pair of suns: two little round suns side by side, one with Solar's face and one with Haechan's, both glowing and smiling.
+6. Haechan alone on a rooftop at golden hour, hands in his pockets, looking back over his shoulder with a grin.
+```
+If ChatGPT won't take all the pictures at once, attach the people for the top row, make it, then say "Bottom row now, same style" with the rest.
+
+**[ ] Keychain sheet 12: romance charms** *(optional)*  
+New couple charms for Akihiko, Jungwon, Jihoon and Minji.  
+Attach: the style image, Solar, Akihiko, Jungwon, Jihoon, Minji  
+Save as: `keychain-series-12.png`
+```
+A 3 × 2 grid of six acrylic keychain charms (3 columns, 2 rows) on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each charm is a cute chibi of the character or characters named, in exactly the chibi style of the attached charms, cut out in clear acrylic with a thick glossy white edge and a light blue shine (draw the edge solid, not see-through), a small silver ring and a short chain at the top centre. When a charm has two or more people, they share ONE charm shape (one outline around them all, one ring and chain), standing close together. Each charm upright, centred in its cell, the same size, with wide green space around it. Faces and hair from the attached charm of each person; outfits and poses exactly as described for each cell. No S.E.E.S. armband on anyone. No text, no green in the charms. In reading order:
+1. Solar & Akihiko: he kneels to lace up her red boxing gloves, she grins down at him.
+2. Solar & Jungwon: she's asleep on his study notes, he quietly holds her pencil and smiles.
+3. Solar & Jihoon: sharing one umbrella in the rain, his side soaked because he tilted it to her.
+4. Solar & Jungwon, summer: summer festival yukata, he holds up a goldfish in a little water bag he won for her.
+5. Solar & Minji, summer: sharing one big strawberry shaved ice, two spoons.
+6. Solar & Jihoon, Halloween: matching orange pumpkin costumes, him carrying two candy buckets.
+```
+If ChatGPT won't take all the pictures at once, attach the people for the top row, make it, then say "Bottom row now, same style" with the rest.
+
+**[ ] Keychain sheet 13: more romance and Koromaru** *(optional)*  
+More couple charms (Akihiko, Shinjiro, Minji) and Koromaru's costumes.  
+Attach: the style image, Solar, Akihiko, Shinjiro, Minji, Koromaru  
+Save as: `keychain-series-13.png`
+```
+A 3 × 2 grid of six acrylic keychain charms (3 columns, 2 rows) on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each charm is a cute chibi of the character or characters named, in exactly the chibi style of the attached charms, cut out in clear acrylic with a thick glossy white edge and a light blue shine (draw the edge solid, not see-through), a small silver ring and a short chain at the top centre. When a charm has two or more people, they share ONE charm shape (one outline around them all, one ring and chain), standing close together. Each charm upright, centred in its cell, the same size, with wide green space around it. Faces and hair from the attached charm of each person; outfits and poses exactly as described for each cell. No S.E.E.S. armband on anyone. No text, no green in the charms. In reading order:
+1. Solar & Akihiko, winter: a New Year's shrine visit, his red scarf wrapped round her neck, both in winter coats.
+2. Solar & Shinjiro, Valentine's: she holds out a handmade chocolate, he looks away pretending it isn't for him, ears pink.
+3. Solar & Minji, Valentine's: a little polaroid photo of the two of them holding heart chocolates, cheek to cheek.
+4. Koromaru: a fuzzy bumblebee costume with tiny wings.
+5. Koromaru: a red superhero cape and a little eye mask.
+6. Koromaru: a white sailor hat and a striped sailor collar.
+```
+If ChatGPT won't take all the pictures at once, attach the people for the top row, make it, then say "Bottom row now, same style" with the rest.
+
+**[ ] Keychain sheet 14: Dorm Life pajamas** *(optional)*  
+The Dorm Life Series, part one.  
+Attach: the style image, Solar, Akihiko, Yukari, Junpei, Mitsuru, Fuuka  
+Save as: `keychain-series-14.png`
+```
+A 3 × 2 grid of six acrylic keychain charms (3 columns, 2 rows) on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each charm is a cute chibi of the character or characters named, in exactly the chibi style of the attached charms, cut out in clear acrylic with a thick glossy white edge and a light blue shine (draw the edge solid, not see-through), a small silver ring and a short chain at the top centre. When a charm has two or more people, they share ONE charm shape (one outline around them all, one ring and chain), standing close together. Each charm upright, centred in its cell, the same size, with wide green space around it. Faces and hair from the attached charm of each person; outfits and poses exactly as described for each cell. No S.E.E.S. armband on anyone. No text, no green in the charms. In reading order:
+1. Akihiko: grey pajamas, hair a mess, a protein shaker in hand.
+2. Junpei: baggy pajamas, his cap still on, asleep sitting up.
+3. Yukari: pink pajamas, a white sheet mask on her face.
+4. Mitsuru: a silk robe, a teacup and saucer, perfectly composed.
+5. Fuuka: mint pajamas, hugging a pillow, a little laptop at her feet.
+6. Solar: sunny-yellow pajamas, fluffy slippers, a bowl of ramen.
+```
+If ChatGPT won't take all the pictures at once, attach the people for the top row, make it, then say "Bottom row now, same style" with the rest.
+
+**[ ] Keychain sheet 15: Dorm Life nights** *(optional)*  
+The Dorm Life Series, part two.  
+Attach: the style image, Solar, Akihiko, Yukari, Junpei, Mitsuru, Fuuka, Koromaru, Ken, Aigis, Shinjiro, Jihoon, Asahi and Niki (their portraits)  
+Save as: `keychain-series-15.png`
+```
+A 3 × 2 grid of six acrylic keychain charms (3 columns, 2 rows) on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each charm is a cute chibi of the character or characters named, in exactly the chibi style of the attached charms, cut out in clear acrylic with a thick glossy white edge and a light blue shine (draw the edge solid, not see-through), a small silver ring and a short chain at the top centre. When a charm has two or more people, they share ONE charm shape (one outline around them all, one ring and chain), standing close together. Each charm upright, centred in its cell, the same size, with wide green space around it. Faces and hair from the attached charm of each person; outfits and poses exactly as described for each cell. No S.E.E.S. armband on anyone. No text, no green in the charms. In reading order:
+1. The Hate Club: Jihoon, Asahi and Niki squeezed into a karaoke booth, Jihoon belting into the mic, the other two booing with their thumbs down, all laughing.
+2. Pajama night: Solar, Akihiko, Yukari, Junpei, Mitsuru, Fuuka and Koromaru in pajamas piled on one sofa with popcorn (one charm, one ring).
+3. Ken: a red hero onesie with the hood up, very serious.
+4. Aigis: striped pajamas, a sleep mask pushed up on her forehead, sitting perfectly straight.
+5. Koromaru: asleep curled up in a laundry basket on a pile of clean towels.
+6. Shinjiro: an apron over a hoodie, holding a steaming pot of ramen, a midnight snack.
+```
+If ChatGPT won't take all the pictures at once, attach the people for the top row, make it, then say "Bottom row now, same style" with the rest.
+
+**[ ] Capsule goods sheet 1** *(optional)*  
+New capsule prizes: sticker sheets, mini plush and an acrylic stand.  
+Attach: the style image, Solar, Akihiko, Yukari, Junpei, Mitsuru, Fuuka, Koromaru, Haechan  
+Save as: `capsule-goods-1.png`
+```
+A 3 × 2 grid of six little capsule-toy goods (3 columns, 2 rows) on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each one is the object described for its cell, with cute chibi characters in exactly the chibi style of the attached charms (faces and hair from each person's charm). Each object upright, centred in its cell, filling about the same space, with wide green space around it, a soft drop shadow only inside its own outline. Clean, glossy merch look. No S.E.E.S. armband on anyone. No text, no letters, no green in the objects. In reading order:
+1. A sticker sheet: a white rounded-rectangle backing card with six die-cut chibi face stickers of Solar, Akihiko, Yukari, Junpei, Mitsuru and Fuuka.
+2. A sticker sheet: six die-cut Koromaru stickers, each a different mood: happy, sleepy, begging, proud, wet from a bath, mid-zoomies.
+3. A sticker sheet: doodle stickers of Solar and Haechan, with little suns, moons and headphones between them.
+4. A mini plush: a round, squishy little Koromaru with a red collar, felt texture.
+5. A mini plush: a round, squishy little Solar, a tiny sun on her hair clip, felt texture.
+6. An acrylic stand: Solar in her school uniform with her naginata over her shoulder, on a small clear base printed with a moon.
+```
+If ChatGPT won't take all the pictures at once, attach the people for the top row, make it, then say "Bottom row now, same style" with the rest.
+
+**[ ] Capsule goods sheet 2** *(optional)*  
+Acrylic stands and photo cards.  
+Attach: the style image, Haechan, Akihiko, Shinjiro, Jungwon  
+Save as: `capsule-goods-2.png`
+```
+A 3 × 2 grid of six little capsule-toy goods (3 columns, 2 rows) on a flat pure green background (#00FF00), landscape 3:2 (1536 × 1024). Each one is the object described for its cell, with cute chibi characters in exactly the chibi style of the attached charms (faces and hair from each person's charm). Each object upright, centred in its cell, filling about the same space, with wide green space around it, a soft drop shadow only inside its own outline. Clean, glossy merch look. No S.E.E.S. armband on anyone. No text, no letters, no green in the objects. In reading order:
+1. An acrylic stand: Haechan with headphones on, hands in his jacket pockets, on a small clear base printed with a rooftop.
+2. An acrylic stand: Akihiko in a boxing stance, gloves up, on a small clear base printed with a boxing ring.
+3. A photo card (a small upright card with rounded corners and a holographic rainbow edge, a picture of the person on it, not chibi but cute): Akihiko after a match, towel round his neck.
+4. A photo card, same style: Shinjiro in the dorm kitchen, caught mid-glare at the camera.
+5. A photo card, same style: Jungwon with a soft smile, sweater sleeves over his hands.
+6. A photo card, same style: Haechan winking with a peace sign.
 ```
 If ChatGPT won't take all the pictures at once, attach the people for the top row, make it, then say "Bottom row now, same style" with the rest.

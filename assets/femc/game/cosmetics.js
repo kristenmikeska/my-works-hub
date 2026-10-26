@@ -77,6 +77,8 @@ window.FemcCosmetics = (() => {
     c('tt-darkhour', 'title', 'Dark Hour Title', 'SR', 'Sickly green, like midnight.', { title: ['#3fbf6a', '#04110a'], titleFilter: 'hue-rotate(80deg) saturate(.8)' }),
     c('tt-velvet', 'title', 'Velvet Title', 'SR', 'A room with no doors.', { title: ['#2b5fd0', '#050b20'] }),
     c('tt-sunburst', 'title', 'Sunburst Title', 'UR', 'Gold on gold. The Cast Keychains reward.', { title: ['#ffd36b', '#2a1400'], pool: false }),
+    c('tt-twosuns', 'title', 'Two Suns Title', 'UR', 'Amber and rose, two lights at once. The Solchan Series reward.', { title: ['#ffb84d', '#2a0d14'], pool: false }),
+    c('tt-eclipse', 'title', 'Eclipse Title', 'UR', 'A sun and a moon sharing the sky. The Hidden Charms reward.', { title: ['#fff0a8', '#070a1c'], pool: false }),
     // Code-only: menu wallpapers (place backgrounds and the key art; nothing from the story's CGs).
     c('wp-dorm', 'wallpaper', 'Dorm Lounge', 'R', 'The lounge at night.', { bg: BG('iwatodaidorm-livingroom-night') }),
     c('wp-mall', 'wallpaper', 'Paulownia Mall', 'R', 'The mall after dark.', { bg: BG('paulownia-mall-night') }),
@@ -88,6 +90,7 @@ window.FemcCosmetics = (() => {
     c('wp-keyart', 'wallpaper', 'Solstice Key Art', 'UR', 'The title screen’s painting.', { bg: 'assets/femc/title/keyart.webp' }),
     c('wp-hearts', 'wallpaper', 'Hearts', 'SR', 'Little pink hearts. The Sweethearts & Sidekicks reward.', { css: 'radial-gradient(circle at 25% 25%, #ff8cc0 0 6px, transparent 7px) 0 0 / 46px 46px, radial-gradient(circle at 75% 75%, #ff4f9e 0 5px, transparent 6px) 0 0 / 46px 46px, linear-gradient(160deg, #3a1028, #14070f)', pool: false }),
     c('wp-snow', 'wallpaper', 'Snowfall', 'SR', 'Soft snow on navy. The Winter Series reward.', { css: 'radial-gradient(circle, #fff 0 2px, transparent 3px) 0 0 / 34px 34px, radial-gradient(circle, rgba(255,255,255,.6) 0 1.5px, transparent 2.5px) 17px 17px / 34px 34px, linear-gradient(180deg, #0b1c3d, #050b20)', pool: false }),
+    c('wp-pajamas', 'wallpaper', 'Pajama Night', 'SR', 'Moons and stars on flannel blue. The Dorm Life Series reward.', { css: 'radial-gradient(circle at 30% 30%, #ffe9a8 0 4px, transparent 5px) 0 0 / 40px 40px, radial-gradient(circle at 70% 70%, #cfe6ff 0 3px, transparent 4px) 0 0 / 40px 40px, linear-gradient(160deg, #2a3a66, #121a33)', pool: false }),
     // Code-only: field UI colours.
     c('ui-sakura', 'uitheme', 'Sakura Colours', 'R', 'Softer pinks.', { pal: 'sakura' }),
     c('ui-mint', 'uitheme', 'Mint Colours', 'R', 'Fresh greens.', { pal: 'mint' }),

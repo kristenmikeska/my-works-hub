@@ -1,7 +1,7 @@
 """The capsule series, rarities and tokens (gacha.js) and the Wardrobe / Boutique cosmetics (cosmetics.js), 2026-10-25.
 Headless Chrome, isolated profile, localhost; no player saves.
 
-Run: python3 tests/femc_cosmetics.py [--only odds,rotation,tokens,banner,equip,pending,ui,x10,shots] [--screenshots DIR]
+Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,x10,shots] [--screenshots DIR]
 
 Covers: five rarities over many turns (Secret included) and pity kept per series; which machines stand in the Corner by
 date (each season, and a turn on a series that isn't on falls back to the Cast machine); only people Solar has met;
@@ -12,7 +12,10 @@ whose art is missing staying out of the pool and unequippable, then appearing by
 copies Solar's own pose frames into a temporary skin folder, runs tools/femc-wardrobe.py scan, and removes both after),
 worn in a real fight and in scene portraits behind the toggle; New Game+ keeping it all; Wardrobe, Boutique reveal and a
 Secret capsule reveal at desktop and phone size; ×10 rolls on every machine (cost, pity counted per turn, the results grid with
-one best-rarity reveal, Skip, the disabled reason) with grids at desktop and phone size; zero console errors."""
+one best-rarity reveal, Skip, the disabled reason) with grids at desktop and phone size; zero console errors.
+2026-10-26: the Solchan machine only once Haechan is met, Dorm Life's months, capsule goods (met-only, Collection), and the
+hidden charms: 200,000 simulated turns near HIDDEN.rate, never touching or guaranteed by pity, none before Haechan, the
+sun-and-moon reveal and ??? in Collection."""
 import argparse, base64, json, pathlib, shutil, subprocess, sys, time
 from femc_browser import Page, REPO
 
@@ -116,7 +119,7 @@ try:
         # A Secret resets both counters; rarity colours and sounds differ.
         r = p.eval(r"""(()=>{const GA=FemcGacha;GA.gs().pity.cap={sr:5,ur:30};GA.rng=()=>0.001;const x=GA.rarity('cap','cast');GA.rng=Math.random;
           const R=GA.RARITY;return {x,p:GA.gs().pity.cap,colors:new Set(Object.values(R).map(r=>r.color)).size,sfx:new Set(Object.values(R).map(r=>r.sfx)).size};})()""")
-        ok(r == {'x': 'SEC', 'p': {'sr': 0, 'ur': 0}, 'colors': 5, 'sfx': 5}, f'secret: {r}')
+        ok(r == {'x': 'SEC', 'p': {'sr': 0, 'ur': 0}, 'colors': 6, 'sfx': 6}, f'secret (and Hidden has its own colour and sound): {r}')
         clean(p, 'odds')
         results['odds'] = 'five tiers, per-series pity, Secret resets'
 
@@ -125,7 +128,7 @@ try:
         setup(p, day='4/10', met=['akihiko', 'yukari'])
         r = p.eval(r"""(()=>{const G=FemcGame,GA=FemcGacha;const at=md=>GA.activeSeries(G.dayOf(md)).map(s=>s.id).join(',');
           return ['4/10','6/20','7/10','8/30','9/20','10/5','11/3','12/20','1/10','2/14','3/5'].map(at);})()""")
-        ok(r == ['cast,couples', 'cast,couples', 'cast,summer', 'cast,summer', 'cast,couples', 'cast,halloween', 'cast,couples', 'cast,winter', 'cast,winter', 'cast,valentine', 'cast,valentine'], f'rotation: {r}')
+        ok(r == ['cast,couples', 'cast,couples,dorm', 'cast,summer', 'cast,summer', 'cast,couples,dorm', 'cast,halloween', 'cast,couples,dorm', 'cast,winter', 'cast,winter,dorm', 'cast,valentine', 'cast,valentine,dorm'], f'rotation: {r}')
         # Off-season turns fall back to the Cast machine; only people she's met (Solar, Akihiko, Yukari) appear.
         r = p.eval(QUIET + r"""(()=>{const G=FemcGame,GA=FemcGacha;G.S.yen=1e8;G.S.gacha=GA.fresh();GA.rng=Math.random;const from=new Set(),who=new Set();
           try{for(let i=0;i<400;i++){const x=GA.pull('yen',i%3?'couples':'halloween');from.add(x.from);if(x.kind==='skey')GA.itemById(x.id)[0].who.forEach(w=>who.add(w));}}finally{""" + LOUD + r"""}
@@ -143,6 +146,71 @@ try:
         p.eval("document.querySelector('.g-cap-ov [data-close]').click()")
         clean(p, 'rotation')
         results['rotation'] = 'eleven dates, fallback, met-only, October machine'
+
+    # ── Solchan and Dorm Life machines, capsule goods ──
+    if want('solchan'):
+        setup(p, day='10/5', met=['akihiko', 'yukari', 'jihoon'])
+        r = p.eval(r"""(()=>{const G=FemcGame,GA=FemcGacha;const at=md=>GA.activeSeries(G.dayOf(md)).map(s=>s.id).join(',');
+          const before=['9/20','10/5','12/20','2/14'].map(at);G.S.met.push('haechan');const after=['4/10','8/30','9/20','10/5','12/20','2/14','3/5'].map(at);
+          const sc=GA.SERIES.find(s=>s.id==='solchan'),rs={};sc.items.forEach(x=>rs[x.r]=(rs[x.r]||0)+1);
+          return {before,after,n:sc.items.length,rs,hate:GA.itemEligible(GA.itemById('dl-hateclub')[0]),noMinji:!GA.itemEligible(GA.itemById('su-solar-minji')[0])};})()""")
+        ok(r['before'] == ['cast,couples,dorm', 'cast,halloween', 'cast,winter', 'cast,valentine'], f'no Solchan machine before Haechan: {r}')
+        ok(r['after'] == ['cast,couples', 'cast,summer', 'cast,couples,solchan,dorm', 'cast,halloween,solchan', 'cast,winter,solchan', 'cast,valentine,solchan', 'cast,valentine,solchan,dorm'], f'Solchan Sep–Mar: {r}')
+        ok(r["n"] == 14 and r['rs'].get('UR') == 1 and r['rs'].get('SEC') == 1 and r['rs'].get('SR', 0) >= 3 and r['hate'] and r['noMinji'], f'Solchan items, side characters, met-only: {r}')
+        # Goods: met-only, new first, repeats pay tokens; Collection lists them, drawn by kind.
+        r = p.eval(QUIET + r"""(()=>{const G=FemcGame,GA=FemcGacha;G.S.yen=1e8;G.S.gacha=GA.fresh();GA.rng=Math.random;const got=[],from=new Set(),sw=new Set();
+          try{for(let i=0;i<1500;i++){const x=GA.pull('yen',i%2?'solchan':'cast');from.add(x.from);if(x.kind==='good')got.push(x);if(x.kind==='skey'&&x.from==='solchan')sw.add(x.id);}}finally{""" + LOUD + r"""}
+          const elig=GA.GOODS.filter(GA.itemEligible).map(x=>x.id);
+          return {n:got.length,unmet:got.filter(x=>!elig.includes(x.id)).length,dups:got.filter(x=>x.dup).length,kinds:[...new Set(got.map(x=>GA.GOODS.find(g=>g.id===x.id).kind))].sort(),from:[...from].sort(),sw:sw.size};})()""")
+        ok(r['n'] > 40 and r['unmet'] == 0 and r['dups'] > 0 and r['kinds'] == ['photo', 'plush', 'stand', 'sticker'] and r['from'] == ['cast', 'solchan'] and r['sw'] >= 8, f'goods and the Solchan machine: {r}')
+        menu(p, 'collection')
+        r = p.eval("(()=>{const s=document.querySelector('.g-col-goods');return {li:s.querySelectorAll('li').length,own:s.querySelectorAll('li.own .g-good').length,kinds:new Set([...s.querySelectorAll('.g-good')].map(x=>x.dataset.k)).size}})()")
+        ok(r['li'] == p.eval('FemcGacha.GOODS.length') and r['own'] > 0 and r['kinds'] == 4, f'Collection goods: {r}')
+        p.eval("FemcMenu.close()")
+        clean(p, 'solchan')
+        results['solchan'] = 'Solchan gated on Haechan (Sep–Mar), Dorm Life months, goods met-only with tokens and Collection'
+
+    # ── Hidden charms: a large simulated run, outside pity ──
+    if want('hidden'):
+        setup(p, day='11/5')
+        r = p.eval(SEED + QUIET + r"""(()=>{const G=FemcGame,GA=FemcGacha;G.S.yen=1e12;G.S.gacha=GA.fresh();GA.rng=__seed(2026);let hid=0,turns=0,gap=0,maxGap=0;const ids={};
+          const sids=GA.activeSeries().map(s=>s.id);
+          try{for(let k=0;k<2000;k++){const list=GA.pullN('yen',sids[k%sids.length],100);for(const x of list){turns++;gap++;if(x.r==='HID'){hid++;ids[x.id]=1;maxGap=Math.max(maxGap,gap);gap=0;}}}}finally{""" + LOUD + r"""}
+          return {turns,hid,rate:hid/turns,kinds:Object.keys(ids).length,sids};})()""")
+        ok(r['turns'] == 200000 and 220 <= r['hid'] <= 380 and r['kinds'] == 4 and 'solchan' in r['sids'], f'hidden rate over 200,000 turns: {r}')
+        results['hidden (200,000 turns)'] = {k: r[k] for k in ('hid', 'rate')}
+        # Outside pity: a hidden turn leaves both counters alone, and pity never hands one out.
+        r = p.eval(QUIET + r"""(()=>{const G=FemcGame,GA=FemcGacha;G.S.yen=1e8;G.S.gacha=GA.fresh();const out={};
+          try{GA.gs().pity.cap={sr:5,ur:30};GA.rng=()=>0.001;const a=GA.pullN('yen','cast',10);out.allHid=a.every(x=>x.r==='HID');out.pity=JSON.parse(JSON.stringify(GA.gs().pity.cap));
+          out.newFirst=new Set(a.slice(0,4).map(x=>x.id)).size;out.dupTokens=a[4].dup&&a[4].stars===15;
+          GA.rng=()=>0.99;G.S.gacha=GA.fresh();const b=[];for(let i=0;i<300;i++)b.push(GA.pull('yen','cast').r);out.pityHid=b.filter(x=>x==='HID').length;out.pityUR=b.filter(x=>x==='UR').length;
+          G.S.met=G.S.met.filter(x=>x!=='haechan');GA.rng=()=>0.001;G.S.gacha=GA.fresh();const c=GA.pullN('yen','cast',20);out.noHaechan=c.filter(x=>x.r==='HID').length;out.sec=c[0].r;
+          G.S.met.push('haechan');}finally{""" + LOUD + r"""}GA.rng=Math.random;return out;})()""")
+        ok(r['allHid'] and r['pity'] == {'sr': 5, 'ur': 30} and r['newFirst'] == 4 and r['dupTokens'], f'hidden outside pity, new first, repeats 15 tokens: {r}')
+        ok(r['pityHid'] == 0 and r['pityUR'] == 5 and r['noHaechan'] == 0 and r['sec'] == 'SEC', f'pity never gives one; none before Haechan: {r}')
+        # The reveal and the Collection mark.
+        p.eval("FemcGacha.gs().skeys={};FemcGacha.gs().done=[];FemcGame.save()")
+        menu(p, 'collection')
+        r = p.eval("(()=>{const s=document.querySelector('.g-col-hidden');return s&&{h:s.querySelector('h3').textContent,q:[...s.querySelectorAll('li small')].map(x=>x.textContent)}})()")
+        ok(r and '☀☾' in r['h'] and r['q'] == ['???'] * 4, f'Collection: ??? until found: {r}')
+        p.eval("FemcMenu.close()")
+        motion(p, False)
+        p.eval("FemcGacha.rng=()=>0.001")
+        open_capsule(p)
+        click(p, '.g-cap-ov [data-pull=yen]')
+        p.wait("document.querySelector('.g-cap-machine').classList.contains('pop')", 10)
+        ok(p.eval("document.querySelector('.g-cap-machine').dataset.r") == 'HID' and p.eval("getComputedStyle(document.querySelector('.g-cap-machine'),'::before').content") != 'none', 'the sun-and-moon reveal')
+        shot(p, 'capsule-hidden-pop')
+        p.wait("!!document.querySelector('.g-cap-ov .g-ga-prize.r-HID')", 10)
+        shot(p, 'capsule-hidden')
+        p.eval("FemcGacha.rng=Math.random;document.querySelector('.g-cap-ov [data-close]').click()")
+        motion(p, True)
+        menu(p, 'collection')
+        ok(p.eval("[...document.querySelectorAll('.g-col-hidden li small')].filter(x=>x.textContent!=='???').length") == 1, 'the found one is named')
+        p.eval("document.querySelector('.g-col-hidden').scrollIntoView()"); shot(p, 'collection-hidden')
+        p.eval("FemcMenu.close()")
+        clean(p, 'hidden')
+        results['hidden'] = 'rate near 0.15%, outside pity, none before Haechan, reveal, ??? in Collection'
 
     # ── Repeats → tokens, the token shop, series rewards ──
     if want('tokens'):
@@ -257,7 +325,7 @@ try:
               pose:C.battle().pose,face:FemcGame.portrait('solar','happy'),sad:FemcGame.portrait('solar','sad')};})()""")
             ok(r['ready'] and r['inPool'] and 'sk-phantom' in r['feat'] and r['eq'] and r['pose'].get('solar', '').endswith('skins/sk-phantom/'), f'art arrived: {r}')
             ok(r['face'].endswith('skins/sk-phantom/portraits/solar/happy.webp') and r['sad'].endswith('skins/sk-phantom/portraits/solar/happy.webp'), f'scene portraits: {r}')
-            ok(p.eval("(()=>{FemcCosmetics.setPortraits(false);const f=FemcGame.portrait('solar','happy');FemcCosmetics.setPortraits(true);return f})()").endswith('/portraits/solar/happy.webp') and
+            ok(p.eval("(()=>{FemcCosmetics.setPortraits(false);const f=FemcGame.portrait('solar','happy');FemcCosmetics.setPortraits(true);return f})()").split('?')[0].endswith('/portraits/solar/happy.webp') and
                '/skins/' not in p.eval("(()=>{FemcCosmetics.setPortraits(false);const f=FemcGame.portrait('solar','happy');FemcCosmetics.setPortraits(true);return f})()"), 'the portrait toggle')
             menu(p, 'wardrobe')
             click(p, '[data-wd="sk-phantom"]')
@@ -420,7 +488,7 @@ try:
             shot(p, f'collection-series-{tag}')
             p.eval("FemcMenu.close()")
             # A Secret capsule from the Halloween machine, mid-reveal and revealed.
-            p.eval("FemcGacha.rng=()=>0.001")
+            p.eval("FemcGacha.rng=()=>0.001;FemcGacha.HIDDEN.rate=0")
             open_capsule(p)
             click(p, '.g-cap-ser[data-series=halloween]')
             click(p, '.g-cap-ov [data-pull=yen]')
@@ -429,7 +497,7 @@ try:
             p.wait("!!document.querySelector('.g-cap-ov .g-ga-prize.r-SEC')", 10)
             ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1'), tag + ': capsule, no sideways scroll')
             shot(p, f'capsule-secret-{tag}')
-            p.eval("FemcGacha.rng=Math.random;document.querySelector('.g-cap-ov [data-close]').click()")
+            p.eval("FemcGacha.rng=Math.random;FemcGacha.HIDDEN.rate=0.0015;document.querySelector('.g-cap-ov [data-close]').click()")
         # Kat's outfits (batch 47): Kiriko Cosplay in the Wardrobe and worn on the battlefield.
         view(p, 1280, 800)
         p.eval("(()=>{const C=FemcCosmetics;['sk-kiriko','sk-emo'].forEach(C.grantItem);C.equip('sk-kiriko');FemcGame.save();})()")

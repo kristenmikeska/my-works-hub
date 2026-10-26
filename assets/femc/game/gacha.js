@@ -32,7 +32,14 @@
      Capsule Tokens (the old Capsule Stars field, S.gacha.stars): ten trade for a ticket, or buy a missing item from a
      machine on today (TOKEN_PRICE). Series charm art: tools/femc-wardrobe.py cuts a sheet to game/art/keys/series/<id>.webp
      and lists it in game/art/ready.js (FEMC_ART_READY.keys); until then the charm is drawn from the faces. Halloween
-     singles wear Kat's existing <id>-halloween.webp charms. Save: S.gacha.skeys { id: copies }, done [series ids]. */
+     singles wear Kat's existing <id>-halloween.webp charms. Save: S.gacha.skeys { id: copies }, done [series ids].
+   ── Solchan, Dorm Life, hidden charms and goods (2026-10-26, Kat's "more fun stuff" batch) ──
+     A series may have `needs` (ids that must be met before its machine stands in the Corner: Solchan needs Haechan, Sep–Mar,
+     `featured`). Dorm Life rotates May, Jun, Sep, Nov, Jan, Mar. Side characters who aren't links (Asahi, Niki) never block an
+     item. The `hidden` series has no machine: once Haechan is met every turn first rolls HIDDEN.rate (0.15%) for one of its
+     charms, outside pity (rarity HID, its own sun-and-moon reveal, ??? in Collection until found). GOODS (sticker sheets,
+     acrylic stands, mini plush, photo cards) come out of Rare / Super Rare capsules (capPrize → goodPrize); save
+     S.gacha.goods { id: copies }; art game/art/goods/<id>.webp via ready.js `goods`, drawn by kind until then. */
 window.FemcGacha = (() => {
   const G = window.FemcGame;
   if (!G) return null;
@@ -49,9 +56,10 @@ window.FemcGacha = (() => {
   const RARITY = {
     C: { name: 'Common', stars: 1, color: '#f7f2f5', sfx: 'femc-note' }, R: { name: 'Rare', stars: 2, color: '#6ab0ff', sfx: 'femc-advance' },
     SR: { name: 'Super Rare', stars: 3, color: '#c58bff', sfx: 'femc-rankup' }, UR: { name: 'Ultra', stars: 4, color: '#ffd36b', sfx: 'femc-moon' },
-    SEC: { name: 'Secret', stars: 5, color: '#ff6be6', sfx: 'femc-darkhour' }
+    SEC: { name: 'Secret', stars: 5, color: '#ff6be6', sfx: 'femc-darkhour' },
+    HID: { name: 'Hidden', stars: 6, color: '#fff0a8', sfx: 'femc-doves' } // hidden charms only, never rolled (HIDDEN)
   };
-  const CAP = { price: 500, odds: { C: 0.6, R: 0.3, SR: 0.08, UR: 0.015, SEC: 0.005 }, pitySR: 10, pityUR: 60, stars: { C: 0, R: 1, SR: 3, UR: 6, SEC: 10 }, starsPerTicket: 10 };
+  const CAP = { price: 500, odds: { C: 0.6, R: 0.3, SR: 0.08, UR: 0.015, SEC: 0.005 }, pitySR: 10, pityUR: 60, stars: { C: 0, R: 1, SR: 3, UR: 6, SEC: 10, HID: 15 }, starsPerTicket: 10 };
   const TOKEN_PRICE = { R: 5, SR: 12, UR: 25, SEC: 40 };
   /* Capsule series (header). Items: id, who (one or two people), name, look (the outfit, also the art prompt's), r. */
   const it = (id, who, name, look, r) => ({ id, who, name, look, r });
@@ -72,6 +80,9 @@ window.FemcGacha = (() => {
       it('cp-solar-jihoon', ['solar', 'jihoon'], 'Solar & Jihoon', 'he grins with a crane-game prize, she pretends not to be impressed', 'SR'),
       it('cp-solar-minji', ['solar', 'minji'], 'Solar & Minji', 'Minji snapping a selfie of the two of them', 'SR'),
       it('cp-solar-haechan', ['solar', 'haechan'], 'Solar & Haechan', 'sharing one pair of earbuds, heads together', 'UR'),
+      it('cp-solar-akihiko-2', ['solar', 'akihiko'], 'Solar & Akihiko', 'he laces up her boxing gloves, she grins over his shoulder', 'SR'),
+      it('cp-solar-jungwon-2', ['solar', 'jungwon'], 'Solar & Jungwon', 'asleep on his study notes, him quietly holding her pencil', 'SR'),
+      it('cp-solar-jihoon-2', ['solar', 'jihoon'], 'Solar & Jihoon', 'sharing one umbrella, his side soaked on purpose', 'SR'),
       it('cp-sees-photo', ['solar', 'akihiko', 'yukari', 'junpei', 'mitsuru', 'fuuka'], 'S.E.E.S. Photo', 'the whole dorm squeezed into one photo frame', 'SEC')] },
     { id: 'summer', name: 'Summer Series', color: '#4fd8ff', months: [7, 8], reward: 'ui-summer', blurb: 'Beach days, sun hats and festival nights.', items: [
       it('su-akihiko', ['akihiko'], 'Akihiko', 'swim trunks and a towel over his shoulders', 'R'),
@@ -82,6 +93,8 @@ window.FemcGacha = (() => {
       it('su-jungwon', ['jungwon'], 'Jungwon', 'beach shirt, sunglasses pushed up', 'R'),
       it('su-solar', ['solar'], 'Solar', 'summer yukata with sunflowers, hair up', 'SR'),
       it('su-haechan', ['haechan'], 'Haechan', 'navy festival yukata, a sparkler', 'SR'),
+      it('su-solar-jungwon', ['solar', 'jungwon'], 'Solar & Jungwon', 'summer festival, he wins her a goldfish in a little bag', 'SR'),
+      it('su-solar-minji', ['solar', 'minji'], 'Solar & Minji', 'sharing one strawberry shaved ice, two spoons', 'SR'),
       it('su-solar-akihiko', ['solar', 'akihiko'], 'Solar & Akihiko', 'beach day, building a lopsided sandcastle', 'UR'),
       it('su-koro-melon', ['koromaru'], 'Koromaru', 'sitting inside a hollowed watermelon', 'SEC')] },
     { id: 'halloween', name: 'Halloween Series', color: '#ff9a3c', months: [10], reward: 'ui-pumpkin', blurb: 'The cast in costume (the charms you know, now to keep).', items: [
@@ -91,6 +104,7 @@ window.FemcGacha = (() => {
       it('hw-jungwon', ['jungwon'], 'Jungwon', 'Halloween costume', 'R'), it('hw-kuromi', ['kuromi'], 'Kuromi', 'Halloween costume', 'R'),
       it('hw-solar', ['solar'], 'Solar', 'Halloween costume', 'SR'), it('hw-akihiko', ['akihiko'], 'Akihiko', 'Halloween costume', 'SR'),
       it('hw-haechan', ['haechan'], 'Haechan', 'Halloween costume', 'SR'),
+      it('hw-solar-jihoon', ['solar', 'jihoon'], 'Solar & Jihoon', 'matching pumpkin costumes, him carrying her candy as well as his', 'SR'),
       it('hw-solar-haechan', ['solar', 'haechan'], 'Solar & Haechan', 'trick-or-treating: a little witch and a vampire sharing one candy bucket', 'UR'),
       it('hw-elizabeth', ['elizabeth'], 'Elizabeth', 'a witch’s hat over her Velvet Room uniform, riding the Compendium like a broom', 'SEC')] },
     { id: 'winter', name: 'Winter Series', color: '#bfe3ff', months: [12, 1], reward: 'wp-snow', blurb: 'Scarves, Santa hats and hot cocoa.', items: [
@@ -103,6 +117,7 @@ window.FemcGacha = (() => {
       it('wi-minji', ['minji'], 'Minji', 'knit hat and a camera round her neck', 'R'),
       it('wi-solar', ['solar'], 'Solar', 'cream winter coat, pink scarf, snow in her hair', 'SR'),
       it('wi-jungwon', ['jungwon'], 'Jungwon', 'long dark coat, a gift box tied with ribbon', 'SR'),
+      it('wi-solar-akihiko', ['solar', 'akihiko'], 'Solar & Akihiko', 'a New Year’s shrine visit, his red scarf round her neck', 'SR'),
       it('wi-solar-shinjiro', ['solar', 'shinjiro'], 'Solar & Shinjiro', 'two mugs of hot cocoa, one scarf between them', 'UR'),
       it('wi-koro-reindeer', ['koromaru'], 'Koromaru', 'reindeer antlers and a tiny red nose', 'SEC')] },
     { id: 'valentine', name: 'Valentine’s Series', color: '#ff5d8f', months: [2, 3], reward: 'evk-heart', blurb: 'Chocolate, ribbons and a little nerve.', items: [
@@ -115,8 +130,53 @@ window.FemcGacha = (() => {
       it('va-solar', ['solar'], 'Solar', 'chocolate-stained apron, a tray of hearts', 'SR'),
       it('va-akihiko', ['akihiko'], 'Akihiko', 'a protein bar wrapped in a red ribbon', 'SR'),
       it('va-solar-jungwon', ['solar', 'jungwon'], 'Solar & Jungwon', 'a heart-shaped chocolate split in two', 'UR'),
-      it('va-kuromi-melody', ['kuromi', 'mymelody'], 'Kuromi & My Melody', 'Kuromi’s anti-Valentine sign, My Melody’s heart balloon', 'SEC')] }
+      it('va-kuromi-melody', ['kuromi', 'mymelody'], 'Kuromi & My Melody', 'Kuromi’s anti-Valentine sign, My Melody’s heart balloon', 'SEC'),
+      it('va-solar-shinjiro', ['solar', 'shinjiro'], 'Solar & Shinjiro', 'he pretends the handmade chocolate isn’t for him', 'SR'),
+      it('va-solar-minji', ['solar', 'minji'], 'Solar & Minji', 'a polaroid of the two of them holding chocolate hearts', 'SR')] },
+    /* Kat's Solchan batch (2026-10-26): a featured machine from Haechan's arrival to the end of the year (`needs`: the
+       machine only stands in the Corner once everyone in it is met). */
+    { id: 'solchan', name: 'Solchan Series', color: '#ffb84d', months: [9, 10, 11, 12, 1, 2, 3], needs: ['haechan'], featured: true, reward: 'tt-twosuns', blurb: 'Solar and Haechan, all year round. A featured machine.', items: [
+      it('sc-haechan-discman', ['haechan'], 'Haechan', 'headphones round his neck, a Discman in one hand', 'C'),
+      it('sc-haechan-plush', ['haechan'], 'Haechan', 'a round, sleepy little plush version of him with a moon on his tummy', 'R'),
+      it('sc-dryer', ['solar', 'haechan'], 'The Dryer', 'sitting on the laundry-room dryer, his headphones on her ears', 'C'),
+      it('sc-earbuds', ['solar', 'haechan'], 'Sharing Earbuds', 'one earbud each, heads tipped together, eyes closed', 'R'),
+      it('sc-gamers', ['solar', 'haechan'], 'Player Two', 'gaming headsets and controllers, a mini Widowmaker on his shoulder, a mini Kiriko on hers', 'R'),
+      it('sc-morning', ['solar', 'haechan'], 'Five More Minutes', 'a sleepy morning: bed hair, one blanket, her yawning on his shoulder', 'R'),
+      it('sc-rooftop', ['solar', 'haechan'], 'Rooftop Night', 'sitting on a rooftop ledge at night, city lights below, a crescent moon', 'SR'),
+      it('sc-jacket', ['solar', 'haechan'], 'His Jacket', 'his jacket over her shoulders, him pretending he isn’t cold', 'SR'),
+      it('sc-forehead', ['solar', 'haechan'], 'Forehead Touch', 'foreheads together, eyes closed, both smiling', 'SR'),
+      it('sc-christmas', ['solar', 'haechan'], 'Port Island Christmas', 'Christmas lights on Port Island, matching scarves, one cup of cocoa', 'SR'),
+      it('sc-strangers', ['solar', 'haechan'], 'Strangers', 'the strangers versions: dark coats, a rainy street, her umbrella over them both', 'SR'),
+      it('sc-runners', ['solar', 'haechan'], 'Runners', 'the Runners versions: college hoodies, a coffee each, walking in step', 'SR'),
+      it('sc-twosuns', ['solar', 'haechan'], 'Two Suns', 'a Theurgy chibi: back to back, two little suns blazing behind them', 'UR'),
+      it('sc-held', ['solar', 'haechan'], 'Hold On', 'him holding her close while a ribbon of light tugs at her, refusing to let go', 'SEC')] },
+    { id: 'dorm', name: 'Dorm Life Series', color: '#9fd4ff', months: [5, 6, 9, 11, 1, 3], reward: 'wp-pajamas', blurb: 'Pajamas, a dog in costumes and the friends who say they hate each other.', items: [
+      it('dl-akihiko-pj', ['akihiko'], 'Akihiko', 'grey pajamas, a protein shaker, hair a mess', 'R'),
+      it('dl-junpei-pj', ['junpei'], 'Junpei', 'baggy pajamas, cap still on, asleep sitting up', 'R'),
+      it('dl-yukari-pj', ['yukari'], 'Yukari', 'pink pajamas and a sheet mask', 'R'),
+      it('dl-mitsuru-pj', ['mitsuru'], 'Mitsuru', 'a silk robe and a cup of tea, very composed', 'R'),
+      it('dl-fuuka-pj', ['fuuka'], 'Fuuka', 'mint pajamas, hugging a pillow, a laptop at her feet', 'R'),
+      it('dl-solar-pj', ['solar'], 'Solar', 'sunny-yellow pajamas, fluffy slippers, a bowl of ramen', 'SR'),
+      it('dl-koro-bee', ['koromaru'], 'Koromaru', 'a bumblebee costume with little wings', 'R'),
+      it('dl-koro-hero', ['koromaru'], 'Koromaru', 'a red superhero cape and a tiny mask', 'SR'),
+      it('dl-koro-sailor', ['koromaru'], 'Koromaru', 'a sailor hat and a striped collar', 'SR'),
+      it('dl-ken-pj', ['ken'], 'Ken', 'a Featherman onesie, hood up, very serious', 'R'),
+      it('dl-aigis-pj', ['aigis'], 'Aigis', 'striped pajamas and a sleep mask on her forehead, “resting”', 'R'),
+      it('dl-koro-basket', ['koromaru'], 'Koromaru', 'asleep in the laundry basket on someone’s clean towels', 'R'),
+      it('dl-shinjiro-pj', ['shinjiro'], 'Shinjiro', 'a midnight snack: apron over a hoodie, a pot of ramen', 'SR'),
+      it('dl-hateclub', ['jihoon', 'asahi', 'niki'], 'The Hate Club', 'squeezed into a karaoke booth, Jihoon holding the mic, the other two booing', 'UR'),
+      it('dl-dorm-pj', ['solar', 'akihiko', 'yukari', 'junpei', 'mitsuru', 'fuuka', 'koromaru'], 'Pajama Night', 'the whole dorm in pajamas piled on the lounge sofa for a movie', 'SEC')] },
+    /* Hidden charms (Kat, 2026-10-26): no machine of their own. Any capsule machine can drop one at HIDDEN.rate a turn once
+       Haechan has arrived, outside pity (never counted, never guaranteed). Their own rarity (HID) and reveal; ??? in
+       Collection until found. */
+    { id: 'hidden', name: 'Hidden Charms', color: '#fff0a8', hidden: true, needs: ['haechan'], reward: 'tt-eclipse', blurb: 'Nobody has a list. Nobody has seen all four.', items: [
+      it('hd-couch', ['solar', 'haechan'], 'Asleep on the Couch', 'asleep together on the dorm sofa, his arm round her, the TV still on', 'HID'),
+      it('hd-rings', ['solar', 'haechan'], 'Matching Rings', 'just their two hands, fingers laced, matching silver rings', 'HID'),
+      it('hd-pairsuns', ['solar', 'haechan'], 'A Pair of Suns', 'two little suns with their faces, side by side, glowing', 'HID'),
+      it('hd-runners-roof', ['haechan'], 'The Runners Roof', 'him alone on the Runners rooftop at golden hour, looking back with a grin', 'HID')] }
   ];
+  const HIDDEN = { rate: 0.0015, stars: 15 };
+  const seriesOpen = s => !s.needs || s.needs.every(id => id === 'solar' || G.isMet(id));
   const serById = id => SERIES.find(s => s.id === id);
   const itemById = id => { for (const s of SERIES) { const x = s.items.find(i => i.id === id); if (x) return [x, s]; } return [null, null]; };
   const VEL = { price: 3000, plumes: 3, odds: { R: 0.7, SR: 0.25, UR: 0.05 }, pitySR: 5, pityUR: 30 };
@@ -136,6 +196,27 @@ window.FemcGacha = (() => {
     { id: 'velvet', name: 'Velvet Case', r: 'SR', desc: 'The exact blue of a room with no doors.' },
     { id: 'gold', name: 'Golden Sun Case', r: 'UR', desc: 'Gold all over. Impossible to lose in a bag.' }
   ];
+  /* Capsule goods (Kat's 2026-10-26 batch): sticker sheets, acrylic stands, mini plush and photo cards. Data only: { id,
+     kind, who, name, look, r }; met-only like the keychains; repeats become tokens. They come out of the Cast machine's Rare
+     and Super Rare capsules (so every machine's top-up too). Art: game/art/goods/<id>.webp (tools/femc-wardrobe.py goods,
+     listed in ready.js `goods`); until then each kind is drawn from the faces (gacha.css .g-good[data-k]). */
+  const GOOD_KINDS = { sticker: 'Sticker sheet', stand: 'Acrylic stand', plush: 'Mini plush', photo: 'Photo card' };
+  const gd = (id, kind, who, name, look, r) => ({ id, kind, who, name, look, r });
+  const GOODS = [
+    gd('gd-st-sees', 'sticker', ['solar', 'akihiko', 'yukari', 'junpei', 'mitsuru', 'fuuka'], 'S.E.E.S. Stickers', 'six chibi faces, die-cut', 'R'),
+    gd('gd-st-koro', 'sticker', ['koromaru'], 'Koromaru Stickers', 'six Koromaru moods: happy, sleepy, begging, proud, wet, zoomies', 'R'),
+    gd('gd-st-solchan', 'sticker', ['solar', 'haechan'], 'Solchan Stickers', 'doodles of the two of them: suns, moons, headphones', 'R'),
+    gd('gd-pc-akihiko', 'photo', ['akihiko'], 'Akihiko Photo Card', 'post-match, towel round his neck, holographic edge', 'R'),
+    gd('gd-pc-shinjiro', 'photo', ['shinjiro'], 'Shinjiro Photo Card', 'in the dorm kitchen, caught mid-glare', 'R'),
+    gd('gd-pc-jungwon', 'photo', ['jungwon'], 'Jungwon Photo Card', 'a soft smile, sweater sleeves over his hands', 'R'),
+    gd('gd-pc-haechan', 'photo', ['haechan'], 'Haechan Photo Card', 'a wink and a peace sign, holographic edge', 'SR'),
+    gd('gd-pl-koro', 'plush', ['koromaru'], 'Koromaru Mini Plush', 'a round little Koromaru with a red collar', 'R'),
+    gd('gd-pl-solar', 'plush', ['solar'], 'Solar Mini Plush', 'Solar as a squishy round plush, a sun on her hair clip', 'SR'),
+    gd('gd-as-solar', 'stand', ['solar'], 'Solar Acrylic Stand', 'her uniform, naginata over her shoulder, a printed moon base', 'SR'),
+    gd('gd-as-haechan', 'stand', ['haechan'], 'Haechan Acrylic Stand', 'headphones on, hands in his jacket pockets, a printed rooftop base', 'SR'),
+    gd('gd-as-akihiko', 'stand', ['akihiko'], 'Akihiko Acrylic Stand', 'a boxing stance, gloves up, a printed ring base', 'SR')
+  ];
+  const goodById = id => GOODS.find(x => x.id === id);
   const CAP_C = [['item', 'medicine', 2], ['item', 'snuff_soul', 1], ['item', 'patra_gem', 1], ['item', 'revival_bead', 1], ['item', 'dis_poison', 2], ['mat', 'tarot_dust', 6]];
   const CAP_R_ITEMS = [['item', 'bead', 1], ['item', 'chewing_soul', 1], ['item', 'revival_bead', 2], ['mat', 'tarot_dust', 14]];
   const capGear = r => Object.keys(D().gear).filter(k => D().gear[k].gacha === 'capsule' && (r === 'UR' ? k === 'cap_gold_sun' : k !== 'cap_gold_sun'));
@@ -149,7 +230,7 @@ window.FemcGacha = (() => {
   };
 
   /* ── State ── */
-  function fresh() { return { v: 2, plumes: 0, stars: 0, pulls: 0, draws: 0, pity: { cap: { sr: 0, ur: 0 }, vel: { sr: 0, ur: 0 }, series: {} }, keys: {}, skeys: {}, done: [], cases: [], caseOn: null, credited: [], last: null }; }
+  function fresh() { return { v: 2, plumes: 0, stars: 0, pulls: 0, draws: 0, pity: { cap: { sr: 0, ur: 0 }, vel: { sr: 0, ur: 0 }, series: {} }, keys: {}, skeys: {}, goods: {}, done: [], cases: [], caseOn: null, credited: [], last: null }; }
   function gs() {
     const s = S();
     const f = fresh();
@@ -160,14 +241,18 @@ window.FemcGacha = (() => {
     if (!g.pity.series || typeof g.pity.series !== 'object') g.pity.series = {};
     if (!Array.isArray(g.cases)) g.cases = []; if (!Array.isArray(g.credited)) g.credited = []; if (!Array.isArray(g.done)) g.done = [];
     if (!g.skeys || typeof g.skeys !== 'object' || Array.isArray(g.skeys)) g.skeys = {};
+    if (!g.goods || typeof g.goods !== 'object' || Array.isArray(g.goods)) g.goods = {};
     return g;
   }
   // Pity for a capsule series: the Cast machine keeps the old counters.
   const seriesPity = sid => { const g = gs(); if (!sid || sid === 'cast') return g.pity.cap; return (g.pity.series[sid] = Object.assign({ sr: 0, ur: 0 }, g.pity.series[sid] || {})); };
   // The machines in the Corner on a day: the Cast machine, then the season's.
   const monthOf = d => { try { return G.dateOf(d ?? S().day).getMonth() + 1; } catch (e) { return 4; } };
-  const activeSeries = d => SERIES.filter(s => s.always || (s.months || []).includes(monthOf(d)));
-  const itemEligible = x => x.who.every(id => id === 'solar' || G.isMet(id));
+  const activeSeries = d => SERIES.filter(s => !s.hidden && seriesOpen(s) && (s.always || (s.months || []).includes(monthOf(d))));
+  const hiddenSeries = () => serById('hidden');
+  const hiddenOn = () => seriesOpen(hiddenSeries());
+  // Met-only; a side character who isn't a link (the Hate Club's Asahi and Niki) tags along with whoever is.
+  const itemEligible = x => x.who.every(id => id === 'solar' || G.isMet(id) || !G.LINKS[id]);
   const itemCount = s => s.items.filter(x => gs().skeys[x.id] > 0).length;
   // A series is complete when every keychain in it is owned (the Cast machine also needs every cast keychain).
   const seriesDone = s => itemCount(s) === s.items.length && (s.id !== 'cast' || SETS.every(setDone));
@@ -211,6 +296,10 @@ window.FemcGacha = (() => {
       out.name = `${x.name} keychain`; out.series = s.id; out.desc = `${s.name} · ${x.look} · ${itemCount(s)}/${s.items.length}`;
       if (g.skeys[x.id] > 1) { out.dup = true; out.stars = CAP.stars[x.r] || 1; g.stars += out.stars; }
       else out.reward = completeSeries(s);
+    } else if (p[0] === 'good') {
+      const x = goodById(p[1]); g.goods[x.id] = (g.goods[x.id] || 0) + 1;
+      out.name = x.name; out.desc = `${GOOD_KINDS[x.kind]} · ${x.look}`;
+      if (g.goods[x.id] > 1) { out.dup = true; out.stars = CAP.stars[x.r] || 1; g.stars += out.stars; }
     } else if (p[0] === 'case') {
       const c = CASES.find(x => x.id === p[1]); out.name = c.name; out.desc = c.desc;
       if (g.cases.includes(c.id)) { out.dup = true; out.stars = CAP.stars[r]; g.stars += out.stars; } else g.cases.push(c.id);
@@ -239,18 +328,20 @@ window.FemcGacha = (() => {
     if (r === 'C') return pick(CAP_C);
     if (r === 'R') {
       const x = R();
-      if (x < 0.7) {
+      if (x < 0.6) {
         const ok = SETS.flatMap(st => st.ids).filter(keyEligible), fresh = ok.filter(id => !(g.keys[id] > 0));
         return ['key', fresh.length ? pick(fresh) : pick(ok)];
       }
+      if (x < 0.72) { const gp = goodPrize('R'); if (gp) return gp; }
       if (x < 0.85) { const cs = CASES.filter(c => c.r === 'R'), nw = cs.filter(c => !g.cases.includes(c.id)); return ['case', pick(nw.length ? nw : cs).id]; }
       return pick(CAP_R_ITEMS);
     }
     const owned = k => (bsave().gear.owned[k] || 0) > 0 || S().gear.includes(k);
     if (r === 'SR') {
       const x = R(), gear = capGear('SR').filter(k => !owned(k)), cs = CASES.filter(c => c.r === 'SR' && !g.cases.includes(c.id));
-      if (x < 0.45 && gear.length) return ['gear', pick(gear)];
-      if (x < 0.65 && cs.length) return ['case', pick(cs).id];
+      if (x < 0.4 && gear.length) return ['gear', pick(gear)];
+      if (x < 0.55) { const gp = goodPrize('SR'); if (gp) return gp; }
+      if (x < 0.68 && cs.length) return ['case', pick(cs).id];
       if (x < 0.85) return ['card', null, 4];
       return pick([['item', 'bead_chain', 1], ['item', 'chewing_soul', 2]]);
     }
@@ -259,6 +350,11 @@ window.FemcGacha = (() => {
     if (!g.cases.includes('gold') && x < 0.65) return ['case', 'gold'];
     if (x < 0.85) return ['card', null, 5];
     return ['item', 'soma', 1];
+  }
+  // A capsule good of rarity r (a new one first), or null.
+  function goodPrize(r) {
+    const g = gs(), ok = GOODS.filter(x => x.r === r && itemEligible(x)), nw = ok.filter(x => !(g.goods[x.id] > 0));
+    return ok.length ? ['good', pick(nw.length ? nw : ok).id] : null;
   }
   // A series keychain of rarity r (a new one first), or null when nobody she's met fits.
   function seriesKey(s, r) {
@@ -287,7 +383,15 @@ window.FemcGacha = (() => {
     if (how === 'ticket') { S().inventory.capsule_ticket -= n; if (!S().inventory.capsule_ticket) delete S().inventory.capsule_ticket; }
     else S().yen -= CAP.price * n;
     const g = gs(), out = [];
+    const hid = hiddenOn();
     for (let i = 0; i < n; i++) {
+      // A hidden charm first (header): its own roll, outside pity, so the counters neither move nor guarantee one.
+      if (hid && R() < HIDDEN.rate) {
+        const s = hiddenSeries(), nw = s.items.filter(x => !(g.skeys[x.id] > 0)), x = pick(nw.length ? nw : s.items);
+        const prize = grant('HID', ['skey', x.id]); prize.r = 'HID'; prize.from = sid; prize.hidden = true;
+        g.pulls += 1; g.last = { at: S().day, r: 'HID', name: prize.name, series: sid };
+        out.push(prize); continue;
+      }
       const r = rarity('cap', sid), prize = grant(r, seriesPrize(sid, r));
       prize.r = r; prize.from = sid;
       if (prize.kind === 'key') prize.complete = setDone(keySet(prize.id)) && !prize.dup;
@@ -298,7 +402,7 @@ window.FemcGacha = (() => {
     return out;
   }
   const pull10 = (how = 'yen', sid = 'cast') => pullN(how, sid, 10);
-  const ORDER = ['C', 'R', 'SR', 'UR', 'SEC'];
+  const ORDER = ['C', 'R', 'SR', 'UR', 'SEC', 'HID'];
   const best = list => list.reduce((b, x) => (ORDER.indexOf(x.r) > ORDER.indexOf(b) ? x.r : b), 'C');
   function tradeStars() { const g = gs(); if (g.stars < CAP.starsPerTicket) return false; g.stars -= CAP.starsPerTicket; S().inventory.capsule_ticket = tickets() + 1; G.save(); return true; }
   /* The token shop: any missing keychain from a machine on today, for Capsule Tokens (TOKEN_PRICE by rarity; cast keychains
@@ -394,10 +498,17 @@ window.FemcGacha = (() => {
   function skeychain(x, own = true) {
     const s = itemById(x.id)[1], art = own ? skeyArt(x) : null, many = x.who.length > 1;
     const faces = own ? x.who.slice(0, 3).map(id => `<span class="g-key-face">${keyFace(id)}</span>`).join('') : '<span class="g-key-face"><b>?</b></span>';
-    return `<span class="g-key g-skey${own ? '' : ' lock'}${art ? ' art' : ''}${own && many ? ' pair' : ''}${x.r === 'SEC' ? ' sec' : ''}" style="--c:${s.color}" data-r="${x.r}"><i class="g-key-ring"></i><i class="g-key-chain"></i><span class="g-skey-faces">${faces}</span>${art ? `<img class="g-key-art" src="${art}" alt="" onerror="this.parentNode.classList.remove('art');this.remove()">` : ''}</span>`;
+    return `<span class="g-key g-skey${own ? '' : ' lock'}${art ? ' art' : ''}${own && many ? ' pair' : ''}${x.r === 'SEC' ? ' sec' : ''}${x.r === 'HID' ? ' hid' : ''}" style="--c:${s.color}" data-r="${x.r}"><i class="g-key-ring"></i><i class="g-key-chain"></i><span class="g-skey-faces">${faces}</span>${art ? `<img class="g-key-art" src="${art}" alt="" onerror="this.parentNode.classList.remove('art');this.remove()">` : ''}</span>`;
+  }
+  /* A capsule good: Kat's art (ready.js `goods`) or the drawn one for its kind. */
+  function goodArt(x, own = true) {
+    const art = own && (ready().goods || []).includes(x.id) ? `${G.base}assets/femc/game/art/goods/${x.id}.webp` : null;
+    const faces = own ? x.who.slice(0, x.kind === 'sticker' ? 6 : 1).map(id => `<span class="g-key-face">${keyFace(id)}</span>`).join('') : '<span class="g-key-face"><b>?</b></span>';
+    return `<span class="g-good${own ? '' : ' lock'}${art ? ' art' : ''}" data-k="${x.kind}" data-r="${x.r}"><span class="g-good-in">${faces}</span>${art ? `<img class="g-key-art" src="${art}" alt="" onerror="this.parentNode.classList.remove('art');this.remove()">` : ''}</span>`;
   }
   function prizeArt(p) {
     if (p.kind === 'key') return keychain(p.id);
+    if (p.kind === 'good') return goodArt(goodById(p.id));
     if (p.kind === 'skey') return skeychain(itemById(p.id)[0]);
     if (p.kind === 'case') return caseArt(p.id);
     const ICON = window.FemcIcons;
@@ -418,7 +529,7 @@ window.FemcGacha = (() => {
      tiles' pop-in (Skip, reduced motion). Shared by the capsule machines and the Velvet Room. */
   function gridHtml(list, fast) {
     const b = best(list), tokens = list.reduce((n, x) => n + (x.stars || 0), 0), rewards = list.map(x => x.reward).filter(Boolean);
-    return `<div class="g-ga-grid${fast ? ' fast' : ''}" data-best="${b}">${list.map((x, i) => `<div class="g-ga-cell r-${x.r}${x.r === b ? ' best' : ''}" style="--rc:${RARITY[x.r].color};--i:${i}"><div class="g-ga-cell-art">${prizeArt(x)}</div>${starsHtml(x.r)}<b>${esc(x.name)}</b>${x.dup ? `<small class="g-ga-dup">+${x.stars} token${x.stars === 1 ? '' : 's'}</small>` : ['key', 'skey', 'case', 'gear'].includes(x.kind) ? '<small class="g-ga-done">New</small>' : ''}</div>`).join('')}</div>
+    return `<div class="g-ga-grid${fast ? ' fast' : ''}" data-best="${b}">${list.map((x, i) => `<div class="g-ga-cell r-${x.r}${x.r === b ? ' best' : ''}" style="--rc:${RARITY[x.r].color};--i:${i}"><div class="g-ga-cell-art">${prizeArt(x)}</div>${starsHtml(x.r)}<b>${esc(x.name)}</b>${x.dup ? `<small class="g-ga-dup">+${x.stars} token${x.stars === 1 ? '' : 's'}</small>` : ['key', 'skey', 'good', 'case', 'gear'].includes(x.kind) ? '<small class="g-ga-done">New</small>' : ''}</div>`).join('')}</div>
       <p class="g-ga-sum">Best: <b style="color:${RARITY[b].color}">${RARITY[b].name}</b>${tokens ? ` · +${tokens} Capsule Tokens` : ''}</p>${rewards.map(t => `<p class="g-ga-done">${esc(t)}</p>`).join('')}`;
   }
   const btn10 = (attr, how, label, why) => `<button type="button" class="g-btn g-ga-x10" ${attr}="${how}"${why ? ` disabled title="${esc(why)}"` : ''}><span>${label}${why ? `<small>${esc(why)}</small>` : ''}</span></button>`;
@@ -484,9 +595,9 @@ window.FemcGacha = (() => {
       o.el.querySelector('.g-cap-stage').addEventListener('click', () => { skip = true; }, { once: true });
       G.sfx('femc-click');
       if (!reduced() && !skip) {
-        void m.offsetWidth; m.classList.add('turn'); await wait(r === 'SEC' ? 1300 : 950);
-        G.sfx(r === 'SEC' ? 'femc-darkhour' : 'femc-hover'); m.classList.add('drop'); await wait(r === 'C' || r === 'R' ? 800 : 1100);
-        m.classList.add('pop'); G.sfx(RARITY[r].sfx); await wait(r === 'UR' || r === 'SEC' ? 900 : 650);
+        void m.offsetWidth; m.classList.add('turn'); await wait(r === 'SEC' || r === 'HID' ? 1300 : 950);
+        G.sfx(r === 'SEC' || r === 'HID' ? 'femc-darkhour' : 'femc-hover'); m.classList.add('drop'); await wait(r === 'C' || r === 'R' ? 800 : 1100);
+        m.classList.add('pop'); G.sfx(RARITY[r].sfx); await wait(r === 'UR' || r === 'SEC' ? 900 : r === 'HID' ? 1500 : 650);
       } else G.sfx(RARITY[r].sfx);
       m.classList.add('shown', `r-${r}`);
     }
@@ -516,7 +627,7 @@ window.FemcGacha = (() => {
       res.innerHTML = '';
       await reveal(prize.r);
       res.innerHTML = prizeCard(prize);
-      $('.g-ga-say').textContent = prize.r === 'SEC' ? 'The lights flicker. A capsule nobody has seen before rolls out, shimmering every colour at once.' : prize.r === 'UR' ? 'The whole machine lights up gold. People turn to look.' : prize.r === 'SR' ? 'A purple capsule. That’s a good one.' : prize.dup ? 'One she already has. Still cute.' : 'Pop. Something small and new.';
+      $('.g-ga-say').textContent = prize.r === 'HID' ? 'Everything goes quiet. A sun and a moon flash across the dome, and a capsule nobody has ever seen rolls out, warm in her hand.' : prize.r === 'SEC' ? 'The lights flicker. A capsule nobody has seen before rolls out, shimmering every colour at once.' : prize.r === 'UR' ? 'The whole machine lights up gold. People turn to look.' : prize.r === 'SR' ? 'A purple capsule. That’s a good one.' : prize.dup ? 'One she already has. Still cute.' : 'Pop. Something small and new.';
       busy = false; delete o.el.dataset.locked; paint();
       o.el.querySelector('[data-pull]:not([disabled])')?.focus({ preventScroll: true });
     }
@@ -614,16 +725,22 @@ window.FemcGacha = (() => {
     }).join('');
     const cases = CASES.map(c => { const own = g.cases.includes(c.id), on = g.caseOn === c.id; return `<li><button type="button" class="g-col-case${on ? ' on' : ''}" data-case-pick="${own ? c.id : ''}"${own ? '' : ' disabled'}>${own ? caseArt(c.id) : '<span class="g-case-art" data-case="none"><i></i></span>'}<b>${own ? esc(c.name) : '???'}</b><small>${own ? (on ? 'On her phone' : 'Put it on') : RARITY[c.r].name}</small></button></li>`; }).join('');
     const on = activeSeries().map(s => s.id), MON = m => new Date(2009, m - 1, 1).toLocaleString('en', { month: 'short' });
-    const series = SERIES.map(s => {
+    const series = SERIES.filter(s => !s.hidden).map(s => {
       const n = itemCount(s), C = window.FemcCosmetics, rw = C && s.reward ? C.byId(s.reward) : null;
-      const when = s.always ? 'always in the Corner' : on.includes(s.id) ? 'in the Corner now' : `in the Corner ${s.months.map(MON).join(', ')}`;
+      const when = s.always ? 'always in the Corner' : on.includes(s.id) ? 'in the Corner now' : s.needs && !seriesOpen(s) ? 'not in the Corner yet' : `in the Corner ${s.months.map(MON).join(', ')}`;
       return `<section class="g-col-set g-col-series" style="--c:${s.color}"><h3>${esc(s.id === 'cast' ? 'Cast Secrets' : s.name)} <small>${n}/${s.items.length}${g.done.includes(s.id) ? ' · complete' : ''} · ${when}</small></h3>
         <ul class="g-keys g-skeys">${s.items.map(x => { const own = g.skeys[x.id] > 0, known = itemEligible(x); return `<li class="${own ? 'own' : ''}" title="${own ? esc(x.name + ' · ' + x.look) + (g.skeys[x.id] > 1 ? ` ×${g.skeys[x.id]}` : '') : known ? esc(RARITY[x.r].name) : '???'}">${skeychain(x, own)}<small>${own || (known && x.r !== 'SEC') ? esc(x.name) : '???'}</small></li>`; }).join('')}</ul>
         ${rw ? `<p class="g-note small">Complete it: three Capsule Tickets and ${esc(rw.name)} (${esc(C.KINDS[rw.kind].name)}).</p>` : ''}</section>`;
     }).join('');
+    // Hidden charms: ??? until found, a sun-and-moon mark; the section shows once they can drop (or one is owned).
+    const hs = hiddenSeries(), hn = itemCount(hs);
+    const hidden = hiddenOn() || hn ? `<section class="g-col-set g-col-series g-col-hidden" style="--c:${hs.color}"><h3>☀☾ ${esc(hs.name)} <small>${hn}/${hs.items.length}${g.done.includes(hs.id) ? ' · complete' : ''} · any machine, very rarely</small></h3>
+        <ul class="g-keys g-skeys">${hs.items.map(x => { const own = g.skeys[x.id] > 0; return `<li class="${own ? 'own' : ''}" title="${own ? esc(x.name + ' · ' + x.look) : '???'}">${skeychain(x, own)}<small>${own ? esc(x.name) : '???'}</small></li>`; }).join('')}</ul></section>` : '';
+    const gk = Object.keys(GOOD_KINDS), goods = `<section class="g-col-set g-col-goods"><h3>Capsule goods <small>${GOODS.filter(x => g.goods[x.id] > 0).length}/${GOODS.length}</small></h3>
+        <ul class="g-goods">${GOODS.slice().sort((a, b) => gk.indexOf(a.kind) - gk.indexOf(b.kind)).map(x => { const own = g.goods[x.id] > 0, known = itemEligible(x); return `<li class="${own ? 'own' : ''}" title="${own ? esc(x.name + ' · ' + x.look) + (g.goods[x.id] > 1 ? ` ×${g.goods[x.id]}` : '') : known ? esc(GOOD_KINDS[x.kind]) : '???'}">${goodArt(x, own)}<small>${own || known ? esc(x.name) : '???'}</small></li>`; }).join('')}</ul></section>`;
     return `<p class="g-note">Keychains and phone cases from the capsule machines at Paulownia Mall. A season’s machine stands beside the Cast machine for a few months at a time. Elizabeth’s Velvet Room is down the same hall.</p>
       <div class="g-col-stats"><span>Capsule turns <b>${g.pulls}</b></span><span>Tickets <b>${tickets()}</b></span><span>Capsule Tokens <b>${g.stars}</b></span><span>Velvet draws <b>${g.draws}</b></span><span>Velvet Plumes <b>${g.plumes}</b></span></div>
-      ${sets}${series}<section class="g-col-set"><h3>Phone cases <small>${g.cases.length}/${CASES.length}</small></h3><ul class="g-col-cases">${cases}${g.caseOn ? '<li><button type="button" class="g-col-case" data-case-pick="off"><span class="g-case-art" data-case="none"><i></i></span><b>Plain</b><small>Take it off</small></button></li>' : ''}</ul></section>`;
+      ${sets}${series}${hidden}${goods}<section class="g-col-set"><h3>Phone cases <small>${g.cases.length}/${CASES.length}</small></h3><ul class="g-col-cases">${cases}${g.caseOn ? '<li><button type="button" class="g-col-case" data-case-pick="off"><span class="g-case-art" data-case="none"><i></i></span><b>Plain</b><small>Take it off</small></button></li>' : ''}</ul></section>`;
   }
   function wireCollection(el, rerender) {
     el.querySelectorAll('[data-case-pick]').forEach(b => b.addEventListener('click', () => {
@@ -636,5 +753,5 @@ window.FemcGacha = (() => {
   function open(kind, done) { return kind === 'velvet' ? openVelvet(done) : openCapsule(done); }
 
   return Object.assign(api, { pullN, pull10, drawN, draw10, best, capCan, velCan, capWhy, velWhy, gridHtml, RARITY, CAP, VEL, SETS, CASES, SERIES, TOKEN_PRICE, fresh, gs, pull, draw, claim, unclaimed, tradeStars, afterFight, velCost, rarity, setCount, setDone, keyEligible, tickets, open, openCapsule, openVelvet, collectionHtml, wireCollection, phoneCase, keychain, skeychain, halloween,
-    activeSeries, seriesPity, seriesDone, itemEligible, itemById, shopList, buy, completeSeries });
+    activeSeries, seriesPity, seriesDone, itemEligible, itemById, shopList, buy, completeSeries, GOODS, GOOD_KINDS, HIDDEN, hiddenOn, goodArt });
 })();

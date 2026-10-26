@@ -11,6 +11,9 @@
   python3 tools/femc-wardrobe.py keys <sheet.png> <id1> ... <id6>
         A 3 x 2 green-screen keychain sheet (the batch 45 format), cut like tools/femc-keys.py ->
         assets/femc/game/art/keys/series/<id>.webp. Ids are gacha.js SERIES item ids, in reading order.
+  python3 tools/femc-wardrobe.py goods <sheet.png> <id1> ... <id6>
+        The same green-screen sheet with capsule goods (sticker sheets, acrylic stands, mini plush, photo cards) ->
+        assets/femc/game/art/goods/<id>.webp. Ids are gacha.js GOODS ids, in reading order.
   python3 tools/femc-wardrobe.py scan
         Rewrites assets/femc/game/art/ready.js from what's on disk (every command above runs it too). An outfit counts for
         a fighter once all six pose frames exist; the game picks it up with no other change (bump ready.js's ?v= in
@@ -56,6 +59,7 @@ def stray_top(f):
 
 def scan():
     keys = sorted(f.stem for f in (ART / 'keys/series').glob('*.webp')) if (ART / 'keys/series').exists() else []
+    goods = sorted(f.stem for f in (ART / 'goods').glob('*.webp')) if (ART / 'goods').exists() else []
     skins, weapons = {}, []
     for d in sorted((ART / 'skins').glob('*/')) if (ART / 'skins').exists() else []:
         poses = sorted({f.name.split('-pose-')[0] for f in d.glob('*-pose-0.webp')
@@ -65,8 +69,8 @@ def scan():
         if poses or ports: skins[d.name] = {'poses': poses, 'portraits': ports}
         if (d / 'weapon.webp').exists(): weapons.append(d.name)
     head = (ART / 'ready.js').read_text().split('window.FEMC_ART_READY')[0]
-    (ART / 'ready.js').write_text(head + 'window.FEMC_ART_READY = ' + json.dumps({'keys': keys, 'skins': skins, 'weapons': weapons}) + ';\n')
-    print('ready.js:', len(keys), 'keychains,', len(skins), 'outfits,', len(weapons), 'weapons')
+    (ART / 'ready.js').write_text(head + 'window.FEMC_ART_READY = ' + json.dumps({'keys': keys, 'goods': goods, 'skins': skins, 'weapons': weapons}) + ';\n')
+    print('ready.js:', len(keys), 'keychains,', len(goods), 'goods,', len(skins), 'outfits,', len(weapons), 'weapons')
 
 
 def main(a):
@@ -92,11 +96,12 @@ def main(a):
         out = ART / 'skins' / skin; out.mkdir(parents=True, exist_ok=True)
         rgba.crop(rgba.getbbox()).save(out / 'weapon.webp', 'WEBP', quality=90, method=5)
         print(src.name, '->', skin, 'weapon')
-    elif cmd == 'keys':
+    elif cmd in ('keys', 'goods'):
         src, ids = find(a[1]), a[2:]
         if len(ids) != 6: raise SystemExit('six ids, in reading order')
         K = tool('femc_keys', 'femc-keys.py')
-        K.DST = str(ART / 'keys/series')
+        K.DST = str(ART / ('keys/series' if cmd == 'keys' else 'goods'))
+        os.makedirs(K.DST, exist_ok=True)
         K.cut(str(src), ids, '')
     else:
         raise SystemExit(__doc__)
