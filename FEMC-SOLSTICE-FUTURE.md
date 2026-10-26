@@ -122,3 +122,43 @@ Check every novel character against current canon before building them.
 **Kat, 2026-10-26:**
 - The strangers and HOAX cover stories above are approved.
 - In strangers, both Haechan and Jungwon notice the glitches, since both are in that world.
+
+## Epilogue planning, round 2 (2026-10-26)
+
+**Memory rules (proposed).**
+- Solar is one person living three lives (lore bible), so there are never multiple Solars.
+- In the epilogue she remembers all three lives and the Personaverse. That's why HOAX's gap hurts.
+- Haechan and Jungwon remember too, in the worlds where they exist.
+- Claude will check this privately against the endings' logic so nothing contradicts them, without spoiling Kat.
+
+**Runners (Kat's canon timeline):**
+- 11/16: camping ends.
+- 11/19: Haechan tells Solar the whole truth.
+- 11/21: Sigma party; Solar and the girls have a girls' night instead.
+- 11/22: Solar goes home for Thanksgiving.
+- 12/1: she's back. Chenle walks in on Haechan's track with her stem.
+- 12/2–3: Haechan tells her about the track and offers to delete it; she says don't.
+- 12/6–7: Regionals. Minji's closure talk. Haechan starts to fit in with her friends.
+- 12/9–10: the studio, on her terms.
+- 12/11–14: they turn toward Danielle and settle into the social world as a couple.
+- 12/19: Sigma party. Danielle gets footage of how close they really are.
+
+**Proposed Runners epilogue:**
+- Pick up in early December.
+- The absence overlaps Thanksgiving break, which covers it naturally. Chenle, Minji and Jaehyun (also in the Personaverse) were gone for less time, so they all need to keep the story straight.
+- Danielle was in the Personaverse too, so she knows the story is fake. She's the threat. Mark stays complicated, not a villain.
+- The 12/19 footage shows something impossible: Solar flickering. That's the climax, and possibly the "I'll find you" scene.
+- Routes: romance, with Hanni and Hyein defending the emergency vacation.
+
+**HOAX:**
+- The council retreat is the cover, since the council were in the Personaverse too. Solar's friend group, being less popular, mostly went unnoticed.
+- The impeachment drama is approved.
+- Glitches start funny-eerie and turn unsettling.
+
+**strangers:**
+- The truce is likely cracked by Ch 65. Claude will check privately; no spoilers for Kat.
+
+**Tone:**
+- strangers: the most dangerous, with intense violence.
+- Runners: the most romantic and physical, with substance abuse and fist fights.
+- HOAX: goofy slice-of-life romance with its own drama, plus substance abuse and fist fights.
