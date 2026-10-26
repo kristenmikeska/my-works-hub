@@ -162,3 +162,29 @@ Check every novel character against current canon before building them.
 - strangers: the most dangerous, with intense violence.
 - Runners: the most romantic and physical, with substance abuse and fist fights.
 - HOAX: goofy slice-of-life romance with its own drama, plus substance abuse and fist fights.
+
+## Epilogue planning, round 3 (2026-10-26)
+
+**strangers (revised after a private canon check, spoiler-free):**
+- It's deep winter and mid-crisis.
+- The two houses aren't each other's main problem anymore; the pressure comes from outside.
+- **The cover:** her father hides her absence so the house doesn't look weak to its enemies.
+- **Her father:** he knows she's lying and chooses not to push yet.
+- **Haechan and Jungwon:** both remember, both see the glitches, and share the secret.
+- **The glitches carry real consequences:** a gun that won't fire, the tide stopping, a call that reaches Iwatodai for a second.
+- **Routes:** Haechan, Jungwon, or family.
+- **Open:** follow canon's events closely, or run alongside them?
+
+**HOAX (deeper):**
+- The council returns to a forum full of theories and an impeachment motion.
+- Jihoon pretends the Personaverse didn't happen.
+- Solar keeps reaching for a name, and Jungwon notices.
+- **The glitches escalate:** comedy (the haunted vending machine, a Hate Club séance), then unsettling (footage, the notes), then real (the gym at midnight).
+- **Routes:** Jungwon, Jihoon's redemption, the council.
+
+**Shared ending image:** in every world, someone holds onto Solar as she's pulled.
+- Runners: Haechan.
+- strangers: Haechan and Jungwon together.
+- HOAX: Jungwon, with Haechan's voice coming through.
+
+Equinox opens with all three moments from the Personaverse's side.
