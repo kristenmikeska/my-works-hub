@@ -8,7 +8,7 @@ window.FEMC_PORTRAIT_SCALE = {
   ada: 1.1,
   aerith: 0.97,
   aigis: 1.0,
-  akihiko: 1.11,
+  akihiko: 1.05,
   ana: 0.97,
   ann: 0.97,
   aphrodite: 1.09,
