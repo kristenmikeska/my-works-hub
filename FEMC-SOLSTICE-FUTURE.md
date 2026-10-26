@@ -188,3 +188,7 @@ Check every novel character against current canon before building them.
 - HOAX: Jungwon, with Haechan's voice coming through.
 
 Equinox opens with all three moments from the Personaverse's side.
+
+**Kat, 2026-10-26:**
+- **strangers:** tie into canon events without following them closely. Claude picks the best pickup point (possibly later than the current manuscript) and records it privately, so Kat isn't spoiled.
+- **HOAX gap, corrected:** Jungwon carries both lives and knows exactly who Solar is reaching for. He's the one person in HOAX she doesn't have to explain it to. At the end he recognizes Haechan's voice through the bleed, so his choice to hold on, or let go, is fully informed.
