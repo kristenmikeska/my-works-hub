@@ -72,3 +72,49 @@ Kat's brainstorm doc. Ideas only, nothing is built. Spoiler-free about the main 
 - **Others:** Overwatch's D.Va, Lúcio and Tracer, Cyberpunk's Panam, a shared JoJo link (Josuke, Jotaro, Koichi), and more Sanrio friends.
 
 Check every novel character against current canon before building them.
+
+---
+
+## Epilogue planning: Kat's notes, 2026-10-26
+
+**Branching inside each world.** Each epilogue has a few routes. The player can experience different stories, or the epilogue's plot changes depending on their choices.
+
+**Cover stories.** In each world, Solar has been missing for a while, and so have the friends who went looking for her. Each world has its own explanation.
+- **Runners:** a campus rumor says certain Sigma Chi and Alpha Phi members went on *another* joint trip, one so "exclusive" that not even the whole chapter was invited. (Students already think the chapters get special treatment, because they kind of do.) Everyone goes along with the rumor and gets thrown back into Syracuse life.
+  - This picks up around late November in canon, after the camping trip.
+  - If it follows canon exactly, the Mark/Solar fallout has happened, which might need small edits to the main story. The game already makes Mark feel a bit estranged from everyone, which helps. Kat says we don't always have to follow canon exactly, but it's good drama.
+  - Tap back into what's happening in canon then: eSports and so on.
+  - A Sigma party, for sure.
+- **strangers and HOAX:** not fleshed out yet. To work out together.
+
+**The glitches.** Open question: does Haechan (or Jungwon in HOAX) notice? Do others see them later, or only Solar?
+- Kat envisions a scene, possibly at the very end, where Solar is being pulled between two universes and Haechan is trying to save her. She's panicking, it's deeply emotional, and he promises he'll come find her, whatever universe she ends up in.
+
+**The pull-back reason:** a mix of "the bridge never closed" and "someone is doing it on purpose."
+
+**Name:** *Persona 3: Equinox* for the sequel. Kat likes it.
+
+**LE SSERAFIM:** the girls start showing up as small side characters in each world. In strangers, Yunjin is Solar's age and already a member, so they're peers there, not kids.
+
+**Carry-over from the epilogue ending:** unsure. Kat doesn't want Solstice 2 to change depending on the ending.
+
+## Claude's suggestions on these (for discussion)
+
+**Cover stories, starting points:**
+- **strangers:** the Lee house buries it. The official line is that Solar was sent abroad (or is "visiting Dalian"). Haechan and Jungwon vanishing at the same time makes each house suspect the other, so the epilogue opens with the families on edge.
+- **HOAX:** the president and the vice president both go missing. It's covered as a council retreat or a suspension, the school forum invents reasons, and there's an impeachment rumor. Jihoon would enjoy all of it far too much.
+
+**Who notices the glitches:**
+- Solar always notices first.
+- Next is the person who was in the Personaverse with her and is her constant in that world: Haechan in Runners and strangers, Jungwon in HOAX. They notice later and more faintly, and dismiss it until they can't.
+- Others only see what's left behind: a stopped clock, a blue butterfly.
+
+**The final scene:**
+- **Runners and strangers:** Haechan holding onto her as she's pulled. "I'll find you. Every world." It's the epilogue's last scene, and Equinox opens on him keeping that promise.
+- **HOAX** is the world without Haechan. There, Jungwon holds on, and Haechan's voice comes through the bleed, from somewhere else. That's devastating in the right way.
+
+**Mixing the two reasons:** the bridge never closed, and someone found it and is widening it on purpose. The epilogue's glitches are the bridge fraying. Equinox reveals that someone is pulling.
+
+**Carry-over:** Equinox opens the same way whatever happened. The epilogue's route only adds flavour: Solar's first memory and a few lines. That way nothing branches into a mess.
+
+**Mark:** before planning, check how much Mark's estrangement already shows in the game. The epilogue can open mid-fallout, as if the Personaverse year were a pause, so the main game probably needs only a few small Mark lines, not a rewrite.
