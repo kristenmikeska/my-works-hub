@@ -25,7 +25,7 @@ ONLY = set(filter(None, args.only.split(',')))
 SHOTS = pathlib.Path(args.screenshots); SHOTS.mkdir(parents=True, exist_ok=True)
 def want(k): return not ONLY or k in ONLY
 results = {}
-SKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-date')
+SKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-phantom')  # the one outfit still without art (batch 47); never a real one: the test removes it
 
 
 def ok(cond, msg):
@@ -177,7 +177,7 @@ try:
     if want('banner'):
         setup(p, day='2/10')
         r = p.eval(r"""(()=>{const C=FemcCosmetics;return {pool:C.pool().map(x=>x.id),feat:C.featured().map(x=>x.id),banner:C.banner().id,
-          pending:C.ITEMS.filter(x=>x.art).map(x=>x.id),rewards:C.ITEMS.filter(x=>x.pool===false).map(x=>x.id)};})()""")
+          pending:C.ITEMS.filter(x=>!C.ready(x)).map(x=>x.id),rewards:C.ITEMS.filter(x=>x.pool===false).map(x=>x.id)};})()""")
         ok(not set(r['pending']) & set(r['pool']) and not set(r['rewards']) & set(r['pool']) and len(r['pool']) >= 20, f'pool: {r}')
         ok(r['banner'] == 'sunrise' and set(r['feat']) == {'ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart'}, f'featured: {r}')
         # Cost and pity: always-Rare rolls → Super Rare on every 10th, Ultra on the 40th.
@@ -229,17 +229,17 @@ try:
 
     # ── Art-pending outfits ──
     if want('pending'):
-        setup(p, day='4/20')
-        r = p.eval(r"""(()=>{const C=FemcCosmetics;C.grantItem('sk-date');return {ready:C.ready(C.byId('sk-date')),inPool:C.pool().some(x=>x.id==='sk-date'),
-          eq:C.equip('sk-date'),feat:C.featured().map(x=>x.id),pose:C.battle().pose,face:FemcGame.portrait('solar','happy')};})()""")
-        ok(not r['ready'] and not r['inPool'] and r['eq'] is False and 'sk-date' not in r['feat'] and r['pose'] == {} and '/portraits/solar/' in r['face'], f'pending: {r}')
+        setup(p, day='9/20')
+        r = p.eval(r"""(()=>{const C=FemcCosmetics;C.grantItem('sk-phantom');return {ready:C.ready(C.byId('sk-phantom')),inPool:C.pool().some(x=>x.id==='sk-phantom'),
+          eq:C.equip('sk-phantom'),feat:C.featured().map(x=>x.id),pose:C.battle().pose,face:FemcGame.portrait('solar','happy')};})()""")
+        ok(not r['ready'] and not r['inPool'] and r['eq'] is False and 'sk-phantom' not in r['feat'] and r['pose'] == {} and '/portraits/solar/' in r['face'], f'pending: {r}')
         # Many pulls never give it.
         r = p.eval(QUIET + r"""(()=>{const C=FemcCosmetics,GA=FemcGacha;GA.gs().plumes=1e5;C.rng=Math.random;const got=new Set();try{for(let i=0;i<800;i++)got.add(C.pull().item.id);}finally{""" + LOUD + r"""}
-          return [...got].filter(id=>C.byId(id).art);})()""")
+          return [...got].filter(id=>!C.ready(C.byId(id)));})()""")
         ok(r == [], f'pending art never drawn: {r}')
         menu(p, 'wardrobe')
-        click(p, '[data-wd="sk-date"]')
-        r = p.eval("({badge:!!document.querySelector('.g-wd-stage .g-wd-pending'),row:document.querySelector('[data-wd=\"sk-date\"]').innerText,equip:!!document.querySelector('[data-wd-equip]')})")
+        click(p, '[data-wd="sk-phantom"]')
+        r = p.eval("({badge:!!document.querySelector('.g-wd-stage .g-wd-pending'),row:document.querySelector('[data-wd=\"sk-phantom\"]').innerText,equip:!!document.querySelector('[data-wd-equip]')})")
         ok(r['badge'] and 'Art coming' in r['row'] and not r['equip'], f'wardrobe shows Art coming: {r}')
         shot(p, 'wardrobe-pending')
         p.eval("FemcMenu.close()")
@@ -250,18 +250,18 @@ try:
             (SKIN / 'portraits/solar').mkdir(parents=True, exist_ok=True)
             shutil.copy(pathlib.Path(REPO, 'assets/femc/portraits/solar/happy.webp'), SKIN / 'portraits/solar/happy.webp')
             scan()
-            ok('"sk-date"' in pathlib.Path(REPO, 'assets/femc/game/art/ready.js').read_text(), 'scan lists it')
+            ok('"sk-phantom"' in pathlib.Path(REPO, 'assets/femc/game/art/ready.js').read_text(), 'scan lists it')
             p.goto(URL)
             p.eval("FemcGame.S.phase='play'")
-            r = p.eval(r"""(()=>{const C=FemcCosmetics;return {ready:C.ready(C.byId('sk-date')),inPool:C.pool().some(x=>x.id==='sk-date'),feat:C.featured().map(x=>x.id),eq:C.equip('sk-date'),
+            r = p.eval(r"""(()=>{const C=FemcCosmetics;return {ready:C.ready(C.byId('sk-phantom')),inPool:C.pool().some(x=>x.id==='sk-phantom'),feat:C.featured().map(x=>x.id),eq:C.equip('sk-phantom'),
               pose:C.battle().pose,face:FemcGame.portrait('solar','happy'),sad:FemcGame.portrait('solar','sad')};})()""")
-            ok(r['ready'] and r['inPool'] and 'sk-date' in r['feat'] and r['eq'] and r['pose'].get('solar', '').endswith('skins/sk-date/'), f'art arrived: {r}')
-            ok(r['face'].endswith('skins/sk-date/portraits/solar/happy.webp') and r['sad'].endswith('skins/sk-date/portraits/solar/happy.webp'), f'scene portraits: {r}')
+            ok(r['ready'] and r['inPool'] and 'sk-phantom' in r['feat'] and r['eq'] and r['pose'].get('solar', '').endswith('skins/sk-phantom/'), f'art arrived: {r}')
+            ok(r['face'].endswith('skins/sk-phantom/portraits/solar/happy.webp') and r['sad'].endswith('skins/sk-phantom/portraits/solar/happy.webp'), f'scene portraits: {r}')
             ok(p.eval("(()=>{FemcCosmetics.setPortraits(false);const f=FemcGame.portrait('solar','happy');FemcCosmetics.setPortraits(true);return f})()").endswith('/portraits/solar/happy.webp') and
                '/skins/' not in p.eval("(()=>{FemcCosmetics.setPortraits(false);const f=FemcGame.portrait('solar','happy');FemcCosmetics.setPortraits(true);return f})()"), 'the portrait toggle')
             menu(p, 'wardrobe')
-            click(p, '[data-wd="sk-date"]')
-            ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('skins/sk-date/solar-pose-0.webp') && !document.querySelector('.g-wd-stage .g-wd-pending')"), 'the preview wears it')
+            click(p, '[data-wd="sk-phantom"]')
+            ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('skins/sk-phantom/solar-pose-0.webp') && !document.querySelector('.g-wd-stage .g-wd-pending')"), 'the preview wears it')
             p.eval("FemcMenu.close()")
             # Worn in a real fight: Solar's battlefield figure comes from the outfit's folder.
             p.eval("(()=>{const G=FemcGame;G.S.joined=['akihiko','yukari','junpei'];G.S.day=G.dayOf('9/15');G.makeHandoff('scripted',{script:'looks-check',notes:'interrupt turn 6',segment:1,forced:true,party:['solar','akihiko','yukari','junpei']});})()")
@@ -273,14 +273,14 @@ try:
                 st = p.eval("(()=>{const b=FemcBattle.B,f=document.querySelector('.bt-fighter'),im=f&&f.querySelector('img:not(.evk)');if(!b.S.cur)return null;const u=b.U(b.S.cur.id);return u&&u.mid==='solar'&&im&&!f.hidden?im.src:null})()")
                 if st: src = st; break
                 time.sleep(0.05)
-            ok(src and 'skins/sk-date/solar-pose-' in src, f'battlefield figure: {src}')
+            ok(src and 'skins/sk-phantom/solar-pose-' in src, f'battlefield figure: {src}')
             p.top()
             p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
             p.console()
         finally:
             shutil.rmtree(SKIN, ignore_errors=True)
             scan()
-        ok('sk-date' not in pathlib.Path(REPO, 'assets/femc/game/art/ready.js').read_text(), 'ready.js restored')
+        ok('sk-phantom' not in pathlib.Path(REPO, 'assets/femc/game/art/ready.js').read_text(), 'ready.js restored')
         results['pending'] = 'out of pool, unequippable, Art coming; appears by itself once its files exist (pool, featured, battle, portraits, toggle)'
 
     # ── The Wardrobe and the Boutique through the UI, plus New Game+ ──
@@ -430,6 +430,28 @@ try:
             ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1'), tag + ': capsule, no sideways scroll')
             shot(p, f'capsule-secret-{tag}')
             p.eval("FemcGacha.rng=Math.random;document.querySelector('.g-cap-ov [data-close]').click()")
+        # Kat's outfits (batch 47): Kiriko Cosplay in the Wardrobe and worn on the battlefield.
+        view(p, 1280, 800)
+        p.eval("(()=>{const C=FemcCosmetics;['sk-kiriko','sk-emo'].forEach(C.grantItem);C.equip('sk-kiriko');FemcGame.save();})()")
+        menu(p, 'wardrobe')
+        click(p, '[data-wd-view=wardrobe]')
+        click(p, '[data-wd="sk-kiriko"]')
+        ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('skins/sk-kiriko/solar-pose-0.webp')"), 'the preview wears Kiriko Cosplay')
+        shot(p, 'wardrobe-kiriko')
+        p.eval("FemcMenu.close()")
+        p.eval("(()=>{const G=FemcGame;G.S.joined=['akihiko','yukari','junpei'];G.S.day=G.dayOf('9/15');G.makeHandoff('scripted',{script:'looks-check',notes:'interrupt turn 6',segment:1,forced:true,party:['solar','akihiko','yukari','junpei']});})()")
+        p.battle()
+        p.wait('!!window.FemcBattle?.B && !!document.querySelector(".bt-fighter")')
+        p.eval("FemcBattle.B.party().forEach(u=>{u.maxHp=u.hp=99999})")
+        src = None
+        for _ in range(300):
+            src = p.eval("(()=>{const b=FemcBattle.B,f=document.querySelector('.bt-fighter'),im=f&&f.querySelector('img:not(.evk)');if(!b.S.cur)return null;const u=b.U(b.S.cur.id);return u&&u.mid==='solar'&&im&&!f.hidden&&im.complete?im.src:null})()")
+            if src: break
+            time.sleep(0.05)
+        ok(src and 'skins/sk-kiriko/solar-pose-' in src, f'Kiriko Cosplay on the battlefield: {src}')
+        p.top(); shot(p, 'battle-kiriko')
+        p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
+        p.console()
         view(p, 1280, 850)
         motion(p, True)
         clean(p, 'shots')

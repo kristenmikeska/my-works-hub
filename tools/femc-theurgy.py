@@ -303,6 +303,12 @@ BUILD = [
     ('cutin', 'Solar-Haechan-Bond-Stills/revised-sequence/03-knife-throw.png', 'bond-haechan-love-show-3'),
     ('cutin', 'Solar-Haechan-Bond-Stills/revised-sequence/04-turns-to-solar.png', 'bond-haechan-love-show-4'),
     ('cutin', 'Solar-Haechan-Bond-Stills/revised-sequence/05-kiss.png', 'bond-haechan-love-show-5'),
+    # Akihiko's romance Showtime (Sunrise Cadenza, panels 1-4; Five A.M. adds 5): the dawn run turns into the combo (batch 47).
+    ('cutin', 'akihiko-love-show-1.png', 'bond-akihiko-love-show-1'),
+    ('cutin', 'akihiko-love-show-2.png', 'bond-akihiko-love-show-2'),
+    ('cutin', 'akihiko-love-show-3.png', 'bond-akihiko-love-show-3'),
+    ('cutin', 'akihiko-love-show-4.png', 'bond-akihiko-love-show-4'),
+    ('cutin', 'akihiko-love-show-5.png', 'bond-akihiko-love-show-5'),
 ]
 
 

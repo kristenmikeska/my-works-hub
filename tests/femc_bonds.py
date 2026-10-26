@@ -38,6 +38,7 @@ from femc_browser import Page
 ap = argparse.ArgumentParser()
 ap.add_argument('--only', default='')
 ap.add_argument('--shots', default='')
+ap.add_argument('--bonds', default='', help='showshots: only these SHOWS keys (e.g. akihiko-love,akihiko-love15)')
 args = ap.parse_args()
 ONLY = set(filter(None, args.only.split(',')))
 OUT = pathlib.Path(args.shots) if args.shots else pathlib.Path(tempfile.mkdtemp(prefix='femc-bonds-'))
@@ -345,6 +346,8 @@ try:
         'shinjiro': (dict(ranks={'shinjiro': 5}, day='9/25'), 'BACK ALLEY SUNRISE', 4, 2, [f'bond-shinjiro-show-{i}.' for i in range(1, 5)], 'bond-shinjiro-show-4.'),
         'jungwon': (dict(ranks={'jungwon': 9}), 'WINTER JADE', 5, 3, ['bond-jungwon.'] + [f'bond-jungwon-show-{i}.' for i in range(2, 6)], 'bond-jungwon.'),
         'haechan': (dict(ranks={'haechan': 9}, love=['haechan']), 'CORONA', 5, 2, [f'bond-haechan-love-show-{i}.' for i in range(1, 6)], 'bond-haechan-love.'),
+        'akihiko-love': (dict(ranks={'akihiko': 9}, love=['akihiko']), 'SUNRISE CADENZA', 4, 2, [f'bond-akihiko-love-show-{i}.' for i in range(1, 5)], 'bond-akihiko.'),
+        'akihiko-love15': (dict(ranks={'akihiko': 15}, love=['akihiko']), 'FIVE A.M.', 5, 2, [f'bond-akihiko-love-show-{i}.' for i in range(1, 6)], 'bond-akihiko.'),
     }
     SHOW_LOG = r"""(() => { window.seqLog = []; window.sayLog = {}; new MutationObserver(() => { const w = document.querySelector('.bt-bond'); if (!w) return;
       w.querySelectorAll('.th-sf.go').forEach(f => { if (!seqLog.includes('p' + f.dataset.i)) seqLog.push('p' + f.dataset.i); });
@@ -354,13 +357,14 @@ try:
 
     def show_fight(bid, speed=3, setup='', **extra):
         kw = dict(SHOWS[bid][0]); kw.update(extra)
-        fight(p, ['solar', bid], speed=speed, setup=setup, **kw)
+        who = bid.split('-')[0]  # 'akihiko-love': a romance version, keyed apart from the friendship one
+        fight(p, ['solar', who], speed=speed, setup=setup, **kw)
         p.eval(SHOW_LOG)
-        my_menu(p, 'solar'); pick(p, 'bond'); p.wait(f"FemcBattle.ctl.items.some(i => i.v === '{bid}')")
+        my_menu(p, 'solar'); pick(p, 'bond'); p.wait(f"FemcBattle.ctl.items.some(i => i.v === '{who}')")
 
     def start_bond(bid):
         """Pick the bond; a one-foe bond then asks for a target (the first standing foe)."""
-        pick(p, bid)
+        pick(p, bid.split('-')[0])
         for _ in range(40):
             if p.eval("cutLog.length > 0"): return
             if p.eval("!!(FemcBattle.ctl && FemcBattle.ctl.items && FemcBattle.ctl.items.some(i => FemcBattle.B.U(i.v) && FemcBattle.B.U(i.v).side === 'enemy'))"): pick(p, first_foe(p)); return
@@ -372,7 +376,7 @@ try:
         data = p.eval(r"""(() => FemcBonds.BONDS.flatMap(b => [['', b], ['love', b.love], ['love15', b.love15]].concat((b.tiers || []).map((t, i) => ['t' + i, t])).filter(x => x[1] && x[1].sequence && x[1].sequence.some(f => f.say))
           .map(([k, v]) => ({ id: b.id + (k ? '.' + k : ''), n: v.sequence.length, ms: v.sequence.slice(0, -1).reduce((a, f) => a + (f.ms || (f.hit ? 800 : 640)), 0), hits: v.sequence.filter(f => f.hit).length,
             says: v.sequence.flatMap(f => !f.say ? [] : Array.isArray(f.say[0]) ? f.say : [f.say]).every(x => ['partner', 'solar'].includes(x[0]) && x[1].length <= 48) }))))()""")
-        ok(sorted(d['id'] for d in data) == ['akihiko', 'haechan.love', 'jungwon', 'shinjiro'], data)
+        ok(sorted(d['id'] for d in data if d['id'] != 'haechan.love15') == ['akihiko', 'akihiko.love', 'akihiko.love15', 'haechan.love', 'jungwon', 'shinjiro'], data)
         ok(all(2400 <= d['ms'] <= 4200 and d['hits'] == 1 and d['says'] for d in data), data)
         out = {'panelsMs': {d['id']: d['ms'] for d in data}}
         for bid, (kw, name, n, hit, stems, still) in SHOWS.items():
@@ -466,7 +470,8 @@ try:
     # ── Showtimes frozen on every panel, at three sizes (the phone shows the whole panel) ──
     if want('showshots'):
         FACES = {'akihiko': [[36, 58], [31, 62], [44, 64], [39, 68], [32, 71]], 'shinjiro': [[38, 62], [44, 72], [51, 71], [37, 61]],
-                 'jungwon': [[38, 70], [36, 56], [38, 56], [34, 62], [35, 62]], 'haechan': [[43, 76], [26, 61], [21, 43], [37, 52], [49]]}
+                 'jungwon': [[38, 70], [36, 56], [38, 56], [34, 62], [35, 62]], 'haechan': [[43, 76], [26, 61], [21, 43], [37, 52], [49]],
+                 'akihiko-love': [[32, 58], [31, 56], [30, 55], [43, 58]], 'akihiko-love15': [[32, 58], [31, 56], [30, 55], [43, 58], [38, 64]]}
         VIS = r"""(() => { const i = %d, faces = %s, w = document.querySelector('.bt-bond'), st = w.querySelector('.th-stage').getBoundingClientRect(), im = w.querySelector('.th-sf[data-i="' + i + '"] img'), R = im.getBoundingClientRect();
           const s = Math.max(R.width / im.naturalWidth, R.height / im.naturalHeight), cw = im.naturalWidth * s, px = parseFloat(getComputedStyle(im).objectPosition) / 100, left = R.left + (R.width - cw) * px;
           const lo = Math.max(st.left, 0, R.left), hi = Math.min(st.right, innerWidth, R.right);
@@ -479,6 +484,7 @@ try:
             p.top()
             p.ws.call('Emulation.setDeviceMetricsOverride', {'width': w, 'height': h, 'deviceScaleFactor': 1, 'mobile': mobile})
             for bid in SHOWS:
+                if args.bonds and bid not in args.bonds.split(','): continue
                 n = SHOWS[bid][2]
                 show_fight(bid, speed=0)
                 p.eval("window.__btFreezeAt = 'bond-seq-0'")

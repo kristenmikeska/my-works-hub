@@ -1,4 +1,4 @@
-/* FEMC: Haenim's sun, drawn (2026-10-25). One renderer for the field menu's Skills tab (menu.js) and practice mode's tree screen
+/* FEMC: Haenim's sun, drawn (2026-10-25; painted backdrop art/sun/sky.webp under it since batch 47). One renderer for the field menu's Skills tab (menu.js) and practice mode's tree screen
    (battle.js treeScreen). Data: data.js tree / treeCenter (each node's `at`), rules: engine.js (treeState etc.); this file only
    draws and moves. Loaded after engine.js in femc-game.html and femc-battle.html; injects its own CSS once.
      FemcSun.html({ state(id), sel, base, label(n, st), glyph(n, st) }) → the viewport's markup: an SVG of rays, rings and edges, and
@@ -10,6 +10,8 @@
 window.FemcSun = (() => {
   const D = () => window.FEMC_BATTLE_DATA;
   const U = 50, LANE = 44, HALF = 560, SIZE = HALF * 2;
+  // Kat's painted backdrop (FEMC-ART-TODO 6C, batch 47): the stage's first layer, over the drawn sky (which shows if it can't load).
+  const SKY = 'assets/femc/battle/art/sun/sky.webp?v=1';
   const R = ring => 1.5 + 0.9 * ring; // a ray's ring → radius in units
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const rad = a => a * Math.PI / 180;
@@ -91,8 +93,11 @@ window.FemcSun = (() => {
     return `<div class="sun-stage" style="width:${SIZE}px;height:${SIZE}px">
       <svg class="sun-svg" viewBox="${-HALF} ${-HALF} ${SIZE} ${SIZE}" width="${SIZE}" height="${SIZE}" aria-hidden="true">
         <defs><radialGradient id="sunCore"><stop offset="0" stop-color="#fff6c8"/><stop offset=".35" stop-color="#ffd36b" stop-opacity=".9"/><stop offset=".7" stop-color="#ff8c4a" stop-opacity=".25"/><stop offset="1" stop-color="#ff4f9e" stop-opacity="0"/></radialGradient>
-          <radialGradient id="sunSky"><stop offset="0" stop-color="#1b2c6b" stop-opacity=".95"/><stop offset=".6" stop-color="#0d1640" stop-opacity=".85"/><stop offset="1" stop-color="#070b22" stop-opacity="0"/></radialGradient></defs>
+          <radialGradient id="sunSky"><stop offset="0" stop-color="#1b2c6b" stop-opacity=".95"/><stop offset=".6" stop-color="#0d1640" stop-opacity=".85"/><stop offset="1" stop-color="#070b22" stop-opacity="0"/></radialGradient>
+          <radialGradient id="sunSkyEdge"><stop offset=".72" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+          <mask id="sunSkyFade"><rect x="${-HALF}" y="${-HALF}" width="${SIZE}" height="${SIZE}" fill="url(#sunSkyEdge)"/></mask></defs>
         <circle r="${HALF - 4}" fill="url(#sunSky)"/>
+        <image class="sun-sky" href="${SKY}" x="${-HALF}" y="${-HALF}" width="${SIZE}" height="${SIZE}" mask="url(#sunSkyFade)" preserveAspectRatio="xMidYMid slice"/>
         <circle class="sun-orbit" r="${(R(8) * U).toFixed(1)}"/><circle class="sun-orbit thin" r="${(R(4.5) * U).toFixed(1)}"/><circle class="sun-orbit thin" r="${(9.9 * U).toFixed(1)}"/>
         ${beams}
         <circle r="150" fill="url(#sunCore)" class="sun-glow"/><circle class="sun-corona" r="${(1.3 * U).toFixed(1)}"/>

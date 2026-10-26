@@ -10140,6 +10140,341 @@
       "outputs": {
         "assets/femc/cg/romance-saori.webp": "bfd042e3e50d9e5f7976632ce141a3a86310df34e31d78e8f579ae8b16459776"
       }
+    },
+    {
+      "batch": 47,
+      "source": "sk-date.png",
+      "sourceNow": "Added to Game/sk-date.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8b4be5bc0a53848ac2396a22b32484a7f4e043ca7cac0f898f0c85b171048fa8",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/sk-date/",
+      "intendedUse": "Wardrobe outfit sk-date (Date Day; FEMC-ART-TODO 8A): Solar's battle pose sheet while she wears it; joins the Boutique pool",
+      "conversion": "3x2 white pose sheet cut by tools/femc-wardrobe.py skin (tools/femc-shadow-poses.py white_frames, the fighters' cut); a small detached piece below the feet (the top of a bottom-row head) dropped by stray_top; WebP q90; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/solar-pose-0.webp": "3d5f2133a5d68ad957050b55a3f2c6e6e97216bd025ce0a3147c8d064a87569c",
+        "assets/femc/game/art/skins/sk-date/solar-pose-1.webp": "e40825ae0d64721e1dea018f044b99893373f27beec576ce63681b243dd30e2f",
+        "assets/femc/game/art/skins/sk-date/solar-pose-2.webp": "f060e2ee0852fbf80a510bf22cd02722c3b29d9cfd14545b364d8f3d95dc0a70",
+        "assets/femc/game/art/skins/sk-date/solar-pose-3.webp": "fc9a8afc1f433e4f3de8c05c04d3a06032eeee40a87c8b9f651daf79686d2714",
+        "assets/femc/game/art/skins/sk-date/solar-pose-4.webp": "851a5cd39d5b1cb866c2de29e68e77dc63346d59b162160231be899c97a42ee7",
+        "assets/femc/game/art/skins/sk-date/solar-pose-5.webp": "e64bb8414ab730b95a719214bc4f6dfe4bade0c1a2f149bea45d075bce9c28a4"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "sk-halloween.png",
+      "sourceNow": "Added to Game/sk-halloween.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6310a939319d6ce7b29921451772073b49fc2cd6772c2265ca6fe187977a8038",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/sk-halloween/",
+      "intendedUse": "Wardrobe outfit sk-halloween (Halloween Witch; FEMC-ART-TODO 8A): Solar's battle pose sheet while she wears it; joins the Boutique pool",
+      "conversion": "3x2 white pose sheet cut by tools/femc-wardrobe.py skin (tools/femc-shadow-poses.py white_frames, the fighters' cut); a small detached piece below the feet (the top of a bottom-row head) dropped by stray_top; WebP q90; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-halloween/solar-pose-0.webp": "035ba0773e0897b37a15b1f9de6bf062efca6fbb90bbd1ce04b796432e53ee6d",
+        "assets/femc/game/art/skins/sk-halloween/solar-pose-1.webp": "6c218c012241cd122292fb364fd33a1382accc7cbcbe5962be1d79d2e6a41e0c",
+        "assets/femc/game/art/skins/sk-halloween/solar-pose-2.webp": "96466d83b9e2cf156daba03ce431e7ca6f2979b8ec5db0eb797f26140f40444c",
+        "assets/femc/game/art/skins/sk-halloween/solar-pose-3.webp": "eaccd7f1c1967e9ac5e8e50c15fa56db6c562b255327d590987165f48c68ebe9",
+        "assets/femc/game/art/skins/sk-halloween/solar-pose-4.webp": "bfbcea01a16b2cba68e6b64bcbdd2ec0f419ecf14c3006fe8e565c78327ee47b",
+        "assets/femc/game/art/skins/sk-halloween/solar-pose-5.webp": "34a06eaad74eaf99cd8ffe1f553f86d910938a38fce977e62131d73170920ae9"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "sk-wintercoat.png",
+      "sourceNow": "Added to Game/sk-wintercoat.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b7b0f85580765f872da2f80c68f8d516c424b4d8413664c2a6ba8a430594cb79",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/",
+      "intendedUse": "Wardrobe outfit sk-wintercoat (Winter Coat; FEMC-ART-TODO 8A): Solar's battle pose sheet while she wears it; joins the Boutique pool",
+      "conversion": "3x2 white pose sheet cut by tools/femc-wardrobe.py skin (tools/femc-shadow-poses.py white_frames, the fighters' cut); a small detached piece below the feet (the top of a bottom-row head) dropped by stray_top; WebP q90; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/solar-pose-0.webp": "d40e863342a934bae00517286c05131ede35e70641eb7e7f1c8b4461b78d3798",
+        "assets/femc/game/art/skins/sk-wintercoat/solar-pose-1.webp": "ca4ae90d1c6b52231c3353288c66436d985c3500eee37d6d4b1f7633056ba0bd",
+        "assets/femc/game/art/skins/sk-wintercoat/solar-pose-2.webp": "f73a0d4eb283d402edd9f6879b28ef770af9c88d223bb41eb3c3c7dd62019311",
+        "assets/femc/game/art/skins/sk-wintercoat/solar-pose-3.webp": "ab101511c7c9892f13d1d09cd01bd66569380c7b3f085bb4fea7d7613f1abcd7",
+        "assets/femc/game/art/skins/sk-wintercoat/solar-pose-4.webp": "2052308e4d8657d8eb91cf2a5f257165fdb07d0609f04dd7fffa9012010b22ec",
+        "assets/femc/game/art/skins/sk-wintercoat/solar-pose-5.webp": "1f2e3c7bc3623deb6e99a9c1924aa187180b41e1a42ebab1379d9e696639c597"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "sk-yukata.png",
+      "sourceNow": "Added to Game/sk-yukata.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e0c790161f3122e332df9a702c64300ededebcf1e383c74104bb8f7b5d206b98",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/sk-yukata/",
+      "intendedUse": "Wardrobe outfit sk-yukata (Summer Yukata; FEMC-ART-TODO 8A): Solar's battle pose sheet while she wears it; joins the Boutique pool",
+      "conversion": "3x2 white pose sheet cut by tools/femc-wardrobe.py skin (tools/femc-shadow-poses.py white_frames, the fighters' cut); a small detached piece below the feet (the top of a bottom-row head) dropped by stray_top; WebP q90; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-yukata/solar-pose-0.webp": "194f649c7103109768bf250d02b146d59ceff3477d7aea1e42c43947d7fcb7d3",
+        "assets/femc/game/art/skins/sk-yukata/solar-pose-1.webp": "1c249b79d38f69eabf98ef12d85c87f9db5cb77824dea28723c2cc7eebe7c212",
+        "assets/femc/game/art/skins/sk-yukata/solar-pose-2.webp": "7411d10b45d9cd5b232b1a1ca3c8b09a202b376e2980217ede7f01a4835a62dc",
+        "assets/femc/game/art/skins/sk-yukata/solar-pose-3.webp": "2eb85647292a3edf9e0d2b29bb5b999f50d21a19ce0c23c3d7379959f4df228f",
+        "assets/femc/game/art/skins/sk-yukata/solar-pose-4.webp": "39b13709e1c5c52b5731a5c9336f4d0b77ddf671015fd73cba04b96d170d80b9",
+        "assets/femc/game/art/skins/sk-yukata/solar-pose-5.webp": "c049ee4d6dbd8c746369e002519db4bd1e0fc530b28655d05ba27cb7882b3592"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "sk-emo.png",
+      "sourceNow": "Added to Game/sk-emo.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a160915bd043a3e79861867294dcf993f1f50c66ed8f4bbe8000a1753a9ab9d7",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/sk-emo/",
+      "intendedUse": "Wardrobe outfit sk-emo (Emo Night; FEMC-ART-TODO 8A, Kat’s own design): Solar's battle pose sheet while she wears it; joins the Boutique pool",
+      "conversion": "3x2 white pose sheet cut by tools/femc-wardrobe.py skin (tools/femc-shadow-poses.py white_frames, the fighters' cut); a small detached piece below the feet (the top of a bottom-row head) dropped by stray_top; WebP q90; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/solar-pose-0.webp": "f08ef0fbd02561e315676689a59f3ec56533dac3169299669b6afa6877a1664d",
+        "assets/femc/game/art/skins/sk-emo/solar-pose-1.webp": "b5ca68efb4d879b827276d4f5f6e422b73d4bf9b851e1d39b6b68156773b5e54",
+        "assets/femc/game/art/skins/sk-emo/solar-pose-2.webp": "319834f6dc8110d2b7fecd2258d61bc04bd74d56ea51db92632638c43f012c39",
+        "assets/femc/game/art/skins/sk-emo/solar-pose-3.webp": "854b3e85fe299e9249d363db2d51a7ef84c93a28fab9957847dd48f4f539930b",
+        "assets/femc/game/art/skins/sk-emo/solar-pose-4.webp": "ab0d100bf7f412ea7eb71f3e047d6a434cc6279e72825443cf8816a0e442750d",
+        "assets/femc/game/art/skins/sk-emo/solar-pose-5.webp": "846f688852202405308fed53fc7317015a409963947211fd459a3f4d84308f54"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "sk-kiriko.png",
+      "sourceNow": "Added to Game/sk-kiriko.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2cdd4f8333be7a9b84b8223bb896ff60511036bcfcb11627cd976b73352877fd",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/sk-kiriko/",
+      "intendedUse": "Wardrobe outfit sk-kiriko (Kiriko Cosplay; FEMC-ART-TODO 8A, Kat’s own design): Solar's battle pose sheet while she wears it; joins the Boutique pool",
+      "conversion": "3x2 white pose sheet cut by tools/femc-wardrobe.py skin (tools/femc-shadow-poses.py white_frames, the fighters' cut); a small detached piece below the feet (the top of a bottom-row head) dropped by stray_top; WebP q90; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-kiriko/solar-pose-0.webp": "eea1cd1b10b52007b7d0f850f149de0b72899c10a636dc80bb118ccb884c92a9",
+        "assets/femc/game/art/skins/sk-kiriko/solar-pose-1.webp": "315696e968a8520a83d892acb7772dd738c2c0089d6e673913898ad32d5efdd3",
+        "assets/femc/game/art/skins/sk-kiriko/solar-pose-2.webp": "9a79949601fe94d5a22bd08f7caf5da912039863a8eeda055a669287cdd8adcc",
+        "assets/femc/game/art/skins/sk-kiriko/solar-pose-3.webp": "0a97ba1a7558ee23cad5d1c287239b3d57390d1c36362a6329478f5162418909",
+        "assets/femc/game/art/skins/sk-kiriko/solar-pose-4.webp": "49fa2e55455cd19ff6bba40da179373f55ee2e5197fa73d0fde238223d12ff76",
+        "assets/femc/game/art/skins/sk-kiriko/solar-pose-5.webp": "f5e2f53afb1df05b87d9678d7d6333f805bf752d9c8e12e89cf391132a0f0585"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "solar-revised-v3.png",
+      "sourceNow": "Added to Game/solar-revised-v3.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3b5b05e52cc4f1f23fc72f6d454682ae000549ea79836816e9e7ab94591132de",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/portraits/solar/neutral.webp",
+      "intendedUse": "Kat's revised portrait set for solar (replaces the previous one; old per-emotion sources kept in Character Portraits/Solar/_previous/)",
+      "conversion": "3x2 dark-background sheet cut on the 512 px grid (reading order angry,embarrassed,neutral,sad,smiling,surprised); backgrounds removed with tools/femc-lift.swift, stray pieces dropped; per-emotion PNGs in Character Portraits/Solar/; tools/femc-portraits.py aligns faces on a shared canvas (WebP q86); scale.js unchanged (eye-to-chin matches the old set); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/solar/flustered.webp": "61625a6a6be63244e321f0b3da9c2c9be2c1cb717f81a9184aca27eac37a90f3",
+        "assets/femc/portraits/solar/happy.webp": "a090e1bf9d9222390c6cbb05bfaa8573ba5d6aa15221b1a5a56d5d16de160898",
+        "assets/femc/portraits/solar/neutral.webp": "f8dd3182cf2c9074b45588012122d53d75a1bad98aaef0887fde7189bbb53136",
+        "assets/femc/portraits/solar/sad.webp": "d3d929329982230305591dafed17ea301c17fca34a87fedc49b5780d436034f9",
+        "assets/femc/portraits/solar/serious.webp": "67b4a0db6b8fc50d829f7dae51d3993a4093f4009b6ad8a326d821a09ffbf3b3",
+        "assets/femc/portraits/solar/surprised.webp": "6010fc7015f4c3ac1c04feba1076f5723ffc7a6faf06476ff5deee94e2ff74c9"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "haechan-revised-v3.png",
+      "sourceNow": "Added to Game/haechan-revised-v3.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "892b40d1baabaab0635e4ac0f11c80c1d79dbc57d03a195b34adb1ca1f2a4590",
+      "status": "integrated",
+      "character": "haechan",
+      "destination": "assets/femc/portraits/haechan/neutral.webp",
+      "intendedUse": "Kat's revised portrait set for haechan (replaces the previous one; old per-emotion sources kept in Character Portraits/Haechan/_previous-v2/)",
+      "conversion": "3x2 dark-background sheet cut on the 512 px grid (reading order neutral,embarrassed,smiling,surprised,angry,sad); backgrounds removed with tools/femc-lift.swift, stray pieces dropped; per-emotion PNGs in Character Portraits/Haechan/; tools/femc-portraits.py aligns faces on a shared canvas (WebP q86); scale.js unchanged (eye-to-chin matches the old set); source unchanged",
+      "outputs": {
+        "assets/femc/portraits/haechan/flustered.webp": "d59e30e300e8438fd91931c6be41d45ae586be668850bebeb8ab094f36b661ec",
+        "assets/femc/portraits/haechan/happy.webp": "e175282d76caf5ba35759cd4d1c81ebec6bfa305c10feb03a221b00dd0ded3f8",
+        "assets/femc/portraits/haechan/neutral.webp": "06136ff2f29aae475929f87e2112921854bee09685c51c431f18db7bdf54d6b7",
+        "assets/femc/portraits/haechan/sad.webp": "360f5f1dec8aa45ee49a5faabfd0549a1f4e8ec4671c1d419865006eabf2abcd",
+        "assets/femc/portraits/haechan/serious.webp": "3e2e909dc1a0909514f72bcd5a028453363bde7e1a497f2a8529e7dd9f798ab9",
+        "assets/femc/portraits/haechan/surprised.webp": "df08454b8fca2361ebafe54cbb90aba101dfa5324ea7e3155e93f73a07d2b599"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "keychain-series-1.png",
+      "sourceNow": "Added to Game/keychain-series-1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "737f28423347179effda20ce14e65938a178776df6742617fb57a8a58dd86ca9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains, FEMC-ART-TODO 8D sheet 1 (Sweethearts & Sidekicks), reading order: cp-solar-akihiko cp-solar-shinjiro cp-solar-haechan cp-solar-jungwon cp-solar-jihoon cp-solar-minji",
+      "conversion": "3x2 green-screen sheet cut by tools/femc-wardrobe.py keys (tools/femc-keys.py's cut); source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/cp-solar-akihiko.webp": "14ff51b31ba1fc87fac9dcb64cb55812cade0b7ff8552702af3344890e96b139",
+        "assets/femc/game/art/keys/series/cp-solar-shinjiro.webp": "730964ee7ab85720fe5b53076488be8d1f8603bc39fe4fcaa0bb7c5205447fa5",
+        "assets/femc/game/art/keys/series/cp-solar-haechan.webp": "761ac876a5ae529141016559a9b945bd1fdedcae17000f50f2f91926de1fca41",
+        "assets/femc/game/art/keys/series/cp-solar-jungwon.webp": "48385eceec2419035700b1c61637418c75bac4cfbd80a2000bef85c6616ff8f7",
+        "assets/femc/game/art/keys/series/cp-solar-jihoon.webp": "a622bcc6ef883a3b6b836ff24775e6edc5010245c7bf5e9f55f9a20089a52904",
+        "assets/femc/game/art/keys/series/cp-solar-minji.webp": "804aeed948abb09a38955f6dc353c184bede4a8adf341b6583d32041ab227b79"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "keychain-series-2.png",
+      "sourceNow": "Added to Game/keychain-series-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "52177c8e0056e626859b172e130b867b3028c215e0134cbda5b58576a722d24d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains, FEMC-ART-TODO 8D sheet 2 (Sweethearts & Sidekicks), reading order: cp-hanni-hyein cp-kuromi-melody cp-ken-koro cp-junpei-yukari cp-aki-shinji cp-haechan-mark",
+      "conversion": "3x2 green-screen sheet cut by tools/femc-wardrobe.py keys (tools/femc-keys.py's cut); source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/cp-hanni-hyein.webp": "0bdf3388e484cdc2af9f954da5b88918475dc84f7831636eba04887c008b3b37",
+        "assets/femc/game/art/keys/series/cp-kuromi-melody.webp": "f2c6a1f7ecf75bf7ed25753e28564508db37f97a09b0d2f3d303fb4d76b5bf39",
+        "assets/femc/game/art/keys/series/cp-ken-koro.webp": "33134859374f43f71b04afb79e75b7f676a73b7143c2dcbcc2a1a03edb657126",
+        "assets/femc/game/art/keys/series/cp-junpei-yukari.webp": "a3c4d067630c2f06e00f9ad6e004cf1593cd232d5b159761d4ce4ad813c37dee",
+        "assets/femc/game/art/keys/series/cp-aki-shinji.webp": "88215aa92aa35f603223a6b422fd814d1bebc1634b07bcfc98f32a197a8b63bd",
+        "assets/femc/game/art/keys/series/cp-haechan-mark.webp": "21940c645501a9366326a0d6aa29856a163b3420e9f0d79a56730fe43a466e6b"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "haenims-sun-backdrop.png",
+      "sourceNow": "Added to Game/haenims-sun-backdrop.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "633dbb974e842b991b2d1ec3ad10f57488b84237adb539d0635c1fd3387b85c1",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/sun/sky.webp",
+      "intendedUse": "Haenim's sun backdrop (FEMC-ART-TODO 6C): sun.js draws it as the stage's first layer over the drawn sky, edges faded by a radial mask",
+      "conversion": "WebP q88 at the source's 1254 px (not upscaled); source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/sun/sky.webp": "df46d9a8dadbfb30b208aa1062cde648e1efe6fdd79f7cf9b37009b76c3a5a2f"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "akihiko-love-show-1.png",
+      "sourceNow": "Added to Game/akihiko-love-show-1.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "56fb7fd577c16c33a714267cf5cbe794642354b8d1d038f0f6805ea7d4520893",
+      "status": "integrated",
+      "character": "akihiko",
+      "destination": "assets/femc/battle/art/theurgy/bond-akihiko-love-show-1.webp",
+      "intendedUse": "Akihiko romance Showtime (FEMC-ART-TODO 5A \"Five A.M.\"): panel 1 of bonds.js akihiko.love (Sunrise Cadenza, panels 1-4) and love15 (Five A.M., 1-5)",
+      "conversion": "tools/femc-theurgy.py cutin (BUILD), 1600x900, framing kept; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/theurgy/bond-akihiko-love-show-1.webp": "c9fac32a3bc75fecd64214f7eed05e3d0615e2786b8a862fb22849b1b9bdae16"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "akihiko-love-show-2.png",
+      "sourceNow": "Added to Game/akihiko-love-show-2.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4a581f53346ab5b7f69896ef12436bc32ada16a7ae379e13c6b672c2a98f5111",
+      "status": "integrated",
+      "character": "akihiko",
+      "destination": "assets/femc/battle/art/theurgy/bond-akihiko-love-show-2.webp",
+      "intendedUse": "Akihiko romance Showtime (FEMC-ART-TODO 5A \"Five A.M.\"): panel 2 of bonds.js akihiko.love (Sunrise Cadenza, panels 1-4) and love15 (Five A.M., 1-5)",
+      "conversion": "tools/femc-theurgy.py cutin (BUILD), 1600x900, framing kept; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/theurgy/bond-akihiko-love-show-2.webp": "d24f7463876238f1a413459b788fc852edfdac0400b3a6c9293138f43f005402"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "akihiko-love-show-3.png",
+      "sourceNow": "Added to Game/akihiko-love-show-3.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "beeba83a21be87249f33f1a579d7fc2eb7b09f541bd57020d7aac69b3b0170d9",
+      "status": "integrated",
+      "character": "akihiko",
+      "destination": "assets/femc/battle/art/theurgy/bond-akihiko-love-show-3.webp",
+      "intendedUse": "Akihiko romance Showtime (FEMC-ART-TODO 5A \"Five A.M.\"): panel 3 of bonds.js akihiko.love (Sunrise Cadenza, panels 1-4) and love15 (Five A.M., 1-5); the strike panel",
+      "conversion": "tools/femc-theurgy.py cutin (BUILD), 1600x900, framing kept; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/theurgy/bond-akihiko-love-show-3.webp": "4a5398bae2358b3852baeafafe913ea5e2f2b5ba8a6d08ea613b014b62198971"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "akihiko-love-show-4.png",
+      "sourceNow": "Added to Game/akihiko-love-show-4.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "c89c69d30d59ac6d85459f50c34960112e5edf42bda4509a2e6a60587d3f646b",
+      "status": "integrated",
+      "character": "akihiko",
+      "destination": "assets/femc/battle/art/theurgy/bond-akihiko-love-show-4.webp",
+      "intendedUse": "Akihiko romance Showtime (FEMC-ART-TODO 5A \"Five A.M.\"): panel 4 of bonds.js akihiko.love (Sunrise Cadenza, panels 1-4) and love15 (Five A.M., 1-5)",
+      "conversion": "tools/femc-theurgy.py cutin (BUILD), 1600x900, framing kept; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/theurgy/bond-akihiko-love-show-4.webp": "7d4c39cc8249a3011f8c163ebb15a05b1736b97dd3f21cfa46bfcf46188a7d31"
+      }
+    },
+    {
+      "batch": 47,
+      "source": "akihiko-love-show-5.png",
+      "sourceNow": "Added to Game/akihiko-love-show-5.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a5ae4b3e415aec9d878f3553588caf28664a5fa247cf3666c267f63b12cd7300",
+      "status": "integrated",
+      "character": "akihiko",
+      "destination": "assets/femc/battle/art/theurgy/bond-akihiko-love-show-5.webp",
+      "intendedUse": "Akihiko romance Showtime (FEMC-ART-TODO 5A \"Five A.M.\"): panel 5 of bonds.js akihiko.love (Sunrise Cadenza, panels 1-4) and love15 (Five A.M., 1-5)",
+      "conversion": "tools/femc-theurgy.py cutin (BUILD), 1600x900, framing kept; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/theurgy/bond-akihiko-love-show-5.webp": "13e928c35d2a163964505c83c7e619d910c1095618b65eb9b80eeb45d250b2a8"
+      }
     }
   ],
   "batch1Validation": {
@@ -10764,6 +11099,22 @@
       "python3 tests/femc_cast_consistency.py",
       "python3 tests/femc_kat.py",
       "python3 tests/femc_living2.py"
+    ],
+    "browserErrors": 0
+  },
+  "batch47Validation": {
+    "date": "2026-10-25",
+    "scope": "Solar's outfits (six pose sheets, two of them Kat's own designs), Kat's revised Solar and Haechan portraits, capsule series sheets 1 and 2, the sun backdrop and Akihiko's romance Showtime",
+    "sourcesInspected": "all 16 viewed before cutting; every cut reviewed on a contrasting contact sheet",
+    "sourcesIntegrated": 16,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked after the move); On Hold untouched",
+    "sizeCheck": "new neutral portraits overlaid on the old ones at scene scale: same face size, scale.js unchanged; Haechan checked in a lounge scene at 1440x900 and 375x812, Solar in the battle command panel",
+    "tests": [
+      "python3 tests/femc_cosmetics.py (pending now uses sk-phantom; shots add Kiriko Cosplay in the Wardrobe and on the battlefield)",
+      "python3 tests/femc_cast_consistency.py",
+      "python3 tests/femc_skills.py --only sun,shots",
+      "python3 tests/femc_bonds.py --only showtime,showshots (Akihiko love / love15 added; --bonds filter)"
     ],
     "browserErrors": 0
   },

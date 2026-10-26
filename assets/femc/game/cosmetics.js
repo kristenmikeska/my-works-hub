@@ -48,12 +48,15 @@ window.FemcCosmetics = (() => {
     pumpkin: ['#ff8a1f', '#ffb766', '#ffe2c2', '#140904'], jade: ['#2fd39a', '#8fffc0', '#dcfff0', '#04120c'], gold: ['#e8a41c', '#ffd36b', '#fff2c8', '#160d02']
   };
   const ITEMS = [
-    // Outfits for Solar (art pending: FEMC-ART-TODO section 8A).
+    // Outfits for Solar (FEMC-ART-TODO section 8A; all but Phantom Thief are in, batch 47).
     c('sk-yukata', 'skin', 'Summer Yukata', 'UR', 'Sunflower yukata, hair pinned up, a paper fan tucked in the obi.', { who: 'solar', art: true }),
     c('sk-wintercoat', 'skin', 'Winter Coat', 'SR', 'Cream wool coat, pink scarf, white earmuffs.', { who: 'solar', art: true }),
     c('sk-halloween', 'skin', 'Halloween Witch', 'SR', 'A little witch: pointed hat, star-lined cape, striped stockings.', { who: 'solar', art: true }),
     c('sk-date', 'skin', 'Date Day', 'SR', 'Off-shoulder knit top, pleated skirt, white sneakers.', { who: 'solar', art: true }),
     c('sk-phantom', 'skin', 'Phantom Thief', 'UR', 'A long black coat, red gloves and a white domino mask. Take your heart.', { who: 'solar', art: true }),
+    // Kat's own two (2026-10-25).
+    c('sk-emo', 'skin', 'Emo Night', 'SR', 'All black: a pleated skirt, striped sleeves, a chain belt and platform boots.', { who: 'solar', art: true }),
+    c('sk-kiriko', 'skin', 'Kiriko Cosplay', 'UR', 'Fox-ear band, red and white shrine robes, kunai at her belt. Her main, down to the last ofuda.', { who: 'solar', art: true }),
     // Weapon skins (art pending: 8C).
     c('wpn-sakura', 'weapon', 'Sakura Naginata', 'SR', 'A pale wood haft wrapped in pink silk, blossoms etched on the blade.', { who: 'solar', art: true }),
     c('wpn-phantom', 'weapon', 'Phantom Naginata', 'UR', 'Black lacquer and a red tassel, to go with the coat.', { who: 'solar', art: true }),

@@ -53,9 +53,22 @@ window.FemcBonds = (() => {
           line: ['Ready when you are.', 'I was ready first.'], desc: 'Three lightning punches and a heavy sunrise on one foe; the party gets faster.' },
         { rank: 15, name: 'Championship Round', sp: 18, target: 'one', steps: [P('elec', 58, { multi: [3, 4], ail: { id: 'shock', chance: 0.3 } }), S('light', 100, { down: 0.5 })], after: { buffs: ['atk', 'agi'] },
           line: ['Last round. Hands up.', 'They never came down.'], desc: 'Up to four lightning punches and the full sunrise on one foe; the party gets stronger and faster.' }],
-      love: { rank: 9, name: 'Sunrise Cadenza', sp: 16, target: 'one', steps: [P('elec', 56, { multi: [3, 3], ail: { id: 'shock', chance: 0.3 } }), S('light', 96, { down: 0.5 })], after: { buffs: ['atk', 'agi'], heal: 0.15 },
+      // Their romance Showtime (5A, batch 47): the dawn run turns into the combo; Five A.M. adds the sunrise (panel 5).
+      // The regular still stays the short-version still.
+      love: { rank: 9, name: 'Sunrise Cadenza', img: BA('bond-akihiko'), focus: [55, 24],
+        sequence: [{ src: BA('bond-akihiko-love-show-1'), focus: [46, 24], ms: 760, say: ['partner', 'Five A.M. On your left, like always.'] }, // faces at x 32% / 58%
+          { src: BA('bond-akihiko-love-show-2'), focus: [44, 26], zoom: 1.12, ms: 800, say: ['partner', 'Your grip’s off. Here. Like this.'] }, // 31% / 56%
+          { src: BA('bond-akihiko-love-show-3'), focus: [44, 24], hit: true, ms: 860, sfx: 'elec', say: ['solar', 'Together. Now!'] }, // 30% / 55%
+          { src: BA('bond-akihiko-love-show-4'), focus: [50, 30], ms: 900, say: [['partner', 'New record. Ours this time.'], ['solar', 'Ours.']] }], // 43% / 58%
+        sp: 16, target: 'one', steps: [P('elec', 56, { multi: [3, 3], ail: { id: 'shock', chance: 0.3 } }), S('light', 96, { down: 0.5 })], after: { buffs: ['atk', 'agi'], heal: 0.15 },
         line: ['Stay on my left. Like always.', 'I always do.'], desc: 'Their own combination: lightning, then the sun. Heavy damage to one foe; the party heals a little and gets stronger and faster.' },
-      love15: { rank: 15, name: 'Five A.M.', sp: 18, target: 'one', steps: [P('elec', 60, { multi: [3, 4], ail: { id: 'shock', chance: 0.35 } }), S('light', 110, { down: 0.6 })], after: { buffs: ['atk', 'agi', 'def'], heal: 0.2 },
+      love15: { rank: 15, name: 'Five A.M.', img: BA('bond-akihiko'), focus: [55, 24],
+        sequence: [{ src: BA('bond-akihiko-love-show-1'), focus: [46, 24], ms: 760, say: ['partner', 'Five A.M. On your left, like always.'] }, // faces at x 32% / 58%
+          { src: BA('bond-akihiko-love-show-2'), focus: [44, 26], zoom: 1.12, ms: 800, say: ['partner', 'Your grip’s off. Here. Like this.'] }, // 31% / 56%
+          { src: BA('bond-akihiko-love-show-3'), focus: [44, 24], hit: true, ms: 860, sfx: 'elec', say: ['solar', 'Together. Now!'] }, // 30% / 55%
+          { src: BA('bond-akihiko-love-show-4'), focus: [50, 30], ms: 900, say: [['partner', 'New record. Ours this time.'], ['solar', 'Ours.']] }, // 43% / 58%
+          { src: BA('bond-akihiko-love-show-5'), focus: [50, 26], pan: [0, 1.5], say: ['partner', 'Sun’s up. Come on.'] }], // 38% / 64%
+        sp: 18, target: 'one', steps: [P('elec', 60, { multi: [3, 4], ail: { id: 'shock', chance: 0.35 } }), S('light', 110, { down: 0.6 })], after: { buffs: ['atk', 'agi', 'def'], heal: 0.2 },
         line: ['Same time tomorrow?', 'Every day.'], desc: 'Their own combination, all the way: lightning and the sun on one foe; the party heals and gets stronger, faster and tougher.' } },
     { id: 'shinjiro', partner: 'shinjiro', romance: true, loveFace: 'happy', until: '10/3', look: ['strike', 'sun'], colors: ['#ff4f9e', '#c43b3b'],
       // Showtime "Seconds" (5A): he's cooking in the middle of Tartarus, and anything that reaches for the pot meets the axe.

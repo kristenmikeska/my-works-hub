@@ -1,6 +1,6 @@
 # Art to make (rebuilt 2026-10-22 from every old list and a check of the whole game)
 
-**89 items:** 3 CGs · 4 places · 12 character pieces · 44 battle (14 bond Showtimes in 5A, 24 effect variants in 5G) · 7 cards and icons · 3 screens · 16 Wardrobe and keychain-series items (section 8). 1 is ⭐, 76 are optional.
+**81 items:** 3 CGs · 4 places · 12 character pieces · 43 battle (13 bond Showtimes in 5A, 24 effect variants in 5G) · 6 cards and icons · 3 screens · 10 Wardrobe and keychain-series items (section 8). 1 is ⭐, 68 are optional.
 
 This is the one list. It replaces `FEMC-ART-NEXT.md`, `FEMC-THEURGY-PROMPTS.md` and the open items in `FEMC-ART-LIST.md`, `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` (those files still hold some full prompts, referenced below by number). Everything already in the game is off it.
 - Put finished pieces in **New Adds**.
@@ -237,15 +237,6 @@ I'll ask for each panel in turn. Make panel 1 now (or, if panel 1 is attached, m
 
 #### Romance versions (the `love` version, and `love15` where it exists)
 Same base block, with **"tender and a little charged, never explicit"** added after "fun". The `love15` version reuses its pair's Showtime; where a fifth panel is given, it's that version's own ending.
-- [ ] *(Optional)* **Akihiko · "Five A.M."** (Sunrise Cadenza; Five A.M. adds panel 5; no still to replace, the regular one stays the short-version still). *Concept: their dawn run turns into the combo; he's always on her left.* `[N]` = 4 (5 for Five A.M.).
-  - **Attach:** style, Solar, Akihiko. **Fills:** `battle/art/theurgy/bond-akihiko-love-show-1..4 (+ `-5` for Five A.M.).webp`. Replaces the regular still/duo fallback this romance version borrows now; the regular still stays the short-version still.
-  ```
-  Panel 1: a stylized riverside at five in the morning, pale pink dawn, the two of them jogging side by side; Akihiko on her left matching her pace exactly, glancing sideways at her; she pretends not to notice.
-  Panel 2: back in Tartarus, back to back; his gloved hand closes over hers on the naginata shaft to fix her grip, faces close, her cheeks pink, his steady smile.
-  Panel 3 ★: lightning and sunlight braided into one spiral, his punches and her sweep landing on the Shadow together.
-  Panel 4: foreheads almost touching, both out of breath; he holds the stopwatch up between them and she taps it, warm gold light, pink sparks.
-  Panel 5 (Five A.M. only): sunrise breaking across the Tartarus floor behind them; he holds out his hand, and she takes it.
-  ```
 - [ ] *(Optional)* **Shinjiro · "Warm Hands"** *Concept: he'd never say it, so he feeds her and gets in front of her.* `[N]` = 4.
   - **Attach:** style, Solar, Shinjiro. **Fills:** `battle/art/theurgy/bond-shinjiro-love-show-1..4.webp`. Replaces the regular still/duo fallback this romance version borrows now; the regular still stays the short-version still.
   ```
@@ -428,10 +419,6 @@ A 3 × 2 grid of six game item cards (3 columns, 2 rows) on a plain pure white b
   ```
   A 5 × 5 grid of twenty-five round game UI icons on a flat pure green background (#00FF00), square 1:1 (1024 × 1024), in Persona 3 Reload's menu style: each icon a glossy navy-blue disc with a thick white rim and one bold simple glyph in gold (#ffd36b) with a hot-pink (#ff4f9e) accent and a heavy dark ink outline, centred in its own square with wide green space round it, readable at 20 pixels. No text, no letters, no numbers, no green in the icons. In reading order: a critical spark (a four-point star bursting), speed (a winged arrow), evasion (a figure sidestepping a dotted line), a counter (two curved arrows clashing), an opening buff (a sunrise over an up arrow), a discount (a tag with a down arrow), HP regeneration (a heart with a circling arrow), SP regeneration (a droplet with a circling arrow), a weak spot (a cracked target), a follow-up (two blades in a row), an ailment (a swirl), a longer ailment (a swirl with an hourglass), low-HP fury (a cracked heart with flames), physical power (a fist), magic power (a glowing orb), healing power (a cross with rays), a corona (a ring of sun rays around a shield), a guardian bell (a small gold bell with a ribbon), momentum (a chevron trail), longer buffs (an up arrow with an hourglass), Theurgy (a starburst gauge), a ward against ailments (a shield with a swirl crossed out), a plain stat boost (a plus), a keystone (a large eight-point star), a hidden memory (a polaroid with a question mark).
   ```
-- [ ] **Haenim's sun: backdrop** *(optional)*. A painted backdrop behind the radial tree in place of the drawn navy sky: a P3R-style night sky with a soft gold sun at the centre and six faint light rays, blue, gold and pink, nothing in the middle third but the glow so the nodes stay readable. ChatGPT. **Fills:** `battle/art/sun/sky.webp` (square, 2048 × 2048); wiring: `sun.js` draws it as the stage's first layer.
-  ```
-  A square 1:1 (2048 × 2048) abstract game menu backdrop in Persona 3 Reload's style: a deep navy-to-midnight-blue night sky, a soft glowing gold sun exactly in the centre with a faint pink halo, six long thin light rays leaving it evenly like the spokes of a wheel (one pointing right), each ray a slightly different tint (coral pink, violet, ice blue, gold, steel blue, rose pink), faint dotted orbit rings around the sun, tiny scattered stars, thin diagonal pink slashes in the lower right corner. Clean vector look, soft glow, no figures, no text, no symbols, no hard detail in the centre third so small icons can sit on top.
-  ```
 
 ---
 
@@ -460,7 +447,8 @@ Everything here already works in the game without its art. Outfits and weapon sk
 
 **Solar's clothes:** Kat varies Solar's outfits for fun, so never treat a different outfit as a mismatch. Each item's **Must match** line gives the outfit for that picture. **No S.E.E.S. armband outside battle:** the pose sheets are battle art, so they keep the red armband on her left arm; keychains and scene portraits never have it.
 
-### 8A. Solar's outfit pose sheets (5)
+### 8A. Solar's outfit pose sheets (1 left)
+In the game (batch 47): Summer Yukata, Winter Coat, Halloween Witch, Date Day, and Kat's own Emo Night and Kiriko Cosplay.
 These replace her battle figure while she wears the outfit (idle, Evoker, attack, spell, hurt and victory), exactly like her current pose sheet. Same rules as every pose sheet: **one character, 3 across and 2 down, plain white background, space between the drawings, the same size in every drawing.** If it comes out with a background or overlapping poses, ask ChatGPT to *"redo it on a plain white background with more space between the poses."*
 
 **Attach (2 images):**
@@ -471,10 +459,6 @@ These replace her battle figure while she wears the outfit (idle, Evoker, attack
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly; change only her clothes to the outfit described below. Solar: very long straight black hair, her naginata, a red S.E.E.S. armband on her left arm (this is battle art). Cell 1: battle-ready stance. Cell 2: raising an ornate silver Evoker to her temple. Cell 3: attacking with her naginata. Cell 4: casting a spell with one hand out, golden sunlight effects. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
 ```
-- [ ] **Summer Yukata** (`sk-yukata`). **Must match:** *a cream summer yukata printed with big sunflowers, a sunflower-yellow obi with a paper fan tucked in it, her hair pinned up in a loose bun with long strands falling, wooden geta sandals; the armband tied over the yukata sleeve.* **Save as:** `skin-sk-yukata-posesheet.png`. **Fills:** `game/art/skins/sk-yukata/solar-pose-0..5.webp`.
-- [ ] **Winter Coat** (`sk-wintercoat`). **Must match:** *a knee-length cream wool coat buttoned up, a long pink knit scarf, white earmuffs, black tights and short brown boots; the armband over the coat sleeve.* **Save as:** `skin-sk-wintercoat-posesheet.png`. **Fills:** `game/art/skins/sk-wintercoat/solar-pose-0..5.webp`.
-- [ ] **Halloween Witch** (`sk-halloween`). **Must match:** *a little witch: a tall black pointed hat with a pink band, a short black cape lined with gold stars, a black dress, purple-and-black striped stockings, buckled shoes; the armband over the cape on her left arm.* **Save as:** `skin-sk-halloween-posesheet.png`. **Fills:** `game/art/skins/sk-halloween/solar-pose-0..5.webp`.
-- [ ] **Date Day** (`sk-date`). **Must match:** *a casual date outfit: a soft pink off-shoulder knit top, a pleated cream skirt, white sneakers, a thin gold necklace, her white earbuds around her neck; the armband on her left arm.* **Save as:** `skin-sk-date-posesheet.png`. **Fills:** `game/art/skins/sk-date/solar-pose-0..5.webp`.
 - [ ] **Phantom Thief** (`sk-phantom`), Persona 5 style for fun. **Must match:** *a long black tailcoat with a high collar, red gloves, black fitted trousers and pointed black boots, a white domino mask over her eyes; the armband over the coat sleeve.* **Save as:** `skin-sk-phantom-posesheet.png`. **Fills:** `game/art/skins/sk-phantom/solar-pose-0..5.webp`.
 
 ### 8B. *(Optional)* Outfit portraits for scenes (5)
@@ -494,7 +478,8 @@ One ornate naginata, the whole weapon from the tip of the blade to the end of th
 - [ ] **Sakura Naginata** (`wpn-sakura`). *A pale ash-wood haft wrapped in pink silk cord, cherry blossoms etched along a silver blade, a small pink tassel.* **Save as:** `skin-wpn-sakura.png`. **Fills:** `game/art/skins/wpn-sakura/weapon.webp`.
 - [ ] **Phantom Naginata** (`wpn-phantom`). *Glossy black lacquer haft, a dark steel blade with a red edge, a long red tassel, a small silver mask charm at the collar.* **Save as:** `skin-wpn-phantom.png`. **Fills:** `game/art/skins/wpn-phantom/weapon.webp`.
 
-### 8D. Capsule keychain series (8 sheets)
+### 8D. Capsule keychain series (6 sheets left)
+In the game (batch 47): sheets 1 and 2 (Sweethearts & Sidekicks).
 The same acrylic charms as the 30 already in the game, in the same sheet format and green screen. Couple charms are **two people on one charm** (the Collection shows them a little wider); the S.E.E.S. Photo has six. Ids are in reading order for `python3 tools/femc-wardrobe.py keys <sheet> <six ids>`. **Fills:** `game/art/keys/series/<id>.webp`. The Halloween singles already use your Halloween charms, so only its two new ones are here.
 
 **Attach for every sheet:**
@@ -508,22 +493,6 @@ A 3 × 2 grid of six acrylic keychain charms (3 columns, 2 rows) on a flat pure 
 ```
 Paste each sheet's six cells in place of [SIX CELLS]. Each cell is its **Must match** (who, outfit, pose).
 
-- [ ] **Sheet 1, Solar's sweethearts** (Sweethearts & Sidekicks). **Save as:** `keychain-series-1.png`. **Attach 3:** Solar, Akihiko, Shinjiro, Haechan, Jungwon, Jihoon, Minji. **Must match:**
-  1. Solar & Akihiko: her uniform, his own outfit; sharing one protein shake with two straws.
-  2. Solar & Shinjiro: her uniform, his beanie and long coat; he holds a soup ladle, she leans in to steal a taste.
-  3. Solar & Haechan: her uniform, his own outfit; heads together, sharing one pair of white earbuds.
-  4. Solar & Jungwon: her uniform, his own outfit; sharing one croissant, both taking a bite.
-  5. Solar & Jihoon: her uniform, his own outfit; he grins holding up a crane-game plush, she pretends not to be impressed.
-  6. Solar & Minji: her uniform, Minji's own outfit; Minji holds up a camera for a selfie of the two of them, both smiling.
-  Ids: `cp-solar-akihiko cp-solar-shinjiro cp-solar-haechan cp-solar-jungwon cp-solar-jihoon cp-solar-minji`
-- [ ] **Sheet 2, best pairs** (Sweethearts & Sidekicks). **Save as:** `keychain-series-2.png`. **Attach 3:** Hanni, Hyein, Kuromi, My Melody, Ken, Koromaru, Junpei, Yukari, Akihiko, Shinjiro, Haechan, Mark. **Must match:**
-  1. Hanni & Hyein: their own outfits with matching bunny hairclips (pink for Hanni, sky blue for Hyein), cheek to cheek.
-  2. Kuromi & My Melody: back to back, Kuromi smug with arms crossed, My Melody sweet with hands clasped.
-  3. Ken & Koromaru: Ken in his own clothes hugging Koromaru, both looking proud.
-  4. Junpei & Yukari: his cap and blue shirt, her pink cardigan; mid-bicker, Junpei pointing, Yukari rolling her eyes.
-  5. Akihiko & Shinjiro: back to back, arms crossed, old friends, both smirking.
-  6. Haechan & Mark: their own outfits, an arm over the other's shoulder, both laughing.
-  Ids: `cp-hanni-hyein cp-kuromi-melody cp-ken-koro cp-junpei-yukari cp-aki-shinji cp-haechan-mark`
 - [ ] **Sheet 3, the specials** (one Ultra or Secret from each series). **Save as:** `keychain-series-3.png`. **Attach 3:** Solar, Akihiko, Yukari, Junpei, Mitsuru, Fuuka, Haechan, Elizabeth, Shinjiro, Jungwon. **Must match:**
   1. S.E.E.S. Photo: Solar, Akihiko, Yukari, Junpei, Mitsuru and Fuuka in their uniforms, squeezed together inside one little photo frame, all smiling (one charm, one ring).
   2. Solar & Haechan, Halloween: trick-or-treating, Solar as a little witch (pointed hat, star-lined cape), Haechan as a vampire (cape, fake fangs), sharing one pumpkin candy bucket.

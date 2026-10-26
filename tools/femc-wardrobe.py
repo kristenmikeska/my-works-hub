@@ -37,6 +37,23 @@ def find(p):
     raise SystemExit('missing source: ' + p)
 
 
+def stray_top(f):
+    """Kat's outfit sheets sit tighter than the fighters' (sk-emo, 2026-10-25): the top of a bottom-row head can poke into
+    the frame above it. A small detached piece lying wholly below the figure's feet is that, not the figure; it goes."""
+    import numpy as np
+    from scipy import ndimage
+    px = np.array(f.convert('RGBA'))
+    lab, n = ndimage.label(px[..., 3] > 8)
+    if n < 2: return f
+    sz = ndimage.sum(np.ones_like(lab), lab, range(1, n + 1))
+    objs = ndimage.find_objects(lab)
+    feet = objs[int(sz.argmax())][0].stop
+    for k, sl in enumerate(objs):
+        if sz[k] < sz.max() * 0.05 and sl[0].start >= feet:
+            px[..., 3][lab == k + 1] = 0
+    return Image.fromarray(px)
+
+
 def scan():
     keys = sorted(f.stem for f in (ART / 'keys/series').glob('*.webp')) if (ART / 'keys/series').exists() else []
     skins, weapons = {}, []
@@ -60,6 +77,7 @@ def main(a):
         SP = tool('femc_shadow_poses', 'femc-shadow-poses.py')
         frames, idle_h = SP.white_frames(src)
         out = ART / 'skins' / skin; out.mkdir(parents=True, exist_ok=True)
+        frames = [stray_top(f) for f in frames]
         for i, f in enumerate(frames): f.save(out / f'{who}-pose-{i}.webp', 'WEBP', quality=90, method=5)
         print(src.name, '->', skin, who, frames[0].size, 'idle', idle_h)
     elif cmd == 'portraits':
