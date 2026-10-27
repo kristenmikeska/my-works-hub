@@ -314,7 +314,8 @@ try:
         # Tea Time (Hanni, Tartarus) at the access point every first floor has.
         # (the walk to the Shadows may have passed the access point already: its once-per-point Tea Time is reset for this check)
         p.eval("FemcBattle.run.map.nodes.forEach(n=>{if(n.type==='access')n.restored=false})")
-        p.eval("window.__want='access';window.__stopAt='access';FemcBattle.run.carry=Object.fromEntries(FemcBattle.B.party().map(p=>[p.mid,{hp:Math.round(p.maxHp*0.4),sp:Math.round(p.maxSp*0.4),th:0}]))")
+        # (a fight on the way may still bring Shuffle Time: pick a card and walk on)
+        p.eval("window.__btShuffle=false;window.__pickShuffle=0;window.__btShuffleHand=null;window.__want='access';window.__stopAt='access';FemcBattle.run.carry=Object.fromEntries(FemcBattle.B.party().map(p=>[p.mid,{hp:Math.round(p.maxHp*0.4),sp:Math.round(p.maxSp*0.4),th:0}]))")
         drive(p, "FemcBattle.screen()==='room' && !!document.querySelector('.bt-room.access')", 120)
         tea = p.eval("(()=>{const s=FemcBattle.B.party()[0];return {note:document.querySelector('.bt-room.access').textContent.includes('Tea Time'),hp:FemcBattle.run.carry.solar.hp,max:s.maxHp}})()")
         ok(tea['note'] and tea['hp'] >= round(tea['max'] * 0.55) - 1, ('Tea Time at the access point: +15% HP', tea))
