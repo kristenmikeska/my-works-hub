@@ -239,7 +239,7 @@
 .g-wd-kind h3 { margin: 0 0 6px; color: var(--pink-2); font: italic 900 16px/1.1 var(--cond); letter-spacing: .08em; text-transform: uppercase; }
 .g-wd-kind h3 small { color: var(--muted); text-transform: none; letter-spacing: 0; }
 .g-wd-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
-.g-wd-item { display: grid; justify-items: center; gap: 2px; width: 100%; height: 100%; padding: 6px; border: 2px solid rgba(255, 255, 255, .1); background: rgba(255, 255, 255, .03); color: #fff; text-align: center; opacity: .55; }
+.g-wd-item { display: grid; justify-items: center; gap: 2px; width: 100%; height: 100%; padding: 6px; border: 2px solid rgba(255, 255, 255, .1); background: rgba(255, 255, 255, .03); color: #fff; text-align: center; opacity: .55; overflow: hidden; }
 .g-wd-item.own, .g-wd-item[data-wd-off] { opacity: 1; }
 .g-wd-item b { font: italic 800 13px/1.1 var(--cond); }
 .g-wd-item small { color: var(--muted); font-size: 11px; }
@@ -248,8 +248,8 @@
 .g-wd-item.sel { border-color: var(--pink-2); background: rgba(255, 79, 158, .12); opacity: 1; }
 .g-wd-item.pending small { color: var(--gold); }
 .g-wd-item:is(:hover, :focus-visible) { border-color: #fff; outline: none; opacity: 1; }
-.g-wd-th { display: grid; place-items: center; width: 64px; height: 48px; }
-.g-wd-th img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.g-wd-th { display: grid; place-items: center; width: 64px; height: 48px; overflow: hidden; }
+.g-wd-th img { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain; }
 .g-wd-sw { display: block; width: 60px; height: 40px; border: 2px solid rgba(255, 255, 255, .5); background-size: cover !important; transform: skewX(-8deg); }
 .g-wd-ico { font-size: 26px; line-height: 1; color: var(--pink-3); }
 /* The Boutique banner and its reveal card. */
