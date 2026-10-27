@@ -1,7 +1,7 @@
 """The capsule series, rarities and tokens (gacha.js) and the Wardrobe / Boutique cosmetics (cosmetics.js), 2026-10-25.
 Headless Chrome, isolated profile, localhost; no player saves.
 
-Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,x10,shots] [--screenshots DIR]
+Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,x10,shots,viewer,party,newpending] [--screenshots DIR]
 
 Covers: five rarities over many turns (Secret included) and pity kept per series; which machines stand in the Corner by
 date (each season, and a turn on a series that isn't on falls back to the Cast machine); only people Solar has met;
@@ -15,7 +15,13 @@ Secret capsule reveal at desktop and phone size; ×10 rolls on every machine (co
 one best-rarity reveal, Skip, the disabled reason) with grids at desktop and phone size; zero console errors.
 2026-10-26: the Solchan machine only once Haechan is met, Dorm Life's months, capsule goods (met-only, Collection), and the
 hidden charms: 200,000 simulated turns near HIDDEN.rate, never touching or guaranteed by pity, none before Haechan, the
-sun-and-moon reveal and ??? in Collection."""
+sun-and-moon reveal and ??? in Collection.
+2026-10-27: the viewer (Collection keychains, charms, goods and a case's ⤢, and the Wardrobe's owned looks: opens, ← → and
+a swipe step and wrap, Esc closes only the viewer, locked tiles never open it, first-got days, phone size with no sideways
+scroll, screenshots); the party's looks (a temporary sk-akihiko-champ folder of Akihiko's own frames and a temporary
+wpn-jungwon-council weapon, both removed after: worn by Akihiko in a real battle, his Wardrobe preview, Jungwon's Equipment
+weapon art; Minji's outfit hidden until she's met); every new outfit and weapon skin staying out of the pool and every
+month's featured list until its art exists, and each having a prompt in FEMC-ART-TODO.md."""
 import argparse, base64, json, pathlib, shutil, subprocess, sys, time
 from femc_browser import Page, REPO
 
@@ -29,6 +35,11 @@ SHOTS = pathlib.Path(args.screenshots); SHOTS.mkdir(parents=True, exist_ok=True)
 def want(k): return not ONLY or k in ONLY
 results = {}
 SKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-phantom')  # the one outfit still without art (batch 47); never a real one: the test removes it
+PSKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-akihiko-champ')  # party outfit, art pending (2026-10-27); the party test makes and removes it
+PWPN = pathlib.Path(REPO, 'assets/femc/game/art/skins/wpn-jungwon-council')  # party weapon skin, art pending; likewise
+NEW_SKINS = ['sk-akihiko-champ', 'sk-akihiko-hoodie', 'sk-haechan-runners', 'sk-haechan-widow', 'sk-jungwon-council', 'sk-yukari-kyudo', 'sk-yukari-pink',
+             'sk-junpei-baseball', 'sk-mitsuru-rider', 'sk-shinjiro-apron', 'sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform']
+NEW_WPNS = ['wpn-kiriko', 'wpn-emo', 'wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-haechan-widow', 'wpn-akihiko-champ', 'wpn-jungwon-council']
 
 
 def ok(cond, msg):
@@ -463,6 +474,146 @@ try:
         clean(p, 'x10')
         results['x10'] = 'capsule (yen, tickets, per-series pity), Velvet and Boutique ×10: cost, pity, grid, best reveal, Skip, reasons'
 
+
+    # ── The viewer: Collection and the Wardrobe ──
+    if want('viewer'):
+        setup(p, day='10/12')
+        p.eval(r"""(()=>{const G=FemcGame,g=FemcGacha.gs(),d=G.S.day;g.keys.solar=1;g.keys.akihiko=3;g.skeys['hw-solar']=1;g.skeys['cp-solar-akihiko']=1;g.goods['gd-pl-koro']=1;
+          g.cases=['sakura','gold'];g.caseOn='gold';g.got['key:solar']=d-30;g.got['skey:hw-solar']=d;['evk-gold','wp-velvet','ui-moonlight','tt-darkhour'].forEach(FemcCosmetics.grantItem);G.save();})()""")
+        menu(p, 'collection')
+        r = p.eval("""({own:document.querySelectorAll('.g-keys li.own[data-view], .g-goods li.own[data-view]').length,locked:document.querySelectorAll('li:not(.own)[data-view]').length,
+          lockedText:[...document.querySelectorAll('.g-skeys li:not(.own) small')].some(s=>s.textContent==='???'),cases:document.querySelectorAll('[data-view^="case:"]').length})""")
+        ok(r['own'] == 5 and r['locked'] == 0 and r['cases'] == 2, f'only owned tiles open the viewer: {r}')
+        click(p, '[data-view="key:solar"]')
+        p.wait("!!document.querySelector('.g-view-ov:not(.out) .g-view')")
+        V = "(()=>{const v=document.querySelector('.g-view-ov:not(.out) .g-view');return v?{i:+v.dataset.viewI,name:v.querySelector('h3').textContent,info:v.querySelector('.g-view-info').innerText,n:v.querySelector('.g-view-nav > span')?.textContent,img:!!v.querySelector('.g-view-art img, .g-view-art .g-key, .g-view-art .g-good, .g-view-art .g-case-art')}:null})()"
+        r = p.eval(V)
+        ok(r and r['i'] == 0 and r['name'] == 'Solar keychain' and 'Rare' in r['info'] and 'S.E.E.S.' in r['info'] and 'September 12' in r['info'] and r['n'] == '1 / 7' and r['img'], f'viewer opens on the tile: {r}')
+        KEY = "document.dispatchEvent(new KeyboardEvent('keydown',{key:'%s',bubbles:true,cancelable:true}))"
+        p.eval(KEY % 'ArrowRight')
+        r = p.eval(V); ok(r['i'] == 1 and r['name'] == 'Akihiko keychain' and '×3' in r['info'], f'→ steps: {r}')
+        p.eval(KEY % 'ArrowLeft'); p.eval(KEY % 'ArrowLeft')
+        r = p.eval(V); ok(r['i'] == 6 and r['name'] == 'Golden Sun Case' and 'on her phone' in r['info'], f'← wraps to the last: {r}')
+        p.eval("document.querySelector('.g-view [data-view-go=\"-1\"]').click()")
+        r = p.eval(V); ok(r['i'] == 5 and r['name'] == 'Sakura Phone Case', f'the ‹ button: {r}')
+        p.eval(KEY % 'Escape')
+        p.eval("new Promise(r=>setTimeout(r,300))")
+        ok(p.eval("!document.querySelector('.g-view-ov:not(.out)') && !!document.querySelector('.g-fm-ov:not(.out)')"), 'Esc closes the viewer, not the menu')
+        # The case's ⤢ views it without putting it on; tapping the case itself still does.
+        click(p, '[data-view="case:sakura"]')
+        r = p.eval(V); ok(r['name'] == 'Sakura Phone Case' and p.eval("FemcGacha.gs().caseOn") == 'gold', f'case view: {r}')
+        p.eval(KEY % 'Escape'); p.eval("new Promise(r=>setTimeout(r,300))")
+        click(p, '[data-view="skey:hw-solar"]')
+        r = p.eval(V); ok(r['name'] == 'Solar' and 'Halloween' in r['info'] and 'October 12' in r['info'], f'series charm: {r}')
+        for w, h, tag in [(1280, 800, 'desktop'), (375, 812, 'phone')]:
+            view(p, w, h)
+            p.eval("new Promise(r=>setTimeout(r,300))")
+            ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1') and p.eval("document.querySelector('.g-view-ov .g-panel').getBoundingClientRect().right <= innerWidth + 1"), tag + ': viewer fits, no sideways scroll')
+            shot(p, f'viewer-{tag}')
+        # A swipe (phone size): left steps on, right steps back.
+        SW = "(()=>{const pn=document.querySelector('.g-view-ov:not(.out) .g-panel'),ev=(t,x)=>pn.dispatchEvent(new PointerEvent(t,{clientX:x,clientY:300,bubbles:true,pointerType:'touch'}));ev('pointerdown',%d);ev('pointerup',%d);})()"
+        i0 = p.eval(V)['i']
+        p.eval(SW % (300, 80)); ok(p.eval(V)['i'] == (i0 + 1) % 7, 'swipe left steps on')
+        p.eval(SW % (80, 300)); ok(p.eval(V)['i'] == i0, 'swipe right steps back')
+        p.eval(SW % (200, 190)); ok(p.eval(V)['i'] == i0, 'a tap is not a swipe')
+        p.eval(KEY % 'Escape'); p.eval("new Promise(r=>setTimeout(r,300))")
+        # The Wardrobe: owned, usable looks have ⤢ and View; nothing locked or art-pending does.
+        menu(p, 'wardrobe')
+        click(p, '[data-wd-view=wardrobe]')
+        r = p.eval("({zoom:[...document.querySelectorAll('.g-wd-items [data-wd-zoom]')].map(b=>b.dataset.wdZoom).sort(),locked:!!document.querySelector('[data-wd-zoom=\"ui-sakura\"],[data-wd-zoom=\"sk-phantom\"]')})")
+        ok(r['zoom'] == sorted(['evk-gold', 'wp-velvet', 'ui-moonlight', 'tt-darkhour']) and not r['locked'], f'Wardrobe view buttons: {r}')
+        click(p, '[data-wd="wp-velvet"]')
+        click(p, '.g-wd-acts [data-wd-zoom="wp-velvet"]')
+        r = p.eval(V); ok(r['name'] == 'Velvet Room' and 'From the Boutique' in r['info'] and r['n'] == '3 / 4', f'Wardrobe viewer: {r}')
+        p.eval(KEY % 'ArrowRight'); r = p.eval(V); ok(r['name'] == 'Moonlight Colours', f'Wardrobe → : {r}')
+        ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1'), 'phone: Wardrobe viewer, no sideways scroll')
+        shot(p, 'viewer-wardrobe-phone')
+        view(p, 1280, 800)
+        p.eval(KEY % 'ArrowLeft'); p.eval("new Promise(r=>setTimeout(r,300))")
+        shot(p, 'viewer-wardrobe-desktop')
+        p.eval(KEY % 'Escape'); p.eval("new Promise(r=>setTimeout(r,300))")
+        ok(p.eval("!!document.querySelector('.g-fm-ov:not(.out)')"), 'menu still open')
+        p.eval("FemcMenu.close()")
+        view(p, 1280, 850)
+        clean(p, 'viewer')
+        results['viewer'] = 'Collection and Wardrobe: open, ← → / buttons / swipe with wrap, Esc closes only it, locked never opens, got days, phone fit'
+
+    # ── New outfits and weapon skins: out of the pool until their art exists ──
+    if want('newpending'):
+        setup(p, day='4/20', met=['akihiko', 'yukari', 'junpei', 'shinjiro', 'mitsuru', 'fuuka', 'aigis', 'koromaru', 'ken', 'haechan', 'jungwon', 'jihoon', 'minji'])
+        ids = NEW_SKINS + NEW_WPNS
+        r = p.eval(r"""((ids)=>{const C=FemcCosmetics,G=FemcGame,out={missing:ids.filter(id=>!C.byId(id)),ready:[],pool:[],feat:[],eq:[],noWho:[]};
+          ids.forEach(id=>{const x=C.byId(id);if(!x)return;if(C.ready(x))out.ready.push(id);if(!x.who)out.noWho.push(id);C.grantItem(id);if(C.equip(id))out.eq.push(id);});
+          const pool=C.pool().map(x=>x.id);out.pool=ids.filter(id=>pool.includes(id));
+          for(let m=0;m<12;m++){const d=G.dayOf(`${m+1}/15`);C.featured(d).forEach(x=>{if(ids.includes(x.id))out.feat.push(x.id)});}
+          out.inBanners=ids.filter(id=>C.BANNERS.some(b=>b.featured.includes(id)));out.pose=C.battle().pose;out.wpn=['solar','haechan','akihiko','jungwon'].map(C.weaponArt);
+          return out;})(%s)""" % json.dumps(ids))
+        ok(not r['missing'] and not r['ready'] and not r['pool'] and not r['feat'] and not r['eq'] and not r['noWho'] and r['pose'] == {} and r['wpn'] == [None] * 4, f'new looks pending: {r}')
+        ok(len(r['inBanners']) == len(ids), f'every new look waits in a banner: {set(ids) - set(r["inBanners"])}')
+        r = p.eval(QUIET + r"""((ids)=>{const C=FemcCosmetics,GA=FemcGacha;GA.gs().plumes=1e5;C.rng=Math.random;const got=new Set();try{for(let i=0;i<600;i++)got.add(C.pull().item.id);}finally{""" + LOUD + r"""}
+          return ids.filter(id=>got.has(id));})(%s)""" % json.dumps(ids))
+        ok(r == [], f'never pulled: {r}')
+        menu(p, 'wardrobe')
+        click(p, '[data-wd="sk-haechan-widow"]')
+        r = p.eval("({badge:!!document.querySelector('.g-wd-stage .g-wd-pending'),row:document.querySelector('[data-wd=\"sk-haechan-widow\"]').innerText,equip:!!document.querySelector('[data-wd-equip]'),zoom:[...document.querySelectorAll('[data-wd-zoom]')].some(b=>/^(sk|wpn)-/.test(b.dataset.wdZoom)&&!FemcCosmetics.ready(FemcCosmetics.byId(b.dataset.wdZoom))),who:document.querySelector('.g-wd-pv-solar').dataset.who,heads:[...document.querySelectorAll('.g-wd-kind h3 small')].map(x=>x.textContent)})")
+        ok(r['badge'] and 'Art coming' in r['row'] and not r['equip'] and not r['zoom'] and r['who'] == 'haechan' and 'Haechan' in r['heads'] and 'Akihiko' in r['heads'], f'Wardrobe: Art coming, by member: {r}')
+        p.eval("FemcMenu.close()")
+        todo = pathlib.Path(REPO, 'FEMC-ART-TODO.md').read_text()
+        wiring = pathlib.Path(REPO, 'FEMC-ART-WIRING.md').read_text()
+        miss = [i for i in ids if f'skin-{i}' not in todo or i not in wiring]
+        ok(not miss, f'prompts and wiring notes for every new look: {miss}')
+        clean(p, 'newpending')
+        results['newpending'] = f'{len(NEW_SKINS)} outfits and {len(NEW_WPNS)} weapon skins: not in pool, any month\'s featured, or pulls; unequippable; Art coming; prompts and wiring listed'
+
+    # ── A party member wearing an outfit (temporary art) in a real battle ──
+    if want('party'):
+        setup(p, day='9/20', met=['akihiko', 'yukari', 'junpei', 'jungwon'])
+        ok(p.eval("(()=>{const C=FemcCosmetics;return !C.ready(C.byId('sk-akihiko-champ'))&&!C.metOk(C.byId('sk-minji-crew'))&&C.metOk(C.byId('sk-akihiko-champ'))})()"), 'pending, and Minji unmet')
+        menu(p, 'wardrobe')
+        ok(p.eval("!document.querySelector('[data-wd=\"sk-minji-crew\"]') && !!document.querySelector('[data-wd=\"sk-akihiko-champ\"]')"), 'unmet members\' looks stay out of the Wardrobe')
+        p.eval("FemcMenu.close()")
+        try:
+            PSKIN.mkdir(parents=True, exist_ok=True)
+            for i in range(6): shutil.copy(pathlib.Path(REPO, f'assets/femc/battle/art/poses/akihiko-pose-{i}.webp'), PSKIN / f'akihiko-pose-{i}.webp')
+            PWPN.mkdir(parents=True, exist_ok=True)
+            shutil.copy(pathlib.Path(REPO, 'assets/femc/battle/art/poses/akihiko-pose-0.webp'), PWPN / 'weapon.webp')
+            scan()
+            rj = pathlib.Path(REPO, 'assets/femc/game/art/ready.js').read_text()
+            ok('"sk-akihiko-champ": {"poses": ["akihiko"]' in rj and '"wpn-jungwon-council"' in rj, 'scan lists both')
+            p.goto(URL)
+            p.eval("FemcGame.S.phase='play'")
+            r = p.eval(r"""(()=>{const C=FemcCosmetics;C.grantItem('sk-akihiko-champ');C.grantItem('wpn-jungwon-council');return {pool:C.pool().some(x=>x.id==='sk-akihiko-champ'),
+              eq:C.equip('sk-akihiko-champ'),eqw:C.equip('wpn-jungwon-council'),slot:C.cs().on['skin:akihiko'],pose:C.battle().pose,wpn:C.weaponArt('jungwon'),solarW:C.weaponArt('solar')};})()""")
+            ok(r['pool'] and r['eq'] and r['eqw'] and r['slot'] == 'sk-akihiko-champ' and list(r['pose']) == ['akihiko'] and r['pose']['akihiko'].endswith('skins/sk-akihiko-champ/')
+               and r['wpn'] == 'assets/femc/game/art/skins/wpn-jungwon-council/weapon.webp' and r['solarW'] is None, f'party looks equipped: {r}')
+            menu(p, 'wardrobe')
+            click(p, '[data-wd="sk-akihiko-champ"]')
+            ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('skins/sk-akihiko-champ/akihiko-pose-0.webp')"), 'Wardrobe preview wears it on Akihiko')
+            click(p, '.g-wd-acts [data-wd-zoom="sk-akihiko-champ"]')
+            ok(p.eval("document.querySelector('.g-view-ov:not(.out) .g-view-img').src.includes('skins/sk-akihiko-champ/akihiko-pose-0.webp')"), 'viewer shows the outfit')
+            p.eval("FemcMenu.close()")
+            p.eval("(()=>{const G=FemcGame;G.S.joined=['akihiko','yukari','junpei'];G.S.day=G.dayOf('9/15');G.makeHandoff('scripted',{script:'looks-check',notes:'interrupt turn 6',segment:1,forced:true,party:['solar','akihiko','yukari','junpei']});})()")
+            p.battle()
+            p.wait('!!window.FemcBattle?.B && !!document.querySelector(".bt-fighter")')
+            p.eval("FemcBattle.B.party().forEach(u=>{u.maxHp=u.hp=99999})")
+            src = None
+            for _ in range(400):
+                src = p.eval("(()=>{const b=FemcBattle.B,c=FemcBattle.ctl,f=document.querySelector('.bt-fighter'),im=f&&f.querySelector('img:not(.evk)');if(!b.S.cur)return null;const u=b.U(b.S.cur.id);if(!u)return null;"
+                             "if(u.mid==='akihiko'&&im&&!f.hidden&&im.complete)return im.src;if(u.side==='party'&&c?.kind==='menu'&&c.items?.some(i=>i.v==='guard'))c.pickValue('guard');return null})()")
+                if src: break
+                time.sleep(0.05)
+            ok(src and 'skins/sk-akihiko-champ/akihiko-pose-' in src, f'Akihiko wears it on the battlefield: {src}')
+            ok(p.eval("![...document.images].some(i=>/skins\\/sk-akihiko-champ\\/(solar|yukari|junpei)-/.test(i.src))"), 'only Akihiko changes')
+            p.top(); shot(p, 'battle-party-skin')
+            p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
+            p.console()
+        finally:
+            shutil.rmtree(PSKIN, ignore_errors=True); shutil.rmtree(PWPN, ignore_errors=True)
+            scan()
+        rj = pathlib.Path(REPO, 'assets/femc/game/art/ready.js').read_text()
+        ok('sk-akihiko-champ' not in rj and 'wpn-jungwon-council' not in rj, 'ready.js restored')
+        results['party'] = 'Akihiko in a temporary outfit in a real battle (only him), his preview and viewer; Jungwon\'s weapon skin art; unmet members hidden'
+
     # ── Screens ──
     if want('shots'):
         setup(p, day='10/12')
@@ -530,5 +681,6 @@ try:
     print('femc_cosmetics: all checks passed')
 finally:
     p.close()
-    if SKIN.exists():
-        shutil.rmtree(SKIN, ignore_errors=True); scan()
+    if SKIN.exists() or PSKIN.exists() or PWPN.exists():
+        for d in (SKIN, PSKIN, PWPN): shutil.rmtree(d, ignore_errors=True)
+        scan()

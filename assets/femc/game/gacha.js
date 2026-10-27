@@ -39,7 +39,14 @@
      item. The `hidden` series has no machine: once Haechan is met every turn first rolls HIDDEN.rate (0.15%) for one of its
      charms, outside pity (rarity HID, its own sun-and-moon reveal, ??? in Collection until found). GOODS (sticker sheets,
      acrylic stands, mini plush, photo cards) come out of Rare / Super Rare capsules (capPrize → goodPrize); save
-     S.gacha.goods { id: copies }; art game/art/goods/<id>.webp via ready.js `goods`, drawn by kind until then. */
+     S.gacha.goods { id: copies }; art game/art/goods/<id>.webp via ready.js `goods`, drawn by kind until then.
+   ── The viewer (2026-10-27, Kat's "view button" request) ──
+     viewer(entries, at): a big look at one owned thing, on a ui.js overlay (.g-view-ov): the art at full size (Kat's file,
+     or the drawn charm zoomed), name, rarity, series, a flavour line and when / how it was got. ← → or a swipe step
+     through the list, Esc closes (only the viewer; the menu stays). Collection: tap an owned keychain, charm or good, or
+     a case's ⤢ (tapping the case still puts it on); cosmetics.js gives it the Wardrobe's owned looks. Locked tiles stay ???
+     and never open it. First-got days: S.gacha.got { 'key:<id>' | 'skey:<id>' | 'good:<id>' | 'case:<id>': day } (older
+     saves show only how it was got). */
 window.FemcGacha = (() => {
   const G = window.FemcGame;
   if (!G) return null;
@@ -230,7 +237,7 @@ window.FemcGacha = (() => {
   };
 
   /* ── State ── */
-  function fresh() { return { v: 2, plumes: 0, stars: 0, pulls: 0, draws: 0, pity: { cap: { sr: 0, ur: 0 }, vel: { sr: 0, ur: 0 }, series: {} }, keys: {}, skeys: {}, goods: {}, done: [], cases: [], caseOn: null, credited: [], last: null }; }
+  function fresh() { return { v: 2, plumes: 0, stars: 0, pulls: 0, draws: 0, pity: { cap: { sr: 0, ur: 0 }, vel: { sr: 0, ur: 0 }, series: {} }, keys: {}, skeys: {}, goods: {}, got: {}, done: [], cases: [], caseOn: null, credited: [], last: null }; }
   function gs() {
     const s = S();
     const f = fresh();
@@ -242,6 +249,7 @@ window.FemcGacha = (() => {
     if (!Array.isArray(g.cases)) g.cases = []; if (!Array.isArray(g.credited)) g.credited = []; if (!Array.isArray(g.done)) g.done = [];
     if (!g.skeys || typeof g.skeys !== 'object' || Array.isArray(g.skeys)) g.skeys = {};
     if (!g.goods || typeof g.goods !== 'object' || Array.isArray(g.goods)) g.goods = {};
+    if (!g.got || typeof g.got !== 'object' || Array.isArray(g.got)) g.got = {};
     return g;
   }
   // Pity for a capsule series: the Cast machine keeps the old counters.
@@ -284,6 +292,7 @@ window.FemcGacha = (() => {
   // Give a prize; returns { r, kind, id, name, desc, n, dup, stars }.
   function grant(r, p) {
     const g = gs(), out = { r, kind: p[0], id: p[1], n: p[2] || 1 };
+    if (['key', 'skey', 'good', 'case'].includes(p[0]) && g.got[`${p[0]}:${p[1]}`] == null) g.got[`${p[0]}:${p[1]}`] = S().day;
     if (p[0] === 'item') { G.D.battle.items[p[1]] && (S().inventory[p[1]] = (S().inventory[p[1]] || 0) + out.n); const it = D().items[p[1]]; out.name = it.name + (out.n > 1 ? ` ×${out.n}` : ''); out.desc = it.desc; }
     else if (p[0] === 'mat') { const b = bsave(); b.mats[p[1]] = (b.mats[p[1]] || 0) + out.n; out.name = `${D().materials[p[1]].name} ×${out.n}`; out.desc = D().materials[p[1]].desc; }
     else if (p[0] === 'gear') { const b = bsave(); b.gear.owned[p[1]] = (b.gear.owned[p[1]] || 0) + 1; const ge = D().gear[p[1]]; out.name = ge.name; out.desc = window.FemcBattleSave ? window.FemcBattleSave.gearLine(p[1]) : ge.desc; out.slot = ge.slot; }
@@ -715,34 +724,107 @@ window.FemcGacha = (() => {
     return o;
   }
 
+  /* ── The viewer (header) ── */
+  // An owned tile opens it; a locked one has no hook at all.
+  const vw = (own, kind, id, name) => (own ? ` data-view="${kind}:${id}" tabindex="0" role="button" aria-label="View ${esc(name)}"` : '');
+  const fmtDay = d => { try { return G.dateOf(d).toLocaleString('en', { month: 'long', day: 'numeric' }); } catch (e) { return ''; } };
+  // Kat's art file at full size (the drawn charm, zoomed, if the file fails), or the drawn one.
+  const bigArt = (src, drawn) => (src ? `<img class="g-view-img" src="${src}" alt="" onerror="this.nextElementSibling.hidden=false;this.remove()"><span class="g-view-drawn" hidden>${drawn}</span>` : `<span class="g-view-drawn">${drawn}</span>`);
+  function gotLine(key, how, n) {
+    const d = gs().got[key];
+    return `${how}${d != null ? `, ${fmtDay(d)}` : ''}${n > 1 ? ` · ×${n} (repeats became tokens)` : ''}.`;
+  }
+  /* One Collection tile as a viewer entry ('key:<id>', 'skey:<id>', 'good:<id>', 'case:<id>'). */
+  function viewEntry(tok) {
+    const g = gs(), [kind, id] = [tok.slice(0, tok.indexOf(':')), tok.slice(tok.indexOf(':') + 1)];
+    const rr = r => ({ name: RARITY[r].name, color: RARITY[r].color, stars: RARITY[r].stars });
+    if (kind === 'key') {
+      const st = keySet(id);
+      return { name: `${keyName(id)} keychain`, r: rr('R'), series: `${st.name} keychains`, flavour: halloween() ? 'An acrylic charm, in costume for October.' : 'An acrylic charm on a little silver chain.',
+        art: bigArt(KEY_ART.has(id) ? keyArt(id) : null, keychain(id)), got: gotLine(tok, 'From the Cast machine', g.keys[id]) };
+    }
+    if (kind === 'skey') {
+      const [x, s] = itemById(id);
+      return { name: x.name, r: rr(x.r), series: s.name, flavour: x.look[0].toUpperCase() + x.look.slice(1) + '.', art: bigArt(skeyArt(x), skeychain(x)),
+        got: gotLine(tok, s.hidden ? 'A hidden charm, out of a capsule machine' : s.id === 'cast' ? 'From the Cast machine' : `From the ${s.name} machine`, g.skeys[id]) };
+    }
+    if (kind === 'good') {
+      const x = goodById(id), art = (ready().goods || []).includes(id) ? `${G.base}assets/femc/game/art/goods/${id}.webp` : null;
+      return { name: x.name, r: rr(x.r), series: `Capsule goods · ${GOOD_KINDS[x.kind]}`, flavour: x.look[0].toUpperCase() + x.look.slice(1) + '.', art: bigArt(art, goodArt(x)), got: gotLine(tok, 'From the Cast machine', g.goods[id]) };
+    }
+    const c = CASES.find(x => x.id === id);
+    return { name: c.name, r: rr(c.r), series: 'Phone cases', flavour: c.desc, art: bigArt(`${G.base}assets/femc/game/art/cases/${id}.webp`, `<span class="g-case-art" data-case="${id}"><i></i></span>`),
+      got: gotLine(tok, g.caseOn === id ? 'From the Cast machine · on her phone now' : 'From the Cast machine') };
+  }
+  /* The viewer itself. entries: [{ name, r: { name, color, stars }, series, flavour, got, art (html) }]. Returns { el, go, close, at }. */
+  function viewer(list, at = 0) {
+    const U = UI(); if (!U || !list || !list.length) return null;
+    let i = Math.max(0, Math.min(at | 0, list.length - 1));
+    const body = () => { const x = list[i]; return `<div class="g-view" style="--rc:${x.r.color}" data-view-i="${i}">
+      <button type="button" class="g-view-x" data-close aria-label="Close">×</button>
+      <div class="g-view-art">${x.art}</div>
+      <div class="g-view-info"><span class="g-ga-stars" style="--rc:${x.r.color}" aria-label="${esc(x.r.name)}">${'★'.repeat(x.r.stars)}</span><small>${esc(x.r.name)}${x.series ? ` · ${esc(x.series)}` : ''}</small>
+        <h3>${esc(x.name)}</h3>${x.flavour ? `<p>${esc(x.flavour)}</p>` : ''}${x.got ? `<p class="g-view-got">${esc(x.got)}</p>` : ''}</div>
+      ${list.length > 1 ? `<div class="g-view-nav"><button type="button" class="g-btn small" data-view-go="-1" aria-label="Previous"><span>‹</span></button><span>${i + 1} / ${list.length}</span><button type="button" class="g-btn small" data-view-go="1" aria-label="Next"><span>›</span></button></div>` : ''}</div>`; };
+    const key = e => {
+      if (o.el.classList.contains('out') || o.el !== [...document.querySelectorAll('.g-overlay')].pop()) return;
+      const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+      if (d) { e.preventDefault(); e.stopPropagation(); go(d); }
+    };
+    const o = U.overlay(body(), 'g-view-ov', () => document.removeEventListener('keydown', key, true));
+    const panel = o.el.querySelector('.g-panel');
+    panel.tabIndex = -1; panel.style.setProperty('--rc', list[i].r.color);
+    function go(d) {
+      if (list.length < 2) return i;
+      i = (i + d + list.length) % list.length; panel.innerHTML = body(); panel.style.setProperty('--rc', list[i].r.color); G.sfx('femc-hover');
+      panel.querySelector(`[data-view-go="${d > 0 ? 1 : -1}"]`)?.focus({ preventScroll: true });
+      return i;
+    }
+    document.addEventListener('keydown', key, true);
+    panel.addEventListener('click', e => { const b = e.target.closest('[data-view-go]'); if (b) go(+b.dataset.viewGo); });
+    // A swipe (finger or a mouse drag) sideways steps; mostly-vertical movement is left to scrolling.
+    let p0 = null;
+    panel.addEventListener('pointerdown', e => { p0 = { x: e.clientX, y: e.clientY }; });
+    panel.addEventListener('pointerup', e => { if (!p0) return; const dx = e.clientX - p0.x, dy = e.clientY - p0.y; p0 = null; if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) go(dx < 0 ? 1 : -1); });
+    panel.addEventListener('pointercancel', () => { p0 = null; });
+    G.sfx('femc-click');
+    return { el: o.el, go, close: o.close, at: () => i };
+  }
+
   /* ── Menu → Collection (menu.js calls these) ── */
   function collectionHtml() {
     const g = gs();
     const sets = SETS.map(st => {
       const n = setCount(st);
       return `<section class="g-col-set" style="--c:${st.color}"><h3>${esc(st.name)} <small>${n}/${st.ids.length}${n === st.ids.length ? ' · complete' : ''}</small></h3>
-        <ul class="g-keys">${st.ids.map(id => { const own = g.keys[id] > 0, known = keyEligible(id); return `<li class="${own ? 'own' : ''}" title="${own ? esc(keyName(id)) + (g.keys[id] > 1 ? ` ×${g.keys[id]}` : '') : known ? 'Not yet' : '???'}">${keychain(id, own)}<small>${own || known ? esc(keyName(id)) : '???'}</small></li>`; }).join('')}</ul></section>`;
+        <ul class="g-keys">${st.ids.map(id => { const own = g.keys[id] > 0, known = keyEligible(id); return `<li class="${own ? 'own' : ''}"${vw(own, 'key', id, keyName(id))} title="${own ? esc(keyName(id)) + (g.keys[id] > 1 ? ` ×${g.keys[id]}` : '') : known ? 'Not yet' : '???'}">${keychain(id, own)}<small>${own || known ? esc(keyName(id)) : '???'}</small></li>`; }).join('')}</ul></section>`;
     }).join('');
-    const cases = CASES.map(c => { const own = g.cases.includes(c.id), on = g.caseOn === c.id; return `<li><button type="button" class="g-col-case${on ? ' on' : ''}" data-case-pick="${own ? c.id : ''}"${own ? '' : ' disabled'}>${own ? caseArt(c.id) : '<span class="g-case-art" data-case="none"><i></i></span>'}<b>${own ? esc(c.name) : '???'}</b><small>${own ? (on ? 'On her phone' : 'Put it on') : RARITY[c.r].name}</small></button></li>`; }).join('');
+    const cases = CASES.map(c => { const own = g.cases.includes(c.id), on = g.caseOn === c.id; return `<li class="g-col-caseli">${own ? `<button type="button" class="g-view-zoom" data-view="case:${c.id}" aria-label="View ${esc(c.name)}" title="View">⤢</button>` : ''}<button type="button" class="g-col-case${on ? ' on' : ''}" data-case-pick="${own ? c.id : ''}"${own ? '' : ' disabled'}>${own ? caseArt(c.id) : '<span class="g-case-art" data-case="none"><i></i></span>'}<b>${own ? esc(c.name) : '???'}</b><small>${own ? (on ? 'On her phone' : 'Put it on') : RARITY[c.r].name}</small></button></li>`; }).join('');
     const on = activeSeries().map(s => s.id), MON = m => new Date(2009, m - 1, 1).toLocaleString('en', { month: 'short' });
     const series = SERIES.filter(s => !s.hidden).map(s => {
       const n = itemCount(s), C = window.FemcCosmetics, rw = C && s.reward ? C.byId(s.reward) : null;
       const when = s.always ? 'always in the Corner' : on.includes(s.id) ? 'in the Corner now' : s.needs && !seriesOpen(s) ? 'not in the Corner yet' : `in the Corner ${s.months.map(MON).join(', ')}`;
       return `<section class="g-col-set g-col-series" style="--c:${s.color}"><h3>${esc(s.id === 'cast' ? 'Cast Secrets' : s.name)} <small>${n}/${s.items.length}${g.done.includes(s.id) ? ' · complete' : ''} · ${when}</small></h3>
-        <ul class="g-keys g-skeys">${s.items.map(x => { const own = g.skeys[x.id] > 0, known = itemEligible(x); return `<li class="${own ? 'own' : ''}" title="${own ? esc(x.name + ' · ' + x.look) + (g.skeys[x.id] > 1 ? ` ×${g.skeys[x.id]}` : '') : known ? esc(RARITY[x.r].name) : '???'}">${skeychain(x, own)}<small>${own || (known && x.r !== 'SEC') ? esc(x.name) : '???'}</small></li>`; }).join('')}</ul>
+        <ul class="g-keys g-skeys">${s.items.map(x => { const own = g.skeys[x.id] > 0, known = itemEligible(x); return `<li class="${own ? 'own' : ''}"${vw(own, 'skey', x.id, x.name)} title="${own ? esc(x.name + ' · ' + x.look) + (g.skeys[x.id] > 1 ? ` ×${g.skeys[x.id]}` : '') : known ? esc(RARITY[x.r].name) : '???'}">${skeychain(x, own)}<small>${own || (known && x.r !== 'SEC') ? esc(x.name) : '???'}</small></li>`; }).join('')}</ul>
         ${rw ? `<p class="g-note small">Complete it: three Capsule Tickets and ${esc(rw.name)} (${esc(C.KINDS[rw.kind].name)}).</p>` : ''}</section>`;
     }).join('');
     // Hidden charms: ??? until found, a sun-and-moon mark; the section shows once they can drop (or one is owned).
     const hs = hiddenSeries(), hn = itemCount(hs);
     const hidden = hiddenOn() || hn ? `<section class="g-col-set g-col-series g-col-hidden" style="--c:${hs.color}"><h3>☀☾ ${esc(hs.name)} <small>${hn}/${hs.items.length}${g.done.includes(hs.id) ? ' · complete' : ''} · any machine, very rarely</small></h3>
-        <ul class="g-keys g-skeys">${hs.items.map(x => { const own = g.skeys[x.id] > 0; return `<li class="${own ? 'own' : ''}" title="${own ? esc(x.name + ' · ' + x.look) : '???'}">${skeychain(x, own)}<small>${own ? esc(x.name) : '???'}</small></li>`; }).join('')}</ul></section>` : '';
+        <ul class="g-keys g-skeys">${hs.items.map(x => { const own = g.skeys[x.id] > 0; return `<li class="${own ? 'own' : ''}"${vw(own, 'skey', x.id, x.name)} title="${own ? esc(x.name + ' · ' + x.look) : '???'}">${skeychain(x, own)}<small>${own ? esc(x.name) : '???'}</small></li>`; }).join('')}</ul></section>` : '';
     const gk = Object.keys(GOOD_KINDS), goods = `<section class="g-col-set g-col-goods"><h3>Capsule goods <small>${GOODS.filter(x => g.goods[x.id] > 0).length}/${GOODS.length}</small></h3>
-        <ul class="g-goods">${GOODS.slice().sort((a, b) => gk.indexOf(a.kind) - gk.indexOf(b.kind)).map(x => { const own = g.goods[x.id] > 0, known = itemEligible(x); return `<li class="${own ? 'own' : ''}" title="${own ? esc(x.name + ' · ' + x.look) + (g.goods[x.id] > 1 ? ` ×${g.goods[x.id]}` : '') : known ? esc(GOOD_KINDS[x.kind]) : '???'}">${goodArt(x, own)}<small>${own || known ? esc(x.name) : '???'}</small></li>`; }).join('')}</ul></section>`;
+        <ul class="g-goods">${GOODS.slice().sort((a, b) => gk.indexOf(a.kind) - gk.indexOf(b.kind)).map(x => { const own = g.goods[x.id] > 0, known = itemEligible(x); return `<li class="${own ? 'own' : ''}"${vw(own, 'good', x.id, x.name)} title="${own ? esc(x.name + ' · ' + x.look) + (g.goods[x.id] > 1 ? ` ×${g.goods[x.id]}` : '') : known ? esc(GOOD_KINDS[x.kind]) : '???'}">${goodArt(x, own)}<small>${own || known ? esc(x.name) : '???'}</small></li>`; }).join('')}</ul></section>`;
     return `<p class="g-note">Keychains and phone cases from the capsule machines at Paulownia Mall. A season’s machine stands beside the Cast machine for a few months at a time. Elizabeth’s Velvet Room is down the same hall.</p>
       <div class="g-col-stats"><span>Capsule turns <b>${g.pulls}</b></span><span>Tickets <b>${tickets()}</b></span><span>Capsule Tokens <b>${g.stars}</b></span><span>Velvet draws <b>${g.draws}</b></span><span>Velvet Plumes <b>${g.plumes}</b></span></div>
       ${sets}${series}${hidden}${goods}<section class="g-col-set"><h3>Phone cases <small>${g.cases.length}/${CASES.length}</small></h3><ul class="g-col-cases">${cases}${g.caseOn ? '<li><button type="button" class="g-col-case" data-case-pick="off"><span class="g-case-art" data-case="none"><i></i></span><b>Plain</b><small>Take it off</small></button></li>' : ''}</ul></section>`;
   }
   function wireCollection(el, rerender) {
+    const tiles = () => [...el.querySelectorAll('[data-view]')];
+    const openAt = t => { const ts = tiles(); viewer(ts.map(x => viewEntry(x.dataset.view)), ts.indexOf(t)); };
+    tiles().forEach(t => {
+      t.addEventListener('click', e => { e.stopPropagation(); openAt(t); });
+      if (t.tagName !== 'BUTTON') t.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); openAt(t); } });
+    });
     el.querySelectorAll('[data-case-pick]').forEach(b => b.addEventListener('click', () => {
       const id = b.dataset.casePick; if (!id) return;
       gs().caseOn = id === 'off' ? null : id; G.save(); G.sfx('femc-click'); rerender(`[data-case-pick="${id}"]`);
@@ -753,5 +835,5 @@ window.FemcGacha = (() => {
   function open(kind, done) { return kind === 'velvet' ? openVelvet(done) : openCapsule(done); }
 
   return Object.assign(api, { pullN, pull10, drawN, draw10, best, capCan, velCan, capWhy, velWhy, gridHtml, RARITY, CAP, VEL, SETS, CASES, SERIES, TOKEN_PRICE, fresh, gs, pull, draw, claim, unclaimed, tradeStars, afterFight, velCost, rarity, setCount, setDone, keyEligible, tickets, open, openCapsule, openVelvet, collectionHtml, wireCollection, phoneCase, keychain, skeychain, halloween,
-    activeSeries, seriesPity, seriesDone, itemEligible, itemById, shopList, buy, completeSeries, GOODS, GOOD_KINDS, HIDDEN, hiddenOn, goodArt });
+    activeSeries, seriesPity, seriesDone, itemEligible, itemById, shopList, buy, completeSeries, GOODS, GOOD_KINDS, HIDDEN, hiddenOn, goodArt, viewer, viewEntry, bigArt, fmtDay });
 })();

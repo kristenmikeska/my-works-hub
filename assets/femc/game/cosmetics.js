@@ -22,7 +22,16 @@
      land on that rarity's featured item, and an Ultra that wasn't featured makes the next Ultra featured). Repeats give back
      Velvet Plumes (BAN.refund). Series rewards (gacha.js SERIES[].reward) are `pool: false`: only completing the series
      gives them.
-   Save: S.gacha.cos = { own: [ids], on: { slot: id }, portraits, pulls, pity: { sr, ur }, guar, last }. NG+ keeps own / on /
+   ── The party's looks (2026-10-27, Kat's "more skins" batch) ──
+     Any fighter can wear an outfit or a weapon skin: `who` is the fighter id, the slot is `skin:<who>` / `weapon:<who>`,
+     battle() hands battle.js a pose folder per member, weaponArt(who) feeds that member's Equipment weapon slot. An item
+     for someone Solar hasn't met stays out of the pool and the Wardrobe (no spoilers; `metOk`). All of the party's
+     outfits and the new weapon skins are art-pending (FEMC-ART-TODO section 7): game/art/skins/<id>/<who>-pose-0..5.webp
+     and game/art/skins/<id>/weapon.webp, cut by tools/femc-wardrobe.py (`skin <sheet> <id> <who>`, `weapon <image> <id>`).
+   ── The viewer ──
+     An owned look's ⤢ (or the View button by Equip) opens gacha.js viewer() over every owned look on the page; ← → / swipe,
+     Esc. First-got days: S.gacha.cos.got { id: day }.
+   Save: S.gacha.cos = { own: [ids], on: { slot: id }, portraits, pulls, pity: { sr, ur }, guar, last, got }. NG+ keeps own / on /
    portraits (core.js newGamePlus). Tests: FemcCosmetics.rng is replaceable; tests/femc_cosmetics.py. */
 window.FemcCosmetics = (() => {
   const G = window.FemcGame;
@@ -60,6 +69,30 @@ window.FemcCosmetics = (() => {
     // Weapon skins (art pending: 8C).
     c('wpn-sakura', 'weapon', 'Sakura Naginata', 'SR', 'A pale wood haft wrapped in pink silk, blossoms etched on the blade.', { who: 'solar', art: true }),
     c('wpn-phantom', 'weapon', 'Phantom Naginata', 'UR', 'Black lacquer and a red tassel, to go with the coat.', { who: 'solar', art: true }),
+    // More for Solar (2026-10-27): her two outfits' matches and one from each of Kat's universes (art pending: section 7).
+    c('wpn-kiriko', 'weapon', 'Kitsune Naginata', 'UR', 'Red lacquer and a fox-mask charm, kunai strapped along the haft, ofuda streaming from the collar. Goes with the Kiriko Cosplay.', { who: 'solar', art: true }),
+    c('wpn-emo', 'weapon', 'Emo Night Naginata', 'SR', 'Matte black, a chain wrap, safety pins and a little broken-heart charm. Goes with Emo Night.', { who: 'solar', art: true }),
+    c('wpn-runners', 'weapon', 'Runners Naginata', 'SR', 'Orange and navy grip tape, a tiny gaming-headset charm, a rooftop at golden hour etched on the blade. From Runners.', { who: 'solar', art: true }),
+    c('wpn-strangers', 'weapon', 'Harbour Night Naginata', 'SR', 'Gunmetal and wet black, a harbour-light amber edge and a red thread knotted under the blade. From strangers.', { who: 'solar', art: true }),
+    c('wpn-hoax', 'weapon', 'Council Naginata', 'SR', 'Navy and white, a student-council armband tied at the collar and a laminated hall pass. From HOAX.', { who: 'solar', art: true }),
+    // The party's outfits (2026-10-27, Kat's picks; art pending: section 7). Worn on their battle pose sheets.
+    c('sk-akihiko-champ', 'skin', 'Champion’s Robe', 'UR', 'A red satin boxing robe with gold trim, SANADA across the back and a title belt over one shoulder.', { who: 'akihiko', art: true }),
+    c('sk-akihiko-hoodie', 'skin', 'Off-Day Hoodie', 'SR', 'A grey zip hoodie, track pants and running shoes. His day off still has roadwork in it.', { who: 'akihiko', art: true }),
+    c('sk-haechan-runners', 'skin', 'Sigma Chi Runner', 'SR', 'His Runners look: a Sigma Chi letterman jacket over an orange hoodie, studio headphones round his neck.', { who: 'haechan', art: true }),
+    c('sk-haechan-widow', 'skin', 'Widowmaker Cosplay', 'UR', 'Violet bodysuit, a long ponytail, the targeting visor pushed up. Every Kiriko needs a rival.', { who: 'haechan', art: true }),
+    c('sk-jungwon-council', 'skin', 'HOAX Council Uniform', 'SR', 'The Hanlim High blazer, the student-council armband and a clipboard he takes very seriously.', { who: 'jungwon', art: true }),
+    c('sk-yukari-kyudo', 'skin', 'Archery Club', 'SR', 'Her kyudo uniform: a white top, navy hakama and a black chest guard.', { who: 'yukari', art: true }),
+    c('sk-yukari-pink', 'skin', 'Featherman Pink', 'UR', 'A pink sentai suit, the feathered helmet under her arm. She will not be taking questions from Ken.', { who: 'yukari', art: true }),
+    c('sk-junpei-baseball', 'skin', 'Little League Legend', 'SR', 'Pinstripes, a batting helmet and eye black. A legend, by his own account.', { who: 'junpei', art: true }),
+    c('sk-mitsuru-rider', 'skin', 'Motorcycle Leathers', 'UR', 'Her white riding suit, and her white motorcycle never far behind. Execution, with style.', { who: 'mitsuru', art: true }),
+    c('sk-shinjiro-apron', 'skin', 'Beanie & Apron', 'SR', 'A knit beanie and a plain apron over his coat. Dinner is in ten minutes; nobody touches the pot.', { who: 'shinjiro', art: true }),
+    c('sk-minji-crew', 'skin', 'Film Crew', 'SR', 'A cargo vest, a headset and a clapperboard, a camera rig on one shoulder. Quiet on set.', { who: 'minji', art: true }),
+    c('sk-jihoon-pilates', 'skin', 'Purple Pilates Set', 'SR', 'A lavender matching set, grip socks and a rolled mat. It’s for his core, he says.', { who: 'jihoon', art: true }),
+    c('sk-aigis-uniform', 'skin', 'Gekkoukan Uniform', 'SR', 'The school uniform over her frame, the ribbon tied to the millimetre. Mission: blend in.', { who: 'aigis', art: true }),
+    // The party's weapon skins (2026-10-27; art pending).
+    c('wpn-haechan-widow', 'weapon', 'Widowmaker Knives', 'UR', 'Violet and black, a spider mark on each guard, a grapple ring at the pommel. Goes with his cosplay.', { who: 'haechan', art: true }),
+    c('wpn-akihiko-champ', 'weapon', 'Champion Gloves', 'UR', 'Gold leather, red trim, laced cuffs. Title-fight gloves.', { who: 'akihiko', art: true }),
+    c('wpn-jungwon-council', 'weapon', 'Council Rapier', 'SR', 'A navy guard with the gold council crest, a white ribbon on the hilt.', { who: 'jungwon', art: true }),
     // Code-only: Evokers.
     c('evk-rose', 'evoker', 'Rose Gold Evoker', 'R', 'Warm rose-gold plating.', { filter: 'sepia(.8) saturate(2.4) hue-rotate(-28deg) brightness(1.05)' }),
     c('evk-midnight', 'evoker', 'Midnight Evoker', 'R', 'Gunmetal blue, nearly black.', { filter: 'brightness(.6) sepia(.6) hue-rotate(185deg) saturate(3)' }),
@@ -103,11 +136,12 @@ window.FemcCosmetics = (() => {
   const byId = id => ITEMS.find(x => x.id === id) || null;
   // Featured rotation by the game's month (P5X-style banners).
   const BANNERS = [
-    { id: 'bloom', name: 'Spring Bloom', months: [4, 5], color: '#ff8cc0', featured: ['sk-date', 'tt-sakura', 'ui-sakura'] },
-    { id: 'summer', name: 'Summer Nights', months: [6, 7, 8], color: '#4fd8ff', featured: ['sk-yukata', 'wp-fireworks', 'ui-mint'] },
-    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade'] },
-    { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose'] },
-    { id: 'sunrise', name: 'Golden Sunrise', months: [2, 3], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart'] }
+    // Art-pending items wait in their banner and join its featured list by themselves once their art is in (featured()).
+    { id: 'bloom', name: 'Spring Bloom', months: [4, 5], color: '#ff8cc0', featured: ['sk-date', 'tt-sakura', 'ui-sakura', 'sk-jihoon-pilates', 'sk-junpei-baseball', 'sk-yukari-kyudo', 'sk-aigis-uniform', 'wpn-hoax'] },
+    { id: 'summer', name: 'Summer Nights', months: [6, 7, 8], color: '#4fd8ff', featured: ['sk-yukata', 'wp-fireworks', 'ui-mint', 'sk-haechan-runners', 'sk-minji-crew', 'sk-akihiko-hoodie', 'wpn-runners'] },
+    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'sk-haechan-widow', 'wpn-haechan-widow', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink'] },
+    { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose', 'sk-shinjiro-apron', 'sk-mitsuru-rider', 'wpn-strangers'] },
+    { id: 'sunrise', name: 'Golden Sunrise', months: [2, 3], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council'] }
   ];
 
   /* ── Art ── */
@@ -122,22 +156,26 @@ window.FemcCosmetics = (() => {
     return false;
   }
   const skinDir = id => `assets/femc/game/art/skins/${id}/`;
+  // A party look only once Solar has met them (no spoilers from the Boutique).
+  const metOk = x => !x.who || x.who === 'solar' || !!(G.isMet && G.isMet(x.who));
+  const whoName = id => (id === 'solar' ? 'Solar' : (G.LINKS && G.LINKS[id] && G.LINKS[id].short) || (G.name ? G.name(id) : id));
+  const posePath = (who, skin) => (skin && ready(skin) ? `${G.base}${skinDir(skin.id)}${who}-pose-0.webp` : `${G.base}assets/femc/battle/art/poses/${who}-pose-0.webp`);
 
   /* ── State ── */
   function cs() {
     const g = window.FemcGacha ? window.FemcGacha.gs() : (S().gacha = S().gacha || {});
-    const f = { own: [], on: {}, portraits: true, pulls: 0, pity: { sr: 0, ur: 0 }, guar: false, last: null };
+    const f = { own: [], on: {}, portraits: true, pulls: 0, pity: { sr: 0, ur: 0 }, guar: false, last: null, got: {} };
     if (!g.cos || typeof g.cos !== 'object') g.cos = f;
     const s = g.cos;
     Object.keys(f).forEach(k => { if (s[k] === undefined || (f[k] !== null && typeof s[k] !== typeof f[k])) s[k] = f[k]; });
-    if (!Array.isArray(s.own)) s.own = []; s.pity = Object.assign({ sr: 0, ur: 0 }, s.pity || {});
+    if (!Array.isArray(s.own)) s.own = []; if (!s.got || Array.isArray(s.got)) s.got = {}; s.pity = Object.assign({ sr: 0, ur: 0 }, s.pity || {});
     return s;
   }
   const owns = id => cs().own.includes(id);
   const slotOf = x => (x.who ? `${x.kind}:${x.who}` : x.kind);
   // The equipped item in a slot, only while it's still usable.
   const onIn = slot => { const x = byId(cs().on[slot]); return x && ready(x) && owns(x.id) ? x : null; };
-  function grantItem(id) { const x = byId(id); if (!x) return null; const s = cs(); if (!s.own.includes(id)) s.own.push(id); return x; }
+  function grantItem(id) { const x = byId(id); if (!x) return null; const s = cs(); if (!s.own.includes(id)) { s.own.push(id); if (s.got[id] == null) s.got[id] = S().day; } return x; }
   function equip(id) {
     const x = byId(id); if (!x || !owns(id) || !ready(x)) return false;
     cs().on[slotOf(x)] = id; G.save(); apply(); return true;
@@ -148,8 +186,8 @@ window.FemcCosmetics = (() => {
   /* ── The banner ── */
   const monthOf = d => { try { return G.dateOf(d ?? S().day).getMonth() + 1; } catch (e) { return 4; } };
   const banner = d => BANNERS.find(b => b.months.includes(monthOf(d))) || BANNERS[0];
-  const pool = () => ITEMS.filter(x => x.pool !== false && ready(x));
-  const featured = d => banner(d).featured.map(byId).filter(x => x && x.pool !== false && ready(x));
+  const pool = () => ITEMS.filter(x => x.pool !== false && ready(x) && metOk(x));
+  const featured = d => banner(d).featured.map(byId).filter(x => x && x.pool !== false && ready(x) && metOk(x));
   const plumes = () => (window.FemcGacha ? window.FemcGacha.gs().plumes : 0);
   const canPull = (n = 1) => plumes() >= BAN.cost * n && pool().length > 0;
   const pullWhy = (n = 1) => (canPull(n) ? '' : !pool().length ? 'Nothing in the pool' : `Needs ${BAN.cost * n} plumes (${plumes()})`);
@@ -188,7 +226,7 @@ window.FemcCosmetics = (() => {
     else { const rest = all.filter(x => !feat.includes(x)); item = pick(rest.length ? rest : all); isFeat = feat.includes(item); }
     if (rr === 'UR') s.guar = !isFeat && feat.length > 0;
     const dup = owns(item.id), refund = dup ? BAN.refund[rr] : 0;
-    if (dup) g.plumes += refund; else s.own.push(item.id);
+    if (dup) g.plumes += refund; else { s.own.push(item.id); s.got[item.id] = S().day; }
     s.pulls += 1; s.last = { at: S().day, id: item.id, r: rr };
     G.save();
     return { item, r: rr, dup, refund, feat: isFeat };
@@ -258,8 +296,8 @@ window.FemcCosmetics = (() => {
   // The big preview: the wallpaper (selected or worn), Solar in her outfit, and the item itself.
   function preview(x) {
     const wall = x && x.kind === 'wallpaper' ? x : onIn('wallpaper');
-    const skin = x && x.kind === 'skin' ? x : onIn('skin:solar');
-    const pose = skin && ready(skin) ? `${G.base}${skinDir(skin.id)}solar-pose-0.webp` : `${G.base}${DEFAULT_POSE}`;
+    const who = (x && x.who) || 'solar', skin = x && x.kind === 'skin' ? x : onIn(`skin:${who}`);
+    const pose = who === 'solar' && !(skin && ready(skin)) ? `${G.base}${DEFAULT_POSE}` : posePath(who, skin);
     const pal = x && (x.kind === 'uitheme' || x.kind === 'battleui') ? x.pal : (onIn('uitheme') || {}).pal;
     const evk = x && x.kind === 'evoker' ? x : onIn('evoker');
     let extra = '';
@@ -268,7 +306,7 @@ window.FemcCosmetics = (() => {
     else if (x && x.kind === 'battleui') extra = `<span class="g-wd-pv-hud" style="${varsCss(x.pal)}"><i style="--w:80%"></i><i class="sp" style="--w:55%"></i><b>Attack</b><b>Skill</b><b>Guard</b></span>`;
     const pending = x && x.art && !ready(x);
     return `<div class="g-wd-stage"${wall ? ` style="--wall:${esc(wallCss(wall))}"` : ''} data-pv="${x ? x.id : ''}">
-      <img class="g-wd-pv-solar${pending && x.kind === 'skin' ? ' pending' : ''}" src="${pose}" alt="">
+      <img class="g-wd-pv-solar${pending && x.kind === 'skin' ? ' pending' : ''}" src="${pose}" alt="" data-who="${who}">
       ${evk ? `<img class="g-wd-pv-evk" src="${G.base}${EVOKER}" alt="" style="filter:${evk.filter}">` : ''}
       ${extra}${pal ? `<span class="g-wd-pv-pal" style="${varsCss(pal)}"><i></i><i></i><i></i></span>` : ''}
       ${pending ? '<span class="g-wd-pending">Art coming</span>' : ''}</div>`;
@@ -277,22 +315,42 @@ window.FemcCosmetics = (() => {
     const s = cs(), x = byId(sel);
     const kinds = Object.keys(KINDS).sort((a, b) => KINDS[a].order - KINDS[b].order);
     const lists = kinds.map(k => {
-      const items = ITEMS.filter(i => i.kind === k);
+      const items = ITEMS.filter(i => i.kind === k && (metOk(i) || owns(i.id)));
       const slots = [...new Set(items.map(slotOf))];
       return slots.map(slot => {
-        const worn = onIn(slot);
-        return `<section class="g-wd-kind"><h3>${esc(KINDS[k].name)}${items[0].who ? ` <small>Solar</small>` : ''}</h3><ul class="g-wd-items">
+        const worn = onIn(slot), one = items.find(i => slotOf(i) === slot);
+        return `<section class="g-wd-kind"><h3>${esc(KINDS[k].name)}${one.who ? ` <small>${esc(whoName(one.who))}</small>` : ''}</h3><ul class="g-wd-items">
           <li><button type="button" class="g-wd-item${worn ? '' : ' on'}" data-wd-off="${slot}"><span class="g-wd-th"><span class="g-wd-ico">○</span></span><b>Default</b><small>${worn ? 'Take it off' : 'Wearing'}</small></button></li>
-          ${items.filter(i => slotOf(i) === slot).map(i => { const own = owns(i.id), rd = ready(i), on = worn && worn.id === i.id; const st = !rd ? 'Art coming' : on ? 'Wearing' : own ? 'Owned' : i.pool === false ? 'Series reward' : 'Boutique'; return `<li><button type="button" class="g-wd-item${own ? ' own' : ''}${on ? ' on' : ''}${rd ? '' : ' pending'}${sel === i.id ? ' sel' : ''}" data-wd="${i.id}" style="--rc:${RAR[i.r].color}"><span class="g-wd-th">${thumb(i)}</span><b>${esc(i.name)}</b><small>${starsHtml(i.r)} ${st}</small></button></li>`; }).join('')}</ul></section>`;
+          ${items.filter(i => slotOf(i) === slot).map(i => { const own = owns(i.id), rd = ready(i), on = worn && worn.id === i.id; const st = !rd ? 'Art coming' : on ? 'Wearing' : own ? 'Owned' : i.pool === false ? 'Series reward' : 'Boutique'; return `<li class="g-wd-li">${own && rd ? `<button type="button" class="g-view-zoom" data-wd-zoom="${i.id}" aria-label="View ${esc(i.name)}" title="View">⤢</button>` : ''}<button type="button" class="g-wd-item${own ? ' own' : ''}${on ? ' on' : ''}${rd ? '' : ' pending'}${sel === i.id ? ' sel' : ''}" data-wd="${i.id}" style="--rc:${RAR[i.r].color}"><span class="g-wd-th">${thumb(i)}</span><b>${esc(i.name)}</b><small>${starsHtml(i.r)} ${st}</small></button></li>`; }).join('')}</ul></section>`;
       }).join('');
     }).join('');
     const can = x && owns(x.id) && ready(x), wearing = x && onIn(slotOf(x))?.id === x.id;
     return `<div class="g-wd-grid"><div class="g-wd-side">${preview(x)}
-        <div class="g-wd-info">${x ? `<b>${esc(x.name)}</b><small>${starsHtml(x.r)} ${esc(RAR[x.r].name)} · ${esc(KINDS[x.kind].name)}</small><p>${esc(x.desc)}</p>
+        <div class="g-wd-info">${x ? `<b>${esc(x.name)}</b><small>${starsHtml(x.r)} ${esc(RAR[x.r].name)} · ${esc(KINDS[x.kind].name)}${x.who ? ` · ${esc(whoName(x.who))}` : ''}</small><p>${esc(x.desc)}</p>
           ${!ready(x) ? '<p class="g-note small">Art coming: it joins the Boutique once its pictures are in.</p>' : !owns(x.id) ? `<p class="g-note small">${x.pool === false ? 'Complete its capsule series to get it.' : 'Pull for it in the Boutique.'}</p>` : ''}
-          ${can ? `<button type="button" class="g-btn pink small" data-wd-equip="${x.id}"${wearing ? ' disabled' : ''}><span>${wearing ? 'Wearing' : 'Equip'}</span></button>` : ''}` : '<b>Wardrobe</b><p>Pick something to preview it. Looks only: nothing here changes a fight.</p>'}</div>
+          ${can ? `<span class="g-row g-wd-acts"><button type="button" class="g-btn pink small" data-wd-equip="${x.id}"${wearing ? ' disabled' : ''}><span>${wearing ? 'Wearing' : 'Equip'}</span></button><button type="button" class="g-btn small" data-wd-zoom="${x.id}"><span>View</span></button></span>` : ''}` : '<b>Wardrobe</b><p>Pick something to preview it. Looks only: nothing here changes a fight.</p>'}</div>
         <label class="g-wd-toggle"><input type="checkbox" data-wd-portraits${s.portraits ? ' checked' : ''}> Outfits in scene portraits</label></div>
       <div class="g-wd-list">${lists}</div></div>`;
+  }
+  /* The viewer (gacha.js viewer): every owned, usable look in Wardrobe order. */
+  const viewable = () => ITEMS.filter(x => owns(x.id) && ready(x)).sort((a, b) => KINDS[a.kind].order - KINDS[b.kind].order);
+  function viewEntry(x) {
+    const GA = window.FemcGacha, big = (src, style = '') => `<img class="g-view-img" src="${src}" alt="" style="${style}">`;
+    let art;
+    if (x.kind === 'skin') art = big(posePath(x.who, x));
+    else if (x.kind === 'weapon') art = big(`${G.base}${skinDir(x.id)}weapon.webp`);
+    else if (x.kind === 'evoker') art = big(`${G.base}${EVOKER}`, `filter:${x.filter}`);
+    else if (x.kind === 'wallpaper') art = `<span class="g-view-sw" style="background:${esc(wallCss(x))}"></span>`;
+    else if (x.kind === 'title') art = `<span class="g-view-sw g-wd-pv-title" style="--a:${x.title[0]};--b:${x.title[1]}"><img src="${G.base}assets/femc/title/keyart.webp" alt="" style="${x.titleFilter ? `filter:${x.titleFilter}` : ''}"><b>Solstice</b></span>`;
+    else { const v = PAL[x.pal]; art = `<span class="g-view-sw" style="background:linear-gradient(135deg, ${v[3]} 0 30%, ${v[0]} 30% 60%, ${v[1]} 60% 80%, ${v[2]} 80%)"></span>`; }
+    const d = cs().got[x.id], when = d != null && GA ? `, ${GA.fmtDay(d)}` : '', on = onIn(slotOf(x))?.id === x.id;
+    return { name: x.name, r: { name: RAR[x.r].name, color: RAR[x.r].color, stars: { R: 2, SR: 3, UR: 4 }[x.r] }, series: `${KINDS[x.kind].name}${x.who ? ` · ${whoName(x.who)}` : ''}`,
+      flavour: x.desc, art, got: `${x.pool === false ? 'A capsule series reward' : 'From the Boutique'}${when}${on ? ' · wearing it now' : ''}.` };
+  }
+  function openViewer(id) {
+    const list = viewable(), at = list.findIndex(x => x.id === id);
+    if (at < 0 || !window.FemcGacha) return null;
+    return window.FemcGacha.viewer(list.map(viewEntry), at);
   }
   function bannerHtml() {
     const s = cs(), b = banner(), f = featured(), p = s.pity, MON = m => new Date(2009, m - 1, 1).toLocaleString('en', { month: 'long' });
@@ -331,6 +389,7 @@ window.FemcCosmetics = (() => {
     el.querySelectorAll('[data-wd-view]').forEach(b => b.addEventListener('click', () => { view = b.dataset.wdView; fresh = null; G.sfx('femc-click'); rerender(`[data-wd-view="${view}"]`); }));
     el.querySelectorAll('[data-wd]').forEach(b => b.addEventListener('click', () => { sel = b.dataset.wd; G.sfx('femc-hover'); rerender(`[data-wd="${sel}"]`); }));
     el.querySelectorAll('[data-wd-off]').forEach(b => b.addEventListener('click', () => { unequip(b.dataset.wdOff); sel = null; G.sfx('femc-back'); rerender(`[data-wd-off="${b.dataset.wdOff}"]`); }));
+    el.querySelectorAll('[data-wd-zoom]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openViewer(b.dataset.wdZoom); }));
     el.querySelector('[data-wd-equip]')?.addEventListener('click', e => { if (equip(e.currentTarget.dataset.wdEquip)) { G.sfx('femc-on'); rerender('[data-wd-equip]'); } });
     el.querySelector('[data-wd-portraits]')?.addEventListener('change', e => { setPortraits(e.target.checked); G.sfx('femc-click'); });
     el.querySelector('[data-wd-pull10]')?.addEventListener('click', () => {
@@ -357,5 +416,5 @@ window.FemcCosmetics = (() => {
   G.onChange(kind => { if (kind !== 'toast') apply(); });
   applyTitleEarly();
   setTimeout(apply, 0);
-  return Object.assign(api, { KINDS, ITEMS, BANNERS, BAN, PAL, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, portrait, weaponArt, html, wire, preview });
+  return Object.assign(api, { KINDS, ITEMS, BANNERS, BAN, PAL, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, portrait, weaponArt, html, wire, preview, metOk, viewable, viewEntry, openViewer });
 })();
