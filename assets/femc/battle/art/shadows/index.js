@@ -375,6 +375,41 @@ window.FEMC_SHADOW_ART = {
   "small": false,
   "w": 564
  },
+ "hanging-effigy": {
+  "h": 854,
+  "poses": {
+   "frames": [
+    "hanging-effigy-pose-0",
+    "hanging-effigy-pose-1",
+    "hanging-effigy-pose-2",
+    "hanging-effigy-pose-3",
+    "hanging-effigy-pose-4",
+    "hanging-effigy-pose-5"
+   ],
+   "scale": 1.024,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 822
+ },
  "hariti": {
   "h": 703,
   "small": false,
@@ -1163,9 +1198,39 @@ window.FEMC_SHADOW_ART = {
   "w": 542
  },
  "reaper": {
-  "h": 644,
+  "h": 516,
+  "poses": {
+   "frames": [
+    "reaper-pose-0",
+    "reaper-pose-1",
+    "reaper-pose-2",
+    "reaper-pose-3",
+    "reaper-pose-4",
+    "reaper-pose-5"
+   ],
+   "scale": 1.0488,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
   "small": true,
-  "w": 505
+  "w": 554
  },
  "regent": {
   "h": 635,
@@ -1406,6 +1471,11 @@ window.FEMC_SHADOW_ART = {
   },
   "small": false,
   "w": 556
+ },
+ "wren-shadow-phase1": {
+  "h": 908,
+  "small": false,
+  "w": 1345
  },
  "wren-shadow-phase3": {
   "h": 908,

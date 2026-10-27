@@ -34,12 +34,32 @@ ONLY = set(filter(None, args.only.split(',')))
 SHOTS = pathlib.Path(args.screenshots); SHOTS.mkdir(parents=True, exist_ok=True)
 def want(k): return not ONLY or k in ONLY
 results = {}
-SKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-phantom')  # Kat's real art since batch 55: the pending test moves it aside, plays it as art-pending, then puts it back
-PSKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-akihiko-champ')  # party outfit, art pending (2026-10-27); the party test makes and removes it
-PWPN = pathlib.Path(REPO, 'assets/femc/game/art/skins/wpn-jungwon-council')  # party weapon skin, art pending; likewise
-NEW_SKINS = ['sk-akihiko-champ', 'sk-akihiko-hoodie', 'sk-haechan-runners', 'sk-jungwon-council', 'sk-yukari-kyudo', 'sk-yukari-pink',
-             'sk-junpei-baseball', 'sk-mitsuru-rider', 'sk-shinjiro-apron', 'sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform']
-NEW_WPNS = ['wpn-kiriko', 'wpn-emo', 'wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-akihiko-champ', 'wpn-jungwon-council']
+# Kat's real art (sk-phantom since batch 55, sk-akihiko-champ since batch 56): the pending and party sections set it aside
+# (set_aside), play the outfit as art-pending with temporary frames, then put the real folder back (also at exit, on a failure).
+SKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-phantom')
+PSKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-akihiko-champ')
+PWPN = pathlib.Path(REPO, 'assets/femc/game/art/skins/wpn-jungwon-council')  # party weapon skin, still art pending; the party test makes and removes it
+# Looks still waiting for art (the rest of the 2026-10-27 party looks got Kat's art in batch 56).
+NEW_SKINS = ['sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform']
+NEW_WPNS = ['wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-akihiko-champ', 'wpn-jungwon-council']
+KEPT = {}
+
+
+def set_aside(d):
+    import tempfile
+    if d.exists() and d not in KEPT:
+        k = pathlib.Path(tempfile.mkdtemp(prefix='femc-cos-keep-')) / d.name
+        shutil.move(str(d), str(k)); KEPT[d] = k; scan()
+
+
+def put_back(d):
+    k = KEPT.pop(d, None)
+    if k and k.exists():
+        shutil.rmtree(d, ignore_errors=True); shutil.move(str(k), str(d)); scan()
+
+
+import atexit
+atexit.register(lambda: [put_back(d) for d in list(KEPT)])
 
 
 def ok(cond, msg):
@@ -258,7 +278,8 @@ try:
         r = p.eval(r"""(()=>{const C=FemcCosmetics;return {pool:C.pool().map(x=>x.id),feat:C.featured().map(x=>x.id),banner:C.banner().id,
           pending:C.ITEMS.filter(x=>!C.ready(x)).map(x=>x.id),rewards:C.ITEMS.filter(x=>x.pool===false).map(x=>x.id)};})()""")
         ok(not set(r['pending']) & set(r['pool']) and not set(r['rewards']) & set(r['pool']) and len(r['pool']) >= 20, f'pool: {r}')
-        ok(r['banner'] == 'sunrise' and set(r['feat']) == {'ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart'}, f'featured: {r}')
+        # The two party looks with art since batch 56 join it; their weapon skins still wait for art.
+        ok(r['banner'] == 'sunrise' and set(r['feat']) == {'ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'sk-jungwon-council'}, f'featured: {r}')
         # Cost and pity: always-Rare rolls → Super Rare on every 10th, Ultra on the 40th.
         r = p.eval(QUIET + r"""(()=>{const C=FemcCosmetics,GA=FemcGacha;GA.gs().plumes=200;C.cs().pity={sr:0,ur:0};C.rng=()=>0.99;const out=[];
           try{for(let i=0;i<40;i++)out.push(C.pull().r);}finally{""" + LOUD + r"""}return {out,plumes:GA.gs().plumes,own:C.cs().own.length};})()""")
@@ -308,14 +329,7 @@ try:
 
     # ── Art-pending outfits ──
     if want('pending'):
-        # sk-phantom has Kat's art (batch 55) and no Solar outfit is still pending: set her real frames aside for this
-        # section (restored in the finally below, even on a failure) so the outfit plays as art-pending.
-        import tempfile
-        KEEP = pathlib.Path(tempfile.mkdtemp(prefix='femc-cos-keep-')) / 'sk-phantom'
-        def put_back():
-            if KEEP.exists(): shutil.rmtree(SKIN, ignore_errors=True); shutil.move(str(KEEP), str(SKIN)); scan()
-        import atexit; atexit.register(put_back)  # an early failure (before the try below) still restores it
-        if SKIN.exists(): shutil.move(str(SKIN), str(KEEP)); scan()
+        set_aside(SKIN)  # no Solar outfit is still pending: her Phantom Thief frames step aside for this section
         setup(p, day='9/20')
         r = p.eval(r"""(()=>{const C=FemcCosmetics;C.grantItem('sk-phantom');return {ready:C.ready(C.byId('sk-phantom')),inPool:C.pool().some(x=>x.id==='sk-phantom'),
           eq:C.equip('sk-phantom'),feat:C.featured().map(x=>x.id),pose:C.battle().pose,face:FemcGame.portrait('solar','happy')};})()""")
@@ -366,7 +380,7 @@ try:
             p.console()
         finally:
             shutil.rmtree(SKIN, ignore_errors=True)
-            put_back()
+            put_back(SKIN)
             scan()
         ok(('"sk-phantom"' in pathlib.Path(REPO, 'assets/femc/game/art/ready.js').read_text()) == SKIN.exists(), 'ready.js restored')
         results['pending'] = 'out of pool, unequippable, Art coming; appears by itself once its files exist (pool, featured, battle, portraits, toggle)'
@@ -563,9 +577,9 @@ try:
           return ids.filter(id=>got.has(id));})(%s)""" % json.dumps(ids))
         ok(r == [], f'never pulled: {r}')
         menu(p, 'wardrobe')
-        click(p, '[data-wd="sk-haechan-runners"]')
-        r = p.eval("({badge:!!document.querySelector('.g-wd-stage .g-wd-pending'),row:document.querySelector('[data-wd=\"sk-haechan-runners\"]').innerText,equip:!!document.querySelector('[data-wd-equip]'),zoom:[...document.querySelectorAll('[data-wd-zoom]')].some(b=>/^(sk|wpn)-/.test(b.dataset.wdZoom)&&!FemcCosmetics.ready(FemcCosmetics.byId(b.dataset.wdZoom))),who:document.querySelector('.g-wd-pv-solar').dataset.who,heads:[...document.querySelectorAll('.g-wd-kind h3 small')].map(x=>x.textContent)})")
-        ok(r['badge'] and 'Art coming' in r['row'] and not r['equip'] and not r['zoom'] and r['who'] == 'haechan' and 'Haechan' in r['heads'] and 'Akihiko' in r['heads'], f'Wardrobe: Art coming, by member: {r}')
+        click(p, '[data-wd="sk-minji-crew"]')
+        r = p.eval("({badge:!!document.querySelector('.g-wd-stage .g-wd-pending'),row:document.querySelector('[data-wd=\"sk-minji-crew\"]').innerText,equip:!!document.querySelector('[data-wd-equip]'),zoom:[...document.querySelectorAll('[data-wd-zoom]')].some(b=>/^(sk|wpn)-/.test(b.dataset.wdZoom)&&!FemcCosmetics.ready(FemcCosmetics.byId(b.dataset.wdZoom))),who:document.querySelector('.g-wd-pv-solar').dataset.who,heads:[...document.querySelectorAll('.g-wd-kind h3 small')].map(x=>x.textContent)})")
+        ok(r['badge'] and 'Art coming' in r['row'] and not r['equip'] and not r['zoom'] and r['who'] == 'minji' and 'Minji' in r['heads'] and 'Akihiko' in r['heads'], f'Wardrobe: Art coming, by member: {r}')
         p.eval("FemcMenu.close()")
         todo = pathlib.Path(REPO, 'FEMC-ART-TODO.md').read_text()
         wiring = pathlib.Path(REPO, 'FEMC-ART-WIRING.md').read_text()
@@ -576,6 +590,7 @@ try:
 
     # ── A party member wearing an outfit (temporary art) in a real battle ──
     if want('party'):
+        set_aside(PSKIN)  # Kat's Champion's Robe frames step aside; temporary ones stand in
         setup(p, day='9/20', met=['akihiko', 'yukari', 'junpei', 'jungwon'])
         ok(p.eval("(()=>{const C=FemcCosmetics;return !C.ready(C.byId('sk-akihiko-champ'))&&!C.metOk(C.byId('sk-minji-crew'))&&C.metOk(C.byId('sk-akihiko-champ'))})()"), 'pending, and Minji unmet')
         menu(p, 'wardrobe')
@@ -618,9 +633,10 @@ try:
             p.console()
         finally:
             shutil.rmtree(PSKIN, ignore_errors=True); shutil.rmtree(PWPN, ignore_errors=True)
+            put_back(PSKIN)
             scan()
         rj = pathlib.Path(REPO, 'assets/femc/game/art/ready.js').read_text()
-        ok('sk-akihiko-champ' not in rj and 'wpn-jungwon-council' not in rj, 'ready.js restored')
+        ok(('"sk-akihiko-champ"' in rj) == PSKIN.exists() and 'wpn-jungwon-council' not in rj, 'ready.js restored')
         results['party'] = 'Akihiko in a temporary outfit in a real battle (only him), his preview and viewer; Jungwon\'s weapon skin art; unmet members hidden'
 
     # ── Screens ──
@@ -690,6 +706,6 @@ try:
     print('femc_cosmetics: all checks passed')
 finally:
     p.close()
-    if PSKIN.exists() or PWPN.exists():  # test-made folders; sk-phantom is Kat's art (the pending section restores it)
-        for d in (PSKIN, PWPN): shutil.rmtree(d, ignore_errors=True)
+    if PWPN.exists():  # test-made; sk-phantom and sk-akihiko-champ are Kat's art (put back by put_back / atexit)
+        shutil.rmtree(PWPN, ignore_errors=True)
         scan()

@@ -96,7 +96,9 @@ BOSSES={'priestess-attack.png':'priestess-shadow','empress-attack.png':'empress-
  'hierophant-attack.png':'hierophant-shadow','lovers-attack.png':'lovers-shadow','chariot-attack.png':'chariot-shadow',
  'hermit-attack.png':'hermit-shadow','fortune-attack.png':'fortune-shadow','strength-attack.png':'strength-shadow',
  'hangedman-attack.png':'hanged-man-shadow','wrensshadow-attack.png':'wren-shadow-last-train',
- 'justice-attack.png':'justice-shadow'}
+ 'justice-attack.png':'justice-shadow',
+ # batch 56: the Reaper's sheet (its static reaper.webp stays); the Hanging Effigy's (static from hanging-effigy.jpeg, STATICS)
+ 'reaper-posesheet.png':'reaper','hanging-effigy-posesheet.jpeg':'hanging-effigy'}
 BOSS_STATES={'attack':[1,2],'cast':[1,3],'hurt':[4],'down':[5],'defeat':[5]}
 # Fighters: 0 idle (the stance), 1 Evoker raised, 2 weapon attack, 3 spell, 4 hurt, 5 victory.
 FIGHTERS=['solar','akihiko','yukari','junpei','mitsuru','aigis','koromaru','shinjiro','haechan','jungwon','jihoon','minji']
@@ -248,7 +250,7 @@ def build_white(only=()):
   frames,idle_h=white_frames(find(name),rim=True)
   for i,f in enumerate(frames):f.save(ROOT/f'assets/femc/battle/art/shadows/{slug}-pose-{i}.webp','WEBP',quality=90,method=5)
   w,h=frames[0].size
-  index[slug].update(w=w,h=h,poses={'scale':round(h/idle_h,4),'frames':[f'{slug}-pose-{i}' for i in range(6)],'states':BOSS_STATES})
+  index.setdefault(slug,{'small':False}).update(w=w,h=h,poses={'scale':round(h/idle_h,4),'frames':[f'{slug}-pose-{i}' for i in range(6)],'states':BOSS_STATES})
   print(name,'->',slug,(w,h),'idle',idle_h)
  p.write_text(s[:s.index('window.FEMC_SHADOW_ART')]+'window.FEMC_SHADOW_ART = '+json.dumps(index,sort_keys=True,indent=1)+';\n')
  for mid in FIGHTERS:
@@ -335,7 +337,17 @@ def build_quads(only=()):
 ALPHA_GRIDS={'sleeper-car-poses.png':{'slug':'memory-sleeper-car','static':'memory-sleeper-car.png','cols':3,'rows':3,
  'states':{'attack':[1,3,4],'cast':[2,5],'hurt':[6],'down':[7],'defeat':[8]}}}
 # Wren's last phase (batch 51): Kat made two versions; ver2 (true-black hair, no green cast) is used, ver1 is the alternate.
-STATICS={'wren-shadow-phase3-ver2.png':'wren-shadow-phase3'}
+STATICS={'wren-shadow-phase3-ver2.png':'wren-shadow-phase3',
+ 'wren-shadow-phase1.png':'wren-shadow-phase1',  # batch 56: her phase 1 (the bench), real transparency
+ 'hanging-effigy.jpeg':'hanging-effigy'}  # batch 56: a JPEG with a painted checkerboard, keyed first (CHECKER)
+# Statics whose "transparency" is a painted checkerboard: femc-sheet.py cut_background(checker=True) clears it first.
+CHECKER={'hanging-effigy.jpeg'}
+
+def static_src(name):
+ if name not in CHECKER:return Image.open(find(name)).convert('RGBA')
+ spec=importlib.util.spec_from_file_location('femc_sheet_cb',ROOT/'tools/femc-sheet.py');m=importlib.util.module_from_spec(spec)
+ src=open(spec.origin).read();code=src[:src.index('ap = argparse')] if 'ap = argparse' in src else src
+ exec(compile(code,spec.origin,'exec'),m.__dict__);return m.cut_background(Image.open(find(name)),checker=True)
 
 def alpha_figures(a,cols,rows):
  """One mask per cell of a transparent cols x rows sheet, row by row. A connected piece belongs to its cell; a piece two
@@ -388,8 +400,10 @@ def build_alpha(only=()):
   print(name,'->',slug,(w,h),'idle',idle_h,'static',im.size)
  for name,slug in STATICS.items():
   if only and name not in only:continue
-  im=write_static(TH,np.asarray(Image.open(find(name)).convert('RGBA'),np.float32)/255,slug)
-  index[slug]={'w':im.width,'h':im.height,'small':False};print(name,'->',slug,im.size)
+  im=write_static(TH,np.asarray(static_src(name),np.float32)/255,slug)
+  e=index.setdefault(slug,{'small':False})
+  if 'poses' not in e:e.update(w=im.width,h=im.height)  # a pose sheet's frames set w / h (hanging-effigy)
+  print(name,'->',slug,im.size)
  p.write_text(s[:s.index('window.FEMC_SHADOW_ART')]+'window.FEMC_SHADOW_ART = '+json.dumps(index,sort_keys=True,indent=1)+';\n')
 
 def main():

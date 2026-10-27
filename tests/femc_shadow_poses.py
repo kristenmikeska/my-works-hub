@@ -99,7 +99,8 @@ try:
    time.sleep(.05)
   else:raise AssertionError('no battle: '+op)
   p.eval('FemcBattle.B.party().forEach(u=>{u.maxHp=u.hp=99999})')
-  kinds=p.eval("FemcBattle.B.foes().filter(f=>{const el=document.querySelector('.bt-enemy[data-id=\"'+f.id+'\"]');return el&&el._shadowPoses}).map(f=>f.kind)")
+  # One run per kind: the Hanged Man's three effigies share one sheet (batch 56), and a run ends with its foe defeated.
+  kinds=p.eval("[...new Set(FemcBattle.B.foes().filter(f=>{const el=document.querySelector('.bt-enemy[data-id=\"'+f.id+'\"]');return el&&el._shadowPoses}).map(f=>f.kind))]")
   assert kinds,('no posed boss',op)
   if op in options.shots.split(','):
    p.eval('FemcBattle.freeze()')

@@ -13326,6 +13326,419 @@
       "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-sakura; source unchanged",
       "placement": "Wardrobe weapon skin wpn-sakura: listed in game/art/ready.js weapons; menu.js Equipment weapon slot (weaponArt)",
       "outputSha256": "50182dfc40fcc053349952899442fc4d4ed397eaee71ce35be68bd8019555ecd"
+    },
+    {
+      "batch": 56,
+      "source": "futaba-fullbody.webp",
+      "sourceNow": "Added to Game/futaba-fullbody.webp",
+      "size": [
+        1921,
+        4896
+      ],
+      "sha256": "a2db41d126d0d4fe443bbc35afa5024e6c4060812fb41ad5411b7aaf1df3c231",
+      "status": "integrated",
+      "character": "futaba",
+      "destination": "assets/femc/profile/futaba.webp",
+      "conversion": "real transparency kept, trimmed, 1400 tall, WebP q90; source unchanged",
+      "placement": "compendium.js entry futaba: img profile/futaba.webp, profile: true (existing entry; name, note and unlock unchanged; profile/index.js unchanged, like Wren's)",
+      "outputSha256": "e2974455bd45e2b54e5f56ab0c6659e35a0d31daf7de39630ad506f176f060ed"
+    },
+    {
+      "batch": 56,
+      "source": "makoto-fullbody.webp",
+      "sourceNow": "Added to Game/makoto-fullbody.webp",
+      "size": [
+        1200,
+        3910
+      ],
+      "sha256": "6342efb7a45d0ba5c0e5bc93ea349a0995f73a94e58e930171db46e8c15946a5",
+      "status": "integrated",
+      "character": "makoto",
+      "destination": "assets/femc/profile/makoto.webp",
+      "conversion": "real transparency kept, trimmed, 1400 tall, WebP q90; source unchanged",
+      "placement": "compendium.js entry makoto: img profile/makoto.webp, profile: true (existing entry; name, note and unlock unchanged; profile/index.js unchanged, like Wren's)",
+      "outputSha256": "cb6b8da8e121c6f7a8edd8a43f0f1166428b6860cf137930532d2c41d90bf589"
+    },
+    {
+      "batch": 56,
+      "source": "maruki-fullbody.webp",
+      "sourceNow": "Added to Game/maruki-fullbody.webp",
+      "size": [
+        544,
+        2013
+      ],
+      "sha256": "4f86107eab17cfae421b354aa895fb6461104875ca28e90a469778772994a853",
+      "status": "integrated",
+      "character": "maruki",
+      "destination": "assets/femc/profile/maruki.webp",
+      "conversion": "real transparency kept, trimmed, 1400 tall, WebP q90; source unchanged",
+      "placement": "compendium.js entry maruki: img profile/maruki.webp, profile: true (existing entry; name, note and unlock unchanged; profile/index.js unchanged, like Wren's)",
+      "outputSha256": "b0cc678eda7b8085cd5fb07cde50f4e76677471fc27f14300937c9ac19bcf9bc"
+    },
+    {
+      "batch": 56,
+      "source": "ryuji-fullbody.png",
+      "sourceNow": "Added to Game/ryuji-fullbody.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "dbbb18280d4f4f0e03e8395e93da86293a2d4d48defaaa2b371ed976d7efa301",
+      "status": "integrated",
+      "character": "ryuji",
+      "destination": "assets/femc/profile/ryuji.webp",
+      "conversion": "real transparency kept, trimmed, 1400 tall, WebP q90; source unchanged",
+      "placement": "compendium.js entry ryuji: img profile/ryuji.webp, profile: true (existing entry; name, note and unlock unchanged; profile/index.js unchanged, like Wren's)",
+      "outputSha256": "4860186073c1b9d4e9f9571c6a41b3f9eac51f4fd0e0c8ed4a5a8581eea3741e"
+    },
+    {
+      "batch": 56,
+      "source": "mitsuru-happy.png",
+      "sourceNow": "Added to Game/mitsuru-happy.png",
+      "size": [
+        1230,
+        1279
+      ],
+      "sha256": "d7088f54bdbd420f642819c8abcbc8ee0453eeb22b1db3f97651f936cf74bda9",
+      "status": "integrated",
+      "character": "mitsuru",
+      "destination": "assets/femc/portraits/mitsuru/happy.webp",
+      "conversion": "copied to Character Portraits/Mitsuru/Mitsuru-Happy.png, then tools/femc-portraits.py mitsuru (matched to her neutral, shared canvas; her neutral, sad and surprised were re-placed on the new canvas, 837x856); source unchanged",
+      "placement": "Mitsuru's happy face in scenes (lines that asked for it fell back before); FEMC_PORTRAIT_V 4",
+      "outputSha256": "9e98a01757d5294ae0686a7329100d7e843823f0598cd9c7e36fa90c54214b0a"
+    },
+    {
+      "batch": 56,
+      "source": "mitsuru-serious.png",
+      "sourceNow": "Added to Game/mitsuru-serious.png",
+      "size": [
+        1240,
+        1269
+      ],
+      "sha256": "2b8ec890ebe6ade85846769007048f4188394e9de48b5d2c62995e093cb04b66",
+      "status": "integrated",
+      "character": "mitsuru",
+      "destination": "assets/femc/portraits/mitsuru/serious.webp",
+      "conversion": "copied to Character Portraits/Mitsuru/Mitsuru-Serious.png, then tools/femc-portraits.py mitsuru (matched to her neutral, shared canvas; her neutral, sad and surprised were re-placed on the new canvas, 837x856); source unchanged",
+      "placement": "Mitsuru's serious face in scenes (lines that asked for it fell back before); FEMC_PORTRAIT_V 4",
+      "outputSha256": "72334309dbc12bc41b7409ea85cfea6987ac6cb5fdb86aee21f4e2ef14905b8c"
+    },
+    {
+      "batch": 56,
+      "source": "wren-shadow-phase1.png",
+      "sourceNow": "Added to Game/wren-shadow-phase1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7e764765447226d0a5768e559b760bc1a88217b83241b0daebcbf7c245d3b54b",
+      "status": "integrated",
+      "character": "wren",
+      "destination": "assets/femc/battle/art/shadows/wren-shadow-phase1.webp",
+      "conversion": "tools/femc-shadow-poses.py STATICS: real transparency kept, trimmed, thin dark rim, 908 tall, WebP q90; source unchanged (this is the 2026-10-27 redo: Wren on the station bench, cap low, face in her sleeves, rails curling up in green light, i.e. the phase 1 brief)",
+      "placement": "data.js wren_call: img 'wren-shadow-phase1' (was her sad portrait as pic), phoneK 0.6 so the wide bench fits a phone",
+      "outputSha256": "dde2a690bb30b31de8eb9c0c6d37603754ab96e146c23bac21d76b9c23f75b80"
+    },
+    {
+      "batch": 56,
+      "source": "hanging-effigy.jpeg",
+      "sourceNow": "Added to Game/hanging-effigy.jpeg",
+      "size": [
+        2130,
+        2016
+      ],
+      "sha256": "7dfda1028ea6502954e1704bc9ecbcd1a3795c2dbd7ac9d899c6cde0aef01d4d",
+      "status": "integrated",
+      "character": "Hanging Effigy",
+      "destination": "assets/femc/battle/art/shadows/hanging-effigy.webp",
+      "conversion": "tools/femc-shadow-poses.py STATICS + CHECKER: the painted checkerboard cleared with femc-sheet.py cut_background(checker=True), trimmed, rim, 908 tall, WebP q90; source unchanged",
+      "placement": "data.js effigy: img 'hanging-effigy' (was corrupt-tower)",
+      "outputSha256": "137d667db31bb96ed988ef739f9ea9569c9c9e0dd846d32648a8f1176cd56d3a"
+    },
+    {
+      "batch": 56,
+      "source": "hanging-effigy-posesheet.jpeg",
+      "sourceNow": "Added to Game/hanging-effigy-posesheet.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "79288aed81289179250b78d6578b8f3c1a64960c9d3010155e95082aa21bbea9",
+      "status": "integrated",
+      "character": "Hanging Effigy",
+      "destination": "assets/femc/battle/art/shadows/hanging-effigy-pose-0..5.webp",
+      "conversion": "tools/femc-shadow-poses.py BOSSES (white sheet keyed like the other bosses; 2528x1696 sheet), six frames on one canvas, WebP q90; source unchanged",
+      "placement": "art/shadows/index.js 'hanging-effigy'.poses: the effigies act, get hurt and fall in the Hanged Man fight",
+      "outputSha256": [
+        "2dd389a2df9b8cdb33e4cd14fbf5a0e28308ac546522b1fd6e55f35f3d639a63",
+        "2f77a94b8cfe070671100fefdf70ca002f897bbbd1a215a40dc0e808eca35060",
+        "72199b2813273d51d054ae6cbfcf93d403568e8eef0e40c01f7e45b69293576e",
+        "5d23234077379ab5430b7f27ba98f74496f71e11263bca3c1ebfc5fba8c1c53c",
+        "dfb4b22f77cad6dc2d7e063ca3bfdc6a2b81684acdce47ae6f07a3770fa201dc",
+        "3888849744ddbe8f30d0e0c7140310591ad8495d16b14c870636762f17e85ba2"
+      ]
+    },
+    {
+      "batch": 56,
+      "source": "reaper-posesheet.png",
+      "sourceNow": "Added to Game/reaper-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "833fcc108654e398d37643c1f2f0fabfe8b5ef638c1440745d1d4e0fb29b68ab",
+      "status": "integrated",
+      "character": "The Reaper",
+      "destination": "assets/femc/battle/art/shadows/reaper-pose-0..5.webp",
+      "conversion": "tools/femc-shadow-poses.py BOSSES, six frames on one canvas, WebP q90; source unchanged",
+      "placement": "art/shadows/index.js 'reaper'.poses; the static reaper.webp stays",
+      "outputSha256": [
+        "97049414defa074e4af67a7123dfcbf72645fb75f5c5efb1dfd502be53f59b90",
+        "7e24933901fbb0e481a3b087485045c7c909d3747b7063538a392e2c7342dfe6",
+        "547bf0bfd1ca6481641c9c808ca49bdbe5eb7ecff40d0a3cc0f8525db6103fcd",
+        "f074ef876f8f51c90b860a5959d4b07bb80f9c2f4f289b3ddfd04e18fca7d00b",
+        "0c942ad443d102991834ca68fe1d9f03ec72945ffb5f0523349bade60ce72205",
+        "d39a7085e4bb2a5332a2a7495cce99d5344206efee1be2ddd58973aa3df690ed"
+      ]
+    },
+    {
+      "batch": 56,
+      "source": "skin-sk-akihiko-champ-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-akihiko-champ-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4cc87d94e07c6485a88f9e0069abc1045ec2fb8562ad1c3721c7ed70ecfea56e",
+      "status": "integrated",
+      "character": "akihiko",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-champ/akihiko-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-akihiko-champ akihiko (figure on akihiko's own canvas, idle height matches theirs, so no size factor); source unchanged",
+      "placement": "Wardrobe outfit sk-akihiko-champ: listed in game/art/ready.js, leaves 'Art coming', joins the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "f9a14b747e495d5f6cf5676089e405ccf5bf501cfc65775ba8f40ca9196bfdeb",
+        "da40188b797886140ab51b8f59a76b29eb89c6c5f162c4d736c69cbfa87f1ad9",
+        "339d2eab84b4b1ab7950c0041af25f9caacc7fd6c3b743ad4c7c8cdd8ca88ec4",
+        "8b45b8302eb9f15ede001411011877b14146a998e996be4b33594fb1d1e0c45c",
+        "59f75f2e20791c283194b96e2caf16e3571ce0a45400c17b2002f2c74ae95538",
+        "3da561fa29afec7c47aa00913543bd993ab710441948ef287be57d2a58c5977c"
+      ]
+    },
+    {
+      "batch": 56,
+      "source": "skin-sk-akihiko-hoodie-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-akihiko-hoodie-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c244c151f480d72ac8992adc71a9fc536a091fea8c6cb2d638a8a68583ff7e9b",
+      "status": "integrated",
+      "character": "akihiko",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-hoodie/akihiko-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-akihiko-hoodie akihiko (figure on akihiko's own canvas, idle height matches theirs, so no size factor); source unchanged",
+      "placement": "Wardrobe outfit sk-akihiko-hoodie: listed in game/art/ready.js, leaves 'Art coming', joins the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "d908b4b53fcf8357def826bf02fdf98aea541186a5e3686271b29345ea6d7e78",
+        "3fe46fba97555c6605093ff60a9aa4cd3a57bce90b3082f798aa70f2100306a1",
+        "249c7b93c081e0c4b6a7e7653fccf11703c1fafdea51be4b5f1d6aa88b9a96f7",
+        "a223e309cc8787fa80bff75a94e1dc27f84fe06830c6b891125b4b1247e552c3",
+        "21e34e050a5c80ddf2a488c03f6532a07f593a1ff5cb3688601d30584df457ca",
+        "2fddfd272ccd4b2097b2c35fab65bab093d0e13d5c6d36e944f166b7b028de94"
+      ]
+    },
+    {
+      "batch": 56,
+      "source": "skin-sk-haechan-runners-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-runners-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "39df34d1144d1dfbee22c376bfb82b3d255a1dab561a3c48272ae174482a2182",
+      "status": "integrated",
+      "character": "haechan",
+      "destination": "assets/femc/game/art/skins/sk-haechan-runners/haechan-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-haechan-runners haechan (figure on haechan's own canvas, idle height matches theirs, so no size factor); source unchanged",
+      "placement": "Wardrobe outfit sk-haechan-runners: listed in game/art/ready.js, leaves 'Art coming', joins the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "37f1b25b649cf89cb1af78968a0a76ebd5496be4ec862e3e224bb7ecbe8b43ea",
+        "346d62daa4606385a7219f1ccf7e1be36144b46f88bd14e16fa73a1786fa451d",
+        "d1080b673682900ea30d58ed311fe7708e830e90d4ccf835b5a929f775692872",
+        "8079970d189ecd0a135d7edd0a687607ab0a1d85db904865acc3498dad9a7aab",
+        "026b142af5d638e053fd534294c8aa816a1a4e3f6d4c45b0f7c1b72215b16aed",
+        "f401f9c9b8c362c49d5c738c6360f3a4e73e30d58d6a8be6bc0a225a6308c8a4"
+      ]
+    },
+    {
+      "batch": 56,
+      "source": "skin-sk-jungwon-council-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-jungwon-council-posesheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b5d6e96169692459db7b834b3af8b8fe4e53ff3551f97f74382496280937fb59",
+      "status": "integrated",
+      "character": "jungwon",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-council/jungwon-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-jungwon-council jungwon (figure on jungwon's own canvas, idle height matches theirs, so no size factor); source unchanged",
+      "placement": "Wardrobe outfit sk-jungwon-council: listed in game/art/ready.js, leaves 'Art coming', joins the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "274d1af626aa160752a2431c7ef438c6ed6d303b0265f47ec3b73f0947c76908",
+        "2c31ead6a88c1d1b384a0d31faad8976564b327ec8bead9e11fe436c259eec29",
+        "53bf7b61006c4b65dd9d2db1b5fa6efba626172444cece4cfc7d47da947ab773",
+        "ebcc0381bb431fda6bb3f73b30cc47a2a4d453e89f38492518401b00c6bf58e1",
+        "53a7b05af52ae40d7b85d5a4b5d6a6a035710b6d34930c9f9cf13e46ec465031",
+        "374d23c1b0e524a8be13684751d27e186bcdcafd8c1fa37cc3c9910926ae62e8"
+      ]
+    },
+    {
+      "batch": 56,
+      "source": "skin-sk-junpei-baseball-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-junpei-baseball-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d7a6198a71d5819b35095dbbd56e1fa1ffbc63028802cd87e0233318684e4f19",
+      "status": "integrated",
+      "character": "junpei",
+      "destination": "assets/femc/game/art/skins/sk-junpei-baseball/junpei-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-junpei-baseball junpei (figure on junpei's own canvas, idle height matches theirs, so no size factor); source unchanged",
+      "placement": "Wardrobe outfit sk-junpei-baseball: listed in game/art/ready.js, leaves 'Art coming', joins the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "1c07639fd43d1456c9f01227f281b3a2a957df8bb3d4b09bbf04c0e908590537",
+        "df6d1189cb772386aa0037332a479b019011c4169ef72cc7be6cdcb21f5bd6c1",
+        "35b2bf3f1b891d6794de32e50fd8d3fe170be4a646c0261974ba6082e843898b",
+        "e26203babb8957fd44a75eb75afcb8f3c486d3625f4587e2d64f7fa17feb61a3",
+        "32dd5c667bd834b198bc7970a705002822eb6e5a0e750b2a55fbb19504b3cef2",
+        "713046c16267e2a7540f282b1ef30331921f6e41b31b593608df5f37e2b48e58"
+      ]
+    },
+    {
+      "batch": 56,
+      "source": "skin-sk-mitsuru-rider-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-mitsuru-rider-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "666e6be18d4b33b80259896d4361c982c54a5cc525133d873fd663570080832d",
+      "status": "integrated",
+      "character": "mitsuru",
+      "destination": "assets/femc/game/art/skins/sk-mitsuru-rider/mitsuru-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-mitsuru-rider mitsuru (figure on mitsuru's own canvas, idle height matches theirs, so no size factor); source unchanged",
+      "placement": "Wardrobe outfit sk-mitsuru-rider: listed in game/art/ready.js, leaves 'Art coming', joins the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "d69b571f577ac25e6741016bfb2f21cdda2558a99450f24dfe9a9edb89877cc6",
+        "66e24988cc20a31217eff85bef442ec4388f1311457cd8ff4e7744167b065273",
+        "7b23ff62cfa33782ab66951f300dbd9b612c4d1c8aced3238f693283031b2100",
+        "33e2de8ff823e4177d1b3bf78c5d8025424099fb468ab902f864bd144917f149",
+        "9e7146a9b805e61c6f9307c4f9389b458834573d18bd4f9684d047584415e3c4",
+        "4859e4f8abc32fcc25a1cebd3cb6e019b890d528f938923580b3d63d5a1a24d3"
+      ]
+    },
+    {
+      "batch": 56,
+      "source": "skin-sk-shinjiro-apron-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-shinjiro-apron-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3d1a7aa0450cf0595bd2727888bc0ab615dc463e8453e8da80a976509f2dbf16",
+      "status": "integrated",
+      "character": "shinjiro",
+      "destination": "assets/femc/game/art/skins/sk-shinjiro-apron/shinjiro-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-shinjiro-apron shinjiro (figure on shinjiro's own canvas, idle height matches theirs, so no size factor); source unchanged",
+      "placement": "Wardrobe outfit sk-shinjiro-apron: listed in game/art/ready.js, leaves 'Art coming', joins the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "6e5d8a71db429cc2be42446843354ac209d4eacf5bd458f2bb958fbff7883c8a",
+        "6e1fcd81d5663e4cca2c3ae21068a62a2c0902c92728fd29468277767fdad16c",
+        "e26dd693713c8ef2bea5bdde54e2f04697f3225f73ac6c27cbd84f1c907db947",
+        "7012f0bce3c93c1804b560c7a671f4403b103fa101e94f367b65c6c1f7f41a70",
+        "d6908182a5e99b925000ef02da6a8a3f2ba843e388290bcba448cd25b3675ea1",
+        "96495e20ad1e48ba85214c83e906c5070ee5a7656155b812d86d28c9f758238b"
+      ]
+    },
+    {
+      "batch": 56,
+      "source": "skin-sk-yukari-kyudo-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-yukari-kyudo-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4bd3a77b9050b92628f3097d190d44d21eca67088e6214d2af88f25e408f98b6",
+      "status": "integrated",
+      "character": "yukari",
+      "destination": "assets/femc/game/art/skins/sk-yukari-kyudo/yukari-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-yukari-kyudo yukari (figure on yukari's own canvas, idle height matches theirs, so no size factor); source unchanged",
+      "placement": "Wardrobe outfit sk-yukari-kyudo: listed in game/art/ready.js, leaves 'Art coming', joins the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "185ed099acb6731c4715df4987cda8747413510e18f6c2b19e1aa8435251311a",
+        "7e089398b90950c30e289ec9686a6245fdabe68db5dc269a9851f174d2416a0a",
+        "19b9e0f75168cdf483a21192030721c936cf85629281719b5cffbd99dbfc4812",
+        "600dacdd149f4e4a2c149235607f8a521c5c5a0751d0613c15d82855afea3783",
+        "a294729e9713e9823dd075becba73862c1fd6b2ca20fbc0989e839df395d4564",
+        "b3d7cf52e04a71465b3c2f7bbce1846717485b58afae4d2d0a4c3f34274bbe2d"
+      ]
+    },
+    {
+      "batch": 56,
+      "source": "skin-sk-yukari-pink-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-yukari-pink-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3e85248af21a7d9425dd5e1c8d390c68379ce078951a0aa466fa88e3dc07b5b9",
+      "status": "integrated",
+      "character": "yukari",
+      "destination": "assets/femc/game/art/skins/sk-yukari-pink/yukari-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-yukari-pink yukari (figure on yukari's own canvas, idle height matches theirs, so no size factor); source unchanged",
+      "placement": "Wardrobe outfit sk-yukari-pink: listed in game/art/ready.js, leaves 'Art coming', joins the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "4af780ce1ffd5716b7816bc534b7e070caf1e07083cae4a24b3e820fc67780a5",
+        "4126cfeec03f1617ec42ffc8b6add298c2a844b8bac2677d81398ffe27c71821",
+        "7640ef06fdcca8f5f59685862207b98c7ea778971f184585a6907425798fa741",
+        "3abde873e05f48b61310768ded2a2116e5ad962cbeebb3b3be4d7eb6f3ed6ba4",
+        "f2c147a4784ad1da6c1d55cd9088a4ac58bbdf3d9460affce5892bd05949ac8f",
+        "63bae3344f05f866bf7040dcf7a26c04a465fb87b79a9f7930454bb394cf0702"
+      ]
+    },
+    {
+      "batch": 56,
+      "source": "skin-wpn-kiriko.jpeg",
+      "sourceNow": "Added to Game/skin-wpn-kiriko.jpeg",
+      "size": [
+        1536,
+        2752
+      ],
+      "sha256": "2cba10dab0148aa34d8230c1c6ec36d56829959279ee9358e329e8e10b7b564c",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/wpn-kiriko/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-kiriko; source unchanged",
+      "placement": "Wardrobe weapon skin wpn-kiriko: listed in ready.js weapons; menu.js Equipment weapon slot",
+      "outputSha256": "839360fb50d7f2f7d10b76193d42560cda53dad88641129044ebb0d66fd103b8"
+    },
+    {
+      "batch": 56,
+      "source": "skin-wpn-emo.jpeg",
+      "sourceNow": "Added to Game/skin-wpn-emo.jpeg",
+      "size": [
+        1344,
+        3168
+      ],
+      "sha256": "208ddcfb07390f913e4ff7456dd9b59f261d89fb2d90be561708a75507de0294",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/wpn-emo/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-emo; source unchanged",
+      "placement": "Wardrobe weapon skin wpn-emo: listed in ready.js weapons; menu.js Equipment weapon slot",
+      "outputSha256": "d3aba33d7c76336be18c88cec8a71e553269fa3646f311128e502ed15911f317"
     }
   ],
   "batch1Validation": {
@@ -14084,6 +14497,23 @@
       "headless: sp-hc-cupboard at 1440x900 and 375x812 shows the CG for the creak-to-Goodnight lines and clears it before the choice; albumData lists it in the romance group; 0 console errors"
     ],
     "html": "femc-game.html battle/data.js v33, places v41, spice-haechan v2, ready.js v5; femc-battle.html battle/data.js v33",
+    "browserErrors": 0
+  },
+  "batch56Validation": {
+    "date": "2026-10-27",
+    "scope": "Compendium full bodies for Futaba, Makoto, Maruki and Ryuji; Mitsuru's happy and serious; Wren's Shadow phase 1; the Hanging Effigy and its pose sheet; the Reaper's pose sheet; nine party outfit pose sheets; the Kitsune and Emo Night naginatas",
+    "sourcesInspected": "all 22 New Adds files viewed; frames, faces and weapons reviewed on contact sheets",
+    "sourcesIntegrated": 21,
+    "held": "kirijo-guesthouse-new.png stays in New Adds: a night-time lobby with a different layout from kirijo-guesthouse-night (marble floor, staircase, front desk), so it is not the list's 'lobby by day' (an open question in FEMC-ART-WIRING.md)",
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked after the move); Mitsuru's two faces also copied into Character Portraits/Mitsuru/ for femc-portraits.py",
+    "tests": [
+      "python3 tests/femc_shadow_poses.py --ops hanged --enemies '' --shots hanged --finale-path story (kinds now run once each, since the three effigies share a sheet)",
+      "headless: Wren's Last Call at 1280x800 and 390x844 (phoneK 0.6 keeps her on a phone screen), 0 console errors",
+      "python3 tests/femc_compendium.py --ids ryuji,futaba,makoto,maruki (4 profiles loaded)",
+      "python3 tests/femc_cosmetics.py (all sections; the pending looks are now the three still without art; the party section sets Kat's sk-akihiko-champ aside and restores it; the Golden Sunrise banner now features the two looks with art)"
+    ],
+    "html": "ART_V 33, battle.js v56, shadows/index.js v13, battle/data.js v34 (both pages), ready.js v6, portraits/index.js v135, scale.js v144 (FEMC_PORTRAIT_V 4), FEMC_ASSET_VERSION 136 and femc-mode.js v102 on all 12 pages",
     "browserErrors": 0
   }
 }

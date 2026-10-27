@@ -307,7 +307,8 @@ window.FEMC_COMPENDIUM = [
   "id": "ryuji",
   "name": "Ryuji Sakamoto",
   "from": "Persona 5",
-  "img": "assets/femc/portraits/ryuji/neutral.webp",
+  "img": "assets/femc/profile/ryuji.webp",
+  "profile": true,
   "unlock": "reg:ryuji",
   "note": "Loud, loyal, and always ready to run headfirst into trouble."
  },
@@ -315,7 +316,8 @@ window.FEMC_COMPENDIUM = [
   "id": "futaba",
   "name": "Futaba Sakura",
   "from": "Persona 5",
-  "img": "assets/femc/portraits/futaba/neutral.webp",
+  "img": "assets/femc/profile/futaba.webp",
+  "profile": true,
   "unlock": "reg:futaba",
   "note": "A genius hacker who would prefer to talk to you through a screen."
  },
@@ -323,7 +325,8 @@ window.FEMC_COMPENDIUM = [
   "id": "makoto",
   "name": "Makoto Niijima",
   "from": "Persona 5",
-  "img": "assets/femc/portraits/makoto/neutral.webp",
+  "img": "assets/femc/profile/makoto.webp",
+  "profile": true,
   "unlock": "reg:makoto",
   "note": "A student council president with a mean right hook."
  },
@@ -339,7 +342,8 @@ window.FEMC_COMPENDIUM = [
   "id": "maruki",
   "name": "Takuto Maruki",
   "from": "Persona 5 Royal",
-  "img": null,
+  "img": "assets/femc/profile/maruki.webp",
+  "profile": true,
   "unlock": "reg:maruki",
   "note": "A school counselor who really, truly wants everyone to be happy."
  },

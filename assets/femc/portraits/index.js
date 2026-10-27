@@ -73,8 +73,10 @@ window.FEMC_PORTRAITS = {
   "surprised"
  ],
  "mitsuru": [
+  "happy",
   "neutral",
   "sad",
+  "serious",
   "surprised"
  ],
  "ryuji": [

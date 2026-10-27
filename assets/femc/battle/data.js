@@ -819,7 +819,7 @@ window.FEMC_BATTLE_DATA = (() => {
       ai: 'hanged', gimmick: 'hanged', exp: 5200, yen: 9000, img: 'hanged-man-shadow', h: 300, idle: 'float', svg: 'priestess', alloutResist: 0.6, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'], summon: ['effigy', 'effigy', 'effigy'], drop: 'arcana_fragment', dropChance: 1,
       note: 'Hung from a halo of wings. While any of its effigies are standing, nothing can touch it. Knock them all Down (or out), then strike.' }),
     effigy: Object.assign(S(38, { hp: 1.5, en: 1.1 }), { name: 'Hanging Effigy', arcana: 'Hanged Man',
-      aff: { fire: 'weak', strike: 'weak', dark: 'null', light: 'resist' }, skills: ['bash', 'e_agilao', 'e_rakunda'], ai: 'random', exp: 300, img: 'corrupt-tower', h: 200, idle: 'sway', svg: 'maiden', effigy: true,
+      aff: { fire: 'weak', strike: 'weak', dark: 'null', light: 'resist' }, skills: ['bash', 'e_agilao', 'e_rakunda'], ai: 'random', exp: 300, img: 'hanging-effigy', h: 200, idle: 'sway', svg: 'maiden', effigy: true,
       note: 'A puppet of the Hanged Man. While it stands, it shields its master.' }),
 
     // ── Story fights for the life sim (femc-game.html hands them over; battle.js handoff mode). Not in any Tartarus pool or op.
@@ -873,7 +873,7 @@ window.FEMC_BATTLE_DATA = (() => {
       note: 'Fish-market crates iced shut and stacked into a body, with a white mask for a face. Blades skid off it.' }),
     wren_call: Object.assign(S(50, { hp: 2.2 }), { name: 'Wren', arcana: 'Jester', boss: true, story: true, gimmick: 'wren',
       aff: {}, skills: ['w_stay', 'w_wait', 'w_choose'], ai: 'wren_ask', exp: 0, yen: 0,
-      pic: 'assets/femc/portraits/wren/sad.webp', picW: 887, picH: 828, h: 360, idle: 'breathe', svg: 'maya', alloutResist: 0.5, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock', 'poison', 'distress'],
+      img: 'wren-shadow-phase1', h: 360, phoneK: 0.6, idle: 'breathe', svg: 'maya', alloutResist: 0.5, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock', 'poison', 'distress'],
       note: 'She doesn’t attack. She asks. Hold, and answer her, or don’t.' }),
     last_train: Object.assign(S(52, { hp: 7, ma: 1.2, st: 1.2, en: 1.15 }), { name: 'The Last Train', arcana: 'Moon', boss: true, acts: 2, story: true, gimmick: 'train',
       aff: { light: 'weak', dark: 'drain' }, skills: ['e_megidola', 'e_mabufula', 'e_mazionga', 'e_heat_wave', 'e_evil_smile'], ai: 'random', exp: 14000, yen: 0,
