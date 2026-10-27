@@ -509,6 +509,7 @@ window.FemcMenu = (() => {
     return `<div class="g-cards">
       <div class="g-pv-who">${list.map(x => `<button type="button" class="g-who-mini${x.id === mid ? ' on' : ''}" data-cmember="${x.id}" title="${esc(x.name)}"><i>${face(x.id, x.faces?.idle || 'serious')}</i><b>${esc(x.name)}<small>${Object.keys(C.eq[x.id] || {}).length}/6 cards</small></b></button>`).join('')}</div>
       <div class="g-cslots">${B.SLOTS.map(slotBtn).join('')}</div>
+      <button type="button" class="g-btn small g-cunall" data-cunall${Object.keys(B.ensureCards(b).eq[mid] || {}).length ? '' : ' disabled'}><span>Remove all</span></button>
       <p class="g-card-sum">${sets.length ? sets.map(([set, n]) => `<span class="g-chip on" style="--c:${B.SETS[set].color}">${esc(B.SETS[set].name)} ${n >= 4 ? '4' : '2'}</span>`).join('') : '<span class="g-note small">No set bonus yet: two or four cards of one set.</span>'}${sum.length ? `<small>${esc(sum.join(' · '))}</small>` : ''}</p>
       <div class="g-cards-main">
         <div class="g-cbox-wrap"><div class="g-cbox-head"><b>Card box</b><small>${C.list.length}/${B.CARD.cap}${slot ? ` · ${esc(B.SLOTS.find(x => x.id === slot).name)} only` : ''}</small>${slot ? '<button type="button" class="g-btn small" data-cslot-all>All slots</button>' : ''}</div>
@@ -526,6 +527,7 @@ window.FemcMenu = (() => {
     el.querySelector('[data-cslot-all]')?.addEventListener('click', () => { sel.cslot = null; again('[data-cslot]'); });
     el.querySelectorAll('[data-card]').forEach(bt => bt.addEventListener('click', () => { const u = +bt.dataset.card, c = B.cardById(b, u); if (c && c.isNew) { c.isNew = false; G.saveQuiet(); } sel.card = u; sel.armedCard = null; G.sfx('femc-hover'); again(`[data-card="${u}"]`); }));
     el.querySelector('[data-cequip]')?.addEventListener('click', e => { B.equipCard(b, sel.cmember, +e.currentTarget.dataset.cequip); G.saveQuiet(); G.sfx('femc-rankup'); again('[data-cunequip]'); });
+    el.querySelector('[data-cunall]')?.addEventListener('click', () => { B.SLOTS.forEach(s2 => B.unequipCard(b, sel.cmember, s2.id)); sel.armedCard = null; G.saveQuiet(); G.sfx('femc-click'); again(`[data-cmember="${sel.cmember}"]`); }); // every card off this member
     el.querySelector('[data-cunequip]')?.addEventListener('click', e => { B.unequipCard(b, sel.cmember, e.currentTarget.dataset.cunequip); G.saveQuiet(); G.sfx('femc-click'); again('[data-cequip]'); });
     el.querySelector('[data-clevel]')?.addEventListener('click', e => { const r = B.levelCard(b, +e.currentTarget.dataset.clevel, { yenNow: yenNow(), payYen }); if (!r.ok) { G.toast('note', r.why); return; } G.sfx('femc-rankup'); G.saveQuiet(); again('[data-clevel]'); });
     el.querySelector('[data-crefine]')?.addEventListener('click', e => { const r = B.refineCard(b, +e.currentTarget.dataset.crefine, Math.random, { yenNow: yenNow(), payYen }); if (!r.ok) { G.toast('note', r.why); return; } G.toast('note', `Refined to R${r.ref}: ${B.statLine(r.gained[0], r.gained[1])}${r.gained[2] ? ' (new)' : ''}.`); G.sfx('femc-rankup'); G.saveQuiet(); again('[data-crefine]'); });
