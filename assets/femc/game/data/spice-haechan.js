@@ -166,10 +166,12 @@
           { n: "He didn't say anything. He didn't need to. He had her against the slope of the stair ceiling in the dark with one hand flat on the wood above her head, and his mouth on her neck, just below her ear, slow, unhurried, as if he'd scheduled this and was running exactly on time, and every so often he stopped and breathed against her skin and started again a little lower." },
           { s: 'haechan', f: 'neutral', t: "You're shaking. I've done nothing. Imagine if I did something." }
         ] },
+        { cg: 'romance-haechan-cupboard' },
         { n: "Above them, on the stairs, footsteps. Heavy, unhurried, somebody in slippers, and then the fourth stair from the bottom, the creaky one, the one everybody stepped over, went *crrrrk* directly over their heads, loud as a gunshot in the cupboard, and stopped." },
         { s: 'junpei', f: 'neutral', t: "...Hello?" },
-        { n: "They froze. His mouth was on her collarbone and his hand was inside the back of her sweater, flat on her spine, and they froze exactly like that, a single object, and didn't breathe. On the stair above them Junpei stood on the creak. She could hear him thinking. It sounded like a fridge." },
+        { n: "They froze. His mouth was at her throat and his hand was inside the back of her sweater, flat on her spine, and they froze exactly like that, a single object, and didn't breathe. On the stair above them Junpei stood on the creak. She could hear him thinking. It sounded like a fridge." },
         { s: 'junpei', f: 'neutral', t: "Cupboard? Is the cupboard... no. Nope. I'm going to bed. Ghosts can have the cupboard. Goodnight, ghosts." },
+        { cg: null },
         { n: "The creak let go. The slippers went on up. Haechan put his forehead down on her shoulder and shook with silent laughter for so long she started to worry he'd hurt himself, and she was shaking too, her hand over her own mouth, the tinsel going like a rattlesnake every time either of them moved." },
         { choose: [
           { t: "(Kiss him again. The ghosts can wait.)", then: [

@@ -19,6 +19,7 @@ from femc_browser import Page
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--shots', default='')
+ap.add_argument('--evokers', default='')  # e.g. junpei,aigis: only these close-ups in 4c
 args = ap.parse_args()
 OUT = pathlib.Path(args.shots) if args.shots else pathlib.Path(tempfile.mkdtemp(prefix='femc-theurgy-'))
 OUT.mkdir(parents=True, exist_ok=True)
@@ -285,9 +286,9 @@ try:
     for (w, h, mobile) in [(1440, 900, False), (375, 812, True)]:
         p.top()
         p.ws.call('Emulation.setDeviceMetricsOverride', {'width': w, 'height': h, 'deviceScaleFactor': 1, 'mobile': mobile})
-        fight(p, ['solar', 'junpei'], speed=0)
-        p.eval("window.__btFreezeAt = 'evoke-junpei'")
-        act(p, 'junpei', ['skill', 'fire'])
+        fight(p, ['solar', 'jihoon'], speed=0)  # Jihoon has no close-up (Junpei got his in batch 55)
+        p.eval("window.__btFreezeAt = 'evoke-jihoon'")
+        act(p, 'jihoon', ['skill', 'wind'])
         p.wait('FemcBattle.frozen', 30)
         p.wait("(() => { const g = document.querySelector('.bt-evk-band .gun'); return g && g.complete && g.naturalWidth > 0; })()", 10)
         time.sleep(1.0)  # the gun's slide-in (CSS) finishes; the battle itself waits on the freeze
@@ -309,14 +310,17 @@ try:
     p.ws.call('Emulation.clearDeviceMetricsOverride', {})
     results['evokerProp'] = {'sizes': evk, 'fallback': 'svg'}
 
-    # 4c. Evoker close-ups (batch 43): Akihiko's and Shinjiro's summons fill the cut-in with Kat's shot (evoker.shot)
-    #     like Solar's, no face-and-prop band; the glass breaks at the muzzle. Screenshots at three sizes.
+    # 4c. Evoker close-ups (batch 43: Akihiko, Shinjiro; batch 55: Yukari, Junpei, Mitsuru, Aigis, Jungwon, Haechan):
+    #     their summons fill the cut-in with Kat's shot (evoker.shot) like Solar's, no face-and-prop band; the glass
+    #     breaks at the muzzle. Screenshots at three sizes. --evokers limits the members.
     shotsEv = {}
-    for mid, skill in [('akihiko', 'elec'), ('shinjiro', 'strike')]:
+    EVK = [('akihiko', 'elec'), ('shinjiro', 'strike'), ('yukari', 'wind'), ('junpei', 'fire'), ('mitsuru', 'ice'),
+           ('aigis', 'pierce'), ('jungwon', 'ice'), ('haechan', 'elec')]
+    for mid, skill in [e for e in EVK if not args.evokers or e[0] in args.evokers.split(',')]:
         for (w, h, mobile) in [(1440, 900, False), (1000, 486, False), (375, 812, True)]:
             p.top()
             p.ws.call('Emulation.setDeviceMetricsOverride', {'width': w, 'height': h, 'deviceScaleFactor': 1, 'mobile': mobile})
-            fight(p, ['solar', mid], speed=0, day='9/12')
+            fight(p, ['solar', mid], speed=0, day='12/12' if mid in ('jungwon', 'haechan') else '9/12')
             p.eval(f"window.__btFreezeAt = 'evoke-{mid}'")
             act(p, mid, ['skill', skill])
             p.wait('FemcBattle.frozen', 30)
@@ -324,7 +328,7 @@ try:
             time.sleep(0.6)
             p.eval("document.getAnimations().forEach(a => a.pause())")
             g = p.eval("(() => { const i = document.querySelector('.bt-evk-shot img'); return { src: i.getAttribute('src'), nw: i.naturalWidth, band: !!document.querySelector('.bt-evk-band'), shot: FemcBattle.marks['evoke-shot'] || 0 }; })()")
-            check(f'{mid}-evoker.webp' in g['src'] and g['nw'] == 1672 and not g['band'] and g['shot'] >= 1, g)
+            check(f'{mid}-evoker.webp' in g['src'] and g['nw'] in (1672, 1679, 1920) and not g['band'] and g['shot'] >= 1, g)
             p.top()
             (OUT / f'{w}x{h}-evoker-{mid}.png').write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot', {'format': 'png'})['data']))
             p.frame(); p.eval('FemcBattle.unfreeze()')

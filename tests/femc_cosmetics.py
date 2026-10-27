@@ -34,7 +34,7 @@ ONLY = set(filter(None, args.only.split(',')))
 SHOTS = pathlib.Path(args.screenshots); SHOTS.mkdir(parents=True, exist_ok=True)
 def want(k): return not ONLY or k in ONLY
 results = {}
-SKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-phantom')  # the one outfit still without art (batch 47); never a real one: the test removes it
+SKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-phantom')  # Kat's real art since batch 55: the pending test moves it aside, plays it as art-pending, then puts it back
 PSKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-akihiko-champ')  # party outfit, art pending (2026-10-27); the party test makes and removes it
 PWPN = pathlib.Path(REPO, 'assets/femc/game/art/skins/wpn-jungwon-council')  # party weapon skin, art pending; likewise
 NEW_SKINS = ['sk-akihiko-champ', 'sk-akihiko-hoodie', 'sk-haechan-runners', 'sk-jungwon-council', 'sk-yukari-kyudo', 'sk-yukari-pink',
@@ -308,6 +308,14 @@ try:
 
     # ── Art-pending outfits ──
     if want('pending'):
+        # sk-phantom has Kat's art (batch 55) and no Solar outfit is still pending: set her real frames aside for this
+        # section (restored in the finally below, even on a failure) so the outfit plays as art-pending.
+        import tempfile
+        KEEP = pathlib.Path(tempfile.mkdtemp(prefix='femc-cos-keep-')) / 'sk-phantom'
+        def put_back():
+            if KEEP.exists(): shutil.rmtree(SKIN, ignore_errors=True); shutil.move(str(KEEP), str(SKIN)); scan()
+        import atexit; atexit.register(put_back)  # an early failure (before the try below) still restores it
+        if SKIN.exists(): shutil.move(str(SKIN), str(KEEP)); scan()
         setup(p, day='9/20')
         r = p.eval(r"""(()=>{const C=FemcCosmetics;C.grantItem('sk-phantom');return {ready:C.ready(C.byId('sk-phantom')),inPool:C.pool().some(x=>x.id==='sk-phantom'),
           eq:C.equip('sk-phantom'),feat:C.featured().map(x=>x.id),pose:C.battle().pose,face:FemcGame.portrait('solar','happy')};})()""")
@@ -358,8 +366,9 @@ try:
             p.console()
         finally:
             shutil.rmtree(SKIN, ignore_errors=True)
+            put_back()
             scan()
-        ok('sk-phantom' not in pathlib.Path(REPO, 'assets/femc/game/art/ready.js').read_text(), 'ready.js restored')
+        ok(('"sk-phantom"' in pathlib.Path(REPO, 'assets/femc/game/art/ready.js').read_text()) == SKIN.exists(), 'ready.js restored')
         results['pending'] = 'out of pool, unequippable, Art coming; appears by itself once its files exist (pool, featured, battle, portraits, toggle)'
 
     # ── The Wardrobe and the Boutique through the UI, plus New Game+ ──
@@ -681,6 +690,6 @@ try:
     print('femc_cosmetics: all checks passed')
 finally:
     p.close()
-    if SKIN.exists() or PSKIN.exists() or PWPN.exists():
-        for d in (SKIN, PSKIN, PWPN): shutil.rmtree(d, ignore_errors=True)
+    if PSKIN.exists() or PWPN.exists():  # test-made folders; sk-phantom is Kat's art (the pending section restores it)
+        for d in (PSKIN, PWPN): shutil.rmtree(d, ignore_errors=True)
         scan()

@@ -13159,6 +13159,173 @@
       "sha256": "bea7a926b0dd96461bcc896c83c249a95b398c134020311a2cb1c1ad5cdacf2b",
       "status": "alternate",
       "placement": "Not used: light-solar-v1 is the pick (v2's peak frame fills its cell with a flat horizon cut). In tools/femc-fx.py ALTERNATES."
+    },
+    {
+      "batch": 55,
+      "source": "yukari-evoker.jpeg",
+      "sourceNow": "Added to Game/yukari-evoker.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "971c5bffbe083c325b7e54070ed38b3cdf06e008b8f2d067c912462284fbf829",
+      "status": "integrated",
+      "character": "yukari",
+      "destination": "assets/femc/battle/art/summon/yukari-evoker.webp",
+      "conversion": "WebP quality 90, scaled to 1920 wide (from 2752), no cropping or retouching; source unchanged",
+      "placement": "data.js party yukari: evoker.shot (muzzle at [48.5, 30.5] %, pos '48% 30%', posPhone '52% 25%'); battle.js evoker() fills the summon cut-in with it like Solar's close-up (.bt-evk-shot) instead of the face-and-prop band, and the glass breaks at the muzzle",
+      "outputSha256": "21df2cab215481a781862a0727c175cf8fc3581533c91f0cde2fa03c7de98e9a"
+    },
+    {
+      "batch": 55,
+      "source": "junpei-evoker.jpeg",
+      "sourceNow": "Added to Game/junpei-evoker.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "6898567f426099186380df99600c6551e2ad2b781e4f9cc5e1a702ca073af42a",
+      "status": "integrated",
+      "character": "junpei",
+      "destination": "assets/femc/battle/art/summon/junpei-evoker.webp",
+      "conversion": "WebP quality 90, scaled to 1920 wide (from 2752), no cropping or retouching; source unchanged",
+      "placement": "data.js party junpei: evoker.shot (muzzle at [51, 19.5] %, pos '45% 25%', posPhone '54% 20%'); battle.js evoker() fills the summon cut-in with it like Solar's close-up (.bt-evk-shot) instead of the face-and-prop band, and the glass breaks at the muzzle",
+      "outputSha256": "eb87232a98e487750b515e94b9befe119911309ece6dd35ec0e96eeeca122dfd"
+    },
+    {
+      "batch": 55,
+      "source": "mitsuru-evoker.jpeg",
+      "sourceNow": "Added to Game/mitsuru-evoker.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "94c57a701d84e1c111924f19d89a4caf49e675b81d8ab28518642f503908bb5f",
+      "status": "integrated",
+      "character": "mitsuru",
+      "destination": "assets/femc/battle/art/summon/mitsuru-evoker.webp",
+      "conversion": "WebP quality 90, scaled to 1920 wide (from 2752), no cropping or retouching; source unchanged",
+      "placement": "data.js party mitsuru: evoker.shot (muzzle at [40.5, 25] %, pos '42% 30%', posPhone '39% 25%'); battle.js evoker() fills the summon cut-in with it like Solar's close-up (.bt-evk-shot) instead of the face-and-prop band, and the glass breaks at the muzzle",
+      "outputSha256": "78f4af26939631d0a0b5e6e0f0c274784bf19488939045fb86558b8f174d0ce9"
+    },
+    {
+      "batch": 55,
+      "source": "aigis-evoker.jpeg",
+      "sourceNow": "Added to Game/aigis-evoker.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "44d8ddb10bba55fe6bb3c5c5b57b57f8232885e7c565036c0f2bc4f6bd0cd1f1",
+      "status": "integrated",
+      "character": "aigis",
+      "destination": "assets/femc/battle/art/summon/aigis-evoker.webp",
+      "conversion": "WebP quality 90, scaled to 1920 wide (from 2752), no cropping or retouching; source unchanged",
+      "placement": "data.js party aigis: evoker.shot (muzzle at [49, 23] %, pos '50% 30%', posPhone '54% 25%'); battle.js evoker() fills the summon cut-in with it like Solar's close-up (.bt-evk-shot) instead of the face-and-prop band, and the glass breaks at the muzzle",
+      "outputSha256": "af608bed782027938fd76aaf4d125844ae8d772df22d665f01e4012589a2b26e"
+    },
+    {
+      "batch": 55,
+      "source": "jungwon-evoker.jpeg",
+      "sourceNow": "Added to Game/jungwon-evoker.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "eedcb705d70ace25906442b92a6c7952c7a777244b2f8a66d235ff4e56e38098",
+      "status": "integrated",
+      "character": "jungwon",
+      "destination": "assets/femc/battle/art/summon/jungwon-evoker.webp",
+      "conversion": "WebP quality 90, scaled to 1920 wide (from 2752), no cropping or retouching; source unchanged",
+      "placement": "data.js party jungwon: evoker.shot (muzzle at [51.5, 23.5] %, pos '50% 30%', posPhone '55% 25%'); battle.js evoker() fills the summon cut-in with it like Solar's close-up (.bt-evk-shot) instead of the face-and-prop band, and the glass breaks at the muzzle",
+      "outputSha256": "3a4dbe01c9ab9575e5cd70c990088651fc66c31068925d6f96f87735f6b9b842"
+    },
+    {
+      "batch": 55,
+      "source": "haechan-evoker.png",
+      "sourceNow": "Added to Game/haechan-evoker.png",
+      "size": [
+        1679,
+        937
+      ],
+      "sha256": "66944bc36feeda9fb6f7b13e940661910729a483d9e0cb0180ea7f3c281444b5",
+      "status": "integrated",
+      "character": "haechan",
+      "destination": "assets/femc/battle/art/summon/haechan-evoker.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "placement": "data.js party haechan: evoker.shot (muzzle at [41.5, 27] %, pos '42% 30%', posPhone '45% 25%'); battle.js evoker() fills the summon cut-in with it like Solar's close-up (.bt-evk-shot) instead of the face-and-prop band, and the glass breaks at the muzzle",
+      "outputSha256": "a89c647fdfb31ff7b2bd04742fe27f27a269d7e6ff43181a0eb0bca86650b72c"
+    },
+    {
+      "batch": 55,
+      "source": "romance-haechan-cupboard.png",
+      "sourceNow": "Added to Game/romance-haechan-cupboard.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "bb26386176030f822aba7b54e6515680d03e41465cc1e92f4819745e80cbb070",
+      "status": "integrated",
+      "character": "haechan",
+      "destination": "assets/femc/cg/romance-haechan-cupboard.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "placement": "spice-haechan.js sp-hc-cupboard: { cg } from the stair creak through \"Goodnight, ghosts.\", { cg: null } before the choice; places.js cgFocus '32% 35%'; the album lists it under Romance & bonds (menu.js cgGroup; crush moments are in sceneSources)",
+      "outputSha256": "e374d9011b5709f5159ca9a596ecf722f4766fec6103b10838754a59eb64383e"
+    },
+    {
+      "batch": 55,
+      "source": "skin-sk-phantom-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-phantom-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b6b391acb57f05663f6fbb1615d56707c81830de56ef21cd36520804bd80370d",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/sk-phantom/solar-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-phantom solar (3x2 sheet lifted into six frames); source unchanged",
+      "placement": "Wardrobe outfit sk-phantom (Phantom Thief): listed in game/art/ready.js, so it leaves 'Art coming' and joins the Boutique pool; battle.js LOOKS reads the pose folder",
+      "outputSha256": [
+        "03aa583d3342d342a6d26d5116783c554341e2aa0d81f5d4aaa218d2c0bbe113",
+        "53323bda8de3bf691e20f0b7a809f9e1fd627f435e36624e49ae0d802d02cd75",
+        "6be344fb97870d79e7073f28a454f203c5ad72d66284350c168b730380e41bf7",
+        "da66908ddc9278b013d04bf5db54f3f5087847faa450ca986f1a6d0189fe2da6",
+        "74a0402f77de4d3bb10ce456b7ac8fcc2f8a85e29d3592a7ee5d6d48bfb05846",
+        "3c311585a149668348e2f4bb051e3ef956a0c9806703cdb7c27373e9e9a833f4"
+      ]
+    },
+    {
+      "batch": 55,
+      "source": "skin-wpn-phantom.png",
+      "sourceNow": "Added to Game/skin-wpn-phantom.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "af03f0c6f5428a132fefdd082b5221becb6d60734053df3992b38eb008e718ae",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/wpn-phantom/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-phantom; source unchanged",
+      "placement": "Wardrobe weapon skin wpn-phantom: listed in game/art/ready.js weapons; menu.js Equipment weapon slot (weaponArt)",
+      "outputSha256": "da6da095a64a75d133ff7c882bda260c19ebbb866d1b6b5ca62872a7341b48c0"
+    },
+    {
+      "batch": 55,
+      "source": "skin-wpn-sakura.png",
+      "sourceNow": "Added to Game/skin-wpn-sakura.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8908fca0e3d381f340e00bb31edc89712fa124f7e1eab30485446eb20c849185",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/wpn-sakura/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-sakura; source unchanged",
+      "placement": "Wardrobe weapon skin wpn-sakura: listed in game/art/ready.js weapons; menu.js Equipment weapon slot (weaponArt)",
+      "outputSha256": "50182dfc40fcc053349952899442fc4d4ed397eaee71ce35be68bd8019555ecd"
     }
   ],
   "batch1Validation": {
@@ -13900,5 +14067,23 @@
       "python3 tools/femc-fx.py check: contact sheets for all 16 on black, field purple and white (no grid lines or halos after CLEAR)"
     ],
     "html": "femc-battle.html fx.js v11, battle.js v53, fx/index.js hash"
+  },
+  "batch55Validation": {
+    "date": "2026-10-27",
+    "scope": "Evoker close-ups for Yukari, Junpei, Mitsuru, Aigis, Jungwon and Haechan; Haechan's cupboard CG; the Phantom Thief outfit pose sheet; the Phantom and Sakura naginata skins",
+    "sourcesInspected": "all 10 viewed before wiring (muzzle points read on a 10% grid); the outfit frames and weapon cuts reviewed on a contact sheet",
+    "sourcesIntegrated": 10,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked after the move); On Hold untouched",
+    "textTweaks": "spice-haechan.js sp-hc-cupboard: 'His mouth was on her collarbone' -> 'at her throat' (the CG shows his face at her throat); no other text changed",
+    "tests": [
+      "python3 tests/femc_theurgy.py (4b's prop check now uses Jihoon, since Junpei has a close-up; 4c covers all eight close-ups, --evokers limits it); phone framing reviewed at 375x812 and tuned so the muzzle and the face share the cut-in; 1000x486 and 1440x900 reviewed",
+      "python3 tests/femc_gallery.py (94 checks)",
+      "python3 tests/femc_spice.py",
+      "python3 tests/femc_cosmetics.py (all sections; pending now sets sk-phantom's real frames aside and restores them, and the final cleanup no longer deletes sk-phantom)",
+      "headless: sp-hc-cupboard at 1440x900 and 375x812 shows the CG for the creak-to-Goodnight lines and clears it before the choice; albumData lists it in the romance group; 0 console errors"
+    ],
+    "html": "femc-game.html battle/data.js v33, places v41, spice-haechan v2, ready.js v5; femc-battle.html battle/data.js v33",
+    "browserErrors": 0
   }
 }
