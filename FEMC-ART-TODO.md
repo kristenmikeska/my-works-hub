@@ -1,6 +1,6 @@
 # Art to make
 
-**72 items:** 1 story CG · 1 place · 22 character pieces · 18 battle · 1 screen · 31 wardrobe and keychains. 8 are ⭐, 52 are optional.
+**62 items:** 1 place · 16 character pieces · 18 battle · 1 screen · 26 wardrobe. 3 are ⭐, 45 are optional.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -12,36 +12,26 @@
 **Where the attachments are**
 - A **person's name** means their portrait from 🎨 `Character Portraits/<Name>/` (the neutral one; Solar's is `Solar/Solar-smiling.png`).
 - A path like `cg/…`, `bg/…`, `battle/…`, `tarot/…`, `memories/…`, `title/…` or `game/…` is in the 🎮 game folder, `my-works-hub/assets/femc/`.
-- A plain file name (`pierce.png`, `SolarWeapons.png`) is in 🎨 `~/Documents/UniverseHub-Images/Femc Mode Images/Added to Game/`.
+- A plain file name (`akihiko-posesheet.png`, `theurgy-solar-sunna.png`) is in 🎨 `~/Documents/UniverseHub-Images/Femc Mode Images/Added to Game/`.
 
 **"The style image" for each kind of art**
 | Art | The style image |
 |---|---|
-| Story CGs and bond Showtimes | `cg/prologue-akihiko-finds-solar.webp` |
 | Evoker close-ups | `battle/art/summon/solar-evoker.webp` |
 | Evoker sheets | `solar-evoker-animation.png` |
 | Full bodies | `CherryFullBody.png` |
 | Wren's Shadow | `battle/art/shadows/wren-shadow-last-train.webp` |
-| Weapons and keepsakes | `SolarWeapons.png` |
 | Dark Hour still | `title/keyart.webp` |
-| Outfit pose sheet | `solar-posesheet.png` |
 | Weapon skins | `battle/art/weapons/moon-and-stars.webp` |
 | Echoes | `battle/art/personas/haenim.webp` |
 
-Places, expressions, outfit portraits, books and the items that name their own pictures need no style image.
+Places, expressions, outfit portraits and the items that name their own pictures need no style image.
 
 ---
 
 ## 1. Story CGs (ChatGPT)
 
-**[ ] ⭐ The cupboard (Haechan, romance)**  
-Haechan's cupboard-under-the-stairs late night, for the moment they freeze when someone stops on the stairs.  
-Attach: the style image, Solar, Haechan  
-Save as: `romance-haechan-cupboard.png`
-```
-Match the art style of the FIRST attached image exactly; use the other attached images only for the characters' faces, hair and clothes. Persona 3 Reload event CG, 16:9, no text. A cramped, slant-roofed cupboard under a wooden staircase in a school dorm at night, almost dark: one thin stripe of warm yellow hall light falls through the gap of a door that isn't quite shut. The low ceiling is the underside of the stairs, slanting down. Crowded around them: old umbrellas, a broken vacuum cleaner, and a cardboard box labelled XMAS in neat handwriting with DO NOT scrawled underneath, spilling tinsel. Solar (very long straight black hair, a soft oversized knit sweater, no armband) has her back against the slanted stair wood. Haechan (a dark hoodie, hood half off) presses close in front of her, one hand flat on the wood above her head, his face buried at her collarbone. Both are completely frozen mid-moment, eyes wide, holding their breath, looking up. Just above them, through the gaps between the wooden steps, a pair of fuzzy slippers stands on one stair, mid-step. Strands of tinsel are caught in both of their hair. Mood: breathless, steamy and very funny at the same time, the exact second before they get caught.
-```
-
+Nothing to make here right now.
 
 ---
 
@@ -60,54 +50,6 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 ## 3. Characters (ChatGPT)
 
 ### Evoker close-ups
-
-**[ ] ⭐ Yukari's Evoker shot**  
-Yukari's summon close-up (now a face beside the Evoker prop).  
-Attach: the style image, Yukari  
-Save as: `yukari-evoker.png`
-```
-Match the art style of the FIRST attached image exactly; use the second attached image only for the character's face, hair and outfit. Close-up of Yukari Takeba raising an ornate silver Evoker to her temple, eyes squeezed shut, bracing herself, hair lifting in a rush of blue wind, glowing glass shards around her, a huge full moon behind. Persona 3 Reload style, 16:9, no text.
-```
-
-**[ ] ⭐ Junpei's Evoker shot**  
-Junpei's summon close-up (now a face beside the Evoker prop).  
-Attach: the style image, Junpei  
-Save as: `junpei-evoker.png`
-```
-Match the art style of the FIRST attached image exactly; use the second attached image only for the character's face, hair and outfit. Close-up of Junpei Iori raising an ornate silver Evoker to his temple, a cocky grin, hair lifting in a rush of blue wind, glowing glass shards around him, a huge full moon behind. Persona 3 Reload style, 16:9, no text.
-```
-
-**[ ] ⭐ Mitsuru's Evoker shot**  
-Mitsuru's summon close-up (now a face beside the Evoker prop).  
-Attach: the style image, Mitsuru  
-Save as: `mitsuru-evoker.png`
-```
-Match the art style of the FIRST attached image exactly; use the second attached image only for the character's face, hair and outfit. Close-up of Mitsuru Kirijo raising an ornate silver Evoker to her temple, icy calm, hair lifting in a rush of blue wind, glowing glass shards around her, a huge full moon behind. Persona 3 Reload style, 16:9, no text.
-```
-
-**[ ] ⭐ Aigis's Evoker shot**  
-Aigis's summon close-up (now a face beside the Evoker prop).  
-Attach: the style image, Aigis  
-Save as: `aigis-evoker.png`
-```
-Match the art style of the FIRST attached image exactly; use the second attached image only for the character's face, hair and outfit. Close-up of Aigis raising an ornate silver Evoker to her temple, expressionless, hair lifting in a rush of blue wind, glowing glass shards around her, a huge full moon behind. Persona 3 Reload style, 16:9, no text.
-```
-
-**[ ] Haechan's Evoker shot** *(optional)*  
-Haechan's summon close-up (now a face beside the Evoker prop).  
-Attach: the style image, Haechan  
-Save as: `haechan-evoker.png`
-```
-Match the art style of the FIRST attached image exactly; use the second attached image only for the character's face, hair and outfit. Close-up of Haechan raising an ornate silver Evoker to his temple, a cocky half-smile, hair lifting in a rush of blue wind, glowing glass shards around him, a huge full moon behind. Persona 3 Reload style, 16:9, no text.
-```
-
-**[ ] Jungwon's Evoker shot** *(optional)*  
-Jungwon's summon close-up (now a face beside the Evoker prop).  
-Attach: the style image, Jungwon  
-Save as: `jungwon-evoker.png`
-```
-Match the art style of the FIRST attached image exactly; use the second attached image only for the character's face, hair and outfit. Close-up of Yang Jungwon raising an ornate silver Evoker to his temple, composed and serious, hair lifting in a rush of blue wind, glowing glass shards around him, a huge full moon behind. Persona 3 Reload style, 16:9, no text.
-```
 
 **[ ] Jihoon's Evoker shot** *(optional)*  
 Jihoon's summon close-up (now a face beside the Evoker prop).  
@@ -422,15 +364,6 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 
 ### Outfits (ChatGPT)
 
-**[ ] Phantom Thief outfit (pose sheet)** *(optional)*  
-Solar's battle figure in the Phantom Thief outfit (shows as "Art coming" now).  
-Attach: the style image, Solar  
-Save as: `skin-sk-phantom-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly; change only her clothes to this outfit: a long black tailcoat with a high collar, red gloves, black fitted trousers and pointed black boots, a white domino mask over her eyes. Solar: very long straight black hair, her naginata, a red S.E.E.S. armband over her left coat sleeve (this is battle art). Cell 1: battle-ready stance. Cell 2: raising an ornate silver Evoker to her temple. Cell 3: attacking with her naginata. Cell 4: casting a spell with one hand out, golden sunlight effects. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
 **[ ] Summer Yukata outfit portrait** *(optional)*  
 Solar's scene portrait in Summer Yukata (with the Wardrobe's "Outfits in scene portraits" on). Neutral is enough; other faces are a bonus.  
 Attach: Solar (Solar-neutral.png), then her other faces one at a time  
@@ -489,7 +422,7 @@ Edit this portrait. Keep the framing, crop, size, art style, face, expression an
 
 **[ ] Akihiko: Champion’s Robe (pose sheet)** *(optional)*  
 Akihiko's battle figure in the Champion’s Robe outfit (shows as "Art coming" now).  
-Attach: `akihiko-posesheet.png` (first), Akihiko  
+Attach: akihiko-posesheet.png, then Akihiko  
 Save as: `skin-sk-akihiko-champ-posesheet.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a long red satin boxing robe worn open over his usual fighting clothes, wide gold trim on the lapels and cuffs, SANADA stitched in gold across the back, a gold-and-black championship belt slung over his right shoulder, white hand wraps under his gloves. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
@@ -498,7 +431,7 @@ If it comes back with a background or overlapping poses, say: "Redo it on a plai
 
 **[ ] Akihiko: Off-Day Hoodie (pose sheet)** *(optional)*  
 Akihiko's battle figure in the Off-Day Hoodie outfit (shows as "Art coming" now).  
-Attach: `akihiko-posesheet.png` (first), Akihiko  
+Attach: akihiko-posesheet.png, then Akihiko  
 Save as: `skin-sk-akihiko-hoodie-posesheet.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a heather-grey zip hoodie half zipped over a plain black T-shirt, the hood down, black track pants with a white side stripe, white running shoes, his gloves still on. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
@@ -507,7 +440,7 @@ If it comes back with a background or overlapping poses, say: "Redo it on a plai
 
 **[ ] Haechan: Sigma Chi Runner (pose sheet)** *(optional)*  
 Haechan's battle figure in the Sigma Chi Runner outfit (shows as "Art coming" now).  
-Attach: `haechan-posesheet.png` (first), Haechan  
+Attach: haechan-posesheet.png, then Haechan  
 Save as: `skin-sk-haechan-runners-posesheet.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: his college look from Runners: a navy-and-white varsity letterman jacket with the Greek letters ΣΧ on the chest, a bright orange hoodie underneath with the hood out over the collar, black jeans, white sneakers, black studio headphones round his neck. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
@@ -516,7 +449,7 @@ If it comes back with a background or overlapping poses, say: "Redo it on a plai
 
 **[ ] Jungwon: HOAX Council Uniform (pose sheet)** *(optional)*  
 Jungwon's battle figure in the HOAX Council Uniform outfit (shows as "Art coming" now).  
-Attach: `jungwon-posesheet.png` (first), Jungwon  
+Attach: jungwon-posesheet.png, then Jungwon  
 Save as: `skin-sk-jungwon-council-posesheet.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: his Hanlim High uniform from HOAX: a navy school blazer with a gold crest, a white shirt and a neat striped tie, grey trousers, a white STUDENT COUNCIL armband on his upper right sleeve, a clipboard tucked under his free arm. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
@@ -525,7 +458,7 @@ If it comes back with a background or overlapping poses, say: "Redo it on a plai
 
 **[ ] Yukari: Archery Club (pose sheet)** *(optional)*  
 Yukari's battle figure in the Archery Club outfit (shows as "Art coming" now).  
-Attach: `yukari-posesheet.png` (first), Yukari  
+Attach: yukari-posesheet.png, then Yukari  
 Save as: `skin-sk-yukari-kyudo-posesheet.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: her kyudo club uniform: a white keikogi top, a navy hakama, a black leather chest guard over the left side, a white glove on her drawing hand, her pink hair clip kept. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
@@ -534,7 +467,7 @@ If it comes back with a background or overlapping poses, say: "Redo it on a plai
 
 **[ ] Yukari: Featherman Pink (pose sheet)** *(optional)*  
 Yukari's battle figure in the Featherman Pink outfit (shows as "Art coming" now).  
-Attach: `yukari-posesheet.png` (first), Yukari  
+Attach: yukari-posesheet.png, then Yukari  
 Save as: `skin-sk-yukari-pink-posesheet.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a pink sentai hero suit like Featherman's Pink Feather: glossy pink bodysuit with white chevrons, white gloves and boots, a small feather crest at the collar; the feathered pink helmet is held under one arm or at her hip, so her face shows. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
@@ -543,7 +476,7 @@ If it comes back with a background or overlapping poses, say: "Redo it on a plai
 
 **[ ] Junpei: Little League Legend (pose sheet)** *(optional)*  
 Junpei's battle figure in the Little League Legend outfit (shows as "Art coming" now).  
-Attach: `junpei-posesheet.png` (first), Junpei  
+Attach: junpei-posesheet.png, then Junpei  
 Save as: `skin-sk-junpei-baseball-posesheet.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a white pinstripe baseball uniform with a navy number 7, a navy batting helmet instead of his cap, two black eye-black stripes, navy socks pulled high, cleats. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
@@ -552,7 +485,7 @@ If it comes back with a background or overlapping poses, say: "Redo it on a plai
 
 **[ ] Mitsuru: Motorcycle Leathers (pose sheet)** *(optional)*  
 Mitsuru's battle figure in the Motorcycle Leathers outfit (shows as "Art coming" now).  
-Attach: `mitsuru-posesheet.png` (first), Mitsuru  
+Attach: mitsuru-posesheet.png, then Mitsuru  
 Save as: `skin-sk-mitsuru-rider-posesheet.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: her white motorcycle riding suit from Persona 3: a fitted white leather catsuit with a black zip, black gloves and tall black boots, her fur-collared coat left off; cell 6 (victory) only: she stands beside her white motorcycle, one hand on its seat, the bike drawn small enough that she stays the same size as in the other cells. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
@@ -561,7 +494,7 @@ If it comes back with a background or overlapping poses, say: "Redo it on a plai
 
 **[ ] Shinjiro: Beanie & Apron (pose sheet)** *(optional)*  
 Shinjiro's battle figure in the Beanie & Apron outfit (shows as "Art coming" now).  
-Attach: `shinjiro-posesheet.png` (first), Shinjiro  
+Attach: shinjiro-posesheet.png, then Shinjiro  
 Save as: `skin-sk-shinjiro-apron-posesheet.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a dark charcoal knit beanie pulled low, a plain navy cooking apron tied over his long maroon coat, the coat's sleeves pushed up, a ladle tucked in the apron's front pocket. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
@@ -570,7 +503,7 @@ If it comes back with a background or overlapping poses, say: "Redo it on a plai
 
 **[ ] Minji: Film Crew (pose sheet)** *(optional)*  
 Minji's battle figure in the Film Crew outfit (shows as "Art coming" now).  
-Attach: `minji-posesheet.png` (first), Minji  
+Attach: minji-posesheet.png, then Minji  
 Save as: `skin-sk-minji-crew-posesheet.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: film-crew gear: a khaki cargo vest with full pockets over a black T-shirt, a headset with a mic round her neck, black cargo pants and boots, a slate clapperboard clipped at her hip, a small camera rig strap over one shoulder. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
@@ -579,7 +512,7 @@ If it comes back with a background or overlapping poses, say: "Redo it on a plai
 
 **[ ] Jihoon: Purple Pilates Set (pose sheet)** *(optional)*  
 Jihoon's battle figure in the Purple Pilates Set outfit (shows as "Art coming" now).  
-Attach: `jihoon-posesheet.png` (first), Jihoon  
+Attach: jihoon-posesheet.png, then Jihoon  
 Save as: `skin-sk-jihoon-pilates-posesheet.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a matching lavender-purple pilates set: a fitted long-sleeve top and leggings-style joggers, white grip socks with purple soles, a rolled purple mat strapped across his back. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
@@ -588,7 +521,7 @@ If it comes back with a background or overlapping poses, say: "Redo it on a plai
 
 **[ ] Aigis: Gekkoukan Uniform (pose sheet)** *(optional)*  
 Aigis's battle figure in the Gekkoukan Uniform outfit (shows as "Art coming" now).  
-Attach: `aigis-posesheet.png` (first), Aigis  
+Attach: aigis-posesheet.png, then Aigis  
 Save as: `skin-sk-aigis-uniform-posesheet.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: the Gekkoukan High winter uniform worn over her mechanical frame: a dark navy blazer with the school crest, a white shirt and a big red ribbon tied very neatly, a navy pleated skirt, her mechanical joints still showing at the wrists and knees. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
@@ -597,22 +530,6 @@ If it comes back with a background or overlapping poses, say: "Redo it on a plai
 
 ### Weapon skins (Gemini or ChatGPT)
 
-**[ ] Sakura Naginata** *(optional)*  
-A cherry-blossom look for her naginata.  
-Attach: the style image  
-Save as: `skin-wpn-sakura.png`
-```
-One ornate naginata, the whole weapon from the tip of the blade to the end of the haft, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A pale ash-wood haft wrapped in pink silk cord, cherry blossoms etched along a silver blade, a small pink tassel.
-```
-
-**[ ] Phantom Naginata** *(optional)*  
-A Phantom Thief look for her naginata.  
-Attach: the style image  
-Save as: `skin-wpn-phantom.png`
-```
-One ornate naginata, the whole weapon from the tip of the blade to the end of the haft, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A glossy black lacquer haft, a dark steel blade with a red edge, a long red tassel, a small silver mask charm at the collar.
-```
-
 **[ ] Kitsune Naginata** *(optional)*  
 Her Kiriko outfit's match (shows as "Art coming" now).  
 Attach: the style image  
@@ -620,6 +537,7 @@ Save as: `skin-wpn-kiriko.png`
 ```
 One ornate naginata, the whole weapon from the tip of the blade to the end of the haft, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A red-lacquered haft with white cord bindings, three small kunai strapped flat along the haft, a white fox-mask charm hanging from the collar, long paper ofuda talismans with red brush marks streaming from the collar, a silver blade with a faint green spirit glow along its edge.
 ```
+
 **[ ] Emo Night Naginata** *(optional)*  
 Her Emo Night outfit's match.  
 Attach: the style image  
@@ -627,6 +545,7 @@ Save as: `skin-wpn-emo.png`
 ```
 One ornate naginata, the whole weapon from the tip of the blade to the end of the haft, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A matte black haft wrapped in a silver chain, a few safety pins clipped along the grip, black-and-white checkerboard tape at the butt, a dark steel blade with a pink edge, a small cracked pink heart charm at the collar.
 ```
+
 **[ ] Runners Naginata** *(optional)*  
 A Runners naginata for Solar.  
 Attach: the style image  
@@ -634,6 +553,7 @@ Save as: `skin-wpn-runners.png`
 ```
 One ornate naginata, the whole weapon from the tip of the blade to the end of the haft, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. Bright orange and navy grip tape wrapped in stripes along the haft, a tiny black gaming-headset charm and a small sun charm at the collar, a silver blade with a city rooftop at golden hour etched in gold.
 ```
+
 **[ ] Harbour Night Naginata** *(optional)*  
 A strangers naginata for Solar.  
 Attach: the style image  
@@ -641,6 +561,7 @@ Save as: `skin-wpn-strangers.png`
 ```
 One ornate naginata, the whole weapon from the tip of the blade to the end of the haft, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A wet-looking gloss-black haft, a gunmetal blade with an amber edge like harbour lights at night, a thin red thread knotted round the collar with its ends trailing, a small old brass padlock charm.
 ```
+
 **[ ] Council Naginata** *(optional)*  
 A HOAX naginata for Solar.  
 Attach: the style image  
@@ -648,6 +569,7 @@ Save as: `skin-wpn-hoax.png`
 ```
 One ornate naginata, the whole weapon from the tip of the blade to the end of the haft, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A navy-and-white striped haft, a white student-council armband tied round the collar, a small laminated hall pass on a lanyard hanging from it, a polished silver blade with a gold school crest stamped near the base.
 ```
+
 **[ ] Champion Gloves** *(optional)*  
 Akihiko's gloves, title-fight gold.  
 Attach: the style image  
@@ -655,6 +577,7 @@ Save as: `skin-wpn-akihiko-champ.png`
 ```
 A matched pair of boxing gloves, side by side, laces up, whole and upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. Gold leather with a high shine, red trim round the cuffs, white laces, a small red star stitched on each wrist.
 ```
+
 **[ ] Council Rapier** *(optional)*  
 Jungwon's rapier in council style.  
 Attach: the style image  
