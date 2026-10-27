@@ -242,7 +242,7 @@ window.FemcBuild = (() => {
 
   /* ══════════ Revelation-style cards (P5X) ══════════
      Six slots by position; each card has a main stat (by slot) and up to four random substats. Two and four cards of one set
-     give a bonus. Rarity ★3 / ★4 / ★5 sets the max level (6 / 8 / 10) and the starting substats (1 / 2 / 3). Levels cost
+     give a bonus (24 sets; every drop pool calls rollCard, which picks from all of them). Rarity ★3 / ★4 / ★5 sets the max level (6 / 8 / 10) and the starting substats (1 / 2 / 3). Levels cost
      Tarot Dust and yen; refines (R1 to R3) cost Velvet Thread, yen and, for R3, an Arcana Fragment, and add or raise a substat.
      Faces: icons.js revCard draws the frame, rarity, slot plate and marks around a set's `img` (Kat's art, below); a set
      without one falls back to its code-drawn glyph. */
@@ -288,12 +288,28 @@ window.FemcBuild = (() => {
     evoker: { name: 'Velvet Evoker', world: 'Persona', color: '#4b9bff', glyph: 'evoker', subject: 'an Evoker on velvet', two: { maP: 6 }, four: { magic: 12 }, t2: 'Ma +6%', t4: 'Magic skills deal 12% more' },
     moon: { name: 'Full Moon', world: 'Persona', color: '#fff2b0', glyph: 'moon', subject: 'a full moon over Tartarus', two: { hpP: 6, enP: 4 }, four: { boss: 15 }, t2: 'HP +6%, En +4%', t4: '+15% damage to bosses' },
     butterfly: { name: 'Blue Butterfly', world: 'Persona', color: '#6ab0ff', glyph: 'butterfly', subject: 'a blue butterfly', two: { evade: 6 }, four: { thStart: 20 }, t2: 'Evasion +6', t4: 'Theurgy +20 at the start of every battle' },
-    coffin: { name: 'Green Coffin', world: 'Persona', color: '#7dffc0', glyph: 'coffin', subject: 'a coffin under green light', two: { el: { dark: 12 } }, four: { insta: 12, down: 12 }, t2: 'Dark +12%', t4: 'Instant kills +12%; +12% damage to Down foes' }
+    coffin: { name: 'Green Coffin', world: 'Persona', color: '#7dffc0', glyph: 'coffin', subject: 'a coffin under green light', two: { el: { dark: 12 } }, four: { insta: 12, down: 12 }, t2: 'Dark +12%', t4: 'Instant kills +12%; +12% damage to Down foes' },
+    /* Kat's second wave (2026-10-27). Element sets: the 2-piece +8% of one element; the 4-piece adds 7% more (15% in all) and a
+       resist to it (`resist`, applied in engine.js buildUnit like the trees'). Prism: `elAll` adds to all six elements. Kendo:
+       physical. The world sets use engine passives through `pass` (capped by engine.js PASSIVE_CAP when the unit is built). */
+    lantern: { name: 'Cinder Lantern', world: 'Persona', color: '#ff7a3d', glyph: 'lantern', subject: 'a paper lantern burning ember-red', two: { el: { fire: 8 } }, four: { el: { fire: 7 }, resist: ['fire'] }, t2: 'Fire +8%', t4: 'Fire +15% in all; resist Fire' },
+    globe: { name: 'Snow Globe', world: 'Persona', color: '#a9e4ff', glyph: 'globe', subject: 'a frosted snow globe', two: { el: { ice: 8 } }, four: { el: { ice: 7 }, resist: ['ice'] }, t2: 'Ice +8%', t4: 'Ice +15% in all; resist Ice' },
+    fuse: { name: 'Thunder Fuse', world: 'Persona', color: '#ffe14a', glyph: 'fuse', subject: 'a glass fuse crackling with lightning', two: { el: { elec: 8 } }, four: { el: { elec: 7 }, resist: ['elec'] }, t2: 'Elec +8%', t4: 'Elec +15% in all; resist Elec' },
+    kite: { name: 'Paper Kite', world: 'Persona', color: '#8df0a8', glyph: 'kite', subject: 'a paper kite in a gale', two: { el: { wind: 8 } }, four: { el: { wind: 7 }, resist: ['wind'] }, t2: 'Wind +8%', t4: 'Wind +15% in all; resist Wind' },
+    shrine: { name: 'Shrine Mirror', world: 'Persona', color: '#fff0c2', glyph: 'mirror', subject: 'a round bronze shrine mirror shining', two: { el: { light: 8 } }, four: { el: { light: 7 }, resist: ['light'] }, t2: 'Light +8%', t4: 'Light +15% in all; resist Light' },
+    candle: { name: 'Eclipse Candle', world: 'Persona', color: '#b07bff', glyph: 'candle', subject: 'a black candle under an eclipse', two: { el: { dark: 8 } }, four: { el: { dark: 7 }, resist: ['dark'] }, t2: 'Dark +8%', t4: 'Dark +15% in all; resist Dark' },
+    prism: { name: 'Prism Glass', world: 'Persona', color: '#e6d4ff', glyph: 'prism', subject: 'a crystal prism splitting light into six colours', two: { elAll: 5 }, four: { elAll: 5 }, t2: 'Every element +5%', t4: 'Every element +10% in all' },
+    kendo: { name: 'Kendo Mask', world: 'Persona', color: '#d9dde6', glyph: 'kendo', subject: 'a kendo mask and a bamboo sword', two: { phys: 6 }, four: { phys: 6, crit: 5 }, t2: 'Physical +6%', t4: 'Physical +12% in all; crit +5%' },
+    spotlight: { name: 'Party Spotlight', world: 'Runners', color: '#ffb0d8', glyph: 'spotlight', subject: 'a spotlight over a college party crowd', two: { pass: { momentum: 3 } }, four: { pass: { followUp: 0.15 } }, t2: '3 SP back on every One More', t4: '15% chance of a free follow-up after a single hit' },
+    housekey: { name: 'House Key', world: 'strangers', color: '#d8a24a', glyph: 'key', subject: 'a brass house key on a red tag', two: { pass: { counter: 0.12 } }, four: { pass: { counter: 0.08, corona: 0.06 } }, t2: 'Counter +12% when struck', t4: 'Party takes 6% less while she stands; counter +8%' },
+    note: { name: 'Passed Note', world: 'Hoax', color: '#9fe7ff', glyph: 'note', subject: 'a folded note passed under a desk', two: { pass: { debuffTurns: 1 } }, four: { ail: 8, pass: { ailDmg: 0.15 } }, t2: 'Her debuffs last a turn longer', t4: '+15% damage to ailing foes; ailments +8%' }
   };
   // Kat's card art (batch 23, her card-<world>-<subject> paintings, cut by tools/femc-cards.py revcard): every set has one.
   // CARD_ART_V: bump with battle.js ART_V when the cards are re-cut (the menu and gacha don't see ART_V).
   const CARD_ART_V = 20;
-  Object.entries(SETS).forEach(([id, s]) => { s.img = `assets/femc/battle/art/cards/${id}.webp?v=${CARD_ART_V}`; });
+  // Sets with art (the second wave shows its drawn glyph until Kat's paintings are in: add the id here then; FEMC-ART-WIRING.md).
+  const CARD_ART = ['bell', 'stadium', 'headset', 'jade', 'crane', 'needle', 'pin', 'ballot', 'croissant', 'evoker', 'moon', 'butterfly', 'coffin'];
+  CARD_ART.forEach(id => { SETS[id].img = `assets/femc/battle/art/cards/${id}.webp?v=${CARD_ART_V}`; });
   const CARD = { maxLvl: { 3: 6, 4: 8, 5: 10 }, growth: 0.15, refineMain: 0.05, maxRef: 3, cap: 160,
     lvlDust: (c) => (4 + c.lvl * 3) * (c.r - 2), lvlYen: (c) => 80 * c.lvl * (c.r - 2),
     refThread: [1, 2, 3], refYen: [500, 1500, 3500], refArcana: [0, 0, 1], dismantle: { 3: 6, 4: 14, 5: 30 } };
@@ -385,13 +401,18 @@ window.FemcBuild = (() => {
   /* ══════════ The unit bonus: what cards, weapon bonuses (refined) and Persona boosts add to one fighter ══════════
      flat: hp sp st ma en ag lu; pct: hp sp st ma en ag lu (percent); and percents/points: crit, critX, heal, th, evade, phys,
      magic, dmg, boss, down, el { el: % }, spRegen, hpRegen (% of max HP), thStart, ail, bind, freeze, insta, def, costCut,
-     distressDebuff, endure, quick, openBuff [stats], partyOpen [stats], nullAil [ids]. */
-  function emptyBonus() { return { flat: {}, pct: {}, el: {}, crit: 0, critX: 0, heal: 0, th: 0, evade: 0, phys: 0, magic: 0, dmg: 0, boss: 0, down: 0, spRegen: 0, hpRegen: 0, thStart: 0, ail: 0, bind: 0, freeze: 0, insta: 0, def: 0, costCut: 0, distressDebuff: 0, endure: false, quick: false, openBuff: [], partyOpen: [], nullAil: [], sets: [] }; }
+     distressDebuff, endure, quick, openBuff [stats], partyOpen [stats], nullAil [ids], resist [elements], pass { engine passive: n }.
+     Cards' element bonuses (mains, sets) cap at EL_CAP% per element. */
+  function emptyBonus() { return { flat: {}, pct: {}, el: {}, crit: 0, critX: 0, heal: 0, th: 0, evade: 0, phys: 0, magic: 0, dmg: 0, boss: 0, down: 0, spRegen: 0, hpRegen: 0, thStart: 0, ail: 0, bind: 0, freeze: 0, insta: 0, def: 0, costCut: 0, distressDebuff: 0, endure: false, quick: false, openBuff: [], partyOpen: [], nullAil: [], resist: [], pass: {}, sets: [] }; }
+  const EL6 = ['fire', 'ice', 'elec', 'wind', 'light', 'dark'], EL_CAP = 50;
   const NUM = ['crit', 'critX', 'heal', 'th', 'evade', 'phys', 'magic', 'dmg', 'boss', 'down', 'spRegen', 'hpRegen', 'thStart', 'ail', 'bind', 'freeze', 'insta', 'def', 'costCut', 'distressDebuff'];
   function addBonus(b, src, k = 1) {
     if (!src) return b;
     NUM.forEach(x => { if (src[x]) b[x] += src[x] * k; });
     Object.entries(src.el || {}).forEach(([e, v]) => { b.el[e] = (b.el[e] || 0) + v * k; });
+    if (src.elAll) EL6.forEach(e => { b.el[e] = (b.el[e] || 0) + src.elAll * k; });
+    (src.resist || []).forEach(e => { if (!b.resist.includes(e)) b.resist.push(e); });
+    Object.entries(src.pass || {}).forEach(([x, v]) => { b.pass[x] = (b.pass[x] || 0) + v * k; });
     Object.entries(src.stats || {}).forEach(([s, v]) => { b.flat[s] = (b.flat[s] || 0) + v; });
     ['hp', 'sp', 'st', 'ma', 'en', 'ag', 'lu'].forEach(s => { if (src[s + 'P']) b.pct[s] = (b.pct[s] || 0) + src[s + 'P']; });
     if (src.endure) b.endure = true; if (src.quick) b.quick = true;
@@ -416,6 +437,7 @@ window.FemcBuild = (() => {
       if (n >= 2) { addBonus(b, s.two); b.sets.push([set, 2]); }
       if (n >= 4) { addBonus(b, s.four); b.sets.push([set, 4]); }
     });
+    Object.keys(b.el).forEach(e => { b.el[e] = Math.min(EL_CAP, b.el[e]); }); // cards' element total (the weapon's own bonus comes on top)
     // The weapon's own bonus, scaled by its refine.
     const g = weaponId && D.gear[weaponId];
     if (g && g.bonus) { const k = 1 + WREF.bonus * wrefOf(save, weaponId); const nb = Object.assign({}, g.bonus); delete nb.stats; delete nb.nullAil; addBonus(b, nb, k); (g.bonus.nullAil || []).forEach(a => b.nullAil.push(a)); }

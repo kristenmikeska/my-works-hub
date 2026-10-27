@@ -385,6 +385,7 @@ window.FemcBattleEngine = (() => {
     const pf = mid === 'solar' ? null : ptreeFx(save, mid), hu = sunPv, pv = hu || pf; // pv: the passives (sun or tree)
     const resist = el => { if (!['null', 'repel', 'drain'].includes(aff[el])) aff[el] = 'resist'; };
     pv.resist.forEach(resist);
+    if (bx && bx.resist) bx.resist.forEach(resist); // card sets' resists (build.js)
     if (pf) Object.entries(pf.aff).forEach(([el, a]) => (a === 'resist' ? resist(el) : (aff[el] = a)));
     // The Echo's resists and weaknesses only land where Haenim has no affinity at all (never past a resist).
     const echoAff = ech ? window.FemcEchoes.layerAff(aff, ech.aff) : [];
@@ -417,6 +418,8 @@ window.FemcBattleEngine = (() => {
     ['physUp', 'magicUp', 'bossUp', 'downUp', 'ailUp', 'freezeUp', 'thStart'].forEach(k => { unit[k] = (unit[k] || 0) + pv[k]; });
     unit.critAdd = (unit.critAdd || 0) + pv.critAdd;
     ['haste', 'firstCut', 'weakUp', 'ailDmg', 'lowHpUp', 'ailTurns', 'followUp', 'buffTurns', 'debuffTurns', 'weakSp', 'critIf', 'guardHeal', 'corona', 'momentum'].forEach(k => { unit[k] = pv[k]; });
+    // Card sets' engine passives (build.js `pass`: momentum, followUp, counter, corona, debuffTurns, ailDmg…) on top, capped the same.
+    if (b && b.pass) Object.entries(b.pass).forEach(([k, v]) => { if (PASSIVE_CAP[k] != null) unit[k] = Math.min(PASSIVE_CAP[k], (unit[k] || 0) + v); });
     unit.guardianBell = pv.guardianBell;
     unit.openBuff = [...new Set((unit.openBuff || []).concat(pv.openBuff))];
     unit.partyOpen = [...new Set((unit.partyOpen || []).concat(pv.partyOpen))];

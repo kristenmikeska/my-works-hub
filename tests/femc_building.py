@@ -1,6 +1,6 @@
 """The building systems, played for real in headless Chrome (femc-game.html, isolated profile, localhost; no player saves).
 
-Run: python3 tests/femc_building.py [--only rules,menu,daily,fight,boss,knives,searchers,sees,cardart,practice,migrate,shots] [--screenshots DIR]
+Run: python3 tests/femc_building.py [--only rules,menu,daily,fight,boss,knives,searchers,sees,cardart,newsets,practice,migrate,shots] [--screenshots DIR]
 
 Covers: Shuffle Time (real draws through the UI: Cups, a Major Arcana Revelation card, a penalty, Rush's auto-pick, and every
 card type and penalty applied), Revelation cards (drops, equip through the menu, set bonuses applied in battle, level, refine,
@@ -12,7 +12,9 @@ bonuses and refines in a real fight; his starter; the rank-7 gift; the Chariot's
 Jihoon's gloves and Minji's bows the same way (plus the one-time boss backfill, Treasure's battle yen, and Minji's finish card
 in a real All-Out, screenshotted), S.E.E.S.'s seven sets the same way (batch 23: Shinjiro's only while he's in the party,
 the second boss backfill, Aigis's two-hit arm guns, a real fight), the Revelation card art (all 13 sets in the Cards menu,
-Shuffle Time's reveal and the results, at three sizes), save migration (old battle and life-sim saves), zero console errors, and
+Shuffle Time's reveal and the results, at three sizes), the second wave of 11 card sets (element, Prism, Kendo and
+world sets: bonuses, resists and capped passives on the battle unit, element and physical damage in real engine fights, and
+every set in the drop pools), save migration (old battle and life-sim saves), zero console errors, and
 screenshots of the new screens at 1000x486, 375x812 and 1440x900."""
 import argparse, base64, json, pathlib, time
 from femc_browser import Page
@@ -662,10 +664,10 @@ try:
     if want('cardart'):
         sizes = [(1000, 486, '1000x486'), (375, 812, '375x812'), (1440, 900, '1440x900')]
         setup(p, ranks={'kiriko': 3}, mats={'tarot_dust': 300, 'velvet_thread': 8})
-        a = p.eval(r"""(async()=>{const B=FemcBuild;return Promise.all(Object.entries(B.SETS).map(([id,s])=>new Promise(res=>{const i=new Image();i.onload=()=>res([id,s.img,i.naturalWidth,i.naturalHeight]);i.onerror=()=>res([id,s.img,0,0]);i.src=s.img;})))})()""")
+        a = p.eval(r"""(async()=>{const B=FemcBuild;return Promise.all(Object.entries(B.SETS).filter(([,s])=>s.img).map(([id,s])=>new Promise(res=>{const i=new Image();i.onload=()=>res([id,s.img,i.naturalWidth,i.naturalHeight]);i.onerror=()=>res([id,s.img,0,0]);i.src=s.img;})))})()""")
         ok(len(a) == 13 and all(src.startswith('assets/femc/battle/art/cards/%s.webp' % k) and w == 540 and h == 700 for k, src, w, h in a), ('all 13 sets have art', a))
         p.eval(r"""(()=>{const b=FemcGame.S.battleSave,B=FemcBuild,R=FemcBattleEngine.rng(23);
-          Object.keys(B.SETS).forEach((set,i)=>{const c=B.rollCard(R,{set,slot:B.SLOTS[i%6].id,r:3+i%3});B.addCard(b,c);if(i<6)B.equipCard(b,'solar',c.u);if(i===2)c.lock=true;});
+          Object.keys(B.SETS).filter(k=>B.SETS[k].img).forEach((set,i)=>{const c=B.rollCard(R,{set,slot:B.SLOTS[i%6].id,r:3+i%3});B.addCard(b,c);if(i<6)B.equipCard(b,'solar',c.u);if(i===2)c.lock=true;});
           FemcGame.saveQuiet();})()""")
         # The face: the art fills the window (x 6–94, y 6–120); the slot plate sits below it (y 123–145), the marks in corners.
         LAYOUT = r"""(()=>{const out=[];document.querySelectorAll('svg.g-cardface').forEach(svg=>{const im=svg.querySelector('image'),r=svg.getBoundingClientRect(),k=r.width/100;
@@ -703,6 +705,59 @@ try:
         results['cardart'] = {'sets': len(a), 'menu faces': len(faces), 'shuffle': 'reveal and results'}
         errs = p.console(); ok(not errs, errs)
         print('Card art: 13 sets, menu faces, Shuffle reveal and results at three sizes OK', flush=True)
+
+    # ── The second wave of card sets: bonuses on the unit, damage in real engine fights, the drop pools ──
+    if want('newsets'):
+        setup(p, ranks={'kiriko': 3}, evening=False)
+        r = p.eval(r'''(()=>{const B=FemcBuild,E=FemcBattleEngine,out={};
+          const NEW=['lantern','globe','fuse','kite','shrine','candle','prism','kendo','spotlight','housekey','note'];
+          out.missing=NEW.filter(k=>!B.SETS[k]||!B.SETS[k].t2||!B.SETS[k].t4||!B.SETS[k].two||!B.SETS[k].four);
+          out.glyphs=NEW.filter(k=>!B.SETS[k].img).length;
+          out.faces=NEW.filter(k=>{const h=FemcIcons.revCard({set:k,slot:'crown',r:4,lvl:1,ref:0,subs:[]});return h&&!h.includes('<image')&&!h.includes('M50 34l9 19 21 3');}).length;
+          // A save with n cards of one set on Solar (crown to path or fate: no element or physical mains).
+          const mk=(set,n)=>{const t=FemcBattleSave.normalize(FemcBattleSave.fresh());t.lvl=40;const R=E.rng(3);
+            ['crown','heart','hand','path','fate'].slice(0,n).forEach(sl=>{const c=B.rollCard(R,{set,slot:sl,r:3});c.main=sl==='crown'?'hp':sl==='heart'?'sp':sl==='hand'?'enP':sl==='path'?'hpP':'hpP';c.subs=[];B.addCard(t,c);B.equipCard(t,'solar',c.u);});return t;};
+          // One real hit: Solar casts a skill (or attacks) on a Shadow, same seed with and without the cards.
+          const hit=(t,skill)=>{const u=E.buildUnit('solar',t);u.skills=u.skills.concat([skill]);u.sp=u.maxSp;
+            const b=E.create({party:[u],enemies:['maya@30'],rand:E.rng(5)});const f=b.foes()[0];f.maxHp=f.hp=99999;b.S.cur=b.party()[0];
+            const ev=skill==='attack'?b.act({type:'attack',target:f.id}):b.act({type:'skill',skill,target:f.id});const h=ev.find(e=>e.t==='hit'&&e.tgt===f.id);return h?h.amount:null;};
+          const base=mk('bell',0);
+          out.dmg={};
+          [['lantern','agi',2],['lantern','agi',4],['globe','bufu',4],['fuse','zio',4],['kite','garu',4],['candle','eiha',4],['shrine','hama',0],['prism','agi',2],['prism','zio',4],['kendo','attack',2]].forEach(([set,sk,n])=>{
+            if(!n||!FEMC_BATTLE_DATA.skills[sk]&&sk!=='attack')return; out.dmg[set+n+sk]=[hit(base,sk),hit(mk(set,n),sk)];});
+          const unit=(set,n)=>E.buildUnit('solar',mk(set,n));
+          const L4=unit('lantern',4),L2=unit('lantern',2),C4=unit('candle',4);
+          out.unit={l4fire:L4.elBoost.fire,l4aff:L4.aff.fire,l2fire:L2.elBoost.fire,l2aff:L2.aff.fire,c4aff:C4.aff.dark,
+            prism4:['fire','ice','elec','wind','light','dark'].map(e=>unit('prism',4).elBoost[e]),kendo4:[unit('kendo',4).physUp,unit('kendo',4).critBonus-unit('bell',0).critBonus]};
+          const S2=unit('spotlight',2),S4=unit('spotlight',4),H2=unit('housekey',2),H4=unit('housekey',4),N2=unit('note',2),N4=unit('note',4),base0=unit('bell',0);
+          out.pass={mom:S2.momentum-base0.momentum,fol:S4.followUp-base0.followUp,c2:H2.counter-base0.counter,c4:H4.counter-base0.counter,cor:H4.corona-base0.corona,deb:N2.debuffTurns-base0.debuffTurns,ail:N4.ailDmg-base0.ailDmg,ailUp:N4.ailUp-base0.ailUp};
+          // Caps: element bonus at 50 per element; passives at engine caps.
+          out.cap=(()=>{const t=mk('globe',4),R=E.rng(1);[['jade','fate','hpP'],['jade','mirror','ice']].forEach(([set,sl,m])=>{const c=B.rollCard(R,{set,slot:sl,r:5});c.main=m;c.lvl=10;c.ref=3;c.subs=[];B.addCard(t,c);B.equipCard(t,'solar',c.u);});return B.unitBonus(t,'solar').el.ice;})();
+          // The drop pools: rollCard (Shuffle Time's Major Arcana, Elizabeth's draws, Tartarus chests and the card packs all call it with no set).
+          const R=E.rng(77),seen={};for(let i=0;i<3000;i++){seen[B.rollCard(R,{tier:3}).set]=1;}
+          out.pool=NEW.filter(k=>!seen[k]); out.poolAll=Object.keys(seen).length;
+          const t=FemcBattleSave.normalize(FemcBattleSave.fresh()),R2=E.rng(12),star=Object.assign({kind:'major'},B.SH.majors.find(m=>m.out==='card')),got={};
+          for(let i=0;i<400;i++){t.cards.list=[];const res=B.applyShuffle(t,star,{R:R2,tier:3,party:['solar']});if(res.fx.card)got[res.fx.card.set]=1;}
+          out.shuffleNew=NEW.filter(k=>got[k]).length;
+          // A save holding them survives normalize (save.js drops cards of unknown sets).
+          const sv=mk('note',4);out.kept=FemcBattleSave.normalize(JSON.parse(JSON.stringify(sv))).cards.list.length;
+          return out;})()''')
+        ok(not r['missing'] and r['glyphs'] == 11 and r['faces'] == 11, ('11 new sets with names, bonuses and drawn faces', r['missing'], r['glyphs'], r['faces']))
+        d = r['dmg']
+        def ratio(k): a, b = d[k]; return b / a if a else 0
+        for k, want_r in [('lantern2agi', 1.08), ('lantern4agi', 1.15), ('globe4bufu', 1.15), ('fuse4zio', 1.15), ('kite4garu', 1.15), ('prism4zio', 1.10), ('kendo2attack', 1.06)]:
+            if k in d: ok(abs(ratio(k) - want_r) < 0.03, ('damage in a real hit', k, d[k], want_r))
+        ok(all(k in d for k in ['lantern2agi', 'lantern4agi', 'kendo2attack']), d)
+        u = r['unit']
+        ok(abs(u['l4fire'] - 1.15) < 1e-6 and abs(u['l2fire'] - 1.08) < 1e-6 and u['l4aff'] == 'resist' and u.get('l2aff') != 'resist' and u.get('c4aff') in ('resist', 'null', 'repel', 'drain'), u)
+        ok(all(abs(x - 1.10) < 1e-6 for x in u['prism4']) and abs(u['kendo4'][0] - 0.12) < 1e-6 and u['kendo4'][1] == 5, u)
+        ps = r['pass']
+        ok(ps['mom'] == 3 and abs(ps['fol'] - 0.15) < 1e-6 and abs(ps['c2'] - 0.12) < 1e-6 and abs(ps['c4'] - 0.20) < 1e-6 and abs(ps['cor'] - 0.06) < 1e-6 and ps['deb'] == 1 and abs(ps['ail'] - 0.15) < 1e-6 and abs(ps['ailUp'] - 0.08) < 1e-6, ps)
+        ok(r['cap'] == 50, ('cards’ Ice capped at 50 (12 + 15 + 27)', r['cap']))
+        ok(not r['pool'] and r['poolAll'] == 24 and r['shuffleNew'] >= 5 and r['kept'] == 4, ('drop pools and saves', r['pool'], r['poolAll'], r['shuffleNew'], r['kept']))
+        results['newsets'] = {'damage': d, 'unit': u, 'passives': ps, 'pool': r['poolAll']}
+        errs = p.console(); ok(not errs, errs)
+        print('New card sets: bonuses, resists, passives, real hits, caps and drop pools OK', flush=True)
 
     # ── Practice mode still works (its own save; Shuffle Time without the card menu's outcomes) ──
     if want('practice'):
