@@ -12907,6 +12907,258 @@
       },
       "conversion": "tools/femc-greens.py SHEETS 'menu-icons-2' (2 x 1 on #00ff00, keyed, trimmed onto a 128px transparent square); source unchanged",
       "placement": "menu.js TAB_ICONS / tabIco: before the Calendar tab's label and the Compendium link tab's label (tabIco added to that <a>); text-only if the file fails"
+    },
+    {
+      "batch": 53,
+      "source": "almighty-crit.jpeg",
+      "sourceNow": "Added to Game/almighty-crit.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "9fa163b9c396f74897cadcdcfa107caac374c59576158e86fdf655e103663342",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/almighty-crit.webp",
+      "outputSha256": "4fb270c58a4002b44c402e54ff7f582a6c79497d49eee540edb7c1cbebc6188b",
+      "conversion": "tools/femc-fx.py SOURCES almighty-crit: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Almighty Crit: fx.js artFor plays it on a crit"
+    },
+    {
+      "batch": 53,
+      "source": "dark-haechan.jpeg",
+      "sourceNow": "Added to Game/dark-haechan.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "063f6ce0b2eb21d84c5043e8371e738907fb8415a979a3d89f6b3e8db358f50a",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/dark-haechan.webp",
+      "outputSha256": "23d515300c44c1f49600ab5fe01a6c96e30c07503a395691383ff51e50131492",
+      "conversion": "tools/femc-fx.py SOURCES dark-haechan: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Haechan's own Dark sheet: fx.js artFor plays <kind>-<o.by> first when Haechan lands a dark hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "elec-akihiko.jpeg",
+      "sourceNow": "Added to Game/elec-akihiko.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "0892d9727b95d393db2b6371b8e9eb6a1fc2a197d2ccebce20111d824a7a242a",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/elec-akihiko.webp",
+      "outputSha256": "ebb3d3ead783b26e232534d936e03bb864a750eb92a1a6de4361cdd012937cb1",
+      "conversion": "tools/femc-fx.py SOURCES elec-akihiko: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Akihiko's own Elec sheet: fx.js artFor plays <kind>-<o.by> first when Akihiko lands a elec hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "elec-haechan.jpeg",
+      "sourceNow": "Added to Game/elec-haechan.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "5b5a600f70064222156d53cb2f3a0bcab371c1da5b2da86b94d814f8fa2499dc",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/elec-haechan.webp",
+      "outputSha256": "41a8381eecaa7e139843bc55d0e32285034fb3f3c1b75eeceb25e68fb2bc0840",
+      "conversion": "tools/femc-fx.py SOURCES elec-haechan: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Haechan's own Elec sheet: fx.js artFor plays <kind>-<o.by> first when Haechan lands a elec hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "elec-ken.jpeg",
+      "sourceNow": "Added to Game/elec-ken.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "063303daa3cc8573eb2cc273ab60cc7d7dbbcf4cb48f6b27ea1872a6d72e0370",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/elec-ken.webp",
+      "outputSha256": "775e8ea9943d7754bd4e3eb760df010ca9fb984c4b64a26938a1b693a767a1c1",
+      "conversion": "tools/femc-fx.py SOURCES elec-ken: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Ken's own Elec sheet: fx.js artFor plays <kind>-<o.by> first when Ken lands a elec hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "fire-junpei.jpeg",
+      "sourceNow": "Added to Game/fire-junpei.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "349dcec157edd947e30402f743d78a9a236b06258d2a52916cb65e792c33ce0e",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/fire-junpei.webp",
+      "outputSha256": "e4cab0a503f019fcd292400e69b8625846f73768baa2ac168b6eeaa3698572ce",
+      "conversion": "tools/femc-fx.py SOURCES fire-junpei: 3x2 light on black -> alpha, 256px frames (CLEAR margin instead of line stripping)",
+      "placement": "5G Junpei's own Fire sheet: fx.js artFor plays <kind>-<o.by> first when Junpei lands a fire hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "fire-koromaru.jpeg",
+      "sourceNow": "Added to Game/fire-koromaru.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "82260015575f2f77cf68abb3ced1fdee4ffad934ca7c1833a6cb66aa8fbb517d",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/fire-koromaru.webp",
+      "outputSha256": "cf1af24d6ab28e2671c237265c8a805fb0e55237aed17f9d6c87056c91956a76",
+      "conversion": "tools/femc-fx.py SOURCES fire-koromaru: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Koromaru's own Fire sheet: fx.js artFor plays <kind>-<o.by> first when Koromaru lands a fire hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "fire-solar.jpeg",
+      "sourceNow": "Added to Game/fire-solar.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "0028b405c189c74647ad17489911253a93e8f301ca2265fdae0eb4939e5b2eca",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/fire-solar.webp",
+      "outputSha256": "32769cd2e6083816654605f5bc0cc3921923fa2afa67ea36022507fae31044b6",
+      "conversion": "tools/femc-fx.py SOURCES fire-solar: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Solar's own Fire sheet: fx.js artFor plays <kind>-<o.by> first when Solar lands a fire hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "ice-jungwon.jpeg",
+      "sourceNow": "Added to Game/ice-jungwon.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "ba10ede9159ad9f75b14a014fae8cf325227bd319938ad689fedd8504fb142c9",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/ice-jungwon.webp",
+      "outputSha256": "6850b005068a5effa37fca1eecdca176993572b11c0a423fed88615a8f57bf12",
+      "conversion": "tools/femc-fx.py SOURCES ice-jungwon: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Jungwon's own Ice sheet: fx.js artFor plays <kind>-<o.by> first when Jungwon lands a ice hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "ice-mitsuru.jpeg",
+      "sourceNow": "Added to Game/ice-mitsuru.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "0531c7f13d84bbac5bd9c77c62640f878e167161161167c27709cdbda02cc6c9",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/ice-mitsuru.webp",
+      "outputSha256": "c54121c5b4aaf02025ca2dc4d307e202ca18c99bf721b6ca418fca761d0084fa",
+      "conversion": "tools/femc-fx.py SOURCES ice-mitsuru: 3x2 light on black -> alpha, 256px frames (CLEAR margin instead of line stripping)",
+      "placement": "5G Mitsuru's own Ice sheet: fx.js artFor plays <kind>-<o.by> first when Mitsuru lands a ice hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "light-solar-v1.jpeg",
+      "sourceNow": "Added to Game/light-solar-v1.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "a800548554a8a7db10c5fe0c5e7f67ec80737368a481dff3e97708b22c683e40",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/light-solar.webp",
+      "outputSha256": "4db29f754f157015ce380de31a6c82379872b0761baccda25d4e81a80ad78563",
+      "conversion": "tools/femc-fx.py SOURCES light-solar: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Solar's own Light sheet: fx.js artFor plays <kind>-<o.by> first when Solar lands a light hit (battle.js fxHitKind passes the caster); v1 picked over light-solar-v2.jpeg (in ALTERNATES)"
+    },
+    {
+      "batch": 53,
+      "source": "pierce-aigis.jpeg",
+      "sourceNow": "Added to Game/pierce-aigis.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "99c3fdca4d9d7809b5b3b0df6bc9a4c05cc7bbb09c350ca7ae6c5a14fce68260",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/pierce-aigis.webp",
+      "outputSha256": "48d17aa05083f5d06136174fd7a6cb6918b517026a780cb5f7189881b2ec44c0",
+      "conversion": "tools/femc-fx.py SOURCES pierce-aigis: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Aigis's own Pierce sheet: fx.js artFor plays <kind>-<o.by> first when Aigis lands a pierce hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "pierce-minji.jpeg",
+      "sourceNow": "Added to Game/pierce-minji.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "3525ff17e398c8801f382415520cd211afc3486b086d1c665297172ab336e70a",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/pierce-minji.webp",
+      "outputSha256": "3945873950f81a976db8088336011131c7d10e65ce0fee1257596da246dc8f62",
+      "conversion": "tools/femc-fx.py SOURCES pierce-minji: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Minji's own Pierce sheet: fx.js artFor plays <kind>-<o.by> first when Minji lands a pierce hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "strike-shinjiro.jpeg",
+      "sourceNow": "Added to Game/strike-shinjiro.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "8c4391f625be45f65aec4ac19bfa6b794dfd816162e64dbaf25cf71e3247ad53",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/strike-shinjiro.webp",
+      "outputSha256": "57039bbd7a1ba4d58351705a82b2bcb71a601742613f19f2951b6b5d288a8767",
+      "conversion": "tools/femc-fx.py SOURCES strike-shinjiro: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Shinjiro's own Strike sheet: fx.js artFor plays <kind>-<o.by> first when Shinjiro lands a strike hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "wind-jihoon.jpeg",
+      "sourceNow": "Added to Game/wind-jihoon.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "ae679a5517248f880b60e9d853bf1004c6d9d97d4106f19c1b751849f6710b04",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/wind-jihoon.webp",
+      "outputSha256": "4af567c8010ac5abf5185cf467047ef365a2a8a5fd7ecd13368e9c06f15b7eaf",
+      "conversion": "tools/femc-fx.py SOURCES wind-jihoon: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Jihoon's own Wind sheet: fx.js artFor plays <kind>-<o.by> first when Jihoon lands a wind hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "wind-yukari.jpeg",
+      "sourceNow": "Added to Game/wind-yukari.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "dab108f93090d02eac0c67bd7fc2035bd2060bf77d0422da9ed79b592d3308cc",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/wind-yukari.webp",
+      "outputSha256": "03f9e887f8fc35d5f33c4d63e337ffc91311a2f09df9a310eb4fb47c6c52e51b",
+      "conversion": "tools/femc-fx.py SOURCES wind-yukari: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Yukari's own Wind sheet: fx.js artFor plays <kind>-<o.by> first when Yukari lands a wind hit (battle.js fxHitKind passes the caster)"
+    },
+    {
+      "batch": 53,
+      "source": "light-solar-v2.jpeg",
+      "sourceNow": "Added to Game/light-solar-v2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "bea7a926b0dd96461bcc896c83c249a95b398c134020311a2cb1c1ad5cdacf2b",
+      "status": "alternate",
+      "placement": "Not used: light-solar-v1 is the pick (v2's peak frame fills its cell with a flat horizon cut). In tools/femc-fx.py ALTERNATES."
     }
   ],
   "batch1Validation": {
@@ -13632,5 +13884,21 @@
       "headless check, one link at a time: each of the 20 shared-arcana links shows its card in the Links menu (the 9 alternates and the 11 base cards load at 360px)"
     ],
     "browserErrors": 0
+  },
+  "batch53Validation": {
+    "date": "2026-10-27",
+    "scope": "5G: Almighty's crit sheet and the fighters' own effect sheets, plus the caster pick (o.by)",
+    "sourcesIntegrated": 16,
+    "sourcesAlternate": 1,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked after the move)",
+    "code": "battle.js fxHitKind passes by (the party caster's mid); fx.js artFor tries <kind>-<by> first (not on instant kills), then -crit, then -heavy, then plain. Caster beats crit (Kat's ruling open); the generic crit burst still plays on top. femc-battle.html fx.js v11, battle.js v53.",
+    "tool": "tools/femc-fx.py CLEAR: per-sheet outer margin blanked instead of strip_lines (fire-junpei's faint inner boxes; ice-mitsuru's full-cell swirl, where strip_lines cut black stripes)",
+    "tests": [
+      "python3 tests/femc_fx_art.py (passed, run alone)",
+      "headless practice battle: Akihiko's Elec test skill plays elec-akihiko; another fighter's Elec hit plays plain elec; Solar's Fire test skill plays fire-solar; artFor: elec by akihiko with crit+heavy -> elec-akihiko, by solar -> elec-crit / elec-heavy, light by solar -> light-solar, almighty crit -> almighty-crit, an instant kill by Haechan -> mudo; 0 console errors",
+      "python3 tools/femc-fx.py check: contact sheets for all 16 on black, field purple and white (no grid lines or halos after CLEAR)"
+    ],
+    "html": "femc-battle.html fx.js v11, battle.js v53, fx/index.js hash"
   }
 }

@@ -1188,10 +1188,12 @@ window.FemcFX = (() => {
     let names = ART_KINDS[kind] || [kind];
     if (kind === 'buff') names = [(o.dir || 1) < 0 ? 'debuff' : 'buff'];
     if (o.insta) names = kind === 'light' ? ['hama', 'light'] : ['mudo', 'dark'];
-    // Effect variants (5G): a crit tries <kind>-crit, a heavy skill (o.heavy) <kind>-heavy, before the plain sheet. Only the
-    // ones in the index are tried, so a kind without variants is unchanged. (battle.js fxHitKind sets o.heavy for -ma / -dyne / all-foe damage skills.)
+    // Effect variants (5G): the caster's own sheet first (<kind>-<o.by>, a party member id), then <kind>-crit on a crit, then
+    // <kind>-heavy for a heavy skill (o.heavy), then the plain sheet. Only the ones in the index are tried, so a kind without
+    // variants is unchanged. The caster's sheet beats crit (batch 53 pick, Kat's ruling open); battle.js fxHit still plays the
+    // generic crit burst on top. A call with o.insta keeps Hama / Mudo. (battle.js fxHitKind sets o.by and o.heavy.)
     const V = ART();
-    names = [o.crit && `${kind}-crit`, o.heavy && `${kind}-heavy`].filter(n => n && V[n]).concat(names);
+    names = [o.by && !o.insta && `${kind}-${o.by}`, o.crit && `${kind}-crit`, o.heavy && `${kind}-heavy`].filter(n => n && V[n]).concat(names);
     return names.find(n => artImg(n)) || null;
   }
   /* Tinted copies (buff per stat; any sheet the index marks `tint`, coloured by o.tint), made once: multiply keeps the art's shading, then its own alpha. */

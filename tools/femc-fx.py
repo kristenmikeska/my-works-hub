@@ -43,7 +43,11 @@ NAMES = ['pierce', 'slash', 'strike', 'ice', 'elec', 'fire', 'wind', 'light', 'd
          # batch 50: Kat's crit and heavy sheets for the other elements (Almighty has a heavy one only)
          'almighty-heavy', 'dark-crit', 'dark-heavy', 'elec-crit', 'elec-heavy', 'fire-crit',
          'fire-heavy', 'ice-crit', 'ice-heavy', 'light-crit', 'light-heavy', 'pierce-crit',
-         'pierce-heavy', 'strike-crit', 'strike-heavy', 'wind-crit', 'wind-heavy']
+         'pierce-heavy', 'strike-crit', 'strike-heavy', 'wind-crit', 'wind-heavy',
+         # batch 53: Almighty's crit, and the fighters' own sheets (<kind>-<member id>; fx.js artFor tries the caster's first)
+         'almighty-crit', 'dark-haechan', 'elec-akihiko', 'elec-haechan', 'elec-ken', 'fire-junpei', 'fire-koromaru',
+         'fire-solar', 'ice-jungwon', 'ice-mitsuru', 'light-solar', 'pierce-aigis', 'pierce-minji', 'strike-shinjiro',
+         'wind-jihoon', 'wind-yukari']
 BIG = {'crit', 'weak', 'theurgy-burst', 'allout-cloud'}  # 384-px frames; fx.js also draws them 2.2x bigger
 SOLID = {'allout-cloud'}                                  # solid art with real alpha, not light on black
 TINT = {'buff'}                                           # art the game tints (the stat colour). Kat's theurgy-burst is
@@ -61,6 +65,10 @@ ALIGN = {'pierce': 'core', 'elec': 'peak',
          # shift: 'core' scattered them (their hot core jumps from the arrow tip to the burst between frames)
          'elec-crit': 'peak', 'elec-heavy': 'peak'}
 PAD = 1.3
+# Blank the outer share of every cell instead of strip_lines, for frame lines it can't tell from the art: Junpei's
+# sheet has dim grey boxes 6-8% inside each cell (too faint to find); Mitsuru's peak swirl fills its cell, so strip_lines
+# took bands of the swirl for bars (black stripes) while the real seams merged into it.
+CLEAR = {'fire-junpei': 0.095, 'ice-mitsuru': 0.015}
 
 # name -> source file, under Added to Game/ or New Adds/ (whichever has it now). Without an entry, a file named
 # <name>, fx-<name>, <name>-fx or <name>-sheet (.png/.jpg/.jpeg/.webp, any case; e.g. slash.png) in either folder is
@@ -91,12 +99,20 @@ SOURCES = {
     'light-crit': 'Added to Game/light-crit.png', 'light-heavy': 'Added to Game/light-heavy.png', 'pierce-crit': 'Added to Game/pierce-crit.jpeg',
     'pierce-heavy': 'Added to Game/pierce-heavy.jpeg', 'strike-crit': 'Added to Game/strike-crit.jpeg', 'strike-heavy': 'Added to Game/strike-heavy.jpeg',
     'wind-crit': 'Added to Game/wind-crit.png', 'wind-heavy': 'Added to Game/wind-heavy.png',
+    # Batch 53 (2026-10-27): Almighty's crit and the fighters' own sheets.
+    'almighty-crit': 'Added to Game/almighty-crit.jpeg', 'dark-haechan': 'Added to Game/dark-haechan.jpeg', 'elec-akihiko': 'Added to Game/elec-akihiko.jpeg',
+    'elec-haechan': 'Added to Game/elec-haechan.jpeg', 'elec-ken': 'Added to Game/elec-ken.jpeg', 'fire-junpei': 'Added to Game/fire-junpei.jpeg',
+    'fire-koromaru': 'Added to Game/fire-koromaru.jpeg', 'fire-solar': 'Added to Game/fire-solar.jpeg', 'ice-jungwon': 'Added to Game/ice-jungwon.jpeg',
+    'ice-mitsuru': 'Added to Game/ice-mitsuru.jpeg', 'light-solar': 'Added to Game/light-solar-v1.jpeg', 'pierce-aigis': 'Added to Game/pierce-aigis.jpeg',
+    'pierce-minji': 'Added to Game/pierce-minji.jpeg', 'strike-shinjiro': 'Added to Game/strike-shinjiro.jpeg', 'wind-jihoon': 'Added to Game/wind-jihoon.jpeg',
+    'wind-yukari': 'Added to Game/wind-yukari.jpeg',
 }
 # Kat's other versions, kept in Added to Game unused (swap one into SOURCES and run `all` to try it).
 ALTERNATES = {'fire': 'fire.jpeg', 'wind': 'wind.jpeg', 'light': 'light.jpeg', 'almighty': 'almighty-v2.jpeg',
               'crit': 'critica-v2.jpeg', 'heal': 'heal.jpeg', 'elec': 'elec-v2.jpeg', 'poison': 'poison-v2.jpeg',
               'freeze': 'freeze.jpeg', 'bind': 'bind.jpeg', 'disorient': 'disorient.jpeg', 'mudo': 'mudo.jpeg',
-              'allout-cloud': 'alloutcloud-v2.jpeg'}
+              'allout-cloud': 'alloutcloud-v2.jpeg',
+              'light-solar': 'light-solar-v2.jpeg'}  # v2's peak frame fills the cell with a flat horizon cut; v1 is centred
 EXTS = ('.png', '.jpg', '.jpeg', '.webp')
 
 
@@ -241,7 +257,9 @@ def build(src, name, dst=DST):
         lines = 0
         frames = []
         for c in cs:
-            rgb, h = strip_lines(c[..., :3]); lines += h
+            if name in CLEAR:
+                e = int(round(side * CLEAR[name])); c = c.copy(); c[:e, :, :3] = 0; c[-e:, :, :3] = 0; c[:, :e, :3] = 0; c[:, -e:, :3] = 0
+            rgb, h = (c[..., :3], 0) if name in CLEAR else strip_lines(c[..., :3]); lines += h
             frames.append(light_alpha(rgb))
         if lines:
             print(f'  {name}: cleared {lines} grid / box line(s) along cell edges')

@@ -2422,7 +2422,8 @@
   function fxHitKind(e) {
     // heavy (5G): a -ma / -dyne / all-foe damage skill tries the element's <kind>-heavy sheet (fx.js artFor: crit, then heavy, then plain).
     const sk0 = D.skills[e.skill], heavy = !!(sk0 && sk0.type === 'dmg' && (sk0.target === 'all' || /dyne$/.test(e.skill)));
-    const src = B.U(e.src), el = e.el, o = { crit: e.crit, heavy, color: (D.elements[el] || {}).color };
+    // by (5G): a party member's own sheet for this element (<kind>-<mid>, fx.js artFor tries it first).
+    const src = B.U(e.src), el = e.el, o = { crit: e.crit, heavy, by: (src && src.side === 'party' && src.mid) || undefined, color: (D.elements[el] || {}).color };
     if (e.skill === 'golden_rope') { const c = BT.cards.get(e.src), R = BT.root.getBoundingClientRect(); if (c) { const r = c.getBoundingClientRect(); o.from = { x: r.left + r.width * 0.4 - R.left, y: r.top - R.top }; } return fxPlay('rope', e.tgt, o); }
     if (e.insta) return fxPlay(el === 'light' ? 'light' : 'dark', e.tgt, Object.assign(o, { holy: el === 'light' }));
     if (e.theurgy) { const look = (B.U(e.src) && member(B.U(e.src).mid).theurgy.look) || el; return fxPlay(look === 'sun' ? 'light' : (D.elements[look] ? look : 'almighty'), e.tgt, Object.assign(o, { holy: look === 'sun' })); }
