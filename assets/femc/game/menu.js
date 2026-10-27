@@ -50,7 +50,7 @@ window.FemcMenu = (() => {
   const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['cards', 'Cards'], ['equip', 'Equipment'], ['items', 'Items'], ['collection', 'Collection'], ['wardrobe', 'Wardrobe'], ['status', 'Status'], ['links', 'Links'], ['bonds', 'Bonds'], ['journal', 'Journal'], ['album', 'Album'], ['theater', 'Theater'], ['calendar', 'Calendar'], ['compendium', 'Compendium']];
   const BLD = () => window.FemcBuild || null;
   // Kat's tab icons (batch 43, art/icons/<tab>.webp) sit before each label; a tab without one (or a file that fails) is text only.
-  const TAB_ICONS = new Set(['party', 'personas', 'skills', 'cards', 'equip', 'items', 'collection', 'status', 'links', 'bonds', 'journal', 'album', 'theater']);
+  const TAB_ICONS = new Set(['party', 'personas', 'skills', 'cards', 'equip', 'items', 'collection', 'status', 'links', 'bonds', 'journal', 'album', 'theater', 'calendar', 'compendium']);
   const tabIco = k => (TAB_ICONS.has(k) ? `<img class="g-tab-ico" src="${G.base}assets/femc/game/art/icons/${k}.webp?v=1" alt="" onerror="this.remove()">` : '');
   let o = null, tab = 'party', sel = {}, opts = {};
 
@@ -1059,7 +1059,7 @@ window.FemcMenu = (() => {
     if (tab === 'compendium' || (opts.inBattle && EXTRA_TABS.includes(tab))) tab = 'party';
     const s = S(), i = G.dayInfo(), when = opts.inBattle ? 'The Dark Hour' : G.slotName(s.slot, i);
     o = UI().overlay(`<div class="g-fm${opts.inBattle ? ' dark' : ''}"><div class="g-fm-head"><div><p class="g-kicker">${esc(i.md)} ${esc(i.day)} · ${esc(when)}</p><h2>Menu</h2></div><span class="g-yen">${yen(opts.yen ?? s.yen)}</span><button type="button" class="g-btn small" data-close>${opts.inBattle ? 'Back' : 'Close'}</button></div>
-      <nav class="g-tabs g-fm-tabs" role="tablist">${tabList().map(([k, n]) => (k === 'compendium' ? `<a role="tab" href="${G.base}compendium.html" target="_blank" rel="noopener">${n} ↗</a>` : `<button type="button" role="tab" data-tab="${k}">${tabIco(k)}${n}</button>`)).join('')}</nav>
+      <nav class="g-tabs g-fm-tabs" role="tablist">${tabList().map(([k, n]) => (k === 'compendium' ? `<a role="tab" href="${G.base}compendium.html" target="_blank" rel="noopener">${tabIco(k)}${n} ↗</a>` : `<button type="button" role="tab" data-tab="${k}">${tabIco(k)}${n}</button>`)).join('')}</nav>
       <div class="g-fm-body" tabindex="-1"></div>
       <p class="g-hint g-fm-hint">[ ] or ←→ on the tabs · Esc ${opts.inBattle ? 'back' : 'close'}</p></div>`, `g-fm-ov${opts.inBattle ? ' g-over-battle' : ''}`, () => { o = null; sel.slot = null; G.save(); const done = opts.onClose; opts = {}; done?.(); });
     sel.use = null; sel.velvet = null; sel.armed = null; sel.armedCard = null; sel.teach = null;

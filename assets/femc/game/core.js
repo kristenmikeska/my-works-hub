@@ -850,7 +850,8 @@ window.FemcGame = (() => {
   const castHas = id => id in CAST;
   /* Alternate card art for an arcana two links share (FEMC-ART-TODO 6A; tools/femc-tarot.py EXTRA -> tarot/<arcana>-2.webp).
      A link listed here shows its alternate; everyone else (and this link, if the file isn't listed) keeps the arcana's card. */
-  const TAROT_ALT = { hyein: 'lovers-2', koromaru: 'strength-2' };
+  const TAROT_ALT = { hyein: 'lovers-2', koromaru: 'strength-2', cherry: 'chariot-2', haru: 'empress-2', junkyu: 'fool-2', chenle: 'hermit-2',
+    judy: 'justice-2', rohan: 'magician-2', minji: 'moon-2', mymelody: 'star-2', sunoo: 'sun-2' };
   function tarot(l) {
     const have = W.FEMC_TAROT || [], alt = l && TAROT_ALT[l.id];
     const k = alt && have.includes(alt) ? alt : String(l?.arcana || '').toLowerCase().replace(/[^a-z0-9]/g, '');

@@ -12751,6 +12751,162 @@
         "assets/femc/portraits/jungwon/serious.webp": "a425e49d1cf291af4015344023f57a7fcb3644580ecf3d39c9af027862b19b07",
         "assets/femc/portraits/jungwon/surprised.webp": "e96fd354de50f064b9e311b4542a234ae5b85734a4a89377a506e77cbd2eb631"
       }
+    },
+    {
+      "batch": 54,
+      "source": "tarot-chariot-2.png",
+      "sourceNow": "Added to Game/tarot-chariot-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c6ce9c2b3cc12ff3cd826bd8c817f0708a3b98d886c0d2971d3027efbe3bee94",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/chariot-2.webp",
+      "outputSha256": "df5f979722018960addc0e7cfe3d82a124ac2017328598db5363b99a71ec0a53",
+      "conversion": "tools/femc-tarot.py EXTRA chariot-2: 360px wide WebP q85",
+      "placement": "core.js TAROT_ALT: Cherry's card (Links menu, rank-up card); Rio keeps chariot.webp (Rio is the P3 Chariot link)"
+    },
+    {
+      "batch": 54,
+      "source": "tarot-empress-2.png",
+      "sourceNow": "Added to Game/tarot-empress-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f611238c9b8fe21c53d4dd25dcfdb9b6ea5660ba09a4667e13a9c2f424450db6",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/empress-2.webp",
+      "outputSha256": "6b0101a4db7572417b4b11d97b1bf34b4ef723b3afdbfe0dde815aac34c6f899",
+      "conversion": "tools/femc-tarot.py EXTRA empress-2: 360px wide WebP q85",
+      "placement": "core.js TAROT_ALT: Haru's card (Links menu, rank-up card); Mitsuru keeps empress.webp (Mitsuru is the P3 Empress link)"
+    },
+    {
+      "batch": 54,
+      "source": "tarot-fool-2.png",
+      "sourceNow": "Added to Game/tarot-fool-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "4886b26cbee84e7099f8250202218635fac8cac0d582b6529714e389b48a4c52",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/fool-2.webp",
+      "outputSha256": "2283b0621fe57b79e1c0dc6303ce54b24cf6f65bf9e9b9350aec3bedc27758db",
+      "conversion": "tools/femc-tarot.py EXTRA fool-2: 360px wide WebP q85",
+      "placement": "core.js TAROT_ALT: Junkyu's card (Links menu, rank-up card); Sebastian keeps fool.webp (the leaping white dog fits Junkyu (dog-lover, Koromaru fan); neither is a P3 link)"
+    },
+    {
+      "batch": 54,
+      "source": "tarot-hermit-2.png",
+      "sourceNow": "Added to Game/tarot-hermit-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0c01e87f9cae47e5db12a0124fc508bf6ad637b13b12bc7529e973c346e1ebd0",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/hermit-2.webp",
+      "outputSha256": "c0d1970b424911be38cfae34ac5e6aa3a0a87273f024a8f48c7bb1693695e1e3",
+      "conversion": "tools/femc-tarot.py EXTRA hermit-2: 360px wide WebP q85",
+      "placement": "core.js TAROT_ALT: Chenle's card (Links menu, rank-up card); Saori keeps hermit.webp (Saori is the P3 Hermit link)"
+    },
+    {
+      "batch": 54,
+      "source": "tarot-justice-2.png",
+      "sourceNow": "Added to Game/tarot-justice-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "28f5d88b3da5983672d1647ec65596ddc5af990a040fea9f5ed0b365c6b10ea6",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/justice-2.webp",
+      "outputSha256": "5a8518ee007a6632b05aa16ec0132e4c45e7c10c027d487ae2aba57cb887be39",
+      "conversion": "tools/femc-tarot.py EXTRA justice-2: 360px wide WebP q85",
+      "placement": "core.js TAROT_ALT: Judy's card (Links menu, rank-up card); Ken keeps justice.webp (Ken is the P3 Justice link)"
+    },
+    {
+      "batch": 54,
+      "source": "tarot-magician-2.png",
+      "sourceNow": "Added to Game/tarot-magician-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "85e9123e5ceb5f7553fbd6db513447bf1fa0e39d65b864682cbaf4fd46640959",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/magician-2.webp",
+      "outputSha256": "07edfe5b964879f3f1c94505526a80cd02457380b6f72e8accd7d537147cefdf",
+      "conversion": "tools/femc-tarot.py EXTRA magician-2: 360px wide WebP q85",
+      "placement": "core.js TAROT_ALT: Rohan's card (Links menu, rank-up card); Junpei and Mark keep magician.webp (the raised fountain pen is Rohan's (a manga artist))"
+    },
+    {
+      "batch": 54,
+      "source": "tarot-moon-2.png",
+      "sourceNow": "Added to Game/tarot-moon-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "cc3d114b0b735c0103db08ca27b9e90101f54db58e2d717cfdc2800f0cee94fc",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/moon-2.webp",
+      "outputSha256": "fa696d2ddd6204a6e46645f9c185c5b2346bf44025e8b654c429a2184ef63c63",
+      "conversion": "tools/femc-tarot.py EXTRA moon-2: 360px wide WebP q85",
+      "placement": "core.js TAROT_ALT: Minji's card (Links menu, rank-up card); Shinjiro keeps moon.webp (Shinjiro is the P3 Moon link)"
+    },
+    {
+      "batch": 54,
+      "source": "tarot-star-2.png",
+      "sourceNow": "Added to Game/tarot-star-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f862db810252ad5b6152ef38d1f960ad48677790a9a0fe3de12d2ed829990dd9",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/star-2.webp",
+      "outputSha256": "c2463f29a149061a333beb67a497b96590c712dbf8407ef4757220aa088c0284",
+      "conversion": "tools/femc-tarot.py EXTRA star-2: 360px wide WebP q85",
+      "placement": "core.js TAROT_ALT: My Melody's card (Links menu, rank-up card); Akihiko keeps star.webp (Akihiko is the P3 Star link)"
+    },
+    {
+      "batch": 54,
+      "source": "tarot-sun-2.png",
+      "sourceNow": "Added to Game/tarot-sun-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "92039a0805bb568d403e295dc8c6e38e30a4627c871a5e2ce0c3cbc2b1deb7a4",
+      "status": "integrated",
+      "destination": "assets/femc/tarot/sun-2.webp",
+      "outputSha256": "03d190ffef560aaa8a891016e0db3654370b32b813e3aa440ae00b78c7ae754e",
+      "conversion": "tools/femc-tarot.py EXTRA sun-2: 360px wide WebP q85",
+      "placement": "core.js TAROT_ALT: Sunoo's card (Links menu, rank-up card); Jaemin and Aphrodite keep sun.webp (the sunflowers fit Sunoo; none of the three is a P3 link)"
+    },
+    {
+      "batch": 54,
+      "source": "menu-icons-2.png",
+      "sourceNow": "Added to Game/menu-icons-2.png",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "249c3112740726e2682f73b7c3ca79e5362fa6369f4e21b786bc134ad0fc91b9",
+      "status": "integrated",
+      "destination": [
+        "assets/femc/game/art/icons/calendar.webp",
+        "assets/femc/game/art/icons/compendium.webp"
+      ],
+      "outputs": {
+        "assets/femc/game/art/icons/calendar.webp": "e31ae7a10995c25dfc6cfef6033a9a5d36e8708b221ec600d43602844b59a511",
+        "assets/femc/game/art/icons/compendium.webp": "3d2140e3373f42af8a1d365cf4c5ae3e3e819f3cbadeb39def059f2bc1dfedbb"
+      },
+      "conversion": "tools/femc-greens.py SHEETS 'menu-icons-2' (2 x 1 on #00ff00, keyed, trimmed onto a 128px transparent square); source unchanged",
+      "placement": "menu.js TAB_ICONS / tabIco: before the Calendar tab's label and the Compendium link tab's label (tabIco added to that <a>); text-only if the file fails"
     }
   ],
   "batch1Validation": {
@@ -13461,6 +13617,19 @@
       "python3 tests/femc_tartarus.py --only shots",
       "python3 tests/femc_cast_consistency.py",
       "screenshots: each new place in a scene, Jungwon and Haechan in the same cafe at 1440x900 and Jungwon at 390x844, Wren's phase 3 at 1280x800 and 390x844, the album at three sizes"
+    ],
+    "browserErrors": 0
+  },
+  "batch54Validation": {
+    "date": "2026-10-27",
+    "scope": "tarot alternates for the nine remaining shared arcana (Chariot, Empress, Fool, Hermit, Justice, Magician, Moon, Star, Sun) and the Calendar and Compendium menu-tab icons",
+    "sourcesInspected": "all 10 viewed; the nine cards on a contact sheet, the two icons cut and reviewed on dark and white grounds",
+    "sourcesIntegrated": 10,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked after the move); On Hold and the effect sheets untouched",
+    "tests": [
+      "python3 tests/femc_menu.py",
+      "headless check, one link at a time: each of the 20 shared-arcana links shows its card in the Links menu (the 9 alternates and the 11 base cards load at 360px)"
     ],
     "browserErrors": 0
   }

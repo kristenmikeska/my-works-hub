@@ -24,6 +24,16 @@ EXTRA = {
     # batch 45 (2026-10-24): alternates for shared arcana (FEMC-ART-TODO 6A). core.js TAROT_ALT says which link shows each.
     'lovers-2': 'Added to Game/lovers-2.jpeg',
     'strength-2': 'Added to Game/strength-2.jpeg',
+    # batch 54 (2026-10-27): the other shared arcana's alternates.
+    'chariot-2': 'Added to Game/tarot-chariot-2.png',
+    'empress-2': 'Added to Game/tarot-empress-2.png',
+    'fool-2': 'Added to Game/tarot-fool-2.png',
+    'hermit-2': 'Added to Game/tarot-hermit-2.png',
+    'justice-2': 'Added to Game/tarot-justice-2.png',
+    'magician-2': 'Added to Game/tarot-magician-2.png',
+    'moon-2': 'Added to Game/tarot-moon-2.png',
+    'star-2': 'Added to Game/tarot-star-2.png',
+    'sun-2': 'Added to Game/tarot-sun-2.png',
 }
 
 

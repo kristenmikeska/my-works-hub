@@ -114,6 +114,7 @@ Other docs, if you ever want detail:
 - ✅ Art batch 50: big and critical versions of your skill effects. Strike, Pierce, Fire, Ice, Elec, Wind, Light and Dark each have a Heavy sheet (for -ma, -dyne and all-foe skills) and a Critical one (on crits), and Almighty has its Heavy one (its Critical one is still to make)
 - ✅ Art batch 52: your art on every plain shop weapon (all nine kinds, the five element weapons too), the Bookworms covers, the five birthday keepsakes (they show in the gift's toast), keychain series sheets 3–15 (Summer, Winter, Valentine's, Solchan, the hidden charms, the romance charms, Dorm Life), both capsule goods sheets, and icons on Haenim's sun
 - ✅ Art batch 51: your seven places (Yeobo's Cafe and the fish market as they are today, Monad, the supermarket, the school stairwell, the canal path behind the mall, the little flat by the station), the rank 10 pictures for Sebastian, Aphrodite, Widowmaker, Rohan and Wren, Valentine's Day and the dorm dinner, the Sleeper Car with its pose sheet, Wren's last-phase art, two new memory cards (barley tea, the ballot box), the album's locked tile, and your revised Jungwon portraits
+- ✅ Art batch 54: your nine new tarot cards, so links that share an arcana each show their own (Cherry, Haru, Junkyu, Chenle, Judy, Rohan, Minji, My Melody and Sunoo get the new ones in the Links menu and on rank-up cards), and your Calendar and Compendium icons on the last two menu tabs
 
 ## Music and polish
 - ✅ 57 songs, rotating with no repeats, plus world songs in memories, arrivals, calls and endings

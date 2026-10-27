@@ -30,6 +30,8 @@ SHEETS = {
     'sun-icons': ('assets/femc/battle/art/sun', 5, 5, ['crit', 'speed', 'evade', 'counter', 'autobuff', 'firstcut', 'hpregen', 'spregen', 'weak',
         'followup', 'ailment', 'ailturns', 'lowhp', 'physup', 'magicup', 'healup', 'corona', 'bell', 'momentum', 'buffturns', 'theurgy',
         'nullail', 'stat', 'keystone', 'memory'], 96, True),
+    # Batch 54: the last two menu tab icons (menu.js TAB_ICONS), 2 x 1, sized like batch 43's tab icons.
+    'menu-icons-2': ('assets/femc/game/art/icons', 2, 1, ['calendar', 'compendium'], 128, True),
 }
 
 

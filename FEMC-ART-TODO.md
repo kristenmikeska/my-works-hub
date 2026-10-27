@@ -1,6 +1,6 @@
 # Art to make
 
-**69 items:** 1 place · 22 character pieces · 25 battle · 10 cards, items and icons · 1 screen · 10 wardrobe and keychains. 7 are ⭐, 56 are optional.
+**59 items:** 1 place · 22 character pieces · 25 battle · 1 screen · 10 wardrobe and keychains. 7 are ⭐, 46 are optional.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -23,9 +23,7 @@
 | Full bodies | `CherryFullBody.png` |
 | Wren's Shadow | `battle/art/shadows/wren-shadow-last-train.webp` |
 | Effect variants | `pierce.png` |
-| Tarot cards | `tarot/star.webp` |
 | Weapons and keepsakes | `SolarWeapons.png` |
-| Icons | `status-icons.jpeg` |
 | Dark Hour still | `title/keyart.webp` |
 | Outfit pose sheet | `solar-posesheet.png` |
 | Weapon skins | `battle/art/weapons/moon-and-stars.webp` |
@@ -450,89 +448,7 @@ Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of s
 
 ## 5. Cards, items and icons
 
-### Tarot alternates (ChatGPT or Gemini)
-
-**[ ] Empress (III), second card** *(optional)*  
-So Mitsuru, Haru don't all show the same card.  
-Attach: the style image, tarot/moon.webp  
-Save as: `tarot-empress-2.png`
-```
-A tarot card in exactly the same art style, border, colours and layout as the attached cards: the Empress arcana, numbered III, depicting an empty throne in a garden of red roses and ripe wheat, a crown resting on a cushion. The card fills the whole image edge to edge, portrait 2:3, nothing around it. No people's faces. No extra text beyond the numeral and title band the attached cards have.
-```
-
-**[ ] Justice (VIII), second card** *(optional)*  
-So Ken, Judy don't all show the same card.  
-Attach: the style image, tarot/moon.webp  
-Save as: `tarot-justice-2.png`
-```
-A tarot card in exactly the same art style, border, colours and layout as the attached cards: the Justice arcana, numbered VIII, depicting balanced scales hanging from an upright sword, a small gear in one pan and a feather in the other. The card fills the whole image edge to edge, portrait 2:3, nothing around it. No people's faces. No extra text beyond the numeral and title band the attached cards have.
-```
-
-**[ ] Magician (I), second card** *(optional)*  
-So Junpei, Mark, Rohan don't all show the same card.  
-Attach: the style image, tarot/moon.webp  
-Save as: `tarot-magician-2.png`
-```
-A tarot card in exactly the same art style, border, colours and layout as the attached cards: the Magician arcana, numbered I, depicting a hand raising a fountain pen like a wand over a table with a cup, a coin, a sword and a baseball. The card fills the whole image edge to edge, portrait 2:3, nothing around it. No people's faces. No extra text beyond the numeral and title band the attached cards have.
-```
-
-**[ ] Moon (XVIII), second card** *(optional)*  
-So Shinjiro, Minji don't all show the same card.  
-Attach: the style image, tarot/moon.webp  
-Save as: `tarot-moon-2.png`
-```
-A tarot card in exactly the same art style, border, colours and layout as the attached cards: the Moon arcana, numbered XVIII, depicting a full moon over two towers, a dog and a wolf howling at it, a winding path out of a still pool. The card fills the whole image edge to edge, portrait 2:3, nothing around it. No people's faces. No extra text beyond the numeral and title band the attached cards have.
-```
-
-**[ ] Star (XVII), second card** *(optional)*  
-So Akihiko, My Melody don't all show the same card.  
-Attach: the style image, tarot/moon.webp  
-Save as: `tarot-star-2.png`
-```
-A tarot card in exactly the same art style, border, colours and layout as the attached cards: the Star arcana, numbered XVII, depicting a large eight-pointed star over a still pool, a jug pouring water into it, seven small stars around. The card fills the whole image edge to edge, portrait 2:3, nothing around it. No people's faces. No extra text beyond the numeral and title band the attached cards have.
-```
-
-**[ ] Hermit (IX), second card** *(optional)*  
-So Saori, Chenle don't all show the same card.  
-Attach: the style image, tarot/moon.webp  
-Save as: `tarot-hermit-2.png`
-```
-A tarot card in exactly the same art style, border, colours and layout as the attached cards: the Hermit arcana, numbered IX, depicting a lantern with a star inside held up on a snowy mountain path, a plain walking staff. The card fills the whole image edge to edge, portrait 2:3, nothing around it. No people's faces. No extra text beyond the numeral and title band the attached cards have.
-```
-
-**[ ] Sun (XIX), second card** *(optional)*  
-So Aphrodite, Jaemin, Sunoo don't all show the same card.  
-Attach: the style image, tarot/moon.webp  
-Save as: `tarot-sun-2.png`
-```
-A tarot card in exactly the same art style, border, colours and layout as the attached cards: the Sun arcana, numbered XIX, depicting a huge sun over a field of sunflowers, a white horse with a red banner. The card fills the whole image edge to edge, portrait 2:3, nothing around it. No people's faces. No extra text beyond the numeral and title band the attached cards have.
-```
-
-**[ ] Chariot (VII), second card** *(optional)*  
-So Cherry, Rio don't all show the same card.  
-Attach: the style image, tarot/moon.webp  
-Save as: `tarot-chariot-2.png`
-```
-A tarot card in exactly the same art style, border, colours and layout as the attached cards: the Chariot arcana, numbered VII, depicting a chariot drawn by a black and a white sphinx under a starry canopy. The card fills the whole image edge to edge, portrait 2:3, nothing around it. No people's faces. No extra text beyond the numeral and title band the attached cards have.
-```
-
-**[ ] Fool (0), second card** *(optional)*  
-So Sebastian, Junkyu don't all show the same card.  
-Attach: the style image, tarot/moon.webp  
-Save as: `tarot-fool-2.png`
-```
-A tarot card in exactly the same art style, border, colours and layout as the attached cards: the Fool arcana, numbered 0, depicting a traveller's bundle and a white rose at a cliff edge, a small white dog leaping beside it, a bright sky. The card fills the whole image edge to edge, portrait 2:3, nothing around it. No people's faces. No extra text beyond the numeral and title band the attached cards have.
-```
-
-### Icons (Gemini or ChatGPT)
-
-**[ ] Menu icons: Calendar and Compendium** *(optional)*  
-The last two menu tabs without an icon.  
-Attach: the style image  
-Save as: `menu-icons-2.png`
-```
-Two flat game UI icons side by side on a flat pure green background (#00FF00), landscape 2:1 (1024 × 512), in exactly the style of the attached icon sheet (Persona 3 Reload's menu style): bold simple glyphs, a heavy dark ink outline, one hot-pink (#ff4f9e) accent, a thick white rim, each centred in its own half with wide green space round it, readable at 18 pixels. No text, no letters, no green in the icons. Left: Calendar (a page with a crescent moon). Right: Compendium (a thick book with a moon clasp).
-```
+Nothing left to make here.
 
 ---
 
