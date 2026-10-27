@@ -78,6 +78,7 @@ Other docs, if you ever want detail:
 - ✅ Bond skills (12), a new signature skill for every fighter, battle reactions, romance banter
 - ✅ Animated Theurgies (Solar's change with her form), and the animated Evoker summon
 - ✅ The searcher Personas: Dalnim, Hyeonmu, Dokkaebi, Theia
+- ✅ **Echoes:** Solar collects a second Persona beside Haenim, from the myths of every world (Korean, Greek, urban legends and Japanese, 48 to find and a secret one for finding them all). Equip one in the Personas tab for its skills, a passive and new resistances; it grows as you fight. Find them in Shuffle Time, rare Tartarus rooms and a few story moments, fuse two into a stronger one with Elizabeth (your links help), and fill the Echo Compendium for Velvet Plumes, cards, new looks and titles. Old saves pick it up. Stand-in pictures until your art is in (prompts in FEMC-ART-TODO, Echoes)
 - ✅ New Shadows: Group Chat and Fishmonger
 - ✅ Your lantern art on the last full-moon fight's three lantern windows (the ones you can't break sit behind glass)
 - ✅ Your tarot cards for Aeon, Judgement and Councillor, and your backgrounds for the tennis courts, the music room, the computer room and three Yakushima places

@@ -37,7 +37,13 @@ def index():
                 '   Until an id is listed here, echoes.js shows its stand-in (a Shadow\'s art) or its arcana\'s tarot card. */\n')
         f.write('window.FEMC_ECHO_ART = [%s];\n' % ', '.join('"%s"' % i for i in have))
         f.write('window.FEMC_ECHO_ART_V = %d;\n' % ver)
-    print(f'index: {len(have)} of {len(ids)} Echoes have art (v{ver})')
+    # Both pages load the index with ?v=: bump it so a browser picks up the new list.
+    for page in ('femc-game.html', 'femc-battle.html'):
+        fp = os.path.join(REPO, page)
+        html = open(fp, encoding='utf-8').read()
+        new = re.sub(r'(art/echoes/index\.js\?v=)\d+', lambda m: m.group(1) + str(ver), html)
+        if new != html: open(fp, 'w', encoding='utf-8').write(new)
+    print(f'index: {len(have)} of {len(ids)} Echoes have art (v{ver}; both pages bumped)')
 
 
 def grid_for(n, given=None):

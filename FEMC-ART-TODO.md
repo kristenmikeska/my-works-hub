@@ -1,6 +1,6 @@
 # Art to make
 
-**63 items:** 1 story CG · 1 place · 22 character pieces · 9 battle · 1 screen · 31 wardrobe and keychains. 8 are ⭐, 51 are optional.
+**72 items:** 1 story CG · 1 place · 22 character pieces · 18 battle · 1 screen · 31 wardrobe and keychains. 8 are ⭐, 52 are optional.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -26,6 +26,7 @@
 | Dark Hour still | `title/keyart.webp` |
 | Outfit pose sheet | `solar-posesheet.png` |
 | Weapon skins | `battle/art/weapons/moon-and-stars.webp` |
+| Echoes | `battle/art/personas/haenim.webp` |
 
 Places, expressions, outfit portraits, books and the items that name their own pictures need no style image.
 
@@ -319,6 +320,83 @@ Save as: `solar-unveiled-strikesheet.png`
 ```
 A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
 ```
+
+### Echoes (ChatGPT)
+
+Solar's collectible Echoes (the Personas tab, Echo Fusion, the Echo Compendium). Each one shows a stand-in Shadow or its tarot card until its sheet is in. Six to a sheet; keep the order, since each cell becomes that Echo.
+
+**[ ] Echoes: strangers (Korean myth), sheet 1**  
+Jangseung, Imugi, Gumiho, Haetae, Chilseong, Samsin Halmeoni.  
+Attach: the style image, battle/art/personas/dalnim.webp  
+Save as: `echoes-strangers-1.png`
+```
+A sheet of six Persona designs in a 3 columns × 2 rows grid on a plain white background, with clear empty space between every cell and nothing overlapping. Match the attached Persona art exactly: the same Persona 3 Reload official art style, painted rendering, line weight, lighting and level of detail, a dramatic full-body pose, each one a mythic being summoned as a Persona with a faint glowing blue Persona aura at its edges. Every cell is one full-body figure, centred and about the same height. Cell 1 (top left): Jangseung, a pair of tall carved wooden village-guardian totem posts with fierce grinning painted faces, tall black hats, red and black paint, standing side by side and joined by a straw rope hung with white paper charms. Cell 2 (top middle): Imugi, a huge pale jade-green serpent coiled around a mountain stream rock, tiny horn buds that are not yet dragon horns, reaching up toward a glowing white pearl falling from the sky, mist around it. Cell 3 (top right): Gumiho, a beautiful fox woman in a white and red hanbok with nine flowing white fox tails fanned behind her, fox ears, a glowing blue fox bead floating above her palm, sly smile. Cell 4 (bottom left): Haetae, a stone-and-flesh lion-dog beast with curly green-gold mane, a single horn on its forehead, bells on its collar, scales on its legs, sitting proudly like a palace guardian statue. Cell 5 (bottom middle): Chilseong, seven small star spirits in white shaman robes and tall hats holding hands in the shape of the Big Dipper, each with a glowing star on its chest, a bowl of clean water below them. Cell 6 (bottom right): Samsin Halmeoni, a kind old grandmother goddess in a white hanbok and a white headscarf, holding a bundle of rice stalks and a baby wrapped in silk, soft blue light around her hands. Clean edges on the white background, no background scenery beyond small props named here, no text, no labels.
+```
+
+**[ ] Echoes: strangers (Korean myth), sheet 2**  
+Bulgasari, Bari Gongju, Yongwang, Jeoseung Saja, Gameunjang Agi, Bonghwang.  
+Attach: the style image, battle/art/personas/dalnim.webp  
+Save as: `echoes-strangers-2.png`
+```
+A sheet of six Persona designs in a 3 columns × 2 rows grid on a plain white background, with clear empty space between every cell and nothing overlapping. Match the attached Persona art exactly: the same Persona 3 Reload official art style, painted rendering, line weight, lighting and level of detail, a dramatic full-body pose, each one a mythic being summoned as a Persona with a faint glowing blue Persona aura at its edges. Every cell is one full-body figure, centred and about the same height. Cell 1 (top left): Bulgasari, a hulking bear-like monster with an elephant trunk, rhino eyes, cow tail and tiger legs, its hide made of melted iron plates, spoons and needles stuck in its back, chewing a sword. Cell 2 (top middle): Bari Gongju, a young shaman princess in a layered white, red, blue and yellow shaman robe, carrying a bowl of glowing water and a branch of white flowers of life, walking barefoot, determined. Cell 3 (top right): Yongwang, a coiling blue-green sea dragon king wearing a royal king’s crown and red dragon robe, whiskers flowing, holding a jade pearl, waves and a sunken palace roof below. Cell 4 (bottom left): Jeoseung Saja, a tall pale grim reaper in a long black hanbok and a wide black gat hat with bead strings, holding an open ledger of names, deathly calm face, wisps of grey smoke. Cell 5 (bottom middle): Gameunjang Agi, a confident young woman in a plain black hanbok with a gold-thread skirt, a gourd of rice spilling gold coins at her feet, a road behind her, chin raised, defiant warm smile. Cell 6 (bottom right): Bonghwang, a radiant Korean phoenix with five-coloured plumage (red, blue, yellow, white, black), a long flowing tail of flame feathers, wings spread, perched on a paulownia branch. Clean edges on the white background, no background scenery beyond small props named here, no text, no labels.
+```
+
+**[ ] Echoes: Runners (Greek myth), sheet 1**  
+Dionysus, Hebe, Pegasus, Minotaur, Eros, Icarus.  
+Attach: the style image, battle/art/personas/dalnim.webp  
+Save as: `echoes-runners-1.png`
+```
+A sheet of six Persona designs in a 3 columns × 2 rows grid on a plain white background, with clear empty space between every cell and nothing overlapping. Match the attached Persona art exactly: the same Persona 3 Reload official art style, painted rendering, line weight, lighting and level of detail, a dramatic full-body pose, each one a mythic being summoned as a Persona with a faint glowing blue Persona aura at its edges. Every cell is one full-body figure, centred and about the same height. Cell 1 (top left): Dionysus, a lazy grinning young god with ivy and grapes in his curly hair, a leopard skin over one shoulder, a golden wine cup raised, a thyrsus staff topped with a pine cone, party lights behind. Cell 2 (top middle): Hebe, a young goddess in a flowing white and pale gold chiton pouring glowing nectar from a golden jug into a cup, flowers in her hair, light and graceful, an eagle feather at her shoulder. Cell 3 (top right): Pegasus, a white winged horse rearing mid-air, great feathered wings spread, a gold bridle, a spring of water bursting from the rock under its hooves, starlight on its mane. Cell 4 (bottom left): Minotaur, a towering bull-headed man with heavy horns, a bronze double axe, a broken chain on one wrist, standing in a stone labyrinth corridor, a red thread trailing across the floor. Cell 5 (bottom middle): Eros, a beautiful winged youth with white feathered wings and a golden bow, one gold-tipped arrow and one lead-tipped arrow in his quiver, a playful smirk, rose petals drifting. Cell 6 (bottom right): Icarus, a young man with huge wings of feathers held together by melting wax, falling and reaching upward toward a blazing sun at the same time, feathers scattering, a sea far below. Clean edges on the white background, no background scenery beyond small props named here, no text, no labels.
+```
+
+**[ ] Echoes: Runners (Greek myth), sheet 2**  
+Themis, Charon, Hecate, Prometheus, Pandora, Eos.  
+Attach: the style image, battle/art/personas/dalnim.webp  
+Save as: `echoes-runners-2.png`
+```
+A sheet of six Persona designs in a 3 columns × 2 rows grid on a plain white background, with clear empty space between every cell and nothing overlapping. Match the attached Persona art exactly: the same Persona 3 Reload official art style, painted rendering, line weight, lighting and level of detail, a dramatic full-body pose, each one a mythic being summoned as a Persona with a faint glowing blue Persona aura at its edges. Every cell is one full-body figure, centred and about the same height. Cell 1 (top left): Themis, a tall serene titaness in a white peplos and gold laurel crown, blindfolded, holding bronze scales in one hand and a scroll of law in the other, columns behind her. Cell 2 (top middle): Charon, a gaunt hooded ferryman in a ragged dark cloak standing in a narrow black boat, holding a long pole, a lantern hanging from the prow, glowing coin eyes, a misty river. Cell 3 (top right): Hecate, a triple goddess, three graceful faces looking three ways, a dark violet robe with a crescent moon, a torch in each of her hands, black hounds at her feet, a crossroads sign. Cell 4 (bottom left): Prometheus, a muscular titan in broken chains, holding a fennel stalk with a blazing flame high over his head, an eagle circling, a rocky mountainside, defiant expression. Cell 5 (bottom middle): Pandora, a young woman in a pale blue chiton holding an open painted Greek jar, dark shapes of troubles spilling out and swirling away, a single small glowing light of hope still inside the jar. Cell 6 (bottom right): Eos, a radiant winged dawn goddess in saffron and rose robes, rose-pink fingers opening golden gates in the sky, a chariot of pale horses behind her, sunrise colours. Clean edges on the white background, no background scenery beyond small props named here, no text, no labels.
+```
+
+**[ ] Echoes: HOAX (urban legends), sheet 1**  
+Fan Death, Bunshinsaba, Hook Man, Men in Black, Headless Rider, Shadow People.  
+Attach: the style image, battle/art/personas/dalnim.webp  
+Save as: `echoes-hoax-1.png`
+```
+A sheet of six Persona designs in a 3 columns × 2 rows grid on a plain white background, with clear empty space between every cell and nothing overlapping. Match the attached Persona art exactly: the same Persona 3 Reload official art style, painted rendering, line weight, lighting and level of detail, a dramatic full-body pose, each one a mythic being summoned as a Persona with a faint glowing blue Persona aura at its edges. Every cell is one full-body figure, centred and about the same height. Cell 1 (top left): Fan Death, a spooky-cute living electric desk fan spirit with a ghostly pale face in the fan guard, cable tail, a glowing timer dial, gusts of cold wind with paper flying, in a dark bedroom. Cell 2 (top middle): Bunshinsaba, a ghostly schoolgirl spirit with long black hair over her face in an old school uniform, two pairs of hands holding one red pen over a sheet of paper with circled letters, candle light. Cell 3 (top right): Hook Man, a tall shadowy man in a long raincoat with a gleaming steel hook for a hand, face hidden in shadow, standing beside a parked old car at night, red tail lights, radio static. Cell 4 (bottom left): Men in Black, two identical men in black suits, black ties and dark sunglasses with pale faces, one holding up a small silver flashing device, a black car behind them, a strange light in the sky. Cell 5 (bottom middle): Headless Rider, a headless motorcyclist in a black leather jacket on a black motorcycle with blue ghost-fire wheels, a helmet tucked under one arm, speeding along a dark highway, neon trails. Cell 6 (bottom right): Shadow People, tall featureless human silhouettes made of smoky black shadow, one wearing a brimmed hat, standing at the foot of a bed in a dark bedroom, faint glowing eyes, edges dissolving. Clean edges on the white background, no background scenery beyond small props named here, no text, no labels.
+```
+
+**[ ] Echoes: HOAX (urban legends), sheet 2**  
+The Vanishing Hitchhiker, Bloody Mary, Jersey Devil, Black-Eyed Children, Mothman, Elevator Game.  
+Attach: the style image, battle/art/personas/dalnim.webp  
+Save as: `echoes-hoax-2.png`
+```
+A sheet of six Persona designs in a 3 columns × 2 rows grid on a plain white background, with clear empty space between every cell and nothing overlapping. Match the attached Persona art exactly: the same Persona 3 Reload official art style, painted rendering, line weight, lighting and level of detail, a dramatic full-body pose, each one a mythic being summoned as a Persona with a faint glowing blue Persona aura at its edges. Every cell is one full-body figure, centred and about the same height. Cell 1 (top left): The Vanishing Hitchhiker, a translucent young woman in a rain-soaked white dress with a thumb raised on a dark country road, headlights shining through her, rain, a lonely road sign. Cell 2 (top middle): Bloody Mary, a pale ghost woman in a tattered red Victorian gown reaching out of a cracked bathroom mirror, candle light, long dark hair, red tears, spooky but elegant. Cell 3 (top right): Jersey Devil, a winged creature with a horse-like head, bat wings, goat hooves, a forked tail and glowing red eyes, perched on a pine branch at night, screaming, pine forest. Cell 4 (bottom left): Black-Eyed Children, two pale children in old-fashioned hoodies standing at a front door at night, eyes completely black, polite blank smiles, porch light flickering, one small hand knocking. Cell 5 (bottom middle): Mothman, a tall grey-brown winged humanoid with huge moth wings patterned with eye spots and two big glowing red eyes, standing on a steel bridge girder at night, sparks of electricity. Cell 6 (bottom right): Elevator Game, a haunted elevator spirit: an open elevator car glowing red inside, a faceless woman in white standing in it, the floor buttons lit in the order 4 2 6 2 10, a red cross-shaped light beyond the doors. Clean edges on the white background, no background scenery beyond small props named here, no text, no labels.
+```
+
+**[ ] Echoes: Persona 3 (Japanese myth), sheet 1**  
+Zashiki-warashi, Kappa, Nekomata, Tengu, Shisa, Oni.  
+Attach: the style image, battle/art/personas/dalnim.webp  
+Save as: `echoes-p3-1.png`
+```
+A sheet of six Persona designs in a 3 columns × 2 rows grid on a plain white background, with clear empty space between every cell and nothing overlapping. Match the attached Persona art exactly: the same Persona 3 Reload official art style, painted rendering, line weight, lighting and level of detail, a dramatic full-body pose, each one a mythic being summoned as a Persona with a faint glowing blue Persona aura at its edges. Every cell is one full-body figure, centred and about the same height. Cell 1 (top left): Zashiki-warashi, a small child spirit with a bob haircut in a red kimono, rosy cheeks, holding a temari ball, peeking from behind a sliding paper door, tiny glowing footprints on tatami. Cell 2 (top middle): Kappa, a green turtle-shelled river imp with a beak and a water-filled dish on top of its head, webbed hands holding a cucumber, bowing politely on a riverbank, reeds and water. Cell 3 (top right): Nekomata, a mischievous cat woman standing on her hind legs with a forked double tail, cat ears, a short kimono, holding a paper lantern with blue ghost fire, sly grin. Cell 4 (bottom left): Tengu, a red-faced long-nosed tengu in yamabushi mountain-monk robes with a small black cap, black bird wings, tall one-toothed geta, waving a large feather fan that whips up a storm. Cell 5 (bottom middle): Shisa, a terracotta-orange Okinawan lion-dog guardian with a curly mane and a wide open fanged mouth, one paw on a ball, perched on a red-tiled rooftop. Cell 6 (bottom right): Oni, a huge red-skinned oni with two horns, wild hair, a tiger-skin loincloth, swinging a studded iron kanabo club, roasted beans bouncing off him. Clean edges on the white background, no background scenery beyond small props named here, no text, no labels.
+```
+
+**[ ] Echoes: Persona 3 (Japanese myth), sheet 2**  
+Raijin, Yuki-onna, Kaguya-hime, Daisoujou, Enma, Susano-o.  
+Attach: the style image, battle/art/personas/dalnim.webp  
+Save as: `echoes-p3-2.png`
+```
+A sheet of six Persona designs in a 3 columns × 2 rows grid on a plain white background, with clear empty space between every cell and nothing overlapping. Match the attached Persona art exactly: the same Persona 3 Reload official art style, painted rendering, line weight, lighting and level of detail, a dramatic full-body pose, each one a mythic being summoned as a Persona with a faint glowing blue Persona aura at its edges. Every cell is one full-body figure, centred and about the same height. Cell 1 (top left): Raijin, a muscular blue-grey thunder god with horns and wild hair riding a black storm cloud, a ring of taiko drums arched on his back, drumsticks raised, lightning everywhere. Cell 2 (top middle): Yuki-onna, a pale snow woman with very long black hair in a white kimono that fades into falling snow, blue lips, breathing a white frost mist, a snowstorm around her. Cell 3 (top right): Kaguya-hime, a moon princess in a layered Heian-era junihitoe kimono and a robe of white feathers, long black hair, floating up out of a glowing cut bamboo stalk toward a full moon. Cell 4 (bottom left): Daisoujou, a serene mummified Buddhist monk seated in lotus position in rich gold and green robes and a tall hat, prayer beads in his hands, a soft halo, temple incense smoke. Cell 5 (bottom middle): Enma, a stern red-faced king of hell in Chinese-style judge’s robes and a square official’s crown with the character for king, holding a ledger and a flat baton, seated behind a judgement desk. Cell 6 (bottom right): Susano-o, a wild-haired storm god in ancient Japanese armor and a flowing cape, holding the sword Kusanagi high, storm winds and rain, the shadow of an eight-headed serpent behind him. Clean edges on the white background, no background scenery beyond small props named here, no text, no labels.
+```
+
+**[ ] Echo: Samjogo, the secret one** *(optional)*  
+The reward for registering every Echo.  
+Attach: the style image  
+Save as: `echo-samjogo.png`
+```
+One Persona design, full body, centred on a plain white background, no text. Match the attached Persona art exactly: the same Persona 3 Reload official art style, painted rendering, line weight, lighting and level of detail, a dramatic pose, a faint glowing blue Persona aura at its edges. Samjogo: a majestic black three-legged crow with glossy feathers edged in gold, wings spread inside a blazing golden sun disc, each of its three feet gripping a different charm: a gold bell, a jade ring on a red cord, and a star pin. Regal, warm and a little otherworldly, the rarest Persona in the game.
+```
+
 
 ---
 
