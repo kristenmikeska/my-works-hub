@@ -1183,7 +1183,7 @@
     ] },
 
     { after: '2/19', title: '13: soft rice', place: 'Kirijo Guesthouse', time: 'Evening', music: 'dorm', scene: [
-      { n: "The Kirijo guesthouse by the station had a lobby like a hotel that had forgotten it was one, all good carpet and nobody at the desk, and past the lobby a kitchen the boys weren't supposed to use after eight, and at a quarter past eight the light was on in it and something was steaming and Mark was standing over the rice cooker with a wooden paddle held in both hands like a man waiting to be knighted." },
+      { n: "The Kirijo guesthouse by the station had a lobby like a hotel that had forgotten it was one, all marble and polished wood and nobody at the desk, and past the lobby a kitchen the boys weren't supposed to use after eight, and at a quarter past eight the light was on in it and something was steaming and Mark was standing over the rice cooker with a wooden paddle held in both hands like a man waiting to be knighted." },
       { s: 'mark', f: 'neutral', t: "Okay. Don't come in loud. It's resting. You have to let it rest. Mrs. Kanda says if you open it early it knows." },
       { n: "Mrs. Kanda was the guesthouse's cook, a small woman of about seventy with a cardigan buttoned to the neck and a face like a closed purse, and she was sitting on a stool in the corner with a cup of tea, supervising, and when Solar came in she looked her up and down once and went back to her tea, which Solar had a feeling was a compliment." },
       { s: 'mark', f: 'flustered', t: "I complained about the rice. On the first night. I told you that, right? That it was way too soft. I said it to Fuuka, I said it to Jaehyun, I said it to basically everyone." },

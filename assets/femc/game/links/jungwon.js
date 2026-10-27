@@ -970,7 +970,7 @@
           { n: "He explained limits with the croissant. As the knife approached the edge of the plate, he said, and stopped the knife a hair from the rim, and made her say what happened, and she said it, and he said *yes,* very quietly, the way he said it when she'd done something right, and Jihoon reached over and ate the limit." }
         ] },
         { t: "(Sit on Jihoon. Gently. He'll do page two-twelve.)", notes: 3, then: [
-          { n: "She sat on him. Not gently. He made a noise like a deflating mattress and the textbook slid off his chest onto the carpet, and Cherry, without looking up from her nails, said *good*." },
+          { n: "She sat on him. Not gently. He made a noise like a deflating mattress and the textbook slid off his chest onto the marble, and Cherry, without looking up from her nails, said *good*." },
           { s: 'jihoon', f: 'surprised', t: "I'm being MURDERED. In a LOBBY. In front of a PALM." },
           { s: 'jungwon', f: 'happy', t: "That's very effective. Thank you, Solar. Please get off him now." },
           { n: "He said it so pleasantly, so sweetly, with both dimples, that she got off at once. Jihoon, rubbing his ribs, looked from the dimples to her and back with the dawning delight of a man who'd found something he could use." },

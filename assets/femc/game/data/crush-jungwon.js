@@ -234,8 +234,8 @@
 
     /* ── Shared (November into December): the guesthouse lobby, and the committee. Sunoo nearly says it. ── */
     { id: 'cr-jw-committee', who: 'jungwon', crush: J(P.ASKED), slot: 'evening', after: '11/9', until: '12/20', events: ['a4-yeobos'],
-      place: 'Kirijo Guesthouse', time: 'Evening', bg: 'kirijo-guesthouse-night', cast: { niki: 'Niki' }, scene: [
-        { n: "Mitsuru had given her an envelope for *Yang-san*, forms to sign, and the guesthouse lobby at eight was warm and smelled of new tatami and somebody's instant noodles, and at the low table under the lamp there was a card game going that had clearly stopped being about the cards some time ago." },
+      place: 'Kirijo Guesthouse', time: 'Evening', bg: 'kirijo-guesthouse-lobby', cast: { niki: 'Niki' }, scene: [
+        { n: "Mitsuru had given her an envelope for *Yang-san*, forms to sign, and the guesthouse lobby at eight was warm and smelled of floor polish and somebody's instant noodles, and at the low table under the lamp there was a card game going that had clearly stopped being about the cards some time ago." },
         { s: 'sunoo', f: 'happy', t: "Solar! He's upstairs. He's ironing. He irons on Thursdays." },
         { s: 'niki', t: "He irons every day. On Thursdays he irons the stuff he already ironed on Monday." },
         { s: 'sunoo', f: 'happy', t: "Sit, sit! He'll be down in a minute. Niki, put your phone away." },
@@ -282,7 +282,7 @@
               { n: "He was a terrible liar to people he liked. She'd been told that. She hadn't known until now that it was the nicest thing about him." }
             ] },
             { t: "(Deal yourself in. Leave him the seat beside you.)", crush: WARM(1), then: [
-              { n: "She sat down at the low table and picked up a hand, and moved over, and left a space on the tatami beside her exactly one person wide, and didn't look at it, and Jungwon looked at it for a long moment from the bottom of the stairs, and then came and sat in it, very straight, as though he'd been called to the front of a room." },
+              { n: "She sat down at the low table and picked up a hand, and moved over, and left a space on the rug beside her exactly one person wide, and didn't look at it, and Jungwon looked at it for a long moment from the bottom of the stairs, and then came and sat in it, very straight, as though he'd been called to the front of a room." },
               { s: 'sunoo', f: 'happy', t: "Oh, I'm going to cry. Somebody deal. I'm going to cry and somebody has to deal." }
             ] },
             { t: "(Give him the envelope. Say goodnight.)", then: [

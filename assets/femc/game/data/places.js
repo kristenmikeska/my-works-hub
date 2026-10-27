@@ -229,8 +229,9 @@ window.FEMC_GAME_PLACES = {
     ['Kirijo Flat', 'kirijo-flat', 'kirijo-flat'], // the small flat by the station (Sebastian's friends); night-lit art
     ['Kirijo Guesthouse · Front', 'elegant-buildingentrance', 'kirijo-guesthouse-front-night'],
     ['Kirijo Guesthouse · Roof', 'rooftop-citynight', 'kirijo-guesthouse-roof-night'],
-    ['Kirijo Guesthouse', 'hotel-lobby', 'kirijo-guesthouse-night'],
-    ['Iwatodai Station · Kirijo Guesthouse', 'hotel-lobby', 'kirijo-guesthouse-night'],
+    ['Kirijo Guesthouse · Common Room', 'hotel-lobby', 'kirijo-guesthouse-night'], // the lounge (old night art)
+    ['Kirijo Guesthouse', 'hotel-lobby', 'kirijo-guesthouse-lobby'], // the lobby: Kat's night-lit art (batch 57)
+    ['Iwatodai Station · Kirijo Guesthouse', 'hotel-lobby', 'kirijo-guesthouse-lobby'],
     ['Iwatodai Station · Overpass', 'iwatodai-station-overpass'],
     ['Iwatodai Station · Monorail', 'train-car-inside'],
     ['Iwatodai Station · Platform', 'station-platform-day', 'station-platform-night'],

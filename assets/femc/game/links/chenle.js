@@ -602,6 +602,7 @@
     ] },
 
     { after: '12/29', title: '7: the house', place: 'Kirijo Guesthouse', time: 'Evening', music: 'joy', scene: [
+      { bg: 'kirijo-guesthouse-night' }, // the lounge, not the lobby (batch 57)
       { n: "The guesthouse lounge in winter break was a lot of people who'd never have shared a room at home sharing a room, and pretending it was normal, and doing it badly, and doing it every night. Jaemin had the television, as he always had the television, and had drawn a karaoke bracket on a sheet of paper taped to its frame, sixteen names, most of whom had not agreed to be on it. Minji was at the window with her camera, filming the frost come in at the corners of the glass. Jaehyun was in the one good armchair with a book on the history of the city that Mitsuru had lent him, reading it like it owed him money." },
       { ifEvent: 'a4-light-on', then: [
         { n: "Danielle had the dining table at the far end. She'd covered half of it with the guesthouse's grocery receipts in neat overlapping rows, like scales, and a ledger open in front of her, and a highlighter laid parallel to the ledger's edge, and she looked up when Solar came in, and smiled, pleasantly, and wrote something down." }

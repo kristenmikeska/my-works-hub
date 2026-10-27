@@ -574,7 +574,7 @@
           { n: "She said it to the hem, and Solar let it go, the way you let go of a rope you can tell someone else is holding on the other end." }
         ] }
       ] },
-      { n: "When it was done he stood on the chair in the middle of the guesthouse lobby in a December jacket, turning slowly for the desk lady, who applauded, and for Hyein, who didn't, who just sat back on her heels on the carpet and looked at what she'd made with her whole face, all of it, nothing arranged." },
+      { n: "When it was done he stood on the chair in the middle of the guesthouse lobby in a December jacket, turning slowly for the desk lady, who applauded, and for Hyein, who didn't, who just sat back on her heels on the rug and looked at what she'd made with her whole face, all of it, nothing arranged." },
       { s: 'jaemin', f: 'happy', t: "Businesswoman. I respect it." },
       { s: 'hyein', f: 'happy', t: "Pay the second half by Friday, my lord." }
     ] },

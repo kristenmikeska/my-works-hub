@@ -13739,6 +13739,217 @@
       "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-emo; source unchanged",
       "placement": "Wardrobe weapon skin wpn-emo: listed in ready.js weapons; menu.js Equipment weapon slot",
       "outputSha256": "d3aba33d7c76336be18c88cec8a71e553269fa3646f311128e502ed15911f317"
+    },
+    {
+      "batch": 57,
+      "source": "skin-sk-aigis-uniform-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-aigis-uniform-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "741b8b436295bfb960281d0bb426f7c1b64f5dec4621332de99a83ab73e27505",
+      "status": "integrated",
+      "character": "aigis",
+      "destination": "assets/femc/game/art/skins/sk-aigis-uniform/aigis-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-aigis-uniform aigis; source unchanged",
+      "placement": "Wardrobe outfit sk-aigis-uniform: listed in ready.js, in the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "0f68da059f9532fe4d483f73496f9883d0a061da5e62017afe6521678cae425c",
+        "fc5ac2d3c51ee8b5b2c9998f20aa6f7c8b1f0938bae032600838ba199eae9569",
+        "69e2265d842a7ebed2ed9e343eb3ee75d28a57b029a6e3d86dbe577217f852c5",
+        "1997df85fc744359dc1443d69d4c0d60a18d6ca756c3f917064c987d965c763f",
+        "4c4e680aa17879b241e4ef16cafd6cdfda1d0b784e7b46a4577daf13467e99d9",
+        "ebd3ed6f7616a58ff75eedccb2d75573dc7da9b537d7030148089130e5521c81"
+      ]
+    },
+    {
+      "batch": 57,
+      "source": "skin-sk-jihoon-pilates-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-jihoon-pilates-posesheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "03ba9aa4747f9a28af3cbde39c7c82dcfeaa3bf3174428fc8aca133a6c7e8bea",
+      "status": "integrated",
+      "character": "jihoon",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-pilates/jihoon-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-jihoon-pilates jihoon; source unchanged",
+      "placement": "Wardrobe outfit sk-jihoon-pilates (figure ~6% shorter than his own sheet; no size factor yet): listed in ready.js, in the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "f9722a6afb4976727b61f49de3a917616899841cd515f34a642ab24c439e1b4d",
+        "57d667921e9df55338ef7569776c85dde12d901a7227ebdbb656de1a9bec32d8",
+        "398cba96c6040a119e29a7f118f2e4303c08c9580dc7f8ebe50f4c1f92549ce7",
+        "e367733e374151b859f357b9d5ffaca9a2053c6af910862de44c1b705f6d0f14",
+        "2e67435534e7fd264fbbaa1f8a299c489d707df75da82fb44532e0b5d06c6402",
+        "1ef6156e35ec34b236e1c1a233a648b42a0d323ebfe9932dee3344d079edccc4"
+      ]
+    },
+    {
+      "batch": 57,
+      "source": "skin-sk-minji-crew-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-minji-crew-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6858849c1920745616c4c35dc7ad2856fb432c7b1468333ece967c7f184b44ee",
+      "status": "integrated",
+      "character": "minji",
+      "destination": "assets/femc/game/art/skins/sk-minji-crew/minji-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-minji-crew minji; source unchanged",
+      "placement": "Wardrobe outfit sk-minji-crew: listed in ready.js, in the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "a2529edffe8878c9f500163c4d0727db65d8d5f1d75b3b95476768142fe6bd85",
+        "c72a5b15d83dda123f9c0e54dccb43013530613a1da7835d73edd9449bc6b920",
+        "74f7f7f6a79233110ad8bc8e3177cc8e9005721e9de4c7db829f59e5fc4606b4",
+        "cf0bc967b8bab90e9ec4fb8381f1f2bc7517c9d1c96532d13de1fb2c80dfcc33",
+        "7b45128f71cb916011337ea89caec55e38144383fa65d976c6ea9a29d7bf3cb5",
+        "700edc80dc6a11983675dba1dad60ca6740c68661f4f666719a8867ccc4211b3"
+      ]
+    },
+    {
+      "batch": 57,
+      "source": "skin-sk-jihoon-emo-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-jihoon-emo-posesheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "470e403a11907812c81c2392a705a39ad78cd2614061a53bc3cdeaacaf76c60b",
+      "status": "integrated",
+      "character": "jihoon",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-jihoon-emo jihoon; source unchanged",
+      "placement": "Wardrobe outfit sk-jihoon-emo (new item, Kat's own: Emo Night, SR): listed in ready.js, in the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "884d29ac304753deae81f82064f85b280faa65cccbf9265536939234f9a8cbb0",
+        "9135edee57afb84eb8587b0fb8a9e026c2aced9a630ea24cb803037648eda5fe",
+        "e96f24ca0979fd7923c1fc161bd228063f512e0735301e055d7ff09f83dbea4c",
+        "76360c5e367d042e908c93926d38126587d9cab55bbd4e15759f679f14eccb52",
+        "ae56c59fd9e997f159f0aa094b10a660f3c1cb284b12930b06cb2b9fe9b573a9",
+        "cb6ccaa9c1fbb10a60b1315202f095c32cd648ee9f714eb88140fc637310ad0f"
+      ]
+    },
+    {
+      "batch": 57,
+      "source": "skin-sk-minji-su-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-minji-su-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c963d0b9efbbce8737b3bf2cb095f82787ff79f96fc26f96d3a1355c1b32ab96",
+      "status": "integrated",
+      "character": "minji",
+      "destination": "assets/femc/game/art/skins/sk-minji-su/minji-pose-0..5.webp",
+      "conversion": "python3 tools/femc-wardrobe.py skin <sheet> sk-minji-su minji; source unchanged",
+      "placement": "Wardrobe outfit sk-minji-su (new item, Kat's own: SU Crewneck, SR; a navy SU sweatshirt, not a school uniform): listed in ready.js, in the Boutique pool and its banner's featured list",
+      "outputSha256": [
+        "4211f693ef001cb8ac021925bcb708cc9dbf5af2b1a261bed2c82405855e9f97",
+        "7f1b38ff7021134568264166dc661922ebfb8a76a3d40207a1c0a94ec7732511",
+        "afcb7bb8fa1b9dac358a094c50e9bcf546e4411c222b5ffd0a963454a7118883",
+        "42683db91475924a31873d15215ffef65363e1df5957d5f41634771373c63445",
+        "48c090357acfbb28d30bbefae7de4792b03096a89493a9792795e4347698d026",
+        "31adce5cf2d986308f6387d9dede30515f567c23aaa0e7b972ed74f17f3bfbcd"
+      ]
+    },
+    {
+      "batch": 57,
+      "source": "skin-wpn-akihiko-champ.png",
+      "sourceNow": "Added to Game/skin-wpn-akihiko-champ.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e26b1f35094077f045c212c389a25ef47d30c4cd8643a8f9af12e104d94987f4",
+      "status": "integrated",
+      "character": "akihiko",
+      "destination": "assets/femc/game/art/skins/wpn-akihiko-champ/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-akihiko-champ; source unchanged",
+      "placement": "Wardrobe weapon skin wpn-akihiko-champ: listed in ready.js weapons; menu.js Equipment weapon slot",
+      "outputSha256": "181557d415847f7f09a57733165c3451490bfec2513253a49cc3f51c62cae7e5"
+    },
+    {
+      "batch": 57,
+      "source": "skin-wpn-hoax.png",
+      "sourceNow": "Added to Game/skin-wpn-hoax.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "46d987210045fce746296693343f0b88d1158a1cae2b4d4d71d20300dae60a4a",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/wpn-hoax/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-hoax; source unchanged",
+      "placement": "Wardrobe weapon skin wpn-hoax: listed in ready.js weapons; menu.js Equipment weapon slot",
+      "outputSha256": "cbdb70118989f35280ca0102f108188d909870f4306400d496b8e3de04723108"
+    },
+    {
+      "batch": 57,
+      "source": "skin-wpn-jungwon-council.png",
+      "sourceNow": "Added to Game/skin-wpn-jungwon-council.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "fa0aaabb8296ec852dd396142ffa4bdca317bcb172fb49eb8ca422c08e16495d",
+      "status": "integrated",
+      "character": "jungwon",
+      "destination": "assets/femc/game/art/skins/wpn-jungwon-council/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-jungwon-council; source unchanged",
+      "placement": "Wardrobe weapon skin wpn-jungwon-council: listed in ready.js weapons; menu.js Equipment weapon slot",
+      "outputSha256": "524e2ed033581d20f59044d8e2d0ecf416e93bff313e89dea32367c0dccae13c"
+    },
+    {
+      "batch": 57,
+      "source": "skin-wpn-runners.png",
+      "sourceNow": "Added to Game/skin-wpn-runners.png",
+      "size": [
+        840,
+        1872
+      ],
+      "sha256": "ae1b71fb0d7817558ff6344c800e21c1dea9866ab603b64de2a48da072251ca8",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/wpn-runners/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-runners; source unchanged",
+      "placement": "Wardrobe weapon skin wpn-runners: listed in ready.js weapons; menu.js Equipment weapon slot",
+      "outputSha256": "bb284a26b08c76e7cca830c7b1c5386cf31d3766655a9bf75efd7f72c7357a04"
+    },
+    {
+      "batch": 57,
+      "source": "skin-wpn-strangers.png",
+      "sourceNow": "Added to Game/skin-wpn-strangers.png",
+      "size": [
+        840,
+        1872
+      ],
+      "sha256": "bff03887fa3f59c89b5cbdcdc12dd8c1a881f88fa56cf7eef7d8f85a5d9bc78e",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/wpn-strangers/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-strangers; source unchanged",
+      "placement": "Wardrobe weapon skin wpn-strangers: listed in ready.js weapons; menu.js Equipment weapon slot",
+      "outputSha256": "2d1b1416858d550f8ee5ad2190cfa68e382d90a71e2cad1928693674d9408620"
+    },
+    {
+      "batch": 57,
+      "source": "kirijo-guesthouse-new.png",
+      "sourceNow": "Added to Game/kirijo-guesthouse-new.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "bb3bd4ed106afd04e17ca4ac8c2893b879fead19f930d1ea95a0e5156103fb26",
+      "status": "integrated",
+      "character": "Kirijo Guesthouse",
+      "destination": "assets/femc/bg/kirijo-guesthouse-lobby.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (fit to 1920x1072, WebP); source unchanged",
+      "placement": "places.js: evening image of the 'Kirijo Guesthouse' and 'Iwatodai Station · Kirijo Guesthouse' rules (Kat: it replaces the lobby); the old kirijo-guesthouse-night stays on disk and for the Common Room rule, the window-seat scenes and Chenle's rank 7 lounge; crush-jungwon cr-jw-committee and living-jaemin friendsgiving bg now the lobby",
+      "outputSha256": "a4f64f2abe60eedff5e78bd4462e7ede9113a475b3bbb34dad8a1a4ded742325"
     }
   ],
   "batch1Validation": {
@@ -14515,5 +14726,19 @@
     ],
     "html": "ART_V 33, battle.js v56, shadows/index.js v13, battle/data.js v34 (both pages), ready.js v6, portraits/index.js v135, scale.js v144 (FEMC_PORTRAIT_V 4), FEMC_ASSET_VERSION 136 and femc-mode.js v102 on all 12 pages",
     "browserErrors": 0
+  },
+  "batch57Validation": {
+    "date": "2026-10-27",
+    "scope": "three party pose sheets, Kat's two new searcher outfits (sk-jihoon-emo, sk-minji-su: added to cosmetics.js), five weapon skins, and Kat's replacement guesthouse lobby",
+    "sourcesInspected": "all 11 viewed; frames and weapons on a contact sheet",
+    "sourcesIntegrated": 11,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked)",
+    "textTweaks": "cosmetics.js: Film Crew and Council Rapier descriptions matched to the art; guesthouse lobby floor matched to the art (mark.js 'all good carpet' -> 'all marble and polished wood', jungwon.js 'onto the carpet' -> 'onto the marble', jaemin.js 'on the carpet' -> 'on the rug', crush-jungwon.js 'new tatami' -> 'floor polish', 'on the tatami' -> 'on the rug')",
+    "tests": [
+      "python3 tests/femc_cosmetics.py --only pending,party,newpending,banner (one run, Kat's laptop low on memory; other suites not run)"
+    ],
+    "notTested": "the guesthouse lobby in a live scene (no screenshot), femc_living / femc_spice / cast checks for the edited scene files, the new outfits in a real battle",
+    "html": "femc-game.html places v42, living-jaemin v4, crush-jungwon v2, jungwon v15, mark v11, jaemin v4, chenle v4, ready.js v7, cosmetics.js v8"
   }
 }

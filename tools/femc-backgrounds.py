@@ -61,6 +61,8 @@ EXTRA = {
     'station-concourse-busy': 'Added to Game/iwatodaistationconcourse-busy.jpeg',
     'kirijo-guesthouse-night': 'Added to Game/kirijo-guesthouse.jpeg',
     'kirijo-guesthouse-roof-night': 'Added to Game/kirijo-guesthouse-roof.jpeg',
+    # batch 57: Kat's replacement guesthouse lobby (night-lit); kirijo-guesthouse-night stays for the lounge and window-seat scenes
+    'kirijo-guesthouse-lobby': 'Added to Game/kirijo-guesthouse-new.png',
     'paulownia-karaoke': 'Added to Game/paulownia-karaoke.jpeg',
     'port-island-konbini-night': 'Added to Game/port-island-konbini.jpeg',
     'port-island-pier': 'Added to Game/port-island-pier.jpeg',

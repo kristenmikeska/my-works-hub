@@ -54,7 +54,7 @@
 
   /* ── B) Holidays ── */
   J.holidays = { ...(J.holidays || {}),
-    '11/23': { rank: 1, slot: 'evening', title: 'friendsgiving', place: 'Kirijo Guesthouse', time: 'Evening', bg: 'kirijo-guesthouse-night', music: 'joy',
+    '11/23': { rank: 1, slot: 'evening', title: 'friendsgiving', place: 'Kirijo Guesthouse', time: 'Evening', bg: 'kirijo-guesthouse-lobby', music: 'joy',
       ask: "solar lee. its labor thanksgiving day. i dont know what that is. ive decided its thanksgiving. FRIENDSGIVING. guesthouse lobby. 6. bring a dish or ur heart",
       yes: 'im bringing rice. its the only dish i trust', ok: 'perfect. rice is a love language 🍗', sorry: 'cant tonight, sorry!!', no: 'ok 💔 ill save u a plate. a big one',
       scene: [
