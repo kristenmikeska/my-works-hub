@@ -1,6 +1,6 @@
 # Art to make
 
-**59 items:** 1 place · 22 character pieces · 25 battle · 1 screen · 10 wardrobe and keychains. 7 are ⭐, 46 are optional.
+**44 items:** 1 story CG · 1 place · 22 character pieces · 9 battle · 1 screen · 10 wardrobe and keychains. 8 are ⭐, 30 are optional.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -22,7 +22,6 @@
 | Evoker sheets | `solar-evoker-animation.png` |
 | Full bodies | `CherryFullBody.png` |
 | Wren's Shadow | `battle/art/shadows/wren-shadow-last-train.webp` |
-| Effect variants | `pierce.png` |
 | Weapons and keepsakes | `SolarWeapons.png` |
 | Dark Hour still | `title/keyart.webp` |
 | Outfit pose sheet | `solar-posesheet.png` |
@@ -34,7 +33,14 @@ Places, expressions, outfit portraits, books and the items that name their own p
 
 ## 1. Story CGs (ChatGPT)
 
-Nothing left to make here.
+**[ ] ⭐ The cupboard (Haechan, romance)**  
+Haechan's cupboard-under-the-stairs late night, for the moment they freeze when someone stops on the stairs.  
+Attach: the style image, Solar, Haechan  
+Save as: `romance-haechan-cupboard.png`
+```
+Match the art style of the FIRST attached image exactly; use the other attached images only for the characters' faces, hair and clothes. Persona 3 Reload event CG, 16:9, no text. A cramped, slant-roofed cupboard under a wooden staircase in a school dorm at night, almost dark: one thin stripe of warm yellow hall light falls through the gap of a door that isn't quite shut. The low ceiling is the underside of the stairs, slanting down. Crowded around them: old umbrellas, a broken vacuum cleaner, and a cardboard box labelled XMAS in neat handwriting with DO NOT scrawled underneath, spilling tinsel. Solar (very long straight black hair, a soft oversized knit sweater, no armband) has her back against the slanted stair wood. Haechan (a dark hoodie, hood half off) presses close in front of her, one hand flat on the wood above her head, his face buried at her collarbone. Both are completely frozen mid-moment, eyes wide, holding their breath, looking up. Just above them, through the gaps between the wooden steps, a pair of fuzzy slippers stands on one stair, mid-step. Strands of tinsel are caught in both of their hair. Mood: breathless, steamy and very funny at the same time, the exact second before they get caught.
+```
+
 
 ---
 
@@ -312,136 +318,6 @@ Attach: theurgy-solar-haenimunveiled.png
 Save as: `solar-unveiled-strikesheet.png`
 ```
 A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
-```
-
-### Effect variants (ChatGPT)
-
-**[ ] Almighty: critical** *(optional)*  
-Almighty critical hits get their own burst (the heavy one is in).  
-Attach: almighty.jpeg, the style image  
-Save as: `almighty-crit.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a single pin-point of light in frame 2 that detonates into a perfect white ring with a rainbow-tinted edge. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Solar, sun fire** *(optional)*  
-Solar's own look for these spells.  
-Attach: fire-v2.jpeg, the style image  
-Save as: `fire-solar.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: the fire is a small sun: a gold-white disc with flame petals and thin sun rays, pink (#ff4f9e) at the flame tips, a ring of tiny gold pins and ribbons in frame 4. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Solar, sunrise light** *(optional)*  
-Solar's own look for these spells.  
-Attach: light-v2.jpeg, the style image  
-Save as: `light-solar.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a sunrise: a half-sun rising behind a flat line of light, gold and blush pink, rays sweeping up and out. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Haechan, moon dark** *(optional)*  
-Haechan's own look for these spells.  
-Attach: dark.jpeg, the style image  
-Save as: `dark-haechan.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a crescent moon of violet light cutting through the tendrils, silver-white highlights, a thin eclipse ring. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Haechan, static** *(optional)*  
-Haechan's own look for these spells.  
-Attach: elec.jpeg, the style image  
-Save as: `elec-haechan.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: violet and white static instead of yellow, crackling around a crescent moon outline, small knife-shaped sparks. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Akihiko, lightning punch** *(optional)*  
-Akihiko's own look for these spells.  
-Attach: elec.jpeg, the style image  
-Save as: `elec-akihiko.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a fist-shaped burst of yellow-white lightning with three fast jab streaks, pink-red sparks. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Mitsuru, rose ice** *(optional)*  
-Mitsuru's own look for these spells.  
-Attach: ice.jpeg, the style image  
-Save as: `ice-mitsuru.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: ice crystals blooming like a rose, deep red (#ff5b5b) light inside the clear ice, petals of frost. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Jungwon, jade frost** *(optional)*  
-Jungwon's own look for these spells.  
-Attach: ice.jpeg, the style image  
-Save as: `ice-jungwon.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: jade-green and pale blue ice in a hexagon shell pattern like a tortoise shell, a thin gold thread winding through it. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Yukari, pink gale** *(optional)*  
-Yukari's own look for these spells.  
-Attach: wind-v2.jpeg, the style image  
-Save as: `wind-yukari.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: pink and white wind with heart-shaped gusts and feather shapes. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Jihoon, goblin gale** *(optional)*  
-Jihoon's own look for these spells.  
-Attach: wind-v2.jpeg, the style image  
-Save as: `wind-jihoon.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a blue-and-cyan gale with blue goblin-fire wisps (dokkaebi flames) riding it, a small star sparkle at the peak. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Junpei, home-run fire** *(optional)*  
-Junpei's own look for these spells.  
-Attach: fire-v2.jpeg, the style image  
-Save as: `fire-junpei.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a fireball streaking in with a baseball's stitched seam drawn in white light, exploding in frame 3. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Koromaru, hellhound fire** *(optional)*  
-Koromaru's own look for these spells.  
-Attach: fire-v2.jpeg, the style image  
-Save as: `fire-koromaru.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: dark red and orange fire shaped like three snapping dog heads, then paw-print embers. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Minji, film light** *(optional)*  
-Minji's own look for these spells.  
-Attach: pierce.png, the style image  
-Save as: `pierce-minji.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: arrows of soft gold-white light with a film-strip edge pattern, a lens flare ring at the peak. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Aigis, tracer fire** *(optional)*  
-Aigis's own look for these spells.  
-Attach: pierce.png, the style image  
-Save as: `pierce-aigis.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: golden tracer rounds in a tight spread with blue butterfly-shaped sparks at the impact. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Ken, justice spear** *(optional)*  
-Ken's own look for these spells.  
-Attach: elec.jpeg, the style image  
-Save as: `elec-ken.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a single straight spear of lightning from above, orange-white (#ffb36b), with a ring at the impact. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Shinjiro, Castor's charge** *(optional)*  
-Shinjiro's own look for these spells.  
-Attach: strike.jpeg, the style image  
-Save as: `strike-shinjiro.png`
-```
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a dark red (#c43b3b) charging impact with heavy horizontal speed streaks, like something enormous hit at full gallop. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
 ```
 
 ---
