@@ -36,7 +36,7 @@ window.FemcBonds = (() => {
   const P = (el, power, o = {}) => Object.assign({ by: 'partner', el, power }, o);
   /* Kat's bond stills (tools/femc-theurgy.py cutin; BUILD lists the sources). battle.js doesn't version bond art, so the ?v= is
      here: bump it with ART_V when a still changes. focus: between the two faces, set so both stay in the phone band. */
-  const BA = slug => `assets/femc/battle/art/theurgy/${slug}.webp?v=27`;
+  const BA = slug => `assets/femc/battle/art/theurgy/${slug}.webp?v=31`;
   const BONDS = [
     // ── Romances: special combos, and a special version on the romance route
     { id: 'akihiko', partner: 'akihiko', romance: true, loveFace: 'blushing', img: BA('bond-akihiko'), focus: [55, 24], look: ['elec', 'sun'], colors: ['#ff4f9e', '#ff9a3d'],
@@ -83,7 +83,13 @@ window.FemcBonds = (() => {
           line: ['Stay back. I’ll make the openin’.', 'I’ll make it count.'], desc: 'Castor runs one foe down, then Solar’s light sweeps the field and the party heals a little.' },
         { rank: 9, name: 'Castor at Daybreak', sp: 14, target: 'one', steps: [P('strike', 150, { crit: 20 }), S('light', 52, { target: 'all' })], after: { heal: 0.2 },
           line: ['Don’t get in front of me.', 'Then don’t make me.'], desc: 'A colossal charge at one foe, then light on every foe; the party heals.' }],
-      love: { rank: 9, name: 'Warm Hands', sp: 14, target: 'one', steps: [P('strike', 160, { crit: 25 }), S('light', 60, { target: 'all' })], after: { heal: 0.25, cure: true },
+      // Their romance Showtime (5A, batch 49): he feeds her, then gets in front of her. Its last panel is the short-version still.
+      love: { rank: 9, name: 'Warm Hands', img: BA('bond-shinjiro-love-show-4'), focus: [52, 30],
+        sequence: [{ src: BA('bond-shinjiro-love-show-1'), focus: [50, 28], ms: 900, say: [['partner', 'Careful. It’s hot.'], ['solar', 'You made enough for two.']] }, // faces at x 41% / 60%
+          { src: BA('bond-shinjiro-love-show-2'), focus: [48, 28], zoom: 1.1, ms: 760, say: ['partner', 'Stay behind me. …Please.'] }, // 39% / 58%
+          { src: BA('bond-shinjiro-love-show-3'), focus: [52, 30], hit: true, ms: 860, say: ['solar', 'With you. Now!'] }, // 42% / 62%
+          { src: BA('bond-shinjiro-love-show-4'), focus: [52, 30], pan: [0, 1.5], sfx: 'heal', say: [['partner', 'Your hands are freezin’.'], ['solar', 'Then keep them.']] }], // 44% / 59%
+        sp: 14, target: 'one', steps: [P('strike', 160, { crit: 25 }), S('light', 60, { target: 'all' })], after: { heal: 0.25, cure: true },
         line: ['Stay behind me. …Please.', 'Just this once.'], desc: 'Their own combination. A colossal charge, light on every foe, and the party heals and is cured.' } },
     { id: 'haechan', partner: 'haechan', romance: true, loveFace: 'flustered', img: BA('bond-haechan'), focus: [61, 27], look: ['elec', 'sun'], colors: ['#ff4f9e', '#ff9a3d'],
       // Rank 9 has its own still (ver3: the same pair, closer in); rank 15 keeps it. Corona keeps the romance still; Universe
@@ -129,11 +135,30 @@ window.FemcBonds = (() => {
           line: ['Shall we?', 'We shall.'], desc: 'Ice and light on every foe; every foe’s defense drops.' },
         { rank: 15, name: 'Unanimous', sp: 18, target: 'all', steps: [P('ice', 70, { ail: { id: 'freeze', chance: 0.3 } }), S('light', 66)], after: { debuffs: ['def', 'atk'] },
           line: ['All in favor?', 'Unanimous.'], desc: 'Heavier ice and light on every foe; every foe’s defense and attack drop.' }],
-      love: { rank: 9, name: 'Jade Ring', img: BA('bond-jungwon-love'), focus: [57, 27], sp: 16, target: 'all', steps: [P('ice', 64, { ail: { id: 'freeze', chance: 0.3 } }), S('light', 60)], after: { debuffs: ['def'], ward: 'solar' },
+      // Their romance Showtime (5A, batch 49): panel 1 is the Jade Ring still, which stays the short-version still; Signed in Full
+      // adds the pen (panel 5).
+      love: { rank: 9, name: 'Jade Ring', img: BA('bond-jungwon-love'), focus: [57, 27],
+        sequence: [{ src: BA('bond-jungwon-love'), focus: [54, 26], ms: 760, say: ['partner', 'Please stay where I can see you.'] }, // faces at x 47% / 60%
+          { src: BA('bond-jungwon-love-show-2'), focus: [58, 26], zoom: 1.1, ms: 860, say: [['partner', 'Your bow is crooked. Allow me.'], ['solar', 'Mid-fight? Really?']] }, // 48% / 72%
+          { src: BA('bond-jungwon-love-show-3'), focus: [50, 30], hit: true, ms: 860, sfx: 'ice', say: ['partner', 'Hyeonmu. Shield her.'] }, // 46% / 56%
+          { src: BA('bond-jungwon-love-show-4'), focus: [50, 28], pan: [0, 1.5], say: [['partner', 'I’m not letting go yet.'], ['solar', 'Good. Don’t.']] }], // 42% / 60%
+        sp: 16, target: 'all', steps: [P('ice', 64, { ail: { id: 'freeze', chance: 0.3 } }), S('light', 60)], after: { debuffs: ['def'], ward: 'solar' },
         line: ['Please stay where I can see you.', 'Formal, even now?'], desc: 'Their own combination. Ice and light on every foe, their defense drops, and the tortoise’s shell closes over Solar: nothing hurts her until her next turn.' },
-      love15: { rank: 15, name: 'Signed in Full', img: BA('bond-jungwon-love'), focus: [57, 27], sp: 18, target: 'all', steps: [P('ice', 74, { ail: { id: 'freeze', chance: 0.35 } }), S('light', 72)], after: { debuffs: ['def', 'atk'], ward: 'solar' },
+      love15: { rank: 15, name: 'Signed in Full', img: BA('bond-jungwon-love'), focus: [57, 27],
+        sequence: [{ src: BA('bond-jungwon-love'), focus: [54, 26], ms: 760, say: ['partner', 'Please stay where I can see you.'] }, // faces at x 47% / 60%
+          { src: BA('bond-jungwon-love-show-2'), focus: [58, 26], zoom: 1.1, ms: 860, say: [['partner', 'Your bow is crooked. Allow me.'], ['solar', 'Mid-fight? Really?']] }, // 48% / 72%
+          { src: BA('bond-jungwon-love-show-3'), focus: [50, 30], hit: true, ms: 860, sfx: 'ice', say: ['partner', 'Hyeonmu. Shield her.'] }, // 46% / 56%
+          { src: BA('bond-jungwon-love-show-4'), focus: [50, 28], ms: 860, say: [['partner', 'I’m not letting go yet.'], ['solar', 'Good. Don’t.']] }, // 42% / 60%
+          { src: BA('bond-jungwon-love-show-5'), focus: [50, 30], pan: [0, 1.5], say: [['partner', 'Together, then. In full.'], ['solar', 'Signed. Both of us.']] }], // 45% / 58%
+        sp: 18, target: 'all', steps: [P('ice', 74, { ail: { id: 'freeze', chance: 0.35 } }), S('light', 72)], after: { debuffs: ['def', 'atk'], ward: 'solar' },
         line: ['I read every word first.', 'Then sign it.'], desc: 'Their own combination, all the way: ice and light on every foe, their defense and attack drop, and the shell closes over Solar until her next turn.' } },
     { id: 'jihoon', partner: 'jihoon', romance: true, loveFace: 'happy-2', img: BA('bond-jihoon'), focus: [59, 23], look: ['wind', 'star'], colors: ['#ff4f9e', '#7dd3ff'],
+      // Showtime "Main Event" (5A, batch 49): the almighty Hoon takes the spotlight; Solar does the actual work. Panel 1 is the old still.
+      sequence: [{ src: BA('bond-jihoon'), focus: [56, 26], ms: 720, say: ['partner', 'Ladies and gentlemen… me!'] }, // faces at x 38% / 69%
+        { src: BA('bond-jihoon-show-2'), focus: [48, 24], zoom: 1.12, ms: 820, say: [['partner', 'Bow before the almighty Hoon!'], ['solar', 'Please get down.']] }, // 34% / 59%
+        { src: BA('bond-jihoon-show-3'), focus: [48, 30], ms: 640, say: ['solar', 'Keep posing. Don’t stop.'] }, // 33% / 62%
+        { src: BA('bond-jihoon-show-4'), focus: [48, 30], hit: true, ms: 860, sfx: 'wind', say: ['partner', 'And now, my grand finale!'] }, // 33% / 64%
+        { src: BA('bond-jihoon-show-5'), focus: [46, 30], pan: [0, 1.5], say: [['partner', 'Thank you, thank you!'], ['solar', 'Crown down, star boy.']] }], // 36% / 55%
       tiers: [
         { rank: 5, name: 'Star Power', sp: 14, target: 'all', steps: [P('wind', 46), S('almighty', 40)], after: { buffs: ['atk'] },
           line: ['Behold. Me. And Sol.', 'Mostly Sol.'], desc: 'Dokkaebi’s gale and Nike’s star on every foe; the party’s attack rises.' },
@@ -141,11 +166,29 @@ window.FemcBonds = (() => {
           line: ['Everybody watch. Everybody.', 'They’re watching, Jihoon.'], desc: 'A bigger gale and a brighter star; the party’s attack and defense rise.' },
         { rank: 15, name: 'Main Event', sp: 20, target: 'all', steps: [P('wind', 70), S('almighty', 64)], after: { buffs: ['atk', 'def', 'agi'] },
           line: ['Number one. Say it.', 'Number one. Now hit it.'], desc: 'The biggest gale and the brightest star on every foe; the party’s attack, defense and agility rise.' }],
-      love: { rank: 9, name: 'Royal Pair', sp: 18, target: 'all', steps: [P('wind', 66), S('almighty', 64)], after: { buffs: ['atk', 'def', 'agi'], th: 10 },
+      // Their romance Showtime (5A, batch 49): he gives her the paper crown; Coronation adds the gold one (panel 5).
+      love: { rank: 9, name: 'Royal Pair',
+        sequence: [{ src: BA('bond-jihoon-love-show-1'), focus: [46, 26], ms: 900, say: [['partner', 'Actually… this one’s yours.'], ['solar', 'Jihoon…?']] }, // faces at x 36% / 56%
+          { src: BA('bond-jihoon-love-show-2'), focus: [48, 26], zoom: 1.1, ms: 760, say: [['partner', 'Don’t worry. I made me one too.'], ['solar', 'Of course you did.']] }, // 40% / 56%
+          { src: BA('bond-jihoon-love-show-3'), focus: [46, 30], hit: true, ms: 860, sfx: 'wind', say: ['partner', 'Royal decree: kneel!'] }, // 37% / 55%
+          { src: BA('bond-jihoon-love-show-4'), focus: [48, 28], pan: [0, 1.5], say: [['partner', 'King and queen. Get used to it.'], ['solar', '…Fine. Just today.']] }], // 40% / 57%
+        sp: 18, target: 'all', steps: [P('wind', 66), S('almighty', 64)], after: { buffs: ['atk', 'def', 'agi'], th: 10 },
         line: ['Bow, peasants. To both of us.', 'Do NOT include me in this.'], desc: 'Their own combination. Wind and star on every foe; the party’s attack, defense and agility rise, and both Theurgy gauges fill a little.' },
-      love15: { rank: 15, name: 'Coronation', sp: 20, target: 'all', steps: [P('wind', 74), S('almighty', 72)], after: { buffs: ['atk', 'def', 'agi'], th: 15 },
+      love15: { rank: 15, name: 'Coronation',
+        sequence: [{ src: BA('bond-jihoon-love-show-1'), focus: [46, 26], ms: 900, say: [['partner', 'Actually… this one’s yours.'], ['solar', 'Jihoon…?']] }, // faces at x 36% / 56%
+          { src: BA('bond-jihoon-love-show-2'), focus: [48, 26], zoom: 1.1, ms: 760, say: [['partner', 'Don’t worry. I made me one too.'], ['solar', 'Of course you did.']] }, // 40% / 56%
+          { src: BA('bond-jihoon-love-show-3'), focus: [46, 30], hit: true, ms: 860, sfx: 'wind', say: ['partner', 'Royal decree: kneel!'] }, // 37% / 55%
+          { src: BA('bond-jihoon-love-show-4'), focus: [48, 28], ms: 800, say: [['partner', 'King and queen. Get used to it.'], ['solar', '…Fine. Just today.']] }, // 40% / 57%
+          { src: BA('bond-jihoon-love-show-5'), focus: [47, 30], pan: [0, 1.5], say: [['partner', 'Heavy, huh? Hold your side.'], ['solar', 'Always.']] }], // 36% / 58%
+        sp: 20, target: 'all', steps: [P('wind', 74), S('almighty', 72)], after: { buffs: ['atk', 'def', 'agi'], th: 15 },
         line: ['Crown’s heavy. Hold the other side.', 'Together, then. Show-off.'], desc: 'Their own combination, all the way: wind and star on every foe; the party’s attack, defense and agility rise, and both Theurgy gauges fill.' } },
     { id: 'minji', partner: 'minji', romance: true, loveFace: 'flustered', img: BA('bond-minji'), focus: [51, 23], look: ['light', 'sun'], colors: ['#ff4f9e', '#ffe6a8'],
+      // Showtime "Long Take" (5A, batch 49): Minji directs the attack like a film shoot. Panel 1 is the old still (panel 3's faces are Theia's and the Shadow's).
+      sequence: [{ src: BA('bond-minji'), focus: [52, 26], ms: 700, say: ['partner', 'Quiet on set, everyone.', 'l'] }, // faces at x 36% / 67%
+        { src: BA('bond-minji-show-2'), focus: [54, 28], zoom: 1.12, ms: 800, say: [['partner', 'Long Take, take one!', 'l'], ['solar', 'Ready for my close-up.', 'r']] }, // 36% / 72%
+        { src: BA('bond-minji-show-3'), focus: [40, 40], ms: 680, sfx: 'light', say: ['partner', 'Perfect. Dead center.', 'l'] }, // 25% / 53%
+        { src: BA('bond-minji-show-4'), focus: [50, 32], hit: true, ms: 860, say: ['solar', 'And… action!', 'r'] }, // 33% / 67%
+        { src: BA('bond-minji-show-5'), focus: [50, 30], pan: [0, 1.5], say: [['partner', 'Look! We got all of it.', 'l'], ['solar', 'Okay. That’s a keeper.', 'r']] }], // 41% / 58%
       tiers: [
         { rank: 5, name: 'Two-Shot', sp: 12, target: 'one', steps: [P('pierce', 34, { multi: [2, 2], crit: 10 }), S('light', 60)],
           line: ['I’ve got you in frame.', 'Then roll.'], desc: 'Two arrows from Theia and Solar’s light, all on one foe.' },
@@ -153,42 +196,85 @@ window.FemcBonds = (() => {
           line: ['Don’t cut. Keep going.', 'I wasn’t going to.'], desc: 'Three arrows and a heavy sunrise on one foe; the party heals a little.' },
         { rank: 15, name: 'Wide Release', sp: 18, target: 'one', steps: [P('pierce', 44, { multi: [3, 4], crit: 15 }), S('light', 96, { down: 0.5 })], after: { heal: 0.2 },
           line: ['Everybody’s going to see this one.', 'Then make it good.'], desc: 'Up to four arrows and the full sunrise on one foe; the party heals.' }],
-      love: { rank: 9, name: 'Keep This One', sp: 16, target: 'one', steps: [P('pierce', 42, { multi: [3, 3], crit: 15 }), S('light', 90, { down: 0.5 })], after: { heal: 0.2, buffs: ['agi'] },
+      // Their romance Showtime (5A, batch 49): looked at, not watched; Last Frame adds the sunrise (panel 5).
+      love: { rank: 9, name: 'Keep This One',
+        sequence: [{ src: BA('bond-minji-love-show-1'), focus: [52, 28], ms: 900, say: [['partner', 'Sorry. I’d rather just look.'], ['solar', 'At me?']] }, // faces at x 38% / 69%
+          { src: BA('bond-minji-love-show-2'), focus: [52, 26], zoom: 1.1, ms: 760, say: [['solar', 'Your turn. Smile!'], ['partner', 'Wait, I’m not ready!']] }, // 47% / 59%
+          { src: BA('bond-minji-love-show-3'), focus: [44, 30], hit: true, ms: 860, sfx: 'light', say: ['partner', 'Hold still. The light’s good.'] }, // 33% / 52%
+          { src: BA('bond-minji-love-show-4'), focus: [48, 28], pan: [0, 1.5], say: [['partner', 'This one I’m keeping.'], ['solar', 'Right over your heart?']] }], // 36% / 59%
+        sp: 16, target: 'one', steps: [P('pierce', 42, { multi: [3, 3], crit: 15 }), S('light', 90, { down: 0.5 })], after: { heal: 0.2, buffs: ['agi'] },
         line: ['Hold still. The light’s good.', 'Take the shot.'], desc: 'Their own combination. Three arrows and the sun on one foe; the party heals and gets faster.' },
-      love15: { rank: 15, name: 'Last Frame', sp: 18, target: 'one', steps: [P('pierce', 46, { multi: [3, 4], crit: 18 }), S('light', 104, { down: 0.6 })], after: { heal: 0.25, buffs: ['agi', 'atk'] },
+      love15: { rank: 15, name: 'Last Frame',
+        sequence: [{ src: BA('bond-minji-love-show-1'), focus: [52, 28], ms: 900, say: [['partner', 'Sorry. I’d rather just look.'], ['solar', 'At me?']] }, // faces at x 38% / 69%
+          { src: BA('bond-minji-love-show-2'), focus: [52, 26], zoom: 1.1, ms: 760, say: [['solar', 'Your turn. Smile!'], ['partner', 'Wait, I’m not ready!']] }, // 47% / 59%
+          { src: BA('bond-minji-love-show-3'), focus: [44, 30], hit: true, ms: 860, sfx: 'light', say: ['partner', 'Hold still. The light’s good.'] }, // 33% / 52%
+          { src: BA('bond-minji-love-show-4'), focus: [48, 28], ms: 860, say: [['partner', 'This one I’m keeping.'], ['solar', 'Right over your heart?']] }, // 36% / 59%
+          { src: BA('bond-minji-love-show-5'), focus: [48, 30], pan: [0, 1.5], say: [['solar', 'You’re missing the sunrise.'], ['partner', 'No, I’m not.']] }], // 37% / 58%
+        sp: 18, target: 'one', steps: [P('pierce', 46, { multi: [3, 4], crit: 18 }), S('light', 104, { down: 0.6 })], after: { heal: 0.25, buffs: ['agi', 'atk'] },
         line: ['Last take. Don’t look at the camera.', 'I’m looking at you.'], desc: 'Their own combination, all the way: arrows and the sun on one foe; the party heals and gets faster and stronger.' } },
     // ── Friendships: the S.E.E.S. members who fight
-    { id: 'yukari', partner: 'yukari', look: ['wind', 'sun'], colors: ['#ff4f9e', '#ff8cc0'],
+    { id: 'yukari', partner: 'yukari', img: BA('bond-yukari-show-4'), focus: [50, 30], look: ['wind', 'sun'], colors: ['#ff4f9e', '#ff8cc0'],
+      // Showtime "Second Opinion" (5A, batch 49): Yukari needs Solar’s honest opinion right now, Shadows or not. No still came before it, so its last panel is the short-version still.
+      sequence: [{ src: BA('bond-yukari-show-1'), focus: [52, 28], ms: 900, say: [['partner', 'Okay, red or white? Be honest.'], ['solar', 'Red. Obviously.']] }, // faces at x 40% / 63%
+        { src: BA('bond-yukari-show-2'), focus: [44, 26], zoom: 1.12, ms: 700, sfx: 'wind', say: ['partner', 'Seriously?! We were BUSY!'] }, // 31% / 55%
+        { src: BA('bond-yukari-show-3'), focus: [50, 30], hit: true, ms: 860, say: ['solar', 'Together, Yukari!'] }, // 41% / 59%
+        { src: BA('bond-yukari-show-4'), focus: [50, 30], pan: [0, 1.5], sfx: 'heal', say: [['partner', 'Everyone okay? Good.'], ['solar', 'Red. Still red.']] }], // 42% / 58%
       tiers: [
         { rank: 5, name: 'Morning Breeze', sp: 12, target: 'all', steps: [P('wind', 40), S('light', 40)], after: { heal: 0.3, cure: true },
           line: ['Everyone, hold still!', 'We’ve got you.'], desc: 'Io’s wind and Haenim’s light on every foe; the party heals 30% and is cured.' },
         { rank: 9, name: 'Sunlit Gale', sp: 16, target: 'all', steps: [P('wind', 54), S('light', 54)], after: { heal: 0.45, cure: true, buffs: ['def'] },
           line: ['Ready? Don’t miss.', 'Have I ever?'], desc: 'Stronger wind and light on every foe; the party heals 45%, is cured, and its defense rises.' }] },
-    { id: 'junpei', partner: 'junpei', look: ['slash', 'sun'], colors: ['#ff4f9e', '#7fb6ff'],
+    { id: 'junpei', partner: 'junpei', img: BA('bond-junpei-show-4'), focus: [50, 30], look: ['slash', 'sun'], colors: ['#ff4f9e', '#7fb6ff'],
+      // Showtime "Walk-Off" (5A, batch 49): Bottom of the ninth: Solar pitches the sun and Junpei swings for the fences. No still came before it, so its last panel is the short-version still.
+      sequence: [{ src: BA('bond-junpei-show-1'), focus: [42, 28], ms: 900, say: ['partner', 'Center field. Calling my shot!'] }, // faces at x 27% / 55%
+        { src: BA('bond-junpei-show-2'), focus: [44, 26], zoom: 1.14, ms: 760, sfx: 'light', say: ['solar', 'Here comes the heat.'] }, // 30% / 58%
+        { src: BA('bond-junpei-show-3'), focus: [44, 30], hit: true, ms: 860, sfx: 'fire', say: ['partner', 'Going, going… GONE!'] }, // 27% / 57%
+        { src: BA('bond-junpei-show-4'), focus: [46, 30], pan: [0, 1.5], say: [['partner', 'Walk-off, baby! Who’s the man?!'], ['solar', 'Nice swing. Now run.']] }], // 31% / 61%
       tiers: [
         { rank: 5, name: 'Sunny Pitch', sp: 10, target: 'one', steps: [S('light', 50), P('slash', 110, { crit: 20 })],
           line: ['Pitch it to me!', 'Don’t whiff, Junpei.'], desc: 'Solar pitches the sun, Junpei swings for the fences. Heavy damage to one foe; often a critical.' },
         { rank: 9, name: 'Walk-Off Sunrise', sp: 14, target: 'one', steps: [S('light', 60), P('slash', 140, { crit: 30 }), P('fire', 60)],
           line: ['Bottom of the ninth, baby!', 'Then end it.'], desc: 'The pitch, the swing and the fire after it. Severe damage to one foe.' }] },
-    { id: 'mitsuru', partner: 'mitsuru', look: ['ice', 'sun'], colors: ['#ff4f9e', '#ff5b5b'],
+    { id: 'mitsuru', partner: 'mitsuru', img: BA('bond-mitsuru-show-4'), focus: [50, 30], look: ['ice', 'sun'], colors: ['#ff4f9e', '#ff5b5b'],
+      // Showtime "Verification" (5A, batch 49): Mitsuru gives the Shadow the same serious attention she gave her first crêpe. No still came before it, so its last panel is the short-version still.
+      sequence: [{ src: BA('bond-mitsuru-show-1'), focus: [52, 26], ms: 900, say: [['partner', 'Fascinating. The layering is precise.'], ['solar', 'It’s a crêpe, Mitsuru.']] }, // faces at x 38% / 66%
+        { src: BA('bond-mitsuru-show-2'), focus: [48, 24], zoom: 1.12, ms: 760, sfx: 'ice', say: ['partner', 'Hold this. Briefly.'] }, // 30% / 66%
+        { src: BA('bond-mitsuru-show-3'), focus: [52, 28], hit: true, ms: 860, say: ['solar', 'Frost and flare!'] }, // 43% / 63%
+        { src: BA('bond-mitsuru-show-4'), focus: [52, 28], pan: [0, 1.5], say: [['partner', 'Verification complete.'], ['solar', 'Now can we eat?']] }], // 42% / 65%
       tiers: [
         { rank: 5, name: 'Frost and Flare', sp: 12, target: 'all', steps: [P('ice', 50, { ail: { id: 'freeze', chance: 0.25 } }), S('light', 50)],
           line: ['Together, then.', 'After you, Mitsuru.'], desc: 'Artemisia’s frost and Haenim’s flare on every foe; may Freeze.' },
         { rank: 9, name: 'Crystal Daybreak', sp: 16, target: 'all', steps: [P('ice', 66, { ail: { id: 'freeze', chance: 0.3 } }), S('light', 64)], after: { debuffs: ['atk'] },
           line: ['Let’s make this brief.', 'Brief and brilliant.'], desc: 'Heavier ice and light on every foe; every foe’s attack drops.' }] },
-    { id: 'aigis', partner: 'aigis', look: ['pierce', 'sun'], colors: ['#ff4f9e', '#ffd36b'],
+    { id: 'aigis', partner: 'aigis', img: BA('bond-aigis-show-5'), focus: [50, 30], look: ['pierce', 'sun'], colors: ['#ff4f9e', '#ffd36b'],
+      // Showtime "Papillon" (5A, batch 49): Aigis is learning friendship gestures and turns one into firepower. She’s on the left. No still came before it, so its last panel is the short-version still.
+      sequence: [{ src: BA('bond-aigis-show-1'), focus: [48, 26], ms: 760, say: [['solar', 'Peace sign. Like this.', 'r'], ['partner', '…Analyzing.', 'l']] }, // faces at x 35% / 62%
+        { src: BA('bond-aigis-show-2'), focus: [52, 30], zoom: 1.12, shake: true, ms: 620, say: ['partner', 'Hostiles confirmed. Go, Solar.', 'l'] }, // 36% / 67%
+        { src: BA('bond-aigis-show-3'), focus: [49, 30], ms: 640, say: ['solar', 'Cover me!', 'r'] }, // 36% / 62%
+        { src: BA('bond-aigis-show-4'), focus: [52, 30], hit: true, ms: 860, say: ['partner', 'Target eliminated.', 'l'] }, // 41% / 62%
+        { src: BA('bond-aigis-show-5'), focus: [48, 30], pan: [0, 1.5], say: [['partner', 'Peace sign. Is this correct?', 'l'], ['solar', 'Perfect.', 'r']] }], // 37% / 60%
       tiers: [
         { rank: 5, name: 'Covering Fire', sp: 12, target: 'all', steps: [P('pierce', 34, { target: 'rand', multi: [4, 5] }), S('light', 44)], after: { buffs: ['def'] },
           line: ['Covering fire. Go.', 'Going!'], desc: 'A storm of rounds at random foes, then light on all of them; the party’s defense rises.' },
         { rank: 9, name: 'Papillon Dawn', sp: 16, target: 'all', steps: [P('pierce', 40, { target: 'rand', multi: [5, 6] }), S('light', 56)], after: { buffs: ['def', 'atk'] },
           line: ['I will protect you. That is my wish.', 'Then let’s protect each other.'], desc: 'A bigger storm and brighter light; the party’s defense and attack rise.' }] },
-    { id: 'ken', partner: 'ken', look: ['light', 'sun'], colors: ['#ff4f9e', '#ffb36b'],
+    { id: 'ken', partner: 'ken', img: BA('bond-ken-show-4'), focus: [50, 30], look: ['light', 'sun'], colors: ['#ff4f9e', '#ffb36b'],
+      // Showtime "Featherman" (5A, batch 49): Ken finally gets a real hero pose, with his favourite senpai. He’s on the left. No still came before it, so its last panel is the short-version still.
+      sequence: [{ src: BA('bond-ken-show-1'), focus: [42, 22], ms: 860, say: [['partner', 'Featherman… transform!', 'l'], ['solar', 'Bigger, Ken. Bigger!', 'r']] }, // faces at x 27% / 58%
+        { src: BA('bond-ken-show-2'), focus: [48, 24], zoom: 1.1, shake: true, ms: 760, say: ['partner', 'This is the best day ever!', 'l'] }, // 34% / 62%
+        { src: BA('bond-ken-show-3'), focus: [44, 30], hit: true, ms: 860, sfx: 'elec', say: ['partner', 'Justice strikes!', 'l'] }, // 37% / 52%
+        { src: BA('bond-ken-show-4'), focus: [46, 24], pan: [0, 1.5], say: [['partner', 'Was that… cool? Be honest.', 'l'], ['solar', 'Very cool, hero.', 'r']] }], // 36% / 55%
       tiers: [
         { rank: 5, name: 'Spear at Dawn', sp: 12, target: 'one', steps: [P('elec', 50), S('light', 66)], after: { heal: 0.15 },
           line: ['I can do this! With you!', 'I know you can.'], desc: 'Nemesis’s spear and Haenim’s light on one foe; the party heals a little.' },
         { rank: 9, name: 'Daybreak Justice', sp: 16, target: 'all', steps: [P('elec', 50), S('light', 64)], after: { heal: 0.25 },
           line: ['Like Featherman. Together!', 'Strike a pose, Ken.'], desc: 'Lightning and light on every foe; the party heals 25%.' }] },
-    { id: 'koromaru', partner: 'koromaru', look: ['fire', 'sun'], colors: ['#ff4f9e', '#e8e8f0'],
+    { id: 'koromaru', partner: 'koromaru', img: BA('bond-koromaru-show-4'), focus: [50, 30], look: ['fire', 'sun'], colors: ['#ff4f9e', '#e8e8f0'],
+      // Showtime "Fetch" (5A, batch 49): Koromaru wants one throw. Solar throws the sun. No still came before it, so its last panel is the short-version still.
+      sequence: [{ src: BA('bond-koromaru-show-1'), focus: [52, 30], ms: 900, say: [['partner', 'Arf! Arf!'], ['solar', 'Okay, okay. One throw.']] }, // faces at x 42% / 62%
+        { src: BA('bond-koromaru-show-2'), focus: [46, 26], zoom: 1.12, ms: 760, sfx: 'light', say: ['solar', 'Fetch, Koromaru!'] }, // 33% / 59%
+        { src: BA('bond-koromaru-show-3'), focus: [52, 30], hit: true, ms: 860, sfx: 'fire', say: ['partner', 'AWOOO!'] }, // 38% / 66%
+        { src: BA('bond-koromaru-show-4'), focus: [52, 30], pan: [0, 1.5], say: [['partner', 'Arf!'], ['solar', 'Good boy. Very toasty.']] }], // 45% / 59%
       tiers: [
         { rank: 5, name: 'Sun Dog', sp: 10, target: 'all', steps: [P('fire', 46, { ail: { id: 'fear', chance: 0.2 } }), S('light', 46)],
           line: ['Arf!', 'Good boy. Go!'], desc: 'Cerberus’s fire and Haenim’s light on every foe; may frighten them.' },

@@ -340,7 +340,7 @@ try:
         results['art'] = {'hooks': 'bond.img → still cut-in; bond.sheet → strike sheet', 'haechan': 'rank 5 still, rank 9 ver3, rank 15 romance: 5-panel sequence (hit on panel 3), Off short / reduced fade on panel 5', 'order': order}
         print('art OK', flush=True)
 
-    # ── Showtimes: Kat's first four (Roadwork, Seconds, Unanimous, Corona) ──
+    # ── Showtimes: every bond's (5A; batch 44's four, 47's Five A.M., 49's thirteen) ──
     SHOWS = {  # bond id: (fight kwargs, the version's name, panel count, strike panel, each panel's file stem, the short-version still)
         'akihiko': (dict(ranks={'akihiko': 5}), 'DAYBREAK ONE-TWO', 5, 3, ['bond-akihiko.'] + [f'bond-akihiko-show-{i}.' for i in range(2, 6)], 'bond-akihiko.'),
         'shinjiro': (dict(ranks={'shinjiro': 5}, day='9/25'), 'BACK ALLEY SUNRISE', 4, 2, [f'bond-shinjiro-show-{i}.' for i in range(1, 5)], 'bond-shinjiro-show-4.'),
@@ -348,6 +348,22 @@ try:
         'haechan': (dict(ranks={'haechan': 9}, love=['haechan']), 'CORONA', 5, 2, [f'bond-haechan-love-show-{i}.' for i in range(1, 6)], 'bond-haechan-love.'),
         'akihiko-love': (dict(ranks={'akihiko': 9}, love=['akihiko']), 'SUNRISE CADENZA', 4, 2, [f'bond-akihiko-love-show-{i}.' for i in range(1, 5)], 'bond-akihiko.'),
         'akihiko-love15': (dict(ranks={'akihiko': 15}, love=['akihiko']), 'FIVE A.M.', 5, 2, [f'bond-akihiko-love-show-{i}.' for i in range(1, 6)], 'bond-akihiko.'),
+        # Batch 49: the rest of 5A. Sets that start at 2 begin on the bond's old still; full friendship sets end on their still.
+        'jihoon': (dict(ranks={'jihoon': 5}), 'STAR POWER', 5, 3, ['bond-jihoon.'] + [f'bond-jihoon-show-{i}.' for i in range(2, 6)], 'bond-jihoon.'),
+        'minji': (dict(ranks={'minji': 5}), 'TWO-SHOT', 5, 3, ['bond-minji.'] + [f'bond-minji-show-{i}.' for i in range(2, 6)], 'bond-minji.'),
+        'aigis': (dict(ranks={'aigis': 5}), 'COVERING FIRE', 5, 3, [f'bond-aigis-show-{i}.' for i in range(1, 6)], 'bond-aigis-show-5.'),
+        'yukari': (dict(ranks={'yukari': 5}), 'MORNING BREEZE', 4, 2, [f'bond-yukari-show-{i}.' for i in range(1, 5)], 'bond-yukari-show-4.'),
+        'junpei': (dict(ranks={'junpei': 5}), 'SUNNY PITCH', 4, 2, [f'bond-junpei-show-{i}.' for i in range(1, 5)], 'bond-junpei-show-4.'),
+        'mitsuru': (dict(ranks={'mitsuru': 5}), 'FROST AND FLARE', 4, 2, [f'bond-mitsuru-show-{i}.' for i in range(1, 5)], 'bond-mitsuru-show-4.'),
+        'ken': (dict(ranks={'ken': 5}), 'SPEAR AT DAWN', 4, 2, [f'bond-ken-show-{i}.' for i in range(1, 5)], 'bond-ken-show-4.'),
+        'koromaru': (dict(ranks={'koromaru': 5}), 'SUN DOG', 4, 2, [f'bond-koromaru-show-{i}.' for i in range(1, 5)], 'bond-koromaru-show-4.'),
+        'shinjiro-love': (dict(ranks={'shinjiro': 9}, love=['shinjiro'], day='9/25'), 'WARM HANDS', 4, 2, [f'bond-shinjiro-love-show-{i}.' for i in range(1, 5)], 'bond-shinjiro-love-show-4.'),
+        'jungwon-love': (dict(ranks={'jungwon': 9}, love=['jungwon']), 'JADE RING', 4, 2, ['bond-jungwon-love.'] + [f'bond-jungwon-love-show-{i}.' for i in range(2, 5)], 'bond-jungwon-love.'),
+        'jungwon-love15': (dict(ranks={'jungwon': 15}, love=['jungwon']), 'SIGNED IN FULL', 5, 2, ['bond-jungwon-love.'] + [f'bond-jungwon-love-show-{i}.' for i in range(2, 6)], 'bond-jungwon-love.'),
+        'jihoon-love': (dict(ranks={'jihoon': 9}, love=['jihoon']), 'ROYAL PAIR', 4, 2, [f'bond-jihoon-love-show-{i}.' for i in range(1, 5)], 'bond-jihoon.'),
+        'jihoon-love15': (dict(ranks={'jihoon': 15}, love=['jihoon']), 'CORONATION', 5, 2, [f'bond-jihoon-love-show-{i}.' for i in range(1, 6)], 'bond-jihoon.'),
+        'minji-love': (dict(ranks={'minji': 9}, love=['minji']), 'KEEP THIS ONE', 4, 2, [f'bond-minji-love-show-{i}.' for i in range(1, 5)], 'bond-minji.'),
+        'minji-love15': (dict(ranks={'minji': 15}, love=['minji']), 'LAST FRAME', 5, 2, [f'bond-minji-love-show-{i}.' for i in range(1, 6)], 'bond-minji.'),
     }
     SHOW_LOG = r"""(() => { window.seqLog = []; window.sayLog = {}; new MutationObserver(() => { const w = document.querySelector('.bt-bond'); if (!w) return;
       w.querySelectorAll('.th-sf.go').forEach(f => { if (!seqLog.includes('p' + f.dataset.i)) seqLog.push('p' + f.dataset.i); });
@@ -376,7 +392,8 @@ try:
         data = p.eval(r"""(() => FemcBonds.BONDS.flatMap(b => [['', b], ['love', b.love], ['love15', b.love15]].concat((b.tiers || []).map((t, i) => ['t' + i, t])).filter(x => x[1] && x[1].sequence && x[1].sequence.some(f => f.say))
           .map(([k, v]) => ({ id: b.id + (k ? '.' + k : ''), n: v.sequence.length, ms: v.sequence.slice(0, -1).reduce((a, f) => a + (f.ms || (f.hit ? 800 : 640)), 0), hits: v.sequence.filter(f => f.hit).length,
             says: v.sequence.flatMap(f => !f.say ? [] : Array.isArray(f.say[0]) ? f.say : [f.say]).every(x => ['partner', 'solar'].includes(x[0]) && x[1].length <= 48) }))))()""")
-        ok(sorted(d['id'] for d in data if d['id'] != 'haechan.love15') == ['akihiko', 'akihiko.love', 'akihiko.love15', 'haechan.love', 'jungwon', 'shinjiro'], data)
+        ok(sorted(d['id'] for d in data if d['id'] != 'haechan.love15') == sorted(['akihiko', 'akihiko.love', 'akihiko.love15', 'haechan.love', 'jungwon', 'shinjiro', 'shinjiro.love', 'jungwon.love', 'jungwon.love15', 'jihoon', 'jihoon.love', 'jihoon.love15',
+            'minji', 'minji.love', 'minji.love15', 'yukari', 'junpei', 'mitsuru', 'aigis', 'ken', 'koromaru']), data)
         ok(all(2400 <= d['ms'] <= 4200 and d['hits'] == 1 and d['says'] for d in data), data)
         out = {'panelsMs': {d['id']: d['ms'] for d in data}}
         for bid, (kw, name, n, hit, stems, still) in SHOWS.items():
@@ -434,11 +451,11 @@ try:
         fl = p.eval("getComputedStyle(document.querySelector('.bt-flash')).animationName")
         r = wait_cut(p, 1)
         ok('kind-seq' in r['cls'] and 'calm' in fl, ('calm flash on the strike', fl))
-        # Jade Ring has its own still, so it doesn't borrow Jungwon's friendship Showtime.
+        # Jade Ring plays its own Showtime (batch 49), never Jungwon's friendship one.
         fight(p, ['solar', 'jungwon'], ranks={'jungwon': 9}, love=['jungwon'])
         my_menu(p, 'solar'); pick(p, 'bond'); p.wait("FemcBattle.ctl.items.some(i => i.v === 'jungwon')"); pick(p, 'jungwon')
         r = wait_cut(p, 1)
-        ok('kind-cut' in r['cls'] and any('bond-jungwon-love.' in x for x in r['imgs']) and not any('-show-' in x for x in r['imgs']), ('Jade Ring keeps its still', r))
+        ok('kind-seq' in r['cls'] and any('bond-jungwon-love-show-' in x for x in r['imgs']) and not any('bond-jungwon-show-' in x for x in r['imgs']), ('Jade Ring has its own Showtime', r))
         # Persona cut-ins Off: the short band on the still.
         show_fight('shinjiro', cutins='off')
         start_bond('shinjiro')
@@ -471,7 +488,15 @@ try:
     if want('showshots'):
         FACES = {'akihiko': [[36, 58], [31, 62], [44, 64], [39, 68], [32, 71]], 'shinjiro': [[38, 62], [44, 72], [51, 71], [37, 61]],
                  'jungwon': [[38, 70], [36, 56], [38, 56], [34, 62], [35, 62]], 'haechan': [[43, 76], [26, 61], [21, 43], [37, 52], [49]],
-                 'akihiko-love': [[32, 58], [31, 56], [30, 55], [43, 58]], 'akihiko-love15': [[32, 58], [31, 56], [30, 55], [43, 58], [38, 64]]}
+                 'akihiko-love': [[32, 58], [31, 56], [30, 55], [43, 58]], 'akihiko-love15': [[32, 58], [31, 56], [30, 55], [43, 58], [38, 64]],
+                 'jihoon': [[38, 69], [34, 59], [33, 62], [33, 64], [36, 55]], 'minji': [[36, 67], [36, 72], [25, 53], [33, 67], [41, 58]],
+                 'aigis': [[35, 62], [36, 67], [36, 62], [41, 62], [37, 60]], 'yukari': [[40, 63], [31, 55], [41, 59], [42, 58]],
+                 'junpei': [[27, 55], [30, 58], [27, 57], [31, 61]], 'mitsuru': [[38, 66], [30, 66], [43, 63], [42, 65]],
+                 'ken': [[27, 58], [34, 62], [37, 52], [36, 55]], 'koromaru': [[42, 62], [33, 59], [38, 66], [45, 59]],
+                 'shinjiro-love': [[41, 60], [39, 58], [42, 62], [44, 59]],
+                 'jungwon-love': [[47, 60], [48, 72], [46, 56], [42, 60]], 'jungwon-love15': [[47, 60], [48, 72], [46, 56], [42, 60], [45, 58]],
+                 'jihoon-love': [[36, 56], [40, 56], [37, 55], [40, 57]], 'jihoon-love15': [[36, 56], [40, 56], [37, 55], [40, 57], [36, 58]],
+                 'minji-love': [[38, 69], [47, 59], [33, 52], [36, 59]], 'minji-love15': [[38, 69], [47, 59], [33, 52], [36, 59], [37, 58]]}
         VIS = r"""(() => { const i = %d, faces = %s, w = document.querySelector('.bt-bond'), st = w.querySelector('.th-stage').getBoundingClientRect(), im = w.querySelector('.th-sf[data-i="' + i + '"] img'), R = im.getBoundingClientRect();
           const s = Math.max(R.width / im.naturalWidth, R.height / im.naturalHeight), cw = im.naturalWidth * s, px = parseFloat(getComputedStyle(im).objectPosition) / 100, left = R.left + (R.width - cw) * px;
           const lo = Math.max(st.left, 0, R.left), hi = Math.min(st.right, innerWidth, R.right);
@@ -491,7 +516,7 @@ try:
                 start_bond(bid)
                 for i in range(n):
                     p.wait('FemcBattle.frozen', 30)
-                    time.sleep(0.45)
+                    time.sleep(0.7)  # the line box overshoots as it pops in (th-say); let it settle
                     p.eval("document.getAnimations().forEach(a => a.pause())")
                     vis = p.eval(VIS % (i, json.dumps(FACES[bid][i])))
                     ok(all(vis['faces']) and float(vis['top']) > 0.95 and vis['whole'] and vis['scroll'], (w, h, bid, f'panel {i + 1}', vis))
