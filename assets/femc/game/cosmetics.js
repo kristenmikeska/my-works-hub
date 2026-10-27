@@ -89,7 +89,6 @@ window.FemcCosmetics = (() => {
     c('sk-jihoon-pilates', 'skin', 'Purple Pilates Set', 'SR', 'A lavender matching set, grip socks and a rolled mat. It’s for his core, he says.', { who: 'jihoon', art: true }),
     c('sk-aigis-uniform', 'skin', 'Gekkoukan Uniform', 'SR', 'The school uniform over her frame, the ribbon tied to the millimetre. Mission: blend in.', { who: 'aigis', art: true }),
     // The party's weapon skins (2026-10-27; art pending).
-    c('wpn-haechan-widow', 'weapon', 'Widowmaker Knives', 'UR', 'Violet and black, a spider mark on each guard, a grapple ring at the pommel.', { who: 'haechan', art: true }),
     c('wpn-akihiko-champ', 'weapon', 'Champion Gloves', 'UR', 'Gold leather, red trim, laced cuffs. Title-fight gloves.', { who: 'akihiko', art: true }),
     c('wpn-jungwon-council', 'weapon', 'Council Rapier', 'SR', 'A navy guard with the gold council crest, a white ribbon on the hilt.', { who: 'jungwon', art: true }),
     // Code-only: Evokers.
@@ -138,7 +137,7 @@ window.FemcCosmetics = (() => {
     // Art-pending items wait in their banner and join its featured list by themselves once their art is in (featured()).
     { id: 'bloom', name: 'Spring Bloom', months: [4, 5], color: '#ff8cc0', featured: ['sk-date', 'tt-sakura', 'ui-sakura', 'sk-jihoon-pilates', 'sk-junpei-baseball', 'sk-yukari-kyudo', 'sk-aigis-uniform', 'wpn-hoax'] },
     { id: 'summer', name: 'Summer Nights', months: [6, 7, 8], color: '#4fd8ff', featured: ['sk-yukata', 'wp-fireworks', 'ui-mint', 'sk-haechan-runners', 'sk-minji-crew', 'sk-akihiko-hoodie', 'wpn-runners'] },
-    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'wpn-haechan-widow', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink'] },
+    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink'] },
     { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose', 'sk-shinjiro-apron', 'sk-mitsuru-rider', 'wpn-strangers'] },
     { id: 'sunrise', name: 'Golden Sunrise', months: [2, 3], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council'] }
   ];

@@ -1,6 +1,6 @@
 # Art to make
 
-**64 items:** 1 story CG · 1 place · 22 character pieces · 9 battle · 1 screen · 31 wardrobe and keychains. 8 are ⭐, 51 are optional.
+**63 items:** 1 story CG · 1 place · 22 character pieces · 9 battle · 1 screen · 31 wardrobe and keychains. 8 are ⭐, 51 are optional.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -569,13 +569,6 @@ Attach: the style image
 Save as: `skin-wpn-hoax.png`
 ```
 One ornate naginata, the whole weapon from the tip of the blade to the end of the haft, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A navy-and-white striped haft, a white student-council armband tied round the collar, a small laminated hall pass on a lanyard hanging from it, a polished silver blade with a gold school crest stamped near the base.
-```
-**[ ] Widowmaker Knives** *(optional)*  
-Haechan's knives, Widowmaker style.  
-Attach: the style image  
-Save as: `skin-wpn-haechan-widow.png`
-```
-A matched pair of combat knives, side by side and slightly angled, each whole from the tip to the pommel, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. Violet-and-black grips, dark steel blades with a violet edge, a small purple spider emblem on each guard, a little steel grappling-hook ring at each pommel.
 ```
 **[ ] Champion Gloves** *(optional)*  
 Akihiko's gloves, title-fight gold.  

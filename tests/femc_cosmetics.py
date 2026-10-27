@@ -39,7 +39,7 @@ PSKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-akihiko-champ')  # par
 PWPN = pathlib.Path(REPO, 'assets/femc/game/art/skins/wpn-jungwon-council')  # party weapon skin, art pending; likewise
 NEW_SKINS = ['sk-akihiko-champ', 'sk-akihiko-hoodie', 'sk-haechan-runners', 'sk-jungwon-council', 'sk-yukari-kyudo', 'sk-yukari-pink',
              'sk-junpei-baseball', 'sk-mitsuru-rider', 'sk-shinjiro-apron', 'sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform']
-NEW_WPNS = ['wpn-kiriko', 'wpn-emo', 'wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-haechan-widow', 'wpn-akihiko-champ', 'wpn-jungwon-council']
+NEW_WPNS = ['wpn-kiriko', 'wpn-emo', 'wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-akihiko-champ', 'wpn-jungwon-council']
 
 
 def ok(cond, msg):

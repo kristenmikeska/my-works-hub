@@ -313,3 +313,5 @@ Haechan stays Universe and Jungwon stays Hierophant.
 - **Arcana (for Kat to confirm): XII Hanged Man.** It was the one P3 arcana no link had (the card art already exists), and it fits two people who've turned their life upside down to start over somewhere new and are waiting to see it the right way up.
 - **Ranks:** ten (the game's MAX is rank 10), short, each somewhere new as they become locals. The last one is quiet: Ethan kind of saved Kat when she was in a bad place, said once and gently, and it ends on the dogs.
 - *Writer inventions to confirm:* The List and Kat's ramen spreadsheet (with a column for Ethan's face); Ethan eating four things (five after Hagakure's chashu); the konbini clerk who finally says "the usual"; Kat's company moving them here; Koromaru as "the sheriff" (and his opinions of Cosmo); Kat's peach water; Ethan's octopus facts as his tell; Kat on Ana in Overwatch; a Kiriko-cosplay joke; Kuromi's name meeting Kat's keyring.
+
+- **No genderbent Haechan (Kat, 2026-10-27).** No Widowmaker cosplay or gender-swapped looks for Haechan. Other characters might be fine.
