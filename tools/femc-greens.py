@@ -1,7 +1,7 @@
 """Kat's green-screen sheets for items, phone cases and group-chat pictures (batch 48, 2026-10-25). Sources are only read.
 
-  python3 tools/femc-greens.py all
-        Every sheet in SHEETS (from New Adds/ or Added to Game/) -> its folder, one transparent WebP per cell.
+  python3 tools/femc-greens.py all [stem ...]
+        Every sheet (or just the named ones) in SHEETS (from New Adds/ or Added to Game/) -> its folder, one transparent WebP per cell.
   python3 tools/femc-greens.py check OUT.png
         Contact sheet of every cut on a dark ground and on white.
 
@@ -26,6 +26,10 @@ SHEETS = {
     'battleitems-sheet5': (ITEMS, 3, 2, ['echo_shell', 'gilded_scale', 'guardian_crest', 'monad_sand', None, None], 128, True),
     'phonecases': ('assets/femc/game/art/cases', 3, 2, ['sakura', 'featherman', 'koro', 'moonlight', 'velvet', 'gold'], 288, False),
     'groupchaticons': ('assets/femc/game/art/phone', 2, 2, ['sees', 'sisters', 'searchparty', 'hateclub'], 176, True),
+    # Batch 52: Haenim's sun node icons, 5 x 5 (sun.js ICONS / iconFor picks one per node).
+    'sun-icons': ('assets/femc/battle/art/sun', 5, 5, ['crit', 'speed', 'evade', 'counter', 'autobuff', 'firstcut', 'hpregen', 'spregen', 'weak',
+        'followup', 'ailment', 'ailturns', 'lowhp', 'physup', 'magicup', 'healup', 'corona', 'bell', 'momentum', 'buffturns', 'theurgy',
+        'nullail', 'stat', 'keystone', 'memory'], 96, True),
 }
 
 
@@ -106,7 +110,9 @@ def check(out):
 
 def main():
     if len(sys.argv) > 2 and sys.argv[1] == 'check': return check(sys.argv[2])
+    only = sys.argv[2:] if len(sys.argv) > 2 and sys.argv[1] == 'all' else None  # all [stem ...]: just those sheets
     for stem, spec in SHEETS.items():
+        if only and stem not in only: continue
         src = source(stem)
         if not src: print('  missing', stem); continue
         print(os.path.basename(src))

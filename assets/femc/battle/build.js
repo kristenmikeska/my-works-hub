@@ -860,6 +860,11 @@ window.FemcBuild = (() => {
     'cap_koro_charm', 'cap_feather_pin', 'cap_jack_frost', 'cap_moon_locket', 'cap_gold_sun', 'vel_butterfly',
     'vel_key', 'vel_compendium', 'vel_coat'];
   GEAR_ART.forEach(id => { const g = D.gear[id]; if (g && !g.art) { g.art = `assets/femc/battle/art/gear/${id}.webp`; g.artWide = true; } });
+  /* The plain shop weapons (batch 52, Kat's 3x3 plain-<type> sheets, tools/femc-cards.py -> art/weapons/plain-<id>.webp): every
+     type's tiers 0-7 and the five element weapons. Gloves and arm guns are landscape (artWide), like the owners' sets. */
+  const PLAIN_ART = ['naginata', 'gloves', 'bow', 'greatsword', 'rapier', 'gun', 'spear', 'knife', 'axe'].flatMap(wt => [0, 1, 2, 3, 4, 5, 6, 7].map(t => wt + t))
+    .concat(['sun_naginata', 'thunder_fist', 'gale_bow', 'blaze_blade', 'ice_rapier']);
+  PLAIN_ART.forEach(id => { const g = D.gear[id]; if (g && !g.art) { g.art = `${WART}plain-${id}.webp`; if (g.wtype === 'gloves' || g.wtype === 'gun') g.artWide = true; } });
   /* Kat's battle item and material stickers (batch 48, tools/femc-greens.py -> art/items/<id>.webp, transparent squares).
      icons.js FemcIcons.of shows them everywhere an item shows (the items menu, both shops, chests, drops, results, gacha). */
   const ITEM_ART = ['medicine', 'bead', 'bead_chain', 'snuff_soul', 'chewing_soul', 'soma', 'revival_bead', 'patra_gem', 'dis_poison',

@@ -116,6 +116,8 @@
       el.className = `g-toast k-${t.kind}${t.stat ? ` s-${t.stat}` : ''}`;
       if (t.stat && statColor(t.stat)) el.style.setProperty('--c', statColor(t.stat));
       el.textContent = t.text;
+      // A gift with a picture (the birthday keepsakes, batch 52: core.js gift passes the gift's img).
+      if (t.img) { el.classList.add('has-img'); el.insertAdjacentHTML('afterbegin', `<img src="${G.base}${t.img}" alt="">`); }
       // A hub stamp earned in the game (stamps.js): the stamp's art, a kicker and its name.
       if (t.kind === 'stamp') { el.innerHTML = `<svg viewBox="0 0 64 64" aria-hidden="true">${t.svg || ''}</svg><span><b>Stamp earned</b></span>`; el.querySelector('span').append(t.text); el.setAttribute('role', 'status'); }
       if (t.thread) { el.setAttribute('role', 'button'); el.tabIndex = 0; el.addEventListener('click', () => openPhone(t.thread)); }
@@ -1486,12 +1488,12 @@
     let tab = 'buy';
     const render = () => {
       const mats = buys ? Object.entries((G.ensureBattleSave()?.mats) || {}).filter(([k, n]) => n > 0 && G.D.battle.materials?.[k]) : [];
-      const stock = books ? G.D.places.books.filter(b => !S().books.owned.includes(b.id)).map(b => ({ id: b.id, kind: 'book', name: b.name, price: b.price, desc: `${b.nights} nights · ${Object.keys(b.stats).map(k => G.D.stats.stats[k].name).join(', ')}` })) : G.shopStock(id);
+      const stock = books ? G.D.places.books.filter(b => !S().books.owned.includes(b.id)).map(b => ({ id: b.id, kind: 'book', name: b.name, price: b.price, art: G.bookArt(b), book: true, desc: `${b.nights} nights · ${Object.keys(b.stats).map(k => G.D.stats.stats[k].name).join(', ')}` })) : G.shopStock(id);
       const tabs = o.el.querySelector('.g-shop-tabs');
       if (tabs) tabs.innerHTML = buys ? `<button type="button" class="g-chip${tab === 'buy' ? ' on' : ''}" data-tab="buy">Buy</button><button type="button" class="g-chip${tab === 'sell' ? ' on' : ''}" data-tab="sell">Sell materials</button>` : '';
       o.el.querySelector('.g-shop-list').innerHTML = tab === 'sell'
         ? (mats.length ? mats.map(([k, n]) => `<button type="button" class="g-act${G.D.battle.materials[k].art ? ' has-art' : ''}" data-sell="${esc(k)}">${G.D.battle.materials[k].art ? `<img class="g-shop-art icon" src="${G.base}${G.D.battle.materials[k].art}" alt="">` : ''}<span><b>${esc(G.D.battle.materials[k].name)} ×${n}</b><small>${esc(G.D.battle.materials[k].desc || '')}</small></span><em>¥${G.matSellPrice(k).toLocaleString()} each</em></button>`).join('') : '<p class="g-note">Nothing to sell. Shadows drop materials in Tartarus.</p>')
-        : stock.length ? stock.map((x, i) => `<button type="button" class="g-act${x.art ? ' has-art' : ''}" data-i="${i}"${S().yen < x.price ? ' disabled' : ''}>${x.art ? `<img class="g-shop-art${x.wide ? ' wide' : ''}${x.icon ? ' icon' : ''}" src="${G.base}${x.art}" alt="">` : ''}<span><b>${esc(x.name)}</b><small>${esc(x.desc || '')}${x.who ? ` · for ${esc(x.who)}` : ''}</small></span><em>¥${x.price.toLocaleString()}${!books && x.kind === 'item' && S().inventory[x.id] ? ` · own ${S().inventory[x.id]}` : ''}${!books && !['item', 'cardpack'].includes(x.kind) && S().gear.includes(x.id) ? ' · owned' : ''}</em></button>`).join('') : '<p class="g-note">Nothing for sale right now.</p>';
+        : stock.length ? stock.map((x, i) => `<button type="button" class="g-act${x.art ? ' has-art' : ''}" data-i="${i}"${S().yen < x.price ? ' disabled' : ''}>${x.art ? `<img class="g-shop-art${x.wide ? ' wide' : ''}${x.icon ? ' icon' : ''}${x.book ? ' book' : ''}" src="${G.base}${x.art}" alt="">` : ''}<span><b>${esc(x.name)}</b><small>${esc(x.desc || '')}${x.who ? ` · for ${esc(x.who)}` : ''}</small></span><em>¥${x.price.toLocaleString()}${!books && x.kind === 'item' && S().inventory[x.id] ? ` · own ${S().inventory[x.id]}` : ''}${!books && !['item', 'cardpack'].includes(x.kind) && S().gear.includes(x.id) ? ' · owned' : ''}</em></button>`).join('') : '<p class="g-note">Nothing for sale right now.</p>';
       o.el.querySelector('.g-shop-yen').textContent = `¥${S().yen.toLocaleString()}`;
       o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; G.sfx('femc-hover'); render(); }));
       o.el.querySelectorAll('[data-sell]').forEach(b => b.addEventListener('click', () => { if (G.sellMat(b.dataset.sell, 1)) { o.el.querySelector('.g-shop-say').textContent = shopData.lines?.sold || 'A pleasure.'; G.sfx('femc-click'); } render(); }));

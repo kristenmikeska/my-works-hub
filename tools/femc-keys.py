@@ -50,11 +50,28 @@ def key_green(rgb):
     return out.astype(np.uint8), (alpha * 255).astype(np.uint8)
 
 
-def cut(src, ids, suffix):
+def touching_split(mask):
+    """Labels for a mask whose charms touch (keychain-series-5, batch 52: a charm's feet rest on the ring of the one below):
+    a piece taller than a row is parted at its narrowest line close to the row line, then everything is relabelled."""
+    lab, n = ndi.label(mask)
+    H = mask.shape[0]
+    mask = mask.copy()
+    for k, sl in enumerate(ndi.find_objects(lab), 1):
+        if sl[0].stop - sl[0].start < H * 0.6: continue
+        part = lab == k
+        lo, hi = int(H * 0.46), int(H * 0.54)  # near the row line: further down is the lower charm's own chain
+        span = [np.ptp(np.nonzero(r)[0]) if r.any() else 0 for r in part[lo:hi]]  # its width edge to edge (a ring's hole doesn't count)
+        y = lo + int(np.argmin(span))
+        mask[y][part[y]] = False
+        print(f'  parted two touching charms at y={y}')
+    return ndi.label(mask)
+
+
+def cut(src, ids, suffix, split=False):
     im = np.asarray(Image.open(src).convert('RGB'))
     rgb, alpha = key_green(im)
     H, W = alpha.shape
-    lab, n = ndi.label(alpha > 40)
+    lab, n = touching_split(alpha > 40) if split else ndi.label(alpha > 40)
     objs = ndi.find_objects(lab)
     sizes = ndi.sum(np.ones_like(lab), lab, range(1, n + 1))
     cells = {i: [] for i in range(6)}
@@ -65,7 +82,9 @@ def cut(src, ids, suffix):
         cells[row * 3 + col].append(k)
     for i, name in enumerate(ids):
         ks = cells[i]
-        if not ks: raise SystemExit(f'{src}: nothing in cell {i} ({name})')
+        if not ks:
+            if not split: return cut(src, ids, suffix, split=True)  # two charms touching: part them and start again
+            raise SystemExit(f'{src}: nothing in cell {i} ({name})')
         m = np.isin(lab, ks)
         ys, xs = np.nonzero(m)
         y0, y1, x0, x1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1

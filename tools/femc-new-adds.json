@@ -11664,6 +11664,661 @@
       "outputSha256": "86d92c7746bebe8a9a7bdfa2d02c6dc9f8dd2b9e3651111fbe39d7ab06d84512",
       "conversion": "tools/femc-fx.py SOURCES wind-heavy: 3x2 light on black -> alpha, 256px frames",
       "placement": "5G Wind Heavy: fx.js artFor plays it for -ma / -dyne / all-foe damage skills (battle.js fxHitKind o.heavy)"
+    },
+    {
+      "batch": 52,
+      "source": "plain-naginatas.jpeg",
+      "sourceNow": "Added to Game/plain-naginatas.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "2019291342a5c6845b1ad1dda7ffadc05714a6dc37eba09d5cff4670c0386c50",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/weapons/",
+      "intendedUse": "Plain shop naginatas (data.js gear naginata0-7 and sun_naginata), build.js PLAIN_ART",
+      "conversion": "tools/femc-cards.py weapons (BUILD, grid 9, rotate auto); source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/weapons/plain-naginata0.webp": "7e2e967ff9f4ff019d47e4e6afd1bfcacd5727e3d924d9f3d45c4f5d6c0fdf34",
+        "assets/femc/battle/art/weapons/plain-naginata1.webp": "7cc6bc85b770d3b35632fc1992168df47061388388cdcd882ac8c4b4fa34c6c2",
+        "assets/femc/battle/art/weapons/plain-naginata2.webp": "9a11ab9370f370121ed6f36d34369af60854879e3599bc04256312800210c1c6",
+        "assets/femc/battle/art/weapons/plain-naginata3.webp": "50d50633513acbdf833bee0154cd5c8db04069acc55e1ef59a48f8ff01c9545b",
+        "assets/femc/battle/art/weapons/plain-naginata4.webp": "e2a7436bb6caea9126173cbaf0d84d0a5cd8481333729873416cfed92e6b68d4",
+        "assets/femc/battle/art/weapons/plain-naginata5.webp": "51760b15a0fc4d3e49fcda91381cc1e02fb54a2540cd77afd30a930b1874f0f1",
+        "assets/femc/battle/art/weapons/plain-naginata6.webp": "93b001dd0a93e8977114e531defc50359a77e66d39ff20a938d0c0521b3ff8ea",
+        "assets/femc/battle/art/weapons/plain-naginata7.webp": "5b3d9b9fbfafc162954ad3fb17ad3b1b7feaf5da0110794ee77ed46c29483d8b",
+        "assets/femc/battle/art/weapons/plain-sun_naginata.webp": "9ddbc2b0ab9e80a31c63104d722c6fc68f687e329f65b10f539ea4f7c4b3b403"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "plain-gloves.jpeg",
+      "sourceNow": "Added to Game/plain-gloves.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "d3b244c66626fe6bbd5428a26f8d7014648bd3d2edf93019043c69f8fec3b557",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/weapons/",
+      "intendedUse": "Plain shop gloves (data.js gear gloves0-7 and thunder_fist), build.js PLAIN_ART",
+      "conversion": "tools/femc-cards.py weapons (BUILD, grid 9, wide, names strip blanked); source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/weapons/plain-gloves0.webp": "e3f5a17c48d2bbab0468c27e48fc02ee37dc8654a4e7cce04bbbf05336814948",
+        "assets/femc/battle/art/weapons/plain-gloves1.webp": "b02d391528af67165d63e6584e5a55e6477d2adeecf6a0dbf25765765b4d948f",
+        "assets/femc/battle/art/weapons/plain-gloves2.webp": "8cbbe7bfad6f69d6d79556f0296299a343792ded8714034a5595042d7977755b",
+        "assets/femc/battle/art/weapons/plain-gloves3.webp": "3c0e36b6b7efad086eae625ed238f36a48475c9522320feff46d5e40d68b6034",
+        "assets/femc/battle/art/weapons/plain-gloves4.webp": "50ca9ab54d134d27d9b6eeccd2f09fdf9af6ed076fd75c103da5b0f6bb80b1f5",
+        "assets/femc/battle/art/weapons/plain-gloves5.webp": "58dfb26a764cdce5146cc56ab862f6179aa9133ea93e6b63da05ef1b6acd7f39",
+        "assets/femc/battle/art/weapons/plain-gloves6.webp": "5faa7d58d832e720c6696f45549a75ffca04dd319a9f525ff9e9706586267c0f",
+        "assets/femc/battle/art/weapons/plain-gloves7.webp": "f69dea3df850dab4e8b237f568f325560f81c9b52176d0012d64fef1aa13c642",
+        "assets/femc/battle/art/weapons/plain-thunder_fist.webp": "727aec15fdc4e218a0fa01c66f72660d47c76cd5aaa86893c1a9f39bf360c5a1"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "plain-bows.jpeg",
+      "sourceNow": "Added to Game/plain-bows.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "1dd5bdbbb0f08444bf09cb3605a7fcc7a7c7ceb4de4445f7b68cc0003a242af9",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/weapons/",
+      "intendedUse": "Plain shop bows (data.js gear bow0-7 and gale_bow), build.js PLAIN_ART",
+      "conversion": "tools/femc-cards.py weapons (BUILD, grid 9, rotate auto); source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/weapons/plain-bow0.webp": "53c6d2f3b822e1f37ee524baaf8c3faabb76c4cf8dd9a66e97ad64c7d86acd62",
+        "assets/femc/battle/art/weapons/plain-bow1.webp": "f35d0763c3bb6ecab1a439a78b3e725e5368c62e19ce175a571b980447bad757",
+        "assets/femc/battle/art/weapons/plain-bow2.webp": "a37f5b0cab86c667bc6a1f246dd8f7f8e3b31241c0ed3025007b902db204d987",
+        "assets/femc/battle/art/weapons/plain-bow3.webp": "80d3aec5d74c82e628de613d9e6a33bf016bf363a7fb54e71020d4d9ba6d7af7",
+        "assets/femc/battle/art/weapons/plain-bow4.webp": "1c74e30dff87cf7e0174eeb12eedea2093a930113af4f8800f47b1f44a4ad396",
+        "assets/femc/battle/art/weapons/plain-bow5.webp": "5023c451204323301785c2da7f67252ba8a3e03d703374e331994f81c7ef6bf0",
+        "assets/femc/battle/art/weapons/plain-bow6.webp": "c504f539f8a7d750e4f969497d3a1b8262aa7907bdb8767b9ae2fac4c4fcf020",
+        "assets/femc/battle/art/weapons/plain-bow7.webp": "54867194d87ae3f9e5012ec566e65652f5c79568cd912bd91442c2375428c1f5",
+        "assets/femc/battle/art/weapons/plain-gale_bow.webp": "565850c31beeee7fdc529b64cb88a1f984cd5cfba89a66e530bdfd8bac761b18"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "plain-greatswords.jpeg",
+      "sourceNow": "Added to Game/plain-greatswords.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "7e924f72bea4606bde97472cd7422bcfda40d4d2fd21a02ed14a159a5282583e",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/weapons/",
+      "intendedUse": "Plain shop greatswords (data.js gear greatsword0-7 and blaze_blade), build.js PLAIN_ART",
+      "conversion": "tools/femc-cards.py weapons (BUILD, grid 9, rotate auto); source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/weapons/plain-greatsword0.webp": "5e874f59f1ef020c6c25b3c550bede88e081cede41f7f4f05072632e5453d94e",
+        "assets/femc/battle/art/weapons/plain-greatsword1.webp": "f0ba2195ed994df072a14ad424d3ac14493a576078a140bfff9f9d15cffd2c6a",
+        "assets/femc/battle/art/weapons/plain-greatsword2.webp": "3e6fbca90625a7f9808aba2e0d6e573552ac9c07f6f1e661dff5b0e51e5e993f",
+        "assets/femc/battle/art/weapons/plain-greatsword3.webp": "c48c450a1b5dc930e4da64bec2e13a9cfd6b479d7e16c09529a8544b3fa994ff",
+        "assets/femc/battle/art/weapons/plain-greatsword4.webp": "c9cfecdcd2721f11e190219465b318e8dae7e0cd00915604a2fbe0bf34509b11",
+        "assets/femc/battle/art/weapons/plain-greatsword5.webp": "7bcc1082611c59e49befa3796bdad5b095f20242fa90e0b57456a16ffaa98247",
+        "assets/femc/battle/art/weapons/plain-greatsword6.webp": "a555cad6e4237739cbdd35f1f6ffeca4a3ab3127cc8ff2f6c5eac19e62981073",
+        "assets/femc/battle/art/weapons/plain-greatsword7.webp": "47a5ad6076071e4bd8efe9003847adcff9de229db0e0aa674e271b1e325f329e",
+        "assets/femc/battle/art/weapons/plain-blaze_blade.webp": "007038e31b3f372227645d2fd060f0cc706597c79b6cddc313ca624238467f1f"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "plain-rapiers.jpeg",
+      "sourceNow": "Added to Game/plain-rapiers.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "a2b1c47e55a7e09c0fd8bd970dcbcd43e33484d098af719971daf50555009cea",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/weapons/",
+      "intendedUse": "Plain shop rapiers (data.js gear rapier0-7 and ice_rapier), build.js PLAIN_ART",
+      "conversion": "tools/femc-cards.py weapons (BUILD, grid 9, rotate auto); source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/weapons/plain-rapier0.webp": "72cfee95bf400b6a5e97afd173228d990d24fca56b2322c1151a4c4bdcf3b5f2",
+        "assets/femc/battle/art/weapons/plain-rapier1.webp": "e4526897cff1a87e2ddf7e2dab86446b81451740f28670a53b8a488fc92205a3",
+        "assets/femc/battle/art/weapons/plain-rapier2.webp": "d79ea267e357d3b9aa9da3352fd8e5b9fec45cdabb4a01080e7884f4b61d8efd",
+        "assets/femc/battle/art/weapons/plain-rapier3.webp": "0fc1d93806cedd6c2f82f3b05fc3c3f2abaab3fe01f07559a837c85c09e01212",
+        "assets/femc/battle/art/weapons/plain-rapier4.webp": "6590a556fa9be72bf9b2c667cb05909556be6cf3b903f59371810493c0edc458",
+        "assets/femc/battle/art/weapons/plain-rapier5.webp": "3fe88aa62a7bc5bfdaaa0425ddd7f1e2ecfdc97fb1e96d637f6ace32069a9e77",
+        "assets/femc/battle/art/weapons/plain-rapier6.webp": "858f22e4187f2d7929adff1a99584578bd2169b10ee28d33624cc5e6d023330e",
+        "assets/femc/battle/art/weapons/plain-rapier7.webp": "d603e11953deef064ff55e0a589bd7b4e2e368bab1255932312cb6649d3fd76a",
+        "assets/femc/battle/art/weapons/plain-ice_rapier.webp": "fc36a3b5e3308c6edff2b50df8ffd8e4fe3864d606358456452c574e6d41730e"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "plain-guns.jpeg",
+      "sourceNow": "Added to Game/plain-guns.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "f2e9479d9f6a75567d19df8cda51ba47da64c6bd6ae226a788bdb0adc37fed9a",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/weapons/",
+      "intendedUse": "Plain shop guns (data.js gear gun0-7), build.js PLAIN_ART",
+      "conversion": "tools/femc-cards.py weapons (BUILD, grid 9, wide; ninth card empty); source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/weapons/plain-gun0.webp": "94667f250a229aacfc61ddf14e1cef7a262f64a5b387e1380206456e87f765a6",
+        "assets/femc/battle/art/weapons/plain-gun1.webp": "88a3cc1be4f3a2cc244a3d23e3ca06959cc825cb6c7a4fa81e47cd55a8e3bb8f",
+        "assets/femc/battle/art/weapons/plain-gun2.webp": "e3d6de7800e010e36a074ea1b7d5478815dd200443daa127cbe4f5f57bb96197",
+        "assets/femc/battle/art/weapons/plain-gun3.webp": "bda52b6df08282322c9372b2147e5cf951a13a9542cad079123d76814557c19b",
+        "assets/femc/battle/art/weapons/plain-gun4.webp": "bb476a48223664c3134c6c54ee7dca29f82ceae4596fa91c90187143eef80d61",
+        "assets/femc/battle/art/weapons/plain-gun5.webp": "30f691bad3d54bcf44a9fa8a1c2889a091934ce6ff99e4ba28c6c46c3f90338e",
+        "assets/femc/battle/art/weapons/plain-gun6.webp": "c4d3b28dd0e31c3d9d4504e4844fd9c93c6833b3123e0425616e0c5e2b719c83",
+        "assets/femc/battle/art/weapons/plain-gun7.webp": "9af645e29439acdb1ca6228156061d023a3bf0a714072d01917901f0d37bafb3"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "plain-spears.jpeg",
+      "sourceNow": "Added to Game/plain-spears.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "177a6c20939635667fe78d1930bbc03aa08d4f600c9e157ec6a51b89829796b7",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/weapons/",
+      "intendedUse": "Plain shop spears (data.js gear spear0-7), build.js PLAIN_ART",
+      "conversion": "tools/femc-cards.py weapons (BUILD, grid 9, rotate auto; ninth card empty); source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/weapons/plain-spear0.webp": "2c8e7bc6c65b1166dc1fee70541a88561bbc628769974588e12dca6e3963a2ea",
+        "assets/femc/battle/art/weapons/plain-spear1.webp": "da61c0f4fd32dab66d649b1234233be963da37d427f110f901dc754c9a1da5a4",
+        "assets/femc/battle/art/weapons/plain-spear2.webp": "66e90fd9179a5f3a1fbd3bcf77d53a0516af46ec824d41aa555c9c21bb3782a0",
+        "assets/femc/battle/art/weapons/plain-spear3.webp": "6c61747f1eba79bc16ec1a0e4276820bd5d94caef800b9ed7b48c9e908b90999",
+        "assets/femc/battle/art/weapons/plain-spear4.webp": "41909fb9ea8653c63aa91d0370cc38d3717fe019bdf2844331334f7d16c77fce",
+        "assets/femc/battle/art/weapons/plain-spear5.webp": "162734fcef9cb7f7de8bcfec2640fe978ed37687181b7b0cd3c52264127d0f1a",
+        "assets/femc/battle/art/weapons/plain-spear6.webp": "8aa41b776caa9f564914de6a5602719283c75cbf0d15b6b72a7d14b16f045b1b",
+        "assets/femc/battle/art/weapons/plain-spear7.webp": "07a465386f4396ad919282d962b652ca5a11b178c6fc9d880061ff20469847f5"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "plain-knives.jpeg",
+      "sourceNow": "Added to Game/plain-knives.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "135522f56a57e87e5297d605b8565cdad42164855ae23c83da179af22e467960",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/weapons/",
+      "intendedUse": "Plain shop knives (data.js gear knife0-7), build.js PLAIN_ART",
+      "conversion": "tools/femc-cards.py weapons (BUILD, grid 9, rotate auto; ninth card empty); source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/weapons/plain-knife0.webp": "18ee8d557485a3212df8a690bc850423da66907b3c7f1fb98877c8f0f7bcea38",
+        "assets/femc/battle/art/weapons/plain-knife1.webp": "03d4fb188a212fdfbd2a43f9a5f4ec4b60b556bddfb08b5d8eec3fd1c6cfd60d",
+        "assets/femc/battle/art/weapons/plain-knife2.webp": "0237cce13d985ea5e7ae8314d03f26b844d8d7de9ee705e850384e5beb41a4cf",
+        "assets/femc/battle/art/weapons/plain-knife3.webp": "69cad73d367b5b3a380417e80bc640950e44cd633375fe6b353ee8c1e8151134",
+        "assets/femc/battle/art/weapons/plain-knife4.webp": "ed11b849db5cc27e6aa00392f512203f1d30d2cc8b8117bcbd19c6894a75def0",
+        "assets/femc/battle/art/weapons/plain-knife5.webp": "b7fc4008402515fbacbc185f9ead8e924633061624b8ef1178a29ebc29979ada",
+        "assets/femc/battle/art/weapons/plain-knife6.webp": "c23991a17baf299dc533d0c8ae9ddf8c0928e949d33f6e1f1713b360b2562ea8",
+        "assets/femc/battle/art/weapons/plain-knife7.webp": "535f55bb528142961d8f3641eba0ce8d6e86a41c220b2cf4bbc404eac66d0982"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "plain-axes.jpeg",
+      "sourceNow": "Added to Game/plain-axes.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "7d5883395ffd9472c988a217ddc89fedc0f4d14040abc2fb81a4ee0dd622a5f9",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/weapons/",
+      "intendedUse": "Plain shop axes (data.js gear axe0-7), build.js PLAIN_ART",
+      "conversion": "tools/femc-cards.py weapons (BUILD, grid 9, rotate auto; ninth card empty); source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/weapons/plain-axe0.webp": "cbf41721f468962412e8984b6ac7e0e796143cd61f930a47b87f9a5d9a27fe3b",
+        "assets/femc/battle/art/weapons/plain-axe1.webp": "e1f6995eb8307cfc83cd645b02c17169d586e0092707b769b18894f33a6eaf84",
+        "assets/femc/battle/art/weapons/plain-axe2.webp": "6515e97fcbf8b2e1646131c6ad2332654d9329074496caed07ba985662443bf4",
+        "assets/femc/battle/art/weapons/plain-axe3.webp": "93e458fe7ce1ae616400c50188ada1998e30e5dc1e635eafe3db2ff054ef0d3c",
+        "assets/femc/battle/art/weapons/plain-axe4.webp": "695c6c16aad422da1b212fe5cd6d48193b13e6bab7ab10ba54949c18e18d6118",
+        "assets/femc/battle/art/weapons/plain-axe5.webp": "9cb6dac11f8b40424d29968ba1800a0396dd470eb206fb81f9cff709a83fbc0d",
+        "assets/femc/battle/art/weapons/plain-axe6.webp": "8ae4baeb7449ef75e96118193feb959fd7efa1a2e1799f51f0d22999340eba75",
+        "assets/femc/battle/art/weapons/plain-axe7.webp": "aa04e36659235d9e6d6b6813f1707a935dcdc39c5ffcafb3d882cc092583d35e"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "books-1.jpeg",
+      "sourceNow": "Added to Game/books-1.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "e0c92d86a80cc1186fcb907cd28cf3a99feaffac5e8f1c02e02dbecf334d9474",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/books/",
+      "intendedUse": "Bookworms covers (places.js books), core.js bookArt",
+      "conversion": "tools/femc-cards.py books (BUILD); source unchanged",
+      "outputs": {
+        "assets/femc/game/art/books/manga-school.webp": "783e9b35e72387d0382fd29f745a5b7edd75679e361f277b957eb264b361f025",
+        "assets/femc/game/art/books/poise.webp": "e425d039b2252b1f8d19e8fbc96184f9ace4a148e1860a084f2455260f02d034",
+        "assets/femc/game/art/books/tiger.webp": "26c9054463fd34fcb55fa6e9bd19b427f41361a74a68c8319e37c56ea1564d81",
+        "assets/femc/game/art/books/algebra.webp": "6107044b44f5da19ea3cea5cfecb0fea523d4cdc798cac05a1df4c30dd04ea15",
+        "assets/femc/game/art/books/speech.webp": "a3aef7bf955c7953f2a3b3acacca86c5b1d8d2e54f5a2364ccbfa719b70cc162",
+        "assets/femc/game/art/books/handmade.webp": "3337540dd6fb07592a4d4a5e5d787a65001106e0c9f0a66da5905f3723377423"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "books-2.jpeg",
+      "sourceNow": "Added to Game/books-2.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "9eaf87b9e431fef5e704664760a0d4899aeb96b44b20c12b75c78a17b05dbbc1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/books/",
+      "intendedUse": "Bookworms covers, sheet 2",
+      "conversion": "tools/femc-cards.py books (BUILD); last two cells empty; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/books/fixit.webp": "ce757677076289e8f7b0bcdd14680f1814acd5118569f4022531a7c3f09f15b4",
+        "assets/femc/game/art/books/letters.webp": "585fb66d035c60a5a6f5d8990edc387fcaf04bfb630a510f1e93d5e3124c4bca",
+        "assets/femc/game/art/books/kitchen.webp": "94e1d38de60ba0dfac64d3bca68c845e814eda39933e89f6437f921d7f284946",
+        "assets/femc/game/art/books/listening.webp": "8e379d7097e448d40d7c28bc055c457458c36d1617a55c6acbe9bce3dd0232a7"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keepsakes.jpeg",
+      "sourceNow": "Added to Game/keepsakes.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "e81a32aa235da60ceed36c18538429493b2dc9607710e050b0f07d72c19b3995",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/items/",
+      "intendedUse": "Birthday keepsakes (living-world.js gift ids), shown in the gift toast",
+      "conversion": "tools/femc-cards.py keepsakes (BUILD, boxes given: the bottom row has two cards between narrow empty ones); source unchanged",
+      "outputs": {
+        "assets/femc/game/art/items/keepsake-recorder.webp": "046cdf10df68cc23a4e16d32a0e471b9d4b50baec6fc4deb09b4348cf8854758",
+        "assets/femc/game/art/items/keepsake-omamori.webp": "d4358a2236fb10783d61a88f07302c4d9f1da0ebd8ce1fbb5a5d571e22825507",
+        "assets/femc/game/art/items/keepsake-cd.webp": "a188db53b5090841d47f2d697519269c39e0821d3a2d5ba4e3175998c458f807",
+        "assets/femc/game/art/items/keepsake-cord.webp": "c6b14ebefbad5153d618a6d9ea7a9b64c3656d0b0c25173e21cd2add4b80e11f",
+        "assets/femc/game/art/items/keepsake-socks.webp": "f052bf35194f96f74b71df4ed6b3606566e5539ededed08c1b0f01f6344ef3e1"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "sun-icons.png",
+      "sourceNow": "Added to Game/sun-icons.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "cece88cc9e8249f599cd3a0b44c9cc09fae764dd7232097febcf9dd7ffe351c7",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/sun/",
+      "intendedUse": "Haenim's sun node icons, sun.js iconFor",
+      "conversion": "tools/femc-greens.py all sun-icons (5x5, 96 px squares); source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/sun/crit.webp": "3ba53e61f3556d3db8dee8e840d93926fb19c7b342743a17c81683200ca83a64",
+        "assets/femc/battle/art/sun/speed.webp": "9341573ddff5a7b461db9c9ac0f27a6c4caa09cd1755072cdbdf67540a13414f",
+        "assets/femc/battle/art/sun/evade.webp": "d46142ecbaf0a8311657f7d3015201ee13dba39296825fc7938229ffb765b91f",
+        "assets/femc/battle/art/sun/counter.webp": "73b074af442933bb6fff6fb8e55f9198748f3332a89ea3335cf6d2e344576594",
+        "assets/femc/battle/art/sun/autobuff.webp": "5f611d6bb4e96471f3a7f3827ef620a272a201889297c78a95f81c09dc73c3ce",
+        "assets/femc/battle/art/sun/firstcut.webp": "0228aa34c29753177434faf58e73b593addd99c3795bd9184a008a024d0d0561",
+        "assets/femc/battle/art/sun/hpregen.webp": "340e9fdc89cc890a93f365ffee153cca64fa280c31ed175eca38714a344686c7",
+        "assets/femc/battle/art/sun/spregen.webp": "3a01efc93003329b6eb2f19f571dfb3e6f87e8ac02560fb69b6633263fd2544e",
+        "assets/femc/battle/art/sun/weak.webp": "10c0b56c6d37d48dcd583e373584e38ba09bbc66ff9707c364ce078db8e48d76",
+        "assets/femc/battle/art/sun/followup.webp": "31595f0b2ea1b0dedf58dc4eef1e818572bdf4b6d39a7734f50eb584440d1c06",
+        "assets/femc/battle/art/sun/ailment.webp": "bff18e63907f6f9f4214236d8d9b3a2855752c16fb3d060d963fec8310d166b1",
+        "assets/femc/battle/art/sun/ailturns.webp": "3d5f8295c0c637ba60857dbb18bf6bd7bf69c5d018d338c14b976df10a83d748",
+        "assets/femc/battle/art/sun/lowhp.webp": "6fd083095e0df04e4b501d378fcdee873302658fc573e98fdea8e0e486473391",
+        "assets/femc/battle/art/sun/physup.webp": "9f175749f5c86879d8d048c2190818e73b934803f2e637dfb80ae2efe1507f3e",
+        "assets/femc/battle/art/sun/magicup.webp": "41ad4d597e7a64ddf99bea535e9393ca0fc155b46ccf7e866180d964bdcc1db1",
+        "assets/femc/battle/art/sun/healup.webp": "f269976d9574b635ca36757ab3f2d896742bc78edb1949cb9bedf27154c3afcd",
+        "assets/femc/battle/art/sun/corona.webp": "61f0ad0785a73b71d6b957cfac98e23b79459f9784e8d185327d42abecba6c0c",
+        "assets/femc/battle/art/sun/bell.webp": "137fa277f596239bca97087faeca17d3c26f3852014dc96a3837122575da686b",
+        "assets/femc/battle/art/sun/momentum.webp": "3876e647278d32063e5db039b714a4300ef17011b5dd60954f0363565e6bc609",
+        "assets/femc/battle/art/sun/buffturns.webp": "0c02c4e33c4acad592ff70f255a2ed02c485c66941c3d149b8686d6c57f9ca7b",
+        "assets/femc/battle/art/sun/theurgy.webp": "cef9fcb255a4aedb84e07319f5fea1234069464375abe3adb938aed44a0af875",
+        "assets/femc/battle/art/sun/nullail.webp": "3c71b994739401cccbe6818d57a70afd53673fc9fa30456291f4e770aa28d94c",
+        "assets/femc/battle/art/sun/stat.webp": "e5ff526c4e2bec7c4e49b96e5760faf67467d0417ae155a8b0c91d8cb2a533e9",
+        "assets/femc/battle/art/sun/keystone.webp": "cb62471b2ab269878666ad36cbdefa0edc9f381899fd0a8705c2968195a379bf",
+        "assets/femc/battle/art/sun/memory.webp": "f9221091d7932ab37377dcf9bb3011ff91fba5f0e49d9981875455c24e49597b"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keychain-series-3.png",
+      "sourceNow": "Added to Game/keychain-series-3.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3e728c961520465851841fcc5f2c05eb4a19209522cf8edd08205305d7b5a93b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains (gacha.js SERIES), ready.js keys",
+      "conversion": "tools/femc-wardrobe.py keys, reading order as the art list gives it; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/cp-sees-photo.webp": "dde24b5159d49b8b96683c25ba1ef39a732c86b174584084d5ef1b6d75d17145",
+        "assets/femc/game/art/keys/series/hw-solar-haechan.webp": "db347dfab1e458bd1b0f0a97c06b769b5d439d287a061855ad317535d5771952",
+        "assets/femc/game/art/keys/series/hw-elizabeth.webp": "2b1d9fc80377ed7a837df3bc6df61909ae7a8a7253fa56f4f192d4a7792734fe",
+        "assets/femc/game/art/keys/series/su-solar-akihiko.webp": "5a6e0677239d60adf76fc1610acaf6f2b6c99782fdbdd068dcb2add306ac0c47",
+        "assets/femc/game/art/keys/series/wi-solar-shinjiro.webp": "8a2b8fcf842b49d551d7794afa935b42a3a7d95faae46f2cbed9eb9a911b6d32",
+        "assets/femc/game/art/keys/series/va-solar-jungwon.webp": "2c4754127215e6d9285e431bfded84d110248555bb58d285ff83ec47a46ff7be"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keychain-series-4.png",
+      "sourceNow": "Added to Game/keychain-series-4.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "fe8ccde53a3dfa7511fde92fe8dde1cf86a901482b7a61dd023736d5804ddab6",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains (gacha.js SERIES), ready.js keys",
+      "conversion": "tools/femc-wardrobe.py keys, reading order as the art list gives it; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/su-akihiko.webp": "69fa69a54e662214e89b9ce75511f3781295fc563dac566248714fcbc1451bc4",
+        "assets/femc/game/art/keys/series/su-yukari.webp": "4f06b77a391ca94edb9144f63b40c65908a0b27b56add05ebbe8de3544173bd9",
+        "assets/femc/game/art/keys/series/su-junpei.webp": "718a493bb8ac65cf372f34caa6a0486a99feee16ec8ca496f9c6a4365283a890",
+        "assets/femc/game/art/keys/series/su-mitsuru.webp": "f8cd0c8ccdb0399d762c9c79124a969a59bd92119a94b7feb8957eb21066fee7",
+        "assets/femc/game/art/keys/series/su-fuuka.webp": "0dd57c25e287df836fa16c6c55e153ae7712e53563f674a13e44cf38d4e5f6f1",
+        "assets/femc/game/art/keys/series/su-jungwon.webp": "ec78f3865c97752f40716c649af8265b8d42d1e08f1b086510f97a76abe06728"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keychain-series-5.png",
+      "sourceNow": "Added to Game/keychain-series-5.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e9cdac27e70854f8fd33d33fcae4f30dcdcdfba3eabdf0039cc3d90a22339430",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains (gacha.js SERIES), ready.js keys",
+      "conversion": "tools/femc-wardrobe.py keys, reading order as the art list gives it (two charms touch across the row line: parted at y=511); source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/su-solar.webp": "99d149546879ebb73af13b07dc9b395b278ce2b402c5dc02b6302a544840706f",
+        "assets/femc/game/art/keys/series/su-haechan.webp": "8fcbdf4eb89706cc32c4cf36e258c450f34507015016b34c0a31357c536c7052",
+        "assets/femc/game/art/keys/series/su-koro-melon.webp": "a4e91dad674c74024e59ae5030a5384fdd4f6569e058dc3a8c55dca493de0ecf",
+        "assets/femc/game/art/keys/series/wi-koro-reindeer.webp": "4f858f8a507cf3e79dd747e87972c81dcc434e382091af9c8f0012b14f9251cb",
+        "assets/femc/game/art/keys/series/va-kuromi-melody.webp": "379649bd50231984fc6660ca8c0c3f9c7beecff66706a2e13d7c871bf4958dda",
+        "assets/femc/game/art/keys/series/cast-elizabeth.webp": "78c66f670f5346df5d736789596a420d71f2e7653abc8ee2381501ad3a8c76db"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keychain-series-6.png",
+      "sourceNow": "Added to Game/keychain-series-6.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6b7ef05754fcc20cc8241c153686fdb809eff17af1d7bf273aa1cf595e148e1e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains (gacha.js SERIES), ready.js keys",
+      "conversion": "tools/femc-wardrobe.py keys, reading order as the art list gives it; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/wi-akihiko.webp": "26abcf5abcdef414cadf0a8f917c02cdda969e9c1a3bd0e10940529a39ef3227",
+        "assets/femc/game/art/keys/series/wi-shinjiro.webp": "d62f457f1496e91caa8322af010a2a67e759e5083c2bf53447ee73923a5febfd",
+        "assets/femc/game/art/keys/series/wi-mitsuru.webp": "766c1fa967c5253f56c53a6a45db75133f7a0eb0bfc0b3b5154266e588d5795b",
+        "assets/femc/game/art/keys/series/wi-fuuka.webp": "a279c01297913b5986fdf72d98bdae08f3fee74e242bad124d4ad27c10bdc893",
+        "assets/femc/game/art/keys/series/wi-aigis.webp": "07b46d494b6f77ceb8cf0d10d136076ed05dd9c6b56d9b0017a20a3788eca30c",
+        "assets/femc/game/art/keys/series/wi-jihoon.webp": "253692a2fb86e772fa533ffba2b404a970d838eb521353aeb100db52f5f6f95d"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keychain-series-7.png",
+      "sourceNow": "Added to Game/keychain-series-7.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ff0cdca247e7db4f3cc122d7cff981d0373c5a3be43ed2040170a793f435506a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains (gacha.js SERIES), ready.js keys",
+      "conversion": "tools/femc-wardrobe.py keys, reading order as the art list gives it; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/wi-minji.webp": "145cf3dcee0daeddf3a27d8727fd89f03966bed4d064ff92edac7b4f01960a2a",
+        "assets/femc/game/art/keys/series/wi-solar.webp": "1d5394e3f7f966d6ee790ad95343d10f909a197836831c8dc2410952606d20cb",
+        "assets/femc/game/art/keys/series/wi-jungwon.webp": "6cfb9a732646e367b06a939f5bcddbf5a3857dfb303e004b2ca96b4173dc0308",
+        "assets/femc/game/art/keys/series/va-solar.webp": "63aa33766ed29f3072f40e307d7693b3f632a11a99fad00025f3472491eaa45c",
+        "assets/femc/game/art/keys/series/va-akihiko.webp": "bd265eb6a5526ce6b7d93f6f6cf2e7ced3cd6edc95c8e43b3acf76aba071e560",
+        "assets/femc/game/art/keys/series/cast-goldsun.webp": "06bf5b22e5a71e0cec2da9c2916aef97c1edb9d04a431c925a4bd44328a79006"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keychain-series-8.png",
+      "sourceNow": "Added to Game/keychain-series-8.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ba9530609c272097966fdef308ce73515530e63af5bb423f340df1d748cb754a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains (gacha.js SERIES), ready.js keys",
+      "conversion": "tools/femc-wardrobe.py keys, reading order as the art list gives it; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/va-yukari.webp": "84f4fb9f3ac312701629a9f8bab0627a65089ffc30a98af822e2561e5ffd326c",
+        "assets/femc/game/art/keys/series/va-junpei.webp": "d375b8e6abc2a06872ce914f5f37c818a67d9657e8d2ab9cfad17a4cc6724369",
+        "assets/femc/game/art/keys/series/va-mitsuru.webp": "f8c29dcb5c52f99608837bedffc5a7618c1da52c01291cd53f44cb7a95baf63e",
+        "assets/femc/game/art/keys/series/va-hanni.webp": "332a9753e97b9c2641df5e59e5c42da1a1b395caf97264c2978876c9ed96f212",
+        "assets/femc/game/art/keys/series/va-hyein.webp": "06f80abebe3957dbee4538789e77b9a65ce409d3072fa6ed285237887f468d17",
+        "assets/femc/game/art/keys/series/va-jungwon.webp": "b9b5b640ebf0d6092fc2010d5ff9bf2bce151a978ab095cc8839daa5c197daa7"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keychain-series-9.png",
+      "sourceNow": "Added to Game/keychain-series-9.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a3a9fb5e590f1ee4904d49969e7febbb31599dd83c21b2f4f0fc0c7b8d3be55b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains (gacha.js SERIES), ready.js keys",
+      "conversion": "tools/femc-wardrobe.py keys, reading order as the art list gives it; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/sc-haechan-discman.webp": "c0c87053d79ea990655f366aa15e545ab7cc50d4c3b472c7497e3ac391da183d",
+        "assets/femc/game/art/keys/series/sc-haechan-plush.webp": "8579fa4009756f246805b52915e57b82098ca51ea5a5b7c6ce4d0742ca508eb5",
+        "assets/femc/game/art/keys/series/sc-dryer.webp": "91149a6c9f69e1fc1a551c963fb870ff9d84622761c067fdeac2f7f31dd8c7ee",
+        "assets/femc/game/art/keys/series/sc-earbuds.webp": "3ce1ad57e9f2902d7cc3ea2acddc57f2acc8bab5d655c4aa473b205ca32a2dee",
+        "assets/femc/game/art/keys/series/sc-gamers.webp": "0e23574987911bebe9e9afe6f305d7fcdaf5d83cb37855aff83439c8392d8384",
+        "assets/femc/game/art/keys/series/sc-morning.webp": "914f78690b27b737d55245f1e97ea42b873ec00fe83ab8ff4ad647424d074f33"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keychain-series-10.png",
+      "sourceNow": "Added to Game/keychain-series-10.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7d52453cb76880cee8cef12b27a3a01773cf6c1e774f9f56c94d598337148a5e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains (gacha.js SERIES), ready.js keys",
+      "conversion": "tools/femc-wardrobe.py keys, reading order as the art list gives it; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/sc-rooftop.webp": "0349c6c09a0d6dc5e3ceab01049a67452f797c29268164b24137a1bd83c87c7c",
+        "assets/femc/game/art/keys/series/sc-jacket.webp": "b0aa6956a020d382a15d6e487591b7135cf591e59e25731873d3f4f316f3dc60",
+        "assets/femc/game/art/keys/series/sc-forehead.webp": "632bd855e20ce0cff588fb6a0e422ba10b98f7e47fb9a60fc5bf277d8dd9eeed",
+        "assets/femc/game/art/keys/series/sc-christmas.webp": "a813f66e5282883224e8e7db7105040375e28584ec4eafa2b4cb1d46ad795c50",
+        "assets/femc/game/art/keys/series/sc-strangers.webp": "fcbbb5a13da8882a826ce52d69f628c72e2eda7c77642e69d74393ed581d8ac1",
+        "assets/femc/game/art/keys/series/sc-runners.webp": "da4089788228fc16cac7473f36e6a4a5eaaf088852b7e94bae128a40d8dac24d"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keychain-series-11.png",
+      "sourceNow": "Added to Game/keychain-series-11.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3a7036944d66c9498cdb075e00c53b69d3aafd4cb59d815b3f3fbbfb925c46cd",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains (gacha.js SERIES), ready.js keys",
+      "conversion": "tools/femc-wardrobe.py keys, reading order as the art list gives it; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/sc-twosuns.webp": "b7f62ec7bb625793204a3beb9f2e7de3d8fd8cc1cb09a92b2668d4be571a0c1a",
+        "assets/femc/game/art/keys/series/sc-held.webp": "d3f4c8cf549997548f04cb130fc08410bd3d49c5f5117396a4f8684a7d7e7617",
+        "assets/femc/game/art/keys/series/hd-couch.webp": "20f9c0ff714268a9f64618d88c4e09e3f4d09cc2cbd82279e41d86a92ee5d937",
+        "assets/femc/game/art/keys/series/hd-rings.webp": "ee1b42882e2618182b1b6f6d8fc49ef0d662afcc59763e6c5196bc80620e14c9",
+        "assets/femc/game/art/keys/series/hd-pairsuns.webp": "71feb16ccb25cd5be3e54681ae30be8c61b949f144fe9510f56c0b194a1f8b55",
+        "assets/femc/game/art/keys/series/hd-runners-roof.webp": "b8273eecca021f555eca7c08481c048114e3b38d64ea71d46571bfa57d35fc20"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keychain-series-12.png",
+      "sourceNow": "Added to Game/keychain-series-12.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "314ef187f353c0f6c1360a8ed1ccf103357316e7b23e024747daa1dd967b20ec",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains (gacha.js SERIES), ready.js keys",
+      "conversion": "tools/femc-wardrobe.py keys, reading order as the art list gives it; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/cp-solar-akihiko-2.webp": "a1f742b1235f01ccefa46328a290e28eaac8b3efb60bed39d2c56794a534807b",
+        "assets/femc/game/art/keys/series/cp-solar-jungwon-2.webp": "8b258e800ce9bd3749464fb9e80c99d40fab6fc2e055a4b3fb45fb4891d55604",
+        "assets/femc/game/art/keys/series/cp-solar-jihoon-2.webp": "f57fe271fa6b91a4339ed7c9f06e2a7b69b3b25fe5c8da08d4512c8d12947aa1",
+        "assets/femc/game/art/keys/series/su-solar-jungwon.webp": "a011a293c36ccfbd32fb74484268d9635e87f1b3119b6f1d71f2234d1fb3e0f8",
+        "assets/femc/game/art/keys/series/su-solar-minji.webp": "408adf1975f628b3b8ee4d687247c10f21b67925907554306c889857046104e1",
+        "assets/femc/game/art/keys/series/hw-solar-jihoon.webp": "aabd97915868fedc93caf84d987b4ad45fd41475cf9ad775ce7b07652f1aa803"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keychain-series-13.png",
+      "sourceNow": "Added to Game/keychain-series-13.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "5743a53b87c4dadd5b955630fbfb73d639d827b5eb37c3da504fed2177f8c9c9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains (gacha.js SERIES), ready.js keys",
+      "conversion": "tools/femc-wardrobe.py keys, reading order as the art list gives it; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/wi-solar-akihiko.webp": "a8691a9c286bd2dfd405ebd13d94809a2b4ea324d1a87501a65faed3fb0799bc",
+        "assets/femc/game/art/keys/series/va-solar-shinjiro.webp": "6eb7e1a4e6373c5c9ddb52337b8844f6634311ce069e93cb98b85b568065c912",
+        "assets/femc/game/art/keys/series/va-solar-minji.webp": "5d854599d3d8d268067a4df9ebac6d24fe56d6a10cee910de985b2dd6b01147b",
+        "assets/femc/game/art/keys/series/dl-koro-bee.webp": "1d70dc388aac768ea4e2e5caf911a9c291584ad2c458886056cdda38de2c7a21",
+        "assets/femc/game/art/keys/series/dl-koro-hero.webp": "4fcab3e7f0e4dff832bb3b94d5ba2891536d92739b971f0c686507cf67f38092",
+        "assets/femc/game/art/keys/series/dl-koro-sailor.webp": "f96afebb72a53ba1d4ee9d05a188ec5a0a02ebcc0063c06d0f00da6b6309dc7c"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keychain-series-14.png",
+      "sourceNow": "Added to Game/keychain-series-14.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c00a59387b8d99128a2054d15223d9e63cc7df0443899f280f1d8d95b6d8d6a8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains (gacha.js SERIES), ready.js keys",
+      "conversion": "tools/femc-wardrobe.py keys, reading order as the art list gives it; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/dl-akihiko-pj.webp": "2826b920744541c42abcac1b4cdfe09a90e6785c280ca19ddedac2988056fc12",
+        "assets/femc/game/art/keys/series/dl-junpei-pj.webp": "143bbd70d3e834cbc09a619f0cf294c9f2cff743064ddd44b1d85052772cb2cb",
+        "assets/femc/game/art/keys/series/dl-yukari-pj.webp": "0cafbcd91f118ab4c0206e28abf6a240d3964997c1cedb4ab3742695ff5301e2",
+        "assets/femc/game/art/keys/series/dl-mitsuru-pj.webp": "92c9deff0fd3665860d65b0c30b84c00ac1d0ae1473b465987b4dbaf5beea39d",
+        "assets/femc/game/art/keys/series/dl-fuuka-pj.webp": "b4e45c5659a54928362d46662ec24c37c89202de8fbf9a49a42d45302512ab79",
+        "assets/femc/game/art/keys/series/dl-solar-pj.webp": "2519b517ef6e32275bfbd8f085320431b36479fdd2c0e5140784c2ef4c09268b"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "keychain-series-15.png",
+      "sourceNow": "Added to Game/keychain-series-15.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e5860902e94eeeeca276bbcf863ead143a97c712761afbd9b9fd3f5021e508f4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/keys/series/",
+      "intendedUse": "Capsule series keychains (gacha.js SERIES), ready.js keys",
+      "conversion": "tools/femc-wardrobe.py keys, reading order as the art list gives it; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/keys/series/dl-hateclub.webp": "56ebc52856ee9ac8126f15a00a6adcce559eefa39812a4e04daccf365c0b7773",
+        "assets/femc/game/art/keys/series/dl-dorm-pj.webp": "dcf234c45fa4e1aa3daa75df92326ca8ec6d4c692eb8d1af5ca36162f6821d45",
+        "assets/femc/game/art/keys/series/dl-ken-pj.webp": "8f34948f6ccb8deb4018f2b9916cbeee35a63435e40b1368a4680f38cb227917",
+        "assets/femc/game/art/keys/series/dl-aigis-pj.webp": "ea278b1cd09d6d774c1ff50488f5bcd20ba97a96e4cc91f3eb3bc3791c6c53cf",
+        "assets/femc/game/art/keys/series/dl-koro-basket.webp": "54df86c4f648e4a9b383d490121d41eb184004188c2002bc2ee4693ee7b3a984",
+        "assets/femc/game/art/keys/series/dl-shinjiro-pj.webp": "afbcbfad8ddccf36de47b0ec9c28f4047d9c787c56705f57d4e90690ab2fda46"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "capsule-goods-1.png",
+      "sourceNow": "Added to Game/capsule-goods-1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c422f2d899655f7989eafbd6d22741bc49be66506a235c85a53737140f3ddcf9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/goods/",
+      "intendedUse": "Capsule goods (gacha.js GOODS), ready.js goods",
+      "conversion": "tools/femc-wardrobe.py goods; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/goods/gd-st-sees.webp": "a55fc9657b11e557d326f572bf9e3edfe842a7cc85aff4a88d2ac2bb707e1305",
+        "assets/femc/game/art/goods/gd-st-koro.webp": "53e8861caff2966f1163897a1fb8f1c7062a40f62919ef9d60b28bfb32b2a0aa",
+        "assets/femc/game/art/goods/gd-st-solchan.webp": "ebda1ae8f30f2ed757bb501eddb2ac45f9138a2d1011daa9c16abe6f4301970f",
+        "assets/femc/game/art/goods/gd-pl-koro.webp": "614fdb9ebe363a38983243b55797cc621e2612930a039cf09cca3853fb45291b",
+        "assets/femc/game/art/goods/gd-pl-solar.webp": "2648e3b5f16cdf11de7c2f9d908c9330a448014b13788070f9de74612f1742f3",
+        "assets/femc/game/art/goods/gd-as-solar.webp": "9c57d25c6341743e0088b808514a59661c79aa6647351f3cf21606a5a5cddd5a"
+      }
+    },
+    {
+      "batch": 52,
+      "source": "capsule-goods-2.png",
+      "sourceNow": "Added to Game/capsule-goods-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1d46bf66e8f905a66af9b9c19d39152771320fc88a4e335356776dc15fe1daf8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/goods/",
+      "intendedUse": "Capsule goods, sheet 2",
+      "conversion": "tools/femc-wardrobe.py goods; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/goods/gd-as-haechan.webp": "055da16415500fa10b8eadd76216f9121500d0e5833dd1e5e9b6b7fe97134074",
+        "assets/femc/game/art/goods/gd-as-akihiko.webp": "81a668e907f0ac284fde09949bf677f2c3538d34a470340a386d3340ab67d3b2",
+        "assets/femc/game/art/goods/gd-pc-akihiko.webp": "85fa0119bf1171f9bed8525eece69424488cf7aca28e9a4d17823cd27eefc26d",
+        "assets/femc/game/art/goods/gd-pc-shinjiro.webp": "92692b94acc86dac0536f6710465d3587bdf76009c5bf9634a849a671e213453",
+        "assets/femc/game/art/goods/gd-pc-jungwon.webp": "f2b0d17563f1585dcac81c183688141561730b8fcec3d94f37b7509ae8b88380",
+        "assets/femc/game/art/goods/gd-pc-haechan.webp": "0b014f660ec88a042c41fa6a9b8691d4a721ef162fa60f4d0f7ee6c4f40913b0"
+      }
     }
   ],
   "batch1Validation": {
@@ -12338,5 +12993,20 @@
       "python3 tools/femc-fx.py check: contact sheets on black, field purple and white for all 17 (no grid lines or halos)"
     ],
     "html": "femc-battle.html fx/index.js hash"
+  },
+  "batch52Validation": {
+    "date": "2026-10-26",
+    "scope": "plain shop weapons (9 sheets), Bookworms covers (2), birthday keepsakes, capsule keychain series sheets 3-15, capsule goods (2), Haenim sun node icons",
+    "sourcesInspected": "all 28 viewed before cutting; every cut reviewed on contact sheets (dark and white grounds)",
+    "sourcesIntegrated": 28,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked after the move)",
+    "layoutNotes": "keepsakes.jpeg: the bottom row is two cards between narrow empty frames (mapped by the art); plain-gloves.jpeg has printed names (blanked); keychain-series-5.png: su-haechan touches va-kuromi-melody (parted); every other sheet matches its item order",
+    "tests": [
+      "femc_cosmetics",
+      "femc_extras",
+      "femc_building --only menu,sees",
+      "femc_skills --only sun"
+    ]
   }
 }

@@ -718,13 +718,15 @@ window.FemcGame = (() => {
   }
   function addItem(id, n = 1) { S.inventory[id] = Math.max(0, (S.inventory[id] || 0) + n); if (!S.inventory[id]) delete S.inventory[id]; }
   /* { gift: { from: 'Mitsuru', item: { medicine: 2 }, gear: 'guard_ring' } }: a present (items into the bag, gear into what she
-     owns, the battle's gear list), with a toast naming it. */
+     owns, the battle's gear list), with a toast naming it. A keepsake ({ keepsake: 'text', id }) shows its picture in the toast. */
   function gift(g) {
     const B = D.battle, names = [];
     Object.entries(g.item || {}).forEach(([k, n]) => { addItem(k, n); names.push(`${B.items?.[k]?.name || k}${n > 1 ? ` ×${n}` : ''}`); });
     [].concat(g.gear || []).forEach(k => { if (B.gear?.[k] && !S.gear.includes(k)) S.gear.push(k); names.push(B.gear?.[k]?.name || k); });
     if (g.keepsake) names.push(g.keepsake);
-    if (names.length) toast('gift', `${g.from ? `From ${g.from}: ` : 'A gift: '}${names.join(', ')}`);
+    // A keepsake's picture (batch 52): `img` (a path under the site), else the keepsake's `id` -> game/art/items/keepsake-<id>.webp.
+    const img = g.img || (g.keepsake && g.id ? `assets/femc/game/art/items/keepsake-${g.id}.webp` : null);
+    if (names.length) toast('gift', `${g.from ? `From ${g.from}: ` : 'A gift: '}${names.join(', ')}`, img ? { img } : {});
   }
   /* ♪ toward a link's next rank from outside its own scenes (holiday days, the trip, late nights): only for a met link that
      isn't reversed or at MAX. The meter shows it the next time they spend time together. */
@@ -1010,6 +1012,8 @@ window.FemcGame = (() => {
     save(); return true;
   }
   const bookById = id => D.places.books.find(b => b.id === id);
+  // A book's cover (batch 52, Kat's books-1/2 sheets, tools/femc-cards.py -> game/art/books/<id>.webp); a book's own `img` wins.
+  const bookArt = b => (b && (b.img || `assets/femc/game/art/books/${b.id}.webp`)) || null;
   function readTonight() {
     const id = S.books.reading || S.books.owned.find(b => !S.books.done.includes(b));
     const b = bookById(id);
@@ -2249,7 +2253,7 @@ window.FemcGame = (() => {
     homeOf, leavesAtMax, maxOf, isMaxed, stretchOn, afterGap, afterList, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,
     flag, effect, branch, applyChoice, addFragment, fragmentInfo, worldOf,
     portrait, scale, name, castHas, silhouette, pendingFace, tarot, background, moodFor, sub, setDate, dateLabel,
-    activities, actById, showing, activityOk, activityInfo, doActivity, dormActs, dormInfo, dormOk, doDorm, doStudy, studyInfo, shopStock, buy, bookById, readTonight, matSellPrice, sellMat,
+    activities, actById, showing, activityOk, activityInfo, doActivity, dormActs, dormInfo, dormOk, doDorm, doStudy, studyInfo, shopStock, buy, bookById, bookArt, readTonight, matSellPrice, sellMat,
     perkOn, bondRank, dailyPerks, actCost, dozeChance, dozed, canRetryClass, useGuidance, classHint, studyBonus, weekly,
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift, packs, packPick, packFits,
     clubById, clubState, clubStats, clubScene, joinClub, finishClub, runInDue, runInFits, finishRunIn, countOk, vary, varyPool, secretsDue, findSecret,

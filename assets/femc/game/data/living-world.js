@@ -71,10 +71,10 @@ window.FEMC_GAME_LODGING = {
     { s: 'junpei', f: 'happy', t: "Mine's practical! Field kit! I made it myself! There's a baseball sticker on it, that's how you know it's mine." },
     { gift: { from: 'Junpei', item: { medicine: 3 } } },
     { s: 'fuuka', f: 'happy', t: "And... the cake. That's mine. And this. It's a recording. The roof at night, before the hour. I thought, you're always up there, but you're always there alone, so. Now you can hear it from anywhere." },
-    { gift: { from: 'Fuuka', keepsake: 'a recording of the dorm roof at night' } },
-    { ifMet: 'kiriko', then: [{ gift: { from: 'Kiriko', keepsake: 'a birthday omamori (the good paper)' } }] },
+    { gift: { from: 'Fuuka', id: 'recorder', keepsake: 'a recording of the dorm roof at night' } },
+    { ifMet: 'kiriko', then: [{ gift: { from: 'Kiriko', id: 'omamori', keepsake: 'a birthday omamori (the good paper)' } }] },
     { ifMet: 'mercy', then: [{ gift: { from: 'Mercy', item: { revival_bead: 1 } } }] },
-    { ifMet: 'sebastian', then: [{ gift: { from: 'Sebastian', keepsake: 'a burned CD with no tracklist' } }] },
+    { ifMet: 'sebastian', then: [{ gift: { from: 'Sebastian', id: 'cd', keepsake: 'a burned CD with no tracklist' } }] },
     { ifMet: 'shinjiro', then: [
       { n: "There was a box on the front step when Junpei went out to take the rubbish down. A plain white box, no card, no name. Inside it was a second cake, small and square and perfect, the kind of cake a person makes when they've made a great many and know exactly what they're doing, and Akihiko looked at it for a long moment and then laughed under his breath and didn't say whose it was." },
       { s: 'akihiko', f: 'happy', t: "He'll say he didn't make it. Thank him anyway. It'll drive him crazy." }
@@ -83,11 +83,11 @@ window.FEMC_GAME_LODGING = {
     { ifRank: { akihiko: 1 }, then: [
       { n: "A new cord for the stopwatch. Red, braided, the frayed one replaced. He'd noticed. Of course he'd noticed. He noticed when she was a tenth of a second slower on the bridge." },
       { s: 'akihiko', f: 'blushing', t: "The old one was going to snap. You'd lose it in the river. That's all." },
-      { gift: { from: 'Akihiko', keepsake: 'a red cord for the stopwatch' } }
+      { gift: { from: 'Akihiko', id: 'cord', keepsake: 'a red cord for the stopwatch' } }
     ], else: [
       { n: "A pair of running socks, the good kind, gray with a red stripe, and a protein bar on top, which he said was the important part." },
       { s: 'akihiko', f: 'neutral', t: "You run like you're late for something. You'll get blisters. That's all." },
-      { gift: { from: 'Akihiko', keepsake: 'running socks (and a protein bar)' } }
+      { gift: { from: 'Akihiko', id: 'socks', keepsake: 'running socks (and a protein bar)' } }
     ] },
     { ifCrush: { akihiko: ['noticed', 'crush', 'puppy', 'almost'] }, then: [
       { n: "Of everything in her lap, it was the one she was still holding when the second slice had been argued over and eaten. She noticed that. So, from the doorway, did Yukari, who noticed everything and was saving it." }

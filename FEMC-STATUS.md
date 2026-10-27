@@ -112,6 +112,7 @@ Other docs, if you ever want detail:
 - ✅ Art batch 48: your art on the last 15 accessories (the Velvet Room's and the capsule prizes too), every battle item and material (the Items menu, shops, chests, drops and results), the nine new Tartarus map rooms, the group-chat pictures, all six phone cases, the Tartarus loading still in the Dark Hour fade, and two new stills for Rio and Saori
 - ✅ Art batch 49: bond Showtimes for almost everyone (Haechan's friendship one is still to come). Your friendship sets for Yukari, Junpei, Mitsuru, Aigis, Ken, Koromaru, Jihoon (Main Event) and Minji (Long Take), and your romance sets for Jihoon (Royal Pair, the gold crown at rank 15), Jungwon (Jade Ring, Signed in Full at 15), Minji (Keep This One, the sunrise at 15) and Shinjiro (Warm Hands; Seconds stays his friendship one)
 - ✅ Art batch 50: big and critical versions of your skill effects. Strike, Pierce, Fire, Ice, Elec, Wind, Light and Dark each have a Heavy sheet (for -ma, -dyne and all-foe skills) and a Critical one (on crits), and Almighty has its Heavy one (its Critical one is still to make)
+- ✅ Art batch 52: your art on every plain shop weapon (all nine kinds, the five element weapons too), the Bookworms covers, the five birthday keepsakes (they show in the gift's toast), keychain series sheets 3–15 (Summer, Winter, Valentine's, Solchan, the hidden charms, the romance charms, Dorm Life), both capsule goods sheets, and icons on Haenim's sun
 
 ## Music and polish
 - ✅ 57 songs, rotating with no repeats, plus world songs in memories, arrivals, calls and endings

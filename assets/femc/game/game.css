@@ -75,6 +75,8 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
 .g-toast.k-fragment { border-color: #8fb0ff; box-shadow: 5px 5px 0 rgba(60, 110, 255, .45); }
 .g-toast.k-yen { color: var(--gold); }
 .g-toast.k-text { background: rgba(255, 255, 255, .96); color: var(--night); border-color: var(--pink); cursor: pointer; font: 600 14px/1.3 var(--sans); transform: none; border-radius: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g-toast.has-img { display: flex; align-items: center; gap: 10px; padding-left: 8px; }
+.g-toast.has-img img { flex: none; width: 54px; height: 38px; object-fit: contain; background: #fff; border: 1.5px solid var(--gold); transform: skewX(8deg); }
 .g-toast.out { transition: opacity .4s, transform .4s; opacity: 0; transform: translateY(-14px) skewX(-8deg); }
 @keyframes g-toast { from { opacity: 0; transform: translateX(40px) skewX(-8deg); } }
 
@@ -1105,6 +1107,7 @@ button.g-st-link:is(:hover, :focus-visible) { outline: none; border-color: #fff;
 .g-shop-art.wide { width: 54px; height: 38px; }
 .g-shop-art.icon { width: 30px; height: 30px; object-fit: contain; border: 0; } /* item and material stickers (build.js ITEM_ART) */
 .g-act.has-art:has(.g-shop-art.wide) { grid-template-columns: 58px minmax(0, 1fr) auto; }
+.g-shop-art.book { width: 30px; height: 44px; object-fit: contain; border: 0; } /* Bookworms' covers (batch 52) */
 .g-shop-tabs { gap: 6px; margin: 4px 0 8px; }
 .g-shop-tabs:empty { display: none; }
 .g-quiz-a .g-btn.hinted { opacity: .35; text-decoration: line-through; }

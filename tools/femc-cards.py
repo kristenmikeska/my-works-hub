@@ -17,7 +17,10 @@
         as tall as the card face's art window (88:114, menu.js / icons.js revCard) needs. 540x700.
   python3 tools/femc-cards.py gear SHEET.png id1 ... id6
         A 3x2 sheet (or 3x1 strip) of armor / accessory cards on white (no names) -> assets/femc/battle/art/gear/<id>.webp (wide canvas).
-  python3 tools/femc-cards.py all
+  python3 tools/femc-cards.py all [--only plain- keepsakes books-]
+        (also: keepsakes and books lines in BUILD, batch 52 -> game/art/items/keepsake-<id>.webp, game/art/books/<id>.webp;
+        a weapons line may take grid 9 (3x3 sheets, frames found per cell), rotate 'auto' (each card stood upright on its
+        own long axis), boxes, and None for an empty card)
         Rebuild everything in BUILD below from New Adds/ or Added to Game/ (wherever each source is now).
 """
 import os, sys, argparse
@@ -75,6 +78,40 @@ def blank_name(card, span=(0.3, 0.7)):
         card.paste((255, 255, 255), (xs.start - 2, y0 + ys.start - 2, xs.stop + 2, y0 + ys.stop + 2))
 
 
+def cell_boxes(a, cols=3, rows=3):
+    """Card frames of a cols x rows sheet, found one cell at a time (batch 52: the plain-weapon 3x3 sheets, whose faint or
+    doubled frame lines defeat card_boxes). Each grid cell's own frame is the grey line nearest its edges, looked for in
+    the outer 15% of the cell (the innermost one there); a cell with none (or an unframed sheet) keeps a 2% margin. Reading order, inside the line."""
+    H, W = a.shape
+    grey = (a > 120) & (a < 232)
+    out = []
+    for r in range(rows):
+        for c in range(cols):
+            x0, x1, y0, y1 = W * c // cols, W * (c + 1) // cols, H * r // rows, H * (r + 1) // rows
+            g = grey[y0:y1, x0:x1]
+            def edge(frac, n, lo):
+                band = range(0, int(n * .15)) if lo else range(n - 1, int(n * .85), -1)
+                hits = [i for i in band if frac[i] > .75]  # a frame line is grey nearly all the way; a glow or a blade isn't
+                if not hits: return int(n * .02) if lo else n - int(n * .02)
+                return (max(hits) + 6) if lo else (min(hits) - 6)  # the innermost line (the next card's can sit outside it)
+            fx, fy = g.mean(0), g.mean(1)
+            out.append((x0 + edge(fx, x1 - x0, True), y0 + edge(fy, y1 - y0, True), x0 + edge(fx, x1 - x0, False), y0 + edge(fy, y1 - y0, False)))
+    return out
+
+
+def upright(card):
+    """The weapon's long axis (principal axis of its ink), as degrees counter-clockwise that stand it up."""
+    g = np.asarray(card.convert('L')).astype(int) < 225
+    ys, xs = np.nonzero(g)
+    if len(xs) < 50: return 0
+    xs = xs - xs.mean(); ys = ys - ys.mean()
+    cov = np.cov(np.stack([xs, -ys]))
+    w, v = np.linalg.eigh(cov)
+    vx, vy = v[:, w.argmax()]
+    ang = np.degrees(np.arctan2(vy, vx)) % 180  # 0 = lying flat, 90 = upright
+    return 90 - ang  # positive: counter-clockwise
+
+
 def weapon_cut(card, rotate, aspect=0.46, pad=0.05, names='box'):
     """The weapon alone from one card: blank the printed name (centred along the card's bottom edge; the pommels sit to
     its left), turn it, trim, and centre it on a white canvas of the naginata cards' shape (or `aspect`)."""
@@ -82,8 +119,10 @@ def weapon_cut(card, rotate, aspect=0.46, pad=0.05, names='box'):
     w0, h0 = card.size
     if names == 'auto': blank_name(card)
     elif names == 'auto-wide': blank_name(card, (0.12, 0.88))  # a long two- or three-word name (Akihiko's, Aigis's sheets)
+    elif names == 'strip': card.paste((255, 255, 255), (0, int(h0 * 0.87), w0, h0))  # names in their own strip under the art (plain gloves)
     elif names == 'none': pass  # an unlabelled sheet (Junpei's, Shinjiro's and the twelve-card ones)
     else: card.paste((255, 255, 255), (int(w0 * 0.27), int(h0 * 0.9), int(w0 * 0.73), h0))
+    if rotate == 'auto': rotate = upright(card); print(f'    turned {rotate:.0f} degrees')
     im = card.rotate(rotate, resample=Image.BICUBIC, expand=True, fillcolor=(255, 255, 255)) if rotate else card.convert('RGB')
     g = np.asarray(im.convert('L')).astype(int) < 238
     ys, xs = np.nonzero(g)
@@ -109,13 +148,17 @@ GRID3A = [(x0, y0, x1, y1) for y0, y1 in _ROWS for x0, x1 in [(111, 844), (884, 
 GRID6 = [(x0, y0, x1, y1) for y0, y1 in _ROWS for x0, x1 in [(111, 476), (525, 864), (911, 1256), (1300, 1649), (1694, 2043), (2086, 2433)]]
 
 
-def weapons(src, prefix, names, rotate=45, dst=WEAPONS, auto_names=False, wide=False, grid=None, pick=None, labels=None):
+def weapons(src, prefix, names, rotate=45, dst=WEAPONS, auto_names=False, wide=False, grid=None, pick=None, labels=None, boxes=None):
     """grid: 3, '3a' or 6 (GRID3 / GRID3A / GRID6) instead of finding the frames; pick: which cards (reading-order indexes) the names are
     for, when a sheet has more cards than weapons (Yukari's, Mitsuru's and Koromaru's have twelve or eleven: two takes on
     most themes, and Kat's six are picked from them)."""
     im = Image.open(src).convert('RGB')
-    boxes = {3: GRID3, '3a': GRID3A, 6: GRID6}[grid] if grid else card_boxes(np.asarray(im.convert('L')).astype(int))
+    L = np.asarray(im.convert('L')).astype(int)
+    if not boxes:
+        boxes = cell_boxes(L, 3, 3) if grid == 9 else {3: GRID3, '3a': GRID3A, 6: GRID6}[grid] if grid else card_boxes(L)
     if pick: boxes = [boxes[i] for i in pick]
+    if any(n is None for n in names):  # an empty card on the sheet
+        boxes, names = zip(*[(b, n) for b, n in zip(boxes, names) if n is not None])
     if len(names) != len(boxes): raise SystemExit(f'{len(boxes)} cards, {len(names)} names')
     for box, name in zip(boxes, names):
         print(' ', name, 'card', box)
@@ -125,6 +168,41 @@ def weapons(src, prefix, names, rotate=45, dst=WEAPONS, auto_names=False, wide=F
 
 
 GEAR = os.path.join(ROOT, 'assets/femc/battle/art/gear')
+ITEMS = os.path.join(ROOT, 'assets/femc/game/art/items')
+BOOKS = os.path.join(ROOT, 'assets/femc/game/art/books')
+
+
+def keepsakes(src, ids, boxes):
+    """The birthday keepsakes (batch 52): cards on white like the gear, at given boxes (Kat's sheet has three cards on top and
+    two between narrow empty ones below) -> game/art/items/keepsake-<id>.webp on the wide canvas."""
+    return weapons(src, 'keepsake', ids, rotate=0, dst=ITEMS, wide=True, labels='none', boxes=boxes)
+
+
+def books(src, ids, cols=3, rows=2):
+    """Bookworms' covers (batch 52): a 3x2 sheet of unframed book covers on white or pale grey. Each cell's cover is its
+    biggest patch that differs from the cell's own background (a faint grid line or page shadow doesn't count); trimmed to
+    it and kept as drawn -> game/art/books/<id>.webp, 420 px tall at most. None = an empty cell."""
+    from scipy import ndimage as ndi
+    im = Image.open(src).convert('RGB'); a = np.asarray(im).astype(int)
+    H, W = a.shape[:2]
+    for i, name in enumerate(ids):
+        if name is None: continue
+        r, c = divmod(i, cols)
+        x0, x1, y0, y1 = W * c // cols, W * (c + 1) // cols, H * r // rows, H * (r + 1) // rows
+        cell = a[y0:y1, x0:x1]
+        ring = np.concatenate([cell[:12].reshape(-1, 3), cell[-12:].reshape(-1, 3), cell[:, :12].reshape(-1, 3), cell[:, -12:].reshape(-1, 3)])
+        bg = np.median(ring, axis=0)  # the cell's own edge (a cover can fill most of the cell)
+        m = np.abs(cell - bg).max(2) > 28
+        m = ndi.binary_opening(m, iterations=3)
+        lab, n = ndi.label(m)
+        if not n: raise SystemExit(f'{src}: nothing in cell {i} ({name})')
+        k = 1 + int(np.argmax(ndi.sum(m, lab, range(1, n + 1))))
+        ys, xs = np.nonzero(ndi.binary_fill_holes(lab == k))
+        box = (x0 + xs.min(), y0 + ys.min(), x0 + xs.max() + 1, y0 + ys.max() + 1)
+        print(' ', name, 'cover', box)
+        out = im.crop(box)
+        if out.height > 420: out = out.resize((round(out.width * 420 / out.height), 420), Image.LANCZOS)
+        save(out, os.path.join(BOOKS, name + '.webp'), q=88)
 
 
 def gear(src, ids, pick=None):
@@ -199,6 +277,22 @@ BUILD = [
     ('gear', 'accessories-sheet4.1.png', ['cap_koro_charm', 'cap_feather_pin', 'cap_jack_frost']),
     ('gear', 'accessories-sheet4.2.png', ['cap_moon_locket', 'cap_gold_sun', 'vel_butterfly']),
     ('gear', 'accessories-sheet5.png', (['vel_key', 'vel_compendium', 'vel_coat'], [0, 1, 2])),
+    # Batch 52 (2026-10-26): the plain shop weapons (3x3 sheets; ids are data.js gear, tiers 0-7 then the element weapon;
+    # None = the empty ninth card), turned upright one by one. Gloves have printed names; gloves and arm guns stay wide.
+    ('weapons', 'plain-naginatas.jpeg', ('plain', [f'naginata{t}' for t in range(8)] + ['sun_naginata'], {'grid': 9, 'rotate': 'auto', 'labels': 'none'})),
+    ('weapons', 'plain-gloves.jpeg', ('plain', [f'gloves{t}' for t in range(8)] + ['thunder_fist'], {'grid': 9, 'rotate': 0, 'labels': 'strip', 'wide': True})),
+    ('weapons', 'plain-bows.jpeg', ('plain', [f'bow{t}' for t in range(8)] + ['gale_bow'], {'grid': 9, 'rotate': 'auto', 'labels': 'none'})),
+    ('weapons', 'plain-greatswords.jpeg', ('plain', [f'greatsword{t}' for t in range(8)] + ['blaze_blade'], {'grid': 9, 'rotate': 'auto', 'labels': 'none'})),
+    ('weapons', 'plain-rapiers.jpeg', ('plain', [f'rapier{t}' for t in range(8)] + ['ice_rapier'], {'grid': 9, 'rotate': 'auto', 'labels': 'none'})),
+    ('weapons', 'plain-guns.jpeg', ('plain', [f'gun{t}' for t in range(8)] + [None], {'grid': 9, 'rotate': 0, 'labels': 'none', 'wide': True})),
+    ('weapons', 'plain-spears.jpeg', ('plain', [f'spear{t}' for t in range(8)] + [None], {'grid': 9, 'rotate': 'auto', 'labels': 'none'})),
+    ('weapons', 'plain-knives.jpeg', ('plain', [f'knife{t}' for t in range(8)] + [None], {'grid': 9, 'rotate': 'auto', 'labels': 'none'})),
+    ('weapons', 'plain-axes.jpeg', ('plain', [f'axe{t}' for t in range(8)] + [None], {'grid': 9, 'rotate': 'auto', 'labels': 'none'})),
+    # Batch 52: the five birthday keepsakes (three cards on top, two between empty ones below: boxes given) and the books.
+    ('keepsakes', 'keepsakes.jpeg', (['recorder', 'omamori', 'cd', 'cord', 'socks'],
+        [(111, 26, 864, 827), (911, 26, 1649, 827), (1694, 26, 2434, 827), (525, 866, 1256, 1661), (1300, 866, 2044, 1661)])),
+    ('books', 'books-1.jpeg', ['manga-school', 'poise', 'tiger', 'algebra', 'speech', 'handmade']),
+    ('books', 'books-2.jpeg', ['fixit', 'letters', 'kitchen', 'listening', None, None]),
 ]
 
 
@@ -217,7 +311,7 @@ def main():
     p = sub.add_parser('gear'); p.add_argument('src'); p.add_argument('ids', nargs='+')
     p = sub.add_parser('finish'); p.add_argument('src'); p.add_argument('mid')
     p = sub.add_parser('revcard'); p.add_argument('src'); p.add_argument('set'); p.add_argument('x0', type=float); p.add_argument('y0', type=float); p.add_argument('x1', type=float)
-    sub.add_parser('all')
+    p = sub.add_parser('all'); p.add_argument('--only', nargs='+', help='just the BUILD lines whose source name contains one of these')
     a = ap.parse_args()
     if a.cmd == 'weapons': weapons(a.src, a.prefix, a.names, a.rotate, auto_names=a.labels == 'auto', wide=a.wide)
     elif a.cmd == 'gear': gear(a.src, a.ids)
@@ -225,10 +319,13 @@ def main():
     elif a.cmd == 'revcard': revcard(a.src, a.set, a.x0, a.y0, a.x1)
     else:
         for kind, src, arg in BUILD:
+            if a.only and not any(o in src for o in a.only): continue
             print(kind, src)
             if kind == 'weapons': weapons(source(src), arg[0], arg[1], **(arg[2] if len(arg) > 2 else {}))
             elif kind == 'revcard': revcard(source(src), *arg)
             elif kind == 'gear': gear(source(src), *(arg if isinstance(arg, tuple) else (arg,)))
+            elif kind == 'keepsakes': keepsakes(source(src), *arg)
+            elif kind == 'books': books(source(src), arg)
             else: finish(source(src), arg)
 
 

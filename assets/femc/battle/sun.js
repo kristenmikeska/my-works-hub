@@ -44,7 +44,38 @@ window.FemcSun = (() => {
     charge: 'M13 2L5 14h6l-1 8 8-12h-6z', taunt: 'M12 3l8 3v6c0 5-3.4 8.2-8 9.6C7.4 20.2 4 17 4 12V6z', ward: 'M12 3l8 3v6c0 5-3.4 8.2-8 9.6C7.4 20.2 4 17 4 12V6z',
     cure: 'M9.5 4h5v5.5H20v5h-5.5V20h-5v-5.5H4v-5h5.5z', dispel: 'M5 5l14 14M19 5L5 19', kitsune: 'M4 4l5 5h6l5-5-1 9c0 4-3 7-7 8-4-1-7-4-7-8z', bluff: 'M6 4h9l3 3v13H6z' };
   const svg = (d, fill, extra = '') => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}" fill="${fill}" stroke="#0a1230" stroke-width="1.6" stroke-linejoin="round" ${extra}/></svg>`;
+  /* Kat's node icons (batch 52, tools/femc-greens.py -> art/sun/<name>.webp): a node's own `icon` (one of these names), else
+     the first passive key in its fx that has one, else a plain stat boost; keystones, unread memories ('hidden') too.
+     Skills keep their drawn glyph (the menu shows the skill's own icon). The drawn glyph stays under the picture, so a
+     file that fails to load just leaves it. */
+  const ICON_DIR = 'assets/femc/battle/art/sun/', ICON_V = 1;
+  const ICONS = new Set(['crit', 'speed', 'evade', 'counter', 'autobuff', 'firstcut', 'hpregen', 'spregen', 'weak', 'followup', 'ailment', 'ailturns',
+    'lowhp', 'physup', 'magicup', 'healup', 'corona', 'bell', 'momentum', 'buffturns', 'theurgy', 'nullail', 'stat', 'keystone', 'memory']);
+  const PASSIVE_ICON = { critUp: 'crit', critAdd: 'crit', critIf: 'crit', critMult: 'crit', crit: 'crit', ropeCrit: 'crit', haste: 'speed', quick: 'speed',
+    evade: 'evade', flank: 'evade', counter: 'counter', openBuff: 'autobuff', partyOpen: 'autobuff', firstCut: 'firstcut', firstFree: 'firstcut',
+    hpRegen: 'hpregen', regen: 'hpregen', guardHeal: 'hpregen', spRegen: 'spregen', weakUp: 'weak', weakSp: 'weak', weakMult: 'weak', autoAnalyze: 'weak',
+    followUp: 'followup', ailUp: 'ailment', ailDmg: 'ailment', bind: 'ailment', freezeUp: 'ailment', ailTurns: 'ailturns', bindTurns: 'ailturns',
+    lowHpUp: 'lowhp', endure: 'lowhp', physUp: 'physup', alloutMult: 'physup', magicUp: 'magicup', healMult: 'healup', corona: 'corona',
+    guardianBell: 'bell', momentum: 'momentum', buffTurns: 'buffturns', debuffTurns: 'buffturns', thStart: 'theurgy', thMult: 'theurgy',
+    shiftTh: 'theurgy', shiftMult: 'theurgy', shiftSp: 'theurgy', nullAil: 'nullail', resist: 'nullail' };
+  const STATS = ['st', 'ma', 'en', 'ag', 'lu', 'hp', 'sp'];
+  function iconFor(n, st) {
+    if (st === 'hidden') return 'memory';
+    if (n.icon && ICONS.has(n.icon)) return n.icon;
+    if (n.id === 'sun1') return null;
+    if (n.keystone) return 'keystone';
+    const e = n.fx || {};
+    if (e.learn) return null;
+    const k = Object.keys(e).find(key => PASSIVE_ICON[key]);
+    if (k) return PASSIVE_ICON[k];
+    if (Object.keys(e).some(key => STATS.includes(key))) return 'stat';
+    return n.memory ? 'memory' : null;
+  }
   function glyph(n, st) {
+    const ic = iconFor(n, st), drawn = drawnGlyph(n, st);
+    return ic ? `${drawn}<img class="sun-ico" src="${ICON_DIR}${ic}.webp?v=${ICON_V}" alt="" onerror="this.remove()">` : drawn;
+  }
+  function drawnGlyph(n, st) {
     if (st === 'hidden') return '<svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17.5" text-anchor="middle" font-size="16" font-weight="800" fill="#9fb4e8">?</text></svg>';
     const e = n.fx || {};
     if (n.id === 'sun1') return '<svg viewBox="0 0 24 24" aria-hidden="true"><g stroke="#8a3a10" stroke-width="2.2" stroke-linecap="round"><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></g><circle cx="12" cy="12" r="5.6" fill="#fff6c8" stroke="#8a3a10" stroke-width="1.6"/></svg>';
@@ -212,6 +243,12 @@ window.FemcSun = (() => {
   .sun-n.hidden .gem svg { opacity: 1; filter: none; }
   .sun-n.mem .gem { border-radius: 7px; transform: rotate(45deg); } .sun-n.mem .gem svg { transform: rotate(-45deg); }
   .sun-n.hyb .gem { border-radius: 8px; }
+  .sun-n .gem { position: relative; }
+  .sun-n .gem img.sun-ico { position: absolute; left: 3%; top: 3%; width: 94%; height: 94%; object-fit: contain; opacity: .55; filter: grayscale(.6); pointer-events: none; }
+  .sun-n .gem:has(> img.sun-ico) > svg { visibility: hidden; }
+  .sun-n.avail .gem img.sun-ico, .sun-n.own .gem img.sun-ico, .sun-n.hidden .gem img.sun-ico, .sun-n.sel .gem img.sun-ico { opacity: 1; filter: none; }
+  .sun-n.mem .gem img.sun-ico { transform: rotate(-45deg); }
+  .sun-n.key .gem:has(> img.sun-ico) { clip-path: none; border-radius: 50%; }
   .sun-n.key { width: 52px; height: 52px; margin: -26px 0 0 -26px; }
   .sun-n.key .gem { clip-path: polygon(50% 0, 64% 30%, 98% 35%, 72% 58%, 80% 94%, 50% 76%, 20% 94%, 28% 58%, 2% 35%, 36% 30%); border-radius: 0; }
   .sun-n.key b, .sun-n.sel b { display: block; }
