@@ -191,7 +191,7 @@ try:
           const r=G.dailyLife();if(r){G.finishDailyLife(r.id);plays.push([info.md,slot,r.id,d,info.type]);}}}
       const ids=plays.map(x=>x[2]),optional=G.D.events.filter(e=>e.unlock||(e.flag&&e.flag!=='year-goes-on')).map(e=>e.id);
       // Routines behind a link's rank or route (the rank-15 batch's buzz) need that link's progress; femc_rank15.py plays them.
-      const missing=G.D.dailyLife.filter(e=>!ids.includes(e.id)&&!(e.events||[]).some(id=>optional.includes(id))&&!e.ranks&&!e.ranksBelow&&!e.route).map(e=>e.id);
+      const missing=G.D.dailyLife.filter(e=>!ids.includes(e.id)&&!(e.events||[]).some(id=>optional.includes(id))&&!(e.flags||[]).some(f=>f.startsWith('found-'))&&!e.ranks&&!e.ranksBelow&&!e.route).map(e=>e.id);
       let gap=0,where='';for(let i=1;i<plays.length;i++){const g=plays[i][3]-plays[i-1][3];if(g>gap){gap=g;where=plays[i-1][0]+'→'+plays[i][0];}}
       return {n:plays.length,unique:new Set(ids).size,missing,gap,where,trip:plays.filter(x=>x[4]==='trip').length,slots:[...new Set(plays.map(x=>x[1]))].sort(),first:plays[0][0],last:plays.at(-1)[0],
         months:[...new Set(plays.map(x=>x[0].split('/')[0]))].length}})()""")
