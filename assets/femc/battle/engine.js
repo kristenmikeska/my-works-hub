@@ -379,10 +379,15 @@ window.FemcBattleEngine = (() => {
     const aff = Object.assign({}, per.aff);
     [g.armor, g.acc].forEach(x => x && x.aff && Object.entries(x.aff).forEach(([el, a]) => { if (!['null', 'repel', 'drain'].includes(aff[el])) aff[el] = a; }));
     // Tree passives: Solar's from Haenim's tree, everyone else's from their own.
-    const pf = mid === 'solar' ? null : ptreeFx(save, mid), hu = mid === 'solar' ? fx.unit : null, pv = hu || pf; // pv: the passives (sun or tree)
+    // Solar's Echo (echoes.js): its passive joins the sun's before the caps (a copy, so the shared fx stays the sun's alone).
+    const ech = mid === 'solar' && window.FemcEchoes ? window.FemcEchoes.layerOf(save) : null;
+    const sunPv = mid === 'solar' ? (ech ? capPassives(addPassives(JSON.parse(JSON.stringify(fx.unit)), ech.passive)) : fx.unit) : null;
+    const pf = mid === 'solar' ? null : ptreeFx(save, mid), hu = sunPv, pv = hu || pf; // pv: the passives (sun or tree)
     const resist = el => { if (!['null', 'repel', 'drain'].includes(aff[el])) aff[el] = 'resist'; };
     pv.resist.forEach(resist);
     if (pf) Object.entries(pf.aff).forEach(([el, a]) => (a === 'resist' ? resist(el) : (aff[el] = a)));
+    // The Echo's resists and weaknesses only land where Haenim has no affinity at all (never past a resist).
+    const echoAff = ech ? window.FemcEchoes.layerAff(aff, ech.aff) : [];
     const nullAil = [...new Set([].concat(...[g.weapon, g.armor, g.acc].map(x => (x && x.nullAil) || []), bx ? bx.nullAil : [], pv.nullAil))];
     const w = g.weapon, kit = kitFor(mid, save, L, fx);
     const b = bx || (BLD() ? BLD().emptyBonus() : null);
@@ -394,7 +399,8 @@ window.FemcBattleEngine = (() => {
       st: s.st, ma: s.ma, en: s.en, ag: s.ag, lu: s.lu, aff, weapon: w.el || m.weapon, atk: w.atk, whits: w.hits || null, wail: w.ail || null,
       critBonus: (w.crit || 0) + ((g.acc && g.acc.crit) || 0) + ((g.armor && g.armor.crit) || 0) + (pf ? pf.crit : 0) + pv.critUp, def: (g.armor && g.armor.def) || 0,
       nullAil, spRegen: ((g.acc && g.acc.spRegen) || 0) + pv.spRegen, hpRegen: ((g.acc && g.acc.hpRegen) || 0) + pv.hpRegen, thMult: (g.acc && g.acc.thMult) || 1, tired: !!tired,
-      skills: kit.slots.concat(kit.sig && !kit.slots.includes(kit.sig) ? [kit.sig] : []), pending: kit.pending.slice(),
+      skills: kit.slots.concat(kit.sig && !kit.slots.includes(kit.sig) ? [kit.sig] : []).concat(ech ? ech.skills.filter(s => !kit.slots.includes(s) && s !== kit.sig) : []), pending: kit.pending.slice(),
+      echo: ech ? { id: ech.id, name: ech.name, u: ech.inst.u, lvl: ech.inst.lvl, skills: ech.skills.filter(s => !kit.slots.includes(s) && s !== kit.sig), aff: echoAff } : null,
       healMult: mid === 'solar' ? fx.healMult : pf.healMult,
       counter: pv.counter, evade: pv.evade, endure: pv.endure, quick: pv.quick, firstFree: pv.firstFree, elBoost
     };

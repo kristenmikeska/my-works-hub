@@ -1,6 +1,6 @@
 /* FEMC revamp: the field menu (P3's dorm / field menu), opened from the HUD's Menu button or M.
    One menu for the whole game. Tabs: Party (who goes into Tartarus, levels, HP/SP, Personas), Personas (the current Persona,
-   its skills and affinities; Haenim's forms), Skills (the skill system: see SKILLS below), Equipment (weapon, armor, accessory
+   its skills and affinities; Haenim's forms; Solar's Echo, drawn by echoes-ui.js), Skills (the skill system: see SKILLS below), Equipment (weapon, armor, accessory
    per member, from the gear bought in shops or found in Tartarus), Items (consumables, gear, books, jobs), Status (Solar's
    social stats, condition, exams), Links (the social links), Journal (memory fragments), Album (the Memories album) and
    Theater (replays; both described at ALBUM and THEATER below, not in the Dark Hour), Calendar (this month), and the
@@ -134,11 +134,13 @@ window.FemcMenu = (() => {
           ${u ? `<p class="g-pv-stats">${[['HP', u.maxHp], ['SP', u.maxSp], ['St', u.st], ['Ma', u.ma], ['En', u.en], ['Ag', u.ag], ['Lu', u.lu]].map(([k, v]) => `<span><small>${k}</small><b>${v}</b></span>`).join('')}</p>` : ''}
           ${affChips(u ? u.aff : p.aff || {})}
           <h3>Skills <small>${kit.slots.length} / ${D().skillSlots}</small></h3>${skillChips(skills)}${kit.pending.length ? `<p class="g-note">A new skill is waiting: choose one to forget on the Skills tab.</p>` : ''}
-          ${p.blurb ? `<p class="g-note">${esc(p.blurb)}</p>` : ''}${formsHtml}</div></div></div>`;
+          ${p.blurb ? `<p class="g-note">${esc(p.blurb)}</p>` : ''}${formsHtml}${id === 'solar' && window.FemcEchoUI ? window.FemcEchoUI.personaHtml(b) : ''}</div></div></div>`;
   }
   function wirePersonas(el) {
     el.querySelectorAll('[data-pv]').forEach(bt => bt.addEventListener('click', () => { sel.persona = bt.dataset.pv; G.sfx('femc-hover'); render(); }));
     el.querySelectorAll('[data-form]').forEach(bt => bt.addEventListener('click', () => { const b = bsave(); if (!E().formUnlocked(b, bt.dataset.form)) return; b.form = bt.dataset.form; G.saveQuiet(); G.sfx('femc-rankup'); render(); }));
+    // Solar's Echo (echoes-ui.js): equip / take off / the Compendium.
+    window.FemcEchoUI?.wirePersona(el, render);
   }
   /* ── SKILLS: the skill system (Kat's picks; rules in engine.js, nodes in data.js tree / treeCenter / ptrees) ──
      The who-bar picks Solar or a party member. Solar has two views: the Sun (Haenim's radial tree, drawn by sun.js: drag to pan,

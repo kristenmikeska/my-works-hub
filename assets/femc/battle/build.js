@@ -456,9 +456,11 @@ window.FemcBuild = (() => {
      After a won fight in Tartarus: always after an All-Out finish, a top rating (won in two rounds with no one down), a
      Strong group, the Reaper or a full moon; otherwise a set chance. The cards show face up, flip, shuffle, and you pick one.
      Minor Arcana: Cups heal, Coins give yen, Swords give gear (the high ones Solar's naginatas), Wands give EXP. Major Arcana:
-     Revelation cards, skill cards, Persona boosts, materials, the Sun. Rare penalty cards add risk. */
+     Revelation cards, skill cards, Persona boosts, materials, the Sun, and (story only) Echoes for Solar (echoes.js). Rare
+     penalty cards add risk. */
   const SH = {
     chance: 0.25, strong: 0.25, hand: 4, majorChance: 0.4, penalty: 0.07, penaltyHard: 0.1,
+    echoChance: 0.25, // a Major Arcana is an Echo card this often (story only: echoes.js shuffleCard; not one of `majors`)
     suits: {
       cups: { name: 'Cups', color: '#7fe3ff', what: 'heal' }, coins: { name: 'Coins', color: '#ffd36b', what: 'yen' },
       swords: { name: 'Swords', color: '#e8e8f0', what: 'gear' }, wands: { name: 'Wands', color: '#7dffc0', what: 'EXP' }
@@ -498,6 +500,9 @@ window.FemcBuild = (() => {
     for (let i = 0; i < n; i++) {
       if (!boss && pen < 1 && R() < (hard ? SH.penaltyHard : SH.penalty)) { const p = pick(R, SH.penalties); hand.push({ kind: 'penalty', id: p.id, num: p.num, name: p.name, out: p.out, text: p.text }); pen++; continue; }
       if (majors < (boss ? 2 : 1) && R() < (boss ? 0.75 : SH.majorChance)) {
+        // An Echo card (echoes.js): the Echo's name on its arcana's tarot. Story only (practice has no Personas tab).
+        const ec = !practice && window.FemcEchoes && R() < SH.echoChance ? window.FemcEchoes.shuffleCard(R, tier) : null;
+        if (ec) { hand.push(ec); majors++; continue; }
         // Practice mode has no card menu: its Major Arcana are the non-card ones.
         const m = pick(R, SH.majors.filter(x => !practice || !['card', 'skillcard', 'ticket'].includes(x.out)));
         hand.push({ kind: 'major', id: m.id, num: m.num, name: m.name, out: m.out, stat: m.stat, minR: m.minR, five: m.five }); majors++; continue;
@@ -520,7 +525,7 @@ window.FemcBuild = (() => {
       return `+${c.rank * 10}% EXP from this fight.`;
     }
     return { card: c.minR ? `A Revelation card (★${c.minR} or better).` : 'A Revelation card.', skillcard: 'A skill card: teach a Persona a new skill.', boost: `Persona boost: +1 ${String(c.stat).toUpperCase()} to someone in the party.`,
-      mats: 'Velvet Thread and Tarot Dust.', dust: 'A pile of Tarot Dust.', sun: 'A full heal, and every Theurgy gauge +25.', ticket: 'Capsule Tickets for the machine at Paulownia Mall.' }[c.out] || '';
+      mats: 'Velvet Thread and Tarot Dust.', dust: 'A pile of Tarot Dust.', echo: `An Echo answers the card: ${c.name} (${c.arcana || 'Echo'}) joins Solar.`, sun: 'A full heal, and every Theurgy gauge +25.', ticket: 'Capsule Tickets for the machine at Paulownia Mall.' }[c.out] || '';
   }
   /* Apply a picked card. Changes to the battle save happen here; the rest comes back as effects for the battle page:
      { heal (fraction HP+SP), expMult, reaper (steps closer), hpLoss (fraction), curse (next fight's Shadows +25% HP), th }.
@@ -580,6 +585,11 @@ window.FemcBuild = (() => {
     if (c.out === 'mats') { addMat('velvet_thread', 1 + (tier >= 4 ? 1 : 0)); addMat('tarot_dust', 8 + tier * 2); }
     if (c.out === 'dust') addMat('tarot_dust', 16 + tier * 4);
     if (c.out === 'sun') { fx.heal = 1; fx.th = 25; lines.push('A full heal; Theurgy +25'); }
+    // An Echo card: the Echo joins Solar (echoes.js add; a full stock still registers it in the Compendium).
+    if (c.out === 'echo') {
+      const r = window.FemcEchoes && c.echo ? window.FemcEchoes.add(save, c.echo, { via: 'shuffle' }) : null;
+      if (r) { fx.echo = c.echo; fx.echoNew = r.isNew; lines.push(r.line); } else addMat('tarot_dust', 10);
+    }
     // The Hierophant: Capsule Tickets (items, so they ride home with the night's other items; gacha.js spends them).
     if (c.out === 'ticket') { const n = 1 + (tier >= 4 ? 1 : 0); save.items = save.items || {}; save.items.capsule_ticket = (save.items.capsule_ticket || 0) + n; fx.tickets = n; lines.push(`Capsule Ticket ×${n}`); }
     return { lines, fx };

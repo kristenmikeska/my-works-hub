@@ -1221,6 +1221,9 @@
     }
     save.yen += rew.yen;
     Object.entries(rew.drops).forEach(([k, n]) => addMat(k, n));
+    // Solar's Echo grows with her: the fight's EXP (echoes.js gainExp; nothing without an Echo equipped).
+    const eg = window.FemcEchoes && rew.exp ? window.FemcEchoes.gainExp(save, rew.exp) : null;
+    if (eg) { notes.push(eg.note); mark('echo-exp'); if (eg.ups) mark('echo-level'); }
     let bonus = 0;
     if (op && first) { bonus = D.progression.bossBonusPoints; save.pts += bonus; }
     // Yukari's First Aid Kit and Rio's Stamina: a little HP after the win. Jihoon's Almighty Hoon: a strong win fires the party up.
@@ -1336,7 +1339,8 @@
         const out = el.querySelector('.bt-sh-out');
         out.hidden = false;
         // A Revelation card (the Fool, the Empress, the Star) shows its face: Kat's set art in the drawn frame (icons.js revCard).
-        const rc = res.fx.card && ICON && ICON.revCard ? ICON.revCard(res.fx.card, { cls: 'bt-sh-rev' }) : '';
+        const rc = res.fx.card && ICON && ICON.revCard ? ICON.revCard(res.fx.card, { cls: 'bt-sh-rev' }) : res.fx.echo && window.FemcEchoes ? window.FemcEchoes.cardHtml(res.fx.echo, { cls: 'bt-sh-rev bt-sh-echo' }) : '';
+        if (res.fx.echo) mark('shuffle-echo');
         out.classList.toggle('has-card', !!rc);
         out.innerHTML = `${rc}<b>${esc(c.name)}${c.kind === 'penalty' ? ' · reversed' : ''}</b>${res.lines.map(l => `<span>${esc(l)}</span>`).join('')}`;
         say.textContent = res.penalty ? 'Upside down…' : BLD.cardText(c);
@@ -3849,7 +3853,7 @@
         const tg = hostile ? affTag(foe, sk.el) : null, need = sk.cost && sk.cost.hp ? 'HP' : 'SP';
         const offWhy = once ? 'Once per battle, and it’s been used.' : noDead ? 'No one needs reviving.' : !pay ? `Not enough ${need}: it costs ${costText(u, sk)} and ${u.name} has ${need === 'HP' ? u.hp : u.sp}.` : '';
         return { v: id, label: sk.name, icon: sk.el, iconHtml: sk.icon ? skIcon(id) : null, tag: tg, right: costText(u, sk), rcls: sk.cost && sk.cost.hp ? 'hp' : '', off: once || !pay || noDead, why: once ? 'USED' : noDead ? 'NO KO' : !pay ? `LOW ${need}` : '', offWhy, el: hostile ? sk.el : null,
-          desc: `<b>${esc(sk.name)}</b>${esc(sk.desc)}${tg && foe ? ` <span class="vs">vs ${esc(foe.name + L[foe.id])}: ${tagHtml(tg)}</span>` : ''}${offWhy ? ` <em class="why">${esc(offWhy)}</em>` : ''}` };
+          desc: `<b>${esc(sk.name)}</b>${u.echo && u.echo.skills.includes(id) ? `<em class="vs">Echo · ${esc(u.echo.name)}</em> ` : ''}${esc(sk.desc)}${tg && foe ? ` <span class="vs">vs ${esc(foe.name + L[foe.id])}: ${tagHtml(tg)}</span>` : ''}${offWhy ? ` <em class="why">${esc(offWhy)}</em>` : ''}` };
       });
       const title = `${esc(u.persona)} · SP ${u.sp}/${u.maxSp}${foe ? ` <span class="vs">vs <b>${esc(foe.name + L[foe.id])}</b>${foes.length > 1 ? ' <i>‹ ›</i>' : ''}</span>` : ''}`;
       const s = await listMenu({

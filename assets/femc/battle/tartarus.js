@@ -195,7 +195,7 @@ window.FemcTartarus = (() => {
     const fresh = pool.filter(id => !owned(id));
     return (fresh.length ? pick(R, fresh) : pool.length ? pick(R, pool) : rare.length ? pick(R, rare) : null);
   }
-  /* A room's reward. kind: puzzle | vault | guardian | rare | hidden | stash. Returns { yen, items, mats, gear, card, plumes }. */
+  /* A room's reward. kind: puzzle | vault | guardian | rare | hidden | stash. Returns { yen, items, mats, gear, card, plumes, echo }. */
   function loot(kind, c, floor) {
     const R = c.rand, bi = floor.bi || 0, T = D.map.chest.items, tier = Math.min(7, bi + 1), out = { yen: 0, items: {}, mats: {}, gear: null, card: null, plumes: 0 };
     const item = k => { const t = T[Math.min(bi + k, T.length - 1)]; const id = pick(R, t); out.items[id] = (out.items[id] || 0) + 1; };
@@ -220,6 +220,10 @@ window.FemcTartarus = (() => {
     if (kind === 'hidden') { out.yen = roll(R, yenRange(bi, 1.5)); mat('echo_shell'); if (R() < 0.6) card(4); else out.gear = gearPick(R, bi, c.save, true); if (story && R() < 0.5) out.plumes = 1; }
     if (kind === 'stash') { out.yen = roll(R, yenRange(bi, 0.6)); item(0); }
     if (floor.secret && kind !== 'stash') mat('monad_sand', 1 + (R() < 0.5 ? 1 : 0));
+    // A rare Echo for Solar (echoes.js; story only): golden Shadows 30%, vaults 15%, hidden rooms 20%.
+    const echoOdds = { rare: 0.3, vault: 0.15, hidden: 0.2 }[kind];
+    if (story && echoOdds && window.FemcEchoes && R() < echoOdds) out.echo = window.FemcEchoes.dropPick(R, c.save);
+    if (!out.echo) delete out.echo;
     if (!story && out.items.capsule_ticket) { delete out.items.capsule_ticket; out.yen += 500; } // practice has no capsule machine
     if (!out.gear) delete out.gear;
     return out;
@@ -232,6 +236,7 @@ window.FemcTartarus = (() => {
     if (o.gear && D.gear[o.gear]) c.addGear(o.gear);
     if (o.card && c.BLD) { const r = c.BLD.addCard(s, o.card); if (r && r.dust) o.cardDust = r.dust; }
     if (o.plumes) c.plumes(o.plumes);
+    if (o.echo && window.FemcEchoes) { o.echoRes = window.FemcEchoes.add(s, o.echo, { via: 'tartarus' }); c.mark('tt-echo'); }
     c.persist();
   }
   function lootHtml(c, o) {
@@ -242,6 +247,7 @@ window.FemcTartarus = (() => {
     if (o.gear && D.gear[o.gear]) { const g = D.gear[o.gear]; rows.push(`<div class="bt-loot${g.art ? ' art' : ''}">${g.art ? `<img${g.artWide ? ' class="wide"' : ''} src="${g.art}?v=${c.ART_V}" alt="">` : ICON.of(o.gear)}<b>${esc(g.name)}</b><span>${esc(c.gearLine(o.gear))}</span></div>`); }
     if (o.card && c.BLD) rows.push(`<div class="bt-loot tt-cardloot">${ICON.revCard ? ICON.revCard(o.card, { cls: 'tt-card' }) : ''}<b>${esc(c.BLD.cardName(o.card))}</b><span>${o.cardDust ? `Your card box is full: it turned into Tarot Dust ×${o.cardDust}.` : `A ${'★'.repeat(o.card.r)} Revelation card.`}</span></div>`);
     if (o.plumes) rows.push(`<div class="bt-loot">${ICON.svg('charm', '#6ab0ff')}<b>Velvet Plume${o.plumes > 1 ? ` ×${o.plumes}` : ''}</b><span>For Elizabeth’s draws in the Velvet Room.</span></div>`);
+    if (o.echo && window.FemcEchoes) { const x = window.FemcEchoes.byId(o.echo), r = o.echoRes || {}; if (x) rows.push(`<div class="bt-loot tt-echoloot">${window.FemcEchoes.cardHtml(o.echo, { cls: 'tt-echo' })}<b>Echo · ${esc(x.name)}</b><span>${esc(`${x.arcana} · ${window.FemcEchoes.SETS[x.set] ? window.FemcEchoes.SETS[x.set].myth : ''}. ${r.full ? 'Solar’s Echoes are full: it’s in the Compendium to summon later.' : r.isNew ? 'New! Equip it on the Personas tab.' : 'Equip it on the Personas tab.'}`)}</span></div>`); }
     return rows.join('') || '<p>Nothing but dust.</p>';
   }
   const kick = f => `${f.label} · ${f.hiddenFloor ? 'A floor that isn’t there' : f.block}`;

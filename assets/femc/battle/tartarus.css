@@ -87,3 +87,6 @@
   .tt-stone { transition: none; }
   .bt-enemy.tt-fleeing { transition: opacity .3s; translate: none; }
 }
+/* An Echo in the loot (echoes.js cardHtml: its art, a stand-in or its tarot card). */
+.bt-loot .tt-echo { grid-row: span 2; width: 56px; }
+.bt-sh-out .bt-sh-echo { aspect-ratio: 2 / 3; }

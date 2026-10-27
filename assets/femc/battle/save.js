@@ -27,6 +27,8 @@ window.FemcBattleSave = (() => {
   //          floorsMapped [floor ids] (Rohan's Sketch the Floor), shuffles (Shuffle Times played).
 // Bond skills (bonds.js, 2026-10-20; defaults, so older saves load as they were): bondsLove [link ids on their romance route],
 //          bondDate (the life sim's "m/d" at the last sync: a bond's last day).
+// echo (echoes.js, 2026-10-27; defaults, so older saves load as they were): Solar's Echoes, their Compendium, milestones paid and
+//          story gifts given (shape in the echoes.js header). New Game+ keeps them.
 // tv 2 (Tartarus with real floor numbers, 2026-10-25): floor ids are 'f' + the P3 floor (f2 … f172, Monad f176 … f254).
 //          An older save's access point (and Sketch the Floor's list) moves to the same game floor it showed (moveFloor).
 //          tt { guardians [floor ids beaten], monad (the secret block found), secrets [secret floors / hidden rooms found],
@@ -198,6 +200,8 @@ window.FemcBattleSave = (() => {
     s.tipsSeen = s.tipsSeen.filter(k => D.tips[k]);
     if (!s.cursor || typeof s.cursor !== 'object') s.cursor = {};
     Object.keys(s.cursor).forEach(k => { if (!member(k) || !s.cursor[k] || typeof s.cursor[k] !== 'object') delete s.cursor[k]; });
+    // Echoes (echoes.js, 2026-10-27): an older save starts with none, then gets any story gift already due.
+    if (window.FemcEchoes) window.FemcEchoes.normalize(s);
     s.v = 4;
     return s;
   }

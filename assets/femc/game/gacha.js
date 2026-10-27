@@ -15,7 +15,8 @@
      Prizes: skill cards (build.js SKILL_CARDS, by how far the year has gone), Velvet Thread, ★4/★5 Revelation cards and
      Elizabeth's rare gear (build.js, `gacha: 'velvet'`).
      Velvet Plumes: +1 a Tartarus night, +3 a full moon won (core.js applyResult → afterFight), and +1 for every Compendium
-     entry, claimed from Elizabeth (S.registered; claimed ids in S.gacha.credited).
+     entry, claimed from Elizabeth (S.registered; claimed ids in S.gacha.credited), and +1 for every Echo registered (echoes.js,
+     credited as 'echo:<id>'). Her room also holds Echo Fusion and the Echo Compendium (echoes-ui.js velvetButtons).
    Save: S.gacha (core.js fresh; gs() fills a missing or older one): { v, plumes, stars, pulls, draws, pity: { cap: { sr, ur },
      vel: { sr, ur } }, keys: { id: copies }, cases: [ids], caseOn, credited: [ids], last }. Prizes land where the rest of the
      game keeps them: items in S.inventory, gear / materials / skill cards / Revelation cards in S.battleSave (build.js rules).
@@ -465,7 +466,8 @@ window.FemcGacha = (() => {
     return out;
   }
   const draw10 = (how = 'yen') => drawN(how, 10);
-  const unclaimed = () => (S().registered || []).filter(id => !gs().credited.includes(id));
+  // Compendium pages: people (S.registered) and Echoes (echoes.js, ids 'echo:<id>'), a plume each.
+  const unclaimed = () => (S().registered || []).concat(window.FemcEchoes && S().battleSave ? window.FemcEchoes.creditIds(S().battleSave) : []).filter(id => !gs().credited.includes(id));
   function claim() { const g = gs(), n = unclaimed(); n.forEach(id => g.credited.push(id)); g.plumes += n.length; if (n.length) { G.toast('perk', `Velvet Plumes +${n.length} (Compendium pages)`); G.save(); } return n.length; }
   /* Plumes from the Dark Hour (core.js applyResult). */
   function afterFight(kind, outcome) {
@@ -659,16 +661,18 @@ window.FemcGacha = (() => {
       $('.g-ga-info').innerHTML = `${oddsHtml(VEL.odds)}
         <p class="g-ga-pity">Super Rare or better within <b>${VEL.pitySR - p.sr}</b> draw${VEL.pitySR - p.sr === 1 ? '' : 's'} · an Ultra within <b>${VEL.pityUR - p.ur}</b>.</p>
         <p class="g-ga-own"><span>Velvet Plumes <b>${g.plumes}</b></span><span>Draws <b>${g.draws}</b></span>${c.credit ? '<span class="g-ga-credit">Compendium Credit: 25% off, one plume less</span>' : ''}</p>
-        <p class="g-note small">Plumes: one for every Tartarus night, three for a full moon won, one for every new Compendium page.</p>`;
+        <p class="g-note small">Plumes: one for every Tartarus night, three for a full moon won, one for every new Compendium page (people and Echoes).</p>`;
       $('.g-ga-btns').innerHTML = `<button type="button" class="g-btn pink" data-draw="yen"${velCan('yen') && !busy ? '' : ' disabled'}><span>Draw · ${yen(c.yen)}${c.credit ? ` <s>${yen(VEL.price)}</s>` : ''}</span></button>
         <button type="button" class="g-btn" data-draw="plumes"${velCan('plumes') && !busy ? '' : ' disabled'}><span>Draw · ${c.plumes} Plume${c.plumes === 1 ? '' : 's'}</span></button>
         ${btn10('data-draw10', 'yen', `×10 · ${yen(c.yen * 10)}`, busy ? 'Busy' : velWhy('yen', 10))}
         ${btn10('data-draw10', 'plumes', `×10 · ${c.plumes * 10} Plumes`, busy ? 'Busy' : velWhy('plumes', 10))}
         ${n ? `<button type="button" class="g-btn small" data-claim${busy ? ' disabled' : ''}><span>Show her the Compendium (+${n})</span></button>` : ''}
+        ${window.FemcEchoUI ? window.FemcEchoUI.velvetButtons() : ''}
         <span class="g-yen g-ga-yen">${yen(S().yen)}</span>`;
       o.el.querySelectorAll('[data-draw]').forEach(b => b.addEventListener('click', () => deal(b.dataset.draw)));
       o.el.querySelectorAll('[data-draw10]').forEach(b => b.addEventListener('click', () => deal10(b.dataset.draw10)));
       $('[data-claim]')?.addEventListener('click', () => { if (claim()) { G.sfx('femc-rankup'); say(LINES.velClaim[0]); paint(); } });
+      window.FemcEchoUI?.wireVelvet(o.el, () => { if (!busy) paint(); });
     };
     /* Ten draws: Elizabeth turns over the best card, then the grid (no picking: she deals the ten herself). */
     async function deal10(how) {
