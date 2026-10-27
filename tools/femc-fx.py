@@ -39,7 +39,11 @@ NAMES = ['pierce', 'slash', 'strike', 'ice', 'elec', 'fire', 'wind', 'light', 'd
          'charm', 'fear', 'poison', 'distress', 'freeze', 'shock', 'bind', 'disorient', 'hama', 'mudo',
          'theurgy-burst', 'allout-cloud', 'shuffle-flip',
          # 5G variants (fx.js artFor tries <kind>-crit on a crit and <kind>-heavy when the caller passes o.heavy, then the plain sheet)
-         'slash-heavy', 'slash-crit']
+         'slash-heavy', 'slash-crit',
+         # batch 50: Kat's crit and heavy sheets for the other elements (Almighty has a heavy one only)
+         'almighty-heavy', 'dark-crit', 'dark-heavy', 'elec-crit', 'elec-heavy', 'fire-crit',
+         'fire-heavy', 'ice-crit', 'ice-heavy', 'light-crit', 'light-heavy', 'pierce-crit',
+         'pierce-heavy', 'strike-crit', 'strike-heavy', 'wind-crit', 'wind-heavy']
 BIG = {'crit', 'weak', 'theurgy-burst', 'allout-cloud'}  # 384-px frames; fx.js also draws them 2.2x bigger
 SOLID = {'allout-cloud'}                                  # solid art with real alpha, not light on black
 TINT = {'buff'}                                           # art the game tints (the stat colour). Kat's theurgy-burst is
@@ -52,7 +56,10 @@ LOOP = {'allout-cloud'}
 # (PAD x the cell) so nothing clips; the index's `scale` tells fx.js to draw them that much bigger.
 # 'peak': one shared shift from the peak frame's hot core rather than its brightness centre (Elec: the bolt from above
 # would otherwise pull the impact down).
-ALIGN = {'pierce': 'core', 'elec': 'peak'}
+ALIGN = {'pierce': 'core', 'elec': 'peak',
+         # batch 50: the elec variants fall from above like the base sheet. The pierce variants keep the default shared
+         # shift: 'core' scattered them (their hot core jumps from the arrow tip to the burst between frames)
+         'elec-crit': 'peak', 'elec-heavy': 'peak'}
 PAD = 1.3
 
 # name -> source file, under Added to Game/ or New Adds/ (whichever has it now). Without an entry, a file named
@@ -77,6 +84,13 @@ SOURCES = {
     # plain one. slashv2: two crossing slashes with a shockwave ring in frame 3 (Heavy). slash.png: one razor line in
     # frame 3 that splits into a pink-white X (Crit; its widest frame is 4 by design).
     'slash-heavy': 'Added to Game/slashv2.png', 'slash-crit': 'Added to Game/slash.png',
+    # Batch 50 (2026-10-26): crit and heavy sheets for every other element, named as their variant.
+    'almighty-heavy': 'Added to Game/almighty-heavy.png', 'dark-crit': 'Added to Game/dark-crit.png', 'dark-heavy': 'Added to Game/dark-heavy.png',
+    'elec-crit': 'Added to Game/elec-crit.png', 'elec-heavy': 'Added to Game/elec-heavy.png', 'fire-crit': 'Added to Game/fire-crit.jpeg',
+    'fire-heavy': 'Added to Game/fire-heavy.jpeg', 'ice-crit': 'Added to Game/ice-crit.png', 'ice-heavy': 'Added to Game/ice-heavy.png',
+    'light-crit': 'Added to Game/light-crit.png', 'light-heavy': 'Added to Game/light-heavy.png', 'pierce-crit': 'Added to Game/pierce-crit.jpeg',
+    'pierce-heavy': 'Added to Game/pierce-heavy.jpeg', 'strike-crit': 'Added to Game/strike-crit.jpeg', 'strike-heavy': 'Added to Game/strike-heavy.jpeg',
+    'wind-crit': 'Added to Game/wind-crit.png', 'wind-heavy': 'Added to Game/wind-heavy.png',
 }
 # Kat's other versions, kept in Added to Game unused (swap one into SOURCES and run `all` to try it).
 ALTERNATES = {'fire': 'fire.jpeg', 'wind': 'wind.jpeg', 'light': 'light.jpeg', 'almighty': 'almighty-v2.jpeg',

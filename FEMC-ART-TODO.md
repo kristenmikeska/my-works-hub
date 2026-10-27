@@ -1,6 +1,6 @@
 # Art to make
 
-**124 items:** 7 story CGs · 8 places · 22 character pieces · 35 battle · 23 cards, items and icons · 4 screens · 25 wardrobe and keychains. 8 are ⭐, 109 are optional.
+**116 items:** 7 story CGs · 8 places · 22 character pieces · 27 battle · 23 cards, items and icons · 4 screens · 25 wardrobe and keychains. 8 are ⭐, 101 are optional.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -464,111 +464,11 @@ A 3-panel horizontal sheet on a plain white background showing the same characte
 
 ### Effect variants (ChatGPT)
 
-**[ ] Strike: heavy and critical (2 sheets)** *(optional)*  
-Big Strike spells look big, and Strike critical hits get their own burst.  
-Attach: strike.jpeg, the style image  
-Save as: `strike-heavy.png and strike-crit.png`
-```
-Heavy:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a bigger impact star with a thick shockwave ring and cracked-ground-style radial lines (light only, no ground), debris streaks flying outward. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-
-Critical:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a sharp hit-stop: frame 3 a pure white starburst with heavy black-edged comic impact lines, frame 4 a ring of gold sparks. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Pierce: heavy and critical (2 sheets)** *(optional)*  
-Big Pierce spells look big, and Pierce critical hits get their own burst.  
-Attach: pierce.png, the style image  
-Save as: `pierce-heavy.png and pierce-crit.png`
-```
-Heavy:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: three parallel piercing streaks instead of one, with a wider muzzle-flare ring at the peak. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-
-Critical:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: one long needle of white light punching straight through the centre, a small pink-white burst out the other side and a thin ring around the point of entry. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Fire: heavy and critical (2 sheets)** *(optional)*  
-Big Fire spells look big, and Fire critical hits get their own burst.  
-Attach: fire-v2.jpeg, the style image  
-Save as: `fire-heavy.png and fire-crit.png`
-```
-Heavy:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a towering pillar of fire with a ring of flames at its base, twice the height of the original peak, embers swirling up in frames 4–6. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-
-Critical:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: the fire collapses into a white-hot core in frame 3 and blasts out as a sharp eight-pointed flare. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Ice: heavy and critical (2 sheets)** *(optional)*  
-Big Ice spells look big, and Ice critical hits get their own burst.  
-Attach: ice.jpeg, the style image  
-Save as: `ice-heavy.png and ice-crit.png`
-```
-Heavy:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a cluster of huge ice crystals bursting up around the centre, frost fog rolling out, shards flying in frame 4. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-
-Critical:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a single giant crystal forms in frame 3 and shatters into glittering diamond fragments in frame 4. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Elec: heavy and critical (2 sheets)** *(optional)*  
-Big Elec spells look big, and Elec critical hits get their own burst.  
-Attach: elec.jpeg, the style image  
-Save as: `elec-heavy.png and elec-crit.png`
-```
-Heavy:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: several thick bolts striking from above at once, a dome of branching lightning at the peak. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-
-Critical:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: one blinding white bolt with a hard black-edged outline, static arcs crawling around the centre in frames 4–5. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Wind: heavy and critical (2 sheets)** *(optional)*  
-Big Wind spells look big, and Wind critical hits get their own burst.  
-Attach: wind-v2.jpeg, the style image  
-Save as: `wind-heavy.png and wind-crit.png`
-```
-Heavy:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a full tornado of green-white blades, twice as tall, with a ring of cutting gusts at its base. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-
-Critical:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: the wind folds into a single crescent blade of white light in frame 3, then bursts into feathers of green light. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Light: heavy and critical (2 sheets)** *(optional)*  
-Big Light spells look big, and Light critical hits get their own burst.  
-Attach: light-v2.jpeg, the style image  
-Save as: `light-heavy.png and light-crit.png`
-```
-Heavy:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a tall column of holy light with a ring of glowing sigils at its base, rays fanning out. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-
-Critical:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a white-gold cross-shaped flare with a sharp halo ring. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Dark: heavy and critical (2 sheets)** *(optional)*  
-Big Dark spells look big, and Dark critical hits get their own burst.  
-Attach: dark.jpeg, the style image  
-Save as: `dark-heavy.png and dark-crit.png`
-```
-Heavy:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a wider vortex with two rings of thorny points and longer tendrils, the empty black centre twice as big. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-
-Critical:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: the tendrils snap shut into a sharp violet star-shape in frame 3 with magenta cracks radiating out. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-```
-
-**[ ] Almighty: heavy and critical (2 sheets)** *(optional)*  
-Big Almighty spells look big, and Almighty critical hits get their own burst.  
+**[ ] Almighty: critical** *(optional)*  
+Almighty critical hits get their own burst (the heavy one is in).  
 Attach: almighty.jpeg, the style image  
-Save as: `almighty-heavy.png and almighty-crit.png`
+Save as: `almighty-crit.png`
 ```
-Heavy:
-Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a huge expanding sphere of white light with a ring of smaller blasts around it, the shockwave reaching the frame margins in frame 4. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
-
-Critical:
 Make a new version of the FIRST attached sprite sheet: the same 3 × 2 grid of six square frames (3 columns, 2 rows) on a pure solid black background (#000000), the same centre point, the same wide empty black margin (at least 10%) around every frame, the same six stages (1 spark, 2 build-up, 3 the peak, 4 spread, 5 break-up, 6 last wisps) and the same Persona 3 Reload battle VFX style as the second attached sheet: sharp, graphic shapes, clean hard edges, white-hot cores, high contrast, readable at small size. Change only this: a single pin-point of light in frame 2 that detonates into a perfect white ring with a rainbow-tinted edge. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2 (1536 × 1024).
 ```
 

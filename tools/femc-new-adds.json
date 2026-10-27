@@ -11409,6 +11409,261 @@
       "sha256": "3d8962101b08b248636f971a1ed476a8e655606cad474dc28e5edd3dbb19a68e",
       "status": "reference",
       "note": "Kat\u2019s generation notes; read for the panel order (panel 5 is Signed in Full only)"
+    },
+    {
+      "batch": 50,
+      "source": "almighty-heavy.png",
+      "sourceNow": "Added to Game/almighty-heavy.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3d96b83e68ff217d85bc075265eeb03af1720d63e166ae5218c067ca1b1c4252",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/almighty-heavy.webp",
+      "outputSha256": "ec462c11ca9e005d5e094cbbfdf8b6b44e84ccac5770737e8c787e0c30843e7d",
+      "conversion": "tools/femc-fx.py SOURCES almighty-heavy: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Almighty Heavy: fx.js artFor plays it for -ma / -dyne / all-foe damage skills (battle.js fxHitKind o.heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "dark-crit.png",
+      "sourceNow": "Added to Game/dark-crit.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "807cbb97367de8cbbae083e17ab52b6d39e18d8f5c715b8b2f25028151f61668",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/dark-crit.webp",
+      "outputSha256": "3a98bff355c63ec587503f57cdc7d8b07db666bd6d24e39effc8c1960a803da6",
+      "conversion": "tools/femc-fx.py SOURCES dark-crit: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Dark Crit: fx.js artFor plays it on a crit hit (crit beats heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "dark-heavy.png",
+      "sourceNow": "Added to Game/dark-heavy.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a1166af74994c4f84161c5f3b7b11867c0e1a4e978976a73f1270e4d28ecef3c",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/dark-heavy.webp",
+      "outputSha256": "e9d4ac65acfd99a616d26faf0a2463149d73575003334322f8fce1a82b720566",
+      "conversion": "tools/femc-fx.py SOURCES dark-heavy: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Dark Heavy: fx.js artFor plays it for -ma / -dyne / all-foe damage skills (battle.js fxHitKind o.heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "elec-crit.png",
+      "sourceNow": "Added to Game/elec-crit.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "fcf5e087b35e0ae3e1e190b41f568e7d65f2a9dd144f6769949264e8361c7a53",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/elec-crit.webp",
+      "outputSha256": "49b02eb0471f5d67a19405265ae3b277f7fb93c97dcc24be2ffab9d2b66f2a15",
+      "conversion": "tools/femc-fx.py SOURCES elec-crit: 3x2 light on black -> alpha, 256px frames (ALIGN 'peak')",
+      "placement": "5G Elec Crit: fx.js artFor plays it on a crit hit (crit beats heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "elec-heavy.png",
+      "sourceNow": "Added to Game/elec-heavy.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3df2daa66ad4901a2bd2e4f1ffc6bb249e03b0d5a56002c8ee73f7d88cfe69e1",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/elec-heavy.webp",
+      "outputSha256": "2962df97cdd593d8760ef9e593db9da9a7b5b0b735d7c8333ba75bef727a7e4d",
+      "conversion": "tools/femc-fx.py SOURCES elec-heavy: 3x2 light on black -> alpha, 256px frames (ALIGN 'peak')",
+      "placement": "5G Elec Heavy: fx.js artFor plays it for -ma / -dyne / all-foe damage skills (battle.js fxHitKind o.heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "fire-crit.jpeg",
+      "sourceNow": "Added to Game/fire-crit.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "b4ba1e925b735746e7221f144dc2946ea27ccee382fd95a2e9293da3c4d80268",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/fire-crit.webp",
+      "outputSha256": "f90c89a252840a08a6730fd9398857d41f6694a5126e3d17b66e92870184e1d6",
+      "conversion": "tools/femc-fx.py SOURCES fire-crit: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Fire Crit: fx.js artFor plays it on a crit hit (crit beats heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "fire-heavy.jpeg",
+      "sourceNow": "Added to Game/fire-heavy.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "07576ead732af21793ee9a83ae425d4f28efe9894f81093ee4c86377f01e3f42",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/fire-heavy.webp",
+      "outputSha256": "68dd82910f26c74a39fc0f7ec7b7310398dfa0df4423279c80e654721862b512",
+      "conversion": "tools/femc-fx.py SOURCES fire-heavy: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Fire Heavy: fx.js artFor plays it for -ma / -dyne / all-foe damage skills (battle.js fxHitKind o.heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "ice-crit.png",
+      "sourceNow": "Added to Game/ice-crit.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1e1d4c75e976894f2336a55fb9ed791f43bd3c218f69ff10c2af77bf54290cfa",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/ice-crit.webp",
+      "outputSha256": "8161edb9afe1387edee71dc5b6722421689edb98beed3d7c262e83b546230486",
+      "conversion": "tools/femc-fx.py SOURCES ice-crit: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Ice Crit: fx.js artFor plays it on a crit hit (crit beats heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "ice-heavy.png",
+      "sourceNow": "Added to Game/ice-heavy.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "abc3fd65dcaca6edae0d1c4cecc1d70fd9575e2d830895e83f51a89a24f207fc",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/ice-heavy.webp",
+      "outputSha256": "d18ce32db5d673e33e2807954829420cd027b6381b5132b16d95d03819dcfb8b",
+      "conversion": "tools/femc-fx.py SOURCES ice-heavy: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Ice Heavy: fx.js artFor plays it for -ma / -dyne / all-foe damage skills (battle.js fxHitKind o.heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "light-crit.png",
+      "sourceNow": "Added to Game/light-crit.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e399e984f2c8c95cb95daf7d999f48cc520b6713bc5f8dd10a1a807a8131b287",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/light-crit.webp",
+      "outputSha256": "d1c8129ee17a0e910910a55d180220d72f6f79b08e66901ec658faab88b4abe1",
+      "conversion": "tools/femc-fx.py SOURCES light-crit: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Light Crit: fx.js artFor plays it on a crit hit (crit beats heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "light-heavy.png",
+      "sourceNow": "Added to Game/light-heavy.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9c711dcca80cdef30ddfaffe88e78c00a180191b6fe8ad1d65f02f3452ff45bf",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/light-heavy.webp",
+      "outputSha256": "a9d8505c5a7c73db4d4964966fb35a287655d453c22745960cbd6bef57693bae",
+      "conversion": "tools/femc-fx.py SOURCES light-heavy: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Light Heavy: fx.js artFor plays it for -ma / -dyne / all-foe damage skills (battle.js fxHitKind o.heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "pierce-crit.jpeg",
+      "sourceNow": "Added to Game/pierce-crit.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "f8b0e8c56787c1a64033938fd6edb9c1212a7bf4fcafa1dbf9750a9664c0d4c0",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/pierce-crit.webp",
+      "outputSha256": "88f2bf91a04a88abdc0a6a6d596a6c690fe4291d781df80426c21e049b11d69f",
+      "conversion": "tools/femc-fx.py SOURCES pierce-crit: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Pierce Crit: fx.js artFor plays it on a crit hit (crit beats heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "pierce-heavy.jpeg",
+      "sourceNow": "Added to Game/pierce-heavy.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "474e4074313749f6c695520be25457ab9fa09d558faaf897f114f5917b7aa65f",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/pierce-heavy.webp",
+      "outputSha256": "68466fd5df6a86006a64f3a4e0805dfb0aabafda48e91e682b112293836436f4",
+      "conversion": "tools/femc-fx.py SOURCES pierce-heavy: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Pierce Heavy: fx.js artFor plays it for -ma / -dyne / all-foe damage skills (battle.js fxHitKind o.heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "strike-crit.jpeg",
+      "sourceNow": "Added to Game/strike-crit.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "a4e8dc3d895f7fbc71ea39c385f290c2a658cc1a1c7cf47fc6dafd14c8dd385d",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/strike-crit.webp",
+      "outputSha256": "e91b8910f8a3f6eb02a2feae424fb90517bb4e499bee9b9fc50d4c6e05392535",
+      "conversion": "tools/femc-fx.py SOURCES strike-crit: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Strike Crit: fx.js artFor plays it on a crit hit (crit beats heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "strike-heavy.jpeg",
+      "sourceNow": "Added to Game/strike-heavy.jpeg",
+      "size": [
+        2528,
+        1696
+      ],
+      "sha256": "070f1b47181d439a15c37854556f10af170ff9763284d4340ca0f258cd2b4fef",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/strike-heavy.webp",
+      "outputSha256": "36c63c97f04ecef07c2f5e779267f3c984edf7c2410836ada413e6a05de66074",
+      "conversion": "tools/femc-fx.py SOURCES strike-heavy: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Strike Heavy: fx.js artFor plays it for -ma / -dyne / all-foe damage skills (battle.js fxHitKind o.heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "wind-crit.png",
+      "sourceNow": "Added to Game/wind-crit.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "23518512b9d522e2f13aff1cefc6c9ecab7c2c56723414df2dca87240ed8e501",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/wind-crit.webp",
+      "outputSha256": "ce944b17da67ba2e2e5c473ec764c28b6e231803c13afba01e20043f969e5370",
+      "conversion": "tools/femc-fx.py SOURCES wind-crit: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Wind Crit: fx.js artFor plays it on a crit hit (crit beats heavy)"
+    },
+    {
+      "batch": 50,
+      "source": "wind-heavy.png",
+      "sourceNow": "Added to Game/wind-heavy.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e6e6d7c1701b812a0eddaf35f8c1420726a621367a91e37e62a922ce12d5300f",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/wind-heavy.webp",
+      "outputSha256": "86d92c7746bebe8a9a7bdfa2d02c6dc9f8dd2b9e3651111fbe39d7ab06d84512",
+      "conversion": "tools/femc-fx.py SOURCES wind-heavy: 3x2 light on black -> alpha, 256px frames",
+      "placement": "5G Wind Heavy: fx.js artFor plays it for -ma / -dyne / all-foe damage skills (battle.js fxHitKind o.heavy)"
     }
   ],
   "batch1Validation": {
@@ -12069,5 +12324,19 @@
       "screenshots: Items menu, Aohige shop (phone), Collection cases, phone group threads, Tartarus map, both romance stills on desktop and phone, the Dark Hour fade"
     ],
     "browserErrors": 0
+  },
+  "batch50Validation": {
+    "date": "2026-10-26",
+    "scope": "5G effect variants: crit and heavy sheets for Strike, Pierce, Fire, Ice, Elec, Wind, Light, Dark; Almighty heavy",
+    "sourcesIntegrated": 17,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked after the move)",
+    "notes": "No code change: fx.js artFor already tries <kind>-crit then <kind>-heavy then the plain sheet. Elec variants ALIGN 'peak'; pierce variants keep the default shared shift ('core' scattered them). strike-heavy's ground cracks run to the cell edges in the source (frames 1-5 warn); the 5% feather ends them softly. Magic crits only happen on bond skills and Theurgy, so element -crit sheets show there; physical crits are the everyday case. almighty-crit not delivered (still in the TODO).",
+    "tests": [
+      "python3 tests/femc_fx_art.py (passed, run alone)",
+      "headless practice battle: an all-foe Fire test skill plays fire-heavy, a sure-crit Strike test skill plays strike-crit (generic crit overlay on top), a -dyne Ice test skill plays ice-heavy; artFor pick order checked for all 9 kinds (crit > heavy > plain; almighty crit -> plain); wind-crit / dark-heavy at 375x812 and light-crit / almighty-heavy at 1440x900 mid-play; 0 console errors",
+      "python3 tools/femc-fx.py check: contact sheets on black, field purple and white for all 17 (no grid lines or halos)"
+    ],
+    "html": "femc-battle.html fx/index.js hash"
   }
 }

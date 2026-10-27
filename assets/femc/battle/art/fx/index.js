@@ -17,6 +17,13 @@ window.FEMC_FX_ART = {
   "peak": 2,
   "v": "db8fd637"
  },
+ "almighty-heavy": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "f1fee488"
+ },
  "bind": {
   "blend": "lighter",
   "cell": 256,
@@ -60,6 +67,20 @@ window.FEMC_FX_ART = {
   "peak": 2,
   "v": "ade7b912"
  },
+ "dark-crit": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "0174310f"
+ },
+ "dark-heavy": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "2ac7f278"
+ },
  "debuff": {
   "blend": "lighter",
   "cell": 256,
@@ -88,6 +109,20 @@ window.FEMC_FX_ART = {
   "peak": 2,
   "v": "365e0c75"
  },
+ "elec-crit": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "6249a2d8"
+ },
+ "elec-heavy": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "2043d7c4"
+ },
  "fear": {
   "blend": "lighter",
   "cell": 256,
@@ -101,6 +136,20 @@ window.FEMC_FX_ART = {
   "frames": 6,
   "peak": 2,
   "v": "12de9c92"
+ },
+ "fire-crit": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "55f3d6e3"
+ },
+ "fire-heavy": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "59a6e8c8"
  },
  "freeze": {
   "blend": "lighter",
@@ -130,12 +179,40 @@ window.FEMC_FX_ART = {
   "peak": 2,
   "v": "183c8c18"
  },
+ "ice-crit": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "f4113d51"
+ },
+ "ice-heavy": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "f28f74ca"
+ },
  "light": {
   "blend": "lighter",
   "cell": 256,
   "frames": 6,
   "peak": 2,
   "v": "4f50f091"
+ },
+ "light-crit": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "ee5d32c7"
+ },
+ "light-heavy": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "6877e0ac"
  },
  "mudo": {
   "blend": "lighter",
@@ -151,6 +228,20 @@ window.FEMC_FX_ART = {
   "peak": 2,
   "scale": 1.3,
   "v": "0fdc32fd"
+ },
+ "pierce-crit": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "9ccad914"
+ },
+ "pierce-heavy": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "222dcc42"
  },
  "poison": {
   "blend": "lighter",
@@ -215,6 +306,20 @@ window.FEMC_FX_ART = {
   "peak": 2,
   "v": "e9da5a20"
  },
+ "strike-crit": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "854a5f76"
+ },
+ "strike-heavy": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "673a0d42"
+ },
  "theurgy-burst": {
   "blend": "lighter",
   "cell": 384,
@@ -235,5 +340,19 @@ window.FEMC_FX_ART = {
   "frames": 6,
   "peak": 2,
   "v": "5399e623"
+ },
+ "wind-crit": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "9baff84b"
+ },
+ "wind-heavy": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "9b925619"
  }
 };
