@@ -13950,6 +13950,20 @@
       "conversion": "tools/femc-backgrounds.py EXTRA (fit to 1920x1072, WebP); source unchanged",
       "placement": "places.js: evening image of the 'Kirijo Guesthouse' and 'Iwatodai Station · Kirijo Guesthouse' rules (Kat: it replaces the lobby); the old kirijo-guesthouse-night stays on disk and for the Common Room rule, the window-seat scenes and Chenle's rank 7 lounge; crush-jungwon cr-jw-committee and living-jaemin friendsgiving bg now the lobby",
       "outputSha256": "a4f64f2abe60eedff5e78bd4462e7ede9113a475b3bbb34dad8a1a4ded742325"
+    },
+    {
+      "batch": 58,
+      "source": "Added to Game/echoes-strangers-1.png",
+      "status": "integrated",
+      "outputs": "assets/femc/battle/art/echoes/{jangseung,imugi,gumiho,haetae,chilseong,samsin}.webp",
+      "notes": "Cut with tools/femc-echoes.py cut; order checked on a contact sheet."
+    },
+    {
+      "batch": 58,
+      "source": "Added to Game/echoes-strangers-2.png",
+      "status": "integrated",
+      "outputs": "assets/femc/battle/art/echoes/{bulgasari,bari,yongwang,saja,gameunjang,bonghwang}.webp",
+      "notes": "Cut with tools/femc-echoes.py cut; order checked on a contact sheet."
     }
   ],
   "batch1Validation": {

@@ -1,6 +1,6 @@
 # Art to make
 
-**33 items:** 1 place · 10 character pieces · 14 battle · 1 screen · 7 wardrobe. 19 are optional; none are ⭐.
+**31 items:** 1 place · 10 character pieces · 14 battle · 1 screen · 7 wardrobe. 19 are optional; none are ⭐.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -181,22 +181,6 @@ A 3-panel horizontal sheet on a plain white background showing the same characte
 ### Echoes (ChatGPT)
 
 Solar's collectible Echoes (the Personas tab, Echo Fusion, the Echo Compendium). Each one shows a stand-in Shadow or its tarot card until its sheet is in. Six to a sheet; keep the order, since each cell becomes that Echo.
-
-**[ ] Echoes: strangers (Korean myth), sheet 1**  
-Jangseung, Imugi, Gumiho, Haetae, Chilseong, Samsin Halmeoni.  
-Attach: the style image, battle/art/personas/dalnim.webp  
-Save as: `echoes-strangers-1.png`
-```
-A sheet of six Persona designs in a 3 columns × 2 rows grid on a plain white background, with clear empty space between every cell and nothing overlapping. Match the attached Persona art exactly: the same Persona 3 Reload official art style, painted rendering, line weight, lighting and level of detail, a dramatic full-body pose, each one a mythic being summoned as a Persona with a faint glowing blue Persona aura at its edges. Every cell is one full-body figure, centred and about the same height. Cell 1 (top left): Jangseung, a pair of tall carved wooden village-guardian totem posts with fierce grinning painted faces, tall black hats, red and black paint, standing side by side and joined by a straw rope hung with white paper charms. Cell 2 (top middle): Imugi, a huge pale jade-green serpent coiled around a mountain stream rock, tiny horn buds that are not yet dragon horns, reaching up toward a glowing white pearl falling from the sky, mist around it. Cell 3 (top right): Gumiho, a beautiful fox woman in a white and red hanbok with nine flowing white fox tails fanned behind her, fox ears, a glowing blue fox bead floating above her palm, sly smile. Cell 4 (bottom left): Haetae, a stone-and-flesh lion-dog beast with curly green-gold mane, a single horn on its forehead, bells on its collar, scales on its legs, sitting proudly like a palace guardian statue. Cell 5 (bottom middle): Chilseong, seven small star spirits in white shaman robes and tall hats holding hands in the shape of the Big Dipper, each with a glowing star on its chest, a bowl of clean water below them. Cell 6 (bottom right): Samsin Halmeoni, a kind old grandmother goddess in a white hanbok and a white headscarf, holding a bundle of rice stalks and a baby wrapped in silk, soft blue light around her hands. Clean edges on the white background, no background scenery beyond small props named here, no text, no labels.
-```
-
-**[ ] Echoes: strangers (Korean myth), sheet 2**  
-Bulgasari, Bari Gongju, Yongwang, Jeoseung Saja, Gameunjang Agi, Bonghwang.  
-Attach: the style image, battle/art/personas/dalnim.webp  
-Save as: `echoes-strangers-2.png`
-```
-A sheet of six Persona designs in a 3 columns × 2 rows grid on a plain white background, with clear empty space between every cell and nothing overlapping. Match the attached Persona art exactly: the same Persona 3 Reload official art style, painted rendering, line weight, lighting and level of detail, a dramatic full-body pose, each one a mythic being summoned as a Persona with a faint glowing blue Persona aura at its edges. Every cell is one full-body figure, centred and about the same height. Cell 1 (top left): Bulgasari, a hulking bear-like monster with an elephant trunk, rhino eyes, cow tail and tiger legs, its hide made of melted iron plates, spoons and needles stuck in its back, chewing a sword. Cell 2 (top middle): Bari Gongju, a young shaman princess in a layered white, red, blue and yellow shaman robe, carrying a bowl of glowing water and a branch of white flowers of life, walking barefoot, determined. Cell 3 (top right): Yongwang, a coiling blue-green sea dragon king wearing a royal king’s crown and red dragon robe, whiskers flowing, holding a jade pearl, waves and a sunken palace roof below. Cell 4 (bottom left): Jeoseung Saja, a tall pale grim reaper in a long black hanbok and a wide black gat hat with bead strings, holding an open ledger of names, deathly calm face, wisps of grey smoke. Cell 5 (bottom middle): Gameunjang Agi, a confident young woman in a plain black hanbok with a gold-thread skirt, a gourd of rice spilling gold coins at her feet, a road behind her, chin raised, defiant warm smile. Cell 6 (bottom right): Bonghwang, a radiant Korean phoenix with five-coloured plumage (red, blue, yellow, white, black), a long flowing tail of flame feathers, wings spread, perched on a paulownia branch. Clean edges on the white background, no background scenery beyond small props named here, no text, no labels.
-```
 
 **[ ] Echoes: Runners (Greek myth), sheet 1**  
 Dionysus, Hebe, Pegasus, Minotaur, Eros, Icarus.  
