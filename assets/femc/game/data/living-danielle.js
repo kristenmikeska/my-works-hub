@@ -91,7 +91,7 @@
         ] },
         { n: "On the way down she stopped on the bottom step, and looked back up the whole long stair of silk and fur and mothers, and said, to nobody, that it had been a good roll, and then she took her coffee back out of Solar's hands and drank it cold without complaint, which was the most surprising thing she'd done all day." }
       ] },
-    '2/14': { rank: 7, flag: 'year-goes-on', title: "valentine's day", place: 'Kirijo Guesthouse', time: 'Daytime', bg: 'hotel-lobby', music: 'joy',
+    '2/14': { rank: 7, flag: 'year-goes-on', title: "valentine's day", place: 'Kirijo Guesthouse', time: 'Daytime', bg: 'kirijo-guesthouse-day', music: 'joy',
       ask: "Valentine's Day. I'm keeping the ledger. Somebody has to. Come and witness it, it doesn't count unless there's a witness.",
       yes: 'ok. ill witness', ok: 'Common room. Bring nothing. Especially not chocolate, it complicates the columns.', sorry: 'cant today sorry', no: "That's fine. You're still in the ledger. Everybody's in the ledger.",
       scene: [

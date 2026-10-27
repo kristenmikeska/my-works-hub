@@ -13964,6 +13964,62 @@
       "status": "integrated",
       "outputs": "assets/femc/battle/art/echoes/{bulgasari,bari,yongwang,saja,gameunjang,bonghwang}.webp",
       "notes": "Cut with tools/femc-echoes.py cut; order checked on a contact sheet."
+    },
+    {
+      "batch": 59,
+      "source": "Added to Game/echoes-runners-1.png",
+      "status": "integrated",
+      "outputs": "assets/femc/battle/art/echoes/{dionysus,hebe,pegasus,minotaur,eros,icarus}.webp",
+      "notes": "Cut with tools/femc-echoes.py cut; every Echo checked against its name on a contact sheet."
+    },
+    {
+      "batch": 59,
+      "source": "Added to Game/echoes-runners-2.png",
+      "status": "integrated",
+      "outputs": "assets/femc/battle/art/echoes/{themis,charon,hecate,prometheus,pandora,eos}.webp",
+      "notes": "Cut with tools/femc-echoes.py cut; every Echo checked against its name on a contact sheet."
+    },
+    {
+      "batch": 59,
+      "source": "Added to Game/echoes-hoax-1.png",
+      "status": "integrated",
+      "outputs": "assets/femc/battle/art/echoes/{fan_death,bunshinsaba,hook_man,men_in_black,headless_rider,shadow_people}.webp",
+      "notes": "Cut with tools/femc-echoes.py cut; every Echo checked against its name on a contact sheet."
+    },
+    {
+      "batch": 59,
+      "source": "Added to Game/echoes-hoax-2.png",
+      "status": "integrated",
+      "outputs": "assets/femc/battle/art/echoes/{hitchhiker,bloody_mary,jersey_devil,black_eyed,mothman,elevator_game}.webp",
+      "notes": "Cut with tools/femc-echoes.py cut; every Echo checked against its name on a contact sheet."
+    },
+    {
+      "batch": 59,
+      "source": "Added to Game/echoes-p3-1.png",
+      "status": "integrated",
+      "outputs": "assets/femc/battle/art/echoes/{zashiki,kappa,nekomata,tengu,shisa,oni}.webp",
+      "notes": "Cut with tools/femc-echoes.py cut; every Echo checked against its name on a contact sheet."
+    },
+    {
+      "batch": 59,
+      "source": "Added to Game/echoes-p3-2.png",
+      "status": "integrated",
+      "outputs": "assets/femc/battle/art/echoes/{raijin,yuki_onna,kaguya,daisoujou,enma,susanoo}.webp",
+      "notes": "Cut with tools/femc-echoes.py cut; every Echo checked against its name on a contact sheet."
+    },
+    {
+      "batch": 59,
+      "source": "Added to Game/echo-samjogo.png",
+      "status": "integrated",
+      "outputs": "assets/femc/battle/art/echoes/{samjogo}.webp",
+      "notes": "Cut with tools/femc-echoes.py cut; every Echo checked against its name on a contact sheet."
+    },
+    {
+      "batch": 59,
+      "source": "Added to Game/kirijo-guesthouse-day.png",
+      "status": "integrated",
+      "outputs": "assets/femc/bg/kirijo-guesthouse-day.webp",
+      "notes": "The guesthouse lobby by day (places.js rules; Danielle 2/14)."
     }
   ],
   "batch1Validation": {

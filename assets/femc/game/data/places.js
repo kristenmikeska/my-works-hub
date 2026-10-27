@@ -230,8 +230,8 @@ window.FEMC_GAME_PLACES = {
     ['Kirijo Guesthouse · Front', 'elegant-buildingentrance', 'kirijo-guesthouse-front-night'],
     ['Kirijo Guesthouse · Roof', 'rooftop-citynight', 'kirijo-guesthouse-roof-night'],
     ['Kirijo Guesthouse · Common Room', 'hotel-lobby', 'kirijo-guesthouse-night'], // the lounge (old night art)
-    ['Kirijo Guesthouse', 'hotel-lobby', 'kirijo-guesthouse-lobby'], // the lobby: Kat's night-lit art (batch 57)
-    ['Iwatodai Station · Kirijo Guesthouse', 'hotel-lobby', 'kirijo-guesthouse-lobby'],
+    ['Kirijo Guesthouse', 'kirijo-guesthouse-day', 'kirijo-guesthouse-lobby'], // the lobby: Kat's art, day (batch 59) and night (batch 57)
+    ['Iwatodai Station · Kirijo Guesthouse', 'kirijo-guesthouse-day', 'kirijo-guesthouse-lobby'],
     ['Iwatodai Station · Overpass', 'iwatodai-station-overpass'],
     ['Iwatodai Station · Monorail', 'train-car-inside'],
     ['Iwatodai Station · Platform', 'station-platform-day', 'station-platform-night'],

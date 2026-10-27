@@ -15,6 +15,7 @@ os.makedirs(DST, exist_ok=True)
 IMAGES = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images')
 # output slug -> source under IMAGES (batch 26, 2026-10-22). Kat's files say "yukishima"; the place is Yakushima.
 EXTRA = {
+    'kirijo-guesthouse-day': 'Added to Game/kirijo-guesthouse-day.png',
     'gekkoukan-tennis-courts': 'Added to Game/gekkoukan-tenniscourt.jpeg',
     'gekkoukan-music-room': 'Added to Game/band-room.jpeg',
     'gekkoukan-computer-room': 'Added to Game/gaming-room.jpeg',
