@@ -37,7 +37,7 @@ results = {}
 SKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-phantom')  # the one outfit still without art (batch 47); never a real one: the test removes it
 PSKIN = pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-akihiko-champ')  # party outfit, art pending (2026-10-27); the party test makes and removes it
 PWPN = pathlib.Path(REPO, 'assets/femc/game/art/skins/wpn-jungwon-council')  # party weapon skin, art pending; likewise
-NEW_SKINS = ['sk-akihiko-champ', 'sk-akihiko-hoodie', 'sk-haechan-runners', 'sk-haechan-widow', 'sk-jungwon-council', 'sk-yukari-kyudo', 'sk-yukari-pink',
+NEW_SKINS = ['sk-akihiko-champ', 'sk-akihiko-hoodie', 'sk-haechan-runners', 'sk-jungwon-council', 'sk-yukari-kyudo', 'sk-yukari-pink',
              'sk-junpei-baseball', 'sk-mitsuru-rider', 'sk-shinjiro-apron', 'sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform']
 NEW_WPNS = ['wpn-kiriko', 'wpn-emo', 'wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-haechan-widow', 'wpn-akihiko-champ', 'wpn-jungwon-council']
 
@@ -554,8 +554,8 @@ try:
           return ids.filter(id=>got.has(id));})(%s)""" % json.dumps(ids))
         ok(r == [], f'never pulled: {r}')
         menu(p, 'wardrobe')
-        click(p, '[data-wd="sk-haechan-widow"]')
-        r = p.eval("({badge:!!document.querySelector('.g-wd-stage .g-wd-pending'),row:document.querySelector('[data-wd=\"sk-haechan-widow\"]').innerText,equip:!!document.querySelector('[data-wd-equip]'),zoom:[...document.querySelectorAll('[data-wd-zoom]')].some(b=>/^(sk|wpn)-/.test(b.dataset.wdZoom)&&!FemcCosmetics.ready(FemcCosmetics.byId(b.dataset.wdZoom))),who:document.querySelector('.g-wd-pv-solar').dataset.who,heads:[...document.querySelectorAll('.g-wd-kind h3 small')].map(x=>x.textContent)})")
+        click(p, '[data-wd="sk-haechan-runners"]')
+        r = p.eval("({badge:!!document.querySelector('.g-wd-stage .g-wd-pending'),row:document.querySelector('[data-wd=\"sk-haechan-runners\"]').innerText,equip:!!document.querySelector('[data-wd-equip]'),zoom:[...document.querySelectorAll('[data-wd-zoom]')].some(b=>/^(sk|wpn)-/.test(b.dataset.wdZoom)&&!FemcCosmetics.ready(FemcCosmetics.byId(b.dataset.wdZoom))),who:document.querySelector('.g-wd-pv-solar').dataset.who,heads:[...document.querySelectorAll('.g-wd-kind h3 small')].map(x=>x.textContent)})")
         ok(r['badge'] and 'Art coming' in r['row'] and not r['equip'] and not r['zoom'] and r['who'] == 'haechan' and 'Haechan' in r['heads'] and 'Akihiko' in r['heads'], f'Wardrobe: Art coming, by member: {r}')
         p.eval("FemcMenu.close()")
         todo = pathlib.Path(REPO, 'FEMC-ART-TODO.md').read_text()

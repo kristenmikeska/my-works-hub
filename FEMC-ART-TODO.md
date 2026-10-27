@@ -1,6 +1,6 @@
 # Art to make
 
-**65 items:** 1 story CG · 1 place · 22 character pieces · 9 battle · 1 screen · 31 wardrobe and keychains. 8 are ⭐, 51 are optional.
+**64 items:** 1 story CG · 1 place · 22 character pieces · 9 battle · 1 screen · 31 wardrobe and keychains. 8 are ⭐, 51 are optional.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -436,15 +436,6 @@ Character pose sheet: 3 columns × 2 rows on a plain white background, with clea
 ```
 If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
 
-**[ ] Haechan: Widowmaker Cosplay (pose sheet)** *(optional)*  
-Haechan's battle figure in the Widowmaker Cosplay outfit (shows as "Art coming" now).  
-Attach: `haechan-posesheet.png` (first), Haechan  
-Save as: `skin-sk-haechan-widow-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a Widowmaker cosplay from Overwatch: a fitted deep-violet bodysuit with darker purple panels, a long high ponytail wig in dark blue-black, a sleek targeting visor pushed up on his forehead, a small spider emblem on one shoulder, slim black gauntlets; keep his own face and skin tone, no blue face paint. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
 **[ ] Jungwon: HOAX Council Uniform (pose sheet)** *(optional)*  
 Jungwon's battle figure in the HOAX Council Uniform outfit (shows as "Art coming" now).  
 Attach: `jungwon-posesheet.png` (first), Jungwon  
@@ -580,7 +571,7 @@ Save as: `skin-wpn-hoax.png`
 One ornate naginata, the whole weapon from the tip of the blade to the end of the haft, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A navy-and-white striped haft, a white student-council armband tied round the collar, a small laminated hall pass on a lanyard hanging from it, a polished silver blade with a gold school crest stamped near the base.
 ```
 **[ ] Widowmaker Knives** *(optional)*  
-Haechan's knives to match his Widowmaker cosplay.  
+Haechan's knives, Widowmaker style.  
 Attach: the style image  
 Save as: `skin-wpn-haechan-widow.png`
 ```

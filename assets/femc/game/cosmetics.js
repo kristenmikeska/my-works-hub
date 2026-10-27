@@ -79,7 +79,6 @@ window.FemcCosmetics = (() => {
     c('sk-akihiko-champ', 'skin', 'Champion’s Robe', 'UR', 'A red satin boxing robe with gold trim, SANADA across the back and a title belt over one shoulder.', { who: 'akihiko', art: true }),
     c('sk-akihiko-hoodie', 'skin', 'Off-Day Hoodie', 'SR', 'A grey zip hoodie, track pants and running shoes. His day off still has roadwork in it.', { who: 'akihiko', art: true }),
     c('sk-haechan-runners', 'skin', 'Sigma Chi Runner', 'SR', 'His Runners look: a Sigma Chi letterman jacket over an orange hoodie, studio headphones round his neck.', { who: 'haechan', art: true }),
-    c('sk-haechan-widow', 'skin', 'Widowmaker Cosplay', 'UR', 'Violet bodysuit, a long ponytail, the targeting visor pushed up. Every Kiriko needs a rival.', { who: 'haechan', art: true }),
     c('sk-jungwon-council', 'skin', 'HOAX Council Uniform', 'SR', 'The Hanlim High blazer, the student-council armband and a clipboard he takes very seriously.', { who: 'jungwon', art: true }),
     c('sk-yukari-kyudo', 'skin', 'Archery Club', 'SR', 'Her kyudo uniform: a white top, navy hakama and a black chest guard.', { who: 'yukari', art: true }),
     c('sk-yukari-pink', 'skin', 'Featherman Pink', 'UR', 'A pink sentai suit, the feathered helmet under her arm. She will not be taking questions from Ken.', { who: 'yukari', art: true }),
@@ -90,7 +89,7 @@ window.FemcCosmetics = (() => {
     c('sk-jihoon-pilates', 'skin', 'Purple Pilates Set', 'SR', 'A lavender matching set, grip socks and a rolled mat. It’s for his core, he says.', { who: 'jihoon', art: true }),
     c('sk-aigis-uniform', 'skin', 'Gekkoukan Uniform', 'SR', 'The school uniform over her frame, the ribbon tied to the millimetre. Mission: blend in.', { who: 'aigis', art: true }),
     // The party's weapon skins (2026-10-27; art pending).
-    c('wpn-haechan-widow', 'weapon', 'Widowmaker Knives', 'UR', 'Violet and black, a spider mark on each guard, a grapple ring at the pommel. Goes with his cosplay.', { who: 'haechan', art: true }),
+    c('wpn-haechan-widow', 'weapon', 'Widowmaker Knives', 'UR', 'Violet and black, a spider mark on each guard, a grapple ring at the pommel.', { who: 'haechan', art: true }),
     c('wpn-akihiko-champ', 'weapon', 'Champion Gloves', 'UR', 'Gold leather, red trim, laced cuffs. Title-fight gloves.', { who: 'akihiko', art: true }),
     c('wpn-jungwon-council', 'weapon', 'Council Rapier', 'SR', 'A navy guard with the gold council crest, a white ribbon on the hilt.', { who: 'jungwon', art: true }),
     // Code-only: Evokers.
@@ -139,7 +138,7 @@ window.FemcCosmetics = (() => {
     // Art-pending items wait in their banner and join its featured list by themselves once their art is in (featured()).
     { id: 'bloom', name: 'Spring Bloom', months: [4, 5], color: '#ff8cc0', featured: ['sk-date', 'tt-sakura', 'ui-sakura', 'sk-jihoon-pilates', 'sk-junpei-baseball', 'sk-yukari-kyudo', 'sk-aigis-uniform', 'wpn-hoax'] },
     { id: 'summer', name: 'Summer Nights', months: [6, 7, 8], color: '#4fd8ff', featured: ['sk-yukata', 'wp-fireworks', 'ui-mint', 'sk-haechan-runners', 'sk-minji-crew', 'sk-akihiko-hoodie', 'wpn-runners'] },
-    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'sk-haechan-widow', 'wpn-haechan-widow', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink'] },
+    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'wpn-haechan-widow', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink'] },
     { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose', 'sk-shinjiro-apron', 'sk-mitsuru-rider', 'wpn-strangers'] },
     { id: 'sunrise', name: 'Golden Sunrise', months: [2, 3], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council'] }
   ];
