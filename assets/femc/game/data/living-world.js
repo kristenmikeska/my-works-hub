@@ -85,7 +85,7 @@ window.FEMC_GAME_LODGING = {
       { s: 'akihiko', f: 'blushing', t: "The old one was going to snap. You'd lose it in the river. That's all." },
       { gift: { from: 'Akihiko', id: 'cord', keepsake: 'a red cord for the stopwatch' } }
     ], else: [
-      { n: "A pair of running socks, the good kind, gray with a red stripe, and a protein bar on top, which he said was the important part." },
+      { n: "A pair of running socks, the good kind, white with green stripes, and a protein bar on top, which he said was the important part." },
       { s: 'akihiko', f: 'neutral', t: "You run like you're late for something. You'll get blisters. That's all." },
       { gift: { from: 'Akihiko', id: 'socks', keepsake: 'running socks (and a protein bar)' } }
     ] },
