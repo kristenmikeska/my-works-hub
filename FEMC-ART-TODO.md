@@ -1,6 +1,6 @@
 # Art to make
 
-**88 items:** 7 story CGs · 8 places · 22 character pieces · 27 battle · 10 cards, items and icons · 4 screens · 10 wardrobe and keychains. 8 are ⭐, 73 are optional.
+**69 items:** 1 place · 22 character pieces · 25 battle · 10 cards, items and icons · 1 screen · 10 wardrobe and keychains. 7 are ⭐, 56 are optional.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -21,7 +21,6 @@
 | Evoker close-ups | `battle/art/summon/solar-evoker.webp` |
 | Evoker sheets | `solar-evoker-animation.png` |
 | Full bodies | `CherryFullBody.png` |
-| The Sleeper Car | `battle/art/shadows/memory-tide.webp` |
 | Wren's Shadow | `battle/art/shadows/wren-shadow-last-train.webp` |
 | Effect variants | `pierce.png` |
 | Tarot cards | `tarot/star.webp` |
@@ -37,79 +36,7 @@ Places, expressions, outfit portraits, books and the items that name their own p
 
 ## 1. Story CGs (ChatGPT)
 
-### Rank 10 (MAX) moments
-
-**[ ] Sebastian, rank 10** *(optional)*  
-Sebastian's rank 10 picture.  
-Attach: the style image, Solar, Sebastian  
-Save as: `link-sebastian-r10.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, moody lighting with one dominant color. Use the other attached images only for the characters' faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, no readable text. Solar: very long straight black hair, white earbuds around her neck, no S.E.E.S. armband.
-
-Solar and Sebastian outside the Game Panic arcade, under its awning, on a December evening. Cold rain drums on the awning and the wet pavement shines with the arcade's lights. Just the two of them. Sebastian wears a hoodie with the hood up and holds a slightly damp pencil sketch of a frog; a worn dark-green twenty-sided die sits in his other hand. Solar wears her black Gekkoukan uniform with a red bow and white knee socks. They stand close but not touching. Quiet, warm, a little shy.
-```
-
-**[ ] Aphrodite, rank 10** *(optional)*  
-Aphrodite's rank 10 picture.  
-Attach: the style image, Solar, Aphrodite  
-Save as: `link-aphrodite-r10.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, moody lighting with one dominant color. Use the other attached images only for the characters' faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, no readable text. Solar: very long straight black hair, white earbuds around her neck, no S.E.E.S. armband.
-
-Solar and Aphrodite in the Paulownia Mall atrium on a December evening, under a three-story Christmas tree decorated in gold, white and pink. Aphrodite, in white and gold and softly glowing, sits on the rim of the planter under the tree with a golden apple in her hands. Solar sits beside her in a cream winter coat and scarf. Just the two of them in the warm light. Glamorous, gentle, golden.
-```
-
-**[ ] Widowmaker, rank 10** *(optional)*  
-Widowmaker's rank 10 picture.  
-Attach: the style image, Solar, Widowmaker  
-Save as: `link-widowmaker-r10.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, moody lighting with one dominant color. Use the other attached images only for the characters' faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, no readable text. Solar: very long straight black hair, white earbuds around her neck, no S.E.E.S. armband.
-
-Solar and Widowmaker on Moonlight Bridge on a late-January night. Snow falls through the bridge lamps, a moon hangs over the water, and the walkway is empty. They dance a slow waltz, Widowmaker leading in a red scarf, their hands joined. A long frayed black satin ribbon trails in the cold wind between them. Solar wears a dark winter coat. Elegant, quiet, bittersweet.
-```
-
-**[ ] Rohan, rank 10** *(optional)*  
-Rohan's rank 10 picture.  
-Attach: the style image, Solar, Rohan  
-Save as: `link-rohan-r10.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, moody lighting with one dominant color. Use the other attached images only for the characters' faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, no readable text. Solar: very long straight black hair, white earbuds around her neck, no S.E.E.S. armband.
-
-Solar and Rohan inside the Bookworms used-book shop after closing, in late December. Snow falls past the window and a cat sleeps on the counter. Rohan, in his green headband, holds a pen. Solar turns the pages of a hand-bound book with a painted cover. Just the two of them, the shop lit warm and low. Solar wears a soft winter sweater. Calm, intimate, creative.
-```
-
-**[ ] Wren, rank 10** *(optional)*  
-Wren's rank 10 picture.  
-Attach: the style image, Solar, Wren  
-Save as: `link-wren-r10.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, moody lighting with one dominant color. Use the other attached images only for the characters' faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, no readable text. Solar: very long straight black hair, white earbuds around her neck, no S.E.E.S. armband.
-
-Solar and Wren on the Iwatodai dorm roof at about 11pm in early March. It's very cold: a skin of ice runs down one side of the water tank, the city lights spread out below and the station lights glow small in the distance. Wren sits with her back against the water tank, her coat pulled round her knees, her porter's cap on. Solar sits beside her in a winter coat. Both look out at the station lights. Quiet, still, tender.
-```
-
-### Holidays and group shots
-
-**[ ] Valentine's Day** *(optional)*  
-Yukari's Valentine's day at the mall (2/14 is a Sunday, so no school).  
-Attach: the style image, Solar, Yukari, Fuuka  
-Save as: `holiday-valentines.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, moody lighting with one dominant color. Use the other attached images only for the characters' faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, no readable text. Solar: very long straight black hair, white earbuds around her neck, no S.E.E.S. armband.
-
-Daytime at Paulownia Mall, decorated pink from the escalators down: paper hearts hang over the fountain and a line snakes out of the chocolate shop. Solar, Yukari and Fuuka, all in winter coats, sit on the fountain's edge swapping chocolates. Fuuka holds a lunchbox of partly burnt homemade truffles; Yukari has a paper bag from an expensive shop. No snow. Bright, girly, funny.
-```
-
-**[ ] The dorm dinner** *(optional)*  
-The big summer hot-pot dinner in the dorm.  
-Attach: the style image, Solar, Aphrodite, Mercy, Junpei, Kiriko, Haru, Kuromi, Sebastian, Mitsuru  
-Save as: `story-dorm-dinner.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, moody lighting with one dominant color. Use the other attached images only for the characters' faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, no readable text. Solar: very long straight black hair, white earbuds around her neck, no S.E.E.S. armband.
-
-A hot July night in the Iwatodai dorm's dining room (not the lounge), an air conditioner groaning in the window. A hot pot bubbles on a portable burner on the long table, with extra white bowls stacked at the end. Guests crowd round the table: Aphrodite at the head, Mercy rewrapping Junpei's wrist, Kiriko handing out paper fortune slips, Haru at the stove, Kuromi sprawled on a couch, Sebastian leaning against the wall with a can of soda. Mitsuru stands at the edge of the room with an untouched cup of tea. Solar sits at the table holding chopsticks, smiling as if she's surprised to be this happy. Everyone in summer clothes; Solar in a T-shirt and shorts. Warm yellow light, chaotic, cozy.
-```
+Nothing left to make here.
 
 ---
 
@@ -121,62 +48,6 @@ Attach: bg/kirijo-guesthouse-night.webp
 Save as: `kirijo-guesthouse.png`
 ```
 Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the same hotel lobby as the attached image, with the same layout, furniture and colours, but in warm afternoon light: sunlight through the front windows, lamps off, soft shadows, calm and welcoming.
-```
-
-**[ ] Yeobo's Cafe, today** *(optional)*  
-Yeobo's Cafe job shifts (they use the faded memory picture now).  
-Attach: bg/flashback-yeobos-cafe.webp  
-Save as: `yeobos-cafe.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the same small café as the attached image, with the same layout and furniture, but clear, sharp and present-day instead of faded and dreamy: warm afternoon light, steam from the coffee machine, a chalkboard menu with no readable writing.
-```
-
-**[ ] The fish market, today** *(optional)*  
-Fish market job shifts (they use the faded memory picture now).  
-Attach: bg/flashback-fish-market.webp  
-Save as: `port-island-fish-market.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the same fish market as the attached image, with the same stalls and layout, but clear, sharp and present-day instead of faded and dreamy: early morning, wet concrete floor, ice trays full of fish, bright work lights, crates stacked by the stalls.
-```
-
-**[ ] Monad, Tartarus's hidden block** *(optional)*  
-Monad's floors (they borrow the coffin hall now).  
-Attach: bg/tartarus-coffins.webp, bg/empyrean.webp  
-Save as: `tartarus-monad.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a hidden block deep inside Tartarus, the same twisting tower architecture as the attached images but deep blue and black: cold blue light falling from far above, stairs that climb up into the dark, a few black coffins half sunk into the floor, a faint grid of light across the walls. Vast, silent, cold.
-```
-
-**[ ] A supermarket aisle** *(optional)*  
-A spot one or two scenes use (they borrow other art now).  
-Attach: nothing  
-Save as: `iwatodai-supermarket.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small neighbourhood supermarket aisle in Iwatodai in the late 2000s: bright fluorescent lights, shelves of snacks and instant noodles, a stack of plastic hand baskets at the end of the aisle, price tags with no readable writing. Ordinary and a little sleepy.
-```
-
-**[ ] A school stairwell** *(optional)*  
-A spot one or two scenes use (they borrow other art now).  
-Attach: nothing  
-Save as: `gekkoukan-stairwell.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a stairwell inside Gekkoukan High in the afternoon: pale concrete steps, metal handrails, a tall window on the landing letting in warm light, a heavy fire door, posters with no readable writing. Quiet between classes.
-```
-
-**[ ] The canal path behind the mall** *(optional)*  
-A spot one or two scenes use (they borrow other art now).  
-Attach: nothing  
-Save as: `paulownia-canal.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a quiet paved path along a narrow canal behind a shopping mall at dusk: iron railings, a few trees, a bench, the mall's back windows and signs reflected in the still water. Peaceful and a little lonely.
-```
-
-**[ ] A small flat near the station** *(optional)*  
-A spot one or two scenes use (they borrow other art now).  
-Attach: nothing  
-Save as: `kirijo-flat.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small, tidy one-room flat near a train station in Japan, in the evening: a low table, a futon folded against the wall, a little kitchenette, a window showing the station's lights outside. Modest and quiet.
 ```
 
 ---
@@ -371,28 +242,12 @@ Edit this portrait. Keep the framing, crop, size, art style, hair and outfit exa
 
 ### Bosses and Shadows (ChatGPT)
 
-**[ ] The Sleeper Car**  
-Its memory-floor boss fight (it borrows another Shadow's art now).  
-Attach: the style image  
-Save as: `memory-sleeper-car.png`
-```
-Persona 3 style Shadow boss design, full body, transparent background, matching the style, line and colours of the attached Shadow art: a single old-fashioned black-green sleeper railway carriage floating in mid-air and running on no rails, faint light trailing under its wheels. Every curtained window glows softly, each with the dark silhouette of someone asleep inside (no faces). A cracked blue Persona 3 Shadow mask is fixed to its front like a headlamp, and black liquid Shadow ooze drips from its undercarriage. Eerie, silent, dreamlike. No text.
-```
-
 **[ ] ⭐ Wren's Shadow, phase 1**  
 Her first phase (her portrait stands in now).  
 Attach: the style image, Wren  
 Save as: `wren-shadow-phase1.png`
 ```
 Match the art style of the FIRST attached image exactly (the same boss in another phase); use the second attached image for Wren's face, hair and porter's uniform. Wren sits alone on a station bench in green Dark Hour light, her porter's cap pulled low, crying into her too-long sleeves, a train ticket with a pink ribbon in her lap. Behind her, rails curl impossibly upward into the dark. Full body, transparent background, no text.
-```
-
-**[ ] ⭐ Wren's Shadow, phase 3**  
-Her last phase (her portrait stands in now).  
-Attach: the style image, Wren, Solar  
-Save as: `wren-shadow-phase3.png`
-```
-Match the art style of the FIRST attached image exactly (the same boss in another phase); use the second attached image for Wren's porter's coat and the third for her face and very long straight black hair. Wren kneeling, cap gone, her hair loose, small and terrified, clutching her porter's coat around herself, torn pages falling around her. Full body, transparent background, no text.
 ```
 
 **[ ] The Hanging Effigy** *(optional)*  
@@ -683,36 +538,12 @@ Two flat game UI icons side by side on a flat pure green background (#00FF00), l
 
 ## 6. Screens and keepsakes (Gemini)
 
-**[ ] The album's locked tile** *(optional)*  
-What a locked album picture shows (a blank "?" now). Make both shapes in one chat.  
-Attach: memories/runners-rooftop.webp  
-Save as: `album-locked.png (16:9) and album-locked-sq.png (square)`
-```
-The back of a locked memory card, matching the soft painterly style and film grain of the attached image: deep navy fading to dusky pink, a thin ornate silver frame inset from the edges, a small silver crescent moon in the centre with a faint glow, nothing else. Full-bleed, no text. First a 16:9 version (1672 × 941), then a square version (1024 × 1024) with the same design.
-```
-
 **[ ] Dark Hour still: the dorm lounge at midnight** *(optional)*  
 A second picture for the fade into the Dark Hour.  
 Attach: the style image  
 Save as: `loading-2.png`
 ```
 Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the Iwatodai dorm lounge at the stroke of midnight: the wall clock's hands both on twelve, the room washing from warm lamplight to Dark Hour green from one side to the other, the TV gone dark, the couch empty. Quiet, uncanny. Keep everything important away from the edges.
-```
-
-**[ ] Memory card: barley tea** *(optional)*  
-A strangers memory card.  
-Attach: memories/strangers-jade-ring.webp  
-Save as: `strangers-barley-tea.png`
-```
-Soft painterly anime vignette, square (1024 × 1024), dreamy and slightly faded like a half-remembered memory, matching the attached card's style, light film grain, vignetted edges, no people's faces, no text. A cup of barley tea on a low wooden table, steam rising, morning light.
-```
-
-**[ ] Memory card: the ballot box** *(optional)*  
-A Hoax memory card.  
-Attach: memories/hoax-president-pin.webp  
-Save as: `hoax-ballot-box.png`
-```
-Soft painterly anime vignette, square (1024 × 1024), dreamy and slightly faded like a half-remembered memory, matching the attached card's style, light film grain, vignetted edges, no people's faces, no text. A ballot box with folded ballots, on a school gym table, string lights behind.
 ```
 
 ---

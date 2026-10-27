@@ -417,6 +417,7 @@
           { s: 'widowmaker', f: 'neutral', t: "...Give me your hands." }
         ] }
       ] },
+      { cg: 'link-widowmaker-r10' },
       { n: "She did. There on the bridge, in the snow, under the moon. A slow, patient waltz, Widowmaker leading, Solar's feet getting everything wrong and Widowmaker correcting them, silently, with her own, so that by the third turn Solar was getting it nearly right, and by the fifth, right, and they turned in the middle of the empty walkway under the bridge lamps with the snow coming down through the light, and Widowmaker's hand was cold in hers, and her heart, under Solar's fingers at the back of her shoulder, was going, Solar could feel it, very fast." },
       { s: 'widowmaker', f: 'neutral', t: "I came here running from the chair. From going back and being made into nothing again. I thought, if I stay here, in the green, they can never reach me." },
       { s: 'widowmaker', f: 'sad', t: "But I would rather be cut down than kept, petite. I told you. I am going back. And they will put me in the chair. And I will forget you, probably. Most of you." },
@@ -430,6 +431,7 @@
         ] }
       ] },
       { s: 'widowmaker', f: 'neutral', t: "Au revoir is not goodbye, princesse. It means until I see you again. Remember that too." },
+      { cg: null },
       { n: "When Solar looked back from the end of the bridge, Widowmaker was up on the highest cable, in the snow, a dark shape against the moon with a red scarf blowing out behind her, and she was not watching the city, and she was not watching the sea. She was watching Solar go. All the way. Until the very last step. The way you watch someone you've decided, against every order you've ever been given, to keep." }
     ] }
   ],

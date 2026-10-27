@@ -1360,6 +1360,11 @@ button.g-st-link:is(:hover, :focus-visible) { outline: none; border-color: #fff;
 .g-al-tile.lock { display: grid; place-items: center; cursor: default; border-style: dashed; border-color: rgba(255, 140, 192, .2); background: repeating-linear-gradient(-45deg, rgba(255, 79, 158, .06) 0 10px, transparent 10px 20px), #10050c; }
 .g-al-grid.sq .g-al-tile.lock { border-color: color-mix(in srgb, var(--w, var(--pink-2)) 25%, transparent); background: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--w, var(--pink)) 8%, transparent) 0 10px, transparent 10px 20px), #10050c; }
 .g-al-tile.lock i { color: rgba(255, 140, 192, .32); font: italic 900 32px/1 var(--cond); transform: skewX(-10deg); }
+/* Kat's locked tile (batch 51): the back of a memory card, 16:9 for the CGs and square for the memory cards. The stripes stay
+   under it in case the picture doesn't load; the crescent replaces the drawn "?". */
+.g-al-tile.lock { background: url('art/album-locked.webp') center / cover no-repeat, repeating-linear-gradient(-45deg, rgba(255, 79, 158, .06) 0 10px, transparent 10px 20px), #10050c; }
+.g-al-grid.sq .g-al-tile.lock { background: url('art/album-locked-sq.webp') center / cover no-repeat, repeating-linear-gradient(-45deg, color-mix(in srgb, var(--w, var(--pink)) 8%, transparent) 0 10px, transparent 10px 20px), #10050c; }
+.g-al-tile.lock i { visibility: hidden; }
 
 /* The viewer: the picture over everything, a soft zoom in (a slide when browsing), the caption in a skewed plate. */
 .g-av-ov { padding: 0; background: rgba(6, 2, 5, .95); }

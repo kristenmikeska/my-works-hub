@@ -853,6 +853,45 @@ window.FEMC_SHADOW_ART = {
   "small": false,
   "w": 640
  },
+ "memory-sleeper-car": {
+  "h": 396,
+  "poses": {
+   "frames": [
+    "memory-sleeper-car-pose-0",
+    "memory-sleeper-car-pose-1",
+    "memory-sleeper-car-pose-2",
+    "memory-sleeper-car-pose-3",
+    "memory-sleeper-car-pose-4",
+    "memory-sleeper-car-pose-5",
+    "memory-sleeper-car-pose-6",
+    "memory-sleeper-car-pose-7",
+    "memory-sleeper-car-pose-8"
+   ],
+   "scale": 1.226,
+   "states": {
+    "attack": [
+     1,
+     3,
+     4
+    ],
+    "cast": [
+     2,
+     5
+    ],
+    "defeat": [
+     8
+    ],
+    "down": [
+     7
+    ],
+    "hurt": [
+     6
+    ]
+   }
+  },
+  "small": false,
+  "w": 644
+ },
  "memory-tide": {
   "h": 640,
   "poses": {
@@ -1367,6 +1406,11 @@ window.FEMC_SHADOW_ART = {
   },
   "small": false,
   "w": 556
+ },
+ "wren-shadow-phase3": {
+  "h": 908,
+  "small": false,
+  "w": 639
  },
  "yaksini": {
   "h": 696,

@@ -404,7 +404,7 @@ window.FEMC_GAME_JOB_SCENES = {
     shifts: [
       [
         { place: 'Port Island · Fish Market' },
-        { n: "The fish market opened before the sun did, under a long tin roof by the harbor, all wet concrete and white light and men in rubber boots shouting prices at each other like insults, and the air was salt and diesel and cold blood and the sweet rot of the bins out back, and the gulls sat along the edge of the roof in a row like they'd paid for their seats." },
+        { n: "The fish market opened before the sun did, under a long tin roof by the harbor, all wet concrete and hanging bulbs and men in rubber boots shouting prices at each other like insults, and the air was salt and diesel and cold blood and the sweet rot of the bins out back, and the gulls sat along the edge of the roof in a row like they'd paid for their seats." },
         { s: 'tanabe', t: "Ice. Shovel. Crates. Don't stand where the forklift goes. That's the whole job. You'll be fine, or you'll quit by next week." },
         { n: "She shoveled ice. It was heavier than it looked and colder than it had any right to be through two pairs of gloves, and she broke it out of the bin in clean chunks and packed it around silver fish laid head to tail in their crates like spoons in a drawer, and her shoulders started complaining by six and gave up complaining by seven." },
         { choose: [
@@ -562,8 +562,9 @@ window.FEMC_GAME_JOB_SCENES = {
             { s: 'haechan', f: 'happy', t: "...There she is." }
           ] }
         ] },
-        { n: "When the wind picked up he pushed off the rail and walked back down the pier toward the market with his hands in his pockets, not fast, not looking back, a dark shape against the white light of the stalls, and then he turned a corner and wasn't." },
-        { n: "The barley tea was still hot. She held it in both hands the whole way home, on the landward side of the seawall, and it was only at the bridge that she realized that for once she hadn't had to think about which side to walk on, because somebody had already been standing on the other one." }
+        { n: "When the wind picked up he pushed off the rail and walked back down the pier toward the market with his hands in his pockets, not fast, not looking back, a dark shape against the bulbs over the stalls, and then he turned a corner and wasn't." },
+        { n: "The barley tea was still hot. She held it in both hands the whole way home, on the landward side of the seawall, and it was only at the bridge that she realized that for once she hadn't had to think about which side to walk on, because somebody had already been standing on the other one." },
+        { fragment: 'strangers-barley-tea' }
       ] }
     ]
   },

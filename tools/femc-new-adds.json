@@ -12319,6 +12319,438 @@
         "assets/femc/game/art/goods/gd-pc-jungwon.webp": "f2b0d17563f1585dcac81c183688141561730b8fcec3d94f37b7509ae8b88380",
         "assets/femc/game/art/goods/gd-pc-haechan.webp": "0b014f660ec88a042c41fa6a9b8691d4a721ef162fa60f4d0f7ee6c4f40913b0"
       }
+    },
+    {
+      "batch": 51,
+      "source": "yeobos-cafe.jpeg",
+      "sourceNow": "Added to Game/yeobos-cafe.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "52ef938d3eaa922f65e4c6d32e8dbe3cad871c09999148141c035543b342808d",
+      "status": "integrated",
+      "destination": "assets/femc/bg/yeobos-cafe.webp",
+      "intendedUse": "Yeobo's Cafe today (FEMC-ART-TODO 2): places.js rule \"Iwatodai Strip \u00b7 Yeobo's Cafe\" (was flashback-yeobos-cafe) for the job shifts, Sunoo's link and the rest; Jungwon's 2/14 (living-march.js) bg",
+      "conversion": "Gemini background, tools/femc-backgrounds.py EXTRA (batch 51): fit to 1920x1072 (from 2752x1536, LANCZOS), WebP q82; source unchanged",
+      "outputs": {
+        "assets/femc/bg/yeobos-cafe.webp": "7a2907b3412f9d7f90fb863c204c7cc89adfa28bc313a1fd72ce3902e8b98e59"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "port-island-fish-market.jpeg",
+      "sourceNow": "Added to Game/port-island-fish-market.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "3f92ef13ffafd929f83ea8f4db8a67965ba8d51ffb1729744a47b25b2a95b731",
+      "status": "integrated",
+      "destination": "assets/femc/bg/port-island-fish-market.webp",
+      "intendedUse": "The fish market today: places.js rule 'Port Island \u00b7 Fish Market' (was flashback-fish-market) for the job shifts; Shinjiro's 7/20 (living-holidays.js) bg",
+      "textCheck": "job-scenes.js: 'white light' -> 'hanging bulbs' (shift 1) and 'the bulbs over the stalls' (shift 6), as drawn",
+      "conversion": "Gemini background, tools/femc-backgrounds.py EXTRA (batch 51): fit to 1920x1072 (from 2752x1536, LANCZOS), WebP q82; source unchanged",
+      "outputs": {
+        "assets/femc/bg/port-island-fish-market.webp": "fbf15e2f559813bf1bd030edda1caa54560fa059884b1af0fb24f9d710108feb"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "tartarus-monad.jpeg",
+      "sourceNow": "Added to Game/tartarus-monad.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "ceb31602edb76acfdbde1f820f0c56b583f5ad4848bd2fa90b1b7fd134bba981",
+      "status": "integrated",
+      "destination": "assets/femc/bg/tartarus-monad.webp",
+      "intendedUse": "Monad, Tartarus's hidden block: battle/data.js blocks monad.bg (was tartarus-coffins)",
+      "conversion": "Gemini background, tools/femc-backgrounds.py EXTRA (batch 51): fit to 1920x1072 (from 2752x1536, LANCZOS), WebP q82; source unchanged",
+      "outputs": {
+        "assets/femc/bg/tartarus-monad.webp": "1fcfbd033771a91a1d7ec666463fce12ba1051878529b0070634db4bf8c1708f"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "iwatodai-supermarket.jpeg",
+      "sourceNow": "Added to Game/iwatodai-supermarket.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "a52c5719d979652c6811610648cd1577457c63b612ec905f4499a61c5b96c02d",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodai-supermarket.webp",
+      "intendedUse": "places.js rule 'Iwatodai Strip \u00b7 Supermarket' (day and evening; Shinjiro rank 3)",
+      "conversion": "Gemini background, tools/femc-backgrounds.py EXTRA (batch 51): fit to 1920x1072 (from 2752x1536, LANCZOS), WebP q82; source unchanged",
+      "outputs": {
+        "assets/femc/bg/iwatodai-supermarket.webp": "0009bf0596a5df71fb83dee87708cf904ed492f9a6ff636c399c0d3f2a45c2f6"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "gekkoukan-stairwell.jpeg",
+      "sourceNow": "Added to Game/gekkoukan-stairwell.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "138033813df2d5f4be04ba1deb4a68078f844cb39564f52977636e77f7e40a57",
+      "status": "integrated",
+      "destination": "assets/femc/bg/gekkoukan-stairwell.webp",
+      "intendedUse": "places.js rule 'Gekkoukan High \u00b7 Stairwell' (Saori's after-school stairwell)",
+      "conversion": "Gemini background, tools/femc-backgrounds.py EXTRA (batch 51): fit to 1920x1072 (from 2752x1536, LANCZOS), WebP q82; source unchanged",
+      "outputs": {
+        "assets/femc/bg/gekkoukan-stairwell.webp": "7b4d9268473e0b62aad15337d137dc7638ffbf8d95bfd5bc06730539a6848bdb"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "paulownia-canal.jpeg",
+      "sourceNow": "Added to Game/paulownia-canal.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "8763d9d1eb18a8f7946010cfba4eebf63488114de30111fdea6ca7613e7d2094",
+      "status": "integrated",
+      "destination": "assets/femc/bg/paulownia-canal.webp",
+      "intendedUse": "places.js rule 'Paulownia Mall \u00b7 Behind the Canal' (day and evening, dusk art); Sebastian's 'frogs in winter' bg (was park-2)",
+      "textCheck": "the art is at dusk: that scene's time Daytime -> Evening",
+      "conversion": "Gemini background, tools/femc-backgrounds.py EXTRA (batch 51): fit to 1920x1072 (from 2752x1536, LANCZOS), WebP q82; source unchanged",
+      "outputs": {
+        "assets/femc/bg/paulownia-canal.webp": "efefd1938f7ce08a1460cf8ce92cb3fd5e059bf95beb6d50d03ba845fb2820fd"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "kirijo-flat.jpeg",
+      "sourceNow": "Added to Game/kirijo-flat.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "2e54a4fbca1d9164023d0b60dbedd5427ab9ae6b7757959828f1df95a5cd83bd",
+      "status": "integrated",
+      "destination": "assets/femc/bg/kirijo-flat.webp",
+      "intendedUse": "places.js rule 'Kirijo Flat' (day and evening, night-lit); Sebastian's 'packing' bg (was hotel-lobby)",
+      "textCheck": "the flat is drawn tidy with a low table, cushion and futon: 'without ever once tidying it. Dice on every surface' -> 'had tidied, mostly, for company. Dice in a bowl on the low table'; Elizabeth sat on the floor cushion because the futon had laundry on it (was: all the chairs)",
+      "conversion": "Gemini background, tools/femc-backgrounds.py EXTRA (batch 51): fit to 1920x1072 (from 2752x1536, LANCZOS), WebP q82; source unchanged",
+      "outputs": {
+        "assets/femc/bg/kirijo-flat.webp": "82c0f7fbf8f936b8c509b16df10f9f1ff9fef92862c6dea7affdbd83a22d4d92"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "link-sebastian-r10.png",
+      "sourceNow": "Added to Game/link-sebastian-r10.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "6771c6a66cc502046702a12334d9fb3039344c7553eed657f77b96fe26da4311",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-sebastian-r10.webp",
+      "intendedUse": "Sebastian rank 10: links/sebastian.js '10: the frog sketch', { cg } from the die line, cleared before the last narration",
+      "textCheck": "checked against the scene: matches; no text change",
+      "mobileFocus": "42% 25%",
+      "conversion": "WebP q90, at most 1920 wide (LANCZOS), composition untouched; source unchanged",
+      "outputs": {
+        "assets/femc/cg/link-sebastian-r10.webp": "302bdaa860b9beab3f5ce34bfa6221529e434f2dddb8c4b4e3bef5e8dd996a07"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "link-aphrodite-r10.png",
+      "sourceNow": "Added to Game/link-aphrodite-r10.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ea60caa8f1096e5a35585c6d3c534915628eefca15016812994c29218b0c966c",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-aphrodite-r10.webp",
+      "intendedUse": "Aphrodite rank 10: links/aphrodite.js '10: to the sun', { cg } from the golden apple line, cleared before the security guard",
+      "textCheck": "matches; no text change",
+      "mobileFocus": "48% 30%",
+      "conversion": "WebP q90, at most 1920 wide (LANCZOS), composition untouched; source unchanged",
+      "outputs": {
+        "assets/femc/cg/link-aphrodite-r10.webp": "6ad42fe41b7dbefbef8fb8a4c75d4f2d353f31cd6d0589920004e9e46728c4c9"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "link-widowmaker-r10.jpeg",
+      "sourceNow": "Added to Game/link-widowmaker-r10.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "2aa200391a8afec639bfe6e060b7ec5d47587e14d232fea7e1d7eec572fe1f11",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-widowmaker-r10.webp",
+      "intendedUse": "Widowmaker rank 10: links/widowmaker.js '10: the last dance', { cg } from the waltz, cleared before Solar looks back from the end of the bridge",
+      "textCheck": "matches; no text change",
+      "mobileFocus": "45% 25%",
+      "conversion": "WebP q90, at most 1920 wide (LANCZOS), composition untouched; source unchanged",
+      "outputs": {
+        "assets/femc/cg/link-widowmaker-r10.webp": "51cd793a31572c87e868bfe6a95bccd4d30a5649583e7474f0a17342032f8ab2"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "link-rohan-r10.jpeg",
+      "sourceNow": "Added to Game/link-rohan-r10.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "4a2190151af403225a0e55edf14c7779410d9c11a84b72a3b8f3b711da6cc1a7",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-rohan-r10.webp",
+      "intendedUse": "Rohan rank 10: links/rohan.js '10: the last page', { cg } from the page-turning line, cleared before Koichi and Josuke come by",
+      "textCheck": "matches; no text change",
+      "mobileFocus": "42% 28%",
+      "conversion": "WebP q90, at most 1920 wide (LANCZOS), composition untouched; source unchanged",
+      "outputs": {
+        "assets/femc/cg/link-rohan-r10.webp": "d6f804704286021ad61f42dc216010431ab001f2650c164b69b4ed0a3af79583"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "link-wren-r10.jpeg",
+      "sourceNow": "Added to Game/link-wren-r10.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "b069792cd1e166ba3bbd4f00ba04e43e7855aef061b5703be491569bf232564a",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-wren-r10.webp",
+      "intendedUse": "Wren rank 10: links/wren.js rank 10, { cg } from her sitting against the water tank, cleared before they go in",
+      "textCheck": "matches; no text change",
+      "mobileFocus": "38% 40%",
+      "conversion": "WebP q90, at most 1920 wide (LANCZOS), composition untouched; source unchanged",
+      "outputs": {
+        "assets/femc/cg/link-wren-r10.webp": "b7820474d2841f8ee68ce635e16df086c356b6e6fe16eb3c49d15fe21a9336ef"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "holiday-valentines.png",
+      "sourceNow": "Added to Game/holiday-valentines.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8ac8af9a2f5ad1c9d7b4d5908e4f1c3d95fca943635011d1aa6f8fa426bc183c",
+      "status": "integrated",
+      "destination": "assets/femc/cg/holiday-valentines.webp",
+      "intendedUse": "Valentine's Day: living-march.js Yukari 2/14 'tomo-choco', { cg } from Yukari's paper bag through the choice, cleared at the end",
+      "textCheck": "matches; no text change",
+      "mobileFocus": "45% 25%",
+      "conversion": "WebP q90, at most 1920 wide (LANCZOS), composition untouched; source unchanged",
+      "outputs": {
+        "assets/femc/cg/holiday-valentines.webp": "a1ec9d4698aca53df344899cf529f880740fa6b41d4678ff79a88bca7e999c70"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "story-dorm-dinner.png",
+      "sourceNow": "Added to Game/story-dorm-dinner.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "f276b0ed56aef36ea5f7321cd99ea8fa59c6e50df56157056eb480ce0001e408",
+      "status": "integrated",
+      "destination": "assets/femc/cg/story-dorm-dinner.webp",
+      "intendedUse": "The dorm dinner: story-act3.js a3-dinner, { cg } at the start of the guests branch (ifFlag a3-dinner-guests), cleared before the front-door scene; the no-guests branch shows none",
+      "textCheck": "matches the guests branch; no text change",
+      "mobileFocus": "35% 35%",
+      "conversion": "WebP q90, at most 1920 wide (LANCZOS), composition untouched; source unchanged",
+      "outputs": {
+        "assets/femc/cg/story-dorm-dinner.webp": "1103f8b23f9400491b92c498e27e0baaf488cdd73c7c3902068e7db73e4452a8"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "strangers-barley-tea.jpeg",
+      "sourceNow": "Added to Game/strangers-barley-tea.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "ca3482d68981639b206c592da06b515c1f76818c702cf3ab4fc4c5600a7042ad",
+      "status": "integrated",
+      "destination": "assets/femc/memories/strangers-barley-tea.webp",
+      "intendedUse": "Memory card strangers-barley-tea: battle/data.js memories; awarded at the end of the fish market job's sixth shift (job-scenes.js, the hot can of barley tea)",
+      "fragment": "strangers-barley-tea",
+      "conversion": "WebP q90, original dimensions, no cropping or retouching; source unchanged",
+      "outputs": {
+        "assets/femc/memories/strangers-barley-tea.webp": "bd93cf509c4c83243b807f16089e264d34894485ea62190c786f609fb660b9c3"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "hoax-ballot-box.jpeg",
+      "sourceNow": "Added to Game/hoax-ballot-box.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "e3691dd5b55c3e9a3fa0c65c95a8c23274d959033f65d0440ed47308d1688f2f",
+      "status": "integrated",
+      "destination": "assets/femc/memories/hoax-ballot-box.webp",
+      "intendedUse": "Memory card hoax-ballot-box (a memory card, per its art-list item, not a place or CG): battle/data.js memories; awarded in story-act4.js a4-jihoon-awakens after the gym comes apart",
+      "fragment": "hoax-ballot-box",
+      "conversion": "WebP q90, original dimensions, no cropping or retouching; source unchanged",
+      "outputs": {
+        "assets/femc/memories/hoax-ballot-box.webp": "47adafd9e396d1674e8a5ca31d78b89a71936ff9f028f541fa6bc7b53e377df3"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "album-locked.jpeg",
+      "sourceNow": "Added to Game/album-locked.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "b753e641d4fdb44abc365222e29a9fa027eb41f2df1cd9c627bbf5385462c928",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/album-locked.webp",
+      "intendedUse": "The album's locked tile, 16:9 (CG grid): game.css .g-al-tile.lock",
+      "conversion": "WebP q86 at 960x536 (tiles are small); source unchanged",
+      "outputs": {
+        "assets/femc/game/art/album-locked.webp": "303a1447eeb5befdad5eaa0ce51befadad393958dc8cd8ca2cd6569bb2a2a599"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "album-locked-sq.jpeg",
+      "sourceNow": "Added to Game/album-locked-sq.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "4d1cb7f09c3780d3173723509de0cc1c2da232ae53db02fa0fd80f910661c173",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/album-locked-sq.webp",
+      "intendedUse": "The album's locked tile, square (memory-card grid): game.css .g-al-grid.sq .g-al-tile.lock",
+      "conversion": "WebP q86 at 640x640; source unchanged",
+      "outputs": {
+        "assets/femc/game/art/album-locked-sq.webp": "8978a0448a2f70cfecccf8b71cbe98fd8beb33a46b5845b123f89657a8122572"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "memory-sleeper-car.png",
+      "sourceNow": "Added to Game/memory-sleeper-car.png",
+      "size": [
+        1678,
+        937
+      ],
+      "sha256": "2c4c19cf760768b0f23c781c62023559533e4825951a93e9ffe1b22956b7a921",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/shadows/memory-sleeper-car.webp",
+      "intendedUse": "The Sleeper Car's static art (data.js memory_car.img, was the borrowed rampage-drive)",
+      "conversion": "tools/femc-shadow-poses.py ALPHA_GRIDS static: real transparency kept, trimmed, thin dark Shadow rim, at most 900 tall (1636x896), WebP q90; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/shadows/memory-sleeper-car.webp": "b4d6d056a6c28806616b6fa7db0ba051a788472c3f8abcb973f751a8dd678bf3"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "sleeper-car-poses.png",
+      "sourceNow": "Added to Game/sleeper-car-poses.png",
+      "size": [
+        1678,
+        937
+      ],
+      "sha256": "223ab4a4ec133944b4a0f20a98a5e10b35eff9b0cd696c3a045818e264315c94",
+      "status": "integrated",
+      "intendedUse": "The Sleeper Car's pose sheet: 3x3 on transparency (idle, lurch, aura, rush, ooze, gust, hurt, sagging, collapsing)",
+      "destination": [
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-0.webp",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-1.webp",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-2.webp",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-3.webp",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-4.webp",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-5.webp",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-6.webp",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-7.webp",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-8.webp"
+      ],
+      "placement": "art/shadows/index.js memory-sleeper-car.poses: attack [1,3,4], cast [2,5], hurt [6], down [7], defeat [8]; idle kept at memory_car h 300 (scale 1.226)",
+      "conversion": "tools/femc-shadow-poses.py ALPHA_GRIDS (new): nothing keyed; each piece goes to its cell, the two touching figures (rush and ooze) split by growing each body through the art; nine frames on one canvas (644x396, body mass centred, one baseline) with the Shadow rim, WebP q90; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-0.webp": "800c37813f70534e1de427d4e3261211a0021de8dd8381b8ced6c488daf5ca58",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-1.webp": "6c53df6c200ca583c88c74b29bbfa0f5ab52b4d6ad5d8b5a12f1c4731569e221",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-2.webp": "d6e027211a91d3bf00824a21d5bedf569f9e178595ee2450d0fbf92baae867b2",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-3.webp": "cab2e7eb92c6fbf9450535aaaddb236a8e9ac08b9ce678b6d956cf83f736bb44",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-4.webp": "85e381b889afa5d4f8c27ab662ce09cdd16cda1205737ca0eecf5c20eea3b8cf",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-5.webp": "8fdc7263f448e5a93c87bd3f73fbbb7f1416f9e3300ec28b1db2efb630ccf0c8",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-6.webp": "b672301dfec8a62da4be89a5ece1a6758bc727de06f14856aab14e0206d19cf2",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-7.webp": "5c5c5e8a834d4da0a69841a379cab39e26310882802520695d24ee6a1df1f90b",
+        "assets/femc/battle/art/shadows/memory-sleeper-car-pose-8.webp": "bd85a3417887a1c2e8843f9076f113066a691369d513a6bc58bf1f2cae3540ea"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "wren-shadow-phase3-ver2.png",
+      "sourceNow": "Added to Game/wren-shadow-phase3-ver2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "a2b1532fc81510e346cde3f8156e2b7717a87801104116b87b21493b6bd95ac0",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/shadows/wren-shadow-phase3.webp",
+      "intendedUse": "Wren's Shadow, phase 3 (the version used): data.js wren_last img (was her serious portrait as pic)",
+      "note": "picked over ver1: same pose; ver2 has true-black hair and no green cast",
+      "conversion": "tools/femc-shadow-poses.py STATICS: real transparency kept, trimmed, thin dark rim, 900 tall (639x908), WebP q90; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/shadows/wren-shadow-phase3.webp": "17f4a3ef247fe1e9d17ea6c9625cda7d2776b88eb8fbdec2c1f752c19d1e95b6"
+      }
+    },
+    {
+      "batch": 51,
+      "source": "wren-shadow-phase3-ver1.png",
+      "sourceNow": "Added to Game/wren-shadow-phase3-ver1.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "7e5f4a118238d33edc3632b83e0414499f7b65d4615b6f6c990904ca9e24654f",
+      "status": "alternate",
+      "intendedUse": "Wren's Shadow, phase 3, the other version: kept as an alternate, unused",
+      "conversion": "none"
+    },
+    {
+      "batch": 51,
+      "source": "jungwon-revised.png",
+      "sourceNow": "Added to Game/jungwon-revised.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "58c250f0d43b3721a32f93f428ab6b2fed0d3aa4809a01995f778d5486799b8a",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jungwon/neutral.webp",
+      "intendedUse": "Kat's revised portrait set for jungwon (replaces the previous one; old per-emotion sources and the three old expression sheets kept in Character Portraits/Jungwon/_previous/)",
+      "character": "jungwon",
+      "conversion": "3x2 dark-background sheet cut on the 512 px grid (reading order embarrassed,angry,neutral,sad,smiling,surprised); backgrounds removed with tools/femc-lift.swift, stray pieces dropped (none found); per-emotion PNGs in Character Portraits/Jungwon/; tools/femc-portraits.py aligns faces on a shared canvas (WebP q86); scale.js jungwon 1.12 -> 0.98 and his 0.1 drop removed (the new set is a closer bust: eye-to-chin 26% of the canvas vs 21%; 0.98 puts his eyes level with Haechan's, face about 10% bigger than the old set); FEMC_PORTRAIT_V 3; source unchanged",
+      "outputs": {
+        "assets/femc/portraits/jungwon/flustered.webp": "e7ba248aaf6a273739818f64f05f334f4b6ea53815d76625c4a714df6d4c7748",
+        "assets/femc/portraits/jungwon/happy.webp": "e3cda1dfa84ffb9e0335d1208c2831158337fe9fc37d9f1665133f7c10799847",
+        "assets/femc/portraits/jungwon/neutral.webp": "682f15a0d96ecc79629d9353b87876f0c336c79ad2c61d28238818ff7067b97a",
+        "assets/femc/portraits/jungwon/sad.webp": "caa7655305fc76e118b400bf1be8f2cffeb6e30bad021627c2c82565c6efbe2a",
+        "assets/femc/portraits/jungwon/serious.webp": "a425e49d1cf291af4015344023f57a7fcb3644580ecf3d39c9af027862b19b07",
+        "assets/femc/portraits/jungwon/surprised.webp": "e96fd354de50f064b9e311b4542a234ae5b85734a4a89377a506e77cbd2eb631"
+      }
     }
   ],
   "batch1Validation": {
@@ -13008,5 +13440,28 @@
       "femc_building --only menu,sees",
       "femc_skills --only sun"
     ]
+  },
+  "batch51Validation": {
+    "date": "2026-10-26",
+    "scope": "seven places, five rank 10 CGs, Valentine's Day and the dorm dinner, the Sleeper Car and its 3x3 pose sheet, Wren's phase 3 (ver2; ver1 kept as the alternate), two memory cards, the album's locked tile (both shapes) and Kat's revised Jungwon portraits",
+    "sourcesInspected": "all 24 viewed before wiring; the pose frames and portrait lifts reviewed on contact sheets",
+    "sourcesIntegrated": 22,
+    "alternates": [
+      "wren-shadow-phase3-ver1.png"
+    ],
+    "held": "wren-shadow-phase1.png stays in New Adds: it shows the phase 3 look and pose, not the phase 1 brief (an open question in FEMC-ART-WIRING.md)",
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked after the move); old Jungwon sources -> Character Portraits/Jungwon/_previous/",
+    "textTweaks": "sebastian.js: the flat drawn tidy (two clauses), the canal scene's time Evening; job-scenes.js: the fish market's lights are hanging bulbs (two phrases); no other text changed",
+    "tests": [
+      "python3 tools/femc-check-scenes.py --links sebastian,aphrodite,widowmaker,rohan,wren,jungwon",
+      "python3 tests/femc_gallery.py (94 checks)",
+      "python3 tests/femc_living.py (fails on kat-koro-walk: that routine needs the found-kat flag, which the year sim never sets; batch 46 content, unrelated)",
+      "python3 tests/femc_shadow_poses.py --enemies '' --ops tartarus-memory,finale --shots tartarus-memory --finale-path ''",
+      "python3 tests/femc_tartarus.py --only shots",
+      "python3 tests/femc_cast_consistency.py",
+      "screenshots: each new place in a scene, Jungwon and Haechan in the same cafe at 1440x900 and Jungwon at 390x844, Wren's phase 3 at 1280x800 and 390x844, the album at three sizes"
+    ],
+    "browserErrors": 0
   }
 }

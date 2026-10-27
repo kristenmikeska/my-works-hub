@@ -586,6 +586,7 @@
       { n: "Wren knocked on her door at eleven. Solar knew it was Wren before she opened it. Nobody else in the building knocked like that, two small careful taps, like someone checking whether a melon was ripe. Nobody else in the building had ever needed to be let in." },
       { s: 'wren', f: 'neutral', t: "Will you come up to the roof? I want to ask you something, and I'd like to be somewhere with a lot of sky." },
       { n: "The roof in the first week of March was the coldest place in Iwatodai. The water tank had a skin of ice down one side. The city was all lights below them, the bay black, the monorail sliding across it like a bead on a string, and over at the station, small and bright, the platform where everything had started." },
+      { cg: 'link-wren-r10' },
       { n: "Wren sat down with her back against the water tank and pulled her coat around her knees and looked at the station lights for a while before she said anything. The cap was on. It was always on. Solar had stopped noticing, the way you stop noticing a ring someone always wears, until the night you see them without it." },
       { s: 'wren', f: 'neutral', t: "Tell me about her. The girl on the bench. From the beginning. You're the only one who was there." },
       { n: "So Solar told her." },
@@ -634,6 +635,7 @@
           { n: "She nodded. Wren watched her nod, reading her face the way she'd said she always did, and nodded back, solemnly, like two people agreeing on the time of a train." }
         ] }
       ] },
+      { cg: null },
       { n: "They stayed until the cold drove them in, which took a long time, because neither of them wanted to be the one to say so. On the stairs down Wren stopped, one hand on the rail, and looked back up at the square of black sky in the roof door, full of stars." },
       { s: 'wren', f: 'neutral', t: "Four days. I counted. I always count. I think I got that from you." },
       { n: "She went down the stairs and out of the front door, and Solar stood at the top of the stairs with her hand still warm from holding Wren's, which had been cold, and thought about that for a long time, and couldn't make it come out right." }

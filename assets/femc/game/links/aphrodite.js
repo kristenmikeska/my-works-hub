@@ -479,6 +479,7 @@
       { s: 'aphrodite', f: 'neutral', t: "There's an old story about me. A golden apple. It had words on it, written by someone who wanted a war. To the fairest. Three goddesses fought over it, and a mortal boy had to choose, and he chose me, and a city burned." },
       { s: 'aphrodite', f: 'sad', t: "I was very proud of that for a very long time. I was the fairest. A whole city burned to say so." },
       { s: 'aphrodite', f: 'neutral', t: "I've been thinking about it all month. About what I'd write on it now, if I could." },
+      { cg: 'link-aphrodite-r10' },
       { n: "She opened her hands. A golden apple. Real gold, warm, glowing faintly pink at the edges. There was writing on it, small and curling, in a script Solar didn't know, and then, as she looked, in one she did." },
       { n: "To the sun." },
       { s: 'aphrodite', f: 'happy', t: "It's yours. My little sun. Not the fairest. The warmest. That's better. I've decided it's better. Nobody's ever started a war over warm." },
@@ -506,6 +507,7 @@
         ] }
       ] },
       { n: "They sat under the tree until the mall closed. The goddess talked about home, the endless field and the towers and the very angry gods, and about Ares, who had learned to make ramen, badly, on a camp stove, and who called her to the monorail every evening and bowed, every single time, and meant it every single time." },
+      { cg: null },
       { n: "When the security guard came to tell them it was closing, Aphrodite stood up and kissed Solar on the forehead, lightly, the way she'd once offered to kiss Yukari, the way she'd kissed a thousand mortals into a fever. Nothing happened. No fever. No spell. Just a kiss on the forehead from a woman who loved her, which was, Solar thought, walking home with a golden apple in her coat pocket warm against her hip, the strongest magic she had seen all year." }
     ] }
   ],

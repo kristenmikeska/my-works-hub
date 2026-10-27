@@ -88,6 +88,14 @@ EXTRA = {
     'darkhour-hotel-lobby': 'Added to Game/darkhour-hotel-lobby.jpeg',
     'gekkoukan-culture-festival': 'Added to Game/gekkoukan-culture-festival.jpeg',
     'iwatodai-strip-rain': 'Added to Game/iwatodai-strip-rain.jpeg',
+    # batch 51 (2026-10-26): Yeobo's Cafe and the fish market today (were the faded memory pictures), Monad, four spots
+    'yeobos-cafe': 'Added to Game/yeobos-cafe.jpeg',
+    'port-island-fish-market': 'Added to Game/port-island-fish-market.jpeg',
+    'tartarus-monad': 'Added to Game/tartarus-monad.jpeg',
+    'iwatodai-supermarket': 'Added to Game/iwatodai-supermarket.jpeg',
+    'gekkoukan-stairwell': 'Added to Game/gekkoukan-stairwell.jpeg',
+    'paulownia-canal': 'Added to Game/paulownia-canal.jpeg',
+    'kirijo-flat': 'Added to Game/kirijo-flat.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

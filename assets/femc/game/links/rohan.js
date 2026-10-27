@@ -402,6 +402,7 @@
       { music: 'tender' },
       { n: "He gave her a manga. One volume, hand-bound, with thread, the spine stitched by hand by somebody whose stitches were very neat and very angry. A cover he'd painted himself. A girl on a rooftop under a green moon, looking up, and behind her, very faint, three outlines of three other girls, standing very close." },
       { s: 'rohan', f: 'neutral', t: "It's yours. Every page. Every time I drew you. In order. With the one about the tower in the middle. I bound it myself. Koichi helped. Josuke fixed the binding when I stabbed it. Don't tell him I let him." },
+      { cg: 'link-rohan-r10' },
       { n: "She turned the pages slowly, there in the closed shop with the snow coming down outside the window and the cat asleep on the counter. September. The shadow. The hands. The girl who looked fine. The Persona with its face hidden. Her laughing at the spider. Her not looking at the door." },
       { n: "The last page was blank." },
       { s: 'rohan', f: 'neutral', t: "That's yours too. I can't write that page. Nobody can. I could read your whole life and I still couldn't write it." },
@@ -417,6 +418,7 @@
           { s: 'rohan', f: 'serious', t: "...Don't thank me. Just let me keep drawing you. That's enough. That's more than enough." }
         ] }
       ] },
+      { cg: null },
       { n: "Koichi and Josuke came by with snacks and fought over the heater. Rohan insulted Josuke's hair. Josuke told Rohan he looked like a pen with anxiety. Koichi said \"okay, okay\" eleven times. Jotaro sent a postcard, somehow, from somewhere, that said only: Good. And under it: Yare yare." },
       { n: "Later, when the others had gone, Rohan picked up his pen and looked at her for a long moment." },
       { s: 'rohan', f: 'neutral', t: "But. If you wanted. I could write one line. On the last page. Not in you. On the paper. Only if you said yes." },

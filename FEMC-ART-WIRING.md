@@ -13,29 +13,17 @@ Kat's list of art to make is `FEMC-ART-TODO.md`. This file holds everything tech
 - **`assets/femc/battle/art/theurgy/jungwon-showtime/01-opening.png`** (untracked, 1672 × 941 PNG, 2026-10-25): the same picture as the committed `bond-jungwon-love.webp` (mean pixel difference under 1/255 at 400 × 225; not byte-identical to its source `Added to Game/solar-jungwon-bond-ver2.png`). It is a full-size copy of the Jade Ring still, staged as panel 1 for the Jade Ring Showtime; it is not one of the `bond-jungwon-show-*` files (those are the friendship Showtime "Unanimous", whose panel 1 is `bond-jungwon.webp`). Nothing reads it. Leftover; safe to remove once Kat agrees (not deleted).
 
 ## Open questions for Kat
+- **Wren's Shadow, phase 1:** `New Adds/wren-shadow-phase1.png` (2026-10-26) matches the phase 3 brief (the same look and pose as the two phase 3 versions), not phase 1's, so it is held, not wired; `wren_call` keeps her portrait. Use it as a third phase 3 version, or remake phase 1 from its prompt?
 - **Stamps:** the 29 Persona 3: Solstice stamps are line drawings like every stamp on the hub. Illustrated ones would only fit if the whole passport changed. Keep as is?
 - **Rank 10 CGs not on the list:** Ken and Kat & Ethan have no rank 10 picture either (no `cg/link-ken-r10.webp` / `link-kat-r10.webp`, no `cg` step in their link files). Not added; ask Kat if she wants them.
 
 ## Where each item goes (keyed by its name in FEMC-ART-TODO.md)
 
 ### 1. Story CGs (ChatGPT)
-- **Sebastian, rank 10** (save as `link-sebastian-r10.png`): `cg/link-sebastian-r10.webp`; a `{ cg: 'link-sebastian-r10' }` step in the link's rank 10 (clear with `{ cg: null }`), focus in `places.js cgFocus`.
-- **Aphrodite, rank 10** (save as `link-aphrodite-r10.png`): `cg/link-aphrodite-r10.webp`; a `{ cg: 'link-aphrodite-r10' }` step in the link's rank 10 (clear with `{ cg: null }`), focus in `places.js cgFocus`.
-- **Widowmaker, rank 10** (save as `link-widowmaker-r10.png`): `cg/link-widowmaker-r10.webp`; a `{ cg: 'link-widowmaker-r10' }` step in the link's rank 10 (clear with `{ cg: null }`), focus in `places.js cgFocus`.
-- **Rohan, rank 10** (save as `link-rohan-r10.png`): `cg/link-rohan-r10.webp`; a `{ cg: 'link-rohan-r10' }` step in the link's rank 10 (clear with `{ cg: null }`), focus in `places.js cgFocus`.
-- **Wren, rank 10** (save as `link-wren-r10.png`): `cg/link-wren-r10.webp`; a `{ cg: 'link-wren-r10' }` step in the link's rank 10 (clear with `{ cg: null }`), focus in `places.js cgFocus`.
-- **Valentine's Day** (save as `holiday-valentines.png`): `cg/holiday-valentines.webp`; Yukari's 2/14 Valentine's scene in `data/living-march.js` (a `{ cg }` step).
-- **The dorm dinner** (save as `story-dorm-dinner.png`): `cg/story-dorm-dinner.webp`; `story-act3.js a3-dinner` (7/18, the dining room); the old FEMC-CG-PROMPTS #9 setting didn't match, so this prompt is from the scene.
+None left (batch 51 wired the last seven).
 
 ### 2. Places (Gemini)
 - **Kirijo Guesthouse lobby by day** (save as `kirijo-guesthouse.png`): `bg/kirijo-guesthouse.webp` via `tools/femc-backgrounds.py EXTRA`; the place slug `kirijo-guesthouse` in `places.js`.
-- **Yeobo's Cafe, today** (save as `yeobos-cafe.png`): `bg/yeobos-cafe.webp`; `places.js` rule `["Iwatodai Strip · Yeobo's Cafe", 'flashback-yeobos-cafe']` → `yeobos-cafe`.
-- **The fish market, today** (save as `port-island-fish-market.png`): `bg/port-island-fish-market.webp`; the fish-market job's place rule in `places.js`.
-- **Monad, Tartarus's hidden block** (save as `tartarus-monad.png`): `bg/tartarus-monad.webp`; `battle/data.js blocks`, Monad's `bg`.
-- **A supermarket aisle** (save as `iwatodai-supermarket.png`): `bg/iwatodai-supermarket.webp`; point the scenes' place rule at `iwatodai-supermarket`.
-- **A school stairwell** (save as `gekkoukan-stairwell.png`): `bg/gekkoukan-stairwell.webp`; point the scenes' place rule at `gekkoukan-stairwell`.
-- **The canal path behind the mall** (save as `paulownia-canal.png`): `bg/paulownia-canal.webp`; point the scenes' place rule at `paulownia-canal`.
-- **A small flat near the station** (save as `kirijo-flat.png`): `bg/kirijo-flat.webp`; point the scenes' place rule at `kirijo-flat`.
 
 ### 3. Characters (ChatGPT)
 - **Yukari's Evoker shot** (save as `yukari-evoker.png`): `battle/art/summon/yukari-evoker.webp`; `data.js` member `evoker: { shot, at: [muzzle x%, y%], pos, posPhone }`.
@@ -62,9 +50,7 @@ Kat's list of art to make is `FEMC-ART-TODO.md`. This file holds everything tech
 - **Happy faces for the busiest regulars** (save as `<name>-happy.png (e.g. ota-happy.png)`): `portraits/<id>/happy.webp` (ids: ota, maeda, kubo, tsuji, chiba, clerk, tanabe); `femc-portraits.py`, check scale.js.
 
 ### 4. Battle
-- **The Sleeper Car** (save as `memory-sleeper-car.png`): `battle/art/shadows/memory-sleeper-car.webp` via `tools/femc-shadows.py`; `data.js memory_car.img` (now `rampage-drive`).
 - **Wren's Shadow, phase 1** (save as `wren-shadow-phase1.png`): `battle/art/shadows/wren-shadow-phase1.webp`; swap `wren_call`'s `pic` for `img` in `data.js`.
-- **Wren's Shadow, phase 3** (save as `wren-shadow-phase3.png`): `battle/art/shadows/wren-shadow-phase3.webp`; swap `wren_last`'s `pic` for `img` in `data.js`.
 - **The Hanging Effigy** (save as `hanging-effigy.png`): `battle/art/shadows/hanging-effigy.webp`; `data.js effigy.img` (now `corrupt-tower`).
 - **The Reaper's pose sheet** (save as `reaper-posesheet.png`): `battle/art/shadows/reaper-pose-0..5.webp`; `BOSSES` in `tools/femc-shadow-poses.py`.
 - **The Hanging Effigy's pose sheet** (save as `hanging-effigy-posesheet.png`): `battle/art/shadows/hanging-effigy-pose-0..5.webp`; `BOSSES` in `tools/femc-shadow-poses.py`.
@@ -103,10 +89,7 @@ Kat's list of art to make is `FEMC-ART-TODO.md`. This file holds everything tech
 - **Menu icons: Calendar and Compendium** (save as `menu-icons-2.png`): `game/art/icons/calendar.webp`, `compendium.webp`; `menu.js TAB_ICONS`.
 
 ### 6. Screens and keepsakes (Gemini)
-- **The album's locked tile** (save as `album-locked.png (16:9) and album-locked-sq.png (square)`): `game/art/album-locked.webp`, `album-locked-sq.webp`; `menu.js` album picks by tile shape.
 - **Dark Hour still: the dorm lounge at midnight** (save as `loading-2.png`): `title/loading-2.webp`; `ui.js openBattle .g-dh-still` needs a rule for which fade gets it (e.g. nights that start in the dorm).
-- **Memory card: barley tea** (save as `strangers-barley-tea.png`): `memories/strangers-barley-tea.webp`; add the id to `battle/data.js memories` and award it.
-- **Memory card: the ballot box** (save as `hoax-ballot-box.png`): `memories/hoax-ballot-box.webp`; add the id to `battle/data.js memories` and award it.
 
 ### 7. Wardrobe and keychains
 - **Phantom Thief outfit (pose sheet)** (save as `skin-sk-phantom-posesheet.png`): `game/art/skins/sk-phantom/solar-pose-0..5.webp`; `python3 tools/femc-wardrobe.py skin <sheet> sk-phantom solar`, bump `ready.js?v=`.
@@ -151,7 +134,7 @@ Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 
 - **Evoker shots:** `battle.js evoker()` shows a face plus Kat's Evoker prop (`EVOKER_ART`, `art/summon/evoker-prop.webp` from `tools/femc-evoker-prop.py`; the code-drawn `EVOKER_SVG` is its fallback) for members without a close-up. A close-up is `evoker: { shot: 'assets/femc/battle/art/summon/<mid>-evoker.webp', at: [muzzle x%, y%], pos, posPhone }` in `data.js` (built in batch 43; Akihiko and Shinjiro have one): it fills the `.bt-evk-shot` slot like Solar's, the glass breaks at `at`, and `pos` / `posPhone` are its object-position on wide and phone screens. Evoker sheets already work: `('evoker', '<file>', '<mid>-evoke')` in `tools/femc-theurgy.py BUILD`, then `evoker.frames`.
 
 ### Battle art
-- **New Shadow or boss art:** `tools/femc-shadows.py` cuts it into `battle/art/shadows/<slug>.webp` and `index.js`; point the enemy's `img` at the slug (the memory boss is `memory_car`). A boss that comes as its own picture plus a labelled 2×2 sheet (the April boss, batch 37) goes in `QUADS` in `tools/femc-shadow-poses.py`, which writes both the static art and the frames. Wren's phases: swap `wren_call` / `wren_last`'s `pic` for an `img`. Then pose sheets as below.
+- **New Shadow or boss art:** `tools/femc-shadows.py` cuts it into `battle/art/shadows/<slug>.webp` and `index.js`; point the enemy's `img` at the slug (the memory boss is `memory_car`). A boss that comes as its own picture plus a labelled 2×2 sheet (the April boss, batch 37) goes in `QUADS` in `tools/femc-shadow-poses.py`, which writes both the static art and the frames. Wren's phases: swap `wren_call` / `wren_last`'s `pic` for an `img` (phase 3 is `wren-shadow-phase3` since batch 51, from `STATICS`; `wren-shadow-phase3-ver1.png` is the unused alternate). A transparent sheet in any grid plus its own picture (the Sleeper Car's 3×3, batch 51) goes in `ALPHA_GRIDS`: nothing is keyed, and figures that touch are split along the art. Then pose sheets as below.
 - **Gear and item art:** weapons already read a gear's `art` (equip lists, shops, Shuffle Time); armor and accessories need the same field checked in each list. Items and materials are Kat's stickers since batch 48 (`tools/femc-greens.py` → `battle/art/items/<id>.webp`, `build.js ITEM_ART` sets `art`, and `tartarus.js` for its five materials; `FemcIcons.of` shows them, the drawn SVG if a file fails; the menu's Items tab and the life sim's shops show them too). Status icons and map rooms are art since batch 36 (`tools/femc-icons.py` → `battle/art/icons/`, read by `battle.js stIco` / `ROOM_ART`); the deeper Tartarus's nine rooms are `ROOMS2` there (batch 48), the Night Orchid included.
 
 ### Cards, screens and keepsakes
@@ -159,7 +142,7 @@ Convert to WebP in `assets/femc/cg/<slug>.webp` (composition untouched, at most 
 - **Gacha:** keychains are `gacha.js keychain` (Kat's charms since batch 45: `tools/femc-keys.py` → `game/art/keys/<id>.webp` and `<id>-halloween.webp`, worn in October on the game's calendar, `halloween()`; the drawn charm / `keyFace` is the fallback); phone cases are Kat's art since batch 48 (`gacha.js caseArt` → `game/art/cases/<id>.webp` from `tools/femc-greens.py`; the drawn `.g-case-art[data-case]` colours in `gacha.css` are the fallback and still tint the open phone). The phone wears a case via `ui.js openPhone`.
 - **Wardrobe and series art (section 8):** `tools/femc-wardrobe.py` cuts every kind and rewrites `game/art/ready.js` (`FEMC_ART_READY`), which is the only thing the game checks: `skin <sheet> <outfit id> [who]` (pose sheets, cut like the fighters' in `femc-shadow-poses.py` → `game/art/skins/<id>/<who>-pose-0..5.webp`; battle.js reads the folder through `parent.FemcCosmetics.battle()`), `portraits <outfit id> <who> <folder>` (scene portraits, `core.js portrait` asks `FemcCosmetics.portrait`), `weapon <image> <id>` (`skins/<id>/weapon.webp`, menu.js Equipment), `keys <sheet> <six ids>` (series charms, cut like `femc-keys.py` → `game/art/keys/series/<id>.webp`; charms that touch across the row line are parted at their narrowest point, batch 52), `goods <sheet> <six ids>` (`game/art/goods/<id>.webp`, listed in ready.js `goods`; Collection and the prize card show them over the drawn stand-in), `scan` (re-list only). Bump `ready.js?v=` in `femc-game.html`. An outfit drawn bigger or smaller than her own sheet can get a size factor later (battle.js `FIGHTER_POSES` is per member, not per outfit). `python3 tests/femc_cosmetics.py --only pending` copies frames into a temporary outfit folder to check the whole path.
 - **Phone groups:** `ui.js GROUP_PICS` / `threadPic` (batch 48, `game/art/phone/<group>.webp` from `tools/femc-greens.py`; a new group needs its id there and a picture).
-- **Album locked tile:** `menu.js` album (locked tiles load no art now).
+- **Album locked tile:** Kat's card back since batch 51: `game.css .g-al-tile.lock` shows `game/art/album-locked.webp` (16:9 grid) or `album-locked-sq.webp` (the square memory-card grid), the stripes underneath as the fallback; a locked tile still loads no CG art.
 - **Memory cards:** add the id to `battle/data.js memories` (and award it somewhere); `memories/<id>.webp` shows up on its own.
 
 ### Tarot cards and places
@@ -251,6 +234,6 @@ The player is `battle.js playSeq` / `seqHtml` / `seqSays` (used by `bondCut`); t
 ### Cards, items and screens (sections 6 and 7): wiring notes
 - **Green-screen sheets** (item and material icons, menu icons, keychains, phone cases, group avatars): key out flat #00FF00, cut each cell, trim, and save transparent WebP (`tools/femc-keys.py` does this for the keychains and can be copied for the rest). White-background sheets (gear, books, keepsakes) go through `tools/femc-cards.py` like the weapons; 3 × 3 sheets use `grid: 9` (frames found per cell), `rotate: 'auto'` stands each card upright on its own axis, `boxes` gives cards by hand (the keepsakes), `None` skips an empty card; `books` lines cut unframed covers (batch 52).
 - **Gear art (in since batch 45):** `tools/femc-cards.py gear SHEET ids…` (or a `('gear', file, ids)` line in its `BUILD`) cuts a white sheet onto the wide canvas; add the ids to `build.js GEAR_ART`, which sets `art` + `artWide` (menu Equipment, shop shelves, chest loot read it; `icons.js of` shows it in the battle shop / equip screen and gacha prizes, drawn icon if the file fails). **Tarot alternates:** an `EXTRA` key `<arcana>-2` in `tools/femc-tarot.py`, then the link in `core.js TAROT_ALT`.
-- **Hooks:** Bookworms' covers are `core.js bookArt` (`game/art/books/<id>.webp`, a book's own `img` wins; ui.js shop rows `.g-shop-art.book`); a keepsake gift's `id` (or `img`) shows `game/art/items/keepsake-<id>.webp` in its toast (`core.js gift`, ui.js `.g-toast.has-img`); the plain weapons are `build.js PLAIN_ART`; the sun's node icons are `sun.js iconFor` (`art/sun/<name>.webp`, a node's `icon` or its first passive key, drawn glyph as fallback; batch 52). the menu tabs' icons are in (`menu.js TAB_ICONS` / `tabIco`, `game/art/icons/<tab>.webp`, text-only fallback); the album's locked tile picks the 16:9 or square file by the grid it's in; the loading stills are in the Dark Hour fade (`ui.js openBattle` `.g-dh-still`, `game.css`; batch 48 shows `title/loading-1.webp` on every one), so a second still needs a rule for which fade gets which (e.g. `loading-2` for nights that start in the dorm).
+- **Hooks:** Bookworms' covers are `core.js bookArt` (`game/art/books/<id>.webp`, a book's own `img` wins; ui.js shop rows `.g-shop-art.book`); a keepsake gift's `id` (or `img`) shows `game/art/items/keepsake-<id>.webp` in its toast (`core.js gift`, ui.js `.g-toast.has-img`); the plain weapons are `build.js PLAIN_ART`; the sun's node icons are `sun.js iconFor` (`art/sun/<name>.webp`, a node's `icon` or its first passive key, drawn glyph as fallback; batch 52). the menu tabs' icons are in (`menu.js TAB_ICONS` / `tabIco`, `game/art/icons/<tab>.webp`, text-only fallback); the loading stills are in the Dark Hour fade (`ui.js openBattle` `.g-dh-still`, `game.css`; batch 48 shows `title/loading-1.webp` on every one), so a second still needs a rule for which fade gets which (e.g. `loading-2` for nights that start in the dorm).
 
 - **Portraits changed?** Bump `window.FEMC_PORTRAIT_V` at the bottom of `assets/femc/portraits/scale.js` (and its `?v=`), or browsers keep the old faces.

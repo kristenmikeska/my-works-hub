@@ -189,6 +189,7 @@
     ] },
     ...window.FEMC_STORY_KIT.anyRank('a3-dinner-guests', ['ann', 'haru', 'kasumi', 'kiriko', 'kuromi', 'mercy', 'sebastian', 'aphrodite'], 1),
     { ifFlag: 'a3-dinner-guests', then: [
+      { cg: 'story-dorm-dinner' },
       { n: "By ten the dining room was louder than it had been since April, and warmer, and it smelled like soy and steam and somebody's perfume, and the extra bowls were all dirty. Mitsuru stood at the edge of it with a cup of tea she wasn't drinking, watching the room the way she watched the monitors upstairs, except that every so often the corner of her mouth moved." },
       { s: 'mitsuru', f: 'neutral', t: "So these are your strangers. They're much less alarming than their readings." }
     ], else: [
@@ -205,6 +206,7 @@
         { n: "Mitsuru followed her eyes to the dark glass and didn't ask, and a minute later handed her a bowl and a pair of chopsticks without a word, which from Mitsuru was practically a speech." }
       ] }
     ] },
+    { cg: null },
     { place: 'Iwatodai Dorm · Front', time: 'Night', music: 'tender' },
     { n: "The heat hadn't broken. It sat on the street like a held breath, cicadas grinding away somewhere in the dark, the asphalt still giving back the day. And across the road, at the end of the block, under the streetlight, Wren was standing with her arms wrapped around herself in that enormous coat, in thirty-one degrees, watching the lit windows of the dining room." },
     { s: 'wren', f: 'flustered', t: "Oh. Hello. I got as far as the light." },

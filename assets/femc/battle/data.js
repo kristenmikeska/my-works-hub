@@ -829,7 +829,7 @@ window.FEMC_BATTLE_DATA = (() => {
     memory_car: Object.assign(S(44, { hp: 6.4 }), { name: 'The Sleeper Car', arcana: 'Moon', boss: true, story: true,
       aff: { light: 'weak', dark: 'null', ice: 'resist', strike: 'resist' }, skills: ['e_mabufula', 'e_mazionga', 'still'], ai: 'carriage', exp: 0, yen: 0,
       still: 'The train runs past without touching the floor. Every window has someone asleep in it.',
-      img: 'rampage-drive', h: 300, idle: 'sway', svg: 'priestess', alloutResist: 0.6, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'],
+      img: 'memory-sleeper-car', h: 300, idle: 'sway', svg: 'priestess', alloutResist: 0.6, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock'],
       note: 'A carriage that runs through the tower where there are no rails. It can’t be reached; its guards can.' }),
     // Memory floors (Act IV–V). Mechanics are kept simple; see SCRIPTS in battle.js.
     ballot_box: Object.assign(S(37, { hp: 6, ma: 1.2, en: 1.2 }), { name: 'The Ballot Box', arcana: 'Hoax', boss: true, story: true,
@@ -884,7 +884,7 @@ window.FEMC_BATTLE_DATA = (() => {
       img: 'memory-lantern-hoax', h: 150, idle: 'float', svg: 'maya', alloutResist: 0.8, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock', 'poison', 'distress'] }),
     wren_last: Object.assign(S(50, { hp: 0.9 }), { name: 'Wren', arcana: 'Jester', boss: true, story: true, capfall: true,
       aff: {}, skills: ['still'], ai: 'still', exp: 0, yen: 0, still: 'Wren doesn’t fight back.',
-      pic: 'assets/femc/portraits/wren/serious.webp', picW: 887, picH: 828, h: 380, idle: 'breathe', svg: 'maya', alloutResist: 1, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock', 'poison', 'distress'],
+      img: 'wren-shadow-phase3', h: 380, idle: 'breathe', svg: 'maya', alloutResist: 1, ailImmune: ['charm', 'fear', 'bind', 'freeze', 'shock', 'poison', 'distress'],
       note: 'The cap is gone. Her hair is down. She looks like you.' })
   };
 
@@ -935,7 +935,7 @@ window.FEMC_BATTLE_DATA = (() => {
       strong: [['seeker@39', 'tower@38'], ['seeker@38', 'seeker@38']] },
     // Monad: the secret block above the tower's top (a cracked wall on 172F leads in, once the date opens it: 204F on 11/4,
     // 230F on 12/3, 254F on 1/1). No full moon at its top; its last stairs end at a sealed door.
-    { id: 'monad', name: 'Monad', bg: BG + 'tartarus-coffins.webp', color: '#6ab0ff', tint: '#0b2a5c', op: null, lvl: 47, secret: true,
+    { id: 'monad', name: 'Monad', bg: BG + 'tartarus-monad.webp', color: '#6ab0ff', tint: '#0b2a5c', op: null, lvl: 47, secret: true,
       floors: [176, 184, 192, 204, 212, 222, 230, 238, 246, 254], guardian: { at: [204, 246], kind: 'guard_monad' },
       rooms: { strong: 1.8, vault: 1.5, crack: 1.4, rare: 1.4, trap: 1.3, rest: 1.2, altar: 1.2, chest: 0.8 },
       pool: [['seeker@44', 'knight@45'], ['castle@45', 'tower@46'], ['giant@46', 'basalt@46', 'machine@45'], ['seeker@47', 'seeker@46'], ['dancer@47', 'pot@47', 'turret@46'], ['tower@48', 'castle@48'], ['beast@48', 'drive@48', 'niceguy@48'], ['seeker@50', 'tower@49', 'knight@49']],
@@ -1042,7 +1042,10 @@ window.FEMC_BATTLE_DATA = (() => {
     ['strangers-suture-kit', 'strangers', 'A Suture Kit', 'Curved needles, small scissors. Her hands know what to do before she does.'],
     ['strangers-low-tide', 'strangers', 'Low Tide', 'Mud to the horizon under sodium lights. Bad coffee in a car, waiting for it to turn.'],
     ['hoax-group-chat', 'Hoax', 'A Group Chat', 'Two in the morning, a name changed to something stupid, and everyone still awake for her.'],
-    ['hoax-math-homework', 'Hoax', 'Math Homework', 'Neat working in somebody else’s handwriting, explained twice, patiently.']
+    ['hoax-math-homework', 'Hoax', 'Math Homework', 'Neat working in somebody else’s handwriting, explained twice, patiently.'],
+    // Batch 51: the fish market's last shift (job-scenes.js) and the Hoax memory floor (story-act4.js a4-jihoon-awakens).
+    ['strangers-barley-tea', 'strangers', 'Barley Tea', 'A cup on a low wooden table, steaming in the morning light. There was always some on the stove.'],
+    ['hoax-ballot-box', 'Hoax', 'The Ballot Box', 'Folded slips on a gym table under string lights, all of them waiting to be counted.']
   ].map(([id, world, title, text, wide]) => ({ id, world, title, text, img: MEM + id + '.webp', wide: wide ? MEM + id + '-wide.webp' : null }));
   /* A stand-in card for a memory whose art doesn't exist yet (an SVG data URL with the title, in the world's colors).
      battle.js and the game's journal swap it in when a memory image fails to load. */

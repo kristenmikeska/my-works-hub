@@ -909,6 +909,7 @@
     { battle: { id: 'memory-hoax', kind: 'scripted', script: 'memory-hoax', segment: 2, title: 'Tartarus · A Gym That Isn’t Here', desc: 'Jihoon has a Persona. The box is still hungry. Finish it.', notes: 'Segment 2: Jihoon joins the party (party id jihoon). His Persona is pending design with Kat; use placeholder skills. Win to continue.', forced: true } },
     { music: 'night' },
     { n: "Afterward the gym came apart like wet paper, the chairs and the hoops and the stage and the girl on it, and they were standing in the tower's checkerboard hall, and Jihoon was sitting on the floor with his back against the wall and his hands in his hair, laughing and laughing in a way that was not entirely laughing." },
+    { fragment: 'hoax-ballot-box' },
     { s: 'jihoon', f: 'happy', t: "Did you SEE that? Did you see the size of it? It's bigger than Junpei's. It's bigger than everybody's. Write that down. Somebody write that down." },
     { s: 'akihiko', f: 'happy', t: "It's called a Persona." },
     { s: 'jihoon', f: 'happy-2', t: "I know what it's called. I'm the one who's got one. Persona. Love that. Suits me." },

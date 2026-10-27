@@ -209,6 +209,7 @@ window.FEMC_GAME_PLACES = {
     ['Gekkoukan High · Gym', 'gekkoukan-gym'], // the Gym and the Gymnasium
     ['Gekkoukan High · Classroom · Study Group', 'gekkoukan-study-group', 'gekkoukan-study-group'],
     ['Gekkoukan High · Classroom', 'gekkoukan-classroom-day', 'gekkoukan-classroom-evening'],
+    ['Gekkoukan High · Stairwell', 'gekkoukan-stairwell'],
     ['Gekkoukan High', 'school-hallway'],
     ['Iwatodai Dorm · Lounge', 'iwatodaidorm-livingroom', 'iwatodaidorm-livingroom-night'],
     ['Iwatodai Dorm · Kitchen', 'iwatodaidorm-kitchen'],
@@ -225,6 +226,7 @@ window.FEMC_GAME_PLACES = {
     ['Iwatodai Dorm · Rooftop', 'iwatodaidorm-roof-evening', 'iwatodaidorm-roof-night'],
     ['Iwatodai Dorm · Front', 'iwotodaidorm-outside'],
     ['Iwatodai Dorm', 'iwatodaidorm-livingroom', 'iwatodaidorm-livingroom-night'],
+    ['Kirijo Flat', 'kirijo-flat', 'kirijo-flat'], // the small flat by the station (Sebastian's friends); night-lit art
     ['Kirijo Guesthouse · Front', 'elegant-buildingentrance', 'kirijo-guesthouse-front-night'],
     ['Kirijo Guesthouse · Roof', 'rooftop-citynight', 'kirijo-guesthouse-roof-night'],
     ['Kirijo Guesthouse', 'hotel-lobby', 'kirijo-guesthouse-night'],
@@ -243,7 +245,8 @@ window.FEMC_GAME_PLACES = {
     ['Iwatodai Strip · Hagakure · Kitchen', 'hagakure-kitchen', 'hagakure-kitchen'],
     ['Iwatodai Strip · Hagakure', 'hagakure-ramen'],
     ['Iwatodai Strip · Bookworms', 'bookworms-inside', 'bookworms-inside'],
-    ["Iwatodai Strip · Yeobo's Cafe", 'flashback-yeobos-cafe'],
+    ["Iwatodai Strip · Yeobo's Cafe", 'yeobos-cafe'],
+    ['Iwatodai Strip · Supermarket', 'iwatodai-supermarket', 'iwatodai-supermarket'],
     ['Iwatodai Strip · Aohige Pharmacy', 'aohigepharmacy-outside'],
     ['Iwatodai Strip · Bathhouse · Baths', 'iwatodai-bathhouse', 'iwatodai-bathhouse'],
     ['Iwatodai Strip · Bathhouse', 'outside-daytime-neighborhood', 'bathhouse-night'],
@@ -267,13 +270,14 @@ window.FEMC_GAME_PLACES = {
     ['Paulownia Mall · Photo Booth', 'inside-mall'],
     ['Paulownia Mall · Central Atrium', 'inside-mall'],
     ['Paulownia Mall · Velvet Door', 'paulownia-velvet-door'],
+    ['Paulownia Mall · Behind the Canal', 'paulownia-canal', 'paulownia-canal'],
     ['Paulownia Mall', 'paulownia-mall', 'paulownia-mall-night'],
     ['Port Island Station · Back Alley', 'outside-nightdistrict'],
     ['Port Island Station · Respawn', 'inside-mall', 'respawn-cafe-evening'],
     ['Port Island Station · Central Concourse', 'station-concourse-busy'],
     ['Port Island Station', 'location-1', 'portisland-station-night'],
     ['Port Island · Convenience Store', 'city', 'port-island-konbini-night'],
-    ['Port Island · Fish Market', 'flashback-fish-market'],
+    ['Port Island · Fish Market', 'port-island-fish-market'],
     ['Port Island · Museum', 'port-island-museum'],
     ['Port Island · Back Streets', 'outside-nightdistrict'],
     ['Port Island · Seaside Park · Beach Cleanup', 'seaside-park-beach-cleanup'],
@@ -355,7 +359,9 @@ window.FEMC_GAME_PLACES = {
     'link-ann-r10': '50% 25%', 'link-chenle-r10': '47% 20%', 'link-danielle-r10': '24% 30%', 'link-elizabeth-r10': '45% 25%', 'link-haru-r10': '68% 30%',
     'link-jaemin-r10': '54% 28%', 'link-judy-r10': '48% 35%', 'link-junkyu-r10': '50% 30%', 'link-kasumi-r10': '37% 35%', 'link-kiriko-r10': '52% 35%',
     'link-kuromi-r10': '51% 30%', 'link-mercy-r10': '40% 28%', 'link-mymelody-r10': '49% 25%', 'link-rio-r10': '50% 30%', 'link-saori-r10': '49% 30%', 'romance-rio': '50% 25%', 'romance-saori': '48% 25%',
-    'link-sunoo-r10': '51% 28%', 'crush-akihiko-umbrella': '38% 22%', 'crush-two-ends': '60% 40%', 'holiday-summer-festival': '48% 22%', 'holiday-new-year': '36% 45%'
+    'link-sunoo-r10': '51% 28%', 'crush-akihiko-umbrella': '38% 22%', 'crush-two-ends': '60% 40%', 'holiday-summer-festival': '48% 22%', 'holiday-new-year': '36% 45%',
+    'link-sebastian-r10': '42% 25%', 'link-aphrodite-r10': '48% 30%', 'link-widowmaker-r10': '45% 25%', 'link-rohan-r10': '42% 28%',
+    'link-wren-r10': '38% 40%', 'holiday-valentines': '45% 25%', 'story-dorm-dinner': '35% 35%'
   },
   /* Music (assets/femc/music/<file>.mp3) by mood. Scenes pick a mood; screens use the `screens` map.
      A mood is one file (it loops) or a pool (a list): a pool rotates, never plays the same file twice in a row, and each

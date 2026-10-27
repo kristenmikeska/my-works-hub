@@ -327,6 +327,71 @@ def build_quads(only=()):
   print(name,'->',slug,(w,h),'idle',idle_h,'idle art x',round(k,3),'static',im.size)
  p.write_text(s[:s.index('window.FEMC_SHADOW_ART')]+'window.FEMC_SHADOW_ART = '+json.dumps(index,sort_keys=True,indent=1)+';\n')
 
+# Transparent sheets with a separate static picture (batch 51, 2026-10-26): Kat's Sleeper Car came as one full figure
+# (memory-sleeper-car.png) and a 3x3 pose sheet (sleeper-car-poses.png), both with real transparency, so nothing is keyed.
+# The sheet's pieces go to their cells' figures (grid_figures), the frames share one canvas with the Shadow rim, in reading
+# order (0 idle, 1 lurch, 2 green aura, 3 rush, 4 ooze, 5 gust, 6 hurt, 7 sagging, 8 collapsing). The static picture is
+# written whole as <slug>.webp (trimmed, rimmed, at most 900 tall). STATICS: single transparent pictures, static art only.
+ALPHA_GRIDS={'sleeper-car-poses.png':{'slug':'memory-sleeper-car','static':'memory-sleeper-car.png','cols':3,'rows':3,
+ 'states':{'attack':[1,3,4],'cast':[2,5],'hurt':[6],'down':[7],'defeat':[8]}}}
+# Wren's last phase (batch 51): Kat made two versions; ver2 (true-black hair, no green cast) is used, ver1 is the alternate.
+STATICS={'wren-shadow-phase3-ver2.png':'wren-shadow-phase3'}
+
+def alpha_figures(a,cols,rows):
+ """One mask per cell of a transparent cols x rows sheet, row by row. A connected piece belongs to its cell; a piece two
+ cells share a lot of (figures touching) is split between their solid bodies by growing each body through the art, so a
+ tendril stays with the figure it comes out of. Each cell's biggest piece is its figure; specks join the nearest figure."""
+ H,W=a.shape[:2];m=a[...,3]>0.06;N=cols*rows
+ lab,_=ndimage.label(ndimage.binary_dilation(m,iterations=2));lab=lab*m
+ cell=(np.arange(H)[:,None]*rows//H)*cols+(np.arange(W)[None,:]*cols//W)
+ parts=[]
+ for k,sl in enumerate(ndimage.find_objects(lab),1):
+  if sl is None:continue
+  mk=lab[sl]==k;counts=np.bincount(cell[sl][mk],minlength=N);big=[c for c in range(N) if counts[c]>0.3*counts.sum()]
+  if len(big)<2:parts.append((sl,mk));continue
+  reg=np.zeros(mk.shape,int);solid=mk&(a[sl][...,3]>0.9)
+  for c in big:
+   cl,_=ndimage.label(solid&(cell[sl]==c));sz=np.bincount(cl.ravel());sz[0]=0;reg[cl==sz.argmax()]=c+1
+  while True:
+   grown=ndimage.grey_dilation(reg,size=3)*(mk&(reg==0))
+   if not grown.any():break
+   reg=np.where(reg==0,grown,reg)
+  _,(iy,ix)=ndimage.distance_transform_edt(reg==0,return_indices=True);reg=np.where(mk,reg[iy,ix],0)
+  parts+=[(sl,reg==c+1) for c in big]
+ full=lambda sl,mk:np.pad(mk,((sl[0].start,H-sl[0].stop),(sl[1].start,W-sl[1].stop)))
+ masks=[full(sl,mk) for sl,mk in parts];sizes=[mk.sum() for mk in masks]
+ cent=[ndimage.center_of_mass(mk) for mk in masks];home=[int(cell[min(H-1,int(cy)),min(W-1,int(cx))]) for cy,cx in cent]
+ figs=[max([i for i in range(len(masks)) if home[i]==c],key=lambda i:sizes[i]) for c in range(N)]
+ boxes=[ndimage.find_objects(masks[f].astype(int))[0] for f in figs];out=[masks[f].copy() for f in figs]
+ for i,mk in enumerate(masks):
+  if i in figs:continue
+  cy,cx=cent[i];out[int(np.argmin([np.hypot(max(b[1].start-cx,0,cx-b[1].stop),max(b[0].start-cy,0,cy-b[0].stop)) for b in boxes]))]|=mk
+ return out
+
+def write_static(TH,a,slug):
+ bb=TH.to_img(a).getchannel('A').point(lambda v:255 if v>8 else 0).getbbox();st=a[bb[1]:bb[3],bb[0]:bb[2]];r=min(1,900/st.shape[0])
+ im=TH.to_img(TH.AC.rim(np.asarray(TH.to_img(st).resize((round(st.shape[1]*r),round(st.shape[0]*r)),Image.LANCZOS),np.float32)/255,1.6))
+ im.save(ROOT/f'assets/femc/battle/art/shadows/{slug}.webp','WEBP',quality=90,method=5);return im
+
+def build_alpha(only=()):
+ p=ROOT/'assets/femc/battle/art/shadows/index.js';s=p.read_text();index=json.loads(s[s.index('{'):s.rindex('}')+1])
+ TH=theurgy_tool()
+ for name,g in ALPHA_GRIDS.items():
+  if only and name not in only:continue
+  slug=g['slug'];a=np.asarray(Image.open(find(name)).convert('RGBA'),np.float32)/255
+  masks=alpha_figures(a,g['cols'],g['rows'])
+  frames,idle_h=place(TH,[a[...,3]*ndimage.binary_dilation(mk,iterations=2) for mk in masks],[a]*len(masks),rim=True)
+  for i,f in enumerate(frames):f.save(ROOT/f'assets/femc/battle/art/shadows/{slug}-pose-{i}.webp','WEBP',quality=90,method=5)
+  im=write_static(TH,np.asarray(Image.open(find(g['static'])).convert('RGBA'),np.float32)/255,slug)
+  w,h=frames[0].size
+  index[slug]={'w':w,'h':h,'small':False,'poses':{'scale':round(h/idle_h,4),'frames':[f'{slug}-pose-{i}' for i in range(len(frames))],'states':g['states']}}
+  print(name,'->',slug,(w,h),'idle',idle_h,'static',im.size)
+ for name,slug in STATICS.items():
+  if only and name not in only:continue
+  im=write_static(TH,np.asarray(Image.open(find(name)).convert('RGBA'),np.float32)/255,slug)
+  index[slug]={'w':im.width,'h':im.height,'small':False};print(name,'->',slug,im.size)
+ p.write_text(s[:s.index('window.FEMC_SHADOW_ART')]+'window.FEMC_SHADOW_ART = '+json.dumps(index,sort_keys=True,indent=1)+';\n')
+
 def main():
  p=ROOT/'assets/femc/battle/art/shadows/index.js';s=p.read_text();index=json.loads(s[s.index('{'):s.rindex('}')+1])
  only=set(sys.argv[1:])
@@ -356,11 +421,13 @@ if __name__=='__main__':
  if sys.argv[1:2]==['check']:
   out=sys.argv[2];files=[]
   for name in sys.argv[3:]:
-   slug=BOSSES.get(name) or QUADS.get(name,{}).get('slug');n=len(QUADS[name]['cells'])+1 if name in QUADS else 6
+   slug=BOSSES.get(name) or QUADS.get(name,{}).get('slug') or ALPHA_GRIDS.get(name,{}).get('slug');n=len(QUADS[name]['cells'])+1 if name in QUADS else ALPHA_GRIDS[name]['cols']*ALPHA_GRIDS[name]['rows'] if name in ALPHA_GRIDS else 6
    files+=[str(ROOT/f'assets/femc/battle/art/shadows/{slug}-pose-{i}.webp') if slug else str(ROOT/f'assets/femc/battle/art/poses/{name.split("-")[0]}-pose-{i}.webp') for i in range(n)]
   theurgy_tool().check(out,files)
  else:
   only=set(sys.argv[1:]);white=set(BOSSES)|{f'{m}-posesheet.png' for m in FIGHTERS}
-  if not only or only-white-set(QUADS):main()
+  alpha=set(ALPHA_GRIDS)|set(STATICS)
+  if not only or only-white-set(QUADS)-alpha:main()
   if not only or only&white:build_white(only&white)
   if not only or only&set(QUADS):build_quads(only&set(QUADS))
+  if not only or only&alpha:build_alpha(only&alpha)

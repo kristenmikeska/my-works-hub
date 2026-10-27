@@ -330,6 +330,7 @@
         { s: 'yukari', f: 'neutral', t: "Every year at school I do giri for the whole archery club. Twelve boxes. Twelve boys who say thanks without looking up. This is the good one. The one for your friends. I've never actually done it right." },
         { n: "Fuuka arrived at a jog with a lunchbox held out in front of her like a cake on fire. She'd made truffles. They were, in places, black." },
         { s: 'fuuka', f: 'happy', t: "They're a little dark on the bottom. It's a flavor! I've decided it's a flavor." },
+        { cg: 'holiday-valentines' },
         { n: "Yukari's own were in a paper bag from the expensive shop. There were three boxes in it. She handed over two, one to each of them, and the third stayed in the bag, and when Solar looked at it Yukari moved the bag to her other side." },
         { choose: [
           { t: "(Trade. Open them right there by the fountain.)", notes: 3, stat: { charm: 1 }, then: [
@@ -343,7 +344,8 @@
             { s: 'yukari', f: 'sad', t: "We don't really talk. But it's Valentine's. And I thought, if I don't do it this year, I'll do it next year, and then I thought, what if I don't." },
             { n: "She didn't say anything else. On the way out of the mall she stopped at the post office counter by the station exit, and bought a padded envelope, and stood there with the pen for a long time, and Solar and Fuuka looked at the stamps very hard until she'd written the address." }
           ] }
-        ] }
+        ] },
+        { cg: null }
       ] }
   });
 
@@ -412,7 +414,7 @@
   });
 
   holiday('jungwon', {
-    '2/14': { rank: 3, flag: 'year-goes-on', title: "valentine's day", place: "Iwatodai Strip · Yeobo's Cafe", time: 'Daytime', bg: 'flashback-yeobos-cafe', music: 'tender',
+    '2/14': { rank: 3, flag: 'year-goes-on', title: "valentine's day", place: "Iwatodai Strip · Yeobo's Cafe", time: 'Daytime', bg: 'yeobos-cafe', music: 'tender',
       ask: "Sunoo has made heart-shaped croissants. He says I'm not allowed to eat one alone. Are you free this afternoon?", yes: 'WON YES. omw!!', ok: "Two o'clock. I've reserved the window table. He laughed at me for reserving it.", sorry: 'CANT TODAY IM SORRY :(', no: "Understood. I'll save you one. He's watching me save it. It's very uncomfortable.",
       scene: [
         { n: "Every croissant in Yeobo's case had a heart piped on it in red icing, and Sunoo was behind the counter piping more with his tongue between his teeth, and at the window table, which had a small folded card on it that said *RESERVED* in Jungwon's handwriting, Jungwon was sitting very straight in front of three boxes of chocolate he clearly didn't know what to do with." },

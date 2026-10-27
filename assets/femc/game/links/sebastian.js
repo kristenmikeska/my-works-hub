@@ -593,6 +593,7 @@
         ] }
       ] },
       { s: 'sebastian', f: 'serious', t: "I'm bad at saying things. You know that. So I'm going to do this the only way I know how." },
+      { cg: 'link-sebastian-r10' },
       { n: "He took a single twenty-sided die out of his pocket. Dark green, worn at the corners, the numbers half rubbed off. He held it out on his palm." },
       { s: 'sebastian', f: 'neutral', t: "Solarion, a wanderer from another world, finds a quiet guy in a hoodie who likes frogs and doesn't talk. She makes him talk. She gets his friends to come. She makes him stand at the front. She gets him to go home. He doesn't know how to thank her." },
       { s: 'sebastian', f: 'neutral', t: "What are they? In the campaign. Roll for it, if you want. Or don't. Whatever you say, I'm writing it down." },
@@ -615,6 +616,7 @@
       { n: "They stood under the awning until the rain stopped, the way they always did. When it did, finally, the street smelled of wet concrete and fried food and bus, and he pulled his hood down, and stepped out from under the awning into the clean cold air, and looked up, and held out his hand, palm up, the way you do to see if it's still raining." },
       { s: 'sebastian', f: 'neutral', t: "In the ending of the text adventure, I finally wrote it. Solarion goes home. Wherever that is. And her friends stand on the platform. And somebody's holding up a sign with her name on it, really badly drawn, with a frog on it." },
       { s: 'sebastian', f: 'sad', t: "That's the ending. That's the only one I could write that I believed. I don't know which home. Neither do you, I guess. But somebody's holding the sign." },
+      { cg: null },
       { n: "Solar didn't say anything. She held the drawing against her chest, under her blazer, out of the wet, the way he'd held it, and the die in her other fist, and walked home in the clearing dark with both of them, and didn't look back at the awning, and knew he was standing under it anyway, watching her go, from the back, the way he always would, and that this time it was a choice." }
     ] }
   ],
@@ -656,11 +658,11 @@
       { s: 'sebastian', f: 'happy', t: "...When I get home I'm going to do this in the basement with Abby. Except with the door open. That's the new rule. Door open." }
     ] },
     { title: 'packing', place: 'Kirijo Flat · By the Station', scene: [
-      { place: 'Kirijo Flat · By the Station', time: 'Evening', bg: 'hotel-lobby' },
+      { place: 'Kirijo Flat · By the Station', time: 'Evening', bg: 'kirijo-flat' },
       { music: 'dorm' },
-      { n: "The little Kirijo flat by the station had been Abigail and Sam's since July and Sebastian's, unofficially, since about a week after that, and it had the look now of a place three people had been very happy in without ever once tidying it. Dice on every surface. A skateboard deck propped against the fridge. A purple plush sword in the window like a flag." },
+      { n: "The little Kirijo flat by the station had been Abigail and Sam's since July and Sebastian's, unofficially, since about a week after that, and it had the look now of a place three people had been very happy in and had tidied, mostly, for company. Dice in a bowl on the low table. A skateboard deck propped against the fridge. A purple plush sword in the window like a flag." },
       { ifAfter: '12/22', then: [
-        { n: "Elizabeth had been to see them in December. She'd sat on the floor because all the chairs had laundry on them and told them the night the doors would open, and Abigail had written it on the fridge in marker and drawn a sword through it, which nobody had asked about." }
+        { n: "Elizabeth had been to see them in December. She'd sat on the floor cushion because the futon had laundry on it and told them the night the doors would open, and Abigail had written it on the fridge in marker and drawn a sword through it, which nobody had asked about." }
       ] },
       { s: 'sam', f: 'neutral', t: "Okay. Packing meeting. Rule is, one thing each. One thing from here that comes home. Abby's is the sword, obviously." },
       { s: 'abigail', f: 'happy', t: "Obviously. It's a real sword. Spiritually." },
@@ -681,7 +683,7 @@
       { n: "They didn't pack, in the end. They played a one-shot instead, on the floor, because Sam said a packing meeting that ended in packing was a waste of a meeting, and the one-shot was about three adventurers trying to leave a city that kept being too good to leave, and none of them pointed out what it was about, and none of them needed to." }
     ] },
     { title: 'frogs in winter', place: 'Paulownia Mall', scene: [
-      { place: 'Paulownia Mall · Behind the Canal', time: 'Daytime', bg: 'park-2' },
+      { place: 'Paulownia Mall · Behind the Canal', time: 'Evening', bg: 'paulownia-canal' },
       { music: 'tender' },
       { n: "There was frost on the concrete edge of the canal behind the mall, a thin white rind on everything, and the water was low and black and very still, and Sebastian was crouched at the edge of it in a borrowed scarf with his elbows on his knees, looking down, the way he had in June, at nothing." },
       { s: 'sebastian', f: 'neutral', t: "He's down there. The first frog. Not him specifically. Probably. In the mud at the bottom. Heart nearly stopped. Waiting for spring." },
