@@ -90,7 +90,7 @@
         { t: 'lol was it weird yesterday', link: 'hanni', notes: 3, then: [{ from: 'hanni', t: 'a little!!' }, { from: 'hanni', t: 'the truth is a lot sometimes. but its yours' }] }] },
     8: { slot: 'evening', msgs: [{ from: 'hanni', t: 'kitchen at 6 again tmrw? sparkling water is on me' }],
       reply: [{ t: 'yes', link: 'hanni', notes: 2, then: [{ from: 'hanni', t: '!!' }] },
-        { t: 'what was hyein gonna say', link: 'hanni', notes: 1, then: [{ from: 'hanni', t: 'nothing!!!' }, { from: 'hanni', t: 'go to sleep!!!' }] }] }
+        { t: 'what was hyein gonna say', link: 'hanni', notes: 1, then: [{ from: 'hanni', t: 'nothing!!!' }, { from: 'hanni', t: 'go to sleep!!!' }, { from: 'hanni', t: '...ok not nothing. tomorrow. i promised u the truth' }] }] }
   });
   add('hyein', {
     1: { slot: 'evening', msgs: [{ from: 'hyein', t: 'u wore it home. i saw' }, { from: 'hyein', t: "i'm framing the moment" }],
@@ -168,7 +168,10 @@
         { t: 'is that ok', link: 'jaehyun', notes: 3, then: [{ from: 'jaehyun', t: "It's fine." }, { from: 'jaehyun', t: "It's better than fine." }] }] },
     3: { slot: 'evening', msgs: [{ from: 'jaehyun', t: 'Your release is late. Fix your wrist.' }, { from: 'jaehyun', t: 'Thursday. Same field.' }],
       reply: [{ t: 'yes coach', link: 'jaehyun', notes: 2, then: [{ from: 'jaehyun', t: "Don't." }, { from: 'jaehyun', t: '...Thursday.' }] },
-        { t: 'only if u bring the cones', link: 'jaehyun', notes: 2, then: [{ from: 'jaehyun', t: 'I always bring the cones.' }] }] }
+        { t: 'only if u bring the cones', link: 'jaehyun', notes: 2, then: [{ from: 'jaehyun', t: 'I always bring the cones.' }] }] },
+    6: { slot: 'late', msgs: [{ from: 'jaehyun', t: 'Did you eat.' }, { from: 'jaehyun', t: "You don't have to tell me anything else." }],
+      reply: [{ t: 'i ate', link: 'jaehyun', notes: 2, then: [{ from: 'jaehyun', t: 'Good.' }] },
+        { t: 'thats all ur asking?', link: 'jaehyun', notes: 3, then: [{ from: 'jaehyun', t: "That's all I'm asking." }, { from: 'jaehyun', t: 'I said I wouldn’t.' }] }] }
   });
   add('mark', {
     1: { slot: 'evening', msgs: [{ from: 'mark', t: 'the fifth note was right btw' }, { from: 'mark', t: "how'd u know" }],
@@ -251,14 +254,14 @@
     ], reply: [{ t: 'HEHEHEHE nerd', then: [{ from: 'jaehyuk', t: 'jaehyukkie: Thank you.' }] }, { t: 'can i copy them', then: [{ from: 'jaehyuk', t: 'jaehyukkie: Some things never change.' }] }] },
     { id: 'am-sisters-door', thread: 'sisters', from: '11/7', to: '11/28', flag: 'arrived-haechan', msgs: [
       { from: 'hyein', t: 'hyein: the door on the top floor was OPEN' }, { from: 'hyein', t: 'hyein: for like two seconds' }, { from: 'hanni', t: 'hanni: we are not monitoring the door' }, { from: 'hyein', t: 'hyein: i am monitoring the door' }
-    ], reply: [{ t: 'leave him alone lol', then: [{ from: 'hyein', t: 'hyein: HIM. she said HIM' }, { from: 'hanni', t: 'hanni: hyein' }] }, { t: '(Leave it on read.)', silent: true, then: [{ from: 'hanni', t: 'hanni: good. ignore her' }] }] },
+    ], reply: [{ t: 'leave him alone lol', then: [{ from: 'hyein', t: 'hyein: HIM. she said HIM' }, { from: 'hanni', t: 'hanni: hyein' }, { from: 'hanni', t: "hanni: he's ok. i think. i'm watching him" }] }, { t: '(Leave it on read.)', silent: true, then: [{ from: 'hanni', t: 'hanni: good. ignore her' }] }] },
     { id: 'am-sunoo-cat', thread: 'sunoo', from: '11/9', to: '12/6', flag: 'arrived-sunoo', msgs: [{ from: 'sunoo', t: 'first customer today was a cat' }, { from: 'sunoo', t: "it didn't pay but it was very polite" }],
       reply: [{ t: 'HEHEHE what did it order', link: 'sunoo', notes: 2, then: [{ from: 'sunoo', t: 'a saucer of milk. on the house' }] }, { t: 'u spoil everyone', link: 'sunoo', notes: 2, then: [{ from: 'sunoo', t: "that's the business model!!" }] }] },
     { id: 'am-haechan-window', thread: 'haechan', from: '11/12', to: '12/8', flag: 'arrived-haechan', msgs: [{ from: 'haechan', t: "your window's open" }, { from: 'haechan', t: "it's 4 degrees" }],
       reply: [{ t: 'how do u know my window is open', link: 'haechan', notes: 2, then: [{ from: 'haechan', t: 'draft under your door' }, { from: 'haechan', t: 'close it' }] }, { t: 'i like the cold', link: 'haechan', notes: 2, then: [{ from: 'haechan', t: 'you like being stubborn' }, { from: 'haechan', t: 'close it, agasshi' }] }] },
     { id: 'am-cherry-fanclub', thread: 'cherry', from: '11/15', to: '12/10', flag: 'arrived-cherry', msgs: [{ from: 'cherry', t: 'why does sunghoon have a FAN CLUB here' }, { from: 'cherry', t: "its been like two days" }],
       reply: [{ t: 'HEHEHE jealous', link: 'cherry', notes: 2, then: [{ from: 'cherry', t: 'i will end u' }, { from: 'cherry', t: 'ok a little' }] }, { t: 'join it', link: 'cherry', notes: 1, then: [{ from: 'cherry', t: 'over my dead body' }, { from: 'cherry', t: '...whats the membership fee' }] }] },
-    { id: 'am-mark-piano', thread: 'mark', from: '11/21', to: '12/14', flag: 'arrived-mark', msgs: [{ from: 'mark', t: "found a piano at the mall nobody plays" }, { from: 'mark', t: "it's so out of tune. i love it" }],
+    { id: 'am-mark-piano', thread: 'mark', from: '11/21', to: '12/14', flag: 'arrived-mark', msgs: [{ from: 'mark', t: "found a piano at the mall nobody plays" }, { from: 'mark', t: "it's so out of tune. i love it" }, { from: 'mark', t: "nobody really comes with me anymore. anyway" }],
       reply: [{ t: 'play me something on it', link: 'mark', notes: 2, then: [{ from: 'mark', t: 'ofc!! tmrw?' }] }, { t: 'lol only u would love that', link: 'mark', notes: 1, then: [{ from: 'mark', t: 'haha guilty' }] }] },
     { id: 'am-searchparty-finals', thread: 'searchparty', from: '12/10', to: '12/17', flag: 'arrived-jihoon', msgs: [
       { from: 'hanni', t: 'hanni: good luck on finals sol!!!! ur gonna do so good' }, { from: 'hyein', t: 'hyein: i made u a playlist for studying. its all sad songs. sorry' }, { from: 'jihoon', t: 'jihoon: Remember Who Copied Off Jaehyuk For Three Years. Not You. Never You' }

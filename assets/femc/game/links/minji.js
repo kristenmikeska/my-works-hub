@@ -369,6 +369,7 @@
       ] },
       { s: 'minji', f: 'serious', t: "You're going to hear things about you. From the others. From the people who come. Everybody's got a version of you they want back." },
       { s: 'minji', f: 'neutral', t: "I'm not going to tell you mine. I don't want to give you another person to be. You've got enough of those. I can see it on you. You're carrying like four." },
+      { s: 'minji', f: 'serious', t: "But if you ask, I'll tell you anything. Anything you ask. I'm done not telling you things." },
       { choose: [
         { t: "Three. I think it's three.", notes: 3, then: [
           { s: 'minji', f: 'surprised', t: "..." },
@@ -463,7 +464,8 @@
         { t: "Does that bother you?", notes: 3, then: [
           { s: 'minji', f: 'neutral', t: "No." },
           { s: 'minji', f: 'neutral', t: "Yes. A little. Not the way you think. It's not jealousy. It's that I know what it's like, looking at you like that. It's a lot to hold." },
-          { s: 'minji', f: 'happy', t: "I hope he's careful with it. I called you my muse first, though. I have the post. It's timestamped." }
+          { s: 'minji', f: 'neutral', t: "I know what it costs him to be careful with it." },
+          { s: 'minji', f: 'happy', t: "I called you my muse first, though. I have the post. It's timestamped." }
         ] }
       ] },
       { cg: 'link-minji-camera-lamp' },
@@ -559,6 +561,11 @@
       { s: 'minji', f: 'surprised', t: "..." },
       { s: 'minji', f: 'sad', t: "You remember that." },
       { s: 'minji', f: 'neutral', t: "Of everything. You remember that one." },
+      { ifFlag: 'mem-camp', then: [
+        { s: 'minji', f: 'serious', t: "I meant it. I also did something right after that I'm not proud of. You might remember that part too, by now. I'm still sorry." }
+      ], else: [
+        { s: 'minji', f: 'serious', t: "I meant it. I also did something right after that I'm not proud of. When you remember the rest, ask me. I'll tell you all of it." }
+      ] },
       { choose: [
         { t: "I believe you too. Minji. I always will.", notes: 3, then: [
           { cg: 'link-minji-r10' },
@@ -635,6 +642,7 @@
         { s: 'minji', f: 'neutral', t: "Over there. It's for over there." },
         { s: 'minji', f: 'neutral', t: "For when I'm in the honors dorm at four in the morning with a VOD open and I can't remember what you looked like when you weren't doing it for somebody. You're going to be so busy when we're home. You're going to be busy with a lot of things." },
         { n: "She didn't say what things. She had been in a hallway once, at a party, for four seconds, with a camera up that she hadn't used, and she'd never told Solar which four seconds, and she wasn't going to start on a seawall in February." },
+        { s: 'minji', f: 'serious', t: "I'm not keeping it from you. Not again. I just want you to get there first, this time." },
         { choose: [
           { t: "I'll want a copy over there too.", notes: 3, then: [
             { s: 'minji', f: 'happy', t: "You get the first one. Obviously. You're in it. That's how it works." }

@@ -10,7 +10,7 @@
      cr-jh-sixthirty early    10/12-11/21 UP (a puppy beat inside). The river at six-thirty: he knew her route before she did.
      cr-jh-karaoke   evening  11/8-12/20  ASKED, after a4-crew. The Hate Club at Mandragora: dating / building / friend.
      cr-jh-fountain  evening  11/22-12/31 dating or faded (after his rank 8); ifTaken: mean about it, and it shows.
-   Minji (Runners canon to Ch 66; asks twenty times, never posts a frame without it):
+   Minji (Runners canon at about 11/22, after the girls' apologies; asks twenty times, never posts a frame without it):
      cr-mj-optin     after    9/28-11/20  opt-in (free), after a4-lamppost. The dorm steps: Solar holds the light, on her.
      cr-mj-duo       after    10/4-11/14  BUILD. Game Panic's PC corner, a duo match; Jihoon coaching through the beads.
      cr-mj-lensdown  after    10/18-11/24 UP (a puppy beat inside), clear or cloudy. Seaside Park: the camera lowered.
@@ -403,6 +403,7 @@
           { s: 'solar', f: 'neutral', t: "Maybe I am." },
           { n: "And then, because it was dark between flickers and that made it easier, she told her. Not everything. The thing underneath. That some days she woke up and didn't know which of three girls was going to get out of bed, and that she was scared she'd pick the wrong one, and that people would be kind to whichever one she picked and she'd never know if they'd wanted another." },
           { s: 'minji', f: 'serious', t: "I always believe you, Sol." },
+          { s: 'minji', f: 'sad', t: "I didn't always act like it. I do now." },
           { s: 'minji', f: 'neutral', t: "Whichever one gets up. I'll believe her. I've got footage of all of them, and they're all you. I checked. I check every night." },
           { choose: [
             { t: "(Hold her hand under the lamp.)", then: [
@@ -418,7 +419,7 @@
             { s: 'minji', f: 'neutral', t: "I heard. I'd have heard anyway. You've been walking different. Lighter. I film people walking, I notice walking." },
             { ifRomance: 'haechan', then: [
               { s: 'minji', f: 'neutral', t: "I knew before you did. Back home. Four seconds, at a party. I didn't even lift the camera. I just knew." },
-              { s: 'minji', f: 'neutral', t: "I hope he's careful with it. I said that once already. I'm saying it again so it's on record twice." }
+              { s: 'minji', f: 'neutral', t: "I know what it costs him to be careful with it. I said something like that once already. I'm saying it again so it's on record twice." }
             ], else: [{ ifRomance: 'akihiko', then: [
               { s: 'minji', f: 'neutral', t: "He slows down on the river path when you're on it. Did you know? I've got it on film. Fourteen times. He's never once noticed he does it. I'm not going to show him. I'll show you, one day." }
             ], else: [{ ifRomance: 'jungwon', then: [

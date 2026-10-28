@@ -179,10 +179,11 @@ window.FEMC_GAME_TEXTS = {
     ] },
     { id: 't-1120-mark', thread: 'mark', date: '11/20', slot: 'lunch', flag: 'arrived-mark', msgs: [
       { from: 'mark', t: "hey sol!! hope school's ok" },
-      { from: 'mark', t: 'hanni says u like the strawberry ones from the station bakery? got u one for tmrw' }
+      { from: 'mark', t: 'got u one of the strawberry ones from the station bakery for tmrw' },
+      { from: 'mark', t: 'asked hanni if u like them. she wouldnt tell me lol. guessed' }
     ], reply: [
       { t: 'omg thank u', link: 'mark', notes: 2, then: [{ from: 'mark', t: 'ofc!! anytime' }] },
-      { t: 'why does hanni know that', link: 'mark', notes: 1, then: [{ from: 'mark', t: 'haha she knows everything' }, { from: 'mark', t: 'word' }] }
+      { t: 'why did u ask hanni', link: 'mark', notes: 1, then: [{ from: 'mark', t: 'old habit' }, { from: 'mark', t: 'sry. ill just ask u' }] }
     ] },
     { id: 't-1207-sisters', thread: 'sisters', date: '12/7', slot: 'lunch', flag: 'awake-haechan', msgs: [
       { from: 'hyein', t: 'hyein: he ran up 200 floors' },

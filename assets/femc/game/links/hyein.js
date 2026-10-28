@@ -372,7 +372,7 @@
     { after: '10/3', title: '3: small wings', place: 'Paulownia Mall · Central Atrium', time: 'After School', music: 'day', scene: [
       { n: "The fountain in the atrium was throwing its water up at the glass roof, and Hyein had her sketchbook open on her knees on the fountain's rim, and her phone face up beside her on the wet stone, which she never let near water, which was how Solar knew before she sat down that this was going to be one of those afternoons." },
       { s: 'hyein', f: 'neutral', t: "Okay. Sit. I'm going to show you something and you're not allowed to be weird about it, and I'm going to be weird about it, and that's the deal." },
-      { n: "The phone still said twelve oh one. It had said twelve oh one since she'd arrived. It got no signal and it would not send anything to anyone, but everything that had been on it was still on it, and Hyein had scrolled up through the girls' chat with her thumb, a long way, past things she went past too fast for Solar to read, and stopped, and turned it round." },
+      { n: "The phone still said twelve oh one. It had said twelve oh one since she'd arrived. It got no signal and it would not send anything to anyone, but everything that had been on it was still on it, and Hyein had scrolled up through the girls' chat with her thumb, a long way, past things she went past too fast for Solar to read, faster still past a run of messages near the bottom that all seemed to start with *sorry*, and stopped, and turned it round." },
       { phone: [
         { from: 'hyein', t: "@hyein: we are gonna be... DRUM ROLL" },
         { from: 'hanni', t: "@hanni: drum roll!" },
@@ -491,6 +491,7 @@
         ] },
         { t: "You're allowed to be mad at me too.", notes: 2, then: [
           { s: 'hyein', f: 'serious', t: "I know I'm allowed. I'm choosing not to. It's very mature of me. Write it down." },
+          { s: 'hyein', f: 'neutral', t: "Besides. Last time somebody in this friendship was mad, it was you, at us. You were right. I'm not using up your turn." },
           { s: 'hyein', f: 'sad', t: "...I'm a little mad at you. Like two percent. Like a rounding error." }
         ] }
       ] },
@@ -589,7 +590,7 @@
       { s: 'hyein', f: 'happy', t: "I would NOT get off you. Oh my God. You remember me being amazing. Of all the things. You remember me being amazing." },
       { n: "She got her phone out of her back pocket. It still said twelve oh one. She went into her messages, past the girls' chat, into a little folder of requests from people she didn't follow, and held it out, and it was a single message from a girl with a profile picture too small to see." },
       { n: "*hiii are u taking commissions?? how much for a set like ur winx ones.* And under it, Hyein's answer, typed out and never sent, with a tiny clock beside it where the delivered mark should be. *yes!!! omg. dm me ur measurements and*" },
-      { s: 'hyein', f: 'sad', t: "She sent that the morning after. I was typing back in the dining hall, and somebody said something, and I put my phone down, and I never picked the sentence back up. And then you were gone, and then we were here. *And.* And what. I don't even know what I was going to say." },
+      { s: 'hyein', f: 'sad', t: "She sent that the morning after. I was typing back in the dining hall, and somebody said something, and I put my phone down, and I never picked the sentence back up. And then it was camping, and no service, and then everything, and then you were gone, and then we were here. *And.* And what. I don't even know what I was going to say." },
       { s: 'hyein', f: 'sad', t: "My first real client and I left her on *and.* She's been waiting on *and* for however long this is. Forty breakfasts." },
       { s: 'hyein', f: 'neutral', t: "And Jaemin. Jaemin Na asked me for a December piece. Festive, but not ugly festive, he refuses to look like a department store. I said deposit up front and no friend discount, because he called my wings a hazard." },
       { ifEvent: 'a4-twelve', then: [
@@ -733,6 +734,7 @@
       { n: "She said it fiercely, standing in front of a window full of evening dresses with her arms folded and her chin up, and Solar realized she'd planned this, rehearsed it, maybe, on the monorail, the way you'd rehearse a speech for a teacher." },
       { s: 'hyein', f: 'neutral', t: "At home, everything you wear to anything that matters gets picked for you. Your mom. Somebody from your dad's office sends an email. You put it on and you stand there and you look amazing and you look like somebody else's idea." },
       { s: 'hyein', f: 'neutral', t: "And I don't even do better. I picked your Halloween before you'd said yes. I bought the skirt without asking. You said it was too short and I said don't bend over. That's on me. I know that's on me." },
+      { s: 'hyein', f: 'sad', t: "And the other thing. The big one. I'm saying it here too, so it's said in both places. At home I treated your whole life like a mystery I was going to solve before I let you in on it. Like if I got it exactly right first, it'd be okay that I hadn't asked you. I didn't even get it right." },
       { s: 'hyein', f: 'sad', t: "I've never once dressed you for something you picked. So. This is something you picked. Tell me what you want to wear to it." },
       { choose: [
         { t: "Something I can run in.", notes: 3, flag: 'hyein-dress-run', then: [

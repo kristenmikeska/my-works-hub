@@ -495,7 +495,7 @@
         { s: 'hyein', f: 'flustered', t: "...Mmf." },
         { s: 'solar', f: 'neutral', t: "What hallway?" },
         { s: 'hanni', f: 'serious', t: "A hallway. There are a lot of them, back home." },
-        { s: 'hanni', f: 'neutral', t: "Sol. Whatever you remember, you remember. Whatever you don't, you don't. We're not going to hand you a version of yourself. That one's yours to find." },
+        { s: 'hanni', f: 'neutral', t: "Sol. Last time we kept something from you, it went really badly, and that was on us. This is different. Whatever you remember, you remember. Whatever you don't, you don't. We're not going to hand you a version of yourself. That one's yours to find." },
         { ifCrush: A('dating'), then: [
           { s: 'hanni', f: 'neutral', t: "And you love him. Senpai. Anybody can see it. That's real too. Two things can be true. It's allowed." },
           { n: "Hyein, under the mask, nodded so hard it slid off her chin." }

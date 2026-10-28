@@ -448,7 +448,10 @@
       { n: "Solar touched her own jaw before she could help it. It was tight. She hadn't known. She sat with her fingers on it like someone feeling for a pulse, and Hanni looked politely out of the window and let her." },
       { s: 'hanni', f: 'serious', t: "Can I promise you something?" },
       { s: 'hanni', f: 'neutral', t: "Here, I'm going to tell you the truth. Every time. Even small things. Even if it's that your hair looks weird. Because everybody's going to want you to be something. Home's going to want you to be something. Here's going to want you to be something. And I can't stop any of that." },
-      { s: 'hanni', f: 'serious', t: "But I don't want to be one more person deciding what you can handle. So I'll just tell you. And you decide." },
+      { s: 'hanni', f: 'serious', t: "But I don't want to be one more person deciding what you can handle." },
+      { n: "Her face broke on it. Right across the middle, a crack, there and gone, and she put it back together fast and badly." },
+      { s: 'hanni', f: 'sad', t: "You said that to me once. At home. You were shouting it. You were right." },
+      { s: 'hanni', f: 'serious', t: "So I'll just tell you. And you decide." },
       { n: "She said it to the table, steady, with her face doing absolutely everything, every bit of it out loud and honest, and Solar felt something in her chest unclench that she hadn't known had been clenched since April, since a checkerboard floor and a green moon and nobody, nobody at all, telling her the truth about anything." },
       { choose: [
         { t: "My hair looks weird?", notes: 3, then: [
@@ -460,7 +463,7 @@
           { n: "Solar gave her the pinky. Hanni hooked it with her own, very solemnly, and shook it once, up and down, like a contract, and then didn't let go right away, and they sat like that across the little table with their coffees sweating between them while the boy at the next table got his yes." }
         ] },
         { t: "And if the truth is something I can't handle?", notes: 2, then: [
-          { s: 'hanni', f: 'neutral', t: "Then I'll tell you that, too. *This one's heavy.* And you can say *not today.* And I'll keep it. I'm good at keeping things. I just can't keep them off my face." },
+          { s: 'hanni', f: 'neutral', t: "Then I'll tell you that, too. *This one's heavy.* And you can say *not today.* And I'll keep it. I'm good at keeping things. Too good, once. I just can't keep them off my face." },
           { s: 'hanni', f: 'happy', t: "So you'll always know there's something. That's the deal. You get the warning for free." }
         ] }
       ] }
@@ -581,8 +584,8 @@
       { n: "November had brought a boy from home. On the bridge in the green, and then in the dorm's laundry room at three in the morning, sitting on the dryer, saying almost nothing. Hanni had heard about it at breakfast from Junpei, who had heard about it from Fuuka, who had heard it, she said, like a single bell ringing twice. Hanni had put down her chopsticks and looked at Hyein, and Hyein had looked at Hanni, and neither of them had said anything at all, which for the two of them was the loudest thing Solar had ever heard." },
       { n: "He'd stayed. Mitsuru found him a room upstairs, and he kept to it, or to the laundry room, or the roof, anywhere the rest of the house wasn't, the way a cat keeps to the top of a wardrobe in a new apartment. Hanni had left a mug of barley tea outside the laundry room door every night that first week without knocking, and every morning the mug was back on the drying rack, washed, upside down, and neither of them had said one word to the other about it." },
       { ifFlag: 'door-R6', then: [
-        { n: "And then, two weeks after, another one, at the station piano, warm and easy and smiling, who'd said he knew the others were here because Hanni had texted him. And Hanni, told this at the breakfast table, had gone the color of the tablecloth." },
-        { n: "She'd texted everyone. That was all. On the first night, on the phone from home that didn't send anything anywhere, she'd texted everyone in it, one by one, *we found her, she's okay, she's here,* and none of them had gone, and apparently one of them had." }
+        { n: "And then, two weeks after, another one, at the station piano, warm and easy and smiling, who'd said he knew the others were here because Hanni had texted him. And Hanni, told this at the breakfast table, had gone the color of the tablecloth, and Solar, watching her, had read one word on her face as plainly as print. *Again.*" },
+        { n: "She'd texted everyone. That was all. On the first night, on the phone from home that didn't send anything anywhere, she'd texted everyone in it, one by one, *we found her, she's okay, she's here,* and none of them had gone, and apparently one of them had. She'd taken the phone out under the table that morning and done something to it with her thumb, and she hadn't texted him since." }
       ] },
       { s: 'hanni', f: 'neutral', t: "So. I promised you the truth. Small things." },
       { ifFlag: 'hanni-pinky', then: [
@@ -596,19 +599,20 @@
         ] },
         { t: "What aren't you telling me?", notes: 3, then: [
           { n: "Hanni's face did the thing. All of it, every inch, honest and miserable." },
-          { s: 'hanni', f: 'sad', t: "Lots. About home. Not secrets. Just your life. It's yours. It's not mine to hand you here, where you can't check it." },
+          { s: 'hanni', f: 'sad', t: "Lots. About home. Not secrets. Just your life. And at home I sat on something I should've told you, and you found out the worst way, and you were furious with me, and you were right." },
+          { s: 'hanni', f: 'serious', t: "This is different. I promise it's different. It's yours, and here you can't check it." },
           { s: 'hanni', f: 'serious', t: "When you're home you can ask me anything and I'll tell you. I promise. But not like this. Not so it's a story I'm telling you about yourself. You'd believe me. That's the problem. You'd believe anything I said, because of my face." }
         ] },
         { t: "Is one of them bad for me?", notes: 2, then: [
           { s: 'hanni', f: 'sad', t: "..." },
           { s: 'hanni', f: 'neutral', t: "I don't get to answer that. I really, really want to. I've wanted to answer that for weeks. At home. Here. Everywhere." },
-          { s: 'hanni', f: 'serious', t: "But the people who answer that for you are the ones who make you crazy. You told me that. Everybody deciding. So I'm not. You're going to decide. And I'm going to be right here either way, with a drink." }
+          { s: 'hanni', f: 'serious', t: "But the people who answer that for you are the ones who make you crazy. You told me that. You yelled it at me, actually, and you were right to. Everybody deciding. So I'm not. You're going to decide. And I'm going to be right here either way, with a drink." }
         ] }
       ] },
       { s: 'hanni', f: 'neutral', t: "And here's another one. A worse one. It's about me, not you." },
       { s: 'hanni', f: 'flustered', t: "People ask me things about you. At home. They always have. What you like, what you're doing, where you'll be, what color, what flower. And I always answer. Because I like you, and I like talking about you, and I think everyone's nice." },
-      { s: 'hanni', f: 'sad', t: "And sometimes I find out later that I shouldn't have. Not because anybody did anything. Just because it was yours. And I handed it out like a flyer." },
-      { n: "She said it to her coffee. Her ears had gone red. Solar looked at her, at this very small girl with her hands wrapped round a plastic cup like it was the only warm thing in the building, confessing to the crime of having liked her out loud, and something in her chest went sore and protective all at once, the way it did in the tower when somebody went down." },
+      { s: 'hanni', f: 'sad', t: "And sometimes I find out later that I shouldn't have. Because it was yours. And I handed it out like a flyer. And once somebody did something with it. I'm not saying who." },
+      { n: "She said it to her coffee, and her face said the rest, the part she wasn't saying, every inch of it. Her ears had gone red. Solar looked at her, at this very small girl with her hands wrapped round a plastic cup like it was the only warm thing in the building, confessing to something a lot heavier than she was letting herself say, and something in her chest went sore and protective all at once, the way it did in the tower when somebody went down." },
       { choose: [
         { t: "Then stop answering. Tell them to ask me.", notes: 3, flag: { 'hanni-ask-her': true }, then: [
           { s: 'hanni', f: 'surprised', t: "...Just like that?" },
@@ -739,7 +743,7 @@
       { s: 'hanni', f: 'neutral', t: "Everybody's going to ask you to come home. Soon. Me too, probably. I can feel it coming, like a sneeze. And you're going to feel like you're letting someone down whatever you do. Because you always feel like that. You've felt like that your whole life." },
       { s: 'hanni', f: 'neutral', t: "Hyein wanted to go upstairs and knock on Haechan's door and make *him* do it. Make him be the one who asks you. She had a speech. It had pointing in it." },
       { s: 'hanni', f: 'serious', t: "I took the speech off her. It's in my notebook. She can have it back at home. Because that's just everybody deciding for you again, with a boy in it, and whatever he is to you, he gets to say that himself. Or not. That's his." },
-      { s: 'hanni', f: 'serious', t: "So here's what I'm saying now, before the asking. Whatever you do. Wherever you are. You're our sister. That doesn't stop. It didn't stop when you forgot us, and it won't stop if you stay. It's not a thing you can lose. We decided." },
+      { s: 'hanni', f: 'serious', t: "So here's what I'm saying now, before the asking. Whatever you do. Wherever you are. You're our sister. That doesn't stop. It didn't stop when you were furious with us, either. It didn't stop when you forgot us, and it won't stop if you stay. It's not a thing you can lose. We decided." },
       { s: 'hanni', f: 'neutral', t: "And it's not a thing you owe us, either. That's the other half. That's the half people forget. You don't pay for it by coming home. It's not a loan. It's just yours." },
       { n: "She tied off the braid with one of the tiny elastics and put both hands on Solar's shoulders for a second, and squeezed, and let go." },
       { s: 'hanni', f: 'happy', t: "Okay. Done. You can talk now." },
@@ -790,7 +794,7 @@
       { cg: null },
       { n: "And Solar knew her." },
       { n: "Not the way she'd known the iced coffee, or the braids, or the pink mugs, or the candle, in pieces, one at a time, like coins found down the back of a sofa. All of her. All at once. A knock on a dark pink door in a house where every door was dark pink, and that soft voice through it, *Sol, it's us, we come in peace,* and Hyein beside her, *we brought snacks,* and Solar at her desk with her headphones half off and a game paused on the screen and her whole stupid week sitting on her chest, saying *you can come in* a little brighter than she felt, because it was them." },
-      { n: "A girl with a plate of fruit she'd cut because she'd known, without being told, that Solar hadn't eaten. A girl who sat on the end of her bed with her knees pulled up and said one quiet thing that went straight in under every defense Solar owned, and then went back to the television like she hadn't. A girl who'd raised her hand in a room full of sorority sisters to say the thing nobody else would. A girl whose face couldn't lie, who had never once tried to, who had made her laugh in kitchens and walked her home on cold nights and stood in the middle of the party with a trash bag at two in the morning, waiting, because she knew Solar would come back to help." },
+      { n: "A girl with a plate of fruit she'd cut because she'd known, without being told, that Solar hadn't eaten. A girl who sat on the end of her bed with her knees pulled up and said one quiet thing that went straight in under every defense Solar owned, and then went back to the television like she hadn't. A girl who'd raised her hand in a room full of sorority sisters to say the thing nobody else would. A girl whose face couldn't lie, who had kept one thing from her once, too long, and come to her on a Tuesday to say so, who had made her laugh in kitchens and walked her home on cold nights and stood in the middle of the party with a trash bag at two in the morning, waiting, because she knew Solar would come back to help." },
       { s: 'solar', f: 'neutral', t: "...Does it come with questions?" },
       { n: "Hanni's face did everything. Every single thing. All of it at once, out loud, in the green, and the mug shook in her hand." },
       { s: 'hanni', f: 'sad', t: "...No." },
@@ -1233,6 +1237,7 @@
       ] },
       { s: 'hanni', f: 'serious', t: "I said I'd tell you. *This one's heavy.* And you could say *not today.* And I'd keep it." },
       { s: 'hanni', f: 'sad', t: "...This one's heavy." },
+      { s: 'hanni', f: 'serious', t: "I'm saying it the minute I know it. That's the whole reason. Last time I held a heavy one for weeks. I'm not doing that to you again." },
       { n: "She said it to the river. Her face was doing it already, all of it, before she'd said a word of whatever it was, crumpling at the chin, the way a paper cup gives when you hold it too tight, and she wasn't trying to stop it, and that was the frightening part. Hanni always tried. Even when it never worked she always tried." },
       { choose: [
         { t: "Not today.", notes: 3, then: [

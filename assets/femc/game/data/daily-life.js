@@ -353,7 +353,7 @@ window.FEMC_GAME_DAILY_LIFE = [
         { t: "What hallway?", then: [
           { s: 'minji', f: 'neutral', t: "Nothing. A party. I was being dramatic. It's a film-major thing." },
           { s: 'haechan', f: 'neutral', t: "She was being kind." },
-          { n: "He said it to Minji, not to Solar, and it sounded, from him, like the highest thing he knew how to say about anyone. Minji's ears went red under the backwards cap. She lifted the camera, pointed it at the sunset, and pressed record, and didn't turn it toward either of them once." }
+          { n: "He said it to Minji, not to Solar, and it sounded, from him, like the highest thing he knew how to say about anyone. Minji's ears went red under the backwards cap. *I'm not,* she said. *Not always.* She lifted the camera, pointed it at the sunset, and pressed record, and didn't turn it toward either of them once." }
         ] },
         { t: "(Leave them to it. Watch the sunset.)", then: [
           { n: "She watched the sunset. Behind her she heard him say, very low, *thanks*, and Minji say *don't*, and then nothing, the two of them standing at either end of a roof not talking about her, which, she was beginning to understand, was the most anyone from her old lives ever did for her, and the hardest." }
@@ -367,6 +367,7 @@ window.FEMC_GAME_DAILY_LIFE = [
       { n: "Then Haechan came down the stairs." },
       { n: "Mark saw him and something happened to his whole body, very quickly, and then he was smiling. Bigger than the morning needed. Easy, warm, casual, so casual it was almost loud." },
       { s: 'mark', f: 'surprised', t: "Hyuck! Man. Hey. Of course you're here. Of course you are." },
+      { n: "Something in Solar flinched at the name, at the back of the neck, the way you'd flinch at your own coat on somebody else. She didn't know why. Nobody saw it but Haechan." },
       { s: 'haechan', f: 'serious', t: "Mark." },
       { s: 'mark', f: 'neutral', t: "You good? You look good. You're living here? Here, in the dorm? With..." },
       { n: "His eyes went to Solar, and back, so fast it was almost nothing. Haechan's didn't move at all." },
