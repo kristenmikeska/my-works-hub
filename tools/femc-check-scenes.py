@@ -245,7 +245,7 @@ for wid, w in D.get('epi', {}).items():
         if g.get('stage', 0) not in range(5): problems.append(f'{k}: glitch {g.get("id")} stage {g.get("stage")}')
         for md in [g.get('day'), g.get('from'), g.get('to')] + list(g.get('days') or []):
             if md and not inr(md): problems.append(f'{k}: glitch {g.get("id")} date {md} outside the act')
-        if g.get('scene') and g['scene'] not in evids: problems.append(f'{k}: glitch {g.get("id")} names unknown scene {g["scene"]}')
+        if g.get('scene') and (not isinstance(g['scene'], str) or g['scene'] not in evids): problems.append(f'{k}: glitch {g.get("id")} names unknown scene {g["scene"]}')
         if g.get('kind') == 'weather' and g.get('mode', 'rise') not in ('rise', 'hold'): problems.append(f'{k}: glitch {g.get("id")} weather mode')
     def glines(lines):
         for l in lines or []:

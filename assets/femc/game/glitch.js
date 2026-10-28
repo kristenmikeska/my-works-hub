@@ -18,7 +18,8 @@
      clock    the HUD's slot (or a scene's place plate) reads 12:00 AM; the HUD moon goes green
      date     the date card (or a small plate) flickers to an Iwatodai date (md, default 4/6) in the summon card's glitch letters
      phone    a banner from a dead thread: no face, a typing bubble or msg, "Read 12:00 AM" (name, msg, read, time)
-     map      Go Out gains one greyed card, Iwatodai Station; at stage 4 (or open: true) it opens (scene, or a short default)
+     map      Go Out gains one greyed card, Iwatodai Station; at stage 4 (or open: true) it opens (lines: its scene, or a short
+              default; a schedule entry's `scene` is the scene-hook gate below, so the station's own lines are `lines`)
      face     one frame of a portrait swaps to someone from S.E.E.S. (who, f); on a screen, a ghost of one at the edge
      sound    sound: 'p3' (two seconds of a P3 track under the home music; track) | 'piano' (a Velvet Room note) | 'static'
      tear     cracks and glass across the screen (the Dark Hour transition's cracks), then gone
@@ -112,7 +113,7 @@ window.FemcGlitch = (() => {
   const whereOk = (e, where) => (e.at ? [].concat(e.at) : AT[e.kind] || SCREENS).includes(where);
   function fits(e, where, stage, ctx) {
     const s = S(), d = s.day, i = G.dayInfo();
-    if (e.scene || e.inline || !KINDS.includes(e.kind) || !whereOk(e, where)) return false; // inline: only a scene's { glitch: id }
+    if (typeof e.scene === 'string' || e.inline || !KINDS.includes(e.kind) || !whereOk(e, where)) return false; // inline: only a scene's { glitch: id }
     if (e.once !== false && st().seen.includes(e.id)) return false;
     if ((e.stage || 0) > stage) return false;
     if (e.day && d !== G.dayOf(e.day)) return false;
@@ -262,7 +263,7 @@ window.FemcGlitch = (() => {
       if (open) b.addEventListener('click', () => {
         const at = `${S().day}-${S().slot}-out`;
         st().done[at] = '-'; G.saveQuiet();
-        W.FemcScene.play({ scene: [{ bg: spec.bg || 'iwatodai-station' }, { glitch: 'tear' }, ...(spec.scene || [{ n: 'The doors opened on a platform that wasn’t there. Then they closed, and it was gone.' }])],
+        W.FemcScene.play({ scene: [{ bg: spec.bg || 'iwatodai-station' }, { glitch: 'tear' }, ...(spec.lines || (Array.isArray(spec.scene) ? spec.scene : null) || [{ n: 'The doors opened on a platform that wasn’t there. Then they closed, and it was gone.' }])],
           label: spec.name || 'Iwatodai Station', onDone: () => W.FemcGameUI.run() });
       });
       list.appendChild(b);

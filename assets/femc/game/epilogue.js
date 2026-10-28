@@ -42,6 +42,7 @@
      - An event's `fills: [slots]` spends those slots too (a whole day, like Regionals).
      - Conditions: { ifBond: { id: n } } (closeness at least n), { ifRouteOpen: id } (the route's `open`: always, lean, bond,
        noFlag), plus scene.js's option `when` for choices that show only while a condition holds (the crossroads).
+     - An event's `ends: true` finishes the act when its scene ends (batch 4): no late screen, no Sleep; straight to finish().
      - The lock sets the flag epi-route-<route> (even from the lean), so texts and routines can gate on the route.
      - Entering copies parts of the year into the epilogue's flags as y-<flag> (xmas-*, arrived-*, route-*, danielle-refused /
        -sold, mem-camp), y-romance-<id> and y-met-<id>: texts and routines can only gate on flags. */
@@ -51,10 +52,10 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 3; // data/epi/<world>/*.js ?v=
+  const DATA_V = 4; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
-    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2'] },
+    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3'] },
     strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches'] },
     hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches'] }
   };
@@ -322,6 +323,8 @@ window.FemcEpilogue = (() => {
     return SC.play({ scene: GL()?.inject(ev.id, ev.scene) || ev.scene, place: ev.place, time: ev.time, title: ev.title, label: G.dayInfo().md, cast: ev.cast, event: true,
       onDone: () => {
         G.markEvent(ev.id);
+        // ends: the act's last scene (batch 4: the Runners rooftop) goes straight to the end card, the Equinox card, the year.
+        if (ev.ends) return finish();
         // fills: the rest of the day's slots go with it (Regionals); consumes: this slot does.
         (ev.fills || []).forEach(x => { S().spent[`${S().day}-${x}`] = `ev:${ev.id}`; });
         if (ev.consumes || ev.fills) { S().spent[`${S().day}-${S().slot}`] = `ev:${ev.id}`; G.save(); return advance(); }

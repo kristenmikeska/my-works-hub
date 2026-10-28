@@ -7,7 +7,9 @@
                 route, flag, noFlag, ifYear). inline: true entries only play where a scene calls them ({ glitch: '<id>' }).
    The movements: week 1 is normal (stage 0, then 1 from Regionals; one deniable thing a day at most, only Solar); week 2 is
    wrong (stage 2 from the studio: Haechan notices once, on playback, and explains it away; the party freezes on 12/12 and he
-   sees it). The floors for 12/15 and 12/19 are week 3's (batch 4). */
+   sees it). Week 3 is bleeding (batch 4): stage 3 from 12/15 (others see the residue: the snow going up, the stopped clocks;
+   Haechan stops explaining it away; Mark sees her go thin), stage 4 from 12/19 (the party's midnight, Danielle's camera, the
+   roof); Go Out's station card opens on 12/19. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).runners ||= {});
   R.glitch = {
@@ -37,6 +39,22 @@
     { id: 'epi-r-g-date', kind: 'date', md: '4/6', day: '12/8' },               // the Monday after: the date card flickers to Iwatodai
     { id: 'epi-r-g-name', kind: 'name', day: '12/10', at: 'morning' },
     { id: 'epi-r-g-thread', kind: 'phone', name: 'Fuuka', from: '12/11', to: '12/13', slot: 'late' }, // a dead thread: typing, no message
-    { id: 'epi-r-g-station', kind: 'map', from: '12/11', to: '12/13', slot: 'evening' } // Go Out shows Iwatodai Station for one evening
+    { id: 'epi-r-g-station', kind: 'map', from: '12/11', to: '12/13', slot: 'evening' }, // Go Out shows Iwatodai Station for one evening
+    // Week 3 (batch 4): bleeding. In scenes:
+    { id: 'epi-r-g-alone', kind: 'tear', inline: true },                        // 12/14 midnight, the first pull (fight 1)
+    { id: 'epi-r-g-upward', kind: 'weather', mode: 'rise', inline: true },      // 12/15, the snow goes up and the whole quad sees it
+    { id: 'epi-r-g-kitchen', kind: 'tint', inline: true },                      // 12/16, she goes thin at the Sigma sink; Mark sees
+    { id: 'epi-r-g-butterfly', kind: 'sound', sound: 'piano', inline: true },   // 12/17, the blue butterfly (a Velvet Room note)
+    { id: 'epi-r-g-clocks', kind: 'clock', inline: true },                      // 12/18, every clock in the Alpha house at 12:00
+    { id: 'epi-r-g-midnight', kind: 'tear', inline: true },                     // 12/19, the toast at midnight (fight 4)
+    { id: 'epi-r-g-pull', kind: 'name', inline: true },                         // 12/20, the rooftop: Haenim's name, the pull
+    // On the day's screens:
+    { id: 'epi-r-g-hud', kind: 'clock', day: '12/16', at: 'late' },             // the HUD reads 12:00 AM the night of the second pull
+    { id: 'epi-r-g-aki', kind: 'phone', name: 'Akihiko', from: '12/17', to: '12/18', slot: 'late' }, // a dead thread: typing, then nothing
+    { id: 'epi-r-g-opens', kind: 'map', day: '12/19', slot: 'after', lines: [    // stage 4: the station card opens
+      { n: "The doors opened on a platform that wasn't there. Iwatodai Station at dusk, the monorail's hum, the smell of the sea off the bay, a departure board flipping through names she could read without trying." },
+      { n: "At the far end of the platform, a bench, empty, the light lying across it in long bars. Something small and soft-edged rested on the slats where the light fell. She didn't walk down to see what it was. She knew the shape of a cap." },
+      { n: "Then the doors closed, and she was standing at the bus shelter on Marshall Street with her hand out, as if she'd been about to touch something, and the snow was coming down, and a boy in an SU beanie asked if she was okay." }
+    ] }
   ];
 })();

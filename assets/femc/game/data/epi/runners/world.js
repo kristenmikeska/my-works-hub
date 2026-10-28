@@ -1,9 +1,10 @@
 /* The Runners epilogue's world (FEMC-EPILOGUE-PLAN.md section 3). Batch 3 (2026-10-28): the real world for weeks 1-2
-   (12/1-12/14); batch 4 adds week 3 (12/15-12/20) to the same files. Loaded on demand by epilogue.js after calendar.js;
+   (12/1-12/14); batch 4 (2026-10-28) adds week 3 (12/15-12/20) and the act's end in story-w3.js and people-w3.js. Loaded on demand by epilogue.js after calendar.js;
    every file in this folder merges into FEMC_EPI_WORLDS.runners (none overwrites another's lists), so load order doesn't matter:
      world.js      this file: title, money, routes, places (bg rules, home / school, activities, music), practice, variants, cast
      glitches.js   the glitch schedule and pools          people.js   home bonds (R.bonds) and texts (R.texts)
      story-w1.js   week 1's story events (12/1-12/7)      story-w2.js week 2's story events (12/9-12/14) and routines
+     story-w3.js   week 3 and the final (12/14 late-12/20) people-w3.js week 3's hangouts, routines and texts
    Shape (epilogue.js documents each field):
      title       the end card's "EPILOGUE · title" (still the place name until Kat names it)
      money       the wallet in this world: { code, sign, start, locale } (yen stays with the year)
@@ -83,7 +84,16 @@
         'epi-r-studio': 'deep-breath-reload',  // ♪ PLACEHOLDER: the studio, on her terms
         'epi-r-danielle': 'bad-feeling',       // ♪ PLACEHOLDER: Danielle (the threat)
         'epi-r-romance': 'signs-of-love',      // ♪ PLACEHOLDER: Haechan, when it's warm
-        'epi-r-sisters': 'my-homie'            // ♪ PLACEHOLDER: the girls, the cover
+        'epi-r-sisters': 'my-homie',           // ♪ PLACEHOLDER: the girls, the cover
+        // Week 3 (batch 4):
+        'epi-r-finals': 'exam-in-progress',    // ♪ PLACEHOLDER: finals week, the snow that goes up
+        'epi-r-verdict': 'disconnected',       // ♪ PLACEHOLDER: Mark's verdict (the Sigma kitchen, the back porch)
+        'epi-r-bleed': 'whos-there',           // ♪ PLACEHOLDER: week 3's dread: the butterfly, the stopped clocks
+        'epi-r-half': 'shadow-world',          // ♪ PLACEHOLDER: the half-present pulls (around the four fights) and the pull itself
+        'epi-r-holiday': 'heartbeat-heartbreak', // ♪ PLACEHOLDER: the Sigma holiday party (12/19)
+        'epi-r-footage': 'this-mysterious-feeling', // ♪ PLACEHOLDER: Danielle's footage, two in the morning
+        'epi-r-snow': 'want-to-be-close'       // ♪ PLACEHOLDER: the first snow, the last morning
+        // The rooftop final plays world-runners (Kat's pick, the world's own song).
       }
     },
     // The team's practices (Mon/Tue/Thu/Sat; Doyoung gives them Monday 12/8 after Regionals). A story event or routine in that
