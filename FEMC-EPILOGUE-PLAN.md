@@ -452,3 +452,13 @@ None of these spoil anything. Claude's lean is in brackets.
 14. **Glitch effects default.** Full or Gentle? *(Full, with the setting right there)*
 15. **The Equinox card** at the end of each epilogue: a title card and one line? *(yes)*
 16. **Music.** Any songs for the epilogue worlds in your audio folder, beyond the three world songs? *(the world songs at home, P3 tracks as the bleed)*
+
+---
+
+## Kat's answers (2026-10-27)
+- **HOAX vanishing date:** Monday 12/11/2023, as assumed.
+- **Runners final:** the rooftop in the first snow on 12/20.
+- **Main themes:** Runners plays "Runners" (Camo), strangers plays "strangers" (Ethel Cain), and HOAX plays "Hoax" (Taylor Swift). These are the existing world songs. Kat will choose more songs per scene from each universe's playlist later.
+- **LE SSERAFIM roles:** as proposed.
+  - Yunjin in HOAX (proposed, to confirm): an echo, like her Runners glitch. Mid-glitch, the forum livestream cuts to her for a second. The same person exists in every world.
+- Every other open question goes with Claude's lean.
