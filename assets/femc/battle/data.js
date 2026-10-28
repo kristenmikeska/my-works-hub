@@ -1070,7 +1070,7 @@ window.FEMC_BATTLE_DATA = (() => {
     ['strangers-barley-tea', 'strangers', 'Barley Tea', 'A cup on a low wooden table, steaming in the morning light. There was always some on the stove.'],
     ['hoax-ballot-box', 'Hoax', 'The Ballot Box', 'Folded slips on a gym table under string lights, all of them waiting to be counted.'],
     // Late strangers memory (Kat's approval, strangers sync 2026-10-27): Yunjin's rank 10 gives it (flag mem-koi). Plot-free,
-    // scene-only like No Service; no art yet (the drawn placeholder card shows until memories/strangers-koi.webp exists).
+    // scene-only like No Service; art since batch 66 (memories/strangers-koi.webp).
     ['strangers-koi', 'strangers', 'A Bucket on the Step', 'Two fish going round and round in a bucket on a back step, snow on the rim. A kitchen too full to hear the radio, and a light left on all night in the room next door.']
   ].map(([id, world, title, text, wide]) => ({ id, world, title, text, img: MEM + id + '.webp', wide: wide ? MEM + id + '-wide.webp' : null, noDrop: NO_DROP.includes(id) }));
   /* A stand-in card for a memory whose art doesn't exist yet (an SVG data URL with the title, in the world's colors).

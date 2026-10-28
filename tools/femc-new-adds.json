@@ -15144,6 +15144,246 @@
       "scale": 0.88,
       "previousCuts": "Character Portraits/Solar-Runners/_previous/ (the earlier cut PNGs, kept)",
       "placement": "same id and faces-map entry as before"
+    },
+    {
+      "batch": 66,
+      "source": "card-persona-candle.jpeg",
+      "sourceNow": "Added to Game/card-persona-candle.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "1173b9520c3c77409040c49c4dcbd2f9500f7405087654b47091e5f0e0b2c6af",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/cards/candle.webp",
+      "intendedUse": "Revelation card set candle (Eclipse Candle): build.js CARD_ART -> SETS.candle.img",
+      "conversion": "tools/femc-cards.py revcard (BUILD line), cut .13/.14/.87 inside the printed Persona frame (all eleven came in that frame) to the 88:114 window, 540x700 WebP q86; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/cards/candle.webp": "385d67029f247dece2e94a73561e96661517825e8b2913c5e283cffc7eec16fd"
+      }
+    },
+    {
+      "batch": 66,
+      "source": "card-persona-fuse.jpeg",
+      "sourceNow": "Added to Game/card-persona-fuse.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "0db42ff41e33c37c51a2c16a3412dccb05e7543f0769bad3465a8cd4b501ffa2",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/cards/fuse.webp",
+      "intendedUse": "Revelation card set fuse (Thunder Fuse): build.js CARD_ART -> SETS.fuse.img",
+      "conversion": "tools/femc-cards.py revcard (BUILD line), cut .13/.14/.87 inside the printed Persona frame (all eleven came in that frame) to the 88:114 window, 540x700 WebP q86; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/cards/fuse.webp": "ffb5ea70898183e1f5d8857f62f3393e37badea75a2a571fe361b970e536c522"
+      }
+    },
+    {
+      "batch": 66,
+      "source": "card-persona-kendo.jpeg",
+      "sourceNow": "Added to Game/card-persona-kendo.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "97590eb527287067d92df08cdae280cff58e1bf5daa2a297111c82ae7409b106",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/cards/kendo.webp",
+      "intendedUse": "Revelation card set kendo (Kendo Mask): build.js CARD_ART -> SETS.kendo.img",
+      "conversion": "tools/femc-cards.py revcard (BUILD line), cut .13/.14/.87 inside the printed Persona frame (all eleven came in that frame) to the 88:114 window, 540x700 WebP q86; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/cards/kendo.webp": "db4d8c5f554c32b852ef3cef8e564d2d2dfcef3fc431d6d87cbc44d2242559c9"
+      }
+    },
+    {
+      "batch": 66,
+      "source": "card-persona-kite.jpeg",
+      "sourceNow": "Added to Game/card-persona-kite.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "bb28d7cff666ee07becf9711f8327597c126071f11c5354acbb94970be19d459",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/cards/kite.webp",
+      "intendedUse": "Revelation card set kite (Paper Kite): build.js CARD_ART -> SETS.kite.img",
+      "conversion": "tools/femc-cards.py revcard (BUILD line), cut .13/.14/.87 inside the printed Persona frame (all eleven came in that frame) to the 88:114 window, 540x700 WebP q86; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/cards/kite.webp": "6a5f22de44cd868beea9d3aaef086b43396404d8477d46c741c65ff8bc1bfae2"
+      }
+    },
+    {
+      "batch": 66,
+      "source": "card-persona-lantern.jpeg",
+      "sourceNow": "Added to Game/card-persona-lantern.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "dfc030622bc498ceceb90296d5fd7592abb60a99d70c2b6712ffad9a546a5aa6",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/cards/lantern.webp",
+      "intendedUse": "Revelation card set lantern (Cinder Lantern): build.js CARD_ART -> SETS.lantern.img",
+      "conversion": "tools/femc-cards.py revcard (BUILD line), cut .13/.14/.87 inside the printed Persona frame (all eleven came in that frame) to the 88:114 window, 540x700 WebP q86; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/cards/lantern.webp": "d645071837e923fc7fede70fcf5fc3b38d15cabb446ace36987aace63fb8e938"
+      }
+    },
+    {
+      "batch": 66,
+      "source": "card-persona-mirror.jpeg",
+      "sourceNow": "Added to Game/card-persona-mirror.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "a81e16288f8af9893f32a9bdb4b429087a785aba74be786e4be6e8618046b3a2",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/cards/shrine.webp",
+      "intendedUse": "Revelation card set shrine (Shrine Mirror): build.js CARD_ART -> SETS.shrine.img",
+      "conversion": "tools/femc-cards.py revcard (BUILD line), cut .13/.14/.87 inside the printed Persona frame (all eleven came in that frame) to the 88:114 window, 540x700 WebP q86; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/cards/shrine.webp": "3abebd08a9e90e35af1cd4dd2f15c14024a9a1f524b18bbf4514d64c472c0d68"
+      }
+    },
+    {
+      "batch": 66,
+      "source": "card-persona-prism.jpeg",
+      "sourceNow": "Added to Game/card-persona-prism.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "ce364ba136553b4c67647cad47f9b83561a04bc6aaf58c1effd1d7107797a6cb",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/cards/prism.webp",
+      "intendedUse": "Revelation card set prism (Prism Glass): build.js CARD_ART -> SETS.prism.img",
+      "conversion": "tools/femc-cards.py revcard (BUILD line), cut .13/.14/.87 inside the printed Persona frame (all eleven came in that frame) to the 88:114 window, 540x700 WebP q86; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/cards/prism.webp": "45c733a3d3f3ca7b6d9628a00e8b34d9b88faafd6c06833c8370c48a88c57981"
+      }
+    },
+    {
+      "batch": 66,
+      "source": "card-persona-snowglobe.jpeg",
+      "sourceNow": "Added to Game/card-persona-snowglobe.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "bf48920985d7003eb7de16334f52bf788f47b47ffe2a6559f4e47597204cb3f2",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/cards/globe.webp",
+      "intendedUse": "Revelation card set globe (Snow Globe): build.js CARD_ART -> SETS.globe.img",
+      "conversion": "tools/femc-cards.py revcard (BUILD line), cut .13/.14/.87 inside the printed Persona frame (all eleven came in that frame) to the 88:114 window, 540x700 WebP q86; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/cards/globe.webp": "314142bb8109dd345b3a4ef6ad8308cdfa8d72fa7c7110d0967b64c597296e15"
+      }
+    },
+    {
+      "batch": 66,
+      "source": "card-runners-spotlight.jpeg",
+      "sourceNow": "Added to Game/card-runners-spotlight.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "97b319a525074b2e65750bbf83415a46303af498b734a15655a8dd67e98f8a89",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/cards/spotlight.webp",
+      "intendedUse": "Revelation card set spotlight (Party Spotlight): build.js CARD_ART -> SETS.spotlight.img",
+      "conversion": "tools/femc-cards.py revcard (BUILD line), cut .13/.14/.87 inside the printed Persona frame (all eleven came in that frame) to the 88:114 window, 540x700 WebP q86; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/cards/spotlight.webp": "366d5ce3634d9dd01349e08f7d40c591f937fb90a2bf5f1fd8244c52cc2acd6d"
+      }
+    },
+    {
+      "batch": 66,
+      "source": "card-strangers-housekey.jpeg",
+      "sourceNow": "Added to Game/card-strangers-housekey.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "8d02bb3ca9ef71f91047711cfaad70f79c88b062b49a670bd91ce5d7c0cbf4db",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/cards/housekey.webp",
+      "intendedUse": "Revelation card set housekey (House Key): build.js CARD_ART -> SETS.housekey.img",
+      "conversion": "tools/femc-cards.py revcard (BUILD line), cut .13/.14/.87 inside the printed Persona frame (all eleven came in that frame) to the 88:114 window, 540x700 WebP q86; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/cards/housekey.webp": "d213086385ef6b6029a90cb2db883d7de7879ee55cdd3dbc2515e64b1d43ff03"
+      }
+    },
+    {
+      "batch": 66,
+      "source": "card-hoax-note.jpeg",
+      "sourceNow": "Added to Game/card-hoax-note.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "962316356624eac4e573c5540349ef6b43d852a4ccfbb545344dea19f53220f0",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/cards/note.webp",
+      "intendedUse": "Revelation card set note (Passed Note): build.js CARD_ART -> SETS.note.img",
+      "conversion": "tools/femc-cards.py revcard (BUILD line), cut .13/.14/.87 inside the printed Persona frame (all eleven came in that frame) to the 88:114 window, 540x700 WebP q86; source unchanged",
+      "outputs": {
+        "assets/femc/battle/art/cards/note.webp": "6f199b3871552cae5c6a90f6392d3e61100ed5cbba0c6313e5ed6b07a5a85886"
+      }
+    },
+    {
+      "batch": 66,
+      "source": "runners-lake.jpeg",
+      "sourceNow": "Added to Game/runners-lake.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "1849b83ea8b3182d0b4833c2d1108d50b656a1e99f2173fca66ce0e0bd97063b",
+      "status": "integrated",
+      "destination": "assets/femc/memories/runners-lake.webp",
+      "intendedUse": "Memory card runners-lake (No Service): battle/data.js memories, NO_DROP; given by Mark's and Jaehyun's rank 10",
+      "fragment": "runners-lake",
+      "conversion": "WebP q90, original dimensions, no cropping or retouching; source unchanged",
+      "outputs": {
+        "assets/femc/memories/runners-lake.webp": "5cac414882ec8fd0876e3bfd2dd671a212139e2631b343973c925ef10168de49"
+      }
+    },
+    {
+      "batch": 66,
+      "source": "strangers-koi.jpeg",
+      "sourceNow": "Added to Game/strangers-koi.jpeg",
+      "size": [
+        2048,
+        2048
+      ],
+      "sha256": "85bc6e08949370d9bfcfceb93e3a2c3aa56a296e8304e5014f53ea2ea3fc8afb",
+      "status": "integrated",
+      "destination": "assets/femc/memories/strangers-koi.webp",
+      "intendedUse": "Memory card strangers-koi (A Bucket on the Step): battle/data.js memories, NO_DROP; given by Yunjin's rank 10",
+      "fragment": "strangers-koi",
+      "conversion": "WebP q90, original dimensions, no cropping or retouching; source unchanged",
+      "outputs": {
+        "assets/femc/memories/strangers-koi.webp": "fa19df93765f71fdd26da50d039b2aa7585e51a2dc3a5c005b0757ae25c50968"
+      }
+    },
+    {
+      "batch": 66,
+      "source": "loading-2.jpeg",
+      "sourceNow": "Added to Game/loading-2.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "6c10a17475e4144c3e906b374915bdeeb75577f82c974b0200348e8300057bcd",
+      "status": "integrated",
+      "destination": "assets/femc/title/loading-2.webp",
+      "intendedUse": "Loading still 2 (the dorm lounge at midnight): ui.js openBattle .g-dh-still on every fight that isn't a Tartarus night (operations, story and epilogue fights); Tartarus nights keep loading-1",
+      "conversion": "resized to 1672x933 (loading-1's width), WebP q86, framing kept; source unchanged",
+      "outputs": {
+        "assets/femc/title/loading-2.webp": "516f59d9f6b5d409ca929f0572ebfd8892110d84631663d7f4bf1b7af04045ae"
+      }
     }
   ],
   "batch1Validation": {
@@ -16012,5 +16252,21 @@
     ],
     "notTested": "no browser tests (Kat at work): face sizes in scenes at 1000x486 and 375x812 (Runners, HOAX)",
     "html": "femc-game.html scale.js v150 (FEMC_PORTRAIT_V 10); index.js unchanged (same ids and expressions)"
+  },
+  "batch66Validation": {
+    "date": "2026-10-28",
+    "scope": "the second wave's eleven Revelation card sets, memory cards runners-lake and strangers-koi, loading still 2",
+    "sourcesInspected": "all 14 viewed; the card cuts on a source sheet (cut boxes drawn) and a contact sheet of the eleven cuts beside batch 23's evoker",
+    "sourcesIntegrated": 14,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "mapping": "candle, fuse, kendo, kite, lantern, mirror -> shrine, prism, snowglobe -> globe, runners-spotlight -> spotlight, strangers-housekey -> housekey, hoax-note -> note",
+    "loadingRule": "by fight type: kind 'tartarus' -> loading-1, everything else -> loading-2 (ui.js openBattle)",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax: build.js, battle.js, ui.js, data.js"
+    ],
+    "notTested": "no browser tests (Kat's Mac in use): tests/femc_building.py --only cardart,newsets (now expects 24 sets with art); a story fight and a Tartarus night's Dark Hour fade; the journal / Tartarus memory card for the two new cards",
+    "html": "build.js v20 (both pages), battle.js v65, ui.js v35; ART_V 34, CARD_ART_V 34"
   }
 }

@@ -306,9 +306,10 @@ window.FemcBuild = (() => {
   };
   // Kat's card art (batch 23, her card-<world>-<subject> paintings, cut by tools/femc-cards.py revcard): every set has one.
   // CARD_ART_V: bump with battle.js ART_V when the cards are re-cut (the menu and gacha don't see ART_V).
-  const CARD_ART_V = 20;
+  const CARD_ART_V = 34;
   // Sets with art (the second wave shows its drawn glyph until Kat's paintings are in: add the id here then; FEMC-ART-WIRING.md).
-  const CARD_ART = ['bell', 'stadium', 'headset', 'jade', 'crane', 'needle', 'pin', 'ballot', 'croissant', 'evoker', 'moon', 'butterfly', 'coffin'];
+  const CARD_ART = ['bell', 'stadium', 'headset', 'jade', 'crane', 'needle', 'pin', 'ballot', 'croissant', 'evoker', 'moon', 'butterfly', 'coffin',
+    'candle', 'fuse', 'kendo', 'kite', 'lantern', 'shrine', 'prism', 'globe', 'spotlight', 'housekey', 'note'];
   CARD_ART.forEach(id => { SETS[id].img = `assets/femc/battle/art/cards/${id}.webp?v=${CARD_ART_V}`; });
   const CARD = { maxLvl: { 3: 6, 4: 8, 5: 10 }, growth: 0.15, refineMain: 0.05, maxRef: 3, cap: 160,
     lvlDust: (c) => (4 + c.lvl * 3) * (c.r - 2), lvlYen: (c) => 80 * c.lvl * (c.r - 2),

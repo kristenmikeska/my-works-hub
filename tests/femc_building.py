@@ -11,7 +11,7 @@ a fight, gifts from bonds, a boss drop), Haechan's six knives (his alone: every 
 bonuses and refines in a real fight; his starter; the rank-7 gift; the Chariot's drop; shops and chests), Jungwon's rapiers,
 Jihoon's gloves and Minji's bows the same way (plus the one-time boss backfill, Treasure's battle yen, and Minji's finish card
 in a real All-Out, screenshotted), S.E.E.S.'s seven sets the same way (batch 23: Shinjiro's only while he's in the party,
-the second boss backfill, Aigis's two-hit arm guns, a real fight), the Revelation card art (all 13 sets in the Cards menu,
+the second boss backfill, Aigis's two-hit arm guns, a real fight), the Revelation card art (all 24 sets in the Cards menu,
 Shuffle Time's reveal and the results, at three sizes), the second wave of 11 card sets (element, Prism, Kendo and
 world sets: bonuses, resists and capped passives on the battle unit, element and physical damage in real engine fights, and
 every set in the drop pools), save migration (old battle and life-sim saves), zero console errors, and
@@ -665,7 +665,7 @@ try:
         sizes = [(1000, 486, '1000x486'), (375, 812, '375x812'), (1440, 900, '1440x900')]
         setup(p, ranks={'kiriko': 3}, mats={'tarot_dust': 300, 'velvet_thread': 8})
         a = p.eval(r"""(async()=>{const B=FemcBuild;return Promise.all(Object.entries(B.SETS).filter(([,s])=>s.img).map(([id,s])=>new Promise(res=>{const i=new Image();i.onload=()=>res([id,s.img,i.naturalWidth,i.naturalHeight]);i.onerror=()=>res([id,s.img,0,0]);i.src=s.img;})))})()""")
-        ok(len(a) == 13 and all(src.startswith('assets/femc/battle/art/cards/%s.webp' % k) and w == 540 and h == 700 for k, src, w, h in a), ('all 13 sets have art', a))
+        ok(len(a) == 24 and all(src.startswith('assets/femc/battle/art/cards/%s.webp' % k) and w == 540 and h == 700 for k, src, w, h in a), ('all 24 sets have art', a))
         p.eval(r"""(()=>{const b=FemcGame.S.battleSave,B=FemcBuild,R=FemcBattleEngine.rng(23);
           Object.keys(B.SETS).filter(k=>B.SETS[k].img).forEach((set,i)=>{const c=B.rollCard(R,{set,slot:B.SLOTS[i%6].id,r:3+i%3});B.addCard(b,c);if(i<6)B.equipCard(b,'solar',c.u);if(i===2)c.lock=true;});
           FemcGame.saveQuiet();})()""")
@@ -677,8 +677,8 @@ try:
             view(p, w, h)
             menu(p, 'cards'); click(p, '.g-cbox-card')
             faces = p.eval(LAYOUT)
-            ok(len(faces) >= 13 + 6 and all(f['img'] and f['win'] == [6, 114] and f['plateTop'] == 123 and f['ar'] == 1.5 for f in faces), (name, 'every face shows its art above the plate', faces[:3]))
-            ok(len({f['set'] for f in faces}) == 13, (name, 'all 13 sets on screen'))
+            ok(len(faces) >= 24 + 6 and all(f['img'] and f['win'] == [6, 114] and f['plateTop'] == 123 and f['ar'] == 1.5 for f in faces), (name, 'every face shows its art above the plate', faces[:3]))
+            ok(len({f['set'] for f in faces}) == 24, (name, 'all 24 sets on screen'))
             no_scroll(p, 'cards ' + name); shot(p, 'cardart-menu-' + name)
         view(p, 1280, 850)
         p.eval("FemcMenu.close()")
@@ -704,7 +704,7 @@ try:
         p.eval("window.__stopResults=false;window.__hoStay=false;FemcBattle.hoFinish('retreat')"); p.top(); p.wait("!document.querySelector('.g-dh')", 30)
         results['cardart'] = {'sets': len(a), 'menu faces': len(faces), 'shuffle': 'reveal and results'}
         errs = p.console(); ok(not errs, errs)
-        print('Card art: 13 sets, menu faces, Shuffle reveal and results at three sizes OK', flush=True)
+        print('Card art: 24 sets, menu faces, Shuffle reveal and results at three sizes OK', flush=True)
 
     # ── The second wave of card sets: bonuses on the unit, damage in real engine fights, the drop pools ──
     if want('newsets'):

@@ -403,6 +403,9 @@
     const R = h.request || {}, kind = h.kind;
     const kicker = kind === 'operation' || (R.op && kind !== 'tartarus') ? 'Full Moon · The Dark Hour' : 'The Dark Hour';
     const title = R.title || (kind === 'tartarus' ? 'Tartarus' : 'Battle');
+    // Loading stills by fight type (batch 66): a Tartarus night shows Tartarus over the gate (loading-1); every other fight
+    // (full-moon operations, story and epilogue fights) shows the dorm lounge at midnight (loading-2).
+    const still = kind === 'tartarus' ? 'loading-1' : 'loading-2';
     document.querySelectorAll('.g-overlay').forEach(x => x.remove());
     SC.Music.duck(true);
     window.FemcWeather?.pause(true);
@@ -410,7 +413,7 @@
     el.className = `g-dh${reduced.matches ? ' calm' : ''}`;
     el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', title);
     el.innerHTML = `<div class="g-dh-frame"></div>
-      <div class="g-dh-fx" aria-hidden="true"><div class="g-dh-wash"></div><div class="g-dh-black"></div><div class="g-dh-still" style="background-image:url('${G.base}assets/femc/title/loading-1.webp')"></div><div class="g-dh-glass">${shardsHtml()}</div>
+      <div class="g-dh-fx" aria-hidden="true"><div class="g-dh-wash"></div><div class="g-dh-black"></div><div class="g-dh-still" style="background-image:url('${G.base}assets/femc/title/${still}.webp')"></div><div class="g-dh-glass">${shardsHtml()}</div>
         <svg class="g-dh-cracks" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M50 48 L8 6 M50 48 L92 10 M50 48 L97 60 M50 48 L70 98 M50 48 L22 96 M50 48 L2 58 M50 48 L60 2 M30 27 L41 22 M74 30 L68 22 M74 55 L80 46 M38 72 L30 66 M18 52 L22 44" /></svg>
         <div class="g-dh-title"><small>${esc(kicker)}</small><b>${esc(title)}</b>${h.date ? `<span>${esc(h.date.md)} · ${esc(h.date.weekday || '')}</span>` : ''}</div></div>
       <p class="g-dh-wait" aria-live="polite"></p>`;

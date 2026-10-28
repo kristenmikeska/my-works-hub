@@ -1,6 +1,6 @@
 # Art to make
 
-**70 items:** 9 places · 14 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 60 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
+**56 items:** 9 places · 14 character pieces · 5 battle · 28 wardrobe. 46 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -19,7 +19,6 @@
 |---|---|
 | Evoker close-ups | `battle/art/summon/solar-evoker.webp` |
 | Evoker sheets | `solar-evoker-animation.png` |
-| Dark Hour still | `title/keyart.webp` |
 | Weapon skins | `battle/art/weapons/moon-and-stars.webp` |
 | Echoes | `battle/art/personas/haenim.webp` |
 
@@ -287,121 +286,13 @@ Solar's collectible Echoes (the Personas tab, Echo Fusion, the Echo Compendium).
 
 ## 5. Cards, items and icons
 
-**[ ] Memory card: No Service** *(optional)*  
-A memory card for a late Runners memory; until it's in, the game shows a drawn card with the title.  
-Attach: nothing  
-Save as: `runners-lake.png`
-```
-Soft painterly anime vignette, square, dreamy and slightly faded like a half-remembered memory, light film grain, vignetted edges, no faces. A wooden dock on a dark lake in November, frost on the boards, two towels and a pile of clothes left at the end of it, a phone face up on the planks with its screen lit and no signal bars, pine woods black behind, a thin moon on the water.
-```
-
-**[ ] Memory card: A Bucket on the Step** *(optional)*  
-A memory card for a late strangers memory; until it's in, the game shows a drawn card with the title.  
-Attach: nothing  
-Save as: `strangers-koi.png`
-```
-Soft painterly anime vignette, square, dreamy and slightly faded like a half-remembered memory, light film grain, vignetted edges, no faces, no people. A plain round plastic bucket on the stone back step of an old Korean house at first light in deep winter, two koi going round in the dark water inside it with a thin skin of new ice at the edges, snow on the bucket's rim and on the step, a pair of worn house slippers beside it, and behind it a kitchen window glowing warm and fogged from the inside.
-```
-
-**[ ] Revelation card: Cinder Lantern** *(optional)*  
-Art for the Cinder Lantern card set (Fire set); the card shows a drawn face until it's in.  
-Attach: `card-persona-evoker.jpeg` (the style image)  
-Save as: `card-persona-lantern.jpeg`
-```
-A NEW card illustration in exactly the same style, border, colors and level of detail as the attached card: an ornate gold filigree frame with jewels and star corners, Persona-style dark glamour, rich jewel tones, portrait 3:4. The centerpiece is a round paper lantern burning ember-red, sparks and little flames curling off it, large and glowing, with a dark shrine path at night with drifting embers behind it. Only this one subject, no other objects from the attached card. No people, no text.
-```
-
-**[ ] Revelation card: Snow Globe** *(optional)*  
-Art for the Snow Globe card set (Ice set); the card shows a drawn face until it's in.  
-Attach: `card-persona-evoker.jpeg` (the style image)  
-Save as: `card-persona-snowglobe.jpeg`
-```
-A NEW card illustration in exactly the same style, border, colors and level of detail as the attached card: an ornate gold filigree frame with jewels and star corners, Persona-style dark glamour, rich jewel tones, portrait 3:4. The centerpiece is a snow globe frosted over, a tiny Tartarus tower inside it in swirling snow, large and glowing, with a deep blue night with falling ice crystals behind it. Only this one subject, no other objects from the attached card. No people, no text.
-```
-
-**[ ] Revelation card: Thunder Fuse** *(optional)*  
-Art for the Thunder Fuse card set (Elec set); the card shows a drawn face until it's in.  
-Attach: `card-persona-evoker.jpeg` (the style image)  
-Save as: `card-persona-fuse.jpeg`
-```
-A NEW card illustration in exactly the same style, border, colors and level of detail as the attached card: an ornate gold filigree frame with jewels and star corners, Persona-style dark glamour, rich jewel tones, portrait 3:4. The centerpiece is an old glass fuse with brass caps, crackling with yellow lightning inside, large and glowing, with a storm sky split by lightning behind it. Only this one subject, no other objects from the attached card. No people, no text.
-```
-
-**[ ] Revelation card: Paper Kite** *(optional)*  
-Art for the Paper Kite card set (Wind set); the card shows a drawn face until it's in.  
-Attach: `card-persona-evoker.jpeg` (the style image)  
-Save as: `card-persona-kite.jpeg`
-```
-A NEW card illustration in exactly the same style, border, colors and level of detail as the attached card: an ornate gold filigree frame with jewels and star corners, Persona-style dark glamour, rich jewel tones, portrait 3:4. The centerpiece is a diamond-shaped paper kite with a long ribbon tail, pulled taut by the wind, large and glowing, with a windswept sky with streaming green currents and leaves behind it. Only this one subject, no other objects from the attached card. No people, no text.
-```
-
-**[ ] Revelation card: Shrine Mirror** *(optional)*  
-Art for the Shrine Mirror card set (Light set); the card shows a drawn face until it's in.  
-Attach: `card-persona-evoker.jpeg` (the style image)  
-Save as: `card-persona-mirror.jpeg`
-```
-A NEW card illustration in exactly the same style, border, colors and level of detail as the attached card: an ornate gold filigree frame with jewels and star corners, Persona-style dark glamour, rich jewel tones, portrait 3:4. The centerpiece is a round bronze shrine mirror on a stand, shining with white-gold light, large and glowing, with a shrine at dawn with rays of light behind it. Only this one subject, no other objects from the attached card. No people, no text.
-```
-
-**[ ] Revelation card: Eclipse Candle** *(optional)*  
-Art for the Eclipse Candle card set (Dark set); the card shows a drawn face until it's in.  
-Attach: `card-persona-evoker.jpeg` (the style image)  
-Save as: `card-persona-candle.jpeg`
-```
-A NEW card illustration in exactly the same style, border, colors and level of detail as the attached card: an ornate gold filigree frame with jewels and star corners, Persona-style dark glamour, rich jewel tones, portrait 3:4. The centerpiece is a tall black candle with a violet flame, large and glowing, with a total eclipse ringed in purple light and drifting smoke behind it. Only this one subject, no other objects from the attached card. No people, no text.
-```
-
-**[ ] Revelation card: Prism Glass** *(optional)*  
-Art for the Prism Glass card set (Prism set: every element); the card shows a drawn face until it's in.  
-Attach: `card-persona-evoker.jpeg` (the style image)  
-Save as: `card-persona-prism.jpeg`
-```
-A NEW card illustration in exactly the same style, border, colors and level of detail as the attached card: an ornate gold filigree frame with jewels and star corners, Persona-style dark glamour, rich jewel tones, portrait 3:4. The centerpiece is a crystal prism splitting a beam of light into six colours (red, pale blue, yellow, green, white-gold, violet), large and glowing, with the Velvet Room's deep blue glow behind it. Only this one subject, no other objects from the attached card. No people, no text.
-```
-
-**[ ] Revelation card: Kendo Mask** *(optional)*  
-Art for the Kendo Mask card set (Physical set); the card shows a drawn face until it's in.  
-Attach: `card-persona-evoker.jpeg` (the style image)  
-Save as: `card-persona-kendo.jpeg`
-```
-A NEW card illustration in exactly the same style, border, colors and level of detail as the attached card: an ornate gold filigree frame with jewels and star corners, Persona-style dark glamour, rich jewel tones, portrait 3:4. The centerpiece is a kendo mask (men) with a bamboo sword (shinai) leaning across it, large and glowing, with a school dojo's wooden floor at night, moonlight through the windows behind it. Only this one subject, no other objects from the attached card. No people, no text.
-```
-
-**[ ] Revelation card: Party Spotlight** *(optional)*  
-Art for the Party Spotlight card set (Runners set); the card shows a drawn face until it's in.  
-Attach: `card-runners-foxbell.jpeg` (the style image)  
-Save as: `card-runners-spotlight.jpeg`
-```
-A NEW card illustration in exactly the same style, border, colors and level of detail as the attached card: an ornate gold filigree frame with jewels and star corners, Persona-style dark glamour, rich jewel tones, portrait 3:4. The centerpiece is a stage spotlight blazing pink-gold beams, large and glowing, with a college party crowd in silhouette, confetti and string lights behind it. Only this one subject, no other objects from the attached card. No people, no text.
-```
-
-**[ ] Revelation card: House Key** *(optional)*  
-Art for the House Key card set (strangers set); the card shows a drawn face until it's in.  
-Attach: `card-strangers-jade.jpeg` (the style image)  
-Save as: `card-strangers-housekey.jpeg`
-```
-A NEW card illustration in exactly the same style, border, colors and level of detail as the attached card: an ornate gold filigree frame with jewels and star corners, Persona-style dark glamour, rich jewel tones, portrait 3:4. The centerpiece is an old brass house key on a red tag, large and glowing, with a dim Incheon alley doorway with one warm light over it, rain on the ground behind it. Only this one subject, no other objects from the attached card. No people, no text.
-```
-
-**[ ] Revelation card: Passed Note** *(optional)*  
-Art for the Passed Note card set (HOAX set); the card shows a drawn face until it's in.  
-Attach: `card-hoax-ballot.jpeg` (the style image)  
-Save as: `card-hoax-note.jpeg`
-```
-A NEW card illustration in exactly the same style, border, colors and level of detail as the attached card: an ornate gold filigree frame with jewels and star corners, Persona-style dark glamour, rich jewel tones, portrait 3:4. The centerpiece is a folded paper note with a heart doodle, half unfolded so scribbled lines show (unreadable), large and glowing, with a classroom desk at dusk, whispering paper scraps drifting behind it. Only this one subject, no other objects from the attached card. No people, no text.
-```
+*(Nothing left: every memory card and every Revelation card set is in the game.)*
 
 ---
 
 ## 6. Screens and keepsakes (Gemini)
 
-**[ ] Dark Hour still: the dorm lounge at midnight** *(optional)*  
-A second picture for the fade into the Dark Hour.  
-Attach: the style image  
-Save as: `loading-2.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the Iwatodai dorm lounge at the stroke of midnight: the wall clock's hands both on twelve, the room washing from warm lamplight to Dark Hour green from one side to the other, the TV gone dark, the couch empty. Quiet, uncanny. Keep everything important away from the edges.
-```
+*(Nothing left: both Dark Hour stills are in the game.)*
 
 ---
 
