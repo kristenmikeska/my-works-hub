@@ -15,11 +15,19 @@
   const MAIN = window.FEMC_GAME_PLACES || { bg: [], weatherFx: { outdoor: [], sealed: [], none: [] } };
   Object.assign(R, {
     title: 'Iwatodai',
+    // The Equinox card after the act (epilogue.js finish; batch 9): `line` under the title, a route's own line in its place,
+    // and one line per other world (where someone is holding a gap; the private plan §8).
+    equinox: { line: 'Every universe.', routes: { akihiko: 'He held on. Something still came loose.', shinjiro: 'One hand, as hard as it could.', sees: 'It took all of them. For now, it was enough.' },
+      echoes: [
+        'Syracuse · On a rooftop in the snow, a phone’s timer is still running.',
+        'Incheon · The tide stops, once, and starts again.',
+        'Hanlim · A boy checks his coat pocket for a can that isn’t there.'
+      ] },
     // Yen, like the year (a separate wallet: the year's own yen is untouched while she's here).
     money: { code: 'JPY', sign: '¥', start: 20000, locale: 'ja-JP' },
     // The lean follows the ending's variant (Shinjiro first, as the ending decides it); the crossroads (3/28) can still turn it.
     routes: [
-      { id: 'shinjiro', name: 'Shinjiro', from: { xmas: ['shinjiro'], flags: ['stay-shinjiro'] }, open: { lean: true, bond: { shinjiro: 5 } } },
+      { id: 'shinjiro', name: 'Shinjiro', from: { xmas: ['shinjiro'], flags: ['stay-shinjiro'] }, open: { lean: true, bond: { shinjiro: 4 } } }, // batch 9: 4, like Akihiko (it was 5)
       { id: 'akihiko', name: 'Akihiko', from: { xmas: ['akihiko'], flags: ['stay-akihiko'], romance: ['akihiko'] }, open: { lean: true, bond: { akihiko: 4 } } },
       { id: 'sees', name: 'S.E.E.S.', open: { always: true } }
     ],

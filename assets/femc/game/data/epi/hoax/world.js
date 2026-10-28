@@ -20,6 +20,14 @@
   delete R.stub;
   Object.assign(R, {
     title: 'Hanlim',
+    // The Equinox card after the act (epilogue.js finish; batch 9): `line` under the title, a route's own line in its place,
+    // and one line per other world (where someone is holding a gap; the private plan §8).
+    equinox: { line: 'Every universe.', routes: { jungwon: 'He didn’t let go. He knew whose voice it was, and he didn’t let go.', jihoon: 'Someone chose differently. It counted.', council: 'The gym lights are still on.' },
+      echoes: [
+        'Syracuse · Hyein starts a text that says drink water, to no one, and doesn’t finish it.',
+        'Incheon · The old radio on the annex sill catches two seconds of a school bell.',
+        'Iwatodai · A room in the dorm is still made up. At midnight, its light comes on.'
+      ] },
     money: { code: 'KRW', sign: '₩', start: 50000, locale: 'ko-KR' },
     routes: [
       { id: 'jungwon', name: 'Jungwon', from: { romance: ['jungwon'], xmas: ['jungwon'] }, open: { lean: true, bond: { jungwon: 3 } } },

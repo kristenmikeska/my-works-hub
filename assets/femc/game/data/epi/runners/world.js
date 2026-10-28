@@ -25,6 +25,14 @@
   delete R.stub;
   Object.assign(R, {
     title: 'Syracuse',
+    // The Equinox card after the act (epilogue.js finish; batch 9): `line` under the title, a route's own line in its place,
+    // and one line per other world (where someone is holding a gap; the private plan §8).
+    equinox: { line: 'Every universe.', routes: { haechan: 'He said every world. He meant this one first.', minji: 'Somewhere, a camera is still rolling.', cover: 'Two hands held hers before his did.' },
+      echoes: [
+        'Incheon · Yunjin wakes on a bedroom floor that isn’t hers, one hand closed on nothing.',
+        'Hanlim · At 2 a.m., Cherry’s phone opens an old group chat by itself.',
+        'Iwatodai · A room in the dorm is still made up. At midnight, its light comes on.'
+      ] },
     money: { code: 'USD', sign: '$', start: 200, locale: 'en-US' },
     routes: [
       { id: 'haechan', name: 'Haechan', from: { romance: ['haechan'], xmas: ['haechan'] }, open: { lean: true, bond: { haechan: 4 }, noFlag: ['epi-r-stem-deleted'] } },

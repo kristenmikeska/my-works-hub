@@ -24,7 +24,7 @@
      epi-st-unheard, epi-st-platform (the four fights, each sets its own id); epi-st-told / epi-st-kept (epi-st-clocks);
      epi-st-hold-table (epi-st-witness, the "Hold onto the table" path); epi-st-form-blank / epi-st-form-pencil (epi-st-last-day);
      epi-st-held (the final, last line).
-   Flags read: epi-st-rooms-keep + the four epi-st-kept-<id> (epi-st-held's coda); epi-st-told / epi-st-kept (epi-st-witness,
+   Flags read: epi-st-rooms-keep + the four epi-st-kept-<id> (epi-st-held's coda; each kept thing answers since batch 9); epi-st-told / epi-st-kept (epi-st-witness,
      epi-st-platform); epi-st-form-pencil (epi-st-held). Route: ifEpiRoute akihiko / shinjiro / sees throughout (before the lock
      it reads the lean). ifYear: { anyFlag: ['shinji-awake', 'ending-shinjiro'] } wherever Shinjiro appears.
    Glitch ids used (each once): epi-st-g-hanni (hanami), epi-st-g-girls + epi-st-g-camo (thread), epi-st-g-tide (moon),
@@ -613,7 +613,20 @@
     { n: "The pull went through her like a tide going out. It wanted her. It didn't take her." },
     { n: "It took something. Behind her, Haenim's veil lifted, by itself, a finger's width. No more. A line of light at the bottom of it, a sliver of a jaw, the edge of a mouth she knew from mirrors, and the cool air of three worlds coming in under it. Then it hung there, lifted, and didn't fall back." },
     { ifFlag: 'epi-st-rooms-keep', then: [
-      { n: "Downstairs, in her room, the thing she'd kept from their rooms was ringing too, very faintly, the way glass rings, the way a thing rings when somebody on the other end has picked up." }
+      { n: "Downstairs, in her room, the thing she'd kept from their rooms was ringing too, very faintly, the way glass rings, the way a thing rings when somebody on the other end has picked up." },
+      // Batch 9: what she kept answers in its own way (the four epi-st-kept-<id> flags from epi-st-rooms).
+      { ifFlag: 'epi-st-kept-haechan', then: [
+        { n: "The can on her desk had gone cold again. Beaded. As if somebody on the other end had just taken it out of a fridge and set it down next to her form." }
+      ] },
+      { ifFlag: 'epi-st-kept-hyein', then: [
+        { n: "In the sewing kit on her desk, the pins in their neat spiral were turning, slowly, all together, like a compass that had found its north and didn't want to say which one." }
+      ] },
+      { ifFlag: 'epi-st-kept-hanni', then: [
+        { n: "On her nightstand, Hanni's alarm clock went off. Not six-forty. Twelve. It rang and rang and nobody on that side of the door got up to turn it off." }
+      ] },
+      { ifFlag: 'epi-st-kept-yunjin', then: [
+        { n: "The rabbit socks, balled on her radiator the way Yunjin used to leave them, were warm. Not radiator-warm. Somebody's, the way a thing is warm when someone has only just taken it off." }
+      ] }
     ] },
     { ifFlag: 'epi-st-form-pencil', then: [
       { n: "On her desk, in the dark, the pencil mark in the surname box had gone a little darker, as if somebody had gone over it once, gently, from the other side." }

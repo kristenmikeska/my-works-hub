@@ -38,7 +38,10 @@ window.FemcGame = (() => {
      these getters read that world's data instead of Iwatodai's (stats, flags and the battle data stay shared). A save without
      S.epi never sees WORLD, so the year plays exactly as before. */
   let WORLD = null, WORLD_OFF = 0;
-  const inWorld = () => (WORLD && !WORLD_OFF && S && S.epi && S.epi.world === WORLD.id ? WORLD.data : null);
+  // WORLD_REPLAY: a Theater replay of a finished epilogue's scene from the year (replayWorld below) reads that world's data
+  // (places, backgrounds, music, calendar) for as long as the replay plays; nothing in S changes.
+  let WORLD_REPLAY = null;
+  const inWorld = () => (WORLD && !WORLD_OFF && S && ((S.epi && S.epi.world === WORLD.id) || WORLD_REPLAY === WORLD.id) ? WORLD.data : null);
   const D = {
     get cal() { return inWorld()?.cal || W.FEMC_GAME_CALENDAR; }, get stats() { return W.FEMC_GAME_STATS; }, get places() { return inWorld()?.places || W.FEMC_GAME_PLACES; },
     get jobs() { return inWorld()?.jobs || W.FEMC_GAME_JOBS || []; }, get jobScenes() { return inWorld()?.jobScenes || W.FEMC_GAME_JOB_SCENES || {}; }, get flags() { return W.FEMC_GAME_FLAGS; },
@@ -124,7 +127,11 @@ window.FemcGame = (() => {
     const fulls = D.cal.fullMoons.map(dayOf).sort((a, b) => a - b);
     const next = fulls.find(f => f >= d), prev = [...fulls].reverse().find(f => f <= d);
     if (next === d) return { phase: 0.5, full: true, name: 'Full Moon', days: 0 };
-    const p = next != null && prev != null ? 0.5 + (d - prev) / (next - prev) : 0.25;
+    // An epilogue calendar with no full moon on one side of the day (true's coda has none at all; Runners' only one): the real
+    // sky on the date the day wears (calendar `shown`) or its own date, so the HUD's moon isn't a flat quarter. Iwatodai: as before.
+    const real = inWorld() && (next == null || prev == null)
+      ? (((((shownOf(mdOf(d)) || {}).date || dateOf(d)) - Date.UTC(2000, 0, 6, 18, 14)) / 86400000 / 29.530588) % 1 + 1) % 1 : null;
+    const p = real != null ? real : next != null && prev != null ? 0.5 + (d - prev) / (next - prev) : 0.25;
     const ph = p % 1;
     const NAMES = ['New Moon', 'Waxing Crescent', 'First Quarter', 'Waxing Gibbous', 'Full Moon', 'Waning Gibbous', 'Last Quarter', 'Waning Crescent'];
     return { phase: ph, full: false, name: NAMES[Math.round(ph * 8) % 8], days: next != null ? next - d : null };
@@ -2392,6 +2399,13 @@ window.FemcGame = (() => {
   const freshState = () => fresh();
   function adoptState(s) { S = s; save(); }
   function noWorld(fn) { WORLD_OFF++; try { return fn(); } finally { WORLD_OFF--; } }
+  // The Theater (epilogue batch 9): point the getters at world w for a read-only replay; the returned function puts back
+  // whatever was there (the year's nothing, or the epilogue's own world). The save is never touched.
+  function replayWorld(w) {
+    const was = WORLD, wasR = WORLD_REPLAY;
+    setWorld(w); WORLD_REPLAY = w.id;
+    return () => { WORLD_REPLAY = wasR; setWorld(was); };
+  }
 
   indexLinks();
   return {
@@ -2416,6 +2430,6 @@ window.FemcGame = (() => {
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,
     setBattleSave, ensureBattleSave,
     saveSlot, readSlot, loadSlot, slotLabel, slotInfo, exportCode, importCode, hasSave, deleteSave,
-    setWorld, world, money, freshState, adoptState, noWorld, CLEARS_KEY
+    setWorld, world, money, freshState, adoptState, noWorld, replayWorld, CLEARS_KEY
   };
 })();

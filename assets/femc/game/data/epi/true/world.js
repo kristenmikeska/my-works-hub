@@ -10,6 +10,12 @@
   const R = ((window.FEMC_EPI_WORLDS ||= {}).true ||= {});
   Object.assign(R, {
     title: 'Every world',
+    // The Equinox card after the act (epilogue.js finish; batch 9): `line` under the title, a route's own line in its place,
+    // and one line per other world (where someone is holding a gap; the private plan §8).
+    equinox: { line: 'Held in three places at once.', routes: {  },
+      echoes: [
+        'Iwatodai · Akihiko keeps a ribbon in his pocket and can’t say whose.'
+      ] },
     money: { code: 'JPY', sign: '¥', start: 0, locale: 'ja-JP' },
     routes: [{ id: 'coda', name: 'Every world', open: { always: true } }],
     places: {

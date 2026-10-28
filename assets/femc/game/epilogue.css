@@ -31,6 +31,14 @@
 .g-epi-equinox { background: radial-gradient(ellipse at 50% 40%, #0d2a22, #020806 75%); }
 .g-epi-equinox .g-ac-num { color: var(--green); }
 .g-epi-equinox .g-ac-title { text-shadow: .05em .05em 0 #1f8a5c; }
+/* Batch 9: the route's line and one line per other world, each fading in under the title. */
+.g-epi-equinox .g-ac-date { max-width: min(640px, calc(100vw - 32px)); line-height: 1.35; letter-spacing: .08em; text-transform: none; }
+.g-epi-echoes { display: grid; gap: 8px; max-width: min(560px, calc(100vw - 32px)); margin: 18px 0 0; padding: 0; list-style: none; }
+.g-epi-echoes li { color: #b9d8cb; font: italic 500 14px/1.4 var(--sans); animation: g-in .9s calc(1.6s + var(--i, 0) * .45s) both; }
+.g-epi-echoes b { display: block; color: var(--green); font: 700 10px/1.6 var(--sans); font-style: normal; letter-spacing: .3em; text-transform: uppercase; }
+.g-epi-equinox .g-ac-hint { animation-delay: 3s; }
+@media (max-width: 600px) { .g-epi-echoes li { font-size: 13px; } .g-epi-echoes { gap: 6px; margin-top: 12px; } }
+@media (prefers-reduced-motion: reduce) { .g-epi-echoes li { animation: none; } }
 
 /* ── Glitches (glitch.js; epilogue batch 2). Classes: m-full / m-gentle, calm (Reduce flashes: fades, no hard cuts), still
    (reduced motion: no animation at all, a held frame). Everything is short-lived and removed by glitch.js. ── */

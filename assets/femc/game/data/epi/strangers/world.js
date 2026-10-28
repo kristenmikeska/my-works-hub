@@ -5,6 +5,14 @@
 (window.FEMC_EPI_WORLDS ||= {}).strangers = Object.assign(window.FEMC_EPI_WORLDS.strangers || {}, {
   stub: true,
   title: 'Incheon',
+  // The Equinox card after the act (epilogue.js finish; batch 9): `line` under the title, a route's own line in its place,
+  // and one line per other world (where someone is holding a gap; the private plan §8).
+  equinox: { line: 'Every universe.', routes: {  },
+    echoes: [
+      'Syracuse · On a rooftop in the snow, a phone’s timer is still running.',
+      'Hanlim · At 2 a.m., Cherry’s phone opens an old group chat by itself.',
+      'Iwatodai · A room in the dorm is still made up. At midnight, its light comes on.'
+    ] },
   money: { code: 'KRW', sign: '₩', start: 100000, locale: 'ko-KR' },
   routes: [
     { id: 'haechan', name: 'Haechan', from: { romance: ['haechan'], xmas: ['haechan'], flags: ['hc-lean-S'] } },

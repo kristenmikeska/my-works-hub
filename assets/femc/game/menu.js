@@ -716,6 +716,13 @@ window.FemcMenu = (() => {
      Extras panel) steps out of the page meanwhile and comes back after. Not in the Dark Hour.
      New Game+ keeps all of it (albumCarry → the new S.album: cg, frags, events, doors, ranks, prologue). */
   const ALB_V = 1, END_ID = 'end-ending', CLEARS_KEY = 'kg-femc-revamp-clears';
+  const EPI = () => window.FemcEpilogue || null;
+  /* The epilogue (batch 9): inside one (S.epi), core.js reads that world's data, so the album shows the year as an "Iwatodai"
+     page (the CGs the year saw, kept in year1.album when she went in, plus the memory cards) and the Theater only the world
+     she's in; back in the year everything is as before. Either way the album gains a page per epilogue entered (its CGs,
+     locked until seen: epilogue.js albumEntries) and the Theater an Epilogue tab (epilogue.js theaterRows / replay). A save
+     that never went into an epilogue sees none of it. */
+  const inEpi = () => !!S().epi;
   const EXTRA_TABS = ['album', 'theater']; // the Wardrobe opens in the Dark Hour menu too (Kat, 2026-10-27); looks apply from the next fight
   const albumOf = () => S().album || {};
   const uniq = a => [...new Set(a)];
@@ -727,7 +734,7 @@ window.FemcMenu = (() => {
     if (line.ifRank) ok = Object.entries(line.ifRank).every(([id, r]) => (lk(id).rank || 0) >= r);
     else if (line.ifStat) ok = Object.entries(line.ifStat).every(([id, r]) => G.statRank(id) >= r);
     else if (line.ifFlag) ok = [].concat(line.ifFlag).every(flagOn);
-    else if (line.ifEvent) ok = [].concat(line.ifEvent).every(id => s.events.includes(id));
+    else if (line.ifEvent) ok = [].concat(line.ifEvent).every(id => s.events.includes(id) || !!EPI()?.replaySaw(id));
     else if (line.ifMet) ok = [].concat(line.ifMet).every(id => s.met.includes(id));
     else if (line.ifRoute) ok = !!link && lk(link).route === line.ifRoute;
     else if (line.ifRomance) ok = lk(line.ifRomance).route === 'romance';
@@ -741,6 +748,9 @@ window.FemcMenu = (() => {
     else if (line.ifCount) ok = G.countOk(line.ifCount, flagOn);
     else if (line.ifAfter) ok = s.day >= G.dayOf(line.ifAfter);
     else if (line.ifBefore) ok = s.day < G.dayOf(line.ifBefore);
+    // The epilogue's conditions (batch 9): read-only, from the epilogue being played or the record a replay plays from
+    // (epilogue.js peekCond); false in the year, like G.branch.
+    else if (EPI()?.isEpiCond(line)) ok = !!EPI().peekCond(line);
     if (ok === null) return null;
     return (ok ? line.then : line.else) || [];
   }
@@ -843,7 +853,19 @@ window.FemcMenu = (() => {
     }
   }
   function albumData() {
-    const a = albumOf(), s = S(), got = new Set(a.cg || []), runs = endingRuns(), cap = {};
+    const a = albumOf(), s = S();
+    const have = new Set([...(a.frags || []), ...s.fragments]);
+    const frags = (G.D.battle.memories || []).map(m => ({ kind: 'mem', id: m.id, group: m.world, on: have.has(m.id), img: G.base + m.img, big: G.base + (m.wide || m.img), kicker: `${m.world} · memory fragment`, title: m.title, text: m.text }));
+    const yAl = (s.year1 && s.year1.album) || {}, seen = new Set([...(a.cg || []), ...(yAl.cg || [])]);
+    const epi = EPI() ? EPI().albumEntries(seen) : [];
+    if (inEpi()) {
+      const cgs = uniq((yAl.cg || []).filter(id => !/^epi-/.test(id))).map(id => ({ kind: 'cg', id, group: cgGroup(id), on: true, img: `${G.base}assets/femc/cg/${id}.webp`, kicker: 'Iwatodai', title: '' }));
+      return { cgs, frags, epi };
+    }
+    return { ...albumMain(a, s), frags, epi };
+  }
+  function albumMain(a, s) {
+    const got = new Set(a.cg || []), runs = endingRuns(), cap = {};
     const done = new Set();
     cgCatalog().forEach(c => c.srcs.forEach(src => { if (done.has(src)) return; done.add(src); if (src.key !== END_ID && seenSrc(src, null)) reach(src.scene, src.link, G.flag, null, got); }));
     runs.forEach(run => endingCgs(run).forEach(id => { got.add(id); if (!cap[id]) cap[id] = { kicker: 'Ending', title: `ENDING · ${run.name}` }; }));
@@ -852,36 +874,39 @@ window.FemcMenu = (() => {
       const caption = cap[c.id] || (src ? srcCaption(src) : { kicker: CG_GROUPS.find(g => g[0] === c.group)[1], title: '' });
       return { kind: 'cg', id: c.id, group: c.group, on, img: `${G.base}assets/femc/cg/${c.id}.webp`, ...caption };
     });
-    const have = new Set([...(a.frags || []), ...s.fragments]);
-    const frags = (G.D.battle.memories || []).map(m => ({ kind: 'mem', id: m.id, group: m.world, on: have.has(m.id), img: G.base + m.img, big: G.base + (m.wide || m.img), kicker: `${m.world} · memory fragment`, title: m.title, text: m.text }));
-    return { cgs, frags };
+    return { cgs };
   }
   // Everything seen so far, for New Game+ (ui.js endScreen): the album and the Theater carry over.
   function albumCarry() {
     const a = albumOf(), s = S(), ranks = {};
     Object.entries(a.ranks || {}).forEach(([k, v]) => { ranks[k] = [...v]; });
     Object.entries(s.links || {}).forEach(([k, p]) => { if ((p.seen || []).length) ranks[k] = uniq([...(ranks[k] || []), ...p.seen]); });
-    const { cgs } = albumData();
-    return { v: ALB_V, cg: cgs.filter(c => c.on).map(c => c.id), frags: uniq([...(a.frags || []), ...s.fragments]), events: uniq([...(a.events || []), ...s.events.filter(id => id !== END_ID)]),
-      doors: uniq([...(a.doors || []), ...(s.route.doorsSeen || [])]), ranks, prologue: !!a.prologue || !!(s.started && s.day > 0) };
+    const { cgs, epi } = albumData();
+    const recs = { ...(a.epi || {}), ...(s.epilogues || {}) }; // the epilogues' Theater records (batch 9)
+    return { v: ALB_V, cg: uniq([...cgs.filter(c => c.on).map(c => c.id), ...epi.filter(c => c.on).map(c => c.id), ...(a.cg || []).filter(id => /^epi-/.test(id))]),
+      frags: uniq([...(a.frags || []), ...s.fragments]), events: uniq([...(a.events || []), ...s.events.filter(id => id !== END_ID)]),
+      doors: uniq([...(a.doors || []), ...(s.route.doorsSeen || [])]), ranks, prologue: !!a.prologue || !!(s.started && s.day > 0), ...(Object.keys(recs).length ? { epi: recs } : {}) };
   }
 
   /* The album's page. Tiles open the viewer; locked tiles are blank and can't be focused. */
   const monthOf = md => G.dateOf(G.dayOf(md)).toLocaleString('en', { month: 'long' });
   function albumHtml() {
-    const { cgs, frags } = albumData(), n = x => x.filter(c => c.on).length;
+    const { cgs, frags, epi } = albumData(), n = x => x.filter(c => c.on).length, yr = inEpi() ? 'Iwatodai · ' : '';
     let k = 0;
     const tile = (c, sq) => (c.on
       ? `<button type="button" class="g-al-tile" data-al="${k++}" aria-label="${esc([c.kicker, c.title].filter(Boolean).join(' · '))}"${sq ? ` style="--w:var(--w-${esc(c.group.toLowerCase())})"` : ''}><img src="${esc(c.img)}" alt="" loading="lazy" decoding="async"><span class="g-al-cap">${esc(c.title || c.kicker)}</span></button>`
       : `<div class="g-al-tile lock" aria-hidden="true"${sq ? ` style="--w:var(--w-${esc(c.group.toLowerCase())})"` : ''}><i>?</i></div>`);
     const sec = (name, list, sq) => (list.length ? `<section class="g-al-sec"><h3>${esc(name)} <small>${n(list)} / ${list.length}</small></h3><div class="g-al-grid${sq ? ' sq' : ''}">${list.map(c => tile(c, sq)).join('')}</div></section>` : '');
-    return `<div class="g-al"><p class="g-al-sum"><span class="g-chip">Event CGs · ${n(cgs)} / ${cgs.length}</span><span class="g-chip">Memory cards · ${n(frags)} / ${frags.length}</span></p>
-      ${n(cgs) + n(frags) ? '' : '<p class="g-note">Nothing here yet. Scenes and memories she lives through will be kept here.</p>'}
-      ${CG_GROUPS.map(([g, name]) => sec(name, cgs.filter(c => c.group === g))).join('')}
+    return `<div class="g-al"><p class="g-al-sum"><span class="g-chip">Event CGs · ${n(cgs)}${inEpi() ? '' : ` / ${cgs.length}`}</span>${epi.length ? `<span class="g-chip">Epilogue · ${n(epi)} / ${epi.length}</span>` : ''}<span class="g-chip">Memory cards · ${n(frags)} / ${frags.length}</span></p>
+      ${n(cgs) + n(frags) + n(epi) ? '' : '<p class="g-note">Nothing here yet. Scenes and memories she lives through will be kept here.</p>'}
+      ${CG_GROUPS.map(([g, name]) => sec(yr + name, cgs.filter(c => c.group === g))).join('')}
+      ${epiGroups(epi).map(([g, name]) => sec(name, epi.filter(c => c.group === g))).join('')}
       ${WORLDS.map(([w, name]) => sec(`Memory cards · ${name}`, frags.filter(c => c.group === w), true)).join('')}</div>`;
   }
   // The unlocked entries in page order (data-al indexes this).
-  function albumList() { const { cgs, frags } = albumData(); return [...CG_GROUPS.flatMap(([g]) => cgs.filter(c => c.group === g)), ...WORLDS.flatMap(([w]) => frags.filter(c => c.group === w))].filter(c => c.on); }
+  // The epilogue's sections, in order: [group, heading] (one per world entered).
+  const epiGroups = epi => uniq(epi.map(c => c.group)).map(g => [g, epi.find(c => c.group === g).kicker]);
+  function albumList() { const { cgs, frags, epi } = albumData(); return [...CG_GROUPS.flatMap(([g]) => cgs.filter(c => c.group === g)), ...epiGroups(epi).flatMap(([g]) => epi.filter(c => c.group === g)), ...WORLDS.flatMap(([w]) => frags.filter(c => c.group === w))].filter(c => c.on); }
   function wireAlbum(el) {
     el.querySelectorAll('[data-al]').forEach(bt => bt.addEventListener('click', () => {
       G.sfx('femc-click');
@@ -942,6 +967,7 @@ window.FemcMenu = (() => {
   /* The Theater's list: { sec: story | bonds | endings, group, label, title, play } rows. */
   function theaterItems() {
     const a = albumOf(), out = [];
+    if (inEpi()) return EPI() ? EPI().theaterRows() : out; // inside an epilogue: its own scenes (the year's wait in the year)
     const srcs = sceneSources().filter(x => seenSrc(x, a));
     srcs.filter(x => x.kind === 'prologue' || (x.kind === 'event' && x.key !== END_ID)).map((x, k) => ({ x, k, d: G.dayOf(x.md) })).sort((p, q) => p.d - q.d || p.k - q.k)
       .forEach(({ x }) => out.push({ sec: 'story', group: monthOf(x.md), date: x.md, title: x.title || 'Story', sub: x.kind === 'prologue' ? '' : x.place || '', src: x }));
@@ -952,12 +978,13 @@ window.FemcMenu = (() => {
     });
     endingRuns().forEach(run => { const ev = endEvent(); if (ev) out.push({ sec: 'endings', group: 'Endings', date: ev.date, title: `ENDING · ${run.name}`, sub: run.mine ? 'This playthrough' : 'An earlier playthrough', src: { kind: 'ending', key: `ending:${run.name}`, scene: ev.scene, title: ev.title, place: ev.place, time: ev.time, md: ev.date, run } });
     });
+    if (EPI()) out.push(...EPI().theaterRows());
     return out;
   }
-  const TH_SECS = [['story', 'Story'], ['bonds', 'Bonds'], ['endings', 'Endings']];
+  const TH_SECS = [['story', 'Story'], ['bonds', 'Bonds'], ['endings', 'Endings'], ['epilogue', 'Epilogue']];
   function theaterHtml() {
     const items = theaterItems();
-    if (!items.length) return '<p class="g-note">Nothing to replay yet. Scenes she has lived through wait here, to watch again.</p>';
+    if (!items.length) return `<p class="g-note">Nothing to replay yet. Scenes she has lived through wait here, to watch again.${inEpi() ? ' The year’s own scenes are waiting in the Theater after the epilogue.' : ''}</p>`;
     const cur = sel.th && items.some(x => x.sec === sel.th) ? sel.th : items[0].sec;
     sel.th = cur;
     const groups = [];
@@ -973,12 +1000,19 @@ window.FemcMenu = (() => {
       G.sfx('femc-click');
       replay(item, host, () => el.querySelector(`[data-th="${b.dataset.th}"]`)?.focus({ preventScroll: true }));
     }));
+    // A finished epilogue's world loads the first time its rows are asked for; then the page repaints with them.
+    EPI()?.theaterLoad().then(n => { if (n && el.isConnected) repaint(); }).catch(() => {});
   }
   // Play a Theater row through the real scene player, read-only. host: the panel to step aside (it's put back after).
   function replay(item, host, back) {
     const x = item.src, l = x.link && G.LINKS[x.link], mood = SC.Music.mood();
     const parent = host && host.parentNode, after = host && host.nextSibling;
     host?.remove();
+    // An epilogue scene: epilogue.js plays it in its own world, read-only (batch 9).
+    if (x.kind === 'epi') {
+      const done = () => { if (parent && host) parent.insertBefore(host, after && after.parentNode === parent ? after : null); if (mood) SC.Music.set(mood); back?.(); };
+      return EPI().replay(x, `Theater · ${item.group.replace(/^Epilogue · /, 'Epilogue · ')}`, done).catch(done);
+    }
     const label = x.kind === 'rank' ? `${l.short} · ${item.sub}` : x.kind === 'ending' ? 'Ending' : x.kind === 'door' ? 'Memory' : x.kind === 'prologue' ? 'Prologue' : item.date;
     const md = x.kind === 'rank' ? item.date : x.md;
     const day = md ? G.dayInfo(G.dayOf(md)) : null;

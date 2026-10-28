@@ -55,14 +55,24 @@
      - True is a coda: three small days, one per world, on one calendar whose days wear another world's date (the calendar's
        `shown: { 'M/D': { date: 'YYYY-MM-DD', place } }`, read by core.js dayInfo → ui.js date card and HUD, and copied into
        S.epi.shown for the save screen). Every slot is a story event, so no Go Out or late screen appears.
-     - ifYear gained anyFlag (any of a list); the y- flags copied on entering also take ending-*, stay-* and shinji-awake. */
+     - ifYear gained anyFlag (any of a list); the y- flags copied on entering also take ending-*, stay-* and shinji-awake.
+   Finale and polish (batch 9, 2026-10-28):
+     - The Equinox card reads the world's `equinox` (world.js: line, routes { id: line }, echoes ['Place · line']): the route's
+       own line under EQUINOX, then one line per other world (equinoxOf, card's `echoes`).
+     - Leaving records the act in the year's S.epilogues[world] (recordOf: seen events / hangouts / routines, the layer's flags,
+       closeness, open routes, the stage), and the CGs seen here join the year's album. Entering keeps the year's album
+       (menu.js albumCarry) in year1.album for the album's "Iwatodai" page inside the epilogue.
+     - The album and the Theater (menu.js): albumEntries (ALBUM: each world's CGs, locked until a scene shows one), theaterRows /
+       theaterLoad / replay (read-only; a finished world is replayed from the year through core.js replayWorld), and peekCond for
+       menu.js peek (ifYear, ifEpiRoute, ifGlitch, ifBond, ifRouteOpen without writing; replaySaw for ifEvent). The section
+       above the return documents it. Stamps for finished epilogues: stamps.js. */
 window.FemcEpilogue = (() => {
   const G = window.FemcGame, SC = window.FemcScene, W = window;
   if (!G) return null;
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 6; // data/epi/<world>/*.js ?v=
+  const DATA_V = 7; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
     runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3'] },
@@ -160,7 +170,10 @@ window.FemcEpilogue = (() => {
     if (line.ifEpiRoute) return !!s.epi && [].concat(line.ifEpiRoute).includes(route());
     if (line.ifBond) return !!s.epi && Object.entries(line.ifBond).every(([id, n]) => closeness(id) >= n);
     if (line.ifRouteOpen) return !!s.epi && routeOpen(line.ifRouteOpen);
-    const Y = s.year1, q = line.ifYear;
+    return yearCond(s.year1, line.ifYear);
+  }
+  // { ifYear } against a finished year Y (the save's year1 in the epilogue; the year itself for a Theater replay after it).
+  function yearCond(Y, q) {
     if (!Y || !q) return false;
     if (typeof q === 'string') return !!Y.flags?.[q];
     const L = Y.links || {};
@@ -174,14 +187,14 @@ window.FemcEpilogue = (() => {
   }
 
   // Can the route still be picked (the world's routes[].open: always / lean / bond / noFlag)?
-  function routeOpen(id) {
+  function routeOpen(id, close = closeness) {
     const r = (worldRaw().routes || []).find(x => x.id === id);
     if (!r || !S().epi) return false;
     const o = r.open || { always: true }, f = S().flags;
     if ((o.noFlag || []).some(k => f[k])) return false;
     if (o.always) return true;
     if (o.lean && S().epi.lean === id) return true;
-    return !!o.bond && Object.entries(o.bond).every(([b, n]) => closeness(b) >= n);
+    return !!o.bond && Object.entries(o.bond).every(([b, n]) => close(b) >= n);
   }
 
   /* ── Home bonds (raw.bonds) ── */
@@ -248,7 +261,10 @@ window.FemcEpilogue = (() => {
     const Y = S();
     if (Y.epi || worldFor(Y) !== id) return Promise.resolve(false);
     return loadWorld(id).then(() => {
+      // The album's "Iwatodai" page (batch 9): what the year has seen, worked out now while core.js still reads Iwatodai.
+      let keep = null; try { keep = W.FemcMenu?.albumCarry?.() || null; } catch (e) { keep = null; }
       const E = stateFor(Y, id);
+      if (keep) E.year1.album = keep;
       G.setWorld(build(id));
       G.adoptState(E);
       cardDay = null;
@@ -263,7 +279,10 @@ window.FemcEpilogue = (() => {
     Y.battleSave = E.battleSave || Y.battleSave || null;
     Y.battleAt = Math.max(Y.battleAt || 0, E.battleAt || 0);
     Y.playMinutes = Math.max(Y.playMinutes || 0, E.playMinutes || 0);
-    (Y.epilogues ||= {})[E.epi.world] = { done: true, route: route(), at: Date.now() };
+    (Y.epilogues ||= {})[E.epi.world] = recordOf(E);
+    // CGs she saw here join the year's album (the album's epilogue pages; New Game+ carries them like the rest).
+    const ecg = (E.album && E.album.cg) || [];
+    if (ecg.length) { const a = (Y.album ||= { v: 1 }); a.cg = [...new Set([...(a.cg || []), ...ecg])]; }
     const wid = E.epi.world;
     W.FemcGlitch?.clear();
     G.setWorld(null);
@@ -501,13 +520,20 @@ window.FemcEpilogue = (() => {
   }
 
   /* ── The end of the act: its card, the Equinox card, then back to the year's end screen ── */
-  function card(kicker, title, sub, cls, done) {
+  // The Equinox card's words (batch 9): the world's `equinox` (world.js): the route's own line, else `line`; then `echoes`, one
+  // line per other world ("Place · what happens there"), each fading in under it.
+  function equinoxOf(raw, rid) {
+    const q = raw.equinox || {};
+    return { line: (q.routes || {})[rid] || q.line || 'Every universe.', echoes: (q.echoes || []).filter(Boolean) };
+  }
+  function card(kicker, title, sub, cls, done, echoes) {
     const el = document.createElement('div');
     el.className = `g-actcard g-epi-card ${cls}`;
-    el.innerHTML = `<div class="g-ac-inner"><p class="g-ac-num">${esc(kicker)}</p><p class="g-ac-title">${esc(title)}</p>${sub ? `<p class="g-ac-date">${esc(sub)}</p>` : ''}<p class="g-ac-hint">click to continue</p></div>`;
+    const eco = (echoes || []).map((t, i) => { const [pl, ...rest] = String(t).split(' · '); return `<li style="--i:${i}">${rest.length ? `<b>${esc(pl)}</b>${esc(rest.join(' · '))}` : esc(t)}</li>`; }).join('');
+    el.innerHTML = `<div class="g-ac-inner"><p class="g-ac-num">${esc(kicker)}</p><p class="g-ac-title">${esc(title)}</p>${sub ? `<p class="g-ac-date">${esc(sub)}</p>` : ''}${eco ? `<ul class="g-epi-echoes">${eco}</ul>` : ''}<p class="g-ac-hint">click to continue</p></div>`;
     document.body.appendChild(el);
     let ready = false, gone = false;
-    setTimeout(() => { ready = true; }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1200);
+    setTimeout(() => { ready = true; }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : eco ? 2400 : 1200);
     const go = () => { if (!ready || gone) return; gone = true; document.removeEventListener('keydown', key, true); el.classList.add('out'); setTimeout(() => { el.remove(); done(); }, 450); };
     const key = e => { if (['Enter', ' '].includes(e.key)) { e.preventDefault(); go(); } };
     el.addEventListener('click', go);
@@ -521,13 +547,137 @@ window.FemcEpilogue = (() => {
     if (!s.epi.done) { s.epi.done = true; if (!s.epi.locked) lockRoute(); G.save(); }
     UI().show('', 'is-card');
     const raw = worldRaw();
-    card('EPILOGUE', raw.title || s.epi.place, s.epi.place, 'g-epi-end', () => card('PERSONA 3', 'EQUINOX', 'Every universe.', 'g-epi-equinox', () => {
+    const eq = equinoxOf(raw, route());
+    card('EPILOGUE', raw.title || s.epi.place, s.epi.place, 'g-epi-end', () => card('PERSONA 3', 'EQUINOX', eq.line, 'g-epi-equinox', () => {
       finishing = false;
       if (leave()) UI().endScreen(); else UI().run();
-    }));
+    }, eq.echoes));
+  }
+
+  /* ── The album, the Theater and menu.js peek (batch 9) ──
+     Leaving records what she lived through in the year's S.epilogues[world] (recordOf): { done, route, at, seen: { events,
+     hangouts: { bond: [ids] }, routines }, flags (the epilogue layer's), bonds (closeness), open (routes still open), stage }.
+     New Game+ carries the records in the album (menu.js albumCarry → S.album.epi), so the Theater keeps them like the year's.
+     Conditions read-only (peekCond): the live epilogue (no bondState writes), or a record during a replay (replayCtx). In a
+     replay, ifGlitch reads the stage the scene's own day had (the world's glitch floors, +1 at Late Night) and a hangout the
+     stage she ended on; ifRouteOpen is the route taken or one still open at the end; ifBond the closeness at the end.
+     The album: ALBUM lists each world's CGs (all art-pending as of batch 9, so their tiles stay locked until a scene shows
+     one), plus any cg a loaded world's scenes use. A section appears only for a world she has entered. */
+  const ALBUM = {
+    runners: [['epi-r-regionals', 'Regionals'], ['epi-r-studio', 'The studio'], ['epi-r-footage', 'The footage'], ['epi-r-held', 'Held']],
+    strangers: [],
+    hoax: [['epi-h-seance', 'The séance'], ['epi-h-hearing', 'The hearing'], ['epi-h-held', 'Held']],
+    stay: [['epi-stay-held', 'Held']],
+    true: [['epi-true-coda', 'Every world']]
+  };
+  function recordOf(E) {
+    const e = E.epi, hang = {}, bonds = {};
+    Object.entries(e.bonds || {}).forEach(([id, b]) => { bonds[id] = b.c; if ((b.seen || []).length) hang[id] = [...b.seen]; });
+    const flags = {}; Object.keys(E.flags || {}).forEach(k => { if (E.flags[k]) flags[k] = true; });
+    const ro = id => (bonds[id] ?? (BONDS()[id] ? startBond(id) : 0));
+    return { done: true, route: route(), at: Date.now(), seen: { events: [...(E.events || [])], hangouts: hang, routines: [...(E.dailyLife?.seen || [])] },
+      flags, bonds, open: (worldRaw().routes || []).filter(r => routeOpen(r.id, ro)).map(r => r.id), stage: GL() ? GL().stage() : null };
+  }
+  let replayCtx = null;
+  function liveCtx() {
+    const s = S(); if (!s.epi) return null;
+    const close = id => (BONDS()[id] ? (s.epi.bonds?.[id]?.c ?? startBond(id)) : 0);
+    return { year: s.year1, route: route(), close, open: id => routeOpen(id, close), stage: GL()?.active?.() ? GL().stage() : 0, events: s.events };
+  }
+  function recCtx(rec, Y) {
+    return { year: Y, route: rec.route || null, close: id => (rec.bonds || {})[id] || 0, open: id => id === rec.route || (rec.open || []).includes(id),
+      stage: rec.stage ?? 4, events: (rec.seen && rec.seen.events) || [] };
+  }
+  const isEpiCond = l => !!(l && (l.ifYear || l.ifEpiRoute || l.ifGlitch !== undefined || l.ifBond || l.ifRouteOpen));
+  // menu.js peek: an epilogue condition without writing anything (false outside the epilogue and outside a replay, like branch).
+  function peekCond(line, ctx = replayCtx || liveCtx()) {
+    if (!ctx) return false;
+    if (line.ifGlitch !== undefined) return (ctx.stage || 0) >= +line.ifGlitch;
+    if (line.ifEpiRoute) return [].concat(line.ifEpiRoute).includes(ctx.route);
+    if (line.ifBond) return Object.entries(line.ifBond).every(([id, n]) => ctx.close(id) >= n);
+    if (line.ifRouteOpen) return !!ctx.open(line.ifRouteOpen);
+    return yearCond(ctx.year, line.ifYear);
+  }
+  const replaySaw = id => !!replayCtx && (replayCtx.events || []).includes(id);
+  // The stage on a scene's own day: the world's floor (latest date on or before it), +1 at Late Night (needs the world's calendar).
+  function floorAt(raw, md, slot) {
+    const d = G.dayOf(md); let f = 0, at = -1;
+    Object.entries(raw.glitch?.floors || {}).forEach(([k, n]) => { const x = G.dayOf(k); if (x <= d && x >= at) { at = x; f = n; } });
+    return Math.min(4, f + (slot === 'late' ? 1 : 0));
+  }
+  // The worlds this save has gone into (a section of the album and the Theater each), in WORLDS order.
+  function records() {
+    const s = S(), Y = s.year1;
+    return { ...((s.album || {}).epi || {}), ...((Y && Y.epilogues) || {}), ...(s.epilogues || {}) };
+  }
+  function entered() {
+    const ids = new Set([...Object.keys(records()), ...(S().epi ? [S().epi.world] : [])]);
+    return Object.keys(WORLDS).filter(id => ids.has(id));
+  }
+  const worldLabel = id => (id === 'true' ? 'Every world' : WORLDS[id].place);
+  function cgsOf(lines, out) { (lines || []).forEach(l => { if (!l || typeof l !== 'object') return; if (typeof l.cg === 'string') out.add(l.cg); [l.then, l.else, ...(Array.isArray(l.choose) ? l.choose.map(o => o && o.then) : [])].forEach(k => Array.isArray(k) && cgsOf(k, out)); }); return out; }
+  // The album's epilogue tiles. seen: the CG ids the save (and the year) have seen.
+  function albumEntries(seen) {
+    return entered().flatMap(wid => {
+      const list = [...ALBUM[wid]], raw = W.FEMC_EPI_WORLDS?.[wid];
+      if (raw && raw._loaded) {
+        const more = new Set();
+        [...(raw.events || []), ...(raw.routines || []), ...Object.values(raw.bonds || {}).flatMap(b => b.hangouts || [])].forEach(e => cgsOf(e.scene, more));
+        more.forEach(id => { if (!list.some(x => x[0] === id)) list.push([id, '']); });
+      }
+      return list.map(([id, title]) => ({ kind: 'cg', id, group: `epi-${wid}`, world: wid, on: seen.has(id), img: `${G.base}assets/femc/cg/${id}.webp`, kicker: `Epilogue · ${worldLabel(wid)}`, title }));
+    });
+  }
+  // The Theater's epilogue rows: the current world while she's in it (live), else each finished world's record.
+  function theaterRows() {
+    const s = S(), out = [];
+    entered().forEach(wid => {
+      const live = !!s.epi && s.epi.world === wid, rec = live ? null : records()[wid];
+      if (!live && !rec) return;
+      if (s.epi && !live) return; // inside one epilogue, only its own world (another world's data can't be pointed at mid-act)
+      const raw = W.FEMC_EPI_WORLDS?.[wid];
+      if (!raw || raw._loaded !== DATA_V) return; // theaterLoad() brings it, then the page repaints
+      const evs = live ? s.events : (rec.seen ? rec.seen.events : (raw.events || []).filter(e => !e.flag || e.flag === `epi-route-${rec.route}`).map(e => e.id));
+      const hang = live ? Object.fromEntries(Object.entries(s.epi.bonds || {}).map(([id, b]) => [id, b.seen || []])) : (rec.seen ? rec.seen.hangouts || {} : {});
+      const group = `Epilogue · ${worldLabel(wid)}`, shown = md => { const x = raw.calendar?.shown?.[md]; if (!x) return md; const [, m, d] = x.date.split('-').map(Number); return `${m}/${d}`; };
+      (raw.events || []).filter(e => evs.includes(e.id)).forEach(e => out.push({ sec: 'epilogue', group, date: shown(e.date), title: e.title || 'Epilogue', sub: e.place || '',
+        src: { kind: 'epi', k: 'event', world: wid, key: e.id, live } }));
+      Object.entries(hang).forEach(([bid, ids]) => ((raw.bonds || {})[bid]?.hangouts || []).filter(h => ids.includes(h.id)).forEach(h => out.push({ sec: 'epilogue', group, date: '',
+        title: h.title || 'Time together', sub: `${G.name(bid)}${h.place ? ` · ${h.place}` : ''}`, src: { kind: 'epi', k: 'hangout', world: wid, key: h.id, bond: bid, live } })));
+    });
+    return out;
+  }
+  // Loads the worlds the Theater has rows for. Resolves true if anything new came in (the page then repaints).
+  function theaterLoad() {
+    const s = S(), need = entered().filter(w => (s.epi ? s.epi.world === w : !!records()[w]) && W.FEMC_EPI_WORLDS?.[w]?._loaded !== DATA_V);
+    return need.length ? Promise.all(need.map(w => loadWorld(w).catch(() => null))).then(() => true) : Promise.resolve(false);
+  }
+  // Plays a Theater row read-only: the world's places, music and names for the length of the replay (core.js replayWorld
+  // when it's a finished world seen from the year), its record's flags and conditions; the save never changes.
+  function replay(src, label, onDone) {
+    return loadWorld(src.world).then(() => {
+      const w = build(src.world), raw = w.raw, s = S(), live = !!s.epi && s.epi.world === src.world;
+      if (live && !ensure()) throw new Error('epilogue world');
+      const rec = live ? null : records()[src.world] || {};
+      const end = live ? null : G.replayWorld(w);
+      try {
+        let v;
+        if (src.k === 'event') { const e = raw.events.find(x => x.id === src.key); v = e && { scene: e.scene, place: e.place, time: e.time, title: e.title, cast: e.cast, md: e.date, slot: e.slot }; }
+        else { const h = ((raw.bonds || {})[src.bond]?.hangouts || []).find(x => x.id === src.key); v = h && { scene: [...(h.bg ? [{ bg: h.bg }] : []), ...h.scene], place: h.place, time: h.time, title: h.title, cast: h.cast }; }
+        if (!v) throw new Error('no scene');
+        replayCtx = live ? liveCtx() : recCtx(rec, s);
+        if (v.md) replayCtx.stage = floorAt(raw, v.md, v.slot);
+        const di = v.md ? G.dayInfo(G.dayOf(v.md)) : null, d = di ? (di.shown || di) : null;
+        return SC.play({ scene: v.scene, place: v.place || '', time: v.time || '', title: v.title || null, label, cast: v.cast, event: src.k === 'event', replay: true,
+          replayFlags: live ? null : { ...(rec.flags || { [`epi-route-${rec.route}`]: true }) }, date: d ? { md: d.md, day: d.day } : null,
+          branch: (line, link, flagOn) => (W.FemcMenu ? W.FemcMenu.peek(line, link, flagOn) : isEpiCond(line) ? ((peekCond(line) ? line.then : line.else) || []) : null),
+          onDone: () => { replayCtx = null; end?.(); onDone?.(); } });
+      } catch (e) { replayCtx = null; end?.(); throw e; }
+    });
   }
 
   return { WORLDS, worldFor, endingOf, loadWorld, build, ensure, carryOf, leanFor, route, lockRoute, cond, stateFor, enter, leave, endScreen, offer, run, finish, raw: worldRaw,
+    yearCond, peekCond, isEpiCond, replaySaw, recordOf, records, entered, albumEntries, theaterRows, theaterLoad, replay, equinoxOf, ALBUM,
     routeOpen, bond, closeness, startBond, hangoutFor, people, hangout, practiceNow, CLOSE_MAX, resume, partyFor, fightOf, fadeQueue, FADE, STAGES,
     get cardDay() { return cardDay; } };
 })();

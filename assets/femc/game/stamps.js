@@ -5,12 +5,13 @@
    { quiet: true }) and shown as an in-game toast (ui.js toast kind 'stamp'), not the site's own pill.
    The battle frame awards two directly (battle.js: the first summon, the first bond skill) through window.parent.FemcStamps,
    and also leaves save.feats.summon / save.feats.bond behind, which the rules read.
-   Endings come from 'kg-femc-revamp-clears' (core.js recordClear), so every playthrough's endings count.
+   Endings come from 'kg-femc-revamp-clears' (core.js recordClear), so every playthrough's endings count; so do finished
+   epilogues (the clear's `epi` list, epilogue.js leave), one stamp per world plus one for all five (batch 9).
    FemcStamps.award(id), .check(), .earned() (the ids whose rules pass now; tests). */
 window.FemcStamps = (() => {
   const G = window.FemcGame;
   if (!G) return null;
-  const VER = 21; // achievements.js?v= (keep in step with the other pages)
+  const VER = 22; // achievements.js?v= (keep in step with the other pages)
   const SEES = ['akihiko', 'yukari', 'junpei', 'mitsuru', 'fuuka', 'aigis', 'ken', 'koromaru', 'shinjiro'];
   const MOONS = ['magician', 'priestess', 'empress', 'lovers', 'chariot', 'hermit', 'fortune', 'hanged', 'tartarus-memory'];
   const slug = s => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -62,6 +63,13 @@ window.FemcStamps = (() => {
       if (S.gacha.draws > 0) out.push('p3s-velvet');
       if (GA.SETS.some(st => st.ids.every(id => (S.gacha.keys || {})[id] > 0))) out.push('p3s-keyset');
     }
+    // The epilogue (batch 9): a world's stamp once any playthrough has finished its epilogue (the clears' `epi`, or this save's
+    // S.epilogues / the year's inside an epilogue); the last one once all five have.
+    const EPI = ['runners', 'strangers', 'hoax', 'stay', 'true'], done = new Set();
+    clears().forEach(c => (c && Array.isArray(c.epi) ? c.epi : []).forEach(w => done.add(w)));
+    [S.epilogues, S.year1 && S.year1.epilogues].forEach(r => Object.entries(r || {}).forEach(([w, x]) => { if (x && x.done) done.add(w); }));
+    EPI.forEach(w => { if (done.has(w)) out.push(`p3s-epi-${w}`); });
+    if (EPI.every(w => done.has(w))) out.push('p3s-epi-all');
     return out;
   }
   function award(id) {

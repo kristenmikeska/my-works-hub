@@ -261,6 +261,19 @@ window.Achievements = (() => {
       svg: '<path d="M8 32a24 24 0 0 1 48 0z"/><path d="M8 36h48a24 24 0 0 1-48 0z" fill-opacity=".45"/><path d="M13 22c3-7 9-11 16-12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>' },
     { id: 'p3s-velvet', side: 'femc', name: 'From the Blue Room', group: 'Persona 3: Solstice', hint: 'Draw one of Elizabeth’s cards in the Velvet Room.',
       svg: '<rect x="14" y="4" width="36" height="56" rx="4" fill-opacity=".35"/><path d="M31 32C26 22 19 19 15 22c2 2 3 5 3 7c-2 1-3 3-3 5c5 1 11 0 16-2zM33 32c5-10 12-13 16-10c-2 2-3 5-3 7c2 1 3 3 3 5c-5 1-11 0-16-2z"/><path d="M31 30h2v14h-2z"/>' },
+    // The epilogue (batch 9): one per world, plus one for all five (stamps.js reads the clears' `epi` and S.epilogues).
+    { id: 'p3s-epi-runners', side: 'femc', name: 'Syracuse, After', group: 'Persona 3: Solstice', hint: 'Finish an epilogue.',
+      svg: '<rect x="6" y="14" width="52" height="36" rx="5" fill-opacity=".3"/><path d="M6 24h52v3H6z"/><text x="32" y="45" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="14">SYR</text>' },
+    { id: 'p3s-epi-strangers', side: 'femc', name: 'Incheon, After', group: 'Persona 3: Solstice', hint: 'Finish an epilogue.',
+      svg: '<rect x="6" y="14" width="52" height="36" rx="5" fill-opacity=".3"/><path d="M6 24h52v3H6z"/><text x="32" y="45" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="14">ICN</text>' },
+    { id: 'p3s-epi-hoax', side: 'femc', name: 'Hanlim, After', group: 'Persona 3: Solstice', hint: 'Finish an epilogue.',
+      svg: '<rect x="6" y="14" width="52" height="36" rx="5" fill-opacity=".3"/><path d="M6 24h52v3H6z"/><text x="32" y="45" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="14">HAN</text>' },
+    { id: 'p3s-epi-stay', side: 'femc', name: 'Iwatodai, After', group: 'Persona 3: Solstice', hint: 'Finish an epilogue.',
+      svg: '<rect x="6" y="14" width="52" height="36" rx="5" fill-opacity=".3"/><path d="M6 24h52v3H6z"/><text x="32" y="45" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="14">IWA</text>' },
+    { id: 'p3s-epi-true', side: 'femc', name: 'Everywhere, After', group: 'Persona 3: Solstice', hint: 'Finish an epilogue.',
+      svg: '<rect x="6" y="14" width="52" height="36" rx="5" fill-opacity=".3"/><path d="M6 24h52v3H6z"/><text x="32" y="45" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="14">ALL</text>' },
+    { id: 'p3s-epi-all', side: 'femc', name: 'Equinox', group: 'Persona 3: Solstice', hint: 'Finish every epilogue.',
+      svg: '<circle cx="32" cy="32" r="26" fill-opacity=".25"/><path d="M32 6a26 26 0 0 1 0 52z"/><circle cx="32" cy="32" r="8" fill-opacity=".6"/>' },
   ];
   const byId = Object.fromEntries(LIST.map(a => [a.id, a]));
   const read = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) || fallback; } catch (e) { return fallback; } };
