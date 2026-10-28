@@ -26,7 +26,7 @@
 | World | Supports the plan? | What's open |
 |---|---|---|
 | **Runners** | **Yes, with small adjustments.** | 2 items on the ending's side (a few lines), 2 on the plan's side, and 1 about searchers you can miss. |
-| **strangers** | **Yes, fully.** It already lines up closely with your approved plan (the cover, her father, both boys). | Nothing, *as long as* the strangers sync fixes now in progress land as they stand. Claude will re-check once they're committed. |
+| **strangers** | **Yes, fully.** It already lines up closely with your approved plan (the cover, her father, both boys). | Nothing. (This is after today's strangers sync, which is committed.) |
 | **HOAX** | **Yes.** The cover story, the council, Jihoon and Jungwon all fit, and seeds are already planted. | One framing decision about the planned final scene. |
 | **Stay** | **Outside the premise.** She has no home world to go back to. | Choose a shape (below). |
 | **True** | **Outside the premise.** She goes home to all three worlds at once (lore bible). | Memory and shape (below). |
