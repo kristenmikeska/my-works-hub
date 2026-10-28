@@ -552,3 +552,29 @@ Kat drops the mp3s into `~/Documents/UniverseHub-Audio/`. A mood with no file ke
 - kitchen: Ivy (Frank Ocean)
 - hanlim: Semi-Charmed Life (Third Eye Blind)
 - bench: Me and the Birds (Duster)
+
+### Song picks, revision 1 (Kat, 2026-10-28; this replaces the draft where it differs)
+Kat's note: Crazier and As Hell are slow, love-and-romance songs, and Teenage Dirtbag is a low-energy cover, so the parties and Regionals needed more energy.
+
+**Runners**
+- **Big moments:**
+  - **Return (12/1, "queen Solar's back"):** Novocaine (Alexis Monroe). The lyric: "I lost myself but hey I'm back again."
+  - **Regionals:** Miss the Rage / Cashy (Camo) / Dollar Bratz (Camo) / We R Who We R (Kesha)
+  - **Match:** Lights Out (kxllswxtch) / Miss the Rage
+- **Studio:** Not Enough (Ningning). This is the song she and Haechan are recording; it doubles as the track her voice is on.
+- **Parties:**
+  - **Sigma party:** Heaven and Back (Chase Atlantic) / 23 (Mike Will Made-It) / Yummy (Ayesha Erotica) / Self Destruct (Slayyyter)
+  - **Holiday party:** bad idea (Ariana Grande) / That Way (giselle) / Tia Tamera (Doja Cat) / Kill the Lights (Lucy Loone)
+- **Romance and people:**
+  - **Romance and spice:** As Hell (Chanmina) / wantchu (keshi). The saucier ones, for the spice scenes: Shut Me Up (Alexis Monroe) / Cyber Sex (Doja Cat)
+  - **Danielle, the face-off:** Pretty Girls (Flo Milli) / Lonely at the Top (Lucy Loone)
+
+**HOAX**
+- **Party:** Crazy Kids (Kesha) / Brooklynbloodpop (SyKo) / Cha Ching (Slayyyter) / We R Who We R (Kesha)
+- **Hearing (Solar defending herself):** NAIL (YVES)
+- **New Year:** I Like You (Post Malone) / Everybody Talks (Neon Trees) / Impatient (Jeremih)
+
+**strangers**
+- **Danger:** Help I'm Alive (Metric) / Don't Touch (Lil Mariko) / Demons (Doja Cat)
+
+**Spares, for any scene with "bad bitch Solar" energy:** NAIL, Pretty Girls, Novocaine, Fucked Up (Alexis Monroe), egirls are ruining my life and White Tee (CORPSE), bodybag and Hot (Lucy Loone), fuck you (1nonly), Misery (Pupsies).
