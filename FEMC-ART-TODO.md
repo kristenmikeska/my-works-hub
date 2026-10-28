@@ -1,6 +1,6 @@
 # Art to make
 
-**70 items:** 9 places · 10 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 60 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
+**70 items:** 9 places · 14 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 60 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
