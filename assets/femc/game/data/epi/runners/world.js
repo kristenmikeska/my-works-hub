@@ -1,63 +1,117 @@
-/* The Runners epilogue's world data. STAND-IN (epilogue batch 1, 2026-10-27): just enough to enter, live a day, save and load.
-   The real world (home bonds, story, glitches, Regionals…) comes in batches 3–4 (FEMC-EPILOGUE-PLAN.md section 8).
-   Loaded on demand by epilogue.js after calendar.js. Shape (epilogue.js documents each field):
-     title       the end card's "EPILOGUE · title" (stand-in until Kat names it)
+/* The Runners epilogue's world (FEMC-EPILOGUE-PLAN.md section 3). Batch 3 (2026-10-28): the real world for weeks 1-2
+   (12/1-12/14); batch 4 adds week 3 (12/15-12/20) to the same files. Loaded on demand by epilogue.js after calendar.js;
+   every file in this folder merges into FEMC_EPI_WORLDS.runners (none overwrites another's lists), so load order doesn't matter:
+     world.js      this file: title, money, routes, places (bg rules, home / school, activities, music), practice, variants, cast
+     glitches.js   the glitch schedule and pools          people.js   home bonds (R.bonds) and texts (R.texts)
+     story-w1.js   week 1's story events (12/1-12/7)      story-w2.js week 2's story events (12/9-12/14) and routines
+   Shape (epilogue.js documents each field):
+     title       the end card's "EPILOGUE · title" (still the place name until Kat names it)
      money       the wallet in this world: { code, sign, start, locale } (yen stays with the year)
-     routes      the act's routes, first match wins for the lean (from: romance / xmas / ranks / flags in the year), the last
-                 is the default; lockAfter: the night the route locks (P5R-style, quietly)
-     places      bg rules (same as places.js bg), weatherFx for these backgrounds, home / school (the morning and late
-                 screens), activities (Go Out: { id, name, place, bg, slots, cost, stats, text })
-     variants    lines for the day screens (core.js vary(): morning.school / .off / .exam, late, stayIn)
-     events      story events, the same format as data/story-*.js
-     links       home bonds by id (batch 3); routines: everyday-life entries (daily-life.js format) */
-(window.FEMC_EPI_WORLDS ||= {}).runners = Object.assign(window.FEMC_EPI_WORLDS.runners || {}, {
-  stub: true,
-  title: 'Syracuse',
-  money: { code: 'USD', sign: '$', start: 200, locale: 'en-US' },
-  routes: [
-    { id: 'haechan', name: 'Haechan', from: { romance: ['haechan'], xmas: ['haechan'] } },
-    { id: 'minji', name: 'Minji', from: { romance: ['minji'], xmas: ['minji'] } },
-    { id: 'cover', name: 'The cover' }
-  ],
-  lockAfter: '12/7',
-  places: {
-    bg: [
-      ['Syracuse · Alpha Phi House', 'flashback-alphaphi-house', null],
-      ['Syracuse · The Quad', 'flashback-syracuse-quad', null],
-      ['Syracuse · Marshall Street', 'flashback-syracuse-quad', null],
-      ['Syracuse · The Library', 'flashback-syracuse-quad', null],
-      ['Syracuse', 'flashback-syracuse-quad', null]
+     routes      first match wins for the lean (from: romance / xmas / ranks / flags in the year), the last is the default;
+                 open: who can pick it at the crossroads (lean: the year leans this way; bond: closeness at least n;
+                 noFlag: flags that close it). lockAfter: the night the route locks, P5R-style (the 12/7 crossroads)
+     places      bg rules (places.js shape: [place prefix, day image, evening image]; more specific first), weatherFx, home /
+                 school (the morning and late screens), activities (Go Out: { id, name, place, bg, slots, days, cost, stats,
+                 text }), music (moods for this world: the epi-r-* moods are MUSIC PLACEHOLDERS, below)
+     practice    the team's practice days (After Class is practice, not Go Out): { days, slot, from, to, skip, place, bg, stats }
+     variants    lines for the day screens (core.js vary(): morning.school / .off / .exam, late, stayIn, practice)
+     cast        names for speakers without a link of their own (scene names; no portraits yet: FEMC-ART-TODO)
+     events / routines / bonds / texts   in the story and people files
+   Places that don't have their own art yet borrow the nearest existing background (FEMC-ART-TODO "The epilogue: Runners"
+   lists the real ones; FEMC-ART-WIRING says which rule each replaces). */
+(() => {
+  const R = ((window.FEMC_EPI_WORLDS ||= {}).runners ||= {});
+  delete R.stub;
+  Object.assign(R, {
+    title: 'Syracuse',
+    money: { code: 'USD', sign: '$', start: 200, locale: 'en-US' },
+    routes: [
+      { id: 'haechan', name: 'Haechan', from: { romance: ['haechan'], xmas: ['haechan'] }, open: { lean: true, bond: { haechan: 4 }, noFlag: ['epi-r-stem-deleted'] } },
+      { id: 'minji', name: 'Minji', from: { romance: ['minji'], xmas: ['minji'] }, open: { lean: true, bond: { minji: 4 } } },
+      { id: 'cover', name: 'The cover', open: { always: true } }
     ],
-    weatherFx: { outdoor: ['flashback-syracuse-quad'], sealed: [], none: [] },
-    home: { place: 'Syracuse · Alpha Phi House', bg: 'flashback-alphaphi-house' },
-    school: { place: 'Syracuse · The Quad', bg: 'flashback-syracuse-quad' },
-    activities: [
-      { id: 'epi-r-coffee', name: 'Coffee on Marshall Street', place: 'Syracuse · Marshall Street', bg: 'flashback-syracuse-quad', slots: ['after', 'evening'], cost: 7, stats: { charm: 1 },
-        text: "A corner table, a coffee she let go cold, and a whole street of people who had no idea where she'd been." },
-      { id: 'epi-r-library', name: 'Study at the library', place: 'Syracuse · The Library', bg: 'flashback-syracuse-quad', slots: ['after', 'evening'], cost: 0, stats: { knowledge: 1 },
-        text: "Three hours in a carrel with a syllabus that had kept going without her. She caught up on most of it." }
-    ]
-  },
-  variants: {
-    morning: {
-      school: ["Class at nine. The quad was salted into gray paths, and everyone she passed looked like they'd slept four hours, which was December's whole look.",
-        "Morning. Snow on the steps, a line out the door of the coffee cart, and a lecture hall that smelled like wet coats."],
-      off: ["No class. The house slept late, the radiators knocking like they had somewhere to be.",
-        "A weekend morning. Somebody downstairs was making pancakes, badly, and narrating it."],
-      exam: ["Finals. The whole campus walked like it was carrying something heavy and trying not to show it."]
+    lockAfter: '12/7',
+    places: {
+      bg: [
+        ['Syracuse · Alpha Phi House · Her Room', 'pink-bedroom', null],
+        ["Syracuse · Alpha Phi House · Hanni and Hyein's Room", 'pink-bedroom-2', null],
+        ['Syracuse · Alpha Phi House', 'flashback-alphaphi-house', null],
+        ['Syracuse · Sigma Chi House', 'flashback-frat-party', null],
+        ['Syracuse · The Quad', 'flashback-syracuse-quad', null],
+        ['Syracuse · The Valley', 'flashback-syracuse-quad', null],
+        ['Syracuse · Football Complex', 'flashback-syracuse-quad', null],
+        ['Syracuse · Marshall Street · Café', 'chagall-cafe-inside', null],
+        ['Syracuse · Marshall Street', 'flashback-syracuse-quad', null],
+        ['Syracuse · Bird Library', 'school-library', null],
+        ['Syracuse · Lecture Hall', 'gekkoukan-classroom-day', 'gekkoukan-classroom-evening'],
+        ['Syracuse · Hall of Languages', 'gekkoukan-classroom-day', 'gekkoukan-classroom-evening'],
+        ['Syracuse · Honors Dorm', 'green-bedroom', null],
+        ['Syracuse · eSports Lab', 'respawn-cafe-evening', null],
+        ['Syracuse · Studio 4B', 'record-shop-listening-booth', null],
+        ['Syracuse · Language Arts Rooftop', 'rooftop-citynight', null],
+        ['Syracuse · Regionals', 'screenshot-theater', null],
+        ['Syracuse', 'flashback-syracuse-quad', null]
+      ],
+      weatherFx: { outdoor: ['flashback-syracuse-quad', 'flashback-alphaphi-house', 'rooftop-citynight'], sealed: ['record-shop-listening-booth'], none: ['screenshot-theater'] },
+      home: { place: 'Syracuse · Alpha Phi House · Her Room', bg: 'pink-bedroom' },
+      school: { place: 'Syracuse · The Quad', bg: 'flashback-syracuse-quad' },
+      activities: [
+        { id: 'epi-r-coffee', name: 'Coffee on Marshall Street', place: 'Syracuse · Marshall Street · Café', bg: 'chagall-cafe-inside', slots: ['after', 'evening'], cost: 7, stats: { charm: 1 },
+          text: "A corner table, a coffee she let go cold, and a whole street of people who had no idea where she'd been." },
+        { id: 'epi-r-library', name: 'Study at Bird Library', place: 'Syracuse · Bird Library', bg: 'school-library', slots: ['after', 'evening'], cost: 0, stats: { knowledge: 1 },
+          text: "Three hours in a carrel with a syllabus that had kept going without her. She caught up on most of it." },
+        { id: 'epi-r-vod', name: 'VOD review in the lab', place: 'Syracuse · eSports Lab', bg: 'respawn-cafe-evening', slots: ['after', 'evening'], cost: 0, stats: { proficiency: 1 },
+          text: "Headphones on, the lab empty except for the hum, her own Kiriko on the screen at quarter speed, every cleanse she'd been half a second late on. There were fewer than there used to be. A year of reading a room in the dark did that." },
+        { id: 'epi-r-books', name: 'The used bookstore', place: 'Syracuse · Marshall Street', bg: 'flashback-syracuse-quad', slots: ['after'], cost: 12, stats: { knowledge: 1, kindness: 1 },
+          text: "The bookstore on Marshall Street smelled like radiator heat and old paper. She came out with a paperback nobody had assigned her and a bag she'd let the man behind the counter talk her into, because he'd seemed so sure." },
+        { id: 'epi-r-valley', name: 'Walk through the valley', place: 'Syracuse · The Valley', bg: 'flashback-syracuse-quad', slots: ['after'], cost: 0, stats: { courage: 1 },
+          text: "By daylight the valley was just grass under snow, crossed and recrossed by a thousand people on their way to somewhere else. She walked it anyway, slow, all the way past the tree that leaned too far to the right, and didn't stop." },
+        { id: 'epi-r-dining', name: 'Late dinner at the dining hall', place: 'Syracuse · Marshall Street · Café', bg: 'chagall-cafe-inside', slots: ['evening'], cost: 9, stats: { kindness: 1, charm: 1 },
+          text: "A tray, a table by the window, and a freshman she half recognised who sat down across from her because every other seat was taken and then talked for forty minutes about a lab partner. She let him. It was nice to be the one listening." }
+      ],
+      /* ♪ MUSIC PLACEHOLDERS (Kat picks the real songs; each epi-r-* mood plays a stand-in P3 track until then). To set one,
+         replace its value with a file in assets/femc/music/ (no extension) or an 'assets/audio/…' path, like world-runners. */
+      music: {
+        'epi-r-home': 'tender-feeling',        // ♪ PLACEHOLDER: the first morning back (soft, home, snow)
+        'epi-r-team': 'specialist',            // ♪ PLACEHOLDER: the lab, practice, the team's week
+        'epi-r-confession': 'dont',            // ♪ PLACEHOLDER: the recording confession (tension, nothing pretty)
+        'epi-r-moon': 'tranquility',           // ♪ PLACEHOLDER: the full moon that passes (12/4)
+        'epi-r-party': 'color-your-night',     // ♪ PLACEHOLDER: Sigma's Friday parties
+        'epi-r-regionals': 'time-to-make-history', // ♪ PLACEHOLDER: Regionals, arrival and the opening bracket
+        'epi-r-match': 'its-going-down-now',   // ♪ PLACEHOLDER: the hard middle and the final
+        'epi-r-closure': 'its-alright-this-way', // ♪ PLACEHOLDER: Minji's closure
+        'epi-r-studio': 'deep-breath-reload',  // ♪ PLACEHOLDER: the studio, on her terms
+        'epi-r-danielle': 'bad-feeling',       // ♪ PLACEHOLDER: Danielle (the threat)
+        'epi-r-romance': 'signs-of-love',      // ♪ PLACEHOLDER: Haechan, when it's warm
+        'epi-r-sisters': 'my-homie'            // ♪ PLACEHOLDER: the girls, the cover
+      }
     },
-    late: ["The house went quiet in pieces: a door, a shower, music through the wall, then nothing.",
-      "Late. Snow ticking at the window, her phone face down on the desk, the house asleep around her."],
-    stayIn: ["She stayed in. Blanket, desk lamp, the radiator, and nobody asking her anything."]
-  },
-  events: [
-    { id: 'epi-r-stub-home', date: '12/1', slot: 'early', title: 'home', place: 'Syracuse · Alpha Phi House', time: 'Morning', scene: [
-      { music: 'world-runners' },
-      { n: "Snow on the sill. Syracuse, the first of December, and the house already loud under her floor." },
-      { n: "She was home. The rest of it was still being written." },
-      { choose: [{ t: '(Get up.)' }, { t: '(Five more minutes.)' }] }
-    ] }
-  ],
-  links: {},
-  routines: []
-});
+    // The team's practices (Mon/Tue/Thu/Sat; Doyoung gives them Monday 12/8 after Regionals). A story event or routine in that
+    // slot comes first; an event that consumes the slot means no practice that day.
+    practice: { days: [1, 2, 4, 6], slot: 'after', from: '12/1', to: '12/20', skip: ['12/6', '12/8'], place: 'Syracuse · eSports Lab', bg: 'respawn-cafe-evening', stats: { proficiency: 1 }, title: 'Practice' },
+    cast: {
+      doyoung: 'Doyoung', olivia: 'Olivia', haerin: 'Haerin', jeno: 'Jeno', renjun: 'Renjun', johnny: 'Johnny', jisung: 'Jisung',
+      yerim: 'Yerim', chungha: 'Chungha', chaeyeon: 'Chaeyeon', sakura: 'Sakura', eunchae: 'Eunchae', kazuha: 'Kazuha', chaewon: 'Chaewon',
+      dad: 'Dad', mom: 'Mom', caster: 'Caster', suesports: '@SUesports'
+    },
+    variants: {
+      morning: {
+        school: ["Class at nine. The quad was salted into gray paths, and everyone she passed looked like they'd slept four hours, which was December's whole look.",
+          "Morning. Snow on the steps, a line out the door of the coffee cart, and a lecture hall that smelled like wet coats.",
+          "Media and Society, then a walk across the quad with her hood up. The bell tower said a time she didn't believe. She checked her phone anyway. Twice."],
+        off: ["No class. The house slept late, the radiators knocking like they had somewhere to be.",
+          "A weekend morning. Somebody downstairs was making pancakes, badly, and narrating it."],
+        exam: ["Finals. The whole campus walked like it was carrying something heavy and trying not to show it."]
+      },
+      practice: ["Practice. Doyoung's clipboard, Olivia's laugh a full second before anyone else's, Haerin saying nothing and hitting every shot, Minji's cap backwards. Scrims until her wrists ached. She made her calls and they listened.",
+        "Practice ran long. Two scrims, one VOD, and Doyoung's voice going flat on the third mistake, which was worse than shouting. Chenle wrote something down every time she cleansed. She didn't ask what.",
+        "The lab, the hum, the blue light. She played like someone who'd spent a year learning when to step in front of a hit, which, she supposed, she had."],
+      late: ["The house went quiet in pieces: a door, a shower, music through the wall, then nothing.",
+        "Late. Snow ticking at the window, her phone face down on the desk, the house asleep around her.",
+        "The radiator knocked twice and settled. Somewhere downstairs a door at the end of the second landing closed, softly, the way you close a door when you want people to know you're being quiet."],
+      stayIn: ["She stayed in. Blanket, desk lamp, the radiator, and nobody asking her anything."]
+    }
+  });
+  // The story, people and routine files push into these; never replace them here.
+  R.events ||= []; R.routines ||= []; R.bonds ||= {}; R.links ||= {};
+})();
