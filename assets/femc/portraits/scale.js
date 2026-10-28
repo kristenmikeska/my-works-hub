@@ -88,6 +88,12 @@ window.FEMC_PORTRAIT_SCALE = {
   jeno: 0.97,
   olivia: 0.92,
   'solar-hoax': 1.02, // Solar's HOAX look (HOAX world faces map)
+  'chaewon-hoax': 0.82, // batch 62: HOAX epilogue outfits and Solar's parents (HOAX world faces map)
+  'eunchae-hoax': 0.9,
+  'kazuha-hoax': 0.9,
+  'sakura-hoax': 1.0,
+  'kim-mom': 0.9,
+  'kim-dad': 0.92,
   sunghoon: 0.95,
   sunoo: 1.0,
   tifa: 1.03,
@@ -154,4 +160,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 7;
+window.FEMC_PORTRAIT_V = 8;

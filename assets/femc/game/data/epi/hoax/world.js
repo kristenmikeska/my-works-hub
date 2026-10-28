@@ -115,8 +115,8 @@
       clerk: 'Clerk', school: 'Hanlim High School', stream: 'Hanlim Unfiltered', forum: 'Hanlim Forum', council: 'The council',
       bleed: 'A voice', hcvoice: 'Haechan'
     },
-    // This world's own faces (core.js worldFace): Solar's HOAX look (FEMC-ART-WIRING).
-    faces: { solar: 'solar-hoax' },
+    // This world's own faces (core.js worldFace): Solar's HOAX look, the four's HOAX outfits and Solar's parents (FEMC-ART-WIRING).
+    faces: { solar: 'solar-hoax', sakura: 'sakura-hoax', eunchae: 'eunchae-hoax', kazuha: 'kazuha-hoax', chaewon: 'chaewon-hoax', mom: 'kim-mom', dad: 'kim-dad' },
     variants: {
       morning: {
         school: ["Hanlim at eight, snow on the gate, and a whole building full of people with opinions about where the council had been.",

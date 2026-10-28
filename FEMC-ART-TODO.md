@@ -1,6 +1,6 @@
 # Art to make
 
-**76 items:** 9 places · 20 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 69 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
+**70 items:** 9 places · 14 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 63 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -112,56 +112,6 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 ```
 
 ## 3. Characters (ChatGPT)
-
-### The epilogue: HOAX
-
-**[ ] Sakura, the student teacher** *(optional)*  
-The make-up exams' proctor in the HOAX epilogue.  
-Attach: Fuuka (for the style), a photo of Sakura  
-Save as: `Sakura-HOAX-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She is a young student teacher: a cream blouse under a navy cardigan, a staff lanyard, a pen behind one ear. No text.
-```
-
-**[ ] Eunchae, the livestreamer** *(optional)*  
-The first-year who runs the school forum's livestream in the HOAX epilogue.  
-Attach: Fuuka (for the style), a photo of Eunchae  
-Save as: `Eunchae-HOAX-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a navy Hanlim High School blazer over a hoodie and holds a phone on a little selfie stick at the edge of the frame. No text.
-```
-
-**[ ] Kazuha, the exchange student** *(optional)*  
-The girl who brings the board to the séance in the HOAX epilogue.  
-Attach: Fuuka (for the style), a photo of Kazuha  
-Save as: `Kazuha-HOAX-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a navy Hanlim High School blazer with a long knitted scarf and a little charm on her bag strap. No text.
-```
-
-**[ ] Chaewon, the debate captain** *(optional)*  
-The hearing's moderator in the HOAX epilogue.  
-Attach: Fuuka (for the style), a photo of Chaewon  
-Save as: `Chaewon-HOAX-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a neat navy Hanlim High School blazer with a debate-team pin and holds a clipboard; strict and fair. No text.
-```
-
-**[ ] Solar's mom (HOAX)** *(optional)*  
-Mrs. Kim, at home in the HOAX epilogue.  
-Attach: Fuuka (for the style), Solar (for a family likeness)  
-Save as: `KimMom-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same Korean woman in her late forties in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image, with a family likeness to the second attached image (the same eyes). Shoulder-length dark hair tucked behind one ear, a soft grey cardigan over a work blouse, reading glasses pushed up on her head. Busy, warm, slightly suspicious. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Solar's dad (HOAX)** *(optional)*  
-Mr. Kim, at home in the HOAX epilogue.  
-Attach: Fuuka (for the style), Solar (for a family likeness)  
-Save as: `KimDad-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same Korean man around fifty in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image, with a family likeness to the second attached image. Short greying hair, a loosened tie, a navy sweater over a work shirt. Tired, kind, mostly quiet. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
 
 ### The epilogue: strangers
 
@@ -641,7 +591,6 @@ Save as: `skin-sk-jungwon-stage-posesheet.png`
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a K-pop stage outfit: a white cropped stage jacket with silver chain details and sharp shoulders, a black shirt, white slim trousers, white boots, a slim headset microphone at his cheek, a silver ear cuff. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
 ```
 If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
 
 ### More weapon skins (Gemini or ChatGPT)
 

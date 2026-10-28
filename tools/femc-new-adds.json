@@ -14657,6 +14657,156 @@
       "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
       "scale": 1.02,
       "placement": "HOAX epilogue only: data/epi/hoax/world.js faces map (solar: 'solar-hoax'), read by core.js worldFace()"
+    },
+    {
+      "batch": 62,
+      "source": "chaewon-hoax-sheet.png",
+      "sourceNow": "Added to Game/chaewon-hoax-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "5c3363291201af0c0289a03a198f0ef4f5080a7927876fd2e34e52b6b5613e14",
+      "character": "chaewon-hoax",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/chaewon-hoax/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; then flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (Vision had dropped white collars); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/chaewon-hoax/neutral.webp": "66a3410deb9ce1b0a351957922bf3dcb333f5aae81805aa6e9207e8e21178086",
+        "assets/femc/portraits/chaewon-hoax/happy.webp": "c39177053361b27e4b514bc248e2741a2a1def322b2c8ad5d6998c86e1c2ea98",
+        "assets/femc/portraits/chaewon-hoax/sad.webp": "0065abf853a2baf5e8eb0d2048b30c22db20d877787f637f9d8cd9b61237a7f1",
+        "assets/femc/portraits/chaewon-hoax/serious.webp": "85189f2299d55ee6ab78a180a1050c7006108b18a66e9180ec27ff4d3996aef3",
+        "assets/femc/portraits/chaewon-hoax/surprised.webp": "9cf7128dab0ea1e10f653b3ba39dd2dcab4e1c254a826282b638f2273b47498b",
+        "assets/femc/portraits/chaewon-hoax/flustered.webp": "861691074181af7e31f65cb8f06404104cd835807b545c381061e489f7e60f72"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.82,
+      "placement": "HOAX epilogue only: data/epi/hoax/world.js faces map (chaewon: 'chaewon-hoax'), read by core.js worldFace()"
+    },
+    {
+      "batch": 62,
+      "source": "eunchae-hoax-sheet.png",
+      "sourceNow": "Added to Game/eunchae-hoax-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a1ec5e172c257367f7832510623a5951d9002c1ae6d96e3b5414ba61ab18ce6f",
+      "character": "eunchae-hoax",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/eunchae-hoax/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; then flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (Vision had dropped white collars); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/eunchae-hoax/neutral.webp": "9367ac4b02ea5543482ca8bdd4ee7634399d5d11dafb640af6bc8080b13e7f05",
+        "assets/femc/portraits/eunchae-hoax/happy.webp": "4c850050d74cc21bd7f131ad85091598e8ab697204c8561d7c00bf7daa28357f",
+        "assets/femc/portraits/eunchae-hoax/sad.webp": "7f6b27b341c7b6b85cfa7271e6c4fc873232ba470a39933148ec4e6e8ee32228",
+        "assets/femc/portraits/eunchae-hoax/serious.webp": "85f4b2cf16db7b74035a28d395ee0d7e73e5c8413493bb0c6bea973ff1b1bb71",
+        "assets/femc/portraits/eunchae-hoax/surprised.webp": "65b3293757a846e08faca659152b7ee94c8a827099e905a7dfe0750b68dd9e51",
+        "assets/femc/portraits/eunchae-hoax/flustered.webp": "ca0250761172d1030d6b70ef90024494496e9db608b3dcaa3603706c079097fe"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.9,
+      "placement": "HOAX epilogue only: data/epi/hoax/world.js faces map (eunchae: 'eunchae-hoax'), read by core.js worldFace()"
+    },
+    {
+      "batch": 62,
+      "source": "kazuha-hoax-sheet.png",
+      "sourceNow": "Added to Game/kazuha-hoax-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b722737197e7f15d10712181941e242facfb92989ef1957af7887b7830c2ea8b",
+      "character": "kazuha-hoax",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/kazuha-hoax/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; then flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (Vision had dropped white collars); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/kazuha-hoax/neutral.webp": "0a83be5c9b1ded3dfdbf359778ca293332ed4ba72fe02c67dc9cd69703696e5b",
+        "assets/femc/portraits/kazuha-hoax/happy.webp": "073a8d6b00b2ef44bba8a0f4ad4786fefe93be35a602a36985628fd4d264ce37",
+        "assets/femc/portraits/kazuha-hoax/sad.webp": "9e78b29199d12349af7f29431a77bb684cccc61840ac9f686cfc7696fdab6561",
+        "assets/femc/portraits/kazuha-hoax/serious.webp": "4d8e6fce548a34406a92fa5e6559fbe2b4772f61203b8abaadfdf401de9b357b",
+        "assets/femc/portraits/kazuha-hoax/surprised.webp": "ad0ca4086860578e5feb7d695d44a6b087a43b4619ba124bbf7a29276f003788",
+        "assets/femc/portraits/kazuha-hoax/flustered.webp": "123792387aca8a2440b75343c9a722c821c75dbc5e252dbfe756bc25be0e8106"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.9,
+      "placement": "HOAX epilogue only: data/epi/hoax/world.js faces map (kazuha: 'kazuha-hoax'), read by core.js worldFace()"
+    },
+    {
+      "batch": 62,
+      "source": "sakura-hoax-sheet.png",
+      "sourceNow": "Added to Game/sakura-hoax-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e55749696a1ffbe43a03fe8a37c8d3c8dd80320cde6befdb426be1b2b60f6af9",
+      "character": "sakura-hoax",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/sakura-hoax/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; then flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (Vision had dropped white collars); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/sakura-hoax/neutral.webp": "f060873d137febc52d3957497fb032126c79c4c985f0072623fa4f63d2b88783",
+        "assets/femc/portraits/sakura-hoax/happy.webp": "024427cd12296c1b6d37247ce77bf10a1919370a70461a94be58ebb48124d8e8",
+        "assets/femc/portraits/sakura-hoax/sad.webp": "3654355c847adecf817c178c2eeaa80ee652be4cd1fab894b8dd0190c689ff96",
+        "assets/femc/portraits/sakura-hoax/serious.webp": "71dd5e842fc0150f41f97fae62e904c2a2fa4c465e27d883a96d6d9e55a6df17",
+        "assets/femc/portraits/sakura-hoax/surprised.webp": "2abdfe2f78ef921644eb5f32b3d45880d53ec6c6c507744b882ee031bc24a504",
+        "assets/femc/portraits/sakura-hoax/flustered.webp": "604012d7510730dcb9a62948b2b135b661acb3b97922e441b82f1d5ad3906e2a"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.0,
+      "placement": "HOAX epilogue only: data/epi/hoax/world.js faces map (sakura: 'sakura-hoax'), read by core.js worldFace()"
+    },
+    {
+      "batch": 62,
+      "source": "kimmom-sheet.png",
+      "sourceNow": "Added to Game/kimmom-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9e3edc961ee5f9769b5cf589a174f460a681a5d4068e94a48e8ab90b1a55e12e",
+      "character": "kim-mom",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/kim-mom/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; then flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (Vision had dropped white collars); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/kim-mom/neutral.webp": "befe986eb4c37adcb412f007d27c503997608f6790b73b22647aadee84b478dd",
+        "assets/femc/portraits/kim-mom/happy.webp": "2a1e22e0f4f2381676d47f7a09f8859edc7771f7d7a97ec0e05654f210975a82",
+        "assets/femc/portraits/kim-mom/sad.webp": "3732f8b4ce91d4d9a0c7e8dbee04c25a502e7a53cec69d3820d42e56280bccd2",
+        "assets/femc/portraits/kim-mom/serious.webp": "4a362ec073b378c17de9e1b36c65fb736376b0ea0179df41399b56c852074d68",
+        "assets/femc/portraits/kim-mom/surprised.webp": "7d61de0716a20aa28d61d19dbf4d428b1f206210abb877fed485225cc16c2726",
+        "assets/femc/portraits/kim-mom/flustered.webp": "07c6177010ded7033eb37310b584536f0a8be81ff59439d2cd0feae4d2ce037d"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.9,
+      "placement": "HOAX epilogue only: data/epi/hoax/world.js faces map (mom: 'kim-mom'), read by core.js worldFace()"
+    },
+    {
+      "batch": 62,
+      "source": "KimDad-sheet.png",
+      "sourceNow": "Added to Game/KimDad-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "41313e5971b5ab87a1c32a84a62be9e9ae563ad43384764b1a0f101eff29f4b9",
+      "character": "kim-dad",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/kim-dad/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; then flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (Vision had dropped white collars); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/kim-dad/neutral.webp": "fd0e59de6ac1bab0f10b2ba8ed906bc347d69c5ee4db88972ef3c171a9651f57",
+        "assets/femc/portraits/kim-dad/happy.webp": "1482c5cadac6e1190fd41b3e366f39ac7fb003ee20aa7f140a7aefac93407037",
+        "assets/femc/portraits/kim-dad/sad.webp": "d4aec953ff5d77583537b482bd1c451acd50186341605ef8bd462557b600df9a",
+        "assets/femc/portraits/kim-dad/serious.webp": "4d5f8b2d702bcc606435a6c80badf66b2c00a185f2ceb5bd45e1c676d4701f6e",
+        "assets/femc/portraits/kim-dad/surprised.webp": "eccf514cdb93b343e0889c25f60265649fb1fe15b516a418be32fe0048ed6f75",
+        "assets/femc/portraits/kim-dad/flustered.webp": "680acf787af62f54122b63aa681de5985276cda6f00d5fbff49e44411a122d82"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.92,
+      "placement": "HOAX epilogue only: data/epi/hoax/world.js faces map (dad: 'kim-dad'), read by core.js worldFace()"
     }
   ],
   "batch1Validation": {
@@ -15479,5 +15629,21 @@
     ],
     "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py runners1/runners2/hoax/stay/true/polish, in-scene face size and background framing at 1000x486 and 375x812",
     "html": "femc-game.html portraits/index.js v138, scale.js v147 (FEMC_PORTRAIT_V 7), epilogue v15; epilogue DATA_V 13; tests/femc_epilogue.py _loaded checks 13 (not run)"
+  },
+  "batch62Validation": {
+    "date": "2026-10-28",
+    "scope": "HOAX epilogue faces: Sakura, Eunchae, Kazuha and Chaewon's HOAX outfits and Solar's parents (speakers mom / dad)",
+    "sourcesInspected": "all 6 viewed; every cut on a contact sheet (dark, white and magenta, the last to catch Vision holes) and the neutrals in a scale lineup against Hanni, Solar (HOAX), Jungwon and Mark",
+    "sourcesIntegrated": 6,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched; the strangers sheets (LeeAppa, LeeEomma, chaewon, eunchae, kazuha, sakura and solar -strangers) arrived mid-batch and were left in New Adds",
+    "engine": "HOAX faces map: sakura, eunchae, kazuha, chaewon -> <id>-hoax; mom -> kim-mom, dad -> kim-dad (HOAX only; Runners' mom / dad stay without portraits)",
+    "textTweaks": "none (the HOAX text agrees with the sheets)",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py --only hoax, in-scene face size at 1000x486 and 375x812",
+    "html": "femc-game.html portraits/index.js v139, scale.js v148 (FEMC_PORTRAIT_V 8), epilogue v16; epilogue DATA_V 14; tests/femc_epilogue.py _loaded checks 14 (not run)"
   }
 }
