@@ -627,7 +627,7 @@
       { s: 'jungwon', f: 'serious', t: "I left a note on the kitchen counter. It says where I am." },
       { s: 'solar', t: "Won. Your *parents*—" },
       { s: 'jungwon', f: 'serious', t: "I'm not lying about this one." },
-      { n: "The gym's side door had the broken latch everybody at Hanlim knew about and nobody reported. Inside it was dark and enormous and smelled like floor polish and old balloons, and the exit signs made two small red islands at either end, and their footsteps came back to them off the bleachers a beat late, like someone else walking." },
+      { n: "The gym's side door had the broken latch everybody at Hanlim knew about and nobody reported. Inside it was dark and enormous and smelled like floor polish and old balloons, and the exit signs made two small green islands at either end, and their footsteps came back to them off the bleachers a beat late, like someone else walking." },
       { ifFlag: 'epi-h-said-name', then: [
         { n: "They sat on the bottom row of the bleachers in their coats. For a while they didn't say anything. Then he did." },
         { s: 'jungwon', f: 'serious', t: "If it's him." },

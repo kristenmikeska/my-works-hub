@@ -1,6 +1,6 @@
 # Art to make
 
-**95 items:** 22 places · 26 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 84 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
+**76 items:** 9 places · 20 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 69 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -35,114 +35,7 @@ Places, expressions, outfit portraits and the items that name their own pictures
 
 ## 2. Places (Gemini)
 
-### The epilogue: Runners
-
-**[ ] The eSports lab** *(optional)*  
-The SU eSports team's practice room in the Runners epilogue (now an Iwatodai gaming café stands in).  
-Attach: `bg/flashback-syracuse-quad.webp` (for the style only)  
-Save as: `epi-r-esports-lab.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a college esports practice lab in the evening: two rows of gaming PCs with RGB keyboards glowing, team jerseys in bright orange with navy shoulder panels hung over the backs of chairs, a whiteboard with a practice count in marker and a countdown taped up beside it, a coach's clipboard on a desk, snow at a high window. Syracuse orange and navy everywhere. The keyboards are plain except one with a single small orange fox keycap. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The Language Arts rooftop at night** *(optional)*  
-The rooftop Haechan and Solar go to in the Runners epilogue (now an Iwatodai rooftop stands in).  
-Attach: `bg/flashback-syracuse-quad.webp`  
-Save as: `epi-r-rooftop-night.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the flat rooftop of an old stone campus building at night, reached by a metal ladder at one side: a concrete ledge, a vent stack, old snow in the corners, and beyond the ledge the campus below (the same Hall of Languages towers and domed chapel as the attached image, seen from above) and the small city lights further off. A single pink energy-drink can stands on the ledge. Cold, quiet, a little hidden. Keep everything important away from the edges.
-```
-
-**[ ] Regionals** *(optional)*  
-The tournament venue in the Runners epilogue (now a cinema stands in).  
-Attach: `bg/flashback-syracuse-quad.webp` (for the style only)  
-Save as: `epi-r-regionals.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a college esports tournament in a downtown convention hall, not a stadium: a low stage with two glass-fronted team booths of gaming PCs facing each other, a caster desk with two microphones and monitors to one side, a huge screen above the stage, rows of folding seats and a crowd in the dark lit by phone screens, orange and navy banners. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Marshall Street in the snow** *(optional)*  
-The college street in the Runners epilogue (now the quad stands in).  
-Attach: `bg/flashback-syracuse-quad.webp`  
-Save as: `epi-r-marshall-st.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a college shopping street in the evening in falling snow: a café with steamed-up windows, a used bookstore, a bar with a neon beer sign, a pizza place, orange Syracuse banners on the lampposts, slush in the gutters and footprints on the pavement. The same painted style and the same kind of lamppost as the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The lecture hall** *(optional)*  
-Statistics in the Runners epilogue (now a Gekkoukan classroom stands in).  
-Attach: `bg/flashback-syracuse-quad.webp` (for the style only)  
-Save as: `epi-r-lecture-hall.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: an empty university lecture hall at the end of class: tiered rows of seats with fold-down desks curving down to a lecturer's bench and a projector screen still showing a statistics slide, grey winter light through tall windows, a forgotten coffee cup on one desk, one seat a few rows up that looks like it was left in a hurry. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The Alpha Phi kitchen** *(optional)*  
-The sorority house kitchen in the Runners epilogue (now the house's outside stands in).  
-Attach: `bg/flashback-alphaphi-house.webp`  
-Save as: `epi-r-alpha-kitchen.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the kitchen inside the same old white sorority house as the attached image, morning: a big island with stools, pink everything (mugs, a kettle, a sign that says nothing readable), a stack of pancakes on a plate, sparkling water bottles, a corkboard of photos and chore lists, snow on the window over the sink. Warm, lived-in, a little chaotic. Keep everything important away from the edges.
-```
-
-**[ ] The quad by day** *(optional)*  
-Daytime on the quad in the Runners epilogue (now the night picture stands in for both).  
-Attach: `bg/flashback-syracuse-quad.webp`  
-Save as: `epi-r-quad-day.png`
-```
-Edit this picture. Keep the same Hall of Languages towers, domed chapel and lamppost, from exactly the same angle and in the same art style; change it to a grey December day: overcast daylight, the snow salted into grey paths, students in parkas crossing with their hoods up, the lamppost unlit. 16:9, no readable text.
-```
-
-
-**[ ] The rooftop in the first snow**  
-The rooftop in heavy snow, for the last night of the Runners epilogue (now the plain rooftop stands in).  
-Attach: `epi-r-rooftop-night.png` (make that one first)  
-Save as: `epi-r-rooftop-night-snow.png`
-```
-Edit this picture. Keep the same rooftop, concrete ledge, vent stack, metal ladder and view of the campus below, from exactly the same angle and in the same art style; change it to the first heavy snow of winter at night: thick snow falling straight down with no wind, six inches of fresh snow on the ledge and the roof, every lamppost on the campus below wearing a white cap, the city lights beyond soft and gold through the snow, the sky low and lit orange-white. The pink energy-drink can on the ledge is half buried in snow. 16:9, no people, no readable text.
-```
-
-**[ ] The Sigma holiday party** *(optional)*  
-The fraternity house dressed up for its last party before winter break, in the Runners epilogue (now the usual party picture stands in).  
-Attach: `bg/flashback-frat-party.webp`  
-Save as: `epi-r-sigma-holiday.png`
-```
-Edit this picture. Keep the same fraternity house interior (the same woodwork, the same staircase up to the rooms) from the same angle and in the same art style; dress it for a December holiday party, semi-formal: warm string lights stapled along the banister and over the fireplace, tinsel everywhere, a bedsheet photo wall with tinsel safety-pinned to it, a big punch bowl on a table, a little crooked Christmas tree, glasses left on every surface. Evening, warm and glowing. 16:9, no people, no readable text. Keep everything important away from the edges.
-```
-
-**[ ] The Sigma kitchen in the morning** *(optional)*  
-The fraternity house kitchen the morning after, in finals week, in the Runners epilogue (now the party picture stands in).  
-Attach: `bg/flashback-frat-party.webp`  
-Save as: `epi-r-sigma-kitchen.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the kitchen of the same fraternity house as the attached image (the same woodwork and trim; through the open kitchen door, the same staircase), on a grey winter morning in finals week: a big island with stools, a frying pan on the stove, a burnt coffee pot, mugs everywhere, a highlighter and flashcards on the counter, a sheet of paper stuck to the fridge with a list on it, a window over the sink pushed up two inches with snow and a back yard beyond it. Cold daylight, lived-in, tired. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
 ### The epilogue: HOAX
-
-**[ ] The gym at midnight**  
-Hanlim's gym after dark, for the last night of the HOAX epilogue (now the daytime gym stands in).  
-Attach: `bg/flashback-hamlim-gym.webp`  
-Save as: `epi-h-gym-midnight.png`
-```
-Edit this picture. Keep the same high-school gym, the same bleachers, floor lines, basketball hoops and high windows, from exactly the same angle and in the same art style; change it to midnight with the lights off: moonlight falling through the high windows in long pale bars, green EXIT signs glowing over the doors, the bleachers in deep shadow, blue and silver balloons and loose string lights left on the floor and the railings from a dance nobody finished, and on a folding table by the wall an old wooden ballot box. 16:9, no people, no readable text.
-```
-
-**[ ] The council room**  
-Hanlim's student council room in the HOAX epilogue (now Gekkoukan's council room stands in).  
-Attach: `bg/flashback-hamlim-hallway.webp`  
-Save as: `epi-h-council-room.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a high-school student council room in the same school as the attached image (the same walls, windows and trim): a long table with eight chairs, stacks of folders squared to the edges, a laminator, a whiteboard with one big word scrawled across the top and nothing underneath, sign-up sheets pinned to a corkboard, a dented metal cash tin locked in an open bottom drawer, a radiator under a window with snow outside. Afternoon light. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The make-up exam** *(optional)*  
-A Hanlim classroom set up for make-up exams in the HOAX epilogue (now a Gekkoukan classroom stands in).  
-Attach: `bg/flashback-hamlim-hallway.webp`  
-Save as: `epi-h-classroom-exam.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a classroom in the same school as the attached image, set up for exams: desks pulled apart into rows, one in three empty, an exam booklet face down on each, pencils and erasers, a teacher's desk at the front with a stopwatch and a stack of papers, a clock on the wall, and big windows with snow falling outside. Quiet, cold, morning light. Match the painted style of the attached image. Keep everything important away from the edges.
-```
 
 **[ ] The Kims' living room at Christmas** *(optional)*  
 Solar's family home in the HOAX epilogue (now the dorm lounge stands in).  
@@ -220,57 +113,7 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 
 ## 3. Characters (ChatGPT)
 
-### The epilogue: Runners
-
-**[ ] Chaewon** *(optional)*  
-A voice on the demo Haechan is mixing.  
-Attach: Fuuka (for the style), a photo of Chaewon  
-Save as: `Chaewon-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears an oversized black hoodie, studio headphones round her neck. No text.
-```
-
-**[ ] Doyoung** *(optional)*  
-The eSports coach.  
-Attach: Fuuka (for the style), a photo of Doyoung  
-Save as: `Doyoung-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for his face and hair only. He wears a navy Syracuse eSports staff quarter-zip with a small orange logo, a lanyard, and looks like he is counting practices. No text.
-```
-
-**[ ] Olivia** *(optional)*  
-The loudest player on the team.  
-Attach: Fuuka (for the style), a photo of Olivia Hye  
-Save as: `Olivia-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a bright orange team jersey with navy shoulder panels and a gaming headset round her neck. No text.
-```
-
-**[ ] Haerin** *(optional)*  
-The quietest player on the team.  
-Attach: Fuuka (for the style), a photo of Haerin  
-Save as: `Haerin-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a bright orange team jersey with navy shoulder panels and a gaming headset round her neck. No text.
-```
-
-**[ ] Jeno** *(optional)*  
-Sigma Chi's Sergeant-at-Arms, at the parties.  
-Attach: Fuuka (for the style), a photo of Jeno  
-Save as: `Jeno-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for his face and hair only. He wears a black open-collar party shirt with the sleeves pushed up, easy and in charge of the room. No text.
-```
-
 ### The epilogue: HOAX
-
-**[ ] Solar's HOAX look**  
-Solar's face at home in the HOAX epilogue (she speaks without a portrait there now).  
-Attach: Solar  
-Save as: `Solar-HOAX-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same young woman as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only her clothes and one detail: a navy Hanlim High School blazer over a soft cream winter cardigan, a small gold student-council pin on the lapel, and a tiny silver nose stud in her left nostril; long dark hair down, no armband. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
 
 **[ ] Sakura, the student teacher** *(optional)*  
 The make-up exams' proctor in the HOAX epilogue.  
@@ -974,7 +817,7 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 
 **[ ] Olivia: Regionals** *(optional)*  
 Olivia's face at Regionals in the Runners epilogue (the SU eSports team).  
-Attach: `Olivia-sheet.png` (once it's made)  
+Attach: `olivia-sheet.png`  
 Save as: `Olivia-runners-regionals-sheet.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: the bright orange SU eSports jersey with navy shoulder panels worn over a long-sleeved black top, a headset round her neck. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
@@ -982,7 +825,7 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 
 **[ ] Haerin: Regionals** *(optional)*  
 Haerin's face at Regionals in the Runners epilogue (the SU eSports team).  
-Attach: `Haerin-sheet.png` (once it's made)  
+Attach: `haerin-sheet.png`  
 Save as: `Haerin-runners-regionals-sheet.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: the bright orange SU eSports jersey with navy shoulder panels, oversized, sleeves past her wrists, a headset round her neck. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
@@ -992,7 +835,7 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 
 **[ ] Solar: Christmas** *(optional)*  
 Solar's face on Christmas in the HOAX epilogue.  
-Attach: `Solar-HOAX-sheet.png` (once it's made; until then Solar)  
+Attach: `solar-hoax-sheet.png`  
 Save as: `Solar-hoax-christmas-sheet.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a soft oatmeal cable-knit turtleneck sweater with a thin gold necklace, a tiny nose stud. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
@@ -1074,7 +917,7 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 
 **[ ] Solar: the winter-break party** *(optional)*  
 Solar's face at the winter-break party in the HOAX epilogue.  
-Attach: `Solar-HOAX-sheet.png` (once it's made; until then Solar)  
+Attach: `solar-hoax-sheet.png`  
 Save as: `Solar-hoax-party-sheet.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black satin slip top under a cropped white tweed jacket, small gold hoops, a tiny nose stud. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
@@ -1156,7 +999,7 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 
 **[ ] Solar: New Year (Seollal)** *(optional)*  
 Solar's face at New Year in the HOAX epilogue.  
-Attach: `Solar-HOAX-sheet.png` (once it's made; until then Solar)  
+Attach: `solar-hoax-sheet.png`  
 Save as: `Solar-hoax-newyear-sheet.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a Seollal hanbok: a deep navy jeogori with gold-printed trim over a rose-pink chima, a small gold hair pin. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.

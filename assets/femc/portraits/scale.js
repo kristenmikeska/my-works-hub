@@ -82,6 +82,12 @@ window.FEMC_PORTRAIT_SCALE = {
   'sakura-runners': 1.05,
   'eunchae-runners': 1.1,
   'kazuha-runners': 0.83, // her sheet was drawn to the waist; cut to head and shoulders
+  'chaewon-runners': 0.85, // batch 61: Runners epilogue faces, eyes-to-chin matched to Hanni, Minji and Haechan
+  doyoung: 1.05, // his sheet was drawn to the chest; cut to head and shoulders
+  haerin: 0.95,
+  jeno: 0.97,
+  olivia: 0.92,
+  'solar-hoax': 1.02, // Solar's HOAX look (HOAX world faces map)
   sunghoon: 0.95,
   sunoo: 1.0,
   tifa: 1.03,
@@ -148,4 +154,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 6;
+window.FEMC_PORTRAIT_V = 7;

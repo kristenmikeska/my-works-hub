@@ -503,7 +503,7 @@
   // ───────────────────────────── 1/9, after: prom ─────────────────────────────
   { id: 'epi-h-prom', date: '1/9', slot: 'after', consumes: true, title: 'prom (tbd)', place: 'Hanlim · School · Council Room', time: 'After School', scene: [
     { music: 'epi-h-goofy' },
-    { n: "Somebody had written PROM on the council room whiteboard in big blue letters, underlined twice, and then apparently given up on life, because underneath it there was nothing. Just the white. A little smiley face in the corner that Niki swore he hadn't drawn." },
+    { n: "Somebody had written PROM on the council room whiteboard in a big black scrawl, underlined twice, and then apparently given up on life, because underneath it there was nothing. Just the white. A little smiley face in the corner that Niki swore he hadn't drawn." },
     { n: "It was the first real council meeting since they'd come back, and it felt like the first day of school and the last day of something else at the same time. Second make-up paper done (Korean history; Solar had written a whole page on the wrong dynasty with great confidence). Heeseung's clipboard. Sunoo's laminator, plugged in, warming up for nothing. Jake reading the forum out loud in a newscaster voice until Jungwon took his phone." },
     { ifFlag: 'epi-h-gym-plan', then: [
       { n: "Under PROM, Heeseung uncapped the marker and wrote, very small, *gym → Wed night*, and drew a box around it, and nobody said anything, and everybody looked at it." }

@@ -98,10 +98,10 @@
       { n: "He put the headphones back on and turned to the window, and she went down the stairs, and it was only at the bottom that she noticed he hadn't called her anything. Not princess, not pretty girl, not sweetheart, not even her name. It was the most careful he'd ever been with her, and it felt exactly like a door." }
     ] },
 
-    { id: 'epi-r-haechan-2', title: 'low tide', hint: 'Somebody cleared the snow off one corner of the Language Arts roof.',
+    { id: 'epi-r-haechan-2', title: 'low tide', hint: 'Somebody cleared the snow off the Language Arts roof.',
       after: '12/9', until: '12/11', slots: BOTH, events: ['epi-r-studio'],
       place: 'Syracuse · Language Arts Rooftop', time: 'After Class', scene: [
-      { n: "The ladder was cold enough to hurt through her gloves. At the top, the whole roof was white and flat and untouched except for one corner by the ledge, where somebody had kicked the snow away in long impatient strokes, down to the gravel, and was sitting in the space he'd made with his knees up and his hood up and a can of something pink in his coat pocket that he took out and held toward her without turning his head." },
+      { n: "The ladder was cold enough to hurt through her gloves. At the top, somebody had kicked the snow off the roof in long impatient strokes, down to the gravel, and banked it white against the ledge, and was sitting in the space he'd made with his knees up and his hood up and a can of something pink on the ledge above him that he reached up for and held toward her without turning his head." },
       { s: 'haechan', f: 'neutral', t: "It's cold already. The roof did it for me." },
       { n: "She took it. Monster Pink Punch, cold enough to ache her teeth. She sat down next to him on the gravel, and the cold came up through her jeans immediately, and she decided she didn't care, which was a decision she'd been making a lot lately and not examining." },
       { ifEpiRoute: 'haechan', then: [

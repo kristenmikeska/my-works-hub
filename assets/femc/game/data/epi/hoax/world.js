@@ -39,9 +39,9 @@
       bg: [
         ['Hanlim · Home · Her Room', 'pink-bedroom-2', null],
         ['Hanlim · Home', 'iwatodaidorm-livingroom', 'iwatodaidorm-livingroom-night'],     // epi-h-kim-house (art pending)
-        ['Hanlim · School · Council Room', 'gekkoukan-student-council', null],             // epi-h-council-room
-        ['Hanlim · School · Classroom', 'gekkoukan-classroom-day', 'gekkoukan-classroom-evening'], // epi-h-classroom-exam
-        ['Hanlim · School · Gym at Midnight', 'flashback-hamlim-gym', null],               // epi-h-gym-midnight
+        ['Hanlim · School · Council Room', 'epi-h-council-room', null],
+        ['Hanlim · School · Classroom', 'epi-h-classroom-exam', null],
+        ['Hanlim · School · Gym at Midnight', 'epi-h-gym-midnight', 'epi-h-gym-midnight'],
         ['Hanlim · School · Gym', 'flashback-hamlim-gym', null],
         ['Hanlim · School · Rooftop', 'rooftop-day-winter', 'gekkoukan-rooftop-night'],
         ['Hanlim · School · Library', 'school-library', null],
@@ -108,13 +108,15 @@
     },
     // Council duty: after school on school days once term is back (1/8-1/12). Exam days skip it (epilogue.js practiceNow), and a
     // story event or routine in that slot comes first, so in practice it's the odd afternoon in the council room.
-    practice: { days: [1, 2, 3, 4, 5], slot: 'after', from: '1/8', to: '1/12', place: 'Hanlim · School · Council Room', bg: 'gekkoukan-student-council', stats: { kindness: 1 }, title: 'Council duty', music: 'epi-h-goofy' },
+    practice: { days: [1, 2, 3, 4, 5], slot: 'after', from: '1/8', to: '1/12', place: 'Hanlim · School · Council Room', bg: 'epi-h-council-room', stats: { kindness: 1 }, title: 'Council duty', music: 'epi-h-goofy' },
     cast: {
       mom: 'Mom', dad: 'Dad', eunchae: 'Eunchae', kazuha: 'Kazuha', chaewon: 'Chaewon', sakura: 'Sakura',
       advisor: 'The advisor', principal: 'The principal', hayoon: 'Do Hayoon', halmeoni: "Sunoo's grandmother", jwmom: 'Mrs. Yang',
       clerk: 'Clerk', school: 'Hanlim High School', stream: 'Hanlim Unfiltered', forum: 'Hanlim Forum', council: 'The council',
       bleed: 'A voice', hcvoice: 'Haechan'
     },
+    // This world's own faces (core.js worldFace): Solar's HOAX look (FEMC-ART-WIRING).
+    faces: { solar: 'solar-hoax' },
     variants: {
       morning: {
         school: ["Hanlim at eight, snow on the gate, and a whole building full of people with opinions about where the council had been.",

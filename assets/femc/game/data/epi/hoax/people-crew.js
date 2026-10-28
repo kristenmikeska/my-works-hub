@@ -401,7 +401,7 @@
     { id: 'epi-h-asahi-2', title: 'tadaima', hint: "Asahi and Kazuha are in his empty classroom after the exam, with the blinds down and a phone propped on a desk.",
       after: '1/8', until: '1/10', slots: AFTER, events: ['epi-h-seance', 'epi-h-livestream', 'epi-h-makeup'], noFlags: [], route: null, noRoute: null,
       place: 'Hanlim · School · Classroom', time: 'After School', scene: [
-      { n: "The blinds were down and the lights were off and Kazuha was crouched on a chair with her knees up, Eunchae's livestream paused on her phone at frame 214, the green one, zoomed in so far it was mostly squares, and Asahi was sitting on the next desk over with his headphones round his neck and the face of a man who'd been here since the bell." },
+      { n: "The lights were off and Kazuha was crouched on a chair with her knees up, Eunchae's livestream paused on her phone at frame 214, the green one, zoomed in so far it was mostly squares, and Asahi was sitting on the next desk over with his headphones round his neck and the face of a man who'd been here since the bell." },
       { s: 'kazuha', t: "Solar-senpai! Come, come. Look." },
       { s: 'asahi', f: 'neutral', t: "She's been looking for an hour. I've been here for the hour. No one cares about my hour." },
       { s: 'kazuha', t: "This is you. In the door. The green. And this is you, again, a little bit not there." },

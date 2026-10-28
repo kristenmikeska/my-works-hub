@@ -14312,6 +14312,351 @@
       "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
       "outputSha256": "0c8bd6c7ab7bd9f3585c5600847ea052dd2ffe6634d6aabd27bb711e906e2a43",
       "placement": "places.bg rule 'Syracuse · Studio 4B' (day and evening; also the hallway, by prefix) in data/epi/runners/world.js and data/epi/stay/world.js, replacing record-shop-listening-booth; taken out of Runners weatherFx.sealed (the room has a window)"
+    },
+    {
+      "batch": 61,
+      "source": "chaewon-sheet.png",
+      "sourceNow": "Added to Game/chaewon-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3c06e81a6ef99bc60079d71e6d86e4d163d52fa4d11a452b6e578a9aebd5f399",
+      "character": "chaewon-runners",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/chaewon-runners/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/chaewon-runners/neutral.webp": "467a2a209fc884e0999ec9ce3283f776dc4e38f1aadc264ad2401800d84e6414",
+        "assets/femc/portraits/chaewon-runners/happy.webp": "c867db98a9f98053d6b393f20290c28d60a0a5919108a78bdc0a2f160703f87b",
+        "assets/femc/portraits/chaewon-runners/sad.webp": "55b81cf4d7e6599da6e593bed5684bf5a773a8264a688cc7afc35e980ce895db",
+        "assets/femc/portraits/chaewon-runners/serious.webp": "13c457286ae110a7a0cc6bccf5c5cc386b39193fcbb85cc615af894da0164f4d",
+        "assets/femc/portraits/chaewon-runners/surprised.webp": "851e3a749e6820b4ae7abe600cc09f7f85f9dd3e6f4c01e1ac40673d3698feb6",
+        "assets/femc/portraits/chaewon-runners/flustered.webp": "3ebb8c3a6eb8962d0e1c20b105af4421ce8ce9c53a757df5c79102c28e525b33"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.85,
+      "placement": "Runners epilogue only: data/epi/runners/world.js faces map (chaewon: 'chaewon-runners'), read by core.js worldFace(); chaewon also speaks in HOAX and strangers"
+    },
+    {
+      "batch": 61,
+      "source": "doyoung-sheet.png",
+      "sourceNow": "Added to Game/doyoung-sheet.png",
+      "size": [
+        1312,
+        1199
+      ],
+      "sha256": "2aa4ce3af3972c53ee420366df570031084bef46b96271ee20500a799e32f99e",
+      "character": "doyoung",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/doyoung/neutral.webp",
+      "conversion": "portrait-shaped 3x2 sheet (1312x1199) drawn to the chest: cells cut at the emptiest column/row, then each cut to head and shoulders (440 px below the top of the hair, as Eunchae's); Vision lift, non-white restored, largest component kept; femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/doyoung/neutral.webp": "970ff8b973a52a3547fd43c616ef1f9ed6abea27c0a3f527cd0d7a0a993f7b79",
+        "assets/femc/portraits/doyoung/happy.webp": "d23a008f5ef974bc75867eafbd6b84ac21df2c443bd6109b8662d584dc3893e6",
+        "assets/femc/portraits/doyoung/sad.webp": "deb681f5c90a938fad4d2053f29ee916316613e4763d9e17ba6974f3ec989396",
+        "assets/femc/portraits/doyoung/serious.webp": "4f5420f0416346a4a2161b6e80b3e69cea2e31d552678f36a0d04315af2e99ff",
+        "assets/femc/portraits/doyoung/surprised.webp": "6af794ba1760bb611062281843c01ec60c66d1e0eb8be5df856e7fc260f12f76",
+        "assets/femc/portraits/doyoung/flustered.webp": "8cbf07867dd3aaa408f81c452b674249a8bbd8797851fffb605d667717682c0c"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.05,
+      "placement": "plain id (only the Runners epilogue uses doyoung)"
+    },
+    {
+      "batch": 61,
+      "source": "epi-h-classroom-exam.jpeg",
+      "sourceNow": "Added to Game/epi-h-classroom-exam.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "2ab79e1adff8599327a786e6901a6a05a1598c114321879419882fb846169c1d",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-classroom-exam.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "4ba4e59ea7945e2bb91d3c78db12a6c1cb2f298530ee004d09a8ccea58252803",
+      "placement": "places.bg rule 'Hanlim · School · Classroom' in data/epi/hoax/world.js (day; evening null, the usual night tint), replacing gekkoukan-classroom-day / -evening"
+    },
+    {
+      "batch": 61,
+      "source": "epi-h-council-room.jpeg",
+      "sourceNow": "Added to Game/epi-h-council-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "15f2f772c0a563479eef4f6ea237a7e8a2466f02221b792fd974ebd2b7754bc8",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-council-room.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "699e4ba017fc346caf7c1dbc6e8f6b6aee346f1dfc040957ebf69405e86fd299",
+      "placement": "places.bg rule 'Hanlim · School · Council Room' in data/epi/hoax/world.js and data/epi/true/world.js, and the HOAX practice (council duty) bg, replacing gekkoukan-student-council"
+    },
+    {
+      "batch": 61,
+      "source": "epi-h-gym-midnight.jpeg",
+      "sourceNow": "Added to Game/epi-h-gym-midnight.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "dafa2ed6f9a9dac3dc4df79e8f2c6c6b95b89cb1d6805e7e8ec748170d0d4263",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-gym-midnight.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "8c1b23db2b0f832c6a0dabdd35ef2b8bdb0f118d3b4a0ef6d720733c4fae3645",
+      "placement": "places.bg rule 'Hanlim · School · Gym at Midnight' (day and evening slots) in data/epi/hoax/world.js, data/epi/true/world.js and a new rule in data/epi/stay/world.js above the Gym rule, replacing flashback-hamlim-gym"
+    },
+    {
+      "batch": 61,
+      "source": "epi-r-alpha-kitchen.jpeg",
+      "sourceNow": "Added to Game/epi-r-alpha-kitchen.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "b48a8b13bf168b85debd213f3a8f2aa8bcd0dd3d177c34930364b2b2e03b8663",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-alpha-kitchen.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "b0e687cd31f793d37fcf4519daffb7ee98e853a201a9628f1571e6d663d9f833",
+      "placement": "new places.bg rule 'Syracuse · Alpha Phi House · Kitchen' above the house's rule in data/epi/runners/world.js (day; evening null)"
+    },
+    {
+      "batch": 61,
+      "source": "epi-r-esports-lab.jpeg",
+      "sourceNow": "Added to Game/epi-r-esports-lab.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "f0eecb0470ea72eebdeb5a302cc45733f069d1a0529696aab99506455b60745c",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-esports-lab.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "a6f80bf6f9ff415cee922ca7ece27e7a3322d1d3742926d40878ae92b91bf3b2",
+      "placement": "places.bg rule 'Syracuse · eSports Lab' in data/epi/runners/world.js, practice.bg and the epi-r-vod activity bg, replacing respawn-cafe-evening"
+    },
+    {
+      "batch": 61,
+      "source": "epi-r-lecture-hall.jpeg",
+      "sourceNow": "Added to Game/epi-r-lecture-hall.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "275187fe69fca3f3eff108bd8fc0c3dcc5a26d900c740aa6cfdb18ccd66d9cef",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-lecture-hall.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "04f0422adff76e331a7035a001d6d968478555cc174189068a98693f94fc4052",
+      "placement": "places.bg rule 'Syracuse · Lecture Hall' in data/epi/runners/world.js (one image, evening null), replacing gekkoukan-classroom-day / -evening"
+    },
+    {
+      "batch": 61,
+      "source": "epi-r-marshall-st.jpeg",
+      "sourceNow": "Added to Game/epi-r-marshall-st.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "8d08a38fdeec6fcdbe42219ba1539cfa769b6024889030b1687cc2d3bae1ed17",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-marshall-st.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "8ea644cf9de353fa822d97b43aaeec8c9902c4b55373cf759e107a4e5b734a46",
+      "placement": "places.bg rule 'Syracuse · Marshall Street' (day and evening slots; the · Café rule above it unchanged) and the epi-r-books activity bg in data/epi/runners/world.js, replacing flashback-syracuse-quad; weatherFx.outdoor"
+    },
+    {
+      "batch": 61,
+      "source": "epi-r-quad-day.jpeg",
+      "sourceNow": "Added to Game/epi-r-quad-day.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "13a5bbc51a8d78916ee2e69b1940942e2a1942a415900b8a7412da51c75af925",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-quad-day.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "db62ac19146698e6af5d086b150f1b99b015b6f48c11529dbc8a2f497a93a25f",
+      "placement": "day image of 'Syracuse · The Quad' (evening stays flashback-syracuse-quad) in data/epi/runners/world.js and data/epi/true/world.js, and places.school.bg; weatherFx.outdoor"
+    },
+    {
+      "batch": 61,
+      "source": "epi-r-regionals.jpeg",
+      "sourceNow": "Added to Game/epi-r-regionals.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "81172c590e3e862f83de099853d9b97404c13199dcdb8466c60682b7a7199d7b",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-regionals.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "5045a0bb4578db25c62c4f0052e80e5bd1e72134161fcecd356c5f29cffc6684",
+      "placement": "places.bg rule 'Syracuse · Regionals' in data/epi/runners/world.js, replacing screenshot-theater; weatherFx.none"
+    },
+    {
+      "batch": 61,
+      "source": "epi-r-rooftop-night-snow.jpeg",
+      "sourceNow": "Added to Game/epi-r-rooftop-night-snow.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "283062987708489f9bf24ab7cf54035dc878b0ee92a85b3c7f8624eb6eb20323",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-rooftop-night-snow.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "7e6d806d88f499b223da8175e12090b6b7ffed3c1500fb663e465a078380c3bd",
+      "placement": "new places.bg rule 'Syracuse · Language Arts Rooftop · Snow' (day and evening slots) in data/epi/runners/world.js; story-w3.js epi-r-rooftop (12/20) moved to that place; the true coda's 'Syracuse · Language Arts Rooftop' rule (its snow night); weatherFx.outdoor"
+    },
+    {
+      "batch": 61,
+      "source": "epi-r-rooftop-night.jpeg",
+      "sourceNow": "Added to Game/epi-r-rooftop-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "13ae8b05e0cafd781f1732e65e70bd4a1686f7284abc63a00d75ac13e330857d",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-rooftop-night.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "348ae2efa109c3649da463483862ab4f56765ba41cd1a570363f58de20d92aa0",
+      "placement": "places.bg rule 'Syracuse · Language Arts Rooftop' (day and evening slots) in data/epi/runners/world.js, replacing rooftop-citynight; weatherFx.outdoor"
+    },
+    {
+      "batch": 61,
+      "source": "epi-r-sigma-holiday.jpeg",
+      "sourceNow": "Added to Game/epi-r-sigma-holiday.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "948690c288e8cbb26f42e3d8acd419a47388597af9ffdd1983dde53df326d812",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-sigma-holiday.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "4cc1e5b1c9183a073c13ddaa1d01b65071151e2ef49543cb3232bcb2dbd03923",
+      "placement": "new places.bg rule 'Syracuse · Sigma Chi House · Holiday Party' (day and evening slots) above the house's rule in data/epi/runners/world.js (was flashback-frat-party)"
+    },
+    {
+      "batch": 61,
+      "source": "epi-r-sigma-kitchen.jpeg",
+      "sourceNow": "Added to Game/epi-r-sigma-kitchen.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "3d0b62e21b974f527e68b1edce3c6f21fa2ea27646c85164cc6d77ad0c48a2c8",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-sigma-kitchen.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "ad8c628d58331985cb30e45b65b08a41e85d3692076bf196afc002e78477148f",
+      "placement": "new places.bg rule 'Syracuse · Sigma Chi House · Kitchen' above the house's rule in data/epi/runners/world.js (day; evening null)"
+    },
+    {
+      "batch": 61,
+      "source": "haerin-sheet.png",
+      "sourceNow": "Added to Game/haerin-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "469ed68d4c3e7809457c87963d4cdb66d3ac75b3abb8b8ddb2d95f203b59ba47",
+      "character": "haerin",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/haerin/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/haerin/neutral.webp": "7d3074267293d856d5c30a5fa5d51ec03b27f5374406efbeddacb058f4798ad9",
+        "assets/femc/portraits/haerin/happy.webp": "bc14288172446bfaecafb85c259bcae1ab6a3f94c6c27443e63fad0f18169b26",
+        "assets/femc/portraits/haerin/sad.webp": "a21085a3d0cd00e41f11a9e8068d04c673697e7359ff534b22564dde7b9e6b0e",
+        "assets/femc/portraits/haerin/serious.webp": "bf574908f51d48724bae6ce8e7d48f9e06584969e81976fcc308aaddf361f852",
+        "assets/femc/portraits/haerin/surprised.webp": "c00c6c41c29b4fb158b6e314fc225bb72f0359b98334ee6833d702791bf893b5",
+        "assets/femc/portraits/haerin/flustered.webp": "526c180741e57c1e3c04f0f088aa2f785b7bde0222d200c1b9a0ae2e11454eb6"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.95,
+      "placement": "plain id (Runners epilogue only)"
+    },
+    {
+      "batch": 61,
+      "source": "jeno-sheet.png",
+      "sourceNow": "Added to Game/jeno-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "5b865bb71389d07e749960528955546f66af193c950ab52ec8eedcde718b8335",
+      "character": "jeno",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jeno/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/jeno/neutral.webp": "7f0a2ab64f32740d3703d721f8138f8cde1953b312deacab652e707ca9e9819a",
+        "assets/femc/portraits/jeno/happy.webp": "e498a22a76e8def089c5e23a00c65043798d4f702c132423973e74153c57b20f",
+        "assets/femc/portraits/jeno/sad.webp": "bb89e3e91cc066032d502a58a2799661f57f9a158d92fad3b409c65b27cbfcc7",
+        "assets/femc/portraits/jeno/serious.webp": "e0b3e49580f43ac463cdf22714b345ef54a82b13e9f808d7dc41fe47c47da735",
+        "assets/femc/portraits/jeno/surprised.webp": "ffa4acdaac8606a098c6cbcbed0ce2dbc131d89cdd91bbab6070785687ca55d9",
+        "assets/femc/portraits/jeno/flustered.webp": "a5de59c83dcee6bbcb7a170bcd01ebf77f64cc16fde069e6cacb123d7db6efcc"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.97,
+      "placement": "plain id (Runners epilogue only)"
+    },
+    {
+      "batch": 61,
+      "source": "olivia-sheet.png",
+      "sourceNow": "Added to Game/olivia-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b9e76100867792d99348debf85a8a4c6f7b63c1b9e52a7846ad39536cc50f50d",
+      "character": "olivia",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/olivia/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/olivia/neutral.webp": "2c7ef747c08a4f779f0c21e25995dfa6b4db50f205e681f1ed9acc2e1ac675cf",
+        "assets/femc/portraits/olivia/happy.webp": "f0a1766db2d219a63c7c31bcd4ca2548d16d8ac749c7994dfe70905c9f475a57",
+        "assets/femc/portraits/olivia/sad.webp": "0fcc226981b0154fbecceee18291881c920d5794d4c3b2a53128e9df330a2117",
+        "assets/femc/portraits/olivia/serious.webp": "bc66c8ff62478f207bedc85a08f0a0cae4c8b2a26569ee8cbc9e08e36fad70a6",
+        "assets/femc/portraits/olivia/surprised.webp": "e06531397802e663343d591eb23222b719b5068438afe17ef73fba174c4fbe04",
+        "assets/femc/portraits/olivia/flustered.webp": "0a2e7bc5870751cd021a174381c1e0b838dab1a0cfda25880078e7ad9ed8a983"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.92,
+      "placement": "plain id (Runners epilogue only)"
+    },
+    {
+      "batch": 61,
+      "source": "solar-hoax-sheet.png",
+      "sourceNow": "Added to Game/solar-hoax-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ea754b26cec07d6ec6014283ac726337fc50942614ea89514b849b7cb9b9a93d",
+      "character": "solar-hoax",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/solar-hoax/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/solar-hoax/neutral.webp": "6f6d3b582ab2937e88e9784badaf98ec6e6dc23409b70e61ea13982b8b01bf16",
+        "assets/femc/portraits/solar-hoax/happy.webp": "b3c0b16e45aff567d924ed3ee29c61e13a2c98190c1190de7665fab80edd9b7a",
+        "assets/femc/portraits/solar-hoax/sad.webp": "dcd064efc7bb0e935fc48ae6f448c7bedda6da4a48cda75e5a0b80eee2848e3b",
+        "assets/femc/portraits/solar-hoax/serious.webp": "1faeacf2bfa050c111b8825d5a5e2d0ec0c4adf9067c51f4a522c6b17d899f1f",
+        "assets/femc/portraits/solar-hoax/surprised.webp": "f6e9106c044f1ed046a3c44cb3b069da211dcb8c42e6ac4d4aaa99b6adf24867",
+        "assets/femc/portraits/solar-hoax/flustered.webp": "098b4814cf702c1bea51f80770739b101e5a0a8413d426617c8060ada11a5d64"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.02,
+      "placement": "HOAX epilogue only: data/epi/hoax/world.js faces map (solar: 'solar-hoax'), read by core.js worldFace()"
     }
   ],
   "batch1Validation": {
@@ -15118,5 +15463,21 @@
     ],
     "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py runners1/runners2/hoax/strangers/stay/true/polish, femc_gallery.py, in-scene face size and CG framing at 1000x486 and 375x812",
     "html": "femc-game.html core v54, epilogue v13, places v45, portraits/index.js v136, scale.js v145 (FEMC_PORTRAIT_V 5); epilogue DATA_V 11; second commit: portraits/index.js v137, scale.js v146 (FEMC_PORTRAIT_V 6), epilogue v14, DATA_V 12, tests/femc_epilogue.py _loaded checks 12 (not run)"
+  },
+  "batch61Validation": {
+    "date": "2026-10-28",
+    "scope": "the epilogue's places (Runners: ten; HOAX: gym at midnight, council room, make-up exam classroom) and six face sheets (Chaewon's Runners outfit, Doyoung, Haerin, Jeno, Olivia, Solar's HOAX look)",
+    "sourcesInspected": "all 19 viewed; backgrounds on two contact sheets; every face cut on a contact sheet (dark and white) and the neutrals in a scale lineup against Hanni, Minji, Haechan, Mark and Solar (eyes-to-chin)",
+    "sourcesIntegrated": 19,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched; chaewon-hoax, eunchae-hoax, kazuha-hoax, sakura-hoax, kimmom and KimDad sheets arrived mid-batch and were left in New Adds",
+    "engine": "HOAX world.js gains faces: { solar: 'solar-hoax' }; Runners faces map adds chaewon: 'chaewon-runners'",
+    "textTweaks": "runners rooftop hangout (epi-r-haechan-2): the roof kicked clear and the snow banked at the ledge, the can on the ledge (hint too); true coda rooftop: the can on the ledge; hoax gym final: the exit signs green; hoax council whiteboard: PROM in a black scrawl; hoax classroom (Kazuha's frame-214 scene): no blinds; stay gym at midnight: streamers looped from the rafters, balloons on the floor; runners 12/20 rooftop moved to 'Syracuse · Language Arts Rooftop · Snow'",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py runners1/runners2/hoax/stay/true/polish, in-scene face size and background framing at 1000x486 and 375x812",
+    "html": "femc-game.html portraits/index.js v138, scale.js v147 (FEMC_PORTRAIT_V 7), epilogue v15; epilogue DATA_V 13; tests/femc_epilogue.py _loaded checks 13 (not run)"
   }
 }

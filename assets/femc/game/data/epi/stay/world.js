@@ -47,6 +47,7 @@
         ['Syracuse', 'flashback-syracuse-quad', null],
         ['Incheon · Harbor', 'flashback-incheon-harbor', null],
         ['Incheon', 'flashback-incheon-harbor', null],
+        ['Hanlim · School · Gym at Midnight', 'epi-h-gym-midnight', 'epi-h-gym-midnight'],
         ['Hanlim · School · Gym', 'flashback-hamlim-gym', null],
         ['Hanlim', 'flashback-hamlim-hallway', null],
         ...MAIN.bg

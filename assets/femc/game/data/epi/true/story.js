@@ -57,7 +57,7 @@
   { id: 'epi-tr-r-held', date: '3/8', slot: 'late', consumes: true, title: 'every world', place: 'Syracuse · Language Arts Rooftop', time: 'Late Night', scene: [
     { music: 'world-runners' },
     { glitch: { stage: 4 } },
-    { n: "The Language Arts roof at a quarter to twelve, the city below them gone quiet under the snow, every streetlamp wearing a little halo of it. The ledge, the vent stack, the fire escape they'd both stopped pretending was the only way up. A can of Monster Pink Punch on the concrete between them, sweating in the cold, unopened, because some things were for looking at." },
+    { n: "The Language Arts roof at a quarter to twelve, the city below them gone quiet under the snow, every streetlamp wearing a little halo of it. The ledge, the vent stack, the fire escape they'd both stopped pretending was the only way up. A can of Monster Pink Punch on the ledge beside them, sweating in the cold, unopened, because some things were for looking at." },
     { n: "She'd brought a coat. He noticed. He didn't say anything about it, which was how she knew he'd noticed." },
     { s: 'haechan', f: 'neutral', t: "Finals?" },
     { s: 'solar', t: "Done." },

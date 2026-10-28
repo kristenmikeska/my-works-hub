@@ -415,7 +415,7 @@
     { glitch: 'epi-st-g-unheard' },
     { place: 'Hanlim · School · Gym at Midnight', time: 'Midnight' },
     { dark: true },
-    { n: "Varnish, and dust, and the rubber smell of a gym floor. Hanlim's gym, the big one, with the bleachers folded up against the wall and a ladder standing in the middle of the court, and paper streamers taped halfway along the balcony and then not, a banner on the floor with half its letters painted. Something the council had voted on in a meeting she had been at, once. Nobody had finished it." },
+    { n: "Varnish, and dust, and the rubber smell of a gym floor. Hanlim's gym, the big one, with the bleachers folded up against the wall and a ladder standing in the middle of the court, and streamers looped from the rafters, balloons loose across the floor, a banner on the floor with half its letters painted. Something the council had voted on in a meeting she had been at, once. Nobody had finished it." },
     { n: "Green light coming down through the high windows. And two boys under it, back to back on the half-court line, with things coming in at them from the dark under the bleachers." },
     { n: "Jungwon, in his school jacket, sleeves pushed up, dimples gone flat with concentration. Jihoon, taller, a chain swinging at his hip, laughing at something that wasn't funny in the way he laughed when he was frightened. And something in her chest went out to both of them at once, the old table and the new one, and stopped halfway, because there was nowhere to put it." },
     { n: "Jihoon saw her first." },
