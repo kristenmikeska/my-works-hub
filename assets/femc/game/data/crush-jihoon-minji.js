@@ -68,7 +68,7 @@
 
     /* ── Noticed: the photo booth by the escalators. ── */
     { id: 'cr-jh-purikura', who: 'jihoon', crush: J(P.BUILD), slot: 'after', after: '9/28', until: '11/8',
-      place: 'Paulownia Mall · Photo Booth', time: 'After School', bg: 'inside-mall', scene: [
+      place: 'Paulownia Mall · Photo Booth', time: 'After School', scene: [
         { n: "The photo booth by the escalators was pink inside and smelled of hot plastic and somebody else's perfume, and it had a robot voice that counted down in a register only dogs and middle-school girls could love, and Jihoon had dragged her into it by the strap of her bag, announcing to the whole floor that it was for the archives." },
         { s: 'jihoon', f: 'happy', t: "Pose one. Look like you respect me. I know it's hard for you. Dig deep." },
         { n: "Three, two, one, flash. He did a peace sign under his chin like a magazine cover. She put two fingers up behind his head like horns, without deciding to, the way you'd sign your own name. Flash. He got her in a headlock. Flash. She bit his sleeve. Flash. By the fourth one her face hurt and he was wheezing and the robot had started to sound concerned." },

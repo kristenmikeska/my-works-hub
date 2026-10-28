@@ -115,6 +115,9 @@ EXTRA = {
     'paulownia-atrium-evening': 'Added to Game/paulownia-atrium-evening.jpeg',
     # batch 71 (2026-10-28): the atrium at Christmas (places.js today, 12/1-12/25)
     'paulownia-atrium-christmas': 'Added to Game/paulownia-atrium-christmas.jpeg',
+    # batch 72 (2026-10-28): the mall photo booth and the alley behind Port Island Station (both slots each)
+    'paulownia-photo-booth': 'Added to Game/paulownia-photo-booth.jpeg',
+    'portisland-back-alley-night': 'Added to Game/portisland-back-alley-night.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

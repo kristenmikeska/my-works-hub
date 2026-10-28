@@ -145,6 +145,7 @@ Other docs, if you ever want detail:
 - ✅ Art batch 69: the dorm dining room, laundry room and stairs at night, for their evening and late-night scenes.
 - ✅ Art batch 70: Paulownia Mall's central atrium by day and at dusk, in place of the generic mall interior for its scenes.
 - ✅ Art batch 71: the mall atrium at Christmas, from December 1 to Christmas Day, plus the two December scenes set at its tree.
+- ✅ Art batch 72: the mall's sticker-photo booth and the alley behind Port Island Station at night, each in place of a generic stand-in.
 - ✅ Art batch 65: your nine epilogue places are in the game: four for HOAX (the Kims' living room, Jihoon's house, the winter street, the winter-break party) and five for strangers (a kitchen, the annex, the mudflats, the festival night on Wolmido, the street in the dust), with a couple of small wording fixes so the scenes match your pictures. Your art list gained 57 new place prompts and 35 new CG prompts across the year and every epilogue, and the Evoker pieces, new expressions, sharper Shadows and strike sheets moved to a new backburner list
 
 ## Music and polish

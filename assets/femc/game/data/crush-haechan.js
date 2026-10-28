@@ -586,7 +586,7 @@
       ] },
 
     { id: 'cr-hc-photo-strip', who: 'haechan', crush: H(['dating', 'faded']), slot: 'after', offOnly: true, after: '1/10', until: '2/6', flags: AFTER,
-      place: 'Paulownia Mall · Photo Booth', time: 'Daytime', bg: 'inside-mall', scene: [
+      place: 'Paulownia Mall · Photo Booth', time: 'Daytime', scene: [
         { n: "Hyein had decided they needed a photo. All four of them. In the sticker booth by the escalators with the pink curtain and the cartoon rabbit on the side and a screen that offered to give you bigger eyes, which Hyein accepted on everybody's behalf before anyone could stop her." },
         { ifHeading: 'S', then: [
           { n: "He went in loudly. He did a peace sign in the first frame and a terrible face in the second and a worse face in the third, and Hanni, wedged against the side of the booth, laughed so hard she missed the fourth." }

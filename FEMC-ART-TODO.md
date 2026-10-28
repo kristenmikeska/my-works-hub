@@ -1,6 +1,6 @@
 # Art to make
 
-**110 items:** 31 CGs · 47 places · 4 character pieces · 28 wardrobe. 106 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**108 items:** 31 CGs · 45 places · 4 character pieces · 28 wardrobe. 104 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -291,22 +291,6 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 ## 2. Places (Gemini)
 
 ### Iwatodai (the main game)
-
-**[ ] Paulownia Mall: the photo booth** *(optional)*  
-The sticker-photo booth in the mall, used by several links (now a generic mall interior).  
-Attach: `bg/gamepanic-inside.webp` (for the style only)  
-Save as: `paulownia-photo-booth.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the inside of a Japanese sticker-photo booth (purikura): a tiny space with a bright pink-white backdrop, soft pink light from the ring light and flash panels, a camera lens and a touch screen counting down set into the front wall, a short curtain at the entrance pulled half open onto the mall outside, a little shelf with two stylus pens on cords. Cramped, giddy, close quarters. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The alley behind Port Island Station** *(optional)*  
-The back alley where one link spends his evenings, about 12 scenes (now a generic night street).  
-Attach: `bg/portisland-station-night.webp` (for the style only)  
-Save as: `portisland-back-alley-night.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a narrow back alley behind a city station at night, where the restaurants put out their bins: wet concrete, a row of bins and stacked plastic crates (one crate with a gap underneath where a stray cat could shelter), a lit drinks vending machine humming against one wall, one dry stretch of wall under a small overhang, a broken shop sign, a radio-lit window upstairs, and at the mouth of the alley the main street's neon smearing pink, green and the cold white of a pachinko parlour across the wet ground. Rough, lonely, but somehow safe. Match the painted style of the attached image. Keep everything important away from the edges.
-```
 
 **[ ] The back streets behind Port Island Station** *(optional)*  
 The quiet streets between the station and the bay for one link's walks home, about 8 evening scenes (now a generic night street).  

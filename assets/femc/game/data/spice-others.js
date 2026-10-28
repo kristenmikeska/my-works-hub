@@ -65,7 +65,7 @@
 
     /* ── Shinjiro: she's wearing his coat and won't give it back. ── */
     { id: 'sp-shin-coat', who: 'shinjiro', crush: S(['puppy', 'almost', 'dating']), slot: 'evening', after: '8/24', until: '10/2', events: HOUSE, weather: ['rain'],
-      place: 'Port Island Station · Back Alley', time: 'Evening', bg: 'outside-nightdistrict', scene: [
+      place: 'Port Island Station · Back Alley', time: 'Evening', scene: [
         { n: "It came on to rain while they were at the alley, the hard sideways rain of late summer that the typhoons pushed in off the bay, and the cat went back under its crate in disgust, and he took his coat off before she'd even felt cold and put it round her shoulders without a word, the way you'd put a lid on a pot." },
         { n: "It came down past her knees. It was heavy, and warm from him all the way through, and it smelled of smoke and cooking and rain and him, and the sleeves came down past her fingertips, and she stood in it in the alley in the rain and felt it go into her like a hot drink." },
         { s: 'shinjiro', f: 'neutral', t: "Don't look at me like that. You'd have caught something. Then I'd have had to make you soup. That's more work than a coat." },
@@ -192,7 +192,7 @@
 
     /* ── Jihoon: the photo booth. They stop posing for the last shot. ── */
     { id: 'sp-jh-booth', who: 'jihoon', crush: JH('dating'), slot: 'after', after: '11/23', until: '2/26',
-      place: 'Paulownia Mall · Photo Booth', time: 'After School', bg: 'inside-mall', scene: [
+      place: 'Paulownia Mall · Photo Booth', time: 'After School', scene: [
         { n: "The photo booth by the escalators, pink inside, the robot voice, the smell of hot plastic and somebody else's perfume. He pulled her in by the strap of her bag the way he pulled her into everything and put four coins in and said *for the archive* and *pose one: look like you respect me*, the way he always did, every time, as if it were a prayer." },
         { n: "Three, two, one, flash. Peace signs. Flash. He got her in a headlock. Flash. She put her fingers up behind his head like horns. Flash. By the fourth one they were both laughing so hard the robot had started to sound concerned." },
         { s: 'jihoon', f: 'happy', t: "Last one. Last one, Sol. Do something cool. Do something that'll make everybody at home jealous. Do something worthy of a man of my standing—" },

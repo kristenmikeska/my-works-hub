@@ -14,7 +14,7 @@
   C.moments.push(
     /* ── The opt-in, either way in. ── */
     { id: 'cr-shin-optin-alley', who: 'shinjiro', optIn: 'shinjiro', slot: 'evening', after: '5/24', until: '8/6', met: ['shinjiro'], weather: ['rain', 'cloudy'],
-      place: 'Port Island Station · Back Alley', time: 'Evening', bg: 'outside-nightdistrict', scene: [
+      place: 'Port Island Station · Back Alley', time: 'Evening', scene: [
         { n: "She'd come over to Port Island for a book and stayed too long in the shop, and by the time she came out the rain had started, the cold thin kind that May still had in it at night, and her feet took her the back way past the station before she'd asked them to, the way they did." },
         { n: "He was under the ramen counter's awning, at the end where the gutter dripped, with his coat collar up. He saw her. He looked at her wet sleeves and her book held under her blazer and her hands, which had gone white at the knuckles from the cold, and pushed off the wall without a word and went to the vending machine." },
         { n: "It thunked. He came back with a can of hot corn soup and held it out to her at arm's length without looking at her, the way you'd hold something out to a stray you didn't want to get attached to." },
@@ -147,7 +147,7 @@
       ] },
 
     { id: 'cr-shin-cat', who: 'shinjiro', crush: S(P.PUP), slot: 'evening', after: '8/18', until: '9/20', events: ['a3-full-house'],
-      place: 'Port Island Station · Back Alley', time: 'Evening', bg: 'outside-nightdistrict', scene: [
+      place: 'Port Island Station · Back Alley', time: 'Evening', scene: [
         { n: "Some nights he still went out to the alley after dinner, and tonight he'd said *coming?* over his shoulder at the front door, one word, in a voice like he was asking about the weather, and she'd been on her feet before he'd finished saying it." },
         { n: "The cat was waiting by the ramen counter's back door. A thin gray tabby with one notched ear and a tail that had been broken once and set wrong, and it came out from under a crate when it saw him and wound once round his boots, and he crouched, coat pooling on the wet concrete behind him, and put down a paper dish of something he'd cooked that afternoon that was not, in any sense, cat food." },
         { s: 'shinjiro', f: 'neutral', t: "Don't name it. If you name it, it's yours. Then you have to keep it." },
