@@ -1282,10 +1282,12 @@
     { after: '2/23', title: '14: the other coat', place: 'Port Island · Pier', time: 'Evening', music: 'night', scene: [
       { n: "He'd asked her by text, in full sentences, whether she would be willing to walk with him after school to the pier on Port Island, and he'd signed it with his whole name, which he had never once done, and she'd read it on the monorail three times and then sent back a keysmash, and then, a minute later, because she could feel which register he'd written in, *yes. i'd like that.*" },
       { n: "He was waiting at the end of the pier. He wasn't in the blazer." },
+      { cg: 'link-jungwon-r14' },
       { n: "She'd never seen him out of it. Once at midnight in a kitchen, in his shirtsleeves with a towel tucked in his waistband, but that didn't count. Now he was in a long camel coat, cashmere, buttoned to the throat, the kind of coat that cost more than the dorm's refrigerator and knew it, and black leather gloves, and the steel watch showing in the gap between glove and cuff. He stood at the rail with his back to the city and his face to the water, and for one second, before he heard her, he looked like a man she'd been seated beside at a very long dinner and hadn't been allowed to speak to." },
       { s: 'jungwon', f: 'neutral', t: "Good evening. Thank you for coming." },
       { s: 'jungwon', f: 'neutral', t: "You've had the president for four months. I thought you should have the other one for an hour. He's worse company. He doesn't make jokes. He asks questions he already knows the answers to." },
       { n: "He had two cans of hot corn soup from the machine at the foot of the pier, one in each gloved hand, and gave her one, and kept the other, and didn't open it. The water was the gray of an old knife, and the wind came off it with the particular cold of the sea in February, salt and diesel and something rotten and clean underneath, and the gulls on the bollards all faced the same way, into it, as though they'd been told to." },
+      { cg: null },
       { choose: [
         { t: "(Look at him properly. The coat. The gloves. How he's standing.)", notes: 3, then: [
           { n: "She looked. He let her. He stood very still and allowed himself to be looked at, which she understood was a thing he'd practiced, at dinners, in front of men deciding what he was worth, and then she watched him notice that she wasn't deciding anything, and his shoulders came down a centimeter inside the expensive coat." },

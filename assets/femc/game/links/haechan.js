@@ -1382,7 +1382,9 @@
       { s: 'haechan', f: 'neutral', t: "It's wet." },
       { s: 'jungwon', f: 'neutral', t: "I can carry a wet pot." },
       { s: 'haechan', f: 'neutral', t: "It goes back dry." },
+      { cg: 'link-haechan-r13' },
       { n: "They stood on either side of the threshold with the stockpot between them, each with a hand on a handle, neither of them pulling, two men raised in two different houses on the same rule about returning things, and it was the most dangerous thing Solar had seen since the tower." },
+      { cg: null },
       { n: "Then feet on the stairs, fast and bare, and Yunjin in the kitchen doorway in a sleep shirt and a cardigan and one sock, her hair up in a towel and her voice gone even lower than usual, gravel at the bottom of a bucket." },
       { s: 'yunjin', f: 'serious', t: "I can hear you two from the second floor. Through a FLOOR. Being polite at each other. Babe, it's a POT." },
       { choose: [

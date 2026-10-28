@@ -100,6 +100,9 @@ EXTRA = {
     'gekkoukan-stairwell': 'Added to Game/gekkoukan-stairwell.jpeg',
     'paulownia-canal': 'Added to Game/paulownia-canal.jpeg',
     'kirijo-flat': 'Added to Game/kirijo-flat.jpeg',
+    # batch 67 (2026-10-28): the dorm kitchen and front at night (evening slots only)
+    'iwatodaidorm-kitchen-night': 'Added to Game/iwatodaidorm-kitchen-night.jpeg',
+    'iwatodaidorm-front-night': 'Added to Game/iwatodaidorm-front-night.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

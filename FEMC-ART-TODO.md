@@ -1,6 +1,6 @@
 # Art to make
 
-**124 items:** 35 CGs · 57 places · 4 character pieces · 28 wardrobe. 120 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**118 items:** 31 CGs · 55 places · 4 character pieces · 28 wardrobe. 114 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -44,44 +44,12 @@ Save as: `link-kat-r10-cg.png`
 Persona 3 Reload style event CG, 16:9, no text. A wooden pier on a cold autumn night, lamps along the railing making circles of warm light on the boards, the black bay behind, a lit-up ferry passing far out on the water like a birthday cake. In the circle of lamplight in the middle of the boards, two Siberian Huskies sit upright side by side with their ears up: Cosmo (the third attached image; grey and white, navy bandana), dignified, looking straight at the camera, and Wanda (the fourth attached image; black and white, paw-print bandana), the smaller, younger one, sitting up for once. Kat (the first attached image's face; alt / e-girl clothes, dark jacket) has just jumped up off a bench on the left and is crouching forward with her phone held out to take the photo, thrilled. Ethan (the second attached image's face; casual jacket) crouches beside the dogs holding both leashes, grinning. Solar (the fifth attached image's face; long dark hair, autumn coat) stands just behind Kat, laughing, hands half raised as if not to break the spell. Salt wind, warm lamplight against the dark sea. Joyful, cozy, a small victory. Keep the faces clear of the edges.
 ```
 
-**[ ] Akihiko · rank 10 · the dorm lounge in December** *(optional)*  
-For Akihiko's rank 10, in the dorm lounge on a December evening.  
-Attach: Akihiko, Solar, `bg/iwatodaidorm-livingroom-night.webp` (for the room only)  
-Save as: `link-akihiko-r10-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The dorm lounge on an early December evening, the room empty except for two people, main lights low. Strings of small warm Christmas lights run across the big dark windows, one strand sagging in the middle like a smile, a second strand neatly up beside it. Outside the glass the first snow of the year is falling, fat and slow, lit by the string lights. A mug of hot chocolate on the coffee table, sheets of torn newspaper wrapping on the cushion. Solar (the second attached image's face; long dark hair, soft sweater) sits on the couch holding a pair of small, old red boxing gloves in her lap, a child's size, the leather worn pale and cracked at the knuckles, mismatched laces, both her hands resting flat on top of them, very still. Akihiko (the first attached image's face; silver hair, red vest over a shirt) sits on the arm of the couch beside her, leaning slightly toward her, watching her face, ears a little red. Close, about an arm's length apart. Hushed, warm, fragile. Keep the faces clear of the edges.
-```
-
 **[ ] Shinjiro · rank 10 · the dorm kitchen at night** *(optional)*  
 For Shinjiro's rank 10, in the dorm kitchen late at night.  
 Attach: Shinjiro, Solar, `bg/iwatodaidorm-kitchen.webp` (for the room only)  
 Save as: `link-shinjiro-r10-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. The dorm kitchen late at night with the lights off, lit only by an enormous white full moon in the window over the sink; the moonlight throws the window frame across the floor tiles in hard black lines like a ruled page. The kitchen is spotless: pans on their hooks with handles out, a big pot on the back burner, spice jars in a neat row, a rice bin with its cup on top, a handwritten note taped to the fridge (scribbles, unreadable). Shinjiro (the first attached image's face; tall, long maroon coat hanging off the edge of the counter) sits up on the counter, which he never does, slightly hunched, turning his beanie around and around by the brim in his hands, not looking at the moon. Solar (the second attached image's face; long dark hair loose, a cardigan over pajamas, socks, no shoes) stands just inside the kitchen doorway, a few steps away, in the moonlight. Silver and black, very quiet, heavy and tender. Keep the faces clear of the edges.
-```
-
-**[ ] Haechan · rank 13 · the dorm kitchen at one in the morning** *(optional)*  
-For Haechan's rank 13, in the dorm kitchen at one in the morning in February.  
-Attach: Haechan, Jungwon, Solar, `bg/iwatodaidorm-kitchen.webp` (for the room only)  
-Save as: `link-haechan-r13-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The dorm kitchen at one in the morning in February, warm yellow kitchen light, the window over the sink black and fogged with steam from the hot tap. The back door stands open to the cold dark outside. In the doorway, across the threshold, a huge steel stockpot hangs between two young men, each holding one handle, neither pulling: Haechan (the first attached image's face; sleeves pushed past the elbows, a dish towel over his shoulder, damp forearms) on the kitchen side, and Jungwon (the second attached image's face; a long navy coat buttoned to the throat, a steel watch on his wrist) on the back step outside, very straight and polite. They look at each other levelly, about a pot's width apart. Solar (the third attached image's face; long dark hair, comfy late-night clothes) stands a little behind them by the sink, watching, holding her breath. Cold blue night beyond the door, warm light inside. Tense, funny, quietly charged. Keep the faces clear of the edges.
-```
-
-**[ ] Jungwon · rank 14 · the Port Island pier at dusk** *(optional)*  
-For Jungwon's rank 14, on the pier on Port Island on a February evening.  
-Attach: Jungwon, Solar, `bg/port-island-pier.webp` (for the place only)  
-Save as: `link-jungwon-r14-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The end of a pier on a February evening at dusk, the sea the dull gray of an old knife, a hard cold wind off the water, gulls standing on the bollards all facing the same way into the wind, lights just starting to come on one by one along the far shore. Jungwon (the first attached image's face; not in his school blazer: a long camel cashmere coat buttoned to the throat, black leather gloves, a steel watch showing between glove and cuff) stands at the railing, turned from the water toward Solar, holding out a can of hot corn soup in one gloved hand and keeping a second, unopened can in the other. Solar (the second attached image's face; long dark hair blowing in the wind, winter coat, gloves) reaches to take it, standing close beside him at the rail. Elegant, cold air, warm cans, a formal, slightly shy date. Keep the faces clear of the edges.
-```
-
-**[ ] Mark · rank 14 · the dorm steps at night** *(optional)*  
-For Mark's rank 14, at the front steps of the dorm at night in February.  
-Attach: Mark, Solar, `bg/iwatodaidorm-front-winter.webp` (for the place only)  
-Save as: `link-mark-r14-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The front steps of the dorm on a cold February night, a streetlight with a hazy ring around it from the cold, the dorm windows above lit warm, one window open a crack. Mark (the first attached image's face; a sweatshirt, jeans, sneakers) sits on the bottom step, knees up, looking up quickly at Solar with a half-embarrassed smile, as if checking whether she noticed. Solar (the second attached image's face; long dark hair, winter coat) stands on the pavement in front of him holding a black guitar case upright by its handle, looking down at him, surprised and soft. About two steps apart. Quiet street, breath faintly white. Gentle, understated, a small big moment. Keep the faces clear of the edges.
 ```
 
 **[ ] Hyein · rank 15 · the shop mirror at Paulownia Mall** *(optional)*  
@@ -323,22 +291,6 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 ## 2. Places (Gemini)
 
 ### Iwatodai (the main game)
-
-**[ ] The dorm kitchen at night** *(optional)*  
-The dorm kitchen for its evening and late-night scenes, about 70 of them: dish duty, cooking lessons, one in the morning at the stove (now the daytime kitchen, darkened or not darkened at all).  
-Attach: `bg/iwatodaidorm-kitchen.webp` (edit this picture)  
-Save as: `iwatodaidorm-kitchen-night.png`
-```
-Edit this picture. Keep the same dorm kitchen, angle and art style; change it to late evening: the window above the sink is dark blue-black with the faint lights of the neighbourhood, the main ceiling light is off and the kitchen is lit warm by the small light over the stove and the light under the cabinets. A lidded pot on the stove, a good pot hanging on its hook, a folded tea towel on the counter, a clean spoon on the towel, a phone left on the windowsill, a few stacked food containers by the doorway, the doorway to the dark hall with tiled floor. Quiet, warm, late, a house where most people have gone to bed. 16:9, no people, no readable text.
-```
-
-**[ ] The dorm front at night** *(optional)*  
-The dorm's front steps and street after dark, about 47 scenes: people waiting on the steps, pebbles at the window, goodnights at the gate (now the daytime front, often not darkened).  
-Attach: `bg/iwotodaidorm-outside.webp` (edit this picture)  
-Save as: `iwatodaidorm-front-night.png`
-```
-Edit this picture. Keep the same dorm building, front steps, railings and angle, and the same art style; remove every person and the logo in the corner; change it to night: a deep blue sky, the porch light glowing warm above the front door, light through the glass in the door and from two or three upstairs windows, the small concrete overhang above the steps, the gate at the bottom of the path, a streetlight across the road throwing an amber pool on the pavement, the street empty and quiet, a bicycle shed across the street in shadow. Calm, late, a little lonely, the place people sit and wait. 16:9, no people, no readable text.
-```
 
 **[ ] The dorm lounge at Christmas** *(optional)*  
 The lounge in the last week before Christmas (the year-end party, Christmas Eve), when its evening scenes say lights are strung across the windows and snow is falling outside.  

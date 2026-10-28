@@ -1361,9 +1361,11 @@
         { s: 'mark', f: 'flustered', t: "Hey. Okay. Favor. It's a guitar. It's a long story. It's not a long story, I borrowed it and I need it to go back to a building I'm not allowed in. You're allowed in. You're very allowed in." }
       ] },
       { n: "She took the case. He let go of it the way you let go of a handrail on a train, a second after you're sure. Then, instead of saying goodnight, instead of turning back toward the station with his hands in his sweatshirt, he looked at the steps." },
+      { cg: 'link-mark-r14' },
       { n: "He sat down on the bottom one." },
       { n: "It was so ordinary a thing, a boy sitting on a step, that she nearly didn't see it for what it was. Three months of stopping at the line. He'd sat down on the other side of it like it had never been there, and then looked up at her, quick, to see whether she'd noticed, and she had." },
       { s: 'mark', f: 'neutral', t: "Don't make it a thing." },
+      { cg: null },
       { choose: [
         { t: "(Sit down next to him. Make it a thing.)", notes: 3, then: [
           { n: "She sat on the cold step beside him with the guitar case across both their knees like a bench in a park, and he looked at the street and laughed under his breath, and didn't move over, and neither did she." }

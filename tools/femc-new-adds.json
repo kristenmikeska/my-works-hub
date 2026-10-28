@@ -15519,6 +15519,104 @@
       "outputs": {
         "assets/femc/title/loading-2.webp": "516f59d9f6b5d409ca929f0572ebfd8892110d84631663d7f4bf1b7af04045ae"
       }
+    },
+    {
+      "batch": 67,
+      "source": "link-akihiko-r10-cg.png",
+      "sourceNow": "Added to Game/link-akihiko-r10-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "de888dea2f30eeaa14511c77acc598cce0471294e75957910c50efb2232dd30b",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-akihiko-r10.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "54e4115097cec1de6e0594ddc47a5e7ba491c160eefa2b3ecd2148d718457ab8",
+      "placement": "links/akihiko.js rank 10 ('10: red gloves'): { cg } before the 'He laughed, quiet' line, { cg: null } before the crush branch; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: the snow line reworded so the snow had already started (the art shows it falling from the CG's first line)",
+      "mobileFocus": "55% 30%"
+    },
+    {
+      "batch": 67,
+      "source": "link-haechan-r13-cg.png",
+      "sourceNow": "Added to Game/link-haechan-r13-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e6a1f210a1225f0c3319b64706e00c10d997634f460675141d4cf58c42c7412c",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-haechan-r13.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "52bfb3e42455d93a4ed418efe3e4345a7e61fd59c5ed15ff2f84f87e60b72466",
+      "placement": "links/haechan.js rank 13 ('13: seollal'): { cg } on the threshold line, { cg: null } before the next arrival; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "50% 25%"
+    },
+    {
+      "batch": 67,
+      "source": "link-jungwon-r14-cg.png",
+      "sourceNow": "Added to Game/link-jungwon-r14-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "bbdf576a34d035ab404f4800a84abc7a45fe379c63b67d8d9790b97ab29b1850",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-jungwon-r14.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "7930000c42ad189c92ad98ad5cec4f96a7c953fa8efab128af4b77286f1d6177",
+      "placement": "links/jungwon.js rank 14 ('14: the other coat'): { cg } before the coat description, { cg: null } before the choice; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "50% 30%"
+    },
+    {
+      "batch": 67,
+      "source": "link-mark-r14-cg.png",
+      "sourceNow": "Added to Game/link-mark-r14-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8189ecb018742349b2fda91e42f94b5c46d559131266a8b796b5560f61bcc0c9",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-mark-r14.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "55cd5b2c6b4f7220835a64023e969689aab91950f9c018142f94a79555124dbe",
+      "placement": "links/mark.js rank 14 ('14: the first stair'): { cg } before 'He sat down on the bottom one.', { cg: null } before the choice; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "50% 40%"
+    },
+    {
+      "batch": 67,
+      "source": "iwatodaidorm-kitchen-night.jpeg",
+      "sourceNow": "Added to Game/iwatodaidorm-kitchen-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "5bd7f4715a48f906424216c61c4cc3b36df440486753cef18c6c22cc5a1db9bd",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodaidorm-kitchen-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "5a4c6f962ecfd792fdbb2bef161eba0315ff55d3da86a672f94e190fd37f7396",
+      "placement": "places.bg rule 'Iwatodai Dorm · Kitchen' evening slot; explicit bg: 'iwatodaidorm-kitchen' lines at night play as the rule (core.js background(), since 1599aa9), no scene data edited; not outdoor; -night-cake scenes untouched"
+    },
+    {
+      "batch": 67,
+      "source": "iwatodaidorm-front-night.jpeg",
+      "sourceNow": "Added to Game/iwatodaidorm-front-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "e6838e07731f1cb0929f89227d0c34765db17af6083f8950253a0dcb8239e5fe",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodaidorm-front-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "540ddf7caed488431b7c0b368443e20b2d9061ce128261e5aaea65969e4dc915",
+      "placement": "places.bg rule 'Iwatodai Dorm · Front' evening slot; explicit bg: 'iwotodaidorm-outside' lines at night play as the rule (core.js background()); weatherFx.outdoor gains 'iwatodaidorm-front-night'; the winter day season doesn't touch evening"
     }
   ],
   "batch1Validation": {
@@ -16419,5 +16517,20 @@
     ],
     "notTested": "no browser tests (Kat's Mac in use): tests/femc_building.py --only cardart,newsets (now expects 24 sets with art); a story fight and a Tartarus night's Dark Hour fade; the journal / Tartarus memory card for the two new cards",
     "html": "build.js v20 (both pages), battle.js v65, ui.js v35; ART_V 34, CARD_ART_V 34"
+  },
+  "batch67Validation": {
+    "date": "2026-10-28",
+    "scope": "four link CGs (Akihiko r10, Haechan r13, Jungwon r14, Mark r14) and the dorm kitchen and front at night",
+    "sourcesInspected": "all 6 viewed",
+    "sourcesIntegrated": 6,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "textTweaks": "akihiko rank 10: one narration line reworded so the first snow had already started (no new beat)",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests (Kat's Mac in use): the four scenes' CG framing at 1000x486 and 375x812; the kitchen / front at night",
+    "html": "femc-game.html places v46, akihiko v12, haechan v16, jungwon v18, mark v13"
   }
 }

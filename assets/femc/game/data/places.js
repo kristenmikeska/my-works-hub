@@ -214,7 +214,7 @@ window.FEMC_GAME_PLACES = {
     ['Gekkoukan High · Stairwell', 'gekkoukan-stairwell'],
     ['Gekkoukan High', 'school-hallway'],
     ['Iwatodai Dorm · Lounge', 'iwatodaidorm-livingroom', 'iwatodaidorm-livingroom-night'],
-    ['Iwatodai Dorm · Kitchen', 'iwatodaidorm-kitchen'],
+    ['Iwatodai Dorm · Kitchen', 'iwatodaidorm-kitchen', 'iwatodaidorm-kitchen-night'],
     ['Iwatodai Dorm · Dining Room', 'iwatodaidorm-diningroom'],
     ['Iwatodai Dorm · Laundry Room', 'iwatodaidorm-laundryroom'],
     ['Iwatodai Dorm · Command Room', 'iwatodaidorm-commandroom'],
@@ -226,7 +226,7 @@ window.FEMC_GAME_PLACES = {
     ["Iwatodai Dorm · Solar's Room", 'solar-dormroom-day', 'solar-dormroom-night'],
     ['Iwatodai Dorm · Rooftop · Garden', 'iwatodaidorm-roof-planters', 'iwatodaidorm-roof-planters'],
     ['Iwatodai Dorm · Rooftop', 'iwatodaidorm-roof-evening', 'iwatodaidorm-roof-night'],
-    ['Iwatodai Dorm · Front', 'iwotodaidorm-outside'],
+    ['Iwatodai Dorm · Front', 'iwotodaidorm-outside', 'iwatodaidorm-front-night'],
     ['Iwatodai Dorm', 'iwatodaidorm-livingroom', 'iwatodaidorm-livingroom-night'],
     ['Kirijo Flat', 'kirijo-flat', 'kirijo-flat'], // the small flat by the station (Sebastian's friends); night-lit art
     ['Kirijo Guesthouse · Front', 'elegant-buildingentrance', 'kirijo-guesthouse-front-night'],
@@ -338,7 +338,7 @@ window.FEMC_GAME_PLACES = {
   weatherFx: {
     outdoor: ['city', 'park', 'location-', 'portisland', 'station-platform', 'hospital-outside', 'hospital-rooftop', 'outside-', 'shopping-street',
       'naganaki-', 'gekkoukanhigh', 'gekkoukan-tennis-courts', 'gekkoukan-rooftop-night', 'rooftop-', 'iwatodaidorm-roof-', 'iwotodaidorm-outside',
-      'iwatodaidorm-front-winter', 'iwatodai-strip-', 'iwatodai-riverside-night', 'iwatodai-station-overpass', 'harbor', 'junkyard-', 'moonlightbridge',
+      'iwatodaidorm-front-winter', 'iwatodaidorm-front-night', 'iwatodai-strip-', 'iwatodai-riverside-night', 'iwatodai-station-overpass', 'harbor', 'junkyard-', 'moonlightbridge',
       'port-island-pier', 'port-island-seaside-park', 'seaside-park-', 'kirijo-guesthouse-front-night', 'kirijo-guesthouse-roof-night',
       'aohigepharmacy-outside', 'policestation-outside', 'bebluev-outside', 'clubescapade-outside', 'gameparade-outside', 'mayoidoantiques-outside',
       'bathhouse-night', 'hotel-outside', 'yakushima-beach', 'yakushima-forest', 'yakushima-ferry', 'yakushima-villa-balcony', 'yakushima-villa-terrace'],
@@ -368,7 +368,8 @@ window.FEMC_GAME_PLACES = {
     'link-kuromi-r10': '51% 30%', 'link-mercy-r10': '40% 28%', 'link-mymelody-r10': '49% 25%', 'link-rio-r10': '50% 30%', 'link-saori-r10': '49% 30%', 'romance-rio': '50% 25%', 'romance-saori': '48% 25%',
     'link-sunoo-r10': '51% 28%', 'crush-akihiko-umbrella': '38% 22%', 'crush-two-ends': '60% 40%', 'holiday-summer-festival': '48% 22%', 'holiday-new-year': '36% 45%',
     'link-sebastian-r10': '42% 25%', 'link-aphrodite-r10': '48% 30%', 'link-widowmaker-r10': '45% 25%', 'link-rohan-r10': '42% 28%',
-    'link-wren-r10': '38% 40%', 'holiday-valentines': '45% 25%', 'story-dorm-dinner': '35% 35%'
+    'link-wren-r10': '38% 40%', 'holiday-valentines': '45% 25%', 'story-dorm-dinner': '35% 35%',
+    'link-akihiko-r10': '55% 30%', 'link-haechan-r13': '50% 25%', 'link-jungwon-r14': '50% 30%', 'link-mark-r14': '50% 40%'
   },
   /* Music (assets/femc/music/<file>.mp3) by mood. Scenes pick a mood; screens use the `screens` map.
      A mood is one file (it loops) or a pool (a list): a pool rotates, never plays the same file twice in a row, and each
