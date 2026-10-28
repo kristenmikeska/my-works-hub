@@ -1,6 +1,6 @@
 # Art to make
 
-**66 items:** 9 places · 10 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 60 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
+**70 items:** 9 places · 10 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 60 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -112,6 +112,41 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 ```
 
 ## 3. Characters (ChatGPT)
+
+### The two-world boys: home-world looks (ChatGPT)
+
+**[ ] Haechan: Runners look**  
+Haechan's face in the Runners epilogue: the campus heartthrob.  
+Attach: Haechan, and one finished home-world sheet for style (e.g. `solar-hoax-update.png`)  
+Save as: `haechan-runners-sheet.png`
+```
+A character portrait sheet in the same art style as the attached sheet (clean manhwa-style line art, soft painted shading, semi-realistic faces, plain white background): 3 columns by 2 rows, head and shoulders, the same framing in every cell. Top row: neutral, happy, sad. Bottom row: serious, surprised, flustered. Same face, hair and outfit in every cell; only the expression changes. No text. Haechan as the most wanted boy on a US college campus: put together and effortlessly cool. His infamous plain black hoodie, black over-ear headphones resting around his neck, a thin silver chain, styled dark hair with a soft middle part, clear skin, a lazy half-lidded confidence.
+```
+
+**[ ] Haechan: strangers look**  
+Haechan's face in the strangers epilogue: rougher, the world's danger on him.  
+Attach: Haechan, and one finished home-world sheet for style (e.g. `solar-hoax-update.png`)  
+Save as: `haechan-strangers-sheet.png`
+```
+A character portrait sheet in the same art style as the attached sheet (clean manhwa-style line art, soft painted shading, semi-realistic faces, plain white background): 3 columns by 2 rows, head and shoulders, the same framing in every cell. Top row: neutral, happy, sad. Bottom row: serious, surprised, flustered. Same face, hair and outfit in every cell; only the expression changes. No text. Haechan, harder and less put together: dark, slightly messy unstyled hair falling over his forehead (no neat middle part), a small healed scar across one cheekbone, faint tiredness under the eyes, a plain dark jacket over a black shirt with the collar open. Watchful, guarded, a little roughed up, still handsome.
+```
+
+**[ ] Jungwon: HOAX look**  
+Jungwon's face in the HOAX epilogue: the student-council president.  
+Attach: Jungwon, and one finished home-world sheet for style (e.g. `solar-hoax-update.png`)  
+Save as: `jungwon-hoax-sheet.png`
+```
+A character portrait sheet in the same art style as the attached sheet (clean manhwa-style line art, soft painted shading, semi-realistic faces, plain white background): 3 columns by 2 rows, head and shoulders, the same framing in every cell. Top row: neutral, happy, sad. Bottom row: serious, surprised, flustered. Same face, hair and outfit in every cell; only the expression changes. No text. Jungwon as a high-school student-council president, a little nerdy: a navy Korean school blazer with a crest, a white shirt and a neatly knotted tie, a council armband, thin wire-framed glasses, tidy dark hair. Earnest, sharp, quietly proud.
+```
+
+**[ ] Jungwon: strangers look**  
+Jungwon's face in the strangers epilogue: the heir, slightly worn by his world.  
+Attach: Jungwon, and one finished home-world sheet for style (e.g. `solar-hoax-update.png`)  
+Save as: `jungwon-strangers-sheet.png`
+```
+A character portrait sheet in the same art style as the attached sheet (clean manhwa-style line art, soft painted shading, semi-realistic faces, plain white background): 3 columns by 2 rows, head and shoulders, the same framing in every cell. Top row: neutral, happy, sad. Bottom row: serious, surprised, flustered. Same face, hair and outfit in every cell; only the expression changes. No text. Jungwon as the heir of a powerful family: fancier and composed, a tailored charcoal overcoat over a dark suit and a crisp white shirt with no tie, neat dark hair just slightly out of place, a faint healed graze at one temple, tired but controlled eyes. Elegant, guarded, quietly dangerous.
+```
+
 
 ### Evoker close-ups
 

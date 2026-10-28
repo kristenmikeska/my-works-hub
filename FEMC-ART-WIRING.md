@@ -243,3 +243,5 @@ The player is `battle.js playSeq` / `seqHtml` / `seqSays` (used by `bondCut`); t
 
 - **Portraits changed?** Bump `window.FEMC_PORTRAIT_V` at the bottom of `assets/femc/portraits/scale.js` (and its `?v=`), or browsers keep the old faces.
 
+
+- **The two-world boys' home-world looks:** `haechan-runners`, `haechan-strangers`, `jungwon-hoax` and `jungwon-strangers`. Cut them like the other home-world sheets into `portraits/<name>/`, then map them in that world's `world.js` `faces` (`haechan: 'haechan-runners'` and so on). Size them in `scale.js` and bump `FEMC_PORTRAIT_V`. The year keeps their own portraits.
