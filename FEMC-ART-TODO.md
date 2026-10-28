@@ -1,6 +1,6 @@
 # Art to make
 
-**76 items:** 2 story CGs · 8 places · 19 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 68 are optional; none are ⭐.
+**81 items:** 4 story CGs · 11 places · 19 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 71 are optional; none are ⭐.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -45,6 +45,22 @@ Attach: Solar, Haechan
 Save as: `epi-r-studio-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. A small, ordinary college music studio at night: a mixing desk with two monitor speakers, a cheap desk lamp, one lit window. Behind a glass pane, in a little vocal booth, Solar (the first attached image's face; long dark waved hair, a navy coat over an orange Syracuse hoodie) sings into a microphone with one hand on her headphones, eyes closed. In the foreground at the desk, Haechan (the second attached image's face; dressed all in black, heavy black headphones round his neck) sits with his hands on the faders, deliberately not watching her, looking at the screen. A small orange fox keycap on the keyboard by his hand. No neon. Quiet and close.
+```
+
+**[ ] The party footage** *(optional)*  
+A phone screen showing a video from the big party, in the Runners epilogue.  
+Attach: Solar, `bg/flashback-frat-party.webp`  
+Save as: `epi-r-footage-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no readable text. A close view of a smartphone held in someone's hand in a dark room, its screen filling most of the frame and playing a video: a fraternity house's living room at a holiday party (the same wood-panelled house and staircase as the second attached image, dressed for December with string lights and tinsel, a crowd of blurred people raising glasses), and in the middle of the video Solar (the first attached image's face; long dark waved hair, a wine-red long-sleeved silk dress) only half there: her edges coming apart into fine light, the wall behind her gone thin, and a sickly Dark Hour green glowing through where she should be solid. The phone's interface is drawn simply: a thin progress bar, a play button, a small timestamp area with no legible numbers. The room around the phone is dark; the screen lights the thumb holding it. Eerie, quiet, impossible.
+```
+
+**[ ] Held**  
+The last scene of the Runners epilogue: the rooftop in the first snow.  
+Attach: Solar, Haechan, `epi-r-rooftop-night-snow.png` (once it's made; until then `bg/rooftop-citynight.webp` for the light only)  
+Save as: `epi-r-held-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The flat rooftop of an old stone campus building at night in heavy falling snow (the same concrete ledge, vent stack and view of the campus towers and domed chapel below as the third attached image), snow falling straight down. Haechan (the second attached image's face; dressed all in black, cool-toned, snow in his dark hair) holds Solar (the first attached image's face; long dark waved hair, an oversized dark jacket over her clothes) against him with both arms, one hand in her hair, his face beside hers, his whole body leaning back as if against a pull. Solar's edges are coming apart into fine light that drifts upward like snow going the wrong way, and that light is the sick green of the Dark Hour at her edges and gold nearer her heart. Behind the campus clock tower the night sky is split open like a seam, green beyond it. A half-buried pink energy-drink can stands on the ledge. Desperate, tender, cold. Keep both faces clear of the edges.
 ```
 
 ---
@@ -117,6 +133,30 @@ Save as: `epi-r-quad-day.png`
 Edit this picture. Keep the same Hall of Languages towers, domed chapel and lamppost, from exactly the same angle and in the same art style; change it to a grey December day: overcast daylight, the snow salted into grey paths, students in parkas crossing with their hoods up, the lamppost unlit. 16:9, no readable text.
 ```
 
+
+**[ ] The rooftop in the first snow**  
+The rooftop in heavy snow, for the last night of the Runners epilogue (now the plain rooftop stands in).  
+Attach: `epi-r-rooftop-night.png` (make that one first)  
+Save as: `epi-r-rooftop-night-snow.png`
+```
+Edit this picture. Keep the same rooftop, concrete ledge, vent stack, metal ladder and view of the campus below, from exactly the same angle and in the same art style; change it to the first heavy snow of winter at night: thick snow falling straight down with no wind, six inches of fresh snow on the ledge and the roof, every lamppost on the campus below wearing a white cap, the city lights beyond soft and gold through the snow, the sky low and lit orange-white. The pink energy-drink can on the ledge is half buried in snow. 16:9, no people, no readable text.
+```
+
+**[ ] The Sigma holiday party** *(optional)*  
+The fraternity house dressed up for its last party before winter break, in the Runners epilogue (now the usual party picture stands in).  
+Attach: `bg/flashback-frat-party.webp`  
+Save as: `epi-r-sigma-holiday.png`
+```
+Edit this picture. Keep the same fraternity house interior (the same woodwork, the same staircase up to the rooms) from the same angle and in the same art style; dress it for a December holiday party, semi-formal: warm string lights stapled along the banister and over the fireplace, tinsel everywhere, a bedsheet photo wall with tinsel safety-pinned to it, a big punch bowl on a table, a little crooked Christmas tree, glasses left on every surface. Evening, warm and glowing. 16:9, no people, no readable text. Keep everything important away from the edges.
+```
+
+**[ ] The Sigma kitchen in the morning** *(optional)*  
+The fraternity house kitchen the morning after, in finals week, in the Runners epilogue (now the party picture stands in).  
+Attach: `bg/flashback-frat-party.webp`  
+Save as: `epi-r-sigma-kitchen.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the kitchen of the same fraternity house as the attached image (the same woodwork and trim; through the open kitchen door, the same staircase), on a grey winter morning in finals week: a big island with stools, a frying pan on the stove, a burnt coffee pot, mugs everywhere, a highlighter and flashcards on the counter, a sheet of paper stuck to the fridge with a list on it, a window over the sink pushed up two inches with snow and a back yard beyond it. Cold daylight, lived-in, tired. Match the painted style of the attached image. Keep everything important away from the edges.
+```
 
 ## 3. Characters (ChatGPT)
 
