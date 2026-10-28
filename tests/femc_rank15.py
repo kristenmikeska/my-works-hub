@@ -503,7 +503,8 @@ try:
           const wrong=e=>(e.route&&Object.entries(e.route).some(([id,r])=>id==='akihiko'&&(r==='none'?'%s'==='romance':r!=='%s')))||(e.ranksBelow&&Object.entries(e.ranksBelow).some(([id,r])=>rankOn(G.LINKS[id],G.dayOf(e.after))>=r));
           const gated=e=>[...Object.keys(e.ranks||{}),...Object.keys(e.ranksBelow||{}),...Object.keys(e.route||{})];
           const ours=e=>/^r15-/.test(e.id)&&gated(e).some(id=>ids.includes(id));
-          const missing=G.D.dailyLife.filter(e=>!plays.includes(e.id)&&!(e.events||[]).some(id=>optional.includes(id))&&!wrong(e)&&(ours(e)||!e.ranks&&!e.ranksBelow&&!e.route)).map(e=>e.id);
+          // The hidden Kat & Ethan link's routine needs her found first (flag found-kat); femc_kat.py plays it.
+          const missing=G.D.dailyLife.filter(e=>!plays.includes(e.id)&&!(e.events||[]).some(id=>optional.includes(id))&&!(e.flags||[]).includes('found-kat')&&!wrong(e)&&(ours(e)||!e.ranks&&!e.ranksBelow&&!e.route)).map(e=>e.id);
           return {missing,r15:plays.filter(x=>/^r15-/.test(x)),skip:G.D.dailyLife.filter(e=>ours(e)&&wrong(e)).map(e=>e.id),mine:G.D.dailyLife.filter(ours).map(e=>e.id)}})()""" % (json.dumps(gids), rt, rt, rt, rt, rt), timeout=900)
     print('capacity', json.dumps({k: v['missing'] for k, v in cap.items()}))
     ok(not any(v['missing'] for v in cap.values()), f"a year whose links move on their dates still plays every routine (each group, romance and friend runs): { {k: v['missing'] for k, v in cap.items()} }")

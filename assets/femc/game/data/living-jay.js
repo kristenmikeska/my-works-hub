@@ -6,7 +6,8 @@
      (H: Solar's caps; S: her careful lowercase). Replies name the link.
    - holidays: '11/23' Labor Thanksgiving Day (rank 1: he cooks lunch for everyone who works) and '2/3' Setsubun (rank 6,
      flag year-goes-on: beans at the dorm, then ehomaki eaten in silence facing west-southwest). ♪ from the choices' notes.
-   - routines (FEMC_GAME_DAILY_LIFE), every one gated events ['a4-yeobos'], windows 28-35 days, none past 2/26:
+   - routines (FEMC_GAME_DAILY_LIFE), every one gated events ['a4-yeobos'], windows 28-35 days, none past 2/26; the Nov-Dec ones are
+     low: true (filler on the in-between days, core.js dailyLife), so they never crowd out the story routines:
        jay-koromaru-door  11/12-12/14 evening, Sun/Tue/Sat: Koromaru across the kitchen door, Ken, a measured cup (the fun one).
        jay-akihiko-pot    11/20-12/20 evening, Sun/Tue/Sat: Akihiko wipes the good pot that nobody used (the fun one).
        jay-containers     11/16-12/18 early, school days: the empties on the dorm step at seven; Junpei, Yukari.
@@ -147,7 +148,7 @@
   /* ── Routines (daily-life format) ── */
   (W.FEMC_GAME_DAILY_LIFE ||= []).push(
     // Koromaru across the kitchen door; Ken; a measured cup.
-    { id: 'jay-koromaru-door', after: '11/12', until: '12/14', slot: 'evening', days: [0, 2, 6], events: ['a4-yeobos'],
+    { id: 'jay-koromaru-door', low: true, after: '11/12', until: '12/14', slot: 'evening', days: [0, 2, 6], events: ['a4-yeobos'],
       place: 'Iwatodai Dorm · Kitchen', time: 'Evening', bg: 'iwatodaidorm-kitchen', scene: [
         { n: "There was a negotiation going on across the kitchen doorway. On the kitchen side, Jay, crouched on his heels with a small dish of plain rice and egg on the tile in front of him. On the hall side, Ken, in his slippers, crouched exactly the same way, with exactly the same expression. Across the doorway between them, Koromaru, lying on his side, looking at neither." },
         { s: 'ken', f: 'serious', t: "He only eats when someone sits with him. I've been sitting with him. It's my turn this week." },
@@ -174,7 +175,7 @@
       ] },
 
     // Akihiko and the good pot: he wipes it though nobody used it.
-    { id: 'jay-akihiko-pot', after: '11/20', until: '12/20', slot: 'evening', days: [0, 2, 6], events: ['a4-yeobos'],
+    { id: 'jay-akihiko-pot', low: true, after: '11/20', until: '12/20', slot: 'evening', days: [0, 2, 6], events: ['a4-yeobos'],
       place: 'Iwatodai Dorm · Kitchen', time: 'Evening', bg: 'iwatodaidorm-kitchen', scene: [
         { n: "Half past seven, the kitchen still warm from Jay's cooking and the containers stacked by the door, and Akihiko came in in his running clothes, not for water this time, and took the good pot down off its hook, and stood at the sink, and washed it." },
         { n: "It was clean. Nobody had used it. It had been clean since October. He washed it anyway, slowly, inside and out, with the soft sponge, not the steel wool, and rinsed it, and dried it with a clean towel from the drawer, and hung it back on its hook with the handle out, and left without saying anything to anyone, and didn't look at Jay once." },
@@ -197,7 +198,7 @@
       ] },
 
     // Morning: the empties on the step at seven.
-    { id: 'jay-containers', after: '11/16', until: '12/18', slot: 'early', schoolOnly: true, events: ['a4-yeobos'],
+    { id: 'jay-containers', low: true, after: '11/16', until: '12/18', slot: 'early', schoolOnly: true, events: ['a4-yeobos'],
       place: 'Iwatodai Dorm · Front', time: 'Early Morning', bg: 'iwotodaidorm-outside', scene: [
         { n: "At seven in the morning Jay was on the dorm's front step in a hoodie with the hood up and his breath going white, waiting, with the patience of somebody who had been up for two hours already and had made his peace with it." },
         { s: 'jay', f: 'neutral', t: "Empties. The dorm's got six of my containers. I need them. I'm going to the market." },

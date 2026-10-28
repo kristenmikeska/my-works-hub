@@ -5,7 +5,9 @@
    Fields and rules: core.js dailyLife (after / until, slot early | morning | lunch | afternoon | after | evening | late,
    schoolOnly / offOnly, days, weather, events, flags, noFlags, met, ranks; cast names speakers with no portrait). Of the
    routines that fit a slot, the one that goes stale soonest plays first, then file order, so keep entries roughly in date
-   order. A choice may give a small `stat`; routines give no ♪ and cost no time (After School and the evening still follow). */
+   order. Normal routines play one every other day. `low: true` marks filler (the trio's): it never takes a day a normal
+   routine could have, plays on the days in between (one every other day of its own) and doesn't move the normal rhythm.
+   A choice may give a small `stat`; routines give no ♪ and cost no time (After School and the evening still follow). */
 window.FEMC_GAME_DAILY_LIFE = [
   { id: 'girls-school-gate', after: '9/14', slot: 'early', schoolOnly: true, events: ['a4-names'],
     place: 'Gekkoukan High · Gate', time: 'Morning', bg: 'outside-school', scene: [

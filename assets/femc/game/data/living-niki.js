@@ -7,7 +7,8 @@
    - holidays: '12/23' The Emperor's Birthday (rank 4; the mall's Christmas lights with Ken and Koromaru, evening) and '1/2'
      (rank 6; fukubukuro lucky bags at the New Year sale, after school slot). Both carry flag year-goes-on; ♪ come from the
      choices' notes (finishHoliday). Speakers: niki, solar, ken, koromaru only.
-   - routines (FEMC_GAME_DAILY_LIFE), every one gated events ['a4-yeobos'], windows 28-35 days, none past 2/26:
+   - routines (FEMC_GAME_DAILY_LIFE), every one gated events ['a4-yeobos'], windows 28-35 days, none past 2/26; the Nov-Dec ones are
+     low: true (filler on the in-between days, core.js dailyLife), so they never crowd out the story routines:
        niki-signs        11/10-12/12 early, school days: Iwatodai Station, an old man asks him the way in his own accent.
        niki-featherman   11/22-12/20 after school, Niki rank 3+: the shrine walk with Ken and Koromaru; Ken explains
                          Featherman, Niki has opinions, Koromaru takes Niki's side (the Ken / Koromaru one).
@@ -153,7 +154,7 @@
   /* ── Routines (daily-life format) ── */
   (W.FEMC_GAME_DAILY_LIFE ||= []).push(
     // The arrival-aware one: the youngest, who can't read the signs where he lives, reading every sign at Iwatodai Station.
-    { id: 'niki-signs', after: '11/10', until: '12/12', slot: 'early', schoolOnly: true, events: ['a4-yeobos'],
+    { id: 'niki-signs', low: true, after: '11/10', until: '12/12', slot: 'early', schoolOnly: true, events: ['a4-yeobos'],
       place: 'Iwatodai Station', time: 'Early Morning', bg: 'iwatodai-station', scene: [
         { n: "Seven forty at Iwatodai Station, the morning rush flowing through the ticket gates in a long gray river of coats and school blazers, and on the bench by the timetable boards, eating a banana, with his headphones round his neck and no train to catch and nowhere at all to be, sat Niki, reading the timetables aloud to himself under his breath for the pleasure of it." },
         { s: 'niki', f: 'happy', t: "Solar. Morning. Did you know there's a train at eight-oh-four that goes somewhere called Tatsumi? I don't know what's in Tatsumi. I just like that I can read it." },
@@ -176,7 +177,7 @@
       ] },
 
     // Ken and Koromaru: Featherman, opinions, and whose side the dog is on.
-    { id: 'niki-featherman', after: '11/22', until: '12/20', slot: 'after', events: ['a4-yeobos'], ranks: { niki: 3 },
+    { id: 'niki-featherman', low: true, after: '11/22', until: '12/20', slot: 'after', events: ['a4-yeobos'], ranks: { niki: 3 },
       place: 'Naganaki Shrine', time: 'After School', bg: 'outside-shrine-day', scene: [
         { n: "Koromaru's afternoon walk had grown a member. Ken held the lead, as always, and walked as always in a straight line exactly down the middle of the shrine path, and beside him, not in a straight line at all, went Niki, who had asked Ken one question about Featherman ten minutes ago and was now receiving the answer." },
         { s: 'ken', f: 'serious', t: "So Featherman Blue isn't the leader. People think he's the leader because he's the strongest. But the leader is Red. Because Red decides." },

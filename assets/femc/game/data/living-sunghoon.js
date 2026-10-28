@@ -7,7 +7,8 @@
    - holidays: '1/11' Coming of Age Day (rank 5; he's turned twenty already, in one of his lives) and '2/14' Valentine's Day
      (rank 7; about Cherry, never Solar; Cherry's lines gated ifFlag arrived-cherry; the White Day box stays unopened, "soon"
      stays pending). Both after the solstice, so both carry flag year-goes-on; ♪ from the choices' notes.
-   - routines (FEMC_GAME_DAILY_LIFE), every one gated events ['a4-yeobos'], windows 28-35 days, none past 2/26:
+   - routines (FEMC_GAME_DAILY_LIFE), every one gated events ['a4-yeobos'], windows 28-35 days, none past 2/26; the Nov-Dec ones are
+     low: true (filler on the in-between days, core.js dailyLife), so they never crowd out the story routines:
        sunghoon-junpei   11/12-12/14 evening: the dorm lounge before eight; Junpei practising "the smile" (the fun interaction).
        sunghoon-escort   11/16-12/18 early, school days: the station platform; two steps behind Jungwon with two coffees.
        sunghoon-fanclub  11/19-12/20 after school: the Strip outside Yeobo's; the fan club; Yukari.
@@ -160,7 +161,7 @@
   /* ── Routines (daily-life format) ── */
   (W.FEMC_GAME_DAILY_LIFE ||= []).push(
     // The fun interaction: Junpei wants the smile.
-    { id: 'sunghoon-junpei', after: '11/12', until: '12/14', slot: 'evening', events: ['a4-yeobos'],
+    { id: 'sunghoon-junpei', low: true, after: '11/12', until: '12/14', slot: 'evening', events: ['a4-yeobos'],
       place: 'Iwatodai Dorm · Lounge', time: 'Evening', bg: 'iwatodaidorm-livingroom-night', scene: [
         { n: "Sunghoon had come by with a box of Sunoo's croissants for the dorm, because Sunoo had made too many and couldn't bear it, and it was ten past seven, and he'd been allowed in on the strict understanding that he'd be out by eight, and Junpei had cornered him by the television before he'd put the box down." },
         { n: "The television was off. Junpei was using the black screen as a mirror." },
@@ -189,7 +190,7 @@
       ] },
 
     // Two steps behind Jungwon, every morning, with two coffees.
-    { id: 'sunghoon-escort', after: '11/16', until: '12/18', slot: 'early', schoolOnly: true, events: ['a4-yeobos'],
+    { id: 'sunghoon-escort', low: true, after: '11/16', until: '12/18', slot: 'early', schoolOnly: true, events: ['a4-yeobos'],
       place: 'Iwatodai Station · Platform', time: 'Early Morning', bg: 'station-platform-day', scene: [
         { n: "Seven-twenty on the platform, breath going up, the commuters in their long beige rows, and further down, by the pillar with the timetable, Jungwon in his coat with a book open, and two steps behind him, exactly two, Sunghoon, with a coffee in each hand." },
         { n: "He held one out without a word. Jungwon took it without looking up from the book." },
@@ -211,7 +212,7 @@
       ] },
 
     // The fan club, and Yukari.
-    { id: 'sunghoon-fanclub', after: '11/19', until: '12/20', slot: 'after', events: ['a4-yeobos'],
+    { id: 'sunghoon-fanclub', low: true, after: '11/19', until: '12/20', slot: 'after', events: ['a4-yeobos'],
       place: 'Iwatodai Strip', time: 'After School', bg: 'location-2', scene: [
         { n: "There were eight girls in Gekkoukan uniforms outside Yeobo's, which was two more than yesterday, and Yukari, coming down the Strip beside Solar with her archery bag over her shoulder, stopped dead and stared at them." },
         { s: 'yukari', f: 'surprised', t: "What is this? Is there a sale? Is somebody famous?" },

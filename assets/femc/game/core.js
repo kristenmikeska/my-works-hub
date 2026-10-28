@@ -1436,19 +1436,26 @@ window.FemcGame = (() => {
   const routeFits = want => Object.entries(want).every(([id, r]) => { const p = progress(id); return !p.reversed && (r === 'none' ? !p.route : p.route === r); });
   function dailyLife(slot = S.slot, d = S.day) {
     const info = dayInfo(d), state = S.dailyLife || { seen: [], lastDay: -99 };
-    if (info.type === 'trip' || d - (state.lastDay ?? -99) < 2 ||
+    // Normal routines: one every other day. Low ones (filler, see below) keep their own spacing on the days in between.
+    const normalOk = d - (state.lastDay ?? -99) >= 2 && state.lowDay !== d;
+    const lowOk = state.lastDay !== d && d - (state.lowDay ?? -99) >= 2;
+    if (info.type === 'trip' || (!normalOk && !lowOk) ||
       D.events.some(e => e.date === info.md && S.events.includes(e.id))) return null;
     if (['after', 'evening'].includes(slot) && S.spent[`${d}-${slot}`]) return null;
     if (holidayDue(slot, d)) return null;
     // A morning-after crush moment (glow) has only today: a routine waits for it.
     if (glowing(d) && (D.crush.moments || []).some(m => m.glow && !crushState().seen.includes(m.id) && crushFits(m, slot, d, info))) return null;
     const seen = state.seen || [];
-    const fit = D.dailyLife.map((e, i) => ({ e, i })).filter(({ e }) => !seen.includes(e.id) && dailyFits(e, slot, d, info));
-    fit.sort((a, b) => dailyUntil(a.e) - dailyUntil(b.e) || a.i - b.i);
+    const fit = D.dailyLife.map((e, i) => ({ e, i })).filter(({ e }) => !seen.includes(e.id) && (e.low ? lowOk : normalOk) && dailyFits(e, slot, d, info));
+    fit.sort((a, b) => !!a.e.low - !!b.e.low || dailyUntil(a.e) - dailyUntil(b.e) || a.i - b.i);
     // A later slot's routine about to go stale (three days or less) keeps today free for itself, so evening and late-night
     // routines aren't crowded out by mornings that could wait (Haechan's batch made Nov-Jan busy enough to need this).
     const order = slotsFor(info), later = order.slice(order.indexOf(slot) + 1);
-    const urgent = D.dailyLife.filter(e => later.includes(e.slot) && !seen.includes(e.id) && dailyUntil(e) - d <= 3 && dailyFits(e, e.slot, d, info))
+    // Low routines (the trio's, 2026-10-27) are filler. The trio's seven Nov-Dec routines crowded the every-other-day
+    // rhythm so story routines (finals-december, minji-meets-haechan) never got a day. A low one never takes a day a normal
+    // routine could have (now or in a later slot), and it plays on the in-between days without moving that rhythm.
+    if (fit[0] && fit[0].e.low && normalOk && D.dailyLife.some(e => !e.low && later.includes(e.slot) && !seen.includes(e.id) && dailyFits(e, e.slot, d, info))) return null;
+    const urgent = D.dailyLife.filter(e => !e.low && normalOk && later.includes(e.slot) && !seen.includes(e.id) && dailyUntil(e) - d <= 3 && dailyFits(e, e.slot, d, info))
       .sort((a, b) => dailyUntil(a) - dailyUntil(b))[0];
     if (urgent && (!fit[0] || dailyUntil(urgent) < dailyUntil(fit[0].e))) return null;
     return fit[0]?.e || null;
@@ -1458,7 +1465,7 @@ window.FemcGame = (() => {
     const e = D.dailyLife.find(e => e.id === id); if (!e) return;
     const state = S.dailyLife ||= { seen: [], lastDay: -99 };
     if (!Array.isArray(state.seen)) state.seen = [];
-    if (!state.seen.includes(id)) { state.seen.push(id); state.lastDay = S.day; save(); }
+    if (!state.seen.includes(id)) { state.seen.push(id); if (e.low) state.lowDay = S.day; else state.lastDay = S.day; save(); }
   }
 
   /* ── Crushes (data/crush.js and data/crush-<id>.js → window.FEMC_GAME_CRUSH; 2026-10-23, Kat's ruling in the lore bible):
@@ -1567,7 +1574,7 @@ window.FemcGame = (() => {
     const M = D.crush.moments || [], c = crushState(), info = dayInfo(d);
     if (!M.length || S.phase !== 'play' || ['trip', 'prologue'].includes(info.type)) return null;
     // A morning-after moment (glow, the spice batch) doesn't wait for the gap or a routine: it only has the one day.
-    const spaced = d - c.lastDay >= crushGap(d) && !(S.dailyLife?.lastDay === d && slot !== 'late');
+    const spaced = d - c.lastDay >= crushGap(d) && !((S.dailyLife?.lastDay === d || S.dailyLife?.lowDay === d) && slot !== 'late');
     if (!spaced && !glowing(d)) return null;
     if (D.events.some(e => e.date === info.md && S.events.includes(e.id))) return null;
     if (['after', 'evening'].includes(slot) && S.spent[`${d}-${slot}`]) return null;
