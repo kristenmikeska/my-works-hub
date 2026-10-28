@@ -279,8 +279,8 @@
     { id: 'am-searchparty-warm', thread: 'searchparty', from: '3/1', to: '3/4', flag: 'year-goes-on', msgs: [
       { from: 'hanni', t: "hanni: IT'S WARM OUT" }, { from: 'hanni', t: 'hanni: sol go outside right now. the plum trees by the river!!!' },
       { from: 'hyein', t: "hyein: i'm not putting the coat away. i REFUSE. it's been through too much" },
-      { from: 'jihoon', t: 'jihoon: It Is Fourteen Degrees. Calm Down. Embarrassing' }, { from: 'hanni', t: 'hanni: jihoon is wearing shorts' }
-    ], reply: [{ t: 'HEHEHEHE JIHOON SHORTS', then: [{ from: 'jihoon', t: 'jihoon: My Legs Deserve Sunlight Too' }] },
+      { from: 'jihoon', t: 'jihoney: It Is Fourteen Degrees. Calm Down. Embarrassing' }, { from: 'hanni', t: 'hanni: jihoon is wearing shorts' }
+    ], reply: [{ t: 'HEHEHEHE JIHOON SHORTS', then: [{ from: 'jihoon', t: 'jihoney: My Legs Deserve Sunlight Too' }] },
       { t: 'its so warm omg. going rn', then: [{ from: 'hanni', t: 'hanni: take a picture!!! for us!!!' }, { from: 'hyein', t: 'hyein: wear the coat' }] }] }
   );
 

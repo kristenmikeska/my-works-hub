@@ -704,7 +704,7 @@ window.FEMC_GAME_JOB_SCENES = {
             { s: 'jungwon', f: 'neutral', t: "Eat it before it goes stale. Please. That's all. That's the whole thing I'm asking." }
           ] }
         ] },
-        { fragment: 'hoax-croissant' }
+        { n: "She had a croissant already, in the journal, from May: a flaky one, eaten too fast between two things she was late for. This wasn't that one. This one had a question mark on it, and it didn't go in the journal. It went somewhere lower down, under her ribs, and stayed." }
       ] },
 
       { at: 5, after: '11/7', lean: 'H', scene: [
@@ -719,8 +719,8 @@ window.FEMC_GAME_JOB_SCENES = {
         { s: 'jay', f: 'serious', t: "That's for a customer, dumbass. Not you." },
         { s: 'niki', f: 'sad', t: "I AM a customer. I'm paying. Heeseung hyung's paying." },
         { s: 'heeseung', f: 'surprised', t: "I'm WHAT?" },
-        { n: "And the last of them, the one with a face like a statue somebody had been very careful with, stepped up to the counter, plucked the single flower out of the little vase by the register, and bowed to her with it, so deeply and so slowly that it was almost a threat." },
-        { s: 'sunghoon', f: 'flustered', t: "It is especially my pleasure. As always." },
+        { n: "And the last of them, the one with a face like a statue somebody had been very careful with, stepped up to the counter, plucked the single flower out of the little vase by the register, and held it out to her across it with a bow so deep and so slow that it was almost a threat." },
+        { s: 'sunghoon', f: 'flustered', t: "Hold this for her. You'll see her before I do. Tell her Park Sunghoon has been very patient." },
         { s: 'jay', f: 'neutral', t: "Dude. Pack it up already." },
         { choose: [
           { t: "(Take everyone's order at once, in the order they're standing.)", then: [
@@ -731,13 +731,14 @@ window.FEMC_GAME_JOB_SCENES = {
           ] },
           { t: "(Put Sunghoon's flower back in the vase, and take his order last.)", then: [
             { s: 'sunghoon', f: 'surprised', t: "...Last? Me?" },
-            { s: 'niki', f: 'happy-2', t: "She did it. She finally did it. Somebody write down the date." },
+            { s: 'niki', f: 'happy-2', t: "She did it. She put Cherry's flower back. Somebody write down the date. He's going to write a poem about this." },
             { s: 'jay', f: 'happy', t: "Best thing that's happened since we got here." },
             { stat: { kindness: 1 } }
           ] }
         ] },
+        { s: 'heeseung', f: 'neutral', t: "I used to be vice president, you know. I was fired. For you. Still breaks my heart. Four croissants, please." },
         { n: "They took the big table by the window and immediately rearranged it, dragging over two more chairs than there were people, and Solar brought out the tray, and Niki took one bite of his croissant and announced to the entire cafe that the picture on the menu made the food look way better than it was, and Sunoo threw a napkin at him from behind the counter with real violence." },
-        { s: 'jake', f: 'neutral', t: "Hey. Solar. Is he eating? Won. You'd notice. You always notice." },
+        { s: 'jake', f: 'neutral', t: "Hey. Solar. Is he eating? Jungwon. You'd notice. You always notice." },
         { n: "She looked. The corner booth was empty this afternoon, a red pen lying where he'd left it, lined up neatly with the edge of the table, waiting for him to come back and pretend he'd had lunch." },
         { choose: [
           { t: "He ate. I watched.", then: [

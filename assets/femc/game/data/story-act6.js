@@ -195,6 +195,25 @@
         { n: "Minji laughed, helpless, her face going red in the cold and the amber, and stood there under the lamp being looked at, and let herself be, and that was the whole evening, the two of them taking turns in the light, until the snow had covered the bench and neither of them could feel their hands." }
       ] },
       { t: "(Text Jungwon.)", ifFlag: 'xc-jungwon', flag: { 'xmas-jungwon': true }, tally: { xmas: 'jungwon' }, then: [
+        // Hoax route: the HOAX Jungwon (Yeobo's, making a boy who skips meals eat). strangers / true keep the sea bream.
+        { ifFlag: 'route-H', then: [
+        { place: "Iwatodai Strip · Yeobo's Cafe", time: 'Evening', music: 'date' },
+        { n: "He was at Yeobo's after closing, with the chairs up on every table but one. Sunoo had left him the key, and a tray, and a word on the counter in red icing, EAT, which he had covered with a napkin out of dignity." },
+        { s: 'jungwon', f: 'happy', t: "Sunoo made them. I'm only supervising. Please sit. I've been informed I'm not allowed to watch you eat unless I'm eating. I was informed by a croissant." },
+        { n: "Two croissants on two plates, a heart piped on each in red, the snow coming down past the gold-fogged window. He pushed hers across first, and then looked at his own like a form he'd been asked to sign without reading it." },
+        { s: 'jungwon', f: 'neutral', t: "Maeumi would have come. He's very small. It's a lot of travel. He sends his regards." },
+        { choose: [
+          { t: "It's terrible.", then: [
+            { n: "It came out of her like a line she'd been handed, and he looked up, startled, and then the dimples came, both of them, deep, and nothing about them was polite." },
+            { s: 'jungwon', f: 'happy', t: "It's Sunoo's. I'm telling him. He'll cry." },
+            { n: "Then he ate his. All of it, every flake, while she watched, and he let her watch, which was the present, and they both knew it." }
+          ] },
+          { t: "It's perfect.", then: [
+            { s: 'jungwon', f: 'flustered', t: "It's a little burnt on the left. But thank you." },
+            { n: "She pushed his plate an inch toward him and said *Won*, the way the name came out of her, unexplained, and he went still, and then he ate it, all of it, with his ears going red the whole way through." }
+          ] }
+        ] }
+        ], else: [
         { place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'date' },
         { n: "He was already in the dorm kitchen. He'd asked Mitsuru, three days before, formally, in writing, whether he might use it on the twenty-fourth. He had an apron on. He had a fish." },
         { s: 'jungwon', f: 'happy', t: "Please sit. You're not to help. You'll only cut yourself, and then I'll have to watch you stitch it, and I won't be able to concentrate." },
@@ -210,11 +229,14 @@
             { n: "He ate his own very slowly, not looking at her, and she watched his ears go red, all the way through the meal." }
           ] }
         ] }
+        ] }
       ] },
       { t: "(Text Jihoon.)", ifFlag: 'xc-jihoon', flag: { 'xmas-jihoon': true }, tally: { xmas: 'jihoon' }, then: [
         { place: 'Paulownia Mall', time: 'Evening', music: 'date' },
         { n: "Jihoon texted back before she'd finished typing. *outside. obviously. ive been outside for an hour. its SNOWING sol. i have FROSTBITE*" },
         { n: "He had a large tub of ice cream. In the snow. He held it up when she came out like a cop holding up a badge, and she laughed so hard she had to hold the gate." },
+        { s: 'jihoon', f: 'happy', t: "Merry Christmas. You're welcome. Nobody else in this dimension would stand in the snow for you. I checked. They're all inside. Weak. Every one of them." },
+        { n: "His hands, when he passed her a spoon, weren't quite steady. He saw her see it, and put them in his pockets, and said it was the cold. It was mostly the cold." },
         { n: "They went to the mall and walked round the lights and ate the ice cream on a bench in front of the giant tree with two plastic spoons from the convenience store, freezing, both of them, and he complained the whole time, and she insulted him the whole time, and it was perfect. Then, about halfway down the tub, he went quiet. Jihoon quiet. A medical event." },
         { s: 'jihoon', f: 'neutral', t: "...I've been saying it for years, you know. Out loud. Constantly. The light of your disgusting life. Your favorite human being. Rightfully my job." },
         { s: 'jihoon', f: 'sad', t: "I thought if I said it loud enough it'd count as a joke. I didn't think you'd ever actually hear it." },
@@ -627,6 +649,7 @@
       { n: "Then the others. The ones who'd come for her from places she wasn't going back to." },
       { n: "Yunjin stood at a door that smelled of salt and diesel, in the red puffer, with her arms crossed so tight it looked like it hurt. She didn't come and hug Solar. She said if she did, she'd never go through. She just looked at her across the platform, a long look, the whole year in it, and said *wifey*, once, not loud, and went." },
       { n: "Jihoon stood at a door with a dog barking behind it, and couldn't make himself open it, and Cherry opened it for him, and pushed him through by the back of his hoodie, and turned in the doorway and pointed at Solar and said, *I'm still number one. Don't you dare forget that.* Then she went too, and the crew after her, Junkyu crying, Asahi pretending not to." },
+      { n: "The council went in a crowd, the way they'd come into Yeobo's: Sunoo crying into Heeseung's sleeve, Jake waving with both arms, Jay hauling Sunghoon away from a farewell speech, Niki already halfway through the door, yelling for Jay." },
       { n: "Jungwon was last. He stood at his door, very straight, and bowed to her. A real one. Formal, from the waist. When he came up, his face was completely still, which she knew now, which she'd learned like a language, meant everything. He touched his watch. It was running. He went through, and the door closed, and it didn't slam. It closed very, very quietly." },
       { n: "Haechan didn't go to any door. He came and stood beside her. Half a step behind, and to the side. And when she looked up at him, he was looking at a door at the far end of the platform, a door with snow on the far side of it and a pink hallway beyond, and he said, flat, *I'll wait*. And did." }
     ], [
@@ -636,6 +659,7 @@
       { n: "Minji didn't film it. She stood at her door with the camera in her hands and didn't lift it. She just looked, the whole time, without anything between them. *You're the same in the frame,* she said. *Even now.* Then she went." },
       { n: "Jaehyun went last of them. He didn't hug her. He stood in front of her for a long moment and read the field, all of it, the way he did, and arrived. *I remember enough for both of us,* he said. *I'll keep doing it.* And went through, and didn't look back, because he was the kind of person who'd decided a long time ago that looking back was a kindness you couldn't afford to show." },
       { n: "Then Jihoon, and Cherry, and the crew, through a door with a dog barking behind it. Cherry pointed at her from the doorway. *Still number one.* Jihoon couldn't look at her at all, and then did, at the last second, and mouthed something she didn't need to hear." },
+      { n: "Then the council, his six, in a crowd: Sunoo crying into Heeseung's sleeve, Jake waving with both arms, Jay hauling Sunghoon off a farewell speech, Niki halfway through the door already. Every one of them looked back at Jungwon at the edge of the platform, and Sunoo mouthed *eat something*, and went." },
       { n: "Yunjin didn't go to any door. Neither did Haechan, or Jungwon, the two of them standing a careful distance apart at the edge of the platform, not looking at each other, both looking at a door that smelled of salt and barley tea, waiting for her the way you'd wait at the end of a pier for a boat you knew was coming in." }
     ], [
       // Hoax: the Runners and strangers searchers go home without her.
@@ -648,7 +672,7 @@
       { n: "He didn't hug her. He took one of her hands out of her coat pocket and put something in it, and closed her fingers round it with his own. A can. Pink and black, cold, a logo like claw marks. The last one in any world that wasn't his." },
       { s: 'haechan', f: 'sad', t: "Don't waste it." },
       { n: "Then he walked back up the platform to his door, and stood in it for a second, half in one life and half in the other, and looked at her down the whole length of the station, flat, and then not flat at all. He hummed something. She couldn't hear it from there. She knew which song. She knew it ended now. He went through, and the door that was two doors closed on both of them at once." },
-      { n: "Jihoon didn't go to any door. Neither did Cherry, or the crew, or Jungwon, who stood a little apart from them with his hands behind his back and his watch running again. They stood in a loud untidy knot at the far end of the platform by a door with a dog barking behind it, arguing about nothing, the way you argue at a bus stop when the bus is coming, and every so often all of them looked over at her at once, to check she was still there." }
+      { n: "Jihoon didn't go to any door. Neither did Cherry, or the crew, or Jungwon, who stood a little apart from them with his hands behind his back and his watch running again, his whole council around him: Sunoo with a paper bag, Heeseung counting heads, Jake and Niki arguing, Jay and Sunghoon pretending to be above it. They stood in a loud untidy knot at the far end of the platform by a door with a dog barking behind it, arguing about nothing, the way you argue at a bus stop when the bus is coming, and every so often all of them looked over at her at once, to check she was still there." }
     ], [
       // Stay: every searcher goes home without her.
       { n: "Then the others. All of them. Every one who had come for her." },
@@ -658,6 +682,7 @@
       { n: "Jihoon, at a door with a dog barking behind it. He didn't joke. That was the worst part. For the first time in his life, Park Jihoon couldn't find a single joke. He stood there with his hands at his sides and looked at her and said, *it's really quiet without you being mean to me*, and then Cherry took his hand, and he let her, and they went through together, and the crew after them, Junkyu waving until the door shut." },
       { n: "Minji, who didn't film. Jaehyun, who stood in front of her for a long time and didn't read the field, for once, didn't arrive anywhere, just stood there being her brother, and then put his hand on her head, once, the way you would with a much younger sister, and went." },
       { n: "Jungwon. At his door. He bowed. Formal, from the waist, perfectly correct, and when he straightened up his face was so still it hurt to look at, and he said, very politely, *thank you for having been my opponent*, and then, so quietly she almost didn't hear it, one more word, in a register he had never once used with her, and went through before she could answer." },
+      { n: "His council went after him in a crowd, because they'd never once let him go anywhere alone: Sunoo crying into Heeseung's sleeve, Jake waving with both arms, Jay hauling Sunghoon away from a farewell speech, Niki already halfway through the door, yelling for Jay." },
       { n: "Haechan was last. Of course he was. He stood at his door, which was two doors, a pink hallway and a house by the sea, both at once, and didn't go through either. He looked at her. He didn't ask her to come. He'd never asked her anything. He just looked, the whole year in it, flat, and not flat at all." },
       { n: "*Solar,* he said. Just that. Her name. Like a door left open a crack." },
       { n: "Then he went." },

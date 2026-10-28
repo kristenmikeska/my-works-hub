@@ -46,9 +46,9 @@
     1: { slot: 'evening', msgs: [{ from: 'jungwon', t: "you left your pencil case in the council room. it's on the second shelf." }, { from: 'jungwon', t: 'i looked inside it. there are four pens. none of them work.' }],
       reply: [{ t: 'omg ur so nosy lol', link: 'jungwon', notes: 2, then: [{ from: 'jungwon', t: 'i was being thorough.' }, { from: 'jungwon', t: "there's a working pen in it now." }] },
         { t: '-salute- thank u mr president', link: 'jungwon', notes: 3, then: [{ from: 'jungwon', t: '...' }, { from: 'jungwon', t: "don't." }, { from: 'jungwon', t: "you're welcome." }] }] },
-    4: { slot: 'evening', msgs: [{ from: 'jungwon', t: "the pot is in the cupboard on the left. i've washed it." }, { from: 'jungwon', t: "please tell fuuka-ssi i borrowed her knife. i've sharpened it." }],
+    4: { slot: 'evening', msgs: [{ from: 'jungwon', t: "i took the pot back to the guesthouse. the bowls are on the rack." }, { from: 'jungwon', t: "the knife is back in the drawer by the stove. i've sharpened it. i didn't think anyone should have to." }],
       reply: [{ t: 'it was terrible btw', link: 'jungwon', notes: 3, then: [{ from: 'jungwon', t: 'yes.' }, { from: 'jungwon', t: 'thank you.' }] },
-        { t: 'make it again', link: 'jungwon', notes: 2, then: [{ from: 'jungwon', t: 'on sunday. if mitsuru-ssi permits it.' }, { from: 'jungwon', t: "she will. i've already asked." }] }] },
+        { t: 'make it again', link: 'jungwon', notes: 2, then: [{ from: 'jungwon', t: 'on sunday. if kirijo-san permits it.' }, { from: 'jungwon', t: "she will. i've already asked." }] }] },
     6: { slot: 'late', msgs: [{ from: 'jungwon', t: 'you still have the pin.' }, { from: 'jungwon', t: "you don't have to give it back. i wanted to say that in writing." }],
       reply: [{ t: 'im keeping it', link: 'jungwon', notes: 3, then: [{ from: 'jungwon', t: 'good.' }] },
         { t: 'r u sure?', link: 'jungwon', notes: 2, then: [{ from: 'jungwon', t: "i've never been less sure of anything." }, { from: 'jungwon', t: 'keep it anyway.' }] }] },
@@ -64,7 +64,7 @@
       reply: [{ t: 'light of my disgusting life', link: 'jihoon', notes: 3, then: [{ from: 'jihoon', t: '...' }, { from: 'jihoon', t: 'dont do that to me over text' }] },
         { t: 'its creepy that u checked', link: 'jihoon', notes: 1, then: [{ from: 'jihoon', t: "its called Devotion. Look It Up" }] }] },
     6: { slot: 'evening', msgs: [{ from: 'jihoon', t: 'for the record i Won the air hockey' }, { from: 'jihoon', t: 'Yang will say otherwise. Yang is a Liar' }],
-      reply: [{ t: 'u lost tho', link: 'jihoon', notes: 2, then: [{ from: 'jihoon', t: 'Contested Result' }, { from: 'jihoon', t: 'Recount Pending' }] },
+      reply: [{ t: 'u lost tho', link: 'jihoon', notes: 2, then: [{ from: 'jihoon', t: 'Contested Result' }, { from: 'jihoon', t: 'Recount Pending' }, { from: 'jihoon', t: 'yeah ok bitch' }] },
         { t: 'HEHEHE rematch', link: 'jihoon', notes: 3, then: [{ from: 'jihoon', t: 'Name The Time, Skank' }] }] },
     8: { slot: 'late', msgs: [{ from: 'jihoon', t: 'the tub is lighter' }, { from: 'jihoon', t: 'dont make it weird' }],
       reply: [{ t: 'its not weird', link: 'jihoon', notes: 2, then: [{ from: 'jihoon', t: 'ok' }, { from: 'jihoon', t: '...ok good' }] },
@@ -237,8 +237,8 @@
       { from: 'hyein', t: 'hyein: hanni bought four kinds of seaweed' }, { from: 'hyein', t: 'hyein: we dont know what any of them are for' }, { from: 'hanni', t: "hanni: they were on SALE" }
     ], reply: [{ t: 'the green one is for soup lol', then: [{ from: 'hanni', t: 'hanni: SEE. she knows' }, { from: 'hyein', t: 'hyein: they are ALL green hanni' }] }, { t: 'omg ask fuuka', then: [{ from: 'hanni', t: 'hanni: good idea!!!' }] }] },
     { id: 'am-searchparty-wifi', thread: 'searchparty', from: '9/26', to: '10/16', flag: 'arrived-jihoon', msgs: [
-      { from: 'jihoon', t: 'jihoon: Who Has The Dorm Wifi Password' }, { from: 'hyein', t: 'hyein: u dont live here' }, { from: 'jihoon', t: 'jihoon: I Am Here Constantly. I Am Basically Furniture' }
-    ], reply: [{ t: 'HEHEHE its on the fridge', then: [{ from: 'jihoon', t: 'jihoon: Bless You' }] }, { t: 'furniture doesnt need wifi', then: [{ from: 'jihoon', t: 'jihoon: Discrimination' }, { from: 'hanni', t: "hanni: it's on the fridge jihoon" }] }] },
+      { from: 'jihoon', t: 'jihoney: Who Has The Dorm Wifi Password' }, { from: 'hyein', t: 'hyein: u dont live here' }, { from: 'jihoon', t: 'jihoney: I Am Here Constantly. I Am Basically Furniture' }
+    ], reply: [{ t: 'HEHEHE its on the fridge', then: [{ from: 'jihoon', t: 'jihoney: Bless You' }] }, { t: 'furniture doesnt need wifi', then: [{ from: 'jihoon', t: 'jihoney: Discrimination' }, { from: 'hanni', t: "hanni: it's on the fridge jihoon" }] }] },
     { id: 'am-minji-light', thread: 'minji', from: '9/28', to: '10/22', flag: 'arrived-minji', msgs: [{ from: 'minji', t: "the light's good at the river at 5" }, { from: 'minji', t: "not asking you to come. just telling you the light's good" }],
       reply: [{ t: 'see u at 5', link: 'minji', notes: 3, then: [{ from: 'minji', t: 'ok' }, { from: 'minji', t: 'ok :)' }] }, { t: 'film it for me', link: 'minji', notes: 2, then: [{ from: 'minji', t: 'already am' }] }] },
     { id: 'am-yunjin-natto', thread: 'yunjin', from: '10/12', to: '11/6', flag: 'arrived-yunjin', msgs: [{ from: 'yunjin', t: 'babe what is natto' }, { from: 'yunjin', t: 'and why did fuuka look at me like that when i said it smelled like a crime' }],
@@ -250,8 +250,8 @@
     { id: 'am-jaehyun-fridge', thread: 'jaehyun', from: '10/27', to: '11/20', flag: 'arrived-jaehyun', msgs: [{ from: 'jaehyun', t: 'The schedule on the fridge is wrong.' }, { from: 'jaehyun', t: 'Recycling is Wednesday, not Tuesday.' }],
       reply: [{ t: 'how do u even know that', link: 'jaehyun', notes: 2, then: [{ from: 'jaehyun', t: 'I read the city notice.' }, { from: 'jaehyun', t: "Someone has to." }] }, { t: 'tell mitsuru not me lol', link: 'jaehyun', notes: 1, then: [{ from: 'jaehyun', t: "I'd rather you did." }] }] },
     { id: 'am-hateclub-worksheets', thread: 'hateclub', from: '11/3', to: '11/26', flag: 'arrived-crew', msgs: [
-      { from: 'asahi', t: 'asanoonecares: jaehyuk is doing homework' }, { from: 'asahi', t: 'asanoonecares: he does not have a school' }, { from: 'jaehyuk', t: 'jaehyukkie: I found worksheets at the bookstore. I like to stay in practice.' }, { from: 'junkyu', t: 'junkyute: can i have one!!!' }
-    ], reply: [{ t: 'HEHEHEHE nerd', then: [{ from: 'jaehyuk', t: 'jaehyukkie: Thank you.' }] }, { t: 'can i copy them', then: [{ from: 'jaehyuk', t: 'jaehyukkie: Some things never change.' }] }] },
+      { from: 'asahi', t: 'asanoonecares: jaehyuk is doing homework' }, { from: 'asahi', t: 'asanoonecares: he does not have a school' }, { from: 'jaehyuk', t: 'jaehyukkie: i found worksheets at the bookstore. i like to stay in practice.' }, { from: 'junkyu', t: 'junkyute: can i have one!!!' }
+    ], reply: [{ t: 'HEHEHEHE nerd', then: [{ from: 'jaehyuk', t: 'jaehyukkie: thank you.' }] }, { t: 'can i copy them', then: [{ from: 'jaehyuk', t: 'jaehyukkie: some things never change.' }] }] },
     { id: 'am-sisters-door', thread: 'sisters', from: '11/7', to: '11/28', flag: 'arrived-haechan', msgs: [
       { from: 'hyein', t: 'hyein: the door on the top floor was OPEN' }, { from: 'hyein', t: 'hyein: for like two seconds' }, { from: 'hanni', t: 'hanni: we are not monitoring the door' }, { from: 'hyein', t: 'hyein: i am monitoring the door' }
     ], reply: [{ t: 'leave him alone lol', then: [{ from: 'hyein', t: 'hyein: HIM. she said HIM' }, { from: 'hanni', t: 'hanni: hyein' }, { from: 'hanni', t: "hanni: he's ok. i think. i'm watching him" }] }, { t: '(Leave it on read.)', silent: true, then: [{ from: 'hanni', t: 'hanni: good. ignore her' }] }] },
@@ -264,8 +264,8 @@
     { id: 'am-mark-piano', thread: 'mark', from: '11/21', to: '12/14', flag: 'arrived-mark', msgs: [{ from: 'mark', t: "found a piano at the mall nobody plays" }, { from: 'mark', t: "it's so out of tune. i love it" }, { from: 'mark', t: "nobody really comes with me anymore. anyway" }],
       reply: [{ t: 'play me something on it', link: 'mark', notes: 2, then: [{ from: 'mark', t: 'ofc!! tmrw?' }] }, { t: 'lol only u would love that', link: 'mark', notes: 1, then: [{ from: 'mark', t: 'haha guilty' }] }] },
     { id: 'am-searchparty-finals', thread: 'searchparty', from: '12/10', to: '12/17', flag: 'arrived-jihoon', msgs: [
-      { from: 'hanni', t: 'hanni: good luck on finals sol!!!! ur gonna do so good' }, { from: 'hyein', t: 'hyein: i made u a playlist for studying. its all sad songs. sorry' }, { from: 'jihoon', t: 'jihoon: Remember Who Copied Off Jaehyuk For Three Years. Not You. Never You' }
-    ], reply: [{ t: 'thank u guys omg', then: [{ from: 'hanni', t: 'hanni: <3' }] }, { t: 'HEHEHE i never copied', then: [{ from: 'jihoon', t: 'jihoon: Lies. Slander. Beautiful' }] }] },
+      { from: 'hanni', t: 'hanni: good luck on finals sol!!!! ur gonna do so good' }, { from: 'hyein', t: 'hyein: i made u a playlist for studying. its all sad songs. sorry' }, { from: 'jihoon', t: 'jihoney: Remember Who Copied Off Jaehyuk For Three Years. Not You. Never You' }, { from: 'jihoon', t: 'jihoney: u didnt study for ours either. i Checked' }, { from: 'jihoon', t: "jihoney: Last Time We Had Exams You Didn't Show Up. Show Up This Time" }
+    ], reply: [{ t: 'thank u guys omg', then: [{ from: 'hanni', t: 'hanni: <3' }] }, { t: 'HEHEHE i never copied', then: [{ from: 'jihoon', t: 'jihoney: Lies. Slander. Beautiful' }] }] },
     { id: 'am-sees-break', thread: 'sees', from: '12/25', to: '1/6', flag: 'year-goes-on', msgs: [
       { from: 'junpei', t: 'WINTER BREAK' }, { from: 'junpei', t: 'nobody wake me up til january' }, { from: 'yukari', t: 'it IS january in a week junpei' }, { from: 'junpei', t: 'then nobody wake me up for a week' }
     ], reply: [{ t: 'see u in a week', then: [{ from: 'junpei', t: 'goodnight forever' }] }, { t: 'akihiko is going to wake u at 5', then: [{ from: 'junpei', t: 'NOT IF I MOVE ROOMS' }] }] },
@@ -275,7 +275,7 @@
       { from: 'hanni', t: 'hanni: hyein bought three lucky bags' }, { from: 'hyein', t: 'hyein: two of them are mine' }, { from: 'hanni', t: 'hanni: two of them are YOURS??' }, { from: 'hyein', t: "hyein: we're not talking about it" }
     ], reply: [{ t: 'whats in the third one', then: [{ from: 'hyein', t: 'hyein: something for u. obviously' }] }, { t: 'iconic', then: [{ from: 'hyein', t: 'hyein: THANK U' }, { from: 'hanni', t: "hanni: don't encourage her!!" }] }] },
     { id: 'am-hateclub-bath', thread: 'hateclub', from: '1/8', to: '2/28', flag: 'year-goes-on', msgs: [
-      { from: 'hyunsuk', t: 'geniusuk: jihoon fell asleep in the guesthouse bath' }, { from: 'asahi', t: "asanoonecares: we're leaving him" }, { from: 'junkyu', t: 'junkyute: im putting a towel on him!!!' }
+      { from: 'hyunsuk', t: 'geniusuk: jihoon fell asleep in the guesthouse bath' }, { from: 'jaehyuk', t: 'jaehyukkie: is he breathing. someone answer me.' }, { from: 'hyunsuk', t: 'geniusuk: hes SNORING. hes fine. i checked twice' }, { from: 'asahi', t: "asanoonecares: we're leaving him. snoring" }, { from: 'junkyu', t: 'junkyute: im putting a towel on him!!!' }
     ], reply: [{ t: 'HEHEHEHE take a pic', then: [{ from: 'asahi', t: 'asanoonecares: already did' }, { from: 'jihoon', t: 'jihoney: DELETE IT' }] }, { t: 'kyu ur a saint', then: [{ from: 'junkyu', t: 'junkyute: :D' }] }] },
     { id: 'am-yukari-graduation', thread: 'yukari', from: '1/12', to: '3/3', flag: 'year-goes-on', msgs: [{ from: 'yukari', t: 'the third years are all crying in the hallway about graduation' }, { from: 'yukari', t: "you're not allowed to graduate. i decided" }],
       reply: [{ t: 'i accept ur ruling', link: 'yukari', notes: 2, then: [{ from: 'yukari', t: 'good' }] }, { t: 'ill visit', link: 'yukari', notes: 3, then: [{ from: 'yukari', t: "you'd better" }] }] },

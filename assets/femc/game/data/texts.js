@@ -85,14 +85,14 @@ window.FEMC_GAME_TEXTS = {
     { id: 't-0925-searchparty', thread: 'searchparty', date: '9/25', slot: 'afternoon', flag: 'arrived-jihoon', msgs: [
       { from: 'hanni', t: 'hanni added jihoon and you to a group' },
       { from: 'hanni', t: "hanni named the group \"sol's search party\"" },
-      { from: 'jihoon', t: 'jihoon: Who Gave Her The Power To Name Things' },
+      { from: 'jihoon', t: 'jihoney: Who Gave Her The Power To Name Things' },
       { from: 'hyein', t: "hyein: she's social chair. it's literally her job" },
-      { from: 'jihoon', t: 'jihoon: of WHAT' },
+      { from: 'jihoon', t: 'jihoney: of WHAT' },
       { from: 'hyein', t: 'hyein: of PARTIES' },
-      { from: 'jihoon', t: 'jihoon: ok fine. im staying' }
+      { from: 'jihoon', t: 'jihoney: ok fine. im staying' }
     ], reply: [
-      { t: 'why am i in this', then: [{ from: 'hanni', t: "hanni: ur the guest of honor!!!" }, { from: 'jihoon', t: 'jihoon: ur the search' }] },
-      { t: 'im literally in class rn', then: [{ from: 'jihoon', t: 'jihoon: Skipping Is A Sport, Sol' }, { from: 'hanni', t: 'hanni: DO NOT listen to him' }] }
+      { t: 'why am i in this', then: [{ from: 'hanni', t: "hanni: ur the guest of honor!!!" }, { from: 'jihoon', t: 'jihoney: ur the search' }] },
+      { t: 'im literally in class rn', then: [{ from: 'jihoon', t: 'jihoney: Skipping Is A Sport, Sol' }, { from: 'hanni', t: 'hanni: DO NOT listen to him' }] }
     ] },
     { id: 't-1002-minji', thread: 'minji', date: '10/2', slot: 'lunch', flag: 'arrived-minji', msgs: [
       { from: 'minji', t: "can i film the station tonight. at sunset. you don't have to be in it" },
@@ -146,7 +146,7 @@ window.FEMC_GAME_TEXTS = {
       { from: 'junkyu', t: 'junkyute: SOL!!! the guesthouse has a BATH. like a BIG one' },
       { from: 'asahi', t: 'asanoonecares: junkyu has been in it for an hour' },
       { from: 'hyunsuk', t: "geniusuk: we're worried about his fingers" },
-      { from: 'jaehyuk', t: "jaehyukkie: Please hydrate if you're in there that long, Junkyu." },
+      { from: 'jaehyuk', t: "jaehyukkie: please hydrate if you're in there that long, junkyu." },
       { from: 'jihoon', t: 'jihoney: Grave Sin. Hogging The Bath. I Will Remember This' }
     ], reply: [
       { t: 'HEHEHEHE junkyu ur a PRUNE', link: 'junkyu', notes: 2, then: [{ from: 'junkyu', t: "junkyute: im a HAPPY prune!!! :D" }] },
@@ -172,7 +172,11 @@ window.FEMC_GAME_TEXTS = {
       { from: 'cherry', t: 'cherryblossoms: SOLAR KIM' },
       { from: 'cherry', t: 'cherryblossoms: why is sunghoon here. why is he HERE. why is he at the cafe in an APRON' },
       { from: 'jihoon', t: 'jihoney: Cherry Has Seen The Prince' },
-      { from: 'asahi', t: 'asanoonecares: oh goodie' }
+      { from: 'asahi', t: 'asanoonecares: oh goodie' },
+      { from: 'asahi', t: 'asanoonecares: cant wait for her to never shut up about this' },
+      { from: 'cherry', t: 'cherryblossoms: die' },
+      { from: 'hyunsuk', t: 'geniusuk: cool' },
+      { from: 'junkyu', t: 'junkyute: hyunsuk :(' }
     ], reply: [
       { t: 'HEHEHEHE go get him wife', link: 'cherry', notes: 3, then: [{ from: 'cherry', t: 'cherryblossoms: i love u bitch' }] },
       { t: 'whos sunghoon', link: 'cherry', notes: 1, then: [{ from: 'cherry', t: 'cherryblossoms: ...' }, { from: 'cherry', t: "cherryblossoms: ur so lucky i love u" }] }
