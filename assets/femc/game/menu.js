@@ -716,7 +716,7 @@ window.FemcMenu = (() => {
      Extras panel) steps out of the page meanwhile and comes back after. Not in the Dark Hour.
      New Game+ keeps all of it (albumCarry → the new S.album: cg, frags, events, doors, ranks, prologue). */
   const ALB_V = 1, END_ID = 'end-ending', CLEARS_KEY = 'kg-femc-revamp-clears';
-  const EXTRA_TABS = ['album', 'theater', 'wardrobe'];
+  const EXTRA_TABS = ['album', 'theater']; // the Wardrobe opens in the Dark Hour menu too (Kat, 2026-10-27); looks apply from the next fight
   const albumOf = () => S().album || {};
   const uniq = a => [...new Set(a)];
   const flagKeys = v => (typeof v === 'string' ? [v] : Array.isArray(v) ? v.filter(k => typeof k === 'string') : v && typeof v === 'object' ? Object.keys(v).filter(k => v[k]) : []);

@@ -111,8 +111,11 @@
   const FIGHTER_STATES = { attack: [2], cast: [3], hurt: [4], evoke: [1], win: [5] };
   /* Wardrobe looks from the life sim (game/cosmetics.js battle(), read once per frame): an outfit's pose folder per member
      (same six frames and canvas as the member's own sheet) and CSS for the battle theme and Evoker tint. Practice: none. */
-  const LOOKS = (() => { try { return window.parent !== window && window.parent.FemcCosmetics ? window.parent.FemcCosmetics.battle() : null; } catch (e) { return null; } })();
-  if (LOOKS && LOOKS.css) { const st = document.createElement('style'); st.id = 'bt-looks'; st.textContent = LOOKS.css; document.head.appendChild(st); }
+  // The Wardrobe's looks, read fresh each time (the Wardrobe can change in the Dark Hour menu; Kat, 2026-10-27).
+  const readLooks = () => { try { return window.parent !== window && window.parent.FemcCosmetics ? window.parent.FemcCosmetics.battle() : null; } catch (e) { return null; } };
+  let LOOKS = readLooks();
+  function applyLooks() { LOOKS = readLooks(); let st = document.getElementById('bt-looks'); if (LOOKS && LOOKS.css) { if (!st) { st = document.createElement('style'); st.id = 'bt-looks'; document.head.appendChild(st); } st.textContent = LOOKS.css; } else if (st) st.remove(); }
+  applyLooks();
   const posedFrames = mid => [0, 1, 2, 3, 4, 5].map(i => (LOOKS && LOOKS.pose[mid] ? `${LOOKS.pose[mid]}${mid}-pose-${i}.webp?v=${ART_V}` : `assets/femc/battle/art/poses/${mid}-pose-${i}.webp?v=${ART_V}`));
   const fieldPose = mid => (FIGHTER_POSES[mid] ? posedFrames(mid)[0] : `assets/femc/battle/art/poses/${mid}.webp?v=${ART_V}`);
   const hasField = mid => FIELD_POSES.has(mid) || !!FIGHTER_POSES[mid];
@@ -1143,6 +1146,7 @@
   /* One Tartarus fight (a Shadow room, the Reaper, or one of tartarus.js's rooms). Handles game over → retry.
      Returns 'win' | 'escaped' | 'fled' (a rare Shadow got away: rules.fleeAt) | 'over' | 'savepoint'. */
   async function fight(floor, { group, strong = false, reaper = false, rules = null, music: tune = null, nav: navKey = null }) {
+    applyLooks(); // a look changed in the Dark Hour menu shows from this fight on
     for (;;) {
       const snap = JSON.stringify({ carry: run.carry, items: save.items, th: save.th, fights: run.fights, tired: run.tired });
       const out = await battle({ group, bg: floor.bg, label: floor.label, block: floor.block, boss: reaper, reaper, strong, rules, music: tune || (reaper || strong ? 'danger' : 'battle'), nav: reaper ? 'reaper' : navKey || floor.nav, heat: reaper ? 0 : save.cycle * D.progression.heat });
