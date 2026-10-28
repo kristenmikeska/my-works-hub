@@ -120,7 +120,7 @@ window.FEMC_BATTLE_DATA = (() => {
     // ── Haenim's form signatures (prototype preview)
     encore: { name: 'Encore', el: 'light', type: 'dmg', target: 'all', power: 50, cost: { sp: 14 }, partyHeal: 0.08, partyBuff: ['agi'], desc: 'Sunna takes a bow. Light damage to all foes, then the party heals 8% and gets faster.' },
     low_tide: { name: 'Low Tide', el: 'ice', type: 'dmg', target: 'one', power: 34, multi: [3, 4], cost: { sp: 16 }, ail: { id: 'freeze', chance: 0.18 }, desc: 'Mazu pulls the sea back. Ice damage to one foe, 3 to 4 times. Each wave may Freeze.' },
-    victory_lap: { name: 'Victory Lap', el: 'almighty', type: 'dmg', target: 'one', power: 62, cost: { sp: 20 }, partyBuff: ['atk'], desc: 'Nike raises the party’s attack, then strikes one foe with Almighty force.' },
+    victory_lap: { name: 'Write-In', el: 'almighty', type: 'dmg', target: 'one', power: 62, cost: { sp: 20 }, partyBuff: ['atk'], desc: 'Nike raises the party’s attack, then strikes one foe with Almighty force.' },
     sunrise: { name: 'Sunrise', el: 'light', type: 'dmg', target: 'all', power: 64, cost: { sp: 22 }, partyHeal: 0.1, partyBuff: ['atk'], desc: 'The veil is gone. Light damage to all foes; the party heals 10% and gets stronger.' },
 
     // ── The skill system: higher tiers (each one upgrades its lower tier in place: see `chains` below)
@@ -160,7 +160,7 @@ window.FEMC_BATTLE_DATA = (() => {
     goblin_club: { name: 'Goblin Club', el: 'strike', type: 'dmg', target: 'one', power: 64, cost: { hp: 10 }, crit: 8, ail: { id: 'disorient', chance: 0.2 }, icon: 'sk-club', fx: 'club', desc: 'Dokkaebi brings the club down, laughing. Medium strike damage to one foe; may Disorient it.' },
     clear_sight: { name: 'Clear Sight', el: 'light', type: 'dmg', target: 'one', power: 58, cost: { sp: 8 }, icon: 'sk-theia', fx: 'theia', desc: 'Theia looses an arrow of light at what she sees. Medium light damage to one foe.' },
     undertow: { name: 'Undertow', el: 'ice', type: 'dmg', target: 'one', power: 96, cost: { sp: 16 }, ail: { id: 'bind', chance: 0.35, rope: true }, desc: 'The harbor pulls. Heavy ice damage to one foe; it may be Bound by the tide.' },
-    mandate: { name: 'Mandate', el: 'support', type: 'buff', target: 'allies', stat: ['atk', 'def', 'agi'], thGain: 15, cost: { sp: 32 }, desc: 'She won. Party attack, defense and agility up a level each, and every Theurgy gauge fills by 15.' },
+    mandate: { name: 'Appointed', el: 'support', type: 'buff', target: 'allies', stat: ['atk', 'def', 'agi'], thGain: 15, cost: { sp: 32 }, desc: 'Second place, first pick. Party attack, defense and agility up a level each, and every Theurgy gauge fills by 15.' },
     // ── Kat's skills (Haenim's tree). Each has its own icon (icons.js sk-*) and effect (fx.js).
     protective_suzu: { name: 'Protective Suzu', el: 'heal', type: 'ward', target: 'allies', cost: { sp: 36 }, icon: 'sk-suzu', fx: 'suzu',
       desc: 'The bell rings once. Until each ally’s next turn nothing can hurt them, and every ailment on the party is cured.' },
@@ -422,7 +422,7 @@ window.FEMC_BATTLE_DATA = (() => {
         forms: {
           'haenim-sunna': { name: 'Golden Hour', img: TH + 'solar-sunna.webp', focus: [41, 43] },
           'haenim-mazu': { name: 'Spring Tide', img: TH + 'solar-mazu.webp', focus: [45, 35] },
-          'haenim-nike': { name: 'Landslide', img: TH + 'solar-nike.webp', focus: [56, 39], sheet: sheet3('solar-strike-a') },
+          'haenim-nike': { name: 'Running Mate', img: TH + 'solar-nike.webp', focus: [56, 39], sheet: sheet3('solar-strike-a') },
           'haenim-unveiled': { name: 'Unveiled', img: TH + 'solar-unveiled.webp', focus: [52, 48] }
         },
         desc: 'Haenim lifts her veil and the sun pours out. Massive Light/Almighty damage to all foes; it may knock them Down (a Light weakness always does).' },
@@ -496,7 +496,7 @@ window.FEMC_BATTLE_DATA = (() => {
       skills: ['garu', 'sonic_punch', 'tarukaja', 'goblin_club'], learn: [[24, 'garula', 'garu'], [28, 'magaru'], [32, 'kill_rush']], sig: ['sonic_punch', 'garula', 'goblin_club', 'goblin_fire'], th: { buff: 1.4, hurt: 1.3 },
       theurgy: { name: 'Light of Your Life', type: 'dmg', el: 'wind', look: 'wind', target: 'all', power: 150, down: 0.4, img: TH + 'jihoon.webp', focus: [50, 42], sheet: sheet3('jihoon-strike'), desc: 'Loud, vain and enormous. Heavy Wind damage to all foes.' },
       role: 'Wind · Strike · Buffs', faces: { idle: 'serious', win: 'happy', hurt: 'surprised', ko: 'sad' },
-      lines: { turn: 'Watch me. Everybody watch me.', onemore: 'Again! I’m on fire!', shift: 'Sol, you’re up!', finish: 'Light of your life, baby!', theurgy: 'Look at me. LOOK AT ME.', allyDown: ["{name}?! Nobody falls while the almighty Hoon is here!", "Get up, {name}. That’s a royal order."], allyLow: ["{name}, you look terrible. Stand behind greatness.", "Fall back, {name}. I’ll be iconic for both of us."], solarHurt: ["SOL. Who touched you? Name them.", "Hey! Only I get to bully her!"], weak: ["Astonishing. I’m astonishing.", "A weak spot? I wouldn’t know. I don’t have one."], downed: ["A Grave Sin. Against ME.", "I’m fine. I’m gorgeous and fine."], boss: ["Oh, finally. A worthy audience.", "Big guy. Bigger ego than mine? Doubt it."], win: ["Light of your life, baby!", "You may applaud.", "The almighty Hoon remains undefeated."], thReady: ["Everybody look at me. Seriously.", "Dokkaebi’s laughing. Bad news for them."] },
+      lines: { turn: 'Watch me. Everybody watch me.', onemore: 'Again! I’m on fire!', shift: 'Sol, you’re up!', finish: 'Light of your DISGUSTING life!', theurgy: 'Look at me. LOOK AT ME.', allyDown: ["{name}?! Nobody falls while the almighty Hoon is here!", "Get up, {name}. That’s a royal order."], allyLow: ["{name}, you look terrible. Stand behind greatness.", "Fall back, {name}. I’ll be iconic for both of us."], solarHurt: ["SOL. Who touched you? Name them.", "Who touched my Skank. NAME them.", "Hey! Only I get to bully her!"], weak: ["Astonishing. I’m astonishing.", "A weak spot? I wouldn’t know. I don’t have one."], downed: ["A Grave Sin. Against ME.", "I’m fine. I’m gorgeous and fine."], boss: ["Oh, finally. A worthy audience.", "Big guy. Bigger ego than mine? Doubt it."], win: ["Light of your life, baby!", "You may applaud.", "The almighty Hoon remains undefeated."], thReady: ["Everybody look at me. Seriously.", "Dokkaebi’s laughing. Bad news for them."] },
       banter: {crit: [{r: 6, l: ["Okay, that was almost as good as me. Almost.", "Almost? I’ll take it."]}], hurt: [{r: 6, l: ["Hey. Ungrateful rug. You good? …Don’t make it a thing.", "Wasn’t going to."]}], win: [{r: 6, l: ["Admit it. You missed fighting next to me.", "Don’t push it, Park Jihoon."]}, {r: 9, l: ["Best duo in every world. Obviously.", "Obviously."]}]} },
     { id: 'minji', name: 'Minji', persona: 'p-minji', weapon: 'pierce', wtype: 'bow', color: '#ffe6a8', searcher: true,
       base: { hp: 84, sp: 68, st: 7, ma: 11, en: 7, ag: 10, lu: 10 }, growth: { hp: 6, sp: 5.5, st: 0.6, ma: 1, en: 0.6, ag: 0.9, lu: 0.9 },
@@ -1020,7 +1020,16 @@ window.FEMC_BATTLE_DATA = (() => {
      Add a new card by adding a line here. world: Runners | strangers | Hoax (which charm rings). */
   const MEM = 'assets/femc/memories/';
   // Memories only a scene can give (Tartarus events, cracks, vaults and the simulated drops skip them).
-  const NO_DROP = ['runners-lake'];
+  // Kat's ruling (2026-10-27, HOAX sync): a memory that a story, link or job scene awards never drops at random, in any
+  // world, so it can't surface before its place in the year. Today that's every card; a new drop-only card simply stays out.
+  const NO_DROP = [
+    'runners-campus', 'runners-energy-drink', 'runners-hoodie', 'runners-monitor', 'runners-trophy', 'runners-3am',
+    'runners-stadium', 'runners-phone', 'runners-rooftop', 'runners-lake',
+    'strangers-harbor', 'strangers-jade-ring', 'strangers-lanterns', 'strangers-rabbit-socks', 'strangers-needle',
+    'strangers-ferry', 'strangers-discman', 'strangers-suture-kit', 'strangers-low-tide', 'strangers-barley-tea',
+    'hoax-croissant', 'hoax-ladder', 'hoax-leash', 'hoax-poster', 'hoax-debate-stage', 'hoax-president-pin',
+    'hoax-crane-game', 'hoax-group-chat', 'hoax-math-homework', 'hoax-ballot-box'
+  ];
   const memories = [
     ['runners-campus', 'Runners', 'A Campus at Dusk', 'Brick paths, cold air, a bell tower. She knows the way to a building she’s never seen.'],
     ['runners-energy-drink', 'Runners', 'An Energy Drink', 'Sweet, fizzy, way too much caffeine. Someone always handed her one without asking what she wanted.'],
@@ -1387,12 +1396,12 @@ window.FEMC_BATTLE_DATA = (() => {
         { id: 'star5', name: 'Call the Bluff', cost: 2, any: ['star4a', 'star4b'], at: [5, 0], desc: 'Learn Call the Bluff: strip every buff from a foe and Disorient it for a turn.', fx: { learn: 'call_the_bluff' } },
         { id: 'star-m2', name: 'Group Chat', cost: 2, any: ['star4a', 'star4b'], memory: 'hoax-group-chat', at: [5, 1.2], desc: 'Whoever takes a Shift also gains 15 Theurgy.', fx: { shiftTh: 15 } },
         { id: 'sp2', name: 'Long Speech', cost: 2, needs: ['star5'], at: [6, -1], desc: 'Buffs she casts last a turn longer, and so do debuffs she puts on foes.', fx: { buffTurns: 1, debuffTurns: 1 } },
-        { id: 'star6', name: 'Landslide', cost: 2, needs: ['star5'], at: [6, 0], desc: 'All-Out Attacks hit 50% harder.', fx: { alloutMult: 1.5 } },
+        { id: 'star6', name: 'Running Mate', cost: 2, needs: ['star5'], at: [6, 0], desc: 'All-Out Attacks hit 50% harder.', fx: { alloutMult: 1.5 } },
         { id: 'sp3', name: 'Debilitate', cost: 3, needs: ['star5'], lvl: 34, at: [6, 1], desc: 'Learn Debilitate: one foe’s attack, defense and agility down a level.', fx: { learn: 'debilitate' } },
-        { id: 'star-m1', name: 'Mandate', cost: 3, needs: ['sp2'], memory: 'hoax-president-pin', at: [7, -1], desc: 'Learn Mandate: party attack, defense and agility up a level, and every Theurgy gauge +15.', fx: { learn: 'mandate' } },
+        { id: 'star-m1', name: 'Appointed', cost: 3, needs: ['sp2'], memory: 'hoax-president-pin', at: [7, -1], desc: 'Learn Appointed: party attack, defense and agility up a level, and every Theurgy gauge +15.', fx: { learn: 'mandate' } },
         { id: 'star7', name: 'Opening Statement', cost: 3, needs: ['star6'], lvl: 30, at: [7, 0], desc: 'The party starts every battle with attack up a level.', fx: { openBuff: 'atk' } },
         { id: 'sp4', name: 'Heat Riser', cost: 2, needs: ['sp3'], at: [7, 1], desc: 'Learn Heat Riser: one ally’s attack, defense and agility up a level.', fx: { learn: 'heat_riser' } },
-        { id: 'star-key', name: 'Nike', cost: 3, needs: ['star7'], keystone: true, form: 'haenim-nike', at: [8, 0], desc: 'Keystone: Haenim’s Hoax form, Nike. Buffs, Almighty force and her Victory Lap.', fx: {} }
+        { id: 'star-key', name: 'Nike', cost: 3, needs: ['star7'], keystone: true, form: 'haenim-nike', at: [8, 0], desc: 'Keystone: Haenim’s Hoax form, Nike. Buffs, Almighty force and her Write-In.', fx: {} }
       ] },
     // Where two rays meet: each hybrid needs one node on each side (`between` names the rays; drawn in the gap between them).
     { id: 'hybrid', hybrid: true, name: 'Hybrids', world: 'Where rays meet', color: '#ffe9a8', theme: 'Two paths at once',

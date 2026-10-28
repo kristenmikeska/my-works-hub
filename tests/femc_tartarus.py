@@ -275,9 +275,13 @@ try:
         enter('altar'); room_open('altar'); click('mend'); settle("FemcBattle.ctl?.kind==='map'")
         ok(p.eval("FemcBattle.save.yen") < y0 and p.eval("FemcBattle.run.carry.solar.hp") > 10 and p.eval("FemcBattle.marks['altar-mend']") == 1, 'altar')
         out['altar'] = y0 - p.eval("FemcBattle.save.yen")
-        # Cracked walls: a hidden room's loot, a memory fragment.
-        for kind in ['loot', 'memory']:
-            climb('f4', None, "window.__ttCrack=%s;window.__ttReveal=true" % json.dumps(kind))
+        # Cracked walls: a hidden room's loot, a memory fragment. Every card is scene-awarded and NO_DROP (Kat, 2026-10-27),
+        # so a memory wall falls back to the stash; with one card made droppable for the test, the wall still gives it.
+        ok(p.eval("FEMC_BATTLE_DATA.memories.every(m=>m.noDrop)"), 'every memory card is NO_DROP')
+        for kind in ['loot', 'memory-none', 'memory']:
+            if kind == 'memory':
+                p.eval("FEMC_BATTLE_DATA.memories.find(m=>m.id==='runners-campus').noDrop=false")
+            climb('f4', None, "window.__ttCrack=%s;window.__ttReveal=true" % json.dumps('memory' if kind.startswith('memory') else kind))
             p.eval("window.__ttCrack=null;window.__ttReveal=false")
             cid = p.eval("FemcBattle.run.map.nodes.find(n=>n.type==='crack').id")
             snap(); p.eval("(()=>{const m=FemcBattle.run.map,c=FemcTartarusMap.get(m,%s);m.pos=c.links[0];FemcTartarusMap.visit(m,m.pos);FemcBattle.ctl.go(c.id)})()" % json.dumps(cid))
@@ -285,8 +289,11 @@ try:
             room_open('crack'); click('break')
             if kind == 'loot':
                 room_open('hidden-loot'); ok(p.eval("FemcBattle.save.mats.echo_shell||0") >= 1, 'echo shell'); click('ok')
+            elif kind == 'memory-none':
+                room_open('hidden-loot'); ok(len(p.eval("FemcBattle.save.memories")) == 0, 'no memory drops at random'); click('ok')
             else:
-                room_open('memory'); ok(len(p.eval("FemcBattle.save.memories")) == 1, 'memory'); click('ok')
+                room_open('memory'); ok(p.eval("FemcBattle.save.memories") == ['runners-campus'], 'memory'); click('ok')
+                p.eval("FEMC_BATTLE_DATA.memories.find(m=>m.id==='runners-campus').noDrop=true")
             settle("FemcBattle.ctl?.kind==='map'")
         out['crack'] = {'secrets': p.eval("FemcBattle.save.tt.secrets")}
         # Events: every one, its first choice (members in the party for theirs).

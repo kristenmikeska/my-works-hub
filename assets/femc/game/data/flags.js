@@ -16,7 +16,9 @@ window.FEMC_GAME_FLAGS = {
     S: { prefix: 'strangers-', charm: 'jade' },
     H: { prefix: 'hoax-', charm: 'star' }
   },
-  fragmentsPerWorld: 9,
+  // Ten cards per world (Kat, 2026-10-27): the doors stay at 3 / 6 / 9; each world's tenth is a late memory that lands after
+  // its last door. Every card is scene-awarded (battle/data.js NO_DROP), so a door can't open before its scenes.
+  fragmentsPerWorld: 10,
   doors: [3, 6, 9],
   doorScenes: {},                      // filled by story-act5.js; core.js plays each due one late at night (one a night)
   counters: ['here', 'home.R', 'home.S', 'home.H', 'lean.R', 'lean.S', 'lean.H', 'haechan.R', 'haechan.S', 'jungwon.H', 'jungwon.S'],
