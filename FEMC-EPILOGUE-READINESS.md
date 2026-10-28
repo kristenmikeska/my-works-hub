@@ -62,3 +62,5 @@ Each one has Claude's lean in brackets. None of them needs answering until the e
 ---
 
 **Kat, 2026-10-27:** all ten of Claude's leans are approved for now. Kat will review them later, before the epilogue is built.
+
+**Applied 2026-10-27 (epilogue batch 1):** the few-line ending touches your approved leans call for (decisions 1, 2, 4 and the one-word fix in 6). Nothing else in the main game changed.

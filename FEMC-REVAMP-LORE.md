@@ -334,7 +334,7 @@ The game's whole Runners side assumes the state at the moment Solar vanished, ab
 3. **"Sol":** Solar lets Mark keep calling her Sol, but it visibly pains her. She still wants to like him and can't, because of how hurt she is. Before rank 10 it's a feeling with no memory attached; after, she knows why.
 4. **Hyein's deposit:** Jaemin pays it, eventually (late, in yen, at the fitting).
 - *Also settled:* Danielle was in the Personaverse too; her camp trade (Mark's window for time with Jaehyun) shows only as tension. The girls' withholding carries guilt (Solar called it out on 11/16). The jacket is at the bottom of her bag, never worn. She skipped the 11/21 party for the girls' night; 11/22 is the start of Thanksgiving break; the Foundation Dinner text comes the last ordinary night (11/21).
-- *Writer inventions to confirm:* Danielle's "twenty-five minutes" with Jaehyun; Jaemin's sock for a first aid kit; Ms. Han calling the school again on 11/27; Doyoung's "regionals in 2 wks" ping in the Runners ending; Hanni's probation chocolate.
+- *Writer inventions to confirm:* Danielle's "twenty-five minutes" with Jaehyun; Jaemin's sock for a first aid kit; Ms. Han calling the school again on 11/27; Doyoung's "regionals saturday" ping in the Runners ending (was "regionals in 2 wks" until 2026-10-27, to fit the epilogue plan); Hanni's probation chocolate.
 
 ## Kat's rulings (2026-10-27): the HOAX side at Ch 99
 The game's whole HOAX side assumes HOAX canon at Ch 99, the Monday of exam week when Solar vanished: Jungwon won and made her his VP, they've been official since the bake sale, and Jihoon has relapsed and is cockier and meaner. The council and her friend group were in the Personaverse too. (Audit: `FEMC-HOAX-SYNC-AUDIT.md`.)

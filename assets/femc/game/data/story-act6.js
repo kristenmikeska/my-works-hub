@@ -8,6 +8,14 @@
 (() => {
   const K = window.FEMC_STORY_KIT;
   // Short lines that change with the route, for scenes that are otherwise the same on every route.
+  // The Runners searchers who can be missed (Mark, Danielle, Jaemin, Chenle): on a route that doesn't go to Runners, whoever
+  // crossed says goodbye at the doors on 3/6 too (the epilogue's batch 1, 2026-10-27; they always crossed, offscreen if not met).
+  K.runnersLate = [
+    { ifFlag: 'arrived-danielle', then: [{ n: "Danielle, at the same door as the girls, raised her camera out of habit and then lowered it without taking anything. *Not this one,* she said. *This one isn't news.*" }] },
+    { ifFlag: 'arrived-chenle', then: [{ n: "Chenle had gone through early. Of course he had. He leaned back out of the doorway for exactly one second, said *back row*, as if that explained anything, and was gone." }] },
+    { ifFlag: 'arrived-jaemin', then: [{ n: "Jaemin held the door for everyone else, because he was always the last one in the room, and saluted her off his eyebrow on the way through, like a man leaving a party he'd thrown." }] },
+    { ifFlag: 'arrived-mark', then: [{ n: "Mark didn't come over. He stood at the sugar-cookie door with his hands in his jacket and looked at her the way he had all year, sorry and sure at the same time, and lifted one hand. *Sol,* he said, and she let him, one last time." }] }
+  ];
   K.byRoute = (R, S, H, stay, tru) => [
     { ifFlag: 'route-R', then: R, else: [
       { ifFlag: 'route-S', then: S, else: [
@@ -414,8 +422,8 @@
     ...window.FEMC_STORY_KIT.byRoute([
       { s: 'hyein', f: 'happy', t: "Hanni's making you pancakes. When we get back. First snow day pancakes. She's been planning it since December." },
       { s: 'hanni', f: 'happy', t: "With the little chocolate chips. You always pick them out and then eat them separately. Like a psychopath." },
-      { s: 'hyein', f: 'serious', t: "And THEN you're getting on a train to your parents' and you're texting us the whole time. Every stop. I want a picture of every single stop." },
-      { n: "Solar laughed, and the snow came down, and for the first time it didn't feel like a promise somebody was making to someone else. It felt like hers. Saturday. Then home. Then pancakes, and a train, and a pink hallway, and a single on the second floor." }
+      { s: 'hyein', f: 'serious', t: "And THEN we figure out what we tell your parents. Together. You are not doing that call by yourself." },
+      { n: "Solar laughed, and the snow came down, and for the first time it didn't feel like a promise somebody was making to someone else. It felt like hers. Saturday. Then home. Then pancakes, and a pink hallway, and a single on the second floor." }
     ], [
       { n: "Hanni was quiet for a while, watching it come down. Then she said, without looking at Solar, that she was going to save her the pancakes anyway. At home. On the counter. Just in case." },
       { s: 'hyein', f: 'sad', t: "We'll eat them. Obviously. But we'll make them." },
@@ -658,6 +666,7 @@
       { n: "Hanni and Hyein stood at a door that smelled of sugar cookie, holding hands, and Hyein was crying so hard she couldn't speak, and Hanni spoke for both of them. *We'll make the pancakes,* she said. *Just in case.* And then, because she was Hanni, she checked Solar one last time against the list she kept, hands, face, the way she stood, and found every single thing present, and smiled, and took her sister through." },
       { n: "Minji didn't film it. She stood at her door with the camera in her hands and didn't lift it. She just looked, the whole time, without anything between them. *You're the same in the frame,* she said. *Even now.* Then she went." },
       { n: "Jaehyun went last of them. He didn't hug her. He stood in front of her for a long moment and read the field, all of it, the way he did, and arrived. *I remember enough for both of us,* he said. *I'll keep doing it.* And went through, and didn't look back, because he was the kind of person who'd decided a long time ago that looking back was a kindness you couldn't afford to show." },
+      ...window.FEMC_STORY_KIT.runnersLate,
       { n: "Then Jihoon, and Cherry, and the crew, through a door with a dog barking behind it. Cherry pointed at her from the doorway. *Still number one.* Jihoon couldn't look at her at all, and then did, at the last second, and mouthed something she didn't need to hear." },
       { n: "Then the council, in a crowd: Sunoo crying into Heeseung's sleeve, Jake waving with both arms. Three of them didn't go. Jay said something to Heeseung she couldn't hear, and Heeseung looked at Jay, and at Sunghoon, and at Niki, and nodded like a man who'd known for a while, and the three of them came back down the platform and stood behind Jungwon, a step back, one at each shoulder and Niki in the middle, where they'd stood, it seemed, in some other life too. Sunoo looked back at all four of them from the doorway and mouthed *eat something*, and went." },
       { n: "Yunjin didn't go to any door. Neither did Haechan, or Jungwon, the two of them standing a careful distance apart at the edge of the platform, not looking at each other, both looking at a door that smelled of salt and barley tea, waiting for her the way you'd wait at the end of a pier for a boat you knew was coming in." }
@@ -666,6 +675,7 @@
       { n: "Then the others. The ones who'd come for her from places she wasn't going back to." },
       { n: "Hanni and Hyein, at a door that smelled of sugar cookie. *We'll make the pancakes,* Hanni said. *Just in case.* Hyein couldn't speak at all. She just held Solar's face in both hands for a second, hard, like she was memorizing the shape of it, and let go." },
       { n: "Minji, at her door, not filming. Jaehyun, who didn't hug her, who stood and read the field and said *I remember enough for both of us*, and went through without looking back, because he'd decided long ago that it was a kindness he couldn't afford." },
+      ...window.FEMC_STORY_KIT.runnersLate,
       { n: "Yunjin, at a door that smelled of salt and diesel, who did hug her, so hard her ribs hurt, and said into her shoulder, *you'd better be happy. You'd better be so happy it's annoying*, and went." },
       { n: "And Haechan. His door was two doors, a pink hallway and a house by the sea, both at once, and he didn't go to it first. He came down the platform to her through the waking strangers with his hands in his pockets, and stopped half a step away, to the side, the way he'd stood next to her all winter." },
       { s: 'haechan', f: 'neutral', t: "Don't make the face. You picked the one nobody picked for you. Good. Somebody in this building had to." },
@@ -681,6 +691,7 @@
       { n: "Yunjin, at a door that smelled of salt and diesel. *Your appa,* she started, and couldn't finish. She hugged Solar instead. *I'll sit up with him,* she said into her hair. *Every low tide. I'll sit up with him so he's not by himself.* And went, with her shoulders very straight, in the red puffer, and didn't look back, because if she had, Solar knew, she would never have gone." },
       { n: "Jihoon, at a door with a dog barking behind it. He didn't joke. That was the worst part. For the first time in his life, Park Jihoon couldn't find a single joke. He stood there with his hands at his sides and looked at her and said, *it's really quiet without you being mean to me*, and then Cherry took his hand, and he let her, and they went through together, and the crew after them, Junkyu waving until the door shut." },
       { n: "Minji, who didn't film. Jaehyun, who stood in front of her for a long time and didn't read the field, for once, didn't arrive anywhere, just stood there being her brother, and then put his hand on her head, once, the way you would with a much younger sister, and went." },
+      ...window.FEMC_STORY_KIT.runnersLate,
       { n: "Jungwon. At his door. He bowed. Formal, from the waist, perfectly correct, and when he straightened up his face was so still it hurt to look at, and he said, very politely, *thank you for having been my opponent*, and then, so quietly she almost didn't hear it, one more word, in a register he had used with her only a handful of times, and never in this world, and went through before she could answer." },
       { n: "His council went after him in a crowd, because they'd never once let him go anywhere alone: Sunoo crying into Heeseung's sleeve, Jake waving with both arms, Jay hauling Sunghoon away from a farewell speech, Niki already halfway through the door, yelling for Jay." },
       { n: "Haechan was last. Of course he was. He stood at his door, which was two doors, a pink hallway and a house by the sea, both at once, and didn't go through either. He looked at her. He didn't ask her to come. He'd never asked her anything. He just looked, the whole year in it, flat, and not flat at all." },

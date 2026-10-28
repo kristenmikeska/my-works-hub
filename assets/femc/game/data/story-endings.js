@@ -4,8 +4,9 @@
      route-true + true-final → I am thou        route-R → where it begins       route-S → low tide
      route-H → the unfated life (the secret road) route-stay (or no route at all) → here
    Variants come from Christmas Eve (xmas-<id>) and, for Stay, the solstice (stay-akihiko / stay-shinjiro).
-   Each ending closes on an "ENDING · …" card. Home endings are undated and plot-free: she wakes, nothing in her book has
-   moved, and nobody says what happens next. */
+   Each ending closes on an "ENDING · …" card. Home endings are undated and plot-free: she wakes, and nobody says what
+   happens next. Time did pass back home while she was gone (since the epilogue plan, 2026-10-27: about ten days, covered by
+   a story); the epilogue (epilogue.js) picks up from here. */
 (() => {
   const lastHour = [
     { music: 'mystery' },
@@ -19,6 +20,10 @@
     ...lastHour,
     { n: "There was a door at the end of the second-floor hallway that had never been there. Ordinary. Painted. With a line of light under it, white and cold, and a smell coming through the gap that she knew with her whole body. Snow. Old brick. Sugar cookie." },
     { n: "Hanni and Hyein were waiting by it, in their coats, holding hands. Minji, with her camera. Jaehyun, a step back, watching the hallway the way he watched everything, and when she came up the stairs he moved, without a word, so that he was between her and nothing at all, and for the first time she let him." },
+    // The searchers who can be missed (the epilogue's batch 1, 2026-10-27): whoever crossed is at the door too.
+    { ifFlag: 'arrived-danielle', then: [{ n: "Danielle, behind them, with her camera on its strap and the lens cap on." }] },
+    { ifFlag: ['arrived-jaemin', 'arrived-chenle'], then: [{ n: "Jaemin and Chenle, who'd come late and stayed loud, for once not saying a word." }] },
+    { ifFlag: 'arrived-mark', then: [{ n: "And Mark, last, by the window, not asking to stand any nearer than that." }] },
     { n: "S.E.E.S. came up the stairs behind her. She turned round on the top step and looked at them. All of them. In the green. Yukari with her arms crossed so tight it hurt. Junpei crying and pretending it was the hour. Mitsuru, very straight. Ken. Koromaru. Fuuka, smiling, her eyes wet. Aigis, at exactly one arm's length. Akihiko, at the bottom of the stairs, not coming up, his hands in his pockets, letting her go the way he'd promised, by not asking." },
     { n: "She went down three steps and hugged every one of them. It took a long time. The hour waited." },
     // Honest and torn (the crush batch, 2026-10-23): she was with him here, and it was real.
@@ -32,7 +37,7 @@
     { music: 'world-runners' },
     { cg: 'ending-runners-home' },
     { n: "It was snowing. That was the first thing. Snow on the sill of a narrow window, and pink curtains, and a single bed in a single room on the second floor, and through the wall a hairdryer going, loud, and Hyein's voice over it, swearing at it. A bell tower out the window, white with frost. A quad nobody had walked on yet. Morning. She couldn't have said which one. It didn't seem to matter." },
-    { n: "On the desk, her phone was lighting up. The girls' chat. Forty messages since she'd closed her eyes, as if she'd only been gone a night, as if she'd never been gone at all. *SNOW DAY.* *trains are delayed. ur stuck with us another day.* *sol is still asleep, she doesnt know yet.* *hanni is making pancakes.* And under the girls, one from Doyoung, no greeting at all: *regionals in 2 wks. you good?*" },
+    { n: "On the desk, her phone was lighting up. The girls' chat. Forty messages since she'd closed her eyes, and not one of them asked where she'd been. *SNOW DAY.* *shes home. shes ASLEEP. nobody text her* *u literally just texted her* *hanni is making pancakes.* *ok the trip story is: joint retreat w sigma. invite only. no signal. memorize it.* And under the girls, one from Doyoung, no greeting at all: *regionals saturday. you good?*" },
     { ifFlag: 'xmas-haechan', then: [
       { n: "She went out into the hallway in her socks. It went on too long. It always had. And at the end of it, by the stairs, where he couldn't possibly be, where it made no sense at all for him to be at eight in the morning in a sorority house, there he was, leaning on the wall with his hands in his pockets and his headphones round his neck, not looking at her, looking at the snow through the window at the top of the stairs." },
       { n: "He'd come in a different way, over there. She didn't ask how. He didn't say." },
@@ -42,10 +47,10 @@
     ] },
     { ifFlag: 'xmas-minji', then: [
       { n: "Later, in the afternoon, when the snow had stopped and the light had gone long and gold, she walked across the quad to the honors dorm without deciding to. There was a lamppost outside it. It flickered. It had always flickered. Minji was under it with her camera already rolling, cap on frontwards, and when she saw Solar coming she didn't ask. She'd asked twenty times. She'd asked a thousand." },
-      { n: "Solar stopped under the lamp. It held steady. And for once, for the first time in either of her lives, she didn't look past the lens, or through it, or away. She looked straight into it, and let it look back, and smiled. Not the practiced one. Hers." }
+      { n: "Solar stopped under the lamp. It held steady. And for once, for the first time in any of her lives, she didn't look past the lens, or through it, or away. She looked straight into it, and let it look back, and smiled. Not the practiced one. Hers." }
     ] },
     { ifFlag: 'xmas-haechan', else: [{ ifFlag: 'xmas-minji', else: [
-      { n: "Her door banged open. Hanni and Hyein, in pajamas and coats, Hyein holding an iced coffee in the middle of a snowstorm, both of them talking at once, a hundred questions, where did you go, what did you dream, why are you looking at us like that, why are you CRYING, Sol, what happened, are you okay, are you fine, don't say you're fine." },
+      { n: "Her door banged open. Hanni and Hyein, in pajamas and coats, Hyein holding an iced coffee in the middle of a snowstorm, both of them talking at once, a hundred questions, did you just wake up too, do you remember, why are you looking at us like that, why are you CRYING, Sol, what happened, are you okay, are you fine, don't say you're fine." },
       { n: "She had no intention of answering a single one of them. She took the coffee. She said she was fine. Hyein screamed. Hanni laughed. It was the best morning of her life." }
     ] }] },
     { cg: null },
