@@ -32,11 +32,11 @@
     { music: 'world-runners' },
     { cg: 'ending-runners-home' },
     { n: "It was snowing. That was the first thing. Snow on the sill of a narrow window, and pink curtains, and a single bed in a single room on the second floor, and through the wall a hairdryer going, loud, and Hyein's voice over it, swearing at it. A bell tower out the window, white with frost. A quad nobody had walked on yet. Morning. She couldn't have said which one. It didn't seem to matter." },
-    { n: "On the desk, her phone was lighting up. The girls' chat. Forty messages since she'd closed her eyes, as if she'd only been gone a night, as if she'd never been gone at all. *SNOW DAY.* *they cancelled classes.* *sol is still asleep, she doesnt know yet.* *hanni is making pancakes.*" },
+    { n: "On the desk, her phone was lighting up. The girls' chat. Forty messages since she'd closed her eyes, as if she'd only been gone a night, as if she'd never been gone at all. *SNOW DAY.* *trains are delayed. ur stuck with us another day.* *sol is still asleep, she doesnt know yet.* *hanni is making pancakes.* And under the girls, one from Doyoung, no greeting at all: *regionals in 2 wks. you good?*" },
     { ifFlag: 'xmas-haechan', then: [
       { n: "She went out into the hallway in her socks. It went on too long. It always had. And at the end of it, by the stairs, where he couldn't possibly be, where it made no sense at all for him to be at eight in the morning in a sorority house, there he was, leaning on the wall with his hands in his pockets and his headphones round his neck, not looking at her, looking at the snow through the window at the top of the stairs." },
       { n: "He'd come in a different way, over there. She didn't ask how. He didn't say." },
-      { n: "At the back of her closet, behind everything, there was a jacket that wasn't hers and fit her better. And in her head, all the way to the end, there was a song, and she knew now how it finished. She'd always known. She'd just been waiting for somebody to play her the last bars." },
+      { n: "At the bottom of a bag she hadn't unpacked since the trip, under everything, there was a jacket that wasn't hers and fit her better. And in her head, all the way to the end, there was a song, and she knew now how it finished. She'd always known. She'd just been waiting for somebody to play her the last bars. There was something low in the middle of it, too, that she still couldn't name, and she could see it on him from the end of the hall, the way you could see weather on a window: he owed her something, and he was going to pay it." },
       { n: "He looked at her. Flat. Then not." },
       { s: 'haechan', f: 'happy', t: "...Morning, princess." }
     ] },

@@ -42,6 +42,7 @@ Other docs, if you ever want detail:
 - ✅ Searchers mention her love lives back home (Hyein's near-slip, the "come home" calls, Yunjin, Hoax)
 - ✅ Jihoon sounds like HOAX's Jihoon
 - ✅ Every world matches its current canon; memory moments can be half-remembered on purpose
+- ✅ The Runners side matches where Runners is now (late November): lines, texts and scenes for every Runners character brought up to date, plus one new Runners memory to find (a drawn card until your art is in)
 - ✅ Haechan lives in the dorm and has met the people he knows; the Junpei walk-in is fixed
 - ✅ Akihiko and Shinjiro triangle; the girls notice the Akihiko thing
 - ✅ Haechan settles into one world as the ending nears

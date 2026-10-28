@@ -586,7 +586,7 @@ window.FEMC_STORY_KIT.badEnding = [
       { t: "Me and who?", then: [
         { n: "Hyein opened her mouth. Hanni looked at her. Hyein closed it, and drank a very long sip of her can, looking at the bay with tremendous interest." },
         { s: 'hyein', f: 'neutral', t: "...Homework. You and homework. You have a really toxic relationship with homework." },
-        { s: 'hanni', f: 'neutral', t: "It's not ours to tell you, Sol. It isn't. You'd kill us. Old you would actually kill us. You'd do it with your bare hands and then you'd say you were fine." }
+        { s: 'hanni', f: 'neutral', t: "We promised we'd stop deciding things for you. At home. We promised. This one still isn't ours, though, Sol. It's his. And old you would actually kill us. You'd do it with your bare hands and then you'd say you were fine." }
       ] },
       { t: "(Let it go.)", then: [
         { n: "She let it go. She was good at that; she suspected she'd always been good at it. Hyein rubbed her arm and glared at Hanni, and Hanni didn't apologize, and something went between the two of them over Solar's head that she couldn't read and didn't try to." }
@@ -594,8 +594,8 @@ window.FEMC_STORY_KIT.badEnding = [
     ] },
     { ifEvent: 'a4-mark', then: [
       { s: 'hanni', f: 'neutral', t: "Mark's here too, you know. He asks us how you are every day. Every single day. Like he's checking on a stock." },
-      { s: 'hyein', f: 'serious', t: "We don't love that." },
-      { s: 'hanni', f: 'neutral', t: "We don't love that. But it doesn't matter. None of it matters. You're what matters. We just want you back where we can see you." }
+      { s: 'hyein', f: 'serious', t: "We don't tell him anything." },
+      { s: 'hanni', f: 'neutral', t: "Not anymore. But it doesn't matter. None of it matters. You're what matters. We just want you back where we can see you." }
     ], else: [
       { s: 'hanni', f: 'neutral', t: "We just want you back where we can see you. That's all. That's the whole speech. Hyein wrote a longer one and I made her cut it." }
     ] },

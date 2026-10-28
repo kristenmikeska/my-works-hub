@@ -10,7 +10,8 @@
      the way she always did; nothing comes back. Time back home stays unclear.
    - Each thread is named by what the sender is to her (the phone has no contacts from home); the names differ by world
      so the six threads never blur: Father / Mother (Runners), Appa / Eomma (strangers), Mom / Dad (Hoax).
-   - Voices follow each novel's current canon: Runners (Ch 66), the Lee parents of Upper East Side, a father who isn't
+   - Voices follow each novel's current canon: Runners (the state at about 11/22, heading home for Thanksgiving: the
+     Foundation Dinner is Monday 11/24, so its text is the last ordinary one, on 11/21, and 11/27 is a text into silence), the Lee parents of Upper East Side, a father who isn't
      a talker and runs things through his office, a mother who says "dear" and dresses her for photographs; strangers
      (Ch 65), the Lee house in Incheon, Taejoon soft and plain ("Sol" is his alone) and Miseon in full sentences with
      her rules about hair and the jade; Hoax (Ch 99), the Kims, always at work or on the road, a warm mother who loves
@@ -35,9 +36,12 @@
     { id: 'home-r-birthday', thread: 'home-father', date: '9/17', slot: 'late', events: R,
       msgs: m('home-father', 'Happy birthday, Solar.', 'My office has booked dinner for Saturday at eight. Your mother has chosen the dress.', 'Eighteen. We will talk about the summer at dinner.'),
       reply: [{ t: 'thank u dad' }, { t: 'its september' }, { t: '(Leave it on read.)', silent: true }] },
-    { id: 'home-r-foundation', thread: 'home-mother', date: '11/24', slot: 'late', events: R,
-      msgs: m('home-mother', 'Three dresses went up to the penthouse this morning. The navy is the one, dear.', 'Your father wants you beside him for the photographs.', 'Smile like you mean it. It’s a charity.'),
+    { id: 'home-r-foundation', thread: 'home-mother', date: '11/21', slot: 'late', events: R,
+      msgs: m('home-mother', 'Three dresses go up to the penthouse on Monday. The navy is the one, dear.', 'Your father wants you beside him for the photographs.', 'Smile like you mean it. It’s a charity. Text me from the train.'),
       reply: [{ t: 'i know where to stand' }, { t: 'can i wear the black one' }] },
+    { id: 'home-r-thanksgiving', thread: 'home-mother', date: '11/27', slot: 'late', events: R,
+      msgs: m('home-mother', 'The table is set for four, dear.', 'Your place is where it always is.', 'Your father asked Ms. Han to call the school again.'),
+      reply: [{ t: 'mom' }, { t: '(Hold the phone. Don’t answer.)', silent: true }] },
     { id: 'home-r-call', thread: 'home-father', date: '12/15', slot: 'late', events: ['a5-call-runners'],
       msgs: m('home-father', 'Solar.', 'Your mother hasn’t slept.', 'Call the house.'),
       reply: [{ t: 'dad?' }, { t: 'im sorry' }, { t: '(Hold the phone. Don’t answer.)', silent: true }] },

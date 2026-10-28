@@ -392,7 +392,8 @@
     ...window.FEMC_STORY_KIT.byRoute([
       { s: 'hyein', f: 'happy', t: "Hanni's making you pancakes. When we get back. First snow day pancakes. She's been planning it since December." },
       { s: 'hanni', f: 'happy', t: "With the little chocolate chips. You always pick them out and then eat them separately. Like a psychopath." },
-      { n: "Solar laughed, and the snow came down, and for the first time it didn't feel like a promise somebody was making to someone else. It felt like hers. Saturday. Then home. Then pancakes, and a pink hallway, and a single on the second floor." }
+      { s: 'hyein', f: 'serious', t: "And THEN you're getting on a train to your parents' and you're texting us the whole time. Every stop. I want a picture of every single stop." },
+      { n: "Solar laughed, and the snow came down, and for the first time it didn't feel like a promise somebody was making to someone else. It felt like hers. Saturday. Then home. Then pancakes, and a train, and a pink hallway, and a single on the second floor." }
     ], [
       { n: "Hanni was quiet for a while, watching it come down. Then she said, without looking at Solar, that she was going to save her the pancakes anyway. At home. On the counter. Just in case." },
       { s: 'hyein', f: 'sad', t: "We'll eat them. Obviously. But we'll make them." },

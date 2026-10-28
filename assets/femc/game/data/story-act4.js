@@ -371,7 +371,7 @@
     ] },
     { s: 'akihiko', f: 'neutral', t: "How long has she been gone? From where you are?" },
     { n: "The two girls looked at each other." },
-    { s: 'hanni', f: 'neutral', t: "...A night? She didn't come home. We were at a party and then she wasn't, and we called and called, and we went out looking. We were out looking for, I don't know. Four hours? Five?" },
+    { s: 'hanni', f: 'neutral', t: "...A night? We had a night in, just us. In the morning she was supposed to get on a train home, and she just... wasn't anywhere. We called and called, and we went out looking. We were out looking for, I don't know. Four hours? Five?" },
     { s: 'hyein', f: 'serious', t: "It was way longer than that. It felt like days. I'd slept, Hanni, I definitely slept, I remember sleeping on that bench." },
     { s: 'hanni', f: 'sad', t: "You didn't sleep, you closed your eyes for like ten minutes." },
     { s: 'hyein', f: 'serious', t: "Then why do I remember it being morning?" },
@@ -542,7 +542,8 @@
       { t: "You should ask first.", then: [
         { n: "The girl made a small sound behind the camera that might have been a laugh." },
         { s: 'minji', f: 'sad', t: "I always ask. I ask, like, twenty times. You make fun of me for it." },
-        { s: 'minji', f: 'sad', t: "I didn't ask this time. I thought I'd never get to ask you anything again." }
+        { s: 'minji', f: 'sad', t: "I didn't ask this time. I thought I'd never get to ask you anything again." },
+        { n: "She said it like there was something else under it, something she'd meant to tell Solar and hadn't, and had been carrying around ever since in the same bag as the camera." }
       ] },
       { t: "Who are you looking for?", then: [
         { s: 'minji', f: 'neutral', t: "You. Obviously." },
@@ -1009,7 +1010,8 @@
       { t: "Who are you?", then: [
         { n: "He didn't flinch. Something went across his face, very fast, and was put away so efficiently she almost didn't see it go." },
         { s: 'jaehyun', f: 'neutral', t: "Jaehyun. Lee Jaehyun." },
-        { s: 'jaehyun', f: 'neutral', t: "Your brother." }
+        { s: 'jaehyun', f: 'neutral', t: "Your brother." },
+        { s: 'jaehyun', f: 'neutral', t: "I'm not going to ask you anything. I said I wouldn't." }
       ] },
       { t: "You knocked.", then: [
         { s: 'jaehyun', f: 'neutral', t: "I did. Nobody answered. So I came to look." },
@@ -1312,9 +1314,10 @@
     { n: "He looked up. His face did nothing at all. That was, Solar would think later, the loudest thing it could have done." },
     { s: 'hyein', f: 'surprised', t: "What are you... why are you... is Sigma here? Is everybody here? Is JAEMIN here?" },
     { s: 'haechan', f: 'neutral', t: "Just me." },
-    { s: 'hyein', f: 'surprised', t: "Just you. Just you. Oh my God. Hanni. Hanni, it's just HIM. Does Sol know that you two are..." },
+    { s: 'hyein', f: 'surprised', t: "Just you. Just you. Oh my God. Hanni. Hanni, it's just HIM. Does Sol know that you two are— were— are..." },
     { n: "Hanni's hand came over Hyein's mouth from behind, flat and fast and practiced, like she'd done it a hundred times on a hundred staircases, and stayed there. Hyein made a muffled noise of outrage into it." },
-    { s: 'hanni', f: 'neutral', t: "Good morning, Haechan. It's nice to see you. Hyein's going to go and dry her hair now." },
+    { s: 'hanni', f: 'neutral', t: "Good morning, Haechan. Hyein's going to go and dry her hair now." },
+    { n: "It was perfectly polite. It was measured to the gram, the way you'd greet somebody you'd last seen somewhere cold, saying something hard about himself, and hadn't finished deciding about." },
     { n: "Hyein did not go and dry her hair. She stood on the bottom step with Hanni's hand over her mouth and looked from Haechan to Solar and back with her eyes getting wider and wider, and Haechan looked at his bowl, and Solar looked at Haechan, and nobody at the table had the faintest idea what was happening except, very possibly, Akihiko, who had gone extremely still." },
     { choose: [
       { t: "Are we what?", then: [
@@ -1540,8 +1543,8 @@
     { s: 'mark', f: 'flustered', t: "Hey. Hi. It's you. Oh, man. It's really you." },
     { choose: [
       { t: "I'm sorry. I don't know who you are.", then: [
-        { n: "The smile didn't go. That was the strange thing. It changed, a little, at the edges, like a song going into a minor key, but it stayed, and he nodded, slowly, as if she'd told him something he needed to sit with." },
-        { s: 'mark', f: 'neutral', t: "Yeah. No, yeah. I kind of figured, from your face. Hanni texted me, like, a hundred things before... before." },
+        { n: "The smile didn't go. That was the strange thing. It changed, a little, at the edges, like a song going into a minor key, but it stayed, and he nodded, slowly, as if she'd told him something he needed to sit with. And under it, for half a second, something that looked almost like relief, there and gone so fast she'd wonder later if she'd made it up." },
+        { s: 'mark', f: 'neutral', t: "Yeah. No, yeah. I kind of figured, from your face. Hanni's... not really answering me. One got through, though. Before... before." },
         { s: 'mark', f: 'neutral', t: "It's Mark. I'm Mark. That's okay. You didn't know me the first time either. I knew you." }
       ] },
       { t: "How do you know that song?", then: [
