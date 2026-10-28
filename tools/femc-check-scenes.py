@@ -14,6 +14,10 @@ extra = sorted(str(x.relative_to(ROOT)) for x in (ROOT / 'assets/femc/game/data'
 for e in extra:
     if (ROOT / e).exists() and e not in srcs:
         srcs.insert(len(srcs) - 1 if e.startswith('assets/femc/game/links') else len(srcs), e)
+# The epilogue's worlds (data/epi/<world>/, loaded on demand by epilogue.js, so not in the page): calendar first, then the rest.
+EPI = sorted(str(x.relative_to(ROOT)) for x in (ROOT / 'assets/femc/game/data/epi').glob('*/*.js'))
+EPI.sort(key=lambda f: (f.split('/')[-2], 0 if f.endswith('calendar.js') else 1, f))
+srcs += [e for e in EPI if e not in srcs]
 prelude = 'var window = this; var document = { currentScript: { src: "x" } }; var matchMedia = function(){ return { matches: false }; };\n'
 out = prelude
 for s in srcs:
@@ -26,7 +30,8 @@ print("JSON:" + JSON.stringify({
   links: (window.FEMC_GAME_LINKS || []).filter(function(l){ return l.status !== 'stub'; }),
   events: (window.FEMC_GAME_EVENTS || []).map(function(e){ return { id: e.id, cast: e.cast }; }),
   crush: window.FEMC_GAME_CRUSH || { tracks: {}, moments: [], world: {} },
-  ambient: ((window.FEMC_GAME_TEXTS || {}).ambient || []).map(function(t){ return { id: t.id, crush: t.crush || null }; })
+  ambient: ((window.FEMC_GAME_TEXTS || {}).ambient || []).map(function(t){ return { id: t.id, crush: t.crush || null }; }),
+  epi: window.FEMC_EPI_WORLDS || {}, stats: Object.keys((window.FEMC_GAME_STATS || {}).stats || {})
 }));
 '''
 tmp = tempfile.NamedTemporaryFile('w', suffix='.js', delete=False); tmp.write(out); tmp.close()
@@ -131,6 +136,50 @@ for path, lst in CR.get('world', {}).items():
         if isinstance(x, dict): gate_ok(x.get('crush'), f'world/{path}#{i}')
 for t in D['ambient']:
     if t.get('crush'): gate_ok(t['crush'], 'text/' + t['id'])
+# The epilogue's worlds (epilogue batch 1, 2026-10-27): each calendar's shape and dates, the money, routes, places with art,
+# activities, variants, and every event's scene (its places checked against the world's own background rules).
+import datetime
+def epi_day(cal, md):
+    m, d = map(int, md.split('/')); sm, sd = map(int, cal['start'].split('/')); y = cal['year']
+    return (datetime.date(y if m >= sm else y + 1, m, d) - datetime.date(y, sm, sd)).days
+EPI_COUNT = {}
+for wid, w in D.get('epi', {}).items():
+    k = f'epi/{wid}'; cal = w.get('calendar') or {}
+    for key in ('year', 'start', 'end', 'slots', 'daySlots'):
+        if key not in cal: problems.append(f'{k}: calendar has no {key}')
+    if not all(key in w for key in ('money', 'routes', 'places', 'events')): problems.append(f'{k}: world.js needs money, routes, places and events'); continue
+    try: last = epi_day(cal, cal['end'])
+    except Exception as e: problems.append(f'{k}: bad start/end ({e})'); continue
+    if last <= 0: problems.append(f'{k}: end is not after start')
+    ids_ = {x['id'] for x in cal.get('slots', [])}
+    for typ, lst in cal.get('daySlots', {}).items():
+        if not lst or lst[0] != 'early' or any(x not in ids_ for x in lst): problems.append(f'{k}: daySlots.{typ} must start with early and use the calendar slots ({lst})')
+    inr = lambda md: 0 <= epi_day(cal, md) <= last
+    for md in list(cal.get('holidays', {})) + list(cal.get('events', {})) + cal.get('fullMoons', []) + [d for e in cal.get('exams', []) for d in e['days']] + list(cal.get('weather', {})):
+        if not inr(md): problems.append(f'{k}: date {md} is outside the act')
+    mo = w['money']
+    if not mo.get('sign') or not isinstance(mo.get('start'), (int, float)): problems.append(f'{k}: money needs a sign and a start')
+    if not w['routes'] or any(not r.get('id') for r in w['routes']): problems.append(f'{k}: routes need ids')
+    if w.get('lockAfter') and not inr(w['lockAfter']): problems.append(f'{k}: lockAfter outside the act')
+    wbg = w['places'].get('bg') or []
+    wbg_ok = lambda place: any((place and at[0] == '*' and at[1:] in place) or (place or '').startswith(at) for at, *_ in wbg)
+    for spot in ('home',) + (('school',) if 'school' in w['places'] else ()):
+        if not wbg_ok((w['places'].get(spot) or {}).get('place')): problems.append(f'{k}: places.{spot} has no background rule')
+    for a in w['places'].get('activities', []):
+        if not a.get('id') or not a.get('name') or not isinstance(a.get('cost', 0), (int, float)): problems.append(f'{k}: activity {a.get("id")} needs id, name and a numeric cost')
+        if not wbg_ok(a.get('place')): problems.append(f'{k}: activity {a.get("id")} place "{a.get("place")}" has no background rule')
+        for st in (a.get('stats') or {}):
+            if st not in D['stats']: problems.append(f'{k}: activity {a.get("id")} raises unknown stat {st}')
+    mv = (w.get('variants') or {}).get('morning') or {}
+    if not mv.get('school') and not mv.get('off'): problems.append(f'{k}: variants.morning needs school or off lines')
+    saved_bg = bg; bg = wbg
+    for e in w['events']:
+        uid(e.get('id'), k)
+        if not e.get('date') or not inr(e['date']): problems.append(f'{k}: event {e.get("id")} date {e.get("date")} outside the act')
+        if e.get('place') and not wbg_ok(e['place']): problems.append(f'{k}: event {e.get("id")} place "{e["place"]}" has no background rule')
+        walk(e.get('scene'), f'{k}/{e.get("id")}')
+    bg = saved_bg
+    EPI_COUNT[wid] = {'days': last + 1, 'events': len(w['events']), 'activities': len(w['places'].get('activities', [])), 'stub': bool(w.get('stub'))}
 want = sys.argv[sys.argv.index('--links') + 1].split(',') if '--links' in sys.argv else []
 for lid in want:
     l = links.get(lid)
@@ -150,4 +199,4 @@ print('\n'.join(problems) if problems else 'OK: no problems')
 print(json.dumps({'jobPacks': {k: {kk: len(v) for kk, v in p.items() if isinstance(v, list)} for k, p in D['more'].items()},
                   'clubs': {k: {kk: len(v) for kk, v in p.items() if isinstance(v, list)} for k, p in D['clubs'].items()},
                   'runins': len(D['runins']), 'crushMoments': {w: sum(1 for m in CR.get('moments', []) if m.get('who') == w) for w in sorted(TRACKS)},
-                  'crushWorld': sum(len(v) for v in CR.get('world', {}).values())}))
+                  'crushWorld': sum(len(v) for v in CR.get('world', {}).values()), 'epilogue': EPI_COUNT}))
