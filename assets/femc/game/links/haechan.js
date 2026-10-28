@@ -1,6 +1,6 @@
 /* Haechan · ∞ The Universe. Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
    Searcher, canon romance (Runners + strangers). One boy carrying two lives, the way Solar carries three: the flat, dry
-   Recruitment Chair who hears rooms (Runners) and the loud, warm, reckless dog of the Lee house who goes quiet when he's
+   Recruitment Chair who hears rooms (Runners) and the loud, warm, reckless man the city calls the Lee house's dog (the house calls him son) who goes quiet when he's
    afraid (strangers). Both registers surface; neither world's plot moves. Every rank lets Solar lean one way or the other
    (tally haechan.R / haechan.S, plot doc §9, §12). His crossing (11/4, the laundry room, "...There you are.") is a story
    event; rank 1 is the first night after it. He awakens on 12/5 (story); ranks 6+ come after.
@@ -177,8 +177,16 @@
       { s: 'yunjin', f: 'neutral', t: "Don't *Jin* me. I've been at the harbor. I couldn't sleep. The tide went out and I couldn't sleep, and I thought, who else in this building can't sleep at low tide, and then I thought, oh, right, she doesn't know she can't." },
       { n: "She sat down two steps below them without being asked and took a handful of chips without being offered, and looked at Haechan, and then at Solar, and then said something to Solar, fast and low, in English, with her eyebrows doing most of the work." },
       { s: 'haechan', f: 'neutral', t: "I heard that." },
-      { s: 'yunjin', f: 'surprised', t: "You don't speak English." },
-      { s: 'haechan', f: 'neutral', t: "In one of them I don't. In the other one I sit through three lectures a week in it. Don't ask me which one of me is translating. I don't know either." },
+      // Yunjin finds out once (the routine haechan-yunjin-english, here, or her rank 8); each writes its own flag.
+      { ifFlag: 'hc-english-day', then: [
+        { s: 'yunjin', f: 'flustered', t: "I keep forgetting you do that. I'm going to keep forgetting. It's a choice." }
+      ], else: [{ ifFlag: 'hc-english-r8', then: [
+        { s: 'yunjin', f: 'flustered', t: "I keep forgetting you do that. I'm going to keep forgetting. It's a choice." }
+      ], else: [
+        { s: 'yunjin', f: 'surprised', t: "You don't speak English." },
+        { s: 'haechan', f: 'neutral', t: "In one of them I don't. In the other one I sit through three lectures a week in it. Don't ask me which one of me is translating. I don't know either." },
+        { flag: { 'hc-english-stairs': true } }
+      ] }] },
       { s: 'yunjin', f: 'flustered', t: "...That's so unfair. That was a good insult. That was a really specific insult." },
       { choose: [
         { t: "What did she say?", notes: 2, then: [
@@ -448,7 +456,7 @@
       { choose: [
         { t: "Why didn't you ever fix it?", notes: 3, tally: { 'haechan.S': 1 }, then: [
           { s: 'haechan', f: 'sad', t: "Because then I'd have to listen to it." },
-          { s: 'haechan', f: 'sad', t: "Somebody gave it to me. I'd rather keep it quiet than find out what it sounds like without him." }
+          { s: 'haechan', f: 'sad', t: "Somebody gave it to me. It stays quiet till he's sitting next to me. Not before." }
         ] },
         { t: "Play it for me. The real one. When we're home.", notes: 3, then: [
           { n: "He went very still at *home*. At *we*. She heard both words leave her and couldn't call either of them back." },
@@ -736,8 +744,8 @@
       ] },
       { n: "He drank the coffee down to the bottom like a man getting through a form, and set the empty can on the rail, and turned it a little so the tab faced the water. Then he spoke to the bay, not to her." },
       { ifFlag: 'xroad3-S', then: [
-        { s: 'haechan', f: 'serious', t: "I'm not the good one. In either place. There are things over there you don't know yet, and when you do, you're going to look at me different, and you'd be right to." },
-        { s: 'haechan', f: 'serious', t: "I'm not going to tell you here. It's not mine to tell you somewhere you can't walk out of. So don't decide anything about me because I fold your socks." }
+        { s: 'haechan', f: 'serious', t: "I'm not the good one. In either place. Over there you know all of it. You heard it in order, from me, and you stayed." },
+        { s: 'haechan', f: 'serious', t: "I'm not handing it back to you on a roof where you can't walk out. So don't decide anything about me because I fold your socks." }
       ], else: [
         { s: 'haechan', f: 'serious', t: "I'm not the good one. In either place. In the one with the snow you already know why. I told you myself, all of it, in order, a few days before you fell through. You believed me. That's not the same as being done, and we weren't." },
         { s: 'haechan', f: 'serious', t: "I'm not making you hear it twice. Not here, where you can't walk out of it. There's one thing I didn't tell you, though. It's not about anybody else. It's mine, and it's yours, and I owe it to you over there. So don't decide anything about me because I fold your socks." }
@@ -799,9 +807,9 @@
       { n: "The dryer kept turning. The light kept humming its flat E. Nothing else in the room moved. He didn't breathe. She watched him not breathe for so long she started to count it, one, two, and at five he let it out all at once, slow, like he'd been holding it since November." },
       { s: 'haechan', f: 'serious', t: "...Who told you that." },
       { s: 'solar', f: 'neutral', t: "Nobody." },
-      { s: 'haechan', f: 'sad', t: "Nobody calls me that." },
+      { s: 'haechan', f: 'sad', t: "Nobody here calls me that." },
       { n: "His voice cracked down the middle of *nobody*, very small, so small it could have been the light flickering, and he heard it and his jaw locked." },
-      { s: 'haechan', f: 'sad', t: "In one of them it's what the people who hate me call me. In the other one it's what I gave you, and then you went and took a shorter one off somebody, all on your own. Same name. You're the only one who ever said either like it was a present." },
+      { s: 'haechan', f: 'sad', t: "In one of them hyung called me that. Then for a while the people who wanted me dead did. Then you took it back off them, all on your own. In the other one it's what I gave you, and then you went and took a shorter one off somebody. Same name. You're the only one who ever said either like it was a present." },
       { s: 'haechan', f: 'serious', t: "I didn't give it to you here. I didn't. I was waiting to see if it'd come back on its own." },
       { s: 'haechan', f: 'flustered', t: "...Say it again." },
       // Honest and torn (crush batch, 2026-10-23): she's with someone else. The choice stays hers; the scene doesn't pretend.
@@ -873,7 +881,7 @@
           { n: "He reached into the blanket and came out with a can of coffee, the cheap sweet kind from the machine downstairs, still hot, and put it in her hands and closed her fingers round it with his own." },
           { s: 'haechan', f: 'happy', t: "Your kind. The bad kind. I bought the row." },
           { s: 'haechan', f: 'neutral', t: "...Solar." },
-          { n: "Not agasshi. Not anything with a fight in it. He'd said her name before, once, at the bottom of a staircase, like something that had slipped. This didn't slip. He said it on purpose, first, and let her watch him do it, the one tell he'd never let her catch him using." },
+          { n: "Not agasshi. Not anything with a fight in it. He'd said her name before, once, at the bottom of a staircase, like something that had slipped. This didn't slip. He said it on purpose, first, and let her watch him do it, the name he'd kept for emergencies for seven years, until one winter he'd stopped keeping it." },
           { choose: [
             { t: "Ten meters is too far.", notes: 3, then: [
               { s: 'haechan', f: 'surprised', t: "..." },
@@ -994,7 +1002,7 @@
       { n: "He handed her one side of the headphones. The heavy black ones. They were warm from his neck." },
       { n: "It was a song. She'd known it would be. She hadn't known it would be this song." },
       { n: "The gate chime at Iwatodai Station. The hiss of the monorail doors. The laundry room's light, flat, an E, humming under everything like a floor. Rain on the platform roof. The rooftop door's long iron sigh, and the scrape of the brick that held it open. A dryer turning. And over all of it, laid in so carefully she almost didn't hear the seam, the four minutes of the song she'd been humming since April without knowing where she'd first heard it, the one that had always felt like it belonged to some other version of her life." },
-      { n: "It was his. It had always been his. In one place it was a track on a laptop, unfinished, in a room at the top of a very loud house. In the other it was an old disc in a cracked silver case that hadn't turned in years. Here, it was finished." },
+      { n: "It was his. It had always been his. In one place it was a track on a laptop, unfinished, in a room at the top of a very loud house. In the other there was no track at all, only a cracked silver Discman with somebody else's songs in it, and a boy who sang trot badly so he wouldn't have to think. Here, it was finished." },
       { s: 'haechan', f: 'flustered', t: "I've been making it a long time. In both of them. It always ends up being about the same person." },
       { s: 'haechan', f: 'neutral', t: "I guess it found you before I did. That tracks." },
       { n: "Somewhere under the middle of it, so far down in the mix it might have been a synth or a room or somebody breathing, there was something she couldn't name, and she felt him watch her not name it." },
@@ -1013,7 +1021,7 @@
         { s: 'haechan', f: 'serious', t: "You believed me, last time. Over there. We weren't done. We're still not." }
       ], else: [
         { ifFlag: 'haechan-sure-S', then: [
-          { s: 'haechan', f: 'neutral', t: "When the hour ends I know where I'm going to be. Ten meters outside your door, low tide, too early. You'll have no idea who I am for about five minutes, and then you'll tell me to go to hell." }
+          { s: 'haechan', f: 'neutral', t: "When the hour ends I know where I'm going to be. The bottom of your garden, low tide, too early. You'll have no idea who I am for about five minutes, and then you'll call me something you're not supposed to call me in company." }
         ], else: [
           { ifFlag: 'haechan-sure-both', then: [
             { s: 'haechan', f: 'neutral', t: "When the hour ends I'm going to be in two places at once, and so are you, and for once that's the whole plan. I'll find you in both. You'll tell me to go to hell in both. In two accents." }
@@ -1368,9 +1376,9 @@
       { s: 'haechan', f: 'neutral', t: "...He's come for the pot." },
       { n: "Jungwon, on the back step in the cold in a long navy coat buttoned to the throat, his hands at his sides and his watch on, his face arranged into the expression of a young man who'd been awake since eleven thinking about a stockpot and had decided, at a quarter to one, that this was reasonable." },
       { s: 'jungwon', f: 'neutral', t: "Good evening. I apologize for the hour. The guesthouse kitchen opens at six, and the cook will ask where it is, and I would prefer to have an answer." },
-      { s: 'jungwon', f: 'neutral', t: "Donghyuck-ssi." },
+      { s: 'jungwon', f: 'neutral', t: "Donghyuck." },
       { s: 'haechan', f: 'neutral', t: "Yang Jungwon." },
-      { n: "*Donghyuck.* It went into her like a splinter. Not the way she said it, the name handed over in a laundry room like a present. The other way. Correct, formal, faultlessly polite, the way you'd address an employee of a family you'd been obliged to make peace with, every syllable in its place and nothing whatsoever inside it. He'd told her in December who else called him that. She hadn't known it would feel like watching somebody pick up something of hers with gloves on." },
+      { n: "*Donghyuck.* It went into her like a splinter. Not the way she said it, the name handed over in a laundry room like a present. The other way. Plain and level, the way a man says a name he's been angry at and grateful to and afraid for, all in the same winter, and refuses to say kindly. He'd told her in December who used to call him that. She didn't know why it should feel like watching somebody pick up something of hers with gloves on." },
       { s: 'haechan', f: 'neutral', t: "It's wet." },
       { s: 'jungwon', f: 'neutral', t: "I can carry a wet pot." },
       { s: 'haechan', f: 'neutral', t: "It goes back dry." },
@@ -1397,7 +1405,7 @@
         { s: 'jungwon', f: 'neutral', t: "I wasn't aware you were counting." },
         { s: 'haechan', f: 'neutral', t: "I count everybody's bowls. It's a condition." },
         { s: 'haechan', f: 'sad', t: "Strangest thing. I keep going to look for the part of me that hates you. I know where I left it. It isn't there. It's all snow over there now. I'm going somewhere you don't exist. It's very relaxing." },
-        { s: 'jungwon', f: 'happy', t: "I can find mine without any trouble. Thank you for the soup, Donghyuck-ssi." },
+        { s: 'jungwon', f: 'happy', t: "I can find mine. It's smaller than it was. Don't tell anyone. Thank you for the soup, Donghyuck." },
         { s: 'yunjin', f: 'surprised', t: "...Did the Yang boy just make a JOKE?" },
         { choose: [
           { t: "(Sit next to Jungwon. Eat with him.)", notes: 3, then: [
@@ -1411,10 +1419,10 @@
         ] }
       ], else: [{ ifHeading: 'S', then: [
         { s: 'haechan', f: 'happy', t: "Sit. You didn't have a second bowl on Sunday. I count bowls. In my house nobody leaves the table on one bowl at new year. Not even a Yang." },
-        { n: "He said it loud and warm and outrageous, ladling with his back to a man he had never once in his life sat down at a table with by choice, and slid the bowl across the table at Jungwon so hard it nearly went off the edge. Jungwon stopped it with two fingers. He looked at it for a long moment." },
+        { n: "He said it loud and warm and outrageous, ladling with his back to a man he'd once sat across a baduk board from until dawn and never, until now, across a table, and slid the bowl across the table at Jungwon so hard it nearly went off the edge. Jungwon stopped it with two fingers. He looked at it for a long moment." },
         { s: 'jungwon', f: 'neutral', t: "...Thank you." },
         { n: "It was the politest she had ever heard him be. She knew what that meant, on him. So did Haechan, who laughed once, short, and didn't turn round." },
-        { s: 'haechan', f: 'neutral', t: "There's a calendar in the hall at home. You know the one. It says sixty-six." },
+        { s: 'haechan', f: 'neutral', t: "There's a calendar in the kitchen at home. You know the one. It says sixty-six." },
         { s: 'jungwon', f: 'neutral', t: "It will say sixty-six when we get back. I suspect it will say sixty-six for some time. It's been saying it all year." },
         { n: "Neither of them looked at her. Neither of them needed to. The number sat in the warm kitchen between the three of them like a fourth bowl nobody was going to touch, and Yunjin, in the doorway, folded her arms very tight over her cardigan and looked at the floor." },
         { s: 'yunjin', f: 'sad', t: "...Eat your soup, both of you. You're making me old." },
@@ -1439,7 +1447,7 @@
         { s: 'yunjin', f: 'surprised', t: "Babe. Is he giving him DATING advice? At ONE in the MORNING? Am I dreaming? Am I dead?" },
         { choose: [
           { t: "(Read the notebook over Jungwon's shoulder.)", notes: 3, then: [
-            { n: "*Two cans. The wrong ones. She will say she doesn't.* Underlined twice. Underneath, smaller, in the same perfect hand, *Donghyuck-ssi*, and then a line through the *ssi*, and then, after a pause she could see in the ink, the *ssi* written back in." }
+            { n: "*Two cans. The wrong ones. She will say she doesn't.* Underlined twice. Underneath, smaller, in the same perfect hand, *Donghyuck*, and after it, smaller still, *hyung*, crossed out, and then, after a pause she could see in the ink, written back in." }
           ] },
           { t: "Thank you. Both of you.", notes: 3, then: [
             { s: 'haechan', f: 'neutral', t: "Don't thank me. I'm doing it for the cans." },
@@ -1468,8 +1476,8 @@
       ], else: [
         { s: 'haechan', f: 'neutral', t: "Sit. You didn't have a second bowl." },
         { s: 'jungwon', f: 'neutral', t: "...Thank you." },
-        { n: "He sat. Haechan put the soup in front of him and sat down across the table, and Yunjin sat at the end, and Solar stood by the kettle and looked at the three people in this kitchen who had come for her from the same house and were going back to it without her, on the same train, in less than three weeks." },
-        { s: 'jungwon', f: 'neutral', t: "We'll be on the same train, Donghyuck-ssi." },
+        { n: "He sat. Haechan put the soup in front of him and sat down across the table, and Yunjin sat at the end, and Solar stood by the kettle and looked at the three people in this kitchen who had come for her from the same city and were going back to it without her, on the same train, in less than three weeks." },
+        { s: 'jungwon', f: 'neutral', t: "We'll be on the same train, Donghyuck." },
         { s: 'haechan', f: 'neutral', t: "Sit at the other end." },
         { s: 'jungwon', f: 'neutral', t: "I intend to." },
         { s: 'yunjin', f: 'sad', t: "I'm in the middle, then. God help me. I'm going to be the middle the whole way." },
@@ -1489,7 +1497,7 @@
         { n: "When the kitchen was empty she stood at the sink beside him while he rinsed the last bowl and dried it, and the name was still in the room. She could feel it the way you feel a draft from a door somebody's left open." },
         { s: 'solar', f: 'neutral', t: "Donghyuck." },
         { n: "He stopped with the bowl in his hands." },
-        { s: 'haechan', f: 'neutral', t: "...You're washing his voice off it." },
+        { s: 'haechan', f: 'neutral', t: "...You're putting yours back on it." },
         { s: 'solar', f: 'neutral', t: "Is it working?" },
         { choose: [
           { t: "(Say it again. Slower.)", notes: 3, then: [
@@ -1502,7 +1510,7 @@
           ] }
         ] }
       ], else: [
-        { s: 'haechan', f: 'neutral', t: "You're going to say my name now. To get his voice off it." },
+        { s: 'haechan', f: 'neutral', t: "You're going to say my name now. To put yours back on it." },
         { s: 'solar', f: 'neutral', t: "I wasn't going to." },
         { s: 'haechan', f: 'neutral', t: "You were. Don't. It's fine. Say Haechan. That one's clean. Everybody uses it. It's practically a towel." },
         { choose: [
@@ -1737,7 +1745,7 @@
         { n: "He was loud tonight. Not the roof-at-midnight loud that made Junpei throw windows open. The other one, the warm one, the harbor in him all the way up at the surface now, the house on the hill with too many stairs and a man in an armchair who called him son. He'd settled into it the way a tide settles, all at once and then for good." },
         { n: "And there was a disc drive in the side of the laptop she'd never noticed, and a blank disc on the concrete beside him, and a marker." },
         { s: 'haechan', f: 'happy', t: "I'm burning it. Don't laugh. Where we're going, songs live on discs. I'm not having it live on a laptop in a house that hasn't got one." },
-        { s: 'haechan', f: 'neutral', t: "You name it. I write it on in marker, badly, later, once you know what's in it. Then it goes in a drawer in the sewing room, and I don't tell you which drawer, and one day you find it." },
+        { s: 'haechan', f: 'neutral', t: "You name it. I write it on in marker, badly, later, once you know what's in it. Then it goes in a drawer in the annex, and I don't tell you which drawer, and one day you find it, under the Discman." },
         { choose: [
           { t: 'Call it "agasshi".', notes: 3, then: [
             { s: 'haechan', f: 'happy', t: "Ha. No. Yes. No." },

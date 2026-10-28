@@ -165,7 +165,7 @@
         R('be nice to him', 1, ['i was. i said four words to him', "that's a record. ask jin"])] },
     // a5-train (12/2): his first night near the tower; Yunjin waited in the lounge.
     { id: 'am-hc-train', thread: 'yunjin', from: '12/3', to: '12/6', flag: 'arrived-haechan', events: ['a5-train'],
-      msgs: [YJ('babe. the dog came back from ur tower and sat on the stairs for an hour'), YJ("he doesn't SIT. he lurks"), YJ('what did u people show him')],
+      msgs: [YJ('babe. the delivery boy came back from ur tower and sat on the stairs for an hour'), YJ("he doesn't SIT. he lurks"), YJ('what did u people show him')],
       reply: [YR('a train', 2, ['a TRAIN??', "ok. i'm making him tea. he's going to hate it. he's going to drink it"]),
         YR('sit with him jin', 3, ["babe i AM. i'm on the step below him", 'like a guard dog for the guard dog', "he hasn't told me to go away. thats basically a hug"])] },
     // a5-call-runners (12/14): Hyein made him tell her to come home; "Not my call."
@@ -197,7 +197,7 @@
       } },
     // a6-new-year (1/1): the whole household at the shrine; Yunjin watched him bow.
     { id: 'am-hc-newyear', thread: 'yunjin', from: '1/2', to: '1/5', flag: AFTER, events: ['a6-new-year'],
-      msgs: [YJ('babe did u see the dog at the shrine'), YJ('he clapped twice and bowed like a man at a funeral'), YJ('...i know who taught him that. never mind. happy new year')],
+      msgs: [YJ('babe did u see the delivery boy at the shrine'), YJ('he clapped twice and bowed like a man at a funeral'), YJ('...i know who taught him that. never mind. happy new year')],
       reply: [YR('happy new year jin', 2, ['happy new year babe', "eat something with rice cakes in it. it doesn't count till u do"]),
         YR('what did u wish for', 3, ['not telling', "its about u. obviously. its always about u"])] }
   );

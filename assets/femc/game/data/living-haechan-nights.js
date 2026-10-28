@@ -92,7 +92,7 @@
       { s: 'yunjin', f: 'neutral', t: "You put the egg in at the start. That's how she does it. That's how everyone does it." },
       { s: 'haechan', f: 'happy', t: "Mrs. Bang puts the egg in at the start so it goes hard and nobody can complain it's raw. That's not cooking. That's a legal position." },
       { n: "Yunjin's voice was all gravel, lower than it had any right to be, like a road somebody had driven too fast on too many times. She looked up when Solar came in and her whole face did something quick and pleased." },
-      { s: 'yunjin', f: 'happy', t: "Oh, good. A witness. Sol, tell the dog how you like your egg." },
+      { s: 'yunjin', f: 'happy', t: "Oh, good. A witness. Sol, tell the delivery boy how you like your egg." },
       { ifHeading: 'R', then: [
         { n: "Haechan didn't turn around. He was answering Yunjin the way you'd answer a professor, flat and dry and in as few words as he could get away with, and Yunjin kept frowning at the back of his head like a radio that had drifted off its station." },
         { s: 'yunjin', f: 'neutral', t: "Why are you talking like that? Like the weather. You're never like that at home. At home you're a car alarm." },
@@ -114,8 +114,8 @@
           { s: 'yunjin', f: 'flustered', t: "Traitor. You eat her eggs every single morning and you say thank you." },
           { n: "She didn't, here. She didn't know who Mrs. Bang was. But she'd said thank you to somebody's eggs every morning somewhere, she could feel the shape of it in her mouth, and Yunjin was looking at her like she'd said it out loud." }
         ] },
-        { t: "Why does she call you the dog?", notes: 2, then: [
-          { s: 'yunjin', f: 'neutral', t: "Because he's your dad's. Follows the car. Sleeps at the bottom of the garden. Bites people." },
+        { t: "Why did she call you the dog?", notes: 2, then: [
+          { s: 'yunjin', f: 'neutral', t: "Because the whole port does. Your dad made everybody in the house stop. I'm not everybody. Also he sleeps at the bottom of the garden and bites people." },
           { s: 'haechan', f: 'happy', t: "It's an annex. It has a door. And I bite people who've earned it." }
         ] },
         { t: "(Steal Yunjin's noodles.)", notes: 2, then: [
@@ -357,8 +357,8 @@
         { s: 'haechan', f: 'flustered', t: "...Pretty girl." }
       ], else: [{ ifHeading: 'S', then: [
         { n: "Her hands were cold. They always were, he informed her, in both places, she had a circulation problem and a coat problem and a refusing-to-admit-either problem, and he took both her hands between his and breathed on them like a man warming a car on a winter morning, loudly, theatrically, until she laughed, and then not theatrically at all." },
-        { s: 'haechan', f: 'happy', t: "Agasshi. You're a block of ice. Hoejangnim would have me shot." },
-        { s: 'haechan', f: 'neutral', t: "Don't tell him I said that. He'd think about it." }
+        { s: 'haechan', f: 'happy', t: "Agasshi. You're a block of ice. Hoejangnim would want to know why I let you get this cold. He asks me things now. He never used to." },
+        { s: 'haechan', f: 'neutral', t: "Don't tell him. He'd ask." }
       ], else: [{ ifHeading: 'H', then: [
         { n: "He held her hand on his knee and looked at it there the way you'd look at a photograph of a house you were moving out of, carefully, so you'd have the angles right later." },
         { s: 'haechan', f: 'sad', t: "I'm going to keep doing this right up to the day it stops being mine to do. Then I'm going to stop. Nicely. You won't even see the seam." },
@@ -479,7 +479,7 @@
         { s: 'haechan', f: 'neutral', t: "Back home it'll be dead in January. Snow on the quad, nobody's walked it yet, everyone else still at their parents'. I used to go up the ladder on New Year's Day and sit there freezing. Just so the year started somewhere nobody could see me." },
         { s: 'haechan', f: 'neutral', t: "This year somebody's going to see me. I've been informed." }
       ], else: [{ ifHeading: 'S', then: [
-        { s: 'haechan', f: 'happy', t: "Back home it's soup. The whole house. Mrs. Bang makes enough rice-cake soup to drown a horse and Hoejangnim has everyone bow in a row in order of who's least in trouble, and I'm always last, nine years running, and he gives me the envelope anyway and pretends it was an accident." },
+        { s: 'haechan', f: 'happy', t: "Back home it's soup. The whole house. Mrs. Bang makes enough rice-cake soup to drown a horse and Hoejangnim has everyone bow in a row in order of who's least in trouble, and I'm always last, seven years running, and he gives me the envelope anyway and pretends it was an accident." },
         { s: 'haechan', f: 'neutral', t: "This year I'm going to be second to last. I've got a plan. The plan is you're going to be in more trouble than me." }
       ], else: [{ ifHeading: 'H', then: [
         { s: 'haechan', f: 'neutral', t: "I made a wish, though. At the bell. I don't do wishes either. I did one." },

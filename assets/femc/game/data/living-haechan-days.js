@@ -63,7 +63,7 @@
         { s: 'haechan', f: 'neutral', t: "Where I'm from there's a kitchen with nine guys in it and four chairs. Three are broken and one's got a guy asleep on it. You eat standing up or you don't eat." },
         { s: 'haechan', f: 'neutral', t: "It's not about your chair. It's a very good chair." }
       ], else: [{ ifHeading: 'S', then: [
-        { s: 'haechan', f: 'neutral', t: "Where I'm from the family eats first. The rest of us eat after, in the kitchen. Standing, mostly. The housekeeper says sitting down makes you slow." },
+        { s: 'haechan', f: 'neutral', t: "Where I'm from I ate standing in the kitchen for seven years. This winter somebody put a bowl down for me first. I'm still not used to chairs." },
         { n: "He said it easily, no complaint in it, the way you'd describe the weather in a town you grew up in, and Fuuka put her hand over her mouth, and Junpei looked at the chair like it had personally let somebody down." }
       ], else: [
         { s: 'haechan', f: 'sad', t: "I keep thinking somebody else is going to need it." },
@@ -126,7 +126,7 @@
     place: 'Iwatodai Dorm · Kitchen', time: 'Early Morning', bg: 'iwatodaidorm-kitchen', scene: [
       { n: "Since the sea, Yunjin came down to breakfast differently, slower, with the air of somebody who'd walked into the water with nothing and come back out with something and wasn't going to discuss it before coffee. This morning she got as far as the kitchen door and stopped." },
       { n: "Haechan was at the counter, standing, eating rice straight out of the pot with the serving spoon." },
-      { s: 'yunjin', f: 'serious', t: "Absolutely not. Bowl. Now. You're not in the shed." },
+      { s: 'yunjin', f: 'serious', t: "Absolutely not. Bowl. Now. You're not in the annex." },
       { s: 'haechan', f: 'neutral', t: "Morning, Jin." },
       { n: "She didn't answer that. She walked straight up to him and put her hand flat into the front pocket of his hoodie, the way you'd check a little boy's pockets for frogs, and came out with a lighter, a crumpled receipt and a stick of cinnamon gum, and looked at all three on her palm like a customs officer." },
       { s: 'yunjin', f: 'serious', t: "Babe. I've known you since you carried my shopping with the wrong hand. Where are the cigarettes." },
@@ -155,7 +155,7 @@
           { s: 'yunjin', f: 'neutral', t: "Oh, so you do THAT here too. Unbelievable. In front of me." }
         ] },
         { t: "You two are like siblings.", then: [
-          { s: 'yunjin', f: 'neutral', t: "We're like a cat and the dog it lives with. Guess which one I am." },
+          { s: 'yunjin', f: 'neutral', t: "We're like a cat and the delivery boy who keeps bringing it things. Guess which one I am." },
           { s: 'haechan', f: 'happy', t: "She's the cat. She sits on everything I need." }
         ] }
       ] },
@@ -222,9 +222,11 @@
         { s: 'jungwon', f: 'neutral', t: "Then I'm glad for you. Truly." },
         { n: "He said it so courteously that Solar's pencil stopped moving on the page. She had learned, without knowing how, that Yang Jungwon got more polite the angrier he got, and this was very polite indeed." }
       ], else: [{ ifHeading: 'S', then: [
-        { s: 'haechan', f: 'neutral', t: "In the other place there'd be a man outside your door all night. I'd be the man." },
-        { s: 'jungwon', f: 'neutral', t: "And here?" },
+        { s: 'haechan', f: 'neutral', t: "In the other place I don't stand outside her door anymore." },
+        { s: 'jungwon', f: 'neutral', t: "No. I've heard." },
         { s: 'haechan', f: 'neutral', t: "Here I'm the guy upstairs. And you go home at eight." },
+        { s: 'jungwon', f: 'neutral', t: "We're even, I think." },
+        { s: 'haechan', f: 'neutral', t: "We're not. Drink your tea, young master." },
         { n: "Jungwon set the teapot down without a sound. His dimples showed, briefly, and meant nothing whatsoever." }
       ], else: [{ ifHeading: 'H', then: [
         { s: 'haechan', f: 'neutral', t: "You're in all of hers I'm not in." },
@@ -396,7 +398,7 @@
         { s: 'haechan', f: 'neutral', t: "Where I'm from there's a house full of guys and nobody's really in charge. Your brother is, technically. He's out of town half the time and the rest of them go feral." },
         { s: 'haechan', f: 'neutral', t: "I like a building where it's obvious who's boss. It's a dog. Fine. I'm not proud." }
       ], else: [{ ifHeading: 'S', then: [
-        { s: 'haechan', f: 'happy', t: "Every house needs a dog that isn't me. Back home I'm the dog. Here I get to walk one. It's a promotion." },
+        { s: 'haechan', f: 'happy', t: "Every house needs a dog that isn't me. Back home the whole port calls me the dog. The house stopped. Here I get to walk one. It's a promotion." },
         { n: "He said it so cheerfully that a passing jogger looked round, and Solar laughed out loud, and Koromaru stopped dead in the middle of the path to look at them both like they'd embarrassed him in front of the river." }
       ], else: [{ ifHeading: 'H', then: [
         { s: 'haechan', f: 'neutral', t: "He walks you to the guesthouse, you know. Every time you go. Halfway. Then he sits at the corner and waits." },

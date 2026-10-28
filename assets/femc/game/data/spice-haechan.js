@@ -128,8 +128,8 @@
         { n: "She stood between his knees at the counter and took his right hand out of the water and turned it over in the light from the hall. Her hands did it. They knew the weight of a split knuckle, how to hold the wrist so the skin pulled flat, where the old scars ran under the new cut. She didn't think. She threaded the needle on the first try in the half dark. She had never threaded a needle in this world." },
         { ifHeading: 'S', then: [
           { n: "He'd gone silent. The loud one. He sat on the counter and watched her hands with a look she couldn't read, like he was watching someone open a door in a house he'd been told had burned down, and when she put the first stitch in he didn't flinch, and when she put the second in he said, so quietly it was almost not a sound, *agasshi*, and then nothing, and his free hand came up and held onto the edge of the counter beside her hip, hard." },
-          { s: 'haechan', f: 'sad', t: "You never said. You never once said anything. Neither did I. All those times." },
-          { s: 'solar', f: 'neutral', t: "What times?" },
+          { s: 'haechan', f: 'sad', t: "Twenty-two. I count too." },
+          { s: 'solar', f: 'neutral', t: "Count what?" },
           { s: 'haechan', f: 'neutral', t: "...Do the other hand." }
         ], else: [
           { n: "He watched her hands with his flat face and his eyes not flat at all. When she put the first stitch in he didn't flinch. When she put the second in his jaw went tight, once, at the hinge, and he looked at the ceiling." },
@@ -218,7 +218,7 @@
         { s: 'hanni', f: 'neutral', t: "Hyein, put the green on her and stop talking." },
         { n: "Hyein put the green on. Then the concealer. Her hands were quick and certain and very gentle, tipping Solar's chin up and to the side with two fingers, dabbing at her lip, at the place under her jaw she hadn't even known about until she'd seen Hyein's face see it, and it was the strangest thing, sitting there being fixed by someone who knew exactly how, who'd done it before, whose hands knew her face the way Solar's thumb had known his scar." },
         { ifHeading: 'S', then: [
-          { n: "Yunjin put her head round the door halfway through, in her yellow puffer, back from somewhere, and looked at the makeup on the duvet and at Solar's chin and said, in a voice like she was reading the weather off a board, *oh, the Lee house is going to have opinions*, and went away again, and came back thirty seconds later with a scarf, a thick one, gray, and dropped it on the bed without a word, and left." }
+          { n: "Yunjin put her head round the door halfway through, in her yellow puffer, back from somewhere, and looked at the makeup on the duvet and at Solar's chin and said, in a voice like she was reading the weather off a board, *oh, the Lee house is going to pretend it hasn't noticed. Again.*, and went away again, and came back thirty seconds later with a scarf, a thick one, gray, and dropped it on the bed without a word, and left." }
         ] },
         { s: 'hanni', f: 'neutral', t: "We're happy for you. For the record. Both of us. We've been happy about this one since before you could remember his name." },
         { ifHeading: ['R', 'true'], then: [
@@ -297,8 +297,9 @@
       { n: "His door at the end of the top floor was open an inch. She'd never been in. Nobody had. The room was bigger than she'd expected and emptier, a bed he clearly sat on more than slept in, a desk, a dark blue wall, his bag still half unpacked on the floor after a month like he might need to leave in a hurry, and the radiator under the window knocking every few seconds like somebody politely asking to be let in." },
       { n: "He was sitting on the floor with his back against the bed and a laptop open on his knees, and the heavy black headphones round his neck, and he didn't look up when she came in. He patted the floor beside him without looking. She sat. Their shoulders touched. Neither of them moved them." },
       { ifHeading: 'S', then: [
-        { n: "It wasn't a laptop he was looking at. It was the Discman, the cracked one, open on his knee with a disc in it, and he took the headphones off his own neck and put them over her ears with both hands, carefully, the way you'd put a helmet on a child, and pressed play." },
-        { n: "An old song. A man singing about a harbor, in Korean, the big swooping kind of chorus. And Haechan, beside her, not singing along for once. Watching her listen. When the chorus came she found she knew it, every word, and her mouth moved on it before she could stop it, and she felt him go still against her shoulder, the loud boy gone silent, the way he went when he was frightened." }
+        { n: "It wasn't a laptop he was looking at. It was the Discman, the cracked one, shut on his knee, and he took the headphones off his own neck and plugged them into it and put them over her ears with both hands, carefully, the way you'd put a helmet on a child, and didn't press anything." },
+        { n: "Nothing came. A hiss, and her own blood. Then Haechan, beside her, low, singing it himself, close enough that it came through the foam: an old song, a man singing about a harbor, in Korean, the big swooping kind of chorus. When the chorus came she found she knew it, every word, and her mouth moved on it before she could stop it, and she felt him go still against her shoulder, the loud boy gone silent, the way he went when he was frightened." },
+        { s: 'haechan', f: 'neutral', t: "Batteries died in '06. Never changed them. Somebody gave it to me." }
       ], else: [
         { n: "There was something open on the laptop. A track. Layers of it stacked on the screen in colored bars, most of them muted, one playing. He took the headphones off his own neck and put them over her ears with both hands, and the room went away, and there was only the sound: a small room's worth of something, a few chords on a piano that wasn't quite in tune, a hiss under it like rain on a window, and a line, four notes, going round and round looking for the fifth." },
         { s: 'haechan', f: 'neutral', t: "It's nothing. It's a thing I started. It's not about anything." },
@@ -427,7 +428,7 @@
         { t: "We're going to get a talk. Tomorrow. I can feel it.", notes: 2, then: [
           { s: 'haechan', f: 'neutral', t: "Oh, we're getting a talk. There's going to be a whiteboard." },
           { ifHeading: 'S', then: [
-            { s: 'haechan', f: 'happy', t: "Worth it. I'll take the talk. I'll take ten. Your father's men would've thrown me in the harbor for less." }
+            { s: 'haechan', f: 'happy', t: "Worth it. I'll take the talk. I'll take ten. Your father's men would've thrown me in the harbor for less. Once. Now he just stands on the seventh stair and says nothing, very loudly." }
           ], else: [
             { s: 'haechan', f: 'neutral', t: "Worth it. I've had worse talks. From your brother. In a living room. Five guys in a row on a couch." }
           ] }
@@ -537,7 +538,7 @@
       { n: "Her lip. That was the first thing. She'd seen it in the bathroom mirror and said *oh no* out loud, in Korean, to her own reflection. It was swollen and it had a mark at the corner and there was another, worse, under her jaw, a dark bruise-colored thumbprint of a thing, and she had come down to breakfast with her hair carefully over that side of her face and her chin up like a duchess." },
       { n: "It was for nothing, because he was already at the stove." },
       { n: "He was singing. The whole dining room was dead silent and he was at the stove in a sleeveless shirt with a frying pan, cooking an absolutely enormous amount of eggs, and singing at full volume, a trot song about a man coming home to a harbor, badly in the verses and perfectly in the chorus, and the side of his neck from his ear to his collarbone was a constellation, and he didn't care, he didn't care at all, he was swinging the frying pan like a microphone." },
-      { n: "Nobody spoke. Junpei, at the table, was holding his chopsticks so still they might have been carved. Yukari had both hands round her mug and her eyes shut, as if in pain. Fuuka was the color of a postbox. Yunjin, in her yellow puffer at the end of the table, was eating rice with the face of a woman watching a car crash she'd seen coming from two worlds away, and when Solar sat down Yunjin said, without looking up, very quietly, in Korean, *your father would have had him shot*, and went on eating." },
+      { n: "Nobody spoke. Junpei, at the table, was holding his chopsticks so still they might have been carved. Yukari had both hands round her mug and her eyes shut, as if in pain. Fuuka was the color of a postbox. Yunjin, in her yellow puffer at the end of the table, was eating rice with the face of a woman watching a car crash she'd seen coming from two worlds away, and when Solar sat down Yunjin said, without looking up, very quietly, in Korean, *your father would sigh and pass him the rice*, and went on eating." },
       { ifTaken: 'haechan', then: [{ ifRomance: 'akihiko', then: [
         { n: "Akihiko came in from his run, and stopped, and heard the singing, and saw the neck. She watched it go into him. He stood in the doorway for one long breath with his towel round his shoulders, and then he went to the stove, and stood beside the singing boy, and took a plate, and held it out, and Haechan stopped singing, mid-chorus, and looked at him, and put eggs on the plate, a lot of them, carefully, and Akihiko said *thanks* and took them to the table and sat down next to her and ate them, every one, and didn't look at her neck, and pressed his knee against hers under the table, deliberately, all through breakfast. Nobody in that room was a villain. That was the thing she couldn't get down with the eggs." }
       ] }] },

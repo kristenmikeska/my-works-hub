@@ -139,7 +139,7 @@
       { s: 'jungwon', f: 'happy', t: "Good evening, Donghyuck." },
       { s: 'haechan', f: 'neutral', t: "Young master. You're on my step." },
       { s: 'jungwon', f: 'happy', t: "It's Kirijo-san's step. You live on it. That's different." },
-      { n: "The dimples were all the way out. Haechan's face did nothing at all. The two of them looked at each other across a meter of cold concrete with the particular courtesy of men who had, somewhere, in some other city, decided a long time ago exactly how much they were each worth, and had never revised the figure." },
+      { n: "The dimples were all the way out. Haechan's face did nothing at all. The two of them looked at each other across a meter of cold concrete with the particular courtesy of men who had, somewhere, in some other city, decided a long time ago exactly how much they were each worth, and had lately been made to revise the figure, and neither of them had forgiven the other for it." },
       { choose: [
         { t: "(Sit down on the step between them.)", notes: 3, tally: { 'jungwon.S': 1 }, then: [
           { n: "She sat on the step between them, which was the only place left, and put her bag on her knees, and waited. Neither of them moved. Neither of them could, now, without it looking like losing." },
@@ -806,7 +806,7 @@
         ] },
         { t: "(Read the black one.)", notes: 3, then: [
           { n: "The black one had almost nothing in it. That was the first thing. A page a week, and on most weeks a single line in ink, in a hand so formal it looked engraved, and every time her name came up it came up whole, a surname in front and an honorific behind, like a name on a place card at a table she hadn't chosen to sit at. *Dinner. The Lee house. Seven.* *A fitting, ten o'clock (arranged).*" },
-          { n: "One entry was in pencil. Only one, in the whole book, on a page in late January. Two words. *Ask her.* Nothing after them, as if he'd written it down to remind himself and then hadn't been able to decide what the question was." },
+          { n: "One entry was in pencil. Only one, in the whole book, on a page in late January. Three words. *Ask her again.* Nothing after them, as if he'd written it down to remind himself and then hadn't been able to decide when." },
           { s: 'jungwon', f: 'neutral', t: "Everything in that one is written by other people. I just hold the pen." }
         ] },
         { t: "Why do you need two?", notes: 2, then: [
@@ -847,12 +847,12 @@
             { n: "She wrote it under the circle in pencil, small and upright and unreadable to anyone who didn't already know what it said. He read it anyway. He didn't rub it out. He closed the book over it the way you'd close a door very quietly on a room where somebody was asleep." },
             { s: 'jungwon', f: 'happy', t: "Thank you. That's the first thing in this book I'm glad of." }
           ] },
-          { t: "(Turn back to January. Write *ask her* over his pencil, in ink.)", notes: 3, then: [
-            { n: "She found the page and went over his two pencil words in ink, so they'd stay, and turned the book around and pushed it back at him across the table." },
+          { t: "(Turn back to January. Write *ask her again* over his pencil, in ink.)", notes: 3, then: [
+            { n: "She found the page and went over his three pencil words in ink, so they'd stay, and turned the book around and pushed it back at him across the table." },
             { s: 'jungwon', f: 'surprised', t: "..." },
             { s: 'jungwon', f: 'neutral', t: "That's an order." },
             { s: 'solar', f: 'neutral', t: "It's a suggestion." },
-            { s: 'jungwon', f: 'neutral', t: "From you they're the same thing. I'll ask. Not today. When I've worked out how to ask it properly." }
+            { s: 'jungwon', f: 'neutral', t: "From you they're the same thing. I asked once. You answered honestly. I'll ask again when you've decided. Not before." }
           ] },
           { t: "Who circled it?", notes: 2, then: [
             { s: 'jungwon', f: 'neutral', t: "Two men at a dinner, over a white porcelain bottle. Neither of them was me. Neither of them was you." }
@@ -1143,7 +1143,7 @@
         ] }
       ] },
       { n: "He sat down again. He put the key back in the center of the bare wood and looked at it, and then, without seeming to decide to, unbuckled the watch on his left wrist and laid it beside the key. Steel, heavy, too old for him. The second hand on the eleven, where it had sat since October." },
-      { s: 'jungwon', f: 'sad', t: "My brother would have been very good at this. Handing over. He'd have made a speech and everyone would have cried, and then he'd have taken them all out to eat and not let anyone pay." },
+      { s: 'jungwon', f: 'sad', t: "My brother would be very good at this. Handing over. He'd make a speech and everyone would cry, and then he'd take them all out to eat and not let anyone pay." },
       { s: 'jungwon', f: 'neutral', t: "He never had to. He went, and I got everything. In one of my houses that's what *heir* means. Whatever's left standing." },
       { s: 'jungwon', f: 'serious', t: "He gave me this the night he went. I told you he said it had never fit him, and that I'd only lately found out that wasn't true." },
       { s: 'jungwon', f: 'neutral', t: "It fit him. I've seen the photographs. It sat on his wrist like it had been made there. He took a link out so it would fit me, and told me it had never fit him, so I'd believe it had always been mine." },
@@ -1182,7 +1182,7 @@
           ] }
         ] }
       ], else: [{ ifHeading: 'S', then: [
-        { s: 'jungwon', f: 'neutral', t: "In the other house nothing is handed over. It's inherited, or it's arranged. I was inherited. You were arranged. Nobody asked either of us." },
+        { s: 'jungwon', f: 'neutral', t: "In the other house nothing is handed over. It's inherited, or it's arranged. I was inherited. You were arranged. Nobody asked either of us, at first. I've asked you since. You told me you didn't know. That's the first line of it anyone let you write yourself." },
         { s: 'jungwon', f: 'serious', t: "On the sixth you're going home to a house where people have decided things for you since before you could walk. I can't move the date. Nothing here moves it. I'd like to be the one person in that house who hands you back to yourself, every time. Even when it's inconvenient. Especially then." },
         { choose: [
           { t: "(Put the key in his hand and close his fingers over it. *Then start with this.*)", notes: 3, then: [

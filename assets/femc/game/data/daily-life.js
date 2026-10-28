@@ -160,7 +160,7 @@ window.FEMC_GAME_DAILY_LIFE = [
     place: 'Iwatodai Dorm · Front', time: 'Evening', bg: 'iwotodaidorm-outside', scene: [
       { n: "Jungwon came to the dorm at seven with four math workbooks and a visitor's manner, and Yunjin opened the door. She looked at him. He looked at her. Neither of them moved out of the doorway, and the cold came in around both of them." },
       { s: 'yunjin', f: 'surprised', t: "Oh. Oh, it's YOU." },
-      { s: 'jungwon', f: 'neutral', t: "Good evening, Yunjin." },
+      { s: 'jungwon', f: 'neutral', t: "Good evening, Yunjin-ssi." },
       { s: 'yunjin', f: 'serious', t: "Don't good evening me in that voice. I know that voice. That's the voice you used at the hospital." },
       { n: "Something crossed his face and was put away, very neatly, and he bowed, a small one, exactly correct." },
       { s: 'jungwon', f: 'neutral', t: "Then you'll know I mean it." },
@@ -169,7 +169,7 @@ window.FEMC_GAME_DAILY_LIFE = [
       { s: 'yunjin', f: 'serious', t: "With you that's the same thing." },
       { choose: [
         { t: "Jin. Let him in. It's cold.", then: [
-          { n: "Yunjin let him in. She didn't move far, so he had to turn sideways to get past her, workbooks and all, and as he did she said, low, *I'm watching you*, and he answered her, just as low, *I know*, and kept walking." }
+          { n: "Yunjin let him in. She didn't move far, so he had to turn sideways to get past her, workbooks and all, and as he did she said, low, *I'm watching you. Less than I used to*, and he answered her, just as low, *I know*, and kept walking." }
         ] },
         { t: "You two know each other?", then: [
           { s: 'yunjin', f: 'neutral', t: "Babe. Everybody at home knows him. He's the Yang boy. He's the..." },
@@ -233,15 +233,18 @@ window.FEMC_GAME_DAILY_LIFE = [
       { n: "She went back up at four. At the top of the stairs she looked back, and he was still there, and he lifted one hand without turning around, the way you'd tell somebody across a station that you'd seen them, and that was all, and she slept until seven like someone who'd been told it was safe to." }
     ] },
 
-  { id: 'haechan-yunjin-english', after: '11/7', slot: 'evening', events: ['a4-household-introductions', 'a4-low-tide'],
+  // Yunjin finds out once: here (flag hc-english-day), in his late-night hangout on the stairs (hc-english-stairs) or in her
+  // rank 8 (hc-english-r8); the other two call back, and this one skips if she already knows.
+  { id: 'haechan-yunjin-english', after: '11/7', slot: 'evening', events: ['a4-household-introductions', 'a4-low-tide'], noFlags: ['hc-english-stairs', 'hc-english-r8'],
     place: 'Iwatodai Dorm · Lounge', time: 'Evening', bg: 'iwatodaidorm-livingroom-night', scene: [
       { n: "Yunjin waited until the lounge was nearly empty. Then she sat down very close to Solar on the sofa, with the air of a woman about to discuss a crime, and switched, without warning, into English." },
-      { s: 'yunjin', f: 'neutral', t: "Okay. Babe. Real talk. We're doing this in English so the dog can't follow. At home he doesn't speak a word of it. I've said things about him in English right in front of him and he just laughed." },
+      { s: 'yunjin', f: 'neutral', t: "Okay. Babe. Real talk. We're doing this in English so the delivery boy can't follow. At home he doesn't speak a word of it. I've said things about him in English right in front of him and he just laughed." },
       { s: 'yunjin', f: 'serious', t: "So. You and him. On the stairs. At three in the morning. Twice that I KNOW of." },
       { s: 'haechan', f: 'neutral', t: "Three times." },
       { n: "He was in the kitchen doorway with a glass of water. He'd said it in English. Flat, unbothered, with an accent that was not the accent of a boy who didn't speak a word of it, an accent that sounded like snow on a quad and a university somewhere very cold." },
       { n: "Yunjin stared at him. Then she took her round gold sunglasses off her head and put them on, slowly, indoors, at night." },
       { s: 'yunjin', f: 'surprised', t: "Oh my God. You speak ENGLISH here?" },
+      { flag: { 'hc-english-day': true } },
       { s: 'haechan', f: 'neutral', t: "One of me does." },
       { choose: [
         { t: "Which one?", then: [

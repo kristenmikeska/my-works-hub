@@ -135,7 +135,7 @@
           { s: 'jungwon', f: 'sad', t: "And I'm standing here, and there's a room like this at home with a poster in it with your face on it, and you used to sit on that table. That one. Right there. With your feet on the chair. And I'd tell you to get down, and you wouldn't. And there's a study room down the hall with a lock on it that I've never once reported." },
           { s: 'jungwon', f: 'flustered', t: "I've just broken rule one. I've broken it very badly. I'm going to file a report against myself." }
         ], else: [{ ifHeading: 'S', then: [
-          { s: 'jungwon', f: 'sad', t: "And there's a house by the sea in the other place where you never once let me close enough to say what I wanted to say. I used to stand at doors. Very properly. I used to wait at doors for you to decide." },
+          { s: 'jungwon', f: 'sad', t: "And there's a house by the sea in the other place where I learned to stand at doors. Very properly. Until you opened one. I'm not allowed to tell you which." },
           { s: 'jungwon', f: 'flustered', t: "I've just told you that. That's rule one. I've broken it." }
         ], else: [
           { s: 'jungwon', f: 'sad', t: "And it's very hard. Tonight. It's very hard tonight. I keep wanting to say *you used to*. You used to do this. You used to look at my tie exactly like that." },

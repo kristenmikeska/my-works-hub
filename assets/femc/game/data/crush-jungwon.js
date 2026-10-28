@@ -438,7 +438,7 @@
         { s: 'jungwon', f: 'neutral', t: "The whole corridor heard him come back and tell me he'd told you. He was very pleased with himself. He was also crying. He's able to do both." },
         { n: "He'd said the other one out loud, in the tower, in front of everyone, like a line in a budget. The son who was to marry her in spring because two families had shaken hands. He'd said that one easily. This one he'd carried about for two months and never said once." },
         { s: 'solar', f: 'neutral', t: "Why didn't you tell me?" },
-        { s: 'jungwon', f: 'neutral', t: "The other one, somebody decided for both of us. I could tell you that. It wasn't asking anything of you. It was only true." },
+        { s: 'jungwon', f: 'neutral', t: "The other one began as somebody else's decision. I could tell you that. It wasn't asking anything of you. It was only true." },
         { s: 'jungwon', f: 'sad', t: "This one you decided. At a bake sale, in front of everyone. Sunoo made it an equation. You didn't solve it. You said yes anyway. If I'd told you, I'd have been telling you what you'd decided. I didn't want to decide it for you a second time." },
         by([
           { s: 'solar', f: 'happy', t: "Jihoon says you're my boyfriend." },
@@ -452,8 +452,8 @@
               { s: 'jungwon', f: 'happy', t: "The motion is that the vice president has very cold hands. Seconded. Carried. Leave them there." }
             ] },
             { t: "Three times. If you count the other one.", then: [
-              { s: 'jungwon', f: 'neutral', t: "I don't count that one. Nobody asked you that one." },
-              { s: 'jungwon', f: 'neutral', t: "That's the whole trouble with it. This one, you asked to hear." }
+              { s: 'jungwon', f: 'neutral', t: "I asked you that one once. Late. You said you didn't know. I count that answer. It's the only honest thing anyone's said about it." },
+              { s: 'jungwon', f: 'neutral', t: "This one, you asked to hear." }
             ] }
           ] }
         ], [

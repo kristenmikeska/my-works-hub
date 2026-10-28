@@ -108,9 +108,17 @@
           { n: "They counted trains. He said the numbers, she said the numbers, a beat behind him, like a choir that hadn't rehearsed. At seven he said goodnight, formally, in full, and she said it back, and neither of them hung up for another train, and then another, and then he did, and she lay there with the warm phone on her chest and didn't count anything." }
         ] },
         { t: "Don't say the number. Say goodnight.", notes: 2, then: [
-          { s: 'jungwon', f: 'neutral', t: "Goodnight." },
-          { n: "A train went by under it, long and slow. She waited. He knew she was waiting." },
-          { s: 'jungwon', f: 'neutral', t: "...Goodnight, Solar." }
+          { ifHeading: 'S', then: [
+            { s: 'jungwon', f: 'neutral', t: "Wǎn'ān." },
+            { n: "Not Korean. Not Japanese either. And her mouth said it back before she'd decided anything, *wǎn'ān*, the tones sitting right, easy, like a stair she'd climbed a thousand times in the dark." },
+            { n: "On the other end of the line he went completely quiet. A whole train went by under the quiet, long and slow." },
+            { s: 'jungwon', f: 'sad', t: "...You still do that." },
+            { s: 'jungwon', f: 'neutral', t: "Goodnight, Solar." }
+          ], else: [
+            { s: 'jungwon', f: 'neutral', t: "Goodnight." },
+            { n: "A train went by under it, long and slow. She waited. He knew she was waiting." },
+            { s: 'jungwon', f: 'neutral', t: "...Goodnight, Solar." }
+          ] }
         ] }
       ] }
     ] },
