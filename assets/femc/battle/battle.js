@@ -1795,7 +1795,7 @@
     }
     if (n.type === 'event' && !n.used) {
       n.used = true;
-      const left = D.memories.filter(m => !m.noDrop && !save.memories.includes(m.id) && !(HO && (HO.request.fragments || []).includes(m.id)));
+      const left = D.memories.filter(m => (!m.noDrop || (HO && (HO.request.dropsOk || []).includes(m.id))) && !save.memories.includes(m.id) && !(HO && (HO.request.fragments || []).includes(m.id)));
       if ((!HO || HO.request.fragmentsOpen) && left.length && rand() < D.events.memoryChance) { await memoryFound(left[Math.floor(rand() * left.length)]); return null; }
       const l = D.events.lines[Math.floor(rand() * D.events.lines.length)];
       mark('event-line');

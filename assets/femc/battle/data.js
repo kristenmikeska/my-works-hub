@@ -1022,11 +1022,14 @@ window.FEMC_BATTLE_DATA = (() => {
   // Memories only a scene can give (Tartarus events, cracks, vaults and the simulated drops skip them).
   // Kat's ruling (2026-10-27, HOAX sync): a memory that a story, link or job scene awards never drops at random, in any
   // world, so it can't surface before its place in the year. Today that's every card; a new drop-only card simply stays out.
+  // Never early, but never lost (strangers sync, 2026-10-27): the life sim releases a NO_DROP card to the drop pool once every
+  // scene that can give it has had its chance and she still hasn't got it (core.js dropsOk → the handoff's request.dropsOk),
+  // e.g. the card she didn't follow at a two-way choice. Practice mode has no handoff, so nothing is released there.
   const NO_DROP = [
     'runners-campus', 'runners-energy-drink', 'runners-hoodie', 'runners-monitor', 'runners-trophy', 'runners-3am',
     'runners-stadium', 'runners-phone', 'runners-rooftop', 'runners-lake',
     'strangers-harbor', 'strangers-jade-ring', 'strangers-lanterns', 'strangers-rabbit-socks', 'strangers-needle',
-    'strangers-ferry', 'strangers-discman', 'strangers-suture-kit', 'strangers-low-tide', 'strangers-barley-tea',
+    'strangers-ferry', 'strangers-discman', 'strangers-suture-kit', 'strangers-low-tide', 'strangers-barley-tea', 'strangers-koi',
     'hoax-croissant', 'hoax-ladder', 'hoax-leash', 'hoax-poster', 'hoax-debate-stage', 'hoax-president-pin',
     'hoax-crane-game', 'hoax-group-chat', 'hoax-math-homework', 'hoax-ballot-box'
   ];
@@ -1065,7 +1068,10 @@ window.FEMC_BATTLE_DATA = (() => {
     ['runners-lake', 'Runners', 'No Service', 'Four days in the woods and not one bar of signal. A lake so cold it stopped her heart, somebody laughing beside her in it. Then a phone held out to her in the cold, and a voice she knew.'],
     // Batch 51: the fish market's last shift (job-scenes.js) and the Hoax memory floor (story-act4.js a4-jihoon-awakens).
     ['strangers-barley-tea', 'strangers', 'Barley Tea', 'A cup on a low wooden table, steaming in the morning light. There was always some on the stove.'],
-    ['hoax-ballot-box', 'Hoax', 'The Ballot Box', 'Folded slips on a gym table under string lights, all of them waiting to be counted.']
+    ['hoax-ballot-box', 'Hoax', 'The Ballot Box', 'Folded slips on a gym table under string lights, all of them waiting to be counted.'],
+    // Late strangers memory (Kat's approval, strangers sync 2026-10-27): Yunjin's rank 10 gives it (flag mem-koi). Plot-free,
+    // scene-only like No Service; no art yet (the drawn placeholder card shows until memories/strangers-koi.webp exists).
+    ['strangers-koi', 'strangers', 'A Bucket on the Step', 'Two fish going round and round in a bucket on a back step, snow on the rim. A kitchen too full to hear the radio, and a light left on all night in the room next door.']
   ].map(([id, world, title, text, wide]) => ({ id, world, title, text, img: MEM + id + '.webp', wide: wide ? MEM + id + '-wide.webp' : null, noDrop: NO_DROP.includes(id) }));
   /* A stand-in card for a memory whose art doesn't exist yet (an SVG data URL with the title, in the world's colors).
      battle.js and the game's journal swap it in when a memory image fails to load. */

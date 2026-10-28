@@ -716,6 +716,32 @@ window.FemcGame = (() => {
     if (!quiet) toast('fragment', `Memory fragment: ${fragmentInfo(id).title}`, { id });
     return true;
   }
+  /* Tartarus drops (strangers sync, 2026-10-27; Kat's intent: story-tied cards never drop EARLY, not that they can't be found).
+     Every card is scene-awarded and NO_DROP (battle/data.js). fragSources() reads the scenes for every { fragment } line:
+     story events ({ event, date }), link ranks ({ link, rank }) and job shifts ({ job }). dropsOk() releases a card she
+     doesn't have once every source has had its chance: each event played (or a week past its date, for a save that never
+     played it) and each rank reached. That frees the card she didn't follow at a two-way choice (trophy / ladder, low tide,
+     the suture kit) and a card added after an old save passed its scene. A job source never counts as spent (the job can
+     still give it), so those cards stay scene-only. Sent with each handoff as request.dropsOk; read by battle.js event rooms
+     and tartarus.js loot. */
+  function fragSources() {
+    const src = {}, add = (id, s) => (src[id] ||= []).push(s);
+    const walk = (x, s) => {
+      if (Array.isArray(x)) { x.forEach(y => walk(y, s)); return; }
+      if (!x || typeof x !== 'object') return;
+      if (typeof x.fragment === 'string') add(x.fragment, s);
+      Object.values(x).forEach(y => { if (y && typeof y === 'object') walk(y, s); });
+    };
+    D.events.forEach(e => walk(e.scene, { event: e.id, date: e.date }));
+    Object.values(LINKS).forEach(l => (l.ranks || []).forEach((r, i) => { if (r) walk(r.scene, { link: l.id, rank: i + 1 }); }));
+    [W.FEMC_GAME_JOB_SCENES, W.FEMC_GAME_JOB_SCENES_MORE].forEach(js => walk(js || {}, { job: true }));
+    return src;
+  }
+  function dropsOk() {
+    const src = fragSources();
+    const spent = x => (x.job ? false : x.link ? progress(x.link).rank >= x.rank : (S.events.includes(x.event) || (!!x.date && S.day >= dayOf(x.date) + 7)));
+    return (D.battle.memories || []).filter(m => m.noDrop && !S.fragments.includes(m.id) && (src[m.id] || []).length && src[m.id].every(spent)).map(m => m.id);
+  }
   function addItem(id, n = 1) { S.inventory[id] = Math.max(0, (S.inventory[id] || 0) + n); if (!S.inventory[id]) delete S.inventory[id]; }
   /* { gift: { from: 'Mitsuru', item: { medicine: 2 }, gear: 'guard_ring' } }: a present (items into the bag, gear into what she
      owns, the battle's gear list), with a toast naming it. A keepsake ({ keepsake: 'text', id }) shows its picture in the toast. */
@@ -2113,7 +2139,7 @@ window.FemcGame = (() => {
         fatigue: { solar: S.condition }, condition: S.condition,
         yen: S.yen, items: { ...S.inventory }, gear: [...S.gear],
         maxFloor: floorCap(), bestFloor: S.tartarus.maxFloor, bossesCleared: [...S.tartarus.bosses],
-        fragments: [...S.fragments], fragmentsOpen: S.day >= dayOf(D.cal.fragmentsFrom || '5/16'),
+        fragments: [...S.fragments], fragmentsOpen: S.day >= dayOf(D.cal.fragmentsFrom || '5/16'), dropsOk: dropsOk(),
         run: S.runId, carryFrom: S.ngFrom || null, route: S.route.choices.solstice ?? null, trueReady: !!(S.flags['true-final'] || S.flags['true-path']),
         routeFlags: ['route-R', 'route-S', 'route-H', 'route-stay', 'route-true', 'route-bad', 'true-final', 'true-fallback'].filter(flag),
         // Night-only items from the life sim (Shinjiro's Kitchen Duty leftovers); battle.js adds them on a Tartarus night.
@@ -2162,7 +2188,7 @@ window.FemcGame = (() => {
       if (seeded(S.day + 2) < 0.5) r.items.medicine = 1;
       r.fatigue = S.condition === 'tired' ? 'sick' : 'tired';
       if (S.day >= dayOf(D.cal.fragmentsFrom || '5/16') && seeded(S.day + 3) < 0.2) {
-        const all = (D.battle.memories || []).filter(m => !m.noDrop).map(m => m.id).filter(id => !S.fragments.includes(id));
+        const ok = dropsOk(), all = (D.battle.memories || []).filter(m => !m.noDrop || ok.includes(m.id)).map(m => m.id).filter(id => !S.fragments.includes(id));
         if (all.length) r.fragments.push(all[Math.floor(seeded(S.day + 4) * all.length)]);
       }
     } else if (outcome === 'win') {
@@ -2252,7 +2278,7 @@ window.FemcGame = (() => {
     statRank, statRankName, statProgress, statId, sumStats, gainText, addStat, addStats, lacking, addYen, takeToasts, toast, migrateStats,
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
     homeOf, leavesAtMax, maxOf, isMaxed, stretchOn, afterGap, afterList, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,
-    flag, effect, branch, applyChoice, addFragment, fragmentInfo, worldOf,
+    flag, effect, branch, applyChoice, addFragment, fragmentInfo, worldOf, fragSources, dropsOk,
     portrait, scale, name, castHas, silhouette, pendingFace, tarot, background, moodFor, sub, setDate, dateLabel,
     activities, actById, showing, activityOk, activityInfo, doActivity, dormActs, dormInfo, dormOk, doDorm, doStudy, studyInfo, shopStock, buy, bookById, bookArt, readTonight, matSellPrice, sellMat,
     perkOn, bondRank, dailyPerks, actCost, dozeChance, dozed, canRetryClass, useGuidance, classHint, studyBonus, weekly,
