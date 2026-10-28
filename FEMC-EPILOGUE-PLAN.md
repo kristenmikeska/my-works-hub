@@ -468,3 +468,87 @@ None of these spoil anything. Claude's lean is in brackets.
 - **LE SSERAFIM roles:** as proposed.
   - Yunjin in HOAX (approved, 2026-10-27; in section 4's LE SSERAFIM notes for batch 5): an echo, like her Runners glitch. Mid-glitch, the forum livestream cuts to her for a second. The same person exists in every world.
 - Every other open question goes with Claude's lean.
+
+## Song picks (Kat and Claude, 2026-10-28, draft)
+Kat drops the mp3s into `~/Documents/UniverseHub-Audio/`. A mood with no file keeps its P3 stand-in. A pool (a / b / c) rotates.
+
+**Runners**
+- **Everyday moods:**
+  - home: Ring Ring (Camo)
+  - team: As Hell (Chanmina)
+  - romance: wantchu (keshi)
+  - sisters: boyfriend (Ariana Grande)
+  - finals: 3am (Rosé)
+  - snow: Tip Toe (HYBS)
+- **Story beats:**
+  - confession: Grey Rain (Haechan)
+  - studio: WYN (Haechan)
+  - closure: Affection (Between Friends)
+  - danielle: You (Chase Atlantic)
+  - verdict: past life (Ariana Grande)
+  - footage: You (NCT Dream)
+- **Unease:**
+  - bleed: nowhere nobody (Ariana Grande)
+  - half: Nothing Could Break Me (Lucy Loone)
+- **Parties and competition:**
+  - party: Angels / Molly / Drugs and Money (Chase Atlantic)
+  - holiday: bad idea (Ariana Grande) / That Way (giselle) / Wasted (Chase Atlantic)
+  - regionals and match: Crazier (LE SSERAFIM) / As Hell / Wild (Troye Sivan)
+
+**HOAX**
+- **Everyday moods:**
+  - home: cardigan (Taylor Swift)
+  - goofy: Everybody Talks (Neon Trees)
+  - forum: Tongue Tied (Grouplove)
+  - romance: Moonstruck (ENHYPEN)
+  - jihoon: Cigarette Daydreams (Cage the Elephant)
+  - exam: Teenage Losers (Peach PRC)
+  - snow: Evergreen (Omar Apollo)
+- **Holidays and parties:**
+  - eve: someone like u (Ariana Grande)
+  - christmas: Touch Tank (Quinnie)
+  - party: Teenage Dirtbag (Peach PRC) / 505 / No. 1 Party Anthem (Arctic Monkeys) / Semi-Charmed Life (Third Eye Blind)
+  - newyear: I Like You (Post Malone) / Everybody Talks
+- **Unease:**
+  - seance: Colorblind (Peach PRC)
+  - dread: Moonlight (Chase Atlantic)
+  - half: Anthems for a Seventeen Year Old Girl (yeule)
+  - hearing: mirrorball (Taylor Swift)
+
+**strangers**
+- **People:**
+  - haechan: Crush (Ethel Cain) ★ Kat loves this one
+  - jungwon: Soft Spot (keshi)
+  - yunjin: Staying (Lizzy McAlpine)
+  - family: Sidelines (Phoebe Bridgers)
+- **Places and moments:**
+  - house: Nice Dream (Radiohead)
+  - cover: Every Breath You Take (The Police)
+  - step: Linger (The Cranberries)
+  - festival: Sea, Swallow Me (Cocteau Twins)
+  - call: Somebody (keshi)
+  - last: Forever (The Little Dippers)
+- **Danger:**
+  - danger: Help I'm Alive (Metric)
+  - dust: In This Darkness (Clara La San)
+  - tide: Nothing's Gonna Hurt You Baby (Cigarettes After Sex)
+  - half: I Think My Heart's Gone Rotten (Coasting)
+
+**Stay** (home keeps the P3 dorm theme)
+- **Days and people:**
+  - spring: Everything Is Romantic (Orchestra Club)
+  - romance: Picture You (Chappell Roan)
+  - last: What If I Miss You for the Rest of My Life (Janine Berdin)
+- **The world bleeding through:**
+  - rooms: Ghost of You (5SOS)
+  - thread: did i tell u that i miss u (Adore)
+  - charms: Tower of Memories (Ivri)
+  - residue: Waiting Room (Phoebe Bridgers)
+  - half: Black Out Days (Phantogram)
+  - witness: I Know the End (Phoebe Bridgers)
+
+**True**
+- snow: Sparks (Coldplay)
+- kitchen: Ivy (Frank Ocean)
+- hanlim: Semi-Charmed Life (Third Eye Blind)
+- bench: Me and the Birds (Duster)
