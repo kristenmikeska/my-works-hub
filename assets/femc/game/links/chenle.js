@@ -20,7 +20,8 @@
    "your rotating instincts are back" (the numbers in rank 6); Hyein liking the way he talks. Catchphrases are used once
    at most: "true." goes to Minji in rank 3 (the brief's beat); "why me", "famous last words", "valid distinction" and "you're
    simply a creature I stare at" are never used.
-   What he knows and doesn't (runners_state ledger, end of Ch 66): he doesn't know about Solar and Haechan (he suspects; he
+   What he knows and doesn't (the game's Runners side is the state at about 11/22, after camping; he was at the lake that
+   weekend and knows something happened, not what): he doesn't know about Solar and Haechan (he suspects; he
    says he isn't asking, quietly, which is the opposite of Jaemin); he doesn't know Danielle runs the accounts. Haechan's
    substance use stays unstated: Chenle's care for him is food and numbers only, never what for. The SUnews counts (nine
    calls to Solar before he crossed, the tenth went through; twelve to Haechan) are his; no home news past the page.
@@ -208,6 +209,7 @@
           ] },
           { t: "Who was that to you? At home.", notes: 3, then: [
             { s: 'chenle', f: 'neutral', t: "Alpha's treasurer. She comes to our parties. She stands near the stairs." },
+            { s: 'chenle', f: 'neutral', t: "She did the buses for the retreat. She had Jaehyun for twenty-five minutes on the Saturday. About a form." },
             { s: 'chenle', f: 'neutral', t: "That's all I've got on her. I don't have much data. She doesn't play anything." },
             { n: "He said it with total unconcern, like a man reporting the weather in a city he'd never visit, and went back to the game, and Solar felt the back of her neck prickle for no reason she could name, and let it." }
           ] }
@@ -608,7 +610,7 @@
         { n: "Danielle had the dining table at the far end. She'd covered half of it with the guesthouse's grocery receipts in neat overlapping rows, like scales, and a ledger open in front of her, and a highlighter laid parallel to the ledger's edge, and she looked up when Solar came in, and smiled, pleasantly, and wrote something down." }
       ] },
       { ifEvent: 'a4-mark', then: [
-        { n: "Mark was on the arm of the sofa with a borrowed guitar across his knees, playing something quiet and warm under everyone's conversation, and when Solar came in he waved with the hand on the neck of the guitar and lost the chord and laughed, a bit too easily, and found it again." }
+        { n: "Mark was on the arm of the sofa with a borrowed guitar across his knees, playing something quiet and warm under everyone's conversation, and when Solar came in he waved with the hand on the neck of the guitar and lost the chord and laughed, a bit too easily, and found it again. Minji's camera, going round the room, went past his corner without stopping." }
       ] },
       { n: "And in the far corner, in the chair by the radiator that nobody else wanted because it made a ticking noise every ninety seconds, Chenle, with his phone and his feet tucked up under him and the expression of a man sitting very still at the bottom of a lake." },
       { choose: [
@@ -686,15 +688,16 @@
       { s: 'solar', f: 'neutral', t: "...Okay." },
       { s: 'chenle', f: 'neutral', t: "Jaemin is. He's building up to it. He's been practicing a face in the bathroom mirror at the guesthouse. It's a concerned face. It's very bad. I wanted you to have some warning." },
       { s: 'solar', f: 'neutral', t: "Ask me what?" },
-      { s: 'chenle', f: 'neutral', t: "I don't know. That's why I'm not asking." },
+      { s: 'chenle', f: 'neutral', t: "I don't know. Something happened that weekend, at the lake. I was there, and I still don't know. That's why I'm not asking." },
       { n: "He said it so plainly that she almost laughed, and then didn't, because he wasn't joking, he was just being exact, and the exactness had something behind it that he wasn't putting into words and wasn't going to. He looked at the bag. Rice balls, she could see through the plastic, two of them, and a carton of something, and a box of the thin chocolate sticks with the bare ends, which he evidently considered a food group." },
       { s: 'chenle', f: 'neutral', t: "He eats if I hand it to him. Not if I leave it outside his door. Not if I tell him there's food downstairs. If I put it in his hand. That's the only version that works." },
-      { s: 'chenle', f: 'sad', t: "At home it's the same. I don't know what else works. I've only got the one thing." },
+      { s: 'chenle', f: 'sad', t: "At home it's the same. Food, and outside. Cold air works, if I can get him out the door. I don't know what else works. That's all I've got." },
       { choose: [
-        { t: "Cold air. He goes up to the roof when it's cold.", notes: 3, flag: { 'chenle-roof': true }, then: [
-          { s: 'chenle', f: 'surprised', t: "...Cold air." },
-          { n: "He took out his phone and typed it in, two words, under something else she couldn't see, and looked at the screen for a moment as though the list had just doubled in length and he wasn't sure yet if that was good news." },
-          { s: 'chenle', f: 'happy', t: "That's two things. Okay. Two's better than one." }
+        { t: "The roof. He goes up to the roof when it's cold.", notes: 3, flag: { 'chenle-roof': true }, then: [
+          { s: 'chenle', f: 'surprised', t: "...The roof." },
+          { s: 'chenle', f: 'neutral', t: "Outside, I knew. I didn't know he had a place." },
+          { n: "He took out his phone and typed it in, two words, under something else she couldn't see, and looked at the screen for a moment as though the list had just got longer and he wasn't sure yet if that was good news." },
+          { s: 'chenle', f: 'happy', t: "That's a place. Okay. A place is better than a thing." }
         ] },
         { t: "I don't know either.", notes: 2, then: [
           { s: 'chenle', f: 'neutral', t: "Okay. That's useful too. It means it's not just me." }

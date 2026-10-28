@@ -16,7 +16,7 @@
        ri-danielle-greengrocer   the Strip (any Strip activity), 11/12-1/31: her bargaining for the guesthouse.
        ri-danielle-lost-property Paulownia Mall (any mall activity), 11/12-1/31: the police box's lost-property book (Officer
                                  Kurosawa, cast id from core.js CAST; no portrait, so no face).
-   Canon guard (Runners, Ch 66): Hanni, Hyein and Minji know she runs the accounts and will not say so in front of Solar;
+   Canon guard (Runners at 11/22, after camping): Hanni, Hyein and Minji know she runs the accounts and will not say so in front of Solar;
    Jaehyun, Jaemin and Chenle don't know. Nothing here states the thing she knows about Solar, or anything about Solar and
    Haechan, the recording, Mark's arrangement or the doorstep. Faces for danielle (no portrait yet): neutral, happy, sad,
    serious, surprised, flustered. Mitsuru: neutral, sad, surprised. */
@@ -175,12 +175,13 @@
         { s: 'hanni', f: 'serious', t: "I'll give them to her, Danielle. Goodnight." },
         { n: "She held her hand out. Not for the bag, at first. Just out, flat, palm up, in the doorway, until Danielle put the bag in it, and Hanni's fingers closed, and Danielle looked past her shoulder up the stairs at Solar and smiled, all of it, every corner." },
         { s: 'danielle', f: 'neutral', t: "Solar. You look tired. You always looked tired in November." },
+        { n: "Hanni flinched. Small, at the shoulder, the way you'd flinch at a draft that had found you through a closed window." },
         { n: "Hanni shut the door. Not hard. She didn't need to. Then she stood with her forehead nearly on it, the bag of receipts in one hand, and breathed out through her nose, long and slow, the way you let air out of something so it won't burst." },
         { choose: [
           { t: "What did she do to you?", then: [
             { n: "Hanni and Hyein looked at each other. The long look, the practiced one. Then Hanni turned round, and put the bag on the hall table, and squared it, carefully, with both hands." },
-            { s: 'hanni', f: 'neutral', t: "Ask me again at home, Sol." },
-            { s: 'hyein', f: 'sad', t: "Ask ME again at home. I'll do a presentation. With slides." },
+            { s: 'hanni', f: 'neutral', t: "When you remember, I'll tell you everything. All of it. I'm not deciding for you again, Sol." },
+            { s: 'hyein', f: 'sad', t: "Me too. When you remember. I'll do a presentation. With slides." },
             { n: "Neither of them was joking, and both of them were trying to make it sound like they were, and Solar stood on the bottom stair and let them, because they so badly wanted her to." }
           ] },
           { t: "(Help Hanni put the chain on the door.)", stat: { kindness: 1 }, then: [
@@ -203,7 +204,7 @@
         { n: "Danielle had been there, Solar was fairly sure, for some time. She had the look of someone who'd been sitting very still for exactly as long as was needed." },
         { s: 'danielle', f: 'happy', t: "Jaehyun. Perfect timing. I've reorganized the shoe rack. By floor. You're top left, first floor. I just need your initials so nobody argues." },
         { s: 'jaehyun', f: 'neutral', t: "...Danielle." },
-        { n: "He took the clipboard. He read it, the whole sheet, which Solar was beginning to understand he would do with a menu, and then initialed it beside his own name, which she'd printed in capitals, J. LEE (1F), and handed it back." },
+        { n: "He took the clipboard. He read it, the whole sheet, which Solar was beginning to understand he would do with a menu, and paused over it a beat longer than shoes deserved, and then initialed it beside his own name, which she'd printed in capitals, J. LEE (1F), and handed it back." },
         { s: 'jaehyun', f: 'neutral', t: "Thank you. That's very organized." },
         { s: 'danielle', f: 'happy', t: "Somebody has to." },
         { n: "The back of Solar's neck went hot and tight in one thin line. She didn't know why. She was standing at a curb in a city she lived in, watching her brother initial a sheet about shoes, and some part of her body was standing somewhere else entirely, very still, with its back to a wall, watching a girl watch him." },

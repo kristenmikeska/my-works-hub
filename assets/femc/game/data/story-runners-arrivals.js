@@ -4,7 +4,7 @@
    memories (the bell has to have rung loud enough), and not after 12/13 (the Runners call on 12/14 is a goodbye they'd
    have missed). Their links (links/danielle.js, jaemin.js, chenle.js) name these as `storyEvents`, so nobody can be met
    before they've crossed. Flags: arrived-danielle, arrived-jaemin, arrived-chenle.
-   Canon: Runners as of chapter 66. Danielle runs SUnews; Hanni and Hyein know it, Jaemin and Chenle don't. Nobody here knows
+   Canon: Runners at about 11/22 (after camping, heading home for Thanksgiving; Kat's ruling 2026-10-27). Danielle runs SUnews; Hanni and Hyein know it, Jaemin and Chenle don't. Nobody here knows
    or says what Solar and Haechan are; Jaemin suspects out loud and gets nothing. Chenle counts (Ch 65: "food, cold air, and
    a number"); his calls that night are the daily-life routines sunews-tonight and sunews-chairs (nine to her, eleven to
    Haechan). Jeno isn't coming (Kat: "Jeno, not now"). New speakers have no portraits yet: they show as a silhouette
@@ -169,7 +169,7 @@
     { s: 'chenle', f: 'neutral', t: "I always count." },
     { n: "They looked at each other for a second, the two of them, across the dead road, and something passed between them that wasn't a greeting and wasn't an argument, and that Solar recognized, without knowing how, as the way two people talk when they've had the same conversation enough times that they've stopped needing to have it out loud." },
     { s: 'jaemin', f: 'happy', t: "Okay, so, quick question, because I'm a social chair and this is technically a social occasion, and I'm saying nothing, I want that on the record, I am saying nothing..." },
-    { s: 'jaemin', f: 'happy', t: "...but you two came together? At midnight? From the same building? I'm saying so much nothing right now. I'm saying the most nothing anyone's ever said." },
+    { s: 'jaemin', f: 'happy', t: "...but you two came together? At midnight? From the same building? Again? I'm saying so much nothing right now. I'm saying the most nothing anyone's ever said." },
     { n: "Haechan looked at him. Just looked, flat, for a long, long second, with absolutely nothing in his face, and Solar watched it work on Jaemin like weather, the grin staying exactly where it was while everything behind it quietly sat down." },
     { s: 'jaemin', f: 'neutral', t: "...Cool. Love that. Great talk." },
     { n: "It was the smaller one who saw it first. Solar saw him see it. He'd been looking at her the whole time Jaemin talked, not at her clothes or the armband but at her face, the way you'd look at a screen during a replay for the one frame that explained the fight, and she watched him find the frame. His mouth went flat. He didn't say anything to her. He said it to Jaemin, low, without looking away from her." },
@@ -209,7 +209,7 @@
     { s: 'jaemin', f: 'happy', t: "Officer! Good evening. Huge fan of the building. We're lost. We're exchange students. We're very, very lost. Is that the station? That's the station. Thank you so much, have a beautiful night, you're doing amazing work." },
     { n: "They walked. They walked fast and then, round the corner, faster, and Jaemin was laughing, actually laughing, bent over with his hands on his knees by a vending machine, and Haechan walked a step ahead with the bag knotted round his wrist and didn't look back at any of them, and Chenle walked beside Solar and said nothing at all for three whole streets." },
     { n: "At the corner of the Strip he spoke, without looking at her, to the road ahead." },
-    { s: 'chenle', f: 'neutral', t: "Regionals is in December." },
+    { s: 'chenle', f: 'neutral', t: "Regionals is the sixth. December. Two weeks." },
     { n: "She didn't know what Regionals was. Her hands did, a little. She didn't say anything back, and he didn't seem to need her to, and they walked the rest of the way like that, two people who had apparently spent a lot of time not talking next to each other and were good at it." },
     { place: 'Iwatodai Dorm · Lounge', time: 'Late Night', bg: 'iwatodaidorm-livingroom-night' },
     { n: "Mitsuru was in the lounge in her dressing gown with two keys already in her hand. She didn't ask. By November, Mitsuru had stopped asking; she simply came downstairs at the right moment holding the right number of keys, which was, Junpei said, the most frightening thing about her." },

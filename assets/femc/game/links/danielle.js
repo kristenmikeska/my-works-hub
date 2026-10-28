@@ -1,6 +1,6 @@
 /* Danielle · Devil (XV). Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines
    in scene.js. Searcher (Runners), friendship only (romance: null). Kat's new link (2026-10-21), "chaos energy".
-   Danielle Marsh: Alpha Phi Treasurer. In canon (Runners, current through Ch 66) she runs SUnews (Instagram, photo-only,
+   Danielle Marsh: Alpha Phi Treasurer. In canon (Runners; the game assumes the state at about 11/22, after camping) she runs SUnews (Instagram, photo-only,
    captions) and SUanon (Twitter, anonymous text); in Ch 48 she confirmed it to Solar's face and countered with leverage. She
    is obsessed with Jaehyun in a way that became surveillance, and used to turn up for no reason to see if he was around, and
    stopped (Ch 66). Here: a girl whose whole power is watching and being watched, dropped in a city with no feed ("Couldn't
@@ -28,12 +28,15 @@
    hands a treasurer that, a treasurer takes it (rank 3, in action). From the arrival: "That's very generous" (rank 3), the
    phone's "Couldn't post. Tap to retry." (hangout), "Nobody ever sits in the seat between us" (ranks 5, 10).
    Never used: "a girl I used to know", "some lessons have to be learned the hard way", any "hard lesson".
-   Who knows what (Runners Ch 66 ledger): Hanni, Hyein and Minji know she runs the accounts and has leverage; they will not
+   Who knows what (Runners ledger at 11/22): Hanni, Hyein and Minji know she runs the accounts and has leverage; they will not
    say why in front of Solar. Haechan knows, and much more he never says (his one line, rank 4). Jaemin, Chenle and Jaehyun
    don't know about the accounts (Jaemin complains about SUnews to her face, rank 3; Jaehyun is polite, rank 5). Solar may
    hear the caption voice in her (rank 4); Danielle never confirms. Mark (gated a4-mark, rank 9) overplays casual, she's bored,
    Solar can't read it; nothing about their arrangement is stated. Nothing here confirms Solar and Haechan; nothing touches the
-   recording, the girl incident, Mark's motive or the doorstep. The camping trip is in her folder as upcoming, never dated.
+   recording, the girl incident, Mark's motive or the doorstep. Camping is over: her folder holds its after-paperwork (rank 1).
+   Her part at camp (she traded Mark the window for time with Jaehyun) shows only as tension, never stated: Jaehyun's
+   pause over a signature (rank 5), the price she's paid in time before (rank 7), a closed-account "Mark." (rank 9), and
+   Minji's needle (rank 2). She was in the Personaverse too, so she knows the cover story will be a story.
    Housing: the Kirijo guesthouse by the station (Mitsuru's key, a4-light-on). The dorm's board, kitchen and lounge are visits;
    visitors are out by eight on school days (rank 4 has her leave at 7:59).
    Arrival: story event a4-light-on (data/story-runners-arrivals.js; 11/10 late once Solar holds five Runners memories, by
@@ -249,7 +252,8 @@
       { s: 'danielle', f: 'neutral', t: "I'll tell you what it looks like from where I'm sitting. It looks like a girl who walked out of her entire life one night and left all of her paperwork behind." },
       { s: 'danielle', f: 'happy', t: "Somebody had to keep it." },
       { n: "Solar looked at the folder. Danielle closed it. Not quickly. With her palm laid flat on the cover, the way you'd close a hymnbook after the last verse, and left her hand there." },
-      { s: 'danielle', f: 'neutral', t: "Not this. This is Alpha's. The trip. Cabins, beds, who rides with whom, who owns a camp stove and is lying about it. It was soon. I'm not sure what *soon* means anymore." },
+      { s: 'danielle', f: 'neutral', t: "Not this. This is Alpha's. The trip. The after of it: reimbursements, the ride-home manifest, who owes the chapter for a camp stove and is lying about it. It's over. The books aren't." },
+      { n: "She pressed her palm a little flatter on the cover, and said nothing at all about what had happened up there, so carefully that the nothing had corners." },
       { s: 'danielle', f: 'neutral', t: "You're on it, incidentally. You're on everything." },
       { s: 'danielle', f: 'neutral', t: "That isn't the paperwork I meant. I meant everything else. What you wore. Who you stood next to. Where you were at four o'clock on a Tuesday. Your coffee order was public record by your second week. Everyone at home has a little bit of you, Solar." },
       { s: 'danielle', f: 'happy', t: "I have the rest." },
@@ -300,6 +304,7 @@
       { s: 'danielle', f: 'neutral', t: "And how's that going?" },
       { s: 'minji', f: 'neutral', t: "People say yes." },
       { s: 'danielle', f: 'happy', t: "They say yes to you. That isn't the same as it being true." },
+      { s: 'danielle', f: 'neutral', t: "You're good at holding things too, Minji. I'd know." },
       { n: "Minji looked at her for a moment, the way she looked at a monitor when somebody on the enemy team was doing something she'd seen before, and then she looked at Solar, and the look changed into something quieter that asked a question without needing an answer, and she picked up her tapes and went, and on her way past she touched Solar's elbow, once, light, like checking a door was locked." },
       { place: 'Paulownia Mall · Fountain', time: 'After School', soft: true },
       { n: "Danielle sat on the lip of the fountain and wound the camera with her thumb, the little plastic wheel ticking under it, and held it up to her eye and lowered it again without pressing anything." },
@@ -440,7 +445,8 @@
       { s: 'danielle', f: 'neutral', t: "It's a community board, Hanni. It's for the community. You're in the community. I put the dog on it for you." },
       { s: 'hyein', f: 'serious', t: "You're a..." },
       { s: 'hanni', f: 'neutral', t: "Sol. Could you see if Fuuka needs help with the rice?" },
-      { n: "Fuuka did not need help with the rice. Fuuka was upstairs. Solar knew it, and Hanni knew she knew it, and the sentence sat in the kitchen with all three of them looking at it, a door being held open politely by somebody who very much wanted her to walk through it." },
+      { n: "Fuuka did not need help with the rice. Fuuka was upstairs. Solar knew it, and Hanni knew she knew it, and for a second the sentence sat in the kitchen with all three of them looking at it, a door being held open politely by somebody who very much wanted her to walk through it. Then Hanni heard herself." },
+      { s: 'hanni', f: 'sad', t: "...No. Sorry. Stay. I don't get to do that anymore." },
       { choose: [
         { t: "No. I'm staying.", notes: 3, then: [
           { n: "Hanni looked at her. Then she nodded, once, and said nothing else at all, not to Danielle, not to anyone, and the kitchen went quiet in the particular way of a room in which everybody has decided not to say the one thing they're all thinking about, and it was worse than shouting would have been, and Solar stood in the middle of it and didn't move." }
@@ -486,11 +492,13 @@
       { s: 'jaehyun', f: 'neutral', t: "Solar." },
       { s: 'jaehyun', f: 'serious', t: "...Danielle." },
       { s: 'danielle', f: 'happy', t: "Jaehyun. I'm so sorry to interrupt. The grocery fund. Second signature. It'll take a minute." },
-      { n: "He took the pen. He read the whole page first, which was like him, and signed it at the bottom in a hand like his voice, level, without flourish, and handed back the pen, and Danielle took it as if he'd handed her something that had been in a museum." },
+      { s: 'jaehyun', f: 'neutral', t: "The last time you needed a signature from me, it took twenty-five minutes." },
+      { s: 'danielle', f: 'happy', t: "That one was complicated." },
+      { n: "He looked at her a second longer than the form needed. Then he took the pen. He read the whole page first, which was like him, and signed it at the bottom in a hand like his voice, level, without flourish, and handed back the pen, and Danielle took it as if he'd handed her something that had been in a museum." },
       { s: 'jaehyun', f: 'neutral', t: "You're running the fund now?" },
       { s: 'danielle', f: 'happy', t: "Just the grocery column. Mitsuru's very generous. Somebody had to, they all round." },
       { s: 'jaehyun', f: 'neutral', t: "Thank you. That's helpful." },
-      { n: "He meant it. That was the worst part, watching it. He meant it completely, the way he meant everything, and he had no idea at all, and Danielle received it like a coin into a jar." },
+      { n: "He meant it. That was the worst part, watching it. He meant it completely, the way he meant everything, and he had half an idea, and signed anyway, and Danielle received it like a coin into a jar." },
       { s: 'jaehyun', f: 'neutral', t: "Are you two friends? At home?" },
       { choose: [
         { t: "We're sorority sisters.", notes: 2, then: [
@@ -633,6 +641,7 @@
       ] },
       { s: 'danielle', f: 'neutral', t: "Here's the price. One photograph of you. Taken by me, today, here. My caption. Posted when I'm home." },
       { s: 'danielle', f: 'neutral', t: "That's all. One picture. You've been in hundreds. What's one more?" },
+      { s: 'danielle', f: 'happy', t: "It's a fair price. I've paid in time before. Twenty-five minutes, once. It was worth every one of them." },
       { n: "The gates went on below them, swallowing and releasing, swallowing and releasing. Solar sat on the cold bench and felt the offer settle into her body in the order bodies took things. Her hands first, curling, wanting it. Then her stomach, turning over, slow. Then, last, the back of her neck, which had never once been wrong about this girl." },
       { choose: [
         { t: "No.", notes: 3, flag: { 'danielle-refused': true }, then: [
@@ -748,7 +757,7 @@
         { n: "The door from the hall opened and Mark came in with his sweatshirt sleeves pulled over his hands and his hair still wet, heading for the oranges, and saw who was at the window end of the table, and his whole body did a small complicated thing, like a man missing a step on a staircase he'd climbed a thousand times." },
         { s: 'mark', f: 'flustered', t: "Sol! Hey. Hey. And— Danielle. Hey. Hi. Cool. Cool cool cool. Oranges. I'm here for the oranges." },
         { s: 'danielle', f: 'neutral', t: "Mark." },
-        { n: "That was all she gave him. One word, bored, the way you'd read out the name on a parcel that wasn't for you. She didn't even look up from the phone. Mark took three oranges, which was two more than anyone needed, and laughed at nothing, a beat too early, and rubbed the back of his neck, and said something about a chord, and left, and the door swung shut behind him." },
+        { n: "That was all she gave him. One word, bored, the way you'd read out the name on an account you'd already closed. She didn't even look up from the phone. Mark took three oranges, which was two more than anyone needed, and laughed at nothing, a beat too early, and rubbed the back of his neck, and said something about a chord, and left, and the door swung shut behind him." },
         { n: "Solar looked from the door to Danielle and back. Something had happened in the room. She was sure of it. She couldn't for the life of her have said what, or between whom, or in which direction, and Danielle was already peeling an orange in one long unbroken spiral as if nobody had come in at all." }
       ] },
       { s: 'danielle', f: 'neutral', t: "You're doing it again." },

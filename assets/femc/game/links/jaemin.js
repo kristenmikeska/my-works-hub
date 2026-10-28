@@ -18,7 +18,9 @@
    nobody understands; the camping trip he architected as Social Chair (a packing list with "emergency speaker" and no first
    aid kit; the transport spreadsheet he swears to Hanni he looked at); recovery parties only when Jaehyun is away; the Sunday
    cleanup with a garbage bag (Ch 57); Chenle on him: "he likes parties, attention... wants everyone to think he's fun".
-   The camping trip is only ever upcoming (no date, nothing about what happens there); Jeno isn't here and is missed. Drink,
+   The game's Runners side is the state at about 11/22 (Kat's ruling 2026-10-27): the trip happened. He knows something blew
+   up there on the Saturday, not what (rank 4), and rank 9 rewrites it as the version he'd run again; he pays Hyein's deposit
+   (rank 7, Kat's ruling). Jeno isn't here and is missed. Drink,
    never drugs; nothing here touches Runners' locked truths, and nobody confirms Solar and Haechan.
    Flags this link sets (all jaemin-*) and where they're read (each scene reads three ifFlag gates at most):
      rank 1  jaemin-five-stars (she plays along with his pitch) | jaemin-refund (she asks for the version without it)
@@ -192,6 +194,8 @@
       { n: "Jaemin stood up on the couch. He did it without any warning, the way other people cleared their throats, and stood there with the microphone held loosely at his hip, not switched on, a boy on a vinyl cushion under a disco ball in a city that had never heard of him." },
       { s: 'jaemin', f: 'happy', t: "Okay. Properly, this time. No coffins, no security guard. Na Jaemin. Social Chair, Sigma Chi. Architect of your every Friday night. You've sat by my pool. You walked in my costume contest, and your friends won it, and you'd already left, which, honestly, best exit of the night." },
       { s: 'jaemin', f: 'neutral', t: "And you don't remember any of it. Which I've decided to take as a compliment. A party so good it erased itself. You can't buy that kind of review." },
+      { s: 'jaemin', f: 'neutral', t: "Architect of the trip, too. You don't remember that either." },
+      { s: 'jaemin', f: 'neutral', t: "...Maybe that's fine." },
       { n: "He said it lightly, like the rest of it, but he was watching her face while he said it, the way you'd watch a dealer turn the last card, and she understood that the pitch was for her and the watching was for him." },
       { choose: [
         { t: "Five stars. Would attend again.", notes: 3, flag: { 'jaemin-five-stars': true }, then: [
@@ -255,7 +259,8 @@
       { s: 'minji', f: 'neutral', t: "There was a face before the face. That's the one I want." },
       { ifEvent: 'a4-mark', then: [
         { n: "Mark was on the end of the sofa with a cup he wasn't drinking, laughing at the right moments, which he did very well, and Jaemin kept pointing at him across the lobby and announcing him to nobody, *ladies and gentlemen, Mark Lee, a man who has never once been the problem at a party.*" },
-        { s: 'mark', f: 'neutral', t: "Thanks, man. I think." }
+        { s: 'mark', f: 'neutral', t: "Thanks, man. I think." },
+        { n: "He laughed at it too, on time, from the far end of the sofa, the end furthest from Solar, and she noticed that without knowing she'd noticed it." }
       ] },
       { n: "It was, for twenty minutes, a party. A small one, a strange one, a party with one tinny speaker and a desk lady and a girl filming the paper chains, but Jaemin moved through it like it was three hundred people, a hand on a shoulder here, a cracker put into a palm there, and it was working, the way a song works in a room before anybody admits they like it, until the elevator went *ding.*" },
       { n: "Jaehyun stepped out of it in a gray sweatshirt and socks, with a book under his arm and his reading face on, the face of a man who'd come down to the lobby for the quiet, and stopped." },
@@ -312,9 +317,10 @@
       { n: "Hanni was at the other end of the table with a cup of tea she'd made for nobody in particular, and she put it down with the very gentle click of a girl who had heard a proposal at a chapter meeting and was about to raise her hand." },
       { s: 'hanni', f: 'neutral', t: "Jaemin. Did you ever look at the transport spreadsheet? For the trip? Ours and yours? I sent it to you twice." },
       { s: 'jaemin', f: 'neutral', t: "I looked at it emotionally." },
-      { s: 'hanni', f: 'serious', t: "That's not a way to look at a spreadsheet." },
+      { s: 'hanni', f: 'serious', t: "That's not a way to look at a—" },
+      { n: "She stopped. Something went across her face, a long gray road and a van where nobody was talking, and she looked down into her tea." },
       { s: 'jaemin', f: 'happy', t: "It's the only way I look at anything, Hanni. You know this. You've known this all semester." },
-      { n: "They had. It was strange to watch, two people who'd clearly done this a hundred times, across a table at home, across a lawn, through a group chat with too many people in it, the Social Chair and the Social Chair, warm and exasperated and completely fluent in each other, while Solar stood at the bottom of the stairs in a city where neither of their titles meant anything, and only hers did." },
+      { n: "He'd covered it without looking up, the way you'd catch somebody's elbow on a stair, and she let him. They had done this before. It was strange to watch, two people who'd clearly done this a hundred times, across a table at home, across a lawn, through a group chat with too many people in it, the Social Chair and the Social Chair, warm and exasperated and completely fluent in each other, while Solar stood at the bottom of the stairs in a city where neither of their titles meant anything, and only hers did." },
       { s: 'jaemin', f: 'neutral', t: "Okay. Expert opinion. Solar Lee. A party in the Dark Hour. Yes or yes." },
       { s: 'fuuka', f: 'sad', t: "...She's usually not here for it." },
       { n: "Jaemin looked at Fuuka. Then at Solar. Then, slowly, at the long case leaning against the wall by the stairs, where it always leaned, the one with the naginata in it, which he had walked past three times this evening and had decided, apparently, was a decoration." },
@@ -371,7 +377,7 @@
       { s: 'jaemin', f: 'neutral', t: "So. What's up with Haechan?" },
       { n: "It wasn't the way he said everything else. It was flat and straight and a little tired, a question he'd clearly asked before, somewhere else, in a kitchen, to people who'd shrugged." },
       { s: 'jaemin', f: 'neutral', t: "Junpei says he ran up the tower. On his own. The whole thing. Haechan doesn't run. Haechan wouldn't run for a bus with his whole life on it. He'd watch it leave and say *there'll be another one.*" },
-      { s: 'jaemin', f: 'serious', t: "And at home he's been weird since the semester started. Not weird-weird. Weird for him. He doesn't talk to anybody. He never talked to anybody. But he used to not-talk to them in the same room." },
+      { s: 'jaemin', f: 'serious', t: "And at home something happened. Up there, on the trip. With you two. Nobody'll tell me what. He's been weird since. Not weird-weird. Weird for him. He doesn't talk to anybody. He never talked to anybody. But he used to not-talk to them in the same room." },
       { s: 'jaemin', f: 'neutral', t: "And here he lives in your building." },
       { n: "He said the last part to his soda. Not teasing. Not quite. A fact laid on the table next to the others, for her to pick up or not." },
       { choose: [
@@ -544,6 +550,10 @@
           { s: 'hyein', f: 'neutral', t: "He does. He knows his side. It's disgusting. Turn left, Jaemin, the hem's off on the right." }
         ] }
       ] },
+      { n: "When she finally let him down off the chair, he took an envelope out of the inside pocket of his own coat, the old one, flat and soft at the corners from being carried, and held it out to her with no pitch on it at all. *DEPOSIT,* it said, in his capitals. And under it, smaller, *(late).*" },
+      { s: 'hyein', f: 'surprised', t: "...This is yen." },
+      { s: 'jaemin', f: 'neutral', t: "Exchange rate's on the back. I did the math. Chenle checked it. Businesswoman. I respect it." },
+      { n: "Hyein looked at the envelope for a long time, and then put it in her pincushion pocket without counting it, which Solar had never once seen her do with money, and went back to the hem with her ears gone pink." },
       { ifEvent: 'a4-light-on', then: [
         { n: "Danielle was in the armchair by the window. She had been there when they arrived, Solar was fairly sure, though she couldn't have said when she'd first noticed her, with a folder open on her knee and a highlighter laid parallel to the edge of the page, and a coffee she wasn't drinking, and her posture perfect, the posture of a girl who'd been at the front desk of her own life since seven in the morning." },
         { s: 'jaemin', f: 'neutral', t: "Danielle. Danielle, back me up. That account. The SUnews thing. Whoever runs it needs a hobby. Or a therapist. Or a *hobby.*" },
@@ -555,7 +565,7 @@
         { n: "Danielle turned a page. She smiled at the folder, pleasantly, the way you'd smile at a forecast that had come out exactly as you'd predicted, and Solar watched the smile and felt something at the back of her neck she didn't have a word for, the small cold prickle of a room in which everyone else knew the time." },
         { s: 'danielle', f: 'neutral', t: "It's a small world, wherever you go. You'd be surprised what travels." },
         { n: "She closed the folder with a neat soft click, stood, said she'd let them get back to it, and that the jacket was lovely, Hyein, really, and that Solar should tell Jaehyun she'd said hello, if she saw him first, and was in the elevator before anyone had decided what to say back." },
-        { s: 'jaemin', f: 'happy', t: "She's so nice. Is she always that nice? I've barely talked to her at home. She's always in a corner doing math." },
+        { s: 'jaemin', f: 'happy', t: "She's so nice. Is she always that nice? I wouldn't know. You don't put the treasurer on the Friday list." },
         { s: 'hyein', f: 'neutral', t: "Stand *still,* Jaemin." }
       ], else: [
         { s: 'jaemin', f: 'neutral', t: "You know what I miss? I don't miss it. I hate it. That account. The SUnews thing. Whoever runs it needs a hobby. Or a therapist. Or a *hobby.*" },
@@ -613,7 +623,9 @@
       { n: "He didn't stand on anything. He didn't turn his face. He held a paper cup of vending-machine tea that had gone cold an hour ago, and started, and stopped, and started again." },
       { s: 'jaemin', f: 'neutral', t: "To the house." },
       { s: 'jaemin', f: 'neutral', t: "Jeno. You idiot. I'm somewhere you'd love and I can't tell you about it. Renjun. Keep scaring people, it's good for them. Jisung, go to class. Johnny. Yuta. Thanks for the money, Yuta." },
-      { s: 'jaemin', f: 'neutral', t: "Mark, be less boring. Haechan—" },
+      { s: 'jaemin', f: 'neutral', t: "Mark, be less—" },
+      { n: "He stalled on that one too, half a second, a missed step you'd only hear if you were listening for it, and went on past it like he'd meant to." },
+      { s: 'jaemin', f: 'neutral', t: "...Be less boring. Haechan—" },
       { n: "He stopped. The river went by. Somewhere upstream a train crossed the bridge, all its windows lit, and he watched it all the way across." },
       { s: 'jaemin', f: 'neutral', t: "Just come downstairs sometimes." },
       { s: 'jaemin', f: 'neutral', t: "And Jaehyun. Thanks for the please." },
@@ -635,37 +647,41 @@
     ] },
 
     { after: '1/16', title: '9: the packing list', place: 'Kirijo Guesthouse', time: 'Evening', music: 'joy', scene: [
-      { n: "Jaemin was rewriting the trip. Not from the file, the file was in another world, but from memory, in the spiral notebook, at the low glass table in the guesthouse lobby, every cabin and every van and every hour, and it was, he said, the third time he'd done it since he arrived, and every time it came out longer." },
-      { s: 'jaemin', f: 'neutral', t: "Here's the thing nobody understands. At home it's still that night. Right? So the trip's still ahead of me. I've been planning the same trip for two months. In my head. I've *optimized* it." },
-      { n: "He turned the notebook round. Four days in the woods, the cabins numbered, a rota for the cooking that no one at home had agreed to, a service project in small letters at the bottom of a page, *service retreat,* underlined twice, and beside it, smaller, *(official),* and beside that, smaller still, *no service. at the site. none. tell everyone. they won't listen.*" },
+      { n: "Jaemin was rewriting the trip. Not the one that had happened. The file for that was in another world, and he said he didn't want it anyway. This was the other one, from memory, in the spiral notebook, at the low glass table in the guesthouse lobby, every cabin and every van and every hour, the version where nothing went wrong, the one he'd run again, and it was, he said, the third time he'd done it since he arrived, and every time it came out longer." },
+      { s: 'jaemin', f: 'neutral', t: "Here's the thing nobody understands. At home the trip's done. It happened. Something blew up up there, on the Saturday, and nobody'll tell me what, and the ride home was the quietest four hours of my life. So I've been running it again. In my head. For two months. I've *optimized* it." },
+      { n: "He turned the notebook round. Four days in the woods, the cabins numbered, a rota for the cooking that no one at home had agreed to, a service project in small letters at the bottom of a page, *service retreat,* underlined twice, and beside it, smaller, *(official),* and beside that, smaller still, *no service. at the site. none. tell everyone. they didn't listen.*" },
       { n: "And the packing list. A long one. Sleeping bag. Flashlight. Two of everything that could get wet. *EMERGENCY SPEAKER* in capitals with a box drawn round it. And, at the bottom, in a different pen, in small round letters she somehow knew, *first aid kit,* underlined twice, with a little sad face next to it." },
       { s: 'jaemin', f: 'neutral', t: "Hanni did that. Last week. In the dorm. She took my pen out of my hand, wrote it in, gave the pen back, and went upstairs. Didn't say a word. The sad face is aimed at me. Personally." },
+      { s: 'jaemin', f: 'sad', t: "It's a grade. On the real one. There wasn't a kit. Somebody cut their hand on the Friday and we used a sock." },
       { ifEvent: 'a4-mark', then: [
         { n: "Mark was on the lobby sofa with a guitar he'd borrowed from somebody and wasn't really playing, tuning and retuning one string, and he'd been laughing in the right places all evening, a little too easily, the way he did when there was something in the room he wasn't sure about and had decided to be relaxed at it." },
-        { s: 'jaemin', f: 'happy', t: "And Mark Lee. Judge of Disputes. For the whole trip. Because he's famously boring. It's a compliment, man. You dressed like a substitute teacher on *Halloween.* People trust that." },
-        { s: 'mark', f: 'flustered', t: "Ha. Yeah. Love that. Boring. That's me. I'm— yeah." },
+        { s: 'jaemin', f: 'happy', t: "And Mark Lee. Judge of Disputes. He was, the whole trip. Because he's famously boring. It's a compliment, man. People trust—" },
+        { n: "He heard it go wrong halfway, the way you hear a glass start to tip on a table, and looked at the page instead of the sofa." },
+        { s: 'jaemin', f: 'neutral', t: "...Bad casting, maybe. In this one I'm doing it myself." },
+        { s: 'mark', f: 'flustered', t: "Ha. Yeah. No. That's— yeah. Fair." },
         { n: "He rubbed the back of his neck and tuned the string again, which was already in tune." }
       ], else: [
-        { s: 'jaemin', f: 'neutral', t: "Mark would be Judge of Disputes. If he were here. Famously boring. It's a compliment. He dressed like a substitute teacher on Halloween. People trust that." },
+        { s: 'jaemin', f: 'neutral', t: "Mark was Judge of Disputes. Famously boring. It's a compliment. He dressed like a substitute teacher on Halloween. People trust that." },
+        { s: 'jaemin', f: 'neutral', t: "...Mostly. Bad casting, maybe. In this one I'm doing it myself." },
         { s: 'jaemin', f: 'neutral', t: "Bodyguard Mark Lee. He's back there. Being boring. Professionally." }
       ] },
       { s: 'jaemin', f: 'neutral', t: "You're Alpha. You're on it. Look." },
-      { n: "He put his finger under a line. A cabin number, and four names, and one of them hers, *SOLAR LEE,* in his capitals, with nothing next to it, no note, no joke, which was the strangest thing on the whole page." },
+      { n: "He put his finger under a line. A cabin number, and four names, and one of them hers, *SOLAR LEE,* in his capitals, with nothing next to it, no note, no joke, which was the strangest thing on the whole page, from a boy who could caption anything." },
       { choose: [
-        { t: "Which cabin am I in?", notes: 3, then: [
+        { t: "Which cabin was I in?", notes: 3, then: [
           { s: 'jaemin', f: 'neutral', t: "With your girls. Hanni wanted to swap twice. I said no twice. It's the first time I ever said no to Hanni Pham and I think about it every day. She looked at me like I'd stepped on a duckling." }
         ] },
         { t: "I don't remember being Alpha.", notes: 2, then: [
           { s: 'jaemin', f: 'neutral', t: "You don't have to. You're on the list. The list remembers." },
           { s: 'jaemin', f: 'neutral', t: "That's what lists are for, Solar. That's the only thing they're for." }
         ] },
-        { t: "Is there a first aid kit now?", notes: 3, then: [
-          { s: 'jaemin', f: 'flustered', t: "There's a first aid kit NOW. Hanni saw to that. With a sad face. I've learned my lesson." },
-          { s: 'jaemin', f: 'neutral', t: "...I'm going to make it a really nice first aid kit. With the good plasters. The ones with the cartoons on." }
+        { t: "Is there a first aid kit in this one?", notes: 3, then: [
+          { s: 'jaemin', f: 'flustered', t: "There is NOW. Hanni saw to that. With a sad face. I've learned my lesson." },
+          { s: 'jaemin', f: 'neutral', t: "...I'm going to make it a really nice first aid kit. With the good plasters. The ones with the cartoons on. For next year. If there is one." }
         ] }
       ] },
-      { n: "He closed the notebook, and then didn't take his hand off the cover, and looked at it, at the spiral and the stationery-shop sticker on the front and the corner already soft from being carried, like a man looking at a ticket for a show that hadn't been scheduled yet." },
-      { s: 'jaemin', f: 'neutral', t: "Are you coming? When it's— whenever it is." },
+      { n: "He closed the notebook, and then didn't take his hand off the cover, and looked at it, at the spiral and the stationery-shop sticker on the front and the corner already soft from being carried, like a man looking at the ticket for a show he'd been at and hadn't got to see the end of." },
+      { s: 'jaemin', f: 'neutral', t: "Would you go again? If I ran it right?" },
       { choose: [
         { t: "Ask me again at the end.", notes: 3, then: [
           { s: 'jaemin', f: 'neutral', t: "At the end. Okay." },
@@ -800,7 +816,7 @@
     { title: 'the door', place: 'Iwatodai Station · Platform', time: 'Evening', scene: [
       { n: "He'd walked her to the station for no reason, because the guesthouse was right there and the dorm wasn't, and they were standing on the platform watching the trains come in lit up and go out lit up, and he was doing his commentary on the commuters, very quietly, a little kinder than he used to be." },
       { ifFlag: 'route-R', then: [
-        { s: 'jaemin', f: 'neutral', t: "When we get home, the first thing. Before the trip. Before anything. I'm doing a small one. In the kitchen. Not a party. Like twelve people. Eggs. You're on the door list, so you can come in through the back, so nobody posts you." },
+        { s: 'jaemin', f: 'neutral', t: "When we get home, the first thing. Before Regionals. Before anything. Since the trip everybody's been in different rooms, so I'm doing a small one. In the kitchen. Not a party. Like twelve people. Eggs. You're on the door list, so you can come in through the back, so nobody posts you." },
         { s: 'jaemin', f: 'happy', t: "I have plans for that kitchen, Solar. Big, quiet plans." }
       ], else: [{ ifFlag: 'route-true', then: [
         { s: 'jaemin', f: 'neutral', t: "Everywhere at once. I still don't get it. I've decided it's like a party with three rooms and you're in all of them and nobody minds." },
