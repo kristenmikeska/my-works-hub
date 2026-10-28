@@ -58,3 +58,7 @@ Each one has Claude's lean in brackets. None of them needs answering until the e
 
 - A few planning notes in the hidden plot doc about time back home are now out of date. They'll be updated when the epilogue is built.
 - Something said late in the game hints at Solar's first few minutes after she wakes. The epilogue's opening will honour it.
+
+---
+
+**Kat, 2026-10-27:** all ten of Claude's leans are approved for now. Kat will review them later, before the epilogue is built.
