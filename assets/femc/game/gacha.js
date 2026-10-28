@@ -36,7 +36,7 @@
      singles wear Kat's existing <id>-halloween.webp charms. Save: S.gacha.skeys { id: copies }, done [series ids].
    ── Solchan, Dorm Life, hidden charms and goods (2026-10-26, Kat's "more fun stuff" batch) ──
      A series may have `needs` (ids that must be met before its machine stands in the Corner: Solchan needs Haechan, Sep–Mar,
-     `featured`). Dorm Life rotates May, Jun, Sep, Nov, Jan, Mar. Side characters who aren't links (Asahi, Niki) never block an
+     `featured`). Dorm Life rotates May, Jun, Sep, Nov, Jan, Mar. Side characters who aren't links (Asahi) never block an
      item. The `hidden` series has no machine: once Haechan is met every turn first rolls HIDDEN.rate (0.15%) for one of its
      charms, outside pity (rarity HID, its own sun-and-moon reveal, ??? in Collection until found). GOODS (sticker sheets,
      acrylic stands, mini plush, photo cards) come out of Rare / Super Rare capsules (capPrize → goodPrize); save
@@ -260,7 +260,7 @@ window.FemcGacha = (() => {
   const activeSeries = d => SERIES.filter(s => !s.hidden && seriesOpen(s) && (s.always || (s.months || []).includes(monthOf(d))));
   const hiddenSeries = () => serById('hidden');
   const hiddenOn = () => seriesOpen(hiddenSeries());
-  // Met-only; a side character who isn't a link (the Hate Club's Asahi and Niki) tags along with whoever is.
+  // Met-only; a side character who isn't a link (Asahi) tags along with whoever is; Niki is a link since 2026-10-27, so his keychains wait until he's met.
   const itemEligible = x => x.who.every(id => id === 'solar' || G.isMet(id) || !G.LINKS[id]);
   const itemCount = s => s.items.filter(x => gs().skeys[x.id] > 0).length;
   // A series is complete when every keychain in it is owned (the Cast machine also needs every cast keychain).

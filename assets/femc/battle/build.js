@@ -784,6 +784,23 @@ window.FemcBuild = (() => {
     ['chenle', 6, 'Hold the Corner', 'battle', { knifeParry: { chance: 0.4 } }, 'When Solar Guards, physical hits are blocked for no damage 40% of the time.'],
     ['chenle', 8, 'On My Call', 'assist', { buster: { dmg: 0.2 } }, 'The party’s physical attacks on Down foes deal 20% more damage.'],
     ['chenle', 10, 'Just Eat', 'max', { learn: 'just_eat' }, 'Solar learns Just Eat (once per battle, low SP): restores a lot of HP to the whole party and cures their ailments.'],
+    // Jay, Niki and Sunghoon (2026-10-27, two-world links): A Little Taste (`taste`) and Spirit Guardians (`spiritGuardians`,
+    // now with an element) were the removed links' last unassigned hooks; the rest reuse shared daily keys and night kits.
+    ['jay', 2, 'Mise en Place', 'daily', { actStat: { cook: { proficiency: 1 } } }, 'Cooking dinner at the dorm gives +1 Proficiency.'],
+    ['jay', 4, 'Staff Meal', 'tartarus', { nightKit: { kit_staff_meal: 1 } }, 'Each night starts with Jay’s Staff Meal, which heals the whole party 25%.'],
+    ['jay', 6, 'Two Pans', 'daily', { jayKitchen: 1 }, 'Cooking with Jay becomes an evening activity at the dorm: +2 Proficiency and +1 Kindness.'],
+    ['jay', 8, 'Season to Taste', 'battle', { taste: { drain: 0.06 } }, 'Solar’s physical attacks restore HP equal to 6% of the damage they deal.'],
+    ['jay', 10, 'Low Flame', 'max', { learn: 'low_flame' }, 'Solar learns Low Flame: medium Fire damage to all foes, cheap for what it does.'],
+    ['niki', 2, 'Free Credits', 'daily', { freeAct: ['arcade'] }, 'Playing the cabinets at Game Panic costs nothing. Don’t ask how.'],
+    ['niki', 4, 'Gate Run', 'daily', { weekly: 'gaterun', stat: { courage: 1, proficiency: 1 }, dow: 6 }, 'Once a week (Saturdays), Niki drags Solar over every fence between the station and the river: +1 Courage and +1 Proficiency, without using any free time.'],
+    ['niki', 6, 'Banana Break', 'tartarus', { nightKit: { kit_banana: 1 } }, 'Each night starts with one of Niki’s bananas, which restores 40 SP to one ally.'],
+    ['niki', 8, 'Plus One', 'daily', { actStat: { walkkoro: { courage: 1 } } }, 'Walking Koromaru gives +1 Courage (Niki and Ken come too).'],
+    ['niki', 10, 'Clean Vault', 'max', { learn: 'clean_vault' }, 'Solar learns Clean Vault: heavy Strike damage to one foe, and she dodges the next attack aimed at her.'],
+    ['sunghoon', 2, 'Gracious', 'daily', { areaStat: { area: 'strip', stat: { charm: 1 } } }, '+1 Charm on every activity on the Iwatodai Strip.'],
+    ['sunghoon', 4, 'Right Hand', 'assist', { spiritGuardians: { power: 24, el: 'slash' } }, 'Foes that hit Solar with a physical attack take a light Slash cut back.'],
+    ['sunghoon', 6, 'Thirty Meters', 'tartarus', { nightKit: { kit_rope: 1 } }, 'Each night starts with a coil of yellow rope that pulls a fallen ally back up with 30% HP.'],
+    ['sunghoon', 8, 'Sunday Rounds', 'daily', { weekly: 'rounds', stat: { charm: 1, courage: 1 }, dow: 0 }, 'Once a week (Sundays), Sunghoon walks Solar down the Strip greeting every shopkeeper by name: +1 Charm and +1 Courage, without using any free time.'],
+    ['sunghoon', 10, 'Triple Axel', 'max', { learn: 'triple_axel' }, 'Solar learns Triple Axel: heavy Slash damage to one foe, with a high critical rate.'],
     // ── Other links
     ['rio', 2, 'Practice Swing', 'daily', { clubStat: { 'club-tennis': { courage: 1, proficiency: 1 } } }, 'Tennis club practice gives +1 Courage and +1 Proficiency.'],
     ['rio', 4, 'Second Serve', 'assist', { secondServe: {} }, 'Once per battle, if Solar’s attack misses, she gets an immediate retry.'],
@@ -848,9 +865,12 @@ window.FemcBuild = (() => {
     titanic_kiss: { name: 'Titanic Kiss', el: 'support', type: 'charge', target: 'allies', mult: 2.5, cost: { sp: 18 }, desc: 'The party’s next magic attack deals 2.5× damage.' },
     pirouette: { name: 'Pirouette', el: 'pierce', type: 'dmg', target: 'all', power: 66, cost: { hp: 14 }, crit: 6, dodgeNext: true, desc: 'Medium pierce damage to all foes; Solar dodges the next attack aimed at her.' },
     megidolaon: { name: 'Megidolaon', el: 'almighty', type: 'dmg', target: 'all', power: 140, cost: { sp: 48 }, desc: 'Heavy Almighty damage to all foes.' },
-    just_eat: { name: 'Just Eat', el: 'heal', type: 'heal', target: 'allies', power: 70, cureAll: true, once: true, cost: { sp: 10 }, desc: 'Chenle’s arrangement. Once per battle: restores a lot of HP to the whole party and cures their ailments.' }
+    just_eat: { name: 'Just Eat', el: 'heal', type: 'heal', target: 'allies', power: 70, cureAll: true, once: true, cost: { sp: 10 }, desc: 'Chenle’s arrangement. Once per battle: restores a lot of HP to the whole party and cures their ailments.' },
+    low_flame: { name: 'Low Flame', el: 'fire', type: 'dmg', target: 'all', power: 70, cost: { sp: 16 }, desc: 'Jay’s flame, turned down to where it does the most work. Medium fire damage to all foes.' },
+    clean_vault: { name: 'Clean Vault', el: 'strike', type: 'dmg', target: 'one', power: 112, cost: { hp: 12 }, crit: 6, dodgeNext: true, desc: 'Niki’s vault, feet first. Heavy strike damage to one foe; Solar dodges the next attack aimed at her.' },
+    triple_axel: { name: 'Triple Axel', el: 'slash', type: 'dmg', target: 'one', power: 120, cost: { hp: 14 }, crit: 12, desc: 'Sunghoon’s landing. Heavy slash damage to one foe, with a high critical rate.' },
   });
-  ['grand_slam', 'frozen_verdict', 'featherman_strike', 'valkyrie', 'undying_love', 'fangs_out', 'cross_slash', 'warding_bond', 'suplex', 'widows_kiss', 'runway', 'big_hug', 'titanic_kiss', 'pirouette', 'megidolaon', 'just_eat'].forEach(k => { D.skills[k].id = k; });
+  ['grand_slam', 'frozen_verdict', 'featherman_strike', 'valkyrie', 'undying_love', 'fangs_out', 'cross_slash', 'warding_bond', 'suplex', 'widows_kiss', 'runway', 'big_hug', 'titanic_kiss', 'pirouette', 'megidolaon', 'just_eat', 'low_flame', 'clean_vault', 'triple_axel'].forEach(k => { D.skills[k].id = k; });
   /* Night-only items (perk kits): used up or gone by morning. aid_spray was a removed link's kit (2026-10-21); kept so an old
      night in progress still knows it. */
   Object.assign(D.items, {
@@ -858,7 +878,10 @@ window.FemcBuild = (() => {
     kit_soul: { name: 'Sunoo’s Chewing Soul', type: 'sp', target: 'ally', sp: 50, price: 0, tier: 99, icon: 'soul', use: 'both', night: true, desc: 'From Sunoo’s takeout box. Restores 50 SP to one ally. Only good tonight.' },
     night_bento: { name: 'Fuuka’s Bento', type: 'spPct', target: 'allies', sp: 0.3, price: 0, tier: 99, icon: 'soul', use: 'both', night: true, desc: 'Experimental. Restores 30% SP to the whole party. Probably.' },
     aid_spray: { name: 'First Aid Spray', type: 'heal', target: 'allies', hp: 0.4, price: 0, tier: 99, icon: 'medicine', use: 'both', night: true, desc: 'Heals the whole party 40%.' },
-    night_leftovers: { name: 'Shinjiro’s Leftovers', type: 'heal', target: 'allies', hp: 0.2, price: 0, tier: 99, icon: 'medicine', use: 'both', night: true, desc: 'From the dorm kitchen, in a box with Solar’s name on it. Heals the whole party 20%. Only good tonight.' }
+    night_leftovers: { name: 'Shinjiro’s Leftovers', type: 'heal', target: 'allies', hp: 0.2, price: 0, tier: 99, icon: 'medicine', use: 'both', night: true, desc: 'From the dorm kitchen, in a box with Solar’s name on it. Heals the whole party 20%. Only good tonight.' },
+    kit_staff_meal: { name: 'Jay’s Staff Meal', type: 'heal', target: 'allies', hp: 0.25, price: 0, tier: 99, icon: 'medicine', use: 'both', night: true, desc: 'Whatever Jay made for the guesthouse, in a container with a strip of tape on the lid. Heals the whole party 25%. Only good tonight.' },
+    kit_banana: { name: 'Niki’s Banana', type: 'sp', target: 'ally', sp: 40, price: 0, tier: 99, icon: 'soul', use: 'both', night: true, desc: 'One banana, handed over like a secret. Restores 40 SP to one ally. Only good tonight.' },
+    kit_rope: { name: 'Yellow Rope', type: 'revive', target: 'dead', hp: 0.3, price: 0, tier: 99, icon: 'revive', use: 'both', night: true, desc: 'Thirty meters of yellow nylon from Sunghoon, who keeps a coil in everything. Pulls a fallen ally back up with 30% HP. Only good tonight.' },
   });
   /* ══════════ Gacha prizes (gacha.js runs the capsule machine and the Velvet Room draws in the life sim) ══════════
      Capsule Tickets are an item (Tartarus drops one now and then, and Shuffle Time's Hierophant), so they travel between the
@@ -931,6 +954,7 @@ window.FemcBuild = (() => {
     ['elizabeth', 'Elizabeth', 'happy'], ['wren', 'Wren', 'neutral'],
     // No portraits yet (2026-10-22): battle.js shows a silhouette until portraits/index.js lists their faces.
     ['danielle', 'Danielle', 'happy'], ['jaemin', 'Jaemin', 'happy'], ['chenle', 'Chenle', 'neutral'],
+    ['jay', 'Jay', 'happy'], ['niki', 'Niki', 'happy'], ['sunghoon', 'Sunghoon', 'neutral'],
     ['kat', 'Kat & Ethan', 'happy']].forEach(([id, name, face]) => { WHO[id] = { name, face }; });
 
   /* ── Perk rules ── */

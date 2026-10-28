@@ -688,7 +688,7 @@ window.FemcBattleEngine = (() => {
         if (!src.dead && (p = perkOn('prada')) && onceOk('prada')) { useOnce('prada'); follow('prada', src, { skill: { el: 'strike', power: p.power }, down: p.down }); }
       }
       if (phys && !src.dead && (p = perkOn('backOff')) && onceOk('backOff')) { useOnce('backOff'); if (R() < p.chance) { src.skipNext = true; perkEv(ev, 'backOff', { tgt: src.id }); } }
-      if (phys && !src.dead && (p = perkOn('spiritGuardians'))) follow('spiritGuardians', src, { skill: { el: 'light', power: p.power } });
+      if (phys && !src.dead && (p = perkOn('spiritGuardians'))) follow('spiritGuardians', src, { skill: { el: p.el || 'light', power: p.power } });
       if (h.downed && !tgt.dead && (p = perkOn('cornerMan')) && onceOk('cornerMan')) { useOnce('cornerMan'); tgt.down = false; tgt.sureCrit = true; perkEv(ev, 'cornerMan'); ev.push({ t: 'standup', tgt: tgt.id }); }
     }
 
