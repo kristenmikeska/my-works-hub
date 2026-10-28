@@ -94,6 +94,13 @@ window.FEMC_PORTRAIT_SCALE = {
   'sakura-hoax': 1.0,
   'kim-mom': 0.9,
   'kim-dad': 0.92,
+  'solar-strangers': 1.0, // batch 63: strangers epilogue looks and Solar's parents there (strangers world faces map)
+  'chaewon-strangers': 0.95,
+  'eunchae-strangers': 0.95,
+  'kazuha-strangers': 0.95,
+  'sakura-strangers': 0.88,
+  'lee-appa': 0.9,
+  'lee-eomma': 0.9,
   sunghoon: 0.95,
   sunoo: 1.0,
   tifa: 1.03,
@@ -160,4 +167,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 8;
+window.FEMC_PORTRAIT_V = 9;

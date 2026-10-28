@@ -1,6 +1,6 @@
 # Art to make
 
-**70 items:** 9 places · 14 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 63 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
+**66 items:** 9 places · 10 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 60 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -112,40 +112,6 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 ```
 
 ## 3. Characters (ChatGPT)
-
-### The epilogue: strangers
-
-**[ ] Solar's strangers look**  
-Solar's face at home in the strangers epilogue (she speaks without a portrait there now).  
-Attach: Solar  
-Save as: `Solar-strangers-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same young woman as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only her clothes and two details: a dark charcoal wool coat over a cream knit sweater, long dark hair down with a loose wave, and a carved jade ring on her right hand visible where it rests near her collar; no armband. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Appa (strangers)** *(optional)*  
-Solar's father, at home in the strangers epilogue.  
-Attach: Fuuka (for the style), Solar (for a family likeness)  
-Save as: `LeeAppa-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same Korean man in his mid-fifties in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image, with a family likeness to the second attached image (the same eyes). Short greying hair, reading glasses on a cord around his neck, a soft brown cardigan over an open-collared shirt. A soft-spoken man nobody interrupts. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Eomma (strangers)** *(optional)*  
-Solar's mother, at home in the strangers epilogue.  
-Attach: Fuuka (for the style), Solar (for a family likeness)  
-Save as: `LeeEomma-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same elegant Korean woman around fifty in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image, with a family likeness to the second attached image. Dark hair pinned up perfectly, small pearl earrings, a cream cardigan over a silk blouse. Cool, composed, never raises her voice. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Chaewon, Sakura, Kazuha and Eunchae, strangers outfits** *(optional)*  
-Yunjin's friends from her old dance studio in the strangers epilogue (one sheet each).  
-Attach: Fuuka (for the style), a photo of the member  
-Save as: `<Name>-strangers-sheet.png` (four sheets)
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She is in her early twenties in winter going-out clothes: a long coat, a thick scarf, small earrings, a dancer's posture. No text.
-```
 
 ### Evoker close-ups
 
@@ -1030,7 +996,7 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 
 **[ ] Solar: the Daeboreum festival** *(optional)*  
 Solar's face at the Daeboreum festival in the strangers epilogue.  
-Attach: `Solar-strangers-sheet.png` (once it's made; until then Solar)  
+Attach: `solar-strangers-sheet.png`  
 Save as: `Solar-strangers-daeboreum-sheet.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a long dark wool coat over a cream hanbok-style jeogori collar, a red knitted scarf, small silver earrings. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.

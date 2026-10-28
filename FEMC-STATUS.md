@@ -48,6 +48,7 @@ Other docs, if you ever want detail:
 - ✅ **The epilogue's art (CGs and faces):** all twelve epilogue CGs are in their scenes and unlock in the album's epilogue pages (four for Runners, three each for HOAX and strangers, one for Stay, one for the true coda). In the Runners epilogue, Solar now has her own home-world face, and Sakura, Eunchae and Kazuha have theirs; those looks stay in Runners. Haechan's Studio 4B has its own room now. A few lines were touched up to match the pictures.
 - ✅ **The epilogue's places and the eSports team's faces:** every Runners epilogue place has its own picture now (the eSports lab, the lecture hall, Marshall Street, the quad by day, the Alpha and Sigma kitchens, the holiday party, Regionals, and the rooftop at night and in the snow), and HOAX has its council room, make-up exam classroom and the gym at midnight; the Stay and true-ending visits use them too. Doyoung, Olivia, Haerin, Jeno and Chaewon have faces in Runners, and Solar has her own HOAX look. A few lines were touched up to match the pictures.
 - ✅ **HOAX faces:** Sakura, Eunchae, Kazuha and Chaewon have their HOAX looks in the HOAX epilogue, and Solar's mom and dad have faces there too; the year's parent texts are unchanged.
+- ✅ **strangers faces:** Solar's strangers look, the four girls' strangers outfits and Solar's parents there have faces in the strangers epilogue; those looks stay in that world, and the year's parent texts are unchanged.
 - ⬜ **Ideas to talk about:** the big push
 
 ## Story and characters

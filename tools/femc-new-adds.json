@@ -14807,6 +14807,181 @@
       "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
       "scale": 0.92,
       "placement": "HOAX epilogue only: data/epi/hoax/world.js faces map (dad: 'kim-dad'), read by core.js worldFace()"
+    },
+    {
+      "batch": 63,
+      "source": "chaewon-strangers-sheet.png",
+      "sourceNow": "Added to Game/chaewon-strangers-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "108ce2bdaada02e3cef2ed63ec7d4146904719345f2e429bd095547fdfc07601",
+      "character": "chaewon-strangers",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/chaewon-strangers/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/chaewon-strangers/neutral.webp": "54c64e4644f89e6767da473136f0d89931cbb038177f5c1af485aeb434088316",
+        "assets/femc/portraits/chaewon-strangers/happy.webp": "43b96668bebc2d6d3e65351eb833022e5177a650eacf6538d42ab71ea2755810",
+        "assets/femc/portraits/chaewon-strangers/sad.webp": "23b205712a1148e22a14f5d5f12a2d77e0d8b75bd204d5b30d4b133ea2653d04",
+        "assets/femc/portraits/chaewon-strangers/serious.webp": "a77d0f4e308b13ed8210f408c1d92df0698bd6913e5de05b2516cdc4b4e4371d",
+        "assets/femc/portraits/chaewon-strangers/surprised.webp": "3f6cacd674cddcfff5ebdb82624695d7e02924957e6086cd23864eb5f3ed320e",
+        "assets/femc/portraits/chaewon-strangers/flustered.webp": "f673e1f60a780152e86f255f90978347b4edb73aa40879aa1a3ac7a4ba6cf1c2"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.95,
+      "placement": "strangers epilogue only: data/epi/strangers/world.js faces map (chaewon: 'chaewon-strangers'), read by core.js worldFace()"
+    },
+    {
+      "batch": 63,
+      "source": "eunchae-strangers-sheet.png",
+      "sourceNow": "Added to Game/eunchae-strangers-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b7f2cdbd3649f80a3bee0870ec1370d605c3b09348631174f6d001eb1216922c",
+      "character": "eunchae-strangers",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/eunchae-strangers/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/eunchae-strangers/neutral.webp": "f7a45042c53917be0bd6c24fe9495b56e83578520128623196e601972601fab7",
+        "assets/femc/portraits/eunchae-strangers/happy.webp": "9134c7cda7de5c02ce833a70ee82deb350fcf1e9ad7835bd05a2c0722176560e",
+        "assets/femc/portraits/eunchae-strangers/sad.webp": "ef56e93c1dc78b76548c4f829569d450f154e2a6e26a194576a94bacbc08ea50",
+        "assets/femc/portraits/eunchae-strangers/serious.webp": "c7fee2ff319d6743f615be0385cef9dc2a93d9c693f14a9cc109fe6c4052ffa7",
+        "assets/femc/portraits/eunchae-strangers/surprised.webp": "aa1c7cee1c9567dc10a77adfde3e811aeeb20d8f9cafb77d0e79f25801f58cfd",
+        "assets/femc/portraits/eunchae-strangers/flustered.webp": "9ad686c6ce94c726f23776ae603a60ff0311f2cdaf87ec57a93d0b17c9a17777"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.95,
+      "placement": "strangers epilogue only: data/epi/strangers/world.js faces map (eunchae: 'eunchae-strangers'), read by core.js worldFace()"
+    },
+    {
+      "batch": 63,
+      "source": "kazuha-strangers-sheet.png",
+      "sourceNow": "Added to Game/kazuha-strangers-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ff7664d293dbacfdf2f2b9313f3e9b6fd5dfffba456a90d1750630c598cca0f2",
+      "character": "kazuha-strangers",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/kazuha-strangers/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/kazuha-strangers/neutral.webp": "b5d7a59036d8a2d9cbd083329406a7d8362e13ff0855c55effcb88366088dc9f",
+        "assets/femc/portraits/kazuha-strangers/happy.webp": "fdc815854a456f9fa5e2fa4281ca5f67565f2600ced3da140d7108df1202bcb2",
+        "assets/femc/portraits/kazuha-strangers/sad.webp": "2ad60d576e8c437693bbe5a01c250f850b0c7851f06feecad97f7915814e2e7c",
+        "assets/femc/portraits/kazuha-strangers/serious.webp": "750a7de80011f3c95501a928bb22921bc6989c4d020d72d1cc1e69686b6e1c9a",
+        "assets/femc/portraits/kazuha-strangers/surprised.webp": "f899f6aa4a2625e3a635067e523372c3bfb41906b2b89b25c8392af3fa74a9c3",
+        "assets/femc/portraits/kazuha-strangers/flustered.webp": "90256a8981a67d5c05358b4d6fef5784532f97e52d8a627b6bbe9883ae6a7ffe"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.95,
+      "placement": "strangers epilogue only: data/epi/strangers/world.js faces map (kazuha: 'kazuha-strangers'), read by core.js worldFace()"
+    },
+    {
+      "batch": 63,
+      "source": "sakura-strangers-sheet.png",
+      "sourceNow": "Added to Game/sakura-strangers-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a019bb8b533e11f7817eafeb099b33246d664f9f539d9e4ccd2ef5f51880b8f8",
+      "character": "sakura-strangers",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/sakura-strangers/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/sakura-strangers/neutral.webp": "201aacbb068cb54a366ebb13ff48c6729de6a4d9b1b8c3f37dc408c7949cbb0d",
+        "assets/femc/portraits/sakura-strangers/happy.webp": "4bee7b0cad9a46552886c4abf421057c6490a2e0ceafe4e8bea3998ed3117df0",
+        "assets/femc/portraits/sakura-strangers/sad.webp": "a89301c9de9846d4675a8c4e87e21ecd8643e51e384ccb65ece10c2c9d5c3d40",
+        "assets/femc/portraits/sakura-strangers/serious.webp": "a5c2575709b4aa1cbcef0af9357aa42ec5c2273b9330b83241753b8e71a7c343",
+        "assets/femc/portraits/sakura-strangers/surprised.webp": "b7b0618b5bb1b9db817e70ec16917b184a1581a721d9d49ea81149c4d7b664b5",
+        "assets/femc/portraits/sakura-strangers/flustered.webp": "3c4df0aa52411bb2a09d5bd6a1660fb4515af85d56936ee8cab8c8b2ac330d95"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.88,
+      "placement": "strangers epilogue only: data/epi/strangers/world.js faces map (sakura: 'sakura-strangers'), read by core.js worldFace()"
+    },
+    {
+      "batch": 63,
+      "source": "solar-strangers-sheet.png",
+      "sourceNow": "Added to Game/solar-strangers-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "74a135b85ee81ccca96d95aaf3d4314114f12f94688377b5e4007511f38dd597",
+      "character": "solar-strangers",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/solar-strangers/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/solar-strangers/neutral.webp": "ec1f1f72aa1728bf81eb5a728b873393735a6fc064e7f87ec1be3196bd1ef15e",
+        "assets/femc/portraits/solar-strangers/happy.webp": "6a853debf7a5fb2adb202364e6add2ce2c04b257f6f368d2f08ee6d8d26b0720",
+        "assets/femc/portraits/solar-strangers/sad.webp": "e7e4b457f0742d2221b54669e34b90d9fc158a4d8a18c51126f69cb473146614",
+        "assets/femc/portraits/solar-strangers/serious.webp": "8d06c7d46c0749044301a243f4aac9d4ef2e4b3a22f75dec8dcc5f0ae2824d39",
+        "assets/femc/portraits/solar-strangers/surprised.webp": "f16de6100c22fd93baa5aa67242433ccd802b8bbf91a75327bc5705ddc1f0b76",
+        "assets/femc/portraits/solar-strangers/flustered.webp": "c98b76ceb2765521a55bfbbabfd2018e2a1a1cb7bc8e8a410cdfd46e1129ffee"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.0,
+      "placement": "strangers epilogue only: data/epi/strangers/world.js faces map (solar: 'solar-strangers'), read by core.js worldFace()"
+    },
+    {
+      "batch": 63,
+      "source": "LeeAppa-sheet.png",
+      "sourceNow": "Added to Game/LeeAppa-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8d60c651bd3817e0417ce3d6aceffa6064119a8d3958f8a0e1b84400a1b828a4",
+      "character": "lee-appa",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/lee-appa/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/lee-appa/neutral.webp": "adb724bdc98383b0f1ab32c5c28b83395004f1d7b29051a53b5f4b5107ccb54d",
+        "assets/femc/portraits/lee-appa/happy.webp": "c04625a3e6288708b36a3c8a1251e415a1edbfbbbc68b8b7028dae9fb2ac0347",
+        "assets/femc/portraits/lee-appa/sad.webp": "944ea1b252019250755602608b28f487917c65c1dd8d5f08f1c8199b542c3392",
+        "assets/femc/portraits/lee-appa/serious.webp": "a8b172ac90173730f3d8ebf88b456f5e3fd8f30f96f214cc6aab730fc9b6d52f",
+        "assets/femc/portraits/lee-appa/surprised.webp": "ab0136f6fc853d2e7fa38ac993b6a4500bd0ead4ae010cc5d80796a6e49e129c",
+        "assets/femc/portraits/lee-appa/flustered.webp": "b5e7d58f00538f2459ef7dd0d8910ebeefdf001cb5c2e36491e07f1f7ff8e236"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.9,
+      "placement": "strangers epilogue only: data/epi/strangers/world.js faces map (appa: 'lee-appa'), read by core.js worldFace()"
+    },
+    {
+      "batch": 63,
+      "source": "LeeEomma-sheet.png",
+      "sourceNow": "Added to Game/LeeEomma-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1e2f2d2070e6b0a9b5ac4e0f986dc0e301badc88cf29bc27b9e7f65c98fbd33a",
+      "character": "lee-eomma",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/lee-eomma/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/lee-eomma/neutral.webp": "5b0408622636424b9f07813e1c16f194371fc1f694e70872c6ec2e7e3de580da",
+        "assets/femc/portraits/lee-eomma/happy.webp": "4550168074cd386f7d548563f379def255596f50509b37e17c2fd9f7e3324c37",
+        "assets/femc/portraits/lee-eomma/sad.webp": "ddb02a320f1492f2d9c75cd987085b5eb507d67e7595f37470c4e4ed376e99b8",
+        "assets/femc/portraits/lee-eomma/serious.webp": "e62a5a97cd63dd6f0117eefb2f27e408650bee6ad79be81490a4bae3369d8330",
+        "assets/femc/portraits/lee-eomma/surprised.webp": "797ea8620a5fe26a471ad0ad7f52b65728c367a141b0a3067d0070f9130fe5bf",
+        "assets/femc/portraits/lee-eomma/flustered.webp": "71be626d624597d68d7ea04e08dddf36a9635ddb78b6e3aa0fd5a9df5c38af8f"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.9,
+      "placement": "strangers epilogue only: data/epi/strangers/world.js faces map (eomma: 'lee-eomma'), read by core.js worldFace()"
     }
   ],
   "batch1Validation": {
@@ -15645,5 +15820,21 @@
     ],
     "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py --only hoax, in-scene face size at 1000x486 and 375x812",
     "html": "femc-game.html portraits/index.js v139, scale.js v148 (FEMC_PORTRAIT_V 8), epilogue v16; epilogue DATA_V 14; tests/femc_epilogue.py _loaded checks 14 (not run)"
+  },
+  "batch63Validation": {
+    "date": "2026-10-28",
+    "scope": "strangers epilogue faces: Solar's strangers look, the four's strangers outfits, Solar's parents there (speakers appa / eomma)",
+    "sourcesInspected": "all 7 viewed; every cut on a contact sheet (dark and magenta, the latter for Vision collar holes: none left) and the neutrals in a scale lineup against Hanni, Solar, Solar (HOAX) and Mark",
+    "sourcesIntegrated": 7,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched; Kat replaced solar-strangers-sheet.png mid-batch (14:10) and the new version is the one cut",
+    "engine": "strangers world.js gains a faces map: solar, chaewon, sakura, kazuha, eunchae -> <id>-strangers; appa -> lee-appa, eomma -> lee-eomma",
+    "textTweaks": "none (scene-specific clothing differences are left for the planned event outfit sheets)",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py --only strangers, in-scene face size at 1000x486 and 375x812",
+    "html": "femc-game.html portraits/index.js v140, scale.js v149 (FEMC_PORTRAIT_V 9), epilogue v17; epilogue DATA_V 15; tests/femc_epilogue.py _loaded checks 15 (not run)"
   }
 }
