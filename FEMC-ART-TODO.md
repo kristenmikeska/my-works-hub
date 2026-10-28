@@ -1,6 +1,6 @@
 # Art to make
 
-**81 items:** 4 story CGs · 11 places · 19 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 71 are optional; none are ⭐.
+**98 items:** 7 story CGs · 18 places · 26 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 84 are optional; none are ⭐.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -61,6 +61,32 @@ Attach: Solar, Haechan, `epi-r-rooftop-night-snow.png` (once it's made; until th
 Save as: `epi-r-held-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. The flat rooftop of an old stone campus building at night in heavy falling snow (the same concrete ledge, vent stack and view of the campus towers and domed chapel below as the third attached image), snow falling straight down. Haechan (the second attached image's face; dressed all in black, cool-toned, snow in his dark hair) holds Solar (the first attached image's face; long dark waved hair, an oversized dark jacket over her clothes) against him with both arms, one hand in her hair, his face beside hers, his whole body leaning back as if against a pull. Solar's edges are coming apart into fine light that drifts upward like snow going the wrong way, and that light is the sick green of the Dark Hour at her edges and gold nearer her heart. Behind the campus clock tower the night sky is split open like a seam, green beyond it. A half-buried pink energy-drink can stands on the ledge. Desperate, tender, cold. Keep both faces clear of the edges.
+```
+
+### The epilogue: HOAX
+
+**[ ] The séance** *(optional)*  
+The Hate Club's séance by candlelight, in the HOAX epilogue.  
+Attach: Solar, Jihoon, Cherry, Asahi, `bg/kirijo-flat.webp` (for the room only)  
+Save as: `epi-h-seance-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no readable text. A big, expensive, half-empty living room at night lit only by a ring of candles on a low glass table (the same kind of modern flat as the last attached image, but darker: pizza boxes stacked by the sofa, a long dining table nobody eats at in the background). Around a cheap paper ouija board on the floor sit teenagers in winter clothes, every face lit from below: Solar (the first attached image's face; long dark hair, a winter cardigan) with two fingers on the planchette, Jihoon (the second attached image's face; black clothes, chains, a beanie) pretending to be bored, Cherry (the third attached image's face) gripping Solar's sleeve, Asahi (the fourth attached image's face) reading the board with a flat stare, and a Japanese exchange student with a soft fringe holding the board's edge with both hands, thrilled. The candle flames lean the same way, and their light has gone faintly green. The full moon fills the window behind them. Funny until it isn't. Keep every face clear of the edges.
+```
+
+**[ ] The hearing** *(optional)*  
+The impeachment hearing in the school gym, in the HOAX epilogue.  
+Attach: Solar, Jungwon, Sunoo, `bg/flashback-hamlim-gym.webp`  
+Save as: `epi-h-hearing-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no readable text. A high-school gym by day, the same gym as the fourth attached image (the same bleachers, floor lines and high windows), packed with students in navy school blazers on the bleachers, phones held up. On the floor, a long table with a microphone; Solar (the first attached image's face; long dark hair, a navy Hanlim school blazer over a winter cardigan, a small gold vice-president pin on her lapel, a tiny nose stud) stands at it, chin up, one hand on a battered metal cash tin. Behind her chair stand the student council: Jungwon (the second attached image's face; navy blazer, dark hair falling in his eyes) at her shoulder, Sunoo (the third attached image's face) clutching a hand-drawn poster, and several more boys in blazers. At a podium to one side, a girl with a sharp bob and a debate-team blazer holds up one hand for order. Bright, loud, nervous daylight. Keep the faces clear of the edges.
+```
+
+**[ ] Held**  
+The last scene of the HOAX epilogue: the gym at midnight.  
+Attach: Solar, Jungwon, `epi-h-gym-midnight.png` (once it's made; until then `bg/flashback-hamlim-gym.webp` for the room only)  
+Save as: `epi-h-held-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The same high-school gym as the third attached image at midnight, the lights off, only the green exit signs and moonlight through the high windows, blue and silver balloons and string lights left from a dance nobody finished. In the middle of the floor Jungwon (the second attached image's face; a dark winter coat over his navy school blazer, dark hair in his eyes, a watch on his wrist) holds Solar (the first attached image's face; long dark hair, a navy Hanlim blazer, a small gold pin) against him with both arms, leaning back as if against a pull, his face set and very calm. Solar's edges are coming apart into fine light, Dark Hour green at her edges. From somewhere above and behind them, through a seam in the air, warm gold light pours in like a song, lighting one side of both their faces. In Jungwon's hand, pulled from her coat pocket, an unopened pink-and-black energy-drink can. Desperate, quiet, informed. Keep both faces clear of the edges.
 ```
 
 ---
@@ -158,6 +184,64 @@ Save as: `epi-r-sigma-kitchen.png`
 Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the kitchen of the same fraternity house as the attached image (the same woodwork and trim; through the open kitchen door, the same staircase), on a grey winter morning in finals week: a big island with stools, a frying pan on the stove, a burnt coffee pot, mugs everywhere, a highlighter and flashcards on the counter, a sheet of paper stuck to the fridge with a list on it, a window over the sink pushed up two inches with snow and a back yard beyond it. Cold daylight, lived-in, tired. Match the painted style of the attached image. Keep everything important away from the edges.
 ```
 
+### The epilogue: HOAX
+
+**[ ] The gym at midnight**  
+Hanlim's gym after dark, for the last night of the HOAX epilogue (now the daytime gym stands in).  
+Attach: `bg/flashback-hamlim-gym.webp`  
+Save as: `epi-h-gym-midnight.png`
+```
+Edit this picture. Keep the same high-school gym, the same bleachers, floor lines, basketball hoops and high windows, from exactly the same angle and in the same art style; change it to midnight with the lights off: moonlight falling through the high windows in long pale bars, green EXIT signs glowing over the doors, the bleachers in deep shadow, blue and silver balloons and loose string lights left on the floor and the railings from a dance nobody finished, and on a folding table by the wall an old wooden ballot box. 16:9, no people, no readable text.
+```
+
+**[ ] The council room**  
+Hanlim's student council room in the HOAX epilogue (now Gekkoukan's council room stands in).  
+Attach: `bg/flashback-hamlim-hallway.webp`  
+Save as: `epi-h-council-room.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a high-school student council room in the same school as the attached image (the same walls, windows and trim): a long table with eight chairs, stacks of folders squared to the edges, a laminator, a whiteboard with one big word scrawled across the top and nothing underneath, sign-up sheets pinned to a corkboard, a dented metal cash tin locked in an open bottom drawer, a radiator under a window with snow outside. Afternoon light. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The make-up exam** *(optional)*  
+A Hanlim classroom set up for make-up exams in the HOAX epilogue (now a Gekkoukan classroom stands in).  
+Attach: `bg/flashback-hamlim-hallway.webp`  
+Save as: `epi-h-classroom-exam.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a classroom in the same school as the attached image, set up for exams: desks pulled apart into rows, one in three empty, an exam booklet face down on each, pencils and erasers, a teacher's desk at the front with a stopwatch and a stack of papers, a clock on the wall, and big windows with snow falling outside. Quiet, cold, morning light. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The Kims' living room at Christmas** *(optional)*  
+Solar's family home in the HOAX epilogue (now the dorm lounge stands in).  
+Attach: `bg/pink-bedroom-2.webp` (for the style only)  
+Save as: `epi-h-kim-house.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the living room of an ordinary Korean family apartment at Christmas: a small decorated tree with mismatched ornaments, a sofa with a blanket thrown over it and a very large white dog bed beside it, a low table with four paper cups of hot cocoa, a shoe rack and the front door visible down a short hall, a framed family photo, a heated floor's warm glow, snow at the balcony window. Warm, a little cluttered, a busy family's house. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Jihoon's house** *(optional)*  
+Jihoon's big, empty family house in the HOAX epilogue (now a Kirijo flat stands in).  
+Attach: `bg/kirijo-flat.webp` (for the style only)  
+Save as: `epi-h-jihoon-house.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the open living and dining room of a big, expensive family house lived in by one teenage boy: a long dining table nobody eats at with the chairs still pushed in, family photos on a sideboard, a huge sofa with a games controller on it, pizza boxes stacked by the door, an untouched coffee table book, and through glass doors a porch with frozen flower pots in the snow. Night, one lamp on. Expensive and lonely. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The winter street and the vending machines** *(optional)*  
+The convenience store on the town street in the HOAX epilogue (now Port Island's konbini stands in).  
+Attach: `bg/port-island-konbini-night.webp` (for the style only)  
+Save as: `epi-h-winter-street.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small Korean town street at night in falling snow: a convenience store with a bright window and a stack of plastic tables outside, and in front of it a row of five drink vending machines, the third from the left lit brighter than the others with a faint glow on the snow in front of it. Christmas lights strung across the street, a bus stop, footprints in the snow. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The winter-break party** *(optional)*  
+A third-year's house party over winter break, in the HOAX epilogue (now a nightclub stands in).  
+Attach: `bg/flashback-frat-party.webp` (for the style only)  
+Save as: `epi-h-party.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the big living room of an expensive house whose owners are away, mid-party at night: coloured party lights, a speaker on the kitchen island, red cups on every surface, coats piled on a sofa, a staircase going up, a sliding door open onto a snowy deck. Loud and warm and a little out of control. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
 ## 3. Characters (ChatGPT)
 
 ### The epilogue: Runners
@@ -232,6 +316,64 @@ Attach: Fuuka (for the style), a photo of Jeno
 Save as: `Jeno-sheet.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for his face and hair only. He wears a black open-collar party shirt with the sleeves pushed up, easy and in charge of the room. No text.
+```
+
+### The epilogue: HOAX
+
+**[ ] Solar's HOAX look**  
+Solar's face at home in the HOAX epilogue (she speaks without a portrait there now).  
+Attach: Solar  
+Save as: `Solar-HOAX-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same young woman as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only her clothes and one detail: a navy Hanlim High School blazer over a soft cream winter cardigan, a small gold student-council pin on the lapel, and a tiny silver nose stud in her left nostril; long dark hair down, no armband. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Sakura, the student teacher** *(optional)*  
+The make-up exams' proctor in the HOAX epilogue.  
+Attach: Fuuka (for the style), a photo of Sakura  
+Save as: `Sakura-HOAX-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She is a young student teacher: a cream blouse under a navy cardigan, a staff lanyard, a pen behind one ear. No text.
+```
+
+**[ ] Eunchae, the livestreamer** *(optional)*  
+The first-year who runs the school forum's livestream in the HOAX epilogue.  
+Attach: Fuuka (for the style), a photo of Eunchae  
+Save as: `Eunchae-HOAX-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a navy Hanlim High School blazer over a hoodie and holds a phone on a little selfie stick at the edge of the frame. No text.
+```
+
+**[ ] Kazuha, the exchange student** *(optional)*  
+The girl who brings the board to the séance in the HOAX epilogue.  
+Attach: Fuuka (for the style), a photo of Kazuha  
+Save as: `Kazuha-HOAX-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a navy Hanlim High School blazer with a long knitted scarf and a little charm on her bag strap. No text.
+```
+
+**[ ] Chaewon, the debate captain** *(optional)*  
+The hearing's moderator in the HOAX epilogue.  
+Attach: Fuuka (for the style), a photo of Chaewon  
+Save as: `Chaewon-HOAX-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a neat navy Hanlim High School blazer with a debate-team pin and holds a clipboard; strict and fair. No text.
+```
+
+**[ ] Solar's mom (HOAX)** *(optional)*  
+Mrs. Kim, at home in the HOAX epilogue.  
+Attach: Fuuka (for the style), Solar (for a family likeness)  
+Save as: `KimMom-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same Korean woman in her late forties in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image, with a family likeness to the second attached image (the same eyes). Shoulder-length dark hair tucked behind one ear, a soft grey cardigan over a work blouse, reading glasses pushed up on her head. Busy, warm, slightly suspicious. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Solar's dad (HOAX)** *(optional)*  
+Mr. Kim, at home in the HOAX epilogue.  
+Attach: Fuuka (for the style), Solar (for a family likeness)  
+Save as: `KimDad-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same Korean man around fifty in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image, with a family likeness to the second attached image. Short greying hair, a loosened tie, a navy sweater over a work shirt. Tired, kind, mostly quiet. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 
 ### Evoker close-ups
