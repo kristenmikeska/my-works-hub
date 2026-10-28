@@ -62,7 +62,7 @@ Kat's brainstorm doc. Ideas only, nothing is built. Spoiler-free about the main 
 
 ## Character wishlist (for any future batch)
 
-**Strangers trio as two-world characters.** Jay, Ni-ki and Sunghoon would come from both HOAX and strangers, the way Jungwon does, and become full links. Kat approved the idea and is waiting for her usage to reset. Confirmed in the strangers sync (2026-10-27): they become two-world, in their own later batch. It needs both novels' current canon (HOAX Ch 99, strangers Ch 65).
+**Strangers trio as two-world characters.** Jay, Ni-ki and Sunghoon would come from both HOAX and strangers, the way Jungwon does, and become full links. Kat approved the idea and is waiting for her usage to reset. Confirmed in the strangers sync (2026-10-27): they become two-world, in their own later batch. It needs both novels' current canon (HOAX Ch 99, strangers Ch 65). **Built 2026-10-27:** all three are two-world full links (lore bible).
 
 **Other ideas:**
 - **Runners:** Haerin, if she's in current canon. Johnny, Yuta and Renjun, plus Jeno later, as a Sigma Chi cameo set.

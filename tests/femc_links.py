@@ -45,6 +45,15 @@ try:
           if(!l.portraitPending)bad.push(id+': portraitPending missing');if(!(l.storyEvents||[]).length)bad.push(id+': no arrival');}}
          return bad}})()''')
         assert not leaks, leaks
+    # The two-world trio (2026-10-27): strangers canon stays oblique (no names from home, nothing the game never says), no
+    # memory cards, their real portraits, the council's arrival as their story event, and both worlds' gates.
+    trio = [x for x in LINKS if x in ('jay', 'niki', 'sunghoon')]
+    if trio:
+        leaks = p.eval(f'''(()=>{{const bad=[],re=/Seojun|Miseon|Taemin|Director Yoo|\\bmeth\\b|pistol|fianc|engagement|Last Ferry|"fragment"|"register"/i;
+         for(const id of {json.dumps(trio)}){{const l=FemcGame.LINKS[id];const m=JSON.stringify([l.ranks,l.hangouts,l.afterMax,l.holidays||{{}},l.afterRank||{{}},l.invite]).match(re);if(m)bad.push(id+': '+m[0]);
+          if(l.portraitPending)bad.push(id+': has portraits');if((l.storyEvents||[])[0]!=='a4-yeobos')bad.push(id+': arrival');if(l.world!=='HS'||l.romance)bad.push(id+': two-world friendship');}}
+         return bad}})()''')
+        assert not leaks, leaks
     # Ranks 11-15 of the Runners links (2026-10-22): the same guard on what that batch added (the new ranks, February hangouts,
     # texts after ranks 11-15 and the r15- moments); Mark's file also keeps its own banned words out.
     r15 = [x for x in LINKS if x in ('hanni', 'hyein', 'mark', 'minji')]
@@ -59,7 +68,7 @@ try:
     # Link-local flags of the visitor depth pass (Mercy, Kiriko, Sebastian; prefix = id or seb-): every one a scene reads
     # is set by a choice somewhere in the same link.
     orphans = p.eval(f'''(()=>{{const L=FemcGame.LINKS,bad=[];const walk=(a,fn)=>(a||[]).forEach(l=>{{fn(l);walk(l.then,fn);walk(l.else,fn);(l.choose||[]).forEach(o=>{{fn(o);walk(o.then,fn);}});}});
-     for(const id of {json.dumps([x for x in LINKS if x in ('mercy', 'kiriko', 'sebastian', 'danielle', 'jaemin', 'chenle')])}){{const l=L[id],read=new Set(),set=new Set(),scenes=[...l.ranks.map(r=>r.scene),...l.hangouts,...l.afterMax.map(e=>e.scene),...Object.values(l.holidays||{{}}).map(h=>h.scene),...(l.lateNights||[]).map(e=>e.scene)];
+     for(const id of {json.dumps([x for x in LINKS if x in ('mercy', 'kiriko', 'sebastian', 'danielle', 'jaemin', 'chenle', 'jay', 'niki', 'sunghoon')])}){{const l=L[id],read=new Set(),set=new Set(),scenes=[...l.ranks.map(r=>r.scene),...l.hangouts,...l.afterMax.map(e=>e.scene),...Object.values(l.holidays||{{}}).map(h=>h.scene),...(l.lateNights||[]).map(e=>e.scene)];
       scenes.forEach(s=>walk(s,x=>{{[].concat(x.ifFlag||[]).forEach(f=>read.add(f));if(x.flag)(typeof x.flag==='string'?[x.flag]:Array.isArray(x.flag)?x.flag:Object.keys(x.flag)).forEach(f=>set.add(f));}}));
       (l.lateNights||[]).forEach(e=>[].concat(e.flag||[]).forEach(f=>read.add(f)));
       const mine=f=>f.startsWith(id+'-')||f.startsWith(id.slice(0,3)+'-');

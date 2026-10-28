@@ -394,6 +394,39 @@ Before Minji fights, her Battle perks could work as Assists so the early ranks s
 | 8 | On My Call | Assist | The party's physical attacks on Down foes deal 20% more damage. |
 | 10 | Just Eat | MAX · skill | Solar learns Just Eat (once per battle, low SP): restores a lot of HP to the whole party and cures their ailments. |
 
+### Park Jongseong (Jay) · XIV Temperance · *Hoax · strangers*
+*The cook. Measures twice, tastes twice, and hands you the container with your name on the tape.*
+
+| Rank | Perk | Type | Effect |
+|---|---|---|---|
+| 2 | Mise en Place | Daily | Cooking dinner at the dorm gives +1 Proficiency. |
+| 4 | Staff Meal | Tartarus | Each night starts with Jay's Staff Meal, which heals the whole party 25%. |
+| 6 | Two Pans | Daily | Cooking with Jay becomes an evening activity at the dorm: +2 Proficiency and +1 Kindness. |
+| 8 | Season to Taste | Battle | Solar's physical attacks restore HP equal to 6% of the damage they deal. |
+| 10 | Low Flame | MAX · skill | Solar learns Low Flame: medium Fire damage to all foes, cheap for what it does. |
+
+### Nishimura Riki (Niki) · X Fortune · *Hoax · strangers*
+*The youngest, everywhere he's ever been. "I was right." "You were lucky." "Same thing."*
+
+| Rank | Perk | Type | Effect |
+|---|---|---|---|
+| 2 | Free Credits | Daily | Playing the cabinets at Game Panic costs nothing. |
+| 4 | Gate Run | Daily | Once a week (Saturdays), Niki drags Solar over every fence between the station and the river: +1 Courage and +1 Proficiency, no free time used. |
+| 6 | Banana Break | Tartarus | Each night starts with one of Niki's bananas (restores 40 SP to one ally). |
+| 8 | Plus One | Daily | Walking Koromaru gives +1 Courage (Niki and Ken come too). |
+| 10 | Clean Vault | MAX · skill | Solar learns Clean Vault: heavy Strike damage to one foe, and she dodges the next attack aimed at her. |
+
+### Park Sunghoon · XI Strength · *Hoax · strangers*
+*Always facing the door. Gracious in the third person.*
+
+| Rank | Perk | Type | Effect |
+|---|---|---|---|
+| 2 | Gracious | Daily | +1 Charm on every activity on the Iwatodai Strip. |
+| 4 | Right Hand | Assist | Foes that hit Solar with a physical attack take a light Slash cut back. |
+| 6 | Thirty Meters | Tartarus | Each night starts with a Yellow Rope, which brings a fallen ally back with 30% HP. |
+| 8 | Sunday Rounds | Daily | Once a week (Sundays), a walk down the Strip with Sunghoon: +1 Charm and +1 Courage, no free time used. |
+| 10 | Triple Axel | MAX · skill | Solar learns Triple Axel: heavy Slash damage to one foe, with a high critical rate. |
+
 ---
 
 ## Other links
@@ -555,9 +588,8 @@ Leon, Cloud, Noctis, Astarion and Shadowheart are out of the game, and so are th
   reachable. An old save that already cleared the Hermit without it gets it once on load (`core.js migrateYear`).
 - **Kept for old saves:** the MAX skills they taught (Fangs Out, Cross-Slash, Warding Bond, Suplex) and Leon's night-only First
   Aid Spray keep their definitions in `build.js`, so a save that learned or carried one still works; nothing teaches them now.
-- **Unassigned mechanics** (the hooks are still in the engine, waiting for a new link): A Little Taste (`taste`) and Spirit
-  Guardians (Fishing Trip's pier hook and Roundhouse went to Kat & Ethan, 2026-10-25). Give one to a link by adding a `PERKS`
-  row with the same fx key. (Lockpick, Sneak Attack, `matSell`, Warp-Strike and Mission Briefing went to Danielle; Mercenary Rates, Limit Break,
+- **Unassigned mechanics:** none left. A Little Taste (`taste`) went to Jay and Spirit Guardians (`spiritGuardians`, which
+  now takes an element) to Sunghoon on 2026-10-27; Fishing Trip's pier hook and Roundhouse went to Kat & Ethan (2026-10-25). (Lockpick, Sneak Attack, `matSell`, Warp-Strike and Mission Briefing went to Danielle; Mercenary Rates, Limit Break,
   Night Orchid, Power Nap and Armiger to Jaemin; Guidance, Sanctuary, Knife Parry and Buster Sword to Chenle, 2026-10-22.)
 
 ## Built (2026-10-22): Danielle, Jaemin and Chenle
@@ -580,3 +612,10 @@ Small, like the other hidden link's. Rows in `build.js PERKS`; cut-ins show Kat'
 | 6 | The Ramen List | Daily | Hagakure's ramen costs 10% less (`discount`, inside the 30% cap). |
 | 8 | Pier Walks | Daily | Walking the pier gives +1 Kindness and its line becomes a walk with them and the dogs (Fishing Trip's old `actStat` + `actLine`). |
 | 10 | Pack Rush | MAX | Once per battle, when Solar knocks a foe Down, a light Strike hit on every other foe (Leon's old `roundhouse`). |
+
+## Built (2026-10-27): Jay, Niki and Sunghoon (two-world, Hoax · strangers)
+Their tables are above (Searchers), in `build.js PERKS`. A Little Taste and Spirit Guardians (now with `el`, `engine.js
+afterFoeHit`; Sunghoon's is Slash) were the last unassigned battle hooks; the rest reuse shared keys (`actStat`, `areaStat`,
+`freeAct`, `weekly`, `nightKit`). New: three night-only kits (`kit_staff_meal`, `kit_banana`, `kit_rope`), three MAX skills
+(`low_flame`, `clean_vault`, `triple_axel`) and the dorm's **Cook with Jay** evening activity (`places.js`, perk key
+`jayKitchen`). They're non-fighters, so their Battle and Assist perks always apply; cut-ins use their portraits (`build.js WHO`).

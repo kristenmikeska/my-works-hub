@@ -5,7 +5,7 @@ import argparse,datetime,json,pathlib
 from femc_browser import Page
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser();parser.add_argument('--before',type=pathlib.Path);args=parser.parse_args()
-CAST={'hanni':('R',None),'hyein':('R',None),'jihoon':('H','canon'),'minji':('R','canon'),'yunjin':('S',None),'jungwon':('HS','canon'),'jaehyun':('R',None),'junkyu':('H',None),'haechan':('RS','canon'),'sunoo':('H',None),'cherry':('H',None),'mark':('R',None),'danielle':('R',None),'jaemin':('R',None),'chenle':('R',None)}
+CAST={'hanni':('R',None),'hyein':('R',None),'jihoon':('H','canon'),'minji':('R','canon'),'yunjin':('S',None),'jungwon':('HS','canon'),'jaehyun':('R',None),'junkyu':('H',None),'haechan':('RS','canon'),'sunoo':('H',None),'cherry':('H',None),'mark':('R',None),'danielle':('R',None),'jaemin':('R',None),'chenle':('R',None),'jay':('HS',None),'niki':('HS',None),'sunghoon':('HS',None)}
 CAMEOS=['asahi','hyunsuk','jaehyuk','heeseung','sunghoon','jay','jake','niki']
 p=Page()
 try:
