@@ -14272,6 +14272,46 @@
       },
       "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
       "placement": "Runners epilogue only: data/epi/runners/world.js faces map, read by core.js worldFace()"
+    },
+    {
+      "batch": 60,
+      "source": "kazuha-sheet.png",
+      "sourceNow": "Added to Game/kazuha-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d4daee7e7d32ec99cb96360aee76843cffe01db258e766f69e37c416f2f36501",
+      "character": "kazuha-runners",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/kazuha-runners/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/kazuha-runners/neutral.webp": "cf84c7ec1c5b626b5679f461f8c42893dab1fe525a5670548cf4def066c9eedd",
+        "assets/femc/portraits/kazuha-runners/happy.webp": "04f10f5df553352bd3fc8338358f2e16f24c34b91626d179e0310753474e93a0",
+        "assets/femc/portraits/kazuha-runners/sad.webp": "da425a2de92fad5776916b2f5a9f507c1684f900a9c046eeba694caf66eb14dd",
+        "assets/femc/portraits/kazuha-runners/serious.webp": "107db2503eaa4292ae14f55fa8d7ee473079e8d21bebbff433709f9d8209374d",
+        "assets/femc/portraits/kazuha-runners/surprised.webp": "c63e1bfd91887c0c0065a770216aeacff8810b692fe7ad5313348c083f26eb28",
+        "assets/femc/portraits/kazuha-runners/flustered.webp": "fb400bc34614ecb64d45e17365144e694cd69d323b46fa3b86aec249ea16e7c7"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.83,
+      "placement": "Runners epilogue only: data/epi/runners/world.js faces map (kazuha: 'kazuha-runners'), read by core.js worldFace()"
+    },
+    {
+      "batch": 60,
+      "source": "epi-r-studio-4b.jpeg",
+      "sourceNow": "Added to Game/epi-r-studio-4b.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "2919aed478487219e811089bbad3a427dff52d43dd13008c4f3e8783a125a79e",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-studio-4b.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "0c8bd6c7ab7bd9f3585c5600847ea052dd2ffe6634d6aabd27bb711e906e2a43",
+      "placement": "places.bg rule 'Syracuse · Studio 4B' (day and evening; also the hallway, by prefix) in data/epi/runners/world.js and data/epi/stay/world.js, replacing record-shop-listening-booth; taken out of Runners weatherFx.sealed (the room has a window)"
     }
   ],
   "batch1Validation": {
@@ -14919,7 +14959,7 @@
     "date": "2026-10-25",
     "scope": "the last accessories, battle items and materials, Tartarus map rooms sheet 2, group-chat pictures, phone cases, loading still 1, and Rio and Saori side-romance stills",
     "sourcesInspected": "all 15 viewed before cutting; every cut reviewed on a contact sheet (dark and white grounds)",
-    "sourcesIntegrated": 15,
+    "sourcesIntegrated": 17,
     "sourcesUnchanged": true,
     "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked after the move); On Hold untouched",
     "textTweaks": "rio.js: one line (her hand on Solar\u2019s blazer, breath clouds) and coat -> blazer; saori.js: one clause (her hand catches Solar\u2019s blazer) and the kiss line\u2019s hand tightens instead; build.js: Koro-chan Charm and Contract Key descriptions match the art",
@@ -15069,7 +15109,7 @@
     "sourcesInspected": "all 15 viewed; faces on a contact sheet (dark and light) and in a scale lineup against Hanni, Minji, Danielle and Solar; CG phone crops previewed at their focus points",
     "sourcesIntegrated": 15,
     "sourcesUnchanged": true,
-    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched; kazuha-sheet.png and epi-r-studio-4b.jpeg arrived mid-batch and were left in New Adds",
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched; kazuha-sheet.png and epi-r-studio-4b.jpeg arrived mid-batch and were added in a second commit",
     "engine": "core.js worldFace(): a world's own faces map (world.js faces, passed through epilogue.js build()) in portrait() and scale(); Runners maps solar, sakura, eunchae to their -runners folders",
     "textTweaks": "runners footage: the video opens on Solar alone at the foot of the stairs with a red cup, looking back at the lens (all three routes); hoax hearing: the tin set down and counted on the council table in front of Solar; hoax gym: the can taken out of her blazer pocket and held between them; strangers: two small structural tweaks to match the pictures (the tide's height, one man's stance)",
     "tests": [
@@ -15077,6 +15117,6 @@
       "jsc checkSyntax on every edited script"
     ],
     "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py runners1/runners2/hoax/strangers/stay/true/polish, femc_gallery.py, in-scene face size and CG framing at 1000x486 and 375x812",
-    "html": "femc-game.html core v54, epilogue v13, places v45, portraits/index.js v136, scale.js v145 (FEMC_PORTRAIT_V 5); epilogue DATA_V 11"
+    "html": "femc-game.html core v54, epilogue v13, places v45, portraits/index.js v136, scale.js v145 (FEMC_PORTRAIT_V 5); epilogue DATA_V 11; second commit: portraits/index.js v137, scale.js v146 (FEMC_PORTRAIT_V 6), epilogue v14, DATA_V 12, tests/femc_epilogue.py _loaded checks 12 (not run)"
   }
 }

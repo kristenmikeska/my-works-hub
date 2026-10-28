@@ -43,7 +43,7 @@
         ["Iwatodai Dorm · Hanni's Room", 'pink-bedroom-2', null],
         ["Iwatodai Dorm · Yunjin's Room", 'pink-bedroom', null],
         // The three worlds (the fights pull her there; stand-ins until FEMC-ART-TODO's bleed battlefields exist).
-        ['Syracuse · Studio 4B', 'record-shop-listening-booth', null],
+        ['Syracuse · Studio 4B', 'epi-r-studio-4b', null],
         ['Syracuse', 'flashback-syracuse-quad', null],
         ['Incheon · Harbor', 'flashback-incheon-harbor', null],
         ['Incheon', 'flashback-incheon-harbor', null],

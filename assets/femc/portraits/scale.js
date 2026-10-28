@@ -80,7 +80,8 @@ window.FEMC_PORTRAIT_SCALE = {
   solar: 0.97,
   'solar-runners': 1.0, // epilogue batch: Solar's Runners home look (core.js worldFace); eyes-to-chin matched to her S.E.E.S. set
   'sakura-runners': 1.05,
-  'eunchae-runners': 1.1, // her sheet was drawn to the waist; cut to head and shoulders
+  'eunchae-runners': 1.1,
+  'kazuha-runners': 0.83, // her sheet was drawn to the waist; cut to head and shoulders
   sunghoon: 0.95,
   sunoo: 1.0,
   tifa: 1.03,
@@ -147,4 +148,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 5;
+window.FEMC_PORTRAIT_V = 6;

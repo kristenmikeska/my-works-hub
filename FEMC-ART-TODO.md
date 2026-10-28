@@ -1,6 +1,6 @@
 # Art to make
 
-**97 items:** 23 places · 27 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 85 are optional; none are ⭐.
+**95 items:** 22 places · 26 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 84 are optional; none are ⭐.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -36,14 +36,6 @@ Places, expressions, outfit portraits and the items that name their own pictures
 ## 2. Places (Gemini)
 
 ### The epilogue: Runners
-
-**[ ] Studio 4B**  
-Haechan's studio in the Runners epilogue (now a record-shop listening booth stands in).  
-Attach: `bg/flashback-syracuse-quad.webp` (for the style only)  
-Save as: `epi-r-studio-4b.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small, ordinary college music studio at night, upstairs in a campus building: a mixing desk with two monitor speakers, two office chairs (a bag slung over one), a laptop open on the desk, a microphone in a small vocal booth behind a glass pane, acoustic foam on one wall, one lit window with snow outside. The door is ajar and has "4B" on it. Warm desk-lamp light, no neon. Match the painted style and lighting of the attached image. Keep everything important away from the edges.
-```
 
 **[ ] The eSports lab** *(optional)*  
 The SU eSports team's practice room in the Runners epilogue (now an Iwatodai gaming café stands in).  
@@ -229,14 +221,6 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 ## 3. Characters (ChatGPT)
 
 ### The epilogue: Runners
-
-**[ ] Kazuha** *(optional)*  
-A voice on the demo Haechan is mixing.  
-Attach: Fuuka (for the style), a photo of Kazuha  
-Save as: `Kazuha-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a soft grey cardigan over a white top, studio headphones round her neck. No text.
-```
 
 **[ ] Chaewon** *(optional)*  
 A voice on the demo Haechan is mixing.  

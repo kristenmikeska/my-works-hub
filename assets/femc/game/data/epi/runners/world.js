@@ -56,12 +56,12 @@
         ['Syracuse · Hall of Languages', 'gekkoukan-classroom-day', 'gekkoukan-classroom-evening'],
         ['Syracuse · Honors Dorm', 'green-bedroom', null],
         ['Syracuse · eSports Lab', 'respawn-cafe-evening', null],
-        ['Syracuse · Studio 4B', 'record-shop-listening-booth', null],
+        ['Syracuse · Studio 4B', 'epi-r-studio-4b', null],
         ['Syracuse · Language Arts Rooftop', 'rooftop-citynight', null],
         ['Syracuse · Regionals', 'screenshot-theater', null],
         ['Syracuse', 'flashback-syracuse-quad', null]
       ],
-      weatherFx: { outdoor: ['flashback-syracuse-quad', 'flashback-alphaphi-house', 'rooftop-citynight'], sealed: ['record-shop-listening-booth'], none: ['screenshot-theater'] },
+      weatherFx: { outdoor: ['flashback-syracuse-quad', 'flashback-alphaphi-house', 'rooftop-citynight'], sealed: [], none: ['screenshot-theater'] },
       home: { place: 'Syracuse · Alpha Phi House · Her Room', bg: 'pink-bedroom' },
       school: { place: 'Syracuse · The Quad', bg: 'flashback-syracuse-quad' },
       activities: [
@@ -117,7 +117,7 @@
       dad: 'Dad', mom: 'Mom', caster: 'Caster', suesports: '@SUesports'
     },
     // This world's own faces (core.js worldFace): Solar's home look and the outfits drawn for Runners (FEMC-ART-WIRING).
-    faces: { solar: 'solar-runners', sakura: 'sakura-runners', eunchae: 'eunchae-runners' },
+    faces: { solar: 'solar-runners', sakura: 'sakura-runners', eunchae: 'eunchae-runners', kazuha: 'kazuha-runners' },
     variants: {
       morning: {
         school: ["Class at nine. The quad was salted into gray paths, and everyone she passed looked like they'd slept four hours, which was December's whole look.",
