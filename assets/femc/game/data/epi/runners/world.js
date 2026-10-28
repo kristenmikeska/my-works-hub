@@ -45,6 +45,8 @@
         ['Syracuse · Alpha Phi House · Her Room', 'pink-bedroom', null],
         ["Syracuse · Alpha Phi House · Hanni and Hyein's Room", 'pink-bedroom-2', null],
         ['Syracuse · Alpha Phi House · Kitchen', 'epi-r-alpha-kitchen', null],
+        // The stairs are indoors: the dorm hallway stands in until epi-r-alpha-landing exists (the house's own art is outside, in the snow).
+        ['Syracuse · Alpha Phi House · Stairs', 'iwatodaidorm-hallway', null],
         ['Syracuse · Alpha Phi House', 'flashback-alphaphi-house', null],
         ['Syracuse · Sigma Chi House · Holiday Party', 'epi-r-sigma-holiday', 'epi-r-sigma-holiday'],
         ['Syracuse · Sigma Chi House · Kitchen', 'epi-r-sigma-kitchen', null],

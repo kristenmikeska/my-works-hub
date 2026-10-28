@@ -52,7 +52,8 @@
         ['Hanlim', 'flashback-hamlim-hallway', null],
         ...MAIN.bg
       ],
-      weatherFx: MAIN.weatherFx,
+      // Stay's own copy (each list copied), so adding to it never changes the main year's weather.
+      weatherFx: Object.fromEntries(Object.entries(MAIN.weatherFx || {}).map(([k, v]) => [k, [...v]])),
       seasons: MAIN.seasons || {},
       home: { place: "Iwatodai Dorm · Solar's Room", bg: 'solar-dormroom-day' },
       school: { place: 'Iwatodai Dorm · Lounge', bg: 'iwatodaidorm-livingroom' },
