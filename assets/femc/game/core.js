@@ -34,24 +34,39 @@ window.FemcGame = (() => {
   const VERSION = 1;
   const base = window.FemcMode?.base || new URL('../../../', document.currentScript.src).href;
   const W = window;
+  /* The epilogue (epilogue.js, data/epi/<world>/): while S is an epilogue state (S.epi) of the world loaded into WORLD (setWorld),
+     these getters read that world's data instead of Iwatodai's (stats, flags and the battle data stay shared). A save without
+     S.epi never sees WORLD, so the year plays exactly as before. */
+  let WORLD = null, WORLD_OFF = 0;
+  const inWorld = () => (WORLD && !WORLD_OFF && S && S.epi && S.epi.world === WORLD.id ? WORLD.data : null);
   const D = {
-    get cal() { return W.FEMC_GAME_CALENDAR; }, get stats() { return W.FEMC_GAME_STATS; }, get places() { return W.FEMC_GAME_PLACES; },
-    get jobs() { return W.FEMC_GAME_JOBS || []; }, get jobScenes() { return W.FEMC_GAME_JOB_SCENES || {}; }, get flags() { return W.FEMC_GAME_FLAGS; },
-    get texts() { return W.FEMC_GAME_TEXTS || { threads: {}, texts: [] }; }, get q() { return W.FEMC_GAME_QUESTIONS || { classes: [], exams: {}, teachers: {}, rivals: [], ambient: {} }; },
-    get dailyLife() { return W.FEMC_GAME_DAILY_LIFE || []; }, get trip() { return W.FEMC_GAME_TRIP || {}; }, get lodging() { return W.FEMC_GAME_LODGING || {}; },
-    get clubs() { return W.FEMC_GAME_CLUBS || {}; }, get runIns() { return W.FEMC_GAME_RUNINS || []; }, get variants() { return W.FEMC_GAME_VARIANTS || {}; },
-    get events() { return W.FEMC_GAME_EVENTS || []; }, get crush() { return W.FEMC_GAME_CRUSH || { tracks: {}, moments: [], world: {} }; }, get battle() { return W.FEMC_BATTLE_DATA || {}; }
+    get cal() { return inWorld()?.cal || W.FEMC_GAME_CALENDAR; }, get stats() { return W.FEMC_GAME_STATS; }, get places() { return inWorld()?.places || W.FEMC_GAME_PLACES; },
+    get jobs() { return inWorld()?.jobs || W.FEMC_GAME_JOBS || []; }, get jobScenes() { return inWorld()?.jobScenes || W.FEMC_GAME_JOB_SCENES || {}; }, get flags() { return W.FEMC_GAME_FLAGS; },
+    get texts() { return inWorld()?.texts || W.FEMC_GAME_TEXTS || { threads: {}, texts: [] }; }, get q() { return inWorld()?.q || W.FEMC_GAME_QUESTIONS || { classes: [], exams: {}, teachers: {}, rivals: [], ambient: {} }; },
+    get dailyLife() { return inWorld()?.dailyLife || W.FEMC_GAME_DAILY_LIFE || []; }, get trip() { return inWorld()?.trip || W.FEMC_GAME_TRIP || {}; }, get lodging() { return inWorld()?.lodging || W.FEMC_GAME_LODGING || {}; },
+    get clubs() { return inWorld()?.clubs || W.FEMC_GAME_CLUBS || {}; }, get runIns() { return inWorld()?.runIns || W.FEMC_GAME_RUNINS || []; }, get variants() { return inWorld()?.variants || W.FEMC_GAME_VARIANTS || {}; },
+    get events() { return inWorld()?.events || W.FEMC_GAME_EVENTS || []; }, get crush() { return inWorld()?.crush || W.FEMC_GAME_CRUSH || { tracks: {}, moments: [], world: {} }; }, get battle() { return W.FEMC_BATTLE_DATA || {}; }
   };
   const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   const lsSet = (k, v) => { try { v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); return true; } catch (e) { return false; } };
   const clone = o => JSON.parse(JSON.stringify(o));
 
-  /* ── Calendar ── */
-  const START = new Date(2009, 3, 6);
+  /* ── Calendar ──
+     Day 0 is the calendar's `start` in its `year` (Iwatodai: 4/6/2009); a month earlier in the year than `start`'s is in the
+     next year (Iwatodai's January to March are 2010). An epilogue world's calendar (data/epi/<world>/calendar.js) carries its
+     own `year` and `start`, so the same maths runs Syracuse in December 2025 or Hanlim across New Year. Worked out once per
+     calendar (CALC). */
+  let CALC = null;
+  function calBase() {
+    const c = D.cal;
+    if (CALC && CALC.c === c) return CALC;
+    const [m, d] = String(c.start || '4/6').split('/').map(Number), y = c.year || 2009;
+    return (CALC = { c, y, m, start: new Date(y, m - 1, d) });
+  }
   const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const dayOf = md => { const [m, d] = String(md).split('/').map(Number); return Math.round((new Date(m >= 4 ? 2009 : 2010, m - 1, d) - START) / 86400000); };
-  const dateOf = d => new Date(2009, 3, 6 + d);
+  const dayOf = md => { const [m, d] = String(md).split('/').map(Number), B = calBase(); return Math.round((new Date(m >= B.m ? B.y : B.y + 1, m - 1, d) - B.start) / 86400000); };
+  const dateOf = d => { const t = calBase().start; return new Date(t.getFullYear(), t.getMonth(), t.getDate() + d); };
   const mdOf = d => { const t = dateOf(d); return `${t.getMonth() + 1}/${t.getDate()}`; };
   const END = () => dayOf(D.cal.end);
   const inRange = (d, from, to) => d >= dayOf(from) && d <= dayOf(to);
@@ -61,9 +76,10 @@ window.FemcGame = (() => {
      storm, light, heavy). Fixed dates win; every other day rolls from its month's chances (or a spell's: the rainy season,
      typhoon season) with a seed, and a grey or wet day sometimes carries on into the next, so weather comes in spells and
      never changes for a day once the calendar is set. The whole year is worked out once (WX) and kept. */
-  let WX = null;
+  let WX = null, WXC = null; // the worked-out weather and the calendar it was worked out for (an epilogue world has its own)
   function wxYear() {
-    if (WX) return WX;
+    if (WX && WXC === D.cal) return WX;
+    WXC = D.cal;
     const C = D.cal, out = [], days = dayOf(C.end) + 8;
     const kindOk = (k, c) => !!(c[k] || (k === 'storm' && c.rain));
     for (let d = 0; d <= days; d++) {
@@ -124,7 +140,7 @@ window.FemcGame = (() => {
     const trip = (D.cal.trips || []).find(b => inRange(d, b.from, b.to)) || null;
     const exam = examOn(d);
     let type = 'school';
-    if (dow === 0 || holiday || brk) type = 'off';
+    if ((D.cal.weekend || [0]).includes(dow) || holiday || brk) type = 'off'; // Iwatodai: Sundays (an epilogue calendar may say [0, 6])
     if (exam) type = 'exam';
     if (trip) type = 'trip';
     if (d < dayOf(D.cal.firstFree)) type = 'prologue';
@@ -133,6 +149,8 @@ window.FemcGame = (() => {
   }
   const SLOT_ORDER = ['early', 'morning', 'lunch', 'afternoon', 'after', 'evening', 'late'];
   function slotsFor(info) {
+    // An epilogue world's calendar names its own days' slots (`daySlots` by day type); Iwatodai's has none.
+    if (D.cal.daySlots) return D.cal.daySlots[info.type] || D.cal.daySlots.school;
     // A trip with its own day plan (data/yakushima.js) has daytime and evening slots too (calendar trips[].slots).
     if (info.type === 'trip') return info.trip?.slots || ['early', 'late'];
     if (info.type === 'off') return ['early', 'after', 'evening', 'late'];
@@ -197,6 +215,9 @@ window.FemcGame = (() => {
     if (migrateRemoved(out)) migrated = true;
     if (migrateYear(out, s.yv)) migrated = true; // the save itself decides (fresh() says YEAR_V)
     if (autosave) adoptHandoff(out);
+    // An epilogue save carries the finished year inside it (S.year1, epilogue.js): it migrates like any save, read against
+    // Iwatodai's calendar, so it comes back out up to date.
+    if (out.year1 && typeof out.year1 === 'object' && out.year1.v) { WORLD_OFF++; try { out.year1 = migrate(out.year1); } finally { WORLD_OFF--; } }
     return out;
   }
   /* Crushes (2026-10-23): a save from before them has no S.crush; it gets an empty one here, and each track settles the
@@ -372,7 +393,7 @@ window.FemcGame = (() => {
     for (const [k, r] of Object.entries(needs || {})) if (statDef(k) && statRank(k) < r) return `${statDef(k).name}: ${statRankName(k, r)}`;
     return null;
   }
-  function addYen(n) { S.yen = Math.max(0, S.yen + n); if (n) toast('yen', `${n > 0 ? '+' : '−'}¥${Math.abs(n).toLocaleString()}`); }
+  function addYen(n) { S.yen = Math.max(0, S.yen + n); if (n) toast('yen', `${n > 0 ? '+' : '−'}${money(Math.abs(n))}`); }
 
   /* ── Bond perks, the life sim's side (build.js PERKS: type 'daily'). A link's rank earns them; a reversed link pauses them.
      perkOn(key) → the earned daily perks with that fx key ([] when none); weekly(key) → true the first time this week (and uses it). ── */
@@ -508,7 +529,15 @@ window.FemcGame = (() => {
      `heading` (one value or a list). A text can carry `variants: { R: { msgs, reply }, S: …, H: …, stay: …, true: … }`:
      the one for the current heading is sent (and its replies served) instead of its own msgs / reply.
      Scene lines: see scene.js. Choices give ♪ with `notes` (0-3); `reverse: 1` pushes a reversible link. */
-  const LINKS = {};
+  // LINKS is the year's links (MAIN_LINKS); inside an epilogue it reads as that world's home people instead (setWorld), so every
+  // Object.values(LINKS) in the engine lists only them. Same object to every caller (FemcGame.LINKS).
+  const MAIN_LINKS = {};
+  const linkSrc = () => inWorld()?.links || MAIN_LINKS;
+  const LINKS = new Proxy(MAIN_LINKS, {
+    get: (t, k) => linkSrc()[k], set: (t, k, v) => { linkSrc()[k] = v; return true; }, has: (t, k) => k in linkSrc(),
+    deleteProperty: (t, k) => delete linkSrc()[k], ownKeys: () => Reflect.ownKeys(linkSrc()),
+    getOwnPropertyDescriptor: (t, k) => { const d = Reflect.getOwnPropertyDescriptor(linkSrc(), k); if (d) d.configurable = true; return d; }
+  });
   const CAST = { solar: 'Solar', 'mitsuru-radio': 'Mitsuru · Radio', porter: '???', clerk: 'Clerk', ikutsuki: 'Ikutsuki', teacher: 'Teacher', fuuka: 'Fuuka', koromaru: 'Koromaru', ken: 'Ken', aigis: 'Aigis', elizabeth: 'Elizabeth', wren: 'Wren', kurosawa: 'Officer Kurosawa' };
   function indexLinks() {
     (W.FEMC_GAME_LINKS || []).forEach(l => {
@@ -821,6 +850,8 @@ window.FemcGame = (() => {
     // Dates: ifAfter is "on or after" (like a rank's `after`), ifBefore is "strictly before"; they're each other's else.
     else if (line.ifAfter) ok = S.day >= dayOf(line.ifAfter);
     else if (line.ifBefore) ok = S.day < dayOf(line.ifBefore);
+    // The epilogue's conditions (epilogue.js cond): ifYear reads the finished year (S.year1), ifEpiRoute the epilogue's route.
+    else if (line.ifYear || line.ifEpiRoute) ok = W.FemcEpilogue ? !!W.FemcEpilogue.cond(line) : false;
     if (ok === null) return null;
     return (ok ? line.then : line.else) || [];
   }
@@ -2241,10 +2272,11 @@ window.FemcGame = (() => {
   function saveSlot(n, label) { const at = Date.now(); const ok = lsSet(SLOT_KEY(n), JSON.stringify({ at, label: label || slotLabel(), state: S })); return ok; }
   function readSlot(n) { try { const x = JSON.parse(lsGet(SLOT_KEY(n)) || 'null'); return x && x.state && x.state.v ? x : null; } catch (e) { return null; } }
   function loadSlot(n) { const x = readSlot(n); if (!x) return false; S = migrate(clone(x.state)); save(); return true; }
-  function slotLabel(s = S) { const i = dayInfo(s.day); return `${i.md} ${i.day} · ${slotName(s.slot, i)}`; }
+  function slotLabel(s = S) { if (s.epi) { const e = epiSlotInfo(s); return `Epilogue · ${e.epi} · ${e.mon} ${e.dom}`; } const i = dayInfo(s.day); return `${i.md} ${i.day} · ${slotName(s.slot, i)}`; }
   // What a save slot shows (P3-style): date, time of day, Solar's level, play time, the month's name.
   function slotInfo(s) {
     if (!s || !s.started) return null;
+    if (s.epi) return epiSlotInfo(s);
     const i = dayInfo(s.day), b = s.battleSave || readLegacyBattle()[s.runId]?.save || null;
     const m = Math.max(0, s.playMinutes || 0);
     return { md: i.md, day: i.day, slot: slotName(s.slot, i), month: i.date.toLocaleString('en', { month: 'long' }), lv: b && b.lvl ? b.lvl : null, play: `${Math.floor(m / 60)}:${String(m % 60).padStart(2, '0')}`,
@@ -2268,8 +2300,37 @@ window.FemcGame = (() => {
       S = migrate(st); save(); return true;
     } catch (e) { return false; }
   }
+  /* An epilogue save's slot (P3-style, labelled "Epilogue · Syracuse · Dec 9"): worked out from S.epi alone (year, start, place,
+     slot names, written when it was entered), so the title and the save screen read it without loading the world. */
+  function epiSlotInfo(s) {
+    const e = s.epi, [m, d] = String(e.start || '1/1').split('/').map(Number), t = new Date(e.year || 2009, m - 1, d + (s.day || 0));
+    const b = s.battleSave, mins = Math.max(0, s.playMinutes || 0), mon = t.toLocaleString('en', { month: 'long' });
+    return { md: `${t.getMonth() + 1}/${t.getDate()}`, day: DAYS[t.getDay()], slot: (e.slots || {})[s.slot] || s.slot, month: mon, mon: mon.slice(0, 3), dom: t.getDate(),
+      lv: b && b.lvl ? b.lvl : null, play: `${Math.floor(mins / 60)}:${String(mins % 60).padStart(2, '0')}`, prologue: false, ngp: s.ngp || 0,
+      fight: !!(s.handoff && s.handoff.status === 'pending'), epi: e.place || e.world, world: e.world };
+  }
   const hasSave = () => { try { return !!JSON.parse(lsGet(KEY) || 'null')?.started; } catch (e) { return false; } };
   function deleteSave() { lsSet(KEY, null); S = fresh(); }
+
+  /* ── The epilogue's world context (epilogue.js has the rest: entering, leaving, the day loop, the save's year1) ──
+     setWorld({ id, data }) points the data getters (D), the calendar maths and LINKS at a world's data (data/epi/<world>/), but
+     only while S is an epilogue state of that world (S.epi.world === id); setWorld(null) lets go. data holds every key D reads
+     (cal, places, events, texts, links, …; epilogue.js fills the gaps). money(n): an amount in today's currency (S.yen holds
+     whatever the current layer's wallet is: yen in the year, the world's money in its epilogue). freshState / adoptState /
+     noWorld are for epilogue.js: a blank state, a state to become S (saved), and running fn against Iwatodai's data. */
+  function setWorld(w) {
+    WORLD = w || null; CALC = null; WX = null; WXC = null;
+    if (w) Object.values(w.data.links || {}).forEach(l => { CAST[l.id] = CAST[l.id] || l.short || l.name; Object.assign(CAST, l.cast || {}); });
+    if (w) (w.data.events || []).forEach(e => Object.assign(CAST, e.cast || {}));
+  }
+  const world = () => (inWorld() ? WORLD.id : null);
+  function money(n) {
+    const c = inWorld()?.money;
+    return c ? `${c.sign}${Math.round(n).toLocaleString(c.locale || 'en-US')}` : `¥${n.toLocaleString()}`;
+  }
+  const freshState = () => fresh();
+  function adoptState(s) { S = s; save(); }
+  function noWorld(fn) { WORLD_OFF++; try { return fn(); } finally { WORLD_OFF--; } }
 
   indexLinks();
   return {
@@ -2293,6 +2354,7 @@ window.FemcGame = (() => {
     lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,
     setBattleSave, ensureBattleSave,
-    saveSlot, readSlot, loadSlot, slotLabel, slotInfo, exportCode, importCode, hasSave, deleteSave
+    saveSlot, readSlot, loadSlot, slotLabel, slotInfo, exportCode, importCode, hasSave, deleteSave,
+    setWorld, world, money, freshState, adoptState, noWorld, CLEARS_KEY
   };
 })();

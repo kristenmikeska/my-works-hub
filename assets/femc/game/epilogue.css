@@ -1,0 +1,25 @@
+/* The epilogue (epilogue.js): the end screen's button, the save-first offer, Go Out at home, the end and Equinox cards.
+   Everything else reuses game.css (g-seg, g-btn, g-overlay, g-actcard). */
+.g-epi-go small { font: 700 12px/1 var(--sans); letter-spacing: .12em; opacity: .85; text-transform: none; }
+
+.g-epi-ov .g-panel { width: min(560px, calc(100vw - 32px)); }
+.g-epi-offer h2 { margin: 0 0 6px; font: italic 900 28px/1.1 var(--cond); letter-spacing: .04em; text-transform: uppercase; }
+.g-epi-slots { display: grid; gap: 10px; margin-top: 14px; }
+.g-epi-slot { justify-content: flex-start; width: 100%; text-align: left; text-transform: none; font: 600 15px/1.25 var(--sans); letter-spacing: 0; }
+.g-epi-slot b { font: italic 900 20px/1 var(--cond); color: var(--pink-2); }
+.g-epi-slot.pink b { color: var(--night); }
+.g-epi-slot span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.g-epi-acts { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 10px; margin-top: 12px; }
+.g-epi-act { display: grid; gap: 4px; padding: 12px 14px; border: 1px solid rgba(255, 140, 192, .45); border-radius: 3px 14px 3px 14px; background: rgba(255, 79, 158, .08); color: var(--ink); text-align: left; }
+.g-epi-act b { font: italic 900 19px/1.1 var(--cond); letter-spacing: .03em; }
+.g-epi-act small { color: var(--muted); font-size: 13px; }
+.g-epi-act:is(:hover, :focus-visible):not(:disabled) { background: #fff; color: var(--night); outline: none; box-shadow: 5px 5px 0 var(--pink); }
+.g-epi-act:is(:hover, :focus-visible):not(:disabled) small { color: #5a2a44; }
+.g-epi-act:disabled { opacity: .45; cursor: default; }
+
+/* The end card keeps the act card's look; the Equinox card turns it toward the Dark Hour's green and the moon. */
+.g-epi-card .g-ac-title { font-size: clamp(42px, 9vw, 112px); }
+.g-epi-equinox { background: radial-gradient(ellipse at 50% 40%, #0d2a22, #020806 75%); }
+.g-epi-equinox .g-ac-num { color: var(--green); }
+.g-epi-equinox .g-ac-title { text-shadow: .05em .05em 0 #1f8a5c; }

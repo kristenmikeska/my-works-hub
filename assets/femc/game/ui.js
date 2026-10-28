@@ -243,7 +243,7 @@
     hud.innerHTML = `<div class="g-date"><b>${esc(i.md)}</b><small>${esc(i.day)}</small></div>
       <div class="g-when"><span class="g-slot">${esc(G.slotName(S().slot, i))}</span>${i.label ? `<span class="g-label">${esc(i.label)}</span>` : ''}</div>
       <div class="g-sky"><button type="button" class="g-wx" data-ui="forecast" title="${esc(i.wx.name)} · forecast" aria-label="${esc(i.wx.name)}. Open the forecast">${wxIcon(i.wx)}</button><span class="g-moon" title="${esc(moonTip)}" aria-label="${esc(moonTip)}">${moonSvg(m.phase)}</span></div>
-      <div class="g-me"><span class="g-cond" style="--c:${c.color}" title="${esc(c.desc)}">${esc(c.name)}</span><span class="g-yen">¥${S().yen.toLocaleString()}</span></div>
+      <div class="g-me"><span class="g-cond" style="--c:${c.color}" title="${esc(c.desc)}">${esc(c.name)}</span><span class="g-yen">${esc(G.money(S().yen))}</span></div>
       <nav class="g-menu" aria-label="Menu"><button type="button" data-ui="menu" class="g-menu-main" title="Menu (M)">Menu</button><button type="button" data-ui="phone">Phone${G.unread() ? `<em>${G.unread()}</em>` : ''}</button><button type="button" data-ui="save">Save</button><button type="button" data-ui="settings" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="display:block;transform:skewX(14deg)"><path fill="currentColor" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" transform="translate(-1 0)"/></svg></button></nav>`;
   }
   hud.addEventListener('click', e => {
@@ -543,6 +543,8 @@
     if (dh) return;
     if (s.handoff) return resumeHandoff();
     if (s.phase === 'prologue') return startPrologue();
+    // The epilogue (epilogue.js) runs its own days in its world; a save without S.epi never gets here.
+    if (s.epi) return window.FemcEpilogue ? window.FemcEpilogue.run() : titleScreen();
     paintHud();
     if (s.pending) return resumePending();
     // The bad ending (route-bad) or a scene's { end } stops the calendar: on to the last night.
@@ -678,7 +680,7 @@
     };
     if (logoSvg !== null) put(logoSvg); else logoLoad.then(put);
   }
-  const autoLine = () => { let x = null; try { x = G.slotInfo(JSON.parse(localStorage.getItem(G.KEY))); } catch (e) {} return x ? `${x.md} ${x.day} · ${x.slot}${x.lv ? ` · Lv ${x.lv}` : ''}${x.fight ? ' · in the Dark Hour' : ''}` : ''; };
+  const autoLine = () => { let x = null; try { x = G.slotInfo(JSON.parse(localStorage.getItem(G.KEY))); } catch (e) {} return x ? `${x.epi ? `Epilogue · ${x.epi} · ` : ''}${x.md} ${x.day} · ${x.slot}${x.lv ? ` · Lv ${x.lv}` : ''}${x.fight ? ' · in the Dark Hour' : ''}` : ''; };
   /* The title: Burn My Dread (places.js `opening`), the key art breathing (and leaning with the mouse), a moonlight sheen,
      glass shards and moon dust drifting, the menu sliding in. The first visit of a page load opens on a P3-style "Press any
      key / Tap to start" (browsers keep music locked until a key or a tap, so this is when the song starts). The menu is in
@@ -919,6 +921,7 @@
     // The album and the Theater come along into New Game+ (menu.js albumCarry: everything seen so far, in one list).
     main.querySelector('[data-t=ngp]').addEventListener('click', () => { const keep = window.FemcMenu?.albumCarry?.(); G.newGamePlus(); if (keep) { S().album = keep; G.saveQuiet(); } cardDay = null; run(); });
     main.querySelector('[data-t=title]').addEventListener('click', () => { S().phase = 'title'; G.save(); run(); });
+    window.FemcEpilogue?.endScreen?.(main); // the Epilogue button, on the routes that have one
   }
 
   /* ── Exams ── */
@@ -1523,7 +1526,7 @@
         <div class="g-slot-acts">${n && canSave ? `<button type="button" class="g-btn small pink" data-save="${n}">Save</button>` : ''}</div></div>`;
       return `<div class="g-slot${n ? '' : ' auto'}">${head}<div class="g-slot-month"><span>${esc(info.month.slice(0, 3).toUpperCase())}</span></div>
         <div class="g-slot-main"><span class="g-slot-when"><b>${esc(info.md)}</b> ${esc(info.day)} · ${esc(info.slot)}</span>
-          <small>${info.prologue ? 'Prologue' : info.lv ? `Solar Lv ${info.lv}` : 'Solar'}${info.fight ? ' · in the Dark Hour' : ''}${info.ngp ? ` · New Game+ ${info.ngp}` : ''} · Play ${esc(info.play)}${n && x ? ` · saved ${esc(new Date(x.at).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }))}` : ''}</small></div>
+          <small>${info.epi ? `Epilogue · ${esc(info.epi)} · ` : ''}${info.prologue ? 'Prologue' : info.lv ? `Solar Lv ${info.lv}` : 'Solar'}${info.fight ? ' · in the Dark Hour' : ''}${info.ngp ? ` · New Game+ ${info.ngp}` : ''} · Play ${esc(info.play)}${n && x ? ` · saved ${esc(new Date(x.at).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }))}` : ''}</small></div>
         <div class="g-slot-acts">${n && canSave ? `<button type="button" class="g-btn small${armed === `s${n}` ? ' pink' : ''}" data-save="${n}">${armed === `s${n}` ? 'Overwrite?' : 'Save'}</button>` : ''}<button type="button" class="g-btn small${armed === `l${n}` ? ' pink' : ''}" data-load="${n}">${armed === `l${n}` ? 'Load it?' : 'Load'}</button></div></div>`;
     };
     const render = () => {
@@ -1689,7 +1692,8 @@
   setInterval(() => { if (document.visibilityState === 'visible' && S().started && S().phase !== 'title') S().playMinutes = (S().playMinutes || 0) + 1; }, 60000);
 
   /* ── Start ── */
-  window.FemcGameUI = { run, openStatus, openPhone, openSaves, sfxLog: () => sfxLog.slice(), SUN, openSettings, playLink, goOut, evening: () => evening(G.dayInfo()), dateCard, advance, overlay, esc, inBattle: () => !!dh };
+  window.FemcGameUI = { run, openStatus, openPhone, openSaves, sfxLog: () => sfxLog.slice(), SUN, openSettings, playLink, goOut, evening: () => evening(G.dayInfo()), dateCard, advance, overlay, esc, inBattle: () => !!dh,
+    segment, setBg, show, paintHud, endScreen };
   // An old battle tab coming back (?from=battle): its result was taken into the save on load (core.js); carry on.
   const fromBattle = /[?&]from=battle\b/.test(location.search);
   if (fromBattle) history.replaceState(null, '', location.pathname);

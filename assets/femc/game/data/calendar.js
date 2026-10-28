@@ -14,7 +14,9 @@
    - `weather`: fixed weather for some dates; every other day rolls from `climate` (or a `spells` range) with a seed, so it
      never changes, and `persist` lets a gray or wet day carry on. core.js wx() adds how strong it is (`weatherLevels`). */
 window.FEMC_GAME_CALENDAR = {
-  start: '4/6', firstFree: '4/8', end: '3/7',
+  // `year` + `start` are day 0 for core.js's date maths (since the epilogue, 2026-10-27: its worlds' calendars, data/epi/, carry
+  // their own); a month before April is in the next year.
+  year: 2009, start: '4/6', firstFree: '4/8', end: '3/7',
   finalStretch: { from: '2/1', graduation: '3/5', finale: '3/6', end: '3/7' },
   // Memory fragments can't turn up in Tartarus before this date (the first ones are story beats).
   fragmentsFrom: '5/16',
