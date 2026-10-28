@@ -143,6 +143,7 @@ Other docs, if you ever want detail:
 - ✅ Art batch 67: four link CGs are in (Akihiko rank 10, Haechan rank 13, Jungwon rank 14, Mark rank 14), plus the dorm kitchen and the dorm front at night for their evening scenes; one narration line nudged to match a picture.
 - ✅ Art batch 68: the dorm lounge at Christmas (its evenings from 12/20 to 12/25) and the dorm roof on a snowy night (snow days, and the four roof scenes that walk through fresh snow).
 - ✅ Art batch 69: the dorm dining room, laundry room and stairs at night, for their evening and late-night scenes.
+- ✅ Art batch 70: Paulownia Mall's central atrium by day and at dusk, in place of the generic mall interior for its scenes.
 - ✅ Art batch 65: your nine epilogue places are in the game: four for HOAX (the Kims' living room, Jihoon's house, the winter street, the winter-break party) and five for strangers (a kitchen, the annex, the mudflats, the festival night on Wolmido, the street in the dust), with a couple of small wording fixes so the scenes match your pictures. Your art list gained 57 new place prompts and 35 new CG prompts across the year and every epilogue, and the Evoker pieces, new expressions, sharper Shadows and strike sheets moved to a new backburner list
 
 ## Music and polish

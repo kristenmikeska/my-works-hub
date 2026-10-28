@@ -111,7 +111,7 @@
           ] }
         ] }
       ] },
-    '1/2': { rank: 6, flag: 'year-goes-on', title: 'lucky bags', place: 'Paulownia Mall · Central Atrium', time: 'Daytime', bg: 'inside-mall', music: 'joy',
+    '1/2': { rank: 6, flag: 'year-goes-on', title: 'lucky bags', place: 'Paulownia Mall · Central Atrium', time: 'Daytime', music: 'joy',
       ask: "FUKUBUKURO. the mall is selling LUCK in BAGS. u cant see whats inside. its gambling but legal. come. 10am. im already here",
       yes: 'omw. dont buy all of them', ok: 'too late. jk. hurry', sorry: 'cant today, sorry', no: 'ok. if i get sumn good im not sharing. (i will share)',
       scene: [

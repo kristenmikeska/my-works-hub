@@ -271,7 +271,7 @@ window.FEMC_GAME_PLACES = {
     ['Paulownia Mall · Arcade', 'gamepanic-inside', 'gamepanic-inside'],
     ['Paulownia Mall · Capsule Corner', 'inside-mall'],
     ['Paulownia Mall · Photo Booth', 'inside-mall'],
-    ['Paulownia Mall · Central Atrium', 'inside-mall'],
+    ['Paulownia Mall · Central Atrium', 'paulownia-atrium', 'paulownia-atrium-evening'],
     ['Paulownia Mall · Velvet Door', 'paulownia-velvet-door'],
     ['Paulownia Mall · Behind the Canal', 'paulownia-canal', 'paulownia-canal'],
     ['Paulownia Mall', 'paulownia-mall', 'paulownia-mall-night'],

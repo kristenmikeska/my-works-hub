@@ -1,6 +1,6 @@
 # Art to make
 
-**113 items:** 31 CGs · 50 places · 4 character pieces · 28 wardrobe. 109 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**111 items:** 31 CGs · 48 places · 4 character pieces · 28 wardrobe. 107 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -292,25 +292,9 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 
 ### Iwatodai (the main game)
 
-**[ ] Paulownia Mall: the central atrium** *(optional)*  
-The mall's atrium with the fountain, used by about 18 daytime and after-school scenes (now a generic mall interior).  
-Attach: `bg/paulownia-mall.webp` (for the style only)  
-Save as: `paulownia-atrium.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the central atrium of a bright Japanese shopping mall in the afternoon: a round fountain in the middle with a wide stone rim you can sit on, a tall planter at the far side of it, glass skylights high overhead letting in daylight, two storeys of shop fronts around a balcony walkway, a crêpe stand with a striped awning and a menu board, a couple of benches and a vending machine near the doors. Lively, clean, a place to meet friends after school. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Paulownia Mall: the atrium at dusk** *(optional)*  
-The same atrium for its evening scenes (skylights turning pink, then blue); now the generic mall interior, darkened.  
-Attach: the new `paulownia-atrium.png` (edit this picture)  
-Save as: `paulownia-atrium-evening.png`
-```
-Edit this picture. Keep the same mall atrium, fountain, angle and art style; change it to early evening: the skylights overhead gone pink fading to deep blue, the shop fronts lit warm from inside, the fountain lit from under the water, the crêpe stand's shutter half down. Soft, end-of-day, a little wistful. 16:9, no people, no readable text.
-```
-
 **[ ] Paulownia Mall: the atrium at Christmas** *(optional)*  
 The atrium in December (shopping lists, a choir, Christmas Eve under the tree).  
-Attach: the new `paulownia-atrium.png` (edit this picture)  
+Attach: `bg/paulownia-atrium.webp` (edit this picture)  
 Save as: `paulownia-atrium-christmas.png`
 ```
 Edit this picture. Keep the same mall atrium, fountain, angle and art style; change it to Christmas: a tall plastic Christmas tree standing in the middle of the fountain's water, covered in lights, with the planter rim at its base; tinsel wound around every pillar; garlands along the balcony railings; a small machine high above the tree drifting little white paper snowflakes down through the air; the skylights dusky blue, everything glowing with warm lights. Cheesy, cheerful, crowded-feeling. 16:9, no people, no readable text.

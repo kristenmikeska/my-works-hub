@@ -323,7 +323,7 @@
   });
 
   holiday('yukari', {
-    '2/14': { rank: 3, flag: 'year-goes-on', title: 'tomo-choco', place: 'Paulownia Mall · Central Atrium', time: 'Daytime', bg: 'inside-mall', music: 'joy',
+    '2/14': { rank: 3, flag: 'year-goes-on', title: 'tomo-choco', place: 'Paulownia Mall · Central Atrium', time: 'Daytime', music: 'joy',
       ask: "tomo-choco. mall. you, me, fuuka if she finishes hers. noon. no boys", yes: 'no boys. noon', ok: "good. junpei asked if he could come. i said it's girls only. he said he identifies as chocolate", sorry: 'cant today, sorry!!', no: "ok. i'm leaving yours on your door. don't let junpei see it",
       scene: [
         { n: "Paulownia Mall on Valentine's Day was pink from the escalators down. Paper hearts strung over the fountain, a line out the door of the chocolate shop, girls in twos and threes comparing boxes on the benches, and a boy by the fountain holding a single rose and the expression of somebody who'd been waiting for an hour and was going to wait for another." },

@@ -15692,6 +15692,36 @@
       "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
       "outputSha256": "b9b4e3ac9a2918b5af92a6f3f679e5c2b86e936ecba098499ca34109e50cf0ce",
       "placement": "places.bg rule 'Iwatodai Dorm · Stairs' evening slot; the four night Stairs lines' bg: 'iwatodaidorm-hallway' removed so they take the rule (crush-haechan, crush-triangle, daily-life, spice-haechan); hallway rules keep the hallway art; not outdoor"
+    },
+    {
+      "batch": 70,
+      "source": "paulownia-atrium.jpeg",
+      "sourceNow": "Added to Game/paulownia-atrium.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "0e32e6383593aa781b36de396915d3b8627bed51acff58eb914cfd44d1dd39b5",
+      "status": "integrated",
+      "destination": "assets/femc/bg/paulownia-atrium.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "e07630c71b706e7e593f9fa190604ae19d9fcd38bad486aafbed303cd9ccbed0",
+      "placement": "places.bg rule 'Paulownia Mall · Central Atrium' day slot (was 'inside-mall'); the two atrium lines' bg: 'inside-mall' removed (living-niki, living-march); not sealed (skylights); plain 'Paulownia Mall' scenes unchanged"
+    },
+    {
+      "batch": 70,
+      "source": "paulownia-atrium-evening.jpeg",
+      "sourceNow": "Added to Game/paulownia-atrium-evening.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "5d934bcf2b98cea703be8fa2b4c016e25517d2e7d2ae39ef061e4ff4acce2ddd",
+      "status": "integrated",
+      "destination": "assets/femc/bg/paulownia-atrium-evening.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "0aafda480ccd0b30bee2dac44d0a35830acfd40c56b4d493539ee0c97f0f2430",
+      "placement": "places.bg rule 'Paulownia Mall · Central Atrium' evening slot; not sealed"
     }
   ],
   "batch1Validation": {
@@ -16635,5 +16665,19 @@
     ],
     "notTested": "no browser tests: the three rooms at night",
     "html": "femc-game.html places v48, daily-life v13, crush-haechan v3, crush-triangle v4, spice-haechan v6"
+  },
+  "batch70Validation": {
+    "date": "2026-10-28",
+    "scope": "Paulownia Mall's central atrium, day and dusk",
+    "sourcesInspected": "both checked by name, size and hash",
+    "sourcesIntegrated": 2,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests: the atrium scenes by day and evening",
+    "html": "femc-game.html places v49, living-march v8, living-niki v3"
   }
 }

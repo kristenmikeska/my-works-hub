@@ -110,6 +110,9 @@ EXTRA = {
     'iwatodaidorm-diningroom-night': 'Added to Game/iwatodaidorm-diningroom-night.jpeg',
     'iwatodaidorm-laundryroom-night': 'Added to Game/iwatodaidorm-laundryroom-night.jpeg',
     'iwatodaidorm-stairs-night': 'Added to Game/iwatodaidorm-stairs-night.jpeg',
+    # batch 70 (2026-10-28): Paulownia Mall's central atrium, day and dusk
+    'paulownia-atrium': 'Added to Game/paulownia-atrium.jpeg',
+    'paulownia-atrium-evening': 'Added to Game/paulownia-atrium-evening.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 
