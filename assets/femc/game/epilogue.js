@@ -37,8 +37,8 @@
        from the year (startBond: rank 1+ → 1, 5+ → 2, 10+ → 3, 15 → 4; +1 romance, +1 her Christmas pick; at most 5) and tops
        out at 10. A scene's { bond: { id: n } } adds to it (core.js bond → bond() here). A rival's closeness is how closely she's
        watching.
-     - Practice (raw.practice: { days, slot, from, to, skip, place, bg, stats, title }): on those days that slot is practice
-       (variants.practice), not Go Out, unless a story event or routine took it first.
+     - Practice (raw.practice: { days, slot, from, to, skip, place, bg, stats, title, music }): on those days that slot is practice
+       (variants.practice), not Go Out, unless a story event or routine took it first (HOAX uses it for council duty, batch 5).
      - An event's `fills: [slots]` spends those slots too (a whole day, like Regionals).
      - Conditions: { ifBond: { id: n } } (closeness at least n), { ifRouteOpen: id } (the route's `open`: always, lean, bond,
        noFlag), plus scene.js's option `when` for choices that show only while a condition holds (the crossroads).
@@ -52,12 +52,12 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 4; // data/epi/<world>/*.js ?v=
+  const DATA_V = 5; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
     runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3'] },
     strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches'] },
-    hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches'] }
+    hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end'] }
   };
   // Which world a finished year's ending opens (the same order as core.js endingName): none for bad, true or Stay (yet).
   function worldFor(s) {
@@ -343,7 +343,7 @@ window.FemcEpilogue = (() => {
     s.spent[`${s.day}-${s.slot}`] = 'practice';
     if (p.stats) G.addStats(p.stats);
     G.save();
-    SC.Music.set(G.D.places.music['epi-r-team'] ? 'epi-r-team' : 'day');
+    SC.Music.set(p.music && G.D.places.music[p.music] ? p.music : G.D.places.music['epi-r-team'] ? 'epi-r-team' : 'day');
     UI().segment({ slot: s.slot, bg: p.bg, place: p.place, text: line('practice', 'Practice.'), next: advance });
     GL()?.tick('out', { place: p.place });
   }
