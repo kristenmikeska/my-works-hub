@@ -15,6 +15,7 @@ Run: python3 tools/femc-shadows.py                 (only new or changed files)
 Needs: pip3 install --user numpy scipy realesrgan-ncnn-py   (see femc-artclean.py)
 """
 import os, re, sys, json, importlib.util
+from femc_images import IMAGES as IMAGES_DIR
 from PIL import Image
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -22,7 +23,7 @@ _spec = importlib.util.spec_from_file_location('femc_artclean', os.path.join(HER
 ac = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(ac)
 
-SRC = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Shadows')
+SRC = os.path.join(IMAGES_DIR, 'Shadows')
 DST = os.path.join(os.path.dirname(HERE), 'assets/femc/battle/art/shadows')
 SMALL = ac.SMALL
 

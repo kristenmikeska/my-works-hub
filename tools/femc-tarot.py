@@ -7,9 +7,10 @@ Also: the cards in EXTRA, which Kat delivered through New Adds and which now liv
 A link's `arcana` ("Hanged Man") is matched by its lowercase name without spaces ("hangedman").
 """
 import os, re, json
+from femc_images import IMAGES as IMAGES_DIR
 from PIL import Image
 
-SRC = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Tarot Card Art')
+SRC = os.path.join(IMAGES_DIR, 'Tarot Card Art')
 DST = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets/femc/tarot')
 os.makedirs(DST, exist_ok=True)
 CARD = 360 / 507   # P3's card shape

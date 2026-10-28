@@ -7,10 +7,11 @@ Output: assets/femc/profile/<id>.webp (white or near-white backgrounds turned tr
         and assets/femc/profile/index.js listing who has one.
 """
 import os, re, json
+from femc_images import IMAGES as IMAGES_DIR
 from collections import deque
 from PIL import Image, ImageFilter
 
-SRC = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Compendium Profile Art')
+SRC = os.path.join(IMAGES_DIR, 'Compendium Profile Art')
 DST = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets/femc/profile')
 ALIASES = {
     '496e2dba76276478fa8e6a7508ebcafb': 'akihiko',

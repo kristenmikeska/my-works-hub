@@ -7,10 +7,11 @@ Output: ~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits/<Nam
 Then run python3 tools/femc-portraits.py <name> to align them and add them to the site.
 """
 import os, sys, argparse
+from femc_images import IMAGES as IMAGES_DIR
 from collections import deque
 from PIL import Image, ImageFilter
 
-DST = os.path.expanduser('~/Documents/UniverseHub-Images/Femc Mode Images/Character Portraits')
+DST = os.path.join(IMAGES_DIR, 'Character Portraits')
 DEFAULTS = {(2, 2): 'neutral,happy,sad,angry', (2, 1): 'embarrassed,surprised', (3, 2): 'neutral,happy,sad,angry,embarrassed,surprised',
             (2, 3): 'neutral,happy,sad,angry,embarrassed,surprised', (3, 1): 'neutral,happy,sad'}
 
