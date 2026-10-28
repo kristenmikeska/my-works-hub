@@ -56,6 +56,8 @@
        `shown: { 'M/D': { date: 'YYYY-MM-DD', place } }`, read by core.js dayInfo → ui.js date card and HUD, and copied into
        S.epi.shown for the save screen). Every slot is a story event, so no Go Out or late screen appears.
      - ifYear gained anyFlag (any of a list); the y- flags copied on entering also take ending-*, stay-* and shinji-awake.
+   strangers (batch 7, 2026-10-28; data/epi/strangers/world.js documents the data side): the whole act on the same engine
+     (nine files, like HOAX); no engine change. The Equinox card's route lines for haechan / jungwon / family are in its world.js.
    Finale and polish (batch 9, 2026-10-28):
      - The Equinox card reads the world's `equinox` (world.js: line, routes { id: line }, echoes ['Place · line']): the route's
        own line under EQUINOX, then one line per other world (equinoxOf, card's `echoes`).
@@ -72,11 +74,11 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 7; // data/epi/<world>/*.js ?v=
+  const DATA_V = 8; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
     runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3'] },
-    strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches'] },
+    strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end'] },
     hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end'] },
     // Batch 8: Stay's reverse epilogue (Iwatodai is home) and the true ending's coda (three small days, one per world).
     stay: { id: 'stay', flag: 'route-stay', name: 'Iwatodai', place: 'Iwatodai', files: ['calendar', 'world', 'glitches', 'people', 'story'] },
@@ -565,7 +567,7 @@ window.FemcEpilogue = (() => {
      one), plus any cg a loaded world's scenes use. A section appears only for a world she has entered. */
   const ALBUM = {
     runners: [['epi-r-regionals', 'Regionals'], ['epi-r-studio', 'The studio'], ['epi-r-footage', 'The footage'], ['epi-r-held', 'Held']],
-    strangers: [],
+    strangers: [['epi-s-moon', 'The first full moon'], ['epi-s-tide', 'The tide'], ['epi-s-held', 'Held']],
     hoax: [['epi-h-seance', 'The séance'], ['epi-h-hearing', 'The hearing'], ['epi-h-held', 'Held']],
     stay: [['epi-stay-held', 'Held']],
     true: [['epi-true-coda', 'Every world']]

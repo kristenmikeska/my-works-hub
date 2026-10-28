@@ -4969,12 +4969,14 @@
       2: { group: ['group_chat', 'group_chat', 'group_chat'], at: -2, block: 'Yeobo’s, After Closing' },
       3: { group: ['veil_poster', 'group_chat'], at: -1, hpK: 0.45, block: 'Hanlim’s Halls' },
       4: { group: ['ballot_box'], at: 0, foeHp: 0.35, block: 'The Gym · Midnight' } } },
-    // strangers (batch 7) and Stay (batch 8) only need their rows checked; these are the memory floor's Shadows.
+    // strangers (batch 7): the memory floor's Shadows (the tide and the fishmonger) in the four home places of the act: the harbor,
+    // the fish market, the Lee house itself (fight 3: the stairs going down further than they should) and the mudflats with the
+    // sea gone out (fight 4). S.E.E.S. are the party as everywhere but Stay; no barks of their own (the stage's own lines).
     strangers: { over: 'tartarus-coffins.webp', fights: {
       1: { group: ['tide_shadow'], at: -3, block: 'The Harbor · Midnight' },
-      2: { group: ['fishmonger', 'fishmonger'], at: -2, block: 'Incheon · Midnight' },
-      3: { group: ['tide_shadow', 'fishmonger'], at: -1, hpK: 0.4, block: 'Incheon · Midnight' },
-      4: { group: ['tide_shadow'], at: 0, foeHp: 0.35, block: 'The Bottom of the Tide' } } },
+      2: { group: ['fishmonger', 'fishmonger'], at: -2, hpK: 0.6, block: 'The Fish Market · Midnight' },
+      3: { group: ['tide_shadow', 'fishmonger'], at: -1, hpK: 0.4, block: 'The Lee House · Midnight' },
+      4: { group: ['tide_shadow', 'fishmonger'], at: 0, foeHp: 0.35, block: 'The Bottom of the Tide' } } },
     /* Stay (batch 8): the reverse. Iwatodai is home, so she's pulled OUT, into the three worlds, where the people who love her
        there can't see her; the party is theirs (epilogue.js partyFor reads the world's fightParty), with no navigator (Fuuka
        is a world away). Fight 4 turns it round again: Iwatodai Station, Akihiko, and the two of them flickering in for one
