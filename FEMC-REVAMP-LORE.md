@@ -335,3 +335,28 @@ The game's whole Runners side assumes the state at the moment Solar vanished, ab
 4. **Hyein's deposit:** Jaemin pays it, eventually (late, in yen, at the fitting).
 - *Also settled:* Danielle was in the Personaverse too; her camp trade (Mark's window for time with Jaehyun) shows only as tension. The girls' withholding carries guilt (Solar called it out on 11/16). The jacket is at the bottom of her bag, never worn. She skipped the 11/21 party for the girls' night; 11/22 is the start of Thanksgiving break; the Foundation Dinner text comes the last ordinary night (11/21).
 - *Writer inventions to confirm:* Danielle's "twenty-five minutes" with Jaehyun; Jaemin's sock for a first aid kit; Ms. Han calling the school again on 11/27; Doyoung's "regionals in 2 wks" ping in the Runners ending; Hanni's probation chocolate.
+
+## Kat's rulings (2026-10-27): the HOAX side at Ch 99
+The game's whole HOAX side assumes HOAX canon at Ch 99, the Monday of exam week when Solar vanished: Jungwon won and made her his VP, they've been official since the bake sale, and Jihoon has relapsed and is cockier and meaner. The council and her friend group were in the Personaverse too. (Audit: `FEMC-HOAX-SYNC-AUDIT.md`.)
+1. **Jungwon's frozen clock is only what he believes.** "It's always the night before, at home" is his hope. No line states how much time has passed back home; the searchers' phones and guesses disagree.
+2. **12/16 is the only telling of the boyfriend news.** Earlier scenes hint, flinch or invoke Jungwon's "rule one"; nobody says it before Jihoon does.
+3. **Jihoon's drugs are named but never shown in the Personaverse.** He owns his history in a few honest, mean beats (the pill, the bathroom floor, the cookies, the lie that he could stop), and he's cockier and meaner overall.
+4. **The Personaverse only pauses the Jungwon–Jihoon feud.** February is a wary pause, not a truce: Jungwon's courtesy is the angry kind, and Jihoon hates that the tutoring works.
+5. **The HOAX ending's Jihoon variant is the road not taken.** At home she is Jungwon's girlfriend.
+6. **The council-retreat cover story reaches her parents** (the school tells them; Mom doesn't buy it). The council travel with her: they leave at the last train on every route and come back through the HOAX homecoming door.
+7. **Story-tied memory fragments never drop at random, in any world.** Every card a story, link or job scene awards is in `NO_DROP` (`battle/data.js`); today that's all thirty. Each world has ten cards (`fragmentsPerWorld: 10`); the doors stay at 3 / 6 / 9 and each world's tenth lands after its last door. Scenes that used to re-award a card she always already had (Jihoon's rank 4, the Yeobo's croissant beat) now notice she has it.
+
+**Small calls made in canon's direction (for Kat to veto):**
+- Sunghoon doesn't flirt with Solar. At Yeobo's he looks for Cherry; the flower is hers ("Hold this for her").
+- The crane game stays Jihoon's (the game's own invention); the canon arcade with Jungwon is left alone.
+- Nike's skill names: Landslide → Running Mate (Theurgy and the star node), Mandate → Appointed, Victory Lap → Write-In. Ids are unchanged.
+- Jake says "Jungwon", never "Won"; only Solar uses Won.
+- Group-chat handles: Jihoon writes as "jihoney:" in the cross-world search-party group too.
+- The nose piercing: game Solar has no stud in the Personaverse (nothing from her lives came with her). Jihoon remembers it, and her hand finds the place.
+- Jungwon's Compendium origin is "Hoax · strangers"; Cherry's Compendium entry is "Cherry Kim".
+- "Hyunsuk's stupid group of—" became "guys I know from sophomore year".
+- Jihoon's rank 10 returns his own memories only, not her whole HOAX past (no fragment gate needed).
+- Yeobo's: the café here is a copy, like the uniform she woke in; Sunoo's grandmother's café is still at home.
+- "I didn't want to win" stays as a deliberately half-true memory.
+- Jihoon's rank 8 is his spin, caught by himself in the same breath (the note and recording came first; Cherry's part is owned).
+- The cash tin in the HOAX homecoming gym is the bake-sale tin.

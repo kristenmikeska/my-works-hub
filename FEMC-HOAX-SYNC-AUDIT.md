@@ -1,6 +1,24 @@
 # HOAX sync audit: the game vs. HOAX at Ch 99
 
-> **Status (2026-10-27): audit only.** No game file was changed. The game's own plot stays structural here (scene ids, ranks, what a line assumes); the endings and twists aren't described. Naming HOAX canon events is fine, since you wrote them.
+> **Status (2026-10-27): ✅ done.** Kat ruled on every decision below (lore bible, "Kat's rulings (2026-10-27): the HOAX side at Ch 99", with the small calls listed for her to veto), and the edits are in. The game's own plot stays structural here (scene ids, ranks, what a line assumes); the endings and twists aren't described. Naming HOAX canon events is fine, since you wrote them.
+
+## ✅ Resolution (2026-10-27)
+
+- ✅ **All 11 contradictions, 11 outdated and 7 gating items are fixed**, as minimal in-voice edits; choices, rewards and gates are unchanged.
+  - Time at home is never stated: Jungwon's "night before" is his belief everywhere (ranks 6, 11, 12, 14, 15, `jw-ln-halfway`, `ln-trains`); Cherry's "three weeks" and Junkyu's "believe the phones" are arguments now; Jihoon's "eight o'clock, the morning we get back" lines hedge.
+  - 12/16 is the only telling: Sunoo ranks 2 and 5 and Jihoon rank 6 invoke rule one (Sunoo's plain line plays only after `a5-call-hoax`); `cr-jh-fountain`'s rank-6 branch hints; `sp-jw-council` knows Jihoon broke rule one.
+  - Random drops: every scene-awarded card is `NO_DROP` (all 30); `fragmentsPerWorld` is 10; Jihoon rank 4 and the Yeobo's croissant beat notice she already has the card instead of re-awarding it. Jihoon's rank 10 returns only his own memories.
+  - Jihoon: meaner barbs (ranks 6, 7, 9, 10, 11, Christmas, the call), owns the pill, the overdose, the cookies and the lie; rank 8's order is his spin, caught; rank 12 and 14 lines fixed; the bath chat is a panic first; the February thaw is a wary pause; "motion carried" is cut.
+  - Council and cover: `a5-call-hoax`'s council line; the council at every route's last-train departures and through the HOAX homecoming door; the cover reaches her parents (`home-h-call`).
+  - HOAX ending: the closing narration points at her own life; the Jungwon variant comes home as his girlfriend ("Won", the bake-sale tin); the Jihoon variant reads as the road not taken; Cherry's door line is a clear joke.
+  - Sunghoon's flirting is aimed at Cherry (`a4-yeobos`, Yeobo's beat 5); Jake says "Jungwon".
+- ✅ **Could be richer, done:** the first kiss and the ask (Jungwon), his parents and the math comp, Sunoo's posters, the good-job speech line, the HOAX Christmas option, the nose piercing, "bitch" as affection, Cherry's part in the note, the porch rule, the arrival look, the finals chat, the finish line and a Skank bark; Cherry's rank 6 lines, `a4-cherry` (Sunghoon, keeping Solar off Jihoon) and the konbini; Sunoo's croissant promposal and a flinch for Jungwon; Junkyu's sign-up sheets, "seven" and prom; Hyunsuk's sad face, his age and his "cool"; Jaehyuk's lowercase; Asahi and Cherry's feud; the holding-hands flinch; `a4-crew`'s check on Jihoon and water; Heeseung's last straw and fired-VP joke; the parents' "vice president!!!".
+- ✅ **Opportunities, done:** the retreat seeds (Jungwon rank 15 H, Jihoon rank 12 H, `a5-call-hoax`, `home-h-call`, the homecoming door), Jungwon's "after exams" hold-back (rank 9 H), the finals "Show Up This Time", the piercings in the 12/16 call.
+- ✅ **Housekeeping, done:** link-file arcana headers, Jihoon's header, Jungwon's rank-4 text, Cherry's surname in the Compendium.
+- **Skipped:**
+  - Jungwon's "Jade Ring" romance bond and the `jh_varsity` gloves (both tied to finished art), and Jihoon's Theurgy name (the cut-in label; his finish line is the canon phrase now).
+  - Opportunities that need a new scene, rank, holiday or Compendium entry (a skating run-in, a baking hangout, Game Panic's "score 01", Junkyu's holidays, the double date, the eight companions' entries, canon-named perks, a results-day door), and the remaining one-liners that had no natural home (Jake's ship-name text, Asahi laughing at Jungwon, Hyunsuk's "i was wrong about yang", Jay holding back, "is Ni-ki a freshman", the cocoa nod, a September withdrawal trace, Father Jihoon and Layla, the hike, Jaehyuk's finals help and his "are you still…?", Hyunsuk seeing the slide first, Hyunsuk and Cherry at the guesthouse).
+  - The stubs' arcana "?" (the written link files override them).
 
 **Your ruling:** the game's whole HOAX side assumes HOAX canon at **Ch 99**, the moment Solar vanished. That's the Monday of exam week, just before winter break:
 - the election is over and Jungwon won;

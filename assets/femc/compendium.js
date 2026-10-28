@@ -18,7 +18,7 @@ window.FEMC_COMPENDIUM = [
  {
   "id": "jungwon",
   "name": "Yang Jungwon",
-  "from": "Hoax",
+  "from": "Hoax · strangers",
   "img": "assets/femc/profile/searchers/jungwon.webp",
   "unlock": "met:jungwon",
   "note": "Student council president of a school nobody here has heard of. He keeps saying you look like someone.",
@@ -562,7 +562,7 @@ window.FEMC_COMPENDIUM = [
  },
  {
   "id": "cherry",
-  "name": "Cherry",
+  "name": "Cherry Kim",
   "from": "Hoax",
   "img": "assets/femc/profile/searchers/cherry.webp",
   "profile": true,
