@@ -15647,6 +15647,51 @@
       "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
       "outputSha256": "19716b8f2d45c2c1b9cf32c59cf9bdfe7c070462186dcf635bd8374ca07215f0",
       "placement": "places.today 'iwatodaidorm-roof-night' on snow weather; explicit bg: 'iwatodaidorm-roof-night-snow' on the four snowed-over roof scenes (living-nights aki-ln-snow, spice-haechan sp-hc-ln-snow, hyein rank 10, aigis rank 10); outdoor already via the 'iwatodaidorm-roof-' prefix"
+    },
+    {
+      "batch": 69,
+      "source": "iwatodaidorm-diningroom-night.jpeg",
+      "sourceNow": "Added to Game/iwatodaidorm-diningroom-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "2da07b0d2c112ab4d86a8607647bed6e80236234c3e195339d5dedc49520fc74",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodaidorm-diningroom-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "2c6cb85656956431407aa33f18d1b2b8cd155c1bb0ae3e7eb8215072286b0316",
+      "placement": "places.bg rule 'Iwatodai Dorm · Dining Room' evening slot; explicit bg: 'iwatodaidorm-diningroom' lines at night play as the rule (core.js background()), no scene data edited; not outdoor"
+    },
+    {
+      "batch": 69,
+      "source": "iwatodaidorm-laundryroom-night.jpeg",
+      "sourceNow": "Added to Game/iwatodaidorm-laundryroom-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "60829e421bbd760c5d41b6d4289ec1c64270dbce9c236d2ef612bc296a1e9e80",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodaidorm-laundryroom-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "82c354ebcb45fa52d79efd3ba8c98b538e50e3cbcdfabfdbc41e76e0805369e9",
+      "placement": "places.bg rule 'Iwatodai Dorm · Laundry Room' evening slot; explicit bg: 'iwatodaidorm-laundryroom' lines at night play as the rule (core.js background()), no scene data edited; weatherFx sealed already by prefix"
+    },
+    {
+      "batch": 69,
+      "source": "iwatodaidorm-stairs-night.jpeg",
+      "sourceNow": "Added to Game/iwatodaidorm-stairs-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "f0eded8ba2ff9315193142fefa6a4089432cf765641574e9f65af0ec0922e558",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodaidorm-stairs-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "b9b4e3ac9a2918b5af92a6f3f679e5c2b86e936ecba098499ca34109e50cf0ce",
+      "placement": "places.bg rule 'Iwatodai Dorm · Stairs' evening slot; the four night Stairs lines' bg: 'iwatodaidorm-hallway' removed so they take the rule (crush-haechan, crush-triangle, daily-life, spice-haechan); hallway rules keep the hallway art; not outdoor"
     }
   ],
   "batch1Validation": {
@@ -16576,5 +16621,19 @@
     ],
     "notTested": "no browser tests: the lounge in Christmas week, the roof on a snow day and the four roof scenes",
     "html": "femc-game.html places v47, living-nights v6, spice-haechan v5, aigis v5, hyein v15"
+  },
+  "batch69Validation": {
+    "date": "2026-10-28",
+    "scope": "the dorm dining room, laundry room and stairs at night",
+    "sourcesInspected": "all 3 checked by name, size and hash",
+    "sourcesIntegrated": 3,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests: the three rooms at night",
+    "html": "femc-game.html places v48, daily-life v13, crush-haechan v3, crush-triangle v4, spice-haechan v6"
   }
 }

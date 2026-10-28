@@ -269,7 +269,7 @@
       ] },
 
     { id: 'cr-hc-landing', who: 'haechan', crush: H(P.UP), slot: 'late', when: 'quiet', after: '11/12', until: '12/12', events: ['a4-household-introductions'],
-      place: 'Iwatodai Dorm · Stairs', time: 'Night · 3 AM', bg: 'iwatodaidorm-hallway', scene: [
+      place: 'Iwatodai Dorm · Stairs', time: 'Night · 3 AM', scene: [
         { n: "Four minutes past three. She was going down. Barefoot, the black hoodie, one hand on the rail, the third stair from the top creaking the way it always did under her, and she was halfway down the flight above the second-floor landing when somebody came round the turn from below, coming up, hood up, headphones round his neck, and stopped on the landing at exactly the same moment she did." },
         { n: "They looked at each other across six stairs. Neither of them said anything. And then, at precisely the same moment, as if somebody had counted them in, they both turned round to go back the way they'd come, so as not to be the one caught going to find the other one." },
         { n: "Two steps. Both of them stopped. Both of them turned round again. At the same moment. Again." },

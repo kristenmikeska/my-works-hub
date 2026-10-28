@@ -226,7 +226,7 @@
     /* ── 5. The late talk. January into February; she hears it from the stairs. ── */
     { id: 'cr-ah-two-mugs', who: 'haechan', crush: BOTH, slot: 'late', when: 'quiet', after: '1/10', until: '2/24', flags: ['year-goes-on'],
       events: ['a4-household-introductions', 'a5-haechan-awakens'],
-      place: 'Iwatodai Dorm · Stairs', time: 'Late Night', bg: 'iwatodaidorm-hallway', scene: [
+      place: 'Iwatodai Dorm · Stairs', time: 'Late Night', scene: [
         { n: "One in the morning, and she came down the back stairs in her socks for water and stopped four steps from the bottom, because the kitchen light was on and there were two voices in it, low, and she knew both of them, and neither was talking the way he talked when she was in the room." },
         { n: "Through the gap in the door: Akihiko at the table in a hoodie, a mug. Haechan against the counter, a mug. The kettle still ticking as it cooled. Neither looking at the other. They had the air of two people who'd sat in silence for a long time and had only now started talking because the silence had got too heavy to hold." },
         { s: 'akihiko', f: 'neutral', t: "Can I ask you something. You don't have to answer." },

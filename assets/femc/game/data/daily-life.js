@@ -209,7 +209,7 @@ window.FEMC_GAME_DAILY_LIFE = [
     ] },
 
   { id: 'haechan-stairs', after: '11/6', slot: 'late', events: ['a4-household-introductions'],
-    place: 'Iwatodai Dorm · Stairs', time: 'Night · 3 AM', bg: 'iwatodaidorm-hallway', scene: [
+    place: 'Iwatodai Dorm · Stairs', time: 'Night · 3 AM', scene: [
       { ifBefore: '11/25', then: [
         { n: "He kept his distance. That was the first thing the dorm learned about the boy at the end of the top floor. His shoes were gone from the hall before six and back after midnight. His door was shut. His bowl was washed and upside down on the rack before anybody else had finished eating, and nobody saw him wash it. Junpei said living with him was like living with a very polite ghost. Hyein said that wasn't a ghost, that was a cat." },
         { n: "And still, somehow, he was always there. On the stairs when she went down for water. On the roof when she went up for air, at the far end of it, by the water tank, not looking at her. In the laundry room at three in the morning, twice. As if the building had a current running through it and they were both caught in the same one, and neither of them was swimming against it very hard." }

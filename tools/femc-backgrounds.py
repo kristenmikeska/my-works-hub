@@ -106,6 +106,10 @@ EXTRA = {
     # batch 68 (2026-10-28): the dorm lounge at Christmas and the roof on a snowy night (places.js today)
     'iwatodaidorm-livingroom-christmas': 'Added to Game/iwatodaidorm-livingroom-christmas.jpeg',
     'iwatodaidorm-roof-night-snow': 'Added to Game/iwatodaidorm-roof-night-snow.jpeg',
+    # batch 69 (2026-10-28): the dorm dining room, laundry room and stairs at night (evening slots only)
+    'iwatodaidorm-diningroom-night': 'Added to Game/iwatodaidorm-diningroom-night.jpeg',
+    'iwatodaidorm-laundryroom-night': 'Added to Game/iwatodaidorm-laundryroom-night.jpeg',
+    'iwatodaidorm-stairs-night': 'Added to Game/iwatodaidorm-stairs-night.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

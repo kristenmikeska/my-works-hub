@@ -1,6 +1,6 @@
 # Art to make
 
-**116 items:** 31 CGs · 53 places · 4 character pieces · 28 wardrobe. 112 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**113 items:** 31 CGs · 50 places · 4 character pieces · 28 wardrobe. 109 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -291,30 +291,6 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 ## 2. Places (Gemini)
 
 ### Iwatodai (the main game)
-
-**[ ] The laundry room at 3 a.m.** *(optional)*  
-The dorm laundry room for its late-night scenes (sitting up on the dryer at three in the morning); now the daytime room.  
-Attach: `bg/iwatodaidorm-laundryroom.webp` (edit this picture)  
-Save as: `iwatodaidorm-laundryroom-night.png`
-```
-Edit this picture. Keep the same dorm laundry room, machines, angle and art style; change it to three in the morning: the only light is one humming fluorescent tube, a little cold and greenish, with deep shadows in the corners; a dryer running with its round window lit and clothes tumbling inside; a shelf above the machines with a bottle of detergent and a single lost sock; the doorway to a pitch-dark hallway. Sleepless, private, oddly cosy. 16:9, no people, no readable text.
-```
-
-**[ ] The dorm dining room at night** *(optional)*  
-The dorm dining room for its dinner and late tutoring scenes (now the daytime room).  
-Attach: `bg/iwatodaidorm-diningroom.webp` (edit this picture)  
-Save as: `iwatodaidorm-diningroom-night.png`
-```
-Edit this picture. Keep the same dorm dining room, long table, chairs, angle and art style; change it to evening: the windows dark, the room lit warm by the hanging lamp over the long table, a pool of light on the table and dimmer edges; a stack of math workbooks and a pencil case at one end of the table, the doorway through to the kitchen lit, the foot of the stairs visible past the end of the table. Homely, after-dinner quiet. 16:9, no people, no readable text.
-```
-
-**[ ] The dorm stairs at night** *(optional)*  
-The dorm's stairwell for its 3 a.m. scenes (meeting on the landing, sitting six steps up); now the plain hallway stands in.  
-Attach: `bg/iwatodaidorm-hallway.webp` (for the style only)  
-Save as: `iwatodaidorm-stairs-night.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the stairwell of an old two-storey-plus Japanese student dormitory at three in the morning, seen from the bottom of a flight looking up to a half landing where the stairs turn: worn wooden steps, a wooden handrail along the wall, the second-floor landing above lit only by a small night light in the wall and a little moonlight from a window on the turn, the rest in soft blue shadow; at the bottom of the flight, a small slant-roofed cupboard door set under the stairs; the wall beside the steps plain, good for leaning against. Hushed, the whole building asleep. Match the painted style of the attached image. Keep everything important away from the edges.
-```
 
 **[ ] Paulownia Mall: the central atrium** *(optional)*  
 The mall's atrium with the fountain, used by about 18 daytime and after-school scenes (now a generic mall interior).  

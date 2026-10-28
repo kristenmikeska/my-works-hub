@@ -157,7 +157,7 @@
 
     /* ── His romance route: the cupboard under the back stairs. ── */
     { id: 'sp-hc-cupboard', who: 'haechan', crush: H('dating'), slot: 'evening', flags: AFTER, after: '12/27', until: '2/26',
-      place: 'Iwatodai Dorm · Stairs', time: 'Evening', bg: 'iwatodaidorm-hallway', scene: [
+      place: 'Iwatodai Dorm · Stairs', time: 'Evening', scene: [
         { n: "The back stairs had a cupboard under them that nobody used, a narrow slant-roofed space full of old umbrellas and a broken vacuum cleaner and the dorm's Christmas decorations in a box that said XMAS in Mitsuru's handwriting and DO NOT in Junpei's underneath it, and he pulled her into it by the wrist on the way past with no warning at all, and shut the door, and it was black." },
         { ifHeading: 'S', then: [
           { n: "He was laughing. Silently, but she could feel it, his whole chest going against her, and he smelled of cinnamon gum and the cold from outside and the cheap dorm soap, and he found her face in the dark with both hands like he'd been told to find it blindfolded and win a prize, and kissed her, laughing, and then not laughing, his back against the box of decorations, the tinsel rustling." },
