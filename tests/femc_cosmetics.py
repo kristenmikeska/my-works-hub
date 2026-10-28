@@ -187,10 +187,11 @@ try:
         r = p.eval(r"""(()=>{const G=FemcGame,GA=FemcGacha;const at=md=>GA.activeSeries(G.dayOf(md)).map(s=>s.id).join(',');
           const before=['9/20','10/5','12/20','2/14'].map(at);G.S.met.push('haechan');const after=['4/10','8/30','9/20','10/5','12/20','2/14','3/5'].map(at);
           const sc=GA.SERIES.find(s=>s.id==='solchan'),rs={};sc.items.forEach(x=>rs[x.r]=(rs[x.r]||0)+1);
-          return {before,after,n:sc.items.length,rs,hate:GA.itemEligible(GA.itemById('dl-hateclub')[0]),noMinji:!GA.itemEligible(GA.itemById('su-solar-minji')[0])};})()""")
+          const hc=GA.itemById('dl-hateclub')[0],hateBefore=GA.itemEligible(hc);if(!G.S.met.includes('niki'))G.S.met.push('niki');
+          return {before,after,n:sc.items.length,rs,hateBefore,hate:GA.itemEligible(hc),noMinji:!GA.itemEligible(GA.itemById('su-solar-minji')[0])};})()""")
         ok(r['before'] == ['cast,couples,dorm', 'cast,halloween', 'cast,winter', 'cast,valentine'], f'no Solchan machine before Haechan: {r}')
         ok(r['after'] == ['cast,couples', 'cast,summer', 'cast,couples,solchan,dorm', 'cast,halloween,solchan', 'cast,winter,solchan', 'cast,valentine,solchan', 'cast,valentine,solchan,dorm'], f'Solchan Sep–Mar: {r}')
-        ok(r["n"] == 14 and r['rs'].get('UR') == 1 and r['rs'].get('SEC') == 1 and r['rs'].get('SR', 0) >= 3 and r['hate'] and r['noMinji'], f'Solchan items, side characters, met-only: {r}')
+        ok(r["n"] == 14 and r['rs'].get('UR') == 1 and r['rs'].get('SEC') == 1 and r['rs'].get('SR', 0) >= 3 and r['hate'] and not r['hateBefore'] and r['noMinji'], f'Solchan items, side characters, met-only (Niki is a link since the trio, so The Hate Club waits for him): {r}')
         # Goods: met-only, new first, repeats pay tokens; Collection lists them, drawn by kind.
         r = p.eval(QUIET + r"""(()=>{const G=FemcGame,GA=FemcGacha;G.S.yen=1e8;G.S.gacha=GA.fresh();GA.rng=Math.random;const got=[],from=new Set(),sw=new Set();
           try{for(let i=0;i<1500;i++){const x=GA.pull('yen',i%2?'solchan':'cast');from.add(x.from);if(x.kind==='good')got.push(x);if(x.kind==='skey'&&x.from==='solchan')sw.add(x.id);}}finally{""" + LOUD + r"""}

@@ -27,7 +27,7 @@ OUT.mkdir(parents=True, exist_ok=True)
 FORMS = {'haenim': ('RISE AND SHINE', 'solar-haenim.webp', 'solar-strike-b'),
          'haenim-sunna': ('GOLDEN HOUR', 'solar-sunna.webp', 'solar-strike-b'),
          'haenim-mazu': ('SPRING TIDE', 'solar-mazu.webp', 'solar-strike-b'),
-         'haenim-nike': ('LANDSLIDE', 'solar-nike.webp', 'solar-strike-a'),
+         'haenim-nike': ('RUNNING MATE', 'solar-nike.webp', 'solar-strike-a'),
          'haenim-unveiled': ('UNVEILED', 'solar-unveiled.webp', 'solar-strike-b')}
 results = {}
 

@@ -45,6 +45,9 @@ HELPERS = r"""(()=>{
         S.battleSave=FemcBattleSave.normalize(b); G.save();
         if (G.dueEvent()) throw new Error('Fixture has a scheduled scene');
         FemcGameUI.evening();
+        // The cleared full moon earns the Echoes starter gift; its one-time news becomes a toast on the next change, so take it
+        // now (as the toast would) to keep the live state equal to the saved one.
+        if (window.FemcEchoes && S.battleSave) FemcEchoes.takeNews(S.battleSave);
         return saveSnapshot(S);
     };
 })()"""

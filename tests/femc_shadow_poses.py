@@ -16,13 +16,15 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 OUT=pathlib.Path(tempfile.mkdtemp(prefix='femc-shadow-poses-'))
 data=json.loads((ROOT/'tools/femc-new-adds.json').read_text())
 # Integrated sources moved from New Adds/ to Added to Game/ (same names; see the manifest's sourceRootNote): check either.
-roots=[pathlib.Path(data['sourceRoot']),pathlib.Path(data['sourceRoot']).parent/'Added to Game']
+# Some newer entries name the folder themselves ('Added to Game/…'), relative to Femc Mode Images/.
+roots=[pathlib.Path(data['sourceRoot']),pathlib.Path(data['sourceRoot']).parent/'Added to Game',pathlib.Path(data['sourceRoot']).parent]
 for entry in data['entries']:
  # Only sources in the game must still exist; pending, prepared, skipped, missing or removed ones (e.g. a source Kat deleted) are skipped.
  if entry.get('status')!='integrated':continue
  src=next((r/entry['source'] for r in roots if (r/entry['source']).exists()),None)
  assert src, 'source missing: '+entry['source']
- assert hashlib.sha256(src.read_bytes()).hexdigest()==entry['sha256'],entry['source']
+ # A few newer entries (the Echoes art) record no hash; check the ones that do.
+ if 'sha256' in entry: assert hashlib.sha256(src.read_bytes()).hexdigest()==entry['sha256'],entry['source']
 source=(ROOT/'assets/femc/battle/battle.js').read_text()
 helpers=source[source.index('  const shadowFrames = new Map();'):source.index('  function addEnemy(u)')]
 args=argparse.ArgumentParser();args.add_argument("--art",default="");args.add_argument("--enemies",default="ballot_box,flash_shadow,tide_shadow,fox_shadow");args.add_argument("--ops",default="priestess,empress,hierophant,lovers,chariot,hermit,fortune,hanged,finale");args.add_argument("--shots",default="empress,finale");args.add_argument("--finale-path",default="story,full");args.add_argument("--only-finale-path",action="store_true");options=args.parse_args()

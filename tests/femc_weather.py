@@ -244,7 +244,7 @@ try:
     pt = p.eval("""(()=>{const G=FemcGame,P=window.FEMC_PORTRAITS;const keep=JSON.stringify(P);P.chkagami=['neutral'];P.hgmaster=['neutral','happy'];P.ono=['neutral'];
       const r={kagami:G.portrait('chKagami','neutral'),master:G.portrait('hgMaster','happy'),none:G.portrait('kbGonda','neutral'),
         names:['tsuji','ybTsuji','ueda','lbUeda','daichi','tuDaichi','clerk','wdClerk'].map(id=>G.name(id))};return r})()""")
-    ok(pt['kagami'].endswith('portraits/chkagami/neutral.webp') and pt['master'].endswith('portraits/hgmaster/happy.webp') and pt['none'] is None, f'camelCase ids find lowercase folders: {pt}')
+    ok(pt['kagami'].split('?')[0].endswith('portraits/chkagami/neutral.webp') and pt['master'].split('?')[0].endswith('portraits/hgmaster/happy.webp') and pt['none'] is None, f'camelCase ids find lowercase folders: {pt}')
     ok(pt['names'] == ['Tsuji', 'Mrs. Tsuji', 'Mrs. Ueda', 'Ueda', 'Daichi', 'Daichi', 'Clerk', 'Clerk'], f"each shared id is one person with its own name: {pt['names']}")
     used = p.eval(r"""(()=>{const s=[];const walk=x=>{if(Array.isArray(x))x.forEach(walk);else if(x&&typeof x==='object'){if(typeof x.s==='string')s.push(x.s);Object.values(x).forEach(walk)}};
       walk(FemcGame.packs());walk(FemcGame.LINKS.mitsuru);const c=id=>s.filter(x=>x===id).length;
@@ -257,7 +257,7 @@ try:
         p.eval("new Promise(r=>setTimeout(r,120))")
         face = p.eval("(()=>{const q=document.querySelector('.g-quiz');if(!q)return null;return {has:q.classList.contains('has-face'),img:q.querySelector('.g-quiz-face')?.getAttribute('src')||null,who:q.querySelector('.g-quiz-q b').textContent}})()")
         if face and face['who'] == 'Mr. Ono': break
-    ok(face and face['who'] == 'Mr. Ono' and face['has'] and face['img'].endswith('portraits/ono/neutral.webp'), f"a teacher's face in the class question: {face}")
+    ok(face and face['who'] == 'Mr. Ono' and face['has'] and face['img'].split('?')[0].endswith('portraits/ono/neutral.webp'), f"a teacher's face in the class question: {face}")
     if face: shot('teacher-face')
     p.eval("delete FEMC_PORTRAITS.ono;true")
     face2 = None

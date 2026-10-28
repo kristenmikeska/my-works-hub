@@ -283,7 +283,9 @@ try:
         if((e.flags||[]).length){s=setup(e,d);delete s.flags[e.flags[0]];if(G.runInDue(w,true)?.id===e.id)bad.push(e.id+': due without the flag '+e.flags[0])}
         if((e.events||[]).length){s=setup(e,d);s.events=s.events.filter(x=>x!==e.events[0]);if(G.runInDue(w,true)?.id===e.id)bad.push(e.id+': due before its story event')}
         if(e.route){s=setup(e,d);Object.keys(e.route).forEach(id=>{G.S.links[id].route='friend'});if(G.runInDue(w,true)?.id===e.id)bad.push(e.id+': due off its route')}
-        const wrong={act:'__none__',area:'__none__',job:'__none__',club:'__none__',slot:w.slot};s=setup(e,d);if(G.runInDue(wrong,true))bad.push(e.id+': due somewhere else');
+        const wrong={act:'__none__',area:'__none__',job:'__none__',club:'__none__',slot:w.slot};s=setup(e,d);
+        // where.any (the huskies, on purpose): out anywhere in town, so it must be due somewhere else too.
+        if(e.where&&e.where.any){if(G.runInDue(wrong,true)?.id!==e.id)bad.push(e.id+': where.any but not due elsewhere')}else if(G.runInDue(wrong,true))bad.push(e.id+': due somewhere else');
       }
       // Searchers never at school; Shinjiro never after 10/3; each run-in's person exists.
       const SEARCH=['hanni','hyein','jihoon','minji','yunjin','jungwon','jaehyun','junkyu','haechan','sunoo','cherry','mark'];

@@ -239,9 +239,9 @@ try:
         p.wait("FemcBattle.ctl && FemcBattle.ctl.items && FemcBattle.ctl.items.some(i => FemcBattle.B.U(i.v) && FemcBattle.B.U(i.v).side === 'enemy')")
         pick(p, first_foe(p))
         r = wait_cut(p, 1)
-        # Akihiko's bond has Kat's art (the still, and since batch 44 his Roadwork Showtime, which Sunrise Cadenza borrows: it has
-        # no art of its own), so the cut-in is never the duo fallback.
-        ok('kind-seq' in r['cls'] and any('bond-akihiko-show-' in x for x in r['imgs']) and 'st-full' in r['cls'] and 'love' in r['cls'] and r['loaded'] and 'SUNRISE CADENZA' in r['name'], r)
+        # Akihiko's romance bond now has its own Showtime (the Sunrise Cadenza panels, bond-akihiko-love-show-*), so the cut-in
+        # plays those, never the duo fallback.
+        ok('kind-seq' in r['cls'] and any('bond-akihiko-love-show-' in x for x in r['imgs']) and 'st-full' in r['cls'] and 'love' in r['cls'] and r['loaded'] and 'SUNRISE CADENZA' in r['name'], r)
         ok(any('theurgy/bond-akihiko' in s for s in r['imgs']), r['imgs'])
         ok(any('Stay on my left' in l for l in r['lines']) and any('I always do' in l for l in r['lines']), r['lines'])
         p.wait("FemcBattle.marks['bond-done'] >= 1")
@@ -293,17 +293,17 @@ try:
         results['partner'] = 'Yukari started Morning Breeze; the party healed; Solar rested'
         print('partner OK', flush=True)
 
-    # ── The art hook: bond.img and bond.sheet ──
+    # ── The art hook: bond.img and bond.sheet (Jade Ring's own Showtime, batch 49, is taken off so the hook is what plays) ──
     if want('art'):
         TH = 'assets/femc/battle/art/theurgy/'
         fight(p, ['solar', 'jungwon'], ranks={'jungwon': 9}, love=['jungwon'],
-              setup=f"const a = FemcBattle.B.S.bondArts.find(x => x.id === 'jungwon'); a.img = '{TH}jungwon.webp'; a.focus = [50, 37];")
+              setup=f"const a = FemcBattle.B.S.bondArts.find(x => x.id === 'jungwon'); delete a.sequence; a.img = '{TH}jungwon.webp'; a.focus = [50, 37];")
         my_menu(p, 'solar'); pick(p, 'bond'); p.wait("FemcBattle.ctl.items.some(i => i.v === 'jungwon')"); pick(p, 'jungwon')
         r = wait_cut(p, 1)
         ok('kind-cut' in r['cls'] and 'has-sheet' not in r['cls'] and any('theurgy/jungwon.webp' in s for s in r['imgs']) and r['loaded'] and 'JADE RING' in r['name'], r)
         ok(p.eval("FemcBattle.B.leader().ward === true || FemcBattle.marks['ward'] >= 1"), 'Jade Ring wards Solar')
         fight(p, ['solar', 'jungwon'], ranks={'jungwon': 9}, love=['jungwon'],
-              setup=f"const a = FemcBattle.B.S.bondArts.find(x => x.id === 'jungwon'); a.img = '{TH}jungwon.webp'; a.sheet = {{ frames: [0, 1, 2].map(i => '{TH}jungwon-strike-' + i + '.webp') }};")
+              setup=f"const a = FemcBattle.B.S.bondArts.find(x => x.id === 'jungwon'); delete a.sequence; a.img = '{TH}jungwon.webp'; a.sheet = {{ frames: [0, 1, 2].map(i => '{TH}jungwon-strike-' + i + '.webp') }};")
         my_menu(p, 'solar'); pick(p, 'bond'); p.wait("FemcBattle.ctl.items.some(i => i.v === 'jungwon')"); pick(p, 'jungwon')
         r = wait_cut(p, 1)
         ok('has-sheet' in r['cls'] and all(any(f'jungwon-strike-{k}' in s for s in r['imgs']) for k in range(3)) and r['loaded'], r)
@@ -322,7 +322,8 @@ try:
         my_menu(p, 'solar'); pick(p, 'bond'); p.wait("FemcBattle.ctl.items.some(i => i.v === 'haechan')"); pick(p, 'haechan')
         r = wait_cut(p, 1); m = marks(p); order = p.eval('seqLog')
         ok('kind-seq' in r['cls'] and 'st-full' in r['cls'] and 'love' in r['cls'] and 'UNIVERSE' in r['name'] and r['loaded'], r)
-        ok(all(any(f'bond-haechan-seq-{i}.webp' in x for x in r['imgs']) for i in range(1, 6)) and len(r['lines']) == 2, r['imgs'])
+        # Universe plays Corona's revised panels (bond-haechan-love-show-1..5); its short-version still stays bond-haechan-seq-5.
+        ok(all(any(f'bond-haechan-love-show-{i}.webp' in x for x in r['imgs']) for i in range(1, 6)) and len(r['lines']) == 2, r['imgs'])
         ok([x for x in order if x.startswith('p')] == ['p0', 'p1', 'p2', 'p3', 'p4'] and order.index('q-hit') == order.index('p2') + 1 and order.index('f-hit') > order.index('p4'), order)
         ok(all(m.get(f'bond-seq-{i}') == 1 for i in range(5)) and m.get('bond-seq-hit') == 1 and m.get('bond-kind-seq') == 1 and m.get('bond-impact') == 1, m)
         ok(r['done'] - r['t0'] > 1000, ('the sequence takes its time', r['done'] - r['t0']))
@@ -557,8 +558,11 @@ try:
                 if mid in ('junpei', 'mitsuru', 'shinjiro', 'aigis', 'akihiko'):
                     p.top(); name = f'{w}x{h}-field-{mid}.png'
                     (OUT / name).write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot', {'format': 'png'})['data']))
-            people = sorted(v for k, v in got.items() if k != 'koromaru'); med = people[len(people) // 2]
-            off = {k: round(v / med, 2) for k, v in got.items() if k != 'koromaru' and not 0.86 <= v / med <= 1.14}
+            # Kat had Jungwon and Jihoon drawn a little larger on purpose (commit 1d8438b: 0.87 → 1 and 0.77 → 0.92 in
+            # FIGHTER_POSES); measure them at their old size so the check still catches a real sizing mistake.
+            norm = {k: v / {'jungwon': 1 / 0.87, 'jihoon': 0.92 / 0.77}.get(k, 1) for k, v in got.items()}
+            people = sorted(v for k, v in norm.items() if k != 'koromaru'); med = people[len(people) // 2]
+            off = {k: round(v / med, 2) for k, v in norm.items() if k != 'koromaru' and not 0.86 <= v / med <= 1.14}
             ok(not off, (w, h, 'fighters off the median height', off, got))
             ok(0.5 <= got['koromaru'] / med <= 0.8, (w, h, 'Koromaru stays dog-sized', got))
             out[f'{w}x{h}'] = got
