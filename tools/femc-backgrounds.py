@@ -131,6 +131,21 @@ EXTRA = {
     'hospital-ward-night': 'Added to Game/hospital-ward-night.jpeg',
     'iwatodai-riverside-night-snow': 'Added to Game/iwatodai-riverside-night-snow.jpeg',
     'yeobos-cafe-night': 'Added to Game/yeobos-cafe-night.jpeg',
+    # batch 77 (2026-10-28): the Runners and HOAX epilogue places (data/epi/runners, hoax, true, stay world.js)
+    'epi-r-her-room': 'Added to Game/epi-r-her-room.jpeg',
+    'epi-r-her-room-night': 'Added to Game/epi-r-her-room-night.jpeg',
+    'epi-r-alpha-landing': 'Added to Game/epi-r-alpha-landing.jpeg',
+    'epi-r-alpha-landing-night': 'Added to Game/epi-r-alpha-landing-night.jpeg',
+    'epi-r-sigma-his-room': 'Added to Game/epi-r-sigma-his-room.jpeg',
+    'epi-r-studio-stairs': 'Added to Game/epi-r-studio-stairs.jpeg',
+    'epi-r-hanni-hyein-room': 'Added to Game/epi-r-hanni-hyein-room.jpeg',
+    'epi-h-kim-house-day': 'Added to Game/epi-h-kim-house-day.jpeg',
+    'epi-h-winter-street-day': 'Added to Game/epi-h-winter-street-day.jpeg',
+    'epi-h-her-room': 'Added to Game/epi-h-her-room.jpeg',
+    'epi-h-her-room-night': 'Added to Game/epi-h-her-room-night.jpeg',
+    'epi-h-christmas-lights': 'Added to Game/epi-h-christmas-lights.jpeg',
+    'epi-h-jihoon-porch': 'Added to Game/epi-h-jihoon-porch.jpeg',
+    'epi-h-gym-hearing': 'Added to Game/epi-h-gym-hearing.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

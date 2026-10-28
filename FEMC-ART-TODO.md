@@ -1,6 +1,6 @@
 # Art to make
 
-**97 items:** 31 CGs · 34 places · 4 character pieces · 28 wardrobe. 93 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**83 items:** 31 CGs · 20 places · 4 character pieces · 28 wardrobe. 79 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -144,7 +144,7 @@ Persona 3 Reload style event CG, 16:9, no text. The big living room of an old fr
 
 **[ ] Runners · Haechan · his room at the Sigma house** *(optional)*  
 Haechan's third hangout, night, his room at the Sigma house.  
-Attach: Solar (her Runners look), Haechan (his Runners look once it's made, his neutral portrait until then), `epi-r-sigma-his-room.png` (for the room only, once it exists)  
+Attach: Solar (her Runners look), Haechan (his Runners look once it's made, his neutral portrait until then), `bg/epi-r-sigma-his-room.webp` (for the room only)  
 Save as: `epi-r-his-room-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. A college boy's bedroom in a fraternity house at night in winter, the desk lamp the only light, a laptop on the desk with a yellow sticky note over its camera, the blinds open on falling snow, warm lamp light on one side and blue snow light on the other. Haechan (the second attached image's face; dark hair falling into his eyes, a plain black T-shirt, silver rings) sits in his desk chair turned away from the desk, hands resting on his knees, looking up, not reaching. Solar (the first attached image's face; long dark hair with snow melting in it, a cream knit sweater under an open winter coat) stands between his knees, close, both her cold hands cupping his face, looking down at him; his breath caught at the cold of her fingers. Their faces a few inches apart. Hushed, tender, nothing hurried. Keep the faces clear of the edges.
@@ -160,7 +160,7 @@ Persona 3 Reload style event CG, 16:9, no text. A very tidy college dorm room at
 
 **[ ] Runners · the cover · 12/10 · the girls' floor** *(optional)*  
 The cover route's 12/10, late, on Hanni and Hyein's floor.  
-Attach: Solar (her Runners look), Hanni, Hyein, `epi-r-hanni-hyein-room.png` (for the room only, once it exists)  
+Attach: Solar (her Runners look), Hanni, Hyein, `bg/epi-r-hanni-hyein-room.webp` (for the room only)  
 Save as: `epi-r-floor-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. A shared sorority-house bedroom late at night, lit only by fairy lights strung along the wall, an old radiator under a snowy window, a corkboard over a desk pinned with fashion sketches of velvet outfits, a dress form in the corner. Three girls sit on the rug on the floor with their backs against the side of a bed. Hanni (the second attached image's face; hair down, an oversized sweatshirt and pajama shorts) in the middle-left with her knees up and her arms around them, her phone face down on the rug in front of her. Hyein (the third attached image's face; hair in a messy clip, a cardigan over pajamas) leans her head on Hanni's shoulder. Solar (the first attached image's face; long dark hair, a hoodie and sweatpants) sits close on Hanni's other side, and Hanni's hand has found hers on the rug and holds it. Nobody talking. Soft, shaky, held together. Keep the faces clear of the edges.
@@ -289,122 +289,6 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 ---
 
 ## 2. Places (Gemini)
-
-### The epilogue: Runners
-
-**[ ] Solar's room at the Alpha Phi house** *(optional)*  
-Her own room in the Runners epilogue, every morning there (now a borrowed purple bedroom stands in).  
-Attach: `bg/epi-r-alpha-kitchen.webp` (for the style only)  
-Save as: `epi-r-her-room.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a college girl's bedroom on the second floor of an old American sorority house in winter, morning: a bed with a pink duvet, pink curtains half open on a window with snow on the sill, an old cast-iron radiator under the window, a plaster ceiling with one long thin crack in it, a desk with a desk lamp, a laptop and a stack of textbooks, a closet door ajar, fairy lights unlit over the headboard, a few photos tucked into a mirror frame. Soft grey-white snow light coming in through the pink curtains. Lived in, a little girly, quiet. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Solar's room at the Alpha Phi house, at night** *(optional)*  
-The same room for its late-night scenes (now a tinted borrowed bedroom).  
-Attach: `epi-r-her-room.png` (the picture to edit)  
-Save as: `epi-r-her-room-night.png`
-```
-Edit this picture. Keep the same bedroom, angle and art style; change it to late night: the room dark except the desk lamp, which throws a warm pool over the desk and the laptop; the curtains open a little on black night with snow ticking against the glass; a phone face down on the desk; the radiator a dark shape under the window; the pink duvet grey-blue in the shadow. 16:9, no people, no readable text.
-```
-
-**[ ] The Alpha Phi stairs: the second landing** *(optional)*  
-The turn of the main staircase in the sorority house, for its afternoon scene (now the house's snowy outside stands in).  
-Attach: `bg/flashback-alphaphi-house.webp` (for the style only)  
-Save as: `epi-r-alpha-landing.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the second landing of the old wooden staircase inside a big American sorority house, the place where the stairs turn back on themselves so you can't see the floor above or below: a dark polished banister, worn carpet runner on the treads, a tall landing window with snow coming down slowly outside, framed composite photos of past members on the wall, and at the top of the next short flight a long upstairs hallway with doors along it, the last door at the far end. Grey four o'clock December light. Quiet, watchful, a little old-fashioned. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The Alpha Phi stairs at night** *(optional)*  
-The same landing for its midnight and evening scenes.  
-Attach: `epi-r-alpha-landing.png` (the picture to edit)  
-Save as: `epi-r-alpha-landing-night.png`
-```
-Edit this picture. Keep the same staircase, landing, angle and art style; change it to midnight: the house asleep, no lamps on, blue snow light through the landing window lying across the stairs, the banister catching a little of it, the long upstairs hallway dark, every door shut and no light under any of them. 16:9, no people, no readable text.
-```
-
-**[ ] Haechan's room at the Sigma house** *(optional)*  
-His room in the fraternity house, for its night scenes (now the Sigma party downstairs stands in).  
-Attach: `bg/epi-r-studio-4b.webp` (for the style only)  
-Save as: `epi-r-sigma-his-room.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a college boy's bedroom in an old fraternity house at night in winter: a desk with a laptop on it, a yellow sticky note stuck over the laptop's camera, studio headphones, a small keyboard controller, a soldering iron and loose cables on a tray, a desk lamp that is the only light in the room; a desk chair turned out from the desk; an unmade bed with dark sheets; the blinds open on a window with snow falling outside and a white yard below; a hoodie over the back of the chair. Warm lamp light on one side, blue snow light on the other. Private, quiet, a bit messy. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The Extracurricular Building's back stairs** *(optional)*  
-The stairwell and hallway between the eSports lab and Studio 4B (now the studio itself stands in).  
-Attach: `bg/epi-r-studio-4b.webp` (for the style only)  
-Save as: `epi-r-studio-stairs.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the back stairwell of an old university building at night: cinderblock walls painted the color of weak tea, metal handrails, a half landing between two floors with a window gone black with night, the stairs going down to a ground-floor hallway with a faint blue glow of computer screens and up to a second-floor hallway lined with music practice-room doors, one door near the top with a small square window lit warm from inside. Buzzing fluorescent light, scuffed floors, a fire extinguisher on the wall. Empty, late, a little lonely. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Hanni and Hyein's room** *(optional)*  
-The two girls' shared room in the sorority house (now a borrowed pink bedroom stands in).  
-Attach: `bg/epi-r-alpha-kitchen.webp` (for the style only)  
-Save as: `epi-r-hanni-hyein-room.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a shared bedroom in an old sorority house, two halves: on one side a neat bed with a planner and a binder on it; on the other side a desk taken over by fabric, a sewing machine, bolts of velvet in bottle green and oxblood draped over a chair, a corkboard over the desk pinned with fashion sketches of headless figures in velvet, and a dress form standing in the corner wearing half a jacket. Fairy lights strung along the wall, a soft rug on the floor big enough to sit on, a radiator under a window with snow outside and early winter dusk. Warm, cluttered, a safe place. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-### The epilogue: HOAX
-
-**[ ] The Kims' living room by day** *(optional)*  
-The same family living room for its mornings and Christmas afternoon (now the lamp-lit night version shows all day).  
-Attach: `bg/epi-h-kim-house.webp` (the picture to edit)  
-Save as: `epi-h-kim-house-day.png`
-```
-Edit this picture. Keep the same living room, Christmas tree, sofa, dog bed, table, angle and art style; change it to a grey snowy winter day: flat white daylight coming in through the balcony window, snow lying on the balcony rail and roofs outside, all the lamps off, the tree's lights off, the room lit only by the daylight, a little fog at the bottom of the window glass from the heating. 16:9, no people, no readable text.
-```
-
-**[ ] The winter street by day** *(optional)*  
-The convenience store and the vending machines for their daytime hangouts (now the night version shows all day).  
-Attach: `bg/epi-h-winter-street.webp` (the picture to edit)  
-Save as: `epi-h-winter-street-day.png`
-```
-Edit this picture. Keep the same street, convenience store, row of vending machines, plastic tables, bus stop, angle and art style; change it to a cold overcast afternoon: soft grey daylight, light snow falling, the store window lit only faintly, the Christmas lights across the street switched off, snow piled at the curb and trodden into paths on the pavement, the vending machines lit only softly in the daylight. 16:9, no people, no readable text.
-```
-
-**[ ] Solar's room at the Kims'** *(optional)*  
-Her own bedroom at home in the HOAX epilogue (now a borrowed lilac bedroom stands in).  
-Attach: `bg/epi-h-kim-house.webp` (for the style only)  
-Save as: `epi-h-her-room.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a Korean high-school girl's bedroom in a family apartment on a winter morning: a single bed with a duvet and a dog-hair-covered blanket at the foot, a nightstand with a digital alarm clock with red numbers, a desk with a calculus textbook open on it and a Sanrio pencil cup, a desk chair with a school blazer thrown over it, a romantic-comedy movie poster on the wall with one corner peeling, a small radiator under the window, snow on the windowsill outside, a warm heated floor with a rug. Soft white snow light. Cosy, a little messy, a teenager's room. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Solar's room at the Kims', at night** *(optional)*  
-The same room for its many late-night scenes.  
-Attach: `epi-h-her-room.png` (the picture to edit)  
-Save as: `epi-h-her-room-night.png`
-```
-Edit this picture. Keep the same bedroom, angle and art style; change it to late night: the main light off, only a small desk lamp on, the alarm clock's red numbers glowing on the nightstand, the window dark blue with snow falling past it and the lit windows of other apartment blocks far off, the duvet rumpled. 16:9, no people, no readable text.
-```
-
-**[ ] Hanlim's Christmas lights** *(optional)*  
-The town's Christmas lights in the square and on the main street, Christmas Eve and after (now Port Island at Christmas stands in).  
-Attach: `bg/epi-h-winter-street.webp` (for the style only)  
-Save as: `epi-h-christmas-lights.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small Korean town's main street and square at night in winter, decorated for Christmas: a long tunnel of warm white and blinking blue lights over the street, an arch of white and gold lights over the square, a round fountain with no water in it, a bench beside it, a glowing reindeer light sculpture with one leg out, a big inflatable snowman leaning forward, snow on the ground and on the benches. A little tacky, very bright, warm against the dark. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Jihoon's porch** *(optional)*  
-The front porch of Jihoon's family house, for its night scenes (now a generic night street stands in).  
-Attach: `bg/epi-h-jihoon-house.webp` (for the style only)  
-Save as: `epi-h-jihoon-porch.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the front porch of a big, expensive family house in a Korean town at night in winter: a wide wooden porch with a rail, six clay flowerpots lined up along the rail with frozen soil and brown dead stalks in them, a porch light on by the front door, the big front door, a path down through the snowy front garden to the gate, a full white moon over the roof. Quiet, cold, a big house with almost nobody in it. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The Hanlim gym on the hearing day** *(optional)*  
-The school gym set up for the hearing, the afternoon of 1/11 (now the gym from the year's flashback stands in).  
-Attach: `bg/flashback-hamlim-gym.webp` (the picture to edit)  
-Save as: `epi-h-gym-hearing.png`
-```
-Edit this picture. Keep the same gym, the blue and silver decorations, the string lights, the angle and art style; change it to a winter afternoon set up for a school meeting: grey daylight from the high windows, the bleachers pulled out along both sides, rows of folding chairs on the floor, a podium with a microphone in the middle, a long table with chairs on the left side of the floor, and a ballot box on its own small folding table in front of the stage. Some of the balloons have gone soft and hang low. 16:9, no people, no readable text.
-```
 
 ### The epilogue: strangers
 

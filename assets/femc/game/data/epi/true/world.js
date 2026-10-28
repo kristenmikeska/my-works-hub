@@ -20,7 +20,7 @@
     routes: [{ id: 'coda', name: 'Every world', open: { always: true } }],
     places: {
       bg: [
-        ['Syracuse · Alpha Phi House · Her Room', 'pink-bedroom', null],
+        ['Syracuse · Alpha Phi House · Her Room', 'epi-r-her-room', 'epi-r-her-room-night'], // batch 77 (Runners' art)
         ['Syracuse · Alpha Phi House', 'flashback-alphaphi-house', null],
         ['Syracuse · Language Arts Rooftop', 'epi-r-rooftop-night-snow', 'epi-r-rooftop-night-snow'],
         ['Syracuse · The Quad', 'epi-r-quad-day', 'flashback-syracuse-quad'],
@@ -39,7 +39,7 @@
         ['Iwatodai', 'iwatodai-station', null]
       ],
       weatherFx: { outdoor: ['flashback-syracuse-quad', 'epi-r-rooftop-night-snow', 'epi-r-quad-day', 'flashback-incheon-harbor', 'station-platform-day', 'outside-daytime-neighborhood', 'outside-night'], sealed: [], none: [] },
-      home: { place: 'Syracuse · Alpha Phi House · Her Room', bg: 'pink-bedroom' },
+      home: { place: 'Syracuse · Alpha Phi House · Her Room', bg: 'epi-r-her-room' },
       activities: [],
       /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1). The three holding-on scenes play the world songs (world-runners,
          world-strangers, world-hoax); these four moods are stand-in P3 tracks until then. */

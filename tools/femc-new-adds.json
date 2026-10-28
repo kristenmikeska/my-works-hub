@@ -15917,6 +15917,216 @@
       "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
       "outputSha256": "177677a9ba21563fc37029ace7503e957a0303c9fc005c5a669bdf8b49b146c7",
       "placement": "places.bg rule \"Iwatodai Strip · Yeobo's Cafe\" evening slot; explicit bg: 'yeobos-cafe' lines at evening play as the rule (core.js background()); window room (not sealed, not outdoor)"
+    },
+    {
+      "batch": 77,
+      "source": "epi-r-her-room.jpeg",
+      "sourceNow": "Added to Game/epi-r-her-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "de8519b543c9babdbbeba43fc956f7d23f000d558995bdb363ea7c44619edcd6",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-her-room.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "9e7ec8a52ed5ea119247089750f76a5e63227b8e8ea5035ca1bc02acf95524fd",
+      "placement": "data/epi/runners/world.js rule 'Syracuse · Alpha Phi House · Her Room' day slot (was pink-bedroom) and home.bg; the true coda's same rule and home.bg (data/epi/true/world.js); indoor"
+    },
+    {
+      "batch": 77,
+      "source": "epi-r-her-room-night.jpeg",
+      "sourceNow": "Added to Game/epi-r-her-room-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "baaa7e04011ca50cf46ada1a06d1fdfe2d740f7cd615ca9bb7423eb5fbd51bb2",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-her-room-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "9e6435f2d3ec7579f6f4a1d11496378ba56f04863c584d55173761471eaa96fd",
+      "placement": "the same Her Room rule's evening slot in runners/world.js and true/world.js; indoor"
+    },
+    {
+      "batch": 77,
+      "source": "epi-r-alpha-landing.jpeg",
+      "sourceNow": "Added to Game/epi-r-alpha-landing.jpeg",
+      "size": [
+        2750,
+        1536
+      ],
+      "sha256": "c93ba30950ecd3c9066e922f692a5069cfd092486ea79de5d4d70426f208cb4d",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-alpha-landing.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "40dc1352501d392362fd4a2cfc7cfa1985f21b6b38c64eb5dc8f53a98561c99e",
+      "placement": "runners/world.js rule 'Syracuse · Alpha Phi House · Stairs' day slot (was iwatodaidorm-hallway); indoor"
+    },
+    {
+      "batch": 77,
+      "source": "epi-r-alpha-landing-night.jpeg",
+      "sourceNow": "Added to Game/epi-r-alpha-landing-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "fd4897f773dd2f429f341f303ff78b6d2fd300999c6fffb108a413390ff200d7",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-alpha-landing-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "ba23c3ddf63eb7409a270c2aaf9d989aa47cde6c06afb3a2c52a2efd4c0729de",
+      "placement": "the same Stairs rule's evening slot; indoor"
+    },
+    {
+      "batch": 77,
+      "source": "epi-r-sigma-his-room.jpeg",
+      "sourceNow": "Added to Game/epi-r-sigma-his-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "1dd6e30e302ea5d8f4e8ea2d8f39a836bb85177ff5e39ba816a9ae681de490f8",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-sigma-his-room.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "fbb90888e1ebd3795993b658aa54623a66a322db83103dd59d41543cb0c18b03",
+      "placement": "new runners/world.js rule 'Syracuse · Sigma Chi House · His Room' (night art, both slots), below the Kitchen rule and above 'Syracuse · Sigma Chi House'; indoor"
+    },
+    {
+      "batch": 77,
+      "source": "epi-r-studio-stairs.jpeg",
+      "sourceNow": "Added to Game/epi-r-studio-stairs.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "2901840b9bad296f8568c0a1a2a9af93f352cb0b9e9bcebfc895b4127368b408",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-studio-stairs.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "c26f6f45d65f606e3d98b91ace055ebda806f06d649c9d526ae1c9cad49732fe",
+      "placement": "new rule 'Syracuse · Studio 4B · Hallway' (night-lit, both slots) above 'Syracuse · Studio 4B' in runners/world.js and stay/world.js (Stay's 3/31 pull); indoor"
+    },
+    {
+      "batch": 77,
+      "source": "epi-r-hanni-hyein-room.jpeg",
+      "sourceNow": "Added to Game/epi-r-hanni-hyein-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "fc4b18cdef92bd605d2e383a1f11308e0a7c6e2e07642572c431e71cafb3b41f",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-hanni-hyein-room.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "e23489c9b5ef14c98069a4a103c97aafbe8f92b7d088bba171e32a87b10f35cb",
+      "placement": "runners/world.js rule \"Syracuse · Alpha Phi House · Hanni and Hyein's Room\" both slots (fairy-lit dusk; was pink-bedroom-2); indoor"
+    },
+    {
+      "batch": 77,
+      "source": "epi-h-kim-house-day.jpeg",
+      "sourceNow": "Added to Game/epi-h-kim-house-day.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "72527bc23a463e9a1153e83e2febfe149b8121b4a8b9cc2e0bfe9a5c678ed063",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-kim-house-day.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "c098292363389a3d2788c1c3814edeeb3bb47e8c4656333c67f36c59046d0229",
+      "placement": "data/epi/hoax/world.js rule 'Hanlim · Home' day slot (evening stays epi-h-kim-house); indoor"
+    },
+    {
+      "batch": 77,
+      "source": "epi-h-winter-street-day.jpeg",
+      "sourceNow": "Added to Game/epi-h-winter-street-day.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "7d263e74785a2552ff62b6a96232e3294231b9da363f4e008dc864d4d23305b1",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-winter-street-day.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "02fbc40ea384eec92dc24852853e9b55edb759d43e247cf7a6a76fb2bad1ed80",
+      "placement": "hoax/world.js rule 'Hanlim · Winter Street' day slot (evening stays epi-h-winter-street); the epi-h-machine activity bg -> 'epi-h-winter-street-day' so its evening slot plays the rule's night art; outdoor via the 'epi-h-winter-street' prefix"
+    },
+    {
+      "batch": 77,
+      "source": "epi-h-her-room.jpeg",
+      "sourceNow": "Added to Game/epi-h-her-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "316b86c2690150326f65615e593a2e0fd9f88de79e2d147a85e17ed917c62a82",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-her-room.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "70d051dad4da2392358809e08d564a0f9689d3ae95f1c95ea9fcf01405dbca1d",
+      "placement": "hoax/world.js rule 'Hanlim · Home · Her Room' day slot (was pink-bedroom-2) and home.bg; indoor"
+    },
+    {
+      "batch": 77,
+      "source": "epi-h-her-room-night.jpeg",
+      "sourceNow": "Added to Game/epi-h-her-room-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "47d8f4fda8330fed176198611a447905950aadd8fc4992f8a6fbcf27264cef69",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-her-room-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "4adb3380cda82937e4ea2b271f67b8f94a043d9f0dc516537f386cf488a89b44",
+      "placement": "the same Her Room rule's evening slot; indoor"
+    },
+    {
+      "batch": 77,
+      "source": "epi-h-christmas-lights.jpeg",
+      "sourceNow": "Added to Game/epi-h-christmas-lights.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "870e23cdd09b4e086e99a7face4489de76d98441ef35a78fd6e380583e36213f",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-christmas-lights.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "5be46850262477f37f4dc46c3cbd7d6c2644ae562217f4522b213b2d79ededc2",
+      "placement": "hoax/world.js rule 'Hanlim · Christmas Lights' both slots (was portisland-christmas); weatherFx.outdoor gains it (portisland-christmas leaves, unused now)"
+    },
+    {
+      "batch": 77,
+      "source": "epi-h-jihoon-porch.jpeg",
+      "sourceNow": "Added to Game/epi-h-jihoon-porch.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "b1c958e210e5d77fa4ce2125d0738bc92e33d09b11f6e5844629f32638665ab5",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-jihoon-porch.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "4d08bc2ee10b9633439b3006c98c04d87a6e723e5eda819056e94c26179baf32",
+      "placement": "hoax/world.js rule \"Hanlim · Jihoon's House · Porch\" both slots (night art); weatherFx.outdoor gains it"
+    },
+    {
+      "batch": 77,
+      "source": "epi-h-gym-hearing.jpeg",
+      "sourceNow": "Added to Game/epi-h-gym-hearing.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "518a20cb9cd68363c5df4f5097f47e7921a62a83510a1b1b148860975dd96c8a",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-gym-hearing.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "9d56868ef1d67cba82912fb7bff3faf9bda8d5c1fd32093e8681276ae33eab61",
+      "placement": "new hoax/world.js rule 'Hanlim · School · Gym · Hearing' (day slot) below Gym at Midnight; the epi-h-hearing event (story-end.js) moves to that place; the 1/10 evening gym scene keeps the plain gym; indoor"
     }
   ],
   "batch1Validation": {
@@ -16958,5 +17168,20 @@
     ],
     "notTested": "no browser tests: the bridge, hospital, riverside and café scenes at night",
     "html": "femc-game.html places v56, mercy v9"
+  },
+  "batch77Validation": {
+    "date": "2026-10-28",
+    "scope": "the Runners and HOAX epilogue places (fourteen)",
+    "sourcesInspected": "all fourteen checked by name, size and hash",
+    "sourcesIntegrated": 14,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold and the other New Adds files untouched",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_epilogue.py"
+    ],
+    "notTested": "no browser tests: the Runners, HOAX, Stay and coda scenes at these places; tests/femc_epilogue.py (its _loaded checks now 18) not run",
+    "html": "femc-game.html epilogue v20; DATA_V 18"
   }
 }

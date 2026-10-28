@@ -150,6 +150,7 @@ Other docs, if you ever want detail:
 - ✅ Art batch 74: Seaside Park at sunset, for its evening scenes.
 - ✅ Art batch 75: the Seaside Park winter rink by day and at night, from December 2 to the end of January.
 - ✅ Art batch 76: Moonlight Bridge at night, the hospital's treatment room and a ward room at night, the riverside on a snowy night (Christmas Eve, Christmas and snow days) and Yeobo's after closing, for their evening scenes.
+- ✅ Art batch 77: fourteen epilogue places for Runners and HOAX (her rooms by day and at night, the stairs, two friends' rooms, a back stairwell, the living room and winter street by day, the Christmas lights, a porch and the gym on a big day), in place of their stand-ins.
 - ✅ Art batch 65: your nine epilogue places are in the game: four for HOAX (the Kims' living room, Jihoon's house, the winter street, the winter-break party) and five for strangers (a kitchen, the annex, the mudflats, the festival night on Wolmido, the street in the dust), with a couple of small wording fixes so the scenes match your pictures. Your art list gained 57 new place prompts and 35 new CG prompts across the year and every epilogue, and the Evoker pieces, new expressions, sharper Shadows and strike sheets moved to a new backburner list
 
 ## Music and polish

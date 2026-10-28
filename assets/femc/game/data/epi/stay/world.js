@@ -43,6 +43,7 @@
         ["Iwatodai Dorm · Hanni's Room", 'pink-bedroom-2', null],
         ["Iwatodai Dorm · Yunjin's Room", 'pink-bedroom', null],
         // The three worlds (the fights pull her there; stand-ins until FEMC-ART-TODO's bleed battlefields exist).
+        ['Syracuse · Studio 4B · Hallway', 'epi-r-studio-stairs', 'epi-r-studio-stairs'], // batch 77 (Runners' art)
         ['Syracuse · Studio 4B', 'epi-r-studio-4b', null],
         ['Syracuse', 'flashback-syracuse-quad', null],
         ['Incheon · Harbor', 'flashback-incheon-harbor', null],

@@ -42,14 +42,15 @@
     lockAfter: '12/7',
     places: {
       bg: [
-        ['Syracuse · Alpha Phi House · Her Room', 'pink-bedroom', null],
-        ["Syracuse · Alpha Phi House · Hanni and Hyein's Room", 'pink-bedroom-2', null],
+        ['Syracuse · Alpha Phi House · Her Room', 'epi-r-her-room', 'epi-r-her-room-night'],   // batch 77
+        ["Syracuse · Alpha Phi House · Hanni and Hyein's Room", 'epi-r-hanni-hyein-room', 'epi-r-hanni-hyein-room'], // batch 77: fairy-lit dusk, both slots
         ['Syracuse · Alpha Phi House · Kitchen', 'epi-r-alpha-kitchen', null],
-        // The stairs are indoors: the dorm hallway stands in until epi-r-alpha-landing exists (the house's own art is outside, in the snow).
-        ['Syracuse · Alpha Phi House · Stairs', 'iwatodaidorm-hallway', null],
+        // The stairs are indoors (the house's own art is outside, in the snow); batch 77: the second landing, day and night.
+        ['Syracuse · Alpha Phi House · Stairs', 'epi-r-alpha-landing', 'epi-r-alpha-landing-night'],
         ['Syracuse · Alpha Phi House', 'flashback-alphaphi-house', null],
         ['Syracuse · Sigma Chi House · Holiday Party', 'epi-r-sigma-holiday', 'epi-r-sigma-holiday'],
         ['Syracuse · Sigma Chi House · Kitchen', 'epi-r-sigma-kitchen', null],
+        ['Syracuse · Sigma Chi House · His Room', 'epi-r-sigma-his-room', 'epi-r-sigma-his-room'], // batch 77: night art, both slots
         ['Syracuse · Sigma Chi House', 'flashback-frat-party', null],
         ['Syracuse · The Quad', 'epi-r-quad-day', 'flashback-syracuse-quad'],
         ['Syracuse · The Valley', 'flashback-syracuse-quad', null],
@@ -61,6 +62,7 @@
         ['Syracuse · Hall of Languages', 'gekkoukan-classroom-day', 'gekkoukan-classroom-evening'],
         ['Syracuse · Honors Dorm', 'green-bedroom', null],
         ['Syracuse · eSports Lab', 'epi-r-esports-lab', null],
+        ['Syracuse · Studio 4B · Hallway', 'epi-r-studio-stairs', 'epi-r-studio-stairs'],     // batch 77: the back stairs, night-lit, both slots
         ['Syracuse · Studio 4B', 'epi-r-studio-4b', null],
         ['Syracuse · Language Arts Rooftop · Snow', 'epi-r-rooftop-night-snow', 'epi-r-rooftop-night-snow'],
         ['Syracuse · Language Arts Rooftop', 'epi-r-rooftop-night', 'epi-r-rooftop-night'],
@@ -68,7 +70,7 @@
         ['Syracuse', 'flashback-syracuse-quad', null]
       ],
       weatherFx: { outdoor: ['flashback-syracuse-quad', 'flashback-alphaphi-house', 'epi-r-rooftop-night', 'epi-r-rooftop-night-snow', 'epi-r-quad-day', 'epi-r-marshall-st'], sealed: [], none: ['epi-r-regionals'] },
-      home: { place: 'Syracuse · Alpha Phi House · Her Room', bg: 'pink-bedroom' },
+      home: { place: 'Syracuse · Alpha Phi House · Her Room', bg: 'epi-r-her-room' },
       school: { place: 'Syracuse · The Quad', bg: 'epi-r-quad-day' },
       activities: [
         { id: 'epi-r-coffee', name: 'Coffee on Marshall Street', place: 'Syracuse · Marshall Street · Café', bg: 'chagall-cafe-inside', slots: ['after', 'evening'], cost: 7, stats: { charm: 1 },

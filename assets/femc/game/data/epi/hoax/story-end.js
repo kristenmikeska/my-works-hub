@@ -238,7 +238,7 @@
   ] },
 
   // ───────────────────────────────── 1/11, the hearing ─────────────────────────────────
-  { id: 'epi-h-hearing', date: '1/11', slot: 'after', consumes: true, title: 'the hearing', place: 'Hanlim · School · Gym', time: 'After School', scene: [
+  { id: 'epi-h-hearing', date: '1/11', slot: 'after', consumes: true, title: 'the hearing', place: 'Hanlim · School · Gym · Hearing', time: 'After School', scene: [
     { music: 'epi-h-hearing' },
     { n: "Hanlim had never had an impeachment hearing before, which was the first thing Chaewon said into the microphone, and the second thing was that it would therefore be run properly, and the third thing, when the bleachers didn't quiet down, was nothing at all. She just stood at the podium with her hands folded on her index cards and waited, perfectly still, until every single person in the gym was a little bit afraid of her, which took about eleven seconds." },
     { s: 'chaewon', t: "Thank you." },
