@@ -1,6 +1,6 @@
 # Art to make
 
-**100 items:** 9 story CGs · 18 places · 26 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 85 are optional; none are ⭐.
+**112 items:** 12 story CGs · 23 places · 30 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 95 are optional; none are ⭐.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -89,6 +89,32 @@ Save as: `epi-h-held-cg.png`
 Persona 3 Reload style event CG, 16:9, no text. The same high-school gym as the third attached image at midnight, the lights off, only the green exit signs and moonlight through the high windows, blue and silver balloons and string lights left from a dance nobody finished. In the middle of the floor Jungwon (the second attached image's face; a dark winter coat over his navy school blazer, dark hair in his eyes, a watch on his wrist) holds Solar (the first attached image's face; long dark hair, a navy Hanlim blazer, a small gold pin) against him with both arms, leaning back as if against a pull, his face set and very calm. Solar's edges are coming apart into fine light, Dark Hour green at her edges. From somewhere above and behind them, through a seam in the air, warm gold light pours in like a song, lighting one side of both their faces. In Jungwon's hand, pulled from her coat pocket, an unopened pink-and-black energy-drink can. Desperate, quiet, informed. Keep both faces clear of the edges.
 ```
 
+
+### The epilogue: strangers
+
+**[ ] The first full moon** *(optional)*  
+A night out in the strangers epilogue's second week.  
+Attach: Haechan, Jungwon, `bg/port-island-pier-night.webp` (for the light only)  
+Save as: `epi-s-moon-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no readable text. A seaside promenade at night in deep winter, packed with people holding paper lanterns and phones up to the sky, a bonfire of straw and pine on the beach below the railing throwing sparks, the black sea beyond. A huge full moon hangs low over the water, and for one breath it has gone the sick green of the Dark Hour, its light turning every lantern and face in the crowd faintly green. At the far left end of the crowd, Haechan (the first attached image's face; sun-browned, a black padded work jacket, hands in his pockets) is looking up at it; at the far right end, Jungwon (the second attached image's face; a long dark coat, very straight, one wrist with a watch half-raised) is looking up at it too. Neither is looking at the other. Everyone else is looking at their phones. Keep both faces clear of the edges.
+```
+
+**[ ] The tide** *(optional)*  
+A set piece in the strangers epilogue's third week.  
+Attach: Solar, `bg/flashback-incheon-harbor.webp`  
+Save as: `epi-s-tide-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. Grey mudflats at dawn stretching away from the harbor of the attached background (the same cranes and lights far behind), the air hazy and yellow-brown with dust. Solar (the first attached image's face; long dark hair down and blowing, a dark wool coat, mud to the shins of her boots, a jade ring on her right hand) stands alone on the mud, small, looking up. In front of her the incoming tide has stopped mid-flow: a long wall of grey sea water standing upright and perfectly still, taller than she is, foam frozen on its crest, a gull hanging motionless above it, everything faintly tinted Dark Hour green at its edges. Far behind her on the seawall, tiny figures of fishermen pointing. Silent, enormous, wrong. Keep her face clear of the edges.
+```
+
+**[ ] Held (strangers)**  
+The last scene of the strangers epilogue.  
+Attach: Solar, Haechan, Jungwon, `bg/flashback-lee-house.webp`  
+Save as: `epi-s-held-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The garden of the attached traditional house by the sea before dawn, its red lanterns over the gate still lit, a small concrete annex with a steel door at the bottom of the garden, the bay below gone out to the horizon so the mudflats shine grey under the last of the night. Solar (the first attached image's face; long dark hair down, a dark wool coat over sleep clothes, barefoot) stands between two young men who are each holding one of her hands and leaning back as if against a pull: Haechan (the second attached image's face; all in black, a black padded jacket, a knife scar through one eyebrow) holds her left hand in both of his; Jungwon (the third attached image's face; a long dark coat, a watch on his wrist) holds her right hand in his right. They are not looking at each other. Her edges are coming apart into fine light, Dark Hour green at the edges, and the jade ring on her right hand catches the green. Desperate, quiet, cold. Keep all three faces clear of the edges.
+```
 
 ### The epilogue: Stay and the true ending
 
@@ -261,6 +287,48 @@ Save as: `epi-h-party.png`
 Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the big living room of an expensive house whose owners are away, mid-party at night: coloured party lights, a speaker on the kitchen island, red cups on every surface, coats piled on a sofa, a staircase going up, a sliding door open onto a snowy deck. Loud and warm and a little out of control. Match the painted style of the attached image. Keep everything important away from the edges.
 ```
 
+### The epilogue: strangers
+
+**[ ] The Lee kitchen** *(optional)*  
+The kitchen of Solar's family home in the strangers epilogue (now the dorm kitchen stands in).  
+Attach: `bg/flashback-lee-house.webp`  
+Save as: `epi-s-lee-kitchen.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the big kitchen inside the same traditional house as the attached image, early on a winter morning: a long scrubbed wooden table with mismatched chairs for ten, a huge rice cooker and a steaming kettle, a stove with a worn armchair beside it, onggi jars by the back door, and through the open back door a stone step with a red plastic bucket on it holding two orange koi under a skin of ice. A paper wall calendar by the door with a number circled. Warm lamp light against blue dawn at the windows. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The annex** *(optional)*  
+The small building at the bottom of the garden in the strangers epilogue (now the house's gate stands in).  
+Attach: `bg/flashback-lee-house.webp`  
+Save as: `epi-s-annex.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the bottom of the garden of the same traditional house as the attached image, at night: a small square concrete annex with a heavy steel door standing open, a worn granite step in front of it, an old silver transistor radio on the window sill, a crane-patterned quilt visible on an iron bed inside, a bare bulb. Pine branches, frost on the ground, the house's red lanterns glowing up the slope behind, and the dark harbor and its lights below the garden wall. Quiet and cold. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The mudflats** *(optional)*  
+The harbor at low tide in the strangers epilogue (now the harbor itself stands in).  
+Attach: `bg/flashback-incheon-harbor.webp`  
+Save as: `epi-s-harbor-tide.png`
+```
+Edit this picture. Keep the same harbor, cranes, lights and angle in the same art style; change it to the dead low tide of a grey winter dawn: the water gone out to the horizon, wide shining mudflats in its place with channels of left-behind water, small boats lying tilted on the mud, a stone seawall with old landing steps going down onto the flats in the foreground. Cold, wide, empty. 16:9, no people, no readable text.
+```
+
+**[ ] The first full moon** *(optional)*  
+A promenade by the sea on a festival night in the strangers epilogue (now Port Island's pier stands in).  
+Attach: `bg/port-island-pier-night.webp` (for the light only)  
+Save as: `epi-s-daeboreum.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a Korean seaside promenade at night in winter, a railing along the sea wall, shuttered amusement rides (a pirate-ship swing ride) with coloured bulbs, food carts with steam rising, strings of paper lanterns, a big straw-and-pine bonfire tower on the beach below, and a huge full moon rising over the black sea. Festive, cold, a little lonely. Keep everything important away from the edges.
+```
+
+**[ ] The street in the dust** *(optional)*  
+A city street in the yellow dust in the strangers epilogue (now a shopping street stands in).  
+Attach: `bg/shopping-street.webp` (for the style only)  
+Save as: `epi-s-dust.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a Korean port-city street in early spring under a yellow-dust haze, the sky the colour of weak tea, the far end of the street fading into brown-gold air, a pedestrian crossing with its signal lit, a pharmacy with boxes of white face masks stacked in the window, shop signs blurred by the dust, a bus stop with a shelter. Muffled, flat light, everything slightly unreal. Keep everything important away from the edges.
+```
+
 ## 3. Characters (ChatGPT)
 
 ### The epilogue: Runners
@@ -393,6 +461,40 @@ Attach: Fuuka (for the style), Solar (for a family likeness)
 Save as: `KimDad-sheet.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same Korean man around fifty in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image, with a family likeness to the second attached image. Short greying hair, a loosened tie, a navy sweater over a work shirt. Tired, kind, mostly quiet. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+### The epilogue: strangers
+
+**[ ] Solar's strangers look**  
+Solar's face at home in the strangers epilogue (she speaks without a portrait there now).  
+Attach: Solar  
+Save as: `Solar-strangers-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same young woman as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only her clothes and two details: a dark charcoal wool coat over a cream knit sweater, long dark hair down with a loose wave, and a carved jade ring on her right hand visible where it rests near her collar; no armband. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Appa (strangers)** *(optional)*  
+Solar's father, at home in the strangers epilogue.  
+Attach: Fuuka (for the style), Solar (for a family likeness)  
+Save as: `LeeAppa-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same Korean man in his mid-fifties in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image, with a family likeness to the second attached image (the same eyes). Short greying hair, reading glasses on a cord around his neck, a soft brown cardigan over an open-collared shirt. A soft-spoken man nobody interrupts. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Eomma (strangers)** *(optional)*  
+Solar's mother, at home in the strangers epilogue.  
+Attach: Fuuka (for the style), Solar (for a family likeness)  
+Save as: `LeeEomma-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same elegant Korean woman around fifty in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image, with a family likeness to the second attached image. Dark hair pinned up perfectly, small pearl earrings, a cream cardigan over a silk blouse. Cool, composed, never raises her voice. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Chaewon, Sakura, Kazuha and Eunchae, strangers outfits** *(optional)*  
+Yunjin's friends from her old dance studio in the strangers epilogue (one sheet each).  
+Attach: Fuuka (for the style), a photo of the member  
+Save as: `<Name>-strangers-sheet.png` (four sheets)
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She is in her early twenties in winter going-out clothes: a long coat, a thick scarf, small earrings, a dancer's posture. No text.
 ```
 
 ### Evoker close-ups
