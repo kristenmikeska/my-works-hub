@@ -19,11 +19,24 @@ Kat's list of art to make is `FEMC-ART-TODO.md`. This file holds everything tech
 ## Where each item goes (keyed by its name in FEMC-ART-TODO.md)
 
 ### 1. Story CGs (ChatGPT)
-None left (batch 51 wired the last seven).
+- **Runners epilogue CGs** (epilogue batch 3): convert to `cg/<name>.webp` (no `-cg`), 16:9 like the other CGs.
+  - **Regionals: the result** (`epi-r-regionals-cg.png` → `cg/epi-r-regionals.webp`): add `{ cg: 'epi-r-regionals' }` in `data/epi/runners/story-w1.js` `epi-r-regionals-2` where the final's result lands (before the celebration), and `{ cg: null }` before Minji's closure.
+  - **The studio: her voice, this time** (`epi-r-studio-cg.png` → `cg/epi-r-studio.webp`): add `{ cg: 'epi-r-studio' }` in `story-w2.js` `epi-r-studio` at the re-recorded take on the Haechan branch (`ifEpiRoute: 'haechan'`), `{ cg: null }` after playback. Bump `DATA_V` in `epilogue.js` (all of a world's files share it).
 
 ### 2. Places (Gemini)
+- **Runners epilogue places** (epilogue batch 3): convert to `bg/<save name>.webp`; each replaces a stand-in background rule in `assets/femc/game/data/epi/runners/world.js` `places.bg` (the place prefix stays; change the day image, and the evening image where noted). Then bump `DATA_V` in `epilogue.js`, add outdoor ones to `weatherFx.outdoor`, and run `tools/femc-check-scenes.py` and `tests/femc_epilogue.py --only runners1` (its walk loads every background).
+  - **Studio 4B** → `Syracuse · Studio 4B` (stand-in `record-shop-listening-booth`; also take it out of `weatherFx.sealed`: the new room has a window).
+  - **The eSports lab** → `Syracuse · eSports Lab` (stand-in `respawn-cafe-evening`), and `practice.bg` plus the `epi-r-vod` activity's `bg`.
+  - **The Language Arts rooftop at night** → `Syracuse · Language Arts Rooftop` (stand-in `rooftop-citynight`); outdoor. Week 3 (batch 4) wants a snow version (`epi-r-rooftop-night-snow`, plan section 7) for 12/20.
+  - **Regionals** → `Syracuse · Regionals` (stand-in `screenshot-theater`; keep it in `weatherFx.none`).
+  - **Marshall Street in the snow** → `Syracuse · Marshall Street` (stand-in `flashback-syracuse-quad`; keep the `· Café` rule above it on `chagall-cafe-inside`), and the `epi-r-books` activity's `bg`; outdoor.
+  - **The lecture hall** → `Syracuse · Lecture Hall` (stand-ins `gekkoukan-classroom-day` / `-evening`; one image for both).
+  - **The Alpha Phi kitchen** → add a rule `['Syracuse · Alpha Phi House · Kitchen', 'epi-r-alpha-kitchen', null]` above the house's own rule (today the kitchen shows the house from outside).
+  - **The quad by day** → `Syracuse · The Quad` day image `epi-r-quad-day`, evening `flashback-syracuse-quad` (and the same for `· The Valley`, `· Football Complex`, `· Marshall Street` if wanted); `places.school.bg`; outdoor.
 
 ### 3. Characters (ChatGPT)
+- **Runners epilogue faces** (epilogue batch 3): each sheet is 3 × 2 (neutral, happy, sad, serious, surprised, flustered); cut with `tools/femc-lift.swift` + `tools/femc-portraits.py` (it rewrites `portraits/index.js`), size in `portraits/scale.js` against Hanni and Minji, and check a face in a scene. Speaker ids are already in the scenes and named in `assets/femc/game/data/epi/runners/world.js` `cast`: `sakura`, `eunchae`, `kazuha`, `chaewon`, `doyoung`, `olivia`, `haerin`, `jeno` (folder `portraits/<id>/`). Once the index lists faces for an id they show everywhere with no other change. Run `tests/femc_epilogue.py --only runners1`.
+  - **Solar's Runners look** (`Solar-Runners-sheet.png`): needs a small engine hook. `core.js portrait('solar')` returns nothing without the armband flag, and an epilogue state never has it. Cut to `portraits/solar-runners/`, then in `portrait()` (before the armband rule) read the world's own Solar: e.g. `if (id === 'solar' && S.epi && inWorld()?.solarFace) id = inWorld().solarFace;` with `solarFace: 'solar-runners'` in `world.js` (passed through `epilogue.js build()` like `cast`). HOAX and strangers get theirs the same way (plan section 7).
 - **Jihoon's Evoker shot** (save as `jihoon-evoker.png`): `battle/art/summon/jihoon-evoker.webp`; `data.js` member `evoker: { shot, at: [muzzle x%, y%], pos, posPhone }`.
 - **Minji's Evoker shot** (save as `minji-evoker.png`): `battle/art/summon/minji-evoker.webp`; `data.js` member `evoker: { shot, at: [muzzle x%, y%], pos, posPhone }`.
 - **Evoker sheets (raise, shot, lower)** (save as `<name>-evoke-sheet.png (e.g. akihiko-evoke-sheet.png)`): `battle/art/summon/<mid>-evoke-0..2.webp`; `('evoker', '<file>', '<mid>-evoke')` in `tools/femc-theurgy.py BUILD`, then the member's `evoker.frames`.

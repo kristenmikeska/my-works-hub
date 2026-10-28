@@ -1,6 +1,6 @@
 # Art to make
 
-**57 items:** 10 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 51 are optional; none are ⭐.
+**76 items:** 2 story CGs · 8 places · 19 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 68 are optional; none are ⭐.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -29,14 +29,170 @@ Places, expressions, outfit portraits and the items that name their own pictures
 
 ## 1. Story CGs (ChatGPT)
 
-Nothing to make here right now.
+### The epilogue: Runners
+
+**[ ] Regionals: the result** *(optional)*  
+The moment the result lands at Regionals, in the Runners epilogue.  
+Attach: Solar, Minji, `bg/screenshot-theater.webp` (for the light only)  
+Save as: `epi-r-regionals-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A college esports tournament booth at night: Solar (the first attached image's face; long dark waved hair) and Minji (the second attached image's face; a black cap worn backwards) side by side at two gaming PCs with headsets on, in matching bright orange team jerseys with navy shoulder panels, the moment the result lands: Minji half out of her chair, Solar perfectly still with one hand pressed flat on the desk and the smallest smile, the big screen behind them washing them in white light, a dark crowd beyond the glass. Warm, loud, exhausted joy. Keep both faces clear of the edges.
+```
+
+**[ ] The studio: her voice, this time** *(optional)*  
+Solar recording in Studio 4B, in the Runners epilogue.  
+Attach: Solar, Haechan  
+Save as: `epi-r-studio-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A small, ordinary college music studio at night: a mixing desk with two monitor speakers, a cheap desk lamp, one lit window. Behind a glass pane, in a little vocal booth, Solar (the first attached image's face; long dark waved hair, a navy coat over an orange Syracuse hoodie) sings into a microphone with one hand on her headphones, eyes closed. In the foreground at the desk, Haechan (the second attached image's face; dressed all in black, heavy black headphones round his neck) sits with his hands on the faders, deliberately not watching her, looking at the screen. A small orange fox keycap on the keyboard by his hand. No neon. Quiet and close.
+```
 
 ---
 
 ## 2. Places (Gemini)
 
+### The epilogue: Runners
+
+**[ ] Studio 4B**  
+Haechan's studio in the Runners epilogue (now a record-shop listening booth stands in).  
+Attach: `bg/flashback-syracuse-quad.webp` (for the style only)  
+Save as: `epi-r-studio-4b.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small, ordinary college music studio at night, upstairs in a campus building: a mixing desk with two monitor speakers, two office chairs (a bag slung over one), a laptop open on the desk, a microphone in a small vocal booth behind a glass pane, acoustic foam on one wall, one lit window with snow outside. The door is ajar and has "4B" on it. Warm desk-lamp light, no neon. Match the painted style and lighting of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The eSports lab** *(optional)*  
+The SU eSports team's practice room in the Runners epilogue (now an Iwatodai gaming café stands in).  
+Attach: `bg/flashback-syracuse-quad.webp` (for the style only)  
+Save as: `epi-r-esports-lab.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a college esports practice lab in the evening: two rows of gaming PCs with RGB keyboards glowing, team jerseys in bright orange with navy shoulder panels hung over the backs of chairs, a whiteboard with a practice count in marker and a countdown taped up beside it, a coach's clipboard on a desk, snow at a high window. Syracuse orange and navy everywhere. The keyboards are plain except one with a single small orange fox keycap. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The Language Arts rooftop at night** *(optional)*  
+The rooftop Haechan and Solar go to in the Runners epilogue (now an Iwatodai rooftop stands in).  
+Attach: `bg/flashback-syracuse-quad.webp`  
+Save as: `epi-r-rooftop-night.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the flat rooftop of an old stone campus building at night, reached by a metal ladder at one side: a concrete ledge, a vent stack, old snow in the corners, and beyond the ledge the campus below (the same Hall of Languages towers and domed chapel as the attached image, seen from above) and the small city lights further off. A single pink energy-drink can stands on the ledge. Cold, quiet, a little hidden. Keep everything important away from the edges.
+```
+
+**[ ] Regionals** *(optional)*  
+The tournament venue in the Runners epilogue (now a cinema stands in).  
+Attach: `bg/flashback-syracuse-quad.webp` (for the style only)  
+Save as: `epi-r-regionals.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a college esports tournament in a downtown convention hall, not a stadium: a low stage with two glass-fronted team booths of gaming PCs facing each other, a caster desk with two microphones and monitors to one side, a huge screen above the stage, rows of folding seats and a crowd in the dark lit by phone screens, orange and navy banners. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Marshall Street in the snow** *(optional)*  
+The college street in the Runners epilogue (now the quad stands in).  
+Attach: `bg/flashback-syracuse-quad.webp`  
+Save as: `epi-r-marshall-st.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a college shopping street in the evening in falling snow: a café with steamed-up windows, a used bookstore, a bar with a neon beer sign, a pizza place, orange Syracuse banners on the lampposts, slush in the gutters and footprints on the pavement. The same painted style and the same kind of lamppost as the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The lecture hall** *(optional)*  
+Statistics in the Runners epilogue (now a Gekkoukan classroom stands in).  
+Attach: `bg/flashback-syracuse-quad.webp` (for the style only)  
+Save as: `epi-r-lecture-hall.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: an empty university lecture hall at the end of class: tiered rows of seats with fold-down desks curving down to a lecturer's bench and a projector screen still showing a statistics slide, grey winter light through tall windows, a forgotten coffee cup on one desk, one seat a few rows up that looks like it was left in a hurry. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The Alpha Phi kitchen** *(optional)*  
+The sorority house kitchen in the Runners epilogue (now the house's outside stands in).  
+Attach: `bg/flashback-alphaphi-house.webp`  
+Save as: `epi-r-alpha-kitchen.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the kitchen inside the same old white sorority house as the attached image, morning: a big island with stools, pink everything (mugs, a kettle, a sign that says nothing readable), a stack of pancakes on a plate, sparkling water bottles, a corkboard of photos and chore lists, snow on the window over the sink. Warm, lived-in, a little chaotic. Keep everything important away from the edges.
+```
+
+**[ ] The quad by day** *(optional)*  
+Daytime on the quad in the Runners epilogue (now the night picture stands in for both).  
+Attach: `bg/flashback-syracuse-quad.webp`  
+Save as: `epi-r-quad-day.png`
+```
+Edit this picture. Keep the same Hall of Languages towers, domed chapel and lamppost, from exactly the same angle and in the same art style; change it to a grey December day: overcast daylight, the snow salted into grey paths, students in parkas crossing with their hoods up, the lamppost unlit. 16:9, no readable text.
+```
+
 
 ## 3. Characters (ChatGPT)
+
+### The epilogue: Runners
+
+**[ ] Solar's Runners look**  
+Solar's face at home in the Runners epilogue (she speaks without a portrait there now).  
+Attach: Solar  
+Save as: `Solar-Runners-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same young woman as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only her clothes: a navy wool coat open over an orange Syracuse University hoodie, no armband; long dark waved hair down. Cool tones, slight and composed. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Sakura** *(optional)*  
+The guest caster at Regionals.  
+Attach: Fuuka (for the style), a photo of Sakura  
+Save as: `Sakura-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a black caster's headset with a small boom mic over her hair and a cream knit sweater with a tournament lanyard. No text.
+```
+
+**[ ] Eunchae** *(optional)*  
+The high-school senior on a campus visit.  
+Attach: Fuuka (for the style), a photo of Eunchae  
+Save as: `Eunchae-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a puffy white winter jacket, a striped scarf and an orange campus-tour lanyard with a visitor badge. No text.
+```
+
+**[ ] Kazuha** *(optional)*  
+A voice on the demo Haechan is mixing.  
+Attach: Fuuka (for the style), a photo of Kazuha  
+Save as: `Kazuha-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a soft grey cardigan over a white top, studio headphones round her neck. No text.
+```
+
+**[ ] Chaewon** *(optional)*  
+A voice on the demo Haechan is mixing.  
+Attach: Fuuka (for the style), a photo of Chaewon  
+Save as: `Chaewon-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears an oversized black hoodie, studio headphones round her neck. No text.
+```
+
+**[ ] Doyoung** *(optional)*  
+The eSports coach.  
+Attach: Fuuka (for the style), a photo of Doyoung  
+Save as: `Doyoung-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for his face and hair only. He wears a navy Syracuse eSports staff quarter-zip with a small orange logo, a lanyard, and looks like he is counting practices. No text.
+```
+
+**[ ] Olivia** *(optional)*  
+The loudest player on the team.  
+Attach: Fuuka (for the style), a photo of Olivia Hye  
+Save as: `Olivia-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a bright orange team jersey with navy shoulder panels and a gaming headset round her neck. No text.
+```
+
+**[ ] Haerin** *(optional)*  
+The quietest player on the team.  
+Attach: Fuuka (for the style), a photo of Haerin  
+Save as: `Haerin-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a bright orange team jersey with navy shoulder panels and a gaming headset round her neck. No text.
+```
+
+**[ ] Jeno** *(optional)*  
+Sigma Chi's Sergeant-at-Arms, at the parties.  
+Attach: Fuuka (for the style), a photo of Jeno  
+Save as: `Jeno-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for his face and hair only. He wears a black open-collar party shirt with the sleeves pushed up, easy and in charge of the room. No text.
+```
 
 ### Evoker close-ups
 
