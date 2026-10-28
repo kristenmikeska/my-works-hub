@@ -332,10 +332,10 @@ window.FemcGame = (() => {
   function newGame() { S = fresh(); S.started = true; S.phase = 'prologue'; S.runId = newRunId(); save(); }
 
   /* ── Settings ── */
-  // One store for the whole game. Story: text, auto, dateCard, quickClass. Battle (battle.js pullSettings maps these onto its
+  // One store for the whole game. Story: text, auto, dateCard, quickClass, glitchFx (the epilogue's glitch.js). Battle (battle.js pullSettings maps these onto its
   // own names): battleSpeed, cutins, showtimes, difficulty, remember, rushWhere, rushStop, shake, calm, numbers, tips, pad, perf. Both:
   // text (also the battle's text speed), music (0-100, 0 = off; musicLast remembers the volume), sfx, sfxVol.
-  const DEFAULTS = { text: 'normal', music: 60, musicLast: 60, sfx: true, sfxVol: 100, auto: 'off', dateCard: true, battles: 'ask', quickClass: false, wxFx: true, wxSound: 60,
+  const DEFAULTS = { text: 'normal', music: 60, musicLast: 60, sfx: true, sfxVol: 100, auto: 'off', dateCard: true, battles: 'ask', quickClass: false, wxFx: true, wxSound: 60, glitchFx: 'full',
     battleSpeed: 1, cutins: 'first', showtimes: 'on', difficulty: 'normal', remember: true, rushWhere: 'normal', rushStop: 30, shake: true, calm: false, numbers: true, tips: true, pad: 'auto', perf: false };
   let settingsRaw = (() => { try { return JSON.parse(lsGet(SETTINGS_KEY) || '{}') || {}; } catch (e) { return {}; } })();
   // The merge: battle preferences come from the playthrough's battle save the first time (difficulty, Rush, cut-ins…).
@@ -850,8 +850,9 @@ window.FemcGame = (() => {
     // Dates: ifAfter is "on or after" (like a rank's `after`), ifBefore is "strictly before"; they're each other's else.
     else if (line.ifAfter) ok = S.day >= dayOf(line.ifAfter);
     else if (line.ifBefore) ok = S.day < dayOf(line.ifBefore);
-    // The epilogue's conditions (epilogue.js cond): ifYear reads the finished year (S.year1), ifEpiRoute the epilogue's route.
-    else if (line.ifYear || line.ifEpiRoute) ok = W.FemcEpilogue ? !!W.FemcEpilogue.cond(line) : false;
+    // The epilogue's conditions (epilogue.js cond): ifYear reads the finished year (S.year1), ifEpiRoute the epilogue's route,
+    // ifGlitch the glitch stage (glitch.js; never true outside the epilogue).
+    else if (line.ifYear || line.ifEpiRoute || line.ifGlitch !== undefined) ok = W.FemcEpilogue ? !!W.FemcEpilogue.cond(line) : false;
     if (ok === null) return null;
     return (ok ? line.then : line.else) || [];
   }

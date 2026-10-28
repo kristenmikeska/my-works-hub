@@ -14,6 +14,9 @@
    in a storm, a quiet wind for snow; muffled indoors. It sits under the music: Weather sound (0-100) × SFX volume, off with
    Sound effects off, and starts only after the player's first click or key (browsers keep audio locked until then).
    Settings (core.js DEFAULTS): wxFx (Weather effects, on/off), wxSound (Weather sound, 0 = off).
+   Glitch modes (the epilogue's glitch.js, 2026-10-27): glitch('rise') makes the snow or rain go up (slowly, for rain),
+   glitch('hold') freezes it in the air (one still frame, no loop); glitch(null) ends it. A clear or sealed place gets a
+   little snow (rise) or rain (hold) for the length of it; indoors, the drops on the glass rise or hang. Sound unchanged.
    Tests: FemcWeather.state(). */
 window.FemcWeather = (() => {
   const G = window.FemcGame;
@@ -48,7 +51,7 @@ window.FemcWeather = (() => {
   const cv = host.querySelector('canvas'), cx = cv.getContext('2d'), flashEl = host.querySelector('.g-wx-flash');
   let field = null;            // { el, slug }
   const scenes = [];           // [{ el, slug, none }] in the order they opened
-  let paused = false, cur = { level: 'clear', where: 'none' }, key = '';
+  let paused = false, cur = { level: 'clear', where: 'none' }, key = '', gm = null; // gm: a glitch mode (glitch.js)
   let drops = [], raf = 0, last = 0, acc = 0, W = 0, H = 0, flashTimer = 0, flashes = 0, frames = 0;
 
   const active = () => { for (let i = scenes.length - 1; i >= 0; i--) { if (scenes[i].el.isConnected) return scenes[i]; scenes.splice(i, 1); } return field; };
@@ -59,14 +62,18 @@ window.FemcWeather = (() => {
   }
   function apply() {
     const c = active();
-    const want = st().wxFx === false ? { level: 'clear', where: 'none' } : decide(c);
-    const k = `${want.level}|${want.where}|${!!c}|${reduced.matches}|${st().calm}|${st().perf}`;
+    let want = st().wxFx === false ? { level: 'clear', where: 'none' } : decide(c);
+    if (gm && c && !paused) { // a glitch keeps what's falling, or brings a little of its own
+      const where = want.where === 'in' ? 'in' : 'out';
+      want = { level: where === 'in' ? (RAIN[want.level] ? want.level : 'drizzle') : RAIN[want.level] || SNOW[want.level] ? want.level : gm === 'rise' ? 'light' : 'rain', where };
+    }
+    const k = `${want.level}|${want.where}|${!!c}|${reduced.matches}|${st().calm}|${st().perf}|${gm || ''}`;
     mount(c);
     sound(decide(c));
     if (k === key && c === lastHost) return;
     key = k; lastHost = c; cur = want;
     const lv = want.where === 'none' || want.where === 'sealed' ? 'clear' : want.level;
-    host.className = `g-wxfx wx-${lv} at-${want.where}${reduced.matches ? ' still' : ''}`;
+    host.className = `g-wxfx wx-${lv} at-${want.where}${reduced.matches ? ' still' : ''}${gm ? ` glx-${gm}` : ''}`;
     host.hidden = lv === 'clear';
     resize(); seed(lv, want.where);
     clearTimeout(flashTimer);
@@ -105,12 +112,16 @@ window.FemcWeather = (() => {
     const lv = cur.level, where = cur.where;
     if (!drops.length) return;
     frames++;
+    if (gm === 'hold') dt = 0; // hangs in the air
+    const up = gm === 'rise';
     if (where === 'in') { // drops on the window: they sit, then run down, leaving a short trail
       cx.fillStyle = 'rgba(215, 228, 248, .22)'; cx.strokeStyle = 'rgba(215, 228, 248, .16)'; cx.lineWidth = 1.5;
       cx.beginPath();
       for (const d of drops) {
-        if (dt) { d.hold -= dt; if (d.hold <= 0) { d.v = Math.min(d.v + 90 * dt, 160); d.y += d.v * dt; d.trail = Math.min(26, d.trail + d.v * dt * 0.4); } }
+        if (dt && up) { d.y -= (30 + d.r * 10) * dt; d.trail = 0; }
+        else if (dt) { d.hold -= dt; if (d.hold <= 0) { d.v = Math.min(d.v + 90 * dt, 160); d.y += d.v * dt; d.trail = Math.min(26, d.trail + d.v * dt * 0.4); } }
         if (d.y > H + 10) Object.assign(d, spawn(lv, where, false));
+        else if (up && d.y < -10) Object.assign(d, spawn(lv, where, false), { y: H + R(0, 30) });
         cx.moveTo(d.x + d.r, d.y); cx.arc(d.x, d.y, d.r, 0, 6.283);
       }
       cx.fill();
@@ -128,8 +139,9 @@ window.FemcWeather = (() => {
       cx.beginPath();
       const t = performance.now() / 1000;
       for (const d of drops) {
-        if (dt) { d.y += d.v * dt; d.x += Math.sin(t * d.s + d.p) * 18 * dt + 6 * dt; }
+        if (dt) { d.y += d.v * dt * (up ? -0.8 : 1); d.x += Math.sin(t * d.s + d.p) * 18 * dt + 6 * dt; }
         if (d.y > H + 6 || d.x > W + 10) Object.assign(d, spawn(lv, where, false), { x: R(-10, W) });
+        else if (up && d.y < -6) Object.assign(d, spawn(lv, where, false), { x: R(-10, W), y: H + R(2, 20) });
         cx.moveTo(d.x + d.r, d.y); cx.arc(d.x, d.y, d.r, 0, 6.283);
       }
       cx.fill();
@@ -140,8 +152,9 @@ window.FemcWeather = (() => {
     cx.lineWidth = lv === 'storm' ? 1.4 : 1;
     cx.beginPath();
     for (const d of drops) {
-      if (dt) { d.y += d.v * dt; d.x += d.v * slant * dt; }
+      if (dt) { const k = up ? -0.18 : 1; d.y += d.v * dt * k; d.x += d.v * slant * dt * k; }
       if (d.y - d.len > H) Object.assign(d, spawn(lv, where, false));
+      else if (up && d.y < 0) Object.assign(d, spawn(lv, where, false), { y: H + d.len + R(0, 80) });
       cx.moveTo(d.x, d.y); cx.lineTo(d.x - d.len * slant, d.y - d.len);
     }
     cx.stroke();
@@ -150,7 +163,7 @@ window.FemcWeather = (() => {
   function loop() {
     cancelAnimationFrame(raf); raf = 0;
     if (host.hidden || !drops.length) { cx.clearRect(0, 0, W, H); return; }
-    if (reduced.matches) { draw(0); return; } // a still frame
+    if (reduced.matches || gm === 'hold') { draw(0); return; } // a still frame
     last = performance.now(); acc = 0;
     const tick = now => {
       raf = 0;
@@ -279,9 +292,11 @@ window.FemcWeather = (() => {
     pause(on) { paused = !!on; apply(); },
     // Settings changed, or the day did.
     refresh() { key = ''; apply(); },
+    // The epilogue's glitches: 'rise' | 'hold' | null. True if it shows somewhere.
+    glitch(mode) { gm = mode === 'rise' || mode === 'hold' ? mode : null; key = ''; apply(); return !!gm && !host.hidden && host.isConnected; },
     flash: lightning,
     state: () => ({ level: cur.level, where: cur.where, shown: !host.hidden && host.isConnected, host: host.parentNode?.className || null, drops: drops.length, frames, flashes,
-      flashing: flashEl.className, still: host.classList.contains('still'), audio: { ctx: !!A.ctx, on: !!A.key, key: A.key, want: A.want, thunders: A.thunders || 0 } }),
+      flashing: flashEl.className, still: host.classList.contains('still'), glitch: gm, audio: { ctx: !!A.ctx, on: !!A.key, key: A.key, want: A.want, thunders: A.thunders || 0 } }),
     placeKind
   };
 })();

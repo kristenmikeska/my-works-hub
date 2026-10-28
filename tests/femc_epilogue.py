@@ -1,6 +1,6 @@
 """The epilogue (FEMC-EPILOGUE-PLAN.md; batch 1, 2026-10-27: the engine, with stand-in worlds).
 
-  python3 tests/femc_epilogue.py [--only engine,saves,shots] [--screenshots /absolute/dir]
+  python3 tests/femc_epilogue.py [--only engine,saves,glitch,shots] [--screenshots /absolute/dir]
 
 engine   the end screen's Epilogue button on the Runners, strangers and HOAX home endings (none on bad, true or Stay); the
          save-first offer writes the finished year to a slot; entering from each eligible ending tucks the year into the save
@@ -13,6 +13,13 @@ engine   the end screen's Epilogue button on the Runners, strangers and HOAX hom
          against Python's dates for the whole year, slots, money, data sources, and the weather before and after a world).
 saves    mid-epilogue saves in a slot and by backup code, each loaded into a fresh page (the world loads on demand, the slot
          reads "Epilogue · Syracuse · Dec …"); the year inside migrates like any save; an old save loads untouched.
+glitch   (batch 2, glitch.js) never in the main game (a year save: no glitch from any call, a scene's glitch lines pass, no
+         hands choice, no state); in the epilogue every kind plays and cleans up (no tint, overlay, swapped face, clock, audio
+         or weather mode left behind), the date card's own flicker, hands unpickable and pickable, scene lines and ifGlitch;
+         the stages escalate (floors by date, midnight, full moon, thin place, constant, strain, a story's own stage, cap 4);
+         the same seed rolls the same glitches after a reload; the stand-ins' schedule through the real UI (the opening
+         scene's tint and hands, the station card greyed and then open); Glitch effects Full / Gentle / Off through the settings
+         panel, Reduce flashes (fades) and reduced motion (still frames); one desktop / phone pair mid-glitch.
 shots    one desktop / phone pair of the end-screen button and of an epilogue day.
 No browser errors. Isolated browser profile and server; never the player's saves."""
 import base64, datetime, json, pathlib, sys, tempfile, time
@@ -20,7 +27,7 @@ from femc_browser import Page
 
 OUT = pathlib.Path(sys.argv[sys.argv.index('--screenshots') + 1]) if '--screenshots' in sys.argv else pathlib.Path(tempfile.mkdtemp(prefix='femc-epilogue-'))
 OUT.mkdir(parents=True, exist_ok=True)
-ONLY = set(sys.argv[sys.argv.index('--only') + 1].split(',')) if '--only' in sys.argv else {'engine', 'saves', 'shots'}
+ONLY = set(sys.argv[sys.argv.index('--only') + 1].split(',')) if '--only' in sys.argv else {'engine', 'saves', 'glitch', 'shots'}
 checks = []
 
 
@@ -251,6 +258,155 @@ try:
         ok(not old['epi'] and not old['y1'] and old['day'] == 120 and old['slot'] == 'after' and old['flags'] == {'route-R': True} and old['md'] == '8/4' and old['cal'] and old['money'] == '¥12,345', f'an old save loads untouched ({old["md"]})')
         p.eval("['kg-femc-revamp-slot3'].forEach(k=>localStorage.removeItem(k))")
         errs = p.console(); ok(not errs, f'no browser errors in the save checks: {errs}')
+
+    if 'glitch' in ONLY:
+        p.goto('femc-game.html'); p.eval(HELPERS)
+        KINDS = ['tint', 'weather', 'clock', 'date', 'phone', 'map', 'face', 'sound', 'tear', 'name', 'hands']
+        ok(p.eval('FemcGlitch.KINDS') == KINDS, 'eleven glitch kinds')
+        # Never in the main game: a year save, mid-year and on its last night.
+        main = p.eval(r"""(async()=>{const G=FemcGame,GL=FemcGlitch;EP.year({'route-R':true});G.S.day=120;G.S.slot='late';G.save();
+          const plays=GL.KINDS.map(k=>GL.play({kind:k,ms:3000})),ticks=['card','morning','out','late'].map(w=>GL.tick(w));
+          let saw=0;const mo=new MutationObserver(()=>{if(document.querySelector('.g-glx,.gs-hand,.g-glx-dh,.g-glx-clock'))saw++});mo.observe(document.body,{subtree:true,childList:true,attributes:true});
+          let choices=null;FemcScene.play({scene:[{n:'a'},{glitch:'tint'},{glitch:'hands'},{glitch:{kind:'hands',pickable:true,then:[{flag:'glx-main'}]}},{glitch:{stage:4}},{choose:[{t:'(x)'}]},{ifGlitch:0,then:[{flag:'glx-g0'}]},{n:'b'}],onDone:()=>{},label:'t'});
+          for(let i=0;i<40&&document.querySelector('.gs:not(.out)');i++){const c=document.querySelectorAll('.gs:not(.out) .gs-choices button');if(c.length){choices=c.length;c[0].click()}else document.querySelector('.gs:not(.out)').click();await new Promise(r=>setTimeout(r,60))}
+          await new Promise(r=>setTimeout(r,300));mo.disconnect();
+          return {plays,ticks,saw,choices,state:'glitch' in G.S,stage:GL.stage(),active:GL.active(),flags:[!!G.S.flags['glx-main'],!!G.S.flags['glx-g0']],branch:JSON.stringify(G.branch({ifGlitch:0,then:['y'],else:['n']})),st:GL.state()}})()""")
+        ok(not main['active'] and all(x == 0 for x in main['plays']) and all(x is None for x in main['ticks']) and main['stage'] == 0, f'the main game: no kind plays and no screen rolls one ({main["plays"]})')
+        ok(main['saw'] == 0 and main['choices'] == 1 and not main['state'] and main['flags'] == [False, False] and main['branch'] == '["n"]' and main['st']['dom'] == 0 and main['st']['log'] == [],
+           f'the main game: a scene’s glitch lines pass silently, no hands choice, ifGlitch is never true, no glitch state saved ({main["choices"]} choice, {main["branch"]})')
+
+        # Into Runners (the stand-in demo). The opening scene's scheduled tint and hands play through the real UI.
+        p.eval("window.__hand=null;new MutationObserver(()=>{const h=document.querySelector('.gs-hand');if(h&&!window.__hand)window.__hand=[h.textContent,h.getAttribute('aria-disabled'),document.querySelectorAll('.gs-choices button').length]}).observe(document.body,{subtree:true,childList:true})")
+        enter('route-R')
+        ok(p.eval("FEMC_EPI_WORLDS.runners.glitches.length>0 && FemcGlitch.active()"), 'the world’s glitch file loads with it; glitches are live in the epilogue')
+        ok(step_until("FemcGame.S.events.includes('epi-r-stub-home') && !document.querySelector('.gs:not(.out)')"), 'the opening plays')
+        op = p.eval("(()=>{const s=FemcGlitch.state();return {seen:s.seen,kinds:s.log.map(x=>x.kind),hand:window.__hand,dom:s.dom}})()")
+        ok('epi-r-g-wake' in op['seen'] and 'epi-r-g-hands' in op['seen'] and op['kinds'][:2] == ['tint', 'hands'] and op['hand'] == ['(Evoke.)', 'true', 3], f'the opening scene’s scheduled tint and the unwritten (Evoke.) choice ({op["hand"]})')
+        ok(step_until("EP.screen()==='out'"), 'Go Out on 12/1')
+        p.eval("FemcGame.setSetting('music',40)")
+
+        # Every kind plays over a screen and leaves nothing behind.
+        PROBE = {
+          'tint': "!!document.querySelector('.g-bg.g-glx-dh') && !!document.querySelector('.g-glx-tint')",
+          'weather': "FemcWeather.state().glitch==='rise' && FemcWeather.state().shown && FemcWeather.state().drops>0",
+          'clock': "document.querySelector('.g-hud .g-slot').textContent==='12:00 AM' && !!document.querySelector('.g-hud .g-moon.g-glx-moon')",
+          'date': "!!document.querySelector('.g-glx-date') && document.querySelector('.g-glx-date').textContent.includes('4/6') && document.querySelector('.g-glx-date').textContent.includes('2009')",
+          'phone': "!!document.querySelector('.g-banners .g-glx-phone') && document.querySelector('.g-glx-phone').textContent.includes('Read 12:00 AM')",
+          'face': "!!document.querySelector('.g-glx-ghost:not([hidden])') && /portraits\\//.test(document.querySelector('.g-glx-ghost').src)",
+          'sound': "FemcGlitch.state().live>0",
+          'tear': "document.querySelectorAll('.g-glx-tear path').length===1 && document.querySelectorAll('.g-glx-tear .g-glx-glass i').length===6",
+          'name': "!!document.querySelector('.g-glx-name b') && document.querySelector('.g-glx-name').textContent.includes('Persona')",
+        }
+        CLEAN = "(()=>{const s=FemcGlitch.state();return s.dom===0&&s.live===0&&!s.weather&&!document.querySelector('.g-glx')&&document.querySelector('.g-hud .g-slot').textContent!=='12:00 AM'})()"
+        played = {}
+        for k, probe in PROBE.items():
+            dur = p.eval("FemcGlitch.play({kind:%s,ms:%d})" % (json.dumps(k), 1500 if k == 'face' else 900))
+            try: seen = p.wait(probe, 3)
+            except TimeoutError: seen = False
+            time.sleep(dur / 1000 + 0.5)
+            played[k] = [dur > 0, bool(seen), p.eval(CLEAN)]
+        ok(all(v == [True, True, True] for v in played.values()), f'nine screen kinds play, show and clean up ({played})')
+        # Weather's hold mode, and a weather glitch on a clear day indoors (drops on the glass).
+        wh = p.eval("(async()=>{FemcGlitch.play({kind:'weather',mode:'hold',ms:700});await new Promise(r=>setTimeout(r,100));const a=FemcWeather.state();const f0=a.frames;await new Promise(r=>setTimeout(r,300));const f1=FemcWeather.state().frames;await new Promise(r=>setTimeout(r,800));return [a.glitch,a.shown,f1-f0,FemcWeather.state().glitch]})()")
+        ok(wh[0] == 'hold' and wh[1] and wh[2] == 0 and wh[3] is None, f'weather hold: the drops hang (no frames drawn while held), then the weather is itself again ({wh})')
+        # The map: one greyed station card on Go Out (stage below 4), gone with the screen.
+        mp = p.eval("(()=>{const n=FemcGlitch.play({kind:'map'});const b=document.querySelector('.g-epi-acts .g-glx-station');return [b?b.textContent:null,b?b.disabled:null,document.querySelectorAll('.g-epi-act').length]})()")
+        ok(mp[0] and 'Iwatodai Station' in mp[0] and mp[1] is True and mp[2] == 3, f'the map: Iwatodai Station, greyed out ({mp})')
+        # The date on the date card itself.
+        dc = p.eval("(async()=>{FemcGame.setSetting('dateCard',true);FemcGameUI.dateCard(()=>{});FemcGlitch.play({kind:'date',md:'4/6',ms:1200});await new Promise(r=>setTimeout(r,900));const t=document.querySelector('.g-datecard .g-dc-days span:last-child').textContent+'|'+document.querySelector('.g-datecard .g-dc-month').textContent;await new Promise(r=>setTimeout(r,1300));const u=document.querySelector('.g-datecard .g-dc-days span:last-child')?.textContent;document.querySelectorAll('.g-datecard').forEach(x=>x.remove());FemcGame.setSetting('dateCard',false);return [t,u]})()")
+        ok(dc[0].startswith('4/6') and 'APRIL 2009' in dc[0] and (dc[1] is None or dc[1].startswith('12/1')), f'the date card flickers to an Iwatodai date, then back ({dc})')
+        # Hands: unpickable (it flickers and goes), then pickable (its lines play); scene lines and ifGlitch.
+        hd = p.eval(r"""(async()=>{const G=FemcGame,GL=FemcGlitch,out={};
+          FemcScene.play({scene:[{n:'x'},{glitch:'hands'},{choose:[{t:'(Wait.)'}]},{glitch:{kind:'hands',t:'(Evoke.)',pickable:true,then:[{flag:'glx-evoked'}]}},{choose:[{t:'(Wait.)'}]},
+            {glitch:'clock',wait:false},{n:'y'},{glitch:{stage:3}},{ifGlitch:3,then:[{flag:'glx-at3'}],else:[{flag:'glx-not3'}]},{ifGlitch:4,then:[{flag:'glx-at4'}]},{n:'z'}],label:'t',place:'Syracuse · The Quad',onDone:()=>{out.done=true}});
+          const S=ms=>new Promise(r=>setTimeout(r,ms)),sc=()=>document.querySelector('.gs:not(.out)');
+          sc().click();await S(80);
+          const h=sc().querySelector('.gs-hand');out.a=h?[h.textContent,h.getAttribute('aria-disabled')]:null;h&&h.click();await S(50);out.stay=!!sc().querySelector('.gs-choices button:not(.gs-hand)');
+          await S(2600);out.gone=!sc().querySelector('.gs-hand');sc().querySelector('.gs-choices button').click();await S(120);
+          const h2=sc().querySelector('.gs-hand.pick');out.b=h2?h2.textContent:null;h2&&h2.click();await S(120);
+          out.place=sc().querySelector('.gs-place span').textContent;
+          for(let i=0;i<10&&sc();i++){sc().click();await S(80)}
+          out.flags=['glx-evoked','glx-at3','glx-not3','glx-at4'].filter(k=>G.S.flags[k]);out.stage=GL.state().stage;await S(1700);out.clean=GL.state().dom;return out})()""")
+        ok(hd['a'] == ['(Evoke.)', 'true'] and hd['stay'] and hd['gone'], f'hands: a choice she didn’t write flickers in, can’t be picked, and goes ({hd["a"]})')
+        ok(hd['b'] == '(Evoke.)' and 'glx-evoked' in hd['flags'], 'hands, pickable: picking it plays its lines')
+        ok(hd['place'] == '12:00 AM' and hd['flags'][1:] == ['glx-at3'] and hd['stage'] == 3 and hd['done'] and hd['clean'] == 0, f'scene lines: the place plate reads 12:00 AM; a story stage; ifGlitch ({hd["flags"]}, stage {hd["stage"]})')
+        # A face swap on a speaking portrait, put back after one frame.
+        fc = p.eval(r"""(async()=>{const S=ms=>new Promise(r=>setTimeout(r,ms));FemcScene.play({scene:[{s:'hanni',f:'neutral',t:'hi'},{glitch:{kind:'face',who:'akihiko',ms:600}},{s:'hanni',f:'neutral',t:'again'}],label:'t',onDone:()=>{}});
+          await S(200);const sc=document.querySelector('.gs:not(.out)'),img=sc.querySelector('.gs-portrait'),a=img.getAttribute('src');sc.click();await S(350);const b=img.getAttribute('src');await S(900);const c=img.getAttribute('src');
+          for(let i=0;i<6&&document.querySelector('.gs:not(.out)');i++){document.querySelector('.gs:not(.out)').click();await S(80)}return [/hanni/.test(a),/akihiko/.test(b),c===a]})()""")
+        ok(fc == [True, True, True], f'face: a speaking portrait swaps to someone from S.E.E.S. and back ({fc})')
+        ok(not p.console(), 'no browser errors through every kind')
+
+        # The stages: floors by date, the triggers (one higher), a story's own stage, the cap.
+        stg = p.eval(r"""(()=>{const G=FemcGame,GL=FemcGlitch,s=G.S,g=s.glitch,at=(md,slot,ctx)=>{s.day=G.dayOf(md);s.slot=slot;return GL.stage(ctx)};delete g.set;g.near=null;g.strainDay=null;
+          const r={};r.d1=at('12/1','early');r.d1late=at('12/1','late');r.moon=at('12/4','early');r.w2=at('12/8','after');r.w2late=at('12/8','late');r.w3=at('12/15','early');r.top=at('12/19','early');r.cap=at('12/19','late');
+          r.thin=at('12/2','after',{place:'Syracuse · Rooftop'});r.notThin=at('12/2','after',{place:'Syracuse · The Quad'});GL.heard('hanni');r.other=at('12/2','after');GL.heard('haechan');r.constant=at('12/2','after');r.nextDay=at('12/3','after');
+          g.strainDay=s.day;r.strain=at('12/3','after');g.strainDay=null;g.set={day:G.dayOf('12/3'),stage:4};r.story=at('12/3','early');r.storyNext=at('12/4','early');r.peak=g.peak;r.trig=GL.triggers();return r})()""")
+        want = {'d1': 0, 'd1late': 1, 'moon': 1, 'w2': 2, 'w2late': 3, 'w3': 3, 'top': 4, 'cap': 4, 'thin': 1, 'notThin': 0, 'other': 0, 'constant': 1, 'nextDay': 0, 'strain': 1, 'story': 4, 'storyNext': 1, 'peak': 4}
+        ok({k: stg[k] for k in want} == want, f'the stages escalate: week floors 0 / 2 / 3 / 4, midnight, full moon, thin place, constant, strain each one higher, a story’s own stage, capped at 4 ({stg})')
+        # The same seed rolls the same glitches after a reload (slot round trip in a fresh page).
+        ROLLS = r"""(()=>{const G=FemcGame,GL=FemcGlitch,s=G.S,keep=[s.day,s.slot],done=JSON.stringify(s.glitch.done),seen=[...s.glitch.seen],out=[];s.glitch.seen=[];
+          for(let d=0;d<=G.END();d++)for(const sl of ['early','after','evening','late']){s.day=d;s.slot=sl;for(const w of ['card','morning','out','late']){const e=GL.roll(w);out.push(e?e.id:'-')}}
+          s.day=keep[0];s.slot=keep[1];s.glitch.done=JSON.parse(done);s.glitch.seen=seen;return {out,seed:s.glitch.seed}})()"""
+        r1 = p.eval(ROLLS)
+        p.eval("(()=>{const G=FemcGame;G.S.day=G.dayOf('12/2');G.S.slot='after';G.save();G.saveSlot(3)})()")
+        p.goto('femc-game.html'); p.eval(HELPERS)
+        p.eval("FemcGame.loadSlot(3)")
+        p.eval("FemcEpilogue.loadWorld('runners').then(()=>FemcEpilogue.ensure())")
+        p.wait("FemcGame.world()==='runners'", 20)
+        r2 = p.eval(ROLLS)
+        amb = sum(1 for x in r1['out'] if x.startswith('amb-'))
+        ok(r1 == r2 and amb > 5 and len(set(x for x in r1['out'] if x != '-')) > 8, f'the same seed rolls the same glitches after a reload ({amb} ambient, {len(r1["out"])} screens)')
+        ok(p.eval("FemcGame.S.glitch.seen.includes('epi-r-g-wake') && FemcGame.S.glitch.peak===4"), 'the glitch state comes back with the save (seen, peak)')
+
+        # The station through the real UI: greyed on 12/11, open from 12/19 (stage 4), and it opens.
+        sta = p.eval(r"""(async()=>{const G=FemcGame,s=G.S,S=ms=>new Promise(r=>setTimeout(r,ms)),go=md=>{s.day=G.dayOf(md);s.slot='after';delete s.spent[s.day+'-after'];s.glitch.done={};G.save();EP.clear();FemcGameUI.run()};
+          go('12/11');await S(150);const a=document.querySelector('.g-glx-station');const r={grey:a?a.disabled:null};
+          go('12/19');await S(150);const b=document.querySelector('.g-glx-station');r.open=b?!b.disabled:null;r.note=b?b.textContent:null;b&&b.click();await S(200);
+          r.scene=!!document.querySelector('.gs:not(.out)');r.tear=!!document.querySelector('.g-glx-tear')||FemcGlitch.state().log.slice(-2).some(x=>x.kind==='tear');
+          for(let i=0;i<30&&document.querySelector('.gs:not(.out)');i++){document.querySelector('.gs:not(.out)').click();await S(150)}
+          await S(300);r.back=!!document.querySelector('.g-epi-out');r.gone=!document.querySelector('.g-glx-station');return r})()""")
+        ok(sta['grey'] is True and sta['open'] is True and sta['scene'] and sta['tear'] and sta['back'] and sta['gone'], f'Go Out: Iwatodai Station greyed on 12/11, open at stage 4 on 12/19, and it opens ({sta})')
+
+        # Settings: Glitch effects through the panel (Full → Gentle → Off), Reduce flashes, reduced motion.
+        st0 = p.eval(r"""(async()=>{const S=ms=>new Promise(r=>setTimeout(r,ms));FemcGameUI.openSettings({startKey:'glitchFx'});await S(100);const row=document.querySelector('.g-set[data-k=glitchFx]');const v=[row.querySelector('b').textContent];
+          row.querySelector('[data-d="1"]').click();v.push(row.querySelector('b').textContent,FemcGame.settings().glitchFx);row.querySelector('[data-d="1"]').click();v.push(row.querySelector('b').textContent,FemcGame.settings().glitchFx);
+          document.querySelectorAll('.g-overlay').forEach(x=>x.remove());return v})()""")
+        ok(st0 == ['Full', 'Gentle', 'gentle', 'Off', 'off'], f'the Glitch effects setting: Full by default, then Gentle, then Off ({st0})')
+        off = p.eval(r"""(async()=>{const GL=FemcGlitch,S=ms=>new Promise(r=>setTimeout(r,ms)),n=GL.KINDS.filter(k=>k!=='hands'&&k!=='map').map(k=>GL.play({kind:k}));await S(50);const dom=GL.state().dom+document.querySelectorAll('.g-glx').length;
+          GL.play({kind:'hands'});FemcScene.play({scene:[{choose:[{t:'(a)'}]},{glitch:{kind:'hands',pickable:true,then:[]}},{choose:[{t:'(b)'}]}],label:'t',onDone:()=>{}});await S(80);const sc=document.querySelector('.gs:not(.out)');const h1=sc.querySelectorAll('.gs-hand').length;
+          sc.querySelector('.gs-choices button').click();await S(80);const h2=[...sc.querySelectorAll('.gs-hand')].map(b=>b.className.includes('m-off'));sc.querySelector('.gs-choices button').click();await S(80);for(let i=0;i<4&&document.querySelector('.gs:not(.out)');i++){document.querySelector('.gs:not(.out)').click();await S(60)}
+          return {n,dom,h1,h2,logged:GL.state().log.slice(-3).map(x=>x.mode)}})()""")
+        ok(all(x == 0 for x in off['n']) and off['dom'] == 0 and off['h1'] == 0 and off['h2'] == [True] and off['logged'][-1] == 'off', f'Off: nothing shows or sounds; an unpickable hands choice is gone, a pickable one shows plainly ({off})')
+        p.eval("FemcGame.setSetting('glitchFx','gentle')")
+        gen = p.eval(r"""(async()=>{const GL=FemcGlitch,s=FemcGame.S,S=ms=>new Promise(r=>setTimeout(r,ms)),d=GL.play({kind:'tint'});const w=document.querySelector('.g-glx-tint');const r={d,cls:w&&w.className,soft:!!document.querySelector('.g-bg.g-glx-dh.soft')};
+          GL.clear();GL.play({kind:'tear'});r.shards=document.querySelectorAll('.g-glx-tear .g-glx-glass i').length;r.tear=!!document.querySelector('.g-glx-tear.m-gentle');GL.clear();
+          const count=()=>{let n=0;const k=[s.day,s.slot];for(let x=0;x<=FemcGame.END();x++)for(const sl of ['early','after','evening','late']){s.day=x;s.slot=sl;const e=GL.roll('morning');if(e&&e.src==='ambient')n++}s.day=k[0];s.slot=k[1];return n};
+          const seen=[...s.glitch.seen];s.glitch.seen=FemcEpilogue.raw().glitches.map(e=>e.id);r.gentle=count();FemcGame.setSetting('glitchFx','full');r.full=count();s.glitch.seen=seen;return r})()""")
+        ok(gen['d'] == 660 and 'm-gentle' in gen['cls'] and gen['soft'] and gen['shards'] == 0 and gen['tear'] and gen['gentle'] < gen['full'], f'Gentle: shorter (660 ms), softer, no glass, fewer ambient glitches ({gen["gentle"]} vs {gen["full"]})')
+        p.eval("FemcGame.setSetting('calm',true)")
+        calm = p.eval(r"""(async()=>{const GL=FemcGlitch;GL.play({kind:'tint',ms:600});await new Promise(r=>setTimeout(r,60));const w=document.querySelector('.g-glx-tint');const r=[w.className.includes('calm'),getComputedStyle(w).animationName];GL.clear();return r})()""")
+        ok(calm == [True, 'g-glx-fade'], f'Reduce flashes: the tint fades instead of flickering ({calm})')
+        p.eval("FemcGame.setSetting('calm',false)")
+        p.ws.call('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'reduce'}]})
+        rm = p.eval(r"""(async()=>{const GL=FemcGlitch,S=ms=>new Promise(r=>setTimeout(r,ms)),r={};GL.play({kind:'tint',ms:900});await S(60);const w=document.querySelector('.g-glx-tint');r.tint=[w.className.includes('still'),getComputedStyle(w).animationName,getComputedStyle(w).opacity];
+          GL.play({kind:'tear',ms:900});await S(60);const pth=document.querySelector('.g-glx-tear path');r.tear=[getComputedStyle(pth).strokeDashoffset,document.querySelectorAll('.g-glx-tear .g-glx-glass i').length];
+          GL.play({kind:'name',ms:900});await S(60);const a=document.querySelector('.g-glx-name b').textContent;await S(400);r.name=a===document.querySelector('.g-glx-name b').textContent;
+          GL.play({kind:'weather',ms:900});await S(100);const f0=FemcWeather.state().frames;await S(400);r.weather=[FemcWeather.state().still,FemcWeather.state().frames-f0];
+          await S(700);r.clean=GL.state().dom;return r})()""")
+        p.ws.call('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'no-preference'}]})
+        ok(rm['tint'][0] and rm['tint'][1] == 'none' and float(rm['tint'][2]) > 0.5 and rm['tear'][0] in ('0', '0px') and rm['tear'][1] == 0 and rm['name'] and rm['weather'][0] and rm['weather'][1] == 0 and rm['clean'] == 0,
+           f'reduced motion: still frames (a held tint, drawn cracks, a name that holds still, one weather frame) ({rm})')
+        errs = p.console(); ok(not errs, f'no browser errors in the glitch checks: {errs}')
+
+        # One desktop / phone pair mid-glitch: 12/19's Go Out with the open station, the tint, the clock and a tear.
+        p.eval(r"""(()=>{const G=FemcGame,s=G.S;s.day=G.dayOf('12/19');s.slot='after';delete s.spent[s.day+'-after'];s.glitch.done={};G.save();EP.clear();FemcGameUI.run();
+          ['tint','clock','tear','name'].forEach(k=>FemcGlitch.play({kind:k,ms:30000}));FemcGlitch.play({kind:'weather',mode:'rise',ms:30000})})()""")
+        time.sleep(0.8)
+        shots('glitch-mid')
+        p.eval("FemcGlitch.clear()")
+        ok(p.eval("FemcGlitch.state().dom===0 && !FemcGlitch.state().weather"), 'clear() ends everything at once')
+        p.eval("localStorage.removeItem('kg-femc-revamp-slot3')")
 
     if 'shots' in ONLY:
         p.goto('femc-game.html'); p.eval(HELPERS)

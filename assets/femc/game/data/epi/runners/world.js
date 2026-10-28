@@ -54,7 +54,8 @@
     { id: 'epi-r-stub-home', date: '12/1', slot: 'early', title: 'home', place: 'Syracuse · Alpha Phi House', time: 'Morning', scene: [
       { music: 'world-runners' },
       { n: "Snow on the sill. Syracuse, the first of December, and the house already loud under her floor." },
-      { n: "She was home. The rest of it was still being written." }
+      { n: "She was home. The rest of it was still being written." },
+      { choose: [{ t: '(Get up.)' }, { t: '(Five more minutes.)' }] }
     ] }
   ],
   links: {},

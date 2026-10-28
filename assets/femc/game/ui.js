@@ -1575,6 +1575,7 @@
       { k: 'dateCard', label: 'Date card', opts: ONOFF, desc: () => 'The calendar flip each morning.' },
       { k: 'quickClass', label: 'Quiet class periods', opts: [[false, 'Show'], [true, 'Skip']], desc: () => 'Skip class periods where nothing happens.' },
       { k: 'wxFx', label: 'Weather effects', opts: ONOFF, desc: () => 'Rain, snow, fog and lightning over the scenes and the map. Lightning follows Reduce flashes; reduced motion shows it still.' },
+      { k: 'glitchFx', label: 'Glitch effects', opts: [['full', 'Full'], ['gentle', 'Gentle'], ['off', 'Off']], desc: v => ({ full: 'In the epilogue: the strange moments, as they are. Reduce flashes softens them; reduced motion shows them still.', gentle: 'In the epilogue: shorter, softer and rarer strange moments.', off: 'In the epilogue: no glitch effects.' }[v] || '') },
       { h: 'Battle' },
       { k: 'difficulty', label: 'Difficulty', opts: Object.keys(DF).map(id => [id, DF[id].name]), desc: v => DF[v]?.desc || '' },
       { k: 'battleSpeed', label: 'Battle speed', opts: [[1, '1x'], [2, '2x'], [3, '3x']], desc: () => 'How fast battle animations play. Rush doubles it.' },
@@ -1693,7 +1694,7 @@
 
   /* ── Start ── */
   window.FemcGameUI = { run, openStatus, openPhone, openSaves, sfxLog: () => sfxLog.slice(), SUN, openSettings, playLink, goOut, evening: () => evening(G.dayInfo()), dateCard, advance, overlay, esc, inBattle: () => !!dh,
-    segment, setBg, show, paintHud, endScreen };
+    segment, setBg, show, paintHud, endScreen, phoneSfx };
   // An old battle tab coming back (?from=battle): its result was taken into the save on load (core.js); carry on.
   const fromBattle = /[?&]from=battle\b/.test(location.search);
   if (fromBattle) history.replaceState(null, '', location.pathname);

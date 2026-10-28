@@ -24,19 +24,22 @@
    morning screen, After Class / Evening (Go Out: the world's activities, paid in its money; or stay in), the late screen and
    Sleep. Sleeping through `end` finishes the act.
    Which endings open one (worldFor, mirrors core.js endingName): Runners, strangers and HOAX home endings. Stay and true get
-   theirs in a later batch; the bad ending never does. */
+   theirs in a later batch; the bad ending never does.
+   Glitches (batch 2, glitch.js documents them): each world's data/epi/<world>/glitches.js loads with it; run() asks
+   FemcGlitch.tick() on the date card ('card'), the morning, Go Out ('out', which may gain the station card) and the late
+   screen; events and routines get their scheduled { glitch } lines (inject); { ifGlitch: n } goes through cond(). */
 window.FemcEpilogue = (() => {
   const G = window.FemcGame, SC = window.FemcScene, W = window;
   if (!G) return null;
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 1; // data/epi/<world>/*.js ?v=
+  const DATA_V = 2; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
-    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world'] },
-    strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world'] },
-    hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world'] }
+    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches'] },
+    strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches'] },
+    hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches'] }
   };
   // Which world a finished year's ending opens (the same order as core.js endingName): none for bad, true or Stay (yet).
   function worldFor(s) {
@@ -49,7 +52,7 @@ window.FemcEpilogue = (() => {
   /* ── World data ── */
   const loading = {};
   function loadWorld(id) {
-    if (W.FEMC_EPI_WORLDS?.[id]?.calendar && W.FEMC_EPI_WORLDS[id].places) return Promise.resolve();
+    if (W.FEMC_EPI_WORLDS?.[id]?.calendar && W.FEMC_EPI_WORLDS[id].places && W.FEMC_EPI_WORLDS[id].glitches) return Promise.resolve();
     if (loading[id]) return loading[id];
     const one = f => new Promise((res, rej) => {
       const s = document.createElement('script');
@@ -116,6 +119,7 @@ window.FemcEpilogue = (() => {
   // Scene conditions (core.js branch): { ifYear } against the finished year, { ifEpiRoute } against the route.
   function cond(line) {
     const s = S();
+    if (line.ifGlitch !== undefined) return !!s.epi && !!W.FemcGlitch && W.FemcGlitch.stage() >= +line.ifGlitch;
     if (line.ifEpiRoute) return !!s.epi && [].concat(line.ifEpiRoute).includes(route());
     const Y = s.year1, q = line.ifYear;
     if (!Y || !q) return false;
@@ -166,6 +170,7 @@ window.FemcEpilogue = (() => {
     Y.playMinutes = Math.max(Y.playMinutes || 0, E.playMinutes || 0);
     (Y.epilogues ||= {})[E.epi.world] = { done: true, route: route(), at: Date.now() };
     const wid = E.epi.world;
+    W.FemcGlitch?.clear();
     G.setWorld(null);
     G.adoptState(Y);
     G.recordClear();
@@ -220,11 +225,11 @@ window.FemcEpilogue = (() => {
     ui.paintHud();
     if (s.epi.done) return finish();
     const info = G.dayInfo();
-    if (s.slot === (G.slotsFor(info)[0]) && cardDay !== s.day) { cardDay = s.day; ui.show('', 'is-card'); return ui.dateCard(ui.run); }
+    if (s.slot === (G.slotsFor(info)[0]) && cardDay !== s.day) { cardDay = s.day; ui.show('', 'is-card'); ui.dateCard(ui.run); GL()?.tick('card'); return; }
     const due = G.dueEvent();
     if (due && due.kind === 'event') return playEvent(due.ev);
     const daily = G.dailyLife();
-    if (daily) return SC.play({ ...daily, scene: [{ bg: daily.bg }, ...daily.scene], label: daily.label || 'Everyday life', onDone: () => { G.finishDailyLife(daily.id); ui.run(); } });
+    if (daily) return SC.play({ ...daily, scene: [{ bg: daily.bg }, ...(GL()?.inject(daily.id, daily.scene) || daily.scene)], label: daily.label || 'Everyday life', onDone: () => { G.finishDailyLife(daily.id); ui.run(); } });
     switch (s.slot) {
       case 'early': return morning(info);
       case 'late': return late(info);
@@ -234,16 +239,18 @@ window.FemcEpilogue = (() => {
   function advance() { const r = G.nextSlot(); if (r.end) return finish(); UI().run(); }
   function playEvent(ev) {
     S().pending = null;
-    return SC.play({ scene: ev.scene, place: ev.place, time: ev.time, title: ev.title, label: G.dayInfo().md, cast: ev.cast, event: true,
+    return SC.play({ scene: GL()?.inject(ev.id, ev.scene) || ev.scene, place: ev.place, time: ev.time, title: ev.title, label: G.dayInfo().md, cast: ev.cast, event: true,
       onDone: () => { G.markEvent(ev.id); if (ev.consumes) { S().spent[`${S().day}-${S().slot}`] = `ev:${ev.id}`; G.save(); return advance(); } UI().run(); } });
   }
   const P = () => G.D.places;
+  const GL = () => W.FemcGlitch;
   const line = (path, fallback) => G.vary(path, [fallback]);
   function morning(info) {
     const at = (info.type !== 'off' && P().school) || P().home || {};
     const kind = info.type === 'exam' ? 'exam' : info.type === 'off' ? 'off' : 'school';
     SC.Music.set(G.D.places.screens.after || 'day');
     UI().segment({ slot: 'early', bg: at.bg, place: at.place, text: line(`morning.${kind}`, 'Morning.'), next: advance });
+    GL()?.tick('morning', { place: at.place });
   }
   function late(info) {
     const at = P().home || {};
@@ -253,6 +260,7 @@ window.FemcEpilogue = (() => {
       if (!S().epi.locked && raw.lockAfter && S().day >= G.dayOf(raw.lockAfter)) lockRoute();
       const r = G.sleep(); if (r.end) return finish(); UI().run();
     } });
+    GL()?.tick('late', { place: at.place });
   }
   const acts = slot => (P().activities || []).filter(a => (!a.slots || a.slots.includes(slot)) && (!a.from || S().day >= G.dayOf(a.from)) && (!a.until || S().day <= G.dayOf(a.until)));
   function goOut(info) {
@@ -271,6 +279,7 @@ window.FemcEpilogue = (() => {
       s.spent[`${s.day}-${slot}`] = 'stay'; G.save();
       ui.segment({ slot, bg: home.bg, place: home.place, text: line('stayIn', 'She stayed in.'), next: advance });
     });
+    GL()?.tick('out', { place: home.place, list: main.querySelector('.g-epi-acts') });
     main.querySelector('[data-act]:not(:disabled), [data-stay]')?.focus({ preventScroll: true });
   }
   function doAct(a, info) {
@@ -310,6 +319,6 @@ window.FemcEpilogue = (() => {
     }));
   }
 
-  return { WORLDS, worldFor, endingOf, loadWorld, build, ensure, carryOf, leanFor, route, lockRoute, cond, stateFor, enter, leave, endScreen, offer, run, finish,
+  return { WORLDS, worldFor, endingOf, loadWorld, build, ensure, carryOf, leanFor, route, lockRoute, cond, stateFor, enter, leave, endScreen, offer, run, finish, raw: worldRaw,
     get cardDay() { return cardDay; } };
 })();

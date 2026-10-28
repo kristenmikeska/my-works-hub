@@ -179,7 +179,37 @@ for wid, w in D.get('epi', {}).items():
         if e.get('place') and not wbg_ok(e['place']): problems.append(f'{k}: event {e.get("id")} place "{e["place"]}" has no background rule')
         walk(e.get('scene'), f'{k}/{e.get("id")}')
     bg = saved_bg
-    EPI_COUNT[wid] = {'days': last + 1, 'events': len(w['events']), 'activities': len(w['places'].get('activities', [])), 'stub': bool(w.get('stub'))}
+    # The glitch file (epilogue batch 2, glitch.js): kinds, stages, dates in the act, scene hooks, ambient pools.
+    KINDS = {'tint', 'weather', 'clock', 'date', 'phone', 'map', 'face', 'sound', 'tear', 'name', 'hands'}
+    gc, gl = w.get('glitch') or {}, w.get('glitches')
+    if gl is None or not gc: problems.append(f'{k}: glitches.js needs glitch and glitches')
+    gl = gl or []
+    for md, n in (gc.get('floors') or {}).items():
+        if not inr(md) or n not in range(5): problems.append(f'{k}: glitch floor {md}: {n} (a date in the act, stage 0-4)')
+    for n, pool in (gc.get('ambient') or {}).items():
+        if int(n) not in range(1, 5): problems.append(f'{k}: ambient pool for stage {n} (1-4)')
+        for x in pool:
+            if x.get('kind') not in KINDS: problems.append(f'{k}: ambient kind {x.get("kind")}')
+    evids = {e.get('id') for e in w['events']} | {r.get('id') for r in w.get('routines', [])}
+    gids = set()
+    for g in gl:
+        uid(g.get('id'), f'{k}/glitches')
+        gids.add(g.get('id'))
+        if g.get('kind') not in KINDS: problems.append(f'{k}: glitch {g.get("id")} kind {g.get("kind")}')
+        if g.get('stage', 0) not in range(5): problems.append(f'{k}: glitch {g.get("id")} stage {g.get("stage")}')
+        for md in [g.get('day'), g.get('from'), g.get('to')] + list(g.get('days') or []):
+            if md and not inr(md): problems.append(f'{k}: glitch {g.get("id")} date {md} outside the act')
+        if g.get('scene') and g['scene'] not in evids: problems.append(f'{k}: glitch {g.get("id")} names unknown scene {g["scene"]}')
+        if g.get('kind') == 'weather' and g.get('mode', 'rise') not in ('rise', 'hold'): problems.append(f'{k}: glitch {g.get("id")} weather mode')
+    def glines(lines):
+        for l in lines or []:
+            if isinstance(l, dict):
+                v = l.get('glitch')
+                if isinstance(v, str) and v not in KINDS and v not in gids: problems.append(f'{k}: scene line glitch "{v}" is neither a kind nor a glitch id')
+                for kk in ('then', 'else'): glines(l.get(kk))
+                for o in l.get('choose') or []: glines(o.get('then'))
+    for e in w['events']: glines(e.get('scene'))
+    EPI_COUNT[wid] = {'days': last + 1, 'events': len(w['events']), 'activities': len(w['places'].get('activities', [])), 'glitches': len(gl), 'stub': bool(w.get('stub'))}
 want = sys.argv[sys.argv.index('--links') + 1].split(',') if '--links' in sys.argv else []
 for lid in want:
     l = links.get(lid)

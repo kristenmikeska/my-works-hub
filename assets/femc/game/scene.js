@@ -33,6 +33,8 @@
      { ifReversed: 'linkId' }       -> then / else, when that link is reversed (the flag reversed-<id> mirrors it)
      choices may carry link: 'id' (whose bond reverse / route apply to); in story events a reverse that reaches 2 turns it now
      { act: { numeral, title } }    an act title card
+     { glitch: kind | id | { kind, ... } | { stage | strain | near } }   the epilogue's glitches (glitch.js documents them);
+                                    nothing at all outside the epilogue or in a replay. { ifGlitch: n } is a condition (G.branch)
    G (the game) supplies portraits, names, backgrounds, settings and effects.
    Replay (the Theater, menu.js; opts.replay): the same player, read-only. Effects ({ stat } { yen } { flag } { fragment } …),
    choices' effects, dates and ♪ never reach the game; a { battle } is a one-line card; a CG shown is not recorded. Flags set
@@ -319,6 +321,8 @@ window.FemcScene = (() => {
         });
         return b;
       }));
+      // The epilogue: a choice she didn't write (glitch.js hands; nothing outside the epilogue).
+      window.FemcGlitch?.hands(choices, replay, lines => { choices.replaceChildren(); G.sfx('femc-click'); queue.unshift(...(lines || [])); next(); });
       choices.querySelector('button:not(:disabled)')?.focus({ preventScroll: true });
       G.sfx('femc-hover');
     }
@@ -438,6 +442,7 @@ window.FemcScene = (() => {
       if ('asLink' in line) { curLink = line.asLink || opts.link; return next(); }
       if (line.phone) return phone(line);
       if (line.summon) return summon(line);
+      if (line.glitch !== undefined) { waiting = null; return replay || !window.FemcGlitch ? next() : window.FemcGlitch.line(line, el, next, skipping); }
       if (line.act) return actCard(line);
       if (line.battle) return battle(line);
       if (line.choose) return ask(line.choose);
@@ -462,6 +467,7 @@ window.FemcScene = (() => {
         if (line.s === 'solar') { nameEl.textContent = 'Solar'; img.classList.add('dim'); if (!vis.cg) showMe(line.f); }
         else {
           nameEl.textContent = G.name(line.s);
+          if (!replay) window.FemcGlitch?.heard(line.s);
           if (!vis.cg) showPortrait(line.s, line.f);
           showMe(null);
         }
