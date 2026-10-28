@@ -88,6 +88,16 @@ result: {
   - `segment: 2`: the Evoker works (Golden Rope, Dia), the second Maya is weak to Light, Solar can't lose. Ends with `win`.
   - `op: 'magician'` (4/9) is also scripted: the first fight on purpose, on the dorm roof.
 
+## The epilogue's half-present fights (batch 6)
+
+A `{ battle: { script: 'epi-<world>-<n>' } }` line inside an epilogue scene (n 1–4) goes through the same handoff, with these differences (core.js `epiRequest`, epilogue.js `fightHook`, battle.js `EPI`):
+
+- **The request comes from the finished year, not the world.** `party` is the epilogue's pick (Solar alone in fight 1; then Solar, Akihiko and two of S.E.E.S. by the year's ranks) and `available` is exactly that party; `navigator: 'fuuka'`; `condition: 'good'`; `yen` is the year's (so the battle save's own yen is left as it was), `items: {}` and `gear: []`; `social`, `bossesCleared`, `route`, `routeFlags` and `carryFrom` are the year's (`S.year1`). New field `request.epi: { world, n, stage ('alone' | 'unseen' | 'unheard' | 'contact'), bg (the scene's place, as a background URL), place, glitch (today's glitch stage) }`.
+- **The battle side** plays its `EPI` table for that world and stage: no Get Ready, no results screen, no yen, an empty bag; the battle save's own party and items are put back afterwards. Solar can't lose. Small EXP goes into the battle save either way.
+- **The result** is `outcome: 'win' | 'interrupt'` (never `lose`), `exp`, and `epi: { world, n, stage, ended: 'win' | 'pulled' | 'faded' }`.
+- **The life sim applies only the EXP tally** (`S.battle.exp`; the levels are already in the battle save) and sets the flag `<script>-<ended>` (e.g. `epi-runners-3-faded`). The world's money, items, condition, Tartarus, fragments and full moons are never touched. On `faded` the scene swaps the lines that told the fight's end for a fade line, then goes on.
+- A reload mid-fight loads the world first, reopens the same fight, then rebuilds the scene from its snapshot.
+
 ## Rules for both sides
 
 - One handoff at a time. The game never writes a new one while one is pending.
