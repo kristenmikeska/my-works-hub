@@ -14982,6 +14982,168 @@
       "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
       "scale": 0.9,
       "placement": "strangers epilogue only: data/epi/strangers/world.js faces map (eomma: 'lee-eomma'), read by core.js worldFace()"
+    },
+    {
+      "batch": 64,
+      "source": "chaewon-sheet-update.png",
+      "sourceNow": "Added to Game/chaewon-sheet-update.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "bbf847017cfc1466b9255b56809a3cfb17a94289df85af2ce9b3f91d192f495e",
+      "character": "chaewon-runners",
+      "status": "integrated",
+      "replaces": "chaewon-sheet.png (batch 61)",
+      "destination": "assets/femc/portraits/chaewon-runners/neutral.webp",
+      "conversion": "Kat's remade 3x2 sheet; cut as batch 62 (Vision lift, non-white restored, largest component, background leftovers cleared, collar holes made opaque); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/chaewon-runners/neutral.webp": "027d94dd2c6a034e832f2c5caefcf31656a37d2dfc032cd09773aa43224e8f3d",
+        "assets/femc/portraits/chaewon-runners/happy.webp": "c6a1f1e02590850fffb9ef7d1cd329728a5e9da2156443c6150ff085bd803975",
+        "assets/femc/portraits/chaewon-runners/sad.webp": "66c1651032e482f2dbf254bc9a6ead307332f617471c8b374880d1ae86992604",
+        "assets/femc/portraits/chaewon-runners/serious.webp": "19c427c21e79dad938fe78691cc006a63aefe9bdb11d8cbbdc50e93634c3b007",
+        "assets/femc/portraits/chaewon-runners/surprised.webp": "ce048b0d1d9da2174b19fc6dd2fcbd2d84addcccbc585a583c4c771f7538714c",
+        "assets/femc/portraits/chaewon-runners/flustered.webp": "cde974361b07f79d2da67bc7459392e0b6f5947251de5c859bd5459cc703973f"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.82,
+      "previousCuts": "Character Portraits/Chaewon-Runners/_previous/ (the earlier cut PNGs, kept)",
+      "placement": "same id and faces-map entry as before"
+    },
+    {
+      "batch": 64,
+      "source": "haerin-sheet-update.png",
+      "sourceNow": "Added to Game/haerin-sheet-update.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "dd3634fb099a09c88ce55b3729fed70506bd3e0102c0bcfe7b3e7449cfc14919",
+      "character": "haerin",
+      "status": "integrated",
+      "replaces": "haerin-sheet.png (batch 61)",
+      "destination": "assets/femc/portraits/haerin/neutral.webp",
+      "conversion": "Kat's remade 3x2 sheet; cut as batch 62 (Vision lift, non-white restored, largest component, background leftovers cleared, collar holes made opaque); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/haerin/neutral.webp": "8d57b6cd99e35ea3ac5d7e35f9c054c8b09adc803090c5e6be37936b7d1e7e65",
+        "assets/femc/portraits/haerin/happy.webp": "62b4acb04465b2154b2a302e9f3e70837e908b905f0960cbbfaf4d263de7dded",
+        "assets/femc/portraits/haerin/sad.webp": "2a2dd0b30d9a8acfa2b28146772898cad8d521f77bec3545d084da9089d4267a",
+        "assets/femc/portraits/haerin/serious.webp": "1f7b840e9f66252ddd34120fb71f83cce83d5a284bcea8cc30a59513c50907f7",
+        "assets/femc/portraits/haerin/surprised.webp": "ee96956988b6f95d373c8f3190928d9431e649fd7731a2efebb62b613e7bdfa3",
+        "assets/femc/portraits/haerin/flustered.webp": "03ba23436307be2447980a4706d840ee9c58449a92a29a3d2e22dc5b03248542"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.93,
+      "previousCuts": "Character Portraits/Haerin/_previous/ (the earlier cut PNGs, kept)",
+      "placement": "same id and faces-map entry as before"
+    },
+    {
+      "batch": 64,
+      "source": "kazuha-sheet-update.png",
+      "sourceNow": "Added to Game/kazuha-sheet-update.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9f669dc703f0f66de222d112a683d2e5def53c29e0eb0ffab7d104eec0646bcd",
+      "character": "kazuha-runners",
+      "status": "integrated",
+      "replaces": "kazuha-sheet.png (batch 60)",
+      "destination": "assets/femc/portraits/kazuha-runners/neutral.webp",
+      "conversion": "Kat's remade 3x2 sheet; cut as batch 62 (Vision lift, non-white restored, largest component, background leftovers cleared, collar holes made opaque); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/kazuha-runners/neutral.webp": "3faa93b5668301a00baf4baf77c12aea534578d587392d2df9f3c0c3c0af2f0b",
+        "assets/femc/portraits/kazuha-runners/happy.webp": "f20f0dfb0eb6c2dea78fe5dbc31be8d19b6246a9a0a26034660588a2354b0365",
+        "assets/femc/portraits/kazuha-runners/sad.webp": "0e44d8130b293dc8d097f1d4c824a9be284abaf0a1868a373925b7b2c57609ca",
+        "assets/femc/portraits/kazuha-runners/serious.webp": "4f6b30acb5bc26904c34b42c0db80eb6aa34ce788512e63c561e58c1b7150e71",
+        "assets/femc/portraits/kazuha-runners/surprised.webp": "4d9623114838d7d1dbbee8553feebfe4528a4e762caa512b7615173aa3be480f",
+        "assets/femc/portraits/kazuha-runners/flustered.webp": "7be339fbd75f69208bea2f49c3267762531d26e22ab0c38018f0752a791134c8"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.88,
+      "previousCuts": "Character Portraits/Kazuha-Runners/_previous/ (the earlier cut PNGs, kept)",
+      "placement": "same id and faces-map entry as before"
+    },
+    {
+      "batch": 64,
+      "source": "olivia-sheet-update.png",
+      "sourceNow": "Added to Game/olivia-sheet-update.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0274e1339ba8b1cedf98d1ab8490ebd24a03840192763eece2ea8fb27b4061d7",
+      "character": "olivia",
+      "status": "integrated",
+      "replaces": "olivia-sheet.png (batch 61)",
+      "destination": "assets/femc/portraits/olivia/neutral.webp",
+      "conversion": "Kat's remade 3x2 sheet; cut as batch 62 (Vision lift, non-white restored, largest component, background leftovers cleared, collar holes made opaque); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/olivia/neutral.webp": "02979d0c8f2d46c67a407eb18bc758be6bd9c6a2e00fc1315065d8eab16909d4",
+        "assets/femc/portraits/olivia/happy.webp": "8f1a0d90b5c36c40a5d94a0d042b7217861ee4db5224bded3a14061df3a8fec2",
+        "assets/femc/portraits/olivia/sad.webp": "144ec69afa845867a598684615d06d9a8eae343d3f446eb8deb8db780df6836d",
+        "assets/femc/portraits/olivia/serious.webp": "d1d3ff525c3491290c659db661c118b35035f79a7350bcc1bd95d744bbe910ce",
+        "assets/femc/portraits/olivia/surprised.webp": "8f10e16766978b2440455114d890aae24f9396a7f987af3a9f522af2a9a16c23",
+        "assets/femc/portraits/olivia/flustered.webp": "c320556fe9faf55a9d9edffc24455fe3037cb660082194c4ab3ad197dbf564ba"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.85,
+      "previousCuts": "Character Portraits/Olivia/_previous/ (the earlier cut PNGs, kept)",
+      "placement": "same id and faces-map entry as before"
+    },
+    {
+      "batch": 64,
+      "source": "solar-hoax-update.png",
+      "sourceNow": "Added to Game/solar-hoax-update.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ce7106dc11246068e1b479d0cfb2e56f198646f51c839a33b95633691cf10bc3",
+      "character": "solar-hoax",
+      "status": "integrated",
+      "replaces": "solar-hoax-sheet.png (batch 61)",
+      "destination": "assets/femc/portraits/solar-hoax/neutral.webp",
+      "conversion": "Kat's remade 3x2 sheet; cut as batch 62 (Vision lift, non-white restored, largest component, background leftovers cleared, collar holes made opaque); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/solar-hoax/neutral.webp": "7a63cb1494b117100c6b87dca9e4415be4bfe7a8394c210eadef0db9026cceab",
+        "assets/femc/portraits/solar-hoax/happy.webp": "9300fb6775015b7760e1e87237ec318e3a61386c1e4a1b3f69c09fcfa3f0d27b",
+        "assets/femc/portraits/solar-hoax/sad.webp": "da9637817113590f0e7c43de7fbd0db5a2558a87ba86aab296347dfaa26cefef",
+        "assets/femc/portraits/solar-hoax/serious.webp": "f2acf6369e7eb993fded5040f3586c5005c8f9bb5318fc9478dc5e5c43b387ea",
+        "assets/femc/portraits/solar-hoax/surprised.webp": "a33c034ff24d571c86a5e8d848ea0b0272d59a1a9d6b6ab5c72fa1faf9f4a84d",
+        "assets/femc/portraits/solar-hoax/flustered.webp": "59e4abf7ee4808590c963b22cc44a713ef46e3df59f6db4845b3b745b7ded81e"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.88,
+      "previousCuts": "Character Portraits/Solar-HOAX/_previous/ (the earlier cut PNGs, kept)",
+      "placement": "same id and faces-map entry as before"
+    },
+    {
+      "batch": 64,
+      "source": "solar-runners-update.png",
+      "sourceNow": "Added to Game/solar-runners-update.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "330dddf2033a28152ce8a01547c7bcf1e93f1b75773d946d60bef00c89e7fef8",
+      "character": "solar-runners",
+      "status": "integrated",
+      "replaces": "Solar-Runners-sheet.png (batch 60)",
+      "destination": "assets/femc/portraits/solar-runners/neutral.webp",
+      "conversion": "Kat's remade 3x2 sheet; cut as batch 62 (Vision lift, non-white restored, largest component, background leftovers cleared, collar holes made opaque); femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/solar-runners/neutral.webp": "b64cd5d1bf9a1d8d99728d9bbe87599ea916976a26347e841cc6b6b0006a7ec7",
+        "assets/femc/portraits/solar-runners/happy.webp": "cbc62226cbd517e525fb1d92ce31f1704a07252306fd47b2a4ad927c671025b1",
+        "assets/femc/portraits/solar-runners/sad.webp": "ff493ef6a315b423060e4f875e755c4fe0449ed26f664c643158b21049668746",
+        "assets/femc/portraits/solar-runners/serious.webp": "6a048eba3a20b12011653badbfab52c5a7d28e0068551ff3279585b6021926a8",
+        "assets/femc/portraits/solar-runners/surprised.webp": "2376b1720d8fd0aab7e501a22b5203261e89c36cfcee705497906d66e7097e26",
+        "assets/femc/portraits/solar-runners/flustered.webp": "98500d7c455764a1378eed6789f7516ff1cebd985adbcf5924ef956a0ad957ca"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.88,
+      "previousCuts": "Character Portraits/Solar-Runners/_previous/ (the earlier cut PNGs, kept)",
+      "placement": "same id and faces-map entry as before"
     }
   ],
   "batch1Validation": {
@@ -15836,5 +15998,19 @@
     ],
     "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py --only strangers, in-scene face size at 1000x486 and 375x812",
     "html": "femc-game.html portraits/index.js v140, scale.js v149 (FEMC_PORTRAIT_V 9), epilogue v17; epilogue DATA_V 15; tests/femc_epilogue.py _loaded checks 15 (not run)"
+  },
+  "batch64Validation": {
+    "date": "2026-10-28",
+    "scope": "Kat's remade face sheets: chaewon-runners, haerin, kazuha-runners, olivia, solar-hoax, and solar-runners (arrived during the batch)",
+    "sourcesInspected": "all 6 viewed; every cut on magenta and dark contact sheets (no collar holes) and the neutrals in scale lineups against Hanni, Minji and Solar",
+    "sourcesIntegrated": 6,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched; earlier cut PNGs kept in each Character Portraits/<name>/_previous/",
+    "scales": "chaewon-runners 0.85->0.82, haerin 0.95->0.93, kazuha-runners 0.83->0.88, olivia 0.92->0.85, solar-hoax 1.02->0.88, solar-runners 1.0->0.88",
+    "tests": [
+      "jsc checkSyntax on scale.js"
+    ],
+    "notTested": "no browser tests (Kat at work): face sizes in scenes at 1000x486 and 375x812 (Runners, HOAX)",
+    "html": "femc-game.html scale.js v150 (FEMC_PORTRAIT_V 10); index.js unchanged (same ids and expressions)"
   }
 }

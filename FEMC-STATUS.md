@@ -49,6 +49,7 @@ Other docs, if you ever want detail:
 - ✅ **The epilogue's places and the eSports team's faces:** every Runners epilogue place has its own picture now (the eSports lab, the lecture hall, Marshall Street, the quad by day, the Alpha and Sigma kitchens, the holiday party, Regionals, and the rooftop at night and in the snow), and HOAX has its council room, make-up exam classroom and the gym at midnight; the Stay and true-ending visits use them too. Doyoung, Olivia, Haerin, Jeno and Chaewon have faces in Runners, and Solar has her own HOAX look. A few lines were touched up to match the pictures.
 - ✅ **HOAX faces:** Sakura, Eunchae, Kazuha and Chaewon have their HOAX looks in the HOAX epilogue, and Solar's mom and dad have faces there too; the year's parent texts are unchanged.
 - ✅ **strangers faces:** Solar's strangers look, the four girls' strangers outfits and Solar's parents there have faces in the strangers epilogue; those looks stay in that world, and the year's parent texts are unchanged.
+- ✅ **Remade faces:** Kat's new sheets for Chaewon, Haerin, Kazuha and Olivia (Runners) and Solar's Runners and HOAX looks replace the first versions; the old cuts are kept.
 - ⬜ **Ideas to talk about:** the big push
 
 ## Story and characters

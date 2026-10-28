@@ -78,16 +78,16 @@ window.FEMC_PORTRAIT_SCALE = {
   shiho: 1.07,
   shinjiro: 1.1,
   solar: 0.97,
-  'solar-runners': 1.0, // epilogue batch: Solar's Runners home look (core.js worldFace); eyes-to-chin matched to her S.E.E.S. set
+  'solar-runners': 0.88, // epilogue batch: Solar's Runners home look (core.js worldFace); eyes-to-chin matched to her S.E.E.S. set (Kat's remade sheet, batch 64)
   'sakura-runners': 1.05,
   'eunchae-runners': 1.1,
-  'kazuha-runners': 0.83, // her sheet was drawn to the waist; cut to head and shoulders
-  'chaewon-runners': 0.85, // batch 61: Runners epilogue faces, eyes-to-chin matched to Hanni, Minji and Haechan
+  'kazuha-runners': 0.88, // batch 64: Kat's remade head-and-shoulders sheet
+  'chaewon-runners': 0.82, // batch 61: Runners epilogue faces, eyes-to-chin matched to Hanni, Minji and Haechan
   doyoung: 1.05, // his sheet was drawn to the chest; cut to head and shoulders
-  haerin: 0.95,
+  haerin: 0.93,
   jeno: 0.97,
-  olivia: 0.92,
-  'solar-hoax': 1.02, // Solar's HOAX look (HOAX world faces map)
+  olivia: 0.85,
+  'solar-hoax': 0.88, // Solar's HOAX look (HOAX world faces map)
   'chaewon-hoax': 0.82, // batch 62: HOAX epilogue outfits and Solar's parents (HOAX world faces map)
   'eunchae-hoax': 0.9,
   'kazuha-hoax': 0.9,
@@ -167,4 +167,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 9;
+window.FEMC_PORTRAIT_V = 10;
