@@ -2168,27 +2168,11 @@ window.FemcGame = (() => {
   function makeHandoff(kind, req) {
     const info = dayInfo();
     const id = `h${S.day}-${Date.now().toString(36)}`;
-    const party = (req.party || S.tartarus.lastParty || ['solar', ...available().filter(x => x !== 'solar').slice(0, 3)]).filter(x => available().includes(x));
     const h = {
       v: 1, id, status: 'pending', from: 'game', kind, createdAt: new Date().toISOString(),
       returnTo: 'femc-game.html?from=battle',
       date: { day: S.day, md: info.md, iso: info.date.toISOString().slice(0, 10), weekday: info.day, moon: info.moon.name, fullMoon: info.moon.full },
-      request: {
-        op: req.op || null, ops: req.ops || null, script: req.script || null, segment: req.segment || null,
-        title: req.title || null, desc: req.desc || null, notes: req.notes || null, forced: !!req.forced, canRetreat: !req.forced,
-        party: party.includes('solar') ? party : ['solar', ...party].slice(0, 4),
-        available: available(), navigator: navigator(),
-        fatigue: { solar: S.condition }, condition: S.condition,
-        yen: S.yen, items: { ...S.inventory }, gear: [...S.gear],
-        maxFloor: floorCap(), bestFloor: S.tartarus.maxFloor, bossesCleared: [...S.tartarus.bosses],
-        fragments: [...S.fragments], fragmentsOpen: S.day >= dayOf(D.cal.fragmentsFrom || '5/16'), dropsOk: dropsOk(),
-        run: S.runId, carryFrom: S.ngFrom || null, route: S.route.choices.solstice ?? null, trueReady: !!(S.flags['true-final'] || S.flags['true-path']),
-        routeFlags: ['route-R', 'route-S', 'route-H', 'route-stay', 'route-true', 'route-bad', 'true-final', 'true-fallback'].filter(flag),
-        // Night-only items from the life sim (Shinjiro's Kitchen Duty leftovers); battle.js adds them on a Tartarus night.
-        kits: kind === 'tartarus' && S.leftovers ? { night_leftovers: 1 } : null,
-        social: { stats: { ...S.stats }, ranks: Object.fromEntries(Object.entries(S.links).filter(([, p]) => p.rank > 0).map(([k, p]) => [k, p.rank])), reversed: Object.entries(S.links).filter(([, p]) => p.reversed).map(([k]) => k), romance: Object.entries(S.links).filter(([, p]) => p.route === 'romance').map(([k]) => k) },
-        difficulty: null
-      },
+      request: S.epi ? epiRequest(req) : yearRequest(kind, req),
       result: null
     };
     if (kind === 'tartarus') S.leftovers = 0;
@@ -2196,6 +2180,46 @@ window.FemcGame = (() => {
     S.handoff = h;
     save();
     return h;
+  }
+  /* The epilogue's half-present fights (epilogue.js onBattle, batch 6): the year's battle state, none of the world's. The party
+     is the epilogue's pick (Solar alone, or Solar with Akihiko and two of S.E.E.S.), and exactly that party is available. The
+     world's money, items and Solar's condition never go to the battle side: yen is the year's (so the battle save keeps it),
+     items and gear are empty, she's in good shape. Ranks, romances, cleared full moons, fragments and the route come from the
+     finished year (S.year1), so the battle save's party trees, bonds and perks stay as the year left them. request.epi:
+     { world, n, stage, bg, glitch } for battle.js's epi-<world>-<n> fights. */
+  function epiRequest(req) {
+    const Y = S.year1 || {}, YL = Y.links || {}, YF = Y.flags || {}, party = ['solar', ...(req.party || []).filter(x => x && x !== 'solar')].slice(0, 4);
+    return {
+      op: null, ops: null, script: req.script || null, segment: req.segment || null,
+      title: req.title || null, desc: req.desc || null, notes: req.notes || null, forced: true, canRetreat: false,
+      party, available: party.slice(), navigator: 'fuuka', fatigue: { solar: 'good' }, condition: 'good',
+      yen: Y.yen || 0, items: {}, gear: [], maxFloor: 0, bestFloor: Y.tartarus?.maxFloor || 0, bossesCleared: [...(Y.tartarus?.bosses || [])],
+      fragments: [...S.fragments], fragmentsOpen: false, dropsOk: [],
+      run: S.runId, carryFrom: Y.ngFrom || null, route: Y.route?.choices?.solstice ?? null, trueReady: !!(YF['true-final'] || YF['true-path']),
+      routeFlags: ['route-R', 'route-S', 'route-H', 'route-stay', 'route-true', 'route-bad', 'true-final', 'true-fallback'].filter(k => YF[k]),
+      kits: null,
+      social: { stats: { ...S.stats }, ranks: Object.fromEntries(Object.entries(YL).filter(([, p]) => p && p.rank > 0).map(([k, p]) => [k, p.rank])), reversed: Object.entries(YL).filter(([, p]) => p && p.reversed).map(([k]) => k), romance: Object.entries(YL).filter(([, p]) => p && p.route === 'romance').map(([k]) => k) },
+      difficulty: null, epi: req.epi ? { ...req.epi } : { world: S.epi.world }
+    };
+  }
+  function yearRequest(kind, req) {
+    const party = (req.party || S.tartarus.lastParty || ['solar', ...available().filter(x => x !== 'solar').slice(0, 3)]).filter(x => available().includes(x));
+    return {
+      op: req.op || null, ops: req.ops || null, script: req.script || null, segment: req.segment || null,
+      title: req.title || null, desc: req.desc || null, notes: req.notes || null, forced: !!req.forced, canRetreat: !req.forced,
+      party: party.includes('solar') ? party : ['solar', ...party].slice(0, 4),
+      available: available(), navigator: navigator(),
+      fatigue: { solar: S.condition }, condition: S.condition,
+      yen: S.yen, items: { ...S.inventory }, gear: [...S.gear],
+      maxFloor: floorCap(), bestFloor: S.tartarus.maxFloor, bossesCleared: [...S.tartarus.bosses],
+      fragments: [...S.fragments], fragmentsOpen: S.day >= dayOf(D.cal.fragmentsFrom || '5/16'), dropsOk: dropsOk(),
+      run: S.runId, carryFrom: S.ngFrom || null, route: S.route.choices.solstice ?? null, trueReady: !!(S.flags['true-final'] || S.flags['true-path']),
+      routeFlags: ['route-R', 'route-S', 'route-H', 'route-stay', 'route-true', 'route-bad', 'true-final', 'true-fallback'].filter(flag),
+      // Night-only items from the life sim (Shinjiro's Kitchen Duty leftovers); battle.js adds them on a Tartarus night.
+      kits: kind === 'tartarus' && S.leftovers ? { night_leftovers: 1 } : null,
+      social: { stats: { ...S.stats }, ranks: Object.fromEntries(Object.entries(S.links).filter(([, p]) => p.rank > 0).map(([k, p]) => [k, p.rank])), reversed: Object.entries(S.links).filter(([, p]) => p.reversed).map(([k]) => k), romance: Object.entries(S.links).filter(([, p]) => p.route === 'romance').map(([k]) => k) },
+      difficulty: null
+    };
   }
   const readHandoff = () => S.handoff || null;
   function clearHandoff() { S.handoff = null; S.handoffId = null; save(); }
@@ -2240,6 +2264,7 @@ window.FemcGame = (() => {
     }
     if (outcome === 'retreat' || outcome === 'lose') { r.exp = {}; r.yenDelta = 0; r.fatigue = h.kind === 'scripted' ? null : 'tired'; }
     if (outcome === 'interrupt') { r.exp = {}; r.fatigue = null; }
+    if (h.request.epi) r.epi = { world: h.request.epi.world, n: h.request.epi.n, stage: h.request.epi.stage, ended: outcome === 'win' ? 'win' : 'pulled' };
     return r;
   }
   // Apply a battle result to the life sim. Returns a summary for the results screen.
@@ -2247,6 +2272,19 @@ window.FemcGame = (() => {
     // A reload can recover this completed handoff after rewards were saved but before
     // the UI cleared it. Keep its receipt in the same save as the rewards.
     if (h.appliedResult) return clone(h.appliedResult);
+    // In the epilogue (batch 6) a fight touches nothing of the world's: no money (battle yen never reaches the world's wallet),
+    // no items, gear, fragments, full moons, Tartarus, stats, plumes or condition. Only the EXP tally (the levels themselves
+    // are already in the battle save, which the battle side wrote) and a flag for how it ended: <script>-win / -pulled / -faded.
+    if (S.epi) {
+      const sum = { outcome: r.outcome, yen: 0, items: [], fragments: [], bosses: [], exp: r.exp || {}, simulated: !!r.simulated, epi: r.epi ? clone(r.epi) : null };
+      Object.entries(r.exp || {}).forEach(([m, x]) => { S.battle.exp[m] = (S.battle.exp[m] || 0) + x; });
+      Object.assign(S.battle.levels, r.levels || {});
+      const sid = h.request && (h.request.script || h.request.op);
+      if (sid && r.epi && r.epi.ended) S.flags[`${sid}-${r.epi.ended}`] = true;
+      h.appliedResult = clone(sum);
+      save();
+      return sum;
+    }
     const sum = { outcome: r.outcome, yen: 0, items: [], fragments: [], bosses: [], exp: r.exp || {}, simulated: !!r.simulated };
     Object.entries(r.exp || {}).forEach(([m, x]) => { S.battle.exp[m] = (S.battle.exp[m] || 0) + x; });
     Object.assign(S.battle.levels, r.levels || {});

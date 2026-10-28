@@ -45,7 +45,10 @@
      - An event's `ends: true` finishes the act when its scene ends (batch 4): no late screen, no Sleep; straight to finish().
      - The lock sets the flag epi-route-<route> (even from the lean), so texts and routines can gate on the route.
      - Entering copies parts of the year into the epilogue's flags as y-<flag> (xmas-*, arrived-*, route-*, danielle-refused /
-       -sold, mem-camp), y-romance-<id> and y-met-<id>: texts and routines can only gate on flags. */
+       -sold, mem-camp), y-romance-<id> and y-met-<id>: texts and routines can only gate on flags.
+   The half-present fights (batch 6, 2026-10-28): events' and hangouts' { battle } lines go through fightHook (documented above
+     it): the handoff with request.epi, the year's battle save (EXP lands there), nothing of the world's wallet, items or
+     condition, can't-lose fades, and resume() after a reload mid-fight. */
 window.FemcEpilogue = (() => {
   const G = window.FemcGame, SC = window.FemcScene, W = window;
   if (!G) return null;
@@ -303,6 +306,8 @@ window.FemcEpilogue = (() => {
       return;
     }
     ui.paintHud();
+    // A scene a fight interrupted (a reload after the fight, before the scene finished): it goes on from the line after it.
+    if (s.pending) return resume(s.pending, null);
     if (s.epi.done) return finish();
     const info = G.dayInfo();
     if (s.slot === (G.slotsFor(info)[0]) && cardDay !== s.day) { cardDay = s.day; ui.show('', 'is-card'); ui.dateCard(ui.run); GL()?.tick('card'); return; }
@@ -318,10 +323,13 @@ window.FemcEpilogue = (() => {
     }
   }
   function advance() { const r = G.nextSlot(); if (r.end) return finish(); UI().run(); }
-  function playEvent(ev) {
-    S().pending = null;
-    return SC.play({ scene: GL()?.inject(ev.id, ev.scene) || ev.scene, place: ev.place, time: ev.time, title: ev.title, label: G.dayInfo().md, cast: ev.cast, event: true,
+  // resume: a snapshot from a fight in this event (batch 6), when the scene is rebuilt after it (a reload, or the fight's own way back).
+  function playEvent(ev, resume) {
+    if (!resume) S().pending = null;
+    return SC.play({ scene: GL()?.inject(ev.id, ev.scene) || ev.scene, place: ev.place, time: ev.time, title: resume ? null : ev.title, label: G.dayInfo().md, cast: ev.cast, event: true, resume,
+      onBattle: fightHook({ type: 'epi', kind: 'event', id: ev.id }),
       onDone: () => {
+        S().pending = null;
         G.markEvent(ev.id);
         // ends: the act's last scene (batch 4: the Runners rooftop) goes straight to the end card, the Equinox card, the year.
         if (ev.ends) return finish();
@@ -396,8 +404,77 @@ window.FemcEpilogue = (() => {
     if (!h || G.freeSlotSpent(s.slot)) return;
     s.spent[`${s.day}-${s.slot}`] = `bond:${h.id}`;
     G.save();
-    SC.play({ scene: [...(h.bg ? [{ bg: h.bg }] : []), ...(GL()?.inject(h.id, h.scene) || h.scene)], place: h.place, time: h.time, title: h.title, label: G.name(id), cast: h.cast,
-      onDone: () => { const st = bondState(id); if (!st.seen.includes(h.id)) st.seen.push(h.id); bond(id, h.gain ?? 1); G.save(); advance(); } });
+    hangoutScene(id, h);
+  }
+  function hangoutScene(id, h, resume) {
+    SC.play({ scene: [...(h.bg ? [{ bg: h.bg }] : []), ...(GL()?.inject(h.id, h.scene) || h.scene)], place: h.place, time: h.time, title: resume ? null : h.title, label: G.name(id), cast: h.cast, resume,
+      onBattle: fightHook({ type: 'epi', kind: 'hangout', id, h: h.id }),
+      onDone: () => { S().pending = null; const st = bondState(id); if (!st.seen.includes(h.id)) st.seen.push(h.id); bond(id, h.gain ?? 1); G.save(); advance(); } });
+  }
+
+  /* ── The half-present fights (batch 6; FEMC-EPILOGUE-PLAN.md 2.4) ──
+     A scene's { battle: { script: 'epi-<world>-<n>' } } line (n 1-4) hands a fight to the battle game through ui.js battleCard,
+     like the year's story fights, with request.epi = { world, n, stage, bg (the scene's own place, half turned to Tartarus),
+     place, glitch (today's stage) } (core.js epiRequest builds the rest from the finished year). The stages (battle.js EPI
+     documents the rules): 1 alone (Solar by herself), 2 unseen (S.E.E.S. can't see her), 3 unheard (they see her, can't hear
+     her), 4 contact (one round). The party: Solar alone in fight 1; then Akihiko (he found her first) and two of S.E.E.S. by
+     the year's highest ranks (Shinjiro only if he woke). She can't lose one: the battle side ends a fight she'd lose with
+     result.epi.ended 'faded', and the scene drops the lines that told the fight's end (its plain narration and speech up to the
+     next line that does anything else) for the battle line's `fade` (or FADE below for its stage), then goes on. Fight 4's
+     contact round always ends in the pull, so it never fades. ended 'win' / 'pulled' change nothing in the scene; core.js
+     applyResult keeps the world's wallet, items and condition out of it and sets <script>-<ended>. A reload mid-fight: ui.js
+     run() loads the world first, the fight opens again, then resume() rebuilds the scene from its snapshot (S.pending). Any other
+     { battle } line in an epilogue scene goes through as an ordinary story fight (still wallet-safe). */
+  const STAGES = { 1: 'alone', 2: 'unseen', 3: 'unheard', 4: 'contact' };
+  const SEES = ['yukari', 'junpei', 'mitsuru', 'aigis', 'ken', 'koromaru', 'shinjiro'];
+  const FADE = {
+    alone: 'The hour let go of her before it was finished. Not the Shadow: the hour. It opened its hand the way you let go of a railing, and she went home through the green with Haenim’s name still coming apart in her mouth.',
+    unseen: 'She went before they did. Their last one was still standing, and they were still fighting it, and the green rinsed her out of the middle of them like a stain nobody had noticed, and none of them looked round.',
+    unheard: 'She went down, and then there was no floor to go down onto. The last thing she saw was Akihiko turning toward the place she’d been, his mouth already shaping her name, and she was gone before it reached her.'
+  };
+  const fightOf = b => { const m = /^epi-([a-z]+)-(\d+)$/.exec((b && b.script) || ''); return m && STAGES[m[2]] ? { world: m[1], n: +m[2], stage: STAGES[m[2]] } : null; };
+  function partyFor(n) {
+    if (n <= 1) return ['solar'];
+    const Y = S().year1 || {}, L = Y.links || {}, f = Y.flags || {};
+    const two = SEES.filter(id => id !== 'shinjiro' || f['shinji-awake']).map((id, i) => ({ id, r: (L[id] && L[id].rank) || 0, i }))
+      .sort((a, b) => b.r - a.r || a.i - b.i).slice(0, 2).map(x => x.id);
+    return ['solar', 'akihiko', ...two];
+  }
+  const faded = sum => !!(sum && sum.epi && sum.epi.ended === 'faded');
+  // The lines that told the fight's end (plain narration and speech) go; the fade line takes their place.
+  const SAYS = new Set(['n', 's', 'f', 't']);
+  function fadeQueue(q, text) {
+    while (q.length && Object.keys(q[0]).every(k => SAYS.has(k))) q.shift();
+    q.unshift({ n: text });
+  }
+  function fightHook(ctx0) {
+    return (battle, snap, cont) => {
+      const f = fightOf(battle);
+      if (!f) return UI().battleCard(battle, { ctx: ctx0, snap }, cont);
+      const v = (snap && snap.vis) || {}, bg = v.place ? G.background(v.place, v.time || '', v.bg || null) : null;
+      const ctx = { ...ctx0, fade: f.stage === 'contact' ? null : battle.fade || FADE[f.stage] || null };
+      const b = { ...battle, kind: 'scripted', forced: true, party: partyFor(f.n),
+        epi: { world: f.world, n: f.n, stage: f.stage, bg: bg ? bg.url : null, place: v.place || null, glitch: GL() ? GL().stage() : null } };
+      UI().battleCard(b, { ctx, snap }, sum => {
+        if (!faded(sum) || !ctx.fade) return cont(sum);
+        const pn = S().pending; // a reload later in the scene rebuilds it from here: keep it faded
+        if (pn && pn.snap && pn.ctx && !pn.ctx.reshaped) { fadeQueue(pn.snap.queue, ctx.fade); pn.ctx.reshaped = true; G.save(); }
+        cont({ ...sum, reshape: q => fadeQueue(q, ctx.fade) });
+      });
+    };
+  }
+  // After a reload (or the fight's way back without a live scene): the scene from its snapshot, on the line after the fight.
+  function resume(p, sum) {
+    const c = p && p.ctx;
+    if (!p || !p.snap || !c || c.type !== 'epi') { S().pending = null; G.save(); return UI().run(); }
+    if (!ensure()) return run();
+    if (faded(sum) && c.fade && !c.reshaped) { fadeQueue(p.snap.queue, c.fade); c.reshaped = true; G.save(); }
+    const snap = { ...p.snap, queue: [...(p.snap.queue || [])] };
+    if (p.music) SC.Music.set(p.music);
+    UI().show('', 'is-scene');
+    if (c.kind === 'event') { const ev = (G.D.events || []).find(e => e.id === c.id); if (ev) return playEvent(ev, snap); }
+    if (c.kind === 'hangout') { const h = ((BONDS()[c.id] || {}).hangouts || []).find(x => x.id === c.h); if (h) return hangoutScene(c.id, h, snap); }
+    S().pending = null; G.save(); UI().run();
   }
   function doAct(a, info) {
     const s = S();
@@ -437,6 +514,6 @@ window.FemcEpilogue = (() => {
   }
 
   return { WORLDS, worldFor, endingOf, loadWorld, build, ensure, carryOf, leanFor, route, lockRoute, cond, stateFor, enter, leave, endScreen, offer, run, finish, raw: worldRaw,
-    routeOpen, bond, closeness, startBond, hangoutFor, people, hangout, practiceNow, CLOSE_MAX,
+    routeOpen, bond, closeness, startBond, hangoutFor, people, hangout, practiceNow, CLOSE_MAX, resume, partyFor, fightOf, fadeQueue, FADE, STAGES,
     get cardDay() { return cardDay; } };
 })();

@@ -14,10 +14,8 @@
      epi-r-footage      12/19 late     Danielle's footage shows something impossible; her choice (the year decides it)
      epi-r-first-snow   12/20 early    the first snow, finals closed, the last SUnews post face down; the bag
      epi-r-rooftop      12/20 late     the final: the Language Arts rooftop in the first snow; she's pulled, Haechan holds on (ends)
-   The four fights are { battle: { script: 'epi-runners-<n>' } } lines. The battle game has no script by those names yet, so a
-   handoff falls back to its plain story fight (battle.js genericScript); batch 6 builds the real ones from each line's `notes`.
-   Until batch 6 gives epilogue.js an onBattle (the handoff, the resume, EXP into the battle save), the epilogue passes over
-   the line and the prose on either side carries the pull.
+   The four fights are { battle: { script: 'epi-runners-<n>' } } lines, played since batch 6 by battle.js's EPI table (the
+   stage rules) through epilogue.js fightHook (the handoff, the resume, EXP into the battle save); `notes` are the designer's.
    Flags set: epi-r-mark-door / epi-r-mark-closed (the kitchen), epi-r-said-it (the butterfly, always), epi-r-travel-yes /
      epi-r-travel-no (the clocks: Ms. Han's deadline), epi-r-footage-file / epi-r-footage-sent / epi-r-footage-kept (Danielle's
      choice), epi-r-jacket (the rooftop, Haechan route), epi-r-held (the rooftop, every route).

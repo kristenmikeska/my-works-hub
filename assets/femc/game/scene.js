@@ -427,7 +427,9 @@ window.FemcScene = (() => {
       waiting = null; skipping = false;
       textEl.replaceChildren(); nameEl.textContent = '';
       const snapshot = { queue: [...queue], vis: { ...vis, link: curLink }, gained };
-      opts.onBattle ? opts.onBattle(line.battle, snapshot, () => next()) : next();
+      // The fight's caller may reshape what's left of the scene before it goes on (r.reshape(queue): the epilogue's
+      // half-present fights, when she fades home instead of finishing one).
+      opts.onBattle ? opts.onBattle(line.battle, snapshot, r => { if (r && typeof r.reshape === 'function') r.reshape(queue); next(); }) : next();
     }
     function next() {
       if (closed || !el.isConnected) return;

@@ -343,7 +343,7 @@
   function battleCard(battle, resumeInfo, cont, kind) {
     kind = kind || battle.kind || (battle.script ? 'scripted' : battle.op ? 'operation' : 'tartarus');
     const title = battle.title || (kind === 'tartarus' ? 'Tartarus' : battle.op ? 'Full Moon Operation' : 'Battle');
-    const req = { op: battle.op, ops: battle.ops, script: battle.script, segment: battle.segment, title, desc: battle.desc, notes: battle.notes || null, forced: battle.forced !== false && kind !== 'tartarus', party: battle.party };
+    const req = { op: battle.op, ops: battle.ops, script: battle.script, segment: battle.segment, title, desc: battle.desc, notes: battle.notes || null, forced: battle.forced !== false && kind !== 'tartarus', party: battle.party, epi: battle.epi || null };
     const seg1 = battle.script && battle.segment === 1;
     // The Dark Hour transition carries the fight's title.
     if (!DEBUG) return goBattle(kind, req, resumeInfo, cont);
@@ -465,7 +465,7 @@
     G.clearHandoff();
     resultsCard(h, sum, () => {
       if (cont) { if (!S().pending?.snap) { S().pending = null; G.save(); } return cont(sum); }
-      resumePending();
+      resumePending(sum);
     });
   }
   // On load / Continue: a fight in progress opens again; a finished one that wasn't applied yet is applied now.
@@ -511,9 +511,12 @@
       <div class="g-row"><button type="button" class="g-btn pink" data-close>Continue ▸</button></div></div>`, 'g-results-ov', done);
     return o;
   }
-  function resumePending() {
+  // sum: the fight's results, when this comes straight after one (the epilogue reads how a half-present fight ended).
+  function resumePending(sum) {
     const p = S().pending;
     if (!p) return run();
+    // The epilogue's scenes live in its world (epilogue.js resume rebuilds them; batch 6).
+    if (S().epi && window.FemcEpilogue) return window.FemcEpilogue.resume(p, sum || null);
     if (p.snap) { if (p.music) SC.Music.set(p.music); return playCtx(p.ctx, { onDone: () => afterCtx(p.ctx) }, p.snap); }
     S().pending = null;
     if (p.ctx.type === 'tartarus') { S().spent[`${S().day}-evening`] = 'tartarus'; G.save(); return advance(); }
@@ -541,6 +544,8 @@
     const s = S();
     if (s.phase === 'title' || !s.started) return titleScreen();
     if (dh) return;
+    // The epilogue's world loads before a fight left mid-way is picked up, so the scene after it can be rebuilt (batch 6).
+    if (s.epi && window.FemcEpilogue && !window.FemcEpilogue.ensure()) return window.FemcEpilogue.run();
     if (s.handoff) return resumeHandoff();
     if (s.phase === 'prologue') return startPrologue();
     // The epilogue (epilogue.js) runs its own days in its world; a save without S.epi never gets here.
@@ -1694,7 +1699,7 @@
 
   /* ── Start ── */
   window.FemcGameUI = { run, openStatus, openPhone, openSaves, sfxLog: () => sfxLog.slice(), SUN, openSettings, playLink, goOut, evening: () => evening(G.dayInfo()), dateCard, advance, overlay, esc, inBattle: () => !!dh,
-    segment, setBg, show, paintHud, endScreen, phoneSfx };
+    segment, setBg, show, paintHud, endScreen, phoneSfx, battleCard };
   // An old battle tab coming back (?from=battle): its result was taken into the save on load (core.js); carry on.
   const fromBattle = /[?&]from=battle\b/.test(location.search);
   if (fromBattle) history.replaceState(null, '', location.pathname);

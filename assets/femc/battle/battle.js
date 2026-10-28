@@ -132,7 +132,8 @@
   const EVOKER_ART = `${SUMMON_DIR}evoker-prop.webp?v=${ART_V}`;
   /* A stylized Evoker (the fallback). */
   const EVOKER_SVG = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 110"><defs><linearGradient id="m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f9ff"/><stop offset=".35" stop-color="#c9d0dc"/><stop offset=".7" stop-color="#8a93a6"/><stop offset="1" stop-color="#4b5263"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a404e"/><stop offset="1" stop-color="#14171f"/></linearGradient></defs><path d="M214 30H70l-10 5v22h34l6 7h20l7-7h87z" fill="url(#m)" stroke="#12151c" stroke-width="3" stroke-linejoin="round"/><path d="M214 30v27" stroke="#12151c" stroke-width="5"/><path d="M78 36h126" stroke="#fff" stroke-opacity=".85" stroke-width="2"/><path d="M84 44h120M84 50h120" stroke="#5a6274" stroke-width="1.2"/><path d="M62 57h32l-16 48H38z" fill="url(#g)" stroke="#0b0d12" stroke-width="3" stroke-linejoin="round"/><path d="M50 70h30M46 80h30M42 90h30" stroke="#5a6274" stroke-width="1.5"/><path d="M98 57q-2 18 16 18h6" fill="none" stroke="#12151c" stroke-width="4"/><path d="M104 60l4 10" stroke="#12151c" stroke-width="3"/><rect x="150" y="40" width="40" height="4" rx="1" fill="#ff4f9e"/></svg>`);
-  const tacticOf = u => (u.mid === 'solar' ? 'direct' : (save.tactics[u.mid] || 'direct'));
+  // The epilogue's half-present fights set everyone's tactic for the fight (rules.tactic: Act Freely, or Direct in the contact round).
+  const tacticOf = u => (u.mid === 'solar' ? 'direct' : ((screen === 'battle' && curSpec && curSpec.rules && curSpec.rules.tactic) || save.tactics[u.mid] || 'direct'));
   /* The navigator: Fuuka, or Mitsuru before Fuuka joins (handoff request.navigator). Mitsuru has no 'happy' face. */
   const NAVI = HO && HO.request.navigator === 'mitsuru' ? { id: 'mitsuru', name: 'Mitsuru' } : { id: 'fuuka', name: 'Fuuka' };
   const navFace = f => (NAVI.id === 'fuuka' ? f : ({ happy: 'neutral' }[f] || f || 'neutral'));
@@ -1873,7 +1874,8 @@
   /* Story-fight rules (handoff mode; spec.rules). interruptAt: end with 'interrupt' when this round starts. interruptHp: when
      Solar drops below this share of her HP. interruptFoeHp: when any Shadow does (only the bosses count when the fight has
      one, so a memory floor's lesser Shadows can't cut it short). interruptOnKill: when any Shadow falls.
-     roundsMax: end with 'phase' after this many rounds (the finale's Last Call). */
+     roundsMax: end with 'phase' after this many rounds (the finale's Last Call). fadeHp / fadeAlone: end with 'fade' (the
+     epilogue's half-present fights; EPI below has their other rules). */
   function ruleEnd(spec, at) {
     const R = spec.rules;
     if (!R || !B) return null;
@@ -1882,6 +1884,9 @@
     if (R.roundsMax && B.S.round > R.roundsMax) return 'phase';
     if (at !== 'act') return null;
     const solar = B.party()[0];
+    // The epilogue (EPI below): she can't lose, she fades home: at 1 HP (protect stops her there), or with no one left beside her.
+    if (R.fadeHp && solar && solar.hp <= 1) return 'fade';
+    if (R.fadeAlone && B.party().length > 1 && B.party().slice(1).every(p => p.dead)) return 'fade';
     if (R.interruptHp && solar && solar.hp < solar.maxHp * R.interruptHp) return 'interrupt';
     const watched = B.foes().some(f => f.boss) ? B.foes().filter(f => f.boss) : B.foes();
     if (R.interruptFoeHp && watched.some(f => !f.dead && f.hp < f.maxHp * R.interruptFoeHp)) return 'interrupt';
@@ -1914,6 +1919,7 @@
       diff: RL && RL.edmg ? () => Object.assign({}, diff(), { edmg: diff().edmg * RL.edmg }) : diff, protect: !!(RL && RL.protect),
       perks, names: BLD ? BLD.names() : {}, startBuffs, foeHpMult, bondArts: BDS && HO && !(RL && RL.noPerks) ? BDS.arts(save) : [] });
     if (RL && RL.setup) RL.setup(B);
+    if (RL && RL.epi) epiSetup(spec);
     navSaid = new Set(); summoned = new Set(); thSeen = new Set(); barkN = new Map(); barkAt = 0; barkQ = []; barkRun = 0;
     curSpec = spec; blog = []; lastTgt = {}; focusId = null;
     blogAdd(`${spec.label} · ${spec.block}${spec.boss && !spec.reaper ? ' · Full Moon' : spec.reaper ? ' · The Reaper' : spec.strong ? ' · Strong Shadows' : ''} · ${diff().name}`, 'sys');
@@ -1922,6 +1928,7 @@
     music.play(spec.music || 'battle', { restart: true });
     await stills(theurgyStills());
     await intro(spec, kinds);
+    if (RL && RL.epi) epiOpen(spec);
     if (fx.openBuff) await play(B.openBuff(fx.openBuff));
     if (B.start) await play(B.start());
     nav(spec.nav, spec.navVars || {});
@@ -1941,10 +1948,13 @@
       const turn = B.nextTurn();
       if ((ended = ruleEnd(spec, 'turn'))) break;
       const u = B.U(turn.actor);
+      if (RL && RL.everyOther) epiPhase();
       setActive(u);
       await play(turn.events);
       if ((ended = ruleEnd(spec, 'act')) || B.outcome()) break;
       if (!turn.canAct) { await sleep(300); continue; }
+      // The unseen Solar acts every other round; on the others she has flickered out of reach and her turn passes.
+      if (RL && RL.everyOther && u === B.leader() && B.S.round % 2 === 0) { log('Solar flickers out of reach.', 'sys'); mark('epi-gone'); await sleep(560); continue; }
       if (u.side === 'enemy') {
         let n = 0;
         do { await sleep(n ? 250 : 380); await play(turn.forced && !n ? B.forcedAct() : B.enemyAct()); n++; } while (B.S.oneMore && !B.outcome() && !u.dead && n < 3);
@@ -1956,7 +1966,7 @@
     }
     if (ended) {
       // A story fight that ends on its own terms (an interrupt, or a phase of the finale running out).
-      blogAdd(ended === 'interrupt' ? 'The fight stops.' : ended === 'fled' ? 'It got away!' : 'Something changes.', 'sys');
+      blogAdd(ended === 'interrupt' ? (RL && RL.epi ? 'The hour lets go of her.' : 'The fight stops.') : ended === 'fled' ? 'It got away!' : ended === 'fade' ? 'She fades.' : 'Something changes.', 'sys');
       if (ended === 'fled') { nav('fled'); B.foes().forEach(f => { const e = BT.enemies.get(f.id); if (e && !f.dead) e.classList.add('tt-fleeing'); }); }
       setActive(null); hideMenu();
       B.party().forEach(p => { save.th[p.mid] = Math.round(p.th); });
@@ -1991,7 +2001,7 @@
 
   function buildBattle(floor) {
     const el = show(`${ART.defs()}
-      <div class="bt-bg" style="background-image:url('${floor.bg}')"></div><div class="bt-floor"></div><div class="bt-shade"></div>
+      <div class="bt-bg" style="background-image:url('${floor.bg}')"></div>${floor.epi ? `<div class="bt-epi-over" style="background-image:url('${floor.over}')"></div><div class="bt-epi-tint"></div>` : ''}<div class="bt-floor"></div><div class="bt-shade"></div>
       <header class="bt-top">
         <div class="bt-floorlabel"><b>${esc(floor.label)}</b><span>${esc(floor.block)}<em><br>${floor.boss && !floor.reaper ? 'Full Moon Operation' : 'Tartarus'}</em></span></div>
         <ol class="bt-order" aria-label="Turn order"></ol>
@@ -2003,7 +2013,7 @@
       <div class="bt-log" role="status" aria-live="polite"></div>
       <div class="bt-nav" hidden></div>
       <div class="bt-rushtag" aria-hidden="true"><b>RUSH</b><span>R to stop</span></div>
-      <div class="bt-barks" aria-live="polite"></div><div class="bt-fx"></div><div class="bt-cut"></div><div class="bt-flash"></div><div class="bt-dim"></div>`, `bt-battle${floor.boss ? ' boss' : ''}${floor.reaper ? ' reaper' : ''}`);
+      <div class="bt-barks" aria-live="polite"></div><div class="bt-fx"></div><div class="bt-cut"></div><div class="bt-flash"></div><div class="bt-dim"></div>`, `bt-battle${floor.boss ? ' boss' : ''}${floor.reaper ? ' reaper' : ''}${floor.epi ? ` bt-epi st-${floor.epi.stage}${floor.home ? ' home' : ''}` : ''}`);
     BT = {
       root: el, field: el.querySelector('.bt-field'), fighter: el.querySelector('.bt-fighter'), party: el.querySelector('.bt-party'), cmd: el.querySelector('.bt-cmd'),
       body: el.querySelector('.bt-cmd-body'), who: el.querySelector('.bt-who'), log: el.querySelector('.bt-log'), nav: el.querySelector('.bt-nav'),
@@ -2034,6 +2044,7 @@
         <span class="nm"><span>${esc(u.name)}</span><small${u.persona.length > 9 ? ' class="long"' : ''}>${esc(u.persona)}</small></span>
         <span class="bt-bar hp"><span>HP</span><span class="track"><i class="g"></i><i class="f"></i></span><b></b></span>
         <span class="bt-bar sp"><span>SP</span><span class="track"><i class="g"></i><i class="f"></i></span><b></b></span><span class="bt-th" title="Theurgy"><i></i></span><span class="st"></span><span class="pulse" aria-hidden="true"></span><span class="aura" aria-hidden="true"><b></b><i></i><i></i><i></i><i></i><i></i></span><span class="thtag" aria-hidden="true">Theurgy ready</span>`;
+      if (floor.epi && u === B.leader()) c.classList.add('bt-ghost');
       c.addEventListener('mousedown', e => e.preventDefault());
       c.addEventListener('click', () => { if (ctl && ctl.pickValue) ctl.pickValue(u.id); });
       c.addEventListener('pointerenter', () => { if (ctl && ctl.hoverValue) ctl.hoverValue(u.id); });
@@ -2346,7 +2357,11 @@
 
   /* ── Fuuka ────────────────────────────────────────── */
   // Fuuka's lines for story fights that only this file knows (the finale's train: which targets can break; vars.tip).
-  const NAV_LOCAL = { finaleTrain: ['{tip}', 'neutral'] };
+  const NAV_LOCAL = { finaleTrain: ['{tip}', 'neutral'],
+    // The epilogue's half-present fights (EPI): Fuuka reads what she can't explain.
+    epiUnknown: ['Shadows ahead. And… an unknown signal, right in the middle of you. I can’t tell what it is.', 'sad'],
+    epiThere: ['I can see her on the readings. I can’t hear her. But she’s there. She’s right there.', 'sad'],
+    epiContact: ['I’ve got her— I’ve GOT her! She’s here! She’s really here!', 'surprised'] };
   function nav(key, vars = {}, { once = false } = {}) {
     const line = D.nav[key] || NAV_LOCAL[key];
     if (!line || !BT) return;
@@ -3003,6 +3018,7 @@
   const barkCovered = () => !!BT && (BT.root.classList.contains('evoking') || document.documentElement.classList.contains('bt-cutin') || !!BT.cut.querySelector('.bt-evoke, .bt-awaken, .bt-sideglass'));
   function say(u, text) {
     if (!BT || !u) return;
+    if (curSpec && curSpec.rules && curSpec.rules.mute && B && u === B.leader()) { text = '…'; mark('epi-mute'); } // the epilogue: nobody can hear her
     blogAdd(`${u.name}: “${text}”`, 'say');
     barkQ.push([u, text]);
     if (!barkRun) runBarks();
@@ -3786,7 +3802,7 @@
       else if (c === 'guard') return { type: 'guard' };
       else if (c === 'escape') return { type: 'escape' };
       else if (c === 'shift') { const t = await pickTarget(u, { target: 'shift' }, 'Shift → pass the turn'); if (t === RUSH) return RUSH; if (t) return { type: 'shift', to: t }; }
-      else if (c === 'analyze') { const t = await pickTarget(u, { target: 'scan' }, 'Analyze → choose'); if (t === RUSH) return RUSH; if (t) { const ev = await analyzePanel(t); if (ev && ev.length) await play(ev); } }
+      else if (c === 'analyze') { const t = await pickTarget(u, { target: 'scan' }, 'Analyze → choose'); if (t === RUSH) return RUSH; if (t) { epiMark(u, t); const ev = await analyzePanel(t); if (ev && ev.length) await play(ev); } }
       else if (c === 'tactics') { const r = await tacticsMenu(); if (r === RUSH) return RUSH; if (tacticOf(u) !== 'direct') return null; }
     }
   }
@@ -3856,8 +3872,9 @@
         const sk = D.skills[id], once = !!(sk.once && B.usedOnce(u, id)), pay = B.canPay(u, sk), noDead = sk.target === 'dead' && !deadCount;
         const hostile = ['one', 'all', 'rand'].includes(sk.target) && ['dmg', 'insta'].includes(sk.type);
         const tg = hostile ? affTag(foe, sk.el) : null, need = sk.cost && sk.cost.hp ? 'HP' : 'SP';
-        const offWhy = once ? 'Once per battle, and it’s been used.' : noDead ? 'No one needs reviving.' : !pay ? `Not enough ${need}: it costs ${costText(u, sk)} and ${u.name} has ${need === 'HP' ? u.hp : u.sp}.` : '';
-        return { v: id, label: sk.name, icon: sk.el, iconHtml: sk.icon ? skIcon(id) : null, tag: tg, right: costText(u, sk), rcls: sk.cost && sk.cost.hp ? 'hp' : '', off: once || !pay || noDead, why: once ? 'USED' : noDead ? 'NO KO' : !pay ? `LOW ${need}` : '', offWhy, el: hostile ? sk.el : null,
+        const hush = epiHush(u, id);
+        const offWhy = hush ? 'Haenim doesn’t answer this one. Not tonight.' : once ? 'Once per battle, and it’s been used.' : noDead ? 'No one needs reviving.' : !pay ? `Not enough ${need}: it costs ${costText(u, sk)} and ${u.name} has ${need === 'HP' ? u.hp : u.sp}.` : '';
+        return { v: id, label: sk.name, icon: sk.el, iconHtml: sk.icon ? skIcon(id) : null, tag: tg, right: costText(u, sk), rcls: sk.cost && sk.cost.hp ? 'hp' : '', off: hush || once || !pay || noDead, why: hush ? 'NO ANSWER' : once ? 'USED' : noDead ? 'NO KO' : !pay ? `LOW ${need}` : '', offWhy, el: hostile ? sk.el : null,
           desc: `<b>${esc(sk.name)}</b>${u.echo && u.echo.skills.includes(id) ? `<em class="vs">Echo · ${esc(u.echo.name)}</em> ` : ''}${esc(sk.desc)}${tg && foe ? ` <span class="vs">vs ${esc(foe.name + L[foe.id])}: ${tagHtml(tg)}</span>` : ''}${offWhy ? ` <em class="why">${esc(offWhy)}</em>` : ''}` };
       });
       const title = `${esc(u.persona)} · SP ${u.sp}/${u.maxSp}${foe ? ` <span class="vs">vs <b>${esc(foe.name + L[foe.id])}</b>${foes.length > 1 ? ' <i>‹ ›</i>' : ''}</span>` : ''}`;
@@ -3975,7 +3992,7 @@
       rushGuard();
       let tac = tacticOf(u), action = null;
       if (tac === 'direct' && !rushActive()) {
-        if (!said) { log(`${u.name}: “${member(u.mid).lines.turn}”`, 'say'); said = true; }
+        if (!said) { const hush = !!(curSpec && curSpec.rules && curSpec.rules.mute && u === B.leader()); if (hush) mark('epi-mute'); log(`${u.name}: “${hush ? '…' : member(u.mid).lines.turn}”`, 'say'); said = true; epiTurn(u); }
         action = await commandMenu(u);
         hideMenu();
         if (action === RUSH) action = null;
@@ -3991,7 +4008,7 @@
         mark('rush-act'); mark('rush-act-' + u.mid);
       } else if (!action) {
         // Tactics: the member acts on their own.
-        action = B.autoAction(u, tac === 'direct' ? 'free' : tac);
+        action = epiFollow(B.autoAction(u, tac === 'direct' ? 'free' : tac));
         showWho(u, D.tactics[tac].name);
         BT.body.innerHTML = '';
         await sleep(420);
@@ -4000,8 +4017,10 @@
       }
       const evs = B.act(action);
       await play(evs);
+      epiAfter(u, action, evs);
       if (B.outcome()) return;
-      if (B.S.alloutReady) {
+      if (B.S.alloutReady && curSpec && curSpec.rules && curSpec.rules.noAllOut) { mark('epi-no-allout'); await play(B.declineAllOut()); }
+      else if (B.S.alloutReady) {
         const go = rushActive() ? true : await alloutPrompt(u);
         if (go) { await play(B.allOut()); return; }
         await play(B.declineAllOut());
@@ -4014,7 +4033,16 @@
 
   async function intro(floor, group) {
     const el = document.createElement('div');
-    if (floor.reaper) {
+    if (floor.epi) {
+      // The epilogue's stage card (EPI): ALONE / UNSEEN / UNHEARD / ONE SECOND over the place half turned to Tartarus.
+      const c = EPI_CARD[floor.epi.stage] || EPI_CARD.unseen;
+      el.className = `bt-epi-card st-${floor.epi.stage}`;
+      el.innerHTML = `<div><p>${esc(floor.block)} · ${esc(c.kicker)}</p><h2>${esc(c.title)}</h2><small>${esc(c.sub)}</small></div>`;
+      el.style.animationDuration = `${2600 / speed()}ms`;
+      BT.root.appendChild(el);
+      mark('epi-card-' + floor.epi.stage);
+      await sleep(floor.epi.stage === 'contact' ? 2300 : 2000);
+    } else if (floor.reaper) {
       el.className = 'bt-moon reaper';
       el.innerHTML = `<div><p>${esc(floor.label)} · something followed you</p><h2>THE REAPER</h2></div>`;
       el.style.animationDuration = `${2600 / speed()}ms`;
@@ -4754,6 +4782,8 @@
   }
   function hoBegin() {
     const R = HO.request;
+    // The epilogue's fights (EPI) borrow the battle save: its party and items are put back when the fight is over (hoFinish).
+    const keep = R.epi ? { party: (save.party || []).slice(), items: JSON.parse(JSON.stringify(save.items || {})) } : null;
     // Floors carry their real numbers since 2026-10-25 (data.js blocks[].floors): nothing to relabel.
     // The life sim owns the party, money, items, gear, operations and fragments. Unknown ids are skipped.
     const avail = hoAvail();
@@ -4772,11 +4802,11 @@
     if (ranks) D.party.forEach(m => { if (m.id !== 'solar' && ranks[m.id] != null) save.ranks[m.id] = Math.min(10, +ranks[m.id] || 0); });
     // Every link's rank feeds the bond perks (build.js); a reversed link pauses its perks. Rank gifts (a naginata, a skill point) land once.
     // Bond skills (bonds.js): the links on their romance route, and today's date (a bond's last day).
-    const gifts = BLD ? BLD.syncBonds(save, ranks || {}, (R.social && R.social.reversed) || [], (R.social && Array.isArray(R.social.romance)) ? R.social.romance : null, (HO.date && HO.date.md) || null) : [];
+    const gifts = BLD ? BLD.syncBonds(save, ranks || {}, (R.social && R.social.reversed) || [], (R.social && Array.isArray(R.social.romance)) ? R.social.romance : null, R.epi ? null : (HO.date && HO.date.md) || null) : [];
     delete save.forceForm;
     if (save.reached) { const i = D.floors.findIndex(f => f.id === save.reached), f = D.floors[i]; if (i < 0 || (f.secret ? !(TT && TT.floorOpen(ttCtx(f), f)) : f.bi > hoBlockCap())) save.reached = null; }
     E.formsList().forEach(f => { if (!save.forms.includes(f) && E.formUnlocked(Object.assign({}, save, { forms: [] }), f)) save.forms.push(f); });
-    HS = { items0: Object.assign({}, save.items), yen0: save.yen, exp: {}, frags: [], bosses: [], floor: 0, entered: false, scripted: false, finished: false, gifts, plumes: 0 };
+    HS = { items0: Object.assign({}, save.items), yen0: save.yen, exp: {}, frags: [], bosses: [], floor: 0, entered: false, scripted: false, finished: false, gifts, plumes: 0, keep };
     // Night kits from bonds (Fuuka's bento, Ken's bead, Sunoo's soul): only good tonight, never sent back.
     // Night-only dishes the life sim packed (request.kits: Shinjiro's Kitchen Duty leftovers).
     if (HO.kind === 'tartarus' && R.kits) Object.entries(R.kits).forEach(([k, n]) => { if (D.items[k] && n > 0) { save.items[k] = (save.items[k] || 0) + n; mark('night-kit-' + k); } });
@@ -4843,6 +4873,7 @@
     HS.finished = true;
     ctl = null;
     delete save.preparation;
+    if (HS.keep) { save.party = HS.keep.party; save.items = HS.keep.items; }
     persist();
     const result = hoResult(outcome, extra);
     window.__hoResult = result;
@@ -4850,7 +4881,7 @@
     screen = 'handoff';
     root.classList.remove('bt-in-battle');
     music.play(null);
-    const word = { win: HO.kind === 'tartarus' ? 'Back to the dorm' : 'The moon is quiet', lose: 'The hour closes', retreat: 'Not tonight', interrupt: '…' }[outcome] || 'Back to the dorm';
+    const word = HO.request.epi ? '…' : { win: HO.kind === 'tartarus' ? 'Back to the dorm' : 'The moon is quiet', lose: 'The hour closes', retreat: 'Not tonight', interrupt: '…' }[outcome] || 'Back to the dorm';
     show(`<div><p class="bt-kicker">${esc(HO.date ? HO.date.md : '')} · The Dark Hour</p><h1>${esc(word.toUpperCase())}</h1></div>`, 'bt-over bt-ho-done');
     // The life sim takes it from here: it records the result, fades this frame out and picks the story up on the next line.
     setTimeout(() => { if (!window.__hoStay) BR.finish(result); }, Math.round(650 / Math.min(speed(), 4)));
@@ -4899,6 +4930,156 @@
     const turn = notes.match(/turn (\d+)/i);
     return [{ group: (b.strong[0] || b.pool[0]).slice(), bg: b.bg, label: R.title || 'Tartarus', block: b.name, boss: false, music: 'danger', title: R.title || b.name,
       rules: wantsInterrupt ? SEG1(turn ? +turn[1] + 1 : 4, /half/i.test(notes) ? 0.5 : 0) : { noEscape: true } }];
+  }
+  /* ── The epilogue's half-present fights (FEMC-EPILOGUE-PLAN.md 2.4; batch 6, 2026-10-28). request.script 'epi-<world>-<n>',
+     request.epi { world, n, stage, bg, place, glitch } (core.js epiRequest, epilogue.js fightHook). One table, EPI_WORLDS:
+     each world's four fights (the memory floors' own Shadows, scaled to Solar's level with kind@lvl so the year's last levels
+     still meet a real fight; `hpK` scales their HP, `foeHp` starts them hurt; a fallback backdrop; the block name) and
+     EPI_STAGES, the four stages' rules (spec.rules, read by battle() / ruleEnd / partyTurn / say / skillMenu through the
+     epi* helpers below). A new world (strangers, Stay) only needs a row. The backdrop is the scene's own place (request.epi.bg)
+     under a Tartarus layer and the Dark Hour's green (.bt-epi in battle.css); her card and figure wear .bt-ghost.
+       alone   Solar by herself; no escape, no Theurgy, no navigator; Haenim barely answers: her name glitches on her card at
+               each of her turns and a third of her skills (a different third each round) are greyed, "No answer". Pulled
+               back when round 4 starts or her HP drops under half.
+       unseen  the ghost slot: she's in the party but nothing can target her (engine `ghost`); she acts on odd rounds only (on
+               even ones her card fades and her turn passes); allies Act Freely (no Tactics); no Bond, Theurgy, Shift or
+               All-Out (declined for everyone); her heals land and whoever she healed asks who did it; Fuuka reads an
+               unknown signal; Koromaru barks at her.
+       unheard she can be hit, for half damage (engine `dmgTaken`); her lines are "…"; allies Act Freely, and a Shadow she
+               attacks, uses a skill on or Analyzes is marked: their single-target moves follow her mark (Akihiko says so,
+               once); Theurgy is hers again; no Bond or All-Out; they know her ("Solar?!", "…Sol?", Fuuka: she's there).
+       contact the ONE SECOND card; round 1 is the contact round: everyone obeys Direct (their own command menus), Bond with
+               Akihiko is open (his first bond even below rank 5), All-Out too; when round 2 starts she's pulled away.
+     She can't lose (protect: her HP stops at 1). At 1 HP, or with everyone beside her down (unseen / unheard), she fades home
+     ('faded'); contact never fades (an empty bar is just the pull). No Get Ready, no results screen, no yen, no Item command
+     (an empty bag: the battle save's own items and party are put back after, hoBegin keep / hoFinish), no Tactics (the
+     stage sets them). Small EXP whatever happens (EPI_EXP,
+     a share of what the Shadows were worth) into the battle save, which the year gets back. result: outcome 'win' |
+     'interrupt', exp, epi { world, n, stage, ended: 'win' | 'pulled' | 'faded' }. */
+  const EPI_EXP = { win: 0.2, cut: 0.1 };
+  const EPI_WORLDS = {
+    runners: { over: 'tartarus-tziah.webp', fights: {
+      1: { group: ['flash_shadow'], at: -3, block: 'Studio 4B · Midnight' },
+      2: { group: ['party_shadow'], at: -2, hpK: 0.45, block: 'The Alpha Phi Stairs' },
+      3: { group: ['fox_shadow', 'flash_shadow'], at: -1, hpK: 0.35, block: 'The Bell Tower' },
+      4: { group: ['party_shadow'], at: 0, foeHp: 0.35, block: 'The Holiday Party · Midnight' } } },
+    hoax: { over: 'tartarus-yabbashah.webp', fights: {
+      1: { group: ['ballot_box'], at: -3, block: 'The Council Room · Midnight' },
+      2: { group: ['group_chat', 'group_chat', 'group_chat'], at: -2, block: 'Yeobo’s, After Closing' },
+      3: { group: ['veil_poster', 'group_chat'], at: -1, hpK: 0.45, block: 'Hanlim’s Halls' },
+      4: { group: ['ballot_box'], at: 0, foeHp: 0.35, block: 'The Gym · Midnight' } } },
+    // strangers (batch 7) and Stay (batch 8) only need their rows checked; these are the memory floor's Shadows.
+    strangers: { over: 'tartarus-coffins.webp', fights: {
+      1: { group: ['tide_shadow'], at: -3, block: 'The Harbor · Midnight' },
+      2: { group: ['fishmonger', 'fishmonger'], at: -2, block: 'Incheon · Midnight' },
+      3: { group: ['tide_shadow', 'fishmonger'], at: -1, hpK: 0.4, block: 'Incheon · Midnight' },
+      4: { group: ['tide_shadow'], at: 0, foeHp: 0.35, block: 'The Bottom of the Tide' } } }
+  };
+  const EPI_ORDER = ['alone', 'unseen', 'unheard', 'contact'];
+  const EPI_STAGES = {
+    alone: { solo: true, music: 'danger', rules: { cmds: ['attack', 'skill', 'guard', 'analyze'], noNav: true, hush: true, interruptAt: 4, interruptHp: 0.5, fadeHp: true } },
+    unseen: { music: 'danger', rules: { cmds: ['attack', 'skill', 'guard', 'analyze'], ghost: true, everyOther: true, tactic: 'free', noAllOut: true, mute: true, fadeHp: true, fadeAlone: true, roundsMax: 14 } },
+    unheard: { music: 'danger', rules: { cmds: ['attack', 'skill', 'guard', 'analyze', 'theurgy'], dmgTaken: 0.5, tactic: 'free', marks: true, noAllOut: true, mute: true, fadeHp: true, fadeAlone: true, roundsMax: 14 } },
+    contact: { music: 'boss', rules: { cmds: ['theurgy', 'shift', 'attack', 'skill', 'bond', 'guard', 'analyze'], tactic: 'direct', contact: true, bondFloor: { akihiko: 5 }, interruptAt: 2, interruptHp: 0.02 } }
+  };
+  const EPI_CARD = {
+    alone: { kicker: 'The Dark Hour', title: 'ALONE', sub: 'Haenim, barely' },
+    unseen: { kicker: 'The Dark Hour', title: 'UNSEEN', sub: 'They can’t see her' },
+    unheard: { kicker: 'The Dark Hour', title: 'UNHEARD', sub: 'They can see her. They can’t hear her.' },
+    contact: { kicker: 'The Dark Hour', title: 'ONE SECOND', sub: 'For one round, they can hear her' }
+  };
+  function epiSpec(R) {
+    const ep = R.epi || {}, m = /^epi-([a-z]+)-(\d+)$/.exec(R.script || '') || [];
+    const world = ep.world || m[1], n = +(ep.n || m[2]) || 1, stage = EPI_STAGES[ep.stage] ? ep.stage : EPI_ORDER[Math.min(3, n - 1)];
+    const W = EPI_WORLDS[world] || EPI_WORLDS.runners, F = W.fights[n] || W.fights[1], st = EPI_STAGES[stage], L = lvOf('solar');
+    const group = F.group.map(k => `${k}@${Math.max(5, L + (F.at || 0))}`);
+    const rules = Object.assign({ protect: true, noEscape: true }, st.rules, { epi: { world, n, stage } });
+    if (F.hpK || F.foeHp) rules.setup = b => b.foes().forEach(f => { if (F.hpK) { f.maxHp = Math.max(1, Math.round(f.maxHp * F.hpK)); f.hp = f.maxHp; } if (F.foeHp) f.hp = Math.max(1, Math.round(f.maxHp * F.foeHp)); });
+    return { group, bg: ep.bg || BGP + W.over, over: BGP + W.over, home: !!ep.bg, label: R.title || EPI_CARD[stage].title, block: F.block, boss: false, music: st.music,
+      title: R.title || F.block, solo: !!st.solo, noResults: true, epi: { world, n, stage }, rules };
+  }
+  async function hoEpi() {
+    const R = HO.request, spec = epiSpec(R), ep = spec.epi;
+    mark('epi-' + ep.stage);
+    const out = await battle(spec);
+    const ended = out.result === 'win' ? 'win' : out.result === 'fade' ? 'faded' : 'pulled';
+    // Small EXP, won or not: a share of what the Shadows were worth, into the battle save (her levels, the party's).
+    const worth = B ? B.foes().reduce((n, f) => n + (f.exp || 0), 0) : 0;
+    const g = gainExp(Math.max(1, Math.round(worth * (ended === 'win' ? EPI_EXP.win : EPI_EXP.cut))));
+    if (g.any) mark('levelup');
+    persist();
+    run = null;
+    mark('epi-ended-' + ended);
+    hoFinish(ended === 'win' ? 'win' : 'interrupt', { exp: Object.assign({}, HS.exp), epi: { world: ep.world, n: ep.n, stage: ep.stage, ended } });
+  }
+  const epiR = () => (curSpec && curSpec.rules && curSpec.rules.epi ? curSpec.rules : null);
+  let epiS = null; // this fight: the marked Shadow, who's asked about a heal, whether the mark's been called out
+  function epiSetup(spec) {
+    const R = spec.rules, L = B.leader();
+    epiS = { mark: null, asked: new Set(), called: false };
+    if (R.ghost) L.ghost = true;
+    if (R.dmgTaken) L.dmgTaken = R.dmgTaken;
+    // Contact: Akihiko's bond is open for the round, even below the rank it needs.
+    if (R.bondFloor && BDS && HO) {
+      const s2 = Object.assign({}, save, { bonds: Object.assign({}, save.bonds || {}) });
+      Object.entries(R.bondFloor).forEach(([k, r]) => { s2.bonds[k] = Math.max(r, +s2.bonds[k] || 0); });
+      B.S.bondArts = BDS.arts(s2);
+    }
+  }
+  function epiOpen(spec) {
+    const st = spec.epi.stage, mates = B.party().filter(p => p !== B.leader() && !p.dead), aki = mates.find(p => p.mid === 'akihiko'), koro = mates.find(p => p.mid === 'koromaru');
+    const other = mates.find(p => p.mid !== 'akihiko' && p.mid !== 'koromaru') || aki;
+    if (st === 'unseen') { nav('epiUnknown'); if (koro) { say(koro, 'Arf! Arf arf!'); mark('epi-koro'); if (aki) say(aki, 'Koro? What is it? There’s nothing there.'); } }
+    else if (st === 'unheard') { nav('epiThere'); if (other) say(other, 'Solar?!'); if (aki && aki !== other) say(aki, '…Sol?'); }
+    else if (st === 'contact') { nav('epiContact'); if (aki) say(aki, 'Sol. Call it. We’re with you.'); }
+    if (st === 'contact') BT.root.classList.add('epi-live');
+    mark('epi-open-' + st);
+  }
+  // Unseen: her card fades on the even rounds (the ones she's flickered out of).
+  function epiPhase() { const c = BT && B && BT.cards.get(B.leader().id); if (c) c.classList.toggle('gone', B.S.round % 2 === 0); }
+  // Alone: the name on her card comes apart on each of her turns (still frames with reduced motion).
+  function epiTurn(u) {
+    const R = epiR();
+    if (!R || !R.hush || u !== B.leader()) return;
+    const el = BT.cards.get(u.id)?.querySelector('.nm small'); if (!el) return;
+    const name = el.dataset.name || (el.dataset.name = el.textContent);
+    if (!FX || FX.reduced()) { el.textContent = name; return; }
+    ['H̷a̵e̶n̸i̴m', '해░▒im', 'Hae▓█m', '…', name].forEach((t, i) => setTimeout(() => { if (el.isConnected) el.textContent = t; }, (i * 120) / Math.min(speed(), 3)));
+    mark('epi-name');
+  }
+  // Alone: a third of her skills don't answer, a different third each round (never her plain attack).
+  function epiHush(u, id) {
+    const R = epiR();
+    if (!R || !R.hush || !B || u !== B.leader()) return false;
+    const i = u.skills.indexOf(id);
+    return i >= 0 && (i + B.S.round) % 3 === 0;
+  }
+  // Unheard: a Shadow she goes for is marked, and the others' single-target moves follow it.
+  function epiMark(u, id) {
+    const R = epiR(), t = id && B.U(id);
+    if (!R || !R.marks || u !== B.leader() || !t || t.side !== 'enemy' || t.dead) return;
+    if (epiS.mark !== id) { BT.enemies.forEach((el, k) => el.classList.toggle('epi-marked', k === id)); epiS.mark = id; mark('epi-mark'); }
+    if (!epiS.called) { epiS.called = true; const aki = B.party().find(p => p.mid === 'akihiko' && !p.dead); if (aki) say(aki, 'There. The one she’s on. Everyone, follow her!'); }
+  }
+  function epiFollow(action) {
+    const R = epiR(), m = epiS && epiS.mark && B.U(epiS.mark);
+    if (!R || !R.marks || !action || !m || m.dead || m.unreachable) return action;
+    const t = action.target && action.target !== 'all' ? B.U(action.target) : null, sk = action.type === 'skill' ? D.skills[action.skill] : null;
+    if (t && t.side === 'enemy' && (action.type === 'attack' || (sk && sk.target === 'one')) && t.id !== m.id) { mark('epi-follow'); return Object.assign({}, action, { target: m.id }); }
+    if (t && t.id === m.id) mark('epi-follow');
+    return action;
+  }
+  function epiAfter(u, action, evs) {
+    const R = epiR();
+    if (!R || u !== B.leader()) return;
+    if (R.marks && action && action.target && action.target !== 'all') epiMark(u, action.target);
+    // Unseen: her heals land, and whoever she healed asks who did it.
+    if (R.ghost) (evs || []).forEach(e => {
+      if (e.t !== 'heal' || !(e.amount > 0) || e.tgt === u.id) return;
+      const t = B.U(e.tgt); if (!t || t.dead || epiS.asked.has(t.id)) return;
+      epiS.asked.add(t.id); mark('epi-heal-bark');
+      say(t, t.mid === 'koromaru' ? '*sniffs the air, tail going*' : pickOne(['…Who did that?', 'Who— who healed me?', 'Did anyone else see that?']));
+    });
   }
   // Preparation is deliberately separate from battle(): nothing can take a turn before Begin.
   function prepareBattle(spec) {
@@ -4961,6 +5142,7 @@
     run = newRun({ ops: true });
     mark('script-' + id + (R.segment ? '-' + R.segment : ''));
     if (id === 'finale') return hoFinale();
+    if (/^epi-[a-z]+-\d+$/.test(id)) return hoEpi();
     const specs = (SCRIPTS[id] || genericScript)(R);
     let out = 'win';
     for (const spec of specs) { out = await hoFight(spec); if (out !== 'win') break; }

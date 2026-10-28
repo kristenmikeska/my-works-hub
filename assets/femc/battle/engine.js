@@ -4,7 +4,9 @@
    and battle rewards. Boss gimmicks live in GIMMICKS below.
    Story fights (the life sim's handoff, battle.js) add: setup.protect (Solar can't drop below 1 HP), units with
    `unreachable` (every hit on them is nulled: the finale's locked lanterns), the gimmicks train / lantern / wren, and the AIs
-   wren_ask / still / lantern. None of these appear in the prototype's own Tartarus or operations. */
+   wren_ask / still / lantern. None of these appear in the prototype's own Tartarus or operations.
+   The epilogue's half-present fights (battle.js EPI) add two unit fields: `ghost` (no one on the other side can target her:
+   targetsFor skips her, single and all-target alike) and `dmgTaken` (a multiplier on what Shadows deal her). */
 window.FemcBattleEngine = (() => {
   const DATA = () => window.FEMC_BATTLE_DATA;
   const PHYS = new Set(['slash', 'strike', 'pierce']);
@@ -934,6 +936,7 @@ window.FemcBattleEngine = (() => {
       const crit = shatter || (sk.crit >= 100) || R() * 100 < critChance(src, tgt, sk);
       if (aff === 'weak') d *= 1.5 * (src.side === 'party' ? mods.weakMult * (1 + (src.weakUp || 0)) : 1);
       if (src.side === 'enemy' && tgt.side === 'party') d *= 1 - corona();
+      if (src.side === 'enemy' && tgt.dmgTaken) d *= tgt.dmgTaken; // the epilogue's half-present Solar (battle.js EPI: half damage)
       if (aff === 'resist') d *= 0.5;
       if (crit) d *= keen ? sk.critX : (src.side === 'party' ? mods.critMult + (src.critAdd || 0) : 1.6);
       if (crit && src.side === 'party' && tgt.ail && tgt.ail.id === 'distress' && perkOn('bestie')) d *= 1 + PK('bestie').dmg;
@@ -1051,12 +1054,14 @@ window.FemcBattleEngine = (() => {
     /* ── Using a skill (party or enemy) ───────────────── */
     function targetsFor(src, sk, target, flip = false) {
       const same = ['ally', 'allies', 'dead', 'self'].includes(sk.target) !== flip;
-      const pool = sideOf(src, same);
+      // A `ghost` (the epilogue's unseen Solar, battle.js EPI) is never anyone else's target: Shadows can't find her.
+      const unseen = u => !!(u.ghost && u.side !== src.side);
+      const pool = sideOf(src, same).filter(u => !unseen(u));
       if (sk.target === 'self') return [src];
       if (sk.target === 'all' || sk.target === 'allies' || sk.target === 'rand') return alive(pool);
-      if (sk.target === 'dead') { const t = U(target); return t && t.dead ? [t] : []; }
+      if (sk.target === 'dead') { const t = U(target); return t && t.dead && !unseen(t) ? [t] : []; }
       let t = U(target);
-      if (!t || t.dead || (pool.length && t.side !== pool[0].side)) t = alive(pool)[0];
+      if (!t || t.dead || unseen(t) || (pool.length && t.side !== pool[0].side)) t = alive(pool)[0];
       return t ? [t] : [];
     }
     /* What a skill costs this unit right now: Kitsune Rush halves HP/SP costs; Double Tap makes Solar's first skill free. */
